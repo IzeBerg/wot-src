@@ -1,0 +1,16 @@
+from gui.impl.gen.view_models.views.loot_box_view.congrats_view_model import CongratsViewModel
+from gui.impl.gen.view_models.views.loot_box_view.loot_animated_renderer_model import LootAnimatedRendererModel
+
+class CrewBookRendererModel(LootAnimatedRendererModel):
+    __slots__ = ()
+
+    def __init__(self, properties=15, commands=0):
+        super(CrewBookRendererModel, self).__init__(properties=properties, commands=commands)
+
+    @property
+    def congratsViewModel(self):
+        return self._getViewModel(14)
+
+    def _initialize(self):
+        super(CrewBookRendererModel, self)._initialize()
+        self._addViewModelProperty('congratsViewModel', CongratsViewModel())

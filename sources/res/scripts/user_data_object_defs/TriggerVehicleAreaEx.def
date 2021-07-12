@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<Parent>TriggerVehicleArea</Parent>
+	<Properties>
+		<Shape>
+			<Type>STRING</Type>
+			<Editable>True</Editable>
+		</Shape>
+		<EventID>
+			<Type>STRING</Type>
+			<Editable>True</Editable>
+		</EventID>
+		<ReactOn>
+			<Type>STRING</Type>
+			<Editable>True</Editable>
+			<Default>EnterAndLeave</Default>
+		</ReactOn>
+		<ReactOnTeam>
+			<Type>STRING</Type>
+			<Editable>true</Editable>
+			<Default>1 2</Default>
+		</ReactOnTeam>
+		<ReactOnDeadVehicles>
+			<Type>STRING</Type>
+			<Editable>true</Editable>
+			<Default>true</Default>
+		</ReactOnDeadVehicles>
+		<ActivationsCount>
+			<Type>UINT8</Type>
+			<Editable>True</Editable>
+			<Default>0</Default>
+		</ActivationsCount>
+		<Cooldown>
+			<Type>FLOAT</Type>
+			<Editable>True</Editable>
+			<Default>0</Default>
+		</Cooldown>
+		<name>
+			<Type>STRING</Type>
+			<Editable>True</Editable>
+		</name>
+	</Properties>
+</root>

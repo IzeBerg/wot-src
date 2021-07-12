@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<xmlns:xmlref>http://bwt/xmlref</xmlns:xmlref>
+	<xmlns:ussr>ussr</xmlns:ussr>
+	<xmlns:germany>germany</xmlns:germany>
+	<xmlns:usa>usa</xmlns:usa>
+	<xmlns:china>china</xmlns:china>
+	<xmlns:france>france</xmlns:france>
+	<xmlns:uk>uk</xmlns:uk>
+	<xmlns:japan>japan</xmlns:japan>
+	<xmlns:czech>czech</xmlns:czech>
+	<xmlns:sweden>sweden</xmlns:sweden>
+	<xmlns:poland>poland</xmlns:poland>
+	<itemGroup>
+		<name>attachments</name>
+		<userString>#vehicle_customization:attachment/general</userString>
+		<season>ALL</season>
+		<historical>true</historical>
+		<priceGroup>attachments 50g notInShop</priceGroup>
+		<tags>hiddenInUI</tags>
+		<attachment>
+			<id>1</id>
+			<name>attachment_01</name>
+			<modelName>content/Hangars/CharacterAnimations/Flag/normal/lod0/shaft_hd.model</modelName>
+			<attachmentLogic>flagPart</attachmentLogic>
+			<initialVisibility>false</initialVisibility>
+		</attachment>
+		<attachment>
+			<id>2</id>
+			<name>attachment_02</name>
+			<modelName>content/Hangars/CharacterAnimations/Flag/normal/lod0/flag_hd_anim.model</modelName>
+			<sequenceId>3</sequenceId>
+			<attachmentLogic>flagAnimation</attachmentLogic>
+			<initialVisibility>false</initialVisibility>
+		</attachment>
+	</itemGroup>
+</root>

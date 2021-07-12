@@ -1,0 +1,1754 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<whiteColor>
+		<alias_color>white</alias_color>
+		<rgba>255 255 255 255</rgba>
+	</whiteColor>
+	<grayColor>
+		<alias_color>gray</alias_color>
+		<rgba>130 130 130 120</rgba>
+	</grayColor>
+	<yellowColor>
+		<alias_color>yellow</alias_color>
+		<rgba>255 255 0 255</rgba>
+	</yellowColor>
+	<yellowTextLitVehicleNameColor>
+		<alias_color>yellowTextLitColor</alias_color>
+		<rgba>226 226 148 255</rgba>
+	</yellowTextLitVehicleNameColor>
+	<yellowTextVehicleNameColor>
+		<alias_color>yellowTextColor</alias_color>
+		<rgba>236 236 158 255</rgba>
+	</yellowTextVehicleNameColor>
+	<darkYellowColor>
+		<alias_color>yellow</alias_color>
+		<rgba>255 195 100 255</rgba>
+	</darkYellowColor>
+	<darkYellowTextLitVehicleNameColor>
+		<alias_color>darkYellowTextLitColor</alias_color>
+		<rgba>235 217 188 255</rgba>
+	</darkYellowTextLitVehicleNameColor>
+	<darkYellowTextVehicleNameColor>
+		<alias_color>darkYellowTextColor</alias_color>
+		<rgba>245 227 198 255</rgba>
+	</darkYellowTextVehicleNameColor>
+	<brownColor>
+		<alias_color>brown</alias_color>
+		<rgba>191 139 83 255</rgba>
+	</brownColor>
+	<blueColor>
+		<alias_color>blue</alias_color>
+		<rgba>0 234 255 255</rgba>
+	</blueColor>
+	<blueTextLitVehicleNameColor>
+		<alias_color>blueTextLitColor</alias_color>
+		<rgba>144 215 221 255</rgba>
+	</blueTextLitVehicleNameColor>
+	<blueTextVehicleNameColor>
+		<alias_color>blueTextColor</alias_color>
+		<rgba>154 225 231 255</rgba>
+	</blueTextVehicleNameColor>
+	<darkBlueColor>
+		<alias_color>blue</alias_color>
+		<rgba>0 122 132 255</rgba>
+	</darkBlueColor>
+	<greenColor>
+		<alias_color>green</alias_color>
+		<rgba>123 236 55 255</rgba>
+	</greenColor>
+	<greenTextLitVehicleNameColor>
+		<alias_color>greenTextLitColor</alias_color>
+		<rgba>163 198 143 255</rgba>
+	</greenTextLitVehicleNameColor>
+	<greenTextVehicleNameColor>
+		<alias_color>greenTextColor</alias_color>
+		<rgba>173 208 153 255</rgba>
+	</greenTextVehicleNameColor>
+	<redColor>
+		<alias_color>red</alias_color>
+		<rgba>245 8 0 255</rgba>
+	</redColor>
+	<redTextLitVehicleNameColor>
+		<alias_color>redTextLitColor</alias_color>
+		<rgba>201 58 53 255</rgba>
+	</redTextLitVehicleNameColor>
+	<redVehicleNameColor>
+		<alias_color>redTextColor</alias_color>
+		<rgba>211 68 63 255</rgba>
+	</redVehicleNameColor>
+	<purpleColor>
+		<alias_color>purple</alias_color>
+		<rgba>131 121 254 255</rgba>
+	</purpleColor>
+	<purpleTextLitVehicleNameColor>
+		<alias_color>purpleTextLitColor</alias_color>
+		<rgba>165 159 239 255</rgba>
+	</purpleTextLitVehicleNameColor>
+	<purpleTextVehicleNameColor>
+		<alias_color>purpleTextColor</alias_color>
+		<rgba>175 169 249 255</rgba>
+	</purpleTextVehicleNameColor>
+	<textColorBattlePlayerName>
+		<alias_color>onlineTextColor</alias_color>
+		<rgba>201 201 182 255</rgba>
+	</textColorBattlePlayerName>
+	<blackAndWhiteAdjust>
+		<adjust>
+			<offset>0 0 -100 0</offset>
+		</adjust>
+	</blackAndWhiteAdjust>
+	<oliveTransform>
+		<rgba>178 178 3 255</rgba>
+		<transform>
+			<mult>
+				0.8 0.8 0.2 0.5
+				<!--BW_String-->
+			</mult>
+			<offset>0 0 0 0</offset>
+		</transform>
+	</oliveTransform>
+	<selectedOrSquadDeadSchema>
+		<default>
+			<schemeGroup>brownColor</schemeGroup>
+			<transform>
+				<mult>
+					0.8 0.6 0.2 0.5
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+		<color_blind>
+			<schemeGroup>yellowColor</schemeGroup>
+			<transform>
+				<mult>
+					0.8 0.6 0.2 0.5
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</color_blind>
+	</selectedOrSquadDeadSchema>
+	<selectedOrSquadDeadOfflineSchema>
+		<default>
+			<schemeGroup>brownColor</schemeGroup>
+			<transform>
+				<mult>
+					0.8 0.6 0.2 0.5
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+		<color_blind>
+			<schemeGroup>oliveTransform</schemeGroup>
+		</color_blind>
+	</selectedOrSquadDeadOfflineSchema>
+	<teamKillerDeadTransform>
+		<schemeGroup>darkBlueColor</schemeGroup>
+		<transform>
+			<mult>
+				0 0.4 0.6 0.7
+				<!--BW_String-->
+			</mult>
+			<offset>0 0 0 0</offset>
+		</transform>
+	</teamKillerDeadTransform>
+	<teamKillerDeadOfflineTransform>
+		<schemeGroup>darkBlueColor</schemeGroup>
+		<transform>
+			<mult>
+				0 0.4 0.6 0.7
+				<!--BW_String-->
+			</mult>
+			<offset>0 0 0 0</offset>
+		</transform>
+	</teamKillerDeadOfflineTransform>
+	<emptySchema>
+		<default>
+			<alias_color>empty</alias_color>
+			<rgba>255 255 255 255</rgba>
+		</default>
+		<color_blind>
+			<alias_color>empty</alias_color>
+			<rgba>255 255 255 255</rgba>
+		</color_blind>
+	</emptySchema>
+	<greenSchema>
+		<default>
+			<schemeGroup>greenColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>greenColor</schemeGroup>
+		</color_blind>
+	</greenSchema>
+	<redPurpleSchema>
+		<default>
+			<schemeGroup>redColor</schemeGroup>
+			<transform>
+				<mult>0 0 0 1</mult>
+				<offset>245 8 0 0</offset>
+			</transform>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleColor</schemeGroup>
+			<transform>
+				<mult>0 0 0 1</mult>
+				<offset>131 121 254 0</offset>
+			</transform>
+		</color_blind>
+	</redPurpleSchema>
+	<falloutScorePanelEnemyEar>
+		<default>
+			<alias_color>central_ear_enemy_lead</alias_color>
+		</default>
+		<color_blind>
+			<alias_color>central_ear_enemy_lead_blind</alias_color>
+		</color_blind>
+	</falloutScorePanelEnemyEar>
+	<falloutStatsDialog>
+		<default>
+			<alias_color/>
+		</default>
+		<color_blind>
+			<alias_color>Blind</alias_color>
+		</color_blind>
+	</falloutStatsDialog>
+	<falloutSelfGold>
+		<default>
+			<rgba>255 195 99 255</rgba>
+		</default>
+		<color_blind>
+			<rgba>252 252 23 255</rgba>
+		</color_blind>
+	</falloutSelfGold>
+	<falloutLoadingIcon>
+		<default>
+			<alias_color>self</alias_color>
+		</default>
+		<color_blind>
+			<alias_color>selfBlind</alias_color>
+		</color_blind>
+	</falloutLoadingIcon>
+	<falloutScorePanelEnemyEarShadow>
+		<default>
+			<rgba>255 0 0 255</rgba>
+		</default>
+		<color_blind>
+			<rgba>131 121 254 255</rgba>
+		</color_blind>
+	</falloutScorePanelEnemyEarShadow>
+	<scorePanelHealthBar>
+		<default>
+			<alias_color>red</alias_color>
+		</default>
+		<color_blind>
+			<alias_color>purple</alias_color>
+		</color_blind>
+	</scorePanelHealthBar>
+	<blueSchema>
+		<default>
+			<schemeGroup>blueColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>blueColor</schemeGroup>
+		</color_blind>
+	</blueSchema>
+	<allySchema>
+		<default>
+			<adjust/>
+		</default>
+		<color_blind>
+			<adjust/>
+		</color_blind>
+	</allySchema>
+	<enemySchema>
+		<default>
+			<adjust/>
+		</default>
+		<color_blind>
+			<adjust/>
+		</color_blind>
+	</enemySchema>
+	<vm_ally_schema>
+		<schemeGroup>greenColor</schemeGroup>
+		<transform>
+			<mult>
+				0.76 1 0.2 1
+				<!--BW_String-->
+			</mult>
+			<offset>0 25 0 0</offset>
+		</transform>
+	</vm_ally_schema>
+	<vm_text_ally_name_lit_schema>
+		<default>
+			<schemeGroup>greenTextLitVehicleNameColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>greenTextLitVehicleNameColor</schemeGroup>
+		</color_blind>
+	</vm_text_ally_name_lit_schema>
+	<vm_text_ally_name_schema>
+		<default>
+			<schemeGroup>greenTextVehicleNameColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>greenTextVehicleNameColor</schemeGroup>
+		</color_blind>
+	</vm_text_ally_name_schema>
+	<vm_dead_ally_schema>
+		<alias_color>green</alias_color>
+		<rgba>52 118 12 255</rgba>
+		<transform>
+			<mult>
+				0 0.1 0 0.8
+				<!--BW_String-->
+			</mult>
+			<offset>0 20 0 0</offset>
+		</transform>
+	</vm_dead_ally_schema>
+	<vm_stun_ally_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_ally_schema>
+	<vm_stun_squadman_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_squadman_schema>
+	<vm_stun_enemy_schema>
+		<default>
+			<alias_color>red</alias_color>
+			<rgba>255 221 156 255</rgba>
+		</default>
+		<color_blind>
+			<alias_color>purple</alias_color>
+			<rgba>153 153 255 255</rgba>
+		</color_blind>
+	</vm_stun_enemy_schema>
+	<yellow_tank_color>
+		<alias_color>green</alias_color>
+		<rgba>52 118 12 255</rgba>
+		<transform>
+			<mult>
+				1 0.87 0.51 1
+				<!--BW_String-->
+			</mult>
+			<offset>21 9 0 0</offset>
+		</transform>
+	</yellow_tank_color>
+	<messenger_bar_pre_battle_btn_text_color>
+		<alias_color>green</alias_color>
+		<rgba>52 118 12 255</rgba>
+		<transform>
+			<mult>
+				1 0.87 0.51 1
+				<!--BW_String-->
+			</mult>
+			<offset>21 9 0 0</offset>
+		</transform>
+	</messenger_bar_pre_battle_btn_text_color>
+	<textColorGold>
+		<default>
+			<rgba>255 195 99 255</rgba>
+		</default>
+		<color_blind>
+			<rgba>255 195 99 255</rgba>
+		</color_blind>
+	</textColorGold>
+	<textColorCredits>
+		<default>
+			<rgba>206 217 217 255</rgba>
+		</default>
+		<color_blind>
+			<rgba>206 217 217 255</rgba>
+		</color_blind>
+	</textColorCredits>
+	<textColorXp>
+		<default>
+			<rgba>201 201 182 255</rgba>
+		</default>
+		<color_blind>
+			<rgba>201 201 182 255</rgba>
+		</color_blind>
+	</textColorXp>
+	<textColorFalloutName>
+		<default>
+			<rgba>201 201 182 255</rgba>
+		</default>
+		<color_blind>
+			<rgba>201 201 182 255</rgba>
+		</color_blind>
+	</textColorFalloutName>
+	<textColorFalloutRegular>
+		<default>
+			<rgba>233 226 191 255</rgba>
+		</default>
+		<color_blind>
+			<rgba>233 226 191 255</rgba>
+		</color_blind>
+	</textColorFalloutRegular>
+	<textColorFalloutRegularDeaths>
+		<default>
+			<rgba>89 89 80 255</rgba>
+		</default>
+		<color_blind>
+			<rgba>89 89 80 255</rgba>
+		</color_blind>
+	</textColorFalloutRegularDeaths>
+	<textColorFalloutHighlightedDeaths>
+		<default>
+			<rgba>255 39 23 255</rgba>
+		</default>
+		<color_blind>
+			<rgba>255 39 23 255</rgba>
+		</color_blind>
+	</textColorFalloutHighlightedDeaths>
+	<textColorResourcesReady>
+		<default>
+			<rgba>227 255 255 255</rgba>
+		</default>
+		<color_blind>
+			<rgba>227 255 255 255</rgba>
+		</color_blind>
+	</textColorResourcesReady>
+	<textColorResourcesCooldown>
+		<default>
+			<rgba>227 255 255 255</rgba>
+		</default>
+		<color_blind>
+			<rgba>227 255 255 255</rgba>
+		</color_blind>
+	</textColorResourcesCooldown>
+	<textColorResourcesEnemyMining>
+		<default>
+			<rgba>255 0 0 255</rgba>
+		</default>
+		<color_blind>
+			<rgba>125 133 255 255</rgba>
+		</color_blind>
+	</textColorResourcesEnemyMining>
+	<textColorResourcesOwnMining>
+		<default>
+			<rgba>128 255 0 255</rgba>
+		</default>
+		<color_blind>
+			<rgba>128 255 0 255</rgba>
+		</color_blind>
+	</textColorResourcesOwnMining>
+	<textColorResources>
+		<default>
+			<rgba>162 155 112 255</rgba>
+		</default>
+		<color_blind>
+			<rgba>162 155 112 255</rgba>
+		</color_blind>
+	</textColorResources>
+	<textColorError>
+		<default>
+			<rgba>183 0 0 255</rgba>
+		</default>
+		<color_blind>
+			<rgba>183 0 0 255</rgba>
+		</color_blind>
+	</textColorError>
+	<selected>
+		<default>
+			<schemeGroup>darkYellowColor</schemeGroup>
+			<transform>
+				<mult>
+					1.0 0.8 0.3 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+		<color_blind>
+			<schemeGroup>yellowColor</schemeGroup>
+			<transform>
+				<mult>
+					1.0 1.0 0.3 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</color_blind>
+	</selected>
+	<selected_offline>
+		<default>
+			<schemeGroup>brownColor</schemeGroup>
+			<transform>
+				<mult>
+					1.0 0.8 0.3 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+		<color_blind>
+			<schemeGroup>oliveTransform</schemeGroup>
+			<transform>
+				<mult>
+					1.0 1.0 0.3 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</color_blind>
+	</selected_offline>
+	<selected_dead>
+		<schemeGroup>selectedOrSquadDeadSchema</schemeGroup>
+	</selected_dead>
+	<selected_dead_offline>
+		<schemeGroup>selectedOrSquadDeadOfflineSchema</schemeGroup>
+	</selected_dead_offline>
+	<normal>
+		<schemeGroup>textColorBattlePlayerName</schemeGroup>
+		<transform>
+			<mult>1 1 1 1</mult>
+			<offset>0 0 0 0</offset>
+		</transform>
+	</normal>
+	<normal_white>
+		<schemeGroup>whiteColor</schemeGroup>
+		<transform>
+			<mult>1 1 1 1</mult>
+			<offset>0 0 0 0</offset>
+		</transform>
+	</normal_white>
+	<normal_offline>
+		<schemeGroup>grayColor</schemeGroup>
+		<transform>
+			<mult>1 1 1 1</mult>
+			<offset>0 0 0 0</offset>
+		</transform>
+	</normal_offline>
+	<normal_dead>
+		<schemeGroup>grayColor</schemeGroup>
+		<transform>
+			<mult>
+				0.8 0.8 0.8 0.5
+				<!--BW_String-->
+			</mult>
+			<offset>0 0 0 0</offset>
+		</transform>
+	</normal_dead>
+	<normal_dead_offline>
+		<schemeGroup>grayColor</schemeGroup>
+		<transform>
+			<mult>
+				0.8 0.8 0.8 0.5
+				<!--BW_String-->
+			</mult>
+			<offset>0 0 0 0</offset>
+		</transform>
+	</normal_dead_offline>
+	<squad>
+		<default>
+			<schemeGroup>darkYellowColor</schemeGroup>
+			<transform>
+				<mult>
+					1.0 0.8 0.3 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+		<color_blind>
+			<schemeGroup>yellowColor</schemeGroup>
+			<transform>
+				<mult>
+					1.0 1.0 0.3 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</color_blind>
+	</squad>
+	<squad_offline>
+		<default>
+			<schemeGroup>brownColor</schemeGroup>
+			<transform>
+				<mult>
+					1.0 0.8 0.3 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+		<color_blind>
+			<schemeGroup>oliveTransform</schemeGroup>
+			<transform>
+				<mult>
+					1.0 1.0 0.3 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</color_blind>
+	</squad_offline>
+	<squad_dead>
+		<schemeGroup>selectedOrSquadDeadSchema</schemeGroup>
+	</squad_dead>
+	<squad_dead_offline>
+		<schemeGroup>selectedOrSquadDeadOfflineSchema</schemeGroup>
+	</squad_dead_offline>
+	<teamkiller>
+		<default>
+			<schemeGroup>blueColor</schemeGroup>
+			<transform>
+				<mult>0 1 1 1</mult>
+				<offset>0 13 42 0</offset>
+			</transform>
+		</default>
+		<color_blind>
+			<schemeGroup>blueColor</schemeGroup>
+			<transform>
+				<mult>0 1 1 1</mult>
+				<offset>0 13 42 0</offset>
+			</transform>
+		</color_blind>
+	</teamkiller>
+	<teamkiller_offline>
+		<default>
+			<schemeGroup>darkBlueColor</schemeGroup>
+			<transform>
+				<mult>0 1 1 1</mult>
+				<offset>0 13 42 0</offset>
+			</transform>
+		</default>
+		<color_blind>
+			<schemeGroup>darkBlueColor</schemeGroup>
+			<transform>
+				<mult>0 1 1 1</mult>
+				<offset>0 13 42 0</offset>
+			</transform>
+		</color_blind>
+	</teamkiller_offline>
+	<teamkiller_dead>
+		<default>
+			<schemeGroup>teamKillerDeadTransform</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>teamKillerDeadTransform</schemeGroup>
+		</color_blind>
+	</teamkiller_dead>
+	<teamkiller_dead_offline>
+		<default>
+			<schemeGroup>teamKillerDeadOfflineTransform</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>teamKillerDeadOfflineTransform</schemeGroup>
+		</color_blind>
+	</teamkiller_dead_offline>
+	<br_squad_dead>
+		<default>
+			<alias_color>br_red</alias_color>
+			<rgba>112 0 3 178</rgba>
+			<transform>
+				<mult>
+					0.43 0 0.1 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</br_squad_dead>
+	<VIP>
+		<default>
+			<schemeGroup>yellowColor</schemeGroup>
+			<transform>
+				<mult>
+					1.0 1.0 0.3 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+		<color_blind>
+			<schemeGroup>yellowColor</schemeGroup>
+			<transform>
+				<mult>
+					1.0 1.0 0.3 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</color_blind>
+	</VIP>
+	<VIP_dead>
+		<default>
+			<schemeGroup>oliveTransform</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>oliveTransform</schemeGroup>
+		</color_blind>
+	</VIP_dead>
+	<vm_ally>
+		<schemeGroup>allySchema</schemeGroup>
+		<default>
+			<schemeGroup>vm_ally_schema</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>vm_ally_schema</schemeGroup>
+		</color_blind>
+	</vm_ally>
+	<vm_dead_ally>
+		<schemeGroup>allySchema</schemeGroup>
+		<default>
+			<schemeGroup>vm_dead_ally_schema</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>vm_dead_ally_schema</schemeGroup>
+		</color_blind>
+	</vm_dead_ally>
+	<vm_dead_ally_name>
+		<default>
+			<schemeGroup>vm_dead_ally_schema</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>vm_dead_ally_schema</schemeGroup>
+		</color_blind>
+	</vm_dead_ally_name>
+	<vm_squadman>
+		<default>
+			<alias_color>gold</alias_color>
+			<rgba>255 185 100 255</rgba>
+			<transform>
+				<mult>
+					1 0.86 0.42 1
+					<!--BW_String-->
+				</mult>
+				<offset>64 29 0 0</offset>
+			</transform>
+		</default>
+		<color_blind>
+			<schemeGroup>yellowColor</schemeGroup>
+			<transform>
+				<mult>1 1 0 1</mult>
+				<offset>80 71 0 0</offset>
+			</transform>
+		</color_blind>
+	</vm_squadman>
+	<vm_text_squadman_name_lit_schema>
+		<default>
+			<schemeGroup>yellowTextLitVehicleNameColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>darkYellowTextLitVehicleNameColor</schemeGroup>
+		</color_blind>
+	</vm_text_squadman_name_lit_schema>
+	<vm_text_squadman_name_schema>
+		<default>
+			<schemeGroup>yellowTextVehicleNameColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>darkYellowTextVehicleNameColor</schemeGroup>
+		</color_blind>
+	</vm_text_squadman_name_schema>
+	<vm_dead_squadman>
+		<default>
+			<alias_color>gold</alias_color>
+			<rgba>134 79 12 255</rgba>
+			<transform>
+				<mult>
+					1 0.86 0.42 1
+					<!--BW_String-->
+				</mult>
+				<offset>64 29 0 0</offset>
+			</transform>
+		</default>
+		<color_blind>
+			<alias_color>yellow</alias_color>
+			<rgba>144 133 10 255</rgba>
+			<transform>
+				<mult>
+					1 0.91 0 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</color_blind>
+	</vm_dead_squadman>
+	<vm_dead_squadman_name>
+		<default>
+			<alias_color>gold</alias_color>
+			<rgba>134 79 12 255</rgba>
+			<transform>
+				<mult>
+					1 0.86 0.42 1
+					<!--BW_String-->
+				</mult>
+				<offset>64 29 0 0</offset>
+			</transform>
+		</default>
+		<color_blind>
+			<alias_color>yellow</alias_color>
+			<rgba>144 133 10 255</rgba>
+			<transform>
+				<mult>
+					1 0.91 0 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</color_blind>
+	</vm_dead_squadman_name>
+	<vm_team1>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>
+					0.85 0.51 0 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_team1>
+	<vm_dead_team1>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 39 23 255</rgba>
+			<transform>
+				<mult>
+					0.28 0.17 0 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_dead_team1>
+	<vm_stun_team1_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_team1_schema>
+	<vm_team2>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>
+					0.53 0.18 0.41 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_team2>
+	<vm_dead_team2>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 39 23 255</rgba>
+			<transform>
+				<mult>
+					0.18 0.06 0.14 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_dead_team2>
+	<vm_stun_team2_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_team2_schema>
+	<vm_team3>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>
+					0.16 0.74 0.39 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_team3>
+	<vm_dead_team3>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 39 23 255</rgba>
+			<transform>
+				<mult>
+					0.05 0.25 0.13 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_dead_team3>
+	<vm_stun_team3_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_team3_schema>
+	<vm_team4>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>
+					0.83 0.43 0.38 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_team4>
+	<vm_dead_team4>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 39 23 255</rgba>
+			<transform>
+				<mult>
+					0.28 0.14 0.13 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_dead_team4>
+	<vm_stun_team4_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_team4_schema>
+	<vm_team5>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>
+					0.64	0.11 0 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_team5>
+	<vm_dead_team5>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 39 23 255</rgba>
+			<transform>
+				<mult>
+					0.21	0.04 0 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_dead_team5>
+	<vm_stun_team5_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_team5_schema>
+	<vm_team6>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>
+					0.58 0.74 0.16 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_team6>
+	<vm_dead_team6>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 39 23 255</rgba>
+			<transform>
+				<mult>
+					0.19 0.25 0.05 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_dead_team6>
+	<vm_stun_team6_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_team6_schema>
+	<vm_team7>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>
+					0 0.72 0.78 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_team7>
+	<vm_dead_team7>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 39 23 255</rgba>
+			<transform>
+				<mult>
+					0 0.24 0.26 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_dead_team7>
+	<vm_stun_team7_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_team7_schema>
+	<vm_team8>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>
+					0.8 0.69 0 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_team8>
+	<vm_dead_team8>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 39 23 255</rgba>
+			<transform>
+				<mult>
+					0.27 0.23 0 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_dead_team8>
+	<vm_stun_team8_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_team8_schema>
+	<vm_team9>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>
+					0.1 0.46 0.75 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_team9>
+	<vm_dead_team9>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 39 23 255</rgba>
+			<transform>
+				<mult>
+					0.03 0.15 0.25 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_dead_team9>
+	<vm_stun_team9_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_team9_schema>
+	<vm_team10>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>
+					0.75 0.28 0 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_team10>
+	<vm_dead_team10>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 39 23 255</rgba>
+			<transform>
+				<mult>
+					0.25	0.09 0 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_dead_team10>
+	<vm_stun_team10_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_team10_schema>
+	<vm_team11>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>
+					0.4 0.17 0.78 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_team11>
+	<vm_dead_team11>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 39 23 255</rgba>
+			<transform>
+				<mult>
+					0.13 0.06 0.26 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_dead_team11>
+	<vm_stun_team11_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_team11_schema>
+	<vm_team12>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>
+					0.87 0.09 0 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_team12>
+	<vm_dead_team12>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 39 23 255</rgba>
+			<transform>
+				<mult>
+					0.29 0.03 0 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_dead_team12>
+	<vm_stun_team12_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_team12_schema>
+	<vm_team13>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>
+					0.52 0.21 0.11 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_team13>
+	<vm_dead_team13>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 39 23 255</rgba>
+			<transform>
+				<mult>
+					0.17 0.07 0.04 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_dead_team13>
+	<vm_stun_team13_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_team13_schema>
+	<vm_team14>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>
+					0.31 0.09 0.78 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_team14>
+	<vm_dead_team14>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 39 23 255</rgba>
+			<transform>
+				<mult>
+					0.1 0.03 0.26 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_dead_team14>
+	<vm_stun_team14_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_team14_schema>
+	<vm_team15>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>
+					0.86 0.22 0.64 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_team15>
+	<vm_dead_team15>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 39 23 255</rgba>
+			<transform>
+				<mult>
+					0.29 0.07 0.21 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_dead_team15>
+	<vm_stun_team15_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_team15_schema>
+	<vm_team16>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>
+					0.92 0.42 0.2 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_team16>
+	<vm_dead_team16>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 39 23 255</rgba>
+			<transform>
+				<mult>
+					0.31 0.14 0.07 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_dead_team16>
+	<vm_stun_team16_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_team16_schema>
+	<vm_team17>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>
+					0.57 0.4 0.85 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_team17>
+	<vm_dead_team17>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 39 23 255</rgba>
+			<transform>
+				<mult>
+					0.19 0.13 0.28 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_dead_team17>
+	<vm_stun_team17_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_team17_schema>
+	<vm_team18>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>
+					0 0.79 0.08 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_team18>
+	<vm_dead_team18>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 39 23 255</rgba>
+			<transform>
+				<mult>
+					0 0.26 0.03 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_dead_team18>
+	<vm_stun_team18_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_team18_schema>
+	<vm_team19>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>
+					0.92 0.64 0.1 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_team19>
+	<vm_dead_team19>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 39 23 255</rgba>
+			<transform>
+				<mult>
+					0.31 0.21 0.03 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_dead_team19>
+	<vm_stun_team19_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_team19_schema>
+	<vm_team20>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 255 255 255</rgba>
+			<transform>
+				<mult>
+					0.1 0.2 0.75 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_team20>
+	<vm_dead_team20>
+		<default>
+			<alias_color>white</alias_color>
+			<rgba>255 39 23 255</rgba>
+			<transform>
+				<mult>
+					0.03 0.07 0.25 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 0 0</offset>
+			</transform>
+		</default>
+	</vm_dead_team20>
+	<vm_stun_team20_schema>
+		<alias_color>green</alias_color>
+		<rgba>221 255 153 255</rgba>
+	</vm_stun_team20_schema>
+	<vm_teamKiller>
+		<schemeGroup>blueColor</schemeGroup>
+		<transform>
+			<mult>0 1 1 1</mult>
+			<offset>0 39 100 0</offset>
+		</transform>
+	</vm_teamKiller>
+	<vm_text_teamKiller_name_lit_schema>
+		<default>
+			<schemeGroup>blueTextLitVehicleNameColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>blueTextLitVehicleNameColor</schemeGroup>
+		</color_blind>
+	</vm_text_teamKiller_name_lit_schema>
+	<vm_text_teamKiller_name_schema>
+		<default>
+			<schemeGroup>blueTextLitVehicleNameColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>blueTextLitVehicleNameColor</schemeGroup>
+		</color_blind>
+	</vm_text_teamKiller_name_schema>
+	<vm_dead_teamKiller>
+		<alias_color>blue</alias_color>
+		<rgba>0 126 172 255</rgba>
+		<transform>
+			<mult>
+				0 0.63 0.54 1
+				<!--BW_String-->
+			</mult>
+			<offset>0 10 73 0</offset>
+		</transform>
+	</vm_dead_teamKiller>
+	<vm_dead_teamKiller_name>
+		<alias_color>blue</alias_color>
+		<rgba>0 126 172 255</rgba>
+		<transform>
+			<mult>
+				0 0.63 0.54 1
+				<!--BW_String-->
+			</mult>
+			<offset>0 10 73 0</offset>
+		</transform>
+	</vm_dead_teamKiller_name>
+	<vm_enemy>
+		<schemeGroup>enemySchema</schemeGroup>
+		<default>
+			<schemeGroup>redColor</schemeGroup>
+			<transform>
+				<mult>
+					1 .14 0 1
+					<!--BW_String-->
+				</mult>
+				<offset>25 0 0 0</offset>
+			</transform>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleColor</schemeGroup>
+			<transform>
+				<mult>
+					0.75 0.85 1 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 100 0</offset>
+			</transform>
+		</color_blind>
+	</vm_enemy>
+	<vm_text_enemy_name_lit_schema>
+		<default>
+			<schemeGroup>redTextLitVehicleNameColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleTextLitVehicleNameColor</schemeGroup>
+		</color_blind>
+	</vm_text_enemy_name_lit_schema>
+	<vm_text_enemy_name_schema>
+		<default>
+			<schemeGroup>redTextLitVehicleNameColor</schemeGroup>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleTextLitVehicleNameColor</schemeGroup>
+		</color_blind>
+	</vm_text_enemy_name_schema>
+	<vm_enemy_name>
+		<default>
+			<alias_color>red</alias_color>
+		</default>
+		<color_blind>
+			<alias_color>purple</alias_color>
+		</color_blind>
+	</vm_enemy_name>
+	<vm_dead_enemy>
+		<schemeGroup>enemySchema</schemeGroup>
+		<default>
+			<alias_color>red</alias_color>
+			<rgba>121 3 0 255</rgba>
+			<transform>
+				<mult>
+					0.1 0 0 0.8
+					<!--BW_String-->
+				</mult>
+				<offset>20 0 0 0</offset>
+			</transform>
+		</default>
+		<color_blind>
+			<alias_color>purple</alias_color>
+			<rgba>67 61 134 255</rgba>
+			<transform>
+				<mult>
+					0.5 0.45 1 1
+					<!--BW_String-->
+				</mult>
+				<offset>0 0 45 0</offset>
+			</transform>
+		</color_blind>
+	</vm_dead_enemy>
+	<vm_dead_enemy_name>
+		<default>
+			<alias_color>red</alias_color>
+			<rgba>121 3 0 255</rgba>
+		</default>
+		<color_blind>
+			<alias_color>purple</alias_color>
+			<rgba>67 61 134 255</rgba>
+		</color_blind>
+	</vm_dead_enemy_name>
+	<vm_enemyCapture>
+		<default>
+			<alias_color>enemyCapture</alias_color>
+		</default>
+		<color_blind>
+			<alias_color>enemyCaptureBlind</alias_color>
+		</color_blind>
+	</vm_enemyCapture>
+	<aim_target_ally>
+		<default>
+			<alias_color>green</alias_color>
+			<rgba>82 175 37 255</rgba>
+			<transform/>
+		</default>
+	</aim_target_ally>
+	<aim_target_enemy>
+		<default>
+			<alias_color>red</alias_color>
+			<rgba>204 0 0 255</rgba>
+			<transform/>
+		</default>
+		<color_blind>
+			<alias_color>purple</alias_color>
+			<rgba>69 94 228 255</rgba>
+			<transform/>
+		</color_blind>
+	</aim_target_enemy>
+	<FragCorrelationDraw>
+		<default>
+			<alias_color>gold</alias_color>
+			<rgba>170 106 0 255</rgba>
+		</default>
+		<color_blind>
+			<alias_color>yellow</alias_color>
+			<rgba>98 98 9 255</rgba>
+		</color_blind>
+	</FragCorrelationDraw>
+	<ribbonGreenText>
+		<default>
+			<rgba>248 252 218 0</rgba>
+		</default>
+	</ribbonGreenText>
+	<ribbonGreenShadow>
+		<default>
+			<rgba>65 115 0 0</rgba>
+		</default>
+	</ribbonGreenShadow>
+	<ribbonGreyText>
+		<default>
+			<rgba>255 255 255 0</rgba>
+		</default>
+	</ribbonGreyText>
+	<ribbonGreyShadow>
+		<default>
+			<rgba>0 0 0 0</rgba>
+		</default>
+	</ribbonGreyShadow>
+	<ribbonOrangeShadow>
+		<default>
+			<rgba>192 95 0 0</rgba>
+		</default>
+	</ribbonOrangeShadow>
+	<ribbonYellowShadow>
+		<default>
+			<rgba>165 136 0 0</rgba>
+		</default>
+	</ribbonYellowShadow>
+	<ribbonRedShadow>
+		<default>
+			<rgba>186 0 0 0</rgba>
+		</default>
+	</ribbonRedShadow>
+	<ribbonPurpleShadow>
+		<default>
+			<rgba>12 0 186 0</rgba>
+		</default>
+	</ribbonPurpleShadow>
+	<FragCorrelationWin>
+		<schemeGroup>greenSchema allySchema</schemeGroup>
+	</FragCorrelationWin>
+	<FragCorrelationLoose>
+		<schemeGroup>redPurpleSchema enemySchema</schemeGroup>
+	</FragCorrelationLoose>
+	<timerNormal>
+		<schemeGroup>whiteColor</schemeGroup>
+	</timerNormal>
+	<timerRed>
+		<schemeGroup>redPurpleSchema</schemeGroup>
+	</timerRed>
+	<capture_bar_green>
+		<schemeGroup>greenColor</schemeGroup>
+	</capture_bar_green>
+	<capture_bar_red>
+		<schemeGroup>redPurpleSchema</schemeGroup>
+	</capture_bar_red>
+	<flag_team_green>
+		<schemeGroup>allySchema</schemeGroup>
+		<default>
+			<alias_color>green</alias_color>
+			<rgba>97 191 34 255</rgba>
+		</default>
+		<color_blind>
+			<alias_color>green</alias_color>
+			<rgba>97 191 34 255</rgba>
+		</color_blind>
+	</flag_team_green>
+	<flag_team_red>
+		<schemeGroup>enemySchema</schemeGroup>
+		<default>
+			<alias_color>red</alias_color>
+			<rgba>200 20 0 255</rgba>
+		</default>
+		<color_blind>
+			<schemeGroup>purpleColor</schemeGroup>
+		</color_blind>
+	</flag_team_red>
+	<team_commander>
+		<schemeGroup>whiteColor</schemeGroup>
+	</team_commander>
+	<team_user>
+		<alias_color>gray</alias_color>
+		<rgba>154 151 142 255</rgba>
+	</team_user>
+	<team_self>
+		<schemeGroup>darkYellowColor</schemeGroup>
+	</team_self>
+	<inactivePointScheme>
+		<default>
+			<alias_color>inactive</alias_color>
+		</default>
+		<color_blind>
+			<alias_color>inactive</alias_color>
+		</color_blind>
+	</inactivePointScheme>
+	<enemyPointScheme>
+		<default>
+			<alias_color>enemy</alias_color>
+		</default>
+		<color_blind>
+			<alias_color>enemyBlind</alias_color>
+		</color_blind>
+	</enemyPointScheme>
+	<allyPointScheme>
+		<default>
+			<alias_color>ally</alias_color>
+		</default>
+		<color_blind>
+			<alias_color>ally</alias_color>
+		</color_blind>
+	</allyPointScheme>
+	<allyFreezePointScheme>
+		<default>
+			<alias_color>ownFreeze</alias_color>
+		</default>
+		<color_blind>
+			<alias_color>ownFreezeBlind</alias_color>
+		</color_blind>
+	</allyFreezePointScheme>
+	<enemyFreezePointScheme>
+		<default>
+			<alias_color>enemyFreeze</alias_color>
+		</default>
+		<color_blind>
+			<alias_color>enemyFreezeBlind</alias_color>
+		</color_blind>
+	</enemyFreezePointScheme>
+	<conflictPointScheme>
+		<default>
+			<alias_color>conflict</alias_color>
+		</default>
+		<color_blind>
+			<alias_color>conflictBlind</alias_color>
+		</color_blind>
+	</conflictPointScheme>
+	<readyPointScheme>
+		<default>
+			<alias_color>ready</alias_color>
+		</default>
+		<color_blind>
+			<alias_color>ready</alias_color>
+		</color_blind>
+	</readyPointScheme>
+	<teamPointbasered>
+		<schemeGroup>redPurpleSchema enemySchema</schemeGroup>
+	</teamPointbasered>
+	<teamPointbaseblue>
+		<schemeGroup>blueSchema allySchema</schemeGroup>
+	</teamPointbaseblue>
+	<teamPointspawnred>
+		<schemeGroup>redPurpleSchema</schemeGroup>
+	</teamPointspawnred>
+	<teamPointspawnblue>
+		<schemeGroup>blueSchema allySchema</schemeGroup>
+	</teamPointspawnblue>
+	<teamPointcontrolempty>
+		<schemeGroup>emptySchema</schemeGroup>
+	</teamPointcontrolempty>
+	<backMarkertutorialTargetblue>
+		<schemeGroup>blueSchema</schemeGroup>
+	</backMarkertutorialTargetblue>
+	<backMarkertutorialTargetred>
+		<schemeGroup>redPurpleSchema</schemeGroup>
+	</backMarkertutorialTargetred>
+	<seasonColorSummer>
+		<default>
+			<rgba>192 255 128 0</rgba>
+		</default>
+	</seasonColorSummer>
+	<seasonColorWinter>
+		<default>
+			<rgba>128 192 255 0</rgba>
+		</default>
+	</seasonColorWinter>
+	<seasonColorDesert>
+		<default>
+			<rgba>255 170 76 0</rgba>
+		</default>
+	</seasonColorDesert>
+	<seasonColorEvent>
+		<default>
+			<rgba>192 128 255 0</rgba>
+		</default>
+	</seasonColorEvent>
+	<areaBorder>
+		<default>
+			<rgba>204 0 0 0</rgba>
+		</default>
+		<color_blind>
+			<rgba>131 121 254 255</rgba>
+		</color_blind>
+	</areaBorder>
+</root>
