@@ -2657,6 +2657,8 @@ package
       
       public static const MAPS_ICONS_BLUEPRINTS_FRAGMENT_S600X450_GERMANY:String = "../maps/icons/blueprints/fragment/s600x450/germany.png";
       
+      public static const MAPS_ICONS_BLUEPRINTS_FRAGMENT_S600X450_INTELLIGENCE:String = "../maps/icons/blueprints/fragment/s600x450/intelligence.png";
+      
       public static const MAPS_ICONS_BLUEPRINTS_FRAGMENT_S600X450_ITALY:String = "../maps/icons/blueprints/fragment/s600x450/italy.png";
       
       public static const MAPS_ICONS_BLUEPRINTS_FRAGMENT_S600X450_JAPAN:String = "../maps/icons/blueprints/fragment/s600x450/japan.png";
@@ -6933,25 +6935,37 @@ package
       
       public static const MAPS_ICONS_EPICBATTLES_REWARDPOINTS_80X80:String = "../maps/icons/epicBattles/rewardPoints/80x80.png";
       
-      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_BG_BIG_THIN:String = "../maps/icons/event/craftMachine/entryPoint/bg_big_thin.png";
+      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_BIG:String = "../maps/icons/event/craftMachine/entryPoint/big.png";
       
-      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_BG_BIG_WIDE:String = "../maps/icons/event/craftMachine/entryPoint/bg_big_wide.png";
+      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_BIG_HIGHLIGHT:String = "../maps/icons/event/craftMachine/entryPoint/big_highlight.png";
       
-      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_BG_SMALL_THIN:String = "../maps/icons/event/craftMachine/entryPoint/bg_small_thin.png";
+      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_BIG_HOVER:String = "../maps/icons/event/craftMachine/entryPoint/big_hover.png";
       
-      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_BG_SMALL_WIDE:String = "../maps/icons/event/craftMachine/entryPoint/bg_small_wide.png";
+      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_BIG_STROKE:String = "../maps/icons/event/craftMachine/entryPoint/big_stroke.png";
       
-      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_LOGO_BIG:String = "../maps/icons/event/craftMachine/entryPoint/logo_big.png";
+      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_THINEXTRASMALL:String = "../maps/icons/event/craftMachine/entryPoint/thinExtraSmall.png";
       
-      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_LOGO_SMALL:String = "../maps/icons/event/craftMachine/entryPoint/logo_small.png";
+      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_THINEXTRASMALL_HIGHLIGHT:String = "../maps/icons/event/craftMachine/entryPoint/thinExtraSmall_highlight.png";
       
-      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_SHADOW_THINBIG:String = "../maps/icons/event/craftMachine/entryPoint/shadow_thinBig.png";
+      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_THINEXTRASMALL_HOVER:String = "../maps/icons/event/craftMachine/entryPoint/thinExtraSmall_hover.png";
       
-      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_SHADOW_THINSMALL:String = "../maps/icons/event/craftMachine/entryPoint/shadow_thinSmall.png";
+      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_THINEXTRASMALL_STROKE:String = "../maps/icons/event/craftMachine/entryPoint/thinExtraSmall_stroke.png";
       
-      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_SHADOW_WIDEBIG:String = "../maps/icons/event/craftMachine/entryPoint/shadow_wideBig.png";
+      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_THINSMALL:String = "../maps/icons/event/craftMachine/entryPoint/thinSmall.png";
       
-      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_SHADOW_WIDESMALL:String = "../maps/icons/event/craftMachine/entryPoint/shadow_wideSmall.png";
+      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_THINSMALL_HIGHLIGHT:String = "../maps/icons/event/craftMachine/entryPoint/thinSmall_highlight.png";
+      
+      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_THINSMALL_HOVER:String = "../maps/icons/event/craftMachine/entryPoint/thinSmall_hover.png";
+      
+      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_THINSMALL_STROKE:String = "../maps/icons/event/craftMachine/entryPoint/thinSmall_stroke.png";
+      
+      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_WIDESMALL:String = "../maps/icons/event/craftMachine/entryPoint/wideSmall.png";
+      
+      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_WIDESMALL_HIGHLIGHT:String = "../maps/icons/event/craftMachine/entryPoint/wideSmall_highlight.png";
+      
+      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_WIDESMALL_HOVER:String = "../maps/icons/event/craftMachine/entryPoint/wideSmall_hover.png";
+      
+      public static const MAPS_ICONS_EVENT_CRAFTMACHINE_ENTRYPOINT_WIDESMALL_STROKE:String = "../maps/icons/event/craftMachine/entryPoint/wideSmall_stroke.png";
       
       public static const MAPS_ICONS_FILTERS_DOUBLE_CAROUSEL:String = "../maps/icons/filters/double_carousel.png";
       
@@ -12679,6 +12693,8 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S360X270_STEREOSCOPE:String = "../maps/icons/quests/bonuses/s360x270/stereoscope.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_S360X270_STYLE_3D:String = "../maps/icons/quests/bonuses/s360x270/style_3d.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_S360X270_TURBOCHARGER:String = "../maps/icons/quests/bonuses/s360x270/turbocharger.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S360X270_UNIVERSALBOOK:String = "../maps/icons/quests/bonuses/s360x270/universalBook.png";
@@ -12774,6 +12790,8 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_STEREOSCOPE:String = "../maps/icons/quests/bonuses/s600x450/stereoscope.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_STYLE:String = "../maps/icons/quests/bonuses/s600x450/style.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_STYLE_3D:String = "../maps/icons/quests/bonuses/s600x450/style_3d.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_S600X450_TROPHYBASICAIMDRIVES:String = "../maps/icons/quests/bonuses/s600x450/trophyBasicAimDrives.png";
       

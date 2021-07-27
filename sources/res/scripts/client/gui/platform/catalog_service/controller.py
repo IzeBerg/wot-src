@@ -2,8 +2,9 @@ import json, logging
 from collections import namedtuple
 import BigWorld, adisp
 from gui.macroses import getLanguageCode
+from gui.shared.money import Currency
 from helpers import dependency
-from skeletons.gui.cdn import IPurchaseCache
+from skeletons.gui.platform.catalog_service_controller import IPurchaseCache
 from skeletons.gui.lobby_context import ILobbyContext
 from web.cache.web_downloader import WebDownloader
 _logger = logging.getLogger(__name__)
@@ -11,51 +12,115 @@ _DEFAULT_SYNC_TIMEOUT = 180
 _WORKERS_LIMIT = 2
 TOKEN_ENTITLEMENT_PREFIX = 'token_'
 _TokenDescriptor = namedtuple('_TokenDescriptor', 'imgSmall, imgBig, title, description')
+_DisplayWays = namedtuple('_DisplayWays', 'showNotification, showAwardScreen')
 
 def _getEmptyDescriptor():
     return _PurchaseDescriptor()
 
 
+class _ProductExtraData(object):
+    _MAX_ORDER_INDEX = 10000
+    _SPECIAL_CURRENCIES = {'free_xp': 'freeXP'}
+    _EXTRA_ENTITLEMENTS = ('premium_plus', )
+
+    def __init__(self, entitlements=None, currencies=None):
+        super(_ProductExtraData, self).__init__()
+        self.__items = []
+        if currencies:
+            for currency in currencies:
+                entCode = self.__getField(currency, 'code', '')
+                entOrder = self.__getField(currency, 'order', self._MAX_ORDER_INDEX)
+                if entCode:
+                    if entCode in Currency.ALL:
+                        self.__addItem(entOrder, {entCode: self.__getField(currency, 'amount', 0)})
+                    elif entCode in self._SPECIAL_CURRENCIES:
+                        expectedInGUI = self._SPECIAL_CURRENCIES[entCode]
+                        self.__addItem(entOrder, {expectedInGUI: self.__getField(currency, 'amount', 0)})
+                    else:
+                        _logger.warning('Unsupported currency format: %s', entCode)
+
+        if entitlements:
+            for eItem in entitlements:
+                entCode = self.__getField(eItem, 'code', '')
+                entOrder = self.__getField(eItem, 'order', self._MAX_ORDER_INDEX)
+                if entCode in self._EXTRA_ENTITLEMENTS:
+                    self.__addItem(entOrder, {entCode: self.__getField(eItem, 'amount', 0)})
+
+    def iterItems(self):
+        for i in self.__items:
+            yield i
+
+    def __addItem(self, incomeOrder, incomeItem):
+        incomeOrder = incomeOrder - 1
+        i = 0
+        for sItem in self.__items:
+            if sItem[0] > incomeOrder:
+                break
+            i = i + 1
+
+        self.__items.insert(i, (incomeOrder, incomeItem))
+
+    def __getField(self, target, key, default):
+        value = target.get(key, None)
+        if value is not None:
+            return value
+        else:
+            _logger.warning("Couldn't find field '%s' in %s", key, target)
+            return default
+
+
 class _PurchaseDescriptor(object):
-    __slots__ = ('__entitlements', '__metadataWot', '__isEmpty', '__tokens', '__titleID',
-                 '__iconID', '__productName', '__mainAmount')
+    __slots__ = ('__entitlements', '__metadataWot', '__currencies', '__isEntitlementsInvalid',
+                 '__tokens', '__titleID', '__productExtraData', '__iconID', '__productName',
+                 '__mainAmount', '__displayWays')
 
-    def __init__(self, entitlements=None, metadataWot=None):
+    def __init__(self, entitlements=None, currencies=None, metadataWot=None):
         super(_PurchaseDescriptor, self).__init__()
-        self.__isEmpty = not bool(entitlements) or not bool(metadataWot)
-        self.__entitlements = entitlements
-        self.__metadataWot = metadataWot
-        self.__titleID = ''
-        self.__productName = ''
-        self.__iconID = ''
-        self.__mainAmount = 0
+        self.__isEntitlementsInvalid = not bool(entitlements) or not bool(metadataWot)
+        self.__entitlements = entitlements if entitlements is not None else []
+        self.__metadataWot = metadataWot if metadataWot is not None else {}
+        self.__currencies = currencies
+        self.__titleID = self.__getMetadataValueByName('title', '')
+        self.__productName = self.__getMetadataValueByName('name', '')
+        self.__iconID = self.__getMetadataValueByName('icon', '')
+        self.__mainAmount = self.__getMetadataValueByName('main', 0)
+        self.__productExtraData = _ProductExtraData(entitlements, currencies)
         self.__tokens = {}
+        self.__displayWays = self.__getMetadataDisplayWays()
+        return
 
-    def isEmpty(self):
-        return self.__isEmpty
+    def destroy(self):
+        self.__productExtraData = None
+        self.__entitlements = None
+        self.__currencies = None
+        self.__metadataWot = None
+        self.__displayWays = None
+        self.__tokens = None
+        return
+
+    def getDisplayWays(self):
+        return self.__displayWays
+
+    def getExtraData(self):
+        return self.__productExtraData
 
     def getProductName(self):
-        if not self.isEmpty() and not self.__productName:
-            self.__productName = self.__getMetadataValueByName('name')
         return self.__productName
 
     def getIconID(self):
-        if not self.isEmpty() and not self.__iconID:
-            self.__iconID = self.__getMetadataValueByName('icon')
         return self.__iconID
 
     def getTitleID(self):
-        if not self.isEmpty() and not self.__titleID:
-            self.__titleID = self.__getMetadataValueByName('title')
         return self.__titleID
 
     def getMainAmount(self):
-        if not self.isEmpty() and not self.__mainAmount:
-            self.__mainAmount = self.__getMetadataValueByName('main', 0)
         return self.__mainAmount
 
+    def getEntitlements(self):
+        return self.__entitlements
+
     def getTokenData(self, tID):
-        if not self.isEmpty():
+        if not self.__isEntitlementsInvalid:
             if tID not in self.__tokens:
                 imgSmall = ''
                 imgBig = ''
@@ -69,8 +134,8 @@ class _PurchaseDescriptor(object):
                             metadataPrefix = ('entitlements_{}').format(dataIndex)
                             title = self.__getMetadataValueByName(('{}_title').format(metadataPrefix))
                             description = self.__getMetadataValueByName(('{}_description').format(metadataPrefix))
-                            imgBig = self.__extractValue(self.__metadataWot.get(('{}_icon_url_big').format(metadataPrefix), {}).get('data', {}).get('url', {}))
-                            imgSmall = self.__extractValue(self.__metadataWot.get(('{}_icon_url_small').format(metadataPrefix), {}).get('data', {}).get('url', {}))
+                            imgBig = self.__extractValue(self.__metadataWot.get(('{}_image_large').format(metadataPrefix), {}).get('data', {}).get('url', {}))
+                            imgSmall = self.__extractValue(self.__metadataWot.get(('{}_icon_url_big').format(metadataPrefix), {}).get('data', {}).get('url', {}))
 
                 self.__tokens[tID] = _TokenDescriptor(imgSmall, imgBig, title, description)
             return self.__tokens[tID]
@@ -80,10 +145,15 @@ class _PurchaseDescriptor(object):
         return self.__getDataValueByName(name, self.__metadataWot, default)
 
     def __getDataValueByName(self, name, targetSection, default=None):
+        if not targetSection:
+            _logger.warning('Provided section for obtaining %s is empty!', name)
+            return default
         value = default
         if name in targetSection:
             dataSection = targetSection.get(name, {}).get('data', {})
-            if isinstance(dataSection, dict):
+            if not dataSection:
+                _logger.warning('"%s" has no "data" attribute inside!', name)
+            elif isinstance(dataSection, dict):
                 value = self.__extractValue(dataSection)
             else:
                 value = dataSection
@@ -96,6 +166,10 @@ class _PurchaseDescriptor(object):
         if not value:
             value = section.get('value')
         return value
+
+    def __getMetadataDisplayWays(self):
+        params = self.__metadataWot.get('params', {})
+        return _DisplayWays(params.get('show_nc', False), params.get('show_award', False))
 
 
 class _PurchasePackage(object):
@@ -130,6 +204,8 @@ class _PurchasePackage(object):
         self.__clearDownloader()
         self.__clearTimeoutBwCbId()
         self.__pendingCallbacks = None
+        if self.__descriptor:
+            self.__descriptor.destroy()
         return
 
     def _initDescriptor(self, dataDict):
@@ -139,7 +215,7 @@ class _PurchasePackage(object):
         entitlements = dataDict.get('entitlements')
         if not entitlements:
             _logger.error('Could not find "entitlements" section in the obtained product descriptor!')
-        return _PurchaseDescriptor(entitlements, metadataWot)
+        return _PurchaseDescriptor(entitlements, dataDict.get('currencies'), metadataWot)
 
     def __onDescriptorLoaded(self, url, data):
         descrData = None
@@ -179,6 +255,7 @@ class _PurchasePackage(object):
     def __clearTimeoutBwCbId(self):
         if self.__timeoutBwCbId is not None:
             BigWorld.cancelCallback(self.__timeoutBwCbId)
+        self.__timeoutBwCbId = None
         return
 
 

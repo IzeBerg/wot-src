@@ -1,5 +1,4 @@
 from adisp import process
-from constants import IS_CHINA
 from frameworks.wulf import ViewFlags, ViewSettings
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.framework import g_entitiesFactories
@@ -31,7 +30,6 @@ class BattleSessionView(ViewImpl):
             viewModel.setClanName(g_clanCache.clanName)
             viewModel.setClanIcon(getClanEmblemURL(g_clanCache.clanDBID, EmblemSize.SIZE_32))
         viewModel.setIsInClan(isInClan)
-        viewModel.setIsChina(IS_CHINA)
         viewModel.onClanClicked += self.__clanClickedHandler
         viewModel.onTournamentsClicked += self.__tournamentsClickedHandler
         viewModel.onGlobalMapClicked += self.__globalMapClickedHandler

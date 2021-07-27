@@ -15,7 +15,7 @@ package
       
       public static const CRAFTMACHINE_SUBTITLE:String = "#event:craftMachine/subTitle";
       
-      public static const CRAFTMACHINE_STATUSDATE:String = "#event:craftMachine/statusDate";
+      public static const CRAFTMACHINE_ENDDATETEXT:String = "#event:craftMachine/endDateText";
        
       
       public function EVENT()

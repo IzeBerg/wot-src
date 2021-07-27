@@ -172,8 +172,12 @@ class SeniorityRewardAwardView(ViewImpl):
                 return createTooltipData(isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.BLUEPRINT_CONVERT_INFO, specialArgs=[
                  vehicleCD])
             if tooltipId == SeniorityAwardsVehicleRendererModel.TOOLTIP_VEHICLE_REWARD:
-                return createTooltipData(isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.AWARD_VEHICLE, specialArgs=(
-                 vehicleCD, None, None, None, None, None, True))
+                return createTooltipData(isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.SENIORITY_AWARD_VEHICLE, specialArgs=(
+                 vehicleCD,
+                 100,
+                 None, None, None, None,
+                 True,
+                 True))
             return
 
     def __updateBonuses(self, data):

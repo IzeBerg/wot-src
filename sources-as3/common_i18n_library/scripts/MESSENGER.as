@@ -947,6 +947,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_QUOTEDTEXTTEMPLATE:String = "#messenger:serviceChannelMessages/quotedTextTemplate";
       
+      public static const SERVICECHANNELMESSAGES_OFFERTOKENBONUS_TITLE:String = "#messenger:serviceChannelMessages/offerTokenBonus/title";
+      
       public static const SERVICECHANNELMESSAGES_DURATIONOFPREMIUMACCOUNTEXPIRES:String = "#messenger:serviceChannelMessages/durationOfPremiumAccountExpires";
       
       public static const SERVICECHANNELMESSAGES_PREMIUMBOUGHT:String = "#messenger:serviceChannelMessages/premiumBought";

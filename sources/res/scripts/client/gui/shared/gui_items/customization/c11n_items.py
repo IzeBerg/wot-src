@@ -965,6 +965,10 @@ class Style(Customization):
         return ItemTags.STYLE_PROGRESSION in self.tags
 
     @property
+    def is3D(self):
+        return bool(self.modelsSet)
+
+    @property
     def rentCount(self):
         if self.isRentable:
             return self.descriptor.rentCount
