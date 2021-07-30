@@ -10,6 +10,8 @@ package net.wg.infrastructure.base.meta
       
       function onNationShowS(param1:String) : void;
       
-      function as_selectNation(param1:uint, param2:Array) : void;
+      function onHighlightShowS() : void;
+      
+      function as_selectNation(param1:uint, param2:Array, param3:Array) : void;
    }
 }

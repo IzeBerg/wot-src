@@ -13,7 +13,7 @@ package net.wg.infrastructure.base.meta.impl
       
       public var removeAll:Function;
       
-      public var showOnlyNonHistoric:Function;
+      public var showNonHistoricAndFantastical:Function;
       
       private var _customizationItemPopoverHeaderVO:CustomizationItemPopoverHeaderVO;
       
@@ -44,10 +44,10 @@ package net.wg.infrastructure.base.meta.impl
          this.removeAll();
       }
       
-      public function showOnlyNonHistoricS(param1:Boolean) : void
+      public function showNonHistoricAndFantasticalS(param1:Boolean, param2:Boolean) : void
       {
-         App.utils.asserter.assertNotNull(this.showOnlyNonHistoric,"showOnlyNonHistoric" + Errors.CANT_NULL);
-         this.showOnlyNonHistoric(param1);
+         App.utils.asserter.assertNotNull(this.showNonHistoricAndFantastical,"showNonHistoricAndFantastical" + Errors.CANT_NULL);
+         this.showNonHistoricAndFantastical(param1,param2);
       }
       
       public final function as_setHeaderData(param1:Object) : void

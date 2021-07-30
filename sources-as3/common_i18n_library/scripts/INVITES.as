@@ -61,6 +61,8 @@ package
       
       public static const INVITES_TEXT_EPIC_TRAINING:String = "#invites:invites/text/EPIC_TRAINING";
       
+      public static const INVITES_TEXT_MAPS_TRAINING:String = "#invites:invites/text/MAPS_TRAINING";
+      
       public static const INVITES_TEXT_UNIT:String = "#invites:invites/text/UNIT";
       
       public static const INVITES_TEXT_SORTIE:String = "#invites:invites/text/SORTIE";
@@ -140,6 +142,10 @@ package
       public static const INVITES_NOTE_LEAVE_PREBATTLE_EPIC_TRAINING:String = "#invites:invites/note/leave/PREBATTLE_EPIC_TRAINING";
       
       public static const INVITES_NOTE_CHANGE_AND_LEAVE_PREBATTLE_EPIC_TRAINING:String = "#invites:invites/note/change_and_leave/PREBATTLE_EPIC_TRAINING";
+      
+      public static const INVITES_NOTE_LEAVE_PREBATTLE_MAPS_TRAINING:String = "#invites:invites/note/leave/PREBATTLE_MAPS_TRAINING";
+      
+      public static const INVITES_NOTE_CHANGE_AND_LEAVE_PREBATTLE_MAPS_TRAINING:String = "#invites:invites/note/change_and_leave/PREBATTLE_MAPS_TRAINING";
       
       public static const INVITES_NOTE_LEAVE_PREBATTLE_UNIT:String = "#invites:invites/note/leave/PREBATTLE_UNIT";
       

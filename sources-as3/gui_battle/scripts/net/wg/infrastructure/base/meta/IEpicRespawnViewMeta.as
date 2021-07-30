@@ -25,5 +25,7 @@ package net.wg.infrastructure.base.meta
       function as_setMapDimensions(param1:int, param2:int) : void;
       
       function as_setRespawnLocations(param1:Array) : void;
+      
+      function as_handleAsReplay() : void;
    }
 }

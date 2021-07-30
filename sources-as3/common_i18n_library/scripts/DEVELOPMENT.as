@@ -65,14 +65,6 @@ package
       
       public static const EDITOR_RESUME:String = "#development:editor/Resume";
       
-      public static const DROPDOWN_PLACEHOLDER_SELECT:String = "#development:dropdown/placeholder/select";
-      
-      public static const INPUT_PLACEHOLDER_EMAIL:String = "#development:input/placeholder/email";
-      
-      public static const INPUT_PLACEHOLDER_SEARCH:String = "#development:input/placeholder/search";
-      
-      public static const INPUT_PLACEHOLDER_PASSWORD:String = "#development:input/placeholder/password";
-      
       public static const WULF_CONTENT_PAGER:String = "#development:wulf/content/pager";
       
       public static const WULF_PROPS_TITLE:String = "#development:wulf/props/title";
@@ -157,26 +149,6 @@ package
       
       public static const WULF_DIALOGEXAMPLES_TESTFMTARGS_CANCEL:String = "#development:wulf/dialogExamples/testFmtArgs/cancel";
       
-      public static const RELATIVEDATETIME_NOW:String = "#development:relativeDateTime/now";
-      
-      public static const RELATIVEDATETIME_MINUTES_PAST:String = "#development:relativeDateTime/minutes_past";
-      
-      public static const RELATIVEDATETIME_HOUR_PAST:String = "#development:relativeDateTime/hour_past";
-      
-      public static const RELATIVEDATETIME_TODAY:String = "#development:relativeDateTime/today";
-      
-      public static const RELATIVEDATETIME_YESTERDAY:String = "#development:relativeDateTime/yesterday";
-      
-      public static const DURATION_DAYS:String = "#development:duration/days";
-      
-      public static const DURATION_HOURS:String = "#development:duration/hours";
-      
-      public static const DURATION_MINUTES:String = "#development:duration/minutes";
-      
-      public static const DURATION_SECONDS:String = "#development:duration/seconds";
-      
-      public static const DURATION_UNLIMITED:String = "#development:duration/unlimited";
-      
       public static const ADDITIONALREWARDS_LEVELHEADER:String = "#development:additionalRewards/levelHeader";
       
       public static const ADDITIONALREWARDS_QUESTSDESCRIPTION:String = "#development:additionalRewards/questsDescription";
@@ -216,6 +188,30 @@ package
       public static const ADDITIONALREWARDS_PREMIUM_PLUS:String = "#development:additionalRewards/premium_plus";
       
       public static const ADDITIONALREWARDS_BLUEPRINTS_BLUEPRINTNATIONFRAGMENTCONGRATS:String = "#development:additionalRewards/blueprints/BlueprintNationFragmentCongrats";
+      
+      public static const DIALOGTEMPLATES_BUTTON_ACCEPT:String = "#development:dialogTemplates/button/accept";
+      
+      public static const DIALOGTEMPLATES_BUTTON_BUY:String = "#development:dialogTemplates/button/buy";
+      
+      public static const DIALOGTEMPLATES_BUTTON_REMOVE:String = "#development:dialogTemplates/button/remove";
+      
+      public static const DIALOGTEMPLATES_BUTTON_NO:String = "#development:dialogTemplates/button/no";
+      
+      public static const DIALOGTEMPLATES_BUTTON_CANCEL:String = "#development:dialogTemplates/button/cancel";
+      
+      public static const DIALOGTEMPLATES_BUTTON_LONGTEXT:String = "#development:dialogTemplates/button/longText";
+      
+      public static const DIALOGTEMPLATES_WARNING_TITLE:String = "#development:dialogTemplates/warning/title";
+      
+      public static const DIALOGTEMPLATES_WARNING_DESCRIPTION:String = "#development:dialogTemplates/warning/description";
+      
+      public static const DIALOGTEMPLATES_INFO_TITLE:String = "#development:dialogTemplates/info/title";
+      
+      public static const DIALOGTEMPLATES_INFO_DESCRIPTION:String = "#development:dialogTemplates/info/description";
+      
+      public static const DIALOGTEMPLATES_ERROR_TITLE:String = "#development:dialogTemplates/error/title";
+      
+      public static const DIALOGTEMPLATES_ERROR_DESCRIPTION:String = "#development:dialogTemplates/error/description";
        
       
       public function DEVELOPMENT()

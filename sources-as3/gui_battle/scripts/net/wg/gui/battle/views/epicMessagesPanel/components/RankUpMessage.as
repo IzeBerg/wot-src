@@ -15,6 +15,8 @@ package net.wg.gui.battle.views.epicMessagesPanel.components
       
       public var icon:MovieClip = null;
       
+      public var rankUpSubMc:RankUpSubElement = null;
+      
       private var _msgDataVO:RankUpMessageVO = null;
       
       public function RankUpMessage()
@@ -30,6 +32,7 @@ package net.wg.gui.battle.views.epicMessagesPanel.components
          this._msgDataVO = _loc2_;
          this.mainTextMc.titleTF.text = _loc2_.title;
          this.icon.gotoAndStop(_loc2_.rank);
+         this.rankUpSubMc.setText(_loc2_.subTitle);
       }
       
       override protected function onDispose() : void
@@ -37,6 +40,8 @@ package net.wg.gui.battle.views.epicMessagesPanel.components
          this.icon = null;
          this.mainTextMc = null;
          this._msgDataVO = null;
+         this.rankUpSubMc.dispose();
+         this.rankUpSubMc = null;
          super.onDispose();
       }
    }

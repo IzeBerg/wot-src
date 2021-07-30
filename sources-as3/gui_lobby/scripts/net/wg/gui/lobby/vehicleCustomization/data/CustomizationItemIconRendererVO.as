@@ -12,7 +12,7 @@ package net.wg.gui.lobby.vehicleCustomization.data
       
       public var isWide:Boolean = false;
       
-      public var isHistoric:Boolean = false;
+      public var customizationDisplayType:int = 0;
       
       public function CustomizationItemIconRendererVO(param1:Object = null)
       {

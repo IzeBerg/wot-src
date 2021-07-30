@@ -126,5 +126,14 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.modules
          }
          dispatchEvent(new Event(Event.RESIZE));
       }
+      
+      override public function get height() : Number
+      {
+         if(radio)
+         {
+            return radio.y + radio.height;
+         }
+         return super.height;
+      }
    }
 }

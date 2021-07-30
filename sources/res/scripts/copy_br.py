@@ -11,7 +11,6 @@ g_dynamicComponents = [
  'Radar',
  'InBattleUpgradeReadiness',
  'InBattleUpgrades',
- 'VehicleLoot',
  'VehicleDeathZoneEffect',
  'InBattleUpgradesAvatar']
 g_entities = [

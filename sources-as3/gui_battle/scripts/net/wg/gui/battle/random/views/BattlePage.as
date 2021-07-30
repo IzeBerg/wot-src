@@ -1,6 +1,7 @@
 package net.wg.gui.battle.random.views
 {
    import flash.display.DisplayObject;
+   import flash.display.Sprite;
    import flash.events.Event;
    import flash.events.MouseEvent;
    import flash.geom.Rectangle;
@@ -55,6 +56,10 @@ package net.wg.gui.battle.random.views
       private static const INVALID_PLAYERS_PANEL_STATE:String = "invalidPlayersPanelState";
       
       private static const HINT_PANEL_Y_SHIFT_MULTIPLIER:Number = 1.5;
+      
+      protected static const HINT_PANEL_AMMUNITION_OFFSET_Y:int = -160;
+      
+      private static const HIT_TEST_FIX_NAME:String = "HitTest Fix";
        
       
       public var debugPanel:DebugPanel = null;
@@ -89,6 +94,8 @@ package net.wg.gui.battle.random.views
       
       public var siegeModePanel:SiegeModePanel = null;
       
+      private var hitTestFix:Sprite;
+      
       private var _playersPanelState:int = -1;
       
       private var _playersPanelHasInvite:Boolean = false;
@@ -97,11 +104,18 @@ package net.wg.gui.battle.random.views
       
       public function BattlePage()
       {
+         this.hitTestFix = new Sprite();
          super();
          this.battleDamageLogPanel.init(ATLAS_CONSTANTS.BATTLE_ATLAS);
          this.playersPanel.addEventListener(Event.CHANGE,this.onPlayersPanelChangeHandler);
          this.teamBasesPanelUI.addEventListener(Event.CHANGE,this.onTeamBasesPanelUIChangeHandler);
          this.endWarningPanel.addEventListener(EndWarningPanelEvent.VISIBILITY_CHANGED,this.onEndWarningPanelVisibilityChangedHandler);
+         this.hitTestFix.graphics.beginFill(16777215,0);
+         this.hitTestFix.graphics.drawRect(0,0,1,1);
+         this.hitTestFix.graphics.endFill();
+         this.hitTestFix.name = HIT_TEST_FIX_NAME;
+         this.hitTestFix.alpha = 0;
+         addChildAt(this.hitTestFix,0);
       }
       
       override public function updateStage(param1:Number, param2:Number) : void
@@ -132,6 +146,11 @@ package net.wg.gui.battle.random.views
          {
             this.battleNotifier.updateStage(param1,param2);
             this.setChildIndex(this.battleNotifier,this.getChildIndex(this.radialMenu) - 1);
+         }
+         if(this.hitTestFix)
+         {
+            this.hitTestFix.width = param1;
+            this.hitTestFix.height = param2;
          }
          this.updateHintPanelPosition();
       }
@@ -215,6 +234,7 @@ package net.wg.gui.battle.random.views
          this.damageInfoPanel = null;
          this.fragCorrelationBar = null;
          this.fullStats = null;
+         this.hitTestFix = null;
          this.playersPanel.removeEventListener(PlayersPanelEvent.ON_ITEMS_COUNT_CHANGE,this.onPlayersPanelOnItemsCountChangeHandler);
          this.playersPanel = null;
          this.consumablesPanel = null;
@@ -290,10 +310,39 @@ package net.wg.gui.battle.random.views
          return this.fullStats.getStatsProgressView();
       }
       
+      override protected function onPrebattleAmmunitionPanelShown() : void
+      {
+         super.onPrebattleAmmunitionPanelShown();
+         this.updateConsumablePanel();
+         this.updateHintPanelPosition();
+      }
+      
+      override protected function onPrebattleAmmunitionPanelHidden(param1:Boolean) : void
+      {
+         super.onPrebattleAmmunitionPanelHidden(false);
+         this.updateConsumablePanel(param1);
+      }
+      
       protected function updateHintPanelPosition() : void
       {
          this.hintPanel.x = _originalWidth - this.hintPanel.width >> 1;
          this.hintPanel.y = HINT_PANEL_Y_SHIFT_MULTIPLIER * (_originalHeight - this.hintPanel.height >> 1) ^ 0;
+         if(prebattleAmmunitionPanelShown)
+         {
+            this.hintPanel.y += HINT_PANEL_AMMUNITION_OFFSET_Y;
+         }
+      }
+      
+      private function updateConsumablePanel(param1:Boolean = false) : void
+      {
+         if(prebattleAmmunitionPanelShown)
+         {
+            this.consumablesPanel.hide(param1);
+         }
+         else
+         {
+            this.consumablesPanel.show(param1);
+         }
       }
       
       private function updatePositionForQuestProgress() : void
@@ -344,6 +393,11 @@ package net.wg.gui.battle.random.views
          {
             this.battleDamageLogPanel.updateTopContainerPosition(BattleDamageLogPanel.SCREEN_BORDER_X_POS);
          }
+      }
+      
+      override protected function get prebattleAmmunitionPanelAvailable() : Boolean
+      {
+         return true;
       }
       
       private function onHintPanelResizeHandler(param1:Event) : void

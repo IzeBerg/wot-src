@@ -335,7 +335,7 @@ class Hull(BasicItem):
 class Shell(BasicItem):
     __slots__ = ('caliber', 'isTracer', 'isForceTracer', 'damage', 'damageRandomization',
                  'piercingPowerRandomization', 'icon', 'iconName', 'isGold', 'type',
-                 'stun', 'effectsIndex')
+                 'stun', 'effectsIndex', 'tags')
 
     def __init__(self, typeID, componentID, componentName, compactDescr):
         super(Shell, self).__init__(typeID, componentID, componentName, compactDescr)

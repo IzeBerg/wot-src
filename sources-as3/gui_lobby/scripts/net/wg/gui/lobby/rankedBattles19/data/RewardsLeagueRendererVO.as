@@ -20,21 +20,9 @@ package net.wg.gui.lobby.rankedBattles19.data
       
       public var specialAlias:String = "";
       
-      public var specialArgs:Array = null;
-      
       public function RewardsLeagueRendererVO(param1:Object = null)
       {
          super(param1);
-      }
-      
-      override protected function onDispose() : void
-      {
-         if(this.specialArgs)
-         {
-            this.specialArgs.splice(0,this.specialArgs.length);
-            this.specialArgs = null;
-         }
-         super.onDispose();
       }
    }
 }

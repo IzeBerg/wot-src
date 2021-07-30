@@ -26,6 +26,8 @@ package net.wg.gui.lobby.vehicleInfo.data
       
       public var vehicleType:String = "";
       
+      public var roleStr:String = "";
+      
       public var vehicleElite:Boolean = false;
       
       private var _propsData:Vector.<Object>;

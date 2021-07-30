@@ -55,6 +55,14 @@ package net.wg.data.constants.generated
       
       public static const VEH_PARAM_RENDERER_STATE_EXTRA:String = "extra";
       
+      public static const VEH_PARAM_RENDERER_HIGHLIGHT_NONE:String = "none";
+      
+      public static const VEH_PARAM_RENDERER_HIGHLIGHT_POSITIVE:String = "positive";
+      
+      public static const VEH_PARAM_RENDERER_HIGHLIGHT_NEGATIVE:String = "negative";
+      
+      public static const VEH_PARAM_RENDERER_HIGHLIGHT_MIXED:String = "mixed";
+      
       public static const PROGRESSIVE_REWARD_WIDGET:String = "progressiveRewardWdgt";
       
       public static const DAILY_QUEST_WIDGET:String = "dqWidget";
@@ -76,6 +84,14 @@ package net.wg.data.constants.generated
       public static const CRAFT_MACHINE_ENTRY_POINT:String = "CraftMachineEntryPoint";
       
       public static const MAPBOX_ENTRY_POINT:String = "MapBoxEntryPoint";
+      
+      public static const POST_PROGRESSION_INJECT:String = "PostProgressionInject";
+      
+      public static const POST_PROGRESSION_CMP_INJECT:String = "PostProgressionCmpInject";
+      
+      public static const POST_PROGRESSION_VIEW:String = "VehPostProgressionView";
+      
+      public static const POST_PROGRESSION_VEHICLE_PARAMS:String = "PostProgressionVehicleParams";
        
       
       public function HANGAR_ALIASES()

@@ -4,6 +4,7 @@ package net.wg.gui.battle.views.battleTankCarousel
    import flash.events.Event;
    import net.wg.data.VO.TankCarouselFilterInitVO;
    import net.wg.data.VO.TankCarouselFilterSelectedVO;
+   import net.wg.data.constants.Values;
    import net.wg.gui.components.controls.events.RendererEvent;
    import net.wg.gui.components.controls.scroller.data.ScrollConfig;
    import net.wg.infrastructure.base.meta.IBattleTankCarouselMeta;
@@ -31,7 +32,21 @@ package net.wg.gui.battle.views.battleTankCarousel
       
       private static const GO_TO_OFFSET:Number = 0.5;
       
+      private static const GO_TO_DURATION:uint = 1;
+      
       private static const DIRECTIONS_RIGHT:String = "R";
+      
+      private static const MASK_TOP_OFFSET_DEFAULT:int = -12;
+      
+      private static const MASK_BOTTOM_OFFSET_DEFAULT:int = 0;
+      
+      private static const MASK_TOP_OFFSET_EPIC:int = -10;
+      
+      private static const MASK_BOTTOM_OFFSET_EPIC:int = -8;
+      
+      private static const SCROLL_TO_INDEX_DELAY:uint = 100;
+      
+      private static const INVALID_SCROLL_POS:String = "InvalidScrollPos";
        
       
       public var vehicleFilters:BattleTankCarouselFilters = null;
@@ -39,6 +54,8 @@ package net.wg.gui.battle.views.battleTankCarousel
       public var background:MovieClip = null;
       
       private var _helper:BattleTankCarouselHelper = null;
+      
+      private var _itemIndexToScroll:int = -1;
       
       public function BattleTankCarousel()
       {
@@ -83,6 +100,7 @@ package net.wg.gui.battle.views.battleTankCarousel
          scrollList.cropContent = true;
          scrollList.maskOffsetLeft = scrollList.maskOffsetRight = MASK_OFFSET;
          scrollList.goToOffset = GO_TO_OFFSET;
+         scrollList.goToDuration = GO_TO_DURATION;
          this._helper = new BattleTankCarouselHelper();
          this.updateScrollListSettings();
          leftArrow.mouseEnabledOnDisabled = rightArrow.mouseEnabledOnDisabled = true;
@@ -96,6 +114,7 @@ package net.wg.gui.battle.views.battleTankCarousel
       override protected function onDispose() : void
       {
          App.contextMenuMgr.hide();
+         App.utils.scheduler.cancelTask(goToSelectedItem);
          this.vehicleFilters.removeEventListener(Event.RESIZE,this.onVehicleFiltersResizeHandler);
          this.vehicleFilters.removeEventListener(RendererEvent.ITEM_CLICK,this.onVehicleFiltersItemClickHandler);
          this.vehicleFilters.dispose();
@@ -105,19 +124,10 @@ package net.wg.gui.battle.views.battleTankCarousel
          super.onDispose();
       }
       
-      override public function set visible(param1:Boolean) : void
-      {
-         if(visible == param1)
-         {
-            return;
-         }
-         this.vehicleFilters.visible = param1;
-         super.visible = param1;
-      }
-      
       override protected function draw() : void
       {
          var _loc1_:Boolean = isInvalid(InvalidationType.SIZE);
+         var _loc2_:Boolean = isInvalid(INVALID_SCROLL_POS);
          if(_loc1_)
          {
             this._helper = this.getNewHelper();
@@ -125,6 +135,10 @@ package net.wg.gui.battle.views.battleTankCarousel
          if(isInvalid(InvalidationType.SETTINGS))
          {
             this.updateScrollListSettings();
+         }
+         if(_loc1_)
+         {
+            this.checkMaskOffsets();
          }
          super.draw();
          if(_loc1_)
@@ -134,9 +148,28 @@ package net.wg.gui.battle.views.battleTankCarousel
                scrollList.validateNow();
             }
             this.updateLayout(width);
-            goToSelectedItem();
+            if(!_loc2_)
+            {
+               goToSelectedItem();
+            }
             dispatchEvent(new Event(Event.RESIZE));
          }
+         if(_loc2_)
+         {
+            App.utils.scheduler.scheduleTask(this.scrollToIndex,SCROLL_TO_INDEX_DELAY);
+         }
+      }
+      
+      public function as_scrollToSlot(param1:int) : void
+      {
+         this._itemIndexToScroll = param1;
+         invalidate(INVALID_SCROLL_POS);
+      }
+      
+      public function as_useExtendedCarousel(param1:Boolean) : void
+      {
+         scrollList.useExtendedViewPort = param1;
+         this.checkMaskOffsets();
       }
       
       public function getBottom() : Number
@@ -187,6 +220,27 @@ package net.wg.gui.battle.views.battleTankCarousel
          return _loc1_;
       }
       
+      private function scrollToIndex() : void
+      {
+         if(this._itemIndexToScroll != Values.DEFAULT_INT)
+         {
+            scrollList.validateNow();
+            scrollList.goToItem(this._itemIndexToScroll,true,false);
+         }
+         this._itemIndexToScroll = Values.DEFAULT_INT;
+      }
+      
+      private function checkMaskOffsets() : void
+      {
+         var _loc1_:int = !!scrollList.useExtendedViewPort ? int(MASK_TOP_OFFSET_EPIC) : int(MASK_TOP_OFFSET_DEFAULT);
+         var _loc2_:int = !!scrollList.useExtendedViewPort ? int(MASK_BOTTOM_OFFSET_EPIC) : int(MASK_BOTTOM_OFFSET_DEFAULT);
+         if(scrollList.maskOffsetTop != _loc1_ || scrollList.maskOffsetBottom != _loc2_)
+         {
+            scrollList.maskOffsetTop = _loc1_;
+            scrollList.maskOffsetBottom = _loc2_;
+         }
+      }
+      
       private function updateScrollListSettings() : void
       {
          scrollList.itemRendererClassReference = this._helper.linkRenderer;
@@ -203,6 +257,16 @@ package net.wg.gui.battle.views.battleTankCarousel
          leftArrow.y = scrollList.y;
          rightArrow.y = scrollList.y + rightArrow.height;
          this.vehicleFilters.height = scrollList.height;
+      }
+      
+      override public function set visible(param1:Boolean) : void
+      {
+         if(visible == param1)
+         {
+            return;
+         }
+         this.vehicleFilters.visible = param1;
+         super.visible = param1;
       }
       
       private function onVehicleFiltersItemClickHandler(param1:RendererEvent) : void

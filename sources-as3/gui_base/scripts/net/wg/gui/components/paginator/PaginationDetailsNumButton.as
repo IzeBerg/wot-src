@@ -3,13 +3,20 @@ package net.wg.gui.components.paginator
    import flash.display.MovieClip;
    import flash.events.MouseEvent;
    import flash.text.TextFormat;
+   import flash.text.TextFormatAlign;
    import flash.utils.Dictionary;
+   import net.wg.data.constants.Linkages;
    import net.wg.data.constants.SoundTypes;
    import net.wg.data.constants.generated.MISSIONS_STATES;
+   import net.wg.gui.components.common.Counter;
    import net.wg.gui.components.controls.SoundListItemRenderer;
    import net.wg.gui.components.paginator.vo.PaginatorPageNumVO;
    import net.wg.infrastructure.interfaces.entity.IUpdatable;
    import net.wg.infrastructure.managers.ITooltipMgr;
+   import net.wg.infrastructure.managers.counter.CounterManager;
+   import net.wg.infrastructure.managers.counter.CounterProps;
+   import net.wg.utils.ICounterManager;
+   import net.wg.utils.ICounterProps;
    import scaleform.clik.constants.InvalidationType;
    
    public class PaginationDetailsNumButton extends SoundListItemRenderer implements IUpdatable
@@ -42,9 +49,13 @@ package net.wg.gui.components.paginator
       private static const STATE_OVER:String = "over";
       
       private static const STATE_DOWN:String = "down";
+      
+      private static const COUNTER_PROPS:ICounterProps = new CounterProps(-5,15,TextFormatAlign.LEFT,true,Linkages.COUNTER_UI,CounterProps.DEFAULT_TF_PADDING,false,Counter.EMPTY_STATE);
        
       
       public var bg:MovieClip;
+      
+      public var counterMc:MovieClip;
       
       private var _tooltipMgr:ITooltipMgr;
       
@@ -56,11 +67,18 @@ package net.wg.gui.components.paginator
       
       private var _isDisabled:Boolean = false;
       
+      private var _counterManager:ICounterManager;
+      
+      private var _haveCounter:Boolean = false;
+      
       public function PaginationDetailsNumButton()
       {
          this._tooltipMgr = App.toolTipMgr;
+         this._counterManager = App.utils.counterManager;
          super();
          soundType = SoundTypes.PAGINATION_NUM_ITEM_RENDERER;
+         constraintsDisabled = true;
+         preventAutosizing = true;
       }
       
       override protected function draw() : void
@@ -71,6 +89,19 @@ package net.wg.gui.components.paginator
             groupName = this._vo.buttonsGroup;
             this._isDisabled = this._vo.status == MISSIONS_STATES.DISABLED;
             useHandCursor = buttonMode = !this._isDisabled;
+            if(this._vo.hasNewContent)
+            {
+               if(!this._haveCounter)
+               {
+                  this._haveCounter = true;
+                  this._counterManager.setCounter(this.counterMc,CounterManager.COUNTER_EMPTY,null,COUNTER_PROPS);
+               }
+            }
+            else if(this._haveCounter)
+            {
+               this._haveCounter = false;
+               this._counterManager.removeCounter(this.counterMc);
+            }
          }
       }
       
@@ -134,8 +165,11 @@ package net.wg.gui.components.paginator
          removeEventListener(MouseEvent.ROLL_OVER,this.onMouseRollOverHandler);
          removeEventListener(MouseEvent.ROLL_OUT,this.onMouseRollOutHandler);
          this._tooltipMgr = null;
+         this._counterManager.removeCounter(this.counterMc);
+         this._counterManager = null;
          this._vo = null;
          this.bg = null;
+         this.counterMc = null;
          super.onDispose();
       }
       

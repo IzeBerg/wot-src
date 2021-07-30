@@ -1,7 +1,5 @@
 package net.wg.gui.lobby.battleResults
 {
-   import flash.display.DisplayObject;
-   import flash.display.DisplayObjectContainer;
    import flash.display.InteractiveObject;
    import flash.display.MovieClip;
    import flash.events.MouseEvent;
@@ -131,12 +129,6 @@ package net.wg.gui.lobby.battleResults
       
       public var playerNameLbl:UserNameField;
       
-      public var lowerShadow:DisplayObjectContainer;
-      
-      public var upperShadow:DisplayObjectContainer;
-      
-      public var progressInfoBG:DisplayObject;
-      
       public var progressInfo:EpicQuestProgressInfo;
       
       public var imageSwitcher:MovieClip;
@@ -221,7 +213,6 @@ package net.wg.gui.lobby.battleResults
          this._register = null;
          this.progressInfo = null;
          this.noIncomeAlert = null;
-         this.progressInfoBG = null;
          this.resultLbl = null;
          this.finishReasonLbl = null;
          this.arenaNameLbl = null;
@@ -241,8 +232,6 @@ package net.wg.gui.lobby.battleResults
          this.xpCounter = null;
          this.getPremBtn.dispose();
          this.getPremBtn = null;
-         this.upperShadow = null;
-         this.lowerShadow = null;
          this.rankIconLoader.dispose();
          this.rankIconLoader = null;
          this.playerNameLbl.dispose();
@@ -253,7 +242,7 @@ package net.wg.gui.lobby.battleResults
          this._data = null;
          this._toolTipMgr = null;
          this._progressReport = null;
-         this._unlocksAndQuests.splice(0,this._unlocksAndQuests.length);
+         App.instance.utils.data.cleanupDynamicObject(this._unlocksAndQuests);
          this._unlocksAndQuests = null;
          this._linkageSelector.dispose();
          this._linkageSelector = null;
@@ -266,8 +255,6 @@ package net.wg.gui.lobby.battleResults
       {
          super.configUI();
          this.arenaCreateDateLbl.autoSize = TextFieldAutoSize.RIGHT;
-         this.upperShadow.mouseChildren = this.upperShadow.mouseEnabled = false;
-         this.lowerShadow.mouseEnabled = this.lowerShadow.mouseChildren = false;
          this.epicEfficiencyList.visible = false;
          this.xpIcon.source = RES_ICONS.MAPS_ICONS_LIBRARY_XPICONBIG_1;
          this.creditsIcon.source = RES_ICONS.MAPS_ICONS_LIBRARY_CREDITSICONBIG_1;
@@ -471,8 +458,6 @@ package net.wg.gui.lobby.battleResults
          {
             this._progressReport.visible = _loc2_;
          }
-         this.lowerShadow.visible = _loc2_;
-         this.upperShadow.visible = _loc2_;
       }
       
       private function initEfficiencyList(param1:EfficiencyHeaderVO) : void

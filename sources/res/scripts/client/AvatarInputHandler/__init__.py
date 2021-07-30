@@ -10,6 +10,7 @@ from AvatarInputHandler.AimingSystems.SniperAimingSystem import SniperAimingSyst
 from AvatarInputHandler.AimingSystems.steady_vehicle_matrix import SteadyVehicleMatrixCalculator
 from AvatarInputHandler.commands.bootcamp_mode_control import BootcampModeControl
 from AvatarInputHandler.commands.dualgun_control import DualGunController
+from AvatarInputHandler.commands.prebattle_setups_control import PrebattleSetupsControl
 from AvatarInputHandler.commands.radar_control import RadarControl
 from AvatarInputHandler.commands.siege_mode_control import SiegeModeControl
 from AvatarInputHandler.commands.vehicle_upgrade_control import VehicleUpdateControl
@@ -66,6 +67,8 @@ _CTRLS_DESC_MAP = {_CTRL_MODE.ARCADE: (
                        MapCaseMode.MapCaseControlMode, 'strategicMode', _CTRL_TYPE.USUAL), 
    _CTRL_MODE.MAP_CASE_ARCADE: (
                               MapCaseMode.ArcadeMapCaseControlMode, 'arcadeMode', _CTRL_TYPE.USUAL), 
+   _CTRL_MODE.MAP_CASE_ARCADE_EPIC_MINEFIELD: (
+                                             MapCaseMode.AracdeMinefieldControleMode, 'arcadeEpicMinefieldMode', _CTRL_TYPE.USUAL), 
    _CTRL_MODE.RESPAWN_DEATH: (
                             RespawnDeathMode.RespawnDeathMode, 'postMortemMode', _CTRL_TYPE.USUAL), 
    _CTRL_MODE.DEATH_FREE_CAM: (
@@ -223,12 +226,17 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
         self.__observerIsSwitching = False
         self.__commands = []
         self.__detachedCommands = []
+        self.__persistentCommands = [
+         PrebattleSetupsControl()]
         self.__remoteCameraSender = None
         self.__isGUIVisible = False
         self.__lastSwitchTime = 0
         return
 
     def __constructComponents(self):
+        self.__commands = []
+        self.__detachedCommands = []
+        self.__persistentCommands = []
         player = BigWorld.player()
         vehicle = player.getVehicleAttached()
         if not vehicle:
@@ -270,6 +278,8 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
                 self.__commands.append(VehicleUpdateControl())
                 self.__commands.append(VehicleUpgradePanelControl())
                 self.__detachedCommands.append(VehicleUpgradePanelControl())
+            if ARENA_BONUS_TYPE_CAPS.checkAny(player.arena.bonusType, ARENA_BONUS_TYPE_CAPS.SWITCH_SETUPS):
+                self.__persistentCommands.append(PrebattleSetupsControl())
             return
 
     def prerequisites(self):
@@ -285,6 +295,11 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
         if isRepeat:
             return False
         else:
+            player = BigWorld.player()
+            for command in self.__persistentCommands:
+                if command.handleKeyEvent(isDown, key, mods, event):
+                    return True
+
             if self.__isStarted and self.__isDetached:
                 if self.__curCtrl.alwaysReceiveKeyEvents(isDown=isDown) and not self.isObserverFPV or CommandMapping.g_instance.isFired(CommandMapping.CMD_CM_LOCK_TARGET, key):
                     self.__curCtrl.handleKeyEvent(isDown, key, mods, event)
@@ -292,7 +307,7 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
                     if command.handleKeyEvent(isDown, key, mods, event):
                         return True
 
-                return BigWorld.player().handleKey(isDown, key, mods)
+                return player.handleKey(isDown, key, mods)
             if not self.__isStarted or self.__isDetached:
                 return False
             for command in self.__commands:
@@ -309,12 +324,13 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
                 if key == Keys.KEY_F5 and constants.HAS_DEV_RESOURCES:
                     self.__vertScreenshotCamera.enable(not self.__vertScreenshotCamera.isEnabled)
                     return True
-            if key == Keys.KEY_SPACE and isDown and BigWorld.player().isObserver():
-                BigWorld.player().cell.switchObserverFPV(not BigWorld.player().isObserverFPV)
-                return True
+            if key == Keys.KEY_SPACE and isDown and player.isObserver():
+                if self.isControlModeChangeAllowed():
+                    player.switchObserverFPV()
+                    return True
             if not self.isObserverFPV and self.__curCtrl.handleKeyEvent(isDown, key, mods, event):
                 return True
-            return BigWorld.player().handleKey(isDown, key, mods)
+            return player.handleKey(isDown, key, mods)
 
     def handleMouseEvent(self, dx, dy, dz):
         if not self.__isStarted or self.__isDetached:
@@ -504,7 +520,6 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
 
     def __onVehicleChanged(self, isStatic):
         self.steadyVehicleMatrixCalculator.relinkSources()
-        self.__commands = []
         self.__identifyVehicleType()
         self.__constructComponents()
         if self.__waitObserverCallback is not None and self.__observerVehicle is not None:
@@ -863,13 +878,21 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
         return
 
     def isControlModeChangeAllowed(self):
-        if not BigWorld.player().observerSeesAll():
+        player = BigWorld.player()
+        if not self.isAllowToSwitchPositionOrFPV():
+            return False
+        if not player.observerSeesAll():
             return True
         if BigWorld.time() - self.__lastSwitchTime < _CONTROL_MODE_SWITCH_COOLDOWN:
             LOG_WARNING('Control mode switch is on cooldown')
             return False
         self.__lastSwitchTime = BigWorld.time()
         return True
+
+    @classmethod
+    def isAllowToSwitchPositionOrFPV(cls):
+        player = BigWorld.player()
+        return not player.positionControl.isSwitching and not player.isFPVModeSwitching
 
 
 class _Targeting(object):

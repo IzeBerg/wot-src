@@ -11,6 +11,7 @@ package net.wg.gui.battle.views.epicMessagesPanel
    import net.wg.gui.battle.views.epicMessagesPanel.components.RankUpMessage;
    import net.wg.gui.battle.views.epicMessagesPanel.components.RetreatMessage;
    import net.wg.gui.battle.views.epicMessagesPanel.components.TimeRemainingMessage;
+   import net.wg.gui.battle.views.epicMessagesPanel.components.UnlockTankLevelMessage;
    import net.wg.gui.battle.views.gameMessagesPanel.GameMessagesPanel;
    import net.wg.infrastructure.base.meta.IGameMessagesPanelMeta;
    
@@ -42,6 +43,7 @@ package net.wg.gui.battle.views.epicMessagesPanel
          msgLinkageTypeDict[GAME_MESSAGES_CONSTS.OBJECTIVE_UNDER_ATTACK_POSITIVE] = Linkages.OBJECTIVE_UNDER_ATTACK_POSITIVE_UI_LINKAGE;
          msgLinkageTypeDict[GAME_MESSAGES_CONSTS.OBJECTIVE_UNDER_ATTACK] = Linkages.OBJECTIVE_UNDER_ATTACK_UI_LINKAGE;
          msgLinkageTypeDict[GAME_MESSAGES_CONSTS.GENERAL_RANK_REACHED] = Linkages.FIRST_GENERAL_RANK_REACHED_UI_LINKAGE;
+         msgLinkageTypeDict[GAME_MESSAGES_CONSTS.UNLOCK_TANK_LEVEL] = Linkages.UNLOCK_TANK_LEVEL_UI_LINKAGE;
          msgClassTypeDict[GAME_MESSAGES_CONSTS.TIME_REMAINING] = TimeRemainingMessage;
          msgClassTypeDict[GAME_MESSAGES_CONSTS.TIME_REMAINING_POSITIVE] = TimeRemainingMessage;
          msgClassTypeDict[GAME_MESSAGES_CONSTS.OVERTIME] = OverTimeMessage;
@@ -56,6 +58,7 @@ package net.wg.gui.battle.views.epicMessagesPanel
          msgClassTypeDict[GAME_MESSAGES_CONSTS.OBJECTIVE_UNDER_ATTACK_POSITIVE] = HeadquarterAttackedMessage;
          msgClassTypeDict[GAME_MESSAGES_CONSTS.OBJECTIVE_UNDER_ATTACK] = HeadquarterAttackedMessage;
          msgClassTypeDict[GAME_MESSAGES_CONSTS.GENERAL_RANK_REACHED] = FirstGeneralRankReachedMessage;
+         msgClassTypeDict[GAME_MESSAGES_CONSTS.UNLOCK_TANK_LEVEL] = UnlockTankLevelMessage;
       }
    }
 }

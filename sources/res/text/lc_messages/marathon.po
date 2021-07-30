@@ -10,6 +10,36 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "entryPoint/activeDiscountText"
+msgstr "-{discount}%"
+
+msgid "entryPoint/discountText"
+msgstr "{discount}%"
+
+msgid "entryPoint/finalDiscountText"
+msgstr "Купить %(vehicleLabel) Kpz 07 RH со скидкой %(discount)%(icon)"
+
+msgid "entryPoint/finalNoDiscountText"
+msgstr "Купить %(vehicleLabel) Kpz 07 RH%(icon)"
+
+msgid "entryPoint/finalSaleText"
+msgstr "Покупка доступна ещё: %(time)"
+
+msgid "entryPoint/separatorText"
+msgstr "ИЛИ"
+
+msgid "entryPoint/stageText"
+msgstr "%(stage) этап"
+
+msgid "entryPoint/title"
+msgstr "КРИСТАЛЬНАЯ ОХОТА"
+
+msgid "entryPoint/untilEndText"
+msgstr "%(time)"
+
+msgid "entryPoint/untilStartText"
+msgstr "До начала: %(time)"
+
 msgid "reward/goToVehicleBtn"
 msgstr "Показать в Ангаре"
 
@@ -30,7 +60,7 @@ msgstr "Нажмите, чтобы перейти к покупке товара
 
 msgid "vehiclePreview/buyingPanel/buyBtn/tooltip/inactive/body"
 msgstr ""
-"Покупка машины станет доступна после старта события «Охота на ренегата».\n"
+"Покупка машины станет доступна после старта события «%(event_name)s».\n"
 "%(addInfo)s"
 
 msgid "vehiclePreview/buyingPanel/buyBtn/tooltip/inactive/header"
@@ -59,21 +89,20 @@ msgstr ""
 "завершить."
 
 msgid "vehiclePreview/title/tooltip/header"
-msgstr "Охота на ренегата"
+msgstr "%(event_name)s"
 
 msgid "vehiclePreview/title/tooltip/info/body/announce"
 msgstr ""
-"Машина будет доступна для покупки в рамках события «Охота на "
-"ренегата»%(addInfo)s"
+"Машина будет доступна для покупки в рамках события "
+"«%(event_name)s»%(addInfo)s"
 
 msgid "vehiclePreview/title/tooltip/info/body/progress"
 msgstr ""
-"Машина доступна для покупки в рамках события «Охота на ренегата»%(addInfo)s"
+"Машина доступна для покупки в рамках события «%(event_name)s»%(addInfo)s"
 
 msgid "vehiclePreview/title/tooltip/info/body/progress/withDiscount"
 msgstr ""
-"Машина будет доступна для покупки в рамках события «Охота на "
-"ренегата»%(addInfo)s"
+"Машина доступна для покупки в рамках события «%(event_name)s»%(addInfo)s"
 
 msgid "vehiclePreview/tooltip/dateTime"
 msgstr "%(day)s %(monthName)s %(year)s, %(hour)s:%(min)s"

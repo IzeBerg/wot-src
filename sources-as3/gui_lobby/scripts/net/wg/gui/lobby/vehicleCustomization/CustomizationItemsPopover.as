@@ -28,7 +28,7 @@ package net.wg.gui.lobby.vehicleCustomization
       
       private static const WIDTH:int = 420;
       
-      private static const HEIGHT:int = 390;
+      private static const HEIGHT:int = 422;
       
       private static const CLEAR_STATE_INVALID:String = "ClearStateInvalid";
        
@@ -37,7 +37,9 @@ package net.wg.gui.lobby.vehicleCustomization
       
       public var clearTF:TextField;
       
-      public var counterTf:TextField;
+      public var nonHistoricCounterTF:TextField;
+      
+      public var fantasticalCounterTF:TextField;
       
       public var clearBtn:BlackButton;
       
@@ -46,6 +48,8 @@ package net.wg.gui.lobby.vehicleCustomization
       public var table:SortableTable;
       
       public var nonHistoricCheckBox:CheckBox = null;
+      
+      public var fantasticalCheckBox:CheckBox = null;
       
       public var backgroundImage:UILoaderAlt = null;
       
@@ -78,6 +82,9 @@ package net.wg.gui.lobby.vehicleCustomization
          this.table.isSortable = true;
          this.table.isListSelectable = false;
          this.table.addEventListener(CustomizationIndicatorEvent.REMOVAL,this.onTableDeleteItemRemovalHandler);
+         this.clearTF.autoSize = TextFieldAutoSize.CENTER;
+         this.clearTF.multiline = true;
+         this.clearTF.wordWrap = true;
          this.clearBtn.mouseEnabledOnDisabled = true;
          this.clearBtn.mutedSoundTypes = [MouseEvent.MOUSE_DOWN];
          this.clearBtn.iconSource = RES_ICONS.MAPS_ICONS_LIBRARY_ASSET_1;
@@ -85,13 +92,20 @@ package net.wg.gui.lobby.vehicleCustomization
          this.clearBtn.addEventListener(ButtonEvent.CLICK,this.onClearBtnClickHandler);
          this.unclearBtn.label = VEHICLE_CUSTOMIZATION.CUSTOMIZATION_NONHISTORIC_BUTTONCLEARTEXT;
          this.unclearBtn.addEventListener(MouseEvent.CLICK,this.onUnclearBtnClickHandler);
-         this.counterTf.autoSize = TextFieldAutoSize.LEFT;
+         this.nonHistoricCounterTF.autoSize = TextFieldAutoSize.LEFT;
+         this.fantasticalCounterTF.autoSize = TextFieldAutoSize.LEFT;
          this.nonHistoricCheckBox.autoSize = TextFieldAutoSize.LEFT;
-         this.nonHistoricCheckBox.addEventListener(ButtonEvent.CLICK,this.onNonHictoricClickHandler);
-         this.nonHistoricCheckBox.addEventListener(MouseEvent.ROLL_OVER,this.onNonHictoricOverHandler);
-         this.nonHistoricCheckBox.addEventListener(MouseEvent.ROLL_OUT,this.onNonHictoricOutHandler);
-         this.counterTf.addEventListener(MouseEvent.ROLL_OVER,this.onNonHictoricOverHandler);
-         this.counterTf.addEventListener(MouseEvent.ROLL_OUT,this.onNonHictoricOutHandler);
+         this.nonHistoricCheckBox.addEventListener(ButtonEvent.CLICK,this.onNonHistoricCheckBoxClickHandler);
+         this.nonHistoricCheckBox.addEventListener(MouseEvent.ROLL_OVER,this.onNonHistoricCheckBoxRollOverHandler);
+         this.nonHistoricCheckBox.addEventListener(MouseEvent.ROLL_OUT,this.onNonHistoricCheckBoxRollOutHandler);
+         this.nonHistoricCounterTF.addEventListener(MouseEvent.ROLL_OVER,this.onNonHistoricCheckBoxRollOverHandler);
+         this.nonHistoricCounterTF.addEventListener(MouseEvent.ROLL_OUT,this.onNonHistoricCheckBoxRollOutHandler);
+         this.fantasticalCheckBox.autoSize = TextFieldAutoSize.LEFT;
+         this.fantasticalCheckBox.addEventListener(ButtonEvent.CLICK,this.onFantasticalCheckBoxClickHandler);
+         this.fantasticalCheckBox.addEventListener(MouseEvent.ROLL_OVER,this.onFantasticalCheckBoxRollOverHandler);
+         this.fantasticalCheckBox.addEventListener(MouseEvent.ROLL_OUT,this.onFantasticalCheckBoxRollOutHandler);
+         this.fantasticalCounterTF.addEventListener(MouseEvent.ROLL_OVER,this.onFantasticalCheckBoxRollOverHandler);
+         this.fantasticalCounterTF.addEventListener(MouseEvent.ROLL_OUT,this.onFantasticalCheckBoxRollOutHandler);
       }
       
       override protected function initLayout() : void
@@ -107,11 +121,15 @@ package net.wg.gui.lobby.vehicleCustomization
          if(this._headerData && isInvalid(InvalidationType.DATA))
          {
             this.titleTF.htmlText = this._headerData.title;
-            this.nonHistoricCheckBox.label = this._headerData.checkBoxText;
             this.backgroundImage.source = this._headerData.currentSeasonImage;
-            this.counterTf.htmlText = this._headerData.counterText;
+            this.nonHistoricCheckBox.label = this._headerData.nonHistoricCheckBoxText;
+            this.fantasticalCheckBox.label = this._headerData.fantasticalCheckBoxText;
+            this.nonHistoricCounterTF.htmlText = this._headerData.nonHistoricCounterText;
+            this.fantasticalCounterTF.htmlText = this._headerData.fantasticalCounterText;
             this.nonHistoricCheckBox.validateNow();
-            this.counterTf.x = this.nonHistoricCheckBox.x + this.nonHistoricCheckBox.width ^ 0;
+            this.fantasticalCheckBox.validateNow();
+            this.nonHistoricCounterTF.x = this.nonHistoricCheckBox.x + this.nonHistoricCheckBox.width ^ 0;
+            this.fantasticalCounterTF.x = this.fantasticalCheckBox.x + this.fantasticalCheckBox.width ^ 0;
          }
          if(isInvalid(CLEAR_STATE_INVALID))
          {
@@ -119,33 +137,40 @@ package net.wg.gui.lobby.vehicleCustomization
             this.table.listVisible = !this._isClear;
             this.clearTF.visible = this._isClear;
             this.clearBtn.enabled = !this._isClear;
-            this.unclearBtn.visible = this._isClear && this.nonHistoricCheckBox.selected;
+            this.unclearBtn.visible = this._isClear && (this.nonHistoricCheckBox.selected || this.fantasticalCheckBox.selected);
          }
       }
       
       override protected function onBeforeDispose() : void
       {
          App.stage.dispatchEvent(new CustomizationEvent(CustomizationEvent.ITEMS_POPOVER_CLOSED));
+         this.nonHistoricCounterTF.removeEventListener(MouseEvent.ROLL_OVER,this.onNonHistoricCheckBoxRollOverHandler);
+         this.nonHistoricCounterTF.removeEventListener(MouseEvent.ROLL_OUT,this.onNonHistoricCheckBoxRollOutHandler);
+         this.nonHistoricCheckBox.removeEventListener(ButtonEvent.CLICK,this.onNonHistoricCheckBoxClickHandler);
+         this.nonHistoricCheckBox.removeEventListener(MouseEvent.ROLL_OVER,this.onNonHistoricCheckBoxRollOverHandler);
+         this.nonHistoricCheckBox.removeEventListener(MouseEvent.ROLL_OUT,this.onNonHistoricCheckBoxRollOutHandler);
+         this.fantasticalCounterTF.removeEventListener(MouseEvent.ROLL_OVER,this.onFantasticalCheckBoxRollOverHandler);
+         this.fantasticalCounterTF.removeEventListener(MouseEvent.ROLL_OUT,this.onFantasticalCheckBoxRollOutHandler);
+         this.fantasticalCheckBox.removeEventListener(ButtonEvent.CLICK,this.onFantasticalCheckBoxClickHandler);
+         this.fantasticalCheckBox.removeEventListener(MouseEvent.ROLL_OVER,this.onFantasticalCheckBoxRollOverHandler);
+         this.fantasticalCheckBox.removeEventListener(MouseEvent.ROLL_OUT,this.onFantasticalCheckBoxRollOutHandler);
+         this.clearBtn.removeEventListener(ButtonEvent.CLICK,this.onClearBtnClickHandler);
+         this.table.removeEventListener(CustomizationIndicatorEvent.REMOVAL,this.onTableDeleteItemRemovalHandler);
+         this.unclearBtn.removeEventListener(MouseEvent.CLICK,this.onUnclearBtnClickHandler);
          super.onBeforeDispose();
       }
       
       override protected function onDispose() : void
       {
          this._tooltipMgr = null;
-         this.counterTf.removeEventListener(MouseEvent.ROLL_OVER,this.onNonHictoricOverHandler);
-         this.counterTf.removeEventListener(MouseEvent.ROLL_OUT,this.onNonHictoricOutHandler);
-         this.nonHistoricCheckBox.removeEventListener(ButtonEvent.CLICK,this.onNonHictoricClickHandler);
-         this.nonHistoricCheckBox.removeEventListener(MouseEvent.ROLL_OVER,this.onNonHictoricOverHandler);
-         this.nonHistoricCheckBox.removeEventListener(MouseEvent.ROLL_OUT,this.onNonHictoricOutHandler);
          this.nonHistoricCheckBox.dispose();
          this.nonHistoricCheckBox = null;
-         this.clearBtn.removeEventListener(ButtonEvent.CLICK,this.onClearBtnClickHandler);
+         this.fantasticalCheckBox.dispose();
+         this.fantasticalCheckBox = null;
          this.clearBtn.dispose();
          this.clearBtn = null;
-         this.table.removeEventListener(CustomizationIndicatorEvent.REMOVAL,this.onTableDeleteItemRemovalHandler);
          this.table.dispose();
          this.table = null;
-         this.unclearBtn.removeEventListener(MouseEvent.CLICK,this.onUnclearBtnClickHandler);
          this.unclearBtn.dispose();
          this.unclearBtn = null;
          this._headerData.dispose();
@@ -155,7 +180,8 @@ package net.wg.gui.lobby.vehicleCustomization
          this._dataProvider = null;
          this.clearTF = null;
          this.titleTF = null;
-         this.counterTf = null;
+         this.nonHistoricCounterTF = null;
+         this.fantasticalCounterTF = null;
          super.onDispose();
       }
       
@@ -192,17 +218,32 @@ package net.wg.gui.lobby.vehicleCustomization
          removeAllS();
       }
       
-      private function onNonHictoricClickHandler(param1:Event) : void
+      private function onNonHistoricCheckBoxClickHandler(param1:Event) : void
       {
-         showOnlyNonHistoricS(this.nonHistoricCheckBox.selected);
+         showNonHistoricAndFantasticalS(this.nonHistoricCheckBox.selected,this.fantasticalCheckBox.selected);
       }
       
-      private function onNonHictoricOverHandler(param1:Event) : void
+      private function onFantasticalCheckBoxClickHandler(param1:Event) : void
+      {
+         showNonHistoricAndFantasticalS(this.nonHistoricCheckBox.selected,this.fantasticalCheckBox.selected);
+      }
+      
+      private function onNonHistoricCheckBoxRollOverHandler(param1:Event) : void
       {
          this._tooltipMgr.showSpecial(TOOLTIPS_CONSTANTS.TECH_CUSTOMIZATION_NONHISTORIC_ITEM,null);
       }
       
-      private function onNonHictoricOutHandler(param1:Event) : void
+      private function onFantasticalCheckBoxRollOverHandler(param1:Event) : void
+      {
+         this._tooltipMgr.showSpecial(TOOLTIPS_CONSTANTS.TECH_CUSTOMIZATION_FANTASTICAL_ITEM,null);
+      }
+      
+      private function onNonHistoricCheckBoxRollOutHandler(param1:Event) : void
+      {
+         this._tooltipMgr.hide();
+      }
+      
+      private function onFantasticalCheckBoxRollOutHandler(param1:Event) : void
       {
          this._tooltipMgr.hide();
       }
@@ -210,7 +251,8 @@ package net.wg.gui.lobby.vehicleCustomization
       private function onUnclearBtnClickHandler(param1:Event) : void
       {
          this.nonHistoricCheckBox.selected = false;
-         showOnlyNonHistoricS(this.nonHistoricCheckBox.selected);
+         this.fantasticalCheckBox.selected = false;
+         showNonHistoricAndFantasticalS(this.nonHistoricCheckBox.selected,this.fantasticalCheckBox.selected);
       }
       
       private function onTableDeleteItemRemovalHandler(param1:CustomizationIndicatorEvent) : void

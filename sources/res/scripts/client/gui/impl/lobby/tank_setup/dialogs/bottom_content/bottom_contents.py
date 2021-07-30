@@ -1,5 +1,5 @@
 from gui.impl.lobby.dialogs.contents.exchange_content import ExchangeContent, ExchangeMoneyInfo
-from gui.impl.lobby.tank_setup.base_sub_model_view import BaseSubModelView
+from gui.impl.common.base_sub_model_view import BaseSubModelView
 from gui.impl.lobby.tank_setup.configurations.base import BaseDealPanel
 from gui.impl.wrappers.user_compound_price_model import BuyPriceModelBuilder
 from gui.shared.gui_items.fitting_item import canBuyWithGoldExchange
@@ -11,9 +11,10 @@ from skeletons.gui.shared import IItemsCache
 
 class AmmunitionBuyBottomContent(BaseSubModelView):
 
-    def __init__(self, viewModel, items):
+    def __init__(self, viewModel, vehicle, items):
         super(AmmunitionBuyBottomContent, self).__init__(viewModel)
         self.__items = items
+        self.__vehicle = vehicle
 
     def onLoading(self, *args, **kwargs):
         super(AmmunitionBuyBottomContent, self).onLoading(*args, **kwargs)
@@ -21,7 +22,7 @@ class AmmunitionBuyBottomContent(BaseSubModelView):
 
     def update(self):
         super(AmmunitionBuyBottomContent, self).update()
-        BaseDealPanel.updateDealPanelPrice(self.__items, self._viewModel)
+        BaseDealPanel.updateDealPanelPrice(self.__vehicle, self.__items, self._viewModel)
 
 
 class ExchangePriceBottomContent(ExchangeContent):
@@ -55,8 +56,10 @@ class PriceBottomContent(BaseSubModelView):
         super(PriceBottomContent, self).onLoading(*args, **kwargs)
         self.update()
 
-    def update(self):
+    def update(self, price=None, defPrice=None):
         super(PriceBottomContent, self).update()
+        self.__price = price if price is not None else self.__price
+        self.__defPrice = defPrice if price is not None else self.__defPrice
         with self._viewModel.transaction() as (model):
             price = model.getPrice()
             defPrice = model.getDefPrice()
@@ -66,6 +69,7 @@ class PriceBottomContent(BaseSubModelView):
                 BuyPriceModelBuilder.fillPriceModel(priceModel=model, price=self.__price, defPrice=self.__defPrice)
             isEnabled = not self.__price.isDefined() or canBuyWithGoldExchange(self.__price, self.__itemsCache.items.stats.money, self.__itemsCache.items.shop.exchangeRate)
             model.setIsDisabled(not isEnabled)
+        return
 
 
 class NeedRepairBottomContent(PriceBottomContent):
@@ -76,16 +80,16 @@ class NeedRepairBottomContent(PriceBottomContent):
         self.__autoRepair = self.__vehicle.isAutoRepair
         super(NeedRepairBottomContent, self).__init__(viewModel, self.__price)
 
-    def initialize(self, *args, **kwargs):
-        super(NeedRepairBottomContent, self).initialize(*args, **kwargs)
+    def _addListeners(self):
+        super(NeedRepairBottomContent, self)._addListeners()
         self._viewModel.onAutoRenewalChanged += self.__updateAutoRepair
 
-    def finalize(self):
+    def _removeListeners(self):
         self._viewModel.onAutoRenewalChanged -= self.__updateAutoRepair
-        super(NeedRepairBottomContent, self).finalize()
+        super(NeedRepairBottomContent, self)._removeListeners()
 
-    def update(self):
-        super(NeedRepairBottomContent, self).update()
+    def update(self, price=None, defPrice=None):
+        super(NeedRepairBottomContent, self).update(price, defPrice)
         self._viewModel.setIsAutoRenewalEnabled(self.__autoRepair)
 
     def __updateAutoRepair(self, args):

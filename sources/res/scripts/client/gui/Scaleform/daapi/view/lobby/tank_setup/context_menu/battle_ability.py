@@ -12,12 +12,17 @@ class BattleAbilityItemContextMenu(BaseEquipmentItemContextMenu):
 
     def _initFlashValues(self, ctx):
         super(BattleAbilityItemContextMenu, self)._initFlashValues(ctx)
-        self._slotsCount = self._getVehicle().battleAbilities.installed.getCapacity()
+        self._slotsCount = self._getVehicleItems().installed.getCapacity()
 
     def _isVisible(self, label):
         if label == CMLabel.INFORMATION:
             return False
+        if label == TankSetupCMLabel.TAKE_OFF:
+            return False
         return super(BattleAbilityItemContextMenu, self)._isVisible(label)
+
+    def _getVehicleItems(self):
+        return self._getVehicle().battleAbilities
 
 
 class BattleAbilitySlotContextMenu(BaseEquipmentSlotContextMenu):
@@ -33,14 +38,17 @@ class BattleAbilitySlotContextMenu(BaseEquipmentSlotContextMenu):
 
     def _initFlashValues(self, ctx):
         super(BattleAbilitySlotContextMenu, self)._initFlashValues(ctx)
-        self._slotsCount = self._getVehicle().battleAbilities.installed.getCapacity()
+        self._slotsCount = self._getVehicleItems().installed.getCapacity()
 
     def _isVisible(self, label):
         if label == CMLabel.INFORMATION:
             return False
         if label == TankSetupCMLabel.TAKE_OFF:
-            return True
+            return False
         return super(BattleAbilitySlotContextMenu, self)._isVisible(label)
+
+    def _getVehicleItems(self):
+        return self._getVehicle().battleAbilities
 
 
 class HangarBattleAbilitySlotContextMenu(BaseHangarEquipmentSlotContextMenu):
@@ -58,7 +66,7 @@ class HangarBattleAbilitySlotContextMenu(BaseHangarEquipmentSlotContextMenu):
 
     def _initFlashValues(self, ctx):
         super(HangarBattleAbilitySlotContextMenu, self)._initFlashValues(ctx)
-        self._slotsCount = self._getVehicle().battleAbilities.installed.getCapacity()
+        self._slotsCount = self._getVehicleItems().installed.getCapacity()
 
     def _putOnAction(self, onId):
         copyVehicle = self._getCopyVehicle()
@@ -67,14 +75,14 @@ class HangarBattleAbilitySlotContextMenu(BaseHangarEquipmentSlotContextMenu):
 
     def _getCopyVehicle(self):
         copyVehicle = super(HangarBattleAbilitySlotContextMenu, self)._getCopyVehicle()
-        copyVehicle.battleAbilities.setByOther(self._getVehicle().battleAbilities)
+        copyVehicle.battleAbilities.setByOther(self._getVehicleItems())
         return copyVehicle
 
     def _isVisible(self, label):
         if label == CMLabel.INFORMATION:
             return False
         if label == TankSetupCMLabel.TAKE_OFF:
-            return True
+            return False
         return super(HangarBattleAbilitySlotContextMenu, self)._isVisible(label)
 
     @async
@@ -83,3 +91,6 @@ class HangarBattleAbilitySlotContextMenu(BaseHangarEquipmentSlotContextMenu):
         action = ActionsFactory.getAction(ActionsFactory.INSTALL_BATTLE_ABILITIES, vehicle)
         result = yield ActionsFactory.asyncDoAction(action)
         callback(result)
+
+    def _getVehicleItems(self):
+        return self._getVehicle().battleAbilities

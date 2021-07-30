@@ -54,7 +54,7 @@ class IGuiController(object):
     def clearTriggers(self, componentID):
         raise NotImplementedError
 
-    def showInteractiveHint(self, componentID, content, triggers=None):
+    def showInteractiveHint(self, componentID, content, triggers=None, silent=False):
         raise NotImplementedError
 
     def closeInteractiveHint(self, componentID):

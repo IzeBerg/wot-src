@@ -23,6 +23,9 @@ class BaseOptDeviceInteractor(BaseInteractor):
     def getCurrentLayout(self):
         return self.getItem().optDevices.layout
 
+    def getSetupLayout(self):
+        return self.getItem().optDevices.setupLayouts
+
     def getCurrentCategories(self, slotID):
         return self.getItem().optDevices.slots[slotID].categories
 
@@ -33,6 +36,7 @@ class OptDeviceInteractor(BaseOptDeviceInteractor):
     def getVehicleAfterInstall(self):
         vehicle = super(OptDeviceInteractor, self).getVehicleAfterInstall()
         vehicle.optDevices.setInstalled(*self.getItem().optDevices.layout)
+        vehicle.optDevices.dynSlotType = self.getItem().optDevices.dynSlotType
         return vehicle
 
     def setItemInCurrentLayout(self, slotID, item):
@@ -44,8 +48,8 @@ class OptDeviceInteractor(BaseOptDeviceInteractor):
         return
 
     @adisp.process
-    def demountProcess(self, slotID, isDestroy=False, isFitting=False, callback=None):
-        action = ActionsFactory.getAction(ActionsFactory.REMOVE_OPT_DEVICE, self.getItem(), self.getInstalledLayout()[slotID], slotID, isDestroy, isFitting)
+    def demountProcess(self, slotID, isDestroy=False, isFitting=False, everywhere=True, callback=None):
+        action = ActionsFactory.getAction(ActionsFactory.REMOVE_OPT_DEVICE, self.getItem(), self.getInstalledLayout()[slotID], slotID, isDestroy, isFitting, everywhere)
         if action is not None:
             result = yield action.doAction()
             callback(result)
@@ -60,7 +64,8 @@ class OptDeviceInteractor(BaseOptDeviceInteractor):
         removedItem = self.getCurrentLayout()[slotID]
         needToRemoveItem = removedItem is not None and removedItem in self.getInstalledLayout()
         if needToRemoveItem:
-            canChange = yield await_callback(self.demountProcess)(self.getInstalledLayout().index(removedItem), isFitting=True)
+            everywhere = self.getSetupLayout().getIntCDs().count(removedItem.intCD) == 1
+            canChange = yield await_callback(self.demountProcess)(self.getInstalledLayout().index(removedItem), isFitting=True, everywhere=everywhere)
         if canChange:
             self.setItemInCurrentLayout(slotID, item)
             if needToRemoveItem:
@@ -84,13 +89,13 @@ class OptDeviceInteractor(BaseOptDeviceInteractor):
         return
 
     @async
-    def demountItem(self, itemIntCD, isDestroy=False):
+    def demountItem(self, itemIntCD, isDestroy=False, everywhere=True):
         result = None
         item = self._itemsCache.items.getItemByCD(itemIntCD)
         currentSlotID = self.getCurrentLayout().index(item)
         installedSlotID = self.getInstalledLayout().index(item)
         if currentSlotID is not None and installedSlotID is not None:
-            result = yield await_callback(self.demountProcess)(installedSlotID, isDestroy=isDestroy)
+            result = yield await_callback(self.demountProcess)(installedSlotID, isDestroy=isDestroy, everywhere=everywhere)
             if result:
                 self.setItemInCurrentLayout(currentSlotID, None)
                 actionType = BaseSetupModel.DESTROY_SLOT_ACTION if isDestroy else BaseSetupModel.DEMOUNT_SLOT_ACTION
@@ -100,7 +105,7 @@ class OptDeviceInteractor(BaseOptDeviceInteractor):
         return
 
     def revert(self):
-        for slotID in xrange(self.getInstalledLayout().getCapacity()):
+        for slotID in range(self.getInstalledLayout().getCapacity()):
             self.setItemInCurrentLayout(slotID, None)
 
         for slotID, optDevice in enumerate(self.getInstalledLayout()):
@@ -124,7 +129,15 @@ class OptDeviceInteractor(BaseOptDeviceInteractor):
     def upgradeModule(self, itemIntCD, callback):
         optDevice = self._itemsCache.items.getItemByCD(int(itemIntCD))
         slotIdx = self.getInstalledLayout().index(optDevice)
-        action = ActionsFactory.getAction(ActionsFactory.UPGRADE_OPT_DEVICE, vehicle=self.getItem(), module=optDevice, slotIdx=slotIdx)
+        setupIdx = None
+        for layoutIdx, setup in self.getSetupLayout().setups.iteritems():
+            if optDevice in setup:
+                setupIdx = layoutIdx
+                slotIdx = setup.index(optDevice)
+                break
+
+        vehicle = None if setupIdx is None else self.getItem()
+        action = ActionsFactory.getAction(ActionsFactory.UPGRADE_OPT_DEVICE, vehicle=vehicle, module=optDevice, setupIdx=setupIdx, slotIdx=slotIdx)
         result = yield action.doAction() if action is not None else None
         if result:
             upgradedIntCD = optDevice.descriptor.upgradeInfo.upgradedCompDescr
@@ -137,9 +150,12 @@ class OptDeviceInteractor(BaseOptDeviceInteractor):
         return
 
     def updateFrom(self, vehicle, onlyInstalled=True):
-        self.getItem().optDevices.setInstalled(*vehicle.optDevices.installed)
+        super(OptDeviceInteractor, self).updateFrom(vehicle, onlyInstalled)
+        items = self.getItem().optDevices
+        items.setInstalled(*vehicle.optDevices.installed)
+        items.setupLayouts.setSetups(vehicle.optDevices.setupLayouts.setups)
         if not onlyInstalled:
-            for slotID in xrange(vehicle.optDevices.layout.getCapacity()):
+            for slotID in range(vehicle.optDevices.layout.getCapacity()):
                 self.setItemInCurrentLayout(slotID, None)
 
             for slotID, optDevice in enumerate(vehicle.optDevices.layout):
@@ -149,6 +165,7 @@ class OptDeviceInteractor(BaseOptDeviceInteractor):
 
     @async
     def showExitConfirmDialog(self):
-        result = yield await(showTankSetupExitConfirmDialog(items=self.getChangedList(), vehInvID=self.getItem().invID, fromSection=self.getName(), startState=(self.getChangedList() or BuyAndExchangeStateEnum).BUY_NOT_REQUIRED if 1 else None))
+        changedList = self.getChangedList()
+        result = yield await(showTankSetupExitConfirmDialog(items=changedList, vehicle=self.getItem(), fromSection=self.getName(), startState=(changedList or BuyAndExchangeStateEnum).BUY_NOT_REQUIRED if 1 else None))
         raise AsyncReturn(result)
         return

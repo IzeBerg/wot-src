@@ -6,10 +6,10 @@ from visual_script.block import Block, InitParam
 from visual_script.dependency import dependencyImporter
 from visual_script.misc import ASPECT, errorVScript
 from visual_script.slot_types import SLOT_TYPE, arrayOf
-from visual_script.arena_blocks import ArenaMeta, GetUDOByNameBase
+from visual_script.arena_blocks import ArenaMeta, GetUDOByNameBase, GetDataFromStorageBase
 from visual_script.tunable_event_block import TunableEventBlock
 from PlayerEvents import g_playerEvents
-helpers, clientArena = dependencyImporter('helpers', 'ClientArena')
+helpers, clientArena, dependency, battle_session = dependencyImporter('helpers', 'ClientArena', 'helpers.dependency', 'skeletons.gui.battle_session')
 
 class ClientArena(Block, ArenaMeta):
 
@@ -220,8 +220,11 @@ class ArenaPeriodStartEvent(Block, ArenaMeta):
     def __init__(self, *args, **kwargs):
         super(ArenaPeriodStartEvent, self).__init__(*args, **kwargs)
         self._start = self._makeEventOutputSlot('start')
+        self._update = self._makeEventOutputSlot('update')
         self._timeToEndSlot = self._makeDataOutputSlot('timeToEnd', SLOT_TYPE.FLOAT, self._execTimeToEnd)
         self._periodType, = self._getInitParams()
+        self.__periodTypeLast = None
+        return
 
     @property
     def _arena(self):
@@ -269,7 +272,11 @@ class ArenaPeriodStartEvent(Block, ArenaMeta):
     def __onPeriodChange(self, period, periodEndTime, periodLength, *args):
         if self._periodType != period:
             return
-        self._start.call()
+        if period == self.__periodTypeLast:
+            self._update.call()
+        else:
+            self._start.call()
+        self.__periodTypeLast = period
 
 
 class OnBattleRoundFinished(Block, ArenaMeta):
@@ -363,3 +370,14 @@ class GetVehicles(Block, ArenaMeta):
     @classmethod
     def blockAspects(cls):
         return [ASPECT.CLIENT]
+
+
+class GetDataFromStorage(GetDataFromStorageBase):
+
+    @classmethod
+    def blockAspects(cls):
+        return [ASPECT.CLIENT]
+
+    def _exec(self):
+        self.arena = BigWorld.player().arena
+        super(GetDataFromStorage, self)._exec()

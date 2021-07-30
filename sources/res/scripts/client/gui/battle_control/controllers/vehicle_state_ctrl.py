@@ -3,8 +3,8 @@ import weakref, BigWorld, BattleReplay, Event, SoundGroups, nations
 from BattleReplay import CallbackDataNames
 from debug_utils import LOG_CURRENT_EXCEPTION
 from gui.battle_control import avatar_getter
-from gui.battle_control.battle_constants import VEHICLE_VIEW_STATE, VEHICLE_WAINING_INTERVAL, VEHICLE_UPDATE_INTERVAL, BATTLE_CTRL_ID, DEVICE_STATE_NORMAL
 from gui.battle_control.controllers.interfaces import IBattleController
+from gui.battle_control.battle_constants import VEHICLE_VIEW_STATE, VEHICLE_WAINING_INTERVAL, VEHICLE_UPDATE_INTERVAL, BATTLE_CTRL_ID, DEVICE_STATE_NORMAL
 from gui.shared.utils.TimeInterval import TimeInterval
 from shared_utils import first
 
@@ -48,11 +48,11 @@ class _SpeedStateHandler(_StateHandler):
 
     def _invalidate(self, vehicle):
         fwdSpeedLimit, bckwdSpeedLimit = vehicle.typeDescriptor.physics['speedLimits']
-        if self.__isOwnVehicle:
-            player = BigWorld.player()
+        player = BigWorld.player()
+        if self.__isOwnVehicle or player.isObserver():
             if player is None:
                 return ()
-            if player.isVehicleAlive:
+            if player.isVehicleAlive or player.isObserver():
                 speed, _ = player.getOwnVehicleSpeeds()
             else:
                 speed = 0
@@ -207,7 +207,7 @@ class VehicleStateController(IBattleController):
     def getControllerID(self):
         return BATTLE_CTRL_ID.OBSERVED_VEHICLE_STATE
 
-    def startControl(self):
+    def startControl(self, *_):
         pass
 
     def stopControl(self):
@@ -352,6 +352,8 @@ class VehicleStateController(IBattleController):
                 notifications.clear()
             SoundGroups.g_instance.soundModes.setCurrentNation(nations.NAMES[nationID])
         self.onVehicleControlling(vehicle)
+        if VEHICLE_VIEW_STATE.DUAL_GUN_STATE_UPDATED in self.__cachedStateValues.keys():
+            self.onVehicleStateUpdated(VEHICLE_VIEW_STATE.DUAL_GUN_STATE_UPDATED, self.getStateValue(VEHICLE_VIEW_STATE.DUAL_GUN_STATE_UPDATED))
         if self.__updater is not None:
             self.__updater.start()
         return

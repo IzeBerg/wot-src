@@ -17,10 +17,12 @@ package net.wg.gui.lobby.techtree.nodes
    import net.wg.gui.lobby.techtree.constants.XpTypeStrings;
    import net.wg.gui.lobby.techtree.controls.ActionButton;
    import net.wg.gui.lobby.techtree.controls.XPField;
+   import net.wg.gui.lobby.techtree.interfaces.IBorderHighlighted;
    import net.wg.gui.lobby.techtree.interfaces.IResearchContainer;
+   import net.wg.gui.lobby.techtree.postProgression.NodeHighlightAnimation;
    import scaleform.clik.constants.InvalidationType;
    
-   public class ResearchItem extends Renderer
+   public class ResearchItem extends Renderer implements IBorderHighlighted
    {
       
       private static const DEFAULT_EXTRA_ICON_X:int = 41;
@@ -32,6 +34,10 @@ package net.wg.gui.lobby.techtree.nodes
       private static const EXTRA_ICON_ALPHA:Number = 1;
        
       
+      public var lockedModuleHighlight:NodeHighlightAnimation = null;
+      
+      public var dashes:MovieClip;
+      
       public var typeIcon:ModuleTypesUIWithFill;
       
       public var levelIcon:MovieClip;
@@ -41,6 +47,8 @@ package net.wg.gui.lobby.techtree.nodes
       public var button:ActionButton;
       
       public var xpField:XPField;
+      
+      private var _lastInvalidatedState:uint = 0;
       
       public function ResearchItem()
       {
@@ -83,6 +91,11 @@ package net.wg.gui.lobby.techtree.nodes
          }
       }
       
+      public function isDashed() : Boolean
+      {
+         return valueObject && (valueObject.state & NODE_STATE_FLAGS.DASHED) > 0;
+      }
+      
       override protected function validateData() : void
       {
          var _loc2_:String = null;
@@ -91,6 +104,8 @@ package net.wg.gui.lobby.techtree.nodes
          this.nameField.wordWrap = true;
          this.nameField.autoSize = TextFieldAutoSize.CENTER;
          this.nameField.text = _loc1_;
+         this.dashes.visible = this.isDashed();
+         this.dashes.gotoAndPlay(1);
          _loc2_ = getItemType();
          if(_loc2_.length > 0)
          {
@@ -144,6 +159,9 @@ package net.wg.gui.lobby.techtree.nodes
          }
          this.levelIcon = null;
          this.nameField = null;
+         this.dashes = null;
+         this.lockedModuleHighlight.dispose();
+         this.lockedModuleHighlight = null;
          super.onDispose();
       }
       
@@ -165,6 +183,16 @@ package net.wg.gui.lobby.techtree.nodes
       {
          hit.removeEventListener(MouseEvent.CLICK,this.onHitClickHandler);
          super.removeNodeEventHandlers();
+      }
+      
+      public function get isBorderHighlighted() : Boolean
+      {
+         return this.lockedModuleHighlight.isHighlighted;
+      }
+      
+      public function set isBorderHighlighted(param1:Boolean) : void
+      {
+         this.lockedModuleHighlight.isHighlighted = param1;
       }
       
       private function applyExtraSource() : void
@@ -210,6 +238,29 @@ package net.wg.gui.lobby.techtree.nodes
          {
             dispatchEvent(new TechTreeEvent(TechTreeEvent.CLICK_2_OPEN,nodeState,_index,entityType));
          }
+      }
+      
+      override public function invalidateNodeState() : void
+      {
+         updateStateProps();
+         if(Math.abs(this._lastInvalidatedState - valueObject.state) != NODE_STATE_FLAGS.DASHED)
+         {
+            App.contextMenuMgr.hide();
+         }
+         invalidateData();
+         this._lastInvalidatedState = valueObject.state;
+      }
+      
+      override protected function rollOut() : void
+      {
+         super.rollOut();
+         dispatchEvent(new TechTreeEvent(TechTreeEvent.ON_MODULE_HOVER,nodeState,-1,entityType));
+      }
+      
+      override protected function rollOver() : void
+      {
+         super.rollOver();
+         dispatchEvent(new TechTreeEvent(TechTreeEvent.ON_MODULE_HOVER,nodeState,_index,entityType));
       }
    }
 }

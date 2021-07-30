@@ -18,6 +18,9 @@ class AmmunitionPanelInject(AmmunitionPanelInjectMeta, IGlobalListener):
     def getOnPanelSectionSelected(self):
         return self.getInjectView().onPanelSectionSelected
 
+    def getOnEscKeyDown(self):
+        return self.getInjectView().onEscKeyDown
+
     def onHangarSwitchAnimComplete(self, isComplete):
         self.getInjectView().setHangarSwitchAnimState(isComplete)
 
@@ -33,12 +36,13 @@ class AmmunitionPanelInject(AmmunitionPanelInjectMeta, IGlobalListener):
         self.startGlobalListening()
         self.getInjectView().onSizeChanged += self.__onSizeChanged
         self.getInjectView().onPanelSectionResized += self.__onPanelSectionResized
+        self.getInjectView().onVehicleChanged += self.__onVehicleChanged
 
     def _removeInjectContentListeners(self):
         super(AmmunitionPanelInject, self)._removeInjectContentListeners()
         self.stopGlobalListening()
         self.getInjectView().onSizeChanged -= self.__onSizeChanged
-        self.getInjectView().onPanelSectionResized -= self.__onPanelSectionResized
+        self.getInjectView().onVehicleChanged -= self.__onVehicleChanged
 
     def __onSizeChanged(self, width, height, offsetY):
         self.as_setPanelSizeS(width, height, offsetY)
@@ -49,3 +53,6 @@ class AmmunitionPanelInject(AmmunitionPanelInjectMeta, IGlobalListener):
            'offsetY': offsetY, 
            'width': width, 
            'height': height})
+
+    def __onVehicleChanged(self):
+        self.as_clearHelpLayoutS()

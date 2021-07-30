@@ -11,6 +11,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public var goToResearch:Function;
       
+      public var goToPostProgression:Function;
+      
       public var addVehToCompare:Function;
       
       private var _researchPanelVO:ResearchPanelVO;
@@ -34,6 +36,12 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.goToResearch,"goToResearch" + Errors.CANT_NULL);
          this.goToResearch();
+      }
+      
+      public function goToPostProgressionS() : void
+      {
+         App.utils.asserter.assertNotNull(this.goToPostProgression,"goToPostProgression" + Errors.CANT_NULL);
+         this.goToPostProgression();
       }
       
       public function addVehToCompareS() : void

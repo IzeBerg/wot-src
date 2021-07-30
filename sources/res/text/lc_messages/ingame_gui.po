@@ -93,7 +93,7 @@ msgid "chat_example/attention_to_base_def"
 msgstr "Защищайте базу!"
 
 msgid "chat_example/attention_to_cell"
-msgstr "Внимание на <Квадрат на миникарте>!"
+msgstr "Внимание на <Квадрат на мини-карте>!"
 
 msgid "chat_example/attention_to_position"
 msgstr "Внимание на позицию!"
@@ -160,7 +160,7 @@ msgid "chat_example/reloading_unavailable"
 msgstr "Боекомплект пуст."
 
 msgid "chat_example/spg_aim_area"
-msgstr "Навожусь на <Квадрат на миникарте>!"
+msgstr "Навожусь на <Квадрат на мини-карте>!"
 
 msgid "chat_example/supporting_ally"
 msgstr "<Имя союзника>, я помогу тебе!"
@@ -821,6 +821,9 @@ msgstr "Движение невозможно: экипаж уничтожен."
 msgid "player_errors/cant_move/engine_damaged"
 msgstr "Движение невозможно: повреждён двигатель."
 
+msgid "player_errors/cant_move/vehicle_destroyed"
+msgstr "Движение невозможно: машина уничтожена."
+
 msgid "player_errors/cant_shoot/crew_inactive"
 msgstr "Стрельба невозможна: экипаж уничтожен."
 
@@ -885,11 +888,20 @@ msgstr "Авиация прибыла и готова к бомбометани�
 msgid "player_messages/COMBAT_EQUIPMENT_READY_INSPIRE"
 msgstr "Ваш экипаж готов воодушевить союзников."
 
+msgid "player_messages/COMBAT_EQUIPMENT_READY_MINEFIELD_EPIC"
+msgstr "Минное поле готово к развёртыванию."
+
 msgid "player_messages/COMBAT_EQUIPMENT_READY_RECON"
 msgstr "Самолёт прибыл и готов вести разведку."
 
+msgid "player_messages/COMBAT_EQUIPMENT_READY_REGENERATION_KIT_EPIC"
+msgstr "Полевой ремонт готов к использованию."
+
 msgid "player_messages/COMBAT_EQUIPMENT_READY_SMOKE"
 msgstr "Батарея дымопуска готова вести огонь."
+
+msgid "player_messages/COMBAT_EQUIPMENT_READY_STEALTH_RADAR"
+msgstr "Скрытность готова к использованию."
 
 msgid "player_messages/COMBAT_EQUIPMENT_USED_ARTILLERY"
 msgstr "Артбатарея %(player)s произвела залп."
@@ -903,11 +915,20 @@ msgstr "%(player)s создаёт зону восстановления."
 msgid "player_messages/COMBAT_EQUIPMENT_USED_INSPIRE"
 msgstr "%(player)s активирует воодушевление."
 
+msgid "player_messages/COMBAT_EQUIPMENT_USED_MINEFIELD_EPIC"
+msgstr "%(player)s развернул минное поле."
+
 msgid "player_messages/COMBAT_EQUIPMENT_USED_RECON"
 msgstr "%(player)s вызвал самолёт-разведчик."
 
+msgid "player_messages/COMBAT_EQUIPMENT_USED_REGENERATION_KIT_EPIC"
+msgstr "%(player)s использовал полевой ремонт."
+
 msgid "player_messages/COMBAT_EQUIPMENT_USED_SMOKE"
 msgstr "%(player)s поставил дымовую завесу."
+
+msgid "player_messages/COMBAT_EQUIPMENT_USED_STEALTH_RADAR"
+msgstr "%(player)s скрыт."
 
 msgid "player_messages/DEATH_FROM_ARTILLERY_ALLY_ALLY"
 msgstr "%(target)s уничтожен огнём артбатареи."
@@ -1571,6 +1592,23 @@ msgstr "Машина разбита"
 
 msgid "postmortem_messages/DEATH_UNKNOWN"
 msgstr "Ваша машина уничтожена"
+
+msgid "prebattleAmmunitionPanel/currentSetup"
+msgstr "В бою используется выбранный комплект:"
+
+msgid "prebattleAmmunitionPanel/footer"
+msgstr ""
+"Выбери комплектацию до завершения отсчёта; далее она будет использоваться в "
+"бою."
+
+msgid "prebattleAmmunitionPanel/header"
+msgstr "Выбор комплектации"
+
+msgid "prebattleAmmunitionPanel/loadingTimer"
+msgstr "Выбор комплекта оснащения: {seconds} с"
+
+msgid "prebattleAmmunitionPanel/waitinForPlayers"
+msgstr "Выбор комплекта оснащения:"
 
 msgid "prebattlemarker/prebattlemarker_0"
 msgstr "Овраг"

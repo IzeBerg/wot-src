@@ -1,7 +1,7 @@
 from collections import defaultdict
 from operator import itemgetter
 import typing, season_common
-from shared_utils import first
+from shared_utils import first, findFirst
 from skeletons.gui.game_control import ISeasonProvider
 from helpers import time_utils, dependency
 from shared_utils import collapseIntervals
@@ -118,7 +118,7 @@ class SeasonProvider(ISeasonProvider):
             return 0
 
     def getEventEndTimestamp(self):
-        if self.hasPrimeTimesLeft():
+        if self.hasPrimeTimesLeftForCurrentCycle():
             currServerTime = time_utils.getCurrentLocalServerTimestamp()
             actualSeason = self.getCurrentSeason() or self.getNextSeason()
             actualCycle = actualSeason.getCycleInfo() or actualSeason.getNextCycleInfo(currServerTime)
@@ -221,17 +221,6 @@ class SeasonProvider(ISeasonProvider):
             return timeLeft + 1
         return 0
 
-    def hasPrimeTimesLeft(self):
-        season = self.getCurrentSeason()
-        if season is not None and season.hasActiveCycle(int(self.__getNow())):
-            seasonEnd = season.getEndDate()
-            peripheryIDs = self.__getAllPeripheryIDs()
-            for peripheryID, primeTime in self.getPrimeTimes().iteritems():
-                if peripheryID in peripheryIDs and primeTime.getPeriodsBetween(int(self.__getNow()), seasonEnd):
-                    return True
-
-        return False
-
     def hasAvailablePrimeTimeServers(self):
         allPeripheryIDs = self.__getAllPeripheryIDs()
         for peripheryID in allPeripheryIDs:
@@ -248,6 +237,14 @@ class SeasonProvider(ISeasonProvider):
     def isFrozen(self):
         status, _, _ = self.getPrimeTimeStatus()
         return status == PrimeTimeStatus.FROZEN
+
+    def hasPrimeTimesLeftForCurrentCycle(self):
+        currentCycleEndTime, isCycleActive = self.getCurrentCycleInfo()
+        if not isCycleActive:
+            return False
+        primeTimes = self.getPrimeTimes()
+        currentTime = time_utils.getCurrentLocalServerTimestamp()
+        return findFirst(lambda primeTime: primeTime.getNextPeriodStart(currentTime, currentCycleEndTime), primeTimes.values(), default=False)
 
     def _getHostList(self):
         hostsList = g_preDefinedHosts.getSimpleHostsList(g_preDefinedHosts.hostsWithRoaming(), withShortName=True)
@@ -266,11 +263,8 @@ class SeasonProvider(ISeasonProvider):
 
     def __getAllPeripheryIDs(self):
         if self.__connectionMgr.isStandalone():
-            allPeripheryIDs = {
-             self.__connectionMgr.peripheryID}
-        else:
-            allPeripheryIDs = {host.peripheryID for host in g_preDefinedHosts.hostsWithRoaming()}
-        return allPeripheryIDs
+            return {self.__connectionMgr.peripheryID}
+        return set([ host.peripheryID for host in g_preDefinedHosts.hostsWithRoaming() ])
 
     @staticmethod
     def __getNow():

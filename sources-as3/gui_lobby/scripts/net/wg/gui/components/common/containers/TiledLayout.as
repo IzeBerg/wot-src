@@ -7,23 +7,25 @@ package net.wg.gui.components.common.containers
    
    public class TiledLayout extends GroupLayout
    {
+      
+      public static const DEFAULT_COLUMNS_COUNT:uint = 8;
        
       
       private var _rendererWidth:int;
       
       private var _rendererHeight:int;
       
-      private var _columns:uint = 8;
+      private var _columns:uint;
       
       private var _alignment:String;
       
-      public function TiledLayout(param1:int, param2:int, param3:uint = 8, param4:String = "left")
+      public function TiledLayout(param1:int, param2:int, param3:uint = 8, param4:String = "")
       {
          super();
          this._rendererWidth = param1;
          this._rendererHeight = param2;
          this._columns = param3;
-         this._alignment = param4;
+         this._alignment = param4 == "" ? TEXT_ALIGN.LEFT : param4;
       }
       
       override public function invokeLayout() : Object

@@ -71,6 +71,7 @@ class PreQueueEntryPoint(BasePrbEntryPoint):
 
 class PreQueueEntity(BasePreQueueEntity, ListenersCollection):
     __metaclass__ = EventVehicleMeta
+    _QUEUE_TIMEOUT_MSG_KEY = '#system_messages:arena_start_errors/prb/kick/timeout'
 
     def __init__(self, modeFlags, queueType, subscriber):
         super(PreQueueEntity, self).__init__(entityFlags=FUNCTIONAL_FLAG.PRE_QUEUE, modeFlags=modeFlags)
@@ -222,7 +223,8 @@ class PreQueueEntity(BasePreQueueEntity, ListenersCollection):
             self._requestCtx.stopProcessing(True)
         self._invokeListeners('onKickedFromQueue', self.getQueueType(), *args)
         self._exitFromQueueUI()
-        SystemMessages.pushI18nMessage('#system_messages:arena_start_errors/prb/kick/timeout', type=SystemMessages.SM_TYPE.Warning)
+        if self._isNeedToShowSystemMessage():
+            SystemMessages.pushI18nMessage(self._QUEUE_TIMEOUT_MSG_KEY, type=SystemMessages.SM_TYPE.Warning)
 
     def onKickedFromArena(self, *args):
         self._requestCtx.stopProcessing(True)
@@ -256,3 +258,6 @@ class PreQueueEntity(BasePreQueueEntity, ListenersCollection):
         if result:
             g_eventDispatcher.showParentControlNotification()
         return result
+
+    def _isNeedToShowSystemMessage(self):
+        return True

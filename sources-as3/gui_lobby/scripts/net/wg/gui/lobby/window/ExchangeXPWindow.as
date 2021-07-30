@@ -127,6 +127,8 @@ package net.wg.gui.lobby.window
       
       private var _tooltipMgr:ITooltipMgr = null;
       
+      private var _targetXP:int = -1;
+      
       public function ExchangeXPWindow()
       {
          this._locale = Boolean(App.utils) ? App.utils.locale : null;
@@ -288,10 +290,9 @@ package net.wg.gui.lobby.window
       
       public function as_setWalletStatus(param1:Object, param2:Boolean) : void
       {
-         var _loc4_:Boolean = false;
          var _loc3_:IWalletStatusVO = App.utils.voMgr.walletStatusVO;
          _loc3_.update(param1);
-         _loc4_ = !this.onHandHaveNotMoney.updateStatus(_loc3_.goldStatus);
+         var _loc4_:Boolean = !this.onHandHaveNotMoney.updateStatus(_loc3_.goldStatus);
          this.resultHaveNotMoney.updateStatus(_loc3_.goldStatus);
          var _loc5_:Boolean = !this.onHandHaveNotFreeXp.updateStatus(_loc3_.freeXpStatus);
          this.resultHaveNotFreeXp.updateStatus(_loc3_.freeXpStatus);
@@ -307,6 +308,12 @@ package net.wg.gui.lobby.window
          this._totalXp = param1;
          this.itExperienceBefore.text = Boolean(this._locale) ? this._locale.gold(this._totalXp) : this._totalXp.toString();
          invalidate(TOTAL_RESULT_INVALID);
+      }
+      
+      public function as_setTargetXP(param1:int) : void
+      {
+         this._targetXP = param1;
+         invalidate(TOTAL_AVAILABLE_XP_INVALID);
       }
       
       private function applyFilters() : void
@@ -441,6 +448,11 @@ package net.wg.gui.lobby.window
          this.nsGoldExchange.enabled = !_loc1_;
          this.nsGoldExchange.maximum = this._selectedGold;
          this.nsXpExchange.maximum = !!_loc1_ ? Number(Math.min(this._xpForFree,_loc3_)) : Number(this._selectedGold * actualRate);
+         if(this._targetXP >= 0)
+         {
+            this._selectedGold = this._targetXP / actualRate >> 0;
+            this._selectedXp = this._targetXP;
+         }
       }
       
       private function onCbSelectAllSelectHandler(param1:Event) : void

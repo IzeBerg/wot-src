@@ -16,6 +16,7 @@ package net.wg.gui.lobby.epicBattles.views
    import net.wg.infrastructure.base.meta.IEpicBattlesAfterBattleViewMeta;
    import net.wg.infrastructure.base.meta.impl.EpicBattlesAfterBattleViewMeta;
    import net.wg.utils.IScheduler;
+   import net.wg.utils.StageSizeBoundaries;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.events.ButtonEvent;
    import scaleform.clik.events.InputEvent;
@@ -42,17 +43,21 @@ package net.wg.gui.lobby.epicBattles.views
       
       private static const INTRO_ANIMATION_START_DELAY:int = 1500;
       
-      private static const STANDARD_TOP_RIBBON_RATIO:Number = 0.58;
-      
       private static const RANK_TO_BAR_GAP:int = 150;
       
       private static const BAR_TO_BUTTON_GAP:int = 100;
       
       private static const RANK_Y_OFFSET:int = 130;
       
-      private static const REWARDS_TO_TITLE_GAP:int = -400;
+      private static const REWARDS_TO_TITLE_GAP_SMALL:int = -400;
+      
+      private static const REWARDS_TO_TITLE_GAP_MEDIUM:int = -450;
+      
+      private static const REWARDS_TO_TITLE_GAP_BIG:int = -500;
       
       private static const RANK_TOP_OFFSET:int = 60;
+      
+      private static const NEXT_BTN_TO_RIBBON_GAP:int = -200;
        
       
       public var closeButton:CloseButtonText = null;
@@ -209,6 +214,7 @@ package net.wg.gui.lobby.epicBattles.views
          var _loc5_:int = 0;
          var _loc6_:int = 0;
          var _loc7_:int = 0;
+         var _loc8_:int = 0;
          super.draw();
          if(this._completedBattleData)
          {
@@ -234,6 +240,7 @@ package net.wg.gui.lobby.epicBattles.views
             {
                _loc4_ = App.appWidth;
                _loc5_ = _loc4_ >> 1;
+               this.rewardRibbon.ribbonSize = RewardRibbon.SIZE_MEDIUM;
                this.background.updateStage(_loc4_,_loc2_);
                this.closeButton.x = _loc4_ - this.closeButton.width - OFFSET_CLOSE_BUTTON | 0;
                this.closeButton.y = OFFSET_CLOSE_BUTTON;
@@ -245,8 +252,17 @@ package net.wg.gui.lobby.epicBattles.views
                this.fameBar.y = this.maxLevelInfo.y = _loc7_;
                this.nextButton.y = _loc7_ + BAR_TO_BUTTON_GAP;
                this.playerRank.y += RANK_TOP_OFFSET;
-               this.rewardRibbon.y = _loc2_ * STANDARD_TOP_RIBBON_RATIO ^ 0;
-               this.titleTextWrapper.y = this.rewardRibbon.y + REWARDS_TO_TITLE_GAP;
+               this.rewardRibbon.y = this.nextButton.y + NEXT_BTN_TO_RIBBON_GAP;
+               _loc8_ = REWARDS_TO_TITLE_GAP_SMALL;
+               if(_loc2_ > StageSizeBoundaries.HEIGHT_864 && _loc2_ <= StageSizeBoundaries.HEIGHT_1024)
+               {
+                  _loc8_ = REWARDS_TO_TITLE_GAP_MEDIUM;
+               }
+               else if(_loc2_ > StageSizeBoundaries.HEIGHT_1024)
+               {
+                  _loc8_ = REWARDS_TO_TITLE_GAP_BIG;
+               }
+               this.titleTextWrapper.y = this.rewardRibbon.y + _loc8_;
                this.nextButton.x = _loc5_ - (this.nextButton.width >> 1);
                this.titleTextWrapper.x = _loc4_ - this.titleTextWrapper.getWidth() >> 1;
                this.playerRank.x = _loc5_;
@@ -324,10 +340,14 @@ package net.wg.gui.lobby.epicBattles.views
          this.rewardRibbon.show();
          this._ribbonDisplayed = true;
          onRibbonStartsPlayingS();
+         this.maxLevelInfo.visible = this._completedBattleData.questPanelVisible;
          if(this._completedBattleData.maxLvlReached)
          {
             this._fameBarFadeOutTween = new Tween(FADE_IN_LENGTH,this.fameBar,{"alpha":0},{"delay":FAME_BAR_DELAY});
-            this._maxLevelInfoFadeInTween = new Tween(FADE_IN_LENGTH,this.maxLevelInfo,{"alpha":1},{"delay":MAX_LEVEL_INFO_DELAY});
+            if(this._completedBattleData.questPanelVisible)
+            {
+               this._maxLevelInfoFadeInTween = new Tween(FADE_IN_LENGTH,this.maxLevelInfo,{"alpha":1},{"delay":MAX_LEVEL_INFO_DELAY});
+            }
          }
       }
       

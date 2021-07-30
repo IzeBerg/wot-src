@@ -585,8 +585,6 @@ package
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_EPICABILITYPOINTS:String = "#messenger:serviceChannelMessages/battleResults/epicAbilityPoints";
       
-      public static const SERVICECHANNELMESSAGES_BATTLERESULTS_EPICREWARDPOINTS:String = "#messenger:serviceChannelMessages/battleResults/epicRewardPoints";
-      
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_EVENTCOIN:String = "#messenger:serviceChannelMessages/battleResults/eventCoin";
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_BPCOIN:String = "#messenger:serviceChannelMessages/battleResults/bpcoin";
@@ -1829,12 +1827,6 @@ package
       
       public static const SERVICECHANNELMESSAGES_CREWBOOKSCOUNT:String = "#messenger:serviceChannelMessages/crewBooksCount";
       
-      public static const SERVICECHANNELMESSAGES_FLEXCHANGE_QUESTS:String = "#messenger:serviceChannelMessages/flExchange/quests";
-      
-      public static const SERVICECHANNELMESSAGES_FLEXCHANGE_QUESTS_POINTS:String = "#messenger:serviceChannelMessages/flExchange/quests/points";
-      
-      public static const SERVICECHANNELMESSAGES_FLEXCHANGE_QUESTS_REWARD:String = "#messenger:serviceChannelMessages/flExchange/quests/reward";
-      
       public static const SERVICECHANNELMESSAGES_RANKEDFINALEAWARDSNOTIFICATION_TITLE:String = "#messenger:serviceChannelMessages/rankedFinaleAwardsNotification/title";
       
       public static const SERVICECHANNELMESSAGES_RANKEDFINALEAWARDSNOTIFICATION_CONGRATULATION:String = "#messenger:serviceChannelMessages/rankedFinaleAwardsNotification/congratulation";
@@ -2001,6 +1993,10 @@ package
       
       public static const SERVICECHANNELMESSAGES_SELECTABLECREWBOOK_BROCHURE:String = "#messenger:serviceChannelMessages/selectableCrewbook/brochure";
       
+      public static const SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_DISCARDALLPAIRSMODIFICATION_BODY:String = "#messenger:serviceChannelMessages/vehiclePostProgression/discardAllPairsModification/body";
+      
+      public static const SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_DISCARDALLPAIRSMODIFICATION_TITLE:String = "#messenger:serviceChannelMessages/vehiclePostProgression/discardAllPairsModification/title";
+      
       public static const DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_ENUM:Array = [DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_OFFLINE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_NOTREADY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_READY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_INBATTLE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_AFK];
        
       
@@ -2011,8 +2007,7 @@ package
       
       public static function getSquadChannelTooltipsStatus(param1:String) : String
       {
-         var _loc2_:String = null;
-         _loc2_ = "#messenger:" + "dialogs/squadChannel/tooltips/status/" + param1;
+         var _loc2_:String = "#messenger:" + "dialogs/squadChannel/tooltips/status/" + param1;
          if(DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_ENUM.indexOf(_loc2_) == -1)
          {
             DebugUtils.LOG_WARNING("[getSquadChannelTooltipsStatus]:locale key \"" + _loc2_ + "\" was not found");

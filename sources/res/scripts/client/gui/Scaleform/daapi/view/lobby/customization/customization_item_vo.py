@@ -85,7 +85,7 @@ def buildCustomizationItemDataVO(item, count=None, isApplied=False, isDarked=Fal
 
 class CustomizationCarouselRendererVO(object):
     __slots__ = ('intCD', 'typeId', 'isWide', 'icon', 'hasBonus', 'locked', 'buyPrice',
-                 'quantity', 'isRental', 'autoRentEnabled', 'showDetailItems', 'isNonHistoric',
+                 'quantity', 'isRental', 'autoRentEnabled', 'showDetailItems', 'customizationDisplayType',
                  'isSpecial', 'isDarked', 'isAlreadyUsed', 'showAlert', 'buyOperationAllowed',
                  'extraNames', 'showRareIcon', 'isEquipped', 'rentalInfoText', 'imageCached',
                  'isAllSeasons', 'noveltyCounter', 'formIconSource', 'defaultIconAlpha',
@@ -105,7 +105,7 @@ class CustomizationCarouselRendererVO(object):
         self.isRental = item.isRentable
         self.autoRentEnabled = autoRentEnabled
         self.showDetailItems = showDetailItems
-        self.isNonHistoric = not item.isHistorical()
+        self.customizationDisplayType = item.customizationDisplayType()
         self.isSpecial = isSpecial
         self.isDarked = isDarked
         self.isAlreadyUsed = isAlreadyUsed
@@ -143,7 +143,7 @@ class CustomizationCarouselRendererVO(object):
            'isRental': self.isRental, 
            'autoRentEnabled': self.autoRentEnabled, 
            'showDetailItems': self.showDetailItems, 
-           'isNonHistoric': self.isNonHistoric, 
+           'customizationDisplayType': self.customizationDisplayType, 
            'isSpecial': self.isSpecial, 
            'isDarked': self.isDarked, 
            'isAlreadyUsed': self.isAlreadyUsed, 

@@ -51,7 +51,7 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards
       
       private var _data:RankedRewardsYearVO = null;
       
-      private var _rewardCircleTPos:int = 0;
+      private var _rewardPointsPos:int = 0;
       
       private var _tooltipMgr:ITooltipMgr = null;
       
@@ -72,7 +72,7 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards
          this.titleIcon.maintainAspectRatio = false;
          this.titleIcon.addEventListener(UILoaderEvent.COMPLETE,this.onTitleIconCompleteHandler);
          this.rewardsContainer.addEventListener(RewardYearEvent.MAIN_AWARD_SHOW,this.onRewardsContainerMainAwardShowHandler);
-         this._rewardCircleTPos = this.rewardsContainer.getCirclePos();
+         this._rewardPointsPos = this.rewardsContainer.getPointsPos();
          this.titleArea.addEventListener(MouseEvent.MOUSE_OVER,this.onTitleAreaMouseOverHandler);
          this.titleArea.addEventListener(MouseEvent.MOUSE_OUT,this.onTitleAreaMouseOutHandler);
          this._tooltipProps = new TooltipProps(BaseTooltips.TYPE_INFO,0,0);
@@ -138,7 +138,7 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards
             _loc5_ = App.appWidth / StageSizeBoundaries.WIDTH_1920;
             _loc6_ = App.appHeight / StageSizeBoundaries.HEIGHT_1080;
             _loc7_ = Math.min(_loc5_,_loc6_);
-            _loc8_ = Math.max(0,this._rewardCircleTPos * _loc7_ - (_height + viewPadding.top >> 1));
+            _loc8_ = Math.max(0,this._rewardPointsPos * _loc7_ - (_height + viewPadding.top >> 1));
             this.bg.scaleX = this.bg.scaleY = _loc7_;
             _loc9_ = this.bg.width;
             _loc9_ += _loc9_ % 2;
@@ -156,8 +156,8 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards
       
       override protected function onDispose() : void
       {
-         this.titleArea.addEventListener(MouseEvent.MOUSE_OVER,this.onTitleAreaMouseOverHandler);
-         this.titleArea.addEventListener(MouseEvent.MOUSE_OUT,this.onTitleAreaMouseOutHandler);
+         this.titleArea.removeEventListener(MouseEvent.MOUSE_OVER,this.onTitleAreaMouseOverHandler);
+         this.titleArea.removeEventListener(MouseEvent.MOUSE_OUT,this.onTitleAreaMouseOutHandler);
          this.titleArea = null;
          this.titleTF = null;
          this.titleIcon.removeEventListener(UILoaderEvent.COMPLETE,this.onTitleIconCompleteHandler);

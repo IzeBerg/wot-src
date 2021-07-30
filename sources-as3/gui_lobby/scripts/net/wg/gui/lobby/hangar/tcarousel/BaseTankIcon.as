@@ -96,6 +96,8 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       private var _isEarnCrystals:Boolean = false;
       
+      private var _unlockedInBattle:Boolean = false;
+      
       public function BaseTankIcon()
       {
          super();
@@ -217,6 +219,7 @@ package net.wg.gui.lobby.hangar.tcarousel
          this._isBuySlot = param1.buySlot;
          this._isBuyTank = param1.buyTank || param1.restoreTank;
          this._isRentPromotion = param1.isRentPromotion;
+         this._unlockedInBattle = param1.unlockedInBattle;
          this.crystalsIcon.gotoAndStop(!!param1.isCrystalsLimitReached ? CRYSTALS_LIMIT_REACH_FRAME : CRYSTALS_FRAME);
          if(this._isBuyTank)
          {
@@ -276,7 +279,7 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       private function updateLockBg() : void
       {
-         this.lockedBG.visible = !(this._isBuySlot || this._isBuyTank) && (this._isLockBackground || !enabled);
+         this.lockedBG.visible = !(this._isBuySlot || this._isBuyTank) && (this._isLockBackground || !enabled) || this._unlockedInBattle;
       }
       
       override public function set enabled(param1:Boolean) : void

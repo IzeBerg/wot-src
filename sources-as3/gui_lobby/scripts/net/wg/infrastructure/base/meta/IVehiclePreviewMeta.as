@@ -14,6 +14,8 @@ package net.wg.infrastructure.base.meta
       
       function onCompareClickS() : void;
       
+      function onGoToPostProgressionClickS() : void;
+      
       function as_setData(param1:Object) : void;
       
       function as_setTabsData(param1:Array) : void;

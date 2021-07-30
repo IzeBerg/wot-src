@@ -3,6 +3,7 @@ package net.wg.gui.battle.views.battleTankCarousel.renderers
    import flash.display.Sprite;
    import flash.filters.DropShadowFilter;
    import flash.text.TextField;
+   import net.wg.data.constants.Values;
    import net.wg.gui.battle.components.BattleUIComponent;
    import net.wg.gui.battle.views.battleTankCarousel.data.BattleVehicleCarouselVO;
    import net.wg.gui.components.controls.UILoaderAlt;
@@ -22,6 +23,16 @@ package net.wg.gui.battle.views.battleTankCarousel.renderers
       private static const ELITE_TYPE_POS_Y:int = -3;
       
       private static const ELITE_LEVEL_POS_X:int = 19;
+      
+      private static const COOLDOWN_TEXT_BASE_POS_Y:uint = 41;
+      
+      private static const COOLDOWN_TEXT_CENTER_POS_Y:uint = 51;
+      
+      private static const COOLDOWN_TEXT_MIN_POS_Y:uint = 18;
+      
+      private static const COOLDOWN_TEXT_MAX_HEIGHT:uint = 62;
+      
+      private static const COOLDOWN_TEXT_MIN_HEIGHT:uint = 26;
       
       private static const PREM_FILTER:DropShadowFilter = new DropShadowFilter(0,90,16723968,0.7,12,12,3,2);
       
@@ -81,6 +92,17 @@ package net.wg.gui.battle.views.battleTankCarousel.renderers
          super.onDispose();
       }
       
+      public function resetData() : void
+      {
+         this.setVisibleVehicleInfo(false);
+         this.imgFavorite.visible = this.emptySlotBg.visible = false;
+         this.tankNameTF.htmlText = Values.EMPTY_STR;
+         this.flagLoader.unload();
+         this.tankIcon.unload();
+         this.tankLevel.unload();
+         this.tankType.unload();
+      }
+      
       public final function setData(param1:BattleVehicleCarouselVO) : void
       {
          if(param1 != null)
@@ -132,6 +154,20 @@ package net.wg.gui.battle.views.battleTankCarousel.renderers
          if(_loc2_)
          {
             this.cooldownTimeTF.text = this._coolDownText;
+            App.utils.commons.updateTextFieldSize(this.cooldownTimeTF,false,true);
+            if(this.cooldownTimeTF.height >= COOLDOWN_TEXT_MAX_HEIGHT)
+            {
+               this.cooldownTimeTF.height = COOLDOWN_TEXT_MAX_HEIGHT;
+               this.cooldownTimeTF.y = COOLDOWN_TEXT_MIN_POS_Y;
+            }
+            else if(this.cooldownTimeTF.height < COOLDOWN_TEXT_MIN_HEIGHT)
+            {
+               this.cooldownTimeTF.y = COOLDOWN_TEXT_BASE_POS_Y;
+            }
+            else
+            {
+               this.cooldownTimeTF.y = COOLDOWN_TEXT_CENTER_POS_Y - this.cooldownTimeTF.height / 2 >> 0;
+            }
          }
       }
       

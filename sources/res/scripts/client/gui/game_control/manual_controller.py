@@ -1,6 +1,8 @@
 import logging
+from account_helpers.AccountSettings import AccountSettings
 from frameworks.wulf import WindowLayer
 from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
+from gui.doc_loaders.manual_xml_data_reader import ManualPageTypes
 from helpers import dependency
 from skeletons.gui.game_control import IManualController
 from skeletons.gui.lobby_context import ILobbyContext
@@ -38,12 +40,21 @@ class ManualController(IManualController):
 
     def getChapterUIData(self, chapterIndex):
         chapterFilename = None
+        chapterTitle = ''
         for chapter in self.__getChapters():
             if chapter['uiData']['index'] == chapterIndex:
                 chapterFilename = chapter['filePath']
+                chapterTitle = chapter['uiData'].get('label', '')
 
-        currentChapter = manual_xml_data_reader.getChapterData(chapterFilename, self.__isBootcampEnabled(), self.getBootcampRunCount())
+        currentChapter = manual_xml_data_reader.getChapterData(chapterFilename, self.pageFilter, self.getBootcampRunCount(), chapterTitle)
         return currentChapter
+
+    def pageFilter(self, pageType):
+        if pageType == ManualPageTypes.BOOTCAMP_PAGE:
+            return self.__isBootcampEnabled()
+        if pageType == ManualPageTypes.MAPS_TRAINING_PAGE:
+            return self.lobbyContext.getServerSettings().isMapsTrainingEnabled()
+        return True
 
     def clear(self):
         self.__chapters = None
@@ -98,8 +109,24 @@ class ManualController(IManualController):
 
     def __getChapters(self):
         if self.__chapters is None:
-            self.__chapters = manual_xml_data_reader.getChapters(self.__isBootcampEnabled())
+            self.__chapters = manual_xml_data_reader.getChapters(self.pageFilter)
         return self.__chapters
+
+    def collectUnreadPages(self, chapters):
+        return [ chapter['newPageIDs'] for chapter in chapters ]
+
+    def countNewContent(self):
+        chapters = AccountSettings.getManualUnreadPages()
+        if chapters is None:
+            chapters = self.collectUnreadPages(self.__getChapters())
+            AccountSettings.setManualUnreadPages(chapters)
+        return sum(len(i) for i in chapters)
+
+    def getNewContentCount(self):
+        number = self.countNewContent()
+        if number and AccountSettings.isLobbyMenuTriggerShown():
+            return number
+        return 0
 
     def __isBootcampEnabled(self):
         return self.lobbyContext.getServerSettings().isBootcampEnabled()

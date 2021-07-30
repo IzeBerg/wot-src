@@ -34,7 +34,7 @@ package net.wg.gui.lobby.vehicleCompare
       
       public var bottomPanel:VehConfBottomPanel;
       
-      protected var offsets:Dictionary;
+      protected var _offsets:Dictionary;
       
       private var _initData:VehicleCompareConfiguratorInitDataVO;
       
@@ -46,14 +46,14 @@ package net.wg.gui.lobby.vehicleCompare
       
       public function VehicleCompareConfiguratorBaseView()
       {
-         this.offsets = new Dictionary();
+         this._offsets = new Dictionary();
          super();
       }
       
       override protected function initialize() : void
       {
          super.initialize();
-         this.offsets[this.titleTf] = new Offsets(41,115);
+         this._offsets[this.titleTf] = new Offsets(38,115);
          alpha = 0;
          this._tweenWrapper = new TweenWrapper(this);
       }
@@ -74,8 +74,8 @@ package net.wg.gui.lobby.vehicleCompare
          this.clearTween();
          this._tweenWrapper.dispose();
          this._tweenWrapper = null;
-         App.utils.data.cleanupDynamicObject(this.offsets);
-         this.offsets = null;
+         App.utils.data.cleanupDynamicObject(this._offsets);
+         this._offsets = null;
          this.bottomPanel.removeEventListener(VehConfEvent.CLOSE_CLICK,this.onBottomPanelCloseClickHandler);
          this.bottomPanel.removeEventListener(VehConfEvent.RESET_CLICK,this.onBottomPanelResetClickHandler);
          this.bottomPanel.removeEventListener(VehConfEvent.APPLY_CLICK,this.onBottomPanelApplyClickHandler);
@@ -189,6 +189,11 @@ package net.wg.gui.lobby.vehicleCompare
          {
             this._tween = new Tween(TWEEN_DURATION,this._tweenWrapper,{"alpha":0},{"onComplete":this.onHideAnimationComplete});
          }
+      }
+      
+      protected function get offsets() : Dictionary
+      {
+         return this._offsets;
       }
       
       protected function get itemsToLayoutList() : Vector.<DisplayObject>

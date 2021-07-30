@@ -627,6 +627,15 @@ CHAT_COMMANDS = Enumeration('chatCommands', [
   {'battleCmd': 1}),
  (
   BATTLE_CHAT_COMMAND_NAMES.DEFENDING_OBJECTIVE,
+  {'battleCmd': 1}),
+ (
+  BATTLE_CHAT_COMMAND_NAMES.VEHICLE_SPOTPOINT,
+  {'battleCmd': 1}),
+ (
+  BATTLE_CHAT_COMMAND_NAMES.SHOOTING_POINT,
+  {'battleCmd': 1}),
+ (
+  BATTLE_CHAT_COMMAND_NAMES.NAVIGATION_POINT,
   {'battleCmd': 1})], instance=AttributeEnumItem)
 CHAT_MEMBER_STATUSES = Enumeration('chatMemberStatuses', [
  'available',

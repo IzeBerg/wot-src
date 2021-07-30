@@ -63,6 +63,8 @@ package net.wg.gui.components.carousels
       
       private var _snapScrollPositionToItemRendererSize:Boolean = false;
       
+      private var _useExtendedViewPort:Boolean = false;
+      
       private var _horizontalGap:int = 0;
       
       private var _verticalGap:int = 0;
@@ -488,6 +490,17 @@ package net.wg.gui.components.carousels
       public function set goToDuration(param1:Number) : void
       {
          this._goToDuration = param1;
+      }
+      
+      [Inspectable(name="useExtendedViewPort",type="Boolean")]
+      public function get useExtendedViewPort() : Boolean
+      {
+         return this._useExtendedViewPort;
+      }
+      
+      public function set useExtendedViewPort(param1:Boolean) : void
+      {
+         this._useExtendedViewPort = param1;
       }
       
       public function get goToIndex() : int

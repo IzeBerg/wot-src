@@ -131,7 +131,8 @@ package net.wg.gui.messenger.forms
       
       private function dispatchSearchEv() : void
       {
-         var _loc1_:String = this.searchNameInput.text;
+         var _loc1_:String = null;
+         _loc1_ = this.searchNameInput.text;
          this.searchResultList.selectedIndex = -1;
          this.searchButton.enabled = this.joinButton.enabled = false;
          dispatchEvent(new ChannelsFormEvent(ChannelsFormEvent.ON_SEARCH_CHANNEL_CLICK,true,false,_loc1_));

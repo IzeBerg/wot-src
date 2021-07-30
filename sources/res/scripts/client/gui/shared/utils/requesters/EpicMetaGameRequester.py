@@ -1,4 +1,4 @@
-import BigWorld
+import typing, BigWorld
 from adisp import async
 from gui.shared.utils.requesters.abstract import AbstractSyncDataRequester
 from skeletons.gui.shared.utils.requesters import IEpicMetaGameRequester
@@ -7,11 +7,11 @@ class EpicMetaGameRequester(AbstractSyncDataRequester, IEpicMetaGameRequester):
 
     @property
     def playerLevelInfo(self):
-        return self.getCacheValue('metaLevel', (0, 0, 0))
+        return self.getCacheValue('metaLevel', (1, 0))
 
     @property
     def seasonData(self):
-        return self.getCacheValue('seasonData', (0, False, None))
+        return self.getCacheValue('seasonData', (0, None, dict()))
 
     @property
     def skillPoints(self):

@@ -61,6 +61,8 @@ package
       
       public static const PLAYER_ERRORS_CANT_MOVE_CHASSIS_DAMAGED:String = "#ingame_gui:player_errors/cant_move/chassis_damaged";
       
+      public static const PLAYER_ERRORS_CANT_MOVE_VEHICLE_DESTROYED:String = "#ingame_gui:player_errors/cant_move/vehicle_destroyed";
+      
       public static const PLAYER_ERRORS_CANT_SHOOT_VEHICLE_DESTROYED:String = "#ingame_gui:player_errors/cant_shoot/vehicle_destroyed";
       
       public static const PLAYER_ERRORS_CANT_SHOOT_CREW_INACTIVE:String = "#ingame_gui:player_errors/cant_shoot/crew_inactive";
@@ -889,6 +891,12 @@ package
       
       public static const PLAYER_MESSAGES_COMBAT_EQUIPMENT_READY_INSPIRE:String = "#ingame_gui:player_messages/COMBAT_EQUIPMENT_READY_INSPIRE";
       
+      public static const PLAYER_MESSAGES_COMBAT_EQUIPMENT_READY_REGENERATION_KIT_EPIC:String = "#ingame_gui:player_messages/COMBAT_EQUIPMENT_READY_REGENERATION_KIT_EPIC";
+      
+      public static const PLAYER_MESSAGES_COMBAT_EQUIPMENT_READY_MINEFIELD_EPIC:String = "#ingame_gui:player_messages/COMBAT_EQUIPMENT_READY_MINEFIELD_EPIC";
+      
+      public static const PLAYER_MESSAGES_COMBAT_EQUIPMENT_READY_STEALTH_RADAR:String = "#ingame_gui:player_messages/COMBAT_EQUIPMENT_READY_STEALTH_RADAR";
+      
       public static const PLAYER_MESSAGES_COMBAT_EQUIPMENT_USED_ARTILLERY:String = "#ingame_gui:player_messages/COMBAT_EQUIPMENT_USED_ARTILLERY";
       
       public static const PLAYER_MESSAGES_COMBAT_EQUIPMENT_USED_BOMBER:String = "#ingame_gui:player_messages/COMBAT_EQUIPMENT_USED_BOMBER";
@@ -900,6 +908,12 @@ package
       public static const PLAYER_MESSAGES_COMBAT_EQUIPMENT_USED_INSPIRE:String = "#ingame_gui:player_messages/COMBAT_EQUIPMENT_USED_INSPIRE";
       
       public static const PLAYER_MESSAGES_COMBAT_EQUIPMENT_USED_HEALPOINT:String = "#ingame_gui:player_messages/COMBAT_EQUIPMENT_USED_HEALPOINT";
+      
+      public static const PLAYER_MESSAGES_COMBAT_EQUIPMENT_USED_REGENERATION_KIT_EPIC:String = "#ingame_gui:player_messages/COMBAT_EQUIPMENT_USED_REGENERATION_KIT_EPIC";
+      
+      public static const PLAYER_MESSAGES_COMBAT_EQUIPMENT_USED_MINEFIELD_EPIC:String = "#ingame_gui:player_messages/COMBAT_EQUIPMENT_USED_MINEFIELD_EPIC";
+      
+      public static const PLAYER_MESSAGES_COMBAT_EQUIPMENT_USED_STEALTH_RADAR:String = "#ingame_gui:player_messages/COMBAT_EQUIPMENT_USED_STEALTH_RADAR";
       
       public static const PLAYER_MESSAGES_COMBAT_BR_EQUIPMENT_READY:String = "#ingame_gui:player_messages/COMBAT_BR_EQUIPMENT_READY";
       
@@ -1756,6 +1770,16 @@ package
       public static const OPTDEVICERESURRECTION_AMMOBAY:String = "#ingame_gui:optDeviceResurrection/ammoBay";
       
       public static const LEVELPROGRESS_MAXLEVEL:String = "#ingame_gui:levelProgress/maxLevel";
+      
+      public static const PREBATTLEAMMUNITIONPANEL_HEADER:String = "#ingame_gui:prebattleAmmunitionPanel/header";
+      
+      public static const PREBATTLEAMMUNITIONPANEL_FOOTER:String = "#ingame_gui:prebattleAmmunitionPanel/footer";
+      
+      public static const PREBATTLEAMMUNITIONPANEL_WAITINFORPLAYERS:String = "#ingame_gui:prebattleAmmunitionPanel/waitinForPlayers";
+      
+      public static const PREBATTLEAMMUNITIONPANEL_LOADINGTIMER:String = "#ingame_gui:prebattleAmmunitionPanel/loadingTimer";
+      
+      public static const PREBATTLEAMMUNITIONPANEL_CURRENTSETUP:String = "#ingame_gui:prebattleAmmunitionPanel/currentSetup";
        
       
       public function INGAME_GUI()

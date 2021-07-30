@@ -295,6 +295,10 @@ package net.wg.data.constants
       
       public static const BATTLE_ROYALE_CONSUMABLE_BUTTON:String = "BattleRoyaleConsumableButtonUI";
       
+      public static const MAPS_TRAINING_SHELL_BUTTON:String = "MapsTrainingShellButtonUI";
+      
+      public static const EPIC_BATTLE_CONSUMABLE_BUTTON:String = "EpicBattleConsumableButtonUI";
+      
       public static const EVENT_SHELL_BUTTON_BATTLE:String = "EventShellButtonBattleUI";
       
       public static const EVENT_EQUIPMENT_BUTTON:String = "EventEquipmentButtonUI";
@@ -336,6 +340,10 @@ package net.wg.data.constants
       public static const EPIC_TEAM_LEFT_RENDERER_UI:String = "EpicTeamLeftRendererUI";
       
       public static const EPIC_TEAM_RIGHT_RENDERER_UI:String = "EpicTeamRightRendererUI";
+      
+      public static const EPIC_REWARD_COMPONENT_RENDERER_UI:String = "EpicRewardComponentUI";
+      
+      public static const EPIC_QUEST_TEXT_AWARD_BLOCK:String = "EpicQuestTextAwardBlockUI";
       
       public static const BATTLE_RESULTS_STATS_LINE:String = "statsLineUI";
       
@@ -679,6 +687,8 @@ package net.wg.data.constants
       
       public static const FAKE_ITEM_NODE:String = "FakeItemNode";
       
+      public static const VEHICLE_PARAMETERS_UI:String = "VehicleParametersUI";
+      
       public static const RESEARCH_ITEMS_ARROW:String = "NationTreeArrowUI";
       
       public static const VEHICLE_COMPARE_ANIM:String = "VehicleCompareAnimUI";
@@ -706,6 +716,8 @@ package net.wg.data.constants
       public static const CONTETN_BUY_TRADE_IN_CONTAINER:String = "ContentBuyTradeInContainerUI";
       
       public static const VEH_PARAMS_RENDERER_UI:String = "VehParamRendererUI";
+      
+      public static const VEH_PARAMS_RENDERER_WITH_HIGHLIGHT_UI:String = "VehParamRendererWithHighlightUI";
       
       public static const BATTLE_HINT_PANEL:String = "HintPanelUI";
       
@@ -881,6 +893,8 @@ package net.wg.data.constants
       
       public static const RETREAT_UI_LINKAGE:String = "msgRetreatUI";
       
+      public static const UNLOCK_TANK_LEVEL_UI_LINKAGE:String = "msgTankLevelUnlockUI";
+      
       public static const PLAYER_PLATOON_INVITE_UI:String = "PlatoonInviteRendererUI";
       
       public static const PLATOON_MEMBER_LIST_ITEM_UI:String = "PlatoonMemberListItemUI";
@@ -890,6 +904,8 @@ package net.wg.data.constants
       public static const DELTA_STATUS_INDICATOR_UI:String = "EpicSkillViewDeltaParameterUI";
       
       public static const TEXT_PARAMETER_BLOCK_UI:String = "EpicSkillViewTextParameterBlockUI";
+      
+      public static const ABILITY_BATTLE_RANK_ITEM:String = "AbilityBattleRankItemUI";
       
       public static const RENTAL_TERM_SLOT_BUTTON_UI:String = "RentalTermSlotButtonUI";
       
@@ -992,6 +1008,8 @@ package net.wg.data.constants
       public static const BLACK_HP_BAR:String = "black_hp_bar";
       
       public static const STORE_BLUEPRINT_COST_RENDERER:String = "BlueprintCostRendererUI";
+      
+      public static const RESEARCH_POST_PROGRESSION_ENTRY_POINT:String = "PostProgressionEntryPointUI";
        
       
       public function Linkages()

@@ -22,6 +22,8 @@ package net.wg.gui.lobby.hangar.ammunitionPanel.data
       
       public var roleMessage:String = "";
       
+      public var vehicleCD:int = -1;
+      
       public function VehicleStatusVO(param1:Object)
       {
          super(param1);

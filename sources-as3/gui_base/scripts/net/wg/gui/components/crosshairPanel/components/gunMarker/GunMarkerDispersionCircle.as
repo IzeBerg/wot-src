@@ -57,12 +57,12 @@ package net.wg.gui.components.crosshairPanel.components.gunMarker
                this.currMixingMC.visible = false;
             }
             this.currMixingMC = this._mixings[GunMarkerConsts.GUN_MIXING_PREFIX + this._type];
-            if(this.invalidateCrosshair != null)
-            {
-               this.invalidateCrosshair();
-            }
             if(this.currMixingMC)
             {
+               if(this.invalidateCrosshair != null)
+               {
+                  this.invalidateCrosshair();
+               }
                this.currMixingMC.visible = true;
             }
             invalidate(GunMarkerConsts.GUN_RELOAD_VALIDATION);

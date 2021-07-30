@@ -1,8 +1,7 @@
 import cPickle, logging, math
 from collections import namedtuple, defaultdict
-import ArenaType, constants
-from soft_exception import SoftException
-import ResMgr, nations
+from helpers.i18n import makeString
+import ArenaType, ResMgr, constants, nations
 from gui import g_htmlTemplates, makeHtmlString, GUI_NATIONS
 from gui.Scaleform import getNationsFilterAssetPath
 from gui.Scaleform.daapi.view.lobby.rally.vo_converters import getReserveNameVO, getDirection
@@ -24,12 +23,13 @@ from gui.clans.items import formatField
 from gui.impl import backport
 from gui.impl.backport.backport_tooltip import DecoratedTooltipWindow
 from gui.impl.gen import R
+from gui.impl.lobby.battle_pass.tooltips.battle_pass_3d_style_not_chosen_tooltip import BattlePass3dStyleNotChosenTooltip
 from gui.impl.lobby.battle_pass.tooltips.battle_pass_completed_tooltip_view import BattlePassCompletedTooltipView
 from gui.impl.lobby.battle_pass.tooltips.battle_pass_in_progress_tooltip_view import BattlePassInProgressTooltipView
 from gui.impl.lobby.battle_pass.tooltips.battle_pass_not_started_tooltip_view import BattlePassNotStartedTooltipView
-from gui.impl.lobby.battle_pass.tooltips.battle_pass_3d_style_not_chosen_tooltip import BattlePass3dStyleNotChosenTooltip
 from gui.impl.lobby.battle_pass.tooltips.vehicle_points_tooltip_view import VehiclePointsTooltipView
 from gui.impl.lobby.premacc.squad_bonus_tooltip_content import SquadBonusTooltipContent
+from gui.impl.lobby.tooltips.veh_post_progression_entry_point_tooltip import VehPostProgressionEntryPointTooltip
 from gui.prb_control.items.stronghold_items import SUPPORT_TYPE, REQUISITION_TYPE, HEAVYTRUCKS_TYPE
 from gui.prb_control.settings import BATTLES_TO_SELECT_RANDOM_MIN_LIMIT
 from gui.server_events.events_helpers import missionsSortFunc
@@ -47,7 +47,6 @@ from gui.shared.tooltips import formatters
 from gui.shared.view_helpers import UsersInfoHelper
 from helpers import dependency
 from helpers import i18n, time_utils, html, int2roman
-from helpers.i18n import makeString
 from messenger.gui.Scaleform.data.contacts_vo_converter import ContactConverter, makeClanFullName, makeContactStatusDescription
 from messenger.m_constants import USER_TAG
 from messenger.storage import storage_getter
@@ -58,9 +57,10 @@ from skeletons.gui.game_control import IIGRController, IServerStatsController
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
-from skeletons.gui.techtree_events import ITechTreeEventsListener
 from skeletons.gui.shared import IItemsCache
+from skeletons.gui.techtree_events import ITechTreeEventsListener
 from skeletons.gui.web import IWebController
+from soft_exception import SoftException
 _logger = logging.getLogger(__name__)
 _UNAVAILABLE_DATA_PLACEHOLDER = '--'
 _PARENTHESES_OPEN = '('
@@ -647,7 +647,7 @@ class ActionTooltipData(ToolTipBaseData):
     def __init__(self, context):
         super(ActionTooltipData, self).__init__(context, TOOLTIP_TYPE.CONTROL)
 
-    def getDisplayableData(self, itemType, key, newPrice, oldPrice, isBuying, forCredits=False, rentPackage=None):
+    def getDisplayableData(self, itemType, key, newPrice, oldPrice, isBuying, forCredits=False, rentPackage=None, checkAllCurrencies=False):
         descr = ''
         hasRentCompensation = False
         hasPersonalDiscount = False
@@ -694,7 +694,7 @@ class ActionTooltipData(ToolTipBaseData):
         elif itemType == ACTION_TOOLTIPS_TYPE.ECONOMICS:
             itemName = key
         template = 'html_templates:lobby/quests/actions'
-        formatedOldPrice, formatedNewPrice = formatActionPrices(oldPrice, newPrice, isBuying)
+        formatedOldPrice, formatedNewPrice = formatActionPrices(oldPrice, newPrice, isBuying, checkAllCurrencies)
         body = i18n.makeString(TOOLTIPS.ACTIONPRICE_BODY, oldPrice=formatedOldPrice, newPrice=formatedNewPrice)
         actionUserName = ''
         if itemName:
@@ -906,6 +906,20 @@ class FortSortieTooltipData(ToolTipBaseData):
            'hintText': text_styles.standard(i18n.makeString(TOOLTIPS.FORTIFICATION_TOOLTIPFORTSORTIE_HINT)), 
            'inBattleText': text_styles.error(i18n.makeString(TOOLTIPS.FORTIFICATION_TOOLTIPFORTSORTIE_INBATTLE) + ' ' + inBattleIcon) if data.isInBattle else '', 
            'isInBattle': data.isInBattle}
+
+
+class SettingsSwitchEquipment(BlocksTooltipData):
+
+    def __init__(self, context):
+        super(SettingsSwitchEquipment, self).__init__(context, TOOLTIP_TYPE.CONTROL)
+        self._setWidth(width=400)
+
+    def _packBlocks(self, *args, **kwargs):
+        tooltipBlocks = super(SettingsSwitchEquipment, self)._packBlocks()
+        tooltipBlocks.append(formatters.packBuildUpBlockData([
+         formatters.packTitleDescBlock(text_styles.highTitle(TOOLTIPS.SETTINGS_SWITCHEQUIPMENT_HEADER), text_styles.main(TOOLTIPS.SETTINGS_SWITCHEQUIPMENT_BODY)),
+         formatters.packTextBlockData(text_styles.neutral(TOOLTIPS.SETTINGS_SWITCHEQUIPMENT_BODYFOOTER), padding={'bottom': -15})]))
+        return tooltipBlocks
 
 
 class SettingsMinimapCircles(BlocksTooltipData):
@@ -1230,7 +1244,7 @@ class HeaderMoneyAndXpTooltipData(BlocksTooltipData):
         self._btnType = None
         return
 
-    def _packBlocks(self, btnType=None, *args, **kwargs):
+    def _packBlocks(self, btnType=None, hideActionBlock=False, *args, **kwargs):
         tooltipBlocks = super(HeaderMoneyAndXpTooltipData, self)._packBlocks(*args, **kwargs)
         self._btnType = btnType
         if self._btnType is None:
@@ -1239,7 +1253,7 @@ class HeaderMoneyAndXpTooltipData(BlocksTooltipData):
         else:
             valueBlock = formatters.packMoneyAndXpValueBlock(value=self._getValue(), icon=self._getIcon(), iconYoffset=self._getIconYOffset())
             return formatters.packMoneyAndXpBlocks(tooltipBlocks, btnType=self._btnType, valueBlocks=[
-             valueBlock])
+             valueBlock], hideActionBlock=hideActionBlock)
 
     def _getValue(self):
         valueStr = '0'
@@ -1533,3 +1547,12 @@ class TechTreeNationDiscountTooltip(TechTreeEventTooltipBase):
         blocks.append(self._actionExpireBlock(closestAction))
         items.append(formatters.packBuildUpBlockData(blocks))
         return items
+
+
+class VehPostProgressionEntryPointTooltipContentWindowData(ToolTipBaseData):
+
+    def __init__(self, context):
+        super(VehPostProgressionEntryPointTooltipContentWindowData, self).__init__(context, TOOLTIPS_CONSTANTS.VEH_POST_PROGRESSION_ENTRY_POINT)
+
+    def getDisplayableData(self, intCD, parentScreen, *args, **kwargs):
+        return DecoratedTooltipWindow(VehPostProgressionEntryPointTooltip(intCD, parentScreen), useDecorator=False)

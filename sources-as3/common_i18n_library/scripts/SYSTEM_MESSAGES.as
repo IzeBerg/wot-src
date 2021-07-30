@@ -165,6 +165,8 @@ package
       
       public static const PREBATTLE_VEHICLEINVALID_EPICONLY:String = "#system_messages:prebattle/vehicleInvalid/epicOnly";
       
+      public static const PREBATTLE_VEHICLEINVALID_WILLBEUNLOCKEDINBATTLE:String = "#system_messages:prebattle/vehicleInvalid/willBeUnlockedInBattle";
+      
       public static const PREBATTLE_VEHICLEINVALID_NOTSETREADYSTATUS:String = "#system_messages:prebattle/vehicleInvalid/notSetReadyStatus";
       
       public static const PREBATTLE_VEHICLEINVALID_FALLOUTONLY:String = "#system_messages:prebattle/vehicleInvalid/falloutOnly";
@@ -1259,6 +1261,8 @@ package
       
       public static const ARTEFACT_UPGRADE_SUCCESS:String = "#system_messages:artefact_upgrade/success";
       
+      public static const ARTEFACT_UPGRADE_SUCCESS_ANALOGWASDEMOUNTED:String = "#system_messages:artefact_upgrade/success/analogWasDemounted";
+      
       public static const ARTEFACT_UPGRADE_SERVER_ERROR:String = "#system_messages:artefact_upgrade/server_error";
       
       public static const ARTEFACT_UPGRADE_VEHICLE_NEED_REPAIR:String = "#system_messages:artefact_upgrade/vehicle_need_repair";
@@ -1795,6 +1799,8 @@ package
       
       public static const UNIT_NOTIFICATION_PLAYERADDED:String = "#system_messages:unit/notification/playerAdded";
       
+      public static const UNIT_NOTIFICATION_PLAYERADDEDWITHFILTER:String = "#system_messages:unit/notification/playerAddedWithFilter";
+      
       public static const UNIT_NOTIFICATION_PLAYERREMOVED:String = "#system_messages:unit/notification/playerRemoved";
       
       public static const UNIT_NOTIFICATION_GIVELEADERSHIP:String = "#system_messages:unit/notification/giveLeadership";
@@ -2203,8 +2209,6 @@ package
       
       public static const EPICBATTLES_NOTIFICATION_NOTAVAILABLE:String = "#system_messages:epicBattles/notification/notAvailable";
       
-      public static const EPICBATTLES_PRESTIGETRIGGER_ERROR:String = "#system_messages:epicBattles/prestigeTrigger/error";
-      
       public static const LOOTBOXES_OPEN_SERVER_ERROR:String = "#system_messages:lootboxes/open/server_error";
       
       public static const LOOTBOXES_OPEN_SERVER_ERROR_DISABLED:String = "#system_messages:lootboxes/open/server_error/DISABLED";
@@ -2234,14 +2238,6 @@ package
       public static const PROGRESSIVEREWARD_SWITCH_ON:String = "#system_messages:progressiveReward/switch_on";
       
       public static const PROGRESSIVEREWARD_ERROR:String = "#system_messages:progressiveReward/error";
-      
-      public static const EVENT_PROGRESSION_BUY_VEHICLE_SERVER_ERROR:String = "#system_messages:event_progression_buy_vehicle/server_error";
-      
-      public static const EVENT_PROGRESSION_BUY_VEHICLE_SUCCESS:String = "#system_messages:event_progression_buy_vehicle/success";
-      
-      public static const EVENT_PROGRESSION_BUY_STYLE_SERVER_ERROR:String = "#system_messages:event_progression_buy_style/server_error";
-      
-      public static const EVENT_PROGRESSION_BUY_STYLE_SUCCESS:String = "#system_messages:event_progression_buy_style/success";
       
       public static const MAPS_BLACK_LIST_SELECT_SUCCESS:String = "#system_messages:maps_black_list/select/success";
       
@@ -2282,6 +2278,12 @@ package
       public static const PIGGYBANK_SWITCH_ON_BODY:String = "#system_messages:piggybank/switch_on/body";
       
       public static const PIGGYBANK_PIGGYBANKFULL:String = "#system_messages:piggyBank/piggyBankFull";
+      
+      public static const MAPS_TRAINING_SWITCH_TITLE:String = "#system_messages:maps_training/switch/title";
+      
+      public static const MAPS_TRAINING_SWITCH_OFF_BODY:String = "#system_messages:maps_training/switch_off/body";
+      
+      public static const MAPS_TRAINING_SWITCH_ON_BODY:String = "#system_messages:maps_training/switch_on/body";
       
       public static const SQUAD_BONUS_SWITCH_OFF_TITLE:String = "#system_messages:squad_bonus/switch_off/title";
       
@@ -2357,9 +2359,13 @@ package
       
       public static const BATTLEPASS_SWITCH_DISABLE_BATTLE_ROYALE_BODY:String = "#system_messages:battlePass/switch_disable/battle_royale/body";
       
-      public static const BATTLEPASS_RANKED_ENABLED:String = "#system_messages:battlePass/ranked/enabled";
+      public static const BATTLEPASS_SWITCH_ENABLED_RANKED_BODY:String = "#system_messages:battlePass/switch_enabled/ranked/body";
       
-      public static const BATTLEPASS_RANKED_DISABLED:String = "#system_messages:battlePass/ranked/disabled";
+      public static const BATTLEPASS_SWITCH_DISABLE_RANKED_BODY:String = "#system_messages:battlePass/switch_disable/ranked/body";
+      
+      public static const BATTLEPASS_SWITCH_ENABLED_EPICBATTLE_BODY:String = "#system_messages:battlePass/switch_enabled/epicBattle/body";
+      
+      public static const BATTLEPASS_SWITCH_DISABLE_EPICBATTLE_BODY:String = "#system_messages:battlePass/switch_disable/epicBattle/body";
       
       public static const UPGRADETROPHYDEVICE_SWITCH_ON_BODY:String = "#system_messages:upgradeTrophyDevice/switch_on/body";
       
@@ -2424,6 +2430,64 @@ package
       public static const DOG_TAGS_SWITCH_ON_TITLE:String = "#system_messages:dog_tags/switch_on/title";
       
       public static const DOG_TAGS_SWITCH_ON_BODY:String = "#system_messages:dog_tags/switch_on/body";
+      
+      public static const VEHICLEPOSTPROGRESSION_RESEARCHSTEPS_TITLE:String = "#system_messages:vehiclePostProgression/researchSteps/title";
+      
+      public static const VEHICLEPOSTPROGRESSION_EXPERIENCESPENT:String = "#system_messages:vehiclePostProgression/experienceSpent";
+      
+      public static const VEHICLEPOSTPROGRESSION_FREEEXPERIENCESPENT:String = "#system_messages:vehiclePostProgression/freeExperienceSpent";
+      
+      public static const VEHICLEPOSTPROGRESSION_CREDITSSPENT:String = "#system_messages:vehiclePostProgression/creditsSpent";
+      
+      public static const VEHICLEPOSTPROGRESSION_RESEARCHSTEP_BODY:String = "#system_messages:vehiclePostProgression/researchStep/body";
+      
+      public static const VEHICLEPOSTPROGRESSION_RESEARCHSTEPS_BODY:String = "#system_messages:vehiclePostProgression/researchSteps/body";
+      
+      public static const VEHICLEPOSTPROGRESSION_RESEARCHSTEPS_LEVELS_SEPARATOR:String = "#system_messages:vehiclePostProgression/researchSteps/levels/separator";
+      
+      public static const VEHICLEPOSTPROGRESSION_UNLOCKFEATURE_SHELLS_CONSUMABLES_SWITCH_TITLE:String = "#system_messages:vehiclePostProgression/unlockFeature/shells_consumables_switch/title";
+      
+      public static const VEHICLEPOSTPROGRESSION_UNLOCKFEATURE_SHELLS_CONSUMABLES_SWITCH_BODY:String = "#system_messages:vehiclePostProgression/unlockFeature/shells_consumables_switch/body";
+      
+      public static const VEHICLEPOSTPROGRESSION_UNLOCKFEATURE_OPT_DEV_BOOSTERS_SWITCH_TITLE:String = "#system_messages:vehiclePostProgression/unlockFeature/opt_dev_boosters_switch/title";
+      
+      public static const VEHICLEPOSTPROGRESSION_UNLOCKFEATURE_OPT_DEV_BOOSTERS_SWITCH_BODY:String = "#system_messages:vehiclePostProgression/unlockFeature/opt_dev_boosters_switch/body";
+      
+      public static const VEHICLEPOSTPROGRESSION_UNLOCKFEATURE_ROLESLOT_TITLE:String = "#system_messages:vehiclePostProgression/unlockFeature/roleSlot/title";
+      
+      public static const VEHICLEPOSTPROGRESSION_UNLOCKFEATURE_ROLESLOT_BODY:String = "#system_messages:vehiclePostProgression/unlockFeature/roleSlot/body";
+      
+      public static const VEHICLEPOSTPROGRESSION_MODIFICATIONPROCESSORERROR_TITLE:String = "#system_messages:vehiclePostProgression/modificationProcessorError/title";
+      
+      public static const VEHICLEPOSTPROGRESSION_MODIFICATIONPROCESSORERROR_BODY:String = "#system_messages:vehiclePostProgression/modificationProcessorError/body";
+      
+      public static const VEHICLEPOSTPROGRESSION_DISCARDPAIRMODIFICATION_TITLE:String = "#system_messages:vehiclePostProgression/discardPairModification/title";
+      
+      public static const VEHICLEPOSTPROGRESSION_DISCARDPAIRMODIFICATION_BODY:String = "#system_messages:vehiclePostProgression/discardPairModification/body";
+      
+      public static const VEHICLEPOSTPROGRESSION_DISCARDPAIRSMODIFICATION_BODY:String = "#system_messages:vehiclePostProgression/discardPairsModification/body";
+      
+      public static const VEHICLEPOSTPROGRESSION_DISCARDPAIRSMODIFICATION_MODIFICATIONS_SEPARATOR:String = "#system_messages:vehiclePostProgression/discardPairsModification/modifications/separator";
+      
+      public static const VEHICLEPOSTPROGRESSION_BUYPAIRMODIFICATION_TITLE:String = "#system_messages:vehiclePostProgression/buyPairModification/title";
+      
+      public static const VEHICLEPOSTPROGRESSION_BUYPAIRMODIFICATION_BODY:String = "#system_messages:vehiclePostProgression/buyPairModification/body";
+      
+      public static const VEHICLEPOSTPROGRESSION_CHANGESLOTCATEGORY_TITLE:String = "#system_messages:vehiclePostProgression/changeSlotCategory/title";
+      
+      public static const VEHICLEPOSTPROGRESSION_CHANGESLOTCATEGORY_BODY:String = "#system_messages:vehiclePostProgression/changeSlotCategory/body";
+      
+      public static const VEHICLEPOSTPROGRESSION_SETSLOTCATEGORY_TITLE:String = "#system_messages:vehiclePostProgression/setSlotCategory/title";
+      
+      public static const VEHICLEPOSTPROGRESSION_SETSLOTCATEGORY_BODY:String = "#system_messages:vehiclePostProgression/setSlotCategory/body";
+      
+      public static const VEHICLEPOSTPROGRESSION_VEHICLESUNLOCKPOSTPROGRESSION_TITLE:String = "#system_messages:vehiclePostProgression/vehiclesUnlockPostProgression/title";
+      
+      public static const VEHICLEPOSTPROGRESSION_VEHICLESUNLOCKPOSTPROGRESSION_SINGLE_BODY:String = "#system_messages:vehiclePostProgression/vehiclesUnlockPostProgression/single/body";
+      
+      public static const VEHICLEPOSTPROGRESSION_VEHICLESUNLOCKPOSTPROGRESSION_WELCOMEUNLOCK_BODY:String = "#system_messages:vehiclePostProgression/vehiclesUnlockPostProgression/welcomeUnlock/body";
+      
+      public static const VEHICLEPOSTPROGRESSION_DISCARDALLPAIRSMODIFICATION_BODY:String = "#system_messages:vehiclePostProgression/discardAllPairsModification/body";
        
       
       public function SYSTEM_MESSAGES()

@@ -1,10 +1,12 @@
 package net.wg.gui.bootcamp.controls
 {
+   import fl.motion.easing.Linear;
    import fl.transitions.easing.Strong;
    import flash.display.MovieClip;
    import flash.events.Event;
    import flash.utils.clearTimeout;
    import flash.utils.setTimeout;
+   import net.wg.gui.bootcamp.events.AppearEvent;
    import net.wg.utils.IScheduler;
    import scaleform.clik.motion.Tween;
    
@@ -13,19 +15,11 @@ package net.wg.gui.bootcamp.controls
       
       private static const CORNER_PADDING:int = 3;
       
-      private static const DELAY_ANIM_LOOP1:int = 5000;
-      
-      private static const DELAY_ANIM_LOOP2:int = 3000;
-      
-      private static const DELAY_ANIM_LOOP3:int = 2000;
-      
-      private static const DELAY_ANIM_LOOP4:int = 2000;
-      
-      private static const DELAY_ANIM_LOOP5:int = 0;
-      
       private static const DURATION_TIME_SCALE:int = 1000;
       
       private static const DURATION_TIME_ALPHA:int = 500;
+      
+      private static const DURATION_TIME_ALPHA_SHORT:int = 100;
       
       private static const DURATION_TIME_STEP:int = 200;
       
@@ -35,17 +29,9 @@ package net.wg.gui.bootcamp.controls
       
       private static const LABEL_VOID:String = "void";
       
-      private static const MAX_COUNT_LINES:int = 3;
+      private static const DEF_COUNT_LINES:int = 3;
       
       private static const FX_LINE:String = "fxLine";
-      
-      private static const STEP_0:int = 0;
-      
-      private static const STEP_1:int = 1;
-      
-      private static const STEP_2:int = 2;
-      
-      private static const STEP_3:int = 3;
       
       private static const START_SCALE_LONG:Number = 1.25;
       
@@ -62,11 +48,17 @@ package net.wg.gui.bootcamp.controls
       
       public var fxLine3:MovieClip = null;
       
+      public var fxLine4:MovieClip = null;
+      
       private var _isFlag:Boolean = false;
       
       private var _isCycle:Boolean = true;
       
-      private var _isDelayed:Boolean = true;
+      private var _fastDisappear:Boolean = true;
+      
+      private var _longScale:Number = 1.25;
+      
+      private var _lines:Number = 3;
       
       private var _tweenArray:Array;
       
@@ -86,6 +78,8 @@ package net.wg.gui.bootcamp.controls
       
       private var _lastHeight:Number = 0;
       
+      private var _tweenTime:Number = 1000;
+      
       public function BCLobbyTintHint()
       {
          this._tweenArray = [];
@@ -93,7 +87,7 @@ package net.wg.gui.bootcamp.controls
          this._timeoutArray = [];
          this._scheduler = App.utils.scheduler;
          super();
-         this.fxLine1.visible = this.fxLine2.visible = this.fxLine3.visible = false;
+         this.fxLine1.visible = this.fxLine2.visible = this.fxLine3.visible = this.fxLine4.visible = false;
       }
       
       private static function setupBorder(param1:MovieClip, param2:Number, param3:Number, param4:Boolean, param5:Boolean) : void
@@ -143,29 +137,11 @@ package net.wg.gui.bootcamp.controls
          param1.y = 0;
       }
       
-      private static function getStartScaleX(param1:MovieClip) : Number
-      {
-         if(param1.scaleX > param1.scaleY)
-         {
-            return START_SCALE_LONG * param1.scaleX;
-         }
-         return (START_SCALE_SHORT * param1.height + param1.width) / param1.width * param1.scaleX;
-      }
-      
-      private static function getStartScaleY(param1:MovieClip) : Number
-      {
-         if(param1.scaleX > param1.scaleY)
-         {
-            return (START_SCALE_SHORT * param1.width + param1.height) / param1.height * param1.scaleY;
-         }
-         return START_SCALE_LONG * param1.scaleY;
-      }
-      
       private function setupLines(param1:Number, param2:Number, param3:Boolean) : void
       {
          var _loc5_:MovieClip = null;
          var _loc4_:int = 1;
-         while(_loc4_ <= MAX_COUNT_LINES)
+         while(_loc4_ <= this._lines)
          {
             _loc5_ = getChildByName(FX_LINE + String(_loc4_)) as MovieClip;
             if(param3)
@@ -219,7 +195,7 @@ package net.wg.gui.bootcamp.controls
       
       private function animFxLineFinish(param1:Tween) : void
       {
-         var _loc2_:Tween = new Tween(DURATION_TIME_ALPHA,param1.target,{"alpha":0},{
+         var _loc2_:Tween = new Tween(!!this._fastDisappear ? Number(DURATION_TIME_ALPHA_SHORT) : Number(DURATION_TIME_ALPHA),param1.target,{"alpha":0},{
             "ease":Strong.easeIn,
             "onComplete":this.finishItemAnimation,
             "fastTransform":false
@@ -234,24 +210,25 @@ package net.wg.gui.bootcamp.controls
             return;
          }
          param1.visible = true;
-         var _loc2_:Number = getStartScaleX(param1);
+         var _loc2_:Number = this.getStartScaleX(param1);
          var _loc3_:Number = param1.scaleX;
-         var _loc4_:Number = getStartScaleY(param1);
+         var _loc4_:Number = this.getStartScaleY(param1);
          var _loc5_:Number = param1.scaleY;
          param1.scaleX = _loc2_;
          param1.scaleY = _loc4_;
          param1.alpha = 0;
-         var _loc6_:Tween = new Tween(DURATION_TIME_SCALE,param1,{
+         var _loc6_:Function = !!this._fastDisappear ? Linear.easeNone : Strong.easeOut;
+         var _loc7_:Tween = new Tween(this._tweenTime,param1,{
             "scaleX":_loc3_,
             "scaleY":_loc5_
-         },{"ease":Strong.easeOut});
-         var _loc7_:Tween = new Tween(DURATION_TIME_SCALE,param1,{"alpha":1},{
-            "ease":Strong.easeOut,
+         },{"ease":_loc6_});
+         var _loc8_:Tween = new Tween(this._tweenTime,param1,{"alpha":1},{
+            "ease":_loc6_,
             "onComplete":this.animFxLineFinish,
             "fastTransform":false
          });
-         this._scaleTweenArray.push(_loc6_);
-         this._tweenArray.push(_loc7_);
+         this._scaleTweenArray.push(_loc7_);
+         this._tweenArray.push(_loc8_);
       }
       
       private function resizeTweens() : void
@@ -279,15 +256,15 @@ package net.wg.gui.bootcamp.controls
             {
                _loc4_ = MovieClip(_loc3_.target);
                _loc5_ = _loc3_.position;
-               _loc6_ = _loc5_ / DURATION_TIME_SCALE;
-               _loc7_ = getStartScaleX(_loc4_);
+               _loc6_ = _loc5_ / this._tweenTime;
+               _loc7_ = this.getStartScaleX(_loc4_);
                _loc8_ = _loc4_.scaleX;
-               _loc9_ = getStartScaleY(_loc4_);
+               _loc9_ = this.getStartScaleY(_loc4_);
                _loc10_ = _loc4_.scaleY;
                _loc3_.paused = true;
                _loc4_.scaleX = _loc7_ + (_loc8_ - _loc7_) * _loc6_;
                _loc4_.scaleY = _loc9_ + (_loc10_ - _loc9_) * _loc6_;
-               _loc11_ = DURATION_TIME_SCALE - _loc5_;
+               _loc11_ = this._tweenTime - _loc5_;
                _loc12_ = new Tween(_loc11_,_loc4_,{
                   "scaleX":_loc8_,
                   "scaleY":_loc10_
@@ -296,6 +273,24 @@ package net.wg.gui.bootcamp.controls
             }
             _loc2_++;
          }
+      }
+      
+      private function getStartScaleX(param1:MovieClip) : Number
+      {
+         if(param1.scaleX > param1.scaleY)
+         {
+            return this._longScale * param1.scaleX;
+         }
+         return (START_SCALE_SHORT * param1.height + param1.width) / param1.width * param1.scaleX;
+      }
+      
+      private function getStartScaleY(param1:MovieClip) : Number
+      {
+         if(param1.scaleX > param1.scaleY)
+         {
+            return (START_SCALE_SHORT * param1.width + param1.height) / param1.height * param1.scaleY;
+         }
+         return this._longScale * param1.scaleY;
       }
       
       private function onEnterFrameHandler(param1:Event) : void
@@ -327,32 +322,17 @@ package net.wg.gui.bootcamp.controls
          }
          else
          {
-            this._scheduler.scheduleTask(this.finishItemAnimation,DURATION_TIME_SCALE);
+            this._scheduler.scheduleTask(this.finishItemAnimation,this._tweenTime);
          }
       }
       
       private function startItemAnimation() : void
       {
          this._scheduler.cancelTask(this.animItemStart);
-         if(this._currentLoopStep == STEP_0)
+         if(this._currentLoopStep == 0 || this._isCycle)
          {
-            this._scheduler.scheduleTask(this.animItemStart,DELAY_ANIM_LOOP1,STEP_0);
-         }
-         else if(this._currentLoopStep == STEP_1)
-         {
-            this._scheduler.scheduleTask(this.animItemStart,DELAY_ANIM_LOOP2,STEP_1);
-         }
-         else if(this._currentLoopStep == STEP_2)
-         {
-            this._scheduler.scheduleTask(this.animItemStart,DELAY_ANIM_LOOP3,STEP_2);
-         }
-         else if(this._currentLoopStep == STEP_3)
-         {
-            this._scheduler.scheduleTask(this.animItemStart,DELAY_ANIM_LOOP4,STEP_3);
-         }
-         else if(this._isCycle)
-         {
-            this._scheduler.scheduleTask(this.animItemStart,DELAY_ANIM_LOOP5,STEP_3);
+            this.animItemStart(this._lines);
+            dispatchEvent(new AppearEvent(AppearEvent.PREPARE));
          }
          else
          {
@@ -365,9 +345,24 @@ package net.wg.gui.bootcamp.controls
          this._isCycle = param1;
       }
       
-      public function set isDelayed(param1:Boolean) : void
+      public function set longScale(param1:Number) : void
       {
-         this._isDelayed = param1;
+         this._longScale = param1;
+      }
+      
+      public function set lines(param1:Number) : void
+      {
+         this._lines = param1;
+      }
+      
+      public function set tweenTime(param1:Number) : void
+      {
+         this._tweenTime = param1;
+      }
+      
+      public function set fastDisappear(param1:Boolean) : void
+      {
+         this._fastDisappear = param1;
       }
       
       override public function setProperties(param1:Number, param2:Number, param3:Boolean) : void
@@ -379,16 +374,7 @@ package net.wg.gui.bootcamp.controls
             if(!this._isStarted)
             {
                gotoAndStop(1);
-               if(this._isCycle && this._isDelayed)
-               {
-                  this._currentLoopStep = STEP_0;
-                  this.startItemAnimation();
-               }
-               else
-               {
-                  this._currentLoopStep = STEP_3;
-                  this.animItemStart(this._currentLoopStep);
-               }
+               this.startItemAnimation();
                this._isStarted = true;
             }
             setupBorder(this.border,param1,param2,true,!this._isFlag);
@@ -409,6 +395,7 @@ package net.wg.gui.bootcamp.controls
          this.fxLine1 = null;
          this.fxLine2 = null;
          this.fxLine3 = null;
+         this.fxLine4 = null;
          this.disposeTweens();
          this._tweenArray = null;
          this._scaleTweenArray = null;

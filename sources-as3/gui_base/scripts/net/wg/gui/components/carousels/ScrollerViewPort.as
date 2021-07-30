@@ -1,7 +1,6 @@
 package net.wg.gui.components.carousels
 {
    import flash.display.DisplayObject;
-   import flash.events.Event;
    import flash.geom.Rectangle;
    import net.wg.gui.components.carousels.interfaces.IScrollerLayoutController;
    import net.wg.gui.components.carousels.interfaces.IScrollerViewPort;
@@ -166,9 +165,20 @@ package net.wg.gui.components.carousels
          return this._needPreventInnerEvents;
       }
       
+      public function setLayoutController(param1:IScrollerLayoutController) : void
+      {
+         App.utils.asserter.assert(param1 != null,"HorizontalScrollerViewPort.SetUseDynamicLayout: You must pass a valid layout " + "controller to enable dynamic layouts!");
+         this._layoutController = param1;
+      }
+      
       public function setNeedPreventInnerEvents(param1:Boolean) : void
       {
          this._needPreventInnerEvents = param1;
+      }
+      
+      public function usesLayoutController() : Boolean
+      {
+         return this._layoutController != null;
       }
       
       protected function createRenderers(param1:int, param2:int) : void
@@ -196,11 +206,21 @@ package net.wg.gui.components.carousels
          var _loc1_:IScrollerItemRenderer = null;
          for each(_loc1_ in this._inactiveRenderers)
          {
-            _loc1_.removeEventListener(ListRendererEvent.SELECT,this.onRendererSelectHandler);
+            this.clearRendererListeners(_loc1_);
             _loc1_.dispose();
             removeChild(DisplayObject(_loc1_));
          }
          this._inactiveRenderers.splice(0,this._inactiveRenderers.length);
+      }
+      
+      protected function clearRendererListeners(param1:IScrollerItemRenderer) : void
+      {
+         param1.removeEventListener(ListRendererEvent.SELECT,this.onRendererSelectHandler);
+      }
+      
+      protected function addRendererListeners(param1:IScrollerItemRenderer) : void
+      {
+         param1.addEventListener(ListRendererEvent.SELECT,this.onRendererSelectHandler);
       }
       
       protected function deactivateRenderers(param1:int, param2:int) : void
@@ -226,7 +246,7 @@ package net.wg.gui.components.carousels
             _loc4_ = this.newRenderer();
             _loc4_.tooltipDecorator = this._tooltipDecorator;
             _loc4_.owner = this;
-            _loc4_.addEventListener(ListRendererEvent.SELECT,this.onRendererSelectHandler);
+            this.addRendererListeners(_loc4_);
             this.asserter.assert(_loc4_ is DisplayObject,"IScrollerItemRenderer must be DisplayObject");
             addChild(DisplayObject(_loc4_));
          }
@@ -244,7 +264,8 @@ package net.wg.gui.components.carousels
          {
             _loc4_.data = param1;
             _loc4_.index = param2;
-            _loc4_.selected = param2 == this._selectedIndex;
+            _loc4_.rowsCount = this.rowCount;
+            _loc4_.selected = this.isRendererSelected(param2);
             _loc4_.isViewPortEnabled = this.enabled;
             _loc4_.visible = true;
          }
@@ -259,18 +280,9 @@ package net.wg.gui.components.carousels
          return _loc4_;
       }
       
-      private function layoutRendererByController(param1:IScrollerItemRenderer) : void
+      protected function isRendererSelected(param1:int) : Boolean
       {
-         var _loc3_:Rectangle = null;
-         var _loc2_:Vector.<Rectangle> = this._layoutController.getLayout();
-         if(param1.index < _loc2_.length)
-         {
-            _loc3_ = _loc2_[param1.index];
-            param1.x = _loc3_.x;
-            param1.y = _loc3_.y;
-            param1.width = _loc3_.width;
-            param1.height = _loc3_.height;
-         }
+         return param1 == this._selectedIndex;
       }
       
       protected function layoutRenderer(param1:IScrollerItemRenderer) : void
@@ -285,7 +297,7 @@ package net.wg.gui.components.carousels
          }
       }
       
-      private function getRendererByIndex(param1:int) : IScrollerItemRenderer
+      protected function getRendererByIndex(param1:int) : IScrollerItemRenderer
       {
          var _loc2_:uint = 0;
          if(this._activeRenderers.length > 0)
@@ -344,7 +356,7 @@ package net.wg.gui.components.carousels
       {
       }
       
-      private function updateActiveRenderer() : void
+      protected function updateActiveRenderer() : void
       {
          var _loc1_:int = 0;
          var _loc2_:int = 0;
@@ -409,6 +421,37 @@ package net.wg.gui.components.carousels
             {
                this.createRenderers(_loc1_,_loc2_ - _loc1_);
             }
+         }
+      }
+      
+      protected function onRendererSelect(param1:IScrollerItemRenderer) : void
+      {
+         if(this._selectedIndex != param1.index)
+         {
+            this.switchSelectedIndex(param1.index,param1);
+         }
+      }
+      
+      protected function updateDataProviderItem(param1:int, param2:Object) : void
+      {
+         var _loc3_:IScrollerItemRenderer = this.getRendererByIndex(param1);
+         if(_loc3_)
+         {
+            _loc3_.data = param2;
+         }
+      }
+      
+      private function layoutRendererByController(param1:IScrollerItemRenderer) : void
+      {
+         var _loc3_:Rectangle = null;
+         var _loc2_:Vector.<Rectangle> = this._layoutController.getLayout();
+         if(param1.index < _loc2_.length)
+         {
+            _loc3_ = _loc2_[param1.index];
+            param1.x = _loc3_.x;
+            param1.y = _loc3_.y;
+            param1.width = _loc3_.width;
+            param1.height = _loc3_.height;
          }
       }
       
@@ -694,38 +737,19 @@ package net.wg.gui.components.carousels
          return this._inactiveRenderers;
       }
       
-      private function onRendererSelectHandler(param1:Event) : void
+      protected function get layoutController() : IScrollerLayoutController
       {
-         var _loc2_:IScrollerItemRenderer = IScrollerItemRenderer(param1.currentTarget);
-         if(this._selectedIndex != _loc2_.index)
-         {
-            this.switchSelectedIndex(_loc2_.index,_loc2_);
-         }
+         return this._layoutController;
+      }
+      
+      private function onRendererSelectHandler(param1:ListRendererEvent) : void
+      {
+         this.onRendererSelect(IScrollerItemRenderer(param1.currentTarget));
       }
       
       private function onDataProviderUpdateItemHandler(param1:ListDataProviderEvent) : void
       {
-         var _loc2_:IScrollerItemRenderer = this.getRendererByIndex(param1.index);
-         if(_loc2_)
-         {
-            _loc2_.data = param1.data;
-         }
-      }
-      
-      public function usesLayoutController() : Boolean
-      {
-         return this._layoutController != null;
-      }
-      
-      public function setLayoutController(param1:IScrollerLayoutController) : void
-      {
-         App.utils.asserter.assert(param1 != null,"HorizontalScrollerViewPort.SetUseDynamicLayout: You must pass a valid layout " + "controller to enable dynamic layouts!");
-         this._layoutController = param1;
-      }
-      
-      protected function get layoutController() : IScrollerLayoutController
-      {
-         return this._layoutController;
+         this.updateDataProviderItem(param1.index,param1.data);
       }
    }
 }

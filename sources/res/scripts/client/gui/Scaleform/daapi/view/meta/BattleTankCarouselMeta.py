@@ -15,3 +15,11 @@ class BattleTankCarouselMeta(CarouselEnvironment):
     def as_initCarouselFilterS(self, data):
         if self._isDAAPIInited():
             return self.flashObject.as_initCarouselFilter(data)
+
+    def as_useExtendedCarouselS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_useExtendedCarousel(value)
+
+    def as_scrollToSlotS(self, slotIdx):
+        if self._isDAAPIInited():
+            return self.flashObject.as_scrollToSlot(slotIdx)

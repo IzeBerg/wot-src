@@ -425,7 +425,7 @@ package net.wg.gui.lobby.techtree.nodes
          }
       }
       
-      private function updateStateProps() : void
+      protected function updateStateProps() : void
       {
          this._stateProps = NodeStateCollection.instance.getStateProps(this._entityType,!!this._dataInited ? uint(this._valueObject.state) : uint(0),this.getExtraState());
          this._nodeState = this._stateProps.state;
@@ -554,10 +554,20 @@ package net.wg.gui.lobby.techtree.nodes
       
       private function onNodeRollOutHandler(param1:MouseEvent) : void
       {
+         this.rollOut();
+      }
+      
+      protected function rollOut() : void
+      {
          App.toolTipMgr.hide();
       }
       
       private function onNodeRollOverHandler(param1:MouseEvent) : void
+      {
+         this.rollOver();
+      }
+      
+      protected function rollOver() : void
       {
          this.showTooltip();
       }

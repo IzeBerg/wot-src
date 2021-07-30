@@ -1,5 +1,6 @@
 package net.wg.gui.lobby.hangar
 {
+   import flash.display.Sprite;
    import flash.events.Event;
    import flash.events.MouseEvent;
    import flash.text.TextField;
@@ -8,7 +9,7 @@ package net.wg.gui.lobby.hangar
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
    import net.wg.gui.components.controls.IconText;
    import net.wg.gui.data.VehCompareEntrypointVO;
-   import net.wg.gui.interfaces.IButtonIconLoader;
+   import net.wg.gui.data.VehPostProgressionEntryPointVO;
    import net.wg.gui.interfaces.ISoundButtonEx;
    import net.wg.gui.lobby.hangar.data.ResearchPanelVO;
    import net.wg.infrastructure.base.meta.IResearchPanelMeta;
@@ -33,9 +34,13 @@ package net.wg.gui.lobby.hangar
       
       private static const GAP:Number = 10;
       
-      private static const VEHICLE_COMPARE_BTN_WIDTH:int = 55;
+      private static const VEHICLE_COMPARE_BTN_WIDTH:int = 40;
       
       private static const SEPARATOR:String = "_";
+      
+      private static const BNT_CONNECTOR_OFFSET:int = 1;
+      
+      private static const COMPARE_BTN_OFFSET:int = -13;
        
       
       public var button:ISoundButtonEx = null;
@@ -46,7 +51,11 @@ package net.wg.gui.lobby.hangar
       
       public var igrActionDaysLeft:TextField = null;
       
-      public var addToCompareBtn:IButtonIconLoader = null;
+      public var addToCompareBtn:ISoundButtonEx = null;
+      
+      public var gotoPostProgressionBtn:VehPostProgressionBtn = null;
+      
+      public var mcButtonsConnector:Sprite = null;
       
       private var _data:ResearchPanelVO = null;
       
@@ -72,11 +81,13 @@ package net.wg.gui.lobby.hangar
          this.igrLabel.addEventListener(MouseEvent.MOUSE_OVER,this.onIgrLabelMouseOverHandler);
          this.igrLabel.addEventListener(MouseEvent.MOUSE_OUT,this.onIgrLabelMouseOutHandler);
          App.utils.helpLayout.registerComponent(this);
+         this.gotoPostProgressionBtn.focusable = false;
+         this.gotoPostProgressionBtn.visible = false;
          this.addToCompareBtn.addEventListener(ButtonEvent.CLICK,this.onAddToCompareBtnClickHandler);
-         this.addToCompareBtn.iconSource = RES_ICONS.MAPS_ICONS_BUTTONS_VEHICLECOMPAREBTN;
          this.addToCompareBtn.mouseEnabledOnDisabled = true;
          this.addToCompareBtn.focusable = false;
          this.addToCompareBtn.visible = false;
+         this.mcButtonsConnector.visible = false;
       }
       
       override protected function onPopulate() : void
@@ -98,6 +109,10 @@ package net.wg.gui.lobby.hangar
          this.button.removeEventListener(ButtonEvent.CLICK,this.onButtonClickHandler);
          this.button.dispose();
          this.button = null;
+         this.gotoPostProgressionBtn.removeEventListener(ButtonEvent.CLICK,this.onGoToPostProgressionBtnClickHandler);
+         this.gotoPostProgressionBtn.dispose();
+         this.gotoPostProgressionBtn = null;
+         this.mcButtonsConnector = null;
          this.addToCompareBtn.removeEventListener(ButtonEvent.CLICK,this.onAddToCompareBtnClickHandler);
          this.addToCompareBtn.dispose();
          this.addToCompareBtn = null;
@@ -111,43 +126,60 @@ package net.wg.gui.lobby.hangar
       override protected function draw() : void
       {
          var _loc1_:VehCompareEntrypointVO = null;
-         var _loc2_:Boolean = false;
-         var _loc3_:Number = NaN;
+         var _loc2_:VehPostProgressionEntryPointVO = null;
+         var _loc3_:Boolean = false;
+         var _loc4_:int = 0;
+         var _loc5_:Number = NaN;
          super.draw();
          if(this._data != null && isInvalid(InvalidationType.DATA))
          {
             this.xpText.text = App.utils != null ? App.utils.locale.integer(this._earnedXP) : this._earnedXP.toString();
             this.xpText.icon = !!this._isElite ? IconsTypes.ELITE_XP : IconsTypes.XP;
             _loc1_ = this._data.vehCompareVO;
-            _loc2_ = _loc1_ != null ? Boolean(_loc1_.modeAvailable) : Boolean(false);
-            this.addToCompareBtn.visible = _loc2_;
-            if(_loc2_)
+            _loc2_ = this._data.vehPostProgressionVO;
+            _loc3_ = _loc1_ != null ? Boolean(_loc1_.modeAvailable) : Boolean(false);
+            this.addToCompareBtn.visible = _loc3_;
+            _loc4_ = -this.button.width - GAP;
+            if(_loc3_)
             {
                this.addToCompareBtn.enabled = _loc1_.btnEnabled;
                this.addToCompareBtn.tooltip = _loc1_.btnTooltip;
-               this.button.x = -this.button.width - VEHICLE_COMPARE_BTN_WIDTH;
+               _loc4_ = -this.button.width - VEHICLE_COMPARE_BTN_WIDTH;
             }
-            else
+            if(_loc2_)
             {
-               this.button.x = -this.button.width - GAP;
+               this.gotoPostProgressionBtn.visible = this.mcButtonsConnector.visible = _loc2_.btnVisible;
+               this.gotoPostProgressionBtn.showCounter = false;
+               if(_loc2_.btnVisible)
+               {
+                  this.gotoPostProgressionBtn.enabled = _loc2_.btnEnabled;
+                  this.gotoPostProgressionBtn.showCounter = _loc2_.showCounter;
+                  this.gotoPostProgressionBtn.intCD = this._data.intCD;
+                  this.gotoPostProgressionBtn.addEventListener(ButtonEvent.CLICK,this.onGoToPostProgressionBtnClickHandler);
+                  this.gotoPostProgressionBtn.x = _loc4_ + this.button.width - this.gotoPostProgressionBtn.width;
+                  this.mcButtonsConnector.x = this.gotoPostProgressionBtn.x - this.mcButtonsConnector.width + BNT_CONNECTOR_OFFSET;
+                  _loc4_ = this.mcButtonsConnector.x - this.button.width;
+               }
             }
+            this.button.x = _loc4_;
             this.xpText.x = this.button.x - this.xpText.width - GAP;
          }
          if(isInvalid(InvalidationType.SIZE))
          {
-            _loc3_ = GAP;
+            _loc5_ = GAP;
             if(this.igrLabel.visible)
             {
-               this.igrLabel.y = _loc3_;
-               _loc3_ += this.igrLabel.textHeight + GAP;
+               this.igrLabel.y = _loc5_;
+               _loc5_ += this.igrLabel.textHeight + GAP;
             }
             if(this.igrActionDaysLeft.visible)
             {
-               this.igrActionDaysLeft.y = _loc3_;
-               _loc3_ += this.igrActionDaysLeft.textHeight + GAP;
+               this.igrActionDaysLeft.y = _loc5_;
+               _loc5_ += this.igrActionDaysLeft.textHeight + GAP;
             }
-            this.addToCompareBtn.y = this.button.y = this.xpText.y = _loc3_;
-            this._totalHeight = _loc3_ + this.button.height + GAP;
+            this.mcButtonsConnector.y = this.gotoPostProgressionBtn.y = this.button.y = this.xpText.y = _loc5_;
+            this.addToCompareBtn.y = _loc5_ + COMPARE_BTN_OFFSET;
+            this._totalHeight = _loc5_ + this.button.height + GAP;
             dispatchEvent(new Event(Event.RESIZE));
          }
       }
@@ -236,6 +268,11 @@ package net.wg.gui.lobby.hangar
       private function onButtonClickHandler(param1:ButtonEvent) : void
       {
          goToResearchS();
+      }
+      
+      private function onGoToPostProgressionBtnClickHandler(param1:ButtonEvent) : void
+      {
+         goToPostProgressionS();
       }
       
       private function onAddToCompareBtnClickHandler(param1:ButtonEvent) : void

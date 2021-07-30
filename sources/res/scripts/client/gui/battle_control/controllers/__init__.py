@@ -6,6 +6,7 @@ from gui.battle_control.controllers.repositories import EpicControllersRepositor
 from gui.battle_control.controllers.repositories import EventControllerRepository
 from gui.battle_control.controllers.repositories import SharedControllersRepository
 from gui.battle_control.controllers.repositories import BattleRoyaleControllersRepository
+from gui.battle_control.controllers.repositories import MapsTrainingControllerRepository
 __all__ = ('createShared', 'createDynamic', 'BattleSessionSetup', 'SharedControllersLocator',
            'DynamicControllersLocator')
 
@@ -21,6 +22,8 @@ def createDynamic(setup):
         repository = BattleRoyaleControllersRepository.create(setup)
     elif guiVisitor.isEventBattle():
         repository = EventControllerRepository.create(setup)
+    elif guiVisitor.isMapsTraining():
+        repository = MapsTrainingControllerRepository.create(setup)
     elif not guiVisitor.isTutorialBattle():
         repository = ClassicControllersRepository.create(setup)
     else:

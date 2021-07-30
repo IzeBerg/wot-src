@@ -50,6 +50,7 @@ package net.wg.gui.lobby.epicBattles.components.common
          if(isInvalid(INVALID_RANGE))
          {
             this._onePercent = (_maximum - _minimum) / 100;
+            invalidateData();
          }
          super.draw();
       }

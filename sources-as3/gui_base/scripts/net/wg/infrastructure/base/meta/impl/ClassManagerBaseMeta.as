@@ -84,6 +84,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.bootcamp.controls.BCCirclesTintHintContinuous;
    import net.wg.gui.bootcamp.controls.BCHighlightRendererBase;
    import net.wg.gui.bootcamp.controls.BCIconTextBigButtonFx;
+   import net.wg.gui.bootcamp.controls.BCLobbyAttentionHint;
    import net.wg.gui.bootcamp.controls.BCLobbyFlagHint;
    import net.wg.gui.bootcamp.controls.BCLobbyHint;
    import net.wg.gui.bootcamp.controls.BCLobbyRectangleHint;
@@ -153,6 +154,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.battleRoyale.data.ConfiguratorModuleVO;
    import net.wg.gui.components.battleRoyale.data.IVehicleWeakZonesVO;
    import net.wg.gui.components.carousels.CarouselEnvironment;
+   import net.wg.gui.components.carousels.ExtendedHorizontalScroller;
+   import net.wg.gui.components.carousels.ExtendedHorizontalScrollerViewPort;
    import net.wg.gui.components.carousels.FilterPopoverContent;
    import net.wg.gui.components.carousels.FilterPopoverView;
    import net.wg.gui.components.carousels.HorizontalScroller;
@@ -169,6 +172,10 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.carousels.controls.RolesContainer;
    import net.wg.gui.components.carousels.controls.RolesTileList;
    import net.wg.gui.components.carousels.controls.ToggleImageAlphaRenderer;
+   import net.wg.gui.components.carousels.controls.levelInfo.LevelInfoButton;
+   import net.wg.gui.components.carousels.controls.levelInfo.LevelInfoItem;
+   import net.wg.gui.components.carousels.controls.levelInfo.LevelLabelContainer;
+   import net.wg.gui.components.carousels.data.CarouselLevelInfoVO;
    import net.wg.gui.components.carousels.data.CheckBoxRendererVO;
    import net.wg.gui.components.carousels.data.FilterCarouseInitVO;
    import net.wg.gui.components.carousels.data.FilterCarouseItemData;
@@ -410,7 +417,9 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.controls.scroller.IScrollerItemRenderer;
    import net.wg.gui.components.controls.scroller.ListRendererEvent;
    import net.wg.gui.components.controls.scroller.ScrollerBase;
+   import net.wg.gui.components.controls.scroller.data.IScrollerItemRendererData;
    import net.wg.gui.components.controls.scroller.data.ScrollConfig;
+   import net.wg.gui.components.controls.scroller.data.ScrollerItemRendererSize;
    import net.wg.gui.components.controls.universalBtn.UniversalBtn;
    import net.wg.gui.components.controls.universalBtn.UniversalBtnToggleIndicator;
    import net.wg.gui.components.crosshairPanel.CrosshairArcade;
@@ -882,6 +891,16 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.managers.pool.PoolManager;
    import net.wg.infrastructure.uilogger.LogLevels;
    import net.wg.infrastructure.uilogger.UILogger;
+   import net.wg.infrastructure.uilogger.bootcamp.BOOTCAMP_LOGGER_CONSTANTS;
+   import net.wg.infrastructure.uilogger.bootcamp.LoadingPageLogger;
+   import net.wg.infrastructure.uilogger.bootcamp.TooltipLogger;
+   import net.wg.infrastructure.uilogger.bootcamp.events.TooltipLogEvent;
+   import net.wg.infrastructure.uilogger.manual.MANUAL_LOGGER_CONSTANTS;
+   import net.wg.infrastructure.uilogger.manual.ManualPageLogger;
+   import net.wg.infrastructure.uilogger.veh_post_progression.Constants;
+   import net.wg.infrastructure.uilogger.veh_post_progression.LogDemountAllBtn;
+   import net.wg.infrastructure.uilogger.veh_post_progression.LogModificationTree;
+   import net.wg.infrastructure.uilogger.veh_post_progression.LogVehParams;
    
    public class ClassManagerBaseMeta
    {
@@ -1054,6 +1073,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BOOTCAMP_CONTROLS_BCICONTEXTBIGBUTTONFX:Class = BCIconTextBigButtonFx;
       
+      public static const NET_WG_GUI_BOOTCAMP_CONTROLS_BCLOBBYATTENTIONHINT:Class = BCLobbyAttentionHint;
+      
       public static const NET_WG_GUI_BOOTCAMP_CONTROLS_BCLOBBYFLAGHINT:Class = BCLobbyFlagHint;
       
       public static const NET_WG_GUI_BOOTCAMP_CONTROLS_BCLOBBYHINT:Class = BCLobbyHint;
@@ -1192,6 +1213,10 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_CAROUSELS_CAROUSELENVIRONMENT:Class = CarouselEnvironment;
       
+      public static const NET_WG_GUI_COMPONENTS_CAROUSELS_EXTENDEDHORIZONTALSCROLLER:Class = ExtendedHorizontalScroller;
+      
+      public static const NET_WG_GUI_COMPONENTS_CAROUSELS_EXTENDEDHORIZONTALSCROLLERVIEWPORT:Class = ExtendedHorizontalScrollerViewPort;
+      
       public static const NET_WG_GUI_COMPONENTS_CAROUSELS_FILTERPOPOVERCONTENT:Class = FilterPopoverContent;
       
       public static const NET_WG_GUI_COMPONENTS_CAROUSELS_FILTERPOPOVERVIEW:Class = FilterPopoverView;
@@ -1223,6 +1248,14 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_CAROUSELS_CONTROLS_ROLESTILELIST:Class = RolesTileList;
       
       public static const NET_WG_GUI_COMPONENTS_CAROUSELS_CONTROLS_TOGGLEIMAGEALPHARENDERER:Class = ToggleImageAlphaRenderer;
+      
+      public static const NET_WG_GUI_COMPONENTS_CAROUSELS_CONTROLS_LEVELINFO_LEVELINFOBUTTON:Class = LevelInfoButton;
+      
+      public static const NET_WG_GUI_COMPONENTS_CAROUSELS_CONTROLS_LEVELINFO_LEVELINFOITEM:Class = LevelInfoItem;
+      
+      public static const NET_WG_GUI_COMPONENTS_CAROUSELS_CONTROLS_LEVELINFO_LEVELLABELCONTAINER:Class = LevelLabelContainer;
+      
+      public static const NET_WG_GUI_COMPONENTS_CAROUSELS_DATA_CAROUSELLEVELINFOVO:Class = CarouselLevelInfoVO;
       
       public static const NET_WG_GUI_COMPONENTS_CAROUSELS_DATA_CHECKBOXRENDERERVO:Class = CheckBoxRendererVO;
       
@@ -1686,7 +1719,11 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_SCROLLER_SCROLLERBASE:Class = ScrollerBase;
       
+      public static const NET_WG_GUI_COMPONENTS_CONTROLS_SCROLLER_DATA_ISCROLLERITEMRENDERERDATA:Class = IScrollerItemRendererData;
+      
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_SCROLLER_DATA_SCROLLCONFIG:Class = ScrollConfig;
+      
+      public static const NET_WG_GUI_COMPONENTS_CONTROLS_SCROLLER_DATA_SCROLLERITEMRENDERERSIZE:Class = ScrollerItemRendererSize;
       
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_UNIVERSALBTN_UNIVERSALBTN:Class = UniversalBtn;
       
@@ -2707,6 +2744,26 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_UILOGGER_LOGLEVELS:Class = LogLevels;
       
       public static const NET_WG_INFRASTRUCTURE_UILOGGER_UILOGGER:Class = UILogger;
+      
+      public static const NET_WG_INFRASTRUCTURE_UILOGGER_BOOTCAMP_BOOTCAMP_LOGGER_CONSTANTS:Class = BOOTCAMP_LOGGER_CONSTANTS;
+      
+      public static const NET_WG_INFRASTRUCTURE_UILOGGER_BOOTCAMP_LOADINGPAGELOGGER:Class = LoadingPageLogger;
+      
+      public static const NET_WG_INFRASTRUCTURE_UILOGGER_BOOTCAMP_TOOLTIPLOGGER:Class = TooltipLogger;
+      
+      public static const NET_WG_INFRASTRUCTURE_UILOGGER_BOOTCAMP_EVENTS_TOOLTIPLOGEVENT:Class = TooltipLogEvent;
+      
+      public static const NET_WG_INFRASTRUCTURE_UILOGGER_MANUAL_MANUALPAGELOGGER:Class = ManualPageLogger;
+      
+      public static const NET_WG_INFRASTRUCTURE_UILOGGER_MANUAL_MANUAL_LOGGER_CONSTANTS:Class = MANUAL_LOGGER_CONSTANTS;
+      
+      public static const NET_WG_INFRASTRUCTURE_UILOGGER_VEH_POST_PROGRESSION_CONSTANTS:Class = Constants;
+      
+      public static const NET_WG_INFRASTRUCTURE_UILOGGER_VEH_POST_PROGRESSION_LOGDEMOUNTALLBTN:Class = LogDemountAllBtn;
+      
+      public static const NET_WG_INFRASTRUCTURE_UILOGGER_VEH_POST_PROGRESSION_LOGMODIFICATIONTREE:Class = LogModificationTree;
+      
+      public static const NET_WG_INFRASTRUCTURE_UILOGGER_VEH_POST_PROGRESSION_LOGVEHPARAMS:Class = LogVehParams;
        
       
       public function ClassManagerBaseMeta()

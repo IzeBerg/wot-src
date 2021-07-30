@@ -20,6 +20,8 @@ package net.wg.data.constants.generated
       public static const VEHICLE_CONFIGURATOR_PARAM_RENDERER_LINKAGE:String = "VehConfParamRendererUI";
       
       public static const VEHICLE_CONFIGURATOR_EQUIPMENT_WIDGET:String = "equipmentWidget";
+      
+      public static const VEHICLE_CONFIGURATOR_MODIFICATIONS_WIDGET:String = "modificationsWidget";
        
       
       public function VEHICLE_COMPARE_CONSTANTS()

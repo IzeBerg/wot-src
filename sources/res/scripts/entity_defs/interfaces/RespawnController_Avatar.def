@@ -17,9 +17,6 @@
 			<Arg>STRING</Arg>
 			<Arg>STRING</Arg>
 		</respawnController_redrawVehicleOnRespawn>
-		<respawnController_explodeVehicleBeforeRespawn>
-			<Arg>OBJECT_ID</Arg>
-		</respawnController_explodeVehicleBeforeRespawn>
 		<respawnController_updateRespawnVehicles>
 			<Arg>
 				ARRAY
@@ -54,6 +51,12 @@
 			<Arg>VECTOR3</Arg>
 			<Exposed/>
 		</respawnController_chooseRespawnZone>
+		<respawnController_switchSetup>
+			<Arg>UINT16</Arg>
+			<Arg>UINT8</Arg>
+			<Arg>UINT8</Arg>
+			<Exposed/>
+		</respawnController_switchSetup>
 	</BaseMethods>
 	<ClientMethods>
 		<redrawVehicleOnRespawn>

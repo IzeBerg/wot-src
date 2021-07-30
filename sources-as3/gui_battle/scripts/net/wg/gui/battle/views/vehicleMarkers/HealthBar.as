@@ -87,6 +87,8 @@ package net.wg.gui.battle.views.vehicleMarkers
                DebugUtils.LOG_ERROR(Errors.BAD_LINKAGE + linkage);
             }
             this.healthBar = progressBar;
+            this.healthBar.stop();
+            invalidate(INVALIDATE_BAR);
          }
          if(isInvalid(INVALIDATE_BAR))
          {

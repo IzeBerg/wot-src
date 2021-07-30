@@ -1,6 +1,7 @@
 import math, time
 from gui.Scaleform.locale.MENU import MENU
 from gui.impl import backport
+from gui.shared.formatters.ranges import toRomanRangeString
 from helpers import i18n, time_utils
 from rent_common import SeasonRentDuration
 from constants import GameSeasonType
@@ -69,15 +70,18 @@ def getTimeLeftStr(localization, timeLeft, timeStyle=None, ctx=None, formatter=N
     return result
 
 
-def getDueDateOrTimeStr(finishTime, localization=''):
+def getDueDateOrTimeStr(finishTime, localization='', isShortDateFormat=False):
     if not finishTime or time_utils.isPast(finishTime):
         return ''
     if time_utils.isToday(finishTime):
         strTime = backport.getShortTimeFormat(finishTime)
     else:
-        strTime = backport.getLongDateFormat(finishTime)
-    if localization:
-        return (' ').join([localization, strTime])
+        if isShortDateFormat:
+            strTime = backport.getShortDateFormat(finishTime)
+        else:
+            strTime = backport.getLongDateFormat(finishTime)
+        if localization:
+            return (' ').join([localization, strTime])
     return strTime
 
 
@@ -178,7 +182,7 @@ class RentLeftFormatter(object):
         if not cycles:
             return (None, None, {})
         else:
-            timeLeftString = ('-').join([ str(cycle.ordinalNumber) for cycle in cycles ])
+            timeLeftString = toRomanRangeString([ cycle.ordinalNumber for cycle in cycles ])
             identifier = RentDurationKeys.CYCLES if len(cycles) > 1 else RentDurationKeys.CYCLE
             return (
              identifier, timeLeftString, {})

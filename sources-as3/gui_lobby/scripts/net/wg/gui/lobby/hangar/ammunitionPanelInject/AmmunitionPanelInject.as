@@ -1,10 +1,10 @@
 package net.wg.gui.lobby.hangar.ammunitionPanelInject
 {
    import flash.display.Bitmap;
+   import flash.display.DisplayObject;
    import flash.events.Event;
    import flash.utils.Dictionary;
    import net.wg.data.constants.Directions;
-   import net.wg.data.constants.Values;
    import net.wg.gui.components.containers.GFWrapper;
    import net.wg.gui.lobby.hangar.ammunitionPanelInject.data.HelpLayoutDataVO;
    import net.wg.gui.lobby.hangar.ammunitionPanelInject.events.AmmunitionPanelInjectEvents;
@@ -85,38 +85,11 @@ package net.wg.gui.lobby.hangar.ammunitionPanelInject
       public function as_setPanelSize(param1:int, param2:int, param3:int) : void
       {
          setSize(param1,param2);
+         this.hitObject.width = 0;
          this._panelWidth = param1;
          this._panelHeight = param2;
          this._offsetY = param3;
          dispatchEvent(new Event(Event.RESIZE));
-      }
-      
-      public function getFirstLayoutProperty() : HelpLayoutVO
-      {
-         var _loc2_:HelpLayoutDataVO = null;
-         var _loc1_:HelpLayoutDataVO = null;
-         for each(_loc2_ in this._helpLayoutData)
-         {
-            if(_loc1_ == null || _loc1_.offsetX > _loc2_.offsetX)
-            {
-               _loc1_ = _loc2_;
-            }
-         }
-         return _loc1_ != null ? this.createHelpLayoutData(_loc1_.offsetX,_loc1_.offsetY,_loc1_.width,_loc1_.height,Values.EMPTY_STR,Values.EMPTY_STR) : null;
-      }
-      
-      public function getLastLayoutProperty() : HelpLayoutVO
-      {
-         var _loc2_:HelpLayoutDataVO = null;
-         var _loc1_:HelpLayoutDataVO = null;
-         for each(_loc2_ in this._helpLayoutData)
-         {
-            if(_loc1_ == null || _loc1_.offsetX < _loc2_.offsetX)
-            {
-               _loc1_ = _loc2_;
-            }
-         }
-         return _loc1_ != null ? this.createHelpLayoutData(_loc1_.offsetX,_loc1_.offsetY,_loc1_.width,_loc1_.height,Values.EMPTY_STR,Values.EMPTY_STR) : null;
       }
       
       public function getLayoutProperties() : Vector.<HelpLayoutVO>
@@ -181,6 +154,11 @@ package net.wg.gui.lobby.hangar.ammunitionPanelInject
       override public function get height() : Number
       {
          return this._panelHeight;
+      }
+      
+      public function get hitObject() : DisplayObject
+      {
+         return Boolean(wrapper) ? GFWrapper(wrapper).inputFixTF : null;
       }
       
       public function get offsetY() : int

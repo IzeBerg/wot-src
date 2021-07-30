@@ -27,9 +27,11 @@ package
       
       public static const HEADER_BACKBTN_DESCRLABEL_MARATHON:String = "#vehicle_preview:header/backBtn/descrLabel/marathon";
       
-      public static const HEADER_BACKBTN_DESCRLABEL_WINTERMARATHON:String = "#vehicle_preview:header/backBtn/descrLabel/winterMarathon";
+      public static const HEADER_BACKBTN_DESCRLABEL_MAY21_MARATHON:String = "#vehicle_preview:header/backBtn/descrLabel/may21_marathon";
       
       public static const HEADER_BACKBTN_DESCRLABEL_RANKED:String = "#vehicle_preview:header/backBtn/descrLabel/ranked";
+      
+      public static const HEADER_BACKBTN_DESCRLABEL_VEHPOSTPROGRESSION:String = "#vehicle_preview:header/backBtn/descrLabel/vehPostProgression";
       
       public static const HEADER_BACKBTN_DESCRLABEL_BLUEPRINTSEXCHANGE:String = "#vehicle_preview:header/backBtn/descrLabel/blueprintsExchange";
       

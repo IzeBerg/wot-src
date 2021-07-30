@@ -9,7 +9,7 @@ package net.wg.gui.lobby.components
    import net.wg.gui.components.carousels.data.VehicleCarouselVO;
    import net.wg.gui.interfaces.ISoundButtonEx;
    import net.wg.gui.lobby.components.interfaces.IMissionsVehicleSelector;
-   import net.wg.gui.lobby.hangar.tcarousel.TankCarouselItemRenderer;
+   import net.wg.gui.lobby.hangar.tcarousel.SmallTankCarouselItemRenderer;
    import net.wg.gui.lobby.hangar.tcarousel.VehicleSelectorCarousel;
    import net.wg.gui.lobby.missions.data.MissionVehicleSelectorVO;
    import net.wg.infrastructure.base.meta.impl.MissionsVehicleSelectorMeta;
@@ -38,7 +38,7 @@ package net.wg.gui.lobby.components
       
       public var background:MovieClip = null;
       
-      public var selectVehicleButton:TankCarouselItemRenderer = null;
+      public var selectVehicleButton:SmallTankCarouselItemRenderer = null;
       
       public var titleTF:TextField = null;
       
@@ -63,7 +63,7 @@ package net.wg.gui.lobby.components
       public function MissionsVehicleSelector()
       {
          super();
-         this.selectVehicleButton = App.utils.classFactory.getComponent(SMALL_TANK_CAROUSEL_ITEM_RENDERER_UI,TankCarouselItemRenderer);
+         this.selectVehicleButton = App.utils.classFactory.getComponent(SMALL_TANK_CAROUSEL_ITEM_RENDERER_UI,SmallTankCarouselItemRenderer);
          this.selectVehicleButton.x = SELECT_VEHICLE_BTN_X;
          this.selectVehicleButton.y = SELECT_VEHICLE_BTN_Y;
          addChild(this.selectVehicleButton);

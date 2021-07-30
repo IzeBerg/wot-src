@@ -21,6 +21,8 @@ package
       
       public static const MISSIONS_TAB_MAPBOX:String = "#quests:missions/tab/mapbox";
       
+      public static const MISSIONS_TAB_MAY21_MARATHON:String = "#quests:missions/tab/may21_marathon";
+      
       public static const MISSIONS_FILTERCOUNTER_CLOSEBUTTON:String = "#quests:missions/filterCounter/closeButton";
       
       public static const MISSIONS_FILTER_FILTERBUTTON:String = "#quests:missions/filter/filterButton";
@@ -282,6 +284,8 @@ package
       public static const ITEM_TIMER_TILLFINISH_ONLYHOURS:String = "#quests:item/timer/tillFinish/onlyHours";
       
       public static const ITEM_TIMER_TILLFINISH_LESSTHANHOUR:String = "#quests:item/timer/tillFinish/lessThanHour";
+      
+      public static const ITEM_TIMER_TILLFINISH_LESSTHANDAY:String = "#quests:item/timer/tillFinish/lessThanDay";
       
       public static const ITEM_TIMER_TILLFINISH_SHORTFORMAT:String = "#quests:item/timer/tillFinish/shortFormat";
       
@@ -2035,7 +2039,7 @@ package
       
       public static const MISSIONS_TAB_LABEL_KURSK:String = "#quests:missions/tab/label/kursk";
       
-      public static const MISSIONS_TAB_LABEL_MARATHONS:String = "#quests:missions/tab/label/marathons";
+      public static const MISSIONS_TAB_LABEL_MARATHON:String = "#quests:missions/tab/label/marathon";
       
       public static const MISSIONS_TAB_KURSK_HEADER:String = "#quests:missions/tab/kursk/header";
       
@@ -2044,6 +2048,12 @@ package
       public static const MISSIONS_TAB_MARATHONS_HEADER:String = "#quests:missions/tab/marathons/header";
       
       public static const MISSIONS_TAB_MARATHONS_BODY:String = "#quests:missions/tab/marathons/body";
+      
+      public static const MISSIONS_TAB_LABEL_MAY21_MARATHON:String = "#quests:missions/tab/label/may21_marathon";
+      
+      public static const MISSIONS_TAB_MAY21_MARATHON_HEADER:String = "#quests:missions/tab/may21_marathon/header";
+      
+      public static const MISSIONS_TAB_MOON_MARATHON_BODY:String = "#quests:missions/tab/moon_marathon/body";
       
       public static const MISSIONS_TAB_MISSIONS_HEADER:String = "#quests:missions/tab/missions/header";
       
@@ -2485,7 +2495,7 @@ package
       
       public static const BONUSNAME_ENTITLEMENTS_RANKED_2020_DISCOUNT:String = "#quests:bonusName/entitlements/ranked_2020_discount";
       
-      public static const BONUSNAME_ENTITLEMENTS_RANKED_202103_ACCESS:String = "#quests:bonusName/entitlements/ranked_202103_access";
+      public static const BONUSNAME_ENTITLEMENTS_RANKED_202109_ACCESS:String = "#quests:bonusName/entitlements/ranked_202109_access";
       
       public static const BONUSNAME_BATTLE_BONUS_X5:String = "#quests:bonusName/battle_bonus_x5";
       

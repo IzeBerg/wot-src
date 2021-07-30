@@ -150,7 +150,7 @@ package net.wg.gui.components.carousels
       {
          var _loc1_:Boolean = false;
          super.draw();
-         if(isInvalid(InvalidationType.SIZE,InvalidationType.DATA,INVALIDATION_TYPE_LAYOUT,INVALIDATION_TYPE_PENDING_SCROLL))
+         if(isInvalid(InvalidationType.SIZE,InvalidationType.DATA,INVALIDATION_TYPE_LAYOUT,INVALIDATION_TYPE_PENDING_SCROLL) && dataProvider != null)
          {
             _loc1_ = maxHorizontalScrollPosition != minHorizontalScrollPosition && dataProvider.length;
             cursorManager.enable = _loc1_;

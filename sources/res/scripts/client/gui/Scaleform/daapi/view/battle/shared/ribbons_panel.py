@@ -17,6 +17,7 @@ from items.battle_royale import isSpawnedBot, isBattleRoyale
 _logger = logging.getLogger(__name__)
 _RIBBON_SOUNDS_ENABLED = True
 _SHOW_RIBBON_SOUND_NAME = 'show_ribbon'
+_SHOW_RIBBON_EXP_SOUND_NAME = 'show_ribbon_role_exp'
 _HIDE_RIBBON_SOUND_NAME = 'hide_ribbon'
 _CHANGE_RIBBON_SOUND_NAME = 'increment_ribbon_counter'
 _SOUNDS = (_SHOW_RIBBON_SOUND_NAME, _HIDE_RIBBON_SOUND_NAME, _CHANGE_RIBBON_SOUND_NAME)
@@ -195,8 +196,12 @@ class BattleRibbonsPanel(RibbonsPanelMeta):
         self.__arenaDP = self.sessionProvider.getCtx().getArenaDP()
         self.__ribbonsAggregator = ribbons_aggregator.createRibbonsAggregator()
 
-    def onShow(self):
-        self.__playSound(_SHOW_RIBBON_SOUND_NAME)
+    def onShow(self, ribbonID):
+        sound = _SHOW_RIBBON_SOUND_NAME
+        ribbon = self.__ribbonsAggregator.getRibbon(ribbonID)
+        if ribbon and ribbon.isRoleBonus():
+            sound = _SHOW_RIBBON_EXP_SOUND_NAME
+        self.__playSound(sound)
 
     def onChange(self):
         self.__playSound(_CHANGE_RIBBON_SOUND_NAME)

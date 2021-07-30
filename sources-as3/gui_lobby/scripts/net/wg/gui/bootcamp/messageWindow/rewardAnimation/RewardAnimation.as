@@ -5,6 +5,7 @@ package net.wg.gui.bootcamp.messageWindow.rewardAnimation
    import flash.display.DisplayObjectContainer;
    import flash.display.Sprite;
    import flash.geom.Point;
+   import net.wg.data.constants.Values;
    import net.wg.gui.bootcamp.BCHighlightsBase;
    import net.wg.gui.bootcamp.messageWindow.events.MessageViewEvent;
    import net.wg.gui.components.controls.Image;
@@ -126,7 +127,7 @@ package net.wg.gui.bootcamp.messageWindow.rewardAnimation
       {
          if(this._targetRewardIcon == null)
          {
-            dispatchEvent(new MessageViewEvent(MessageViewEvent.REWARD_ANIMATION_COMPLETE));
+            dispatchEvent(new MessageViewEvent(MessageViewEvent.REWARD_ANIMATION_COMPLETE,Values.EMPTY_STR,true));
             return;
          }
          this._iconReward.x = -this._iconReward.width >> 1;

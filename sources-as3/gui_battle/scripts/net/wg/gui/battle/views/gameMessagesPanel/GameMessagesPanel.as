@@ -48,8 +48,17 @@ package net.wg.gui.battle.views.gameMessagesPanel
          this.initMappingDict();
       }
       
+      override protected function configUI() : void
+      {
+         super.configUI();
+         addEventListener(GameMessagesPanelEvent.MESSAGES_POST_INTRO_PLAYING,this.onMessagesPlayingHandler);
+         addEventListener(GameMessagesPanelEvent.MESSAGES_OUTRO_PLAYING,this.onMessagesPlayingHandler);
+      }
+      
       override protected function onDispose() : void
       {
+         removeEventListener(GameMessagesPanelEvent.MESSAGES_POST_INTRO_PLAYING,this.onMessagesPlayingHandler);
+         removeEventListener(GameMessagesPanelEvent.MESSAGES_OUTRO_PLAYING,this.onMessagesPlayingHandler);
          this._scheduler.cancelTask(this.onOutroTaskComplete);
          this._scheduler.cancelTask(this.onMessageTaskComplete);
          this._scheduler.cancelTask(this.removeMessageFromContainer);
@@ -117,6 +126,10 @@ package net.wg.gui.battle.views.gameMessagesPanel
          this.msgClassTypeDict[GAME_MESSAGES_CONSTS.WIN] = EndGameMessage;
          this.msgClassTypeDict[GAME_MESSAGES_CONSTS.DEFEAT] = EndGameMessage;
          this.msgClassTypeDict[GAME_MESSAGES_CONSTS.DRAW] = EndGameMessage;
+      }
+      
+      protected function layoutMessage(param1:MessageContainerBase) : void
+      {
       }
       
       private function removeStackMessages() : void
@@ -202,10 +215,11 @@ package net.wg.gui.battle.views.gameMessagesPanel
          {
             _loc2_ = App.utils.classFactory.getComponent(this.msgLinkageTypeDict[_loc1_.messageType],this.msgClassTypeDict[_loc1_.messageType]);
             _loc2_.setData(_loc1_);
+            this.layoutMessage(_loc2_);
             this.messagesContainer.addChild(_loc2_);
             dispatchEvent(new GameMessagesPanelEvent(GameMessagesPanelEvent.MESSAGES_STARTED_PLAYING,_loc1_.messageType));
             this._activeMessages.push(_loc2_);
-            onMessageStartedS(_loc1_.messageType,_loc2_.getID());
+            onMessageStartedS(_loc1_.messageType,_loc2_.getModificator(),_loc2_.getID());
             _loc2_.gotoAndPlay(INTRO);
             if(!this._isPlayingMessages)
             {
@@ -226,6 +240,11 @@ package net.wg.gui.battle.views.gameMessagesPanel
             this._scheduler.scheduleTask(this.onOutroTaskComplete,DELAYED_REMOVAL_TIME,_loc1_);
          }
          this.playFromStack();
+      }
+      
+      private function onMessagesPlayingHandler(param1:GameMessagesPanelEvent) : void
+      {
+         onMessagePhaseStartedS(param1.messageType,param1.messageModificator,param1.messageId);
       }
    }
 }

@@ -24,6 +24,8 @@ package net.wg.gui.lobby.tankman
       
       public var isNewSkill:Boolean = false;
       
+      public var isBootcamp:Boolean = false;
+      
       public var skillsCountForLearn:int = 0;
       
       public var enabled:Boolean = true;

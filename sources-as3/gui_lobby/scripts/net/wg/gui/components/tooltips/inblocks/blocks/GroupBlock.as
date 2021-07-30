@@ -2,8 +2,12 @@ package net.wg.gui.components.tooltips.inblocks.blocks
 {
    import flash.display.DisplayObject;
    import flash.display.Sprite;
+   import net.wg.data.constants.generated.BLOCKS_TOOLTIP_TYPES;
+   import net.wg.data.constants.generated.TEXT_ALIGN;
    import net.wg.gui.components.common.containers.CenterAlignedGroupLayout;
+   import net.wg.gui.components.common.containers.TiledLayout;
    import net.wg.gui.components.containers.GroupEx;
+   import net.wg.gui.components.containers.GroupLayout;
    import net.wg.gui.components.containers.IGroupEx;
    import net.wg.gui.components.tooltips.inblocks.data.GroupBlockVO;
    
@@ -24,6 +28,23 @@ package net.wg.gui.components.tooltips.inblocks.blocks
       public function GroupBlock()
       {
          super();
+      }
+      
+      private static function createGroupLayout(param1:int, param2:String) : GroupLayout
+      {
+         var _loc3_:GroupLayout = null;
+         switch(param2)
+         {
+            case BLOCKS_TOOLTIP_TYPES.ALIGN_LEFT:
+               _loc3_ = new TiledLayout(param1,param1,TiledLayout.DEFAULT_COLUMNS_COUNT,TEXT_ALIGN.LEFT);
+               break;
+            case BLOCKS_TOOLTIP_TYPES.ALIGN_RIGHT:
+               _loc3_ = new TiledLayout(param1,param1,TiledLayout.DEFAULT_COLUMNS_COUNT,TEXT_ALIGN.RIGHT);
+               break;
+            default:
+               _loc3_ = new CenterAlignedGroupLayout(param1,param1);
+         }
+         return _loc3_;
       }
       
       override public function cleanUp() : void
@@ -76,11 +97,11 @@ package net.wg.gui.components.tooltips.inblocks.blocks
       private function applyData() : void
       {
          var _loc1_:int = 0;
-         var _loc2_:CenterAlignedGroupLayout = null;
+         var _loc2_:GroupLayout = null;
          if(this._group == null)
          {
             _loc1_ = this._data.rendererWidth;
-            _loc2_ = new CenterAlignedGroupLayout(_loc1_,_loc1_);
+            _loc2_ = createGroupLayout(_loc1_,this._data.align);
             _loc2_.gap = GROUP_GAP;
             this._group = new GroupEx();
             this._group.width = this._blockWidth - this._group.x;

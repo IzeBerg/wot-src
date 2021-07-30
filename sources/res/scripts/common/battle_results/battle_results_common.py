@@ -463,6 +463,8 @@ BATTLE_RESULTS = [
  (
   'watchedBattleToTheEnd', bool, False, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
+  'vseBattleResults', list, [], None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+ (
   'squadBonusInfo', None, None, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
   'progressiveReward', None, None, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
@@ -688,4 +690,8 @@ BATTLE_RESULTS = [
  (
   'playerRank', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL),
  (
-  'quickShellChangerUsageCount', int, 0, None, 'skip', ENTRY_TYPE.SERVER)]
+  'quickShellChangerUsageCount', int, 0, None, 'skip', ENTRY_TYPE.SERVER),
+ (
+  'setupsIndexes', dict, {}, None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
+ (
+  'startAmmo', list, [], None, 'skip', ENTRY_TYPE.SERVER)]

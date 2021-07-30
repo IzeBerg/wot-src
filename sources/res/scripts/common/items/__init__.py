@@ -1,4 +1,4 @@
-import nations
+import typing, nations
 from items import _xml
 from constants import IS_CLIENT, ITEM_DEFS_PATH
 from soft_exception import SoftException
@@ -12,7 +12,7 @@ UNDEFINED_ITEM_CD = 0
 ITEM_TYPE_NAMES = ('_reserved', 'vehicle', 'vehicleChassis', 'vehicleTurret', 'vehicleGun',
                    'vehicleEngine', 'vehicleFuelTank', 'vehicleRadio', 'tankman',
                    'optionalDevice', 'shell', 'equipment', 'customizationItem', 'crewSkin',
-                   'crewBook')
+                   'crewBook', 'slot')
 
 class ITEM_TYPES(dict):
 
@@ -217,6 +217,10 @@ def parseIntCompactDescr(compactDescr):
      itemTypeID,
      compactDescr >> 4 & 15,
      compactDescr >> 8 & 65535)
+
+
+def filterIntCDsByItemType(intCDs, itemTypeID):
+    return [ cd for cd in intCDs if parseIntCompactDescr(cd)[0] == itemTypeID ]
 
 
 def allianceFromVehicleCD(compactDescr):

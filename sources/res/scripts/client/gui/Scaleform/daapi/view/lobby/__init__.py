@@ -42,7 +42,6 @@ def getViewSettings():
     from gui.Scaleform.daapi.view.dialogs.PunishmentDialog import PunishmentDialog
     from gui.Scaleform.daapi.view.dialogs.TankmanOperationDialog import RestoreTankmanDialog
     from gui.Scaleform.daapi.view.dialogs.SystemMessageDialog import SystemMessageDialog
-    from gui.Scaleform.daapi.view.lobby.eliteWindow.EliteWindow import EliteWindow
     from gui.Scaleform.daapi.view.lobby.AwardWindow import AwardWindow
     from gui.Scaleform.daapi.view.lobby.AwardWindow import MissionAwardWindow
     from gui.Scaleform.daapi.view.lobby.battle_queue import BattleQueue, BattleStrongholdsQueue
@@ -73,7 +72,6 @@ def getViewSettings():
     from gui.Scaleform.daapi.view.lobby.VehicleInfoWindow import VehicleInfoWindow
     from gui.Scaleform.daapi.view.lobby.vehicle_sell_dialog import VehicleSellDialog
     from gui.Scaleform.daapi.view.lobby.vehicle_preview.vehicle_preview import VehiclePreview
-    from gui.Scaleform.daapi.view.lobby.event_progression.event_progression_vehicle_preview import EventProgressionVehiclePreview
     from gui.Scaleform.daapi.view.lobby.trade_in.trade_in_vehicle_preview import TradeInVehiclePreview
     from gui.Scaleform.daapi.view.lobby.vehicle_preview.marathon_vehicle_preview import MarathonVehiclePreview
     from gui.Scaleform.daapi.view.lobby.vehicle_preview.configurable_vehicle_preview import ConfigurableVehiclePreview
@@ -87,7 +85,6 @@ def getViewSettings():
     from gui.Scaleform.daapi.view.bootcamp.BCPersonalCase import BCPersonalCase
     from gui.Scaleform.daapi.view.bootcamp.BCBattleResult import BCBattleResult
     from gui.Scaleform.daapi.view.lobby.vehicle_preview.style_preview import VehicleStylePreview
-    from gui.Scaleform.daapi.view.lobby.event_progression.event_progression_vehicle_style_preview import EventProgressionVehicleStylePreview
     from gui.Scaleform.daapi.view.lobby.vehicle_preview.progression_styles_style_preview import ProgressionStylesStylePreview
     from gui.Scaleform.daapi.view.lobby.trade_in.personal_trade_in_vehicle_preview import PersonalTradeInVehiclePreview
     from gui.Scaleform.daapi.view.lobby.vehicle_preview.bp_exchange_vehicle_preview import BlueprintsExchangeVehicleStypePreview
@@ -102,11 +99,9 @@ def getViewSettings():
      ViewSettings(VIEW_ALIAS.LOBBY_CUSTOMIZATION, CustomizationMainView, 'customizationMainView.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.LOBBY_CUSTOMIZATION, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.VEHICLE_PREVIEW, VehiclePreview, 'vehiclePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.VEHICLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.HERO_VEHICLE_PREVIEW, VehiclePreview, 'vehiclePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.HERO_VEHICLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
-     ViewSettings(VIEW_ALIAS.EVENT_PROGRESSION_VEHICLE_PREVIEW, EventProgressionVehiclePreview, 'vehiclePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.EVENT_PROGRESSION_VEHICLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.CONFIGURABLE_VEHICLE_PREVIEW, ConfigurableVehiclePreview, 'vehiclePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.CONFIGURABLE_VEHICLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.STYLE_PREVIEW, VehicleStylePreview, 'vehicleBasePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.STYLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.PROGRESSION_STYLES_STYLE_PREVIEW, ProgressionStylesStylePreview, 'vehicleBasePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.PROGRESSION_STYLES_STYLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
-     ViewSettings(VIEW_ALIAS.EVENT_PROGRESSION_STYLE_PREVIEW, EventProgressionVehicleStylePreview, 'vehicleBasePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.EVENT_PROGRESSION_STYLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.BLUEPRINTS_EXCHANGE_STYLE_PREVIEW, BlueprintsExchangeVehicleStypePreview, 'vehicleBasePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.BLUEPRINTS_EXCHANGE_STYLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.TRADE_IN_VEHICLE_PREVIEW, TradeInVehiclePreview, 'vehiclePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.TRADE_IN_VEHICLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.PERSONAL_TRADE_IN_VEHICLE_PREVIEW, PersonalTradeInVehiclePreview, 'vehiclePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.PERSONAL_TRADE_IN_VEHICLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
@@ -138,7 +133,6 @@ def getViewSettings():
      GroupedViewSettings(VIEW_ALIAS.BROWSER_WINDOW, BrowserWindow, 'browserWindow.swf', WindowLayer.WINDOW, '', None, ScopeTemplates.DEFAULT_SCOPE),
      GroupedViewSettings(VIEW_ALIAS.BROWSER_WINDOW_MODAL, BrowserWindow, 'browserWindow.swf', WindowLayer.WINDOW, '', None, ScopeTemplates.DEFAULT_SCOPE, isModal=True, canDrag=False),
      GroupedViewSettings(VIEW_ALIAS.DEMONSTRATOR_WINDOW, DemonstratorWindow, 'demonstratorWindow.swf', WindowLayer.WINDOW, '', None, ScopeTemplates.DEFAULT_SCOPE),
-     GroupedViewSettings(VIEW_ALIAS.ELITE_WINDOW, EliteWindow, 'eliteWindow.swf', WindowLayer.WINDOW, 'eliteWindow', None, ScopeTemplates.DEFAULT_SCOPE),
      GroupedViewSettings(VIEW_ALIAS.GOLD_FISH_WINDOW, GoldFishWindow, 'goldFishWindow.swf', WindowLayer.WINDOW, '', None, ScopeTemplates.DEFAULT_SCOPE),
      GroupedViewSettings(VIEW_ALIAS.LOBBY_MENU, LobbyMenu, 'lobbyMenu.swf', WindowLayer.TOP_WINDOW, '', None, ScopeTemplates.LOBBY_SUB_SCOPE, isModal=True, canClose=False, canDrag=False),
      GroupedViewSettings(VIEW_ALIAS.MODULE_INFO_WINDOW, ModuleInfoWindow, 'moduleInfo.swf', WindowLayer.WINDOW, VIEW_ALIAS.MODULE_INFO_WINDOW, None, ScopeTemplates.DEFAULT_SCOPE),
@@ -204,8 +198,6 @@ class LobbyPackageBusinessHandler(PackageBusinessHandler):
          (
           VIEW_ALIAS.DEMONSTRATOR_WINDOW, self.loadViewByCtxEvent),
          (
-          VIEW_ALIAS.ELITE_WINDOW, self.loadViewByCtxEvent),
-         (
           VIEW_ALIAS.GOLD_FISH_WINDOW, self.loadViewByCtxEvent),
          (
           VIEW_ALIAS.LOBBY, self.loadViewByCtxEvent),
@@ -220,8 +212,6 @@ class LobbyPackageBusinessHandler(PackageBusinessHandler):
          (
           VIEW_ALIAS.STYLE_PREVIEW, self.loadViewByCtxEvent),
          (
-          VIEW_ALIAS.EVENT_PROGRESSION_STYLE_PREVIEW, self.loadViewByCtxEvent),
-         (
           VIEW_ALIAS.PROGRESSION_STYLES_STYLE_PREVIEW, self.loadViewByCtxEvent),
          (
           VIEW_ALIAS.BLUEPRINTS_EXCHANGE_STYLE_PREVIEW, self.loadViewByCtxEvent),
@@ -229,8 +219,6 @@ class LobbyPackageBusinessHandler(PackageBusinessHandler):
           VIEW_ALIAS.IMAGE_VIEW, self.loadViewByCtxEvent),
          (
           VIEW_ALIAS.HERO_VEHICLE_PREVIEW, self.loadViewByCtxEvent),
-         (
-          VIEW_ALIAS.EVENT_PROGRESSION_VEHICLE_PREVIEW, self.loadViewByCtxEvent),
          (
           VIEW_ALIAS.CONFIGURABLE_VEHICLE_PREVIEW, self.loadViewByCtxEvent),
          (

@@ -1,4 +1,5 @@
-
+from functools import wraps
+from wotdecorators import singleton
 
 class cached_property(object):
 
@@ -26,3 +27,31 @@ class class_cached_property(object):
         result = self.func(cls)
         setattr(cls, self.name, result)
         return result
+
+
+@singleton
+class NotMemoized(object):
+    pass
+
+
+def memoized_method(method=None, isClassCache=False, external=None, key=None):
+    if method is None:
+        return lambda m: memoized_method(method=m, isClassCache=isClassCache, external=external, key=key)
+    else:
+        external = external() if callable(external) else external
+
+        @wraps(method)
+        def wrapper(this, *args):
+            storage = external
+            if storage is None:
+                storage = this.__class__ if isClassCache else this
+                if not hasattr(storage, '__cache__'):
+                    storage.__cache__ = {}
+                storage = storage.__cache__.setdefault(method.__name__, {})
+            skey = key(*args) if callable(key) else args
+            result = storage.get(skey, NotMemoized)
+            if result is NotMemoized:
+                storage[skey] = result = method(this, *args)
+            return result
+
+        return wrapper

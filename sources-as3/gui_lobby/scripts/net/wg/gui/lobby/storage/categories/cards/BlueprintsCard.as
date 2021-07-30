@@ -11,9 +11,11 @@ package net.wg.gui.lobby.storage.categories.cards
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
    import net.wg.data.constants.Linkages;
+   import net.wg.data.constants.Values;
    import net.wg.gui.components.controls.Image;
    import net.wg.gui.components.controls.SoundButtonEx;
    import net.wg.gui.components.controls.scroller.IScrollerItemRenderer;
+   import net.wg.gui.components.controls.scroller.data.ScrollerItemRendererSize;
    import net.wg.gui.lobby.storage.categories.blueprints.BlueprintCostRenderer;
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.interfaces.entity.ISoundable;
@@ -565,6 +567,20 @@ package net.wg.gui.lobby.storage.categories.cards
       
       public function set isViewPortEnabled(param1:Boolean) : void
       {
+      }
+      
+      public function get rowsCount() : int
+      {
+         return Values.ZERO;
+      }
+      
+      public function set rowsCount(param1:int) : void
+      {
+      }
+      
+      public function get adaptiveSize() : String
+      {
+         return ScrollerItemRendererSize.NORMAL_SIZE;
       }
       
       private function onRollOverHandler(param1:MouseEvent) : void

@@ -125,6 +125,7 @@ package net.wg.gui.components.controls.price
          this._priceIconOffset = null;
          this._priceActionOffset = null;
          this.hit = null;
+         this._numVisibleItems = 0;
          super.onDispose();
       }
       

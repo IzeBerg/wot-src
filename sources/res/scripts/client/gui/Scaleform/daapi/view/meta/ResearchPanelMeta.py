@@ -5,6 +5,9 @@ class ResearchPanelMeta(BaseDAAPIComponent):
     def goToResearch(self):
         self._printOverrideError('goToResearch')
 
+    def goToPostProgression(self):
+        self._printOverrideError('goToPostProgression')
+
     def addVehToCompare(self):
         self._printOverrideError('addVehToCompare')
 

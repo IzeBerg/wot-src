@@ -6,6 +6,8 @@ package net.wg.gui.bootcamp.nationsWindow.events
    {
       
       public static const NATION_SHOW:String = "nationShow";
+      
+      public static const NATION_SELECTED:String = "nationSelected";
        
       
       private var _selectedNation:int = 0;

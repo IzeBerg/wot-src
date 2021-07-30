@@ -6,9 +6,11 @@ package net.wg.gui.lobby.vehicleCompare.controls.view
    import flash.events.MouseEvent;
    import flash.geom.Point;
    import flash.text.TextField;
+   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.VEHICLE_COMPARE_CONSTANTS;
    import net.wg.gui.components.advanced.TankIcon;
    import net.wg.gui.components.controls.scroller.IScrollerItemRenderer;
+   import net.wg.gui.components.controls.scroller.data.ScrollerItemRendererSize;
    import net.wg.gui.interfaces.ISoundButtonEx;
    import net.wg.gui.lobby.vehicleCompare.data.VehCompareVehicleVO;
    import net.wg.gui.lobby.vehicleCompare.events.VehCompareVehicleRendererEvent;
@@ -229,6 +231,20 @@ package net.wg.gui.lobby.vehicleCompare.controls.view
       
       public function set isViewPortEnabled(param1:Boolean) : void
       {
+      }
+      
+      public function get rowsCount() : int
+      {
+         return Values.ZERO;
+      }
+      
+      public function set rowsCount(param1:int) : void
+      {
+      }
+      
+      public function get adaptiveSize() : String
+      {
+         return ScrollerItemRendererSize.NORMAL_SIZE;
       }
       
       private function onRevertBtnClickHandler(param1:ButtonEvent) : void

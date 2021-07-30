@@ -1,4 +1,5 @@
 from web.web_client_api import webApiCollection
+from web.web_client_api.frontline import FrontLineWebApi
 from web.web_client_api.mapbox import MapboxWebApi
 from web.web_client_api.platform import PlatformWebApi
 from web.web_client_api.request import RequestWebApi
@@ -27,7 +28,8 @@ _DEFAULT_WEB_API_COLLECTION = (
  SocialWebApi,
  BlueprintsConvertSaleWebApi,
  PlatformWebApi,
- MapboxWebApi)
+ MapboxWebApi,
+ FrontLineWebApi)
 
 def createBrowserOverlayWebHandlers():
     return webApiCollection(*_DEFAULT_WEB_API_COLLECTION)

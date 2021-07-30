@@ -53,7 +53,6 @@ from personal_missions import PM_BRANCH, PM_BRANCH_TO_FREE_TOKEN_NAME
 from optional_bonuses import BONUS_MERGERS
 from shared_utils import makeTupleByDict, CONST_CONTAINER, first
 from skeletons.gui.customization import ICustomizationService
-from skeletons.gui.game_control import IEventProgressionController
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
@@ -61,8 +60,6 @@ from gui.server_events.awards_formatters import BATTLE_BONUS_X5_TOKEN
 from battle_pass_common import BATTLE_PASS_OFFER_TOKEN_PREFIX, BATTLE_PASS_TOKEN_3D_STYLE, BATTLE_PASS_TOKEN_PREFIX, BATTLE_PASS_SELECT_BONUS_NAME, BATTLE_PASS_STYLE_PROGRESS_BONUS_NAME
 DEFAULT_CREW_LVL = 50
 _CUSTOMIZATIONS_SCALE = 44.0 / 128
-_EPIC_AWARD_STATIC_VO_ENTRIES = {'compensationTooltip': QUESTS.BONUSES_COMPENSATION, 'hasCompensation': False, 'highlightType': '', 
-   'overlayType': ''}
 _ZERO_COMPENSATION_MONEY = Money(credits=0, gold=0)
 _CUSTOMIZATION_BONUSES = frozenset([
  'camouflage', 'style', 'paint', 'modification', 'projection_decal', 'personal_number'])
@@ -176,15 +173,6 @@ class SimpleBonus(object):
             else:
                 itemInfo['count'] = 1
         return itemInfo
-
-    def getEpicAwardVOs(self, withDescription=False, iconSize='big', withCounts=False):
-        itemInfo = self.__getCommonAwardsVOs(iconSize, align=TEXT_ALIGN.CENTER, withCounts=withCounts)
-        itemInfo.update(_EPIC_AWARD_STATIC_VO_ENTRIES)
-        if withDescription:
-            itemInfo['title'] = i18n.makeString(TOOLTIPS.getAwardHeader(self._name))
-            itemInfo['description'] = i18n.makeString(TOOLTIPS.getAwardBody(self._name))
-        return [
-         itemInfo]
 
     def getIconBySize(self, size):
         iconName = RES_ICONS.getBonusIcon(size, self.getName())
@@ -475,19 +463,8 @@ class ResourceBonus(TokensBonus):
         return self._resourceName
 
 
-class ProgressionXPToken(TokensBonus):
-
-    def __init__(self, name, value, isCompensation=False, ctx=None):
-        super(ProgressionXPToken, self).__init__(name, value, isCompensation, ctx)
-        self._name = 'progressionXPToken'
-
-    def isShowInGUI(self):
-        return True
-
-
 class BattleTokensBonus(TokensBonus):
     eventsCache = dependency.descriptor(IEventsCache)
-    __eventProgression = dependency.descriptor(IEventProgressionController)
 
     def __init__(self, name, value, isCompensation=False, ctx=None):
         super(TokensBonus, self).__init__(name, value, isCompensation, ctx)
@@ -508,18 +485,6 @@ class BattleTokensBonus(TokensBonus):
             return (', ').join(result)
         else:
             return
-
-    def getWrappedEpicBonusList(self):
-        result = []
-        for tokenID, value in self._value.iteritems():
-            if tokenID == self.__eventProgression.rewardPointsTokenID:
-                result.append({'id': 0, 
-                   'value': value.get('count', 1), 
-                   'icon': {AWARDS_SIZES.SMALL: backport.image(R.images.gui.maps.icons.epicBattles.rewardPoints.c_48x48()), 
-                            AWARDS_SIZES.BIG: backport.image(R.images.gui.maps.icons.epicBattles.rewardPoints.c_80x80())}, 
-                   'type': 'custom/reward_point'})
-
-        return result
 
     def _getUserName(self, styleID):
         webCache = self.eventsCache.prefetcher
@@ -639,7 +604,7 @@ class X5BattleTokensBonus(TokensBonus):
 
 class EntitlementBonus(SimpleBonus):
     _ENTITLEMENT_RECORD = namedtuple('_ENTITLEMENT_RECORD', ['id', 'amount'])
-    _FORMATTED_AMOUNT = ('ranked_202103_access', )
+    _FORMATTED_AMOUNT = ('ranked_202109_access', )
 
     @staticmethod
     def hasConfiguredResources(entitlementID):
@@ -676,9 +641,6 @@ class EntitlementBonus(SimpleBonus):
     def isShowInGUI(self):
         value = self.getValue()
         return value.amount > 0 and self.hasConfiguredResources(value.id)
-
-    def getEpicAwardVOs(self, withDescription=False, iconSize='big', withCounts=False):
-        return []
 
     def getIconBySize(self, size):
         value = self.getValue()
@@ -734,8 +696,7 @@ def createBonusFromTokens(result, prefix, bonusId, value):
         result.append(bonus[0])
 
 
-@dependency.replace_none_kwargs(eventProgressionController=IEventProgressionController)
-def tokensFactory(name, value, isCompensation=False, ctx=None, eventProgressionController=None):
+def tokensFactory(name, value, isCompensation=False, ctx=None):
     result = []
     for tID, tValue in value.iteritems():
         if tID.startswith(LOOTBOX_TOKEN_PREFIX):
@@ -754,8 +715,6 @@ def tokensFactory(name, value, isCompensation=False, ctx=None, eventProgressionC
             createBonusFromTokens(result, CURRENCY_TOKEN_PREFIX, tID, tValue)
         elif tID.startswith(RESOURCE_TOKEN_PREFIX):
             result.append(ResourceBonus(name, {tID: tValue}, RESOURCE_TOKEN_PREFIX, isCompensation, ctx))
-        elif eventProgressionController.isAvailable() and eventProgressionController.getProgressionXPTokenID() and tID.startswith(eventProgressionController.getProgressionXPTokenID()):
-            result.append(ProgressionXPToken(name, {tID: tValue}, isCompensation, ctx))
         else:
             result.append(BattleTokensBonus(name, {tID: tValue}, isCompensation, ctx))
 
@@ -874,15 +833,6 @@ class ItemsBonus(SimpleBonus):
             itemInfo['count'] = count
         return itemInfo
 
-    def getEpicAwardVOs(self, withDescription=False, iconSize='big', withCounts=False):
-        result = []
-        for item, count in self.getItems().iteritems():
-            itemInfo = self.__getCommonAwardsVOs(item, count, iconSize, align=TEXT_ALIGN.CENTER, withCounts=withCounts)
-            itemInfo.update(_EPIC_AWARD_STATIC_VO_ENTRIES)
-            result.append(itemInfo)
-
-        return result
-
     @staticmethod
     def makeItemTooltip(item):
         description = item.fullDescription
@@ -991,16 +941,6 @@ class GoodiesBonus(SimpleBonus):
             itemData['count'] = count
         return itemData
 
-    def getEpicAwardVOs(self, withDescription=False, iconSize='big', withCounts=False):
-        result = []
-        for booster, count in self.getBoosters().iteritems():
-            if booster is not None:
-                itemData = self.__getCommonAwardsVOs(booster, count, iconSize, align=TEXT_ALIGN.CENTER, withCounts=withCounts)
-                itemData.update(_EPIC_AWARD_STATIC_VO_ENTRIES)
-                result.append(itemData)
-
-        return result
-
     @staticmethod
     def __itemTooltip(booster):
         return {'isSpecial': True, 
@@ -1052,11 +992,19 @@ class VehiclesBonus(SimpleBonus):
 
     def getWrappedEpicBonusList(self):
         result = []
-        for item, _ in self.getVehicles():
+        for item, vehInfo in self.getVehicles():
+            icons = dict()
+            if self.isRentVehicle(vehInfo):
+                for size in AWARDS_SIZES.ALL():
+                    icons[size] = RES_ICONS.getRentVehicleAwardIcon(size)
+
+            else:
+                icons = {AWARDS_SIZES.SMALL: item.iconSmall, 
+                   AWARDS_SIZES.BIG: item.icon}
             result.append({'id': item.intCD, 
                'type': ('vehicle/{}').format(item.type), 
                'value': 1, 
-               'icon': {AWARDS_SIZES.SMALL: item.iconSmall, AWARDS_SIZES.BIG: item.icon}})
+               'icon': icons})
 
         return result
 
@@ -1086,7 +1034,7 @@ class VehiclesBonus(SimpleBonus):
         return result
 
     def isRentVehicle(self, vehInfo):
-        if self.getRentBattles(vehInfo) or self.getRentDays(vehInfo) or self.getRentWins(vehInfo):
+        if self.getRentBattles(vehInfo) or self.getRentDays(vehInfo) or self.getRentWins(vehInfo) or self.getRentSeason(vehInfo) or self.getRentCycle(vehInfo):
             return True
         return False
 
@@ -1124,18 +1072,6 @@ class VehiclesBonus(SimpleBonus):
         if withCounts:
             vehicleVO['count'] = 1
         return vehicleVO
-
-    def getEpicAwardVOs(self, withDescription=False, iconSize='big', withCounts=False):
-        result = []
-        for vehicle, vehInfo in self.getVehicles():
-            vehicleVO = self.__getCommonAwardsVOs(vehicle, vehInfo, iconSize, align=TEXT_ALIGN.CENTER, withCounts=withCounts)
-            vehicleVO.update(_EPIC_AWARD_STATIC_VO_ENTRIES)
-            if withDescription:
-                vehicleVO['title'] = i18n.makeString(TOOLTIPS.getAwardHeader(self._name))
-                vehicleVO['description'] = i18n.makeString(TOOLTIPS.getAwardBody(self._name))
-            result.append(vehicleVO)
-
-        return result
 
     @classmethod
     def getTmanRoleLevel(cls, vehInfo):
@@ -1178,6 +1114,10 @@ class VehiclesBonus(SimpleBonus):
     @staticmethod
     def getRentSeason(vehInfo):
         return vehInfo.get('rent', {}).get('season')
+
+    @staticmethod
+    def getRentCycle(vehInfo):
+        return vehInfo.get('rent', {}).get('cycle')
 
     def getRentInfo(self, vehInfo):
         for rentType, getter in (
@@ -1316,21 +1256,6 @@ class DossierBonus(SimpleBonus):
                 badgeVO['count'] = 1
             return badgeVO
         return
-
-    def getEpicAwardVOs(self, withDescription=False, iconSize='big', withCounts=False):
-        result = []
-        for (block, record), _ in self.getRecords().iteritems():
-            badgeVO = self.__getCommonAwardsVOs(block, record, iconSize, withCounts=withCounts)
-            if not badgeVO:
-                continue
-            badgeVO['align'] = TEXT_ALIGN.CENTER
-            badgeVO.update(_EPIC_AWARD_STATIC_VO_ENTRIES)
-            if withDescription:
-                badgeVO['title'] = i18n.makeString(BADGE.badgeName(record))
-                badgeVO['description'] = i18n.makeString(BADGE.badgeDescriptor(record))
-            result.append(badgeVO)
-
-        return result
 
     def __getItems(self, filterFunc):
         result = []
@@ -1547,19 +1472,6 @@ class CustomizationsBonus(SimpleBonus):
         itemTypeID = self.__getItemTypeID(itemTypeName)
         c11nItem = self.c11n.getItemByID(itemTypeID, itemID)
         return c11nItem
-
-    def getEpicAwardVOs(self, withDescription=False, iconSize='big', withCounts=False):
-        result = []
-        for item, data in zip(self.getCustomizations(), self.getList()):
-            itemData = self.__getCommonAwardsVOs(item, data, iconSize, align=TEXT_ALIGN.CENTER, withCounts=withCounts)
-            itemData.update(_EPIC_AWARD_STATIC_VO_ENTRIES)
-            if withDescription:
-                c11nItem = self.getC11nItem(item)
-                itemData['description'] = c11nItem.userType
-                itemData['title'] = c11nItem.userName
-            result.append(itemData)
-
-        return result
 
     def __getCommonAwardsVOs(self, item, data, iconSize='small', align=TEXT_ALIGN.RIGHT, withCounts=False):
         c11nItem = self.getC11nItem(item)
@@ -2028,10 +1940,7 @@ class CrewBooksBonus(SimpleBonus):
         return itemInfo
 
 
-class BattlePassPointsBonus(IntegralBonus):
-
-    def getValue(self):
-        return self.__getValueSum()
+class BattlePassPointsBonus(SimpleBonus):
 
     def getList(self):
         return [
@@ -2060,6 +1969,16 @@ class BattlePassPointsBonus(IntegralBonus):
         else:
             return
 
+    def getWrappedEpicBonusList(self):
+        awardItem = R.strings.tooltips.awardItem.dyn(self._name)
+        return [
+         {'id': 0, 
+            'type': ('custom/{}').format(self.getName()), 
+            'value': self.__getValueSum(), 
+            'icon': {AWARDS_SIZES.SMALL: self.getIconBySize(AWARDS_SIZES.SMALL), AWARDS_SIZES.BIG: self.getIconBySize(AWARDS_SIZES.BIG)}, 
+            'name': backport.text(awardItem.header()) if awardItem else '', 
+            'description': backport.text(awardItem.body()) if awardItem else ''}]
+
     def __getCommonAwardsVOs(self, iconSize='small', align=TEXT_ALIGN.CENTER, withCounts=False):
         itemInfo = {'imgSource': self.getIconBySize(iconSize), 
            'label': self.getIconLabel(), 
@@ -2079,7 +1998,7 @@ class BattlePassPointsBonus(IntegralBonus):
             return 0
 
 
-class EpicAbilityPtsBonus(SimpleBonus):
+class EpicAbilityPtsBonus(IntegralBonus):
     pass
 
 

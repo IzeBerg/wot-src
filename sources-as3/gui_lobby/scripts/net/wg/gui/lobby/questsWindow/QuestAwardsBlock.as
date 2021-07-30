@@ -202,16 +202,16 @@ package net.wg.gui.lobby.questsWindow
                   }
                }
                _loc3_ += Math.round(_loc4_ + BOTTOM_PADDING);
-               if(_loc3_ > this.flagBody.height && this.hasFixedHeight)
+               if(this.hasFixedHeight && _loc3_ > this.defaultHeight)
                {
                   DebugUtils.LOG_WARNING(MORE_THAN_FIVE_ROWS);
-                  this.container.availableHeight = Math.round(this.flagBody.height - this.container.y);
+                  this.container.availableHeight = Math.round(this.defaultHeight - this.container.y);
                   this.container.validateNow();
                   if(this._addData && this._haveAdditional && this._addData.length > 0)
                   {
                      this.addAwardTF.y = this.container.y + this.container.height;
                      this.addContainer.y = this.addAwardTF.y;
-                     this.addContainer.availableHeight = Math.round(this.flagBody.height - this.addContainer.y);
+                     this.addContainer.availableHeight = Math.round(this.defaultHeight - this.addContainer.y);
                      this.addContainer.validateNow();
                      _loc3_ = Math.round(this.addContainer.y + this.addContainer.height + BOTTOM_PADDING);
                   }
@@ -219,15 +219,15 @@ package net.wg.gui.lobby.questsWindow
                   {
                      _loc3_ = Math.round(this.container.y + this.container.height + BOTTOM_PADDING);
                   }
-                  _loc3_ = Math.round(Math.min(_loc3_,this.flagBody.height));
+                  _loc3_ = Math.round(Math.min(_loc3_,this.defaultHeight));
                }
-               _loc1_ = !!this._autoHeight ? Number(_loc3_) : Number(this.flagBody.height);
+               _loc1_ = !!this._autoHeight ? Number(_loc3_) : Number(this.defaultHeight);
                this.maskMC.height = _loc1_;
                if(this.flagBottom)
                {
                   this.flagBottom.y = Math.round(_loc1_ + PIXEL_PADDING);
                   this.flagBottom.scaleY = 1;
-                  this.flagBottom.height = Math.min(_loc1_,this.flagBottom.height);
+                  this.flagBottom.height = Math.min(_loc1_,this.defaultHeight);
                }
                if(this.bobyBg)
                {
@@ -287,6 +287,11 @@ package net.wg.gui.lobby.questsWindow
       {
          this._autoHeight = param1;
          invalidateData();
+      }
+      
+      protected function get defaultHeight() : Number
+      {
+         return this.flagBody.height;
       }
    }
 }

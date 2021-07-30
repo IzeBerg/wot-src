@@ -7,7 +7,6 @@ package net.wg.gui.lobby.manualChapter
    import flash.events.Event;
    import flash.geom.Point;
    import flash.ui.Keyboard;
-   import net.wg.data.constants.Values;
    import net.wg.gui.bootcamp.interfaces.IAnimatedButtonRenderer;
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.components.paginator.PaginationDetailsNumButton;
@@ -16,11 +15,14 @@ package net.wg.gui.lobby.manualChapter
    import net.wg.gui.components.paginator.vo.PaginatorPageNumVO;
    import net.wg.gui.interfaces.ISoundButtonEx;
    import net.wg.gui.lobby.manualChapter.controls.ManualBackgroundContainer;
+   import net.wg.gui.lobby.manualChapter.controls.VideoContainer;
    import net.wg.gui.lobby.manualChapter.data.ManualChapterContainerVO;
    import net.wg.gui.lobby.manualChapter.data.ManualPageDetailedViewVO;
    import net.wg.gui.lobby.manualChapter.events.ManualViewEvent;
    import net.wg.infrastructure.base.meta.IManualChapterViewMeta;
    import net.wg.infrastructure.base.meta.impl.ManualChapterViewMeta;
+   import net.wg.infrastructure.uilogger.manual.ManualPageLogger;
+   import net.wg.utils.ICounterManager;
    import scaleform.clik.constants.InputValue;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.controls.Button;
@@ -74,6 +76,10 @@ package net.wg.gui.lobby.manualChapter
       private static const IN_LABEL:String = "in";
       
       private static const OUT_LABEL:String = "out";
+      
+      private static const MAX_PAGES:int = 20;
+      
+      private static const PAGES_GAP:int = -8;
        
       
       public var view:ManualPageView;
@@ -96,6 +102,8 @@ package net.wg.gui.lobby.manualChapter
       
       private var _data:ManualChapterContainerVO;
       
+      private var _pages:DataProvider = null;
+      
       private var _currentMissionIndex:int = -1;
       
       private var _fadeTween:Tween;
@@ -116,8 +124,13 @@ package net.wg.gui.lobby.manualChapter
       
       private var _pageController:PaginatorArrowsController = null;
       
+      private var _counterManager:ICounterManager;
+      
+      private var _logger:ManualPageLogger = null;
+      
       public function ManualChapterView()
       {
+         this._counterManager = App.utils.counterManager;
          super();
       }
       
@@ -134,9 +147,16 @@ package net.wg.gui.lobby.manualChapter
          setFocus(this);
       }
       
+      override protected function setPages(param1:DataProvider) : void
+      {
+         this._pages = param1;
+         invalidateData();
+      }
+      
       override protected function setInitData(param1:ManualChapterContainerVO) : void
       {
          this._data = param1;
+         this._pages = param1.pages;
          invalidateData();
       }
       
@@ -148,6 +168,7 @@ package net.wg.gui.lobby.manualChapter
          this.prevBackground.dispose();
          this.prevBackground = null;
          this._data = null;
+         this._counterManager = null;
          this.view.dispose();
          this.view = null;
          this.stackBackground.dispose();
@@ -171,19 +192,27 @@ package net.wg.gui.lobby.manualChapter
          this.clearTweens();
          this._pageController.dispose();
          this._pageController = null;
+         if(this._logger)
+         {
+            this._logger.stopPageLog();
+            this._logger.dispose();
+            this._logger = null;
+         }
+         this._pages = null;
          super.onDispose();
       }
       
       override protected function configUI() : void
       {
          super.configUI();
-         this._pageController = new PaginatorArrowsController(this,this.pageButtons,this.arrowLeftBtn,this.arrowRightBtn,MANUAL_CHAPTER_GROUP,Values.ZERO,true);
+         this._pageController = new PaginatorArrowsController(this,this.pageButtons,this.arrowLeftBtn,this.arrowRightBtn,MANUAL_CHAPTER_GROUP,MAX_PAGES,true,PAGES_GAP,true);
          this.viewOpacity = 0;
          this.bg.alpha = 0;
          this._bgFadeTween = new Tween(FADE_IN_DURATION,this.bg,{"alpha":1},{
             "paused":false,
             "ease":Linear.easeOut
          });
+         this._logger = new ManualPageLogger();
          this.addListeners();
       }
       
@@ -195,9 +224,9 @@ package net.wg.gui.lobby.manualChapter
          var _loc4_:int = 0;
          var _loc5_:ManualPageDetailedViewVO = null;
          super.draw();
-         if(this._data != null && isInvalid(InvalidationType.DATA))
+         if(this._pages != null && isInvalid(InvalidationType.DATA))
          {
-            _loc1_ = this._data.pages;
+            _loc1_ = this._pages;
             _loc2_ = _loc1_.length;
             if(_loc2_ > MIN_PAGES)
             {
@@ -228,12 +257,14 @@ package net.wg.gui.lobby.manualChapter
                      this.tweenBackground();
                      this.view.fadeOut();
                      this.btnClose.gotoAndPlay(OUT_LABEL);
+                     this._logger.stopPageLog();
                   }
                   else
                   {
                      this.view.fadeIn();
                      this.view.setData(_loc5_);
                      this.btnClose.gotoAndPlay(IN_LABEL);
+                     this._logger.startPageLog(_loc5_.id);
                   }
                   this.pageBackground.imageSource = _loc5_.background;
                   this.pageBackground.backgroundSource = RES_ICONS.MAPS_ICONS_MANUAL_BACKGROUNDS_MANUAL_CARD_BACK;
@@ -242,6 +273,10 @@ package net.wg.gui.lobby.manualChapter
          }
          if(isInvalid(InvalidationType.SIZE))
          {
+            if(this._pageController)
+            {
+               this._pageController.updateSize(_width,_height);
+            }
             this.updateLayout();
          }
       }
@@ -375,7 +410,9 @@ package net.wg.gui.lobby.manualChapter
          var _loc1_:Button = this.btnClose.button;
          this._pageController.addEventListener(Event.CHANGE,this.onPageControllerChangeHandler);
          _loc1_.addEventListener(ButtonEvent.CLICK,this.onAnimatedButtonContentClickHandler);
-         this.view.addEventListener(ManualViewEvent.BOOTCAMP_CLICKED,this.onViewBootcampClickedHandler);
+         this.view.addEventListener(ManualViewEvent.BUTTON_CLICKED,this.onViewButtonClickedHandler);
+         this.view.addEventListener(ManualViewEvent.BOOTCAMP_HIGHLIGHTED,this.onViewBootcampHighlightedHandler);
+         this.view.addEventListener(ManualViewEvent.PREVIEW_CLICKED,this.onViewPreviewClickedHandler);
       }
       
       private function removeListeners() : void
@@ -383,7 +420,9 @@ package net.wg.gui.lobby.manualChapter
          var _loc1_:Button = this.btnClose.button;
          this._pageController.removeEventListener(Event.CHANGE,this.onPageControllerChangeHandler);
          _loc1_.removeEventListener(ButtonEvent.CLICK,this.onAnimatedButtonContentClickHandler);
-         this.view.removeEventListener(ManualViewEvent.BOOTCAMP_CLICKED,this.onViewBootcampClickedHandler);
+         this.view.removeEventListener(ManualViewEvent.BUTTON_CLICKED,this.onViewButtonClickedHandler);
+         this.view.removeEventListener(ManualViewEvent.BOOTCAMP_HIGHLIGHTED,this.onViewBootcampHighlightedHandler);
+         this.view.removeEventListener(ManualViewEvent.PREVIEW_CLICKED,this.onViewPreviewClickedHandler);
       }
       
       private function playFadeInTween() : void
@@ -416,9 +455,24 @@ package net.wg.gui.lobby.manualChapter
          }
       }
       
-      private function onViewBootcampClickedHandler(param1:ManualViewEvent) : void
+      private function onViewButtonClickedHandler(param1:ManualViewEvent) : void
       {
-         bootcampButtonClickedS();
+         var _loc2_:ManualPageDetailedViewVO = this._data.details[this._currentMissionIndex];
+         pageButtonClickedS(_loc2_.pageType);
+      }
+      
+      private function onViewBootcampHighlightedHandler(param1:ManualViewEvent) : void
+      {
+         bootcampHighlightedS();
+      }
+      
+      private function onViewPreviewClickedHandler(param1:ManualViewEvent) : void
+      {
+         var _loc2_:VideoContainer = param1.target as VideoContainer;
+         if(_loc2_)
+         {
+            onPreviewClickedS(_loc2_.getVideoUrl());
+         }
       }
       
       private function onAnimatedButtonContentClickHandler(param1:ButtonEvent) : void
@@ -428,8 +482,14 @@ package net.wg.gui.lobby.manualChapter
       
       private function onPageControllerChangeHandler(param1:Event) : void
       {
+         var _loc3_:ManualPageDetailedViewVO = null;
          var _loc2_:int = PaginationDetailsNumButton(this._pageController.getSelectedButton()).pageIndex;
          this._goRight = _loc2_ > this._currentMissionIndex;
+         if(_loc2_ != this._currentMissionIndex)
+         {
+            _loc3_ = this._data.details[_loc2_];
+            onPageChangedS(_loc3_.id);
+         }
          this.setPageIndex(_loc2_);
       }
    }

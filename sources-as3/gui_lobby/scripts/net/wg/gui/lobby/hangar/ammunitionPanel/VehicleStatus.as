@@ -215,7 +215,7 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
       {
          if(this._data.roleId > 0)
          {
-            this._toolTipMgr.showWulfTooltip(TOOLTIPS_CONSTANTS.RANKED_BATTLES_ROLES,this._data.roleId);
+            this._toolTipMgr.showWulfTooltip(TOOLTIPS_CONSTANTS.VEHICLE_ROLES,this._data.vehicleCD);
          }
       }
       

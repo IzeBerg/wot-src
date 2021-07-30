@@ -1,5 +1,6 @@
 import typing
 from gui.Scaleform.genConsts.FITTING_TYPES import FITTING_TYPES
+from gui.impl import backport
 from gui.impl.gen import R
 from gui.impl.gen.view_models.constants.item_highlight_types import ItemHighlightTypes
 from gui.impl.lobby.dialogs.auxiliary.confirmed_item_helpers import getHighlightsTypeByItem, getOverlayTypeByItem, ConfirmedItemWarningTypes, DependsOnDevicesWarning
@@ -8,12 +9,15 @@ from gui.shared.gui_items import GUI_ITEM_TYPE
 from gui.shared.utils.requesters import REQ_CRITERIA
 from gui.impl.gen.view_models.views.lobby.common.confirmed_item_model import ConfirmedItemModel
 from helpers import dependency
+from post_progression_common import ACTION_TYPES
 from skeletons.gui.shared import IItemsCache
 from gui.shared.gui_items.gui_item_economics import ITEM_PRICE_EMPTY
 if typing.TYPE_CHECKING:
     from gui.shared.gui_items.fitting_item import FittingItem
     from gui.shared.gui_items.gui_item_economics import ItemPrice
+    from gui.veh_post_progression.models.modifications import PostProgressionActionItem
 SUPPORTED_TYPES = GUI_ITEM_TYPE.ARTEFACTS + GUI_ITEM_TYPE.VEHICLE_MODULES
+CTX_VEHICLE_INV_ID = 'vehicleInvID'
 
 class ConfirmedItem(object):
     __slots__ = ('_item', '_ctx', '_warnings')
@@ -61,6 +65,8 @@ class ConfirmedItem(object):
             return ConfirmedShell(item, ctx)
         if item.itemTypeID == GUI_ITEM_TYPE.BATTLE_ABILITY:
             return ConfirmedBattleAbility(item, ctx)
+        if item.itemTypeID == GUI_ITEM_TYPE.VEH_POST_PROGRESSION:
+            return ConfirmedPostProgressionActionItem.createFromGUIItem(item, ctx)
         return ConfirmedItem(item)
 
     def getCofirmedItemViewModel(self):
@@ -121,7 +127,7 @@ class ConfirmedBattleBooster(ConfirmedArtefact):
     __itemsCache = dependency.descriptor(IItemsCache)
 
     def getOverlayType(self):
-        vehInvID = self._ctx.get('vehicleInvID', None)
+        vehInvID = self._ctx.get(CTX_VEHICLE_INV_ID, None)
         if vehInvID is not None:
             return getOverlayTypeByItem(self._item, self.__getBoosterReplaceCriteria(vehInvID))
         else:
@@ -133,7 +139,7 @@ class ConfirmedBattleBooster(ConfirmedArtefact):
 
     def _setWarnings(self):
         warnings = {}
-        vehInvID = self._ctx.get('vehicleInvID', None)
+        vehInvID = self._ctx.get(CTX_VEHICLE_INV_ID, None)
         if vehInvID is not None:
             vehicleToInstall = self.__itemsCache.items.getVehicle(vehInvID)
             devicesCritetia = REQ_CRITERIA.VEHICLE.SUITABLE([vehicleToInstall], [GUI_ITEM_TYPE.OPTIONALDEVICE]) | ~REQ_CRITERIA.HIDDEN ^ ~REQ_CRITERIA.OPTIONAL_DEVICE.SIMPLE | ~REQ_CRITERIA.SECRET
@@ -217,3 +223,41 @@ class ConfirmedShell(ConfirmedItem):
     @classmethod
     def createFromGUIItem(cls, item, ctx=None):
         return ConfirmedShell(item, ctx)
+
+
+class ConfirmedPostProgressionActionItem(ConfirmedItem):
+    __itemsCache = dependency.descriptor(IItemsCache)
+
+    def getName(self):
+        return backport.text(self._item.getLocNameRes()())
+
+    def getImageSource(self):
+        return R.invalid()
+
+    def getLevel(self):
+        vehInvID = self._ctx.get(CTX_VEHICLE_INV_ID, None)
+        vehicle = self.__itemsCache.items.getVehicle(vehInvID)
+        if vehicle is not None and vehicle.postProgressionAvailability():
+            return vehicle.postProgression.getStep(self._item.parentStepID).getLevel()
+        else:
+            return 0
+
+    @classmethod
+    def createFromGUIItem(cls, item, ctx=None):
+        if item.actionType in (ACTION_TYPES.PAIR_MODIFICATION, ACTION_TYPES.MODIFICATION):
+            return ConfirmedPostProgressionPairModification(item, ctx)
+        return ConfirmedPostProgressionActionItem(item, ctx)
+
+
+class ConfirmedPostProgressionPairModification(ConfirmedPostProgressionActionItem):
+
+    def getImageSource(self):
+        rPath = R.images.gui.maps.icons.vehPostProgression.actionItems.pairModifications.c_120x120
+        return rPath.dyn(self._item.getImageName(), default=R.invalid)()
+
+    def getHighlightsType(self):
+        return ItemHighlightTypes.POST_PROGRESSION_MODIFICATION
+
+    @classmethod
+    def createFromGUIItem(cls, item, ctx=None):
+        return ConfirmedPostProgressionPairModification(item, ctx)

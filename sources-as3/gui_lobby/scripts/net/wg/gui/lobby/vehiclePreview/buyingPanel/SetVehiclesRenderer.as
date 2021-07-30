@@ -11,10 +11,12 @@ package net.wg.gui.lobby.vehiclePreview.buyingPanel
    import flash.text.TextFieldAutoSize;
    import net.wg.data.constants.Errors;
    import net.wg.data.constants.SoundTypes;
+   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
    import net.wg.gui.components.controls.Image;
    import net.wg.gui.components.controls.scroller.IScrollerItemRenderer;
    import net.wg.gui.components.controls.scroller.ListRendererEvent;
+   import net.wg.gui.components.controls.scroller.data.ScrollerItemRendererSize;
    import net.wg.gui.lobby.vehiclePreview.VehiclePreviewEvent;
    import net.wg.gui.lobby.vehiclePreview.data.VPVehicleCarouselVO;
    import net.wg.infrastructure.base.UIComponentEx;
@@ -278,6 +280,20 @@ package net.wg.gui.lobby.vehiclePreview.buyingPanel
       
       public function set isViewPortEnabled(param1:Boolean) : void
       {
+      }
+      
+      public function get rowsCount() : int
+      {
+         return Values.ZERO;
+      }
+      
+      public function set rowsCount(param1:int) : void
+      {
+      }
+      
+      public function get adaptiveSize() : String
+      {
+         return ScrollerItemRendererSize.NORMAL_SIZE;
       }
       
       private function onBtnSlotClickHandler(param1:MouseEvent) : void

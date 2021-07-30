@@ -18,6 +18,10 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private static const SHOW_GLOW_GREEN_SPECIAL_STATE:String = "greenSpecial";
       
+      private static const SHOW_GLOW_GREEN_UNLOCK_STATE:String = "greenUnlock";
+      
+      private static const SHOW_GLOW_GREEN_UPGRADE_STATE:String = "greenUpgrade";
+      
       private static const SHOW_GLOW_ORANGE_STATE:String = "orange";
       
       private static const SHOW_GLOW_GREEN_NO_HOT_KEY_STATE:String = "greenNoHotKey";
@@ -81,6 +85,14 @@ package net.wg.gui.battle.views.consumablesPanel
             case CONSUMABLES_PANEL_SETTINGS.GLOW_ID_GREEN_SPECIAL:
                this._textField.textColor = GREEN_TEXT_COLOR;
                gotoAndPlay(SHOW_GLOW_GREEN_SPECIAL_STATE);
+               break;
+            case CONSUMABLES_PANEL_SETTINGS.GLOW_ID_GREEN_UNLOCK:
+               this._textField.textColor = GREEN_TEXT_COLOR;
+               gotoAndPlay(SHOW_GLOW_GREEN_UNLOCK_STATE);
+               break;
+            case CONSUMABLES_PANEL_SETTINGS.GLOW_ID_GREEN_UPGRADE:
+               this._textField.textColor = GREEN_TEXT_COLOR;
+               gotoAndPlay(SHOW_GLOW_GREEN_UPGRADE_STATE);
                break;
             default:
                this._textField.textColor = NORMAL_TEXT_COLOR;

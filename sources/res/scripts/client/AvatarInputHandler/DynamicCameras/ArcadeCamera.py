@@ -25,9 +25,14 @@ _DEFAULT_ZOOM_DURATION = 0.5
 _COLLIDE_ANIM_DIST = 1.0
 _COLLIDE_ANIM_INTERVAL = 0.2
 
-class CollisionVolumeGroup(namedtuple('CollisionVolumeGroup', ('minVolume', 'lowSpeedLimit', 'vehicleVisibilityLimit',
-                                    'approachSpeed', 'cameraSpeedFactor', 'criticalDistance',
-                                    'canSkip'))):
+class CollisionVolumeGroup(namedtuple('CollisionVolumeGroup', (
+ 'minVolume',
+ 'lowSpeedLimit',
+ 'vehicleVisibilityLimit',
+ 'approachSpeed',
+ 'cameraSpeedFactor',
+ 'criticalDistance',
+ 'canSkip'))):
 
     @staticmethod
     def fromSection(dataSection):
@@ -185,7 +190,7 @@ class ArcadeCamera(CameraWithSettings, CallbackDelayer, TimeDeltaMeter):
         self.setCameraDistance(self._cfg['startDist'])
         self.__aimingSystem.pitch = self._cfg['startAngle']
         self.__aimingSystem.yaw = Math.Matrix(targetMat).yaw
-        self.__aimingSystem.cursorShouldCheckCollisions(shouldCheckCollisions=False)
+        self.__aimingSystem.cursorShouldCheckCollisions(True)
         self.__updateAngles(0, 0)
         cameraPosProvider = Math.Vector4Translation(self.__aimingSystem.matrix)
         self.__cam.cameraPositionProvider = cameraPosProvider
@@ -259,7 +264,7 @@ class ArcadeCamera(CameraWithSettings, CallbackDelayer, TimeDeltaMeter):
                 self.delayCallback(0.0, self.enable, preferredPos, closesDist, postmortemParams, turretYaw, gunPitch, camTransitionParams, initialVehicleMatrix)
                 return
         if initialVehicleMatrix is None:
-            initialVehicleMatrix = player.getOwnVehicleMatrix() if vehicle is None else vehicle.matrix
+            initialVehicleMatrix = player.getOwnVehicleMatrix(self.vehicleMProv) if vehicle is None else vehicle.matrix
         vehicleMProv = initialVehicleMatrix
         if self.__compareCurrStateSettingsKey(GAME.COMMANDER_CAM):
             self.__updateProperties(state=None)
@@ -586,6 +591,9 @@ class ArcadeCamera(CameraWithSettings, CallbackDelayer, TimeDeltaMeter):
         self.__aimingSystem.distanceFromFocus = newDist
         if self.__isInArcadeZoomState():
             self._userCfg['startDist'] = newDist
+        heightAboveBase, _ = self.getPivotSettings()
+        diff = heightAboveBase - self._cfg['heightAboveBase']
+        self.__cam.shiftPivotPos(Vector3(0, -diff, 0))
 
     def __isInArcadeZoomState(self):
         return self.__zoomStateSwitcher.getCurrentState() is None
@@ -606,6 +614,7 @@ class ArcadeCamera(CameraWithSettings, CallbackDelayer, TimeDeltaMeter):
     def __updateAdvancedCollision(self):
         enable = self.__compareCurrStateSettingsKey(GAME.COMMANDER_CAM)
         self.__cam.setCollisionCheckOnlyAtPos(enable)
+        self.__aimingSystem.cursorShouldCheckCollisions(not enable)
 
     def __updateLodBiasForTanks(self):
         state = self.__zoomStateSwitcher.getCurrentState()
@@ -965,3 +974,18 @@ class ArcadeCamera(CameraWithSettings, CallbackDelayer, TimeDeltaMeter):
 
     def __onRecreateDevice(self):
         self.__aimingSystem.aimMatrix = self.__calcAimMatrix()
+
+
+class ArcadeCameraEpic(ArcadeCamera):
+
+    @staticmethod
+    def _getConfigsKey():
+        return ArcadeCameraEpic.__name__
+
+    def reload(self):
+        if not constants.IS_DEVELOPMENT:
+            return
+        import ResMgr
+        ResMgr.purge('gui/avatar_input_handler.xml')
+        cameraSec = ResMgr.openSection('gui/avatar_input_handler.xml/arcadeEpicMinefieldMode/camera/')
+        self._reloadConfigs(cameraSec)

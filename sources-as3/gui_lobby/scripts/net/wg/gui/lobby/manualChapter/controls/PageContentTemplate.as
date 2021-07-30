@@ -47,6 +47,11 @@ package net.wg.gui.lobby.manualChapter.controls
          return true;
       }
       
+      public function isFullSize() : Boolean
+      {
+         return false;
+      }
+      
       public function setData(param1:Object) : void
       {
          this._data = this.getDataVO(param1);

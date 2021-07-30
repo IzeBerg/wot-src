@@ -17,10 +17,17 @@ package net.wg.gui.lobby.vehicleCustomization
       
       public var currentState:int = 1;
       
+      public var customizationContentTypeIcon:MovieClip;
+      
       public function CustomizationFadeInFadeOutMovieClip()
       {
          super();
          mouseChildren = mouseEnabled = false;
+      }
+      
+      public final function dispose() : void
+      {
+         this.onDispose();
       }
       
       public function fadeIn() : void
@@ -41,14 +48,15 @@ package net.wg.gui.lobby.vehicleCustomization
          }
       }
       
-      public final function dispose() : void
+      public function setType(param1:int) : void
       {
-         this.onDispose();
+         this.customizationContentTypeIcon.gotoAndStop(param1 + 1);
       }
       
       protected function onDispose() : void
       {
          stop();
+         this.customizationContentTypeIcon = null;
       }
    }
 }

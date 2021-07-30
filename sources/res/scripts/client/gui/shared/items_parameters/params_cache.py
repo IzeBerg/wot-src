@@ -1,5 +1,6 @@
 from collections import namedtuple
 import itertools, math, typing, sys
+from constants import BonusTypes
 from gui.shared.items_parameters import calcGunParams, calcShellParams, getEquipmentParameters, isAutoReloadGun, isDualGun
 from gui.shared.items_parameters import xml_reader
 from gui.shared.utils.decorators import debugTime
@@ -8,6 +9,7 @@ from debug_utils import LOG_CURRENT_EXCEPTION
 from items import vehicles, ITEM_TYPES, EQUIPMENT_TYPES
 from items.vehicles import getVehicleType
 from gui.shared.utils import GUN_NORMAL, GUN_CAN_BE_CLIP, GUN_CLIP, GUN_CAN_BE_AUTO_RELOAD, GUN_AUTO_RELOAD, GUN_DUAL_GUN, GUN_CAN_BE_DUAL_GUN
+from post_progression_common import ACTION_TYPES
 from soft_exception import SoftException
 if typing.TYPE_CHECKING:
     from items.vehicles import VehicleDescriptor
@@ -212,10 +214,26 @@ class _ParamsCache(object):
 
         return result
 
-    def getCompatibleArtefacts(self, vehicleDescr):
+    def getCompatibleArtefacts(self, vehicle):
         compatibles = []
+        receivedBaseMod = {}
+        lockedBaseMod = {}
+        for step in vehicle.postProgression.iterOrderedSteps():
+            action = step.action
+            if action.actionType == ACTION_TYPES.MODIFICATION and not step.isRestricted():
+                if step.isReceived():
+                    receivedBaseMod[action.getLocName()] = action.getTechName()
+                elif action.getLocName() not in lockedBaseMod and action.getLocName() not in receivedBaseMod:
+                    lockedBaseMod[action.getLocName()] = action.getTechName()
+            elif action.actionType == ACTION_TYPES.PAIR_MODIFICATION and not step.isRestricted():
+                for subAction in action.modifications:
+                    compatibles.append((subAction.getTechName(), BonusTypes.PAIR_MODIFICATION))
+
+        for baseMod in itertools.chain(receivedBaseMod.itervalues(), lockedBaseMod.itervalues()):
+            compatibles.append((baseMod, BonusTypes.BASE_MODIFICATION))
+
         for item in itertools.chain(vehicles.g_cache.equipments().itervalues(), vehicles.g_cache.optionalDevices().itervalues()):
-            if item.checkCompatibilityWithVehicle(vehicleDescr)[0]:
+            if item.checkCompatibilityWithVehicle(vehicle.descriptor)[0]:
                 itemTypeName = item.itemTypeName
                 if itemTypeName == 'equipment':
                     if item.equipmentType == EQUIPMENT_TYPES.battleBoosters:

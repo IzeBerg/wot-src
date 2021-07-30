@@ -12,6 +12,8 @@ package net.wg.infrastructure.base.meta
       
       function onHideCompletedS() : void;
       
+      function onRefreshS() : void;
+      
       function as_buildData(param1:Array) : void;
       
       function as_show(param1:Number, param2:Number, param3:String, param4:Array, param5:Array) : void;

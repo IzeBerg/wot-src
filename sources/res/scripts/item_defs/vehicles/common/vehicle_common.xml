@@ -397,6 +397,17 @@
 		<builtinRepairkit>NoneExtra : Repairkit</builtinRepairkit>
 		<dualShoot>ShowShootingMultiGun : DualGunShoot</dualShoot>
 		<charger>NoneExtra : DualGunCharger</charger>
+		<laserSight>
+			BlinkingLaserSight : BlinkingLaserSight
+			<isEnabledBlinking>False</isEnabledBlinking>
+			<shouldCollideTarget>False</shouldCollideTarget>
+			<beamStaticSeq>particles/eff_sequence/maps_training_laser_e_staticBright_1.seq</beamStaticSeq>
+			<beamLength>
+				10.0
+				<!--BW_String-->
+			</beamLength>
+			<bindNode>HP_gunFire</bindNode>
+		</laserSight>
 	</extras>
 	<deviceExtras>
 		<devices>

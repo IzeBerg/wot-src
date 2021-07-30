@@ -10,6 +10,8 @@ package net.wg.gui.battle.views.epicMessagesPanel.data
       
       public var timerText:String = "";
       
+      public var descriptionText:String = "";
+      
       public function SectorBaseMessageVO(param1:Object)
       {
          super(param1);

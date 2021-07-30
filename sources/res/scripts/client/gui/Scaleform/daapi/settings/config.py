@@ -11,17 +11,18 @@ _LOBBY_RELEASE_PACKAGES = ('gui.Scaleform.daapi.view.lobby', 'gui.Scaleform.daap
                            'gui.Scaleform.daapi.view.lobby.header', 'gui.Scaleform.daapi.view.lobby.inputChecker',
                            'gui.Scaleform.daapi.view.lobby.messengerBar', 'gui.Scaleform.daapi.view.lobby.prb_windows',
                            'gui.Scaleform.daapi.view.lobby.profile', 'gui.Scaleform.daapi.view.lobby.rankedBattles',
-                           'gui.Scaleform.daapi.view.lobby.epicBattle', 'gui.Scaleform.daapi.view.lobby.event_progression',
-                           'gui.Scaleform.daapi.view.lobby.store', 'gui.Scaleform.daapi.view.lobby.storage',
-                           'gui.Scaleform.daapi.view.lobby.techtree', 'gui.Scaleform.daapi.view.lobby.trainings',
-                           'gui.Scaleform.daapi.view.lobby.vehicle_preview', 'gui.Scaleform.daapi.view.lobby.vehicle_compare',
-                           'gui.Scaleform.daapi.view.lobby.wgnc', 'gui.Scaleform.daapi.view.login',
-                           'messenger.gui.Scaleform.view.lobby', 'gui.Scaleform.daapi.view.lobby.missions.regular',
-                           'gui.Scaleform.daapi.view.lobby.missions.personal', 'gui.Scaleform.daapi.view.lobby.missions.linked_set',
+                           'gui.Scaleform.daapi.view.lobby.epicBattle', 'gui.Scaleform.daapi.view.lobby.store',
+                           'gui.Scaleform.daapi.view.lobby.storage', 'gui.Scaleform.daapi.view.lobby.techtree',
+                           'gui.Scaleform.daapi.view.lobby.trainings', 'gui.Scaleform.daapi.view.lobby.vehicle_preview',
+                           'gui.Scaleform.daapi.view.lobby.vehicle_compare', 'gui.Scaleform.daapi.view.lobby.wgnc',
+                           'gui.Scaleform.daapi.view.login', 'messenger.gui.Scaleform.view.lobby',
+                           'gui.Scaleform.daapi.view.lobby.missions.regular', 'gui.Scaleform.daapi.view.lobby.missions.personal',
+                           'gui.Scaleform.daapi.view.lobby.missions.linked_set',
                            'gui.Scaleform.daapi.view.bootcamp.lobby', 'gui.Scaleform.daapi.view.lobby.event_boards',
                            'gui.Scaleform.daapi.view.lobby.shop', 'gui.Scaleform.daapi.view.lobby.session_stats',
                            'gui.Scaleform.daapi.view.lobby.epicBattleTraining', 'gui.Scaleform.daapi.view.lobby.tank_setup',
-                           'gui.Scaleform.daapi.view.lobby.battle_royale', 'gui.Scaleform.daapi.view.lobby.mapbox')
+                           'gui.Scaleform.daapi.view.lobby.battle_royale', 'gui.Scaleform.daapi.view.lobby.mapbox',
+                           'gui.Scaleform.daapi.view.lobby.veh_post_progression')
 _LOBBY_DEBUG_PACKAGES = ('gui.development.ui.messenger.view.lobby', 'gui.development.ui.demo',
                          'gui.Scaleform.daapi.view.lobby.epicBattleTraining')
 _BATTLE_RELEASE_PACKAGES = ('gui.Scaleform.daapi.view.battle.shared', 'messenger.gui.Scaleform.view.battle')
@@ -29,19 +30,6 @@ _BATTLE_DEBUG_PACKAGES = ('gui.development.ui.battle', )
 _LOBBY_DEBUG_TOOLTIPS_BUILDERS_PATHS = (
  (
   'gui.development.ui.tooltips.development_builders', _TOOLTIPS.DEVELOPMENT_SET),)
-LOBBY_PACKAGES = _LOBBY_RELEASE_PACKAGES
-BATTLE_PACKAGES = _BATTLE_RELEASE_PACKAGES
-COMMON_PACKAGES = _COMMON_RELEASE_PACKAGES
-BATTLE_PACKAGES_BY_ARENA_TYPE = {ARENA_GUI_TYPE.TUTORIAL: ('gui.Scaleform.daapi.view.battle.tutorial', ), 
-   ARENA_GUI_TYPE.EVENT_BATTLES: ('gui.Scaleform.daapi.view.battle.event', ), 
-   ARENA_GUI_TYPE.RANKED: ('gui.Scaleform.daapi.view.battle.ranked', ), 
-   ARENA_GUI_TYPE.BOOTCAMP: ('gui.Scaleform.daapi.view.bootcamp.battle', ), 
-   ARENA_GUI_TYPE.EPIC_RANDOM: ('gui.Scaleform.daapi.view.battle.epic_random', ), 
-   ARENA_GUI_TYPE.EPIC_RANDOM_TRAINING: ('gui.Scaleform.daapi.view.battle.epic_random', ), 
-   ARENA_GUI_TYPE.EPIC_BATTLE: ('gui.Scaleform.daapi.view.battle.epic', ), 
-   ARENA_GUI_TYPE.EPIC_TRAINING: ('gui.Scaleform.daapi.view.battle.epic', ), 
-   ARENA_GUI_TYPE.BATTLE_ROYALE: ('gui.Scaleform.daapi.view.battle.battle_royale', )}
-BATTLE_PACKAGES_BY_DEFAULT = ('gui.Scaleform.daapi.view.battle.classic', )
 LOBBY_TOOLTIPS_BUILDERS_PATHS = (
  (
   'gui.Scaleform.daapi.view.tooltips.achievement_builders', _TOOLTIPS.ACHIEVEMENTS_SET),
@@ -59,8 +47,6 @@ LOBBY_TOOLTIPS_BUILDERS_PATHS = (
   'gui.Scaleform.daapi.view.tooltips.cybersport_builders', _TOOLTIPS.CYBER_SPORT_SET),
  (
   'gui.Scaleform.daapi.view.tooltips.elen_builders', _TOOLTIPS.ELEN_SET),
- (
-  'gui.Scaleform.daapi.view.tooltips.event_progression_builders', _TOOLTIPS.EVENT_PROGRESSION_SET),
  (
   'gui.Scaleform.daapi.view.tooltips.epic_battle_builders', _TOOLTIPS.EPIC_BATTLE_SET),
  (
@@ -118,7 +104,9 @@ LOBBY_TOOLTIPS_BUILDERS_PATHS = (
  (
   'gui.Scaleform.daapi.view.tooltips.mapbox_lobby_builders', _TOOLTIPS.MAPBOX_LOBBY_SET),
  (
-  'gui.Scaleform.daapi.view.tooltips.account_completion_builders', _TOOLTIPS.ACCOUNT_COMPLETION_SET))
+  'gui.Scaleform.daapi.view.tooltips.account_completion_builders', _TOOLTIPS.ACCOUNT_COMPLETION_SET),
+ (
+  'gui.Scaleform.daapi.view.tooltips.referral_program_builder', _TOOLTIPS.REFERRAL_PROGRAM_SET))
 ADVANCED_COMPLEX_TOOLTIPS = {'#tooltips:hangar/ammo_panel/device/empty': 'equipment', 
    '#tooltips:hangar/ammo_panel/equipment/empty': 'service', 
    '#tooltips:equipment/empty': 'service', 
@@ -141,7 +129,12 @@ BATTLE_TOOLTIPS_BUILDERS_PATHS = (
  (
   'gui.Scaleform.daapi.view.tooltips.royale_battle_builders', _TOOLTIPS.ROYALE_BATTLE_SET),
  (
-  'gui.Scaleform.daapi.view.tooltips.bootcamp_builders', _TOOLTIPS.BOOTCAMP_SET))
+  'gui.Scaleform.daapi.view.tooltips.bootcamp_builders', _TOOLTIPS.BOOTCAMP_SET),
+ (
+  'gui.Scaleform.daapi.view.tooltips.epic_in_battle_builders', _TOOLTIPS.EPIC_IN_BATTE_SET))
+LOBBY_PACKAGES = _LOBBY_RELEASE_PACKAGES
+BATTLE_PACKAGES = _BATTLE_RELEASE_PACKAGES
+COMMON_PACKAGES = _COMMON_RELEASE_PACKAGES
 if HAS_DEV_RESOURCES:
     LOBBY_PACKAGES += _LOBBY_DEBUG_PACKAGES
     BATTLE_PACKAGES += _BATTLE_DEBUG_PACKAGES
@@ -149,3 +142,16 @@ if HAS_DEV_RESOURCES:
     LOBBY_TOOLTIPS_BUILDERS_PATHS += _LOBBY_DEBUG_TOOLTIPS_BUILDERS_PATHS
 elif IS_DEVELOPMENT_BUILD:
     LOBBY_PACKAGES += _LOBBY_DEVELOPMENT_BUILD_PACKAGES
+BATTLE_PACKAGES_BY_ARENA_TYPE = {ARENA_GUI_TYPE.TUTORIAL: BATTLE_PACKAGES + ('gui.Scaleform.daapi.view.battle.tutorial', ), 
+   ARENA_GUI_TYPE.EVENT_BATTLES: BATTLE_PACKAGES + ('gui.Scaleform.daapi.view.battle.event', ), 
+   ARENA_GUI_TYPE.RANKED: BATTLE_PACKAGES + ('gui.Scaleform.daapi.view.battle.ranked', ), 
+   ARENA_GUI_TYPE.BOOTCAMP: BATTLE_PACKAGES + ('gui.Scaleform.daapi.view.bootcamp.battle', ), 
+   ARENA_GUI_TYPE.EPIC_RANDOM: BATTLE_PACKAGES + ('gui.Scaleform.daapi.view.battle.epic_random', ), 
+   ARENA_GUI_TYPE.EPIC_RANDOM_TRAINING: BATTLE_PACKAGES + ('gui.Scaleform.daapi.view.battle.epic_random', ), 
+   ARENA_GUI_TYPE.EPIC_BATTLE: BATTLE_PACKAGES + ('gui.Scaleform.daapi.view.battle.epic', ), 
+   ARENA_GUI_TYPE.EPIC_TRAINING: BATTLE_PACKAGES + ('gui.Scaleform.daapi.view.battle.epic', ), 
+   ARENA_GUI_TYPE.BATTLE_ROYALE: BATTLE_PACKAGES + ('gui.Scaleform.daapi.view.battle.battle_royale', ), 
+   ARENA_GUI_TYPE.MAPS_TRAINING: ('messenger.gui.Scaleform.view.battle', 'gui.Scaleform.daapi.view.battle.maps_training')}
+BATTLE_PACKAGES_BY_DEFAULT = BATTLE_PACKAGES + ('gui.Scaleform.daapi.view.battle.classic', )
+if HAS_DEV_RESOURCES:
+    BATTLE_PACKAGES_BY_ARENA_TYPE[ARENA_GUI_TYPE.MAPS_TRAINING] += _BATTLE_DEBUG_PACKAGES

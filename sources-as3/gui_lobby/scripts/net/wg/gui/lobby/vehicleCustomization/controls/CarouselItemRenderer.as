@@ -16,6 +16,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.CONTEXT_MENU_HANDLER_TYPE;
    import net.wg.data.constants.generated.CURRENCIES_CONSTANTS;
+   import net.wg.data.constants.generated.CUSTOMIZATION_CONSTS;
    import net.wg.data.constants.generated.GUI_ITEM_TYPES;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
    import net.wg.gui.components.common.CounterView;
@@ -27,12 +28,15 @@ package net.wg.gui.lobby.vehicleCustomization.controls
    import net.wg.gui.components.controls.VO.PriceVO;
    import net.wg.gui.components.controls.price.CompoundPrice;
    import net.wg.gui.components.controls.scroller.IScrollerItemRenderer;
+   import net.wg.gui.components.controls.scroller.data.ScrollerItemRendererSize;
    import net.wg.gui.lobby.vehicleCustomization.CustomizationShared;
    import net.wg.gui.lobby.vehicleCustomization.data.customizationPanel.CustomizationCarouselRendererVO;
    import net.wg.gui.lobby.vehicleCustomization.events.CustomizationItemEvent;
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.interfaces.entity.IDropItem;
+   import net.wg.infrastructure.managers.ISoundManager;
    import net.wg.infrastructure.managers.ITooltipMgr;
+   import net.wg.utils.IScheduler;
    import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.core.UIComponent;
@@ -230,9 +234,9 @@ package net.wg.gui.lobby.vehicleCustomization.controls
       
       private var _styleTfFiltersPreset:Array;
       
-      private var _customWidth:Number = 0;
+      private var _customWidth:int = 0;
       
-      private var _customHeight:Number = 0;
+      private var _customHeight:int = 0;
       
       private var _tweens:Vector.<Tween>;
       
@@ -240,14 +244,20 @@ package net.wg.gui.lobby.vehicleCustomization.controls
       
       private var _handlersRegistered:Boolean = false;
       
-      private var _originalImgWidth:Number = 0;
+      private var _originalImgWidth:int = 0;
       
-      private var _originalImgHeight:Number = 0;
+      private var _originalImgHeight:int = 0;
+      
+      private var _scheduler:IScheduler;
+      
+      private var _soundMgr:ISoundManager;
       
       public function CarouselItemRenderer()
       {
          this._styleTfFiltersPreset = [];
          this._tweens = new Vector.<Tween>();
+         this._scheduler = App.utils.scheduler;
+         this._soundMgr = App.soundMgr;
          super();
       }
       
@@ -262,7 +272,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls
          this.hover.mouseChildren = this.hover.mouseEnabled = false;
          this.hover.visible = false;
          this.imgBg.visible = false;
-         this.nonHistoricImg.addEventListener(Event.CHANGE,this.nonHistoricImgPosition);
+         this.nonHistoricImg.addEventListener(Event.CHANGE,this.onNonHistoricImgChangeHandler);
          this.nonHistoricImg.source = RES_ICONS.MAPS_ICONS_CUSTOMIZATION_NON_HISTORICAL;
          this.nonHistoricImg.mouseChildren = this.nonHistoricImg.mouseEnabled = true;
          this.nonHistoricImg.buttonMode = true;
@@ -316,22 +326,35 @@ package net.wg.gui.lobby.vehicleCustomization.controls
          this._styleTfFiltersPreset = this.styleNameTF.filters;
       }
       
-      override protected function onDispose() : void
+      override protected function onBeforeDispose() : void
       {
-         var _loc1_:Tween = null;
-         App.utils.scheduler.cancelTask(this.resetCounter);
+         this._scheduler.cancelTask(this.resetCounter);
          this.unregisterHandlers();
          this.nonHistoricImg.removeEventListener(MouseEvent.ROLL_OVER,this.onNonHistoricImgRollOverHandler);
          this.nonHistoricImg.removeEventListener(MouseEvent.ROLL_OUT,this.onNonHistoricImgRollOutHandler);
-         this._toolTipMgr = null;
+         this.nonHistoricImg.removeEventListener(Event.CHANGE,this.onNonHistoricImgChangeHandler);
          this.imgIcon.removeEventListener(Event.CHANGE,this.onImageChangeHandler);
+         this.equippedImg.removeEventListener(MouseEvent.ROLL_OVER,this.onEquippedImgRollOverHandler);
+         this.equippedImg.removeEventListener(MouseEvent.ROLL_OUT,this.onEquippedImgRollOutHandler);
+         this.equippedImg.image.removeEventListener(Event.CHANGE,this.onEquippedImgChangeHandler);
+         this.editBtn.removeEventListener(MouseEvent.ROLL_OVER,this.onEditBtnRollOverHandler);
+         this.editBtn.removeEventListener(MouseEvent.ROLL_OUT,this.onEditBtnRollOutHandler);
+         this.editBtn.removeEventListener(MouseEvent.CLICK,this.onEditBtnClickHandler);
+         this.editBtnSmall.removeEventListener(MouseEvent.ROLL_OVER,this.onEditBtnRollOverHandler);
+         this.editBtnSmall.removeEventListener(MouseEvent.ROLL_OUT,this.onEditBtnRollOutHandler);
+         this.editBtnSmall.removeEventListener(MouseEvent.CLICK,this.onEditBtnClickHandler);
+         this.storageIcon.removeEventListener(Event.CHANGE,this.onStorageIconChangeHandler);
+         super.onBeforeDispose();
+      }
+      
+      override protected function onDispose() : void
+      {
+         var _loc1_:Tween = null;
+         this._toolTipMgr = null;
          this.imgIcon.dispose();
          this.imgIcon = null;
          this.alertIcon.dispose();
          this.alertIcon = null;
-         this.equippedImg.removeEventListener(MouseEvent.ROLL_OVER,this.onEquippedImgRollOverHandler);
-         this.equippedImg.removeEventListener(MouseEvent.ROLL_OUT,this.onEquippedImgRollOutHandler);
-         this.equippedImg.image.removeEventListener(Event.CHANGE,this.onEquippedImgChangeHandler);
          this.equippedImg.dispose();
          this.equippedImg = null;
          this.frontground = null;
@@ -348,19 +371,12 @@ package net.wg.gui.lobby.vehicleCustomization.controls
          this.editableSlotHint = null;
          this.bg = null;
          this.selectedMC = null;
-         this.nonHistoricImg.removeEventListener(Event.CHANGE,this.nonHistoricImgPosition);
          this.nonHistoricImg.dispose();
          this.nonHistoricImg = null;
          this.editableImg.dispose();
          this.editableImg = null;
-         this.editBtn.removeEventListener(MouseEvent.ROLL_OVER,this.onEditBtnRollOverHandler);
-         this.editBtn.removeEventListener(MouseEvent.ROLL_OUT,this.onEditBtnRollOutHandler);
-         this.editBtn.removeEventListener(MouseEvent.CLICK,this.onEditBtnClickHandler);
          this.editBtn.dispose();
          this.editBtn = null;
-         this.editBtnSmall.removeEventListener(MouseEvent.ROLL_OVER,this.onEditBtnRollOverHandler);
-         this.editBtnSmall.removeEventListener(MouseEvent.ROLL_OUT,this.onEditBtnRollOutHandler);
-         this.editBtnSmall.removeEventListener(MouseEvent.CLICK,this.onEditBtnClickHandler);
          this.editBtnSmall.dispose();
          this.editBtnSmall = null;
          this.btnBackground = null;
@@ -393,7 +409,6 @@ package net.wg.gui.lobby.vehicleCustomization.controls
          this.limitedText = null;
          this.rentalIcon = null;
          this.rentalTF = null;
-         this.storageIcon.removeEventListener(Event.CHANGE,this.onStorageIconChangeHandler);
          this.storageIcon.dispose();
          this.storageIcon = null;
          this.storageTF = null;
@@ -402,6 +417,8 @@ package net.wg.gui.lobby.vehicleCustomization.controls
          this.progressionStylesLevelIcon = null;
          this._styleTfFiltersPreset.length = 0;
          this._styleTfFiltersPreset = null;
+         this._scheduler = null;
+         this._soundMgr = null;
          super.onDispose();
       }
       
@@ -422,6 +439,17 @@ package net.wg.gui.lobby.vehicleCustomization.controls
             _loc3_ = new PriceVO([CURRENCIES_CONSTANTS.CRYSTAL,int(this._buyOperationAllowed)]);
             this.compoundPrice.updateEnoughStatuses(new <PriceVO>[_loc1_,_loc2_,_loc3_]);
          }
+      }
+      
+      public function measureSize(param1:Point = null) : Point
+      {
+         return null;
+      }
+      
+      public function setImageSize() : void
+      {
+         this.setImageIconTransform();
+         dispatchEvent(new Event(Event.CHANGE));
       }
       
       private function applyData() : void
@@ -474,7 +502,14 @@ package net.wg.gui.lobby.vehicleCustomization.controls
          this.editBtnSmall.x = (_loc3_.width >> 1) - (this.editBtnSmall.width >> 1);
          this.buttonBackgroundPosition(this.editBtnSmall);
          this.btnBackground.visible = this.editBtn.visible || this.editBtnSmall.visible;
-         this.nonHistoricImg.source = !!_loc2_ ? RES_ICONS.MAPS_ICONS_CUSTOMIZATION_NON_HISTORICAL_MINI : RES_ICONS.MAPS_ICONS_CUSTOMIZATION_NON_HISTORICAL;
+         if(this._data.customizationDisplayType == CUSTOMIZATION_CONSTS.NON_HISTORICAL_TYPE)
+         {
+            this.nonHistoricImg.source = !!_loc2_ ? RES_ICONS.MAPS_ICONS_CUSTOMIZATION_NON_HISTORICAL_MINI : RES_ICONS.MAPS_ICONS_CUSTOMIZATION_NON_HISTORICAL;
+         }
+         else if(this._data.customizationDisplayType == CUSTOMIZATION_CONSTS.FANTASTICAL_TYPE)
+         {
+            this.nonHistoricImg.source = !!_loc2_ ? RES_ICONS.MAPS_ICONS_CUSTOMIZATION_FANTASTICAL_MINI : RES_ICONS.MAPS_ICONS_CUSTOMIZATION_FANTASTICAL;
+         }
          this.editableImg.source = !!_loc2_ ? this._data.editableIcon : this._data.editableIconBig;
          if(this._data.isDarked)
          {
@@ -529,7 +564,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls
          this.imgIcon.scaleX = this.imgIcon.scaleY = 1;
          this.imgIcon.source = this._data.icon;
          this.setImageIconTransform();
-         this.nonHistoricImg.visible = this._data.isNonHistoric;
+         this.nonHistoricImg.visible = this._data.customizationDisplayType != CUSTOMIZATION_CONSTS.HISTORICAL_TYPE;
          this.editableImg.visible = this._data.isEditableStyle;
          this.nonHistoricImgPosition();
          this.imgIcon.alpha = !!this._data.locked ? Number(LOCKED_IMG_ALPHA) : Number(this._data.defaultIconAlpha);
@@ -691,22 +726,6 @@ package net.wg.gui.lobby.vehicleCustomization.controls
          }
       }
       
-      public function measureSize(param1:Point = null) : Point
-      {
-         return null;
-      }
-      
-      public function setImageSize() : void
-      {
-         this.setImageIconTransform();
-         dispatchEvent(new Event(Event.CHANGE));
-      }
-      
-      private function nonHistoricImgPosition(param1:Event = null) : void
-      {
-         this.nonHistoricImg.x = this.shadow.width - this.nonHistoricImg.width + NON_HISTORIC_OFFSET;
-      }
-      
       private function buttonBackgroundPosition(param1:SoundButtonEx) : void
       {
          if(!param1.visible)
@@ -781,7 +800,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls
       private function showItemTooltip() : void
       {
          this.tooltipDecorator.showSpecial(TOOLTIPS_CONSTANTS.TECH_CUSTOMIZATION_ITEM,null,this._data.intCD,-1,true,this._data.progressionLevel);
-         App.soundMgr.playControlsSnd(SoundManagerStates.SND_OVER,SoundTypes.CUSTOMIZATION_DEFAULT,null);
+         this._soundMgr.playControlsSnd(SoundManagerStates.SND_OVER,SoundTypes.CUSTOMIZATION_DEFAULT,null);
       }
       
       private function layoutStorageInfo() : void
@@ -804,6 +823,46 @@ package net.wg.gui.lobby.vehicleCustomization.controls
          }
       }
       
+      private function updateLimitedText(param1:String, param2:int) : void
+      {
+         this.limitedText.width = this._customWidth;
+         this.limitedText.htmlText = param1;
+         this.limitedText.autoSize = TextFieldAutoSize.LEFT;
+         var _loc3_:TextFormat = this.limitedText.getTextFormat();
+         _loc3_.size = param2;
+         this.limitedText.setTextFormat(_loc3_);
+         this.limitedText.width = this.limitedText.textWidth + TEXTFIELD_PADDING;
+      }
+      
+      private function updateLimitedIconTextLayout(param1:Boolean) : void
+      {
+         var _loc2_:int = 0;
+         if(param1)
+         {
+            _loc2_ = this._customWidth - LIMITED_TEXT_ICON_SIZE - this.limitedText.width >> 1;
+            this.limitedTextIcon.y = this._customHeight - LIMITED_TEXT_ICON_SIZE >> 1;
+            this.limitedTextIcon.x = _loc2_;
+            this.limitedText.y = this._customHeight - this.limitedText.height >> 1;
+            this.limitedText.x = this.limitedTextIcon.x + LIMITED_TEXT_ICON_SIZE;
+         }
+         else
+         {
+            this.limitedTextIcon.x = this._customWidth - LIMITED_TEXT_ICON_SIZE >> 1;
+            this.limitedTextIcon.y = this._customHeight - LIMITED_TEXT_ICON_SIZE >> 1;
+            if(this.limitedText.visible)
+            {
+               this.limitedTextIcon.y += LIMITED_ICON_OFFSET_Y;
+               this.limitedText.x = this._customWidth - this.limitedText.width >> 1;
+               this.limitedText.y = this.limitedTextIcon.y + LIMITED_TEXT_OFFSET_Y;
+            }
+         }
+      }
+      
+      private function nonHistoricImgPosition() : void
+      {
+         this.nonHistoricImg.x = this.shadow.width - this.nonHistoricImg.width + NON_HISTORIC_OFFSET >> 0;
+      }
+      
       public function set buyOperationAllowed(param1:Boolean) : void
       {
          this._buyOperationAllowed = param1;
@@ -823,7 +882,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls
             this._selected = param1;
             if(this._selected)
             {
-               App.utils.scheduler.cancelTask(this.resetCounter);
+               this._scheduler.cancelTask(this.resetCounter);
                this.resetCounter();
             }
          }
@@ -895,39 +954,23 @@ package net.wg.gui.lobby.vehicleCustomization.controls
          return this._data.locked;
       }
       
-      private function updateLimitedText(param1:String, param2:int) : void
+      private function onNonHistoricImgChangeHandler(param1:Event = null) : void
       {
-         this.limitedText.width = this._customWidth;
-         this.limitedText.htmlText = param1;
-         this.limitedText.autoSize = TextFieldAutoSize.LEFT;
-         var _loc3_:TextFormat = this.limitedText.getTextFormat();
-         _loc3_.size = param2;
-         this.limitedText.setTextFormat(_loc3_);
-         this.limitedText.width = this.limitedText.textWidth + TEXTFIELD_PADDING;
+         this.nonHistoricImgPosition();
       }
       
-      private function updateLimitedIconTextLayout(param1:Boolean) : void
+      public function get rowsCount() : int
       {
-         var _loc2_:int = 0;
-         if(param1)
-         {
-            _loc2_ = this._customWidth - LIMITED_TEXT_ICON_SIZE - this.limitedText.width >> 1;
-            this.limitedTextIcon.y = this._customHeight - LIMITED_TEXT_ICON_SIZE >> 1;
-            this.limitedTextIcon.x = _loc2_;
-            this.limitedText.y = this._customHeight - this.limitedText.height >> 1;
-            this.limitedText.x = this.limitedTextIcon.x + LIMITED_TEXT_ICON_SIZE;
-         }
-         else
-         {
-            this.limitedTextIcon.x = this._customWidth - LIMITED_TEXT_ICON_SIZE >> 1;
-            this.limitedTextIcon.y = this._customHeight - LIMITED_TEXT_ICON_SIZE >> 1;
-            if(this.limitedText.visible)
-            {
-               this.limitedTextIcon.y += LIMITED_ICON_OFFSET_Y;
-               this.limitedText.x = this._customWidth - this.limitedText.width >> 1;
-               this.limitedText.y = this.limitedTextIcon.y + LIMITED_TEXT_OFFSET_Y;
-            }
-         }
+         return Values.ZERO;
+      }
+      
+      public function get adaptiveSize() : String
+      {
+         return ScrollerItemRendererSize.NORMAL_SIZE;
+      }
+      
+      public function set rowsCount(param1:int) : void
+      {
       }
       
       private function onNonHistoricImgRollOutHandler(param1:MouseEvent) : void
@@ -937,7 +980,8 @@ package net.wg.gui.lobby.vehicleCustomization.controls
       
       private function onNonHistoricImgRollOverHandler(param1:MouseEvent) : void
       {
-         this.tooltipDecorator.showSpecial(TOOLTIPS_CONSTANTS.TECH_CUSTOMIZATION_NONHISTORIC_ITEM,null);
+         var _loc2_:String = this._data.customizationDisplayType == CUSTOMIZATION_CONSTS.FANTASTICAL_TYPE ? TOOLTIPS_CONSTANTS.TECH_CUSTOMIZATION_FANTASTICAL_ITEM : TOOLTIPS_CONSTANTS.TECH_CUSTOMIZATION_NONHISTORIC_ITEM;
+         this.tooltipDecorator.showSpecial(_loc2_,null);
       }
       
       private function onEquippedImgRollOutHandler(param1:MouseEvent) : void
@@ -997,7 +1041,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls
             });
          }
          this.tooltipDecorator.hide();
-         App.soundMgr.playControlsSnd(SoundManagerStates.SND_PRESS,SoundTypes.CUSTOMIZATION_DEFAULT,null);
+         this._soundMgr.playControlsSnd(SoundManagerStates.SND_PRESS,SoundTypes.CUSTOMIZATION_DEFAULT,null);
       }
       
       private function onEditBtnClickHandler(param1:MouseEvent) : void
@@ -1019,14 +1063,14 @@ package net.wg.gui.lobby.vehicleCustomization.controls
       {
          this.hover.visible = false;
          this.tooltipDecorator.hide();
-         App.utils.scheduler.cancelTask(this.resetCounter);
+         this._scheduler.cancelTask(this.resetCounter);
       }
       
       private function onRollOverHandler(param1:MouseEvent) : void
       {
          this.hover.visible = true;
          this.showItemTooltip();
-         App.utils.scheduler.scheduleTask(this.resetCounter,RESET_COUNTER_DELAY);
+         this._scheduler.scheduleTask(this.resetCounter,RESET_COUNTER_DELAY);
       }
    }
 }

@@ -106,6 +106,8 @@ package net.wg.data.constants.generated
       public static const TANK_SETUP_HANGAR_BATTLE_ABILITY_SLOT:String = "tankSetupHangarBattleAbilitySlot";
       
       public static const TANK_SETUP_HANGAR_SHELL_SLOT:String = "tankSetupHangarShellSlot";
+      
+      public static const POST_PROGRESSION_VEHICLE:String = "postProgressionVehicle";
        
       
       public function CONTEXT_MENU_HANDLER_TYPE()

@@ -23,7 +23,7 @@ package net.wg.gui.lobby.vehicleCustomization.data
       
       public var isApplied:Boolean = false;
       
-      public var isHistoric:Boolean = false;
+      public var customizationDisplayType:uint = 0;
       
       public var price:ItemPriceVO = null;
       
@@ -55,6 +55,7 @@ package net.wg.gui.lobby.vehicleCustomization.data
             this.price.dispose();
             this.price = null;
          }
+         this.itemsList = App.utils.data.cleanupDynamicObject(this.itemsList);
          super.onDispose();
       }
    }

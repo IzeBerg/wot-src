@@ -1,4 +1,8 @@
-
+import typing
+if typing.TYPE_CHECKING:
+    from gui.veh_post_progression.models.progression import PostProgressionItem
+    from items.vehicles import VehicleType
+    from post_progression_common import VehicleState
 
 class IGuiItemsFactory(object):
 
@@ -38,10 +42,10 @@ class IGuiItemsFactory(object):
     def createVehicleFuelTank(self, intCompactDescr, proxy=None, descriptor=None):
         raise NotImplementedError
 
-    def createVehicle(self, strCompactDescr=None, inventoryID=-1, typeCompDescr=None, proxy=None):
+    def createVehicle(self, strCompactDescr=None, inventoryID=-1, typeCompDescr=None, proxy=None, extData=None, invData=None):
         raise NotImplementedError
 
-    def createTankman(self, strCompactDescr, inventoryID=-1, vehicle=None, dismissedAt=None, proxy=None):
+    def createTankman(self, strCompactDescr, inventoryID=-1, vehicle=None, dismissedAt=None, proxy=None, vehicleSlotIdx=-1):
         raise NotImplementedError
 
     def createTankmanDossier(self, tmanDescr, tankmanDossierDescr, extDossier, playerDBID=None, currentVehicleItem=None):
@@ -63,4 +67,7 @@ class IGuiItemsFactory(object):
         raise NotImplementedError
 
     def createOutfit(self, strCompactDescr=None, component=None, vehicleCD=''):
+        raise NotImplementedError
+
+    def createVehPostProgression(self, vehIntCD, state, vehType):
         raise NotImplementedError

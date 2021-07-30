@@ -6,7 +6,6 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
    import net.wg.data.constants.generated.FITTING_TYPES;
    import net.wg.gui.components.controls.ResizableScrollPane;
    import net.wg.gui.events.VehicleSellDialogEvent;
-   import net.wg.gui.interfaces.ISaleItemBlockRenderer;
    import net.wg.gui.lobby.vehicleTradeWnds.sell.vo.SellOnVehicleOptionalDeviceVo;
    import net.wg.infrastructure.base.UIComponentEx;
    import scaleform.clik.constants.InvalidationType;
@@ -16,26 +15,32 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
       
       private static const PADDING_FOR_NEXT_ELEMENT:uint = 5;
       
-      private static const MAX_SCROLL_HEIGHT:uint = 125;
-      
       private static const SCROLL_RENDERER_HEIGHT:uint = 30;
       
-      private static const SCROLL_RENDERER_HEAD_HEIGHT:uint = 44;
+      private static const SCROLL_RENDERER_HEAD_HEIGHT:uint = 35;
+      
+      private static const MAX_SCROLL_ITEMS:uint = 3;
+      
+      private static const MAX_SCROLL_HEIGHT:uint = MAX_SCROLL_ITEMS * SCROLL_RENDERER_HEIGHT + SCROLL_RENDERER_HEAD_HEIGHT;
       
       private static const SCROLL_WIDTH:int = 477;
        
       
       public var sellDevicesScrollPane:ResizableScrollPane = null;
       
-      public var complDevBg:MovieClip = null;
-      
       public var sellDevicesBottomDivider:MovieClip = null;
+      
+      public var complDevBg:MovieClip = null;
       
       private var _content:SellDevicesContentContainer;
       
       private var _complexDevicesArr:SellDialogItem = null;
       
       private var _sellData:Array;
+      
+      private var _isExtended:Boolean = false;
+      
+      private var _devicesCount:uint;
       
       public function SellDevicesComponent()
       {
@@ -44,12 +49,39 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          this._content = SellDevicesContentContainer(this.sellDevicesScrollPane.target);
       }
       
+      override protected function configUI() : void
+      {
+         super.configUI();
+         this.sellDevicesScrollPane.isSmoothScroll = false;
+         this.sellDevicesBottomDivider.mouseEnabled = false;
+         this.sellDevicesScrollPane.addEventListener(VehicleSellDialogEvent.SELL_DIALOG_LIST_ITEM_RENDERER_WAS_DRAWN,this.onSellDialogListItemRendererWasDrawnHandler);
+      }
+      
+      override protected function draw() : void
+      {
+         super.draw();
+         if(this._complexDevicesArr)
+         {
+            if(isInvalid(InvalidationType.DATA))
+            {
+               visible = this.complDevBg.visible = this.isActive;
+               this._content.updateData(this._complexDevicesArr);
+            }
+            if(isInvalid(InvalidationType.LAYOUT))
+            {
+               this.sellDevicesScrollPane.setSize(SCROLL_WIDTH,this.getScrollHeight());
+               this.sellDevicesBottomDivider.y = this.sellDevicesScrollPane.y + this.sellDevicesScrollPane.height - this.sellDevicesBottomDivider.height;
+            }
+         }
+      }
+      
       override protected function onDispose() : void
       {
          var _loc2_:SellDialogElementVO = null;
-         this.sellDevicesScrollPane.removeEventListener(VehicleSellDialogEvent.SELL_DIALOG_LIST_ITEM_RENDERER_WAS_DRAWN,this.onSellDialogListItemRendererWasDrawn);
+         this.sellDevicesScrollPane.removeEventListener(VehicleSellDialogEvent.SELL_DIALOG_LIST_ITEM_RENDERER_WAS_DRAWN,this.onSellDialogListItemRendererWasDrawnHandler);
          this.sellDevicesScrollPane.dispose();
          this.sellDevicesScrollPane = null;
+         this.sellDevicesBottomDivider = null;
          this.complDevBg = null;
          this._content = null;
          var _loc1_:Vector.<SellDialogElementVO> = this._complexDevicesArr.elements;
@@ -57,31 +89,14 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          {
             _loc2_.dispose();
          }
-         this._complexDevicesArr.dispose();
+         if(this._complexDevicesArr != null)
+         {
+            this._complexDevicesArr.dispose();
+         }
          this._complexDevicesArr = null;
-         this._sellData.splice(0,this._sellData.length);
+         this._sellData.length = 0;
          this._sellData = null;
          super.onDispose();
-      }
-      
-      override protected function configUI() : void
-      {
-         super.configUI();
-         this.sellDevicesScrollPane.isSmoothScroll = false;
-         this.sellDevicesScrollPane.setSize(SCROLL_WIDTH,this.getScrollHeight());
-         this.sellDevicesBottomDivider.mouseEnabled = false;
-         this.sellDevicesBottomDivider.y = this.sellDevicesScrollPane.y + this.sellDevicesScrollPane.height - this.sellDevicesBottomDivider.height;
-         this.sellDevicesScrollPane.addEventListener(VehicleSellDialogEvent.SELL_DIALOG_LIST_ITEM_RENDERER_WAS_DRAWN,this.onSellDialogListItemRendererWasDrawn);
-      }
-      
-      override protected function draw() : void
-      {
-         super.draw();
-         if(this._complexDevicesArr && isInvalid(InvalidationType.DATA))
-         {
-            visible = this.complDevBg.visible = this.isActive;
-            this._content.updateData(this._complexDevicesArr);
-         }
       }
       
       public function getNextPosition(param1:Boolean = true) : int
@@ -128,6 +143,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
             }
             _loc5_++;
          }
+         this._devicesCount = this._complexDevicesArr.elements.length;
          if(_loc2_.elements.length != 0)
          {
             _loc2_.header = DIALOGS.VEHICLESELLDIALOG_OPTIONALDEVICE;
@@ -140,9 +156,37 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          invalidateData();
       }
       
+      private function getScrollHeight() : Number
+      {
+         var _loc1_:Number = !!this.isActive ? Number(this._devicesCount * SCROLL_RENDERER_HEIGHT + SCROLL_RENDERER_HEAD_HEIGHT) : Number(0);
+         if(this._isExtended)
+         {
+            return _loc1_;
+         }
+         return Math.min(MAX_SCROLL_HEIGHT,_loc1_);
+      }
+      
+      public function set isExtended(param1:Boolean) : void
+      {
+         if(this._isExtended != param1)
+         {
+            this._isExtended = param1;
+            invalidateLayout();
+         }
+      }
+      
+      public function get extraHeight() : uint
+      {
+         if(this._devicesCount > MAX_SCROLL_ITEMS)
+         {
+            return (this._devicesCount - MAX_SCROLL_ITEMS) * SCROLL_RENDERER_HEIGHT;
+         }
+         return 0;
+      }
+      
       public function get isActive() : Boolean
       {
-         return this._complexDevicesArr.elements.length != 0;
+         return this._devicesCount != 0;
       }
       
       public function get sellData() : Array
@@ -150,18 +194,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          return this._sellData;
       }
       
-      public function get deviceItemRenderer() : Vector.<ISaleItemBlockRenderer>
-      {
-         return SellDevicesContentContainer(this.sellDevicesScrollPane.target).getRenderers();
-      }
-      
-      private function getScrollHeight() : Number
-      {
-         var _loc1_:Number = !!this.isActive ? Number(this._complexDevicesArr.elements.length * SCROLL_RENDERER_HEIGHT + SCROLL_RENDERER_HEAD_HEIGHT) : Number(0);
-         return Number(Math.min(MAX_SCROLL_HEIGHT,_loc1_));
-      }
-      
-      private function onSellDialogListItemRendererWasDrawn(param1:VehicleSellDialogEvent) : void
+      private function onSellDialogListItemRendererWasDrawnHandler(param1:VehicleSellDialogEvent) : void
       {
          this.sellDevicesScrollPane.invalidateSize();
       }

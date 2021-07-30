@@ -4,7 +4,6 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.year
    import flash.events.MouseEvent;
    import flash.text.TextField;
    import flash.utils.Dictionary;
-   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.RANKEDBATTLES_CONSTS;
    import net.wg.gui.components.controls.Image;
    import net.wg.gui.lobby.rankedBattles19.data.RankedRewardYearItemVO;
@@ -21,7 +20,7 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.year
       
       private static const CAPTION_IMG_TOP_SHIFT:int = -5;
       
-      private static const CAPTION_IMG_LEFT_SHIFT:int = -27;
+      private static const CAPTION_IMG_LEFT_SHIFT:int = -32;
        
       
       public var reward0:RankedBattlesYearRewardBtn = null;
@@ -84,15 +83,16 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.year
          this.reward3 = null;
       }
       
-      public function getCirclePos() : int
+      public function getPointsPos() : int
       {
-         return this.reward0.y + this.reward0.circle.y;
+         return this.reward0.y + this.reward0.points.y;
       }
       
       public function setData(param1:Vector.<RankedRewardYearItemVO>) : void
       {
          var _loc3_:RankedBattlesYearRewardBtn = null;
          var _loc4_:RankedRewardYearItemVO = null;
+         var _loc7_:Boolean = false;
          var _loc2_:int = param1.length;
          this._selectedBtn = null;
          var _loc5_:int = 0;
@@ -102,8 +102,7 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.year
             _loc3_ = this._buttons[_loc4_.id];
             if(_loc3_)
             {
-               _loc3_.id = _loc4_.id;
-               _loc3_.status = _loc4_.status;
+               _loc3_.setData(_loc4_);
                if(_loc3_.selected)
                {
                   this._selectedBtn = _loc3_;
@@ -111,26 +110,17 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.year
             }
             _loc5_++;
          }
-         if(this._selectedBtn)
+         var _loc6_:Boolean = this._selectedBtn != null;
+         this.captionTF.visible = this.captionImg.visible = _loc6_;
+         if(_loc6_)
          {
-            if(this._selectedBtn.status == RANKEDBATTLES_CONSTS.YEAR_REWARD_STATUS_CURRENT)
+            this.captionTF.htmlText = this._selectedBtn.statusText;
+            _loc7_ = this._selectedBtn.status == RANKEDBATTLES_CONSTS.YEAR_REWARD_STATUS_CURRENT_FINAL;
+            this.captionImg.visible = _loc7_;
+            if(_loc7_ && StringUtils.isEmpty(this.captionImg.source))
             {
-               this.captionTF.text = RANKED_BATTLES.REWARDSVIEW_TABS_YEAR_CURRENT;
-               this.captionImg.visible = false;
+               this.captionImg.source = RES_ICONS.MAPS_ICONS_LIBRARY_DONE;
             }
-            else
-            {
-               this.captionTF.text = RANKED_BATTLES.REWARDSVIEW_TABS_YEAR_CURRENTFINAL;
-               this.captionImg.visible = true;
-               if(StringUtils.isEmpty(this.captionImg.source))
-               {
-                  this.captionImg.source = RES_ICONS.MAPS_ICONS_RANKEDBATTLES_CHECK_GOT_REWARD;
-               }
-            }
-         }
-         else
-         {
-            this.captionTF.text = Values.EMPTY_STR;
          }
          App.utils.commons.updateTextFieldSize(this.captionTF,true,false);
          this.updateCaption();

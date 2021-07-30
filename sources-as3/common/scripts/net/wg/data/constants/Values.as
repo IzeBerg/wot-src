@@ -18,6 +18,10 @@ package net.wg.data.constants
       public static const NEW_LINE:String = "\n";
       
       public static const ZERO:int = 0;
+      
+      public static const TWO_DOTS:String = "..";
+      
+      public static const THREE_DOTS:String = "...";
        
       
       public function Values()

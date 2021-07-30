@@ -14,6 +14,8 @@ package net.wg.gui.lobby.manual.data
       
       public var index:int = -1;
       
+      public var counter:String = "";
+      
       public function ChapterItemRendererVO(param1:Object)
       {
          super(param1);

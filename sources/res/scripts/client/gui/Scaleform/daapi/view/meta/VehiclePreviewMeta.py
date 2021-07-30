@@ -14,6 +14,9 @@ class VehiclePreviewMeta(View):
     def onCompareClick(self):
         self._printOverrideError('onCompareClick')
 
+    def onGoToPostProgressionClick(self):
+        self._printOverrideError('onGoToPostProgressionClick')
+
     def as_setDataS(self, data):
         if self._isDAAPIInited():
             return self.flashObject.as_setData(data)

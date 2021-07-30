@@ -12,12 +12,16 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.modules
    import net.wg.infrastructure.base.meta.impl.VehiclePreviewModulesTabMeta;
    import net.wg.infrastructure.interfaces.IViewStackExContent;
    import net.wg.infrastructure.managers.ITooltipMgr;
+   import net.wg.utils.IStageSizeDependComponent;
+   import net.wg.utils.StageSizeBoundaries;
    import scaleform.clik.constants.InvalidationType;
    
-   public class VPModulesTab extends VehiclePreviewModulesTabMeta implements IViewStackExContent, IVehiclePreviewModulesTabMeta
+   public class VPModulesTab extends VehiclePreviewModulesTabMeta implements IViewStackExContent, IStageSizeDependComponent, IVehiclePreviewModulesTabMeta
    {
       
-      private static const STATUS_TF_OFFSET:int = 6;
+      private static const STATUS_TF_OFFSET_SMALL:int = -2;
+      
+      private static const STATUS_TF_OFFSET_BIG:int = 6;
        
       
       public var modules:ModulesPanel;
@@ -33,6 +37,8 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.modules
       private var _haveUnlockable:Boolean = false;
       
       private var _needToShowAnim:Boolean = false;
+      
+      private var _isSmallHeight:Boolean = false;
       
       public function VPModulesTab()
       {
@@ -50,6 +56,7 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.modules
          this.statusInfoTf.addEventListener(MouseEvent.ROLL_OVER,this.onStatusInfoTfRollOverHandler);
          this.statusInfoTf.addEventListener(MouseEvent.ROLL_OUT,this.onStatusInfoTfRollOutHandler);
          this.statusInfoTf.autoSize = TextFieldAutoSize.LEFT;
+         App.stageSizeMgr.register(this);
       }
       
       override protected function onDispose() : void
@@ -75,7 +82,7 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.modules
          super.draw();
          if(isInvalid(InvalidationType.SIZE))
          {
-            this.statusInfoTf.y = this.modules.y + this.modules.actualHeight + STATUS_TF_OFFSET;
+            this.statusInfoTf.y = this.modules.y + this.modules.height + (!!this._isSmallHeight ? STATUS_TF_OFFSET_SMALL : STATUS_TF_OFFSET_BIG);
             this.unlockableModulesTF.visible = this._haveUnlockable;
             if(this._needToShowAnim)
             {
@@ -107,8 +114,19 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.modules
          setActiveStateS(param1);
       }
       
+      public function setStateSizeBoundaries(param1:int, param2:int) : void
+      {
+         this._isSmallHeight = param2 <= StageSizeBoundaries.HEIGHT_900;
+         invalidateSize();
+      }
+      
       public function update(param1:Object) : void
       {
+      }
+      
+      override public function get height() : Number
+      {
+         return this.statusInfoTf.y + this.statusInfoTf.height;
       }
       
       private function onModulesResizeHandler(param1:Event) : void

@@ -28,7 +28,7 @@ class EpicDeploymentMapComponent(EpicDeploymentMapMeta):
         return (minSize[0], maxSize[1], maxSize[0], minSize[1])
 
     def getRangeScale(self):
-        return 1.0
+        return 0.6
 
     def setMinimapCenterEntry(self, entryID):
         pass

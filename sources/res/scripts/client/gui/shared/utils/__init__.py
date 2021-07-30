@@ -2,6 +2,8 @@ import imghdr, itertools, sys, inspect, uuid, struct
 from collections import namedtuple
 import BigWorld, AccountCommands, Settings, constants
 from debug_utils import LOG_CURRENT_EXCEPTION, LOG_ERROR, LOG_DEBUG, LOG_WARNING
+from gui.impl import backport
+from gui.impl.gen import R
 from helpers import getLanguageCode, i18n
 from items import vehicles as vehs_core
 from account_helpers import getAccountDatabaseID
@@ -290,3 +292,10 @@ def isPopupsWindowsOpenDisabled():
         return ds.readBool(Settings.POPUPS_WINDOWS_DISABLED) and constants.IS_DEVELOPMENT
     else:
         return False
+
+
+_ROMAN_FORBIDDEN_LANGUAGES = {
+ 'ko', 'no'}
+
+def isRomanNumberForbidden():
+    return bool(_ROMAN_FORBIDDEN_LANGUAGES.intersection((backport.text(R.strings.settings.LANGUAGE_CODE()),)))

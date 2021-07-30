@@ -20,6 +20,34 @@ package
       public static const COMMON_NBSP:String = "#common:common/nbsp";
       
       public static const CLANTAG:String = "#common:clanTag";
+      
+      public static const INPUT_PLACEHOLDER_EMAIL:String = "#common:input/placeholder/email";
+      
+      public static const INPUT_PLACEHOLDER_SEARCH:String = "#common:input/placeholder/search";
+      
+      public static const INPUT_PLACEHOLDER_PASSWORD:String = "#common:input/placeholder/password";
+      
+      public static const DROPDOWN_PLACEHOLDER_SELECT:String = "#common:dropdown/placeholder/select";
+      
+      public static const DURATION_DAYS:String = "#common:duration/days";
+      
+      public static const DURATION_HOURS:String = "#common:duration/hours";
+      
+      public static const DURATION_MINUTES:String = "#common:duration/minutes";
+      
+      public static const DURATION_SECONDS:String = "#common:duration/seconds";
+      
+      public static const DURATION_UNLIMITED:String = "#common:duration/unlimited";
+      
+      public static const RELATIVEDATETIME_NOW:String = "#common:relativeDateTime/now";
+      
+      public static const RELATIVEDATETIME_MINUTES_PAST:String = "#common:relativeDateTime/minutes_past";
+      
+      public static const RELATIVEDATETIME_HOUR_PAST:String = "#common:relativeDateTime/hour_past";
+      
+      public static const RELATIVEDATETIME_TODAY:String = "#common:relativeDateTime/today";
+      
+      public static const RELATIVEDATETIME_YESTERDAY:String = "#common:relativeDateTime/yesterday";
        
       
       public function COMMON()

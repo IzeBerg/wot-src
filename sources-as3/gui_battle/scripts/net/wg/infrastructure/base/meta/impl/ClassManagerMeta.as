@@ -198,6 +198,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.epicBattle.battleloading.events.EpicBattleLoadingEvent;
    import net.wg.gui.battle.epicBattle.battleloading.renderers.EpicBattleLoadingPlayerItemRenderer;
    import net.wg.gui.battle.epicBattle.views.EpicBattlePage;
+   import net.wg.gui.battle.epicBattle.views.components.EpicBattleConsumableButton;
    import net.wg.gui.battle.epicBattle.views.data.EpicStatsDataProviderBaseCtrl;
    import net.wg.gui.battle.epicBattle.views.data.EpicVehicleDataProvider;
    import net.wg.gui.battle.epicBattle.views.stats.EpicFullStats;
@@ -285,6 +286,21 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.interfaces.IQuestProgressStats;
    import net.wg.gui.battle.interfaces.IStatsTableController;
    import net.wg.gui.battle.interfaces.ITabbedFullStatsTableController;
+   import net.wg.gui.battle.mapsTraining.views.MapsTrainingBattleLoading;
+   import net.wg.gui.battle.mapsTraining.views.MapsTrainingBattlePage;
+   import net.wg.gui.battle.mapsTraining.views.data.MapsTrainingBattleLoadingVO;
+   import net.wg.gui.battle.mapsTraining.views.goals.MapsTrainingGoals;
+   import net.wg.gui.battle.mapsTraining.views.goals.data.MapsTrainingGoalVO;
+   import net.wg.gui.battle.mapsTraining.views.goals.hint.MapsTrainingGoal;
+   import net.wg.gui.battle.mapsTraining.views.goals.hint.MapsTrainingTimerAnim;
+   import net.wg.gui.battle.mapsTraining.views.goals.hint.MapsTrainingTimerHint;
+   import net.wg.gui.battle.mapsTraining.views.listTargets.ListTargets;
+   import net.wg.gui.battle.mapsTraining.views.mapsTrainingMessagesPanel.MapsTrainingMessagesPanel;
+   import net.wg.gui.battle.mapsTraining.views.minimap.MapsTrainingVehicleMinimapEntry;
+   import net.wg.gui.battle.mapsTraining.views.minimap.ShootingPointMinimapEntry;
+   import net.wg.gui.battle.mapsTraining.views.prebattleTimer.MapsTrainingPrebattleTimer;
+   import net.wg.gui.battle.mapsTraining.views.prebattleTimer.MapsTrainingPrebattleTimerBg;
+   import net.wg.gui.battle.mapsTraining.views.prebattleTimer.MapsTrainingTextFieldContainer;
    import net.wg.gui.battle.random.battleloading.renderers.RandomPlayerItemRenderer;
    import net.wg.gui.battle.random.battleloading.renderers.RandomRendererContainer;
    import net.wg.gui.battle.random.views.BattlePage;
@@ -377,6 +393,10 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.actionMarkers.RepliedMarker;
    import net.wg.gui.battle.views.actionMarkers.RepliedMarkerIcon;
    import net.wg.gui.battle.views.actionMarkers.StickyMarker;
+   import net.wg.gui.battle.views.ammunitionPanel.EpicRespawnAmmunitionPanelView;
+   import net.wg.gui.battle.views.ammunitionPanel.PrbAmmunitionPanelEvent;
+   import net.wg.gui.battle.views.ammunitionPanel.PrebattleAmmunitionPanelBg;
+   import net.wg.gui.battle.views.ammunitionPanel.PrebattleAmmunitionPanelView;
    import net.wg.gui.battle.views.battleEndWarning.BattleEndWarningPanel;
    import net.wg.gui.battle.views.battleEndWarning.EndWarningPanelEvent;
    import net.wg.gui.battle.views.battleEndWarning.containers.Timer;
@@ -512,8 +532,10 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.epicMessagesPanel.components.MessageHQMarker;
    import net.wg.gui.battle.views.epicMessagesPanel.components.OverTimeMessage;
    import net.wg.gui.battle.views.epicMessagesPanel.components.RankUpMessage;
+   import net.wg.gui.battle.views.epicMessagesPanel.components.RankUpSubElement;
    import net.wg.gui.battle.views.epicMessagesPanel.components.RetreatMessage;
    import net.wg.gui.battle.views.epicMessagesPanel.components.TimeRemainingMessage;
+   import net.wg.gui.battle.views.epicMessagesPanel.components.UnlockTankLevelMessage;
    import net.wg.gui.battle.views.epicMessagesPanel.data.FirstGeneralRankReachedMessageVO;
    import net.wg.gui.battle.views.epicMessagesPanel.data.HeadquarterAttackedMessageVO;
    import net.wg.gui.battle.views.epicMessagesPanel.data.HeadquarterDestroyedMessageVO;
@@ -792,6 +814,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleAnimatedStatusBaseMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleBerserkerMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleEngineerEffectMarker;
+   import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleFLBasicMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleInspireMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleInspireTargetMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleStunMarker;
@@ -804,6 +827,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.windows.IngameDetailsHelpWindow;
    import net.wg.gui.battle.windows.IngameHelpWindow;
    import net.wg.gui.battle.windows.IngameMenu;
+   import net.wg.gui.battle.windows.MapsTrainingIngameHelpWindow;
    import net.wg.gui.battle.windows.ReplenishAmmoDialog;
    import net.wg.gui.battle.windows.components.IngameDetailsRoleAction;
    import net.wg.gui.battle.windows.components.IngameDetailsRoleActionContainer;
@@ -909,9 +933,14 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.meta.IIngameDetailsHelpWindowMeta;
    import net.wg.infrastructure.base.meta.IIngameHelpWindowMeta;
    import net.wg.infrastructure.base.meta.IIngameMenuMeta;
+   import net.wg.infrastructure.base.meta.IMapsTrainingBattleLoadingMeta;
+   import net.wg.infrastructure.base.meta.IMapsTrainingGoalsMeta;
+   import net.wg.infrastructure.base.meta.IMapsTrainingIngameHelpWindowMeta;
+   import net.wg.infrastructure.base.meta.IMapsTrainingPrebattleTimerMeta;
    import net.wg.infrastructure.base.meta.IMinimapMeta;
    import net.wg.infrastructure.base.meta.IPlayersPanelMeta;
    import net.wg.infrastructure.base.meta.IPostmortemPanelMeta;
+   import net.wg.infrastructure.base.meta.IPrebattleAmmunitionPanelViewMeta;
    import net.wg.infrastructure.base.meta.IPrebattleTimerBaseMeta;
    import net.wg.infrastructure.base.meta.IPrebattleTimerMeta;
    import net.wg.infrastructure.base.meta.IProgressTimersPanelMeta;
@@ -1329,6 +1358,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_EPICBATTLEPAGE:Class = EpicBattlePage;
       
+      public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_COMPONENTS_EPICBATTLECONSUMABLEBUTTON:Class = EpicBattleConsumableButton;
+      
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_DATA_EPICSTATSDATAPROVIDERBASECTRL:Class = EpicStatsDataProviderBaseCtrl;
       
       public static const NET_WG_GUI_BATTLE_EPICBATTLE_VIEWS_DATA_EPICVEHICLEDATAPROVIDER:Class = EpicVehicleDataProvider;
@@ -1508,6 +1539,36 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_INTERFACES_ISTATSTABLECONTROLLER:Class = IStatsTableController;
       
       public static const NET_WG_GUI_BATTLE_INTERFACES_ITABBEDFULLSTATSTABLECONTROLLER:Class = ITabbedFullStatsTableController;
+      
+      public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_MAPSTRAININGBATTLELOADING:Class = MapsTrainingBattleLoading;
+      
+      public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_MAPSTRAININGBATTLEPAGE:Class = MapsTrainingBattlePage;
+      
+      public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_DATA_MAPSTRAININGBATTLELOADINGVO:Class = MapsTrainingBattleLoadingVO;
+      
+      public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_GOALS_MAPSTRAININGGOALS:Class = MapsTrainingGoals;
+      
+      public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_GOALS_DATA_MAPSTRAININGGOALVO:Class = MapsTrainingGoalVO;
+      
+      public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_GOALS_HINT_MAPSTRAININGGOAL:Class = MapsTrainingGoal;
+      
+      public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_GOALS_HINT_MAPSTRAININGTIMERANIM:Class = MapsTrainingTimerAnim;
+      
+      public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_GOALS_HINT_MAPSTRAININGTIMERHINT:Class = MapsTrainingTimerHint;
+      
+      public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_LISTTARGETS_LISTTARGETS:Class = ListTargets;
+      
+      public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_MAPSTRAININGMESSAGESPANEL_MAPSTRAININGMESSAGESPANEL:Class = MapsTrainingMessagesPanel;
+      
+      public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_MINIMAP_MAPSTRAININGVEHICLEMINIMAPENTRY:Class = MapsTrainingVehicleMinimapEntry;
+      
+      public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_MINIMAP_SHOOTINGPOINTMINIMAPENTRY:Class = ShootingPointMinimapEntry;
+      
+      public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_PREBATTLETIMER_MAPSTRAININGPREBATTLETIMER:Class = MapsTrainingPrebattleTimer;
+      
+      public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_PREBATTLETIMER_MAPSTRAININGPREBATTLETIMERBG:Class = MapsTrainingPrebattleTimerBg;
+      
+      public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_PREBATTLETIMER_MAPSTRAININGTEXTFIELDCONTAINER:Class = MapsTrainingTextFieldContainer;
       
       public static const NET_WG_GUI_BATTLE_RANDOM_BATTLELOADING_RENDERERS_RANDOMPLAYERITEMRENDERER:Class = RandomPlayerItemRenderer;
       
@@ -1692,6 +1753,14 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_ACTIONMARKERS_REPLIEDMARKERICON:Class = RepliedMarkerIcon;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_ACTIONMARKERS_STICKYMARKER:Class = StickyMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_AMMUNITIONPANEL_EPICRESPAWNAMMUNITIONPANELVIEW:Class = EpicRespawnAmmunitionPanelView;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_AMMUNITIONPANEL_PRBAMMUNITIONPANELEVENT:Class = PrbAmmunitionPanelEvent;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_AMMUNITIONPANEL_PREBATTLEAMMUNITIONPANELBG:Class = PrebattleAmmunitionPanelBg;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_AMMUNITIONPANEL_PREBATTLEAMMUNITIONPANELVIEW:Class = PrebattleAmmunitionPanelView;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_BATTLEENDWARNING_BATTLEENDWARNINGPANEL:Class = BattleEndWarningPanel;
       
@@ -1963,9 +2032,13 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_EPICMESSAGESPANEL_COMPONENTS_RANKUPMESSAGE:Class = RankUpMessage;
       
+      public static const NET_WG_GUI_BATTLE_VIEWS_EPICMESSAGESPANEL_COMPONENTS_RANKUPSUBELEMENT:Class = RankUpSubElement;
+      
       public static const NET_WG_GUI_BATTLE_VIEWS_EPICMESSAGESPANEL_COMPONENTS_RETREATMESSAGE:Class = RetreatMessage;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_EPICMESSAGESPANEL_COMPONENTS_TIMEREMAININGMESSAGE:Class = TimeRemainingMessage;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_EPICMESSAGESPANEL_COMPONENTS_UNLOCKTANKLEVELMESSAGE:Class = UnlockTankLevelMessage;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_EPICMESSAGESPANEL_DATA_FIRSTGENERALRANKREACHEDMESSAGEVO:Class = FirstGeneralRankReachedMessageVO;
       
@@ -2511,6 +2584,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_VEHICLEENGINEEREFFECTMARKER:Class = VehicleEngineerEffectMarker;
       
+      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_VEHICLEFLBASICMARKER:Class = VehicleFLBasicMarker;
+      
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_VEHICLEINSPIREMARKER:Class = VehicleInspireMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_VEHICLEINSPIRETARGETMARKER:Class = VehicleInspireTargetMarker;
@@ -2546,6 +2621,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_WINDOWS_INGAMEHELPWINDOW:Class = IngameHelpWindow;
       
       public static const NET_WG_GUI_BATTLE_WINDOWS_INGAMEMENU:Class = IngameMenu;
+      
+      public static const NET_WG_GUI_BATTLE_WINDOWS_MAPSTRAININGINGAMEHELPWINDOW:Class = MapsTrainingIngameHelpWindow;
       
       public static const NET_WG_GUI_BATTLE_WINDOWS_REPLENISHAMMODIALOG:Class = ReplenishAmmoDialog;
       
@@ -2757,11 +2834,21 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IINGAMEMENUMETA:Class = IIngameMenuMeta;
       
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMAPSTRAININGBATTLELOADINGMETA:Class = IMapsTrainingBattleLoadingMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMAPSTRAININGGOALSMETA:Class = IMapsTrainingGoalsMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMAPSTRAININGINGAMEHELPWINDOWMETA:Class = IMapsTrainingIngameHelpWindowMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMAPSTRAININGPREBATTLETIMERMETA:Class = IMapsTrainingPrebattleTimerMeta;
+      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMINIMAPMETA:Class = IMinimapMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IPLAYERSPANELMETA:Class = IPlayersPanelMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IPOSTMORTEMPANELMETA:Class = IPostmortemPanelMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IPREBATTLEAMMUNITIONPANELVIEWMETA:Class = IPrebattleAmmunitionPanelViewMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IPREBATTLETIMERBASEMETA:Class = IPrebattleTimerBaseMeta;
       
@@ -2937,11 +3024,21 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_INGAMEMENUMETA:Class = IngameMenuMeta;
       
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_MAPSTRAININGBATTLELOADINGMETA:Class = MapsTrainingBattleLoadingMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_MAPSTRAININGGOALSMETA:Class = MapsTrainingGoalsMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_MAPSTRAININGINGAMEHELPWINDOWMETA:Class = MapsTrainingIngameHelpWindowMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_MAPSTRAININGPREBATTLETIMERMETA:Class = MapsTrainingPrebattleTimerMeta;
+      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_MINIMAPMETA:Class = MinimapMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_PLAYERSPANELMETA:Class = PlayersPanelMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_POSTMORTEMPANELMETA:Class = PostmortemPanelMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_PREBATTLEAMMUNITIONPANELVIEWMETA:Class = PrebattleAmmunitionPanelViewMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_PREBATTLETIMERBASEMETA:Class = PrebattleTimerBaseMeta;
       

@@ -73,7 +73,11 @@ package net.wg.gui.components.paginator
       
       private var _hasPagesBtns:Boolean = false;
       
-      public function PaginatorArrowsController(param1:DisplayObjectContainer, param2:PaginationGroup, param3:ISoundButtonEx, param4:ISoundButtonEx, param5:String, param6:int = 0, param7:Boolean = false, param8:int = 0)
+      private var _isCenterPages:Boolean = false;
+      
+      private var _paginatorPos:Point = null;
+      
+      public function PaginatorArrowsController(param1:DisplayObjectContainer, param2:PaginationGroup, param3:ISoundButtonEx, param4:ISoundButtonEx, param5:String, param6:int = 0, param7:Boolean = false, param8:int = 0, param9:Boolean = false)
       {
          super();
          this._locale = App.utils.locale;
@@ -85,9 +89,10 @@ package net.wg.gui.components.paginator
          this._arrowLeftBtn.visible = this._arrowRightBtn.visible = false;
          this._arrowRightBtn.mouseEnabledOnDisabled = this._arrowLeftBtn.mouseEnabledOnDisabled = true;
          this._maxElementsPerPage = param6;
-         var _loc9_:HorizontalGroupLayout = new HorizontalGroupLayout();
-         _loc9_.gap = param8;
-         this._pageButtons.layout = _loc9_;
+         this._isCenterPages = param9;
+         var _loc10_:HorizontalGroupLayout = new HorizontalGroupLayout();
+         _loc10_.gap = param8;
+         this._pageButtons.layout = _loc10_;
          this._pageButtons.itemRendererLinkage = Linkages.PAGINATION_DETAILS_NUM_BUTTON;
          this._pageButtons.addEventListener(PaginationGroupEvent.GROUP_CHANGED,this.onPageButtonsGroupChangedHandler);
          this._buttonGroup = ButtonGroupEx.getGroup(param5,DisplayObjectContainer(this._pageButtons));
@@ -145,28 +150,34 @@ package net.wg.gui.components.paginator
       
       public function setPositions(param1:Point) : void
       {
-         this._pageButtons.x = param1.x - (this._pageButtons.width >> 1) + PAGINATOR_X_SHIFT;
-         this._pageButtons.y = param1.y;
+         this._paginatorPos = param1;
+         this._pageButtons.x = this._paginatorPos.x - (this._pageButtons.width >> 1) + PAGINATOR_X_SHIFT;
+         this._pageButtons.y = this._paginatorPos.y;
          this.layoutPageBtns();
       }
       
       public function updateSize(param1:int, param2:int) : void
       {
-         var _loc4_:uint = 0;
-         var _loc3_:Boolean = App.appWidth <= MIN_WIDTH;
+         this.updatePageBtns();
+      }
+      
+      protected function updatePageBtns() : void
+      {
+         var _loc2_:uint = 0;
+         var _loc1_:Boolean = App.appWidth <= MIN_WIDTH;
          if(this._hasPagesBtns)
          {
-            this._nextPageBtn.isMinimize = _loc3_;
-            this._nextPageBtn.width = !!_loc3_ ? Number(NAV_BUTTON_MIN_WIDTH) : Number(NAV_BUTTON_WIDTH);
-            if(!_loc3_)
+            this._nextPageBtn.isMinimize = _loc1_;
+            this._nextPageBtn.width = !!_loc1_ ? Number(NAV_BUTTON_MIN_WIDTH) : Number(NAV_BUTTON_WIDTH);
+            if(!_loc1_)
             {
-               _loc4_ = this._pageButtons.getProviderRealLength() - (this._currentPageIndex + 1) * this._maxElementsPerPage;
-               _loc4_ = _loc4_ > this._maxElementsPerPage ? uint(this._maxElementsPerPage) : uint(_loc4_);
-               this._nextPageBtn.label = this._locale.makeString(QUESTS.MISSIONDETAILS_NEXTPAGEBTN_LABEL) + " " + _loc4_;
+               _loc2_ = this._pageButtons.getProviderRealLength() - (this._currentPageIndex + 1) * this._maxElementsPerPage;
+               _loc2_ = _loc2_ > this._maxElementsPerPage ? uint(this._maxElementsPerPage) : uint(_loc2_);
+               this._nextPageBtn.label = this._locale.makeString(QUESTS.MISSIONDETAILS_NEXTPAGEBTN_LABEL) + " " + _loc2_;
             }
-            this._prevPageBtn.isMinimize = _loc3_;
-            this._prevPageBtn.width = !!_loc3_ ? Number(NAV_BUTTON_MIN_WIDTH) : Number(NAV_BUTTON_WIDTH);
-            if(!_loc3_)
+            this._prevPageBtn.isMinimize = _loc1_;
+            this._prevPageBtn.width = !!_loc1_ ? Number(NAV_BUTTON_MIN_WIDTH) : Number(NAV_BUTTON_WIDTH);
+            if(!_loc1_)
             {
                this._prevPageBtn.label = this._locale.makeString(QUESTS.MISSIONDETAILS_PREVPAGEBTN_LABEL) + " " + this._maxElementsPerPage;
             }
@@ -191,6 +202,7 @@ package net.wg.gui.components.paginator
          this._arrowRightBtn = null;
          this._pageButtons = null;
          this._buttonGroup = null;
+         this._paginatorPos = null;
       }
       
       protected function showArrowTooltip(param1:int) : void
@@ -254,8 +266,18 @@ package net.wg.gui.components.paginator
       
       private function layoutPageBtns() : void
       {
+         var _loc1_:int = 0;
          if(this._hasPagesBtns)
          {
+            if(this._isCenterPages && this._paginatorPos)
+            {
+               _loc1_ = !!this._prevPageBtn.visible ? int(-(this._prevPageBtn.width + PAGE_BUTTON_RIGHT_X_SHIFT)) : int(0);
+               if(this._nextPageBtn.visible)
+               {
+                  _loc1_ += this._nextPageBtn.width + PAGE_BUTTON_RIGHT_X_SHIFT;
+               }
+               this._pageButtons.x = this._paginatorPos.x - (this._pageButtons.actualWidth + _loc1_ >> 1) + PAGINATOR_X_SHIFT;
+            }
             this._prevPageBtn.x = this._pageButtons.x - this._prevPageBtn.width - PAGE_BUTTON_LEFT_X_SHIFT | 0;
             this._nextPageBtn.x = this._pageButtons.x + this._pageButtons.width + PAGE_BUTTON_RIGHT_X_SHIFT | 0;
             this._nextPageBtn.y = this._prevPageBtn.y = this._pageButtons.y + PAGE_BUTTONS_Y_SHIFT | 0;
@@ -337,6 +359,8 @@ package net.wg.gui.components.paginator
          {
             this._nextPageBtn.visible = this._currentPageIndex + 1 < this._maxPagesLen;
             this._prevPageBtn.visible = this._currentPageIndex > 0;
+            this.updatePageBtns();
+            this.layoutPageBtns();
          }
       }
       

@@ -8,9 +8,17 @@ package net.wg.infrastructure.base.meta
       
       function closeViewS() : void;
       
-      function bootcampButtonClickedS() : void;
+      function pageButtonClickedS(param1:String) : void;
+      
+      function bootcampHighlightedS() : void;
+      
+      function onPreviewClickedS(param1:String) : void;
+      
+      function onPageChangedS(param1:String) : void;
       
       function as_setInitData(param1:Object) : void;
+      
+      function as_setPages(param1:Array) : void;
       
       function as_showPage(param1:int) : void;
    }

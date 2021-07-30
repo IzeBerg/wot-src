@@ -1,10 +1,7 @@
 from gui.Scaleform.genConsts.STORE_CONSTANTS import STORE_CONSTANTS
 from gui.Scaleform.locale.RES_SHOP import RES_SHOP
-from gui.game_control.event_progression_controller import EventProgressionScreens
 from gui.impl import backport
 from gui.impl.gen import R
-from helpers import dependency
-from skeletons.gui.game_control import IEventProgressionController
 from skeletons.gui.shared.congrats import ICongratsCtx
 
 class CongratsCtx(ICongratsCtx):
@@ -62,18 +59,3 @@ class StyleCongratsCtx(GUIItemCongratsCtx):
         if RES_SHOP.hasStyleIcon(size, self._item.id):
             return RES_SHOP.getStyleIcon(size, self._item.id)
         return self._item.icon
-
-
-class EventProgressionCongratsCtx(CongratsCtx):
-    __eventProgression = dependency.descriptor(IEventProgressionController)
-
-    @property
-    def background(self):
-        return R.images.gui.maps.icons.epicBattles.backgrounds.back_congrats()
-
-    def onConfirm(self):
-        self.__eventProgression.showCustomScreen(EventProgressionScreens.MAIN)
-
-
-class EventProgressionStyleCongratsCtx(EventProgressionCongratsCtx, StyleCongratsCtx):
-    pass

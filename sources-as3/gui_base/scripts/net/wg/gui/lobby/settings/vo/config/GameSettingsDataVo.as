@@ -76,8 +76,6 @@ package net.wg.gui.lobby.settings.vo.config
       
       public var showDogTagToKiller:SettingsControlProp = null;
       
-      public var c11nHistoricallyAccurate:SettingsControlProp = null;
-      
       public var displayPlatoonMembers:SettingsControlProp = null;
       
       public var loginServerSelection:SettingsControlProp = null;
@@ -112,11 +110,15 @@ package net.wg.gui.lobby.settings.vo.config
       
       public var enableRepairTimer:SettingsControlProp = null;
       
+      public var enableBattleNotifier:SettingsControlProp = null;
+      
       public var battleLoadingInfo:SettingsControlProp = null;
       
       public var battleLoadingRankedInfo:SettingsControlProp = null;
       
       public var receiveClanInvitesNotifications:SettingsControlProp = null;
+      
+      public var customizationDisplayType:SettingsControlProp = null;
       
       public var carouselType:SettingsControlProp = null;
       
@@ -135,6 +137,8 @@ package net.wg.gui.lobby.settings.vo.config
       public var showLocationMarkers:SettingsControlProp = null;
       
       public var showMarkers:SettingsControlProp = null;
+      
+      public var switchEquipment:SettingsControlProp = null;
       
       public function GameSettingsDataVo()
       {
@@ -173,7 +177,6 @@ package net.wg.gui.lobby.settings.vo.config
             "sniperZoom":createControl(ControlsFactory.TYPE_DROPDOWN).build(),
             "useServerAim":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "showVehiclesCounter":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
-            "c11nHistoricallyAccurate":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "displayPlatoonMembers":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "loginServerSelection":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "showMarksOnGun":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
@@ -193,16 +196,19 @@ package net.wg.gui.lobby.settings.vo.config
             "showDamageIcon":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "enableSpeedometer":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "enableRepairTimer":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
+            "enableBattleNotifier":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "battleLoadingInfo":createControl(ControlsFactory.TYPE_DROPDOWN).build(),
             "battleLoadingRankedInfo":createControl(ControlsFactory.TYPE_DROPDOWN).build(),
             "carouselType":createControl(ControlsFactory.TYPE_BUTTON_BAR).build(),
             "doubleCarouselType":createControl(ControlsFactory.TYPE_DROPDOWN).build(),
+            "customizationDisplayType":createControl(ControlsFactory.TYPE_BUTTON_BAR).build(),
             "vehicleCarouselStats":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "showCommInPlayerlist":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "showStickyMarkers":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "showCalloutMessages":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "showLocationMarkers":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
-            "showMarkers":createControl(ControlsFactory.TYPE_CHECKBOX).build()
+            "showMarkers":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
+            "switchEquipment":createControl(ControlsFactory.TYPE_CHECKBOX).build()
          });
       }
       
@@ -278,8 +284,6 @@ package net.wg.gui.lobby.settings.vo.config
          this.showDogTagToKiller = null;
          this.loginServerSelection.dispose();
          this.loginServerSelection = null;
-         this.c11nHistoricallyAccurate.dispose();
-         this.c11nHistoricallyAccurate = null;
          this.displayPlatoonMembers.dispose();
          this.displayPlatoonMembers = null;
          this.showVehModelsOnMap.dispose();
@@ -290,6 +294,7 @@ package net.wg.gui.lobby.settings.vo.config
          this.showVectorOnMap = null;
          this.showSectorOnMap.dispose();
          this.showSectorOnMap = null;
+         this.showArtyHitOnMap.dispose();
          this.showArtyHitOnMap = null;
          this.showDamageIcon.dispose();
          this.showDamageIcon = null;
@@ -297,6 +302,8 @@ package net.wg.gui.lobby.settings.vo.config
          this.enableSpeedometer = null;
          this.enableRepairTimer.dispose();
          this.enableRepairTimer = null;
+         this.enableBattleNotifier.dispose();
+         this.enableBattleNotifier = null;
          this.minimapViewRange.dispose();
          this.minimapViewRange = null;
          this.minimapMaxViewRange.dispose();
@@ -317,6 +324,8 @@ package net.wg.gui.lobby.settings.vo.config
          this.receiveClanInvitesNotifications = null;
          this.carouselType.dispose();
          this.carouselType = null;
+         this.customizationDisplayType.dispose();
+         this.customizationDisplayType = null;
          this.doubleCarouselType.dispose();
          this.doubleCarouselType = null;
          this.vehicleCarouselStats.dispose();
@@ -335,6 +344,8 @@ package net.wg.gui.lobby.settings.vo.config
          this.showMarkers = null;
          this.showVehicleHPinMinimap.dispose();
          this.showVehicleHPinMinimap = null;
+         this.switchEquipment.dispose();
+         this.switchEquipment = null;
          super.onDispose();
       }
    }

@@ -1,5 +1,6 @@
 package net.wg.infrastructure.managers
 {
+   import flash.display.DisplayObjectContainer;
    import net.wg.data.managers.IToolTipParams;
    import net.wg.data.managers.ITooltipProps;
    
@@ -24,5 +25,7 @@ package net.wg.infrastructure.managers
       function getNewFormatter() : ITooltipFormatter;
       
       function getDefaultTooltipProps() : ITooltipProps;
+      
+      function getContainer() : DisplayObjectContainer;
    }
 }

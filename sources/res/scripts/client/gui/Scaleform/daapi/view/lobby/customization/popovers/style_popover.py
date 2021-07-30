@@ -168,7 +168,7 @@ class StylePopoverDataProvider(SortableDAAPIDataProvider):
         itemDataVO = {'id': item.intCD, 
            'icon': item.icon, 
            'isWide': item.isWide(), 
-           'isHistoric': item.isHistorical()}
+           'customizationDisplayType': item.customizationDisplayType()}
         return itemDataVO
 
     @staticmethod

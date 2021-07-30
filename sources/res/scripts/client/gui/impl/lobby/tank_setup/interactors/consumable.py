@@ -38,6 +38,9 @@ class BaseConsumableInteractor(BaseEquipmentInteractor):
     def getCurrentLayout(self):
         return self.getItem().consumables.layout
 
+    def getSetupLayout(self):
+        return self.getItem().consumables.setupLayouts
+
 
 class ConsumableInteractor(BaseConsumableInteractor):
     __slots__ = ('__installedIndices', )
@@ -54,10 +57,10 @@ class ConsumableInteractor(BaseConsumableInteractor):
         self.itemUpdated()
 
     @async
-    def applyQuit(self, callback):
+    def applyQuit(self, callback, skipApplyAutoRenewal):
         if not self.isPlayerLayout():
             yield await_callback(self.confirm)(skipDialog=True)
-        super(ConsumableInteractor, self).applyQuit(callback)
+        super(ConsumableInteractor, self).applyQuit(callback, skipApplyAutoRenewal)
 
     @process
     def confirm(self, callback, skipDialog=False):
@@ -75,7 +78,10 @@ class ConsumableInteractor(BaseConsumableInteractor):
         return
 
     def updateFrom(self, vehicle, onlyInstalled=True):
-        self.getItem().consumables.setInstalled(*vehicle.consumables.installed)
+        super(ConsumableInteractor, self).updateFrom(vehicle, onlyInstalled)
+        items = self.getItem().consumables
+        items.setInstalled(*vehicle.consumables.installed)
+        items.setupLayouts.setSetups(vehicle.consumables.setupLayouts.setups)
         self._playerLayout = vehicle.consumables.layout.copy()
         if not onlyInstalled:
             self.getItem().consumables.setLayout(*vehicle.consumables.layout)

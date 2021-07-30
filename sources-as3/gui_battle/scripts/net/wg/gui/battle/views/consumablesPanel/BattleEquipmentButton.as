@@ -154,6 +154,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       override protected function onDispose() : void
       {
+         this._scheduler.cancelTask(this.onIntervalEnd);
          this._scheduler.cancelTask(this.intervalRun);
          this._scheduler = null;
          this.iconLoader.dispose();
@@ -285,7 +286,8 @@ package net.wg.gui.battle.views.consumablesPanel
          this.bigCooldownTimerTf.visible = false;
          this.endCooldownTimer();
          this.enableMouse();
-         App.utils.scheduler.cancelTask(this.intervalRun);
+         this._scheduler.cancelTask(this.intervalRun);
+         this._scheduler.cancelTask(this.onIntervalEnd);
          if(param1 > 0)
          {
             this._firstShow = false;
@@ -373,18 +375,15 @@ package net.wg.gui.battle.views.consumablesPanel
             {
                this.startCooldownTimer(param1,this._currReloadingInPercent,this._curAnimReversed,this._isFillPartially);
                this.disableMouse();
-               App.utils.scheduler.scheduleRepeatableTask(this.intervalRun,_loc5_,param2,this._useBigTimer);
+               this._scheduler.scheduleRepeatableTask(this.intervalRun,_loc5_,param2,this._useBigTimer);
             }
          }
          else
          {
             this._isReloading = false;
-            this._coolDownTimer.end();
-            this._scheduler.cancelTask(this.intervalRun);
-            this.enableMouse();
-            App.utils.scheduler.cancelTask(this.intervalRun);
             this._delayColorTransform = null;
             this.flushColorTransform();
+            this.enableMouse();
             this.cooldownTimerTf.textColor = NORMAL_TEXT_COLOR;
             this.counterBg.gotoAndStop(COOLDOWN_COUNTER_BG_GREEN);
             if(param2 > 0)
@@ -463,7 +462,7 @@ package net.wg.gui.battle.views.consumablesPanel
          }
          if(!this._currentIntervalTime)
          {
-            App.utils.scheduler.scheduleTask(this.onIntervalEnd,!!this._useBigTimer ? Number(SMALL_INTERVAL_SIZE) : Number(INTERVAL_SIZE));
+            this._scheduler.scheduleTask(this.onIntervalEnd,!!this._useBigTimer ? Number(SMALL_INTERVAL_SIZE) : Number(INTERVAL_SIZE));
          }
       }
       
@@ -590,6 +589,14 @@ package net.wg.gui.battle.views.consumablesPanel
       protected function get cooldownTimer() : CoolDownTimer
       {
          return this._coolDownTimer;
+      }
+      
+      public function updateLockedInformation(param1:int, param2:String) : void
+      {
+      }
+      
+      public function updateLevelInformation(param1:int) : void
+      {
       }
    }
 }

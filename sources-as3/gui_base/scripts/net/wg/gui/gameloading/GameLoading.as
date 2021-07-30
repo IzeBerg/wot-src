@@ -1,7 +1,6 @@
 package net.wg.gui.gameloading
 {
    import flash.display.MovieClip;
-   import flash.display.Sprite;
    import flash.geom.Point;
    import flash.text.TextField;
    import flash.text.TextFormat;
@@ -12,6 +11,7 @@ package net.wg.gui.gameloading
    import net.wg.gui.events.UILoaderEvent;
    import net.wg.gui.interfaces.IGameLoading;
    import net.wg.infrastructure.base.meta.impl.GameLoadingMeta;
+   import net.wg.utils.StageSizeBoundaries;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.controls.StatusIndicator;
    
@@ -28,15 +28,15 @@ package net.wg.gui.gameloading
       
       private static const INVALID_INFO:String = "invalidInfo";
       
-      private static const MIN_APP_WIDTH:Number = 1024;
-      
-      private static const MIN_APP_HEIGHT:Number = 768;
-      
       private static const FORM_VERTICAL_OFFSET:Number = 52;
       
       private static const INFO_TEXT_PADDING:Number = 20;
       
       private static const MAX_INFO_FONT_SIZE:Number = 64;
+      
+      private static const CHINA_AGE_RATING_OFFSET_X:Number = 30;
+      
+      private static const CHINA_AGE_RATING_OFFSET_Y:Number = 80;
        
       
       public var versionTF:TextField;
@@ -49,7 +49,7 @@ package net.wg.gui.gameloading
       
       public var copyright:MovieClip;
       
-      public var ageRating:Sprite;
+      public var ageRating:BaseLogoView;
       
       private var _progressBar:StatusIndicator;
       
@@ -68,8 +68,6 @@ package net.wg.gui.gameloading
       private var _appWidth:Number;
       
       private var _appHeight:Number;
-      
-      private var _isKorea:Boolean;
       
       private var _isLocaleSet:Boolean = false;
       
@@ -117,13 +115,14 @@ package net.wg.gui.gameloading
          {
             if(this._locale)
             {
+               this.ageRating.visible = this._locale == Locales.KOREA || this._locale == Locales.CHINA;
+               this.ageRating.setLocale(this._locale);
                this.wotLogo.setLocale(this._locale);
                this._bottomLogos.setLocale(this._locale);
             }
-            this._isKorea = this._locale == Locales.KOREA;
-            if(this._isKorea)
+            if(this._locale == Locales.KOREA)
             {
-               this.ageRating.visible = this._infoTF.visible = true;
+               this._infoTF.visible = true;
                this.copyright.removeChild(this._awardsLoader);
                invalidate(INVALID_INFO);
             }
@@ -150,10 +149,11 @@ package net.wg.gui.gameloading
          this.background = null;
          this.wotLogo.dispose();
          this.wotLogo = null;
+         this.ageRating.dispose();
+         this.ageRating = null;
          this.versionTF = null;
          this.form = null;
          this.copyright = null;
-         this.ageRating = null;
          if(this._awardsLoader)
          {
             this._awardsLoader.removeEventListener(UILoaderEvent.COMPLETE,this.onAwardsCompleteHandler);
@@ -217,41 +217,59 @@ package net.wg.gui.gameloading
       
       private function relayout() : void
       {
-         var _loc3_:Number = NaN;
-         var _loc4_:TextFormat = null;
-         var _loc1_:Number = this._appWidth - MIN_APP_WIDTH >> 1;
-         var _loc2_:Number = this._appHeight - MIN_APP_HEIGHT >> 1;
+         var _loc1_:Number = this._appWidth - StageSizeBoundaries.WIDTH_1024 >> 1;
+         var _loc2_:Number = this._appHeight - StageSizeBoundaries.HEIGHT_768 >> 1;
          this.versionTF.x = this._initVersionTFPos.x - _loc1_;
          this.versionTF.y = this._initVersionTFPos.y - _loc2_;
          this.form.y = this.wotLogo.y + FORM_VERTICAL_OFFSET ^ 0;
          this.copyright.y = this._initCopyrightPos.y + _loc2_;
          this.updateBg();
-         if(this._isKorea)
+         this.relayoutForLocale(_loc1_,_loc2_);
+      }
+      
+      private function relayoutForLocale(param1:Number, param2:Number) : void
+      {
+         if(this._locale == Locales.KOREA)
          {
-            this.ageRating.x = this._initAgeRatingPos.x + _loc1_;
-            this.ageRating.y = this._initAgeRatingPos.y - _loc2_;
-            this._infoTF.x = INFO_TEXT_PADDING - (this._appWidth >> 1);
-            this._infoTF.width = this._appWidth - 2 * INFO_TEXT_PADDING;
-            _loc3_ = this._appHeight - this.copyright.height - this.form.y - this._infoTF.y - _loc2_;
-            _loc4_ = this._infoTF.getTextFormat();
-            if(this._infoTF.textHeight >= _loc3_)
-            {
-               while(this._infoTF.textHeight >= _loc3_)
-               {
-                  _loc4_.size = int(_loc4_.size) - 1;
-                  this._infoTF.setTextFormat(_loc4_);
-               }
-            }
-            else
-            {
-               while(this._infoTF.textHeight <= _loc3_ && _loc4_.size < MAX_INFO_FONT_SIZE)
-               {
-                  _loc4_.size = int(_loc4_.size) + 1;
-                  this._infoTF.setTextFormat(_loc4_);
-               }
-            }
-            this._infoTF.height = this._infoTF.textHeight + 10;
+            this.relayoutKorea(param1,param2);
          }
+         else if(this._locale == Locales.CHINA)
+         {
+            this.relayoutChina(param1,param2);
+         }
+      }
+      
+      private function relayoutKorea(param1:Number, param2:Number) : void
+      {
+         this.ageRating.x = this._initAgeRatingPos.x + param1;
+         this.ageRating.y = this._initAgeRatingPos.y - param2;
+         this._infoTF.x = INFO_TEXT_PADDING - (this._appWidth >> 1);
+         this._infoTF.width = this._appWidth - 2 * INFO_TEXT_PADDING;
+         var _loc3_:Number = this._appHeight - this.copyright.height - this.form.y - this._infoTF.y - param2;
+         var _loc4_:TextFormat = this._infoTF.getTextFormat();
+         if(this._infoTF.textHeight >= _loc3_)
+         {
+            while(this._infoTF.textHeight >= _loc3_)
+            {
+               _loc4_.size = int(_loc4_.size) - 1;
+               this._infoTF.setTextFormat(_loc4_);
+            }
+         }
+         else
+         {
+            while(this._infoTF.textHeight <= _loc3_ && _loc4_.size < MAX_INFO_FONT_SIZE)
+            {
+               _loc4_.size = int(_loc4_.size) + 1;
+               this._infoTF.setTextFormat(_loc4_);
+            }
+         }
+         this._infoTF.height = this._infoTF.textHeight + 10;
+      }
+      
+      private function relayoutChina(param1:Number, param2:Number) : void
+      {
+         this.ageRating.x = StageSizeBoundaries.WIDTH_1024 - CHINA_AGE_RATING_OFFSET_X + param1;
+         this.ageRating.y = CHINA_AGE_RATING_OFFSET_Y - param2;
       }
       
       private function onAwardsCompleteHandler(param1:UILoaderEvent) : void

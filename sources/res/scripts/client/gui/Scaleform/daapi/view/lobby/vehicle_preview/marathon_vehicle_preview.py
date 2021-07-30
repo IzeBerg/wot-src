@@ -36,3 +36,8 @@ class MarathonVehiclePreview(VehiclePreview):
             return backport.text(R.strings.vehicle_preview.header.backBtn.descrLabel.marathon())
         else:
             return backport.text(self.__marathon.backBtnLabel)
+
+    def _getExitEvent(self):
+        exitEvent = super(MarathonVehiclePreview, self)._getExitEvent()
+        exitEvent.ctx.update({'marathonPrefix': self.__marathonPrefix})
+        return exitEvent

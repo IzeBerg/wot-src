@@ -109,7 +109,7 @@ package net.wg.gui.battle.views.ribbonsPanel
             _loc9_.updateData(param2,param3,param4,param5,param6,this.getBonusLabel(param7),param8);
             _loc9_.showAnim(this._countVisibleItems);
             ++this._countVisibleItems;
-            onShowS();
+            onShowS(param2);
          }
       }
       
@@ -240,7 +240,7 @@ package net.wg.gui.battle.views.ribbonsPanel
                   this._visibleItems.push(_loc3_);
                   this._visibleItemsById[_loc2_] = _loc3_;
                   ++this._countVisibleItems;
-                  onShowS();
+                  onShowS(_loc3_.ribbonId);
                }
                _loc3_.updateData(_loc2_,_loc1_.valueStr,_loc1_.vehName,_loc1_.vehType,_loc1_.countVehs,_loc1_.bonusLabel,_loc1_.role);
                this._ribbonQueue.shiftQueue();

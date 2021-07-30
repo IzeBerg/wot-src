@@ -210,11 +210,10 @@ class EditableStylePopover(CustomizationEditedKitPopoverMeta):
         progressionLevel = 0
         if item.itemTypeID == GUI_ITEM_TYPE.STYLE:
             progressionLevel = self.__ctx.mode.currentOutfit.progressionLevel
-        itemDataVO = {'id': item.intCD, 
-           'icon': icon, 
+        itemDataVO = {'id': item.intCD, 'icon': icon, 
            'userName': name, 
            'numItems': countLabel, 
-           'isHistoric': item.isHistorical(), 
+           'customizationDisplayType': item.customizationDisplayType(), 
            'price': price, 
            'isApplied': isApplied, 
            'isWide': item.isWide(), 

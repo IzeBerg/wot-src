@@ -419,11 +419,11 @@ package net.wg.gui.components.controls.scroller
                _loc3_.graphics.beginFill(0,0);
                _loc3_.graphics.drawRect(0,0,2,2);
                _loc3_.graphics.endFill();
-               _loc3_.x = this._maskOffsetLeft;
-               _loc3_.y = this._maskOffsetTop;
                this._container.addChildAt(_loc3_,0);
                this._container.mask = _loc3_;
             }
+            this._container.mask.x = this._maskOffsetLeft;
+            this._container.mask.y = this._maskOffsetTop;
             this._container.mask.width = _loc1_;
             this._container.mask.height = _loc2_;
          }

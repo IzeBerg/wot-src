@@ -6,7 +6,9 @@ package net.wg.infrastructure.base.meta
    {
        
       
-      function onMessageStartedS(param1:String, param2:int) : void;
+      function onMessageStartedS(param1:String, param2:String, param3:int) : void;
+      
+      function onMessagePhaseStartedS(param1:String, param2:String, param3:int) : void;
       
       function onMessageEndedS(param1:String, param2:int) : void;
       

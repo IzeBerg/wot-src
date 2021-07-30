@@ -3,7 +3,7 @@ from collections import Counter, namedtuple
 from constants import IS_EDITOR
 from gui.shared.gui_items import GUI_ITEM_TYPE
 from gui.shared.gui_items.gui_item import HasStrCD
-from items.components.c11n_constants import ApplyArea, CustomizationType, MAX_PROJECTION_DECALS
+from items.components.c11n_constants import ApplyArea, CustomizationType, MAX_PROJECTION_DECALS, CustomizationDisplayType
 from items.customizations import parseOutfitDescr, CustomizationOutfit
 from items.vehicles import makeIntCompactDescrByID, getItemByCompactDescr, VehicleDescr
 from shared_utils import isEmpty
@@ -291,10 +291,13 @@ class Outfit(HasStrCD):
             for slot in container.slots():
                 yield slot
 
-    def isHistorical(self):
+    def customizationDisplayType(self):
         if self._styleDescr:
-            return self._styleDescr.historical
-        return all(getItemByCompactDescr(intCD).historical for intCD in self.items())
+            return self._styleDescr.customizationDisplayType
+        itemsCustomizationDisplayType = [ getItemByCompactDescr(intCD).customizationDisplayType for intCD in self.items() ]
+        if itemsCustomizationDisplayType:
+            return max(itemsCustomizationDisplayType)
+        return CustomizationDisplayType.HISTORICAL
 
     def isEmpty(self):
         return isEmpty(self.items())

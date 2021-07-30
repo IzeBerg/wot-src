@@ -8,9 +8,13 @@ package net.wg.gui.lobby.vehicleCustomization.data
       
       public var title:String = "";
       
-      public var counterText:String = "";
+      public var nonHistoricCounterText:String = "";
       
-      public var checkBoxText:String = "";
+      public var fantasticalCounterText:String = "";
+      
+      public var nonHistoricCheckBoxText:String = "";
+      
+      public var fantasticalCheckBoxText:String = "";
       
       public var currentSeasonImage:String = "";
       

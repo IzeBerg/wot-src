@@ -8,7 +8,7 @@ from recycle_bin_requester import RecycleBinRequester
 from vehicle_rotation_requester import VehicleRotationRequester
 from tokens_requester import TokensRequester
 from session_stats_requester import SessionStatsRequester
-from ItemsRequester import REQ_CRITERIA, RequestCriteria
+from ItemsRequester import REQ_CRITERIA, RequestCriteria, getDiffID
 from TokenRequester import TokenRequester, getTokenRequester, fini as _rq_fini
 from TokenResponse import TokenResponse
 from abstract import RequestCtx
@@ -24,4 +24,5 @@ __all__ = ('ShopRequester', 'InventoryRequester', 'StatsRequester', 'DossierRequ
            'ItemsRequester', 'GoodiesRequester', 'RecycleBinRequester', 'VehicleRotationRequester',
            'BlueprintsRequester', 'TokensRequester', 'TokenRequester', 'TokenResponse',
            'getTokenRequester', 'REQ_CRITERIA', 'RequestCriteria', 'RequestCtx',
-           'DataRequestCtx', 'RequestsByIDProcessor', 'DataRequestsByIDProcessor')
+           'DataRequestCtx', 'RequestsByIDProcessor', 'DataRequestsByIDProcessor',
+           'getDiffID')

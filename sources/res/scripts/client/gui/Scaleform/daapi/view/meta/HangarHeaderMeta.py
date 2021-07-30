@@ -41,6 +41,14 @@ class HangarHeaderMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_removeBattleRoyaleTournament()
 
+    def as_createEpicWidgetS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_createEpicWidget()
+
+    def as_removeEpicWidgetS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_removeEpicWidget()
+
     def as_setSecondaryEntryPointVisibleS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setSecondaryEntryPointVisible(value)

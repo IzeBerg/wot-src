@@ -35,6 +35,10 @@ package net.wg.data.constants.generated
       
       public static const INSPIRE_CD:String = "inspireCoolDown";
       
+      public static const INSPIRE_SOURCE:String = "inspireSource";
+      
+      public static const INSPIRE_INACTIVATION_SOURCE:String = "inspireInactivationSource";
+      
       public static const HEALING:String = "healing";
       
       public static const HEALING_CD:String = "healingCoolDown";
@@ -50,6 +54,12 @@ package net.wg.data.constants.generated
       public static const REPAIRING_CD:String = "repairingCoolDown";
       
       public static const LOOT_PICKUP:String = "lootPickUp";
+      
+      public static const RESUPPLY:String = "resupply";
+      
+      public static const STEALTH_RADAR:String = "stealthRadar";
+      
+      public static const STEALTH_RADAR_INACTIVE:String = "stealthRadarInactive";
       
       public static const WARNING_VIEW:String = "warningView";
       

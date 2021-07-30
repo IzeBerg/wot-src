@@ -655,8 +655,6 @@ package
       
       public static const PROFILE_RANKED_SEASONSDROPDOWN_1:String = "#profile:profile/ranked/seasonsdropdown/1";
       
-      public static const PROFILE_RANKED_SEASONSDROPDOWN_CN_1:String = "#profile:profile/ranked/seasonsdropdown/CN/1";
-      
       public static const PROFILE_RANKED_SEASONSDROPDOWN_2:String = "#profile:profile/ranked/seasonsdropdown/2";
       
       public static const PROFILE_RANKED_SEASONSDROPDOWN_3:String = "#profile:profile/ranked/seasonsdropdown/3";

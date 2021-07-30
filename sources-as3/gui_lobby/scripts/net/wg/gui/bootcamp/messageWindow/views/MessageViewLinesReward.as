@@ -143,7 +143,6 @@ package net.wg.gui.bootcamp.messageWindow.views
          var _loc1_:int = 0;
          var _loc2_:int = 0;
          var _loc3_:int = 0;
-         var _loc4_:int = 0;
          super.draw();
          if(isInvalid(InvalidationType.STATE))
          {
@@ -161,7 +160,6 @@ package net.wg.gui.bootcamp.messageWindow.views
             {
                this.btnContinue.y = _loc1_ - OFFSET_BUTTON1 - this.btnContinue.height;
             }
-            _loc3_ = this.btnContinue.y - this._rewardBgY - this.rewardBg.height;
             if(_loc2_ >= OFFSET_BUTTON2)
             {
                if(_loc2_ >= OFFSET_BUTTON3)
@@ -177,12 +175,12 @@ package net.wg.gui.bootcamp.messageWindow.views
             {
                this.rewardBg.y = this.btnContinue.y - OFFSET_BUTTON2 - this.rewardBg.height;
             }
-            _loc4_ = this._rewardBgY - this.rewardBg.y;
-            animContainerTitle.y = this._animContainerTitleY - _loc4_;
-            animContainerDescription.y = this._animContainerDescriptionY - _loc4_;
-            this.icon.y = this._iconY - _loc4_;
-            this.glow.y = this._glowY - _loc4_;
-            this.animContainerIconSmall.y = this._animContainerIconSmallY - _loc4_;
+            _loc3_ = this._rewardBgY - this.rewardBg.y;
+            animContainerTitle.y = this._animContainerTitleY - _loc3_;
+            animContainerDescription.y = this._animContainerDescriptionY - _loc3_;
+            this.icon.y = this._iconY - _loc3_;
+            this.glow.y = this._glowY - _loc3_;
+            this.animContainerIconSmall.y = this._animContainerIconSmallY - _loc3_;
          }
       }
       
@@ -245,10 +243,12 @@ package net.wg.gui.bootcamp.messageWindow.views
       
       private function onBtnContinueClickHandler(param1:Event) : void
       {
+         var _loc2_:MessageBottomItemVO = null;
          this.btnContinue.removeEventListener(ButtonEvent.CLICK,this.onBtnContinueClickHandler);
          if(this._isFlyingReward)
          {
-            dispatchEvent(new MessageViewEvent(MessageViewEvent.MESSAGE_DISAPPEAR));
+            _loc2_ = messageData.bottomData[0];
+            dispatchEvent(new MessageViewEvent(MessageViewEvent.MESSAGE_DISAPPEAR,_loc2_.animationType));
             this.startFlyingReward();
          }
          else
@@ -265,12 +265,17 @@ package net.wg.gui.bootcamp.messageWindow.views
             "delay":HIDE_TWEEN_DELAY,
             "fastTransform":false
          });
-         dispatchEvent(new MessageViewEvent(MessageViewEvent.REWARD_ANIMATION_START));
+         var _loc1_:MessageBottomItemVO = messageData.bottomData[0];
+         if(_loc1_ && StringUtils.isNotEmpty(_loc1_.animationType))
+         {
+            dispatchEvent(new MessageViewEvent(MessageViewEvent.REWARD_ANIMATION_START,_loc1_.animationType));
+         }
       }
       
       private function onRewardIconLoadedHandler(param1:MessageViewEvent) : void
       {
-         var _loc2_:Point = param1.target.localToGlobal(new Point(param1.target.width >> 1,param1.target.height >> 1));
+         var _loc2_:Point = null;
+         _loc2_ = param1.target.localToGlobal(new Point(param1.target.width >> 1,param1.target.height >> 1));
          _loc2_ = parent.globalToLocal(_loc2_);
          this._flyingReward.x = _loc2_.x;
          this._flyingReward.y = _loc2_.y;
@@ -279,6 +284,11 @@ package net.wg.gui.bootcamp.messageWindow.views
       
       private function onRewardAnimationCompleteHandler(param1:MessageViewEvent) : void
       {
+         var _loc2_:MessageBottomItemVO = messageData.bottomData[0];
+         if(_loc2_ && StringUtils.isNotEmpty(_loc2_.animationType))
+         {
+            dispatchEvent(new MessageViewEvent(MessageViewEvent.REWARD_ANIMATION_STOP,_loc2_.animationType));
+         }
          dispatchEvent(new MessageViewEvent(MessageViewEvent.MESSAGE_REMOVED));
       }
    }

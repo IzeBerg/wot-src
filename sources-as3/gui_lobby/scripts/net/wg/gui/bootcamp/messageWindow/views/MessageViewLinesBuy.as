@@ -16,6 +16,8 @@ package net.wg.gui.bootcamp.messageWindow.views
       private static const OUT_FRAME:int = 9;
       
       private static const SEPARATOR_Y:int = 215;
+      
+      private static const UNLOCK_ANIMATION:String = "unlock";
        
       
       public var btnExecute:UniversalBtn = null;
@@ -120,6 +122,7 @@ package net.wg.gui.bootcamp.messageWindow.views
          {
             this.lockIcon.addFrameScript(this.lockIcon.totalFrames - 1,this.onUnlockComplete);
             this.lockIcon.gotoAndPlay(ACCEPT_STATE);
+            dispatchEvent(new MessageViewEvent(MessageViewEvent.UNLOCK_ANIMATION_START,UNLOCK_ANIMATION));
             this._isUnlockComplete = true;
          }
          else

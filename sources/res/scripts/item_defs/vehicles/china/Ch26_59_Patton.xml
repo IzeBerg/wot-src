@@ -8,6 +8,8 @@
 		<loader>radioman</loader>
 	</crew>
 	<supplySlots>2 1 1 6 6 6 7 8 8 8</supplySlots>
+	<postProgressionTree>role_MT_universal_level_8</postProgressionTree>
+	<customRoleSlotOptions>3 5</customRoleSlotOptions>
 	<speedLimits>
 		<forward>50</forward>
 		<backward>20</backward>
@@ -3040,13 +3042,27 @@
 						<!--BW_String-->
 					</reloadTime>
 					<aimingTime>
-						2.3
+						1.9
 						<!--BW_String-->
 					</aimingTime>
 					<shotDispersionRadius>
 						0.36
 						<!--BW_String-->
 					</shotDispersionRadius>
+					<shotDispersionFactors>
+						<turretRotation>
+							0.1
+							<!--BW_String-->
+						</turretRotation>
+						<afterShot>
+							3.5
+							<!--BW_String-->
+						</afterShot>
+						<whileGunDamaged>
+							2.0
+							<!--BW_String-->
+						</whileGunDamaged>
+					</shotDispersionFactors>
 					<models>
 						<undamaged>vehicles/chinese/Ch26_59_Patton/normal/lod0/Gun_01.model</undamaged>
 						<destroyed>vehicles/chinese/Ch26_59_Patton/crash/lod0/Gun_01.model</destroyed>
@@ -4059,7 +4075,7 @@
 		</Turret_1_Ch26_59_Patton>
 	</turrets0>
 	<engines>
-		<NORINCO_12150L7>shared</NORINCO_12150L7>
+		<NORINCO_12150LP>shared</NORINCO_12150LP>
 	</engines>
 	<fuelTanks>
 		<Heavy>shared</Heavy>
@@ -4070,13 +4086,10 @@
 	<physics>
 		<detailed>
 			<engines>
-				<NORINCO_12150L7>
-					<smplEnginePower>
-						549.7862
-						<!--BW_String-->
-					</smplEnginePower>
+				<NORINCO_12150LP>
+					<smplEnginePower>620</smplEnginePower>
 					<smplFwMaxSpeed>50</smplFwMaxSpeed>
-				</NORINCO_12150L7>
+				</NORINCO_12150LP>
 			</engines>
 			<chassis>
 				<Chassis_Ch26_59_Patton>

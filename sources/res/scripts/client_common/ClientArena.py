@@ -11,7 +11,8 @@ from visual_script.multi_plan_provider import makeMultiPlanProvider, CallablePro
 TeamBaseProvider = namedtuple('TeamBaseProvider', ('points', 'invadersCnt', 'capturingStopped'))
 
 class ClientArena(object):
-    __onUpdate = {ARENA_UPDATE.VEHICLE_LIST: '_ClientArena__onVehicleListUpdate', 
+    __onUpdate = {ARENA_UPDATE.SETTINGS: '_ClientArena__onArenaSettingsUpdate', 
+       ARENA_UPDATE.VEHICLE_LIST: '_ClientArena__onVehicleListUpdate', 
        ARENA_UPDATE.VEHICLE_ADDED: '_ClientArena__onVehicleAddedUpdate', 
        ARENA_UPDATE.PERIOD: '_ClientArena__onPeriodInfoUpdate', 
        ARENA_UPDATE.STATISTICS: '_ClientArena__onStatisticsUpdate', 
@@ -32,7 +33,8 @@ class ClientArena(object):
        ARENA_UPDATE.VIEW_POINTS: '_ClientArena__onViewPoints', 
        ARENA_UPDATE.VEHICLE_RECOVERED: '_ClientArena__onVehicleRecovered', 
        ARENA_UPDATE.FOG_OF_WAR: '_ClientArena__onFogOfWar', 
-       ARENA_UPDATE.RADAR_INFO_RECEIVED: '_ClientArena__onRadarInfoReceived'}
+       ARENA_UPDATE.RADAR_INFO_RECEIVED: '_ClientArena__onRadarInfoReceived', 
+       ARENA_UPDATE.VEHICLE_DESCR: '_ClientArena__onVehicleDescrUpdate'}
 
     def __init__(self, arenaUniqueID, arenaTypeID, arenaBonusType, arenaGuiType, arenaExtraData, spaceID):
         self.__vehicles = {}
@@ -47,8 +49,10 @@ class ClientArena(object):
         self.__hasFogOfWarHiddenVehicles = False
         self.__arenaInfo = None
         self.__teamInfo = None
+        self.__settings = {}
         self.__eventManager = Event.EventManager()
         em = self.__eventManager
+        self.onArenaSettingsReceived = Event.Event(em)
         self.onNewVehicleListReceived = Event.Event(em)
         self.onVehicleAdded = Event.Event(em)
         self.onVehicleUpdated = Event.Event(em)
@@ -86,6 +90,7 @@ class ClientArena(object):
         self.componentSystem = assembler.createComponentSystem(self, self.bonusType, self.arenaType)
         return
 
+    settings = property(lambda self: self.__settings)
     vehicles = property(lambda self: self.__vehicles)
     positions = property(lambda self: self.__positions)
     statistics = property(lambda self: self.__statistics)
@@ -193,6 +198,12 @@ class ClientArena(object):
         self.__spaceBBCollider = _BBCollider(spaceBB, (-500.0, 500.0))
         return True
 
+    def __onArenaSettingsUpdate(self, argStr):
+        arenaSettings = cPickle.loads(argStr)
+        LOG_DEBUG_DEV('__onArenaSettingsUpdate', arenaSettings)
+        self.__settings = arenaSettings
+        self.onArenaSettingsReceived()
+
     def __onVehicleListUpdate(self, argStr):
         vehiclesList = cPickle.loads(zlib.decompress(argStr))
         LOG_DEBUG_DEV('__onVehicleListUpdate', vehiclesList)
@@ -217,6 +228,15 @@ class ClientArena(object):
         infoAsTuple = cPickle.loads(zlib.decompress(argStr))
         vehID, info = self.__vehicleInfoAsDict(infoAsTuple)
         self.__vehicles[vehID] = self.__preprocessVehicleInfo(info)
+        self.onVehicleUpdated(vehID)
+
+    def __onVehicleDescrUpdate(self, argStr):
+        vehID, compactDescr, maxHealth = cPickle.loads(argStr)
+        info = self.__vehicles[vehID]
+        extVehicleTypeData = {'vehPostProgression': info['vehPostProgression'], 
+           'customRoleSlotTypeId': info['customRoleSlotTypeId']}
+        self.__vehicles[vehID]['vehicleType'] = self.__getVehicleType(compactDescr, extVehicleTypeData)
+        self.__vehicles[vehID]['maxHealth'] = maxHealth
         self.onVehicleUpdated(vehID)
 
     def __onPeriodInfoUpdate(self, argStr):
@@ -330,7 +350,9 @@ class ClientArena(object):
         self.__vehicleIndexToId = dict(zip(range(len(vehs)), sorted(vehs.keys())))
 
     def __vehicleInfoAsDict(self, info):
-        infoAsDict = {'vehicleType': self.__getVehicleType(info[1]), 
+        extVehicleTypeData = {'vehPostProgression': info[25], 
+           'customRoleSlotTypeId': info[26]}
+        infoAsDict = {'vehicleType': self.__getVehicleType(info[1], extVehicleTypeData), 
            'name': info[2], 
            'team': info[3], 
            'isAlive': info[4], 
@@ -353,15 +375,17 @@ class ClientArena(object):
            'fakeName': info[21], 
            'badges': info[22], 
            'overriddenBadge': info[23], 
-           'maxHealth': info[24]}
+           'maxHealth': info[24], 
+           'vehPostProgression': info[25], 
+           'customRoleSlotTypeId': info[26]}
         return (
          info[0], infoAsDict)
 
-    def __getVehicleType(self, intCD):
-        if intCD is None:
+    def __getVehicleType(self, compactDescr, extData):
+        if compactDescr is None:
             return
         else:
-            return vehicles.VehicleDescr(compactDescr=intCD)
+            return vehicles.VehicleDescr(compactDescr=compactDescr, extData=extData)
 
     def __vehicleStatisticsAsDict(self, stats):
         return (

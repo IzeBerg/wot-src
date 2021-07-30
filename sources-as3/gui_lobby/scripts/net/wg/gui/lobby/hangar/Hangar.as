@@ -23,7 +23,6 @@ package net.wg.gui.lobby.hangar
    import net.wg.gui.components.miniclient.HangarMiniClientComponent;
    import net.wg.gui.events.LobbyEvent;
    import net.wg.gui.lobby.battleRoyale.HangarComponentsContainer;
-   import net.wg.gui.lobby.epicBattles.components.EpicBattlesWidget;
    import net.wg.gui.lobby.hangar.alertMessage.AlertMessageBlock;
    import net.wg.gui.lobby.hangar.ammunitionPanel.AmmunitionPanel;
    import net.wg.gui.lobby.hangar.ammunitionPanel.data.AmmunitionPanelVO;
@@ -39,14 +38,12 @@ package net.wg.gui.lobby.hangar
    import net.wg.gui.lobby.post.data.TeaserVO;
    import net.wg.gui.notification.events.NotificationLayoutEvent;
    import net.wg.gui.tutorial.components.TutorialClip;
-   import net.wg.infrastructure.base.BaseDAAPIComponent;
    import net.wg.infrastructure.base.meta.impl.HangarMeta;
    import net.wg.infrastructure.events.FocusRequestEvent;
    import net.wg.infrastructure.interfaces.ITutorialCustomComponent;
    import net.wg.infrastructure.managers.ITooltipMgr;
    import net.wg.utils.IGameInputManager;
    import net.wg.utils.IUtils;
-   import net.wg.utils.helpLayout.HelpLayoutVO;
    import net.wg.utils.helpLayout.IHelpLayout;
    import scaleform.clik.events.ButtonEvent;
    import scaleform.clik.events.ComponentEvent;
@@ -182,8 +179,6 @@ package net.wg.gui.lobby.hangar
       
       private var _alertMessageBlock:AlertMessageBlock;
       
-      private var _epicBattlesWdgt:EpicBattlesWidget;
-      
       private var _miniClient:HangarMiniClientComponent;
       
       private var _crewEnabled:Boolean = true;
@@ -195,10 +190,6 @@ package net.wg.gui.lobby.hangar
       private var _utils:IUtils;
       
       private var _helpLayout:IHelpLayout;
-      
-      private var _activeHeaderType:String = "";
-      
-      private var _headerTypeDict:Dictionary;
       
       private var _teaserX:int = 0;
       
@@ -240,13 +231,13 @@ package net.wg.gui.lobby.hangar
          super();
          _deferredDispose = true;
          this.switchModePanel.visible = false;
-         this._headerTypeDict = new Dictionary();
-         this._headerTypeDict[HANGAR_ALIASES.HEADER] = [this._header,HangarHeader,Linkages.HANGAR_HEADER];
-         this._headerTypeDict[HANGAR_ALIASES.EPIC_WIDGET] = [this._epicBattlesWdgt,EpicBattlesWidget,Linkages.EPIC_WIDGET];
          this.setupWidgetSizes();
          this._eventsEntryContainer = new HangarEventEntriesContainer();
          this._eventsEntryContainer.addEventListener(Event.RESIZE,this.onEventsEntryContainerResizeHandler);
          addChildAt(this._eventsEntryContainer,getChildIndex(this.carouselContainer) + 1);
+         this._header = App.instance.utils.classFactory.getComponent(Linkages.HANGAR_HEADER,HangarHeader);
+         this._header.name = HANGAR_ALIASES.HEADER;
+         addChildAt(this._header,getChildIndex(this.params as DisplayObject) - 1);
          this.closeBtn.visible = false;
       }
       
@@ -277,11 +268,6 @@ package net.wg.gui.lobby.hangar
          {
             this._alertMessageBlock.x = _width - this._alertMessageBlock.width >> 1;
          }
-         if(this._epicBattlesWdgt != null)
-         {
-            this._epicBattlesWdgt.invalidateSize();
-            this._epicBattlesWdgt.x = _width >> 1;
-         }
          if(this.vehResearchPanel != null)
          {
             this.vehResearchPanel.x = param1;
@@ -303,6 +289,7 @@ package net.wg.gui.lobby.hangar
          registerFlashComponentS(this.params,HANGAR_ALIASES.VEHICLE_PARAMETERS);
          registerFlashComponentS(this.dqWidget,Aliases.DAILY_QUEST_WIDGET);
          registerFlashComponentS(this._eventsEntryContainer,HANGAR_ALIASES.ENTRIES_CONTAINER);
+         registerFlashComponentS(this._header,HANGAR_ALIASES.HEADER);
          this.ammunitionPanelInject.addEventListener(Event.RESIZE,this.onAmmunitionPanelInjectResizeHandler);
          this.ammunitionPanelInject.addEventListener(AmmunitionPanelInjectEvents.HELP_LAYOUT_CHANGED,this.onAmmunitionPanelInjectHelpLayoutChangedHandler);
          addEventListener(CrewDropDownEvent.SHOW_DROP_DOWN,this.onHangarShowDropDownHandler);
@@ -312,6 +299,8 @@ package net.wg.gui.lobby.hangar
          }
          this.updateControlsVisibility();
          this.updateElementsPosition();
+         this.updateHeaderMargin();
+         this.closeBtn.visible = false;
       }
       
       override protected function onBeforeDispose() : void
@@ -372,7 +361,6 @@ package net.wg.gui.lobby.hangar
          this.switchModePanel = null;
          this._header = null;
          this._alertMessageBlock = null;
-         this._epicBattlesWdgt = null;
          this.dqWidget = null;
          this._widgetInitialized = false;
          App.utils.data.cleanupDynamicObject(this._widgetSizes);
@@ -394,8 +382,6 @@ package net.wg.gui.lobby.hangar
          removeChild(this._eventsEntryContainer);
          this._eventsEntryContainer = null;
          this._currentWidgetLayout = 99;
-         App.utils.data.cleanupDynamicObject(this._headerTypeDict);
-         this._headerTypeDict = null;
          App.utils.data.cleanupDynamicObject(this._widgetSizes);
          this._widgetSizes = null;
          super.onDispose();
@@ -632,74 +618,6 @@ package net.wg.gui.lobby.hangar
          invalidate(INVALIDATE_ENABLED_CREW);
       }
       
-      public function as_setDefaultHeader() : void
-      {
-         var _loc3_:String = null;
-         var _loc1_:BaseDAAPIComponent = this._headerTypeDict[HANGAR_ALIASES.HEADER][0];
-         var _loc2_:DisplayObject = this.getHeaderElement(this._activeHeaderType);
-         if(_loc1_ == null)
-         {
-            _loc1_ = App.instance.utils.classFactory.getComponent(this._headerTypeDict[HANGAR_ALIASES.HEADER][2],this._headerTypeDict[HANGAR_ALIASES.HEADER][1]);
-            _loc1_.name = HANGAR_ALIASES.HEADER;
-            addChildAt(_loc1_,getChildIndex(this.params as DisplayObject) - 1);
-            registerFlashComponentS(_loc1_,HANGAR_ALIASES.HEADER);
-         }
-         if(_loc2_ != null)
-         {
-            _loc3_ = this._activeHeaderType;
-            unregisterFlashComponentS(_loc3_);
-            removeChild(_loc2_);
-            _loc2_ = null;
-         }
-         this.resetWidgetFields();
-         this._activeHeaderType = HANGAR_ALIASES.HEADER;
-         this._header = HangarHeader(_loc1_);
-         this._epicBattlesWdgt = null;
-         this.updateElementsPosition();
-         this.updateHeaderMargin();
-         this.closeBtn.visible = false;
-      }
-      
-      public function as_setHeaderType(param1:String) : void
-      {
-         var _loc4_:String = null;
-         var _loc2_:BaseDAAPIComponent = this._headerTypeDict[param1][0];
-         var _loc3_:DisplayObject = this.getHeaderElement(this._activeHeaderType);
-         if(_loc2_ == null)
-         {
-            _loc2_ = App.instance.utils.classFactory.getComponent(this._headerTypeDict[param1][2],this._headerTypeDict[param1][1]);
-            _loc2_.name = param1;
-            addChildAt(_loc2_,getChildIndex(this.crewOperationBtn as DisplayObject) - 1);
-            registerFlashComponentS(_loc2_,param1);
-         }
-         if(_loc3_ != null)
-         {
-            _loc4_ = this._activeHeaderType;
-            unregisterFlashComponentS(_loc4_);
-            removeChild(_loc3_);
-            _loc3_ = null;
-         }
-         this.closeBtn.visible = false;
-         this._topMargin = 0;
-         this.resetWidgetFields();
-         switch(param1)
-         {
-            case HANGAR_ALIASES.HEADER:
-               this._activeHeaderType = HANGAR_ALIASES.HEADER;
-               this._header = HangarHeader(_loc2_);
-               this._epicBattlesWdgt = null;
-               this.updateCarouselPosition();
-               break;
-            case HANGAR_ALIASES.EPIC_WIDGET:
-               this._header = null;
-               this._activeHeaderType = HANGAR_ALIASES.EPIC_WIDGET;
-               this._epicBattlesWdgt = EpicBattlesWidget(_loc2_);
-               this.updateCarouselPosition();
-         }
-         this.updateHeaderMargin();
-         this.updateElementsPosition();
-      }
-      
       public function as_setNotificationEnabled(param1:Boolean) : void
       {
          if(param1 && this.crewOperationBtn.visible)
@@ -862,7 +780,7 @@ package net.wg.gui.lobby.hangar
       {
          if(!this._hangarViewSwitchAnimator)
          {
-            this._hangarViewSwitchAnimator = new HangarAmunitionSwitchAnimator(this,Vector.<DisplayObject>([this.params,this.crew,this.dqWidget,this.teaser,this.crewBG,this.crewOperationBtn,this._alertMessageBlock,this._epicBattlesWdgt,this.vehResearchPanel,this.vehResearchBG,this.tmenXpPanel,this.header,this.ammunitionPanel,this.bottomBg]),Vector.<DisplayObject>([this.carouselContainer]),this.ammunitionPanelInject,height);
+            this._hangarViewSwitchAnimator = new HangarAmunitionSwitchAnimator(this,Vector.<DisplayObject>([this.params,this.crew,this.dqWidget,this.teaser,this.crewBG,this.crewOperationBtn,this._alertMessageBlock,this.vehResearchPanel,this.vehResearchBG,this.tmenXpPanel,this.header,this.ammunitionPanel,this.bottomBg]),Vector.<DisplayObject>([this.carouselContainer]),this.ammunitionPanelInject,height);
          }
       }
       
@@ -877,30 +795,20 @@ package net.wg.gui.lobby.hangar
       
       private function updateEntriesPosition() : void
       {
-         var _loc1_:HelpLayoutVO = null;
-         var _loc2_:HelpLayoutVO = null;
-         var _loc3_:Boolean = false;
-         var _loc4_:Boolean = false;
-         var _loc5_:int = 0;
-         var _loc6_:int = 0;
-         if(this.carousel && this._eventsEntryContainer.isActive)
+         var _loc2_:Boolean = false;
+         var _loc1_:DisplayObject = this.ammunitionPanelInject.hitObject;
+         if(this.carousel && this._eventsEntryContainer.isActive && _loc1_ && _loc1_.width > 0)
          {
             this._eventsEntryContainer.x = _width - this._eventsEntryContainer.width - this._eventsEntryContainer.margin.width | 0;
             this._eventsEntryContainer.y = this.carousel.y - this._eventsEntryContainer.height | 0;
-            _loc1_ = this.ammunitionPanelInject.getFirstLayoutProperty();
-            _loc2_ = this.ammunitionPanelInject.getLastLayoutProperty();
-            _loc3_ = false;
-            _loc4_ = false;
-            if(this.ammunitionPanelInject.visible && _loc1_ != null && _loc2_ != null)
+            _loc2_ = false;
+            if(this.ammunitionPanelInject.visible)
             {
-               _loc5_ = _loc2_.x + _loc2_.width - _loc1_.x;
-               _loc6_ = this.ammunitionPanelInject.width - _loc5_ >> 1;
-               _loc3_ = Math.abs(_loc6_ - _loc1_.x) <= 1;
-               _loc4_ = this.ammunitionPanelInject.x + _loc2_.x + _loc2_.width + AMMUNITION_PANEL_INJECT_OFFSET_RIGHT > this._eventsEntryContainer.x;
+               _loc2_ = this.ammunitionPanelInject.x + _loc1_.x + _loc1_.width + AMMUNITION_PANEL_INJECT_OFFSET_RIGHT > this._eventsEntryContainer.x;
             }
-            if(_loc3_ && _loc4_)
+            if(_loc2_)
             {
-               this._eventsEntryContainer.y -= _loc2_.y + (_loc2_.height >> 1);
+               this._eventsEntryContainer.y -= _loc1_.y + (_loc1_.height >> 1);
             }
             else
             {
@@ -977,12 +885,6 @@ package net.wg.gui.lobby.hangar
          }
       }
       
-      private function resetWidgetFields() : void
-      {
-         this._header = null;
-         this._epicBattlesWdgt = null;
-      }
-      
       private function updateCloseBtnPos() : void
       {
          this.closeBtn.x = _width - this.closeBtn.actualWidth + ROYALE_CLOSE_BTN_RIGHT_OFFSET ^ 0;
@@ -1035,19 +937,6 @@ package net.wg.gui.lobby.hangar
       {
          this._tweenTeaser = null;
          this._teaserX = this.teaser.x;
-      }
-      
-      private function getHeaderElement(param1:String) : DisplayObject
-      {
-         switch(param1)
-         {
-            case HANGAR_ALIASES.HEADER:
-               return this._header;
-            case HANGAR_ALIASES.EPIC_WIDGET:
-               return this._epicBattlesWdgt;
-            default:
-               return null;
-         }
       }
       
       private function updateParamsPosition() : void
@@ -1103,11 +992,6 @@ package net.wg.gui.lobby.hangar
          if(this.switchModePanel.visible)
          {
             this.switchModePanel.y = _loc1_;
-         }
-         if(this._epicBattlesWdgt != null)
-         {
-            this._epicBattlesWdgt.x = _width >> 1;
-            this._epicBattlesWdgt.y = _loc1_;
          }
          if(this.switchModePanel.visible)
          {

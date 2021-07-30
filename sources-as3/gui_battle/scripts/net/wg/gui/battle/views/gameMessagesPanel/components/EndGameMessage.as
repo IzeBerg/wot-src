@@ -18,6 +18,11 @@ package net.wg.gui.battle.views.gameMessagesPanel.components
          super();
       }
       
+      public function layoutMessage(param1:Function) : void
+      {
+         param1(this.textfields.titleTF);
+      }
+      
       override public function getID() : int
       {
          return this._msgDataVO.reason;

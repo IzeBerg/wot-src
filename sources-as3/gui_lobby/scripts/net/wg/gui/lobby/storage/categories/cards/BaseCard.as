@@ -11,6 +11,7 @@ package net.wg.gui.lobby.storage.categories.cards
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
    import net.wg.data.constants.Linkages;
+   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.CURRENCIES_CONSTANTS;
    import net.wg.data.constants.generated.SLOT_HIGHLIGHT_TYPES;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
@@ -24,6 +25,7 @@ package net.wg.gui.lobby.storage.categories.cards
    import net.wg.gui.components.controls.VO.CompoundPriceVO;
    import net.wg.gui.components.controls.VO.PriceVO;
    import net.wg.gui.components.controls.scroller.IScrollerItemRenderer;
+   import net.wg.gui.components.controls.scroller.data.ScrollerItemRendererSize;
    import net.wg.gui.lobby.storage.categories.cards.configs.CardConfigs;
    import net.wg.gui.lobby.storage.categories.cards.configs.CardImageSizeVO;
    import net.wg.gui.lobby.storage.categories.cards.configs.CardSizeVO;
@@ -481,50 +483,6 @@ package net.wg.gui.lobby.storage.categories.cards
          }
       }
       
-      private function drawTooltipHitArea() : void
-      {
-         var _loc2_:int = 0;
-         if(this._tooltipHitArea == null)
-         {
-            this._tooltipHitArea = new Sprite();
-            this._tooltipHitArea.name = TOOLTIP_HIT_AREA_NAME;
-            this._tooltipHitArea.buttonMode = this._data.enabled;
-            this._tooltipHitArea.addEventListener(MouseEvent.ROLL_OVER,this.onTooltipHitAreaRollOver);
-            this._tooltipHitArea.addEventListener(MouseEvent.ROLL_OUT,this.onTooltipHitAreaRollOut);
-            _loc2_ = getChildIndex(this.upgradeButton || this.sellButton);
-            addChildAt(this._tooltipHitArea,_loc2_);
-         }
-         var _loc1_:Graphics = this._tooltipHitArea.graphics;
-         _loc1_.clear();
-         _loc1_.beginFill(0,0);
-         _loc1_.drawRect(0,0,width,height);
-         _loc1_.endFill();
-      }
-      
-      protected function onTooltipHitAreaRollOver(param1:MouseEvent) : void
-      {
-         if(this.hasAction && this._data.enabled)
-         {
-            this.showDiscountTooltip();
-         }
-      }
-      
-      protected function onTooltipHitAreaRollOut(param1:MouseEvent) : void
-      {
-         App.toolTipMgr.hide();
-      }
-      
-      private function disposeTooltipHitArea() : void
-      {
-         if(this._tooltipHitArea)
-         {
-            this._tooltipHitArea.removeEventListener(MouseEvent.ROLL_OVER,this.onTooltipHitAreaRollOver);
-            this._tooltipHitArea.removeEventListener(MouseEvent.ROLL_OUT,this.onTooltipHitAreaRollOut);
-            removeChild(this._tooltipHitArea);
-            this._tooltipHitArea = null;
-         }
-      }
-      
       public function canPlaySound(param1:String) : Boolean
       {
          return true;
@@ -775,6 +733,51 @@ package net.wg.gui.lobby.storage.categories.cards
          this._tweens.length = 0;
       }
       
+      protected function setData(param1:BaseCardVO) : void
+      {
+         if(this.extraParams)
+         {
+            this.updateExtraParamsLayout();
+            this.extraParams.dataProvider = param1.extraParams;
+         }
+         if(this.specialization)
+         {
+            this.specialization.dataProvider = param1.specializations;
+         }
+         this._data = param1;
+      }
+      
+      private function drawTooltipHitArea() : void
+      {
+         var _loc2_:int = 0;
+         if(this._tooltipHitArea == null)
+         {
+            this._tooltipHitArea = new Sprite();
+            this._tooltipHitArea.name = TOOLTIP_HIT_AREA_NAME;
+            this._tooltipHitArea.buttonMode = this._data.enabled;
+            this._tooltipHitArea.addEventListener(MouseEvent.ROLL_OVER,this.onTooltipHitAreaRollOver);
+            this._tooltipHitArea.addEventListener(MouseEvent.ROLL_OUT,this.onTooltipHitAreaRollOut);
+            _loc2_ = getChildIndex(this.upgradeButton || this.sellButton);
+            addChildAt(this._tooltipHitArea,_loc2_);
+         }
+         var _loc1_:Graphics = this._tooltipHitArea.graphics;
+         _loc1_.clear();
+         _loc1_.beginFill(0,0);
+         _loc1_.drawRect(0,0,width,height);
+         _loc1_.endFill();
+      }
+      
+      private function disposeTooltipHitArea() : void
+      {
+         if(this._tooltipHitArea)
+         {
+            this._tooltipHitArea.removeEventListener(MouseEvent.ROLL_OVER,this.onTooltipHitAreaRollOver);
+            this._tooltipHitArea.removeEventListener(MouseEvent.ROLL_OUT,this.onTooltipHitAreaRollOut);
+            removeChild(this._tooltipHitArea);
+            this._tooltipHitArea = null;
+         }
+      }
+      
       private function createUpgradeButton() : void
       {
          var _loc1_:int = 0;
@@ -811,9 +814,22 @@ package net.wg.gui.lobby.storage.categories.cards
          }
       }
       
-      private function get hasAction() : Boolean
+      private function updateExtraParamsLayout() : void
       {
-         return this._data != null && this._data.price && this._data.price.action != null;
+         var _loc1_:int = 0;
+         if(this.extraParams)
+         {
+            _loc1_ = this._sizeVO.size.width < CARD_SMALL_WIDTH ? int(EXTRA_PARAMS_SMALL_CARD_MAX_NUM) : int(EXTRA_PARAMS_BIG_CARD_MAX_NUM);
+            this.extraParams.setMaxTextLines(_loc1_);
+            this.extraParams.setMaxTextWidth(this._sizeVO.innerPadding.width >> 0);
+         }
+      }
+      
+      private function showDiscountTooltip() : void
+      {
+         var _loc1_:CompoundPriceVO = this._data.price.price;
+         var _loc2_:CompoundPriceVO = this._data.price.defPrice;
+         App.toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.ACTION_PRICE,null,TOOLTIP_ACTION_PRICE_FIELD_NAME_ITEM,this._data.id,[_loc1_.getPriceValueByName(CURRENCIES_CONSTANTS.CREDITS),_loc1_.getPriceValueByName(CURRENCIES_CONSTANTS.GOLD),_loc1_.getPriceValueByName(CURRENCIES_CONSTANTS.CRYSTAL)],[_loc2_.getPriceValueByName(CURRENCIES_CONSTANTS.CREDITS),_loc2_.getPriceValueByName(CURRENCIES_CONSTANTS.GOLD),_loc2_.getPriceValueByName(CURRENCIES_CONSTANTS.CRYSTAL)],false,true,-1);
       }
       
       public function get index() : uint
@@ -860,37 +876,44 @@ package net.wg.gui.lobby.storage.categories.cards
          invalidateData();
       }
       
-      protected function setData(param1:BaseCardVO) : void
-      {
-         if(this.extraParams)
-         {
-            this.updateExtraParamsLayout();
-            this.extraParams.dataProvider = param1.extraParams;
-         }
-         if(this.specialization)
-         {
-            this.specialization.dataProvider = param1.specializations;
-         }
-         this._data = param1;
-      }
-      
-      private function updateExtraParamsLayout() : void
-      {
-         var _loc1_:int = 0;
-         if(this.extraParams)
-         {
-            _loc1_ = this._sizeVO.size.width < CARD_SMALL_WIDTH ? int(EXTRA_PARAMS_SMALL_CARD_MAX_NUM) : int(EXTRA_PARAMS_BIG_CARD_MAX_NUM);
-            this.extraParams.setMaxTextLines(_loc1_);
-            this.extraParams.setMaxTextWidth(this._sizeVO.innerPadding.width >> 0);
-         }
-      }
-      
       public function set tooltipDecorator(param1:ITooltipMgr) : void
       {
       }
       
       public function set isViewPortEnabled(param1:Boolean) : void
       {
+      }
+      
+      public function get rowsCount() : int
+      {
+         return Values.ZERO;
+      }
+      
+      public function set rowsCount(param1:int) : void
+      {
+      }
+      
+      public function get adaptiveSize() : String
+      {
+         return ScrollerItemRendererSize.NORMAL_SIZE;
+      }
+      
+      private function get hasAction() : Boolean
+      {
+         return this._data != null && this._data.price && this._data.price.action != null;
+      }
+      
+      protected function onTooltipHitAreaRollOver(param1:MouseEvent) : void
+      {
+         if(this.hasAction && this._data.enabled)
+         {
+            this.showDiscountTooltip();
+         }
+      }
+      
+      protected function onTooltipHitAreaRollOut(param1:MouseEvent) : void
+      {
+         App.toolTipMgr.hide();
       }
       
       protected function onClick(param1:MouseEvent) : void
@@ -941,13 +964,6 @@ package net.wg.gui.lobby.storage.categories.cards
       private function onClickHandler(param1:MouseEvent) : void
       {
          this.onClick(param1);
-      }
-      
-      private function showDiscountTooltip() : void
-      {
-         var _loc1_:CompoundPriceVO = this._data.price.price;
-         var _loc2_:CompoundPriceVO = this._data.price.defPrice;
-         App.toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.ACTION_PRICE,null,TOOLTIP_ACTION_PRICE_FIELD_NAME_ITEM,this._data.id,[_loc1_.getPriceValueByName(CURRENCIES_CONSTANTS.CREDITS),_loc1_.getPriceValueByName(CURRENCIES_CONSTANTS.GOLD),_loc1_.getPriceValueByName(CURRENCIES_CONSTANTS.CRYSTAL)],[_loc2_.getPriceValueByName(CURRENCIES_CONSTANTS.CREDITS),_loc2_.getPriceValueByName(CURRENCIES_CONSTANTS.GOLD),_loc2_.getPriceValueByName(CURRENCIES_CONSTANTS.CRYSTAL)],false,true,-1);
       }
    }
 }

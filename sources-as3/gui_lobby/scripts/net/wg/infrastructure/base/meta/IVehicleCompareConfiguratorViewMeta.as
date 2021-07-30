@@ -39,5 +39,7 @@ package net.wg.infrastructure.base.meta
       function as_setTopModulesSelected(param1:Boolean) : void;
       
       function as_setCrewLevelIndex(param1:int) : void;
+      
+      function as_setIsPostProgressionEnabled(param1:Boolean) : void;
    }
 }

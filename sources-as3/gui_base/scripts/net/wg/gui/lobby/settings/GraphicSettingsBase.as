@@ -61,6 +61,8 @@ package net.wg.gui.lobby.settings
       
       public var tripleBufferedCheckbox:CheckBox = null;
       
+      public var igbHardwareAccelerationCheckbox:CheckBox = null;
+      
       public var interfaceScaleLabel:LabelControl = null;
       
       public var interfaceScaleDropDown:DropdownMenu = null;
@@ -233,6 +235,7 @@ package net.wg.gui.lobby.settings
          this.refreshRateDropDown = null;
          this.vertSyncCheckbox = null;
          this.tripleBufferedCheckbox = null;
+         this.igbHardwareAccelerationCheckbox = null;
          this.interfaceScaleLabel = null;
          this.interfaceScaleDropDown = null;
          this.gammaLabel = null;
@@ -343,6 +346,7 @@ package net.wg.gui.lobby.settings
          registerToolTip(this.screenModeDropDown,SettingsConfigHelper.SCREEN_MODE);
          registerToolTip(this.vertSyncCheckbox,SettingsConfigHelper.VERTICAL_SYNC);
          registerToolTip(this.tripleBufferedCheckbox,SettingsConfigHelper.TRIPLE_BUFFERED);
+         registerToolTip(this.igbHardwareAccelerationCheckbox,SettingsConfigHelper.IGB_HARDWARE_ACCELERATION);
          registerToolTip(this.isColorBlindCheckbox,SettingsConfigHelper.IS_COLOR_BLIND);
          registerToolTip(this.fovRangeSlider,SettingsConfigHelper.FOV);
          registerToolTip(this.fovLabel,SettingsConfigHelper.FOV);
@@ -401,6 +405,7 @@ package net.wg.gui.lobby.settings
          this.refreshRateDropDown = this.screenForm.refreshRateDropDown;
          this.vertSyncCheckbox = this.screenForm.vertSyncCheckbox;
          this.tripleBufferedCheckbox = this.screenForm.tripleBufferedCheckbox;
+         this.igbHardwareAccelerationCheckbox = this.screenForm.igbHardwareAccelerationCheckbox;
          this.interfaceScaleLabel = this.screenForm.interfaceScaleLabel;
          this.interfaceScaleDropDown = this.screenForm.interfaceScaleDropDown;
          this.gammaLabel = this.screenForm.gammaLabel;

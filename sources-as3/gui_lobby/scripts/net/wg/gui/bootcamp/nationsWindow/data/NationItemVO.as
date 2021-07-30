@@ -16,6 +16,8 @@ package net.wg.gui.bootcamp.nationsWindow.data
       
       public var icon:String = "";
       
+      public var isPromo:Boolean = false;
+      
       public function NationItemVO(param1:Object)
       {
          super(param1);

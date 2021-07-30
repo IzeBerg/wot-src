@@ -3,52 +3,57 @@
 	<item>
 		<identifier>cooldownTime</identifier>
 		<name>#epic_battle:abilityInfo/params/common/cooldownTime</name>
-		<renderer>DescDirectSecondsTextParam</renderer>
+		<renderer>DirectSecondsTextParam</renderer>
 	</item>
 	<item>
 		<identifier>delay</identifier>
 		<name>#epic_battle:abilityInfo/params/common/delay</name>
-		<renderer>DescDirectSecondsTextParam</renderer>
+		<renderer>DirectSecondsTextParam</renderer>
+	</item>
+	<item>
+		<identifier>delay-recon</identifier>
+		<name>#epic_battle:abilityInfo/params/recon/delay</name>
+		<renderer>DirectSecondsTextParam</renderer>
 	</item>
 	<item>
 		<identifier>areaRadius</identifier>
 		<name>#epic_battle:abilityInfo/params/artillery/areaRadius</name>
-		<renderer>DescDirectMetersTextParam</renderer>
+		<renderer>DirectMetersTextParam</renderer>
 	</item>
 	<item>
 		<identifier>shotsNumber</identifier>
 		<name>#epic_battle:abilityInfo/params/artillery/shotsNumber</name>
-		<renderer>AscDirectNumericDeltaBarParam</renderer>
+		<renderer>DirectNumericTextParam</renderer>
 	</item>
 	<item>
 		<identifier>duration-inspire</identifier>
 		<name>#epic_battle:abilityInfo/params/inspire/duration</name>
-		<renderer>AscDirectSecondsDeltaBarParam</renderer>
+		<renderer>DirectSecondsTextParam</renderer>
 	</item>
 	<item>
 		<identifier>duration-artillery</identifier>
 		<name>#epic_battle:abilityInfo/params/artillery/duration</name>
-		<renderer>AscDirectSecondsDeltaBarParam</renderer>
+		<renderer>DirectSecondsTextParam</renderer>
 	</item>
 	<item>
 		<identifier>areaLength_areaWidth-targetedArea</identifier>
 		<name>#epic_battle:abilityInfo/params/smoke/targetedArea</name>
-		<renderer>AscMultiMetersTextParam</renderer>
+		<renderer>MultiMetersTextParam</renderer>
 	</item>
 	<item>
 		<identifier>areaLength_areaWidth-dropArea</identifier>
 		<name>#epic_battle:abilityInfo/params/airstrike/dropArea</name>
-		<renderer>AscMultiMetersTextParam</renderer>
+		<renderer>MultiMetersTextParam</renderer>
 	</item>
 	<item>
 		<identifier>bombsNumber</identifier>
 		<name>#epic_battle:abilityInfo/params/airstrike/bombsNumber</name>
-		<renderer>AscDirectNumericDeltaBarParam</renderer>
+		<renderer>DirectNumericTextParam</renderer>
 	</item>
 	<item>
 		<identifier>shellCompactDescr</identifier>
 		<name>#epic_battle:abilityInfo/params/airstrike/stun</name>
-		<renderer>AscShellStunSecondsDeltaBarParam</renderer>
+		<renderer>ShellStunSecondsTextParam</renderer>
 	</item>
 	<item>
 		<identifier>#epic_battle:abilityInfo/params/recon/revealedArea/value</identifier>
@@ -56,58 +61,133 @@
 		<renderer>FixedTextParam</renderer>
 	</item>
 	<item>
-		<identifier>spottingDuration</identifier>
+		<identifier>entitiesToSearch/Vehicle/spottingDuration</identifier>
 		<name>#epic_battle:abilityInfo/params/recon/spottingDuration</name>
-		<renderer>AscDirectSecondsDeltaBarParam</renderer>
+		<renderer>NestedSecondsTextParam</renderer>
 	</item>
 	<item>
 		<identifier>minDelay</identifier>
 		<name>#epic_battle:abilityInfo/params/common/delay</name>
-		<renderer>DescDirectSecondsTextParam</renderer>
+		<renderer>DirectSecondsTextParam</renderer>
 	</item>
 	<item>
 		<identifier>projectilesNumber</identifier>
 		<name>#epic_battle:abilityInfo/params/smoke/projectilesNumber</name>
-		<renderer>AscDirectNumericTextParam</renderer>
+		<renderer>DirectNumericTextParam</renderer>
 	</item>
 	<item>
 		<identifier>totalDuration</identifier>
 		<name>#epic_battle:abilityInfo/params/smoke/totalDuration</name>
-		<renderer>AscDirectSecondsDeltaBarParam</renderer>
+		<renderer>DirectSecondsTextParam</renderer>
 	</item>
 	<item>
 		<identifier>radius</identifier>
 		<name>#epic_battle:abilityInfo/params/inspire/radius</name>
-		<renderer>DescDirectMetersTextParam</renderer>
-	</item>
-	<item>
-		<identifier>crewIncreaseFactor</identifier>
-		<name>#epic_battle:abilityInfo/params/inspire/crewIncreaseFactor</name>
-		<renderer>AscDirectPercentageDeltaBarParam</renderer>
+		<renderer>DirectMetersTextParam</renderer>
 	</item>
 	<item>
 		<identifier>inactivationDelay</identifier>
 		<name>#epic_battle:abilityInfo/params/inspire/inactivationDelay</name>
-		<renderer>AscDirectSecondsTextParam</renderer>
+		<renderer>DirectSecondsTextParam</renderer>
+	</item>
+	<item>
+		<identifier>increaseFactors/crewRolesFactor</identifier>
+		<name>#epic_battle:abilityInfo/params/inspire/crewRolesFactor</name>
+		<renderer>MulNestedPercentageTextParam</renderer>
+	</item>
+	<item>
+		<identifier>selfIncreaseFactors/crewRolesFactor</identifier>
+		<name>#epic_battle:abilityInfo/params/inspire/selfIncreaseFactors</name>
+		<renderer>MulNestedPercentageTextParam</renderer>
 	</item>
 	<item>
 		<identifier>resupplyCooldownFactor</identifier>
 		<name>#epic_battle:abilityInfo/params/passive_engineering/resupplyCooldownFactor</name>
-		<renderer>AscReciprocalPercentageDeltaBarParam</renderer>
-	</item>
-	<item>
-		<identifier>resupplyHealthPointsFactor</identifier>
-		<name>#epic_battle:abilityInfo/params/passive_engineering/resupplyHealthPointsFactor</name>
-		<renderer>AscDirectPercentageDeltaBarParam</renderer>
-	</item>
-	<item>
-		<identifier>captureSpeedFactor</identifier>
-		<name>#epic_battle:abilityInfo/params/passive_engineering/captureSpeedFactor</name>
-		<renderer>AscDirectPercentageDeltaBarParam</renderer>
+		<renderer>MulReciprocalPercentageTextParam</renderer>
 	</item>
 	<item>
 		<identifier>captureBlockBonusTime</identifier>
 		<name>#epic_battle:abilityInfo/params/passive_engineering/captureBlockBonusTime</name>
-		<renderer>AscDirectAdditionalSecondsDeltaBarParam</renderer>
+		<renderer>DirectSecondsTextParam</renderer>
+	</item>
+	<item>
+		<identifier>captureSpeedFactor</identifier>
+		<name>#epic_battle:abilityInfo/params/passive_engineering/captureSpeedFactor</name>
+		<renderer>MulDirectPercentageTextParam</renderer>
+	</item>
+	<item>
+		<identifier>resupplyShellsFactor</identifier>
+		<name>#epic_battle:abilityInfo/params/passive_engineering/resupplyShellsFactor</name>
+		<renderer>MulDirectPercentageTextParam</renderer>
+	</item>
+	<item>
+		<identifier>passiveCircularVisionRadius</identifier>
+		<name>#epic_battle:abilityInfo/params/stealth_radar/passiveCircularVisionRadius</name>
+		<renderer>DirectMetersTextParam</renderer>
+	</item>
+	<item>
+		<identifier>duration-stealth_radar</identifier>
+		<name>#epic_battle:abilityInfo/params/stealth_radar/duration</name>
+		<renderer>DirectSecondsTextParam</renderer>
+	</item>
+	<item>
+		<identifier>increaseFactors/demaskFoliageFactor</identifier>
+		<name>#epic_battle:abilityInfo/params/stealth_radar/demaskFoliageFactor</name>
+		<renderer>MulNestedPercentageTextParam</renderer>
+	</item>
+	<item>
+		<identifier>increaseFactors/demaskMovingFactor</identifier>
+		<name>#epic_battle:abilityInfo/params/stealth_radar/demaskMovingFactor</name>
+		<renderer>MulNestedPercentageTextParam</renderer>
+	</item>
+	<item>
+		<identifier>overridableFactors/invisibility</identifier>
+		<name>#epic_battle:abilityInfo/params/stealth_radar/invisibilityAdditiveTerm</name>
+		<renderer>AddNestedPercentageTextParam</renderer>
+	</item>
+	<item>
+		<identifier>healTime</identifier>
+		<name>#epic_battle:abilityInfo/params/fl_regenerationKit/healTime</name>
+		<renderer>DirectSecondsTextParam</renderer>
+	</item>
+	<item>
+		<identifier>healthRegenPerTick</identifier>
+		<name>#epic_battle:abilityInfo/params/fl_regenerationKit/healthRegenPerTick</name>
+		<renderer>AddDirectPercentageTextParam</renderer>
+	</item>
+	<item>
+		<identifier>initialHeal</identifier>
+		<name>#epic_battle:abilityInfo/params/fl_regenerationKit/initialHeal</name>
+		<renderer>AddDirectPercentageTextParam</renderer>
+	</item>
+	<item>
+		<identifier>resupplyHealthPointsFactor</identifier>
+		<name>#epic_battle:abilityInfo/params/fl_regenerationKit/resupplyHealthPointsFactor</name>
+		<renderer>MulDirectPercentageTextParam</renderer>
+	</item>
+	<item>
+		<identifier>mineParams/lifetime</identifier>
+		<name>#epic_battle:abilityInfo/params/arcade_minefield_epic_battle/lifetime</name>
+		<renderer>NestedSecondsTextParam</renderer>
+	</item>
+	<item>
+		<identifier>mineParams/shell</identifier>
+		<name>#epic_battle:abilityInfo/params/arcade_minefield_epic_battle/shell</name>
+		<renderer>NestedShellStunSecondsTextParam</renderer>
+	</item>
+	<item>
+		<identifier>bombsNumber-minefield</identifier>
+		<name>#epic_battle:abilityInfo/params/arcade_minefield_epic_battle/bombsNumber</name>
+		<renderer>DirectNumericTextParam</renderer>
+	</item>
+	<item>
+		<identifier>visionRadiusFactor</identifier>
+		<name>#epic_battle:abilityInfo/params/smoke/visionRadiusFactor</name>
+		<renderer>MulDirectPercentageTextParam</renderer>
+	</item>
+	<item>
+		<identifier>#epic_battle:abilityInfo/params/fl_regenerationKit/minesDamageReduceFactor/value</identifier>
+		<name>#epic_battle:abilityInfo/params/fl_regenerationKit/minesDamageReduceFactor</name>
+		<renderer>FixedTextParam</renderer>
 	</item>
 </root>

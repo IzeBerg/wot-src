@@ -33,7 +33,13 @@ package
       
       public static const MAPS_ICONS_DEMOUNTKIT_BG:String = "../maps/icons/demountKit/bg.png";
       
+      public static const MAPS_ICONS_EPICBATTLES_SKILLS_INTRO_BG:String = "../maps/icons/epicBattles/skills/intro/bg.png";
+      
       public static const MAPS_ICONS_MAPBOX_BG:String = "../maps/icons/mapbox/bg.png";
+      
+      public static const MAPS_ICONS_MAPSTRAINING_BG:String = "../maps/icons/mapsTraining/bg.png";
+      
+      public static const MAPS_ICONS_MAPSTRAINING_MINIMAP_BG:String = "../maps/icons/mapsTraining/minimap/bg.png";
       
       public static const MAPS_ICONS_PREMACC_DASHBOARD_HEADER_BADGESLOT_BG:String = "../maps/icons/premacc/dashboard/header/badgeSlot/bg.png";
       
@@ -42,6 +48,8 @@ package
       public static const MAPS_ICONS_TANKMEN_ROLES_BIG_DOG:String = "../maps/icons/tankmen/roles/big/dog.png";
       
       public static const MAPS_ICONS_TANKMEN_SKILLS_BIG_NEW_SKILL:String = "../maps/icons/tankmen/skills/big/new_skill.png";
+      
+      public static const MAPS_UIKIT_DIALOG_TEMPLATES_SELECT_OPTION_BG:String = "../maps/uiKit/dialog_templates/select_option/bg.png";
        
       
       public function RES_COMMON()

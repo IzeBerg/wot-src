@@ -20,7 +20,7 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.league
       
       private static const ICON_TEXT_GAP_WIDE:int = 25;
       
-      private static const ICON_TEXT_GAP_NORMAL:int = -5;
+      private static const ICON_TEXT_GAP_NORMAL:int = 15;
       
       private static const CONTENT_PADDING_WIDE:int = 40;
       
@@ -87,7 +87,12 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.league
       override protected function configUI() : void
       {
          super.configUI();
+         this.hitMc.buttonMode = true;
+         this.hitMc.useHandCursor = true;
          this.currentRewardTf.text = RANKED_BATTLES.REWARDSVIEW_COMMON_CURRENTREWARD;
+         this.addEventListener(MouseEvent.CLICK,this.onStyleRewardClickHandler);
+         this.addEventListener(MouseEvent.ROLL_OVER,this.onBlockRollOverHandler);
+         this.addEventListener(MouseEvent.ROLL_OUT,this.onBlockRollOutHandler);
          this.bg.x = RENDERER_INVISIBLE_WIDTH_PART >> 1;
       }
       
@@ -136,6 +141,9 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.league
       
       override protected function onBeforeDispose() : void
       {
+         this.removeEventListener(MouseEvent.CLICK,this.onStyleRewardClickHandler);
+         this.removeEventListener(MouseEvent.ROLL_OVER,this.onBlockRollOverHandler);
+         this.removeEventListener(MouseEvent.ROLL_OUT,this.onBlockRollOutHandler);
          super.onBeforeDispose();
       }
       
@@ -230,7 +238,7 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.league
          {
             return;
          }
-         dispatchEvent(new RewardsEvent(RewardsEvent.SHOW_STYLE,this._data.specialArgs[0],true));
+         dispatchEvent(new RewardsEvent(RewardsEvent.SHOW_STYLE,this._data.styleID,true));
          App.soundMgr.playControlsSnd(SoundManagerStates.SND_PRESS,SoundTypes.RANKED_BATTLES_CAMOUFLAGE_REWARD,null);
       }
       

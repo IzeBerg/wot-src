@@ -650,7 +650,8 @@ class VehiclesBonusUIPacker(BaseBonusUIPacker):
         rentBattles = bonus.getRentBattles(vehInfo)
         rentWins = bonus.getRentWins(vehInfo)
         rentSeason = bonus.getRentSeason(vehInfo)
-        isRent = rentDays or rentBattles or rentWins or rentSeason
+        rentCycle = bonus.getRentCycle(vehInfo)
+        isRent = rentDays or rentBattles or rentWins or rentSeason or rentCycle
         return cls._packVehicleBonusModel(bonus, vehInfo, isRent, vehicle)
 
     @classmethod
@@ -660,9 +661,10 @@ class VehiclesBonusUIPacker(BaseBonusUIPacker):
         rentBattles = bonus.getRentBattles(vehInfo)
         rentWins = bonus.getRentWins(vehInfo)
         rentSeason = bonus.getRentSeason(vehInfo)
+        rentCycle = bonus.getRentCycle(vehInfo)
         rentExpiryTime = cls._getRentExpiryTime(rentDays)
         return TooltipData(tooltip=None, isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.AWARD_VEHICLE, specialArgs=[
-         vehicle.intCD, tmanRoleLevel, rentExpiryTime, rentBattles, rentWins, rentSeason])
+         vehicle.intCD, tmanRoleLevel, rentExpiryTime, rentBattles, rentWins, rentSeason, rentCycle])
 
     @staticmethod
     def _getRentExpiryTime(rentDays):
@@ -740,6 +742,14 @@ class GroupsBonusUIPacker(BaseBonusUIPacker):
 
 
 class BattlePassPointsBonusPacker(SimpleBonusUIPacker):
+
+    @classmethod
+    def _packSingleBonus(cls, bonus, label):
+        model = cls._getBonusModel()
+        cls._packCommon(bonus, model)
+        model.setValue(str(bonus.getCount()))
+        model.setLabel(label)
+        return model
 
     @classmethod
     def _getToolTip(cls, bonus):

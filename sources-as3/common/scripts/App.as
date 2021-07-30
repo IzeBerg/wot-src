@@ -77,6 +77,11 @@ package
          return instance.toolTipMgr;
       }
       
+      public static function get container() : DisplayObjectContainer
+      {
+         return instance.toolTipMgr.getContainer();
+      }
+      
       public static function get waiting() : IWaitingView
       {
          return instance != null ? instance.waiting : null;

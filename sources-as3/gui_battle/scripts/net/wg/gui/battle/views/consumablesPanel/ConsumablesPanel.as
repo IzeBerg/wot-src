@@ -1,5 +1,6 @@
 package net.wg.gui.battle.views.consumablesPanel
 {
+   import fl.motion.easing.Circular;
    import flash.display.DisplayObject;
    import flash.events.MouseEvent;
    import flash.geom.ColorTransform;
@@ -16,6 +17,7 @@ package net.wg.gui.battle.views.consumablesPanel
    import net.wg.infrastructure.base.meta.impl.ConsumablesPanelMeta;
    import net.wg.utils.IStageSizeDependComponent;
    import net.wg.utils.StageSizeBoundaries;
+   import scaleform.clik.motion.Tween;
    import scaleform.gfx.MouseEventEx;
    
    public class ConsumablesPanel extends ConsumablesPanelMeta implements IConsumablesPanel, IStageSizeDependComponent
@@ -43,6 +45,14 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private static const BATTLE_ROYALE_GROUP_INDEXES:Vector.<uint> = new <uint>[2,6];
       
+      private static const EPIC_BATTLE_GROUP_GAP:int = 10;
+      
+      private static const EPIC_BATTLE_GROUP_INDEXES:Vector.<uint> = new <uint>[6,9];
+      
+      private static const SHOW_TWEEN_DURATION:int = 300;
+      
+      private static const HIDE_OFFSET:int = 15;
+      
       protected static const INVALIDATE_DRAW_LAYOUT:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 1;
       
       protected static const INVALIDATE_POSITION:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 2;
@@ -54,9 +64,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private var _stageHeight:int = 0;
       
-      private var _renderers:Vector.<BattleButton>;
-      
-      private var _slotIdxMap:Vector.<int>;
+      private var _renderers:Vector.<IConsumablesButton>;
       
       private var _shellCurrentIdx:int = -1;
       
@@ -86,18 +94,23 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private var _basePanelWidth:Number = 0;
       
+      private var _shellButtonLinkage:String = "";
+      
+      private var _tween:Tween = null;
+      
       public function ConsumablesPanel()
       {
-         this._renderers = new Vector.<BattleButton>();
-         this._slotIdxMap = new <int>[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1];
+         this._renderers = new <IConsumablesButton>[null,null,null,null,null,null,null,null,null,null,null,null];
          this._settings = new Vector.<ConsumablesPanelSettings>();
          this._customIndexGap = new Vector.<uint>(0);
          super();
          App.stageSizeMgr.register(this);
          var _loc1_:int = getItemWidthPadding(App.appWidth);
-         this._settings[CONSUMABLES_PANEL_SETTINGS.DEFAULT_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET,_loc1_,Linkages.EQUIPMENT_BUTTON,0,null);
-         this._settings[CONSUMABLES_PANEL_SETTINGS.BIG_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET_BIG,ITEM_WIDTH_PADDING_BIG,Linkages.BC_EQUIPMENT_BUTTON,0,null);
-         this._settings[CONSUMABLES_PANEL_SETTINGS.BATTLE_ROYALE_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET,ITEM_WIDTH_PADDING,Linkages.BATTLE_ROYALE_CONSUMABLE_BUTTON,BATTLE_ROYALE_GROUP_GAP,BATTLE_ROYALE_GROUP_INDEXES);
+         this._settings[CONSUMABLES_PANEL_SETTINGS.DEFAULT_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET,_loc1_,Linkages.EQUIPMENT_BUTTON,Linkages.SHELL_BUTTON_BATTLE,0,null);
+         this._settings[CONSUMABLES_PANEL_SETTINGS.BIG_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET_BIG,ITEM_WIDTH_PADDING_BIG,Linkages.BC_EQUIPMENT_BUTTON,Linkages.SHELL_BUTTON_BATTLE,0,null);
+         this._settings[CONSUMABLES_PANEL_SETTINGS.BATTLE_ROYALE_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET,ITEM_WIDTH_PADDING,Linkages.BATTLE_ROYALE_CONSUMABLE_BUTTON,Linkages.SHELL_BUTTON_BATTLE,BATTLE_ROYALE_GROUP_GAP,BATTLE_ROYALE_GROUP_INDEXES);
+         this._settings[CONSUMABLES_PANEL_SETTINGS.MAPS_TRAINING_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET,_loc1_,Linkages.EQUIPMENT_BUTTON,Linkages.MAPS_TRAINING_SHELL_BUTTON,0,null);
+         this._settings[CONSUMABLES_PANEL_SETTINGS.EPIC_BATTLE_SETTINGS_ID] = new ConsumablesPanelSettings(CONSUMABLES_PANEL_Y_OFFSET,_loc1_,Linkages.EPIC_BATTLE_CONSUMABLE_BUTTON,Linkages.SHELL_BUTTON_BATTLE,EPIC_BATTLE_GROUP_GAP,EPIC_BATTLE_GROUP_INDEXES);
       }
       
       private static function getItemWidthPadding(param1:int) : int
@@ -123,12 +136,13 @@ package net.wg.gui.battle.views.consumablesPanel
          }
          for each(_loc1_ in this._renderers)
          {
-            _loc1_.dispose();
+            if(_loc1_ != null)
+            {
+               _loc1_.dispose();
+            }
          }
          this._renderers.splice(0,this._renderers.length);
          this._renderers = null;
-         this._slotIdxMap.splice(0,this._slotIdxMap.length);
-         this._slotIdxMap = null;
          for each(_loc2_ in this._settings)
          {
             _loc2_.dispose();
@@ -137,6 +151,7 @@ package net.wg.gui.battle.views.consumablesPanel
          this._settings = null;
          this._customIndexGap.splice(0,this._customIndexGap.length);
          this._customIndexGap = null;
+         this.clearTween();
          super.onDispose();
       }
       
@@ -178,11 +193,10 @@ package net.wg.gui.battle.views.consumablesPanel
       public function as_addEquipmentSlot(param1:int, param2:Number, param3:Number, param4:int, param5:Number, param6:Number, param7:String, param8:String, param9:int) : void
       {
          var _loc10_:IConsumablesButton = null;
-         if(this._slotIdxMap[param1] == -1)
+         if(this._renderers[param1] == null)
          {
             _loc10_ = this.createEquipmentButton();
-            this._slotIdxMap[param1] = this._renderers.length;
-            this._renderers.push(_loc10_);
+            this._renderers[param1] = _loc10_;
             addChild(DisplayObject(_loc10_));
          }
          else
@@ -202,14 +216,31 @@ package net.wg.gui.battle.views.consumablesPanel
          invalidate(INVALIDATE_DRAW_LAYOUT);
       }
       
+      public function as_updateLockedInformation(param1:int, param2:int, param3:String) : void
+      {
+         var _loc4_:IConsumablesButton = this.getRendererBySlotIdx(param1);
+         if(_loc4_)
+         {
+            _loc4_.updateLockedInformation(param2,param3);
+         }
+      }
+      
+      public function as_updateLevelInformation(param1:int, param2:int) : void
+      {
+         var _loc3_:IConsumablesButton = this.getRendererBySlotIdx(param1);
+         if(_loc3_)
+         {
+            _loc3_.updateLevelInformation(param2);
+         }
+      }
+      
       public function as_addOptionalDeviceSlot(param1:int, param2:Number, param3:String, param4:String, param5:Boolean, param6:int, param7:Boolean) : void
       {
          var _loc8_:BattleOptionalDeviceButton = null;
-         if(this._slotIdxMap[param1] == -1)
+         if(this._renderers[param1] == null)
          {
             _loc8_ = App.utils.classFactory.getComponent(Linkages.OPTIONAL_DEVICE_BUTTON,BattleOptionalDeviceButton);
-            this._slotIdxMap[param1] = this._renderers.length;
-            this._renderers.push(_loc8_);
+            this._renderers[param1] = _loc8_;
             addChild(_loc8_);
          }
          else
@@ -228,11 +259,10 @@ package net.wg.gui.battle.views.consumablesPanel
       public function as_addShellSlot(param1:int, param2:Number, param3:Number, param4:int, param5:Number, param6:String, param7:String, param8:String) : void
       {
          var _loc9_:IBattleShellButton = null;
-         if(this._slotIdxMap[param1] == -1)
+         if(this._renderers[param1] == null)
          {
             _loc9_ = this.createShellButton();
-            this._slotIdxMap[param1] = this._renderers.length;
-            this._renderers.push(_loc9_);
+            this._renderers[param1] = _loc9_;
             addChild(DisplayObject(_loc9_));
          }
          else
@@ -272,23 +302,50 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function as_isVisible() : Boolean
       {
-         return this._isExpand;
+         return visible;
       }
       
-      public function as_reset() : void
+      override protected function reset(param1:Array) : void
       {
-         var _loc1_:BattleButton = null;
+         var _loc3_:IConsumablesButton = null;
+         var _loc4_:int = 0;
+         var _loc5_:IConsumablesButton = null;
+         var _loc6_:int = 0;
          this._shellCurrentIdx = -1;
          this._shellNextIdx = -1;
          this.collapsePopup();
-         for each(_loc1_ in this._renderers)
+         var _loc2_:int = Boolean(param1) ? int(param1.length) : int(0);
+         if(_loc2_ == 0)
          {
-            removeChild(_loc1_);
-            _loc1_.dispose();
+            for each(_loc3_ in this._renderers)
+            {
+               if(_loc3_ != null)
+               {
+                  removeChild(DisplayObject(_loc3_));
+                  _loc3_.dispose();
+               }
+            }
+            this._renderers.splice(0,this._renderers.length);
+            this._renderers = new <IConsumablesButton>[null,null,null,null,null,null,null,null,null,null,null,null];
          }
-         this._renderers.splice(0,this._renderers.length);
-         this._slotIdxMap.splice(0,this._slotIdxMap.length);
-         this._slotIdxMap = new <int>[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1];
+         else
+         {
+            _loc4_ = 0;
+            _loc5_ = null;
+            _loc6_ = 0;
+            while(_loc6_ < _loc2_)
+            {
+               _loc4_ = param1[_loc6_];
+               _loc5_ = this.getRendererBySlotIdx(_loc4_);
+               if(_loc5_ != null)
+               {
+                  removeChild(DisplayObject(_loc5_));
+                  _loc5_.dispose();
+                  this._renderers[_loc4_] = null;
+               }
+               _loc6_++;
+            }
+         }
       }
       
       public function as_setCoolDownPosAsPercent(param1:int, param2:Number) : void
@@ -437,6 +494,7 @@ package net.wg.gui.battle.views.consumablesPanel
          this._customIndexGap.splice(0,this._customIndexGap.length);
          this._customIndexGap = _loc2_.customIndexGap;
          this._equipmentButtonLinkage = _loc2_.equipmentButtonLinkage;
+         this._shellButtonLinkage = _loc2_.shellButtonLinkage;
          invalidate(INVALIDATE_DRAW_LAYOUT);
       }
       
@@ -496,8 +554,30 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function getRendererBySlotIdx(param1:int) : IConsumablesButton
       {
-         var _loc2_:int = this._slotIdxMap[param1];
-         return _loc2_ >= 0 ? IConsumablesButton(this._renderers[_loc2_]) : null;
+         return this._renderers[param1];
+      }
+      
+      public function hide(param1:Boolean) : void
+      {
+         var _loc2_:Number = NaN;
+         this.clearTween();
+         if(param1)
+         {
+            this.updatePosition();
+            _loc2_ = y - HIDE_OFFSET;
+            this._tween = new Tween(SHOW_TWEEN_DURATION,this,{
+               "alpha":0,
+               "y":_loc2_
+            },{
+               "ease":Circular.easeIn,
+               "onComplete":this.onHideTweenCompleted
+            });
+         }
+         else
+         {
+            visible = false;
+            alpha = 0;
+         }
       }
       
       public function onButtonClick(param1:Object) : void
@@ -515,6 +595,30 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
+      public function show(param1:Boolean) : void
+      {
+         var _loc2_:Number = NaN;
+         this.clearTween();
+         visible = true;
+         if(param1)
+         {
+            this.updatePosition();
+            _loc2_ = y;
+            y += HIDE_OFFSET;
+            this._tween = new Tween(SHOW_TWEEN_DURATION,this,{
+               "alpha":1,
+               "y":_loc2_
+            },{
+               "ease":Circular.easeOut,
+               "onComplete":this.onShowTweenCompleted
+            });
+         }
+         else
+         {
+            alpha = 1;
+         }
+      }
+      
       public function updateStage(param1:Number, param2:Number) : void
       {
          this._stageWidth = param1;
@@ -529,13 +633,13 @@ package net.wg.gui.battle.views.consumablesPanel
       
       protected function createShellButton() : IBattleShellButton
       {
-         return App.utils.classFactory.getComponent(Linkages.SHELL_BUTTON_BATTLE,IBattleShellButton);
+         return App.utils.classFactory.getComponent(this._shellButtonLinkage,IBattleShellButton);
       }
       
       protected function drawLayout() : void
       {
          var _loc3_:IConsumablesButton = null;
-         var _loc1_:int = this._slotIdxMap.length;
+         var _loc1_:int = this._renderers.length;
          var _loc2_:int = 0;
          var _loc4_:uint = 0;
          while(_loc4_ < _loc1_)
@@ -544,7 +648,7 @@ package net.wg.gui.battle.views.consumablesPanel
             {
                _loc2_ += this._groupsGap;
             }
-            if(this._slotIdxMap[_loc4_] >= 0)
+            if(this._renderers[_loc4_] != null)
             {
                _loc3_ = this.getRendererBySlotIdx(_loc4_);
                if(_loc3_ && _loc3_.visible)
@@ -565,9 +669,36 @@ package net.wg.gui.battle.views.consumablesPanel
       
       protected function updatePosition() : void
       {
+         if(this._tween)
+         {
+            this._tween.onComplete(this._tween);
+         }
          x = this._stageWidth - this._basePanelWidth >> 1;
          y = this._stageHeight - this._bottomPadding;
          dispatchEvent(new ConsumablesPanelEvent(ConsumablesPanelEvent.UPDATE_POSITION));
+      }
+      
+      private function clearTween() : void
+      {
+         if(this._tween)
+         {
+            this._tween.paused = true;
+            this._tween.dispose();
+            this._tween = null;
+         }
+      }
+      
+      private function onShowTweenCompleted(param1:Tween = null) : void
+      {
+         this.clearTween();
+         alpha = 1;
+      }
+      
+      private function onHideTweenCompleted(param1:Tween = null) : void
+      {
+         this.clearTween();
+         visible = false;
+         alpha = 0;
       }
       
       private function expandPopup(param1:int, param2:Array) : void
@@ -620,7 +751,7 @@ package net.wg.gui.battle.views.consumablesPanel
          var _loc4_:uint = 0;
          while(_loc4_ < _loc3_)
          {
-            if(_loc4_ != this._slotIdxMap[this._expandedIdx])
+            if(_loc4_ != this._expandedIdx)
             {
                _loc2_ = this.getRenderer(_loc4_);
                if(_loc2_)
@@ -693,18 +824,21 @@ class ConsumablesPanelSettings implements IDisposable
    
    public var equipmentButtonLinkage:String = "";
    
-   function ConsumablesPanelSettings(param1:int, param2:int, param3:String, param4:int = 0, param5:Vector.<uint> = null)
+   public var shellButtonLinkage:String = "";
+   
+   function ConsumablesPanelSettings(param1:int, param2:int, param3:String, param4:String, param5:int = 0, param6:Vector.<uint> = null)
    {
       this.customIndexGap = new Vector.<uint>(0);
       super();
       this.bottomPadding = param1;
       this.itemPadding = param2;
-      this.groupGap = param4;
-      if(param5 != null)
+      this.groupGap = param5;
+      if(param6 != null)
       {
-         this.customIndexGap = param5;
+         this.customIndexGap = param6;
       }
       this.equipmentButtonLinkage = param3;
+      this.shellButtonLinkage = param4;
    }
    
    public final function dispose() : void

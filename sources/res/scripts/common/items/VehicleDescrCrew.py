@@ -438,3 +438,6 @@ class VehicleDescrCrew(object):
         if not hasattr(self, '_vehicle'):
             return -1
         return self._vehicle.id
+
+    def recalculateSkills(self):
+        self._skills = self._validateAndComputeCrew()

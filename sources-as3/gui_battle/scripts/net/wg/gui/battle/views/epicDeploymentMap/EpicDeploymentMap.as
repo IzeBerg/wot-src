@@ -2,6 +2,7 @@ package net.wg.gui.battle.views.epicDeploymentMap
 {
    import flash.display.Sprite;
    import flash.geom.Rectangle;
+   import net.wg.data.constants.InvalidationType;
    import net.wg.gui.battle.views.epicDeploymentMap.components.EpicDeploymentMapEntriesContainer;
    import net.wg.gui.battle.views.epicDeploymentMap.components.EpicMapContainer;
    import net.wg.gui.battle.views.epicDeploymentMap.constants.DeploymentMapConstants;
@@ -29,6 +30,8 @@ package net.wg.gui.battle.views.epicDeploymentMap
       
       public var bigBackground:UILoaderAlt = null;
       
+      private var _isVehPostProgressionEnabled:Boolean;
+      
       private var _inRespawnScreen:Boolean = false;
       
       private var _inLoadingScreen:Boolean = false;
@@ -38,6 +41,10 @@ package net.wg.gui.battle.views.epicDeploymentMap
       private var _mapWidth:int = 512;
       
       private var _mapHeight:int = 512;
+      
+      private var _originalWidth:int = 0;
+      
+      private var _originalHeight:int = 0;
       
       public function EpicDeploymentMap()
       {
@@ -92,6 +99,15 @@ package net.wg.gui.battle.views.epicDeploymentMap
          this.mapContainer.addEventListener(EpicDeploymentMapEvent.MAP_CLICKED,this.onDeploymentMapClickedHandler);
       }
       
+      override protected function draw() : void
+      {
+         super.draw();
+         if(isInvalid(InvalidationType.SIZE))
+         {
+            this.updateLayout();
+         }
+      }
+      
       public function activeInLoadingScreen(param1:Boolean, param2:int, param3:int) : void
       {
          this._inLoadingScreen = param1;
@@ -115,47 +131,55 @@ package net.wg.gui.battle.views.epicDeploymentMap
       
       public function updateStagePosition(param1:int, param2:int) : void
       {
-         var _loc4_:Number = NaN;
-         var _loc5_:Number = NaN;
-         var _loc6_:Number = NaN;
-         var _loc3_:int = param2 * MAP_SCALE;
-         if(this._inRespawnScreen)
-         {
-            _loc3_ = (param2 - DeploymentMapConstants.RESPAWN_ELEMENTS_SIZE) * DeploymentMapConstants.RESPAWN_SCALE_FACTOR;
-         }
-         else if(this._inLoadingScreen)
-         {
-            _loc3_ = NORMAL_AVAILABLE_HEIGHT;
-         }
-         _loc4_ = _loc3_ / this._mapHeight;
-         _loc5_ = _loc4_ * this._mapWidth;
-         _loc6_ = _loc4_ * this._mapHeight;
-         this.mapContainer.scaleX = _loc4_;
-         this.mapContainer.scaleY = _loc4_;
-         var _loc7_:int = _loc5_ * MAP_BACKGROUND_SCALE;
-         var _loc8_:int = _loc6_ * MAP_BACKGROUND_SCALE;
-         this.bigBackground.x = -(_loc7_ * DeploymentMapConstants.BORDER_WIDTH_PERCENTAGE) >> 0;
-         this.bigBackground.y = -(_loc8_ * DeploymentMapConstants.BORDER_WIDTH_PERCENTAGE) >> 0;
-         this.bigBackground.width = _loc7_;
-         this.bigBackground.height = _loc8_;
-         if(this._inRespawnScreen)
-         {
-            this.y = DeploymentMapConstants.SCORE_PANEL_TOP_OFFSET + ((param2 - DeploymentMapConstants.RESPAWN_ELEMENTS_SIZE) * (1 - DeploymentMapConstants.RESPAWN_SCALE_FACTOR) >> 1);
-         }
-         else if(this._inLoadingScreen)
-         {
-            this.y = (param2 - _loc6_ >> 1) - LOADING_SCREEN_Y_OFFSET;
-         }
-         else
-         {
-            this.y = param2 - _loc6_ >> 1;
-         }
-         this.x = param1 - _loc5_ >> 1;
+         this._originalWidth = param1;
+         this._originalHeight = param2;
+         invalidateSize();
       }
       
       private function updateMouseHandling() : void
       {
          mouseEnabled = mouseChildren = !this._inRespawnScreen;
+      }
+      
+      private function updateLayout() : void
+      {
+         var _loc2_:Number = NaN;
+         var _loc3_:Number = NaN;
+         var _loc4_:Number = NaN;
+         var _loc6_:int = 0;
+         var _loc1_:int = this._originalHeight * MAP_SCALE;
+         if(this._inRespawnScreen)
+         {
+            _loc1_ = (this._originalHeight - DeploymentMapConstants.RESPAWN_ELEMENTS_SIZE) * DeploymentMapConstants.RESPAWN_SCALE_FACTOR;
+         }
+         else if(this._inLoadingScreen)
+         {
+            _loc1_ = NORMAL_AVAILABLE_HEIGHT;
+         }
+         _loc2_ = _loc1_ / this._mapHeight;
+         _loc3_ = _loc2_ * this._mapWidth;
+         _loc4_ = _loc2_ * this._mapHeight;
+         this.mapContainer.scaleX = _loc2_;
+         this.mapContainer.scaleY = _loc2_;
+         var _loc5_:int = _loc3_ * MAP_BACKGROUND_SCALE;
+         _loc6_ = _loc4_ * MAP_BACKGROUND_SCALE;
+         this.bigBackground.x = -(_loc5_ * DeploymentMapConstants.BORDER_WIDTH_PERCENTAGE) >> 0;
+         this.bigBackground.y = -(_loc6_ * DeploymentMapConstants.BORDER_WIDTH_PERCENTAGE) >> 0;
+         this.bigBackground.width = _loc5_;
+         this.bigBackground.height = _loc6_;
+         if(this._inRespawnScreen)
+         {
+            this.y = DeploymentMapConstants.getScorePanelTopOffset(this._isVehPostProgressionEnabled) + ((this._originalHeight - DeploymentMapConstants.RESPAWN_ELEMENTS_SIZE) * (1 - DeploymentMapConstants.RESPAWN_SCALE_FACTOR) >> 1);
+         }
+         else if(this._inLoadingScreen)
+         {
+            this.y = (this._originalHeight - _loc4_ >> 1) - LOADING_SCREEN_Y_OFFSET;
+         }
+         else
+         {
+            this.y = this._originalHeight - _loc4_ >> 1;
+         }
+         this.x = this._originalWidth - _loc3_ >> 1;
       }
       
       override public function set visible(param1:Boolean) : void
@@ -166,6 +190,12 @@ package net.wg.gui.battle.views.epicDeploymentMap
          }
          super.visible = param1;
          dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_GRAPHICS_RECTANGLES_UPDATE));
+      }
+      
+      public function set isVehPostProgressionEnabled(param1:Boolean) : void
+      {
+         this._isVehPostProgressionEnabled = param1;
+         invalidateSize();
       }
       
       private function onDeploymentMapClickedHandler(param1:EpicDeploymentMapEvent) : void

@@ -153,6 +153,10 @@ package
       
       public static const TRIPLEBUFFERED_DESCRIPTION:String = "#settings:tripleBuffered/description";
       
+      public static const IGBHARDWAREACCELERATION:String = "#settings:igbHardwareAcceleration";
+      
+      public static const IGBHARDWAREACCELERATION_DESCRIPTION:String = "#settings:igbHardwareAcceleration/description";
+      
       public static const RENDER_PIPELINE:String = "#settings:RENDER_PIPELINE";
       
       public static const RENDER_PIPELINE_LABEL:String = "#settings:RENDER_PIPELINE/label";
@@ -363,6 +367,8 @@ package
       
       public static const GAME_BATTLELOADINGRANKEDINFO_MINIMAP:String = "#settings:game/battleLoadingRankedInfo/minimap";
       
+      public static const GAME_SWITCHEQUIPMENT:String = "#settings:game/switchEquipment";
+      
       public static const GAME_SHOWVECTORONMAP:String = "#settings:game/showVectorOnMap";
       
       public static const GAME_SHOWSECTORONMAP:String = "#settings:game/showSectorOnMap";
@@ -400,6 +406,14 @@ package
       public static const GAME_DISPLAYPLATOONMEMBERS:String = "#settings:game/displayPlatoonMembers";
       
       public static const GAME_LOGINSERVERSELECTION:String = "#settings:game/loginServerSelection";
+      
+      public static const GAME_CUSTOMIZATIONDISPLAYTYPE:String = "#settings:game/customizationDisplayType";
+      
+      public static const GAME_CUSTOMIZATIONDISPLAYTYPE_HISTORICAL:String = "#settings:game/customizationDisplayType/historical";
+      
+      public static const GAME_CUSTOMIZATIONDISPLAYTYPE_NOTHISTORICAL:String = "#settings:game/customizationDisplayType/notHistorical";
+      
+      public static const GAME_CUSTOMIZATIONDISPLAYTYPE_ALL:String = "#settings:game/customizationDisplayType/all";
       
       public static const MONITOR:String = "#settings:monitor";
       

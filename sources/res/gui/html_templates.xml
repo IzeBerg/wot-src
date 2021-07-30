@@ -306,6 +306,7 @@
 				<ally_description>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&quot;#80D63A&quot;&gt;%s&lt;/font&gt;</ally_description>
 			</settings_key_commands>
 			<not_enough_money>%(description)s&lt;br/&gt;&lt;br/&gt;_(#storage:blueprints/card/convertRequired) &lt;font color=&apos;#ff2717&apos;&gt;%(value)s&lt;/font&gt; &lt;img src=&apos;%(icon)s&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos; /&gt;</not_enough_money>
+			<not_enough_money_general>%(description)s&lt;br/&gt;&lt;br/&gt;_(#tooltips:common/notEnough)&amp;nbsp;&lt;font color=&apos;#ff2717&apos;&gt;%(value)s&lt;/font&gt; &lt;img src=&apos;%(icon)s&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos; /&gt;</not_enough_money_general>
 			<battle_type_selector>
 				<mapbox>
 					<context>
@@ -685,7 +686,6 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 		</vehicle_preview>
 		<buyConfirm>
 			<eventProgression/>
-			<vehiclePreviewEventProgressionTitle>&lt;font color=&quot;#F2F2F7&quot; face=&apos;$TitleFont&apos; size=&quot;28&quot;&gt;_(#event_progression:buyConfirm/title)&lt;/font&gt;&lt;font color=&quot;#E9E2BF&quot; face=&apos;$TitleFont&apos; size=&quot;28&quot;&gt;%(storedPoints)s&lt;/font&gt;&lt;img src=&apos;img://gui/maps/icons/epicBattles/prestigePoints/24x24.png&apos; width=&apos;24&apos; height=&apos;24&apos; vspace=&quot;-3&quot; hspace=&quot;3&quot;/&gt;</vehiclePreviewEventProgressionTitle>
 		</buyConfirm>
 		<processors>
 			<system_messages>
@@ -1261,7 +1261,6 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 					<text>_(#epic_battle:missions/primary/def/hq_additional_info)</text>
 				</defender>
 			</additionalHqMissionInfo>
-			<prestigeProgressRewardClaimed>&lt;font face=&quot;$TitleFont&quot; size=&quot;14&quot; color=&quot;#c8c8b5&quot;&gt;%(msg)s&lt;/font&gt;</prestigeProgressRewardClaimed>
 		</epicBattle>
 	</battle>
 	<socialNetworkLogin>
@@ -1272,6 +1271,7 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 	<vehicleStatus>
 		<info>&lt;font color=&quot;#80D43A&quot;&gt;%(message)s&lt;/font&gt;</info>
 		<warning>&lt;font color=&quot;#FEAB34&quot;&gt;%(message)s&lt;/font&gt;</warning>
+		<attention>&lt;font color=&quot;#FEAB34&quot;&gt;%(message)s&lt;/font&gt;</attention>
 		<critical>&lt;font color=&quot;#ff2717&quot;&gt;%(message)s&lt;/font&gt;</critical>
 		<role>&lt;font face=&quot;$FieldFont&quot; size=&quot;16&quot; color=&quot;#feab34&quot;&gt;%(message)s&lt;/font&gt;</role>
 	</vehicleStatus>
@@ -1311,4 +1311,12 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 		<roleMain>&lt;font face=&apos;$FieldFont&apos; size=&apos;16&apos; color=&apos;#feab34&apos;&gt;%(message)s&lt;/font&gt;</roleMain>
 		<roleTitle>&lt;font face=&apos;$TitleFont&apos; size=&apos;28&apos; color=&apos;#feab34&apos;&gt;%(message)s&lt;/font&gt;</roleTitle>
 	</vehicleRoles>
+	<mapsTraining>
+		<loadingScreen>
+			<waypointIcon>&lt;img src=&quot;img://gui/maps/icons/mapsTraining/waypoint.png&quot; width=&apos;18&apos; height=&apos;18&apos; vspace=&apos;-4&apos;/&gt;</waypointIcon>
+			<shootingPointIcon>&lt;img src=&quot;img://gui/maps/icons/mapsTraining/aim.png&quot; width=&apos;18&apos; height=&apos;18&apos; vspace=&apos;-4&apos;/&gt;</shootingPointIcon>
+			<heavyTank>&lt;img src=&quot;img://gui/maps/icons/mapsTraining/heavyTank.png&quot; width=&apos;24&apos; height=&apos;24&apos; vspace=&apos;-10&apos;/&gt;</heavyTank>
+			<mediumTank>&lt;img src=&quot;img://gui/maps/icons/mapsTraining/mediumTank.png&quot; width=&apos;24&apos; height=&apos;24&apos; vspace=&apos;-10&apos;/&gt;</mediumTank>
+		</loadingScreen>
+	</mapsTraining>
 </root>

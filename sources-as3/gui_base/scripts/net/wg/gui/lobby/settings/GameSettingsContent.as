@@ -69,6 +69,8 @@ package net.wg.gui.lobby.settings
       
       public var battleLoadingRankedInfoDropDown:DropdownMenu = null;
       
+      public var switchEquipmentCheckbox:CheckBox = null;
+      
       public var showCommInPlayerlistCheckbox:CheckBox = null;
       
       public var showStickyMarkersCheckbox:CheckBox = null;
@@ -115,8 +117,6 @@ package net.wg.gui.lobby.settings
       
       public var showMarksOnGunCheckbox:CheckBox = null;
       
-      public var c11nHistoricallyAccurateCheckbox:CheckBox = null;
-      
       public var displayPlatoonMembersCheckbox:CheckBox = null;
       
       public var loginServerSelectionCheckbox:CheckBox = null;
@@ -161,6 +161,10 @@ package net.wg.gui.lobby.settings
       
       public var carouselTypeButtonBar:RadioButtonBar = null;
       
+      public var customizationDisplayTypeFieldSet:FieldSet = null;
+      
+      public var customizationDisplayTypeButtonBar:RadioButtonBar = null;
+      
       public var doubleCarouselLabel:TextField = null;
       
       public var doubleCarouselTypeDropDown:DropdownMenu = null;
@@ -193,6 +197,7 @@ package net.wg.gui.lobby.settings
          this.fieldSetBattleTypes.label = SETTINGS.GAME_FIELDSET_HEADERGAMEPLAY;
          this.fieldSetMinimap.label = SETTINGS.GAME_MINIMAPGROUPTITLE;
          this.fieldSetBattleCommunication.label = SETTINGS.GAME_FIELDSET_HEADERBATTLECOMMUNICATION;
+         this.customizationDisplayTypeFieldSet.label = SETTINGS.GAME_CUSTOMIZATIONDISPLAYTYPE;
          this.hangarCamFieldSet.label = SETTINGS.GAME_HANGARCAMGROUPTITLE;
          this.enableOlFilterCheckbox.label = SETTINGS.CHAT_CENSORSHIPMESSAGES;
          this.enableSpamFilterCheckbox.label = SETTINGS.CHAT_REMOVESPAM;
@@ -242,6 +247,10 @@ package net.wg.gui.lobby.settings
          this.battleLoadingInfoLabelControl.toolTip = TOOLTIPS.BATTLELOADINGINFO;
          this.battleLoadingInfoLabelControl.infoIcoType = InfoIcon.TYPE_INFO;
          this.battleLoadingRankedInfoLabelControl.text = SETTINGS.GAME_BATTLELOADINGRANKEDINFO;
+         this.switchEquipmentCheckbox.label = SETTINGS.GAME_SWITCHEQUIPMENT;
+         this.switchEquipmentCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
+         this.switchEquipmentCheckbox.toolTip = TOOLTIPS_CONSTANTS.SETTINGS_SWITCH_EQUIPMENT;
+         this.switchEquipmentCheckbox.tooltipType = ToolTipShowType.SPECIAL;
          this.enableOpticalSnpEffectCheckbox.label = SETTINGS.GAME_ENABLEOPTICALSNPEFFECT;
          this.enablePostMortemDelayCheckbox.label = SETTINGS.GAME_ENABLEDELAYPOSTEFFECT;
          this.dynamicCameraCheckbox.label = SETTINGS.GAME_DYNAMICCAMERA;
@@ -262,9 +271,6 @@ package net.wg.gui.lobby.settings
          this.showMarksOnGunCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
          this.anonymizerCheckbox.label = SETTINGS.GAME_ANONYMIZER;
          this.anonymizerCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
-         this.c11nHistoricallyAccurateCheckbox.label = SETTINGS.GAME_C11NHISTORICALLYACCURATE;
-         this.c11nHistoricallyAccurateCheckbox.toolTip = TOOLTIPS.C11NHISTORICALLYACCURATE;
-         this.c11nHistoricallyAccurateCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
          this.displayPlatoonMembersCheckbox.label = SETTINGS.GAME_DISPLAYPLATOONMEMBERS;
          this.displayPlatoonMembersCheckbox.toolTip = TOOLTIPS.DISPLAYPLATOONMEMBERS;
          this.displayPlatoonMembersCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
@@ -322,6 +328,9 @@ package net.wg.gui.lobby.settings
          this.showDogTagToKillerCheckbox.toolTip = TOOLTIPS.SHOWDOGTAG;
          this.showDogTagToKillerCheckbox.infoIcoType = InfoIcon.TYPE_INFO;
          this.showVictimsDogTagCheckbox.label = SETTINGS.GAME_SHOWVICTIMSDOGTAG;
+         this.customizationDisplayTypeButtonBar.setInfoButton(TOOLTIPS.CUSTOMIZATIONDISPLAYTYPE_HISTORICAL,0);
+         this.customizationDisplayTypeButtonBar.setInfoButton(TOOLTIPS.CUSTOMIZATIONDISPLAYTYPE_NOTHISTORICAL,1);
+         this.customizationDisplayTypeButtonBar.setInfoButton(TOOLTIPS.CUSTOMIZATIONDISPLAYTYPE_ALL,2);
          super.configUI();
       }
       
@@ -337,6 +346,8 @@ package net.wg.gui.lobby.settings
          this.fieldSetMinimap = null;
          this.fieldSetBattleCommunication.dispose();
          this.fieldSetBattleCommunication = null;
+         this.customizationDisplayTypeFieldSet.dispose();
+         this.customizationDisplayTypeFieldSet = null;
          this.enableOlFilterCheckbox.dispose();
          this.enableOlFilterCheckbox = null;
          this.enableSpamFilterCheckbox.dispose();
@@ -389,6 +400,8 @@ package net.wg.gui.lobby.settings
          this.battleLoadingRankedInfoLabelControl = null;
          this.battleLoadingRankedInfoDropDown.dispose();
          this.battleLoadingRankedInfoDropDown = null;
+         this.switchEquipmentCheckbox.dispose();
+         this.switchEquipmentCheckbox = null;
          this.minimapAlphaSlider.dispose();
          this.minimapAlphaSlider = null;
          this.enableOpticalSnpEffectCheckbox.dispose();
@@ -427,8 +440,6 @@ package net.wg.gui.lobby.settings
          this.showDogTagToKillerCheckbox = null;
          this.showVictimsDogTagCheckbox.dispose();
          this.showVictimsDogTagCheckbox = null;
-         this.c11nHistoricallyAccurateCheckbox.dispose();
-         this.c11nHistoricallyAccurateCheckbox = null;
          this.displayPlatoonMembersCheckbox.dispose();
          this.displayPlatoonMembersCheckbox = null;
          this.loginServerSelectionCheckbox.dispose();
@@ -466,6 +477,8 @@ package net.wg.gui.lobby.settings
          this.carouselTypeFieldSet = null;
          this.carouselTypeButtonBar.dispose();
          this.carouselTypeButtonBar = null;
+         this.customizationDisplayTypeButtonBar.dispose();
+         this.customizationDisplayTypeButtonBar = null;
          this.doubleCarouselLabel = null;
          this.doubleCarouselTypeDropDown.dispose();
          this.doubleCarouselTypeDropDown = null;

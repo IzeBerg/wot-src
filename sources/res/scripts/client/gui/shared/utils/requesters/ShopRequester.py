@@ -534,6 +534,13 @@ class ShopRequester(AbstractSyncDataRequester, ShopCommonStats, IShopRequester):
         else:
             return
 
+    def customRoleSlotChangeCost(self, vehLevel, isRaw=False):
+        costs = self.getValue('customRoleSlotChangeCost', {})
+        cost = costs.get(vehLevel, {Currency.CREDITS: 6000})
+        if isRaw:
+            return cost
+        return Money(**cost)
+
     def __getDiscountsDescriptionsByTarget(self, targetType):
         return dict((discountID, item) for discountID, item in self.discounts.iteritems() if item.target.targetType == targetType and item.enabled)
 

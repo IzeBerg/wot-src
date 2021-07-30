@@ -19,6 +19,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public var onCompareClick:Function;
       
+      public var onGoToPostProgressionClick:Function;
+      
       private var _vPPageVO:VPPageVO;
       
       private var _dataProviderOrangeTabsMenuVO:DataProvider;
@@ -77,6 +79,12 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.onCompareClick,"onCompareClick" + Errors.CANT_NULL);
          this.onCompareClick();
+      }
+      
+      public function onGoToPostProgressionClickS() : void
+      {
+         App.utils.asserter.assertNotNull(this.onGoToPostProgressionClick,"onGoToPostProgressionClick" + Errors.CANT_NULL);
+         this.onGoToPostProgressionClick();
       }
       
       public final function as_setData(param1:Object) : void

@@ -9,12 +9,14 @@ package net.wg.gui.lobby.hangar.tcarousel
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.CONTEXT_MENU_HANDLER_TYPE;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
+   import net.wg.gui.components.carousels.controls.levelInfo.LevelInfoItem;
    import net.wg.gui.components.carousels.data.VehicleCarouselVO;
    import net.wg.gui.components.carousels.events.TankItemEvent;
    import net.wg.gui.components.controls.SoundButtonEx;
    import net.wg.gui.components.controls.VO.ActionPriceVO;
    import net.wg.gui.components.controls.scroller.IScrollerItemRenderer;
    import net.wg.gui.components.controls.scroller.ListRendererEvent;
+   import net.wg.gui.components.controls.scroller.data.ScrollerItemRendererSize;
    import net.wg.infrastructure.managers.ITooltipMgr;
    import org.idmedia.as3commons.util.StringUtils;
    import scaleform.gfx.MouseEventEx;
@@ -24,13 +26,19 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       private static const RANKED_BONUS_NAME:String = "rankedBonus";
       
+      private static const INFO_LEVEL_ITEM_NAME:String = "infoLevelContent";
+      
       private static const PROGRESSION_POINTS:String = "progressionPoints";
       
       private static const CAROUSEL_RANKED_BONUS_LINKAGE:String = "CarouselRankedBonusUI";
       
+      private static const LEVEL_INFO_ITEM_LINKAGE:String = "InfoLevelItemUI";
+      
       private static const LINKAGE_CAROUSEL_PROGRESSION_POINTS:String = "CarouselProgressionPointsUI";
       
       private static const PROGRESSION_POINTS_OFFSET:int = -8;
+      
+      private static const LEVEL_INFO_OFFSET:int = -10;
        
       
       public var content:BaseTankIcon = null;
@@ -40,6 +48,8 @@ package net.wg.gui.lobby.hangar.tcarousel
       public var crystalsBorder:Sprite = null;
       
       public var selectedMc:Sprite = null;
+      
+      public var hoverBg:Sprite = null;
       
       private var _index:uint = 0;
       
@@ -55,13 +65,19 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       private var _isInteractive:Boolean = false;
       
+      private var _rowCount:int = 0;
+      
       private var _rankedBonus:Sprite = null;
       
       private var _progressionPoints:CarouselProgressionPoints = null;
       
+      private var _infoLevelContent:LevelInfoItem = null;
+      
       private var _hasRankedBonus:Boolean = false;
       
       private var _hasProgression:Boolean = false;
+      
+      private var _hasLevelInfo:Boolean = false;
       
       public function TankCarouselItemRenderer()
       {
@@ -100,8 +116,10 @@ package net.wg.gui.lobby.hangar.tcarousel
          this.border = null;
          this.crystalsBorder = null;
          this.selectedMc = null;
+         this.hoverBg = null;
          this.clearRankedBonus();
          this.clearProgressionPoints();
+         this.clearInfoLevelContent();
          super.onDispose();
       }
       
@@ -137,7 +155,63 @@ package net.wg.gui.lobby.hangar.tcarousel
          this._hasProgression = !!_loc1_ ? Boolean(this._dataVO.hasProgression) : Boolean(false);
          this.updateProgressionPoints();
          this.updateInteractiveState();
-         this.content.setData(this._dataVO);
+         this._hasLevelInfo = false;
+         if(_loc1_ && this._dataVO.hasExtendedInfo)
+         {
+            this._hasLevelInfo = true;
+            this._isSpecialSlot = this._isSpecialSlot || this._dataVO.levelInfo.isCollapsible;
+         }
+         this.updateInfoLevelContent();
+         if(!_loc1_ || this._hasLevelInfo || this._dataVO.isNull)
+         {
+            this.hoverBg.visible = false;
+         }
+         if(!this._hasLevelInfo)
+         {
+            this.content.setData(this._dataVO);
+         }
+      }
+      
+      private function clearInfoLevelContent() : void
+      {
+         if(this._infoLevelContent != null)
+         {
+            this._infoLevelContent.removeEventListener(ListRendererEvent.CHANGE_SIZE,this.onInfoLevelChangeSizeHandler);
+            this._infoLevelContent.dispose();
+            removeChild(this._infoLevelContent);
+            this._infoLevelContent = null;
+         }
+      }
+      
+      private function addInfoLevelContent() : void
+      {
+         this._infoLevelContent = App.utils.classFactory.getComponent(LEVEL_INFO_ITEM_LINKAGE,LevelInfoItem);
+         this._infoLevelContent.name = INFO_LEVEL_ITEM_NAME;
+         this._infoLevelContent.addEventListener(ListRendererEvent.CHANGE_SIZE,this.onInfoLevelChangeSizeHandler);
+         this._infoLevelContent.y = this.levelInfoOffset;
+         addChildAt(this._infoLevelContent,getChildIndex(this.content));
+      }
+      
+      private function updateInfoLevelContent() : void
+      {
+         if(this._hasLevelInfo)
+         {
+            if(!this._infoLevelContent)
+            {
+               this.addInfoLevelContent();
+            }
+            this._infoLevelContent.setData(this._dataVO.levelInfo);
+            this._infoLevelContent.small = this.adaptiveSize == ScrollerItemRendererSize.SMALL_SIZE;
+            this._infoLevelContent.doubled = this._rowCount > 1;
+            this._infoLevelContent.visible = true;
+            this.content.visible = false;
+            this.border.visible = false;
+            this.crystalsBorder.visible = false;
+         }
+         else
+         {
+            this.clearInfoLevelContent();
+         }
       }
       
       private function clearProgressionPoints() : void
@@ -159,7 +233,7 @@ package net.wg.gui.lobby.hangar.tcarousel
                this._progressionPoints = App.utils.classFactory.getComponent(LINKAGE_CAROUSEL_PROGRESSION_POINTS,CarouselProgressionPoints);
                this._progressionPoints.setData(this._dataVO.progressionPoints,this._dataVO.intCD);
                this._progressionPoints.name = PROGRESSION_POINTS;
-               this._progressionPoints.x = actualWidth - this._progressionPoints.width >> 1;
+               this._progressionPoints.x = this.border.width - this._progressionPoints.width >> 1;
                this._progressionPoints.y = PROGRESSION_POINTS_OFFSET;
                addChild(this._progressionPoints);
             }
@@ -284,6 +358,30 @@ package net.wg.gui.lobby.hangar.tcarousel
          this.updateInteractiveState();
       }
       
+      public function get adaptiveSize() : String
+      {
+         return ScrollerItemRendererSize.NORMAL_SIZE;
+      }
+      
+      public function get rowsCount() : int
+      {
+         return this._rowCount;
+      }
+      
+      public function set rowsCount(param1:int) : void
+      {
+         this._rowCount = param1;
+         if(this._infoLevelContent)
+         {
+            this._infoLevelContent.doubled = this._rowCount > 1;
+         }
+      }
+      
+      protected function get levelInfoOffset() : int
+      {
+         return LEVEL_INFO_OFFSET;
+      }
+      
       protected function get dataVO() : VehicleCarouselVO
       {
          return this._dataVO;
@@ -322,12 +420,15 @@ package net.wg.gui.lobby.hangar.tcarousel
                   {
                      _loc4_ = TankItemEvent.SELECT_RESTORE_TANK;
                   }
-                  else if(this._dataVO.clickEnabled)
+                  else if(this._dataVO.clickEnabled && !this._hasLevelInfo)
                   {
                      _loc4_ = TankItemEvent.SELECT_ITEM;
                      dispatchEvent(new ListRendererEvent(ListRendererEvent.SELECT));
                   }
-                  dispatchEvent(new TankItemEvent(_loc4_,this._index));
+                  if(_loc4_ != null)
+                  {
+                     dispatchEvent(new TankItemEvent(_loc4_,this._index,true,true));
+                  }
                }
             }
             else if(_loc3_ == MouseEventEx.RIGHT_BUTTON && isUseRightBtn && !this._dataVO.buySlot && !this._dataVO.buyTank && !this._dataVO.restoreTank && !this._dataVO.isRentPromotion)
@@ -342,7 +443,7 @@ package net.wg.gui.lobby.hangar.tcarousel
       {
          this._toolTipMgr.hide();
          this.content.handleRollOut(this._dataVO);
-         if(this._hasRankedBonus && this._hasProgression)
+         if(this._hasRankedBonus && this._hasProgression && !this._hasLevelInfo)
          {
             this._rankedBonus.visible = true;
             this._progressionPoints.visible = false;
@@ -356,7 +457,7 @@ package net.wg.gui.lobby.hangar.tcarousel
          {
             return;
          }
-         if(this._hasRankedBonus && this._hasProgression)
+         if(this._hasRankedBonus && this._hasProgression && !this._hasLevelInfo)
          {
             this._rankedBonus.visible = false;
             this._progressionPoints.visible = true;
@@ -391,6 +492,11 @@ package net.wg.gui.lobby.hangar.tcarousel
       private function onDataVOChangeHandler(param1:Event) : void
       {
          this.updateData();
+      }
+      
+      private function onInfoLevelChangeSizeHandler(param1:ListRendererEvent) : void
+      {
+         dispatchEvent(param1);
       }
    }
 }

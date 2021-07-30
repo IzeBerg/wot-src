@@ -6,7 +6,7 @@ package net.wg.infrastructure.base.meta
    {
        
       
-      function videoFinishedS() : void;
+      function videoFinishedS(param1:Boolean = false) : void;
       
       function handleErrorS(param1:String) : void;
       

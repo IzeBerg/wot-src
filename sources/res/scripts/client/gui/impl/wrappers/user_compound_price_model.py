@@ -1,5 +1,4 @@
-import logging
-from typing import Tuple
+import logging, typing
 from frameworks.wulf import Array
 from gui.impl.gen.view_models.common.compound_price_model import CompoundPriceModel
 from gui.impl.gen.view_models.common.price_model import PriceModel
@@ -84,9 +83,29 @@ class BuyPriceModelBuilder(PriceModelBuilder):
     _itemsCache = dependency.descriptor(IItemsCache)
 
     @classmethod
-    def _createPriceItemModel(cls, name, value):
+    def fillPriceModel(cls, priceModel, price, action=None, defPrice=None, balance=None):
+        cls.fillPriceItemModel(priceModel.getPrice(), price, balance)
+        if action is not None:
+            cls.fillPriceItemModel(priceModel.getDiscount(), action, balance)
+            if defPrice is not None:
+                cls.fillPriceItemModel(priceModel.getDefPrice(), defPrice, balance)
+            else:
+                _logger.error('action and defPrice should be set both')
+        return
+
+    @classmethod
+    def fillPriceItemModel(cls, array, price, balance=None):
+        array.reserve(len(price))
+        for name, value in price.iteritems():
+            priceItemModel = cls._createPriceItemModel(name, value, balance)
+            array.addViewModel(priceItemModel)
+
+        array.invalidate()
+
+    @classmethod
+    def _createPriceItemModel(cls, name, value, balance=None):
         priceItemModel = super(BuyPriceModelBuilder, cls)._createPriceItemModel(name, value)
-        statsValue = cls._itemsCache.items.stats.money.get(name)
+        statsValue = cls._itemsCache.items.stats.money.get(name) if balance is None else balance.get(name)
         if statsValue is not None:
             priceItemModel.setIsEnough(statsValue >= value)
         return priceItemModel

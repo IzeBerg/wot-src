@@ -57,6 +57,8 @@ package
       
       public static const AWARD_OPTIONS_TITLE:String = "#bootcamp:award/options/title";
       
+      public static const AWARD_OPTIONS_LOCKED:String = "#bootcamp:award/options/locked";
+      
       public static const AWARD_OPTIONS_NATION_USA:String = "#bootcamp:award/options/nation/usa";
       
       public static const AWARD_OPTIONS_NATION_USA_CN:String = "#bootcamp:award/options/nation/usa_CN";
@@ -72,6 +74,34 @@ package
       public static const AWARD_OPTIONS_NATION_CHINA:String = "#bootcamp:award/options/nation/china";
       
       public static const AWARD_OPTIONS_NATION_CHINA_CN:String = "#bootcamp:award/options/nation/china_CN";
+      
+      public static const AWARD_OPTIONS_NATION_CZECH:String = "#bootcamp:award/options/nation/czech";
+      
+      public static const AWARD_OPTIONS_NATION_CZECH_CN:String = "#bootcamp:award/options/nation/czech_CN";
+      
+      public static const AWARD_OPTIONS_NATION_FRANCE:String = "#bootcamp:award/options/nation/france";
+      
+      public static const AWARD_OPTIONS_NATION_FRANCE_CN:String = "#bootcamp:award/options/nation/france_CN";
+      
+      public static const AWARD_OPTIONS_NATION_ITALY:String = "#bootcamp:award/options/nation/italy";
+      
+      public static const AWARD_OPTIONS_NATION_ITALY_CN:String = "#bootcamp:award/options/nation/italy_CN";
+      
+      public static const AWARD_OPTIONS_NATION_JAPAN:String = "#bootcamp:award/options/nation/japan";
+      
+      public static const AWARD_OPTIONS_NATION_JAPAN_CN:String = "#bootcamp:award/options/nation/japan_CN";
+      
+      public static const AWARD_OPTIONS_NATION_POLAND:String = "#bootcamp:award/options/nation/poland";
+      
+      public static const AWARD_OPTIONS_NATION_POLAND_CN:String = "#bootcamp:award/options/nation/poland_CN";
+      
+      public static const AWARD_OPTIONS_NATION_SWEDEN:String = "#bootcamp:award/options/nation/sweden";
+      
+      public static const AWARD_OPTIONS_NATION_SWEDEN_CN:String = "#bootcamp:award/options/nation/sweden_CN";
+      
+      public static const AWARD_OPTIONS_NATION_UK:String = "#bootcamp:award/options/nation/uk";
+      
+      public static const AWARD_OPTIONS_NATION_UK_CN:String = "#bootcamp:award/options/nation/uk_CN";
       
       public static const AWARD_OPTIONS_NAME_USA:String = "#bootcamp:award/options/name/usa";
       
@@ -96,6 +126,48 @@ package
       public static const AWARD_OPTIONS_DESCRIPTION_CHINA:String = "#bootcamp:award/options/description/china";
       
       public static const AWARD_OPTIONS_DESCRIPTION_CHINA_CN:String = "#bootcamp:award/options/description/china_CN";
+      
+      public static const AWARD_OPTIONS_NAME_CZECH:String = "#bootcamp:award/options/name/czech";
+      
+      public static const AWARD_OPTIONS_DESCRIPTION_CZECH:String = "#bootcamp:award/options/description/czech";
+      
+      public static const AWARD_OPTIONS_DESCRIPTION_CZECH_CN:String = "#bootcamp:award/options/description/czech_CN";
+      
+      public static const AWARD_OPTIONS_NAME_FRANCE:String = "#bootcamp:award/options/name/france";
+      
+      public static const AWARD_OPTIONS_DESCRIPTION_FRANCE:String = "#bootcamp:award/options/description/france";
+      
+      public static const AWARD_OPTIONS_DESCRIPTION_FRANCE_CN:String = "#bootcamp:award/options/description/france_CN";
+      
+      public static const AWARD_OPTIONS_NAME_ITALY:String = "#bootcamp:award/options/name/italy";
+      
+      public static const AWARD_OPTIONS_DESCRIPTION_ITALY:String = "#bootcamp:award/options/description/italy";
+      
+      public static const AWARD_OPTIONS_DESCRIPTION_ITALY_CN:String = "#bootcamp:award/options/description/italy_CN";
+      
+      public static const AWARD_OPTIONS_NAME_JAPAN:String = "#bootcamp:award/options/name/japan";
+      
+      public static const AWARD_OPTIONS_DESCRIPTION_JAPAN:String = "#bootcamp:award/options/description/japan";
+      
+      public static const AWARD_OPTIONS_DESCRIPTION_JAPAN_CN:String = "#bootcamp:award/options/description/japan_CN";
+      
+      public static const AWARD_OPTIONS_NAME_POLAND:String = "#bootcamp:award/options/name/poland";
+      
+      public static const AWARD_OPTIONS_DESCRIPTION_POLAND:String = "#bootcamp:award/options/description/poland";
+      
+      public static const AWARD_OPTIONS_DESCRIPTION_POLAND_CN:String = "#bootcamp:award/options/description/poland_CN";
+      
+      public static const AWARD_OPTIONS_NAME_SWEDEN:String = "#bootcamp:award/options/name/sweden";
+      
+      public static const AWARD_OPTIONS_DESCRIPTION_SWEDEN:String = "#bootcamp:award/options/description/sweden";
+      
+      public static const AWARD_OPTIONS_DESCRIPTION_SWEDEN_CN:String = "#bootcamp:award/options/description/sweden_CN";
+      
+      public static const AWARD_OPTIONS_NAME_UK:String = "#bootcamp:award/options/name/uk";
+      
+      public static const AWARD_OPTIONS_DESCRIPTION_UK:String = "#bootcamp:award/options/description/uk";
+      
+      public static const AWARD_OPTIONS_DESCRIPTION_UK_CN:String = "#bootcamp:award/options/description/uk_CN";
       
       public static const HINT_CAMERA_CONTROLS:String = "#bootcamp:hint/camera/controls";
       

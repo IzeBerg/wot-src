@@ -445,7 +445,6 @@ package net.wg.app.iml.base
       private function createManagers() : void
       {
          this._containersMgr = this.getNewContainerManager();
-         this._classLoaderMgr = this.getNewClassManager();
          this._loaderMgr = this.getNewLoaderManager();
          this._cacheMgr = this.getNewCacheManager();
          this._varsMgr = this.getGlobalVarsManager();

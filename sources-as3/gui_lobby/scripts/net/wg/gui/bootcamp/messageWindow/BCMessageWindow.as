@@ -147,6 +147,8 @@ package net.wg.gui.bootcamp.messageWindow
             this._contentRenderer.addEventListener(MessageViewEvent.MESSAGE_DISAPPEAR,this.onContentRendererMessageDisappearHandler);
             this._contentRenderer.addEventListener(MessageViewEvent.MESSAGE_EXECUTED,this.onContentRendererMessageExecutedHandler);
             this._contentRenderer.addEventListener(MessageViewEvent.REWARD_ANIMATION_START,this.onContentRendererRewardAnimationStartHandler);
+            this._contentRenderer.addEventListener(MessageViewEvent.REWARD_ANIMATION_STOP,this.onContentRendererRewardAnimationStopHandler);
+            this._contentRenderer.addEventListener(MessageViewEvent.UNLOCK_ANIMATION_START,this.onContentRendererUnlockAnimationStartHandler);
          }
          this._contentRenderer.setSize(App.appWidth,App.appHeight);
          this._contentRenderer.setMessageData(_loc1_);
@@ -162,6 +164,8 @@ package net.wg.gui.bootcamp.messageWindow
          this._contentRenderer.removeEventListener(MessageViewEvent.MESSAGE_DISAPPEAR,this.onContentRendererMessageDisappearHandler);
          this._contentRenderer.removeEventListener(MessageViewEvent.MESSAGE_EXECUTED,this.onContentRendererMessageExecutedHandler);
          this._contentRenderer.removeEventListener(MessageViewEvent.REWARD_ANIMATION_START,this.onContentRendererRewardAnimationStartHandler);
+         this._contentRenderer.removeEventListener(MessageViewEvent.REWARD_ANIMATION_STOP,this.onContentRendererRewardAnimationStopHandler);
+         this._contentRenderer.removeEventListener(MessageViewEvent.UNLOCK_ANIMATION_START,this.onContentRendererUnlockAnimationStartHandler);
          this.messageContainer.removeChild(DisplayObject(this._contentRenderer));
          this._contentRenderer.dispose();
          this._contentRenderer = null;
@@ -186,9 +190,9 @@ package net.wg.gui.bootcamp.messageWindow
          onMessageButtonClickedS();
       }
       
-      private function onContentRendererMessageDisappearHandler(param1:Event) : void
+      private function onContentRendererMessageDisappearHandler(param1:MessageViewEvent) : void
       {
-         onMessageDisappearS(this._renderLinkage);
+         onMessageDisappearS(this._renderLinkage,param1.id);
       }
       
       private function onContentRendererMessageExecutedHandler(param1:Event) : void
@@ -196,9 +200,20 @@ package net.wg.gui.bootcamp.messageWindow
          onMessageExecutedS(this._renderLinkage);
       }
       
-      private function onContentRendererRewardAnimationStartHandler(param1:Event) : void
+      private function onContentRendererRewardAnimationStartHandler(param1:MessageViewEvent) : void
       {
          hideBlurS();
+         onMessageAnimationStartedS(param1.id);
+      }
+      
+      private function onContentRendererUnlockAnimationStartHandler(param1:MessageViewEvent) : void
+      {
+         onMessageAnimationStartedS(param1.id);
+      }
+      
+      private function onContentRendererRewardAnimationStopHandler(param1:MessageViewEvent) : void
+      {
+         onMessageAnimationStoppedS(param1.id);
       }
       
       private function onContentRendererMessageRemovedHandler(param1:Event) : void

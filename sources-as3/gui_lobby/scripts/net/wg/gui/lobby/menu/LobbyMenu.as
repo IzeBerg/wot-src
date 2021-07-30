@@ -5,6 +5,7 @@ package net.wg.gui.lobby.menu
    import flash.display.MovieClip;
    import flash.events.MouseEvent;
    import flash.text.TextField;
+   import flash.text.TextFormatAlign;
    import flash.ui.Keyboard;
    import flash.utils.Dictionary;
    import net.wg.data.Aliases;
@@ -34,6 +35,8 @@ package net.wg.gui.lobby.menu
       private static const INVALIDATE_BUTTONS_VISIBLE:String = "buttonsVisible";
       
       private static const BACKGROUND_SIZE_FIX:int = 20;
+      
+      private static const COUNTER_OFFSET_X:int = 7;
        
       
       public var header:TextField;
@@ -182,7 +185,7 @@ package net.wg.gui.lobby.menu
       {
          var _loc4_:CountersVo = null;
          var _loc2_:ISoundButtonEx = null;
-         var _loc3_:CounterProps = new CounterProps(CounterProps.DEFAULT_OFFSET_X,0);
+         var _loc3_:CounterProps = new CounterProps(COUNTER_OFFSET_X,0,TextFormatAlign.CENTER);
          for each(_loc4_ in param1)
          {
             _loc2_ = this.getBtnByName(_loc4_.componentId);
@@ -212,6 +215,11 @@ package net.wg.gui.lobby.menu
       {
          this.bootcampBtn.label = param1;
          this.bootcampBtn.htmlIconStr = param2;
+      }
+      
+      public function as_setManualButtonIcon(param1:String) : void
+      {
+         this.manualBtn.htmlIconStr = param1;
       }
       
       public function as_setMenuState(param1:String) : void

@@ -8,6 +8,7 @@ package net.wg.gui.battle.views.vehicleMarkers
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleAnimatedStatusBaseMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleBerserkerMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleEngineerEffectMarker;
+   import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleFLBasicMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleInspireMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleInspireTargetMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleStunMarker;
@@ -17,6 +18,10 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private static const BASE_HEIGHT:int = 55;
        
+      
+      public var stealthMarker:VehicleFLBasicMarker = null;
+      
+      public var flRegenerationKitMarker:VehicleFLBasicMarker = null;
       
       public var baseEngineerMarker:VehicleEngineerEffectMarker = null;
       
@@ -52,6 +57,8 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.setupMarker(BATTLE_MARKER_STATES.HEALING_STATE,this.healMarker);
          this.setupMarker(BATTLE_MARKER_STATES.BERSERKER_STATE,this.berserkerMarker);
          this.setupMarker(BATTLE_MARKER_STATES.REPAIRING_STATE,this.recoveryMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.STEALTH_STATE,this.stealthMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.FL_REGENERATION_KIT_STATE,this.flRegenerationKitMarker);
       }
       
       override protected function configUI() : void
@@ -64,6 +71,8 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.healMarker.addEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.berserkerMarker.addEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.recoveryMarker.addEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
+         this.stealthMarker.addEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
+         this.flRegenerationKitMarker.addEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.stunMarker.setupFrameEvents();
          this.baseEngineerMarker.setupFrameEvents();
          this.inspireMarker.setupFrameEvents();
@@ -71,6 +80,8 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.healMarker.setupFrameEvents();
          this.berserkerMarker.setupFrameEvents();
          this.recoveryMarker.setupFrameEvents();
+         this.stealthMarker.setupFrameEvents();
+         this.flRegenerationKitMarker.setupFrameEvents();
       }
       
       override protected function onDispose() : void
@@ -83,6 +94,8 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.healMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.berserkerMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.recoveryMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
+         this.stealthMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
+         this.flRegenerationKitMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.baseEngineerMarker.dispose();
          this.baseEngineerMarker = null;
          this.inspireMarker.dispose();
@@ -97,6 +110,10 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.berserkerMarker = null;
          this.recoveryMarker.dispose();
          this.recoveryMarker = null;
+         this.stealthMarker.dispose();
+         this.stealthMarker = null;
+         this.flRegenerationKitMarker.dispose();
+         this.flRegenerationKitMarker = null;
          for(_loc1_ in this._statusEffectMarkers)
          {
             delete this._statusEffectMarkers[_loc1_];
@@ -119,6 +136,8 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.healMarker.setEffectColor(param1,param2);
          this.berserkerMarker.setEffectColor(param1,param2);
          this.recoveryMarker.setEffectColor(param1,param2);
+         this.stealthMarker.setEffectColor(param1,param2);
+         this.flRegenerationKitMarker.setEffectColor(param1,param2);
       }
       
       public function setSecondString(param1:String) : void

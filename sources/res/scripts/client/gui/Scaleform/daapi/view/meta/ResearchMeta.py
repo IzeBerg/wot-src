@@ -23,6 +23,12 @@ class ResearchMeta(ResearchView):
     def compareVehicle(self, itemCD):
         self._printOverrideError('compareVehicle')
 
+    def onModuleHover(self, id):
+        self._printOverrideError('onModuleHover')
+
+    def goToPostProgression(self, itemCD):
+        self._printOverrideError('goToPostProgression')
+
     def as_setDataS(self, data):
         if self._isDAAPIInited():
             return self.flashObject.as_setData(data)
@@ -50,3 +56,11 @@ class ResearchMeta(ResearchView):
     def as_setXpInfoLinkageS(self, linkage):
         if self._isDAAPIInited():
             return self.flashObject.as_setXpInfoLinkage(linkage)
+
+    def as_setPostProgressionDataS(self, data):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setPostProgressionData(data)
+
+    def as_showPostProgressionUnlockAnimationS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_showPostProgressionUnlockAnimation()

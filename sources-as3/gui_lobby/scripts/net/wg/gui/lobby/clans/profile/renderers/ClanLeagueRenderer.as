@@ -5,8 +5,10 @@ package net.wg.gui.lobby.clans.profile.renderers
    import flash.geom.Point;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
+   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.TEXT_ALIGN;
    import net.wg.gui.components.controls.scroller.IScrollerItemRenderer;
+   import net.wg.gui.components.controls.scroller.data.ScrollerItemRendererSize;
    import net.wg.gui.lobby.clans.profile.VOs.LeagueItemRendererVO;
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.interfaces.IImage;
@@ -104,31 +106,6 @@ package net.wg.gui.lobby.clans.profile.renderers
          }
       }
       
-      public function getData() : Object
-      {
-         return this._data;
-      }
-      
-      public function setData(param1:Object) : void
-      {
-         this._data = LeagueItemRendererVO(param1);
-         invalidateData();
-      }
-      
-      public function measureSize(param1:Point = null) : Point
-      {
-         return null;
-      }
-      
-      public function setListData(param1:ListData) : void
-      {
-      }
-      
-      public function update(param1:Object) : void
-      {
-         this.setData(param1);
-      }
-      
       override protected function onDispose() : void
       {
          this.img.removeEventListener(Event.CHANGE,this.onImgChangeHandler);
@@ -143,22 +120,29 @@ package net.wg.gui.lobby.clans.profile.renderers
          super.onDispose();
       }
       
-      private function onMouseOverHandler(param1:MouseEvent) : void
+      public function getData() : Object
       {
-         if(StringUtils.isNotEmpty(this._data.tooltip))
-         {
-            this._toolTipMgr.showComplex(this._data.tooltip);
-         }
+         return this._data;
       }
       
-      private function onMouseOutHandler(param1:MouseEvent) : void
+      public function measureSize(param1:Point = null) : Point
       {
-         this._toolTipMgr.hide();
+         return null;
       }
       
-      private function onImgChangeHandler(param1:Event) : void
+      public function setData(param1:Object) : void
       {
-         invalidateSize();
+         this._data = LeagueItemRendererVO(param1);
+         invalidateData();
+      }
+      
+      public function setListData(param1:ListData) : void
+      {
+      }
+      
+      public function update(param1:Object) : void
+      {
+         this.setData(param1);
       }
       
       private function updateTextFieldLayout() : void
@@ -253,6 +237,38 @@ package net.wg.gui.lobby.clans.profile.renderers
       
       public function set isViewPortEnabled(param1:Boolean) : void
       {
+      }
+      
+      public function get rowsCount() : int
+      {
+         return Values.ZERO;
+      }
+      
+      public function set rowsCount(param1:int) : void
+      {
+      }
+      
+      public function get adaptiveSize() : String
+      {
+         return ScrollerItemRendererSize.NORMAL_SIZE;
+      }
+      
+      private function onMouseOverHandler(param1:MouseEvent) : void
+      {
+         if(StringUtils.isNotEmpty(this._data.tooltip))
+         {
+            this._toolTipMgr.showComplex(this._data.tooltip);
+         }
+      }
+      
+      private function onMouseOutHandler(param1:MouseEvent) : void
+      {
+         this._toolTipMgr.hide();
+      }
+      
+      private function onImgChangeHandler(param1:Event) : void
+      {
+         invalidateSize();
       }
    }
 }

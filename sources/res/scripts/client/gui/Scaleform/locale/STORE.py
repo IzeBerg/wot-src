@@ -50,7 +50,6 @@ class STORE(object):
     CONGRATULATIONANIM_COLLECTIBLELABEL = '#store:congratulationAnim/collectibleLabel'
     CONGRATULATIONANIM_RESTORELABEL = '#store:congratulationAnim/restoreLabel'
     CONGRATULATIONANIM_SHOWPREVIEWBTNLABEL = '#store:congratulationAnim/showPreviewBtnLabel'
-    CONGRATULATIONANIM_BACKTOEPICLABEL = '#store:congratulationAnim/backToEpicLabel'
     BUYVEHICLEWINDOW_SLOT_ENUM = (
      BUYVEHICLEWINDOW_SLOT_0,
      BUYVEHICLEWINDOW_SLOT_1,

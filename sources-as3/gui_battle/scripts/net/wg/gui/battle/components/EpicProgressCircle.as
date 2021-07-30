@@ -32,9 +32,8 @@ package net.wg.gui.battle.components
       
       override public function updateProgress(param1:Number) : void
       {
-         var _loc3_:int = 0;
          var _loc2_:int = curFrame;
-         _loc3_ = param1 * SEMI_LAST_FRAME >> 0;
+         var _loc3_:int = param1 * SEMI_LAST_FRAME >> 0;
          if(_loc2_ != _loc3_ && _loc2_ == SEMI_LAST_FRAME && _loc3_ > 0)
          {
             this._capturingActive = true;

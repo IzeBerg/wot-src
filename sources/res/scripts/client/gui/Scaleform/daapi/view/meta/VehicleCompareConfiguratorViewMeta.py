@@ -62,3 +62,7 @@ class VehicleCompareConfiguratorViewMeta(VehicleCompareConfiguratorBaseView):
     def as_setCrewLevelIndexS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setCrewLevelIndex(value)
+
+    def as_setIsPostProgressionEnabledS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setIsPostProgressionEnabled(value)

@@ -304,7 +304,7 @@ package net.wg.gui.battle.views.minimap
       {
          if(param1 is MouseEventEx && param1.target == this._clickAreaSpr)
          {
-            onMinimapClickedS(this.mapHit.mouseX,this.mapHit.mouseY,MouseEventEx(param1).buttonIdx,0);
+            onMinimapClickedS(this.mapHit.mouseX,this.mapHit.mouseY,MouseEventEx(param1).buttonIdx,this._currentSizeIndex);
          }
       }
       

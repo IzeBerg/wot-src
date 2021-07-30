@@ -2,7 +2,7 @@ from gui.Scaleform.framework.entities.BaseDAAPIComponent import BaseDAAPICompone
 
 class RankedBattlesRewardsLeaguesMeta(BaseDAAPIComponent):
 
-    def onStyleClick(self, styleCD):
+    def onStyleClick(self, styleID):
         self._printOverrideError('onStyleClick')
 
     def as_setRewardsS(self, rewards):

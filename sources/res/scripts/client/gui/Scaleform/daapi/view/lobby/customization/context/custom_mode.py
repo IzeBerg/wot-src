@@ -35,6 +35,7 @@ class CustomMode(CustomizationMode):
         self.__editModeEnabled = False
         self.__storedComponent = None
         self.__storedProgressionLevel = 0
+        self.__storedProjectionDecalScale = None
         return
 
     @property
@@ -206,10 +207,12 @@ class CustomMode(CustomizationMode):
             return
         else:
             component = self.getComponentFromSlot(slotId)
-            if component is not None and component.scaleFactorId != scale:
-                component.scaleFactorId = scale
-                self._ctx.refreshOutfit()
-                self._events.onComponentChanged(slotId, False)
+            if component is not None:
+                self.__storedProjectionDecalScale = scale
+                if component.scaleFactorId != scale:
+                    component.scaleFactorId = scale
+                    self._ctx.refreshOutfit()
+                    self._events.onComponentChanged(slotId, False)
             return
 
     def changeItemProgression(self, slotId, progression):
@@ -279,6 +282,7 @@ class CustomMode(CustomizationMode):
             return False
 
     def _selectSlot(self, slotId):
+        self.__storedProjectionDecalScale = None
         if self.selectedItem is None:
             self._selectedSlot = slotId
             return True
@@ -287,6 +291,7 @@ class CustomMode(CustomizationMode):
             return False
 
     def _unselectSlot(self):
+        self.__storedProjectionDecalScale = None
         if self.selectedSlot is not None:
             self._selectedSlot = None
             return True
@@ -326,20 +331,15 @@ class CustomMode(CustomizationMode):
             modifiedSeasons = SeasonType.COMMON_SEASONS
         else:
             modifiedSeasons = tuple(season for season in SeasonType.COMMON_SEASONS if not modifiedOutfits[season].isEqual(self._originalOutfits[season]))
-        self._soundEventChecker.lockPlayingSounds()
-        yield OutfitApplier(g_currentVehicle.item, [ (self._service.getEmptyOutfit(), season) for season in modifiedSeasons ]).request()
         results = []
         requestData = []
         for season in modifiedSeasons:
             outfit = modifiedOutfits[season]
-            if outfit.isEmpty():
-                continue
             requestData.append((outfit, season))
 
         if requestData:
             result = yield OutfitApplier(g_currentVehicle.item, requestData).request()
             results.append(result)
-        self._soundEventChecker.unlockPlayingSounds()
         if self.isInited:
             self._events.onItemsBought(originalOutfits, purchaseItems, results)
         callback(self)
@@ -432,6 +432,7 @@ class CustomMode(CustomizationMode):
         prevItem = self.getItemFromSlot(slotId)
         self.__configureProjectionDecalComponentMirror(component, item, prevItem, slotId)
         self.__configureProjectionDecalComponentProgression(component, item, prevItem)
+        self.__configureProjectionDecalComponentScale(component, item)
         self.__storedProgressionLevel = component.progressionLevel
         component.preview = False
 
@@ -478,6 +479,10 @@ class CustomMode(CustomizationMode):
                 progressionLevel = 0
             component.progressionLevel = progressionLevel
             return
+
+    def __configureProjectionDecalComponentScale(self, component, item):
+        component.scaleFactorId = item.scaleFactorId if self.__storedProjectionDecalScale is None else self.__storedProjectionDecalScale
+        return
 
     def __configurePersonalNumberComponent(self, component, item):
         if not component.number:

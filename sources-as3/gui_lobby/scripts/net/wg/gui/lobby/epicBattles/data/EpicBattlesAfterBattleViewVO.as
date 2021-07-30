@@ -38,6 +38,8 @@ package net.wg.gui.lobby.epicBattles.data
       
       public var maxLvlReached:Boolean = false;
       
+      public var questPanelVisible:Boolean = false;
+      
       public function EpicBattlesAfterBattleViewVO(param1:Object = null)
       {
          super(param1);

@@ -7,6 +7,7 @@ package net.wg.gui.battle.components
    import net.wg.data.constants.generated.BATTLE_NOTIFICATIONS_TIMER_TYPES;
    import net.wg.gui.battle.components.interfaces.IStatusNotification;
    import net.wg.gui.battle.components.interfaces.IStatusNotificationCallback;
+   import net.wg.gui.battle.views.destroyTimers.ResupplyTimer;
    import net.wg.gui.battle.views.destroyTimers.SecondaryTimer;
    import net.wg.gui.battle.views.destroyTimers.data.NotificationTimerSettingVO;
    import net.wg.gui.battle.views.destroyTimers.data.StatusNotificationVO;
@@ -132,11 +133,11 @@ package net.wg.gui.battle.components
       
       override protected function setInitData(param1:StatusNotificationsPanelInitVO) : void
       {
+         var _loc3_:IStatusNotification = null;
          var _loc6_:NotificationTimerSettingVO = null;
          var _loc7_:IStatusNotificationCallback = null;
          var _loc8_:String = null;
          var _loc2_:Vector.<NotificationTimerSettingVO> = param1.settings;
-         var _loc3_:IStatusNotification = null;
          var _loc4_:Vector.<String> = null;
          var _loc5_:Vector.<IStatusNotificationCallback> = null;
          for each(_loc6_ in _loc2_)
@@ -238,7 +239,7 @@ package net.wg.gui.battle.components
                   }
                   _loc9_ = _loc8_;
                }
-               else if(!_loc7_ is SecondaryTimer || _loc7_.typeId == BATTLE_NOTIFICATIONS_TIMER_TYPES.ORANGE_ZONE || _loc7_.typeId == BATTLE_NOTIFICATIONS_TIMER_TYPES.DAMAGING_ZONE)
+               else if(!_loc7_ is SecondaryTimer && !_loc7_ is ResupplyTimer || _loc7_.typeId == BATTLE_NOTIFICATIONS_TIMER_TYPES.ORANGE_ZONE || _loc7_.typeId == BATTLE_NOTIFICATIONS_TIMER_TYPES.DAMAGING_ZONE)
                {
                   _loc7_.fullSize();
                }
@@ -306,9 +307,7 @@ package net.wg.gui.battle.components
       private function updateNotification(param1:StatusNotificationVO) : void
       {
          var _loc2_:IStatusNotification = this._notificationTimers[param1.typeID];
-         _loc2_.setStaticText(param1.title,param1.description);
-         _loc2_.updateViewID(param1.viewSubType,false);
-         _loc2_.updateRadialTimer(param1.totalTime,param1.currentTime);
+         _loc2_.updateData(param1);
       }
       
       private function hideNotification(param1:StatusNotificationVO) : void

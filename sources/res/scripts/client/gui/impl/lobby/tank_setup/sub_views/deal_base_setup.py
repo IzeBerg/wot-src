@@ -16,24 +16,27 @@ class DealBaseSetupSubView(BaseSetupSubView):
         self._updateDealPanel()
 
     @async
-    def canQuit(self):
+    def canQuit(self, skipApplyAutoRenewal=None):
         result = True
         if self._asyncActionLock.isLocked:
             raise AsyncReturn(False)
         elif self._interactor.hasChanged():
-            result = yield await(self._asyncActionLock.tryAsyncCommand(self._interactor.showExitConfirmDialog))
-            if result is None or result.busy:
+            dialogResult = yield await(self._asyncActionLock.tryAsyncCommand(self._interactor.showExitConfirmDialog))
+            if dialogResult is None or dialogResult.busy:
                 raise AsyncReturn(False)
-            isOK, data = result.result
+            isOK, data = dialogResult.result
             if isOK:
-                yield await_callback(self._onConfirm)(skipDialog=True)
-                playSound(TankSetupSoundEvents.ACCEPT)
+                isOK = yield await_callback(self._onConfirm)(skipDialog=True)
+                if isOK:
+                    playSound(TankSetupSoundEvents.ACCEPT)
+                else:
+                    self._interactor.revert()
             elif data.get('rollBack', False):
                 self._interactor.revert()
             else:
                 result = False
         if result:
-            yield await_callback(self._interactor.applyQuit)()
+            yield await_callback(self._interactor.applyQuit)(skipApplyAutoRenewal=skipApplyAutoRenewal)
         raise AsyncReturn(result)
         return
 
@@ -57,7 +60,8 @@ class DealBaseSetupSubView(BaseSetupSubView):
             return
         else:
             currentItems = self._interactor.getChangedList()
-            self._getDealPanel().updateDealPanelPrice(currentItems, self._viewModel.dealPanel)
+            vehicle = self._interactor.getItem()
+            self._getDealPanel().updateDealPanelPrice(vehicle, currentItems, self._viewModel.dealPanel)
             self._getDealPanel().updateAutoRenewalState(self._interactor, self._viewModel.dealPanel)
             self._viewModel.dealPanel.setCanAccept(self._interactor.hasChanged())
             return

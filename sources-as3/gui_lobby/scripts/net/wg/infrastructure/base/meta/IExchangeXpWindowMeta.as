@@ -13,5 +13,7 @@ package net.wg.infrastructure.base.meta
       function as_totalExperienceChanged(param1:int) : void;
       
       function as_setWalletStatus(param1:Object, param2:Boolean) : void;
+      
+      function as_setTargetXP(param1:int) : void;
    }
 }

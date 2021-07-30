@@ -23,7 +23,9 @@ COLUMN_SETTINGS = {PREBATTLE_ACTION_NAME.RANDOM: (
    PREBATTLE_ACTION_NAME.SPEC_BATTLES_LIST: (
                                            ModeSelectorColumns.COLUMN_3, 20), 
    PREBATTLE_ACTION_NAME.TRAININGS_LIST: (
-                                        ModeSelectorColumns.COLUMN_3, 40), 
+                                        ModeSelectorColumns.COLUMN_3, 30), 
+   PREBATTLE_ACTION_NAME.MAPS_TRAINING: (
+                                       ModeSelectorColumns.COLUMN_3, 40), 
    CustomModeName.BOOTCAMP: (
                            ModeSelectorColumns.COLUMN_3, 50), 
    CustomModeName.DEFAULT: (

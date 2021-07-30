@@ -4,6 +4,7 @@ package net.wg.gui.lobby.vehicleInfo
    import flash.display.InteractiveObject;
    import flash.text.TextField;
    import net.wg.data.constants.Errors;
+   import net.wg.data.constants.Values;
    import net.wg.gui.components.advanced.ButtonBarEx;
    import net.wg.gui.components.advanced.TankIcon;
    import net.wg.gui.components.advanced.TextAreaSimple;
@@ -37,6 +38,8 @@ package net.wg.gui.lobby.vehicleInfo
       private static const INV_CHANGE_NATION_DATA:String = "InvChangeNationData";
       
       private static const COUNTER_PROPS:CounterProps = new CounterProps(3,-3);
+      
+      private static const DESCRIPTION_MAX_HEIGHT:int = 82;
        
       
       public var vehicleIcon:TankIcon;
@@ -54,6 +57,8 @@ package net.wg.gui.lobby.vehicleInfo
       public var compareBtn:ISoundButtonEx;
       
       public var closeBtn:ISoundButtonEx;
+      
+      public var tankRoleTF:TextField;
       
       private var _compareData:VehicleInfoButtonDataVO;
       
@@ -111,14 +116,26 @@ package net.wg.gui.lobby.vehicleInfo
       
       override protected function draw() : void
       {
-         var _loc1_:String = null;
+         var _loc1_:Boolean = false;
+         var _loc2_:String = null;
          super.draw();
          if(this._data && isInvalid(InvalidationType.DATA))
          {
-            _loc1_ = this._data.vehicleName;
-            this.window.title = _loc1_;
-            this.moduleName.htmlText = _loc1_;
+            _loc1_ = this._data.roleStr != Values.EMPTY_STR;
+            _loc2_ = this._data.vehicleName;
+            this.window.title = _loc2_;
+            this.moduleName.htmlText = _loc2_;
             this.descriptionField.text = this._data.vehicleDescription;
+            if(!_loc1_)
+            {
+               this.descriptionField.y = this.tankRoleTF.y;
+               this.descriptionField.height = DESCRIPTION_MAX_HEIGHT;
+            }
+            else
+            {
+               this.tankRoleTF.htmlText = this._data.roleStr;
+            }
+            this.tankRoleTF.visible = _loc1_;
             this.vehicleIcon.image = this._data.vehicleImage;
             this.vehicleIcon.level = this._data.vehicleLevel;
             this.vehicleIcon.nation = this._data.vehicleNation;
@@ -179,6 +196,7 @@ package net.wg.gui.lobby.vehicleInfo
          this.vehicleIcon = null;
          this.descriptionField.dispose();
          this.descriptionField = null;
+         this.tankRoleTF = null;
          this.moduleName = null;
          this._compareData = null;
          this._data = null;

@@ -14,6 +14,7 @@ package net.wg.gui.battle.views.destroyTimers
    import net.wg.gui.battle.views.destroyTimers.components.TimerContainer;
    import net.wg.gui.battle.views.destroyTimers.components.secondaryTimerFx.ISecondaryTimerFX;
    import net.wg.gui.battle.views.destroyTimers.data.NotificationTimerSettingVO;
+   import net.wg.gui.battle.views.destroyTimers.data.StatusNotificationVO;
    import net.wg.gui.battle.views.destroyTimers.events.DestroyTimerEvent;
    import net.wg.gui.components.controls.TextFieldContainer;
    import net.wg.utils.IClassFactory;
@@ -259,9 +260,9 @@ package net.wg.gui.battle.views.destroyTimers
          this._tweenX = new Tween(TWEEN_X_DURATION,this,{"x":param1});
       }
       
-      public function updateViewID(param1:String, param2:Boolean) : void
+      public function updateViewID(param1:String, param2:Boolean, param3:int = -1) : void
       {
-         var _loc3_:Boolean = param1 == BATTLE_NOTIFICATIONS_TIMER_TYPES.WARNING_VIEW && this._timerViewTypeID == BATTLE_NOTIFICATIONS_TIMER_TYPES.CRITICAL_VIEW;
+         var _loc4_:Boolean = param1 == BATTLE_NOTIFICATIONS_TIMER_TYPES.WARNING_VIEW && this._timerViewTypeID == BATTLE_NOTIFICATIONS_TIMER_TYPES.CRITICAL_VIEW;
          this.cancelSchedulerTasks();
          this.resetAnimState();
          if(this._timerViewTypeID != param1)
@@ -290,7 +291,7 @@ package net.wg.gui.battle.views.destroyTimers
                this.getProgressBarMc().gotoAndStop(SHOW_FRAME_LABEL);
                this._scheduler.scheduleTask(this.startWarningBlinkAnimation,Time.MILLISECOND_IN_SECOND);
                updateRadialTimer(Values.DEFAULT_INT,Values.ZERO);
-               if(!_loc3_)
+               if(!_loc4_)
                {
                   if(param2)
                   {
@@ -401,6 +402,13 @@ package net.wg.gui.battle.views.destroyTimers
       public function getStatusCallback() : IStatusNotificationCallback
       {
          return null;
+      }
+      
+      public function updateData(param1:StatusNotificationVO) : void
+      {
+         this.setStaticText(param1.title,param1.description);
+         this.updateViewID(param1.viewSubType,false);
+         updateRadialTimer(param1.totalTime,param1.currentTime);
       }
    }
 }

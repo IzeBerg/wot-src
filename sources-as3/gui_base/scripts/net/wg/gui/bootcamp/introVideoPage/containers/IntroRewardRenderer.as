@@ -7,6 +7,7 @@ package net.wg.gui.bootcamp.introVideoPage.containers
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.interfaces.entity.IUpdatable;
    import net.wg.infrastructure.managers.ITooltipMgr;
+   import net.wg.infrastructure.uilogger.bootcamp.events.TooltipLogEvent;
    import scaleform.clik.constants.InvalidationType;
    
    public class IntroRewardRenderer extends UIComponentEx implements IUpdatable
@@ -74,12 +75,14 @@ package net.wg.gui.bootcamp.introVideoPage.containers
             {
                this._toolTipMgr.showComplex(this._data.tooltip);
             }
+            dispatchEvent(new TooltipLogEvent(TooltipLogEvent.SHOW_TOOLTIP,this._data.label,true));
          }
       }
       
       private function onRollOutHandler(param1:MouseEvent) : void
       {
          this._toolTipMgr.hide();
+         dispatchEvent(new TooltipLogEvent(TooltipLogEvent.HIDE_TOOLTIP,this._data.label,true));
       }
    }
 }

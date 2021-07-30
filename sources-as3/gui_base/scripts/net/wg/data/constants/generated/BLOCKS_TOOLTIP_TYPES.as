@@ -23,6 +23,10 @@ package net.wg.data.constants.generated
       
       public static const TOOLTIP_OPT_DEVICE_SLOT_BLOCK:String = "OptDeviceSlotBlockUI";
       
+      public static const TOOLTIP_ABILITY_BATTLE_RANK_BLOCK:String = "AbilityBattleRanksBlockUI";
+      
+      public static const TOOLTIP_ABILITY_BATTLE_RANK_ITEM_BLOCK:String = "AbilityBattleRankItemUI";
+      
       public static const TOOLTIP_TEXT_PARAMETER_WITH_ICON_BLOCK_LINKAGE:String = "TextParameterWithIconBlockUI";
       
       public static const TOOLTIP_TITLE_DESC_PARAMETER_WITH_ICON_BLOCK_LINKAGE:String = "TitleDescParameterWithIconBlockUI";

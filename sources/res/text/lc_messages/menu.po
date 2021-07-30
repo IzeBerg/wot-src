@@ -747,6 +747,9 @@ msgstr "«Стальной охотник»"
 msgid "bonusType/37"
 msgstr "«Разведка боем»"
 
+msgid "bonusType/38"
+msgstr "«Топография»"
+
 msgid "bonusType/4"
 msgstr "Специальный бой"
 
@@ -1326,6 +1329,9 @@ msgstr "Информация"
 msgid "contextMenu/vehicleInfoEx"
 msgstr "Информация o технике"
 
+msgid "contextMenu/vehiclePostProgression"
+msgstr "К полевой модернизации"
+
 msgid "contextMenu/vehiclePreview"
 msgstr "Предпросмотр машины"
 
@@ -1527,6 +1533,12 @@ msgstr "Создать фрагменты (%(count)d ед.)"
 msgid "cst_item_ctx_menu/demount"
 msgstr "Демонтировать на Склад"
 
+msgid "cst_item_ctx_menu/demountFromSetup"
+msgstr "Демонтировать из этого слота"
+
+msgid "cst_item_ctx_menu/demountFromSetups"
+msgstr "Демонтировать из всех комплектаций"
+
 msgid "cst_item_ctx_menu/destroy"
 msgstr "Уничтожить"
 
@@ -1717,6 +1729,9 @@ msgstr "Не подходит"
 
 msgid "currentVehicleStatus/waitingPlayer"
 msgstr "Не хватает бойца"
+
+msgid "currentVehicleStatus/willBeUnlockedInBattle"
+msgstr "Разблокируется в бою"
 
 msgid "customization/title"
 msgstr "Внешний вид"
@@ -2117,6 +2132,9 @@ msgstr ""
 msgid "extraParams/name/crewStunDuration"
 msgstr "Параметр, отвечающий за время получаемого оглушения."
 
+msgid "extraParams/name/damageEnemiesByRamming"
+msgstr "Параметр, отвечающий за урон от тарана противнику."
+
 msgid "extraParams/name/demaskFoliageFactor"
 msgstr ""
 "Параметр, отвечающий за демаскировку полностью скрытого растительностью "
@@ -2175,10 +2193,31 @@ msgstr ""
 "Параметр, отвечающий за ухудшение точности при движении, повороте корпуса и "
 "башни. Чем меньше значение, тем меньше разлёт круга сведения."
 
+msgid "extraParams/name/vehicleGunShotDispersionAfterShot"
+msgstr "Параметр, отвечающий за размер круга сведения после выстрела."
+
+msgid "extraParams/name/vehicleGunShotDispersionChassisMovement"
+msgstr "Параметр, отвечающий за разброс при движении ходовой."
+
+msgid "extraParams/name/vehicleGunShotDispersionChassisRotation"
+msgstr "Параметр, отвечающий за разброс при поворотах ходовой."
+
+msgid "extraParams/name/vehicleGunShotDispersionTurretRotation"
+msgstr "Параметр, отвечающий за разброс при горизонтальном наведении."
+
+msgid "extraParams/name/vehicleGunShotDispersionWhileGunDamaged"
+msgstr "Параметр, отвечающий за разброс при поврежденном орудии."
+
+msgid "extraParams/name/vehicleInvisibilityAfterShot"
+msgstr "Параметр, отвечающий за незаметность после выстрела."
+
 msgid "extraParams/name/vehicleOwnSpottingTime"
 msgstr ""
 "Параметр, отвечающий за время поддержания вашей машины видимой для команды "
 "противника после потери прямой видимости. Значение по умолчанию — 10 секунд."
+
+msgid "extraParams/name/vehicleRamDamageResistance"
+msgstr "Параметр, отвечающий за урон от тарана себе."
 
 msgid "extraParams/name/vehicleRamOrExplosionDamageResistance"
 msgstr ""
@@ -2775,12 +2814,6 @@ msgstr "Тренировочный бой"
 msgid "headerButtons/battle/types/epicTraining/descr"
 msgstr "Линия фронта"
 
-msgid "headerButtons/battle/types/eventProgression"
-msgstr "Экспедиция"
-
-msgid "headerButtons/battle/types/eventProgression/about"
-msgstr "Ожидайте следующий этап Экспедиции."
-
 msgid "headerButtons/battle/types/eventSquad"
 msgstr "Взвод события"
 
@@ -2843,6 +2876,9 @@ msgstr "С %(time)s"
 
 msgid "headerButtons/battle/types/mapboxSquad"
 msgstr "Создать взвод"
+
+msgid "headerButtons/battle/types/mapsTraining"
+msgstr "Топография"
 
 msgid "headerButtons/battle/types/ranked"
 msgstr "Ранговый бой"
@@ -2988,14 +3024,33 @@ msgstr "Выбранная машина подходит только для р�
 msgid "headerButtons/fightBtn/tooltip/epicBattleOnly/header"
 msgstr "Выход в бой недоступен"
 
-msgid "headerButtons/fightBtn/tooltip/epicLevelRequired/bodyEnd"
-msgstr "технике %(level)s уровня"
+msgid "headerButtons/fightBtn/tooltip/epicBattleSituationalVehicle/body"
+msgstr ""
+"Выйти в бой можно только на %(forStartBattle)s.\n"
+"Машины %(willBeUnlocked)s будут разблокированы для боя после захвата/потери "
+"любой точки второй линии: D, E или F."
 
-msgid "headerButtons/fightBtn/tooltip/epicLevelRequired/bodyStart"
-msgstr "В бой можно выйти только на %(requirements)s."
+msgid "headerButtons/fightBtn/tooltip/epicBattleSituationalVehicle/header"
+msgstr "Выход в бой недоступен"
 
-msgid "headerButtons/fightBtn/tooltip/epicLevelRequired/header"
+msgid ""
+"headerButtons/fightBtn/tooltip/epicBattleSituationalVehicle/levels/"
+"forStartBattle"
+msgstr "технике %(levels)s уровня"
+
+msgid ""
+"headerButtons/fightBtn/tooltip/epicBattleSituationalVehicle/levels/"
+"willBeUnlocked"
+msgstr "%(levels)s уровня"
+
+msgid "headerButtons/fightBtn/tooltip/epicBattleVehLevel/body"
+msgstr "Выйти в бой можно только на %(requirements)s."
+
+msgid "headerButtons/fightBtn/tooltip/epicBattleVehLevel/header"
 msgstr "Неподходящая машина"
+
+msgid "headerButtons/fightBtn/tooltip/epicBattleVehLevel/requirements"
+msgstr "технике %(level)s уровня"
 
 msgid "headerButtons/fightBtn/tooltip/falloutNotEnoughPlayer/body"
 msgstr ""
@@ -3521,6 +3576,9 @@ msgstr "Стальной охотник"
 msgid "loading/battleTypes/24"
 msgstr "Разведка боем"
 
+msgid "loading/battleTypes/25"
+msgstr "Обучение на картах"
+
 msgid "loading/battleTypes/4"
 msgstr "Боевое обучение"
 
@@ -3592,6 +3650,9 @@ msgid "loading/battleTypes/desc/23"
 msgstr " "
 
 msgid "loading/battleTypes/desc/24"
+msgstr " "
+
+msgid "loading/battleTypes/desc/25"
 msgstr " "
 
 msgid "loading/battleTypes/desc/4"
@@ -5045,21 +5106,21 @@ msgstr "Оказывайте помощь в уничтожении против
 msgid "roleExp/action/searchEnemy"
 msgstr "Обнаруживайте технику противника."
 
-msgid "roleExp/roleDescr/role_ATSPG_burstDamage"
+msgid "roleExp/roleDescr/role_ATSPG_assault"
 msgstr ""
-"Машины с отличным вооружением, эффективная реализация которого требует "
-"соблюдения определённых условий. Способны нанести большое количество урона "
-"за короткое время."
+"Машины с невысокой подвижностью, но мощным фронтальным бронированием. "
+"Прекрасно реализуют себя при игре на передовой."
 
-msgid "roleExp/roleDescr/role_ATSPG_fireSupport"
+msgid "roleExp/roleDescr/role_ATSPG_sniper"
 msgstr ""
 "Машины со слабой бронезащитой, но прекрасными орудиями, которые диктуют "
 "засадную тактику игры в большинстве игровых ситуаций."
 
-msgid "roleExp/roleDescr/role_ATSPG_tank"
+msgid "roleExp/roleDescr/role_ATSPG_support"
 msgstr ""
-"Машины с невысокой подвижностью, но мощным фронтальным бронированием. "
-"Прекрасно реализуют себя при игре на передовой."
+"Машины с отличным вооружением, эффективная реализация которого требует "
+"соблюдения определённых условий. Способны нанести большое количество урона "
+"за короткое время."
 
 msgid "roleExp/roleDescr/role_ATSPG_universal"
 msgstr ""
@@ -5068,26 +5129,26 @@ msgstr ""
 
 msgid "roleExp/roleDescr/role_HT_assault"
 msgstr ""
+"Тяжелобронированные машины, способные «разменивать» свои очки прочности и "
+"достойно держать удар, находясь непосредственно на острие атаки."
+
+msgid "roleExp/roleDescr/role_HT_break"
+msgstr ""
 "Относительно мобильные машины с достойной бронёй, одинаково эффективные как "
 "на первой линии в позиционном бою, так и при фланговых обходах."
 
-msgid "roleExp/roleDescr/role_HT_fireSupport"
+msgid "roleExp/roleDescr/role_HT_support"
 msgstr ""
 "Машины с отличным вооружением, эффективная реализация которого требует "
 "соблюдения определённых условий. Способны нанести большое количество урона "
 "за короткое время."
-
-msgid "roleExp/roleDescr/role_HT_tank"
-msgstr ""
-"Тяжелобронированные машины, способные «разменивать» свои очки прочности и "
-"достойно держать удар, находясь непосредственно на острие атаки."
 
 msgid "roleExp/roleDescr/role_HT_universal"
 msgstr ""
 "Многофункциональные танки, способные подстраиваться под текущую ситуацию в "
 "бою."
 
-msgid "roleExp/roleDescr/role_LT_tracked"
+msgid "roleExp/roleDescr/role_LT_universal"
 msgstr ""
 "Быстрые и манёвренные машины, способные как вести разведку, так и наносить "
 "урон при стремительных фланговых обходах."
@@ -5097,21 +5158,21 @@ msgstr ""
 "Машины с исключительными динамическими характеристиками, полная реализация "
 "которых зачастую зависит от карты или тактической ситуации."
 
-msgid "roleExp/roleDescr/role_MT_assassin"
+msgid "roleExp/roleDescr/role_MT_assault"
 msgstr ""
-"Машины с отличным вооружением, эффективная реализация которого требует "
-"соблюдения определённых условий. Способны нанести большое количество урона "
-"за короткое время."
+"Машины с достойным бронированием, способные эффективно играть на передовой и "
+"противостоять тяжёлым танкам противника."
 
-msgid "roleExp/roleDescr/role_MT_fireSupport"
+msgid "roleExp/roleDescr/role_MT_sniper"
 msgstr ""
 "Танки с отличными орудиями и слабой бронезащитой, которые наиболее "
 "эффективно раскрывают себя на дистанции."
 
-msgid "roleExp/roleDescr/role_MT_tank"
+msgid "roleExp/roleDescr/role_MT_support"
 msgstr ""
-"Машины с достойным бронированием, способные эффективно играть на передовой и "
-"противостоять тяжёлым танкам противника."
+"Машины с отличным вооружением, эффективная реализация которого требует "
+"соблюдения определённых условий. Способны нанести большое количество урона "
+"за короткое время."
 
 msgid "roleExp/roleDescr/role_MT_universal"
 msgstr ""
@@ -5123,44 +5184,44 @@ msgstr ""
 "Загоризонтная поддержка атаки. Вспомогательные машины, эффективность "
 "которых, как правило, зависит от ситуации в бою и поведения команд."
 
-msgid "roleExp/roleGroupName/role_ATSPG_burstDamage"
-msgstr "поддержки"
+msgid "roleExp/roleGroupName/role_ATSPG_assault"
+msgstr "штурмовая"
 
-msgid "roleExp/roleGroupName/role_ATSPG_fireSupport"
+msgid "roleExp/roleGroupName/role_ATSPG_sniper"
 msgstr "снайперская"
 
-msgid "roleExp/roleGroupName/role_ATSPG_tank"
-msgstr "штурмовая"
+msgid "roleExp/roleGroupName/role_ATSPG_support"
+msgstr "поддержки"
 
 msgid "roleExp/roleGroupName/role_ATSPG_universal"
 msgstr "универсальная"
 
 msgid "roleExp/roleGroupName/role_HT_assault"
+msgstr "штурмовой"
+
+msgid "roleExp/roleGroupName/role_HT_break"
 msgstr "прорыва"
 
-msgid "roleExp/roleGroupName/role_HT_fireSupport"
+msgid "roleExp/roleGroupName/role_HT_support"
 msgstr "поддержки"
-
-msgid "roleExp/roleGroupName/role_HT_tank"
-msgstr "штурмовой"
 
 msgid "roleExp/roleGroupName/role_HT_universal"
 msgstr "универсальный"
 
-msgid "roleExp/roleGroupName/role_LT_tracked"
+msgid "roleExp/roleGroupName/role_LT_universal"
 msgstr "универсальный"
 
 msgid "roleExp/roleGroupName/role_LT_wheeled"
 msgstr "колёсный"
 
-msgid "roleExp/roleGroupName/role_MT_assassin"
-msgstr "поддержки"
+msgid "roleExp/roleGroupName/role_MT_assault"
+msgstr "штурмовой"
 
-msgid "roleExp/roleGroupName/role_MT_fireSupport"
+msgid "roleExp/roleGroupName/role_MT_sniper"
 msgstr "снайперский"
 
-msgid "roleExp/roleGroupName/role_MT_tank"
-msgstr "штурмовой"
+msgid "roleExp/roleGroupName/role_MT_support"
+msgstr "поддержки"
 
 msgid "roleExp/roleGroupName/role_MT_universal"
 msgstr "универсальный"
@@ -5171,13 +5232,13 @@ msgstr " "
 msgid "roleExp/roleLabel"
 msgstr "Роль:"
 
-msgid "roleExp/roleName/role_ATSPG_burstDamage"
+msgid "roleExp/roleName/role_ATSPG_assault"
 msgstr "ПТ-САУ %(groupName)s"
 
-msgid "roleExp/roleName/role_ATSPG_fireSupport"
+msgid "roleExp/roleName/role_ATSPG_sniper"
 msgstr "ПТ-САУ %(groupName)s"
 
-msgid "roleExp/roleName/role_ATSPG_tank"
+msgid "roleExp/roleName/role_ATSPG_support"
 msgstr "ПТ-САУ %(groupName)s"
 
 msgid "roleExp/roleName/role_ATSPG_universal"
@@ -5186,28 +5247,28 @@ msgstr "ПТ-САУ %(groupName)s"
 msgid "roleExp/roleName/role_HT_assault"
 msgstr "Тяжёлый танк %(groupName)s"
 
-msgid "roleExp/roleName/role_HT_fireSupport"
+msgid "roleExp/roleName/role_HT_break"
 msgstr "Тяжёлый танк %(groupName)s"
 
-msgid "roleExp/roleName/role_HT_tank"
+msgid "roleExp/roleName/role_HT_support"
 msgstr "Тяжёлый танк %(groupName)s"
 
 msgid "roleExp/roleName/role_HT_universal"
 msgstr "Тяжёлый танк %(groupName)s"
 
-msgid "roleExp/roleName/role_LT_tracked"
+msgid "roleExp/roleName/role_LT_universal"
 msgstr "Лёгкий танк %(groupName)s"
 
 msgid "roleExp/roleName/role_LT_wheeled"
 msgstr "Лёгкий танк %(groupName)s"
 
-msgid "roleExp/roleName/role_MT_assassin"
+msgid "roleExp/roleName/role_MT_assault"
 msgstr "Средний танк %(groupName)s"
 
-msgid "roleExp/roleName/role_MT_fireSupport"
+msgid "roleExp/roleName/role_MT_sniper"
 msgstr "Средний танк %(groupName)s"
 
-msgid "roleExp/roleName/role_MT_tank"
+msgid "roleExp/roleName/role_MT_support"
 msgstr "Средний танк %(groupName)s"
 
 msgid "roleExp/roleName/role_MT_universal"
@@ -5696,6 +5757,9 @@ msgstr "?empty?"
 msgid "store/vehicleStates/unsuitableToQueue"
 msgstr "Не подходит"
 
+msgid "store/vehicleStates/willBeUnlockedInBattle"
+msgstr "?empty?"
+
 msgid "storeTab/actions"
 msgstr "Акции"
 
@@ -5830,6 +5894,9 @@ msgstr "Не подходит"
 
 msgid "tankCarousel/vehicleStates/unsuitableToUnit"
 msgstr "Не подходит для взвода"
+
+msgid "tankCarousel/vehicleStates/willBeUnlockedInBattle"
+msgstr "?empty?"
 
 msgid "tankCarousel/vehicleStates/xpMultReceived"
 msgstr "Сбить x%(factor)s"
@@ -6222,13 +6289,13 @@ msgstr ""
 "падает."
 
 msgid "tankmanPersonalCase/skillsButton/additionText"
-msgstr "(Обучение доступно при 100% владении основной специальностью)"
+msgstr "(Обучение доступно при 100%-м владении основной специальностью)"
 
 msgid "tankmanPersonalCase/skillsButton/mainText"
 msgstr "Посмотреть полный список умений и навыков"
 
 msgid "tankmanPersonalCase/skillsDesc"
-msgstr "(Обучение доступно при 100% владении основной специальностью)"
+msgstr "(Обучение доступно при 100%-м владении основной специальностью)"
 
 msgid "tankmanPersonalCase/specialization"
 msgstr "Специализация:"
@@ -6983,6 +7050,9 @@ msgstr "Снять отметку «основной»"
 
 msgid "viewHeader/backBtn/descrLabel/hangar"
 msgstr "В АНГАР"
+
+msgid "viewHeader/backBtn/descrLabel/preview"
+msgstr "К ПРЕДПРОСМОТРУ"
 
 msgid "viewHeader/backBtn/descrLabel/research"
 msgstr "К %(tankName)s"

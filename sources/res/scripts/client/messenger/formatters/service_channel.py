@@ -57,6 +57,7 @@ from items.components.crew_books_constants import CREW_BOOK_RARITY
 from items.components.crew_skins_constants import NO_CREW_SKIN_ID
 from items.components.c11n_constants import UNBOUND_VEH_KEY
 from items.tankmen import RECRUIT_TMAN_TOKEN_PREFIX
+from maps_training_common.maps_training_constants import SCENARIO_RESULT, SCENARIO_INDEXES
 from messenger import g_settings
 from messenger.ext import passCensor
 from messenger.formatters import TimeFormatter, NCContextItemFormatter
@@ -64,7 +65,7 @@ from messenger.formatters.service_channel_helpers import EOL, getCustomizationIt
 from nations import NAMES
 from shared_utils import BoundMethodWeakref, first
 from skeletons.gui.platform.catalog_service_controller import IPurchaseCache
-from skeletons.gui.game_control import IRankedBattlesController, IEventProgressionController, IBattlePassController, IBattleRoyaleController, IMapboxController
+from skeletons.gui.game_control import IRankedBattlesController, IBattlePassController, IBattleRoyaleController, IMapboxController
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.offers import IOffersDataProvider
@@ -401,6 +402,8 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
     __BRResultKeys = {-1: 'battleRoyaleDefeatResult', 
        0: 'battleRoyaleDefeatResult', 
        1: 'battleRoyaleVictoryResult'}
+    __MTResultKeys = {SCENARIO_RESULT.LOSE: 'mapsTrainingDefeatResult', 
+       SCENARIO_RESULT.WIN: 'mapsTrainingVictoryResult'}
     __goldTemplateKey = 'battleResultGold'
     __questsTemplateKey = 'battleQuests'
 
@@ -466,6 +469,10 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
                             battleResKey = 1 if winnerIfDraw == team else -1
                 if guiType == ARENA_GUI_TYPE.BATTLE_ROYALE:
                     battleResultKeys = self.__BRResultKeys
+                elif guiType == ARENA_GUI_TYPE.MAPS_TRAINING:
+                    ctx = self.__makeMapsTrainingMsgCtx(battleResults, ctx)
+                    battleResKey = battleResults.get('mtScenarioResult')
+                    battleResultKeys = self.__MTResultKeys
                 else:
                     battleResultKeys = self.__battleResultKeys
                 templateName = battleResultKeys[battleResKey]
@@ -486,6 +493,31 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
         else:
             callback([MessageData(None, None)])
         return
+
+    def __makeMapsTrainingMsgCtx(self, battleResults, ctx):
+        vehTypeCompDescr = next(battleResults['playerVehicles'].iterkeys())
+        vType = vehicles_core.getVehicleType(vehTypeCompDescr)
+        vehicleClass = vehicles_core.getVehicleClassFromVehicleType(vType)
+        team = battleResults['team']
+        vehTypeStr = backport.text(R.strings.maps_training.vehicleType.dyn(vehicleClass)())
+        ctx['baseStr'] = backport.text(R.strings.maps_training.baseNum()).format(base=team)
+        ctx['mtRewards'] = self.__makeMapsTrainingRewardsMsg(battleResults)
+        ctx['scenario'] = backport.text(R.strings.maps_training.scenarioTooltip.scenario.title()).format(num=SCENARIO_INDEXES[(team, vehicleClass)], vehicleType=vehTypeStr)
+        return ctx
+
+    def __makeMapsTrainingRewardsMsg(self, battleResults):
+        if not battleResults.get('mtCanGetRewards'):
+            return g_settings.htmlTemplates.format('mtRewardGot')
+        rewards = []
+        creditsReward = battleResults.get('credits', 0)
+        rewards.append(g_settings.htmlTemplates.format('mtCredits', ctx={'credits': self.__makeCurrencyString(Currency.CREDITS, creditsReward)}))
+        freeXP = battleResults.get('freeXP', 0)
+        if freeXP:
+            rewards.append(g_settings.htmlTemplates.format('mtFreeXP', ctx={'freeXP': backport.getIntegralFormat(freeXP)}))
+        questResults = QuestAchievesFormatter.formatQuestAchieves(battleResults, asBattleFormatter=True)
+        if questResults:
+            rewards.append(g_settings.htmlTemplates.format('mtQuests', ctx={'quests': questResults}))
+        return ('<br/>').join(rewards)
 
     def __makeQuestsAchieve(self, message):
         fmtMsg = QuestAchievesFormatter.formatQuestAchieves(message.data, asBattleFormatter=True)
@@ -959,6 +991,8 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
        INVOICE_ASSET.DATA: 'dataInvoiceReceived', 
        INVOICE_ASSET.PURCHASE: 'purchaseInvoiceReceived'}
     __INVALID_TYPE_ASSET = -1
+    __auxMessagesHandlers = {INVOICE_ASSET.DATA: 'getInvoiceDataAuxMessages'}
+    __DESTROY_PAIR_MODIFICATIONS_MSG_TEMPLATE = 'DestroyAllPairsModifications'
     __goodiesCache = dependency.descriptor(IGoodiesCache)
     __eventsCache = dependency.descriptor(IEventsCache)
 
@@ -967,6 +1001,8 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
     def format(self, message, callback):
         isSynced = yield self._waitForSyncItems()
         formatted, settings = (None, None)
+        mainMassage = MessageData(None, None)
+        auxMassages = []
         if isSynced:
             data = message.data
             isDataSynced = yield self.__waitForSyncData(data)
@@ -980,7 +1016,14 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
                     settings = self._getGuiSettings(message, self._getMessageTemplateKey(assetType))
             else:
                 _logger.debug('Message will not be shown!')
-        callback([MessageData(formatted, settings)])
+            mainMassage = MessageData(formatted, settings)
+            auxMessagesHandler = self.__auxMessagesHandlers.get(assetType, None)
+            if auxMessagesHandler is not None:
+                auxMassages = getattr(self, auxMessagesHandler)(data)
+        result = [
+         mainMassage]
+        result.extend(auxMassages)
+        callback(result)
         return
 
     @classmethod
@@ -1185,6 +1228,11 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
             count = text_styles.neutral(backport.getIntegralFormat(dailyBattles))
             result.append(backport.text(rShortCut.daily(), count=count))
         return (', ').join(result)
+
+    def getInvoiceDataAuxMessages(self, data):
+        result = []
+        result.extend(self.__getDiscardPairModificationsMsg(data))
+        return result
 
     def _composeOperations(self, data):
         dataEx = data.get('data', {})
@@ -1715,6 +1763,32 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
             debitedFormatted = g_settings.htmlTemplates.format(templateId, ctx={'bonusBattles': debitedStr})
             result = text_styles.concatStylesToMultiLine(result, debitedFormatted) if result else debitedFormatted
         return result
+
+    def __getDiscardPairModificationsMsg(self, data):
+        dataEx = data.get('data', {})
+        result = []
+        if not dataEx:
+            return result
+        else:
+            vehicles = dataEx.get('vehicles', [])
+            if vehicles:
+                if isinstance(vehicles, dict):
+                    vehicles = [
+                     vehicles]
+            for vehicleDict in vehicles:
+                for vehCompDescr, vehData in vehicleDict.iteritems():
+                    isNegative = False
+                    if isinstance(vehCompDescr, types.IntType):
+                        isNegative = vehCompDescr < 0
+                    if 'customCompensation' not in vehData and isNegative and vehData.get('destroyPairModifications', False):
+                        vehicleName = self.__getVehicleName(vehCompDescr)
+                        if vehicleName is not None:
+                            rMessage = R.strings.messenger.serviceChannelMessages
+                            template = self.__DESTROY_PAIR_MODIFICATIONS_MSG_TEMPLATE
+                            formatted = g_settings.msgTemplates.format(template, ctx={'text': backport.text(rMessage.vehiclePostProgression.discardAllPairsModification.body(), vehicle=vehicleName)})
+                            result.append(MessageData(formatted, self._getGuiSettings(formatted, template)))
+
+            return result
 
     @async
     @process
@@ -2432,7 +2506,6 @@ class QuestAchievesFormatter(object):
     __lobbyContext = dependency.descriptor(ILobbyContext)
     __goodiesCache = dependency.descriptor(IGoodiesCache)
     __itemsCache = dependency.descriptor(IItemsCache)
-    __eventProgression = dependency.descriptor(IEventProgressionController)
 
     @classmethod
     def formatQuestAchieves(cls, data, asBattleFormatter, processCustomizations=True):
@@ -2520,9 +2593,7 @@ class QuestAchievesFormatter(object):
             for tokenID, tokenData in tokens.iteritems():
                 count = backport.getIntegralFormat(tokenData.get('count', 1))
                 name = None
-                if tokenID == cls.__eventProgression.rewardPointsTokenID:
-                    name = backport.text(R.strings.messenger.serviceChannelMessages.battleResults.epicRewardPoints())
-                elif tokenID == BATTLE_BONUS_X5_TOKEN:
+                if tokenID == BATTLE_BONUS_X5_TOKEN:
                     name = backport.text(R.strings.quests.bonusName.battle_bonus_x5())
                 if name is not None:
                     itemsNames.append(backport.text(R.strings.messenger.serviceChannelMessages.battleResults.quests.items.name(), name=name, count=count))

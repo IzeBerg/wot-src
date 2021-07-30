@@ -38,3 +38,11 @@ class TankCarouselMeta(CarouselEnvironment):
     def as_setSmallDoubleCarouselS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setSmallDoubleCarousel(value)
+
+    def as_useExtendedCarouselS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_useExtendedCarousel(value)
+
+    def as_scrollToSlotS(self, slotIdx):
+        if self._isDAAPIInited():
+            return self.flashObject.as_scrollToSlot(slotIdx)

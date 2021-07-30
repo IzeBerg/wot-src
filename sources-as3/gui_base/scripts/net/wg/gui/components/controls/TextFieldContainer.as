@@ -28,8 +28,13 @@ package net.wg.gui.components.controls
       public function TextFieldContainer()
       {
          super();
-         this.textField.cacheAsBitmap = true;
+         this.isCacheAsBitmap = true;
          this._tf = this.textField.getTextFormat();
+      }
+      
+      protected function set isCacheAsBitmap(param1:Boolean) : void
+      {
+         this.textField.cacheAsBitmap = param1;
       }
       
       public final function dispose() : void
@@ -115,10 +120,6 @@ package net.wg.gui.components.controls
       
       public function set fontSize(param1:int) : void
       {
-         if(this._tf.size == param1)
-         {
-            return;
-         }
          this._tf.size = param1;
          this.textField.setTextFormat(this._tf);
          this.updateSize();

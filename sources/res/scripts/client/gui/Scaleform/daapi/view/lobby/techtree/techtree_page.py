@@ -118,7 +118,7 @@ class TechTree(TechTreeMeta):
         ItemsActionsFactory.doAction(ItemsActionsFactory.BUY_VEHICLE, int(itemCD))
 
     def goToNextVehicle(self, vehCD):
-        loadEvent = events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_RESEARCH), ctx={BackButtonContextKeys.ROOT_CD: vehCD, BackButtonContextKeys.EXIT: self.__exitEvent()})
+        loadEvent = events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_RESEARCH), ctx={BackButtonContextKeys.ROOT_CD: vehCD, BackButtonContextKeys.EXIT: self._createExitEvent()})
         self.soundManager.playInstantSound(Sounds.RESET)
         self.__stopTopOfTheTreeSounds()
         self.fireEvent(loadEvent, scope=EVENT_BUS_SCOPE.LOBBY)
@@ -236,8 +236,9 @@ class TechTree(TechTreeMeta):
         self.__removeListeners()
         super(TechTree, self)._dispose()
 
-    def _blueprintExitEvent(self, vehicleCD):
-        return self.__exitEvent()
+    def _createExitEvent(self):
+        return events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_TECHTREE), ctx={BackButtonContextKeys.NATION: SelectedNation.getName(), 
+           BackButtonContextKeys.BLUEPRINT_MODE: self.__blueprintMode})
 
     def __addListeners(self):
         self.addListener(MESSENGER_VIEW_ALIAS.CHANNEL_MANAGEMENT_WINDOW, self.__onClosePremiumPanel, scope=EVENT_BUS_SCOPE.LOBBY)
@@ -258,10 +259,6 @@ class TechTree(TechTreeMeta):
         if eventsListener is not None:
             eventsListener.onSettingsChanged -= self.__onSettingsChanged
         return
-
-    def __exitEvent(self):
-        return events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_TECHTREE), ctx={BackButtonContextKeys.NATION: SelectedNation.getName(), 
-           BackButtonContextKeys.BLUEPRINT_MODE: self.__blueprintMode})
 
     def __onClosePremiumPanel(self, _=None):
         self.as_closePremiumPanelS()

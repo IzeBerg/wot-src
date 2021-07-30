@@ -9,9 +9,10 @@ from gui.Scaleform.genConsts.ANIMATION_TYPES import ANIMATION_TYPES
 from gui.battle_control import avatar_getter, vehicle_getter
 from gui.battle_control.battle_constants import makeExtraName, VEHICLE_COMPLEX_ITEMS, BATTLE_CTRL_ID
 from gui.battle_control.controllers.interfaces import IBattleController
-from gui.game_control.br_battle_sounds import BREvents
+from gui.battle_control.controllers.sound_ctrls.br_battle_sounds import BREvents
 from gui.shared.utils.MethodsRules import MethodsRules
 from gui.shared.utils.decorators import ReprInjector
+from gui.sounds.epic_sound_constants import EPIC_SOUND
 from helpers import i18n, dependency
 from items import vehicles, EQUIPMENT_TYPES, ITEM_TYPES
 from shared_utils import findFirst, forEach
@@ -236,7 +237,7 @@ class _EquipmentItem(object):
         return self._descriptor and 'avatar' in self._descriptor.tags
 
     def _soundUpdate(self, prevQuantity, quantity):
-        if prevQuantity > quantity:
+        if prevQuantity > quantity and self._stage != self._prevStage:
             if self._stage != EQUIPMENT_STAGES.NOT_RUNNING:
                 EquipmentSound.playSound(self._descriptor.compactDescr)
         if self.becomeReady:
@@ -470,10 +471,10 @@ class _OrderItem(_TriggerItem):
                 stage = self._stage
             from AvatarInputHandler import MapCaseMode
             if stage == EQUIPMENT_STAGES.PREPARING and self._needActivateMapCase():
-                MapCaseMode.activateMapCase(self.getEquipmentID(), partial(self.deactivate), self.isArcadeCamera())
+                MapCaseMode.activateMapCase(self.getEquipmentID(), partial(self.deactivate), self.getAimingControlMode())
             elif self._stage == EQUIPMENT_STAGES.PREPARING:
                 if self._needActivateMapCase():
-                    MapCaseMode.turnOffMapCase(self.getEquipmentID(), self.isArcadeCamera())
+                    MapCaseMode.turnOffMapCase(self.getEquipmentID(), self.getAimingControlMode())
                 else:
                     self.deactivate()
         return
@@ -481,8 +482,9 @@ class _OrderItem(_TriggerItem):
     def _getErrorMsg(self):
         return NotReadyError(self._descriptor.userString)
 
-    def isArcadeCamera(self):
-        return False
+    def getAimingControlMode(self):
+        from AvatarInputHandler.MapCaseMode import MapCaseControlMode
+        return MapCaseControlMode
 
     def _needActivateMapCase(self):
         inputHandler = avatar_getter.getInputHandler()
@@ -500,14 +502,16 @@ class _ArtilleryItem(_OrderItem):
 
 class _ArcadeArtileryItem(_ArtilleryItem):
 
-    def isArcadeCamera(self):
-        return True
+    def getAimingControlMode(self):
+        from AvatarInputHandler.MapCaseMode import ArcadeMapCaseControlMode
+        return ArcadeMapCaseControlMode
 
 
 class _ArcadeKamikazeSpawner(_ArtilleryItem):
 
-    def isArcadeCamera(self):
-        return True
+    def getAimingControlMode(self):
+        from AvatarInputHandler.MapCaseMode import ArcadeMapCaseControlMode
+        return ArcadeMapCaseControlMode
 
     def _getErrorMsg(self):
         if self._quantity:
@@ -530,8 +534,9 @@ class _BattleRoyaleBomber(_BomberItem):
 
 class _ArcadeBomberItem(_BomberItem):
 
-    def isArcadeCamera(self):
-        return True
+    def getAimingControlMode(self):
+        from AvatarInputHandler.MapCaseMode import ArcadeMapCaseControlMode
+        return ArcadeMapCaseControlMode
 
     def _getErrorMsg(self):
         if self._quantity:
@@ -542,8 +547,9 @@ class _ArcadeBomberItem(_BomberItem):
 
 class _ArcadeMineFieldItem(_OrderItem):
 
-    def isArcadeCamera(self):
-        return True
+    def getAimingControlMode(self):
+        from AvatarInputHandler.MapCaseMode import ArcadeMapCaseControlMode
+        return ArcadeMapCaseControlMode
 
 
 class _ArcadeMineFieldBattleRoyaleItem(_ArcadeMineFieldItem):
@@ -558,6 +564,18 @@ class _ArcadeMineFieldBattleRoyaleItem(_ArcadeMineFieldItem):
             return InCooldownError(self._descriptor.userString)
         else:
             return
+
+
+class _ArcadeMineFieldEpicBattleItem(_OrderItem):
+
+    def update(self, quantity, stage, timeRemaining, totalTime):
+        if stage == EQUIPMENT_STAGES.PREPARING and self._stage != stage:
+            SoundGroups.g_instance.playSound2D(EPIC_SOUND.EB_ABILITY_MINEFIELD_APPLY)
+        super(_ArcadeMineFieldEpicBattleItem, self).update(quantity, stage, timeRemaining, totalTime)
+
+    def getAimingControlMode(self):
+        from AvatarInputHandler.MapCaseMode import AracdeMinefieldControleMode
+        return AracdeMinefieldControleMode
 
 
 class _ReconItem(_OrderItem):
@@ -580,14 +598,23 @@ class _BattleRoyaleSmokeItem(_SmokeItem):
 
 class _ArcadeSmokeItem(_SmokeItem):
 
-    def isArcadeCamera(self):
-        return True
+    def getAimingControlMode(self):
+        from AvatarInputHandler.MapCaseMode import ArcadeMapCaseControlMode
+        return ArcadeMapCaseControlMode
 
     def _getErrorMsg(self):
         if self._quantity:
             return InCooldownError(self._descriptor.userString)
         else:
             return
+
+
+class _StealthRadarItem(_OrderItem):
+    pass
+
+
+class _InspireItem(_OrderItem):
+    pass
 
 
 class _AfterburningItem(_TriggerItem):
@@ -739,7 +766,7 @@ class _RegenerationKitItem(_EquipmentItem):
             result = False
             error = None
             if self._stage == EQUIPMENT_STAGES.COOLDOWN and self._quantity:
-                error = InCooldownError(self._descriptor.userString)
+                error = NotReadyError(self._descriptor.userString)
         if not result or not avatar:
             return (result, error)
         else:
@@ -790,6 +817,8 @@ def _triggerItemFactory(descriptor, quantity, stage, timeRemaining, totalTime, t
         return _ArcadeBomberItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('arcade_minefield_battle_royale'):
         return _ArcadeMineFieldBattleRoyaleItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
+    if descriptor.name.startswith('arcade_minefield_epic_battle'):
+        return _ArcadeMineFieldEpicBattleItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('arcade_minefield'):
         return _ArcadeMineFieldItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('artillery'):
@@ -798,6 +827,8 @@ def _triggerItemFactory(descriptor, quantity, stage, timeRemaining, totalTime, t
         return _getBomberItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('smoke'):
         return _getSmokeItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
+    if descriptor.name.startswith('inspire'):
+        return _InspireItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('arcade_smoke'):
         return _ArcadeSmokeItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('recon'):
@@ -810,6 +841,10 @@ def _triggerItemFactory(descriptor, quantity, stage, timeRemaining, totalTime, t
         return _RepairPointItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('spawn'):
         return _ArcadeKamikazeSpawner(descriptor, quantity, stage, timeRemaining, totalTime, tags)
+    if descriptor.name.startswith('stealth_radar'):
+        return _StealthRadarItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
+    if descriptor.name.startswith('fl_regenerationKit'):
+        return _RegenerationKitItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     return _TriggerItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
 
 
@@ -855,13 +890,16 @@ def _getInitialTagsAndClass(descriptor, tagsToItems):
 class EquipmentsController(MethodsRules, IBattleController):
     __slots__ = ('__eManager', '__arena', '_order', '_equipments', '__preferredPosition',
                  '__equipmentCount', 'onEquipmentAdded', 'onEquipmentUpdated', 'onEquipmentMarkerShown',
-                 'onEquipmentCooldownInPercent', 'onEquipmentCooldownTime', 'onCombatEquipmentUsed')
+                 'onEquipmentCooldownInPercent', 'onEquipmentCooldownTime', 'onCombatEquipmentUsed',
+                 'onEquipmentReset', 'onEquipmentsCleared')
 
     def __init__(self, setup):
         super(EquipmentsController, self).__init__()
         self.__eManager = Event.EventManager()
         self.onEquipmentAdded = Event.Event(self.__eManager)
         self.onEquipmentUpdated = Event.Event(self.__eManager)
+        self.onEquipmentReset = Event.Event(self.__eManager)
+        self.onEquipmentsCleared = Event.Event(self.__eManager)
         self.onEquipmentMarkerShown = Event.Event(self.__eManager)
         self.onEquipmentCooldownInPercent = Event.Event(self.__eManager)
         self.onEquipmentCooldownTime = Event.Event(self.__eManager)
@@ -908,6 +946,8 @@ class EquipmentsController(MethodsRules, IBattleController):
             item.clear()
 
         self.__equipmentCount = 0
+        if not leave:
+            self.onEquipmentsCleared()
 
     def cancel(self):
         item = findFirst(lambda item: item.getStage() == EQUIPMENT_STAGES.PREPARING, self._equipments.itervalues())
@@ -940,7 +980,7 @@ class EquipmentsController(MethodsRules, IBattleController):
         return item
 
     def getOrderedEquipmentsLayout(self):
-        return map(lambda intCD: (intCD, self._equipments[intCD]), self._order)
+        return [ (intCD, self._equipments[intCD]) for intCD in self._order if intCD ]
 
     @MethodsRules.delayable()
     def notifyPlayerVehicleSet(self, vID):
@@ -953,33 +993,43 @@ class EquipmentsController(MethodsRules, IBattleController):
 
     @MethodsRules.delayable('notifyPlayerVehicleSet')
     def setEquipment(self, intCD, quantity, stage, timeRemaining, totalTime):
-        if timeRemaining == -1 and totalTime == -1:
-            return
+        _logger.debug('Equipment added: intCD=%d, quantity=%d, stage=%s, timeRemaining=%d, totalTime=%d', intCD, quantity, stage, timeRemaining, totalTime)
+        item = None
+        if not intCD:
+            if len(self._order) < self.__equipmentCount:
+                self._order.append(0)
+                self.onEquipmentAdded(0, None)
+        elif intCD in self._equipments:
+            item = self._equipments[intCD]
+            item.update(quantity, stage, timeRemaining, totalTime)
+            self.onEquipmentUpdated(intCD, item)
         else:
-            _logger.debug('Equipment added: intCD=%d, quantity=%d, stage=%s, timeRemaining=%d, totalTime=%d', intCD, quantity, stage, timeRemaining, totalTime)
-            item = None
-            if not intCD:
-                if len(self._order) < self.__equipmentCount:
-                    self._order.append(0)
-                    self.onEquipmentAdded(0, None)
-            elif intCD in self._equipments:
-                item = self._equipments[intCD]
-                item.update(quantity, stage, timeRemaining, totalTime)
-                self.onEquipmentUpdated(intCD, item)
-            else:
-                descriptor = vehicles.getItemByCompactDescr(intCD)
-                if descriptor.equipmentType in (EQUIPMENT_TYPES.regular, EQUIPMENT_TYPES.battleAbilities):
-                    item = self.createItem(descriptor, quantity, stage, timeRemaining, totalTime)
-                    self._equipments[intCD] = item
-                    self._order.append(intCD)
-                    self.onEquipmentAdded(intCD, item)
-            if item:
-                item.setServerPrevStage(None)
-            return
+            descriptor = vehicles.getItemByCompactDescr(intCD)
+            if descriptor.equipmentType in (EQUIPMENT_TYPES.regular, EQUIPMENT_TYPES.battleAbilities):
+                item = self.createItem(descriptor, quantity, stage, timeRemaining, totalTime)
+                self._equipments[intCD] = item
+                self._order.append(intCD)
+                self.onEquipmentAdded(intCD, item)
+        if item:
+            item.setServerPrevStage(None)
+        return
 
     def updateMapCase(self):
         for item in self._equipments.itervalues():
             item.updateMapCase()
+
+    @MethodsRules.delayable('notifyPlayerVehicleSet')
+    def resetEquipment(self, oldIntCD, newIntCD, quantity, stage, timeRemaining, totalTime):
+        if oldIntCD not in self._order:
+            return
+        oldOrderIndex = self._order.index(oldIntCD)
+        del self._equipments[oldIntCD]
+        _logger.debug('Equipment reset: oldIntCD=%d, newIntCD=%d, quantity=%d, stage=%s, timeRemaining=%d, totalTime=%d', oldIntCD, newIntCD, quantity, stage, timeRemaining, totalTime)
+        descriptor = vehicles.getItemByCompactDescr(newIntCD)
+        item = self.createItem(descriptor, quantity, stage, timeRemaining, totalTime)
+        self._equipments[newIntCD] = item
+        self._order[oldOrderIndex] = newIntCD
+        self.onEquipmentReset(oldIntCD, newIntCD, item)
 
     def setServerPrevStage(self, prevStage, intCD):
         if intCD in self._equipments:
@@ -1110,13 +1160,17 @@ class _ReplayOrderItem(_ReplayItem):
             super(_ReplayOrderItem, self).deactivate()
         return
 
+    def getAimingControlMode(self):
+        from AvatarInputHandler.MapCaseMode import MapCaseControlMode
+        return MapCaseControlMode
+
     def update(self, quantity, stage, timeRemaining, totalTime):
         from AvatarInputHandler import MapCaseMode
         if stage == EQUIPMENT_STAGES.PREPARING and self._stage != stage and self._needActivateMapCase():
-            MapCaseMode.activateMapCase(self.getEquipmentID(), partial(self.deactivate))
+            MapCaseMode.activateMapCase(self.getEquipmentID(), partial(self.deactivate), self.getAimingControlMode())
         elif self._stage == EQUIPMENT_STAGES.PREPARING and self._stage != stage:
             if self._needActivateMapCase():
-                MapCaseMode.turnOffMapCase(self.getEquipmentID())
+                MapCaseMode.turnOffMapCase(self.getEquipmentID(), self.getAimingControlMode())
             else:
                 self.deactivate()
         super(_ReplayOrderItem, self).update(quantity, stage, timeRemaining, totalTime)
@@ -1136,6 +1190,10 @@ class _ReplayArtilleryItem(_ReplayOrderItem):
 
 
 class _ReplayBomberItem(_ReplayOrderItem):
+
+    def getAimingControlMode(self):
+        from AvatarInputHandler.MapCaseMode import ArcadeMapCaseControlMode
+        return ArcadeMapCaseControlMode
 
     def getMarker(self):
         return 'bomber'
@@ -1348,6 +1406,8 @@ def _replayTriggerItemFactory(descriptor, quantity, stage, timeRemaining, totalT
         return _ReplayLargeRepairKitSteelHunterItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('regenerationKit'):
         return _ReplayRegenerationKitSteelHunterItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
+    if descriptor.name.startswith('spawn_kamikaze'):
+        return _ReplayOrderItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     return _ReplayItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
 
 

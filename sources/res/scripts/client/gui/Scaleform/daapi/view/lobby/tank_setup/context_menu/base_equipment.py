@@ -49,7 +49,7 @@ class BaseEquipmentItemContextMenu(BaseItemContextMenu):
 
     def _isVisible(self, label):
         if label == CMLabel.UPGRADE:
-            return self._getItem().isUpgradable and self._getItem().isInInventory and self.__lobbyContext.getServerSettings().isTrophyDevicesEnabled()
+            return self._getItem().isUpgradable and (self._getItem().isInInventory or self._getItem().isInSetup(self._getVehicle())) and self.__lobbyContext.getServerSettings().isTrophyDevicesEnabled()
         return super(BaseEquipmentItemContextMenu, self)._isVisible(label)
 
     def _upgradeEquipment(self):

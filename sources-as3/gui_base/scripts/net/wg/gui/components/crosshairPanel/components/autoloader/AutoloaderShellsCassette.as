@@ -128,20 +128,17 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
       
       public function autoloadProgress(param1:Number, param2:Number, param3:Boolean, param4:Boolean) : void
       {
-         if(!this._isAnimationInProgress)
+         if(!this._isAnimationInProgress && this._lastLoadedShell && param1 != this._currentAutoloadProgress)
          {
-            if(this._lastLoadedShell)
+            this._currentAutoloadProgress = param1;
+            if(!this._isAutoloadInProgress && param1 > 0)
             {
-               if(param1 != this._currentAutoloadProgress)
-               {
-                  this._currentAutoloadProgress = param1;
-                  if(!this._isAutoloadInProgress)
-                  {
-                     this._isAutoloadInProgress = true;
-                     invalidate(TIMER_STATE_INVALID);
-                  }
-                  this._lastLoadedShell.gotoAndStop(AUTOLOADING_START_FRAME + param1 * AUTOLOADING_FRAMES);
-               }
+               this._isAutoloadInProgress = true;
+               invalidate(TIMER_STATE_INVALID);
+            }
+            if(this._isAutoloadInProgress)
+            {
+               this._lastLoadedShell.gotoAndStop(AUTOLOADING_START_FRAME + param1 * AUTOLOADING_FRAMES);
             }
          }
          if(this._currentReloadingPercent >= GUN_RELOADING_COMPLETE_STATE)
@@ -212,6 +209,7 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
             }
             _loc2_++;
          }
+         this._currentAutoloadProgress = 0;
          this._isAutoloadInProgress = false;
          invalidate(TIMER_STATE_INVALID);
          this._lastLoadedShell = this._shells[this._currentAmmo];
@@ -224,7 +222,7 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
          invalidate(TIMER_STATE_INVALID);
          gotoAndStop(IDLE_STATE);
          this.updateCurrentAmmoStates(this._currentAmmo);
-         if(this._lastShell && _loc1_)
+         if(this._lastShell && _loc1_ && this._currentAmmo < this._totalAmmo)
          {
             this._lastShell.gotoAndPlay(SHELL_STATE_COMEIN);
          }

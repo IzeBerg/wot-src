@@ -269,6 +269,8 @@ package
       
       public static const VEHCONF_MODULES:String = "#veh_compare:vehConf/modules";
       
+      public static const VEHCONF_MODIFICATIONS_TITLE:String = "#veh_compare:vehConf/modifications/title";
+      
       public static const VEHCONF_EQUIPMENT:String = "#veh_compare:vehConf/equipment";
       
       public static const VEHCONF_TOPMODULESLABEL:String = "#veh_compare:vehConf/topModulesLabel";
@@ -352,6 +354,14 @@ package
       public static const VEHCONF_TOOLTIPS_ATTENTIONICONCREW_HEADER:String = "#veh_compare:vehConf/tooltips/attentionIconCrew/header";
       
       public static const VEHCONF_TOOLTIPS_ATTENTIONICONCREW_BODY:String = "#veh_compare:vehConf/tooltips/attentionIconCrew/body";
+      
+      public static const VEHCONF_MODIFICATIONS_CHOOSE:String = "#veh_compare:vehConf/modifications/choose";
+      
+      public static const VEHCONF_TOOLTIPS_MODIFICATIONS_TITLE:String = "#veh_compare:vehConf/tooltips/modifications/title";
+      
+      public static const VEHCONF_TOOLTIPS_MODIFICATIONS_DESCRIPTION:String = "#veh_compare:vehConf/tooltips/modifications/description";
+      
+      public static const VEHCONF_TOOLTIPS_MODIFICATIONS_REMOVE:String = "#veh_compare:vehConf/tooltips/modifications/remove";
        
       
       public function VEH_COMPARE()

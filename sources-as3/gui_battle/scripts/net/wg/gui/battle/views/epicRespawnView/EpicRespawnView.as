@@ -7,6 +7,7 @@ package net.wg.gui.battle.views.epicRespawnView
    import net.wg.data.constants.generated.BATTLE_VIEW_ALIASES;
    import net.wg.gui.battle.epicBattle.VO.daapi.EpicPlayerStatsVO;
    import net.wg.gui.battle.epicBattle.VO.daapi.EpicVehiclesStatsVO;
+   import net.wg.gui.battle.views.ammunitionPanel.EpicRespawnAmmunitionPanelView;
    import net.wg.gui.battle.views.battleTankCarousel.BattleTankCarousel;
    import net.wg.gui.battle.views.epicDeploymentMap.constants.DeploymentMapConstants;
    import net.wg.gui.battle.views.epicRespawnView.components.EpicRespawnDeployButtonGroup;
@@ -16,19 +17,26 @@ package net.wg.gui.battle.views.epicRespawnView
    import net.wg.infrastructure.base.meta.IEpicRespawnViewMeta;
    import net.wg.infrastructure.base.meta.impl.EpicRespawnViewMeta;
    import net.wg.infrastructure.helpers.statisticsDataController.intarfaces.IEpicBattleStatisticDataController;
+   import net.wg.utils.StageSizeBoundaries;
    import scaleform.clik.events.ButtonEvent;
    
    public class EpicRespawnView extends EpicRespawnViewMeta implements IEpicRespawnViewMeta, IEpicBattleStatisticDataController
    {
       
-      private static const DEPLOY_BUTTON_GROUP_CAROUSEL_OFFSET:int = 83;
+      private static const DEPLOY_BUTTON_GROUP_CAROUSEL_OFFSET_Y_SMALL:int = 221;
+      
+      private static const DEPLOY_BUTTON_GROUP_CAROUSEL_OFFSET_Y_BIG:int = 103;
       
       private static const TOPBAR_TF_OFFSET_Y:int = -22;
+      
+      private static const AMMUNITION_PANEL_WIDTH:int = 840;
        
       
       public var deployButtonGroup:EpicRespawnDeployButtonGroup = null;
       
       public var respawnEntriesContainer:EpicRespawnMapEntriesContainer = null;
+      
+      public var ammunitionPanel:EpicRespawnAmmunitionPanelView = null;
       
       public var topBarBG:MovieClip = null;
       
@@ -36,15 +44,30 @@ package net.wg.gui.battle.views.epicRespawnView
       
       public var carousel:BattleTankCarousel = null;
       
+      private var _originalWidth:int = 0;
+      
       private var _originalHeight:int = 0;
       
       private var _deploymentMapWidth:int = 0;
       
       private var _deploymentMapHeight:int = 0;
       
+      private var _isVehPostProgressionEnabled:Boolean = true;
+      
       public function EpicRespawnView()
       {
          super();
+      }
+      
+      override public function setCompVisible(param1:Boolean) : void
+      {
+         super.setCompVisible(param1);
+         this.carousel.visible = param1;
+         dispatchEvent(new EpicRespawnEvent(EpicRespawnEvent.VIEW_CHANGED));
+         if(!param1)
+         {
+            App.popoverMgr.hide();
+         }
       }
       
       override protected function initialize() : void
@@ -56,6 +79,8 @@ package net.wg.gui.battle.views.epicRespawnView
          this.topBarBG.visible = false;
          this.topBarTF.text = EPIC_BATTLE.RESPAWNSCREEN_HEADERTITLE;
          this.respawnEntriesContainer.addEventListener(EpicRespawnEvent.RESPAWN_LOCATION_SELECT,this.onRespawnLocationSelectHandler);
+         this.ammunitionPanel = new EpicRespawnAmmunitionPanelView();
+         addChild(this.ammunitionPanel);
       }
       
       override protected function onDispose() : void
@@ -68,8 +93,10 @@ package net.wg.gui.battle.views.epicRespawnView
          this.deployButtonGroup = null;
          this.respawnEntriesContainer.removeEventListener(EpicRespawnEvent.RESPAWN_LOCATION_SELECT,this.onRespawnLocationSelectHandler);
          this.respawnEntriesContainer = null;
+         unregisterFlashComponentS(BATTLE_VIEW_ALIASES.EPIC_RESPAWN_AMMUNITION_PANEL);
          this.topBarBG = null;
          this.topBarTF = null;
+         this.ammunitionPanel = null;
          super.onDispose();
       }
       
@@ -84,6 +111,10 @@ package net.wg.gui.battle.views.epicRespawnView
                dispatchEvent(new Event(Event.RESIZE));
             }
          }
+         if(isInvalid(InvalidationType.SIZE))
+         {
+            this.updateLayout();
+         }
       }
       
       override protected function configUI() : void
@@ -96,17 +127,17 @@ package net.wg.gui.battle.views.epicRespawnView
       {
          super.onPopulate();
          registerFlashComponentS(this.carousel,BATTLE_VIEW_ALIASES.BATTLE_TANK_CAROUSEL);
+         registerFlashComponentS(this.ammunitionPanel,BATTLE_VIEW_ALIASES.EPIC_RESPAWN_AMMUNITION_PANEL);
       }
       
-      override public function setCompVisible(param1:Boolean) : void
+      override protected function setRespawnLocations(param1:Vector.<RespawnPointVO>) : void
       {
-         super.setCompVisible(param1);
-         this.carousel.visible = param1;
-         dispatchEvent(new EpicRespawnEvent(EpicRespawnEvent.VIEW_CHANGED));
-         if(!param1)
-         {
-            App.popoverMgr.hide();
-         }
+         this.respawnEntriesContainer.setRespawnLocations(param1);
+      }
+      
+      public function as_handleAsReplay() : void
+      {
+         mouseEnabled = mouseChildren = false;
       }
       
       public function as_resetRespawnState() : void
@@ -123,6 +154,13 @@ package net.wg.gui.battle.views.epicRespawnView
       {
          this._deploymentMapWidth = param1;
          this._deploymentMapHeight = param2;
+      }
+      
+      public function as_setSelectedLocation(param1:int) : void
+      {
+         this.respawnEntriesContainer.setSelectedLocation(param1);
+         var _loc2_:RespawnPointVO = this.respawnEntriesContainer.selectedPointVO;
+         this.deployButtonGroup.updateRespawnWarning(Boolean(_loc2_) ? Boolean(_loc2_.isEnemyNear) : Boolean(false));
       }
       
       public function as_updateAutoTimer(param1:Boolean, param2:String) : void
@@ -149,46 +187,54 @@ package net.wg.gui.battle.views.epicRespawnView
       
       public function updateStage(param1:Number, param2:Number) : void
       {
-         var _loc3_:int = 0;
+         this._originalWidth = param1;
          this._originalHeight = param2;
-         _loc3_ = param1 >> 1;
-         this.topBarBG.x = -_loc3_;
+         invalidate(InvalidationType.SIZE);
+      }
+      
+      private function updateLayout() : void
+      {
+         var _loc1_:int = this._originalWidth >> 1;
+         this.topBarBG.x = -_loc1_;
          this.topBarBG.y = 0;
-         this.topBarBG.width = param1;
-         var _loc4_:Number = (param2 - DeploymentMapConstants.RESPAWN_ELEMENTS_SIZE) / this._deploymentMapHeight * DeploymentMapConstants.RESPAWN_SCALE_FACTOR;
-         var _loc5_:Number = _loc4_ * this._deploymentMapWidth;
-         var _loc6_:Number = _loc4_ * this._deploymentMapHeight;
-         this.respawnEntriesContainer.x = -_loc5_ >> 1;
-         this.respawnEntriesContainer.y = DeploymentMapConstants.SCORE_PANEL_TOP_OFFSET + ((param2 - DeploymentMapConstants.RESPAWN_ELEMENTS_SIZE) * (1 - DeploymentMapConstants.RESPAWN_SCALE_FACTOR) >> 1);
-         this.respawnEntriesContainer.setBounds(_loc5_,_loc6_);
-         this.deployButtonGroup.x = _loc3_;
+         this.topBarBG.width = this._originalWidth;
+         var _loc2_:Number = (this._originalHeight - DeploymentMapConstants.RESPAWN_ELEMENTS_SIZE) / this._deploymentMapHeight * DeploymentMapConstants.RESPAWN_SCALE_FACTOR;
+         var _loc3_:Number = _loc2_ * this._deploymentMapWidth;
+         var _loc4_:Number = _loc2_ * this._deploymentMapHeight;
+         this.respawnEntriesContainer.x = -_loc3_ >> 1;
+         this.respawnEntriesContainer.y = DeploymentMapConstants.getScorePanelTopOffset(this._isVehPostProgressionEnabled) + ((this._originalHeight - DeploymentMapConstants.RESPAWN_ELEMENTS_SIZE) * (1 - DeploymentMapConstants.RESPAWN_SCALE_FACTOR) >> 1);
+         this.respawnEntriesContainer.setBounds(_loc3_,_loc4_);
+         this.deployButtonGroup.x = _loc1_;
          this.topBarTF.x = -this.topBarTF.width >> 1;
          this.topBarTF.y = (this.respawnEntriesContainer.y >> 1) + TOPBAR_TF_OFFSET_Y;
          if(this.carousel != null)
          {
-            this.carousel.x = -_loc3_;
-            this.carousel.updateStage(param1,param2);
+            this.carousel.x = -_loc1_;
+            this.carousel.updateStage(this._originalWidth,this._originalHeight);
             this.updateCarouselElementsPositions();
          }
-      }
-      
-      public function as_setSelectedLocation(param1:int) : void
-      {
-         this.respawnEntriesContainer.setSelectedLocation(param1);
-         var _loc2_:RespawnPointVO = this.respawnEntriesContainer.selectedPointVO;
-         this.deployButtonGroup.updateRespawnWarning(Boolean(_loc2_) ? Boolean(_loc2_.isEnemyNear) : Boolean(false));
-      }
-      
-      override protected function setRespawnLocations(param1:Vector.<RespawnPointVO>) : void
-      {
-         this.respawnEntriesContainer.setRespawnLocations(param1);
+         if(this.ammunitionPanel)
+         {
+            this.ammunitionPanel.visible = this._isVehPostProgressionEnabled;
+            this.ammunitionPanel.x = -this.ammunitionPanel.width >> 1;
+         }
       }
       
       private function updateCarouselElementsPositions() : void
       {
          var _loc1_:int = this._originalHeight - this.carousel.getBottom() ^ 0;
          this.carousel.y = _loc1_;
-         this.deployButtonGroup.y = _loc1_ - DEPLOY_BUTTON_GROUP_CAROUSEL_OFFSET;
+         var _loc2_:int = this._originalWidth <= StageSizeBoundaries.WIDTH_1366 && this._isVehPostProgressionEnabled ? int(DEPLOY_BUTTON_GROUP_CAROUSEL_OFFSET_Y_SMALL) : int(DEPLOY_BUTTON_GROUP_CAROUSEL_OFFSET_Y_BIG);
+         this.deployButtonGroup.y = _loc1_ - _loc2_;
+         this.deployButtonGroup.isWide = this._originalWidth >= StageSizeBoundaries.WIDTH_1920;
+         this.ammunitionPanel.setSize(AMMUNITION_PANEL_WIDTH,_loc1_ - (this.respawnEntriesContainer.y + this.respawnEntriesContainer.bounds.height));
+         this.ammunitionPanel.y = _loc1_ - this.ammunitionPanel.height;
+      }
+      
+      public function set isVehPostProgressionEnabled(param1:Boolean) : void
+      {
+         this._isVehPostProgressionEnabled = param1;
+         invalidateSize();
       }
       
       private function onCarouselResizeHandler(param1:Event) : void

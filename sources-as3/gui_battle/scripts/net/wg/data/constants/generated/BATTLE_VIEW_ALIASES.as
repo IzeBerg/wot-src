@@ -158,6 +158,12 @@ package net.wg.data.constants.generated
       public static const BR_PLAYER_STATS_IN_BATTLE:String = "brPlayerStatsInBattle";
       
       public static const ROLE_DESCRIPTION:String = "roleDescription";
+      
+      public static const PREBATTLE_AMMUNITION_PANEL:String = "prebattleAmmunitionPanel";
+      
+      public static const EPIC_RESPAWN_AMMUNITION_PANEL:String = "epicRespawnAmmunitionPanel";
+      
+      public static const MAPS_TRAINING_GOALS:String = "mapsTrainingGoals";
        
       
       public function BATTLE_VIEW_ALIASES()

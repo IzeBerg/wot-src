@@ -69,6 +69,7 @@ package net.wg.gui.components.tooltips
       
       override protected function updatePositions() : void
       {
+         var _loc1_:Separator = null;
          this.titleTF.x = this.divisionTF.x = this.hintTF.x = this.inBattleTF.x = contentMargin.left;
          this.titleTF.y = contentMargin.top;
          this.divisionTF.y = this.titleTF.y + DIVISION_OFFSET;
@@ -76,7 +77,7 @@ package net.wg.gui.components.tooltips
          {
             this.inBattleTF.y = this.divisionTF.y;
          }
-         var _loc1_:Separator = Utils.instance.createSeparate(content);
+         _loc1_ = Utils.instance.createSeparate(content);
          _loc1_.y = this.divisionTF.y + this.divisionTF.textHeight + TOP_SEPARATOR_OFFSET ^ 0;
          separators.push(_loc1_);
          if(this.descriptionTF.visible)

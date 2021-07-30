@@ -13,7 +13,6 @@ from gui.impl.lobby.premacc.squad_bonus_tooltip_content import SquadBonusTooltip
 from gui.shared.events import PlatoonDropdownEvent
 from constants import QUEUE_TYPE
 from skeletons.gui.lobby_context import ILobbyContext
-from skeletons.gui.shared import IItemsCache
 from gui.impl.lobby.platoon.tooltip.platoon_alert_tooltip import AlertTooltip
 from gui.shared import g_eventBus
 from gui.impl.lobby.platoon.platoon_helpers import PreloadableWindow
@@ -23,7 +22,6 @@ strButtons = R.strings.platoon.buttons
 
 class WelcomeView(ViewImpl):
     __platoonCtrl = dependency.descriptor(IPlatoonController)
-    __itemsCache = dependency.descriptor(IItemsCache)
     __lobbyContext = dependency.descriptor(ILobbyContext)
 
     def __init__(self):
@@ -40,7 +38,6 @@ class WelcomeView(ViewImpl):
 
     def _onLoading(self, *args, **kwargs):
         self.__addListerens()
-        TiersLimitSubview.resetState()
         self.setChildView(self.__tiersLimitSubview.layoutID, self.__tiersLimitSubview)
         self.setChildView(self.__tiersFilterSubview.layoutID, self.__tiersFilterSubview)
         self.__initButtons()
@@ -71,7 +68,8 @@ class WelcomeView(ViewImpl):
             model.btnCreate.onClick += self.__onCreate
             model.onOutsideClick += self.__onOutsideClick
         self.__lobbyContext.getServerSettings().onServerSettingsChange += self.__onServerSettingsChange
-        self.__itemsCache.onSyncCompleted += self.__onVehicleStateChanged
+        self.__platoonCtrl.onAvailableTiersForSearchChanged += self.__onAvailableTiersForSearchChanged
+        self.__platoonCtrl.onAutoSearchCooldownChanged += self.__updateFindButton
         self.__platoonCtrl.onAutoSearchCooldownChanged += self.__updateFindButton
 
     def __removeListeners(self):
@@ -80,7 +78,8 @@ class WelcomeView(ViewImpl):
             model.btnCreate.onClick -= self.__onCreate
             model.onOutsideClick -= self.__onOutsideClick
         self.__lobbyContext.getServerSettings().onServerSettingsChange -= self.__onServerSettingsChange
-        self.__itemsCache.onSyncCompleted -= self.__onVehicleStateChanged
+        self.__platoonCtrl.onAvailableTiersForSearchChanged -= self.__onAvailableTiersForSearchChanged
+        self.__platoonCtrl.onAutoSearchCooldownChanged -= self.__updateFindButton
         self.__platoonCtrl.onAutoSearchCooldownChanged -= self.__updateFindButton
 
     def __onServerSettingsChange(self, diff):
@@ -102,7 +101,6 @@ class WelcomeView(ViewImpl):
     def __onFind(self):
         self.__platoonCtrl.createPlatoon(startAutoSearchOnUnitJoin=True)
         SearchView.resetState()
-        TiersLimitSubview.resetState()
 
     def __initButtons(self):
         with self.viewModel.transaction() as (model):
@@ -145,7 +143,7 @@ class WelcomeView(ViewImpl):
                 model.setBattleType(backport.text(battleType.standart()))
                 model.setBackgroundImage(backport.image(backgrounds.standard()))
 
-    def __onVehicleStateChanged(self, *args, **kwargs):
+    def __onAvailableTiersForSearchChanged(self):
         self.update(updateTiersLimitSubview=True)
 
 
