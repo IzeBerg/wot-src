@@ -10,6 +10,8 @@ package net.wg.gui.components.controls.scroller
       public static const RENDERER_REMOVE:String = "rendererRemove";
       
       public static const SELECT:String = "rendererSelect";
+      
+      public static const CHANGE_SIZE:String = "changeSize";
        
       
       private var _data:Object = null;

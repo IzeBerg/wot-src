@@ -178,7 +178,7 @@ package net.wg.gui.bootcamp
       
       private function onSkipVideoButtonClickHandler(param1:ButtonEvent) : void
       {
-         videoFinishedS();
+         videoFinishedS(true);
       }
       
       private function onVideoPlayerPlaybackStoppedHandler(param1:VideoPlayerEvent) : void

@@ -1,4 +1,4 @@
-import logging, Keys
+import inspect, itertools, logging, Keys
 from Event import SafeEvent, EventManager
 from gui import InputHandler
 from gui.Scaleform.framework.entities.abstract.ToolTipMgrMeta import ToolTipMgrMeta
@@ -59,6 +59,20 @@ class ToolTip(ToolTipMgrMeta):
         self.__isAdvancedKeyPressed = event.isKeyDown() and altPressed
         return self.__tooltipID is not None and altPressed
 
+    def getTypedTooltipDefaultBuildArgs(self, tooltipType):
+        builder = self._builders.getBuilder(tooltipType)
+        if builder is None:
+            _logger.warning('Builder for tooltip: type "%s" is not found', tooltipType)
+            return
+        else:
+            provider = builder.provider
+            if provider is None:
+                _logger.warning('"%s" does not have any provider', builder.__name__)
+                return
+            spec = inspect.getargspec(provider.context.buildItem)
+            return tuple(reversed([ (argName, defaultValue) for argName, defaultValue in itertools.izip_longest(reversed(spec.args), reversed(spec.defaults or [])) if argName != 'self'
+                                  ]))
+
     def onCreateTypedTooltip(self, tooltipType, args, stateType):
         if self._areTooltipsDisabled:
             return
@@ -72,7 +86,7 @@ class ToolTip(ToolTipMgrMeta):
                 _logger.warning('Tooltip can not be displayed: type "%s" is not found', tooltipType)
                 return
             self.__cacheTooltipData(False, tooltipType, args, stateType)
-            self.onShow(tooltipType, self.__isAdvancedKeyPressed)
+            self.onShow(tooltipType, args, self.__isAdvancedKeyPressed)
             if data is not None and data.isDynamic():
                 data.changeVisibility(True)
                 if tooltipType not in self._dynamic:
@@ -93,15 +107,17 @@ class ToolTip(ToolTipMgrMeta):
             window.load()
             window.move(x, y)
             self.__tooltipWindowId = window.uniqueID
-            self.onShow(tooltipType, self.__isAdvancedKeyPressed)
+            self.onShow(tooltipType, args, self.__isAdvancedKeyPressed)
             return
 
     def onCreateComplexTooltip(self, tooltipID, stateType):
         if self._areTooltipsDisabled:
             return
-        self._complex.build(self, stateType, self.__isAdvancedKeyPressed, tooltipID)
-        self.__cacheTooltipData(True, tooltipID, tuple(), stateType)
-        self.onShow(tooltipID, self.__isAdvancedKeyPressed)
+        else:
+            self._complex.build(self, stateType, self.__isAdvancedKeyPressed, tooltipID)
+            self.__cacheTooltipData(True, tooltipID, tuple(), stateType)
+            self.onShow(tooltipID, None, self.__isAdvancedKeyPressed)
+            return
 
     def onHideTooltip(self, tooltipId):
         if not self._areTooltipsDisabled and tooltipId in self._dynamic:

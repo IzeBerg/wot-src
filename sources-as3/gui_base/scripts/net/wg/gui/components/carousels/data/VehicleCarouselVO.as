@@ -1,14 +1,18 @@
 package net.wg.gui.components.carousels.data
 {
+   import net.wg.data.constants.Values;
    import net.wg.data.daapi.base.DAAPIUpdatableDataClass;
    import net.wg.gui.components.controls.VO.ActionPriceVO;
+   import net.wg.gui.components.controls.scroller.data.IScrollerItemRendererData;
    
-   public class VehicleCarouselVO extends DAAPIUpdatableDataClass
+   public class VehicleCarouselVO extends DAAPIUpdatableDataClass implements IScrollerItemRendererData
    {
       
       private static const SLOT_PRICE_ACTION_DATA:String = "slotPriceActionData";
       
       private static const PROGRESSION_POINTS_FIELD:String = "progressionPoints";
+      
+      private static const LEVEL_INFO_FIELD:String = "levelInfo";
        
       
       public var id:int = -1;
@@ -36,6 +40,8 @@ package net.wg.gui.components.carousels.data
       public var slotPrice:Number = 0;
       
       public var alpha:Number = 1;
+      
+      public var unlockedInBattle:Boolean = false;
       
       public var restoreTank:Boolean = false;
       
@@ -95,11 +101,15 @@ package net.wg.gui.components.carousels.data
       
       public var progressionPoints:ProgressionPointsVO = null;
       
+      public var levelInfo:CarouselLevelInfoVO = null;
+      
       public var isNull:Boolean = true;
+      
+      public var isNationChangeAvailable:Boolean = false;
       
       private var _slotPriceActionData:ActionPriceVO = null;
       
-      public var isNationChangeAvailable:Boolean = false;
+      private var _hasExtendedInfo:Boolean = false;
       
       public function VehicleCarouselVO(param1:Object)
       {
@@ -119,6 +129,12 @@ package net.wg.gui.components.carousels.data
             this.progressionPoints = new ProgressionPointsVO(param2);
             return false;
          }
+         if(param1 == LEVEL_INFO_FIELD)
+         {
+            this.levelInfo = new CarouselLevelInfoVO(param2);
+            this._hasExtendedInfo = this.levelInfo != null && this.levelInfo.level > 0;
+            return false;
+         }
          return super.onDataWrite(param1,param2);
       }
       
@@ -134,12 +150,37 @@ package net.wg.gui.components.carousels.data
             this.progressionPoints.dispose();
             this.progressionPoints = null;
          }
+         if(this.levelInfo != null)
+         {
+            this.levelInfo.dispose();
+            this.levelInfo = null;
+         }
          super.onDispose();
       }
       
       public function getActionPriceVO() : ActionPriceVO
       {
          return this._slotPriceActionData;
+      }
+      
+      public function get hasExtendedInfo() : Boolean
+      {
+         return this._hasExtendedInfo;
+      }
+      
+      public function get isItemExtended() : Boolean
+      {
+         return this._hasExtendedInfo && !this.levelInfo.isCollapsed;
+      }
+      
+      public function get isItemExtendendable() : Boolean
+      {
+         return this._hasExtendedInfo && this.levelInfo.isCollapsible;
+      }
+      
+      public function dataBasedWidth(param1:Boolean, param2:uint) : int
+      {
+         return !!this._hasExtendedInfo ? int(this.levelInfo.getActualWidth(param1,param2)) : int(Values.DEFAULT_INT);
       }
    }
 }

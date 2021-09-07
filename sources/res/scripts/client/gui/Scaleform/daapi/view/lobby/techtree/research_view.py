@@ -31,7 +31,7 @@ class ResearchView(LobbySubView, ResearchViewMeta):
         self._listener = TTListenerDecorator()
 
     def goToBlueprintView(self, vehicleCD):
-        shared_events.showBlueprintView(vehicleCD, self._blueprintExitEvent(vehicleCD))
+        shared_events.showBlueprintView(vehicleCD, self._createExitEvent())
 
     def goToNationChangeView(self, vehicleCD):
         shared_events.showChangeVehicleNationDialog(vehicleCD)
@@ -82,7 +82,7 @@ class ResearchView(LobbySubView, ResearchViewMeta):
         next2Unlock, unlocked, prevUnlocked = self._data.invalidateUnlocks(unlocks)
         if unlocked:
             _logger.debug('unlocked: %s', (' ').join(str(intCD) for intCD in unlocked))
-            self.as_setNodesStatesS(NODE_STATE_FLAGS.UNLOCKED, unlocked)
+            self._updateUnlockedItems(unlocked)
         if next2Unlock:
             _logger.debug('next2Unlock: %s', (' ').join(str(intCD) for intCD in next2Unlock))
             self.as_setNext2UnlockS(next2Unlock)
@@ -139,7 +139,13 @@ class ResearchView(LobbySubView, ResearchViewMeta):
         if result:
             self.as_setNodesStatesS(NODE_STATE_FLAGS.PURCHASE_DISABLED, result)
 
-    def _blueprintExitEvent(self, vehicleCD):
+    def invalidateVehPostProgression(self):
+        pass
+
+    def _updateUnlockedItems(self, unlocked):
+        self.as_setNodesStatesS(NODE_STATE_FLAGS.UNLOCKED, unlocked)
+
+    def _createExitEvent(self):
         return
 
     def _populate(self):

@@ -18,6 +18,8 @@ from messenger.proto.bw_chat2.battle_chat_cmd import BASE_CMD_NAMES
 from messenger_common_chat2 import MESSENGER_ACTION_IDS as _ACTIONS
 _C_NAME = settings.CONTAINER_NAME
 _S_NAME = settings.ENTRY_SYMBOL_NAME
+_MIN_BASE_SCALE = 1.0
+_MAX_BASE_SCALE = 0.6
 _logger = logging.getLogger(__name__)
 _CLASSIC_MINIMAP_DIMENSIONS = 10
 
@@ -267,7 +269,9 @@ class ClassicMinimapPingPlugin(plugins.MinimapPingPlugin):
         return getUniqueTeamOrControlPointID(team, number)
 
     def _processCommandByPosition(self, commands, locationCommand, position, minimapScaleIndex):
-        bases = self.__getNearestBaseForPosition(position, _BASE_PING_RANGE)
+        minimapScale = minimap_utils.getMinimapBasePingScale(minimapScaleIndex, _MIN_BASE_SCALE, _MAX_BASE_SCALE)
+        scaledBaseRange = _BASE_PING_RANGE * minimapScale
+        bases = self.__getNearestBaseForPosition(position, scaledBaseRange)
         if bases is not None:
             self._make3DPingBases(commands, bases)
             return

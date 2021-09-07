@@ -8,6 +8,8 @@ package net.wg.gui.battle.views.epicMessagesPanel.data
       
       public var rank:int = -1;
       
+      public var subTitle:String = "";
+      
       public function RankUpMessageVO(param1:Object)
       {
          super(param1);

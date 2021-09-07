@@ -1,5 +1,6 @@
 package net.wg.mock
 {
+   import flash.display.DisplayObjectContainer;
    import net.wg.data.managers.IToolTipParams;
    import net.wg.data.managers.ITooltipProps;
    import net.wg.infrastructure.managers.ITooltipFormatter;
@@ -12,6 +13,11 @@ package net.wg.mock
       public function MockTooltipMgr()
       {
          super();
+      }
+      
+      public function getContainer() : DisplayObjectContainer
+      {
+         return null;
       }
       
       public function getDefaultTooltipProps() : ITooltipProps

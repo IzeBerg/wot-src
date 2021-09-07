@@ -9,6 +9,8 @@
 		<radioman/>
 	</crew>
 	<supplySlots>5 1 1 6 6 6 7 8 8 8</supplySlots>
+	<postProgressionTree>role_HT_universal_level_10</postProgressionTree>
+	<customRoleSlotOptions>2 4</customRoleSlotOptions>
 	<speedLimits>
 		<forward>40</forward>
 		<backward>15</backward>
@@ -103,6 +105,13 @@
 			<undamaged>vehicles/french/F82_AMX_M4_Mle1949_Ter/normal/lod0/Hull.model</undamaged>
 			<destroyed>vehicles/french/F82_AMX_M4_Mle1949_Ter/crash/lod0/Hull.model</destroyed>
 			<exploded>vehicles/french/F82_AMX_M4_Mle1949_Ter/crash/lod0/Hull.model</exploded>
+			<sets>
+				<AMX_M4_Mle1949_Ter_3DSt_BVI>
+					<undamaged>vehicles/french/F82_AMX_M4_Mle1949_Ter/_skins/AMX_M4_Mle1949_Ter_3DSt_BVI/normal/lod0/Hull.model</undamaged>
+					<destroyed>vehicles/french/F82_AMX_M4_Mle1949_Ter/_skins/AMX_M4_Mle1949_Ter_3DSt_BVI/crash/lod0/Hull.model</destroyed>
+					<exploded>vehicles/french/F82_AMX_M4_Mle1949_Ter/_skins/AMX_M4_Mle1949_Ter_3DSt_BVI/crash/lod0/Hull.model</exploded>
+				</AMX_M4_Mle1949_Ter_3DSt_BVI>
+			</sets>
 		</models>
 		<swinging>
 			<lodDist>FAR</lodDist>
@@ -136,11 +145,11 @@
 				<slotType>clan</slotType>
 				<slotId>10000</slotId>
 				<rayStart>
-					-0.538855 0.61147 2.98648
+					-0.538855 0.479765 2.89187
 					<!--BW_String-->
 				</rayStart>
 				<rayEnd>
-					-0.538855 0.319092 2.77646
+					-0.538855 0.450797 2.87107
 					<!--BW_String-->
 				</rayEnd>
 				<rayUp>
@@ -1695,6 +1704,90 @@
 					<!--BW_String-->
 				</anchorDirection>
 			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15052</slotId>
+				<position>
+					0.342084 1.61842 2.91893
+					<!--BW_String-->
+				</position>
+				<rotation>
+					0.540342 -0.000010 3.14158
+					<!--BW_String-->
+				</rotation>
+				<attachNode>V</attachNode>
+				<tags>formfactor_square</tags>
+				<compatibleModels>AMX_M4_Mle1949_Ter_3DSt_BVI</compatibleModels>
+				<scale>0.587463 0.333708 0.587477</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>0.324293</clipAngle>
+				<anchorPosition>
+					0.342084 0.508687 2.91213
+					<!--BW_String-->
+				</anchorPosition>
+				<anchorDirection>0.000007 0.857533 0.514429</anchorDirection>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15053</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>AMX_M4_Mle1949_Ter_3DSt_BVI</compatibleModels>
+				<position>
+					-1.00752 2.08158 -3.46017
+					<!--BW_String-->
+				</position>
+				<rotation>
+					3.11871 -0.000087 -0.000885248
+					<!--BW_String-->
+				</rotation>
+				<scale>0.667463 0.100116 0.667459</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>0.555018</clipAngle>
+				<anchorPosition>
+					-1.00756 1.02446 -3.46111
+					<!--BW_String-->
+				</anchorPosition>
+				<anchorDirection>
+					-0.000883246 0.999738 -0.0228802
+					<!--BW_String-->
+				</anchorDirection>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15054</slotId>
+				<position>
+					1.00755 2.08157 -3.46017
+					<!--BW_String-->
+				</position>
+				<rotation>
+					3.11871 -0.000088 -0.000885248
+					<!--BW_String-->
+				</rotation>
+				<attachNode>V</attachNode>
+				<tags>formfactor_square</tags>
+				<compatibleModels>AMX_M4_Mle1949_Ter_3DSt_BVI</compatibleModels>
+				<scale>0.667463 0.100116 0.667459</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>0.555018</clipAngle>
+				<anchorPosition>
+					1.00751 1.02445 -3.46111
+					<!--BW_String-->
+				</anchorPosition>
+				<anchorDirection>
+					-0.00088325 0.999738 -0.0228801
+					<!--BW_String-->
+				</anchorDirection>
+			</slot>
+			<slot>
+				<slotType>sequence</slotType>
+				<slotId>18000</slotId>
+				<position>0.000000 0.000000 0.000000</position>
+				<rotation>0.000000 0.000000 0.000000</rotation>
+				<attachNode>V</attachNode>
+			</slot>
 		</customizationSlots>
 		<customization>
 			<customizableVehicleAreas>
@@ -1754,6 +1847,13 @@
 				<undamaged>vehicles/french/F82_AMX_M4_Mle1949_Ter/normal/lod0/Chassis.model</undamaged>
 				<destroyed>vehicles/french/F82_AMX_M4_Mle1949_Ter/crash/lod0/Chassis.model</destroyed>
 				<exploded>vehicles/french/F82_AMX_M4_Mle1949_Ter/crash/lod0/Chassis.model</exploded>
+				<sets>
+					<AMX_M4_Mle1949_Ter_3DSt_BVI>
+						<undamaged>vehicles/french/F82_AMX_M4_Mle1949_Ter/_skins/AMX_M4_Mle1949_Ter_3DSt_BVI/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/french/F82_AMX_M4_Mle1949_Ter/_skins/AMX_M4_Mle1949_Ter_3DSt_BVI/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/french/F82_AMX_M4_Mle1949_Ter/_skins/AMX_M4_Mle1949_Ter_3DSt_BVI/crash/lod0/Chassis.model</exploded>
+					</AMX_M4_Mle1949_Ter_3DSt_BVI>
+				</sets>
 			</models>
 			<traces>
 				<lodDist>FAR</lodDist>
@@ -1888,6 +1988,12 @@
 					<UTiles>1</UTiles>
 					<VTiles>1</VTiles>
 				</atlas>
+				<modelSets>
+					<AMX_M4_Mle1949_Ter_3DSt_BVI>
+						<segmentModelLeft>vehicles/french/F82_AMX_M4_Mle1949_Ter/_skins/AMX_M4_Mle1949_Ter_3DSt_BVI/track/segment_01_L.model</segmentModelLeft>
+						<segmentModelRight>vehicles/french/F82_AMX_M4_Mle1949_Ter/_skins/AMX_M4_Mle1949_Ter_3DSt_BVI/track/segment_01_R.model</segmentModelRight>
+					</AMX_M4_Mle1949_Ter_3DSt_BVI>
+				</modelSets>
 			</splineDesc>
 			<groundNodes>
 				<group>
@@ -2302,6 +2408,12 @@
 						<model>vehicles/french/F82_AMX_M4_Mle1949_Ter/track/Segmet_1.model</model>
 						<length>0.144258</length>
 					</mainSegment>
+					<modelSets>
+						<AMX_M4_Mle1949_Ter_3DSt_BVI>
+							<mainSegmentModel>vehicles/french/F82_AMX_M4_Mle1949_Ter/_skins/AMX_M4_Mle1949_Ter_3DSt_BVI/track/segment_01_L.model</mainSegmentModel>
+							<secSegmentModel/>
+						</AMX_M4_Mle1949_Ter_3DSt_BVI>
+					</modelSets>
 					<collisionHull>
 						<bottom/>
 						<top>
@@ -2400,7 +2512,7 @@
 						<sync>
 							<name>WD_L1</name>
 							<startAngle>
-								-364.944
+								-364.45
 								<!--BW_String-->
 							</startAngle>
 							<teethCount>18</teethCount>
@@ -2846,6 +2958,12 @@
 						<model>vehicles/french/F82_AMX_M4_Mle1949_Ter/track/Segmet_1.model</model>
 						<length>0.145043</length>
 					</mainSegment>
+					<modelSets>
+						<AMX_M4_Mle1949_Ter_3DSt_BVI>
+							<mainSegmentModel>vehicles/french/F82_AMX_M4_Mle1949_Ter/_skins/AMX_M4_Mle1949_Ter_3DSt_BVI/track/segment_01_R.model</mainSegmentModel>
+							<secSegmentModel/>
+						</AMX_M4_Mle1949_Ter_3DSt_BVI>
+					</modelSets>
 					<collisionHull>
 						<bottom/>
 						<top>
@@ -2941,7 +3059,7 @@
 						<sync>
 							<name>WD_R1</name>
 							<startAngle>
-								-358.735
+								-364.45
 								<!--BW_String-->
 							</startAngle>
 							<teethCount>18</teethCount>
@@ -3564,6 +3682,13 @@
 						<undamaged>vehicles/french/F82_AMX_M4_Mle1949_Ter/normal/lod0/Gun_01.model</undamaged>
 						<destroyed>vehicles/french/F82_AMX_M4_Mle1949_Ter/crash/lod0/Gun_01.model</destroyed>
 						<exploded>vehicles/french/F82_AMX_M4_Mle1949_Ter/crash/lod0/Gun_01.model</exploded>
+						<sets>
+							<AMX_M4_Mle1949_Ter_3DSt_BVI>
+								<undamaged>vehicles/french/F82_AMX_M4_Mle1949_Ter/_skins/AMX_M4_Mle1949_Ter_3DSt_BVI/normal/lod0/Gun_01.model</undamaged>
+								<destroyed>vehicles/french/F82_AMX_M4_Mle1949_Ter/_skins/AMX_M4_Mle1949_Ter_3DSt_BVI/crash/lod0/Gun_01.model</destroyed>
+								<exploded>vehicles/french/F82_AMX_M4_Mle1949_Ter/_skins/AMX_M4_Mle1949_Ter_3DSt_BVI/crash/lod0/Gun_01.model</exploded>
+							</AMX_M4_Mle1949_Ter_3DSt_BVI>
+						</sets>
 					</models>
 					<hitTester>
 						<collisionModelServer>vehicles/french/F82_AMX_M4_Mle1949_Ter/collision/Gun_01.model</collisionModelServer>
@@ -3756,6 +3881,13 @@
 						<undamaged>vehicles/french/F82_AMX_M4_Mle1949_Ter/normal/lod0/Gun_02.model</undamaged>
 						<destroyed>vehicles/french/F82_AMX_M4_Mle1949_Ter/crash/lod0/Gun_02.model</destroyed>
 						<exploded>vehicles/french/F82_AMX_M4_Mle1949_Ter/crash/lod0/Gun_02.model</exploded>
+						<sets>
+							<AMX_M4_Mle1949_Ter_3DSt_BVI>
+								<undamaged>vehicles/french/F82_AMX_M4_Mle1949_Ter/_skins/AMX_M4_Mle1949_Ter_3DSt_BVI/normal/lod0/Gun_02.model</undamaged>
+								<destroyed>vehicles/french/F82_AMX_M4_Mle1949_Ter/_skins/AMX_M4_Mle1949_Ter_3DSt_BVI/crash/lod0/Gun_02.model</destroyed>
+								<exploded>vehicles/french/F82_AMX_M4_Mle1949_Ter/_skins/AMX_M4_Mle1949_Ter_3DSt_BVI/crash/lod0/Gun_02.model</exploded>
+							</AMX_M4_Mle1949_Ter_3DSt_BVI>
+						</sets>
 					</models>
 					<hitTester>
 						<collisionModelServer>vehicles/french/F82_AMX_M4_Mle1949_Ter/collision/Gun_02.model</collisionModelServer>
@@ -3808,7 +3940,7 @@
 								<!--BW_String-->
 							</rayEnd>
 							<rayUp>
-								0.168 0.000000 0.000000
+								0.19 0.000000 0.000000
 								<!--BW_String-->
 							</rayUp>
 							<applyToFabric>true</applyToFabric>
@@ -3837,6 +3969,13 @@
 				<undamaged>vehicles/french/F82_AMX_M4_Mle1949_Ter/normal/lod0/Turret_01.model</undamaged>
 				<destroyed>vehicles/french/F82_AMX_M4_Mle1949_Ter/crash/lod0/Turret_01.model</destroyed>
 				<exploded>vehicles/french/F82_AMX_M4_Mle1949_Ter/crash/lod0/Turret_01.model</exploded>
+				<sets>
+					<AMX_M4_Mle1949_Ter_3DSt_BVI>
+						<undamaged>vehicles/french/F82_AMX_M4_Mle1949_Ter/_skins/AMX_M4_Mle1949_Ter_3DSt_BVI/normal/lod0/Turret_01.model</undamaged>
+						<destroyed>vehicles/french/F82_AMX_M4_Mle1949_Ter/_skins/AMX_M4_Mle1949_Ter_3DSt_BVI/crash/lod0/Turret_01.model</destroyed>
+						<exploded>vehicles/french/F82_AMX_M4_Mle1949_Ter/_skins/AMX_M4_Mle1949_Ter_3DSt_BVI/crash/lod0/Turret_01.model</exploded>
+					</AMX_M4_Mle1949_Ter_3DSt_BVI>
+				</sets>
 			</models>
 			<hitTester>
 				<collisionModelServer>vehicles/french/F82_AMX_M4_Mle1949_Ter/collision/Turret_01.model</collisionModelServer>
@@ -4970,6 +5109,93 @@
 						<!--BW_String-->
 					</anchorPosition>
 					<anchorDirection>0.000003 0.993434 0.114403</anchorDirection>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35036</slotId>
+					<tags>formfactor_square</tags>
+					<compatibleModels>AMX_M4_Mle1949_Ter_3DSt_BVI</compatibleModels>
+					<position>
+						-0.952332 2.58186 0.636546
+						<!--BW_String-->
+					</position>
+					<rotation>
+						1.18792 -1.51373 -3.06743
+						<!--BW_String-->
+					</rotation>
+					<scale>0.519764 0.447661 0.519772</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>256</showOn>
+					<clipAngle>
+						1.24891
+						<!--BW_String-->
+					</clipAngle>
+					<anchorPosition>
+						-1.09806 0.855195 0.17325
+						<!--BW_String-->
+					</anchorPosition>
+					<anchorDirection>
+						-0.927764 0.372563 -0.0212147
+						<!--BW_String-->
+					</anchorDirection>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35037</slotId>
+					<tags>formfactor_square</tags>
+					<compatibleModels>AMX_M4_Mle1949_Ter_3DSt_BVI</compatibleModels>
+					<position>
+						0.000019 3.07337 0.0888873
+						<!--BW_String-->
+					</position>
+					<rotation>
+						0.114654 0.000005 3.14159
+						<!--BW_String-->
+					</rotation>
+					<scale>
+						0.656749 0.18661 0.65677
+						<!--BW_String-->
+					</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>4352</showOn>
+					<clipAngle>
+						1.47487
+						<!--BW_String-->
+					</clipAngle>
+					<anchorPosition>
+						0.000020 1.34133 -0.364957
+						<!--BW_String-->
+					</anchorPosition>
+					<anchorDirection>0.000003 0.993434 0.114403</anchorDirection>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35038</slotId>
+					<tags>formfactor_square</tags>
+					<compatibleModels>AMX_M4_Mle1949_Ter_3DSt_BVI</compatibleModels>
+					<position>
+						0.961502 2.79681 -0.273418
+						<!--BW_String-->
+					</position>
+					<rotation>
+						1.18793 1.51372 3.06741
+						<!--BW_String-->
+					</rotation>
+					<scale>0.352937 0.303977 0.352943</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>256</showOn>
+					<clipAngle>
+						1.24891
+						<!--BW_String-->
+					</clipAngle>
+					<anchorPosition>
+						1.04496 1.04515 -0.735291
+						<!--BW_String-->
+					</anchorPosition>
+					<anchorDirection>
+						0.927769 0.372552 -0.0212225
+						<!--BW_String-->
+					</anchorDirection>
 				</slot>
 			</customizationSlots>
 			<customization>

@@ -7,12 +7,13 @@ package net.wg.gui.lobby.techtree
    import net.wg.data.constants.generated.NODE_STATE_FLAGS;
    import net.wg.data.constants.generated.VEHPREVIEW_CONSTANTS;
    import net.wg.gui.components.advanced.interfaces.IBackButton;
+   import net.wg.gui.lobby.components.VehicleTitle;
    import net.wg.gui.lobby.techtree.controls.BenefitsComponent;
-   import net.wg.gui.lobby.techtree.controls.ResearchRootTitle;
    import net.wg.gui.lobby.techtree.data.ResearchPageVO;
    import net.wg.gui.lobby.techtree.data.ResearchRootVO;
    import net.wg.gui.lobby.techtree.data.state.NodeStateCollection;
    import net.wg.gui.lobby.techtree.data.vo.NodeData;
+   import net.wg.gui.lobby.techtree.data.vo.ResearchPostProgressionDataVO;
    import net.wg.gui.lobby.techtree.interfaces.IResearchPage;
    import net.wg.gui.lobby.techtree.sub.ResearchItems;
    import net.wg.gui.lobby.tradeIn.TradeOffWidget;
@@ -65,7 +66,7 @@ package net.wg.gui.lobby.techtree
       
       public var background:Sprite = null;
       
-      public var title:ResearchRootTitle = null;
+      public var title:VehicleTitle = null;
       
       public var footerBg:Sprite = null;
       
@@ -81,7 +82,6 @@ package net.wg.gui.lobby.techtree
       {
          super.updateStage(param1,param2);
          setViewSize(param1,param2);
-         this.researchItems.setViewWidth(param1);
          invalidateSize();
       }
       
@@ -98,10 +98,15 @@ package net.wg.gui.lobby.techtree
          }
       }
       
+      override protected function setPostProgressionData(param1:ResearchPostProgressionDataVO) : void
+      {
+         this.researchItems.setPostProgressionData(param1);
+      }
+      
       override protected function setRootData(param1:ResearchRootVO) : void
       {
          this.researchItems.setRootData(param1);
-         this.title.setData(param1);
+         this.title.setData(param1.vehicleTitle);
       }
       
       override protected function onBeforeDispose() : void
@@ -226,6 +231,11 @@ package net.wg.gui.lobby.techtree
          this.researchItems.setXpInfoLinkage(param1);
       }
       
+      public function as_showPostProgressionUnlockAnimation() : void
+      {
+         this.researchItems.showPostProgressionUnlockAnimation();
+      }
+      
       protected function updateLayouts() : void
       {
          var _loc4_:int = 0;
@@ -233,6 +243,7 @@ package net.wg.gui.lobby.techtree
          var _loc2_:int = height >> 1;
          this.researchItems.y = _loc2_;
          this.researchItems.x = _loc1_ + RESEARCH_ITEMS_CENTER_OFFSET_X;
+         this.researchItems.invalidateLayout();
          this.title.x = _loc1_;
          var _loc3_:uint = _loc2_ + TITLE_CENTER_Y_OFFSET >> 1;
          this.title.y = _loc3_ > TITLE_MIN_Y_VALUE ? Number(_loc3_) : Number(TITLE_MIN_Y_VALUE);

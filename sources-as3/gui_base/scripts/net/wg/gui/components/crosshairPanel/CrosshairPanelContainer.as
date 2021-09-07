@@ -82,10 +82,6 @@ package net.wg.gui.components.crosshairPanel
       
       private var _autoloaderBaseTime:Number = 0;
       
-      private var _reloadingProgress:Number = 0;
-      
-      private var _reloadingProgressSeconds:Number = 0;
-      
       private var _autoloaderState:String = "reloadingEnd";
       
       private var _autoloaderTimer:Number = -1;
@@ -216,9 +212,12 @@ package net.wg.gui.components.crosshairPanel
       
       override protected function setGunMarkersIndicators(param1:Vector.<GunMarkerIndicatorVO>) : void
       {
-         var _loc2_:CrosshairSettingsVO = this._settings[this._settingId];
-         this._currentCrosshair.setGunMarkersData(param1,_loc2_.isColorBlind);
          this._indicatorsData = param1;
+         var _loc2_:CrosshairSettingsVO = this._settings[this._settingId];
+         if(_loc2_ && this._currentCrosshair != null)
+         {
+            this._currentCrosshair.setGunMarkersData(param1,_loc2_.isColorBlind);
+         }
       }
       
       override protected function setShotFlyTimes(param1:Vector.<ShotFlyTimeVO>) : void
@@ -259,7 +258,6 @@ package net.wg.gui.components.crosshairPanel
          else if(param1 == 0)
          {
             this._autoloaderState = CrosshairConsts.RELOADING_END;
-            this._reloadingProgressSeconds = this._autoloaderBaseTime;
          }
          this._isAutoloaderCritical = param4;
          if(this._currentCrosshair != null)
@@ -915,15 +913,18 @@ package net.wg.gui.components.crosshairPanel
       
       private function applyAutoloaderState() : void
       {
+         if(this._currentCrosshair == null)
+         {
+            return;
+         }
+         var _loc1_:Number = 0;
+         var _loc2_:Number = this._autoloaderBaseTime;
          if(this._autoloaderState != CrosshairConsts.RELOADING_END)
          {
-            this._reloadingProgressSeconds = (this._reloadingAutoloaderFinishTime - getTimer()) / CrosshairConsts.MS_IN_SECOND;
-            this._reloadingProgress = this._reloadingProgressSeconds / this._autoloaderBaseTime;
+            _loc2_ = (this._reloadingAutoloaderFinishTime - getTimer()) / CrosshairConsts.MS_IN_SECOND;
+            _loc1_ = _loc2_ / this._autoloaderBaseTime;
          }
-         if(this._currentCrosshair != null)
-         {
-            this._currentCrosshair.autoloaderUpdate(this._reloadingProgress,this._reloadingProgressSeconds,this._isAutoloaderTimerOn,this._isAutoloaderTimerRed);
-         }
+         this._currentCrosshair.autoloaderUpdate(_loc1_,_loc2_,this._isAutoloaderTimerOn,this._isAutoloaderTimerRed);
       }
       
       private function applyData(param1:Boolean = false) : void

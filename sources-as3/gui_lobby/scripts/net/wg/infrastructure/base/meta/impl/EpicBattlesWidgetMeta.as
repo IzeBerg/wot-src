@@ -15,10 +15,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public var onSoundTrigger:Function;
       
-      public var onChangeServerClick:Function;
-      
-      public var onQuestBtnClick:Function;
-      
       private var _epicBattlesWidgetVO:EpicBattlesWidgetVO;
       
       public function EpicBattlesWidgetMeta()
@@ -52,18 +48,6 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.onSoundTrigger,"onSoundTrigger" + Errors.CANT_NULL);
          this.onSoundTrigger(param1);
-      }
-      
-      public function onChangeServerClickS() : void
-      {
-         App.utils.asserter.assertNotNull(this.onChangeServerClick,"onChangeServerClick" + Errors.CANT_NULL);
-         this.onChangeServerClick();
-      }
-      
-      public function onQuestBtnClickS(param1:String, param2:String) : void
-      {
-         App.utils.asserter.assertNotNull(this.onQuestBtnClick,"onQuestBtnClick" + Errors.CANT_NULL);
-         this.onQuestBtnClick(param1,param2);
       }
       
       public final function as_setData(param1:Object) : void

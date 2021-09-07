@@ -79,7 +79,7 @@ class BCVideoPage(BCOutroVideoPageMeta):
     def handleError(self, data):
         self.stopVideo()
 
-    def videoFinished(self):
+    def videoFinished(self, skipped=False):
         self.stopVideo()
 
     def _populate(self):

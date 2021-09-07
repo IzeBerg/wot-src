@@ -9,6 +9,8 @@ package net.wg.gui.lobby.vehicleCompare.controls.view
    import flash.text.TextFormat;
    import flash.text.TextFormatAlign;
    import net.wg.data.constants.Fonts;
+   import net.wg.data.constants.Values;
+   import net.wg.gui.components.controls.scroller.data.ScrollerItemRendererSize;
    import net.wg.gui.interfaces.ISoundButtonEx;
    import net.wg.gui.lobby.vehicleCompare.data.VehCompareVehicleVO;
    import net.wg.gui.lobby.vehicleCompare.data.VehParamsDataVO;
@@ -303,6 +305,20 @@ package net.wg.gui.lobby.vehicleCompare.controls.view
       
       public function set isViewPortEnabled(param1:Boolean) : void
       {
+      }
+      
+      public function get rowsCount() : int
+      {
+         return Values.ZERO;
+      }
+      
+      public function set rowsCount(param1:int) : void
+      {
+      }
+      
+      public function get adaptiveSize() : String
+      {
+         return ScrollerItemRendererSize.NORMAL_SIZE;
       }
       
       private function onRendererDataChangeHandler(param1:Event) : void

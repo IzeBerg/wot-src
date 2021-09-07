@@ -1,9 +1,9 @@
 package net.wg.gui.lobby.vehicleTradeWnds.sell
 {
    import fl.transitions.easing.Strong;
+   import flash.display.MovieClip;
    import flash.display.Sprite;
    import flash.events.Event;
-   import net.wg.data.constants.Values;
    import net.wg.gui.components.controls.CheckBox;
    import net.wg.gui.components.controls.IconText;
    import net.wg.gui.components.controls.SoundButtonEx;
@@ -28,13 +28,11 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
       
       private static const SLIDING_SPEED:Number = 350;
       
+      private static const TWEEN_QUICKSET:Object = {"ease":Strong.easeOut};
+      
       private static const DISMISS_TANKMEN:int = 1;
       
       private static const CONTENT_RIGHT_ADDITIONAL_PADDING:int = -4;
-      
-      private static const POSITIVE_PREFIX:String = "+ ";
-      
-      private static const NEGATIVE_PREFIX:String = "- ";
       
       private static const INV_CONTROL_QUESTION:String = "invControlQuestion";
       
@@ -63,17 +61,15 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
       
       private var _creditsIT:IconText = null;
       
-      private var _setingsDropBtn:CheckBox = null;
+      private var _settingsDropBtn:CheckBox = null;
       
       private var _listVisibleHeight:Number = 0;
       
-      private var _tweens:Vector.<Tween>;
+      private var _tweens:Vector.<Tween> = null;
       
       private var _countTweenObjects:int = 0;
       
       private var _countCallBack:int = 0;
-      
-      private var _vehicleVo:SellVehicleVo = null;
       
       private var _data:SellDialogVO = null;
       
@@ -85,23 +81,8 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
       
       public function VehicleSellDialog()
       {
-         this._tweens = new Vector.<Tween>();
          this._totalCost = new VehicleSellDialogMoney();
          super();
-      }
-      
-      private static function getPrefixByValue(param1:Number) : String
-      {
-         var _loc2_:String = Values.EMPTY_STR;
-         if(param1 > 0)
-         {
-            _loc2_ = POSITIVE_PREFIX;
-         }
-         else if(param1 < 0)
-         {
-            _loc2_ = NEGATIVE_PREFIX;
-         }
-         return _loc2_;
       }
       
       override public function setWindow(param1:IWindow) : void
@@ -130,7 +111,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          scaleX = scaleY = 1;
          this.controlQuestion.visible = this._controlQuestionVisible;
          this._settingsBtn = this.slidingComponent.settingsBtn;
-         this._setingsDropBtn = this._settingsBtn.setingsDropBtn;
+         this._settingsDropBtn = this._settingsBtn.setingsDropBtn;
          this._creditsIT = this._settingsBtn.creditsIT;
       }
       
@@ -140,9 +121,9 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          this.controlQuestion.visible = false;
          this.controlQuestion.addEventListener(ControlQuestionComponent.USER_INPUT_HANDLER,this.onControlUserInputHandlerHandler);
          this.slidingComponent.slidingScrList.addEventListener(VehicleSellDialogEvent.LIST_WAS_DRAWN,this.onSlidingComponentListWasDrawnHandler);
-         this.devicesComponent.addEventListener(VehicleSellDialogEvent.SELL_DIALOG_LIST_ITEM_RENDERER_WAS_DRAWN,this.onSellDevicesComponentWasDrawnHandler);
+         this.devicesComponent.addEventListener(VehicleSellDialogEvent.SELL_DIALOG_LIST_ITEM_RENDERER_WAS_DRAWN,this.onSellDialogListItemRendererWasDrawnHandler);
          this.cancelBtn.label = DIALOGS.VEHICLESELLDIALOG_CANCEL;
-         this.addEventListener(VehicleSellDialogEvent.SELECTION_CHANGED,this.onSelectionChangeHandler);
+         this.addEventListener(VehicleSellDialogEvent.SELECTION_CHANGED,this.onSelectionChangedHandler);
          this.cancelBtn.addEventListener(ButtonEvent.CLICK,this.onCancelBtnClickHandler);
          this.submitBtn.addEventListener(ButtonEvent.CLICK,this.onSubmitBtnClickHandler);
          this.headerComponent.inBarracksDrop.addEventListener(ListEvent.INDEX_CHANGE,this.onHeaderComponentIndexChangeHandler);
@@ -151,23 +132,19 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
       
       override protected function onDispose() : void
       {
-         var _loc1_:Tween = null;
          App.utils.scheduler.cancelTask(setFocus);
          this.slidingComponent.slidingScrList.removeEventListener(VehicleSellDialogEvent.LIST_WAS_DRAWN,this.onSlidingComponentListWasDrawnHandler);
-         this.devicesComponent.removeEventListener(VehicleSellDialogEvent.SELL_DIALOG_LIST_ITEM_RENDERER_WAS_DRAWN,this.onSellDevicesComponentWasDrawnHandler);
-         this.removeEventListener(VehicleSellDialogEvent.SELECTION_CHANGED,this.onSelectionChangeHandler);
-         this._setingsDropBtn.removeEventListener(Event.SELECT,this.onSlidingComponentSelectHandler);
+         this.devicesComponent.removeEventListener(VehicleSellDialogEvent.SELL_DIALOG_LIST_ITEM_RENDERER_WAS_DRAWN,this.onSellDialogListItemRendererWasDrawnHandler);
+         this.removeEventListener(VehicleSellDialogEvent.SELECTION_CHANGED,this.onSelectionChangedHandler);
+         this._settingsDropBtn.removeEventListener(Event.SELECT,this.onSlidingComponentSelectHandler);
          this.controlQuestion.removeEventListener(ControlQuestionComponent.USER_INPUT_HANDLER,this.onControlUserInputHandlerHandler);
          this.cancelBtn.removeEventListener(ButtonEvent.CLICK,this.onCancelBtnClickHandler);
          this.submitBtn.removeEventListener(ButtonEvent.CLICK,this.onSubmitBtnClickHandler);
          this.headerComponent.inBarracksDrop.removeEventListener(ListEvent.INDEX_CHANGE,this.onHeaderComponentIndexChangeHandler);
-         for each(_loc1_ in this._tweens)
-         {
-            _loc1_.paused = true;
-            _loc1_ = null;
-         }
+         this.clearTweens();
+         this._tweens = null;
          this._settingsBtn = null;
-         this._setingsDropBtn = null;
+         this._settingsDropBtn = null;
          this._creditsIT = null;
          this.headerComponent.dispose();
          this.headerComponent = null;
@@ -176,7 +153,6 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          this.slidingComponent.dispose();
          this.devicesComponent.dispose();
          this.controlQuestion.dispose();
-         this._vehicleVo = null;
          this.slidingComponent = null;
          this.devicesComponent = null;
          this.controlQuestion = null;
@@ -185,11 +161,6 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          this.cancelBtn = null;
          this.submitBtn.dispose();
          this.submitBtn = null;
-         if(this._tweens != null)
-         {
-            this._tweens.splice(0,this._tweens.length);
-         }
-         this._tweens = null;
          this._data = null;
          this._totalCost.dispose();
          this._totalCost = null;
@@ -227,24 +198,22 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
       
       override protected function setData(param1:SellDialogVO) : void
       {
+         var _loc2_:SellVehicleVo = null;
+         if(this._data == param1 || param1 == null)
+         {
+            return;
+         }
          this._data = param1;
-         this._vehicleVo = param1.sellVehicleVO;
          this._totalCost.updateAccountMoneyDict(param1.accountMoney);
-         var _loc2_:String = !!this._vehicleVo.isRented ? DIALOGS.VEHICLEREMOVEDIALOG_TITLE : DIALOGS.VEHICLESELLDIALOG_TITLE;
-         if(this._vehicleVo.isRented)
-         {
-            _loc2_ = DIALOGS.VEHICLEREMOVEDIALOG_TITLE;
-         }
-         else
-         {
-            _loc2_ = DIALOGS.VEHICLESELLDIALOG_TITLE;
-         }
-         this.window.title = App.utils.locale.makeString(_loc2_,{"name":this._vehicleVo.userName});
-         this.submitBtn.label = !!this._vehicleVo.isRented ? DIALOGS.VEHICLESELLDIALOG_REMOVE : DIALOGS.VEHICLESELLDIALOG_SUBMIT;
-         this.headerComponent.setData(this._vehicleVo);
+         _loc2_ = param1.sellVehicleVO;
+         var _loc3_:String = !!_loc2_.isRented ? DIALOGS.VEHICLEREMOVEDIALOG_TITLE : DIALOGS.VEHICLESELLDIALOG_TITLE;
+         this.window.title = App.utils.locale.makeString(_loc3_,{"name":_loc2_.userName});
+         this.submitBtn.label = !!_loc2_.isRented ? DIALOGS.VEHICLESELLDIALOG_REMOVE : DIALOGS.VEHICLESELLDIALOG_SUBMIT;
+         this.headerComponent.setData(_loc2_);
          this.devicesComponent.setData(this._data.optionalDevicesOnVehicle);
          this.slidingComponent.sellData = this.devicesComponent.sellData;
          this.slidingComponent.isOpened = this._data.isSlidingComponentOpened;
+         this.devicesComponent.isExtended = !this._data.isSlidingComponentOpened;
          this.slidingComponent.setShells(this._data.shellsOnVehicle);
          this.slidingComponent.setEquipment(this._data.equipmentsOnVehicle);
          this.slidingComponent.battleBoosters(this._data.battleBoostersOnVehicle);
@@ -283,6 +252,19 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          this.controlQuestion.invalidateData();
       }
       
+      public function as_setTotal(param1:int, param2:Object) : void
+      {
+         this._creditsCommon = param1;
+         this._totalCost.update(param2);
+         invalidate(INV_RESULT);
+      }
+      
+      public function as_updateAccountMoney(param1:String, param2:int) : void
+      {
+         this._totalCost.updateAccountMoney(param1,param2);
+         invalidate(INV_RESULT);
+      }
+      
       public function as_visibleControlBlock(param1:Boolean) : void
       {
          if(this.controlQuestion.visible == param1)
@@ -301,22 +283,9 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          invalidate(INV_CONTROL_QUESTION,InvalidationType.SIZE);
       }
       
-      public function compCompletedTween() : Boolean
+      private function compCompletedTween() : Boolean
       {
          return this._countTweenObjects == this._countCallBack;
-      }
-      
-      public function motionCallBack(param1:Tween) : void
-      {
-         ++this._countCallBack;
-         if(this.compCompletedTween())
-         {
-            this.updateComponentsPosition();
-            if(this.controlQuestion.userInput == lastFocusedElement)
-            {
-               App.utils.scheduler.scheduleOnNextFrame(setFocus,this.controlQuestion.userInput);
-            }
-         }
       }
       
       private function updateWindowPosition() : void
@@ -341,7 +310,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          }
          if(this.slidingComponent.visible)
          {
-            this._setingsDropBtn.addEventListener(Event.SELECT,this.onSlidingComponentSelectHandler);
+            this._settingsDropBtn.addEventListener(Event.SELECT,this.onSlidingComponentSelectHandler);
             this.slidingComponent.y = _loc1_;
             _loc1_ = this.slidingComponent.y + this.slidingComponent.getNextPosition();
          }
@@ -377,109 +346,82 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          }
       }
       
+      private function clearTweens() : void
+      {
+         var _loc1_:Tween = null;
+         if(this._tweens == null)
+         {
+            return;
+         }
+         for each(_loc1_ in this._tweens)
+         {
+            _loc1_.dispose();
+         }
+         this._tweens.length = 0;
+      }
+      
+      private function motionCallBack(param1:Tween) : void
+      {
+         ++this._countCallBack;
+         if(this.compCompletedTween())
+         {
+            this.updateComponentsPosition();
+            if(this.controlQuestion.userInput == lastFocusedElement)
+            {
+               App.utils.scheduler.scheduleOnNextFrame(setFocus,this.controlQuestion.userInput);
+            }
+         }
+      }
+      
       private function onSlidingComponentSelectHandler(param1:Event) : void
       {
-         var _loc5_:Tween = null;
-         var _loc6_:int = 0;
-         var _loc7_:int = 0;
-         var _loc8_:int = 0;
-         var _loc9_:int = 0;
-         var _loc10_:int = 0;
-         var _loc11_:int = 0;
-         var _loc12_:Boolean = false;
-         var _loc13_:int = 0;
+         var _loc6_:MovieClip = null;
          if(!this.compCompletedTween())
          {
-            this._setingsDropBtn.removeEventListener(Event.SELECT,this.onSlidingComponentSelectHandler);
-            this._setingsDropBtn.selected = !this._setingsDropBtn.selected;
-            this._setingsDropBtn.addEventListener(Event.SELECT,this.onSlidingComponentSelectHandler);
+            this._settingsDropBtn.removeEventListener(Event.SELECT,this.onSlidingComponentSelectHandler);
+            this._settingsDropBtn.selected = !this._settingsDropBtn.selected;
+            this._settingsDropBtn.addEventListener(Event.SELECT,this.onSlidingComponentSelectHandler);
             return;
          }
          this._countCallBack = 0;
-         var _loc2_:Number = SLIDING_SPEED;
-         var _loc3_:int = !!this.slidingComponent.isOpened ? int(-this.slidingComponent.resultExpand) : int(this.slidingComponent.resultExpand);
-         var _loc4_:int = App.appHeight - window.getBackground().height - _loc3_ >> 1;
-         for each(_loc5_ in this._tweens)
-         {
-            _loc5_.paused = true;
-            _loc5_ = null;
-         }
-         _loc6_ = this.slidingComponent.height + _loc3_;
-         _loc7_ = this.submitBtn.y + _loc3_;
-         _loc8_ = this.cancelBtn.y + _loc3_;
-         _loc9_ = this.windBgForm.height + _loc3_;
-         _loc10_ = window.getBackground().height + _loc3_;
-         _loc11_ = this.result_mc.y + _loc3_;
-         _loc12_ = this.slidingComponent.isOpened;
-         _loc13_ = !!_loc12_ ? int(0) : int(this.slidingComponent.mask_mc.height + _loc3_);
-         var _loc14_:int = this.slidingComponent.expandBg.height + _loc3_;
-         var _loc15_:int = !!this._controlQuestionVisible ? int(this.controlQuestion.y + _loc3_) : int(0);
-         var _loc16_:Number = !!_loc12_ ? Number(1) : Number(0);
-         var _loc17_:Number = !!_loc12_ ? Number(0) : Number(1);
-         this.slidingComponent.isOpened = !_loc12_;
-         this._tweens = Vector.<Tween>([new Tween(_loc2_,this.slidingComponent,{"height":_loc6_},{
-            "paused":false,
-            "ease":Strong.easeOut,
-            "onComplete":null
-         }),new Tween(_loc2_,this.windBgForm,{"height":_loc9_},{
-            "paused":false,
-            "ease":Strong.easeOut,
-            "onComplete":null
-         }),new Tween(_loc2_,this.submitBtn,{"y":_loc7_},{
-            "paused":false,
-            "ease":Strong.easeOut,
-            "onComplete":null
-         }),new Tween(_loc2_,this.cancelBtn,{"y":_loc8_},{
-            "paused":false,
-            "ease":Strong.easeOut,
-            "onComplete":null
-         }),new Tween(_loc2_,this.result_mc,{"y":_loc11_},{
-            "paused":false,
-            "ease":Strong.easeOut,
-            "onComplete":null
-         }),new Tween(_loc2_,this.slidingComponent.mask_mc,{"height":_loc13_},{
-            "paused":false,
-            "ease":Strong.easeOut,
-            "onComplete":null
-         }),new Tween(_loc2_,this.slidingComponent.expandBg,{"height":_loc14_},{
-            "paused":false,
-            "ease":Strong.easeOut,
-            "onComplete":null
-         }),new Tween(_loc2_,this._creditsIT,{"alpha":_loc16_},{
-            "paused":false,
-            "ease":Strong.easeOut,
-            "onComplete":null
-         }),new Tween(_loc2_,this._settingsBtn.ddLine,{"alpha":_loc17_},{
-            "paused":false,
-            "ease":Strong.easeOut,
-            "onComplete":null
-         }),new Tween(_loc2_,this.controlQuestion,{"y":_loc15_},{
-            "paused":false,
-            "ease":Strong.easeOut,
-            "onComplete":null
-         }),new Tween(_loc2_,window,{"y":_loc4_},{
-            "paused":false,
-            "ease":Strong.easeOut,
-            "onComplete":null
-         }),new Tween(_loc2_,window.getBackground(),{"height":_loc10_},{
-            "paused":false,
-            "ease":Strong.easeOut,
-            "onComplete":null
-         })]);
+         var _loc2_:Boolean = this.slidingComponent.isOpened;
+         this.slidingComponent.isOpened = !_loc2_;
+         this.devicesComponent.isExtended = _loc2_;
+         var _loc3_:int = this.slidingComponent.resultExpand;
+         var _loc4_:int = this.devicesComponent.extraHeight;
+         var _loc5_:int = _loc3_ - _loc4_;
+         _loc5_ = !!_loc2_ ? int(-_loc5_) : int(_loc5_);
+         _loc6_ = window.getBackground();
+         var _loc7_:int = App.appHeight - _loc6_.height - _loc5_ >> 1;
+         var _loc8_:int = _loc6_.height + _loc5_;
+         var _loc9_:int = !!_loc2_ ? int(-_loc3_) : int(_loc3_);
+         var _loc10_:int = this.slidingComponent.height + _loc9_;
+         var _loc11_:int = !!_loc2_ ? int(0) : int(this.slidingComponent.mask_mc.height + _loc9_);
+         var _loc12_:int = this.slidingComponent.expandBg.height + _loc9_;
+         var _loc13_:int = this.slidingComponent.y + (!!_loc2_ ? _loc4_ : -_loc4_);
+         var _loc14_:int = this.windBgForm.height + _loc5_;
+         var _loc15_:int = this.result_mc.y + _loc5_;
+         var _loc16_:int = !!this._controlQuestionVisible ? int(this.controlQuestion.y + _loc5_) : int(0);
+         var _loc17_:int = this.submitBtn.y + _loc5_;
+         var _loc18_:int = this.cancelBtn.y + _loc5_;
+         var _loc19_:Number = !!_loc2_ ? Number(1) : Number(0);
+         var _loc20_:Number = !!_loc2_ ? Number(0) : Number(1);
+         this.clearTweens();
+         this._tweens = Vector.<Tween>([new Tween(SLIDING_SPEED,this.slidingComponent,{"height":_loc10_},TWEEN_QUICKSET),new Tween(SLIDING_SPEED,this.slidingComponent,{"y":_loc13_},TWEEN_QUICKSET),new Tween(SLIDING_SPEED,this.slidingComponent.mask_mc,{"height":_loc11_},TWEEN_QUICKSET),new Tween(SLIDING_SPEED,this.slidingComponent.expandBg,{"height":_loc12_},TWEEN_QUICKSET),new Tween(SLIDING_SPEED,this.windBgForm,{"height":_loc14_},TWEEN_QUICKSET),new Tween(SLIDING_SPEED,this.result_mc,{"y":_loc15_},TWEEN_QUICKSET),new Tween(SLIDING_SPEED,this.controlQuestion,{"y":_loc16_},TWEEN_QUICKSET),new Tween(SLIDING_SPEED,this.submitBtn,{"y":_loc17_},TWEEN_QUICKSET),new Tween(SLIDING_SPEED,this.cancelBtn,{"y":_loc18_},TWEEN_QUICKSET),new Tween(SLIDING_SPEED,this._creditsIT,{"alpha":_loc19_},TWEEN_QUICKSET),new Tween(SLIDING_SPEED,this._settingsBtn.ddLine,{"alpha":_loc20_},TWEEN_QUICKSET),new Tween(SLIDING_SPEED,window,{"y":_loc7_},TWEEN_QUICKSET),new Tween(SLIDING_SPEED,_loc6_,{"height":_loc8_},TWEEN_QUICKSET)]);
          this._countTweenObjects = this._tweens.length;
-         var _loc18_:int = 0;
-         while(_loc18_ < this._countTweenObjects)
+         var _loc21_:int = 0;
+         while(_loc21_ < this._countTweenObjects)
          {
-            this._tweens[_loc18_].onComplete = this.motionCallBack;
-            this._tweens[_loc18_].fastTransform = false;
-            _loc18_++;
+            this._tweens[_loc21_].onComplete = this.motionCallBack;
+            this._tweens[_loc21_].fastTransform = false;
+            _loc21_++;
          }
          this.updateElements();
       }
       
-      private function onSubmitBtnClickHandler(param1:ButtonEvent) : void
+      private function onSubmitBtnClickHandler(param1:Event) : void
       {
-         setDialogSettingsS(this._setingsDropBtn.selected);
+         setDialogSettingsS(this._settingsDropBtn.selected);
          sellS();
       }
       
@@ -489,12 +431,12 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          this.updateComponentsPosition();
       }
       
-      private function onSellDevicesComponentWasDrawnHandler(param1:VehicleSellDialogEvent) : void
+      private function onSellDialogListItemRendererWasDrawnHandler(param1:Event) : void
       {
          this.updateComponentsPosition();
       }
       
-      private function onSelectionChangeHandler(param1:VehicleSellDialogEvent) : void
+      private function onSelectionChangedHandler(param1:VehicleSellDialogEvent) : void
       {
          var _loc2_:int = 0;
          var _loc3_:int = 0;
@@ -514,7 +456,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          }
       }
       
-      private function onCancelBtnClickHandler(param1:ButtonEvent) : void
+      private function onCancelBtnClickHandler(param1:Event) : void
       {
          onWindowCloseS();
       }
@@ -524,22 +466,9 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          setUserInputS(this.controlQuestion.getUserText());
       }
       
-      private function onHeaderComponentIndexChangeHandler(param1:ListEvent) : void
+      private function onHeaderComponentIndexChangeHandler(param1:Event) : void
       {
          invalidate(INV_BARRACKS_DROP);
-      }
-      
-      public function as_setTotal(param1:int, param2:Object) : void
-      {
-         this._creditsCommon = param1;
-         this._totalCost.update(param2);
-         invalidate(INV_RESULT);
-      }
-      
-      public function as_updateAccountMoney(param1:String, param2:int) : void
-      {
-         this._totalCost.updateAccountMoney(param1,param2);
-         invalidate(INV_RESULT);
       }
    }
 }

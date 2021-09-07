@@ -295,6 +295,18 @@ class Stats(object):
         self.__account._doCmdInt3(AccountCommands.CMD_UNLOCK_ALL, 0, 0, 0, proxy)
         return
 
+    def unlockVPPTree(self, vehTypeCDs, callback=None):
+        if self.__ignore:
+            if callback is not None:
+                callback(AccountCommands.RES_NON_PLAYER)
+            return
+        if callback is not None:
+            proxy = lambda requestID, resultID, errorStr, ext={}: callback(resultID)
+        else:
+            proxy = None
+        self.__account._doCmdIntArr(AccountCommands.CMD_VPP_UNLOCK_TREE, vehTypeCDs, proxy)
+        return
+
     def setRankedInfo(self, data, callback=None):
         if self.__ignore:
             if callback is not None:

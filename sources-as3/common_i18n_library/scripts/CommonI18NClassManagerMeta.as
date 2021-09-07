@@ -53,6 +53,8 @@ package
       
       public static const LOBBY_HELP:Class = LOBBY_HELP;
       
+      public static const MAPS_TRAINING:Class = MAPS_TRAINING;
+      
       public static const MENU:Class = MENU;
       
       public static const MESSENGER:Class = MESSENGER;
@@ -102,6 +104,8 @@ package
       public static const VEHICLE_PREVIEW:Class = VEHICLE_PREVIEW;
       
       public static const VEH_COMPARE:Class = VEH_COMPARE;
+      
+      public static const VEH_POST_PROGRESSION:Class = VEH_POST_PROGRESSION;
       
       public static const WAITING:Class = WAITING;
        

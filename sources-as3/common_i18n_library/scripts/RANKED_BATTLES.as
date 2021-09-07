@@ -9,7 +9,7 @@ package
       
       public static const RANKEDBATTLE_TITLE:String = "#ranked_battles:rankedBattle/title";
       
-      public static const RANKEDBATTLEMAINVIEW_SEASONNAME:String = "#ranked_battles:rankedBattleMainView/seasonName";
+      public static const RANKEDBATTLEMAINVIEW_SPECIALSEASON:String = "#ranked_battles:rankedBattleMainView/specialSeason";
       
       public static const RANKEDBATTLEMAINVIEW_SEASON:String = "#ranked_battles:rankedBattleMainView/season";
       
@@ -701,12 +701,6 @@ package
       
       public static const REWARDSVIEW_TABS_LEAGUES_AWARDDESCR_STYLE:String = "#ranked_battles:rewardsView/tabs/leagues/awardDescr/style";
       
-      public static const REWARDSVIEW_TABS_LEAGUES_AWARDDESCR_LEAGUE1:String = "#ranked_battles:rewardsView/tabs/leagues/awardDescr/league1";
-      
-      public static const REWARDSVIEW_TABS_LEAGUES_AWARDDESCR_LEAGUE2:String = "#ranked_battles:rewardsView/tabs/leagues/awardDescr/league2";
-      
-      public static const REWARDSVIEW_TABS_LEAGUES_AWARDDESCR_LEAGUE3:String = "#ranked_battles:rewardsView/tabs/leagues/awardDescr/league3";
-      
       public static const REWARDSVIEW_TABS_LEAGUES_DESCRIPTION:String = "#ranked_battles:rewardsView/tabs/leagues/description";
       
       public static const REWARDSVIEW_TABS_YEAR:String = "#ranked_battles:rewardsView/tabs/year";
@@ -803,11 +797,15 @@ package
       
       public static const YEARREWARDS_TOOLTIP_ANY_REWARD_TITLE:String = "#ranked_battles:yearRewards/tooltip/any/reward/title";
       
-      public static const YEARREWARDS_TOOLTIP_ANY_DESCRIPTION_TITLE:String = "#ranked_battles:yearRewards/tooltip/any/description/title";
+      public static const YEARREWARDS_TOOLTIP_EQUIPMENTCHOICE_TITLE:String = "#ranked_battles:yearRewards/tooltip/equipmentChoice/title";
       
-      public static const YEARREWARDS_TOOLTIP_ANY_DESCRIPTION_NOTE_3:String = "#ranked_battles:yearRewards/tooltip/any/description/note/3";
+      public static const YEARREWARDS_TOOLTIP_EQUIPMENTCHOICE_DESCRIPTION_1:String = "#ranked_battles:yearRewards/tooltip/equipmentChoice/description/1";
       
-      public static const YEARREWARDS_TOOLTIP_ANY_DESCRIPTION_NOTE_2:String = "#ranked_battles:yearRewards/tooltip/any/description/note/2";
+      public static const YEARREWARDS_TOOLTIP_EQUIPMENTCHOICE_DESCRIPTION_2:String = "#ranked_battles:yearRewards/tooltip/equipmentChoice/description/2";
+      
+      public static const YEARREWARDS_TOOLTIP_EQUIPMENTCHOICE_DESCRIPTION_3:String = "#ranked_battles:yearRewards/tooltip/equipmentChoice/description/3";
+      
+      public static const YEARREWARDS_TOOLTIP_EQUIPMENTCHOICE_LIST:String = "#ranked_battles:yearRewards/tooltip/equipmentChoice/list";
       
       public static const YEARREWARDS_TOOLTIP_STATUS_LOCKED_TITLE:String = "#ranked_battles:yearRewards/tooltip/status/locked/title";
       

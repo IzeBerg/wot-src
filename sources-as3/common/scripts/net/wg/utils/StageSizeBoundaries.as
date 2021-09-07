@@ -19,7 +19,11 @@ package net.wg.utils
       
       public static const HEIGHT_800:int = 800;
       
+      public static const HEIGHT_864:int = 864;
+      
       public static const HEIGHT_900:int = 900;
+      
+      public static const HEIGHT_1024:int = 1024;
       
       public static const HEIGHT_1080:int = 1080;
        

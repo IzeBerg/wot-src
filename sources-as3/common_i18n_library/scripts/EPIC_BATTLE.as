@@ -5,6 +5,8 @@ package
       
       public static const STATUS_TIMELEFT:String = "#epic_battle:status/timeLeft";
       
+      public static const EPICBATTLEITEM_SUPPLYPOINTS:String = "#epic_battle:epicBattleItem/supplyPoints";
+      
       public static const TEAM1NAME:String = "#epic_battle:team1Name";
       
       public static const TEAM2NAME:String = "#epic_battle:team2Name";
@@ -125,6 +127,10 @@ package
       
       public static const RANK_PROMOTION:String = "#epic_battle:rank/promotion";
       
+      public static const RANK_RECERVEUNLOCKED:String = "#epic_battle:rank/recerveUnlocked";
+      
+      public static const RANK_RESERVEUPGRADED:String = "#epic_battle:rank/reserveUpgraded";
+      
       public static const MISSION_PRIMARY_TITLE:String = "#epic_battle:mission/primary/title";
       
       public static const MISSIONS_PRIMARY_ATK_BASE:String = "#epic_battle:missions/primary/atk/base";
@@ -146,6 +152,8 @@ package
       public static const MISSIONS_PRIMARY_ATK_LONGDESCRIPTION:String = "#epic_battle:missions/primary/atk/longdescription";
       
       public static const MISSIONS_PRIMARY_DEF_LONGDESCRIPTION:String = "#epic_battle:missions/primary/def/longdescription";
+      
+      public static const MISSIONS_UNLOCKTANKLEVEL:String = "#epic_battle:missions/unlockTankLevel";
       
       public static const GLOBAL_MSG_SAVE_TANKS_SHORT:String = "#epic_battle:global_msg/save_tanks_short";
       
@@ -245,6 +253,10 @@ package
       
       public static const EPICBATTLESCAROUSEL_LOCKEDTOOLTIP_BODY:String = "#epic_battle:epicBattlesCarousel/lockedTooltip/body";
       
+      public static const EPICBATTLESCAROUSEL_LOBBY_LEVELINFO:String = "#epic_battle:epicBattlesCarousel/lobby/levelInfo";
+      
+      public static const EPICBATTLESCAROUSEL_LOBBY_LEVELINFO_LEVEL:String = "#epic_battle:epicBattlesCarousel/lobby/levelInfo/level";
+      
       public static const TAB_SCREEN_SHOW_MY_LANE:String = "#epic_battle:tab_screen/show_my_lane";
       
       public static const TAB_SCREEN_SHOW_ALL_LANES:String = "#epic_battle:tab_screen/show_all_lanes";
@@ -253,25 +265,19 @@ package
       
       public static const ZONE_LEAVE_ZONE:String = "#epic_battle:zone/leave_zone";
       
-      public static const METAABILITYSCREEN_UPGRADE_SKILL:String = "#epic_battle:metaAbilityScreen/Upgrade_skill";
-      
-      public static const METAABILITYSCREEN_ACQUIRE_SKILL:String = "#epic_battle:metaAbilityScreen/Acquire_skill";
+      public static const METAABILITYSCREEN_ACTIVATION_DEPENDS:String = "#epic_battle:metaAbilityScreen/activation_depends";
       
       public static const METAABILITYSCREEN_ABILITY_NOT_UNLOCKED:String = "#epic_battle:metaAbilityScreen/Ability_not_unlocked";
       
       public static const METAABILITYSCREEN_ABILITY_LEVEL:String = "#epic_battle:metaAbilityScreen/Ability_level";
       
-      public static const METAABILITYSCREEN_MANAGE_ABILITIES:String = "#epic_battle:metaAbilityScreen/Manage_abilities";
-      
-      public static const METAABILITYSCREEN_MANAGE_RESERVES_HEADER:String = "#epic_battle:metaAbilityScreen/Manage_reserves_header";
-      
-      public static const METAABILITYSCREEN_UNSPENT_POINTS:String = "#epic_battle:metaAbilityScreen/Unspent_points";
-      
-      public static const METAABILITYSCREEN_GET_SKILL_POINTS:String = "#epic_battle:metaAbilityScreen/get_skill_points";
-      
       public static const METAABILITYSCREEN_HOW_TO_ACTIVATE:String = "#epic_battle:metaAbilityScreen/how_to_activate";
       
       public static const SMOKE_IN_SMOKE:String = "#epic_battle:smoke/In_smoke";
+      
+      public static const SMOKE_INALLYSMOKE:String = "#epic_battle:smoke/InAllySmoke";
+      
+      public static const SMOKE_INENEMYSMOKE:String = "#epic_battle:smoke/InEnemySmoke";
       
       public static const ABILITYINFO_PARAMS_COMMON_COOLDOWNTIME:String = "#epic_battle:abilityInfo/params/common/cooldownTime";
       
@@ -295,13 +301,17 @@ package
       
       public static const ABILITYINFO_PARAMS_RECON_SPOTTINGDURATION:String = "#epic_battle:abilityInfo/params/recon/spottingDuration";
       
+      public static const ABILITYINFO_PARAMS_RECON_DELAY:String = "#epic_battle:abilityInfo/params/recon/delay";
+      
       public static const ABILITYINFO_PARAMS_INSPIRE_RADIUS:String = "#epic_battle:abilityInfo/params/inspire/radius";
       
       public static const ABILITYINFO_PARAMS_INSPIRE_DURATION:String = "#epic_battle:abilityInfo/params/inspire/duration";
       
-      public static const ABILITYINFO_PARAMS_INSPIRE_CREWINCREASEFACTOR:String = "#epic_battle:abilityInfo/params/inspire/crewIncreaseFactor";
-      
       public static const ABILITYINFO_PARAMS_INSPIRE_INACTIVATIONDELAY:String = "#epic_battle:abilityInfo/params/inspire/inactivationDelay";
+      
+      public static const ABILITYINFO_PARAMS_INSPIRE_CREWROLESFACTOR:String = "#epic_battle:abilityInfo/params/inspire/crewRolesFactor";
+      
+      public static const ABILITYINFO_PARAMS_INSPIRE_SELFINCREASEFACTORS:String = "#epic_battle:abilityInfo/params/inspire/selfIncreaseFactors";
       
       public static const ABILITYINFO_PARAMS_SMOKE_TARGETEDAREA:String = "#epic_battle:abilityInfo/params/smoke/targetedArea";
       
@@ -309,19 +319,55 @@ package
       
       public static const ABILITYINFO_PARAMS_SMOKE_TOTALDURATION:String = "#epic_battle:abilityInfo/params/smoke/totalDuration";
       
+      public static const ABILITYINFO_PARAMS_SMOKE_VISIONRADIUSFACTOR:String = "#epic_battle:abilityInfo/params/smoke/visionRadiusFactor";
+      
       public static const ABILITYINFO_PARAMS_PASSIVE_ENGINEERING_RESUPPLYCOOLDOWNFACTOR:String = "#epic_battle:abilityInfo/params/passive_engineering/resupplyCooldownFactor";
       
-      public static const ABILITYINFO_PARAMS_PASSIVE_ENGINEERING_RESUPPLYHEALTHPOINTSFACTOR:String = "#epic_battle:abilityInfo/params/passive_engineering/resupplyHealthPointsFactor";
+      public static const ABILITYINFO_PARAMS_PASSIVE_ENGINEERING_RESUPPLYSHELLSFACTOR:String = "#epic_battle:abilityInfo/params/passive_engineering/resupplyShellsFactor";
       
       public static const ABILITYINFO_PARAMS_PASSIVE_ENGINEERING_CAPTURESPEEDFACTOR:String = "#epic_battle:abilityInfo/params/passive_engineering/captureSpeedFactor";
       
       public static const ABILITYINFO_PARAMS_PASSIVE_ENGINEERING_CAPTUREBLOCKBONUSTIME:String = "#epic_battle:abilityInfo/params/passive_engineering/captureBlockBonusTime";
       
+      public static const ABILITYINFO_PARAMS_STEALTH_RADAR_PASSIVECIRCULARVISIONRADIUS:String = "#epic_battle:abilityInfo/params/stealth_radar/passiveCircularVisionRadius";
+      
+      public static const ABILITYINFO_PARAMS_STEALTH_RADAR_DURATION:String = "#epic_battle:abilityInfo/params/stealth_radar/duration";
+      
+      public static const ABILITYINFO_PARAMS_STEALTH_RADAR_DEMASKFOLIAGEFACTOR:String = "#epic_battle:abilityInfo/params/stealth_radar/demaskFoliageFactor";
+      
+      public static const ABILITYINFO_PARAMS_STEALTH_RADAR_DEMASKMOVINGFACTOR:String = "#epic_battle:abilityInfo/params/stealth_radar/demaskMovingFactor";
+      
+      public static const ABILITYINFO_PARAMS_STEALTH_RADAR_INVISIBILITYADDITIVETERM:String = "#epic_battle:abilityInfo/params/stealth_radar/invisibilityAdditiveTerm";
+      
+      public static const ABILITYINFO_PARAMS_FL_REGENERATIONKIT_HEALTIME:String = "#epic_battle:abilityInfo/params/fl_regenerationKit/healTime";
+      
+      public static const ABILITYINFO_PARAMS_FL_REGENERATIONKIT_HEALTHREGENPERTICK:String = "#epic_battle:abilityInfo/params/fl_regenerationKit/healthRegenPerTick";
+      
+      public static const ABILITYINFO_PARAMS_FL_REGENERATIONKIT_INITIALHEAL:String = "#epic_battle:abilityInfo/params/fl_regenerationKit/initialHeal";
+      
+      public static const ABILITYINFO_PARAMS_FL_REGENERATIONKIT_RESUPPLYHEALTHPOINTSFACTOR:String = "#epic_battle:abilityInfo/params/fl_regenerationKit/resupplyHealthPointsFactor";
+      
+      public static const ABILITYINFO_PARAMS_FL_REGENERATIONKIT_MINESDAMAGEREDUCEFACTOR:String = "#epic_battle:abilityInfo/params/fl_regenerationKit/minesDamageReduceFactor";
+      
+      public static const ABILITYINFO_PARAMS_FL_REGENERATIONKIT_MINESDAMAGEREDUCEFACTOR_VALUE:String = "#epic_battle:abilityInfo/params/fl_regenerationKit/minesDamageReduceFactor/value";
+      
+      public static const ABILITYINFO_PARAMS_ARCADE_MINEFIELD_EPIC_BATTLE_LIFETIME:String = "#epic_battle:abilityInfo/params/arcade_minefield_epic_battle/lifetime";
+      
+      public static const ABILITYINFO_PARAMS_ARCADE_MINEFIELD_EPIC_BATTLE_SHELL:String = "#epic_battle:abilityInfo/params/arcade_minefield_epic_battle/shell";
+      
+      public static const ABILITYINFO_PARAMS_ARCADE_MINEFIELD_EPIC_BATTLE_BOMBSNUMBER:String = "#epic_battle:abilityInfo/params/arcade_minefield_epic_battle/bombsNumber";
+      
+      public static const EQUIPMENT_HEALPOINT_HEALING:String = "#epic_battle:equipment/healPoint/healing";
+      
+      public static const EQUIPMENT_HEALPOINT_HEALED:String = "#epic_battle:equipment/healPoint/healed";
+      
       public static const ABILITYINFO_UNITS_METER:String = "#epic_battle:abilityInfo/units/meter";
       
       public static const ABILITYINFO_UNITS_SECONDS:String = "#epic_battle:abilityInfo/units/seconds";
       
-      public static const ABILITYINFO_PROPERTIES:String = "#epic_battle:abilityInfo/properties";
+      public static const ABILITYINFO_PROPERTIES_STATIC:String = "#epic_battle:abilityInfo/properties/static";
+      
+      public static const ABILITYINFO_PROPERTIES_DYNAMIC:String = "#epic_battle:abilityInfo/properties/dynamic";
       
       public static const ABILITYINFO_MANAGE_ABILITIES:String = "#epic_battle:abilityInfo/manage_abilities";
       
@@ -337,6 +383,10 @@ package
       
       public static const SCOREPANEL_STAGE3:String = "#epic_battle:scorePanel/stage3";
       
+      public static const STEALTHRADAR_ACTIVE:String = "#epic_battle:stealthRadar/active";
+      
+      public static const STEALTHRADAR_INACTIVE:String = "#epic_battle:stealthRadar/inactive";
+      
       public static const REINFORCEMENTSPANEL_INTEXT:String = "#epic_battle:reinforcementsPanel/inText";
       
       public static const RESPAWNSCREEN_DEPLOYMENTLANE1:String = "#epic_battle:respawnScreen/deploymentLane1";
@@ -351,81 +401,13 @@ package
       
       public static const RESPAWNSCREEN_RESPAWNWARNING:String = "#epic_battle:respawnScreen/respawnWarning";
       
+      public static const PLAYER_ERRORS_MINEFIELDISINTERSECTED:String = "#epic_battle:player_errors/minefieldIsIntersected";
+      
       public static const DEPLOYMENTMAP_SPGLIMITREACHED:String = "#epic_battle:deploymentMap/spgLimitReached";
       
       public static const DEPLOYMENTMAP_LANEPLAYERLIMITREACHED:String = "#epic_battle:deploymentMap/lanePlayerLimitReached";
       
       public static const DEPLOYMENTMAP_RESPAWNWARNING:String = "#epic_battle:deploymentMap/respawnWarning";
-      
-      public static const EPICBATTLESINFOVIEW_BATTLEMODETITLE:String = "#epic_battle:epicBattlesInfoView/battleModeTitle";
-      
-      public static const EPICBATTLESINFOVIEW_MAXMETASTRING:String = "#epic_battle:epicBattlesInfoView/maxMetaString";
-      
-      public static const EPICBATTLESINFOVIEW_FAMELABELHIGHLIGHT:String = "#epic_battle:epicBattlesInfoView/fameLabelHighlight";
-      
-      public static const EPICBATTLESINFOVIEW_METALEVEL:String = "#epic_battle:epicBattlesInfoView/metaLevel";
-      
-      public static const EPICBATTLESINFOVIEW_PANELTITLE_ABILITIES:String = "#epic_battle:epicBattlesInfoView/panelTitle/abilities";
-      
-      public static const EPICBATTLESINFOVIEW_PANELTITLE_BATTLEPERFORMANCE:String = "#epic_battle:epicBattlesInfoView/panelTitle/battlePerformance";
-      
-      public static const EPICBATTLESINFOVIEW_PANELTITLE_REWARDS:String = "#epic_battle:epicBattlesInfoView/panelTitle/rewards";
-      
-      public static const EPICBATTLESINFOVIEW_PANELTITLE_PRESTIGE:String = "#epic_battle:epicBattlesInfoView/panelTitle/prestige";
-      
-      public static const EPICBATTLESINFOVIEW_PANELDESCRIPTION_ABILITIES:String = "#epic_battle:epicBattlesInfoView/panelDescription/abilities";
-      
-      public static const EPICBATTLESINFOVIEW_PANELDESCRIPTION_BATTLEPERFORMANCE:String = "#epic_battle:epicBattlesInfoView/panelDescription/battlePerformance";
-      
-      public static const EPICBATTLESINFOVIEW_PANELDESCRIPTION_REWARDS:String = "#epic_battle:epicBattlesInfoView/panelDescription/rewards";
-      
-      public static const EPICBATTLESINFOVIEW_PANELDESCRIPTION_PRESTIGE:String = "#epic_battle:epicBattlesInfoView/panelDescription/prestige";
-      
-      public static const EPICBATTLESINFOVIEW_RULEREWARDSBUTTON_LABEL:String = "#epic_battle:epicBattlesInfoView/ruleRewardsButton/label";
-      
-      public static const EPICBATTLESINFOVIEW_RULEBATTLEPERFORMANCEBUTTON_LABEL:String = "#epic_battle:epicBattlesInfoView/ruleBattlePerformanceButton/label";
-      
-      public static const EPICBATTLESINFOVIEW_RULEREWARDSPRESTIGEBUTTON_LABEL:String = "#epic_battle:epicBattlesInfoView/ruleRewardsPrestigeButton/label";
-      
-      public static const EPICBATTLESINFOVIEW_MAXLEVEL:String = "#epic_battle:epicBattlesInfoView/maxLevel";
-      
-      public static const EPICBATTLESOFFLINEVIEW_TITLE:String = "#epic_battle:epicBattlesOfflineView/title";
-      
-      public static const EPICBATTLESOFFLINEVIEW_GAMERULES:String = "#epic_battle:epicBattlesOfflineView/gameRules";
-      
-      public static const EPICBATTLESOFFLINEVIEW_CALENDARSUBTITLE:String = "#epic_battle:epicBattlesOfflineView/calendarSubTitle";
-      
-      public static const EPICBATTLESOFFLINEVIEW_CALENDARDESCRIPTION:String = "#epic_battle:epicBattlesOfflineView/calendarDescription";
-      
-      public static const EPICBATTLESWELCOMEBACKVIEW_TITLE:String = "#epic_battle:epicBattlesWelcomeBackView/title";
-      
-      public static const EPICBATTLESWELCOMEBACKVIEW_SUBTITLE:String = "#epic_battle:epicBattlesWelcomeBackView/subTitle";
-      
-      public static const EPICBATTLESWELCOMEBACKVIEW_PLAYVIDEOBTN_LABEL:String = "#epic_battle:epicBattlesWelcomeBackView/playVideoBtn/label";
-      
-      public static const EPICBATTLESPRESTIGEVIEW_PRESTIGEINFO:String = "#epic_battle:epicBattlesPrestigeView/prestigeInfo";
-      
-      public static const EPICBATTLESPRESTIGEVIEW_PRESTIGELEVEL:String = "#epic_battle:epicBattlesPrestigeView/prestigeLevel";
-      
-      public static const EPICBATTLESPRESTIGEVIEW_EXCHANGE:String = "#epic_battle:epicBattlesPrestigeView/exchange";
-      
-      public static const EPICBATTLESPRESTIGEVIEW_REMOVEABILITIES_TITLE:String = "#epic_battle:epicBattlesPrestigeView/removeAbilities/title";
-      
-      public static const EPICBATTLESPRESTIGEVIEW_RESETLEVEL_TITLE:String = "#epic_battle:epicBattlesPrestigeView/resetLevel/title";
-      
-      public static const EPICBATTLESPRESTIGEVIEW_REMOVEABILITIES_DESC:String = "#epic_battle:epicBattlesPrestigeView/removeAbilities/desc";
-      
-      public static const EPICBATTLESPRESTIGEVIEW_RESETLEVEL_DESC:String = "#epic_battle:epicBattlesPrestigeView/resetLevel/desc";
-      
-      public static const EPICBATTLESPRESTIGEVIEW_MAINTITLE:String = "#epic_battle:epicBattlesPrestigeView/mainTitle";
-      
-      public static const EPICBATTLESPRESTIGEVIEW_WARNING:String = "#epic_battle:epicBattlesPrestigeView/warning";
-      
-      public static const EPICBATTLESPRESTIGEVIEW_CONGRATULATIONS:String = "#epic_battle:epicBattlesPrestigeView/congratulations";
-      
-      public static const EPICBATTLESPRESTIGEVIEW_RESETBUTTONTEXT:String = "#epic_battle:epicBattlesPrestigeView/resetButtonText";
-      
-      public static const EPICBATTLESPRESTIGEVIEW_CANCELBUTTONTEXT:String = "#epic_battle:epicBattlesPrestigeView/cancelButtonText";
       
       public static const EPIC_BATTLES_AFTER_BATTLE_TITLE:String = "#epic_battle:epic_battles_after_battle/Title";
       
@@ -440,6 +422,8 @@ package
       public static const SELECTORTOOLTIP_EPICBATTLE_HEADER:String = "#epic_battle:selectorTooltip/epicBattle/header";
       
       public static const SELECTORTOOLTIP_EPICBATTLE_BODY:String = "#epic_battle:selectorTooltip/epicBattle/body";
+      
+      public static const SELECTORTOOLTIP_EPICBATTLE_BODYVEHICLELEVEL:String = "#epic_battle:selectorTooltip/epicBattle/bodyVehicleLevel";
       
       public static const SELECTORTOOLTIP_EPICBATTLE_FROZEN:String = "#epic_battle:selectorTooltip/epicBattle/frozen";
       
@@ -481,9 +465,7 @@ package
       
       public static const QUESTSTOOLTIP_EPICBATTLE_RESTRICT_LEVEL:String = "#epic_battle:questsTooltip/epicBattle/restrict/level";
       
-      public static const WIDGETALERTMESSAGEBLOCK_NOCYCLEMESSAGE_MULTI:String = "#epic_battle:widgetAlertMessageBlock/noCycleMessage/multi";
-      
-      public static const WIDGETALERTMESSAGEBLOCK_NOCYCLEMESSAGE_SINGLE:String = "#epic_battle:widgetAlertMessageBlock/noCycleMessage/single";
+      public static const WIDGETALERTMESSAGEBLOCK_NOCYCLEMESSAGE:String = "#epic_battle:widgetAlertMessageBlock/noCycleMessage";
       
       public static const WIDGETALERTMESSAGEBLOCK_ALLPERIPHERIESHALT:String = "#epic_battle:widgetAlertMessageBlock/allPeripheriesHalt";
       
@@ -493,9 +475,9 @@ package
       
       public static const WIDGETALERTMESSAGEBLOCK_BUTTON:String = "#epic_battle:widgetAlertMessageBlock/button";
       
-      public static const WIDGETALERTMESSAGEBLOCK_STARTIN_MULTI:String = "#epic_battle:widgetAlertMessageBlock/startIn/multi";
+      public static const WIDGETALERTMESSAGEBLOCK_STARTIN:String = "#epic_battle:widgetAlertMessageBlock/startIn";
       
-      public static const WIDGETALERTMESSAGEBLOCK_STARTIN_SINGLE:String = "#epic_battle:widgetAlertMessageBlock/startIn/single";
+      public static const WIDGETALERTMESSAGEBLOCK_ANNOUNCEMENT:String = "#epic_battle:widgetAlertMessageBlock/announcement";
       
       public static const STATUS_TIMELEFT_DAYS:String = "#epic_battle:status/timeLeft/days";
       
@@ -575,17 +557,75 @@ package
       
       public static const SEASON_202002_NAME:String = "#epic_battle:season/202002/name";
       
-      public static const SEASON_202008_NAME:String = "#epic_battle:season/202008/name";
-      
-      public static const SEASON_202103_NAME:String = "#epic_battle:season/202103/name";
-      
-      public static const EPICBATTLEITEM_REWARDPOINTS_HEADER:String = "#epic_battle:epicBattleItem/rewardPoints/header";
-      
-      public static const EPICBATTLEITEM_REWARDPOINTS_DESCRIPTION:String = "#epic_battle:epicBattleItem/rewardPoints/description";
+      public static const SEASON_202108_NAME:String = "#epic_battle:season/202108/name";
       
       public static const EPICBATTLEITEM_SUPPLYPOINTS_HEADER:String = "#epic_battle:epicBattleItem/supplyPoints/header";
       
       public static const EPICBATTLEITEM_SUPPLYPOINTS_DESCRIPTION:String = "#epic_battle:epicBattleItem/supplyPoints/description";
+      
+      public static const EPICBATTLEITEM_SUPPLYPOINTS_BODY:String = "#epic_battle:epicBattleItem/supplyPoints/body";
+      
+      public static const INTRO_TITLE:String = "#epic_battle:intro/title";
+      
+      public static const INTRO_CONFIRM:String = "#epic_battle:intro/confirm";
+      
+      public static const INTRO_CARD_CATEGORIES_TITLE:String = "#epic_battle:intro/card/categories/title";
+      
+      public static const INTRO_CARD_CATEGORIES_DESC:String = "#epic_battle:intro/card/categories/desc";
+      
+      public static const INTRO_CARD_SLOTS_TITLE:String = "#epic_battle:intro/card/slots/title";
+      
+      public static const INTRO_CARD_SLOTS_DESC:String = "#epic_battle:intro/card/slots/desc";
+      
+      public static const INTRO_CARD_TYPES_TITLE:String = "#epic_battle:intro/card/types/title";
+      
+      public static const INTRO_CARD_TYPES_DESC:String = "#epic_battle:intro/card/types/desc";
+      
+      public static const TOOLTIPS_TIMETOSTART_SEASON:String = "#epic_battle:tooltips/timeToStart/season";
+      
+      public static const TOOLTIPS_TIMETOEND_SEASON:String = "#epic_battle:tooltips/timeToEnd/season";
+      
+      public static const TOOLTIPS_TIMETOSTART_CYCLE:String = "#epic_battle:tooltips/timeToStart/cycle";
+      
+      public static const TOOLTIPS_TIMETOEND_CYCLE:String = "#epic_battle:tooltips/timeToEnd/cycle";
+      
+      public static const TOOLTIPS_COMMON_DISABLED:String = "#epic_battle:tooltips/common/disabled";
+      
+      public static const TOOLTIPS_COMMON_TITLE:String = "#epic_battle:tooltips/common/title";
+      
+      public static const TOOLTIPS_COMMON_TITLEWITHCYCLE:String = "#epic_battle:tooltips/common/titleWithCycle";
+      
+      public static const TOOLTIPS_WIDGET_REACHEDMAXLEVEL:String = "#epic_battle:tooltips/widget/reachedMaxLevel";
+      
+      public static const TOOLTIPS_WIDGET_LEVEL:String = "#epic_battle:tooltips/widget/level";
+      
+      public static const TOOLTIPS_WIDGET_ALLCYCLESFINISHED:String = "#epic_battle:tooltips/widget/allCyclesFinished";
+      
+      public static const TOOLTIPS_WIDGET_SEASONFINISHED:String = "#epic_battle:tooltips/widget/seasonFinished";
+      
+      public static const TOOLTIPS_SLOTUNLOCKED_MESSAGE:String = "#epic_battle:tooltips/slotUnlocked/message";
+      
+      public static const TOOLTIPS_SLOTSETUPINFO_TITLE_LIGHTTANK:String = "#epic_battle:tooltips/slotSetupInfo/title/lightTank";
+      
+      public static const TOOLTIPS_SLOTSETUPINFO_TITLE_MEDIUMTANK:String = "#epic_battle:tooltips/slotSetupInfo/title/mediumTank";
+      
+      public static const TOOLTIPS_SLOTSETUPINFO_TITLE_HEAVYTANK:String = "#epic_battle:tooltips/slotSetupInfo/title/heavyTank";
+      
+      public static const TOOLTIPS_SLOTSETUPINFO_TITLE_SPG:String = "#epic_battle:tooltips/slotSetupInfo/title/SPG";
+      
+      public static const TOOLTIPS_SLOTSETUPINFO_TITLE_AT_SPG:String = "#epic_battle:tooltips/slotSetupInfo/title/AT-SPG";
+      
+      public static const TOOLTIPS_SLOTSETUPINFO_SUBTITLE:String = "#epic_battle:tooltips/slotSetupInfo/subtitle";
+      
+      public static const TOOLTIPS_SLOTSETUPINFO_SCHEME:String = "#epic_battle:tooltips/slotSetupInfo/scheme";
+      
+      public static const TOOLTIPS_SLOTSETUPINFO_OPEN_TITLE:String = "#epic_battle:tooltips/slotSetupInfo/open/title";
+      
+      public static const TOOLTIPS_SLOTSETUPINFO_OPEN_DESC:String = "#epic_battle:tooltips/slotSetupInfo/open/desc";
+      
+      public static const TOOLTIPS_SLOTSETUPINFO_UPGRADE_TITLE:String = "#epic_battle:tooltips/slotSetupInfo/upgrade/title";
+      
+      public static const TOOLTIPS_SLOTSETUPINFO_UPGRADE_DESC:String = "#epic_battle:tooltips/slotSetupInfo/upgrade/desc";
        
       
       public function EPIC_BATTLE()

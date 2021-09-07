@@ -4,11 +4,13 @@ package net.wg.gui.bootcamp.nationsWindow
    import flash.geom.Point;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
+   import net.wg.data.constants.UniversalBtnStylesConst;
    import net.wg.gui.bootcamp.nationsWindow.containers.InfoContainer;
    import net.wg.gui.bootcamp.nationsWindow.containers.NationsSelectorContainer;
    import net.wg.gui.bootcamp.nationsWindow.data.NationItemVO;
    import net.wg.gui.bootcamp.nationsWindow.events.NationSelectEvent;
-   import net.wg.gui.interfaces.ISoundButtonEx;
+   import net.wg.gui.components.controls.TextFieldContainer;
+   import net.wg.gui.components.controls.universalBtn.UniversalBtn;
    import net.wg.infrastructure.base.meta.IBCNationsWindowMeta;
    import net.wg.infrastructure.base.meta.impl.BCNationsWindowMeta;
    import net.wg.infrastructure.constants.WindowViewInvalidationType;
@@ -26,7 +28,7 @@ package net.wg.gui.bootcamp.nationsWindow
       
       private static const SELECT_OFFSET:int = 230;
       
-      private static const FX_OFFSET:int = -1;
+      private static const LOCKED_OFFSET:int = 269;
        
       
       public var info:InfoContainer = null;
@@ -39,15 +41,19 @@ package net.wg.gui.bootcamp.nationsWindow
       
       public var bottom:NationsSelectorContainer = null;
       
-      public var btnSelect:ISoundButtonEx = null;
+      public var btnSelect:UniversalBtn = null;
       
       public var fx:MovieClip = null;
+      
+      public var lockedText:TextFieldContainer = null;
       
       private var _selectedNation:uint = 0;
       
       private var _stageDimensions:Point = null;
       
       private var _nationsList:Vector.<NationItemVO> = null;
+      
+      private var _promoNationsList:Vector.<NationItemVO> = null;
       
       public function BCNationsWindow()
       {
@@ -70,13 +76,16 @@ package net.wg.gui.bootcamp.nationsWindow
       override protected function configUI() : void
       {
          super.configUI();
+         this.lockedText.visible = false;
          this.textHeader.autoSize = TextFieldAutoSize.LEFT;
          this.textHeader.text = BOOTCAMP.AWARD_OPTIONS_TITLE;
          this.btnSelect.label = BOOTCAMP.BTN_SELECT;
+         this.lockedText.label = BOOTCAMP.AWARD_OPTIONS_LOCKED;
          this.btnSelect.addEventListener(ButtonEvent.CLICK,this.onBtnSelectClickHandler);
          this.bottom.addEventListener(NationSelectEvent.NATION_SHOW,this.onBottomNationShowHandler);
          mouseEnabled = window.mouseEnabled = this.bottom.mouseEnabled = false;
-         this.textHeader.mouseEnabled = this.fx.mouseEnabled = this.fx.mouseChildren = this.info.mouseEnabled = this.info.mouseChildren = this.infoBack.mouseEnabled = this.infoBack.mouseChildren = this.vignette.mouseEnabled = this.vignette.mouseChildren = false;
+         this.textHeader.mouseEnabled = this.fx.mouseEnabled = this.fx.mouseChildren = this.info.mouseEnabled = this.info.mouseChildren = this.infoBack.mouseEnabled = this.infoBack.mouseChildren = this.vignette.mouseEnabled = this.vignette.mouseChildren = this.lockedText.mouseEnabled = this.lockedText.mouseChildren = false;
+         App.utils.universalBtnStyles.setStyle(this.btnSelect,UniversalBtnStylesConst.STYLE_HEAVY_LIME);
          window.getBackground();
       }
       
@@ -99,8 +108,11 @@ package net.wg.gui.bootcamp.nationsWindow
          this.infoBack = null;
          this.btnSelect.dispose();
          this.btnSelect = null;
+         this.lockedText.dispose();
+         this.lockedText = null;
          this.fx = null;
          this._nationsList = null;
+         this._promoNationsList = null;
          super.onDispose();
       }
       
@@ -116,7 +128,6 @@ package net.wg.gui.bootcamp.nationsWindow
             _loc2_ = this._stageDimensions.y;
             this.textHeader.x = _loc1_ - this.textHeader.textWidth >> 1;
             this.textHeader.y = HEADER_POSITION_MULTIPLIER * _loc2_ >> 0;
-            this.bottom.x = _loc1_ >> 1;
             this.bottom.y = _loc2_;
             this.bottom.setWidth(_loc1_);
             this.vignette.width = _loc1_;
@@ -125,31 +136,50 @@ package net.wg.gui.bootcamp.nationsWindow
             this.info.y = this.infoBack.y = _loc2_ >> 1;
             this.btnSelect.x = _loc1_ - this.btnSelect.width >> 1;
             this.btnSelect.y = _loc2_ - SELECT_OFFSET;
+            this.lockedText.x = _loc1_ >> 1;
+            this.lockedText.y = _loc2_ - LOCKED_OFFSET;
             this.fx.x = this.btnSelect.x + (this.btnSelect.width >> 1);
-            this.fx.y = this.btnSelect.y + (this.btnSelect.height >> 1) + FX_OFFSET;
+            this.fx.y = this.btnSelect.y + (this.btnSelect.height >> 1);
             window.x = window.y = 0;
             x = y = 0;
          }
          if(this._nationsList != null && isInvalid(InvalidationType.DATA))
          {
             this.bottom.selectNation(this._selectedNation);
-            this.bottom.setNationsOrder(this._nationsList);
+            this.bottom.setNationsOrder(this._nationsList,this._promoNationsList);
             _loc3_ = this._nationsList[this._selectedNation];
             this.info.selectNation(_loc3_.name,_loc3_.description);
          }
       }
       
-      override protected function selectNation(param1:uint, param2:Vector.<NationItemVO>) : void
+      override protected function selectNation(param1:uint, param2:Vector.<NationItemVO>, param3:Vector.<NationItemVO>) : void
       {
          this._selectedNation = param1;
          this._nationsList = param2;
+         this._promoNationsList = param3;
          invalidateData();
       }
       
       private function onBottomNationShowHandler(param1:NationSelectEvent) : void
       {
          this._selectedNation = param1.selectedNation;
-         var _loc2_:NationItemVO = this._nationsList[this._selectedNation];
+         var _loc2_:NationItemVO = null;
+         if(this._selectedNation < this._nationsList.length)
+         {
+            _loc2_ = this._nationsList[this._selectedNation];
+            if(!this.fx.visible)
+            {
+               onHighlightShowS();
+            }
+            this.fx.visible = this.btnSelect.visible = true;
+            this.lockedText.visible = false;
+         }
+         else
+         {
+            this.fx.visible = this.btnSelect.visible = false;
+            _loc2_ = this._promoNationsList[this._selectedNation - this._nationsList.length];
+            this.lockedText.visible = true;
+         }
          this.info.selectNation(_loc2_.name,_loc2_.description);
          onNationShowS(_loc2_.id);
       }

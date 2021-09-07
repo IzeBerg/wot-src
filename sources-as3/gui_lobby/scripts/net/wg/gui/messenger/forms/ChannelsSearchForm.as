@@ -58,10 +58,10 @@ package net.wg.gui.messenger.forms
       {
          super.configUI();
          this.joinButton.enabled = false;
-         this.searchButton.addEventListener(ButtonEvent.CLICK,this.onSearchClickHandler);
+         this.searchButton.addEventListener(ButtonEvent.CLICK,this.onSearchButtonClickHandler);
          this.joinButton.addEventListener(ButtonEvent.CLICK,this.onJoinButtonClickHandler);
-         this.searchResultList.addEventListener(ListEventEx.ITEM_DOUBLE_CLICK,this.onItemDoobleClickHandler);
-         this.searchResultList.addEventListener(ListEvent.INDEX_CHANGE,this.onIndexChangeHandler);
+         this.searchResultList.addEventListener(ListEventEx.ITEM_DOUBLE_CLICK,this.onSearchResultListItemDoubleClickHandler);
+         this.searchResultList.addEventListener(ListEvent.INDEX_CHANGE,this.onSearchResultListIndexChangeHandler);
          this.searchNameInput.addEventListener(InputEvent.INPUT,this.handleInput,false,0,true);
          constraints = new Constraints(this,ConstrainMode.REFLOW);
          constraints.addElement("searchLabel",this.searchLabel,Constraints.LEFT | Constraints.RIGHT | Constraints.TOP);
@@ -84,18 +84,29 @@ package net.wg.gui.messenger.forms
          }
       }
       
+      override protected function onBeforeDispose() : void
+      {
+         this.searchButton.removeEventListener(ButtonEvent.CLICK,this.onSearchButtonClickHandler);
+         this.joinButton.removeEventListener(ButtonEvent.CLICK,this.onJoinButtonClickHandler);
+         this.searchResultList.removeEventListener(ListEventEx.ITEM_DOUBLE_CLICK,this.onSearchResultListItemDoubleClickHandler);
+         this.searchResultList.removeEventListener(ListEvent.INDEX_CHANGE,this.onSearchResultListIndexChangeHandler);
+         this.searchNameInput.removeEventListener(InputEvent.INPUT,this.handleInput,false);
+         super.onBeforeDispose();
+      }
+      
       override protected function onDispose() : void
       {
-         this.searchButton.removeEventListener(ButtonEvent.CLICK,this.onSearchClickHandler);
-         this.joinButton.removeEventListener(ButtonEvent.CLICK,this.onJoinButtonClickHandler);
-         this.searchResultList.removeEventListener(ListEventEx.ITEM_DOUBLE_CLICK,this.onItemDoobleClickHandler);
-         this.searchResultList.removeEventListener(ListEventEx.INDEX_CHANGE,this.onIndexChangeHandler);
-         this.searchNameInput.removeEventListener(InputEvent.INPUT,this.handleInput,false);
+         this.searchLabel.dispose();
          this.searchLabel = null;
+         this.searchResultLabel.dispose();
          this.searchResultLabel = null;
+         this.searchNameInput.dispose();
          this.searchNameInput = null;
+         this.searchButton.dispose();
          this.searchButton = null;
+         this.searchResultList.dispose();
          this.searchResultList = null;
+         this.joinButton.dispose();
          this.joinButton = null;
          this.bg = null;
          this._data = null;
@@ -125,16 +136,17 @@ package net.wg.gui.messenger.forms
       {
          if(this.searchResultList.selectedIndex >= 0)
          {
-            dispatchEvent(new ChannelsFormEvent(ChannelsFormEvent.ON_JOIN,true,false,"","","",this.searchResultList.selectedIndex));
+            dispatchEvent(new ChannelsFormEvent(ChannelsFormEvent.JOIN,true,false,"","","",this.searchResultList.selectedIndex));
          }
       }
       
       private function dispatchSearchEv() : void
       {
-         var _loc1_:String = this.searchNameInput.text;
+         var _loc1_:String = null;
+         _loc1_ = this.searchNameInput.text;
          this.searchResultList.selectedIndex = -1;
          this.searchButton.enabled = this.joinButton.enabled = false;
-         dispatchEvent(new ChannelsFormEvent(ChannelsFormEvent.ON_SEARCH_CHANNEL_CLICK,true,false,_loc1_));
+         dispatchEvent(new ChannelsFormEvent(ChannelsFormEvent.SEARCH_CHANNEL_CLICK,true,false,_loc1_));
       }
       
       private function handlePress(param1:uint) : void
@@ -149,13 +161,14 @@ package net.wg.gui.messenger.forms
       
       override public function handleInput(param1:InputEvent) : void
       {
+         var _loc2_:InputDetails = null;
          if(param1.isDefaultPrevented())
          {
             return;
          }
-         var _loc2_:InputDetails = param1.details;
+         _loc2_ = param1.details;
          var _loc3_:uint = _loc2_.controllerIndex;
-         if(_loc2_.navEquivalent == null)
+         if(_loc2_.navEquivalent == null && _loc2_.code == Keyboard.ENTER)
          {
             if(_loc2_.code == Keyboard.ENTER)
             {
@@ -163,26 +176,19 @@ package net.wg.gui.messenger.forms
                param1.handled = true;
             }
          }
-         else if(_loc2_.code != Keyboard.SPACE)
+         else if(_loc2_.code != Keyboard.SPACE && _loc2_.navEquivalent == NavigationCode.ENTER && _loc2_.value == InputValue.KEY_DOWN)
          {
-            switch(_loc2_.navEquivalent)
-            {
-               case NavigationCode.ENTER:
-                  if(_loc2_.value == InputValue.KEY_DOWN)
-                  {
-                     this.handlePress(_loc3_);
-                     param1.handled = true;
-                  }
-            }
+            this.handlePress(_loc3_);
+            param1.handled = true;
          }
       }
       
-      private function onIndexChangeHandler(param1:ListEvent = null) : void
+      private function onSearchResultListIndexChangeHandler(param1:ListEvent = null) : void
       {
          this.joinButton.enabled = this.searchResultList.selectedIndex > -1;
       }
       
-      private function onItemDoobleClickHandler(param1:ListEventEx) : void
+      private function onSearchResultListItemDoubleClickHandler(param1:ListEventEx) : void
       {
          this.tryJoin();
       }
@@ -192,7 +198,7 @@ package net.wg.gui.messenger.forms
          this.tryJoin();
       }
       
-      private function onSearchClickHandler(param1:ButtonEvent) : void
+      private function onSearchButtonClickHandler(param1:ButtonEvent) : void
       {
          this.dispatchSearchEv();
       }

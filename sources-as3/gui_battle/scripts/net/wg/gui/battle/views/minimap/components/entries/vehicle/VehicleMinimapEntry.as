@@ -32,6 +32,8 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
       
       public static const INVALID_HP:int = InvalidationType.SYSTEM_FLAGS_BORDER << 5;
       
+      public static const INVALID_MT_STATE:int = InvalidationType.SYSTEM_FLAGS_BORDER << 6;
+      
       private static const ENEMY_BEARER_LABEL:String = "enemyBearer";
       
       private static const ENEMY_BEARER_BLIND_LABEL:String = "enemyBearerBlind";

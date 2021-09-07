@@ -44,6 +44,8 @@ package net.wg.gui.lobby.settings
       
       private static const SHOW_VEHICLE_HP_IN_MINIMAP:String = "showVehicleHPinMinimap";
       
+      private static const SWITCH_EQUIPMENT:String = "switchEquipment";
+      
       private static const TO_STRING_MSG:String = "WG GameSettings: ";
       
       private static const GAME_COUNTER_CONTAINER_ID:String = "GAME_COUNTER_CONTAINER_ID";
@@ -150,7 +152,7 @@ package net.wg.gui.lobby.settings
                         _loc9_.enabled = _loc13_.enabled;
                         _loc13_.dispose();
                      }
-                     else if(_loc5_ == SHOW_VEHICLE_HP_IN_MINIMAP)
+                     else if(_loc5_ == SHOW_VEHICLE_HP_IN_MINIMAP || _loc5_ == SWITCH_EQUIPMENT)
                      {
                         _loc14_ = new SimpleExtraVO(_loc6_.extraData);
                         _loc9_.enabled = _loc14_.enabled;

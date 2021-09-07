@@ -1,3 +1,4 @@
+import itertools
 from collections import namedtuple
 from gui.shared.money import MONEY_UNDEFINED
 from shared_utils import CONST_CONTAINER
@@ -11,7 +12,8 @@ VehicleOfferEntry.__new__.__defaults__ = (
 ItemPackEntry = namedtuple('ItemPackEntry', ('type', 'id', 'count', 'groupID', 'compensation',
                                              'iconSource', 'title', 'description',
                                              'extra'))
-ItemPackEntry.__new__.__defaults__ = (None, None, None, None, None, None, '', '', None)
+ItemPackEntry.__new__.__defaults__ = (
+ None, None, None, None, None, None, '', '', {})
 
 class ShopItemType(CONST_CONTAINER):
     VEHICLE = 'vehicle'
@@ -35,6 +37,7 @@ class ShopItemType(CONST_CONTAINER):
 
 
 class ItemPackType(CONST_CONTAINER):
+    VEHICLE = 'vehicle'
     VEHICLE_LIGHT = 'vehicle/lightTank'
     VEHICLE_MEDIUM = 'vehicle/mediumTank'
     VEHICLE_HEAVY = 'vehicle/heavyTank'
@@ -65,9 +68,8 @@ class ItemPackType(CONST_CONTAINER):
     CUSTOM_BPCOIN = 'custom/bpcoin'
     CUSTOM_SLOT = 'custom/slot'
     CUSTOM_REFERRAL_CREW = 'custom/crew'
-    CUSTOM_REWARD_POINT = 'custom/reward_point'
     CUSTOM_SUPPLY_POINT = 'custom/supply_point'
-    CUSTOM_EVENT_PROGRESSION_REWARD_POINT = 'custom/reward_point'
+    CUSTOM_BATTLE_PASS_POINTS = 'custom/battlePassPoints'
     TOKEN = 'token'
     PAINT_ALL = 'paint/all'
     PAINT_SUMMER = 'paint/summer'
@@ -100,13 +102,16 @@ class ItemPackType(CONST_CONTAINER):
     BLUEPRINT_NATIONAL = 'blueprint/national'
     BLUEPRINT_INTELEGENCE_DATA = 'blueprint/intelligence_data'
     BLUEPRINT_ANY = 'blueprint/any'
+    DEMOUNT_KIT = 'demountKit'
+    REFERRAL_AWARDS = 'referral_awards'
 
 
 class ItemPackTypeGroup(CONST_CONTAINER):
     ITEM = (
      ItemPackType.ITEM_SHELL,
      ItemPackType.ITEM_DEVICE,
-     ItemPackType.ITEM_EQUIPMENT)
+     ItemPackType.ITEM_EQUIPMENT,
+     ItemPackType.CREW_BOOK_BROCHURE)
     VEHICLE = (
      ItemPackType.VEHICLE_SPG,
      ItemPackType.VEHICLE_AT_SPG,
@@ -141,6 +146,7 @@ class ItemPackTypeGroup(CONST_CONTAINER):
      ItemPackType.PROJECTION_DECAL,)
     PERSONAL_NUMBER = (
      ItemPackType.PERSONAL_NUMBER,)
+    CUSTOMIZATION = tuple(itertools.chain(STYLE, CAMOUFLAGE, PAINT, DECAL, PROJECTION_DECAL, PERSONAL_NUMBER, MODIFICATION))
     CUSTOM = (
      ItemPackType.CUSTOM_PREMIUM,
      ItemPackType.CUSTOM_PREMIUM_PLUS,
@@ -151,7 +157,6 @@ class ItemPackTypeGroup(CONST_CONTAINER):
      ItemPackType.CUSTOM_EVENT_COIN_EXTERNAL,
      ItemPackType.CUSTOM_REFERRAL_CREW,
      ItemPackType.CUSTOM_SLOT,
-     ItemPackType.CUSTOM_REWARD_POINT,
      ItemPackType.CUSTOM_SUPPLY_POINT)
     CREW = (
      ItemPackType.CREW_50,

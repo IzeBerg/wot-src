@@ -139,6 +139,8 @@ package net.wg.gui.lobby.settings.config
       
       public static const TRIPLE_BUFFERED:String = "tripleBuffered";
       
+      public static const IGB_HARDWARE_ACCELERATION:String = "igbHardwareAcceleration";
+      
       public static const FOV:String = "fov";
       
       public static const DYNAMIC_FOV:String = "dynamicFov";

@@ -3,6 +3,7 @@ package net.wg.gui.bootcamp.messageWindow.rewardAnimation
    import fl.transitions.easing.Regular;
    import flash.display.MovieClip;
    import flash.display.Sprite;
+   import net.wg.data.constants.Values;
    import net.wg.gui.bootcamp.messageWindow.events.MessageViewEvent;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
    import scaleform.clik.motion.Tween;
@@ -57,7 +58,7 @@ package net.wg.gui.bootcamp.messageWindow.rewardAnimation
       private function onFxComplete() : void
       {
          this.fx.stop();
-         dispatchEvent(new MessageViewEvent(MessageViewEvent.REWARD_ANIMATION_COMPLETE,true));
+         dispatchEvent(new MessageViewEvent(MessageViewEvent.REWARD_ANIMATION_COMPLETE,Values.EMPTY_STR,true));
       }
       
       private function clearTween() : void

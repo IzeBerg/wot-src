@@ -34,6 +34,8 @@ package net.wg.gui.lobby.settings
       
       public var tripleBufferedCheckbox:CheckBox = null;
       
+      public var igbHardwareAccelerationCheckbox:CheckBox = null;
+      
       public var interfaceScaleLabel:LabelControl = null;
       
       public var interfaceScaleDropDown:DropdownMenu = null;
@@ -93,6 +95,7 @@ package net.wg.gui.lobby.settings
          this.interfaceScaleLabel.dispose();
          this.interfaceScaleDropDown.dispose();
          this.tripleBufferedCheckbox.dispose();
+         this.igbHardwareAccelerationCheckbox.dispose();
          this.gammaLabel.dispose();
          this.gammaSettingButton.dispose();
          this.isColorBlindCheckbox.dispose();
@@ -115,6 +118,7 @@ package net.wg.gui.lobby.settings
          this.interfaceScaleLabel = null;
          this.interfaceScaleDropDown = null;
          this.tripleBufferedCheckbox = null;
+         this.igbHardwareAccelerationCheckbox = null;
          this.gammaLabel = null;
          this.gammaSettingButton = null;
          this.isColorBlindCheckbox = null;

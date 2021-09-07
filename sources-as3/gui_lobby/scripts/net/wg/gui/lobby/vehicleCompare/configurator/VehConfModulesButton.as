@@ -19,6 +19,10 @@ package net.wg.gui.lobby.vehicleCompare.configurator
       private static const BG_ROLL_OUT_ALPHA:Number = 0.03;
       
       private static const TWEEN_DURATION:Number = 150;
+      
+      private static const BG_HEIGHT_BIG:int = 90;
+      
+      private static const BG_HEIGHT_SMALL:int = 68;
        
       
       public var bg:MovieClip;
@@ -40,6 +44,8 @@ package net.wg.gui.lobby.vehicleCompare.configurator
       private var _modules:Vector.<UIComponentEx>;
       
       private var _dataVOs:Vector.<DeviceSlotVO>;
+      
+      private var _isSmall:Boolean = false;
       
       public function VehConfModulesButton()
       {
@@ -118,6 +124,7 @@ package net.wg.gui.lobby.vehicleCompare.configurator
       {
          var _loc1_:VehConfModuleSlot = null;
          var _loc2_:DeviceSlotVO = null;
+         var _loc3_:UIComponentEx = null;
          if(this._dataVOs && isInvalid(InvalidationType.DATA))
          {
             for each(_loc2_ in this._dataVOs)
@@ -130,6 +137,14 @@ package net.wg.gui.lobby.vehicleCompare.configurator
                }
             }
          }
+         if(isInvalid(InvalidationType.SIZE))
+         {
+            this.bg.height = !!this._isSmall ? Number(BG_HEIGHT_SMALL) : Number(BG_HEIGHT_BIG);
+            for each(_loc3_ in this._modules)
+            {
+               _loc3_.y = this.bg.height - _loc3_.height >> 1;
+            }
+         }
          super.draw();
       }
       
@@ -139,10 +154,29 @@ package net.wg.gui.lobby.vehicleCompare.configurator
          invalidateData();
       }
       
+      public function setIsSmall(param1:Boolean) : void
+      {
+         if(this._isSmall != param1)
+         {
+            this._isSmall = param1;
+            invalidateSize();
+            validateNow();
+         }
+      }
+      
       private function applyBgAlpha(param1:Number) : void
       {
          this._tweenManager.unregisterAll();
          this._tweenManager.registerAndLaunch(TWEEN_DURATION,this.bg,{"alpha":param1},{});
+      }
+      
+      override public function get height() : Number
+      {
+         if(this.bg)
+         {
+            return this.bg.y + this.bg.height;
+         }
+         return super.height;
       }
       
       override public function set enabled(param1:Boolean) : void

@@ -64,6 +64,10 @@ class LobbyMenuMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_showManualButton(value)
 
+    def as_setManualButtonIconS(self, icon):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setManualButtonIcon(icon)
+
     def as_setMenuStateS(self, state):
         if self._isDAAPIInited():
             return self.flashObject.as_setMenuState(state)

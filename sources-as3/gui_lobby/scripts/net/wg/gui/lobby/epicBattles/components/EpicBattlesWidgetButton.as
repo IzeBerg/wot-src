@@ -2,10 +2,10 @@ package net.wg.gui.lobby.epicBattles.components
 {
    import flash.display.MovieClip;
    import flash.events.MouseEvent;
-   import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
+   import net.wg.gui.lobby.epicBattles.data.EpicBattlesWidgetEvent;
    import net.wg.gui.lobby.epicBattles.data.EpicBattlesWidgetVO;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
-   import net.wg.infrastructure.managers.ITooltipMgr;
+   import net.wg.utils.StageSizeBoundaries;
    import scaleform.gfx.MouseEventEx;
    
    public class EpicBattlesWidgetButton extends MovieClip implements IDisposable
@@ -14,35 +14,39 @@ package net.wg.gui.lobby.epicBattles.components
       private static const OUT:String = "out";
       
       private static const OVER:String = "over";
+      
+      private static const HIT_AREA_SIZE_SMALL:uint = 130;
+      
+      private static const HIT_AREA_SIZE_BIG:uint = 150;
        
       
       public var widget:EpicBattlesWidgetComponent = null;
       
       public var hitMc:MovieClip = null;
       
-      private var _toolTipMgr:ITooltipMgr;
-      
       public function EpicBattlesWidgetButton()
       {
-         this._toolTipMgr = App.toolTipMgr;
          super();
          this.init();
       }
       
       public final function dispose() : void
       {
-         removeEventListener(MouseEvent.ROLL_OVER,this.onMouseRollOverHandler);
-         removeEventListener(MouseEvent.ROLL_OUT,this.onMouseRollOutHandler);
          removeEventListener(MouseEvent.CLICK,this.onPreventMiddleRightClickHandler);
+         removeEventListener(EpicBattlesWidgetEvent.LAYOUT_CHANGE,this.onLayoutChange);
+         this.hitMc = null;
          this.widget.dispose();
          this.widget = null;
-         this.hitMc = null;
-         this._toolTipMgr = null;
       }
       
       public function setData(param1:EpicBattlesWidgetVO) : void
       {
          this.widget.setData(param1);
+      }
+      
+      public function updateOverState(param1:Boolean) : void
+      {
+         gotoAndPlay(!!param1 ? OVER : OUT);
       }
       
       public function updateSize() : void
@@ -53,22 +57,15 @@ package net.wg.gui.lobby.epicBattles.components
       private function init() : void
       {
          buttonMode = mouseEnabled = mouseChildren = true;
-         hitArea = this.hitMc;
-         addEventListener(MouseEvent.ROLL_OVER,this.onMouseRollOverHandler);
-         addEventListener(MouseEvent.ROLL_OUT,this.onMouseRollOutHandler);
+         this.widget.hitArea = this.hitMc;
+         this.widget.buttonMode = true;
          addEventListener(MouseEvent.CLICK,this.onPreventMiddleRightClickHandler);
+         addEventListener(EpicBattlesWidgetEvent.LAYOUT_CHANGE,this.onLayoutChange);
       }
       
-      private function onMouseRollOutHandler(param1:MouseEvent) : void
+      public function get ribbonWidth() : Number
       {
-         this._toolTipMgr.hide();
-         gotoAndPlay(OUT);
-      }
-      
-      private function onMouseRollOverHandler(param1:MouseEvent) : void
-      {
-         this._toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.EVENT_PROGRESSION_PROGRESS_INFO,null);
-         gotoAndPlay(OVER);
+         return this.widget.ribbonWidth;
       }
       
       private function onPreventMiddleRightClickHandler(param1:MouseEvent) : void
@@ -77,6 +74,12 @@ package net.wg.gui.lobby.epicBattles.components
          {
             param1.stopImmediatePropagation();
          }
+      }
+      
+      private function onLayoutChange(param1:EpicBattlesWidgetEvent) : void
+      {
+         var _loc2_:Boolean = App.appHeight <= StageSizeBoundaries.HEIGHT_900;
+         this.hitMc.width = this.hitMc.height = !!_loc2_ ? Number(HIT_AREA_SIZE_SMALL) : Number(HIT_AREA_SIZE_BIG);
       }
    }
 }

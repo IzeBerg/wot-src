@@ -139,6 +139,7 @@ class SequenceComponent(Component):
 
     def deactivate(self):
         self.stop()
+        self.unbind()
 
     def destroy(self):
         self.__sequenceAnimator = None

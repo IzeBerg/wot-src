@@ -36,16 +36,16 @@ class ItemSortRule(CONST_CONTAINER):
     FRONTLINE = 'frontline'
 
 
-class EventDataType(CONST_CONTAINER):
-    EVENT_PROGRESSION = 'eventProgression'
-
-
 OFFER_CHANGED_EVENT = 'offerChanged'
 _UNLIMITED_ITEMS_COUNT = -1
 _EXCLUDE_ITEMS = {v for v in ItemPackTypeGroup.CREW} | {ItemPackType.FRONTLINE_TOKEN}
 _ANY_ITEM_TYPE = {v for _, v in ItemPackType.getIterator()} - _EXCLUDE_ITEMS
 _FRONTLINE_GIFTS = {v for _, v in ItemPackType.getIterator()} - {ItemPackType.FRONTLINE_TOKEN}
 _NATIVE_ITEM_TYPE = set(itertools.chain(ItemPackTypeGroup.VEHICLE, ItemPackTypeGroup.ITEM))
+_CREW_BOOKS = {
+ ItemPackType.CREW_BOOK, ItemPackType.CREW_BOOK_BROCHURE, ItemPackType.CREW_BOOK_GUIDE,
+ ItemPackType.CREW_BOOK_CREW_BOOK, ItemPackType.CREW_BOOK_PERSONAL_BOOK,
+ ItemPackType.CREW_BOOK_UNIVERSAL_BOOK}
 _CUSTOMIZATION_ITEM_TYPE = set(itertools.chain(ItemPackTypeGroup.STYLE, ItemPackTypeGroup.CAMOUFLAGE, ItemPackTypeGroup.PAINT, ItemPackTypeGroup.DECAL, ItemPackTypeGroup.PROJECTION_DECAL, ItemPackTypeGroup.PERSONAL_NUMBER, ItemPackTypeGroup.MODIFICATION))
 _CUSTOMIZATION_TYPES_MAP = {ItemPackType.STYLE: CustomizationType.STYLE, 
    ItemPackType.CAMOUFLAGE_ALL: CustomizationType.CAMOUFLAGE, 
@@ -80,6 +80,7 @@ _TOOLTIP_TYPE = {ItemPackType.ITEM_DEVICE: TOOLTIPS_CONSTANTS.SHOP_MODULE,
    ItemPackType.GOODIE_CREW_EXPERIENCE: TOOLTIPS_CONSTANTS.SHOP_BOOSTER, 
    ItemPackType.GOODIE_FREE_EXPERIENCE: TOOLTIPS_CONSTANTS.SHOP_BOOSTER, 
    ItemPackType.GOODIE_FRONTLINE_EXPERIENCE: TOOLTIPS_CONSTANTS.SHOP_BOOSTER, 
+   ItemPackType.VEHICLE: TOOLTIPS_CONSTANTS.AWARD_VEHICLE, 
    ItemPackType.VEHICLE_MEDIUM: TOOLTIPS_CONSTANTS.AWARD_VEHICLE, 
    ItemPackType.VEHICLE_HEAVY: TOOLTIPS_CONSTANTS.AWARD_VEHICLE, 
    ItemPackType.VEHICLE_LIGHT: TOOLTIPS_CONSTANTS.AWARD_VEHICLE, 
@@ -115,7 +116,10 @@ _TOOLTIP_TYPE = {ItemPackType.ITEM_DEVICE: TOOLTIPS_CONSTANTS.SHOP_MODULE,
    ItemPackType.BLUEPRINT: TOOLTIPS_CONSTANTS.BLUEPRINT_FRAGMENT_INFO, 
    ItemPackType.BLUEPRINT_NATIONAL: TOOLTIPS_CONSTANTS.BLUEPRINT_FRAGMENT_INFO, 
    ItemPackType.BLUEPRINT_INTELEGENCE_DATA: TOOLTIPS_CONSTANTS.BLUEPRINT_FRAGMENT_INFO, 
-   ItemPackType.BLUEPRINT_ANY: TOOLTIPS_CONSTANTS.BLUEPRINT_RANDOM_INFO}
+   ItemPackType.BLUEPRINT_ANY: TOOLTIPS_CONSTANTS.BLUEPRINT_RANDOM_INFO, 
+   ItemPackType.REFERRAL_AWARDS: TOOLTIPS_CONSTANTS.REFERRAL_AWARDS, 
+   ItemPackType.CUSTOM_BATTLE_PASS_POINTS: TOOLTIPS_CONSTANTS.BATTLE_PASS_POINTS, 
+   ItemPackType.DEMOUNT_KIT: TOOLTIPS_CONSTANTS.AWARD_DEMOUNT_KIT}
 _ICONS = {ItemPackType.CAMOUFLAGE_ALL: RES_SHOP.MAPS_SHOP_REWARDS_48X48_PRIZE_CAMOUFLAGE, 
    ItemPackType.CAMOUFLAGE_WINTER: RES_SHOP.MAPS_SHOP_REWARDS_48X48_PRIZE_CAMOUFLAGE, 
    ItemPackType.CAMOUFLAGE_SUMMER: RES_SHOP.MAPS_SHOP_REWARDS_48X48_PRIZE_CAMOUFLAGE, 
@@ -155,7 +159,7 @@ def __getPremiumPlusIcon(days):
     r = R.images.gui.maps.icons.quests.bonuses.small.dyn(('premium_plus_{}').format(days))
     if r.exists():
         return backport.image(r())
-    return ''
+    return backport.image(R.images.gui.maps.icons.quests.bonuses.small.premium_universal())
 
 
 _BOX_ITEM = None
@@ -244,6 +248,8 @@ def getItemIcon(rawItem, item):
     if not icon:
         if item is not None:
             icon = _ICONS.get(rawItem.type, item.icon)
+            if rawItem.type in _CREW_BOOKS:
+                icon = backport.image(R.images.gui.maps.icons.crewBooks.books.small.dyn(item.icon)())
         elif rawItem.type == ItemPackType.CUSTOM_PREMIUM:
             icon = _PREM_ICONS.get(rawItem.count, '')
         elif rawItem.type == ItemPackType.CUSTOM_PREMIUM_PLUS:
@@ -276,8 +282,6 @@ def getItemTitle(rawItem, item, forBox=False, additionalInfo=False):
         title = backport.text(R.strings.quests.bonuses.bpcoin.header(), value=backport.getIntegralFormat(rawItem.count))
     elif rawItem.type == ItemPackType.CUSTOM_SUPPLY_POINT:
         title = _ms(EPIC_BATTLE.EPICBATTLEITEM_SUPPLYPOINTS_HEADER)
-    elif rawItem.type == ItemPackType.CUSTOM_REWARD_POINT:
-        title = _ms(EPIC_BATTLE.EPICBATTLEITEM_REWARDPOINTS_HEADER)
     elif rawItem.type == ItemPackType.CUSTOM_PREMIUM:
         title = backport.text(R.strings.tooltips.premium.days.header(), rawItem.count)
     elif rawItem.type == ItemPackType.CUSTOM_PREMIUM_PLUS:
@@ -293,8 +297,6 @@ def getItemTitle(rawItem, item, forBox=False, additionalInfo=False):
                ItemPackType.CUSTOM_CREW_100: CrewTypes.SKILL_100}.get(rawItem.type))
         else:
             title = _ms(TOOLTIPS.CREW_HEADER)
-    elif rawItem.type == ItemPackType.CUSTOM_EVENT_PROGRESSION_REWARD_POINT:
-        title = backport.text(R.strings.tooltips.vehiclePreview.buyingPanel.eventProgression.price.header())
     else:
         title = rawItem.title or ''
     return title
@@ -323,8 +325,6 @@ def getItemDescription(rawItem, item):
         description = _ms(TOOLTIPS.CUSTOMCREW_REFERRAL_BODY, value=CrewTypes.SKILL_100)
     elif rawItem.type == ItemPackType.CUSTOM_SUPPLY_POINT:
         description = _ms(EPIC_BATTLE.EPICBATTLEITEM_SUPPLYPOINTS_DESCRIPTION)
-    elif rawItem.type == ItemPackType.CUSTOM_REWARD_POINT:
-        description = _ms(EPIC_BATTLE.EPICBATTLEITEM_REWARDPOINTS_DESCRIPTION)
     elif rawItem.type in ItemPackTypeGroup.CREW:
         if rawItem.type == ItemPackType.CREW_CUSTOM:
             description = _ms(TOOLTIPS.CREWCUSTOM_BODY)
@@ -333,8 +333,6 @@ def getItemDescription(rawItem, item):
                ItemPackType.CREW_75: CrewTypes.SKILL_75, 
                ItemPackType.CREW_100: CrewTypes.SKILL_100, 
                ItemPackType.CUSTOM_CREW_100: CrewTypes.SKILL_100}.get(rawItem.type))
-    elif rawItem.type == ItemPackType.CUSTOM_EVENT_PROGRESSION_REWARD_POINT:
-        description = backport.text(R.strings.tooltips.vehiclePreview.buyingPanel.eventProgression.price.body())
     else:
         description = rawItem.description or ''
     return description
@@ -351,12 +349,21 @@ def getItemTooltipType(rawItem, item):
 def showItemTooltip(toolTipMgr, rawItem, item):
     tooltipType = getItemTooltipType(rawItem, item)
     if tooltipType is not None:
-        toolTipMgr.onCreateTypedTooltip(tooltipType, [rawItem.id], 'INFO')
+        defaults = toolTipMgr.getTypedTooltipDefaultBuildArgs(tooltipType)
+        buildArgs = [ rawItem.extra.get(argName, defaultValue) for argName, defaultValue in defaults ]
+        toolTipMgr.onCreateTypedTooltip(tooltipType, [rawItem.id] + buildArgs[1:], 'INFO')
     else:
         header = getItemTitle(rawItem, item)
         body = getItemDescription(rawItem, item)
         tooltip = makeTooltip(header, body)
         toolTipMgr.onCreateComplexTooltip(tooltip, 'INFO')
+    return
+
+
+def showAwardsTooltip(toolTipMgr, itemType, data):
+    tooltipType = _TOOLTIP_TYPE.get(itemType)
+    if tooltipType is not None:
+        toolTipMgr.onCreateTypedTooltip(tooltipType, [data], 'INFO')
     return
 
 
@@ -390,7 +397,7 @@ def _createItemVO(rawItem, itemsCache, goodiesCache, slotIndex, rawTooltipData=N
         overlay = fittingItem.getHighlightType() if fittingItem is not None else SLOT_HIGHLIGHT_TYPES.NO_HIGHLIGHT
         if rawItem.type in ItemPackTypeGroup.CREW:
             countFormat = _formatCrew(rawItem)
-        elif rawItem.type in _UNCOUNTABLE_ITEM_TYPE:
+        elif rawItem.type in _UNCOUNTABLE_ITEM_TYPE and icon != backport.image(R.images.gui.maps.icons.quests.bonuses.small.premium_universal()):
             countFormat = ''
         else:
             count = rawItem.count
@@ -428,9 +435,12 @@ def _getBoxTooltipVO(rawItems, itemsCache, goodiesCache):
             overlay = fittingItem.getHighlightType()
         else:
             overlay = SLOT_HIGHLIGHT_TYPES.NO_HIGHLIGHT
+        count = str(rawItem.count) if rawItem.type not in _UNCOUNTABLE_ITEM_TYPE and rawItem.count > 1 else ''
+        if icon == backport.image(R.images.gui.maps.icons.quests.bonuses.small.premium_universal()):
+            count = str(rawItem.count)
         items.append({'id': rawItem.id, 
            'type': rawItem.type, 
-           'count': str(rawItem.count) if rawItem.type not in _UNCOUNTABLE_ITEM_TYPE and rawItem.count > 1 else '', 
+           'count': count, 
            'icon': icon, 
            'overlay': overlay, 
            'desc': getItemTitle(rawItem, fittingItem, forBox=True)})

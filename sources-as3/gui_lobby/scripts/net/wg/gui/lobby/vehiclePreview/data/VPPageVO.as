@@ -26,6 +26,10 @@ package net.wg.gui.lobby.vehiclePreview.data
       
       public var isMultinational:Boolean;
       
+      public var vehicleCD:int = -1;
+      
+      public var showPostProgressionBtn:Boolean;
+      
       public function VPPageVO(param1:Object)
       {
          super(param1);

@@ -5,11 +5,11 @@ package net.wg.gui.messenger.evnts
    public class ChannelsFormEvent extends Event
    {
       
-      public static var ON_SEARCH_CHANNEL_CLICK:String = "on_search_channel_click";
+      public static var SEARCH_CHANNEL_CLICK:String = "on_search_channel_click";
       
-      public static var ON_JOIN:String = "on_join";
+      public static var JOIN:String = "on_join";
       
-      public static var ON_CREATE_CHANNEL:String = "on_create_channel";
+      public static var CREATE_CHANNEL:String = "on_create_channel";
        
       
       public var channelName:String = "";

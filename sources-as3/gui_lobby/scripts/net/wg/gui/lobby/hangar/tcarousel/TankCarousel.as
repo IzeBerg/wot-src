@@ -7,6 +7,7 @@ package net.wg.gui.lobby.hangar.tcarousel
    import net.wg.data.VO.TankCarouselFilterInitVO;
    import net.wg.data.VO.TankCarouselFilterSelectedVO;
    import net.wg.data.constants.Directions;
+   import net.wg.data.constants.Values;
    import net.wg.gui.components.carousels.events.TankItemEvent;
    import net.wg.gui.components.carousels.filters.TankCarouselFilters;
    import net.wg.gui.components.controls.events.RendererEvent;
@@ -31,7 +32,17 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       private static const MASK_SIDE_OFFSET:int = -10;
       
-      private static const MASK_TOP_OFFSET:int = -12;
+      private static const MASK_TOP_OFFSET_DEFAULT:int = -12;
+      
+      private static const MASK_BOTTOM_OFFSET_DEFAULT:int = 0;
+      
+      private static const MASK_TOP_OFFSET_EPIC_BIG:int = -10;
+      
+      private static const MASK_TOP_OFFSET_EPIC_SMALL:int = -20;
+      
+      private static const MASK_BOTTOM_OFFSET_EPIC_BIG:int = -8;
+      
+      private static const MASK_BOTTOM_OFFSET_EPIC_SMALL:int = -17;
       
       private static const THROW_ACCELERATION_RATE:int = 4;
       
@@ -48,6 +59,8 @@ package net.wg.gui.lobby.hangar.tcarousel
       private static const INV_ROW_COUNT:String = "invRowCount";
       
       private static const HIT_AREA_NAME:String = "emptyHitArea";
+      
+      private static const INVALID_SCROLL_POS:String = "InvalidScrollPos";
       
       private static const OPTIMIZE_OFFSET:int = 10;
        
@@ -69,6 +82,8 @@ package net.wg.gui.lobby.hangar.tcarousel
       private var _smallDoubleCarouselEnable:Boolean = false;
       
       private var _listVisibleHeight:int = -1;
+      
+      private var _itemIndexToScroll:int = -1;
       
       public function TankCarousel()
       {
@@ -114,7 +129,7 @@ package net.wg.gui.lobby.hangar.tcarousel
          scrollList.snapToPages = true;
          scrollList.cropContent = true;
          scrollList.maskOffsetLeft = scrollList.maskOffsetRight = MASK_SIDE_OFFSET;
-         scrollList.maskOffsetTop = MASK_TOP_OFFSET;
+         scrollList.maskOffsetTop = MASK_TOP_OFFSET_DEFAULT;
          scrollList.goToOffset = GO_TO_OFFSET;
          this._helper = new TankCarouselHelper();
          this.updateScrollListSettings();
@@ -138,19 +153,33 @@ package net.wg.gui.lobby.hangar.tcarousel
       override protected function draw() : void
       {
          var _loc1_:Boolean = isInvalid(InvalidationType.SIZE);
+         var _loc2_:Boolean = isInvalid(INV_ROW_COUNT);
          if(_loc1_)
          {
             this._helper = this.getNewHelper();
          }
-         if(isInvalid(INV_ROW_COUNT))
+         if(_loc2_)
          {
             scrollList.rowCount = this._rowCount;
             goToSelectedItem();
             invalidate(InvalidationType.SETTINGS);
          }
+         if(_loc1_ || _loc2_)
+         {
+            this.checkMaskOffsets();
+         }
          if(isInvalid(InvalidationType.SETTINGS))
          {
             this.updateScrollListSettings();
+         }
+         if(isInvalid(INVALID_SCROLL_POS))
+         {
+            if(this._itemIndexToScroll != Values.DEFAULT_INT)
+            {
+               scrollList.validateNow();
+               scrollList.goToItem(this._itemIndexToScroll,true,true);
+            }
+            this._itemIndexToScroll = Values.DEFAULT_INT;
          }
          super.draw();
          if(_loc1_)
@@ -206,10 +235,22 @@ package net.wg.gui.lobby.hangar.tcarousel
          }
       }
       
+      public function as_scrollToSlot(param1:int) : void
+      {
+         this._itemIndexToScroll = param1;
+         invalidate(INVALID_SCROLL_POS);
+      }
+      
       public function as_setSmallDoubleCarousel(param1:Boolean) : void
       {
          this._smallDoubleCarouselEnable = param1;
          invalidateSize();
+      }
+      
+      public function as_useExtendedCarousel(param1:Boolean) : void
+      {
+         scrollList.useExtendedViewPort = param1;
+         this.checkMaskOffsets();
       }
       
       public function getAliasS() : String
@@ -285,7 +326,8 @@ package net.wg.gui.lobby.hangar.tcarousel
       protected function getNewHelper() : ITankCarouselHelper
       {
          var _loc1_:ITankCarouselHelper = this._helper;
-         if(this._rowCount > 1 && (this._stageHeight < THRESHOLD || this._smallDoubleCarouselEnable))
+         var _loc2_:Boolean = this._rowCount > 1;
+         if(_loc2_ && (this._stageHeight < THRESHOLD || this._smallDoubleCarouselEnable))
          {
             if(!(_loc1_ is SmallTankCarouselHelper))
             {
@@ -299,6 +341,31 @@ package net.wg.gui.lobby.hangar.tcarousel
             invalidate(InvalidationType.SETTINGS);
          }
          return _loc1_;
+      }
+      
+      private function checkMaskOffsets() : void
+      {
+         var _loc1_:int = 0;
+         var _loc2_:int = 0;
+         var _loc3_:Boolean = false;
+         var _loc4_:Boolean = false;
+         if(scrollList.useExtendedViewPort)
+         {
+            _loc3_ = this._rowCount > 1;
+            _loc4_ = _loc3_ && (this._stageHeight < THRESHOLD || this._smallDoubleCarouselEnable);
+            _loc1_ = !!_loc4_ ? int(MASK_TOP_OFFSET_EPIC_SMALL) : int(MASK_TOP_OFFSET_EPIC_BIG);
+            _loc2_ = !!_loc4_ ? int(MASK_BOTTOM_OFFSET_EPIC_SMALL) : int(MASK_BOTTOM_OFFSET_EPIC_BIG);
+         }
+         else
+         {
+            _loc1_ = MASK_TOP_OFFSET_DEFAULT;
+            _loc2_ = MASK_BOTTOM_OFFSET_DEFAULT;
+         }
+         if(scrollList.maskOffsetTop != _loc1_ || scrollList.maskOffsetBottom != _loc2_)
+         {
+            scrollList.maskOffsetTop = _loc1_;
+            scrollList.maskOffsetBottom = _loc2_;
+         }
       }
       
       private function updateScrollListSettings() : void

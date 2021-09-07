@@ -96,6 +96,10 @@ package net.wg.gui.components.advanced
       
       override protected function updatePosition() : void
       {
+         if(!this.commonBar)
+         {
+            return;
+         }
          this._onePercentWidth = (width / scaleX - (PADDING << 1)) / HUNDRED_PERCENT;
          this.commonBar.width = _value / this._onePercent * this._onePercentWidth ^ 0;
          this.marker.visible = this._markerValue > 0;

@@ -13,7 +13,6 @@ package net.wg.gui.lobby.vehiclePreview
    import net.wg.gui.interfaces.ISoundButtonEx;
    import net.wg.gui.lobby.vehiclePreview.additionalInfo.VPAdditionalInfoPanel;
    import net.wg.gui.lobby.vehiclePreview.buyingPanel.IVPBottomPanel;
-   import net.wg.gui.lobby.vehiclePreview.buyingPanel.VPEventProgressionStyleBuyingPanel;
    import net.wg.gui.lobby.vehiclePreview.buyingPanel.VPProgressionStylesBuyingPanel;
    import net.wg.gui.lobby.vehiclePreview.data.VPAdditionalInfoVO;
    import net.wg.gui.lobby.vehiclePreview.data.VPPageBaseVO;
@@ -151,13 +150,8 @@ package net.wg.gui.lobby.vehiclePreview
          super.onPopulate();
          App.stage.dispatchEvent(new LobbyEvent(LobbyEvent.REGISTER_DRAGGING));
          App.gameInputMgr.setKeyHandler(Keyboard.ESCAPE,KeyboardEvent.KEY_DOWN,this.onEscapeKeyUpHandler,true);
-         var _loc1_:Boolean = this.bottomPanel is VPEventProgressionStyleBuyingPanel;
-         var _loc2_:Boolean = this.bottomPanel is VPProgressionStylesBuyingPanel;
+         var _loc1_:Boolean = this.bottomPanel is VPProgressionStylesBuyingPanel;
          if(_loc1_)
-         {
-            registerFlashComponentS(VPEventProgressionStyleBuyingPanel(this.bottomPanel),VEHPREVIEW_CONSTANTS.EVENT_PROGRESSION_STYLE_BUYING_PANEL_PY_ALIAS);
-         }
-         else if(_loc2_)
          {
             registerFlashComponentS(VPProgressionStylesBuyingPanel(this.bottomPanel),VEHPREVIEW_CONSTANTS.PROGRESSION_STYLES_BUYING_PANEL_PY_ALIAS);
          }

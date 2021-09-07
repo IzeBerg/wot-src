@@ -17,6 +17,10 @@ package net.wg.gui.lobby.components.data
       
       public var paramID:String = "";
       
+      public var parentID:String = "";
+      
+      public var highlight:String = "none";
+      
       public var isEnabled:Boolean = false;
       
       public var tooltip:String = "";

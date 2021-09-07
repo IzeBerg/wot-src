@@ -19,6 +19,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public var handleError:Function;
       
+      public var onHighlightShow:Function;
+      
       private var _bCIntroVideoVO:BCIntroVideoVO;
       
       public function BCIntroVideoPageMeta()
@@ -64,6 +66,12 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.handleError,"handleError" + Errors.CANT_NULL);
          this.handleError(param1);
+      }
+      
+      public function onHighlightShowS() : void
+      {
+         App.utils.asserter.assertNotNull(this.onHighlightShow,"onHighlightShow" + Errors.CANT_NULL);
+         this.onHighlightShow();
       }
       
       public final function as_setData(param1:Object) : void

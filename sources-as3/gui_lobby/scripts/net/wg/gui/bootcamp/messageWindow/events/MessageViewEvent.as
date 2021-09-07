@@ -18,21 +18,33 @@ package net.wg.gui.bootcamp.messageWindow.events
       public static const REWARD_ANIMATION_COMPLETE:String = "rewardAnimationComplete";
       
       public static const REWARD_ANIMATION_START:String = "rewardAnimationStart";
+      
+      public static const REWARD_ANIMATION_STOP:String = "rewardAnimationStop";
+      
+      public static const UNLOCK_ANIMATION_START:String = "unlockAnimationStart";
        
       
-      public function MessageViewEvent(param1:String, param2:Boolean = false, param3:Boolean = false)
+      private var _id:String = "";
+      
+      public function MessageViewEvent(param1:String, param2:String = "", param3:Boolean = false, param4:Boolean = false)
       {
-         super(param1,param2,param3);
+         super(param1,param3,param4);
+         this._id = param2;
       }
       
       override public function clone() : Event
       {
-         return new MessageViewEvent(type,bubbles,cancelable);
+         return new MessageViewEvent(type,this.id,bubbles,cancelable);
       }
       
       override public function toString() : String
       {
-         return formatToString("ManualViewEvent","type","bubbles","cancelable");
+         return formatToString("ManualViewEvent","id","type","bubbles","cancelable");
+      }
+      
+      public function get id() : String
+      {
+         return this._id;
       }
    }
 }

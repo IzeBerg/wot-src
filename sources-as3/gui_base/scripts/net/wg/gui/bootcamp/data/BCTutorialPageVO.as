@@ -30,6 +30,8 @@ package net.wg.gui.bootcamp.data
       
       public var description1Text:String = "";
       
+      public var description1HtmlText:String = "";
+      
       public var description1AutoSize:String = "";
       
       public var description2Text:String = "";

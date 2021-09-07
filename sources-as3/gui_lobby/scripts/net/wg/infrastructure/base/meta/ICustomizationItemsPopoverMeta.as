@@ -10,7 +10,7 @@ package net.wg.infrastructure.base.meta
       
       function removeAllS() : void;
       
-      function showOnlyNonHistoricS(param1:Boolean) : void;
+      function showNonHistoricAndFantasticalS(param1:Boolean, param2:Boolean) : void;
       
       function as_setHeaderData(param1:Object) : void;
       

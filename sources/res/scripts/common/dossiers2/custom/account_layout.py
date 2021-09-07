@@ -253,7 +253,7 @@ _SINGLE_ACHIEVEMENTS_VALUES = [
  'bob2021MasterTortoise_apac', 'bob2021SummerTiger_apac', 'bob2021Maharlika_apac',
  'february21', 'BattlePassCommonPr_4', 'march21', 'april21', 'gagarin21', 'may21',
  'june21', 'BattlePassCommonPr_5', 'mapboxSeason1', 'mapboxSeason2', 'mapboxSeason3',
- 'july21']
+ 'july21', 'august21', 'BattlePassCommonPr_6']
 _singleAchievementsPopUps = [
  'titleSniper', 'invincible', 'diehard', 'handOfDeath',
  'armorPiercer', 'battleCitizen', 'WFC2014', 'tacticalBreakthrough', 'aimer',
@@ -290,7 +290,8 @@ _singleAchievementsPopUps = [
  'bob2021TragicLoss_na', 'bob2021CmdrAF_na', 'bob2021MasterTortoise_apac',
  'bob2021SummerTiger_apac', 'bob2021Maharlika_apac', 'february21', 'BattlePassCommonPr_4',
  'march21', 'april21', 'gagarin21', 'may21', 'june21', 'BattlePassCommonPr_5',
- 'mapboxSeason1', 'mapboxSeason2', 'mapboxSeason3', 'july21']
+ 'mapboxSeason1', 'mapboxSeason2', 'mapboxSeason3', 'july21', 'august21',
+ 'BattlePassCommonPr_6']
 _singleAchievementsBlockBuilder = BinarySetDossierBlockBuilder('singleAchievements', _SINGLE_ACHIEVEMENTS_VALUES, {}, _singleAchievementsPopUps)
 FORT_ACHIEVEMENTS_BLOCK_LAYOUT = [
  'conqueror', 'fireAndSword', 'crusher', 'counterblow', 'kampfer', 'soldierOfFortune']
@@ -333,7 +334,7 @@ EPIC_BATTLE_ACHIEVEMENTS_BLOCK_LAYOUT = [
  'smallArmy', 'frontlineMedal']
 _epicBattleAchievementsPopUps = ['frontlineMedal']
 _epicBattleAchievementsBlockBuilder = StaticSizeBlockBuilder('epicBattleAchievements', EPIC_BATTLE_ACHIEVEMENTS_BLOCK_LAYOUT, EPIC_BATTLE_STATS_DEPENDENCIES, _epicBattleAchievementsPopUps)
-_epicBattleSeasonsBlockBuilder = DictBlockBuilder('epicSeasons', 'II', 'HHBB', {})
+_epicBattleSeasonsBlockBuilder = DictBlockBuilder('epicSeasons', 'II', 'HHBHH', {})
 _battleRoyaleSeasonsBlockBuilder = DictBlockBuilder('battleRoyaleSeasons', 'II', 'HHH', {})
 accountDossierLayout = (
  _a15x15BlockBuilder, _a15x15_2BlockBuilder, _clanBlockBuilder,

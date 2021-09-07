@@ -46,7 +46,7 @@ from skeletons.connection_mgr import IConnectionManager
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.sounds import ISoundsController
 from gui import makeHtmlString
-from skeletons.gui.game_control import ISpecialSoundCtrl, IAnonymizerController
+from skeletons.gui.game_control import ISpecialSoundCtrl, IAnonymizerController, IVehiclePostProgressionController
 if TYPE_CHECKING:
     from typing import Tuple as TTuple
 _logger = logging.getLogger(__name__)
@@ -452,12 +452,6 @@ class StorageAccountSetting(StorageDumpSetting):
 
     def getDefaultValue(self):
         return AccountSettings.getSettingsDefault(self.settingName)
-
-
-class C11nHistoricallyAccurateSetting(StorageAccountSetting):
-
-    def getApplyMethod(self, value):
-        return APPLY_METHOD.NEXT_BATTLE
 
 
 class SettingFalseByDefault(StorageDumpSetting):
@@ -980,6 +974,18 @@ class GraphicSetting(SettingAbstract):
     def refresh(self):
         self._currentValue = graphics.getGraphicsSetting(self.name)
         super(GraphicSetting, self).refresh()
+
+
+class IGBHardwareAccelerationSetting(UserPrefsBoolSetting):
+
+    def __init__(self):
+        super(IGBHardwareAccelerationSetting, self).__init__(Settings.IGB_HARDWARE_ACCELERATION_ENABLED)
+
+    def getApplyMethod(self, value):
+        return APPLY_METHOD.RESTART
+
+    def getDefaultValue(self):
+        return Settings.g_instance.engineConfig['webBrowser']['hardwareAcceleration'].asBool
 
 
 class SniperModeSwingingSetting(GraphicSetting):
@@ -1564,6 +1570,29 @@ class CarouselTypeSetting(StorageDumpSetting):
 
     def getDefaultValue(self):
         return self.CAROUSEL_TYPES.index(self.OPTIONS.SINGLE)
+
+    def getRowCount(self):
+        return self._get() + 1
+
+
+class CustomizationDisplayTypeSetting(StorageDumpSetting):
+
+    class OPTIONS(CONST_CONTAINER):
+        HISTORICAL = 'historical'
+        NOT_HISTORICAL = 'notHistorical'
+        ALL = 'all'
+
+    CONTENT_TYPES = (
+     OPTIONS.HISTORICAL,
+     OPTIONS.NOT_HISTORICAL,
+     OPTIONS.ALL)
+
+    def _getOptions(self):
+        settingsKey = '#settings:game/%s/%s'
+        return [ {'label': settingsKey % (self.settingName, cType)} for cType in self.CONTENT_TYPES ]
+
+    def getDefaultValue(self):
+        return self.CONTENT_TYPES.index(self.OPTIONS.ALL)
 
     def getRowCount(self):
         return self._get() + 1
@@ -3017,3 +3046,37 @@ class QuestsProgressDisplayType(GroupSetting):
 
     def getDefaultValue(self):
         return self.SHOW_ALL
+
+
+class SwitchSetupsInLoadingSetting(AccountSetting):
+    _PackStructure = namedtuple('SwitchSetupsInLoadingSettingData', 'current options extraData')
+    _ENABLED_BY_DEFAULT = ('LOW', 'MIN')
+    __postProgressionCtrl = dependency.descriptor(IVehiclePostProgressionController)
+
+    def pack(self):
+        return self._PackStructure(self._get(), self._getOptions(), self.getExtraData())._asdict()
+
+    def getExtraData(self):
+        return {'enabled': self.__postProgressionCtrl.isSwitchSetupFeatureEnabled()}
+
+    def _get(self):
+        settingValue = super(SwitchSetupsInLoadingSetting, self)._get()
+        if settingValue is None:
+            return self.__detectDefaultValue()
+        else:
+            return settingValue
+
+    def getDefaultValue(self):
+        settingValue = super(SwitchSetupsInLoadingSetting, self).getDefaultValue()
+        if settingValue is None:
+            return self.__detectDefaultValue(False)
+        else:
+            return settingValue
+
+    def __detectDefaultValue(self, write=True):
+        presetIndx = BigWorld.detectGraphicsPresetFromSystemSettings()
+        enabledPresets = [ BigWorld.getSystemPerformancePresetIdFromName(pName) for pName in self._ENABLED_BY_DEFAULT ]
+        enabledByDefault = presetIndx in enabledPresets
+        if write:
+            AccountSettings.setSettings(self.key, enabledByDefault)
+        return enabledByDefault

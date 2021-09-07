@@ -42,6 +42,8 @@ package net.wg.infrastructure.base.meta
       
       function as_showManualButton(param1:Boolean) : void;
       
+      function as_setManualButtonIcon(param1:String) : void;
+      
       function as_setMenuState(param1:String) : void;
    }
 }

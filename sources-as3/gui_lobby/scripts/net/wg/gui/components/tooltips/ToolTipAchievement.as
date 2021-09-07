@@ -202,7 +202,6 @@ package net.wg.gui.components.tooltips
       override protected function redraw() : void
       {
          var _loc4_:Number = NaN;
-         var _loc5_:AchievementVO = null;
          var _loc10_:String = null;
          var _loc11_:String = null;
          var _loc12_:Array = null;
@@ -216,7 +215,7 @@ package net.wg.gui.components.tooltips
          var _loc2_:uint = 0;
          var _loc3_:uint = 0;
          _loc4_ = START_MAX_WIDTH;
-         _loc5_ = new AchievementVO(_data);
+         var _loc5_:AchievementVO = new AchievementVO(_data);
          blockResults = new Vector.<ToolTipBlockResultVO>();
          this._flagsBlocks = new Vector.<AchievementsCustomBlockItem>();
          topPosition = bgShadowMargin.top + contentMargin.top;

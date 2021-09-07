@@ -20,7 +20,9 @@ package net.wg.gui.battle.views.destroyTimers.data
       
       public var currentTime:Number = 0;
       
-      public var additionalState:String = "";
+      public var additionalState:int = -1;
+      
+      public var additionalInfo:int = -1;
       
       public function StatusNotificationVO(param1:Object = null)
       {

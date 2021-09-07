@@ -36,6 +36,10 @@ package net.wg.infrastructure.base.meta
       
       function as_collapseEquipmentSlot() : void;
       
+      function as_updateLockedInformation(param1:int, param2:int, param3:String) : void;
+      
+      function as_updateLevelInformation(param1:int, param2:int) : void;
+      
       function as_addOptionalDeviceSlot(param1:int, param2:Number, param3:String, param4:String, param5:Boolean, param6:int, param7:Boolean) : void;
       
       function as_setOptionalDeviceUsed(param1:int, param2:Boolean) : void;
@@ -50,7 +54,7 @@ package net.wg.infrastructure.base.meta
       
       function as_isVisible() : Boolean;
       
-      function as_reset() : void;
+      function as_reset(param1:Array) : void;
       
       function as_updateEntityState(param1:String, param2:String) : int;
       

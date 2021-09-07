@@ -27,8 +27,6 @@ from skeletons.gui.game_control import IServerStatsController, IBootcampControll
 from gui.Scaleform.locale.MENU import MENU
 from gui.Scaleform.locale.BOOTCAMP import BOOTCAMP
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
-from constants import ARENA_GUI_TYPE
-_ARENAS_WITHOUT_DEZERTER_PUNISHMENTS = frozenset([ARENA_GUI_TYPE.BATTLE_ROYALE])
 
 class IngameMenu(IngameMenuMeta, BattleGUIKeyHandler):
     serverStats = dependency.descriptor(IServerStatsController)
@@ -140,8 +138,7 @@ class IngameMenu(IngameMenuMeta, BattleGUIKeyHandler):
     @process
     def __doLeaveArena(self):
         exitResult = self.sessionProvider.getExitResult()
-        arenaType = self.sessionProvider.arenaVisitor.getArenaGuiType()
-        if exitResult.isDeserter and arenaType not in _ARENAS_WITHOUT_DEZERTER_PUNISHMENTS:
+        if exitResult.isDeserter:
             quitBattleKey = self.__getQuitBattleKey(exitResult.playerInfo)
             result = yield DialogsInterface.showDialog(IngameDeserterDialogMeta(quitBattleKey + '/deserter', focusedID=DIALOG_BUTTON_ID.CLOSE))
         elif BattleReplay.isPlaying():

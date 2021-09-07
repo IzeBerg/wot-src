@@ -7,12 +7,20 @@ package net.wg.gui.battle.views.gameMessagesPanel.events
       
       public static const MESSAGES_STARTED_PLAYING:String = "messagesStartedPlaying";
       
+      public static const MESSAGES_POST_INTRO_PLAYING:String = "messagesPostIntroPlaying";
+      
+      public static const MESSAGES_OUTRO_PLAYING:String = "messagesOutroPlaying";
+      
       public static const MESSAGES_ENDED_PLAYING:String = "MessagesEndedPlaying";
       
       public static const ALL_MESSAGES_ENDED_PLAYING:String = "allMessagesEndedPlaying";
        
       
       public var messageType:String = "";
+      
+      public var messageModificator:String = "";
+      
+      public var messageId:int = -1;
       
       public function GameMessagesPanelEvent(param1:String, param2:String, param3:Boolean = true, param4:Boolean = false)
       {

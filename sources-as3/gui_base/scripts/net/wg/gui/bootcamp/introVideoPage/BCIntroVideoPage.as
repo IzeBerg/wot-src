@@ -21,6 +21,8 @@ package net.wg.gui.bootcamp.introVideoPage
    import net.wg.gui.components.controls.SoundButtonEx;
    import net.wg.infrastructure.base.meta.IBCIntroVideoPageMeta;
    import net.wg.infrastructure.base.meta.impl.BCIntroVideoPageMeta;
+   import net.wg.infrastructure.uilogger.bootcamp.LoadingPageLogger;
+   import net.wg.utils.IScheduler;
    import net.wg.utils.StageSizeBoundaries;
    import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.events.ButtonEvent;
@@ -148,10 +150,15 @@ package net.wg.gui.bootcamp.introVideoPage
       
       private var _skipShown:Boolean = false;
       
+      private var _logger:LoadingPageLogger = null;
+      
+      private var _scheduler:IScheduler;
+      
       public function BCIntroVideoPage()
       {
          this._tutorialPageList = new Vector.<TutorialPageContainer>();
          this._tweens = new Vector.<Tween>();
+         this._scheduler = App.utils.scheduler;
          super();
          focusable = true;
       }
@@ -189,6 +196,7 @@ package net.wg.gui.bootcamp.introVideoPage
          this.blackOverlay.mouseChildren = this.blackOverlay.mouseEnabled = false;
          this.waitingTF.text = BOOTCAMP.WELLCOME_BOOTCAMP_WAIT;
          this.selectGlow.visible = this.btnSelect.visible = this.btnSkip.visible = this.btnSkipVideo.visible = false;
+         this._logger = new LoadingPageLogger(this);
       }
       
       override protected function draw() : void
@@ -268,6 +276,14 @@ package net.wg.gui.bootcamp.introVideoPage
          this.loadingProgress.dispose();
          this.loadingProgress = null;
          this._introData = null;
+         if(this._logger)
+         {
+            this._logger.stopPageLog();
+            this._logger.dispose();
+            this._logger = null;
+         }
+         this._scheduler.cancelTask(this.onSelectGlowAppearStart);
+         this._scheduler = null;
          super.onDispose();
       }
       
@@ -319,6 +335,7 @@ package net.wg.gui.bootcamp.introVideoPage
                "delay":TWEEN_DELAY,
                "ease":Strong.easeIn
             });
+            this._scheduler.scheduleTask(this.onSelectGlowAppearStart,TWEEN_DELAY);
             this._tweens.push(_loc3_);
             this.introPage.animate(param2);
          }
@@ -541,6 +558,7 @@ package net.wg.gui.bootcamp.introVideoPage
       
       private function updateBackgroundRenderer() : void
       {
+         this._logger.startPageLog(this._picIndex);
          if(this.backgroundContainer.numChildren > 0)
          {
             this.backgroundContainer.removeChildAt(0);
@@ -574,6 +592,11 @@ package net.wg.gui.bootcamp.introVideoPage
          this.updateBackgroundRenderer();
          var _loc1_:Tween = new Tween(OVERLAY_TWEEN_DURATION,this.blackOverlay,{"alpha":0},{"ease":Strong.easeOut});
          this._tweens.push(_loc1_);
+      }
+      
+      private function onSelectGlowAppearStart() : void
+      {
+         onHighlightShowS();
       }
       
       private function onFadeOutTweenComplete() : void
@@ -648,6 +671,7 @@ package net.wg.gui.bootcamp.introVideoPage
                {
                   this._imageGoRight = false;
                }
+               this._logger.stopPageLog();
                this.tweenFadeOut();
             }
          }

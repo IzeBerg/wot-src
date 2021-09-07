@@ -11,7 +11,7 @@ from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
 from gui.Scaleform.settings import ICONS_SIZES
 from gui.impl import backport
 from gui.impl.gen import R
-from gui.ranked_battles.constants import YEAR_POINTS_TOKEN
+from gui.ranked_battles.constants import YEAR_POINTS_TOKEN, YEAR_AWARD_SELECTABLE_OPT_DEVICE
 from gui.server_events.formatters import parseComplexToken, TOKEN_SIZES
 from gui.server_events.recruit_helper import getRecruitInfo
 from gui.shared.formatters import text_styles
@@ -28,7 +28,6 @@ from items.tankmen import RECRUIT_TMAN_TOKEN_PREFIX
 from personal_missions import PM_BRANCH
 from shared_utils import CONST_CONTAINER, findFirst
 from skeletons.gui.customization import ICustomizationService
-from skeletons.gui.game_control import IEventProgressionController
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
 if typing.TYPE_CHECKING:
@@ -196,12 +195,10 @@ def getLinkedSetFormattersMap():
 
 def getEpicSetFormattersMap():
     mapping = getDefaultFormattersMap()
-    tokenBonusFormatter = EpicTokensFormatter()
     mapping.update({'abilityPts': EpicAbilityPtsFormatter(), 
-       'tokens': tokenBonusFormatter, 
-       'battleToken': tokenBonusFormatter, 
        'items': EpicItemsBonusFormatter(), 
-       'dossier': EpicDossierBonusFormatter()})
+       'dossier': EpicDossierBonusFormatter(), 
+       'vehicles': RankedVehiclesBonusFormatter()})
     return mapping
 
 
@@ -238,7 +235,8 @@ def getRankedFormatterMap():
     mapping.update({'tokens': tokenBonusFormatter, 
        'battleToken': tokenBonusFormatter, 
        'vehicles': RankedVehiclesBonusFormatter(), 
-       'items': RankedItemsBonusFormatter()})
+       'items': RankedItemsBonusFormatter(), 
+       'customizations': RankedCustomizationsBonusFormatter()})
     return mapping
 
 
@@ -676,7 +674,6 @@ class SeniorityPremiumDaysBonusFormatter(LinkedSetPremiumDaysBonusFormatter):
 class TokenBonusFormatter(SimpleBonusFormatter):
     eventsCache = dependency.descriptor(IEventsCache)
     itemsCache = dependency.descriptor(IItemsCache)
-    _eventProgressionController = dependency.descriptor(IEventProgressionController)
 
     @staticmethod
     def getBattleBonusX5Tooltip(*args):
@@ -688,10 +685,6 @@ class TokenBonusFormatter(SimpleBonusFormatter):
             formatted = self._getFormattedBonus(tokenID, token, bonus)
             if formatted is not None:
                 result.append(formatted)
-            elif self._eventProgressionController.isAvailable() and self._eventProgressionController.getProgressionXPTokenID() and tokenID.startswith(self._eventProgressionController.getProgressionXPTokenID()):
-                formatted = self._formatProgressionXPToken(token, bonus)
-                if formatted is not None:
-                    result.append(formatted)
 
         return result
 
@@ -758,19 +751,6 @@ class TokenBonusFormatter(SimpleBonusFormatter):
         else:
             return PreformattedBonus(bonusName=bonus.getName(), label=self._formatBonusLabel(token.count), userName=bonus.getUserName(), labelFormatter=self._getLabelFormatter(bonus), images=self.__getBattleBonusX5Images(), tooltip=self.getBattleBonusX5Tooltip(), align=self._getLabelAlign(bonus), isCompensation=self._isCompensation(bonus))
 
-    def _formatProgressionXPToken(self, token, bonus):
-        if token.count <= 0:
-            return
-        else:
-            images = {}
-            for size in AWARDS_SIZES.ALL():
-                steelHunterPointRes = R.images.gui.maps.icons.quests.bonuses.dyn(size).dyn('steelHunterPoint')
-                images[size] = backport.image(steelHunterPointRes()) if steelHunterPointRes else None
-
-            header = backport.text(R.strings.tooltips.quests.bonuses.token.progressionExperience.header())
-            body = backport.text(R.strings.tooltips.quests.bonuses.token.progressionExperience.body())
-            return PreformattedBonus(bonusName=bonus.getName(), label=str(token.count), userName=header, labelFormatter=self._getLabelFormatter(bonus), images=images, tooltip=makeTooltip(header=header, body=body), align=self._getLabelAlign(bonus), isCompensation=self._isCompensation(bonus))
-
     @staticmethod
     def __getBattleBonusX5Images():
         images = {}
@@ -786,10 +766,13 @@ class RankedPointFormatter(TokenBonusFormatter):
     def _format(self, bonus):
         result = []
         for tokenID, token in bonus.getTokens().iteritems():
+            formatted = None
             if tokenID.startswith(YEAR_POINTS_TOKEN):
                 formatted = self.__formatRankedPointToken(tokenID, token, bonus)
-                if formatted is not None:
-                    result.append(formatted)
+            elif tokenID == YEAR_AWARD_SELECTABLE_OPT_DEVICE:
+                formatted = self.__formatRankedSelectableOptDevice(tokenID, token, bonus)
+            if formatted is not None:
+                result.append(formatted)
 
         return result
 
@@ -798,46 +781,22 @@ class RankedPointFormatter(TokenBonusFormatter):
         return backport.text(R.strings.tooltips.rankedBattleView.scorePoint.short.header())
 
     def __formatRankedPointToken(self, tokenID, token, bonus):
-        images = {}
-        for size in AWARDS_SIZES.ALL():
-            rankedPointRes = R.images.gui.maps.icons.quests.bonuses.dyn(size).dyn('rankedPoint')
-            images[size] = backport.image(rankedPointRes()) if rankedPointRes else None
+        return PreformattedBonus(label=self._formatBonusLabel(token.count), userName=self._getUserName(bonus), labelFormatter=self._getLabelFormatter(bonus), images=self.__getImages(tokenID), tooltip=makeTooltip(header=backport.text(R.strings.tooltips.rankedBattleView.scorePoint.header()), body=backport.text(R.strings.tooltips.rankedBattleView.scorePoint.body())), align=self._getLabelAlign(bonus), isCompensation=self._isCompensation(bonus))
 
-        return PreformattedBonus(label=self._formatBonusLabel(token.count), userName=self._getUserName(bonus), labelFormatter=self._getLabelFormatter(bonus), images=images, tooltip=makeTooltip(header=backport.text(R.strings.tooltips.rankedBattleView.scorePoint.header()), body=backport.text(R.strings.tooltips.rankedBattleView.scorePoint.body())), align=self._getLabelAlign(bonus), isCompensation=self._isCompensation(bonus))
+    def __formatRankedSelectableOptDevice(self, tokenID, token, bonus):
+        return PreformattedBonus(label=self._formatBonusLabel(token.count), userName=backport.text(R.strings.ranked_battles.yearRewards.tooltip.equipmentChoice.title()), labelFormatter=self._getLabelFormatter(bonus), images=self.__getImages(tokenID), align=self._getLabelAlign(bonus), isCompensation=self._isCompensation(bonus))
 
-    @classmethod
-    def _getLabelAlign(cls, bonus):
-        return LABEL_ALIGN.RIGHT
+    def __getImages(self, tokenID):
+        return {size:backport.image(self.__getImagePath(tokenID, size)()) for size in AWARDS_SIZES.ALL() if self.__getImagePath(tokenID, size)}
 
-
-class EpicTokensFormatter(TokenBonusFormatter):
-
-    def _format(self, bonus):
-        result = []
-        for tokenID, token in bonus.getTokens().iteritems():
-            if tokenID.startswith(self._eventProgressionController.rewardPointsTokenID):
-                formatted = self.__formatRewardPointToken(tokenID, token, bonus)
-                if formatted is not None:
-                    result.append(formatted)
-            elif self._eventProgressionController.isAvailable() and self._eventProgressionController.getProgressionXPTokenID() and tokenID.startswith(self._eventProgressionController.getProgressionXPTokenID()):
-                formatted = self._formatProgressionXPToken(token, bonus)
-                if formatted is not None:
-                    result.append(formatted)
-            else:
-                formatted = self._getFormattedBonus(tokenID, token, bonus)
-                if formatted is not None:
-                    result.append(formatted)
-
-        return result
-
-    def __formatRewardPointToken(self, tokenID, token, bonus):
-        images = {}
-        for size in AWARDS_SIZES.ALL():
-            res = R.images.gui.maps.icons.quests.bonuses.dyn(size).dyn('epicRewardPoint')
-            if res:
-                images[size] = backport.image(res())
-
-        return PreformattedBonus(label=self._formatBonusLabel(token.count), userName=backport.text(R.strings.epic_battle.epicBattleItem.rewardPoints.header()), labelFormatter=self._getLabelFormatter(bonus), images=images, tooltip=makeTooltip(header=backport.text(R.strings.epic_battle.epicBattleItem.rewardPoints.header()), body=backport.text(R.strings.epic_battle.epicBattleItem.rewardPoints.description())), align=self._getLabelAlign(bonus), isCompensation=self._isCompensation(bonus))
+    @staticmethod
+    def __getImagePath(tokenID, size):
+        if tokenID.startswith(YEAR_POINTS_TOKEN):
+            return R.images.gui.maps.icons.quests.bonuses.dyn(size).dyn('rankedPoint')
+        else:
+            if tokenID == YEAR_AWARD_SELECTABLE_OPT_DEVICE:
+                return R.images.gui.maps.icons.quests.bonuses.dyn(size).dyn('delux_gift')
+            return
 
     @classmethod
     def _getLabelAlign(cls, bonus):
@@ -848,7 +807,7 @@ class EpicAbilityPtsFormatter(SimpleBonusFormatter):
 
     def _format(self, bonus):
         return [
-         PreformattedBonus(label=self._formatBonusLabel(bonus.getValue()), userName=backport.text(R.strings.epic_battle.epicBattleItem.rewardPoints.header()), labelFormatter=self._getLabelFormatter(bonus), images=self._getImages(bonus), tooltip=makeTooltip(header=backport.text(R.strings.epic_battle.epicBattleItem.supplyPoints.header()), body=backport.text(R.strings.epic_battle.epicBattleItem.supplyPoints.description())), align=self._getLabelAlign(bonus), isCompensation=self._isCompensation(bonus))]
+         PreformattedBonus(label=self._formatBonusLabel(bonus.getValue()), userName=backport.text(R.strings.epic_battle.epicBattleItem.supplyPoints.header()), labelFormatter=self._getLabelFormatter(bonus), images=self._getImages(bonus), tooltip=makeTooltip(header=backport.text(R.strings.epic_battle.epicBattleItem.supplyPoints.header()), body=backport.text(R.strings.epic_battle.epicBattleItem.supplyPoints.description())), align=self._getLabelAlign(bonus), isCompensation=self._isCompensation(bonus))]
 
     def _formatBonusLabel(self, count):
         return formatCountLabel(count)
@@ -996,14 +955,15 @@ class VehiclesBonusFormatter(SimpleBonusFormatter):
         rentBattles = bonus.getRentBattles(vehInfo)
         rentWins = bonus.getRentWins(vehInfo)
         rentSeason = bonus.getRentSeason(vehInfo)
+        rentCycle = bonus.getRentCycle(vehInfo)
         if rentDays:
             rentExpiryTime = time_utils.getCurrentTimestamp()
             rentExpiryTime += rentDays * time_utils.ONE_DAY
         else:
             rentExpiryTime = 0
-        isRent = rentDays or rentBattles or rentWins or rentSeason
+        isRent = rentDays or rentBattles or rentWins or rentSeason or rentCycle
         return PreformattedBonus(bonusName=bonus.getName(), label=self._getVehicleLabel(bonus, vehicle, vehInfo), labelFormatter=self._getLabelFormatter(bonus), userName=self._getUserName(vehicle), images=self._getImages(vehicle, isRent), isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.AWARD_VEHICLE, specialArgs=[
-         vehicle.intCD, tmanRoleLevel, rentExpiryTime, rentBattles, rentWins, rentSeason], isCompensation=self._isCompensation(bonus))
+         vehicle.intCD, tmanRoleLevel, rentExpiryTime, rentBattles, rentWins, rentSeason, rentCycle], isCompensation=self._isCompensation(bonus))
 
 
 class RankedVehiclesBonusFormatter(VehiclesBonusFormatter):
@@ -1257,6 +1217,24 @@ class CustomizationsBonusFormatter(SimpleBonusFormatter):
     @classmethod
     def _getUserName(cls, c11nItem):
         return i18n.makeString(QUESTS.getBonusName(c11nItem.itemTypeName))
+
+
+class RankedCustomizationsBonusFormatter(CustomizationsBonusFormatter):
+
+    @classmethod
+    def _getImages(cls, c11nItem):
+        result = {}
+        for size in AWARDS_SIZES.ALL():
+            resource = R.images.gui.maps.icons.rankedBattles.bonusIcons.dyn(('style_{}').format(c11nItem.id))
+            iconName = c11nItem.itemTypeName
+            if resource is None:
+                if iconName == 'style' and c11nItem.modelsSet:
+                    iconName = 'style_3d'
+                resource = R.images.gui.maps.icons.quests.bonuses.dyn(size).dyn(iconName)
+            if resource:
+                result[size] = backport.image(resource())
+
+        return result
 
 
 class SeniorityCustomizationsBonusFormatter(CustomizationsBonusFormatter):

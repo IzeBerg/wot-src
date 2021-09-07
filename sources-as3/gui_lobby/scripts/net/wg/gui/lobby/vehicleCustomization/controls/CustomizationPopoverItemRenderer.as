@@ -7,6 +7,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls
    import flash.text.TextFieldAutoSize;
    import net.wg.data.constants.SoundTypes;
    import net.wg.data.constants.Values;
+   import net.wg.data.constants.generated.CUSTOMIZATION_CONSTS;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
    import net.wg.gui.components.controls.ButtonIconTextTransparent;
    import net.wg.gui.components.controls.Image;
@@ -58,7 +59,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls
       
       public var price:CompoundPrice = null;
       
-      public var nonHistoricIcon:Image = null;
+      public var customizationContentTypeIcon:Image = null;
       
       public var removeBtn:ButtonIconTextTransparent = null;
       
@@ -92,7 +93,6 @@ package net.wg.gui.lobby.vehicleCustomization.controls
          addEventListener(MouseEvent.ROLL_OVER,this.onRollOverHandler);
          addEventListener(MouseEvent.ROLL_OUT,this.onRollOutHandler);
          this.countTF.autoSize = TextFieldAutoSize.RIGHT;
-         this.nonHistoricIcon.source = RES_ICONS.MAPS_ICONS_BUTTONS_NON_HISTORICAL;
          this.inStorageIcon.source = RES_ICONS.MAPS_ICONS_CUSTOMIZATION_STORAGE_ICON;
       }
       
@@ -116,7 +116,20 @@ package net.wg.gui.lobby.vehicleCustomization.controls
                   this.countTF.htmlText = this._model.numItems;
                   this.itemIcon.source = this._model.icon;
                   this.price.visible = this._model.price != null;
-                  this.nonHistoricIcon.visible = !this._model.isHistoric;
+                  if(this._model.customizationDisplayType == CUSTOMIZATION_CONSTS.NON_HISTORICAL_TYPE)
+                  {
+                     this.customizationContentTypeIcon.source = RES_ICONS.MAPS_ICONS_BUTTONS_NON_HISTORICAL;
+                     this.customizationContentTypeIcon.visible = true;
+                  }
+                  else if(this._model.customizationDisplayType == CUSTOMIZATION_CONSTS.FANTASTICAL_TYPE)
+                  {
+                     this.customizationContentTypeIcon.source = RES_ICONS.MAPS_ICONS_BUTTONS_FANTASTICAL;
+                     this.customizationContentTypeIcon.visible = true;
+                  }
+                  else
+                  {
+                     this.customizationContentTypeIcon.visible = false;
+                  }
                   if(this._model.price)
                   {
                      this.price.setData(this._model.price);
@@ -132,7 +145,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls
                   this.imageBg.visible = false;
                   this.removeBtn.visible = false;
                   this.inStorageIcon.visible = false;
-                  this.nonHistoricIcon.visible = false;
+                  this.customizationContentTypeIcon.visible = false;
                }
                this.layoutName(this._model.isTitle);
                invalidateSize();
@@ -157,7 +170,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls
                   {
                      this.countTF.x = this.removeBtn.x - this.countTF.width + COUNTER_IN_PURCHASE_OFFSET ^ 0;
                   }
-                  this.nonHistoricIcon.x = this.itemIcon.x + this.itemIcon.width + NON_HISTORIC_ICON_OFFSET ^ 0;
+                  this.customizationContentTypeIcon.x = this.itemIcon.x + this.itemIcon.width + NON_HISTORIC_ICON_OFFSET ^ 0;
                   _loc1_ = !!this._model.isWide ? int(BACKGROUND_BIG) : int(BACKGROUND_SMALL);
                   this.imageBg.width = this.iconBg.width = _loc1_;
                   this.imageBg.height = this.iconBg.height = this.itemIcon.height + (ICON_BACKGROUND_OFFSET << 1) ^ 0;
@@ -186,8 +199,8 @@ package net.wg.gui.lobby.vehicleCustomization.controls
          this.price = null;
          this.inStorageIcon.dispose();
          this.inStorageIcon = null;
-         this.nonHistoricIcon.dispose();
-         this.nonHistoricIcon = null;
+         this.customizationContentTypeIcon.dispose();
+         this.customizationContentTypeIcon = null;
          this.iconBg = null;
          this.nameTF = null;
          this.countTF = null;
@@ -215,9 +228,10 @@ package net.wg.gui.lobby.vehicleCustomization.controls
          this.countTF.visible = param1;
          this.itemIcon.visible = param1;
          this.removeBtn.visible = param1;
-         this.nonHistoricIcon.visible = param1 && this._model && !this._model.isHistoric;
-         this.imageBg.visible = param1 && this._model && this._model.isDim;
-         this.price.visible = param1 && this._model && this._model.price && !this._model.isApplied;
+         var _loc2_:Boolean = param1 && this._model;
+         this.customizationContentTypeIcon.visible = _loc2_ && this._model.customizationDisplayType != CUSTOMIZATION_CONSTS.HISTORICAL_TYPE;
+         this.imageBg.visible = _loc2_ && this._model.isDim;
+         this.price.visible = _loc2_ && this._model.price && !this._model.isApplied;
          this.inStorageIcon.visible = param1 && !this.price.visible && !this._model.isApplied;
       }
       

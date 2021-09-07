@@ -53,6 +53,8 @@ package net.wg.gui.battle.epicRandom.views
       private static const QUEST_PROGRESS_TOP_SHIFT:int = 45;
       
       private static const HINT_PANEL_Y_SHIFT_MULTIPLIER:Number = 1.5;
+      
+      private static const HINT_PANEL_AMMUNITION_OFFSET_Y:int = -160;
        
       
       public var debugPanel:DebugPanel = null;
@@ -198,7 +200,6 @@ package net.wg.gui.battle.epicRandom.views
          this.debugPanel = null;
          this.sixthSense = null;
          this.damageInfoPanel = null;
-         this.fragCorrelationBar.dispose();
          this.fragCorrelationBar = null;
          this.fullStats = null;
          this.epicRandomPlayersPanel = null;
@@ -268,6 +269,30 @@ package net.wg.gui.battle.epicRandom.views
          return this.fullStats.getStatsProgressView();
       }
       
+      override protected function onPrebattleAmmunitionPanelShown() : void
+      {
+         super.onPrebattleAmmunitionPanelShown();
+         this.updateConsumablePanel();
+         this.updateHintPanelPosition();
+      }
+      
+      override protected function onPrebattleAmmunitionPanelHidden(param1:Boolean) : void
+      {
+         this.updateConsumablePanel(param1);
+      }
+      
+      private function updateConsumablePanel(param1:Boolean = false) : void
+      {
+         if(prebattleAmmunitionPanelShown)
+         {
+            this.consumablesPanel.hide(param1);
+         }
+         else
+         {
+            this.consumablesPanel.show(param1);
+         }
+      }
+      
       private function updatePositionForQuestProgress() : void
       {
          var _loc1_:int = 0;
@@ -322,6 +347,15 @@ package net.wg.gui.battle.epicRandom.views
       {
          this.hintPanel.x = _originalWidth - this.hintPanel.width >> 1;
          this.hintPanel.y = HINT_PANEL_Y_SHIFT_MULTIPLIER * (_originalHeight - this.hintPanel.height >> 1) ^ 0;
+         if(prebattleAmmunitionPanelShown)
+         {
+            this.hintPanel.y += HINT_PANEL_AMMUNITION_OFFSET_Y;
+         }
+      }
+      
+      override protected function get prebattleAmmunitionPanelAvailable() : Boolean
+      {
+         return true;
       }
       
       private function onHintPanelResizeHandler(param1:Event) : void

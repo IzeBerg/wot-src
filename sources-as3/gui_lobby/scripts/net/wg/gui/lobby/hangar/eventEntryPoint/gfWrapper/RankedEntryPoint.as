@@ -39,6 +39,8 @@ package net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper
       {
          SIZES[EntryPointSize.SMALL] = [WIDTH_SMALL,HEIGHT_SMALL];
          SIZES[EntryPointSize.SMALL | EntryPointSize.WIDE_MASK] = [WIDTH_SMALL_WIDE,HEIGHT_SMALL];
+         SIZES[EntryPointSize.MEDIUM] = [WIDTH_BIG,HEIGHT_BIG];
+         SIZES[EntryPointSize.MEDIUM | EntryPointSize.WIDE_MASK] = [WIDTH_BIG_WIDE,HEIGHT_BIG];
          SIZES[EntryPointSize.BIG] = [WIDTH_BIG,HEIGHT_BIG];
          SIZES[EntryPointSize.BIG | EntryPointSize.WIDE_MASK] = [WIDTH_BIG_WIDE,HEIGHT_BIG];
       }
@@ -51,7 +53,14 @@ package net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper
       override protected function updateSize() : void
       {
          var _loc1_:Array = SIZES[size];
-         setSize(_loc1_[0],_loc1_[1]);
+         if(_loc1_ != null)
+         {
+            setSize(_loc1_[0],_loc1_[1]);
+         }
+         else
+         {
+            DebugUtils.LOG_ERROR("RankedEntryPoint: unsupported size " + size);
+         }
       }
       
       override public function get margin() : Rectangle

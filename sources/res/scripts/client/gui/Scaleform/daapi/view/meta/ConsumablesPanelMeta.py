@@ -60,6 +60,14 @@ class ConsumablesPanelMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_collapseEquipmentSlot()
 
+    def as_updateLockedInformationS(self, idx, lockedID, tooltipStr):
+        if self._isDAAPIInited():
+            return self.flashObject.as_updateLockedInformation(idx, lockedID, tooltipStr)
+
+    def as_updateLevelInformationS(self, idx, level):
+        if self._isDAAPIInited():
+            return self.flashObject.as_updateLevelInformation(idx, level)
+
     def as_addOptionalDeviceSlotS(self, idx, timeRemaining, iconPath, tooltipText, isTooltipSpecial, intCD, isUsed):
         if self._isDAAPIInited():
             return self.flashObject.as_addOptionalDeviceSlot(idx, timeRemaining, iconPath, tooltipText, isTooltipSpecial, intCD, isUsed)
@@ -88,9 +96,9 @@ class ConsumablesPanelMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_isVisible()
 
-    def as_resetS(self):
+    def as_resetS(self, slots=None):
         if self._isDAAPIInited():
-            return self.flashObject.as_reset()
+            return self.flashObject.as_reset(slots)
 
     def as_updateEntityStateS(self, entityName, entityState):
         if self._isDAAPIInited():

@@ -45,11 +45,21 @@ package net.wg.data.constants.generated
       
       public static const GENERAL_RANK_REACHED:String = "generalRankReached";
       
+      public static const UNLOCK_TANK_LEVEL:String = "unlockTankLevel";
+      
       public static const HQ_BATTLE_STARTED:String = "hqBattleStarted";
       
       public static const HQ_BATTLE_STARTED_POSITIVE:String = "hqBattleStartedPositive";
       
       public static const RETREAT_SUCCESSFUL:String = "retreatSuccessful";
+      
+      public static const WITH_ADD_TIME:String = "withAddTime";
+      
+      public static const WITH_UNLOCK:String = "withUnlock";
+      
+      public static const WITH_EVENT:String = "withEvent";
+      
+      public static const WITH_HIDE:String = "withHide";
       
       public static const GAME_MESSAGE_PRIORITY_HIGH:int = 0;
       

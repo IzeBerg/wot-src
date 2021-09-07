@@ -19,6 +19,10 @@ package net.wg.infrastructure.base.meta.impl
       
       public var onMessageButtonClicked:Function;
       
+      public var onMessageAnimationStopped:Function;
+      
+      public var onMessageAnimationStarted:Function;
+      
       public var hideBlur:Function;
       
       private var _vectorMessageContentVO:Vector.<MessageContentVO>;
@@ -55,10 +59,10 @@ package net.wg.infrastructure.base.meta.impl
          this.onMessageAppear(param1);
       }
       
-      public function onMessageDisappearS(param1:String) : void
+      public function onMessageDisappearS(param1:String, param2:String) : void
       {
          App.utils.asserter.assertNotNull(this.onMessageDisappear,"onMessageDisappear" + Errors.CANT_NULL);
-         this.onMessageDisappear(param1);
+         this.onMessageDisappear(param1,param2);
       }
       
       public function onMessageExecutedS(param1:String) : void
@@ -71,6 +75,18 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.onMessageButtonClicked,"onMessageButtonClicked" + Errors.CANT_NULL);
          this.onMessageButtonClicked();
+      }
+      
+      public function onMessageAnimationStoppedS(param1:String) : void
+      {
+         App.utils.asserter.assertNotNull(this.onMessageAnimationStopped,"onMessageAnimationStopped" + Errors.CANT_NULL);
+         this.onMessageAnimationStopped(param1);
+      }
+      
+      public function onMessageAnimationStartedS(param1:String) : void
+      {
+         App.utils.asserter.assertNotNull(this.onMessageAnimationStarted,"onMessageAnimationStarted" + Errors.CANT_NULL);
+         this.onMessageAnimationStarted(param1);
       }
       
       public function hideBlurS() : void

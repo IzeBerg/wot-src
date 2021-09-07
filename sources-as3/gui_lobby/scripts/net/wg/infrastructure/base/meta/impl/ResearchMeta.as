@@ -3,6 +3,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.data.constants.Errors;
    import net.wg.gui.lobby.techtree.data.ResearchPageVO;
    import net.wg.gui.lobby.techtree.data.ResearchRootVO;
+   import net.wg.gui.lobby.techtree.data.vo.ResearchPostProgressionDataVO;
    import net.wg.infrastructure.exceptions.AbstractException;
    
    public class ResearchMeta extends ResearchViewMeta
@@ -23,11 +24,17 @@ package net.wg.infrastructure.base.meta.impl
       
       public var compareVehicle:Function;
       
+      public var onModuleHover:Function;
+      
+      public var goToPostProgression:Function;
+      
       private var _researchPageVO:ResearchPageVO;
       
       private var _researchRootVO:ResearchRootVO;
       
       private var _array:Array;
+      
+      private var _researchPostProgressionDataVO:ResearchPostProgressionDataVO;
       
       public function ResearchMeta()
       {
@@ -50,6 +57,11 @@ package net.wg.infrastructure.base.meta.impl
          {
             this._array.splice(0,this._array.length);
             this._array = null;
+         }
+         if(this._researchPostProgressionDataVO)
+         {
+            this._researchPostProgressionDataVO.dispose();
+            this._researchPostProgressionDataVO = null;
          }
          super.onDispose();
       }
@@ -96,6 +108,18 @@ package net.wg.infrastructure.base.meta.impl
          this.compareVehicle(param1);
       }
       
+      public function onModuleHoverS(param1:Number) : void
+      {
+         App.utils.asserter.assertNotNull(this.onModuleHover,"onModuleHover" + Errors.CANT_NULL);
+         this.onModuleHover(param1);
+      }
+      
+      public function goToPostProgressionS(param1:Number) : void
+      {
+         App.utils.asserter.assertNotNull(this.goToPostProgression,"goToPostProgression" + Errors.CANT_NULL);
+         this.goToPostProgression(param1);
+      }
+      
       public final function as_setData(param1:Object) : void
       {
          var _loc2_:ResearchPageVO = this._researchPageVO;
@@ -129,6 +153,17 @@ package net.wg.infrastructure.base.meta.impl
          }
       }
       
+      public final function as_setPostProgressionData(param1:Object) : void
+      {
+         var _loc2_:ResearchPostProgressionDataVO = this._researchPostProgressionDataVO;
+         this._researchPostProgressionDataVO = new ResearchPostProgressionDataVO(param1);
+         this.setPostProgressionData(this._researchPostProgressionDataVO);
+         if(_loc2_)
+         {
+            _loc2_.dispose();
+         }
+      }
+      
       protected function setData(param1:ResearchPageVO) : void
       {
          var _loc2_:String = "as_setData" + Errors.ABSTRACT_INVOKE;
@@ -146,6 +181,13 @@ package net.wg.infrastructure.base.meta.impl
       protected function setInstalledItems(param1:Array) : void
       {
          var _loc2_:String = "as_setInstalledItems" + Errors.ABSTRACT_INVOKE;
+         DebugUtils.LOG_ERROR(_loc2_);
+         throw new AbstractException(_loc2_);
+      }
+      
+      protected function setPostProgressionData(param1:ResearchPostProgressionDataVO) : void
+      {
+         var _loc2_:String = "as_setPostProgressionData" + Errors.ABSTRACT_INVOKE;
          DebugUtils.LOG_ERROR(_loc2_);
          throw new AbstractException(_loc2_);
       }

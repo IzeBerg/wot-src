@@ -35,6 +35,7 @@ class ClientUnit(UnitBase):
         self.onUnitPlayerProfileVehicleChanged = Event.SuspendedEvent(self.__eManager)
         self.onUnitPlayerInfoChanged = Event.SuspendedEvent(self.__eManager)
         self.onUnitEstimateInQueueChanged = Event.SuspendedEvent(self.__eManager)
+        self.onUnitSearchFlagsChanged = Event.SuspendedEvent(self.__eManager)
         self.onUnitExtraChanged = Event.SuspendedEvent(self.__eManager)
         self.onUnitUpdated = Event.SuspendedEvent(self.__eManager)
         self._creatorDBID = 0
@@ -208,6 +209,18 @@ class ClientUnit(UnitBase):
 
     def setModalTimestamp(self, serverTimestamp):
         self._setModalTimestamp(int(serverTimestamp))
+
+    def setAutoSearchFlags(self, accountDBID, flags):
+        UnitBase.setAutoSearchFlags(self, accountDBID, flags)
+        self.onUnitSearchFlagsChanged(self.getAutoSearchFlags())
+
+    def removeAutoSearchFlags(self, flags):
+        UnitBase.removeAutoSearchFlags(self, flags)
+        self.onUnitSearchFlagsChanged(self.getAutoSearchFlags())
+
+    def clearAutoSearchFlags(self):
+        UnitBase.clearAutoSearchFlags(self)
+        self.onUnitSearchFlagsChanged(self.getAutoSearchFlags())
 
     def _setUnitFlags(self, flags):
         prevFlags = self._flags

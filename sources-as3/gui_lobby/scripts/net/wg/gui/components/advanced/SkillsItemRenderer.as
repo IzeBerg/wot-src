@@ -22,6 +22,8 @@ package net.wg.gui.components.advanced
       
       protected static const BG_FRAME_LABEL_NEW_SKILL:String = "new_skill";
       
+      protected static const BG_FRAME_LABEL_NEW_SKILL_BC:String = "new_skill_bootcamp";
+      
       protected static const BG_FRAME_LABEL_INACTIVE:String = "not_active_up";
       
       protected static const BG_FRAME_LABEL_ACTIVE:String = "active_up";
@@ -50,6 +52,8 @@ package net.wg.gui.components.advanced
       private var _model:CarouselTankmanSkillsModel = null;
       
       private var _isNewSkill:Boolean = false;
+      
+      private var _isBootcamp:Boolean = false;
       
       private var _tooltipMgr:ITooltipMgr;
       
@@ -142,6 +146,7 @@ package net.wg.gui.components.advanced
          this._skillsCountForLearn = this._model.skillsCountForLearn;
          this._isDisabled = !this._model.isActive || !this._model.enabled;
          this._isNewSkill = this._model.isNewSkill;
+         this._isBootcamp = this._model.isBootcamp;
          this._skillEnabled = this._model.enabled;
          this._tankmanID = this._model.tankmanID;
          this._isCommon = this._model.isCommon;
@@ -187,7 +192,7 @@ package net.wg.gui.components.advanced
       {
          if(this._isNewSkill)
          {
-            this.bg.gotoAndPlay(BG_FRAME_LABEL_NEW_SKILL);
+            this.bg.gotoAndPlay(!!this._isBootcamp ? BG_FRAME_LABEL_NEW_SKILL_BC : BG_FRAME_LABEL_NEW_SKILL);
          }
          else
          {

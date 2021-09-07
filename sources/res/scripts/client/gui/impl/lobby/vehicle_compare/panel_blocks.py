@@ -2,8 +2,9 @@ from frameworks.wulf import Array
 from gui.Scaleform.daapi.view.lobby.vehicle_compare import cmp_helpers
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.tank_setup.common.compare_toggle_ammunition_slot import CompareToggleAmmunitionSlot
+from gui.impl.gen.view_models.views.lobby.tank_setup.common.specialization_model import SpecializationModel
 from gui.impl.gen.view_models.views.lobby.tank_setup.tank_setup_constants import TankSetupConstants
-from gui.impl.lobby.tank_setup.ammunition_panel_blocks import OptDeviceBlock, BaseBlock, ConsumablesBlock, BattleBoostersBlock
+from gui.impl.common.ammunition_panel.ammunition_panel_blocks import OptDeviceBlock, BaseBlock, ConsumablesBlock, BattleBoostersBlock
 from helpers import dependency
 from skeletons.gui.shared import IItemsCache
 
@@ -12,6 +13,26 @@ class CompareOptDeviceBlock(OptDeviceBlock):
     def _updateSlotWithItem(self, model, idx, slotItem):
         super(CompareOptDeviceBlock, self)._updateSlotWithItem(model, idx, slotItem)
         model.setIsInstalled(False)
+        model.setIsMountedMoreThanOne(False)
+
+    def _updateSpecializations(self, slotModel, slotItem, idx):
+        isDynamicSpecSlot = self._vehicle.optDevices.isSlotHasDynamicSpecialization(idx)
+        optDeviceItem, isDynamic = self._getSlot(idx)
+        if isDynamicSpecSlot is False or not self._vehicle.isRoleSlotExists() or optDeviceItem.categories:
+            super(CompareOptDeviceBlock, self)._updateSpecializations(slotModel, slotItem, idx)
+            return
+        isDynamic = bool(self._vehicle.optDevices.dynSlotTypeOptions)
+        slotModel.specializations.setIsDynamic(isDynamic)
+        slotModel.setActiveSpecsMask(0)
+        isSpecializationClickable = isDynamic and self._isSpecializationClickable
+        specializations = slotModel.specializations.getSpecializations()
+        specializations.clear()
+        if isDynamic:
+            specialization = SpecializationModel()
+            specialization.setName(SpecializationModel.EMPTY)
+            specialization.setIsClickable(isSpecializationClickable)
+            specializations.addViewModel(specialization)
+            specializations.invalidate()
 
 
 class CompareShellsBlock(BaseBlock):
@@ -39,6 +60,9 @@ class CompareShellsBlock(BaseBlock):
     def _getInstalled(self):
         getter = self._itemsCache.items.getItemByCD
         return [ getter(shot.shell.compactDescr) for shot in self._vehicle.descriptor.gun.shots ]
+
+    def _getSetupLayout(self):
+        return self._vehicle.shells.setupLayouts
 
     def _getLayout(self):
         return self._getInstalled()
@@ -89,6 +113,9 @@ class CompareCamouflageBlock(BaseBlock):
         return
 
     def _getInstalled(self):
+        return
+
+    def _getSetupLayout(self):
         return
 
     def _createSlots(self):

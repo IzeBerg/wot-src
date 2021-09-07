@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "alertMessage/allPeripheriesHalt"
-msgstr "Режим прекращения огня на всех серверах. Бои начнутся через %(time)s."
+msgstr "Режим прекращения огня на всех серверах. Бои начнутся через %(time)s"
 
 msgid "alertMessage/button/changeServer"
 msgstr "Сменить сервер"
@@ -23,7 +23,7 @@ msgid "alertMessage/seasonFinished"
 msgstr "Сезон %(seasonName)s завершён"
 
 msgid "alertMessage/singleModeHalt"
-msgstr "Режим прекращения огня на сервере. Бои начнутся через %(time)s."
+msgstr "Режим прекращения огня на сервере. Бои начнутся через %(time)s"
 
 msgid "alertMessage/somePeripheriesHalt"
 msgstr "Режим прекращения огня на сервере %(serverName)s"
@@ -420,16 +420,17 @@ msgstr "3 дивизиона"
 
 msgid "introPage/blocks/block3/description"
 msgstr ""
-"За прохождение сезона вы сможете получить эксклюзивное усовершенствованное "
-"оборудование и соответствующие предбоевые инструкции."
+"За прохождение каждого из трёх сезонов вы сможете получить специальный стиль "
+"для техники X уровня, а в конце сезонов 2021–2022 — ценные награды и "
+"уникальную машину X уровня."
 
 msgid "introPage/blocks/block3/title"
 msgstr "Уникальные награды"
 
 msgid "introPage/blocks/yearRewardDisabled"
 msgstr ""
-"За прохождение сезона вы сможете получить эксклюзивное усовершенствованное "
-"оборудование и соответствующие предбоевые инструкции."
+"За прохождение каждого из трёх сезонов вы сможете получить специальный стиль "
+"для техники X уровня."
 
 msgid "introPage/btns/accept"
 msgstr "Так точно!"
@@ -867,7 +868,7 @@ msgstr ""
 msgid "rankedBattleMainView/seasonGap/waitingLeague/title"
 msgstr "Идёт подсчёт результатов"
 
-msgid "rankedBattleMainView/seasonName"
+msgid "rankedBattleMainView/specialSeason"
 msgstr "X"
 
 msgid "rankedBattleMainView/stats/battlesInLeague"
@@ -910,7 +911,7 @@ msgid "rankedBattleMainView/stats/stripesTotal"
 msgstr "Шевронов всего"
 
 msgid "rankedBattleMainView/yearGap/header"
-msgstr "Ваши результаты за 2020–2021 гг."
+msgstr "Ваши результаты за 2021–2022 гг."
 
 msgid "rankedBattlePage/closeBtn"
 msgstr "ЗАКРЫТЬ"
@@ -1228,21 +1229,8 @@ msgstr "Претендуете на награду"
 msgid "rewardsView/tabs/leagues"
 msgstr "Награды за лиги"
 
-msgid "rewardsView/tabs/leagues/awardDescr/league1"
-msgstr ""
-"Усовершенствованное оборудование «Улучшенный компрессор», предбоевые "
-"инструкции «Замена топливных фильтров» и личные резервы на кредиты."
-
-msgid "rewardsView/tabs/leagues/awardDescr/league2"
-msgstr ""
-"Усовершенствованное оборудование «Улучшенный компрессор» и предбоевые "
-"инструкции «Замена топливных фильтров»."
-
-msgid "rewardsView/tabs/leagues/awardDescr/league3"
-msgstr "Усовершенствованное оборудование «Улучшенный компрессор»."
-
 msgid "rewardsView/tabs/leagues/awardDescr/style"
-msgstr "Уникальный стиль и памятная нашивка"
+msgstr "Стиль «%(styleName)s» и нашивка %(badgeName)s"
 
 msgid "rewardsView/tabs/leagues/description"
 msgstr ""
@@ -1305,7 +1293,7 @@ msgid "rewardsView/tabs/year/currentFinal"
 msgstr "Награда получена"
 
 msgid "rewardsView/tabs/year/title/awarded"
-msgstr "Всего ранговых жетонов получено: %(points)s"
+msgstr "Ранговые жетоны: %(points)s"
 
 msgid "rewardsView/tabs/year/title/notAwarded"
 msgstr "Ранговые жетоны: %(points)s"
@@ -1546,21 +1534,8 @@ msgstr "Стандартная награда"
 msgid "yearRewards/box/small/title"
 msgstr "Поощрительная награда"
 
-msgid "yearRewards/tooltip/any/description/note/2"
-msgstr ""
-"Выдаётся только по завершении двух сезонов Ранговых боёв, если игрок "
-"заработал нужное количество ранговых жетонов."
-
-msgid "yearRewards/tooltip/any/description/note/3"
-msgstr ""
-"Выдаётся только по завершении трёх сезонов Ранговых боёв, если игрок "
-"заработал нужное количество ранговых жетонов."
-
-msgid "yearRewards/tooltip/any/description/title"
-msgstr "Описание:"
-
 msgid "yearRewards/tooltip/any/reward/title"
-msgstr "Награда:"
+msgstr "Награда"
 
 msgid "yearRewards/tooltip/box/big/title"
 msgstr "Повышенная награда"
@@ -1575,7 +1550,38 @@ msgid "yearRewards/tooltip/box/small/title"
 msgstr "Поощрительная награда"
 
 msgid "yearRewards/tooltip/box/subTitle"
-msgstr "Награда по итогам года"
+msgstr ""
+"Награда по итогам года. Выдаётся только по завершении трёх сезонов Ранговых "
+"боёв, если игрок заработал нужное количество ранговых жетонов."
+
+msgid "yearRewards/tooltip/equipmentChoice/description/1"
+msgstr ""
+"Вы можете выбрать одну ед. усовершенствованного оборудования в качестве "
+"награды:"
+
+msgid "yearRewards/tooltip/equipmentChoice/description/2"
+msgstr ""
+"Вы можете выбрать две ед. усовершенствованного оборудования в качестве "
+"награды. Каждый предмет можно забрать только один раз:"
+
+msgid "yearRewards/tooltip/equipmentChoice/description/3"
+msgstr ""
+"Вы можете выбрать три ед. усовершенствованного оборудования в качестве "
+"награды. Каждый предмет можно забрать только один раз:"
+
+msgid "yearRewards/tooltip/equipmentChoice/list"
+msgstr ""
+"• Система отвода пороховых газов\n"
+"• Комплекс стабилизационного оборудования\n"
+"• Экспериментальная система заряжания\n"
+"• Износостойкие приводы наводки\n"
+"• Юстированная оптика\n"
+"• Усовершенствованная компоновка\n"
+"• Улучшенный компрессор\n"
+"• Повышенная снарядостойкость"
+
+msgid "yearRewards/tooltip/equipmentChoice/title"
+msgstr "Усовершенствованное оборудование"
 
 msgid "yearRewards/tooltip/needPoints"
 msgstr "Необходимо ранговых жетонов"
@@ -1589,12 +1595,10 @@ msgid "yearRewards/tooltip/status/current/title"
 msgstr "Ваша текущая награда"
 
 msgid "yearRewards/tooltip/status/currentFinal/description"
-msgstr ""
-"Вы получили данную награду, так как заработали необходимое количество "
-"ранговых жетонов."
+msgstr "Вы получили годовую награду!"
 
 msgid "yearRewards/tooltip/status/currentFinal/title"
-msgstr "Ваша текущая награда"
+msgstr "Награда получена"
 
 msgid "yearRewards/tooltip/status/locked/description"
 msgstr ""
@@ -1610,13 +1614,13 @@ msgid "yearRewards/tooltip/status/lockedFinal/title"
 msgstr "Недостаточно ранговых жетонов"
 
 msgid "yearRewards/tooltip/status/passed/description"
-msgstr "Вы уже претендуете на более ценную годовую награду."
+msgstr "Вы уже претендуете на более ценную годовую награду"
 
 msgid "yearRewards/tooltip/status/passed/title"
 msgstr "Награда недоступна"
 
 msgid "yearRewards/tooltip/status/passedFinal/description"
-msgstr "Вы уже получили более ценную годовую награду."
+msgstr "Вы уже получили более ценную годовую награду"
 
 msgid "yearRewards/tooltip/status/passedFinal/title"
 msgstr "Награда недоступна"

@@ -168,11 +168,6 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.browse
          invalidateSize();
       }
       
-      private function updateLayout(param1:Event) : void
-      {
-         invalidateLayout();
-      }
-      
       public function canShowAutomatically() : Boolean
       {
          return true;
@@ -206,6 +201,24 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.browse
             this._benefitsComponent.setData(param1);
             this._benefitsComponent.compact = true;
          }
+      }
+      
+      override public function get height() : Number
+      {
+         if(this.historicReference.visible)
+         {
+            return this.historicReference.y + this.historicReference.height;
+         }
+         if(this.collectibleInfo.visible)
+         {
+            return this.collectibleInfo.y + this.collectibleInfo.height;
+         }
+         return super.height;
+      }
+      
+      private function updateLayout(param1:Event) : void
+      {
+         invalidateLayout();
       }
    }
 }

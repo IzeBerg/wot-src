@@ -48,7 +48,7 @@ package net.wg.gui.lobby.vehicleCustomization.data.customizationPanel
       
       public var buyOperationAllowed:Boolean = true;
       
-      public var isNonHistoric:Boolean = false;
+      public var customizationDisplayType:int = 0;
       
       public var showAlert:Boolean = false;
       

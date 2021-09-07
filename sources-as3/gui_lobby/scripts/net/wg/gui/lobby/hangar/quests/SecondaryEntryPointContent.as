@@ -14,6 +14,8 @@ package net.wg.gui.lobby.hangar.quests
       private static const GOLD_COLOR:int = 15450485;
       
       private static const WHITE_COLOR:int = 16777215;
+      
+      private static const DISABLED_COLOR:int = 12105912;
        
       
       public var bounds:MovieClip = null;
@@ -60,7 +62,7 @@ package net.wg.gui.lobby.hangar.quests
          this._isStyleChosen = param1.is3DStyleChosen;
          this._isEnabled = param1.isEnabled;
          this.tf.text = param1.text;
-         this.tf.textColor = !!param1.isBought ? uint(GOLD_COLOR) : uint(WHITE_COLOR);
+         this.tf.textColor = !this._isEnabled ? uint(DISABLED_COLOR) : (!!param1.isBought ? uint(GOLD_COLOR) : uint(WHITE_COLOR));
          this.icon.source = param1.icon;
          this.flagIcon.source = param1.flagIcon;
          this.altIcon.source = param1.altIcon;

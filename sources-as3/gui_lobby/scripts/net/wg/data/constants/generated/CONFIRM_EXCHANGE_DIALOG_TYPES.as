@@ -18,6 +18,8 @@ package net.wg.data.constants.generated
       public static const TYPE_CREDITS_EXCHANGE:String = "credits";
       
       public static const TYPE_XP_EXCHANGE:String = "xp";
+      
+      public static const TYPE_DETAILED_XP_EXCHANGE:String = "detailedXP";
        
       
       public function CONFIRM_EXCHANGE_DIALOG_TYPES()

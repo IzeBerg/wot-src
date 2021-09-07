@@ -99,7 +99,6 @@ class PlayerDataComponent(ClientArenaComponent):
             for _, ranksPerTeam in args.iteritems():
                 if playerVehicleId in ranksPerTeam:
                     self.__playerRank = ranksPerTeam[playerVehicleId]
-                    self.onPlayerRankUpdated(self.__playerRank)
                 gameModeStats = dict((vehID, {key: rank}) for vehID, rank in ranksPerTeam.iteritems())
                 arena.onGameModeSpecifcStats(False, gameModeStats)
 

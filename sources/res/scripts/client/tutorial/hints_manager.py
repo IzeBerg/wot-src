@@ -4,6 +4,7 @@ from skeletons.account_helpers.settings_core import ISettingsCore
 from account_helpers.settings_core.settings_constants import OnceOnlyHints
 from skeletons.tutorial import ITutorialLoader
 from tutorial import settings
+from tutorial.control.context import GlobalStorage
 from tutorial.control.functional import FunctionalConditions
 from tutorial.data.hints import HintProps
 from tutorial.data.client_triggers import ClientTriggers
@@ -39,6 +40,7 @@ class HintsManager(object):
             self._gui.onHintItemLost += self.__onItemLost
             self._gui.onVisibleChanged += self.__onItemVisibleChanged
             self._gui.onEnabledChanged += self.__onItemEnabledChanged
+            GlobalStorage.onSetValue += self.__onConditionFlagChanged
             self.__startSettingsListening()
             self._gui.loadConfig(self._data.getGuiFilePath())
             self._gui.init()
@@ -55,6 +57,7 @@ class HintsManager(object):
             self._gui.fini()
         self._gui = None
         self.__hintsWithClientTriggers = None
+        GlobalStorage.onSetValue -= self.__onConditionFlagChanged
         self.__stopSettingsListening()
         return
 
@@ -69,13 +72,14 @@ class HintsManager(object):
         self.__hintsWithClientTriggers.setStates(self._data.getHints())
         self.__tutorialLoader.gui.setHintsWithClientTriggers(self.__hintsWithClientTriggers)
 
-    def __showHint(self, hint):
+    def __showHint(self, hint, silent=False):
         text = hint['text']
         uniqueID = hintID = hint['hintID']
         props = HintProps(uniqueID, hintID, hint['itemID'], text, hasBox=hint['hasBox'], arrow=hint['arrow'], padding=None, updateRuntime=hint['updateRuntime'], hideImmediately=hint['hideImmediately'], checkViewArea=hint['checkViewArea'])
         actionType = hint.get('ignoreOutsideClick')
-        self._gui.showHint(props, actionType)
-        self.__activeHints[hint['itemID']] = hint
+        isActive = self._gui.showHint(props, actionType, silent)
+        if isActive:
+            self.__activeHints[hint['itemID']] = hint
         return
 
     def __hideHint(self, itemID, hintID=''):
@@ -97,7 +101,7 @@ class HintsManager(object):
             if self._data.getHintsCount() == 0:
                 self.stop()
 
-    def __onItemFound(self, itemID):
+    def __onItemFound(self, itemID, silent=False):
         if itemID not in self.__activeHints:
             hints = self._data.hintsForItem(itemID)
             for hint in hints:
@@ -105,7 +109,7 @@ class HintsManager(object):
                     continue
                 if self.__checkConditions(hint):
                     if itemID not in self.__activeHints:
-                        self.__showHint(hint)
+                        self.__showHint(hint, silent)
                         break
 
     def __onItemLost(self, itemID):
@@ -185,3 +189,19 @@ class HintsManager(object):
             if self._data.getHintsCount() == 0:
                 self.stop()
                 return
+
+    def __onConditionFlagChanged(self, flag, value):
+        changedFlagHints = set()
+        for itemID, hints in self._data.getHints().iteritems():
+            for hint in hints:
+                conditions = hint['conditions']
+                if conditions is not None and any(condition.getID() == flag for condition in conditions):
+                    changedFlagHints.add(itemID)
+
+        for changedFlagHint in changedFlagHints:
+            if value:
+                self.__onItemFound(changedFlagHint, silent=True)
+            else:
+                self.__onItemLost(changedFlagHint)
+
+        return

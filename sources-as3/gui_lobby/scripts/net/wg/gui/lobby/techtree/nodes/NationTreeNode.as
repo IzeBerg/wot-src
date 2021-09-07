@@ -21,12 +21,14 @@ package net.wg.gui.lobby.techtree.nodes
    import net.wg.gui.lobby.techtree.controls.TypeAndLevelField;
    import net.wg.gui.lobby.techtree.controls.XPField;
    import net.wg.gui.lobby.techtree.data.vo.NTDisplayInfo;
+   import net.wg.gui.lobby.techtree.interfaces.IBorderHighlighted;
    import net.wg.gui.lobby.techtree.interfaces.IRenderer;
+   import net.wg.gui.lobby.techtree.postProgression.NodeHighlightAnimation;
    import net.wg.gui.lobby.techtree.sub.ResearchItems;
    import net.wg.infrastructure.interfaces.IImage;
    import net.wg.infrastructure.managers.ITooltipMgr;
    
-   public class NationTreeNode extends Renderer
+   public class NationTreeNode extends Renderer implements IBorderHighlighted
    {
       
       private static const LABEL_ANIM_START:String = "animStart";
@@ -61,6 +63,8 @@ package net.wg.gui.lobby.techtree.nodes
       
       private static const DISCOUNT_LABEL_RED:String = "red";
        
+      
+      public var lockedModuleHighlight:NodeHighlightAnimation = null;
       
       public var blueprintProgressBar:FadeComponent = null;
       
@@ -156,7 +160,7 @@ package net.wg.gui.lobby.techtree.nodes
       {
          this.button.endAnimation(true);
          var _loc1_:Object = {
-            "nodeCD":valueObject.id,
+            "vehCD":valueObject.id,
             "nodeState":valueObject.state
          };
          if(this.isBlueprintMode)
@@ -320,6 +324,8 @@ package net.wg.gui.lobby.techtree.nodes
          this.nameTF = null;
          this._tooltipMgr = null;
          this.nationChangeIcon = null;
+         this.lockedModuleHighlight.dispose();
+         this.lockedModuleHighlight = null;
          super.onDispose();
       }
       
@@ -453,6 +459,16 @@ package net.wg.gui.lobby.techtree.nodes
       {
          this._isFirstTimeActionShow = param1;
          invalidate(INV_FIRST_TIME_SHOW);
+      }
+      
+      public function get isBorderHighlighted() : Boolean
+      {
+         return this.lockedModuleHighlight.isHighlighted;
+      }
+      
+      public function set isBorderHighlighted(param1:Boolean) : void
+      {
+         this.lockedModuleHighlight.isHighlighted = param1;
       }
       
       private function onHitClickHandler(param1:MouseEvent) : void

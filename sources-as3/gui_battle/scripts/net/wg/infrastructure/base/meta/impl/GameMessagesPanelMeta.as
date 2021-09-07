@@ -11,6 +11,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public var onMessageStarted:Function;
       
+      public var onMessagePhaseStarted:Function;
+      
       public var onMessageEnded:Function;
       
       public var onMessageHiding:Function;
@@ -32,10 +34,16 @@ package net.wg.infrastructure.base.meta.impl
          super.onDispose();
       }
       
-      public function onMessageStartedS(param1:String, param2:int) : void
+      public function onMessageStartedS(param1:String, param2:String, param3:int) : void
       {
          App.utils.asserter.assertNotNull(this.onMessageStarted,"onMessageStarted" + Errors.CANT_NULL);
-         this.onMessageStarted(param1,param2);
+         this.onMessageStarted(param1,param2,param3);
+      }
+      
+      public function onMessagePhaseStartedS(param1:String, param2:String, param3:int) : void
+      {
+         App.utils.asserter.assertNotNull(this.onMessagePhaseStarted,"onMessagePhaseStarted" + Errors.CANT_NULL);
+         this.onMessagePhaseStarted(param1,param2,param3);
       }
       
       public function onMessageEndedS(param1:String, param2:int) : void

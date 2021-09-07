@@ -18,10 +18,6 @@ package net.wg.gui.components.tooltips.inblocks.blocks
          return new EpicBattlesMetaLevelVO(param1);
       }
       
-      override public function setBlockWidth(param1:int) : void
-      {
-      }
-      
       override protected function get progressData() : ProgressBarAnimVO
       {
          return EpicBattlesMetaLevelVO(this.data).progressBarData;

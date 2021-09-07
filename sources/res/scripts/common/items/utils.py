@@ -96,7 +96,21 @@ def getRadioDistance(vehicleDescr, factors):
 
 
 def getCircularVisionRadius(vehicleDescr, factors):
-    return vehicleDescr.turret.circularVisionRadius * vehicleDescr.miscAttrs['circularVisionRadiusFactor'] * max(factors['circularVisionRadius'], 0.0)
+    return vehicleDescr.turret.circularVisionRadius * vehicleDescr.miscAttrs['circularVisionRadiusBaseFactor'] * vehicleDescr.miscAttrs['circularVisionRadiusFactor'] * max(factors['circularVisionRadius'], 0.0)
+
+
+def getFirstReloadTime(vehicleDescr, factors, ignoreRespawn=False):
+    respawnReloadFactor = max(factors['respawnReloadTimeFactor'], 0.0)
+    factor = vehicleDescr.miscAttrs['gunReloadTimeFactor'] * max(factors['gun/reloadTime'], 0.0)
+    firstShellReload = vehicleDescr.gun.reloadTime
+    if 'dualGun' in vehicleDescr.gun.tags:
+        firstShellReload = vehicleDescr.gun.dualGun.reloadTimes[0]
+    else:
+        if 'clip' in vehicleDescr.gun.tags and 'autoreload' in vehicleDescr.gun.tags:
+            firstShellReload = vehicleDescr.gun.autoreload.reloadTime[(-1)]
+        if ignoreRespawn:
+            return firstShellReload * factor
+    return firstShellReload * factor * respawnReloadFactor
 
 
 def getReloadTime(vehicleDescr, factors):
@@ -143,7 +157,7 @@ def getChassisRotationSpeed(vehicleDescr, factors):
 
 def getInvisibility(vehicleDescr, factors, baseInvisibility, isMoving):
     baseValue = baseInvisibility[(0 if isMoving else 1)]
-    additiveTerm = factors['invisibility'][0] + vehicleDescr.miscAttrs['invisibilityAdditiveTerm']
+    additiveTerm = factors['invisibility'][0] + factors.get('invisibilityAdditiveTerm', 0.0) + vehicleDescr.miscAttrs['invisibilityBaseAdditive'] + vehicleDescr.miscAttrs['invisibilityAdditiveTerm']
     multFactor = factors['invisibility'][1]
     return (baseValue + additiveTerm) * multFactor
 

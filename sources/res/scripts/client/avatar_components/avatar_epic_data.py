@@ -164,6 +164,10 @@ class AvatarEpicData(object):
         playerDataComponent = BigWorld.player().arena.componentSystem.playerDataComponent
         playerDataComponent.setPlayerXP(xpValue)
 
+    def onRankUpdate(self, newRank):
+        playerDataComponent = BigWorld.player().arena.componentSystem.playerDataComponent
+        playerDataComponent.onPlayerRankUpdated(newRank)
+
     def enableFrontLineDevInfo(self, enable):
         self.__frontLineDevInfoEnabled = enable
         self.base.enableFrontLineDevInfo(enable)

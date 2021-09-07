@@ -13,6 +13,7 @@ package net.wg.gui.lobby.vehicleCustomization
    import net.wg.data.constants.UniversalBtnStylesConst;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.CUSTOMIZATION_ALIASES;
+   import net.wg.data.constants.generated.CUSTOMIZATION_CONSTS;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
    import net.wg.gui.components.controls.universalBtn.UniversalBtn;
    import net.wg.gui.events.FiltersEvent;
@@ -101,7 +102,7 @@ package net.wg.gui.lobby.vehicleCustomization
       
       public var tabGlow:Sprite = null;
       
-      public var nonHistoricIcon:CustomizationFadeInFadeOutMovieClip = null;
+      public var customizationContentTypeIcon:CustomizationFadeInFadeOutMovieClip = null;
       
       public var infoLabel:CustomizationCarouselInfoLabel = null;
       
@@ -115,23 +116,13 @@ package net.wg.gui.lobby.vehicleCustomization
       
       public var overlay:CustomizationCarouselOverlay = null;
       
-      private var _popoverMgr:IPopoverManager = null;
-      
-      private var _utils:IUtils = null;
-      
-      private var _tooltipMgr:ITooltipMgr;
-      
       private var _buyDisabledTooltip:String = "";
       
       private var _popoverBtnDisabledTooltip:String = "";
       
-      private var _smPadding:Number = 0;
-      
-      private var _systemMessages:DisplayObjectContainer;
+      private var _smPadding:int = 0;
       
       private var _isNonHistoric:Boolean = false;
-      
-      private var _toolTipMgr:ITooltipMgr = null;
       
       private var _isMinResolution:Boolean = false;
       
@@ -153,19 +144,27 @@ package net.wg.gui.lobby.vehicleCustomization
       
       private var _stageSwitcher:StageSwitcher = null;
       
+      private var _popoverMgr:IPopoverManager;
+      
+      private var _utils:IUtils;
+      
+      private var _tooltipMgr:ITooltipMgr;
+      
+      private var _systemMessages:DisplayObjectContainer;
+      
       public function BottomPanel()
       {
+         this._popoverMgr = App.popoverMgr;
+         this._utils = App.utils;
          this._tooltipMgr = App.toolTipMgr;
+         this._systemMessages = App.systemMessages;
          super();
       }
       
       override protected function configUI() : void
       {
+         var _loc1_:Sprite = null;
          super.configUI();
-         this._utils = App.utils;
-         this._popoverMgr = App.popoverMgr;
-         this._toolTipMgr = App.toolTipMgr;
-         this._systemMessages = App.systemMessages;
          this.buyBtn.soundType = SoundTypes.CUSTOMIZATION_DEFAULT;
          this.buyBtn.mouseEnabledOnDisabled = true;
          this.bill.visible = false;
@@ -173,7 +172,7 @@ package net.wg.gui.lobby.vehicleCustomization
          this.background.mouseEnabled = this.background.mouseChildren = false;
          this.buyBackground.mouseEnabled = this.buyBackground.mouseChildren = false;
          this.tabGlow.mouseEnabled = this.tabGlow.mouseChildren = false;
-         var _loc1_:Sprite = new Sprite();
+         _loc1_ = new Sprite();
          this.background.hitArea = _loc1_;
          addChild(_loc1_);
          App.stage.addEventListener(CustomizationItemEvent.SELECT_ITEM,this.onBottomPanelCarouselSelectItemHandler);
@@ -190,17 +189,17 @@ package net.wg.gui.lobby.vehicleCustomization
          this.carousel.addEventListener(CustomizationEvent.RESET_FILTER,this.onResetFilterHandler);
          this.carousel.addEventListener(FiltersEvent.RESET_ALL_FILTERS,this.onBottomPanelCarouselFilterCounterResetAllFiltersHandler);
          this.carousel.addEventListener(CustomizationEvent.SELECT_HOT_FILTER,this.onBottomPanelCarouselSelectHotFilterHandler);
-         App.stage.addEventListener(CustomizationEvent.ITEMS_POPOVER_CLOSED,this.onItemPopoverClosedHandler);
+         App.stage.addEventListener(CustomizationEvent.ITEMS_POPOVER_CLOSED,this.onStageItemsPopoverClosedHandler);
          this.overlay.addEventListener(MouseEvent.CLICK,this.onOverlayClickHandler);
          this.overlay.visible = false;
          this._utils.universalBtnStyles.setStyle(this.itemsPopoverBtn,UniversalBtnStylesConst.STYLE_HEAVY_GREEN);
          this._utils.universalBtnStyles.setStyle(this.buyBtn,UniversalBtnStylesConst.STYLE_HEAVY_ORANGE);
-         this.switcher.addEventListener(CustomizationTabEvent.TAB_CHANGED,this.onSwitcherChangeHandler);
-         this.switcher.addEventListener(CustomizationTabEvent.RETURN_TO_COMPLETE_STYLE,this.onReturnToCompleteHandler);
+         this.switcher.addEventListener(CustomizationTabEvent.TAB_CHANGED,this.onSwitcherTabChangedHandler);
+         this.switcher.addEventListener(CustomizationTabEvent.RETURN_TO_COMPLETE_STYLE,this.onSwitcherReturnToCompleteStyleHandler);
          this.itemsPopoverBtn.disabledImageAlpha = ITEMS_INFO_BTN_ALPHA;
       }
       
-      override protected function onDispose() : void
+      override protected function onBeforeDispose() : void
       {
          this.tabNavigator.removeEventListener(CustomizationTabEvent.TAB_CHANGED,this.onNavigatorTabChangedHandler);
          this.tabNavigator.removeEventListener(Event.RESIZE,this.onTabNavigatorResizeHandler);
@@ -216,9 +215,14 @@ package net.wg.gui.lobby.vehicleCustomization
          this.itemsPopoverBtn.removeEventListener(ButtonEvent.CLICK,this.onItemsPopoverBtnClickHandler);
          this.itemsPopoverBtn.removeEventListener(MouseEvent.ROLL_OVER,this.onItemsPopoverBtnRollOverHandler);
          this.overlay.removeEventListener(MouseEvent.CLICK,this.onOverlayClickHandler);
-         App.stage.removeEventListener(CustomizationEvent.ITEMS_POPOVER_CLOSED,this.onItemPopoverClosedHandler);
-         this.switcher.removeEventListener(CustomizationTabEvent.TAB_CHANGED,this.onSwitcherChangeHandler);
-         this.switcher.removeEventListener(CustomizationTabEvent.RETURN_TO_COMPLETE_STYLE,this.onReturnToCompleteHandler);
+         App.stage.removeEventListener(CustomizationEvent.ITEMS_POPOVER_CLOSED,this.onStageItemsPopoverClosedHandler);
+         this.switcher.removeEventListener(CustomizationTabEvent.TAB_CHANGED,this.onSwitcherTabChangedHandler);
+         this.switcher.removeEventListener(CustomizationTabEvent.RETURN_TO_COMPLETE_STYLE,this.onSwitcherReturnToCompleteStyleHandler);
+         super.onBeforeDispose();
+      }
+      
+      override protected function onDispose() : void
+      {
          this.overlay.dispose();
          this.overlay = null;
          this.itemsPopoverBtn.dispose();
@@ -233,8 +237,8 @@ package net.wg.gui.lobby.vehicleCustomization
          this.buyBtn = null;
          this.switcher.dispose();
          this.switcher = null;
-         this.nonHistoricIcon.dispose();
-         this.nonHistoricIcon = null;
+         this.customizationContentTypeIcon.dispose();
+         this.customizationContentTypeIcon = null;
          this.infoLabel.dispose();
          this.infoLabel = null;
          this._stageSwitcher = null;
@@ -246,7 +250,6 @@ package net.wg.gui.lobby.vehicleCustomization
          this._popoverMgr = null;
          this._tooltipMgr = null;
          this._systemMessages = null;
-         this._toolTipMgr = null;
          super.onDispose();
       }
       
@@ -306,8 +309,8 @@ package net.wg.gui.lobby.vehicleCustomization
             this.buyBackground.x = this.buyBtn.x - BUY_OFFSET_HORIZONTAL ^ 0;
             this.buyBackground.y = BUY_BACKGROUND_Y + _loc3_;
             this.itemsPopoverBtn.x = this.buyBtn.x - ITEMS_BUTTON_OFFSET - this.itemsPopoverBtn.width ^ 0;
-            this.nonHistoricIcon.x = this.itemsPopoverBtn.x + this.itemsPopoverBtn.width - (NON_HISTORIC_FIX_ICON_WIDTH >> 1) + NON_HISTORIC_ICON_OFFSET_X ^ 0;
-            this.nonHistoricIcon.y = NON_HISTORIC_ICON_Y + _loc3_;
+            this.customizationContentTypeIcon.x = this.itemsPopoverBtn.x + this.itemsPopoverBtn.width - (NON_HISTORIC_FIX_ICON_WIDTH >> 1) + NON_HISTORIC_ICON_OFFSET_X ^ 0;
+            this.customizationContentTypeIcon.y = NON_HISTORIC_ICON_Y + _loc3_;
             this.bill.x = _width - this.bill.width - PRICE_OFFSET_HORIZONTAL ^ 0;
             this.bill.y = PRICE_OFFSET_VERTICAL + _loc3_;
             this.switcher.validateNow();
@@ -367,14 +370,16 @@ package net.wg.gui.lobby.vehicleCustomization
          this._buyDisabledTooltip = param1.buyBtnTooltip;
          this.buyBtn.enabled = param1.buyBtnEnabled;
          this.bill.setData(param1.billVO);
-         this._isNonHistoric = !param1.isHistoric;
+         var _loc2_:int = param1.customizationDisplayType;
+         this._isNonHistoric = _loc2_ != CUSTOMIZATION_CONSTS.HISTORICAL_TYPE;
+         this.customizationContentTypeIcon.setType(_loc2_);
          if(this._isNonHistoric)
          {
-            this.nonHistoricIcon.fadeIn();
+            this.customizationContentTypeIcon.fadeIn();
          }
          else
          {
-            this.nonHistoricIcon.fadeOut();
+            this.customizationContentTypeIcon.fadeOut();
          }
          invalidateSize();
       }
@@ -402,43 +407,6 @@ package net.wg.gui.lobby.vehicleCustomization
          this.setBillVisibility(false);
       }
       
-      public function as_setItemsPopoverBtnEnabled(param1:Boolean) : void
-      {
-         invalidate(POPOVER_BUTTON_STATE_INVALID);
-         this._popoverBtnState = param1;
-      }
-      
-      public function as_showBill() : void
-      {
-         invalidate(INV_SYSTEM_MESSAGE);
-         this._smPadding = this.background.height + this.bill.height;
-         this.setBillVisibility(true);
-      }
-      
-      public function as_showPopoverBtnIcon(param1:String, param2:String) : void
-      {
-         this.itemsPopoverBtn.iconSource = param1;
-         this._popoverBtnDisabledTooltip = param2;
-      }
-      
-      public function as_setProjectionDecalHintVisibility(param1:Boolean) : void
-      {
-         this._projectionDecalNotificationShow = param1;
-         this.updateProjectionDecalNotificationState();
-      }
-      
-      public function as_setEditableStyleHintVisibility(param1:Boolean) : void
-      {
-         this._editableStyleNotificationShow = param1;
-         this.updateEditableStyleNotificationState();
-      }
-      
-      public function as_setEditableProgressionRequiredStyleHintVisibility(param1:Boolean) : void
-      {
-         this._progressionDecalNotificationShow = param1;
-         this.updateProgressionDecalNotificationState();
-      }
-      
       public function as_playFilterBlink() : void
       {
          this.carousel.playFilterBlink();
@@ -457,6 +425,30 @@ package net.wg.gui.lobby.vehicleCustomization
          this.infoLabel.tooltip = param2;
          this.infoLabel.validateNow();
          this.updateVerticalPositions();
+      }
+      
+      public function as_setEditableProgressionRequiredStyleHintVisibility(param1:Boolean) : void
+      {
+         this._progressionDecalNotificationShow = param1;
+         this.updateProgressionDecalNotificationState();
+      }
+      
+      public function as_setEditableStyleHintVisibility(param1:Boolean) : void
+      {
+         this._editableStyleNotificationShow = param1;
+         this.updateEditableStyleNotificationState();
+      }
+      
+      public function as_setItemsPopoverBtnEnabled(param1:Boolean) : void
+      {
+         this._popoverBtnState = param1;
+         invalidate(POPOVER_BUTTON_STATE_INVALID);
+      }
+      
+      public function as_setProjectionDecalHintVisibility(param1:Boolean) : void
+      {
+         this._projectionDecalNotificationShow = param1;
+         this.updateProjectionDecalNotificationState();
       }
       
       public function as_setStageSwitcherVisibility(param1:Boolean) : void
@@ -479,29 +471,17 @@ package net.wg.gui.lobby.vehicleCustomization
          }
       }
       
-      public function getItemIndexByIndCD(param1:int) : int
+      public function as_showBill() : void
       {
-         var _loc3_:CustomizationCarouselRendererVO = null;
-         var _loc2_:int = this.carousel.dataProvider.length;
-         var _loc4_:int = 0;
-         while(_loc4_ < _loc2_)
-         {
-            _loc3_ = CustomizationCarouselRendererVO(this.carousel.dataProvider.requestItemAt(_loc4_));
-            if(_loc3_.intCD == param1)
-            {
-               return _loc4_;
-            }
-            _loc4_++;
-         }
-         return Values.DEFAULT_INT;
+         invalidate(INV_SYSTEM_MESSAGE);
+         this._smPadding = this.background.height + this.bill.height;
+         this.setBillVisibility(true);
       }
       
-      public function setCarouselNotificationsVisibility(param1:Boolean) : void
+      public function as_showPopoverBtnIcon(param1:String, param2:String) : void
       {
-         var _loc2_:Boolean = !param1;
-         this.updateProjectionDecalNotificationState(_loc2_);
-         this.updateEditableStyleNotificationState(_loc2_);
-         this.updateProgressionDecalNotificationState(_loc2_);
+         this.itemsPopoverBtn.iconSource = param1;
+         this._popoverBtnDisabledTooltip = param2;
       }
       
       public function clearSelected() : void
@@ -524,20 +504,37 @@ package net.wg.gui.lobby.vehicleCustomization
          return this.itemsPopoverBtn;
       }
       
+      public function getItemIndexByIndCD(param1:int) : int
+      {
+         var _loc3_:CustomizationCarouselRendererVO = null;
+         var _loc2_:int = this.carousel.dataProvider.length;
+         var _loc4_:int = 0;
+         while(_loc4_ < _loc2_)
+         {
+            _loc3_ = CustomizationCarouselRendererVO(this.carousel.dataProvider.requestItemAt(_loc4_));
+            if(_loc3_.intCD == param1)
+            {
+               return _loc4_;
+            }
+            _loc4_++;
+         }
+         return Values.DEFAULT_INT;
+      }
+      
       public function getTargetButton() : DisplayObject
       {
          return this.itemsPopoverBtn;
+      }
+      
+      public function hideOverlay() : void
+      {
+         this.overlay.hide();
       }
       
       public function returnToCompleteStyles() : void
       {
          returnToStyledModeS();
          this.carousel.playFilterBlink();
-      }
-      
-      public function hideOverlay() : void
-      {
-         this.overlay.hide();
       }
       
       public function selectSlot(param1:int, param2:Boolean = false) : void
@@ -549,6 +546,14 @@ package net.wg.gui.lobby.vehicleCustomization
       {
          this.bill.visible = param1;
          this.buyBackground.visible = param1;
+      }
+      
+      public function setCarouselNotificationsVisibility(param1:Boolean) : void
+      {
+         var _loc2_:Boolean = !param1;
+         this.updateProjectionDecalNotificationState(_loc2_);
+         this.updateEditableStyleNotificationState(_loc2_);
+         this.updateProgressionDecalNotificationState(_loc2_);
       }
       
       public function showOverlay(param1:String, param2:Boolean = false) : void
@@ -587,14 +592,14 @@ package net.wg.gui.lobby.vehicleCustomization
       
       private function onBtnBuyMouseOutHandler(param1:MouseEvent) : void
       {
-         this._toolTipMgr.hide();
+         this._tooltipMgr.hide();
       }
       
       private function onBtnBuyMouseOverHandler(param1:MouseEvent) : void
       {
          if(!this.buyBtn.enabled)
          {
-            this._toolTipMgr.show(this._buyDisabledTooltip);
+            this._tooltipMgr.show(this._buyDisabledTooltip);
          }
       }
       
@@ -617,14 +622,14 @@ package net.wg.gui.lobby.vehicleCustomization
          }
       }
       
-      private function onSwitcherChangeHandler(param1:CustomizationTabEvent) : void
+      private function onSwitcherTabChangedHandler(param1:CustomizationTabEvent) : void
       {
          param1.stopPropagation();
          switchModeS(param1.groupId);
          this.carousel.playFilterBlink();
       }
       
-      private function onReturnToCompleteHandler(param1:CustomizationTabEvent) : void
+      private function onSwitcherReturnToCompleteStyleHandler(param1:CustomizationTabEvent) : void
       {
          param1.stopPropagation();
          this.returnToCompleteStyles();
@@ -655,7 +660,7 @@ package net.wg.gui.lobby.vehicleCustomization
          resetFilterS();
       }
       
-      private function onItemPopoverClosedHandler(param1:CustomizationEvent) : void
+      private function onStageItemsPopoverClosedHandler(param1:CustomizationEvent) : void
       {
          this._popoverIsOpen = false;
          invalidate(POPOVER_BUTTON_STATE_INVALID);

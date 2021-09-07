@@ -37,8 +37,6 @@ package net.wg.gui.lobby.vehicleCustomization
       
       private static const CHECKBOX_OFFSET:int = -9;
       
-      private static const AFTER_CHECKBOX_OFFSET:int = 25;
-      
       private static const SEPARATOR_OFFSET:int = -29;
       
       private static const INV_FOCUS_CHAIN:String = "InvFocusChain";
@@ -103,6 +101,17 @@ package net.wg.gui.lobby.vehicleCustomization
          super();
       }
       
+      private static function setListParams(param1:SimpleTileList) : void
+      {
+         var _loc2_:IClassFactory = App.utils.classFactory;
+         param1.tileWidth = FILTERS_TILE_WIDTH;
+         param1.tileHeight = FILTERS_TILE_HEIGHT;
+         param1.verticalGap = FILTERS_VERT_GAP;
+         param1.horizontalGap = FILTERS_HOR_GAP;
+         param1.directionMode = DirectionMode.HORIZONTAL;
+         param1.itemRenderer = _loc2_.getClass(LINKAGE_TOGGLE_RENDERER);
+      }
+      
       override protected function configUI() : void
       {
          super.configUI();
@@ -111,8 +120,8 @@ package net.wg.gui.lobby.vehicleCustomization
          this.ddlGroups.addEventListener(MouseEvent.MOUSE_OVER,this.onDdlGroupTypeMouseOverHandler);
          this.ddlGroups.addEventListener(MouseEvent.MOUSE_OUT,this.onDdlGroupTypeMouseOutHandler);
          this.additionalCheckBox.addEventListener(Event.SELECT,this.onAdditionalCheckBoxSelectHandler);
-         this.setListParams(this.filterBtns);
-         this.setListParams(this.formBtns);
+         setListParams(this.filterBtns);
+         setListParams(this.formBtns);
          this.formBtns.addEventListener(RendererEvent.ITEM_CLICK,this.onFormBtnsItemClickHandler);
          this.filterBtns.addEventListener(RendererEvent.ITEM_CLICK,this.onFilterBtnsItemClickHandler);
       }
@@ -268,17 +277,6 @@ package net.wg.gui.lobby.vehicleCustomization
          }
          _loc1_.push(this.btnDefault,PopOver(wrapper).closeBtn);
          return _loc1_;
-      }
-      
-      private function setListParams(param1:SimpleTileList) : void
-      {
-         var _loc2_:IClassFactory = App.utils.classFactory;
-         param1.tileWidth = FILTERS_TILE_WIDTH;
-         param1.tileHeight = FILTERS_TILE_HEIGHT;
-         param1.verticalGap = FILTERS_VERT_GAP;
-         param1.horizontalGap = FILTERS_HOR_GAP;
-         param1.directionMode = DirectionMode.HORIZONTAL;
-         param1.itemRenderer = _loc2_.getClass(LINKAGE_TOGGLE_RENDERER);
       }
       
       private function refreshFocusChain() : void

@@ -16,11 +16,33 @@ package net.wg.gui.battle.views.epicRespawnView.components
       
       private static const HIGHLIGHT_STATE:String = "higlight";
       
-      private static const SINGLE_NOTIFICATION_Y:int = 60;
+      private static const SINGLE_NOTIFICATION_Y_WIDE:int = 60;
       
-      private static const DEPLOY_NOTIFICATION_Y:int = 50;
+      private static const DEPLOY_NOTIFICATION_Y_WIDE:int = 50;
       
-      private static const RESPAWN_NOTIFICATION_Y:int = 70;
+      private static const RESPAWN_NOTIFICATION_Y_WIDE:int = 70;
+      
+      private static const NOTIFICATION_X_WIDE:int = -191;
+      
+      private static const SINGLE_NOTIFICATION_Y_NARROW:int = 13;
+      
+      private static const DEPLOY_NOTIFICATION_Y_NARROW:int = -7;
+      
+      private static const RESPAWN_NOTIFICATION_Y_NARROW:int = 13;
+      
+      private static const NOTIFICATION_X_NARROW:int = -40;
+      
+      private static const BG_Y_NARROW:Number = -55;
+      
+      private static const BG_Y_WIDE:int = 0;
+      
+      private static const BG_Y_NARROW_SINGLE_LINE:Number = -40;
+      
+      private static const BG_SCALE_WIDE:int = 1;
+      
+      private static const BG_SCALE_NARROW:Number = 1.42;
+      
+      private static const BG_SCALE_NARROW_SINGLE_LINE:Number = 1.31;
        
       
       public var deployButton:FightButton = null;
@@ -31,11 +53,15 @@ package net.wg.gui.battle.views.epicRespawnView.components
       
       public var respawnNotification:MovieClip = null;
       
+      public var bg:MovieClip = null;
+      
       private var _highlightAnimationActive:Boolean = false;
       
       private var _introAnimationActive:Boolean = false;
       
       private var _isTimerVisible:Boolean = false;
+      
+      private var _isWide:Boolean = false;
       
       public function EpicRespawnDeployButtonGroup()
       {
@@ -58,6 +84,7 @@ package net.wg.gui.battle.views.epicRespawnView.components
          this.buttonAnimation = null;
          this.deployNotification = null;
          this.respawnNotification = null;
+         this.bg = null;
       }
       
       public function playHighlightState() : void
@@ -95,6 +122,16 @@ package net.wg.gui.battle.views.epicRespawnView.components
          }
       }
       
+      public function updateRespawnWarning(param1:Boolean) : void
+      {
+         if(param1 == this.respawnNotification.visible)
+         {
+            return;
+         }
+         this.respawnNotification.visible = param1;
+         this.updateNotifyPositions();
+      }
+      
       public function updateTimer(param1:Boolean, param2:String) : void
       {
          this.setDeployButtonState(param1);
@@ -113,30 +150,36 @@ package net.wg.gui.battle.views.epicRespawnView.components
          }
       }
       
-      public function updateRespawnWarning(param1:Boolean) : void
-      {
-         if(param1 == this.respawnNotification.visible)
-         {
-            return;
-         }
-         this.respawnNotification.visible = param1;
-         this.updateNotifyPositions();
-      }
-      
       private function updateNotifyPositions() : void
       {
+         var _loc1_:Boolean = true;
          if(this._isTimerVisible && this.respawnNotification.visible)
          {
-            this.deployNotification.y = DEPLOY_NOTIFICATION_Y;
-            this.respawnNotification.y = RESPAWN_NOTIFICATION_Y;
+            this.deployNotification.y = !!this._isWide ? Number(DEPLOY_NOTIFICATION_Y_WIDE) : Number(DEPLOY_NOTIFICATION_Y_NARROW);
+            this.respawnNotification.y = !!this._isWide ? Number(RESPAWN_NOTIFICATION_Y_WIDE) : Number(RESPAWN_NOTIFICATION_Y_NARROW);
+            this.bg.y = !!this._isWide ? Number(BG_Y_WIDE) : Number(BG_Y_NARROW);
+            this.bg.scaleY = !!this._isWide ? Number(BG_SCALE_WIDE) : Number(BG_SCALE_NARROW);
+            _loc1_ = false;
          }
          else if(this._isTimerVisible)
          {
-            this.deployNotification.y = SINGLE_NOTIFICATION_Y;
+            this.deployNotification.y = !!this._isWide ? Number(SINGLE_NOTIFICATION_Y_WIDE) : Number(SINGLE_NOTIFICATION_Y_NARROW);
          }
          else if(this.respawnNotification.visible)
          {
-            this.respawnNotification.y = SINGLE_NOTIFICATION_Y;
+            this.respawnNotification.y = !!this._isWide ? Number(SINGLE_NOTIFICATION_Y_WIDE) : Number(SINGLE_NOTIFICATION_Y_NARROW);
+         }
+         else
+         {
+            this.bg.y = BG_Y_WIDE;
+            this.bg.scaleY = BG_SCALE_WIDE;
+            _loc1_ = false;
+         }
+         this.deployNotification.x = this.respawnNotification.x = !!this._isWide ? Number(NOTIFICATION_X_WIDE) : Number(NOTIFICATION_X_NARROW);
+         if(_loc1_)
+         {
+            this.bg.y = !!this._isWide ? Number(BG_Y_WIDE) : Number(BG_Y_NARROW_SINGLE_LINE);
+            this.bg.scaleY = !!this._isWide ? Number(BG_SCALE_WIDE) : Number(BG_SCALE_NARROW_SINGLE_LINE);
          }
       }
       
@@ -155,6 +198,12 @@ package net.wg.gui.battle.views.epicRespawnView.components
       {
          param1.visible = param2;
          param1.text = param3;
+      }
+      
+      public function set isWide(param1:Boolean) : void
+      {
+         this._isWide = param1;
+         this.updateNotifyPositions();
       }
    }
 }

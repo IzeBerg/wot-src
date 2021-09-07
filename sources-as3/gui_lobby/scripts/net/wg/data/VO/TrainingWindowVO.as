@@ -24,6 +24,8 @@ package net.wg.data.VO
       
       public var canChangeComment:Boolean;
       
+      public var isShowComment:Boolean;
+      
       public var canChangeArena:Boolean;
       
       public var canChangeArenaTime:Boolean;

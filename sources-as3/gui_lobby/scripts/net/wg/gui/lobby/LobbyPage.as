@@ -343,10 +343,9 @@ package net.wg.gui.lobby
       
       private function onTeaserHideHandler(param1:TeaserEvent) : void
       {
-         var _loc2_:Point = null;
          addChildAt(this._teaserOverlay = new Sprite(),getChildIndex(this.header) + 1);
          this._teaser = param1.teaser.drawToBitmap();
-         _loc2_ = new Point(this._teaser.x,this._teaser.y);
+         var _loc2_:Point = new Point(this._teaser.x,this._teaser.y);
          _loc2_ = this._teaserOverlay.globalToLocal(_loc2_);
          this._teaser.x = _loc2_.x;
          this._teaser.y = _loc2_.y;

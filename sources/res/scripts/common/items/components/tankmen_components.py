@@ -27,8 +27,9 @@ class SPECIAL_VOICE_TAG(object):
                                'bb21_na3_Cmdraf_specialVoice', 'bb21_asia1_Mastertortoise_specialVoice',
                                'bb21_asia2_Summertiger_specialVoice', 'bb21_asia3_Maharlika_specialVoice')
     G_I_JOE_TWITCH_2021 = ('duke_specialVoice', 'cobra_specialVoice')
+    SABATON_2021 = 'sabaton21_specialVoice'
     ALL = (
-     BUFFON, SABATON, OFFSPRING, RACER, RACER_EN, CELEBRITY_2021, MIHO, DAY_OF_COSMONAUTICS_21) + BATTLE_OF_BLOGGERS + BATTLE_OF_BLOGGERS_2021 + G_I_JOE_TWITCH_2021
+     BUFFON, SABATON, OFFSPRING, RACER, RACER_EN, CELEBRITY_2021, MIHO, DAY_OF_COSMONAUTICS_21, SABATON_2021) + BATTLE_OF_BLOGGERS + BATTLE_OF_BLOGGERS_2021 + G_I_JOE_TWITCH_2021
 
 
 class SPECIAL_CREW_TAG(object):

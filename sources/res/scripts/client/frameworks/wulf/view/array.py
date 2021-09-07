@@ -1,4 +1,5 @@
 import typing
+from contextlib import contextmanager
 from ..py_object_binder import PyObjectEntity
 from ..py_object_wrappers import PyObjectArray
 T = typing.TypeVar('T')
@@ -81,3 +82,8 @@ class Array(PyObjectEntity, typing.Iterable[T]):
 
     def invalidate(self):
         self.proxy.invalidate()
+
+    @contextmanager
+    def transaction(self):
+        yield self
+        self.invalidate()

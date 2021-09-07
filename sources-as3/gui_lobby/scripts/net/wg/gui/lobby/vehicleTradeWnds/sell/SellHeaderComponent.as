@@ -6,6 +6,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
    import flash.text.TextFieldAutoSize;
    import net.wg.data.constants.BaseTooltips;
    import net.wg.data.constants.Errors;
+   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.CURRENCIES_CONSTANTS;
    import net.wg.data.managers.impl.TooltipProps;
    import net.wg.gui.components.advanced.TankIcon;
@@ -13,6 +14,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
    import net.wg.gui.components.controls.AlertIco;
    import net.wg.gui.components.controls.DropdownMenu;
    import net.wg.gui.components.controls.IconText;
+   import net.wg.gui.components.controls.Image;
    import net.wg.gui.lobby.vehicleTradeWnds.sell.vo.SellVehicleVo;
    import net.wg.infrastructure.base.UIComponentEx;
    import org.idmedia.as3commons.util.StringUtils;
@@ -30,13 +32,17 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
       private static const DEMOBILIZE_INDEX:int = 1;
       
       private static const TOOLTIP_MAX_WIDTH:int = 330;
+      
+      private static const POST_PROGRESSION_INFO_HEIGHT:int = 24;
+      
+      private static const TANK_DESCRIBE_TF_MAX_Y:int = 38;
        
       
       public var emptySellIT:IconText;
       
       public var vehicleActionPrice:ActionPrice;
       
-      public var tankLevelTF:TextField;
+      public var tankRoleTF:TextField;
       
       public var tankNameTF:TextField;
       
@@ -44,7 +50,11 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
       
       public var tankDescribeTF:TextField;
       
+      public var discardPairModificationsInfoTF:TextField;
+      
       public var tankIcon:TankIcon;
+      
+      public var discardPairModificationsIcon:Image;
       
       public var tankInNationGroupTF:TextField;
       
@@ -102,7 +112,9 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          this.alertIcon = null;
          this.tankInNationGroupIcon.dispose();
          this.tankInNationGroupIcon = null;
-         this.tankLevelTF = null;
+         this.discardPairModificationsIcon.dispose();
+         this.discardPairModificationsIcon = null;
+         this.tankRoleTF = null;
          this.tankNameTF = null;
          this.tankPriceTF = null;
          this.tankDescribeTF = null;
@@ -119,27 +131,45 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          super.configUI();
          this.emptySellIT.textFieldYOffset = VehicleSellDialog.ICONS_TEXT_OFFSET;
          this.vehicleActionPrice.textYOffset = VehicleSellDialog.ICONS_TEXT_OFFSET;
+         this.discardPairModificationsInfoTF.text = DIALOGS.VEHICLESELLDIALOG_POSTPROGRESSIONINFO;
+         this.discardPairModificationsIcon.source = RES_ICONS.MAPS_ICONS_LIBRARY_NOTIFICATIONS_OFF;
       }
       
       override protected function draw() : void
       {
-         var _loc1_:int = 0;
+         var _loc1_:Boolean = false;
+         var _loc2_:int = 0;
+         var _loc3_:int = 0;
          super.draw();
          if(isInvalid(InvalidationType.LAYOUT))
          {
+            _loc1_ = this._sellData.roleStr != Values.EMPTY_STR;
             this.tankInNationGroupIcon.visible = this.tankInNationGroupTF.visible = this._sellData.hasNationGroup;
+            _loc2_ = 0;
+            if(this._sellData.isPostProgressionUnlocked)
+            {
+               _loc2_ = POST_PROGRESSION_INFO_HEIGHT;
+            }
+            if(!_loc1_)
+            {
+               this.tankDescribeTF.y = TANK_DESCRIBE_TF_MAX_Y;
+            }
+            this.tankRoleTF.visible = _loc1_;
             if(this._sellData.hasNationGroup)
             {
-               _loc1_ = Math.max(this.tankInNationGroupTF.height - (this.tankPriceTF.y - this.tankInNationGroupTF.y),0);
-               this.tankPriceTF.y += _loc1_;
-               this.emptySellIT.y += _loc1_;
-               this.vehicleActionPrice.y += _loc1_;
-               this.crewTF.y += _loc1_;
-               this.alertIcon.y += _loc1_;
-               this.inBarracksDrop.y += _loc1_;
-               this.crewBG.y += _loc1_;
-               this.priceDots.y += _loc1_;
+               _loc3_ = Math.max(this.tankInNationGroupTF.height - (this.tankPriceTF.y - this.tankInNationGroupTF.y),0);
+               this.tankPriceTF.y += _loc3_;
+               this.emptySellIT.y += _loc3_;
+               this.vehicleActionPrice.y += _loc3_;
+               this.priceDots.y += _loc3_;
+               this.discardPairModificationsInfoTF.y += _loc3_;
+               this.discardPairModificationsIcon.y += _loc3_;
+               _loc2_ += _loc3_;
             }
+            this.crewTF.y += _loc2_;
+            this.alertIcon.y += _loc2_;
+            this.inBarracksDrop.y += _loc2_;
+            this.crewBG.y += _loc2_;
          }
       }
       
@@ -153,8 +183,8 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          App.utils.asserter.assertNotNull(param1,"sellData" + Errors.CANT_NULL);
          this._sellData = param1;
          this.tankNameTF.htmlText = param1.userName;
-         this.tankLevelTF.htmlText = param1.levelStr;
-         this.tankDescribeTF.text = param1.description;
+         this.tankRoleTF.htmlText = param1.roleStr;
+         this.tankDescribeTF.htmlText = param1.description;
          this.tankPriceTF.text = param1.priceLabel;
          var _loc2_:Boolean = App.utils.commons.truncateTextFieldMultiline(this.tankInNationGroupTF,param1.inNationGroupDescription,2);
          this.crewTF.text = param1.crewLabel;
@@ -165,6 +195,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          this.tankIcon.isPremium = param1.isPremium;
          this.tankIcon.tankType = param1.type;
          this.tankIcon.nation = param1.nationID;
+         this.discardPairModificationsIcon.visible = this.discardPairModificationsInfoTF.visible = param1.isPostProgressionUnlocked;
          App.utils.asserter.assertNotNull(param1.barracksDropDownData,"barracksDropDownData" + Errors.CANT_NULL);
          this.inBarracksDrop.dataProvider = new DataProvider(param1.barracksDropDownData);
          this.inBarracksDrop.addEventListener(ListEvent.INDEX_CHANGE,this.onInBarracksDropIndexChangeHandler);

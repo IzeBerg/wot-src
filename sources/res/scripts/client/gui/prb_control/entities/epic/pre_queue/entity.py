@@ -1,4 +1,4 @@
-import BigWorld, constants
+import BigWorld
 from CurrentVehicle import g_currentVehicle
 from PlayerEvents import g_playerEvents
 from constants import QUEUE_TYPE
@@ -20,12 +20,10 @@ from gui.prb_control.items import SelectResult
 from gui.prb_control.settings import PREBATTLE_ACTION_NAME, FUNCTIONAL_FLAG, PRE_QUEUE_JOIN_ERRORS
 from gui.prb_control.storages import prequeue_storage_getter
 from gui.ranked_battles.constants import PrimeTimeStatus
-from gui.shared import event_dispatcher
 from helpers import dependency, i18n
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.connection_mgr import IConnectionManager
 from skeletons.gui.game_control import IEpicBattleMetaGameController
-from predefined_hosts import g_preDefinedHosts
 
 class EpicSubscriber(PreQueueSubscriber):
 
@@ -62,36 +60,8 @@ class EpicEntryPoint(PreQueueEntryPoint):
             g_prbCtrlEvents.onPreQueueJoinFailure(PRE_QUEUE_JOIN_ERRORS.DISABLED)
             return
         else:
-            if status in self._getFilterStates() and not constants.IS_CHINA and self.__isFrontlineAvailableOnDifferentPeriphery():
-                event_dispatcher.showEpicBattlesPrimeTimeWindow()
-                if callback is not None:
-                    callback(False)
-                g_prbCtrlEvents.onPreQueueJoinFailure(PRE_QUEUE_JOIN_ERRORS.NOT_AVAILABLE)
-                return
             super(EpicEntryPoint, self).select(ctx, callback)
             return
-
-    def _getFilterStates(self):
-        return (PrimeTimeStatus.NOT_SET,
-         PrimeTimeStatus.NOT_AVAILABLE)
-
-    def __isFrontlineAvailableOnDifferentPeriphery(self):
-        hostsList = g_preDefinedHosts.getSimpleHostsList(g_preDefinedHosts.hostsWithRoaming())
-        for _, _, _, peripheryID in hostsList:
-            if peripheryID == self.__connectionMgr.peripheryID:
-                continue
-            primeTimeStatus, _, primeTimeNow = self.__epicController.getPrimeTimeStatus(peripheryID)
-            if primeTimeStatus != PrimeTimeStatus.NOT_SET and primeTimeNow:
-                return True
-
-        return False
-
-
-class EpicForcedEntryPoint(EpicEntryPoint):
-
-    def _getFilterStates(self):
-        return (
-         PrimeTimeStatus.NOT_SET,)
 
 
 class EpicEntity(PreQueueEntity):
@@ -139,7 +109,7 @@ class EpicEntity(PreQueueEntity):
 
     def doSelectAction(self, action):
         name = action.actionName
-        if name in (PREBATTLE_ACTION_NAME.EPIC, PREBATTLE_ACTION_NAME.EPIC_FORCED):
+        if name == PREBATTLE_ACTION_NAME.EPIC:
             return SelectResult(True)
         if name == PREBATTLE_ACTION_NAME.SQUAD:
             return SelectResult(True, EpicSquadEntryPoint(accountsToInvite=action.accountsToInvite))

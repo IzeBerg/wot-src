@@ -6,6 +6,7 @@ package net.wg.gui.battle.epicBattle.views
    import net.wg.data.constants.generated.ATLAS_CONSTANTS;
    import net.wg.data.constants.generated.BATTLE_VIEW_ALIASES;
    import net.wg.data.constants.generated.DAMAGE_INFO_PANEL_CONSTS;
+   import net.wg.gui.battle.components.StatusNotificationsPanel;
    import net.wg.gui.battle.epicBattle.battleloading.EpicBattleLoading;
    import net.wg.gui.battle.epicBattle.battleloading.events.EpicBattleLoadingEvent;
    import net.wg.gui.battle.epicBattle.views.stats.EpicFullStats;
@@ -16,7 +17,6 @@ package net.wg.gui.battle.epicBattle.views
    import net.wg.gui.battle.views.consumablesPanel.events.ConsumablesPanelEvent;
    import net.wg.gui.battle.views.damageInfoPanel.DamageInfoPanel;
    import net.wg.gui.battle.views.debugPanel.DebugPanel;
-   import net.wg.gui.battle.views.destroyTimers.EpicDestroyTimersPanel;
    import net.wg.gui.battle.views.epicDeploymentMap.EpicDeploymentMap;
    import net.wg.gui.battle.views.epicInGameRank.EpicInGameRankPanel;
    import net.wg.gui.battle.views.epicMissionsPanel.EpicMissionsPanel;
@@ -45,6 +45,7 @@ package net.wg.gui.battle.epicBattle.views
    import net.wg.infrastructure.events.FocusRequestEvent;
    import net.wg.infrastructure.helpers.statisticsDataController.BattleStatisticDataController;
    import net.wg.infrastructure.helpers.statisticsDataController.EpicBattleStatisticDataController;
+   import net.wg.utils.StageSizeBoundaries;
    import scaleform.clik.motion.Tween;
    
    public class EpicBattlePage extends EpicBattlePageMeta implements IEpicBattlePageMeta
@@ -56,11 +57,13 @@ package net.wg.gui.battle.epicBattle.views
       
       private static const MESSENGER_OFFSET_Y:int = 44;
       
-      private static const MESSENGER_IN_RESPAWN_OFFSET_Y:int = 205;
+      private static const MESSENGER_IN_RESPAWN_OFFSET_Y_SMALL:int = 287;
       
-      private static const PREBATTLE_TIMER_Y_OFFSET:int = 232;
+      private static const MESSENGER_IN_RESPAWN_OFFSET_Y_BIG:int = 205;
       
-      private static const PREBATTLE_TIMER_FINAL_Y_OFFSET:int = 132;
+      private static const PREBATTLE_TIMER_Y_OFFSET:int = 82;
+      
+      private static const PREBATTLE_TIMER_FINAL_Y_OFFSET:int = 30;
       
       private static const TEAM_BASES_PANEL_OFFSETS:Vector.<int> = new <int>[62,102,102];
       
@@ -78,7 +81,7 @@ package net.wg.gui.battle.epicBattle.views
       
       private static const CAPTURE_BAR_TWEEN_LENGTH:int = 600;
       
-      private static const PREBATTLE_TIMER_TWEEN_LENGTH:int = 1000;
+      private static const PREBATTLE_TIMER_TWEEN_LENGTH:int = 600;
       
       private static const PREBATTLE_TIMER_BACKGROUND_TWEEN_LENGTH:int = 700;
       
@@ -87,6 +90,8 @@ package net.wg.gui.battle.epicBattle.views
       private static const SUPER_PLATOON_MAX_HEIGHT:int = 160;
       
       private static const HINT_PANEL_Y_SHIFT_MULTIPLIER:Number = 1.5;
+      
+      private static const HINT_PANEL_AMMUNITION_OFFSET_Y:int = -160;
        
       
       public var fullStats:EpicFullStats = null;
@@ -117,8 +122,6 @@ package net.wg.gui.battle.epicBattle.views
       
       public var epicRespawnView:EpicRespawnView = null;
       
-      public var epicDestroyTimersPanel:EpicDestroyTimersPanel = null;
-      
       public var epicDeploymentMap:EpicDeploymentMap = null;
       
       public var epicOverviewMapScreen:EpicOverviewMapScreen = null;
@@ -137,11 +140,17 @@ package net.wg.gui.battle.epicBattle.views
       
       public var prebattleTimerBackground:PrebattleTimerBg = null;
       
+      public var statusNotificationsPanel:StatusNotificationsPanel = null;
+      
       private var _scorePanelState:int = 0;
       
       private var _messagePlaying:Boolean = false;
       
       private var _countDownComplete:Boolean = false;
+      
+      private var _selectReservesAvailable:Boolean = true;
+      
+      private var _isVehPostProgressionEnabled:Boolean;
       
       public function EpicBattlePage()
       {
@@ -153,11 +162,17 @@ package net.wg.gui.battle.epicBattle.views
       {
       }
       
+      override protected function updatePrebattleTimerPosition(param1:int) : void
+      {
+         prebattleTimer.x = param1;
+         prebattleTimer.y = !!this._countDownComplete ? Number(PREBATTLE_TIMER_FINAL_Y_OFFSET) : Number(PREBATTLE_TIMER_Y_OFFSET);
+      }
+      
       override public function updateStage(param1:Number, param2:Number) : void
       {
+         var _loc3_:Number = NaN;
          super.updateStage(param1,param2);
-         prebattleTimer.y = !!this._countDownComplete ? Number(PREBATTLE_TIMER_FINAL_Y_OFFSET) : Number(PREBATTLE_TIMER_Y_OFFSET);
-         var _loc3_:Number = param1 >> 1;
+         _loc3_ = param1 >> 1;
          _originalWidth = param1;
          _originalHeight = param2;
          if(this.prebattleTimerBackground)
@@ -211,9 +226,10 @@ package net.wg.gui.battle.epicBattle.views
             this.epicScorePanelUI.updateStage(param1,param2);
          }
          this.epicSpectatorViewUI.updateStage(param1,param2);
-         this.epicDestroyTimersPanel.updateStage(param1,param2);
          this.epicRespawnView.updateStage(param1,param2);
+         this.epicRespawnView.isVehPostProgressionEnabled = this._isVehPostProgressionEnabled;
          this.epicDeploymentMap.updateStagePosition(param1,param2);
+         this.epicDeploymentMap.isVehPostProgressionEnabled = this._isVehPostProgressionEnabled;
          this.epicOverviewMapScreen.updateStage(param1,param2);
          this.endWarningPanel.x = _loc3_;
          this.epicMissionsPanel.x = param1;
@@ -221,6 +237,7 @@ package net.wg.gui.battle.epicBattle.views
          this.epicInGameRank.x = 0;
          this.epicInGameRank.y = TOP_EPIC_BATTLE_EAR_ELEMENTS_OFFSET;
          this.recoveryPanel.updateStage(param1,param2);
+         this.statusNotificationsPanel.updateStage(param1,param2);
          this.updateHintPanelPosition();
       }
       
@@ -249,7 +266,7 @@ package net.wg.gui.battle.epicBattle.views
          this.consumablesPanel.addEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
          super.configUI();
          prebattleTimer.hideBackground();
-         prebattleTimer.addEventListener(PrebattleTimerEvent.START_HIDING,this.onPrebattleTimerStartHiding);
+         prebattleTimer.addEventListener(PrebattleTimerEvent.START_HIDING,this.onPrebattleTimerStartHidingHandler);
          this.epicRespawnView.mouseEnabled = false;
          this.hintPanel.addEventListener(Event.RESIZE,this.onHintPanelResizeHandler);
       }
@@ -267,7 +284,6 @@ package net.wg.gui.battle.epicBattle.views
          registerComponent(this.battleDamageLogPanel,BATTLE_VIEW_ALIASES.BATTLE_DAMAGE_LOG_PANEL);
          registerComponent(this.siegeModePanel,BATTLE_VIEW_ALIASES.SIEGE_MODE_INDICATOR);
          registerComponent(this.epicScorePanelUI,BATTLE_VIEW_ALIASES.EPIC_SCORE_PANEL);
-         registerComponent(this.epicDestroyTimersPanel,BATTLE_VIEW_ALIASES.TIMERS_PANEL);
          registerComponent(this.epicRespawnView,BATTLE_VIEW_ALIASES.EPIC_RESPAWN_VIEW);
          registerComponent(this.epicDeploymentMap,BATTLE_VIEW_ALIASES.EPIC_DEPLOYMENT_MAP);
          registerComponent(this.epicOverviewMapScreen,BATTLE_VIEW_ALIASES.EPIC_OVERVIEW_MAP_SCREEN);
@@ -278,8 +294,21 @@ package net.wg.gui.battle.epicBattle.views
          registerComponent(this.superPlatoonPanel,BATTLE_VIEW_ALIASES.SUPER_PLATOON_PANEL);
          registerComponent(this.epicInGameRank,BATTLE_VIEW_ALIASES.EPIC_INGAME_RANK);
          registerComponent(this.hintPanel,BATTLE_VIEW_ALIASES.HINT_PANEL);
+         registerComponent(this.statusNotificationsPanel,BATTLE_VIEW_ALIASES.STATUS_NOTIFICATIONS_PANEL);
          super.onPopulate();
          this.endWarningPanel.alpha = 0;
+      }
+      
+      override protected function onPrebattleAmmunitionPanelShown() : void
+      {
+         super.onPrebattleAmmunitionPanelShown();
+         this.updateConsumablePanel();
+         this.updateHintPanelPosition();
+      }
+      
+      override protected function onPrebattleAmmunitionPanelHidden(param1:Boolean) : void
+      {
+         this.updateConsumablePanel(param1);
       }
       
       override protected function onRegisterStatisticController() : void
@@ -289,7 +318,7 @@ package net.wg.gui.battle.epicBattle.views
       
       override protected function onDispose() : void
       {
-         prebattleTimer.removeEventListener(PrebattleTimerEvent.START_HIDING,this.onPrebattleTimerStartHiding);
+         prebattleTimer.removeEventListener(PrebattleTimerEvent.START_HIDING,this.onPrebattleTimerStartHidingHandler);
          this.battleMessenger.removeEventListener(FocusRequestEvent.REQUEST_FOCUS,this.onBattleMessengerRequestFocusHandler);
          this.battleMessenger.removeEventListener(BattleMessenger.REMOVE_FOCUS,this.onBattleMessengerRemoveFocusHandler);
          this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
@@ -307,7 +336,6 @@ package net.wg.gui.battle.epicBattle.views
          this.teamBasesPanelUI = null;
          this.consumablesPanel = null;
          this.battleDamageLogPanel = null;
-         this.epicDestroyTimersPanel = null;
          this.epicRespawnView = null;
          this.epicScorePanelUI = null;
          this.epicSpectatorViewUI = null;
@@ -321,6 +349,7 @@ package net.wg.gui.battle.epicBattle.views
          this.epicInGameRank = null;
          this.siegeModePanel = null;
          this.prebattleTimerBackground = null;
+         this.statusNotificationsPanel = null;
          super.onDispose();
       }
       
@@ -415,9 +444,32 @@ package net.wg.gui.battle.epicBattle.views
          });
       }
       
+      public function as_setSelectReservesAvailable(param1:Boolean) : void
+      {
+         this._selectReservesAvailable = param1;
+      }
+      
+      public function as_setVehPostProgressionEnabled(param1:Boolean) : void
+      {
+         this._isVehPostProgressionEnabled = param1;
+         this.updateStage(App.appWidth,App.appHeight);
+      }
+      
+      private function updateConsumablePanel(param1:Boolean = false) : void
+      {
+         if(prebattleAmmunitionPanelShown)
+         {
+            this.consumablesPanel.hide(param1);
+         }
+         else
+         {
+            this.consumablesPanel.show(param1);
+         }
+      }
+      
       private function updateChatAndReinforcementPosition() : void
       {
-         this.battleMessenger.y = !!this.epicRespawnView.visible ? Number(_originalHeight - MESSENGER_IN_RESPAWN_OFFSET_Y) : Number(damagePanel.y - this.battleMessenger.height - MESSENGER_OFFSET_Y);
+         this.battleMessenger.y = !!this.epicRespawnView.visible ? Number(_originalHeight - this.messangerInrespawnOffsetY) : Number(damagePanel.y - this.battleMessenger.height - MESSENGER_OFFSET_Y);
       }
       
       private function updateBattleDamageLogPanelPosition() : void
@@ -433,7 +485,21 @@ package net.wg.gui.battle.epicBattle.views
       private function updateHintPanelPosition() : void
       {
          this.hintPanel.x = _originalWidth - this.hintPanel.width >> 1;
-         this.hintPanel.y = HINT_PANEL_Y_SHIFT_MULTIPLIER * (_originalHeight - this.hintPanel.height >> 1) ^ 0;
+         this.hintPanel.y = HINT_PANEL_Y_SHIFT_MULTIPLIER * (_originalHeight - this.hintPanel.height >> 1) | 0;
+         if(prebattleAmmunitionPanelShown)
+         {
+            this.hintPanel.y += HINT_PANEL_AMMUNITION_OFFSET_Y;
+         }
+      }
+      
+      override protected function get prebattleAmmunitionPanelAvailable() : Boolean
+      {
+         return true;
+      }
+      
+      private function get messangerInrespawnOffsetY() : int
+      {
+         return _originalHeight < StageSizeBoundaries.HEIGHT_900 ? int(MESSENGER_IN_RESPAWN_OFFSET_Y_SMALL) : int(MESSENGER_IN_RESPAWN_OFFSET_Y_BIG);
       }
       
       override protected function onMiniMapChangeHandler(param1:MinimapEvent) : void
@@ -530,7 +596,7 @@ package net.wg.gui.battle.epicBattle.views
          }
       }
       
-      private function onPrebattleTimerStartHiding(param1:PrebattleTimerEvent) : void
+      private function onPrebattleTimerStartHidingHandler(param1:PrebattleTimerEvent) : void
       {
          var countDownEnding:Tween = null;
          var event:PrebattleTimerEvent = param1;

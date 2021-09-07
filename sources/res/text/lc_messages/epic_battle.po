@@ -13,6 +13,15 @@ msgstr ""
 msgid "abilityInfo/params/airstrike/stun"
 msgstr ""
 
+msgid "abilityInfo/params/arcade_minefield_epic_battle/bombsNumber"
+msgstr " "
+
+msgid "abilityInfo/params/arcade_minefield_epic_battle/lifetime"
+msgstr "   "
+
+msgid "abilityInfo/params/arcade_minefield_epic_battle/shell"
+msgstr ""
+
 msgid "abilityInfo/params/artillery/areaRadius"
 msgstr " "
 
@@ -28,20 +37,41 @@ msgstr ""
 msgid "abilityInfo/params/common/delay"
 msgstr " "
 
-msgid "abilityInfo/params/inspire/crewIncreaseFactor"
+msgid "abilityInfo/params/fl_regenerationKit/healTime"
+msgstr " "
+
+msgid "abilityInfo/params/fl_regenerationKit/healthRegenPerTick"
+msgstr "  "
+
+msgid "abilityInfo/params/fl_regenerationKit/initialHeal"
+msgstr "    "
+
+msgid "abilityInfo/params/fl_regenerationKit/minesDamageReduceFactor"
+msgstr "   "
+
+msgid "abilityInfo/params/fl_regenerationKit/minesDamageReduceFactor/value"
+msgstr "30%"
+
+msgid "abilityInfo/params/fl_regenerationKit/resupplyHealthPointsFactor"
+msgstr "       "
+
+msgid "abilityInfo/params/inspire/crewRolesFactor"
 msgstr " "
 
 msgid "abilityInfo/params/inspire/duration"
 msgstr ""
 
 msgid "abilityInfo/params/inspire/inactivationDelay"
-msgstr " "
+msgstr "  "
 
 msgid "abilityInfo/params/inspire/radius"
 msgstr " "
 
-msgid "abilityInfo/params/passive_engineering/captureBlockBonusTime"
+msgid "abilityInfo/params/inspire/selfIncreaseFactors"
 msgstr "   "
+
+msgid "abilityInfo/params/passive_engineering/captureBlockBonusTime"
+msgstr " "
 
 msgid "abilityInfo/params/passive_engineering/captureSpeedFactor"
 msgstr " "
@@ -49,7 +79,10 @@ msgstr " "
 msgid "abilityInfo/params/passive_engineering/resupplyCooldownFactor"
 msgstr "  "
 
-msgid "abilityInfo/params/passive_engineering/resupplyHealthPointsFactor"
+msgid "abilityInfo/params/passive_engineering/resupplyShellsFactor"
+msgstr "  "
+
+msgid "abilityInfo/params/recon/delay"
 msgstr " "
 
 msgid "abilityInfo/params/recon/revealedArea"
@@ -70,8 +103,29 @@ msgstr ""
 msgid "abilityInfo/params/smoke/totalDuration"
 msgstr ""
 
-msgid "abilityInfo/properties"
-msgstr ""
+msgid "abilityInfo/params/smoke/visionRadiusFactor"
+msgstr "   "
+
+msgid "abilityInfo/params/stealth_radar/demaskFoliageFactor"
+msgstr "    "
+
+msgid "abilityInfo/params/stealth_radar/demaskMovingFactor"
+msgstr "    "
+
+msgid "abilityInfo/params/stealth_radar/duration"
+msgstr " "
+
+msgid "abilityInfo/params/stealth_radar/invisibilityAdditiveTerm"
+msgstr "    "
+
+msgid "abilityInfo/params/stealth_radar/passiveCircularVisionRadius"
+msgstr "   "
+
+msgid "abilityInfo/properties/dynamic"
+msgstr "     "
+
+msgid "abilityInfo/properties/static"
+msgstr " "
 
 msgid "abilityInfo/units/meter"
 msgstr ""
@@ -142,128 +196,26 @@ msgstr "     "
 msgid "destroy_timers/airstrike_txt"
 msgstr " !"
 
-msgid "epicBattleItem/rewardPoints/description"
-msgstr " 2020     .    .           ( 3.  )       IX . ,           .   ."
-
-msgid "epicBattleItem/rewardPoints/header"
-msgstr " "
+msgid "epicBattleItem/supplyPoints/body"
+msgstr "   ,        ."
 
 msgid "epicBattleItem/supplyPoints/description"
-msgstr "     ,        ."
+msgstr "   ,        ."
 
 msgid "epicBattleItem/supplyPoints/header"
 msgstr "  "
+
+msgid "epicBattlesCarousel/lobby/levelInfo"
+msgstr " %(level)s      /    : D, E  F."
+
+msgid "epicBattlesCarousel/lobby/levelInfo/level"
+msgstr "%(lvl)s "
 
 msgid "epicBattlesCarousel/lockedTooltip/body"
 msgstr "  VIII     ."
 
 msgid "epicBattlesCarousel/lockedTooltip/header"
 msgstr " "
-
-msgid "epicBattlesInfoView/battleModeTitle"
-msgstr " "
-
-msgid "epicBattlesInfoView/fameLabelHighlight"
-msgstr "  "
-
-msgid "epicBattlesInfoView/maxLevel"
-msgstr "   "
-
-msgid "epicBattlesInfoView/maxMetaString"
-msgstr "."
-
-msgid "epicBattlesInfoView/metaLevel"
-msgstr ""
-
-msgid "epicBattlesInfoView/panelDescription/abilities"
-msgstr "        ."
-
-msgid "epicBattlesInfoView/panelDescription/battlePerformance"
-msgstr "          ."
-
-msgid "epicBattlesInfoView/panelDescription/prestige"
-msgstr "     ,    ."
-
-msgid "epicBattlesInfoView/panelDescription/rewards"
-msgstr "    30."
-
-msgid "epicBattlesInfoView/panelTitle/abilities"
-msgstr " "
-
-msgid "epicBattlesInfoView/panelTitle/battlePerformance"
-msgstr "  "
-
-msgid "epicBattlesInfoView/panelTitle/prestige"
-msgstr "  "
-
-msgid "epicBattlesInfoView/panelTitle/rewards"
-msgstr "  "
-
-msgid "epicBattlesInfoView/ruleBattlePerformanceButton/label"
-msgstr " "
-
-msgid "epicBattlesInfoView/ruleRewardsButton/label"
-msgstr " "
-
-msgid "epicBattlesInfoView/ruleRewardsPrestigeButton/label"
-msgstr " "
-
-msgid "epicBattlesOfflineView/calendarDescription"
-msgstr "    ,       .        !"
-
-msgid "epicBattlesOfflineView/calendarSubTitle"
-msgstr "   : %(month)s %(dateStart)s%(dateEnd)s"
-
-msgid "epicBattlesOfflineView/gameRules"
-msgstr " "
-
-msgid "epicBattlesOfflineView/title"
-msgstr "   "
-
-msgid "epicBattlesPrestigeView/cancelButtonText"
-msgstr ""
-
-msgid "epicBattlesPrestigeView/congratulations"
-msgstr "!"
-
-msgid "epicBattlesPrestigeView/exchange"
-msgstr "    :"
-
-msgid "epicBattlesPrestigeView/mainTitle"
-msgstr "    "
-
-msgid "epicBattlesPrestigeView/prestigeInfo"
-msgstr " : "
-
-msgid "epicBattlesPrestigeView/prestigeLevel"
-msgstr "  %(level)s"
-
-msgid "epicBattlesPrestigeView/removeAbilities/desc"
-msgstr "      ."
-
-msgid "epicBattlesPrestigeView/removeAbilities/title"
-msgstr "  "
-
-msgid "epicBattlesPrestigeView/resetButtonText"
-msgstr ""
-
-msgid "epicBattlesPrestigeView/resetLevel/desc"
-msgstr "       ."
-
-msgid "epicBattlesPrestigeView/resetLevel/title"
-msgstr " "
-
-msgid "epicBattlesPrestigeView/warning"
-msgstr "    !"
-
-msgid "epicBattlesWelcomeBackView/playVideoBtn/label"
-msgstr " "
-
-msgid "epicBattlesWelcomeBackView/subTitle"
-msgstr " "
-
-msgid "epicBattlesWelcomeBackView/title"
-msgstr "  !"
 
 msgid "epic_battle_meta_view/Acquire_skill"
 msgstr ""
@@ -300,6 +252,12 @@ msgstr " ( %(lane1)s/%(lane2)s/%(lane3)s )"
 
 msgid "epictraining/info/team2LaneLabel"
 msgstr " ( %(lane1)s/%(lane2)s/%(lane3)s )"
+
+msgid "equipment/healPoint/healed"
+msgstr "  "
+
+msgid "equipment/healPoint/healing"
+msgstr "  "
 
 msgid "game/all_enemies_defeated"
 msgstr "   "
@@ -350,7 +308,7 @@ msgid "help_window/communication"
 msgstr " "
 
 msgid "help_window/communication/description"
-msgstr "     ,               ."
+msgstr "      ,        -,          ."
 
 msgid "help_window/overview_map"
 msgstr " "
@@ -385,6 +343,30 @@ msgstr ""
 msgid "inspire/inspiring"
 msgstr ""
 
+msgid "intro/card/categories/desc"
+msgstr "    .         ."
+
+msgid "intro/card/categories/title"
+msgstr " "
+
+msgid "intro/card/slots/desc"
+msgstr "           .          ,         ."
+
+msgid "intro/card/slots/title"
+msgstr "   "
+
+msgid "intro/card/types/desc"
+msgstr "      ,         -."
+
+msgid "intro/card/types/title"
+msgstr "   "
+
+msgid "intro/confirm"
+msgstr " !"
+
+msgid "intro/title"
+msgstr "   "
+
 msgid "lane_central_name"
 msgstr ""
 
@@ -407,30 +389,15 @@ msgid "metaAbilityScreen/Ability_not_points"
 msgstr " :     ."
 
 msgid "metaAbilityScreen/Ability_not_unlocked"
-msgstr " "
+msgstr "  "
 
-msgid "metaAbilityScreen/Acquire_skill"
-msgstr ""
-
-msgid "metaAbilityScreen/Manage_abilities"
-msgstr ""
-" \n"
-""
-
-msgid "metaAbilityScreen/Manage_reserves_header"
-msgstr " "
-
-msgid "metaAbilityScreen/Unspent_points"
-msgstr "  :"
-
-msgid "metaAbilityScreen/Upgrade_skill"
-msgstr ""
-
-msgid "metaAbilityScreen/get_skill_points"
-msgstr "         ."
+msgid "metaAbilityScreen/activation_depends"
+msgstr "        ,    ."
 
 msgid "metaAbilityScreen/how_to_activate"
-msgstr "  ,    ."
+msgstr ""
+"     \n"
+" : %(price)s %(img)s"
 
 msgid "mission/primary/title"
 msgstr " "
@@ -474,8 +441,14 @@ msgstr " :"
 msgid "missions/primary/def/longdescription"
 msgstr "    ,    ,     ."
 
+msgid "missions/unlockTankLevel"
+msgstr "   IX "
+
 msgid "overtime/label"
 msgstr ""
+
+msgid "player_errors/minefieldIsIntersected"
+msgstr " .   ."
 
 msgid "primeTime/applyBtn"
 msgstr ""
@@ -607,6 +580,12 @@ msgstr ""
 msgid "rank/rank6"
 msgstr ""
 
+msgid "rank/recerveUnlocked"
+msgstr "  %(reserveName)s "
+
+msgid "rank/reserveUpgraded"
+msgstr "  %(reserveName)s "
+
 msgid "recovery/Blocked"
 msgstr ""
 "\n"
@@ -699,14 +678,11 @@ msgstr "2019"
 msgid "season/202002/name"
 msgstr "2020"
 
-msgid "season/202008/name"
-msgstr "2020"
-
-msgid "season/202103/name"
+msgid "season/202108/name"
 msgstr "2021"
 
 msgid "selectorTooltip/epicBattle/attention/assuredLowPerformance/description"
-msgstr "      .      ,      ."
+msgstr "      .        ,      ."
 
 msgid "selectorTooltip/epicBattle/attention/assuredLowPerformance/title"
 msgstr " "
@@ -719,13 +695,16 @@ msgid "selectorTooltip/epicBattle/attention/informativeLowPerformance/title"
 msgstr "   "
 
 msgid "selectorTooltip/epicBattle/attention/possibleLowPerformance/description"
-msgstr "  .    ,      .       ."
+msgstr "   .    ,         .        ."
 
 msgid "selectorTooltip/epicBattle/attention/possibleLowPerformance/title"
 msgstr " "
 
 msgid "selectorTooltip/epicBattle/body"
-msgstr " 3030  VIII.    ,  ,   ."
+msgstr " 30  30   %(bodyVehicleLevel)s   ,     ."
+
+msgid "selectorTooltip/epicBattle/bodyVehicleLevel"
+msgstr " %(level)s "
 
 msgid "selectorTooltip/epicBattle/frozen"
 msgstr "     ."
@@ -750,6 +729,12 @@ msgstr ""
 
 msgid "selectorTooltip/epicBattle/timeTable/tomorrow"
 msgstr ""
+
+msgid "smoke/InAllySmoke"
+msgstr " : "
+
+msgid "smoke/InEnemySmoke"
+msgstr " :  "
 
 msgid "smoke/In_smoke"
 msgstr " "
@@ -793,6 +778,12 @@ msgstr ""
 msgid "status/timeLeft/min"
 msgstr "%(min)s"
 
+msgid "stealthRadar/active"
+msgstr " "
+
+msgid "stealthRadar/inactive"
+msgstr "  %(activationDelay)s   "
+
 msgid "super_platoon_panel/title"
 msgstr ""
 
@@ -808,20 +799,89 @@ msgstr ""
 msgid "team2Name"
 msgstr ""
 
+msgid "tooltips/common/disabled"
+msgstr " "
+
+msgid "tooltips/common/title"
+msgstr " "
+
+msgid "tooltips/common/titleWithCycle"
+msgstr " .  %(season)s"
+
+msgid "tooltips/slotSetupInfo/open/desc"
+msgstr "   ,            ."
+
+msgid "tooltips/slotSetupInfo/open/title"
+msgstr ": %(desc)s"
+
+msgid "tooltips/slotSetupInfo/scheme"
+msgstr "     "
+
+msgid "tooltips/slotSetupInfo/subtitle"
+msgstr "          ."
+
+msgid "tooltips/slotSetupInfo/title/AT-SPG"
+msgstr "   -"
+
+msgid "tooltips/slotSetupInfo/title/SPG"
+msgstr "   "
+
+msgid "tooltips/slotSetupInfo/title/heavyTank"
+msgstr "    "
+
+msgid "tooltips/slotSetupInfo/title/lightTank"
+msgstr "    "
+
+msgid "tooltips/slotSetupInfo/title/mediumTank"
+msgstr "    "
+
+msgid "tooltips/slotSetupInfo/upgrade/desc"
+msgstr "        ,       ."
+
+msgid "tooltips/slotSetupInfo/upgrade/title"
+msgstr ": %(desc)s"
+
+msgid "tooltips/slotUnlocked/message"
+msgstr "     %(rank)s."
+
+msgid "tooltips/timeToEnd/cycle"
+msgstr "  : %(timeLeft)s"
+
+msgid "tooltips/timeToEnd/season"
+msgstr " : %(timeLeft)s"
+
+msgid "tooltips/timeToStart/cycle"
+msgstr "  : %(timeLeft)s"
+
+msgid "tooltips/timeToStart/season"
+msgstr " : %(timeLeft)s"
+
+msgid "tooltips/widget/allCyclesFinished"
+msgstr "  "
+
+msgid "tooltips/widget/level"
+msgstr " %(level)s"
+
+msgid "tooltips/widget/reachedMaxLevel"
+msgstr "  ."
+
+msgid "tooltips/widget/seasonFinished"
+msgstr " "
+
 msgid "tutorial/hint/epicReservesSlotHint"
 msgstr " "
 
 msgid "widgetAlertMessageBlock/allPeripheriesHalt"
 msgstr "    ,    %(time)s"
 
+msgid "widgetAlertMessageBlock/announcement"
+msgstr " %(cycle)s  "
+
 msgid "widgetAlertMessageBlock/button"
 msgstr " "
 
-msgid "widgetAlertMessageBlock/noCycleMessage/multi"
+msgid "widgetAlertMessageBlock/noCycleMessage"
 msgstr " %(cycle)s "
-
-msgid "widgetAlertMessageBlock/noCycleMessage/single"
-msgstr " "
 
 msgid "widgetAlertMessageBlock/singleModeHalt"
 msgstr "   ,    %(time)s"
@@ -829,11 +889,8 @@ msgstr "   ,    %(time)s"
 msgid "widgetAlertMessageBlock/somePeripheriesHalt"
 msgstr "   %(serverName)s"
 
-msgid "widgetAlertMessageBlock/startIn/multi"
+msgid "widgetAlertMessageBlock/startIn"
 msgstr " %(cycle)s   %(time)s"
-
-msgid "widgetAlertMessageBlock/startIn/single"
-msgstr "    %(time)s"
 
 msgid "zone/arrived_text"
 msgstr "!"

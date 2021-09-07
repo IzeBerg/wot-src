@@ -11,6 +11,9 @@ class RadialMenuMeta(BaseDAAPIComponent):
     def onHideCompleted(self):
         self._printOverrideError('onHideCompleted')
 
+    def onRefresh(self):
+        self._printOverrideError('onRefresh')
+
     def as_buildDataS(self, data):
         if self._isDAAPIInited():
             return self.flashObject.as_buildData(data)

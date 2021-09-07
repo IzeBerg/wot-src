@@ -10,6 +10,9 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "actionStub/name"
+msgstr "Модификация"
+
 msgid "additInvisibilityDeviceBattleBooster/descr"
 msgstr ""
 "%s к незаметности как неподвижной машины, так и движущейся при установленном "
@@ -54,6 +57,12 @@ msgstr "Малошумная система выхлопа (Класс 2)"
 
 msgid "additionalInvisibilityDevice_tier3/name"
 msgstr "Малошумная система выхлопа (Класс 3)"
+
+msgid "additional_armor_plates_1/name"
+msgstr "Дополнительные бронепластины (Тип 1)"
+
+msgid "additional_armor_plates_2/name"
+msgstr "Дополнительные бронепластины (Тип 2)"
 
 msgid "afterburning/descr"
 msgstr ""
@@ -145,7 +154,7 @@ msgid "artillery/name"
 msgstr "Артобстрел"
 
 msgid "artillery/shortDescr"
-msgstr "Максимальный урон по медленной технике противника"
+msgstr "Наносит урон технике противника в небольшом радиусе."
 
 msgid "autoExtinguishers/always"
 msgstr "%(vehicleFireChance)s от шанса возгорания двигателя"
@@ -190,6 +199,9 @@ msgstr ""
 "Значительно улучшает бронепробиваемость и ТТХ вашей машины, но отнимает очки "
 "прочности в течение %(duration)s секунд."
 
+msgid "blackout_headlights_1/name"
+msgstr "Светомаскировка фар (Тип 1)"
+
 msgid "bomber/longDescr"
 msgstr ""
 "Бомбардировщик совершает удар в указанную зону, повреждая и оглушая технику "
@@ -199,7 +211,7 @@ msgid "bomber/name"
 msgstr "Авиаудар"
 
 msgid "bomber/shortDescr"
-msgstr "Оглушение противника разрывами бомб"
+msgstr "Наносит урон технике противника на определённой площади и оглушает её."
 
 msgid "brRegenerationKit/descr"
 msgstr ""
@@ -317,7 +329,7 @@ msgid "camouflageBattleBooster/action/boost"
 msgstr "Добавляет дополнительные 10% к маскировке машины"
 
 msgid "camouflageBattleBooster/action/perk"
-msgstr "Даёт 100% умение «Маскировка» всему экипажу"
+msgstr "Даёт 100%-е умение «Маскировка» всему экипажу"
 
 msgid "camouflageBattleBooster/long_special"
 msgstr ""
@@ -378,6 +390,12 @@ msgstr "Только для техники Германии."
 
 msgid "chocolate/short_special"
 msgstr "Повышает эффективность немецких экипажей"
+
+msgid "clutches_replace_1/name"
+msgstr "Замена фрикционов (Тип 1)"
+
+msgid "clutches_replace_2/name"
+msgstr "Замена фрикционов (Тип 2)"
 
 msgid "coatedOptics/long_special"
 msgstr ""
@@ -574,6 +592,37 @@ msgstr ""
 msgid "deluxeTurbocharger/name"
 msgstr "Улучшенный компрессор"
 
+msgid "eb_minefield/descr"
+msgstr "На определённое время размещает в указанной области минное поле."
+
+msgid "eb_minefield/long_descr"
+msgstr ""
+"На определённое время размещает в указанной области минное поле. Мины можно "
+"уничтожать выстрелами или взрывом. Противник обнаружит мины либо с близкого "
+"расстояния, либо с помощью резервов «Самолёт-разведчик» и «Скрытность»."
+
+msgid "eb_minefield/name"
+msgstr "Минное поле"
+
+msgid "eb_minefield/short_descr"
+msgstr "На определённое время размещает в указанной области минное поле."
+
+msgid "eb_regenerationKit/descr"
+msgstr ""
+"Постепенно восстанавливает фиксированный процент прочности вашей машины."
+
+msgid "eb_regenerationKit/long_descr"
+msgstr ""
+"Постепенно восстанавливает фиксированный процент прочности вашей машины. "
+"Также во время действия резерва снижается получаемый урон от мин."
+
+msgid "eb_regenerationKit/name"
+msgstr "Полевой ремонт"
+
+msgid "eb_regenerationKit/short_descr"
+msgstr ""
+"Постепенно восстанавливает фиксированный процент прочности вашей машины."
+
 msgid "empty"
 msgstr "?empty?"
 
@@ -673,7 +722,7 @@ msgid "fireFightingBattleBooster/action/boost"
 msgstr "Добавляет к текущему уровню умения «Пожаротушение» дополнительные 50%"
 
 msgid "fireFightingBattleBooster/action/perk"
-msgstr "Даёт 100% умение «Пожаротушение» всему экипажу"
+msgstr "Даёт 100%-е умение «Пожаротушение» всему экипажу"
 
 msgid "fireFightingBattleBooster/long_special"
 msgstr ""
@@ -687,6 +736,9 @@ msgstr "Искусство сбивать пламя"
 
 msgid "fireFightingBattleBooster/short_special"
 msgstr "Даёт умение «Пожаротушение» или усиливает его"
+
+msgid "fuel_system_revision_1/name"
+msgstr "Ревизия топливной системы (Тип 1)"
 
 msgid "gasoline100/always"
 msgstr ""
@@ -775,6 +827,9 @@ msgstr "Дополнительные грунтозацепы (Класс 2)"
 
 msgid "grousers_tier3/name"
 msgstr "Дополнительные грунтозацепы (Класс 3)"
+
+msgid "gun_balancing_1/name"
+msgstr "Балансировка орудия (Тип 1)"
 
 msgid "handExtinguishers/always"
 msgstr "?empty?"
@@ -1057,17 +1112,23 @@ msgstr "Улучшенная вентиляция (Класс 2)"
 msgid "improvedVentilation_tier3/name"
 msgstr "Улучшенная вентиляция (Класс 3)"
 
+msgid "improved_suspension_1/name"
+msgstr "Улучшенная подвеска (Тип 1)"
+
+msgid "improved_suspension_2/name"
+msgstr "Улучшенная подвеска (Тип 2)"
+
 msgid "inspire/longDescr"
 msgstr ""
-"При использовании воодушевляет экипажи машины игрока и ближайших союзников "
-"в определённом радиусе, добавляя бонус в % к основным специальностям каждого "
-"члена экипажа."
+"При использовании воодушевляет экипаж машины игрока и ближайших союзников в "
+"определённом радиусе, добавляя бонус в % к основной специальности каждого "
+"члена экипажа. Применивший игрок получит усиленный эффект."
 
 msgid "inspire/name"
 msgstr "Воодушевление"
 
 msgid "inspire/shortDescr"
-msgstr "Бонус к основным специальностям экипажей игрока и союзников"
+msgstr "Добавляет бонус к основным специальностям экипажей игрока и союзников."
 
 msgid "largeCaliberHowitzerRammer/name"
 msgstr "Гаубичный досылатель крупного калибра"
@@ -1145,7 +1206,7 @@ msgstr ""
 "противника"
 
 msgid "lastEffortBattleBooster/action/perk"
-msgstr "Даёт 100% навык «Из последних сил»"
+msgstr "Даёт 100%-й навык «Из последних сил»"
 
 msgid "lastEffortBattleBooster/long_special"
 msgstr ""
@@ -1205,6 +1266,9 @@ msgstr "Форсаж"
 msgid "nitro/short_special"
 msgstr "Улучшает динамические ТТХ на %(duration)s секунд."
 
+msgid "opt_dev_boosters_switch/name"
+msgstr "Альтернативная комплектация — дополнительное оснащение"
+
 msgid "passive_engineering/longDescr"
 msgstr ""
 "Вызывает спецотряд, который ускоряет захват ключевых точек на карте или "
@@ -1218,7 +1282,7 @@ msgid "passive_engineering/name"
 msgstr "Диверсионный отряд"
 
 msgid "passive_engineering/shortDescr"
-msgstr "Бонус к захвату/защите, а также к эффективности зон обслуживания"
+msgstr "Бонус к захвату/защите, а также к эффективности зон обслуживания."
 
 msgid "passive_engineering/shortFilterAlert"
 msgstr "Не для САУ"
@@ -1227,7 +1291,7 @@ msgid "pedantBattleBooster/action/boost"
 msgstr "Дополнительно увеличивает прочность боеукладки на 37,5%"
 
 msgid "pedantBattleBooster/action/perk"
-msgstr "Даёт 100% навык «Бесконтактная боеукладка»"
+msgstr "Даёт 100%-й навык «Бесконтактная боеукладка»"
 
 msgid "pedantBattleBooster/long_special"
 msgstr ""
@@ -1267,7 +1331,7 @@ msgid "qualityOil/short_special"
 msgstr "Добавляет {colorTagOpen}5%{colorTagClose} к мощности двигателя"
 
 msgid "radar/descr"
-msgstr "Позволяет обнаружить противника и добычу на миникарте."
+msgstr "Позволяет обнаружить противника и добычу на мини-карте."
 
 msgid "radar/name"
 msgstr "Радар"
@@ -1310,7 +1374,7 @@ msgstr ""
 "противника в прицеле дополнительные 2 с к базовому времени действия навыка"
 
 msgid "rancorousBattleBooster/action/perk"
-msgstr "Даёт 100% навык «Злопамятный»"
+msgstr "Даёт 100%-й навык «Злопамятный»"
 
 msgid "rancorousBattleBooster/long_special"
 msgstr ""
@@ -1519,14 +1583,15 @@ msgstr "Повышает эффективность британских эки�
 
 msgid "recon/longDescr"
 msgstr ""
-"Вызов самолёта-разведчика, который обнаруживает технику противника "
-"в указанном квадрате и держит её видимой для союзников определённое время."
+"Вызов самолёта-разведчика, который обнаруживает технику противника в "
+"указанном квадрате и держит её видимой определённое время. Также "
+"обнаруживает минные поля."
 
 msgid "recon/name"
 msgstr "Самолёт-разведчик"
 
 msgid "recon/shortDescr"
-msgstr "Определение позиций техники противника"
+msgstr "Определяет позиции техники противника и расположение минных полей."
 
 msgid "removedRpmLimiter/always"
 msgstr "?empty?"
@@ -1578,6 +1643,728 @@ msgstr ""
 "Устанавливает временную статическую область, в которой происходит ремонт "
 "всех повреждённых модулей, снятие оглушения и восстановление прочности."
 
+msgid "rifled_barrels_cleaning_1/name"
+msgstr "Чистка нарезов ствола (Тип 1)"
+
+msgid "roleSlot/name"
+msgstr "Категория второго слота для оборудования"
+
+msgid "role_ATSPG_assault_pair_4_1/name"
+msgstr "Система пассивной безопасности"
+
+msgid "role_ATSPG_assault_pair_4_1/splitName"
+msgstr ""
+"Система пассивной\n"
+"безопасности"
+
+msgid "role_ATSPG_assault_pair_4_2/name"
+msgstr "Перекомпоновка БК"
+
+msgid "role_ATSPG_assault_pair_4_2/splitName"
+msgstr ""
+"Перекомпоновка\n"
+"БК"
+
+msgid "role_ATSPG_assault_pair_5_1/name"
+msgstr "Ремонтопригодные гусеницы"
+
+msgid "role_ATSPG_assault_pair_5_1/splitName"
+msgstr ""
+"Ремонтопригодные\n"
+"гусеницы"
+
+msgid "role_ATSPG_assault_pair_5_2/name"
+msgstr "Доработка МТО"
+
+msgid "role_ATSPG_assault_pair_5_2/splitName"
+msgstr ""
+"Доработка\n"
+"МТО"
+
+msgid "role_ATSPG_pair_1_1/name"
+msgstr "Усиленная ходовая"
+
+msgid "role_ATSPG_pair_1_1/splitName"
+msgstr ""
+"Усиленная\n"
+"ходовая"
+
+msgid "role_ATSPG_pair_1_2/name"
+msgstr "Облегчённая ходовая"
+
+msgid "role_ATSPG_pair_1_2/splitName"
+msgstr ""
+"Облегчённая\n"
+"ходовая"
+
+msgid "role_ATSPG_pair_2_1/name"
+msgstr "Притирка шестерней наведения"
+
+msgid "role_ATSPG_pair_2_1/splitName"
+msgstr ""
+"Притирка шестерней\n"
+"наведения"
+
+msgid "role_ATSPG_pair_2_2/name"
+msgstr "Отстройка параллакса"
+
+msgid "role_ATSPG_pair_2_2/splitName"
+msgstr ""
+"Отстройка\n"
+"параллакса"
+
+msgid "role_ATSPG_pair_3_1/name"
+msgstr "Настройка эжектора"
+
+msgid "role_ATSPG_pair_3_1/splitName"
+msgstr ""
+"Настройка\n"
+"эжектора"
+
+msgid "role_ATSPG_pair_3_2/name"
+msgstr "Штанговый перископ"
+
+msgid "role_ATSPG_pair_3_2/splitName"
+msgstr ""
+"Штанговый\n"
+"перископ"
+
+msgid "role_ATSPG_sniper_pair_4_1/name"
+msgstr "Настройка механизма заряжания"
+
+msgid "role_ATSPG_sniper_pair_4_1/splitName"
+msgstr ""
+"Настройка механизма\n"
+"заряжания"
+
+msgid "role_ATSPG_sniper_pair_4_2/name"
+msgstr "Настройка механизма прицеливания"
+
+msgid "role_ATSPG_sniper_pair_4_2/splitName"
+msgstr ""
+"Настройка механизма\n"
+"прицеливания"
+
+msgid "role_ATSPG_sniper_pair_5_1/name"
+msgstr "Настройка КОМ"
+
+msgid "role_ATSPG_sniper_pair_5_1/splitName"
+msgstr ""
+"Настройка\n"
+"КОМ"
+
+msgid "role_ATSPG_sniper_pair_5_2/name"
+msgstr "Электропривод наведения"
+
+msgid "role_ATSPG_sniper_pair_5_2/splitName"
+msgstr ""
+"Электропривод\n"
+"наведения"
+
+msgid "role_ATSPG_support_pair_4_1/name"
+msgstr "Новые шестерни наведения"
+
+msgid "role_ATSPG_support_pair_4_1/splitName"
+msgstr ""
+"Новые шестерни\n"
+"наведения"
+
+msgid "role_ATSPG_support_pair_4_2/name"
+msgstr "Доработка казённика"
+
+msgid "role_ATSPG_support_pair_4_2/splitName"
+msgstr ""
+"Доработка\n"
+"казённика"
+
+msgid "role_ATSPG_support_pair_5_1/name"
+msgstr "Общее снижение массы"
+
+msgid "role_ATSPG_support_pair_5_1/splitName"
+msgstr ""
+"Общее снижение\n"
+"массы"
+
+msgid "role_ATSPG_support_pair_5_2/name"
+msgstr "Общее увеличение прочности"
+
+msgid "role_ATSPG_support_pair_5_2/splitName"
+msgstr ""
+"Общее увеличение\n"
+"прочности"
+
+msgid "role_ATSPG_universal_pair_4_1/name"
+msgstr "Матовые краски"
+
+msgid "role_ATSPG_universal_pair_4_1/splitName"
+msgstr ""
+"Матовые\n"
+"краски"
+
+msgid "role_ATSPG_universal_pair_4_2/name"
+msgstr "Дополнительная задняя передача"
+
+msgid "role_ATSPG_universal_pair_4_2/splitName"
+msgstr ""
+"Дополнительная задняя\n"
+"передача"
+
+msgid "role_ATSPG_universal_pair_5_1/name"
+msgstr "Верхневальный двигатель"
+
+msgid "role_ATSPG_universal_pair_5_1/splitName"
+msgstr ""
+"Верхневальный\n"
+"двигатель"
+
+msgid "role_ATSPG_universal_pair_5_2/name"
+msgstr "Габаритный досылатель"
+
+msgid "role_ATSPG_universal_pair_5_2/splitName"
+msgstr ""
+"Габаритный\n"
+"досылатель"
+
+msgid "role_HT_assault_pair_4_1/name"
+msgstr "Дополнительная шумоизоляция"
+
+msgid "role_HT_assault_pair_4_1/splitName"
+msgstr ""
+"Дополнительная\n"
+"шумоизоляция"
+
+msgid "role_HT_assault_pair_4_2/name"
+msgstr "Демонтаж обшивки"
+
+msgid "role_HT_assault_pair_4_2/splitName"
+msgstr ""
+"Демонтаж\n"
+"обшивки"
+
+msgid "role_HT_assault_pair_5_1/name"
+msgstr "Дополнительная система безопасности"
+
+msgid "role_HT_assault_pair_5_1/splitName"
+msgstr ""
+"Дополнительная система\n"
+"безопасности"
+
+msgid "role_HT_assault_pair_5_2/name"
+msgstr "Облегчённые узлы крепления"
+
+msgid "role_HT_assault_pair_5_2/splitName"
+msgstr ""
+"Облегчённые узлы\n"
+"крепления"
+
+msgid "role_HT_break_pair_4_1/name"
+msgstr "Перераспределение энергопитания (Схема 1)"
+
+msgid "role_HT_break_pair_4_1/splitName"
+msgstr ""
+"Перераспределение\n"
+"энергопитания (Схема 1)"
+
+msgid "role_HT_break_pair_4_2/name"
+msgstr "Перераспределение энергопитания (Схема 2)"
+
+msgid "role_HT_break_pair_4_2/splitName"
+msgstr ""
+"Перераспределение\n"
+"энергопитания (Схема 2)"
+
+msgid "role_HT_break_pair_5_1/name"
+msgstr "Усиленная платформа"
+
+msgid "role_HT_break_pair_5_1/splitName"
+msgstr ""
+"Усиленная\n"
+"платформа"
+
+msgid "role_HT_break_pair_5_2/name"
+msgstr "Облегчённая платформа"
+
+msgid "role_HT_break_pair_5_2/splitName"
+msgstr ""
+"Облегчённая\n"
+"платформа"
+
+msgid "role_HT_support_pair_4_1/name"
+msgstr "Акцент на мобильность"
+
+msgid "role_HT_support_pair_4_1/splitName"
+msgstr ""
+"Акцент на\n"
+"мобильность"
+
+msgid "role_HT_support_pair_4_2/name"
+msgstr "Акцент на ведение огня"
+
+msgid "role_HT_support_pair_4_2/splitName"
+msgstr ""
+"Акцент на\n"
+"ведение огня"
+
+msgid "role_HT_support_pair_5_1/name"
+msgstr "Утяжелённое орудие"
+
+msgid "role_HT_support_pair_5_1/splitName"
+msgstr ""
+"Утяжелённое\n"
+"орудие"
+
+msgid "role_HT_support_pair_5_2/name"
+msgstr "Облегчённое орудие"
+
+msgid "role_HT_support_pair_5_2/splitName"
+msgstr ""
+"Облегчённое\n"
+"орудие"
+
+msgid "role_HT_universal_pair_4_1/name"
+msgstr "Настройка отбора мощности (Схема 1)"
+
+msgid "role_HT_universal_pair_4_1/splitName"
+msgstr ""
+"Настройка отбора\n"
+"мощности (Схема 1)"
+
+msgid "role_HT_universal_pair_4_2/name"
+msgstr "Настройка отбора мощности (Схема 2)"
+
+msgid "role_HT_universal_pair_4_2/splitName"
+msgstr ""
+"Настройка отбора\n"
+"мощности (Схема 2)"
+
+msgid "role_HT_universal_pair_5_1/name"
+msgstr "Усиленный корпус"
+
+msgid "role_HT_universal_pair_5_1/splitName"
+msgstr ""
+"Усиленный\n"
+"корпус"
+
+msgid "role_HT_universal_pair_5_2/name"
+msgstr "Облегчённый корпус"
+
+msgid "role_HT_universal_pair_5_2/splitName"
+msgstr ""
+"Облегчённый\n"
+"корпус"
+
+msgid "role_LT_universal_pair_4_1/name"
+msgstr "Антибликовая маскировка оптики"
+
+msgid "role_LT_universal_pair_4_1/splitName"
+msgstr ""
+"Антибликовая\n"
+"маскировка оптики"
+
+msgid "role_LT_universal_pair_4_2/name"
+msgstr "Выносные обзорные приборы"
+
+msgid "role_LT_universal_pair_4_2/splitName"
+msgstr ""
+"Выносные\n"
+"обзорные приборы"
+
+msgid "role_LT_universal_pair_5_1/name"
+msgstr "Панорамные триплексы"
+
+msgid "role_LT_universal_pair_5_1/splitName"
+msgstr ""
+"Панорамные\n"
+"триплексы"
+
+msgid "role_LT_universal_pair_5_2/name"
+msgstr "Узкоугольный смотровой прибор"
+
+msgid "role_LT_universal_pair_5_2/splitName"
+msgstr ""
+"Узкоугольный\n"
+"смотровой прибор"
+
+msgid "role_LT_wheeled_pair_4_1/name"
+msgstr "Укрепление силового каркаса"
+
+msgid "role_LT_wheeled_pair_4_1/splitName"
+msgstr ""
+"Укрепление\n"
+"силового каркаса"
+
+msgid "role_LT_wheeled_pair_4_2/name"
+msgstr "Расширение боевого отделения"
+
+msgid "role_LT_wheeled_pair_4_2/splitName"
+msgstr ""
+"Расширение\n"
+"боевого отделения"
+
+msgid "role_LT_wheeled_pair_5_1/name"
+msgstr "Разведкомплект"
+
+msgid "role_LT_wheeled_pair_5_1/splitName"
+msgstr "Разведкомплект"
+
+msgid "role_LT_wheeled_pair_5_2/name"
+msgstr "Штурмовой комплект"
+
+msgid "role_LT_wheeled_pair_5_2/splitName"
+msgstr ""
+"Штурмовой\n"
+"комплект"
+
+msgid "role_MT_assault_pair_4_1/name"
+msgstr "Комплексное усиление прочности"
+
+msgid "role_MT_assault_pair_4_1/splitName"
+msgstr ""
+"Комплексное усиление\n"
+"прочности"
+
+msgid "role_MT_assault_pair_4_2/name"
+msgstr "Комплексное ускорение сведения"
+
+msgid "role_MT_assault_pair_4_2/splitName"
+msgstr ""
+"Комплексное ускорение\n"
+"сведения"
+
+msgid "role_MT_assault_pair_5_1/name"
+msgstr "Дополнительные приборы наблюдения"
+
+msgid "role_MT_assault_pair_5_1/splitName"
+msgstr ""
+"Дополнительные приборы\n"
+"наблюдения"
+
+msgid "role_MT_assault_pair_5_2/name"
+msgstr "Укреплённые соединения"
+
+msgid "role_MT_assault_pair_5_2/splitName"
+msgstr ""
+"Укреплённые\n"
+"соединения"
+
+msgid "role_MT_sniper_pair_4_1/name"
+msgstr "Настройка механизма заряжания"
+
+msgid "role_MT_sniper_pair_4_1/splitName"
+msgstr ""
+"Настройка механизма\n"
+"заряжания"
+
+msgid "role_MT_sniper_pair_4_2/name"
+msgstr "Настройка механизма прицеливания"
+
+msgid "role_MT_sniper_pair_4_2/splitName"
+msgstr ""
+"Настройка механизма\n"
+"прицеливания"
+
+msgid "role_MT_sniper_pair_5_1/name"
+msgstr "Настройка КОМ"
+
+msgid "role_MT_sniper_pair_5_1/splitName"
+msgstr ""
+"Настройка\n"
+"КОМ"
+
+msgid "role_MT_sniper_pair_5_2/name"
+msgstr "Электропривод наведения"
+
+msgid "role_MT_sniper_pair_5_2/splitName"
+msgstr ""
+"Электропривод\n"
+"наведения"
+
+msgid "role_MT_support_pair_4_1/name"
+msgstr "Доработка казённика"
+
+msgid "role_MT_support_pair_4_1/splitName"
+msgstr ""
+"Доработка\n"
+"казённика"
+
+msgid "role_MT_support_pair_4_2/name"
+msgstr "Новые шестерни наведения"
+
+msgid "role_MT_support_pair_4_2/splitName"
+msgstr ""
+"Новые шестерни\n"
+"наведения"
+
+msgid "role_MT_support_pair_5_1/name"
+msgstr "Настройка системы впрыска"
+
+msgid "role_MT_support_pair_5_1/splitName"
+msgstr ""
+"Настройка системы\n"
+"впрыска"
+
+msgid "role_MT_support_pair_5_2/name"
+msgstr "Настройка секторов обзора"
+
+msgid "role_MT_support_pair_5_2/splitName"
+msgstr ""
+"Настройка секторов\n"
+"обзора"
+
+msgid "role_MT_universal_pair_4_1/name"
+msgstr "Жиклёры крупного сечения"
+
+msgid "role_MT_universal_pair_4_1/splitName"
+msgstr ""
+"Жиклёры крупного\n"
+"сечения"
+
+msgid "role_MT_universal_pair_4_2/name"
+msgstr "Чувствительная оптика"
+
+msgid "role_MT_universal_pair_4_2/splitName"
+msgstr ""
+"Чувствительная\n"
+"оптика"
+
+msgid "role_MT_universal_pair_5_1/name"
+msgstr "Усиленные опорные катки"
+
+msgid "role_MT_universal_pair_5_1/splitName"
+msgstr ""
+"Усиленные опорные\n"
+"катки"
+
+msgid "role_MT_universal_pair_5_2/name"
+msgstr "Облегчённые опорные катки"
+
+msgid "role_MT_universal_pair_5_2/splitName"
+msgstr ""
+"Облегчённые опорные\n"
+"катки"
+
+msgid "role_SPG_pair_1_1/name"
+msgstr "Доработка ходовой"
+
+msgid "role_SPG_pair_1_1/splitName"
+msgstr ""
+"Доработка\n"
+"ходовой"
+
+msgid "role_SPG_pair_1_2/name"
+msgstr "Доработка двигателя"
+
+msgid "role_SPG_pair_1_2/splitName"
+msgstr ""
+"Доработка\n"
+"двигателя"
+
+msgid "role_SPG_pair_2_1/name"
+msgstr "Комплекс \"Охотник-С\""
+
+msgid "role_SPG_pair_2_1/splitName"
+msgstr ""
+"Комплекс\n"
+"\"Охотник-С\""
+
+msgid "role_SPG_pair_2_2/name"
+msgstr "Комплекс \"Охотник-М\""
+
+msgid "role_SPG_pair_2_2/splitName"
+msgstr ""
+"Комплекс\n"
+"\"Охотник-М\""
+
+msgid "role_SPG_pair_3_1/name"
+msgstr "Настройка гидравлики (Схема 1)"
+
+msgid "role_SPG_pair_3_1/splitName"
+msgstr ""
+"Настройка гидравлики\n"
+"(Схема 1)"
+
+msgid "role_SPG_pair_3_2/name"
+msgstr "Настройка гидравлики (Схема 2)"
+
+msgid "role_SPG_pair_3_2/splitName"
+msgstr ""
+"Настройка гидравлики\n"
+"(Схема 2)"
+
+msgid "role_SPG_pair_4_1/name"
+msgstr "Настройка механизма заряжания"
+
+msgid "role_SPG_pair_4_1/splitName"
+msgstr ""
+"Настройка механизма\n"
+"заряжания"
+
+msgid "role_SPG_pair_4_2/name"
+msgstr "Настройка механизма прицеливания"
+
+msgid "role_SPG_pair_4_2/splitName"
+msgstr ""
+"Настройка механизма\n"
+"прицеливания"
+
+msgid "role_SPG_pair_5_1/name"
+msgstr "Повышение живучести"
+
+msgid "role_SPG_pair_5_1/splitName"
+msgstr ""
+"Повышение\n"
+"живучести"
+
+msgid "role_SPG_pair_5_2/name"
+msgstr "Облегчение конструкции"
+
+msgid "role_SPG_pair_5_2/splitName"
+msgstr ""
+"Облегчение\n"
+"конструкции"
+
+msgid "role_heavyTank_pair_1_1/name"
+msgstr "Вездеходная ходовая"
+
+msgid "role_heavyTank_pair_1_1/splitName"
+msgstr ""
+"Вездеходная\n"
+"ходовая"
+
+msgid "role_heavyTank_pair_1_2/name"
+msgstr "Облегчённая ходовая"
+
+msgid "role_heavyTank_pair_1_2/splitName"
+msgstr ""
+"Облегчённая\n"
+"ходовая"
+
+msgid "role_heavyTank_pair_2_1/name"
+msgstr "Отстройка параллакса"
+
+msgid "role_heavyTank_pair_2_1/splitName"
+msgstr ""
+"Отстройка\n"
+"параллакса"
+
+msgid "role_heavyTank_pair_2_2/name"
+msgstr "Притирка шестерней наведения"
+
+msgid "role_heavyTank_pair_2_2/splitName"
+msgstr ""
+"Притирка шестерней\n"
+"наведения"
+
+msgid "role_heavyTank_pair_3_1/name"
+msgstr "Звукоизоляция"
+
+msgid "role_heavyTank_pair_3_1/splitName"
+msgstr "Звукоизоляция"
+
+msgid "role_heavyTank_pair_3_2/name"
+msgstr "Электропривод перископа"
+
+msgid "role_heavyTank_pair_3_2/splitName"
+msgstr ""
+"Электропривод\n"
+"перископа"
+
+msgid "role_lightTank_pair_1_1/name"
+msgstr "Настройка клапанов (Схема 1)"
+
+msgid "role_lightTank_pair_1_1/splitName"
+msgstr ""
+"Настройка клапанов\n"
+"(Схема 1)"
+
+msgid "role_lightTank_pair_1_2/name"
+msgstr "Настройка клапанов (Схема 2)"
+
+msgid "role_lightTank_pair_1_2/splitName"
+msgstr ""
+"Настройка клапанов\n"
+"(Схема 2)"
+
+msgid "role_lightTank_pair_2_1/name"
+msgstr "Настройка механизма заряжания"
+
+msgid "role_lightTank_pair_2_1/splitName"
+msgstr ""
+"Настройка механизма\n"
+"заряжания"
+
+msgid "role_lightTank_pair_2_2/name"
+msgstr "Настройка механизма прицеливания"
+
+msgid "role_lightTank_pair_2_2/splitName"
+msgstr ""
+"Настройка механизма\n"
+"прицеливания"
+
+msgid "role_lightTank_pair_3_1/name"
+msgstr "Дополнительная противоосколочная защита"
+
+msgid "role_lightTank_pair_3_1/splitName"
+msgstr ""
+"Дополнительная\n"
+"противоосколочная защита"
+
+msgid "role_lightTank_pair_3_2/name"
+msgstr "Облегчённая противоосколочная защита"
+
+msgid "role_lightTank_pair_3_2/splitName"
+msgstr ""
+"Облегчённая\n"
+"противоосколочная защита"
+
+msgid "role_mediumTank_pair_1_1/name"
+msgstr "Повышение жизнеспособности модулей"
+
+msgid "role_mediumTank_pair_1_1/splitName"
+msgstr ""
+"Повышение жизнеспособности\n"
+"модулей"
+
+msgid "role_mediumTank_pair_1_2/name"
+msgstr "Легкосплавные узлы крепления"
+
+msgid "role_mediumTank_pair_1_2/splitName"
+msgstr ""
+"Легкосплавные узлы\n"
+"крепления"
+
+msgid "role_mediumTank_pair_2_1/name"
+msgstr "Настройка рычагов подвески"
+
+msgid "role_mediumTank_pair_2_1/splitName"
+msgstr ""
+"Настройка рычагов\n"
+"подвески"
+
+msgid "role_mediumTank_pair_2_2/name"
+msgstr "\"Плавающий\" прицел"
+
+msgid "role_mediumTank_pair_2_2/splitName"
+msgstr ""
+"\"Плавающий\"\n"
+"прицел"
+
+msgid "role_mediumTank_pair_3_1/name"
+msgstr "Настройка турбонагнетателя"
+
+msgid "role_mediumTank_pair_3_1/splitName"
+msgstr ""
+"Настройка\n"
+"турбонагнетателя"
+
+msgid "role_mediumTank_pair_3_2/name"
+msgstr "Антибликовая маскировка фар"
+
+msgid "role_mediumTank_pair_3_2/splitName"
+msgstr ""
+"Антибликовая\n"
+"маскировка фар"
+
 msgid "selfBuff/descr"
 msgstr ""
 "Временно снижает разброс, улучшает стабилизацию орудия, увеличивает скорость "
@@ -1596,11 +2383,14 @@ msgstr ""
 "На %(duration)s секунд снижает разброс, улучшает стабилизацию и "
 "скорострельность орудия, а также увеличивает скорость его сведения."
 
+msgid "shells_consumables_switch/name"
+msgstr "Альтернативная комплектация — необходимое оснащение"
+
 msgid "sixthSenseBattleBooster/action/boost"
 msgstr "Уменьшает время срабатывания навыка «Шестое чувство» на 1 с"
 
 msgid "sixthSenseBattleBooster/action/perk"
-msgstr "Даёт 100% навык «Шестое чувство»"
+msgstr "Даёт 100%-й навык «Шестое чувство»"
 
 msgid "sixthSenseBattleBooster/long_special"
 msgstr ""
@@ -1681,21 +2471,21 @@ msgstr "Ремонтирует один модуль"
 
 msgid "smoke/longDescr"
 msgstr ""
-"Постановка дымовой завесы, которая скроет технику союзника и затруднит "
-"её обнаружение противником. У машин, находящихся в зоне действия дымов, "
-"существенно уменьшается обзор."
+"Постановка дымовой завесы, которая замаскирует союзников, находящихся в "
+"дымах. Противник в дымах получат штраф к обзору."
 
 msgid "smoke/name"
 msgstr "Дымовая завеса"
 
 msgid "smoke/shortDescr"
-msgstr "Маскировка техники союзников на определённой площади"
+msgstr ""
+"Маскирует союзников и уменьшает обзор противника на определённой площади."
 
 msgid "smoothDrivingBattleBooster/action/boost"
 msgstr "Удваивает эффект от умения «Плавный ход»"
 
 msgid "smoothDrivingBattleBooster/action/perk"
-msgstr "Даёт 100% умение «Плавный ход»"
+msgstr "Даёт 100%-е умение «Плавный ход»"
 
 msgid "smoothDrivingBattleBooster/long_special"
 msgstr ""
@@ -1714,7 +2504,7 @@ msgid "smoothTurretBattleBooster/action/boost"
 msgstr "Удваивает эффект от умения «Плавный поворот башни»"
 
 msgid "smoothTurretBattleBooster/action/perk"
-msgstr "Даёт 100% умение «Плавный поворот башни»"
+msgstr "Даёт 100%-е умение «Плавный поворот башни»"
 
 msgid "smoothTurretBattleBooster/long_special"
 msgstr ""
@@ -1750,6 +2540,22 @@ msgstr ""
 "для нанесения урона собственным подрывом. Брандер можно уничтожить "
 "выстрелами."
 
+msgid "stealthRadar/descr"
+msgstr "Даёт бонус к обзору и маскировке, уменьшает маскировку противника."
+
+msgid "stealthRadar/long_descr"
+msgstr ""
+"Через %(activationDelay)s с после остановки увеличивает показатели "
+"маскировки своей машины и уменьшает маскировку противника. Также даёт "
+"пассивный бонус к обзору и обнаруживает мины противника. Не действует в "
+"движении."
+
+msgid "stealthRadar/name"
+msgstr "Скрытность"
+
+msgid "stealthRadar/short_descr"
+msgstr "Даёт бонус к обзору и маскировке, уменьшает маскировку противника."
+
 msgid "stereoscope/battle_descr"
 msgstr ""
 "Увеличивает обзор неподвижной машины через 3 с после остановки, но не более "
@@ -1772,6 +2578,15 @@ msgstr "Стереотруба (Класс 2)"
 
 msgid "stereoscope_tier3/name"
 msgstr "Стереотруба (Класс 3)"
+
+msgid "suspension_elements_replace_1/name"
+msgstr "Замена элементов подвески (Тип 1)"
+
+msgid "suspension_elements_replace_2/name"
+msgstr "Замена элементов подвески (Тип 2)"
+
+msgid "swing_mechanisms_lapping_1/name"
+msgstr "Притирка механизмов поворота (Тип 1)"
 
 msgid "tankRammer/name"
 msgstr "Орудийный досылатель"
@@ -1947,7 +2762,7 @@ msgid "virtuosoBattleBooster/action/boost"
 msgstr "Удваивает эффект от умения «Виртуоз»"
 
 msgid "virtuosoBattleBooster/action/perk"
-msgstr "Даёт 100% умение «Виртуоз»"
+msgstr "Даёт 100%-е умение «Виртуоз»"
 
 msgid "virtuosoBattleBooster/long_special"
 msgstr ""

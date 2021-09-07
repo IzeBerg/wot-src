@@ -767,6 +767,9 @@ msgstr "Закрыть"
 msgid "dialogs/createChannel/buttons/create"
 msgstr "Создать"
 
+msgid "dialogs/createChannel/labels/autoName"
+msgstr "Будет создано автоматически"
+
 msgid "dialogs/createChannel/labels/fillPassword"
 msgstr "Введите пароль"
 
@@ -1729,7 +1732,7 @@ msgid "serviceChannelMessages/battleResults/actionsResultsCrystal"
 msgstr "%s бон"
 
 msgid "serviceChannelMessages/battleResults/actionsResultsEventCoin"
-msgstr "%s юбилейных монет"
+msgstr "%s подарочных билетов"
 
 msgid "serviceChannelMessages/battleResults/actionsResultsFreeXP"
 msgstr "%s свободного опыта"
@@ -1782,11 +1785,8 @@ msgstr "Бой окончен"
 msgid "serviceChannelMessages/battleResults/epicAbilityPoints"
 msgstr "Очки боевых резервов"
 
-msgid "serviceChannelMessages/battleResults/epicRewardPoints"
-msgstr "Жетоны"
-
 msgid "serviceChannelMessages/battleResults/eventCoin"
-msgstr "Получено юбилейных монет"
+msgstr "Получено подарочных билетов"
 
 msgid "serviceChannelMessages/battleResults/experience"
 msgstr "Получено опыта"
@@ -1869,7 +1869,7 @@ msgid "serviceChannelMessages/battleResults/quests/entitlements/multiplier"
 msgstr " (%(count)s)"
 
 msgid "serviceChannelMessages/battleResults/quests/eventCoin"
-msgstr "Добавлены юбилейные монеты"
+msgstr "Добавлены подарочные билеты"
 
 msgid "serviceChannelMessages/battleResults/quests/freeXP"
 msgstr "Добавлено свободного опыта"
@@ -2135,7 +2135,7 @@ msgid "serviceChannelMessages/currencyUpdate/debited/crystal"
 msgstr "Списано бон"
 
 msgid "serviceChannelMessages/currencyUpdate/debited/eventCoin"
-msgstr "Списано юбилейных монет"
+msgstr "Списано подарочных билетов"
 
 msgid "serviceChannelMessages/currencyUpdate/debited/gold"
 msgstr "Списано золота"
@@ -2153,7 +2153,7 @@ msgid "serviceChannelMessages/currencyUpdate/received/crystal"
 msgstr "Получено бон"
 
 msgid "serviceChannelMessages/currencyUpdate/received/eventCoin"
-msgstr "Получено юбилейных монет"
+msgstr "Получено подарочных билетов"
 
 msgid "serviceChannelMessages/currencyUpdate/received/gold"
 msgstr "Получено золота"
@@ -2210,7 +2210,7 @@ msgid "serviceChannelMessages/enhancements/wipedOnVehicles"
 msgstr "Демонтированы экспериментальные модули со следующих машин"
 
 msgid "serviceChannelMessages/eventCoinReceivedAsGift"
-msgstr "От администрации получено юбилейных монет: %(eventCoin)s."
+msgstr "От администрации получено подарочных билетов: %(eventCoin)s."
 
 msgid "serviceChannelMessages/failedPersonalMission"
 msgstr "Прогресс сброшен"
@@ -2228,15 +2228,6 @@ msgstr "Задача «%(missionName)s»"
 
 msgid "serviceChannelMessages/failedPersonalMission/operation"
 msgstr "Операция «%(operation)s»"
-
-msgid "serviceChannelMessages/flExchange/quests"
-msgstr "Конвертация проведена успешно"
-
-msgid "serviceChannelMessages/flExchange/quests/points"
-msgstr "Потрачено жетонов"
-
-msgid "serviceChannelMessages/flExchange/quests/reward"
-msgstr "Получено"
 
 msgid "serviceChannelMessages/fort/ATTACK_PLANNED"
 msgstr ""
@@ -2421,7 +2412,7 @@ msgid "serviceChannelMessages/invoiceReceived/compensation/emblem"
 msgstr "Эмблему"
 
 msgid "serviceChannelMessages/invoiceReceived/compensation/eventCoin"
-msgstr "юбилейными монетами"
+msgstr "подарочными билетами"
 
 msgid "serviceChannelMessages/invoiceReceived/compensation/gold"
 msgstr "золотом"
@@ -2508,10 +2499,10 @@ msgid "serviceChannelMessages/invoiceReceived/entitlementsDebited"
 msgstr "Списаны"
 
 msgid "serviceChannelMessages/invoiceReceived/eventCoinAccrued"
-msgstr "Начислено юбилейных монет"
+msgstr "Начислено подарочных билетов"
 
 msgid "serviceChannelMessages/invoiceReceived/eventCoinDebited"
-msgstr "Списано юбилейных монет"
+msgstr "Списано подарочных билетов"
 
 msgid "serviceChannelMessages/invoiceReceived/freeAwardListsAccrued"
 msgstr "Начислено бланков приказа"
@@ -2886,7 +2877,7 @@ msgid "serviceChannelMessages/rankedFinaleAwardsNotification/small/awardsTitle"
 msgstr "Получена поощрительная награда:"
 
 msgid "serviceChannelMessages/rankedFinaleAwardsNotification/text"
-msgstr "Вы набрали %(points)s шт. ранговых жетонов в 2020–2021 гг."
+msgstr "Вы набрали %(points)s шт. ранговых жетонов в 2021–2022 гг."
 
 msgid "serviceChannelMessages/rankedFinaleAwardsNotification/title"
 msgstr "Годовая награда"
@@ -2995,10 +2986,10 @@ msgid "serviceChannelMessages/sysMsg/converter/emblems"
 msgstr "Изменены эмблемы"
 
 msgid "serviceChannelMessages/sysMsg/converter/eventCoinReceived"
-msgstr "Начислено юбилейных монет: %(eventCoin)s"
+msgstr "Начислено подарочных билетов: %(eventCoin)s"
 
 msgid "serviceChannelMessages/sysMsg/converter/eventCoinWithdrawn"
-msgstr "Списано юбилейных монет: %(eventCoin)s"
+msgstr "Списано подарочных билетов: %(eventCoin)s"
 
 msgid "serviceChannelMessages/sysMsg/converter/freeXPReceived"
 msgstr "Начислено свободного опыта: %(freeXP)s"
@@ -3201,6 +3192,16 @@ msgstr ""
 
 msgid "serviceChannelMessages/vehicleLockExpired"
 msgstr "Время блокировки истекло. %(vehicleName)s доступен для кланового боя."
+
+msgid ""
+"serviceChannelMessages/vehiclePostProgression/discardAllPairsModification/"
+"body"
+msgstr "Все парные модификации для %(vehicle)s отменены."
+
+msgid ""
+"serviceChannelMessages/vehiclePostProgression/discardAllPairsModification/"
+"title"
+msgstr "Отмена модификации"
 
 msgid "serviceChannelMessages/vehicleReceivedAsGift"
 msgstr "От администрации получена премиум машина: %(vehicleName)s"

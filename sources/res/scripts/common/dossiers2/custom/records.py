@@ -2320,6 +2320,8 @@ RECORDS = (
  (
   'singleAchievements', 'july21', 'p', 'B', 1),
  (
+  'singleAchievements', 'august21', 'p', 'B', 1),
+ (
   'singleAchievements', 'hw2019Medal', 'p', 'B', 1),
  (
   'singleAchievements', 'hw2019Medal1', 'p', 'B', 1),
@@ -2562,7 +2564,9 @@ RECORDS = (
  (
   'singleAchievements', 'mapboxSeason2', 'p', 'B', 1),
  (
-  'singleAchievements', 'mapboxSeason3', 'p', 'B', 1))
+  'singleAchievements', 'mapboxSeason3', 'p', 'B', 1),
+ (
+  'singleAchievements', 'BattlePassCommonPr_6', 'p', 'B', 1))
 RECORD_INDICES = dict((rec[:2], idx) for idx, rec in enumerate(RECORDS))
 RECORD_DB_IDS = {('total', 'creationTime'): 68, 
    ('total', 'lastBattleTime'): 7, 
@@ -3845,7 +3849,9 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('singleAchievements', 'mapboxSeason1'): 1553, 
    ('singleAchievements', 'mapboxSeason2'): 1554, 
    ('singleAchievements', 'mapboxSeason3'): 1555, 
-   ('singleAchievements', 'july21'): 1556}
+   ('singleAchievements', 'july21'): 1556, 
+   ('singleAchievements', 'august21'): 1557, 
+   ('singleAchievements', 'BattlePassCommonPr_6'): 1558}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 

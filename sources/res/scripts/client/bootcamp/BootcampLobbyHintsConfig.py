@@ -1,20 +1,25 @@
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
+from Bootcamp import BOOTCAMP_UI_COMPONENTS
 
 class BootcampLobbyHintsConfig:
+    battleButton = {'viewAlias': VIEW_ALIAS.BOOTCAMP_INTRO_VIDEO, 
+       'path': 'btnSelect', 
+       'hideBorder': True, 
+       'customHint': 'BCIconTextBigButtonFxUI'}
     objects = {'InBattleRepairKit': {'viewAlias': VIEW_ALIAS.BOOTCAMP_BATTLE_PAGE, 
                              'path': 'consumablesPanel:index=slotIndex', 
-                             'slotIndex': 3, 
-                             'customHint': 'BCHudTintHintContinuousUI', 
+                             'slotIndex': 4, 
+                             'customHint': 'BCHudConsumableHintUI', 
                              'padding': {'left': 6, 'right': -6, 'top': 28, 'bottom': -6}}, 
        'InBattleHealKit': {'viewAlias': VIEW_ALIAS.BOOTCAMP_BATTLE_PAGE, 
                            'path': 'consumablesPanel:index=slotIndex', 
-                           'slotIndex': 4, 
-                           'customHint': 'BCHudTintHintContinuousUI', 
+                           'slotIndex': 3, 
+                           'customHint': 'BCHudConsumableHintUI', 
                            'padding': {'left': 6, 'right': -6, 'top': 28, 'bottom': -6}}, 
        'InBattleExtinguisher': {'viewAlias': VIEW_ALIAS.BOOTCAMP_BATTLE_PAGE, 
                                 'path': 'consumablesPanel:index=slotIndex', 
                                 'slotIndex': 5, 
-                                'customHint': 'BCHudTintHintContinuousUI', 
+                                'customHint': 'BCHudConsumableHintUI', 
                                 'padding': {'left': 6, 'right': -6, 'top': 28, 'bottom': -6}}, 
        'FragCorrelationBar': {'viewAlias': VIEW_ALIAS.BOOTCAMP_BATTLE_PAGE, 
                               'path': 'fragCorrelationBar', 
@@ -50,10 +55,8 @@ class BootcampLobbyHintsConfig:
        'LoadingLeftButton': {'viewAlias': VIEW_ALIAS.BOOTCAMP_INTRO_VIDEO, 
                              'path': 'btnLeft', 
                              'customHint': 'BCHudTintHintUI'}, 
-       'StartBattleButton': {'viewAlias': VIEW_ALIAS.BOOTCAMP_INTRO_VIDEO, 
-                             'path': 'btnSelect', 
-                             'hideBorder': True, 
-                             'customHint': 'BCIconTextBigButtonFxUI'}}
+       BOOTCAMP_UI_COMPONENTS.START_BATTLE_BUTTON: battleButton, 
+       BOOTCAMP_UI_COMPONENTS.WELCOME_START_BATTLE_BUTTON: battleButton}
 
     def getItems(self):
         return self.objects

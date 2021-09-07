@@ -39,6 +39,9 @@ class BaseBattleBoosterInteractor(BaseEquipmentInteractor):
     def getCurrentLayout(self):
         return self.getItem().battleBoosters.layout
 
+    def getSetupLayout(self):
+        return self.getItem().battleBoosters.setupLayouts
+
 
 class BattleBoosterInteractor(BaseBattleBoosterInteractor):
     __slots__ = ()
@@ -54,10 +57,10 @@ class BattleBoosterInteractor(BaseBattleBoosterInteractor):
         self.itemUpdated()
 
     @async
-    def applyQuit(self, callback):
+    def applyQuit(self, callback, skipApplyAutoRenewal):
         if not self.isPlayerLayout():
             yield await_callback(self.confirm)(skipDialog=True)
-        super(BattleBoosterInteractor, self).applyQuit(callback)
+        super(BattleBoosterInteractor, self).applyQuit(callback, skipApplyAutoRenewal)
 
     @process
     def confirm(self, callback, skipDialog=False):
@@ -75,7 +78,10 @@ class BattleBoosterInteractor(BaseBattleBoosterInteractor):
         return
 
     def updateFrom(self, vehicle, onlyInstalled=True):
-        self.getItem().battleBoosters.setInstalled(*vehicle.battleBoosters.installed)
+        super(BattleBoosterInteractor, self).updateFrom(vehicle, onlyInstalled)
+        items = self.getItem().battleBoosters
+        items.setInstalled(*vehicle.battleBoosters.installed)
+        items.setupLayouts.setSetups(vehicle.battleBoosters.setupLayouts.setups)
         self._playerLayout = vehicle.battleBoosters.layout.copy()
         if not onlyInstalled:
             self.getItem().battleBoosters.setLayout(*vehicle.battleBoosters.layout)

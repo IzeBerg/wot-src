@@ -159,7 +159,7 @@
 		</ammo>
 		<ammoViews>
 			<Type>AVATAR_AMMO_VIEWS</Type>
-			<Flags>CELL_PRIVATE</Flags>
+			<Flags>ALL_CLIENTS</Flags>
 		</ammoViews>
 		<cp>
 			<Type>PYTHON</Type>
@@ -207,10 +207,10 @@
 			</Type>
 			<Flags>CELL_PRIVATE</Flags>
 		</viewpoints>
-		<isHistoricallyAccurate>
-			<Type>BOOL</Type>
+		<customizationDisplayType>
+			<Type>UINT8</Type>
 			<Flags>OWN_CLIENT</Flags>
-		</isHistoricallyAccurate>
+		</customizationDisplayType>
 		<inBattleQuestNames>
 			<Type>
 				ARRAY
@@ -226,6 +226,11 @@
 			<Type>PLAY_LIMITS</Type>
 			<Flags>BASE_AND_CLIENT</Flags>
 		</playLimits>
+		<clientData>
+			<Type>PYTHON</Type>
+			<Flags>BASE_AND_CLIENT</Flags>
+			<Default>{}</Default>
+		</clientData>
 	</Properties>
 	<TempProperties>
 		<_Avatar__p/>
@@ -268,19 +273,6 @@
 			<Arg>BOOL</Arg>
 			<Arg>BOOL</Arg>
 		</updateVehicleHealth>
-		<updateVehicleGunReloadTime>
-			<Arg>OBJECT_ID</Arg>
-			<Arg>FLOAT32</Arg>
-			<Arg>FLOAT32</Arg>
-		</updateVehicleGunReloadTime>
-		<updateVehicleClipReloadTime>
-			<Arg>OBJECT_ID</Arg>
-			<Arg>FLOAT32</Arg>
-			<Arg>FLOAT32</Arg>
-			<Arg>FLOAT32</Arg>
-			<Arg>BOOL</Arg>
-			<Arg>BOOL</Arg>
-		</updateVehicleClipReloadTime>
 		<updateVehicleAmmo>
 			<Arg>OBJECT_ID</Arg>
 			<Arg>INT32</Arg>
@@ -290,18 +282,6 @@
 			<Arg>INT16</Arg>
 			<Arg>INT16</Arg>
 		</updateVehicleAmmo>
-		<updateDualGunState>
-			<Arg>OBJECT_ID</Arg>
-			<Arg>UINT8</Arg>
-			<Arg>
-				ARRAY
-				<of>UINT8</of>
-			</Arg>
-			<Arg>
-				ARRAY
-				<of>COOLDOWN_INFO</of>
-			</Arg>
-		</updateDualGunState>
 		<onSwitchViewpoint>
 			<Arg>OBJECT_ID</Arg>
 			<Arg>VECTOR3</Arg>
@@ -312,20 +292,6 @@
 				<of>UINT64</of>
 			</Arg>
 		</onBootcampEvent>
-		<updateVehicleOptionalDeviceStatus>
-			<Arg>OBJECT_ID</Arg>
-			<Arg>UINT8</Arg>
-			<Arg>BOOL</Arg>
-		</updateVehicleOptionalDeviceStatus>
-		<updateVehicleMiscStatus>
-			<Arg>OBJECT_ID</Arg>
-			<Arg>UINT8</Arg>
-			<Arg>INT32</Arg>
-			<Arg>
-				ARRAY
-				<of>FLOAT32</of>
-			</Arg>
-		</updateVehicleMiscStatus>
 		<updateVehicleSetting>
 			<Arg>OBJECT_ID</Arg>
 			<Arg>UINT8</Arg>
@@ -342,21 +308,9 @@
 			<Arg>FLOAT32</Arg>
 			<Arg>FLOAT32</Arg>
 		</updateTargetingInfo>
-		<updateGunMarker>
-			<Arg>OBJECT_ID</Arg>
-			<Arg>VECTOR3</Arg>
-			<Arg>VECTOR3</Arg>
-			<Arg>FLOAT32</Arg>
-		</updateGunMarker>
 		<updateTargetVehicleID>
 			<Arg>OBJECT_ID</Arg>
 		</updateTargetVehicleID>
-		<updateOwnVehiclePosition>
-			<Arg>VECTOR3</Arg>
-			<Arg>VECTOR3</Arg>
-			<Arg>FLOAT32</Arg>
-			<Arg>FLOAT32</Arg>
-		</updateOwnVehiclePosition>
 		<showOwnVehicleHitDirection>
 			<Arg>FLOAT32</Arg>
 			<Arg>OBJECT_ID</Arg>
@@ -367,13 +321,6 @@
 			<Arg>OBJECT_ID</Arg>
 			<Arg>UINT8</Arg>
 		</showOwnVehicleHitDirection>
-		<showVehicleDamageInfo>
-			<Arg>OBJECT_ID</Arg>
-			<Arg>UINT8</Arg>
-			<Arg>EXTRA_ID</Arg>
-			<Arg>OBJECT_ID</Arg>
-			<Arg>UINT16</Arg>
-		</showVehicleDamageInfo>
 		<showOtherVehicleDamagedDevices>
 			<Arg>OBJECT_ID</Arg>
 			<Arg>
@@ -391,17 +338,10 @@
 				<of>UINT64</of>
 			</Arg>
 		</showShotResults>
-		<updatePlaneTrajectory>
-			<Arg>UINT16</Arg>
+		<showDevelopmentInfo>
 			<Arg>UINT8</Arg>
-			<Arg>FLOAT64</Arg>
-			<Arg>VECTOR3</Arg>
-			<Arg>VECTOR2</Arg>
-			<Arg>FLOAT64</Arg>
-			<Arg>VECTOR3</Arg>
-			<Arg>VECTOR2</Arg>
-			<Arg>BOOL</Arg>
-		</updatePlaneTrajectory>
+			<Arg>STRING</Arg>
+		</showDevelopmentInfo>
 		<showHittingArea>
 			<Arg>UINT16</Arg>
 			<Arg>VECTOR3</Arg>
@@ -414,10 +354,6 @@
 			<Arg>VECTOR3</Arg>
 			<Arg>FLOAT64</Arg>
 		</showCarpetBombing>
-		<showDevelopmentInfo>
-			<Arg>UINT8</Arg>
-			<Arg>STRING</Arg>
-		</showDevelopmentInfo>
 		<showTracer>
 			<Arg>OBJECT_ID</Arg>
 			<Arg>SHOT_ID</Arg>
@@ -519,9 +455,6 @@
 			<Arg>FLOAT32</Arg>
 			<Arg>FLOAT32</Arg>
 		</updateGasAttackState>
-		<syncVehicleAttrs>
-			<Arg>VEHICLE_SYNC_ATTRS</Arg>
-		</syncVehicleAttrs>
 		<onFrictionWithVehicle>
 			<Arg>OBJECT_ID</Arg>
 			<Arg>VECTOR3</Arg>
@@ -700,6 +633,35 @@
 		<reportClientStats>
 			<Arg>CLIENT_STATUS_STATISTICS</Arg>
 		</reportClientStats>
+		<onRankUpdated>
+			<Arg>UINT8</Arg>
+			<Arg>UINT8</Arg>
+		</onRankUpdated>
+		<vehicle_moveWith>
+			<Exposed/>
+			<Arg>UINT8</Arg>
+		</vehicle_moveWith>
+		<vehicle_shoot>
+			<Exposed/>
+		</vehicle_shoot>
+		<vehicle_trackWorldPointWithGun>
+			<Exposed/>
+			<Arg>VECTOR3</Arg>
+		</vehicle_trackWorldPointWithGun>
+		<vehicle_trackRelativePointWithGun>
+			<Exposed/>
+			<Arg>VECTOR3</Arg>
+		</vehicle_trackRelativePointWithGun>
+		<vehicle_stopTrackingWithGun>
+			<Exposed/>
+			<Arg>FLOAT32</Arg>
+			<Arg>FLOAT32</Arg>
+		</vehicle_stopTrackingWithGun>
+		<vehicle_changeSetting>
+			<Exposed/>
+			<Arg>UINT8</Arg>
+			<Arg>INT32</Arg>
+		</vehicle_changeSetting>
 	</CellMethods>
 	<BaseMethods>
 		<onCreateCellSuccess/>
@@ -785,38 +747,6 @@
 				<of>FLOAT32</of>
 			</Arg>
 		</updatePositions>
-		<showVehicleDamageInfo>
-			<Arg>OBJECT_ID</Arg>
-			<Arg>UINT8</Arg>
-			<Arg>EXTRA_ID</Arg>
-			<Arg>OBJECT_ID</Arg>
-			<Arg>UINT16</Arg>
-		</showVehicleDamageInfo>
-		<vehicle_moveWith>
-			<Exposed/>
-			<Arg>UINT8</Arg>
-		</vehicle_moveWith>
-		<vehicle_shoot>
-			<Exposed/>
-		</vehicle_shoot>
-		<vehicle_trackWorldPointWithGun>
-			<Exposed/>
-			<Arg>VECTOR3</Arg>
-		</vehicle_trackWorldPointWithGun>
-		<vehicle_trackRelativePointWithGun>
-			<Exposed/>
-			<Arg>VECTOR3</Arg>
-		</vehicle_trackRelativePointWithGun>
-		<vehicle_stopTrackingWithGun>
-			<Exposed/>
-			<Arg>FLOAT32</Arg>
-			<Arg>FLOAT32</Arg>
-		</vehicle_stopTrackingWithGun>
-		<vehicle_changeSetting>
-			<Exposed/>
-			<Arg>UINT8</Arg>
-			<Arg>INT32</Arg>
-		</vehicle_changeSetting>
 		<vehicle_teleport>
 			<Exposed/>
 			<Arg>VECTOR3</Arg>

@@ -187,7 +187,8 @@ msgid "artefact_buy/not_enough_crystal"
 msgstr "Покупка %(kind)s «%(name)s» не удалась. Недостаточно бон."
 
 msgid "artefact_buy/not_enough_eventCoin"
-msgstr "Покупка %(kind)s «%(name)s» не удалась. Недостаточно юбилейных монет."
+msgstr ""
+"Покупка %(kind)s «%(name)s» не удалась. Недостаточно подарочных билетов."
 
 msgid "artefact_buy/not_enough_gold"
 msgstr "Покупка %(kind)s «%(name)s» не удалась. Недостаточно золота."
@@ -292,6 +293,13 @@ msgstr ""
 "%(kind)s «%(name)s» успешно прошло наладку, характеристики улучшены. "
 "Потрачено %(money)s."
 
+msgid "artefact_upgrade/success/analogWasDemounted"
+msgstr ""
+"%(kind)s «%(name)s» успешно прошло наладку, характеристики улучшены. "
+"Потрачено %(money)s.\n"
+"\n"
+"Аналогичное оборудование из альтернативного набора помещено на Склад."
+
 msgid "artefact_upgrade/vehicle_need_repair"
 msgstr ""
 "Машина повреждена. %(kind)s «%(name)s» не налажено. Отремонтируйте машину и "
@@ -324,7 +332,8 @@ msgstr ""
 "или облегчить машину."
 
 msgid "battleBooster_buy/eventCoin_error"
-msgstr "Покупка %(kind)s «%(name)s» не удалась. Недостаточно юбилейных монет."
+msgstr ""
+"Покупка %(kind)s «%(name)s» не удалась. Недостаточно подарочных билетов."
 
 msgid "battleBooster_buy/gold_error"
 msgstr "Покупка %(kind)s «%(name)s» не удалась. Недостаточно золота."
@@ -343,7 +352,8 @@ msgid "battleBooster_buy/not_enough_crystal"
 msgstr "Покупка %(kind)s «%(name)s» не удалась. Недостаточно бон."
 
 msgid "battleBooster_buy/not_enough_eventCoin"
-msgstr "Покупка %(kind)s «%(name)s» не удалась. Недостаточно юбилейных монет."
+msgstr ""
+"Покупка %(kind)s «%(name)s» не удалась. Недостаточно подарочных билетов."
 
 msgid "battleBooster_buy/not_enough_gold"
 msgstr "Покупка %(kind)s «%(name)s» не удалась. Недостаточно золота."
@@ -415,16 +425,6 @@ msgstr ""
 msgid "battlePass/gameModeEnabled/header"
 msgstr "Боевой пропуск, сезон %(seasonNum)d"
 
-msgid "battlePass/ranked/disabled"
-msgstr ""
-"Боевой пропуск в Ранговых боях временно недоступен. Ведутся технические "
-"работы."
-
-msgid "battlePass/ranked/enabled"
-msgstr ""
-"Боевой пропуск в Ранговых боях снова доступен. Приносим извинения за "
-"неудобства."
-
 msgid "battlePass/rewardChoice/error"
 msgstr "Произошла ошибка при выборе наград. Пожалуйста, попробуйте ещё раз."
 
@@ -461,6 +461,16 @@ msgstr ""
 "Сезон завершился, но мы обязательно встретимся в следующем!\n"
 "Стиль «%(styleName)s» можно улучшить на экране «Внешний вид»."
 
+msgid "battlePass/switch_disable/epicBattle/body"
+msgstr ""
+"Боевой пропуск на Линии фронта временно недоступен. Ведутся технические "
+"работы."
+
+msgid "battlePass/switch_disable/ranked/body"
+msgstr ""
+"Боевой пропуск в Ранговых боях временно недоступен. Ведутся технические "
+"работы."
+
 msgid "battlePass/switch_disable/title"
 msgstr "Боевой пропуск, сезон %(seasonNum)d"
 
@@ -469,6 +479,16 @@ msgstr ""
 "Боевой пропуск снова работает. Приносим извинения за причинённые "
 "неудобства.\n"
 "Сезон продлён до %(expiryTime)s."
+
+msgid "battlePass/switch_enabled/epicBattle/body"
+msgstr ""
+"Боевой пропуск на Линии фронта снова доступен. Приносим извинения за "
+"неудобства."
+
+msgid "battlePass/switch_enabled/ranked/body"
+msgstr ""
+"Боевой пропуск в Ранговых боях снова доступен. Приносим извинения за "
+"неудобства."
 
 msgid "battlePass/switch_pause/body"
 msgstr "Боевой пропуск временно недоступен. Идут технические работы."
@@ -1380,9 +1400,6 @@ msgstr "Динамическое разрешение увеличено до %(
 msgid "epicBattles/notification/notAvailable"
 msgstr "«Линия фронта» недоступна. Следите за новостями на портале игры."
 
-msgid "epicBattles/prestigeTrigger/error"
-msgstr "Недостаточный уровень для повышения доблести. Попробуйте позже."
-
 msgid "equip_tankman/FORBIDDEN"
 msgstr ""
 "Невозможно пересадить члена экипажа: у танка уникальный постоянный экипаж."
@@ -1401,24 +1418,6 @@ msgstr "Ошибка перемещения члена экипажа на ма�
 
 msgid "equip_tankman/vehicle_need_repair"
 msgstr "Ошибка перемещения члена экипажа на машину. Необходим ремонт."
-
-msgid "event_progression_buy_style/server_error"
-msgstr "Покупка стиля «%(name)s» не была совершена"
-
-msgid "event_progression_buy_style/success"
-msgstr ""
-"Дата: %(date)s\n"
-"Стиль «%(name)s» успешно приобретён.\n"
-"Списано жетонов: %(count)s"
-
-msgid "event_progression_buy_vehicle/server_error"
-msgstr "Покупка %(name)s не была совершена"
-
-msgid "event_progression_buy_vehicle/success"
-msgstr ""
-"Дата: %(date)s\n"
-"%(name)s, 100%% экипаж и слот успешно приобретены.\n"
-"Списано жетонов: %(count)s"
 
 msgid "exchange/not_enough_gold"
 msgstr "Недостаточно золота для обмена."
@@ -2132,6 +2131,15 @@ msgstr "Технические проблемы решены. Приносим �
 msgid "maps_black_list/switch_on/title"
 msgstr "Исключение карты снова доступно"
 
+msgid "maps_training/switch/title"
+msgstr "Топография"
+
+msgid "maps_training/switch_off/body"
+msgstr "Данный режим отключён."
+
+msgid "maps_training/switch_on/body"
+msgstr "Данный режим включён."
+
 msgid "memberRosterChangedMain"
 msgstr "%s перевёл в основной состав %s."
 
@@ -2713,6 +2721,9 @@ msgstr "Не удалось присоединиться к команде."
 msgid "prebattle/vehicleInvalid/vehicleNotSupported"
 msgstr "Неподходящая машина"
 
+msgid "prebattle/vehicleInvalid/willBeUnlockedInBattle"
+msgstr "Выбранная машина разблокируется к использованию в ходе боя."
+
 msgid "prebattle_start_failed/kickedFromQueue/deafult"
 msgstr ""
 "Невозможно подобрать соперников для данной команды. Попробуйте "
@@ -2832,7 +2843,7 @@ msgid "ranked/notifications/bonusName/crystal"
 msgstr "Получено бон:"
 
 msgid "ranked/notifications/bonusName/eventCoin"
-msgstr "Получено юбилейных монет:"
+msgstr "Получено подарочных билетов:"
 
 msgid "ranked/notifications/bonusName/gold"
 msgstr "Получено золота:"
@@ -3400,7 +3411,7 @@ msgstr ""
 "Добавлены: слот в Ангаре,%(crew)s эксклюзивный камуфляж."
 
 msgid "telecom/notifications/vehicleReceived/crew/default"
-msgstr " 100%% экипаж%(skills)s,"
+msgstr " 100%%-й экипаж%(skills)s,"
 
 msgid "telecom/notifications/vehicleReceived/subcomment/default"
 msgstr " "
@@ -3658,6 +3669,10 @@ msgstr "%(userName)s был назначен командиром."
 msgid "unit/notification/playerAdded"
 msgstr "%(userName)s присоединился к отряду."
 
+msgid "unit/notification/playerAddedWithFilter"
+msgstr ""
+"%(userName)s присоединился к этому взводу на машине %(tierRange)s уровня."
+
 msgid "unit/notification/playerOffline"
 msgstr "Связь с %(userName)s потеряна."
 
@@ -3910,6 +3925,99 @@ msgid "vehicleComponents/vehicle_unlock_success"
 msgstr ""
 "%(userString)s исследован. Потрачено нераспределённого опыта %(unspentXP)s, "
 "свободного опыта %(freeXP)s."
+
+msgid "vehiclePostProgression/buyPairModification/body"
+msgstr "Модификация %(modification)s для %(vehicle)s успешно проведена."
+
+msgid "vehiclePostProgression/buyPairModification/title"
+msgstr "Проведение модификации"
+
+msgid "vehiclePostProgression/changeSlotCategory/body"
+msgstr "Категория %(category)s для второго слота %(vehicle)s назначена."
+
+msgid "vehiclePostProgression/changeSlotCategory/title"
+msgstr "Назначение категории слота"
+
+msgid "vehiclePostProgression/creditsSpent"
+msgstr "Потрачено кредитов: %(value)s."
+
+msgid "vehiclePostProgression/discardAllPairsModification/body"
+msgstr "Все парные модификации для %(vehicle)s отменены."
+
+msgid "vehiclePostProgression/discardPairModification/body"
+msgstr "Модификация %(modification)s для %(vehicle)s отменена."
+
+msgid "vehiclePostProgression/discardPairModification/title"
+msgstr "Отмена модификации"
+
+msgid "vehiclePostProgression/discardPairsModification/body"
+msgstr "Модификации %(modifications)s для %(vehicle)s отменены."
+
+msgid "vehiclePostProgression/discardPairsModification/modifications/separator"
+msgstr ", "
+
+msgid "vehiclePostProgression/experienceSpent"
+msgstr "Потрачено боевого опыта: %(value)s."
+
+msgid "vehiclePostProgression/freeExperienceSpent"
+msgstr "Потрачено свободного опыта: %(value)s."
+
+msgid "vehiclePostProgression/modificationProcessorError/body"
+msgstr "Ошибка схемы модификаций. Повторите попытку позже."
+
+msgid "vehiclePostProgression/modificationProcessorError/title"
+msgstr "Ошибка"
+
+msgid "vehiclePostProgression/researchStep/body"
+msgstr ""
+"Базовая модификация %(level)s уровня для %(vehicle)s исследована и проведена."
+
+msgid "vehiclePostProgression/researchSteps/body"
+msgstr ""
+"Базовые модификации %(levels)s уровня для %(vehicle)s исследованы и "
+"проведены."
+
+msgid "vehiclePostProgression/researchSteps/levels/separator"
+msgstr ", "
+
+msgid "vehiclePostProgression/researchSteps/title"
+msgstr "Исследование модификации"
+
+msgid "vehiclePostProgression/setSlotCategory/body"
+msgstr "Категория %(category)s для второго слота %(vehicle)s назначена."
+
+msgid "vehiclePostProgression/setSlotCategory/title"
+msgstr "Назначение категории слота"
+
+msgid "vehiclePostProgression/unlockFeature/opt_dev_boosters_switch/body"
+msgstr "Получен доступ к дополнительному оснащению для %(vehicle)s."
+
+msgid "vehiclePostProgression/unlockFeature/opt_dev_boosters_switch/title"
+msgstr "Дополнительное оснащение"
+
+msgid "vehiclePostProgression/unlockFeature/roleSlot/body"
+msgstr "Доступно назначение категории второго слота для %(vehicle)s."
+
+msgid "vehiclePostProgression/unlockFeature/roleSlot/title"
+msgstr "Доступ к категории слота"
+
+msgid "vehiclePostProgression/unlockFeature/shells_consumables_switch/body"
+msgstr "Получен доступ к необходимому оснащению для %(vehicle)s."
+
+msgid "vehiclePostProgression/unlockFeature/shells_consumables_switch/title"
+msgstr "Необходимое оснащение"
+
+msgid "vehiclePostProgression/vehiclesUnlockPostProgression/single/body"
+msgstr "Получен доступ к схеме модификаций для %(vehicle)s."
+
+msgid "vehiclePostProgression/vehiclesUnlockPostProgression/title"
+msgstr "Полевая модернизация"
+
+msgid "vehiclePostProgression/vehiclesUnlockPostProgression/welcomeUnlock/body"
+msgstr ""
+"Получен доступ к схеме модификаций техники. Вы можете совершить более тонкую "
+"ролевую настройку ваших машин и изменить их ТТХ с помощью различных "
+"модификаций."
 
 msgid "vehicle_buy/invalid_vehicle"
 msgstr "Покупка «%(vehName)s» не удалась. Неправильная машина."

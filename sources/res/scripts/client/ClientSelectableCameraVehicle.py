@@ -2,6 +2,7 @@ from collections import namedtuple
 import Math, BigWorld
 from ClientSelectableCameraObject import ClientSelectableCameraObject
 from gui.hangar_vehicle_appearance import HangarVehicleAppearance
+from items.vehicles import stripOptionalDeviceFromVehicleCompactDescr
 from vehicle_systems.tankStructure import ModelStates
 from vehicle_systems.tankStructure import TankPartIndexes
 from gui.ClientHangarSpace import hangarCFG
@@ -20,6 +21,8 @@ class ClientSelectableCameraVehicle(ClientSelectableCameraObject):
         self.__shadowModelFashion = None
         self._isVehicleLoaded = False
         self.__vehicleTransform = None
+        self.__defaultPos = Math.Vector3(0, 0, 0)
+        self.__defaultYPR = Math.Vector3(0, 0, 0)
         return
 
     def prerequisites(self):
@@ -32,6 +35,8 @@ class ClientSelectableCameraVehicle(ClientSelectableCameraObject):
 
     def onEnterWorld(self, prereqs):
         super(ClientSelectableCameraVehicle, self).onEnterWorld(prereqs)
+        self.__defaultPos = self.position
+        self.__defaultYPR = Math.Vector3(self.yaw, self.pitch, self.roll)
         cfg = hangarCFG()
         if 'shadow_model_name' in cfg:
             shadowName = cfg['shadow_model_name']
@@ -39,6 +44,7 @@ class ClientSelectableCameraVehicle(ClientSelectableCameraObject):
                 self.__createFakeShadow(prereqs[shadowName])
 
     def onLeaveWorld(self):
+        super(ClientSelectableCameraVehicle, self).onLeaveWorld()
         if self.__vAppearance:
             self.__vAppearance.destroy()
             self.__vAppearance = None
@@ -48,7 +54,6 @@ class ClientSelectableCameraVehicle(ClientSelectableCameraObject):
             BigWorld.delModel(self.__fakeShadowModel)
             self.__fakeShadowModel.fashion = None
             self.__fakeShadowModel = None
-        super(ClientSelectableCameraVehicle, self).onLeaveWorld()
         return
 
     def recreateVehicle(self, typeDescriptor=None, state=ModelStates.UNDAMAGED, callback=None, outfit=None):
@@ -79,6 +84,20 @@ class ClientSelectableCameraVehicle(ClientSelectableCameraObject):
             self.appearance.recreate(self.typeDescriptor, callback=self._onVehicleLoaded, outfit=outfit)
         else:
             self.appearance.updateCustomization(outfit, self._onVehicleRefreshed)
+
+    def updateVehicleDescriptor(self, descr):
+        if descr is None:
+            return
+        else:
+            if self.__descriptorRequiresRecreate(descr):
+                self._isVehicleLoaded = False
+                self.typeDescriptor = descr
+                if self.__vAppearance is None:
+                    self.__vAppearance = self._createAppearance()
+                self.__vAppearance.recreate(self.typeDescriptor, callback=self._onVehicleLoaded)
+            else:
+                self.typeDescriptor = descr
+            return
 
     def _createAppearance(self):
         return HangarVehicleAppearance(self.spaceID, self)
@@ -124,10 +143,12 @@ class ClientSelectableCameraVehicle(ClientSelectableCameraObject):
         m.setRotateYPR(rotateYPR)
         m.translation = Math.Vector3(targetPos)
         self.model.matrix = m
+        self.teleport(targetPos, rotateYPR)
         self.__setFakeShadowModelTransform(targetPos, rotateYPR[0], shadowModelYOffset)
 
     def _resetVehicleModelTransform(self):
         self.__vehicleTransform = None
+        self.teleport(self.__defaultPos, self.__defaultYPR)
         return
 
     def _addEdgeDetect(self):
@@ -181,3 +202,13 @@ class ClientSelectableCameraVehicle(ClientSelectableCameraObject):
         else:
             self._setVehicleModelTransform(self.__vehicleTransform.targetPos, self.__vehicleTransform.rotateYPR, self.__vehicleTransform.shadowModelYOffset)
             return
+
+    def __descriptorRequiresRecreate(self, desc):
+        if self.typeDescriptor is None:
+            return True
+        else:
+            oldDescriptor = stripOptionalDeviceFromVehicleCompactDescr(self.typeDescriptor.makeCompactDescr())
+            newDescriptor = stripOptionalDeviceFromVehicleCompactDescr(desc.makeCompactDescr())
+            if oldDescriptor != newDescriptor:
+                return True
+            return False

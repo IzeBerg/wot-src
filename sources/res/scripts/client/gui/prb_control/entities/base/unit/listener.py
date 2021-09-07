@@ -80,6 +80,9 @@ class IUnitListener(IUnitIntroListener):
     def onUnitPlayerProfileVehicleChanged(self, accountDBID):
         pass
 
+    def onUnitSearchFlagsChanged(self, flags):
+        pass
+
 
 class IStrongholdListener(IPrbListener):
 

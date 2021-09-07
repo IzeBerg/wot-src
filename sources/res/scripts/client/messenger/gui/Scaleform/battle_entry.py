@@ -202,7 +202,7 @@ class BattleEntry(IGUIEntry):
             LOG_ERROR('Controller not found', command)
             return
         else:
-            if command.isInSilentMode() or not controller.filterMessage(command):
+            if command.isInSilentMode() or not controller.filterMessage(command) or command.isServerCommand():
                 return
             controller.addCommand(command)
             return

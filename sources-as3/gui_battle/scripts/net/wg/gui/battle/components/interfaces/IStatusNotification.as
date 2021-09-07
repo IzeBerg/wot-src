@@ -2,6 +2,7 @@ package net.wg.gui.battle.components.interfaces
 {
    import net.wg.gui.battle.views.destroyTimers.components.secondaryTimerFx.ISecondaryTimerFX;
    import net.wg.gui.battle.views.destroyTimers.data.NotificationTimerSettingVO;
+   import net.wg.gui.battle.views.destroyTimers.data.StatusNotificationVO;
    import net.wg.infrastructure.interfaces.IDisplayObject;
    
    public interface IStatusNotification extends IDisplayObject
@@ -20,15 +21,11 @@ package net.wg.gui.battle.components.interfaces
       
       function resetTimer() : void;
       
-      function updateViewID(param1:String, param2:Boolean) : void;
-      
-      function updateRadialTimer(param1:int, param2:Number) : void;
+      function updateData(param1:StatusNotificationVO) : void;
       
       function showTimer(param1:Boolean) : void;
       
       function tweenToX(param1:int) : void;
-      
-      function setStaticText(param1:String, param2:String = "") : void;
       
       function cropSize() : Boolean;
       

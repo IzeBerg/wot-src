@@ -666,6 +666,15 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 		<intelligenceBlueprintReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/sysMsg/converter/intelligenceBlueprintReceived): &lt;font color=&apos;#D6D7D4&apos;&gt;&lt;b&gt;%(count)s&lt;/b&gt;&lt;/font&gt;</intelligenceBlueprintReceived>
 		<nationalBlueprintReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/sysMsg/converter/nationalBlueprintReceived): &lt;font color=&apos;#D6D7D4&apos;&gt;&lt;b&gt;%(count)s&lt;/b&gt;&lt;/font&gt;</nationalBlueprintReceived>
 		<purchaseSubtitle>&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/purchase/received_from)&lt;/font&gt; &lt;font color=&apos;#F2F2F7&apos;&gt;_(#messenger:serviceChannelMessages/quotedTextTemplate)&lt;/font&gt;</purchaseSubtitle>
+		<mtCredits>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/credits): &lt;font color=&apos;#CED9D9&apos;&gt;%(credits)s&lt;/font&gt;&lt;/font&gt;</mtCredits>
+		<mtFreeXP>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/quests/freeXP): &lt;font color=&apos;#C9C9B6&apos;&gt;%(freeXP)s&lt;/font&gt;&lt;/font&gt;</mtFreeXP>
+		<mtQuests>&lt;font color=&apos;#8C8C7E&apos;&gt;%(quests)s&lt;/font&gt;</mtQuests>
+		<mtRewardGot>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#maps_training:result/rewardGot)&lt;/font&gt;</mtRewardGot>
+		<birthdayCalendarVehicle>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#eleventh_birthday_calendar:message/vehicle) - %(vehicle)s&lt;/font&gt;</birthdayCalendarVehicle>
+		<birthdayCalendarCrew>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</birthdayCalendarCrew>
+		<birthdayCalendarSlot>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#eleventh_birthday_calendar:message/slot)&lt;/font&gt;</birthdayCalendarSlot>
+		<birthdayCalendarPremiumPlus>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#eleventh_birthday_calendar:message/premiumPlus)&lt;/font&gt;</birthdayCalendarPremiumPlus>
+		<birthdayCalendarEventCoin>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#eleventh_birthday_calendar:message/eventCoin)&lt;/font&gt;</birthdayCalendarEventCoin>
 	</htmlTemplatesSimple>
 	<htmlTemplates>
 		<serverReboot>
@@ -1069,6 +1078,12 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<icon>WarningIcon</icon>
 			<message>&lt;font color=&quot;#8C8C7E&quot;&gt;_(#messenger:serviceChannelMessages/vehInscriptionTimedOut)&lt;/font&gt;</message>
 		</vehInscriptionTimedOut>
+		<DestroyAllPairsModifications>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/vehiclePostProgression/discardAllPairsModification/title)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</DestroyAllPairsModifications>
 		<ErrorSysMessage>
 			<type>red</type>
 			<icon>ErrorIcon</icon>
@@ -1126,6 +1141,25 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			</filters>
 			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 		</InformationSysMessage>
+		<InformationHeaderSysMessage>
+			<priority>low</priority>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<filters>
+				<filter>
+					<name>glow</name>
+					<color>EA5200</color>
+				</filter>
+				<filter>
+					<name>dropshadow</name>
+					<color>
+						000000
+						<!--BW_String-->
+					</color>
+				</filter>
+			</filters>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</InformationHeaderSysMessage>
 		<GameGreetingSysMessage>
 			<type>lightGrey</type>
 			<icon>MessageIcon</icon>
@@ -1289,12 +1323,12 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 		<PaymentMethodLinkSysMessage>
 			<type>grey</type>
 			<icon>ConfirmIcon</icon>
-			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;&lt;br/&gt;&lt;img src=&apos;img://gui/maps/shop/misc/%(type)s.png&apos; align=&apos;baseline&apos; width=&apos;160&apos; height=&apos;36&apos; vspace=&apos;-54&apos;/&gt;</message>
+			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;%(imageBlock)s</message>
 		</PaymentMethodLinkSysMessage>
 		<PaymentMethodUnlinkSysMessage>
 			<type>grey</type>
 			<icon>InformationIcon</icon>
-			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;&lt;br/&gt;&lt;img src=&apos;img://gui/maps/shop/misc/%(type)s.png&apos; align=&apos;baseline&apos; width=&apos;160&apos; height=&apos;36&apos; vspace=&apos;-54&apos;/&gt;</message>
+			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;%(imageBlock)s</message>
 		</PaymentMethodUnlinkSysMessage>
 		<PaymentMethodLinkWgncSysMessage>
 			<type>grey</type>
@@ -1402,6 +1436,11 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 				</button>
 			</buttonsLayout>
 		</royaleVehiclesInvoiceReceived>
+		<birthdayCalendar>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&apos;$TitleFont&apos; size=&apos;15&apos; color=&apos;#E9E2BF&apos;&gt;_(#eleventh_birthday_calendar:message/header):&lt;/font&gt;&lt;br/&gt;%(achieves)s</message>
+		</birthdayCalendar>
 		<personalMissions>
 			<type>grey</type>
 			<icon>InformationIcon</icon>
@@ -1987,12 +2026,6 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 				</button>
 			</buttonsLayout>
 		</ProgressiveRewardNotification>
-		<FrontlineRewardsSysMessage>
-			<type>lightGrey</type>
-			<priority>medium</priority>
-			<icon>rewardPoints</icon>
-			<message>&lt;font  face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/sysMsg/titles/financialTransaction)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
-		</FrontlineRewardsSysMessage>
 		<PiggyBankSmashedMessage>
 			<type>grey</type>
 			<icon>CreditsIcon</icon>
@@ -2101,13 +2134,6 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<bgIcon>bg_battle_pass</bgIcon>
 			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;%(description)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 		</BattlePassSeasonEndMessage>
-		<FlExchangeMessage>
-			<type>grey</type>
-			<icon>InformationIcon</icon>
-			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/flExchange/quests)&lt;/font&gt;
-&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/flExchange/quests/points): %(points)s&lt;/font&gt;
-&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/flExchange/quests/reward): &lt;font color=&apos;#FFC363&apos;&gt;%(gold)s&lt;/font&gt;, &lt;font color=&apos;#C9C9B6&apos;&gt;%(crystal)s&lt;/font&gt;&lt;/font&gt;</message>
-		</FlExchangeMessage>
 		<EnhancementRemovedMessage>
 			<type>grey</type>
 			<priority>medium</priority>
@@ -2298,5 +2324,55 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<icon>ErrorIcon</icon>
 			<message>&lt;font face=&quot;$FieldFont&quot; size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/mapbox/crewbookRequestError)&lt;/font&gt;</message>
 		</MapboxCrewbookRequestErorSysMessage>
+		<mapsTrainingVictoryResult>
+			<type>battleResult</type>
+			<icon>BattleResultIcon</icon>
+			<bgIcon>
+				BgBattleResultMTVictory
+				<FORT_BATTLE>frtClanBtlBgBattleResult_UR_Victory</FORT_BATTLE>
+			</bgIcon>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/battleResults/button)</label>
+					<action>showBattleResults</action>
+				</button>
+			</buttonsLayout>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#maps_training:notification/title/win)!&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/battle): %(arenaName)s &lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(scenario)s, %(baseStr)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/tanks): %(vehicleNames)s&lt;/font&gt;&lt;br/&gt;%(mtRewards)s</message>
+		</mapsTrainingVictoryResult>
+		<mapsTrainingDefeatResult>
+			<type>battleResult</type>
+			<icon>BattleResultIcon</icon>
+			<bgIcon>
+				BgBattleResultMTDefeat
+				<FORT_BATTLE>frtClanBtlBgBattleResult_UR_Defeat</FORT_BATTLE>
+			</bgIcon>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/battleResults/button)</label>
+					<action>showBattleResults</action>
+				</button>
+			</buttonsLayout>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#maps_training:notification/title/lose)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/battle): %(arenaName)s &lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(scenario)s, %(baseStr)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/tanks): %(vehicleNames)s&lt;/font&gt;&lt;br/&gt;%(mtRewards)s</message>
+		</mapsTrainingDefeatResult>
+		<ResearchVehiclePostProgressionStepsSysMessage>
+			<priority>high</priority>
+			<type>green</type>
+			<icon>PowerlevelIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#system_messages:vehiclePostProgression/researchSteps/title)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</ResearchVehiclePostProgressionStepsSysMessage>
+		<BuyPostProgressionModForCreditsSysMessage>
+			<priority>high</priority>
+			<type>yellow</type>
+			<icon>CreditsIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#system_messages:vehiclePostProgression/buyPairModification/title)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</BuyPostProgressionModForCreditsSysMessage>
+		<ChangeSlotCategorySysMessage>
+			<priority>high</priority>
+			<type>yellow</type>
+			<icon>CreditsIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#system_messages:vehiclePostProgression/changeSlotCategory/title)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</ChangeSlotCategorySysMessage>
 	</htmlTemplates>
 </root>

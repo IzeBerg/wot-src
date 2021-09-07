@@ -16,10 +16,10 @@ package net.wg.gui.lobby.vehiclePreview
    import net.wg.gui.events.ViewStackEvent;
    import net.wg.gui.interfaces.ISoundButtonEx;
    import net.wg.gui.lobby.hangar.VehicleParameters;
+   import net.wg.gui.lobby.techtree.TechTreeEvent;
    import net.wg.gui.lobby.vehicleCompare.events.VehCompareEvent;
    import net.wg.gui.lobby.vehiclePreview.buyingPanel.IVPBottomPanel;
    import net.wg.gui.lobby.vehiclePreview.buyingPanel.VPBuyingPanel;
-   import net.wg.gui.lobby.vehiclePreview.buyingPanel.VPEventProgressionVehicleBuyingPanel;
    import net.wg.gui.lobby.vehiclePreview.buyingPanel.VPOfferGiftBuyingPanel;
    import net.wg.gui.lobby.vehiclePreview.buyingPanel.VPPersonalTradeInBuyingPanel;
    import net.wg.gui.lobby.vehiclePreview.buyingPanel.VPTradeInBuyingPanel;
@@ -70,7 +70,7 @@ package net.wg.gui.lobby.vehiclePreview
       
       private static const VEH_PARAMS_V_OFFSET:int = 20;
       
-      private static const INFO_PANEL_V_OFFSET:int = -50;
+      private static const INFO_PANEL_V_OFFSET:int = -70;
       
       private static const LEFT_OFFSET:int = 8;
        
@@ -90,8 +90,6 @@ package net.wg.gui.lobby.vehiclePreview
       public var fadingPanels:MovieClip = null;
       
       public var background:Sprite;
-      
-      public var eventProgressionBg:Sprite;
       
       public var compareBlock:CompareBlock;
       
@@ -190,6 +188,7 @@ package net.wg.gui.lobby.vehiclePreview
          this.compareBlock.addEventListener(VehCompareEvent.ADD,this.onCompareBlockAddHandler);
          this._infoPanel.viewStack.addEventListener(ViewStackEvent.NEED_UPDATE,this.onStackViewNeedUpdateHandler);
          this._infoPanel.viewStack.addEventListener(ViewStackEvent.VIEW_CHANGED,this.onStackViewChangedHandler);
+         this._infoPanel.addEventListener(TechTreeEvent.GO_TO_POST_PROGRESSION,this.onInfoPanelGoToPostProgressionhandler);
          this._infoPanel.alpha = 0;
          this._vehParams.bg.visible = false;
          this._vehParams.alpha = 0;
@@ -203,34 +202,28 @@ package net.wg.gui.lobby.vehiclePreview
          this._stage.dispatchEvent(new LobbyEvent(LobbyEvent.REGISTER_DRAGGING));
          App.gameInputMgr.setKeyHandler(Keyboard.ESCAPE,KeyboardEvent.KEY_DOWN,this.onEscapeKeyUpHandler,true);
          var _loc1_:Boolean = this.bottomPanel is VPBuyingPanel;
-         var _loc2_:Boolean = this.bottomPanel is VPEventProgressionVehicleBuyingPanel;
-         var _loc3_:Boolean = this.bottomPanel is VPPersonalTradeInBuyingPanel;
-         var _loc4_:Boolean = this.bottomPanel is VPTradeInBuyingPanel;
-         var _loc5_:Boolean = this.bottomPanel is VPOfferGiftBuyingPanel;
+         var _loc2_:Boolean = this.bottomPanel is VPPersonalTradeInBuyingPanel;
+         var _loc3_:Boolean = this.bottomPanel is VPTradeInBuyingPanel;
+         var _loc4_:Boolean = this.bottomPanel is VPOfferGiftBuyingPanel;
          if(this.bottomPanel != null)
          {
             this.bottomPanel.alpha = 0;
          }
-         this.eventProgressionBg.visible = _loc2_;
          if(_loc1_)
          {
             registerFlashComponentS(VPBuyingPanel(this.bottomPanel),VEHPREVIEW_CONSTANTS.BUYING_PANEL_PY_ALIAS);
             this.bottomPanel.addEventListener(Event.RESIZE,this.onBottomPanelResizeHandler);
          }
-         else if(_loc2_)
-         {
-            registerFlashComponentS(VPEventProgressionVehicleBuyingPanel(this.bottomPanel),VEHPREVIEW_CONSTANTS.EVENT_PROGRESSION_VEHICLE_BUYING_PANEL_PY_ALIAS);
-         }
-         else if(_loc4_)
+         else if(_loc3_)
          {
             registerFlashComponentS(VPTradeInBuyingPanel(this.bottomPanel),VEHPREVIEW_CONSTANTS.TRADE_IN_BUYING_PANEL_PY_ALIAS);
          }
-         else if(_loc3_)
+         else if(_loc2_)
          {
             registerFlashComponentS(VPPersonalTradeInBuyingPanel(this.bottomPanel),VEHPREVIEW_CONSTANTS.PERSONAL_TRADE_IN_BUYING_PANEL_PY_ALIAS);
             this.bottomPanel.addEventListener(Event.RESIZE,this.onBottomPanelResizeHandler);
          }
-         else if(_loc5_)
+         else if(_loc4_)
          {
             registerFlashComponentS(VPOfferGiftBuyingPanel(this.bottomPanel),VEHPREVIEW_CONSTANTS.OFFER_GIFT_BUYING_PANEL_PY_ALIAS);
          }
@@ -240,6 +233,7 @@ package net.wg.gui.lobby.vehiclePreview
       {
          this._infoPanel.viewStack.removeEventListener(ViewStackEvent.NEED_UPDATE,this.onStackViewNeedUpdateHandler);
          this._infoPanel.viewStack.removeEventListener(ViewStackEvent.VIEW_CHANGED,this.onStackViewChangedHandler);
+         this._infoPanel.removeEventListener(TechTreeEvent.GO_TO_POST_PROGRESSION,this.onInfoPanelGoToPostProgressionhandler);
          this.compareBlock.removeEventListener(VehCompareEvent.ADD,this.onCompareBlockAddHandler);
          this.backButton.removeEventListener(ButtonEvent.CLICK,this.onBackBtnClickHandler);
          this.closeButton.removeEventListener(ButtonEvent.CLICK,this.onCloseBtnClickHandler);
@@ -277,7 +271,6 @@ package net.wg.gui.lobby.vehiclePreview
          this.background = null;
          this.fadingPanels = null;
          this.listDesc = null;
-         this.eventProgressionBg = null;
          super.onDispose();
       }
       
@@ -318,11 +311,6 @@ package net.wg.gui.lobby.vehiclePreview
             this.compareBlock.y = this._offset + this._panelVerticalOffset;
             this.listDesc.x = width - this._offset - this.listDesc.width + VEH_DESCRIPTION_H_OFFSET ^ 0;
             this.listDesc.y = this._vehParams.y + this._vehParams.bg.height | 0;
-            if(this.eventProgressionBg.visible)
-            {
-               this.eventProgressionBg.x = width - this.eventProgressionBg.width >> 1;
-               this.eventProgressionBg.y = height - this.eventProgressionBg.height >> 0;
-            }
          }
          if(!this._isIntroFinished && isInvalid(INTRO_FLAG))
          {
@@ -421,6 +409,11 @@ package net.wg.gui.lobby.vehiclePreview
       private function onFadingPanelsShow() : void
       {
          this._infoPanel.visible = true;
+      }
+      
+      private function onInfoPanelGoToPostProgressionhandler(param1:TechTreeEvent) : void
+      {
+         onGoToPostProgressionClickS();
       }
       
       private function onDraggingEndHandler(param1:LobbyEvent) : void

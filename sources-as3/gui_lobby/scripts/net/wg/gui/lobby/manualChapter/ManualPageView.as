@@ -14,19 +14,21 @@ package net.wg.gui.lobby.manualChapter
    {
        
       
-      public var pageHeader:TextContainer;
+      public var pageHeader:TextContainer = null;
       
-      public var pageDescription:DescriptionContainer;
+      public var pageChapter:TextContainer = null;
       
-      public var vignetteBottom:MovieClip;
+      public var pageDescription:DescriptionContainer = null;
       
-      public var vignetteTop:MovieClip;
+      public var vignetteBottom:MovieClip = null;
       
-      public var vignetteDescription:MovieClip;
+      public var vignetteTop:MovieClip = null;
       
-      private var _contentRenderer:PageContentTemplate;
+      public var vignetteDescription:MovieClip = null;
       
-      private var _vo:ManualPageDetailedViewVO;
+      private var _contentRenderer:PageContentTemplate = null;
+      
+      private var _vo:ManualPageDetailedViewVO = null;
       
       private var _tweens:Vector.<IDisposable>;
       
@@ -39,8 +41,6 @@ package net.wg.gui.lobby.manualChapter
       private const HINT_VERTICAL_PADDING:int = 35;
       
       private const BOTTOM_PADDING:int = 50;
-      
-      private const TOP_PADDING:int = 20;
       
       private const DIVIDER_WIDTH:int = 1026;
       
@@ -63,6 +63,8 @@ package net.wg.gui.lobby.manualChapter
          var _loc1_:IDisposable = null;
          this.pageHeader.dispose();
          this.pageHeader = null;
+         this.pageChapter.dispose();
+         this.pageChapter = null;
          this.pageDescription.dispose();
          this.pageDescription = null;
          this.vignetteBottom = null;
@@ -82,17 +84,17 @@ package net.wg.gui.lobby.manualChapter
       
       override protected function draw() : void
       {
-         var _loc2_:int = 0;
          var _loc3_:int = 0;
+         var _loc4_:int = 0;
          var _loc7_:int = 0;
          var _loc8_:Boolean = false;
          var _loc9_:int = 0;
          var _loc10_:int = 0;
          super.draw();
          var _loc1_:int = this.SIZE_WIDTH * this._contentScale;
-         _loc2_ = this.SIZE_HEIGHT * this._contentScale;
+         var _loc2_:int = this.SIZE_HEIGHT * this._contentScale;
          _loc3_ = _loc1_ >> 1;
-         var _loc4_:int = _loc2_ >> 1;
+         _loc4_ = _loc2_ >> 1;
          var _loc5_:Boolean = isInvalid(InvalidationType.SIZE);
          var _loc6_:Boolean = isInvalid(InvalidationType.DATA);
          if(_loc5_)
@@ -103,13 +105,14 @@ package net.wg.gui.lobby.manualChapter
             }
             this.pageDescription.updateScaleFactor(this._contentScale);
             this.pageHeader.updateScaleFactor(this._contentScale);
+            this.pageChapter.updateScaleFactor(this._contentScale);
             this.vignetteBottom.scaleX = this.vignetteBottom.scaleY = this._contentScale;
             this.vignetteTop.scaleX = this.vignetteTop.scaleY = this._contentScale;
             this.vignetteDescription.scaleX = this.vignetteDescription.scaleY = this._contentScale;
             this.pageDescription.dividerMask.width = this.DIVIDER_WIDTH * this._contentScale;
             this.pageDescription.dividerMask.x = -this.pageDescription.dividerMask.width >> 1;
             this.pageHeader.x = _loc3_;
-            this.pageHeader.y = this.TOP_PADDING;
+            this.pageChapter.x = _loc3_;
             this.vignetteBottom.x = _loc3_;
             this.vignetteBottom.y = _loc4_;
             this.vignetteTop.x = _loc3_;
@@ -150,6 +153,7 @@ package net.wg.gui.lobby.manualChapter
          {
             this.pageDescription.text = this._vo.description;
             this.pageHeader.text = this._vo.title;
+            this.pageChapter.text = this._vo.chapterTitle;
          }
          if(_loc5_)
          {
@@ -161,7 +165,11 @@ package net.wg.gui.lobby.manualChapter
                this._contentRenderer.validateNow();
                _loc7_ = this._contentRenderer.height;
                _loc8_ = this.pageDescription.visible;
-               if(this._contentRenderer.isCentered())
+               if(this._contentRenderer.isFullSize())
+               {
+                  this._contentRenderer.y = _loc2_ - _loc7_ >> 1;
+               }
+               else if(this._contentRenderer.isCentered())
                {
                   _loc9_ = !!_loc8_ ? int(this.pageDescription.contentHeight + this.BOTTOM_PADDING * this._contentScale) : int(0);
                   _loc10_ = this.pageHeader.y + this.pageHeader.contentHeight;
@@ -169,11 +177,11 @@ package net.wg.gui.lobby.manualChapter
                }
                else if(!_loc8_)
                {
-                  this._contentRenderer.y = _loc2_ - _loc7_ - this.BOTTOM_PADDING * this._contentScale;
+                  this._contentRenderer.y = _loc2_ - _loc7_ - this.BOTTOM_PADDING * this._contentScale | 0;
                }
                else
                {
-                  this._contentRenderer.y = this.pageDescription.y - _loc7_ - this.HINT_VERTICAL_PADDING * this._contentScale;
+                  this._contentRenderer.y = this.pageDescription.y - _loc7_ - this.HINT_VERTICAL_PADDING * this._contentScale | 0;
                }
             }
          }
@@ -232,6 +240,7 @@ package net.wg.gui.lobby.manualChapter
       private function playFadeAnimations(param1:String) : void
       {
          this.pageHeader.gotoAndPlay(param1);
+         this.pageChapter.gotoAndPlay(param1);
          var _loc2_:Boolean = this.pageDescription.visible;
          if(this._contentRenderer)
          {

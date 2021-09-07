@@ -280,6 +280,9 @@ class SettingsCore(ISettingsCore):
           GAME.MINIMAP_DRAW_RANGE,
           options.StorageAccountSetting(GAME.MINIMAP_DRAW_RANGE, storage=EXTENDED_GAME_SETTINGS_STORAGE)),
          (
+          GAME.CUSTOMIZATION_DISPLAY_TYPE,
+          options.CustomizationDisplayTypeSetting(GAME.CUSTOMIZATION_DISPLAY_TYPE, storage=EXTENDED_GAME_2_SETTINGS_STORAGE)),
+         (
           GAME.CAROUSEL_TYPE,
           options.CarouselTypeSetting(GAME.CAROUSEL_TYPE, storage=EXTENDED_GAME_SETTINGS_STORAGE)),
          (
@@ -288,9 +291,6 @@ class SettingsCore(ISettingsCore):
          (
           GAME.VEHICLE_CAROUSEL_STATS,
           options.VehicleCarouselStatsSetting(GAME.VEHICLE_CAROUSEL_STATS, storage=EXTENDED_GAME_SETTINGS_STORAGE)),
-         (
-          GAME.C11N_HISTORICALLY_ACCURATE,
-          options.C11nHistoricallyAccurateSetting(GAME.C11N_HISTORICALLY_ACCURATE, storage=EXTENDED_GAME_SETTINGS_STORAGE)),
          (
           GAME.DISPLAY_PLATOON_MEMBERS,
           options.SettingTrueByDefault(GAME.DISPLAY_PLATOON_MEMBERS, storage=EXTENDED_GAME_SETTINGS_STORAGE)),
@@ -302,6 +302,8 @@ class SettingsCore(ISettingsCore):
          (
           GAME.MINIMAP_MIN_SPOTTING_RANGE,
           options.StorageAccountSetting(GAME.MINIMAP_MIN_SPOTTING_RANGE, storage=EXTENDED_GAME_SETTINGS_STORAGE)),
+         (
+          GAME.SWITCH_SETUPS_IN_LOADING, options.SwitchSetupsInLoadingSetting(GAME.SWITCH_SETUPS_IN_LOADING)),
          (
           GRAPHICS.MONITOR,
           options.MonitorSetting(storage=VIDEO_SETTINGS_STORAGE)),
@@ -323,6 +325,8 @@ class SettingsCore(ISettingsCore):
          (
           GRAPHICS.COLOR_BLIND,
           options.AccountDumpSetting(GRAPHICS.COLOR_BLIND, GRAPHICS.COLOR_BLIND)),
+         (
+          GRAPHICS.IGB_HARDWARE_ACCELERATION, options.IGBHardwareAccelerationSetting()),
          (
           GRAPHICS.TRIPLE_BUFFERED, options.TripleBufferedSetting()),
          (

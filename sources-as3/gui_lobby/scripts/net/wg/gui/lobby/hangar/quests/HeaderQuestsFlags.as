@@ -70,6 +70,7 @@ package net.wg.gui.lobby.hangar.quests
       {
          super();
          this._scheduler = App.utils.scheduler;
+         this.questsHitArea.visible = false;
       }
       
       private static function findGroupDataByID(param1:Vector.<HeaderQuestGroupVO>, param2:String) : HeaderQuestGroupVO
@@ -95,7 +96,6 @@ package net.wg.gui.lobby.hangar.quests
             _loc3_ = 0;
             while(_loc3_ < _loc2_)
             {
-               param1[_loc3_].paused = true;
                param1[_loc3_].dispose();
                param1[_loc3_] = null;
                _loc3_++;
@@ -314,6 +314,7 @@ package net.wg.gui.lobby.hangar.quests
                this._questsGroupsContainers.push(_loc2_);
                _loc4_++;
             }
+            this.questsHitArea.visible = true;
          }
       }
       
@@ -362,6 +363,7 @@ package net.wg.gui.lobby.hangar.quests
             this._questsGroupsContainers.splice(0,this._questsGroupsContainers.length);
          }
          this._questsGroupsContainers = null;
+         this.questsHitArea.visible = false;
       }
       
       private function disposeQuestContainers() : void
@@ -372,7 +374,6 @@ package net.wg.gui.lobby.hangar.quests
          App.utils.data.cleanupDynamicObject(this._containersMap);
          this._containersMap = null;
          this.clearQuestContainers();
-         this._questsGroupsContainers = null;
       }
       
       private function updateHitArea() : void

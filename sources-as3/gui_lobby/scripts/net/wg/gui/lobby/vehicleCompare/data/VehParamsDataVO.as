@@ -14,6 +14,10 @@ package net.wg.gui.lobby.vehicleCompare.data
       
       public var isVisible:Boolean = true;
       
+      public var parentID:String = "";
+      
+      public var highlight:String = "";
+      
       public function VehParamsDataVO(param1:Object)
       {
          super(param1);

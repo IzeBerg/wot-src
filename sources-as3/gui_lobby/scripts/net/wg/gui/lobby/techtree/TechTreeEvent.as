@@ -17,9 +17,13 @@ package net.wg.gui.lobby.techtree
       
       public static const CLICK_2_RENT:String = "rent";
       
+      public static const ON_MODULE_HOVER:String = "moduleHover";
+      
       public static const RESTORE_VEHICLE:String = "restoreVehicle";
       
       public static const GO_TO_VEHICLE_VIEW:String = "goToVehicleView";
+      
+      public static const GO_TO_POST_PROGRESSION:String = "goToPostProgression";
       
       public static const CLICK_VEHICLE_COMPARE:String = "clickVehicleCompare";
       

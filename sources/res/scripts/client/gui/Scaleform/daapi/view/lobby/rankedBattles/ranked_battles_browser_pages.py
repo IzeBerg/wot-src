@@ -8,7 +8,7 @@ from gui.ranked_battles.constants import SeasonResultTokenPatterns
 from gui.ranked_battles.ranked_helpers import getRankedBattlesSeasonRatingUrl, getRankedBattlesInfoPageUrl, getRankedBattlesSeasonGapUrl, getRankedBattlesYearRatingUrl, getRankedBattlesShopUrl
 from gui.ranked_battles.ranked_helpers.sound_manager import RANKED_MAIN_PAGE_SOUND_SPACE, RANKED_OVERLAY_SOUND_SPACE, Sounds, AmbientType
 from skeletons.gui.game_control import IRankedBattlesController
-from web.web_client_api.ranked_battles import createRankedBattlesWebHandlers
+from web.web_client_api.ranked_battles import createRankedBattlesWebHandlers, createRankedOverlayHandlers
 
 class RankedBrowserPage(BrowserPageComponent, IResetablePage):
     __rankedController = dependency.descriptor(IRankedBattlesController)
@@ -100,6 +100,9 @@ class RankedShopPage(RankedBrowserPage):
         soundManager.setCustomProgressSound(Sounds.PROGRESSION_STATE_SHOP)
         soundManager.setAmbient(AmbientType.HANGAR)
 
+    def _getWebHandlers(self):
+        return createRankedBattlesWebHandlers()
+
 
 class RankedRatingPage(RankedBrowserPage):
 
@@ -185,7 +188,7 @@ class RankedWebOverlay(WebView):
     __rankedController = dependency.descriptor(IRankedBattlesController)
 
     def webHandlers(self):
-        return createRankedBattlesWebHandlers()
+        return createRankedOverlayHandlers()
 
     def _populate(self):
         super(RankedWebOverlay, self)._populate()

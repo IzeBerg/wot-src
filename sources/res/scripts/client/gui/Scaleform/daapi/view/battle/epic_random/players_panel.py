@@ -103,9 +103,6 @@ class EpicRandomPlayersPanel(EpicRandomPlayersPanelMeta):
             self.as_setPanelModeS(newMode)
             EpicPlayerPanelStateSetting.write(newMode)
 
-    def switchToOtherPlayer(self, vehicleID):
-        self.guiSessionProvider.shared.viewPoints.selectVehicle(int(vehicleID))
-
     def setInitialMode(self):
         self.__focusedColumn = 0
         self._mode = EpicPlayerPanelStateSetting.read()

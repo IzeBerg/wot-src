@@ -19,7 +19,7 @@ from gui.shared.money import Currency, MONEY_UNDEFINED
 from helpers import time_utils, dependency
 from helpers.i18n import makeString as _ms
 from shared_utils import CONST_CONTAINER, first
-from skeletons.gui.game_control import IEventProgressionController
+from skeletons.gui.game_control import IEpicBattleMetaGameController
 if typing.TYPE_CHECKING:
     from skeletons.gui.goodies import IGoodiesCache
 MAX_ACTIVE_BOOSTERS_COUNT = 3
@@ -279,7 +279,7 @@ class BoosterUICommon(_Goodie):
 
 
 class Booster(BoosterUICommon):
-    __eventProgression = dependency.descriptor(IEventProgressionController)
+    __epicController = dependency.descriptor(IEpicBattleMetaGameController)
 
     def __init__(self, boosterID, boosterDescription, stateProvider):
         super(Booster, self).__init__(boosterID, boosterDescription, stateProvider)
@@ -448,7 +448,7 @@ class Booster(BoosterUICommon):
 
     def __readyForEvent(self):
         if self.boosterType == GOODIE_RESOURCE_TYPE.FL_XP:
-            return self.__eventProgression.modeIsAvailable()
+            return self.__epicController.isEnabled() and self.__epicController.isInPrimeTime()
         return True
 
 

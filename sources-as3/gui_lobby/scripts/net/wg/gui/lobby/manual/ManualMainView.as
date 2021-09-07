@@ -85,12 +85,14 @@ package net.wg.gui.lobby.manual
          var _loc3_:Number = NaN;
          var _loc4_:int = 0;
          var _loc5_:int = 0;
-         var _loc6_:SoundButtonEx = null;
-         var _loc7_:Boolean = false;
-         var _loc8_:Number = NaN;
-         var _loc9_:Number = NaN;
-         var _loc10_:int = 0;
-         var _loc11_:int = 0;
+         var _loc6_:int = 0;
+         var _loc7_:int = 0;
+         var _loc8_:SoundButtonEx = null;
+         var _loc9_:Boolean = false;
+         var _loc10_:Number = NaN;
+         var _loc11_:Number = NaN;
+         var _loc12_:int = 0;
+         var _loc13_:int = 0;
          super.draw();
          if(this._data && isInvalid(InvalidationType.DATA))
          {
@@ -108,29 +110,33 @@ package net.wg.gui.lobby.manual
             this.chapterItem1.setActualScale(_loc3_,_loc3_);
             _loc4_ = this.chapterItem1.actualHeight;
             _loc5_ = -1;
-            for each(_loc6_ in this._renderers)
+            _loc6_ = 0;
+            _loc7_ = 0;
+            for each(_loc8_ in this._renderers)
             {
-               _loc10_ = _loc5_ % COLUMN_COUNT;
-               _loc11_ = _loc5_ / COLUMN_COUNT;
+               _loc12_ = _loc5_ % COLUMN_COUNT;
+               _loc13_ = _loc5_ / COLUMN_COUNT;
                if(_loc5_ != -1)
                {
-                  _loc6_.setActualScale(_loc3_,_loc3_);
-                  _loc6_.x = _loc10_ * _loc6_.actualWidth | 0;
-                  _loc6_.y = _loc11_ * _loc6_.actualHeight + _loc4_ | 0;
+                  _loc8_.setActualScale(_loc3_,_loc3_);
+                  _loc8_.x = _loc12_ * _loc8_.actualWidth | 0;
+                  _loc8_.y = _loc13_ * _loc8_.actualHeight + _loc4_ | 0;
+                  _loc6_ = Math.max(_loc6_,_loc8_.x + _loc8_.actualWidth);
+                  _loc7_ = Math.max(_loc7_,_loc8_.y + _loc8_.actualHeight);
                }
                _loc5_++;
             }
-            this._container.x = _width - this._container.width >> 1;
-            this._container.y = CHAPTERS_TOP_PADDING + (_height - CHAPTERS_TOP_PADDING - this._container.height >> 1);
+            this._container.x = _width - _loc6_ >> 1;
+            this._container.y = CHAPTERS_TOP_PADDING + (_height - CHAPTERS_TOP_PADDING - _loc7_ >> 1);
             this.closeBtn.x = _width - this.closeBtn.width - CLOSE_OFFSET | 0;
             this.screenBg.setSize(_width,_height);
-            _loc7_ = _width / _height > BACK_IMAGE_RATIO;
-            _loc8_ = !!_loc7_ ? Number(_width) : Number(_height * BACK_IMAGE_RATIO);
-            _loc9_ = !!_loc7_ ? Number(_width / BACK_IMAGE_RATIO) : Number(_height);
-            this.background.width = _loc8_;
-            this.background.height = _loc9_;
-            this.background.x = _width - _loc8_ >> 1;
-            this.background.y = _height - _loc9_ >> 1;
+            _loc9_ = _width / _height > BACK_IMAGE_RATIO;
+            _loc10_ = !!_loc9_ ? Number(_width) : Number(_height * BACK_IMAGE_RATIO);
+            _loc11_ = !!_loc9_ ? Number(_width / BACK_IMAGE_RATIO) : Number(_height);
+            this.background.width = _loc10_;
+            this.background.height = _loc11_;
+            this.background.x = _width - _loc10_ >> 1;
+            this.background.y = _height - _loc11_ >> 1;
          }
       }
       

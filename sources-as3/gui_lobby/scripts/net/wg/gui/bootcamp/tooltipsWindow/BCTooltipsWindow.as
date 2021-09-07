@@ -13,8 +13,6 @@ package net.wg.gui.bootcamp.tooltipsWindow
       private static const SHOW_LABEL:String = "show";
       
       private static const FINISH_FRAME:int = 70;
-      
-      private static const TOOLTIP_OFFSET:int = 73;
        
       
       public var tooltip:BCTooltip = null;
@@ -28,7 +26,6 @@ package net.wg.gui.bootcamp.tooltipsWindow
       override public function updateStage(param1:Number, param2:Number) : void
       {
          this.tooltip.x = param1 >> 1;
-         this.tooltip.y = TOOLTIP_OFFSET;
          this.tooltip.updateStage(param1);
       }
       

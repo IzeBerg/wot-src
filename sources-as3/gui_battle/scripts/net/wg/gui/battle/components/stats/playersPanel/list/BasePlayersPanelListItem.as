@@ -39,7 +39,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       private static const ALT_TEXT_COLOR:uint = 16777215;
       
-      private static const DEAD_ALT_TEXT_ALFA:Number = 0.73;
+      private static const DEAD_ALT_TEXT_ALPHA:Number = 0.73;
       
       private static const PLAYER_NAME_MARGIN:int = 8;
       
@@ -220,6 +220,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this.deadAltBg = null;
          this.deadBg = null;
          this.actionMarker = null;
+         hitArea = null;
          this.hit = null;
          this.hpBarPlayersPanelListItem.dispose();
          this.hpBarPlayersPanelListItem = null;
@@ -283,6 +284,9 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this.selfBg.imageName = BATTLEATLAS.PLAYERS_PANEL_SELF_BG;
          this.deadBg.visible = false;
          this.deadBg.imageName = BATTLEATLAS.PLAYERS_PANEL_DEAD_BG;
+         this.selfBg.mouseEnabled = this.selfBg.mouseChildren = false;
+         this.deadBg.mouseEnabled = this.deadBg.mouseChildren = false;
+         this.bg.mouseEnabled = this.bg.mouseChildren = false;
          this._originalTFAlpha = this.vehicleTF.alpha;
       }
       
@@ -350,7 +354,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
             this.deadAltBg.visible = !this._isAlive && this._isHpBarsVisible;
             if(this.deadAltBg.visible)
             {
-               this.playerNameFullTF.alpha = this.fragsTF.alpha = this.playerNameCutTF.alpha = this.vehicleTF.alpha = DEAD_ALT_TEXT_ALFA;
+               this.playerNameFullTF.alpha = this.fragsTF.alpha = this.playerNameCutTF.alpha = this.vehicleTF.alpha = DEAD_ALT_TEXT_ALPHA;
             }
             else
             {
@@ -665,7 +669,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       private function updatePositions() : void
       {
          var _loc1_:int = 0;
-         var _loc2_:int = 0;
+         var _loc3_:int = 0;
          if(this._isRightAligned)
          {
             switch(this._state)
@@ -909,21 +913,24 @@ package net.wg.gui.battle.components.stats.playersPanel.list
                      this.fragsTF.x = _loc1_;
                   }
             }
-            _loc2_ = this.fragsTF.x - CHAT_COMMAND_HIGHLIGHT_OFFSET ^ 0;
+            _loc3_ = this.fragsTF.x - CHAT_COMMAND_HIGHLIGHT_OFFSET ^ 0;
             if(this._state == PLAYERS_PANEL_STATE.FULL || this._state == PLAYERS_PANEL_STATE.FULL_NO_BADGES)
             {
-               this.chatCommandState.iconOffset(this.vehicleTF.x - _loc2_ + this.vehicleTF.width + CHAT_COMMAND_OFFSET_FROM_VEHICLE_TF);
+               this.chatCommandState.iconOffset(this.vehicleTF.x - _loc3_ + this.vehicleTF.width + CHAT_COMMAND_OFFSET_FROM_VEHICLE_TF);
             }
             else
             {
                this.chatCommandState.iconOffset(CHAT_COMMAND_LEFT_STATE_OFFSETS[this._state]);
             }
-            if(this.chatCommandState.x != _loc2_)
+            if(this.chatCommandState.x != _loc3_)
             {
-               this.chatCommandState.x = _loc2_;
+               this.chatCommandState.x = _loc3_;
             }
             this.updatePositionsLeft();
          }
+         var _loc2_:int = -x;
+         this.hit.x = _loc2_;
+         this.hit.width = !!this._isRightAligned ? Number(WIDTH + _loc2_) : Number(WIDTH - _loc2_);
          this.hpBarPlayersPanelListItem.setParentX(this.x);
          this.hpBarPlayersPanelListItem.setVehicleIconX(this.vehicleIcon.x);
       }

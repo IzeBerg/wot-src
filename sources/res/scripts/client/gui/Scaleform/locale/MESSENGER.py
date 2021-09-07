@@ -79,6 +79,7 @@ class MESSENGER(object):
     DIALOGS_CHANNELS_BUTTONS_CLOSE = '#messenger:dialogs/channels/buttons/close'
     DIALOGS_CREATECHANNEL_TITLE = '#messenger:dialogs/createChannel/title'
     DIALOGS_CREATECHANNEL_LABELS_NAME = '#messenger:dialogs/createChannel/labels/name'
+    DIALOGS_CREATECHANNEL_LABELS_AUTONAME = '#messenger:dialogs/createChannel/labels/autoName'
     DIALOGS_CREATECHANNEL_LABELS_PASSWORD = '#messenger:dialogs/createChannel/labels/password'
     DIALOGS_CREATECHANNEL_LABELS_USEPASSWORD = '#messenger:dialogs/createChannel/labels/usePassword'
     DIALOGS_CREATECHANNEL_LABELS_FILLPASSWORD = '#messenger:dialogs/createChannel/labels/fillPassword'
@@ -293,7 +294,6 @@ class MESSENGER(object):
     SERVICECHANNELMESSAGES_BATTLERESULTS_GOLD = '#messenger:serviceChannelMessages/battleResults/gold'
     SERVICECHANNELMESSAGES_BATTLERESULTS_CRYSTAL = '#messenger:serviceChannelMessages/battleResults/crystal'
     SERVICECHANNELMESSAGES_BATTLERESULTS_EPICABILITYPOINTS = '#messenger:serviceChannelMessages/battleResults/epicAbilityPoints'
-    SERVICECHANNELMESSAGES_BATTLERESULTS_EPICREWARDPOINTS = '#messenger:serviceChannelMessages/battleResults/epicRewardPoints'
     SERVICECHANNELMESSAGES_BATTLERESULTS_EVENTCOIN = '#messenger:serviceChannelMessages/battleResults/eventCoin'
     SERVICECHANNELMESSAGES_BATTLERESULTS_BPCOIN = '#messenger:serviceChannelMessages/battleResults/bpcoin'
     SERVICECHANNELMESSAGES_BATTLERESULTS_DOUBLEXPFACTOR = '#messenger:serviceChannelMessages/battleResults/doubleXpFactor'
@@ -915,9 +915,6 @@ class MESSENGER(object):
     SERVICECHANNELMESSAGES_BLACKMAPDISABLED = '#messenger:serviceChannelMessages/blackMapDisabled'
     SERVICECHANNELMESSAGES_INVOICERECEIVED_CREWBOOKSACCRUED = '#messenger:serviceChannelMessages/invoiceReceived/crewBooksAccrued'
     SERVICECHANNELMESSAGES_CREWBOOKSCOUNT = '#messenger:serviceChannelMessages/crewBooksCount'
-    SERVICECHANNELMESSAGES_FLEXCHANGE_QUESTS = '#messenger:serviceChannelMessages/flExchange/quests'
-    SERVICECHANNELMESSAGES_FLEXCHANGE_QUESTS_POINTS = '#messenger:serviceChannelMessages/flExchange/quests/points'
-    SERVICECHANNELMESSAGES_FLEXCHANGE_QUESTS_REWARD = '#messenger:serviceChannelMessages/flExchange/quests/reward'
     SERVICECHANNELMESSAGES_RANKEDFINALEAWARDSNOTIFICATION_TITLE = '#messenger:serviceChannelMessages/rankedFinaleAwardsNotification/title'
     SERVICECHANNELMESSAGES_RANKEDFINALEAWARDSNOTIFICATION_CONGRATULATION = '#messenger:serviceChannelMessages/rankedFinaleAwardsNotification/congratulation'
     SERVICECHANNELMESSAGES_RANKEDFINALEAWARDSNOTIFICATION_TEXT = '#messenger:serviceChannelMessages/rankedFinaleAwardsNotification/text'
@@ -1001,6 +998,8 @@ class MESSENGER(object):
     SERVICECHANNELMESSAGES_MAPBOX_CREWBOOKREQUESTERROR = '#messenger:serviceChannelMessages/mapbox/crewbookRequestError'
     SERVICECHANNELMESSAGES_SELECTABLECREWBOOK_GUIDE = '#messenger:serviceChannelMessages/selectableCrewbook/guide'
     SERVICECHANNELMESSAGES_SELECTABLECREWBOOK_BROCHURE = '#messenger:serviceChannelMessages/selectableCrewbook/brochure'
+    SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_DISCARDALLPAIRSMODIFICATION_BODY = '#messenger:serviceChannelMessages/vehiclePostProgression/discardAllPairsModification/body'
+    SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_DISCARDALLPAIRSMODIFICATION_TITLE = '#messenger:serviceChannelMessages/vehiclePostProgression/discardAllPairsModification/title'
     CLIENT_ERROR_SHARED_ENUM = (
      CLIENT_ERROR_SHARED_TRY_LATER,
      CLIENT_ERROR_SHARED_GENERIC,

@@ -103,6 +103,11 @@ package net.wg.infrastructure.managers.impl.TooltipMgr
          this._props = null;
       }
       
+      public function getContainer() : DisplayObjectContainer
+      {
+         return this._container;
+      }
+      
       public function getDefaultTooltipProps() : ITooltipProps
       {
          throw new AbstractException("AbstractApplication.getDefaultTooltipProps" + Errors.ABSTRACT_INVOKE);

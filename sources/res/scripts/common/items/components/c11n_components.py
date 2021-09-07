@@ -5,7 +5,7 @@ from debug_utils import LOG_CURRENT_EXCEPTION
 from items import vehicles
 from items.components import shared_components
 from soft_exception import SoftException
-from items.components.c11n_constants import ApplyArea, SeasonType, Options, ItemTags, CustomizationType, MAX_CAMOUFLAGE_PATTERN_SIZE, DecalType, HIDDEN_CAMOUFLAGE_ID, PROJECTION_DECALS_SCALE_ID_VALUES, MAX_USERS_PROJECTION_DECALS, CustomizationTypeNames, DecalTypeNames, CustomizationNamesToTypes, ProjectionDecalFormTags, CUSTOMIZATION_SLOTS_VEHICLE_PARTS, CamouflageTilingType, HIDDEN_FOR_USER_TAG, SLOT_TYPE_NAMES, EMPTY_ITEM_ID, SLOT_DEFAULT_ALLOWED_MODEL, EDITING_STYLE_REASONS
+from items.components.c11n_constants import ApplyArea, SeasonType, Options, ItemTags, CustomizationType, MAX_CAMOUFLAGE_PATTERN_SIZE, DecalType, HIDDEN_CAMOUFLAGE_ID, PROJECTION_DECALS_SCALE_ID_VALUES, MAX_USERS_PROJECTION_DECALS, CustomizationTypeNames, DecalTypeNames, CustomizationNamesToTypes, ProjectionDecalFormTags, DEFAULT_SCALE_FACTOR_ID, CUSTOMIZATION_SLOTS_VEHICLE_PARTS, CamouflageTilingType, HIDDEN_FOR_USER_TAG, SLOT_TYPE_NAMES, EMPTY_ITEM_ID, SLOT_DEFAULT_ALLOWED_MODEL, EDITING_STYLE_REASONS, CustomizationDisplayType
 from typing import List, Dict, Type, Tuple, Optional, TypeVar, FrozenSet, Set
 from string import lower, upper
 from copy import deepcopy
@@ -18,9 +18,9 @@ Item = TypeVar('TypeVar')
 
 class BaseCustomizationItem(object):
     __metaclass__ = ReflectionMetaclass
-    __slots__ = ('id', 'tags', 'filter', 'parentGroup', 'season', 'historical', 'i18n',
-                 'priceGroup', 'requiredToken', 'priceGroupTags', 'maxNumber', 'texture',
-                 'progression')
+    __slots__ = ('id', 'tags', 'filter', 'parentGroup', 'season', 'customizationDisplayType',
+                 'i18n', 'priceGroup', 'requiredToken', 'priceGroupTags', 'maxNumber',
+                 'texture', 'progression')
     allSlots = __slots__
     itemType = 0
 
@@ -29,7 +29,7 @@ class BaseCustomizationItem(object):
         self.tags = frozenset()
         self.filter = None
         self.season = SeasonType.ALL
-        self.historical = False
+        self.customizationDisplayType = CustomizationDisplayType.NON_HISTORICAL
         self.i18n = None
         self.priceGroup = ''
         self.priceGroupTags = frozenset()
@@ -52,7 +52,7 @@ class BaseCustomizationItem(object):
         newItem.tags = deepcopy(self.tags)
         newItem.filter = deepcopy(self.filter)
         newItem.season = self.season
-        newItem.historical = self.historical
+        newItem.customizationDisplayType = self.customizationDisplayType
         newItem.i18n = deepcopy(self.i18n)
         newItem.priceGroup = deepcopy(self.priceGroup)
         newItem.priceGroupTags = deepcopy(self.priceGroupTags)
@@ -169,12 +169,13 @@ class DecalItem(BaseCustomizationItem):
 class ProjectionDecalItem(BaseCustomizationItem):
     __metaclass__ = ReflectionMetaclass
     itemType = CustomizationType.PROJECTION_DECAL
-    __slots__ = ('canBeMirroredHorizontally', 'glossTexture')
+    __slots__ = ('canBeMirroredHorizontally', 'glossTexture', 'scaleFactorId')
     allSlots = BaseCustomizationItem.__slots__ + __slots__
 
     def __init__(self, parentGroup=None):
         self.canBeMirroredHorizontally = False
         self.glossTexture = ''
+        self.scaleFactorId = DEFAULT_SCALE_FACTOR_ID
         super(ProjectionDecalItem, self).__init__(parentGroup)
 
     @property
@@ -201,7 +202,7 @@ class CamouflageItem(BaseCustomizationItem):
         self.rotation = {'hull': 0.0, 'turret': 0.0, 'gun': 0.0}
         self.tiling = {}
         self.tilingSettings = (CamouflageTilingType.LEGACY, None, None)
-        self.scales = (1.2, 1, 0.7)
+        self.scales = (1.2, 1.0, 0.7)
         self.glossMetallicSettings = {'glossMetallicMap': '', 'gloss': Math.Vector4(0.0), 'metallic': Math.Vector4(0.0)}
         super(CamouflageItem, self).__init__(parentGroup)
         return
@@ -316,7 +317,7 @@ class StyleItem(BaseCustomizationItem):
         if not self.isEditable:
             return False
         else:
-            if self.historical and not item.historical:
+            if self.customizationDisplayType < item.customizationDisplayType:
                 return False
             if item.id in self.alternateItems.get(item.itemType, ()):
                 return True
@@ -544,14 +545,14 @@ class ItemsFilter(_Filter):
     __metaclass__ = ReflectionMetaclass
 
     class FilterNode(object):
-        __slots__ = ('ids', 'itemGroupNames', 'tags', 'types', 'historical')
+        __slots__ = ('ids', 'itemGroupNames', 'tags', 'types', 'customizationDisplayType')
 
         def __init__(self):
             self.ids = None
             self.itemGroupNames = None
             self.tags = None
             self.types = None
-            self.historical = None
+            self.customizationDisplayType = None
             return
 
         def __str__(self):
@@ -564,8 +565,8 @@ class ItemsFilter(_Filter):
                 result.append(str(self.tags))
             if self.types is not None:
                 result.append(str(self.types))
-            if self.historical is not None:
-                result.append(str(self.historical))
+            if self.customizationDisplayType is not None:
+                result.append(str(self.customizationDisplayType))
             return ('; ').join(result)
 
         def matchItem(self, item):
@@ -578,7 +579,7 @@ class ItemsFilter(_Filter):
                     return False
                 if self.types is not None and item.itemType == CustomizationType.DECAL and item.type not in self.types:
                     return False
-                if self.historical is not None and item.historical != self.historical:
+                if self.customizationDisplayType is not None and item.customizationDisplayType != self.customizationDisplayType:
                     return False
                 return True
 
@@ -1052,20 +1053,6 @@ def getVehicleProjectionDecalSlotParams(vehicleDescr, vehicleSlotId, partNames=C
 
 def isPersonalNumberAllowed(personalNumber):
     return personalNumber not in PersonalNumberItem.getProhibitedNumbers()
-
-
-def isSlotFitsVehicle(slotDescriptor, vehicleDescriptor):
-    if slotDescriptor.attachedParts is None:
-        return True
-    else:
-        for partType, attachedParts in slotDescriptor.attachedParts.iteritems():
-            part = getattr(vehicleDescriptor, partType, None)
-            if part is None:
-                raise SoftException(('projection decal {} wrong attached part type: {}').format(slotDescriptor.slotId, partType))
-            if part.name not in attachedParts:
-                return False
-
-        return True
 
 
 def getAvailableSlotsCount(item, vehicleDescriptor):

@@ -26,6 +26,10 @@ package net.wg.infrastructure.base.meta
       
       function as_removeBattleRoyaleTournament() : void;
       
+      function as_createEpicWidget() : void;
+      
+      function as_removeEpicWidget() : void;
+      
       function as_setSecondaryEntryPointVisible(param1:Boolean) : void;
    }
 }

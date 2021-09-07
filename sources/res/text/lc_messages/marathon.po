@@ -10,6 +10,72 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "3dObject/showVideo"
+msgstr "Смотреть видео"
+
+msgid "entryPoint/activeDiscountText"
+msgstr "-{discount}%"
+
+msgid "entryPoint/chapterText"
+msgstr "ГЛАВА %(stage)"
+
+msgid "entryPoint/discountText"
+msgstr "{discount}%"
+
+msgid "entryPoint/finalDiscountText"
+msgstr "Купить %(vehicleLabel) Strv K со скидкой %(discount)%(icon)"
+
+msgid "entryPoint/finalNoDiscountText"
+msgstr "Купить %(vehicleLabel) Strv K%(icon)"
+
+msgid "entryPoint/finalSaleText"
+msgstr "Покупка доступна ещё: %(time)"
+
+msgid "entryPoint/postProgression/finalDiscountText"
+msgstr "Купить стиль «Дух войны» со скидкой %(discount)%(icon)"
+
+msgid "entryPoint/postProgression/finalNoDiscountText"
+msgstr "Купить стиль «Дух войны»"
+
+msgid "entryPoint/separatorText"
+msgstr "ИЛИ"
+
+msgid "entryPoint/stageText"
+msgstr "%(stage) этап"
+
+msgid "entryPoint/time/period/day"
+msgstr "{day} д"
+
+msgid "entryPoint/time/period/dayHour"
+msgstr "{day} д {hours} ч"
+
+msgid "entryPoint/time/period/hour"
+msgstr "{hours} ч"
+
+msgid "entryPoint/time/period/hourMinute"
+msgstr "{hours} ч {min} мин"
+
+msgid "entryPoint/time/period/minute"
+msgstr "{min} мин"
+
+msgid "entryPoint/title"
+msgstr "ДУХ ВОЙНЫ"
+
+msgid "entryPoint/untilEndText"
+msgstr "%(time)"
+
+msgid "entryPoint/untilStartText"
+msgstr "До начала: %(time)"
+
+msgid "introScreen/eventName"
+msgstr "ПЕРВЫЙ ПРЕМИУМ ТАНК IX УРОВНЯ"
+
+msgid "introScreen/start"
+msgstr "Как получить"
+
+msgid "introScreen/title"
+msgstr "ПРЕДСТАВЛЯЮТ"
+
 msgid "reward/goToVehicleBtn"
 msgstr "Показать в Ангаре"
 
@@ -30,7 +96,7 @@ msgstr "Нажмите, чтобы перейти к покупке товара
 
 msgid "vehiclePreview/buyingPanel/buyBtn/tooltip/inactive/body"
 msgstr ""
-"Покупка машины станет доступна после старта события «Охота на ренегата».\n"
+"Покупка машины станет доступна после старта события «%(event_name)s».\n"
 "%(addInfo)s"
 
 msgid "vehiclePreview/buyingPanel/buyBtn/tooltip/inactive/header"
@@ -54,26 +120,24 @@ msgstr "Событие начнётся %(marathonStartDate)s."
 
 msgid "vehiclePreview/title/tooltip/body/marathon/inprogress"
 msgstr ""
-"Покупая сейчас американский тяжёлый премиум танк VIII уровня M54 Renegade, "
-"вы также получаете награды за те этапы события, которые ещё не успели "
-"завершить."
+"Покупая сейчас шведский тяжёлый премиум танк IX уровня Strv K, вы также "
+"получаете награды за те этапы события, которые ещё не успели завершить."
 
 msgid "vehiclePreview/title/tooltip/header"
-msgstr "Охота на ренегата"
+msgstr "%(event_name)s"
 
 msgid "vehiclePreview/title/tooltip/info/body/announce"
 msgstr ""
-"Машина будет доступна для покупки в рамках события «Охота на "
-"ренегата»%(addInfo)s"
+"Машина будет доступна для покупки в рамках события "
+"«%(event_name)s»%(addInfo)s"
 
 msgid "vehiclePreview/title/tooltip/info/body/progress"
 msgstr ""
-"Машина доступна для покупки в рамках события «Охота на ренегата»%(addInfo)s"
+"Машина доступна для покупки в рамках события «%(event_name)s»%(addInfo)s"
 
 msgid "vehiclePreview/title/tooltip/info/body/progress/withDiscount"
 msgstr ""
-"Машина будет доступна для покупки в рамках события «Охота на "
-"ренегата»%(addInfo)s"
+"Машина доступна для покупки в рамках события «%(event_name)s»%(addInfo)s"
 
 msgid "vehiclePreview/tooltip/dateTime"
 msgstr "%(day)s %(monthName)s %(year)s, %(hour)s:%(min)s"

@@ -16,6 +16,8 @@ package net.wg.infrastructure.base.meta.impl
       
       private var _array1:Array;
       
+      private var _array2:Array;
+      
       public function ConsumablesPanelMeta()
       {
          super();
@@ -32,6 +34,11 @@ package net.wg.infrastructure.base.meta.impl
          {
             this._array1.splice(0,this._array1.length);
             this._array1 = null;
+         }
+         if(this._array2)
+         {
+            this._array2.splice(0,this._array2.length);
+            this._array2 = null;
          }
          super.onDispose();
       }
@@ -70,6 +77,17 @@ package net.wg.infrastructure.base.meta.impl
          }
       }
       
+      public final function as_reset(param1:Array) : void
+      {
+         var _loc2_:Array = this._array2;
+         this._array2 = param1;
+         this.reset(this._array2);
+         if(_loc2_)
+         {
+            _loc2_.splice(0,_loc2_.length);
+         }
+      }
+      
       protected function setKeysToSlots(param1:Array) : void
       {
          var _loc2_:String = "as_setKeysToSlots" + Errors.ABSTRACT_INVOKE;
@@ -82,6 +100,13 @@ package net.wg.infrastructure.base.meta.impl
          var _loc3_:String = "as_expandEquipmentSlot" + Errors.ABSTRACT_INVOKE;
          DebugUtils.LOG_ERROR(_loc3_);
          throw new AbstractException(_loc3_);
+      }
+      
+      protected function reset(param1:Array) : void
+      {
+         var _loc2_:String = "as_reset" + Errors.ABSTRACT_INVOKE;
+         DebugUtils.LOG_ERROR(_loc2_);
+         throw new AbstractException(_loc2_);
       }
    }
 }

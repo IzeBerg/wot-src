@@ -151,6 +151,7 @@ package net.wg.gui.battle.views.radialMenu
          if(isInvalid(InvalidationType.SIZE))
          {
             this.background.setSize(this._stageWidth,this._stageHeight);
+            onRefreshS();
          }
       }
       
@@ -210,7 +211,7 @@ package net.wg.gui.battle.views.radialMenu
       {
          this._stageWidth = param1;
          this._stageHeight = param2;
-         invalidate(InvalidationType.SIZE);
+         invalidateSize();
       }
       
       private function updateDataForWithShortcutsArray(param1:Array, param2:Boolean) : void

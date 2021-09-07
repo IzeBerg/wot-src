@@ -26,7 +26,10 @@ def getContextMenuData(event, uniqueID, selectedSetup):
         contextMenuArgs = {paramName:event.getArgument(paramName) for paramName in ('intCD',
                                                                                     'slotType',
                                                                                     'isMounted',
+                                                                                    'isMountedMoreThanOne',
                                                                                     'installedSlotId',
+                                                                                    'itemInstalledSetupIdx',
+                                                                                    'itemInstalledSetupSlotIdx',
                                                                                     'isDisabled')}
         contextMenuArgs['emitterUID'] = uniqueID
         if contextMenuArgs['installedSlotId'] == NONE_ID:
@@ -37,7 +40,10 @@ def getContextMenuData(event, uniqueID, selectedSetup):
             contextMenuArgs = {paramName:event.getArgument(paramName) for paramName in ('intCD',
                                                                                         'slotType',
                                                                                         'isMounted',
-                                                                                        'installedSlotId')}
+                                                                                        'isMountedMoreThanOne',
+                                                                                        'installedSlotId',
+                                                                                        'itemInstalledSetupIdx',
+                                                                                        'itemInstalledSetupSlotIdx')}
             contextMenuArgs['emitterUID'] = uniqueID
             if contextMenuArgs['intCD'] > 0:
                 return createContextMenuData(TANK_SETUP_SLOT_CM.get(event.getArgument('slotType')), contextMenuArgs)
@@ -52,7 +58,10 @@ def getHangarContextMenuData(event, uniqueID):
         contextMenuArgs = {paramName:event.getArgument(paramName) for paramName in ('intCD',
                                                                                     'slotType',
                                                                                     'isMounted',
-                                                                                    'installedSlotId')}
+                                                                                    'isMountedMoreThanOne',
+                                                                                    'installedSlotId',
+                                                                                    'itemInstalledSetupIdx',
+                                                                                    'itemInstalledSetupSlotIdx')}
         contextMenuArgs['emitterUID'] = uniqueID
         if contextMenuArgs['intCD'] > 0:
             return createContextMenuData(HANGAR_TANK_SETUP_SLOT_CM.get(event.getArgument('slotType')), contextMenuArgs)

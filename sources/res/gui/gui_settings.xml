@@ -1029,6 +1029,11 @@
 				<name>splitUrl</name>
 				<type>url</type>
 			</item>
+			<item>
+				$PARAMS(/calendar11/calendar11)
+				<name>birthdayPageURL</name>
+				<type>url</type>
+			</item>
 		</value>
 	</setting>
 	<setting>
@@ -1089,12 +1094,12 @@
 		<type>dict</type>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/5BPContentPage/
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/6BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/5BPIntroVideo/
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/6BPIntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
@@ -1635,6 +1640,80 @@
 			</item>
 			<item>
 				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/mapbox/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>infoPageMapsTraining</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/cartography/
+				<name>NA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/cartography/
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/cartography/
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/cartography/
+				<name>CN</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/cartography/
+				<name>CT</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/cartography/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>infoPageEpicQueue</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://frontline.worldoftanks.com/$LANGUAGE_CODE/information/?modeselector=true
+				<name>NA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://frontline.worldoftanks.eu/$LANGUAGE_CODE/information/?modeselector=true
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://frontline.worldoftanks.asia/$LANGUAGE_CODE/information/?modeselector=true
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://frontline.wotgame.cn/$LANGUAGE_CODE/information/?modeselector=true
+				<name>CN</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://frontline-ct.worldoftanks.ru/$LANGUAGE_CODE/information/?modeselector=true
+				<name>CT</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://frontline.worldoftanks.ru/$LANGUAGE_CODE/information/?modeselector=true
 				<name>default</name>
 				<type>url</type>
 			</item>

@@ -105,7 +105,11 @@ package net.wg.data.constants
       
       public static const EPIC_RESPAWN_POINT_WARNING:String = "epicRespawnPointWarning";
       
+      public static const EPIC_INFO_LEVEL_BTN:String = "epicInfoLevelBtn";
+      
       public static const PREMIUM_PANEL:String = "premiumPanel";
+      
+      public static const POST_PROGRESSION_MODULES:String = "postProgressionModules";
        
       
       public function SoundTypes()

@@ -1,4 +1,4 @@
-from gui.impl.lobby.tabs_controller import tabUpdateFunc
+from gui.impl.common.tabs_controller import tabUpdateFunc
 from gui.impl.lobby.tank_setup.configurations.base import BaseTankSetupTabsController
 from gui.impl.lobby.tank_setup.array_providers.consumable import ConsumableDeviceProvider
 

@@ -45,6 +45,8 @@ package net.wg.gui.lobby.settings.vo.config
       
       public var tripleBuffered:SettingsControlProp = null;
       
+      public var igbHardwareAcceleration:SettingsControlProp = null;
+      
       public var isColorBlind:SettingsControlProp = null;
       
       public var graphicsQuality:SettingsControlProp = null;
@@ -125,6 +127,7 @@ package net.wg.gui.lobby.settings.vo.config
             "dynamicFov":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "colorFilter":createControl(ControlsFactory.TYPE_BUTTON).hasValue(true).build(),
             "screenMode":createControl(ControlsFactory.TYPE_DROPDOWN).build(),
+            "igbHardwareAcceleration":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "vertSync":createControl(ControlsFactory.TYPE_CHECKBOX).isDependOn(SettingsConfigHelper.TRIPLE_BUFFERED).build(),
             "tripleBuffered":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "isColorBlind":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
@@ -182,6 +185,7 @@ package net.wg.gui.lobby.settings.vo.config
          this.colorFilterImages = null;
          this.vertSync = null;
          this.tripleBuffered = null;
+         this.igbHardwareAcceleration = null;
          this.isColorBlind = null;
          this.graphicsQuality = null;
          this.graphicsQualityHDSD = null;

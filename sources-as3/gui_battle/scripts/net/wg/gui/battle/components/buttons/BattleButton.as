@@ -82,6 +82,12 @@ package net.wg.gui.battle.components.buttons
          }
       }
       
+      override protected function onBeforeDispose() : void
+      {
+         this.removeListeners();
+         super.onBeforeDispose();
+      }
+      
       override protected function onDispose() : void
       {
          this._clickButtonHandler = null;
@@ -92,7 +98,6 @@ package net.wg.gui.battle.components.buttons
          this._dragOverButtonHandler = null;
          this._dragOutButtonHandler = null;
          this._stateChangedButtonHandler = null;
-         this.removeListeners();
          super.onDispose();
       }
       

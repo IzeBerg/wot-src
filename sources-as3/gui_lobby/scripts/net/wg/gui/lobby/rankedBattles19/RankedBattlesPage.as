@@ -42,7 +42,7 @@ package net.wg.gui.lobby.rankedBattles19
       
       private static const CONTENT_H_OFFSET_BIG:int = 50;
       
-      private static const CONTENT_H_OFFSET_SMALL:int = 30;
+      private static const CONTENT_H_OFFSET_SMALL:int = 20;
       
       private static const CLOSE_BUTTON_OFFSET:int = 51;
       
@@ -57,10 +57,6 @@ package net.wg.gui.lobby.rankedBattles19
       private static const COUNTER_PROPS_BIG:CounterProps = new CounterProps(12,8,TextFormatAlign.RIGHT);
       
       private static const COUNTER_PROPS_SMALL:CounterProps = new CounterProps(20,4,TextFormatAlign.RIGHT);
-      
-      private static const SHOP_BG_OFFSET_Y:int = -50;
-      
-      private static const SHOP_BG_MAGIC_OFFSET_Y:int = 526;
        
       
       public var menu:SideBar = null;

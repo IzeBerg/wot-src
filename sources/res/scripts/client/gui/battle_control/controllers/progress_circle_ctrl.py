@@ -3,11 +3,9 @@ import BigWorld, Event
 from constants import REPAIR_POINT_ACTION, SECTOR_BASE_ACTION
 from debug_utils import LOG_WARNING, LOG_ERROR
 from gui.Scaleform.genConsts.EPIC_CONSTS import EPIC_CONSTS
-from gui.battle_control.avatar_getter import getSoundNotifications
 from gui.battle_control.battle_constants import BATTLE_CTRL_ID, PROGRESS_CIRCLE_TYPE, VEHICLE_VIEW_STATE
 from gui.battle_control.controllers.interfaces import IBattleController
 REPAIR_COMPLETE_BLOCKED_DELAY = 2
-_ACTION_SOUND_IDS = {REPAIR_POINT_ACTION.COMPLETE_REPAIR: 'point_repair'}
 
 class ProgressTimerPlugin(object):
 
@@ -170,7 +168,6 @@ class StepRepairPlugin(ProgressTimerPlugin):
             elif action == REPAIR_POINT_ACTION.COMPLETE_REPAIR:
                 self._controller.onCircleStatusChanged(self._type, repairPointIndex, EPIC_CONSTS.RESUPPLY_FULL)
                 self.__repairPointStates[repairPointIndex] = EPIC_CONSTS.RESUPPLY_FULL
-                self._playSoundByAction(REPAIR_POINT_ACTION.COMPLETE_REPAIR)
             elif action == REPAIR_POINT_ACTION.COOLDOWN:
                 if self._inCircleIdx < 0:
                     self._controller.onVehicleEntered(self._type, repairPointIndex, EPIC_CONSTS.RESUPPLY_BLOCKED)
@@ -228,13 +225,6 @@ class StepRepairPlugin(ProgressTimerPlugin):
             self._sessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.PROGRESS_CIRCLE, (
              self._type, self._inCircleIdx >= 0))
             return
-
-    def _playSoundByAction(self, action):
-        if action in _ACTION_SOUND_IDS:
-            nots = getSoundNotifications()
-            if nots is not None:
-                nots.play(_ACTION_SOUND_IDS[action])
-        return
 
     def _hideAll(self):
         super(StepRepairPlugin, self)._hideAll()

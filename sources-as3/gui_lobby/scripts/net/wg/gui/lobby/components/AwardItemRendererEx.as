@@ -6,8 +6,10 @@ package net.wg.gui.lobby.components
    import flash.geom.Point;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
+   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.TEXT_ALIGN;
    import net.wg.gui.components.controls.scroller.IScrollerItemRenderer;
+   import net.wg.gui.components.controls.scroller.data.ScrollerItemRendererSize;
    import net.wg.gui.lobby.components.data.AwardItemRendererExVO;
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.interfaces.IImage;
@@ -362,6 +364,25 @@ package net.wg.gui.lobby.components
       {
       }
       
+      public function set allowRescaleUpward(param1:Boolean) : void
+      {
+         this._allowRescaleUpward = param1;
+      }
+      
+      public function get rowsCount() : int
+      {
+         return Values.ZERO;
+      }
+      
+      public function set rowsCount(param1:int) : void
+      {
+      }
+      
+      public function get adaptiveSize() : String
+      {
+         return ScrollerItemRendererSize.NORMAL_SIZE;
+      }
+      
       private function onAwardObtainedIconChangeHandler(param1:Event) : void
       {
          invalidateSize();
@@ -391,11 +412,6 @@ package net.wg.gui.lobby.components
       private function onImgChangeHandler(param1:Event) : void
       {
          invalidateSize();
-      }
-      
-      public function set allowRescaleUpward(param1:Boolean) : void
-      {
-         this._allowRescaleUpward = param1;
       }
    }
 }

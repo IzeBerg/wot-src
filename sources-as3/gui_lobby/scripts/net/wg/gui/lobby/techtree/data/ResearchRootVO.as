@@ -1,22 +1,16 @@
 package net.wg.gui.lobby.techtree.data
 {
    import net.wg.data.daapi.base.DAAPIDataClass;
+   import net.wg.gui.lobby.components.data.VehicleButtonVO;
+   import net.wg.gui.lobby.components.data.VehicleTitleVO;
    
    public class ResearchRootVO extends DAAPIDataClass
    {
+      
+      private static const VEHICLE_BUTTON:String = "vehicleButton";
+      
+      private static const VEHICLE_TITLE:String = "vehicleTitle";
        
-      
-      public var tankTierStr:String = "";
-      
-      public var tankNameStr:String = "";
-      
-      public var tankTierStrSmall:String = "";
-      
-      public var tankNameStrSmall:String = "";
-      
-      public var typeIconPath:String = "";
-      
-      public var shopIconPath:String = "";
       
       public var isInteractive:Boolean = true;
       
@@ -32,22 +26,6 @@ package net.wg.gui.lobby.techtree.data
       
       public var itemPrices:Array = null;
       
-      public var compareBtnVisible:Boolean = true;
-      
-      public var compareBtnEnabled:Boolean = false;
-      
-      public var compareBtnLabel:String = "";
-      
-      public var compareBtnTooltip:String = "";
-      
-      public var previewBtnEnabled:Boolean = false;
-      
-      public var previewBtnLabel:String = "";
-      
-      public var isElite:Boolean = false;
-      
-      public var statusStr:String = "";
-      
       public var discountStr:String = "";
       
       public var rentBtnLabel:String = "";
@@ -60,11 +38,28 @@ package net.wg.gui.lobby.techtree.data
       
       public var nationChangeTooltip:String = "";
       
-      public var roleText:String = "";
+      private var _vehicleButton:VehicleButtonVO = null;
+      
+      private var _vehicleTitle:VehicleTitleVO = null;
       
       public function ResearchRootVO(param1:Object)
       {
          super(param1);
+      }
+      
+      override protected function onDataWrite(param1:String, param2:Object) : Boolean
+      {
+         if(param1 == VEHICLE_BUTTON)
+         {
+            this._vehicleButton = new VehicleButtonVO(param2);
+            return false;
+         }
+         if(param1 == VEHICLE_TITLE)
+         {
+            this._vehicleTitle = new VehicleTitleVO(param2);
+            return false;
+         }
+         return super.onDataWrite(param1,param2);
       }
       
       override protected function onDispose() : void
@@ -74,7 +69,27 @@ package net.wg.gui.lobby.techtree.data
             this.itemPrices.splice(0,this.itemPrices.length);
             this.itemPrices = null;
          }
+         if(this._vehicleButton)
+         {
+            this._vehicleButton.dispose();
+            this._vehicleButton = null;
+         }
+         if(this._vehicleTitle)
+         {
+            this._vehicleTitle.dispose();
+            this._vehicleTitle = null;
+         }
          super.onDispose();
+      }
+      
+      public function get vehicleTitle() : VehicleTitleVO
+      {
+         return this._vehicleTitle;
+      }
+      
+      public function get vehicleButton() : VehicleButtonVO
+      {
+         return this._vehicleButton;
       }
    }
 }

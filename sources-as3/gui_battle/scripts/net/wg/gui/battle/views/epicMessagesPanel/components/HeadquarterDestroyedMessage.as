@@ -1,9 +1,11 @@
 package net.wg.gui.battle.views.epicMessagesPanel.components
 {
    import flash.display.MovieClip;
+   import net.wg.data.constants.generated.GAME_MESSAGES_CONSTS;
    import net.wg.gui.battle.views.epicMessagesPanel.data.HeadquarterDestroyedMessageVO;
    import net.wg.gui.battle.views.gameMessagesPanel.components.MessageContainerBase;
    import net.wg.gui.battle.views.gameMessagesPanel.data.GameMessageVO;
+   import net.wg.gui.battle.views.gameMessagesPanel.events.GameMessagesPanelEvent;
    
    public class HeadquarterDestroyedMessage extends MessageContainerBase
    {
@@ -35,6 +37,13 @@ package net.wg.gui.battle.views.epicMessagesPanel.components
          this._msgDataVO = _loc2_;
          this.mainTextMc.titleTF.text = _loc2_.title;
          this.epicHQId.gotoAndStop(_loc2_.hqID);
+      }
+      
+      override protected function getPostIntroGameMessagesPanelEvent() : GameMessagesPanelEvent
+      {
+         var _loc1_:GameMessagesPanelEvent = super.getPostIntroGameMessagesPanelEvent();
+         _loc1_.messageModificator = GAME_MESSAGES_CONSTS.WITH_EVENT;
+         return _loc1_;
       }
       
       override protected function onDispose() : void

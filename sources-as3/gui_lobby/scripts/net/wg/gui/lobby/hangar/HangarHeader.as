@@ -6,9 +6,11 @@ package net.wg.gui.lobby.hangar
    import flash.geom.Rectangle;
    import net.wg.data.constants.Directions;
    import net.wg.data.constants.Linkages;
+   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.HANGAR_ALIASES;
    import net.wg.gui.lobby.battleRoyale.widget.data.BattleRoyaleHangarWidget;
    import net.wg.gui.lobby.battleRoyale.widget.data.BattleRoyaleTournamentWidget;
+   import net.wg.gui.lobby.epicBattles.components.EpicBattlesWidget;
    import net.wg.gui.lobby.hangar.data.HangarHeaderVO;
    import net.wg.gui.lobby.hangar.interfaces.IHangarHeader;
    import net.wg.gui.lobby.hangar.interfaces.IHeaderQuestsContainer;
@@ -59,9 +61,11 @@ package net.wg.gui.lobby.hangar
       
       private var _battleRoyaleTournamentWidget:BattleRoyaleTournamentWidget = null;
       
+      private var _epicBattlesWidget:EpicBattlesWidget = null;
+      
       private var _scheduler:IScheduler = null;
       
-      private var _isCompactLayout:Boolean = false;
+      private var _secondaryPointX:int = 0;
       
       public function HangarHeader()
       {
@@ -108,6 +112,7 @@ package net.wg.gui.lobby.hangar
          this._rankedBattlesWidget = null;
          this._battleRoyaleHangarWidget = null;
          this._battleRoyaleTournamentWidget = null;
+         this._epicBattlesWidget = null;
          this.mcBackground = null;
          this._data = null;
          this._scheduler.cancelTask(this.createBattlePass);
@@ -117,8 +122,8 @@ package net.wg.gui.lobby.hangar
       
       override protected function draw() : void
       {
-         var _loc1_:IHeaderFlagsEntryPoint = null;
-         var _loc2_:int = 0;
+         var _loc1_:int = 0;
+         var _loc2_:IHeaderFlagsEntryPoint = null;
          super.draw();
          if(this._data && isInvalid(InvalidationType.DATA))
          {
@@ -130,15 +135,16 @@ package net.wg.gui.lobby.hangar
          }
          if(isInvalid(InvalidationType.LAYOUT))
          {
+            _loc1_ = 0;
             if(this.secondaryEntryPoint.visible)
             {
-               _loc1_ = this._battlePassEntryPoint || this._rankedBattlesWidget || this._battleRoyaleHangarWidget;
-               if(_loc1_)
+               _loc2_ = this._battlePassEntryPoint || this._rankedBattlesWidget || this._battleRoyaleHangarWidget || this._epicBattlesWidget;
+               if(_loc2_)
                {
-                  _loc2_ = (_loc1_.width >> 1) + _loc1_.marginRight + (!!this._isCompactLayout ? SECONDARY_ENTRY_POINT_X_COMPACT : SECONDARY_ENTRY_POINT_X);
-                  this.secondaryEntryPoint.x = _loc2_;
-                  this.secondaryEntryPoint.y = _loc1_.marginTop;
-                  this.questsFlags.offsetRightSideX = _loc2_ + this.secondaryEntryPoint.width + SECONDARY_ENTRY_POINT_OFFSET;
+                  _loc1_ = (_loc2_.width >> 1) + _loc2_.marginRight + this._secondaryPointX;
+                  this.secondaryEntryPoint.x = _loc1_;
+                  this.secondaryEntryPoint.y = _loc2_.marginTop;
+                  this.questsFlags.offsetRightSideX = _loc1_ + this.secondaryEntryPoint.width + SECONDARY_ENTRY_POINT_OFFSET >> 0;
                }
                else
                {
@@ -161,23 +167,8 @@ package net.wg.gui.lobby.hangar
             return;
          }
          this._data = param1;
+         invalidateState();
          invalidateData();
-      }
-      
-      public function setStateSizeBoundaries(param1:int, param2:int) : void
-      {
-         this._isCompactLayout = param1 <= StageSizeBoundaries.WIDTH_1024 || param2 <= StageSizeBoundaries.HEIGHT_800;
-         invalidateLayout();
-      }
-      
-      public function as_setSecondaryEntryPointVisible(param1:Boolean) : void
-      {
-         if(this.secondaryEntryPoint.visible == param1)
-         {
-            return;
-         }
-         this.secondaryEntryPoint.visible = param1;
-         invalidateLayout();
       }
       
       public function as_createBattlePass() : void
@@ -186,17 +177,6 @@ package net.wg.gui.lobby.hangar
          {
             this._scheduler.cancelTask(this.createBattlePass);
             this._scheduler.scheduleOnNextFrame(this.createBattlePass);
-         }
-      }
-      
-      public function as_createRankedBattles() : void
-      {
-         if(this._rankedBattlesWidget == null)
-         {
-            this._rankedBattlesWidget = App.instance.utils.classFactory.getComponent(Linkages.RANKED_BATTLES_WIDGET_UI,RankedBattlesHangarWidget);
-            this.questsFlags.setEntryPoint(this._rankedBattlesWidget);
-            registerFlashComponentS(this._rankedBattlesWidget,HANGAR_ALIASES.RANKED_WIDGET);
-            invalidateLayout();
          }
       }
       
@@ -221,6 +201,30 @@ package net.wg.gui.lobby.hangar
          }
       }
       
+      public function as_createEpicWidget() : void
+      {
+         if(this._epicBattlesWidget == null)
+         {
+            this._epicBattlesWidget = App.instance.utils.classFactory.getComponent(Linkages.EPIC_WIDGET,EpicBattlesWidget);
+            this._epicBattlesWidget.name = HANGAR_ALIASES.EPIC_WIDGET;
+            registerFlashComponentS(this._epicBattlesWidget,HANGAR_ALIASES.EPIC_WIDGET);
+            addChildAt(this._epicBattlesWidget,getChildIndex(this.mcBackground) + 1);
+            this.updateSecondaryOffsets();
+            invalidateLayout();
+         }
+      }
+      
+      public function as_createRankedBattles() : void
+      {
+         if(this._rankedBattlesWidget == null)
+         {
+            this._rankedBattlesWidget = App.instance.utils.classFactory.getComponent(Linkages.RANKED_BATTLES_WIDGET_UI,RankedBattlesHangarWidget);
+            this.questsFlags.setEntryPoint(this._rankedBattlesWidget);
+            registerFlashComponentS(this._rankedBattlesWidget,HANGAR_ALIASES.RANKED_WIDGET);
+            invalidateLayout();
+         }
+      }
+      
       public function as_removeBattlePass() : void
       {
          if(this._battlePassEntryPoint != null)
@@ -234,23 +238,6 @@ package net.wg.gui.lobby.hangar
                unregisterFlashComponentS(HANGAR_ALIASES.BATTLE_PASSS_ENTRY_POINT);
             }
             this._battlePassEntryPoint = null;
-            invalidateLayout();
-         }
-      }
-      
-      public function as_removeRankedBattles() : void
-      {
-         if(this._rankedBattlesWidget != null)
-         {
-            if(this.questsFlags.getEntryPoint() is RankedBattlesHangarWidget)
-            {
-               this.questsFlags.setEntryPoint(null);
-            }
-            if(isFlashComponentRegisteredS(HANGAR_ALIASES.RANKED_WIDGET))
-            {
-               unregisterFlashComponentS(HANGAR_ALIASES.RANKED_WIDGET);
-            }
-            this._rankedBattlesWidget = null;
             invalidateLayout();
          }
       }
@@ -285,6 +272,48 @@ package net.wg.gui.lobby.hangar
          }
       }
       
+      public function as_removeEpicWidget() : void
+      {
+         if(this._epicBattlesWidget != null)
+         {
+            if(isFlashComponentRegisteredS(HANGAR_ALIASES.EPIC_WIDGET))
+            {
+               unregisterFlashComponentS(HANGAR_ALIASES.EPIC_WIDGET);
+            }
+            removeChild(this._epicBattlesWidget);
+            this._epicBattlesWidget = null;
+            this.updateSecondaryOffsets();
+            invalidateLayout();
+         }
+      }
+      
+      public function as_removeRankedBattles() : void
+      {
+         if(this._rankedBattlesWidget != null)
+         {
+            if(this.questsFlags.getEntryPoint() is RankedBattlesHangarWidget)
+            {
+               this.questsFlags.setEntryPoint(null);
+            }
+            if(isFlashComponentRegisteredS(HANGAR_ALIASES.RANKED_WIDGET))
+            {
+               unregisterFlashComponentS(HANGAR_ALIASES.RANKED_WIDGET);
+            }
+            this._rankedBattlesWidget = null;
+            invalidateLayout();
+         }
+      }
+      
+      public function as_setSecondaryEntryPointVisible(param1:Boolean) : void
+      {
+         if(this.secondaryEntryPoint.visible == param1)
+         {
+            return;
+         }
+         this.secondaryEntryPoint.visible = param1;
+         invalidateLayout();
+      }
+      
       public function getLayoutProperties() : Vector.<HelpLayoutVO>
       {
          var _loc1_:HelpLayoutVO = new HelpLayoutVO();
@@ -305,10 +334,10 @@ package net.wg.gui.lobby.hangar
          return this.questsFlags.getQuestGroupByID(param1);
       }
       
-      private function onEntryPointResizeHandler(param1:Event) : void
+      public function setStateSizeBoundaries(param1:int, param2:int) : void
       {
+         this.updateSecondaryOffsets();
          invalidateLayout();
-         validateNow();
       }
       
       private function createBattlePass() : void
@@ -317,6 +346,26 @@ package net.wg.gui.lobby.hangar
          this.questsFlags.setEntryPoint(this._battlePassEntryPoint);
          registerFlashComponentS(this._battlePassEntryPoint,HANGAR_ALIASES.BATTLE_PASSS_ENTRY_POINT);
          invalidateLayout();
+      }
+      
+      private function updateSecondaryOffsets() : void
+      {
+         var _loc1_:Boolean = false;
+         if(this._epicBattlesWidget != null)
+         {
+            this._secondaryPointX = Values.ZERO;
+         }
+         else
+         {
+            _loc1_ = width <= StageSizeBoundaries.WIDTH_1024 || height <= StageSizeBoundaries.HEIGHT_800;
+            this._secondaryPointX = !!_loc1_ ? int(SECONDARY_ENTRY_POINT_X_COMPACT) : int(SECONDARY_ENTRY_POINT_X);
+         }
+      }
+      
+      private function onEntryPointResizeHandler(param1:Event) : void
+      {
+         invalidateLayout();
+         validateNow();
       }
       
       private function onBtnHeaderQuestClickHandler(param1:HeaderQuestsEvent) : void

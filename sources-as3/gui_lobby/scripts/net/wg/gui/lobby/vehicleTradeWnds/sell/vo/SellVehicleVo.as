@@ -33,7 +33,9 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell.vo
       
       public var isRented:Boolean = false;
       
-      public var levelStr:String = "";
+      public var roleStr:String = "";
+      
+      public var roleIcon:String = "";
       
       public var description:String = "";
       
@@ -54,6 +56,8 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell.vo
       public var crewTooltip:String = "";
       
       public var barracksDropDownData:Array = null;
+      
+      public var isPostProgressionUnlocked:Boolean = false;
       
       public function SellVehicleVo(param1:Object)
       {

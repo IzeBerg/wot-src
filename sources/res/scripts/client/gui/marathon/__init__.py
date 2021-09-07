@@ -1,1 +1,1 @@
-pass
+from gui.marathon.bts_marathon import BtsMarathon

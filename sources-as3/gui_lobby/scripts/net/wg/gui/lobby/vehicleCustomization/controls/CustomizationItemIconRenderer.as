@@ -3,6 +3,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls
    import flash.display.Sprite;
    import flash.events.MouseEvent;
    import net.wg.data.constants.Values;
+   import net.wg.data.constants.generated.CUSTOMIZATION_CONSTS;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
    import net.wg.gui.components.controls.Image;
    import net.wg.gui.components.controls.UILoaderAlt;
@@ -26,7 +27,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls
       private static const ICON_BACKGROUND_OFFSET:int = 2;
        
       
-      public var nonHistoricIcon:Image = null;
+      public var customizationContentTypeIcon:Image = null;
       
       public var itemIcon:UILoaderAlt = null;
       
@@ -45,8 +46,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls
       override protected function configUI() : void
       {
          super.configUI();
-         this.nonHistoricIcon.source = RES_ICONS.MAPS_ICONS_BUTTONS_NON_HISTORICAL;
-         this.nonHistoricIcon.visible = false;
+         this.customizationContentTypeIcon.visible = false;
          this.itemIcon.visible = false;
          this.itemIcon.addEventListener(UILoaderEvent.COMPLETE,this.onItemIconCompleteHandler);
          this.iconBg.height = ICON_HEIGHT;
@@ -64,14 +64,27 @@ package net.wg.gui.lobby.vehicleCustomization.controls
          {
             if(isInvalid(InvalidationType.DATA))
             {
-               this.nonHistoricIcon.visible = !this._data.isHistoric;
+               if(this._data.customizationDisplayType == CUSTOMIZATION_CONSTS.NON_HISTORICAL_TYPE)
+               {
+                  this.customizationContentTypeIcon.source = RES_ICONS.MAPS_ICONS_BUTTONS_NON_HISTORICAL;
+                  this.customizationContentTypeIcon.visible = true;
+               }
+               else if(this._data.customizationDisplayType == CUSTOMIZATION_CONSTS.FANTASTICAL_TYPE)
+               {
+                  this.customizationContentTypeIcon.source = RES_ICONS.MAPS_ICONS_BUTTONS_FANTASTICAL;
+                  this.customizationContentTypeIcon.visible = true;
+               }
+               else
+               {
+                  this.customizationContentTypeIcon.visible = false;
+               }
                this.itemIcon.source = this._data.icon;
             }
             if(isInvalid(InvalidationType.SIZE))
             {
                _loc1_ = (!!this._data.isWide ? ICON_WIDE_WIDTH : ICON_SHORT_WIDTH) + ICON_BACKGROUND_OFFSET;
                this.iconBg.width = _loc1_;
-               this.nonHistoricIcon.x = this.iconBg.x + _loc1_ + NON_HISTORIC_ICON_OFFSET ^ 0;
+               this.customizationContentTypeIcon.x = this.iconBg.x + _loc1_ + NON_HISTORIC_ICON_OFFSET ^ 0;
                _loc2_ = this.itemIcon.width != this.itemIcon.height;
                this.itemIcon.width = !!_loc2_ ? Number(ICON_WIDE_WIDTH) : Number(ICON_SHORT_WIDTH);
                this.itemIcon.height = ICON_HEIGHT;
@@ -84,8 +97,8 @@ package net.wg.gui.lobby.vehicleCustomization.controls
       {
          removeEventListener(MouseEvent.ROLL_OVER,this.onMouseRollOverHandler);
          removeEventListener(MouseEvent.ROLL_OUT,this.onMouseRollOutHandler);
-         this.nonHistoricIcon.dispose();
-         this.nonHistoricIcon = null;
+         this.customizationContentTypeIcon.dispose();
+         this.customizationContentTypeIcon = null;
          this.itemIcon.removeEventListener(UILoaderEvent.COMPLETE,this.onItemIconCompleteHandler);
          this.itemIcon.dispose();
          this.itemIcon = null;

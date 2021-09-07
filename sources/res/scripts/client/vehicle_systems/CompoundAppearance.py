@@ -5,6 +5,7 @@ from Event import Event
 from debug_utils import LOG_ERROR
 from aih_constants import ShakeReason
 from VehicleStickers import VehicleStickers
+from shared_utils import findFirst
 from vehicle_systems.components.terrain_circle_component import TerrainCircleComponent
 from vehicle_systems.components import engine_state
 from vehicle_systems.stricted_loading import makeCallbackWeak, loadingPriority
@@ -60,6 +61,8 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         self.__inSpeedTreeCollision = False
         self.__isConstructed = False
         self.__tmpGameObjects = {}
+        self.__engineStarted = False
+        self.__turbochargerSoundPlaying = False
         return
 
     def setVehicle(self, vehicle):
@@ -122,6 +125,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         if not self.isObserver:
             self.__dirtUpdateTime = BigWorld.time()
         BigWorld.player().arena.onPeriodChange += self.__arenaPeriodChanged
+        BigWorld.player().arena.onVehicleUpdated += self.__vehicleUpdated
         BigWorld.player().inputHandler.onCameraChanged += self._onCameraChanged
         if self.detailedEngineState is not None:
             engine_state.checkEngineStart(self.detailedEngineState, BigWorld.player().arena.period)
@@ -132,6 +136,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         if not self.__activated:
             return
         else:
+            self.__engineStarted = False
             self.__activated = False
             self.highlighter.removeHighlight()
             super(CompoundAppearance, self).deactivate()
@@ -151,6 +156,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
             self._vehicle.model = None
             self.compoundModel.matrix = Math.Matrix()
             self._vehicle = None
+            BigWorld.player().arena.onVehicleUpdated -= self.__vehicleUpdated
             BigWorld.player().arena.onPeriodChange -= self.__arenaPeriodChanged
             BigWorld.player().inputHandler.onCameraChanged -= self._onCameraChanged
             return
@@ -171,15 +177,9 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
 
     def _onEngineStart(self):
         super(CompoundAppearance, self)._onEngineStart()
-        hasTurbocharger = False
+        self.__engineStarted = True
         if self._vehicle is not None:
-            for device in self.getVehicle().getOptionalDevices():
-                if device is not None and device.groupName == 'turbocharger':
-                    hasTurbocharger = True
-
-        if hasTurbocharger and self.engineAudition is not None:
-            engineSoundObject = self.engineAudition.getSoundObject(TankSoundObjectsIndexes.ENGINE)
-            engineSoundObject.play('cons_turbine')
+            self.__setTurbochargerSound(self._vehicle.getOptionalDevices())
         return
 
     def __destroyEngineAudition(self):
@@ -187,6 +187,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         if self.detailedEngineState is not None:
             self.detailedEngineState.onEngineStart = None
             self.detailedEngineState.onStateChanged = None
+        self.__turbochargerSoundPlaying = False
         return
 
     def __processPostmortemComponents(self):
@@ -406,20 +407,24 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         return
 
     def onChassisDestroySound(self, isLeft, destroy, wheelsIdx=-1):
-        if not self._vehicle.isEnteringWorld and self.engineAudition:
-            if wheelsIdx == -1:
-                if isLeft:
-                    position = Math.Matrix(self.compoundModel.node(TankNodeNames.TRACK_LEFT_MID)).translation
+        if self._vehicle is None:
+            return
+        else:
+            if not self._vehicle.isEnteringWorld and self.engineAudition:
+                if wheelsIdx == -1:
+                    if isLeft:
+                        position = Math.Matrix(self.compoundModel.node(TankNodeNames.TRACK_LEFT_MID)).translation
+                    else:
+                        position = Math.Matrix(self.compoundModel.node(TankNodeNames.TRACK_RIGHT_MID)).translation
+                    materialType = 0
                 else:
-                    position = Math.Matrix(self.compoundModel.node(TankNodeNames.TRACK_RIGHT_MID)).translation
-                materialType = 0
-            else:
-                position = self.wheelsAnimator.getWheelWorldTransform(wheelsIdx).translation
-                materialType = 0 if self.wheelsAnimator.isWheelDeflatable(wheelsIdx) else 1
-            vehicle = self.getVehicle()
-            if not destroy and vehicle.isPlayerVehicle and any(device.groupName == 'extraHealthReserve' for device in vehicle.getOptionalDevices() if device is not None):
-                SoundGroups.g_instance.playSound2D('cons_springs')
-            self.engineAudition.onChassisDestroy(position, destroy, materialType)
+                    position = self.wheelsAnimator.getWheelWorldTransform(wheelsIdx).translation
+                    materialType = 0 if self.wheelsAnimator.isWheelDeflatable(wheelsIdx) else 1
+                vehicle = self.getVehicle()
+                if not destroy and vehicle.isPlayerVehicle and any(device.groupName == 'extraHealthReserve' for device in vehicle.getOptionalDevices() if device is not None):
+                    SoundGroups.g_instance.playSound2D('cons_springs')
+                self.engineAudition.onChassisDestroy(position, destroy, materialType)
+            return
 
     def turretDamaged(self):
         player = BigWorld.player()
@@ -714,3 +719,19 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
             return -wheelSteeringMax
         else:
             return 0
+
+    def __setTurbochargerSound(self, optDevices):
+        isEnabled = findFirst(lambda d: d is not None and d.groupName == 'turbocharger', optDevices) is not None
+        if isEnabled == self.__turbochargerSoundPlaying:
+            return
+        else:
+            engineSoundObject = self.engineAudition.getSoundObject(TankSoundObjectsIndexes.ENGINE)
+            if self.engineAudition is not None:
+                engineSoundObject.play('cons_turbine_start' if isEnabled else 'cons_turbine_stop')
+                self.__turbochargerSoundPlaying = isEnabled
+            return
+
+    def __vehicleUpdated(self, vehicleId):
+        if self._vehicle is not None and self._vehicle.id == vehicleId and self.__engineStarted:
+            self.__setTurbochargerSound(self._vehicle.getOptionalDevices())
+        return

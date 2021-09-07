@@ -93,7 +93,10 @@ package net.wg.gui.battle.views.consumablesPanel
          isAllowedToShowToolTipOnDisabledState = true;
          hideToolTipOnClickActions = false;
          addFrameScript(END_RELOADING_FRAME,this.reloadingEnd);
-         TextFieldEx.setNoTranslate(this.quantityField,true);
+         if(this.quantityField)
+         {
+            TextFieldEx.setNoTranslate(this.quantityField,true);
+         }
       }
       
       override protected function configUI() : void
@@ -168,6 +171,14 @@ package net.wg.gui.battle.views.consumablesPanel
          {
             this.iconLoader.transform.colorTransform = param1;
          }
+      }
+      
+      public function updateLockedInformation(param1:int, param2:String) : void
+      {
+      }
+      
+      public function updateLevelInformation(param1:int) : void
+      {
       }
       
       public function setCoolDownPosAsPercent(param1:Number) : void

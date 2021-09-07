@@ -90,5 +90,10 @@ package net.wg.gui.battle.ranked
       {
          this.removeRoleDescription();
       }
+      
+      override protected function get prebattleAmmunitionPanelAvailable() : Boolean
+      {
+         return true;
+      }
    }
 }

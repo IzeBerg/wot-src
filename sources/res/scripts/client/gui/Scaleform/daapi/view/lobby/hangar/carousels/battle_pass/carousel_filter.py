@@ -1,6 +1,6 @@
 from account_helpers.AccountSettings import CAROUSEL_FILTER_1, CAROUSEL_FILTER_2, BATTLEPASS_CAROUSEL_FILTER_1
 from account_helpers.AccountSettings import CAROUSEL_FILTER_CLIENT_1, BATTLEPASS_CAROUSEL_FILTER_CLIENT_1
-from gui.Scaleform.daapi.view.common.vehicle_carousel.carousel_filter import CarouselFilter, BasicCriteriesGroup, EventCriteriesGroup
+from gui.Scaleform.daapi.view.common.vehicle_carousel.carousel_filter import CarouselFilter, RoleCriteriesGroup, EventCriteriesGroup
 from gui.shared.utils.requesters import REQ_CRITERIA
 from helpers import dependency
 from skeletons.gui.game_control import IBattlePassController
@@ -33,7 +33,7 @@ class BattlePassCarouselFilter(CarouselFilter):
         self.currentSeasonID = currentSeason
 
 
-class BattlePassCriteriesGroup(BasicCriteriesGroup):
+class BattlePassCriteriesGroup(RoleCriteriesGroup):
     __battlePassController = dependency.descriptor(IBattlePassController)
 
     def update(self, filters):

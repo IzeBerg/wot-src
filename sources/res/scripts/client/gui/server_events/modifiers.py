@@ -1275,6 +1275,18 @@ class HeroTankAdventCalendarRedirectModifier(ActionModifier):
         return self._params.get('enabled', '').lower() in ('1', 'yes', 'true')
 
 
+class LobbyHeaderTabCounterModifier(ActionModifier):
+
+    def __init__(self, _, params):
+        super(LobbyHeaderTabCounterModifier, self).__init__('LobbyHeaderTabCounterModification', params, modType=ACTION_MODIFIER_TYPE.AVAILABILITY)
+
+    def getAlias(self):
+        return self._params.get('alias', '')
+
+    def getCounterValue(self):
+        return self._params.get('counterValue', '')
+
+
 _MODIFIERS = (
  (
   'mul_EconomicsParams', EconomicsMul),
@@ -1355,7 +1367,9 @@ _MODIFIERS = (
  (
   'AdventCalendarForced', CalendarSplashModifier),
  (
-  'HeroTankAdventCalendarRedirect', HeroTankAdventCalendarRedirectModifier))
+  'HeroTankAdventCalendarRedirect', HeroTankAdventCalendarRedirectModifier),
+ (
+  'LobbyHeaderTabCounterModification', LobbyHeaderTabCounterModifier))
 _MODIFIERS_DICT = dict(_MODIFIERS)
 _MODIFIERS_ORDER = dict((n, idx) for idx, (n, _) in enumerate(_MODIFIERS))
 

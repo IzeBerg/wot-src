@@ -12,8 +12,10 @@ class CustomModeName(object):
 
 COLUMN_SETTINGS = {PREBATTLE_ACTION_NAME.RANDOM: (
                                 ModeSelectorColumns.COLUMN_0, -1), 
+   PREBATTLE_ACTION_NAME.EPIC: (
+                              ModeSelectorColumns.COLUMN_1, 10), 
    PREBATTLE_ACTION_NAME.MAPBOX: (
-                                ModeSelectorColumns.COLUMN_1, 10), 
+                                ModeSelectorColumns.COLUMN_2, 30), 
    PREBATTLE_ACTION_NAME.RANKED: (
                                 ModeSelectorColumns.COLUMN_2, 10), 
    PREBATTLE_ACTION_NAME.BATTLE_ROYALE: (
@@ -23,7 +25,9 @@ COLUMN_SETTINGS = {PREBATTLE_ACTION_NAME.RANDOM: (
    PREBATTLE_ACTION_NAME.SPEC_BATTLES_LIST: (
                                            ModeSelectorColumns.COLUMN_3, 20), 
    PREBATTLE_ACTION_NAME.TRAININGS_LIST: (
-                                        ModeSelectorColumns.COLUMN_3, 40), 
+                                        ModeSelectorColumns.COLUMN_3, 30), 
+   PREBATTLE_ACTION_NAME.MAPS_TRAINING: (
+                                       ModeSelectorColumns.COLUMN_3, 40), 
    CustomModeName.BOOTCAMP: (
                            ModeSelectorColumns.COLUMN_3, 50), 
    CustomModeName.DEFAULT: (

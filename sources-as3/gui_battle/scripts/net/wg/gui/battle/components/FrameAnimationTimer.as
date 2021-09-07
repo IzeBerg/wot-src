@@ -121,7 +121,10 @@ package net.wg.gui.battle.components
             this.cleanTimerTextValues();
             this._timerTextValues = new Vector.<String>(this._totalFrames + 1,true);
          }
-         this._lastTimerIndex = this._progressValues.length - 1;
+         if(this._progressValues != null)
+         {
+            this._lastTimerIndex = this._progressValues.length - 1;
+         }
       }
       
       protected function getStartFrame() : int
@@ -283,7 +286,7 @@ package net.wg.gui.battle.components
       private function updateCurrentTime() : void
       {
          this._currentTimerIndex = this._currentTime * this._totalFrames / this._totalTime;
-         if(this._currentTimerIndex >= this._progressValues.length)
+         if(this._progressValues != null && this._currentTimerIndex >= this._progressValues.length)
          {
             this._currentTimerIndex = this._progressValues.length - 1;
          }

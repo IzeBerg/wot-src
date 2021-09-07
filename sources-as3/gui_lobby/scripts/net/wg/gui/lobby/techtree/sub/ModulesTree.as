@@ -21,6 +21,7 @@ package net.wg.gui.lobby.techtree.sub
    import net.wg.gui.lobby.techtree.nodes.FakeNode;
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.interfaces.entity.IFocusContainer;
+   import net.wg.utils.StageSizeBoundaries;
    import scaleform.clik.constants.InvalidationType;
    
    public class ModulesTree extends UIComponentEx implements IResearchContainer, IFocusContainer
@@ -35,6 +36,8 @@ package net.wg.gui.lobby.techtree.sub
       private static const CYCLIC_REFERENCE_ERROR:String = ERROR + "Has cyclic reference.";
       
       private static const INV_RENDERERS_LINES_STATE:String = "invRenderersLines";
+      
+      private static const CONTENT_Y_OFFSET_SMALL:int = 15;
        
       
       public var yRatio:int = 90;
@@ -50,6 +53,10 @@ package net.wg.gui.lobby.techtree.sub
       public var rGraphics:ModulesGraphics;
       
       protected var _dataProvider:IResearchDataProvider;
+      
+      protected var _viewWidth:Number = 1280;
+      
+      protected var _viewHeight:Number = 800;
       
       private var _itemNodeClass:Class = null;
       
@@ -266,14 +273,6 @@ package net.wg.gui.lobby.techtree.sub
          param1.addEventListener(TechTreeEvent.STATE_CHANGED,this.onRendererStateChangedHandler,false,0,true);
       }
       
-      private function onRendererStateChangedHandler(param1:TechTreeEvent) : void
-      {
-         if(NodeStateCollection.instance.isRedrawResearchLines(param1.nodeState))
-         {
-            invalidate(INV_RENDERERS_LINES_STATE);
-         }
-      }
-      
       protected function onCircleReferenceDetected() : void
       {
       }
@@ -356,57 +355,58 @@ package net.wg.gui.lobby.techtree.sub
       
       protected function updateLayout() : void
       {
-         var _loc8_:Vector.<IRenderer> = null;
-         var _loc9_:Point = null;
-         var _loc12_:ResearchDisplayInfo = null;
-         var _loc14_:int = 0;
-         var _loc15_:IRenderer = null;
-         var _loc17_:int = 0;
+         var _loc9_:Vector.<IRenderer> = null;
+         var _loc10_:Point = null;
+         var _loc13_:ResearchDisplayInfo = null;
+         var _loc15_:int = 0;
+         var _loc16_:IRenderer = null;
          var _loc18_:int = 0;
+         var _loc19_:int = 0;
          var _loc1_:Object = this._levelsBuilder.levelDimension;
-         var _loc2_:Number = this.rootRenderer.getY();
-         var _loc3_:Number = this.rootRenderer.getOutX();
-         var _loc4_:Array = new Array(_loc1_.column);
-         var _loc5_:Number = (_loc1_.column - 1) * this.yRatio;
-         _loc4_[0] = _loc2_ - (_loc5_ >> 1);
-         var _loc6_:int = _loc1_.column;
-         var _loc7_:int = 1;
-         while(_loc7_ < _loc6_)
+         var _loc2_:Boolean = this._viewHeight < StageSizeBoundaries.HEIGHT_900;
+         var _loc3_:Number = this.rootRenderer.getY() + (!!_loc2_ ? CONTENT_Y_OFFSET_SMALL : 0);
+         var _loc4_:Number = this.rootRenderer.getOutX();
+         var _loc5_:Array = new Array(_loc1_.column);
+         var _loc6_:Number = (_loc1_.column - 1) * this.yRatio;
+         _loc5_[0] = _loc3_ - (_loc6_ >> 1);
+         var _loc7_:int = _loc1_.column;
+         var _loc8_:int = 1;
+         while(_loc8_ < _loc7_)
          {
-            _loc4_[_loc7_] = _loc4_[_loc7_ - 1] + this.yRatio;
-            _loc7_++;
+            _loc5_[_loc8_] = _loc5_[_loc8_ - 1] + this.yRatio;
+            _loc8_++;
          }
-         var _loc10_:Number = _loc3_ + this.xRatio;
-         var _loc11_:Number = 0;
-         var _loc13_:Number = this.rootRenderer.getOutX() + this.nextLevelOffset;
-         var _loc16_:int = this.renderers.length;
-         _loc14_ = 1;
-         while(_loc14_ < _loc16_)
+         var _loc11_:Number = _loc4_ + this.xRatio;
+         var _loc12_:Number = 0;
+         var _loc14_:Number = this.rootRenderer.getOutX() + this.nextLevelOffset;
+         var _loc17_:int = this.renderers.length;
+         _loc15_ = 1;
+         while(_loc15_ < _loc17_)
          {
-            _loc8_ = this.renderers[_loc14_];
-            _loc17_ = _loc8_.length;
-            _loc18_ = 0;
-            while(_loc18_ < _loc17_)
+            _loc9_ = this.renderers[_loc15_];
+            _loc18_ = _loc9_.length;
+            _loc19_ = 0;
+            while(_loc19_ < _loc18_)
             {
-               _loc15_ = _loc8_[_loc18_];
-               if(_loc15_ != null)
+               _loc16_ = _loc9_[_loc19_];
+               if(_loc16_ != null)
                {
-                  _loc12_ = _loc15_.getDisplayInfo() as ResearchDisplayInfo;
-                  if(_loc12_ != null && _loc12_.isDrawVehicle())
+                  _loc13_ = _loc16_.getDisplayInfo() as ResearchDisplayInfo;
+                  if(_loc13_ != null && _loc13_.isDrawVehicle())
                   {
-                     _loc9_ = new Point(_loc13_,_loc4_[_loc18_] - _loc15_.getRatioY());
+                     _loc10_ = new Point(_loc14_,_loc5_[_loc19_] - _loc16_.getRatioY());
                   }
                   else
                   {
-                     _loc9_ = new Point(_loc10_,_loc4_[_loc18_] - _loc15_.getRatioY());
-                     _loc11_ = Math.max(_loc15_.getActualWidth(),_loc11_);
+                     _loc10_ = new Point(_loc11_,_loc5_[_loc19_] - _loc16_.getRatioY());
+                     _loc12_ = Math.max(_loc16_.getActualWidth(),_loc12_);
                   }
-                  _loc15_.setPosition(_loc9_);
+                  _loc16_.setPosition(_loc10_);
                }
-               _loc18_++;
+               _loc19_++;
             }
-            _loc10_ += this.xRatio + _loc11_;
-            _loc14_++;
+            _loc11_ += this.xRatio + _loc12_;
+            _loc15_++;
          }
       }
       
@@ -642,12 +642,12 @@ package net.wg.gui.lobby.techtree.sub
          return this._positionByID;
       }
       
-      private function get renderers() : Vector.<Vector.<IRenderer>>
+      protected function get renderers() : Vector.<Vector.<IRenderer>>
       {
          return this._renderers;
       }
       
-      private function set renderers(param1:Vector.<Vector.<IRenderer>>) : void
+      protected function set renderers(param1:Vector.<Vector.<IRenderer>>) : void
       {
          if(param1 == this._renderers)
          {
@@ -658,6 +658,14 @@ package net.wg.gui.lobby.techtree.sub
             this.renderers.splice(0,this.renderers.length);
          }
          this._renderers = param1;
+      }
+      
+      private function onRendererStateChangedHandler(param1:TechTreeEvent) : void
+      {
+         if(NodeStateCollection.instance.isRedrawResearchLines(param1.nodeState))
+         {
+            invalidate(INV_RENDERERS_LINES_STATE);
+         }
       }
       
       private function onDataProviderDataBuildCompleteHandler(param1:TechTreeEvent) : void

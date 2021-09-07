@@ -136,7 +136,7 @@ package net.wg.gui.battle.views.battleMessenger
       
       private var _defaultWidth:int = -1;
       
-      private var _availableWidth:int;
+      private var _availableWidth:int = 360;
       
       private var _hoverWidth:int = 0;
       
@@ -155,7 +155,6 @@ package net.wg.gui.battle.views.battleMessenger
          this._messages = new Vector.<BattleMessage>();
          this._scheduler = App.utils.scheduler;
          this._battleSmileyMap = new BattleSmileyMap();
-         this._availableWidth = BattleMessage.DEFAULT_TEXT_WIDTH;
          super();
          this._defaultWidth = this.hit.width;
          this.drawRect(this.hoverMC,0,0,HOVER_SIZE,HOVER_SIZE);

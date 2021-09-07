@@ -30,10 +30,10 @@ package net.wg.infrastructure.base.meta.impl
          super.onDispose();
       }
       
-      public function videoFinishedS() : void
+      public function videoFinishedS(param1:Boolean = false) : void
       {
          App.utils.asserter.assertNotNull(this.videoFinished,"videoFinished" + Errors.CANT_NULL);
-         this.videoFinished();
+         this.videoFinished(param1);
       }
       
       public function handleErrorS(param1:String) : void

@@ -263,7 +263,7 @@ msgstr "Вы уверены, что хотите прервать обучени
 msgid "bootcamp/skip/message"
 msgstr ""
 "Покинув Учебный полигон, вы не получите %(premiumType)s премиум аккаунт, "
-"игровое золото и машину со 100%% экипажем."
+"игровое золото и машину со 100%%-м экипажем."
 
 msgid "bootcamp/skip/referral/cancel"
 msgstr "Отменить"
@@ -274,7 +274,7 @@ msgstr "Вы уверены, что хотите прервать обучени
 msgid "bootcamp/skip/referral/message"
 msgstr ""
 "Вы продолжите участвовать в реферальной программе вместе с командиром, но не "
-"получите %(premiumType)s премиум аккаунт, игровое золото и машину со 100%% "
+"получите %(premiumType)s премиум аккаунт, игровое золото и машину со 100%%-м "
 "экипажем за прохождение Учебного полигона."
 
 msgid "bootcamp/skip/referral/submit"
@@ -298,7 +298,7 @@ msgstr "Пройти обучение"
 msgid "bootcamp/start/message"
 msgstr ""
 "Завершив обучение, вы получите %(premiumType)s премиум аккаунт, игровое "
-"золото и машину со 100%% экипажем."
+"золото и машину со 100%%-м экипажем."
 
 msgid "bootcamp/start/submit"
 msgstr "Приступить"
@@ -703,38 +703,45 @@ msgstr "Установить"
 msgid "confirmBattleBoosterInstallNotSuitable/title"
 msgstr "Установка инструкции"
 
+msgid "confirmBuy/title"
+msgstr "Купить «%(moduleName)s»?"
+
 msgid "confirmBuyAndInstall/cancel"
 msgstr "Отменить"
 
-msgid "confirmBuyAndInstall/conflictedEqs"
+msgid "confirmBuyAndInstall/depotMessage"
+msgstr "Модуль будет отправлен на Склад."
+
+msgid "confirmBuyAndInstall/insufficientFundsTooltip/amount"
+msgstr "На покупку не хватает:"
+
+msgid "confirmBuyAndInstall/insufficientFundsTooltip/body"
 msgstr ""
-"Снаряжение «%(eqs)s» %(color_tag_open)sнесовместимо%(color_tag_close)s с "
-"устанавливаемым модулем и будет отправлено на Склад."
+"Заработайте кредиты в бою, продайте излишки со Склада или обменяйте золото."
+
+msgid "confirmBuyAndInstall/insufficientFundsTooltip/header"
+msgstr "Недостаточно кредитов"
 
 msgid "confirmBuyAndInstall/message"
+msgstr "Стоимость модуля:"
+
+msgid "confirmBuyAndInstall/sellMessage"
 msgstr ""
-"Купить и установить «%(typeString)s %(userString)s» на машину за "
-"%(color_tag_open)s%(value)s%(color_tag_close)s"
+"Продать заменяемый модуль «%(previousModuleName)» за: %(previousModulePrice)"
+
+msgid "confirmBuyAndInstall/soldModuleInfo/compatibleTanks"
+msgstr "Этот модуль совместим с:"
+
+msgid "confirmBuyAndInstall/soldModuleInfo/description"
+msgstr ""
+"Вы можете продать модуль сейчас или поместить его на Склад, где позже "
+"сможете продать его или установить обратно."
 
 msgid "confirmBuyAndInstall/submit"
 msgstr "Купить"
 
 msgid "confirmBuyAndInstall/title"
-msgstr "Подтверждение покупки"
-
-msgid "confirmBuyNotInstall/cancel"
-msgstr "Отменить"
-
-msgid "confirmBuyNotInstall/message"
-msgstr ""
-"Купить «%(typeString)s %(userString)s» за %(color_tag_open)s%(value)s"
-"%(color_tag_close)s%(currencyIcon)s и поместить на Склад?"
-
-msgid "confirmBuyNotInstall/submit"
-msgstr "Купить"
-
-msgid "confirmBuyNotInstall/title"
-msgstr "Подтверждение покупки"
+msgstr "Купить и установить «%(moduleName)s»?"
 
 msgid "confirmEquipmentBuyInstall/submit"
 msgstr "Купить и установить оборудование «%(equipment)s»?"
@@ -793,7 +800,7 @@ msgid "confirmExchangeDialog/exchangeXp/needItemsText"
 msgstr "На исследование не хватает: %(value)s"
 
 msgid "confirmExchangeDialog/exchangeXp/submit"
-msgstr "Перевести"
+msgstr "Выбрать технику"
 
 msgid "confirmExchangeDialog/exchangeXp/title"
 msgstr "Подтверждение обмена для исследования"
@@ -1145,6 +1152,15 @@ msgstr "Получена награда «Герой нашего времени
 msgid "dedication/sub-headline"
 msgstr "За {battlesNum} сыгранных боёв"
 
+msgid "dialogTemplates/cancel"
+msgstr "Отменить"
+
+msgid "dialogTemplates/confirm"
+msgstr "Подтвердить"
+
+msgid "dialogTemplates/ok"
+msgstr "Так точно!"
+
 msgid "disconnect/cancel"
 msgstr "Нет"
 
@@ -1463,7 +1479,7 @@ msgid "freeSlotConfirmation/cancel"
 msgstr "Отменить"
 
 msgid "freeSlotConfirmation/message"
-msgstr "Добавить бесплатный слот в Ангаре, используя доступную 100% скидку?"
+msgstr "Добавить бесплатный слот в Ангаре, используя доступную 100%-ю скидку?"
 
 msgid "freeSlotConfirmation/submit"
 msgstr "Добавить"
@@ -1505,33 +1521,6 @@ msgstr "Продолжить"
 
 msgid "freeXPInfo/title"
 msgstr "Опыт в игре"
-
-msgid "frontline/dialogPrestigePointsConvert/cancel"
-msgstr "Отменить"
-
-msgid "frontline/dialogPrestigePointsConvert/haveAllTank/cancel"
-msgstr "Отменить"
-
-msgid "frontline/dialogPrestigePointsConvert/haveAllTank/message"
-msgstr ""
-"Вы уверены, что хотите обменять очки доблести ({points}) на {gold} и {bons}?"
-
-msgid "frontline/dialogPrestigePointsConvert/haveAllTank/submit"
-msgstr "Обменять"
-
-msgid "frontline/dialogPrestigePointsConvert/haveAllTank/title"
-msgstr "Подтвердите обмен очков доблести"
-
-msgid "frontline/dialogPrestigePointsConvert/message"
-msgstr ""
-"У вас достаточно очков доблести для покупки техники.\n"
-"Вы уверены, что хотите обменять очки доблести ({points}) на {gold} и {bons}?"
-
-msgid "frontline/dialogPrestigePointsConvert/submit"
-msgstr "Обменять"
-
-msgid "frontline/dialogPrestigePointsConvert/title"
-msgstr "Подтвердите обмен очков доблести"
 
 msgid "gammaDialog/cancel"
 msgstr "Начать"
@@ -1861,6 +1850,14 @@ msgstr "Перейти"
 msgid "loginToPeripheryAndRemember/title"
 msgstr "Сохранить настройки сервера?"
 
+msgid "lowAlternativeAmmoAutoLoad/message"
+msgstr ""
+"В боекомплекте альтернативной комплектации недостаточно снарядов. "
+"Подтвердить выход в бой?"
+
+msgid "lowAlternativeAmmoAutoLoad/title"
+msgstr "Неполный боекомплект"
+
 msgid "lowAmmo/cancel"
 msgstr "Отменить"
 
@@ -1941,7 +1938,7 @@ msgid "minimapAlphaNotification/submit"
 msgstr "Включить"
 
 msgid "minimapAlphaNotification/title"
-msgstr "Прозрачность миникарты"
+msgstr "Прозрачность мини-карты"
 
 msgid "moduleSale/conformation/header"
 msgstr "Продать %(moduleType)s «%(moduleName)s»?"
@@ -3433,6 +3430,11 @@ msgstr "Модули"
 msgid "vehicleSellDialog/optionalDevice"
 msgstr "ОБОРУДОВАНИЕ:"
 
+msgid "vehicleSellDialog/postProgressionInfo"
+msgstr ""
+"После продажи техники текущий уровень Полевой модернизации сохранится, но "
+"все проведённые парные модификации будут отменены."
+
 msgid "vehicleSellDialog/price/sign/add"
 msgstr "+ "
 
@@ -3458,7 +3460,10 @@ msgid "vehicleSellDialog/vehicle/emptySellPrice"
 msgstr "Стоимость"
 
 msgid "vehicleSellDialog/vehicle/level"
-msgstr "Уровень"
+msgstr "Уровень. "
+
+msgid "vehicleSellDialog/vehicle/role"
+msgstr "Роль: "
 
 msgid "vehicleSellDialog/vehicleType/AT-SPG"
 msgstr "ПТ-САУ"

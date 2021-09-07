@@ -14,7 +14,7 @@ package net.wg.gui.lobby.vehicleCustomization.data
       
       public var buyBtnEnabled:Boolean = true;
       
-      public var isHistoric:Boolean = true;
+      public var customizationDisplayType:int = 0;
       
       public var billVO:BottomPanelBillVO = null;
       

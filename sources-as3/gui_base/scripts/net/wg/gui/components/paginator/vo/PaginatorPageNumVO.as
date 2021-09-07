@@ -18,6 +18,8 @@ package net.wg.gui.components.paginator.vo
       
       public var selected:Boolean = false;
       
+      public var hasNewContent:Boolean = false;
+      
       private var _tooltip:ToolTipVO = null;
       
       public function PaginatorPageNumVO(param1:Object = null)

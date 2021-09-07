@@ -124,27 +124,37 @@
 		</filter>
 		<filter>
 			<id>battlePass_on</id>
-			<battlePassActiveCheck>True</battlePassActiveCheck>
+			<isBattlePassActiveSeason>True</isBattlePassActiveSeason>
 		</filter>
 		<filter>
 			<id>rankedYearReward_on</id>
-			<rankedYearRewardCheck>True</rankedYearRewardCheck>
+			<isRankedYearRewardEnabled>True</isRankedYearRewardEnabled>
 		</filter>
 		<filter>
 			<id>rankedLB_on</id>
-			<rankedLBCheck>True</rankedLBCheck>
+			<isRankedLeaderboardEnabled>True</isRankedLeaderboardEnabled>
 		</filter>
 		<filter>
 			<id>rankedShop_on</id>
-			<rankedShopCheck>True</rankedShopCheck>
+			<isRankedShopEnabled>True</isRankedShopEnabled>
 		</filter>
 		<filter>
 			<id>nonCnRealms</id>
 			<realms>RU EU NA ASIA KR CT ST QA DEV SB</realms>
 		</filter>
 		<filter>
-			<id>disabled</id>
-			<realms>ST</realms>
+			<id>veh_post_progression_all_levels</id>
+			<isPostProgressionEnabled>True</isPostProgressionEnabled>
+		</filter>
+		<filter>
+			<id>veh_post_progression_6_10_levels</id>
+			<levels>6 7 8 9 10</levels>
+			<isPostProgressionEnabled>True</isPostProgressionEnabled>
+		</filter>
+		<filter>
+			<id>veh_post_progression_8_10_levels</id>
+			<levels>8 9 10</levels>
+			<isPostProgressionEnabled>True</isPostProgressionEnabled>
 		</filter>
 	</filters>
 	<tips>
@@ -937,20 +947,8 @@
 			<filter>only_dualGun_first_5_times</filter>
 		</tip>
 		<tip>
-			<id>tip187</id>
-			<status>battlePassTrophyDevice</status>
-			<group>all</group>
-			<filter>battlePass_on</filter>
-		</tip>
-		<tip>
 			<id>tip188</id>
 			<status>battlePassCoins</status>
-			<group>all</group>
-			<filter>battlePass_on</filter>
-		</tip>
-		<tip>
-			<id>tip189</id>
-			<status>battlePassPoints</status>
 			<group>all</group>
 			<filter>battlePass_on</filter>
 		</tip>
@@ -977,6 +975,42 @@
 			<status>payAttention</status>
 			<group>tactics</group>
 			<filter>from_2_to_10_levels</filter>
+		</tip>
+		<tip>
+			<id>tip194</id>
+			<status>payAttention</status>
+			<group>tactics</group>
+			<filter>veh_post_progression_all_levels</filter>
+		</tip>
+		<tip>
+			<id>tip195</id>
+			<status>payAttention</status>
+			<group>tactics</group>
+			<filter>veh_post_progression_6_10_levels</filter>
+		</tip>
+		<tip>
+			<id>tip196</id>
+			<status>payAttention</status>
+			<group>tactics</group>
+			<filter>veh_post_progression_6_10_levels</filter>
+		</tip>
+		<tip>
+			<id>tip197</id>
+			<status>payAttention</status>
+			<group>tactics</group>
+			<filter>veh_post_progression_8_10_levels</filter>
+		</tip>
+		<tip>
+			<id>tip198</id>
+			<status>payAttention</status>
+			<group>tactics</group>
+			<filter>veh_post_progression_6_10_levels</filter>
+		</tip>
+		<tip>
+			<id>tip199</id>
+			<status>payAttention</status>
+			<group>tactics</group>
+			<filter>veh_post_progression_6_10_levels</filter>
 		</tip>
 		<tip>
 			<id>epicTip1</id>
@@ -1116,7 +1150,6 @@
 		<tip>
 			<id>ranked5</id>
 			<status>rankedStatus5</status>
-			<filter>disabled</filter>
 		</tip>
 		<tip>
 			<id>ranked6</id>
@@ -1130,7 +1163,6 @@
 		<tip>
 			<id>ranked8</id>
 			<status>rankedStatus8</status>
-			<filter>disabled</filter>
 		</tip>
 		<tip>
 			<id>ranked9</id>

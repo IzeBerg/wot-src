@@ -19,6 +19,8 @@ package net.wg.data.constants.generated
       
       public static const ERROR:String = "error";
       
+      public static const SINGAPORE_ALTERNATIVE_CURRENCIES_SET:Array = [GOLD,CREDITS];
+      
       public static const GOLD_COLOR:int = 16761699;
       
       public static const CREDITS_COLOR:int = 13556185;

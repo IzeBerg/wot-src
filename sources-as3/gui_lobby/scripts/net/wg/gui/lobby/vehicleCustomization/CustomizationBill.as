@@ -126,6 +126,7 @@ package net.wg.gui.lobby.vehicleCustomization
          this.fromStorageLbl = null;
          this.priceLbl = null;
          this.title = null;
+         this._data = null;
          super.onDispose();
       }
       

@@ -61,9 +61,9 @@ package net.wg.gui.lobby.hangar
       
       public var bottomShadow:Sprite = null;
       
-      private var _snapHeightToRenderers:Boolean = true;
+      protected var _dataProvider:IDataProvider = null;
       
-      private var _dataProvider:IDataProvider = null;
+      private var _snapHeightToRenderers:Boolean = true;
       
       private var _helpLayoutId:String = null;
       
@@ -78,6 +78,8 @@ package net.wg.gui.lobby.hangar
       private var _forceInvalidateOnDataChange:Boolean;
       
       private var _showShadowLipWhenOverflow:Boolean;
+      
+      private var _showBottomShadowLipAlways:Boolean = false;
       
       public function VehicleParameters()
       {
@@ -179,6 +181,11 @@ package net.wg.gui.lobby.hangar
                this.topShadow.visible = this.bottomShadow.visible = _loc2_;
                this.updateLipsPosition();
             }
+            if(this._showBottomShadowLipAlways && !this.bottomShadow.visible)
+            {
+               this.bottomShadow.visible = true;
+               this.bottomShadow.y = this.paramsList.height + BOTTOM_SHADOW_OFFSET;
+            }
          }
          if(!this._hasListeners)
          {
@@ -272,6 +279,17 @@ package net.wg.gui.lobby.hangar
       public function set forceInvalidateOnDataChange(param1:Boolean) : void
       {
          this._forceInvalidateOnDataChange = param1;
+      }
+      
+      public function get showBottomShadowLipAlways() : Boolean
+      {
+         return this._showBottomShadowLipAlways;
+      }
+      
+      public function set showBottomShadowLipAlways(param1:Boolean) : void
+      {
+         this._showBottomShadowLipAlways = param1;
+         invalidate(INV_LIPS);
       }
       
       private function onParamsListItemRollOverHandler(param1:ListEventEx) : void

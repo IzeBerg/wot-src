@@ -10,7 +10,9 @@ package net.wg.gui.messenger.windows
    import net.wg.gui.events.ViewStackEvent;
    import net.wg.gui.lobby.messengerBar.WindowGeometryInBar;
    import net.wg.gui.messenger.evnts.ChannelsFormEvent;
+   import net.wg.gui.messenger.forms.ChannelsCreateForm;
    import net.wg.gui.messenger.forms.ChannelsSearchForm;
+   import net.wg.gui.messenger.meta.IChannelsManagementWindowMeta;
    import net.wg.gui.messenger.meta.impl.ChannelsManagementWindowMeta;
    import net.wg.infrastructure.interfaces.IViewStackContent;
    import scaleform.clik.constants.ConstrainMode;
@@ -21,7 +23,7 @@ package net.wg.gui.messenger.windows
    import scaleform.clik.utils.Constraints;
    import scaleform.clik.utils.Padding;
    
-   public class ChannelsManagementWindow extends ChannelsManagementWindowMeta
+   public class ChannelsManagementWindow extends ChannelsManagementWindowMeta implements IChannelsManagementWindowMeta
    {
       
       private static const WND_PADDING:Padding = new Padding(40,10,17,8);
@@ -37,13 +39,15 @@ package net.wg.gui.messenger.windows
       
       public var tabLine:Sprite = null;
       
-      public var view:ViewStack = null;
+      public var viewStack:ViewStack = null;
       
-      protected var _searchResDataProvider:DAAPIDataProvider;
+      protected var searchResDataProvider:DAAPIDataProvider;
       
-      private var searchLimitLabel:String = null;
+      private var _searchLimitLabel:String = null;
       
-      private var __currentTab:Number = 0;
+      private var _currentTab:Number = 0;
+      
+      private var _isHideChannelNameInput:Boolean = false;
       
       private const SEARCH_CHANNEL_FORM_ID:String = "searchChannelFormUI";
       
@@ -61,69 +65,83 @@ package net.wg.gui.messenger.windows
       {
          super();
          showWindowBgForm = false;
-         this._searchResDataProvider = new DAAPIDataProvider();
+         this.searchResDataProvider = new DAAPIDataProvider();
       }
       
       override protected function onSetModalFocus(param1:InteractiveObject) : void
       {
          super.onSetModalFocus(param1);
-         this.onViewChangeHandler();
+         this.onViewStackViewChangedHandler();
       }
       
       override protected function draw() : void
       {
+         var _loc1_:ChannelsCreateForm = null;
+         super.draw();
          if(this.tabs.selectedIndex == -1)
          {
-            this.tabs.selectedIndex = this.__currentTab;
+            this.tabs.selectedIndex = this._currentTab;
+         }
+         if(isInvalid(InvalidationType.DATA))
+         {
+            _loc1_ = ChannelsCreateForm(this.tryGetView(this.CREATE_CHANNEL_FORM_ID));
+            if(_loc1_)
+            {
+               _loc1_.hideChannelNameInput(this._isHideChannelNameInput);
+            }
          }
          if(isInvalid(InvalidationType.SIZE))
          {
             this.updateViewSize();
          }
-         super.draw();
+      }
+      
+      override protected function configUI() : void
+      {
+         super.configUI();
+         constraints = new Constraints(this,ConstrainMode.REFLOW);
+         constraints.addElement(this.tabLine.name,this.tabLine,Constraints.LEFT | Constraints.RIGHT | Constraints.TOP);
+         constraints.addElement(this.tabs.name,this.tabs,Constraints.LEFT | Constraints.RIGHT | Constraints.TOP);
+         this.initTabs();
+         this._searchLimitLabel = getSearchLimitLabelS();
       }
       
       override protected function onPopulate() : void
       {
+         super.onPopulate();
          window.useBottomBtns = false;
          window.title = MESSENGER.LOBBY_BUTTONS_CHANNELS;
          window.contentPadding = WND_PADDING;
          window.setMaxWidth(WND_MAX_WIDTH);
          window.setMaxHeight(WND_MAX_HEIGHT);
-         constraints = new Constraints(this,ConstrainMode.REFLOW);
-         constraints.addElement(this.tabLine.name,this.tabLine,Constraints.LEFT | Constraints.RIGHT | Constraints.TOP);
-         constraints.addElement(this.tabs.name,this.tabs,Constraints.LEFT | Constraints.RIGHT | Constraints.TOP);
          updateStage(App.appWidth,App.appHeight);
-         super.onPopulate();
-         this.initTabs();
-         this.searchLimitLabel = getSearchLimitLabelS();
          geometry = new WindowGeometryInBar(MessengerBarEvent.PIN_CHANNELS_WINDOW);
       }
       
       override protected function onDispose() : void
       {
          this.tabLine = null;
-         this.searchLimitLabel = null;
-         if(this.view)
+         this._searchLimitLabel = null;
+         if(this.viewStack)
          {
-            this.view.dispose();
-            this.view.removeEventListener(ViewStackEvent.VIEW_CHANGED,this.onViewChangeHandler);
-            this.view.removeEventListener(ViewStackEvent.NEED_UPDATE,this.onViewNeedUpdateHandler);
-            this.view.removeEventListener(ChannelsFormEvent.ON_SEARCH_CHANNEL_CLICK,this.onSearchClickHandler);
-            this.view.removeEventListener(ChannelsFormEvent.ON_JOIN,this.onJoinHandler);
-            this.view.removeEventListener(ChannelsFormEvent.ON_CREATE_CHANNEL,this.onCreateChannelHandler);
+            this.viewStack.removeEventListener(ViewStackEvent.VIEW_CHANGED,this.onViewStackViewChangedHandler);
+            this.viewStack.removeEventListener(ViewStackEvent.NEED_UPDATE,this.onViewStackNeedUpdateHandler);
+            this.viewStack.removeEventListener(ChannelsFormEvent.SEARCH_CHANNEL_CLICK,this.onViewStackSearchChannelClickHandler);
+            this.viewStack.removeEventListener(ChannelsFormEvent.JOIN,this.onViewStackJoinHandler);
+            this.viewStack.removeEventListener(ChannelsFormEvent.CREATE_CHANNEL,this.onViewStackCreateChannelHandler);
+            this.viewStack.dispose();
+            this.viewStack = null;
          }
-         this.view = null;
          if(this.tabs)
          {
-            this.tabs.dispose();
             this.tabs.removeEventListener(IndexEvent.INDEX_CHANGE,this.onTabIndexChangeHandler);
+            this.tabs.dispose();
+            this.tabs = null;
          }
-         this.tabs = null;
-         if(this._searchResDataProvider)
+         if(this.searchResDataProvider)
          {
-            this._searchResDataProvider.cleanUp();
-            this._searchResDataProvider = null;
+            this.searchResDataProvider.cleanUp();
+            this.searchResDataProvider = null;
          }
          super.onDispose();
       }
@@ -139,19 +157,25 @@ package net.wg.gui.messenger.windows
       
       public function as_getDataProvider() : Object
       {
-         return this._searchResDataProvider;
+         return this.searchResDataProvider;
+      }
+      
+      public function as_hideChannelNameInput(param1:Boolean) : void
+      {
+         this._isHideChannelNameInput = param1;
+         invalidateData();
       }
       
       private function updateViewSize() : void
       {
          var _loc1_:* = null;
          var _loc2_:UIComponent = null;
-         if(this.view)
+         if(this.viewStack)
          {
-            for(_loc1_ in this.view.cachedViews)
+            for(_loc1_ in this.viewStack.cachedViews)
             {
-               _loc2_ = UIComponent(this.view.cachedViews[_loc1_]);
-               _loc2_.setSize(width,height - this.view.y);
+               _loc2_ = UIComponent(this.viewStack.cachedViews[_loc1_]);
+               _loc2_.setSize(width,height - this.viewStack.y);
                _loc2_.validateNow();
             }
          }
@@ -164,13 +188,13 @@ package net.wg.gui.messenger.windows
             this.tabs.dataProvider = new DataProvider(this.tabsDataProvider);
             this.tabs.addEventListener(IndexEvent.INDEX_CHANGE,this.onTabIndexChangeHandler);
          }
-         if(this.view != null)
+         if(this.viewStack != null)
          {
-            this.view.addEventListener(ViewStackEvent.VIEW_CHANGED,this.onViewChangeHandler);
-            this.view.addEventListener(ViewStackEvent.NEED_UPDATE,this.onViewNeedUpdateHandler);
-            this.view.addEventListener(ChannelsFormEvent.ON_SEARCH_CHANNEL_CLICK,this.onSearchClickHandler);
-            this.view.addEventListener(ChannelsFormEvent.ON_JOIN,this.onJoinHandler);
-            this.view.addEventListener(ChannelsFormEvent.ON_CREATE_CHANNEL,this.onCreateChannelHandler);
+            this.viewStack.addEventListener(ViewStackEvent.VIEW_CHANGED,this.onViewStackViewChangedHandler);
+            this.viewStack.addEventListener(ViewStackEvent.NEED_UPDATE,this.onViewStackNeedUpdateHandler);
+            this.viewStack.addEventListener(ChannelsFormEvent.SEARCH_CHANNEL_CLICK,this.onViewStackSearchChannelClickHandler);
+            this.viewStack.addEventListener(ChannelsFormEvent.JOIN,this.onViewStackJoinHandler);
+            this.viewStack.addEventListener(ChannelsFormEvent.CREATE_CHANNEL,this.onViewStackCreateChannelHandler);
          }
       }
       
@@ -186,61 +210,62 @@ package net.wg.gui.messenger.windows
       private function tryGetView(param1:String) : MovieClip
       {
          var _loc2_:MovieClip = null;
-         if(!this.view)
+         if(!this.viewStack)
          {
             return null;
          }
-         if(this.view.cachedViews[param1] != null)
+         if(this.viewStack.cachedViews[param1] != null)
          {
-            _loc2_ = this.view.cachedViews[param1];
+            _loc2_ = this.viewStack.cachedViews[param1];
          }
          return _loc2_;
       }
       
-      private function onViewNeedUpdateHandler(param1:ViewStackEvent) : void
+      private function onViewStackNeedUpdateHandler(param1:ViewStackEvent) : void
       {
          var _loc3_:ChannelsSearchForm = null;
          var _loc2_:IViewStackContent = param1.view;
          if(param1.viewId == this.SEARCH_CHANNEL_FORM_ID)
          {
             _loc3_ = ChannelsSearchForm(_loc2_);
-            _loc3_.searchResultText = this.searchLimitLabel;
-            _loc3_.searchResultList.dataProvider = this._searchResDataProvider;
+            _loc3_.searchResultText = this._searchLimitLabel;
+            _loc3_.searchResultList.dataProvider = this.searchResDataProvider;
             _loc3_.searchResultList.labelField = SEARCH_RESULT_LIST_LABEL_FIELD;
          }
          this.updateView(_loc2_);
          this.updateViewSize();
       }
       
-      private function onViewChangeHandler(param1:ViewStackEvent = null) : void
+      private function onViewStackViewChangedHandler(param1:ViewStackEvent = null) : void
       {
-         if(this.view && this.view.currentView && param1 == null)
+         if(this.viewStack && this.viewStack.currentView && param1 == null)
          {
-            this.updateView(this.view.currentView);
+            this.updateView(this.viewStack.currentView);
          }
          else if(param1 != null)
          {
             this.updateView(param1.view);
          }
+         invalidateData();
       }
       
       private function onTabIndexChangeHandler(param1:IndexEvent) : void
       {
-         this.__currentTab = param1.index;
+         this._currentTab = param1.index;
          this.updateViewSize();
       }
       
-      private function onSearchClickHandler(param1:ChannelsFormEvent) : void
+      private function onViewStackSearchChannelClickHandler(param1:ChannelsFormEvent) : void
       {
          searchTokenS(param1.channelName);
       }
       
-      private function onJoinHandler(param1:ChannelsFormEvent) : void
+      private function onViewStackJoinHandler(param1:ChannelsFormEvent) : void
       {
          joinToChannelS(param1.index);
       }
       
-      private function onCreateChannelHandler(param1:ChannelsFormEvent) : void
+      private function onViewStackCreateChannelHandler(param1:ChannelsFormEvent) : void
       {
          var _loc2_:Boolean = !(param1.channelPass == null && param1.channelRetypePass == null);
          createChannelS(param1.channelName,_loc2_,param1.channelPass,param1.channelRetypePass);

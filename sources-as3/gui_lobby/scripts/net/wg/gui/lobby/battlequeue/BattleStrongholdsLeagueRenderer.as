@@ -6,8 +6,10 @@ package net.wg.gui.lobby.battlequeue
    import flash.geom.Point;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
+   import net.wg.data.constants.Values;
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.components.controls.scroller.IScrollerItemRenderer;
+   import net.wg.gui.components.controls.scroller.data.ScrollerItemRendererSize;
    import net.wg.gui.components.interfaces.IListItemAnimatedRenderer;
    import net.wg.gui.events.AnimatedRendererEvent;
    import net.wg.gui.events.UILoaderEvent;
@@ -354,6 +356,20 @@ package net.wg.gui.lobby.battlequeue
       private function animationFinished() : void
       {
          dispatchEvent(new AnimatedRendererEvent(AnimatedRendererEvent.RENERER_ANIMATION_FINISHED,this.index,true));
+      }
+      
+      public function get rowsCount() : int
+      {
+         return Values.ZERO;
+      }
+      
+      public function set rowsCount(param1:int) : void
+      {
+      }
+      
+      public function get adaptiveSize() : String
+      {
+         return ScrollerItemRendererSize.NORMAL_SIZE;
       }
    }
 }

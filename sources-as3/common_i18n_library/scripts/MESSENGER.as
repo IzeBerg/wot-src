@@ -157,6 +157,8 @@ package
       
       public static const DIALOGS_CREATECHANNEL_LABELS_NAME:String = "#messenger:dialogs/createChannel/labels/name";
       
+      public static const DIALOGS_CREATECHANNEL_LABELS_AUTONAME:String = "#messenger:dialogs/createChannel/labels/autoName";
+      
       public static const DIALOGS_CREATECHANNEL_LABELS_PASSWORD:String = "#messenger:dialogs/createChannel/labels/password";
       
       public static const DIALOGS_CREATECHANNEL_LABELS_USEPASSWORD:String = "#messenger:dialogs/createChannel/labels/usePassword";
@@ -584,8 +586,6 @@ package
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_CRYSTAL:String = "#messenger:serviceChannelMessages/battleResults/crystal";
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_EPICABILITYPOINTS:String = "#messenger:serviceChannelMessages/battleResults/epicAbilityPoints";
-      
-      public static const SERVICECHANNELMESSAGES_BATTLERESULTS_EPICREWARDPOINTS:String = "#messenger:serviceChannelMessages/battleResults/epicRewardPoints";
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_EVENTCOIN:String = "#messenger:serviceChannelMessages/battleResults/eventCoin";
       
@@ -1829,12 +1829,6 @@ package
       
       public static const SERVICECHANNELMESSAGES_CREWBOOKSCOUNT:String = "#messenger:serviceChannelMessages/crewBooksCount";
       
-      public static const SERVICECHANNELMESSAGES_FLEXCHANGE_QUESTS:String = "#messenger:serviceChannelMessages/flExchange/quests";
-      
-      public static const SERVICECHANNELMESSAGES_FLEXCHANGE_QUESTS_POINTS:String = "#messenger:serviceChannelMessages/flExchange/quests/points";
-      
-      public static const SERVICECHANNELMESSAGES_FLEXCHANGE_QUESTS_REWARD:String = "#messenger:serviceChannelMessages/flExchange/quests/reward";
-      
       public static const SERVICECHANNELMESSAGES_RANKEDFINALEAWARDSNOTIFICATION_TITLE:String = "#messenger:serviceChannelMessages/rankedFinaleAwardsNotification/title";
       
       public static const SERVICECHANNELMESSAGES_RANKEDFINALEAWARDSNOTIFICATION_CONGRATULATION:String = "#messenger:serviceChannelMessages/rankedFinaleAwardsNotification/congratulation";
@@ -2000,6 +1994,10 @@ package
       public static const SERVICECHANNELMESSAGES_SELECTABLECREWBOOK_GUIDE:String = "#messenger:serviceChannelMessages/selectableCrewbook/guide";
       
       public static const SERVICECHANNELMESSAGES_SELECTABLECREWBOOK_BROCHURE:String = "#messenger:serviceChannelMessages/selectableCrewbook/brochure";
+      
+      public static const SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_DISCARDALLPAIRSMODIFICATION_BODY:String = "#messenger:serviceChannelMessages/vehiclePostProgression/discardAllPairsModification/body";
+      
+      public static const SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_DISCARDALLPAIRSMODIFICATION_TITLE:String = "#messenger:serviceChannelMessages/vehiclePostProgression/discardAllPairsModification/title";
       
       public static const DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_ENUM:Array = [DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_OFFLINE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_NOTREADY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_READY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_INBATTLE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_AFK];
        

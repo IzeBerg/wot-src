@@ -366,6 +366,7 @@ package net.wg.gui.lobby.vehicleCustomization
             "purchasedEnabled":param1.purchasedEnabled,
             "historicEnabled":param1.historicEnabled,
             "nonHistoricEnabled":param1.nonHistoricEnabled,
+            "fantasticalEnabled":param1.fantasticalEnabled,
             "appliedEnabled":param1.appliedEnabled,
             "groups":param1.groups,
             "selectedGroup":param1.selectedGroup,

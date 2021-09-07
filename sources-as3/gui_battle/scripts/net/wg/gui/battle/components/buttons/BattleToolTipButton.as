@@ -59,7 +59,7 @@ package net.wg.gui.battle.components.buttons
          App.toolTipMgr.showSpecial(this._tooltipStr,null);
       }
       
-      private function showTooltip() : void
+      protected function showTooltip() : void
       {
          if(!this._isTooltipVisible)
          {

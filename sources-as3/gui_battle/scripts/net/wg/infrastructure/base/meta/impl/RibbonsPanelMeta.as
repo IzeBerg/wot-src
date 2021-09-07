@@ -38,10 +38,10 @@ package net.wg.infrastructure.base.meta.impl
          super.onDispose();
       }
       
-      public function onShowS() : void
+      public function onShowS(param1:Number) : void
       {
          App.utils.asserter.assertNotNull(this.onShow,"onShow" + Errors.CANT_NULL);
-         this.onShow();
+         this.onShow(param1);
       }
       
       public function onChangeS() : void

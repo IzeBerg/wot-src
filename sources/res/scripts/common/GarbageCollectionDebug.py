@@ -325,3 +325,22 @@ def getObjectReferrers(obj, ignore):
         del referrers
 
     return result
+
+
+def getOptimizedGarbage():
+    import gc, sys, inspect
+    gc.collect()
+    gcGarbageCopy = gc.garbage[:]
+    del gc.garbage[:]
+    garbageObjects = []
+    for garbageObject in gcGarbageCopy:
+        try:
+            garbageObjects.append((str(garbageObject),
+             type(garbageObject),
+             sys.getrefcount(garbageObject),
+             inspect.getmodule(garbageObject)))
+        except:
+            pass
+
+    del gcGarbageCopy[:]
+    return garbageObjects

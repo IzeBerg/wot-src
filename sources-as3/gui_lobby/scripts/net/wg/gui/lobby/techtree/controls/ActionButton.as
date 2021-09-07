@@ -326,10 +326,21 @@ package net.wg.gui.lobby.techtree.controls
          invalidateData();
       }
       
+      override protected function handleMouseRollOver(param1:MouseEvent) : void
+      {
+         super.handleMouseRollOver(param1);
+         var _loc2_:IRenderer = owner as IRenderer;
+         App.utils.asserter.assertNotNull(_loc2_,RENDERER + Errors.CANT_NULL);
+         dispatchEvent(new TechTreeEvent(TechTreeEvent.ON_MODULE_HOVER,_loc2_.nodeState,_loc2_.index,_loc2_.entityType));
+      }
+      
       override protected function handleMouseRollOut(param1:MouseEvent) : void
       {
          super.handleMouseRollOut(param1);
          this.endAnimation(false);
+         var _loc2_:IRenderer = owner as IRenderer;
+         App.utils.asserter.assertNotNull(_loc2_,RENDERER + Errors.CANT_NULL);
+         dispatchEvent(new TechTreeEvent(TechTreeEvent.ON_MODULE_HOVER,_loc2_.nodeState,-1,_loc2_.entityType));
       }
       
       override protected function handleReleaseOutside(param1:MouseEvent) : void

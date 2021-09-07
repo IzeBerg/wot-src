@@ -12,6 +12,7 @@ package net.wg.gui.login.impl
    import net.wg.data.ListDAAPIDataProvider;
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.LobbyMetrics;
+   import net.wg.data.constants.Locales;
    import net.wg.data.constants.Values;
    import net.wg.gui.components.common.BaseLogoView;
    import net.wg.gui.components.common.serverStats.ServerVO;
@@ -74,6 +75,10 @@ package net.wg.gui.login.impl
       private static const FREE_SPACE_BORDER_FACTOR:Number = 0.17;
       
       private static const WOT_LOGO_OFFSET_Y:Number = 190;
+      
+      private static const AGE_RATING_OFFSET_X:Number = 30;
+      
+      private static const AGE_RATING_OFFSET_Y:Number = 80;
       
       private static const COPYRIGHT_OFFSET_Y:Number = 44;
       
@@ -145,6 +150,8 @@ package net.wg.gui.login.impl
       public var blackScreen:Sprite = null;
       
       public var healthNotice:TextField = null;
+      
+      public var ageRating:BaseLogoView = null;
       
       private var _currentView:ILoginFormView = null;
       
@@ -225,10 +232,16 @@ package net.wg.gui.login.impl
          this.videoPlayer.maxAttemptsCount = MAX_VIDEO_LOADING_ATTEMPTS;
          this.videoPlayer.isLoop = true;
          this.rssNewsFeed.addEventListener(RssItemEvent.ITEM_SIZE_INVALID,this.onRssNewsFeedItemSizeInvalidHandler);
+         this.ageRating.visible = false;
          var _loc1_:String = App.globalVarsMgr.getLocaleOverrideS();
          if(_loc1_)
          {
             this.wotLogo.setLocale(_loc1_);
+            if(_loc1_ == Locales.CHINA)
+            {
+               this.ageRating.visible = true;
+               this.ageRating.setLocale(_loc1_);
+            }
          }
          this.copyright.addEventListener(CopyrightEvent.TO_LEGAL,this.onCopyrightToLegalHandler);
          this.copyright.addEventListener(Event.CHANGE,this.onCopyrightChangeHandler);
@@ -308,6 +321,8 @@ package net.wg.gui.login.impl
          this._stageDimensions = null;
          this.wotLogo.dispose();
          this.wotLogo = null;
+         this.ageRating.dispose();
+         this.ageRating = null;
          this.version = null;
          this.sparksMc = null;
          this.shadowVideo = null;
@@ -626,6 +641,8 @@ package net.wg.gui.login.impl
          this.loginViewStack.y = Math.round(App.appHeight * FREE_SPACE_FACTOR + (App.appHeight - LobbyMetrics.MIN_STAGE_HEIGHT) * FREE_SPACE_BORDER_FACTOR);
          this.wotLogo.x = this.loginViewStack.x;
          this.wotLogo.y = this.loginViewStack.y - WOT_LOGO_OFFSET_Y;
+         this.ageRating.x = App.appWidth - AGE_RATING_OFFSET_X;
+         this.ageRating.y = AGE_RATING_OFFSET_Y;
          this.shadowImage.x = this.loginViewStack.x - SHADOW_OFFSET_X;
          this.shadowImage.y = this.loginViewStack.y - SHADOW_OFFSET_Y;
          this.shadowVideo.x = this.loginViewStack.x;

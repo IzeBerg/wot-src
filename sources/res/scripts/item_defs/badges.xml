@@ -2782,7 +2782,7 @@
 					<type>string</type>
 				</item>
 				<item>
-					True
+					False
 					<name>achievable</name>
 					<type>bool</type>
 				</item>
@@ -2852,19 +2852,6 @@
 					<name>achievable</name>
 					<type>bool</type>
 				</item>
-				<item>
-					<name>realm</name>
-					<type>dict</type>
-					<value>
-						<item>
-							<name>exclude</name>
-							<type>list</type>
-							<value>
-								<item>CN</item>
-							</value>
-						</item>
-					</value>
-				</item>
 			</value>
 		</badge>
 		<badge>
@@ -2902,19 +2889,6 @@
 					<name>achievable</name>
 					<type>bool</type>
 				</item>
-				<item>
-					<name>realm</name>
-					<type>dict</type>
-					<value>
-						<item>
-							<name>exclude</name>
-							<type>list</type>
-							<value>
-								<item>CN</item>
-							</value>
-						</item>
-					</value>
-				</item>
 			</value>
 		</badge>
 		<badge>
@@ -2951,19 +2925,6 @@
 					True
 					<name>achievable</name>
 					<type>bool</type>
-				</item>
-				<item>
-					<name>realm</name>
-					<type>dict</type>
-					<value>
-						<item>
-							<name>exclude</name>
-							<type>list</type>
-							<value>
-								<item>CN</item>
-							</value>
-						</item>
-					</value>
 				</item>
 			</value>
 		</badge>
@@ -3861,6 +3822,38 @@
 				</item>
 				<item>
 					False
+					<name>achievable</name>
+					<type>bool</type>
+				</item>
+			</value>
+		</badge>
+		<badge>
+			<name>frontline_2021_1</name>
+			<type>dict</type>
+			<value>
+				<item>
+					105
+					<name>id</name>
+					<type>int</type>
+				</item>
+				<item>
+					4.110
+					<!--BW_String-->
+					<name>weight</name>
+					<type>float</type>
+				</item>
+				<item>
+					16
+					<name>group</name>
+					<type>int</type>
+				</item>
+				<item>
+					gold
+					<name>highlight</name>
+					<type>string</type>
+				</item>
+				<item>
+					True
 					<name>achievable</name>
 					<type>bool</type>
 				</item>

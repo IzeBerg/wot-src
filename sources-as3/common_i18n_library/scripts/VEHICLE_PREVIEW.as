@@ -27,9 +27,11 @@ package
       
       public static const HEADER_BACKBTN_DESCRLABEL_MARATHON:String = "#vehicle_preview:header/backBtn/descrLabel/marathon";
       
-      public static const HEADER_BACKBTN_DESCRLABEL_WINTERMARATHON:String = "#vehicle_preview:header/backBtn/descrLabel/winterMarathon";
+      public static const HEADER_BACKBTN_DESCRLABEL_SABATON_MARATHON:String = "#vehicle_preview:header/backBtn/descrLabel/sabaton_marathon";
       
       public static const HEADER_BACKBTN_DESCRLABEL_RANKED:String = "#vehicle_preview:header/backBtn/descrLabel/ranked";
+      
+      public static const HEADER_BACKBTN_DESCRLABEL_VEHPOSTPROGRESSION:String = "#vehicle_preview:header/backBtn/descrLabel/vehPostProgression";
       
       public static const HEADER_BACKBTN_DESCRLABEL_BLUEPRINTSEXCHANGE:String = "#vehicle_preview:header/backBtn/descrLabel/blueprintsExchange";
       
@@ -166,6 +168,10 @@ package
       public static const INFOPANEL_PREMIUM_CREWTRANSFERTITLE:String = "#vehicle_preview:infoPanel/premium/crewTransferTitle";
       
       public static const INFOPANEL_PREMIUM_CREWTRANSFERTEXT:String = "#vehicle_preview:infoPanel/premium/crewTransferText";
+      
+      public static const INFOPANEL_PREMIUM_BONSTITLE:String = "#vehicle_preview:infoPanel/premium/bonsTitle";
+      
+      public static const INFOPANEL_PREMIUM_BONSTEXT:String = "#vehicle_preview:infoPanel/premium/bonsText";
       
       public static const INFOPANEL_PREMIUM_BUILTINEQUPMENTTITLE:String = "#vehicle_preview:infoPanel/premium/builtInEqupmentTitle";
       

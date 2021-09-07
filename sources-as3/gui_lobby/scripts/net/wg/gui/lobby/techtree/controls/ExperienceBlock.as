@@ -2,7 +2,6 @@ package net.wg.gui.lobby.techtree.controls
 {
    import flash.display.Sprite;
    import flash.text.TextField;
-   import net.wg.gui.lobby.techtree.data.vo.NodeData;
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.interfaces.ITutorialCustomComponent;
    import net.wg.utils.ILocale;
@@ -81,9 +80,9 @@ package net.wg.gui.lobby.techtree.controls
          return true;
       }
       
-      public function setData(param1:NodeData, param2:Boolean = false) : void
+      public function setData(param1:Number, param2:Boolean = false) : void
       {
-         this._earnedXP = param1.earnedXP;
+         this._earnedXP = param1;
          invalidateData();
       }
       

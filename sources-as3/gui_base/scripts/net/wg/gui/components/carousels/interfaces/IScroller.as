@@ -99,5 +99,9 @@ package net.wg.gui.components.carousels.interfaces
       function get showRendererOnlyIfDataExists() : Boolean;
       
       function set showRendererOnlyIfDataExists(param1:Boolean) : void;
+      
+      function get useExtendedViewPort() : Boolean;
+      
+      function set useExtendedViewPort(param1:Boolean) : void;
    }
 }

@@ -5,7 +5,11 @@ package net.wg.gui.lobby.manualChapter.events
    public final class ManualViewEvent extends Event
    {
       
-      public static const BOOTCAMP_CLICKED:String = "bootcampCompleted";
+      public static const BUTTON_CLICKED:String = "buttonClicked";
+      
+      public static const BOOTCAMP_HIGHLIGHTED:String = "bootcampHighlighted";
+      
+      public static const PREVIEW_CLICKED:String = "previewClicked";
        
       
       public function ManualViewEvent(param1:String, param2:Boolean = false, param3:Boolean = false)

@@ -95,7 +95,7 @@ def updateFashions(appearance):
         if outfit and outfit.style and outfit.style.isProgression:
             changeStyleProgression(style=outfit.style, appearance=appearance, level=outfit.progressionLevel)
         if IS_EDITOR:
-            if outfit.style.modelsSet != appearance.currentModelsSet:
+            if outfit and outfit.style and outfit.style.modelsSet != appearance.currentModelsSet:
                 setMaterialsVisibility(appearance, appearance.availableMaterials, False)
         appearance.c11nComponent = appearance.createComponent(Vehicular.C11nComponent, fashions, appearance.compoundModel, outfitData)
         return
@@ -177,7 +177,7 @@ def prepareBattleOutfit(outfitCD, vehicleDescriptor, vehicleId):
     outfitComponent = getOutfitComponent(outfitCD, vehicleDescriptor)
     outfit = Outfit(component=outfitComponent, vehicleCD=vehicleCD)
     player = BigWorld.player()
-    forceHistorical = player.isHistoricallyAccurate and player.playerVehicleID != vehicleId and not outfit.isHistorical()
+    forceHistorical = player.playerVehicleID != vehicleId and player.customizationDisplayType < outfit.customizationDisplayType()
     if outfit.style and (outfit.style.isProgression or IS_EDITOR):
         progressionOutfit = getStyleProgressionOutfit(outfit, toLevel=outfit.progressionLevel)
         if progressionOutfit is not None:
@@ -589,7 +589,7 @@ def getAttachments(outfit, vehicleDescr):
 
     def getAttachmentParams(slotParams, slotData, idx):
         item = getItemByCompactDescr(slotData.intCD)
-        return AttachmentParams(transform=__createTransform(slotParams, slotData), attachNode=slotParams.attachNode, modelName=item.modelName, sequenceId=item.sequenceId, attachmentLogic=item.attachmentLogic, initialVisibility=item.initialVisibility, partNodeAlias='attachment' + str(idx))
+        return AttachmentParams(transform=__createTransform(slotParams, slotData), attachNode=slotParams.attachNode, modelName=item.modelName, sequenceId=item.sequenceId, attachmentLogic=item.attachmentLogic, initialVisibility=item.initialVisibility, partNodeAlias='attachment' + str(idx) if item.attachmentLogic != 'prefab' else None)
 
     return __getParams(outfit, vehicleDescr, 'attachment', GUI_ITEM_TYPE.ATTACHMENT, getAttachmentParams)
 

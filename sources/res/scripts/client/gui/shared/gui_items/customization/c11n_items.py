@@ -421,8 +421,8 @@ class Customization(FittingItem):
     def getBoundVehicles(self):
         return set(self._boundVehicles)
 
-    def isHistorical(self):
-        return self.descriptor.historical
+    def customizationDisplayType(self):
+        return self.descriptor.customizationDisplayType
 
     def isDim(self):
         return ItemTags.DIM in self.tags
@@ -766,6 +766,10 @@ class ProjectionDecal(Decal):
     @property
     def canBeMirroredOnlyVertically(self):
         return self.descriptor.canBeMirroredOnlyVertically
+
+    @property
+    def scaleFactorId(self):
+        return self.descriptor.scaleFactorId
 
     @property
     def previewIcon(self):

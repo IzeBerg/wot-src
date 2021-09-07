@@ -1,11 +1,13 @@
+from bootcamp.Bootcamp import BOOTCAMP_UI_COMPONENTS
 from gui.Scaleform.daapi.view.meta.BCHighlightsMeta import BCHighlightsMeta
 from debug_utils_bootcamp import LOG_DEBUG_DEV_BOOTCAMP
 import SoundGroups
 
 class BCHighlights(BCHighlightsMeta):
-    BUTTON_SOUNDS = ('InBattleExtinguisher', 'InBattleHealKit', 'InBattleRepairKit',
-                     'StartBattleButton')
-    HIGHLIGHT_NO_SOUNDS = ('LoadingRightButton', 'LoadingLeftButton')
+    BUTTON_SOUNDS = (
+     'InBattleExtinguisher', 'InBattleHealKit', 'InBattleRepairKit', BOOTCAMP_UI_COMPONENTS.START_BATTLE_BUTTON)
+    HIGHLIGHT_NO_SOUNDS = (
+     'LoadingRightButton', 'LoadingLeftButton', BOOTCAMP_UI_COMPONENTS.WELCOME_START_BATTLE_BUTTON)
 
     def __init__(self, settings):
         super(BCHighlights, self).__init__()

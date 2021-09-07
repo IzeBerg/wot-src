@@ -1,6 +1,7 @@
 package net.wg.gui.bootcamp.messageWindow.views.bottom
 {
    import flash.events.Event;
+   import net.wg.data.constants.Values;
    import net.wg.gui.bootcamp.messageWindow.data.MessageBottomItemVO;
    import net.wg.gui.bootcamp.messageWindow.events.MessageViewEvent;
    import net.wg.gui.bootcamp.messageWindow.interfaces.IBottomRenderer;
@@ -47,7 +48,7 @@ package net.wg.gui.bootcamp.messageWindow.views.bottom
       private function onBtnAwardOptionClickHandler(param1:Event) : void
       {
          this.btnAwardOptions.removeEventListener(ButtonEvent.CLICK,this.onBtnAwardOptionClickHandler);
-         dispatchEvent(new MessageViewEvent(MessageViewEvent.MESSAGE_OPEN_NATIONS,true));
+         dispatchEvent(new MessageViewEvent(MessageViewEvent.MESSAGE_OPEN_NATIONS,Values.EMPTY_STR,true));
       }
    }
 }

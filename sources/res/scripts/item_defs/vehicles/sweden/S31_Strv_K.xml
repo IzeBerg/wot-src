@@ -9,6 +9,8 @@
 		<loader/>
 	</crew>
 	<supplySlots>5 1 1 6 6 6 7 8 8 8</supplySlots>
+	<postProgressionTree>role_HT_universal_level_9</postProgressionTree>
+	<customRoleSlotOptions>2 4</customRoleSlotOptions>
 	<speedLimits>
 		<forward>40</forward>
 		<backward>18</backward>
@@ -112,6 +114,13 @@
 			<undamaged>vehicles/sweden/S31_Strv_K/normal/lod0/Hull.model</undamaged>
 			<destroyed>vehicles/sweden/S31_Strv_K/crash/lod0/Hull.model</destroyed>
 			<exploded>vehicles/sweden/S31_Strv_K/crash/lod0/Hull.model</exploded>
+			<sets>
+				<S31_Strv_K_S>
+					<undamaged>vehicles/sweden/S31_Strv_K/_skins/S31_Strv_K_S/normal/lod0/Hull.model</undamaged>
+					<destroyed>vehicles/sweden/S31_Strv_K/_skins/S31_Strv_K_S/crash/lod0/Hull.model</destroyed>
+					<exploded>vehicles/sweden/S31_Strv_K/_skins/S31_Strv_K_S/crash/lod0/Hull.model</exploded>
+				</S31_Strv_K_S>
+			</sets>
 		</models>
 		<swinging>
 			<lodDist>FAR</lodDist>
@@ -151,15 +160,15 @@
 				<slotType>clan</slotType>
 				<slotId>10000</slotId>
 				<rayStart>
-					0.546095 0.331939 2.34415
+					0.490123 0.374701 2.3044
 					<!--BW_String-->
 				</rayStart>
 				<rayEnd>
-					0.49462 0.150654 2.27716
+					0.433238 0.194953 2.23765
 					<!--BW_String-->
 				</rayEnd>
 				<rayUp>
-					-0.719926 0.0892287 -0.688291
+					-0.837768 0.0935386 -0.537955
 					<!--BW_String-->
 				</rayUp>
 				<size>
@@ -176,10 +185,7 @@
 					0.000000 0.268072 2.62336
 					<!--BW_String-->
 				</anchorPosition>
-				<anchorDirection>
-					0.000000 0.101657 0.99482
-					<!--BW_String-->
-				</anchorDirection>
+				<anchorDirection>0.000000 0.101657 0.994819</anchorDirection>
 			</slot>
 			<slot>
 				<slotType>camouflage</slotType>
@@ -188,10 +194,7 @@
 					0.000000 0.268072 2.62336
 					<!--BW_String-->
 				</anchorPosition>
-				<anchorDirection>
-					0.000000 0.101657 0.99482
-					<!--BW_String-->
-				</anchorDirection>
+				<anchorDirection>0.000000 0.101657 0.994819</anchorDirection>
 			</slot>
 			<slot>
 				<slotType>inscription</slotType>
@@ -2208,6 +2211,42 @@
 					<!--BW_String-->
 				</anchorDirection>
 			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15073</slotId>
+				<position>
+					-0.000001 1.32049 2.53979
+					<!--BW_String-->
+				</position>
+				<rotation>
+					0.334515 -0.000004 3.14158
+					<!--BW_String-->
+				</rotation>
+				<tags>formfactor_square</tags>
+				<compatibleModels>S31_Strv_K_S</compatibleModels>
+				<scale>0.377348 0.241803 0.377355</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>
+					1.29591
+					<!--BW_String-->
+				</clipAngle>
+				<anchorPosition>
+					-0.000000 0.331925 2.55244
+					<!--BW_String-->
+				</anchorPosition>
+				<anchorDirection>
+					0.000011 0.94457 0.328311
+					<!--BW_String-->
+				</anchorDirection>
+			</slot>
+			<slot>
+				<slotType>attachment</slotType>
+				<slotId>18000</slotId>
+				<position>0 0 0</position>
+				<rotation>0 0 0</rotation>
+				<compatibleModels>S31_Strv_K_S</compatibleModels>
+			</slot>
 		</customizationSlots>
 		<camouflage>
 			<density>
@@ -2243,11 +2282,11 @@
 			<rotationSpeed>30</rotationSpeed>
 			<shotDispersionFactors>
 				<vehicleMovement>
-					0.2
+					0.19
 					<!--BW_String-->
 				</vehicleMovement>
 				<vehicleRotation>
-					0.2
+					0.19
 					<!--BW_String-->
 				</vehicleRotation>
 			</shotDispersionFactors>
@@ -2265,6 +2304,13 @@
 				<undamaged>vehicles/sweden/S31_Strv_K/normal/lod0/Chassis.model</undamaged>
 				<destroyed>vehicles/sweden/S31_Strv_K/crash/lod0/Chassis.model</destroyed>
 				<exploded>vehicles/sweden/S31_Strv_K/crash/lod0/Chassis.model</exploded>
+				<sets>
+					<S31_Strv_K_S>
+						<undamaged>vehicles/sweden/S31_Strv_K/_skins/S31_Strv_K_S/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/sweden/S31_Strv_K/_skins/S31_Strv_K_S/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/sweden/S31_Strv_K/_skins/S31_Strv_K_S/crash/lod0/Chassis.model</exploded>
+					</S31_Strv_K_S>
+				</sets>
 			</models>
 			<traces>
 				<lodDist>FAR</lodDist>
@@ -2396,7 +2442,7 @@
 				</group>
 			</groundNodes>
 			<trackThickness>
-				0.0093
+				0.0250
 				<!--BW_String-->
 			</trackThickness>
 			<trackNodes>
@@ -2601,6 +2647,12 @@
 					<UTiles>1</UTiles>
 					<VTiles>1</VTiles>
 				</atlas>
+				<modelSets>
+					<S31_Strv_K_S>
+						<segmentModelLeft>vehicles/sweden/S31_Strv_K/_skins/S31_Strv_K_S/track/segment_01_L.model</segmentModelLeft>
+						<segmentModelRight>vehicles/sweden/S31_Strv_K/_skins/S31_Strv_K_S/track/segment_01_R.model</segmentModelRight>
+					</S31_Strv_K_S>
+				</modelSets>
 			</splineDesc>
 			<physicalTracks>
 				<left>
@@ -2650,6 +2702,11 @@
 						<model>vehicles/sweden/S31_Strv_K/track/segment.model</model>
 						<length>0.132425</length>
 					</mainSegment>
+					<modelSets>
+						<S31_Strv_K_S>
+							<mainSegmentModel>vehicles/sweden/S31_Strv_K/_skins/S31_Strv_K_S/track/segment_01_L.model</mainSegmentModel>
+						</S31_Strv_K_S>
+					</modelSets>
 					<collisionHull>
 						<bottom/>
 						<top>
@@ -3207,6 +3264,11 @@
 						<model>vehicles/sweden/S31_Strv_K/track/segment.model</model>
 						<length>0.132983</length>
 					</mainSegment>
+					<modelSets>
+						<S31_Strv_K_S>
+							<mainSegmentModel>vehicles/sweden/S31_Strv_K/_skins/S31_Strv_K_S/track/segment_01_R.model</mainSegmentModel>
+						</S31_Strv_K_S>
+					</modelSets>
 					<collisionHull>
 						<bottom/>
 						<top>
@@ -3903,12 +3965,12 @@
 					</shotDispersionRadius>
 					<reloadTime>12</reloadTime>
 					<aimingTime>
-						2.6
+						2.5
 						<!--BW_String-->
 					</aimingTime>
 					<shotDispersionFactors>
 						<turretRotation>
-							0.16
+							0.15
 							<!--BW_String-->
 						</turretRotation>
 						<afterShot>4</afterShot>
@@ -3921,6 +3983,13 @@
 						<undamaged>vehicles/sweden/S31_Strv_K/normal/lod0/Gun_01.model</undamaged>
 						<destroyed>vehicles/sweden/S31_Strv_K/crash/lod0/Gun_01.model</destroyed>
 						<exploded>vehicles/sweden/S31_Strv_K/crash/lod0/Gun_01.model</exploded>
+						<sets>
+							<S31_Strv_K_S>
+								<undamaged>vehicles/sweden/S31_Strv_K/_skins/S31_Strv_K_S/normal/lod0/Gun_01.model</undamaged>
+								<destroyed>vehicles/sweden/S31_Strv_K/_skins/S31_Strv_K_S/crash/lod0/Gun_01.model</destroyed>
+								<exploded>vehicles/sweden/S31_Strv_K/_skins/S31_Strv_K_S/crash/lod0/Gun_01.model</exploded>
+							</S31_Strv_K_S>
+						</sets>
 					</models>
 					<hitTester>
 						<collisionModelServer>vehicles/sweden/S31_Strv_K/collision/Gun_01.model</collisionModelServer>
@@ -3978,7 +4047,7 @@
 								<!--BW_String-->
 							</rayEnd>
 							<rayUp>
-								0.094 0.000000 0.000000
+								0.105 0.000000 0.000000
 								<!--BW_String-->
 							</rayUp>
 							<applyToFabric>true</applyToFabric>
@@ -4008,6 +4077,13 @@
 				<undamaged>vehicles/sweden/S31_Strv_K/normal/lod0/Turret_01.model</undamaged>
 				<destroyed>vehicles/sweden/S31_Strv_K/crash/lod0/Turret_01.model</destroyed>
 				<exploded>vehicles/sweden/S31_Strv_K/crash/lod0/Turret_01.model</exploded>
+				<sets>
+					<S31_Strv_K_S>
+						<undamaged>vehicles/sweden/S31_Strv_K/_skins/S31_Strv_K_S/normal/lod0/Turret_01.model</undamaged>
+						<destroyed>vehicles/sweden/S31_Strv_K/_skins/S31_Strv_K_S/crash/lod0/Turret_01.model</destroyed>
+						<exploded>vehicles/sweden/S31_Strv_K/_skins/S31_Strv_K_S/crash/lod0/Turret_01.model</exploded>
+					</S31_Strv_K_S>
+				</sets>
 			</models>
 			<hitTester>
 				<collisionModelServer>vehicles/sweden/S31_Strv_K/collision/Turret_01.model</collisionModelServer>
@@ -4736,6 +4812,90 @@
 						<!--BW_String-->
 					</anchorDirection>
 					<verticalMirror>true</verticalMirror>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35022</slotId>
+					<position>
+						0.644693 2.4488 1.19671
+						<!--BW_String-->
+					</position>
+					<rotation>
+						0.434024 -0.00302044 3.13496
+						<!--BW_String-->
+					</rotation>
+					<tags>formfactor_square</tags>
+					<compatibleModels>S31_Strv_K_S</compatibleModels>
+					<scale>0.425073 0.296402 0.425064</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>256</showOn>
+					<clipAngle>0.790815</clipAngle>
+					<anchorPosition>0.637501 0.981944 0.471925</anchorPosition>
+					<anchorDirection>
+						0.00535892 0.907261 0.420534
+						<!--BW_String-->
+					</anchorDirection>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35023</slotId>
+					<position>
+						1.1362 1.75457 0.0771146
+						<!--BW_String-->
+					</position>
+					<rotation>
+						1.51934 -2.72562 -1.29581
+						<!--BW_String-->
+					</rotation>
+					<tags>formfactor_square</tags>
+					<compatibleModels>S31_Strv_K_S</compatibleModels>
+					<scale>0.351301 0.152177 0.351297</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>256</showOn>
+					<clipAngle>
+						1.07157
+						<!--BW_String-->
+					</clipAngle>
+					<anchorPosition>
+						1.12505 0.348285 -0.619005
+						<!--BW_String-->
+					</anchorPosition>
+					<anchorDirection>
+						0.989933 -0.0139667 -0.140845
+						<!--BW_String-->
+					</anchorDirection>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35024</slotId>
+					<tags>formfactor_square</tags>
+					<position>
+						-1.20854 1.68424 0.929086
+						<!--BW_String-->
+					</position>
+					<rotation>
+						1.49636 -1.39346 -3.11193
+						<!--BW_String-->
+					</rotation>
+					<scale>
+						0.300262 0.0724052 0.300259
+						<!--BW_String-->
+					</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>256</showOn>
+					<clipAngle>
+						1.00191
+						<!--BW_String-->
+					</clipAngle>
+					<anchorPosition>
+						-1.24065 0.279799 0.23611
+						<!--BW_String-->
+					</anchorPosition>
+					<anchorDirection>
+						-0.986392 0.0743318 0.146651
+						<!--BW_String-->
+					</anchorDirection>
+					<compatibleModels>S31_Strv_K_S</compatibleModels>
 				</slot>
 			</customizationSlots>
 			<camouflage>

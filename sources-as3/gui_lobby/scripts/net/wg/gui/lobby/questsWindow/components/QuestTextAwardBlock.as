@@ -3,6 +3,7 @@ package net.wg.gui.lobby.questsWindow.components
    import flash.events.MouseEvent;
    import flash.text.TextField;
    import net.wg.data.constants.BaseTooltips;
+   import net.wg.data.constants.Values;
    import net.wg.data.managers.impl.TooltipProps;
    import net.wg.gui.lobby.questsWindow.data.TextBlockVO;
    import org.idmedia.as3commons.util.StringUtils;
@@ -37,9 +38,16 @@ package net.wg.gui.lobby.questsWindow.components
          var _loc8_:String = _loc2_.ellipsis;
          var _loc9_:int = _loc3_.length;
          this.textTf.htmlText = _loc5_;
-         while(this.textTf.textHeight + TEXT_FIELD_PADDING > _loc6_)
+         if(!this.fixedMode || !this.lineLimit)
          {
-            this.textTf.htmlText = _loc5_.substr(0,this.getItemsStringLen(_loc3_,--_loc9_,_loc7_)) + _loc8_;
+            while(this.textTf.textHeight + TEXT_FIELD_PADDING > _loc6_)
+            {
+               this.textTf.htmlText = _loc5_.substr(0,this.getItemsStringLen(_loc3_,--_loc9_,_loc7_)) + _loc8_;
+            }
+         }
+         else
+         {
+            App.utils.commons.truncateHtmlTextMultiline(this.textTf,_loc5_,this.lineLimit,this.lineEnd);
          }
          if(_loc9_ == 0)
          {
@@ -85,6 +93,21 @@ package net.wg.gui.lobby.questsWindow.components
             _loc5_++;
          }
          return _loc4_;
+      }
+      
+      protected function get fixedMode() : Boolean
+      {
+         return false;
+      }
+      
+      protected function get lineLimit() : int
+      {
+         return Values.DEFAULT_INT;
+      }
+      
+      protected function get lineEnd() : String
+      {
+         return Values.EMPTY_STR;
       }
       
       private function onTextTfRollOverHandler(param1:MouseEvent) : void

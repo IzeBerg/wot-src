@@ -16,7 +16,7 @@ from gui.shared.gui_items.items_actions import factory as ActionsFactory
 from gui.shared.utils.functions import makeTooltip
 from helpers import dependency
 from helpers.i18n import makeString as _ms
-from skeletons.gui.game_control import IRestoreController, IBattleRoyaleController
+from skeletons.gui.game_control import IRestoreController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
 
@@ -24,7 +24,6 @@ class TankCarousel(TankCarouselMeta):
     itemsCache = dependency.descriptor(IItemsCache)
     lobbyContext = dependency.descriptor(ILobbyContext)
     restoreCtrl = dependency.descriptor(IRestoreController)
-    battleRoyaleController = dependency.descriptor(IBattleRoyaleController)
 
     def __init__(self):
         super(TankCarousel, self).__init__()
@@ -74,10 +73,8 @@ class TankCarousel(TankCarouselMeta):
         self.blinkCounter()
         self.applyFilter()
 
-    def hasBattleRoyaleVehicles(self):
-        if not self.battleRoyaleController.isBattleRoyaleMode():
-            return False
-        return self._carouselDP.hasBattleRoyaleVehicles()
+    def hasRoles(self):
+        return True
 
     def _populate(self):
         super(TankCarousel, self)._populate()

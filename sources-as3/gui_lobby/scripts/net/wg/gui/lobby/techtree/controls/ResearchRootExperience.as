@@ -3,7 +3,6 @@ package net.wg.gui.lobby.techtree.controls
    import flash.text.TextField;
    import net.wg.gui.components.controls.WalletResourcesStatus;
    import net.wg.gui.lobby.techtree.constants.XpTypeStrings;
-   import net.wg.gui.lobby.techtree.data.vo.NodeData;
    import scaleform.clik.constants.InvalidationType;
    
    public class ResearchRootExperience extends ExperienceBlock
@@ -73,7 +72,7 @@ package net.wg.gui.lobby.techtree.controls
          App.utils.commons.updateTextFieldSize(this.totalXPLabel,true,false);
       }
       
-      override public function setData(param1:NodeData, param2:Boolean = false) : void
+      override public function setData(param1:Number, param2:Boolean = false) : void
       {
          super.setData(param1,param2);
          if(this._isElite == param2)

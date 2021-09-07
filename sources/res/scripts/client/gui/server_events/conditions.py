@@ -324,7 +324,7 @@ class _VehsListParser(object):
         return self._isAnyVehicleAcceptable(self._data)
 
     def getFilterCriteria(self, data):
-        types, nations, levels, classes, actionsGroups = self._parseFilters(data)
+        types, nations, levels, classes, roles = self._parseFilters(data)
         defaultCriteria = self._getDefaultCriteria()
         if types:
             criteria = REQ_CRITERIA.VEHICLE.SPECIFIC_BY_CD(types)
@@ -336,8 +336,8 @@ class _VehsListParser(object):
                 criteria |= REQ_CRITERIA.VEHICLE.LEVELS(levels)
             if classes:
                 criteria |= REQ_CRITERIA.VEHICLE.CLASSES(classes)
-            if actionsGroups:
-                criteria |= REQ_CRITERIA.VEHICLE.ACTION_GROUPS(actionsGroups)
+            if roles:
+                criteria |= REQ_CRITERIA.VEHICLE.ROLES(roles)
         return self._postProcessCriteria(defaultCriteria, criteria)
 
     def _clearItemsCache(self):
@@ -348,7 +348,7 @@ class _VehsListParser(object):
         return defaultCriteria | criteria
 
     def _isAnyVehicleAcceptable(self, data):
-        return not set(data) & {'types', 'nations', 'levels', 'classes', 'actionsGroups'}
+        return not set(data) & {'types', 'nations', 'levels', 'classes', 'roles'}
 
     def _getDefaultCriteria(self):
         return REQ_CRITERIA.DISCLOSABLE
@@ -362,7 +362,7 @@ class _VehsListParser(object):
         return self._getVehiclesCache(data).values()
 
     def _parseFilters(self, data):
-        types, nations, levels, classes, actionsGroups = (None, None, None, None, None)
+        types, nations, levels, classes, roles = (None, None, None, None, None)
         if 'types' in data:
             types = _getNodeValue(data, 'types')
         if 'nations' in data:
@@ -374,10 +374,10 @@ class _VehsListParser(object):
             acceptedClasses = _getNodeValue(data, 'classes')
             classes = [ name for name, index in constants.VEHICLE_CLASS_INDICES.items() if index in acceptedClasses
                       ]
-        if 'actionsGroups' in data:
-            acceptedGroups = _getNodeValue(data, 'actionsGroups')
-            actionsGroups = [ constants.ACTIONS_GROUP_TYPE_TO_LABEL[groupID] for groupID in acceptedGroups ]
-        return (types, nations, levels, classes, actionsGroups)
+        if 'roles' in data:
+            acceptedRoles = _getNodeValue(data, 'roles')
+            roles = [ constants.ROLE_TYPE_TO_LABEL[roleID] for roleID in acceptedRoles ]
+        return (types, nations, levels, classes, roles)
 
 
 class _VehsListCondition(_Condition, _VehsListParser):

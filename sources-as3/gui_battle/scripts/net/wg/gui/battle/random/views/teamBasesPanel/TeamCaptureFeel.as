@@ -70,6 +70,7 @@ package net.wg.gui.battle.random.views.teamBasesPanel
       
       private function drawGraphic() : void
       {
+         var _loc4_:Number = NaN;
          var _loc5_:Number = NaN;
          if(this._bitmapSrcPrefix == Values.EMPTY_STR || this._colorType == Values.EMPTY_STR)
          {
@@ -84,7 +85,7 @@ package net.wg.gui.battle.random.views.teamBasesPanel
          var _loc3_:Graphics = this._fillTarget.graphics;
          _loc3_.beginFill(13762560);
          _loc3_.beginBitmapFill(_loc2_);
-         var _loc4_:Number = _loc2_.width;
+         _loc4_ = _loc2_.width;
          _loc5_ = _loc2_.height;
          var _loc6_:Number = 0;
          var _loc7_:Number = 0;

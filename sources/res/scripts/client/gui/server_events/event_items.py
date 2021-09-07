@@ -28,6 +28,7 @@ from personal_missions_config import getQuestConfig
 from personal_missions_constants import DISPLAY_TYPE
 from shared_utils import first, findFirst
 from skeletons.connection_mgr import IConnectionManager
+from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
 EventBattles = namedtuple('EventBattles', [
@@ -304,6 +305,7 @@ class Group(ServerEventAbstract):
 class Quest(ServerEventAbstract):
     itemsCache = dependency.descriptor(IItemsCache)
     eventsCache = dependency.descriptor(IEventsCache)
+    lobbyContext = dependency.descriptor(ILobbyContext)
     __slots__ = ServerEventAbstract.__slots__ + ('_progress', '_children', '_parents',
                                                  '_parentsName', 'accountReqs', 'vehicleReqs',
                                                  'preBattleCond', 'bonusCond', 'postBattleCond',
@@ -326,6 +328,11 @@ class Quest(ServerEventAbstract):
 
     def isCompensationPossible(self):
         return events_helpers.isMarathon(self.getGroupID()) and bool(self.getBonuses('tokens'))
+
+    def shouldBeShown(self):
+        if events_helpers.isMapsTraining(self.getGroupID()):
+            return self.isAvailable().isValid and self.lobbyContext.getServerSettings().isMapsTrainingEnabled()
+        return True
 
     def getGroupType(self):
         return getGroupTypeByID(self.getGroupID())

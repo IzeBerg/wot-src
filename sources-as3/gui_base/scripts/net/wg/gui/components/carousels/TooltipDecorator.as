@@ -1,5 +1,6 @@
 package net.wg.gui.components.carousels
 {
+   import flash.display.DisplayObjectContainer;
    import net.wg.data.managers.IToolTipParams;
    import net.wg.data.managers.ITooltipProps;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
@@ -29,6 +30,11 @@ package net.wg.gui.components.carousels
          this._mgr = null;
          this._postponedFunction = null;
          this._postponedArgs = null;
+      }
+      
+      public function getContainer() : DisplayObjectContainer
+      {
+         return this._mgr.getContainer();
       }
       
       public function getDefaultTooltipProps() : ITooltipProps

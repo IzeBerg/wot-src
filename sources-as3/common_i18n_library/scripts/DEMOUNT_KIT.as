@@ -19,9 +19,9 @@ package
       
       public static const EQUIPMENTDEMOUNT_OPTIONFREE:String = "#demount_kit:equipmentDemount/optionFree";
       
-      public static const EQUIPMENTDEMOUNT_CONFIRMATION:String = "#demount_kit:equipmentDemount/confirmation";
+      public static const EQUIPMENTDEMOUNT_CONFIRMATION_TITLE:String = "#demount_kit:equipmentDemount/confirmation/title";
       
-      public static const EQUIPMENTDEMOUNT_CONFIRMATIONFORFITTING:String = "#demount_kit:equipmentDemount/confirmationForFitting";
+      public static const EQUIPMENTDEMOUNT_CONFIRMATIONFORFITTING_TITLE:String = "#demount_kit:equipmentDemount/confirmationForFitting/title";
       
       public static const EQUIPMENTDEMOUNT_CONFIRMATION_DESCRIPTION:String = "#demount_kit:equipmentDemount/confirmation/description";
       
@@ -48,6 +48,16 @@ package
       public static const DISCOUNTS_TOOLTIPS_NOSALEPROFIT:String = "#demount_kit:discounts/tooltips/noSaleProfit";
       
       public static const DEMOUNTKIT_SELL_HEADER:String = "#demount_kit:demountKit/sell/header";
+      
+      public static const EQUIPMENTDEMOUNTFROMSLOT_CONFIRMATION_TITLE:String = "#demount_kit:equipmentDemountFromSlot/confirmation/title";
+      
+      public static const EQUIPMENTDEMOUNTFROMSLOT_CONFIRMATIONFORFITTING_TITLE:String = "#demount_kit:equipmentDemountFromSlot/confirmationForFitting/title";
+      
+      public static const EQUIPMENTDEMOUNTFROMSLOT_CONFIRMATION_DESCRIPTION:String = "#demount_kit:equipmentDemountFromSlot/confirmation/description";
+      
+      public static const EQUIPMENTDEMOUNTFROMSLOT_CONFIRMATION_SUBMIT:String = "#demount_kit:equipmentDemountFromSlot/confirmation/submit";
+      
+      public static const EQUIPMENTDEMOUNTFROMSLOT_CONFIRMATION_CANCEL:String = "#demount_kit:equipmentDemountFromSlot/confirmation/cancel";
        
       
       public function DEMOUNT_KIT()

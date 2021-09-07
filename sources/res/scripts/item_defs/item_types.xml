@@ -30,7 +30,6 @@
 			<lightAT-SPG/>
 			<mediumAT-SPG/>
 			<heavyAT-SPG/>
-			<RE_ATSPG_3/>
 			<premium/>
 			<observer/>
 			<improvedVentilation_class1_user/>
@@ -79,6 +78,7 @@
 			<epic_battles/>
 			<bob/>
 			<battle_royale/>
+			<maps_training/>
 			<mapbox/>
 			<rent_promotion/>
 			<cannot_be_sold/>
@@ -114,19 +114,19 @@
 			<earn_crystals/>
 			<lockOptionalDevices/>
 			<spawned/>
-			<role_HT_tank/>
 			<role_HT_assault/>
+			<role_HT_break/>
 			<role_HT_universal/>
-			<role_HT_fireSupport/>
-			<role_MT_tank/>
+			<role_HT_support/>
+			<role_MT_assault/>
 			<role_MT_universal/>
-			<role_MT_fireSupport/>
-			<role_MT_assassin/>
-			<role_ATSPG_tank/>
+			<role_MT_sniper/>
+			<role_MT_support/>
+			<role_ATSPG_assault/>
 			<role_ATSPG_universal/>
-			<role_ATSPG_fireSupport/>
-			<role_ATSPG_burstDamage/>
-			<role_LT_tracked/>
+			<role_ATSPG_sniper/>
+			<role_ATSPG_support/>
+			<role_LT_universal/>
 			<role_LT_wheeled/>
 			<role_SPG/>
 			<disableIBA/>
@@ -208,6 +208,11 @@
 	<shell>
 		<userString>#item_types:shot/name</userString>
 		<description>#item_types:shot/desc</description>
+		<tags>
+			<minefield/>
+			<artillery/>
+			<bomber/>
+		</tags>
 	</shell>
 	<equipment>
 		<userString>#item_types:equipment/name</userString>
@@ -307,6 +312,7 @@
 			<Kursk_battle/>
 			<Halloween/>
 			<offspringArenaMusic/>
+			<sabatonArenaMusic/>
 		</tags>
 	</customizationItem>
 	<crewSkin>
@@ -317,4 +323,8 @@
 		<userString/>
 		<description/>
 	</crewBook>
+	<slot>
+		<userString/>
+		<description/>
+	</slot>
 </root>

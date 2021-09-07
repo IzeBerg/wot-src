@@ -64,17 +64,9 @@ class HangarMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_setCarousel(linkage, alias)
 
-    def as_setDefaultHeaderS(self):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setDefaultHeader()
-
     def as_setAlertMessageBlockVisibleS(self, isVisible):
         if self._isDAAPIInited():
             return self.flashObject.as_setAlertMessageBlockVisible(isVisible)
-
-    def as_setHeaderTypeS(self, headerType):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setHeaderType(headerType)
 
     def as_showTeaserS(self, data):
         if self._isDAAPIInited():

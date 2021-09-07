@@ -23,19 +23,19 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards
       
       private static const CONTAINER_TOP_PADDING_SMALL:int = 15;
       
-      private static const CONTAINER_TOP_PARENT_OFFSET:uint = 18;
+      private static const CONTAINER_TOP_PARENT_OFFSET:int = 18;
       
-      private static const INFO_BLOCK_MAX_HEIGHT:int = 130;
+      private static const INFO_BLOCK_MAX_HEIGHT:uint = 130;
       
       private static const INFO_BLOCK_PADDING:int = 30;
       
-      private static const INFO_BLOCK_ANIMATION_SPEED:int = 300;
+      private static const INFO_BLOCK_ANIMATION_SPEED:uint = 300;
       
-      private static const INFO_BLOCK_ANIMATION_DELAY:int = 100;
+      private static const INFO_BLOCK_ANIMATION_DELAY:uint = 100;
       
-      private static const FONT_SIZE_TF_DESC_SMALL:int = 14;
+      private static const FONT_SIZE_TF_DESC_SMALL:uint = 14;
       
-      private static const FONT_SIZE_TF_DESC_BIG:int = 16;
+      private static const FONT_SIZE_TF_DESC_BIG:uint = 16;
        
       
       public var container:RewardsLeagueContainer = null;
@@ -46,15 +46,11 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards
       
       private var _rewards:RewardsLeagueVO = null;
       
-      private var _containerStartX:Number = 0;
-      
       private var _containerGlobalLeftShift:Number = 0;
       
       private var _renderersAnimationFinished:int = 0;
       
       private var _infoTextFadeOut:Tween = null;
-      
-      private var _tfDescriptionSize:int = 16;
       
       private var _hasDescr:Boolean = false;
       
@@ -96,8 +92,7 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards
                this.rewardsDescriptionTf.visible = this._hasDescr;
                if(this._hasDescr)
                {
-                  this.rewardsDescriptionTf.htmlText = this._rewards.description;
-                  App.utils.commons.updateTextFieldSize(this.rewardsDescriptionTf,false,true);
+                  this.rewardsDescriptionTf.text = this._rewards.description;
                }
                invalidateSize();
             }
@@ -162,53 +157,41 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards
       
       private function updateDescriptionFontSize(param1:int) : void
       {
-         var _loc3_:TextFormat = null;
-         if(!this._hasDescr)
-         {
-            return;
-         }
-         var _loc2_:int = -1;
-         if(param1 <= StageSizeBoundaries.HEIGHT_900 && this._tfDescriptionSize != FONT_SIZE_TF_DESC_SMALL)
+         var _loc2_:int = FONT_SIZE_TF_DESC_BIG;
+         if(param1 <= StageSizeBoundaries.HEIGHT_900)
          {
             _loc2_ = FONT_SIZE_TF_DESC_SMALL;
          }
-         else if(param1 > StageSizeBoundaries.HEIGHT_900 && this._tfDescriptionSize != FONT_SIZE_TF_DESC_BIG)
+         var _loc3_:TextFormat = this.rewardsDescriptionTf.getTextFormat();
+         _loc3_.size = _loc2_;
+         if(this._hasDescr)
          {
-            _loc2_ = FONT_SIZE_TF_DESC_BIG;
-         }
-         if(_loc2_ > -1)
-         {
-            _loc3_ = this.rewardsDescriptionTf.getTextFormat();
-            _loc3_.size = _loc2_;
-            this._tfDescriptionSize = _loc2_;
             this.rewardsDescriptionTf.setTextFormat(_loc3_);
+         }
+         else
+         {
+            this.rewardsDescriptionTf.defaultTextFormat = _loc3_;
          }
       }
       
       private function updateComponentsPosition() : void
       {
-         var _loc1_:Boolean = _width > this.container.width;
+         var _loc1_:Boolean = false;
+         App.utils.commons.updateTextFieldSize(this.rewardsDescriptionTf,false,true);
+         _loc1_ = _width > this.container.width;
          var _loc2_:int = _width >> 1;
-         var _loc3_:int = this.container.width >> 1;
-         if(_loc1_)
-         {
-            this._containerStartX = Math.max(_loc2_ - this._containerGlobalLeftShift,_loc3_);
-         }
-         else
-         {
-            this._containerStartX = _loc2_;
-         }
+         var _loc3_:int = !!_loc1_ ? int(_loc2_ - this._containerGlobalLeftShift) : int(_loc2_);
          var _loc4_:int = INFO_BLOCK_MAX_HEIGHT;
          if(this._hasDescr)
          {
             _loc4_ = Math.min(this.rewardsDescriptionTf.height + 2 * INFO_BLOCK_PADDING,INFO_BLOCK_MAX_HEIGHT);
-            this.rewardsDivider.x = this._containerStartX - (this.rewardsDivider.width >> 1);
+            this.rewardsDivider.x = _loc3_ - (this.rewardsDivider.width >> 1);
             this.rewardsDivider.y = _height - _loc4_ - this.rewardsDivider.height | 0;
-            this.rewardsDescriptionTf.x = this._containerStartX - (this.rewardsDescriptionTf.width >> 1);
+            this.rewardsDescriptionTf.x = _loc3_ - (this.rewardsDescriptionTf.width >> 1);
             this.rewardsDescriptionTf.y = _height - (_loc4_ + this.rewardsDescriptionTf.height >> 1) | 0;
          }
          var _loc5_:int = Math.max(_height - this.container.height - _loc4_ >> 1,CONTAINER_TOP_PADDING_SMALL);
-         this.container.x = this._containerStartX;
+         this.container.x = _loc3_;
          this.container.y = _loc5_ - CONTAINER_TOP_PARENT_OFFSET;
       }
       

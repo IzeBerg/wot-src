@@ -47,6 +47,11 @@ package net.wg.gui.bootcamp
          return RIBBONS_CENTER_SCREEN_OFFSET_Y;
       }
       
+      override protected function get prebattleAmmunitionPanelAvailable() : Boolean
+      {
+         return false;
+      }
+      
       override protected function onPopulate() : void
       {
          super.onPopulate();

@@ -8,6 +8,8 @@ package net.wg.infrastructure.base.meta
       
       function goToResearchS() : void;
       
+      function goToPostProgressionS() : void;
+      
       function addVehToCompareS() : void;
       
       function as_updateCurrentVehicle(param1:Object) : void;

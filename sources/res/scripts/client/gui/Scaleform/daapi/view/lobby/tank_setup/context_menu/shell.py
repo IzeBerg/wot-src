@@ -37,7 +37,10 @@ class ShellItemContextMenu(BaseTankSetupContextMenu):
 
     def _initFlashValues(self, ctx):
         super(ShellItemContextMenu, self)._initFlashValues(ctx)
-        self._slotsCount = self._getVehicle().shells.getShellsCount()
+        self._slotsCount = self._getVehicleItems().getShellsCount()
+
+    def _getVehicleItems(self):
+        return self._getVehicle().shells
 
 
 class HangarShellItemContextMenu(BaseHangarEquipmentSlotContextMenu):
@@ -45,7 +48,7 @@ class HangarShellItemContextMenu(BaseHangarEquipmentSlotContextMenu):
 
     def _initFlashValues(self, ctx):
         super(HangarShellItemContextMenu, self)._initFlashValues(ctx)
-        self._slotsCount = self._getVehicle().shells.getShellsCount()
+        self._slotsCount = self._getVehicleItems().getShellsCount()
 
     def _putOnAction(self, onId):
         copyVehicle = self._getCopyVehicle()
@@ -63,3 +66,6 @@ class HangarShellItemContextMenu(BaseHangarEquipmentSlotContextMenu):
         action = ActionsFactory.getAction(ActionsFactory.BUY_AND_INSTALL_SHELLS, vehicle, confirmOnlyExchange=True)
         result = yield ActionsFactory.asyncDoAction(action)
         callback(result)
+
+    def _getVehicleItems(self):
+        return self._getVehicle().shells

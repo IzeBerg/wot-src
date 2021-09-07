@@ -8,7 +8,6 @@ package net.wg.gui.bootcamp.controls
       {
          super();
          animationMC.isCycle = true;
-         animationMC.isDelayed = false;
       }
    }
 }

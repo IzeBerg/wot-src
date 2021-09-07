@@ -212,7 +212,7 @@ package net.wg.gui.battle.views.destroyTimers
             this._state = param2;
             this._resupplyTimer.setState(param2);
             this._isTimerShow = true;
-            this._resupplyTimer.showTimer();
+            this._resupplyTimer.showTimer(true);
             invalidate(INVALID_STATE);
             invalidate(INVALID_RESUPPLY_STATE);
          }
@@ -242,7 +242,7 @@ package net.wg.gui.battle.views.destroyTimers
          if(this._isTimerShow)
          {
             this._resupplyTimer.visible = true;
-            this._resupplyTimer.showTimer();
+            this._resupplyTimer.showTimer(true);
          }
          else
          {

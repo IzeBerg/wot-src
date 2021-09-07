@@ -69,6 +69,12 @@ package net.wg.gui.lobby.vehicleCompare.configurator
          this.modulesButton.setData(param1);
       }
       
+      public function setIsSmall(param1:Boolean) : void
+      {
+         this.modulesButton.setIsSmall(param1);
+         invalidateSize();
+      }
+      
       public function setTopModulesEnabled(param1:Boolean) : void
       {
          this.topModulesCb.visible = param1;
@@ -80,6 +86,20 @@ package net.wg.gui.lobby.vehicleCompare.configurator
       {
          this.topModulesCb.selected = param1;
          this.updateCbTooltip();
+      }
+      
+      private function updateCbTooltip() : void
+      {
+         this.topModulesCb.toolTip = !!this.topModulesCb.selected ? VEH_COMPARE.VEHCONF_TOOLTIPS_TOPMODULESON : VEH_COMPARE.VEHCONF_TOOLTIPS_TOPMODULESOFF;
+      }
+      
+      override public function get height() : Number
+      {
+         if(this.modulesButton)
+         {
+            return this.modulesButton.y + this.modulesButton.height;
+         }
+         return super.height;
       }
       
       private function onTopModulesTfRollOutHandler(param1:MouseEvent) : void
@@ -96,11 +116,6 @@ package net.wg.gui.lobby.vehicleCompare.configurator
       {
          dispatchEvent(new VehConfEvent(!!this.topModulesCb.selected ? VehConfEvent.TOP_MODULES_ON : VehConfEvent.TOP_MODULES_OFF,true));
          this.updateCbTooltip();
-      }
-      
-      private function updateCbTooltip() : void
-      {
-         this.topModulesCb.toolTip = !!this.topModulesCb.selected ? VEH_COMPARE.VEHCONF_TOOLTIPS_TOPMODULESON : VEH_COMPARE.VEHCONF_TOOLTIPS_TOPMODULESOFF;
       }
    }
 }

@@ -14,6 +14,7 @@ package net.wg.gui.lobby.techtree.nodes
    import net.wg.gui.components.controls.price.CompoundPrice;
    import net.wg.gui.components.controls.universalBtn.UniversalBtn;
    import net.wg.gui.lobby.components.CollectibleStatus;
+   import net.wg.gui.lobby.components.VehicleButton;
    import net.wg.gui.lobby.techtree.TechTreeEvent;
    import net.wg.gui.lobby.techtree.constants.ActionName;
    import net.wg.gui.lobby.techtree.constants.ColorIndex;
@@ -22,7 +23,6 @@ package net.wg.gui.lobby.techtree.nodes
    import net.wg.gui.lobby.techtree.controls.BlueprintBar;
    import net.wg.gui.lobby.techtree.controls.DiscountBanner;
    import net.wg.gui.lobby.techtree.controls.ExperienceBlock;
-   import net.wg.gui.lobby.techtree.controls.VehicleButton;
    import net.wg.gui.lobby.techtree.data.ResearchRootVO;
    import net.wg.gui.lobby.techtree.data.state.NodeStateCollection;
    import net.wg.gui.lobby.techtree.data.state.StateProperties;
@@ -447,8 +447,7 @@ package net.wg.gui.lobby.techtree.nodes
       
       private function populateUI() : void
       {
-         this.vehicleButton.subButtonsMode = !!this.inInventory() ? VehicleButton.COMPARE_ONLY_MODE : VehicleButton.NORMAL_MODE;
-         this.vehicleButton.setData(this._data,this._nodeData,this.isPremium() || this.isCollectible());
+         this.vehicleButton.setData(this._data.vehicleButton);
          this.blueprintBar.visible = this.canHaveBlueprint();
          if(this.blueprintBar.visible)
          {
@@ -459,7 +458,7 @@ package net.wg.gui.lobby.techtree.nodes
             this._experienceBlock.visible = this._nodeData.earnedXP != 0;
             if(this._experienceBlock.visible)
             {
-               this._experienceBlock.setData(this._nodeData,this.isElite());
+               this._experienceBlock.setData(this._nodeData.earnedXP,this.isElite());
             }
          }
          this.collectibleStatus.visible = this.isCollectible();
@@ -810,6 +809,16 @@ package net.wg.gui.lobby.techtree.nodes
          {
             dispatchEvent(new TechTreeEvent(TechTreeEvent.GO_TO_CHANGE_NATION_VIEW));
          }
+      }
+      
+      private function onPostProgressionBtnRollOverHandler(param1:MouseEvent) : void
+      {
+         this._tooltipMgr.showWulfTooltip(TOOLTIPS_CONSTANTS.VEH_POST_PROGRESSION_ENTRY_POINT,this._data.vehicleButton.vehicleId);
+      }
+      
+      private function onPostProgressionBtnRollOutHandler(param1:MouseEvent) : void
+      {
+         this._tooltipMgr.hide();
       }
    }
 }

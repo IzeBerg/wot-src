@@ -285,7 +285,7 @@ package net.wg.gui.bootcamp.battleResult
          this.result.x = _loc1_ - this.result.width >> 1;
          this.content.x = this.bottomGlowMC.x = _loc1_ >> 1;
          this.btnHangar.x = _loc1_ - this.btnHangar.width >> 1;
-         this.btnAnimation.x = _loc1_ >> 1;
+         this.btnAnimation.x = this.btnHangar.x + (this.btnHangar.width >> 1);
          this.playerStatus.x = _loc1_ - this.playerStatus.width - PLAYER_STATUS_MARGIN_X >> 0;
          var _loc3_:int = Math.max(_loc2_ * CONTENT_MARGIN_Y_SCALE,CONTENT_MIN_MARGIN_Y);
          this.content.y = _loc2_ - _loc3_ - this.content.tapeYPos >> 0;

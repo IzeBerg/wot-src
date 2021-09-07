@@ -20,6 +20,10 @@ package net.wg.infrastructure.base.meta
       
       function compareVehicleS(param1:Number) : void;
       
+      function onModuleHoverS(param1:Number) : void;
+      
+      function goToPostProgressionS(param1:Number) : void;
+      
       function as_setData(param1:Object) : void;
       
       function as_setRootData(param1:Object) : void;
@@ -33,5 +37,9 @@ package net.wg.infrastructure.base.meta
       function as_setWalletStatus(param1:Object) : void;
       
       function as_setXpInfoLinkage(param1:String) : void;
+      
+      function as_setPostProgressionData(param1:Object) : void;
+      
+      function as_showPostProgressionUnlockAnimation() : void;
    }
 }

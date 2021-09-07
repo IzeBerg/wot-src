@@ -13,7 +13,11 @@ package net.wg.infrastructure.base.meta.impl
       
       public var onNationShow:Function;
       
+      public var onHighlightShow:Function;
+      
       private var _vectorNationItemVO:Vector.<NationItemVO>;
+      
+      private var _vectorNationItemVO1:Vector.<NationItemVO>;
       
       public function BCNationsWindowMeta()
       {
@@ -23,6 +27,7 @@ package net.wg.infrastructure.base.meta.impl
       override protected function onDispose() : void
       {
          var _loc1_:NationItemVO = null;
+         var _loc2_:NationItemVO = null;
          if(this._vectorNationItemVO)
          {
             for each(_loc1_ in this._vectorNationItemVO)
@@ -31,6 +36,15 @@ package net.wg.infrastructure.base.meta.impl
             }
             this._vectorNationItemVO.splice(0,this._vectorNationItemVO.length);
             this._vectorNationItemVO = null;
+         }
+         if(this._vectorNationItemVO1)
+         {
+            for each(_loc2_ in this._vectorNationItemVO1)
+            {
+               _loc2_.dispose();
+            }
+            this._vectorNationItemVO1.splice(0,this._vectorNationItemVO1.length);
+            this._vectorNationItemVO1 = null;
          }
          super.onDispose();
       }
@@ -47,34 +61,58 @@ package net.wg.infrastructure.base.meta.impl
          this.onNationShow(param1);
       }
       
-      public final function as_selectNation(param1:uint, param2:Array) : void
+      public function onHighlightShowS() : void
       {
-         var _loc6_:NationItemVO = null;
-         var _loc3_:Vector.<NationItemVO> = this._vectorNationItemVO;
+         App.utils.asserter.assertNotNull(this.onHighlightShow,"onHighlightShow" + Errors.CANT_NULL);
+         this.onHighlightShow();
+      }
+      
+      public final function as_selectNation(param1:uint, param2:Array, param3:Array) : void
+      {
+         var _loc10_:NationItemVO = null;
+         var _loc11_:NationItemVO = null;
+         var _loc4_:Vector.<NationItemVO> = this._vectorNationItemVO;
          this._vectorNationItemVO = new Vector.<NationItemVO>(0);
-         var _loc4_:uint = param2.length;
-         var _loc5_:int = 0;
-         while(_loc5_ < _loc4_)
+         var _loc5_:uint = param2.length;
+         var _loc6_:int = 0;
+         while(_loc6_ < _loc5_)
          {
-            this._vectorNationItemVO[_loc5_] = new NationItemVO(param2[_loc5_]);
-            _loc5_++;
+            this._vectorNationItemVO[_loc6_] = new NationItemVO(param2[_loc6_]);
+            _loc6_++;
          }
-         this.selectNation(param1,this._vectorNationItemVO);
-         if(_loc3_)
+         var _loc7_:Vector.<NationItemVO> = this._vectorNationItemVO1;
+         this._vectorNationItemVO1 = new Vector.<NationItemVO>(0);
+         var _loc8_:uint = param3.length;
+         var _loc9_:int = 0;
+         while(_loc9_ < _loc8_)
          {
-            for each(_loc6_ in _loc3_)
+            this._vectorNationItemVO1[_loc9_] = new NationItemVO(param3[_loc9_]);
+            _loc9_++;
+         }
+         this.selectNation(param1,this._vectorNationItemVO,this._vectorNationItemVO1);
+         if(_loc4_)
+         {
+            for each(_loc10_ in _loc4_)
             {
-               _loc6_.dispose();
+               _loc10_.dispose();
             }
-            _loc3_.splice(0,_loc3_.length);
+            _loc4_.splice(0,_loc4_.length);
+         }
+         if(_loc7_)
+         {
+            for each(_loc11_ in _loc7_)
+            {
+               _loc11_.dispose();
+            }
+            _loc7_.splice(0,_loc7_.length);
          }
       }
       
-      protected function selectNation(param1:uint, param2:Vector.<NationItemVO>) : void
+      protected function selectNation(param1:uint, param2:Vector.<NationItemVO>, param3:Vector.<NationItemVO>) : void
       {
-         var _loc3_:String = "as_selectNation" + Errors.ABSTRACT_INVOKE;
-         DebugUtils.LOG_ERROR(_loc3_);
-         throw new AbstractException(_loc3_);
+         var _loc4_:String = "as_selectNation" + Errors.ABSTRACT_INVOKE;
+         DebugUtils.LOG_ERROR(_loc4_);
+         throw new AbstractException(_loc4_);
       }
    }
 }

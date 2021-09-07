@@ -126,14 +126,14 @@ package net.wg.gui.lobby.tankman
          this.specializationLevel = _loc3_.roleLevel;
          this.skillsCountForLearn = _loc3_.newSkillsCount[0];
          this.lastNewSkillExp = _loc3_.newSkillsCount[1];
-         this.skills = parseCarouselTankmanSkills(_loc3_.skills,this.skillsCountForLearn,this.inventoryID);
+         this.skills = this.parseCarouselTankmanSkills(_loc3_.skills,this.skillsCountForLearn,this.inventoryID);
          this.roleType = _loc3_.roleName;
          this.role = _loc3_.roleUserName;
          this.modifiers = param1.modifiers;
          this.enoughFreeXPForTeaching = param1.enoughFreeXPForTeaching;
       }
       
-      private static function parseCarouselTankmanSkills(param1:Array, param2:int, param3:int) : Array
+      private function parseCarouselTankmanSkills(param1:Array, param2:int, param3:int) : Array
       {
          var _loc6_:CarouselTankmanSkillsModel = null;
          var _loc7_:Object = null;
@@ -164,6 +164,7 @@ package net.wg.gui.lobby.tankman
          {
             _loc9_ = new CarouselTankmanSkillsModel();
             _loc9_.isNewSkill = true;
+            _loc9_.isBootcamp = this.isBootcamp;
             _loc9_.skillsCountForLearn = param2;
             _loc9_.tankmanID = param3;
             _loc4_.push(_loc9_);

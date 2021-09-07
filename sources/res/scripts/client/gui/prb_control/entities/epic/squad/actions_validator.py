@@ -1,3 +1,4 @@
+from CurrentVehicle import g_currentVehicle
 from gui.prb_control.entities.base.actions_validator import ActionsValidatorComposite
 from gui.prb_control.entities.base.squad.actions_validator import SquadActionsValidator, SquadVehiclesValidator
 from gui.prb_control.entities.random.squad.actions_validator import BalancedSquadVehiclesValidator, SPGForbiddenSquadVehiclesValidator
@@ -12,6 +13,17 @@ class _EpicVehiclesValidator(SquadVehiclesValidator):
 
     def _isValidMode(self, vehicle):
         return not vehicle.isEvent
+
+
+class _EpicBalancedSquadVehiclesValidator(BalancedSquadVehiclesValidator):
+    __epicCtrl = dependency.descriptor(IEpicBattleMetaGameController)
+
+    def _validate(self):
+        availableLevels = self.__epicCtrl.getSuitableForQueueVehicleLevels()
+        pInfo = self._entity.getPlayerInfo()
+        if not pInfo.isReady and g_currentVehicle.isPresent() and g_currentVehicle.item.level not in availableLevels:
+            return ValidationResult(False, UNIT_RESTRICTION.VEHICLE_INVALID_LEVEL)
+        return super(_EpicBalancedSquadVehiclesValidator, self)._validate()
 
 
 class _EpicStateValidator(UnitStateValidator):
@@ -29,7 +41,7 @@ class EpicSquadActionsValidator(SquadActionsValidator):
 
     def _createVehiclesValidator(self, entity):
         return ActionsValidatorComposite(entity, validators=[
-         BalancedSquadVehiclesValidator(entity),
+         _EpicBalancedSquadVehiclesValidator(entity),
          _EpicVehiclesValidator(entity),
          SPGForbiddenSquadVehiclesValidator(entity)])
 

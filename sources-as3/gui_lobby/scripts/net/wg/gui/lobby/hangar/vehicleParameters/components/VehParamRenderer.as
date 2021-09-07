@@ -65,7 +65,7 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
       
       public var separator:Sprite = null;
       
-      private var _model:VehParamVO = null;
+      protected var _model:VehParamVO = null;
       
       private var _tooltip:String = null;
       
@@ -110,6 +110,8 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
          hitArea = this.hitMC;
          this._simpleHitX = this.arrow.x - (this.arrow.width >> 1) - HIT_ZONE_GAP;
          this._simpleHitW = width - this._simpleHitX;
+         constraintsDisabled = true;
+         preventAutosizing = true;
          mouseEnabledOnDisabled = true;
          addEventListener(MouseEvent.ROLL_OVER,this.onMouseRollOverHandler);
          addEventListener(MouseEvent.ROLL_OUT,this.onMouseRollOutHandler);
@@ -234,6 +236,16 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
          }
       }
       
+      protected function onShowTooltip() : void
+      {
+         this._tooltipMgr.showSpecial(this._tooltip,null,this._model.paramID);
+      }
+      
+      protected function onHideTooltip() : void
+      {
+         this._tooltipMgr.hide();
+      }
+      
       private function hideAll() : void
       {
          this.titleTF.visible = false;
@@ -258,13 +270,13 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
       {
          if(StringUtils.isNotEmpty(this._tooltip))
          {
-            this._tooltipMgr.showSpecial(this._tooltip,null,this._model.paramID);
+            this.onShowTooltip();
          }
       }
       
       private function onMouseRollOutHandler(param1:MouseEvent) : void
       {
-         this._tooltipMgr.hide();
+         this.onHideTooltip();
       }
    }
 }

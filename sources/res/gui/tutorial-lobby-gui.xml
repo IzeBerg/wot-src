@@ -313,6 +313,10 @@
 							<value>False</value>
 						</item>
 						<item>
+							<name>customLinkage</name>
+							<value>BCLobbyAttentionHintUI</value>
+						</item>
+						<item>
 							<name>padding</name>
 							<type>dict</type>
 							<value>
@@ -339,6 +343,20 @@
 							</value>
 						</item>
 					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>DailyQuestPanel</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>hangar</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>dqWidget</value>
 				</item>
 			</value>
 		</item>
@@ -524,6 +542,126 @@
 							<name>top</name>
 							<type>float</type>
 							<value>2</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>LobbyMenuBnt</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>lobby</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>header.headerButtonBar:HeaderButton_UI?id=settings</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>LobbyMenuManualItem</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>lobbyMenu</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>manualBtn</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>LobbyMenuBootcampItem</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>lobbyMenu</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>bootcampBtn</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
 						</item>
 						<item>
 							<name>right</name>
@@ -824,6 +962,21 @@
 							<name>bottom</name>
 							<type>float</type>
 							<value>0</value>
+						</item>
+					</value>
+				</item>
+				<item>
+					<name>bootcampHint</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>hideBorder</name>
+							<type>bool</type>
+							<value>False</value>
+						</item>
+						<item>
+							<name>customLinkage</name>
+							<value>BCLobbyAttentionHintUI</value>
 						</item>
 					</value>
 				</item>
@@ -1236,6 +1389,10 @@
 								</item>
 							</value>
 						</item>
+						<item>
+							<name>customLinkage</name>
+							<value>BCLobbyAttentionHintUI</value>
+						</item>
 					</value>
 				</item>
 			</value>
@@ -1405,12 +1562,12 @@
 								<item>
 									<name>right</name>
 									<type>float</type>
-									<value>4</value>
+									<value>2</value>
 								</item>
 								<item>
 									<name>bottom</name>
 									<type>float</type>
-									<value>6</value>
+									<value>5</value>
 								</item>
 							</value>
 						</item>
@@ -1647,6 +1804,10 @@
 								</item>
 							</value>
 						</item>
+						<item>
+							<name>customLinkage</name>
+							<value>BCLobbyAttentionHintUI</value>
+						</item>
 					</value>
 				</item>
 			</value>
@@ -1686,46 +1847,6 @@
 							<name>bottom</name>
 							<type>float</type>
 							<value>0</value>
-						</item>
-					</value>
-				</item>
-			</value>
-		</item>
-		<item>
-			<name>ResearchXP</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>research</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>researchItems:ResearchItemNode.xpInfo</value>
-				</item>
-				<item>
-					<name>anim</name>
-					<type>dict</type>
-					<value>
-						<item>
-							<name>clip</name>
-							<type>dict</type>
-							<value>
-								<item>
-									<name>linkage</name>
-									<value>BCLobbySlotUI</value>
-								</item>
-								<item>
-									<name>offsetX</name>
-									<type>int</type>
-									<value>-15</value>
-								</item>
-								<item>
-									<name>offsetY</name>
-									<type>int</type>
-									<value>2</value>
-								</item>
-							</value>
 						</item>
 					</value>
 				</item>
@@ -3421,7 +3542,7 @@
 				</item>
 				<item>
 					<name>path</name>
-					<value>ammunitionPanel.vehicleStateMsg</value>
+					<value>ammunitionPanel.vehicleStatus</value>
 				</item>
 			</value>
 		</item>
@@ -3471,6 +3592,10 @@
 									<value>0</value>
 								</item>
 							</value>
+						</item>
+						<item>
+							<name>customLinkage</name>
+							<value>BCLobbyAttentionHintUI</value>
 						</item>
 					</value>
 				</item>
@@ -4491,6 +4616,46 @@
 			</value>
 		</item>
 		<item>
+			<name>AmmunitionPanelBattleAbilities</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>R.views.lobby.tanksetup.AmmunitionPanel</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>div[class*=battleAbilities]</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
 			<name>FilterTutorialHintZone</name>
 			<type>dict</type>
 			<value>
@@ -4501,6 +4666,46 @@
 				<item>
 					<name>path</name>
 					<value>div[class*=filter-survivability]</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>ShowAbilitiesButton</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>R.views.lobby.tanksetup.HangarAmmunitionSetup</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>div[class*=toReservesButton]</value>
 				</item>
 				<item>
 					<name>padding</name>
@@ -4581,6 +4786,366 @@
 				<item>
 					<name>path</name>
 					<value>div[id=mode-selector-widgets-btn]</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>VehiclePreviewPostProgressionButton</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>vehiclePreviewPage</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>fadingPanels.infoPanel.vehPostProgressionBtn</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>HeroVehiclePreviewPostProgressionButton</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>heroVehiclePreviewPage</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>fadingPanels.infoPanel.vehPostProgressionBtn</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>TradeInVehiclePreviewPostProgressionButton</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>tradeInVehiclePreview</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>fadingPanels.infoPanel.vehPostProgressionBtn</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>PersonalTradeInVehiclePreviewPostProgressionButton</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>personalTradeInVehiclePreview</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>fadingPanels.infoPanel.vehPostProgressionBtn</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>VehiclePostProgressionEntryPoint</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>hangar</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>vehResearchPanel.gotoPostProgressionBtn</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>SwitchEquipmentAuxiliaryLoadout</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>R.views.lobby.tanksetup.AmmunitionPanel</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>div[id=switch-equipment-group-1]</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>SwitchEquipmentEssentialsLoadout</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>R.views.lobby.tanksetup.AmmunitionPanel</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>div[id=switch-equipment-group-2]</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>CompareModificationsPanel</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>R.views.lobby.vehicle_compare.CompareModificationsPanelView</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>div[class*=panel]</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>CompareSpecializationButton</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>R.views.lobby.tanksetup.VehicleCompareAmmunitionPanel</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>div[class*=specializationButton]</value>
 				</item>
 				<item>
 					<name>padding</name>

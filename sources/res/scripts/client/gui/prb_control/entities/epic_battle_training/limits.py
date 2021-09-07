@@ -1,4 +1,6 @@
+from CurrentVehicle import g_currentVehicle
 from constants import PREBATTLE_ACCOUNT_STATE, PREBATTLE_TYPE
+from gui.Scaleform.daapi.view.lobby.epicBattle.epic_helpers import isVehLevelUnlockableInBattle
 from gui.prb_control.entities.base.limits import AbstractTeamIsValid, LimitsCollection, VehicleIsValid, TeamNoPlayersInBattle, TeamIsValid
 from gui.prb_control.settings import PREBATTLE_RESTRICTION
 from skeletons.gui.shared import IItemsCache
@@ -41,6 +43,9 @@ class EpicVehicleIsValid(VehicleIsValid):
         isValid, restriction = super(EpicVehicleIsValid, self).check(teamLimits)
         if restriction == PREBATTLE_RESTRICTION.VEHICLE_EPIC_ONLY:
             return (True, '')
+        vehicle = g_currentVehicle.item
+        if vehicle and isVehLevelUnlockableInBattle(vehicle.level):
+            return (False, PREBATTLE_RESTRICTION.VEHICLE_WILL_BE_UNLOCKED)
         return (isValid, restriction)
 
 

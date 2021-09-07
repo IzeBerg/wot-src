@@ -2,26 +2,34 @@ package net.wg.gui.lobby.techtree.sub
 {
    import flash.display.DisplayObject;
    import flash.display.Sprite;
+   import flash.events.MouseEvent;
    import net.wg.data.constants.Linkages;
+   import net.wg.data.constants.generated.POSTPROGRESSION_CONSTS;
    import net.wg.gui.lobby.techtree.TechTreeEvent;
    import net.wg.gui.lobby.techtree.constants.NodeEntityType;
    import net.wg.gui.lobby.techtree.controls.ExperienceBlock;
    import net.wg.gui.lobby.techtree.controls.NationFlagContainer;
    import net.wg.gui.lobby.techtree.data.ResearchRootVO;
    import net.wg.gui.lobby.techtree.data.vo.NodeData;
+   import net.wg.gui.lobby.techtree.data.vo.ResearchPostProgressionDataVO;
    import net.wg.gui.lobby.techtree.data.vo.UnlockProps;
    import net.wg.gui.lobby.techtree.helpers.ResearchGraphics;
+   import net.wg.gui.lobby.techtree.interfaces.IBorderHighlighted;
    import net.wg.gui.lobby.techtree.interfaces.IRenderer;
    import net.wg.gui.lobby.techtree.interfaces.IResearchPage;
    import net.wg.gui.lobby.techtree.math.MatrixPosition;
+   import net.wg.gui.lobby.techtree.nodes.FakeNode;
    import net.wg.gui.lobby.techtree.nodes.ResearchRoot;
+   import net.wg.gui.lobby.techtree.postProgression.EntryPoint;
    import net.wg.gui.lobby.tradeIn.TradeOffWidget;
    import net.wg.infrastructure.events.FocusRequestEvent;
    import net.wg.infrastructure.interfaces.ITutorialCustomComponent;
    import net.wg.utils.IClassFactory;
+   import net.wg.utils.IStageSizeDependComponent;
+   import net.wg.utils.StageSizeBoundaries;
    import scaleform.clik.constants.InvalidationType;
    
-   public class ResearchItems extends ModulesTree implements ITutorialCustomComponent
+   public class ResearchItems extends ModulesTree implements ITutorialCustomComponent, IStageSizeDependComponent
    {
       
       private static const COOLDOWN:int = 250;
@@ -38,10 +46,6 @@ package net.wg.gui.lobby.techtree.sub
       
       private static const UNLOCK_INFORMATION_NOT_DEFINED:String = "Unlock information is not defined for node = ";
       
-      private static const MEDIUM_SIZE_BREAKPOINT:int = 1280;
-      
-      private static const LARGE_SIZE_BREAKPOINT:int = 1600;
-      
       private static const NATION_FLAG_ALPHA:Number = 1.2;
       
       private static const XP_INFO_NAME:String = "xpInfo";
@@ -49,6 +53,20 @@ package net.wg.gui.lobby.techtree.sub
       private static const CORNER_X:int = 18;
       
       private static const PREMIUM_ROOT_OUT_X:int = 180;
+      
+      private static const ERROR:String = "Error";
+      
+      private static const INV_POST_PROGRESSION:String = "invPostProgression";
+      
+      private static const POST_PROGRESSION_MARGIN:int = 23;
+      
+      private static const POST_PROGRESSION_PADDING:int = 22;
+      
+      private static const POST_PROGRESSION_OFFSET_MIN_Y:int = 56;
+      
+      private static const POST_PROGRESSION_OFFSET_MAX_Y:int = 76;
+      
+      private static const MAX_ROWS:int = 6;
        
       
       public var view:IResearchPage = null;
@@ -61,16 +79,21 @@ package net.wg.gui.lobby.techtree.sub
       
       private var _requestInCoolDown:Boolean = false;
       
-      private var _viewSize:Number = 1280;
-      
       private var _topRenderers:Vector.<IRenderer> = null;
       
       private var _vehicleNodeClass:Class = null;
       
       private var _rootRendererData:ResearchRootVO = null;
       
+      private var _classFactory:IClassFactory;
+      
+      private var _postProgressionEntry:EntryPoint = null;
+      
+      private var _postProgressionData:ResearchPostProgressionDataVO = null;
+      
       public function ResearchItems()
       {
+         this._classFactory = App.utils.classFactory;
          super();
       }
       
@@ -78,6 +101,10 @@ package net.wg.gui.lobby.techtree.sub
       {
          var _loc2_:MatrixPosition = positionById[param1];
          var _loc3_:IRenderer = null;
+         if(!_loc2_)
+         {
+            return null;
+         }
          if(_loc2_.column == -1)
          {
             _loc3_ = this._topRenderers[_loc2_.row];
@@ -111,6 +138,7 @@ package net.wg.gui.lobby.techtree.sub
          param1.removeEventListener(TechTreeEvent.CLICK_2_RENT,this.onRendererClick2RentHandler);
          param1.removeEventListener(TechTreeEvent.GO_TO_SHOP,this.onRendererGoToShopHandler);
          param1.removeEventListener(TechTreeEvent.GO_TO_CHANGE_NATION_VIEW,this.onGoToChangeNationViewHandler);
+         param1.removeEventListener(TechTreeEvent.ON_MODULE_HOVER,this.onRendererOnModuleHoverHandler);
          super.removeItemRenderer(param1);
       }
       
@@ -121,20 +149,46 @@ package net.wg.gui.lobby.techtree.sub
          {
             rootRenderer.validateNow();
             _loc1_ = 1;
-            if(this._viewSize < MEDIUM_SIZE_BREAKPOINT)
+            if(_viewWidth < StageSizeBoundaries.WIDTH_1280)
             {
                _loc1_ = SMALL_SIZE_SCALE;
             }
-            else if(this._viewSize < LARGE_SIZE_BREAKPOINT)
+            else if(_viewWidth < StageSizeBoundaries.WIDTH_1600)
             {
                _loc1_ = MEDIUM_SIZE_SCALE;
             }
+            if(_viewWidth >= StageSizeBoundaries.WIDTH_1600)
+            {
+               ResearchRoot(rootRenderer).size = ResearchRoot.LARGE_SIZE;
+            }
+            else if(_viewWidth >= StageSizeBoundaries.WIDTH_1280)
+            {
+               ResearchRoot(rootRenderer).size = ResearchRoot.NORMAL_SIZE;
+            }
+            else
+            {
+               ResearchRoot(rootRenderer).size = ResearchRoot.SMALL_SIZE;
+            }
+            rootRenderer.validateNow();
             this.background.scaleX = this.background.scaleY = _loc1_;
             this.backgroundCollectible.scaleX = this.backgroundCollectible.scaleY = _loc1_;
             this.nationFlagContainer.scaleX = this.nationFlagContainer.scaleY = _loc1_;
             invalidateLayout();
          }
          super.draw();
+         if(isInvalid(INV_POST_PROGRESSION))
+         {
+            this.updatePostProgressionEntryPoint();
+            invalidateSize();
+         }
+         if(isInvalid(InvalidationType.SIZE))
+         {
+            this.updatePostProgressionPosition();
+         }
+         if(this._postProgressionEntry && isInvalid(InvalidationType.LAYOUT))
+         {
+            this._postProgressionEntry.invalidateLayout();
+         }
       }
       
       override protected function drawLines() : void
@@ -146,12 +200,6 @@ package net.wg.gui.lobby.techtree.sub
       override protected function onDrawComplete() : void
       {
          this.updateBackground();
-      }
-      
-      private function updateBackground() : void
-      {
-         this.background.visible = !rootRenderer.isCollectible();
-         this.backgroundCollectible.visible = rootRenderer.isCollectible();
       }
       
       override protected function onDispose() : void
@@ -169,6 +217,16 @@ package net.wg.gui.lobby.techtree.sub
          this.nationFlagContainer.dispose();
          this.nationFlagContainer = null;
          this.view = null;
+         this._classFactory = null;
+         if(this._postProgressionEntry)
+         {
+            this._postProgressionEntry.removeEventListener(TechTreeEvent.GO_TO_POST_PROGRESSION,this.onGoToPostProgressionHandler);
+            this._postProgressionEntry.removeEventListener(MouseEvent.ROLL_OVER,this.onPostProgressionRollOverHandler);
+            this._postProgressionEntry.removeEventListener(MouseEvent.ROLL_OUT,this.onPostProgressionRollOutHandler);
+            this._postProgressionEntry.dispose();
+            this._postProgressionEntry = null;
+         }
+         this._postProgressionData = null;
          NodeData.setDisplayInfoClass(null);
          super.onDispose();
       }
@@ -207,6 +265,7 @@ package net.wg.gui.lobby.techtree.sub
          param1.addEventListener(TechTreeEvent.CLICK_2_UNLOCK,this.onRendererClick2UnlockHandler,false,0,true);
          param1.addEventListener(TechTreeEvent.CLICK_2_BUY,this.onRendererClick2BuyHandler,false,0,true);
          param1.addEventListener(TechTreeEvent.CLICK_2_OPEN,this.onRenderer2Click2OpenHandler,false,0,true);
+         param1.addEventListener(TechTreeEvent.ON_MODULE_HOVER,this.onRendererOnModuleHoverHandler,false,0,true);
       }
       
       override protected function setupVehicleRenderer(param1:IRenderer, param2:Boolean = false) : void
@@ -232,7 +291,7 @@ package net.wg.gui.lobby.techtree.sub
          super.onCircleReferenceDetected();
          if(this.view != null && App.utils != null)
          {
-            this.view.showSystemMessageS("Error",App.utils.locale.makeString(SYSTEM_MESSAGES.UNLOCKS_DRAWFAILED));
+            this.view.showSystemMessageS(ERROR,App.utils.locale.makeString(SYSTEM_MESSAGES.UNLOCKS_DRAWFAILED));
          }
       }
       
@@ -261,6 +320,7 @@ package net.wg.gui.lobby.techtree.sub
       {
          super.configUI();
          App.tutorialMgr.addListenersToCustomTutorialComponent(this);
+         App.stageSizeMgr.register(this);
          this.nationFlagContainer.alpha = NATION_FLAG_ALPHA;
          rGraphics.xRatio = CORNER_X;
       }
@@ -391,6 +451,12 @@ package net.wg.gui.lobby.techtree.sub
          }
       }
       
+      public function setPostProgressionData(param1:ResearchPostProgressionDataVO) : void
+      {
+         this._postProgressionData = param1;
+         invalidate(INV_POST_PROGRESSION);
+      }
+      
       public function setRootData(param1:ResearchRootVO) : void
       {
          if(param1 == this._rootRendererData)
@@ -399,6 +465,17 @@ package net.wg.gui.lobby.techtree.sub
          }
          this._rootRendererData = param1;
          invalidateData();
+      }
+      
+      public function setStateSizeBoundaries(param1:int, param2:int) : void
+      {
+         if(_viewWidth == param1 && _viewHeight == param2)
+         {
+            return;
+         }
+         _viewWidth = param1;
+         _viewHeight = param2;
+         invalidateSize();
       }
       
       public function setVehicleTypeXP(param1:Array) : void
@@ -437,31 +514,18 @@ package net.wg.gui.lobby.techtree.sub
          }
       }
       
-      public function setViewWidth(param1:Number) : void
-      {
-         if(this._viewSize == param1)
-         {
-            return;
-         }
-         this._viewSize = param1;
-         if(param1 >= LARGE_SIZE_BREAKPOINT)
-         {
-            ResearchRoot(rootRenderer).size = ResearchRoot.LARGE_SIZE;
-         }
-         else if(param1 >= MEDIUM_SIZE_BREAKPOINT)
-         {
-            ResearchRoot(rootRenderer).size = ResearchRoot.NORMAL_SIZE;
-         }
-         else
-         {
-            ResearchRoot(rootRenderer).size = ResearchRoot.SMALL_SIZE;
-         }
-         invalidateSize();
-      }
-      
       public function setXpInfoLinkage(param1:String) : void
       {
          ResearchRoot(rootRenderer).setXpBlockLinkage(param1,XP_INFO_NAME);
+      }
+      
+      public function showPostProgressionUnlockAnimation() : void
+      {
+         this.updatePostProgressionEntryPoint();
+         if(this._postProgressionEntry)
+         {
+            this._postProgressionEntry.showUnlockAnimation();
+         }
       }
       
       public function updateWalletStatus() : void
@@ -470,6 +534,12 @@ package net.wg.gui.lobby.techtree.sub
          {
             this.xpInfo.updateWalletStatus();
          }
+      }
+      
+      private function updateBackground() : void
+      {
+         this.background.visible = !rootRenderer.isCollectible();
+         this.backgroundCollectible.visible = rootRenderer.isCollectible();
       }
       
       private function updateTopRenderers() : void
@@ -526,6 +596,79 @@ package net.wg.gui.lobby.techtree.sub
       private function deactivateCoolDown() : void
       {
          this._requestInCoolDown = false;
+      }
+      
+      private function updatePostProgressionEntryPoint() : void
+      {
+         var _loc1_:Boolean = this._postProgressionData && this._postProgressionData.state != POSTPROGRESSION_CONSTS.RESEARCH_STATE_HIDDEN;
+         if(this._postProgressionEntry)
+         {
+            this._postProgressionEntry.visible = _loc1_;
+         }
+         else if(_loc1_)
+         {
+            this._postProgressionEntry = this._classFactory.getComponent(Linkages.RESEARCH_POST_PROGRESSION_ENTRY_POINT,EntryPoint);
+            this.addChild(this._postProgressionEntry);
+            this._postProgressionEntry.addEventListener(TechTreeEvent.GO_TO_POST_PROGRESSION,this.onGoToPostProgressionHandler);
+            this._postProgressionEntry.addEventListener(MouseEvent.ROLL_OVER,this.onPostProgressionRollOverHandler);
+            this._postProgressionEntry.addEventListener(MouseEvent.ROLL_OUT,this.onPostProgressionRollOutHandler);
+         }
+         if(this._postProgressionEntry && this._postProgressionData)
+         {
+            this._postProgressionEntry.setData(this._postProgressionData);
+         }
+      }
+      
+      private function updatePostProgressionPosition() : void
+      {
+         var _loc1_:int = 0;
+         var _loc2_:int = 0;
+         var _loc3_:int = 0;
+         var _loc4_:int = 0;
+         var _loc5_:Vector.<IRenderer> = null;
+         var _loc6_:int = 0;
+         var _loc7_:IRenderer = null;
+         if(this._postProgressionEntry && renderers)
+         {
+            _loc1_ = int.MAX_VALUE;
+            _loc2_ = int.MIN_VALUE;
+            _loc3_ = int.MIN_VALUE;
+            _loc4_ = int.MIN_VALUE;
+            for each(_loc5_ in renderers)
+            {
+               _loc4_ = Math.max(_loc4_,_loc5_.length);
+               for each(_loc7_ in _loc5_)
+               {
+                  if(_loc7_)
+                  {
+                     if(!(_loc7_ is FakeNode || _loc7_ == rootRenderer || _loc7_.getID() <= 0))
+                     {
+                        _loc1_ = Math.min(_loc1_,_loc7_.getInX());
+                        _loc2_ = Math.max(_loc2_,_loc7_.getOutX());
+                        _loc3_ = Math.max(_loc3_,_loc7_.getY());
+                     }
+                  }
+               }
+            }
+            _loc6_ = _loc4_ == MAX_ROWS ? int(POST_PROGRESSION_OFFSET_MIN_Y) : int(POST_PROGRESSION_OFFSET_MAX_Y);
+            this._postProgressionEntry.width = _loc2_ - _loc1_ + POST_PROGRESSION_MARGIN;
+            this._postProgressionEntry.setPosition(rGraphics.x + _loc1_ - POST_PROGRESSION_PADDING,_loc3_ + _loc6_);
+         }
+      }
+      
+      private function selectRequiredModules(param1:Boolean) : void
+      {
+         var _loc3_:IRenderer = null;
+         var _loc4_:uint = 0;
+         var _loc2_:Vector.<uint> = this._postProgressionData.moduleIds;
+         for each(_loc4_ in _loc2_)
+         {
+            _loc3_ = this.getNodeByID(_loc4_);
+            if(_loc3_ is IBorderHighlighted)
+            {
+               IBorderHighlighted(_loc3_).isBorderHighlighted = param1;
+            }
+         }
       }
       
       public function set vehicleNodeClass(param1:Class) : void
@@ -614,6 +757,16 @@ package net.wg.gui.lobby.techtree.sub
          }
       }
       
+      private function onRendererOnModuleHoverHandler(param1:TechTreeEvent) : void
+      {
+         var _loc2_:int = 0;
+         if(this.view != null)
+         {
+            _loc2_ = param1.index != -1 ? int(this.getNodeDataByEvent(param1).id) : int(-1);
+            this.view.onModuleHoverS(_loc2_);
+         }
+      }
+      
       private function onRendererGoToVehicleViewHandler(param1:TechTreeEvent) : void
       {
          if(!this._requestInCoolDown && this.view != null && param1.index > -1)
@@ -651,12 +804,27 @@ package net.wg.gui.lobby.techtree.sub
          this.view.goToNationChangeViewS(rootRenderer.getID());
       }
       
+      private function onGoToPostProgressionHandler(param1:TechTreeEvent) : void
+      {
+         this.view.goToPostProgressionS(rootRenderer.getID());
+      }
+      
       private function onRendererGoToShopHandler(param1:TechTreeEvent) : void
       {
          if(this.view != null && param1.index > -1)
          {
             this.view.goToVehicleCollectionS(rootRenderer.container.getNation());
          }
+      }
+      
+      private function onPostProgressionRollOverHandler(param1:MouseEvent) : void
+      {
+         this.selectRequiredModules(true);
+      }
+      
+      private function onPostProgressionRollOutHandler(param1:MouseEvent) : void
+      {
+         this.selectRequiredModules(false);
       }
    }
 }

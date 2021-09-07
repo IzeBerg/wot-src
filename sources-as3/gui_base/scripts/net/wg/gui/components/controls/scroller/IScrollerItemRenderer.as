@@ -30,5 +30,11 @@ package net.wg.gui.components.controls.scroller
       function set tooltipDecorator(param1:ITooltipMgr) : void;
       
       function set isViewPortEnabled(param1:Boolean) : void;
+      
+      function set rowsCount(param1:int) : void;
+      
+      function get rowsCount() : int;
+      
+      function get adaptiveSize() : String;
    }
 }

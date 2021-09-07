@@ -139,6 +139,7 @@ class CurrentVehicleNeedChangeTrigger(_CurrentVehicleViewStateTrigger):
         return game_vars.getCurrentVehicleState() in (
          Vehicle.VEHICLE_STATE.CREW_NOT_FULL,
          Vehicle.VEHICLE_STATE.UNSUITABLE_TO_QUEUE,
+         Vehicle.VEHICLE_STATE.WILL_BE_UNLOCKED_IN_BATTLE,
          Vehicle.VEHICLE_STATE.BATTLE,
          Vehicle.VEHICLE_STATE.DAMAGED,
          Vehicle.VEHICLE_STATE.DESTROYED,

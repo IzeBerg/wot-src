@@ -261,6 +261,7 @@ package net.wg.gui.battle.battleRoyale.views.components
          this.status &= ~(COOLDOWN_FLAG | IN_USE_FLAG);
          if(!this._isReplay)
          {
+            this._scheduler.cancelTask(this.clearCoolDownTime);
             this._scheduler.cancelTask(this.onCooldownTick);
             this._cooldownTimer.end();
          }
@@ -465,6 +466,14 @@ package net.wg.gui.battle.battleRoyale.views.components
          }
          this._isActivated = param1;
          invalidate(ACTIVATED_VALIDATION_FLAG);
+      }
+      
+      public function updateLockedInformation(param1:int, param2:String) : void
+      {
+      }
+      
+      public function updateLevelInformation(param1:int) : void
+      {
       }
       
       private function get status() : uint

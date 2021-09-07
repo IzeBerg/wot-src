@@ -196,6 +196,7 @@ class IAppLoader(object):
     onGUISpaceLeft = None
     onGUISpaceBeforeEnter = None
     onGUISpaceEntered = None
+    onGUIInitialized = None
 
     def init(self, appFactory):
         raise NotImplementedError
