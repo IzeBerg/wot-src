@@ -9,6 +9,7 @@ from gui.Scaleform.daapi.view.lobby.shared.fitting_slot_vo import FittingSlotVO
 from gui.Scaleform.daapi.view.lobby.vehicle_compare import cmp_helpers
 from gui.Scaleform.daapi.view.lobby.vehicle_compare.cmp_configurator_base import VehicleCompareConfiguratorBaseView
 from gui.Scaleform.daapi.view.lobby.vehicle_compare.cmp_configurator_parameters import VehicleCompareParameters
+from gui.Scaleform.daapi.view.lobby.vehicle_compare.cmp_configurator_vehicle import g_cmpConfiguratorVehicle
 from gui.Scaleform.daapi.view.meta.VehicleCompareConfiguratorMainMeta import VehicleCompareConfiguratorMainMeta
 from gui.Scaleform.daapi.view.meta.VehicleCompareConfiguratorViewMeta import VehicleCompareConfiguratorViewMeta
 from gui.Scaleform.framework import g_entitiesFactories
@@ -18,6 +19,8 @@ from gui.Scaleform.genConsts.VEHICLE_COMPARE_CONSTANTS import VEHICLE_COMPARE_CO
 from gui.Scaleform.locale.VEH_COMPARE import VEH_COMPARE
 from gui.SystemMessages import pushMessagesFromResult
 from gui.game_control.veh_comparison_basket import PARAMS_AFFECTED_TANKMEN_SKILLS
+from skeletons.gui.impl import IGuiLoader
+from gui.impl.gen import R
 from gui.impl.lobby.vehicle_compare.interactors import CompareInteractingItem
 from gui.shared.event_bus import EVENT_BUS_SCOPE
 from gui.shared.gui_items import Tankman, GUI_ITEM_TYPE, vehicle_adjusters, GUI_ITEM_TYPE_NAMES
@@ -137,6 +140,7 @@ class _CurrentCrewMonitor(object):
         skillsCheckerStorage = defaultdict(lambda : self._DEF_SKILL_CHECKER)
         skillsCheckerStorage[PARAMS_AFFECTED_TANKMEN_SKILLS[0]] = self._FULL_CREW_SKILL_CHECKER
         skillsCheckerStorage[PARAMS_AFFECTED_TANKMEN_SKILLS[1]] = self._FULL_CREW_SKILL_CHECKER
+        skillsCheckerStorage[PARAMS_AFFECTED_TANKMEN_SKILLS[2]] = self._FULL_CREW_SKILL_CHECKER
         vehicleCrew = self.itemsCache.items.getItemByCD(self.__container.getCurrentVehicle().intCD).crew
         levelsBySkills = defaultdict(list)
         for _, tankman in vehicleCrew:
@@ -263,14 +267,14 @@ class _CrewSkillsManager(object):
         return tankmens
 
 
-class VehicleCompareConfiguratorView(LobbySubView, VehicleCompareConfiguratorViewMeta):
+class VehicleCompareConfiguratorView(VehicleCompareConfiguratorViewMeta):
     itemsCache = dependency.descriptor(IItemsCache)
 
-    def __init__(self, ctx=None):
+    def __init__(self):
         self.__parametersView = None
         self.__progressionInject = None
         self.__ammoInject = None
-        super(VehicleCompareConfiguratorView, self).__init__(ctx)
+        super(VehicleCompareConfiguratorView, self).__init__()
         self.__slotsVoData = [
          None] * (_SLOT_DATA_INDEXES[(-1)][(-1)] + 1)
         self.__currentCrewMonitor = None
@@ -496,6 +500,7 @@ class VehicleCompareConfiguratorView(LobbySubView, VehicleCompareConfiguratorVie
 class VehicleCompareConfiguratorMain(LobbySubView, VehicleCompareConfiguratorMainMeta):
     itemsCache = dependency.descriptor(IItemsCache)
     comparisonBasket = dependency.descriptor(IVehicleComparisonBasket)
+    uiLoader = dependency.descriptor(IGuiLoader)
 
     def __init__(self, ctx=None):
         super(VehicleCompareConfiguratorMain, self).__init__(ctx)
@@ -725,8 +730,9 @@ class VehicleCompareConfiguratorMain(LobbySubView, VehicleCompareConfiguratorMai
             self.__notifyViews('onCrewLevelUpdated', crewLevelId)
 
     def closeView(self, forcedBackAliace=None):
-        event = g_entitiesFactories.makeLoadEvent(SFViewLoadParams(forcedBackAliace or self.__backAlias))
-        self.fireEvent(event, scope=EVENT_BUS_SCOPE.LOBBY)
+        if self.__canClose():
+            event = g_entitiesFactories.makeLoadEvent(SFViewLoadParams(forcedBackAliace or self.__backAlias))
+            self.fireEvent(event, scope=EVENT_BUS_SCOPE.LOBBY)
 
     def _populate(self):
         super(VehicleCompareConfiguratorMain, self)._populate()
@@ -735,6 +741,7 @@ class VehicleCompareConfiguratorMain(LobbySubView, VehicleCompareConfiguratorMai
         basketVehicleData = self.getBasketVehCmpData()
         basketVehCrewLvl, basketVehCrewSkills = basketVehicleData.getCrewData()
         self.__vehicle = Vehicle(basketVehicleData.getVehicleStrCD())
+        g_cmpConfiguratorVehicle.setVehicle(self.__vehicle)
         self.__vehItem = CompareInteractingItem(self.__vehicle)
         self.__crewSkillsManager = _CrewSkillsManager(self.__vehicle, basketVehCrewLvl, basketVehCrewSkills)
         equipment = basketVehicleData.getEquipment()
@@ -757,6 +764,7 @@ class VehicleCompareConfiguratorMain(LobbySubView, VehicleCompareConfiguratorMai
     def _dispose(self):
         self.comparisonBasket.onSwitchChange -= self.__onBasketStateChanged
         self.comparisonBasket.onParametersChange -= self.__onBasketParametersChanged
+        g_cmpConfiguratorVehicle.clear()
         self.__vehItem.clear()
         self.__vehItem = None
         if self.__crewSkillsManager is not None:
@@ -772,6 +780,10 @@ class VehicleCompareConfiguratorMain(LobbySubView, VehicleCompareConfiguratorMai
         if isinstance(viewPy, VehicleCompareConfiguratorBaseView):
             self.__views[alias] = viewPy
             viewPy.setContainer(self)
+
+    def __canClose(self):
+        resID = R.views.lobby.tanksetup.VehicleCompareAmmunitionSetup()
+        return self.uiLoader.windowsManager.getViewByLayoutID(resID) is None
 
     @process
     def __launchOptDeviceRemoving(self, slotIndex):

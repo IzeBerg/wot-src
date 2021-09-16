@@ -814,14 +814,14 @@ class Views(DynAccessor):
             class _tooltips(DynAccessor):
                 __slots__ = ()
                 AlertTooltip = DynAccessor(200)
-                BonusBattlesTooltip = DynAccessor(201)
 
                 class _common(DynAccessor):
                     __slots__ = ()
-                    Divider = DynAccessor(202)
-                    GradientDecorator = DynAccessor(203)
+                    Divider = DynAccessor(201)
+                    GradientDecorator = DynAccessor(202)
 
                 common = _common()
+                SimplyFormatTooltip = DynAccessor(203)
 
             tooltips = _tooltips()
 

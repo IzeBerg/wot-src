@@ -696,7 +696,7 @@ class SiegeModeIndicator(SiegeModeIndicatorMeta):
 
     @staticmethod
     def __hydraulicDeviceStateConverter(deviceName, state):
-        if state == DEVICE_STATE_CRITICAL and deviceName in ('leftTrack', 'rightTrack'):
+        if state == DEVICE_STATE_CRITICAL and deviceName in ('leftTrack0', 'rightTrack0'):
             return DEVICE_STATE_NORMAL
         return state
 
@@ -717,7 +717,7 @@ class SiegeModeIndicator(SiegeModeIndicatorMeta):
     @staticmethod
     def __createDevicesMap(vTypeDesc):
         if vTypeDesc.hasHydraulicChassis or vTypeDesc.hasAutoSiegeMode:
-            deviceNames = ('engine', 'leftTrack', 'rightTrack')
+            deviceNames = ('engine', 'leftTrack0', 'rightTrack0')
         elif vTypeDesc.hasTurboshaftEngine:
             deviceNames = ('engine', )
         else:

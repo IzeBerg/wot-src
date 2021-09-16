@@ -88,19 +88,24 @@ class VEHICLE_VIEW_STATE(object):
      AUTO_ROTATION, CRUISE_MODE)
 
 
-VEHICLE_DEVICES = ('engine', 'ammoBay', 'gun', 'turretRotator', 'leftTrack', 'rightTrack',
+VEHICLE_DEVICES = ('engine', 'ammoBay', 'gun', 'turretRotator', 'leftTrack0', 'rightTrack0',
                    'surveyingDevice', 'radio', 'fuelTank')
 WHEELED_VEHICLE_DEVICES = ('engine', 'ammoBay', 'gun', 'turretRotator', 'surveyingDevice',
                            'radio', 'fuelTank', 'wheel0', 'wheel1', 'wheel2', 'wheel3',
                            'wheel4', 'wheel5', 'wheel6', 'wheel7')
+TRACK_WITHIN_TRACK_DEVICES = ('engine', 'ammoBay', 'gun', 'turretRotator', 'leftTrack0',
+                              'rightTrack0', 'leftTrack1', 'rightTrack1', 'surveyingDevice',
+                              'radio', 'fuelTank')
 VEHICLE_GUI_ITEMS = ('engine', 'ammoBay', 'gun', 'turretRotator', 'chassis', 'surveyingDevice',
                      'radio', 'fuelTank')
 WHEELED_VEHICLE_GUI_ITEMS = ('engine', 'ammoBay', 'gun', 'turretRotator', 'wheel',
                              'surveyingDevice', 'radio', 'fuelTank')
 ALL_VEHICLE_GUI_ITEMS = ('engine', 'ammoBay', 'gun', 'turretRotator', 'chassis', 'wheel',
                          'surveyingDevice', 'radio', 'fuelTank')
-VEHICLE_DEVICE_IN_COMPLEX_ITEM = {'leftTrack': 'chassis', 
-   'rightTrack': 'chassis', 
+VEHICLE_DEVICE_IN_COMPLEX_ITEM = {'leftTrack0': 'chassis', 
+   'leftTrack1': 'chassis', 
+   'rightTrack0': 'chassis', 
+   'rightTrack1': 'chassis', 
    'wheel0': 'wheel', 
    'wheel1': 'wheel', 
    'wheel2': 'wheel', 
@@ -109,7 +114,7 @@ VEHICLE_DEVICE_IN_COMPLEX_ITEM = {'leftTrack': 'chassis',
    'wheel5': 'wheel', 
    'wheel6': 'wheel', 
    'wheel7': 'wheel'}
-VEHICLE_COMPLEX_ITEMS = {'chassis': ('leftTrack', 'rightTrack'), 
+VEHICLE_COMPLEX_ITEMS = {'chassis': ('leftTrack0', 'rightTrack0', 'leftTrack1', 'rightTrack1'), 
    'wheel': ('wheel0', 'wheel1', 'wheel2', 'wheel3', 'wheel4', 'wheel5', 'wheel6', 'wheel7')}
 DEVICE_STATE_NORMAL = 'normal'
 DEVICE_STATE_CRITICAL = 'critical'

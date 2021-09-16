@@ -156,6 +156,13 @@
 			<levels>8 9 10</levels>
 			<isPostProgressionEnabled>True</isPostProgressionEnabled>
 		</filter>
+		<filter>
+			<id>only_trackWithinTrack_first_5_times</id>
+			<chassisType>2</chassisType>
+			<preceding>
+				<showTimes>5</showTimes>
+			</preceding>
+		</filter>
 	</filters>
 	<tips>
 		<tip>
@@ -947,20 +954,8 @@
 			<filter>only_dualGun_first_5_times</filter>
 		</tip>
 		<tip>
-			<id>tip187</id>
-			<status>battlePassTrophyDevice</status>
-			<group>all</group>
-			<filter>battlePass_on</filter>
-		</tip>
-		<tip>
 			<id>tip188</id>
 			<status>battlePassCoins</status>
-			<group>all</group>
-			<filter>battlePass_on</filter>
-		</tip>
-		<tip>
-			<id>tip189</id>
-			<status>battlePassPoints</status>
 			<group>all</group>
 			<filter>battlePass_on</filter>
 		</tip>
@@ -1023,6 +1018,15 @@
 			<status>payAttention</status>
 			<group>tactics</group>
 			<filter>veh_post_progression_6_10_levels</filter>
+		</tip>
+		<tip>
+			<id>tip200</id>
+			<status>tip200Status</status>
+			<filter>only_trackWithinTrack_first_5_times</filter>
+		</tip>
+		<tip>
+			<id>tip201</id>
+			<status>tip200Status</status>
 		</tip>
 		<tip>
 			<id>epicTip1</id>

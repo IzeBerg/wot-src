@@ -32,6 +32,9 @@ class SFWindow(Window):
         _logger.debug('Creating %r with %r', self, loadParams)
         return
 
+    def getName(self):
+        return ('SFWindow [{}]').format(self.__loadParams.viewKey.name)
+
     @property
     def loadParams(self):
         return self.__loadParams

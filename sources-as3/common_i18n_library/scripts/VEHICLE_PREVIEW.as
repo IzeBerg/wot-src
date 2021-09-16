@@ -37,9 +37,13 @@ package
       
       public static const HEADER_TITLE:String = "#vehicle_preview:header/title";
       
+      public static const HEADER_CLOSEBTN_LABEL:String = "#vehicle_preview:header/closeBtn/label";
+      
       public static const HERO_HEADER_TITLE:String = "#vehicle_preview:hero/header/title";
       
-      public static const HEADER_CLOSEBTN_LABEL:String = "#vehicle_preview:header/closeBtn/label";
+      public static const DISCLAIMER:String = "#vehicle_preview:disclaimer";
+      
+      public static const DISCLAIMER_BUTTON:String = "#vehicle_preview:disclaimer/button";
       
       public static const BUYINGPANEL_LABEL:String = "#vehicle_preview:buyingPanel/Label";
       
@@ -168,6 +172,10 @@ package
       public static const INFOPANEL_PREMIUM_CREWTRANSFERTITLE:String = "#vehicle_preview:infoPanel/premium/crewTransferTitle";
       
       public static const INFOPANEL_PREMIUM_CREWTRANSFERTEXT:String = "#vehicle_preview:infoPanel/premium/crewTransferText";
+      
+      public static const INFOPANEL_PREMIUM_BONSTITLE:String = "#vehicle_preview:infoPanel/premium/bonsTitle";
+      
+      public static const INFOPANEL_PREMIUM_BONSTEXT:String = "#vehicle_preview:infoPanel/premium/bonsText";
       
       public static const INFOPANEL_PREMIUM_BUILTINEQUPMENTTITLE:String = "#vehicle_preview:infoPanel/premium/builtInEqupmentTitle";
       

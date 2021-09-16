@@ -268,6 +268,7 @@ class KPI(object):
         COMPOUND_KPI = 'compoundKPI'
         VEHICLE_REPAIR_SPEED = 'vehicleRepairSpeed'
         VEHICLE_CHASSIS_REPAIR_SPEED = 'vehicleChassisRepairSpeed'
+        VEHICLE_CHASSIS_REPAIR_TIME = 'vehicleChassisRepairTime'
         VEHICLE_ENGINE_POWER = 'vehicleEnginePower'
         VEHICLE_TURRET_ROTATION_SPEED = 'vehicleTurretRotationSpeed'
         VEHICLE_CIRCULAR_VISION_RADIUS = 'vehicleCircularVisionRadius'
@@ -464,6 +465,7 @@ VEHICLE_ATTR_TO_KPI_NAME_MAP = {'repairSpeed': KPI.Name.VEHICLE_REPAIR_SPEED,
    'repairSpeedFactor': KPI.Name.VEHICLE_REPAIR_SPEED, 
    'circularVisionRadius': KPI.Name.VEHICLE_CIRCULAR_VISION_RADIUS, 
    'circularVisionRadiusFactor': KPI.Name.VEHICLE_CIRCULAR_VISION_RADIUS, 
+   'circularVisionRadiusBaseFactor': KPI.Name.VEHICLE_CIRCULAR_VISION_RADIUS, 
    'gunReloadTimeFactor': KPI.Name.VEHICLE_GUN_RELOAD_TIME, 
    'gunAimingTimeFactor': KPI.Name.VEHICLE_GUN_AIM_SPEED, 
    'crewLevelIncrease': KPI.Name.CREW_LEVEL, 

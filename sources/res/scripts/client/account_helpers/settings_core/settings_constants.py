@@ -318,6 +318,7 @@ class GuiSettingsBehavior(CONST_CONTAINER):
     TECHTREE_INTRO_SHOWED = 'techTreeIntroShowed'
     DISPLAY_PLATOON_MEMBER_CLICKED = 'isDisplayPlatoonMembersClicked'
     VEH_POST_PROGRESSION_UNLOCK_MSG_NEED_SHOW = 'vehPostProgressionUnlockMsgNeedShow'
+    BIRTHDAY_CALENDAR_INTRO_SHOWED = 'birthdayCalendarIntroShowed'
 
 
 class OnceOnlyHints(CONST_CONTAINER):
@@ -364,6 +365,7 @@ class OnceOnlyHints(CONST_CONTAINER):
     AMUNNITION_PANEL_EPIC_BATTLE_ABILITIES_HINT = 'AmmunitionPanelBattleAbilitiesHint'
     VEHICLE_PREVIEW_POST_PROGRESSION_BUTTON_HINT = 'VehiclePreviewPostProgressionButtonHint'
     VEHICLE_POST_PROGRESSION_ENTRY_POINT_HINT = 'VehiclePostProgressionEntryPointHint'
+    RESEARCH_POST_PROGRESSION_ENTRY_POINT_HINT = 'ResearchPostProgressionEntryPointHint'
     HERO_VEHICLE_POST_PROGRESSION_ENTRY_POINT_HINT = 'HeroVehiclePreviewPostProgressionButtonHint'
     SWITCH_EQUIPMENT_AUXILIARY_LOADOUT_HINT = 'SwitchEquipmentAuxiliaryLoadoutHint'
     SWITCH_EQUIPMENT_ESSENTIALS_LOADOUT_HINT = 'SwitchEquipmentEssentialsLoadoutHint'

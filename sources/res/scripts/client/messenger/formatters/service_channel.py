@@ -1047,19 +1047,6 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
         return ('<br>').join(blueprintsString)
 
     @classmethod
-    def hasRenewBonus(cls, vehicles):
-        for vehicleDict in vehicles:
-            for vehInfo in vehicleDict.itervalues():
-                rent = vehInfo.get('rent')
-                if rent:
-                    cycles = rent.get('cycle')
-                    renew = rent.get('renew')
-                    if cycles and not renew:
-                        return True
-
-        return False
-
-    @classmethod
     def getVehiclesString(cls, vehicles, htmlTplPostfix='InvoiceReceived'):
         addVehNames, removeVehNames, rentedVehNames = cls._getVehicleNames(vehicles)
         result = []
@@ -1069,8 +1056,6 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
             result.append(g_settings.htmlTemplates.format('vehiclesDebited' + htmlTplPostfix, ctx={'vehicles': (', ').join(removeVehNames)}))
         if rentedVehNames:
             result.append(g_settings.htmlTemplates.format('vehiclesRented' + htmlTplPostfix, ctx={'vehicles': (', ').join(rentedVehNames)}))
-            if cls.hasRenewBonus(vehicles):
-                result.append(backport.text(R.strings.messenger.serviceChannelMessages.invoiceReceived.vehiclesRented.bonus()))
         return ('<br/>').join(result)
 
     @classmethod

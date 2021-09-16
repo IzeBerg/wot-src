@@ -1,3 +1,4 @@
+from collections import namedtuple
 from itertools import chain
 from constants import BonusTypes
 from debug_utils import LOG_ERROR
@@ -12,10 +13,11 @@ from gui.shared.gui_items import KPI, kpiFormatValue
 from gui.shared.items_parameters import RELATIVE_PARAMS
 from gui.shared.items_parameters.comparator import PARAM_STATE
 from gui.shared.items_parameters.params_helper import hasGroupPenalties, getCommonParam, PARAMS_GROUPS
-from gui.shared.utils import AUTO_RELOAD_PROP_NAME, MAX_STEERING_LOCK_ANGLE, WHEELED_SWITCH_ON_TIME, WHEELED_SWITCH_OFF_TIME, WHEELED_SWITCH_TIME, WHEELED_SPEED_MODE_SPEED, DUAL_GUN_CHARGE_TIME, DUAL_GUN_RATE_TIME, TURBOSHAFT_SPEED_MODE_SPEED, TURBOSHAFT_ENGINE_POWER, TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR, TURBOSHAFT_SWITCH_TIME
+from gui.shared.utils import AUTO_RELOAD_PROP_NAME, MAX_STEERING_LOCK_ANGLE, WHEELED_SWITCH_ON_TIME, WHEELED_SWITCH_OFF_TIME, WHEELED_SWITCH_TIME, WHEELED_SPEED_MODE_SPEED, DUAL_GUN_CHARGE_TIME, DUAL_GUN_RATE_TIME, TURBOSHAFT_SPEED_MODE_SPEED, TURBOSHAFT_ENGINE_POWER, TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR, TURBOSHAFT_SWITCH_TIME, CHASSIS_REPAIR_TIME, CHASSIS_REPAIR_TIME_YOH
 from helpers.i18n import makeString
 from items import vehicles, artefacts, getTypeOfCompactDescr, ITEM_TYPES
 from web_stubs import i18n
+ChangeCondition = namedtuple('ChangeCondition', ('predicate', 'alternativeParameter'))
 MEASURE_UNITS = {'aimingTime': MENU.TANK_PARAMS_S, 
    'areaRadius': MENU.TANK_PARAMS_M, 
    'areaSquare': MENU.TANK_PARAMS_SQM, 
@@ -100,7 +102,9 @@ MEASURE_UNITS = {'aimingTime': MENU.TANK_PARAMS_S,
    'vehicleGunShotDispersionWhileGunDamaged': MENU.TANK_PARAMS_PERCENT, 
    'vehicleRamDamageResistance': MENU.TANK_PARAMS_PERCENT, 
    'damageEnemiesByRamming': MENU.TANK_PARAMS_PERCENT, 
-   'vehicleInvisibilityAfterShot': MENU.TANK_PARAMS_PERCENT}
+   'vehicleInvisibilityAfterShot': MENU.TANK_PARAMS_PERCENT, 
+   CHASSIS_REPAIR_TIME: MENU.TANK_PARAMS_S, 
+   CHASSIS_REPAIR_TIME_YOH: MENU.TANK_PARAMS_YOH_S_S}
 MEASURE_UNITS_NO_BRACKETS = {'weight': MENU.TANK_PARAMS_NO_BRACKETS_KG, 
    'cooldownSeconds': MENU.TANK_PARAMS_NO_BRACKETS_S, 
    'caliber': MENU.TANK_PARAMS_NO_BRACKETS_MM}
@@ -115,7 +119,7 @@ SITUATIONAL_SCHEME = (text_styles.critical, text_styles.warning, text_styles.bon
 VEHICLE_PARAMS = tuple(chain(*[ PARAMS_GROUPS[param] for param in RELATIVE_PARAMS ]))
 ITEMS_PARAMS_LIST = {ITEM_TYPES.vehicleRadio: ('radioDistance', 'weight'), 
    ITEM_TYPES.vehicleChassis: (
-                             'maxLoad', 'rotationSpeed', 'weight', MAX_STEERING_LOCK_ANGLE), 
+                             'maxLoad', 'rotationSpeed', 'weight', MAX_STEERING_LOCK_ANGLE, CHASSIS_REPAIR_TIME), 
    ITEM_TYPES.vehicleEngine: (
                             'enginePower', TURBOSHAFT_ENGINE_POWER, 'fireStartingChance', 'weight'), 
    ITEM_TYPES.vehicleTurret: ('armor', 'rotationSpeed', 'circularVisionRadius', 'weight'), 
@@ -131,6 +135,30 @@ ITEMS_PARAMS_LIST = {ITEM_TYPES.vehicleRadio: ('radioDistance', 'weight'),
                          'dispertionRadius', 'aimingTime', 'maxShotDistance', 'weight')}
 FORMAT_NAME_C_S_VALUE_S_UNITS = '{paramName} {paramValue} {paramUnits}'
 _COUNT_OF_AUTO_RELOAD_SLOTS_TIMES_TO_SHOW_IN_INFO = 5
+
+def needUseYohChassisRepairTime(vehicleDescr):
+    return vehicleDescr and vehicleDescr.isTrackWithinTrack
+
+
+MULTIPLE_MEASURE_UNITS_PARAMS = {CHASSIS_REPAIR_TIME: ChangeCondition(needUseYohChassisRepairTime, CHASSIS_REPAIR_TIME_YOH)}
+
+def getMeasureParamName(vehicleDescr, paramName):
+    if paramName in MULTIPLE_MEASURE_UNITS_PARAMS:
+        measureCondition = MULTIPLE_MEASURE_UNITS_PARAMS[paramName]
+        if measureCondition.predicate(vehicleDescr):
+            return measureCondition.alternativeParameter
+    return paramName
+
+
+MULTIPLE_TITLES_PARAMS = {CHASSIS_REPAIR_TIME: ChangeCondition(needUseYohChassisRepairTime, CHASSIS_REPAIR_TIME_YOH)}
+
+def getTitleParamName(vehicleDescr, paramName):
+    if paramName in MULTIPLE_TITLES_PARAMS:
+        changeCondition = MULTIPLE_TITLES_PARAMS[paramName]
+        if changeCondition.predicate(vehicleDescr):
+            return changeCondition.alternativeParameter
+    return paramName
+
 
 def measureUnitsForParameter(paramName):
     return i18n.makeString(MEASURE_UNITS[paramName])
@@ -159,10 +187,12 @@ def getParameterBigIconPath(parameter):
 def formatModuleParamName(paramName, vDescr=None):
     builder = text_styles.builder(delimiter=_NBSP)
     hasBoost = vDescr and vDescr.gun.autoreloadHasBoost
-    resource = R.strings.menu.moduleInfo.params.dyn(paramName)
+    titleName = getTitleParamName(vDescr, paramName)
+    resource = R.strings.menu.moduleInfo.params.dyn(titleName)
     paramMsgId = backport.msgid(resource.dyn('boost')() if hasBoost and resource.dyn('boost') else resource())
     builder.addStyledText(text_styles.main, paramMsgId)
-    builder.addStyledText(text_styles.standard, MEASURE_UNITS.get(paramName, ''))
+    measureName = getMeasureParamName(vDescr, paramName)
+    builder.addStyledText(text_styles.standard, MEASURE_UNITS.get(measureName, ''))
     return builder.render()
 
 
@@ -332,7 +362,8 @@ FORMAT_SETTINGS = {'relativePower': _integralFormat,
    'vehicleGunShotDispersionWhileGunDamaged': _integralFormat, 
    'vehicleRamDamageResistance': _integralFormat, 
    'damageEnemiesByRamming': _integralFormat, 
-   'vehicleInvisibilityAfterShot': _integralFormat}
+   'vehicleInvisibilityAfterShot': _integralFormat, 
+   CHASSIS_REPAIR_TIME: _niceListFormat}
 
 def _deltaWrapper(fn):
 
@@ -471,6 +502,8 @@ def getFormattedParamsList(descriptor, parameters, excludeRelative=False):
             if fmtValue:
                 if paramName == 'autoReloadTime' and descriptor.gun.autoreloadHasBoost:
                     paramName = 'autoReloadTimeBoost'
+                elif paramName == CHASSIS_REPAIR_TIME and descriptor.isTrackWithinTrack:
+                    paramName = CHASSIS_REPAIR_TIME_YOH
                 params.append((paramName, fmtValue))
 
     return params

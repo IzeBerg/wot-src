@@ -306,7 +306,7 @@ package net.wg.gui.battle.views.questProgress
          var _loc2_:int = 0;
          var _loc3_:int = 0;
          var _loc1_:Boolean = hasLockedItems() && this._isQPVisibleBySettings;
-         if(this.lock.visible && !_loc1_)
+         if(!_loc1_)
          {
             _loc2_ = Boolean(items) ? int(items.length) : int(0);
             _loc3_ = 0;
@@ -318,7 +318,10 @@ package net.wg.gui.battle.views.questProgress
                }
                _loc3_++;
             }
-            this.lock.hide();
+            if(this.lock.visible)
+            {
+               this.lock.hide();
+            }
          }
       }
       

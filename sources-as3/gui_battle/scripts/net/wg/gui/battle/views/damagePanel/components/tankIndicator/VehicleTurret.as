@@ -23,7 +23,12 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
       
       override protected function getModules() : Vector.<DamagePanelItemFrameStates>
       {
-         return new <DamagePanelItemFrameStates>[this.turretRotator,this.gun,this.radio,this.surveyingDevice,this.ammoBay];
+         var _loc1_:Vector.<DamagePanelItemFrameStates> = new <DamagePanelItemFrameStates>[this.turretRotator,this.gun,this.radio,this.surveyingDevice];
+         if(this.ammoBay != null)
+         {
+            _loc1_.push(this.ammoBay);
+         }
+         return _loc1_;
       }
       
       override protected function onDispose() : void
@@ -36,8 +41,11 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
          this.radio = null;
          this.surveyingDevice.dispose();
          this.surveyingDevice = null;
-         this.ammoBay.dispose();
-         this.ammoBay = null;
+         if(this.ammoBay)
+         {
+            this.ammoBay.dispose();
+            this.ammoBay = null;
+         }
          super.onDispose();
       }
    }

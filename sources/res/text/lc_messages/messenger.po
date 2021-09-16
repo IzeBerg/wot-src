@@ -767,6 +767,9 @@ msgstr "Закрыть"
 msgid "dialogs/createChannel/buttons/create"
 msgstr "Создать"
 
+msgid "dialogs/createChannel/labels/autoName"
+msgstr "Будет создано автоматически"
+
 msgid "dialogs/createChannel/labels/fillPassword"
 msgstr "Введите пароль"
 
@@ -2618,9 +2621,6 @@ msgstr "Списана техника"
 msgid "serviceChannelMessages/invoiceReceived/vehiclesRented"
 msgstr "Добавлена арендованная техника"
 
-msgid "serviceChannelMessages/invoiceReceived/vehiclesRented/bonus"
-msgstr "Внимание! Последующее продление аренды обойдётся дешевле."
-
 msgid "serviceChannelMessages/itemReceivedAsGift"
 msgstr ""
 "От администрации получено снаряжение: %(typeName)s «%(itemName)s» — "
@@ -3134,17 +3134,8 @@ msgstr "Платёжный способ «%(method)s» был отвязан"
 msgid "serviceChannelMessages/sysMsg/titles/powerlevel"
 msgstr "Исследовано:"
 
-msgid "serviceChannelMessages/sysMsg/titles/primeTime"
-msgstr "Режим прекращения огня"
-
 msgid "serviceChannelMessages/sysMsg/titles/purchase"
 msgstr "Куплено:"
-
-msgid "serviceChannelMessages/sysMsg/titles/rankedBattlesAvailable"
-msgstr "Ранговые бои доступны"
-
-msgid "serviceChannelMessages/sysMsg/titles/rankedBattlesNotSet"
-msgstr "Ранговые бои недоступны"
 
 msgid "serviceChannelMessages/sysMsg/titles/remove"
 msgstr "Удаление из Ангара:"
@@ -3199,6 +3190,28 @@ msgid ""
 "serviceChannelMessages/vehiclePostProgression/discardAllPairsModification/"
 "title"
 msgstr "Отмена модификации"
+
+msgid ""
+"serviceChannelMessages/vehiclePostProgression/prebattleSwitchToggled/disabled"
+msgstr "отключена"
+
+msgid ""
+"serviceChannelMessages/vehiclePostProgression/prebattleSwitchToggled/enabled"
+msgstr "включена"
+
+msgid ""
+"serviceChannelMessages/vehiclePostProgression/prebattleSwitchToggled/"
+"opt_dev_boosters_switch"
+msgstr ""
+"Смена комплектов оборудования и инструкций во время предбоевого отсчёта "
+"%(state)s для %(tankName)s."
+
+msgid ""
+"serviceChannelMessages/vehiclePostProgression/prebattleSwitchToggled/"
+"shells_consumables_switch"
+msgstr ""
+"Смена комплектов снарядов и снаряжения во время предбоевого отсчёта "
+"%(state)s для %(tankName)s."
 
 msgid "serviceChannelMessages/vehicleReceivedAsGift"
 msgstr "От администрации получена премиум машина: %(vehicleName)s"

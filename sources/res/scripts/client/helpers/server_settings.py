@@ -764,7 +764,7 @@ class ServerSettings(object):
             self.__tournamentSettings = _TournamentSettings(settings.get('tmsHostUrl', ''))
         if 'frontlineSettings' in self.__serverSettings:
             settings = self.__serverSettings['frontlineSettings']
-            self.__frontlineSettings = _FrontlineSettings(settings.get('isEpicTrainingEnabled', False))
+            self.__frontlineSettings = _FrontlineSettings(settings.get('isEpicTrainingEnabled', True))
         if 'hallOfFame' in self.__serverSettings:
             self.__bwHallOfFame = makeTupleByDict(_BwHallOfFame, self.__serverSettings['hallOfFame'])
         if 'shop' in self.__serverSettings:
@@ -1232,6 +1232,9 @@ class ServerSettings(object):
 
     def isTrophyDevicesEnabled(self):
         return self.__getGlobalSetting('isTrophyDevicesEnabled', False)
+
+    def isTrainingBattleEnabled(self):
+        return self.__getGlobalSetting('isTrainingBattleEnabled', True)
 
     def isCollectorVehicleEnabled(self):
         return self.__getGlobalSetting(CollectorVehicleConsts.CONFIG_NAME, {}).get(CollectorVehicleConsts.IS_ENABLED, False)

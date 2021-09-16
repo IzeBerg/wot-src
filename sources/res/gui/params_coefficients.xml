@@ -2167,38 +2167,6 @@
 				</value>
 			</item>
 			<item>
-				<name>vehicleChassisRepairSpeed</name>
-				<type>dict</type>
-				<value>
-					<item>
-						<name>optionalDevice</name>
-						<type>list</type>
-						<value>
-							<item>extraHealthReserve_tier1</item>
-							<item>extraHealthReserve_tier2</item>
-							<item>extraHealthReserve_tier3</item>
-							<item>deluxeExtraHealthReserve</item>
-						</value>
-					</item>
-					<item>
-						<name>postProgressionPairModifications</name>
-						<type>list</type>
-						<value>
-							<item>role_HT_assault_pair_5_1</item>
-							<item>role_HT_assault_pair_5_2</item>
-							<item>role_mediumTank_pair_3_1</item>
-							<item>role_mediumTank_pair_3_2</item>
-							<item>role_MT_universal_pair_5_1</item>
-							<item>role_MT_universal_pair_5_2</item>
-							<item>role_ATSPG_assault_pair_5_1</item>
-							<item>role_ATSPG_assault_pair_5_2</item>
-							<item>role_LT_wheeled_pair_5_1</item>
-							<item>role_LT_wheeled_pair_5_2</item>
-						</value>
-					</item>
-				</value>
-			</item>
-			<item>
 				<name>vehicleAmmoBayEngineFuelStrength</name>
 				<type>dict</type>
 				<value>
@@ -2557,6 +2525,86 @@
 							<item>role_ATSPG_pair_3_2</item>
 							<item>role_SPG_pair_2_1</item>
 							<item>role_SPG_pair_2_2</item>
+						</value>
+					</item>
+				</value>
+			</item>
+			<item>
+				<name>chassisRepairTime</name>
+				<type>dict</type>
+				<value>
+					<item>
+						<name>optionalDevice</name>
+						<type>list</type>
+						<value>
+							<item>toolbox</item>
+							<item>improvedConfiguration</item>
+							<item>improvedConfiguration_tier1</item>
+							<item>improvedConfiguration_tier2</item>
+							<item>deluxImprovedConfiguration</item>
+							<item>trophyBasicImprovedConfiguration</item>
+							<item>trophyUpgradedImprovedConfiguration</item>
+							<item>extraHealthReserve_tier1</item>
+							<item>extraHealthReserve_tier2</item>
+							<item>extraHealthReserve_tier3</item>
+							<item>deluxeExtraHealthReserve</item>
+							<item>improvedVentilation_tier1</item>
+							<item>improvedVentilation_tier2</item>
+							<item>improvedVentilation_tier3</item>
+							<item>deluxImprovedVentilation</item>
+							<item>trophyBasicImprovedVentilation</item>
+							<item>trophyUpgradedImprovedVentilation</item>
+						</value>
+					</item>
+					<item>
+						<name>equipment</name>
+						<type>list</type>
+						<value>
+							<item>largeRepairkit</item>
+							<item>builtinRepairkit</item>
+							<item>cocacola</item>
+							<item>chocolate</item>
+							<item>ration</item>
+							<item>hotCoffee</item>
+							<item>ration_china</item>
+							<item>ration_uk</item>
+							<item>ration_japan</item>
+							<item>ration_czech</item>
+							<item>ration_sweden</item>
+							<item>ration_poland</item>
+							<item>ration_italy</item>
+						</value>
+					</item>
+					<item>
+						<name>battleBooster</name>
+						<type>list</type>
+						<value>
+							<item>improvedConfigurationBattleBooster</item>
+							<item>improvedVentilationBattleBooster</item>
+						</value>
+					</item>
+					<item>
+						<name>skill</name>
+						<type>list</type>
+						<value>
+							<item>repair</item>
+							<item>brotherhood</item>
+						</value>
+					</item>
+					<item>
+						<name>postProgressionPairModifications</name>
+						<type>list</type>
+						<value>
+							<item>role_HT_assault_pair_5_1</item>
+							<item>role_HT_assault_pair_5_2</item>
+							<item>role_mediumTank_pair_3_1</item>
+							<item>role_mediumTank_pair_3_2</item>
+							<item>role_MT_universal_pair_5_1</item>
+							<item>role_MT_universal_pair_5_2</item>
+							<item>role_ATSPG_assault_pair_5_1</item>
+							<item>role_ATSPG_assault_pair_5_2</item>
+							<item>role_LT_wheeled_pair_5_1</item>
+							<item>role_LT_wheeled_pair_5_2</item>
 						</value>
 					</item>
 				</value>

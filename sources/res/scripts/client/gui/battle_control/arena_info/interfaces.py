@@ -4,6 +4,7 @@ from gui.battle_control.controllers.interfaces import IBattleController
 from gui.battle_control.view_components import ViewComponentsController
 if typing.TYPE_CHECKING:
     from items.vehicles import VehicleDescr
+    from gui.shared.gui_items.Vehicle import Vehicle
 
 class IArenaController(IBattleController):
     __slots__ = ('__weakref__', )
@@ -330,6 +331,9 @@ class IPrebattleSetupsController(IArenaPeriodController, IArenaLoadController, V
     def isSelectionStarted(self):
         raise NotImplementedError
 
+    def stopSelection(self):
+        raise NotImplementedError
+
     def setPlayerVehicle(self, vehicleID, vehDescr):
         raise NotImplementedError
 
@@ -346,6 +350,9 @@ class IPrebattleSetupsController(IArenaPeriodController, IArenaLoadController, V
         raise NotImplementedError
 
     def setPostProgression(self, vehicleID, postProgression):
+        raise NotImplementedError
+
+    def setDisabledSwitches(self, vehicleID, groupIDs):
         raise NotImplementedError
 
     def setRespawnReloadFactor(self, vehicleID, reloadFactor):

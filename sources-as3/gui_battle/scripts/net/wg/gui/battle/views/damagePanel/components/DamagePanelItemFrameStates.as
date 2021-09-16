@@ -22,8 +22,8 @@ package net.wg.gui.battle.views.damagePanel.components
          super.draw();
          if(isInvalid(InvalidationType.STATE))
          {
-            gotoAndPlay(this._state);
-            visible = this.state != BATTLE_ITEM_STATES.NORMAL || this._alwaysVisible;
+            this.applyState();
+            visible = this.calcVisibility();
          }
       }
       
@@ -36,8 +36,7 @@ package net.wg.gui.battle.views.damagePanel.components
       {
          if(this._state != param1)
          {
-            this._state = param1;
-            invalidateState();
+            this.setStateManually(param1);
          }
       }
       
@@ -50,6 +49,22 @@ package net.wg.gui.battle.views.damagePanel.components
       {
          this._alwaysVisible = param1;
          invalidateState();
+      }
+      
+      protected function setStateManually(param1:String) : void
+      {
+         this._state = param1;
+         invalidateState();
+      }
+      
+      protected function calcVisibility() : Boolean
+      {
+         return this.state != BATTLE_ITEM_STATES.NORMAL || this._alwaysVisible;
+      }
+      
+      protected function applyState() : void
+      {
+         gotoAndPlay(this._state);
       }
    }
 }

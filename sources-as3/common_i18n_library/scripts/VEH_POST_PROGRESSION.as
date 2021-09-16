@@ -41,15 +41,15 @@ package
       
       public static const TOOLTIPS_PAIRMODIFICATION_MONEYSHORTAGE_MOUNT:String = "#veh_post_progression:tooltips/pairModification/moneyShortage/mount";
       
-      public static const TOOLTIPS_PAIRMODIFICATION_STATUS_LOCKED_TITLE:String = "#veh_post_progression:tooltips/pairModification/status/locked/title";
+      public static const TOOLTIPS_PAIRMODIFICATION_STATUS_UNAVAILABLELOCKED_TITLE:String = "#veh_post_progression:tooltips/pairModification/status/unavailableLocked/title";
       
-      public static const TOOLTIPS_PAIRMODIFICATION_STATUS_LOCKED_DESCRIPTION:String = "#veh_post_progression:tooltips/pairModification/status/locked/description";
+      public static const TOOLTIPS_PAIRMODIFICATION_STATUS_UNAVAILABLELOCKED_DESCRIPTION:String = "#veh_post_progression:tooltips/pairModification/status/unavailableLocked/description";
       
-      public static const TOOLTIPS_PAIRMODIFICATION_STATUS_BOUGHT_DESCRIPTION:String = "#veh_post_progression:tooltips/pairModification/status/bought/description";
+      public static const TOOLTIPS_PAIRMODIFICATION_STATUS_RECEIVED_DESCRIPTION:String = "#veh_post_progression:tooltips/pairModification/status/received/description";
       
-      public static const TOOLTIPS_PAIRMODIFICATION_STATUS_ANOTHERISINSTALLED_TITLE:String = "#veh_post_progression:tooltips/pairModification/status/anotherIsInstalled/title";
+      public static const TOOLTIPS_PAIRMODIFICATION_STATUS_RESTRICTED_TITLE:String = "#veh_post_progression:tooltips/pairModification/status/restricted/title";
       
-      public static const TOOLTIPS_PAIRMODIFICATION_STATUS_ANOTHERISINSTALLED_DESCRIPTION:String = "#veh_post_progression:tooltips/pairModification/status/anotherIsInstalled/description";
+      public static const TOOLTIPS_PAIRMODIFICATION_STATUS_RESTRICTED_DESCRIPTION:String = "#veh_post_progression:tooltips/pairModification/status/restricted/description";
       
       public static const TOOLTIPS_PAIRMODIFICATION_NOTINSTALLEDFOOTER:String = "#veh_post_progression:tooltips/pairModification/notInstalledFooter";
       
@@ -99,6 +99,8 @@ package
       
       public static const VEHPOSTPROGRESSIONVIEW_GRID_FEATUREBUTTON_LABEL_CHANGE:String = "#veh_post_progression:vehPostProgressionView/grid/featureButton/label/change";
       
+      public static const VEHPOSTPROGRESSIONVIEW_GRID_FEATUREBUTTON_LABEL_PREBATTLESWITCH:String = "#veh_post_progression:vehPostProgressionView/grid/featureButton/label/prebattleSwitch";
+      
       public static const VEHPOSTPROGRESSIONVIEW_GRID_FEATUREBUTTON_TOOLTIP_UNAVAILABLEPURCHASE:String = "#veh_post_progression:vehPostProgressionView/grid/featureButton/tooltip/unavailablePurchase";
       
       public static const VEHPOSTPROGRESSIONVIEW_GRID_FEATUREBUTTON_TOOLTIP_UNAVAILABLEBATTLE:String = "#veh_post_progression:vehPostProgressionView/grid/featureButton/tooltip/unavailableBattle";
@@ -110,6 +112,14 @@ package
       public static const VEHPOSTPROGRESSIONVIEW_GRID_FEATUREBUTTON_TOOLTIP_UNAVAILABLEFORMATION:String = "#veh_post_progression:vehPostProgressionView/grid/featureButton/tooltip/unavailableFormation";
       
       public static const VEHPOSTPROGRESSIONVIEW_GRID_FEATUREBUTTON_TOOLTIP_UNAVAILABLEBREAKER:String = "#veh_post_progression:vehPostProgressionView/grid/featureButton/tooltip/unavailableBreaker";
+      
+      public static const VEHPOSTPROGRESSIONVIEW_GRID_FEATUREBUTTON_TOOLTIP_PREBATTLESWITCH_HEADER:String = "#veh_post_progression:vehPostProgressionView/grid/featureButton/tooltip/prebattleSwitch/header";
+      
+      public static const VEHPOSTPROGRESSIONVIEW_GRID_FEATUREBUTTON_TOOLTIP_PREBATTLESWITCH_BODY_SHELLSCONSUMABLESSWITCH:String = "#veh_post_progression:vehPostProgressionView/grid/featureButton/tooltip/prebattleSwitch/body/shellsConsumablesSwitch";
+      
+      public static const VEHPOSTPROGRESSIONVIEW_GRID_FEATUREBUTTON_TOOLTIP_PREBATTLESWITCH_BODY_OPTDEVBOOSTERSSWITCH:String = "#veh_post_progression:vehPostProgressionView/grid/featureButton/tooltip/prebattleSwitch/body/optDevBoostersSwitch";
+      
+      public static const VEHPOSTPROGRESSIONVIEW_GRID_FEATUREBUTTON_TOOLTIP_PREBATTLESWITCH_BODYTIP:String = "#veh_post_progression:vehPostProgressionView/grid/featureButton/tooltip/prebattleSwitch/bodyTip";
       
       public static const VEHPOSTPROGRESSIONVIEW_GRID_PAIRMODIFICATIONSEPARATOR_LABEL:String = "#veh_post_progression:vehPostProgressionView/grid/pairModificationSeparator/label";
       

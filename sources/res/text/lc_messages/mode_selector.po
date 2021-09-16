@@ -1,239 +1,287 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: World Of Tanks\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-06-01 10:00+0300\n"
+"PO-Revision-Date: 2010-06-01 10:00+0300\n"
+"Last-Translator: WoT Translator <noreply@wargaming.net>\n"
+"Language-Team: WoT Team <noreply@wargaming.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
 msgid "button/progression"
-msgstr " "
+msgstr "Показать прогрессию"
 
 msgid "button/select"
-msgstr ""
+msgstr "Настроить"
 
 msgid "event/battlePass/name"
-msgstr " ,  %(seasonNum)s"
+msgstr "Боевой пропуск, сезон %(seasonNum)s"
 
 msgid "event/finished"
 msgstr ""
 "%(eventName)s\n"
-""
+"завершён"
 
 msgid "event/notStarted"
 msgstr ""
 "%(eventName)s\n"
-" %(date)s"
+"начнётся %(date)s"
 
 msgid "event/paused"
 msgstr ""
 "%(eventName)s\n"
-" "
+"временно недоступен"
 
 msgid "event/ranked/name"
-msgstr " %(seasonNum)s"
+msgstr "Сезон %(seasonNum)s"
 
 msgid "hint/showProgression"
-msgstr "   "
+msgstr "ПРОСМОТР В РЕЖИМЕ ПРОГРЕССИИ"
 
 msgid "mode/bootcamp/call/1"
-msgstr "   "
+msgstr "Пройдите и получите награду"
 
 msgid "mode/bootcamp/call/2"
-msgstr "%(greenBright_open)s,  %(greenBright_close)s"
+msgstr "%(greenBright_open)sПройдено, награда получена%(greenBright_close)s"
 
 msgid "mode/bootcamp/condition"
-msgstr " ."
+msgstr "Одиночный режим."
 
 msgid "mode/bootcamp/description"
-msgstr "  ."
+msgstr "Изучение основ игры."
 
 msgid "mode/bootcamp/name"
-msgstr " "
+msgstr "Учебный полигон"
 
 msgid "mode/epicBattle/condition"
-msgstr "30x30&nbsp;{par_open}I{par_close}&nbsp;%(levels)s&nbsp;"
+msgstr "30x30&nbsp;{par_open}I{par_close}&nbsp;%(levels)s&nbsp;уровни"
 
 msgid "mode/epicBattle/cycleNext"
 msgstr ""
-" %(cycle)s\n"
-" %(date)s"
+"Этап %(cycle)s\n"
+"начнётся %(date)s"
 
 msgid "mode/epicBattle/cycleSoon"
 msgstr ""
-" %(cycle)s\n"
-" "
+"Этап %(cycle)s\n"
+"скоро стартует"
 
 msgid "mode/epicBattle/description"
-msgstr "     ."
+msgstr "Масштабное сражение с продвижением и наградами."
 
 msgid "mode/epicBattle/seasonActive"
-msgstr " %(cycle)s"
+msgstr "Этап %(cycle)s"
 
 msgid "mode/epicBattle/seasonEnd"
-msgstr "  "
+msgstr "Все этапы завершены"
+
+msgid "mode/epicQueue/battlePassTooltip/body"
+msgstr ""
+"Играя на технике VIII–IX уровней в режиме {whiteSpanish_open}«Линия "
+"фронта»{whiteSpanish_close}, вы будете зарабатывать очки. Они нужны для "
+"продвижения по прогрессии Боевого пропуска."
+
+msgid "mode/epicQueue/battlePassTooltip/header"
+msgstr "Очки Боевого пропуска"
 
 msgid "mode/mapbox/condition"
-msgstr "15x15,&nbsp;VIIIX&nbsp;"
+msgstr "15x15,&nbsp;VIII–X&nbsp;уровни"
 
 msgid "mode/mapbox/description"
-msgstr "  ."
+msgstr "Смотр новых карт."
 
 msgid "mode/mapsTraining/callToAction"
-msgstr " "
+msgstr "Изучайте карты"
+
+msgid "mode/random/battlePassTooltip/body"
+msgstr ""
+"Играя на технике VI–X уровней в режиме {whiteSpanish_open}«Случайный "
+"бой» (исключая Генеральное сражение){whiteSpanish_close}, вы будете "
+"зарабатывать очки. Они нужны для продвижения по прогрессии Боевого пропуска."
+
+msgid "mode/random/battlePassTooltip/header"
+msgstr "Очки Боевого пропуска"
 
 msgid "mode/random/condition"
 msgstr ""
 "15x15 %(parSecondary_open)sI%(parSecondary_close)s 30x30 "
-"%(parSecondary_open)sI%(parSecondary_close)s IX&nbsp;"
+"%(parSecondary_open)sI%(parSecondary_close)s I–X&nbsp;уровни"
 
 msgid "mode/random/description"
-msgstr "   ."
+msgstr "Бои с автоподбором команд."
 
 msgid "mode/random/setup"
+msgstr "Настроить"
+
+msgid "mode/ranked/battlePassTooltip/body"
 msgstr ""
+"Играя на технике X уровня в режиме {whiteSpanish_open}«Ранговый "
+"бой»{whiteSpanish_close}, вы будете зарабатывать очки. Они нужны для "
+"продвижения по прогрессии Боевого пропуска."
+
+msgid "mode/ranked/battlePassTooltip/header"
+msgstr "Очки Боевого пропуска"
 
 msgid "mode/ranked/condition"
-msgstr "10x10 %(parSecondary_open)sI%(parSecondary_close)s X&nbsp;"
+msgstr "10x10 %(parSecondary_open)sI%(parSecondary_close)s X&nbsp;уровень"
 
 msgid "mode/ranked/description"
-msgstr "    ."
+msgstr "Режим с прогрессией и наградами."
 
 msgid "mode/specBattlesList/call/1"
-msgstr "  "
+msgstr "Запишитесь на турнир"
 
 msgid "mode/specBattlesList/call/2"
-msgstr " : %(date)s  %(time)s"
+msgstr "Ближайший бой: %(date)s в %(time)s"
 
 msgid "mode/specBattlesList/condition"
-msgstr "1x1 15x15 %(parSecondary_open)sI%(parSecondary_close)s IX&nbsp;"
+msgstr ""
+"1x1 — 15x15 %(parSecondary_open)sI%(parSecondary_close)s I–X&nbsp;уровни"
 
 msgid "mode/specBattlesList/description"
-msgstr "   ."
+msgstr "Глобальная карта и турниры."
 
 msgid "mode/strongholdsBattlesList/call/1"
-msgstr " "
+msgstr "Сражайтесь легионером"
 
 msgid "mode/strongholdsBattlesList/call/2"
-msgstr "  "
+msgstr "Сражайтесь в клане"
 
 msgid "mode/strongholdsBattlesList/condition"
-msgstr "7x7 15x15 %(parSecondary_open)sI%(parSecondary_close)s VIX&nbsp;"
+msgstr ""
+"7x7 — 15x15 %(parSecondary_open)sI%(parSecondary_close)s VI–X&nbsp;уровни"
 
 msgid "mode/strongholdsBattlesList/description"
-msgstr "   ."
+msgstr "Клановые бои за промресурс."
 
 msgid "mode/trainingsList/call/1"
-msgstr " : %(amount)s"
+msgstr "Тренировочных комнат: %(amount)s"
 
 msgid "mode/trainingsList/condition"
-msgstr "1x1 15x15 %(parSecondary_open)sI%(parSecondary_close)s IX&nbsp;"
+msgstr ""
+"1x1 — 15x15 %(parSecondary_open)sI%(parSecondary_close)s I–X&nbsp;уровни"
 
 msgid "mode/trainingsList/description"
-msgstr " ."
+msgstr "Ознакомительные бои."
 
 msgid "novelty"
-msgstr ""
+msgstr "НОВОЕ"
 
 msgid "popover/assault"
-msgstr ""
+msgstr "Штурм"
 
 msgid "popover/default"
-msgstr " "
+msgstr "Стандартный бой"
 
 msgid "popover/domination"
-msgstr " "
+msgstr "Встречный бой"
 
 msgid "popover/epicStandard"
-msgstr " "
+msgstr "Генеральное сражение"
 
 msgid "popover/header"
-msgstr " "
+msgstr "Подрежимы боя"
 
 msgid "random/widget/pointsLeft"
-msgstr "  :"
+msgstr "До следующего этапа:"
 
 msgid "ranked/widget/qualBattles"
-msgstr "  : %(current) %(par_open)s/ %(max)%(par_close)s"
+msgstr "Боёв в квалификации: %(current) %(par_open)s/ %(max)%(par_close)s"
 
 msgid "reward/bones/description"
-msgstr "       "
+msgstr "Награда определяется по показателю вашей эффективности в бою"
 
 msgid "reward/bones/name"
-msgstr ""
+msgstr "Боны"
 
 msgid "reward/bountyEquipment/description"
-msgstr "  ,    %(name)s"
+msgstr "Играя в режиме, вы можете получить %(name)s"
 
 msgid "reward/bountyEquipment/name"
-msgstr " "
+msgstr "Специальное оборудование"
 
 msgid "reward/credits/description"
-msgstr "       "
+msgstr "Награда определяется по показателю вашей эффективности в бою"
 
 msgid "reward/credits/name"
-msgstr ""
+msgstr "Кредиты"
 
 msgid "reward/crew/description"
-msgstr "  ,      "
+msgstr "Играя в режиме, вы можете получить уникальных членов экипажа"
 
 msgid "reward/crew/name"
-msgstr " "
+msgstr "Члены экипажа"
 
 msgid "reward/experience/description"
-msgstr "       "
+msgstr "Награда определяется по показателю вашей эффективности в бою"
 
 msgid "reward/experience/name"
-msgstr ""
+msgstr "Опыт"
 
 msgid "reward/improvedEquipment/description"
-msgstr "  ,    %(name)s"
+msgstr "Играя в режиме, вы можете получить %(name)s"
 
 msgid "reward/improvedEquipment/name"
-msgstr " "
+msgstr "Специальное оборудование"
 
 msgid "reward/other/description"
-msgstr "  ,      "
+msgstr "Играя в режиме, вы можете получить множество полезных наград"
 
 msgid "reward/other/name"
-msgstr " "
+msgstr "Особая награда"
 
 msgid "reward/style/description"
-msgstr "  ,     3D-  %(name)s"
+msgstr "Играя в режиме, вы можете получить особый 3D-стиль для %(name)s"
 
 msgid "reward/style/name"
-msgstr "3D-"
+msgstr "3D-стиль"
 
 msgid "reward/vehicle/description"
-msgstr "  ,    %(name)s"
+msgstr "Играя в режиме, вы можете получить %(name)s"
 
 msgid "reward/vehicle/name"
-msgstr " "
+msgstr "Наградная техника"
 
 msgid "selectMap"
-msgstr "   "
+msgstr "Предустановки для Случайных боёв"
 
 msgid "statusSeparator"
 msgstr " %(parSecondary_open)sI%(parSecondary_close)s "
 
 msgid "title"
-msgstr "  "
+msgstr "ВЫБЕРИТЕ РЕЖИМ БОЯ"
 
 msgid "window/battleSession/globalMap/button"
-msgstr " "
+msgstr "Глобальная карта"
 
 msgid "window/battleSession/globalMap/description"
-msgstr "      .     ."
+msgstr ""
+"Захватывайте провинции и сражайтесь за мировое господство. Режим доступен "
+"только клановым игрокам."
 
 msgid "window/battleSession/globalMap/enterClan"
-msgstr "  "
+msgstr "Вступить в клан"
 
 msgid "window/battleSession/globalMap/title"
-msgstr "   "
+msgstr "Бои на Глобальной карте"
 
 msgid "window/battleSession/title"
-msgstr " "
+msgstr "СПЕЦИАЛЬНЫЙ БОЙ"
 
 msgid "window/battleSession/tournaments/button"
-msgstr " "
+msgstr "Список турниров"
 
 msgid "window/battleSession/tournaments/china"
-msgstr "     ,     . , ."
+msgstr ""
+"В данный момент эта функциональность недоступна, но станет доступна в "
+"будущем. Пожалуйста, подождите."
 
 msgid "window/battleSession/tournaments/description"
-msgstr "      ,       ."
+msgstr ""
+"Сражайтесь в одиночку или в составе команды, демонстрируйте свои способности "
+"и получайте достойные награды."
 
 msgid "window/battleSession/tournaments/title"
-msgstr ""
+msgstr "Турниры"

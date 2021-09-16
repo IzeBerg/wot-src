@@ -8,6 +8,8 @@ package net.wg.utils
       
       function setLinkStyle(param1:TextField) : void;
       
+      function setWhiteLinkStyle(param1:TextField) : void;
+      
       function setForceFocusedStyle(param1:String) : String;
    }
 }

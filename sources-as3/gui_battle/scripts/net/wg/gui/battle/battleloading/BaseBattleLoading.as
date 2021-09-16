@@ -120,6 +120,17 @@ package net.wg.gui.battle.battleloading
          this.throwAbstractException();
       }
       
+      public function hasAmmunitionPanel(param1:Boolean) : void
+      {
+         this.throwAbstractException();
+      }
+      
+      public function getContentY() : int
+      {
+         DebugUtils.LOG_ERROR(MSG_MUST_BE_OVERRIDEN);
+         throw new AbstractException(MSG_MUST_BE_OVERRIDEN);
+      }
+      
       private function throwAbstractException() : void
       {
          DebugUtils.LOG_ERROR(MSG_MUST_BE_OVERRIDEN);

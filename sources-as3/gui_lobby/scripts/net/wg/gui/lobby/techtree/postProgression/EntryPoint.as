@@ -7,19 +7,26 @@ package net.wg.gui.lobby.techtree.postProgression
    import flash.filters.DropShadowFilter;
    import flash.geom.Point;
    import flash.text.TextField;
+   import flash.text.TextFormatAlign;
+   import net.wg.data.constants.Linkages;
    import net.wg.data.constants.SoundManagerStates;
    import net.wg.data.constants.SoundTypes;
    import net.wg.data.constants.generated.POSTPROGRESSION_CONSTS;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
+   import net.wg.gui.components.common.Counter;
    import net.wg.gui.lobby.components.vehPostProgression.EntryPointButton;
    import net.wg.gui.lobby.techtree.TechTreeEvent;
    import net.wg.gui.lobby.techtree.data.vo.ResearchPostProgressionDataVO;
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.managers.ITooltipMgr;
+   import net.wg.infrastructure.managers.counter.CounterManager;
+   import net.wg.infrastructure.managers.counter.CounterProps;
+   import net.wg.utils.ICounterManager;
    import net.wg.utils.IScheduler;
    import net.wg.utils.IStageSizeDependComponent;
    import net.wg.utils.StageSizeBoundaries;
    import scaleform.clik.constants.InvalidationType;
+   import scaleform.clik.events.ButtonEvent;
    import scaleform.clik.motion.Tween;
    import scaleform.gfx.MouseEventEx;
    
@@ -62,9 +69,15 @@ package net.wg.gui.lobby.techtree.postProgression
       
       private static const OFFSET_TO_FIX_LINES_BLUR:Number = 0.25;
       
+      private static const COUNTER_OFFSET_Y_BIG:int = 8;
+      
+      private static const COUNTER_OFFSET_Y_SMALL:int = 16;
+      
       private static const UNLOCK_STATE:String = "unlock";
       
       private static const ENTRY_POINT_PARENT_SCREEN:String = "research_page";
+      
+      private static const POST_PROGRESSION_ENTRY:String = "postProgressionEntry";
        
       
       public var content:EntryPointButton = null;
@@ -91,6 +104,8 @@ package net.wg.gui.lobby.techtree.postProgression
       
       private var _scheduler:IScheduler;
       
+      private var _counterManager:ICounterManager;
+      
       private var _x:int = 0;
       
       private var _y:int = 0;
@@ -103,7 +118,9 @@ package net.wg.gui.lobby.techtree.postProgression
          this._tooltipMgr = App.toolTipMgr;
          this._scheduler = App.utils.scheduler;
          super();
+         name = POST_PROGRESSION_ENTRY;
          this._tooltipsContainer = this._tooltipMgr.getContainer();
+         this._counterManager = App.utils.counterManager;
          hitArea = this._hitMc;
          this.label.wordWrap = true;
          this.label.multiline = true;
@@ -121,7 +138,7 @@ package net.wg.gui.lobby.techtree.postProgression
       {
          this.content.removeEventListener(MouseEvent.ROLL_OVER,this.onMouseEventRollOverHandler);
          this.content.removeEventListener(MouseEvent.ROLL_OUT,this.onMouseEventRollOutHandler);
-         this.content.removeEventListener(MouseEvent.CLICK,this.onMouseEventClickHandler);
+         this.content.removeEventListener(ButtonEvent.CLICK,this.onButtonEventClickHandler);
          super.onBeforeDispose();
       }
       
@@ -142,6 +159,8 @@ package net.wg.gui.lobby.techtree.postProgression
          }
          this._labelCont = null;
          this._tooltipsContainer = null;
+         this._counterManager.removeCounter(this.content);
+         this._counterManager = null;
          this.label = null;
          this._data = null;
          this._tooltipMgr = null;
@@ -163,7 +182,7 @@ package net.wg.gui.lobby.techtree.postProgression
          }
          this.content.addEventListener(MouseEvent.ROLL_OVER,this.onMouseEventRollOverHandler);
          this.content.addEventListener(MouseEvent.ROLL_OUT,this.onMouseEventRollOutHandler);
-         this.content.addEventListener(MouseEvent.CLICK,this.onMouseEventClickHandler);
+         this.content.addEventListener(ButtonEvent.CLICK,this.onButtonEventClickHandler);
          App.stageSizeMgr.register(this);
       }
       
@@ -192,6 +211,7 @@ package net.wg.gui.lobby.techtree.postProgression
             {
                this.content.height = !!this._isSmall ? Number(CONTENT_HEIGHT_SMALL) : Number(CONTENT_HEIGHT_BIG);
                this.content.validateNow();
+               this.showCounter(this._data.showCounter);
                _width = Math.max(_width,this.content.width + MARGIN) | 0;
                hitArea.x = this.content.x = _width - this.content.width >> 1;
                this.label.width = !!this._isSmall ? Number(LABEL_MAX_WIDTH) : Number(LABEL_MIN_WIDTH);
@@ -241,6 +261,22 @@ package net.wg.gui.lobby.techtree.postProgression
       {
          App.soundMgr.playControlsSnd(UNLOCK_STATE,SoundTypes.POST_PROGRESSION_MODULES,null);
          this.content.showUnlockAnimation();
+      }
+      
+      private function showCounter(param1:Boolean) : void
+      {
+         var _loc2_:int = 0;
+         var _loc3_:CounterProps = null;
+         if(param1)
+         {
+            _loc2_ = !!this._isSmall ? int(COUNTER_OFFSET_Y_SMALL) : int(COUNTER_OFFSET_Y_BIG);
+            _loc3_ = new CounterProps(4,_loc2_,TextFormatAlign.LEFT,true,Linkages.COUNTER_UI,CounterProps.DEFAULT_TF_PADDING,false,Counter.EMPTY_STATE);
+            this._counterManager.setCounter(this.content,CounterManager.COUNTER_EMPTY,null,_loc3_);
+         }
+         else
+         {
+            this._counterManager.removeCounter(this.content);
+         }
       }
       
       private function clearTween() : void
@@ -329,16 +365,16 @@ package net.wg.gui.lobby.techtree.postProgression
          this._tooltipMgr.hide();
       }
       
-      private function onMouseEventClickHandler(param1:MouseEvent) : void
+      private function onButtonEventClickHandler(param1:ButtonEvent) : void
       {
-         if(MouseEventEx(param1).buttonIdx == MouseEventEx.LEFT_BUTTON)
+         if(param1.buttonIdx == MouseEventEx.LEFT_BUTTON)
          {
             this._isHoverState = false;
             this.clearTween();
             this._labelCont.alpha = 0;
             this._scheduler.cancelTask(this.showTooltip);
             dispatchEvent(new TechTreeEvent(TechTreeEvent.GO_TO_POST_PROGRESSION));
-            App.soundMgr.playControlsSnd(SoundManagerStates.SND_PRESS,SoundTypes.NORMAL_BTN,null);
+            App.soundMgr.playControlsSnd(SoundManagerStates.SND_PRESS,SoundTypes.OK_BTN,null);
          }
       }
    }

@@ -1,12 +1,13 @@
 package net.wg.gui.battle.views.damagePanel.components.modules
 {
+   import net.wg.data.constants.Errors;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.VehicleModules;
    import net.wg.data.constants.generated.BATTLE_ITEM_STATES;
-   import net.wg.gui.battle.views.damagePanel.components.tankIndicator.WheelRotator;
    import net.wg.gui.battle.views.damagePanel.interfaces.IAssetCreator;
    import net.wg.gui.battle.views.damagePanel.interfaces.IDamagePanelClickableItem;
    import net.wg.gui.battle.views.damagePanel.interfaces.IDamagePanelItemsCtrl;
+   import net.wg.utils.IAssertable;
    
    public class ModulesCtrl implements IDamagePanelItemsCtrl
    {
@@ -46,6 +47,12 @@ package net.wg.gui.battle.views.damagePanel.components.modules
       
       private var _modules:Vector.<ModuleAssets>;
       
+      private var _asserter:IAssertable;
+      
+      private var _hasYoh:Boolean = false;
+      
+      private var _yohChassisState:YohChassisState = null;
+      
       public function ModulesCtrl()
       {
          super();
@@ -58,16 +65,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
          this._fuelTank = new ModuleAssets(VehicleModules.FUEL_TANK,false,ModuleAssets.TOP_POSITION_IDX_3);
          this._modules = new <ModuleAssets>[this._engine,this._ammoBay,this._gun,this._turretRotator,this._surveyingDevice,this._radio,this._fuelTank];
          this._destroyedChassisDevices = {};
-      }
-      
-      private static function isWheel(param1:String) : Boolean
-      {
-         return param1.slice(0,WheelRotator.WHEEL_LENGTH) == VehicleModules.WHEEL && param1 != VehicleModules.WHEEL;
-      }
-      
-      private static function isTrack(param1:String) : Boolean
-      {
-         return param1 == VehicleModules.LEFT_TRACK || param1 == VehicleModules.RIGHT_TRACK;
+         this._asserter = App.utils.asserter;
       }
       
       public final function dispose() : void
@@ -77,18 +75,24 @@ package net.wg.gui.battle.views.damagePanel.components.modules
       
       public function getItemByName(param1:String) : IDamagePanelClickableItem
       {
-         if(isWheel(param1))
+         if(VehicleModules.isWheel(param1))
          {
             param1 = VehicleModules.WHEEL;
          }
-         App.utils.asserter.assert(VehicleModules.MODULES_LIST.indexOf(param1) >= 0,"Not valid itemName = " + param1);
-         if(isTrack(param1))
+         if(!VehicleModules.checkModuleName(param1))
+         {
+            this._asserter.assert(false,param1 + Errors.WASNT_FOUND);
+         }
+         if(VehicleModules.isTrack(param1))
          {
             param1 = VehicleModules.CHASSIS;
          }
          param1 = UNDERSCORE_SIGN + param1;
-         var _loc2_:ModuleAssets = this[param1];
-         App.utils.asserter.assertNotNull(_loc2_,"Not module with name = " + param1);
+         var _loc2_:ModuleAssets = ModuleAssets(this[param1]);
+         if(!_loc2_)
+         {
+            this._asserter.assert(false,param1 + Errors.WASNT_FOUND);
+         }
          return _loc2_;
       }
       
@@ -107,11 +111,27 @@ package net.wg.gui.battle.views.damagePanel.components.modules
             _loc2_++;
          }
          this._destroyedChassisDevicesCount = 0;
+         if(this._yohChassisState)
+         {
+            this._yohChassisState.reset();
+         }
          this._isDestroyed = false;
       }
       
-      public function setChassis(param1:Boolean) : void
+      public function setChassis(param1:Boolean, param2:Boolean) : void
       {
+         this._hasYoh = param2;
+         if(this._hasYoh)
+         {
+            if(!this._yohChassisState)
+            {
+               this._yohChassisState = new YohChassisState();
+            }
+         }
+         else
+         {
+            this._yohChassisState = null;
+         }
          if(param1)
          {
             if(this._modules.indexOf(this._wheel) == -1)
@@ -144,28 +164,40 @@ package net.wg.gui.battle.views.damagePanel.components.modules
          }
       }
       
-      public function setModuleRepairing(param1:String, param2:int, param3:int) : void
+      public function setModuleRepairing(param1:String, param2:int, param3:int, param4:Boolean = false) : void
       {
-         var _loc4_:ModuleAssets = null;
+         var _loc5_:ModuleAssets = null;
+         var _loc6_:PartState = null;
          if(!this._isDestroyed)
          {
-            _loc4_ = ModuleAssets(this.getItemByName(param1));
-            if(isTrack(param1) || isWheel(param1))
+            _loc5_ = ModuleAssets(this.getItemByName(param1));
+            if(VehicleModules.isTrack(param1) || VehicleModules.isWheel(param1))
             {
-               if(this._lastDestroyedChassisDevice == param1)
+               if(this._hasYoh)
                {
-                  _loc4_.setModuleRepairing(param2,param3);
+                  this._yohChassisState.updateRepairTime(param1,param3,param2);
+                  _loc6_ = this._yohChassisState.getHigherRepairTimePart();
+                  param2 = _loc6_ != null ? int(_loc6_.repairPercent) : int(0);
+                  param3 = _loc6_ != null ? int(_loc6_.repairTime) : int(0);
+                  _loc5_.setModuleRepairing(param2,param3,param4);
                }
-               else if(this._destroyedChassisDevices[param1] < param3 && this._destroyedChassisDevices[this._lastDestroyedChassisDevice] < param3)
+               else
                {
-                  this._lastDestroyedChassisDevice = param1;
-                  _loc4_.setModuleRepairing(param2,param3);
+                  if(this._lastDestroyedChassisDevice == param1)
+                  {
+                     _loc5_.setModuleRepairing(param2,param3,param4);
+                  }
+                  else if(this._destroyedChassisDevices[param1] < param3 && this._destroyedChassisDevices[this._lastDestroyedChassisDevice] < param3)
+                  {
+                     this._lastDestroyedChassisDevice = param1;
+                     _loc5_.setModuleRepairing(param2,param3,param4);
+                  }
+                  this._destroyedChassisDevices[param1] = param3;
                }
-               this._destroyedChassisDevices[param1] = param3;
             }
             else
             {
-               _loc4_.setModuleRepairing(param2,param3);
+               _loc5_.setModuleRepairing(param2,param3,param4);
             }
          }
       }
@@ -184,6 +216,15 @@ package net.wg.gui.battle.views.damagePanel.components.modules
          }
       }
       
+      public function setRepairTimesVisible(param1:Boolean) : void
+      {
+         var _loc2_:ModuleAssets = null;
+         for each(_loc2_ in this._modules)
+         {
+            _loc2_.setRepairTimeVisible(param1);
+         }
+      }
+      
       public function setState(param1:String, param2:String) : void
       {
          if(this._isDestroyed)
@@ -191,11 +232,11 @@ package net.wg.gui.battle.views.damagePanel.components.modules
             this._isDestroyed = param2 == BATTLE_ITEM_STATES.DESTROYED;
          }
          var _loc3_:IAssetCreator = this.getItemByName(param1);
-         if(isTrack(param1))
+         if(VehicleModules.isTrack(param1))
          {
-            this.setChessisState(_loc3_,param1,param2);
+            this.setChassisState(_loc3_,param1,param2);
          }
-         else if(isWheel(param1))
+         else if(VehicleModules.isWheel(param1))
          {
             this.setWheelState(_loc3_,param1,param2);
          }
@@ -231,7 +272,6 @@ package net.wg.gui.battle.views.damagePanel.components.modules
             _loc3_ = this._modules[_loc2_];
             if(_loc3_.destroyAvailability)
             {
-               _loc3_.state = BATTLE_ITEM_STATES.NORMAL;
                _loc3_.resetModuleRepairing();
             }
             _loc2_++;
@@ -254,6 +294,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
          this._radio = null;
          this._fuelTank.dispose();
          this._fuelTank = null;
+         this._yohChassisState = null;
          if(this._chassis)
          {
             this._chassis.dispose();
@@ -267,53 +308,76 @@ package net.wg.gui.battle.views.damagePanel.components.modules
          this._modules.splice(0,this._modules.length);
          this._modules = null;
          this._destroyedChassisDevices = null;
+         this._asserter = null;
       }
       
-      private function setChessisState(param1:IAssetCreator, param2:String, param3:String) : void
+      private function setChassisState(param1:IAssetCreator, param2:String, param3:String) : void
       {
-         var _loc4_:String = Values.EMPTY_STR;
-         if(param3 == BATTLE_ITEM_STATES.DESTROYED)
+         var _loc4_:String = null;
+         var _loc5_:String = null;
+         if(this._hasYoh)
          {
-            this._destroyedChassisDevices[param2] = 0;
-            this._lastBrokenChassisDevice = param2;
-            this._lastDestroyedChassisDevice = param2;
-            ++this._destroyedChassisDevicesCount;
-            _loc4_ = BATTLE_ITEM_STATES.DESTROYED;
-         }
-         else if(param3 == BATTLE_ITEM_STATES.CRITICAL)
-         {
-            this._lastBrokenChassisDevice = param2;
-            _loc4_ = this._destroyedChassisDevicesCount <= 0 ? BATTLE_ITEM_STATES.CRITICAL : BATTLE_ITEM_STATES.DESTROYED;
-         }
-         else if(param3 == BATTLE_ITEM_STATES.REPAIRED || param3 == BATTLE_ITEM_STATES.REPAIRED_FULL)
-         {
-            this._destroyedChassisDevices[param2] = 0;
-            this._lastBrokenChassisDevice = param2;
-            --this._destroyedChassisDevicesCount;
-            if(this._destroyedChassisDevicesCount <= 0)
+            this._yohChassisState.updateTrackState(param2,param3);
+            _loc4_ = this._yohChassisState.getChassisState();
+            if(param3 == BATTLE_ITEM_STATES.DESTROYED || param3 == BATTLE_ITEM_STATES.CRITICAL || param3 == BATTLE_ITEM_STATES.REPAIRED)
             {
-               this._lastDestroyedChassisDevice = Values.EMPTY_STR;
-               _loc4_ = param3;
+               this._lastBrokenChassisDevice = param2;
             }
-            else
+            if(_loc4_ == BATTLE_ITEM_STATES.NORMAL || _loc4_ == BATTLE_ITEM_STATES.REPAIRED_FULL)
             {
-               _loc4_ = BATTLE_ITEM_STATES.DESTROYED;
+               this._lastBrokenChassisDevice = Values.EMPTY_STR;
+            }
+            if(!this._yohChassisState.hasSameState())
+            {
+               param1.state = _loc4_;
             }
          }
-         else if(param3 == BATTLE_ITEM_STATES.NORMAL)
+         else
          {
-            this._destroyedChassisDevices[param2] = 0;
-            this._lastBrokenChassisDevice = Values.EMPTY_STR;
-            this._destroyedChassisDevicesCount = 0;
-            if(this._lastDestroyedChassisDevice == param2)
+            _loc5_ = Values.EMPTY_STR;
+            if(param3 == BATTLE_ITEM_STATES.DESTROYED)
             {
-               this._lastDestroyedChassisDevice = Values.EMPTY_STR;
+               this._destroyedChassisDevices[param2] = 0;
+               this._lastBrokenChassisDevice = param2;
+               this._lastDestroyedChassisDevice = param2;
+               ++this._destroyedChassisDevicesCount;
+               _loc5_ = BATTLE_ITEM_STATES.DESTROYED;
             }
-            _loc4_ = BATTLE_ITEM_STATES.NORMAL;
-         }
-         if(_loc4_ != Values.EMPTY_STR)
-         {
-            param1.state = _loc4_;
+            else if(param3 == BATTLE_ITEM_STATES.CRITICAL)
+            {
+               this._lastBrokenChassisDevice = param2;
+               _loc5_ = this._destroyedChassisDevicesCount <= 0 ? BATTLE_ITEM_STATES.CRITICAL : BATTLE_ITEM_STATES.DESTROYED;
+            }
+            else if(param3 == BATTLE_ITEM_STATES.REPAIRED || param3 == BATTLE_ITEM_STATES.REPAIRED_FULL)
+            {
+               this._destroyedChassisDevices[param2] = 0;
+               this._lastBrokenChassisDevice = param2;
+               --this._destroyedChassisDevicesCount;
+               if(this._destroyedChassisDevicesCount <= 0)
+               {
+                  this._lastDestroyedChassisDevice = Values.EMPTY_STR;
+                  _loc5_ = param3;
+               }
+               else
+               {
+                  _loc5_ = BATTLE_ITEM_STATES.DESTROYED;
+               }
+            }
+            else if(param3 == BATTLE_ITEM_STATES.NORMAL)
+            {
+               this._destroyedChassisDevices[param2] = 0;
+               this._lastBrokenChassisDevice = Values.EMPTY_STR;
+               this._destroyedChassisDevicesCount = 0;
+               if(this._lastDestroyedChassisDevice == param2)
+               {
+                  this._lastDestroyedChassisDevice = Values.EMPTY_STR;
+               }
+               _loc5_ = BATTLE_ITEM_STATES.NORMAL;
+            }
+            if(_loc5_ != Values.EMPTY_STR)
+            {
+               param1.state = _loc5_;
+            }
          }
       }
       
@@ -350,14 +414,14 @@ package net.wg.gui.battle.views.damagePanel.components.modules
                this._lastDestroyedChassisDevice = Values.EMPTY_STR;
             }
          }
-         var _loc4_:String = this.checkWheelChessisDestroyed();
+         var _loc4_:String = this.checkWheelChassisDestroyed();
          if(_loc4_ != Values.EMPTY_STR)
          {
             param1.state = _loc4_;
          }
       }
       
-      private function checkWheelChessisDestroyed() : String
+      private function checkWheelChassisDestroyed() : String
       {
          if(this._destroyedChassisDevicesCount > this._wheelsCount >> 1)
          {
@@ -383,14 +447,169 @@ package net.wg.gui.battle.views.damagePanel.components.modules
             this._turretRotator.hideAsset();
          }
       }
-      
-      public function setRepairTimesVisible(param1:Boolean) : void
+   }
+}
+
+import net.wg.data.constants.generated.BATTLE_ITEM_STATES;
+import net.wg.infrastructure.interfaces.entity.IDisposable;
+
+class YohChassisState implements IDisposable
+{
+    
+   
+   public var leftTrack0:PartState;
+   
+   public var rightTrack0:PartState;
+   
+   public var leftTrack1:PartState;
+   
+   public var rightTrack1:PartState;
+   
+   private var prevState:String = "";
+   
+   private var currentState:String = "";
+   
+   function YohChassisState()
+   {
+      this.leftTrack0 = new PartState();
+      this.rightTrack0 = new PartState();
+      this.leftTrack1 = new PartState();
+      this.rightTrack1 = new PartState();
+      super();
+   }
+   
+   public function updateTrackState(param1:String, param2:String) : void
+   {
+      this[param1].updateState(param2);
+   }
+   
+   public function updateRepairTime(param1:String, param2:int, param3:int) : void
+   {
+      this[param1].updateRepairTime(param2,param3);
+   }
+   
+   public function reset() : void
+   {
+      this.leftTrack0.reset();
+      this.leftTrack1.reset();
+      this.rightTrack1.reset();
+      this.rightTrack0.reset();
+   }
+   
+   public function getChassisState() : String
+   {
+      if(this.leftTrack0.state == BATTLE_ITEM_STATES.DESTROYED || this.rightTrack0.state == BATTLE_ITEM_STATES.DESTROYED)
       {
-         var _loc2_:ModuleAssets = null;
-         for each(_loc2_ in this._modules)
+         return this.saveState(BATTLE_ITEM_STATES.DESTROYED);
+      }
+      if(this.leftTrack1.state == BATTLE_ITEM_STATES.DESTROYED || this.rightTrack1.state == BATTLE_ITEM_STATES.DESTROYED)
+      {
+         return this.saveState(BATTLE_ITEM_STATES.CRITICAL);
+      }
+      if(this.leftTrack0.state == BATTLE_ITEM_STATES.REPAIRED && this.leftTrack1.state == BATTLE_ITEM_STATES.DESTROYED || this.rightTrack0.state == BATTLE_ITEM_STATES.REPAIRED && this.rightTrack1.state == BATTLE_ITEM_STATES.DESTROYED)
+      {
+         return this.saveState(BATTLE_ITEM_STATES.REPAIRED);
+      }
+      if(this.leftTrack1.state == BATTLE_ITEM_STATES.REPAIRED && this.leftTrack1.prevState == BATTLE_ITEM_STATES.DESTROYED || this.rightTrack1.state == BATTLE_ITEM_STATES.REPAIRED && this.rightTrack1.prevState == BATTLE_ITEM_STATES.DESTROYED)
+      {
+         return this.saveState(BATTLE_ITEM_STATES.REPAIRED_FULL);
+      }
+      if(this.leftTrack0.state == BATTLE_ITEM_STATES.REPAIRED_FULL || this.rightTrack0.state == BATTLE_ITEM_STATES.REPAIRED_FULL)
+      {
+         return this.saveState(BATTLE_ITEM_STATES.REPAIRED_FULL);
+      }
+      return this.saveState(BATTLE_ITEM_STATES.NORMAL);
+   }
+   
+   public function getHigherRepairTimePart() : PartState
+   {
+      if(this.leftTrack0.repairTime > this.rightTrack0.repairTime)
+      {
+         if(this.leftTrack0.repairTime > 0)
          {
-            _loc2_.setRepairTimeVisible(param1);
+            return this.leftTrack0;
          }
       }
+      else if(this.rightTrack0.repairTime > 0)
+      {
+         return this.rightTrack0;
+      }
+      if(this.leftTrack1.repairTime > this.rightTrack1.repairTime)
+      {
+         if(this.leftTrack1.repairTime > 0)
+         {
+            return this.leftTrack1;
+         }
+      }
+      else if(this.rightTrack1.repairTime > 0)
+      {
+         return this.rightTrack1;
+      }
+      return null;
+   }
+   
+   public function dispose() : void
+   {
+      this.leftTrack0 = null;
+      this.leftTrack1 = null;
+      this.rightTrack0 = null;
+      this.rightTrack1 = null;
+   }
+   
+   public function hasSameState() : Boolean
+   {
+      return this.currentState == this.prevState;
+   }
+   
+   private function saveState(param1:String) : String
+   {
+      this.prevState = this.currentState;
+      this.currentState = param1;
+      return param1;
+   }
+}
+
+import net.wg.data.constants.Values;
+import net.wg.data.constants.generated.BATTLE_ITEM_STATES;
+
+class PartState
+{
+    
+   
+   public var state:String = "normal";
+   
+   public var repairTime:int = 0;
+   
+   public var repairPercent:int = 0;
+   
+   public var prevState:String = "normal";
+   
+   function PartState()
+   {
+      super();
+   }
+   
+   public function updateState(param1:String) : void
+   {
+      this.prevState = this.state;
+      this.state = param1;
+      if(this.state == BATTLE_ITEM_STATES.NORMAL || this.state == BATTLE_ITEM_STATES.REPAIRED || this.state == BATTLE_ITEM_STATES.REPAIRED_FULL)
+      {
+         this.repairTime = Values.ZERO;
+         this.repairPercent = Values.ZERO;
+      }
+   }
+   
+   public function updateRepairTime(param1:int, param2:int) : void
+   {
+      this.repairTime = param1;
+      this.repairPercent = param2;
+   }
+   
+   public function reset() : void
+   {
+      this.state = BATTLE_ITEM_STATES.NORMAL;
+      this.repairTime = Values.ZERO;
+      this.repairPercent = Values.ZERO;
    }
 }

@@ -986,7 +986,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.dialogs.TankmanOperationDialog;
    import net.wg.gui.lobby.dialogs.data.IconPriceDialogVO;
    import net.wg.gui.lobby.dialogs.data.TankmanOperationDialogVO;
-   import net.wg.gui.lobby.eliteWindow.EliteWindow;
    import net.wg.gui.lobby.epicBattles.components.BackgroundComponent;
    import net.wg.gui.lobby.epicBattles.components.EpicBattlesLevelUpSkillButton;
    import net.wg.gui.lobby.epicBattles.components.EpicBattlesWidget;
@@ -2689,6 +2688,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.vehiclePreview.data.VPTradeInBuyingPanelVO;
    import net.wg.gui.lobby.vehiclePreview.data.VPVehicleCarouselVO;
    import net.wg.gui.lobby.vehiclePreview.infoPanel.VPInfoPanel;
+   import net.wg.gui.lobby.vehiclePreview.infoPanel.browse.LegalDisclaimer;
    import net.wg.gui.lobby.vehiclePreview.infoPanel.browse.VPBrowseTab;
    import net.wg.gui.lobby.vehiclePreview.infoPanel.browse.VPCollectibleInfo;
    import net.wg.gui.lobby.vehiclePreview.infoPanel.browse.VPKPIItemRenderer;
@@ -3159,7 +3159,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.meta.IDemonstratorWindowMeta;
    import net.wg.infrastructure.base.meta.IDemountKitInfoMeta;
    import net.wg.infrastructure.base.meta.IEULAMeta;
-   import net.wg.infrastructure.base.meta.IEliteWindowMeta;
    import net.wg.infrastructure.base.meta.IEpicBattleTrainingRoomMeta;
    import net.wg.infrastructure.base.meta.IEpicBattlesAfterBattleViewMeta;
    import net.wg.infrastructure.base.meta.IEpicBattlesWidgetMeta;
@@ -5377,8 +5376,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_DIALOGS_DATA_ICONPRICEDIALOGVO:Class = IconPriceDialogVO;
       
       public static const NET_WG_GUI_LOBBY_DIALOGS_DATA_TANKMANOPERATIONDIALOGVO:Class = TankmanOperationDialogVO;
-      
-      public static const NET_WG_GUI_LOBBY_ELITEWINDOW_ELITEWINDOW:Class = EliteWindow;
       
       public static const NET_WG_GUI_LOBBY_EPICBATTLES_COMPONENTS_BACKGROUNDCOMPONENT:Class = BackgroundComponent;
       
@@ -8760,6 +8757,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_INFOPANEL_VPINFOPANEL:Class = VPInfoPanel;
       
+      public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_INFOPANEL_BROWSE_LEGALDISCLAIMER:Class = LegalDisclaimer;
+      
       public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_INFOPANEL_BROWSE_VPBROWSETAB:Class = VPBrowseTab;
       
       public static const NET_WG_GUI_LOBBY_VEHICLEPREVIEW_INFOPANEL_BROWSE_VPCOLLECTIBLEINFO:Class = VPCollectibleInfo;
@@ -9722,8 +9721,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IDEMOUNTKITINFOMETA:Class = IDemountKitInfoMeta;
       
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IELITEWINDOWMETA:Class = IEliteWindowMeta;
-      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IEPICBATTLESAFTERBATTLEVIEWMETA:Class = IEpicBattlesAfterBattleViewMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IEPICBATTLESWIDGETMETA:Class = IEpicBattlesWidgetMeta;
@@ -10327,8 +10324,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_DEMOPAGEMETA:Class = DemoPageMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_DEMOUNTKITINFOMETA:Class = DemountKitInfoMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_ELITEWINDOWMETA:Class = EliteWindowMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EPICBATTLESAFTERBATTLEVIEWMETA:Class = EpicBattlesAfterBattleViewMeta;
       

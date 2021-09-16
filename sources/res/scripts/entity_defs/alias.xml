@@ -858,6 +858,12 @@
 					<of>INT32</of>
 				</Type>
 			</vehPostProgression>
+			<vehDisabledSetupSwitches>
+				<Type>
+					ARRAY
+					<of>UINT8</of>
+				</Type>
+			</vehDisabledSetupSwitches>
 		</Properties>
 	</ARENA_VEH_INFO>
 	<USER_EXTRA_SETTINGS>
@@ -1206,9 +1212,9 @@
 			<extraIndex>
 				<Type>UINT8</Type>
 			</extraIndex>
-			<progress>
+			<progressData>
 				<Type>UINT8</Type>
-			</progress>
+			</progressData>
 			<endTime>
 				<Type>FLOAT32</Type>
 			</endTime>
@@ -1511,6 +1517,12 @@
 			<customRoleSlotTypeId>
 				<Type>UINT8</Type>
 			</customRoleSlotTypeId>
+			<vehDisabledSetupSwitches>
+				<Type>
+					ARRAY
+					<of>UINT8</of>
+				</Type>
+			</vehDisabledSetupSwitches>
 		</Properties>
 	</RESPAWN_AVAILABLE_VEHICLE>
 	<RESPAWN_COOLDOWN_ITEM>
@@ -1653,6 +1665,12 @@
 			<customRoleSlotTypeId>
 				<Type>UINT8</Type>
 			</customRoleSlotTypeId>
+			<vehDisabledSetupSwitches>
+				<Type>
+					ARRAY
+					<of>UINT8</of>
+				</Type>
+			</vehDisabledSetupSwitches>
 		</Properties>
 	</RESPAWN_INFO_VEHICLE>
 	<BUFF_EFFECT>

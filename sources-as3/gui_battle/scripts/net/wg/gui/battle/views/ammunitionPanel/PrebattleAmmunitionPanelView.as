@@ -20,9 +20,9 @@ package net.wg.gui.battle.views.ammunitionPanel
       private static const HIDE_OFFSET:int = 15;
        
       
-      public var shadow:Sprite = null;
+      public var prebattleShadow:Sprite = null;
       
-      public var bg:PrebattleAmmunitionPanelBg = null;
+      public var battleLoadingShadow:Sprite = null;
       
       private var _tween:Tween = null;
       
@@ -44,7 +44,8 @@ package net.wg.gui.battle.views.ammunitionPanel
       override protected function onDispose() : void
       {
          this.clearTween();
-         this.shadow = null;
+         this.prebattleShadow = null;
+         this.battleLoadingShadow = null;
          super.onDispose();
       }
       
@@ -57,7 +58,7 @@ package net.wg.gui.battle.views.ammunitionPanel
       override protected function configUI() : void
       {
          super.configUI();
-         this.shadow.mouseEnabled = this.shadow.mouseChildren = false;
+         this.prebattleShadow.mouseEnabled = this.prebattleShadow.mouseChildren = false;
          mouseEnabled = false;
       }
       
@@ -66,8 +67,9 @@ package net.wg.gui.battle.views.ammunitionPanel
          super.draw();
          if(isInvalid(InvalidationType.STATE))
          {
-            this.bg.visible = this._isInLoading;
-            this.shadow.visible = !this._isInLoading;
+            this.battleLoadingShadow.visible = this._isInLoading;
+            this.prebattleShadow.visible = !this._isInLoading;
+            dispatchEvent(new PrbAmmunitionPanelEvent(PrbAmmunitionPanelEvent.STATE_CHANGED));
          }
       }
       
@@ -111,23 +113,16 @@ package net.wg.gui.battle.views.ammunitionPanel
          return visible;
       }
       
-      public function setBgWidth(param1:int) : void
-      {
-         this.bg.width = param1;
-         this.bg.x = this.width - param1 >> 1;
-      }
-      
       public function setCompVisible(param1:Boolean) : void
       {
          this._visible = param1;
          this.updateVisibility();
       }
       
-      public function setPosition(param1:int, param2:int) : void
+      public function setYPos(param1:int) : void
       {
-         this._originalY = param2;
-         this.x = param1;
-         this.y = param2;
+         this._originalY = param1;
+         this.y = param1;
       }
       
       private function updateVisibility() : void
@@ -167,6 +162,11 @@ package net.wg.gui.battle.views.ammunitionPanel
       public function get isHidden() : Boolean
       {
          return this._isHidden;
+      }
+      
+      public function get isInLoading() : Boolean
+      {
+         return this._isInLoading;
       }
    }
 }

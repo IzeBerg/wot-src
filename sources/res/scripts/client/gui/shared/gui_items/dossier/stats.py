@@ -1802,7 +1802,7 @@ class TotalAccountRankedStatsBlock(AccountRankedStatsBlock, _VehiclesStatsBlock)
         return self._rankedSeasons.hadAchievedRank()
 
     def _getVehDossiersCut(self, dossier):
-        return dossier.getDossierDescr()['rankedCut']
+        return dossier.getDossierDescr()[VEHICLE_STATS.RANKED_CUT_ARCHIVE]
 
     def _getBlockName(self):
         return 'ranked'
@@ -1814,11 +1814,14 @@ class TotalAccountRankedStatsBlock(AccountRankedStatsBlock, _VehiclesStatsBlock)
 class TotalAccountRanked10x10StatsBlock(TotalAccountRankedStatsBlock):
     __rankedController = dependency.descriptor(IRankedBattlesController)
 
+    def getStepsCount(self):
+        return 0
+
     def getAchievedRank(self):
         return self._rankedSeasons.getAchievedRank(self.__getSeasonID())
 
     def _getVehDossiersCut(self, dossier):
-        return dossier.getDossierDescr()[VEHICLE_STATS.RANKED_CUT_10X10]
+        return dossier.getDossierDescr()[VEHICLE_STATS.RANKED_CUT]
 
     def _getBlockName(self):
         return 'ranked_10x10'
@@ -1846,7 +1849,7 @@ class VehRankedStatsBlock(RankedStatsBlock, _VehiclesStatsBlock):
         return self._rankedSeasons.getTotalRanksCount()
 
     def _getVehDossiersCut(self, dossier):
-        return dossier.getDossierDescr()[VEHICLE_STATS.RANKED_CUT]
+        return dossier.getDossierDescr()[VEHICLE_STATS.RANKED_CUT_ARCHIVE]
 
     def _packVehicle(self, battlesCount=0, wins=0, xp=0):
         return self.VehiclesDossiersCut(battlesCount, wins, xp)

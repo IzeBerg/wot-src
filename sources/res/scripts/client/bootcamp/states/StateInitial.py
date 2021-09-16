@@ -14,6 +14,3 @@ class StateInitial(AbstractState):
 
     def _doDeactivate(self):
         pass
-
-    def onBattleAction(self, actionId, actionArgs):
-        pass

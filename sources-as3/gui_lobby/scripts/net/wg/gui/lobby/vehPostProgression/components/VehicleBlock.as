@@ -81,6 +81,11 @@ package net.wg.gui.lobby.vehPostProgression.components
          this._experienceBlock.freeXP = param1.freeExp;
       }
       
+      public function updateWalletStatus() : void
+      {
+         this._experienceBlock.updateWalletStatus();
+      }
+      
       private function updateLayouts() : void
       {
          var _loc1_:int = 0;

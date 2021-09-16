@@ -208,7 +208,7 @@ def fitOutfit(outfit, availableRegionsMap):
                 component = slot.getComponent(regionIdx)
                 if component is None:
                     continue
-                if isProjectionDecal and component.slotId == ProjectionDecalPacker.STYLED_SLOT_ID:
+                if isProjectionDecal and (component.slotId == ProjectionDecalPacker.STYLED_SLOT_ID or component.matchingTag):
                     continue
                 if regionIdx not in availableRegions:
                     slot.remove(regionIdx)

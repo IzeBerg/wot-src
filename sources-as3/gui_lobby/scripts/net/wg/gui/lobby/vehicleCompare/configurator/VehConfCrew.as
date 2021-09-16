@@ -50,6 +50,8 @@ package net.wg.gui.lobby.vehicleCompare.configurator
       
       public var skill6:VehConfCrewSkillSlot;
       
+      public var skill7:VehConfCrewSkillSlot;
+      
       public var titleHit:DisplayObject;
       
       public var fade:SkillsFade;
@@ -70,7 +72,7 @@ package net.wg.gui.lobby.vehicleCompare.configurator
          super();
          this._tooltipMgr = App.toolTipMgr;
          this._crewDP = new DataProvider();
-         this._skills = new <VehConfCrewSkillSlot>[this.skill0,this.skill1,this.skill2,this.skill3,this.skill4,this.skill5,this.skill6];
+         this._skills = new <VehConfCrewSkillSlot>[this.skill0,this.skill1,this.skill2,this.skill3,this.skill4,this.skill5,this.skill6,this.skill7];
          var _loc1_:int = 0;
          for each(_loc2_ in this._skills)
          {
@@ -95,6 +97,7 @@ package net.wg.gui.lobby.vehicleCompare.configurator
          this.skill4 = null;
          this.skill5 = null;
          this.skill6 = null;
+         this.skill7 = null;
          this.crewDropDown.removeEventListener(MouseEvent.ROLL_OVER,this.onCrewDropdownRollOverHandler);
          this.crewDropDown.removeEventListener(MouseEvent.ROLL_OUT,this.onComponentRollOutHandler);
          this.crewDropDown.dispose();
@@ -152,7 +155,7 @@ package net.wg.gui.lobby.vehicleCompare.configurator
       
       public function getFocusChain() : Vector.<InteractiveObject>
       {
-         return new <InteractiveObject>[this.skill0,this.skill1,this.skill2,this.skill3,this.skill4,this.skill5,this.skill6];
+         return new <InteractiveObject>[this.skill0,this.skill1,this.skill2,this.skill3,this.skill4,this.skill5,this.skill6,this.skill7];
       }
       
       public function setCrewAttentionIconVisible(param1:Boolean) : void

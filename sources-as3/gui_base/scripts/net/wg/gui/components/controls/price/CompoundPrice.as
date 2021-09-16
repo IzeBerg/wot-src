@@ -104,6 +104,10 @@ package net.wg.gui.components.controls.price
       
       override protected function draw() : void
       {
+         if(_baseDisposed)
+         {
+            return;
+         }
          super.draw();
          if(isInvalid(InvalidationType.LAYOUT))
          {
@@ -125,7 +129,6 @@ package net.wg.gui.components.controls.price
          this._priceIconOffset = null;
          this._priceActionOffset = null;
          this.hit = null;
-         this._numVisibleItems = 0;
          super.onDispose();
       }
       

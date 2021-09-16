@@ -14,6 +14,10 @@ class ChannelsManagementWindowMeta(AbstractWindowView):
     def createChannel(self, name, usePassword, password, retype):
         self._printOverrideError('createChannel')
 
+    def as_hideChannelNameInputS(self, isHide):
+        if self._isDAAPIInited():
+            return self.flashObject.as_hideChannelNameInput(isHide)
+
     def as_freezSearchButtonS(self, isEnable):
         if self._isDAAPIInited():
             return self.flashObject.as_freezSearchButton(isEnable)

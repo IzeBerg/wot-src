@@ -282,6 +282,10 @@ package
       public static const DETAILSHELP_SPGREWORK_SHOTSRESULTINDICATOR_DESCRIPTION:String = "#ingame_help:detailsHelp/spgRework/shotsResultIndicator/description";
       
       public static const DETAILSHELP_SPGREWORKTITLE:String = "#ingame_help:detailsHelp/spgReworkTitle";
+      
+      public static const DETAILSHELP_TRACKWITHINTRACK_TITLE:String = "#ingame_help:detailsHelp/trackWithinTrack/title";
+      
+      public static const DETAILSHELP_TRACKWITHINTRACK_DESCRIPTION:String = "#ingame_help:detailsHelp/trackWithinTrack/description";
        
       
       public function INGAME_HELP()

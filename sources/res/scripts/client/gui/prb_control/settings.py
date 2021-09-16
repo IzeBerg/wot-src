@@ -349,8 +349,9 @@ class PRE_QUEUE_RESTRICTION(object):
     LIMIT_LEVEL = 'limits/level'
     LIMIT_VEHICLE_TYPE = 'limits/vehicleType'
     LIMIT_VEHICLE_CLASS = 'limits/vehicleClass'
-    MODE_DISABLED = 'mode/disabled'
+    MODE_NO_BATTLES = 'mode/noBattles'
     MODE_NOT_SET = 'mode/notSet'
+    MODE_NOT_AVAILABLE = 'mode/notAvailable'
     VEHICLE_WILL_BE_UNLOCKED = 'vehicle/willBeUnlocked'
 
 

@@ -177,7 +177,7 @@ class ModuleTooltipBlockConstructor(object):
     TURBOSHAFT_ENGINE_MODULE_PARAM = 'turboshaftEngine'
     COOLDOWN_SECONDS = 'cooldownSeconds'
     CALIBER = 'caliber'
-    MODULE_PARAMS = {GUI_ITEM_TYPE.CHASSIS: ('maxLoad', 'rotationSpeed', 'maxSteeringLockAngle'), 
+    MODULE_PARAMS = {GUI_ITEM_TYPE.CHASSIS: ('maxLoad', 'rotationSpeed', 'maxSteeringLockAngle', 'vehicleChassisRepairSpeed', 'chassisRepairTime'), 
        GUI_ITEM_TYPE.TURRET: ('armor', 'rotationSpeed', 'circularVisionRadius'), 
        GUI_ITEM_TYPE.GUN: (
                          'avgDamageList', 'avgPiercingPower', RELOAD_TIME_SECS_PROP_NAME, RELOAD_TIME_PROP_NAME,
@@ -540,6 +540,8 @@ class CommonStatsBlockConstructor(ModuleTooltipBlockConstructor):
                             title = R.strings.menu.moduleInfo.hydraulicAutoSiegeChassisLabel()
                         else:
                             title = R.strings.menu.moduleInfo.hydraulicChassisLabel()
+                    elif module.isTrackWithinTrack():
+                        title = R.strings.menu.moduleInfo.trackWithinTrackChassisLabel()
                 elif module.itemTypeID == GUI_ITEM_TYPE.ENGINE:
                     if module.hasTurboshaftEngine():
                         title = R.strings.menu.moduleInfo.turboshaftEngine()

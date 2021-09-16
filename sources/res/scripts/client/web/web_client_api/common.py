@@ -1,3 +1,4 @@
+import itertools
 from collections import namedtuple
 from gui.shared.money import MONEY_UNDEFINED
 from shared_utils import CONST_CONTAINER
@@ -35,6 +36,7 @@ class ShopItemType(CONST_CONTAINER):
 
 
 class ItemPackType(CONST_CONTAINER):
+    VEHICLE = 'vehicle'
     VEHICLE_LIGHT = 'vehicle/lightTank'
     VEHICLE_MEDIUM = 'vehicle/mediumTank'
     VEHICLE_HEAVY = 'vehicle/heavyTank'
@@ -109,6 +111,7 @@ class ItemPackTypeGroup(CONST_CONTAINER):
      ItemPackType.ITEM_DEVICE,
      ItemPackType.ITEM_EQUIPMENT)
     VEHICLE = (
+     ItemPackType.VEHICLE,
      ItemPackType.VEHICLE_SPG,
      ItemPackType.VEHICLE_AT_SPG,
      ItemPackType.VEHICLE_HEAVY,
@@ -142,6 +145,7 @@ class ItemPackTypeGroup(CONST_CONTAINER):
      ItemPackType.PROJECTION_DECAL,)
     PERSONAL_NUMBER = (
      ItemPackType.PERSONAL_NUMBER,)
+    CUSTOMIZATION = tuple(itertools.chain(STYLE, CAMOUFLAGE, PAINT, DECAL, PROJECTION_DECAL, PERSONAL_NUMBER, MODIFICATION))
     CUSTOM = (
      ItemPackType.CUSTOM_PREMIUM,
      ItemPackType.CUSTOM_PREMIUM_PLUS,

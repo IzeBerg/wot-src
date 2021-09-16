@@ -1,3 +1,4 @@
+from constants import IS_CHINA
 from debug_utils import LOG_ERROR
 from gui.Scaleform.locale.MESSENGER import MESSENGER
 from gui.Scaleform.managers.windows_stored_data import DATA_TYPE, TARGET_ID
@@ -41,20 +42,22 @@ class ChannelsManagementWindow(ChannelsManagementWindowMeta, ISearchHandler):
 
     def createChannel(self, name, usePassword, password, retype):
         validator = self.proto.messages.getUserRoomValidator()
-        name, error = validator.validateUserRoomName(name)
-        if error is not None:
-            g_messengerEvents.onErrorReceived(error)
-            return
+        if not IS_CHINA:
+            name, error = validator.validateUserRoomName(name)
+            if error is not None:
+                g_messengerEvents.onErrorReceived(error)
+                return
         else:
-            if usePassword:
-                _, error = validator.validateUserRoomPwdPair(password, retype)
-                if error is not None:
-                    g_messengerEvents.onErrorReceived(error)
-                    return
-            result = self.proto.messages.createUserRoom(name, password)
-            if result:
-                self.destroy()
-            return
+            name, error = ('', None)
+        if usePassword:
+            _, error = validator.validateUserRoomPwdPair(password, retype)
+            if error is not None:
+                g_messengerEvents.onErrorReceived(error)
+                return
+        result = self.proto.messages.createUserRoom(name, password)
+        if result:
+            self.destroy()
+        return
 
     def onSearchComplete(self, _):
         self.as_freezSearchButtonS(False)
@@ -65,6 +68,7 @@ class ChannelsManagementWindow(ChannelsManagementWindowMeta, ISearchHandler):
     def _populate(self):
         super(ChannelsManagementWindow, self)._populate()
         self._searchDP.init(self.as_getDataProviderS(), (self,))
+        self.as_hideChannelNameInputS(IS_CHINA)
 
     def _dispose(self):
         if self._searchDP is not None:

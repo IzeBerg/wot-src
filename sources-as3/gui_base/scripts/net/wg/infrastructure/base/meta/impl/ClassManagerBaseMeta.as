@@ -209,6 +209,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.common.VehicleMarkerAlly;
    import net.wg.gui.components.common.VehicleMarkerEnemy;
    import net.wg.gui.components.common.bugreport.ReportBugPanel;
+   import net.wg.gui.components.common.lobbyVehicleMarkers.CustomMarker;
+   import net.wg.gui.components.common.lobbyVehicleMarkers.CustomMarkerVO;
    import net.wg.gui.components.common.lobbyVehicleMarkers.LobbyVehicleMarkers;
    import net.wg.gui.components.common.lobbyVehicleMarkers.LobbyVehicleMarkersVO;
    import net.wg.gui.components.common.lobbyVehicleMarkers.PlatoonMarker;
@@ -1322,6 +1324,10 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_COMMON_VEHICLEMARKERENEMY:Class = VehicleMarkerEnemy;
       
       public static const NET_WG_GUI_COMPONENTS_COMMON_BUGREPORT_REPORTBUGPANEL:Class = ReportBugPanel;
+      
+      public static const NET_WG_GUI_COMPONENTS_COMMON_LOBBYVEHICLEMARKERS_CUSTOMMARKER:Class = CustomMarker;
+      
+      public static const NET_WG_GUI_COMPONENTS_COMMON_LOBBYVEHICLEMARKERS_CUSTOMMARKERVO:Class = CustomMarkerVO;
       
       public static const NET_WG_GUI_COMPONENTS_COMMON_LOBBYVEHICLEMARKERS_LOBBYVEHICLEMARKERS:Class = LobbyVehicleMarkers;
       

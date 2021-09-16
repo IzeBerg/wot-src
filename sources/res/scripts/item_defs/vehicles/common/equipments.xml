@@ -3700,7 +3700,7 @@
 			<longFilterAlert/>
 			<tooltips>cooldownTime delay areaLength_areaWidth-dropArea bombsNumber shellCompactDescr</tooltips>
 			<cooldownTime>
-				210.0
+				200.0
 				<!--BW_String-->
 			</cooldownTime>
 			<cooldownFactors/>
@@ -3723,7 +3723,7 @@
 			<lateropositions>0</lateropositions>
 			<bombingMask>1</bombingMask>
 			<waveFraction>1</waveFraction>
-			<bombsNumber>62</bombsNumber>
+			<bombsNumber>25</bombsNumber>
 			<shellCompactDescr>66842</shellCompactDescr>
 			<tracerKind>1</tracerKind>
 			<piercingPower>5 5</piercingPower>
@@ -3765,7 +3765,7 @@
 			<longFilterAlert/>
 			<tooltips>cooldownTime delay areaLength_areaWidth-dropArea bombsNumber shellCompactDescr</tooltips>
 			<cooldownTime>
-				190.0
+				180.0
 				<!--BW_String-->
 			</cooldownTime>
 			<cooldownFactors/>
@@ -3788,7 +3788,7 @@
 			<lateropositions>0</lateropositions>
 			<bombingMask>1</bombingMask>
 			<waveFraction>1</waveFraction>
-			<bombsNumber>75</bombsNumber>
+			<bombsNumber>28</bombsNumber>
 			<shellCompactDescr>67354</shellCompactDescr>
 			<tracerKind>1</tracerKind>
 			<piercingPower>5 5</piercingPower>
@@ -3830,7 +3830,7 @@
 			<longFilterAlert/>
 			<tooltips>cooldownTime delay areaLength_areaWidth-dropArea bombsNumber shellCompactDescr</tooltips>
 			<cooldownTime>
-				170.0
+				160.0
 				<!--BW_String-->
 			</cooldownTime>
 			<cooldownFactors/>
@@ -3853,7 +3853,7 @@
 			<lateropositions>0</lateropositions>
 			<bombingMask>1</bombingMask>
 			<waveFraction>1</waveFraction>
-			<bombsNumber>91</bombsNumber>
+			<bombsNumber>32</bombsNumber>
 			<shellCompactDescr>67866</shellCompactDescr>
 			<tracerKind>1</tracerKind>
 			<piercingPower>5 5</piercingPower>
@@ -4090,65 +4090,6 @@
 			<longFilterAlert/>
 			<tooltips>cooldownTime delay areaRadius shotsNumber duration-artillery</tooltips>
 			<cooldownTime>
-				240.0
-				<!--BW_String-->
-			</cooldownTime>
-			<cooldownFactors/>
-			<sharedCooldownTime>0</sharedCooldownTime>
-			<consumeAmmo>false</consumeAmmo>
-			<disableAllyDamage>false</disableAllyDamage>
-			<cooldownTimeRespawnFactor>
-				0.6
-				<!--BW_String-->
-			</cooldownTimeRespawnFactor>
-			<delay>
-				4.0
-				<!--BW_String-->
-			</delay>
-			<duration>
-				4.5
-				<!--BW_String-->
-			</duration>
-			<shotsNumber>22</shotsNumber>
-			<areaRadius>12</areaRadius>
-			<shellCompactDescr>65562</shellCompactDescr>
-			<piercingPower>20 20</piercingPower>
-			<areaVisual>content/Interface/TargetPoint/TargetPoint.visual</areaVisual>
-			<noOwner>false</noOwner>
-			<shotSoundPreDelay>2</shotSoundPreDelay>
-			<wwsoundShot>eb_ability_artillery_firing</wwsoundShot>
-			<wwsoundEquipmentUsed>eb_ability_artillery_apply</wwsoundEquipmentUsed>
-		</script>
-	</artillery_epic_level1>
-	<artillery_epic_level2>
-		<id>321</id>
-		<userString>#artefacts:artillery/name</userString>
-		<description>#artefacts:artillery/shortDescr</description>
-		<icon>artillery 0 0</icon>
-		<soundNotification>eb_ability_artillery</soundNotification>
-		<price>
-			150
-			<gold/>
-		</price>
-		<notInShop>true</notInShop>
-		<tags>notForSale avatar trigger</tags>
-		<type>battleAbilities</type>
-		<vehicleFilter>
-			<include>
-				<vehicle>
-					<minLevel>8</minLevel>
-					<maxLevel>9</maxLevel>
-				</vehicle>
-			</include>
-		</vehicleFilter>
-		<script>
-			EpicArtillery
-			<shortDescription>#artefacts:artillery/shortDescr</shortDescription>
-			<longDescription>#artefacts:artillery/longDescr</longDescription>
-			<shortFilterAlert/>
-			<longFilterAlert/>
-			<tooltips>cooldownTime delay areaRadius shotsNumber duration-artillery</tooltips>
-			<cooldownTime>
 				220.0
 				<!--BW_String-->
 			</cooldownTime>
@@ -4165,12 +4106,12 @@
 				<!--BW_String-->
 			</delay>
 			<duration>
-				5.0
+				3.0
 				<!--BW_String-->
 			</duration>
-			<shotsNumber>24</shotsNumber>
+			<shotsNumber>22</shotsNumber>
 			<areaRadius>12</areaRadius>
-			<shellCompactDescr>66074</shellCompactDescr>
+			<shellCompactDescr>65562</shellCompactDescr>
 			<piercingPower>20 20</piercingPower>
 			<areaVisual>content/Interface/TargetPoint/TargetPoint.visual</areaVisual>
 			<noOwner>false</noOwner>
@@ -4178,9 +4119,9 @@
 			<wwsoundShot>eb_ability_artillery_firing</wwsoundShot>
 			<wwsoundEquipmentUsed>eb_ability_artillery_apply</wwsoundEquipmentUsed>
 		</script>
-	</artillery_epic_level2>
-	<artillery_epic_level3>
-		<id>322</id>
+	</artillery_epic_level1>
+	<artillery_epic_level2>
+		<id>321</id>
 		<userString>#artefacts:artillery/name</userString>
 		<description>#artefacts:artillery/shortDescr</description>
 		<icon>artillery 0 0</icon>
@@ -4224,7 +4165,66 @@
 				<!--BW_String-->
 			</delay>
 			<duration>
-				6.0
+				3.0
+				<!--BW_String-->
+			</duration>
+			<shotsNumber>24</shotsNumber>
+			<areaRadius>12</areaRadius>
+			<shellCompactDescr>66074</shellCompactDescr>
+			<piercingPower>20 20</piercingPower>
+			<areaVisual>content/Interface/TargetPoint/TargetPoint.visual</areaVisual>
+			<noOwner>false</noOwner>
+			<shotSoundPreDelay>2</shotSoundPreDelay>
+			<wwsoundShot>eb_ability_artillery_firing</wwsoundShot>
+			<wwsoundEquipmentUsed>eb_ability_artillery_apply</wwsoundEquipmentUsed>
+		</script>
+	</artillery_epic_level2>
+	<artillery_epic_level3>
+		<id>322</id>
+		<userString>#artefacts:artillery/name</userString>
+		<description>#artefacts:artillery/shortDescr</description>
+		<icon>artillery 0 0</icon>
+		<soundNotification>eb_ability_artillery</soundNotification>
+		<price>
+			150
+			<gold/>
+		</price>
+		<notInShop>true</notInShop>
+		<tags>notForSale avatar trigger</tags>
+		<type>battleAbilities</type>
+		<vehicleFilter>
+			<include>
+				<vehicle>
+					<minLevel>8</minLevel>
+					<maxLevel>9</maxLevel>
+				</vehicle>
+			</include>
+		</vehicleFilter>
+		<script>
+			EpicArtillery
+			<shortDescription>#artefacts:artillery/shortDescr</shortDescription>
+			<longDescription>#artefacts:artillery/longDescr</longDescription>
+			<shortFilterAlert/>
+			<longFilterAlert/>
+			<tooltips>cooldownTime delay areaRadius shotsNumber duration-artillery</tooltips>
+			<cooldownTime>
+				180.0
+				<!--BW_String-->
+			</cooldownTime>
+			<cooldownFactors/>
+			<sharedCooldownTime>0</sharedCooldownTime>
+			<consumeAmmo>false</consumeAmmo>
+			<disableAllyDamage>false</disableAllyDamage>
+			<cooldownTimeRespawnFactor>
+				0.6
+				<!--BW_String-->
+			</cooldownTimeRespawnFactor>
+			<delay>
+				4.0
+				<!--BW_String-->
+			</delay>
+			<duration>
+				3.0
 				<!--BW_String-->
 			</duration>
 			<shotsNumber>32</shotsNumber>
@@ -4444,7 +4444,7 @@
 			<longFilterAlert/>
 			<tooltips>cooldownTime minDelay areaLength_areaWidth-targetedArea projectilesNumber totalDuration visionRadiusFactor</tooltips>
 			<cooldownTime>
-				200.0
+				180.0
 				<!--BW_String-->
 			</cooldownTime>
 			<cooldownFactors/>
@@ -4495,7 +4495,7 @@
 				<!--BW_String-->
 			</dispersionRadius>
 			<totalDuration>
-				40.
+				50.
 				<!--BW_String-->
 			</totalDuration>
 			<smokeOpacity>
@@ -4550,7 +4550,7 @@
 			<longFilterAlert/>
 			<tooltips>cooldownTime minDelay areaLength_areaWidth-targetedArea projectilesNumber totalDuration visionRadiusFactor</tooltips>
 			<cooldownTime>
-				180.0
+				160.0
 				<!--BW_String-->
 			</cooldownTime>
 			<cooldownFactors/>
@@ -4601,7 +4601,7 @@
 				<!--BW_String-->
 			</dispersionRadius>
 			<totalDuration>
-				45.
+				55.
 				<!--BW_String-->
 			</totalDuration>
 			<smokeOpacity>
@@ -4656,7 +4656,7 @@
 			<longFilterAlert/>
 			<tooltips>cooldownTime minDelay areaLength_areaWidth-targetedArea projectilesNumber totalDuration visionRadiusFactor</tooltips>
 			<cooldownTime>
-				160.0
+				140.0
 				<!--BW_String-->
 			</cooldownTime>
 			<cooldownFactors/>
@@ -4707,7 +4707,7 @@
 				<!--BW_String-->
 			</dispersionRadius>
 			<totalDuration>
-				50.
+				60.
 				<!--BW_String-->
 			</totalDuration>
 			<smokeOpacity>
@@ -5694,7 +5694,7 @@
 			<deployTime>0</deployTime>
 			<consumeAmmo>false</consumeAmmo>
 			<cooldownTime>
-				240.0
+				230.0
 				<!--BW_String-->
 			</cooldownTime>
 			<disableAllyDamage>true</disableAllyDamage>
@@ -5717,7 +5717,7 @@
 				<triggerHeight>5</triggerHeight>
 				<triggerDepth>1</triggerDepth>
 				<influenceType>2</influenceType>
-				<lifetime>60</lifetime>
+				<lifetime>50</lifetime>
 				<damage>0</damage>
 				<shellCompactDescr>85786</shellCompactDescr>
 				<shellCompactDescrLowDamage>86042</shellCompactDescrLowDamage>
@@ -5733,7 +5733,7 @@
 				<areaColor>0xFFFF0000</areaColor>
 			</arenaAimLimits>
 			<minApplyRadius>15</minApplyRadius>
-			<maxApplyRadius>60</maxApplyRadius>
+			<maxApplyRadius>55</maxApplyRadius>
 			<cameraPivotPosMin>0 5 3</cameraPivotPosMin>
 			<cameraPivotPosMax>0 5 3</cameraPivotPosMax>
 		</script>
@@ -5775,7 +5775,7 @@
 			<deployTime>0</deployTime>
 			<consumeAmmo>false</consumeAmmo>
 			<cooldownTime>
-				220.0
+				210.0
 				<!--BW_String-->
 			</cooldownTime>
 			<disableAllyDamage>true</disableAllyDamage>
@@ -5803,7 +5803,7 @@
 				<triggerHeight>5</triggerHeight>
 				<triggerDepth>1</triggerDepth>
 				<influenceType>2</influenceType>
-				<lifetime>65</lifetime>
+				<lifetime>55</lifetime>
 				<damage>0</damage>
 				<shellCompactDescr>86298</shellCompactDescr>
 				<shellCompactDescrLowDamage>86554</shellCompactDescrLowDamage>
@@ -5819,7 +5819,7 @@
 				<areaColor>0xFFFF0000</areaColor>
 			</arenaAimLimits>
 			<minApplyRadius>15</minApplyRadius>
-			<maxApplyRadius>60</maxApplyRadius>
+			<maxApplyRadius>55</maxApplyRadius>
 			<cameraPivotPosMin>0 5 3</cameraPivotPosMin>
 			<cameraPivotPosMax>0 5 3</cameraPivotPosMax>
 		</script>
@@ -5861,7 +5861,7 @@
 			<deployTime>0</deployTime>
 			<consumeAmmo>false</consumeAmmo>
 			<cooldownTime>
-				200.0
+				190.0
 				<!--BW_String-->
 			</cooldownTime>
 			<disableAllyDamage>true</disableAllyDamage>
@@ -5889,7 +5889,7 @@
 				<triggerHeight>5</triggerHeight>
 				<triggerDepth>1</triggerDepth>
 				<influenceType>2</influenceType>
-				<lifetime>70</lifetime>
+				<lifetime>60</lifetime>
 				<damage>0</damage>
 				<shellCompactDescr>86810</shellCompactDescr>
 				<shellCompactDescrLowDamage>87066</shellCompactDescrLowDamage>
@@ -5905,7 +5905,7 @@
 				<areaColor>0xFFFF0000</areaColor>
 			</arenaAimLimits>
 			<minApplyRadius>15</minApplyRadius>
-			<maxApplyRadius>60</maxApplyRadius>
+			<maxApplyRadius>55</maxApplyRadius>
 			<cameraPivotPosMin>0 5 3</cameraPivotPosMin>
 			<cameraPivotPosMax>0 5 3</cameraPivotPosMax>
 		</script>
@@ -6480,7 +6480,7 @@
 		<type>battleAbilities</type>
 		<script>
 			FLAvatarStealthRadar
-			<passiveCircularVisionRadius>15</passiveCircularVisionRadius>
+			<passiveCircularVisionRadius>20</passiveCircularVisionRadius>
 			<sharedCooldownTime>0</sharedCooldownTime>
 			<delay>
 				0.0
@@ -6554,7 +6554,7 @@
 		<type>battleAbilities</type>
 		<script>
 			FLAvatarStealthRadar
-			<passiveCircularVisionRadius>15</passiveCircularVisionRadius>
+			<passiveCircularVisionRadius>20</passiveCircularVisionRadius>
 			<sharedCooldownTime>0</sharedCooldownTime>
 			<delay>
 				0.0
@@ -6628,7 +6628,7 @@
 		<type>battleAbilities</type>
 		<script>
 			FLAvatarStealthRadar
-			<passiveCircularVisionRadius>15</passiveCircularVisionRadius>
+			<passiveCircularVisionRadius>20</passiveCircularVisionRadius>
 			<sharedCooldownTime>0</sharedCooldownTime>
 			<delay>
 				0.0

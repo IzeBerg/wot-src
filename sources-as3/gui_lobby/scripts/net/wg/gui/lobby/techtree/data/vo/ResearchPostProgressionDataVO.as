@@ -14,6 +14,8 @@ package net.wg.gui.lobby.techtree.data.vo
       
       public var vehicleId:uint = 0;
       
+      public var showCounter:Boolean = false;
+      
       public var _moduleIds:Vector.<uint> = null;
       
       public function ResearchPostProgressionDataVO(param1:Object = null)

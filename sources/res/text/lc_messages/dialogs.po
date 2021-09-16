@@ -1293,23 +1293,6 @@ msgstr "Соревнования временно недоступны: веду
 msgid "elenDisabled/title"
 msgstr "Внимание!"
 
-msgid "elite/cancel"
-msgstr "ОК"
-
-msgid "elite/header"
-msgstr "%(name)s получил статус «Элитный»"
-
-msgid "elite/message"
-msgstr ""
-"Статус «Элитный» присваивается технике, для которой исследованы все "
-"доступные модули и ветки развития.\n"
-"Боевой опыт, заработанный на элитной технике, может быть переведён в "
-"свободный опыт за золото либо направлен на ускоренное обучение экипажа с "
-"помощью опции «Ускорить обучение экипажа»."
-
-msgid "elite/title"
-msgstr "Присвоение статуса «Элитный»"
-
 msgid "epicBattleConfirmDialog/cancel"
 msgstr "Отмена"
 
@@ -2142,6 +2125,9 @@ msgid "punishmentWindow/reason/afk"
 msgstr "Бездействие в бою"
 
 msgid "punishmentWindow/reason/deserter"
+msgstr "Выход из боя до его окончания или до уничтожения собственной машины"
+
+msgid "punishmentWindow/reason/epic_deserter"
 msgstr "Выход из боя до его окончания или до уничтожения собственной машины"
 
 msgid "punishmentWindow/reason/suicide"
@@ -3183,6 +3169,11 @@ msgstr "снаряжение будет выгружено на Склад"
 msgid "tradeInConfirmation/message/optionalDevices"
 msgstr "оборудование будет бесплатно демонтировано"
 
+msgid "tradeInConfirmation/message/pairModifications"
+msgstr ""
+"все проведённые парные модификации будут отменены, но прогресс базовых "
+"модификаций сохранится"
+
 msgid "tradeInConfirmation/message/shells"
 msgstr "боекомплект будет выгружен на Склад"
 
@@ -3432,7 +3423,7 @@ msgstr "ОБОРУДОВАНИЕ:"
 
 msgid "vehicleSellDialog/postProgressionInfo"
 msgstr ""
-"После продажи техники текущий уровень полевой модернизации сохранится, но "
+"После продажи техники текущий уровень Полевой модернизации сохранится, но "
 "все проведённые парные модификации будут отменены."
 
 msgid "vehicleSellDialog/price/sign/add"

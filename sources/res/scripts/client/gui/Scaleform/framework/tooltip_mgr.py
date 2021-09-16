@@ -1,14 +1,16 @@
-import logging, Keys
+import inspect, itertools, logging, Keys
 from Event import SafeEvent, EventManager
 from gui import InputHandler
 from gui.Scaleform.framework.entities.abstract.ToolTipMgrMeta import ToolTipMgrMeta
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from gui.shared import events
 from gui.shared.tooltips import builders
-from helpers import dependency
+from helpers import dependency, uniprof
 from skeletons.gui.app_loader import IAppLoader
 from skeletons.gui.impl import IGuiLoader
+from soft_exception import SoftException
 _logger = logging.getLogger(__name__)
+UNIPROF_REGION_COLOR = 9611473
 
 class ToolTip(ToolTipMgrMeta):
     appLoader = dependency.descriptor(IAppLoader)
@@ -29,6 +31,7 @@ class ToolTip(ToolTipMgrMeta):
         self.__tooltipID = None
         self.__args = None
         self.__stateType = None
+        self.__tooltipRegion = None
         self.__tooltipWindowId = 0
         self.__em = EventManager()
         self.onShow = SafeEvent(self.__em)
@@ -59,12 +62,26 @@ class ToolTip(ToolTipMgrMeta):
         self.__isAdvancedKeyPressed = event.isKeyDown() and altPressed
         return self.__tooltipID is not None and altPressed
 
+    def getTypedTooltipDefaultBuildArgs(self, tooltipType):
+        builder = self._builders.getBuilder(tooltipType)
+        if builder is None:
+            raise SoftException('Builder for tooltip: type "%s" is not found', tooltipType)
+        provider = builder.provider
+        if provider is None:
+            raise SoftException('"%s" does not have any provider', builder.__name__)
+        spec = inspect.getargspec(provider.context.buildItem)
+        return tuple(reversed([ (argName, defaultValue) for argName, defaultValue in itertools.izip_longest(reversed(spec.args), reversed(spec.defaults or [])) if argName != 'self'
+                              ]))
+
     def onCreateTypedTooltip(self, tooltipType, args, stateType):
         if self._areTooltipsDisabled:
             return
         else:
             if not self._isAllowedTypedTooltip:
                 return
+            if self.__tooltipRegion is None:
+                self.__tooltipRegion = ('Typed tooltip "{}"').format(tooltipType)
+                uniprof.enterToRegion(self.__tooltipRegion, UNIPROF_REGION_COLOR)
             builder = self._builders.getBuilder(tooltipType)
             if builder is not None:
                 data = builder.build(self, stateType, self.__isAdvancedKeyPressed, *args)
@@ -100,6 +117,9 @@ class ToolTip(ToolTipMgrMeta):
         if self._areTooltipsDisabled:
             return
         else:
+            if self.__tooltipRegion is None:
+                self.__tooltipRegion = ('Complex tooltip "{}"').format(tooltipID)
+                uniprof.enterToRegion(self.__tooltipRegion, UNIPROF_REGION_COLOR)
             self._complex.build(self, stateType, self.__isAdvancedKeyPressed, tooltipID)
             self.__cacheTooltipData(True, tooltipID, tuple(), stateType)
             self.onShow(tooltipID, None, self.__isAdvancedKeyPressed)
@@ -112,6 +132,9 @@ class ToolTip(ToolTipMgrMeta):
         self.__tooltipID = None
         self.__fastRedraw = False
         self.__destroyTooltipWindow()
+        if self.__tooltipRegion is not None:
+            uniprof.exitFromRegion(self.__tooltipRegion)
+            self.__tooltipRegion = None
         self.onHide(hideTooltipId)
         return
 

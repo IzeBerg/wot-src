@@ -19,6 +19,8 @@ package net.wg.data.constants
       
       public static const WHEEL:String = "Wheel";
       
+      public static const TANK_YOH:String = "TankYoh";
+      
       public static const CAROUSEL_FILTER_ORDER:Vector.<String> = new <String>[LIGHT_TANK,MEDIUM_TANK,HEAVY_TANK,AT_SPG,SPG];
        
       

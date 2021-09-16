@@ -91,6 +91,9 @@ SPEAKERS_DEVICE = 'speakersDevice'
 SESSION_STATS_PREV_BATTLE_COUNT = 'sessionStatsPrevBattleCnt'
 UNIT_FILTER = 'UNIT_FILTER'
 BLUEPRINTS_CONVERT_SALE_STARTED_SEEN = 'bcsStartedSeen'
+IS_SHOP_VISITED = 'isShopVisited'
+LAST_SHOP_ACTION_COUNTER_MODIFICATION = 'lastShopActionCounterModification'
+OVERRIDEN_HEADER_COUNTER_ACTION_ALIASES = 'overridenHeaderCounterActionAliases'
 DEFAULT_QUEUE = 'defaultQueue'
 STORE_TAB = 'store_tab'
 STATS_REGULAR_SORTING = 'statsSorting'
@@ -172,7 +175,10 @@ ACTIVE_TEST_PARTICIPATION_CONFIRMED = 'activeTestParticipateConfirmed'
 MAPBOX_PROGRESSION = 'mapbox_progression'
 UNLOCK_VEHICLES_IN_BATTLE_HINTS = 'unlockVehiclesInBattleHints'
 BECOME_ELITE_VEHICLES_WATCHED = 'becomeEliteWatched'
+VPP_ENTRY_POINT_LAST_SEEN_STEP = 'vehiclePostProgressionLastSeenStep'
 KNOWN_SELECTOR_BATTLES = 'knownSelectorBattles'
+MODE_SELECTOR_BATTLE_PASS_SHOWN = 'modeSelectorBattlePassShown'
+RANKED_LAST_CYCLE_ID = 'rankedLastCycleID'
 DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0, 
                  'shop_current': (
                                 -1, STORE_CONSTANTS.VEHICLE, False), 
@@ -751,8 +757,9 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   TOP_OF_TREE_CONFIG: {}, BECOME_ELITE_VEHICLES_WATCHED: set(), 
                   GAME.GAMEPLAY_ONLY_10_MODE: False, 
                   MAPBOX_PROGRESSION: {'previous_battles_played': 0, 
-                                       'visited_maps': [], 'stored_rewards': {}}, 
-                  UNLOCK_VEHICLES_IN_BATTLE_HINTS: 5}, 
+                                       'visited_maps': [], 'stored_rewards': {}, 'lastCycleId': None}, 
+                  UNLOCK_VEHICLES_IN_BATTLE_HINTS: 5, 
+                  MODE_SELECTOR_BATTLE_PASS_SHOWN: {}, RANKED_LAST_CYCLE_ID: None}, 
    KEY_COUNTERS: {NEW_HOF_COUNTER: {PROFILE_CONSTANTS.HOF_ACHIEVEMENTS_BUTTON: True, 
                                     PROFILE_CONSTANTS.HOF_VEHICLES_BUTTON: True, 
                                     PROFILE_CONSTANTS.HOF_VIEW_RATING_BUTTON: True}, 
@@ -765,7 +772,8 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   BOOSTERS_FOR_CREDITS_SLOT_COUNTER: 1, 
                   SENIORITY_AWARDS_COUNTER: 1, 
                   DEMOUNT_KIT_SEEN: False, 
-                  NEW_SHOP_TABS: {IS_COLLECTIBLE_VEHICLES_VISITED: False}}, 
+                  NEW_SHOP_TABS: {IS_COLLECTIBLE_VEHICLES_VISITED: False}, 
+                  VPP_ENTRY_POINT_LAST_SEEN_STEP: {}}, 
    KEY_NOTIFICATIONS: {ELEN_NOTIFICATIONS: {MISSIONS_CONSTANTS.ELEN_EVENT_STARTED_NOTIFICATION: set(), 
                                             MISSIONS_CONSTANTS.ELEN_EVENT_FINISHED_NOTIFICATION: set(), 
                                             MISSIONS_CONSTANTS.ELEN_EVENT_TAB_VISITED: set()}, 
@@ -863,7 +871,10 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                                'scroll_to': None}, 
                           LAST_STORAGE_VISITED_TIMESTAMP: -1, 
                           SESSION_STATS_PREV_BATTLE_COUNT: 0, 
-                          ACTIVE_TEST_PARTICIPATION_CONFIRMED: False}, 
+                          ACTIVE_TEST_PARTICIPATION_CONFIRMED: False, 
+                          IS_SHOP_VISITED: False, 
+                          LAST_SHOP_ACTION_COUNTER_MODIFICATION: None, 
+                          OVERRIDEN_HEADER_COUNTER_ACTION_ALIASES: set()}, 
    KEY_UI_FLAGS: {}}
 
 def _filterAccountSection(dataSec):

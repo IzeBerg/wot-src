@@ -719,15 +719,17 @@ class BattleReplay(object):
         player = BigWorld.player()
         if not self.isPlaying or not isPlayerAvatar():
             return
-        entity = BigWorld.entities.get(self.playerVehicleID)
-        if (entity is None or not entity.isStarted) and forceControlMode is None:
-            controlMode = self.getControlMode()
-            if controlMode == CTRL_MODE_NAME.SNIPER or forceControlMode == CTRL_MODE_NAME.STRATEGIC:
-                return
-        controlMode = self.getControlMode() if forceControlMode is None else forceControlMode
-        if self.__equipmentId is None and controlMode == CTRL_MODE_NAME.MAP_CASE_ARCADE:
+        if forceControlMode is None and not self.isControllingCamera:
             return
         else:
+            entity = BigWorld.entities.get(self.playerVehicleID)
+            if (entity is None or not entity.isStarted) and forceControlMode is None:
+                controlMode = self.getControlMode()
+                if controlMode == CTRL_MODE_NAME.SNIPER:
+                    return
+            controlMode = self.getControlMode() if forceControlMode is None else forceControlMode
+            if self.__equipmentId is None and controlMode == CTRL_MODE_NAME.MAP_CASE_ARCADE:
+                return
             preferredPos = self.getGunRotatorTargetPoint()
             if controlMode == CTRL_MODE_NAME.MAP_CASE:
                 _, preferredPos, _ = self.getGunMarkerParams(preferredPos, Math.Vector3(0.0, 0.0, 1.0))

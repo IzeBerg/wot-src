@@ -89,12 +89,14 @@ class BattlePassRewardChoiceView(ViewImpl):
         self.viewModel.onTakeClick += self.__onTakeClick
         self.viewModel.onCloseClick += self.__onCloseClick
         self.viewModel.onAnimationFinished += self.__onAnimationFinished
+        self.viewModel.onSkipRewardClick += self.__onSkipRewardClick
 
     def __removeListeners(self):
         if self.viewModel is not None:
             self.viewModel.onTakeClick -= self.__onTakeClick
             self.viewModel.onCloseClick -= self.__onCloseClick
             self.viewModel.onAnimationFinished -= self.__onAnimationFinished
+            self.viewModel.onSkipRewardClick -= self.__onSkipRewardClick
         return
 
     @replaceNoneKwargsModel
@@ -106,6 +108,9 @@ class BattlePassRewardChoiceView(ViewImpl):
 
     def __onCloseClick(self):
         self.__processNext(False)
+
+    def __onSkipRewardClick(self, *_):
+        self.__processNext(True)
 
     @process
     def __onTakeClick(self, args):

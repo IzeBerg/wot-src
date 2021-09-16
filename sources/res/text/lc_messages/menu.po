@@ -1330,7 +1330,7 @@ msgid "contextMenu/vehicleInfoEx"
 msgstr "Информация o технике"
 
 msgid "contextMenu/vehiclePostProgression"
-msgstr "К полевой модернизации"
+msgstr "К Полевой модернизации"
 
 msgid "contextMenu/vehiclePreview"
 msgstr "Предпросмотр машины"
@@ -1380,11 +1380,14 @@ msgstr "БОНЫ ЗА СОБЫТИЯ"
 
 msgid "crystals/info/tab/earn/level/description"
 msgstr ""
-"Боны зарабатываются на технике %(level10)\n"
+"Боны зарабатываются на технике %(level10) и премиум технике %(level9)\n"
 "с активным индикатором заработка бон в следующих режимах:"
 
 msgid "crystals/info/tab/earn/level/descriptionContent/level10"
 msgstr "Х уровня"
+
+msgid "crystals/info/tab/earn/level/descriptionContent/level9"
+msgstr "IX уровня"
 
 msgid "crystals/info/tab/earn/level/mod/0"
 msgstr ""
@@ -2206,7 +2209,7 @@ msgid "extraParams/name/vehicleGunShotDispersionTurretRotation"
 msgstr "Параметр, отвечающий за разброс при горизонтальном наведении."
 
 msgid "extraParams/name/vehicleGunShotDispersionWhileGunDamaged"
-msgstr "Параметр, отвечающий за разброс при поврежденном орудии."
+msgstr "Параметр, отвечающий за разброс при повреждённом орудии."
 
 msgid "extraParams/name/vehicleInvisibilityAfterShot"
 msgstr "Параметр, отвечающий за незаметность после выстрела."
@@ -4214,6 +4217,12 @@ msgstr "Калибр"
 msgid "moduleInfo/params/chargeTime"
 msgstr "Время залпа"
 
+msgid "moduleInfo/params/chassisRepairTime"
+msgstr "Время ремонта ходовой"
+
+msgid "moduleInfo/params/chassisRepairTimeYoh"
+msgstr "Время ремонта ходовой"
+
 msgid "moduleInfo/params/circularVisionRadius"
 msgstr "Обзор"
 
@@ -4354,6 +4363,11 @@ msgstr "Масса"
 
 msgid "moduleInfo/title"
 msgstr " "
+
+msgid "moduleInfo/trackWithinTrackChassisLabel"
+msgstr ""
+"Резервная гусеница: позволяет частично сохранить мобильность при выходе из "
+"строя основной гусеничной ленты."
 
 msgid "moduleInfo/turboshaftEngine"
 msgstr ""
@@ -5928,6 +5942,12 @@ msgstr "Время залпа"
 msgid "tank_params/chassisModuleRotationSpeed"
 msgstr "Скорость поворота шасси"
 
+msgid "tank_params/chassisRepairTime"
+msgstr "Время ремонта ходовой"
+
+msgid "tank_params/chassisRepairTimeYoh"
+msgstr "Время ремонта ходовой"
+
 msgid "tank_params/chassisRotationSpeed"
 msgstr "Скорость поворота шасси"
 
@@ -6072,9 +6092,6 @@ msgstr "Заряжание орудия"
 msgid "tank_params/s"
 msgstr "(с)"
 
-msgid "tank_params/s_s"
-msgstr "(с/с)"
-
 msgid "tank_params/shortened/avgPiercingPower"
 msgstr "Пробивает:"
 
@@ -6200,6 +6217,9 @@ msgstr "Время перехода в скоростной режим"
 
 msgid "tank_params/wheeledSwitchTime"
 msgstr "Время перехода в скоростной/обычный режим"
+
+msgid "tank_params/yoh_s_s"
+msgstr "(осн./рез. в с)"
 
 msgid "tankmanPersonalCase/accelerateTeachingOfSkill"
 msgstr "Ускорить"
@@ -6807,6 +6827,12 @@ msgstr "Средняя бронепробиваемость"
 
 msgid "vehicleInfo/params/chargeTime"
 msgstr "Время залпа (с)"
+
+msgid "vehicleInfo/params/chassisRepairTime"
+msgstr "Время ремонта ходовой (с)"
+
+msgid "vehicleInfo/params/chassisRepairTimeYoh"
+msgstr "Время ремонта ходовой (осн./рез. в с)"
 
 msgid "vehicleInfo/params/chassisRotationSpeed"
 msgstr "Скорость поворота (град/с)"

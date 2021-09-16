@@ -8,6 +8,8 @@ package net.wg.infrastructure.base.meta
       
       function setActiveStateS(param1:Boolean) : void;
       
+      function onDisclaimerClickS() : void;
+      
       function as_setData(param1:Object) : void;
    }
 }

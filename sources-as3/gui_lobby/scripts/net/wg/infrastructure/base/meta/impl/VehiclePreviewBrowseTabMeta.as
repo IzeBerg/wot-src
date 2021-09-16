@@ -11,6 +11,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public var setActiveState:Function;
       
+      public var onDisclaimerClick:Function;
+      
       private var _vPBrowseTabVO:VPBrowseTabVO;
       
       public function VehiclePreviewBrowseTabMeta()
@@ -32,6 +34,12 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.setActiveState,"setActiveState" + Errors.CANT_NULL);
          this.setActiveState(param1);
+      }
+      
+      public function onDisclaimerClickS() : void
+      {
+         App.utils.asserter.assertNotNull(this.onDisclaimerClick,"onDisclaimerClick" + Errors.CANT_NULL);
+         this.onDisclaimerClick();
       }
       
       public final function as_setData(param1:Object) : void

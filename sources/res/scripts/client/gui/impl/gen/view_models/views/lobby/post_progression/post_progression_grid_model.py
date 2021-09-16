@@ -5,9 +5,9 @@ from gui.impl.gen.view_models.views.lobby.post_progression.single_step_model imp
 
 class PostProgressionGridModel(ViewModel):
     __slots__ = ('onMainStepActionClick', 'onMainStepSelectClick', 'onMultiStepActionClick',
-                 'onMultiStepSelectClick')
+                 'onMultiStepSelectClick', 'onPrebattleSwitchToggleClick')
 
-    def __init__(self, properties=3, commands=4):
+    def __init__(self, properties=3, commands=5):
         super(PostProgressionGridModel, self).__init__(properties=properties, commands=commands)
 
     def getMainSelectedIdx(self):
@@ -37,3 +37,4 @@ class PostProgressionGridModel(ViewModel):
         self.onMainStepSelectClick = self._addCommand('onMainStepSelectClick')
         self.onMultiStepActionClick = self._addCommand('onMultiStepActionClick')
         self.onMultiStepSelectClick = self._addCommand('onMultiStepSelectClick')
+        self.onPrebattleSwitchToggleClick = self._addCommand('onPrebattleSwitchToggleClick')

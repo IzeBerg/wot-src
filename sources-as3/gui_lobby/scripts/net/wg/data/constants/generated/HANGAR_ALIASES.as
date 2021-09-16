@@ -85,6 +85,8 @@ package net.wg.data.constants.generated
       
       public static const MAPBOX_ENTRY_POINT:String = "MapBoxEntryPoint";
       
+      public static const MARATHON_ENTRY_POINT:String = "MarathonEntryPoint";
+      
       public static const POST_PROGRESSION_INJECT:String = "PostProgressionInject";
       
       public static const POST_PROGRESSION_CMP_INJECT:String = "PostProgressionCmpInject";

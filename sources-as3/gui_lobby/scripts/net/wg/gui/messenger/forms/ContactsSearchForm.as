@@ -47,30 +47,36 @@ package net.wg.gui.messenger.forms
          super();
       }
       
-      public function update(param1:Object) : void
-      {
-         if(param1)
-         {
-            this.list.dataProvider = param1.searchDP;
-            this.list.dataProvider.addEventListener(Event.CHANGE,this.updateButtons);
-            this.resultsLabel.text = param1.resultText;
-            this.searchButton.enabled = !param1.freezeSearch;
-         }
-      }
-      
       override protected function onDispose() : void
       {
-         this.searchButton.removeEventListener(ButtonEvent.CLICK,this.onSearchClick);
-         this.addToFriendsButton.removeEventListener(ButtonEvent.CLICK,this.onAddToFriendsClick);
-         this.addToIgnoredButton.removeEventListener(ButtonEvent.CLICK,this.onAddToIgnoredClick);
-         this.list.removeEventListener(ListEventEx.ITEM_CLICK,this.showContextMenu);
-         this.list.removeEventListener(ListEvent.INDEX_CHANGE,this.updateButtons);
+         this.searchButton.removeEventListener(ButtonEvent.CLICK,this.onSearchButtonClickHandler);
+         this.addToFriendsButton.removeEventListener(ButtonEvent.CLICK,this.onAddToFriendsClickHandler);
+         this.addToIgnoredButton.removeEventListener(ButtonEvent.CLICK,this.onAddToIgnoredClickHandler);
+         this.list.removeEventListener(ListEventEx.ITEM_CLICK,this.onListItemClickHandler);
+         this.list.removeEventListener(ListEvent.INDEX_CHANGE,this.onListIndexChangeHandler);
+         this.textInput.removeEventListener(InputEvent.INPUT,this.handleInput);
          if(this.list.dataProvider && this.list.dataProvider.hasEventListener(Event.CHANGE))
          {
-            this.list.dataProvider.removeEventListener(Event.CHANGE,this.updateButtons);
+            this.list.dataProvider.removeEventListener(Event.CHANGE,this.onListIndexChangeHandler);
             this.list.dataProvider.cleanUp();
             this.list.dataProvider = null;
          }
+         this.titleLabel.dispose();
+         this.titleLabel = null;
+         this.resultsLabel.dispose();
+         this.resultsLabel = null;
+         this.searchButton.dispose();
+         this.searchButton = null;
+         this.searchButton.dispose();
+         this.searchButton = null;
+         this.addToFriendsButton.dispose();
+         this.addToFriendsButton = null;
+         this.addToIgnoredButton.dispose();
+         this.addToIgnoredButton = null;
+         this.textInput.dispose();
+         this.textInput = null;
+         this.list.dispose();
+         this.list = null;
          super.onDispose();
       }
       
@@ -85,16 +91,68 @@ package net.wg.gui.messenger.forms
          constraints.addElement("list",this.list,Constraints.ALL);
          constraints.addElement("addToFriendsButton",this.addToFriendsButton,Constraints.BOTTOM | Constraints.LEFT);
          constraints.addElement("addToIgnoredButton",this.addToIgnoredButton,Constraints.BOTTOM | Constraints.LEFT);
-         this.searchButton.addEventListener(ButtonEvent.CLICK,this.onSearchClick);
-         this.addToFriendsButton.addEventListener(ButtonEvent.CLICK,this.onAddToFriendsClick);
-         this.addToIgnoredButton.addEventListener(ButtonEvent.CLICK,this.onAddToIgnoredClick);
-         this.list.addEventListener(ListEventEx.ITEM_CLICK,this.showContextMenu);
-         this.list.addEventListener(ListEvent.INDEX_CHANGE,this.updateButtons);
+         this.textInput.addEventListener(InputEvent.INPUT,this.handleInput,false,0,true);
+         this.searchButton.addEventListener(ButtonEvent.CLICK,this.onSearchButtonClickHandler);
+         this.addToFriendsButton.addEventListener(ButtonEvent.CLICK,this.onAddToFriendsClickHandler);
+         this.addToIgnoredButton.addEventListener(ButtonEvent.CLICK,this.onAddToIgnoredClickHandler);
+         this.list.addEventListener(ListEventEx.ITEM_CLICK,this.onListItemClickHandler);
+         this.list.addEventListener(ListEvent.INDEX_CHANGE,this.onListIndexChangeHandler);
          this.list.sbPadding = new Padding(-1,-1,-1,-1);
          this.list.smartScrollBar = true;
-         this.textInput.addEventListener(InputEvent.INPUT,this.handleInput,false,0,true);
          this.addToFriendsButton.enabled = false;
          this.addToIgnoredButton.enabled = false;
+      }
+      
+      override protected function draw() : void
+      {
+         super.draw();
+         if(constraints && isInvalid(InvalidationType.SIZE))
+         {
+            constraints.update(_width,_height);
+         }
+      }
+      
+      public function canShowAutomatically() : Boolean
+      {
+         return true;
+      }
+      
+      public function getComponentForFocus() : InteractiveObject
+      {
+         return this.textInput;
+      }
+      
+      public function getSelectedItem() : Object
+      {
+         return this.list.dataProvider.requestItemAt(this.list.selectedIndex);
+      }
+      
+      public function update(param1:Object) : void
+      {
+         if(param1)
+         {
+            this.list.dataProvider = param1.searchDP;
+            this.list.dataProvider.addEventListener(Event.CHANGE,this.onListIndexChangeHandler);
+            this.resultsLabel.text = param1.resultText;
+            this.searchButton.enabled = !param1.freezeSearch;
+         }
+      }
+      
+      private function generateEvent(param1:String) : ContactsFormEvent
+      {
+         var _loc2_:Object = this.getSelectedItem();
+         var _loc3_:ContactsFormEvent = new ContactsFormEvent(param1,true,false,this.textInput.text);
+         if(_loc2_)
+         {
+            _loc3_.dbID = _loc2_.dbID;
+            _loc3_.name = _loc2_.userName;
+         }
+         return _loc3_;
+      }
+      
+      private function getParent() : IContactsListPopoverMeta
+      {
+         return IContactsListPopoverMeta(parent.parent.parent);
       }
       
       override public function handleInput(param1:InputEvent) : void
@@ -117,12 +175,7 @@ package net.wg.gui.messenger.forms
          }
       }
       
-      public function getSelectedItem() : Object
-      {
-         return this.list.dataProvider.requestItemAt(this.list.selectedIndex);
-      }
-      
-      private function updateButtons(param1:Event = null) : void
+      private function onListIndexChangeHandler(param1:Event = null) : void
       {
          var _loc3_:Boolean = false;
          var _loc4_:Array = null;
@@ -148,7 +201,7 @@ package net.wg.gui.messenger.forms
          }
       }
       
-      private function showContextMenu(param1:ListEventEx) : void
+      private function onListItemClickHandler(param1:ListEventEx) : void
       {
          if(param1.buttonIdx == MouseEventEx.RIGHT_BUTTON)
          {
@@ -156,55 +209,19 @@ package net.wg.gui.messenger.forms
          }
       }
       
-      override protected function draw() : void
-      {
-         super.draw();
-         if(constraints && isInvalid(InvalidationType.SIZE))
-         {
-            constraints.update(_width,_height);
-         }
-      }
-      
-      private function onSearchClick(param1:ButtonEvent) : void
+      private function onSearchButtonClickHandler(param1:ButtonEvent) : void
       {
          dispatchEvent(this.generateEvent(ContactsFormEvent.SEARCH));
       }
       
-      private function onAddToFriendsClick(param1:ButtonEvent) : void
+      private function onAddToFriendsClickHandler(param1:ButtonEvent) : void
       {
          dispatchEvent(this.generateEvent(ContactsFormEvent.ADD_TO_FRIENDS));
       }
       
-      private function onAddToIgnoredClick(param1:ButtonEvent) : void
+      private function onAddToIgnoredClickHandler(param1:ButtonEvent) : void
       {
          dispatchEvent(this.generateEvent(ContactsFormEvent.ADD_TO_IGNORED));
-      }
-      
-      private function generateEvent(param1:String) : ContactsFormEvent
-      {
-         var _loc2_:Object = this.getSelectedItem();
-         var _loc3_:ContactsFormEvent = new ContactsFormEvent(param1,true,false,this.textInput.text);
-         if(_loc2_)
-         {
-            _loc3_.dbID = _loc2_.dbID;
-            _loc3_.name = _loc2_.userName;
-         }
-         return _loc3_;
-      }
-      
-      private function getParent() : IContactsListPopoverMeta
-      {
-         return IContactsListPopoverMeta(parent.parent.parent);
-      }
-      
-      public function getComponentForFocus() : InteractiveObject
-      {
-         return this.textInput;
-      }
-      
-      public function canShowAutomatically() : Boolean
-      {
-         return true;
       }
    }
 }

@@ -28,6 +28,8 @@ package net.wg.gui.messenger.forms
       
       public var channelNameLabel:LabelControl = null;
       
+      public var channelAutomaticNameLabel:LabelControl = null;
+      
       public var channelPasswordLabel:LabelControl = null;
       
       public var channelFillPasswordLabel:LabelControl = null;
@@ -48,25 +50,30 @@ package net.wg.gui.messenger.forms
       
       private var _data:Object = null;
       
-      private var usePassword:Boolean = false;
-      
       public function ChannelsCreateForm()
       {
          super();
       }
       
+      override public function toString() : String
+      {
+         return "[WG ChannelsCreateForm " + name + "]";
+      }
+      
       override protected function configUI() : void
       {
          super.configUI();
-         this.channelPasswordCheckBox.addEventListener(Event.SELECT,this.onChannelPasswordCheckBox);
-         this.channelCreateButton.addEventListener(ButtonEvent.CLICK,this.onCreateChannelClick);
-         this.onChannelPasswordCheckBox(null);
+         this.channelPasswordCheckBox.addEventListener(Event.SELECT,this.onChannelPasswordCheckBoxSelectHandler);
+         this.channelCreateButton.addEventListener(ButtonEvent.CLICK,this.onChannelCreateButtonClickHandler);
+         this.updateCheckBoxSelected();
+         this.channelAutomaticNameLabel.visible = false;
          this.channelNameInput.addEventListener(InputEvent.INPUT,this.handleInput,false,0,true);
          this.channelPasswordInput.addEventListener(InputEvent.INPUT,this.handleInput,false,0,true);
          this.channelRetypePasswordInput.addEventListener(InputEvent.INPUT,this.handleInput,false,0,true);
          constraints = new Constraints(this,ConstrainMode.REFLOW);
          constraints.addElement("channelNameLabel",this.channelNameLabel,Constraints.LEFT | Constraints.RIGHT | Constraints.TOP);
          constraints.addElement("channelNameInput",this.channelNameInput,Constraints.LEFT | Constraints.RIGHT | Constraints.TOP);
+         constraints.addElement("channelAutomaticNameLabel",this.channelAutomaticNameLabel,Constraints.LEFT | Constraints.RIGHT | Constraints.TOP);
          constraints.addElement("channelPasswordLabel",this.channelPasswordLabel,Constraints.LEFT | Constraints.RIGHT | Constraints.TOP);
          constraints.addElement("channelPasswordCheckBox",this.channelPasswordCheckBox,Constraints.LEFT | Constraints.RIGHT | Constraints.TOP);
          constraints.addElement("channelFillPasswordLabel",this.channelFillPasswordLabel,Constraints.LEFT | Constraints.RIGHT | Constraints.TOP);
@@ -75,6 +82,98 @@ package net.wg.gui.messenger.forms
          constraints.addElement("channelRetypePasswordInput",this.channelRetypePasswordInput,Constraints.LEFT | Constraints.RIGHT | Constraints.TOP);
          constraints.addElement("channelCreateButton",this.channelCreateButton,Constraints.LEFT | Constraints.BOTTOM);
          constraints.addElement("bg",this.bg,Constraints.ALL);
+      }
+      
+      override protected function draw() : void
+      {
+         super.draw();
+         if(constraints && isInvalid(InvalidationType.SIZE))
+         {
+            constraints.update(_width,_height);
+         }
+         if(this.channelPasswordInput && isInvalid(UPDATE_PASSWORD_TEXT))
+         {
+            this.channelPasswordInput.displayAsPassword = this.channelRetypePasswordInput.displayAsPassword = true;
+         }
+      }
+      
+      override protected function onBeforeDispose() : void
+      {
+         this.channelPasswordCheckBox.removeEventListener(Event.SELECT,this.onChannelPasswordCheckBoxSelectHandler);
+         this.channelCreateButton.removeEventListener(ButtonEvent.CLICK,this.onChannelCreateButtonClickHandler);
+         this.channelNameInput.removeEventListener(InputEvent.INPUT,this.handleInput,false);
+         this.channelPasswordInput.removeEventListener(InputEvent.INPUT,this.handleInput,false);
+         this.channelRetypePasswordInput.removeEventListener(InputEvent.INPUT,this.handleInput,false);
+         super.onBeforeDispose();
+      }
+      
+      override protected function onDispose() : void
+      {
+         this.channelNameLabel.dispose();
+         this.channelNameLabel = null;
+         this.channelAutomaticNameLabel.dispose();
+         this.channelAutomaticNameLabel = null;
+         this.channelPasswordLabel.dispose();
+         this.channelPasswordLabel = null;
+         this.channelFillPasswordLabel.dispose();
+         this.channelFillPasswordLabel = null;
+         this.channelRetypePasswordLabel.dispose();
+         this.channelRetypePasswordLabel = null;
+         this.channelNameInput.dispose();
+         this.channelNameInput = null;
+         this.channelPasswordInput.dispose();
+         this.channelPasswordInput = null;
+         this.channelRetypePasswordInput.dispose();
+         this.channelRetypePasswordInput = null;
+         this.channelPasswordCheckBox.dispose();
+         this.channelPasswordCheckBox = null;
+         this.channelCreateButton.dispose();
+         this.channelCreateButton = null;
+         this.bg = null;
+         this._data = null;
+         super.onDispose();
+      }
+      
+      public function canShowAutomatically() : Boolean
+      {
+         return true;
+      }
+      
+      public function getComponentForFocus() : InteractiveObject
+      {
+         return this.channelNameInput;
+      }
+      
+      public function hideChannelNameInput(param1:Boolean) : void
+      {
+         this.channelNameInput.visible = !param1;
+         this.channelAutomaticNameLabel.visible = param1;
+      }
+      
+      public function update(param1:Object) : void
+      {
+         this._data = param1;
+         invalidate(InvalidationType.DATA);
+      }
+      
+      private function handlePress(param1:uint) : void
+      {
+         this.createChannel();
+      }
+      
+      private function updateCheckBoxSelected() : void
+      {
+         this.channelFillPasswordLabel.enabled = this.channelRetypePasswordLabel.enabled = this.channelPasswordInput.enabled = this.channelRetypePasswordInput.enabled = this.channelPasswordCheckBox.selected;
+         invalidate(UPDATE_PASSWORD_TEXT);
+      }
+      
+      private function createChannel() : void
+      {
+         var _loc1_:String = this.channelNameInput.text;
+         var _loc2_:Boolean = this.channelPasswordCheckBox.selected;
+         var _loc3_:String = !!_loc2_ ? this.channelPasswordInput.text : null;
+         var _loc4_:String = !!_loc2_ ? this.channelRetypePasswordInput.text : null;
+         dispatchEvent(new ChannelsFormEvent(ChannelsFormEvent.CREATE_CHANNEL,true,false,_loc1_,_loc3_,_loc4_));
       }
       
       override public function handleInput(param1:InputEvent) : void
@@ -107,73 +206,14 @@ package net.wg.gui.messenger.forms
          }
       }
       
-      private function handlePress(param1:uint) : void
+      private function onChannelCreateButtonClickHandler(param1:ButtonEvent = null) : void
       {
-         this.onCreateChannelClick(null);
+         this.createChannel();
       }
       
-      private function onCreateChannelClick(param1:ButtonEvent = null) : void
+      private function onChannelPasswordCheckBoxSelectHandler(param1:Event = null) : void
       {
-         var _loc2_:String = this.channelNameInput.text;
-         var _loc3_:Boolean = this.channelPasswordCheckBox.selected;
-         var _loc4_:String = !!_loc3_ ? this.channelPasswordInput.text : null;
-         var _loc5_:String = !!_loc3_ ? this.channelRetypePasswordInput.text : null;
-         dispatchEvent(new ChannelsFormEvent(ChannelsFormEvent.ON_CREATE_CHANNEL,true,false,_loc2_,_loc4_,_loc5_));
-      }
-      
-      private function onChannelPasswordCheckBox(param1:Event = null) : void
-      {
-         this.usePassword = this.channelPasswordCheckBox.selected;
-         this.channelFillPasswordLabel.enabled = this.channelRetypePasswordLabel.enabled = this.channelPasswordInput.enabled = this.channelRetypePasswordInput.enabled = this.usePassword;
-         invalidate(UPDATE_PASSWORD_TEXT);
-      }
-      
-      override protected function draw() : void
-      {
-         super.draw();
-         if(constraints && isInvalid(InvalidationType.SIZE))
-         {
-            constraints.update(_width,_height);
-         }
-         if(this.channelPasswordInput && isInvalid(UPDATE_PASSWORD_TEXT))
-         {
-            this.channelPasswordInput.displayAsPassword = this.channelRetypePasswordInput.displayAsPassword = true;
-         }
-      }
-      
-      override protected function onDispose() : void
-      {
-         super.onDispose();
-         this.channelPasswordCheckBox.removeEventListener(Event.SELECT,this.onChannelPasswordCheckBox);
-         this.channelNameInput.removeEventListener(InputEvent.INPUT,this.handleInput,false);
-         this.channelPasswordInput.removeEventListener(InputEvent.INPUT,this.handleInput,false);
-         this.channelRetypePasswordInput.removeEventListener(InputEvent.INPUT,this.handleInput,false);
-      }
-      
-      public function update(param1:Object) : void
-      {
-         this._data = param1;
-         invalidate(InvalidationType.DATA);
-      }
-      
-      override public function setSize(param1:Number, param2:Number) : void
-      {
-         super.setSize(param1,param2);
-      }
-      
-      override public function toString() : String
-      {
-         return "[WG ChannelsCreateForm " + name + "]";
-      }
-      
-      public function getComponentForFocus() : InteractiveObject
-      {
-         return this.channelNameInput;
-      }
-      
-      public function canShowAutomatically() : Boolean
-      {
-         return true;
+         this.updateCheckBoxSelected();
       }
    }
 }

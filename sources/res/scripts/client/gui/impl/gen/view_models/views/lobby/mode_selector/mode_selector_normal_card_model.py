@@ -1,12 +1,19 @@
+from enum import IntEnum
 from frameworks.wulf import Array
 from gui.impl.gen.view_models.views.lobby.mode_selector.mode_selector_base_widget_model import ModeSelectorBaseWidgetModel
 from gui.impl.gen.view_models.views.lobby.mode_selector.mode_selector_card_model import ModeSelectorCardModel
 from gui.impl.gen.view_models.views.lobby.mode_selector.mode_selector_reward_model import ModeSelectorRewardModel
 
+class BattlePassState(IntEnum):
+    NONE = 0
+    STATIC = 1
+    NEW = 2
+
+
 class ModeSelectorNormalCardModel(ModeSelectorCardModel):
     __slots__ = ()
 
-    def __init__(self, properties=19, commands=0):
+    def __init__(self, properties=20, commands=0):
         super(ModeSelectorNormalCardModel, self).__init__(properties=properties, commands=commands)
 
     @property
@@ -25,16 +32,16 @@ class ModeSelectorNormalCardModel(ModeSelectorCardModel):
     def setEventName(self, value):
         self._setString(12, value)
 
-    def getStatus(self):
+    def getStatusNotActive(self):
         return self._getString(13)
 
-    def setStatus(self, value):
+    def setStatusNotActive(self, value):
         self._setString(13, value)
 
-    def getCallToAction(self):
+    def getStatusActive(self):
         return self._getString(14)
 
-    def setCallToAction(self, value):
+    def setStatusActive(self, value):
         self._setString(14, value)
 
     def getDescription(self):
@@ -61,14 +68,21 @@ class ModeSelectorNormalCardModel(ModeSelectorCardModel):
     def setRewardList(self, value):
         self._setArray(18, value)
 
+    def getBattlePassState(self):
+        return BattlePassState(self._getNumber(19))
+
+    def setBattlePassState(self, value):
+        self._setNumber(19, value.value)
+
     def _initialize(self):
         super(ModeSelectorNormalCardModel, self)._initialize()
         self._addViewModelProperty('widget', ModeSelectorBaseWidgetModel())
         self._addStringProperty('name', '')
         self._addStringProperty('eventName', '')
-        self._addStringProperty('status', '')
-        self._addStringProperty('callToAction', '')
+        self._addStringProperty('statusNotActive', '')
+        self._addStringProperty('statusActive', '')
         self._addStringProperty('description', '')
         self._addStringProperty('conditions', '')
         self._addStringProperty('timeLeft', '')
         self._addArrayProperty('rewardList', Array())
+        self._addNumberProperty('battlePassState')

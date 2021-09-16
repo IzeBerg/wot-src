@@ -1,13 +1,9 @@
 from constants import IS_EDITOR
 from visual_script.misc import ASPECT
 from visual_script.registrar import VSBlockRegistrar
-import arena_blocks, vehicle_blocks, scene_blocks, event_platform_blocks, triggers_blocks, hint_blocks, marker_blocks, player_blocks, sound_blocks, game_settings_blocks
-from visual_script_client import battle_hud_block
+import arena_blocks, vehicle_blocks, scene_blocks, event_platform_blocks, triggers_blocks, hint_blocks, marker_blocks, player_blocks, sound_blocks, game_settings_blocks, hangar_blocks, battle_hud_block
 from contexts.sound_notifications_context import SoundNotificationsContext
 g_blockRegistrar = VSBlockRegistrar(ASPECT.CLIENT)
-if not IS_EDITOR:
-    from visual_script_client import client_perk_blocks
-    g_blockRegistrar.regBlocksFromModule(client_perk_blocks)
 g_blockRegistrar.regBlocksFromModule(event_platform_blocks)
 g_blockRegistrar.regBlocksFromModule(arena_blocks)
 g_blockRegistrar.regBlocksFromModule(vehicle_blocks)
@@ -20,3 +16,9 @@ g_blockRegistrar.regBlocksFromModule(sound_blocks)
 g_blockRegistrar.regBlocksFromModule(game_settings_blocks)
 g_blockRegistrar.regBlocksFromModule(battle_hud_block)
 g_blockRegistrar.regContext(SoundNotificationsContext)
+if not IS_EDITOR:
+    from visual_script_client import client_perk_blocks
+    g_blockRegistrar.regBlocksFromModule(client_perk_blocks)
+g_hangarBlockRegistrar = VSBlockRegistrar(ASPECT.HANGAR)
+g_hangarBlockRegistrar.regBlocksFromModule(hangar_blocks)
+g_hangarBlockRegistrar.regBlocksFromModule(hint_blocks)

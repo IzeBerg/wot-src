@@ -11,8 +11,6 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
       
       private static const WHEEL:String = "wheel";
       
-      public static const WHEEL_LENGTH:int = WHEEL.length;
-      
       private static const Y_OFFSET:int = -56;
       
       private static const LEFT_OFFSET:int = -30;

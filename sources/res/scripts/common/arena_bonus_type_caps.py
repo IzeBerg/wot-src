@@ -136,6 +136,7 @@ class ARENA_BONUS_TYPE_CAPS():
     FORCE_DROWN = 'FORCE_DROWN'
     VPP_MODIFICATIONS = 'VPP_MODIFICATIONS'
     SWITCH_SETUPS = 'SWITCH_SETUPS'
+    LOG_ALL_VEHICLES = 'LOG_ALL_VEHICLES'
     DOSSIER_ACHIEVEMENTS = frozenset((DOSSIER_ACHIEVEMENTS_15X15, DOSSIER_ACHIEVEMENTS_RANKED15X15,
      DOSSIER_ACHIEVEMENTS_7X7, DOSSIER_ACHIEVEMENTS_RATED7X7,
      DOSSIER_ACHIEVEMENTS_SORTIE, DOSSIER_ACHIEVEMENTS_EPIC_BATTLE))
@@ -209,5 +210,6 @@ def init():
     ARENA_BONUS_TYPE_CAPS.init()
 
 
-ALLOWED_ARENA_BONUS_TYPE_CAPS = frozenset([ v for v in ARENA_BONUS_TYPE_CAPS.__dict__.itervalues() if isinstance(v, str) ])
+ALLOWED_ARENA_BONUS_TYPE_CAPS = frozenset([ v for k, v in ARENA_BONUS_TYPE_CAPS.__dict__.iteritems() if not k.startswith('__') and isinstance(v, str)
+                                          ])
 init()

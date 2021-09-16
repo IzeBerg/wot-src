@@ -12,6 +12,10 @@ package net.wg.infrastructure.base.meta.impl
       
       public var onPopUpClosed:Function;
       
+      public var onPanelShown:Function;
+      
+      public var onPanelHidden:Function;
+      
       private var _array:Array;
       
       private var _array1:Array;
@@ -53,6 +57,18 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.onPopUpClosed,"onPopUpClosed" + Errors.CANT_NULL);
          this.onPopUpClosed();
+      }
+      
+      public function onPanelShownS() : void
+      {
+         App.utils.asserter.assertNotNull(this.onPanelShown,"onPanelShown" + Errors.CANT_NULL);
+         this.onPanelShown();
+      }
+      
+      public function onPanelHiddenS() : void
+      {
+         App.utils.asserter.assertNotNull(this.onPanelHidden,"onPanelHidden" + Errors.CANT_NULL);
+         this.onPanelHidden();
       }
       
       public final function as_setKeysToSlots(param1:Array) : void

@@ -19,6 +19,14 @@ package net.wg.gui.battle.epicBattle.battleloading
          super();
       }
       
+      override public function hasAmmunitionPanel(param1:Boolean) : void
+      {
+         if(param1)
+         {
+            form.updateTipVisibility(false);
+         }
+      }
+      
       override public function setCompVisible(param1:Boolean) : void
       {
          super.setCompVisible(param1);
@@ -48,6 +56,10 @@ package net.wg.gui.battle.epicBattle.battleloading
       {
          super.configUI();
          this._epicForm = form as EpicBattleLoadingForm;
+      }
+      
+      override protected function updateFormY() : void
+      {
       }
       
       public function setEpicVehiclesStats(param1:EpicVehiclesStatsVO) : void

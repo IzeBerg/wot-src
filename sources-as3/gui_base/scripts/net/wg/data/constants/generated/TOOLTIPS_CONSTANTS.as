@@ -415,7 +415,7 @@ package net.wg.data.constants.generated
       
       public static const GOLD_INFO_FULL_SCREEN:String = "goldInfoFullScreen";
       
-      public static const FREEXP_INFO_FULL_SCREEN:String = "freeXpInfoFullScreen";
+      public static const FREEXP_INFO_FULL_SCREEN:String = "freeXPInfoFullScreen";
       
       public static const GOLD_STATS_FULL_SCREEN:String = "goldStatsFullScreen";
       
@@ -459,13 +459,9 @@ package net.wg.data.constants.generated
       
       public static const RANKED_UNAVAILABLE_INFO:String = "rankedUnavailableInfo";
       
-      public static const RANKED_CALENDAR_STEPS_INFO:String = "rankedCalendarStepsInfo";
-      
       public static const RANKED_DIVISION_INFO:String = "rankedDivisionInfo";
       
       public static const RANKED_BATTLES_YEAR_REWARD:String = "rankedBattlesYearReward";
-      
-      public static const RANKED_SERVER_PRIMETIME:String = "rankedServerPrimeTime";
       
       public static const VEHICLE_ROLES:String = "vehicleRoles";
       
@@ -725,9 +721,9 @@ package net.wg.data.constants.generated
       
       public static const ACCOUNT_COMPLETION:String = "AccountCompletion";
       
-      public static const EPIC_RANK_UNLOCK_INFO:String = "epicRankUnlockTooltip";
-      
       public static const VEH_POST_PROGRESSION_ENTRY_POINT:String = "VehPostProgressionEntryPoint";
+      
+      public static const EPIC_RANK_UNLOCK_INFO:String = "epicRankUnlockTooltip";
       
       public static const ACHIEVEMENTS_SET:Array = [BATTLE_STATS_ACHIEVS,BATTLE_STATS_MARKS_ON_GUN_ACHIEVEMENT,ACHIEVEMENT,MARKS_ON_GUN_ACHIEVEMENT,GLOBAL_RATING,MARK_OF_MASTERY,ACHIEVEMENT_ATTR,SHOP_ACHIEVEMENT,SHOP_BADGE,REFERRAL_BADGE];
       
@@ -757,7 +753,7 @@ package net.wg.data.constants.generated
       
       public static const TANKMAN_SET:Array = [TANKMAN,TANKMAN_SKILL,TANKMAN_NEW_SKILL,TANKMAN_SKILL_EXTENDED,TANKMAN_NOT_RECRUITED,PREVIEW_CREW_SKILL,BATTLE_ROYALE_TANKMAN];
       
-      public static const RANKED_SET:Array = [RANKED_BATTLES_POSITION,RANKED_BATTLES_EFFICIENCY,RANKED_BATTLES_LEAGUE,RANKED_BATTLES_BONUS,RANKED_BATTLES_RANK,RANKED_STEP,RANKED_CALENDAR_DAY_INFO,RANKED_CALENDAR_DAY_INFO_EXTENDED,RANKED_CALENDAR_STEPS_INFO,RANKED_SELECTOR_INFO,RANKED_UNAVAILABLE_INFO,RANKED_DIVISION_INFO,RANKED_BATTLES_YEAR_REWARD,RANKED_SERVER_PRIMETIME,RANKED_QUESTS_PREVIEW];
+      public static const RANKED_SET:Array = [RANKED_BATTLES_POSITION,RANKED_BATTLES_EFFICIENCY,RANKED_BATTLES_LEAGUE,RANKED_BATTLES_BONUS,RANKED_BATTLES_RANK,RANKED_STEP,RANKED_CALENDAR_DAY_INFO,RANKED_CALENDAR_DAY_INFO_EXTENDED,RANKED_SELECTOR_INFO,RANKED_UNAVAILABLE_INFO,RANKED_DIVISION_INFO,RANKED_BATTLES_YEAR_REWARD,RANKED_QUESTS_PREVIEW];
       
       public static const SETTINGS_SET:Array = [SETTINGS_CONTROL,SETTINGS_BUTTON,SETTINGS_MINIMAP_CIRCLES,SETTINGS_KEY_SWITCH_MODE,SETTINGS_KEY_HIGHLIGHTLOCATION,SETTINGS_KEY_HIGHLIGHTTARGET,SETTINGS_KEY_SHOWRADIALMENU,SETTINGS_SHOW_LOCATION_MARKERS,SETTINGS_KEY_CHARGE_FIRE,SETTINGS_SWITCH_EQUIPMENT];
       

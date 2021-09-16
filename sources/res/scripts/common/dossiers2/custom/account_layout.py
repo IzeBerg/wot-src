@@ -5,10 +5,12 @@ from dossiers2.custom.dependencies import ACHIEVEMENTRATED7X7_DEPENDENCIES
 from dossiers2.custom.dependencies import HISTORICAL_ACHIEVEMENTS_DEPENDENCIES
 from dossiers2.custom.dependencies import FALLOUT_STATS_DEPENDENCIES
 from dossiers2.custom.dependencies import FORT_ACHIEVEMENTS_DEPENDENCIES
+from dossiers2.custom.dependencies import SINGLE_ACHIEVEMENTS_DEPENDENCIES
 from dossiers2.custom.dependencies import GLOBAL_MAP_STATS_DEPENDENCIES
 from dossiers2.custom.dependencies import RANKED_STATS_DEPENDENCIES
 from dossiers2.custom.dependencies import A30X30_STATS_DEPENDENCIES
 from dossiers2.custom.dependencies import EPIC_BATTLE_STATS_DEPENDENCIES
+from dossiers2.custom.dependencies import STEAM_ACHIEVEMENT_DEPENDENCIES
 from battle_statistics_layouts import *
 TOTAL_BLOCK_LAYOUT = [
  'creationTime', 'lastBattleTime', 'battleLifeTime', 'treesCut', 'mileage']
@@ -183,9 +185,52 @@ _achievements15x15PopUps = [
  'collectorVehicle5', 'collectorVehicle6', 'collectorVehicle7',
  'collectorVehicle8', 'collectorVehicle9', 'collectorVehicle10', 'collectorVehicle11',
  'collectorVehicle12', 'collectorVehicle13', 'collectorVehicle14',
- 'TenYearsCountdownStageMedal',
- 'wtHunterWins', 'wtBossWins', 'wtSpecBossDefeat']
+ 'TenYearsCountdownStageMedal', 'wtHunterWins', 'wtBossWins', 'wtSpecBossDefeat']
 _achievements15x15BlockBuilder = StaticSizeBlockBuilder('achievements', _ACHIEVEMENTS15X15_BLOCK_LAYOUT, ACHIEVEMENT15X15_DEPENDENCIES, _achievements15x15PopUps)
+_STEAM_BLOCK_LAYOUT = [
+ 'steamBattleCredits', 'steamLittleSavingsMedal', 'steamMintedCoinMedal', 'steamKingMidasMedal',
+ 'steamBattleXP', 'steamGoodStudentMedal', 'steamBattleHardenedMedal', 'steamExperienceMedal',
+ 'steamFreeXP', 'steamHandyMedal', 'steamUniversalResourceMedal', 'steamPowerKnowledgeMedal',
+ 'steamSuchWorkMedal', 'steamNothingPersonalMedal', 'steamTheBeginningMedal',
+ 'steamMasteryMarks',
+ 'steamGetMaxMedal', 'steamThreeCheersMedal', 'steamGoldenFiveMedal',
+ 'steamNotPerfectMedal', 'steamForWarriorMedal', 'steamForSteelWallMedal',
+ 'steamForBonecrusherMedal', 'steamOrderMedal', 'steamSpottedMedal', 'steamFighterMedal',
+ 'steamBasePoints', 'steamBasePointsMedal', 'steamHardCharacter', 'steamHardCharacterMedal',
+ 'steamMedium', 'steamMediumMedal', 'steamATSPG', 'steamATSPGMedal', 'steamDieHardMedal',
+ 'steamDestroyerMedal', 'steamMediumPerformanceMedal', 'steamReconnoiter',
+ 'steamReconnoiterMedal',
+ 'steamPotentialStun', 'steamPotentialStunMedal', 'steamMileage', 'steamMileageMedal',
+ 'steamHorizonSupportMedal', 'steamSmallSupportMedal', 'steamBreakThrough',
+ 'steamBreakThroughMedal', 'steamStop', 'steamStopMedal', 'steamRandomFightMedal',
+ 'steamMainGunMedal', 'steamBootcampMedal', 'steamBriefingMedal',
+ 'steamDoPotapovQuestMedal', 'steamDoAllBranchPotapovQuestMedal', 'steamDoOperationMedal',
+ 'steamGetTankLevel5Medal', 'steamGetTankLevel6Medal', 'steamGetTankLevel7Medal',
+ 'steamGetTankLevel8Medal', 'steamGetTankLevel9Medal', 'steamGetTankLevel10Medal',
+ 'steamShellTypeMedal', 'steamEquipTypeMedal', 'steamLastHeroMedal', 'steamShootToKillMedal',
+ 'steamBruteForceMedal', 'steamGuerrillaMedal', 'steamImpenetrableMedal', 'steamTurnOffMedal',
+ 'steamRadioMedal', 'steamTopLeague', 'steamTopLeagueMedal', 'steamSpotted', 'steamFrags',
+ 'steamBattleHeroes']
+_steamAchievementsPopUps = []
+_steamAchievementsLogRecords = ['steamLittleSavingsMedal', 'steamMintedCoinMedal', 'steamKingMidasMedal',
+ 'steamGoodStudentMedal', 'steamBattleHardenedMedal', 'steamExperienceMedal',
+ 'steamHandyMedal', 'steamUniversalResourceMedal', 'steamPowerKnowledgeMedal',
+ 'steamSuchWorkMedal', 'steamNothingPersonalMedal', 'steamTheBeginningMedal',
+ 'steamGetMaxMedal', 'steamThreeCheersMedal', 'steamGoldenFiveMedal',
+ 'steamNotPerfectMedal', 'steamForWarriorMedal', 'steamForSteelWallMedal',
+ 'steamForBonecrusherMedal', 'steamOrderMedal', 'steamSpottedMedal',
+ 'steamFighterMedal', 'steamBasePointsMedal', 'steamHardCharacterMedal',
+ 'steamMediumMedal', 'steamATSPGMedal', 'steamDieHardMedal', 'steamDestroyerMedal',
+ 'steamMediumPerformanceMedal', 'steamReconnoiterMedal', 'steamPotentialStunMedal',
+ 'steamMileageMedal', 'steamHorizonSupportMedal', 'steamSmallSupportMedal',
+ 'steamBreakThroughMedal', 'steamStopMedal', 'steamRandomFightMedal',
+ 'steamMainGunMedal', 'steamGetTankLevel5Medal', 'steamGetTankLevel6Medal',
+ 'steamGetTankLevel7Medal', 'steamGetTankLevel8Medal', 'steamGetTankLevel9Medal',
+ 'steamGetTankLevel10Medal', 'steamShellTypeMedal', 'steamEquipTypeMedal',
+ 'steamLastHeroMedal', 'steamShootToKillMedal', 'steamBruteForceMedal',
+ 'steamGuerrillaMedal', 'steamImpenetrableMedal', 'steamTurnOffMedal',
+ 'steamRadioMedal', 'steamTopLeagueMedal']
+_steamAchievementsBlockBuilder = StaticSizeBlockBuilder('steamAchievements', _STEAM_BLOCK_LAYOUT, STEAM_ACHIEVEMENT_DEPENDENCIES, _steamAchievementsPopUps, _steamAchievementsLogRecords)
 ACHIEVEMENTS7X7_BLOCK_LAYOUT = [
  'wolfAmongSheep', 'wolfAmongSheepMedal', 'geniusForWar',
  'geniusForWarMedal', 'kingOfTheHill', 'tacticalBreakthroughSeries',
@@ -253,7 +298,7 @@ _SINGLE_ACHIEVEMENTS_VALUES = [
  'bob2021MasterTortoise_apac', 'bob2021SummerTiger_apac', 'bob2021Maharlika_apac',
  'february21', 'BattlePassCommonPr_4', 'march21', 'april21', 'gagarin21', 'may21',
  'june21', 'BattlePassCommonPr_5', 'mapboxSeason1', 'mapboxSeason2', 'mapboxSeason3',
- 'july21']
+ 'july21', 'august21', 'BattlePassCommonPr_6']
 _singleAchievementsPopUps = [
  'titleSniper', 'invincible', 'diehard', 'handOfDeath',
  'armorPiercer', 'battleCitizen', 'WFC2014', 'tacticalBreakthrough', 'aimer',
@@ -290,8 +335,9 @@ _singleAchievementsPopUps = [
  'bob2021TragicLoss_na', 'bob2021CmdrAF_na', 'bob2021MasterTortoise_apac',
  'bob2021SummerTiger_apac', 'bob2021Maharlika_apac', 'february21', 'BattlePassCommonPr_4',
  'march21', 'april21', 'gagarin21', 'may21', 'june21', 'BattlePassCommonPr_5',
- 'mapboxSeason1', 'mapboxSeason2', 'mapboxSeason3', 'july21']
-_singleAchievementsBlockBuilder = BinarySetDossierBlockBuilder('singleAchievements', _SINGLE_ACHIEVEMENTS_VALUES, {}, _singleAchievementsPopUps)
+ 'mapboxSeason1', 'mapboxSeason2', 'mapboxSeason3', 'july21', 'august21',
+ 'BattlePassCommonPr_6']
+_singleAchievementsBlockBuilder = BinarySetDossierBlockBuilder('singleAchievements', _SINGLE_ACHIEVEMENTS_VALUES, SINGLE_ACHIEVEMENTS_DEPENDENCIES, _singleAchievementsPopUps)
 FORT_ACHIEVEMENTS_BLOCK_LAYOUT = [
  'conqueror', 'fireAndSword', 'crusher', 'counterblow', 'kampfer', 'soldierOfFortune']
 _fortPersonalAchievementsPopUps = [
@@ -369,7 +415,7 @@ accountDossierLayout = (
  _rankedCutSeason3BlockBuilder, _rankedArchiveBlockBuilder, _maxRankedArchiveBlockBuilder,
  _rankedCutArchiveBlockBuilder, _epicBattleSeasonsBlockBuilder,
  _battleRoyaleSeasonsBlockBuilder, _ranked_10x10BlockBuilder, _maxRanked_10x10BlockBuilder,
- _rankedCut10x10BlockBuilder)
+ _rankedCut10x10BlockBuilder, _steamAchievementsBlockBuilder)
 ACCOUNT_DOSSIER_BLOCKS = {b.name:b for b in accountDossierLayout}
 ACCOUNT_DOSSIER_STATIC_BLOCKS = frozenset(b.name for b in accountDossierLayout if type(b) == StaticSizeBlockBuilder)
 ACCOUNT_DOSSIER_BINARY_SET_BLOCKS = [ b.name for b in accountDossierLayout if type(b) == BinarySetDossierBlockBuilder ]

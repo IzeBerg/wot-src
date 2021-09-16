@@ -36,14 +36,32 @@ def prepareCollisionAssembler(vehicleDesc, isTurretDetached, worldID):
     if not isTurretDetached:
         hitTestersByPart[TankPartNames.TURRET] = vehicleDesc.turret.hitTester
         hitTestersByPart[TankPartNames.GUN] = vehicleDesc.gun.hitTester
-    bspModels = ()
+    bspModels = []
     for partName, hitTester in hitTestersByPart.iteritems():
         partId = TankPartNames.getIdx(partName)
         bspModel = (partId, hitTester.bspModelName)
-        bspModels = bspModels + (bspModel,)
+        bspModels.append(bspModel)
 
-    assembler = BigWorld.CollisionAssembler(bspModels, worldID)
+    trackPairs = vehicleDesc.chassis.trackPairs[1:]
+    for idx, trackPair in enumerate(trackPairs):
+        totalDefaultParts = len(TankPartNames.ALL)
+        bspModels.append((totalDefaultParts + idx, trackPair.hitTester.bspModelName))
+
+    assembler = BigWorld.CollisionAssembler(tuple(bspModels), worldID)
     return assembler
+
+
+def collisionIdxToTrackPairIdx(collisionIdx, typeDesc):
+    leftBound = len(TankPartNames.ALL)
+    rightBound = leftBound + len(typeDesc.chassis.trackPairs) - 1
+    if leftBound < collisionIdx <= rightBound:
+        return collisionIdx - leftBound
+    else:
+        return
+
+
+def trackPairIdxToCollisionIdx(trackPairIdx):
+    return len(TankPartNames.ALL) + trackPairIdx
 
 
 def setupCollisions(vehicleDesc, collisions):
@@ -56,6 +74,12 @@ def setupCollisions(vehicleDesc, collisions):
         hitTester.bbox = collisions.getBoundingBox(partID)
         if not hitTester.bbox:
             _logger.error("Couldn't find bounding box for the part '%s' (collisions=%s)", partName, collisions)
+
+    trackPairs = vehicleDesc.chassis.trackPairs[1:]
+    for idx, trackPair in enumerate(trackPairs):
+        trackPair.hitTester.bbox = collisions.getBoundingBox(trackPairIdxToCollisionIdx(idx))
+        if not trackPair.hitTester.bbox:
+            _logger.error("Couldn't find bounding box for the track pair '%i' (collisions=%s)", idx, collisions)
 
 
 def prepareCompoundAssembler(vehicleDesc, modelsSetParams, spaceID, isTurretDetached=False, lodIdx=_DEFAULT_LOD_INDEX, skipMaterials=False, renderMode=None):
@@ -97,6 +121,11 @@ def attachModels(assembler, vehicleDesc, modelsSetParams, isTurretDetached, rend
         assembler.addRootPart(chassis, TankPartNames.CHASSIS)
     else:
         assembler.addPart(chassis, TankPartNames.CHASSIS, TankCollisionPartNames.CHASSIS)
+    if collisionState:
+        trackPairs = vehicleDesc.chassis.trackPairs[1:]
+        for idx, trackPair in enumerate(trackPairs):
+            assembler.addPart(trackPair.hitTester.bspModelName, partNames.CHASSIS, 'trackPair' + str(idx + 1))
+
     if collisionState and vehicleDesc.isWheeledVehicle:
         for i, wheel in enumerate(vehicleDesc.chassis.wheels.wheels):
             bspPath = ''
@@ -125,6 +154,8 @@ def attachModels(assembler, vehicleDesc, modelsSetParams, isTurretDetached, rend
         assembler.addPart(gun, TankNodeNames.GUN_JOINT, partNames.GUN)
         if modelsSetParams.state == 'undamaged':
             for attachment in modelsSetParams.attachments:
+                if attachment.attachmentLogic == 'prefab':
+                    continue
                 assembler.addPart(attachment.modelName, attachment.attachNode, attachment.partNodeAlias, attachment.transform)
 
 
@@ -535,54 +566,54 @@ SplineTracks = namedtuple('SplineTracks', ('left', 'right'))
 def setupSplineTracks(fashion, vDesc, chassisModel, prereqs, modelsSet):
     splineDesc = vDesc.chassis.splineDesc
     resultTracks = None
-    if splineDesc is not None:
+    if splineDesc is None:
+        return resultTracks
+    else:
         leftSpline = []
         rightSpline = []
-        segmentModelLeft = segmentModelRight = segment2ModelLeft = segment2ModelRight = None
-        modelName = splineDesc.segmentModelLeft(modelsSet)
-        try:
-            segmentModelLeft = prereqs[modelName]
-        except Exception:
-            _logger.error("can't load track segment model '%s'", modelName)
-
-        modelName = splineDesc.segmentModelRight(modelsSet)
-        try:
-            segmentModelRight = prereqs[modelName]
-        except Exception:
-            _logger.error("can't load track segment model '%s'", modelName)
-
-        modelName = splineDesc.segment2ModelLeft(modelsSet)
-        if modelName is not None:
+        for idx, trackDesc in splineDesc.trackPairs.iteritems():
+            segmentModelLeft = segmentModelRight = segment2ModelLeft = segment2ModelRight = None
+            modelName = trackDesc.segmentModelLeft(modelsSet)
             try:
-                segment2ModelLeft = prereqs[modelName]
+                segmentModelLeft = prereqs[modelName]
             except Exception:
-                _logger.error("can't load track segment 2 model '%s'", modelName)
+                _logger.error("can't load track segment model '%s'", modelName)
 
-        modelName = splineDesc.segment2ModelRight(modelsSet)
-        if modelName is not None:
+            modelName = trackDesc.segmentModelRight(modelsSet)
             try:
-                segment2ModelRight = prereqs[modelName]
+                segmentModelRight = prereqs[modelName]
             except Exception:
-                _logger.error("can't load track segment 2 model '%s'", modelName)
+                _logger.error("can't load track segment model '%s'", modelName)
 
-        if segmentModelLeft is not None and segmentModelRight is not None:
-            identityMatrix = Math.Matrix()
-            identityMatrix.setIdentity()
-            for desc in splineDesc.leftDesc:
-                track = BigWorld.wg_createSplineTrack(chassisModel, desc[0], desc[1], desc[2], segmentModelLeft, desc[3], segment2ModelLeft, desc[4], _ROOT_NODE_NAME, splineDesc.atlasUTiles, splineDesc.atlasVTiles)
+            modelName = trackDesc.segment2ModelLeft(modelsSet)
+            if modelName is not None:
+                try:
+                    segment2ModelLeft = prereqs[modelName]
+                except Exception:
+                    _logger.error("can't load track segment 2 model '%s'", modelName)
+
+            modelName = trackDesc.segment2ModelRight(modelsSet)
+            if modelName is not None:
+                try:
+                    segment2ModelRight = prereqs[modelName]
+                except Exception:
+                    _logger.error("can't load track segment 2 model '%s'", modelName)
+
+            if segmentModelLeft is not None and segmentModelRight is not None:
+                identityMatrix = Math.Matrix()
+                identityMatrix.setIdentity()
+                track = BigWorld.wg_createSplineTrack(chassisModel, trackDesc.leftDesc, idx, trackDesc.segmentLength, segmentModelLeft, trackDesc.segmentOffset, segment2ModelLeft, trackDesc.segment2Offset, _ROOT_NODE_NAME, trackDesc.atlasUTiles, trackDesc.atlasVTiles)
                 if track is not None:
                     leftSpline.append(track)
-
-            for desc in splineDesc.rightDesc:
-                track = BigWorld.wg_createSplineTrack(chassisModel, desc[0], desc[1], desc[2], segmentModelRight, desc[3], segment2ModelRight, desc[4], _ROOT_NODE_NAME, splineDesc.atlasUTiles, splineDesc.atlasVTiles)
+                track = BigWorld.wg_createSplineTrack(chassisModel, trackDesc.rightDesc, idx, trackDesc.segmentLength, segmentModelRight, trackDesc.segmentOffset, segment2ModelRight, trackDesc.segment2Offset, _ROOT_NODE_NAME, trackDesc.atlasUTiles, trackDesc.atlasVTiles)
                 if track is not None:
                     rightSpline.append(track)
 
-            if len(leftSpline) != len(rightSpline) or not leftSpline:
-                return
-            fashion.setSplineTracks(leftSpline + rightSpline)
+        if len(leftSpline) != len(rightSpline) or not leftSpline:
+            return
+        fashion.setSplineTracks(leftSpline + rightSpline)
         resultTracks = SplineTracks(leftSpline, rightSpline)
-    return resultTracks
+        return resultTracks
 
 
 def assembleWaterSensor(vehicleDesc, appearance, lodStateLink, spaceID):
@@ -672,7 +703,13 @@ def subscribeEngineAuditionToEngineState(engineAudition, engineState):
 def setupTracksFashion(vehicleDesc, fashion):
     tracksCfg = vehicleDesc.chassis.tracks
     if tracksCfg is not None:
-        fashion.setTracksMaterials(tracksCfg.leftMaterial, tracksCfg.rightMaterial)
+        leftMaterials = []
+        rightMaterials = []
+        for value in tracksCfg.trackPairs.values():
+            leftMaterials.append(value.leftMaterial)
+            rightMaterials.append(value.rightMaterial)
+
+        fashion.setTracksMaterials(leftMaterials, rightMaterials)
     return
 
 
@@ -683,13 +720,13 @@ def assembleSimpleTracks(vehicleDesc, fashion, wheelsDataProvider, tracks):
     else:
         leftTracks = []
         rightTracks = []
-        for i in xrange(tracksCfg.pairsCount):
+        for i in xrange(len(tracksCfg.trackPairs)):
             left = (
-             Vehicular.SimpleTrack, True, i, tracksCfg.leftMaterial,
-             fashion, wheelsDataProvider, tracksCfg.textureScale)
+             Vehicular.SimpleTrack, True, i, tracksCfg.trackPairs[i].leftMaterial,
+             fashion, wheelsDataProvider, tracksCfg.trackPairs[i].textureScale)
             right = (
-             Vehicular.SimpleTrack, False, i, tracksCfg.rightMaterial,
-             fashion, wheelsDataProvider, tracksCfg.textureScale)
+             Vehicular.SimpleTrack, False, i, tracksCfg.trackPairs[i].rightMaterial,
+             fashion, wheelsDataProvider, tracksCfg.trackPairs[i].textureScale)
             leftTracks.append(left)
             rightTracks.append(right)
 
@@ -699,38 +736,47 @@ def assembleSimpleTracks(vehicleDesc, fashion, wheelsDataProvider, tracks):
         return
 
 
-def assembleSizePhysicalTrack(resourceRefs, resourceFormat, isLeft, trackPairsCount, appearance, tracks, instantWarmup):
+def assembleSizePhysicalTrack(resourceRefs, resourceFormat, isLeft, trackPairsCount, appearance, tracks, instantWarmup, setupOnlyThickness=False):
     if appearance.wheelsAnimator is None:
         return False
     else:
-        inited = True
-        allTracks = []
-        for i in xrange(trackPairsCount):
-            name = resourceFormat.format(i)
-            trackBuilder = resourceRefs[name] if resourceRefs.has_key(name) else None
-            if trackBuilder is not None and trackBuilder.isValid():
-                trackData = (
-                 Vehicular.PhysicalTrack,
-                 trackBuilder,
-                 appearance.compoundModel,
-                 appearance.wheelsAnimator,
-                 appearance.collisionObstaclesCollector,
-                 appearance.tessellationCollisionSensor,
-                 appearance.fashion,
-                 instantWarmup)
-                allTracks.append(trackData)
-            else:
-                inited = False
+        try:
+            inited = True
+            allTracks = []
+            for i in xrange(trackPairsCount):
+                name = resourceFormat.format(i)
+                trackBuilder = resourceRefs[name] if resourceRefs.has_key(name) else None
+                if trackBuilder is not None and trackBuilder.isValid() and not setupOnlyThickness:
+                    trackData = (
+                     Vehicular.PhysicalTrack,
+                     trackBuilder,
+                     appearance.compoundModel,
+                     appearance.wheelsAnimator,
+                     appearance.collisionObstaclesCollector,
+                     appearance.tessellationCollisionSensor,
+                     appearance.fashion,
+                     instantWarmup)
+                    allTracks.append(trackData)
+                elif trackBuilder is not None:
+                    go = tracks.getTrackGameObject(isLeft, i)
+                    compositeTrack = go.findComponentByType(Vehicular.CompositeTrack)
+                    compositeTrack.trackThickness = trackBuilder.trackThickness
+                else:
+                    inited = False
 
-        if allTracks:
-            tracks.addTrackComponent(isLeft, allTracks, _PHYSICAL_TRACKS_LOD_SETTINGS)
+            if allTracks:
+                tracks.addTrackComponent(isLeft, allTracks, _PHYSICAL_TRACKS_LOD_SETTINGS)
+        except ValueError as e:
+            _logger.error('Failure on physical track creation: %s', e)
+            inited = False
+
         return inited
 
 
-def assemblePhysicalTracks(resourceRefs, trackPairsCount, appearance, tracks, instantWarmup):
+def assemblePhysicalTracks(resourceRefs, trackPairsCount, appearance, tracks, instantWarmup, setupOnlyThickness=False):
     inited = True
-    inited = inited and assembleSizePhysicalTrack(resourceRefs, 'left{0}PhysicalTrack', True, trackPairsCount, appearance, tracks, instantWarmup)
-    inited = inited and assembleSizePhysicalTrack(resourceRefs, 'right{0}PhysicalTrack', False, trackPairsCount, appearance, tracks, instantWarmup)
+    inited = inited and assembleSizePhysicalTrack(resourceRefs, 'left{0}PhysicalTrack', True, trackPairsCount, appearance, tracks, instantWarmup, setupOnlyThickness)
+    inited = inited and assembleSizePhysicalTrack(resourceRefs, 'right{0}PhysicalTrack', False, trackPairsCount, appearance, tracks, instantWarmup, setupOnlyThickness)
     return inited
 
 
@@ -757,7 +803,7 @@ def assembleTracks(resourceRefs, vehicleDesc, appearance, splineTracksImpl, inst
     trackPairsCount = 0
     tracksCfg = vehicleDesc.chassis.tracks
     if tracksCfg is not None:
-        trackPairsCount = tracksCfg.pairsCount
+        trackPairsCount = len(tracksCfg.trackPairs)
     tracks = Vehicular.VehicleTracks(appearance.gameObject, appearance.compoundModel, TankPartIndexes.CHASSIS, _AREA_LOD_FOR_NONSIMPLE_TRACKS, trackPairsCount)
     appearance.tracks = tracks
     assemblePhysicalTracks(resourceRefs, trackPairsCount, appearance, tracks, instantWarmup)
@@ -767,6 +813,7 @@ def assembleTracks(resourceRefs, vehicleDesc, appearance, splineTracksImpl, inst
     if vehicleFilter is not None:
         tracks.setTrackScrollLink(DataLinks.createFloatLink(vehicleFilter, 'leftTrackScroll'), DataLinks.createFloatLink(vehicleFilter, 'rightTrackScroll'))
     if appearance.wheelsAnimator and appearance.wheelsAnimator.scrollLinksRequired:
+        tracks.collectConnectedWheels(appearance.wheelsAnimator)
         tracks.sendWheelScrollLinks(appearance.wheelsAnimator)
     if lodLink is None:
         lodLink = Vehicular.getDummyLodLink()
@@ -809,7 +856,9 @@ def assembleBurnoutProcessor(appearance):
 def assembleCustomLogicComponents(appearance, attachments, modelAnimators):
     assemblers = [
      (
-      'flagAnimation', __assembleAnimationFlagComponent)]
+      'flagAnimation', __assembleAnimationFlagComponent),
+     (
+      'prefab', __assemblePrefabComponent)]
     for assemblerName, assembler in assemblers:
         for attachment in attachments:
             if attachment.attachmentLogic == assemblerName:
@@ -833,3 +882,13 @@ def __assembleAnimationFlagComponent(appearance, attachment, attachments, modelA
             appearance.flagComponent.vehicleSpeedLink = DataLinks.createFloatLink(appearance.filter, 'averageSpeed')
             appearance.flagComponent.allowTransparency(True)
         return True
+
+
+def __assemblePrefabComponent(appearance, attachment, _, __):
+
+    def _onLoaded(gameObject):
+        appearance.undamagedStateChildren.append(gameObject)
+        gameObject.createComponent(GenericComponents.RedirectorComponent, appearance.gameObject)
+        gameObject.createComponent(GenericComponents.DynamicModelComponent, appearance.compoundModel)
+
+    CGF.loadGameObjectIntoHierarchy(attachment.modelName, appearance.gameObject, attachment.transform, _onLoaded)

@@ -6,7 +6,7 @@ from SoundGroups import g_instance as SoundGroupsInstance
 from account_helpers import account_completion
 from account_helpers.AccountSettings import AccountSettings, QUESTS, QUEST_DELTAS, QUEST_DELTAS_COMPLETION, ACTIVE_TEST_PARTICIPATION_CONFIRMED
 from account_helpers.AccountSettings import KNOWN_SELECTOR_BATTLES
-from account_helpers.AccountSettings import NEW_LOBBY_TAB_COUNTER, RECRUIT_NOTIFICATIONS, NEW_SHOP_TABS
+from account_helpers.AccountSettings import NEW_LOBBY_TAB_COUNTER, RECRUIT_NOTIFICATIONS, NEW_SHOP_TABS, LAST_SHOP_ACTION_COUNTER_MODIFICATION, OVERRIDEN_HEADER_COUNTER_ACTION_ALIASES
 from adisp import process, async
 from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS as BONUS_CAPS
 from constants import PREMIUM_TYPE, EPlatoonButtonState
@@ -305,7 +305,6 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
 
     def showLobbyMenu(self):
         self.fireEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_MENU)), scope=EVENT_BUS_SCOPE.LOBBY)
-        self._closeFullScreenBattleSelector(LOG_CLOSE_DETAILS.OTHER)
 
     @process
     def menuItemClick(self, alias):
@@ -320,11 +319,8 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         shared_events.showCrystalWindow(self.__visibility)
 
     def onPayment(self):
-        promo = self.gui.windowsManager.getViewByLayoutID(R.views.lobby.crystalsPromo.CrystalsPromoView())
-        if promo is not None:
-            promo.destroyWindow()
+        self.__closeWindowsWithTopSubViewLayer()
         showShop(getBuyGoldUrl())
-        return
 
     def showExchangeWindow(self):
         shared_events.showExchangeCurrencyWindow()
@@ -333,6 +329,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         shared_events.showExchangeXPWindow()
 
     def showPremiumView(self):
+        self.__closeWindowsWithTopSubViewLayer()
         showShop(getBuyPremiumUrl())
 
     def onPremShopClick(self):
@@ -618,6 +615,11 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.wgnpController.onEmailConfirmed -= self.__onEmailConfirmed
         self.wgnpController.onEmailAdded -= self.__onEmailAdded
         self.wgnpController.onEmailAddNeeded -= self.__onEmailAddNeeded
+
+    def __closeWindowsWithTopSubViewLayer(self):
+        windows = self.gui.windowsManager.findWindows(lambda w: w.layer == WindowLayer.TOP_SUB_VIEW)
+        for window in windows:
+            window.destroy()
 
     def __platoonDropdown(self, event):
         if event:
@@ -953,7 +955,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         if state == PRE_QUEUE_RESTRICTION.MODE_NOT_SET:
             header = backport.text(resShortCut.rankedNotSet.header())
             body = backport.text(resShortCut.rankedNotSet.body())
-        elif state == PRE_QUEUE_RESTRICTION.MODE_DISABLED:
+        elif state == PRE_QUEUE_RESTRICTION.MODE_NOT_AVAILABLE:
             header = backport.text(resShortCut.rankedDisabled.header())
             body = backport.text(resShortCut.rankedDisabled.body())
         elif state == PRE_QUEUE_RESTRICTION.LIMIT_LEVEL:
@@ -975,7 +977,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
 
     def __getEpicFightBtnTooltipData(self, result):
         state = result.restriction
-        if state == PRE_QUEUE_RESTRICTION.MODE_DISABLED:
+        if state == PRE_QUEUE_RESTRICTION.MODE_NOT_AVAILABLE:
             header = backport.text(R.strings.menu.headerButtons.fightBtn.tooltip.battleRoyaleDisabled.header())
             body = backport.text(R.strings.menu.headerButtons.fightBtn.tooltip.battleRoyaleDisabled.body())
         elif state == PRE_QUEUE_RESTRICTION.LIMIT_LEVEL:
@@ -1450,7 +1452,19 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
             self.__hideCounter(alias)
 
     def __updateShopTabCounter(self):
-        self.__updateTabCounter(self.TABS.STORE)
+        if self.uiSpamController.shouldBeHidden(self.TABS.STORE):
+            return
+        actionCounterAlias, actionCounterValue = self.eventsCache.getLobbyHeaderTabCounter()
+        lastActionValue = AccountSettings.getSessionSettings(LAST_SHOP_ACTION_COUNTER_MODIFICATION)
+        overridenActionAliases = AccountSettings.getSessionSettings(OVERRIDEN_HEADER_COUNTER_ACTION_ALIASES)
+        isActionDisabled = actionCounterAlias in overridenActionAliases
+        if actionCounterAlias == self.TABS.STORE and (actionCounterValue != lastActionValue or not isActionDisabled):
+            self.__setCounter(self.TABS.STORE, actionCounterValue)
+            overridenActionAliases.discard(actionCounterAlias)
+            AccountSettings.setSessionSettings(OVERRIDEN_HEADER_COUNTER_ACTION_ALIASES, overridenActionAliases)
+        else:
+            self.__updateTabCounter(self.TABS.STORE)
+        AccountSettings.setSessionSettings(LAST_SHOP_ACTION_COUNTER_MODIFICATION, actionCounterValue)
 
     def __updateStorageTabCounter(self):
         self.__updateTabCounter(self.TABS.STORAGE, self.demountKitNovelty.noveltyCount + self.offersNovelty.noveltyCount)
@@ -1466,13 +1480,17 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
                 return
             if alias in self.ACCOUNT_SETTINGS_COUNTERS:
                 counters = AccountSettings.getCounters(NEW_LOBBY_TAB_COUNTER)
-                if alias not in counters or _isActiveShopNewCounters():
-                    counters[alias] = backport.text(R.strings.menu.headerButtons.defaultCounter())
-                    _updateShopNewCounters()
-                elif counter is not None:
+                if counter is not None:
                     counters[alias] = counter
+                    overridenActionAliases = AccountSettings.getSessionSettings(OVERRIDEN_HEADER_COUNTER_ACTION_ALIASES)
+                    overridenActionAliases.add(alias)
+                    AccountSettings.setSessionSettings(OVERRIDEN_HEADER_COUNTER_ACTION_ALIASES, overridenActionAliases)
+                elif alias not in counters or _isActiveShopNewCounters():
+                    counter = backport.text(R.strings.menu.headerButtons.defaultCounter())
+                    _updateShopNewCounters()
+                else:
+                    counter = counters[alias]
                 AccountSettings.setCounters(NEW_LOBBY_TAB_COUNTER, counters)
-                counter = counters[alias]
             if counter:
                 self.__setCounter(alias, counter)
             else:

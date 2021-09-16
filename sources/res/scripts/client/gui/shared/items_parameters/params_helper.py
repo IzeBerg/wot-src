@@ -7,7 +7,7 @@ from gui.shared.items_parameters import params, RELATIVE_PARAMS, MAX_RELATIVE_VA
 from gui.shared.items_parameters.comparator import VehiclesComparator, ItemsComparator, PARAM_STATE
 from gui.shared.items_parameters.functions import getBasicShell
 from gui.shared.items_parameters.params_cache import g_paramsCache
-from gui.shared.utils import AUTO_RELOAD_PROP_NAME, MAX_STEERING_LOCK_ANGLE, TURBOSHAFT_SPEED_MODE_SPEED, WHEELED_SPEED_MODE_SPEED, DUAL_GUN_CHARGE_TIME, TURBOSHAFT_ENGINE_POWER, TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR, TURBOSHAFT_SWITCH_TIME
+from gui.shared.utils import AUTO_RELOAD_PROP_NAME, MAX_STEERING_LOCK_ANGLE, TURBOSHAFT_SPEED_MODE_SPEED, WHEELED_SPEED_MODE_SPEED, DUAL_GUN_CHARGE_TIME, TURBOSHAFT_ENGINE_POWER, TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR, TURBOSHAFT_SWITCH_TIME, CHASSIS_REPAIR_TIME
 from helpers import dependency
 from items import vehicles, ITEM_TYPES
 from shared_utils import findFirst, first
@@ -16,7 +16,8 @@ RELATIVE_POWER_PARAMS = (
  'avgDamage', 'avgPiercingPower', 'stunMinDuration', 'stunMaxDuration', 'reloadTime', AUTO_RELOAD_PROP_NAME,
  'reloadTimeSecs', 'clipFireRate', DUAL_GUN_CHARGE_TIME, 'turretRotationSpeed', 'turretYawLimits',
  'pitchLimits', 'gunYawLimits', 'aimingTime', 'shotDispersionAngle', 'avgDamagePerMinute')
-RELATIVE_ARMOR_PARAMS = ('maxHealth', 'hullArmor', 'turretArmor')
+RELATIVE_ARMOR_PARAMS = (
+ 'maxHealth', 'hullArmor', 'turretArmor', CHASSIS_REPAIR_TIME)
 RELATIVE_MOBILITY_PARAMS = (
  'vehicleWeight', 'enginePower', TURBOSHAFT_ENGINE_POWER, 'enginePowerPerTon', 'speedLimits',
  WHEELED_SPEED_MODE_SPEED, TURBOSHAFT_SPEED_MODE_SPEED, 'chassisRotationSpeed', MAX_STEERING_LOCK_ANGLE,
@@ -36,9 +37,9 @@ EXTRA_POWER_PARAMS = ('vehicleGunShotDispersion', 'vehicleGunShotDispersionChass
                       'vehicleReloadTimeAfterShellChange')
 EXTRA_ARMOR_PARAMS = ('vehicleRepairSpeed', 'vehicleRamOrExplosionDamageResistance',
                       'crewHitChance', 'crewRepeatedStunDuration', 'crewStunDuration',
-                      'vehicleChassisStrength', 'vehicleChassisFallDamage', 'vehicleChassisRepairSpeed',
-                      'vehicleAmmoBayEngineFuelStrength', 'vehPenaltyForDamageEngineAndCombat',
-                      'vehicleFireChance', 'vehicleRamDamageResistance', 'damageEnemiesByRamming')
+                      'vehicleChassisStrength', 'vehicleChassisFallDamage', 'vehicleAmmoBayEngineFuelStrength',
+                      'vehPenaltyForDamageEngineAndCombat', 'vehicleFireChance',
+                      'vehicleRamDamageResistance', 'damageEnemiesByRamming')
 EXTRA_MOBILITY_PARAMS = ('vehicleSpeedGain', )
 EXTRA_CAMOUFLAGE_PARAMS = ('vehicleOwnSpottingTime', )
 EXTRA_VISIBILITY_PARAMS = ('vehicleEnemySpottingTime', 'demaskFoliageFactor', 'demaskMovingFactor')

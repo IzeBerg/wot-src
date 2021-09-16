@@ -10,6 +10,10 @@ package net.wg.infrastructure.base.meta
       
       function onPopUpClosedS() : void;
       
+      function onPanelShownS() : void;
+      
+      function onPanelHiddenS() : void;
+      
       function as_setKeysToSlots(param1:Array) : void;
       
       function as_setItemQuantityInSlot(param1:int, param2:int) : void;

@@ -2,12 +2,15 @@ package net.wg.gui.battle.views.damagePanel.components.modules
 {
    import flash.events.TimerEvent;
    import flash.text.TextField;
+   import flash.text.TextFormat;
    import flash.utils.Timer;
    import flash.utils.getTimer;
    import net.wg.data.constants.InvalidationType;
    import net.wg.data.constants.Time;
    import net.wg.data.constants.generated.BATTLE_ITEM_STATES;
+   import net.wg.gui.battle.events.RepairAnimEvent;
    import net.wg.gui.battle.views.damagePanel.components.DamagePanelItemFrameStates;
+   import net.wg.gui.utils.FrameHelper;
    
    public class ModuleRepairAnim extends DamagePanelItemFrameStates
    {
@@ -25,6 +28,18 @@ package net.wg.gui.battle.views.damagePanel.components.modules
       private static const IS_REPAIRING_INVALID_MASK:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 2;
       
       private static const LABEL_UPDATE_TIME:Number = 100;
+      
+      private static const DEFAULT_TEXT_COLOR:uint = 16777215;
+      
+      private static const HIGHLIGHT_TEXT_COLOR:uint = 16721687;
+      
+      private static const LBL_END_POSTFIX:String = "_end";
+      
+      private static const LBL_REPAIRED_END:String = BATTLE_ITEM_STATES.REPAIRED + LBL_END_POSTFIX;
+      
+      private static const LBL_REPAIRED_FULL_END:String = BATTLE_ITEM_STATES.REPAIRED_FULL + LBL_END_POSTFIX;
+      
+      private static const LBL_REPAIRED_FULL_HIDE:String = BATTLE_ITEM_STATES.REPAIRED_FULL + "_hide";
        
       
       public var repairTimeTF:TextField;
@@ -47,6 +62,14 @@ package net.wg.gui.battle.views.damagePanel.components.modules
       
       private var _repairTime:Number = 0;
       
+      private var _repairTimeTextFormat:TextFormat = null;
+      
+      private var _needsHighlightText:Boolean = false;
+      
+      private var _prevState:String = "normal";
+      
+      private var _frameHelper:FrameHelper = null;
+      
       public function ModuleRepairAnim()
       {
          super();
@@ -58,6 +81,11 @@ package net.wg.gui.battle.views.damagePanel.components.modules
          this._animationTimer.addEventListener(TimerEvent.TIMER_COMPLETE,this.onAnimationTimerCompleteHandler);
          this._labelTimer = new Timer(LABEL_UPDATE_TIME);
          this._labelTimer.addEventListener(TimerEvent.TIMER,this.onLabelTimerHandler);
+         this._repairTimeTextFormat = this.repairTimeTF.defaultTextFormat;
+         this._frameHelper = new FrameHelper(this);
+         this._frameHelper.addScriptToFrame(this._frameHelper.getFrameByLabel(LBL_REPAIRED_END),this.repairAnimEndHandler);
+         this._frameHelper.addScriptToFrame(this._frameHelper.getFrameByLabel(LBL_REPAIRED_FULL_END),this.repairFullAnimEndHandler);
+         this._frameHelper.addScriptToFrame(this._frameHelper.getFrameByLabel(LBL_REPAIRED_FULL_HIDE),this.repairFullAnimHideHandler);
       }
       
       override protected function onDispose() : void
@@ -69,29 +97,60 @@ package net.wg.gui.battle.views.damagePanel.components.modules
          this._labelTimer.stop();
          this._labelTimer.removeEventListener(TimerEvent.TIMER,this.onLabelTimerHandler);
          this._labelTimer = null;
+         this._repairTimeTextFormat = null;
          this.repairTimeTF = null;
+         this._frameHelper.dispose();
+         this._frameHelper = null;
          super.onDispose();
+      }
+      
+      override protected function applyState() : void
+      {
+         stop();
+         if(state == BATTLE_ITEM_STATES.CRITICAL || state == BATTLE_ITEM_STATES.DESTROYED)
+         {
+            gotoAndStop(state);
+         }
+         else
+         {
+            gotoAndPlay(state);
+         }
+      }
+      
+      override protected function calcVisibility() : Boolean
+      {
+         return state != BATTLE_ITEM_STATES.DESTROYED && state != BATTLE_ITEM_STATES.NORMAL;
       }
       
       override protected function draw() : void
       {
          super.draw();
-         if(isInvalid(InvalidationType.STATE))
-         {
-            visible = state != BATTLE_ITEM_STATES.DESTROYED && state != BATTLE_ITEM_STATES.NORMAL;
-         }
          if(isInvalid(IS_REPAIRING_INVALID_MASK))
          {
-            visible = this._isRepairing;
+            if(!(!this._isRepairing && (state == BATTLE_ITEM_STATES.REPAIRED || state == BATTLE_ITEM_STATES.REPAIRED_FULL)))
+            {
+               visible = this._isRepairing;
+            }
             if(this._showRepairTimer)
             {
                this.repairTimeTF.visible = this._isRepairing;
             }
          }
-         if(isInvalid(REPAIRING_PROGRESS_INVALID_MASK))
+         if(isInvalid(InvalidationType.COLOR_SCHEME))
+         {
+            this._repairTimeTextFormat.color = !!this._needsHighlightText ? HIGHLIGHT_TEXT_COLOR : DEFAULT_TEXT_COLOR;
+            this.repairTimeTF.defaultTextFormat = this._repairTimeTextFormat;
+         }
+         if(isInvalid(REPAIRING_PROGRESS_INVALID_MASK) && !(state == BATTLE_ITEM_STATES.REPAIRED || state == BATTLE_ITEM_STATES.REPAIRED_FULL))
          {
             gotoAndStop(this.currentRepairFrame(this._repairPercents));
          }
+      }
+      
+      override protected function setStateManually(param1:String) : void
+      {
+         this._prevState = state;
+         super.setStateManually(param1);
       }
       
       public function setPlaybackSpeed(param1:Number) : void
@@ -120,10 +179,10 @@ package net.wg.gui.battle.views.damagePanel.components.modules
          this._playbackSpeed = param1;
       }
       
-      public function setRepairSeconds(param1:int, param2:int) : void
+      public function setRepairSeconds(param1:int, param2:int, param3:Boolean = false) : void
       {
          this.setRepairing(true);
-         this.updateTimer(param1,param2);
+         this.updateTimer(param1,param2,param3);
          this._repairPercents = param1;
          if(!this._labelTimer.running || param2 > this._repairTime)
          {
@@ -135,21 +194,55 @@ package net.wg.gui.battle.views.damagePanel.components.modules
          invalidate(REPAIRING_PROGRESS_INVALID_MASK);
       }
       
-      private function updateTimer(param1:int, param2:int) : void
+      public function setRepairTimeVisible(param1:Boolean) : void
+      {
+         this._showRepairTimer = param1;
+         if(this._labelTimer.running)
+         {
+            this.repairTimeTF.visible = param1;
+         }
+      }
+      
+      private function repairFullAnimEndHandler() : void
+      {
+         this.dispatchRepairAnimComplete();
+      }
+      
+      private function repairAnimEndHandler() : void
+      {
+         this.dispatchRepairAnimComplete();
+      }
+      
+      private function repairFullAnimHideHandler() : void
+      {
+         dispatchEvent(new RepairAnimEvent(RepairAnimEvent.ANIM_HIDE));
+      }
+      
+      private function dispatchRepairAnimComplete() : void
+      {
+         dispatchEvent(new RepairAnimEvent(RepairAnimEvent.ANIM_COMPLETE));
+      }
+      
+      private function updateTimer(param1:int, param2:int, param3:Boolean = false) : void
       {
          param2 /= this._playbackSpeed;
-         var _loc3_:int = param1 * (param2 / (100 - param1));
-         var _loc4_:int = getTimer();
-         this._startTime = _loc4_ - _loc3_;
-         var _loc5_:int = _loc4_ + param2;
-         this._animDuration = _loc5_ - this._startTime;
-         var _loc6_:int = REPAIR_ANIM_COUNT_FRAMES + FIRST_FRAME_REPAIR_ANIM - this.currentRepairFrame(param1);
-         var _loc7_:int = param2 / _loc6_;
+         var _loc4_:int = param1 * (param2 / (100 - param1));
+         var _loc5_:int = getTimer();
+         this._startTime = _loc5_ - _loc4_;
+         var _loc6_:int = _loc5_ + param2;
+         this._animDuration = _loc6_ - this._startTime;
+         var _loc7_:int = REPAIR_ANIM_COUNT_FRAMES + FIRST_FRAME_REPAIR_ANIM - this.currentRepairFrame(param1);
+         var _loc8_:int = param2 / _loc7_;
          this._animationTimer.reset();
-         this._animationTimer.delay = _loc7_;
-         this._animationTimer.repeatCount = _loc6_;
+         this._animationTimer.delay = _loc8_;
+         this._animationTimer.repeatCount = _loc7_;
          this._animationTimer.start();
-         this._repairTime = Math.min(_loc7_ * _loc6_,this._repairTime);
+         this._repairTime = Math.min(_loc8_ * _loc7_,this._repairTime);
+         if(this._needsHighlightText != param3)
+         {
+            this._needsHighlightText = param3;
+            invalidate(InvalidationType.COLOR_SCHEME);
+         }
       }
       
       private function currentRepairFrame(param1:int) : int
@@ -169,7 +262,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
       
       override public function set state(param1:String) : void
       {
-         super.state = param1;
+         this.setStateManually(param1);
          this.setRepairing(false);
          this._animationTimer.stop();
          this._labelTimer.stop();
@@ -191,15 +284,6 @@ package net.wg.gui.battle.views.damagePanel.components.modules
       private function onAnimationTimerCompleteHandler(param1:TimerEvent = null) : void
       {
          this.setRepairing(false);
-      }
-      
-      public function setRepairTimeVisible(param1:Boolean) : void
-      {
-         this._showRepairTimer = param1;
-         if(this._labelTimer.running)
-         {
-            this.repairTimeTF.visible = param1;
-         }
       }
    }
 }

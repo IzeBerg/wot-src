@@ -4023,6 +4023,10 @@ package
       
       public static const TANK_PARAMS_DESC_AVGDAMAGE:String = "#tooltips:tank_params/desc/avgDamage";
       
+      public static const TANK_PARAMS_DESC_CHASSISREPAIRTIME:String = "#tooltips:tank_params/desc/chassisRepairTime";
+      
+      public static const TANK_PARAMS_DESC_CHASSISREPAIRTIMEYOH:String = "#tooltips:tank_params/desc/chassisRepairTimeYoh";
+      
       public static const TANK_PARAMS_AVGPARAMCOMMENT_DAMAGE:String = "#tooltips:tank_params/avgParamComment/damage";
       
       public static const TANK_PARAMS_AVGPARAMCOMMENT_PIERCINGPOWER:String = "#tooltips:tank_params/avgParamComment/piercingPower";
@@ -4407,6 +4411,10 @@ package
       
       public static const SKILLS_BROTHERHOOD_DESCR:String = "#tooltips:skills/brotherhood/descr";
       
+      public static const SKILLS_REPAIR_HEADER:String = "#tooltips:skills/repair/header";
+      
+      public static const SKILLS_REPAIR_DESCR:String = "#tooltips:skills/repair/descr";
+      
       public static const SKILLS_DRIVER_VIRTUOSO_HEADER:String = "#tooltips:skills/driver_virtuoso/header";
       
       public static const SKILLS_DRIVER_VIRTUOSO_DESCR:String = "#tooltips:skills/driver_virtuoso/descr";
@@ -4714,6 +4722,8 @@ package
       public static const ADVANCED_VEHICLEENGINE:String = "#tooltips:advanced/vehicleEngine";
       
       public static const ADVANCED_VEHICLECHASSIS:String = "#tooltips:advanced/vehicleChassis";
+      
+      public static const ADVANCED_VEHICLETRACKWITHINTRACKCHASSIS:String = "#tooltips:advanced/vehicleTrackWithinTrackChassis";
       
       public static const ADVANCED_VEHICLEWHEELEDCHASSIS:String = "#tooltips:advanced/vehicleWheeledChassis";
       
@@ -6107,6 +6117,8 @@ package
       
       public static const ROLEEXP_STATUS_ROLEACTIONS_TITLE:String = "#tooltips:roleExp/status/roleActions/title";
       
+      public static const ROLEEXP_STATUS_ROLEACTIONS_DISABLED:String = "#tooltips:roleExp/status/roleActions/disabled";
+      
       public static const ROLEEXP_STATUS_ROLE_DESCR:String = "#tooltips:roleExp/status/role/descr";
       
       public static const ROLEEXP_STATUS_FOOTER:String = "#tooltips:roleExp/status/footer";
@@ -6334,6 +6346,24 @@ package
       public static const NOTRECRUITEDTANKMAN_TANKMEN_BP5_3_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp5_3/desc";
       
       public static const NOTRECRUITEDTANKMAN_TANKMEN_BP5_3_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp5_3/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP6_1_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp6_1/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP6_1_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp6_1/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP6_1_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp6_1/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP6_2_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp6_2/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP6_2_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp6_2/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP6_2_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp6_2/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP6_3_LABEL:String = "#tooltips:notrecruitedtankman/tankmen_bp6_3/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP6_3_DESC:String = "#tooltips:notrecruitedtankman/tankmen_bp6_3/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_BP6_3_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen_bp6_3/howToGetInfo";
       
       public static const NOTRECRUITEDTANKMAN_COMMANDER_GAGARIN21_LABEL:String = "#tooltips:notrecruitedtankman/commander_gagarin21/label";
       

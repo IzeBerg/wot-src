@@ -1170,14 +1170,18 @@
 			<distRange>40 120</distRange>
 			<transitionDist>60</transitionDist>
 			<dynamicDistRanges>
-				<dyanimcDistRange>
+				<dynamicDistRange>
 					<minArenaSize>2000</minArenaSize>
 					<distRangeOverride>40 300</distRangeOverride>
+					<scrollMultiplier>
+						1.0
+						<!--BW_String-->
+					</scrollMultiplier>
 					<acceleration>
-						0.01
+						0.1
 						<!--BW_String-->
 					</acceleration>
-				</dyanimcDistRange>
+				</dynamicDistRange>
 			</dynamicDistRanges>
 			<dynamics>
 				<oscillator>

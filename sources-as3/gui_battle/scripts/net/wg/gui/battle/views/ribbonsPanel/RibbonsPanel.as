@@ -26,6 +26,8 @@ package net.wg.gui.battle.views.ribbonsPanel
       
       private var _isHidePlaying:Boolean = false;
       
+      private var _countShowAnimItems:int = 0;
+      
       private var _countVisibleItems:int = 0;
       
       private var _countHidedItems:int = 0;
@@ -108,6 +110,7 @@ package net.wg.gui.battle.views.ribbonsPanel
             this._visibleItems.push(_loc9_);
             _loc9_.updateData(param2,param3,param4,param5,param6,this.getBonusLabel(param7),param8);
             _loc9_.showAnim(this._countVisibleItems);
+            ++this._countShowAnimItems;
             ++this._countVisibleItems;
             onShowS(param2);
          }
@@ -158,14 +161,19 @@ package net.wg.gui.battle.views.ribbonsPanel
       {
          var _loc1_:RibbonCtrl = null;
          var _loc2_:int = this._countVisibleItems;
-         var _loc3_:Boolean = _loc2_ == this._calculatedMaxCountRenderers;
+         var _loc3_:Boolean = _loc2_ >= this._calculatedMaxCountRenderers;
          var _loc4_:int = 0;
          if(_loc3_)
          {
-            _loc4_ = 1;
-            _loc1_ = this._visibleItems[0];
-            _loc1_.hideInBottom();
-            ++this._countHidedItems;
+            while(_loc4_ <= _loc2_ - this._calculatedMaxCountRenderers)
+            {
+               _loc1_ = this._visibleItems[_loc4_];
+               if(_loc1_.hideInBottom())
+               {
+                  ++this._countHidedItems;
+               }
+               _loc4_++;
+            }
             this._isHidePlaying = true;
          }
          while(_loc4_ < _loc2_)
@@ -181,6 +189,7 @@ package net.wg.gui.battle.views.ribbonsPanel
          var _loc1_:RibbonCtrl = null;
          this._countHidedItems = 0;
          this._countVisibleItems = 0;
+         this._countShowAnimItems = 0;
          this._isShowPlaying = false;
          this._isHidePlaying = false;
          this._ribbonQueue.clear();
@@ -194,17 +203,22 @@ package net.wg.gui.battle.views.ribbonsPanel
       
       private function onShowAnimComplete() : void
       {
-         this._isShowPlaying = false;
+         --this._countShowAnimItems;
+         if(this._countShowAnimItems == 0)
+         {
+            this._isShowPlaying = false;
+         }
          this.checkQueue();
       }
       
-      private function onHideAnimationComplete() : void
+      private function onHideAnimationComplete(param1:Number) : void
       {
-         var _loc1_:RibbonCtrl = this._visibleItems.shift();
-         var _loc2_:Number = _loc1_.ribbonId;
-         this._ribbonPool.returnInPool(_loc1_);
-         delete this._visibleItemsById[_loc2_];
-         onHideS(_loc2_);
+         var _loc2_:RibbonCtrl = this._visibleItemsById[param1];
+         var _loc3_:int = this._visibleItems.indexOf(_loc2_);
+         this._visibleItems.splice(_loc3_,1);
+         this._ribbonPool.returnInPool(_loc2_);
+         delete this._visibleItemsById[param1];
+         onHideS(param1);
          --this._countVisibleItems;
          --this._countHidedItems;
          if(this._countHidedItems == 0)
@@ -229,6 +243,10 @@ package net.wg.gui.battle.views.ribbonsPanel
                if(!_loc4_)
                {
                   _loc3_ = this._visibleItemsById[_loc2_];
+                  if(_loc3_)
+                  {
+                     _loc3_.updateData(_loc2_,_loc1_.valueStr,_loc1_.vehName,_loc1_.vehType,_loc1_.countVehs,_loc1_.bonusLabel,_loc1_.role);
+                  }
                   onChangeS();
                }
                if(_loc4_ || _loc3_ == null)
@@ -236,13 +254,14 @@ package net.wg.gui.battle.views.ribbonsPanel
                   _loc3_ = this._ribbonPool.getItemFromPool(_loc1_.ribbonType);
                   this._isShowPlaying = true;
                   this.shiftItems();
+                  _loc3_.updateData(_loc2_,_loc1_.valueStr,_loc1_.vehName,_loc1_.vehType,_loc1_.countVehs,_loc1_.bonusLabel,_loc1_.role);
                   _loc3_.showAnim(this._countVisibleItems);
                   this._visibleItems.push(_loc3_);
                   this._visibleItemsById[_loc2_] = _loc3_;
                   ++this._countVisibleItems;
+                  ++this._countShowAnimItems;
                   onShowS(_loc3_.ribbonId);
                }
-               _loc3_.updateData(_loc2_,_loc1_.valueStr,_loc1_.vehName,_loc1_.vehType,_loc1_.countVehs,_loc1_.bonusLabel,_loc1_.role);
                this._ribbonQueue.shiftQueue();
                if(!_loc4_)
                {
@@ -265,7 +284,7 @@ package net.wg.gui.battle.views.ribbonsPanel
          }
          else if(param1 == RibbonCtrl.CALLBACK_TYPE_HIDE_FINISHED)
          {
-            this.onHideAnimationComplete();
+            this.onHideAnimationComplete(param2);
          }
          else if(param1 == RibbonCtrl.CALLBACK_LIFETIME_COOLDOWN)
          {

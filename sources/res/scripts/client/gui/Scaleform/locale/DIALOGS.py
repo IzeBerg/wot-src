@@ -352,10 +352,6 @@ class DIALOGS(object):
     DROPSKILL_MESSAGE = '#dialogs:dropSkill/message'
     DROPSKILL_SUBMIT = '#dialogs:dropSkill/submit'
     DROPSKILL_CANCEL = '#dialogs:dropSkill/cancel'
-    ELITE_TITLE = '#dialogs:elite/title'
-    ELITE_HEADER = '#dialogs:elite/header'
-    ELITE_MESSAGE = '#dialogs:elite/message'
-    ELITE_CANCEL = '#dialogs:elite/cancel'
     SQUADPREMIUMNEEDED_TITLE = '#dialogs:squadPremiumNeeded/title'
     SQUADPREMIUMNEEDED_MESSAGE = '#dialogs:squadPremiumNeeded/message'
     SQUADPREMIUMNEEDED_CANCEL = '#dialogs:squadPremiumNeeded/cancel'
@@ -589,6 +585,7 @@ class DIALOGS(object):
     PUNISHMENTWINDOW_MESSAGE_EXTRA_PENALTY = '#dialogs:punishmentWindow/message/extra/penalty'
     PUNISHMENTWINDOW_CANCEL = '#dialogs:punishmentWindow/cancel'
     PUNISHMENTWINDOW_REASON_DESERTER = '#dialogs:punishmentWindow/reason/deserter'
+    PUNISHMENTWINDOW_REASON_EPIC_DESERTER = '#dialogs:punishmentWindow/reason/epic_deserter'
     PUNISHMENTWINDOW_REASON_SUICIDE = '#dialogs:punishmentWindow/reason/suicide'
     PUNISHMENTWINDOW_REASON_AFK = '#dialogs:punishmentWindow/reason/afk'
     SKILLDROPWINDOW_TITLE = '#dialogs:skillDropWindow/title'
@@ -891,6 +888,7 @@ class DIALOGS(object):
     TRADEINCONFIRMATION_MESSAGE_SHELLS = '#dialogs:tradeInConfirmation/message/shells'
     TRADEINCONFIRMATION_MESSAGE_EQUIPMENTS = '#dialogs:tradeInConfirmation/message/equipments'
     TRADEINCONFIRMATION_MESSAGE_OPTIONALDEVICES = '#dialogs:tradeInConfirmation/message/optionalDevices'
+    TRADEINCONFIRMATION_MESSAGE_PAIRMODIFICATIONS = '#dialogs:tradeInConfirmation/message/pairModifications'
     TRADEINCONFIRMATION_SUBMIT = '#dialogs:tradeInConfirmation/submit'
     TRADEINCONFIRMATION_CANCEL = '#dialogs:tradeInConfirmation/cancel'
     VEHCONF_EXITDIALOG_TITLE = '#dialogs:vehConf/exitDialog/title'
@@ -1413,10 +1411,6 @@ class DIALOGS(object):
      DROPSKILL_MESSAGE,
      DROPSKILL_SUBMIT,
      DROPSKILL_CANCEL,
-     ELITE_TITLE,
-     ELITE_HEADER,
-     ELITE_MESSAGE,
-     ELITE_CANCEL,
      SQUADPREMIUMNEEDED_TITLE,
      SQUADPREMIUMNEEDED_MESSAGE,
      SQUADPREMIUMNEEDED_CANCEL,
@@ -1650,6 +1644,7 @@ class DIALOGS(object):
      PUNISHMENTWINDOW_MESSAGE_EXTRA_PENALTY,
      PUNISHMENTWINDOW_CANCEL,
      PUNISHMENTWINDOW_REASON_DESERTER,
+     PUNISHMENTWINDOW_REASON_EPIC_DESERTER,
      PUNISHMENTWINDOW_REASON_SUICIDE,
      PUNISHMENTWINDOW_REASON_AFK,
      SKILLDROPWINDOW_TITLE,
@@ -1952,6 +1947,7 @@ class DIALOGS(object):
      TRADEINCONFIRMATION_MESSAGE_SHELLS,
      TRADEINCONFIRMATION_MESSAGE_EQUIPMENTS,
      TRADEINCONFIRMATION_MESSAGE_OPTIONALDEVICES,
+     TRADEINCONFIRMATION_MESSAGE_PAIRMODIFICATIONS,
      TRADEINCONFIRMATION_SUBMIT,
      TRADEINCONFIRMATION_CANCEL,
      VEHCONF_EXITDIALOG_TITLE,

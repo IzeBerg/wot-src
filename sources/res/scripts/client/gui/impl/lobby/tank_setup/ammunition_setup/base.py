@@ -1,5 +1,5 @@
 from account_helpers.settings_core.settings_constants import CONTROLS
-from async import async, await
+from async import async, await, await_callback
 from BWUtil import AsyncReturn
 from frameworks.wulf import ViewStatus
 from gui.impl.backport import BackportTooltipWindow
@@ -142,14 +142,16 @@ class BaseAmmunitionSetupView(ViewImpl):
     @async
     def _doChangeSetupLayoutIndex(self, groupID, layoutIdx):
         changeSetupLayout = True
-        self.viewModel.setIsReady(False)
+        self._tankSetup.setLocked(True)
         sections = self._ammunitionPanel.getSectionsByGroup(groupID)
         currentSection = self._tankSetup.getSelectedSetup()
         if sections and currentSection in sections:
             changeSetupLayout = yield await(self._tankSetup.canQuit(skipApplyAutoRenewal=True))
         if changeSetupLayout:
-            self._ammunitionPanel.onChangeSetupLayoutIndex(groupID, layoutIdx)
-        self.viewModel.setIsReady(True)
+            yield await_callback(self._ammunitionPanel.onChangeSetupLayoutIndex)(groupID, layoutIdx)
+        self._tankSetup.setLocked(False)
+        if changeSetupLayout:
+            self._tankSetup.update()
         raise AsyncReturn(changeSetupLayout)
 
     def _onChangeSetupIndex(self, args):

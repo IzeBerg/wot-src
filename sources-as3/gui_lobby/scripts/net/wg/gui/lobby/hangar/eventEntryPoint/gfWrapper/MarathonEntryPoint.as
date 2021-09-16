@@ -33,7 +33,11 @@ package net.wg.gui.lobby.hangar.eventEntryPoint.gfWrapper
       private static const HEIGHT_SMALL:int = 120 + SHADOW_EXTRA_HEIGHT;
       
       {
+         SIZES[EntryPointSize.SMALL] = [WIDTH_SMALL,HEIGHT_SMALL];
          SIZES[EntryPointSize.SMALL | EntryPointSize.WIDE_MASK] = [WIDTH_SMALL,HEIGHT_SMALL];
+         SIZES[EntryPointSize.MEDIUM] = [WIDTH_SMALL,HEIGHT_SMALL];
+         SIZES[EntryPointSize.MEDIUM | EntryPointSize.WIDE_MASK] = [WIDTH_BIG,HEIGHT_BIG];
+         SIZES[EntryPointSize.BIG] = [WIDTH_BIG,HEIGHT_BIG];
          SIZES[EntryPointSize.BIG | EntryPointSize.WIDE_MASK] = [WIDTH_BIG,HEIGHT_BIG];
       }
       

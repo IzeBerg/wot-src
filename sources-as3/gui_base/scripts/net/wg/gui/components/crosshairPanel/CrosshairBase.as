@@ -503,6 +503,7 @@ package net.wg.gui.components.crosshairPanel
       
       private function setAmmoCount(param1:Number, param2:Boolean) : void
       {
+         var _loc3_:Boolean = this._isLow != param2 || this._count != param1;
          if(!(this._isLow == param2 && this._currentAmmoTextField && (this._currentAmmoTextField == this.ammoLowTextField || this._currentAmmoTextField == this.ammoNormalTextField)))
          {
             this._isLow = param2;
@@ -514,7 +515,7 @@ package net.wg.gui.components.crosshairPanel
             this._currentAmmoTextField = !!this._isLow ? this.ammoLowTextField : this.ammoNormalTextField;
             this.updateAmmoCountVisibility();
          }
-         if(this._count != param1)
+         if(_loc3_)
          {
             this._count = param1;
             this._currentAmmoTextField.text = this._count.toString();

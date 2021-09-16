@@ -6,6 +6,7 @@ from debug_utils import LOG_ERROR
 from aih_constants import ShakeReason
 from VehicleStickers import VehicleStickers
 from shared_utils import findFirst
+from items.components.component_constants import MAIN_TRACK_PAIR_IDX
 from vehicle_systems.components.terrain_circle_component import TerrainCircleComponent
 from vehicle_systems.components import engine_state
 from vehicle_systems.stricted_loading import makeCallbackWeak, loadingPriority
@@ -66,6 +67,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         return
 
     def setVehicle(self, vehicle):
+        _logger.info('CompoundAppearance::setVehicle vid=%s; ds=%s', vehicle.id, self.damageState.state)
         self._vehicle = vehicle
         if self.customEffectManager is not None:
             self.customEffectManager.setVehicle(vehicle)
@@ -103,6 +105,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         return (chassisCollisionMatrix, gunNodeName)
 
     def activate(self):
+        _logger.info('CompoundAppearance::activate. v=%s. ds=%s', self._vehicle, self.damageState.state)
         if self.__activated or self._vehicle is None:
             return
         player = BigWorld.player()
@@ -133,6 +136,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         return
 
     def deactivate(self, stopEffects=True):
+        _logger.info('CompoundAppearance::deactivate. v=%s. ds=%s', self._vehicle, self.damageState.state)
         if not self.__activated:
             return
         else:
@@ -254,6 +258,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         return
 
     def destroy(self):
+        _logger.info('CompoundAppearance::destroy. v=%s. ds=%s', self._vehicle, self.damageState.state)
         if self._vehicle is not None:
             self.deactivate()
         self.__destroyEngineAudition()
@@ -271,6 +276,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         return
 
     def construct(self, isPlayer, resourceRefs):
+        _logger.info('CompoundAppearance::construct. v=%s. ds=%s', self._vehicle, self.damageState.state)
         super(CompoundAppearance, self).construct(isPlayer, resourceRefs)
         if self.damageState.effect is not None:
             self.playEffect(self.damageState.effect, SpecialKeyPointNames.STATIC)
@@ -337,6 +343,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         return
 
     def onVehicleHealthChanged(self, showEffects=True):
+        _logger.info('CompoundAppearance::onVehicleHealthChanged. v=%s. ds=%s', self._vehicle, self.damageState.state)
         vehicle = self._vehicle
         if not vehicle.isAlive() and vehicle.health > 0:
             self.changeEngineMode((0, 0))
@@ -391,36 +398,36 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
             return
         super(CompoundAppearance, self).receiveShotImpulse(direction, impulse)
 
-    def addCrashedTrack(self, isLeft):
+    def addCrashedTrack(self, isLeft, pairIndex=0):
         if not self._vehicle.isAlive():
             return
-        else:
-            if self.crashedTracksController is not None:
-                self.crashedTracksController.addTrack(isLeft, self.isLeftSideFlying if isLeft else self.isRightSideFlying)
-            self.onChassisDestroySound(isLeft, True)
+        self._addCrashedTrack(isLeft, pairIndex, self.isLeftSideFlying if isLeft else self.isRightSideFlying)
+        self.onChassisDestroySound(isLeft, True, trackPairIdx=pairIndex)
+
+    def delCrashedTrack(self, isLeft, pairIndex=0):
+        self._delCrashedTrack(isLeft, pairIndex)
+        self.onChassisDestroySound(isLeft, False, trackPairIdx=pairIndex)
+
+    def onChassisDestroySound(self, isLeft, destroy, wheelsIdx=-1, trackPairIdx=MAIN_TRACK_PAIR_IDX):
+        if self._vehicle is None:
             return
-
-    def delCrashedTrack(self, isLeft):
-        if self.crashedTracksController is not None:
-            self.crashedTracksController.delTrack(isLeft)
-        self.onChassisDestroySound(isLeft, False)
-        return
-
-    def onChassisDestroySound(self, isLeft, destroy, wheelsIdx=-1):
-        if not self._vehicle.isEnteringWorld and self.engineAudition:
-            if wheelsIdx == -1:
-                if isLeft:
-                    position = Math.Matrix(self.compoundModel.node(TankNodeNames.TRACK_LEFT_MID)).translation
+        else:
+            if not self._vehicle.isEnteringWorld and self.engineAudition:
+                if wheelsIdx == -1:
+                    if isLeft:
+                        position = Math.Matrix(self.compoundModel.node(TankNodeNames.TRACK_LEFT_MID)).translation
+                    else:
+                        position = Math.Matrix(self.compoundModel.node(TankNodeNames.TRACK_RIGHT_MID)).translation
+                    materialType = 0
                 else:
-                    position = Math.Matrix(self.compoundModel.node(TankNodeNames.TRACK_RIGHT_MID)).translation
-                materialType = 0
-            else:
-                position = self.wheelsAnimator.getWheelWorldTransform(wheelsIdx).translation
-                materialType = 0 if self.wheelsAnimator.isWheelDeflatable(wheelsIdx) else 1
-            vehicle = self.getVehicle()
-            if not destroy and vehicle.isPlayerVehicle and any(device.groupName == 'extraHealthReserve' for device in vehicle.getOptionalDevices() if device is not None):
-                SoundGroups.g_instance.playSound2D('cons_springs')
-            self.engineAudition.onChassisDestroy(position, destroy, materialType)
+                    position = self.wheelsAnimator.getWheelWorldTransform(wheelsIdx).translation
+                    materialType = 0 if self.wheelsAnimator.isWheelDeflatable(wheelsIdx) else 1
+                vehicle = self.getVehicle()
+                if not destroy and vehicle.isPlayerVehicle and any(device.groupName == 'extraHealthReserve' for device in vehicle.getOptionalDevices() if device is not None):
+                    SoundGroups.g_instance.playSound2D('cons_springs')
+                if trackPairIdx == MAIN_TRACK_PAIR_IDX:
+                    self.engineAudition.onChassisDestroy(position, destroy, materialType)
+            return
 
     def turretDamaged(self):
         player = BigWorld.player()
@@ -463,12 +470,13 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
 
     def getBounds(self, partIdx):
         if self.collisions is not None:
-            return self.collisions.getBoundingBox(DamageFromShotDecoder.convertComponentIndex(partIdx))
+            return self.collisions.getBoundingBox(DamageFromShotDecoder.convertComponentIndex(partIdx, vehicleDesc=self.typeDescriptor))
         else:
             return (
              Math.Vector3(0.0, 0.0, 0.0), Math.Vector3(0.0, 0.0, 0.0), 0)
 
     def __requestModelsRefresh(self):
+        _logger.info('CompoundAppearance::__requestModelsRefresh. v=%s. ds=%s', self._vehicle, self.damageState.state)
         self._onRequestModelsRefresh()
         self._isTurretDetached = self._vehicle.isTurretDetached
         modelsSetParams = self.modelsSetParams
@@ -477,6 +485,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         BigWorld.loadResourceListBG((assembler, collisionAssembler), makeCallbackWeak(self.__onModelsRefresh, modelsSetParams.state), loadingPriority(self._vehicle.id))
 
     def __onModelsRefresh(self, modelState, resourceList):
+        _logger.info('CompoundAppearance::__onModelsRefresh. v=%s. ds=%s', self._vehicle, self.damageState.state)
         if BattleReplay.isFinished():
             return
         else:
@@ -507,9 +516,9 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
             self.__prepareSystemsForDamagedVehicle(self._vehicle, self.isTurretDetached)
             self.__processPostmortemComponents()
             if isRightSideFlying:
-                self.fashion.changeTrackVisibility(False, False)
+                self.fashion.changeTrackVisibility(False, False, MAIN_TRACK_PAIR_IDX)
             if isLeftSideFlying:
-                self.fashion.changeTrackVisibility(True, False)
+                self.fashion.changeTrackVisibility(True, False, MAIN_TRACK_PAIR_IDX)
             self._setupModels()
             self.__reattachComponents(self.compoundModel)
             self._connectCollider()
@@ -617,7 +626,8 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
 
     def _createStickers(self, vehInfo):
         insigniaRank = self._vehicle.publicInfo['marksOnGun']
-        vehicleStickers = VehicleStickers(self.typeDescriptor, insigniaRank, self.outfit)
+        vId = self._vehicle.id if self._vehicle is not None else -1
+        vehicleStickers = VehicleStickers(self.typeDescriptor, insigniaRank, self.outfit, vehicleId=vId)
         vehicleStickers.setClanID(vehInfo['clanDBID'])
         return vehicleStickers
 

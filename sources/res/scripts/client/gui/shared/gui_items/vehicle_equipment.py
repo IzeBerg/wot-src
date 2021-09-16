@@ -3,7 +3,7 @@ from itertools import chain
 from account_shared import LayoutIterator
 from items.components.supply_slots_components import SupplySlot
 from items.vehicles import VehicleDescriptor
-from post_progression_common import TankSetupLayouts, MAX_LAYOUTS_NUMBER_ON_VEHICLE, GROUP_ID_BY_LAYOUT
+from post_progression_common import TankSetupLayouts, GROUP_ID_BY_LAYOUT, DEFAULT_LAYOUT_CAPACITY, SETUPS_FEATURES, GROUP_ID_BY_FEATURE, SWITCH_LAYOUT_CAPACITY, TANK_SETUP_GROUPS, getLayoutCapacity
 from shared_utils import first
 from helpers import dependency
 from skeletons.gui.shared.gui_items import IGuiItemsFactory
@@ -19,6 +19,7 @@ EMPTY_INVENTORY_DATA = [
  ZERO_COMP_DESCR]
 LAYOUT_ITEM_SIZE = 2
 EMPTY_ITEM = None
+SUPPORT_EXT_DATA_FEATURES = 'vehiclePostProgressionFeatures'
 
 class _Equipment(object):
     __slots__ = ('_storage', '__guiItemType', '__capacity', '_proxy')
@@ -446,13 +447,14 @@ class _ShellsCollector(_EquipmentCollector):
         layoutDict = {cd:count for cd, count, _ in LayoutIterator(shellsLayout)}
         missed = []
         shellsLayout = shellsLayout[:]
+        shellsCDs = shellsLayout[::2]
         for shot in vehDescr.gun.shots:
             cd = shot.shell.compactDescr
             if cd in layoutDict:
                 count = 0
                 if cd in installedDict:
                     count = min(installedDict.get(cd, 0), layoutDict.get(cd, 0))
-                idx = shellsLayout.index(cd) + 1
+                idx = shellsCDs.index(cd) * 2 + 1
                 shellsLayout[idx] = count
             else:
                 missed.append(cd)
@@ -602,11 +604,11 @@ class _OptDevicesCollector(_EquipmentCollector):
 
 
 class _EquipmentsSetupGroups(object):
-    __slots__ = ('_groups', )
+    __slots__ = ('_groups', '__capacity')
 
-    def __init__(self, invData):
+    def __init__(self, invData, postProgressionFeatures, vehDescr):
         super(_EquipmentsSetupGroups, self).__init__()
-        self._groups = self._parse(invData)
+        self._groups, self.__capacity = self._parse(invData, postProgressionFeatures, vehDescr)
 
     def __eq__(self, setupGroups):
         if len(self._groups.keys()) != len(setupGroups.groups.keys()):
@@ -631,7 +633,7 @@ class _EquipmentsSetupGroups(object):
         return self._groups.get(groupID, 0)
 
     def getGroupCapacity(self, groupID):
-        return MAX_LAYOUTS_NUMBER_ON_VEHICLE.get(groupID, 0)
+        return self.__capacity.get(groupID, DEFAULT_LAYOUT_CAPACITY)
 
     def getNextLayoutIndex(self, groupID):
         index = self.getLayoutIndex(groupID) + 1
@@ -639,8 +641,24 @@ class _EquipmentsSetupGroups(object):
             return index
         return 0
 
-    def _parse(self, invData):
-        return invData.get('layoutIndexes', {}).copy()
+    def _parse(self, invData, postProgressionFeatures, vehDescr):
+        groups = invData.get('layoutIndexes', {}).copy()
+        capacity = {}
+        if postProgressionFeatures:
+            for featureCD in postProgressionFeatures:
+                feature = vehicles.g_cache.postProgression().features[featureCD]
+                if feature.name in SETUPS_FEATURES:
+                    capacity[GROUP_ID_BY_FEATURE.get(feature.name)] = SWITCH_LAYOUT_CAPACITY
+
+        for group, layouts in TANK_SETUP_GROUPS.iteritems():
+            possibleCapacities = [
+             capacity.get(group, DEFAULT_LAYOUT_CAPACITY)]
+            for layout in layouts:
+                possibleCapacities.append(getLayoutCapacity(invData, layout, vehDescr))
+
+            capacity[group] = max(possibleCapacities)
+
+        return (groups, capacity)
 
 
 class _EquipmentSetupLayout(object):
@@ -823,9 +841,9 @@ class VehicleEquipment(object):
     __slots__ = ('__consumables', '__battleBoosters', '__battleAbilities', '__shells',
                  '__optDevices', '__setupLayouts')
 
-    def __init__(self, itemRequesterProxy, vehDescr, invData):
+    def __init__(self, itemRequesterProxy, vehDescr, invData, postProgressionFeatures=None):
         proxy = weakref.proxy(itemRequesterProxy) if itemRequesterProxy else None
-        self.__setupLayouts = setupLayouts = _EquipmentsSetupGroups(invData)
+        self.__setupLayouts = setupLayouts = _EquipmentsSetupGroups(invData, postProgressionFeatures, vehDescr)
         self.__optDevices = _OptDevicesCollector(vehDescr, proxy, setupLayouts, invData)
         self.__shells = _ShellsCollector(vehDescr, proxy, setupLayouts, invData)
         self.__consumables = _ConsumablesCollector(vehDescr, proxy, setupLayouts, invData)

@@ -1,4 +1,4 @@
-import collections, copy, inspect, math, operator, typing
+import collections, copy, inspect, logging, math, operator, typing
 from collections import namedtuple, defaultdict
 from math import ceil
 from itertools import izip_longest
@@ -13,7 +13,7 @@ from gui.shared.items_parameters import functions, getShellDescriptors, getOptio
 from gui.shared.items_parameters.comparator import rateParameterState, PARAM_STATE
 from gui.shared.items_parameters.functions import getBasicShell
 from gui.shared.items_parameters.params_cache import g_paramsCache
-from gui.shared.utils import DAMAGE_PROP_NAME, PIERCING_POWER_PROP_NAME, AIMING_TIME_PROP_NAME, STUN_DURATION_PROP_NAME, GUARANTEED_STUN_DURATION_PROP_NAME, AUTO_RELOAD_PROP_NAME, GUN_AUTO_RELOAD, GUN_CAN_BE_AUTO_RELOAD, MAX_STEERING_LOCK_ANGLE, WHEELED_SWITCH_OFF_TIME, WHEELED_SWITCH_ON_TIME, WHEELED_SWITCH_TIME, WHEELED_SPEED_MODE_SPEED, GUN_DUAL_GUN, GUN_CAN_BE_DUAL_GUN, RELOAD_TIME_SECS_PROP_NAME, DUAL_GUN_CHARGE_TIME, DUAL_GUN_RATE_TIME, TURBOSHAFT_ENGINE_POWER, TURBOSHAFT_SPEED_MODE_SPEED, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR, TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_SWITCH_TIME, TURBOSHAFT_SWITCH_ON_TIME, TURBOSHAFT_SWITCH_OFF_TIME
+from gui.shared.utils import DAMAGE_PROP_NAME, PIERCING_POWER_PROP_NAME, AIMING_TIME_PROP_NAME, STUN_DURATION_PROP_NAME, GUARANTEED_STUN_DURATION_PROP_NAME, AUTO_RELOAD_PROP_NAME, GUN_AUTO_RELOAD, GUN_CAN_BE_AUTO_RELOAD, MAX_STEERING_LOCK_ANGLE, WHEELED_SWITCH_OFF_TIME, WHEELED_SWITCH_ON_TIME, WHEELED_SWITCH_TIME, WHEELED_SPEED_MODE_SPEED, GUN_DUAL_GUN, GUN_CAN_BE_DUAL_GUN, RELOAD_TIME_SECS_PROP_NAME, DUAL_GUN_CHARGE_TIME, DUAL_GUN_RATE_TIME, TURBOSHAFT_ENGINE_POWER, TURBOSHAFT_SPEED_MODE_SPEED, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR, TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_SWITCH_TIME, TURBOSHAFT_SWITCH_ON_TIME, TURBOSHAFT_SWITCH_OFF_TIME, CHASSIS_REPAIR_TIME
 from gui.shared.utils import DISPERSION_RADIUS_PROP_NAME, SHELLS_PROP_NAME, GUN_NORMAL, SHELLS_COUNT_PROP_NAME
 from gui.shared.utils import GUN_CAN_BE_CLIP, RELOAD_TIME_PROP_NAME
 from gui.shared.utils import RELOAD_MAGAZINE_TIME_PROP_NAME, SHELL_RELOADING_TIME_PROP_NAME, GUN_CLIP
@@ -24,9 +24,11 @@ from items.components import component_constants
 from post_progression_common import ACTION_TYPES
 from shared_utils import findFirst, first
 from skeletons.gui.lobby_context import ILobbyContext
+from skeletons.gui.shared import IItemsCache
 from soft_exception import SoftException
 if typing.TYPE_CHECKING:
     from items.vehicles import VehicleDescriptor, CompositeVehicleDescriptor
+_logger = logging.getLogger(__name__)
 MAX_VISION_RADIUS = 500
 MIN_VISION_RADIUS = 150
 PIERCING_DISTANCES = (50, 500)
@@ -216,6 +218,7 @@ class EngineParams(WeightedParam):
 
 
 class ChassisParams(WeightedParam):
+    itemsCache = dependency.descriptor(IItemsCache)
 
     @property
     def maxLoad(self):
@@ -236,12 +239,28 @@ class ChassisParams(WeightedParam):
             return
 
     @property
+    def chassisRepairTime(self):
+        chassis = self._itemDescr
+        repairTime = []
+        if chassis.trackPairs:
+            for track in chassis.trackPairs:
+                repairTime.append(track.healthParams.repairTime)
+
+        else:
+            repairTime.append(chassis.repairTime)
+        return repairTime
+
+    @property
     def isHydraulic(self):
         return self._getPrecachedInfo().isHydraulic
 
     @property
     def isWheeled(self):
         return self._getPrecachedInfo().isWheeled
+
+    @property
+    def isTrackWithinTrack(self):
+        return self._getPrecachedInfo().isTrackWithinTrack
 
     @property
     def hasAutoSiege(self):
@@ -288,7 +307,7 @@ class VehicleParams(_ParameterBase):
     def __getattr__(self, item):
         if KPI.Name.hasValue(item):
             return self.__kpi.getFactor(item)
-        raise AttributeError
+        raise AttributeError(('Cant get factor {0}').format(item))
 
     @property
     def maxHealth(self):
@@ -672,6 +691,21 @@ class VehicleParams(_ParameterBase):
             skillDuration = tankmen.getSkillsConfig().getSkill(skillName).duration
         return kpiFactor + skillDuration
 
+    @property
+    def chassisRepairTime(self):
+        repairTime = []
+        chassis = self._itemDescr.chassis
+        if chassis.trackPairs:
+            for track in chassis.trackPairs:
+                if track.healthParams.repairTime is None:
+                    repairTime = []
+                    break
+                repairTime.append(self.__calcRealChassisRepairTime(track.healthParams.repairTime))
+
+        elif chassis.repairTime is not None:
+            repairTime.append(self.__calcRealChassisRepairTime(chassis.repairTime))
+        return repairTime
+
     def getParamsDict(self, preload=False):
         conditionalParams = ('aimingTime', 'clipFireRate', 'turretYawLimits', 'gunYawLimits',
          'turretRotationSpeed', 'turretArmor', 'reloadTimeSecs',
@@ -681,7 +715,7 @@ class VehicleParams(_ParameterBase):
          WHEELED_SPEED_MODE_SPEED, 'wheelRiseSpeed', TURBOSHAFT_ENGINE_POWER,
          TURBOSHAFT_SPEED_MODE_SPEED, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR,
          TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_SWITCH_TIME, TURBOSHAFT_SWITCH_ON_TIME,
-         TURBOSHAFT_SWITCH_OFF_TIME)
+         TURBOSHAFT_SWITCH_OFF_TIME, CHASSIS_REPAIR_TIME)
         stunConditionParams = ('stunMaxDuration', 'stunMinDuration')
         result = _ParamsDictProxy(self, preload, conditions=(
          (
@@ -781,6 +815,12 @@ class VehicleParams(_ParameterBase):
 
     def _getVehicleDescriptor(self, vehicle):
         return vehicle.descriptor
+
+    def __calcRealChassisRepairTime(self, chassisRepairTime):
+        repairFactor = self.__factors.get('repairSpeed', 1.0)
+        repairKpi = self.__kpi.getFactor('vehicleRepairSpeed') / 100 + 1.0
+        repairChassisKpi = self.__kpi.getFactor('vehicleChassisRepairSpeed') / 100 + 1.0
+        return chassisRepairTime / repairFactor / repairKpi / repairChassisKpi
 
     def __speedLimits(self, limits, miscAttrs=None):
         correction = []

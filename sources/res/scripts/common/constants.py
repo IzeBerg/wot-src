@@ -2096,6 +2096,11 @@ class DISTRIBUTION_PLATFORM(enum.Enum):
     EPIC = 'epic'
 
 
+WGC_PUBLICATION_TO_DISTRIBUTION_PLATFORM = {WGC_PUBLICATION.WGC_UNKNOWN: DISTRIBUTION_PLATFORM.WG, 
+   WGC_PUBLICATION.WGC_PC: DISTRIBUTION_PLATFORM.WG, 
+   WGC_PUBLICATION.WGC_360: DISTRIBUTION_PLATFORM.CHINA_360, 
+   WGC_PUBLICATION.WGC_STEAM: DISTRIBUTION_PLATFORM.STEAM}
+
 class TARGET_LOST_FLAGS:
     INVALID = 1
     KILLED_BY_ME = 2
@@ -2379,6 +2384,7 @@ class MarathonConfig(object):
     URL = 'marathonUrl'
     REWARD_VEHICLE_URL = 'rewardVehicleUrl'
     REWARD_VEHICLE_URL_IGB = 'rewardVehicleUrlIgb'
+    REWARD_STYLE_URL_IGB = 'rewardStyleUrlIgb'
     FINISH_SALE_TIME = 'finishSaleTime'
 
 
@@ -2547,3 +2553,19 @@ class MapsTrainingParameters(enum.IntEnum):
 
 MAPS_REWARDS_INDEX = {'scenarioComplete': 0, 
    'mapComplete': 1}
+
+class EquipSideEffect(enum.IntEnum):
+    AMMO_AUTO_LOADED = 1
+    AMMO_AUTO_LOAD_FAILED = 2
+
+
+class TrackBreakMode(enum.Enum):
+    STOP = 0
+    SLOW = 1
+
+
+class VehicleSide(enum.Enum):
+    FRONT = 0
+    BACK = 1
+    LEFT = 2
+    RIGHT = 3

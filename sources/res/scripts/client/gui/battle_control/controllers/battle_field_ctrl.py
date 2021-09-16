@@ -1,9 +1,13 @@
-import BigWorld, Event
+import typing, BigWorld, Event
 from gui.battle_control.arena_info import vos_collections
 from gui.battle_control.arena_info.interfaces import IBattleFieldController, IVehiclesAndPositionsController
 from gui.battle_control.arena_info.settings import ARENA_LISTENER_SCOPE as _SCOPE, VehicleSpottedStatus, INVALIDATE_OP
 from gui.battle_control.battle_constants import BATTLE_CTRL_ID
 from gui.battle_control.view_components import ViewComponentsController
+if typing.TYPE_CHECKING:
+    from typing import Dict, Iterator, List
+    from Math import Vector3
+    from gui.battle_control.arena_info.arena_vos import VehicleArenaInfoVO
 
 class IBattleFieldListener(object):
 
@@ -140,6 +144,8 @@ class BattleFieldCtrl(IBattleFieldController, IVehiclesAndPositionsController, V
         collection = vos_collections.VehiclesInfoCollection()
         self.__clear()
         for vInfoVO in collection.iterator(arenaDP):
+            if vInfoVO.isObserver():
+                continue
             if not vInfoVO.isAlive():
                 self.__registerDeadVehicle(vInfoVO, arenaDP)
             else:

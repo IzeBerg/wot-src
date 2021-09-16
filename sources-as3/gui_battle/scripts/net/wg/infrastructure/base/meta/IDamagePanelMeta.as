@@ -18,7 +18,7 @@ package net.wg.infrastructure.base.meta
       
       function as_setPlayerInfo(param1:String, param2:String, param3:String, param4:String) : void;
       
-      function as_setup(param1:String, param2:int, param3:String, param4:Array, param5:Array, param6:Boolean, param7:Boolean, param8:Boolean) : void;
+      function as_setup(param1:String, param2:int, param3:String, param4:Array, param5:Array, param6:Boolean, param7:Boolean, param8:Boolean, param9:Boolean) : void;
       
       function as_setupWheeled(param1:int) : void;
       
@@ -32,7 +32,7 @@ package net.wg.infrastructure.base.meta
       
       function as_updateDeviceState(param1:String, param2:String) : void;
       
-      function as_updateRepairingDevice(param1:String, param2:int, param3:Number) : void;
+      function as_updateRepairingDevice(param1:String, param2:int, param3:Number, param4:Boolean) : void;
       
       function as_setVehicleDestroyed() : void;
       

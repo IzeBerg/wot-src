@@ -1,6 +1,7 @@
 package net.wg.gui.battle.views.damagePanel.components.tankIndicator
 {
    import flash.display.Sprite;
+   import net.wg.data.constants.Errors;
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.VehicleModules;
    import net.wg.data.constants.VehicleTypes;
@@ -21,6 +22,8 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
       
       public var isVehicleWithWheel:Boolean = false;
       
+      private var _hasYoh:Boolean = false;
+      
       private var _hull:TankRotator;
       
       private var _gunSPG:DamagePanelItemFrameStates;
@@ -37,6 +40,7 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
          this._indicators[VehicleTypes.SPG] = new TankIndicatorItem(Linkages.SPG_TURRET_UI,Linkages.SPG_HULL_UI);
          this._indicators[VehicleTypes.TANK] = new TankIndicatorItem(Linkages.TANK_TURRET_UI,Linkages.TANK_HULL_UI);
          this._indicators[VehicleTypes.WHEEL] = new TankIndicatorItem(Linkages.WHEEL_TURRET_UI,Linkages.WHEEL_HULL_UI);
+         this._indicators[VehicleTypes.TANK_YOH] = new TankIndicatorItem(Linkages.TANK_YOH_TURRET_UI,Linkages.TANK_YOH_HULL_UI);
       }
       
       override protected function onDispose() : void
@@ -94,6 +98,7 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
       
       public function setModuleState(param1:String, param2:String) : void
       {
+         var _loc3_:Boolean = false;
          if(this.isVehicleWithWheel)
          {
             if(param1 == VehicleModules.GUN || param1 == VehicleModules.TURRET_ROTATOR)
@@ -107,13 +112,21 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
          }
          else if(this.isVehicleWithTurret)
          {
-            if(VehicleModules.checkIsInTurret(param1))
+            if(param1 == VehicleModules.AMMO_BAY && this._hasYoh)
             {
-               this._turretTank.setModuleState(param1,param2);
+               this._hull.setModuleState(param1,param2);
             }
             else
             {
-               this._hull.setModuleState(param1,param2);
+               _loc3_ = VehicleModules.checkIsInTurret(param1);
+               if(_loc3_)
+               {
+                  this._turretTank.setModuleState(param1,param2);
+               }
+               else
+               {
+                  this._hull.setModuleState(param1,param2);
+               }
             }
          }
          else if(param1 == VehicleModules.GUN)
@@ -128,7 +141,10 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
       
       public function setRotatorType(param1:String, param2:Array) : void
       {
-         App.utils.asserter.assert(this._indicators[param1] != null,"Not " + param1 + " type in rotatorLinkages");
+         if(!this._indicators[param1])
+         {
+            App.utils.asserter.assert(this._indicators[param1] != null,param1 + Errors.WASNT_FOUND);
+         }
          this.reset();
          if(this._hull != null)
          {
@@ -191,8 +207,17 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
             this.turret.addChild(this._gunSPG);
          }
          this._hull = _loc3_.hull;
+         this._hull.hasYoh = this._hasYoh;
          this._hull.setYawLimits(param2);
          this.hull.addChild(this._hull);
+      }
+      
+      public function setSpeedMode(param1:Boolean) : void
+      {
+         if(this._hull is WheelRotator)
+         {
+            WheelRotator(this._hull).setSpeedMode(param1);
+         }
       }
       
       public function setWheelCount(param1:int) : void
@@ -216,11 +241,12 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
          }
       }
       
-      public function setSpeedMode(param1:Boolean) : void
+      public function set hasYoh(param1:Boolean) : void
       {
-         if(this._hull is WheelRotator)
+         this._hasYoh = param1;
+         if(this._hull)
          {
-            WheelRotator(this._hull).setSpeedMode(param1);
+            this._hull.hasYoh = param1;
          }
       }
    }

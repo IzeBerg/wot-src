@@ -1,8 +1,12 @@
 package net.wg.gui.components.controls
 {
    import flash.display.Sprite;
+   import flash.events.MouseEvent;
    import flash.text.TextFieldAutoSize;
+   import flash.text.TextFormat;
+   import net.wg.data.constants.Values;
    import net.wg.infrastructure.interfaces.IUIComponentEx;
+   import net.wg.utils.IStyleSheetManager;
    import scaleform.clik.controls.Button;
    
    [InspectableList("visible")]
@@ -11,11 +15,19 @@ package net.wg.gui.components.controls
       
       private static const INVALID_SHOW_ICON:String = "invalidShowIcon";
       
-      private static const EXTERNAL_ICO_LEFT_SHIFT:Number = 7;
+      private static const INVALID_STYLE:String = "invalidStyle";
       
       private static const LINK_OPEN_TAG:String = "<a href=\'event:hyperLink\'>";
       
       private static const LINK_CLOSE_TAG:String = "</a>";
+      
+      private static const NORMAL_STYLE:String = "normal";
+      
+      private static const WHITE_STYLE:String = "while";
+      
+      private static const OUT_ALPHA:Number = 0.7;
+      
+      private static const GAP:Number = 3;
        
       
       public var externalLinkIco:Sprite = null;
@@ -24,8 +36,13 @@ package net.wg.gui.components.controls
       
       private var _isShowLinkIco:Boolean = false;
       
+      private var _styleType:String = "normal";
+      
+      private var _styleSheetManager:IStyleSheetManager;
+      
       public function HyperLink()
       {
+         this._styleSheetManager = App.utils.styleSheetManager;
          super();
          this.externalLinkIco.visible = false;
       }
@@ -36,8 +53,9 @@ package net.wg.gui.components.controls
          preventAutosizing = true;
          super.configUI();
          mouseChildren = true;
-         textField.mouseEnabled = true;
-         App.utils.styleSheetManager.setLinkStyle(textField);
+         mouseEnabled = true;
+         alpha = OUT_ALPHA;
+         invalidate(NORMAL_STYLE);
       }
       
       override protected function draw() : void
@@ -46,6 +64,21 @@ package net.wg.gui.components.controls
          if(isInvalid(INVALID_SHOW_ICON))
          {
             this.updateIcoPosition();
+            this.externalLinkIco.buttonMode = this.externalLinkIco.useHandCursor = enabled;
+         }
+         if(isInvalid(INVALID_STYLE))
+         {
+            switch(this._styleType)
+            {
+               case NORMAL_STYLE:
+                  this._styleSheetManager.setLinkStyle(textField);
+                  break;
+               case WHITE_STYLE:
+                  this._styleSheetManager.setWhiteLinkStyle(textField);
+                  break;
+               default:
+                  this._styleSheetManager.setLinkStyle(textField);
+            }
          }
       }
       
@@ -71,10 +104,10 @@ package net.wg.gui.components.controls
             _loc1_ = textField.text;
             if(this._forceFocusView)
             {
-               _loc1_ = App.utils.styleSheetManager.setForceFocusedStyle(_loc1_);
+               _loc1_ = this._styleSheetManager.setForceFocusedStyle(_loc1_);
             }
             textField.htmlText = LINK_OPEN_TAG + _loc1_ + LINK_CLOSE_TAG;
-            textField.width = textField.textWidth + 4 | 0;
+            textField.width = textField.textWidth + GAP | 0;
             textField.autoSize = TextFieldAutoSize.LEFT;
             this.updatePosition();
          }
@@ -83,14 +116,21 @@ package net.wg.gui.components.controls
       override protected function onDispose() : void
       {
          this.externalLinkIco = null;
+         this._styleSheetManager = null;
          super.onDispose();
+      }
+      
+      public function setWhiteLinkStyle() : void
+      {
+         this._styleType = WHITE_STYLE;
+         invalidate(NORMAL_STYLE);
       }
       
       private function updateIcoPosition() : void
       {
          if(this._isShowLinkIco)
          {
-            this.externalLinkIco.x = textField.x + textField.width + EXTERNAL_ICO_LEFT_SHIFT;
+            this.externalLinkIco.x = textField.x + textField.width;
          }
          this.externalLinkIco.visible = this._isShowLinkIco;
       }
@@ -108,6 +148,13 @@ package net.wg.gui.components.controls
          this.updateIcoPosition();
       }
       
+      private function setUnderline(param1:Boolean) : void
+      {
+         var _loc2_:TextFormat = textField.getTextFormat();
+         _loc2_.underline = param1;
+         textField.setTextFormat(_loc2_);
+      }
+      
       override public function set autoSize(param1:String) : void
       {
          super.autoSize = param1;
@@ -122,6 +169,7 @@ package net.wg.gui.components.controls
          }
          super.enabled = param1;
          buttonMode = useHandCursor = enabled;
+         this.externalLinkIco.buttonMode = this.externalLinkIco.useHandCursor = enabled;
       }
       
       public function get forceFocusView() : Boolean
@@ -144,6 +192,20 @@ package net.wg.gui.components.controls
       {
          this._isShowLinkIco = param1;
          invalidate(INVALID_SHOW_ICON);
+      }
+      
+      override protected function handleMouseRollOver(param1:MouseEvent) : void
+      {
+         alpha = Values.DEFAULT_ALPHA;
+         this.setUnderline(true);
+         super.handleMouseRollOver(param1);
+      }
+      
+      override protected function handleMouseRollOut(param1:MouseEvent) : void
+      {
+         alpha = OUT_ALPHA;
+         this.setUnderline(false);
+         super.handleMouseRollOver(param1);
       }
    }
 }

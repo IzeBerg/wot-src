@@ -10,7 +10,7 @@
 		<loader/>
 	</crew>
 	<supplySlots>5 1 1 6 6 6 7 8 8 8</supplySlots>
-	<postProgressionTree>role_HT_support_level_8</postProgressionTree>
+	<postProgressionTree>role_HT_support</postProgressionTree>
 	<customRoleSlotOptions>2 4</customRoleSlotOptions>
 	<speedLimits>
 		<forward>35</forward>
@@ -185,14 +185,7 @@
 				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.000000</clipAngle>
-				<anchorPosition>
-					-1.5099 0.430995 2.54715
-					<!--BW_String-->
-				</anchorPosition>
-				<anchorDirection>
-					0.00175229 0.999998 -0.000000
-					<!--BW_String-->
-				</anchorDirection>
+				<anchorShift>-0.042705</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -211,14 +204,7 @@
 				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.000000</clipAngle>
-				<anchorPosition>
-					1.50977 0.430974 2.54715
-					<!--BW_String-->
-				</anchorPosition>
-				<anchorDirection>
-					0.00175224 0.999999 -0.000000
-					<!--BW_String-->
-				</anchorDirection>
+				<anchorShift>-0.042706</anchorShift>
 			</slot>
 		</customizationSlots>
 		<customization>
@@ -2770,6 +2756,10 @@
 					<camouflage/>
 				</customizableVehicleAreas>
 			</customization>
+			<repairTime>
+				6.85714293
+				<!--BW_String-->
+			</repairTime>
 		</T80E3_BF>
 	</chassis>
 	<turrets0>
@@ -3078,14 +3068,7 @@
 					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.000000</clipAngle>
-					<anchorPosition>
-						-0.0900335 1.14478 0.608855
-						<!--BW_String-->
-					</anchorPosition>
-					<anchorDirection>
-						0.0017521 0.98627 0.165131
-						<!--BW_String-->
-					</anchorDirection>
+					<anchorShift>0.007293</anchorShift>
 				</slot>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -3104,11 +3087,7 @@
 					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.000000</clipAngle>
-					<anchorPosition>
-						1.02109 0.708336 0.803604
-						<!--BW_String-->
-					</anchorPosition>
-					<anchorDirection>0.835358 0.209476 0.508228</anchorDirection>
+					<anchorShift>-0.052707</anchorShift>
 				</slot>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -3127,14 +3106,7 @@
 					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.000000</clipAngle>
-					<anchorPosition>
-						-1.14388 0.544146 0.708777
-						<!--BW_String-->
-					</anchorPosition>
-					<anchorDirection>
-						-0.835349 0.209485 0.50824
-						<!--BW_String-->
-					</anchorDirection>
+					<anchorShift>-0.032705</anchorShift>
 				</slot>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -3156,14 +3128,7 @@
 					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.000000</clipAngle>
-					<anchorPosition>
-						0.000016 0.772011 -2.74737
-						<!--BW_String-->
-					</anchorPosition>
-					<anchorDirection>
-						0.000000 0.0631677 -0.998003
-						<!--BW_String-->
-					</anchorDirection>
+					<anchorShift>0.245420</anchorShift>
 				</slot>
 			</customizationSlots>
 			<customization>

@@ -8,6 +8,8 @@ package net.wg.gui.battle.views.ammunitionPanel
       public static const VIEW_HIDDEN:String = "onViewHidden";
       
       public static const VIEW_SHOWN:String = "onViewShown";
+      
+      public static const STATE_CHANGED:String = "onStateChanged";
        
       
       public var useAnim:Boolean = false;

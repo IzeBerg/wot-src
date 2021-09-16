@@ -157,6 +157,8 @@ package
       
       public static const DIALOGS_CREATECHANNEL_LABELS_NAME:String = "#messenger:dialogs/createChannel/labels/name";
       
+      public static const DIALOGS_CREATECHANNEL_LABELS_AUTONAME:String = "#messenger:dialogs/createChannel/labels/autoName";
+      
       public static const DIALOGS_CREATECHANNEL_LABELS_PASSWORD:String = "#messenger:dialogs/createChannel/labels/password";
       
       public static const DIALOGS_CREATECHANNEL_LABELS_USEPASSWORD:String = "#messenger:dialogs/createChannel/labels/usePassword";
@@ -837,8 +839,6 @@ package
       
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_VEHICLESRENTED:String = "#messenger:serviceChannelMessages/invoiceReceived/vehiclesRented";
       
-      public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_VEHICLESRENTED_BONUS:String = "#messenger:serviceChannelMessages/invoiceReceived/vehiclesRented/bonus";
-      
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_SLOTSACCRUED:String = "#messenger:serviceChannelMessages/invoiceReceived/slotsAccrued";
       
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_SLOTSDEBITED:String = "#messenger:serviceChannelMessages/invoiceReceived/slotsDebited";
@@ -1096,12 +1096,6 @@ package
       public static const SERVICECHANNELMESSAGES_SYSMSG_TITLES_REPAIR:String = "#messenger:serviceChannelMessages/sysMsg/titles/repair";
       
       public static const SERVICECHANNELMESSAGES_SYSMSG_TITLES_CUSTOMIZATION:String = "#messenger:serviceChannelMessages/sysMsg/titles/customization";
-      
-      public static const SERVICECHANNELMESSAGES_SYSMSG_TITLES_PRIMETIME:String = "#messenger:serviceChannelMessages/sysMsg/titles/primeTime";
-      
-      public static const SERVICECHANNELMESSAGES_SYSMSG_TITLES_RANKEDBATTLESAVAILABLE:String = "#messenger:serviceChannelMessages/sysMsg/titles/rankedBattlesAvailable";
-      
-      public static const SERVICECHANNELMESSAGES_SYSMSG_TITLES_RANKEDBATTLESNOTSET:String = "#messenger:serviceChannelMessages/sysMsg/titles/rankedBattlesNotSet";
       
       public static const SERVICECHANNELMESSAGES_SYSMSG_TITLES_PAYMENTMETHODLINK:String = "#messenger:serviceChannelMessages/sysMsg/titles/paymentMethodLink";
       
@@ -1997,6 +1991,14 @@ package
       
       public static const SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_DISCARDALLPAIRSMODIFICATION_TITLE:String = "#messenger:serviceChannelMessages/vehiclePostProgression/discardAllPairsModification/title";
       
+      public static const SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_PREBATTLESWITCHTOGGLED_SHELLS_CONSUMABLES_SWITCH:String = "#messenger:serviceChannelMessages/vehiclePostProgression/prebattleSwitchToggled/shells_consumables_switch";
+      
+      public static const SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_PREBATTLESWITCHTOGGLED_OPT_DEV_BOOSTERS_SWITCH:String = "#messenger:serviceChannelMessages/vehiclePostProgression/prebattleSwitchToggled/opt_dev_boosters_switch";
+      
+      public static const SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_PREBATTLESWITCHTOGGLED_ENABLED:String = "#messenger:serviceChannelMessages/vehiclePostProgression/prebattleSwitchToggled/enabled";
+      
+      public static const SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_PREBATTLESWITCHTOGGLED_DISABLED:String = "#messenger:serviceChannelMessages/vehiclePostProgression/prebattleSwitchToggled/disabled";
+      
       public static const DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_ENUM:Array = [DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_OFFLINE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_NOTREADY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_READY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_INBATTLE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_AFK];
        
       
@@ -2007,7 +2009,8 @@ package
       
       public static function getSquadChannelTooltipsStatus(param1:String) : String
       {
-         var _loc2_:String = "#messenger:" + "dialogs/squadChannel/tooltips/status/" + param1;
+         var _loc2_:String = null;
+         _loc2_ = "#messenger:" + "dialogs/squadChannel/tooltips/status/" + param1;
          if(DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_ENUM.indexOf(_loc2_) == -1)
          {
             DebugUtils.LOG_WARNING("[getSquadChannelTooltipsStatus]:locale key \"" + _loc2_ + "\" was not found");

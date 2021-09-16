@@ -1176,12 +1176,12 @@
 		<type>dict</type>
 		<value>
 			<item>
-				 https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/5BPContentPage/
+				 https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/6BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/5BPIntroVideo/
+				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/6BPIntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
@@ -1800,6 +1800,40 @@
 				https://frontline.worldoftanks.ru/$LANGUAGE_CODE/information/?modeselector=true
 				<name>default</name>
 				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>vehicleDisclaimerURLs</name>
+		<type>macros</type>
+		<macros>CURRENT_REALM</macros>
+		<value>
+			<item>
+				<name>RU</name>
+				<type>dict</type>
+				<value>
+					<item>
+						https://legal.ru.wargaming.net/ru/t34-t72-info/
+						<name>t34_disclaimer</name>
+						<type>url</type>
+					</item>
+				</value>
+			</item>
+			<item>
+				<name>DEV</name>
+				<type>dict</type>
+				<value>
+					<item>
+						https://legal.ru.wargaming.net/ru/t34-t72-info/
+						<name>t34_disclaimer</name>
+						<type>url</type>
+					</item>
+				</value>
+			</item>
+			<item>
+				<name>default</name>
+				<type>dict</type>
+				<value/>
 			</item>
 		</value>
 	</setting>

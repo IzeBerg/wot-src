@@ -12,7 +12,7 @@ class CurrencyType(Enum):
     GOLD = 'gold'
     CRYSTAL = 'crystal'
     XP = 'xp'
-    FREEXP = 'freeXp'
+    FREEXP = 'freeXP'
 
 
 class CurrencyViewModel(ViewModel):

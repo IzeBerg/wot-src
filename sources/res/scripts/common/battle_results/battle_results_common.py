@@ -407,6 +407,8 @@ BATTLE_RESULTS = [
  (
   'dossierPopUps', list, [], None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
  (
+  'dossierLogRecords', list, [], None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
+ (
   'vehTypeLockTime', int, 0, None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
  (
   'serviceProviderID', int, 0, None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
@@ -692,6 +694,8 @@ BATTLE_RESULTS = [
  (
   'quickShellChangerUsageCount', int, 0, None, 'skip', ENTRY_TYPE.SERVER),
  (
-  'setupsIndexes', dict, {}, None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
+  'setupsIndexes', dict, {}, None, 'any', ENTRY_TYPE.VEHICLE_SELF),
  (
-  'startAmmo', list, [], None, 'skip', ENTRY_TYPE.SERVER)]
+  'startAmmo', list, [], None, 'skip', ENTRY_TYPE.SERVER),
+ (
+  'initialVehicleAmmo', list, [], None, 'skip', ENTRY_TYPE.SERVER)]

@@ -16,7 +16,7 @@ if typing.TYPE_CHECKING:
 PrecachedShell = namedtuple('PrecachedShell', 'guns params')
 PrecachedEquipment = namedtuple('PrecachedEquipment', 'nations params')
 PrecachedOptionalDevice = namedtuple('PrecachedOptionalDevice', 'weight nations')
-PrecachedChassis = namedtuple('PrecachedChassis', 'isHydraulic, isWheeled, hasAutoSiege')
+PrecachedChassis = namedtuple('PrecachedChassis', 'isHydraulic, isWheeled, hasAutoSiege, isTrackWithinTrack')
 PrecachedEngine = namedtuple('PrecachedEngine', 'hasTurboshaftEngine')
 
 class _PrecachedEngineTypes(object):
@@ -25,20 +25,25 @@ class _PrecachedEngineTypes(object):
 
 
 class _PrecachedChassisTypes(object):
-    DEFAULT = PrecachedChassis(isHydraulic=False, isWheeled=False, hasAutoSiege=False)
-    HYDRAULIC = PrecachedChassis(isHydraulic=True, isWheeled=False, hasAutoSiege=False)
-    WHEELED = PrecachedChassis(isHydraulic=False, isWheeled=True, hasAutoSiege=False)
-    HYDRAULIC_WHEELED = PrecachedChassis(isHydraulic=True, isWheeled=True, hasAutoSiege=False)
-    HYDRAULIC_AUTO_SIEGE = PrecachedChassis(isHydraulic=True, isWheeled=False, hasAutoSiege=True)
+    DEFAULT = PrecachedChassis(isHydraulic=False, isWheeled=False, hasAutoSiege=False, isTrackWithinTrack=False)
+    HYDRAULIC = PrecachedChassis(isHydraulic=True, isWheeled=False, hasAutoSiege=False, isTrackWithinTrack=False)
+    WHEELED = PrecachedChassis(isHydraulic=False, isWheeled=True, hasAutoSiege=False, isTrackWithinTrack=False)
+    HYDRAULIC_WHEELED = PrecachedChassis(isHydraulic=True, isWheeled=True, hasAutoSiege=False, isTrackWithinTrack=False)
+    HYDRAULIC_AUTO_SIEGE = PrecachedChassis(isHydraulic=True, isWheeled=False, hasAutoSiege=True, isTrackWithinTrack=False)
+    TRACK_WITHIN_TRACK = PrecachedChassis(isHydraulic=False, isWheeled=False, hasAutoSiege=False, isTrackWithinTrack=True)
     ALL = (
-     DEFAULT, HYDRAULIC, WHEELED, HYDRAULIC_WHEELED, HYDRAULIC_AUTO_SIEGE)
-    MAP = dict(((pC.isHydraulic, pC.isWheeled, pC.hasAutoSiege), pC) for pC in ALL)
+     DEFAULT, HYDRAULIC, WHEELED, HYDRAULIC_WHEELED, HYDRAULIC_AUTO_SIEGE, TRACK_WITHIN_TRACK)
+    MAP = dict(((pC.isHydraulic, pC.isWheeled, pC.hasAutoSiege, pC.isTrackWithinTrack), pC) for pC in ALL)
 
 
 def isHydraulicChassis(vDescr):
     if vDescr.hasSiegeMode:
         return vDescr.hasHydraulicChassis or vDescr.isWheeledVehicle or vDescr.hasAutoSiegeMode
     return False
+
+
+def isTrackWithinTrackChassis(vChassis):
+    return vChassis.isTrackWithinTrack
 
 
 class PrecachedGun(namedtuple('PrecachedGun', 'clipVehicles autoReloadVehicles dualGunVehicles  params turretsByVehicles')):
@@ -181,6 +186,9 @@ class _ParamsCache(object):
 
     def isChassisWheeled(self, itemCD):
         return self.getPrecachedParameters(itemCD).isWheeled
+
+    def isTrackWithinTrack(self, itemCD):
+        return self.getPrecachedParameters(itemCD).isTrackWithinTrack
 
     def isChassisAutoSiege(self, itemCD):
         return self.getPrecachedParameters(itemCD).hasAutoSiege
@@ -339,7 +347,10 @@ class _ParamsCache(object):
                 for vChs in vDescr.type.chassis:
                     chassisCD = vChs.compactDescr
                     cachedChassisByNation[chassisCD] = _PrecachedChassisTypes.MAP[(
-                     isHydraulicChassis(vDescr), vDescr.isWheeledVehicle, vDescr.hasAutoSiegeMode)]
+                     isHydraulicChassis(vDescr),
+                     vDescr.isWheeledVehicle,
+                     vDescr.hasAutoSiegeMode,
+                     isTrackWithinTrackChassis(vChs))]
                     processedItems.add(chassisCD)
                     if vDescr.isWheeledVehicle:
                         chassisPhysics = vDescr.type.xphysics['chassis'][vChs.name]

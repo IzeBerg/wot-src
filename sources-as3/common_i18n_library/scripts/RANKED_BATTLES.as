@@ -571,37 +571,63 @@ package
       
       public static const STATISTIC_VEHICLERANK:String = "#ranked_battles:statistic/vehicleRank";
       
-      public static const PRIMETIME_TITLE:String = "#ranked_battles:primeTime/title";
+      public static const PRIMETIMES_SERVERTOOLTIP_TIMELEFT_DAYS:String = "#ranked_battles:primeTimes/serverTooltip/timeLeft/days";
       
-      public static const PRIMETIME_TITLEWELCOME:String = "#ranked_battles:primeTime/titleWelcome";
+      public static const PRIMETIMES_SERVERTOOLTIP_TIMELEFT_HOURS:String = "#ranked_battles:primeTimes/serverTooltip/timeLeft/hours";
       
-      public static const PRIMETIME_APPLYBTN:String = "#ranked_battles:primeTime/applyBtn";
+      public static const PRIMETIMES_SERVERTOOLTIP_TIMELEFT_MIN:String = "#ranked_battles:primeTimes/serverTooltip/timeLeft/min";
       
-      public static const PRIMETIME_CONTINUEBTN:String = "#ranked_battles:primeTime/continueBtn";
+      public static const PRIMETIMES_SERVERTOOLTIP_TIMELEFT_LESSMIN:String = "#ranked_battles:primeTimes/serverTooltip/timeLeft/lessMin";
       
-      public static const PRIMETIME_SERVERTOOLTIP:String = "#ranked_battles:primeTime/serverTooltip";
+      public static const PRIMETIMES_SERVERTOOLTIP_UNDEFINED:String = "#ranked_battles:primeTimes/serverTooltip/undefined";
       
-      public static const PRIMETIME_STATUS_SEASONDISABLED:String = "#ranked_battles:primeTime/status/seasonDisabled";
+      public static const PRIMETIMES_SERVERTOOLTIP_AVAILABLE:String = "#ranked_battles:primeTimes/serverTooltip/available";
       
-      public static const PRIMETIME_STATUS_DISABLEFIRST:String = "#ranked_battles:primeTime/status/disableFirst";
+      public static const PRIMETIMES_SERVERTOOLTIP_NOTAVAILABLE:String = "#ranked_battles:primeTimes/serverTooltip/notAvailable";
       
-      public static const PRIMETIME_STATUS_DISABLE:String = "#ranked_battles:primeTime/status/disable";
+      public static const PRIMETIMES_SERVERTOOLTIP_ALLNOTAVAILABLE:String = "#ranked_battles:primeTimes/serverTooltip/allNotAvailable";
       
-      public static const PRIMETIME_STATUS_ALLSERVERSDISABLED:String = "#ranked_battles:primeTime/status/allServersDisabled";
+      public static const PRIMETIMES_SERVERTOOLTIP_NOTAVAILABLEEND:String = "#ranked_battles:primeTimes/serverTooltip/notAvailableEnd";
       
-      public static const PRIMETIME_STATUS_UNTILL:String = "#ranked_battles:primeTime/status/untill";
+      public static const PRIMETIMES_SERVERTOOLTIP_ALLNOTAVAILABLEEND:String = "#ranked_battles:primeTimes/serverTooltip/allNotAvailableEnd";
       
-      public static const PRIMETIME_STATUS_PRIMEISAVAILABLE:String = "#ranked_battles:primeTime/status/primeIsAvailable";
+      public static const PRIMETIMES_STATUSTEXT_UNDEFINED:String = "#ranked_battles:primeTimes/statusText/undefined";
       
-      public static const PRIMETIME_STATUS_PRIMEWILLBEAVAILABLE:String = "#ranked_battles:primeTime/status/primeWillBeAvailable";
+      public static const PRIMETIMES_STATUSTEXT_NOTAVAILABLE:String = "#ranked_battles:primeTimes/statusText/notAvailable";
       
-      public static const PRIMETIMEALERTMESSAGEBLOCK_MESSAGE:String = "#ranked_battles:primeTimeAlertMessageBlock/message";
+      public static const PRIMETIMES_STATUSTEXT_ALLNOTAVAILABLE:String = "#ranked_battles:primeTimes/statusText/allNotAvailable";
       
-      public static const PRIMETIME_TOOLTIP_SERVER_ONSERVER:String = "#ranked_battles:primeTime/tooltip/server/onServer";
+      public static const PRIMETIMES_STATUSTEXT_NOTAVAILABLEEND:String = "#ranked_battles:primeTimes/statusText/notAvailableEnd";
       
-      public static const PRIMETIME_TOOLTIP_SERVER_UNAVAILABLE_INTIME:String = "#ranked_battles:primeTime/tooltip/server/unavailable/inTime";
+      public static const PRIMETIMES_STATUSTEXT_ALLNOTAVAILABLEEND:String = "#ranked_battles:primeTimes/statusText/allNotAvailableEnd";
       
-      public static const PRIMETIME_TOOLTIP_SERVER_AVAILABLE_UNTILL:String = "#ranked_battles:primeTime/tooltip/server/available/untill";
+      public static const PRIMETIMES_STATUSTEXT_NOTSET:String = "#ranked_battles:primeTimes/statusText/notSet";
+      
+      public static const PRIMETIMES_TIMETEXT_UNDEFINED:String = "#ranked_battles:primeTimes/timeText/undefined";
+      
+      public static const PRIMETIMES_TIMETEXT_AVAILABLE:String = "#ranked_battles:primeTimes/timeText/available";
+      
+      public static const PRIMETIMES_TIMETEXT_NOTAVAILABLE:String = "#ranked_battles:primeTimes/timeText/notAvailable";
+      
+      public static const PRIMETIMES_TIMETEXT_ALLNOTAVAILABLE:String = "#ranked_battles:primeTimes/timeText/allNotAvailable";
+      
+      public static const PRIMETIMES_TIMETEXT_NOTAVAILABLEEND:String = "#ranked_battles:primeTimes/timeText/notAvailableEnd";
+      
+      public static const PRIMETIMES_TIMETEXT_ALLNOTAVAILABLEEND:String = "#ranked_battles:primeTimes/timeText/allNotAvailableEnd";
+      
+      public static const PRIMETIMES_SERVERTOOLTIP_STANDALONENOTAVAILABLE:String = "#ranked_battles:primeTimes/serverTooltip/standaloneNotAvailable";
+      
+      public static const PRIMETIMES_SERVERTOOLTIP_STANDALONENOTAVAILABLEEND:String = "#ranked_battles:primeTimes/serverTooltip/standaloneNotAvailableEnd";
+      
+      public static const PRIMETIMES_STATUSTEXT_STANDALONENOTAVAILABLE:String = "#ranked_battles:primeTimes/statusText/standaloneNotAvailable";
+      
+      public static const PRIMETIMES_STATUSTEXT_STANDALONENOTAVAILABLEEND:String = "#ranked_battles:primeTimes/statusText/standaloneNotAvailableEnd";
+      
+      public static const PRIMETIMES_STATUSTEXT_STANDALONENOTSET:String = "#ranked_battles:primeTimes/statusText/standaloneNotSet";
+      
+      public static const PRIMETIMES_TIMETEXT_STANDALONENOTAVAILABLE:String = "#ranked_battles:primeTimes/timeText/standaloneNotAvailable";
+      
+      public static const PRIMETIMES_TIMETEXT_STANDALONENOTAVAILABLEEND:String = "#ranked_battles:primeTimes/timeText/standaloneNotAvailableEnd";
       
       public static const CALENDARDAY_TITLE:String = "#ranked_battles:calendarDay/title";
       
@@ -624,6 +650,8 @@ package
       public static const SELECTORTOOLTIP_TIMETABLE_TOMORROW:String = "#ranked_battles:selectorTooltip/timeTable/tomorrow";
       
       public static const SELECTORTOOLTIP_TIMETABLE_EMPTY:String = "#ranked_battles:selectorTooltip/timeTable/empty";
+      
+      public static const SELECTORTOOLTIP_TIMETABLE_TIME:String = "#ranked_battles:selectorTooltip/timeTable/time";
       
       public static const SELECTORTOOLTIP_TILLEND:String = "#ranked_battles:selectorTooltip/tillEnd";
       
@@ -833,19 +861,37 @@ package
       
       public static const ALERTMESSAGE_UNSUITABLEVEHICLES:String = "#ranked_battles:alertMessage/unsuitableVehicles";
       
-      public static const ALERTMESSAGE_SEASONFINISHED:String = "#ranked_battles:alertMessage/seasonFinished";
+      public static const ALERTMESSAGE_UNDEFINED:String = "#ranked_battles:alertMessage/undefined";
       
-      public static const ALERTMESSAGE_UNSUITABLEPERIPHERY:String = "#ranked_battles:alertMessage/unsuitablePeriphery";
+      public static const ALERTMESSAGE_NOTSET:String = "#ranked_battles:alertMessage/notSet";
       
-      public static const ALERTMESSAGE_SOMEPERIPHERIESHALT:String = "#ranked_battles:alertMessage/somePeripheriesHalt";
+      public static const ALERTMESSAGE_ALLNOTSET:String = "#ranked_battles:alertMessage/allNotSet";
       
-      public static const ALERTMESSAGE_SINGLEMODEHALT:String = "#ranked_battles:alertMessage/singleModeHalt";
+      public static const ALERTMESSAGE_STANDALONENOTSET:String = "#ranked_battles:alertMessage/standaloneNotSet";
       
-      public static const ALERTMESSAGE_ALLPERIPHERIESHALT:String = "#ranked_battles:alertMessage/allPeripheriesHalt";
+      public static const ALERTMESSAGE_NOTAVAILABLE:String = "#ranked_battles:alertMessage/notAvailable";
+      
+      public static const ALERTMESSAGE_ALLNOTAVAILABLE:String = "#ranked_battles:alertMessage/allNotAvailable";
+      
+      public static const ALERTMESSAGE_STANDALONENOTAVAILABLE:String = "#ranked_battles:alertMessage/standaloneNotAvailable";
+      
+      public static const ALERTMESSAGE_NOTAVAILABLEEND:String = "#ranked_battles:alertMessage/notAvailableEnd";
+      
+      public static const ALERTMESSAGE_ALLNOTAVAILABLEEND:String = "#ranked_battles:alertMessage/allNotAvailableEnd";
+      
+      public static const ALERTMESSAGE_STANDALONENOTAVAILABLEEND:String = "#ranked_battles:alertMessage/standaloneNotAvailableEnd";
       
       public static const ALERTMESSAGE_BUTTON_CHANGESERVER:String = "#ranked_battles:alertMessage/button/changeServer";
       
       public static const ALERTMESSAGE_BUTTON_MOREINFO:String = "#ranked_battles:alertMessage/button/moreInfo";
+      
+      public static const ALERTMESSAGE_TIMELEFT_DAYS:String = "#ranked_battles:alertMessage/timeLeft/days";
+      
+      public static const ALERTMESSAGE_TIMELEFT_HOURS:String = "#ranked_battles:alertMessage/timeLeft/hours";
+      
+      public static const ALERTMESSAGE_TIMELEFT_MIN:String = "#ranked_battles:alertMessage/timeLeft/min";
+      
+      public static const ALERTMESSAGE_TIMELEFT_LESSMIN:String = "#ranked_battles:alertMessage/timeLeft/lessMin";
       
       public static const QUALIFICATIONREWARDS_DESCRIPTION:String = "#ranked_battles:qualificationRewards/description";
       

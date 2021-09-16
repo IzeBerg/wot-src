@@ -59,7 +59,9 @@ class AmmunitionGroupsController(object):
                 hudGroupID = viewModel.getGroupId()
                 groupID = GROUPS_MAP.get(hudGroupID, None)
                 layoutIdx = self._vehicle.setupLayouts.getLayoutIndex(groupID)
+                capacity = self._vehicle.setupLayouts.getGroupCapacity(groupID)
                 viewModel.setCurrentIndex(layoutIdx)
+                viewModel.setTotalCount(capacity)
                 for group in self._getGroups():
                     if hudGroupID == group.groupID:
                         self._setupStates(viewModel.setupSelector, group)
@@ -104,6 +106,7 @@ class AmmunitionGroupsController(object):
     def _setupStates(self, setupSelectorModel, groupSettings):
         isSwitchEnabled = self._isSwitchEnabled(groupSettings)
         setupSelectorModel.setIsSwitchEnabled(isSwitchEnabled)
+        setupSelectorModel.setIsPrebattleSwitchDisabled(self._isPrebattleSwitchDisabled(groupSettings))
         states = setupSelectorModel.getStates()
         states.clear()
         if isSwitchEnabled:
@@ -128,6 +131,13 @@ class AmmunitionGroupsController(object):
             return False
         groupID = GROUPS_MAP.get(hudGroupID, None)
         return groupID is not None and self._vehicle.isSetupSwitchActive(groupID)
+
+    def _isPrebattleSwitchDisabled(self, groupSettings):
+        groupID = GROUPS_MAP.get(groupSettings.groupID)
+        if groupID is None:
+            return False
+        else:
+            return self._vehicle.postProgression.isPrebattleSwitchDisabled(groupID)
 
     def _getGroups(self):
         return []

@@ -3,6 +3,7 @@ package net.wg.gui.lobby.lobbyVehicleMarkerView
    import flash.display.DisplayObject;
    import flash.utils.Dictionary;
    import net.wg.data.constants.Linkages;
+   import net.wg.gui.components.common.lobbyVehicleMarkers.CustomMarker;
    import net.wg.gui.components.common.lobbyVehicleMarkers.LobbyVehicleMarkers;
    import net.wg.gui.components.common.lobbyVehicleMarkers.PlatoonMarker;
    import net.wg.infrastructure.base.meta.ILobbyVehicleMarkerViewMeta;
@@ -30,6 +31,15 @@ package net.wg.gui.lobby.lobbyVehicleMarkerView
       override protected function allowHandleInput() : Boolean
       {
          return false;
+      }
+      
+      public function as_createCustomMarker(param1:int, param2:String, param3:String) : DisplayObject
+      {
+         var _loc4_:CustomMarker = App.instance.utils.classFactory.getComponent(Linkages.CUSTOM_MARKER,CustomMarker);
+         _loc4_.setInfo(param2,param3);
+         addChild(_loc4_);
+         this._markers[param1] = _loc4_;
+         return _loc4_;
       }
       
       public function as_createMarker(param1:int, param2:String, param3:String) : DisplayObject

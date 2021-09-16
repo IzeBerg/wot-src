@@ -5,7 +5,7 @@ from debug_utils import LOG_CURRENT_EXCEPTION
 from items import vehicles
 from items.components import shared_components
 from soft_exception import SoftException
-from items.components.c11n_constants import ApplyArea, SeasonType, Options, ItemTags, CustomizationType, MAX_CAMOUFLAGE_PATTERN_SIZE, DecalType, HIDDEN_CAMOUFLAGE_ID, PROJECTION_DECALS_SCALE_ID_VALUES, MAX_USERS_PROJECTION_DECALS, CustomizationTypeNames, DecalTypeNames, CustomizationNamesToTypes, ProjectionDecalFormTags, DEFAULT_SCALE_FACTOR_ID, CUSTOMIZATION_SLOTS_VEHICLE_PARTS, CamouflageTilingType, HIDDEN_FOR_USER_TAG, SLOT_TYPE_NAMES, EMPTY_ITEM_ID, SLOT_DEFAULT_ALLOWED_MODEL, EDITING_STYLE_REASONS, CustomizationDisplayType
+from items.components.c11n_constants import ApplyArea, SeasonType, Options, ItemTags, CustomizationType, MAX_CAMOUFLAGE_PATTERN_SIZE, DecalType, HIDDEN_CAMOUFLAGE_ID, PROJECTION_DECALS_SCALE_ID_VALUES, MAX_USERS_PROJECTION_DECALS, CustomizationTypeNames, DecalTypeNames, CustomizationNamesToTypes, ProjectionDecalFormTags, DEFAULT_SCALE_FACTOR_ID, CUSTOMIZATION_SLOTS_VEHICLE_PARTS, CamouflageTilingType, SLOT_TYPE_NAMES, EMPTY_ITEM_ID, SLOT_DEFAULT_ALLOWED_MODEL, EDITING_STYLE_REASONS, CustomizationDisplayType
 from typing import List, Dict, Type, Tuple, Optional, TypeVar, FrozenSet, Set
 from string import lower, upper
 from copy import deepcopy
@@ -716,6 +716,11 @@ class CustomizationCache(object):
                 if usedStyle.progression.defaultLvl > outfit.styleProgressionLevel > len(usedStyle.progression.levels):
                     raise SoftException(('Progression style {} level out of limits').format(styleID))
             projectionDecalsCount = len(outfit.projection_decals)
+            if usedStyle is not None:
+                baseOutfit = usedStyle.outfits.get(season)
+                if baseOutfit:
+                    matchingTaggedProjectionDecals = [ pDecal for pDecal in baseOutfit.projection_decals if pDecal.matchingTag ]
+                    projectionDecalsCount += len(matchingTaggedProjectionDecals)
             if projectionDecalsCount > MAX_USERS_PROJECTION_DECALS:
                 raise SoftException(('projection decals quantity {} greater than acceptable').format(projectionDecalsCount))
             for itemType in CustomizationType.FULL_RANGE:
@@ -900,7 +905,7 @@ def _validateProjectionDecal(component, item, vehDescr, usedStyle=None):
         raise SoftException(('projection decal {} wrong vertically mirrored option for slotId = {}').format(component.id, slotId))
     if item.canBeMirroredOnlyVertically and options ^ Options.COMBO_MIRRORED and options ^ Options.NONE:
         raise SoftException(('projection decal {} must have equal mirroring options for both directions').format(component.id))
-    if HIDDEN_FOR_USER_TAG in slotParams.tags:
+    if slotParams.hiddenForUser:
         raise SoftException(('Hidden for user slot (slotId = {}) can not be in outfit').format(slotId))
     usedModel = SLOT_DEFAULT_ALLOWED_MODEL if usedStyle is None or not usedStyle.modelsSet else usedStyle.modelsSet
     if usedModel not in slotParams.compatibleModels:

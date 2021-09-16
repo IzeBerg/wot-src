@@ -67,7 +67,7 @@ package net.wg.gui.lobby.components
          soundType = SOUND_TYPE;
          mouseEnabled = false;
          mouseChildren = true;
-         this.addEventListener(MouseEvent.CLICK,this.onMouseClickHandler,false,0,true);
+         addEventListener(MouseEvent.CLICK,this.onMouseClickHandler,false,0,true);
          this.vehicleImage.buttonMode = true;
          this.vehicleImage.addEventListener(MouseEvent.CLICK,this.onVehicleClickHandler,false,0,true);
          this.addToComparisonBtn.mouseEnabledOnDisabled = true;
@@ -90,7 +90,7 @@ package net.wg.gui.lobby.components
       
       override protected function onDispose() : void
       {
-         this.removeEventListener(MouseEvent.CLICK,this.onMouseClickHandler);
+         removeEventListener(MouseEvent.CLICK,this.onMouseClickHandler);
          this.vehicleImage.removeEventListener(MouseEvent.CLICK,this.onVehicleClickHandler);
          this.vehicleImage.dispose();
          this.vehicleImage = null;
@@ -108,6 +108,7 @@ package net.wg.gui.lobby.components
          this.premiumBg = null;
          this.premiumAnimation = null;
          this._vehData = null;
+         hitArea = null;
          this._hitMc = null;
          super.onDispose();
       }
@@ -119,7 +120,7 @@ package net.wg.gui.lobby.components
          {
             return;
          }
-         if(this.goToVehicleViewBtn != null && isInvalid(InvalidationType.STATE))
+         if(this.goToVehicleViewBtn && isInvalid(InvalidationType.STATE))
          {
             this.goToVehicleViewBtn.soundType = ICON_BUTTON_SOUND_TYPE;
             this.goToVehicleViewBtn.focusable = false;
@@ -128,6 +129,7 @@ package net.wg.gui.lobby.components
          if(this._vehData && isInvalid(InvalidationType.DATA))
          {
             this.vehicleImage.source = this._vehData.shopIconPath;
+            this._hitMc.graphics.clear();
             this._hitMc.graphics.beginFill(16777215,0);
             this._hitMc.graphics.drawRect(0,0,this.contentWidth,this.contentHeight);
             this._hitMc.graphics.endFill();

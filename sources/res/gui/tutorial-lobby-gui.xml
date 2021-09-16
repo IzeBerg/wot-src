@@ -3806,6 +3806,57 @@
 			</value>
 		</item>
 		<item>
+			<name>AmmunitionSetupHangarEquipmentSlots</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>R.views.lobby.tanksetup.HangarAmmunitionSetup</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>div[id=panel-consumables-section]</value>
+				</item>
+				<item>
+					<name>bootcampHint</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>hideBorder</name>
+							<type>bool</type>
+							<value>False</value>
+						</item>
+						<item>
+							<name>padding</name>
+							<type>dict</type>
+							<value>
+								<item>
+									<name>left</name>
+									<type>float</type>
+									<value>0</value>
+								</item>
+								<item>
+									<name>top</name>
+									<type>float</type>
+									<value>0</value>
+								</item>
+								<item>
+									<name>right</name>
+									<type>float</type>
+									<value>0</value>
+								</item>
+								<item>
+									<name>bottom</name>
+									<type>float</type>
+									<value>0</value>
+								</item>
+							</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
 			<name>MenuHangar</name>
 			<type>dict</type>
 			<value>
@@ -4986,6 +5037,46 @@
 				<item>
 					<name>path</name>
 					<value>vehResearchPanel.gotoPostProgressionBtn</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>ResearchPostProgressionEntryPoint</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>research</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>researchItems:ResearchItemNode.postProgressionEntry.content</value>
 				</item>
 				<item>
 					<name>padding</name>

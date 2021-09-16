@@ -10,8 +10,6 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
       
       public var surveyingDevice:DamagePanelItemFrameStates;
       
-      public var ammoBay:DamagePanelItemFrameStates;
-      
       public function SPGRotator()
       {
          super();
@@ -19,7 +17,7 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
       
       override protected function getModules() : Vector.<DamagePanelItemFrameStates>
       {
-         return super.getModules().concat(new <DamagePanelItemFrameStates>[this.radio,this.surveyingDevice,this.ammoBay]);
+         return super.getModules().concat(new <DamagePanelItemFrameStates>[this.radio,this.surveyingDevice,ammoBay]);
       }
       
       override protected function onDispose() : void
@@ -28,8 +26,8 @@ package net.wg.gui.battle.views.damagePanel.components.tankIndicator
          this.radio = null;
          this.surveyingDevice.dispose();
          this.surveyingDevice = null;
-         this.ammoBay.dispose();
-         this.ammoBay = null;
+         ammoBay.dispose();
+         ammoBay = null;
          super.onDispose();
       }
    }

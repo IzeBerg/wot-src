@@ -124,12 +124,12 @@ class Source(object):
             bonusNode = XMLNode('bonus')
             bonusDelayedNode = XMLNode('bonusDelayed')
             prebattleNode = XMLNode('preBattle')
+            battleNode = XMLNode('battle')
+            prebattleNode.addChild(battleNode)
             accountNode = XMLNode('account')
             prebattleNode.addChild(accountNode)
             vehicleNode = XMLNode('vehicle')
             prebattleNode.addChild(vehicleNode)
-            battleNode = XMLNode('battle')
-            prebattleNode.addChild(battleNode)
             postbattleNode = XMLNode('postBattle')
             mainNode.addChild(prebattleNode)
             mainNode.addChild(postbattleNode)
@@ -360,6 +360,7 @@ class Source(object):
            'bonusLimit': self.__readCondition_int, 
            'isTutorialCompleted': self.__readCondition_bool, 
            'isLinkedSetEnabled': self.__readCondition_bool, 
+           'isSteamAllowed': self.__readCondition_bool, 
            'totalBattles': self.__readBattleResultsConditionList, 
            'accountPrimaryTypes': self.__readListOfInts, 
            'accountSecondaryTypes': self.__readListOfInts}
@@ -530,7 +531,7 @@ class Source(object):
         name = section.asString
         if node.name == 'equipment':
             idx = vehicles.g_cache.equipmentIDs()[name]
-            modules.add(vehicles.g_cache.equipmentIDs()[idx].compactDescr)
+            modules.add(vehicles.g_cache.equipments()[idx].compactDescr)
         else:
             raise SoftException('Unknown consumables(%s)' % node.name)
         node.addChild(modules)

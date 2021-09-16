@@ -62,6 +62,7 @@
 		<_122mm_60_122T_113>254</_122mm_60_122T_113>
 		<_120mm_TG>255</_120mm_TG>
 		<_152mm_GM_45>256</_152mm_GM_45>
+		<_100mm_D54_TA>257</_100mm_D54_TA>
 		<_130mm_59-130T_FL>501</_130mm_59-130T_FL>
 		<_100mm_60-100TA_IGR>60001</_100mm_60-100TA_IGR>
 		<_100mm_62-100T_IGR>60002</_100mm_62-100T_IGR>
@@ -141,10 +142,7 @@
 			</shotDispersionFactors>
 			<shots>
 				<_37mm_Odr_mle._1935>
-					<defaultPortion>
-						1.0
-						<!--BW_String-->
-					</defaultPortion>
+					<defaultPortion>1</defaultPortion>
 					<speed>600</speed>
 					<gravity>
 						9.81
@@ -167,10 +165,7 @@
 					<piercingPower>46 34</piercingPower>
 				</_37mm_FrtPrf1935>
 				<_37mm_OE_mle._1916>
-					<defaultPortion>
-						0.0
-						<!--BW_String-->
-					</defaultPortion>
+					<defaultPortion>0</defaultPortion>
 					<speed>600</speed>
 					<gravity>
 						9.81
@@ -339,7 +334,7 @@
 			<shots>
 				<_37mm_Pzgr36>
 					<defaultPortion>
-						1.0
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>750</speed>
@@ -365,7 +360,7 @@
 				</_37cm_Pzgr40>
 				<_37mm_Sprg.18>
 					<defaultPortion>
-						0.0
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>750</speed>
@@ -450,7 +445,7 @@
 			<shots>
 				<_37mm_AP_M74>
 					<defaultPortion>
-						1.0
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>792</speed>
@@ -476,7 +471,7 @@
 				</_37mm_APC_M51>
 				<_37mm_HE_M63>
 					<defaultPortion>
-						0.0
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>792</speed>
@@ -552,7 +547,7 @@
 			<shots>
 				<_37mm_Pzgr36>
 					<defaultPortion>
-						1.0
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>750</speed>
@@ -578,7 +573,7 @@
 				</_37cm_Pzgr40>
 				<_37mm_Sprg.18>
 					<defaultPortion>
-						0.0
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>750</speed>
@@ -663,7 +658,7 @@
 			<shots>
 				<_40mm_AP>
 					<defaultPortion>
-						1.0
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>732</speed>
@@ -689,7 +684,7 @@
 				</_40mm_APCR>
 				<_40mm_HE>
 					<defaultPortion>
-						0.0
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>732</speed>
@@ -774,7 +769,7 @@
 			<shots>
 				<_45mm_UBR-240A>
 					<defaultPortion>
-						1.0
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>757</speed>
@@ -800,7 +795,7 @@
 				</_45mm_UBR-240PA>
 				<_45mm_UOF-240A>
 					<defaultPortion>
-						0.0
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>757</speed>
@@ -885,7 +880,7 @@
 			<shots>
 				<_47mm_AP>
 					<defaultPortion>
-						1.0
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>488</speed>
@@ -911,7 +906,7 @@
 				</_47mm_APCR>
 				<_47mm_HE>
 					<defaultPortion>
-						0.0
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>488</speed>
@@ -996,7 +991,7 @@
 			<shots>
 				<_47mm_APHE_Type1>
 					<defaultPortion>
-						1.0
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>810</speed>
@@ -1022,7 +1017,7 @@
 				</_47mm_APCR_Type1>
 				<_47mm_HE_Type1>
 					<defaultPortion>
-						0.0
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>810</speed>
@@ -1101,7 +1096,7 @@
 			<shots>
 				<_47mm_APHE_Type1>
 					<defaultPortion>
-						1.0
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>810</speed>
@@ -1127,7 +1122,7 @@
 				</_47mm_APCR_Type1>
 				<_47mm_HE_Type1>
 					<defaultPortion>
-						0.0
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>810</speed>
@@ -1211,7 +1206,7 @@
 			<shots>
 				<_76mm_AP_type1>
 					<defaultPortion>
-						0.80
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>700</speed>
@@ -1237,7 +1232,7 @@
 				</_76mm_APCR_type1>
 				<_76mm_HE_type1>
 					<defaultPortion>
-						0.20
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>700</speed>
@@ -1322,7 +1317,7 @@
 			<shots>
 				<_57mm_AP_Type_97>
 					<defaultPortion>
-						1.0
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>355</speed>
@@ -1348,7 +1343,7 @@
 				</_57mm_HEAT_Type_97>
 				<_57mm_HE_Type_97>
 					<defaultPortion>
-						0.0
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>355</speed>
@@ -1536,7 +1531,7 @@
 			<shots>
 				<_57mm_AP_Type_55_57>
 					<defaultPortion>
-						1.0
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>990</speed>
@@ -1562,7 +1557,7 @@
 				</_57mm_APCR_Type_55_57>
 				<_57mm_HE_Type_55_57>
 					<defaultPortion>
-						0.0
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>990</speed>
@@ -1647,7 +1642,7 @@
 			<shots>
 				<_57mm_AP_Type_55_57>
 					<defaultPortion>
-						1.0
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>990</speed>
@@ -1673,7 +1668,7 @@
 				</_57mm_APCR_Type_55_57>
 				<_57mm_HE_Type_55_57>
 					<defaultPortion>
-						0.0
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>990</speed>
@@ -1758,7 +1753,7 @@
 			<shots>
 				<_57mm_AP_Type_55_57>
 					<defaultPortion>
-						1.0
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>990</speed>
@@ -1784,7 +1779,7 @@
 				</_57mm_APCR_Type_55_57>
 				<_57mm_HE_Type_55_57>
 					<defaultPortion>
-						0.0
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>990</speed>
@@ -1869,7 +1864,7 @@
 			<shots>
 				<_76mm_UBR-354A>
 					<defaultPortion>
-						0.80
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>640</speed>
@@ -1895,7 +1890,7 @@
 				</_76mm_UBR-354MP>
 				<_76mm_UOF-354>
 					<defaultPortion>
-						0.20
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>640</speed>
@@ -1980,7 +1975,7 @@
 			<shots>
 				<_76mm_AP_type1>
 					<defaultPortion>
-						0.80
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>700</speed>
@@ -2006,7 +2001,7 @@
 				</_76mm_APCR_type1>
 				<_76mm_HE_type1>
 					<defaultPortion>
-						0.20
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>700</speed>
@@ -2194,7 +2189,7 @@
 			<shots>
 				<_76mm_AP_M79>
 					<defaultPortion>
-						0.8
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>792</speed>
@@ -2220,7 +2215,7 @@
 				</_76mm_HVAP_M93>
 				<_76mm_HE_M42A1>
 					<defaultPortion>
-						0.2
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>792</speed>
@@ -2306,7 +2301,7 @@
 			<shots>
 				<_76mm_APDS_T_M331>
 					<defaultPortion>
-						0.95
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>1257</speed>
@@ -2332,7 +2327,7 @@
 				</_76mm_APFSDS_T_M464>
 				<_76mm_HE_M352>
 					<defaultPortion>
-						0.05
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>732</speed>
@@ -2418,7 +2413,7 @@
 			<shots>
 				<_85mm_UBR>
 					<defaultPortion>
-						0.80
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>793</speed>
@@ -2444,7 +2439,7 @@
 				</_85mm_HEAT>
 				<_85mm_UOF>
 					<defaultPortion>
-						0.20
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>793</speed>
@@ -2529,7 +2524,7 @@
 			<shots>
 				<_85mm_CJ_365>
 					<defaultPortion>
-						0.80
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>792</speed>
@@ -2555,7 +2550,7 @@
 				</_85mm_367>
 				<_85mm_SB_365>
 					<defaultPortion>
-						0.20
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>792</speed>
@@ -2640,7 +2635,7 @@
 			<shots>
 				<_85mm_CJ_365>
 					<defaultPortion>
-						0.80
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>792</speed>
@@ -2666,7 +2661,7 @@
 				</_85mm_367>
 				<_85mm_SB_365>
 					<defaultPortion>
-						0.20
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>792</speed>
@@ -2853,7 +2848,7 @@
 			<shots>
 				<_85mm_UBR>
 					<defaultPortion>
-						0.80
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>793</speed>
@@ -2879,7 +2874,7 @@
 				</_85mm_HEAT>
 				<_85mm_UOF>
 					<defaultPortion>
-						0.20
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>793</speed>
@@ -3066,7 +3061,7 @@
 			<shots>
 				<_85mm_CB_367G>
 					<defaultPortion>
-						0.80
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>860</speed>
@@ -3092,7 +3087,7 @@
 				</_85mm_Po_367>
 				<_85mm_SB_367G>
 					<defaultPortion>
-						0.20
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>860</speed>
@@ -3175,7 +3170,7 @@
 			<shots>
 				<_85mm_CB_367G>
 					<defaultPortion>
-						0.80
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>880</speed>
@@ -3201,7 +3196,7 @@
 				</_85mm_Po_367>
 				<_85mm_SB_367G>
 					<defaultPortion>
-						0.20
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>880</speed>
@@ -3287,7 +3282,7 @@
 			<shots>
 				<_90mm_AP_M318>
 					<defaultPortion>
-						0.8
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>914</speed>
@@ -3313,7 +3308,7 @@
 				</_90mm_HEAT_M348>
 				<_90mm_HE_T91E3>
 					<defaultPortion>
-						0.2
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>732</speed>
@@ -3399,7 +3394,7 @@
 			<shots>
 				<_100mm_UBR-412>
 					<defaultPortion>
-						0.80
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>900</speed>
@@ -3425,7 +3420,7 @@
 				</_100mm_UBR-412P>
 				<_100mm_UOF-412>
 					<defaultPortion>
-						0.20
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>900</speed>
@@ -3510,7 +3505,7 @@
 			<shots>
 				<_100mm_UBR-412>
 					<defaultPortion>
-						0.80
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>895</speed>
@@ -3536,7 +3531,7 @@
 				</_100mm_UBR-412P>
 				<_100mm_UOF-412>
 					<defaultPortion>
-						0.20
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>895</speed>
@@ -3621,7 +3616,7 @@
 			<shots>
 				<_100mm_UBR-412>
 					<defaultPortion>
-						0.80
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>900</speed>
@@ -3647,7 +3642,7 @@
 				</_100mm_UBR-412P>
 				<_100mm_UOF-412>
 					<defaultPortion>
-						0.20
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>900</speed>
@@ -3732,7 +3727,7 @@
 			<shots>
 				<_100mm_UBR-412>
 					<defaultPortion>
-						0.80
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>900</speed>
@@ -3758,7 +3753,7 @@
 				</_100mm_UBR-412P>
 				<_100mm_UOF-412>
 					<defaultPortion>
-						0.20
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>900</speed>
@@ -3948,7 +3943,7 @@
 			<shots>
 				<_100mm_UBR-412>
 					<defaultPortion>
-						0.80
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>920</speed>
@@ -3974,7 +3969,7 @@
 				</_100mm_UBR-412P>
 				<_100mm_UOF-412>
 					<defaultPortion>
-						0.20
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>920</speed>
@@ -4059,7 +4054,7 @@
 			<shots>
 				<_100mm_UBR-412>
 					<defaultPortion>
-						0.80
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>920</speed>
@@ -4085,7 +4080,7 @@
 				</_100mm_UBR-412P>
 				<_100mm_UOF-412>
 					<defaultPortion>
-						0.20
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>920</speed>
@@ -4098,6 +4093,118 @@
 				</_100mm_UOF-412>
 			</shots>
 		</_100mm_60-100TA>
+		<_100mm_D54_TA>
+			<userString>#china_vehicles:_100mm_D54_TA</userString>
+			<tags/>
+			<level>9</level>
+			<price>166000</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.44
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.56
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>main</recoilEffect>
+			</recoil>
+			<effects>shot_mainext_mb</effects>
+			<reloadEffect>reload85_107</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -20.0 1.0 -20.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 7.0 1.0 7.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>
+				33.25
+				<!--BW_String-->
+			</rotationSpeed>
+			<reloadTime>
+				8.0
+				<!--BW_String-->
+			</reloadTime>
+			<maxAmmo>34</maxAmmo>
+			<aimingTime>
+				2.85714285714286
+				<!--BW_String-->
+			</aimingTime>
+			<weight>2257</weight>
+			<maxHealth>180</maxHealth>
+			<maxRegenHealth>90</maxRegenHealth>
+			<repairCost>8</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.27
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.16
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					4.0
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_100mm_CJ-412GX>
+					<defaultPortion>
+						0.80
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>950</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>215 185</piercingPower>
+				</_100mm_CJ-412GX>
+				<_100mm_TC-412GX>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>1188</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>265 255</piercingPower>
+				</_100mm_TC-412GX>
+				<_100mm_SB-412GX>
+					<defaultPortion>
+						0.20
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>950</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>50 50</piercingPower>
+				</_100mm_SB-412GX>
+			</shots>
+		</_100mm_D54_TA>
 		<_100mm_60_100TG_FT>
 			<userString>#china_vehicles:_100mm_60_100TG_FT</userString>
 			<tags/>
@@ -4275,7 +4382,7 @@
 			<shots>
 				<_100mm_CJ-412G>
 					<defaultPortion>
-						0.80
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>950</speed>
@@ -4301,7 +4408,7 @@
 				</_100mm_TC-412G>
 				<_100mm_SB-412G>
 					<defaultPortion>
-						0.20
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>950</speed>
@@ -4386,7 +4493,7 @@
 			<shots>
 				<_100mm_CJ-412G>
 					<defaultPortion>
-						0.80
+						0.95
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>950</speed>
@@ -4412,7 +4519,7 @@
 				</_100mm_TC-412G>
 				<_100mm_SB-412G>
 					<defaultPortion>
-						0.20
+						0.05
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>950</speed>
@@ -4498,7 +4605,7 @@
 			<shots>
 				<_105mm_APDS_M392A2>
 					<defaultPortion>
-						0.6
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>1478</speed>
@@ -4524,7 +4631,7 @@
 				</_105mm_HEAT_M456>
 				<_105mm_HEP_M393A1>
 					<defaultPortion>
-						0.4
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>732</speed>
@@ -4607,7 +4714,7 @@
 			<shots>
 				<_105mm_APDS_M392A2>
 					<defaultPortion>
-						1.0
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>1200</speed>
@@ -4633,7 +4740,7 @@
 				</_105mm_HEAT_M456>
 				<_105mm_HEP_M393A1>
 					<defaultPortion>
-						0.0
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>732</speed>
@@ -4719,7 +4826,7 @@
 			<shots>
 				<_120mm_CB-472LY>
 					<defaultPortion>
-						0.6
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>1368</speed>
@@ -4745,7 +4852,7 @@
 				</_120mm_PO-120LY>
 				<_120mm_SB-472LY>
 					<defaultPortion>
-						0.4
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>722</speed>
@@ -4831,7 +4938,7 @@
 			<shots>
 				<_122mm_Type_57>
 					<defaultPortion>
-						0.60
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>800</speed>
@@ -4857,7 +4964,7 @@
 				</_122mm_Type_64>
 				<_122mm_Type_68>
 					<defaultPortion>
-						0.40
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>800</speed>
@@ -4942,7 +5049,7 @@
 			<shots>
 				<_122mm_Type_57>
 					<defaultPortion>
-						0.60
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>800</speed>
@@ -4968,7 +5075,7 @@
 				</_122mm_Type_64>
 				<_122mm_Type_68>
 					<defaultPortion>
-						0.40
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>800</speed>
@@ -5044,7 +5151,7 @@
 			<shots>
 				<_122mm_Type_57>
 					<defaultPortion>
-						0.95
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>800</speed>
@@ -5070,7 +5177,7 @@
 				</_122mm_Type_64>
 				<_122mm_Type_68>
 					<defaultPortion>
-						0.05
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>800</speed>
@@ -5155,7 +5262,7 @@
 			<shots>
 				<_122mm_Type_57>
 					<defaultPortion>
-						0.60
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>800</speed>
@@ -5181,7 +5288,7 @@
 				</_122mm_Type_64>
 				<_122mm_Type_68>
 					<defaultPortion>
-						0.40
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>800</speed>
@@ -5266,7 +5373,7 @@
 			<shots>
 				<_122mm_Type_57_CJ>
 					<defaultPortion>
-						0.60
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>800</speed>
@@ -5275,7 +5382,7 @@
 						<!--BW_String-->
 					</gravity>
 					<maxDistance>720</maxDistance>
-					<piercingPower>190 175</piercingPower>
+					<piercingPower>212 200</piercingPower>
 				</_122mm_Type_57_CJ>
 				<_122mm_Type_64_RH>
 					<defaultPortion>
@@ -5288,11 +5395,11 @@
 						<!--BW_String-->
 					</gravity>
 					<maxDistance>720</maxDistance>
-					<piercingPower>250 250</piercingPower>
+					<piercingPower>280 280</piercingPower>
 				</_122mm_Type_64_RH>
 				<_122mm_Type_68>
 					<defaultPortion>
-						0.40
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>800</speed>
@@ -5377,7 +5484,7 @@
 			<shots>
 				<_122mm_CB-472>
 					<defaultPortion>
-						0.60
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>950</speed>
@@ -5403,7 +5510,7 @@
 				</_122mm_PO-122>
 				<_122mm_SB-472>
 					<defaultPortion>
-						0.40
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>950</speed>
@@ -5489,7 +5596,7 @@
 			<shots>
 				<_122mm_CB-472>
 					<defaultPortion>
-						0.60
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>950</speed>
@@ -5515,7 +5622,7 @@
 				</_122mm_PO-122>
 				<_122mm_SB-472>
 					<defaultPortion>
-						0.40
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>950</speed>
@@ -5601,7 +5708,7 @@
 			<shots>
 				<_122mm_CB-472>
 					<defaultPortion>
-						0.60
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>950</speed>
@@ -5627,7 +5734,7 @@
 				</_122mm_PO-122>
 				<_122mm_SB-472>
 					<defaultPortion>
-						0.40
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>950</speed>
@@ -5710,7 +5817,7 @@
 			<shots>
 				<_122mm_CB-472>
 					<defaultPortion>
-						0.60
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>1115</speed>
@@ -5736,7 +5843,7 @@
 				</_122mm_PO-122>
 				<_122mm_SB-472>
 					<defaultPortion>
-						0.40
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>907</speed>
@@ -5815,7 +5922,7 @@
 			<shots>
 				<_122mm_CB-472>
 					<defaultPortion>
-						0.95
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>1000</speed>
@@ -5841,7 +5948,7 @@
 				</_122mm_PO-122>
 				<_122mm_SB-472>
 					<defaultPortion>
-						0.05
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>1000</speed>
@@ -5924,7 +6031,7 @@
 			<shots>
 				<_122mm_CB-472>
 					<defaultPortion>
-						0.95
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>1000</speed>
@@ -5950,7 +6057,7 @@
 				</_122mm_PO-122>
 				<_122mm_SB-472>
 					<defaultPortion>
-						0.05
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>1000</speed>
@@ -6035,7 +6142,7 @@
 			<shots>
 				<_130mm_AP>
 					<defaultPortion>
-						0.60
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>930</speed>
@@ -6061,7 +6168,7 @@
 				</_130mm_HEAT>
 				<_130mm_HE>
 					<defaultPortion>
-						0.40
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>930</speed>
@@ -6147,7 +6254,7 @@
 			<shots>
 				<_130mm_AP>
 					<defaultPortion>
-						0.60
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>930</speed>
@@ -6173,7 +6280,7 @@
 				</_130mm_HEAT>
 				<_130mm_HE>
 					<defaultPortion>
-						0.40
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>930</speed>
@@ -6259,7 +6366,7 @@
 			<shots>
 				<_130mm_AP>
 					<defaultPortion>
-						0.95
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>930</speed>
@@ -6285,7 +6392,7 @@
 				</_130mm_HEAT>
 				<_130mm_HE>
 					<defaultPortion>
-						0.05
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>930</speed>
@@ -6371,7 +6478,7 @@
 			<shots>
 				<_130mm_AP>
 					<defaultPortion>
-						0.95
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>930</speed>
@@ -6397,7 +6504,7 @@
 				</_130mm_HEAT>
 				<_130mm_HE>
 					<defaultPortion>
-						0.05
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>930</speed>
@@ -6479,7 +6586,7 @@
 			<shots>
 				<_130mm_Chuan_bei_482G>
 					<defaultPortion>
-						0.95
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>930</speed>
@@ -6505,7 +6612,7 @@
 				</_130mm_Po_130G>
 				<_130mm_Sha_bao_482G>
 					<defaultPortion>
-						0.05
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>930</speed>
@@ -6591,7 +6698,7 @@
 			<shots>
 				<_130mm_Chuan_bei_482G>
 					<defaultPortion>
-						0.95
+						0.9
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>930</speed>
@@ -6617,7 +6724,7 @@
 				</_130mm_Po_130G>
 				<_130mm_Sha_bao_482G>
 					<defaultPortion>
-						0.05
+						0.1
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>930</speed>
@@ -6696,7 +6803,7 @@
 			<shots>
 				<_152mm_Chuan_bei_547>
 					<defaultPortion>
-						0.95
+						0.75
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>760</speed>
@@ -6722,7 +6829,7 @@
 				</_152mm_Po_152>
 				<_152mm_Sha_bao_547>
 					<defaultPortion>
-						0.05
+						0.25
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>760</speed>
@@ -6805,7 +6912,7 @@
 			<shots>
 				<_152mm_GM_45AP>
 					<defaultPortion>
-						0.95
+						0.75
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>1050</speed>
@@ -6831,7 +6938,7 @@
 				</_152mm_GM_45CR>
 				<_152mm_GM_45HE>
 					<defaultPortion>
-						0.05
+						0.25
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>760</speed>

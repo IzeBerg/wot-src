@@ -6,12 +6,13 @@ from debug_utils import LOG_ERROR
 class StaticDossierBlockDescr(object):
     eventsEnabled = True
 
-    def __init__(self, name, dossierDescr, compDescr, eventsHandlers, popUpRecords, recordsLayout, packing, format, blockSize, initialData):
+    def __init__(self, name, dossierDescr, compDescr, eventsHandlers, popUpRecords, recordsLayout, packing, format, blockSize, initialData, logRecords):
         self.name = name
         self.__dossierDescrRef = weakref.ref(dossierDescr)
         self.__initialCompDescr = compDescr
         self.__eventsHandlers = eventsHandlers
         self.__popUpRecords = popUpRecords
+        self.__logRecords = logRecords
         self.__recordsLayout = recordsLayout
         self.__packing = packing
         self.__format = format
@@ -50,7 +51,9 @@ class StaticDossierBlockDescr(object):
         else:
             self[packing['storage']] ^= 1 << packing['offset']
         if record in self.__popUpRecords:
-            self.__dossierDescrRef().addPopUp(self.name, record, value)
+            self.__dossierDescrRef().addPopUp(self.name, record, value, addLogRecord=False)
+        if record in self.__logRecords:
+            self.__dossierDescrRef().addLogRecord(self.name, record, value)
         _callEventHandlers(eventsEnabled=self.eventsEnabled, handlers=self.__eventsHandlers.get(record, []), dossierDescr=self.__dossierDescrRef(), dossierBlockDescr=self, args=(
          record, value, prevValue))
 
@@ -71,13 +74,23 @@ class StaticDossierBlockDescr(object):
         self.__isExpanded = True
         return self
 
+    def getChanges(self):
+        return self.__changed
+
+    def get(self, key, default=None):
+        if key in self:
+            return self[key]
+        return default
+
     def updateDossierCompDescr(self, dossierCompDescrArray, offset, size):
         if size == 0:
             compDescrArray = array('c', struct.pack(self.__format, *self.__getValuesForPacking()))
+            self.__changed.clear()
             return (
              dossierCompDescrArray[:offset] + compDescrArray + dossierCompDescrArray[offset:], self.__blockSize)
         if self.__isExpanded:
             struct.pack_into(self.__format, dossierCompDescrArray, offset, *self.__getValuesForPacking())
+            self.__changed.clear()
             return (
              dossierCompDescrArray, self.__blockSize)
         for record in self.__changed:
@@ -212,6 +225,9 @@ class DictDossierBlockDescr(object):
         self.__isExpanded = True
         return self
 
+    def getChanges(self):
+        return self.__changed
+
     def updateDossierCompDescr(self, dossierCompDescrArray, offset, size):
         length = len(self.__data)
         newSize = length * self.__itemSize
@@ -344,6 +360,9 @@ class ListDossierBlockDescr(object):
         self.__isExpanded = True
         return self
 
+    def getChanges(self):
+        return self.__changed
+
     def updateDossierCompDescr(self, dossierCompDescrArray, offset, size):
         length = size / self.__itemSize
         newLength = len(self.__list)
@@ -395,7 +414,7 @@ class ListDossierBlockDescr(object):
 class BinarySetDossierBlockDescr(object):
     eventsEnabled = True
 
-    def __init__(self, name, dossierDescr, blockCompDescr, eventHandlers, popUpRecords, valueNames, valueToPosition):
+    def __init__(self, name, dossierDescr, blockCompDescr, eventHandlers, popUpRecords, valueNames, valueToPosition, logRecords):
         self.name = name
         self.__dossierDescrRef = weakref.ref(dossierDescr)
         self.__isExpanded = False
@@ -403,14 +422,19 @@ class BinarySetDossierBlockDescr(object):
         self.__values = valueNames
         self.__eventsHandlers = eventHandlers
         self.__popUpRecords = popUpRecords
+        self.__logRecords = logRecords
         self.__valueToPosition = valueToPosition
         self.__unpackedData = self.__unpack(blockCompDescr)
         self.__cleanEmptyBytes()
+        self.__changed = set()
         return
 
     def expand(self):
         self.__isExpanded = True
         return self
+
+    def getChanges(self):
+        return self.__changed
 
     def add(self, value):
         sizeDiff, byteNum, bitMask = self.__findSizeDiff(value)
@@ -420,9 +444,14 @@ class BinarySetDossierBlockDescr(object):
         if self.__cache:
             self.__cache.add(value)
         if value in self.__popUpRecords:
-            self.__dossierDescrRef().addPopUp(self.name, value, True)
+            self.__dossierDescrRef().addPopUp(self.name, value, True, addLogRecord=False)
+        if value in self.__logRecords:
+            self.__dossierDescrRef().addLogRecord(self.name, value, True)
+        self.__changed.add(value)
         _callEventHandlers(eventsEnabled=self.eventsEnabled, handlers=self.__eventsHandlers.get('_add_', []), dossierDescr=self.__dossierDescrRef(), dossierBlockDescr=self, args=(
          value,))
+        _callEventHandlers(eventsEnabled=self.eventsEnabled, handlers=self.__eventsHandlers.get(value, []), dossierDescr=self.__dossierDescrRef(), dossierBlockDescr=self, args=(
+         value, True))
 
     def remove(self, value):
         sizeDiff, byteNum, bitMask = self.__findSizeDiff(value)
@@ -431,14 +460,19 @@ class BinarySetDossierBlockDescr(object):
         self.__unpackedData[byteNum] &= ~bitMask
         if self.__cache:
             self.__cache.discard(value)
+        self.__changed.add(value)
         if value in self.__popUpRecords:
-            self.__dossierDescrRef().addPopUp(self.name, value, False)
+            self.__dossierDescrRef().addPopUp(self.name, value, False, addLogRecord=False)
+        if value in self.__logRecords:
+            self.__dossierDescrRef().addLogRecord(self.name, value, False)
         packedDataSize = len(self.__unpackedData)
         if byteNum + 1 != packedDataSize:
             return
         self.__cleanEmptyBytes()
         _callEventHandlers(eventsEnabled=self.eventsEnabled, handlers=self.__eventsHandlers.get('_remove_', []), dossierDescr=self.__dossierDescrRef(), dossierBlockDescr=self, args=(
          value,))
+        _callEventHandlers(eventsEnabled=self.eventsEnabled, handlers=self.__eventsHandlers.get(value, []), dossierDescr=self.__dossierDescrRef(), dossierBlockDescr=self, args=(
+         value, False))
 
     def __cleanEmptyBytes(self):
         packedDataSize = len(self.__unpackedData)
@@ -491,6 +525,7 @@ class BinarySetDossierBlockDescr(object):
         return self.__cache
 
     def updateDossierCompDescr(self, dossierCompDescrArray, offset, size):
+        self.__changed.clear()
         data = self.__unpackedData
         newSize = len(data)
         _format = '<%dB' % newSize

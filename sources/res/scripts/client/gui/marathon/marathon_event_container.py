@@ -12,6 +12,7 @@ class MarathonEventContainer(object):
     def __init__(self):
         self.prefix = 'event_marathon'
         self.tokenPrefix = 'event_marathon'
+        self.styleTokenPostfix = ''
         self.urlName = 'marathonUrl'
         self.marathonCompleteUrlAdd = 'overlay/'
         self.vehicleName = ''
@@ -20,7 +21,8 @@ class MarathonEventContainer(object):
         self.hangarFlagName = 'flag_italy'
         self.questsInChain = 10
         self.minVehicleLevel = 6
-        self.awardTokensPostfix = ('COMPLETE', 'PS_STOP')
+        self.awardTokensPostfix = ('complete', 'ps_stop')
+        self.awardPostTokensPostfix = ('post_complete', )
         self.showFlagTooltipBottom = True
         self.flagTooltip = TOOLTIPS_CONSTANTS.MARATHON_QUESTS_PREVIEW
         self.disabledFlagTooltip = TOOLTIPS.MARATHON_OFF
@@ -33,12 +35,14 @@ class MarathonEventContainer(object):
         self.isEnabled = False
         self.isAvailable = False
         self.rewardObtained = False
+        self.postRewardObtained = False
         self.state = MarathonState.UNKNOWN
         self.suspendFlag = False
         self.quest = None
         self.group = None
         self.vehicleID = 0
         self.awardTokens = None
+        self.postAwardTokens = None
         self.tabTooltip = None
         self.infoBody = None
         self.label = ''
@@ -53,6 +57,7 @@ class MarathonEventContainer(object):
     def _initialize(self):
         self.vehicleID = 0 if not self.vehicleName else makeVehicleTypeCompDescrByName(self.vehicleName)
         self.awardTokens = tuple(AWARD_TOKENS_FORMAT.format(self.tokenPrefix, postfix) for postfix in self.awardTokensPostfix)
+        self.postAwardTokens = tuple(AWARD_TOKENS_FORMAT.format(self.tokenPrefix, postfix) for postfix in self.awardPostTokensPostfix)
         self.tabTooltip = getattr(QUESTS, MISSION_TAB_FORMAT.format(self.prefix.upper()), QUESTS.MISSIONS_TAB_MARATHONS)
 
     def _override(self):
@@ -125,4 +130,11 @@ class MarathonEventContainer(object):
         for key in self.awardTokens:
             if key in tokens and tokens[key][TOKEN_COUNT_INDEX] > 0:
                 self.rewardObtained = True
+                break
+
+    def setPostRewardObtained(self, tokens):
+        self.postRewardObtained = False
+        for key in self.postAwardTokens:
+            if key in tokens and tokens[key][TOKEN_COUNT_INDEX] > 0:
+                self.postRewardObtained = True
                 break

@@ -26,9 +26,10 @@ class ACHIEVEMENT_BLOCK:
     RATED_7X7 = 'achievementsRated7x7'
     FALLOUT = 'falloutAchievements'
     EPIC_BATTLE = 'epicBattleAchievements'
+    STEAM = 'steamAchievements'
     ALL = (
      CLIENT, TOTAL, TEAM_7X7, HISTORICAL, UNIQUE, RARE,
-     FORT, SINGLE, CLAN, RATED_7X7, SINGLE_7X7, FALLOUT, EPIC_BATTLE)
+     FORT, SINGLE, CLAN, RATED_7X7, SINGLE_7X7, FALLOUT, EPIC_BATTLE, STEAM)
 
 
 class ACHIEVEMENT_MODE:

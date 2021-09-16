@@ -954,6 +954,9 @@ def __readBonus_group(config, bonusReaders, bonus, section, eventType):
 
 __BONUS_READERS = {'meta': __readMetaSection, 
    'buyAllVehicles': __readBonus_bool, 
+   'buySecretVehicles': __readBonus_bool, 
+   'buySpecialVehicles': __readBonus_bool, 
+   'buyCommonVehicles': __readBonus_bool, 
    'researchAllVehicles': __readBonus_bool, 
    'equipGold': __readBonus_bool, 
    'ultimateLoginPriority': __readBonus_bool, 
@@ -1006,8 +1009,9 @@ __PROBABILITY_READERS = {'optional': __readBonus_optional,
 _RESERVED_NAMES = frozenset(['config', 'properties', 'limitID', 'probability', 'compensation', 'name',
  'shouldCompensated', 'probabilityStageDependence', 'bonusProbability'])
 SUPPORTED_BONUSES = frozenset(__BONUS_READERS.iterkeys())
-SUPPORTED_BONUSES_IDS = dict((n, i) for i, n in enumerate(SUPPORTED_BONUSES))
-SUPPORTED_BONUSES_NAMES = {i:n for i, n in enumerate(SUPPORTED_BONUSES)}
+__SORTED_BONUSES = sorted(SUPPORTED_BONUSES)
+SUPPORTED_BONUSES_IDS = dict((n, i) for i, n in enumerate(__SORTED_BONUSES))
+SUPPORTED_BONUSES_NAMES = {i:n for i, n in enumerate(__SORTED_BONUSES)}
 
 def __readBonusLimit(section):
     properties = {}

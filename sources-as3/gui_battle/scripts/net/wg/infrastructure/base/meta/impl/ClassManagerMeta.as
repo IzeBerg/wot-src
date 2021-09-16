@@ -280,6 +280,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.eventInfoPanel.data.EventInfoPanelVO;
    import net.wg.gui.battle.eventInfoPanel.interfaces.IEventInfoPanel;
    import net.wg.gui.battle.events.BattleSoundEvent;
+   import net.wg.gui.battle.events.RepairAnimEvent;
    import net.wg.gui.battle.interfaces.IBattleInfo;
    import net.wg.gui.battle.interfaces.IFullStats;
    import net.wg.gui.battle.interfaces.IPrebattleTimerBase;
@@ -395,7 +396,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.actionMarkers.StickyMarker;
    import net.wg.gui.battle.views.ammunitionPanel.EpicRespawnAmmunitionPanelView;
    import net.wg.gui.battle.views.ammunitionPanel.PrbAmmunitionPanelEvent;
-   import net.wg.gui.battle.views.ammunitionPanel.PrebattleAmmunitionPanelBg;
    import net.wg.gui.battle.views.ammunitionPanel.PrebattleAmmunitionPanelView;
    import net.wg.gui.battle.views.battleEndWarning.BattleEndWarningPanel;
    import net.wg.gui.battle.views.battleEndWarning.EndWarningPanelEvent;
@@ -1528,6 +1528,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_EVENTS_BATTLESOUNDEVENT:Class = BattleSoundEvent;
       
+      public static const NET_WG_GUI_BATTLE_EVENTS_REPAIRANIMEVENT:Class = RepairAnimEvent;
+      
       public static const NET_WG_GUI_BATTLE_INTERFACES_IBATTLEINFO:Class = IBattleInfo;
       
       public static const NET_WG_GUI_BATTLE_INTERFACES_IFULLSTATS:Class = IFullStats;
@@ -1757,8 +1759,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_AMMUNITIONPANEL_EPICRESPAWNAMMUNITIONPANELVIEW:Class = EpicRespawnAmmunitionPanelView;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_AMMUNITIONPANEL_PRBAMMUNITIONPANELEVENT:Class = PrbAmmunitionPanelEvent;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_AMMUNITIONPANEL_PREBATTLEAMMUNITIONPANELBG:Class = PrebattleAmmunitionPanelBg;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_AMMUNITIONPANEL_PREBATTLEAMMUNITIONPANELVIEW:Class = PrebattleAmmunitionPanelView;
       

@@ -1120,16 +1120,15 @@ class VehiclesBonus(SimpleBonus):
         return vehInfo.get('rent', {}).get('cycle')
 
     def getRentInfo(self, vehInfo):
-        for rentType, getter in (
-         (
-          RentType.TIME_RENT, self.getRentDays),
-         (
-          RentType.BATTLES_RENT, self.getRentBattles),
-         (
-          RentType.WINS_RENT, self.getRentWins)):
-            rentValue = getter(vehInfo)
-            if rentValue:
-                return (rentType, rentValue)
+        if self.isRentVehicle(vehInfo):
+            for rentType, getter in ((RentType.TIME_RENT, self.getRentDays),
+             (
+              RentType.BATTLES_RENT, self.getRentBattles),
+             (
+              RentType.WINS_RENT, self.getRentWins)):
+                rentValue = getter(vehInfo)
+                if rentValue:
+                    return (rentType, rentValue)
 
         return (
          RentType.NO_RENT, 0)

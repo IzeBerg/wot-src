@@ -118,7 +118,8 @@ _DEFAULT_SETTINGS = {'registrationURL': '',
    'personalMissions': {}, 'progressiveItems': {}, 'rankedBattles': {}, 'referralProgram': {}, 'easterEgg': EasterEggProps(True, []), 
    'premiumInfo': {}, 'checkPromoFrequencyInBattles': 5, 
    'vivoxLicense': '', 
-   'spgHitDirectionDelta': 10.0}
+   'spgHitDirectionDelta': 10.0, 
+   'vehicleDisclaimerURLs': {}}
 
 class GuiSettings(object):
 

@@ -1,4 +1,5 @@
 import typing, logging, AccountCommands, BigWorld
+from constants import EquipSideEffect
 from gui import makeHtmlString
 from gui.SystemMessages import SM_TYPE, CURRENCY_TO_SM_TYPE
 from gui.impl import backport
@@ -278,6 +279,11 @@ class CommonModuleInstallProcessor(ModuleProcessor, VehicleItemProcessor):
         if removedItems:
             additionalMessages.append(makeI18nSuccess(self._formMessage('incompatibleEqs'), items=("', '").join(removedItems), type=SM_TYPE.Information))
         additionalMessages.append(makeI18nSuccess(sysMsgKey=self._formMessage('success'), type=SM_TYPE.Information, auxData=additionalMessages, **self._getMsgCtx()))
+        equipSideEffects = ctx.get('equipSideEffects', [])
+        if EquipSideEffect.AMMO_AUTO_LOADED in equipSideEffects:
+            additionalMessages.append(makeI18nSuccess(sysMsgKey='charge/success', type=SM_TYPE.Information, auxData=additionalMessages))
+        elif EquipSideEffect.AMMO_AUTO_LOAD_FAILED in equipSideEffects:
+            additionalMessages.append(makeI18nSuccess(sysMsgKey='charge/inventory_error', vehicle=self.vehicle.userName, type=SM_TYPE.Warning, auxData=additionalMessages))
         return makeSuccess(auxData=additionalMessages)
 
 

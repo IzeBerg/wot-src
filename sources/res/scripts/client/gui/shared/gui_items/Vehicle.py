@@ -3,7 +3,9 @@ from itertools import izip
 from operator import itemgetter
 from collections import namedtuple
 from copy import deepcopy
+from backports.functools_lru_cache import lru_cache
 import BigWorld, constants
+from gui import GUI_SETTINGS
 from collector_vehicle import CollectorVehicleConsts
 from AccountCommands import LOCK_REASON, VEHICLE_SETTINGS_FLAG, VEHICLE_EXTRA_SETTING_FLAG
 from PerksParametersController import PerksParametersController
@@ -24,7 +26,7 @@ from gui.shared.formatters import text_styles
 from gui.shared.gui_items import CLAN_LOCK, GUI_ITEM_TYPE, getItemIconName, GUI_ITEM_ECONOMY_CODE, checkForTags
 from gui.shared.gui_items.customization.slots import ProjectionDecalSlot, BaseCustomizationSlot, EmblemSlot
 from vehicle_outfit.outfit import Area, REGIONS_BY_SLOT_TYPE, ANCHOR_TYPE_TO_SLOT_TYPE_MAP
-from gui.shared.gui_items.vehicle_equipment import VehicleEquipment
+from gui.shared.gui_items.vehicle_equipment import VehicleEquipment, SUPPORT_EXT_DATA_FEATURES
 from gui.shared.gui_items.gui_item import HasStrCD
 from gui.shared.gui_items.fitting_item import FittingItem, RentalInfoProvider
 from gui.shared.gui_items.Tankman import Tankman, BROTHERHOOD_SKILL_NAME
@@ -46,6 +48,8 @@ from post_progression_common import TankSetupGroupsId
 if typing.TYPE_CHECKING:
     from skeletons.gui.shared import IItemsRequester
     from items.components.c11n_components import StyleItem
+    from items.customizations import CustomizationOutfit
+    from vehicle_outfit.outfit import Outfit
     from gui.veh_post_progression.models.progression import PostProgressionItem, AvailabilityCheckResult
     from post_progression_common import VehicleState
     from typing import Dict, Any, List, Tuple
@@ -154,8 +158,13 @@ class VEHICLE_TAGS(CONST_CONTAINER):
     RENT_PROMOTION = 'rent_promotion'
     EARN_CRYSTALS = 'earn_crystals'
     MAPS_TRAINING = 'maps_training'
+    T34_DISCLAIMER = 't34_disclaimer'
 
 
+DISCLAIMER_TAGS = frozenset((VEHICLE_TAGS.T34_DISCLAIMER,))
+EPIC_ACTION_VEHICLE_CDS = (
+ 44033,
+ 63265)
 NOT_FULL_AMMO_MULTIPLIER = 0.2
 _MAX_RENT_MULTIPLIER = 2
 RentPackagesInfo = namedtuple('RentPackagesInfo', (
@@ -183,7 +192,7 @@ class Vehicle(FittingItem):
                  '_settings', '_lock', '_repairCost', '_health', '_gun', '_turret',
                  '_engine', '_chassis', '_radio', '_fuelTank', '_equipment', '_bonuses',
                  '_crewIndices', '_slotsIds', '_crew', '_lastCrew', '_hasModulesToSelect',
-                 '_outfits', '_isStyleInstalled', '_slotsAnchors', '_unlockedBy',
+                 '_outfitComponents', '_isStyleInstalled', '_slotsAnchors', '_unlockedBy',
                  '_maxRentDuration', '_minRentDuration', '_slotsAnchorsById', '_hasNationGroup',
                  '_extraSettings', '_perksController', '_personalTradeInAvailableSale',
                  '_personalTradeInAvailableBuy', '_groupIDs', '_postProgression')
@@ -293,13 +302,14 @@ class Vehicle(FittingItem):
         self._perksController = None
         self._postProgression = None
         self._hasNationGroup = hasNationGroup(vehDescr.type.compactDescr)
-        self._outfits = {}
+        self._outfitComponents = {}
         self._isStyleInstalled = False
         if self.isPremiumIGR:
             self._searchableUserName = makeSearchableString(self.shortUserName)
         else:
             self._searchableUserName = makeSearchableString(self.userName)
         invData = invData or dict()
+        postProgressionFeatures = None
         tradeInData = None
         personalTradeIn = None
         if proxy is not None and proxy.inventory.isSynced() and proxy.stats.isSynced() and proxy.shop.isSynced() and proxy.vehicleRotation.isSynced() and proxy.recycleBin.isSynced():
@@ -333,6 +343,9 @@ class Vehicle(FittingItem):
             self._isRotationGroupLocked = proxy.vehicleRotation.isGroupLocked(self.rotationGroupNum)
             self._isInfiniteRotationGroup = proxy.vehicleRotation.isInfinite(self.rotationGroupNum)
             self._unlockedBy = proxy.vehicleRotation.unlockedBy(self.rotationGroupNum)
+            postProgressionFeatures = proxy.inventory.getVehPostProgressionFeaturesListByCD(self.intCD)
+        if postProgressionFeatures is None and extData and SUPPORT_EXT_DATA_FEATURES in extData:
+            postProgressionFeatures = extData[SUPPORT_EXT_DATA_FEATURES]
         self._inventoryCount = 1 if invData.keys() else 0
         self._settings = invData.get('settings', 0)
         self._extraSettings = invData.get('extraSettings', 0)
@@ -372,7 +385,7 @@ class Vehicle(FittingItem):
                 if self.intCD in vehs:
                     self._groupIDs.add(groupId)
 
-        self._equipment = VehicleEquipment(proxy, vehDescr, invData)
+        self._equipment = VehicleEquipment(proxy, vehDescr, invData, postProgressionFeatures)
         defaultCrew = [
          None] * len(vehDescr.type.crewRoles)
         crewList = invData.get('crew', defaultCrew)
@@ -479,7 +492,9 @@ class Vehicle(FittingItem):
 
     @property
     def outfits(self):
-        return self._outfits
+        vehicleCD = self.descriptor.makeCompactDescr()
+        outfits = {season:self.__getOutfit(component, vehicleCD) for season, component in self._outfitComponents.iteritems()}
+        return outfits
 
     def getUnlockDescrByIntCD(self, intCD):
         for unlockIdx, data in enumerate(self.descriptor.type.unlocksDescrs):
@@ -585,10 +600,7 @@ class Vehicle(FittingItem):
             else:
                 isCustomOutfitInstalled = any(proxy.inventory.getOutfitData(self.intCD, s) for s in SeasonType.SEASONS)
                 self._isStyleInstalled = not isCustomOutfitInstalled
-            for season in SeasonType.SEASONS:
-                outfitComp = self._getOutfitComponent(proxy, style, season)
-                self._outfits[season] = self.itemsFactory.createOutfit(component=outfitComp, vehicleCD=self.descriptor.makeCompactDescr())
-
+        self._outfitComponents = {season:self._getOutfitComponent(proxy, style, season) for season in SeasonType.SEASONS}
         return
 
     def _getOutfitComponent(self, proxy, style, season):
@@ -994,10 +1006,6 @@ class Vehicle(FittingItem):
         return sum(s.count for s in self.shells.installed.getItems()) >= self.ammoMinSize
 
     @property
-    def isAmmoFullInSetups(self, setupIdx=None):
-        return self.shells.setupLayouts.isAmmoFull(setupIdx, self.ammoMinSize)
-
-    @property
     def isAmmoNotFullInSetups(self):
         return self.shells.setupLayouts.isAmmoNotFull(self.ammoMinSize)
 
@@ -1038,6 +1046,14 @@ class Vehicle(FittingItem):
         return self._descriptor.type.isWheeledVehicle
 
     @property
+    def isTrackWithinTrack(self):
+        return self._descriptor.isTrackWithinTrack
+
+    @property
+    def miscAttrs(self):
+        return self._descriptor.miscAttrs
+
+    @property
     def hasNationGroup(self):
         isEnabled = self.lobbyContext.getServerSettings().isNationChangeEnabled()
         return isEnabled and self._hasNationGroup
@@ -1045,6 +1061,9 @@ class Vehicle(FittingItem):
     @property
     def isNationChangeAvailable(self):
         return self.hasNationGroup and not self.isLocked and not self.isBroken and (self.isPurchased or self.isRented)
+
+    def isAmmoFullInSetups(self, setupIdx=None):
+        return self.shells.setupLayouts.isAmmoFull(setupIdx, self.ammoMinSize)
 
     def getAllNationGroupVehs(self, proxy):
         nationGroupVehs = [ proxy.getItemByCD(cd) for cd in iterVehTypeCDsInNationGroup(self.intCD) ]
@@ -1590,6 +1609,18 @@ class Vehicle(FittingItem):
             return mayRestore
         return False
 
+    def getDisclaimerTag(self):
+        disclaimers = set(DISCLAIMER_TAGS & self.tags)
+        if len(disclaimers) > 1:
+            _logger.warning("Vehicle has several disclaimer tags. This design isn't provided and only one will be used.")
+        if disclaimers:
+            return disclaimers.pop()
+        return ''
+
+    def getDisclaimerUrl(self):
+        vehicleDisclaimerURLs = GUI_SETTINGS.vehicleDisclaimerURLs
+        return vehicleDisclaimerURLs.get(self.getDisclaimerTag(), '')
+
     def getRentPackage(self, rentID=None):
         if rentID is not None:
             for package in self.rentPackages:
@@ -1678,18 +1709,24 @@ class Vehicle(FittingItem):
         return sortCrew(crewItems, crewRoles)
 
     def getOutfit(self, season):
-        return self._outfits.get(season, None)
+        component = self._outfitComponents.get(season)
+        vehicleCD = self.descriptor.makeCompactDescr()
+        outfit = self.__getOutfit(component=component, vehicleCD=vehicleCD)
+        return outfit
+
+    def getOutfitComponent(self, season):
+        return self._outfitComponents.get(season)
 
     def setCustomOutfit(self, season, outfit):
         for s in SeasonType.REGULAR:
             if s == season:
-                self._outfits[s] = outfit
-            elif s in self._outfits and self._outfits[s].id:
-                self._outfits[s] = self.itemsFactory.createOutfit(component=self.__getEmptyOutfitComponent())
+                self._outfitComponents[s] = outfit.pack()
+            elif s in self._outfitComponents and self._outfitComponents[s].styleId:
+                self._outfitComponents[s] = self.__getEmptyOutfitComponent()
 
     def setOutfits(self, fromVehicle):
         for season in SeasonType.RANGE:
-            self._outfits[season] = fromVehicle.getOutfit(season)
+            self._outfitComponents[season] = fromVehicle.getOutfitComponent(season)
 
     def hasOutfit(self, season):
         outfit = self.getOutfit(season)
@@ -1738,6 +1775,10 @@ class Vehicle(FittingItem):
 
     def isRestoreAvailable(self):
         return self.isRestorePossible() and not self.restoreInfo.isInCooldown()
+
+    def hasDisclaimer(self):
+        vehicleDisclaimerURLs = GUI_SETTINGS.vehicleDisclaimerURLs
+        return vehicleDisclaimerURLs.get(self.getDisclaimerTag(), None) is not None
 
     def hasLimitedRestore(self):
         return self.isRestorePossible() and self.restoreInfo.isLimited() and self.restoreInfo.getRestoreTimeLeft() > 0
@@ -1873,6 +1914,11 @@ class Vehicle(FittingItem):
             camoComp = customizations.CamouflageComponent(id=HIDDEN_CAMOUFLAGE_ID, appliedTo=appliedTo)
             return customizations.CustomizationOutfit(camouflages=[camoComp])
         return customizations.CustomizationOutfit()
+
+    @lru_cache(4)
+    def __getOutfit(self, component, vehicleCD):
+        outfit = self.itemsFactory.createOutfit(component=component, vehicleCD=vehicleCD)
+        return outfit
 
 
 def getTypeUserName(vehType, isElite):

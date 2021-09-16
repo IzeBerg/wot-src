@@ -1,7 +1,6 @@
 package net.wg.gui.battle.random.views
 {
    import flash.display.DisplayObject;
-   import flash.display.Sprite;
    import flash.events.Event;
    import flash.events.MouseEvent;
    import flash.geom.Rectangle;
@@ -94,8 +93,6 @@ package net.wg.gui.battle.random.views
       
       public var siegeModePanel:SiegeModePanel = null;
       
-      private var hitTestFix:Sprite;
-      
       private var _playersPanelState:int = -1;
       
       private var _playersPanelHasInvite:Boolean = false;
@@ -104,18 +101,11 @@ package net.wg.gui.battle.random.views
       
       public function BattlePage()
       {
-         this.hitTestFix = new Sprite();
          super();
          this.battleDamageLogPanel.init(ATLAS_CONSTANTS.BATTLE_ATLAS);
          this.playersPanel.addEventListener(Event.CHANGE,this.onPlayersPanelChangeHandler);
          this.teamBasesPanelUI.addEventListener(Event.CHANGE,this.onTeamBasesPanelUIChangeHandler);
          this.endWarningPanel.addEventListener(EndWarningPanelEvent.VISIBILITY_CHANGED,this.onEndWarningPanelVisibilityChangedHandler);
-         this.hitTestFix.graphics.beginFill(16777215,0);
-         this.hitTestFix.graphics.drawRect(0,0,1,1);
-         this.hitTestFix.graphics.endFill();
-         this.hitTestFix.name = HIT_TEST_FIX_NAME;
-         this.hitTestFix.alpha = 0;
-         addChildAt(this.hitTestFix,0);
       }
       
       override public function updateStage(param1:Number, param2:Number) : void
@@ -146,11 +136,6 @@ package net.wg.gui.battle.random.views
          {
             this.battleNotifier.updateStage(param1,param2);
             this.setChildIndex(this.battleNotifier,this.getChildIndex(this.radialMenu) - 1);
-         }
-         if(this.hitTestFix)
-         {
-            this.hitTestFix.width = param1;
-            this.hitTestFix.height = param2;
          }
          this.updateHintPanelPosition();
       }
@@ -234,7 +219,6 @@ package net.wg.gui.battle.random.views
          this.damageInfoPanel = null;
          this.fragCorrelationBar = null;
          this.fullStats = null;
-         this.hitTestFix = null;
          this.playersPanel.removeEventListener(PlayersPanelEvent.ON_ITEMS_COUNT_CHANGE,this.onPlayersPanelOnItemsCountChangeHandler);
          this.playersPanel = null;
          this.consumablesPanel = null;

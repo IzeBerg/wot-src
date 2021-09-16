@@ -141,6 +141,8 @@ package net.wg.data.constants.generated
       
       public static const CHINA_CH44_114_SP2:String = "china-Ch44_114_SP2";
       
+      public static const CHINA_CH46_113_140:String = "china-Ch46_113_140";
+      
       public static const CZECH_CZ01_SKODA_T40:String = "czech-Cz01_Skoda_T40";
       
       public static const CZECH_CZ02_TVP_T50:String = "czech-Cz02_TVP_T50";
@@ -1123,6 +1125,8 @@ package net.wg.data.constants.generated
       
       public static const SWEDEN_S31_STRV_K:String = "sweden-S31_Strv_K";
       
+      public static const SWEDEN_S32_BOFORS_TORNVAGN:String = "sweden-S32_Bofors_Tornvagn";
+      
       public static const UK_GB01_MEDIUM_MARK_I:String = "uk-GB01_Medium_Mark_I";
       
       public static const UK_GB01_MEDIUM_MARK_I_BOT:String = "uk-GB01_Medium_Mark_I_bot";
@@ -1174,6 +1178,8 @@ package net.wg.data.constants.generated
       public static const UK_GB11_CAERNARVON_IGR:String = "uk-GB11_Caernarvon_IGR";
       
       public static const UK_GB111_CHARLEMAGNE:String = "uk-GB111_Charlemagne";
+      
+      public static const UK_GB112_CALIBAN:String = "uk-GB112_Caliban";
       
       public static const UK_GB12_CONQUEROR:String = "uk-GB12_Conqueror";
       
@@ -1446,6 +1452,10 @@ package net.wg.data.constants.generated
       public static const USA_A14_T30_FL:String = "usa-A14_T30_FL";
       
       public static const USA_A140_ASTRON_REX_105MM:String = "usa-A140_ASTRON_REX_105mm";
+      
+      public static const USA_A141_M_IV_Y:String = "usa-A141_M_IV_Y";
+      
+      public static const USA_A148_CONVERTIBLE_MEDIUM_TANK_T3:String = "usa-A148_Convertible_Medium_Tank_T3";
       
       public static const USA_A15_T57:String = "usa-A15_T57";
       
@@ -1801,9 +1811,15 @@ package net.wg.data.constants.generated
       
       public static const USSR_R185_T_34_L_11_1941:String = "ussr-R185_T_34_L_11_1941";
       
+      public static const USSR_R186_KV_1_SCREENED:String = "ussr-R186_KV_1_Screened";
+      
+      public static const USSR_R187_OBJECT_590:String = "ussr-R187_Object_590";
+      
       public static const USSR_R19_IS_3:String = "ussr-R19_IS-3";
       
       public static const USSR_R19_IS_3_IGR:String = "ussr-R19_IS-3_IGR";
+      
+      public static const USSR_R193_M4_A2_T_34:String = "ussr-R193_M4A2_T_34";
       
       public static const USSR_R20_T_44:String = "ussr-R20_T-44";
       

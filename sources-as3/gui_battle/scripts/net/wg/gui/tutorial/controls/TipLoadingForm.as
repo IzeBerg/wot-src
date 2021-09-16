@@ -67,5 +67,11 @@ package net.wg.gui.tutorial.controls
             invalidate(INVALID_TIP);
          }
       }
+      
+      public function updateTipVisibility(param1:Boolean) : void
+      {
+         this.helpTip.visible = param1;
+         this.tipText.visible = param1;
+      }
    }
 }

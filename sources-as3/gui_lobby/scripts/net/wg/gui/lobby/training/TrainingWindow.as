@@ -114,7 +114,7 @@ package net.wg.gui.lobby.training
          registerFlashComponentS(this.minimap,Aliases.LOBBY_MINIMAP);
       }
       
-      override protected function onDispose() : void
+      override protected function onBeforeDispose() : void
       {
          this.createButon.removeEventListener(ButtonEvent.CLICK,this.onCreateButtonClickHandler);
          this.closeButon.removeEventListener(ButtonEvent.CLICK,this.onCloseButtonClickHandler);
@@ -122,6 +122,11 @@ package net.wg.gui.lobby.training
          this.isPrivate.removeEventListener(MouseEvent.ROLL_OUT,onPrivateCheckboxRollOutHandler);
          this.isPrivate.removeEventListener(MouseEvent.CLICK,onPrivateCheckboxRollOutHandler);
          this.maps.removeEventListener(ListEvent.INDEX_CHANGE,this.onMapIndexChangeHandler);
+         super.onBeforeDispose();
+      }
+      
+      override protected function onDispose() : void
+      {
          this.mapSelectorTitleTF = null;
          this.maxPlayerTitleTF = null;
          this.battleTimerTitleTF = null;
@@ -152,15 +157,19 @@ package net.wg.gui.lobby.training
       override protected function draw() : void
       {
          var _loc1_:uint = 0;
-         var _loc2_:Number = NaN;
+         var _loc2_:uint = 0;
          super.draw();
-         if(isInvalid(InvalidationType.DATA) && this._paramsVO != null && this._mapsData != null)
+         if(this._paramsVO != null && this._mapsData != null && isInvalid(InvalidationType.DATA))
          {
             this.isPrivate.selected = this._paramsVO.privacy;
             this.isPrivate.enabled = this._paramsVO.canMakeOpenedClosed;
-            this.description.text = this._paramsVO.description;
-            this.description.validateNow();
-            this.description.enabled = this._paramsVO.canChangeComment;
+            this.descrTitleTF.visible = this.description.visible = this._paramsVO.isShowComment;
+            if(this._paramsVO.isShowComment)
+            {
+               this.description.text = this._paramsVO.description;
+               this.description.validateNow();
+               this.description.enabled = this._paramsVO.canChangeComment;
+            }
             this.battleTime.maximum = this._paramsVO.maxBattleTime;
             this.battleTime.enabled = this._paramsVO.canChangeArenaTime;
             this.timerInfoIcon.visible = !this._paramsVO.canChangeArenaTime;
@@ -215,13 +224,15 @@ package net.wg.gui.lobby.training
       
       private function onMapIndexChangeHandler(param1:ListEvent) : void
       {
+         var _loc2_:Object = null;
          if(param1.index > Values.DEFAULT_INT && param1.index < this._mapsData.length)
          {
-            this.mapName.text = param1.itemData.name;
-            this.battleType.text = param1.itemData.arenaType;
-            this.maxPlayers.text = param1.itemData.size + SLASH + param1.itemData.size;
-            this.battleTime.value = param1.itemData.time;
-            this.minimap.setMapS(param1.itemData.key);
+            _loc2_ = param1.itemData;
+            this.mapName.text = _loc2_.name;
+            this.battleType.text = _loc2_.arenaType;
+            this.maxPlayers.text = _loc2_.size + SLASH + _loc2_.size;
+            this.battleTime.value = _loc2_.time;
+            this.minimap.setMapS(_loc2_.key);
          }
          if(this._dataWasSetted && this._paramsVO)
          {

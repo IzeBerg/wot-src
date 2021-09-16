@@ -137,11 +137,11 @@ class BattlePassProgressionsView(ViewImpl):
         if subTab == BattlePassProgressionSubTabs.BUY_TAB:
             self.__showBattlePassBuyWindow()
         elif subTab == BattlePassProgressionSubTabs.BUY_TAB_FOR_SHOP:
-            self.__showBattlePassBuyWindow(backCallback=showShop)
+            self.__showBattlePassBuyWindow()
         elif subTab == BattlePassProgressionSubTabs.BUY_LEVELS_TAB:
             self.__showBattlePassBuyLevelsWindow()
         elif subTab == BattlePassProgressionSubTabs.BUY_LEVELS_TAB_FROM_SHOP:
-            self.__showBattlePassBuyLevelsWindow(backCallback=showShop)
+            self.__showBattlePassBuyLevelsWindow()
         elif subTab == BattlePassProgressionSubTabs.SELECT_STYLE_TAB:
             self.__showStyleChoiceWindow()
 

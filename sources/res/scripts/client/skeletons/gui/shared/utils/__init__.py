@@ -106,6 +106,9 @@ class IItemsRequester(requesters.IRequester):
     def getTankmen(self, criteria=None):
         raise NotImplementedError
 
+    def getDismissedTankmen(self, criteria=None):
+        raise NotImplementedError
+
     def removeUnsuitableTankmen(self, tankmen, criteria=None):
         raise NotImplementedError
 

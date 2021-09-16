@@ -1,7 +1,9 @@
 import logging, time, weakref, threading
-from Queue import Queue, Empty as QueueEmptyError
+from Queue import PriorityQueue, Empty as QueueEmptyError
 _logger = logging.getLogger(__name__)
 INFINITE_QUEUE_SIZE = 0
+_LOW_PRIORITY = 10
+_DEFAULT_PRIORITY = 1
 
 class Job(object):
 
@@ -33,7 +35,7 @@ class Worker(threading.Thread):
             try:
                 queue = self.__queueRef()
                 if queue is not None:
-                    job = queue.get()
+                    _, job = queue.get()
                     job.doWork(self)
                     queue.task_done()
                 else:
@@ -55,7 +57,7 @@ class Worker(threading.Thread):
 class ThreadPool(object):
 
     def __init__(self, workersLimit, queueLimit=-1):
-        self._jobs = Queue(queueLimit)
+        self._jobs = PriorityQueue(queueLimit)
         self._running = False
         self._workers = []
         self._workersLimit = workersLimit
@@ -82,18 +84,24 @@ class ThreadPool(object):
             pass
 
         for _ in self._workers:
-            self._jobs.put_nowait(TerminateJob())
+            self._jobs.put_nowait((_LOW_PRIORITY, TerminateJob()))
 
         self._workers = []
 
     def _createNewWorker(self):
         return Worker(self._jobs)
 
+    def putLowPriorityJob(self, job):
+        if not self._running:
+            _logger.error('Thread pool is not running. Trying to put new job: %r', job)
+            return
+        self._jobs.put_nowait((_LOW_PRIORITY, job))
+
     def putJob(self, job):
         if not self._running:
             _logger.error('Thread pool is not running. Trying to put new job: %r', job)
             return
-        self._jobs.put_nowait(job)
+        self._jobs.put_nowait((_DEFAULT_PRIORITY, job))
 
     def __repr__(self):
         return '%s(workers = %d; jobs = %d)' % (

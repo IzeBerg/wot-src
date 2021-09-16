@@ -83,4 +83,4 @@ class WhiteTigerAchievement(RegularAchievement):
 
     @classmethod
     def __getWhiteTigerKillings(cls, dossier):
-        return dossier.getBlock('vehTypeFrags').get(cls.WHITE_TIGER_COMP_DESCR, 0)
+        return 0

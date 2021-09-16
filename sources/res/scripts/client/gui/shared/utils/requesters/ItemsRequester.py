@@ -889,6 +889,11 @@ Parse error at or near `None' instruction at offset -1
             if criteria(item):
                 result[invID] = item
 
+        result.update(self.getDismissedTankmen(criteria))
+        return result
+
+    def getDismissedTankmen(self, criteria=REQ_CRITERIA.TANKMAN.DISMISSED):
+        result = ItemsCollection()
         duration = self.__shop.tankmenRestoreConfig.billableDuration
         dismissedTankmenData = self.__recycleBin.getTankmen(duration)
         for invID, tankmanData in dismissedTankmenData.iteritems():

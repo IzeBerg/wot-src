@@ -73,6 +73,8 @@ package net.wg.gui.battle.views.damagePanel
       private static const LABEL_SIEGE_MODE_OFF:String = "off";
       
       private static const LABEL_SIEGE_MODE_ON:String = "on";
+      
+      private static const YOH_POSTFIX:String = "Yoh";
        
       
       public var playerTF:TextField;
@@ -175,11 +177,6 @@ package net.wg.gui.battle.views.damagePanel
             }
          }
          return false;
-      }
-      
-      private static function checkModuleName(param1:String) : Boolean
-      {
-         return VehicleModules.MODULES_LIST.indexOf(param1) >= 0 || param1.indexOf(VehicleModules.WHEEL) >= 0;
       }
       
       override public function getRectangles() : Vector.<Rectangle>
@@ -310,7 +307,7 @@ package net.wg.gui.battle.views.damagePanel
          this.background.imageName = !!this._hasWheel ? BATTLEATLAS.DAMAGE_PANEL_BG_WHEELED : BATTLEATLAS.DAMAGE_PANEL_BG;
       }
       
-      override protected function setup(param1:String, param2:int, param3:String, param4:Array, param5:Array, param6:Boolean, param7:Boolean, param8:Boolean) : void
+      override protected function setup(param1:String, param2:int, param3:String, param4:Array, param5:Array, param6:Boolean, param7:Boolean, param8:Boolean, param9:Boolean) : void
       {
          this.updateHealth(param1,param2);
          if(this._tankmenCtrl != null)
@@ -326,13 +323,18 @@ package net.wg.gui.battle.views.damagePanel
          }
          this.tankIndicator.isVehicleWithTurret = param6;
          this.tankIndicator.isVehicleWithWheel = param7;
+         this.tankIndicator.hasYoh = param9;
          this._hasWheel = param7;
-         this._modulesCtrl.setChassis(param7);
+         this._modulesCtrl.setChassis(param7,param9);
          this._modulesCtrl.hasTurretRotator = param6;
          this.changeDisplayListForCtrl(this._modulesCtrl,true);
          this.toggleClickableAreas(this._modulesCtrl.getItems(),true);
          this.updateModuleAssets();
-         this.setRotatorType(param3,param5);
+         if(param9)
+         {
+            param3 += YOH_POSTFIX;
+         }
+         this.tankIndicator.setRotatorType(param3,param5);
          this._tankmenCtrl = new TankmenCtrl(param4);
          this.changeDisplayListForCtrl(this._tankmenCtrl,true);
          this.toggleClickableAreas(this._tankmenCtrl.getItems(),true);
@@ -411,6 +413,11 @@ package net.wg.gui.battle.views.damagePanel
          invalidateData();
       }
       
+      public function as_setRepairTimesVisible(param1:Boolean) : void
+      {
+         this._modulesCtrl.setRepairTimesVisible(param1);
+      }
+      
       public function as_setSpeedMode(param1:Boolean) : void
       {
          if(this.tankIndicator.isVehicleWithWheel)
@@ -465,7 +472,7 @@ package net.wg.gui.battle.views.damagePanel
       
       public function as_updateDeviceState(param1:String, param2:String) : void
       {
-         if(checkModuleName(param1))
+         if(VehicleModules.checkModuleName(param1))
          {
             this.updateModuleAssets();
             this._modulesCtrl.setState(param1,param2);
@@ -486,19 +493,14 @@ package net.wg.gui.battle.views.damagePanel
          this.updateHealth(param1,param2);
       }
       
-      public function as_updateRepairingDevice(param1:String, param2:int, param3:Number) : void
+      public function as_updateRepairingDevice(param1:String, param2:int, param3:Number, param4:Boolean) : void
       {
-         ModulesCtrl(this._modulesCtrl).setModuleRepairing(param1,param2,param3 * 1000);
+         ModulesCtrl(this._modulesCtrl).setModuleRepairing(param1,param2,param3 * 1000,param4);
       }
       
       public function as_updateSpeed(param1:int) : void
       {
          this.updateSpeed(param1);
-      }
-      
-      public function setRotatorType(param1:String, param2:Array) : void
-      {
-         this.tankIndicator.setRotatorType(param1,param2);
       }
       
       private function updateSpeed(param1:int) : void
@@ -578,7 +580,7 @@ package net.wg.gui.battle.views.damagePanel
          {
             _loc2_ = this._modulesCtrl.getItemByName(param1);
          }
-         var _loc5_:String = _loc2_.state == BATTLE_ITEM_STATES.REPAIRED ? BATTLE_ITEM_STATES.CRITICAL : _loc2_.state;
+         var _loc5_:String = _loc2_.state == BATTLE_ITEM_STATES.REPAIRED ? BATTLE_ITEM_STATES.CRITICAL : (_loc2_.state == BATTLE_ITEM_STATES.REPAIRED_FULL ? BATTLE_ITEM_STATES.NORMAL : _loc2_.state);
          var _loc6_:TooltipStringByItemStateVO = this._tooltipData[param1];
          if(_loc6_ == null)
          {
@@ -757,11 +759,6 @@ package net.wg.gui.battle.views.damagePanel
       private function onStunCounterMcClickHandler(param1:MouseEvent) : void
       {
          clickToStunTimerS();
-      }
-      
-      public function as_setRepairTimesVisible(param1:Boolean) : void
-      {
-         this._modulesCtrl.setRepairTimesVisible(param1);
       }
    }
 }

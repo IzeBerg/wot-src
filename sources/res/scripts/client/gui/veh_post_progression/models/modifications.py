@@ -9,6 +9,7 @@ from helpers import dependency
 from items import vehicles
 from items.components.supply_slot_categories import SlotCategories
 from post_progression_common import ACTION_TYPES, PAIR_TYPES, ROLESLOT_FEATURE
+from post_progression_prices_common import getPostProgressionPrice
 from shared_utils import first
 from skeletons.gui.shared import IItemsCache
 if typing.TYPE_CHECKING:
@@ -235,7 +236,7 @@ class MultiModsItem(PostProgressionActionItem):
             return
 
     def getServerAction(self, factory, vehicle, modID=_NOT_PURCHASED_IDX):
-        if self.isPurchased():
+        if self.getPurchasedID() == modID:
             return factory.getAction(factory.DISCARD_POST_PROGRESSION_PAIRS, vehicle, [self.parentStepID], [modID])
         return factory.getAction(factory.PURCHASE_POST_PROGRESSION_PAIR, vehicle, self.parentStepID, modID)
 
@@ -269,15 +270,15 @@ class MultiModsItem(PostProgressionActionItem):
         if modificationIdx is None:
             return PurchaseCheckResult(False, ExtendedGuiItemEconomyCode.MULTI_NOT_EXISTS)
         else:
-            if self.isPurchased():
+            if self.getPurchasedID() == modificationID:
                 return PurchaseCheckResult(False, ExtendedGuiItemEconomyCode.MULTI_NOT_EMPTY)
             return VALID_CHECK_RESULT
 
     def __fillModifications(self, parentStepID, descriptor, progression):
         self.__idToIdx = {}
         self.__modifications = []
-        for idx, (modDesc, price) in enumerate(vehicles.g_cache.postProgression().getChildActions(descriptor)):
-            self.__modifications.append(SimpleModItem(parentStepID, modDesc, progression, ExtendedMoney(**price)))
+        for idx, (modDesc, priceTag) in enumerate(vehicles.g_cache.postProgression().getChildActions(descriptor)):
+            self.__modifications.append(SimpleModItem(parentStepID, modDesc, progression, ExtendedMoney(**getPostProgressionPrice(priceTag, progression.getVehType()))))
             self.__idToIdx[modDesc.id] = idx
 
 
@@ -338,7 +339,7 @@ class RoleSlotModItem(FeatureModItem):
         items = self.__itemsCache.items
         dynamicSlotID = items.inventory.getDynSlotTypeID(vehicleType.compactDescr)
         if dynamicSlotID > 0:
-            self._price = ExtendedMoney(**items.shop.customRoleSlotChangeCost(vehicleType.level, isRaw=True))
+            self._price = ExtendedMoney(**items.shop.customRoleSlotChangeCost(vehicleType, isRaw=True))
             self._state = PostProgressionActionState.CHANGEABLE
             self.__slotCategory = first(vehicles.g_cache.supplySlots().slotDescrs[dynamicSlotID].categories)
         else:

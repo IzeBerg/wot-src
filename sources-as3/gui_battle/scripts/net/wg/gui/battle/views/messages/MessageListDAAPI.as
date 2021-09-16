@@ -14,8 +14,12 @@ package net.wg.gui.battle.views.messages
    public class MessageListDAAPI extends BattleMessageListMeta implements IBattleMessageListMeta, IDAAPIModule
    {
       
+      private static const COUNT_OVERFLOW_MSGS:int = 3;
+      
       private static const POOL_COLOR_ERROR:String = "Can\'t find pool for color: ";
        
+      
+      public var extendedLog:Boolean = false;
       
       protected var isShowUniqueOnly:Boolean;
       
@@ -34,6 +38,10 @@ package net.wg.gui.battle.views.messages
       private var _goldMessagesPool:FadedMessagesPool;
       
       private var _selfMessagesPool:FadedMessagesPool;
+      
+      private var _countOverflowMsgs:int = 0;
+      
+      private var _settings:FadingMessageListSettingsVO;
       
       public function MessageListDAAPI(param1:DisplayObjectContainer)
       {
@@ -82,6 +90,10 @@ package net.wg.gui.battle.views.messages
          var _loc2_:String = null;
          var _loc4_:PoolSettingsVO = null;
          var _loc5_:FadedMessagesPool = null;
+         if(this.extendedLog)
+         {
+            this._settings = param1;
+         }
          setup(param1);
          this.maxMessages = param1.maxLinesCount;
          this.isShowUniqueOnly = param1.showUniqueOnly;
@@ -204,13 +216,34 @@ package net.wg.gui.battle.views.messages
          {
             return;
          }
+         if(this.extendedLog && length >= this.maxMessages && this._countOverflowMsgs >= COUNT_OVERFLOW_MSGS)
+         {
+            this.printExtendedLog();
+         }
          if(length >= this.maxMessages)
          {
+            ++this._countOverflowMsgs;
             closeOldestMessage();
+         }
+         else
+         {
+            this._countOverflowMsgs = 0;
          }
          var _loc4_:FadedTextMessage = param3.createItem();
          _loc4_.setData(param1,param2);
          pushMessage(_loc4_);
+      }
+      
+      private function printExtendedLog() : void
+      {
+         var _loc1_:IMessage = null;
+         DebugUtils.LOG_WARNING("FRONTLINE EXTENDED LOG FOR WOTD-188760");
+         DebugUtils.LOG_WARNING("settings = ",App.utils.JSON.encode(this._settings.toHash()));
+         for each(_loc1_ in messages)
+         {
+            DebugUtils.LOG_WARNING(FadedTextMessage(_loc1_).getExtendedInfo());
+         }
+         DebugUtils.LOG_WARNING("App.utils.scheduler.isEmpty() = ",App.utils.scheduler.isEmpty());
       }
       
       public function get isDAAPIInited() : Boolean

@@ -11,10 +11,14 @@ package net.wg.gui.lobby.components.vehPostProgression
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.POSTPROGRESSION_CONSTS;
    import net.wg.infrastructure.base.UIComponentEx;
+   import net.wg.infrastructure.interfaces.ITutorialCustomComponent;
    import net.wg.infrastructure.managers.ITooltipMgr;
+   import net.wg.utils.IScheduler;
    import scaleform.clik.constants.InvalidationType;
+   import scaleform.clik.events.ButtonEvent;
+   import scaleform.gfx.MouseEventEx;
    
-   public class EntryPointButton extends UIComponentEx
+   public class EntryPointButton extends UIComponentEx implements ITutorialCustomComponent
    {
       
       private static const LETTER_SPACING:Number = 1.8;
@@ -34,6 +38,8 @@ package net.wg.gui.lobby.components.vehPostProgression
       private static const OFFSET_TO_FIX_LINES_BLUR:Number = 0.25;
       
       private static const MIN_WIDTH:Number = 47;
+      
+      private static const CLICK_LOCK_DURATION:int = 500;
        
       
       public var bg:EntryPointBg = null;
@@ -44,8 +50,6 @@ package net.wg.gui.lobby.components.vehPostProgression
       
       public var lockIcon:MovieClip = null;
       
-      private var _tooltipMgr:ITooltipMgr;
-      
       private var _state:int = -1;
       
       private var _showUnlock:Boolean = false;
@@ -54,11 +58,18 @@ package net.wg.gui.lobby.components.vehPostProgression
       
       private var _isSoundEnabled:Boolean = false;
       
+      private var _isClickLocked:Boolean = false;
+      
       private var _tooltip:String = "";
+      
+      private var _tooltipMgr:ITooltipMgr;
+      
+      private var _scheduler:IScheduler;
       
       public function EntryPointButton()
       {
          this._tooltipMgr = App.toolTipMgr;
+         this._scheduler = App.utils.scheduler;
          super();
       }
       
@@ -73,6 +84,8 @@ package net.wg.gui.lobby.components.vehPostProgression
          this.icon = null;
          this.lockIcon = null;
          this._tooltipMgr = null;
+         this._scheduler.cancelTask(this.unlockClick);
+         this._scheduler = null;
          super.onDispose();
       }
       
@@ -135,10 +148,30 @@ package net.wg.gui.lobby.components.vehPostProgression
          }
       }
       
+      public function generatedUnstoppableEvents() : Boolean
+      {
+         return true;
+      }
+      
+      public function getTutorialDescriptionName() : String
+      {
+         return null;
+      }
+      
+      public function needPreventInnerEvents() : Boolean
+      {
+         return false;
+      }
+      
       public function showUnlockAnimation() : void
       {
          this._showUnlock = true;
          invalidateData();
+      }
+      
+      private function unlockClick() : void
+      {
+         this._isClickLocked = false;
       }
       
       override public function get width() : Number
@@ -162,7 +195,7 @@ package net.wg.gui.lobby.components.vehPostProgression
       
       public function set state(param1:int) : void
       {
-         if(this._state != param1 || this._showUnlock == false)
+         if(this._state != param1 || !this._showUnlock)
          {
             this._state = param1;
             this._showUnlock = false;
@@ -187,11 +220,18 @@ package net.wg.gui.lobby.components.vehPostProgression
       
       private function onClickHandler(param1:MouseEvent) : void
       {
+         if(this._isClickLocked)
+         {
+            return;
+         }
+         dispatchEvent(new ButtonEvent(ButtonEvent.CLICK,true,false,0,MouseEventEx(param1).buttonIdx));
+         this._isClickLocked = true;
          this._tooltipMgr.hide();
          if(this._isSoundEnabled)
          {
             App.soundMgr.playControlsSnd(SoundManagerStates.SND_PRESS,SoundTypes.NORMAL_BTN,null);
          }
+         this._scheduler.scheduleTask(this.unlockClick,CLICK_LOCK_DURATION);
       }
       
       private function onRollOverHandler(param1:MouseEvent) : void

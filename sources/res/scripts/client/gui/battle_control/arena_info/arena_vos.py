@@ -192,7 +192,7 @@ class VehicleTypeInfoVO(object):
     __slots__ = ('compactDescr', 'shortName', 'name', 'level', 'iconName', 'iconPath',
                  'isObserver', 'isPremiumIGR', 'isDualGunVehicle', 'guiName', 'shortNameWithPrefix',
                  'classTag', 'nationID', 'turretYawLimits', 'maxHealth', 'strCompactDescr',
-                 'isOnlyForBattleRoyaleBattles', 'tags')
+                 'isOnlyForBattleRoyaleBattles', 'tags', 'chassisType')
 
     def __init__(self, vehicleType=None, maxHealth=None, **kwargs):
         super(VehicleTypeInfoVO, self).__init__()
@@ -234,6 +234,7 @@ class VehicleTypeInfoVO(object):
             self.isPremiumIGR = isPremiumIGR(tags)
             self.turretYawLimits = vehicle_getter.getYawLimits(vehicleDescr)
             self.isDualGunVehicle = vehicleDescr.isDualgunVehicle
+            self.chassisType = vehicleDescr.chassis.chassisType
             self.shortName = vehicleType.shortUserString
             self.name = Vehicle.getUserName(vehicleType=vehicleType, textPrefix=True)
             self.shortNameWithPrefix = Vehicle.getShortUserName(vehicleType=vehicleType, textPrefix=True)
@@ -256,6 +257,7 @@ class VehicleTypeInfoVO(object):
             self.turretYawLimits = None
             self.shortName = vehicleName
             self.isDualGunVehicle = False
+            self.chassisType = 0
             self.name = vehicleName
             self.guiName = vehicleName
             self.shortNameWithPrefix = vehicleName

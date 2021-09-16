@@ -178,7 +178,7 @@ package net.wg.gui.battle.views.ribbonsPanel
          this.stopAnimations();
       }
       
-      public function hideInBottom() : void
+      public function hideInBottom() : Boolean
       {
          if(this._animationState != RibbonAnimationStates.HIDE_IN_PROGRESS)
          {
@@ -186,7 +186,10 @@ package net.wg.gui.battle.views.ribbonsPanel
             this._scheduler.cancelTask(this.shiftItems);
             this._scheduler.cancelTask(this.onLifetimeCooldown);
             this.playAnimItems(HIDE_BOTTOM_ANIM,false);
+            this._scheduler.scheduleTask(this.hideControl,600);
+            return true;
          }
+         return false;
       }
       
       public function setSettings(param1:Boolean, param2:Boolean, param3:Boolean) : void
@@ -211,7 +214,7 @@ package net.wg.gui.battle.views.ribbonsPanel
          var _loc2_:int = ANIM_DELAY_BY_ITEM * param1;
          if(_loc2_ > 0)
          {
-            this._scheduler.scheduleTask(this.shiftItems,ANIM_DELAY_BY_ITEM * param1);
+            this._scheduler.scheduleTask(this.shiftItems,_loc2_);
          }
          else
          {
@@ -227,6 +230,8 @@ package net.wg.gui.battle.views.ribbonsPanel
       
       public function updateData(param1:Number, param2:String, param3:String, param4:String, param5:String, param6:String, param7:String) : void
       {
+         this._scheduler.cancelTask(this.onLifetimeCooldown);
+         this._scheduler.scheduleTask(this.onLifetimeCooldown,LIFE_TIME);
          this.ribbonId = param1;
          this._isBonus = !StringUtils.isEmpty(param6);
          this._texts.setData(param3,param2,param5,param4);
@@ -236,8 +241,6 @@ package net.wg.gui.battle.views.ribbonsPanel
          {
             this.playAnimItems(UPDATE_ANIM,true);
          }
-         this._scheduler.cancelTask(this.onLifetimeCooldown);
-         this._scheduler.scheduleTask(this.onLifetimeCooldown,LIFE_TIME);
          this._texts.showUpdateAnim();
          this._bonus.show();
       }
@@ -278,13 +281,20 @@ package net.wg.gui.battle.views.ribbonsPanel
          }
       }
       
+      private function hideControl() : void
+      {
+         this.onHideAnimCompleteFrameHandler();
+      }
+      
       private function onLifetimeCooldown() : void
       {
+         this._scheduler.cancelTask(this.onLifetimeCooldown);
          this._animationCompleteCallback(CALLBACK_LIFETIME_COOLDOWN,this.ribbonId);
       }
       
       private function onHideItemInLeft() : void
       {
+         this._scheduler.cancelTask(this.onHideItemInLeft);
          this._scheduler.cancelTask(this.shiftItems);
          this._scheduler.cancelTask(this.onLifetimeCooldown);
          this._animationState = RibbonAnimationStates.HIDE_IN_PROGRESS;
@@ -303,6 +313,8 @@ package net.wg.gui.battle.views.ribbonsPanel
          this._scheduler.cancelTask(this.shiftItems);
          this._scheduler.cancelTask(this.onLifetimeCooldown);
          this._scheduler.cancelTask(this.showAnimByScheduler);
+         this._scheduler.cancelTask(this.onHideItemInLeft);
+         this._scheduler.cancelTask(this.hideControl);
       }
       
       private function stopAnimations() : void
@@ -324,11 +336,13 @@ package net.wg.gui.battle.views.ribbonsPanel
       
       private function shiftItems() : void
       {
+         this._scheduler.cancelTask(this.playAnimItems);
          this.playAnimItems(SHIFT_ANIM,false);
       }
       
       private function showAnimByScheduler() : void
       {
+         this._scheduler.cancelTask(this.showAnimByScheduler);
          this.textsAnim.visible = true;
          this.iconsAnim.visible = true;
          this.bonusAnim.visible = true;
@@ -357,6 +371,7 @@ package net.wg.gui.battle.views.ribbonsPanel
       private function onShowAnimCompleteFrameHandler() : void
       {
          this._animationState = RibbonAnimationStates.IS_STATIC_SHOW;
+         this._scheduler.cancelTask(this.onLifetimeCooldown);
          this._scheduler.scheduleTask(this.onLifetimeCooldown,LIFE_TIME);
          this.iconsAnim.stop();
          this._animationCompleteCallback(CALLBACK_TYPE_SHOW_FINISHED,this.ribbonId);
@@ -364,6 +379,7 @@ package net.wg.gui.battle.views.ribbonsPanel
       
       private function onHideAnimCompleteFrameHandler() : void
       {
+         this._scheduler.cancelTask(this.hideControl);
          this.stopAnimations();
          this._animationCompleteCallback(CALLBACK_TYPE_HIDE_FINISHED,this.ribbonId);
       }

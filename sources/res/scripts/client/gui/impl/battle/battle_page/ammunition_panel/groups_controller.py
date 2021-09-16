@@ -19,9 +19,6 @@ class PrebattleAmmunitionGroupsController(AmmunitionGroupsController):
     def onCurrentShellChanged(self, intCD):
         self._controller.onCurrentShellChanged(intCD)
 
-    def onStateChanged(self, state):
-        self._controller.onStateChanged(state)
-
     def _getGroups(self):
         return RANDOM_GROUPS
 
@@ -45,6 +42,9 @@ class PrebattleAmmunitionGroupsController(AmmunitionGroupsController):
     def _createAmmunitionBlockController(self, vehicle, ctx=None):
         return PrebattleAmmunitionBlocksController(vehicle, ctx=ctx)
 
+    def _isSwitchEnabled(self, groupSettings):
+        return super(PrebattleAmmunitionGroupsController, self)._isSwitchEnabled(groupSettings) and not self._isPrebattleSwitchDisabled(groupSettings)
+
 
 class RespawnAmmunitionGroupsController(AmmunitionGroupsController):
     __sessionProvider = dependency.descriptor(IBattleSessionProvider)
@@ -57,3 +57,6 @@ class RespawnAmmunitionGroupsController(AmmunitionGroupsController):
 
     def _createAmmunitionBlockController(self, vehicle, ctx=None):
         return RespawnAmmunitionBlocksController(vehicle)
+
+    def _isPrebattleSwitchDisabled(self, _):
+        return False

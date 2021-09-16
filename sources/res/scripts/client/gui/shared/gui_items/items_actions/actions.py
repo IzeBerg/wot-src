@@ -23,6 +23,7 @@ from gui.Scaleform.daapi.view.lobby.techtree.techtree_dp import g_techTreeDP
 from gui.Scaleform.locale.SYSTEM_MESSAGES import SYSTEM_MESSAGES
 from gui.goodies.demount_kit import getDemountKitForOptDevice
 from gui.impl import backport
+from gui.impl.gen import R
 from gui.impl.lobby.dialogs.auxiliary.buy_and_exchange_state_machine import BuyAndExchangeStateEnum
 from gui.shared import event_dispatcher as shared_events
 from gui.shared.economics import getGUIPrice
@@ -34,7 +35,7 @@ from gui.shared.gui_items.processors.common import TankmanBerthsBuyer
 from gui.shared.gui_items.processors.common import UseCrewBookProcessor
 from gui.shared.gui_items.processors.goodies import BoosterBuyer
 from gui.shared.gui_items.processors.module import BuyAndInstallItemProcessor, BCBuyAndInstallItemProcessor, OptDeviceInstaller
-from gui.shared.gui_items.processors.veh_post_progression import ChangeVehicleSetupEquipments, DiscardPairsProcessor, PurchasePairProcessor, PurchaseStepsProcessor, SetEquipmentSlotTypeProcessor
+from gui.shared.gui_items.processors.veh_post_progression import ChangeVehicleSetupEquipments, DiscardPairsProcessor, PurchasePairProcessor, PurchaseStepsProcessor, SetEquipmentSlotTypeProcessor, SwitchPrebattleAmmoPanelAvailability
 from gui.shared.gui_items.processors.module import ModuleSeller
 from gui.shared.gui_items.processors.module import ModuleUpgradeProcessor
 from gui.shared.gui_items.processors.module import MultipleModulesSeller
@@ -49,6 +50,7 @@ from items import vehicles, ITEM_TYPE_NAMES, parseIntCompactDescr
 from shared_utils import first, allEqual
 from skeletons.gui.game_control import ITradeInController
 from skeletons.gui.goodies import IGoodiesCache
+from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.shared import IItemsCache
 from soft_exception import SoftException
 if typing.TYPE_CHECKING:
@@ -398,9 +400,6 @@ class InstallItemAction(BuyAction):
             proc = getInstallerProcessor(vehicle, item, conflictedEqs=conflictedEqs, skipConfirm=self.skipConfirm)
             result = yield proc.request()
             SystemMessages.pushMessagesFromResult(result)
-            if result.success and item.itemTypeID in (GUI_ITEM_TYPE.TURRET, GUI_ITEM_TYPE.GUN):
-                vehicle = self._itemsCache.items.getItemByCD(vehicle.intCD)
-                yield tryToLoadDefaultShellsLayout(vehicle)
         RequestState.received(state)
         yield lambda callback=None: callback
         return
@@ -837,6 +836,22 @@ class ChangeSetupEquipmentsIndex(AsyncGUIItemAction):
         callback(result)
 
 
+class SwitchPrebattleAmmoPanelAvailabilityAction(AsyncGUIItemAction):
+    __slots__ = ('__vehicle', '__groupID', '__enabled')
+
+    def __init__(self, vehicle, groupID, enabled):
+        super(SwitchPrebattleAmmoPanelAvailabilityAction, self).__init__()
+        self.__vehicle = vehicle
+        self.__groupID = groupID
+        self.__enabled = enabled
+
+    @async
+    @process
+    def _action(self, callback):
+        result = yield SwitchPrebattleAmmoPanelAvailability(self.__vehicle, self.__groupID, self.__enabled).request()
+        callback(result)
+
+
 class DiscardPostProgressionPairs(AsyncGUIItemAction):
     __slots__ = ('__vehicle', '__stepIDs', '__modIDs')
 
@@ -904,6 +919,7 @@ class PurchasePostProgressionSteps(AsyncGUIItemAction):
 
 class SetEquipmentSlotType(AsyncGUIItemAction):
     __slots__ = ('__vehicle', '__slotID')
+    __uiLoader = dependency.descriptor(IGuiLoader)
 
     def __init__(self, vehicle):
         super(SetEquipmentSlotType, self).__init__()
@@ -919,6 +935,9 @@ class SetEquipmentSlotType(AsyncGUIItemAction):
     @async
     @future_async.async
     def _confirm(self, callback):
+        if self.__uiLoader.windowsManager.getViewByLayoutID(layoutID=R.views.lobby.common.SelectSlotSpecDialog()):
+            callback(False)
+            return
         Waiting.show('loadModalWindow', softStart=True)
         from gui.impl.lobby.common.select_slot_spec_dialog import showDialog
         result = yield future_async.await(showDialog(self.__vehicle))

@@ -578,6 +578,7 @@ package net.wg.gui.battle.views.consumablesPanel
             visible = false;
             alpha = 0;
          }
+         onPanelHiddenS();
       }
       
       public function onButtonClick(param1:Object) : void
@@ -616,6 +617,20 @@ package net.wg.gui.battle.views.consumablesPanel
          else
          {
             alpha = 1;
+         }
+         onPanelShownS();
+      }
+      
+      override protected function updateVisibility() : void
+      {
+         super.updateVisibility();
+         if(visible)
+         {
+            onPanelShownS();
+         }
+         else
+         {
+            onPanelHiddenS();
          }
       }
       

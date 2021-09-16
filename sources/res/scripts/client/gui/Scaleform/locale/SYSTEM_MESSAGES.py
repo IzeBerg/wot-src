@@ -1090,11 +1090,15 @@ class SYSTEM_MESSAGES(object):
     RANKED_NOTIFICATIONS_BONUSNAME_BADGES = '#system_messages:ranked/notifications/bonusName/badges'
     RANKED_NOTIFICATIONS_BONUSNAME_STYLE = '#system_messages:ranked/notifications/bonusName/style'
     RANKED_NOTIFICATIONS_BONUSNAME_STYLES = '#system_messages:ranked/notifications/bonusName/styles'
-    RANKED_NOTIFICATION_PRIMETIME = '#system_messages:ranked/notification/primeTime'
     RANKED_NOTIFICATION_NOTAVAILABLE = '#system_messages:ranked/notification/notAvailable'
+    RANKED_NOTIFICATION_PRIMETIME = '#system_messages:ranked/notification/primeTime'
+    RANKED_NOTIFICATION_PRIMETIME_TITLE = '#system_messages:ranked/notification/primeTime/title'
     RANKED_NOTIFICATION_NOTSET = '#system_messages:ranked/notification/notSet'
+    RANKED_NOTIFICATION_NOTSET_TITLE = '#system_messages:ranked/notification/notSet/title'
     RANKED_NOTIFICATION_AVAILABLE = '#system_messages:ranked/notification/available'
+    RANKED_NOTIFICATION_AVAILABLE_TITLE = '#system_messages:ranked/notification/available/title'
     ROYALE_NOTIFICATION_PRIMETIME = '#system_messages:royale/notification/primeTime'
+    ROYALE_NOTIFICATION_PRIMETIME_TITLE = '#system_messages:royale/notification/primeTime/title'
     ROYALE_NOTIFICATION_CONGRATULATIONS = '#system_messages:royale/notification/congratulations'
     ROYALE_NOTIFICATIONS_SINGLELEVEL_TEXT = '#system_messages:royale/notifications/singleLevel/text'
     MAPBOX_NOTIFICATION_PRIMETIME = '#system_messages:mapbox/notification/primeTime'
@@ -2463,11 +2467,15 @@ class SYSTEM_MESSAGES(object):
      RANKED_NOTIFICATIONS_BONUSNAME_BADGES,
      RANKED_NOTIFICATIONS_BONUSNAME_STYLE,
      RANKED_NOTIFICATIONS_BONUSNAME_STYLES,
-     RANKED_NOTIFICATION_PRIMETIME,
      RANKED_NOTIFICATION_NOTAVAILABLE,
+     RANKED_NOTIFICATION_PRIMETIME,
+     RANKED_NOTIFICATION_PRIMETIME_TITLE,
      RANKED_NOTIFICATION_NOTSET,
+     RANKED_NOTIFICATION_NOTSET_TITLE,
      RANKED_NOTIFICATION_AVAILABLE,
+     RANKED_NOTIFICATION_AVAILABLE_TITLE,
      ROYALE_NOTIFICATION_PRIMETIME,
+     ROYALE_NOTIFICATION_PRIMETIME_TITLE,
      ROYALE_NOTIFICATION_CONGRATULATIONS,
      ROYALE_NOTIFICATIONS_SINGLELEVEL_TEXT,
      MAPBOX_NOTIFICATION_PRIMETIME,

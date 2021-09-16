@@ -13,14 +13,23 @@ package net.wg.gui.battle.battleloading
    import net.wg.gui.events.UILoaderEvent;
    import net.wg.gui.tutorial.controls.BaseTipLoadingForm;
    import net.wg.infrastructure.interfaces.IDAAPIDataClass;
+   import org.idmedia.as3commons.util.StringUtils;
    
    public class BattleLoading extends BaseBattleLoading
    {
       
       private static const FORM_VISIBLE_AREA_HEIGHT:int = 545;
+      
+      private static const FORM_Y_SHIFT:int = -20;
        
       
       public var form:BaseTipLoadingForm;
+      
+      private var _stageHeight:int = 0;
+      
+      private var _formYShift:int = 0;
+      
+      private var _hasTipIcon:Boolean = false;
       
       public function BattleLoading()
       {
@@ -55,6 +64,21 @@ package net.wg.gui.battle.battleloading
       override public function as_setTipTitle(param1:String) : void
       {
          this.form.updateTipTitle(param1);
+      }
+      
+      override public function getContentY() : int
+      {
+         return this.form.y;
+      }
+      
+      override public function hasAmmunitionPanel(param1:Boolean) : void
+      {
+         this._formYShift = !!param1 ? int(FORM_Y_SHIFT) : int(0);
+         if(param1 && !this._hasTipIcon)
+         {
+            this.form.updateTipVisibility(false);
+         }
+         this.updateFormY();
       }
       
       override public function setArenaInfo(param1:IDAAPIDataClass) : void
@@ -127,7 +151,12 @@ package net.wg.gui.battle.battleloading
       {
          super.updateStage(param1,param2);
          this.form.x = param1 >> 1;
-         this.form.y = param2 - FORM_VISIBLE_AREA_HEIGHT >> 1;
+         this._stageHeight = param2;
+         this.updateFormY();
+      }
+      
+      override public function updateTriggeredChatCommands(param1:IDAAPIDataClass) : void
+      {
       }
       
       override public function updateUserTags(param1:IDAAPIDataClass) : void
@@ -152,12 +181,9 @@ package net.wg.gui.battle.battleloading
       {
       }
       
-      override public function updateTriggeredChatCommands(param1:IDAAPIDataClass) : void
-      {
-      }
-      
       override protected function setVisualTipInfo(param1:VisualTipInfoVO) : void
       {
+         this._hasTipIcon = StringUtils.isNotEmpty(param1.tipIcon);
          this.form.setFormDisplayData(param1);
       }
       
@@ -180,6 +206,11 @@ package net.wg.gui.battle.battleloading
          }
          this.form = null;
          super.onDispose();
+      }
+      
+      protected function updateFormY() : void
+      {
+         this.form.y = (this._stageHeight - FORM_VISIBLE_AREA_HEIGHT >> 1) + this._formYShift;
       }
       
       private function removeMapIconListeners() : void

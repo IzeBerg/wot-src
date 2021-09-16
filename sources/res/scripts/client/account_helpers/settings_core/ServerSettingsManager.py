@@ -337,7 +337,8 @@ class ServerSettingsManager(object):
                                               GuiSettingsBehavior.TECHTREE_INTRO_BLUEPRINTS_RECEIVED: 23, 
                                               GuiSettingsBehavior.TECHTREE_INTRO_SHOWED: 24, 
                                               GuiSettingsBehavior.DISPLAY_PLATOON_MEMBER_CLICKED: 25, 
-                                              GuiSettingsBehavior.VEH_POST_PROGRESSION_UNLOCK_MSG_NEED_SHOW: 26}, offsets={}), 
+                                              GuiSettingsBehavior.VEH_POST_PROGRESSION_UNLOCK_MSG_NEED_SHOW: 26, 
+                                              GuiSettingsBehavior.BIRTHDAY_CALENDAR_INTRO_SHOWED: 27}, offsets={}), 
        SETTINGS_SECTIONS.EULA_VERSION: Section(masks={}, offsets={'version': Offset(0, 4294967295)}), 
        SETTINGS_SECTIONS.MARKS_ON_GUN: Section(masks={}, offsets={GAME.SHOW_MARKS_ON_GUN: Offset(0, 4294967295)}), 
        SETTINGS_SECTIONS.CONTACTS: Section(masks={CONTACTS.SHOW_OFFLINE_USERS: 0, 
@@ -403,7 +404,8 @@ class ServerSettingsManager(object):
                                              OnceOnlyHints.COMPARE_MODIFICATIONS_PANEL_HINT: 15, 
                                              OnceOnlyHints.COMPARE_SPECIALIZATION_BUTTON_HINT: 16, 
                                              OnceOnlyHints.TRADE_IN_VEHICLE_POST_PROGRESSION_ENTRY_POINT_HINT: 17, 
-                                             OnceOnlyHints.PERSONAL_TRADE_IN_VEHICLE_POST_PROGRESSION_ENTRY_POINT_HINT: 18}, offsets={}), 
+                                             OnceOnlyHints.PERSONAL_TRADE_IN_VEHICLE_POST_PROGRESSION_ENTRY_POINT_HINT: 18, 
+                                             OnceOnlyHints.RESEARCH_POST_PROGRESSION_ENTRY_POINT_HINT: 19}, offsets={}), 
        SETTINGS_SECTIONS.DAMAGE_INDICATOR: Section(masks={DAMAGE_INDICATOR.TYPE: 0, 
                                             DAMAGE_INDICATOR.PRESET_CRITS: 1, 
                                             DAMAGE_INDICATOR.DAMAGE_VALUE: 2, 
@@ -1025,7 +1027,7 @@ class ServerSettingsManager(object):
 
 
 def _updateBattlePassVersion(data):
-    version = 5
+    version = 6
     if data[BattlePassStorageKeys.FLAGS_VERSION] < version:
         data[BattlePassStorageKeys.FLAGS_VERSION] = version
         data[BattlePassStorageKeys.INTRO_SHOWN] = False

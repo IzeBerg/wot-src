@@ -57,6 +57,8 @@ package net.wg.gui.lobby.vehPostProgression
       private static const NATION_FLAGS_Y_OFFSET:int = -150;
       
       private static const VEHICLE_BLOCK_NAME:String = "VehicleBlock";
+      
+      private static const BG_H_MARGIN:int = 10;
        
       
       public var vehParamsPanel:VehParamsPanel = null;
@@ -172,6 +174,7 @@ package net.wg.gui.lobby.vehPostProgression
             this._vehicleBlock.setButtonData(this._vo.vehicleButton);
             this._vehicleBlock.setVehicleInfo(this._vo.vehicleInfo);
             this._vehicleBlock.setExpBlockVisible(this._vo.showExpBlock);
+            this._vehicleBlock.updateWalletStatus();
             this.vehParamsPanel.setDemountAllButtonLabel(this._vo.demountAllButtonLabel);
             if(this.nationFlags.currentFrameLabel != this._vo.nation)
             {
@@ -210,6 +213,8 @@ package net.wg.gui.lobby.vehPostProgression
       private function updateComponentsLayout() : void
       {
          var _loc1_:SizeSetting = null;
+         var _loc4_:int = 0;
+         var _loc5_:int = 0;
          var _loc9_:int = 0;
          _loc1_ = SizeSettings.extraExtraSmall;
          var _loc2_:int = height + VIEW_Y;
@@ -238,8 +243,8 @@ package net.wg.gui.lobby.vehPostProgression
          this.title.y = _loc3_ > TITLE_MIN_Y_VALUE ? Number(_loc3_) : Number(TITLE_MIN_Y_VALUE);
          this.title.isSmallSized = _loc3_ < TITLE_SIZE_Y_FACTOR;
          this._vehicleBlock.size = _loc1_.sizePrefix;
-         var _loc4_:int = _loc1_.injectCmpWidth;
-         var _loc5_:int = _loc1_.injectCmpHeight;
+         _loc4_ = _loc1_.injectCmpWidth;
+         _loc5_ = _loc1_.injectCmpHeight;
          var _loc6_:Boolean = width < SizeSettings.extraSmall.breakPointX;
          this.vehParamsPanel.height = height;
          this.vehParamsPanel.allowHide = _loc6_;
@@ -276,7 +281,8 @@ package net.wg.gui.lobby.vehPostProgression
          this.background.y = this._vehicleBlock.y + BG_OFFSET_Y * _loc1_.bgScale >> 0;
          this.footerBg.width = _width;
          this.footerBg.y = _height;
-         this.bgColor.width = _width;
+         this.bgColor.x = -BG_H_MARGIN;
+         this.bgColor.width = _width + BG_H_MARGIN * 2;
          this.bgColor.height = _height;
          this.nationFlags.x = Math.max(0,this._injectComponent.x + NATION_FLAGS_X_OFFSET);
          this.nationFlags.y = Math.max(0,this._injectComponent.y + NATION_FLAGS_Y_OFFSET);

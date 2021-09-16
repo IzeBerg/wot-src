@@ -2181,15 +2181,23 @@ package
       
       public static const RANKED_NOTIFICATIONS_BONUSNAME_STYLES:String = "#system_messages:ranked/notifications/bonusName/styles";
       
+      public static const RANKED_NOTIFICATION_NOTAVAILABLE:String = "#system_messages:ranked/notification/notAvailable";
+      
       public static const RANKED_NOTIFICATION_PRIMETIME:String = "#system_messages:ranked/notification/primeTime";
       
-      public static const RANKED_NOTIFICATION_NOTAVAILABLE:String = "#system_messages:ranked/notification/notAvailable";
+      public static const RANKED_NOTIFICATION_PRIMETIME_TITLE:String = "#system_messages:ranked/notification/primeTime/title";
       
       public static const RANKED_NOTIFICATION_NOTSET:String = "#system_messages:ranked/notification/notSet";
       
+      public static const RANKED_NOTIFICATION_NOTSET_TITLE:String = "#system_messages:ranked/notification/notSet/title";
+      
       public static const RANKED_NOTIFICATION_AVAILABLE:String = "#system_messages:ranked/notification/available";
       
+      public static const RANKED_NOTIFICATION_AVAILABLE_TITLE:String = "#system_messages:ranked/notification/available/title";
+      
       public static const ROYALE_NOTIFICATION_PRIMETIME:String = "#system_messages:royale/notification/primeTime";
+      
+      public static const ROYALE_NOTIFICATION_PRIMETIME_TITLE:String = "#system_messages:royale/notification/primeTime/title";
       
       public static const ROYALE_NOTIFICATION_CONGRATULATIONS:String = "#system_messages:royale/notification/congratulations";
       

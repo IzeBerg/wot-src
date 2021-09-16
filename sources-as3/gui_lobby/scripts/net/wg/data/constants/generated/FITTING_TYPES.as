@@ -73,13 +73,15 @@ package net.wg.data.constants.generated
       
       public static const RESERVE_FITTING_ITEM_RENDERER:String = "ReserveFittingItemRendererUI";
       
-      public static const ENGINE_CHASSIS_FITTING_ITEM_RENDERER:String = "EngineChassisFittingItemRendererUI";
+      public static const ENGINE_FITTING_ITEM_RENDERER:String = "EngineFittingItemRendererUI";
       
       public static const ENGINE_FITTING_BIG_ITEM_RENDERER:String = "EngineFittingBigItemRendererUI";
       
       public static const RADIO_FITTING_ITEM_RENDERER:String = "RadioFittingItemRendererUI";
       
-      public static const FITTING_RENDERERS:Array = [GUN_TURRET_FITTING_ITEM_RENDERER,RESERVE_FITTING_ITEM_RENDERER,ENGINE_CHASSIS_FITTING_ITEM_RENDERER,ENGINE_FITTING_BIG_ITEM_RENDERER,RADIO_FITTING_ITEM_RENDERER];
+      public static const CHASSIS_FITTING_ITEM_RENDERER:String = "ChassisFittingItemRendererUI";
+      
+      public static const FITTING_RENDERERS:Array = [GUN_TURRET_FITTING_ITEM_RENDERER,RESERVE_FITTING_ITEM_RENDERER,ENGINE_FITTING_ITEM_RENDERER,ENGINE_FITTING_BIG_ITEM_RENDERER,RADIO_FITTING_ITEM_RENDERER,CHASSIS_FITTING_ITEM_RENDERER];
       
       public static const MODULE_FITTING_RENDERER_DATA_CLASS_NAME:String = "net.wg.gui.lobby.modulesPanel.data.ModuleVO";
       

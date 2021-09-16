@@ -14,6 +14,8 @@ package net.wg.gui.lobby.vehiclePreview.data
       
       public var titleInfo:String = "";
       
+      public var needDisclaimer:Boolean = false;
+      
       public function VPBrowseTabVO(param1:Object)
       {
          super(param1);

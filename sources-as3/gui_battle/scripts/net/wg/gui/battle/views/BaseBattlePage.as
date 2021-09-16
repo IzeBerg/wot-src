@@ -52,6 +52,8 @@ package net.wg.gui.battle.views
       private static const CALLOUT_CENTER_SCREEN_OFFSET_Y:int = 14;
       
       private static const CALLOUT_CENTER_SCREEN_OFFSET_X:int = 136;
+      
+      private static const AMMUNITION_PANEL_Y_SHIFT:int = 498;
        
       
       public var battleLoading:BaseBattleLoading = null;
@@ -97,12 +99,6 @@ package net.wg.gui.battle.views
          this.battleStatisticDataController = this.createStatisticsController();
          this.initializeStatisticsController(this.battleStatisticDataController);
          this.initializeMessageLists();
-      }
-      
-      protected function updatePrebattleTimerPosition(param1:int) : void
-      {
-         this.prebattleTimer.x = param1;
-         this.prebattleTimer.y = 0;
       }
       
       override public function unregisterComponent(param1:String) : void
@@ -154,8 +150,8 @@ package net.wg.gui.battle.views
          this.calloutPanel.y = _loc4_ + CALLOUT_CENTER_SCREEN_OFFSET_Y;
          if(this.prebattleAmmunitionPanel)
          {
-            this.prebattleAmmunitionPanel.setPosition(param1 - this.prebattleAmmunitionPanel.width >> 1,param2 - this.prebattleAmmunitionPanel.height);
-            this.prebattleAmmunitionPanel.setBgWidth(param1);
+            this.prebattleAmmunitionPanel.x = _originalWidth - this.prebattleAmmunitionPanel.width >> 1;
+            this.updateAmmunitionPanelY();
          }
       }
       
@@ -169,6 +165,7 @@ package net.wg.gui.battle.views
          {
             this.prebattleAmmunitionPanel.addEventListener(PrbAmmunitionPanelEvent.VIEW_HIDDEN,this.onPrebattleAmmunitionPanelViewHiddenHandler);
             this.prebattleAmmunitionPanel.addEventListener(PrbAmmunitionPanelEvent.VIEW_SHOWN,this.onPrebattleAmmunitionPanelViewShownHandler);
+            this.prebattleAmmunitionPanel.addEventListener(PrbAmmunitionPanelEvent.STATE_CHANGED,this.onPrebattleAmmunitionPanelStateChangedHandler);
          }
       }
       
@@ -225,6 +222,7 @@ package net.wg.gui.battle.views
          {
             this.prebattleAmmunitionPanel.removeEventListener(PrbAmmunitionPanelEvent.VIEW_HIDDEN,this.onPrebattleAmmunitionPanelViewHiddenHandler);
             this.prebattleAmmunitionPanel.removeEventListener(PrbAmmunitionPanelEvent.VIEW_SHOWN,this.onPrebattleAmmunitionPanelViewShownHandler);
+            this.prebattleAmmunitionPanel.removeEventListener(PrbAmmunitionPanelEvent.STATE_CHANGED,this.onPrebattleAmmunitionPanelStateChangedHandler);
             this.prebattleAmmunitionPanel = null;
          }
          this.prebattleTimer = null;
@@ -321,6 +319,12 @@ package net.wg.gui.battle.views
          App.toolTipMgr.hide();
       }
       
+      protected function updatePrebattleTimerPosition(param1:int) : void
+      {
+         this.prebattleTimer.x = param1;
+         this.prebattleTimer.y = 0;
+      }
+      
       protected function onPrebattleAmmunitionPanelShown() : void
       {
       }
@@ -408,11 +412,6 @@ package net.wg.gui.battle.views
          }
       }
       
-      protected function get prebattleAmmunitionPanelShown() : Boolean
-      {
-         return this.prebattleAmmunitionPanelAvailable && this.prebattleAmmunitionPanel && !this.prebattleAmmunitionPanel.isHidden;
-      }
-      
       protected function registerComponent(param1:IDAAPIModule, param2:String) : void
       {
          this._componentsStorage[param2] = param1;
@@ -436,6 +435,11 @@ package net.wg.gui.battle.views
          this.minimap.dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_GRAPHICS_RECTANGLES_UPDATE));
       }
       
+      protected function getAmmunitionPanelYShift() : int
+      {
+         return AMMUNITION_PANEL_Y_SHIFT;
+      }
+      
       private function showComponent(param1:String, param2:Boolean) : void
       {
          var _loc3_:IDisplayableComponent = null;
@@ -455,6 +459,19 @@ package net.wg.gui.battle.views
          this.postmortemTips.x = width >> 1;
          this.postmortemTips.y = height;
          this.postmortemTips.updateElementsPosition();
+      }
+      
+      private function updateAmmunitionPanelY() : void
+      {
+         if(this.prebattleAmmunitionPanel)
+         {
+            this.prebattleAmmunitionPanel.setYPos(!!this.prebattleAmmunitionPanel.isInLoading ? int(this.battleLoading.getContentY() + this.getAmmunitionPanelYShift()) : int(_originalHeight - this.prebattleAmmunitionPanel.height));
+         }
+      }
+      
+      protected function get prebattleAmmunitionPanelShown() : Boolean
+      {
+         return this.prebattleAmmunitionPanelAvailable && this.prebattleAmmunitionPanel && !this.prebattleAmmunitionPanel.isHidden;
       }
       
       protected function get prebattleAmmunitionPanelAvailable() : Boolean
@@ -509,6 +526,15 @@ package net.wg.gui.battle.views
       private function onPrebattleAmmunitionPanelViewHiddenHandler(param1:PrbAmmunitionPanelEvent) : void
       {
          this.onPrebattleAmmunitionPanelHidden(param1.useAnim);
+      }
+      
+      private function onPrebattleAmmunitionPanelStateChangedHandler(param1:PrbAmmunitionPanelEvent) : void
+      {
+         if(this.prebattleAmmunitionPanel)
+         {
+            this.battleLoading.hasAmmunitionPanel(this.prebattleAmmunitionPanel.isInLoading);
+            this.updateAmmunitionPanelY();
+         }
       }
    }
 }

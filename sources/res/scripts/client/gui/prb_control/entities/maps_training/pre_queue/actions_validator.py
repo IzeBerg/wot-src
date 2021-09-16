@@ -10,7 +10,7 @@ class MapsTrainingValidator(BaseActionsValidator):
 
     def _validate(self):
         if not self.mapsTrainingController.isValid():
-            return ValidationResult(False, PRE_QUEUE_RESTRICTION.MODE_DISABLED)
+            return ValidationResult(False, PRE_QUEUE_RESTRICTION.MODE_NOT_AVAILABLE)
         return super(MapsTrainingValidator, self)._validate()
 
 

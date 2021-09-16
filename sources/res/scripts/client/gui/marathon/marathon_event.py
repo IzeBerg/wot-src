@@ -17,6 +17,8 @@ from helpers.time_utils import ONE_DAY
 from skeletons.gui.game_control import IBootcampController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
+if typing.TYPE_CHECKING:
+    from gui.server_events.event_items import Quest
 _logger = logging.getLogger(__name__)
 
 class MarathonEvent(object):
@@ -79,6 +81,12 @@ class MarathonEvent(object):
         url = yield self._data.urlMacros.parse(self._getUrl(urlType=MarathonConfig.REWARD_VEHICLE_URL_IGB))
         callback(url)
 
+    @async
+    @process
+    def getMarathonStyleUrlIgb(self, callback):
+        url = yield self._data.urlMacros.parse(self._getUrl(urlType=MarathonConfig.REWARD_STYLE_URL_IGB))
+        callback(url)
+
     def hasIgbLink(self):
         return bool(self._getUrl(urlType=MarathonConfig.REWARD_VEHICLE_URL_IGB))
 
@@ -112,6 +120,11 @@ class MarathonEvent(object):
         return (
          currentStep, self._data.questsInChain)
 
+    def getMarathonPostProgress(self):
+        tokens = self.getTokensData(prefix=self._data.tokenPrefix, postfix=self._data.styleTokenPostfix)
+        progress = tokens.values()[0][1] if tokens.values()[0] else 0
+        return progress
+
     def getState(self):
         return self._data.state
 
@@ -135,6 +148,9 @@ class MarathonEvent(object):
 
     def isRewardObtained(self):
         return self._data.rewardObtained
+
+    def isPostRewardObtained(self):
+        return self._data.postRewardObtained
 
     def getMarathonQuests(self):
         return self._eventsCache.getHiddenQuests(self.__marathonFilterFunc)
@@ -171,9 +187,11 @@ class MarathonEvent(object):
 
     def updateQuestsData(self):
         currentStep, _ = self.getMarathonProgress()
+        self._data.setQuest(self._eventsCache.getHiddenQuests(self.__marathonFilterFunc), currentStep)
         self._data.setGroup(self._eventsCache.getGroups(self.__marathonFilterFunc))
-        self._data.setQuest(self._eventsCache.getHiddenQuests(self.__marathonGroupFilterFunc), currentStep)
-        self._data.setRewardObtained(self.getTokensData(prefix=self._data.tokenPrefix))
+        tokensData = self.getTokensData(prefix=self._data.tokenPrefix)
+        self._data.setRewardObtained(tokensData)
+        self._data.setPostRewardObtained(tokensData)
 
     def getClosestStatusUpdateTime(self):
         if self._data.state not in MarathonState.ENABLED_STATE:
@@ -226,9 +244,6 @@ class MarathonEvent(object):
 
     def __marathonFilterFunc(self, q):
         return q.getID().startswith(self._data.prefix)
-
-    def __marathonGroupFilterFunc(self, q):
-        return q.getID().startswith(self._data.prefix) and q.getGroupID() == self._data.group.getID()
 
     def __getProgress(self, progressType, prefix=None, postfix=None):
         progress = {}

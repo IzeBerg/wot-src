@@ -78,6 +78,9 @@ class VehicleChassis(VehicleModule):
     def hasAutoSiege(self):
         return g_paramsCache.isChassisAutoSiege(self.intCD)
 
+    def isTrackWithinTrack(self):
+        return g_paramsCache.isTrackWithinTrack(self.intCD)
+
     @property
     def icon(self):
         if self.isWheeledChassis():
@@ -94,9 +97,11 @@ class VehicleChassis(VehicleModule):
     def getExtraIconInfo(self, vehDescr=None):
         if self.isHydraulicChassis():
             if self.isWheeledChassis():
-                return RES_ICONS.MAPS_ICONS_MODULES_HYDRAULICWHEELEDCHASSISICON
-            return RES_ICONS.MAPS_ICONS_MODULES_HYDRAULICCHASSISICON
+                return backport.image(R.images.gui.maps.icons.modules.hydraulicWheeledChassisIcon())
+            return backport.image(R.images.gui.maps.icons.modules.hydraulicChassisIcon())
         else:
+            if self.isTrackWithinTrack():
+                return backport.image(R.images.gui.maps.icons.modules.trackWithinTrack())
             return
 
     def getGUIEmblemID(self):
@@ -123,7 +128,13 @@ class VehicleTurret(VehicleModule):
         if vehicle is None:
             return (False, 'not for current vehicle')
         else:
-            installPossible, reason = vehicle.descriptor.mayInstallTurret(self.intCD, gunCD)
+            optDevicesLayouts = None
+            if vehicle.optDevices.setupLayouts.capacity > 1:
+                optDevicesLayouts = []
+                for setup in vehicle.optDevices.setupLayouts.setups.itervalues():
+                    optDevicesLayouts.append(setup.getIntCDs())
+
+            installPossible, reason = vehicle.descriptor.mayInstallTurret(self.intCD, gunCD, optDevicesLayouts=optDevicesLayouts)
             if not installPossible and reason == 'not for this vehicle type':
                 return (False, 'need gun')
             return (

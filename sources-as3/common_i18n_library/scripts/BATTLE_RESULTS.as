@@ -611,6 +611,8 @@ package
       
       public static const DETAILS_CALCULATIONS_FAIRPLAYVIOLATION_DESERTER:String = "#battle_results:details/calculations/fairPlayViolation/deserter";
       
+      public static const DETAILS_CALCULATIONS_FAIRPLAYVIOLATION_EPIC_DESERTER:String = "#battle_results:details/calculations/fairPlayViolation/epic_deserter";
+      
       public static const DETAILS_CALCULATIONS_FAIRPLAYVIOLATION_AFK:String = "#battle_results:details/calculations/fairPlayViolation/afk";
       
       public static const DETAILS_CALCULATIONS_FAIRPLAYVIOLATION_SUICIDE:String = "#battle_results:details/calculations/fairPlayViolation/suicide";

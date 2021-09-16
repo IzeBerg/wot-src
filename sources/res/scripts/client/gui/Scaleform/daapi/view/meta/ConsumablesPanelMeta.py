@@ -8,6 +8,12 @@ class ConsumablesPanelMeta(BaseDAAPIComponent):
     def onPopUpClosed(self):
         self._printOverrideError('onPopUpClosed')
 
+    def onPanelShown(self):
+        self._printOverrideError('onPanelShown')
+
+    def onPanelHidden(self):
+        self._printOverrideError('onPanelHidden')
+
     def as_setKeysToSlotsS(self, slots):
         if self._isDAAPIInited():
             return self.flashObject.as_setKeysToSlots(slots)

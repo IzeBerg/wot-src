@@ -523,6 +523,10 @@ package net.wg.data.constants
       
       public static const WHEEL:String = "WheelUI";
       
+      public static const TANK_YOH_TURRET_UI:String = "TankYohTurretUI";
+      
+      public static const TANK_YOH_HULL_UI:String = "TankYohHullUI";
+      
       public static const SIEGE_MODE_ANIMATION_UI:String = "SiegeModeAnimationUI";
       
       public static const TURBO_SIEGE_MODE_ANIMATION_UI:String = "TurboSiegeModeAnimationUI";
@@ -828,6 +832,8 @@ package net.wg.data.constants
       public static const LOBBY_VEH_MARKER:String = "VehicleMarkersUI";
       
       public static const PLATOON_VEH_MARKER:String = "PlatoonMarkerUI";
+      
+      public static const CUSTOM_MARKER:String = "CustomMarkerUI";
       
       public static const ITEM_SLOT_80X80_RENDERER:String = "ItemSlot80x80_UI";
       

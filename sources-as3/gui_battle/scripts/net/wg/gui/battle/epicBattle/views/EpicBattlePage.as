@@ -92,6 +92,8 @@ package net.wg.gui.battle.epicBattle.views
       private static const HINT_PANEL_Y_SHIFT_MULTIPLIER:Number = 1.5;
       
       private static const HINT_PANEL_AMMUNITION_OFFSET_Y:int = -160;
+      
+      private static const AMMUNITION_PANEL_Y_SHIFT:int = 587;
        
       
       public var fullStats:EpicFullStats = null;
@@ -156,16 +158,11 @@ package net.wg.gui.battle.epicBattle.views
       {
          super();
          this.battleDamageLogPanel.init(ATLAS_CONSTANTS.BATTLE_ATLAS);
+         playerMessageList.extendedLog = true;
       }
       
       override public function as_setPostmortemTipsVisible(param1:Boolean) : void
       {
-      }
-      
-      override protected function updatePrebattleTimerPosition(param1:int) : void
-      {
-         prebattleTimer.x = param1;
-         prebattleTimer.y = !!this._countDownComplete ? Number(PREBATTLE_TIMER_FINAL_Y_OFFSET) : Number(PREBATTLE_TIMER_Y_OFFSET);
       }
       
       override public function updateStage(param1:Number, param2:Number) : void
@@ -239,6 +236,12 @@ package net.wg.gui.battle.epicBattle.views
          this.recoveryPanel.updateStage(param1,param2);
          this.statusNotificationsPanel.updateStage(param1,param2);
          this.updateHintPanelPosition();
+      }
+      
+      override protected function updatePrebattleTimerPosition(param1:int) : void
+      {
+         prebattleTimer.x = param1;
+         prebattleTimer.y = !!this._countDownComplete ? Number(PREBATTLE_TIMER_FINAL_Y_OFFSET) : Number(PREBATTLE_TIMER_Y_OFFSET);
       }
       
       override protected function initializeStatisticsController(param1:BattleStatisticDataController) : void
@@ -442,6 +445,11 @@ package net.wg.gui.battle.epicBattle.views
                param1 = null;
             }
          });
+      }
+      
+      override protected function getAmmunitionPanelYShift() : int
+      {
+         return AMMUNITION_PANEL_Y_SHIFT;
       }
       
       public function as_setSelectReservesAvailable(param1:Boolean) : void
