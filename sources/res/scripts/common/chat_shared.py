@@ -1537,7 +1537,8 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'customizationProgressionChanged',
  'battlePassStyleChoiceAvailable',
  'battlePassStyleChosen',
- 'battlePassSeasonEnd'])
+ 'battlePassSeasonEnd',
+ 'wtEventTicketTokenWithdrawn'])
 SYS_MESSAGE_IMPORTANCE = Enumeration('systemMessageImportance', [
  'normal',
  'high'])

@@ -1,6 +1,6 @@
 import logging
 from collections import namedtuple
-import BigWorld, resource_helper
+import BigWorld, CGF, resource_helper
 from constants import ARENA_GUI_TYPE
 from gui.shared.utils.graphics import isRendererPipelineDeferred
 from items.components.component_constants import ZERO_FLOAT
@@ -314,9 +314,35 @@ class _BattleRoyaleDynObjects(_CommonForBattleRoyaleAndEpicBattleDynObjects):
         self.__resourcesCache = resourceRefs
 
 
+class _EventBattleDynObjects(DynObjectsBase):
+
+    def __init__(self):
+        super(_EventBattleDynObjects, self).__init__()
+        self.__cachedIDs = []
+
+    def init(self, dataSection):
+        super(_EventBattleDynObjects, self).init(dataSection)
+        self.__cachedIDs = [ value.asString for key, value in dataSection['prefabs'].items() if key == 'path' and value.asString ]
+        if self.__cachedIDs:
+            CGF.cacheGameObjects(self.__cachedIDs, False)
+
+    def clear(self):
+        if self.__cachedIDs:
+            CGF.clearGameObjectsCache(self.__cachedIDs)
+        self.__cachedIDs = []
+        super(_EventBattleDynObjects, self).clear()
+
+    def getInspiringEffect(self):
+        return {}
+
+    def getHealPointEffect(self):
+        return {}
+
+
 _CONF_STORAGES = {ARENA_GUI_TYPE.BATTLE_ROYALE: _BattleRoyaleDynObjects, 
    ARENA_GUI_TYPE.EPIC_BATTLE: _EpicBattleDynObjects, 
-   ARENA_GUI_TYPE.EPIC_TRAINING: _EpicBattleDynObjects}
+   ARENA_GUI_TYPE.EPIC_TRAINING: _EpicBattleDynObjects, 
+   ARENA_GUI_TYPE.EVENT_BATTLES: _EventBattleDynObjects}
 
 class BattleDynamicObjectsCache(IBattleDynamicObjectsCache):
 

@@ -1,18 +1,36 @@
 package net.wg.gui.prebattle.controls
 {
+   import flash.display.MovieClip;
    import flash.text.TextField;
    import net.wg.data.constants.UserTags;
    import net.wg.data.constants.Values;
    import net.wg.gui.prebattle.constants.PrebattleStateString;
+   import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.core.UIComponent;
    import scaleform.clik.utils.Constraints;
    import scaleform.gfx.TextFieldEx;
    
    public class TeamMemberRenderer extends TeamMemberRendererBase
    {
+      
+      private static const NICK_NAME_X:int = 36;
+      
+      private static const NICK_NAME_EXTENDED_X:int = 47;
+      
+      private static const NUMBER_FIELD_X:int = 10;
+      
+      private static const NUMBER_FIELD_EXTENDED_X:int = 23;
+      
+      private static const BOOSTER_ICON_OFFSET_X:uint = 2;
+      
+      private static const VEHICLE_TYPE_ICON_OFFSET_X:uint = 2;
+      
+      private static const VEHICLE_NAME_FIELD_OFFSET_X:uint = 2;
        
       
       public var numberField:TextField;
+      
+      public var hasPermissionsIcon:MovieClip;
       
       public var commander_icon:UIComponent;
       
@@ -56,6 +74,7 @@ package net.wg.gui.prebattle.controls
          this.vehicle_type_icon = null;
          this.boosterIcon.dispose();
          this.boosterIcon = null;
+         this.hasPermissionsIcon = null;
          super.onDispose();
       }
       
@@ -95,9 +114,17 @@ package net.wg.gui.prebattle.controls
          }
       }
       
+      override protected function draw() : void
+      {
+         super.draw();
+         if(model && isInvalid(InvalidationType.SIZE))
+         {
+            this.updateNicknamePosX();
+         }
+      }
+      
       override protected function afterSetData() : void
       {
-         var _loc1_:String = null;
          var _loc3_:String = null;
          this.commander_icon.visible = this.status_icon.visible = this.vehicle_type_icon.visible = this.boosterIcon.visible = false;
          updatePlayerName();
@@ -105,7 +132,7 @@ package net.wg.gui.prebattle.controls
          {
             return;
          }
-         _loc1_ = model.getStateString();
+         var _loc1_:String = model.getStateString();
          if(_loc1_ != PrebattleStateString.UNKNOWN)
          {
             statusString = _loc1_;
@@ -170,6 +197,10 @@ package net.wg.gui.prebattle.controls
          {
             this.numberField.text = String(model.orderNumber);
          }
+         if(this.hasPermissionsIcon)
+         {
+            this.hasPermissionsIcon.visible = model.hasPermissions;
+         }
          this.updateAfterStateChange();
       }
       
@@ -214,6 +245,19 @@ package net.wg.gui.prebattle.controls
          constraints.updateElement("vehicleNameField",vehicleNameField);
          constraints.updateElement(this.vehicle_type_icon.name,this.vehicle_type_icon);
          constraints.updateElement(this.boosterIcon.name,this.boosterIcon);
+      }
+      
+      private function updateNicknamePosX() : void
+      {
+         var _loc1_:Boolean = model.hasPermissionsInfo;
+         textField.x = !!_loc1_ ? Number(NICK_NAME_EXTENDED_X) : Number(NICK_NAME_X);
+         this.numberField.x = !!_loc1_ ? Number(NUMBER_FIELD_EXTENDED_X) : Number(NUMBER_FIELD_X);
+         if(this.boosterIcon.visible)
+         {
+            this.boosterIcon.x = textField.x + textField.textWidth + BOOSTER_ICON_OFFSET_X;
+            this.vehicle_type_icon.x = this.boosterIcon.x + this.vehicle_type_icon.width + VEHICLE_TYPE_ICON_OFFSET_X;
+            vehicleNameField.x = this.vehicle_type_icon.x + this.vehicle_type_icon.width + VEHICLE_NAME_FIELD_OFFSET_X;
+         }
       }
       
       private function updateValidVehicleState(param1:Boolean) : void

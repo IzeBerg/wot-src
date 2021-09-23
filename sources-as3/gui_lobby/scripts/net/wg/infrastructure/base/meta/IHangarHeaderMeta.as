@@ -31,5 +31,9 @@ package net.wg.infrastructure.base.meta
       function as_removeEpicWidget() : void;
       
       function as_setSecondaryEntryPointVisible(param1:Boolean) : void;
+      
+      function as_createEventWidget() : void;
+      
+      function as_removeEventWidget() : void;
    }
 }

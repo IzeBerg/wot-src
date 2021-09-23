@@ -90,6 +90,7 @@ class BattleRoyaleController(Notifiable, SeasonProvider, IBattleRoyaleController
         self.__c11nVisible = False
         self.__urlMacros = None
         self.__isNeedToUpdateHeroTank = False
+        self.__wasEnabled = False
         return
 
     def init(self):
@@ -403,6 +404,7 @@ class BattleRoyaleController(Notifiable, SeasonProvider, IBattleRoyaleController
             self.__disableRoyaleMode()
 
     def __enableRoyaleMode(self):
+        self.__wasEnabled = True
         royaleVehicleID = AccountSettings.getFavorites(ROYALE_VEHICLE)
         if not royaleVehicleID or self.__itemsCache.items.getVehicle(royaleVehicleID) is None:
             criteria = REQ_CRITERIA.VEHICLE.HAS_TAGS([VEHICLE_TAGS.BATTLE_ROYALE]) | REQ_CRITERIA.INVENTORY
@@ -420,6 +422,9 @@ class BattleRoyaleController(Notifiable, SeasonProvider, IBattleRoyaleController
         return
 
     def __disableRoyaleMode(self):
+        if not self.__wasEnabled:
+            return
+        self.__wasEnabled = False
         storedVehInvID = AccountSettings.getFavorites(CURRENT_VEHICLE)
         if not storedVehInvID:
             criteria = REQ_CRITERIA.INVENTORY | ~REQ_CRITERIA.VEHICLE.HAS_TAGS([VEHICLE_TAGS.BATTLE_ROYALE])

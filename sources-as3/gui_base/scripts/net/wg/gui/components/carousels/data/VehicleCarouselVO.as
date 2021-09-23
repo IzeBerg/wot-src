@@ -97,6 +97,8 @@ package net.wg.gui.components.carousels.data
       
       public var tooltip:String = "";
       
+      public var isWulfTooltip:Boolean = false;
+      
       public var lockedTooltip:String = "";
       
       public var progressionPoints:ProgressionPointsVO = null;
@@ -106,6 +108,10 @@ package net.wg.gui.components.carousels.data
       public var isNull:Boolean = true;
       
       public var isNationChangeAvailable:Boolean = false;
+      
+      public var isEventVehicle:Boolean = false;
+      
+      public var isEventVehicleSpecial:Boolean = false;
       
       private var _slotPriceActionData:ActionPriceVO = null;
       

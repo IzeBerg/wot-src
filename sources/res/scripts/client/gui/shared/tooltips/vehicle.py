@@ -149,7 +149,7 @@ class VehicleInfoTooltipData(BlocksTooltipData):
         if statsBlockConstructor is not None:
             items.append(formatters.packBuildUpBlockData(statsBlockConstructor(vehicle, paramsConfig, self.context.getParams(), valueWidth, leftPadding, rightPadding).construct(), gap=textGap, padding=blockPadding))
         priceBlock, invalidWidth = PriceBlockConstructor(vehicle, statsConfig, self.context.getParams(), valueWidth, leftPadding, rightPadding).construct()
-        shouldBeCut = self.calledBy and self.calledBy in _SHORTEN_TOOLTIP_CASES or vehicle.isOnlyForEpicBattles
+        shouldBeCut = self.calledBy and self.calledBy in _SHORTEN_TOOLTIP_CASES or vehicle.isOnlyForEpicBattles or vehicle.isOnlyForClanWarsBattles
         if priceBlock and not shouldBeCut:
             self._setWidth(_TOOLTIP_MAX_WIDTH if invalidWidth else _TOOLTIP_MIN_WIDTH)
             items.append(formatters.packBuildUpBlockData(priceBlock, linkage=BLOCKS_TOOLTIP_TYPES.TOOLTIP_BUILDUP_BLOCK_WHITE_BG_LINKAGE, gap=5, padding=formatters.packPadding(left=98), layout=BLOCKS_TOOLTIP_TYPES.LAYOUT_HORIZONTAL))
@@ -191,8 +191,9 @@ class VehicleInfoTooltipData(BlocksTooltipData):
             rentFormatter = RentLeftFormatter(rentInfo)
             descrStr = rentFormatter.getRentLeftStr(rentLeftKey)
             leftStr = ''
-            if rentInfo.rentExpiryTime:
-                leftStr = getTimeLeftStr(rentLeftKey, rentInfo.getTimeLeft())
+            rentTimeLeft = rentInfo.getTimeLeft()
+            if rentTimeLeft:
+                leftStr = getTimeLeftStr(rentLeftKey, rentTimeLeft)
             elif rentInfo.battlesLeft:
                 leftStr = str(rentInfo.battlesLeft)
             elif rentInfo.winsLeft > 0:
@@ -1049,7 +1050,7 @@ class StatusBlockConstructor(VehicleTooltipBlockConstructor):
             elif self.configuration.isAwardWindow:
                 result = None
             else:
-                result = self.__getVehicleStatus(self.configuration.showCustomStates, self.vehicle)
+                result = self.__getVehicleStatus(self.configuration.showCustomStates, self.vehicle, self.configuration.isSpecialWindow)
             if result is not None:
                 statusLevel = result['level']
                 if statusLevel == Vehicle.VEHICLE_STATE_LEVEL.INFO:
@@ -1105,7 +1106,7 @@ class StatusBlockConstructor(VehicleTooltipBlockConstructor):
                'text': text, 
                'level': level}
 
-    def __getVehicleStatus(self, showCustomStates, vehicle):
+    def __getVehicleStatus(self, showCustomStates, vehicle, isSpecial=False):
         if showCustomStates:
             isInInventory = vehicle.isInInventory
             level = Vehicle.VEHICLE_STATE_LEVEL.WARNING
@@ -1123,7 +1124,7 @@ class StatusBlockConstructor(VehicleTooltipBlockConstructor):
             else:
                 if isInInventory:
                     msg = 'inHangar'
-                elif not mayObtain:
+                elif not mayObtain and not isSpecial:
                     level = Vehicle.VEHICLE_STATE_LEVEL.CRITICAL
                     if reason == GUI_ITEM_ECONOMY_CODE.NOT_ENOUGH_GOLD:
                         msg = 'notEnoughGold'
@@ -1133,6 +1134,8 @@ class StatusBlockConstructor(VehicleTooltipBlockConstructor):
                         msg = 'operationError'
                         operationError = True
                 if msg:
+                    if isSpecial:
+                        level = Vehicle.VEHICLE_STATE_LEVEL.INFO
                     header, text = getComplexStatus('#tooltips:vehicleStatus/%s' % msg)
                     return {'header': header, 
                        'text': text, 

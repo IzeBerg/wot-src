@@ -50,9 +50,11 @@ package net.wg.gui.components.tooltips
       
       private function layoutComponents() : void
       {
-         var _loc4_:DisplayObject = null;
          var _loc1_:uint = 0;
-         var _loc2_:uint = 5;
+         var _loc2_:uint = 0;
+         var _loc4_:DisplayObject = null;
+         _loc1_ = 0;
+         _loc2_ = 5;
          var _loc3_:int = 0;
          while(_loc3_ < numChildren)
          {

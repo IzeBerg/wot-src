@@ -268,6 +268,7 @@ class REQ_CRITERIA(object):
         EPIC_BATTLE = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForEpicBattles))
         BATTLE_ROYALE = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForBattleRoyaleBattles))
         MAPS_TRAINING = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForMapsTrainingBattles))
+        CLAN_WARS = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForClanWarsBattles))
         HAS_XP_FACTOR = RequestCriteria(PredicateCondition(lambda item: item.dailyXPFactor != -1))
         IS_RESTORE_POSSIBLE = RequestCriteria(PredicateCondition(lambda item: item.isRestorePossible()))
         CAN_TRADE_IN = RequestCriteria(PredicateCondition(lambda item: item.canTradeIn))
@@ -282,6 +283,8 @@ class REQ_CRITERIA(object):
         NAME_VEHICLE_WITH_SHORT = staticmethod(lambda nameVehicle: RequestCriteria(PredicateCondition(lambda item: nameVehicle in item.searchableShortUserName or nameVehicle in item.searchableUserName)))
         DISCOUNT_RENT_OR_BUY = RequestCriteria(PredicateCondition(lambda item: (item.buyPrices.itemPrice.isActionPrice() or item.getRentPackageActionPrc() != 0) and not item.isRestoreAvailable()))
         HAS_TAGS = staticmethod(lambda tags: RequestCriteria(PredicateCondition(lambda item: item.tags.issuperset(tags))))
+        HAS_NO_TAGS = staticmethod(lambda tags: RequestCriteria(PredicateCondition(lambda item: not item.tags.intersection(tags))))
+        HAS_ANY_TAGS = staticmethod(lambda tags: RequestCriteria(PredicateCondition(lambda item: item.tags.intersection(tags))))
         FOR_ITEM = staticmethod(lambda style: RequestCriteria(PredicateCondition(style.mayInstall)))
 
     class TANKMAN(object):
@@ -389,6 +392,7 @@ class ItemsRequester(IItemsRequester):
         self.__brokenSyncAlreadyLoggedTypes = set()
         self.__fittingItemRequesters = {
          self.__inventory, self.__stats, self.__shop, self.__vehicleRotation, self.__recycleBin}
+        self.__ignoreFittingItemsSync = False
         self.__vehCustomStateCache = defaultdict(dict)
 
     @property
@@ -513,7 +517,7 @@ class ItemsRequester(IItemsRequester):
 
     def isSynced--- This code section failed: ---
 
- L. 863         0  LOAD_FAST             0  'self'
+ L. 874         0  LOAD_FAST             0  'self'
                 3  LOAD_ATTR             0  '__blueprints'
                 6  LOAD_CONST               None
                 9  COMPARE_OP            9  is-not
@@ -648,6 +652,7 @@ Parse error at or near `None' instruction at offset -1
         self.__blueprints.clear()
         self.__festivity.clear()
         self.__anonymizer.clear()
+        self.__ignoreFittingItemsSync = True
 
     def onDisconnected(self):
         self.__tokens.onDisconnected()
@@ -657,6 +662,7 @@ Parse error at or near `None' instruction at offset -1
 
     def invalidateCache(self, diff=None):
         invalidate = defaultdict(set)
+        self.__ignoreFittingItemsSync = False
         if diff is None:
             LOG_DEBUG('Gui items cache full invalidation')
             for itemTypeID, cache in self.__itemsCache.iteritems():
@@ -1132,6 +1138,8 @@ Parse error at or near `None' instruction at offset -1
             return set()
 
     def __checkFittingItemsSync(self, itemTypeID):
+        if self.__ignoreFittingItemsSync:
+            return
         unsyncedList = [ r.__class__.__name__ for r in self.__fittingItemRequesters if not r.isSynced() ]
         if not unsyncedList or itemTypeID in self.__brokenSyncAlreadyLoggedTypes:
             return

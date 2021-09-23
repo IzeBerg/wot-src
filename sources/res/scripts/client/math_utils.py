@@ -1,5 +1,5 @@
 import random, math, Math
-from Math import Vector2, Vector3, Matrix
+from Math import Vector2, Vector3, Matrix, MatrixProduct
 
 def createIdentityMatrix():
     result = Matrix()
@@ -36,13 +36,20 @@ def createSRTMatrix(scale, rotation, translation):
     return result
 
 
+def createMatrixProduct(provider1, provider2):
+    product = MatrixProduct()
+    product.a = provider1
+    product.b = provider2
+    return product
+
+
 def setTranslation(matrix, translation):
     matrix.translation = translation
 
 
 clamp = --- This code section failed: ---
 
- L.  66         0  LOAD_FAST             2  'val'
+ L.  75         0  LOAD_FAST             2  'val'
                 3  LOAD_FAST             0  'minVal'
                 6  COMPARE_OP            0  <
                 9  POP_JUMP_IF_FALSE    16  'to 16'

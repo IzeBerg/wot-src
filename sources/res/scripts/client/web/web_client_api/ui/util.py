@@ -17,6 +17,7 @@ from gui.shared.view_helpers import UsersInfoHelper
 from gui.shared.utils.functions import makeTooltip
 from helpers import time_utils
 from helpers import dependency
+from helpers.gui_utils import getMousePosition
 from messenger.storage import storage_getter
 from skeletons.gui.app_loader import IAppLoader
 from skeletons.gui.game_control import IExternalLinksController
@@ -62,6 +63,7 @@ class _RunTriggerChainSchema(W2CSchema):
 
 class _ShowToolTipSchema(W2CSchema):
     tooltipType = Field(required=True, type=basestring)
+    isWulfTooltip = Field(type=bool)
     itemId = Field(required=True, type=(int, basestring))
     blockId = Field(type=basestring, validator=lambda value, _: value in ACHIEVEMENT_BLOCK.ALL)
 
@@ -151,11 +153,12 @@ class UtilWebApiMixin(object):
     def showTooltip(self, cmd):
         tooltipType = cmd.tooltipType
         itemId = cmd.itemId
+        isWulfTooltip = cmd.isWulfTooltip
         args = []
         withLongIntArgs = (
          TC.AWARD_SHELL,)
         withLongOnlyArgs = (TC.AWARD_VEHICLE, TC.AWARD_MODULE, TC.INVENTORY_BATTLE_BOOSTER, TC.BOOSTERS_BOOSTER_INFO,
-         TC.BADGE, TC.TECH_CUSTOMIZATION_ITEM)
+         TC.BADGE, TC.TECH_CUSTOMIZATION_ITEM, TC.EVENT_BATTLES_TICKET, TC.EVENT_LOOTBOX)
         if tooltipType in withLongIntArgs:
             args = [
              itemId, 0]
@@ -168,7 +171,11 @@ class UtilWebApiMixin(object):
             achievement = dossier.getTotalStats().getAchievement((cmd.blockId, itemId))
             args = [dossier.getDossierType(), dossierCompDescr, achievement.getBlock(), cmd.itemId,
              isRareAchievement(achievement)]
-        self.__getTooltipMgr().onCreateTypedTooltip(tooltipType, args, 'INFO')
+        if isWulfTooltip:
+            mouseX, mouseY = getMousePosition()
+            self.__getTooltipMgr().onCreateWulfTooltip(tooltipType, args, mouseX, mouseY)
+        else:
+            self.__getTooltipMgr().onCreateTypedTooltip(tooltipType, args, 'INFO')
 
     @w2c(_ShowItemTooltipSchema, 'show_item_tooltip')
     def showItemTooltip(self, cmd):

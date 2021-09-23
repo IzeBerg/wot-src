@@ -136,6 +136,7 @@ class PREBATTLE_ACTION_NAME(object):
     TRAININGS_LIST = 'trainingsList'
     SPEC_BATTLES_LIST = 'specBattlesList'
     SQUAD = 'squad'
+    EVENT_BATTLE = 'event'
     EVENT_SQUAD = 'eventSquad'
     BATTLE_ROYALE_SQUAD = 'battleRoyaleSquad'
     MAPBOX_SQUAD = 'mapboxSquad'
@@ -154,7 +155,6 @@ class PREBATTLE_ACTION_NAME(object):
     BATTLE_ROYALE = 'battleRoyaleQueue'
     BATTLE_ROYALE_TOURNAMENT = 'battleRoyaleTournamentQueue'
     MAPS_TRAINING = 'mapsTraining'
-    EVENT_BATTLE = 'eventBattle'
     MAPBOX = 'mapbox'
 
 
@@ -170,6 +170,7 @@ class SELECTOR_BATTLE_TYPES(object):
     SORTIE = 'sortie'
     RANKED = 'ranked'
     EPIC = 'epic'
+    EVENT = 'event'
     BATTLE_ROYALE = 'battleRoyale'
     MAPBOX = 'mapbox'
     MAPS_TRAINING = 'mapsTraining'
@@ -255,6 +256,7 @@ class PREBATTLE_RESTRICTION(object):
     CREW_NOT_FULL = 'crew/notFull'
     UNIT_NOT_FULL = 'squad/notFull'
     TUTORIAL_NOT_FINISHED = 'tutorial/notFinished'
+    TICKETS_SHORTAGE = 'vehicle/ticketsShortage'
     SERVER_LIMITS = (
      LIMIT_MIN_COUNT, LIMIT_MAX_COUNT, LIMIT_LEVEL, LIMIT_TOTAL_LEVEL,
      LIMIT_CLASSES, LIMIT_CLASS_LEVEL, LIMIT_VEHICLES, LIMIT_NATIONS,
@@ -343,6 +345,7 @@ class UNIT_RESTRICTION(object):
     UNSUITABLE_VEHICLE = 44
     VEHICLE_TOO_HEAVY = 45
     UNIT_WRONG_DATA = 46
+    EVENT_VEHICLE_NOT_SELECTED = 47
 
 
 class PRE_QUEUE_RESTRICTION(object):
@@ -444,3 +447,6 @@ class PRB_INVITE_STATE(CONST_CONTAINER):
 class PREBATTLE_PLAYERS_COMPARATORS(object):
     REGULAR = 1
     OBSERVERS_TO_BOTTOM = 2
+    BY_VEHICLE = 3
+    BY_STATE = 4
+    BY_PLAYER_NAME = 5

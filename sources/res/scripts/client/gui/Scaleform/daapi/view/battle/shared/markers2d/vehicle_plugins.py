@@ -7,6 +7,7 @@ from account_helpers.settings_core.settings_constants import GAME
 from aih_constants import CTRL_MODE_NAME
 from arena_components.advanced_chat_component import _DEFAULT_ACTIVE_COMMAND_TIME, TARGET_CHAT_CMD_FLAG
 from chat_commands_consts import INVALID_MARKER_SUBTYPE, MarkerType, DefaultMarkerSubType, INVALID_MARKER_ID
+from gui.shared.gui_items.Vehicle import VEHICLE_TAGS
 from gui.Scaleform.daapi.view.battle.shared.markers2d import markers
 from gui.Scaleform.daapi.view.battle.shared.markers2d.plugins import MarkerPlugin, ChatCommunicationComponent, MAX_DISTANCE_TEMP_STICKY
 from gui.Scaleform.daapi.view.battle.shared.markers2d.timer import MarkerTimer
@@ -47,7 +48,7 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
     bootcamp = dependency.descriptor(IBootcampController)
     __slots__ = ('_markers', '_markersStates', '_clazz', '__playerVehicleID', '_isSquadIndicatorEnabled',
                  '__showDamageIcon', '_markerTimers', '__callbackIDs', '__targetedTankMarkerID',
-                 '__targetedMarkerFromCppID', '__equipmentCtrl')
+                 '__targetedMarkerFromCppID', '__equipmentCtrl', '__erased')
 
     def __init__(self, parentObj, clazz=markers.VehicleMarker):
         super(VehicleMarkerPlugin, self).__init__(parentObj)
@@ -63,6 +64,7 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
         self.__targetedMarkerFromCppID = -1
         self.__followingIgnoredTank = 0
         self.__equipmentCtrl = None
+        self.__erased = []
         return
 
     @proto_getter(PROTO_TYPE.BW_CHAT2)
@@ -85,6 +87,7 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
         if ctrl is not None:
             ctrl.onVehicleMarkerAdded += self.__onVehicleMarkerAdded
             ctrl.onVehicleMarkerRemoved += self.__onVehicleMarkerRemoved
+            ctrl.onVehicleMarkerErased += self.__onVehicleMarkerErased
             ctrl.onVehicleFeedbackReceived += self._onVehicleFeedbackReceived
             ctrl.setInFocusForPlayer += self.__setInFocusForPlayer
             ctrl.onRemoveCommandReceived += self.__onRemoveCommandReceived
@@ -121,12 +124,13 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
         if ctrl is not None:
             ctrl.onVehicleMarkerAdded -= self.__onVehicleMarkerAdded
             ctrl.onVehicleMarkerRemoved -= self.__onVehicleMarkerRemoved
+            ctrl.onVehicleMarkerErased -= self.__onVehicleMarkerErased
             ctrl.onVehicleFeedbackReceived -= self._onVehicleFeedbackReceived
             ctrl.setInFocusForPlayer -= self.__setInFocusForPlayer
             ctrl.onRemoveCommandReceived -= self.__onRemoveCommandReceived
         vStateCtrl = self.sessionProvider.shared.vehicleState
         if vStateCtrl is not None:
-            vStateCtrl.onVehicleStateUpdated += self.__onVehicleStateUpdated
+            vStateCtrl.onVehicleStateUpdated -= self.__onVehicleStateUpdated
         arena = avatar_getter.getArena()
         if arena is not None:
             arena.onChatCommandTargetUpdate -= self._onChatCommandTargetUpdate
@@ -134,6 +138,7 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
         g_playerEvents.onTeamChanged -= self.__onTeamChanged
         self.settingsCore.onSettingsChanged -= self.__onSettingsChanged
         self.__equipmentCtrl = None
+        self.__erased = []
         super(VehicleMarkerPlugin, self).stop()
         return
 
@@ -154,7 +159,7 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
                     continue
             else:
                 marker = self._markers[vehicleID]
-            self.__setVehicleInfo(marker, vInfo, getProps(vehicleID, vInfo.team), getParts(vehicleID))
+            self._setVehicleInfo(marker, vInfo, getProps(vehicleID, vInfo.team), getParts(vehicleID))
             self._setMarkerInitialState(marker, accountDBID=vInfo.player.accountDBID)
 
         return
@@ -171,7 +176,7 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
             marker = self.__addMarkerToPool(vehicleID, vInfo=vInfo, vProxy=feedback.getVehicleProxy(vehicleID))
             if marker is None:
                 return
-            self.__setVehicleInfo(marker, vInfo, ctx.getPlayerGuiProps(vehicleID, vInfo.team), ctx.getPlayerFullNameParts(vehicleID))
+            self._setVehicleInfo(marker, vInfo, ctx.getPlayerGuiProps(vehicleID, vInfo.team), ctx.getPlayerFullNameParts(vehicleID))
             self._setMarkerInitialState(marker, accountDBID=vInfo.player.accountDBID)
             return
 
@@ -183,7 +188,7 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
             if vehicleID not in self._markers:
                 continue
             marker = self._markers[vehicleID]
-            self.__setVehicleInfo(marker, vInfo, getProps(vehicleID, vInfo.team), getParts(vehicleID))
+            self._setVehicleInfo(marker, vInfo, getProps(vehicleID, vInfo.team), getParts(vehicleID))
 
     def invalidatePlayerStatus(self, flags, vInfo, arenaDP):
         self.__setEntityName(vInfo, arenaDP)
@@ -239,6 +244,27 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
 
     def _getMarkerSymbol(self, vehicleID):
         return settings.MARKER_SYMBOL_NAME.VEHICLE_MARKER
+
+    def _setVehicleInfo(self, marker, vInfo, guiProps, nameParts):
+        markerID = marker.getMarkerID()
+        vType = vInfo.vehicleType
+        if avatar_getter.isVehiclesColorized():
+            guiPropsName = ('team{}').format(vInfo.team)
+        else:
+            if avatar_getter.isObserver():
+                arenaDP = self.sessionProvider.getArenaDP()
+                obsVehId = BigWorld.player().observedVehicleID
+                vehId = vInfo.vehicleID
+                if vehId == obsVehId or arenaDP.isSquadMan(vehId, arenaDP.getVehicleInfo(obsVehId).prebattleID):
+                    guiProps = PLAYER_GUI_PROPS.squadman
+            guiPropsName = guiProps.name()
+        if self._isSquadIndicatorEnabled and vInfo.squadIndex:
+            squadIndex = vInfo.squadIndex
+        else:
+            squadIndex = 0
+        hunting = VehicleActions.isHunting(vInfo.events)
+        self._invokeMarker(markerID, 'setVehicleInfo', vType.classTag, vType.iconPath, nameParts.vehicleName, vType.level, nameParts.playerFullName, nameParts.playerName, nameParts.clanAbbrev, nameParts.regionCode, vType.maxHealth, guiPropsName, hunting, squadIndex, backport.text(R.strings.ingame_gui.stun.seconds()))
+        self._invokeMarker(markerID, 'update')
 
     def _onVehicleFeedbackReceived(self, eventID, vehicleID, value):
         if eventID == _EVENT_ID.ENTITY_IN_FOCUS:
@@ -330,13 +356,13 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
             itemName = self.__equipmentCtrl.getEquipmentNameByID(equipmentID)
             isBerserk = itemName == SteelHunterEquipmentNames.BERSERKER if itemName is not None else False
             if isBerserk:
-                self.__updateMarkerTimer(vehicleID, handle, duration, BATTLE_MARKER_STATES.BERSERKER_STATE, showCountdown=False)
+                self._updateMarkerTimer(vehicleID, handle, duration, BATTLE_MARKER_STATES.BERSERKER_STATE, showCountdown=False)
                 return
         statusID = BATTLE_MARKER_STATES.INSPIRING_STATE if isSourceVehicle else BATTLE_MARKER_STATES.INSPIRED_STATE
         if isInactivation is not None:
             if isSourceVehicle:
                 hideStatusID = BATTLE_MARKER_STATES.INSPIRED_STATE
-                self.__updateMarkerTimer(vehicleID, handle, duration, statusID)
+                self._updateMarkerTimer(vehicleID, handle, duration, statusID)
             else:
                 hideStatusID = BATTLE_MARKER_STATES.INSPIRING_STATE
             self._updateStatusMarkerState(vehicleID, False, handle, hideStatusID, duration, animated, isSourceVehicle)
@@ -351,14 +377,14 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
         vehicle = BigWorld.entities.get(vehicleID)
         if vehicle is None or not vehicle.isAlive():
             return
-        self.__updateMarkerTimer(vehicleID, handle, duration, BATTLE_MARKER_STATES.HEALING_STATE)
+        self._updateMarkerTimer(vehicleID, handle, duration, BATTLE_MARKER_STATES.HEALING_STATE)
         return
 
     def __updateRepairingMarker(self, vehicleID, handle, duration):
         vehicle = BigWorld.entities.get(vehicleID)
         if vehicle is None or not vehicle.isAlive():
             return
-        self.__updateMarkerTimer(vehicleID, handle, duration, BATTLE_MARKER_STATES.REPAIRING_STATE)
+        self._updateMarkerTimer(vehicleID, handle, duration, BATTLE_MARKER_STATES.REPAIRING_STATE)
         return
 
     def __updateStealthRadarMarker(self, vehicleID, handle, info):
@@ -366,7 +392,7 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
         if vehicle is None or not vehicle.isAlive() or info is None:
             return
         duration = info.duration if info.isActive else 0
-        self.__updateMarkerTimer(vehicleID, handle, duration, BATTLE_MARKER_STATES.STEALTH_STATE, True)
+        self._updateMarkerTimer(vehicleID, handle, duration, BATTLE_MARKER_STATES.STEALTH_STATE, True)
         return
 
     def __updateFLRegenerationKitMarker(self, vehicleID, handle, info):
@@ -374,7 +400,7 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
         if vehicle is None or not vehicle.isAlive():
             return
         duration = info.duration if info.isActive else 0
-        self.__updateMarkerTimer(vehicleID, handle, duration, BATTLE_MARKER_STATES.FL_REGENERATION_KIT_STATE, True)
+        self._updateMarkerTimer(vehicleID, handle, duration, BATTLE_MARKER_STATES.FL_REGENERATION_KIT_STATE, True)
         return
 
     def __onCameraChanged(self, mode, vehicleID=0):
@@ -428,27 +454,6 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
                 self._markersStates[vehicleID].remove(state)
                 self._invokeMarker(handle, 'hideStatusMarker', state, -1, False)
 
-    def __setVehicleInfo(self, marker, vInfo, guiProps, nameParts):
-        markerID = marker.getMarkerID()
-        vType = vInfo.vehicleType
-        if avatar_getter.isVehiclesColorized():
-            guiPropsName = ('team{}').format(vInfo.team)
-        else:
-            if avatar_getter.isObserver():
-                arenaDP = self.sessionProvider.getArenaDP()
-                obsVehId = BigWorld.player().observedVehicleID
-                vehId = vInfo.vehicleID
-                if vehId == obsVehId or arenaDP.isSquadMan(vehId, arenaDP.getVehicleInfo(obsVehId).prebattleID):
-                    guiProps = PLAYER_GUI_PROPS.squadman
-            guiPropsName = guiProps.name()
-        if self._isSquadIndicatorEnabled and vInfo.squadIndex:
-            squadIndex = vInfo.squadIndex
-        else:
-            squadIndex = 0
-        hunting = VehicleActions.isHunting(vInfo.events)
-        self._invokeMarker(markerID, 'setVehicleInfo', vType.classTag, vType.iconPath, nameParts.vehicleName, vType.level, nameParts.playerFullName, nameParts.playerName, nameParts.clanAbbrev, nameParts.regionCode, vType.maxHealth, guiPropsName, hunting, squadIndex, backport.text(R.strings.ingame_gui.stun.seconds()))
-        self._invokeMarker(markerID, 'update')
-
     def __setupDynamic(self, marker, accountDBID=0):
         if accountDBID:
             speaking = self.bwProto.voipController.isPlayerSpeaking(accountDBID)
@@ -460,9 +465,8 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
     def __setupHealth(self, marker):
         self._invokeMarker(marker.getMarkerID(), 'setHealth', marker.getHealth())
 
-    @staticmethod
-    def __needsMarker(vInfo):
-        return vInfo.isAlive() or not isSpawnedBot(vInfo.vehicleType.tags)
+    def __needsMarker(self, vInfo):
+        return vInfo.isAlive() or not isSpawnedBot(vInfo.vehicleType.tags) and VEHICLE_TAGS.EVENT_BOT not in vInfo.vehicleType.tags and vInfo.vehicleID not in self.__erased
 
     def __setEntityName(self, vInfo, arenaDP):
         vehicleID = vInfo.vehicleID
@@ -490,11 +494,15 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
                 marker = self.__addMarkerToPool(vehicleID, vInfo=vInfo, vProxy=vProxy)
                 if marker is None:
                     return
-                self.__setVehicleInfo(marker, vInfo, guiProps, self.sessionProvider.getCtx().getPlayerFullNameParts(vehicleID))
+                self._setVehicleInfo(marker, vInfo, guiProps, self.sessionProvider.getCtx().getPlayerFullNameParts(vehicleID))
                 self._setMarkerInitialState(marker, accountDBID=accountDBID)
             return
 
     def __onVehicleMarkerRemoved(self, vehicleID):
+        self._hideVehicleMarker(vehicleID)
+
+    def __onVehicleMarkerErased(self, vehicleID):
+        self.__erased.append(vehicleID)
         self._hideVehicleMarker(vehicleID)
 
     def __onVehicleInFocus(self, vehicleID, entityInFocusData):
@@ -633,10 +641,10 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
             BigWorld.cancelCallback(callbackID)
 
     def __updateStunMarker(self, vehicleID, handle, value):
-        self.__updateMarkerTimer(vehicleID, handle, value.duration, BATTLE_MARKER_STATES.STUN_STATE, True)
+        self._updateMarkerTimer(vehicleID, handle, value.duration, BATTLE_MARKER_STATES.STUN_STATE, True)
 
     def __updateDebuffMarker(self, vehicleID, handle, value):
-        self.__updateMarkerTimer(vehicleID, handle, value.duration, BATTLE_MARKER_STATES.DEBUFF_STATE, False)
+        self._updateMarkerTimer(vehicleID, handle, value.duration, BATTLE_MARKER_STATES.DEBUFF_STATE, False)
 
     def __updatePassiveEngineeringMarker(self, vehicleID, handle, isAttacker, enabled, animated=True):
         self._updateStatusMarkerState(vehicleID, enabled, handle, BATTLE_MARKER_STATES.ENGINEER_STATE, enabled, animated, isAttacker)
@@ -650,7 +658,7 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
     def __statusCompareFunction(self, x, y):
         return x > y
 
-    def __updateMarkerTimer(self, vehicleID, handle, duration, statusID, showCountdown=True):
+    def _updateMarkerTimer(self, vehicleID, handle, duration, statusID, showCountdown=True):
         activeTimers = self._markerTimers.get(handle, {})
         if statusID in activeTimers:
             timer = activeTimers.pop(statusID)

@@ -10,9 +10,13 @@ package net.wg.gui.prebattle.meta
       
       function requestToUnassignMemberS(param1:Number) : void;
       
-      function canMoveToAssignedS() : Boolean;
+      function canMoveToAssignedS(param1:Number) : Boolean;
       
-      function canMoveToUnassignedS() : Boolean;
+      function canMoveToUnassignedS(param1:Number) : Boolean;
+      
+      function setSelectedFilterS(param1:String) : void;
+      
+      function onCantMoveSS(param1:Number) : void;
       
       function as_setStartTime(param1:String) : void;
       
@@ -29,5 +33,7 @@ package net.wg.gui.prebattle.meta
       function as_setCommonLimits(param1:String, param2:Number) : void;
       
       function as_setPlayersCountText(param1:String) : void;
+      
+      function as_setFilters(param1:Array, param2:uint) : void;
    }
 }

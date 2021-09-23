@@ -17,6 +17,8 @@ package net.wg.gui.components.crosshairPanel
       
       private static const FRACTIONAL_FORMAT_CMD:String = "WG.getFractionalFormat";
       
+      private static const INFINITY_SYMBOL:String = "∞";
+      
       protected static const TYPE_PREFIX:String = "type";
        
       
@@ -80,7 +82,7 @@ package net.wg.gui.components.crosshairPanel
       
       private var _currentAmmoTextField:TextField = null;
       
-      private var _count:Number = -1;
+      private var _count:Number = NaN;
       
       private var _isLow:Boolean = false;
       
@@ -517,7 +519,7 @@ package net.wg.gui.components.crosshairPanel
          if(this._count != param1)
          {
             this._count = param1;
-            this._currentAmmoTextField.text = this._count.toString();
+            this._currentAmmoTextField.text = this._count == -1 ? INFINITY_SYMBOL : this._count.toString();
          }
       }
       
@@ -526,7 +528,7 @@ package net.wg.gui.components.crosshairPanel
          this.ammoLowTextField.visible = false;
          this.ammoNormalTextField.visible = false;
          this._currentAmmoTextField = !!this._isLow ? this.ammoLowTextField : this.ammoNormalTextField;
-         this._currentAmmoTextField.text = this._count.toString();
+         this._currentAmmoTextField.text = this._count == -1 ? INFINITY_SYMBOL : this._count.toString();
          this.updateAmmoCountVisibility();
       }
       

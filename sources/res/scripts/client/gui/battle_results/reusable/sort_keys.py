@@ -1,20 +1,33 @@
 from gui.shared.gui_items import Vehicle
 from gui.shared.sort_key import SortKey
+from gui.shared.utils import makeSearchableString
+from dossiers2.ui.achievements import ACHIEVEMENT_SECTION
+_LEFT_ACHIEVEMENT_ORDER = (
+ ACHIEVEMENT_SECTION.SPECIAL,
+ ACHIEVEMENT_SECTION.MEMORIAL,
+ ACHIEVEMENT_SECTION.CLASS)
+
+def leftAchievementSort(x):
+    section = x.achievement.getSection()
+    if section in _LEFT_ACHIEVEMENT_ORDER:
+        return _LEFT_ACHIEVEMENT_ORDER.index(section)
+    return len(_LEFT_ACHIEVEMENT_ORDER)
+
 
 class AchievementSortKey(SortKey):
     __slots__ = ('achievement', )
 
-    def __init__(self, achievement):
+    def __init__(self, achievementInfo):
         super(AchievementSortKey, self).__init__()
-        self.achievement = achievement
+        self.achievement = achievementInfo.achievement
 
     def _cmp(self, other):
-        x = self.achievement[0]
-        y = other.achievement[0]
+        x = self.achievement
+        y = other.achievement
         result = cmp(y.hasRibbon(), x.hasRibbon())
         if result:
             return result
-        result = cmp(y.getUserName(), x.getUserName())
+        result = cmp(makeSearchableString(y.getUserName()), makeSearchableString(x.getUserName()))
         if result:
             return result
 

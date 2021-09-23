@@ -94,8 +94,7 @@ package net.wg.gui.components.tooltips
       
       private function addSuitableVehicleBlockItem(param1:VehicleVO, param2:Number) : Number
       {
-         var _loc3_:SuitableVehicleBlockItem = null;
-         _loc3_ = App.utils.classFactory.getComponent("SuitableVehicleBlockItemUI",SuitableVehicleBlockItem);
+         var _loc3_:SuitableVehicleBlockItem = App.utils.classFactory.getComponent("SuitableVehicleBlockItemUI",SuitableVehicleBlockItem);
          this._vehicleBlockItems.push(_loc3_);
          _loc3_.setData(App.utils.nations.getNationIcon(param1.nationID),param1.level,param1.smallIconPath,"../maps/icons/filters/tanks/" + param1.type + ".png",param1.shortUserName);
          _loc3_.x = contentMargin.left + bgShadowMargin.left;

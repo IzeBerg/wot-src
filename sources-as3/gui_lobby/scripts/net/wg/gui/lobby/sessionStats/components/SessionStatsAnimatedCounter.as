@@ -65,9 +65,8 @@ package net.wg.gui.lobby.sessionStats.components
       private function animateToTarget() : void
       {
          var _loc1_:int = 0;
-         var _loc3_:int = 0;
          var _loc2_:int = this.numbers.length;
-         _loc3_ = this.targetNumberV.length;
+         var _loc3_:int = this.targetNumberV.length;
          var _loc4_:SessionStatsAnimatedNumber = null;
          var _loc5_:Boolean = _loc3_ != this.currentNumberV.length;
          _loc1_ = 0;

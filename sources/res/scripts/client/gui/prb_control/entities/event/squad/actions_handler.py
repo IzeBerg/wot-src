@@ -1,15 +1,8 @@
-from CurrentVehicle import g_currentVehicle
 from gui.prb_control.entities.base.squad.actions_handler import SquadActionsHandler
-from helpers import dependency
-from shared_utils import first
-from skeletons.gui.server_events import IEventsCache
+from gui.prb_control.events_dispatcher import g_eventDispatcher
 
 class EventBattleSquadActionsHandler(SquadActionsHandler):
-    eventsCache = dependency.descriptor(IEventsCache)
 
-    def _loadWindow(self, ctx):
-        super(EventBattleSquadActionsHandler, self)._loadWindow(ctx)
-        eventVehicles = self.eventsCache.getEventVehicles()
-        if not self._entity.getPlayerInfo().isReady and eventVehicles:
-            eventVehicle = first(eventVehicles)
-            g_currentVehicle.selectVehicle(eventVehicle.invID)
+    @classmethod
+    def _loadBattleQueue(cls):
+        g_eventDispatcher.loadEventBattleQueue()

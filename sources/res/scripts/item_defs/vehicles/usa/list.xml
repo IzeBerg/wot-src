@@ -678,11 +678,11 @@
 		<shortDescriptionSpecial>#usa_vehicles:A140_ASTRON_REX_105mm_short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#usa_vehicles:A140_ASTRON_REX_105mm_long_special</longDescriptionSpecial>
 		<price>
-			100
+			9550
 			<gold/>
 		</price>
 		<notInShop>true</notInShop>
-		<tags>mediumTank role_MT_support HD improvedVentilation_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user secret testTank</tags>
+		<tags>mediumTank role_MT_support HD improvedVentilation_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user</tags>
 		<level>8</level>
 	</A140_ASTRON_REX_105mm>
 	<A134_M24E2_SuperChaffee>
@@ -1397,6 +1397,19 @@
 		<tags>heavyTank role_HT_universal HD secret bob cannot_be_sold improvedVentilation_class1_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_heavy_user</tags>
 		<level>10</level>
 	</A69_T110E5_bob>
+	<A69_T110E5_cl>
+		<id>138</id>
+		<userString>#usa_vehicles:T110_cl</userString>
+		<description>#usa_vehicles:T110_descr</description>
+		<price>
+			1
+			<gold/>
+		</price>
+		<notInShop>true</notInShop>
+		<cannotBeBought>true</cannotBeBought>
+		<tags>heavyTank HD clanWarsBattles special cannot_be_sold improvedVentilation_class1_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_heavy_user role_HT_universal</tags>
+		<level>10</level>
+	</A69_T110E5_cl>
 	<A129_T6_medium_MapsTraining_Dummy_MT_1>
 		<id>110</id>
 		<userString>#maps_training:botVehicleType/mediumTank</userString>
@@ -1454,4 +1467,15 @@
 		<tags>mediumTank HD patton epic_battles improvedVentilation_class2_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user</tags>
 		<level>9</level>
 	</A63_M46_Patton_FL>
+	<A120_M48A5_hound_TLXXL>
+		<id>254</id>
+		<userString>#usa_vehicles:A120_M48A5_hound_TLXXL</userString>
+		<description>#usa_vehicles:A120_M48A5_hound_TLXXL_descr</description>
+		<shortUserString>#usa_vehicles:A120_M48A5_hound_TLXXL_short</shortUserString>
+		<shortDescriptionSpecial>#usa_vehicles:A120_M48A5_hound_TLXXL_short_special</shortDescriptionSpecial>
+		<price>6100000</price>
+		<notInShop>true</notInShop>
+		<tags>mediumTank role_MT_universal event_hunter event_battles special secret HD lockCrew lockCrewSkills lockOutfit lockShells lockDevices cannot_be_sold unrecoverable earn_crystals builtinRepairkit_wt_user builtinLargeMedkit_wt_user builtinAfterburning_wt_user builtinStronghold_wt_user builtinDrop_wt_user builtinOverload_wt_user</tags>
+		<level>10</level>
+	</A120_M48A5_hound_TLXXL>
 </root>

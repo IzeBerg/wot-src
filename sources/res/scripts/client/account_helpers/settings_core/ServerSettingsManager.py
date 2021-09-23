@@ -2,7 +2,7 @@ import weakref
 from collections import namedtuple
 from account_helpers.settings_core import settings_constants
 from account_helpers.settings_core.migrations import migrateToVersion
-from account_helpers.settings_core.settings_constants import TUTORIAL, VERSION, GuiSettingsBehavior, OnceOnlyHints, BattlePassStorageKeys, SPGAim
+from account_helpers.settings_core.settings_constants import TUTORIAL, VERSION, GuiSettingsBehavior, OnceOnlyHints, BattlePassStorageKeys, WTEventStorageKeys, SPGAim, WTLootBoxesViewedKeys
 from adisp import process, async
 from debug_utils import LOG_ERROR, LOG_DEBUG
 from gui.server_events.pm_constants import PM_TUTOR_FIELDS
@@ -58,8 +58,10 @@ class SETTINGS_SECTIONS(CONST_CONTAINER):
     UNIT_FILTER = 'UNIT_FILTER'
     BATTLE_HUD = 'BATTLE_HUD'
     SPG_AIM = 'SPG_AIM'
+    LOOT_BOX_VIEWED = 'LOOT_BOX_VIEWED'
     ONCE_ONLY_HINTS_GROUP = (
      ONCE_ONLY_HINTS, ONCE_ONLY_HINTS_2)
+    EVENT_STORAGE = 'EVENT_STORAGE'
 
 
 class UI_STORAGE_KEYS(CONST_CONTAINER):
@@ -586,7 +588,10 @@ class ServerSettingsManager(object):
                                                     'role_LT_universal': 23, 
                                                     'role_LT_wheeled': 24, 
                                                     'role_SPG': 25}, offsets={}), 
-       SETTINGS_SECTIONS.UNIT_FILTER: Section(masks={}, offsets={GAME.UNIT_FILTER: Offset(0, 2047)})}
+       SETTINGS_SECTIONS.UNIT_FILTER: Section(masks={}, offsets={GAME.UNIT_FILTER: Offset(0, 2047)}), 
+       SETTINGS_SECTIONS.EVENT_STORAGE: Section(masks={WTEventStorageKeys.WT_INTRO_SHOWN: 0}, offsets={}), 
+       SETTINGS_SECTIONS.LOOT_BOX_VIEWED: Section(masks={}, offsets={WTLootBoxesViewedKeys.HUNTER_LAST_VIEWED: Offset(0, 65535), 
+                                           WTLootBoxesViewedKeys.BOSS_LAST_VIEWED: Offset(16, 4294901760)})}
     AIM_MAPPING = {'net': 1, 
        'netType': 1, 
        'centralTag': 1, 
@@ -686,6 +691,13 @@ class ServerSettingsManager(object):
 
     def saveInBPStorage(self, settings):
         return self.setSectionSettings(SETTINGS_SECTIONS.BATTLE_PASS_STORAGE, settings)
+
+    def getEventStorage(self, defaults=None):
+        storageData = self.getSection(SETTINGS_SECTIONS.EVENT_STORAGE, defaults)
+        return storageData
+
+    def saveInEventStorage(self, settings):
+        return self.setSectionSettings(SETTINGS_SECTIONS.EVENT_STORAGE, settings)
 
     def checkAutoReloadHighlights(self, increase=False):
         return self.__checkUIHighlights(UI_STORAGE_KEYS.AUTO_RELOAD_HIGHLIGHTS_COUNTER, self._MAX_AUTO_RELOAD_HIGHLIGHTS_COUNT, increase)
@@ -903,7 +915,7 @@ class ServerSettingsManager(object):
     @process
     def _updateToVersion(self, callback=None):
         currentVersion = self.settingsCache.getVersion()
-        data = {'gameData': {}, 'gameExtData': {}, 'gameExtData2': {}, 'gameplayData': {}, 'controlsData': {}, 'aimData': {}, 'markersData': {}, 'graphicsData': {}, 'marksOnGun': {}, 'fallout': {}, 'carousel_filter': {}, 'feedbackDamageIndicator': {}, 'feedbackDamageLog': {}, 'feedbackBattleEvents': {}, 'onceOnlyHints': {}, 'onceOnlyHints2': {}, 'uiStorage': {}, 'epicCarouselFilter2': {}, 'rankedCarouselFilter2': {}, 'sessionStats': {}, 'battleComm': {}, 'dogTags': {}, 'battleHud': {}, 'spgAim': {}, GUI_START_BEHAVIOR: {}, 'battlePassStorage': {}, 'clear': {}, 'delete': []}
+        data = {'gameData': {}, 'gameExtData': {}, 'gameExtData2': {}, 'gameplayData': {}, 'controlsData': {}, 'aimData': {}, 'markersData': {}, 'graphicsData': {}, 'marksOnGun': {}, 'fallout': {}, 'carousel_filter': {}, 'feedbackDamageIndicator': {}, 'feedbackDamageLog': {}, 'feedbackBattleEvents': {}, 'onceOnlyHints': {}, 'onceOnlyHints2': {}, 'uiStorage': {}, 'epicCarouselFilter2': {}, 'rankedCarouselFilter2': {}, 'sessionStats': {}, 'battleComm': {}, 'dogTags': {}, 'battleHud': {}, 'spgAim': {}, GUI_START_BEHAVIOR: {}, 'battlePassStorage': {}, 'eventStorage': {}, 'clear': {}, 'delete': []}
         yield migrateToVersion(currentVersion, self._core, data)
         self._setSettingsSections(data)
         callback(self)
@@ -1004,6 +1016,10 @@ class ServerSettingsManager(object):
         clearBPStorage = clear.get('battlePassStorage', 0)
         if BPStorage or clearBPStorage:
             settings[SETTINGS_SECTIONS.BATTLE_PASS_STORAGE] = self._buildSectionSettings(SETTINGS_SECTIONS.BATTLE_PASS_STORAGE, BPStorage) ^ clearBPStorage
+        EventStorage = data.get('eventStorage', {})
+        clearEventStorage = clear.get('eventStorage', 0)
+        if EventStorage or clearEventStorage:
+            settings[SETTINGS_SECTIONS.EVENT_STORAGE] = self._buildSectionSettings(SETTINGS_SECTIONS.EVENT_STORAGE, EventStorage) ^ clearEventStorage
         spgAimData = data.get('spgAim', {})
         clearSpgAimData = clear.get(SETTINGS_SECTIONS.SPG_AIM, 0)
         if spgAimData or clearSpgAimData:

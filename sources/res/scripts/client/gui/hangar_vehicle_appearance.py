@@ -2,7 +2,7 @@ import logging, weakref, math
 from collections import namedtuple
 from typing import TYPE_CHECKING
 from functools import partial
-import BigWorld, Event, Math, VehicleStickers, Vehicular, math_utils
+import BigWorld, CGF, Event, GenericComponents, Math, VehicleStickers, Vehicular, math_utils
 from dossiers2.ui.achievements import MARK_ON_GUN_RECORD
 from items.components.c11n_constants import EASING_TRANSITION_DURATION
 from gui import g_tankActiveCamouflage
@@ -29,7 +29,6 @@ from gui.hangar_cameras.hangar_camera_common import CameraMovementStates, Camera
 from gui.shared import g_eventBus, EVENT_BUS_SCOPE
 from gui.ClientHangarSpace import hangarCFG
 from gui.battle_control.vehicle_getter import hasTurretRotator
-import GenericComponents, CGF
 if TYPE_CHECKING:
     from vehicle_outfit.outfit import Outfit as TOutfit
     from items.vehicles import VehicleDescrType
@@ -111,6 +110,7 @@ class HangarVehicleAppearance(ScriptGameObject):
         return
 
     isVehicleDestroyed = property(lambda self: self.__isVehicleDestroyed)
+    typeDescriptor = property(lambda self: self.__vDesc if self.__vEntity is None else self.__vEntity.typeDescriptor)
 
     def __init__(self, spaceId, vEntity):
         ScriptGameObject.__init__(self, vEntity.spaceID, 'HangarVehicleAppearance')
@@ -428,6 +428,9 @@ class HangarVehicleAppearance(ScriptGameObject):
             self.turretRotator = SimpleTurretRotator(self.compoundModel, self.__staticTurretYaw, self.__vDesc.hull.turretPositions[0], self.__vDesc.hull.turretPitches[0], easingCls=math_utils.Easing.squareEasing)
             self.__applyAttachmentsVisibility()
             self.__fireResourcesLoadedEvent()
+            self.createComponent(GenericComponents.TransformComponent, Math.Vector3())
+            self.removeComponentByType(GenericComponents.HierarchyComponent)
+            self.createComponent(GenericComponents.HierarchyComponent, self.__vEntity.entityGameObject)
             super(HangarVehicleAppearance, self).activate()
             return
 
@@ -451,6 +454,8 @@ class HangarVehicleAppearance(ScriptGameObject):
         model_assembler.assembleCustomLogicComponents(self, self.__attachments, self.__modelAnimators)
         for modelAnimator in self.__modelAnimators:
             modelAnimator.animator.start()
+
+        self._onOutfitReady()
 
     def __onSettingsChanged(self, diff):
         if 'showMarksOnGun' in diff:
@@ -826,7 +831,7 @@ class HangarVehicleAppearance(ScriptGameObject):
     def __updateSequences(self, outfit):
         resources = camouflages.getModelAnimatorsPrereqs(outfit, self.__spaceId)
         resources.extend(camouflages.getAttachmentsAnimatorsPrereqs(self.__attachments, self.__spaceId))
-        if not resources:
+        if not resources and not self.__attachments:
             self.__clearModelAnimators()
             if not self.__isVehicleDestroyed:
                 from vehicle_systems import model_assembler
@@ -1043,3 +1048,6 @@ class HangarVehicleAppearance(ScriptGameObject):
             if progressionOutfit:
                 return progressionOutfit
         return outfit
+
+    def _onOutfitReady(self):
+        pass

@@ -52,3 +52,11 @@ class HangarHeaderMeta(BaseDAAPIComponent):
     def as_setSecondaryEntryPointVisibleS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setSecondaryEntryPointVisible(value)
+
+    def as_createEventWidgetS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_createEventWidget()
+
+    def as_removeEventWidgetS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_removeEventWidget()

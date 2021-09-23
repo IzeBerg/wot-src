@@ -40,6 +40,7 @@ package net.wg.gui.prebattle.controls
       {
          super();
          soundType = "squads";
+         constraintsDisabled = true;
       }
       
       override public function setData(param1:Object) : void
@@ -238,6 +239,10 @@ package net.wg.gui.prebattle.controls
                _loc1_ += this.NEXT_LINE_TOOLTIP + App.utils.locale.makeString(MESSENGER.DIALOGS_SQUADCHANNEL_TOOLTIPS_MODULE,{"name":this.model.experimentalModuleName});
             }
          }
+         if(this.model.hasPermissions)
+         {
+            _loc1_ += this.NEXT_LINE_TOOLTIP + App.utils.locale.makeString(TOOLTIPS.PREBATTLE_HASPERMISSIONS);
+         }
          return _loc1_;
       }
       
@@ -264,6 +269,11 @@ package net.wg.gui.prebattle.controls
          return data as PlayerPrbInfoVO;
       }
       
+      public function set statusString(param1:String) : void
+      {
+         this._statusString = param1;
+      }
+      
       override protected function handleMouseRollOver(param1:MouseEvent) : void
       {
          super.handleMouseRollOver(param1);
@@ -279,11 +289,6 @@ package net.wg.gui.prebattle.controls
       private function speakHandler(param1:VoiceChatEvent) : void
       {
          this.onPlayerSpeak(param1.getAccountDBID(),param1.type == VoiceChatEvent.START_SPEAKING);
-      }
-      
-      public function set statusString(param1:String) : void
-      {
-         this._statusString = param1;
       }
    }
 }

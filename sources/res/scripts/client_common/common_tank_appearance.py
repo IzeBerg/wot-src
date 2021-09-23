@@ -1,4 +1,4 @@
-import math, random, logging, BigWorld, CGF, GenericComponents, Triggers, Math, DataLinks, Vehicular, NetworkFilters, material_kinds
+import math, random, logging, ArenaComponents, BigWorld, CGF, GenericComponents, Triggers, Math, DataLinks, Vehicular, NetworkFilters, material_kinds
 from constants import IS_EDITOR, VEHICLE_SIEGE_STATE
 from CustomEffectManager import CustomEffectManager, EffectSettings
 from helpers.EffectMaterialCalculation import calcEffectMaterialIndex
@@ -139,6 +139,7 @@ class CommonTankAppearance(ScriptGameObject):
         self.__isObserver = False
         self.__attachments = []
         self.__modelAnimators = []
+        self.__customAnimators = []
         self.turretMatrix = None
         self.gunMatrix = None
         self.__allLodCalculators = []
@@ -279,6 +280,7 @@ class CommonTankAppearance(ScriptGameObject):
 
     def destroy(self):
         self.flagComponent = None
+        self.clearCustomAnimators()
         self._destroySystems()
         fashions = VehiclePartsTuple(None, None, None, None)
         self._setFashions(fashions, self._isTurretDetached)
@@ -336,6 +338,7 @@ class CommonTankAppearance(ScriptGameObject):
             modelAnimator.animator.setEnabled(False)
 
         super(CommonTankAppearance, self).deactivate()
+        self.__customAnimators = []
         self.shadowManager.unregisterCompoundModel(self.compoundModel)
         self._stopSystems()
         self.wheelsGameObject.deactivate()
@@ -515,15 +518,19 @@ class CommonTankAppearance(ScriptGameObject):
             self.__periodicTimerID = None
         self.__modelAnimators = []
         self.filter.enableLagDetection(False)
+        self.clearUndamagedStateChildren()
+        return
+
+    def clearUndamagedStateChildren(self):
         for go in self.undamagedStateChildren:
             CGF.removeGameObject(go)
 
         self.undamagedStateChildren = []
-        return
 
     def _onRequestModelsRefresh(self):
         self.flagComponent = None
         self.__updateModelStatus()
+        self.clearCustomAnimators()
         return
 
     def __updateModelStatus(self):
@@ -747,6 +754,9 @@ class CommonTankAppearance(ScriptGameObject):
         for modelAnimator in self.__modelAnimators:
             modelAnimator.animator.setEnabled(isEnabled)
 
+        self.removeComponentByType(ArenaComponents.TriggerComponent)
+        self.createComponent(ArenaComponents.TriggerComponent, cameraName)
+
     def __onEngineStateGearUp(self):
         if self.customEffectManager is not None:
             self.customEffectManager.onGearUp()
@@ -759,3 +769,18 @@ class CommonTankAppearance(ScriptGameObject):
         if self.shellAnimator is not None:
             self.shellAnimator.throwShell(self.typeDescriptor.shot.shell.animation)
         return
+
+    def addCustomAnimator(self, modelAnimator):
+        self.__customAnimators.append(modelAnimator)
+        self.registerComponent(modelAnimator)
+
+    def removeCustomAnimator(self, modelAnimator):
+        if modelAnimator in self.__customAnimators:
+            self.__customAnimators.remove(modelAnimator)
+            self.removeComponent(modelAnimator)
+
+    def clearCustomAnimators(self):
+        for animator in self.__customAnimators:
+            self.removeComponent(animator)
+
+        self.__customAnimators = []

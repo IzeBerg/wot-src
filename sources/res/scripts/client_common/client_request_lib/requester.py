@@ -353,6 +353,12 @@ class MapboxAccessor(BaseAccessor):
         return self._data_source.request_authorized_survey_url(callback, mapURL)
 
 
+class ShopAccessor(BaseAccessor):
+
+    def get_inventory_entitlements(self, callback, entitlement_codes):
+        return self._data_source.get_inventory_entitlements(callback, entitlement_codes)
+
+
 class Requester(object):
     available_data_sources = {'stagings': StagingDataAccessor, 
        'fake': FakeDataAccessor, 
@@ -372,6 +378,7 @@ class Requester(object):
     freya = RequestDescriptor(FreyaAccessor)
     craftmachine = RequestDescriptor(CrafmachineAccessor)
     mapbox = RequestDescriptor(MapboxAccessor)
+    shop = RequestDescriptor(ShopAccessor)
 
     @classmethod
     def create_requester(cls, url_fetcher, config, client_lang=None, user_agent=None):

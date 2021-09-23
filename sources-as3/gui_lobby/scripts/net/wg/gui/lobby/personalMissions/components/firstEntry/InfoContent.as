@@ -43,12 +43,11 @@ package net.wg.gui.lobby.personalMissions.components.firstEntry
       
       public function initBlocks(param1:Vector.<InfoItemRendererVO>) : void
       {
-         var _loc3_:InfoItemRenderer = null;
          var _loc4_:int = 0;
          this.clearRenderers();
          this._renderers = new Vector.<InfoItemRenderer>();
          var _loc2_:int = param1.length;
-         _loc3_ = null;
+         var _loc3_:InfoItemRenderer = null;
          _loc4_ = 0;
          while(_loc4_ < _loc2_)
          {

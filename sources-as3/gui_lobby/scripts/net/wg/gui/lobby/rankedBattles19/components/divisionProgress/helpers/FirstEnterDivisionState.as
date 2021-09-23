@@ -74,7 +74,6 @@ package net.wg.gui.lobby.rankedBattles19.components.divisionProgress.helpers
       override protected function update() : void
       {
          var _loc3_:int = 0;
-         var _loc4_:Number = NaN;
          var _loc9_:DivisionProgressRankRenderer = null;
          var _loc10_:Number = NaN;
          var _loc11_:Number = NaN;
@@ -83,7 +82,7 @@ package net.wg.gui.lobby.rankedBattles19.components.divisionProgress.helpers
          var _loc1_:Vector.<DivisionProgressRankRenderer> = progressBlock.renderers;
          var _loc2_:BlockViewParams = progressBlock.blockParams;
          _loc3_ = progressBlock.renderers.length;
-         _loc4_ = this.position;
+         var _loc4_:Number = this.position;
          var _loc5_:Number = 1 / _loc3_;
          var _loc6_:int = progressBlock.visibleRenderersCount >> 1;
          var _loc7_:int = -(_loc2_.regularStep * (_loc3_ - 1) >> 1);

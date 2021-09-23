@@ -54,13 +54,15 @@ package net.wg.gui.bootcamp.introVideoPage.containers
          this.dashline = null;
          this.wotLogo.dispose();
          this.wotLogo = null;
-         this.rewards.dispose();
-         this.rewards = null;
+         if(this.rewards)
+         {
+            this.rewards.dispose();
+            this.rewards = null;
+         }
          if(this._tween)
          {
             this._tween.onComplete = null;
             this._tween.onChange = null;
-            this._tween.paused = true;
             this._tween.dispose();
             this._tween = null;
          }

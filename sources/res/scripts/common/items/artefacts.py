@@ -460,7 +460,9 @@ class ImprovedConfiguration(StaticOptionalDevice):
 
 class Equipment(Artefact):
     __slots__ = ('equipmentType', 'reuseCount', 'cooldownSeconds', 'soundNotification',
-                 'stunResistanceEffect', 'stunResistanceDuration', 'repeatedStunDurationFactor')
+                 'soundPressedReady', 'soundPressedNotReady', 'stunResistanceEffect',
+                 'stunResistanceDuration', 'repeatedStunDurationFactor', 'consumeSeconds',
+                 'deploySeconds', 'rechargeSeconds')
 
     def __init__(self):
         super(Equipment, self).__init__(items.ITEM_TYPES.equipment, 0, '', 0)
@@ -470,16 +472,24 @@ class Equipment(Artefact):
         self.repeatedStunDurationFactor = 1.0
         self.reuseCount = component_constants.ZERO_INT
         self.cooldownSeconds = component_constants.ZERO_INT
+        self.consumeSeconds = component_constants.ZERO_INT
+        self.rechargeSeconds = component_constants.ZERO_INT
+        self.deploySeconds = component_constants.ZERO_INT
         self.soundNotification = None
+        self.soundPressedReady = None
+        self.soundPressedNotReady = None
         return
 
     def _readBasicConfig(self, xmlCtx, section):
         super(Equipment, self)._readBasicConfig(xmlCtx, section)
         self.equipmentType = items.EQUIPMENT_TYPES[section.readString('type', 'regular')]
         self.soundNotification = _xml.readStringOrNone(xmlCtx, section, 'soundNotification')
+        self.soundPressedReady = _xml.readStringOrNone(xmlCtx, section, 'soundPressedReady')
+        self.soundPressedNotReady = _xml.readStringOrNone(xmlCtx, section, 'soundPressedNotReady')
         scriptSection = section['script']
         self.stunResistanceEffect, self.stunResistanceDuration, self.repeatedStunDurationFactor = _readStun(xmlCtx, scriptSection)
-        self.reuseCount, self.cooldownSeconds = _readReuseParams(xmlCtx, scriptSection)
+        params = _readReuseParams(xmlCtx, scriptSection)
+        self.reuseCount, self.cooldownSeconds, self.consumeSeconds, self.deploySeconds, self.rechargeSeconds = params
 
     def updateVehicleAttrFactorsForAspect(self, vehicleDescr, factors, aspect, *args, **kwargs):
         pass
@@ -2192,6 +2202,18 @@ class SpawnKamikaze(ConsumableSpawnKamikaze):
     pass
 
 
+class VisualScriptEquipment(Equipment):
+    __slots__ = ('visualScript', )
+
+    def __init__(self):
+        super(VisualScriptEquipment, self).__init__()
+        self.visualScript = {}
+
+    def _readConfig(self, xmlCtx, section):
+        from ArenaType import _readVisualScript
+        self.visualScript = _readVisualScript(section)
+
+
 _readTags = vehicles._readTags
 
 def _readStun(xmlCtx, scriptSection):
@@ -2204,7 +2226,10 @@ def _readStun(xmlCtx, scriptSection):
 def _readReuseParams(xmlCtx, scriptSection):
     return (
      _xml.readInt(xmlCtx, scriptSection, 'reuseCount', minVal=-1) if scriptSection.has_key('reuseCount') else 0,
-     _xml.readInt(xmlCtx, scriptSection, 'cooldownSeconds', minVal=0) if scriptSection.has_key('cooldownSeconds') else 0)
+     _xml.readInt(xmlCtx, scriptSection, 'cooldownSeconds', minVal=0) if scriptSection.has_key('cooldownSeconds') else 0,
+     _xml.readInt(xmlCtx, scriptSection, 'consumeSeconds', minVal=0) if scriptSection.has_key('consumeSeconds') else 0,
+     _xml.readInt(xmlCtx, scriptSection, 'deploySeconds', minVal=0) if scriptSection.has_key('deploySeconds') else 0,
+     _xml.readInt(xmlCtx, scriptSection, 'rechargeSeconds', minVal=0) if scriptSection.has_key('rechargeSeconds') else 0)
 
 
 class OPT_DEV_TYPE_TAG(object):

@@ -332,6 +332,9 @@ class _ArenaBonusTypeVisitor(IArenaVisitor):
     def hasRespawns(self):
         return _CAPS.checkAny(self._bonusType, _CAPS.RESPAWN)
 
+    def hasVSERespawns(self):
+        return _CAPS.checkAny(self._bonusType, _CAPS.RESPAWN_VSE)
+
     def isSquadSupported(self):
         return _CAPS.checkAny(self._bonusType, _CAPS.SQUADS)
 
@@ -367,6 +370,9 @@ class _ArenaBonusTypeVisitor(IArenaVisitor):
 
     def hasInBattleUpgrade(self):
         return _CAPS.checkAny(self._bonusType, _CAPS.IN_BATTLE_UPGRADES)
+
+    def hasRoleExpSystem(self):
+        return _CAPS.checkAny(self._bonusType, _CAPS.ROLE_SYSTEM)
 
     def hasDogTag(self):
         return _CAPS.checkAny(self._bonusType, _CAPS.DOG_TAG)
@@ -508,6 +514,9 @@ class _ClientArenaVisitor(IClientArenaVisitor):
 
     def hasRespawns(self):
         return self._bonus.hasRespawns()
+
+    def hasVSERespawns(self):
+        return self._bonus.hasVSERespawns()
 
     def hasHealthBar(self):
         return self._bonus.hasHealthBar()

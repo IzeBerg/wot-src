@@ -3,9 +3,9 @@ from gui.impl.gen import R
 from frameworks.wulf import ViewModel
 
 class SelectRespawnViewModel(ViewModel):
-    __slots__ = ('onCompleteBtnClick', 'onSelectPoint')
+    __slots__ = ('onCompleteBtnClick', 'onCloseBtnClick', 'onSelectPoint')
 
-    def __init__(self, properties=12, commands=2):
+    def __init__(self, properties=12, commands=3):
         super(SelectRespawnViewModel, self).__init__(properties=properties, commands=commands)
 
     def getHeader(self):
@@ -95,4 +95,5 @@ class SelectRespawnViewModel(ViewModel):
         self._addBoolProperty('isWaitingPlayers', False)
         self._addBoolProperty('isReplay', False)
         self.onCompleteBtnClick = self._addCommand('onCompleteBtnClick')
+        self.onCloseBtnClick = self._addCommand('onCloseBtnClick')
         self.onSelectPoint = self._addCommand('onSelectPoint')

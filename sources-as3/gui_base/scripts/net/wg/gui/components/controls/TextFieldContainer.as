@@ -32,18 +32,18 @@ package net.wg.gui.components.controls
          this._tf = this.textField.getTextFormat();
       }
       
-      protected function set isCacheAsBitmap(param1:Boolean) : void
-      {
-         this.textField.cacheAsBitmap = param1;
-      }
-      
       public final function dispose() : void
       {
+         this.onDispose();
          this._tf = null;
          this.textField = null;
       }
       
-      private function updateSize() : void
+      protected function onDispose() : void
+      {
+      }
+      
+      protected function updateSize() : void
       {
          if(this._autoSize == TextFieldAutoSize.NONE)
          {
@@ -134,6 +134,11 @@ package net.wg.gui.components.controls
       {
          this._autoSize = param1;
          this.textField.autoSize = param1;
+      }
+      
+      protected function set isCacheAsBitmap(param1:Boolean) : void
+      {
+         this.textField.cacheAsBitmap = param1;
       }
    }
 }

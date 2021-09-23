@@ -26,16 +26,28 @@ msgid "dialogs/buttons/ready"
 msgstr "Готов!"
 
 msgid "labels/company/queue"
-msgstr "Очередь"
+msgstr "Очередь:"
 
 msgid "labels/level"
 msgstr "Уровень"
 
 msgid "labels/members"
-msgstr "Состав: %(membersCount)d [%(maxMembersCount)d]"
+msgstr "Состав: %(openTag)s%(membersCount)d%(closeTag)s / %(maxMembersCount)d"
 
 msgid "labels/player"
 msgstr "Игрок"
+
+msgid "labels/sort/byName"
+msgstr "По имени"
+
+msgid "labels/sort/byOrder"
+msgstr "По добавлению"
+
+msgid "labels/sort/byStatus"
+msgstr "По готовности"
+
+msgid "labels/sort/byVehicles"
+msgstr "По типу техники"
 
 msgid "labels/stats/level"
 msgstr "Уровень:"

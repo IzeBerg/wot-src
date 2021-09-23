@@ -13,6 +13,10 @@ package net.wg.gui.prebattle.data
       
       public var isCurrentPayer:Boolean;
       
+      public var hasPermissions:Boolean;
+      
+      public var hasPermissionsInfo:Boolean;
+      
       private var _time:Number;
       
       private var _state:Number;

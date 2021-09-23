@@ -18,6 +18,7 @@ class VEHICLE_PREVIEW(object):
     HEADER_BACKBTN_DESCRLABEL_RANKED = '#vehicle_preview:header/backBtn/descrLabel/ranked'
     HEADER_BACKBTN_DESCRLABEL_VEHPOSTPROGRESSION = '#vehicle_preview:header/backBtn/descrLabel/vehPostProgression'
     HEADER_BACKBTN_DESCRLABEL_BLUEPRINTSEXCHANGE = '#vehicle_preview:header/backBtn/descrLabel/blueprintsExchange'
+    HEADER_BACKBTN_DESCRLABEL_WTTANKPORTAL = '#vehicle_preview:header/backBtn/descrLabel/wtTankPortal'
     HEADER_TITLE = '#vehicle_preview:header/title'
     HERO_HEADER_TITLE = '#vehicle_preview:hero/header/title'
     HEADER_CLOSEBTN_LABEL = '#vehicle_preview:header/closeBtn/label'
@@ -113,7 +114,8 @@ class VEHICLE_PREVIEW(object):
      HEADER_BACKBTN_DESCRLABEL_SABATON_MARATHON,
      HEADER_BACKBTN_DESCRLABEL_RANKED,
      HEADER_BACKBTN_DESCRLABEL_VEHPOSTPROGRESSION,
-     HEADER_BACKBTN_DESCRLABEL_BLUEPRINTSEXCHANGE)
+     HEADER_BACKBTN_DESCRLABEL_BLUEPRINTSEXCHANGE,
+     HEADER_BACKBTN_DESCRLABEL_WTTANKPORTAL)
     BUYINGPANEL_OFFER_RENT_NAME_ENUM = (
      BUYINGPANEL_OFFER_RENT_NAME_CYCLE,
      BUYINGPANEL_OFFER_RENT_NAME_CYCLES,
