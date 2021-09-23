@@ -480,6 +480,24 @@ _(#messenger:battle/history/title)
 _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			</item>
 			<item>
+				<name>battleRoyaleTooltip</name>
+				<value>{HEADER}_(#messenger:battle/toolTips/usingChat){/HEADER}
+
+{BODY}_(#messenger:battle/toolTips/startChat)
+[_(#controls:keyboard/key_enter)] - _(#messenger:battle/toolTips/withSquad)
+
+_(#messenger:battle/toolTips/duringChat)
+[_(#controls:keyboard/key_enter)] - _(#messenger:battle/toolTips/send)
+[_(#controls:keyboard/key_escape)] - _(#messenger:battle/toolTips/cancel)
+
+_(#messenger:battle/history/title)
+[_(#controls:keyboard/key_uparrow)] - _(#messenger:battle/history/upMessage)
+[_(#controls:keyboard/key_downarrow)] - _(#messenger:battle/history/downMessage)
+[_(#controls:keyboard/key_pgdn)] - _(#messenger:battle/history/latestMessage)
+
+_(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
+			</item>
+			<item>
 				<name>chatIsLockedToolTipText</name>
 				<value>{BODY}_(#messenger:battle/receivers/chatIsLockedToolTip){/BODY}</value>
 			</item>

@@ -1119,22 +1119,6 @@
 		</value>
 	</setting>
 	<setting>
-		<name>shopBackend</name>
-		<type>dict</type>
-		<value>
-			<item>
-				$PARAMS(/auth/login)
-				<name>loginUrl</name>
-				<type>url</type>
-			</item>
-			<item>
-				$PARAMS(/api/external/v1/products/items)
-				<name>productsUrl</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
 		<name>easterEgg</name>
 		<type>dict</type>
 		<value>

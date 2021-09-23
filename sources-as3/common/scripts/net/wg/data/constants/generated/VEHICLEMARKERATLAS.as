@@ -533,6 +533,10 @@ package net.wg.data.constants.generated
       
       public static const GERMANY_G16_PZ_VIB_TIGER_II_TRAINING:String = "germany-G16_PzVIB_Tiger_II_training";
       
+      public static const GERMANY_G160_PZ_KPFW_35_R_MIT_T_26_TURM:String = "germany-G160_Pz_Kpfw_35_R_mit_T_26_Turm";
+      
+      public static const GERMANY_G161_PZ_KPFW_M15_38_T:String = "germany-G161_Pz_Kpfw_M15_38_t";
+      
       public static const GERMANY_G17_JAGD_PZ_IV:String = "germany-G17_JagdPzIV";
       
       public static const GERMANY_G18_JAGD_PANTHER:String = "germany-G18_JagdPanther";
@@ -1181,6 +1185,8 @@ package net.wg.data.constants.generated
       
       public static const UK_GB112_CALIBAN:String = "uk-GB112_Caliban";
       
+      public static const UK_GB113_MATILDA_LVT:String = "uk-GB113_Matilda_LVT";
+      
       public static const UK_GB12_CONQUEROR:String = "uk-GB12_Conqueror";
       
       public static const UK_GB12_CONQUEROR_FL:String = "uk-GB12_Conqueror_FL";
@@ -1554,6 +1560,8 @@ package net.wg.data.constants.generated
       public static const USA_A69_T110_E5:String = "usa-A69_T110E5";
       
       public static const USA_A69_T110_E5_BOB:String = "usa-A69_T110E5_bob";
+      
+      public static const USA_A69_T110_E5_CL:String = "usa-A69_T110E5_cl";
       
       public static const USA_A71_T21:String = "usa-A71_T21";
       
@@ -1984,6 +1992,8 @@ package net.wg.data.constants.generated
       public static const USSR_R96_OBJECT_430_B:String = "ussr-R96_Object_430B";
       
       public static const USSR_R97_OBJECT_140:String = "ussr-R97_Object_140";
+      
+      public static const USSR_R97_OBJECT_140_CL:String = "ussr-R97_Object_140_cl";
       
       public static const USSR_R98_T44_85:String = "ussr-R98_T44_85";
       

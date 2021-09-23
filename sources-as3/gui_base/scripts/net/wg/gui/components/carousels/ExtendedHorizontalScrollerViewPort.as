@@ -97,6 +97,10 @@ package net.wg.gui.components.carousels
             {
                _loc5_ = this._indexRenderersCountToRenderer.indexOf(activeRenderers[0].index);
                _loc6_ = this._indexRenderersCountToRenderer.indexOf(activeRenderers[_loc4_ - 1].index);
+               if(_loc6_ == -1 && rowCount == 1)
+               {
+                  _loc6_ = activeRenderers[_loc4_ - 1].index;
+               }
                _loc7_ = _loc5_ - _loc1_;
                _loc8_ = _loc6_ - _loc2_;
                if(Math.max(-_loc7_,_loc8_) > _loc4_)

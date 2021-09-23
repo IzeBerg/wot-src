@@ -564,7 +564,7 @@ package net.wg.gui.components.crosshairPanel
          if(this._currentTimerTextField && this._currentReloadingTime != Values.DEFAULT_INT)
          {
             _loc1_ = ExternalInterface.call.apply(this,[FRACTIONAL_FORMAT_CMD,Number(this._currentReloadingTime)]);
-            this._currentTimerTextField.text = _loc1_.slice(0,_loc1_.length - 1);
+            this._currentTimerTextField.text = _loc1_;
          }
       }
       

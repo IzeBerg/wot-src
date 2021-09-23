@@ -1,5 +1,5 @@
 from soft_exception import SoftException
-from constants import PREBATTLE_TYPE, QUEUE_TYPE
+from constants import PREBATTLE_TYPE, QUEUE_TYPE, PREBATTLE_ROLE
 from gui import SystemMessages
 from gui.Scaleform.locale.SYSTEM_MESSAGES import SYSTEM_MESSAGES as I18N_SYSTEM_MESSAGES
 from gui.prb_control import prb_getters
@@ -119,6 +119,14 @@ class BattleSessionEntity(LegacyEntity):
             if roster in rosters:
                 result[roster] = map(lambda accInfo, rosterBits=roster: prb_items.PlayerPrbInfo(accInfo[0], entity=self, roster=rosterBits, **accInfo[1]), rosters[roster].iteritems())
 
+        return result
+
+    def getRoles(self, pDatabaseID=None, clanDBID=None, team=None):
+        result = super(BattleSessionEntity, self).getRoles(pDatabaseID, clanDBID, team)
+        if self._settings is None or self._settings['type'] != PREBATTLE_TYPE.CLAN:
+            return result
+        if not result:
+            result = PREBATTLE_ROLE.SELF_ASSIGNMENT_1 if team == 1 else PREBATTLE_ROLE.SELF_ASSIGNMENT_2
         return result
 
     def getTeamLimits(self):

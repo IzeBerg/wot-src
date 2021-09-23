@@ -265,7 +265,7 @@ class _BwHallOfFame(namedtuple('_BwHallOfFame', ('hofHostUrl', 'isHofEnabled', '
 
 
 class _BwShop(namedtuple('_BwShop', (
- 'hostUrl', 'backendHostUrl', 'isStorageEnabled'))):
+ 'hostUrl', 'isStorageEnabled'))):
 
     def replace(self, data):
         allowedFields = self._fields

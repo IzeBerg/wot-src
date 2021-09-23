@@ -2322,6 +2322,8 @@ RECORDS = (
  (
   'singleAchievements', 'august21', 'p', 'B', 1),
  (
+  'singleAchievements', 'september21', 'p', 'B', 1),
+ (
   'singleAchievements', 'hw2019Medal', 'p', 'B', 1),
  (
   'singleAchievements', 'hw2019Medal1', 'p', 'B', 1),
@@ -2718,7 +2720,9 @@ RECORDS = (
  (
   'steamAchievements', 'steamFrags', 'p', 'H', 6001),
  (
-  'steamAchievements', 'steamBattleHeroes', 'p', 'I', 4000000001))
+  'steamAchievements', 'steamBattleHeroes', 'p', 'I', 4000000001),
+ (
+  'achievements', 'whiteTiger2012', 'p', 'B', 201))
 RECORD_INDICES = dict((rec[:2], idx) for idx, rec in enumerate(RECORDS))
 RECORD_DB_IDS = {('total', 'creationTime'): 68, 
    ('total', 'lastBattleTime'): 7, 
@@ -4004,6 +4008,7 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('singleAchievements', 'july21'): 1556, 
    ('singleAchievements', 'august21'): 1557, 
    ('singleAchievements', 'BattlePassCommonPr_6'): 1558, 
+   ('singleAchievements', 'september21'): 1559, 
    ('steamAchievements', 'steamBattleCredits'): 1560, 
    ('steamAchievements', 'steamLittleSavingsMedal'): 1561, 
    ('steamAchievements', 'steamMintedCoinMedal'): 1562, 
@@ -4079,7 +4084,8 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('steamAchievements', 'steamShellTypeMedal'): 1632, 
    ('steamAchievements', 'steamSpotted'): 1633, 
    ('steamAchievements', 'steamFrags'): 1634, 
-   ('steamAchievements', 'steamBattleHeroes'): 1635}
+   ('steamAchievements', 'steamBattleHeroes'): 1635, 
+   ('achievements', 'whiteTiger2012'): 1636}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 

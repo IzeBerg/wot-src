@@ -1082,54 +1082,53 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             gui_event_dispatcher.hideAutoAimMarker()
 
     def updateVehicleHealth(self, vehicleID, health, deathReasonID, isCrewActive, isRespawn):
-        if vehicleID != self.playerVehicleID:
+        if vehicleID != self.playerVehicleID or not self.userSeesWorld():
             return
-        else:
-            rawHealth = health
-            health = max(0, health)
-            isAlive = health > 0 and isCrewActive
-            wasAlive = self.__isVehicleAlive or self.__firstHealthUpdate
-            wasRespawnAvailable = self.__isRespawnAvailable
-            if self.__deadOnLoading:
-                wasAlive = False
-                self.__deadOnLoading = False
-            self.__firstHealthUpdate = False
-            self.__isVehicleAlive = isAlive
-            self.__isRespawnAvailable = isRespawn
-            LOG_DEBUG_DEV('[RESPAWN] client.Avatar.updateVehicleHealth', vehicleID, health, deathReasonID, isCrewActive, isRespawn, wasAlive)
-            self.guiSessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.HEALTH, health, vehicleID)
-            if not wasAlive and isAlive:
-                self.__disableRespawnMode = True
-                self.guiSessionProvider.movingToRespawnBase()
-            if not isAlive and wasAlive:
-                if self.gunRotator:
-                    self.gunRotator.stop()
-                if health > 0 and not isCrewActive:
-                    self.soundNotifications.play('crew_deactivated')
-                    self.__deviceStates = {'crew': 'destroyed'}
-                    self.guiSessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.CREW_DEACTIVATED, deathReasonID)
-                elif not self.guiSessionProvider.getCtx().isObserver(self.playerVehicleID):
-                    self.soundNotifications.play('vehicle_destroyed')
-                    self.__deviceStates = {'vehicle': 'destroyed'}
-                    self.guiSessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.DESTROYED, deathReasonID)
-                if self.vehicle is not None:
-                    self.guiSessionProvider.shared.viewPoints.updateAttachedVehicle(self.vehicle.id)
-                    ctrl = self.guiSessionProvider.dynamic.vehicleCount
-                    if ctrl is not None:
-                        ctrl.updateAttachedVehicle(self.vehicle.id)
-                self.inputHandler.activatePostmortem(isRespawn)
-                self.__cruiseControlMode = _CRUISE_CONTROL_MODE.NONE
-                self.__updateCruiseControlPanel()
-                self.__stopUntilFire = False
-                if rawHealth <= 0:
-                    vehicle = BigWorld.entities.get(self.playerVehicleID)
-                    if vehicle is not None:
-                        prevHealth = vehicle.health
-                        vehicle.health = rawHealth
-                        vehicle.set_health(prevHealth)
-            if not isAlive and wasAlive or not isAlive and wasRespawnAvailable and not isRespawn:
-                self.guiSessionProvider.switchToPostmortem(not self.respawnEnabled, isRespawn)
-            return
+        rawHealth = health
+        health = max(0, health)
+        isAlive = health > 0 and isCrewActive
+        wasAlive = self.__isVehicleAlive or self.__firstHealthUpdate
+        wasRespawnAvailable = self.__isRespawnAvailable
+        if self.__deadOnLoading:
+            wasAlive = False
+            self.__deadOnLoading = False
+        self.__firstHealthUpdate = False
+        self.__isVehicleAlive = isAlive
+        self.__isRespawnAvailable = isRespawn
+        LOG_DEBUG_DEV('[RESPAWN] client.Avatar.updateVehicleHealth', vehicleID, health, deathReasonID, isCrewActive, isRespawn, wasAlive)
+        self.guiSessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.HEALTH, health, vehicleID)
+        if not wasAlive and isAlive:
+            self.__disableRespawnMode = True
+            self.guiSessionProvider.movingToRespawnBase()
+        if not isAlive and wasAlive:
+            if self.gunRotator:
+                self.gunRotator.stop()
+            if health > 0 and not isCrewActive:
+                self.soundNotifications.play('crew_deactivated')
+                self.__deviceStates = {'crew': 'destroyed'}
+                self.guiSessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.CREW_DEACTIVATED, deathReasonID)
+            elif not self.guiSessionProvider.getCtx().isObserver(self.playerVehicleID):
+                self.soundNotifications.play('vehicle_destroyed')
+                self.__deviceStates = {'vehicle': 'destroyed'}
+                self.guiSessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.DESTROYED, deathReasonID)
+            if self.vehicle is not None:
+                self.guiSessionProvider.shared.viewPoints.updateAttachedVehicle(self.vehicle.id)
+                ctrl = self.guiSessionProvider.dynamic.vehicleCount
+                if ctrl is not None:
+                    ctrl.updateAttachedVehicle(self.vehicle.id)
+            self.inputHandler.activatePostmortem(isRespawn)
+            self.__cruiseControlMode = _CRUISE_CONTROL_MODE.NONE
+            self.__updateCruiseControlPanel()
+            self.__stopUntilFire = False
+            if rawHealth <= 0:
+                vehicle = BigWorld.entities.get(self.playerVehicleID)
+                if vehicle is not None:
+                    prevHealth = vehicle.health
+                    vehicle.health = rawHealth
+                    vehicle.set_health(prevHealth)
+        if not isAlive and wasAlive or not isAlive and wasRespawnAvailable and not isRespawn:
+            self.guiSessionProvider.switchToPostmortem(not self.respawnEnabled, isRespawn)
+        return
 
     def updateVehicleGunReloadTime(self, vehicleID, timeLeft, baseTime):
         if vehicleID != self.playerVehicleID and vehicleID != self.observedVehicleID:
@@ -1430,24 +1429,27 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         self.guiSessionProvider.addHitDirection(hitDirYaw, attackerID, damage, isBlocked, crits, isShellHE, damagedID, attackReasonID)
 
     def showVehicleDamageInfo(self, vehicleID, damageIndex, extraIndex, entityID, equipmentID):
-        damageCode = constants.DAMAGE_INFO_CODES[damageIndex]
-        LOG_DEBUG_DEV('[showVehicleDamageInfo] Vehicle', vehicleID, damageCode, damageIndex, extraIndex, entityID, equipmentID)
-        typeDescr = self.vehicleTypeDescriptor
-        observedVehID = self.guiSessionProvider.shared.vehicleState.getControllingVehicleID()
-        if self.isObserver() or observedVehID == vehicleID:
-            observedVehicleData = self.arena.vehicles.get(observedVehID)
-            if observedVehicleData:
-                typeDescr = observedVehicleData['vehicleType']
-            else:
-                LOG_DEBUG_DEV(('[showVehicleDamageInfo] Vehicle #{} is not in arena vehicles').format(observedVehID))
-                return
-        extra = typeDescr.extras[extraIndex] if extraIndex != 0 else None
-        if vehicleID == self.playerVehicleID or vehicleID == observedVehID or not self.__isVehicleAlive and vehicleID == self.inputHandler.ctrl.curVehicleID:
-            self.__showDamageIconAndPlaySound(damageCode, extra, vehicleID)
-        if damageCode not in self.__damageInfoNoNotification:
-            self.guiSessionProvider.shared.messages.showVehicleDamageInfo(self, damageCode, vehicleID, entityID, extra, equipmentID)
-        TriggersManager.g_manager.activateTrigger(TRIGGER_TYPE.PLAYER_RECEIVE_DAMAGE, attackerId=entityID)
-        return
+        if not self.userSeesWorld():
+            return
+        else:
+            damageCode = constants.DAMAGE_INFO_CODES[damageIndex]
+            LOG_DEBUG_DEV('[showVehicleDamageInfo] Vehicle', vehicleID, damageCode, damageIndex, extraIndex, entityID, equipmentID)
+            typeDescr = self.vehicleTypeDescriptor
+            observedVehID = self.guiSessionProvider.shared.vehicleState.getControllingVehicleID()
+            if self.isObserver() or observedVehID == vehicleID:
+                observedVehicleData = self.arena.vehicles.get(observedVehID)
+                if observedVehicleData:
+                    typeDescr = observedVehicleData['vehicleType']
+                else:
+                    LOG_DEBUG_DEV(('[showVehicleDamageInfo] Vehicle #{} is not in arena vehicles').format(observedVehID))
+                    return
+            extra = typeDescr.extras[extraIndex] if extraIndex != 0 else None
+            if vehicleID == self.playerVehicleID or vehicleID == observedVehID or not self.__isVehicleAlive and vehicleID == self.inputHandler.ctrl.curVehicleID:
+                self.__showDamageIconAndPlaySound(damageCode, extra, vehicleID)
+            if damageCode not in self.__damageInfoNoNotification:
+                self.guiSessionProvider.shared.messages.showVehicleDamageInfo(self, damageCode, vehicleID, entityID, extra, equipmentID)
+            TriggersManager.g_manager.activateTrigger(TRIGGER_TYPE.PLAYER_RECEIVE_DAMAGE, attackerId=entityID)
+            return
 
     def showShotResults(self, results):
         arenaVehicles = self.arena.vehicles

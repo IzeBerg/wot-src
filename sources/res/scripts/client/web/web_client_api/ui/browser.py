@@ -71,8 +71,8 @@ class CloseBrowserWindowWebApiMixin(object):
             app = appLoader.getApp()
             if app is not None and app.containerManager is not None:
                 supportedBrowserLayers = (
-                 WindowLayer.WINDOW, WindowLayer.FULLSCREEN_WINDOW, WindowLayer.OVERLAY,
-                 WindowLayer.TOP_SUB_VIEW)
+                 WindowLayer.WINDOW, WindowLayer.FULLSCREEN_WINDOW, WindowLayer.TOP_WINDOW,
+                 WindowLayer.OVERLAY, WindowLayer.TOP_SUB_VIEW)
                 browserWindow = None
                 for layer in supportedBrowserLayers:
                     browserWindow = app.containerManager.getView(layer, criteria={POP_UP_CRITERIA.UNIQUE_NAME: windowAlias})

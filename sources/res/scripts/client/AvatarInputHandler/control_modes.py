@@ -713,6 +713,9 @@ class _TrajectoryControlMode(_GunControlMode):
         SoundGroups.g_instance.changePlayMode(2)
         self._cam.enable(args['preferredPos'], args['saveDist'], args.get('switchToPos'), args.get('switchToPlace'))
         self.__trajectoryDrawer.visible = self._aih.isGuiVisible
+        target = BigWorld.target()
+        self.__targetVehicleID = target.id if isinstance(target, VehicleEntity) else None
+        self.__updateIgnoredVehicleIDs()
         BigWorld.player().autoAim(None)
         replayCtrl = BattleReplay.g_replayCtrl
         if replayCtrl.isPlaying and replayCtrl.isControllingCamera:
@@ -734,11 +737,7 @@ class _TrajectoryControlMode(_GunControlMode):
 
     def setObservedVehicle(self, vehicleID):
         self.__controllingVehicleID = vehicleID
-        ignoredIDs = [self.__controllingVehicleID] if self.__controllingVehicleID is not None else []
-        if self.__targetVehicleID is not None:
-            ignoredIDs.append(self.__targetVehicleID)
-        self.__trajectoryDrawer.setIgnoredIDs(ignoredIDs)
-        return
+        self.__updateIgnoredVehicleIDs()
 
     def handleKeyEvent(self, isDown, key, mods, event=None):
         cmdMap = CommandMapping.g_instance
@@ -921,6 +920,13 @@ class _TrajectoryControlMode(_GunControlMode):
         else:
             return False
         return self.__settingsCore.getSetting(SPGAim.SHOTS_RESULT_INDICATOR)
+
+    def __updateIgnoredVehicleIDs(self):
+        ignoredIDs = [self.__controllingVehicleID] if self.__controllingVehicleID is not None else []
+        if self.__targetVehicleID is not None:
+            ignoredIDs.append(self.__targetVehicleID)
+        self.__trajectoryDrawer.setIgnoredIDs(ignoredIDs)
+        return
 
     def onChangeControlModeByScroll(self, switchToName, switchToPos, switchToPlace):
         if self._nextControlMode == switchToName:

@@ -1593,6 +1593,14 @@ package
       
       public static const REWARDWINDOW_TWITCH25_BTNLABEL:String = "#ingame_gui:rewardWindow/twitch25/btnLabel";
       
+      public static const REWARDWINDOW_TWITCH26_HEADERTEXT:String = "#ingame_gui:rewardWindow/twitch26/headerText";
+      
+      public static const REWARDWINDOW_TWITCH26_SUBHEADERTEXT:String = "#ingame_gui:rewardWindow/twitch26/subHeaderText";
+      
+      public static const REWARDWINDOW_TWITCH26_DESCTEXT:String = "#ingame_gui:rewardWindow/twitch26/descText";
+      
+      public static const REWARDWINDOW_TWITCH26_BTNLABEL:String = "#ingame_gui:rewardWindow/twitch26/btnLabel";
+      
       public static const REWARDWINDOW_LOOTBOX_WINHEADERTEXT:String = "#ingame_gui:rewardWindow/lootbox/winHeaderText";
       
       public static const REWARDWINDOW_LOOTBOX_HEADERTEXT:String = "#ingame_gui:rewardWindow/lootbox/headerText";

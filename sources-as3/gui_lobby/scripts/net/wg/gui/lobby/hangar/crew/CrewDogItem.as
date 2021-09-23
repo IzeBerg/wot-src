@@ -6,6 +6,7 @@ package net.wg.gui.lobby.hangar.crew
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.lobby.hangar.crew.ev.CrewDogEvent;
    import net.wg.infrastructure.base.UIComponentEx;
+   import net.wg.utils.ICommons;
    import scaleform.clik.events.ButtonEvent;
    
    public class CrewDogItem extends UIComponentEx
@@ -118,8 +119,12 @@ package net.wg.gui.lobby.hangar.crew
       
       private function onClickHandler(param1:MouseEvent) : void
       {
-         hideTooltip();
-         dispatchEvent(new CrewDogEvent(CrewDogEvent.ON_ITEM_CLICK));
+         var _loc2_:ICommons = App.utils.commons;
+         if(_loc2_.isLeftButton(param1) || _loc2_.isRightButton(param1))
+         {
+            hideTooltip();
+            dispatchEvent(new CrewDogEvent(CrewDogEvent.ON_ITEM_CLICK));
+         }
       }
       
       private function onMouseOverHandler(param1:MouseEvent) : void

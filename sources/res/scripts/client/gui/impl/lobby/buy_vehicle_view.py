@@ -393,6 +393,7 @@ class BuyVehicleView(ViewImpl, EventSystemEntity):
         self.viewModel.commit()
 
     def __onWindowClose(self, *_):
+        self.__startTutorial()
         self.__destroyWindow()
         if self.__usePreviousAlias and self.__returnCallback:
             self.__returnCallback()

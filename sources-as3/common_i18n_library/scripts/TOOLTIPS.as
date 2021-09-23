@@ -5955,6 +5955,10 @@ package
       
       public static const NOTRECRUITEDTANKMAN_COMMANDER_TWITCH_MOCHIZUKI_DESC:String = "#tooltips:notrecruitedtankman/commander_twitch_mochizuki/desc";
       
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_TWITCH_ERMELINDA_LABEL:String = "#tooltips:notrecruitedtankman/commander_twitch_ermelinda/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_TWITCH_ERMELINDA_DESC:String = "#tooltips:notrecruitedtankman/commander_twitch_ermelinda/desc";
+      
       public static const QUESTS_AWARDS_VEHICLERENT_HEADER:String = "#tooltips:quests/awards/vehicleRent/header";
       
       public static const QUESTS_AWARDS_VEHICLERENT_EXPIRE:String = "#tooltips:quests/awards/vehicleRent/expire";
@@ -6516,6 +6520,26 @@ package
       public static const VEHPOSTPROGRESSIONVIEW_UNLOCKLEVEL_HEADER:String = "#tooltips:vehPostProgressionView/unlockLevel/header";
       
       public static const VEHPOSTPROGRESSIONVIEW_UNLOCKLEVEL_BODY:String = "#tooltips:vehPostProgressionView/unlockLevel/body";
+      
+      public static const PREBATTLE_UPBUTTON_ACTIVE:String = "#tooltips:prebattle/upButton/active";
+      
+      public static const PREBATTLE_UPBUTTON_NOITEMS:String = "#tooltips:prebattle/upButton/noItems";
+      
+      public static const PREBATTLE_UPBUTTON_NOTSELECTED:String = "#tooltips:prebattle/upButton/notSelected";
+      
+      public static const PREBATTLE_UPBUTTON_UNAVAILABLE:String = "#tooltips:prebattle/upButton/unavailable";
+      
+      public static const PREBATTLE_UPBUTTON_MAXITEMS:String = "#tooltips:prebattle/upButton/maxItems";
+      
+      public static const PREBATTLE_DOWNBUTTON_ACTIVE:String = "#tooltips:prebattle/downButton/active";
+      
+      public static const PREBATTLE_DOWNBUTTON_NOITEMS:String = "#tooltips:prebattle/downButton/noItems";
+      
+      public static const PREBATTLE_DOWNBUTTON_NOTSELECTED:String = "#tooltips:prebattle/downButton/notSelected";
+      
+      public static const PREBATTLE_DOWNBUTTON_UNAVAILABLE:String = "#tooltips:prebattle/downButton/unavailable";
+      
+      public static const PREBATTLE_HASPERMISSIONS:String = "#tooltips:prebattle/hasPermissions";
       
       public static const ELEN_SUMMARY_RANK_ENUM:Array = [ELEN_SUMMARY_RANK_1,ELEN_SUMMARY_RANK_2,ELEN_SUMMARY_RANK_3,ELEN_SUMMARY_RANK_4,ELEN_SUMMARY_RANK_NORANK];
       

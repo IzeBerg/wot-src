@@ -1511,7 +1511,6 @@ class MENU(object):
     CONTEXTMENU_VEHICLEBUY = '#menu:contextMenu/vehicleBuy'
     CONTEXTMENU_VEHICLERESTORE = '#menu:contextMenu/vehicleRestore'
     CONTEXTMENU_VEHICLEREMOVE = '#menu:contextMenu/vehicleRemove'
-    CONTEXTMENU_VEHICLERENTRENEW = '#menu:contextMenu/vehicleRentRenew'
     CONTEXTMENU_USERINFO = '#menu:contextMenu/userInfo'
     CONTEXTMENU_CLANINFO = '#menu:contextMenu/clanInfo'
     CONTEXTMENU_SENDCLANINVITE = '#menu:contextMenu/sendClanInvite'
@@ -2221,7 +2220,6 @@ class MENU(object):
      CONTEXTMENU_VEHICLEBUY,
      CONTEXTMENU_VEHICLERESTORE,
      CONTEXTMENU_VEHICLEREMOVE,
-     CONTEXTMENU_VEHICLERENTRENEW,
      CONTEXTMENU_USERINFO,
      CONTEXTMENU_CLANINFO,
      CONTEXTMENU_SENDCLANINVITE,

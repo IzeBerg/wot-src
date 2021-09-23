@@ -70,6 +70,14 @@ package
       public static const BATTLEPROGRESS_HINT:String = "#prebattle:battleProgress/hint";
       
       public static const UPBUTTON_HINT:String = "#prebattle:upButton/hint";
+      
+      public static const LABELS_SORT_BYORDER:String = "#prebattle:labels/sort/byOrder";
+      
+      public static const LABELS_SORT_BYVEHICLES:String = "#prebattle:labels/sort/byVehicles";
+      
+      public static const LABELS_SORT_BYSTATUS:String = "#prebattle:labels/sort/byStatus";
+      
+      public static const LABELS_SORT_BYNAME:String = "#prebattle:labels/sort/byName";
        
       
       public function PREBATTLE()

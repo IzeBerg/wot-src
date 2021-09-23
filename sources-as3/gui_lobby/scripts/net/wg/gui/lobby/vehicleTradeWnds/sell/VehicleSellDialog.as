@@ -170,6 +170,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
       
       override protected function draw() : void
       {
+         super.draw();
          if(this._data != null)
          {
             if(isInvalid(INV_BARRACKS_DROP))

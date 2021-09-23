@@ -482,11 +482,18 @@
 			</companyPlayersCount>
 			<specBattlePlayersCount>
 				<context>
-					<openTag>&lt;font color=&quot;#5c5747&quot;&gt;</openTag>
+					<openTag>&lt;font color=&quot;#8C8C7E&quot;&gt;</openTag>
 					<closeTag>&lt;/font&gt;</closeTag>
 				</context>
 				<text>_(#prebattle:labels/members)</text>
 			</specBattlePlayersCount>
+			<specBattlePlayersZero>
+				<context>
+					<openTag/>
+					<closeTag/>
+				</context>
+				<text>_(#prebattle:labels/members)</text>
+			</specBattlePlayersZero>
 			<inviteTitle>
 				<context>
 					<titleStartTag>&lt;font color=&quot;#e9e2bf&quot; face=&quot;$TitleFont&quot; size=&quot;15&quot;&gt;</titleStartTag>

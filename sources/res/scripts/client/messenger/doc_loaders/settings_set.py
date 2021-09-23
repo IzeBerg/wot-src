@@ -109,7 +109,8 @@ _BATTLE_ITEM_READERS = {'messageFormat': _xml_helpers.readUnicodeItem,
    'alphaForLastMessages': _xml_helpers.readIntItem, 
    'chatIsLockedToolTipText': _xml_helpers.readI18nStringItem, 
    'recoveredLatestMessages': _xml_helpers.readIntItem, 
-   'lifeTimeRecoveredMessages': _xml_helpers.readIntItem}
+   'lifeTimeRecoveredMessages': _xml_helpers.readIntItem, 
+   'battleRoyaleTooltip': _xml_helpers.readI18nStringItem}
 _SETTINGS_LOADERS = {'lobby': (
            _readSettings, _LOBBY_SET_READERS, _LOBBY_ITEM_READERS), 
    'battle': (

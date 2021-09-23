@@ -1134,6 +1134,7 @@ class IEpicBattleMetaGameController(IGameController, ISeasonProvider):
     onGameModeStatusTick = None
     TOKEN_QUEST_ID = ''
     DAILY_QUEST_ID = ''
+    FINAL_BADGE_QUEST_ID = ''
 
     def isEnabled(self):
         raise NotImplementedError

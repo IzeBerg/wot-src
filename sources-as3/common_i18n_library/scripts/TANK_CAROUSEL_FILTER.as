@@ -71,6 +71,10 @@ package
       
       public static const TOOLTIP_CRYSTALS_BODY:String = "#tank_carousel_filter:tooltip/crystals/body";
       
+      public static const TOOLTIP_CLANRENTED_HEADER:String = "#tank_carousel_filter:tooltip/clanRented/header";
+      
+      public static const TOOLTIP_CLANRENTED_BODY:String = "#tank_carousel_filter:tooltip/clanRented/body";
+      
       public static const TOOLTIP_ELITE_HEADER:String = "#tank_carousel_filter:tooltip/elite/header";
       
       public static const TOOLTIP_ELITE_BODY:String = "#tank_carousel_filter:tooltip/elite/body";

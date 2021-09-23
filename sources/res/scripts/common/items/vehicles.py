@@ -74,7 +74,7 @@ if TYPE_CHECKING:
     from helpers.EntityExtra import EntityExtra
 VEHICLE_CLASS_TAGS = frozenset(('lightTank', 'mediumTank', 'heavyTank', 'SPG', 'AT-SPG'))
 VEHICLE_LEVEL_EARN_CRYSTAL = 10
-MODES_WITHOUT_CRYSTAL_EARNINGS = set(('bob', 'fallout', 'event_battles', 'battle_royale'))
+MODES_WITHOUT_CRYSTAL_EARNINGS = set(('bob', 'fallout', 'event_battles', 'battle_royale', 'clanWarsBattles'))
 
 class VEHICLE_PHYSICS_TYPE():
     TANK = 0

@@ -537,6 +537,8 @@ package
       
       public static const BATTLESESSION_ERROR_LIMITS:String = "#system_messages:battlesession/error/Limits";
       
+      public static const BATTLESESSION_ERROR_INSUFFICIENTROLE:String = "#system_messages:battlesession/error/InsufficientRole";
+      
       public static const GAMESESSIONCONTROL_KOREA_SESSIONTIME:String = "#system_messages:gameSessionControl/korea/sessionTime";
       
       public static const GAMESESSIONCONTROL_KOREA_TIMETILLMIDNIGHT:String = "#system_messages:gameSessionControl/korea/timeTillMidnight";

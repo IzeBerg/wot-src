@@ -206,10 +206,11 @@ SETTING_DEFAULTS = {'ver': 1,
    'notifyWeb': False, 
    'extraData': {}, 'gameplaysMask': 0, 
    'vehicleLockMode': 0, 
+   'clanRentedVehicleLockMode': 0, 
    'vehicleLockTimeFactors': {}, 'observeBothTeams': True, 
    'numGroupsPerTeam': 0, 
    'playerGroupLimit': 0, 
-   'tournamentArenasTypeIDs': []}
+   'tournamentArenasTypeIDs': [], 'clanRankRoles': {1: {}, 2: {}}}
 LIMIT_DEFAULTS = {'maxCountTotal': 256, 
    'minCount': 1, 
    'maxCount': (0, 65535), 

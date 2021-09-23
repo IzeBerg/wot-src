@@ -133,6 +133,7 @@
 		<_76mm_Gun_M1A1_IGR>60008</_76mm_Gun_M1A1_IGR>
 		<_105mm_Gun_M68_IGR>60009</_105mm_Gun_M68_IGR>
 		<_120mm_Gun_M58B>300</_120mm_Gun_M58B>
+		<_120mm_Gun_M58_cl>301</_120mm_Gun_M58_cl>
 		<_105mm_SPH_M4_L23_SH>338</_105mm_SPH_M4_L23_SH>
 		<_76mm_Gun_T185_A_SH>339</_76mm_Gun_T185_A_SH>
 		<_90mm_Gun_M3_SH>340</_90mm_Gun_M3_SH>
@@ -12409,6 +12410,118 @@
 				</_120mm_HE_Shot>
 			</shots>
 		</_120mm_Gun_M58B>
+		<_120mm_Gun_M58_cl>
+			<userString>#usa_vehicles:_120mm_Gun_M58</userString>
+			<tags/>
+			<level>10</level>
+			<price>310000</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.68
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.19
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>large</recoilEffect>
+			</recoil>
+			<effects>shot_large</effects>
+			<reloadEffect>reload115_152</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -15.0 1.0 -15.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 11.0 1.0 11.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>
+				26.25
+				<!--BW_String-->
+			</rotationSpeed>
+			<reloadTime>
+				10.97142857142860
+				<!--BW_String-->
+			</reloadTime>
+			<maxAmmo>22</maxAmmo>
+			<aimingTime>
+				2.62857142857143
+				<!--BW_String-->
+			</aimingTime>
+			<weight>3100</weight>
+			<maxHealth>210</maxHealth>
+			<maxRegenHealth>105</maxRegenHealth>
+			<repairCost>8</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.4
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.08
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					4.0
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_120mm_AP-T_M358>
+					<defaultPortion>
+						0.60
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>1067</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>258 238</piercingPower>
+				</_120mm_AP-T_M358>
+				<_120mm_HEAT-T_M469>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>1067</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>340 340</piercingPower>
+				</_120mm_HEAT-T_M469>
+				<_120mm_HE_Shot>
+					<defaultPortion>
+						0.40
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>1067</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>60 60</piercingPower>
+				</_120mm_HE_Shot>
+			</shots>
+		</_120mm_Gun_M58_cl>
 		<_120mm_AT_Gun_M58>
 			<userString>#usa_vehicles:_120mm_AT_Gun_M58</userString>
 			<tags/>

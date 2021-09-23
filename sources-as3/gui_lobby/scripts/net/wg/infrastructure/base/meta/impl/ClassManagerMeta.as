@@ -2950,6 +2950,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.prebattle.abstract.PrequeueWindow;
    import net.wg.gui.prebattle.base.BasePrebattleListView;
    import net.wg.gui.prebattle.base.BasePrebattleRoomView;
+   import net.wg.gui.prebattle.battleSession.BSFilterVO;
    import net.wg.gui.prebattle.battleSession.BSFlagRenderer;
    import net.wg.gui.prebattle.battleSession.BSFlagRendererVO;
    import net.wg.gui.prebattle.battleSession.BSListRendererVO;
@@ -9310,6 +9311,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_PREBATTLE_BATTLESESSION_BATTLESESSIONLISTRENDERER:Class = BattleSessionListRenderer;
       
       public static const NET_WG_GUI_PREBATTLE_BATTLESESSION_BATTLESESSIONWINDOW:Class = BattleSessionWindow;
+      
+      public static const NET_WG_GUI_PREBATTLE_BATTLESESSION_BSFILTERVO:Class = BSFilterVO;
       
       public static const NET_WG_GUI_PREBATTLE_BATTLESESSION_BSFLAGRENDERER:Class = BSFlagRenderer;
       
