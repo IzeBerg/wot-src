@@ -9,6 +9,8 @@ package
       
       public static const HEADER_PREMIUM_BUTTON:String = "#lobby_help:header/premium-button";
       
+      public static const HEADER_WOT_PLUS_BUTTON:String = "#lobby_help:header/wot-plus-button";
+      
       public static const HEADER_SQUAD_BUTTON:String = "#lobby_help:header/squad-button";
       
       public static const HEADER_BATTLETYPE_BUTTON:String = "#lobby_help:header/battleType-button";

@@ -33,9 +33,11 @@ package net.wg.gui.lobby.header.headerButtonBar
       private static const ALPHA_ENABLED:Number = 1;
       
       private static const ALPHA_DISABLED:Number = 0.4;
+      
+      private static const LAYOUT_ID_SEPARATOR:String = "_";
        
       
-      public var separator:Sprite;
+      public var separator:MovieClip;
       
       public var container:Sprite;
       
@@ -77,7 +79,7 @@ package net.wg.gui.lobby.header.headerButtonBar
       {
          if(!this._helpLayoutId)
          {
-            this._helpLayoutId = name + "_" + Math.random();
+            this._helpLayoutId = name + LAYOUT_ID_SEPARATOR + Math.random();
          }
          var _loc1_:int = 3;
          var _loc2_:int = 2;
@@ -238,14 +240,24 @@ package net.wg.gui.lobby.header.headerButtonBar
          }
          this.helpDirection = this._dataVo.helpDirection;
          this.helpText = this._dataVo.helpText;
-         this.enabled = this._dataVo.enabled;
+         this.updateEnabled();
          this._content.data = this._dataVo.data;
          if(this._upperContent != null)
          {
             this._upperContent.data = this._dataVo.data;
          }
          this.separator.visible = this.isShowSeparator;
+         if(this._content)
+         {
+            this.separator.gotoAndStop(this._content.getSeparatorType());
+         }
          this.updateScreen(this._screen,this._wideScreenPrc,this._maxScreenPrc);
+      }
+      
+      public function updateEnabled() : void
+      {
+         this.enabled = this._dataVo.enabled && !this._dataVo.softDisable;
+         this.updateDisable();
       }
       
       public function updateScreen(param1:String, param2:Number, param3:Number) : void
@@ -320,7 +332,7 @@ package net.wg.gui.lobby.header.headerButtonBar
          {
             this._helpLayout.unregisterComponent(this);
          }
-         mouseEnabledOnDisabled = this._dataVo.id == HeaderButtonsHelper.ITEM_ID_PREM || this._dataVo.id == HeaderButtonsHelper.ITEM_ID_SQUAD;
+         mouseEnabledOnDisabled = this._dataVo.id == HeaderButtonsHelper.ITEM_ID_PREM || this._dataVo.id == HeaderButtonsHelper.ITEM_ID_SQUAD || this._dataVo.id == HeaderButtonsHelper.ITEM_ID_WOT_PLUS;
          invalidate(_loc2_);
       }
       
@@ -365,7 +377,7 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       private function get disableMcVisible() : Boolean
       {
-         return !enabled && this._dataVo.id != HeaderButtonsHelper.ITEM_ID_SQUAD && this._dataVo.id != HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR;
+         return !this._dataVo.enabled && this._dataVo.id != HeaderButtonsHelper.ITEM_ID_SQUAD && this._dataVo.id != HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR;
       }
       
       private function onContentHbcSizeUpdatedHandler(param1:HeaderEvents) : void

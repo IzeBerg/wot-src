@@ -17,6 +17,8 @@ package net.wg.gui.interfaces
       
       function onPopoverOpen() : void;
       
+      function getSeparatorType() : String;
+      
       function get data() : Object;
       
       function set data(param1:Object) : void;

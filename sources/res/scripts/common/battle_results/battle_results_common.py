@@ -694,6 +694,8 @@ BATTLE_RESULTS = [
  (
   'quickShellChangerUsageCount', int, 0, None, 'skip', ENTRY_TYPE.SERVER),
  (
+  'goldBankGain', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+ (
   'setupsIndexes', dict, {}, None, 'any', ENTRY_TYPE.VEHICLE_SELF),
  (
   'startAmmo', list, [], None, 'skip', ENTRY_TYPE.SERVER),

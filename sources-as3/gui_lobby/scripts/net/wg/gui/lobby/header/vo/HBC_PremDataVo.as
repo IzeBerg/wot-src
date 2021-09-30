@@ -16,6 +16,8 @@ package net.wg.gui.lobby.header.vo
       
       public var isSubscription:Boolean = false;
       
+      public var isWotPlusEnabled:Boolean = false;
+      
       public var isPremium:Boolean = false;
       
       public var premiumIcon:String = "";

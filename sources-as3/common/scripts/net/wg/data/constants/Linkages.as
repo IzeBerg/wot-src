@@ -705,6 +705,8 @@ package net.wg.data.constants
       
       public static const HBC_PREM_UI:String = "HBC_Prem_UI";
       
+      public static const HBC_WOT_PLUS_UI:String = "HBC_WotPlus_UI";
+      
       public static const HBC_PREM_SHOP_UI:String = "HBC_PremShop_UI";
       
       public static const HBC_SQUAD_UI:String = "HBC_Squad_UI";

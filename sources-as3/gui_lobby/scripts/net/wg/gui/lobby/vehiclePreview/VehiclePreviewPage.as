@@ -23,6 +23,7 @@ package net.wg.gui.lobby.vehiclePreview
    import net.wg.gui.lobby.vehiclePreview.buyingPanel.VPOfferGiftBuyingPanel;
    import net.wg.gui.lobby.vehiclePreview.buyingPanel.VPPersonalTradeInBuyingPanel;
    import net.wg.gui.lobby.vehiclePreview.buyingPanel.VPTradeInBuyingPanel;
+   import net.wg.gui.lobby.vehiclePreview.buyingPanel.VPWotPlusPanel;
    import net.wg.gui.lobby.vehiclePreview.data.VPPageVO;
    import net.wg.gui.lobby.vehiclePreview.infoPanel.VPInfoPanel;
    import net.wg.infrastructure.base.meta.IVehiclePreviewMeta;
@@ -205,6 +206,7 @@ package net.wg.gui.lobby.vehiclePreview
          var _loc2_:Boolean = this.bottomPanel is VPPersonalTradeInBuyingPanel;
          var _loc3_:Boolean = this.bottomPanel is VPTradeInBuyingPanel;
          var _loc4_:Boolean = this.bottomPanel is VPOfferGiftBuyingPanel;
+         var _loc5_:Boolean = this.bottomPanel is VPWotPlusPanel;
          if(this.bottomPanel != null)
          {
             this.bottomPanel.alpha = 0;
@@ -226,6 +228,10 @@ package net.wg.gui.lobby.vehiclePreview
          else if(_loc4_)
          {
             registerFlashComponentS(VPOfferGiftBuyingPanel(this.bottomPanel),VEHPREVIEW_CONSTANTS.OFFER_GIFT_BUYING_PANEL_PY_ALIAS);
+         }
+         else if(_loc5_)
+         {
+            registerFlashComponentS(VPWotPlusPanel(this.bottomPanel),VEHPREVIEW_CONSTANTS.WOT_PLUS_PANEL_LINKAGE);
          }
       }
       

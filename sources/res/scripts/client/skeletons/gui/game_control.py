@@ -1911,3 +1911,9 @@ class IVehiclePostProgressionController(IGameController):
 
     def processVehExtData(self, vehCD, extData):
         raise NotImplementedError
+
+
+class IWotPlusNotificationController(IGameController):
+
+    def processSwitchNotifications(self):
+        raise NotImplementedError

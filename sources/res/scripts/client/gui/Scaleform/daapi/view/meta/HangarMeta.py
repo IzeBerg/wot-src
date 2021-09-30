@@ -100,6 +100,10 @@ class HangarMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_toggleBattleRoyale(isBattleRoyale)
 
+    def as_toggleCnSubscriptionS(self, isCnSubscription):
+        if self._isDAAPIInited():
+            return self.flashObject.as_toggleCnSubscription(isCnSubscription)
+
     def as_setDQWidgetLayoutS(self, lyout):
         if self._isDAAPIInited():
             return self.flashObject.as_setDQWidgetLayout(lyout)

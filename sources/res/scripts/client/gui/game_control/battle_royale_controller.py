@@ -1,6 +1,4 @@
-import logging
-from operator import itemgetter
-import typing, json, BigWorld, Event
+import logging, typing, json, BigWorld, Event
 from shared_utils import nextTick
 import season_common
 from CurrentVehicle import g_currentVehicle
@@ -315,10 +313,13 @@ class BattleRoyaleController(Notifiable, SeasonProvider, IBattleRoyaleController
     def isDailyQuestsRefreshAvailable(self):
         if self.hasPrimeTimesLeftForCurrentCycle():
             return True
-        primeTimePeriodsForDay = self.getPrimeTimesForDay(time_utils.getCurrentLocalServerTimestamp())
-        if primeTimePeriodsForDay:
-            _, periodTimeEnd = max(primeTimePeriodsForDay.values(), key=itemgetter(1))
-            periodTimeLeft = periodTimeEnd - time_utils.getCurrentLocalServerTimestamp()
+        serversPeriodsMapping = self.getPrimeTimesForDay(time_utils.getCurrentLocalServerTimestamp())
+        periods = []
+        for _, dayPeriods in serversPeriodsMapping.items():
+            periods.append(max([ periodEnd for _, periodEnd in dayPeriods ]))
+
+        if periods:
+            periodTimeLeft = max(periods) - time_utils.getCurrentLocalServerTimestamp()
             return periodTimeLeft > time_utils.getDayTimeLeft()
         return False
 

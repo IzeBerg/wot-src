@@ -1,16 +1,12 @@
 package net.wg.gui.interfaces
 {
-   import net.wg.infrastructure.interfaces.ISprite;
-   import net.wg.infrastructure.interfaces.entity.IDisposable;
+   import net.wg.gui.lobby.tankman.vo.PersonalCaseStatTitleVO;
+   import net.wg.infrastructure.interfaces.IUIComponentEx;
    
-   public interface IPersonalCaseBlockTitle extends ISprite, IDisposable
+   public interface IPersonalCaseBlockTitle extends IUIComponentEx
    {
        
       
-      function setLeftText(param1:String) : void;
-      
-      function premiumVehicle(param1:Boolean) : void;
-      
-      function setRightText(param1:String) : void;
+      function setDate(param1:PersonalCaseStatTitleVO) : void;
    }
 }

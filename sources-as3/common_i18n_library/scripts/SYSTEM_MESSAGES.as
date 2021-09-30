@@ -113,6 +113,8 @@ package
       
       public static const ARENA_START_ERRORS_JOIN_QUEUE_FULL:String = "#system_messages:arena_start_errors/join/QUEUE_FULL";
       
+      public static const ARENA_START_ERRORS_JOIN_QUEUE_FAILURE:String = "#system_messages:arena_start_errors/join/QUEUE_FAILURE";
+      
       public static const PREBATTLE_KICK_TYPE_SQUAD:String = "#system_messages:prebattle/kick/type/squad";
       
       public static const PREBATTLE_KICK_TYPE_UNKNOWN:String = "#system_messages:prebattle/kick/type/unknown";

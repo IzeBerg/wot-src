@@ -704,6 +704,7 @@ class _CurrentPreviewVehicle(_CachedVehicle):
             vehicle = self.itemsCache.items.getVehicleCopyByCD(vehicleCD)
             vehicle.crew = vehicle.getPerfectCrew()
             vehicle.repairCost = 0
+            vehicle.health = 1
             return vehicle
         else:
             return

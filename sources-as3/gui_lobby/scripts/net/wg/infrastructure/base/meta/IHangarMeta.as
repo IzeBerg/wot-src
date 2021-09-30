@@ -58,6 +58,8 @@ package net.wg.infrastructure.base.meta
       
       function as_toggleBattleRoyale(param1:Boolean) : void;
       
+      function as_toggleCnSubscription(param1:Boolean) : void;
+      
       function as_setDQWidgetLayout(param1:int) : void;
    }
 }

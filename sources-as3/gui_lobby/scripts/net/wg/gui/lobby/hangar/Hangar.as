@@ -106,6 +106,10 @@ package net.wg.gui.lobby.hangar
       
       private static const CREW_OPERATION_MARGIN_Y:int = 2;
       
+      private static const CREW_XP_PANEL_INJECT_WIDTH:int = 390;
+      
+      private static const CREW_XP_PANEL_INJECT_HEIGHT:int = 35;
+      
       private static const DQ_WIDGET_NORMAL_HEIGHT:int = 184;
       
       private static const DQ_WIDGET_MINI_HEIGHT:int = 70;
@@ -169,6 +173,8 @@ package net.wg.gui.lobby.hangar
       
       public var closeBtn:CloseButtonText;
       
+      public var crewXPPanelInject:CrewXPPanelInject;
+      
       private var _header:HangarHeader;
       
       private var _carousel:TankCarousel;
@@ -204,6 +210,10 @@ package net.wg.gui.lobby.hangar
       private var _isVisibleByAnimator:Boolean = true;
       
       private var _isVisible:Boolean = true;
+      
+      private var _isCnSubscribeVisible:Boolean = false;
+      
+      private var _isBattleRoyale:Boolean = false;
       
       private var _appStage:Stage;
       
@@ -289,6 +299,7 @@ package net.wg.gui.lobby.hangar
          registerFlashComponentS(this.params,HANGAR_ALIASES.VEHICLE_PARAMETERS);
          registerFlashComponentS(this.dqWidget,Aliases.DAILY_QUEST_WIDGET);
          registerFlashComponentS(this._eventsEntryContainer,HANGAR_ALIASES.ENTRIES_CONTAINER);
+         registerFlashComponentS(this.crewXPPanelInject,HANGAR_ALIASES.CREW_XP_PANEL_INJECT);
          registerFlashComponentS(this._header,HANGAR_ALIASES.HEADER);
          this.ammunitionPanelInject.addEventListener(Event.RESIZE,this.onAmmunitionPanelInjectResizeHandler);
          this.ammunitionPanelInject.addEventListener(AmmunitionPanelInjectEvents.HELP_LAYOUT_CHANGED,this.onAmmunitionPanelInjectHelpLayoutChangedHandler);
@@ -297,6 +308,7 @@ package net.wg.gui.lobby.hangar
          {
             registerFlashComponentS(this.vehResearchPanel,HANGAR_ALIASES.RESEARCH_PANEL);
          }
+         this.crewXPPanelInject.setSize(CREW_XP_PANEL_INJECT_WIDTH,CREW_XP_PANEL_INJECT_HEIGHT);
          this.updateControlsVisibility();
          this.updateElementsPosition();
          this.updateHeaderMargin();
@@ -363,6 +375,7 @@ package net.wg.gui.lobby.hangar
          this._alertMessageBlock = null;
          this.dqWidget = null;
          this._widgetInitialized = false;
+         this.crewXPPanelInject = null;
          App.utils.data.cleanupDynamicObject(this._widgetSizes);
          this._widgetSizes = null;
          this._gameInputMgr = null;
@@ -372,7 +385,6 @@ package net.wg.gui.lobby.hangar
          this._appStage = null;
          this.carouselContainer.dispose();
          this.carouselContainer = null;
-         this.crewBG = null;
          if(this._hangarViewSwitchAnimator)
          {
             this._hangarViewSwitchAnimator.dispose();
@@ -673,18 +685,23 @@ package net.wg.gui.lobby.hangar
          this._hangarViewSwitchAnimator.playHideAnimation();
       }
       
+      public function as_toggleCnSubscription(param1:Boolean) : void
+      {
+         this._isCnSubscribeVisible = param1;
+         this.updateCrewOperationsVisibility();
+      }
+      
       public function as_toggleBattleRoyale(param1:Boolean) : void
       {
+         this._isBattleRoyale = param1;
          var _loc2_:Boolean = !param1 && this._isControlsVisible;
-         this.crewOperationBtn.visible = _loc2_;
-         this.tmenXpPanel.visible = _loc2_;
-         this.crewBG.visible = _loc2_;
          this.crew.visible = _loc2_;
          this.ammunitionPanel.visible = _loc2_;
          this.ammunitionPanelInject.visible = _loc2_;
          this.vehResearchBG.visible = _loc2_;
          this.vehResearchPanel.visible = _loc2_;
          this.params.visible = _loc2_;
+         this.updateCrewOperationsVisibility();
          if(param1 && this._battleRoyaleComponents == null)
          {
             this._battleRoyaleComponents = new HangarComponentsContainer();
@@ -762,13 +779,25 @@ package net.wg.gui.lobby.hangar
       {
          this.params.visible = this.isControlsVisible;
          this.crew.visible = this.isControlsVisible;
-         this.crewOperationBtn.visible = this.isControlsVisible;
          this.ammunitionPanel.visible = this.isControlsVisible;
          this.bottomBg.visible = this.isControlsVisible;
          this.vehResearchPanel.visible = this.isControlsVisible;
          this.vehResearchBG.visible = this.isControlsVisible;
-         this.crewBG.visible = this.isControlsVisible;
          this.ammunitionPanelInject.visible = this.isControlsVisible;
+         this.updateCrewOperationsVisibility();
+      }
+      
+      protected function updateCrewOperationsVisibility() : void
+      {
+         if(this._isBattleRoyale)
+         {
+            this.crewXPPanelInject.visible = this.tmenXpPanel.visible = this.crewBG.visible = this.crewOperationBtn.visible = false;
+         }
+         else
+         {
+            this.tmenXpPanel.visible = this.crewBG.visible = this.crewOperationBtn.visible = this.isCrewOperationVisible;
+            this.crewXPPanelInject.visible = this.isControlsVisible && this._isCnSubscribeVisible;
+         }
       }
       
       private function resolveVisibility() : void
@@ -780,7 +809,7 @@ package net.wg.gui.lobby.hangar
       {
          if(!this._hangarViewSwitchAnimator)
          {
-            this._hangarViewSwitchAnimator = new HangarAmunitionSwitchAnimator(this,Vector.<DisplayObject>([this.params,this.crew,this.dqWidget,this.teaser,this.crewBG,this.crewOperationBtn,this._alertMessageBlock,this.vehResearchPanel,this.vehResearchBG,this.tmenXpPanel,this.header,this.ammunitionPanel,this.bottomBg]),Vector.<DisplayObject>([this.carouselContainer]),this.ammunitionPanelInject,height);
+            this._hangarViewSwitchAnimator = new HangarAmunitionSwitchAnimator(this,Vector.<DisplayObject>([this.params,this.crew,this.dqWidget,this.teaser,this.crewBG,this.crewOperationBtn,this.crewXPPanelInject,this._alertMessageBlock,this.vehResearchPanel,this.vehResearchBG,this.tmenXpPanel,this.header,this.ammunitionPanel,this.bottomBg]),Vector.<DisplayObject>([this.carouselContainer]),this.ammunitionPanelInject,height);
          }
       }
       
@@ -900,7 +929,7 @@ package net.wg.gui.lobby.hangar
          {
             _loc2_ = CREW_OPERATION_BG_Y + this._topMargin;
             this.tmenXpPanel.y = this.crewOperationBtn.y = CREW_OPERATION_Y + this._topMargin;
-            this.crewBG.y = _loc2_;
+            this.crewXPPanelInject.y = this.crewBG.y = _loc2_;
             this.crew.y = _loc2_ + this.crewBG.height + CREW_OPERATION_MARGIN_Y;
             _loc3_ = VEH_RESERCH_PANEL_Y + this._topMargin;
             this.vehResearchPanel.y = this.vehResearchBG.y = _loc3_;
@@ -1041,6 +1070,11 @@ package net.wg.gui.lobby.hangar
       public function get isControlsVisible() : Boolean
       {
          return this._isControlsVisible;
+      }
+      
+      public function get isCrewOperationVisible() : Boolean
+      {
+         return !this._isCnSubscribeVisible && this.isControlsVisible;
       }
       
       private function onCloseBtnClickHandler(param1:ButtonEvent) : void

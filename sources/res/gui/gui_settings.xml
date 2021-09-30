@@ -1116,6 +1116,16 @@
 				<name>splitUrl</name>
 				<type>url</type>
 			</item>
+			<item>
+				$PARAMS(/subscription-rental)
+				<name>rentVehicle</name>
+				<type>url</type>
+			</item>
+			<item>
+				$PARAMS(/featured/featured/items/platform_subscription/preview)
+				<name>buyRenewableSubscription</name>
+				<type>url</type>
+			</item>
 		</value>
 	</setting>
 	<setting>
@@ -1714,6 +1724,18 @@
 		</value>
 	</setting>
 	<setting>
+		<name>renewableSubscriptionInfoPage</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/WotPlus/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
 		<name>infoPageMapsTraining</name>
 		<type>macros</type>
 		<macros>AUTH_REALM</macros>
@@ -1818,6 +1840,18 @@
 				<name>default</name>
 				<type>dict</type>
 				<value/>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>wotPlusManageSubscriptionUrl</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://shop.wot.360.cn/detail.html?goods_id=subscription&amp;type=wotsubscriptions
+				<name>default</name>
+				<type>url</type>
 			</item>
 		</value>
 	</setting>

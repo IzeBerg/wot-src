@@ -13,6 +13,8 @@ package net.wg.data.constants.generated
       
       public static const PERSONAL_TRADE_IN_BUYING_PANEL_LINKAGE:String = "VehiclePreviewPersonalTradeInBuyingPanelUI";
       
+      public static const WOT_PLUS_PANEL_LINKAGE:String = "VPWotPlusPanelUI";
+      
       public static const OFFER_GIFT_BUYING_PANEL_LINKAGE:String = "VehiclePreviewOfferGiftBuyingPanelUI";
       
       public static const FACT_SHEET_LINKAGE:String = "VehPreviewFactSheetUI";

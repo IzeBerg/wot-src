@@ -49,6 +49,7 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
          if(this._dynamicMC == null)
          {
             this._dynamicMC = this.initializeCircle(param1,param2,param3);
+            this._currentDynamicRadius = param3;
          }
       }
       
@@ -83,6 +84,7 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
          {
             this.removeChild(this._dynamicMC);
             this._dynamicMC = null;
+            this._currentDynamicRadius = 0;
          }
       }
       

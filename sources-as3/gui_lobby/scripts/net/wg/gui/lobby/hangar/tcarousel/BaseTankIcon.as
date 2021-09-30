@@ -13,6 +13,7 @@ package net.wg.gui.lobby.hangar.tcarousel
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.interfaces.IImage;
    import org.idmedia.as3commons.util.StringUtils;
+   import scaleform.clik.constants.InvalidationType;
    
    public class BaseTankIcon extends UIComponentEx
    {
@@ -72,13 +73,17 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       public var addImg:IImage = null;
       
+      public var extraImage:IImage = null;
+      
       public var bpSpecialBorder:MovieClip = null;
       
       public var crystalsIcon:MovieClip = null;
       
-      public var crystalsGlow:Sprite = null;
+      public var extraGlow:MovieClip = null;
       
       public var crystalsGlowBlend:Sprite = null;
+      
+      protected var isWotPlusSlot:Boolean = false;
       
       private var _visibleVehicleInfo:Boolean = true;
       
@@ -101,7 +106,7 @@ package net.wg.gui.lobby.hangar.tcarousel
       public function BaseTankIcon()
       {
          super();
-         this.crystalsGlow.visible = false;
+         this.extraGlow.visible = false;
          this.crystalsGlowBlend.visible = false;
          this.statsBg.visible = false;
          this.statsTF.visible = false;
@@ -109,6 +114,7 @@ package net.wg.gui.lobby.hangar.tcarousel
          this.rentalHoverBG.visible = false;
          this.rentalBG.visible = false;
          this.addImg.visible = false;
+         this.extraImage.visible = false;
          this.imgIcon.tooltipEnabled = false;
          this.imgIconBoundaries = this.maxIconBounds;
       }
@@ -141,11 +147,22 @@ package net.wg.gui.lobby.hangar.tcarousel
          this.rentalHoverBG = null;
          this.addImg.dispose();
          this.addImg = null;
+         this.extraImage.dispose();
+         this.extraImage = null;
          this.bpSpecialBorder = null;
-         this.crystalsGlow = null;
+         this.extraGlow = null;
          this.crystalsGlowBlend = null;
          this.crystalsIcon = null;
          super.onDispose();
+      }
+      
+      override protected function draw() : void
+      {
+         super.draw();
+         if(isInvalid(InvalidationType.LAYOUT))
+         {
+            this.validateLayout();
+         }
       }
       
       public function handleRollOut(param1:VehicleCarouselVO) : void
@@ -214,14 +231,24 @@ package net.wg.gui.lobby.hangar.tcarousel
          }
          this.infoImg.visible = StringUtils.isNotEmpty(param1.infoImgSrc);
          this.addImg.visible = StringUtils.isNotEmpty(param1.additionalImgSrc);
-         this.crystalsGlow.visible = this.crystalsGlowBlend.visible = this._isEarnCrystals && !param1.isCrystalsLimitReached;
+         this.extraImage.visible = StringUtils.isNotEmpty(param1.extraImage);
+         var _loc2_:Boolean = this._isEarnCrystals && !param1.isCrystalsLimitReached;
+         this.crystalsGlowBlend.visible = _loc2_;
+         this.extraGlow.visible = _loc2_ || param1.isWotPlusSlot;
+         this.extraGlow.gotoAndStop(!!param1.isWotPlusSlot ? TankCarouselItemRenderer.LABEL_WOT_PLUS : TankCarouselItemRenderer.LABEL_CRYSTAL);
          this._infoImgOffset = !!this.infoImg.visible ? int(INFO_IMG_OFFSET_H) : int(0);
+         this.isWotPlusSlot = param1.isWotPlusSlot;
          this._isBuySlot = param1.buySlot;
          this._isBuyTank = param1.buyTank || param1.restoreTank;
          this._isRentPromotion = param1.isRentPromotion;
          this._unlockedInBattle = param1.unlockedInBattle;
          this.crystalsIcon.gotoAndStop(!!param1.isCrystalsLimitReached ? CRYSTALS_LIMIT_REACH_FRAME : CRYSTALS_FRAME);
-         if(this._isBuyTank)
+         if(this.isWotPlusSlot)
+         {
+            this.updateBaseData(param1);
+            this.setVisibleVehicleInfo(param1.intCD > 0);
+         }
+         else if(this._isBuyTank)
          {
             this.setVisibleVehicleInfo(false);
          }
@@ -241,22 +268,7 @@ package net.wg.gui.lobby.hangar.tcarousel
          }
          else
          {
-            this.mcFlag.gotoAndStop(param1.nation + 1);
-            this.mcTankType.gotoAndStop(param1.tankType);
-            this.mcLevel.gotoAndStop(param1.level);
-            this.imgXp.source = param1.xpImgSource;
-            this.txtTankName.htmlText = param1.label;
-            this.txtTankName.filters = !!param1.premium ? [PREM_FILTER] : [DEF_FILTER];
-            this.statsTF.htmlText = param1.statsText;
-            this._isLockBackground = param1.lockBackground;
-            if(this.infoImg.visible)
-            {
-               this.infoImg.source = param1.infoImgSrc;
-            }
-            if(this.addImg.visible)
-            {
-               this.addImg.source = param1.additionalImgSrc;
-            }
+            this.updateBaseData(param1);
             this.setVisibleVehicleInfo(true);
             this.mcLevel.visible = param1.level != 0;
          }
@@ -268,6 +280,28 @@ package net.wg.gui.lobby.hangar.tcarousel
          visible = true;
       }
       
+      protected function updateBaseData(param1:VehicleCarouselVO) : void
+      {
+         this.mcFlag.gotoAndStop(param1.nation + 1);
+         this.mcTankType.gotoAndStop(param1.tankType);
+         this.mcLevel.gotoAndStop(param1.level);
+         this.imgXp.source = param1.xpImgSource;
+         this.extraImage.source = param1.extraImage;
+         this.txtTankName.htmlText = param1.label;
+         this.txtTankName.filters = !!param1.premium ? [PREM_FILTER] : [DEF_FILTER];
+         this.statsTF.htmlText = param1.statsText;
+         this._isLockBackground = param1.lockBackground;
+         if(this.infoImg.visible)
+         {
+            this.infoImg.source = param1.infoImgSrc;
+         }
+         if(this.addImg.visible)
+         {
+            this.addImg.source = param1.additionalImgSrc;
+         }
+         invalidateLayout();
+      }
+      
       protected function setVisibleVehicleInfo(param1:Boolean) : void
       {
          if(this._visibleVehicleInfo != param1)
@@ -275,6 +309,12 @@ package net.wg.gui.lobby.hangar.tcarousel
             this._visibleVehicleInfo = param1;
             this.txtTankName.visible = this.imgXp.visible = this.mcTankType.visible = this.mcFlag.visible = this.mcLevel.visible = param1;
          }
+      }
+      
+      protected function validateLayout() : void
+      {
+         this.extraImage.x = 0;
+         this.extraImage.y = 0;
       }
       
       private function updateLockBg() : void

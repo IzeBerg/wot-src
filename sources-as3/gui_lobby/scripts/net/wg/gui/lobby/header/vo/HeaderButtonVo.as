@@ -29,6 +29,8 @@ package net.wg.gui.lobby.header.vo
       
       private var _enabled:Boolean = false;
       
+      private var _softDisable:Boolean = false;
+      
       public function HeaderButtonVo(param1:Object)
       {
          super(param1);
@@ -141,6 +143,16 @@ package net.wg.gui.lobby.header.vo
       public function set upperLinkage(param1:String) : void
       {
          this._upperLinkage = param1;
+      }
+      
+      public function get softDisable() : Boolean
+      {
+         return this._softDisable;
+      }
+      
+      public function set softDisable(param1:Boolean) : void
+      {
+         this._softDisable = param1;
       }
    }
 }

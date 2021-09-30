@@ -153,6 +153,11 @@
 					<destroyed>vehicles/american/A120_M48A5/_skins/battlepass2020/crash/lod0/Hull.model</destroyed>
 					<exploded>vehicles/american/A120_M48A5/_skins/battlepass2020/crash/lod0/Hull.model</exploded>
 				</battlepass2020>
+				<A120_M48A5_3DSt_TLXXL>
+					<undamaged>vehicles/american/A120_M48A5/_skins/A120_M48A5_3DSt_TLXXL/normal/lod0/Hull.model</undamaged>
+					<destroyed>vehicles/american/A120_M48A5/_skins/A120_M48A5_3DSt_TLXXL/crash/lod0/Hull.model</destroyed>
+					<exploded>vehicles/american/A120_M48A5/_skins/A120_M48A5_3DSt_TLXXL/crash/lod0/Hull.model</exploded>
+				</A120_M48A5_3DSt_TLXXL>
 			</sets>
 		</models>
 		<swinging>
@@ -186,11 +191,11 @@
 				<slotType>clan</slotType>
 				<slotId>10000</slotId>
 				<rayStart>
-					-0.480234 0.327067 2.65914
+					-0.49008 0.458909 2.70958
 					<!--BW_String-->
 				</rayStart>
 				<rayEnd>
-					-0.443612 0.144331 2.58657
+					-0.40198 0.0193034 2.53501
 					<!--BW_String-->
 				</rayEnd>
 				<rayUp>
@@ -1176,6 +1181,88 @@
 					<!--BW_String-->
 				</anchorShift>
 			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15043</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>A120_M48A5_3DSt_TLXXL</compatibleModels>
+				<position>
+					0.000007 1.36048 2.995
+					<!--BW_String-->
+				</position>
+				<rotation>
+					0.438785 -0.0262369 -3.11965
+					<!--BW_String-->
+				</rotation>
+				<scale>0.709296 0.709296 0.709296</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>0.642942</clipAngle>
+				<anchorShift>0.000002</anchorShift>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15044</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>A120_M48A5_3DSt_TLXXL</compatibleModels>
+				<position>
+					-1.40351 1.36393 3.41609
+					<!--BW_String-->
+				</position>
+				<rotation>
+					0.82991 -0.000000 3.14159
+					<!--BW_String-->
+				</rotation>
+				<scale>0.428965 0.215288 0.428966</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>
+					0.52755
+					<!--BW_String-->
+				</clipAngle>
+				<anchorShift>-0.011020</anchorShift>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15045</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>A120_M48A5_3DSt_TLXXL</compatibleModels>
+				<position>
+					1.40353 1.36391 3.41609
+					<!--BW_String-->
+				</position>
+				<rotation>
+					0.82991 -0.000000 3.14157
+					<!--BW_String-->
+				</rotation>
+				<scale>0.428965 0.215288 0.428966</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>
+					0.52755
+					<!--BW_String-->
+				</clipAngle>
+				<anchorShift>-0.011020</anchorShift>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15046</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>A120_M48A5_3DSt_TLXXL</compatibleModels>
+				<position>
+					0.447608 1.8726 -2.85037
+					<!--BW_String-->
+				</position>
+				<rotation>
+					3.1272 -0.00331068 0.0450406
+					<!--BW_String-->
+				</rotation>
+				<scale>0.434006 0.434006 0.434006</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>0.000000</clipAngle>
+				<anchorShift>-0.000007</anchorShift>
+			</slot>
 		</customizationSlots>
 		<hangarShadowTexture>vehicles/american/A120_M48A5/M48A5_HangarShadowMap.dds</hangarShadowTexture>
 		<customization>
@@ -1246,6 +1333,11 @@
 						<destroyed>vehicles/american/A120_M48A5/_skins/battlepass2020/crash/lod0/Chassis.model</destroyed>
 						<exploded>vehicles/american/A120_M48A5/_skins/battlepass2020/crash/lod0/Chassis.model</exploded>
 					</battlepass2020>
+					<A120_M48A5_3DSt_TLXXL>
+						<undamaged>vehicles/american/A120_M48A5/_skins/A120_M48A5_3DSt_TLXXL/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/american/A120_M48A5/_skins/A120_M48A5_3DSt_TLXXL/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/american/A120_M48A5/_skins/A120_M48A5_3DSt_TLXXL/crash/lod0/Chassis.model</exploded>
+					</A120_M48A5_3DSt_TLXXL>
 				</sets>
 			</models>
 			<traces>
@@ -4646,6 +4738,11 @@
 								<destroyed>vehicles/american/A120_M48A5/_skins/battlepass2020/crash/lod0/Gun_01.model</destroyed>
 								<exploded>vehicles/american/A120_M48A5/_skins/battlepass2020/crash/lod0/Gun_01.model</exploded>
 							</battlepass2020>
+							<A120_M48A5_3DSt_TLXXL>
+								<undamaged>vehicles/american/A120_M48A5/_skins/A120_M48A5_3DSt_TLXXL/normal/lod0/Gun_01.model</undamaged>
+								<destroyed>vehicles/american/A120_M48A5/_skins/A120_M48A5_3DSt_TLXXL/crash/lod0/Gun_01.model</destroyed>
+								<exploded>vehicles/american/A120_M48A5/_skins/A120_M48A5_3DSt_TLXXL/crash/lod0/Gun_01.model</exploded>
+							</A120_M48A5_3DSt_TLXXL>
 						</sets>
 					</models>
 					<hitTester>
@@ -4745,6 +4842,11 @@
 						<destroyed>vehicles/american/A120_M48A5/_skins/battlepass2020/crash/lod0/Turret_01.model</destroyed>
 						<exploded>vehicles/american/A120_M48A5/_skins/battlepass2020/crash/lod0/Turret_01.model</exploded>
 					</battlepass2020>
+					<A120_M48A5_3DSt_TLXXL>
+						<undamaged>vehicles/american/A120_M48A5/_skins/A120_M48A5_3DSt_TLXXL/normal/lod0/Turret_01.model</undamaged>
+						<destroyed>vehicles/american/A120_M48A5/_skins/A120_M48A5_3DSt_TLXXL/crash/lod0/Turret_01.model</destroyed>
+						<exploded>vehicles/american/A120_M48A5/_skins/A120_M48A5_3DSt_TLXXL/crash/lod0/Turret_01.model</exploded>
+					</A120_M48A5_3DSt_TLXXL>
 				</sets>
 			</models>
 			<hitTester>
@@ -4756,6 +4858,14 @@
 				<!--BW_String-->
 			</gunPosition>
 			<customizationSlots>
+				<slot>
+					<slotType>sequence</slotType>
+					<slotId>38000</slotId>
+					<compatibleModels>A120_M48A5_3DSt_TLXXL</compatibleModels>
+					<position>0 0 0</position>
+					<rotation>0 0 0</rotation>
+					<attachNode>HP_FX_1</attachNode>
+				</slot>
 				<slot>
 					<slotType>paint</slotType>
 					<slotId>31000</slotId>
@@ -5522,6 +5632,88 @@
 						<!--BW_String-->
 					</clipAngle>
 					<anchorShift>0.409177</anchorShift>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35029</slotId>
+					<tags>formfactor_square</tags>
+					<compatibleModels>A120_M48A5_3DSt_TLXXL</compatibleModels>
+					<position>
+						0.037121 2.42472 0.763731
+						<!--BW_String-->
+					</position>
+					<rotation>
+						0.0675171 0.000008 3.14157
+						<!--BW_String-->
+					</rotation>
+					<scale>0.533986 0.337161 0.534016</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>256</showOn>
+					<clipAngle>
+						1.17203
+						<!--BW_String-->
+					</clipAngle>
+					<anchorShift>0.146640</anchorShift>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35030</slotId>
+					<tags>formfactor_square</tags>
+					<compatibleModels>A120_M48A5_3DSt_TLXXL</compatibleModels>
+					<position>
+						0.201996 2.53206 -0.690046
+						<!--BW_String-->
+					</position>
+					<rotation>
+						2.91046 -0.000002 -0.000058
+						<!--BW_String-->
+					</rotation>
+					<scale>
+						0.457965 0.18931 0.457963
+						<!--BW_String-->
+					</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>256</showOn>
+					<clipAngle>0.566105</clipAngle>
+					<anchorShift>0.078185</anchorShift>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35031</slotId>
+					<tags>formfactor_square</tags>
+					<compatibleModels>A120_M48A5_3DSt_TLXXL</compatibleModels>
+					<position>
+						0.93966 2.28002 0.618268
+						<!--BW_String-->
+					</position>
+					<rotation>
+						1.21325 1.30099 -2.97195
+						<!--BW_String-->
+					</rotation>
+					<scale>0.391479 0.279438 0.391493</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>256</showOn>
+					<clipAngle>0.930294</clipAngle>
+					<anchorShift>0.160694</anchorShift>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35032</slotId>
+					<tags>formfactor_square</tags>
+					<compatibleModels>A120_M48A5_3DSt_TLXXL</compatibleModels>
+					<position>
+						-0.853054 2.21021 0.770565
+						<!--BW_String-->
+					</position>
+					<rotation>
+						0.861199 -1.32831 3.10886
+						<!--BW_String-->
+					</rotation>
+					<scale>0.325298 0.232198 0.325309</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>256</showOn>
+					<clipAngle>0.930294</clipAngle>
+					<anchorShift>0.150693</anchorShift>
 				</slot>
 			</customizationSlots>
 			<wwturretRotatorSoundManual>tur_mech_trav</wwturretRotatorSoundManual>

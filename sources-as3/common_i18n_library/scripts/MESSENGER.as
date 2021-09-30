@@ -1987,6 +1987,58 @@ package
       
       public static const SERVICECHANNELMESSAGES_SELECTABLECREWBOOK_BROCHURE:String = "#messenger:serviceChannelMessages/selectableCrewbook/brochure";
       
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_UNLOCKMESSAGE_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/unlockMessage/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_RENEWMESSAGE_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/renewMessage/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_EXPIREMESSAGE_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/expireMessage/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_EXPIREMESSAGE_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/expireMessage/text";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_NEXTDATEOFRENEWAL:String = "#messenger:serviceChannelMessages/wotPlus/nextDateOfRenewal";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_GOLDRESERVE_SMASH_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/goldReserve/smash/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_GOLDRESERVE_ISFULL_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/goldReserve/isFull/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_GOLDRESERVE_ISDISABLED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/goldReserve/isDisabled/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_GOLDRESERVE_ISDISABLED_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/goldReserve/isDisabled/text";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_GOLDRESERVE_ISENABLED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/goldReserve/isEnabled/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_PASSIVEXP_WASTING_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/passiveXP/wasting/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_PASSIVEXP_NOTANK_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/passiveXP/noTank/text";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_PASSIVEXP_INCOMPATIBLECREW_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/passiveXP/incompatibleCrew/text";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_RENTAL_END_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/rental/end/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_RENTAL_END_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/rental/end/text";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_RENTAL_NOTANK_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/rental/noTank/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_RENTAL_NOTANK_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/rental/noTank/text";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_PASSIVEXP_ISDISABLED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/passiveXP/isDisabled/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_PASSIVEXP_ISDISABLED_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/passiveXP/isDisabled/text";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_PASSIVEXP_ISENABLED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/passiveXP/isEnabled/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_TANKRENTAL_ISDISABLED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/tankRental/isDisabled/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_TANKRENTAL_ISDISABLED_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/tankRental/isDisabled/text";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_TANKRENTAL_ISENABLED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/tankRental/isEnabled/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_FREEDIRECTIVES_RECEIVED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/freeDirectives/received/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_FREEDIRECTIVES_ISDISABLED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/freeDirectives/isDisabled/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_FREEDIRECTIVES_ISENABLED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/freeDirectives/isEnabled/title";
+      
       public static const SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_DISCARDALLPAIRSMODIFICATION_BODY:String = "#messenger:serviceChannelMessages/vehiclePostProgression/discardAllPairsModification/body";
       
       public static const SERVICECHANNELMESSAGES_VEHICLEPOSTPROGRESSION_DISCARDALLPAIRSMODIFICATION_TITLE:String = "#messenger:serviceChannelMessages/vehiclePostProgression/discardAllPairsModification/title";

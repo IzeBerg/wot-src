@@ -458,7 +458,7 @@ class BuyAndInstallItemProcessor(ModuleBuyer):
 
 
 class BCBuyAndInstallItemProcessor(BuyAndInstallItemProcessor):
-    _installConfirmatorPluginCls = plugins.BCBuyAndInstallConfirmator
+    _installConfirmatorPluginCls = _storeConfirmatorPluginCls = plugins.BCBuyAndInstallConfirmator
 
     def _getItemConfirmationData(self, conflictMsg):
         return {'price': self._getOpPrice().price.get(self._currency)}

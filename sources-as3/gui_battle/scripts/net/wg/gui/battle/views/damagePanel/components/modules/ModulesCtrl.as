@@ -39,7 +39,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
       
       private var _destroyedChassisDevices:Object;
       
-      private var _destroyedChassisDevicesCount:int = 0;
+      private var _destroyedChassis:Array;
       
       private var _wheelsCount:int = 0;
       
@@ -65,6 +65,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
          this._fuelTank = new ModuleAssets(VehicleModules.FUEL_TANK,false,ModuleAssets.TOP_POSITION_IDX_3);
          this._modules = new <ModuleAssets>[this._engine,this._ammoBay,this._gun,this._turretRotator,this._surveyingDevice,this._radio,this._fuelTank];
          this._destroyedChassisDevices = {};
+         this._destroyedChassis = [];
          this._asserter = App.utils.asserter;
       }
       
@@ -110,7 +111,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
             this._modules[_loc2_].resetModule();
             _loc2_++;
          }
-         this._destroyedChassisDevicesCount = 0;
+         this._destroyedChassis.length = 0;
          if(this._yohChassisState)
          {
             this._yohChassisState.reset();
@@ -308,6 +309,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
          this._modules.splice(0,this._modules.length);
          this._modules = null;
          this._destroyedChassisDevices = null;
+         this._destroyedChassis = null;
          this._asserter = null;
       }
       
@@ -340,20 +342,23 @@ package net.wg.gui.battle.views.damagePanel.components.modules
                this._destroyedChassisDevices[param2] = 0;
                this._lastBrokenChassisDevice = param2;
                this._lastDestroyedChassisDevice = param2;
-               ++this._destroyedChassisDevicesCount;
+               if(this._destroyedChassis.indexOf(param2) == -1)
+               {
+                  this._destroyedChassis.push(param2);
+               }
                _loc5_ = BATTLE_ITEM_STATES.DESTROYED;
             }
             else if(param3 == BATTLE_ITEM_STATES.CRITICAL)
             {
                this._lastBrokenChassisDevice = param2;
-               _loc5_ = this._destroyedChassisDevicesCount <= 0 ? BATTLE_ITEM_STATES.CRITICAL : BATTLE_ITEM_STATES.DESTROYED;
+               _loc5_ = this._destroyedChassis.length == 0 ? BATTLE_ITEM_STATES.CRITICAL : BATTLE_ITEM_STATES.DESTROYED;
             }
             else if(param3 == BATTLE_ITEM_STATES.REPAIRED || param3 == BATTLE_ITEM_STATES.REPAIRED_FULL)
             {
                this._destroyedChassisDevices[param2] = 0;
                this._lastBrokenChassisDevice = param2;
-               --this._destroyedChassisDevicesCount;
-               if(this._destroyedChassisDevicesCount <= 0)
+               this._destroyedChassis.splice(this._destroyedChassis.indexOf(param2),1);
+               if(this._destroyedChassis.length == 0)
                {
                   this._lastDestroyedChassisDevice = Values.EMPTY_STR;
                   _loc5_ = param3;
@@ -367,7 +372,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
             {
                this._destroyedChassisDevices[param2] = 0;
                this._lastBrokenChassisDevice = Values.EMPTY_STR;
-               this._destroyedChassisDevicesCount = 0;
+               this._destroyedChassis.length = 0;
                if(this._lastDestroyedChassisDevice == param2)
                {
                   this._lastDestroyedChassisDevice = Values.EMPTY_STR;
@@ -388,7 +393,10 @@ package net.wg.gui.battle.views.damagePanel.components.modules
             this._destroyedChassisDevices[param2] = 0;
             this._lastBrokenChassisDevice = param2;
             this._lastDestroyedChassisDevice = param2;
-            ++this._destroyedChassisDevicesCount;
+            if(this._destroyedChassis.indexOf(param2) == -1)
+            {
+               this._destroyedChassis.push(param2);
+            }
          }
          else if(param3 == BATTLE_ITEM_STATES.CRITICAL)
          {
@@ -397,7 +405,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
          else if(param3 == BATTLE_ITEM_STATES.REPAIRED || param3 == BATTLE_ITEM_STATES.REPAIRED_FULL)
          {
             this._destroyedChassisDevices[param2] = 0;
-            --this._destroyedChassisDevicesCount;
+            this._destroyedChassis.splice(this._destroyedChassis.indexOf(param2),1);
             this._lastBrokenChassisDevice = param2;
             if(this._lastDestroyedChassisDevice == param2)
             {
@@ -407,7 +415,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
          else if(param3 == BATTLE_ITEM_STATES.NORMAL)
          {
             this._destroyedChassisDevices[param2] = 0;
-            --this._destroyedChassisDevicesCount;
+            this._destroyedChassis.splice(this._destroyedChassis.indexOf(param2),1);
             this._lastBrokenChassisDevice = Values.EMPTY_STR;
             if(this._lastDestroyedChassisDevice == param2)
             {
@@ -423,7 +431,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
       
       private function checkWheelChassisDestroyed() : String
       {
-         if(this._destroyedChassisDevicesCount > this._wheelsCount >> 1)
+         if(this._destroyedChassis.length > this._wheelsCount >> 1)
          {
             return BATTLE_ITEM_STATES.DESTROYED;
          }

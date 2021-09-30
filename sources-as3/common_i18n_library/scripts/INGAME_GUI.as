@@ -197,11 +197,15 @@ package
       
       public static const CHAT_SHORTCUTS_SPG_AIM_AREA_RELOADING:String = "#ingame_gui:chat_shortcuts/spg_aim_area_reloading";
       
+      public static const CHAT_SHORTCUTS_SPG_AIM_AREA_EMPTY_GRIDINFO:String = "#ingame_gui:chat_shortcuts/spg_aim_area_empty_gridInfo";
+      
       public static const CHAT_SHORTCUTS_ATTACK_ENEMY:String = "#ingame_gui:chat_shortcuts/attack_enemy";
       
       public static const CHAT_SHORTCUTS_ATTACKING_ENEMY:String = "#ingame_gui:chat_shortcuts/attacking_enemy";
       
       public static const CHAT_SHORTCUTS_ATTACK_ENEMY_WITH_SPG:String = "#ingame_gui:chat_shortcuts/attack_enemy_with_SPG";
+      
+      public static const CHAT_SHORTCUTS_ATTACK_ENEMY_WITH_SPG_EMPTY:String = "#ingame_gui:chat_shortcuts/attack_enemy_with_SPG_empty";
       
       public static const CHAT_SHORTCUTS_ATTACK_ENEMY_WITH_SPG_RELOADING:String = "#ingame_gui:chat_shortcuts/attack_enemy_with_SPG_reloading";
       

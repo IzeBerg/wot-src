@@ -1537,7 +1537,15 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'customizationProgressionChanged',
  'battlePassStyleChoiceAvailable',
  'battlePassStyleChosen',
- 'battlePassSeasonEnd'])
+ 'battlePassSeasonEnd',
+ 'wotPlusUnlocked',
+ 'wotPlusRenewed',
+ 'wotPlusExpired',
+ 'goldReserveIsFull',
+ 'passiveXPNoTank',
+ 'passiveXPIncompatibleCrew',
+ 'wotPlusRentEnd',
+ 'wotPlusNoRentSelected'])
 SYS_MESSAGE_IMPORTANCE = Enumeration('systemMessageImportance', [
  'normal',
  'high'])

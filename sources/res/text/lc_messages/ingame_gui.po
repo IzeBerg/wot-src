@@ -142,18 +142,18 @@ msgstr "Так точно!"
 
 msgid "chat_example/reloading_cassette"
 msgstr ""
-"К выстрелу готов через: <Время перезарядки> с, снарядов в кассете: "
+"К выстрелу готов через: <Время перезарядки> с, снарядов в магазине: "
 "<Количество снарядов> шт."
 
 msgid "chat_example/reloading_gun"
-msgstr "Перезаряжаюсь, ещё <Время перезарядки> c!"
+msgstr "Перезаряжаюсь ещё <Время перезарядки> c!"
 
 msgid "chat_example/reloading_ready"
 msgstr "К выстрелу готов!"
 
 msgid "chat_example/reloading_ready_cassette"
 msgstr ""
-"К выстрелу готов! До разрядки кассеты осталось снарядов: <Количество "
+"К выстрелу готов! До разрядки магазина осталось снарядов: <Количество "
 "снарядов> шт."
 
 msgid "chat_example/reloading_unavailable"
@@ -180,8 +180,11 @@ msgstr "Поддержите огнём по %(target)s"
 msgid "chat_shortcuts/attack_enemy_with_SPG"
 msgstr "К выстрелу готов! Атакую %(target)s!"
 
+msgid "chat_shortcuts/attack_enemy_with_SPG_empty"
+msgstr "Боекомплект пуст! Запрашиваю огонь по %(target)s!"
+
 msgid "chat_shortcuts/attack_enemy_with_SPG_reloading"
-msgstr "Атакую %(target)s! Перезаряжаюсь, ещё %(reloadTime)d c!"
+msgstr "Атакую %(target)s! Перезаряжаюсь ещё %(reloadTime)d c!"
 
 msgid "chat_shortcuts/attacking_base"
 msgstr "Я буду захватывать базу!"
@@ -208,7 +211,7 @@ msgid "chat_shortcuts/attention_to_cell"
 msgstr "Внимание на %(cellName)s!"
 
 msgid "chat_shortcuts/attention_to_objective_atk"
-msgstr "Уничтожьте цель %(int32Arg1)s!"
+msgstr "Уничтожьте цель %(int32Arg1)s"
 
 msgid "chat_shortcuts/attention_to_objective_atk_autocommit"
 msgstr "Я атакую цель %(int32Arg1)s!"
@@ -278,23 +281,26 @@ msgstr "%(target)s, так точно!"
 
 msgid "chat_shortcuts/reloading_cassette"
 msgstr ""
-"К выстрелу готов через: %(floatArg1)d с, снарядов в кассете: %(int32Arg1)s "
+"К выстрелу готов через: %(floatArg1)d с, снарядов в магазине: %(int32Arg1)s "
 "шт."
 
 msgid "chat_shortcuts/reloading_gun"
-msgstr "Перезаряжаюсь, ещё %(floatArg1)d c!"
+msgstr "Перезаряжаюсь ещё %(floatArg1)d c!"
 
 msgid "chat_shortcuts/reloading_ready"
 msgstr "К выстрелу готов!"
 
 msgid "chat_shortcuts/reloading_ready_cassette"
-msgstr "К выстрелу готов! Снарядов в кассете: %(int32Arg1)s шт."
+msgstr "К выстрелу готов! Снарядов в магазине: %(int32Arg1)s шт."
 
 msgid "chat_shortcuts/reloading_unavailable"
 msgstr "Боекомплект пуст."
 
 msgid "chat_shortcuts/spg_aim_area"
 msgstr "Навожусь на позицию. К выстрелу готов!"
+
+msgid "chat_shortcuts/spg_aim_area_empty_gridInfo"
+msgstr "Наблюдаю %(gridId)s! Боекомплект пуст!"
 
 msgid "chat_shortcuts/spg_aim_area_gridInfo"
 msgstr "Навожусь на %(gridId)s. К выстрелу готов!"
@@ -303,7 +309,7 @@ msgid "chat_shortcuts/spg_aim_area_reloading"
 msgstr "Навожусь на позицию. Перезаряжаюсь ещё %(reloadTime)d c!"
 
 msgid "chat_shortcuts/spg_aim_area_reloading_gridInfo"
-msgstr "Навожусь на %(gridId)s. Перезаряжаюсь, ещё %(reloadTime)d с!"
+msgstr "Навожусь на %(gridId)s. Перезаряжаюсь ещё %(reloadTime)d с!"
 
 msgid "chat_shortcuts/supporting_ally"
 msgstr "%(target)s, я помогу тебе!"
@@ -1911,13 +1917,13 @@ msgstr "Так точно!"
 msgid "rewardWindow/piggyBank/descText"
 msgstr ""
 "Накопление кредитов приостановлено. Продлите премиум аккаунт, чтобы "
-"продолжить пополнение хранилища."
+"продолжить пополнение хранилища кредитов."
 
 msgid "rewardWindow/piggyBank/headerText"
 msgstr "Кредиты получены"
 
 msgid "rewardWindow/piggyBank/subHeaderText"
-msgstr "Резервное хранилище открыто"
+msgstr "Хранилище кредитов открыто"
 
 msgid "rewardWindow/piggyBank/winHeaderText"
 msgstr "Поздравляем!"

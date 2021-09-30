@@ -32,6 +32,7 @@ package net.wg.gui.lobby.header
    import net.wg.gui.lobby.header.vo.HBC_PremShopVO;
    import net.wg.gui.lobby.header.vo.HBC_SettingsVo;
    import net.wg.gui.lobby.header.vo.HBC_SquadDataVo;
+   import net.wg.gui.lobby.header.vo.HBC_WotPlusDataVO;
    import net.wg.gui.lobby.header.vo.HangarMenuTabItemVO;
    import net.wg.gui.lobby.header.vo.HeaderButtonVo;
    import net.wg.gui.tutorial.components.TutorialClip;
@@ -169,6 +170,11 @@ package net.wg.gui.lobby.header
       public function as_doDisableHeaderButton(param1:String, param2:Boolean) : void
       {
          this._headerButtonsHelper.setButtonEnabled(param1,param2);
+      }
+      
+      public function as_doSoftDisableHeaderButton(param1:String, param2:Boolean) : void
+      {
+         this._headerButtonsHelper.setButtonSoftDisable(param1,param2);
       }
       
       public function as_doDisableNavigation() : void
@@ -528,6 +534,7 @@ package net.wg.gui.lobby.header
             }
             _loc2_.isTeamKiller = param1.isTeamKiller;
             _loc2_.isWarningIconVisible = param1.isWarningIconVisible;
+            _loc2_.isWotPlusEnabled = param1.isWotPlusEnabled;
             _loc2_.tooltip = param1.tooltip;
             _loc2_.tooltipType = param1.tooltipType;
             _loc2_.tooltipArgs = param1.tooltipArgs;
@@ -554,6 +561,20 @@ package net.wg.gui.lobby.header
          this._headerButtonsHelper.setContentData(param1,param2);
       }
       
+      override protected function setWotPlusData(param1:HBC_WotPlusDataVO) : void
+      {
+         var _loc2_:HBC_WotPlusDataVO = HBC_WotPlusDataVO(this._headerButtonsHelper.getContentDataById(HeaderButtonsHelper.ITEM_ID_WOT_PLUS));
+         if(_loc2_)
+         {
+            _loc2_.wotPlusIcon = param1.wotPlusIcon;
+            _loc2_.label = param1.label;
+            _loc2_.state = param1.state;
+            _loc2_.tooltip = param1.tooltip;
+            _loc2_.tooltipType = param1.tooltipType;
+            this._headerButtonsHelper.invalidateDataById(HeaderButtonsHelper.ITEM_ID_WOT_PLUS);
+         }
+      }
+      
       override protected function setPremiumParams(param1:HBC_PremDataVo) : void
       {
          var _loc2_:HBC_PremDataVo = HBC_PremDataVo(this._headerButtonsHelper.getContentDataById(HeaderButtonsHelper.ITEM_ID_PREM));
@@ -567,6 +588,7 @@ package net.wg.gui.lobby.header
             _loc2_.isPremium = param1.isPremium;
             _loc2_.isSubscription = param1.isSubscription;
             _loc2_.premiumIcon = param1.premiumIcon;
+            _loc2_.isWotPlusEnabled = param1.isWotPlusEnabled;
             _loc2_.tooltip = param1.tooltip;
             _loc2_.tooltipType = param1.tooltipType;
             _loc2_.tooltipArgs = param1.tooltipArgs;
@@ -704,6 +726,9 @@ package net.wg.gui.lobby.header
                break;
             case HeaderButtonsHelper.ITEM_ID_ACCOUNT:
                showDashboardS();
+               break;
+            case HeaderButtonsHelper.ITEM_ID_WOT_PLUS:
+               showWotPlusViewS();
                break;
             case HeaderButtonsHelper.ITEM_ID_PREM:
                showPremiumViewS();

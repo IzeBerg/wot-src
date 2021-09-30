@@ -2040,6 +2040,12 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/piggyBank/title)&lt;/font&gt;
 &lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/credits): &lt;font color=&apos;#C5CFCF&apos;&gt;%(credits)s.&lt;/font&gt;&lt;br/&gt;_(#messenger:serviceChannelMessages/piggyBank/continueAfterSmashed)</message>
 		</PiggyBankSmashedMessage>
+		<GoldReserveSmashedMessage>
+			<type>grey</type>
+			<icon>GoldIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/wotPlus/goldReserve/smash/title)&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/gold): &lt;font color=&apos;#C5CFCF&apos;&gt;%(gold)s.&lt;/font&gt;&lt;br/&gt;_(#messenger:serviceChannelMessages/piggyBank/continueAfterSmashed)</message>
+		</GoldReserveSmashedMessage>
 		<BlackMapRemovedMessage>
 			<type>grey</type>
 			<priority>medium</priority>
@@ -2364,6 +2370,54 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			</buttonsLayout>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#maps_training:notification/title/lose)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/battle): %(arenaName)s &lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(scenario)s, %(baseStr)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/tanks): %(vehicleNames)s&lt;/font&gt;&lt;br/&gt;%(mtRewards)s</message>
 		</mapsTrainingDefeatResult>
+		<WotPlusUnlockMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</WotPlusUnlockMessage>
+		<WotPlusRenewMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</WotPlusRenewMessage>
+		<WotPlusExpireMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>WarningIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/wotPlus/expireMessage/text)&lt;/font&gt;</message>
+		</WotPlusExpireMessage>
+		<GoldReserveFullMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>WarningIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/wotPlus/goldReserve/isFull/title)&lt;/font&gt;&lt;br/&gt;</message>
+		</GoldReserveFullMessage>
+		<PassiveXPNoTankMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/wotPlus/passiveXP/wasting/title)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/wotPlus/passiveXP/noTank/text)&lt;/font&gt;</message>
+		</PassiveXPNoTankMessage>
+		<PassiveXPIncompatibleCrewMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/wotPlus/passiveXP/wasting/title)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/wotPlus/passiveXP/incompatibleCrew/text)&lt;/font&gt;</message>
+		</PassiveXPIncompatibleCrewMessage>
+		<WotPlusRentEndMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/wotPlus/rental/end/text)&lt;/font&gt;</message>
+		</WotPlusRentEndMessage>
+		<WotPlusRentNoRentSelectedMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/wotPlus/rental/noTank/title)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/wotPlus/rental/noTank/text)&lt;/font&gt;</message>
+		</WotPlusRentNoRentSelectedMessage>
 		<ResearchVehiclePostProgressionStepsSysMessage>
 			<priority>high</priority>
 			<type>green</type>
@@ -2388,5 +2442,53 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<icon>InformationIcon</icon>
 			<message>&lt;font face=&quot;$FieldFont&quot; size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 		</MediumInfoSysMessage>
+		<GoldReserveDisabledMessage>
+			<priority>high</priority>
+			<type>yellow</type>
+			<icon>WarningIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/wotPlus/goldReserve/isDisabled/title)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/wotPlus/goldReserve/isDisabled/text)&lt;/font&gt;</message>
+		</GoldReserveDisabledMessage>
+		<GoldReserveEnabledMessage>
+			<priority>high</priority>
+			<type>yellow</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/wotPlus/goldReserve/isEnabled/title)&lt;/font&gt;&lt;br/&gt;</message>
+		</GoldReserveEnabledMessage>
+		<PassiveXpDisabledMessage>
+			<priority>high</priority>
+			<type>yellow</type>
+			<icon>WarningIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/wotPlus/passiveXP/isDisabled/title)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/wotPlus/passiveXP/isDisabled/text)&lt;/font&gt;</message>
+		</PassiveXpDisabledMessage>
+		<PassiveXpEnabledMessage>
+			<priority>high</priority>
+			<type>yellow</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/wotPlus/passiveXP/isEnabled/title)&lt;/font&gt;&lt;br/&gt;</message>
+		</PassiveXpEnabledMessage>
+		<TankRentalDisabledMessage>
+			<priority>high</priority>
+			<type>yellow</type>
+			<icon>WarningIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/wotPlus/tankRental/isDisabled/title)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/wotPlus/tankRental/isDisabled/text)&lt;/font&gt;</message>
+		</TankRentalDisabledMessage>
+		<TankRentalEnabledMessage>
+			<priority>high</priority>
+			<type>yellow</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/wotPlus/tankRental/isEnabled/title)&lt;/font&gt;&lt;br/&gt;</message>
+		</TankRentalEnabledMessage>
+		<FreeDirectivesDisabledMessage>
+			<priority>high</priority>
+			<type>yellow</type>
+			<icon>WarningIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/wotPlus/freeDirectives/isDisabled/title)&lt;/font&gt;&lt;br/&gt;</message>
+		</FreeDirectivesDisabledMessage>
+		<FreeDirectivesEnabledMessage>
+			<priority>high</priority>
+			<type>yellow</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/wotPlus/freeDirectives/isEnabled/title)&lt;/font&gt;&lt;br/&gt;</message>
+		</FreeDirectivesEnabledMessage>
 	</htmlTemplates>
 </root>

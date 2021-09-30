@@ -138,6 +138,7 @@ package net.wg.gui.lobby.hangar.tcarousel
          addEventListener(TankItemEvent.SELECT_BUY_TANK,this.onSelectBuyTankHandler);
          addEventListener(TankItemEvent.SELECT_RESTORE_TANK,this.onSelectRestoreTankHandler);
          addEventListener(TankItemEvent.SELECT_RENT_PROMOTION_SLOT,this.onSelectRentPromotionSlotHandler);
+         addEventListener(TankItemEvent.SELECT_WOT_PLUS_VEHICLE,this.onSelectWotPlusVehicleHandler);
          this.vehicleFilters.addEventListener(RendererEvent.ITEM_CLICK,this.onVehicleFiltersItemClickHandler);
          this.vehicleFilters.addEventListener(Event.RESIZE,this.onVehicleFiltersResizeHandler);
          this.background.mouseEnabled = false;
@@ -205,6 +206,7 @@ package net.wg.gui.lobby.hangar.tcarousel
          removeEventListener(TankItemEvent.SELECT_BUY_TANK,this.onSelectBuyTankHandler);
          removeEventListener(TankItemEvent.SELECT_RESTORE_TANK,this.onSelectRestoreTankHandler);
          removeEventListener(TankItemEvent.SELECT_RENT_PROMOTION_SLOT,this.onSelectRentPromotionSlotHandler);
+         removeEventListener(TankItemEvent.SELECT_WOT_PLUS_VEHICLE,this.onSelectWotPlusVehicleHandler);
          App.contextMenuMgr.hide();
          this.vehicleFilters.removeEventListener(Event.RESIZE,this.onVehicleFiltersResizeHandler);
          this.vehicleFilters.removeEventListener(RendererEvent.ITEM_CLICK,this.onVehicleFiltersItemClickHandler);
@@ -396,6 +398,11 @@ package net.wg.gui.lobby.hangar.tcarousel
       public function get helper() : ITankCarouselHelper
       {
          return this._helper;
+      }
+      
+      private function onSelectWotPlusVehicleHandler(param1:TankItemEvent) : void
+      {
+         selectWotPlusVehicleS(param1.itemId);
       }
       
       private function onSelectRestoreTankHandler(param1:TankItemEvent) : void

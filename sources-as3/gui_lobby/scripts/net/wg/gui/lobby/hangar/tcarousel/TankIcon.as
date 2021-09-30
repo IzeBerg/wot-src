@@ -15,6 +15,11 @@ package net.wg.gui.lobby.hangar.tcarousel
       private static const W_OFFSET:int = 7;
       
       private static const IMG_ICON_BOUNDS:Rectangle = new Rectangle(1,1,160,100);
+      
+      private static const EXTRA_IMAGE_POS:Object = {"wotPlus":{
+         "x":5,
+         "y":78
+      }};
        
       
       public var txtRentInfo:TextField = null;
@@ -52,6 +57,16 @@ package net.wg.gui.lobby.hangar.tcarousel
       {
          this.txtRentInfo = null;
          super.onDispose();
+      }
+      
+      override protected function validateLayout() : void
+      {
+         super.validateLayout();
+         if(isWotPlusSlot)
+         {
+            extraImage.x = EXTRA_IMAGE_POS.wotPlus.x;
+            extraImage.y = EXTRA_IMAGE_POS.wotPlus.y;
+         }
       }
       
       override protected function updateData(param1:VehicleCarouselVO) : void

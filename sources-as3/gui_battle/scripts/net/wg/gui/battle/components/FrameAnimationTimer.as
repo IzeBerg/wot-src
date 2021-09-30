@@ -286,26 +286,7 @@ package net.wg.gui.battle.components
       private function updateCurrentTime() : void
       {
          this._currentTimerIndex = this._currentTime * this._totalFrames / this._totalTime;
-         if(this._progressValues != null && this._currentTimerIndex >= this._progressValues.length)
-         {
-            this._currentTimerIndex = this._progressValues.length - 1;
-         }
-         if(this._isUpdateProgressValues)
-         {
-            if(this._currentTimerIndex >= this._progressValues.length)
-            {
-               this._currentTimerIndex = this._progressValues.length - 1;
-            }
-            this.setProgressMcPosition(this._progressValues[this._currentTimerIndex]);
-         }
-         if(this._isUpdateTextValues)
-         {
-            if(this._currentTimerIndex >= this._timerTextValues.length)
-            {
-               this._currentTimerIndex = this._timerTextValues.length - 1;
-            }
-            this.setTimerTFText(this._timerTextValues[this._currentTimerIndex]);
-         }
+         this.setProgressPosAndTimerText();
       }
       
       private function runInterval() : void
@@ -329,14 +310,31 @@ package net.wg.gui.battle.components
          {
             ++this._currentTimerIndex;
             this._currentTime = this._currentTimerIndex * this._totalTime / this._totalFrames;
-            if(this._isUpdateProgressValues)
+            this.setProgressPosAndTimerText();
+         }
+      }
+      
+      private function setProgressPosAndTimerText() : void
+      {
+         if(this._progressValues != null && this._currentTimerIndex >= this._progressValues.length)
+         {
+            this._currentTimerIndex = this._progressValues.length - 1;
+         }
+         if(this._isUpdateProgressValues)
+         {
+            if(this._currentTimerIndex >= this._progressValues.length)
             {
-               this.setProgressMcPosition(this._progressValues[this._currentTimerIndex]);
+               this._currentTimerIndex = this._progressValues.length - 1;
             }
-            if(this._isUpdateTextValues)
+            this.setProgressMcPosition(this._progressValues[this._currentTimerIndex]);
+         }
+         if(this._isUpdateTextValues)
+         {
+            if(this._currentTimerIndex >= this._timerTextValues.length)
             {
-               this.setTimerTFText(this._timerTextValues[this._currentTimerIndex]);
+               this._currentTimerIndex = this._timerTextValues.length - 1;
             }
+            this.setTimerTFText(this._timerTextValues[this._currentTimerIndex]);
          }
       }
       

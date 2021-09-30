@@ -81,6 +81,8 @@ package net.wg.data.constants.generated
       
       public static const AMMUNITION_SETUP_VIEW_INJECT:String = "ammunitionSetupViewInject";
       
+      public static const CREW_XP_PANEL_INJECT:String = "crewXPPanelInject";
+      
       public static const CRAFT_MACHINE_ENTRY_POINT:String = "CraftMachineEntryPoint";
       
       public static const MAPBOX_ENTRY_POINT:String = "MapBoxEntryPoint";

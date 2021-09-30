@@ -1841,6 +1841,10 @@ package
       
       public static const TANKS_CAROUSEL_VEHICLESTATES_FALLOUT_BROKEN:String = "#tooltips:tanks_carousel/vehicleStates/fallout_broken";
       
+      public static const TANKS_CAROUSEL_WOT_PLUS_SLOT_HEADER:String = "#tooltips:tanks_carousel/wot_plus_slot/header";
+      
+      public static const TANKS_CAROUSEL_WOT_PLUS_SLOT_BODY:String = "#tooltips:tanks_carousel/wot_plus_slot/body";
+      
       public static const TANKCARUSEL_MAINPROPERTY:String = "#tooltips:tankCarusel/MainProperty";
       
       public static const TANKCARUSEL_LOCK_HEADER:String = "#tooltips:tankCarusel/lock/header";
@@ -2304,6 +2308,12 @@ package
       public static const VEHICLE_RENTLEFTFUTURE_EPIC_CYCLES:String = "#tooltips:vehicle/rentLeftFuture/epic/cycles";
       
       public static const VEHICLE_RENTAVAILABLE:String = "#tooltips:vehicle/rentAvailable";
+      
+      public static const VEHICLE_WOTPLUSRENTING:String = "#tooltips:vehicle/wotPlusRenting";
+      
+      public static const VEHICLE_WOTPLUSRENTING_REMAININGTIME_DAYS:String = "#tooltips:vehicle/wotPlusRenting/remainingTime/days";
+      
+      public static const VEHICLE_WOTPLUSRENTING_REMAININGTIME_HOURS:String = "#tooltips:vehicle/wotPlusRenting/remainingTime/hours";
       
       public static const VEHICLE_RESTORELEFT_DAYS:String = "#tooltips:vehicle/restoreLeft/days";
       
@@ -6512,6 +6522,24 @@ package
       public static const REFERRALPROGRAM_NEWLEVELAWARDS_DESCRIPTION:String = "#tooltips:referralProgram/newLevelAwards/description";
       
       public static const REFERRALPROGRAM_NEWLEVELAWARDS_AWARDCOUNT:String = "#tooltips:referralProgram/newLevelAwards/awardCount";
+      
+      public static const IDLE_CREW_TOOLTIP_HEADING:String = "#tooltips:idle_crew_tooltip/heading";
+      
+      public static const IDLE_CREW_TOOLTIP_DESCRIPTION:String = "#tooltips:idle_crew_tooltip/description";
+      
+      public static const IDLE_CREW_TOOLTIP_BOOSTLABEL:String = "#tooltips:idle_crew_tooltip/boostLabel";
+      
+      public static const IDLE_CREW_TOOLTIP_PERHOUR:String = "#tooltips:idle_crew_tooltip/perHour";
+      
+      public static const IDLE_CREW_TOOLTIP_ACTIVATEBUTTON:String = "#tooltips:idle_crew_tooltip/activateButton";
+      
+      public static const IDLE_CREW_TOOLTIP_ACTIVESTATUS:String = "#tooltips:idle_crew_tooltip/activeStatus";
+      
+      public static const IDLE_CREW_TOOLTIP_WARNINGHEADER:String = "#tooltips:idle_crew_tooltip/warningHeader";
+      
+      public static const IDLE_CREW_TOOLTIP_WARNINGUNSUITABLE:String = "#tooltips:idle_crew_tooltip/warningUnsuitable";
+      
+      public static const IDLE_CREW_TOOLTIP_WARNINGINCOMPLETE:String = "#tooltips:idle_crew_tooltip/warningIncomplete";
       
       public static const VEHPOSTPROGRESSIONVIEW_BUTTON_COMPARE_DISABLED_HEADER:String = "#tooltips:vehPostProgressionView/button/compare/disabled/header";
       

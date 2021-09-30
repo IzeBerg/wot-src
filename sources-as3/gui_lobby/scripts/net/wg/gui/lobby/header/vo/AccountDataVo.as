@@ -15,6 +15,8 @@ package net.wg.gui.lobby.header.vo
       
       public var isWarningIconVisible:Boolean = false;
       
+      public var isWotPlusEnabled:Boolean = false;
+      
       public var tooltip:String = "";
       
       public var tooltipType:String = "";

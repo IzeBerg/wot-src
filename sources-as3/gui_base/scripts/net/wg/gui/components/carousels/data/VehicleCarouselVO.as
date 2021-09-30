@@ -49,6 +49,8 @@ package net.wg.gui.components.carousels.data
       
       public var buySlot:Boolean = false;
       
+      public var isWotPlusSlot:Boolean = false;
+      
       public var lockBackground:Boolean = false;
       
       public var hasSale:Boolean = false;
@@ -92,6 +94,8 @@ package net.wg.gui.components.carousels.data
       public var infoImgSrc:String = "";
       
       public var additionalImgSrc:String = "";
+      
+      public var extraImage:String = "";
       
       public var isCritInfo:Boolean = false;
       
