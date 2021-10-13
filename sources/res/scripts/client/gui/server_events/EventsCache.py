@@ -8,7 +8,7 @@ from constants import EVENT_TYPE, EVENT_CLIENT_DATA, LOOTBOX_TOKEN_PREFIX, TWITC
 from debug_utils import LOG_DEBUG
 from dossiers2.ui.achievements import ACHIEVEMENT_BLOCK
 from gui.server_events import caches as quests_caches
-from gui.server_events.event_items import createQuest, createAction, MotiveQuest, ServerEventAbstract, Quest
+from gui.server_events.event_items import EventBattles, createQuest, createAction, MotiveQuest, ServerEventAbstract, Quest
 from gui.server_events.events_helpers import isMarathon, isLinkedSet, isPremium, isRankedPlatform, isRankedDaily, isDailyEpic, isBattleRoyale, isMapsTraining
 from gui.server_events.events_helpers import getRerollTimeout, getEventsData
 from gui.server_events.formatters import getLinkedActionID
@@ -26,6 +26,7 @@ from shared_utils import first
 from skeletons.gui.game_control import IRankedBattlesController, IEpicBattleMetaGameController, IBattleRoyaleController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
+from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.utils import IRaresCache
 from skeletons.gui.linkedset import ILinkedSetController
 if typing.TYPE_CHECKING:
@@ -357,6 +358,29 @@ class EventsCache(IEventsCache):
     def getAnnouncedActions(self):
         return self.__getAnnouncedActions()
 
+    def getEventBattles(self):
+        battles = self.__getEventBattles()
+        if battles:
+            return EventBattles(battles.get('vehicleTags', set()), battles.get('vehicles', []), bool(battles.get('enabled', 0)), battles.get('arenaTypeID'))
+        else:
+            return EventBattles(set(), [], 0, None)
+
+    def isEventEnabled(self):
+        return self.getEventBattles().enabled
+
+    @dependency.replace_none_kwargs(itemsCache=IItemsCache)
+    def getEventVehicles(self, itemsCache=None):
+        result = []
+        if itemsCache is None:
+            return result
+        else:
+            for v in self.getEventBattles().vehicles:
+                item = itemsCache.items.getItemByCD(v)
+                if item.isInInventory:
+                    result.append(item)
+
+            return sorted(result)
+
     def getEvents(self, filterFunc=None):
         svrEvents = self.getQuests(filterFunc)
         svrEvents.update(self.getActions(filterFunc))
@@ -458,6 +482,13 @@ class EventsCache(IEventsCache):
             return any(step.get('name') == 'set_TradeInParams' for step in a.getData().get('steps', []))
 
         return self.getActions(containsTradeIn).values()
+
+    def getYearHareAffairAction(self):
+
+        def containsYearHareAffair(a):
+            return any(step.get('name') == 'set_YearHareAffair' for step in a.getData().get('steps', []))
+
+        return first(self.getActions(containsYearHareAffair).values())
 
     def isBalancedSquadEnabled(self):
         return bool(self.__getUnitRestrictions().get('enabled', False))
@@ -790,6 +821,12 @@ class EventsCache(IEventsCache):
 
     def __getAnnouncedActions(self):
         return self.__getEventsData(EVENT_CLIENT_DATA.ANNOUNCED_ACTION_DATA)
+
+    def __getIngameEventsData(self):
+        return self.__getEventsData(EVENT_CLIENT_DATA.INGAME_EVENTS)
+
+    def __getEventBattles(self):
+        return self.__getIngameEventsData().get('eventBattles', {})
 
     def __getUnitRestrictions(self):
         return self.__getUnitData().get('restrictions', {})

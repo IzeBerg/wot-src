@@ -592,11 +592,8 @@ class GatewayDataAccessor(base.BaseDataAccessor):
     def request_authorized_survey_url(self, callback, mapURL):
         return self._request_data(callback, mapURL, method='GET')
 
-    def get_inventory_entitlements(self, callback, entitlement_codes):
-        url = '/shop/inventory_entitlements/'
-        if entitlement_codes:
-            urlencoded_string = urllib.urlencode([ ('entitlement_codes', code) for code in entitlement_codes ])
-            url = ('{}?{}').format(url, urlencoded_string)
+    def get_yha_video(self, callback):
+        url = '/webbrg/year_hare_affair/api/video/'
         return self._request_data(callback, url, method='GET')
 
     def _get_formatted_language_code(self):

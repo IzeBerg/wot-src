@@ -177,7 +177,7 @@ class ModuleTooltipBlockConstructor(object):
     TURBOSHAFT_ENGINE_MODULE_PARAM = 'turboshaftEngine'
     COOLDOWN_SECONDS = 'cooldownSeconds'
     CALIBER = 'caliber'
-    MODULE_PARAMS = {GUI_ITEM_TYPE.CHASSIS: ('maxLoad', 'rotationSpeed', 'maxSteeringLockAngle'), 
+    MODULE_PARAMS = {GUI_ITEM_TYPE.CHASSIS: ('maxLoad', 'rotationSpeed', 'maxSteeringLockAngle', 'vehicleChassisRepairSpeed', 'chassisRepairTime'), 
        GUI_ITEM_TYPE.TURRET: ('armor', 'rotationSpeed', 'circularVisionRadius'), 
        GUI_ITEM_TYPE.GUN: (
                          'avgDamageList', 'avgPiercingPower', RELOAD_TIME_SECS_PROP_NAME, RELOAD_TIME_PROP_NAME,
@@ -239,7 +239,7 @@ class HeaderBlockConstructor(ModuleTooltipBlockConstructor):
                     paramName = ModuleTooltipBlockConstructor.COOLDOWN_SECONDS
                     paramValue = params_formatters.formatParameter(paramName, cooldownSeconds)
                     descParts.append(params_formatters.formatParamNameColonValueUnits(paramName=paramName, paramValue=paramValue))
-                if module.isBuiltIn and not module.isBuiltInInfoHidden:
+                if module.isBuiltIn:
                     descParts.append(text_styles.main(backport.text(R.strings.tooltips.equipment.builtIn())))
                 descList.append(text_styles.concatStylesToMultiLine(*descParts))
         block.append(formatters.packTitleDescBlock(title=text_styles.highTitle(title), desc=('\n').join(descList), gap=-3, padding=formatters.packPadding(top=-6)))
@@ -268,7 +268,7 @@ class HeaderBlockConstructor(ModuleTooltipBlockConstructor):
         bottomOffset = -60
         if self.module.itemTypeID == GUI_ITEM_TYPE.OPTIONALDEVICE and self.module.isDeluxe:
             overlayPath = backport.image(R.images.gui.maps.shop.artefacts.c_180x135.equipmentPlus_overlay())
-        elif self.module.itemTypeID is GUI_ITEM_TYPE.EQUIPMENT and self.module.isBuiltIn and not self.module.isBuiltInInfoHidden:
+        elif self.module.itemTypeID is GUI_ITEM_TYPE.EQUIPMENT and self.module.isBuiltIn:
             padding = formatters.packPadding(top=SLOT_HIGHLIGHT_TYPES.TOOLTIP_BUILD_IN_180_X_135_OVERLAY_PADDING_TOP, left=SLOT_HIGHLIGHT_TYPES.TOOLTIP_BUILD_IN_180_X_135_OVERLAY_PADDING_LEFT)
             overlayPath = backport.image(R.images.gui.maps.icons.quests.bonuses.small.builtInEquipment_overlay())
             bottomOffset = 0
@@ -540,6 +540,8 @@ class CommonStatsBlockConstructor(ModuleTooltipBlockConstructor):
                             title = R.strings.menu.moduleInfo.hydraulicAutoSiegeChassisLabel()
                         else:
                             title = R.strings.menu.moduleInfo.hydraulicChassisLabel()
+                    elif module.isTrackWithinTrack():
+                        title = R.strings.menu.moduleInfo.trackWithinTrackChassisLabel()
                 elif module.itemTypeID == GUI_ITEM_TYPE.ENGINE:
                     if module.hasTurboshaftEngine():
                         title = R.strings.menu.moduleInfo.turboshaftEngine()

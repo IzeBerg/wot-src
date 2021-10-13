@@ -28,10 +28,6 @@ class HangarMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_setCarouselEnabled(value)
 
-    def as_setCarouselVisibleS(self, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setCarouselVisible(value)
-
     def as_setupAmmunitionPanelS(self, data):
         if self._isDAAPIInited():
             return self.flashObject.as_setupAmmunitionPanel(data)
@@ -104,18 +100,14 @@ class HangarMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_toggleBattleRoyale(isBattleRoyale)
 
-    def as_toggleEventModeS(self, isEventMode):
+    def as_toggleCnSubscriptionS(self, isCnSubscription):
         if self._isDAAPIInited():
-            return self.flashObject.as_toggleEventMode(isEventMode)
+            return self.flashObject.as_toggleCnSubscription(isCnSubscription)
+
+    def as_setYHAVisibleS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setYHAVisible(value)
 
     def as_setDQWidgetLayoutS(self, lyout):
         if self._isDAAPIInited():
             return self.flashObject.as_setDQWidgetLayout(lyout)
-
-    def as_setLootboxesVisibleS(self, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setLootboxesVisible(value)
-
-    def as_setCloseBtnVisibleS(self, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setCloseBtnVisible(value)

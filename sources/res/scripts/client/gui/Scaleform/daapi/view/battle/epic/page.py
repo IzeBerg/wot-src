@@ -69,7 +69,9 @@ class _EpicBattleComponentsConfig(ComponentsConfig):
           (
            BATTLE_VIEW_ALIASES.PREBATTLE_AMMUNITION_PANEL, BATTLE_VIEW_ALIASES.DAMAGE_PANEL)),
          (
-          BATTLE_CTRL_ID.AMMO, (BATTLE_VIEW_ALIASES.PREBATTLE_AMMUNITION_PANEL,))), viewsConfig=(
+          BATTLE_CTRL_ID.AMMO,
+          (
+           BATTLE_VIEW_ALIASES.PREBATTLE_AMMUNITION_PANEL, BATTLE_VIEW_ALIASES.CONSUMABLES_PANEL))), viewsConfig=(
          (
           DynamicAliases.PERIOD_MUSIC_LISTENER, period_music_listener.PeriodMusicListener),
          (

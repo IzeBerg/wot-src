@@ -97,7 +97,8 @@ class _BattleSettings(object):
     __slots__ = ('messageLifeCycle', 'messageFormat', 'targetFormat', 'inactiveStateAlpha',
                  'hintText', 'toolTipText', 'numberOfMessagesInHistory', 'receivers',
                  'alphaForLastMessages', 'chatIsLockedToolTipText', 'recoveredLatestMessages',
-                 'lifeTimeRecoveredMessages', 'lastReceiver', 'toolTipTextWithMuteInfo')
+                 'lifeTimeRecoveredMessages', 'lastReceiver', 'toolTipTextWithMuteInfo',
+                 'battleRoyaleTooltip')
 
     def __init__(self):
         super(_BattleSettings, self).__init__()
@@ -109,6 +110,7 @@ class _BattleSettings(object):
         self.toolTipText = ''
         self.chatIsLockedToolTipText = ''
         self.toolTipTextWithMuteInfo = ''
+        self.battleRoyaleTooltip = ''
         self.numberOfMessagesInHistory = 6
         self.receivers = {}
         self.alphaForLastMessages = 20

@@ -14,7 +14,7 @@ package net.wg.gui.lobby.header.vo
       
       public var hasSearchSupport:Boolean = false;
       
-      public var squadExtendInfoVo:ExtendedSquadInfoVo = null;
+      private var _squadExtendInfoVo:ExtendedSquadInfoVo = null;
       
       public function HBC_SquadDataVo()
       {
@@ -25,7 +25,7 @@ package net.wg.gui.lobby.header.vo
       {
          if(param1 == SQUAD_EXTEND_INFO)
          {
-            this.squadExtendInfoVo = new ExtendedSquadInfoVo(param2);
+            this._squadExtendInfoVo = new ExtendedSquadInfoVo(param2);
             return false;
          }
          return super.onDataWrite(param1,param2);
@@ -38,9 +38,22 @@ package net.wg.gui.lobby.header.vo
       
       override protected function onDispose() : void
       {
-         this.squadExtendInfoVo.dispose();
-         this.squadExtendInfoVo = null;
+         if(this._squadExtendInfoVo)
+         {
+            this._squadExtendInfoVo.dispose();
+            this._squadExtendInfoVo = null;
+         }
          super.onDispose();
+      }
+      
+      public function get squadExtendInfoVo() : ExtendedSquadInfoVo
+      {
+         return this._squadExtendInfoVo;
+      }
+      
+      public function set squadExtendInfoVo(param1:ExtendedSquadInfoVo) : void
+      {
+         this._squadExtendInfoVo = param1;
       }
    }
 }

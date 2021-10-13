@@ -23,7 +23,11 @@ package net.wg.gui.lobby.vehicleCompare.configurator
       private static const BG_HEIGHT_BIG:int = 90;
       
       private static const BG_HEIGHT_SMALL:int = 68;
+      
+      private static const SEPARATORS_HEIGHT:int = 70;
        
+      
+      public var separators:MovieClip;
       
       public var bg:MovieClip;
       
@@ -80,6 +84,7 @@ package net.wg.gui.lobby.vehicleCompare.configurator
          }
          this._dataVOs.splice(0,this._dataVOs.length);
          this._dataVOs = null;
+         this.separators = null;
          this.bg = null;
          this.vehicleGun = null;
          this.vehicleTurret = null;
@@ -140,6 +145,7 @@ package net.wg.gui.lobby.vehicleCompare.configurator
          if(isInvalid(InvalidationType.SIZE))
          {
             this.bg.height = !!this._isSmall ? Number(BG_HEIGHT_SMALL) : Number(BG_HEIGHT_BIG);
+            this.separators.y = (this.bg.height - SEPARATORS_HEIGHT >> 1) + this.bg.y;
             for each(_loc3_ in this._modules)
             {
                _loc3_.y = this.bg.height - _loc3_.height >> 1;

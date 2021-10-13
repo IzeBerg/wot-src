@@ -13,7 +13,7 @@ from gui.impl.gen import R
 from gui.impl.wrappers.function_helpers import replaceNoneKwargsModel
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.lobby.customization.sound_constants import SOUNDS
-from gui.Scaleform.daapi.view.common.battle_royale.br_helpers import battleRoyaleHangarIsActive
+from gui.Scaleform.daapi.view.common.battle_royale.br_helpers import currentHangarIsSteelHunter
 from gui.shared import g_eventBus, EVENT_BUS_SCOPE
 from gui.shared.events import ViewEventType
 from gui.shared.gui_items import GUI_ITEM_TYPE
@@ -21,13 +21,11 @@ from helpers import dependency, int2roman
 from items.components.c11n_constants import UNBOUND_VEH_KEY
 from skeletons.gui.customization import ICustomizationService
 from skeletons.gui.shared import IItemsCache
-from skeletons.gui.game_control import IGameEventController
 from soft_exception import SoftException
 
 class StyleUnlockedView(ViewImpl):
     c11nService = dependency.descriptor(ICustomizationService)
     itemsCache = dependency.descriptor(IItemsCache)
-    __gameEventCtrl = dependency.descriptor(IGameEventController)
 
     def __init__(self, *args, **kwargs):
         settings = ViewSettings(R.views.lobby.customization.style_unlocked_view.StyleUnlockedView())
@@ -92,9 +90,7 @@ class StyleUnlockedView(ViewImpl):
 
     @replaceNoneKwargsModel
     def __updateC11nButton(self, lock=False, model=None):
-        isBRHangar = battleRoyaleHangarIsActive()
-        isEventHangar = self.__gameEventCtrl.isEventPrbActive()
-        isEnabled = not lock and not isBRHangar and not isEventHangar and self.__isCustEnabledForActiveVehicle()
+        isEnabled = not lock and not currentHangarIsSteelHunter() and self.__isCustEnabledForActiveVehicle()
         if isEnabled:
             tooltipText = ''
         else:

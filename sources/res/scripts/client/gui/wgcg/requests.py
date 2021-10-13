@@ -10,7 +10,6 @@ from gui.wgcg.advent_calendar.handlers import AdventCalendarRequestHandlers
 from gui.wgcg.base.handlers import BaseRequestHandlers
 from gui.wgcg.clan.handlers import ClanRequestHandlers
 from gui.wgcg.elen.handlers import ElenRequestHandlers
-from gui.wgcg.shop.handlers import ShopRequestHandlers
 from gui.wgcg.utils.handlers import UtilsRequestHandlers
 from gui.wgcg.hof.handlers import HofRequestHandlers
 from gui.wgcg.mapbox.handlers import MapboxRequestHandlers
@@ -19,6 +18,7 @@ from gui.wgcg.rank.handlers import RankRequestHandlers
 from gui.wgcg.settings import WebRequestDataType
 from gui.wgcg.external_battle_handlers import BaseExternalBattleUnitRequestHandlers
 from gui.wgcg.craftmachine.handlers import CraftmachineRequestHandlers
+from gui.wgcg.yha.handlers import YhaRequestHandlers
 
 class WgcgRequestResponse(Response):
 
@@ -102,7 +102,7 @@ class WgcgRequestsController(RequestsController):
         self.__handlers.update(UtilsRequestHandlers(requester).get())
         self.__handlers.update(CraftmachineRequestHandlers(requester).get())
         self.__handlers.update(MapboxRequestHandlers(requester).get())
-        self.__handlers.update(ShopRequestHandlers(requester).get())
+        self.__handlers.update(YhaRequestHandlers(requester).get())
 
     def fini(self):
         super(WgcgRequestsController, self).fini()

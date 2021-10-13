@@ -245,10 +245,5 @@ package net.wg.gui.lobby.settings.feedback.questsProgress
       {
          this.updateContent(this._data);
       }
-      
-      public function setIsEvent(param1:Boolean) : void
-      {
-         this.scorePanelControls.visible = !param1;
-      }
    }
 }

@@ -27,6 +27,8 @@ package net.wg.gui.lobby.tank_setup
       private static const PARAMS_ANIM_OFFSET_Y:int = 70;
       
       private static const ANIM_DURATION:int = 300;
+      
+      private static const GF_H_MARGIN:int = 10;
        
       
       public var gfContent:AmmunitionSetupViewInject = null;
@@ -55,7 +57,7 @@ package net.wg.gui.lobby.tank_setup
          _originalHeight = param2;
          if(this.gfContent)
          {
-            this.gfContent.setSize(param1,param2 + BOTTOM_PANEL_HEIGHT);
+            this.gfContent.setSize(param1 + GF_H_MARGIN * 2,param2 + BOTTOM_PANEL_HEIGHT);
          }
          this.updateParamsVertLayout();
       }
@@ -72,7 +74,7 @@ package net.wg.gui.lobby.tank_setup
          if(this.gfContent != null)
          {
             registerFlashComponentS(IDAAPIModule(this.gfContent),HANGAR_ALIASES.AMMUNITION_SETUP_VIEW_INJECT);
-            this.gfContent.x = 0;
+            this.gfContent.x = -GF_H_MARGIN;
             this.gfContent.y = 0;
          }
          this.params.showShadowLipWhenOverflow = true;

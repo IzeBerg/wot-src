@@ -95,7 +95,7 @@ msgid "accountInfo/crystal"
 msgstr "Боны:"
 
 msgid "accountInfo/eventCoin"
-msgstr "Подарочные билеты:"
+msgstr "Юбилейные монеты:"
 
 msgid "accountInfo/experience"
 msgstr "Общий опыт:"
@@ -766,7 +766,7 @@ msgid "bonusType/8"
 msgstr "Исторический бой"
 
 msgid "bonusType/9"
-msgstr "Возвращение Ваффентрагера"
+msgstr "Специальный игровой режим"
 
 msgid "booster/bonus/booster_credits"
 msgstr "%(effectValue)s на %(effectHours)s к кредитам за бой"
@@ -1128,7 +1128,7 @@ msgid "contextMenu/createContactNote"
 msgstr "Создать заметку"
 
 msgid "contextMenu/createEventSquad"
-msgstr "Создать взвод Гончих"
+msgstr "Создать взвод события"
 
 msgid "contextMenu/createMapboxSquad"
 msgstr "Разведка боем: создать взвод"
@@ -1232,6 +1232,9 @@ msgstr "При игре на премиум машине экипаж обуча
 msgid "contextMenu/personalCase/stats/secondInfo"
 msgstr ""
 "Дополнительно для элитных машин можно включить ускоренное обучение экипажа."
+
+msgid "contextMenu/personalCase/stats/wotPlus"
+msgstr "?empty?"
 
 msgid "contextMenu/personalCase/statsBlockTitle"
 msgstr "НА ПРЕМИУМ МАШИНЕ"
@@ -1338,9 +1341,6 @@ msgstr "Предпросмотр машины"
 msgid "contextMenu/vehicleRemove"
 msgstr "Убрать"
 
-msgid "contextMenu/vehicleRentRenew"
-msgstr "Продлить аренду"
-
 msgid "contextMenu/vehicleResearch"
 msgstr "К исследованию"
 
@@ -1358,6 +1358,9 @@ msgstr "Профиль клана"
 
 msgid "contextMenu/withdrawInvitationToSquad"
 msgstr "Отозвать приглашение во взвод"
+
+msgid "contextMenu/wotPlusRent"
+msgstr "?empty?"
 
 msgid "copy"
 msgstr "© 2009–2021 Wargaming.net. Все права защищены."
@@ -1717,9 +1720,6 @@ msgstr "К бою готов!"
 
 msgid "currentVehicleStatus/serverRestriction"
 msgstr "Серверное ограничение"
-
-msgid "currentVehicleStatus/ticketsShortage"
-msgstr "Нет ключа"
 
 msgid "currentVehicleStatus/tooHeavy"
 msgstr "Машина перегружена"
@@ -2408,9 +2408,6 @@ msgstr "Обслуживание"
 
 msgid "hangar/ammunitionPanel/tuningBtn"
 msgstr "Внешний вид"
-
-msgid "hangar/closeBtn"
-msgstr "ПОКИНУТЬ РЕЖИМ"
 
 msgid "hangar/crew/rody/dog/moreInfoLabel"
 msgstr "Подробнее"
@@ -3598,7 +3595,7 @@ msgid "loading/battleTypes/6"
 msgstr "Исторический бой"
 
 msgid "loading/battleTypes/7"
-msgstr "Возвращение Ваффентрагера"
+msgstr "Специальный игровой режим"
 
 msgid "loading/battleTypes/8"
 msgstr "Вылазки"
@@ -4223,6 +4220,12 @@ msgstr "Калибр"
 msgid "moduleInfo/params/chargeTime"
 msgstr "Время залпа"
 
+msgid "moduleInfo/params/chassisRepairTime"
+msgstr "Время ремонта ходовой"
+
+msgid "moduleInfo/params/chassisRepairTimeYoh"
+msgstr "Время ремонта ходовой"
+
 msgid "moduleInfo/params/circularVisionRadius"
 msgstr "Обзор"
 
@@ -4363,6 +4366,11 @@ msgstr "Масса"
 
 msgid "moduleInfo/title"
 msgstr " "
+
+msgid "moduleInfo/trackWithinTrackChassisLabel"
+msgstr ""
+"Резервная гусеница: позволяет частично сохранить мобильность при выходе из "
+"строя основной гусеничной ленты."
 
 msgid "moduleInfo/turboshaftEngine"
 msgstr ""
@@ -4712,7 +4720,7 @@ msgid "price/crystal"
 msgstr "бон"
 
 msgid "price/eventCoin"
-msgstr "подарочных билетов"
+msgstr "юбилейных монет"
 
 msgid "price/gold"
 msgstr "золота"
@@ -4742,7 +4750,7 @@ msgid "profile/crystal"
 msgstr "Боны:"
 
 msgid "profile/eventCoin"
-msgstr "Подарочные билеты:"
+msgstr "Юбилейные монеты:"
 
 msgid "profile/exchange"
 msgstr "Обменять"
@@ -4899,6 +4907,9 @@ msgstr "«Поддержка»:"
 
 msgid "profile/stats/items/survivedBattles"
 msgstr "Выжил в боях"
+
+msgid "profile/stats/items/timeUntilNextLevel"
+msgstr "?empty?"
 
 msgid "profile/stats/items/unknown"
 msgstr "Неизвестно"
@@ -5889,9 +5900,6 @@ msgstr "Доступно боёв: %(battlesLeft)s"
 msgid "tankCarousel/vehicleStates/serverRestriction"
 msgstr "Серверное ограничение"
 
-msgid "tankCarousel/vehicleStates/ticketsShortage"
-msgstr "Нет ключа"
-
 msgid "tankCarousel/vehicleStates/tooHeavy"
 msgstr "Машина перегружена"
 
@@ -5916,6 +5924,9 @@ msgstr "Сбить x%(factor)s"
 msgid "tankCarousel/vehicleStates/xpMultReceived/not"
 msgstr "x%(factor)s заработано"
 
+msgid "tankCarousel/wotPlusSelectionAvailable"
+msgstr "?empty?"
+
 msgid "tank_params/aimingTime"
 msgstr "Время сведения"
 
@@ -5939,6 +5950,12 @@ msgstr "Время залпа"
 
 msgid "tank_params/chassisModuleRotationSpeed"
 msgstr "Скорость поворота шасси"
+
+msgid "tank_params/chassisRepairTime"
+msgstr "Время ремонта ходовой"
+
+msgid "tank_params/chassisRepairTimeYoh"
+msgstr "Время ремонта ходовой"
 
 msgid "tank_params/chassisRotationSpeed"
 msgstr "Скорость поворота шасси"
@@ -6084,9 +6101,6 @@ msgstr "Заряжание орудия"
 msgid "tank_params/s"
 msgstr "(с)"
 
-msgid "tank_params/s_s"
-msgstr "(с/с)"
-
 msgid "tank_params/shortened/avgPiercingPower"
 msgstr "Пробивает:"
 
@@ -6212,6 +6226,9 @@ msgstr "Время перехода в скоростной режим"
 
 msgid "tank_params/wheeledSwitchTime"
 msgstr "Время перехода в скоростной/обычный режим"
+
+msgid "tank_params/yoh_s_s"
+msgstr "(осн./рез. в с)"
 
 msgid "tankmanPersonalCase/accelerateTeachingOfSkill"
 msgstr "Ускорить"
@@ -6819,6 +6836,12 @@ msgstr "Средняя бронепробиваемость"
 
 msgid "vehicleInfo/params/chargeTime"
 msgstr "Время залпа (с)"
+
+msgid "vehicleInfo/params/chassisRepairTime"
+msgstr "Время ремонта ходовой (с)"
+
+msgid "vehicleInfo/params/chassisRepairTimeYoh"
+msgstr "Время ремонта ходовой (осн./рез. в с)"
 
 msgid "vehicleInfo/params/chassisRotationSpeed"
 msgstr "Скорость поворота (град/с)"

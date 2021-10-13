@@ -90,6 +90,13 @@ class AutoReloadingBoostStates(CONST_CONTAINER):
 
 class IAmmoListener(object):
 
+    @property
+    def isActive(self):
+        return False
+
+    def handleAmmoKey(self, key):
+        pass
+
     def setCurrentShellCD(self, shellCD):
         pass
 
@@ -427,15 +434,15 @@ class AmmoController(MethodsRules, ViewComponentsController):
         if reloadEffect is not None:
             reloadEffect.stop()
         self.__gunSettings = _GunSettings.default()
-        self._reloadingState.clear()
         if leave:
+            self._reloadingState.clear()
             self.__autoShoots.destroy()
             self._autoReloadingBoostState.destroy()
             self.__dualGunQuickChangeReady = False
             self.__quickChangerInProcess = False
             self.__quickChangerActive = False
         else:
-            self.onShellsCleared(self._reloadingState.getSnapshot())
+            self.onShellsCleared()
         return
 
     def setViewComponents(self, *components):
@@ -749,6 +756,11 @@ class AmmoController(MethodsRules, ViewComponentsController):
 
     def getIntuitionReloadInProcess(self):
         return self.__quickChangerInProcess
+
+    def handleAmmoChoice(self, key):
+        if any([ component.isActive for component in self._viewComponents ]):
+            for component in self._viewComponents:
+                component.handleAmmoKey(key)
 
     def __onCurrentShellChanged(self, intCD):
         self.onCurrentShellChanged(intCD)

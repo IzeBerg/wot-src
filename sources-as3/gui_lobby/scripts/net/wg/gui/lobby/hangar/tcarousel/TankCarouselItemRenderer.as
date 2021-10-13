@@ -1,5 +1,6 @@
 package net.wg.gui.lobby.hangar.tcarousel
 {
+   import flash.display.MovieClip;
    import flash.display.Sprite;
    import flash.events.Event;
    import flash.events.MouseEvent;
@@ -39,13 +40,17 @@ package net.wg.gui.lobby.hangar.tcarousel
       private static const PROGRESSION_POINTS_OFFSET:int = -8;
       
       private static const LEVEL_INFO_OFFSET:int = -10;
+      
+      public static const LABEL_CRYSTAL:String = "crystal";
+      
+      public static const LABEL_WOT_PLUS:String = "wotPlus";
        
       
       public var content:BaseTankIcon = null;
       
       public var border:Sprite = null;
       
-      public var crystalsBorder:Sprite = null;
+      public var extraBorder:MovieClip = null;
       
       public var selectedMc:Sprite = null;
       
@@ -93,8 +98,8 @@ package net.wg.gui.lobby.hangar.tcarousel
          mouseEnabled = false;
          this.border.mouseEnabled = false;
          this.border.mouseChildren = false;
-         this.crystalsBorder.mouseEnabled = false;
-         this.crystalsBorder.mouseChildren = false;
+         this.extraBorder.mouseEnabled = false;
+         this.extraBorder.mouseChildren = false;
          this.selectedMc.mouseEnabled = false;
          this.selectedMc.mouseChildren = false;
          this.content.cacheAsBitmap = true;
@@ -114,7 +119,7 @@ package net.wg.gui.lobby.hangar.tcarousel
          _owner = null;
          this._toolTipMgr = null;
          this.border = null;
-         this.crystalsBorder = null;
+         this.extraBorder = null;
          this.selectedMc = null;
          this.hoverBg = null;
          this.clearRankedBonus();
@@ -137,8 +142,7 @@ package net.wg.gui.lobby.hangar.tcarousel
             isUseRightBtn = this._dataVO.isUseRightBtn;
             this._isClickEnabled = this._dataVO.clickEnabled;
             this._isSpecialSlot = this._dataVO.buySlot || this._dataVO.buyTank || this._dataVO.isRentPromotion;
-            this.crystalsBorder.visible = this._dataVO.isEarnCrystals && !this._dataVO.isCrystalsLimitReached;
-            this.border.visible = !this.crystalsBorder.visible;
+            this.updateBorder();
             mouseEnabledOnDisabled = true;
          }
          else
@@ -147,7 +151,7 @@ package net.wg.gui.lobby.hangar.tcarousel
             isUseRightBtn = false;
             this._isClickEnabled = false;
             this._isSpecialSlot = false;
-            this.crystalsBorder.visible = false;
+            this.extraBorder.visible = false;
             mouseEnabledOnDisabled = false;
          }
          this._hasRankedBonus = !!_loc1_ ? Boolean(this._dataVO.hasRankedBonus) : Boolean(false);
@@ -169,6 +173,16 @@ package net.wg.gui.lobby.hangar.tcarousel
          if(!this._hasLevelInfo)
          {
             this.content.setData(this._dataVO);
+         }
+      }
+      
+      private function updateBorder() : void
+      {
+         this.extraBorder.visible = this._dataVO.isEarnCrystals && !this._dataVO.isCrystalsLimitReached || this._dataVO.isWotPlusSlot;
+         this.border.visible = !this.extraBorder.visible;
+         if(this.extraBorder.visible)
+         {
+            this.extraBorder.gotoAndStop(!!this._dataVO.isWotPlusSlot ? LABEL_WOT_PLUS : LABEL_CRYSTAL);
          }
       }
       
@@ -206,7 +220,7 @@ package net.wg.gui.lobby.hangar.tcarousel
             this._infoLevelContent.visible = true;
             this.content.visible = false;
             this.border.visible = false;
-            this.crystalsBorder.visible = false;
+            this.extraBorder.visible = false;
          }
          else
          {
@@ -238,12 +252,12 @@ package net.wg.gui.lobby.hangar.tcarousel
                addChild(this._progressionPoints);
             }
             this._progressionPoints.visible = this._progressionPoints.mouseEnabled = !this._hasRankedBonus;
-            this.border.visible = !this._dataVO.progressionPoints.isSpecialVehicle && !this.crystalsBorder.visible;
+            this.border.visible = !this._dataVO.progressionPoints.isSpecialVehicle && !this.extraBorder.visible;
          }
          else
          {
             this.clearProgressionPoints();
-            this.border.visible = !this.crystalsBorder.visible;
+            this.border.visible = !this.extraBorder.visible;
          }
       }
       
@@ -406,6 +420,10 @@ package net.wg.gui.lobby.hangar.tcarousel
                {
                   dispatchEvent(new TankItemEvent(TankItemEvent.SELECT_RENT_PROMOTION_SLOT,this._dataVO.intCD));
                }
+               else if(this._dataVO.isWotPlusSlot && this._dataVO.intCD < 0)
+               {
+                  dispatchEvent(new TankItemEvent(TankItemEvent.SELECT_WOT_PLUS_VEHICLE,this._dataVO.intCD));
+               }
                else
                {
                   if(this._dataVO.buySlot)
@@ -442,6 +460,10 @@ package net.wg.gui.lobby.hangar.tcarousel
       private function onSlotMouseRollOutHandler(param1:MouseEvent) : void
       {
          this._toolTipMgr.hide();
+         if(!this._isInteractive || !this._dataVO)
+         {
+            return;
+         }
          this.content.handleRollOut(this._dataVO);
          if(this._hasRankedBonus && this._hasProgression && !this._hasLevelInfo)
          {
@@ -482,16 +504,13 @@ package net.wg.gui.lobby.hangar.tcarousel
          {
             this._toolTipMgr.showComplex(this._dataVO.lockedTooltip);
          }
+         else if(this._dataVO.isWotPlusSlot && this._dataVO.intCD == Values.DEFAULT_INT)
+         {
+            this._toolTipMgr.showComplex(this._dataVO.tooltip);
+         }
          else
          {
-            if(this._dataVO.isWulfTooltip)
-            {
-               this._toolTipMgr.showWulfTooltip(this._dataVO.tooltip,this._dataVO.intCD);
-            }
-            else
-            {
-               this._toolTipMgr.showSpecial(this._dataVO.tooltip,null,this._dataVO.intCD);
-            }
+            this._toolTipMgr.showSpecial(this._dataVO.tooltip,null,this._dataVO.intCD);
             this.content.handleRollOver(this._dataVO);
          }
       }

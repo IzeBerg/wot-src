@@ -13,7 +13,7 @@ class PlanHolder(object):
     LOADING = 1
     LOADED = 2
     ERROR = 3
-    planTags = PlanTags()
+    LOAD_CANCELED = 4
 
     def __init__(self, plan, state, auto=False):
         self.plan = plan
@@ -29,14 +29,17 @@ class PlanHolder(object):
     def isError(self):
         return self.loadState is PlanHolder.ERROR
 
+    @property
+    def isLoadCanceled(self):
+        return self.loadState is PlanHolder.LOAD_CANCELED
+
     @preloadPlanXml
-    def load(self, planName, aspect):
+    def load(self, planName, aspect, tags):
         if self.loadState is PlanHolder.LOADING:
-            tags = PlanHolder.planTags.tags()
             if self.plan.load(planName, aspect, tags):
                 self.loadState = PlanHolder.LOADED
             elif self.plan.isLoadCanceled():
-                self.loadState = PlanHolder.INACTIVE
+                self.loadState = PlanHolder.LOAD_CANCELED
             else:
                 LOG_ERROR('[VScript] MultiPlanProvider: Can not load plan - %s', planName)
                 self.loadState = PlanHolder.ERROR
@@ -57,10 +60,11 @@ class PlanHolder(object):
 
 class MultiPlanProvider(object):
 
-    def __init__(self, aspect):
+    def __init__(self, aspect, arenaBonusType=0):
         self._plans = {}
         self._aspect = aspect
         self._context = None
+        self._planTags = PlanTags(arenaBonusType)
         return
 
     def destroy(self):
@@ -100,7 +104,7 @@ class MultiPlanProvider(object):
         map(lambda holder: holder.plan.pause() if holder.isLoaded else None, self._plans.itervalues())
 
     def isLoaded(self):
-        return all(holder.isLoaded for holder in self._plans.itervalues())
+        return all(holder.isLoaded or holder.isLoadCanceled for holder in self._plans.itervalues())
 
     def isError(self):
         return any(holder.isError for holder in self._plans.itervalues())
@@ -127,7 +131,7 @@ class MultiPlanProvider(object):
         holder = PlanHolder(VSE.Plan(), PlanHolder.LOADING, autoStart)
         if self._context is not None:
             holder.plan.setContext(self._context)
-        holder.load(planName, self._aspect)
+        holder.load(planName, self._aspect, self._planTags.tags)
         self._plans[planName] = holder
         return holder
 
@@ -142,10 +146,10 @@ if IS_DEVELOPMENT:
         providers = {CallableProviderType.ARENA: set()}
         plansOnLoad = dict()
 
-        def __init__(self, aspect, name):
-            super(CallablePlanProvider, self).__init__(aspect)
+        def __init__(self, aspect, name, arenaBonusType=0):
+            super(CallablePlanProvider, self).__init__(aspect, arenaBonusType)
             self._name = name
-            self.providers.setdefault(name, set()).add(self)
+            self.providers[name].add(self)
 
         def destroy(self):
             self.providers[self._name].remove(self)
@@ -168,7 +172,7 @@ if IS_DEVELOPMENT:
             provider.startPlan(planName)
 
 
-def makeMultiPlanProvider(aspect, name):
+def makeMultiPlanProvider(aspect, name, arenaBonusType=0):
     if IS_DEVELOPMENT:
-        return CallablePlanProvider(aspect, name)
-    return MultiPlanProvider(aspect)
+        return CallablePlanProvider(aspect, name, arenaBonusType)
+    return MultiPlanProvider(aspect, arenaBonusType)

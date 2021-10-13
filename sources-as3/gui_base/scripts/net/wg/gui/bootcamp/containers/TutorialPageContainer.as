@@ -11,8 +11,6 @@ package net.wg.gui.bootcamp.containers
    
    public class TutorialPageContainer extends Sprite implements IDisposable
    {
-      
-      private static const TEXT_Y_OFFSET:int = 14;
        
       
       public var txtHeader1:TextField;
@@ -22,8 +20,6 @@ package net.wg.gui.bootcamp.containers
       public var txtHeader3:TextField;
       
       public var txtHeader4:TextField;
-      
-      public var txtHeader5:TextField;
       
       public var txtDescription1:TextField;
       
@@ -51,8 +47,6 @@ package net.wg.gui.bootcamp.containers
       
       private var _loaderHeight:int = 0;
       
-      private var _isAdaptable:Boolean = false;
-      
       public function TutorialPageContainer()
       {
          super();
@@ -72,34 +66,6 @@ package net.wg.gui.bootcamp.containers
       {
          this._loaderWidth = param1;
          this._loaderHeight = param2;
-      }
-      
-      public final function dispose() : void
-      {
-         this.txtHeader1 = null;
-         this.txtHeader2 = null;
-         this.txtHeader2Blind = null;
-         this.txtHeader3 = null;
-         this.txtHeader4 = null;
-         this.txtHeader5 = null;
-         this.txtDescription1 = null;
-         this.htmlDescription1 = null;
-         this.txtDescription2 = null;
-         this.txtDescription3 = null;
-         this.txtDescription4 = null;
-         this.txtTitle1 = null;
-         this.txtTitle2 = null;
-         this.txtTitle3 = null;
-         if(this.loaderBlind)
-         {
-            this.loaderBlind.dispose();
-            this.loaderBlind = null;
-         }
-         if(this.loader)
-         {
-            this.loader.dispose();
-            this.loader = null;
-         }
       }
       
       private function onBackgroundCompleteHandler(param1:UILoaderEvent) : void
@@ -145,11 +111,6 @@ package net.wg.gui.bootcamp.containers
          {
             this.txtHeader4.text = param1.header4Text;
             this.txtHeader4.autoSize = param1.header4AutoSize;
-         }
-         if(this.txtHeader5)
-         {
-            this.txtHeader5.text = param1.header5Text;
-            this.txtHeader5.autoSize = param1.header5AutoSize;
          }
          if(this.txtDescription1)
          {
@@ -209,59 +170,69 @@ package net.wg.gui.bootcamp.containers
          }
       }
       
-      public function set isAdaptable(param1:Boolean) : void
+      public final function dispose() : void
       {
-         this._isAdaptable = param1;
-      }
-      
-      public function updateTextPosition(param1:int, param2:int, param3:int, param4:int, param5:int, param6:int) : void
-      {
-         var _loc7_:int = 0;
-         var _loc8_:int = 0;
-         if(this._isAdaptable)
+         if(this.txtHeader1)
          {
-            _loc7_ = param3 + param5;
-            _loc8_ = param1 - (param5 << 1);
-            if(this.txtHeader5)
-            {
-               this.txtHeader1.width = this.txtHeader2.width = this.txtHeader3.width = this.txtHeader4.width = this.txtHeader5.width = _loc8_;
-               this.txtHeader1.x = this.txtHeader2.x = this.txtHeader3.x = this.txtHeader4.x = this.txtHeader5.x = _loc7_;
-               this.txtHeader5.y = param2 - this.txtHeader5.height - param4 - param6 >> 0;
-               this.txtHeader4.y = this.txtHeader5.y - TEXT_Y_OFFSET - this.txtHeader4.height >> 0;
-               this.txtHeader3.y = this.txtHeader4.y - TEXT_Y_OFFSET - this.txtHeader3.height >> 0;
-               this.txtHeader2.y = this.txtHeader3.y - TEXT_Y_OFFSET - this.txtHeader2.height >> 0;
-               this.txtHeader1.y = this.txtHeader2.y - TEXT_Y_OFFSET - this.txtHeader1.height >> 0;
-            }
-            else if(this.txtHeader4)
-            {
-               this.txtHeader1.width = this.txtHeader2.width = this.txtHeader3.width = this.txtHeader4.width = _loc8_;
-               this.txtHeader1.x = this.txtHeader2.x = this.txtHeader3.x = this.txtHeader4.x = _loc7_;
-               this.txtHeader4.y = param2 - this.txtHeader4.height - param4 - param6 >> 0;
-               this.txtHeader3.y = this.txtHeader4.y - TEXT_Y_OFFSET - this.txtHeader3.height >> 0;
-               this.txtHeader2.y = this.txtHeader3.y - TEXT_Y_OFFSET - this.txtHeader2.height >> 0;
-               this.txtHeader1.y = this.txtHeader2.y - TEXT_Y_OFFSET - this.txtHeader1.height >> 0;
-            }
-            else if(this.txtHeader3)
-            {
-               this.txtHeader1.width = this.txtHeader2.width = this.txtHeader3.width = _loc8_;
-               this.txtHeader1.x = this.txtHeader2.x = this.txtHeader3.x = _loc7_;
-               this.txtHeader3.y = param2 - this.txtHeader3.height - param4 - param6 >> 0;
-               this.txtHeader2.y = this.txtHeader3.y - TEXT_Y_OFFSET - this.txtHeader2.height >> 0;
-               this.txtHeader1.y = this.txtHeader2.y - TEXT_Y_OFFSET - this.txtHeader1.height >> 0;
-            }
-            else if(this.txtHeader2)
-            {
-               this.txtHeader1.width = this.txtHeader2.width = _loc8_;
-               this.txtHeader1.x = this.txtHeader2.x = _loc7_;
-               this.txtHeader2.y = param2 - this.txtHeader2.height - param4 - param6 >> 0;
-               this.txtHeader1.y = this.txtHeader2.y - TEXT_Y_OFFSET - this.txtHeader1.height >> 0;
-            }
-            else if(this.txtHeader1)
-            {
-               this.txtHeader1.width = _loc8_;
-               this.txtHeader1.x = _loc7_;
-               this.txtHeader1.y = param2 - this.txtHeader1.height - param4 - param6 >> 0;
-            }
+            this.txtHeader1 = null;
+         }
+         if(this.txtHeader2)
+         {
+            this.txtHeader2 = null;
+         }
+         if(this.txtHeader2Blind)
+         {
+            this.txtHeader2Blind = null;
+         }
+         if(this.txtHeader3)
+         {
+            this.txtHeader3 = null;
+         }
+         if(this.txtHeader4)
+         {
+            this.txtHeader4 = null;
+         }
+         if(this.txtDescription1)
+         {
+            this.txtDescription1 = null;
+         }
+         if(this.htmlDescription1)
+         {
+            this.htmlDescription1 = null;
+         }
+         if(this.txtDescription2)
+         {
+            this.txtDescription2 = null;
+         }
+         if(this.txtDescription3)
+         {
+            this.txtDescription3 = null;
+         }
+         if(this.txtDescription4)
+         {
+            this.txtDescription4 = null;
+         }
+         if(this.txtTitle1)
+         {
+            this.txtTitle1 = null;
+         }
+         if(this.txtTitle2)
+         {
+            this.txtTitle2 = null;
+         }
+         if(this.txtTitle3)
+         {
+            this.txtTitle3 = null;
+         }
+         if(this.loaderBlind)
+         {
+            this.loaderBlind.dispose();
+            this.loaderBlind = null;
+         }
+         if(this.loader)
+         {
+            this.loader.dispose();
+            this.loader = null;
          }
       }
    }

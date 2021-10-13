@@ -15,11 +15,15 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
       
       private static const PADDING_FOR_NEXT_ELEMENT:uint = 5;
       
-      private static const SCROLL_RENDERER_HEIGHT:uint = 30;
+      private static const SCROLL_RENDERER_HEIGHT:uint = 27;
       
-      private static const SCROLL_RENDERER_HEAD_HEIGHT:uint = 35;
+      private static const SCROLL_RENDERER_HEAD_HEIGHT:uint = 44;
       
-      private static const MAX_SCROLL_ITEMS:uint = 3;
+      private static const NORMAL_SCROLL_ITEMS:uint = 3;
+      
+      private static const NORMAL_SCROLL_HEIGHT:uint = NORMAL_SCROLL_ITEMS * SCROLL_RENDERER_HEIGHT + SCROLL_RENDERER_HEAD_HEIGHT;
+      
+      private static const MAX_SCROLL_ITEMS:uint = 6;
       
       private static const MAX_SCROLL_HEIGHT:uint = MAX_SCROLL_ITEMS * SCROLL_RENDERER_HEIGHT + SCROLL_RENDERER_HEAD_HEIGHT;
       
@@ -161,9 +165,9 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          var _loc1_:Number = !!this.isActive ? Number(this._devicesCount * SCROLL_RENDERER_HEIGHT + SCROLL_RENDERER_HEAD_HEIGHT) : Number(0);
          if(this._isExtended)
          {
-            return _loc1_;
+            return Math.min(MAX_SCROLL_HEIGHT,_loc1_);
          }
-         return Math.min(MAX_SCROLL_HEIGHT,_loc1_);
+         return Math.min(NORMAL_SCROLL_HEIGHT,_loc1_);
       }
       
       public function set isExtended(param1:Boolean) : void
@@ -177,9 +181,9 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
       
       public function get extraHeight() : uint
       {
-         if(this._devicesCount > MAX_SCROLL_ITEMS)
+         if(this._devicesCount > NORMAL_SCROLL_ITEMS)
          {
-            return (this._devicesCount - MAX_SCROLL_ITEMS) * SCROLL_RENDERER_HEIGHT;
+            return (Math.min(MAX_SCROLL_ITEMS,this._devicesCount) - NORMAL_SCROLL_ITEMS) * SCROLL_RENDERER_HEIGHT;
          }
          return 0;
       }

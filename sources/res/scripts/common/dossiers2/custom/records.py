@@ -2574,7 +2574,161 @@ RECORDS = (
  (
   'achievements', 'wtxBossWins', 'p', 'I', 4294967295),
  (
-  'achievements', 'wtxSpecBossDefeat', 'p', 'I', 4294967295))
+  'achievements', 'wtxSpecBossDefeat', 'p', 'I', 4294967295),
+ (
+  'steamAchievements', 'steamBattleCredits', 'p', 'I', 4000000001),
+ (
+  'steamAchievements', 'steamLittleSavingsMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamMintedCoinMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamKingMidasMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamBattleXP', 'p', 'I', 4000000001),
+ (
+  'steamAchievements', 'steamGoodStudentMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamBattleHardenedMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamExperienceMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamFreeXP', 'p', 'I', 4000000001),
+ (
+  'steamAchievements', 'steamHandyMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamUniversalResourceMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamPowerKnowledgeMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamSuchWorkMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamNothingPersonalMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamTheBeginningMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamMasteryMarks', 'p', 'I', 4000000001),
+ (
+  'steamAchievements', 'steamGetMaxMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamThreeCheersMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamGoldenFiveMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamNotPerfectMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamForWarriorMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamForSteelWallMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamForBonecrusherMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamOrderMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamSpottedMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamFighterMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamBasePoints', 'p', 'I', 4000000001),
+ (
+  'steamAchievements', 'steamBasePointsMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamHardCharacter', 'p', 'I', 4000000001),
+ (
+  'steamAchievements', 'steamHardCharacterMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamMedium', 'p', 'I', 4000000001),
+ (
+  'steamAchievements', 'steamMediumMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamATSPG', 'p', 'I', 4000000001),
+ (
+  'steamAchievements', 'steamATSPGMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamDieHardMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamDestroyerMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamMediumPerformanceMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamReconnoiter', 'p', 'I', 4000000001),
+ (
+  'steamAchievements', 'steamReconnoiterMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamPotentialStun', 'p', 'I', 4000000001),
+ (
+  'steamAchievements', 'steamPotentialStunMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamMileage', 'p', 'I', 4000000001),
+ (
+  'steamAchievements', 'steamMileageMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamHorizonSupportMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamSmallSupportMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamBreakThrough', 'p', 'I', 4000000001),
+ (
+  'steamAchievements', 'steamBreakThroughMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamStop', 'p', 'I', 4000000001),
+ (
+  'steamAchievements', 'steamStopMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamRandomFightMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamMainGunMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamShootToKillMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamBruteForceMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamGuerrillaMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamImpenetrableMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamTurnOffMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamRadioMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamLastHeroMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamTopLeague', 'p', 'H', 6001),
+ (
+  'steamAchievements', 'steamTopLeagueMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamBootcampMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamBriefingMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamGetTankLevel5Medal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamGetTankLevel6Medal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamGetTankLevel7Medal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamGetTankLevel8Medal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamGetTankLevel9Medal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamGetTankLevel10Medal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamDoPotapovQuestMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamDoAllBranchPotapovQuestMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamDoOperationMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamEquipTypeMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamShellTypeMedal', 'p', 'B', 1),
+ (
+  'steamAchievements', 'steamSpotted', 'p', 'I', 4000000001),
+ (
+  'steamAchievements', 'steamFrags', 'p', 'H', 6001),
+ (
+  'steamAchievements', 'steamBattleHeroes', 'p', 'I', 4000000001),
+ (
+  'achievements', 'whiteTiger2012', 'p', 'B', 201))
 RECORD_INDICES = dict((rec[:2], idx) for idx, rec in enumerate(RECORDS))
 RECORD_DB_IDS = {('total', 'creationTime'): 68, 
    ('total', 'lastBattleTime'): 7, 
@@ -3863,7 +4017,84 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('singleAchievements', 'september21'): 1559, 
    ('achievements', 'wtxHunterWins'): 1560, 
    ('achievements', 'wtxBossWins'): 1561, 
-   ('achievements', 'wtxSpecBossDefeat'): 1562}
+   ('achievements', 'wtxSpecBossDefeat'): 1562, 
+   ('steamAchievements', 'steamBattleCredits'): 1563, 
+   ('steamAchievements', 'steamLittleSavingsMedal'): 1564, 
+   ('steamAchievements', 'steamMintedCoinMedal'): 1565, 
+   ('steamAchievements', 'steamKingMidasMedal'): 1566, 
+   ('steamAchievements', 'steamBattleXP'): 1567, 
+   ('steamAchievements', 'steamGoodStudentMedal'): 1568, 
+   ('steamAchievements', 'steamBattleHardenedMedal'): 1569, 
+   ('steamAchievements', 'steamExperienceMedal'): 1570, 
+   ('steamAchievements', 'steamFreeXP'): 1571, 
+   ('steamAchievements', 'steamHandyMedal'): 1572, 
+   ('steamAchievements', 'steamUniversalResourceMedal'): 1573, 
+   ('steamAchievements', 'steamPowerKnowledgeMedal'): 1574, 
+   ('steamAchievements', 'steamSuchWorkMedal'): 1575, 
+   ('steamAchievements', 'steamNothingPersonalMedal'): 1576, 
+   ('steamAchievements', 'steamTheBeginningMedal'): 1577, 
+   ('steamAchievements', 'steamMasteryMarks'): 1578, 
+   ('steamAchievements', 'steamGetMaxMedal'): 1579, 
+   ('steamAchievements', 'steamThreeCheersMedal'): 1580, 
+   ('steamAchievements', 'steamGoldenFiveMedal'): 1581, 
+   ('steamAchievements', 'steamNotPerfectMedal'): 1582, 
+   ('steamAchievements', 'steamForWarriorMedal'): 1583, 
+   ('steamAchievements', 'steamForSteelWallMedal'): 1584, 
+   ('steamAchievements', 'steamForBonecrusherMedal'): 1585, 
+   ('steamAchievements', 'steamOrderMedal'): 1586, 
+   ('steamAchievements', 'steamSpottedMedal'): 1587, 
+   ('steamAchievements', 'steamFighterMedal'): 1588, 
+   ('steamAchievements', 'steamBasePoints'): 1589, 
+   ('steamAchievements', 'steamBasePointsMedal'): 1590, 
+   ('steamAchievements', 'steamHardCharacter'): 1591, 
+   ('steamAchievements', 'steamHardCharacterMedal'): 1592, 
+   ('steamAchievements', 'steamMedium'): 1593, 
+   ('steamAchievements', 'steamMediumMedal'): 1594, 
+   ('steamAchievements', 'steamATSPG'): 1595, 
+   ('steamAchievements', 'steamATSPGMedal'): 1596, 
+   ('steamAchievements', 'steamDieHardMedal'): 1597, 
+   ('steamAchievements', 'steamDestroyerMedal'): 1598, 
+   ('steamAchievements', 'steamMediumPerformanceMedal'): 1599, 
+   ('steamAchievements', 'steamReconnoiter'): 1600, 
+   ('steamAchievements', 'steamReconnoiterMedal'): 1601, 
+   ('steamAchievements', 'steamPotentialStun'): 1602, 
+   ('steamAchievements', 'steamPotentialStunMedal'): 1603, 
+   ('steamAchievements', 'steamMileage'): 1604, 
+   ('steamAchievements', 'steamMileageMedal'): 1605, 
+   ('steamAchievements', 'steamHorizonSupportMedal'): 1606, 
+   ('steamAchievements', 'steamSmallSupportMedal'): 1607, 
+   ('steamAchievements', 'steamBreakThrough'): 1608, 
+   ('steamAchievements', 'steamBreakThroughMedal'): 1609, 
+   ('steamAchievements', 'steamStop'): 1610, 
+   ('steamAchievements', 'steamStopMedal'): 1611, 
+   ('steamAchievements', 'steamRandomFightMedal'): 1612, 
+   ('steamAchievements', 'steamMainGunMedal'): 1613, 
+   ('steamAchievements', 'steamShootToKillMedal'): 1614, 
+   ('steamAchievements', 'steamBruteForceMedal'): 1615, 
+   ('steamAchievements', 'steamGuerrillaMedal'): 1616, 
+   ('steamAchievements', 'steamImpenetrableMedal'): 1617, 
+   ('steamAchievements', 'steamTurnOffMedal'): 1618, 
+   ('steamAchievements', 'steamRadioMedal'): 1619, 
+   ('steamAchievements', 'steamLastHeroMedal'): 1620, 
+   ('steamAchievements', 'steamTopLeague'): 1621, 
+   ('steamAchievements', 'steamTopLeagueMedal'): 1622, 
+   ('steamAchievements', 'steamBootcampMedal'): 1623, 
+   ('steamAchievements', 'steamBriefingMedal'): 1624, 
+   ('steamAchievements', 'steamGetTankLevel5Medal'): 1625, 
+   ('steamAchievements', 'steamGetTankLevel6Medal'): 1626, 
+   ('steamAchievements', 'steamGetTankLevel7Medal'): 1627, 
+   ('steamAchievements', 'steamGetTankLevel8Medal'): 1628, 
+   ('steamAchievements', 'steamGetTankLevel9Medal'): 1629, 
+   ('steamAchievements', 'steamGetTankLevel10Medal'): 1630, 
+   ('steamAchievements', 'steamDoPotapovQuestMedal'): 1631, 
+   ('steamAchievements', 'steamDoAllBranchPotapovQuestMedal'): 1632, 
+   ('steamAchievements', 'steamDoOperationMedal'): 1633, 
+   ('steamAchievements', 'steamEquipTypeMedal'): 1634, 
+   ('steamAchievements', 'steamShellTypeMedal'): 1635, 
+   ('steamAchievements', 'steamSpotted'): 1636, 
+   ('steamAchievements', 'steamFrags'): 1637, 
+   ('steamAchievements', 'steamBattleHeroes'): 1638, 
+   ('achievements', 'whiteTiger2012'): 1639}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 
@@ -3952,3 +4183,180 @@ EPIC_MEDAL_SET = {RECORD_DB_IDS[achievementDescriptor] for achievementDescriptor
 BIT_STORAGES = {}
 map(lambda rec: BIT_STORAGES.setdefault((rec[0], rec[3]), []).append(rec[1]), (rec for rec in RECORDS if rec[2] == 'b'))
 RECORD_MAX_VALUES = dict([ (rec[:2], rec[4]) for rec in RECORDS if rec[2] == 'p' ])
+PLATFORM_ACHIEVEMENTS = {'steamLittleSavingsMedal': (
+                             (
+                              'steamAchievements', 'steamLittleSavingsMedal'), ('steamAchievements', 'steamBattleCredits')), 
+   'steamMintedCoinMedal': (
+                          (
+                           'steamAchievements', 'steamMintedCoinMedal'), ('steamAchievements', 'steamBattleCredits')), 
+   'steamKingMidasMedal': (
+                         (
+                          'steamAchievements', 'steamKingMidasMedal'), ('steamAchievements', 'steamBattleCredits')), 
+   'steamGoodStudentMedal': (
+                           (
+                            'steamAchievements', 'steamGoodStudentMedal'), ('steamAchievements', 'steamBattleXP')), 
+   'steamBattleHardenedMedal': (
+                              (
+                               'steamAchievements', 'steamBattleHardenedMedal'), ('steamAchievements', 'steamBattleXP')), 
+   'steamExperienceMedal': (
+                          (
+                           'steamAchievements', 'steamExperienceMedal'), ('steamAchievements', 'steamBattleXP')), 
+   'steamHandyMedal': (
+                     (
+                      'steamAchievements', 'steamHandyMedal'), ('steamAchievements', 'steamFreeXP')), 
+   'steamUniversalResourceMedal': (
+                                 (
+                                  'steamAchievements', 'steamUniversalResourceMedal'), ('steamAchievements', 'steamFreeXP')), 
+   'steamPowerKnowledgeMedal': (
+                              (
+                               'steamAchievements', 'steamPowerKnowledgeMedal'), ('steamAchievements', 'steamFreeXP')), 
+   'steamSuchWorkMedal': (
+                        (
+                         'steamAchievements', 'steamSuchWorkMedal'), ('steamAchievements', 'steamFrags')), 
+   'steamNothingPersonalMedal': (
+                               (
+                                'steamAchievements', 'steamNothingPersonalMedal'), ('steamAchievements', 'steamFrags')), 
+   'steamTheBeginningMedal': (
+                            (
+                             'steamAchievements', 'steamTheBeginningMedal'), ('steamAchievements', 'steamFrags')), 
+   'steamGetMaxMedal': (
+                      (
+                       'steamAchievements', 'steamGetMaxMedal'), None), 
+   'steamThreeCheersMedal': (
+                           (
+                            'steamAchievements', 'steamThreeCheersMedal'), ('steamAchievements', 'steamMasteryMarks')), 
+   'steamGoldenFiveMedal': (
+                          (
+                           'steamAchievements', 'steamGoldenFiveMedal'), ('steamAchievements', 'steamMasteryMarks')), 
+   'steamNotPerfectMedal': (
+                          (
+                           'steamAchievements', 'steamNotPerfectMedal'), None), 
+   'steamForWarriorMedal': (
+                          (
+                           'steamAchievements', 'steamForWarriorMedal'), None), 
+   'steamForSteelWallMedal': (
+                            (
+                             'steamAchievements', 'steamForSteelWallMedal'), None), 
+   'steamForBonecrusherMedal': (
+                              (
+                               'steamAchievements', 'steamForBonecrusherMedal'), None), 
+   'steamOrderMedal': (
+                     (
+                      'steamAchievements', 'steamOrderMedal'), ('steamAchievements', 'steamBattleHeroes')), 
+   'steamSpottedMedal': (
+                       (
+                        'steamAchievements', 'steamSpottedMedal'), ('steamAchievements', 'steamSpotted')), 
+   'steamFighterMedal': (
+                       (
+                        'steamAchievements', 'steamFighterMedal'), None), 
+   'steamBasePointsMedal': (
+                          (
+                           'steamAchievements', 'steamBasePointsMedal'), ('steamAchievements', 'steamBasePoints')), 
+   'steamHardCharacterMedal': (
+                             (
+                              'steamAchievements', 'steamHardCharacterMedal'), ('steamAchievements', 'steamHardCharacter')), 
+   'steamMediumMedal': (
+                      (
+                       'steamAchievements', 'steamMediumMedal'), ('steamAchievements', 'steamMedium')), 
+   'steamATSPGMedal': (
+                     (
+                      'steamAchievements', 'steamATSPGMedal'), ('steamAchievements', 'steamATSPG')), 
+   'steamDieHardMedal': (
+                       (
+                        'steamAchievements', 'steamDieHardMedal'), None), 
+   'steamDestroyerMedal': (
+                         (
+                          'steamAchievements', 'steamDestroyerMedal'), None), 
+   'steamMediumPerformanceMedal': (
+                                 (
+                                  'steamAchievements', 'steamMediumPerformanceMedal'), None), 
+   'steamReconnoiterMedal': (
+                           (
+                            'steamAchievements', 'steamReconnoiterMedal'), ('steamAchievements', 'steamReconnoiter')), 
+   'steamPotentialStunMedal': (
+                             (
+                              'steamAchievements', 'steamPotentialStunMedal'), ('steamAchievements', 'steamPotentialStun')), 
+   'steamMileageMedal': (
+                       (
+                        'steamAchievements', 'steamMileageMedal'), ('steamAchievements', 'steamMileage')), 
+   'steamHorizonSupportMedal': (
+                              (
+                               'steamAchievements', 'steamHorizonSupportMedal'), None), 
+   'steamSmallSupportMedal': (
+                            (
+                             'steamAchievements', 'steamSmallSupportMedal'), None), 
+   'steamBootcampMedal': (
+                        (
+                         'steamAchievements', 'steamBootcampMedal'), None), 
+   'steamBriefingMedal': (
+                        (
+                         'steamAchievements', 'steamBriefingMedal'), None), 
+   'steamGetTankLevel5Medal': (
+                             (
+                              'steamAchievements', 'steamGetTankLevel5Medal'), None), 
+   'steamGetTankLevel6Medal': (
+                             (
+                              'steamAchievements', 'steamGetTankLevel6Medal'), None), 
+   'steamGetTankLevel7Medal': (
+                             (
+                              'steamAchievements', 'steamGetTankLevel7Medal'), None), 
+   'steamGetTankLevel8Medal': (
+                             (
+                              'steamAchievements', 'steamGetTankLevel8Medal'), None), 
+   'steamGetTankLevel9Medal': (
+                             (
+                              'steamAchievements', 'steamGetTankLevel9Medal'), None), 
+   'steamGetTankLevel10Medal': (
+                              (
+                               'steamAchievements', 'steamGetTankLevel10Medal'), None), 
+   'steamDoPotapovQuestMedal': (
+                              (
+                               'steamAchievements', 'steamDoPotapovQuestMedal'), None), 
+   'steamDoAllBranchPotapovQuestMedal': (
+                                       (
+                                        'steamAchievements', 'steamDoAllBranchPotapovQuestMedal'), None), 
+   'steamDoOperationMedal': (
+                           (
+                            'steamAchievements', 'steamDoOperationMedal'), None), 
+   'steamEquipTypeMedal': (
+                         (
+                          'steamAchievements', 'steamEquipTypeMedal'), None), 
+   'steamShellTypeMedal': (
+                         (
+                          'steamAchievements', 'steamShellTypeMedal'), None), 
+   'steamBreakThroughMedal': (
+                            (
+                             'steamAchievements', 'steamBreakThroughMedal'), ('steamAchievements', 'steamBreakThrough')), 
+   'steamStopMedal': (
+                    (
+                     'steamAchievements', 'steamStopMedal'), ('steamAchievements', 'steamStop')), 
+   'steamRandomFightMedal': (
+                           (
+                            'steamAchievements', 'steamRandomFightMedal'), None), 
+   'steamMainGunMedal': (
+                       (
+                        'steamAchievements', 'steamMainGunMedal'), None), 
+   'steamShootToKillMedal': (
+                           (
+                            'steamAchievements', 'steamShootToKillMedal'), None), 
+   'steamBruteForceMedal': (
+                          (
+                           'steamAchievements', 'steamBruteForceMedal'), None), 
+   'steamGuerrillaMedal': (
+                         (
+                          'steamAchievements', 'steamGuerrillaMedal'), None), 
+   'steamImpenetrableMedal': (
+                            (
+                             'steamAchievements', 'steamImpenetrableMedal'), None), 
+   'steamTurnOffMedal': (
+                       (
+                        'steamAchievements', 'steamTurnOffMedal'), None), 
+   'steamRadioMedal': (
+                     (
+                      'steamAchievements', 'steamRadioMedal'), None), 
+   'steamLastHeroMedal': (
+                        (
+                         'steamAchievements', 'steamLastHeroMedal'), None), 
+   'steamTopLeagueMedal': (
+                         (
+                          'steamAchievements', 'steamTopLeagueMedal'), ('steamAchievements', 'steamTopLeague'))}

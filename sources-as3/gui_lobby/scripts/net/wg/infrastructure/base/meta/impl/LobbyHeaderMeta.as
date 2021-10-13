@@ -7,6 +7,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.header.vo.ExtendedSquadInfoVo;
    import net.wg.gui.lobby.header.vo.HBC_FinanceVo;
    import net.wg.gui.lobby.header.vo.HBC_PremDataVo;
+   import net.wg.gui.lobby.header.vo.HBC_WotPlusDataVO;
    import net.wg.gui.lobby.header.vo.HangarMenuTabItemVO;
    import net.wg.infrastructure.base.BaseDAAPIComponent;
    import net.wg.infrastructure.exceptions.AbstractException;
@@ -25,6 +26,8 @@ package net.wg.infrastructure.base.meta.impl
       public var showExchangeWindow:Function;
       
       public var showExchangeXPWindow:Function;
+      
+      public var showWotPlusView:Function;
       
       public var showPremiumView:Function;
       
@@ -53,6 +56,8 @@ package net.wg.infrastructure.base.meta.impl
       private var _badgeVisualVO:BadgeVisualVO;
       
       private var _accountBoosterVO:AccountBoosterVO;
+      
+      private var _hBC_WotPlusDataVO:HBC_WotPlusDataVO;
       
       private var _hBC_PremDataVo:HBC_PremDataVo;
       
@@ -92,6 +97,11 @@ package net.wg.infrastructure.base.meta.impl
          {
             this._accountBoosterVO.dispose();
             this._accountBoosterVO = null;
+         }
+         if(this._hBC_WotPlusDataVO)
+         {
+            this._hBC_WotPlusDataVO.dispose();
+            this._hBC_WotPlusDataVO = null;
          }
          if(this._hBC_PremDataVo)
          {
@@ -143,6 +153,12 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.showExchangeXPWindow,"showExchangeXPWindow" + Errors.CANT_NULL);
          this.showExchangeXPWindow();
+      }
+      
+      public function showWotPlusViewS() : void
+      {
+         App.utils.asserter.assertNotNull(this.showWotPlusView,"showWotPlusView" + Errors.CANT_NULL);
+         this.showWotPlusView();
       }
       
       public function showPremiumViewS() : void
@@ -254,6 +270,17 @@ package net.wg.infrastructure.base.meta.impl
          }
       }
       
+      public final function as_setWotPlusData(param1:Object) : void
+      {
+         var _loc2_:HBC_WotPlusDataVO = this._hBC_WotPlusDataVO;
+         this._hBC_WotPlusDataVO = new HBC_WotPlusDataVO(param1);
+         this.setWotPlusData(this._hBC_WotPlusDataVO);
+         if(_loc2_)
+         {
+            _loc2_.dispose();
+         }
+      }
+      
       public final function as_setPremiumParams(param1:Object) : void
       {
          var _loc2_:HBC_PremDataVo = this._hBC_PremDataVo;
@@ -337,6 +364,13 @@ package net.wg.infrastructure.base.meta.impl
       protected function setBoosterData(param1:AccountBoosterVO) : void
       {
          var _loc2_:String = "as_setBoosterData" + Errors.ABSTRACT_INVOKE;
+         DebugUtils.LOG_ERROR(_loc2_);
+         throw new AbstractException(_loc2_);
+      }
+      
+      protected function setWotPlusData(param1:HBC_WotPlusDataVO) : void
+      {
+         var _loc2_:String = "as_setWotPlusData" + Errors.ABSTRACT_INVOKE;
          DebugUtils.LOG_ERROR(_loc2_);
          throw new AbstractException(_loc2_);
       }

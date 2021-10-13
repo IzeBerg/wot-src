@@ -1030,29 +1030,13 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/calendar11/calendar11)
-				<name>birthdayPageURL</name>
+				$PARAMS(/subscription-rental)
+				<name>rentVehicle</name>
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/white-tiger-overlay/wt2021_category)
-				<name>buyLootboxes</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>shopBackend</name>
-		<type>dict</type>
-		<value>
-			<item>
-				$PARAMS(/auth/login)
-				<name>loginUrl</name>
-				<type>url</type>
-			</item>
-			<item>
-				$PARAMS(/api/external/v1/products/items)
-				<name>productsUrl</name>
+				$PARAMS(/featured/featured/items/platform_subscription/preview)
+				<name>buyRenewableSubscription</name>
 				<type>url</type>
 			</item>
 		</value>
@@ -1606,43 +1590,6 @@
 		</value>
 	</setting>
 	<setting>
-		<name>infoPageEvent</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/WhiteTiger2021/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/WhiteTiger2021/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/WhiteTiger2021/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/WhiteTiger2021/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/WhiteTiger2021/
-				<name>CT</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/WhiteTiger2021/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
 		<name>spgHitDirectionDelta</name>
 		<type>float</type>
 		<value>
@@ -1682,6 +1629,18 @@
 			</item>
 			<item>
 				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/mapbox/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>renewableSubscriptionInfoPage</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/WotPlus/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1762,17 +1721,47 @@
 		</value>
 	</setting>
 	<setting>
-		<name>wtEvent</name>
-		<type>dict</type>
+		<name>vehicleDisclaimerURLs</name>
+		<type>macros</type>
+		<macros>CURRENT_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/VideoWhiteTiger2021/
-				<name>introVideo</name>
-				<type>url</type>
+				<name>RU</name>
+				<type>dict</type>
+				<value>
+					<item>
+						https://legal.ru.wargaming.net/ru/t34-t72-info/
+						<name>t34_disclaimer</name>
+						<type>url</type>
+					</item>
+				</value>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/WhiteTiger2021/
-				<name>infoPage</name>
+				<name>DEV</name>
+				<type>dict</type>
+				<value>
+					<item>
+						https://legal.ru.wargaming.net/ru/t34-t72-info/
+						<name>t34_disclaimer</name>
+						<type>url</type>
+					</item>
+				</value>
+			</item>
+			<item>
+				<name>default</name>
+				<type>dict</type>
+				<value/>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>wotPlusManageSubscriptionUrl</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://shop.wot.360.cn/detail.html?goods_id=subscription&amp;type=wotsubscriptions
+				<name>default</name>
 				<type>url</type>
 			</item>
 		</value>

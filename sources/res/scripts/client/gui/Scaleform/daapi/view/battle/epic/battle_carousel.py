@@ -308,7 +308,6 @@ class BattleTankCarousel(BattleTankCarouselMeta):
     def latePopulate(self):
         self.updateVehicles(self.__vehicleData.getVehicles())
         self.updateAviability()
-        self.resetFilters()
 
     def getCustomParams(self):
         return {'vehicleLevelsFilter': self._carouselDP.getAvailableLevels()}

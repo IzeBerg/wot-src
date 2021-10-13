@@ -74,7 +74,7 @@ _SHOW_MARKER_CMD_NAMES = (
  BATTLE_CHAT_COMMAND_NAMES.ATTACKING_ENEMY, BATTLE_CHAT_COMMAND_NAMES.SUPPORTING_ALLY)
 _ENEMY_TARGET_CMD_NAMES = (BATTLE_CHAT_COMMAND_NAMES.ATTACKING_ENEMY_WITH_SPG, BATTLE_CHAT_COMMAND_NAMES.ATTACK_ENEMY,
  BATTLE_CHAT_COMMAND_NAMES.ATTACKING_ENEMY)
-_MINIMAP_CMD_NAMES = ('ATTENTIONTOCELL', )
+_MINIMAP_CMD_NAMES = ('ATTENTIONTOCELL',)
 _SPG_AIM_CMD_NAMES = (BATTLE_CHAT_COMMAND_NAMES.SPG_AIM_AREA, BATTLE_CHAT_COMMAND_NAMES.ATTACKING_ENEMY_WITH_SPG)
 _VEHICLE_COMMAND_NAMES = (
  BATTLE_CHAT_COMMAND_NAMES.ATTACK_ENEMY, BATTLE_CHAT_COMMAND_NAMES.SOS,
@@ -225,6 +225,8 @@ class _ReceivedCmdDecorator(ReceivedBattleChatCommand):
                         if reloadTime > 0:
                             i18nArguments['reloadTime'] = reloadTime
                             i18nKey += '_reloading'
+                        elif reloadTime < 0:
+                            i18nKey += '_empty'
                 elif self.isBaseRelatedCommand():
                     strArg = self._protoData['strArg1']
                     if strArg != '':
@@ -236,6 +238,8 @@ class _ReceivedCmdDecorator(ReceivedBattleChatCommand):
                         if reloadTime > 0:
                             i18nArguments['reloadTime'] = reloadTime
                             i18nKey += '_reloading'
+                        elif reloadTime < 0:
+                            i18nKey += '_empty'
                     mapsCtrl = self.sessionProvider.dynamic.maps
                     if mapsCtrl and mapsCtrl.hasMinimapGrid():
                         cellId = mapsCtrl.getMinimapCellIdByPosition(self.getMarkedPosition())
@@ -430,7 +434,7 @@ class BattleCommandFactory(IBattleCommandFactory):
         if name in BATTLE_CHAT_COMMANDS_BY_NAMES:
             record = struct.pack('<fff', position.x, position.y, position.z)
             msgArgs = messageArgs(strArg2=record)
-            if reloadTime > 0.0:
+            if reloadTime != 0.0:
                 msgArgs = messageArgs(floatArg1=reloadTime, strArg2=record)
             decorator = _OutCmdDecorator(name, msgArgs)
         return decorator
@@ -458,7 +462,7 @@ class BattleCommandFactory(IBattleCommandFactory):
                     name = 'RELOADING_CASSETE'
                     int32Arg1 = quantity
             args = messageArgs(int32Arg1=int32Arg1, floatArg1=floatArg1)
-        elif quantity == 0:
+        elif quantity <= 0:
             name = 'RELOADING_UNAVAILABLE'
         elif isCassetteClip:
             name = 'RELOADING_READY_CASSETE'

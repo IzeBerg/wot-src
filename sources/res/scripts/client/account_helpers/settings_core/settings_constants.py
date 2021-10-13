@@ -328,9 +328,11 @@ class OnceOnlyHints(CONST_CONTAINER):
     VEH_COMPARE_CONFIG_HINT = 'VehCompareConfigHint'
     HOLD_SHEET_HINT = 'HoldSheetHint'
     HAVE_NEW_BADGE_HINT = 'HaveNewBadgeHint'
+    HANGAR_HAVE_NEW_BADGE_HINT = 'HangarHaveNewBadgeHint'
     EPIC_RESERVES_SLOT_HINT = 'EpicReservesSlotHint'
     PAUSE_HINT = 'PauseHint'
     HAVE_NEW_SUFFIX_BADGE_HINT = 'HaveNewSuffixBadgeHint'
+    HANGAR_HAVE_NEW_SUFFIX_BADGE_HINT = 'HangarHaveNewSuffixBadgeHint'
     BADGE_PAGE_NEW_SUFFIX_BADGE_HINT = 'BadgePageNewSuffixBadgeHint'
     C11N_AUTOPROLONGATION_HINT = 'CustomizationAutoprolongationHint'
     C11N_PROGRESSION_VIEW_HINT = 'CustomizationProgressionViewHint'
@@ -360,11 +362,14 @@ class OnceOnlyHints(CONST_CONTAINER):
     HANGAR_MANUAL_HINT = 'HangarManualHint'
     DOGTAG_HANGAR_HINT = 'DogTagHangarHint'
     DOGTAG_PROFILE_HINT = 'DogTagProfileHint'
+    WOTPLUS_HANGAR_HINT = 'WotPlusHangarHint'
+    WOTPLUS_PROFILE_HINT = 'WotPlusProfileHint'
     MODE_SELECTOR_WIDGETS_BTN_HINT = 'ModeSelectorWidgetsBtnHint'
     MAPS_TRAINING_NEWBIE_HINT = 'MapsTrainingNewbieHint'
     AMUNNITION_PANEL_EPIC_BATTLE_ABILITIES_HINT = 'AmmunitionPanelBattleAbilitiesHint'
     VEHICLE_PREVIEW_POST_PROGRESSION_BUTTON_HINT = 'VehiclePreviewPostProgressionButtonHint'
     VEHICLE_POST_PROGRESSION_ENTRY_POINT_HINT = 'VehiclePostProgressionEntryPointHint'
+    RESEARCH_POST_PROGRESSION_ENTRY_POINT_HINT = 'ResearchPostProgressionEntryPointHint'
     HERO_VEHICLE_POST_PROGRESSION_ENTRY_POINT_HINT = 'HeroVehiclePreviewPostProgressionButtonHint'
     SWITCH_EQUIPMENT_AUXILIARY_LOADOUT_HINT = 'SwitchEquipmentAuxiliaryLoadoutHint'
     SWITCH_EQUIPMENT_ESSENTIALS_LOADOUT_HINT = 'SwitchEquipmentEssentialsLoadoutHint'
@@ -486,12 +491,3 @@ class ScorePanelStorageKeys(CONST_CONTAINER):
     SHOW_HP_VALUES = 'showHPValues'
     SHOW_HP_DIFFERENCE = 'showHPDifference'
     ENABLE_TIER_GROUPING = 'enableTierGrouping'
-
-
-class WTEventStorageKeys(CONST_CONTAINER):
-    WT_INTRO_SHOWN = 'wtIntroShown'
-
-
-class WTLootBoxesViewedKeys(CONST_CONTAINER):
-    HUNTER_LAST_VIEWED = 'hunterLastViewed'
-    BOSS_LAST_VIEWED = 'bossLastViewed'

@@ -189,7 +189,7 @@ package net.wg.gui.lobby.vehiclePreview.buyingPanel
       
       public function setStateSizeBoundaries(param1:int, param2:int) : void
       {
-         this._offsetY = param2 == StageSizeBoundaries.HEIGHT_768 ? int(SMALL_Y_OFFSET) : int(BIG_Y_OFFSET);
+         this._offsetY = param2 <= StageSizeBoundaries.HEIGHT_900 ? int(SMALL_Y_OFFSET) : int(BIG_Y_OFFSET);
          invalidateSize();
       }
       

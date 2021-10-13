@@ -7,7 +7,6 @@ from gui.Scaleform.locale.MENU import MENU
 from gui.battle_control.arena_info import settings
 from gui.prb_control.formatters import getPrebattleFullDescription
 from gui.shared.utils import toUpper, functions
-from gui.wt_event.wt_event_helpers import isBossTeam
 from helpers import i18n
 
 def _getDefaultTeamName(isAlly):
@@ -298,26 +297,6 @@ class MapboxArenaDescription(ArenaWithLabelDescription):
         return not replayCtrl.isPlaying or replayCtrl.isBattleSimulation
 
 
-class EventBattleDescription(ArenaWithLabelDescription):
-
-    def getDescriptionString(self, isInBattle=True):
-        return backport.text(R.strings.event.loading.battleTypes.wt())
-
-    def getWinString(self, isInBattle=True):
-        if isBossTeam(self._team):
-            return backport.text(R.strings.event.loading.winText.boss())
-        return backport.text(R.strings.event.loading.winText.hunters())
-
-    def getTeamName(self, team):
-        if isBossTeam(team):
-            return backport.text(R.strings.event.stats.team.boss())
-        return backport.text(R.strings.event.stats.team.hunters())
-
-    def isInvitationEnabled(self):
-        replayCtrl = BattleReplay.g_replayCtrl
-        return not replayCtrl.isPlaying or replayCtrl.isBattleSimulation
-
-
 def createDescription(arenaVisitor):
     guiVisitor = arenaVisitor.gui
     if guiVisitor.isRandomBattle() or guiVisitor.isTrainingBattle():
@@ -332,8 +311,6 @@ def createDescription(arenaVisitor):
         description = BattleRoyaleDescription(arenaVisitor)
     elif guiVisitor.isMapbox():
         description = MapboxArenaDescription(arenaVisitor)
-    elif guiVisitor.isEventBattle():
-        description = EventBattleDescription(arenaVisitor)
     elif guiVisitor.hasLabel():
         description = ArenaWithLabelDescription(arenaVisitor)
     else:

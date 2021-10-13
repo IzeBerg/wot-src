@@ -9,7 +9,7 @@
 		<loader/>
 	</crew>
 	<supplySlots>4 1 1 6 6 6 7 8 8 8</supplySlots>
-	<postProgressionTree>role_ATSPG_sniper_level_7</postProgressionTree>
+	<postProgressionTree>role_ATSPG_sniper</postProgressionTree>
 	<speedLimits>
 		<forward>72</forward>
 		<backward>20</backward>
@@ -226,14 +226,7 @@
 				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.646951</clipAngle>
-				<anchorPosition>
-					-1.16235 0.084873 2.61432
-					<!--BW_String-->
-				</anchorPosition>
-				<anchorDirection>
-					-0.000562767 0.592459 0.805601
-					<!--BW_String-->
-				</anchorDirection>
+				<anchorShift>0.062973</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -252,14 +245,7 @@
 				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.646951</clipAngle>
-				<anchorPosition>
-					0.000568355 0.663382 1.40722
-					<!--BW_String-->
-				</anchorPosition>
-				<anchorDirection>
-					0.000231548 0.996673 -0.0815023
-					<!--BW_String-->
-				</anchorDirection>
+				<anchorShift>0.022977</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -281,14 +267,7 @@
 				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.646951</clipAngle>
-				<anchorPosition>
-					0.00318719 0.788431 -1.81731
-					<!--BW_String-->
-				</anchorPosition>
-				<anchorDirection>
-					0.00026388 0.996672 -0.0815182
-					<!--BW_String-->
-				</anchorDirection>
+				<anchorShift>0.022975</anchorShift>
 			</slot>
 		</customizationSlots>
 		<camouflage>
@@ -1742,6 +1721,10 @@
 					</anchorDirection>
 				</slot>
 			</customizationSlots>
+			<repairTime>
+				5.71428585
+				<!--BW_String-->
+			</repairTime>
 		</Chassis_A130_Super_Hellcat>
 	</chassis>
 	<turrets0>
@@ -2047,11 +2030,7 @@
 					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.646951</clipAngle>
-					<anchorPosition>0.271838 0.812235 -0.992806</anchorPosition>
-					<anchorDirection>
-						-0.00727294 0.999717 -0.0226292
-						<!--BW_String-->
-					</anchorDirection>
+					<anchorShift>0.062981</anchorShift>
 				</slot>
 			</customizationSlots>
 			<camouflage>

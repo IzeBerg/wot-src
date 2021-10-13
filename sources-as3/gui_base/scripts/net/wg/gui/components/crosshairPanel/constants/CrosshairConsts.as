@@ -13,13 +13,11 @@ package net.wg.gui.components.crosshairPanel.constants
       
       public static const RELOADING_IMPOSSIBLE_AMMO_ENDED:String = "reloadingImpossibleAmmoEnded";
       
-      public static const RELOADING_PAUSE:String = "reloadingPause";
-      
       public static const PROGRESS_TOTAL_FRAMES_COUNT:int = 60;
       
       public static const MS_IN_SECOND:Number = 1000;
       
-      public static const COUNTER_UPDATE_TICK:Number = 100;
+      public static const COUNTER_UPDATE_TICK:Number = 90;
       
       public static const ANIMATION_UPDATE_TICK:Number = 50;
       

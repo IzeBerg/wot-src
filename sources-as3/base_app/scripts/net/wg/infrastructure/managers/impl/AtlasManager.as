@@ -96,7 +96,7 @@ package net.wg.infrastructure.managers.impl
          }
          else
          {
-            DebugUtils.LOG_WARNING("AtlasManager can\'t find item \'" + _loc9_ + "\' for atlas \'" + param1 + "\'");
+            DebugUtils.LOG_ERROR("AtlasManager can\'t find item \'" + param2 + "\' (altName: \'" + param4 + "\' ) in atlas \'" + param1 + "\'");
             param3.clear();
             param3.beginFill(16711680,0.5);
             param3.drawRect(0,0,10,10);

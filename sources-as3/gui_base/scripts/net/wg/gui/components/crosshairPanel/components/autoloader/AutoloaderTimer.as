@@ -1,11 +1,10 @@
 package net.wg.gui.components.crosshairPanel.components.autoloader
 {
    import flash.display.MovieClip;
+   import flash.display.Sprite;
    import flash.external.ExternalInterface;
-   import flash.text.TextField;
    import net.wg.data.constants.Values;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
-   import scaleform.gfx.TextFieldEx;
    
    public class AutoloaderTimer extends MovieClip implements IDisposable
    {
@@ -13,15 +12,19 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
       private static const FRACTIONAL_FORMAT_CMD:String = "WG.getFractionalFormat";
        
       
-      public var timerReloading:TextField = null;
+      public var timerReloading:AutoloaderTimerText = null;
       
-      public var timerAutoload:TextField = null;
+      public var timerAutoload:AutoloaderTimerText = null;
       
-      public var timerStun:TextField = null;
+      public var timerStun:AutoloaderTimerText = null;
       
-      public var timerIdle:TextField = null;
+      public var timerIdle:AutoloaderTimerText = null;
       
-      private var _currentTimer:TextField = null;
+      public var reloadingBg:Sprite = null;
+      
+      private var _currentTimer:AutoloaderTimerText = null;
+      
+      private var _currentLabel:String = "";
       
       private var _mathAbs:Function = null;
       
@@ -30,20 +33,26 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
          super();
          this._currentTimer = this.timerIdle;
          this._mathAbs = Math.abs;
-         TextFieldEx.setNoTranslate(this.timerReloading,true);
-         TextFieldEx.setNoTranslate(this.timerAutoload,true);
-         TextFieldEx.setNoTranslate(this.timerStun,true);
-         TextFieldEx.setNoTranslate(this.timerIdle,true);
+         this.timerReloading.noTranslateTextfield = true;
+         this.timerAutoload.noTranslateTextfield = true;
+         this.timerStun.noTranslateTextfield = true;
+         this.timerIdle.noTranslateTextfield = true;
+         this.reloadingBg.visible = false;
       }
       
       public function dispose() : void
       {
+         this.timerReloading.dispose();
          this.timerReloading = null;
+         this.timerAutoload.dispose();
          this.timerAutoload = null;
+         this.timerStun.dispose();
          this.timerStun = null;
+         this.timerIdle.dispose();
          this.timerIdle = null;
          this._currentTimer = null;
          this._mathAbs = null;
+         this.reloadingBg = null;
       }
       
       public function updateTimer(param1:Number, param2:Boolean) : void
@@ -59,11 +68,13 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
          {
             _loc3_ = Values.EMPTY_STR;
          }
-         this._currentTimer.text = _loc3_;
+         this._currentLabel = _loc3_;
+         this._currentTimer.label = this._currentLabel;
       }
       
       public function updateTimerColor(param1:Boolean, param2:Boolean, param3:Boolean) : void
       {
+         this.reloadingBg.visible = param1;
          if(param1)
          {
             this.switchCurrentTimers(this.timerReloading);
@@ -82,10 +93,10 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
          }
       }
       
-      private function switchCurrentTimers(param1:TextField) : void
+      private function switchCurrentTimers(param1:AutoloaderTimerText) : void
       {
          this._currentTimer.visible = false;
-         param1.text = this._currentTimer.text;
+         param1.label = this._currentLabel;
          this._currentTimer = param1;
          this._currentTimer.visible = true;
       }

@@ -15,7 +15,6 @@ from AvatarInputHandler.commands.radar_control import RadarControl
 from AvatarInputHandler.commands.siege_mode_control import SiegeModeControl
 from AvatarInputHandler.commands.vehicle_upgrade_control import VehicleUpdateControl
 from AvatarInputHandler.commands.vehicle_upgrade_control import VehicleUpgradePanelControl
-from AvatarInputHandler.commands.bomb_drop_control import BombDropControl
 from AvatarInputHandler.remote_camera_sender import RemoteCameraSender
 from AvatarInputHandler.siege_mode_player_notifications import SiegeModeSoundNotifications, SiegeModeCameraShaker, TurboshaftModeSoundNotifications
 from Event import Event
@@ -28,6 +27,7 @@ from gui.battle_control import event_dispatcher as gui_event_dispatcher
 from helpers import dependency
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.app_loader import IAppLoader
+from skeletons.gui.battle_session import IBattleSessionProvider
 from skeletons.gui.game_control import IBootcampController
 from cgf_obsolete_script.script_game_object import ScriptGameObject, ComponentDescriptor
 INPUT_HANDLER_CFG = 'gui/avatar_input_handler.xml'
@@ -159,6 +159,7 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
     _DYNAMIC_CAMERAS_ENABLED_KEY = 'global/dynamicCameraEnabled'
     settingsCore = dependency.descriptor(ISettingsCore)
     appLoader = dependency.descriptor(IAppLoader)
+    guiSessionProvider = dependency.descriptor(IBattleSessionProvider)
 
     @staticmethod
     def enableDynamicCamera(enable, useHorizontalStabilizer=True):
@@ -195,9 +196,12 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
     dualGunControl = ComponentDescriptor()
     siegeModeSoundNotifications = ComponentDescriptor()
     steadyVehicleMatrixCalculator = ComponentDescriptor()
+    DEFAULT_AIH_WORLD_ID = -1
 
     def __init__(self, spaceID):
         CallbackDelayer.__init__(self)
+        if spaceID == 0:
+            spaceID = self.DEFAULT_AIH_WORLD_ID
         ScriptGameObject.__init__(self, spaceID, 'AvatarInputHandler')
         self.__alwaysShowAimKey = None
         self.__showMarkersKey = None
@@ -281,8 +285,6 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
                 self.__detachedCommands.append(VehicleUpgradePanelControl())
             if ARENA_BONUS_TYPE_CAPS.checkAny(player.arena.bonusType, ARENA_BONUS_TYPE_CAPS.SWITCH_SETUPS):
                 self.__persistentCommands.append(PrebattleSetupsControl())
-            if ARENA_BONUS_TYPE_CAPS.checkAny(player.arena.bonusType, ARENA_BONUS_TYPE_CAPS.WHITE_TIGER):
-                self.__commands.append(BombDropControl())
             return
 
     def prerequisites(self):
@@ -311,6 +313,12 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
                         return True
 
                 return player.handleKey(isDown, key, mods)
+            if not self.__isStarted and isDown and mods == 0:
+                if CommandMapping.g_instance.isFiredList(xrange(CommandMapping.CMD_AMMO_CHOICE_1, CommandMapping.CMD_AMMO_CHOICE_3 + 1), key):
+                    ammoCtrl = self.guiSessionProvider.shared.ammo
+                    if ammoCtrl:
+                        ammoCtrl.handleAmmoChoice(key)
+                    return True
             if not self.__isStarted or self.__isDetached:
                 return False
             for command in self.__commands:

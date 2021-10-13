@@ -16,14 +16,13 @@ from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
 from gui.impl import backport
 from gui.impl.gen import R
-from gui.wt_event.wt_event_helpers import getDaysLeftFormatted
-from gui.server_events.awards_formatters import AWARDS_SIZES, EPIC_AWARD_SIZE, getEpicAwardFormatter, getEventAwardFormatter
+from gui.server_events.awards_formatters import AWARDS_SIZES, getEpicAwardFormatter, EPIC_AWARD_SIZE
 from gui.server_events.bonuses import SimpleBonus
 from gui.server_events.cond_formatters.prebattle import MissionsPreBattleConditionsFormatter
-from gui.server_events.cond_formatters.requirements import AccountRequirementsFormatter, TQAccountRequirementsFormatter, WtAccountRequirementsFormatter
+from gui.server_events.cond_formatters.requirements import AccountRequirementsFormatter, TQAccountRequirementsFormatter
 from gui.server_events.conditions import GROUP_TYPE
-from gui.server_events.events_constants import BATTLE_ROYALE_GROUPS_ID, EPIC_BATTLE_GROUPS_ID, WT_QUEST_UNAVAILABLE_NOT_ENOUGH_TICKETS_REASON
-from gui.server_events.events_helpers import MISSIONS_STATES, QuestInfoModel, AWARDS_PER_SINGLE_PAGE, isMarathon, AwardSheetPresenter, isPremium, isWtQuest
+from gui.server_events.events_constants import BATTLE_ROYALE_GROUPS_ID, EPIC_BATTLE_GROUPS_ID
+from gui.server_events.events_helpers import MISSIONS_STATES, QuestInfoModel, AWARDS_PER_SINGLE_PAGE, isMarathon, AwardSheetPresenter, isPremium
 from gui.server_events.formatters import DECORATION_SIZES
 from gui.server_events.personal_progress import formatters
 from gui.shared.formatters import text_styles, icons, time_formatters
@@ -37,7 +36,7 @@ from quest_xml_source import MAX_BONUS_LIMIT
 from shared_utils import first
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
-from skeletons.gui.game_control import IRankedBattlesController, IBattleRoyaleController, IEpicBattleMetaGameController, IGameEventController
+from skeletons.gui.game_control import IRankedBattlesController, IBattleRoyaleController, IEpicBattleMetaGameController
 CARD_AWARDS_COUNT = 6
 CARD_AWARDS_BIG_COUNT = 5
 CARD_AWARDS_EPIC_COUNT = 4
@@ -45,7 +44,6 @@ LINKED_SET_CARD_AWARDS_COUNT = 8
 DETAILED_CARD_AWARDS_COUNT = 10
 _preBattleConditionFormatter = MissionsPreBattleConditionsFormatter()
 _accountReqsFormatter = AccountRequirementsFormatter()
-_wtAccountReqsFormatter = WtAccountRequirementsFormatter()
 _tqAccountReqsFormatter = TQAccountRequirementsFormatter()
 _cardCondFormatter = cards_formatters.CardBattleConditionsFormatters()
 _detailedCardCondFormatter = cards_formatters.DetailedCardBattleConditionsFormatters()
@@ -57,8 +55,6 @@ _awardsWindowBonusFormatter = AwardsWindowComposer(CARD_AWARDS_BIG_COUNT)
 _epicAwardsWindowBonusFormatter = CurtailingAwardsComposer(CARD_AWARDS_EPIC_COUNT, getEpicAwardFormatter())
 _personalMissionsAwardsFormatter = PersonalMissionsAwardComposer(DETAILED_CARD_AWARDS_COUNT)
 _linkedSetAwardsComposer = LinkedSetAwardsComposer(LINKED_SET_CARD_AWARDS_COUNT)
-_eventAwardsFormatter = CurtailingAwardsComposer(CARD_AWARDS_COUNT, getEventAwardFormatter())
-_detailedEventAwardsFormatter = DetailedCardAwardComposer(DETAILED_CARD_AWARDS_COUNT, getEventAwardFormatter())
 HIDE_DONE = 'hideDone'
 HIDE_UNAVAILABLE = 'hideUnavailable'
 PostponedOperationState = namedtuple('PostponedOperationState', [
@@ -639,45 +635,6 @@ class _PremiumMissionInfo(_MissionInfo):
            'status': MISSIONS_STATES.NONE}
 
 
-class _WTMissionInfo(_MissionInfo):
-    __eventController = dependency.descriptor(IGameEventController)
-
-    def _getUIDecoration(self):
-        return backport.image(R.images.gui.maps.icons.wtevent.quests.mission_card())
-
-    def _getUnavailableStatusFields(self, errorMsg):
-        result = super(_WTMissionInfo, self)._getUnavailableStatusFields(errorMsg)
-        if errorMsg == WT_QUEST_UNAVAILABLE_NOT_ENOUGH_TICKETS_REASON:
-            notAvailableIcon = _getNotAvailableIconTag()
-            statusMsg = text_styles.concatStylesWithSpace(notAvailableIcon, text_styles.error(QUESTS.MISSIONDETAILS_STATUS_NOTAVAILABLE))
-            header = backport.text(R.strings.event.quests.error.no_ticket.tooltip.header())
-            body = backport.text(R.strings.event.quests.error.no_ticket.tooltip.body())
-            result.update({'statusLabel': statusMsg, 
-               'statusTooltipData': {'tooltip': makeTooltip(header=header, body=body), 
-                                     'isSpecial': False, 
-                                     'specialArgs': []}})
-        return result
-
-    def _getAwards(self, mainQuest=None):
-        return {'awards': _eventAwardsFormatter.getFormattedBonuses(self._substituteBonuses(mainQuest))}
-
-    def _getCompleteDailyStatus(self, completeKey):
-        if self.__eventController.isLastSeasonDay():
-            return text_styles.main(backport.text(R.strings.event.tooltips.header.quests.header.description.till_end(), time=text_styles.stats(getDaysLeftFormatted(gameEventController=self.__eventController))))
-        return super(_WTMissionInfo, self)._getCompleteDailyStatus(completeKey)
-
-    def _getCompleteStatusTooltipHeader(self):
-        isAnyPrimeNow = self.__eventController.hasAvailablePrimeTimeServers()
-        if not isAnyPrimeNow:
-            return backport.text(R.strings.quests.missionDetails.status.notAvailable())
-        return backport.text(R.strings.tooltips.quests.unavailable.time.statusTooltip())
-
-    def _getCompleteKey(self):
-        if self.__eventController.isLastSeasonDay():
-            return R.strings.event.tooltips.header.quests.header.description.till_end()
-        return super(_WTMissionInfo, self)._getCompleteKey()
-
-
 class _DetailedMissionInfo(_MissionInfo):
     __AWARDS_COUNT = 6
 
@@ -693,6 +650,7 @@ class _DetailedMissionInfo(_MissionInfo):
             criteria = cond.getFilterCriteria(cond.getData())
         else:
             criteria = REQ_CRITERIA.DISCLOSABLE
+        isQuestForBattleRoyale = False
         battleCond = self.event.preBattleCond.getConditions()
         if battleCond:
             bonusTypes = battleCond.find('bonusTypes')
@@ -703,11 +661,13 @@ class _DetailedMissionInfo(_MissionInfo):
                         criteria = criteria | ~REQ_CRITERIA.VEHICLE.EVENT_BATTLE
                     if constants.ARENA_BONUS_TYPE.EPIC_BATTLE not in arenaTypes:
                         criteria = criteria | ~REQ_CRITERIA.VEHICLE.EPIC_BATTLE
+                    if constants.ARENA_BONUS_TYPE.BATTLE_ROYALE_SQUAD in arenaTypes or constants.ARENA_BONUS_TYPE.BATTLE_ROYALE_SOLO in arenaTypes:
+                        isQuestForBattleRoyale = True
         xpMultCond = conds.find('hasReceivedMultipliedXP')
         if xpMultCond:
             extraConditions.append(xpMultCond)
         criteria = criteria | ~REQ_CRITERIA.VEHICLE.BATTLE_ROYALE | ~REQ_CRITERIA.VEHICLE.MAPS_TRAINING
-        return (criteria, extraConditions)
+        return (criteria, extraConditions, isQuestForBattleRoyale)
 
     def _getUIDecoration(self):
         decoration = self.eventsCache.prefetcher.getMissionDecoration(self.event.getIconID(), DECORATION_SIZES.DETAILS)
@@ -1020,7 +980,7 @@ class _DetailedTokenMissionInfo(_DetailedMissionInfo):
 
     def getVehicleRequirementsCriteria(self):
         return (
-         None, [])
+         None, [], False)
 
     def _getMainConditions(self):
         return _detailedCardTokenConditionFormatter.format(self.event)
@@ -1062,7 +1022,7 @@ class _DetailedPersonalMissionInfo(_MissionInfo):
         criteria = REQ_CRITERIA.INVENTORY
         criteria |= REQ_CRITERIA.VEHICLE.LEVELS(range(self.event.getVehMinLevel(), constants.MAX_VEHICLE_LEVEL + 1))
         criteria |= REQ_CRITERIA.VEHICLE.CLASSES(self.event.getQuestClassifier().classificationAttr)
-        return (criteria, extraConditions)
+        return (criteria, extraConditions, False)
 
     def getAwardScreenConditionsFormatter(self):
         return formatters.PMAwardScreenConditionsFormatter(self.event)
@@ -1364,34 +1324,6 @@ class _DetailedPersonalMissionInfo(_MissionInfo):
         return self.eventsCache.getPersonalMissions().getFreeTokensCount(quest.getPMType().branch) >= quest.getPawnCost()
 
 
-class _DetailedWTMissionInfo(_DetailedMissionInfo):
-    __eventController = dependency.descriptor(IGameEventController)
-
-    def _getCompletedDateLabel(self):
-        dateLabel = text_styles.concatStylesWithSpace(_getClockIconTag(), text_styles.error(backport.text(R.strings.quests.missionDetails.status.notAvailable())), self.__getLabelBody())
-        return dateLabel
-
-    def __getLabelBody(self):
-        if self.__eventController.isLastSeasonDay():
-            return text_styles.main(backport.text(R.strings.event.tooltips.header.quests.header.description.till_end(), time=text_styles.stats(getDaysLeftFormatted(gameEventController=self.__eventController))))
-        return self._getCompleteDailyStatus(self._getCompleteKey())
-
-    def _getUIDecoration(self):
-        return backport.image(R.images.gui.maps.icons.wtevent.quests.mission_card_detailed())
-
-    def _getInfo(self, statusData, isAvailable, errorMsg, mainQuest=None):
-        info = super(_DetailedWTMissionInfo, self)._getInfo(statusData, isAvailable, errorMsg, mainQuest=mainQuest)
-        if errorMsg == WT_QUEST_UNAVAILABLE_NOT_ENOUGH_TICKETS_REASON:
-            info.update({'accountRequirements': self._getWtAccountRequirements()})
-        return info
-
-    def _getWtAccountRequirements(self):
-        return _wtAccountReqsFormatter.format(self.event.accountReqs, self.event)
-
-    def _getAwards(self, mainQuest=None):
-        return {'awards': _detailedEventAwardsFormatter.getFormattedBonuses(self._substituteBonuses(mainQuest))}
-
-
 def getMissionInfoData(event):
     if event.getType() == constants.EVENT_TYPE.TOKEN_QUEST:
         return _TokenMissionInfo(event)
@@ -1407,8 +1339,6 @@ def getMissionInfoData(event):
             if tokens and not tokens[0].isAvailable():
                 return
             return _BattleRoyaleDailyMissionInfo(event)
-        if isWtQuest(event.getID()):
-            return _WTMissionInfo(event)
         if isRankedQuestID(event.getID()):
             return _RankedMissionInfo(event)
         if event.getType() in constants.EVENT_TYPE.LIKE_BATTLE_QUESTS:
@@ -1430,8 +1360,6 @@ def getDetailedMissionData(event):
             return _EpicBattleDetailedMissionInfo(event)
         if event.getGroupID() == BATTLE_ROYALE_GROUPS_ID:
             return _BattleRoyaleDetailedMissionInfo(event)
-        if isWtQuest(event.getID()):
-            return _DetailedWTMissionInfo(event)
         if isRankedQuestID(event.getID()):
             return _RankedDetailedMissionInfo(event)
         if event.getType() in constants.EVENT_TYPE.LIKE_BATTLE_QUESTS:

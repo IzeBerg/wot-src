@@ -1,5 +1,6 @@
 from constants import SHELL_TYPES
 from gui.Scaleform.genConsts.BLOCKS_TOOLTIP_TYPES import BLOCKS_TOOLTIP_TYPES
+from gui.Scaleform.genConsts.FITTING_TYPES import FITTING_TYPES
 from gui.Scaleform.genConsts.STORE_CONSTANTS import STORE_CONSTANTS
 from gui.Scaleform.locale.ITEM_TYPES import ITEM_TYPES
 from gui.Scaleform.locale.MENU import MENU
@@ -18,6 +19,7 @@ from helpers import dependency
 from helpers import i18n
 from skeletons.account_helpers.settings_core import ISettingsCore
 DISABLED_ITEMS_ID = 12793
+CHASSIS_TRACK_WITHIN_TRACK = 'vehicleTrackWithinTrackChassis'
 
 class ComplexTooltip(BlocksTooltipData):
     __settingsCore = dependency.descriptor(ISettingsCore)
@@ -73,10 +75,10 @@ class BaseAdvancedTooltip(BlocksTooltipData):
 
     def _packAdvancedBlocks(self, movie, header, description):
         descrTextR = R.strings.tooltips.advanced.dyn(description)
-        if descrTextR is None:
-            descrText = '#advanced/' + description
-        else:
+        if descrTextR and descrTextR.isValid():
             descrText = backport.text(descrTextR())
+        else:
+            descrText = '#tooltips:advanced/' + description
         if movie is None:
             items = [
              formatters.packTextBlockData(text=text_styles.highTitle(header), padding=formatters.packPadding(left=20, top=20)),
@@ -137,23 +139,26 @@ class HangarModuleAdvanced(BaseAdvancedTooltip):
     def _getBlocksList(self, *args, **kwargs):
         item = self._item
         itemId = item.getGUIEmblemID()
+        movieKey = itemId
+        descrKey = itemId
         isEquipment = item.itemTypeName == STORE_CONSTANTS.EQUIPMENT
         isOptionalDevice = item.itemTypeName == STORE_CONSTANTS.OPTIONAL_DEVICE
         if isEquipment or isOptionalDevice:
             header = self._item.shortUserName
         else:
             header = self._item.userType
-        movieKey = itemId
-        descrKey = itemId
-        if movieKey not in MODULE_MOVIES:
-            movieModule = None
-        else:
-            movieModule = MODULE_MOVIES[movieKey]
+        if itemId == FITTING_TYPES.VEHICLE_CHASSIS and item.isTrackWithinTrack():
+            movieKey = CHASSIS_TRACK_WITHIN_TRACK
+            descrKey = CHASSIS_TRACK_WITHIN_TRACK
         if isEquipment:
             if itemId in ('lendLeaseOil', 'qualityOil'):
                 descrKey = 'enhancedOil'
             elif item.isStimulator:
                 descrKey = 'ration'
+        if movieKey not in MODULE_MOVIES:
+            movieModule = None
+        else:
+            movieModule = MODULE_MOVIES[movieKey]
         return self._packAdvancedBlocks(movieModule, header, descrKey)
 
 
@@ -283,6 +288,7 @@ MODULE_MOVIES = {'largeRepairkit': 'consumablesRepairKitBig',
    'vehicleEngine': 'moduleEngine', 
    'vehicleChassis': 'moduleSuspension', 
    'vehicleWheeledChassis': 'moduleWheel', 
+   'vehicleTrackWithinTrackChassis': 'moduleTrackWithinTrack', 
    'vehicleTurret': 'moduleTurret', 
    'cocacola': 'consumablesCola', 
    'chocolate': 'consumablesChocolate', 
@@ -295,9 +301,7 @@ MODULE_MOVIES = {'largeRepairkit': 'consumablesRepairKitBig',
    'ration_sweden': 'consumablesCoffeeWithCinnamonBuns', 
    'ration_poland': 'consumablesBreadWithSchmaltz', 
    'ration_italy': 'consumablesSpaghetti', 
-   'grousers': 'equipmentAdditionalGrousers', 
-   'wt_largeMedkit': 'consumablesFirstAidWt', 
-   'wt_largeRepairkit': 'consumablesRepairKitBig'}
+   'grousers': 'equipmentAdditionalGrousers'}
 _TANKMAN_MOVIES = {'commander': 'crewCommander', 
    'driver': 'crewDriver', 
    'gunner': 'crewGunner', 

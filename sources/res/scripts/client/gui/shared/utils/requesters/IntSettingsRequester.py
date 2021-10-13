@@ -1,5 +1,6 @@
 import logging
 from functools import wraps
+from copy import copy
 from account_helpers.AccountSettings import MAPBOX_CAROUSEL_FILTER_1, MAPBOX_CAROUSEL_FILTER_2
 import BigWorld, constants
 from adisp import async, process
@@ -66,7 +67,6 @@ class IntSettingsRequester(object):
        'LINKEDSET_QUESTS': constants.USER_SERVER_SETTINGS.LINKEDSET_QUESTS, 
        'QUESTS_PROGRESS': constants.USER_SERVER_SETTINGS.QUESTS_PROGRESS, 
        'SESSION_STATS': constants.USER_SERVER_SETTINGS.SESSION_STATS, 
-       'LOOT_BOX_VIEWED': 91, 
        'BATTLEPASS_CAROUSEL_FILTER_1': 97, 
        'BATTLE_PASS_STORAGE': 98, 
        'ONCE_ONLY_HINTS_2': 99, 
@@ -75,8 +75,7 @@ class IntSettingsRequester(object):
        'GAME_EXTENDED_2': constants.USER_SERVER_SETTINGS.GAME_EXTENDED_2, 
        'SPG_AIM': constants.USER_SERVER_SETTINGS.SPG_AIM, 
        MAPBOX_CAROUSEL_FILTER_1: 103, 
-       MAPBOX_CAROUSEL_FILTER_2: 104, 
-       'EVENT_STORAGE': 105}
+       MAPBOX_CAROUSEL_FILTER_2: 104}
 
     def __init__(self):
         self.__isSynced = False
@@ -123,7 +122,7 @@ class IntSettingsRequester(object):
             _logger.error('[class %s] There is error while getting data from cache: %s[%d]', self.__class__.__name__, code2str(resID), resID)
             return callback(dict())
         self.__isSynced = True
-        callback(value)
+        callback(copy(value))
 
     @async
     def _requestCache(self, callback=None):

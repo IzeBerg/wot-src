@@ -26,6 +26,7 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.controls.Button;
    import scaleform.clik.data.DataProvider;
+   import scaleform.clik.events.ButtonEvent;
    import scaleform.clik.events.IndexEvent;
    import scaleform.gfx.MouseEventEx;
    
@@ -92,9 +93,9 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel
       
       private static const VEH_ELITE_STR:String = "_elite";
       
-      private static const POST_PROGRESSTION_BTN_Y_OFFSET:int = 20;
+      private static const POST_PROGRESSION_BTN_Y_OFFSET:int = 20;
       
-      private static const POST_POROGRESSION_BTN_MAX_Y:int = 578;
+      private static const POST_PROGRESSION_BTN_MAX_Y:int = 578;
        
       
       public var vehicleTypeIcon:Image = null;
@@ -164,7 +165,7 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel
          this.roleTF.visible = false;
          this.viewStack.addEventListener(ViewStackEvent.VIEW_CHANGED,this.onViewStackViewChangedHandler);
          this.vehPostProgressionBtn.isSoundEnabled = true;
-         this.vehPostProgressionBtn.addEventListener(MouseEvent.CLICK,this.onVehPostProgressionBtnClickHandler);
+         this.vehPostProgressionBtn.addEventListener(ButtonEvent.CLICK,this.onVehPostProgressionBtnClickHandler);
          this.vehPostProgressionBtn.state = POSTPROGRESSION_CONSTS.RESEARCH_STATE_UNLOCKED;
          this.vehPostProgressionBtn.tooltip = VEH_POST_PROGRESSION.VEHICLEPREVIEWPAGE_BUTTON_ENTRYPOINT_TOOLTIP;
          this.vehPostProgressionBtn.height = VEH_POST_PROGRESSION_BTN_HEIGHT;
@@ -181,7 +182,7 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel
          this.tabButtonBar.removeEventListener(IndexEvent.INDEX_CHANGE,this.onTabIndexChangeHandler);
          this.tabButtonBar.dispose();
          this.tabButtonBar = null;
-         this.vehPostProgressionBtn.removeEventListener(MouseEvent.CLICK,this.onVehPostProgressionBtnClickHandler);
+         this.vehPostProgressionBtn.removeEventListener(ButtonEvent.CLICK,this.onVehPostProgressionBtnClickHandler);
          this.vehPostProgressionBtn.dispose();
          this.vehPostProgressionBtn = null;
          this.vehicleLevelTF = null;
@@ -271,9 +272,9 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel
                this.viewStack.setSize(this.width,height - this.viewStack.y);
                if(this.vehPostProgressionBtn.visible)
                {
-                  _loc7_ = this.viewStack.y + this.viewStack.currentView.height + (!!this._isSmallHeight ? 0 : POST_PROGRESSTION_BTN_Y_OFFSET);
+                  _loc7_ = this.viewStack.y + this.viewStack.currentView.height + (!!this._isSmallHeight ? 0 : POST_PROGRESSION_BTN_Y_OFFSET);
                   this.vehPostProgressionBtn.isSmall = this._isSmallWidth;
-                  this.vehPostProgressionBtn.y = !!this._isSmallWidth ? Number(Math.min(POST_POROGRESSION_BTN_MAX_Y,_loc7_)) : Number(_loc7_);
+                  this.vehPostProgressionBtn.y = !!this._isSmallWidth ? Number(Math.min(POST_PROGRESSION_BTN_MAX_Y,_loc7_)) : Number(_loc7_);
                }
             }
          }
@@ -354,9 +355,9 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel
          }
       }
       
-      private function onVehPostProgressionBtnClickHandler(param1:MouseEvent) : void
+      private function onVehPostProgressionBtnClickHandler(param1:ButtonEvent) : void
       {
-         if(MouseEventEx(param1).buttonIdx == MouseEventEx.LEFT_BUTTON)
+         if(param1.buttonIdx == MouseEventEx.LEFT_BUTTON)
          {
             dispatchEvent(new TechTreeEvent(TechTreeEvent.GO_TO_POST_PROGRESSION));
          }

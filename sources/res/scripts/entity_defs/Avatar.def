@@ -253,7 +253,7 @@
 		</update>
 		<onKickedFromServer>
 			<Arg>STRING</Arg>
-			<Arg>BOOL</Arg>
+			<Arg>UINT8</Arg>
 			<Arg>UINT32</Arg>
 		</onKickedFromServer>
 		<onIGRTypeChanged>
@@ -597,11 +597,6 @@
 			<Exposed>OWN_CLIENT</Exposed>
 			<Arg>UINT16</Arg>
 		</activateEquipment>
-		<activateVehicleEquipment>
-			<Exposed>OWN_CLIENT</Exposed>
-			<Arg>UINT16</Arg>
-			<Arg>STRING</Arg>
-		</activateVehicleEquipment>
 		<setEquipmentApplicationPoint>
 			<Exposed>OWN_CLIENT</Exposed>
 			<Arg>UINT16</Arg>
@@ -672,7 +667,7 @@
 		<onCreateCellSuccess/>
 		<kickSelf>
 			<Arg>STRING</Arg>
-			<Arg>BOOL</Arg>
+			<Arg>UINT8</Arg>
 			<Arg>FLOAT32</Arg>
 		</kickSelf>
 		<setClientReady>

@@ -24,6 +24,8 @@ package net.wg.gui.lobby.header.headerButtonBar
       private static const MIN_SCREEN_PADDING:int = 15;
       
       private static const ADDITIONAL_SCREEN_PADDING:int = 3;
+      
+      private static const WOT_PLUS_SMALL_PADDING:int = 5;
        
       
       public var textField:TextField = null;
@@ -56,21 +58,39 @@ package net.wg.gui.lobby.header.headerButtonBar
       override protected function onDispose() : void
       {
          App.stageSizeMgr.unregister(this);
+         this.premIcon.dispose();
+         this.premIcon = null;
          this._premVo = null;
          this.textField = null;
          this.premTime = null;
          this.infinityIcon = null;
-         this.premIcon = null;
          this._commons = null;
          super.onDispose();
       }
       
       override protected function updateSize() : void
       {
-         bounds.width = Math.max(this.textField.width,doItTextField.width) ^ 0;
-         if(this._premVo.isPremium)
+         if(this._premVo.isWotPlusEnabled)
          {
-            bounds.width += PREM_OFFSET_X;
+            if(this._useCompactData)
+            {
+               bounds.width = PREM_OFFSET_X;
+               minScreenPadding.right = WOT_PLUS_SMALL_PADDING;
+            }
+            else
+            {
+               bounds.width = Math.max(this.textField.x + this.textField.width,doItTextField.x + doItTextField.width) ^ 0;
+               minScreenPadding.right = MIN_SCREEN_PADDING;
+            }
+         }
+         else
+         {
+            minScreenPadding.right = MIN_SCREEN_PADDING;
+            bounds.width = Math.max(this.textField.width,doItTextField.width) ^ 0;
+            if(this._premVo.isPremium)
+            {
+               bounds.width += PREM_OFFSET_X;
+            }
          }
          super.updateSize();
       }
@@ -78,16 +98,19 @@ package net.wg.gui.lobby.header.headerButtonBar
       override protected function updateData() : void
       {
          var _loc1_:Boolean = false;
-         var _loc2_:int = 0;
+         var _loc2_:Boolean = false;
+         var _loc3_:int = 0;
          if(data)
          {
-            _loc1_ = StringUtils.isNotEmpty(this._premVo.doLabel);
-            doItTextField.visible = _loc1_;
-            if(_loc1_)
+            _loc1_ = StringUtils.isEmpty(this._premVo.doLabel);
+            _loc2_ = this._premVo.isWotPlusEnabled && this._useCompactData;
+            doItTextField.visible = !_loc1_ && !_loc2_;
+            this.textField.visible = !_loc2_;
+            if(!_loc1_)
             {
                doItTextField.htmlText = this._premVo.doLabel;
             }
-            this.textField.multiline = this.textField.wordWrap = !_loc1_;
+            this.textField.multiline = this.textField.wordWrap = _loc1_;
             if(this._useCompactData)
             {
                this.textField.htmlText = this._premVo.btnLabelShort;
@@ -96,7 +119,7 @@ package net.wg.gui.lobby.header.headerButtonBar
             {
                this.textField.htmlText = this._premVo.btnLabel;
             }
-            this.premIcon.visible = this._premVo.isPremium;
+            this.premIcon.visible = this._premVo.isPremium || this._premVo.isWotPlusEnabled;
             this.infinityIcon.visible = this._premVo.isSubscription;
             this.premTime.htmlText = this._premVo.timeLabel;
             if(this.premIcon.visible)
@@ -116,17 +139,17 @@ package net.wg.gui.lobby.header.headerButtonBar
             this._commons.updateTextFieldSize(doItTextField,true,false);
             needUpdateFontSize = false;
          }
-         if(_loc1_)
+         if(!_loc1_)
          {
-            _loc2_ = this.textField.height + doItTextField.height + TEXTS_GAP;
-            this.textField.y = height - _loc2_ >> 1;
+            _loc3_ = this.textField.height + doItTextField.height + TEXTS_GAP;
+            this.textField.y = height - _loc3_ >> 1;
             doItTextField.y = this.textField.y + this.textField.height + TEXTS_GAP | 0;
          }
          else
          {
             this.textField.y = SUBSCRIPTION_OFFSET_Y;
          }
-         if(this._premVo.isPremium)
+         if(this._premVo.isPremium || this._premVo.isWotPlusEnabled)
          {
             this.textField.x = PREM_OFFSET_X;
             doItTextField.x = PREM_OFFSET_X;
@@ -153,12 +176,6 @@ package net.wg.gui.lobby.header.headerButtonBar
          return true;
       }
       
-      override public function set data(param1:Object) : void
-      {
-         this._premVo = HBC_PremDataVo(param1);
-         super.data = param1;
-      }
-      
       public function setStateSizeBoundaries(param1:int, param2:int) : void
       {
          var _loc3_:Boolean = param1 < StageSizeBoundaries.WIDTH_1600;
@@ -167,6 +184,12 @@ package net.wg.gui.lobby.header.headerButtonBar
             this._useCompactData = _loc3_;
             invalidateData();
          }
+      }
+      
+      override public function set data(param1:Object) : void
+      {
+         this._premVo = HBC_PremDataVo(param1);
+         super.data = param1;
       }
    }
 }

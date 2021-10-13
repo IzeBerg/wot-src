@@ -1,4 +1,4 @@
-import Math, material_kinds
+import material_kinds
 from items import _xml
 from debug_utils import LOG_ERROR, LOG_CURRENT_EXCEPTION
 from helpers.PixieNode import EffectNode
@@ -543,9 +543,8 @@ class MainCustomSelector(MainSelectorBase):
                 node = model.node(nodeName)
                 if node is None and 'wheeledVehicle' in args['vehicleTags']:
                     continue
-                model.node(nodeName, Math.Matrix(node.localMatrix))
                 drawOrderBase = args.get('drawOrderBase', 0)
-                self._effectNodes[nodeDesc[0]] = EffectNode(model, node, nodeDesc[2], drawOrderBase + nodeDesc[3], nodeDesc[4])
+                self._effectNodes[nodeDesc[0]] = EffectNode(model, nodeName, nodeDesc[2], drawOrderBase + nodeDesc[3], nodeDesc[4])
             except Exception:
                 LOG_ERROR('Node %s is not found' % nodeName)
                 continue
@@ -573,10 +572,8 @@ class ExhaustMainSelector(MainSelectorBase):
         for nodeName in nodes:
             model = args['hull']['model']
             try:
-                node = model.node(nodeName)
-                model.node(nodeName, Math.Matrix(node.localMatrix))
                 drawOrderBase = args.get('drawOrderBase', 0)
-                self._effectNodes[nodeName] = EffectNode(model, node, False, drawOrderBase, self._effectSelector.effects)
+                self._effectNodes[nodeName] = EffectNode(model, nodeName, False, drawOrderBase, self._effectSelector.effects)
             except Exception:
                 LOG_ERROR('Node %s is not found' % nodeName)
                 continue

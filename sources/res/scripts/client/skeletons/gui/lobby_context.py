@@ -96,3 +96,12 @@ class ILobbyContext(object):
 
     def isFightButtonPressPossible(self, callback=None):
         raise NotImplementedError
+
+    def addPlatoonCreationConfirmator(self, confirmator):
+        raise NotImplementedError
+
+    def deletePlatoonCreationConfirmator(self, confirmator):
+        raise NotImplementedError
+
+    def isPlatoonCreationPossible(self, callback=None):
+        raise NotImplementedError

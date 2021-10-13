@@ -1,3 +1,4 @@
+import typing
 from constants import SEASON_NAME_BY_TYPE
 from dossiers2.ui.achievements import MARK_ON_GUN_RECORD
 from gui import GUI_NATIONS_ORDER_INDEX, makeHtmlString
@@ -5,16 +6,18 @@ from gui.Scaleform import getButtonsAssetPath
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from gui.Scaleform.framework.entities.DAAPIDataProvider import SortableDAAPIDataProvider
 from gui.Scaleform.locale.MENU import MENU
+from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.impl import backport
-from gui.impl.gen import R
 from gui.shared.formatters import icons, text_styles
 from gui.shared.formatters.time_formatters import RentLeftFormatter
-from gui.shared.gui_items.Vehicle import Vehicle, VEHICLE_TYPES_ORDER_INDICES, getVehicleStateIcon, getVehicleStateAddIcon, getBattlesLeft, getSmallIconPath, getIconPath, VEHICLE_TAGS
+from gui.shared.gui_items.Vehicle import Vehicle, VEHICLE_TYPES_ORDER_INDICES, getVehicleStateIcon, getVehicleStateAddIcon, getBattlesLeft, getSmallIconPath, getIconPath
 from gui.shared.gui_items.dossier.achievements import isMarkOfMasteryAchieved
 from gui.shared.utils.requesters import REQ_CRITERIA
 from helpers.i18n import makeString as ms
 from helpers import dependency
 from skeletons.gui.game_control import IBattleRoyaleController
+if typing.TYPE_CHECKING:
+    from skeletons.gui.shared import IItemsCache
 
 def sortedIndices(seq, getter, reverse=False):
     return sorted(range(len(seq)), key=lambda idx: getter(seq[idx]), reverse=reverse)
@@ -59,7 +62,9 @@ def getStatusStrings(vState, vStateLvl=Vehicle.VEHICLE_STATE_LEVEL.INFO, substit
 
 
 def getVehicleDataVO(vehicle):
-    rentInfoText = RentLeftFormatter(vehicle.rentInfo, vehicle.isPremiumIGR).getRentLeftStr()
+    rentInfoText = ''
+    if not vehicle.isWotPlusRent:
+        rentInfoText = RentLeftFormatter(vehicle.rentInfo, vehicle.isPremiumIGR).getRentLeftStr()
     vState, vStateLvl = vehicle.getState()
     if vehicle.isRotationApplied():
         if vState in (Vehicle.VEHICLE_STATE.AMMO_NOT_FULL,
@@ -76,31 +81,17 @@ def getVehicleDataVO(vehicle):
     smallHoverStatus, largeHoverStatus = smallStatus, largeStatus
     if vState == Vehicle.VEHICLE_STATE.RENTABLE:
         smallHoverStatus, largeHoverStatus = getStatusStrings(vState + '/hover', vStateLvl, substitute=rentInfoText, ctx={'icon': icons.premiumIgrSmall(), 'battlesLeft': getBattlesLeft(vehicle)})
-    isCritInfo = vStateLvl == Vehicle.VEHICLE_STATE_LEVEL.CRITICAL
     if vehicle.dailyXPFactor > 1:
         bonusImage = getButtonsAssetPath(('bonus_x{}').format(vehicle.dailyXPFactor))
     else:
         bonusImage = ''
-    icon = vehicle.icon
-    iconSmall = vehicle.iconSmall
     label = vehicle.shortUserName if vehicle.isPremiumIGR else vehicle.userName
     labelStyle = text_styles.premiumVehicleName if vehicle.isPremium else text_styles.vehicleName
     tankType = ('{}_elite').format(vehicle.type) if vehicle.isElite else vehicle.type
     current, maximum = vehicle.getCrystalsEarnedInfo()
     isCrystalsLimitReached = current == maximum
-    isEarnCrystals = vehicle.isEarnCrystals
-    if vehicle.isEvent and set(vehicle.tags).intersection(VEHICLE_TAGS.EVENT_VEHS):
-        isEarnCrystals = False
-        label = ('').join((
-         icons.makeImageTag(backport.image(R.images.gui.maps.icons.vehicleTypes.white.dyn(vehicle.eventType)()), 16, 16, -2, 0),
-         label))
-        if vState == Vehicle.VEHICLE_STATE.TICKETS_SHORTAGE:
-            isCritInfo = False
-            smallStatus, largeStatus = getStatusStrings(vState)
-            smallHoverStatus, largeHoverStatus = smallStatus, largeStatus
-        elif vehicle.isBoss and not vehicle.isSpecialBoss:
-            icon = icon.replace('.png', '_alt.png')
-    return {'id': vehicle.invID, 'intCD': vehicle.intCD, 
+    return {'id': vehicle.invID, 
+       'intCD': vehicle.intCD, 
        'infoText': largeStatus, 
        'infoHoverText': largeHoverStatus, 
        'smallInfoText': smallStatus, 
@@ -108,9 +99,9 @@ def getVehicleDataVO(vehicle):
        'clanLock': vehicle.clanLock, 
        'lockBackground': _isLockedBackground(vState, vStateLvl), 
        'unlockedInBattle': False, 
-       'icon': icon, 
+       'icon': vehicle.icon, 
        'iconAlt': getIconPath('noImage'), 
-       'iconSmall': iconSmall, 
+       'iconSmall': vehicle.iconSmall, 
        'iconSmallAlt': getSmallIconPath('noImage'), 
        'label': labelStyle(label), 
        'level': vehicle.level, 
@@ -124,16 +115,15 @@ def getVehicleDataVO(vehicle):
        'alpha': 1, 
        'infoImgSrc': getVehicleStateIcon(vState), 
        'additionalImgSrc': getVehicleStateAddIcon(vState), 
-       'isCritInfo': isCritInfo, 
+       'isCritInfo': vStateLvl == Vehicle.VEHICLE_STATE_LEVEL.CRITICAL, 
        'isRentPromotion': vehicle.isRentPromotion and not vehicle.isRented, 
        'isNationChangeAvailable': vehicle.hasNationGroup, 
-       'isEarnCrystals': isEarnCrystals, 
+       'isEarnCrystals': vehicle.isEarnCrystals, 
        'isCrystalsLimitReached': isCrystalsLimitReached, 
        'isUseRightBtn': True, 
-       'tooltip': TOOLTIPS_CONSTANTS.EVENT_CAROUSEL_VEHICLE if vehicle.isEvent else TOOLTIPS_CONSTANTS.CAROUSEL_VEHICLE, 
-       'isWulfTooltip': vehicle.isEvent, 
-       'isEventVehicle': vehicle.isEvent, 
-       'isEventVehicleSpecial': vehicle.isEvent and VEHICLE_TAGS.EVENT_SPECIAL_BOSS in vehicle.tags}
+       'tooltip': TOOLTIPS_CONSTANTS.CAROUSEL_VEHICLE, 
+       'isWotPlusSlot': vehicle.isWotPlusRent, 
+       'extraImage': RES_ICONS.MAPS_ICONS_LIBRARY_RENT_ICO_BIG if vehicle.isWotPlusRent else ''}
 
 
 class CarouselDataProvider(SortableDAAPIDataProvider):
@@ -248,7 +238,7 @@ class CarouselDataProvider(SortableDAAPIDataProvider):
     def applyFilter(self, forceApply=False):
         prevFilteredIndices = self._filteredIndices[:]
         prevSelectedIdx = self._selectedIdx
-        self._filteredIndices = []
+        self._filteredIndices = self._getFrontAdditionalItemsIndexes()
         self._selectedIdx = -1
         currentVehicleInvID = self._currentVehicle.invID
         visibleVehiclesIntCDs = [ vehicle.intCD for vehicle in self._getCurrentVehicles() ]
@@ -287,6 +277,9 @@ class CarouselDataProvider(SortableDAAPIDataProvider):
         super(CarouselDataProvider, self)._dispose()
         return
 
+    def _getFrontAdditionalItemsIndexes(self):
+        return []
+
     def _getAdditionalItemsIndexes(self):
         return []
 
@@ -315,7 +308,7 @@ class CarouselDataProvider(SortableDAAPIDataProvider):
         self._addCriteria()
 
     def _addCriteria(self):
-        self._addVehicleItemsByCriteria(self._baseCriteria | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP)
+        self._addVehicleItemsByCriteria(self._baseCriteria | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP | ~REQ_CRITERIA.VEHICLE.WOTPLUS_RENT)
 
     def _buildVehicle(self, vehicle):
         vo = getVehicleDataVO(vehicle)

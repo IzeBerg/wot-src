@@ -302,8 +302,7 @@ package net.wg.gui.lobby.window
       
       private function updateVisibleComponents() : void
       {
-         var _loc1_:Boolean = false;
-         _loc1_ = this._dataVO.isPersonalQuest;
+         var _loc1_:Boolean = this._dataVO.isPersonalQuest;
          this.conditionsBlock.visible = !_loc1_ && this._dataVO.conditions;
          this.additionalLinkBtn.visible = _loc1_;
          this.additionalStatusTF.visible = _loc1_;

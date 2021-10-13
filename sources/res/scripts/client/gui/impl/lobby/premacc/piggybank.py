@@ -4,11 +4,11 @@ from constants import PremiumConfigs
 from gui.Scaleform.daapi.view.lobby.store.browser.shop_helpers import getBuyPremiumUrl
 from gui.impl.gen import R
 from gui.impl.lobby.premacc.piggybank_base import PiggyBankBaseView, PiggyBankConstants
+from gui.impl.lobby.premacc.premacc_helpers import toPercents
 from gui.impl.wrappers.function_helpers import replaceNoneKwargsModel
 from gui.impl.gen.view_models.views.lobby.premacc.piggybank_model import PiggybankModel
 from frameworks.wulf import ViewFlags, ViewSettings
 from gui.shared.event_dispatcher import showTankPremiumAboutPage, showShop
-from gui.shared.utils.functions import toPercents
 from gui.shared.utils.scheduled_notifications import _Notifier
 from helpers import time_utils
 _logger = logging.getLogger(__name__)
@@ -81,7 +81,7 @@ class PiggyBankView(PiggyBankBaseView):
     @replaceNoneKwargsModel
     def _updatePiggyIsFull(self, credits_=None, model=None):
         creditsValue = credits_ or self._data.get('credits', 0)
-        maxAmount = self._config.get('threshold', PiggyBankConstants.MAX_AMOUNT)
+        maxAmount = self._config.get('creditsThreshold', PiggyBankConstants.MAX_AMOUNT)
         model.setPiggyIsFull(creditsValue >= maxAmount)
 
     def _updateCredits(self, credits_=None):
@@ -98,7 +98,7 @@ class PiggyBankView(PiggyBankBaseView):
         if PremiumConfigs.PIGGYBANK not in diff:
             return
         diffConfig = diff.get(PremiumConfigs.PIGGYBANK)
-        if 'threshold' in diffConfig:
+        if 'creditsThreshold' in diffConfig:
             self._updatePiggyIsFull()
         if 'cycleLength' in diffConfig:
             self._updatePeriodInDays()

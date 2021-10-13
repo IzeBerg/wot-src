@@ -17,6 +17,9 @@ class LobbyHeaderMeta(BaseDAAPIComponent):
     def showExchangeXPWindow(self):
         self._printOverrideError('showExchangeXPWindow')
 
+    def showWotPlusView(self):
+        self._printOverrideError('showWotPlusView')
+
     def showPremiumView(self):
         self._printOverrideError('showPremiumView')
 
@@ -60,6 +63,10 @@ class LobbyHeaderMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_doDisableHeaderButton(btnId, isEnabled)
 
+    def as_doSoftDisableHeaderButtonS(self, btnId, isSoftDisable):
+        if self._isDAAPIInited():
+            return self.flashObject.as_doSoftDisableHeaderButton(btnId, isSoftDisable)
+
     def as_doDeselectHeaderButtonS(self, alias):
         if self._isDAAPIInited():
             return self.flashObject.as_doDeselectHeaderButton(alias)
@@ -83,6 +90,10 @@ class LobbyHeaderMeta(BaseDAAPIComponent):
     def as_setBoosterDataS(self, data):
         if self._isDAAPIInited():
             return self.flashObject.as_setBoosterData(data)
+
+    def as_setWotPlusDataS(self, data):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setWotPlusData(data)
 
     def as_setPremiumParamsS(self, data):
         if self._isDAAPIInited():

@@ -36,7 +36,7 @@ class MapboxStateValidator(BaseActionsValidator):
     def _validate(self):
         mapboxController = dependency.instance(IMapboxController)
         if not mapboxController.isActive() or not mapboxController.isInPrimeTime():
-            return ValidationResult(False, PRE_QUEUE_RESTRICTION.MODE_DISABLED)
+            return ValidationResult(False, PRE_QUEUE_RESTRICTION.MODE_NOT_AVAILABLE)
         return super(MapboxStateValidator, self)._validate()
 
 

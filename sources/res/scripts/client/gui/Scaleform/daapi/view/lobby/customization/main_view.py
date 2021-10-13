@@ -57,7 +57,6 @@ from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.utils import IHangarSpace
-from skeletons.gui.game_control import IGameEventController
 from vehicle_outfit.outfit import Area
 from constants import NC_MESSAGE_PRIORITY
 _logger = logging.getLogger(__name__)
@@ -167,6 +166,22 @@ class _VehicleSlotSelector(object):
         self.__ctx.mode.unselectSlot()
 
 
+class _CustomizationCloseConfirmatorsHelper(CloseConfirmatorsHelper):
+
+    def getRestrictedSfViews(self):
+        result = super(_CustomizationCloseConfirmatorsHelper, self).getRestrictedSfViews()
+        result.append(VIEW_ALIAS.LOBBY_HANGAR)
+        return result
+
+    def start(self, closeConfirmator):
+        super(_CustomizationCloseConfirmatorsHelper, self).start(closeConfirmator)
+        self._addPlatoonCreationConfirmator()
+
+    def stop(self):
+        self._deletePlatoonCreationConfirmator()
+        super(_CustomizationCloseConfirmatorsHelper, self).stop()
+
+
 class MainView(LobbySubView, CustomizationMainViewMeta):
     __background_alpha__ = 0.0
     _COMMON_SOUND_SPACE = C11N_SOUND_SPACE
@@ -179,7 +194,6 @@ class MainView(LobbySubView, CustomizationMainViewMeta):
     appLoader = dependency.descriptor(IAppLoader)
     guiLoader = dependency.descriptor(IGuiLoader)
     settingsCore = dependency.descriptor(ISettingsCore)
-    __gameEventController = dependency.descriptor(IGameEventController)
 
     def __init__(self, ctx=None):
         super(MainView, self).__init__()
@@ -199,7 +213,7 @@ class MainView(LobbySubView, CustomizationMainViewMeta):
         self.__dontPlayTabChangeSound = False
         self.__itemsGrabMode = False
         self.__finishGrabModeCallback = None
-        self.__closeConfirmatorHelper = CloseConfirmatorsHelper()
+        self.__closeConfirmatorHelper = _CustomizationCloseConfirmatorsHelper()
         self.__closed = False
         return
 
@@ -765,7 +779,7 @@ class MainView(LobbySubView, CustomizationMainViewMeta):
         self.hangarSpace.onSpaceDestroy -= self.__onSpaceDestroyHandler
         self.hangarSpace.onSpaceRefresh -= self.__onSpaceRefreshHandler
         self.service.onRegionHighlighted -= self.__onRegionHighlighted
-        if g_currentVehicle.isPresent() and not self.__gameEventController.isEventPrbActive():
+        if g_currentVehicle.isPresent():
             g_tankActiveCamouflage[g_currentVehicle.item.intCD] = self.__ctx.season
             g_currentVehicle.refreshModel()
         self.__propertiesSheet = None

@@ -864,7 +864,7 @@ class UnitEntity(_UnitEntity):
         if isReady:
             vehInfos = self.getVehiclesInfo()
             if vehInfos:
-                self._selectVehicle(vehInfos[0].vehInvID)
+                g_currentVehicle.selectVehicle(vehInfos[0].vehInvID)
         if self._isInCoolDown(settings.REQUEST_TYPE.SET_PLAYER_STATE, coolDown=ctx.getCooldown()):
             return
         self._setReady(ctx, callback)
@@ -1036,7 +1036,7 @@ class UnitEntity(_UnitEntity):
                 return
             vehInfos = self.getVehiclesInfo()
             if vehInfos:
-                self._selectVehicle(vehInfos[0].vehInvID)
+                g_currentVehicle.selectVehicle(vehInfos[0].vehInvID)
             roster = self.getRosterSettings()
             stats = self.getStats()
             if stats.curTotalLevel > roster.getMaxTotalLevel():
@@ -1094,7 +1094,7 @@ class UnitEntity(_UnitEntity):
             waitingID = 'prebattle/player_not_ready'
         if launchChain:
             if notReady:
-                selVehCtx = SetVehicleUnitCtx(vTypeCD=self._getSelectedVehCD(), waitingID='prebattle/change_settings')
+                selVehCtx = SetVehicleUnitCtx(vTypeCD=g_currentVehicle.item.intCD, waitingID='prebattle/change_settings')
                 selVehCtx.setReady = True
                 self.setVehicle(selVehCtx)
             else:
@@ -1171,7 +1171,7 @@ class UnitEntity(_UnitEntity):
         if dbID == account_helpers.getAccountDatabaseID() and not vInfo.isEmpty():
             vehicle = self.itemsCache.items.getItemByCD(vInfo.vehTypeCD)
             if vehicle is not None:
-                self._selectVehicle(vehicle.invID)
+                g_currentVehicle.selectVehicle(vehicle.invID)
         self._invokeListeners('onUnitVehiclesChanged', dbID, (vInfo,))
         g_eventDispatcher.updateUI()
         return
@@ -1193,7 +1193,7 @@ class UnitEntity(_UnitEntity):
             if dbID == account_helpers.getAccountDatabaseID() and not vInfo.isEmpty():
                 vehicle = self.itemsCache.items.getItemByCD(vInfo.vehTypeCD)
                 if vehicle is not None and not isVehicleSelected:
-                    self._selectVehicle(vehicle.invID)
+                    g_currentVehicle.selectVehicle(vehicle.invID)
                     isVehicleSelected = True
             vInfos.append(vInfo)
 
@@ -1478,12 +1478,6 @@ class UnitEntity(_UnitEntity):
             if timestamp:
                 result = max(0, int(time.time() - time_utils.makeLocalServerTime(timestamp)))
         return result
-
-    def _getSelectedVehCD(self):
-        return g_currentVehicle.item.intCD
-
-    def _selectVehicle(self, vehID):
-        g_currentVehicle.selectVehicle(vehID)
 
     def _isInCoolDown(self, requestType, callback=None, coolDown=None):
         if self._cooldown.validate(requestType, coolDown):

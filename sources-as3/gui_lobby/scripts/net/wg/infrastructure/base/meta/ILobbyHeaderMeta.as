@@ -16,6 +16,8 @@ package net.wg.infrastructure.base.meta
       
       function showExchangeXPWindowS() : void;
       
+      function showWotPlusViewS() : void;
+      
       function showPremiumViewS() : void;
       
       function onPremShopClickS() : void;
@@ -42,6 +44,8 @@ package net.wg.infrastructure.base.meta
       
       function as_doDisableHeaderButton(param1:String, param2:Boolean) : void;
       
+      function as_doSoftDisableHeaderButton(param1:String, param2:Boolean) : void;
+      
       function as_doDeselectHeaderButton(param1:String) : void;
       
       function as_setGoldFishEnabled(param1:Boolean, param2:Boolean, param3:String, param4:String) : void;
@@ -53,6 +57,8 @@ package net.wg.infrastructure.base.meta
       function as_setBadge(param1:Object, param2:Boolean) : void;
       
       function as_setBoosterData(param1:Object) : void;
+      
+      function as_setWotPlusData(param1:Object) : void;
       
       function as_setPremiumParams(param1:Object) : void;
       

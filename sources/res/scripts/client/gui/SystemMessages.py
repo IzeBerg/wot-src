@@ -31,8 +31,8 @@ SM_TYPE = Enumeration('System message type', [
  'Restore',
  'PurchaseForCrystal',
  'PrimeTime',
- 'RankedBattlesAvailable',
- 'RankedBattlesNotSet',
+ 'PeriodicBattlesNotSet',
+ 'PeriodicBattlesAvailable',
  'DismantlingForCredits',
  'DismantlingForCrystal',
  'OpenEventBoards',
@@ -63,9 +63,8 @@ SM_TYPE = Enumeration('System message type', [
  'ResearchVehiclePostProgressionSteps',
  'BuyPostProgressionModForCredits',
  'ChangeSlotCategory',
- 'WTEventSwitchOnLootboxes',
- 'WTEventProgression',
- 'WTEventStart'])
+ 'MediumInfo',
+ 'MessageHeader'])
 CURRENCY_TO_SM_TYPE = {Currency.CREDITS: SM_TYPE.PurchaseForCredits, 
    Currency.GOLD: SM_TYPE.PurchaseForGold, 
    Currency.CRYSTAL: SM_TYPE.PurchaseForCrystal, 

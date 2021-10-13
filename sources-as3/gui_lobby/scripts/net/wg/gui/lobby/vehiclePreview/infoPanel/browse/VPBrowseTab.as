@@ -12,6 +12,7 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.browse
    import net.wg.infrastructure.base.meta.IVehiclePreviewBrowseTabMeta;
    import net.wg.infrastructure.base.meta.impl.VehiclePreviewBrowseTabMeta;
    import net.wg.infrastructure.interfaces.IViewStackExContent;
+   import net.wg.infrastructure.managers.ITooltipMgr;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.data.DataProvider;
    
@@ -25,11 +26,15 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.browse
       private static const BENEFITS_OFFSET:int = -30;
       
       private static const MINIMAL_HEIGHT:int = 900;
+      
+      private static const DISCLAIMER_WIDTH:int = 680;
        
       
       public var title:TextField;
       
       public var historicReference:TextField;
+      
+      public var legalDisclaimer:LegalDisclaimer;
       
       public var collectibleInfo:VPCollectibleInfo;
       
@@ -37,35 +42,20 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.browse
       
       private var _titleInfoStr:String = "";
       
+      private var _toolTipMgr:ITooltipMgr;
+      
       private var _isCollectible:Boolean = false;
       
       private var _isTooltip:Boolean = false;
       
       private var _isSmallAndCompact:Boolean = false;
       
+      private var _needDisclaimer:Boolean = false;
+      
       public function VPBrowseTab()
       {
+         this._toolTipMgr = App.toolTipMgr;
          super();
-      }
-      
-      private static function onHistoricReferenceRollOutHandler(param1:MouseEvent) : void
-      {
-         App.toolTipMgr.hide();
-      }
-      
-      private static function onHistoricReferenceRollOverHandler(param1:MouseEvent) : void
-      {
-         App.toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.VEHICLE_HISTORICAL_REFERENCE,null);
-      }
-      
-      private static function onTitleRollOutHandler(param1:Event) : void
-      {
-         App.toolTipMgr.hide();
-      }
-      
-      private static function onTitleRollOverHandler(param1:Event) : void
-      {
-         App.toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.VEHICLE_HISTORICAL_REFERENCE,null);
       }
       
       override public function setSize(param1:Number, param2:Number) : void
@@ -78,24 +68,39 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.browse
       {
          super.configUI();
          mouseEnabled = false;
+         mouseChildren = true;
          this.historicReference.autoSize = TextFieldAutoSize.LEFT;
          this.historicReference.wordWrap = true;
          this.historicReference.multiline = true;
-         this.collectibleInfo.addEventListener(InvalidationType.LAYOUT,this.updateLayout);
+         this.historicReference.mouseEnabled = false;
+         this.legalDisclaimer.width = DISCLAIMER_WIDTH;
+         this.legalDisclaimer.mouseEnabled = false;
+         this.legalDisclaimer.visible = false;
+         this.legalDisclaimer.addEventListener(LegalDisclaimer.CLICK_EVENT_TYPE,this.onLegalDisclaimerClickEventTypeHandler);
+         this.collectibleInfo.addEventListener(InvalidationType.LAYOUT,this.onCollectibleInfoLayoutHandler);
          this.title.text = VEHICLE_PREVIEW.INFOPANEL_TAB_ELITEFACTSHEET_INFO;
          this.title.autoSize = TextFieldAutoSize.LEFT;
-         this.historicReference.addEventListener(MouseEvent.ROLL_OVER,onHistoricReferenceRollOverHandler);
-         this.historicReference.addEventListener(MouseEvent.ROLL_OUT,onHistoricReferenceRollOutHandler);
+         this.title.mouseEnabled = false;
+         this.historicReference.addEventListener(MouseEvent.ROLL_OVER,this.onHistoricReferenceRollOverHandler);
+         this.historicReference.addEventListener(MouseEvent.ROLL_OUT,this.onHistoricReferenceRollOutHandler);
+      }
+      
+      override protected function onBeforeDispose() : void
+      {
+         this.title.removeEventListener(MouseEvent.ROLL_OVER,this.onTitleRollOverHandler);
+         this.title.removeEventListener(MouseEvent.ROLL_OUT,this.onTitleRollOutHandler);
+         this.historicReference.removeEventListener(MouseEvent.ROLL_OVER,this.onHistoricReferenceRollOverHandler);
+         this.historicReference.removeEventListener(MouseEvent.ROLL_OUT,this.onHistoricReferenceRollOutHandler);
+         this.collectibleInfo.removeEventListener(InvalidationType.LAYOUT,this.onCollectibleInfoLayoutHandler);
+         this.legalDisclaimer.removeEventListener(LegalDisclaimer.CLICK_EVENT_TYPE,this.onLegalDisclaimerClickEventTypeHandler);
+         super.onBeforeDispose();
       }
       
       override protected function onDispose() : void
       {
-         this.title.removeEventListener(MouseEvent.ROLL_OVER,onTitleRollOverHandler);
-         this.title.removeEventListener(MouseEvent.ROLL_OUT,onTitleRollOutHandler);
-         this.historicReference.removeEventListener(MouseEvent.ROLL_OVER,onHistoricReferenceRollOverHandler);
-         this.historicReference.removeEventListener(MouseEvent.ROLL_OUT,onHistoricReferenceRollOutHandler);
-         this.collectibleInfo.removeEventListener(InvalidationType.LAYOUT,this.updateLayout);
          this.historicReference = null;
+         this.legalDisclaimer.dispose();
+         this.legalDisclaimer = null;
          this.title = null;
          if(this._benefitsComponent)
          {
@@ -104,6 +109,7 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.browse
          }
          this.collectibleInfo.dispose();
          this.collectibleInfo = null;
+         this._toolTipMgr = null;
          super.onDispose();
       }
       
@@ -118,6 +124,7 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.browse
             this.collectibleInfo.width = width;
             this.title.width = width;
             this.historicReference.width = width;
+            this.legalDisclaimer.width = width;
             _loc1_ = this._benefitsComponent && this._benefitsComponent.compact && App.appHeight <= MINIMAL_HEIGHT;
             if(_loc1_ != this._isSmallAndCompact)
             {
@@ -125,17 +132,17 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.browse
                this.historicReference.visible = !this._isSmallAndCompact;
                if(this._isSmallAndCompact)
                {
-                  this.title.addEventListener(MouseEvent.ROLL_OVER,onTitleRollOverHandler);
-                  this.title.addEventListener(MouseEvent.ROLL_OUT,onTitleRollOutHandler);
+                  this.title.addEventListener(MouseEvent.ROLL_OVER,this.onTitleRollOverHandler);
+                  this.title.addEventListener(MouseEvent.ROLL_OUT,this.onTitleRollOutHandler);
                   this.title.htmlText = this._titleInfoStr;
-                  mouseChildren = true;
+                  this.historicReference.mouseEnabled = true;
                }
                else
                {
-                  this.title.removeEventListener(MouseEvent.ROLL_OVER,onTitleRollOverHandler);
-                  this.title.removeEventListener(MouseEvent.ROLL_OUT,onTitleRollOutHandler);
+                  this.title.removeEventListener(MouseEvent.ROLL_OVER,this.onTitleRollOverHandler);
+                  this.title.removeEventListener(MouseEvent.ROLL_OUT,this.onTitleRollOutHandler);
                   this.title.text = VEHICLE_PREVIEW.INFOPANEL_TAB_ELITEFACTSHEET_INFO;
-                  mouseChildren = this._isTooltip;
+                  this.historicReference.mouseEnabled = this._isTooltip;
                }
             }
             invalidateLayout();
@@ -154,6 +161,11 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.browse
             }
             this.title.y = _loc2_;
             this.historicReference.y = _loc2_ + this.title.height >> 0;
+            this.legalDisclaimer.visible = this._needDisclaimer;
+            if(this._needDisclaimer)
+            {
+               this.legalDisclaimer.y = this.historicReference.y + this.historicReference.height >> 0;
+            }
          }
       }
       
@@ -163,7 +175,8 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.browse
          this._isCollectible = param1.vehicleType == VEHPREVIEW_CONSTANTS.COLLECTIBLE || param1.vehicleType == VEHPREVIEW_CONSTANTS.COLLECTIBLE_WITHOUT_MODULES;
          this._titleInfoStr = param1.titleInfo;
          this._isTooltip = param1.showTooltip;
-         mouseChildren = this._isTooltip;
+         this._needDisclaimer = param1.needDisclaimer;
+         this.historicReference.mouseEnabled = this._isTooltip;
          this.setRenderersData(param1.benefitsData);
          invalidateSize();
       }
@@ -216,7 +229,32 @@ package net.wg.gui.lobby.vehiclePreview.infoPanel.browse
          return super.height;
       }
       
-      private function updateLayout(param1:Event) : void
+      private function onLegalDisclaimerClickEventTypeHandler(param1:Event) : void
+      {
+         onDisclaimerClickS();
+      }
+      
+      private function onHistoricReferenceRollOutHandler(param1:MouseEvent) : void
+      {
+         this._toolTipMgr.hide();
+      }
+      
+      private function onHistoricReferenceRollOverHandler(param1:MouseEvent) : void
+      {
+         this._toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.VEHICLE_HISTORICAL_REFERENCE,null);
+      }
+      
+      private function onTitleRollOutHandler(param1:Event) : void
+      {
+         this._toolTipMgr.hide();
+      }
+      
+      private function onTitleRollOverHandler(param1:Event) : void
+      {
+         this._toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.VEHICLE_HISTORICAL_REFERENCE,null);
+      }
+      
+      private function onCollectibleInfoLayoutHandler(param1:Event) : void
       {
          invalidateLayout();
       }

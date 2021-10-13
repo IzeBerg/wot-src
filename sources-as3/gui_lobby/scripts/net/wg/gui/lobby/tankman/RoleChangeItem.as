@@ -68,12 +68,14 @@ package net.wg.gui.lobby.tankman
       
       public function update(param1:Object) : void
       {
+         var _loc3_:Boolean = false;
+         var _loc4_:Boolean = false;
          var _loc2_:RoleChangeItemVO = RoleChangeItemVO(param1);
          this._roleId = _loc2_.id;
          this._tooltip = _loc2_.tooltip;
          this.roleName.text = _loc2_.name;
          this.roleIcon.source = _loc2_.icon;
-         var _loc3_:Boolean = _loc2_.warningHeader.length > 0;
+         _loc3_ = _loc2_.warningHeader.length > 0;
          this.alert.visible = _loc3_;
          if(_loc3_)
          {
@@ -88,7 +90,7 @@ package net.wg.gui.lobby.tankman
          this._alertHeader = _loc2_.warningHeader;
          this._alertBody = _loc2_.warningBody;
          this.enabled = _loc2_.available;
-         var _loc4_:Boolean = _loc2_.current;
+         _loc4_ = _loc2_.current;
          this.radioButton.visible = !_loc4_;
          this.currentIcon.visible = _loc4_;
       }

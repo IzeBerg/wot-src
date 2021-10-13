@@ -7,6 +7,8 @@ package net.wg.gui.lobby.tankman
    
    public class PersonalCaseBase extends PersonalCaseMeta implements IPersonalCaseMeta
    {
+      
+      private static const SKILLS:String = "skills";
        
       
       protected var isFirtsRun:Boolean = true;
@@ -82,6 +84,9 @@ package net.wg.gui.lobby.tankman
          this.stats.stats = param1.stats;
          this.stats.firstMsg = param1.firstMsg;
          this.stats.secondMsg = param1.secondMsg;
+         this.stats.secondIcon = param1.secondIcon;
+         this.stats.wotPlusIcon = param1.wotPlusIcon;
+         this.stats.wotPlusMsg = param1.wotPlusMsg;
          this.runtimeUpdateByModel(PersonalCaseStats,this.stats);
       }
       
@@ -108,7 +113,7 @@ package net.wg.gui.lobby.tankman
          this.skillsModel = [];
          for each(_loc4_ in param1)
          {
-            if(!(!_loc4_.hasOwnProperty("skills") || !_loc4_.skills is Array || _loc4_.skills.length <= 0))
+            if(!(!_loc4_.hasOwnProperty(SKILLS) || !_loc4_.skills is Array || _loc4_.skills.length <= 0))
             {
                _loc3_ = new PersonalCaseSkillModel();
                _loc5_ = _loc4_.id;

@@ -8,6 +8,12 @@ class ConsumablesPanelMeta(BaseDAAPIComponent):
     def onPopUpClosed(self):
         self._printOverrideError('onPopUpClosed')
 
+    def onPanelShown(self):
+        self._printOverrideError('onPanelShown')
+
+    def onPanelHidden(self):
+        self._printOverrideError('onPanelHidden')
+
     def as_setKeysToSlotsS(self, slots):
         if self._isDAAPIInited():
             return self.flashObject.as_setKeysToSlots(slots)
@@ -16,9 +22,9 @@ class ConsumablesPanelMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_setItemQuantityInSlot(idx, quantity)
 
-    def as_setItemTimeQuantityInSlotS(self, idx, quantity, timeRemaining, maxTime, animation, stage):
+    def as_setItemTimeQuantityInSlotS(self, idx, quantity, timeRemaining, maxTime, animation):
         if self._isDAAPIInited():
-            return self.flashObject.as_setItemTimeQuantityInSlot(idx, quantity, timeRemaining, maxTime, animation, stage)
+            return self.flashObject.as_setItemTimeQuantityInSlot(idx, quantity, timeRemaining, maxTime, animation)
 
     def as_setCoolDownTimeS(self, idx, duration, baseTime, startTime):
         if self._isDAAPIInited():
@@ -44,9 +50,9 @@ class ConsumablesPanelMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_setCurrentShell(idx)
 
-    def as_addEquipmentSlotS(self, idx, keyCode, sfKeyCode, tag, quantity, timeRemaining, reloadingTime, iconPath, tooltipText, animation):
+    def as_addEquipmentSlotS(self, idx, keyCode, sfKeyCode, quantity, timeRemaining, reloadingTime, iconPath, tooltipText, animation):
         if self._isDAAPIInited():
-            return self.flashObject.as_addEquipmentSlot(idx, keyCode, sfKeyCode, tag, quantity, timeRemaining, reloadingTime, iconPath, tooltipText, animation)
+            return self.flashObject.as_addEquipmentSlot(idx, keyCode, sfKeyCode, quantity, timeRemaining, reloadingTime, iconPath, tooltipText, animation)
 
     def as_showEquipmentSlotsS(self, show):
         if self._isDAAPIInited():

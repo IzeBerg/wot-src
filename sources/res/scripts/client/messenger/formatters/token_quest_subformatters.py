@@ -15,10 +15,9 @@ from gui.Scaleform.genConsts.RANKEDBATTLES_CONSTS import RANKEDBATTLES_CONSTS
 from gui.server_events.recruit_helper import getSourceIdFromQuest
 from gui.shared.formatters import text_styles
 from gui.shared.money import Currency
-from gui.wt_event.wt_event_helpers import isWTEventProgressionQuest
 from messenger import g_settings
 from messenger.formatters import TimeFormatter
-from messenger.formatters.service_channel import WaitItemsSyncFormatter, QuestAchievesFormatter, RankedQuestAchievesFormatter, ServiceChannelFormatter, PersonalMissionsQuestAchievesFormatter, BattlePassQuestAchievesFormatter, InvoiceReceivedFormatter, BirthdayQuestAchievesFormatter
+from messenger.formatters.service_channel import WaitItemsSyncFormatter, QuestAchievesFormatter, RankedQuestAchievesFormatter, ServiceChannelFormatter, PersonalMissionsQuestAchievesFormatter, BattlePassQuestAchievesFormatter, InvoiceReceivedFormatter
 from messenger.formatters.service_channel_helpers import getRewardsForQuests, EOL, MessageData, getCustomizationItemData, getDefaultMessage, DEFAULT_MESSAGE
 from messenger.proto.bw.wrappers import ServiceChannelMessage
 from shared_utils import findFirst, first
@@ -191,7 +190,7 @@ class RankedSeasonTokenQuestFormatter(RankedTokenQuestFormatter):
         customizations = data.get('customizations', [])
         for customizationItem in customizations:
             customizationType = customizationItem['custType']
-            _, itemUserName, _ = getCustomizationItemData(customizationItem['id'], customizationType)
+            _, itemUserName = getCustomizationItemData(customizationItem['id'], customizationType)
             if customizationType == 'style':
                 result.append(itemUserName)
 
@@ -663,39 +662,32 @@ class RankedYearLeaderFormatter(RankedTokenQuestFormatter):
            'body': backport.text(R.strings.system_messages.ranked.notification.yearLB.negative.body())}, data={'savedData': {'ctx': {'selectedItemID': RANKEDBATTLES_CONSTS.RANKED_BATTLES_YEAR_RATING_ID}}})
 
 
-class BirthdayTokenQuestSubFormatter(AsyncTokenQuestsSubFormatter):
-    __TEMPLATE_NAME = 'birthdayCalendar'
-    __QUEST_PATTERN = 'birthday_calendar'
-
-    def __init__(self):
-        super(BirthdayTokenQuestSubFormatter, self).__init__()
-        self._achievesFormatter = BirthdayQuestAchievesFormatter()
+class WotPlusDirectivesFormatter(AsyncTokenQuestsSubFormatter):
+    __RENEWABLE_SUB_TOKEN_QUEST_PATTERN = 'wotplus:'
+    __MESSAGE_TEMPLATE = 'WotPlusRenewMessage'
 
     @async
     @process
     def format(self, message, callback):
         isSynced = yield self._waitForSyncItems()
-        formatted, settings = (None, None)
+        messageDataList = []
         if isSynced:
             data = message.data or {}
             completedQuestIDs = self.getQuestOfThisGroup(data.get('completedQuestIDs', set()))
-            completedQuestIDs.update(data.get('rewardsGottenQuestIDs', set()))
-            questsData = getRewardsForQuests(message, self.getQuestOfThisGroup(completedQuestIDs))
-            fmt = self._achievesFormatter.formatQuestAchieves(questsData)
+            rewards = getRewardsForQuests(message, completedQuestIDs)
+            fmt = self._achievesFormatter.formatQuestAchieves(rewards, asBattleFormatter=False, processCustomizations=True)
             if fmt is not None:
-                templateParams = {'achieves': fmt}
-                settings = self._getGuiSettings(message, self.__TEMPLATE_NAME)
-                formatted = g_settings.msgTemplates.format(self.__TEMPLATE_NAME, templateParams)
-        callback([MessageData(formatted, settings)])
+                templateParams = {'title': backport.text(R.strings.messenger.serviceChannelMessages.wotPlus.freeDirectives.received.title()), 
+                   'text': fmt}
+                settings = self._getGuiSettings(message, self.__MESSAGE_TEMPLATE)
+                formatted = g_settings.msgTemplates.format(self.__MESSAGE_TEMPLATE, templateParams)
+                messageDataList.append(MessageData(formatted, settings))
+        if messageDataList:
+            callback(messageDataList)
+        callback([MessageData(None, None)])
         return
 
     @classmethod
     def _isQuestOfThisGroup(cls, questID):
-        return cls.__QUEST_PATTERN in questID
-
-
-class WtEventProgressionQuestFormatter(WaitItemsSyncFormatter, TokenQuestsSubFormatter):
-
-    @classmethod
-    def _isQuestOfThisGroup(cls, questID):
-        return isWTEventProgressionQuest(questID)
+        tmp = cls.__RENEWABLE_SUB_TOKEN_QUEST_PATTERN in questID
+        return tmp

@@ -14,6 +14,7 @@ def writeProjectionSlots(slotDS, slot):
     if slot.type != 'fixedProjectionDecal':
         slotDS.write('verticalMirror', slot.canBeMirroredVertically)
     _xml.rewriteBool(slotDS, 'doubleSided', slot.doubleSided, False)
+    _xml.rewriteBool(slotDS, 'hiddenForUser', slot.hiddenForUser, False)
     _xml.rewriteFloat(slotDS, 'clipAngle', slot.clipAngle, 0.0)
     if slot.type == 'projectionDecal':
         writeProjectionSlotsNotFixed(slotDS, slot)
@@ -27,8 +28,7 @@ def writeProjectionSlotsFixed(slotDS, slot):
 
 
 def writeProjectionSlotsNotFixed(slotDS, slot):
-    slotDS.write('anchorPosition', slot.anchorPosition)
-    slotDS.write('anchorDirection', slot.anchorDirection)
+    slotDS.write('anchorShift', slot.anchorShift)
     slotDS.write('tags', (' ').join(slot.tags))
 
 
@@ -49,7 +49,6 @@ def writeEmblemSlots(slotDS, slot):
     slotDS.write('rayUp', slot.rayUp)
     if slot.type == 'insigniaOnGun':
         _xml.rewriteBool(slotDS, 'applyToFabric', slot.applyToFabric, True)
-        _xml.rewriteString(slotDS, 'compatibleModels', (' ').join(slot.compatibleModels), '')
     else:
         _xml.rewriteBool(slotDS, 'isMirrored', slot.isMirrored, False)
     if slot.type in ('fixedEmblem', 'fixedInscription'):

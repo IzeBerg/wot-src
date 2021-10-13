@@ -23,8 +23,6 @@ package net.wg.data.constants.generated
       
       public static const QUEST_TYPE_MAPBOX:String = "mapboxProgression";
       
-      public static const QUEST_TYPE_EVENT_BATTLES:String = "eventBattles";
-      
       public static const QUEST_GROUP_COMMON:String = "commonQuestsGroup";
       
       public static const QUEST_GROUP_MARATHON:String = "marathonQuestsGroup";
@@ -38,8 +36,6 @@ package net.wg.data.constants.generated
       public static const QUEST_GROUP_RANKED_DAILY:String = "questGroupRankedDaily";
       
       public static const QUEST_GROUP_SENIORITY:String = "questGroupSeniority";
-      
-      public static const QUEST_GROUP_EVENT_BATTLES:String = "questGroupEventBattles";
        
       
       public function HANGAR_HEADER_QUESTS()

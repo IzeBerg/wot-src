@@ -1,7 +1,7 @@
 import random, weakref
 from functools import partial
 from vehicle_systems.stricted_loading import makeCallbackWeak
-import BigWorld, Math, ResMgr, material_kinds, AnimationSequence, Projectiles, Health
+import BigWorld, Math, material_kinds, AnimationSequence
 from debug_utils import LOG_CODEPOINT_WARNING, LOG_CURRENT_EXCEPTION
 from items import vehicles
 from common_tank_appearance import MAX_DISTANCE
@@ -10,8 +10,8 @@ from helpers.EffectsList import EffectsListPlayer
 from helpers.EntityExtra import EntityExtra
 from helpers.laser_sight_matrix_provider import LaserSightMatrixProvider
 from constants import IS_EDITOR, CollisionFlags
-if not IS_EDITOR:
-    from vehicle_extras_battle_royale import AfterburningBattleRoyale
+import Projectiles, Health
+from vehicle_extras_battle_royale import AfterburningBattleRoyale
 
 def reload():
     modNames = (
@@ -237,19 +237,20 @@ def wheelHealths(name, index, containerName, dataSection, vehType):
 
 
 class TrackHealth(DamageMarker):
-    __slots__ = ('__isLeft', )
+    __slots__ = ('__isLeft', '__trackPairIndex')
 
     def _readConfig(self, dataSection, containerName):
         DamageMarker._readConfig(self, dataSection, containerName)
         self.__isLeft = dataSection.readBool('isLeft')
         functionalCanMoveState = 'functionalCanMove'
         self.sounds[functionalCanMoveState] = dataSection.readString('sounds/' + functionalCanMoveState)
+        self.__trackPairIndex = dataSection.readInt('trackPairIdx', 0)
 
     def _start(self, data, args):
-        data['entity'].appearance.addCrashedTrack(self.__isLeft)
+        data['entity'].appearance.addCrashedTrack(self.__isLeft, self.__trackPairIndex)
 
     def _cleanup(self, data):
-        data['entity'].appearance.delCrashedTrack(self.__isLeft)
+        data['entity'].appearance.delCrashedTrack(self.__isLeft, self.__trackPairIndex)
 
 
 class Fire(EntityExtra):

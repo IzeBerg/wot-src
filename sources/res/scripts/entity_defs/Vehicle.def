@@ -186,6 +186,14 @@
 			<Flags>ALL_CLIENTS</Flags>
 			<DetailLevel>MY_VEHICLE</DetailLevel>
 		</vehPostProgression>
+		<disabledSwitches>
+			<Type>
+				ARRAY
+				<of>INT32</of>
+			</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<DetailLevel>MY_VEHICLE</DetailLevel>
+		</disabledSwitches>
 		<isClientConnected>
 			<Type>INT8</Type>
 			<Flags>CELL_PRIVATE</Flags>

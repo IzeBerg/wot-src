@@ -491,8 +491,8 @@ package net.wg.gui.lobby.techtree.sub
          this._isDragging = false;
          this.ntGraphics.mouseChildren = true;
          this.premiumPanel.mouseChildren = this.premiumPanel.mouseEnabled = true;
-         this.premiumHitArea.mouseChildren = true;
-         this.premiumHitArea.mouseEnabled = this.premiumPanel.visible;
+         this.premiumHitArea.mouseChildren = this.premiumPanelClickArea.mouseChildren = true;
+         this.premiumHitArea.mouseEnabled = this.premiumPanelClickArea.mouseEnabled = this.premiumPanel.visible;
          if(this.premiumPanel.isOpened && !this.premiumHitArea.hitTestPoint(App.stage.mouseX,App.stage.mouseY))
          {
             this.closePremiumPanel(true);
@@ -507,6 +507,7 @@ package net.wg.gui.lobby.techtree.sub
          this.ntGraphics.mouseChildren = false;
          this.premiumPanel.mouseChildren = this.premiumPanel.mouseEnabled = false;
          this.premiumHitArea.mouseChildren = this.premiumHitArea.mouseEnabled = false;
+         this.premiumPanelClickArea.mouseChildren = this.premiumPanelClickArea.mouseEnabled = false;
       }
       
       public function openPremiumPanel() : void
@@ -1068,6 +1069,7 @@ package net.wg.gui.lobby.techtree.sub
          this.premiumPanel.visible = param1;
          this.premiumPanelBack.visible = param1;
          this.premiumHitArea.mouseEnabled = param1;
+         this.premiumPanelClickArea.mouseEnabled = param1;
          this.premiumPanelShadow.visible = param1;
       }
       

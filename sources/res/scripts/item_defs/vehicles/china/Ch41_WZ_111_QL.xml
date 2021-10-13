@@ -8,7 +8,7 @@
 		<loader/>
 	</crew>
 	<supplySlots>5 1 1 6 6 6 7 8 8 8</supplySlots>
-	<postProgressionTree>role_HT_break_level_10</postProgressionTree>
+	<postProgressionTree>role_HT_break</postProgressionTree>
 	<customRoleSlotOptions>2 4</customRoleSlotOptions>
 	<speedLimits>
 		<forward>50</forward>
@@ -192,16 +192,9 @@
 				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.000000</clipAngle>
-				<anchorPosition>
-					0.000022 0.643402 -2.16349
-					<!--BW_String-->
-				</anchorPosition>
-				<anchorDirection>
-					-0.000060 1 -0.000003
-					<!--BW_String-->
-				</anchorDirection>
 				<compatibleModels>default</compatibleModels>
 				<verticalMirror>true</verticalMirror>
+				<anchorShift>0.074585</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -222,12 +215,8 @@
 					1.42524
 					<!--BW_String-->
 				</clipAngle>
-				<anchorPosition>
-					-0.395205 0.362881 2.86632
-					<!--BW_String-->
-				</anchorPosition>
-				<anchorDirection>-0.147458 0.902941 0.403676</anchorDirection>
 				<compatibleModels>default</compatibleModels>
+				<anchorShift>0.195355</anchorShift>
 			</slot>
 		</customizationSlots>
 		<camouflage>
@@ -2279,6 +2268,10 @@
 					<camouflage/>
 				</customizableVehicleAreas>
 			</customization>
+			<repairTime>
+				6.85714293
+				<!--BW_String-->
+			</repairTime>
 		</Chassis_Ch41_WZ_111_QL>
 	</chassis>
 	<turrets0>
@@ -2569,15 +2562,8 @@
 						0.0573674
 						<!--BW_String-->
 					</clipAngle>
-					<anchorPosition>
-						0.00497381 0.730799 0.943095
-						<!--BW_String-->
-					</anchorPosition>
-					<anchorDirection>
-						0.000032 0.997772 0.0667108
-						<!--BW_String-->
-					</anchorDirection>
 					<compatibleModels>default</compatibleModels>
+					<anchorShift>0.395119</anchorShift>
 				</slot>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -2595,12 +2581,8 @@
 					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.230314</clipAngle>
-					<anchorPosition>
-						-0.5582 0.524358 -1.17029
-						<!--BW_String-->
-					</anchorPosition>
-					<anchorDirection>-0.260054 0.729791 -0.632279</anchorDirection>
 					<compatibleModels>default</compatibleModels>
+					<anchorShift>0.150775</anchorShift>
 				</slot>
 			</customizationSlots>
 			<camouflage>

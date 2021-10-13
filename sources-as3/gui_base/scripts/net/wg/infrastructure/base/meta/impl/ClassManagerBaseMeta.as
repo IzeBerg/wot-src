@@ -450,6 +450,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.crosshairPanel.components.autoloader.AutoloaderIndicator;
    import net.wg.gui.components.crosshairPanel.components.autoloader.AutoloaderShellsCassette;
    import net.wg.gui.components.crosshairPanel.components.autoloader.AutoloaderTimer;
+   import net.wg.gui.components.crosshairPanel.components.autoloader.AutoloaderTimerText;
    import net.wg.gui.components.crosshairPanel.components.autoloader.BoostIndicator;
    import net.wg.gui.components.crosshairPanel.components.autoloader.BoostIndicatorElement;
    import net.wg.gui.components.crosshairPanel.components.autoloader.BoostIndicatorStateParamsVO;
@@ -746,7 +747,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.settings.SoundSettingsBase;
    import net.wg.gui.lobby.settings.SoundSpecialForm;
    import net.wg.gui.lobby.settings.SoundVivoxForm;
-   import net.wg.gui.lobby.settings.components.EventSettingLabel;
    import net.wg.gui.lobby.settings.components.KeyInput;
    import net.wg.gui.lobby.settings.components.KeysItemRenderer;
    import net.wg.gui.lobby.settings.components.KeysScrollingList;
@@ -1802,6 +1802,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_AUTOLOADER_AUTOLOADERTIMER:Class = AutoloaderTimer;
       
+      public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_AUTOLOADER_AUTOLOADERTIMERTEXT:Class = AutoloaderTimerText;
+      
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_AUTOLOADER_BOOSTINDICATOR:Class = BoostIndicator;
       
       public static const NET_WG_GUI_COMPONENTS_CROSSHAIRPANEL_COMPONENTS_AUTOLOADER_BOOSTINDICATORELEMENT:Class = BoostIndicatorElement;
@@ -2399,8 +2401,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_SETTINGS_SOUNDSPECIALFORM:Class = SoundSpecialForm;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_SOUNDVIVOXFORM:Class = SoundVivoxForm;
-      
-      public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_EVENTSETTINGLABEL:Class = EventSettingLabel;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_KEYINPUT:Class = KeyInput;
       

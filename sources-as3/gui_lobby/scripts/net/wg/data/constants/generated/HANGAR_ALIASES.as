@@ -67,6 +67,8 @@ package net.wg.data.constants.generated
       
       public static const DAILY_QUEST_WIDGET:String = "dqWidget";
       
+      public static const YHA_ENTRANCE_POINT:String = "yhaEntrancePoint";
+      
       public static const BATTLE_PASSS_ENTRY_POINT:String = "battlePassEntryPoint";
       
       public static const BATTLE_ROYALE_ENTRY_POINT:String = "battleRoyaleEntryPoint";
@@ -81,6 +83,8 @@ package net.wg.data.constants.generated
       
       public static const AMMUNITION_SETUP_VIEW_INJECT:String = "ammunitionSetupViewInject";
       
+      public static const CREW_XP_PANEL_INJECT:String = "crewXPPanelInject";
+      
       public static const CRAFT_MACHINE_ENTRY_POINT:String = "CraftMachineEntryPoint";
       
       public static const MAPBOX_ENTRY_POINT:String = "MapBoxEntryPoint";
@@ -94,22 +98,6 @@ package net.wg.data.constants.generated
       public static const POST_PROGRESSION_VIEW:String = "VehPostProgressionView";
       
       public static const POST_PROGRESSION_VEHICLE_PARAMS:String = "PostProgressionVehicleParams";
-      
-      public static const SHOP_BIRTHDAY_SECTION_ENTRY_POINT:String = "ShopBirthdaySectionEntryPoint";
-      
-      public static const LOOTBOXES_WIDGET:String = "eventBoxEntryWidget";
-      
-      public static const WHITE_TIGER_WIDGET:String = "whiteTigerWidget";
-      
-      public static const WT_EVENT_ENTRY_POINT:String = "WTEventEntryPoint";
-      
-      public static const WT_EVENT_PRIME_TIME:String = "wtEventPrimeTime.swf";
-      
-      public static const EVENT_CAROUSEL_WIDGET:String = "eventCarouselWidget";
-      
-      public static const EVENT_CREW_WIDGET:String = "eventCrewWidget";
-      
-      public static const EVENT_PARAMS_WIDGET:String = "eventParamsWidget";
        
       
       public function HANGAR_ALIASES()

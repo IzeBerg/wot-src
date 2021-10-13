@@ -54,9 +54,8 @@ package net.wg.gui.components.common.serverStats
       
       public function ServerDropDown()
       {
-         var _loc1_:Number = NaN;
          super();
-         _loc1_ = width;
+         var _loc1_:Number = width;
          var _loc2_:Number = height;
          scaleX = scaleY = 1;
          preventAutosizing = true;

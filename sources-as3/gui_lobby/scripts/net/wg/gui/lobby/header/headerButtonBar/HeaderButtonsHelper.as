@@ -12,6 +12,7 @@ package net.wg.gui.lobby.header.headerButtonBar
    import net.wg.gui.lobby.header.vo.HBC_PremShopVO;
    import net.wg.gui.lobby.header.vo.HBC_SettingsVo;
    import net.wg.gui.lobby.header.vo.HBC_SquadDataVo;
+   import net.wg.gui.lobby.header.vo.HBC_WotPlusDataVO;
    import net.wg.gui.lobby.header.vo.HeaderButtonVo;
    import net.wg.gui.lobby.header.vo.IHBC_VO;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
@@ -25,6 +26,8 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       public static const ITEM_ID_ACCOUNT:String = "account";
       
+      public static const ITEM_ID_WOT_PLUS:String = "wotPlus";
+      
       public static const ITEM_ID_PREM:String = "prem";
       
       public static const ITEM_ID_PREMSHOP:String = "premShop";
@@ -35,12 +38,14 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       private static const BOTTOM_HELP_DIR:String = "B";
       
-      private static const BUTTONS_ORDER:Vector.<String> = new <String>[ITEM_ID_SETTINGS,ITEM_ID_ACCOUNT,ITEM_ID_PREM,ITEM_ID_PREMSHOP,ITEM_ID_SQUAD,ITEM_ID_BATTLE_SELECTOR,CURRENCIES_CONSTANTS.CRYSTAL,CURRENCIES_CONSTANTS.GOLD,CURRENCIES_CONSTANTS.CREDITS,CURRENCIES_CONSTANTS.FREE_XP];
+      private static const BUTTONS_ORDER:Vector.<String> = new <String>[ITEM_ID_SETTINGS,ITEM_ID_ACCOUNT,ITEM_ID_WOT_PLUS,ITEM_ID_PREM,ITEM_ID_PREMSHOP,ITEM_ID_SQUAD,ITEM_ID_BATTLE_SELECTOR,CURRENCIES_CONSTANTS.CRYSTAL,CURRENCIES_CONSTANTS.GOLD,CURRENCIES_CONSTANTS.CREDITS,CURRENCIES_CONSTANTS.FREE_XP];
        
       
       private var _settingsData:HeaderButtonVo;
       
       private var _accountData:HeaderButtonVo;
+      
+      private var _wotPlusData:HeaderButtonVo;
       
       private var _premData:HeaderButtonVo;
       
@@ -86,6 +91,17 @@ package net.wg.gui.lobby.header.headerButtonBar
             "isUseFreeSize":true,
             "data":new HBC_AccountDataVo(),
             "helpText":LOBBY_HELP.HEADER_ACCOUNT_BUTTON,
+            "helpDirection":BOTTOM_HELP_DIR,
+            "enabled":true
+         });
+         this._wotPlusData = new HeaderButtonVo({
+            "id":ITEM_ID_WOT_PLUS,
+            "linkage":Linkages.HBC_WOT_PLUS_UI,
+            "direction":TextFieldAutoSize.LEFT,
+            "align":TextFieldAutoSize.LEFT,
+            "isUseFreeSize":false,
+            "data":new HBC_WotPlusDataVO(),
+            "helpText":LOBBY_HELP.HEADER_WOT_PLUS_BUTTON,
             "helpDirection":BOTTOM_HELP_DIR,
             "enabled":true
          });
@@ -182,6 +198,7 @@ package net.wg.gui.lobby.header.headerButtonBar
          this._btnsMap = {};
          this._btnsMap[this._settingsData.id] = this._settingsData;
          this._btnsMap[this._accountData.id] = this._accountData;
+         this._btnsMap[this._wotPlusData.id] = this._wotPlusData;
          this._btnsMap[this._premData.id] = this._premData;
          this._btnsMap[this._premShopData.id] = this._premShopData;
          this._btnsMap[this._squadData.id] = this._squadData;
@@ -210,18 +227,30 @@ package net.wg.gui.lobby.header.headerButtonBar
          this.invalidateAllData();
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
          this._headerButtonBar = null;
+         this._settingsData.dispose();
          this._settingsData = null;
+         this._accountData.dispose();
          this._accountData = null;
+         this._wotPlusData.dispose();
+         this._wotPlusData = null;
+         this._premData.dispose();
          this._premData = null;
+         this._premShopData.dispose();
          this._premShopData = null;
+         this._squadData.dispose();
          this._squadData = null;
+         this._battleSelectorData.dispose();
          this._battleSelectorData = null;
+         this._goldData.dispose();
          this._goldData = null;
+         this._creditsData.dispose();
          this._creditsData = null;
+         this._crystalData.dispose();
          this._crystalData = null;
+         this._freeXPData.dispose();
          this._freeXPData = null;
          App.utils.data.cleanupDynamicObject(this._btnsMap);
          this._btnsMap = null;
@@ -255,7 +284,17 @@ package net.wg.gui.lobby.header.headerButtonBar
          _loc3_.enabled = param2;
          if(_loc3_.headerButton)
          {
-            _loc3_.headerButton.enabled = param2;
+            _loc3_.headerButton.updateEnabled();
+         }
+      }
+      
+      public function setButtonSoftDisable(param1:String, param2:Boolean) : void
+      {
+         var _loc3_:HeaderButtonVo = this.getButtonDataById(param1);
+         _loc3_.softDisable = param2;
+         if(_loc3_.headerButton)
+         {
+            _loc3_.headerButton.updateEnabled();
          }
       }
       

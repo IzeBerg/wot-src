@@ -1,6 +1,5 @@
 import Event
 from frameworks.wulf import WindowLayer
-from gui.Scaleform.Waiting import Waiting
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.marathon.marathon_event import MarathonEvent
 from gui.marathon.marathon_resource_manager import MarathonResourceManager
@@ -10,7 +9,6 @@ from helpers import dependency, isPlayerAccount
 from skeletons.gui.game_control import IMarathonEventsController
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
-from skeletons.gui.shared.utils import IHangarSpace
 _events = []
 
 def marathonCreator(event=MarathonEvent, resourceManager=MarathonResourceManager):
@@ -29,12 +27,11 @@ def getMarathons():
 class MarathonEventsController(IMarathonEventsController, Notifiable):
     _eventsCache = dependency.descriptor(IEventsCache)
     _itemsCache = dependency.descriptor(IItemsCache)
-    _hangarSpace = dependency.descriptor(IHangarSpace)
 
     def __init__(self):
         super(MarathonEventsController, self).__init__()
         self.__isLobbyInited = False
-        self.__hangarViewLoaded = False
+        self.__isInHangar = False
         self.__eventManager = Event.EventManager()
         self.onFlagUpdateNotify = Event.Event(self.__eventManager)
         self.onMarathonDataChanged = Event.Event(self.__eventManager)
@@ -122,29 +119,26 @@ class MarathonEventsController(IMarathonEventsController, Notifiable):
         super(MarathonEventsController, self).onLobbyStarted(ctx)
         self._eventsCache.onSyncCompleted += self.__onSyncCompleted
         self._eventsCache.onProgressUpdated += self.__onSyncCompleted
-        self._hangarSpace.onVehicleChanged += self.__tryShowScreens
-        self._hangarSpace.onHeroTankReady += self.__tryShowScreens
         if self.app and self.app.loaderManager:
             self.app.loaderManager.onViewLoaded += self.__onViewLoaded
         self.__onSyncCompleted()
 
-    def __tryShowScreens(self):
-        if self.__hangarViewLoaded and not Waiting.isVisible():
+    def __tryShowRewardScreen(self):
+        if self.__isLobbyInited and self.__isInHangar:
             for marathon in self.__marathons:
                 marathon.showRewardScreen()
-                marathon.tryShowIntroScreen()
 
     def __onViewLoaded(self, pyView, _):
         if self.__isLobbyInited:
             if pyView.alias == VIEW_ALIAS.LOBBY_HANGAR:
-                self.__hangarViewLoaded = True
-                self.__tryShowScreens()
+                self.__isInHangar = True
+                self.__tryShowRewardScreen()
             elif pyView.layer == WindowLayer.SUB_VIEW:
-                self.__hangarViewLoaded = False
+                self.__isInHangar = False
 
     def __onSyncCompleted(self, *args):
         self.__checkEvents()
-        self.__tryShowScreens()
+        self.__tryShowRewardScreen()
         self.__reloadNotification()
 
     def __checkEvents(self):
@@ -155,7 +149,7 @@ class MarathonEventsController(IMarathonEventsController, Notifiable):
 
     def __updateFlagState(self):
         self.__checkEvents()
-        self.__tryShowScreens()
+        self.__tryShowRewardScreen()
         self.onFlagUpdateNotify()
 
     def __getClosestStatusUpdateTime(self):
@@ -182,8 +176,6 @@ class MarathonEventsController(IMarathonEventsController, Notifiable):
         self._eventsCache.onProgressUpdated -= self.__onSyncCompleted
         if self.app and self.app.loaderManager:
             self.app.loaderManager.onViewLoaded -= self.__onViewLoaded
-        self._hangarSpace.onVehicleChanged -= self.__tryShowScreens
-        self._hangarSpace.onHeroTankReady -= self.__tryShowScreens
         self.__isLobbyInited = False
 
     def __findByPrefix(self, prefix):
@@ -192,9 +184,3 @@ class MarathonEventsController(IMarathonEventsController, Notifiable):
                 return marathon
 
         return
-
-    def handleOpenVideoContent(self, prefix, url):
-        if self.__hangarViewLoaded:
-            for marathon in self.__marathons:
-                if marathon.prefix == prefix:
-                    marathon.showVideoContentScreen(url=url)

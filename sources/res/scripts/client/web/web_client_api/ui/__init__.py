@@ -1,5 +1,4 @@
 from web.web_client_api import w2capi
-from web.web_client_api.birthday_calendar import OpenBirthdayCalendarWebApiMixin
 from web.web_client_api.ui.calendar import OpenCalendarWindowWebApiMixin
 from web.web_client_api.ui.chat import ChatWebApiMixin
 from web.web_client_api.ui.shop import ShopWebApiMixin
@@ -36,7 +35,7 @@ from web.web_client_api.ui.frontline import OpenFrontLinePagesMixin
 from web.web_client_api.ui.referral import ReferralProgramPagesMixin
 
 @w2capi(name='open_window', key='window_id')
-class OpenWindowWebApi(OpenBrowserWindowWebApiMixin, ClanWindowWebApiMixin, ProfileWindowWebApiMixin, OpenExternalBrowserWebApiMixin, VehicleSellWebApiMixin, hangar.HangarWindowsWebApiMixin, BoostersWindowWebApiMixin, ManualPageWebApiMixin, ChatWebApiMixin, SquadWebApiMixin, OpenBrowserOverlayWebApiMixin, PremiumViewsWebApiMixin, OpenCalendarWindowWebApiMixin, OpenBuyGoldWebApiMixin, OpenTankmanWebApiMixin, DialogsWebApiMixin, OpenRankedPagesMixin, OpenBirthdayCalendarWebApiMixin):
+class OpenWindowWebApi(OpenBrowserWindowWebApiMixin, ClanWindowWebApiMixin, ProfileWindowWebApiMixin, OpenExternalBrowserWebApiMixin, VehicleSellWebApiMixin, hangar.HangarWindowsWebApiMixin, BoostersWindowWebApiMixin, ManualPageWebApiMixin, ChatWebApiMixin, SquadWebApiMixin, OpenBrowserOverlayWebApiMixin, PremiumViewsWebApiMixin, OpenCalendarWindowWebApiMixin, OpenBuyGoldWebApiMixin, OpenTankmanWebApiMixin, DialogsWebApiMixin, OpenRankedPagesMixin):
     pass
 
 

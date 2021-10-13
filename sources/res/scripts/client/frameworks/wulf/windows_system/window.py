@@ -48,6 +48,14 @@ class WindowSettings(object):
         self.__proxy.entryID = entryID
 
     @property
+    def name(self):
+        return self.__proxy.name
+
+    @name.setter
+    def name(self, name):
+        self.__proxy.name = name
+
+    @property
     def areaID(self):
         return self.__proxy.areaID
 
@@ -93,6 +101,7 @@ class Window(PyObjectEntity):
     __slots__ = ('onStatusChanged', '__windowStatus', '__weakref__')
 
     def __init__(self, settings):
+        settings.name = self.getName()
         super(Window, self).__init__(PyObjectWindow(settings.proxy))
         self.onStatusChanged = Event.Event()
         self.__windowStatus = WindowStatus.UNDEFINED if self.proxy is None else self.proxy.windowStatus
@@ -101,6 +110,13 @@ class Window(PyObjectEntity):
 
     def __repr__(self):
         return ('{}(uniqueID={}, layer={}, decorator={}, content={})').format(self.__class__.__name__, self.uniqueID, self.layer, self.decorator, self.content)
+
+    def getName(self):
+        module = self.__class__.__module__
+        if module is None:
+            return self.__class__.__name__
+        else:
+            return ('.').join((module, self.__class__.__name__))
 
     @property
     def decorator(self):

@@ -305,7 +305,6 @@ class DamageIndicatorMeta(Flash):
         self._as_hide = root.as_hide
         self._as_setScreenSettings = root.as_setScreenSettings
         self._as_setPosition = root.as_setPosition
-        self._as_setAlpha = root.as_setAlpha
 
     def destroy(self):
         self._as_updateSettings = None
@@ -315,7 +314,6 @@ class DamageIndicatorMeta(Flash):
         self._as_hide = None
         self._as_setScreenSettings = None
         self._as_setPosition = None
-        self._as_setAlpha = None
         self.movie.root.dmgIndicator.dispose()
         return
 
@@ -340,17 +338,14 @@ class DamageIndicatorMeta(Flash):
     def as_setPosition(self, posX, posY):
         self._as_setPosition(posX, posY)
 
-    def as_setAlphaS(self, itemIdx, alpha):
-        self._as_setAlpha(itemIdx, alpha)
 
-
-class DamageIndicator(DamageIndicatorMeta, IHitIndicator):
+class _DamageIndicator(DamageIndicatorMeta, IHitIndicator):
     sessionProvider = dependency.descriptor(IBattleSessionProvider)
     settingsCore = dependency.descriptor(ISettingsCore)
 
     def __init__(self, hitsCount):
         names = tuple(_DAMAGE_INDICATOR_MC_NAME.format(x) for x in xrange(hitsCount))
-        super(DamageIndicator, self).__init__(_DAMAGE_INDICATOR_SWF, _DAMAGE_INDICATOR_COMPONENT, (names,))
+        super(_DamageIndicator, self).__init__(_DAMAGE_INDICATOR_SWF, _DAMAGE_INDICATOR_COMPONENT, (names,))
         self.__voBuilderFactory = None
         self.__updateMethod = None
         self.component.wg_inputKeyMode = InputKeyMode.NO_HANDLE
@@ -383,7 +378,7 @@ class DamageIndicator(DamageIndicatorMeta, IHitIndicator):
         return HitType.HIT_DAMAGE
 
     def destroy(self):
-        super(DamageIndicator, self).destroy()
+        super(_DamageIndicator, self).destroy()
         self.settingsCore.interfaceScale.onScaleChanged -= self.__setMarkersScale
         ctrl = self.sessionProvider.shared.crosshair
         if ctrl is not None:
@@ -701,7 +696,7 @@ class SiegeModeIndicator(SiegeModeIndicatorMeta):
 
     @staticmethod
     def __hydraulicDeviceStateConverter(deviceName, state):
-        if state == DEVICE_STATE_CRITICAL and deviceName in ('leftTrack', 'rightTrack'):
+        if state == DEVICE_STATE_CRITICAL and deviceName in ('leftTrack0', 'rightTrack0'):
             return DEVICE_STATE_NORMAL
         return state
 
@@ -722,7 +717,7 @@ class SiegeModeIndicator(SiegeModeIndicatorMeta):
     @staticmethod
     def __createDevicesMap(vTypeDesc):
         if vTypeDesc.hasHydraulicChassis or vTypeDesc.hasAutoSiegeMode:
-            deviceNames = ('engine', 'leftTrack', 'rightTrack')
+            deviceNames = ('engine', 'leftTrack0', 'rightTrack0')
         elif vTypeDesc.hasTurboshaftEngine:
             deviceNames = ('engine', )
         else:
@@ -813,7 +808,7 @@ def createDirectIndicator():
 
 
 def createDamageIndicator():
-    return DamageIndicator(HIT_INDICATOR_MAX_ON_SCREEN)
+    return _DamageIndicator(HIT_INDICATOR_MAX_ON_SCREEN)
 
 
 def createPredictionIndicator():

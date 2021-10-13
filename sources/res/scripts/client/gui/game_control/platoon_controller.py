@@ -53,7 +53,7 @@ if TYPE_CHECKING:
     from typing import Optional as TOptional, Tuple as TTuple
     from UnitBase import ProfileVehicle
 _logger = logging.getLogger(__name__)
-_QUEUE_TYPE_TO_PREBATTLE_ACTION_NAME = {QUEUE_TYPE.EVENT_BATTLES: PREBATTLE_ACTION_NAME.EVENT_SQUAD, 
+_QUEUE_TYPE_TO_PREBATTLE_ACTION_NAME = {QUEUE_TYPE.EVENT_BATTLES: PREBATTLE_ACTION_NAME.SQUAD, 
    QUEUE_TYPE.RANDOMS: PREBATTLE_ACTION_NAME.SQUAD, 
    QUEUE_TYPE.EPIC: PREBATTLE_ACTION_NAME.SQUAD, 
    QUEUE_TYPE.BATTLE_ROYALE: PREBATTLE_ACTION_NAME.BATTLE_ROYALE_SQUAD, 
@@ -281,8 +281,9 @@ class PlatoonController(IPlatoonController, IGlobalListener, CallbackDelayer):
     def createPlatoon(self, startAutoSearchOnUnitJoin=False):
         queueType = self.getQueueType()
         if queueType in _QUEUE_TYPE_TO_PREBATTLE_ACTION_NAME:
-            navigationPossible = startAutoSearchOnUnitJoin
-            if not navigationPossible:
+            if startAutoSearchOnUnitJoin:
+                navigationPossible = yield self.__lobbyContext.isPlatoonCreationPossible()
+            else:
                 navigationPossible = yield self.__lobbyContext.isHeaderNavigationPossible()
             if navigationPossible:
                 if self.prbDispatcher:
@@ -951,10 +952,7 @@ class PlatoonController(IPlatoonController, IGlobalListener, CallbackDelayer):
             return
         else:
             self.__isPlatoonVisualizationEnabled = displayPlatoonMembers
-            if self.prbDispatcher:
-                isInPlatoon = self.prbDispatcher.getFunctionalState().isInUnit()
-            else:
-                isInPlatoon = False
+            isInPlatoon = self.prbDispatcher.getFunctionalState().isInUnit()
             self.onPlatoonTankVisualizationChanged(self.__isPlatoonVisualizationEnabled and isInPlatoon)
             self.__updatePlatoonTankInfo()
             return
@@ -1014,8 +1012,7 @@ class PlatoonController(IPlatoonController, IGlobalListener, CallbackDelayer):
             unitMgrID = entity.getID()
             for slot in entity.getSlotsIterator(*entity.getUnit(unitMgrID=unitMgrID)):
                 if slot.player is not None and not slot.player.isCurrentPlayer():
-                    isEvent = entity.getEntityType() == PREBATTLE_TYPE.EVENT
-                    canDisplayModel = slot.player.isReady and not slot.player.isInArena() and not isEvent
+                    canDisplayModel = slot.player.isReady and not slot.player.isInArena()
                     profileVehicle = slot.profileVehicle
                     player = slot.player
                     if profileVehicle and player:

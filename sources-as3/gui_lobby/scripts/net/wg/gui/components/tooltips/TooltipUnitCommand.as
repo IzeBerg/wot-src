@@ -61,8 +61,9 @@ package net.wg.gui.components.tooltips
       
       override protected function redraw() : void
       {
+         var _loc1_:ILocale = null;
          var _loc4_:String = null;
-         var _loc1_:ILocale = App.utils.locale;
+         _loc1_ = App.utils.locale;
          var _loc2_:UnitCommandVO = new UnitCommandVO(_data);
          separators = new Vector.<Separator>();
          topPosition += this.setHeader(_loc2_.commanderName);

@@ -19,7 +19,6 @@ package net.wg.gui.lobby.hangar
    import net.wg.gui.lobby.hangar.quests.HeaderQuestsFlags;
    import net.wg.gui.lobby.hangar.quests.IHeaderFlagsEntryPoint;
    import net.wg.gui.lobby.hangar.quests.SecondaryEntryPoint;
-   import net.wg.gui.lobby.hangar.quests.WhiteTigerWidget;
    import net.wg.gui.lobby.rankedBattles19.components.widget.RankedBattlesHangarWidget;
    import net.wg.infrastructure.base.meta.IHangarHeaderMeta;
    import net.wg.infrastructure.base.meta.impl.HangarHeaderMeta;
@@ -59,8 +58,6 @@ package net.wg.gui.lobby.hangar
       private var _rankedBattlesWidget:RankedBattlesHangarWidget = null;
       
       private var _battleRoyaleHangarWidget:BattleRoyaleHangarWidget = null;
-      
-      private var _whiteTigerWidget:WhiteTigerWidget = null;
       
       private var _battleRoyaleTournamentWidget:BattleRoyaleTournamentWidget = null;
       
@@ -114,7 +111,6 @@ package net.wg.gui.lobby.hangar
          this._battlePassEntryPoint = null;
          this._rankedBattlesWidget = null;
          this._battleRoyaleHangarWidget = null;
-         this._whiteTigerWidget = null;
          this._battleRoyaleTournamentWidget = null;
          this._epicBattlesWidget = null;
          this.mcBackground = null;
@@ -142,7 +138,7 @@ package net.wg.gui.lobby.hangar
             _loc1_ = 0;
             if(this.secondaryEntryPoint.visible)
             {
-               _loc2_ = this._battlePassEntryPoint || this._rankedBattlesWidget || this._battleRoyaleHangarWidget || this._epicBattlesWidget || this._whiteTigerWidget;
+               _loc2_ = this._battlePassEntryPoint || this._rankedBattlesWidget || this._battleRoyaleHangarWidget || this._epicBattlesWidget;
                if(_loc2_)
                {
                   _loc1_ = (_loc2_.width >> 1) + _loc2_.marginRight + this._secondaryPointX;
@@ -192,15 +188,6 @@ package net.wg.gui.lobby.hangar
             this.questsFlags.setEntryPoint(this._battleRoyaleHangarWidget);
             registerFlashComponentS(this._battleRoyaleHangarWidget,HANGAR_ALIASES.BATTLE_ROYALE_ENTRY_POINT);
             invalidateLayout();
-         }
-      }
-      
-      public function as_createEventWidget() : void
-      {
-         if(this._whiteTigerWidget == null)
-         {
-            this._scheduler.cancelTask(this.createWhiteTiger);
-            this._scheduler.scheduleOnNextFrame(this.createWhiteTiger);
          }
       }
       
@@ -268,23 +255,6 @@ package net.wg.gui.lobby.hangar
                unregisterFlashComponentS(HANGAR_ALIASES.BATTLE_ROYALE_ENTRY_POINT);
             }
             this._battleRoyaleHangarWidget = null;
-            invalidateLayout();
-         }
-      }
-      
-      public function as_removeEventWidget() : void
-      {
-         if(this._whiteTigerWidget != null)
-         {
-            if(this.questsFlags.getEntryPoint() is WhiteTigerWidget)
-            {
-               this.questsFlags.setEntryPoint(null);
-            }
-            if(isFlashComponentRegisteredS(HANGAR_ALIASES.WHITE_TIGER_WIDGET))
-            {
-               unregisterFlashComponentS(HANGAR_ALIASES.WHITE_TIGER_WIDGET);
-            }
-            this._whiteTigerWidget = null;
             invalidateLayout();
          }
       }
@@ -370,11 +340,6 @@ package net.wg.gui.lobby.hangar
          invalidateLayout();
       }
       
-      public function updateStage(param1:Number, param2:Number) : void
-      {
-         this.questsFlags.updateStage(param1,param2);
-      }
-      
       private function createBattlePass() : void
       {
          this._battlePassEntryPoint = new BattlePassEntryPoint();
@@ -401,13 +366,6 @@ package net.wg.gui.lobby.hangar
       {
          invalidateLayout();
          validateNow();
-      }
-      
-      private function createWhiteTiger() : void
-      {
-         this._whiteTigerWidget = new WhiteTigerWidget();
-         this.questsFlags.setEntryPoint(this._whiteTigerWidget);
-         registerFlashComponentS(this._whiteTigerWidget,HANGAR_ALIASES.WHITE_TIGER_WIDGET);
       }
       
       private function onBtnHeaderQuestClickHandler(param1:HeaderQuestsEvent) : void

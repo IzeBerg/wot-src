@@ -1,6 +1,6 @@
 import time
 from contextlib import contextmanager
-from account_helpers.AccountSettings import DOG_TAGS
+from account_helpers.AccountSettings import DOG_TAGS, WOT_PLUS
 from gui.shared import utils
 from helpers import dependency
 from skeletons.gui.server_events import IEventsCache
@@ -43,6 +43,37 @@ class _DogTagsRootSettings(utils.SettingRootRecord):
     @classmethod
     def _getSettingName(cls):
         return DOG_TAGS
+
+
+class _WotPlusSettings(utils.SettingRootRecord):
+
+    def __init__(self, isWotPlusEnabled=False, isEntryPointsEnabled=False, isGoldReserveEnabled=False, isPassiveXpEnabled=False, isTankRentalEnabled=False, isFreeDirectivesEnabled=False, rentPendingVehCD=None):
+        super(_WotPlusSettings, self).__init__(isWotPlusEnabled=isWotPlusEnabled, isEntryPointsEnabled=isEntryPointsEnabled, isGoldReserveEnabled=isGoldReserveEnabled, isPassiveXpEnabled=isPassiveXpEnabled, isTankRentalEnabled=isTankRentalEnabled, isFreeDirectivesEnabled=isFreeDirectivesEnabled, rentPendingVehCD=rentPendingVehCD)
+
+    def setWotPlusEnabledState(self, isEnabled):
+        self.update(isWotPlusEnabled=isEnabled)
+
+    def setEntryPointsEnabledState(self, isEnabled):
+        self.update(isEntryPointsEnabled=isEnabled)
+
+    def setGoldReserveEnabledState(self, isEnabled):
+        self.update(isGoldReserveEnabled=isEnabled)
+
+    def setPassiveXpState(self, isEnabled):
+        self.update(isPassiveXpEnabled=isEnabled)
+
+    def setTankRentalState(self, isEnabled):
+        self.update(isTankRentalEnabled=isEnabled)
+
+    def setFreeDirectivesState(self, isEnabled):
+        self.update(isFreeDirectivesEnabled=isEnabled)
+
+    def setRentPending(self, vehCD):
+        self.update(rentPendingVehCD=vehCD)
+
+    @classmethod
+    def _getSettingName(cls):
+        return WOT_PLUS
 
 
 class _QuestSettings(utils.SettingRootRecord):
@@ -187,5 +218,16 @@ def getDogTagsSettings():
 @contextmanager
 def dogTagsSettings():
     s = getDogTagsSettings()
+    yield s
+    s.save()
+
+
+def getWotPlusSettings():
+    return _WotPlusSettings.load()
+
+
+@contextmanager
+def wotPlusSettings():
+    s = getWotPlusSettings()
     yield s
     s.save()

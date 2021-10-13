@@ -52,7 +52,7 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       private static const OFFSET_CAROUSEL:int = 10;
       
-      private static const THRESHOLD:int = 809;
+      public static const THRESHOLD:int = 809;
       
       private static const GO_TO_OFFSET:Number = 0.5;
       
@@ -69,6 +69,8 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       public var background:MovieClip = null;
       
+      public var smallDoubleCarouselEnable:Boolean = false;
+      
       private var _carouselHelpLayoutId:String = null;
       
       private var _filtersHelpLayoutId:String = null;
@@ -78,8 +80,6 @@ package net.wg.gui.lobby.hangar.tcarousel
       private var _rowCount:int = 1;
       
       private var _helper:ITankCarouselHelper = null;
-      
-      private var _smallDoubleCarouselEnable:Boolean = false;
       
       private var _listVisibleHeight:int = -1;
       
@@ -100,13 +100,14 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       override protected function updateLayout(param1:int, param2:int = 0) : void
       {
+         var _loc5_:int = 0;
          var _loc3_:Number = param2 + OFFSET_ARROW;
          var _loc4_:int = FILTERS_WIDTH + OFFSET_FILTERS;
          if(this.vehicleFilters.visible)
          {
             _loc3_ += _loc4_;
          }
-         var _loc5_:Number = param1 - _loc3_ - OFFSET_ARROW - this._rightMargin >> 0;
+         _loc5_ = param1 - _loc3_ - OFFSET_ARROW - this._rightMargin;
          this.background.width = param1 >> 0;
          var _loc6_:int = _loc5_ + leftArrowOffset - rightArrowOffset >> 0;
          super.updateLayout(_loc5_,(_loc5_ - _loc6_ >> 1) + _loc3_ >> 0);
@@ -140,6 +141,7 @@ package net.wg.gui.lobby.hangar.tcarousel
          addEventListener(TankItemEvent.SELECT_BUY_TANK,this.onSelectBuyTankHandler);
          addEventListener(TankItemEvent.SELECT_RESTORE_TANK,this.onSelectRestoreTankHandler);
          addEventListener(TankItemEvent.SELECT_RENT_PROMOTION_SLOT,this.onSelectRentPromotionSlotHandler);
+         addEventListener(TankItemEvent.SELECT_WOT_PLUS_VEHICLE,this.onSelectWotPlusVehicleHandler);
          this.vehicleFilters.addEventListener(RendererEvent.ITEM_CLICK,this.onVehicleFiltersItemClickHandler);
          this.vehicleFilters.addEventListener(Event.RESIZE,this.onVehicleFiltersResizeHandler);
          this.background.mouseEnabled = false;
@@ -207,6 +209,7 @@ package net.wg.gui.lobby.hangar.tcarousel
          removeEventListener(TankItemEvent.SELECT_BUY_TANK,this.onSelectBuyTankHandler);
          removeEventListener(TankItemEvent.SELECT_RESTORE_TANK,this.onSelectRestoreTankHandler);
          removeEventListener(TankItemEvent.SELECT_RENT_PROMOTION_SLOT,this.onSelectRentPromotionSlotHandler);
+         removeEventListener(TankItemEvent.SELECT_WOT_PLUS_VEHICLE,this.onSelectWotPlusVehicleHandler);
          App.contextMenuMgr.hide();
          this.vehicleFilters.removeEventListener(Event.RESIZE,this.onVehicleFiltersResizeHandler);
          this.vehicleFilters.removeEventListener(RendererEvent.ITEM_CLICK,this.onVehicleFiltersItemClickHandler);
@@ -245,7 +248,7 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       public function as_setSmallDoubleCarousel(param1:Boolean) : void
       {
-         this._smallDoubleCarouselEnable = param1;
+         this.smallDoubleCarouselEnable = param1;
          invalidateSize();
       }
       
@@ -311,8 +314,11 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       public function setRightMargin(param1:int) : void
       {
-         this._rightMargin = param1;
-         invalidateSize();
+         if(this._rightMargin != param1)
+         {
+            this._rightMargin = param1;
+            invalidateSize();
+         }
       }
       
       public function updateCarouselPosition(param1:Number) : void
@@ -335,7 +341,7 @@ package net.wg.gui.lobby.hangar.tcarousel
       {
          var _loc1_:ITankCarouselHelper = this._helper;
          var _loc2_:Boolean = this._rowCount > 1;
-         if(_loc2_ && (this._stageHeight < THRESHOLD || this._smallDoubleCarouselEnable))
+         if(_loc2_ && (this._stageHeight < THRESHOLD || this.smallDoubleCarouselEnable))
          {
             if(!(_loc1_ is SmallTankCarouselHelper))
             {
@@ -360,7 +366,7 @@ package net.wg.gui.lobby.hangar.tcarousel
          if(scrollList.useExtendedViewPort)
          {
             _loc3_ = this._rowCount > 1;
-            _loc4_ = _loc3_ && (this._stageHeight < THRESHOLD || this._smallDoubleCarouselEnable);
+            _loc4_ = _loc3_ && (this._stageHeight < THRESHOLD || this.smallDoubleCarouselEnable);
             _loc1_ = !!_loc4_ ? int(MASK_TOP_OFFSET_EPIC_SMALL) : int(MASK_TOP_OFFSET_EPIC_BIG);
             _loc2_ = !!_loc4_ ? int(MASK_BOTTOM_OFFSET_EPIC_SMALL) : int(MASK_BOTTOM_OFFSET_EPIC_BIG);
          }
@@ -401,19 +407,19 @@ package net.wg.gui.lobby.hangar.tcarousel
          this.vehicleFilters.height = this._listVisibleHeight;
       }
       
-      public function get rowCount() : int
-      {
-         return this._rowCount;
-      }
-      
-      public function get smallDoubleCarouselEnable() : Boolean
-      {
-         return this._rowCount > 1 && (this._stageHeight < THRESHOLD || this._smallDoubleCarouselEnable);
-      }
-      
       public function get helper() : ITankCarouselHelper
       {
          return this._helper;
+      }
+      
+      private function onSelectWotPlusVehicleHandler(param1:TankItemEvent) : void
+      {
+         selectWotPlusVehicleS(param1.itemId);
+      }
+      
+      public function get rowCount() : int
+      {
+         return this._rowCount;
       }
       
       private function onSelectRestoreTankHandler(param1:TankItemEvent) : void

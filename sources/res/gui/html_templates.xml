@@ -178,7 +178,6 @@
 			<tooltip_counter_value_label>&lt;font color=&quot;#D3D3CA&quot; size=&quot;12&quot; face=&quot;$TextFont&quot;&gt;%(text)s&lt;/font&gt;</tooltip_counter_value_label>
 			<tooltip_params_style>&lt;font color=&quot;#4a4a3f&quot; size=&quot;12&quot; face=&quot;$FieldFont&quot;&gt;%(text)s&lt;/font&gt;</tooltip_params_style>
 			<tooltip_crit_label>&lt;IMG SRC=&quot;img://gui/maps/icons/library/crits/%(image)sSmall.png&quot; width=&quot;16&quot; height=&quot;16&quot; vspace=&quot;-5&quot;/&gt;&lt;font color=&quot;#7b7969&quot;&gt;%(value)s&lt;/font&gt;</tooltip_crit_label>
-			<tooltip_crit_label_with_count>&lt;IMG SRC=&quot;img://gui/maps/icons/library/crits/%(image)sSmall.png&quot; width=&quot;16&quot; height=&quot;16&quot; vspace=&quot;-5&quot;/&gt;&lt;font color=&quot;#7b7969&quot;&gt;%(value)s (x%(count)s)&lt;/font&gt;</tooltip_crit_label_with_count>
 			<tooltip_two_liner>%(line1)s&lt;br/&gt;%(line2)s</tooltip_two_liner>
 			<tooltip_three_liner>%(line1)s&lt;br/&gt;%(line2)s&lt;br/&gt;%(line3)s</tooltip_three_liner>
 			<tooltip_four_liner>%(line1)s&lt;br/&gt;%(line2)s&lt;br/&gt;%(line3)s&lt;br/&gt;%(line4)s</tooltip_four_liner>
@@ -1021,7 +1020,6 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<order_in_progress>&lt;img src=&apos;img://gui/maps/icons/library/fortification/order_in_progress.png&apos; width=&apos;24&apos; height=&apos;24&apos; vspace=&apos;-7&apos; hspace=&apos;0&apos;/&gt;</order_in_progress>
 			<clock>&lt;img src=&apos;img://gui/maps/icons/library/fortification/clock.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-2&apos; hspace=&apos;0&apos;/&gt;</clock>
 			<clockGold>&lt;img src=&apos;img://gui/maps/icons/library/time_icon.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos; hspace=&apos;0&apos;/&gt;</clockGold>
-			<clockSh>&lt;img src=&apos;img://gui/maps/icons/library/clock_icon_s.png&apos; width=&apos;24&apos; height=&apos;24&apos; vspace=&apos;%(vspace)d&apos; hspace=&apos;0&apos;/&gt;</clockSh>
 			<notAvailable>&lt;img src=&apos;img://gui/maps/icons/buttons/tab_sort_button/notAvailable.png&apos; width=&apos;12&apos; height=&apos;12&apos; vspace=&apos;-1&apos; hspace=&apos;0&apos;/&gt;</notAvailable>
 			<notAvailableRed>&lt;img src=&apos;img://gui/maps/icons/library/redNotAvailable.png&apos; width=&apos;12&apos; height=&apos;12&apos; vspace=&apos;0&apos; hspace=&apos;0&apos;/&gt;</notAvailableRed>
 			<level5>&lt;img src=&apos;img://gui/maps/icons/levels/tank_level_5.png&apos; width=&apos;14&apos; height=&apos;16&apos; vspace=&apos;-4&apos; hspace=&apos;0&apos;/&gt;</level5>
@@ -1146,6 +1144,8 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<missionStatusUnavailable>&lt;font face=&apos;$TitleFont&apos; size=&apos;18&apos; color=&apos;#ff2717&apos;&gt;%(message)s&lt;/font&gt;</missionStatusUnavailable>
 			<missionStatusAvailable>&lt;font face=&apos;$TitleFont&apos; size=&apos;18&apos; color=&apos;#7ab300&apos;&gt;%(message)s&lt;/font&gt;</missionStatusAvailable>
 			<failedStatusText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#B70000&apos;&gt;%(message)s&lt;/font&gt;</failedStatusText>
+			<yellowText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#FEAB34&apos;&gt;%(message)s&lt;/font&gt;</yellowText>
+			<greenText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#7ab300&apos;&gt;%(message)s&lt;/font&gt;</greenText>
 		</textStyle>
 		<profileStatistics>
 			<marksOfMasteryText>%(marksOfMastery)s&lt;font size=&apos;14&apos; color=&apos;#939188&apos;&gt;/%(totalVehicles)s&lt;/font&gt;</marksOfMasteryText>
@@ -1311,39 +1311,6 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 	<battleHints>
 		<testMessage>&lt;font color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/testMessage)&lt;/font&gt;</testMessage>
 		<testMessageWithParams>&lt;font color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/testMessageWithParams)&lt;/font&gt;</testMessageWithParams>
-		<wtBattleStart_hunters>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtBattleStart_hunters)&lt;/font&gt;</wtBattleStart_hunters>
-		<wtBattleStart_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtBattleStart_boss)&lt;/font&gt;</wtBattleStart_boss>
-		<wtCampKilled_hunters>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtCampKilled_hunters)&lt;/font&gt;</wtCampKilled_hunters>
-		<wtCampKilled_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtCampKilled_boss)&lt;/font&gt;</wtCampKilled_boss>
-		<wtBombPicked_hunters>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtBombPicked_hunters)&lt;/font&gt;</wtBombPicked_hunters>
-		<wtBombPicked_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtBombPicked_boss)&lt;/font&gt;</wtBombPicked_boss>
-		<wtBombDropped_hunters>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtBombDropped_hunters)&lt;/font&gt;</wtBombDropped_hunters>
-		<wtBombDropped_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtBombDropped_boss)&lt;/font&gt;</wtBombDropped_boss>
-		<wtBombConsumed_hunters>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtBombConsumed_hunters)&lt;/font&gt;</wtBombConsumed_hunters>
-		<wtBombConsumed_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtBombConsumed_boss)&lt;/font&gt;</wtBombConsumed_boss>
-		<wtBombExploded_hunters>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtBombExploded_hunters)&lt;/font&gt;</wtBombExploded_hunters>
-		<wtBombExplodedHarm_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtBombExplodedHarm_boss)&lt;/font&gt;</wtBombExplodedHarm_boss>
-		<wtBombExplodedNoHarm_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtBombExplodedNoHarm_boss)&lt;/font&gt;</wtBombExplodedNoHarm_boss>
-		<wtBombWasted_hunters>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtBombWasted_hunters)&lt;/font&gt;</wtBombWasted_hunters>
-		<wtBombWasted_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtBombWasted_boss)&lt;/font&gt;</wtBombWasted_boss>
-		<wtBossInvincible>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtBossInvincible)&lt;/font&gt;</wtBossInvincible>
-		<wtHunterRespawned>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtHunterRespawned)&lt;/font&gt;</wtHunterRespawned>
-		<wtHunterRespawnedLast>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtHunterRespawnedLast)&lt;/font&gt;</wtHunterRespawnedLast>
-		<wtHunterIsDead>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtHunterIsDead)&lt;/font&gt;</wtHunterIsDead>
-		<wtEndgameStart_hunters>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtEndgameStart_hunters)&lt;/font&gt;</wtEndgameStart_hunters>
-		<wtEndgameStartHarm_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtEndgameStartHarm_boss)&lt;/font&gt;</wtEndgameStartHarm_boss>
-		<wtEndgameStartNoHarm_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtEndgameStartNoHarm_boss)&lt;/font&gt;</wtEndgameStartNoHarm_boss>
-		<wtTimeRemaining_hunter>&lt;font color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtTimeRemaining_hunter)&lt;/font&gt;</wtTimeRemaining_hunter>
-		<wtTimeRemaining_boss>&lt;font color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtTimeRemaining_boss)&lt;/font&gt;</wtTimeRemaining_boss>
-		<wtOvertime_hunter>&lt;font color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtOvertime)&lt;/font&gt;</wtOvertime_hunter>
-		<wtOvertime_boss>&lt;font color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtOvertime)&lt;/font&gt;</wtOvertime_boss>
-		<wtBossTeleport>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtBossTeleport)&lt;/font&gt;</wtBossTeleport>
-		<wtGeneratorSpawned_hunters>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtGeneratorSpawned_hunters)&lt;/font&gt;&lt;font size=&quot;24&quot; color=&quot;#E9E2BF&quot;&gt;_(#event:battleHints/wtGeneratorSpawned_time)&lt;/font&gt;</wtGeneratorSpawned_hunters>
-		<wtGeneratorSpawned_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtGeneratorSpawned_boss)&lt;/font&gt;&lt;font size=&quot;24&quot; color=&quot;#E9E2BF&quot;&gt;_(#event:battleHints/wtGeneratorSpawned_time)&lt;/font&gt;</wtGeneratorSpawned_boss>
-		<wtGeneratorActivated_hunters>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtGeneratorActivated_hunters)&lt;/font&gt;</wtGeneratorActivated_hunters>
-		<wtGeneratorActivated_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtGeneratorActivated_boss)&lt;/font&gt;</wtGeneratorActivated_boss>
-		<wtCampsSpawned_hunters>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtCampsSpawned_hunters)&lt;/font&gt;</wtCampsSpawned_hunters>
-		<wtCampsSpawned_boss>&lt;font size=&quot;24&quot; color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/wtCampsSpawned_boss)&lt;/font&gt;</wtCampsSpawned_boss>
 	</battleHints>
 	<vehicleRoles>
 		<roleDescription>

@@ -4,10 +4,8 @@ from itertools import chain
 from constants import QUEUE_TYPE
 from gui.Scaleform.daapi.view.lobby.hangar.seniority_awards import getSenorityEntryPointIsActive
 from gui.Scaleform.daapi.view.meta.EventEntryPointsContainerMeta import EventEntryPointsContainerMeta
-from gui.impl.lobby.eleventh_birthday_calendar.shop_birthday_section_entry_point import isBirthdayEntryPointAvailable
 from gui.impl.lobby.mapbox.mapbox_entry_point_view import isMapboxEntryPointAvailable
 from gui.impl.lobby.ranked.ranked_entry_point import isRankedEntryPointAvailable
-from gui.impl.lobby.wt_event.wt_event_entry_point import isWTEventEntryPointAvailable
 from gui.Scaleform.genConsts.HANGAR_ALIASES import HANGAR_ALIASES
 from gui.Scaleform.genConsts.RANKEDBATTLES_ALIASES import RANKEDBATTLES_ALIASES
 from gui.prb_control.entities.listener import IGlobalListener
@@ -28,9 +26,7 @@ _ENTRY_POINT_ENABLED_VALIDATOR = {HANGAR_ALIASES.CRAFT_MACHINE_ENTRY_POINT: getC
    HANGAR_ALIASES.SENIORITY_AWARDS_ENTRY_POINT_2020: getSenorityEntryPointIsActive, 
    RANKEDBATTLES_ALIASES.ENTRY_POINT: isRankedEntryPointAvailable, 
    HANGAR_ALIASES.MAPBOX_ENTRY_POINT: isMapboxEntryPointAvailable, 
-   HANGAR_ALIASES.SHOP_BIRTHDAY_SECTION_ENTRY_POINT: isBirthdayEntryPointAvailable, 
-   HANGAR_ALIASES.MARATHON_ENTRY_POINT: isMarathonEntryPointAvailable, 
-   HANGAR_ALIASES.WT_EVENT_ENTRY_POINT: isWTEventEntryPointAvailable}
+   HANGAR_ALIASES.MARATHON_ENTRY_POINT: isMarathonEntryPointAvailable}
 _logger = logging.getLogger(__name__)
 
 class _EntryPointData(object):

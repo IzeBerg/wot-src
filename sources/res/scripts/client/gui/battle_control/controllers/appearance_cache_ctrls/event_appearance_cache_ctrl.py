@@ -5,7 +5,6 @@ from items.vehicles import VehicleDescriptor
 from vehicle_outfit.outfit import Outfit
 from vehicle_systems import model_assembler
 from vehicle_systems.camouflages import getOutfitComponent
-from vehicle_systems.tankStructure import ModelsSetParams, ModelStates
 _logger = logging.getLogger(__name__)
 
 class EventAppearanceCacheController(DefaultAppearanceCacheController):
@@ -40,7 +39,7 @@ class EventAppearanceCacheController(DefaultAppearanceCacheController):
             vDesc = VehicleDescriptor(compactDescr=data.vehicleCD)
             prereqs = set(vDesc.prerequisites())
             outfit = Outfit(component=getOutfitComponent(data.outfitCD), vehicleCD=data.vehicleCD)
-            modelsSetParams = ModelsSetParams(outfit.modelsSet, ModelStates.UNDAMAGED, [])
+            modelsSetParams = outfit.modelsSet
             compoundAssembler = model_assembler.prepareCompoundAssembler(vDesc, modelsSetParams, BigWorld.camera().spaceID)
             prereqs.add(compoundAssembler)
             self._appearanceCache.loadResources(data.vehicleCD, list(prereqs))

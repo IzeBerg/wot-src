@@ -23,6 +23,8 @@ package net.wg.gui.lobby.header.vo
       
       public var selectedBadge:Boolean = false;
       
+      public var isWotPlusEnabled:Boolean = false;
+      
       public var boosterIcon:String = "";
       
       public var boosterBg:String = "";
@@ -39,7 +41,7 @@ package net.wg.gui.lobby.header.vo
          this.userVO.dispose();
          this.userVO = null;
          this.badgeVO = null;
-         super.dispose();
+         super.onDispose();
       }
    }
 }

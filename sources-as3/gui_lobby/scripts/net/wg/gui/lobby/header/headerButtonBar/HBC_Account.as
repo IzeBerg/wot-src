@@ -68,6 +68,15 @@ package net.wg.gui.lobby.header.headerButtonBar
          additionalScreenPadding.right = ADD_SCREEN_PADDING_RIGHT;
       }
       
+      override public function getSeparatorType() : String
+      {
+         if(this._accountVo.isWotPlusEnabled)
+         {
+            return HeaderButtonContentItem.SEPARATOR_DOT;
+         }
+         return super.getSeparatorType();
+      }
+      
       override protected function updateSize() : void
       {
          var _loc1_:int = this.userName.x + this.userName.textWidth + this._userNameOffset + this.anonymizerIconWidth << 0;

@@ -1,7 +1,8 @@
 from constants import HAS_DEV_RESOURCES, ARENA_GUI_TYPE, IS_DEVELOPMENT_BUILD
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS as _TOOLTIPS
 _COMMON_RELEASE_PACKAGES = ('gui.Scaleform.daapi.view.common', )
-_COMMON_DEBUG_PACKAGES = ('gui.development.ui.GUIEditor', 'gui.development.ui.uilogging')
+_COMMON_DEBUG_PACKAGES = ('gui.development.ui.GUIEditor', 'gui.development.ui.uilogging',
+                          'gui.development.ui')
 _LOBBY_DEVELOPMENT_BUILD_PACKAGES = tuple()
 _LOBBY_RELEASE_PACKAGES = ('gui.Scaleform.daapi.view.lobby', 'gui.Scaleform.daapi.view.lobby.barracks',
                            'gui.Scaleform.daapi.view.lobby.boosters', 'gui.Scaleform.daapi.view.lobby.clans',
@@ -22,8 +23,7 @@ _LOBBY_RELEASE_PACKAGES = ('gui.Scaleform.daapi.view.lobby', 'gui.Scaleform.daap
                            'gui.Scaleform.daapi.view.lobby.shop', 'gui.Scaleform.daapi.view.lobby.session_stats',
                            'gui.Scaleform.daapi.view.lobby.epicBattleTraining', 'gui.Scaleform.daapi.view.lobby.tank_setup',
                            'gui.Scaleform.daapi.view.lobby.battle_royale', 'gui.Scaleform.daapi.view.lobby.mapbox',
-                           'gui.Scaleform.daapi.view.lobby.veh_post_progression',
-                           'gui.Scaleform.daapi.view.lobby.event_battles')
+                           'gui.Scaleform.daapi.view.lobby.veh_post_progression')
 _LOBBY_DEBUG_PACKAGES = ('gui.development.ui.messenger.view.lobby', 'gui.development.ui.demo',
                          'gui.Scaleform.daapi.view.lobby.epicBattleTraining')
 _BATTLE_RELEASE_PACKAGES = ('gui.Scaleform.daapi.view.battle.shared', 'messenger.gui.Scaleform.view.battle')
@@ -99,8 +99,6 @@ LOBBY_TOOLTIPS_BUILDERS_PATHS = (
  (
   'gui.Scaleform.daapi.view.tooltips.badges_builders', _TOOLTIPS.BADGES_SET),
  (
-  'gui.Scaleform.daapi.view.tooltips.efficiency_builders', _TOOLTIPS.EFFICIENCY_SET),
- (
   'gui.Scaleform.daapi.view.tooltips.battle_pass_builders', _TOOLTIPS.BATTLE_PASS_SET),
  (
   'gui.Scaleform.daapi.view.tooltips.seniority_builders', _TOOLTIPS.SENIORITY_SET),
@@ -109,9 +107,7 @@ LOBBY_TOOLTIPS_BUILDERS_PATHS = (
  (
   'gui.Scaleform.daapi.view.tooltips.account_completion_builders', _TOOLTIPS.ACCOUNT_COMPLETION_SET),
  (
-  'gui.Scaleform.daapi.view.tooltips.referral_program_builder', _TOOLTIPS.REFERRAL_PROGRAM_SET),
- (
-  'gui.Scaleform.daapi.view.tooltips.event_battles_builders', _TOOLTIPS.EVENT_BATTLES_SET))
+  'gui.Scaleform.daapi.view.tooltips.referral_program_builder', _TOOLTIPS.REFERRAL_PROGRAM_SET))
 ADVANCED_COMPLEX_TOOLTIPS = {'#tooltips:hangar/ammo_panel/device/empty': 'equipment', 
    '#tooltips:hangar/ammo_panel/equipment/empty': 'service', 
    '#tooltips:equipment/empty': 'service', 

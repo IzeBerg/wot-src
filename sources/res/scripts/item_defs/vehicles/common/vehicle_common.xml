@@ -229,55 +229,9 @@
 				</visionRadius>
 			</gameplayFactors>
 		</overturn>
-		<anti_overturn>
-			NoneExtra : AntiOverturn
-			<recoverDelay>
-				8.0
-				<!--BW_String-->
-			</recoverDelay>
-			<isOnboardShotAllowed>true</isOnboardShotAllowed>
-			<gameplayFactors>
-				<reloadTime>
-					2.0
-					<!--BW_String-->
-				</reloadTime>
-				<turretRotationSpeed>
-					0.5
-					<!--BW_String-->
-				</turretRotationSpeed>
-				<gunRotationSpeed>
-					0.5
-					<!--BW_String-->
-				</gunRotationSpeed>
-				<aimingTime>
-					2.0
-					<!--BW_String-->
-				</aimingTime>
-				<shotDispersion>
-					2.0
-					<!--BW_String-->
-				</shotDispersion>
-				<visionRadius>
-					0.5
-					<!--BW_String-->
-				</visionRadius>
-			</gameplayFactors>
-		</anti_overturn>
 		<drowning>NoneExtra : Drowning</drowning>
 		<burnout>NoneExtra : Burnout</burnout>
 		<afterburning>NoneExtra : Afterburning</afterburning>
-		<builtinAfterburning_wt>NoneExtra : VisualScriptEquipment</builtinAfterburning_wt>
-		<builtinImpulse_wt>NoneExtra : VisualScriptEquipment</builtinImpulse_wt>
-		<builtinLargeMedkit_wt>NoneExtra : Repairkit</builtinLargeMedkit_wt>
-		<builtinRepairkit_wt>NoneExtra : Repairkit</builtinRepairkit_wt>
-		<builtinInstantStunShoot_wt>NoneExtra : VisualScriptEquipment</builtinInstantStunShoot_wt>
-		<builtinShield_wt>NoneExtra : EventExtra</builtinShield_wt>
-		<builtinStronghold_wt>NoneExtra : EventExtra</builtinStronghold_wt>
-		<builtinChargedShot_wt>NoneExtra : EventExtra</builtinChargedShot_wt>
-		<builtinDrop_wt>NoneExtra : VisualScriptEquipment</builtinDrop_wt>
-		<builtinTeleport_wt>NoneExtra : VisualScriptEquipment</builtinTeleport_wt>
-		<builtinOverload_wt>NoneExtra : VisualScriptEquipment</builtinOverload_wt>
-		<builtinAbsorb_wt>NoneExtra : VisualScriptEquipment</builtinAbsorb_wt>
 		<engineHealth>
 			DamageMarker : EngineHealth
 			<sounds>
@@ -309,9 +263,10 @@
 			</sounds>
 			<deviceUserString>#ingame_gui:devices/radio</deviceUserString>
 		</radioHealth>
-		<leftTrackHealth>
+		<leftTrack0Health>
 			TrackHealth : TrackHealth
 			<isLeft>true</isLeft>
+			<trackPairIdx>0</trackPairIdx>
 			<sounds>
 				<destroyed>track_destroyed</destroyed>
 				<critical>track_damaged</critical>
@@ -319,10 +274,11 @@
 				<functionalCanMove>track_functional_can_move</functionalCanMove>
 			</sounds>
 			<deviceUserString>#ingame_gui:devices/left_track</deviceUserString>
-		</leftTrackHealth>
-		<rightTrackHealth>
+		</leftTrack0Health>
+		<rightTrack0Health>
 			TrackHealth : TrackHealth
 			<isLeft>false</isLeft>
+			<trackPairIdx>0</trackPairIdx>
 			<sounds>
 				<destroyed>track_destroyed</destroyed>
 				<critical>track_damaged</critical>
@@ -330,7 +286,7 @@
 				<functionalCanMove>track_functional_can_move</functionalCanMove>
 			</sounds>
 			<deviceUserString>#ingame_gui:devices/right_track</deviceUserString>
-		</rightTrackHealth>
+		</rightTrack0Health>
 		<gunHealth>
 			DamageMarker : GunHealth
 			<sounds>
@@ -461,8 +417,8 @@
 			<ammoBayHealth>ammoBay</ammoBayHealth>
 			<fuelTankHealth>fuelTank</fuelTankHealth>
 			<radioHealth>radio</radioHealth>
-			<leftTrackHealth>track</leftTrackHealth>
-			<rightTrackHealth>track</rightTrackHealth>
+			<leftTrack0Health>track</leftTrack0Health>
+			<rightTrack0Health>track</rightTrack0Health>
 			<gunHealth>gun</gunHealth>
 			<turretRotatorHealth>turretRotator</turretRotatorHealth>
 			<surveyingDeviceHealth>surveyingDevice</surveyingDeviceHealth>
@@ -1016,7 +972,8 @@
 			<continueTraceIfNoHit>false</continueTraceIfNoHit>
 		</radio>
 		<leftTrack>
-			<extra>leftTrackHealth</extra>
+			<extra>leftTrack_Health</extra>
+			<multiple>true</multiple>
 			<vehicleDamageFactor>
 				0.0
 				<!--BW_String-->
@@ -1040,7 +997,8 @@
 			<continueTraceIfNoHit>false</continueTraceIfNoHit>
 		</leftTrack>
 		<rightTrack>
-			<extra>rightTrackHealth</extra>
+			<extra>rightTrack_Health</extra>
+			<multiple>true</multiple>
 			<vehicleDamageFactor>
 				0.0
 				<!--BW_String-->

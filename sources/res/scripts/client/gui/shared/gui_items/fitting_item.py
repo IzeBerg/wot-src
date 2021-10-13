@@ -10,16 +10,17 @@ from gui.shared.gui_items.gui_item import GUIItem, HasIntCD
 from gui.shared.items_parameters import params_helper, formatters
 from gui.shared.money import Money, Currency, MONEY_UNDEFINED
 from gui.shared.utils.functions import getShortDescr, stripColorTagDescrTags
-from helpers.time_utils import getCurrentLocalServerTimestamp
 from shared_utils import first
 from skeletons.gui.game_control import ISeasonsController
 from helpers import i18n, time_utils, dependency
 from items import vehicles, getTypeInfoByName
 from rent_common import SeasonRentDuration
+from renewable_subscription_common.settings_constants import RENT_KEY as WOTPLUS_RENT_KEY
 ICONS_MASK = '../maps/icons/%(type)s/%(subtype)s%(unicName)s.png'
 _RentalInfoProvider = namedtuple('RentalInfoProvider', ('rentExpiryTime', 'compensations',
                                                         'battlesLeft', 'winsLeft',
-                                                        'seasonRent', 'isRented'))
+                                                        'seasonRent', 'isRented',
+                                                        'isWotPlus'))
 SeasonRentInfo = namedtuple('SeasonRentInfo', ('seasonType', 'seasonID', 'duration',
                                                'expiryTime'))
 _BIG_HIGHLIGHT_TYPES_MAP = {SLOT_HIGHLIGHT_TYPES.BATTLE_BOOSTER_CREW_REPLACE: SLOT_HIGHLIGHT_TYPES.BATTLE_BOOSTER_CREW_REPLACE_BIG, 
@@ -53,31 +54,13 @@ class RentalInfoProvider(_RentalInfoProvider):
             compensations = Money.makeFromMoneyTuple(additionalData['compensation'])
         else:
             compensations = MONEY_UNDEFINED
-        result = _RentalInfoProvider.__new__(cls, time, compensations, battles, wins, seasonRent or {}, isRented)
+        isWotPlus = WOTPLUS_RENT_KEY in additionalData
+        result = _RentalInfoProvider.__new__(cls, time, compensations, battles, wins, seasonRent or {}, isRented, isWotPlus)
         return result
 
     def canRentRenewForSeason(self, seasonType):
         currentSeason = self.seasonsController.getCurrentSeason(seasonType)
         return currentSeason and currentSeason.getCycleInfo()
-
-    def canCycleRentRenewForSeason(self, seasonType):
-        availableRenewCycleInfo = self.getAvailableRentRenewCycleInfoForSeason(seasonType)
-        return availableRenewCycleInfo is not None and availableRenewCycleInfo.endDate > getCurrentLocalServerTimestamp()
-
-    def getAvailableRentRenewCycleInfoForSeason(self, seasonType):
-        now = time_utils.getCurrentLocalServerTimestamp()
-        currentSeason = self.seasonsController.getCurrentSeason(seasonType)
-        if currentSeason is not None:
-            lastRentedCycle = self.getLastCycleRentInfo(seasonType)
-            if lastRentedCycle:
-                currentCycle = currentSeason.getCycleInfo()
-                if currentCycle and currentCycle.ID > lastRentedCycle.ID:
-                    return currentCycle
-                nextCycle = currentSeason.getNextCycleInfo(now)
-                if nextCycle and nextCycle.ID > lastRentedCycle.ID:
-                    return nextCycle
-                return currentSeason.getNextCycleInfo(now, lastRentedCycle.ID)
-        return
 
     def getLastCycleRentInfo(self, seasonType):
         currentSeason = self.seasonsController.getCurrentSeason(seasonType)
@@ -440,7 +423,13 @@ class FittingItem(GUIItem):
         return False
 
     def mayInstall(self, vehicle, slotIdx=None):
-        return vehicle.descriptor.mayInstallComponent(self.intCD)
+        optDevicesLayouts = None
+        if vehicle.optDevices.setupLayouts.capacity > 1:
+            optDevicesLayouts = []
+            for setup in vehicle.optDevices.setupLayouts.setups.itervalues():
+                optDevicesLayouts.append(setup.getIntCDs())
+
+        return vehicle.descriptor.mayInstallComponent(self.intCD, optDevicesLayouts=optDevicesLayouts)
 
     def mayRemove(self, vehicle):
         return (

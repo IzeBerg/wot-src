@@ -23,15 +23,15 @@ package net.wg.gui.lobby.hangar.eventEntryPoint
       
       private static const EVENT_ENTRY_POINT_GAP_SMALL:int = 10;
       
-      private static const EVENT_ENTRY_POINT_GAP_MEDIUM:int = 10;
+      private static const EVENT_ENTRY_POINT_GAP_MEDIUM:int = 20;
       
-      private static const EVENT_ENTRY_POINT_GAP_BIG:int = 10;
+      private static const EVENT_ENTRY_POINT_GAP_BIG:int = 20;
       
       private static const SMALL_MARGINS:Rectangle = new Rectangle(0,5,5,10);
       
-      private static const MEDIUM_MARGINS:Rectangle = new Rectangle(0,5,16,28);
+      private static const MEDIUM_MARGINS:Rectangle = new Rectangle(0,5,30,30);
       
-      private static const BIG_MARGINS:Rectangle = new Rectangle(0,5,16,28);
+      private static const BIG_MARGINS:Rectangle = new Rectangle(0,5,30,30);
       
       {
          GAPS[EntryPointSize.SMALL] = EVENT_ENTRY_POINT_GAP_SMALL;

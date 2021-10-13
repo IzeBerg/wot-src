@@ -8,7 +8,7 @@
 		<driver/>
 	</crew>
 	<supplySlots>3 1 1 6 6 6 7 8 8 8</supplySlots>
-	<postProgressionTree>role_LT_universal_level_7</postProgressionTree>
+	<postProgressionTree>role_LT_universal</postProgressionTree>
 	<speedLimits>
 		<forward>61</forward>
 		<backward>23</backward>
@@ -204,12 +204,8 @@
 				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.459037</clipAngle>
-				<anchorPosition>
-					-1.05294 0.270095 2.2387
-					<!--BW_String-->
-				</anchorPosition>
-				<anchorDirection>-0.000000 0.918524 0.395365</anchorDirection>
 				<compatibleModels>default</compatibleModels>
+				<anchorShift>0.086302</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -230,12 +226,8 @@
 				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.459037</clipAngle>
-				<anchorPosition>
-					1.05292 0.270056 2.23871
-					<!--BW_String-->
-				</anchorPosition>
-				<anchorDirection>0.000026 0.918524 0.395365</anchorDirection>
 				<compatibleModels>default</compatibleModels>
+				<anchorShift>0.086303</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -256,12 +248,8 @@
 				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.557817</clipAngle>
-				<anchorPosition>-0.558076 0.467434 0.655765</anchorPosition>
-				<anchorDirection>
-					0.00675649 0.999977 -0.000238758
-					<!--BW_String-->
-				</anchorDirection>
 				<compatibleModels>default</compatibleModels>
+				<anchorShift>0.012320</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -285,12 +273,8 @@
 					1.21627
 					<!--BW_String-->
 				</clipAngle>
-				<anchorPosition>
-					0.279654 0.27012 1.65403
-					<!--BW_String-->
-				</anchorPosition>
-				<anchorDirection>0.000020 0.929214 0.369543</anchorDirection>
 				<compatibleModels>default</compatibleModels>
+				<anchorShift>0.066321</anchorShift>
 			</slot>
 		</customizationSlots>
 		<camouflage>
@@ -1922,6 +1906,10 @@
 					</anchorDirection>
 				</slot>
 			</customizationSlots>
+			<repairTime>
+				5.71428585
+				<!--BW_String-->
+			</repairTime>
 		</Chassis_AMX13_57_100_GrandFinal>
 	</chassis>
 	<turrets0>
@@ -2066,11 +2054,6 @@
 						<slot>
 							<slotType>projectionDecal</slotType>
 							<slotId>45000</slotId>
-							<anchorPosition>
-								-0.0244988 0.289959 -1.17679
-								<!--BW_String-->
-							</anchorPosition>
-							<anchorDirection>-0.000086 0.999879 0.015522</anchorDirection>
 							<applyTo>16384</applyTo>
 							<tags>formfactor_square</tags>
 							<compatibleModels>default</compatibleModels>
@@ -2090,15 +2073,11 @@
 							<showOn>4096</showOn>
 							<clipAngle>0.635291</clipAngle>
 							<verticalMirror>true</verticalMirror>
+							<anchorShift>-0.083980</anchorShift>
 						</slot>
 						<slot>
 							<slotType>projectionDecal</slotType>
 							<slotId>45001</slotId>
-							<anchorPosition>-0.338401 0.138765 0.304582</anchorPosition>
-							<anchorDirection>
-								-0.00199297 0.7982 0.602389
-								<!--BW_String-->
-							</anchorDirection>
 							<applyTo>16384</applyTo>
 							<tags>formfactor_square</tags>
 							<position>
@@ -2114,6 +2093,7 @@
 							<showOn>4096</showOn>
 							<clipAngle>0.740112</clipAngle>
 							<compatibleModels>default</compatibleModels>
+							<anchorShift>0.008399</anchorShift>
 						</slot>
 						<slot>
 							<slotType>insigniaOnGun</slotType>
@@ -2209,12 +2189,8 @@
 					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.693531</clipAngle>
-					<anchorPosition>-0.859818 0.246056 0.144941</anchorPosition>
-					<anchorDirection>
-						-0.946629 0.317689 0.0544668
-						<!--BW_String-->
-					</anchorDirection>
 					<compatibleModels>default</compatibleModels>
+					<anchorShift>0.186609</anchorShift>
 				</slot>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -2232,12 +2208,8 @@
 					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.594617</clipAngle>
-					<anchorPosition>0.859776 0.246031 0.144929</anchorPosition>
-					<anchorDirection>
-						0.946644 0.317661 0.0543733
-						<!--BW_String-->
-					</anchorDirection>
 					<compatibleModels>default</compatibleModels>
+					<anchorShift>0.186609</anchorShift>
 				</slot>
 				<slot>
 					<slotType>fixedInscription</slotType>

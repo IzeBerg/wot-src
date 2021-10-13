@@ -15,6 +15,11 @@ package net.wg.gui.lobby.hangar.tcarousel
       private static const ACTION_PRICE_BG_OFFSET_Y:int = 3;
       
       private static const IMG_ICON_BOUNDS:Rectangle = new Rectangle(1,1,160,35);
+      
+      private static const EXTRA_IMAGE_POS:Object = {"wotPlus":{
+         "x":5,
+         "y":16
+      }};
        
       
       private var _commons:ICommons;
@@ -55,6 +60,16 @@ package net.wg.gui.lobby.hangar.tcarousel
          {
             addImg.visible = true;
             txtInfo.visible = false;
+         }
+      }
+      
+      override protected function validateLayout() : void
+      {
+         super.validateLayout();
+         if(isWotPlusSlot)
+         {
+            extraImage.x = EXTRA_IMAGE_POS.wotPlus.x;
+            extraImage.y = EXTRA_IMAGE_POS.wotPlus.y;
          }
       }
       

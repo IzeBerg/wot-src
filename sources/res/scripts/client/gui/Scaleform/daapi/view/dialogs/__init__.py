@@ -1,4 +1,5 @@
 import BigWorld
+from constants import ACCOUNT_KICK_REASONS, IS_CHINA
 from gui import makeHtmlString
 from gui.Scaleform.framework import ScopeTemplates
 from gui.Scaleform.locale.DIALOGS import DIALOGS
@@ -380,10 +381,10 @@ class HtmlMessageLocalDialogMeta(HtmlMessageDialogMeta):
 
 class DisconnectMeta(I18nInfoDialogMeta):
 
-    def __init__(self, reason=None, isBan=False, expiryTime=None):
+    def __init__(self, reason=None, kickReasonType=ACCOUNT_KICK_REASONS.UNKNOWN, expiryTime=None):
         super(DisconnectMeta, self).__init__('disconnected', scope=ScopeTemplates.GLOBAL_SCOPE)
         self.reason = reason
-        self.isBan = isBan
+        self.kickReasonType = kickReasonType
         self.expiryTime = expiryTime
         if hasattr(BigWorld.player(), 'setForcedGuiControlMode'):
             BigWorld.player().setForcedGuiControlMode(False)
@@ -404,7 +405,9 @@ class DisconnectMeta(I18nInfoDialogMeta):
             formatArgs['expiryTime'] = '%s %s' % (backport.getLongDateFormat(expiryTime),
              backport.getLongTimeFormat(expiryTime))
         key = DIALOGS.DISCONNECTED_MESSAGEKICK
-        if self.isBan:
+        if self.kickReasonType in ACCOUNT_KICK_REASONS.BAN_RANGE:
+            if IS_CHINA and self.kickReasonType == ACCOUNT_KICK_REASONS.CURFEW_BAN:
+                return i18n.makeString(self.reason)
             key = DIALOGS.DISCONNECTED_MESSAGEBANPERIOD if self.expiryTime else DIALOGS.DISCONNECTED_MESSAGEBAN
         return i18n.makeString(key, **formatArgs)
 

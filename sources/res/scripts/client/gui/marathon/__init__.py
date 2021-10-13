@@ -1,1 +1,1 @@
-from gui.marathon.bts_marathon import BtsMarathon
+from gui.marathon.example_marathon import ExampleMarathon

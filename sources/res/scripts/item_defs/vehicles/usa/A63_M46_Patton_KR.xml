@@ -9,7 +9,7 @@
 		<loader/>
 	</crew>
 	<supplySlots>2 1 1 6 6 6 7 8 8 8</supplySlots>
-	<postProgressionTree>role_MT_universal_level_8</postProgressionTree>
+	<postProgressionTree>role_MT_universal</postProgressionTree>
 	<customRoleSlotOptions>3 5</customRoleSlotOptions>
 	<speedLimits>
 		<forward>
@@ -223,15 +223,8 @@
 				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.445466</clipAngle>
-				<anchorPosition>
-					-1.34966 0.544126 -1.97538
-					<!--BW_String-->
-				</anchorPosition>
-				<anchorDirection>
-					-0.0168717 0.998477 -0.0525237
-					<!--BW_String-->
-				</anchorDirection>
 				<compatibleModels>default</compatibleModels>
+				<anchorShift>-0.047316</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -249,15 +242,8 @@
 				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.445466</clipAngle>
-				<anchorPosition>
-					1.35096 0.544102 -1.97561
-					<!--BW_String-->
-				</anchorPosition>
-				<anchorDirection>
-					-0.0168717 0.998477 -0.0525241
-					<!--BW_String-->
-				</anchorDirection>
 				<compatibleModels>default</compatibleModels>
+				<anchorShift>-0.047310</anchorShift>
 			</slot>
 		</customizationSlots>
 		<customization>
@@ -2642,6 +2628,10 @@
 					<camouflage/>
 				</customizableVehicleAreas>
 			</customization>
+			<repairTime>
+				4.57142878
+				<!--BW_String-->
+			</repairTime>
 		</Chassis_M46_Patton_KR>
 	</chassis>
 	<turrets0>
@@ -2889,14 +2879,7 @@
 						1.17961
 						<!--BW_String-->
 					</clipAngle>
-					<anchorPosition>
-						0.937628 0.45859 0.549654
-						<!--BW_String-->
-					</anchorPosition>
-					<anchorDirection>
-						0.801223 -0.0250314 0.597842
-						<!--BW_String-->
-					</anchorDirection>
+					<anchorShift>0.110275</anchorShift>
 				</slot>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -2917,16 +2900,9 @@
 						1.20962
 						<!--BW_String-->
 					</clipAngle>
-					<anchorPosition>
-						-0.17045 0.958672 -1.35009
-						<!--BW_String-->
-					</anchorPosition>
-					<anchorDirection>
-						-0.000198026 0.99995 -0.0100424
-						<!--BW_String-->
-					</anchorDirection>
 					<verticalMirror>true</verticalMirror>
 					<compatibleModels>default</compatibleModels>
+					<anchorShift>-0.011181</anchorShift>
 				</slot>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -2947,12 +2923,8 @@
 						1.17961
 						<!--BW_String-->
 					</clipAngle>
-					<anchorPosition>-0.924896 0.472703 0.569817</anchorPosition>
-					<anchorDirection>
-						-0.796957 -0.0252885 0.603506
-						<!--BW_String-->
-					</anchorDirection>
 					<compatibleModels>default</compatibleModels>
+					<anchorShift>0.110274</anchorShift>
 				</slot>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -2976,9 +2948,8 @@
 						1.00326
 						<!--BW_String-->
 					</clipAngle>
-					<anchorPosition>-0.366887 0.999018 0.151689</anchorPosition>
-					<anchorDirection>0.000001 0.991291 0.131687</anchorDirection>
 					<compatibleModels>default</compatibleModels>
+					<anchorShift>0.039489</anchorShift>
 				</slot>
 			</customizationSlots>
 			<customization>

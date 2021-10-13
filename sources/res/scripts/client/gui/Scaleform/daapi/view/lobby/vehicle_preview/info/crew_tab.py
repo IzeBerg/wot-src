@@ -12,14 +12,14 @@ from gui.shared import g_eventBus
 from gui.impl.gen import R
 from gui.impl import backport
 from gui.shared.formatters import text_styles
-from gui.shared.gui_items.Tankman import SabatonTankmanSkill, TankmanSkill, OffspringTankmanSkill
+from gui.shared.gui_items.Tankman import SabatonTankmanSkill, TankmanSkill, OffspringTankmanSkill, YhaTankmanSkill, BROTHERHOOD_SKILL_NAME
 from gui.shared.gui_items.Tankman import getFullUserName, getSmallIconPath, getBigIconPath
 from gui.shared.gui_items.Vehicle import sortCrew
 from helpers.i18n import makeString as _ms
 from items import tankmen, vehicles
+from items import special_crew
 from items.tankmen import SKILL_INDICES, SKILL_NAMES
 from shared_utils import first
-from items.components.tankmen_components import SPECIAL_CREW_TAG
 from soft_exception import SoftException
 from web.web_client_api.common import ItemPackType, ItemPackTypeGroup
 NEW_SKILL_ICON = '../maps/icons/tankmen/skills/big/preview_new_skill.png'
@@ -34,20 +34,14 @@ def _createPrewiewTankman(tmanData=None):
         return
 
 
-def _isSabatonCrew(tankman):
-    return tankmen.hasTagInTankmenGroup(tankman.nationID, tankman.gId, tankman.isPremium, SPECIAL_CREW_TAG.SABATON)
-
-
-def _isOffspringCrew(tankman):
-    return tankmen.hasTagInTankmenGroup(tankman.nationID, tankman.gId, tankman.isPremium, SPECIAL_CREW_TAG.OFFSPRING)
-
-
 def getTankmanSkill(skillName, tankman=None):
-    if tankman:
-        if _isSabatonCrew(tankman):
+    if tankman is not None:
+        if special_crew.isSabatonCrew(tankman):
             return SabatonTankmanSkill(skillName)
-        if _isOffspringCrew(tankman):
+        if special_crew.isOffspringCrew(tankman):
             return OffspringTankmanSkill(skillName)
+        if special_crew.isYhaCrew(tankman):
+            return YhaTankmanSkill(skillName)
     return TankmanSkill(skillName, proxy=(0, ))
 
 
@@ -65,7 +59,7 @@ class PreviewTankman(object):
         self.freeXP = tmanData.get('freeXP', None)
         self.isFemale = tmanData.get('isFemale', False)
         self.vehicleTypeID = tmanData.get('vehicleTypeID', None)
-        self.gId = tmanData.get('gId', -1)
+        self.gid = tmanData.get('gId', -1)
         skills = tmanData.get('skills', []) + tmanData.get('freeSkills', [])
         self.skills = self._buildSkills(skills)
         return
@@ -212,7 +206,7 @@ class VehiclePreviewCrewTab(VehiclePreviewCrewTabMeta):
                 crewItems = sorted([ item for item in self.__crewItems if item.groupID == gID ], key=lambda i: ItemPackTypeGroup.CREW.index(i.type), reverse=True)
                 topCrewItem = crewItems[0] if crewItems else None
                 if topCrewItem and topCrewItem.type == ItemPackType.CREW_CUSTOM:
-                    isLockedCrew = topCrewItem.extra.get('isLockedCrew', False)
+                    isLockedCrew = (topCrewItem.extra or False) and topCrewItem.extra.get('isLockedCrew', False)
                 self.__setCustomCrew(topCrewItem, currentVehicle)
                 vehicleCrewComment, skillIcon, skillName = self.__getCrewCommentAndIcon(topCrewItem)
                 regularCrewList, uniqueCrewList = self.__getCrewData(currentVehicle, not bool(skillIcon))
@@ -241,7 +235,9 @@ class VehiclePreviewCrewTab(VehiclePreviewCrewTabMeta):
                 if _isOffspringBrotherhood(firstSkill):
                     skillName = 'offspring_brotherhood'
                 else:
-                    if not firstSkill.name == 'new':
+                    if _isYhaBrotherhood(firstSkill):
+                        skillName = 'yha_brotherhood'
+                    elif not firstSkill.name == 'new':
                         skillName = firstSkill.name
                     notEmptySkillsLen = len(notEmptySkills)
                     if notEmptySkillsLen == 1:
@@ -258,7 +254,7 @@ class VehiclePreviewCrewTab(VehiclePreviewCrewTabMeta):
         self.setVehicleCrews(ctx.get('vehicleItems'), ctx.get('crewItems'))
 
     def __setCustomCrew(self, topCrewItem, vehicle):
-        if topCrewItem and topCrewItem.type == ItemPackType.CREW_CUSTOM:
+        if topCrewItem and topCrewItem.extra and topCrewItem.type == ItemPackType.CREW_CUSTOM:
             roles = vehicle.descriptor.type.crewRoles
             tmenItems = topCrewItem.extra.get('tankmen', [])
             if not isValidCrewForVehicle(tmenItems, roles):
@@ -323,11 +319,15 @@ def getCrewComment(skill, crewLevel, role, forOne):
 
 
 def _isSabatonBrotherhood(skill):
-    return isinstance(skill, SabatonTankmanSkill) and skill.name == 'brotherhood'
+    return isinstance(skill, SabatonTankmanSkill) and skill.name == BROTHERHOOD_SKILL_NAME
 
 
 def _isOffspringBrotherhood(skill):
-    return isinstance(skill, OffspringTankmanSkill) and skill.name == 'brotherhood'
+    return isinstance(skill, OffspringTankmanSkill) and skill.name == BROTHERHOOD_SKILL_NAME
+
+
+def _isYhaBrotherhood(skill):
+    return isinstance(skill, YhaTankmanSkill) and skill.name == BROTHERHOOD_SKILL_NAME
 
 
 def getUniqueMembers(vehicle):

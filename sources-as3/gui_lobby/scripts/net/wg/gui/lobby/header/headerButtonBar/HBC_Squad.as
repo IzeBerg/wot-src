@@ -225,7 +225,6 @@ package net.wg.gui.lobby.header.headerButtonBar
          this.leftIconContainer.removeEventListener(UILoaderEvent.COMPLETE,this.onIconLoadCompleteHandler);
          this.rightIconContainer.removeEventListener(UILoaderEvent.COMPLETE,this.onIconLoadCompleteHandler);
          this.textField = null;
-         this._squadDataVo.dispose();
          this._squadDataVo = null;
          this.arrow.dispose();
          this.arrow = null;

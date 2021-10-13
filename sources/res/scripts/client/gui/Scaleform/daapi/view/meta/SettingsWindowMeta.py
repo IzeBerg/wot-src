@@ -101,7 +101,3 @@ class SettingsWindowMeta(AbstractWindowView):
     def as_setFeedbackDataProviderS(self, dataProvider):
         if self._isDAAPIInited():
             return self.flashObject.as_setFeedbackDataProvider(dataProvider)
-
-    def as_setTigerEventS(self, isInEvent):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setTigerEvent(isInEvent)

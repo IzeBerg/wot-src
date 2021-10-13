@@ -251,8 +251,7 @@ class C11nHangarCameraManager(TimeDeltaMeter):
     def __getTankCentralPoint(self):
         if self.vEntity is not None and self.vEntity.appearance is not None and self.vEntity.appearance.compoundModel is not None and self.vEntity.appearance.collisions is not None:
             appearance = self.vEntity.appearance
-            hullAABB = appearance.collisions.getBoundingBox(TankPartIndexes.HULL)
-            position = Math.Vector3((hullAABB[1].x + hullAABB[0].x) / 2.0, hullAABB[1].y / 2.0, (hullAABB[1].z + hullAABB[0].z) / 2.0)
+            position = appearance.getVehicleCentralPoint()
             m = Math.Matrix(appearance.compoundModel.node(TankPartNames.HULL))
             worldPos = m.applyPoint(position)
         else:
@@ -273,9 +272,7 @@ class C11nHangarCameraManager(TimeDeltaMeter):
     def __onProjectionChanged(self):
         if self.__currentMode == C11nCameraModes.STYLE_INFO:
             self.locateCameraToStyleInfoPreview(forceLocate=True)
-        if self.__c11nCamera is not None:
-            self.__c11nCamera.updateProjection()
-        return
+        self.__c11nCamera.updateProjection()
 
     def __updateScreenSpaceOffset(self, val):
         if self.__screenSpaceOffset != val:

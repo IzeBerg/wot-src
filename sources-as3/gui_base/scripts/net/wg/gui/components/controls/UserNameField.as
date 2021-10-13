@@ -501,6 +501,7 @@ package net.wg.gui.components.controls
          if(this._badge != null)
          {
             this._badge.removeEventListener(Event.CHANGE,this.badgeLoaded);
+            removeChild(this._badge);
             this._badge.dispose();
             this._badge = null;
          }

@@ -8,7 +8,7 @@
 		<loader/>
 	</crew>
 	<supplySlots>5 1 1 6 6 6 7 8 8 8</supplySlots>
-	<postProgressionTree>role_HT_break_level_8</postProgressionTree>
+	<postProgressionTree>role_HT_break</postProgressionTree>
 	<customRoleSlotOptions>2 4</customRoleSlotOptions>
 	<speedLimits>
 		<forward>35</forward>
@@ -186,11 +186,6 @@
 			<slot>
 				<slotType>projectionDecal</slotType>
 				<slotId>15000</slotId>
-				<anchorPosition>
-					-0.424506 0.395989 3.30257
-					<!--BW_String-->
-				</anchorPosition>
-				<anchorDirection>-0.333737 0.903048 0.270415</anchorDirection>
 				<tags>formfactor_square</tags>
 				<position>
 					-0.401143 1.21393 3.28364
@@ -210,15 +205,11 @@
 					0.47098
 					<!--BW_String-->
 				</clipAngle>
+				<anchorShift>0.070003</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
 				<slotId>15001</slotId>
-				<anchorPosition>
-					0.424518 0.395981 3.30257
-					<!--BW_String-->
-				</anchorPosition>
-				<anchorDirection>0.333677 0.903056 0.270461</anchorDirection>
 				<position>
 					0.401159 1.21392 3.28364
 					<!--BW_String-->
@@ -238,6 +229,7 @@
 					<!--BW_String-->
 				</clipAngle>
 				<tags>formfactor_square</tags>
+				<anchorShift>0.070004</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -261,11 +253,7 @@
 					0.47098
 					<!--BW_String-->
 				</clipAngle>
-				<anchorPosition>
-					-1.21744 0.612853 -2.37626
-					<!--BW_String-->
-				</anchorPosition>
-				<anchorDirection>-0.357404 0.843822 -0.400284</anchorDirection>
+				<anchorShift>0.089992</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -289,11 +277,7 @@
 					0.47098
 					<!--BW_String-->
 				</clipAngle>
-				<anchorPosition>
-					1.21389 0.604388 -2.37226
-					<!--BW_String-->
-				</anchorPosition>
-				<anchorDirection>0.357383 0.843816 -0.400315</anchorDirection>
+				<anchorShift>0.079997</anchorShift>
 			</slot>
 			<slot>
 				<slotType>fixedEmblem</slotType>
@@ -1910,6 +1894,10 @@
 					</anchorDirection>
 				</slot>
 			</customizationSlots>
+			<repairTime>
+				6.85714293
+				<!--BW_String-->
+			</repairTime>
 		</Chassis_R134_Object_252K>
 	</chassis>
 	<turrets0>
@@ -2204,11 +2192,7 @@
 					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.000000</clipAngle>
-					<anchorPosition>0.000011 0.695914 0.498374</anchorPosition>
-					<anchorDirection>
-						-0.0295644 0.994344 0.10201
-						<!--BW_String-->
-					</anchorDirection>
+					<anchorShift>0.049038</anchorShift>
 				</slot>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -2245,14 +2229,7 @@
 					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.595195</clipAngle>
-					<anchorPosition>
-						0.00102173 0.714273 -1.04501
-						<!--BW_String-->
-					</anchorPosition>
-					<anchorDirection>
-						-0.000010 0.997461 -0.0712124
-						<!--BW_String-->
-					</anchorDirection>
+					<anchorShift>0.051320</anchorShift>
 				</slot>
 				<slot>
 					<slotType>fixedEmblem</slotType>

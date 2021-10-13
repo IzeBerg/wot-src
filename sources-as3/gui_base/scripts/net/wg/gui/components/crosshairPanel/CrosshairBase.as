@@ -17,8 +17,6 @@ package net.wg.gui.components.crosshairPanel
       
       private static const FRACTIONAL_FORMAT_CMD:String = "WG.getFractionalFormat";
       
-      private static const INFINITY_SYMBOL:String = "∞";
-      
       protected static const TYPE_PREFIX:String = "type";
        
       
@@ -82,7 +80,7 @@ package net.wg.gui.components.crosshairPanel
       
       private var _currentAmmoTextField:TextField = null;
       
-      private var _count:Number = NaN;
+      private var _count:Number = -1;
       
       private var _isLow:Boolean = false;
       
@@ -505,6 +503,7 @@ package net.wg.gui.components.crosshairPanel
       
       private function setAmmoCount(param1:Number, param2:Boolean) : void
       {
+         var _loc3_:Boolean = this._isLow != param2 || this._count != param1;
          if(!(this._isLow == param2 && this._currentAmmoTextField && (this._currentAmmoTextField == this.ammoLowTextField || this._currentAmmoTextField == this.ammoNormalTextField)))
          {
             this._isLow = param2;
@@ -516,10 +515,10 @@ package net.wg.gui.components.crosshairPanel
             this._currentAmmoTextField = !!this._isLow ? this.ammoLowTextField : this.ammoNormalTextField;
             this.updateAmmoCountVisibility();
          }
-         if(this._count != param1)
+         if(_loc3_)
          {
             this._count = param1;
-            this._currentAmmoTextField.text = this._count == -1 ? INFINITY_SYMBOL : this._count.toString();
+            this._currentAmmoTextField.text = this._count.toString();
          }
       }
       
@@ -528,7 +527,7 @@ package net.wg.gui.components.crosshairPanel
          this.ammoLowTextField.visible = false;
          this.ammoNormalTextField.visible = false;
          this._currentAmmoTextField = !!this._isLow ? this.ammoLowTextField : this.ammoNormalTextField;
-         this._currentAmmoTextField.text = this._count == -1 ? INFINITY_SYMBOL : this._count.toString();
+         this._currentAmmoTextField.text = this._count.toString();
          this.updateAmmoCountVisibility();
       }
       
@@ -565,7 +564,7 @@ package net.wg.gui.components.crosshairPanel
          if(this._currentTimerTextField && this._currentReloadingTime != Values.DEFAULT_INT)
          {
             _loc1_ = ExternalInterface.call.apply(this,[FRACTIONAL_FORMAT_CMD,Number(this._currentReloadingTime)]);
-            this._currentTimerTextField.text = _loc1_.slice(0,_loc1_.length - 1);
+            this._currentTimerTextField.text = _loc1_;
          }
       }
       

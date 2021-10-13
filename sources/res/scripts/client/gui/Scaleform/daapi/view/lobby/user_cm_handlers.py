@@ -15,7 +15,7 @@ from gui.prb_control import prbDispatcherProperty, prbEntityProperty
 from gui.prb_control.entities.base.ctx import PrbAction, SendInvitesCtx
 from gui.prb_control.settings import PREBATTLE_ACTION_NAME
 from gui.shared import event_dispatcher as shared_events, events, g_eventBus, utils
-from gui.ranked_battles.constants import PrimeTimeStatus
+from gui.periodic_battles.models import PrimeTimeStatus
 from gui.shared.ClanCache import ClanInfo
 from gui.shared.denunciator import LobbyDenunciator, DENUNCIATIONS, DENUNCIATIONS_MAP
 from gui.shared.event_bus import EVENT_BUS_SCOPE
@@ -30,7 +30,7 @@ from messenger.proto.entities import SharedUserEntity
 from messenger.proto.entities import ClanInfo as UserClanInfo
 from messenger.storage import storage_getter
 from nation_change_helpers.client_nation_change_helper import getValidVehicleCDForNationChange
-from skeletons.gui.game_control import IVehicleComparisonBasket, IBattleRoyaleController, IMapboxController, IGameEventController
+from skeletons.gui.game_control import IVehicleComparisonBasket, IBattleRoyaleController, IMapboxController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
@@ -71,7 +71,6 @@ class BaseUserCMHandler(AbstractContextMenuHandler, EventSystemEntity):
     eventsCache = dependency.descriptor(IEventsCache)
     clanCtrl = dependency.descriptor(IWebController)
     lobbyContext = dependency.descriptor(ILobbyContext)
-    gameEventCtrl = dependency.descriptor(IGameEventController)
     __battleRoyale = dependency.descriptor(IBattleRoyaleController)
     __mapboxCtrl = dependency.descriptor(IMapboxController)
 
@@ -280,7 +279,7 @@ class BaseUserCMHandler(AbstractContextMenuHandler, EventSystemEntity):
         if not isIgnored and not self.isSquadCreator() and self.prbDispatcher is not None:
             canCreate = self.prbEntity.getPermissions().canCreateSquad()
             options.append(self._makeItem(USER.CREATE_SQUAD, MENU.contextmenu(USER.CREATE_SQUAD), optInitData={'enabled': canCreate}))
-            if self.gameEventCtrl.isAvailable():
+            if self.eventsCache.isEventEnabled():
                 options.append(self._makeItem(USER.CREATE_EVENT_SQUAD, MENU.contextmenu(USER.CREATE_EVENT_SQUAD), optInitData={'enabled': canCreate, 'textColor': 13347959}))
             if self.__battleRoyale.isEnabled():
                 primeTimeStatus, _, _ = self.__battleRoyale.getPrimeTimeStatus()

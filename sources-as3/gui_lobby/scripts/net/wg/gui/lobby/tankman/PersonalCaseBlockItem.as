@@ -8,33 +8,46 @@ package net.wg.gui.lobby.tankman
    import net.wg.data.managers.impl.TooltipProps;
    import net.wg.gui.components.advanced.DashLine;
    import net.wg.gui.components.controls.UILoaderAlt;
-   import net.wg.gui.components.tooltips.VO.PersonalCaseBlockItemVO;
    import net.wg.gui.events.PersonalCaseEvent;
+   import net.wg.gui.lobby.tankman.vo.PersonalCaseBlockItemVO;
    import net.wg.infrastructure.base.UIComponentEx;
-   import scaleform.clik.events.ButtonEvent;
+   import org.idmedia.as3commons.util.StringUtils;
+   import scaleform.clik.constants.InvalidationType;
    import scaleform.gfx.Extensions;
    
    public class PersonalCaseBlockItem extends UIComponentEx
    {
       
-      private static const FULL_DASH_WIDTH:int = 478;
-      
       private static const NEW_SKILLS_PADDING:int = 4;
       
-      private static const LEFT_DASH_WIDTH:int = 332;
+      private static const FULL_DASH_WIDTH:int = 478;
       
-      private static const RIGHT_DASH_PADDING:int = 16;
+      private static const LEFT_DASH_WIDTH:int = 332;
       
       private static const RIGHT_DASH_WIDTH:int = 131;
       
       private static const VALUE_MARGIN:int = 3;
+      
+      private static const SKILL_Y:int = 4;
+      
+      private static const SKILL_Y_ROLE:int = 6;
+      
+      private static const INACTIVE_ALPHA:Number = 0.3;
+      
+      private static const ROLE_ICON_SIZE:String = "small";
+      
+      private static const ICON_TYPE_NEW_SKILL:String = "new_skill";
+      
+      private static const ICON_TYPE_ROLE:String = "role";
+      
+      private static const ICON_TYPE_SKILL:String = "skill";
        
       
       public var skills:UILoaderAlt;
       
       public var value:TextField;
       
-      public var valuePrem:TextField;
+      public var secondValue:TextField;
       
       public var label:TextField;
       
@@ -42,98 +55,29 @@ package net.wg.gui.lobby.tankman
       
       public var rightDashLine:DashLine = null;
       
-      private var model:PersonalCaseBlockItemVO;
+      private var _model:PersonalCaseBlockItemVO;
+      
+      private var _isSecondValue:Boolean = false;
       
       private var _tankmanID:int = -1;
       
       private var _skillName:String = null;
       
-      private var isStudying:Boolean = false;
-      
       public function PersonalCaseBlockItem()
       {
          super();
-         this.label.autoSize = TextFieldAutoSize.LEFT;
-         this.value.autoSize = TextFieldAutoSize.RIGHT;
-         this.valuePrem.autoSize = TextFieldAutoSize.RIGHT;
       }
       
-      public function useBlocks(param1:Boolean, param2:Boolean) : void
+      override protected function draw() : void
       {
-         this.isStudying = param1;
-         if(param1)
+         if(isInvalid(InvalidationType.DATA) && this._model)
          {
-            this.leftDashLine.width = LEFT_DASH_WIDTH;
-            this.rightDashLine.x = this.leftDashLine.x + this.leftDashLine.width + RIGHT_DASH_PADDING;
-            this.rightDashLine.width = RIGHT_DASH_WIDTH;
-            this.value.alpha = !!param2 ? Number(0.3) : Number(1);
-            this.valuePrem.alpha = !param2 ? Number(0.3) : Number(1);
+            this.validateDate();
          }
-         else
+         if(isInvalid(InvalidationType.LAYOUT))
          {
-            this.leftDashLine.width = FULL_DASH_WIDTH;
-            this.rightDashLine.visible = false;
+            this.validateLayout();
          }
-      }
-      
-      public function setData(param1:PersonalCaseBlockItemVO) : void
-      {
-         var _loc3_:String = null;
-         this.model = param1;
-         var _loc2_:String = !!Extensions.isScaleform ? MENU.profile_stats_items(this.model.name) : this.model.name;
-         if(this.model.imageType != Values.EMPTY_STR && this.model.imageType == "new_skill")
-         {
-            _loc2_ = MENU.PROFILE_STATS_ITEMS_READYTOLEARN;
-            _loc3_ = "../maps/icons/tankmen/skills/small/" + this.model.image;
-            this.addListenersToIcon();
-            this.value.visible = false;
-            this.valuePrem.visible = false;
-         }
-         else if(this.model.imageType != Values.EMPTY_STR && this.model.imageType == "role")
-         {
-            _loc3_ = "../maps/icons/tankmen/roles/small/" + this.model.image;
-            this.skills.y += 2;
-         }
-         else if(this.model.imageType != Values.EMPTY_STR && this.model.imageType == "skill")
-         {
-            _loc3_ = "../maps/icons/tankmen/skills/small/" + this.model.image;
-            this.addListenersToIcon();
-         }
-         if(this.model.extra != Values.EMPTY_STR && this.model.extra != null)
-         {
-            this.value.visible = true;
-            this.valuePrem.visible = true;
-            this.value.text = this.model.extra;
-            this.valuePrem.text = this.model.extra;
-            this.updateLeftValue();
-            this.updateRightValue();
-         }
-         if(this.value.visible && this.model.value != null && this.model.value != Values.EMPTY_STR)
-         {
-            this.value.text = this.model.value;
-            this.updateLeftValue();
-            if(this.isStudying)
-            {
-               this.valuePrem.text = this.model.premiumValue;
-               this.updateRightValue();
-            }
-            else
-            {
-               this.valuePrem.visible = false;
-            }
-         }
-         this.label.text = _loc2_;
-         if(_loc3_)
-         {
-            this.skills.source = _loc3_;
-            this.skills.x = this.label.x + this.label.width + NEW_SKILLS_PADDING ^ 0;
-         }
-      }
-      
-      public function getTankmanID(param1:int, param2:String) : void
-      {
-         this._tankmanID = param1;
-         this._skillName = param2;
       }
       
       override protected function onDispose() : void
@@ -142,16 +86,16 @@ package net.wg.gui.lobby.tankman
          this.leftDashLine = null;
          this.rightDashLine.dispose();
          this.rightDashLine = null;
-         this.skills.removeEventListener(MouseEvent.MOUSE_OUT,this.onMouseOut);
-         this.skills.removeEventListener(MouseEvent.MOUSE_OVER,this.onMouseOver);
-         this.skills.removeEventListener(MouseEvent.CLICK,this.skills_mouseClickHandler);
-         this.skills.removeEventListener(ButtonEvent.CLICK,this.skills_buttonClickHandler);
+         this.skills.removeEventListener(MouseEvent.MOUSE_OUT,this.onMouseOutHandler);
+         this.skills.removeEventListener(MouseEvent.MOUSE_OVER,this.onMouseOverHandler);
+         this.skills.removeEventListener(MouseEvent.CLICK,this.onClickHandler);
          this.skills.dispose();
          this.skills = null;
          this.value = null;
+         this.secondValue = null;
          this.label = null;
-         this.model.dispose();
-         this.model = null;
+         this._model.dispose();
+         this._model = null;
          this._skillName = null;
          super.onDispose();
       }
@@ -159,30 +103,79 @@ package net.wg.gui.lobby.tankman
       override protected function configUI() : void
       {
          super.configUI();
+         this.label.autoSize = TextFieldAutoSize.LEFT;
+         this.value.autoSize = TextFieldAutoSize.RIGHT;
+         this.secondValue.autoSize = TextFieldAutoSize.RIGHT;
+         this.rightDashLine.width = RIGHT_DASH_WIDTH;
+         this.skills.mouseChildren = false;
+         this.skills.addEventListener(MouseEvent.MOUSE_OUT,this.onMouseOutHandler);
+         this.skills.addEventListener(MouseEvent.MOUSE_OVER,this.onMouseOverHandler);
+         this.skills.addEventListener(MouseEvent.CLICK,this.onClickHandler);
          var _loc1_:PersonalCaseEvent = new PersonalCaseEvent(PersonalCaseEvent.GET_TANKMAN_ID,true);
          _loc1_.tankmanIdDelegate = this.getTankmanID;
          dispatchEvent(_loc1_);
       }
       
-      private function updateLeftValue() : void
+      public function getTankmanID(param1:int, param2:String) : void
       {
+         this._tankmanID = param1;
+         this._skillName = param2;
+      }
+      
+      public function setData(param1:PersonalCaseBlockItemVO, param2:Boolean) : void
+      {
+         this._model = param1;
+         this._isSecondValue = param2;
+         invalidateData();
+         invalidateLayout();
+      }
+      
+      private function validateLayout() : void
+      {
+         this.leftDashLine.width = !!this._isSecondValue ? Number(LEFT_DASH_WIDTH) : Number(FULL_DASH_WIDTH);
          this.value.x = this.leftDashLine.x + this.leftDashLine.width - this.value.width + VALUE_MARGIN ^ 0;
+         this.secondValue.x = this.rightDashLine.x + this.rightDashLine.width - this.secondValue.width + VALUE_MARGIN ^ 0;
+         this.skills.y = this._model.imageType == ICON_TYPE_ROLE ? Number(SKILL_Y_ROLE) : Number(SKILL_Y);
+         this.skills.x = this.label.x + this.label.width + NEW_SKILLS_PADDING ^ 0;
       }
       
-      private function updateRightValue() : void
+      private function setSkillsInteractive(param1:Boolean) : void
       {
-         this.valuePrem.x = this.rightDashLine.x + this.rightDashLine.width - this.valuePrem.width + VALUE_MARGIN ^ 0;
+         this.skills.buttonMode = this.skills.mouseEnabled = param1;
       }
       
-      private function addListenersToIcon() : void
+      private function validateDate() : void
       {
-         this.skills.mouseChildren = false;
-         this.skills.buttonMode = true;
-         this.skills.useHandCursor = true;
-         this.skills.addEventListener(MouseEvent.MOUSE_OUT,this.onMouseOut);
-         this.skills.addEventListener(MouseEvent.MOUSE_OVER,this.onMouseOver);
-         this.skills.addEventListener(MouseEvent.CLICK,this.skills_mouseClickHandler);
-         this.skills.addEventListener(ButtonEvent.CLICK,this.skills_buttonClickHandler);
+         if(this._model.imageType == ICON_TYPE_NEW_SKILL)
+         {
+            this.label.text = MENU.PROFILE_STATS_ITEMS_READYTOLEARN;
+         }
+         else
+         {
+            this.label.text = !!Extensions.isScaleform ? MENU.profile_stats_items(this._model.name) : this._model.name;
+         }
+         if(this._model.imageType == ICON_TYPE_NEW_SKILL || this._model.imageType == ICON_TYPE_SKILL)
+         {
+            this.skills.source = RES_ICONS.maps_icons_tankmen_skills_small(this._model.image);
+            this.setSkillsInteractive(true);
+         }
+         else if(this._model.imageType == ICON_TYPE_ROLE)
+         {
+            this.skills.source = RES_ICONS.getTankmanRoleIcon(ROLE_ICON_SIZE,this._model.image);
+            this.setSkillsInteractive(false);
+         }
+         else
+         {
+            this.setSkillsInteractive(false);
+         }
+         this.value.visible = StringUtils.isNotEmpty(this._model.value) && this._model.imageType != ICON_TYPE_NEW_SKILL;
+         this.secondValue.visible = this._isSecondValue && StringUtils.isNotEmpty(this._model.secondValue) && this._model.imageType != ICON_TYPE_NEW_SKILL;
+         this.value.text = this._model.value;
+         this.secondValue.text = this._model.secondValue;
+         this.label.alpha = !!this._model.isLabelActive ? Number(Values.DEFAULT_ALPHA) : Number(INACTIVE_ALPHA);
+         this.value.alpha = !!this._model.isValueActive ? Number(Values.DEFAULT_ALPHA) : Number(INACTIVE_ALPHA);
+         this.secondValue.alpha = !!this._model.isSecondValueActive ? Number(Values.DEFAULT_ALPHA) : Number(INACTIVE_ALPHA);
+         this.rightDashLine.visible = this._isSecondValue;
       }
       
       private function dispatchPersonalCaseEvent() : void
@@ -190,13 +183,9 @@ package net.wg.gui.lobby.tankman
          dispatchEvent(new PersonalCaseEvent(PersonalCaseEvent.CHANGE_TAB_ON_TWO,true));
       }
       
-      private function onMouseOver(param1:MouseEvent) : void
+      private function onMouseOverHandler(param1:MouseEvent) : void
       {
-         if(!this.model.hasOwnProperty("name") && !this.model.hasOwnProperty("tankmanID") && this.model.name != null)
-         {
-            return;
-         }
-         if(this.model.hasOwnProperty("imageType") && this.model.imageType == "new_skill")
+         if(this._model.imageType == ICON_TYPE_NEW_SKILL)
          {
             App.toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.TANKMAN_NEW_SKILL,TooltipProps.DEFAULT,this._tankmanID);
          }
@@ -206,17 +195,12 @@ package net.wg.gui.lobby.tankman
          }
       }
       
-      private function onMouseOut(param1:MouseEvent) : void
+      private function onMouseOutHandler(param1:MouseEvent) : void
       {
          App.toolTipMgr.hide();
       }
       
-      private function skills_buttonClickHandler(param1:ButtonEvent) : void
-      {
-         this.dispatchPersonalCaseEvent();
-      }
-      
-      private function skills_mouseClickHandler(param1:MouseEvent) : void
+      private function onClickHandler(param1:MouseEvent) : void
       {
          this.dispatchPersonalCaseEvent();
       }

@@ -407,6 +407,8 @@ BATTLE_RESULTS = [
  (
   'dossierPopUps', list, [], None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
  (
+  'dossierLogRecords', list, [], None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
+ (
   'vehTypeLockTime', int, 0, None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
  (
   'serviceProviderID', int, 0, None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
@@ -691,6 +693,8 @@ BATTLE_RESULTS = [
   'playerRank', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL),
  (
   'quickShellChangerUsageCount', int, 0, None, 'skip', ENTRY_TYPE.SERVER),
+ (
+  'goldBankGain', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
   'setupsIndexes', dict, {}, None, 'any', ENTRY_TYPE.VEHICLE_SELF),
  (

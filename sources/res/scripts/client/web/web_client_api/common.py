@@ -12,8 +12,7 @@ VehicleOfferEntry.__new__.__defaults__ = (
 ItemPackEntry = namedtuple('ItemPackEntry', ('type', 'id', 'count', 'groupID', 'compensation',
                                              'iconSource', 'title', 'description',
                                              'extra'))
-ItemPackEntry.__new__.__defaults__ = (
- None, None, None, None, None, None, '', '', {})
+ItemPackEntry.__new__.__defaults__ = (None, None, None, None, None, None, '', '', None)
 
 class ShopItemType(CONST_CONTAINER):
     VEHICLE = 'vehicle'
@@ -110,9 +109,9 @@ class ItemPackTypeGroup(CONST_CONTAINER):
     ITEM = (
      ItemPackType.ITEM_SHELL,
      ItemPackType.ITEM_DEVICE,
-     ItemPackType.ITEM_EQUIPMENT,
-     ItemPackType.CREW_BOOK_BROCHURE)
+     ItemPackType.ITEM_EQUIPMENT)
     VEHICLE = (
+     ItemPackType.VEHICLE,
      ItemPackType.VEHICLE_SPG,
      ItemPackType.VEHICLE_AT_SPG,
      ItemPackType.VEHICLE_HEAVY,

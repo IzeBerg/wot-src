@@ -1,4 +1,4 @@
-import logging
+import logging, math
 from functools import partial
 import Math, math_utils, BigWorld
 from helpers import dependency
@@ -24,7 +24,6 @@ class AreaMarkersController(BaseMarkerController):
         self._battleCtx = None
         self._arenaVisitor = None
         self._vehiclesAreaMarkerHandler = VehiclesAreaMarkerHandler(self)
-        self._prevGlobalVisibility = None
         return
 
     def startControl(self, battleCtx, arenaVisitor):
@@ -68,11 +67,8 @@ class AreaMarkersController(BaseMarkerController):
                 if hide:
                     marker.setVisible(False)
                     continue
-                if self._prevGlobalVisibility != self._globalVisibility:
-                    self._prevGlobalVisibility = self._globalVisibility
-                    marker.setVisible(self._globalVisibility)
-                if marker.isVisible:
-                    marker.update(int(round(distanceToArea)))
+                marker.setVisible(self._globalVisibility)
+                marker.update(int(math.ceil(max(0, distanceToArea))))
 
             return
 

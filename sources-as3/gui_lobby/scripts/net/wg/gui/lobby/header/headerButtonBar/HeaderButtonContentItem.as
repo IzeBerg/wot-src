@@ -28,6 +28,10 @@ package net.wg.gui.lobby.header.headerButtonBar
       public static const ICON_MARGIN:int = 5;
       
       private static const MSG_MUST_BE_OVERRIDDEN:String = "Method must be overridden!";
+      
+      public static const SEPARATOR_GRADIENT:String = "gradient";
+      
+      public static const SEPARATOR_DOT:String = "dot";
        
       
       public var bounds:Sprite = null;
@@ -345,6 +349,11 @@ package net.wg.gui.lobby.header.headerButtonBar
       public function set narrowFontSize(param1:int) : void
       {
          this._narrowFontSize = param1;
+      }
+      
+      public function getSeparatorType() : String
+      {
+         return SEPARATOR_GRADIENT;
       }
    }
 }

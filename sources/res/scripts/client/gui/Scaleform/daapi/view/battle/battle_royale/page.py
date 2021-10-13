@@ -104,7 +104,9 @@ class _BattleRoyaleComponentsConfig(ComponentsConfig):
            _DynamicAliases.PHASE_SOUND_PLAYER,
            _DynamicAliases.POSTMORTEM_SOUND_PLAYER,
            _DynamicAliases.ARENA_PERIOD_SOUND_PLAYER,
-           _DynamicAliases.EQUIPMENT_SOUND_PLAYER))), (
+           _DynamicAliases.EQUIPMENT_SOUND_PLAYER)),
+         (
+          BATTLE_CTRL_ID.AMMO, (BATTLE_VIEW_ALIASES.CONSUMABLES_PANEL,))), (
          (
           DynamicAliases.PERIOD_MUSIC_LISTENER, period_music_listener.PeriodMusicListener),
          (

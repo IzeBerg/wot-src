@@ -1,7 +1,7 @@
 from collections import defaultdict
 from gui import TANKMEN_ROLES_ORDER_DICT
 from gui.battle_control import avatar_getter
-from gui.battle_control.battle_constants import VEHICLE_DEVICES, VEHICLE_GUI_ITEMS, VEHICLE_COMPLEX_ITEMS, VEHICLE_INDICATOR_TYPE, AUTO_ROTATION_FLAG, WHEELED_VEHICLE_DEVICES, WHEELED_VEHICLE_GUI_ITEMS
+from gui.battle_control.battle_constants import VEHICLE_DEVICES, VEHICLE_GUI_ITEMS, VEHICLE_COMPLEX_ITEMS, VEHICLE_INDICATOR_TYPE, AUTO_ROTATION_FLAG, WHEELED_VEHICLE_DEVICES, WHEELED_VEHICLE_GUI_ITEMS, TRACK_WITHIN_TRACK_DEVICES
 _COATED_OPTICS_TAG = 'coatedOptics'
 
 def hasTurretRotator(vDesc):
@@ -21,6 +21,13 @@ def isWheeledTech(vDesc):
         return False
     else:
         return 'wheeledVehicle' in vDesc.type.tags
+
+
+def isTrackWithinTrackTech(vDesc):
+    if vDesc is None:
+        return False
+    else:
+        return vDesc.isTrackWithinTrack
 
 
 def getYawLimits(vDesc):
@@ -146,7 +153,12 @@ class VehicleDeviceStatesIterator(object):
         super(VehicleDeviceStatesIterator, self).__init__()
         self._states = defaultdict(lambda : 'normal', states or {})
         self._hasTurret = hasTurretRotator(vDesc)
-        self._devices = list(devices or (WHEELED_VEHICLE_DEVICES if isWheeledTech(vDesc) else VEHICLE_DEVICES))
+        if isWheeledTech(vDesc):
+            self._devices = list(devices or WHEELED_VEHICLE_DEVICES)
+        elif isTrackWithinTrackTech(vDesc):
+            self._devices = list(devices or TRACK_WITHIN_TRACK_DEVICES)
+        else:
+            self._devices = list(devices or VEHICLE_DEVICES)
 
     def __iter__(self):
         return self

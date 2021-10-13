@@ -207,18 +207,6 @@ ITEM_INVENTORY_CHECKERS = {'vehicles': lambda account, key: account._inventory.g
    'customizations': lambda account, key: account._customizations20.getItems((key,), 0)[key] > 0, 
    'tokens': lambda account, key: account._quests.hasToken(key)}
 
-def getProbableBonuses(bonusType, value):
-    if bonusType == 'allof':
-        bonusData = value[0]
-        probability, bonuses = bonusData[0], bonusData[3]
-        return (probability, [bonuses] if bonuses is not None else [])
-    if bonusType == 'oneof':
-        return (
-         None, [ bonus for _, _, _, bonus in value[1] ])
-    return (
-     None, [])
-
-
 class BonusItemsCache(object):
 
     def __init__(self, account, cache=None):
@@ -636,9 +624,8 @@ class StripVisitor(NodeVisitor):
         _, values = values
         for probability, bonusProbability, refGlobalID, bonusValue in values:
             stippedValue = {}
-            probability = bonusValue.get('properties', {}).get('userProbability', None)
             self._walkSubsection(stippedValue, bonusValue)
-            strippedValues.append((probability, -1, None, stippedValue))
+            strippedValues.append(([-1], -1, None, stippedValue))
 
         storage['oneof'] = (None, strippedValues)
         return
@@ -647,9 +634,8 @@ class StripVisitor(NodeVisitor):
         strippedValues = []
         for probability, bonusProbability, refGlobalID, bonusValue in values:
             stippedValue = {}
-            probability = bonusValue.get('properties', {}).get('userProbability', None)
             self._walkSubsection(stippedValue, bonusValue)
-            strippedValues.append((probability, -1, None, stippedValue))
+            strippedValues.append(([-1], -1, None, stippedValue))
 
         storage['allof'] = strippedValues
         return

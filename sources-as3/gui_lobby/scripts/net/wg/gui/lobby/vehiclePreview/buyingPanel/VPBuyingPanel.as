@@ -559,7 +559,7 @@ package net.wg.gui.lobby.vehiclePreview.buyingPanel
             this.notResearchedAlertIcon.y = this.actionButton.y + (this.actionButton.height - this.notResearchedAlertIcon.height >> 1) | 0;
             this.notResearchedLabelTf.x = this.notResearchedAlertIcon.x + this.notResearchedAlertIcon.width + NOT_RESEARCHED_LABEL_OFFSET >> 0;
             _loc4_ = localToGlobal(new Point(this.notResearchedLabelTf.x,0));
-            this.notResearchedLabelTf.width = App.appWidth - _loc4_.x;
+            this.notResearchedLabelTf.width = App.appWidth * App.stage.scaleX - _loc4_.x >> 0;
             this.notResearchedLabelTf.y = this.notResearchedAlertIcon.y + (this.notResearchedAlertIcon.height - this.notResearchedLabelTf.textHeight >> 1) - TF_V_OFFSET;
          }
          if(this.uniqueLabelTf.visible)

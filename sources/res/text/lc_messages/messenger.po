@@ -1732,7 +1732,7 @@ msgid "serviceChannelMessages/battleResults/actionsResultsCrystal"
 msgstr "%s бон"
 
 msgid "serviceChannelMessages/battleResults/actionsResultsEventCoin"
-msgstr "%s подарочных билетов"
+msgstr "%s юбилейных монет"
 
 msgid "serviceChannelMessages/battleResults/actionsResultsFreeXP"
 msgstr "%s свободного опыта"
@@ -1786,7 +1786,7 @@ msgid "serviceChannelMessages/battleResults/epicAbilityPoints"
 msgstr "Очки боевых резервов"
 
 msgid "serviceChannelMessages/battleResults/eventCoin"
-msgstr "Получено подарочных билетов"
+msgstr "Получено юбилейных монет"
 
 msgid "serviceChannelMessages/battleResults/experience"
 msgstr "Получено опыта"
@@ -1839,7 +1839,7 @@ msgstr ""
 "следующие награды"
 
 msgid "serviceChannelMessages/battleResults/piggyBank"
-msgstr "В хранилище поступило"
+msgstr "В хранилище кредитов поступило"
 
 msgid "serviceChannelMessages/battleResults/quests"
 msgstr "Боевая задача выполнена! Награда"
@@ -1869,7 +1869,7 @@ msgid "serviceChannelMessages/battleResults/quests/entitlements/multiplier"
 msgstr " (%(count)s)"
 
 msgid "serviceChannelMessages/battleResults/quests/eventCoin"
-msgstr "Добавлены подарочные билеты"
+msgstr "Добавлены юбилейные монеты"
 
 msgid "serviceChannelMessages/battleResults/quests/freeXP"
 msgstr "Добавлено свободного опыта"
@@ -2135,7 +2135,7 @@ msgid "serviceChannelMessages/currencyUpdate/debited/crystal"
 msgstr "Списано бон"
 
 msgid "serviceChannelMessages/currencyUpdate/debited/eventCoin"
-msgstr "Списано подарочных билетов"
+msgstr "Списано юбилейных монет"
 
 msgid "serviceChannelMessages/currencyUpdate/debited/gold"
 msgstr "Списано золота"
@@ -2153,7 +2153,7 @@ msgid "serviceChannelMessages/currencyUpdate/received/crystal"
 msgstr "Получено бон"
 
 msgid "serviceChannelMessages/currencyUpdate/received/eventCoin"
-msgstr "Получено подарочных билетов"
+msgstr "Получено юбилейных монет"
 
 msgid "serviceChannelMessages/currencyUpdate/received/gold"
 msgstr "Получено золота"
@@ -2209,14 +2209,8 @@ msgstr "Все экспериментальные модули списаны"
 msgid "serviceChannelMessages/enhancements/wipedOnVehicles"
 msgstr "Демонтированы экспериментальные модули со следующих машин"
 
-msgid "serviceChannelMessages/event/lootboxes"
-msgstr "Получено стартеров:"
-
-msgid "serviceChannelMessages/event/tickets"
-msgstr "Получено ключей:"
-
 msgid "serviceChannelMessages/eventCoinReceivedAsGift"
-msgstr "От администрации получено подарочных билетов: %(eventCoin)s."
+msgstr "От администрации получено юбилейных монет: %(eventCoin)s."
 
 msgid "serviceChannelMessages/failedPersonalMission"
 msgstr "Прогресс сброшен"
@@ -2418,7 +2412,7 @@ msgid "serviceChannelMessages/invoiceReceived/compensation/emblem"
 msgstr "Эмблему"
 
 msgid "serviceChannelMessages/invoiceReceived/compensation/eventCoin"
-msgstr "подарочными билетами"
+msgstr "юбилейными монетами"
 
 msgid "serviceChannelMessages/invoiceReceived/compensation/gold"
 msgstr "золотом"
@@ -2505,10 +2499,10 @@ msgid "serviceChannelMessages/invoiceReceived/entitlementsDebited"
 msgstr "Списаны"
 
 msgid "serviceChannelMessages/invoiceReceived/eventCoinAccrued"
-msgstr "Начислено подарочных билетов"
+msgstr "Начислено юбилейных монет"
 
 msgid "serviceChannelMessages/invoiceReceived/eventCoinDebited"
-msgstr "Списано подарочных билетов"
+msgstr "Списано юбилейных монет"
 
 msgid "serviceChannelMessages/invoiceReceived/freeAwardListsAccrued"
 msgstr "Начислено бланков приказа"
@@ -2627,9 +2621,6 @@ msgstr "Списана техника"
 msgid "serviceChannelMessages/invoiceReceived/vehiclesRented"
 msgstr "Добавлена арендованная техника"
 
-msgid "serviceChannelMessages/invoiceReceived/vehiclesRented/bonus"
-msgstr "Внимание! Последующее продление аренды обойдётся дешевле."
-
 msgid "serviceChannelMessages/itemReceivedAsGift"
 msgstr ""
 "От администрации получено снаряжение: %(typeName)s «%(itemName)s» — "
@@ -2646,6 +2637,9 @@ msgstr "Вам посылка:"
 
 msgid "serviceChannelMessages/lootBoxes/item/name"
 msgstr "«%(name)s» %(colorTagOpen)sx%(count)s%(colorTagClose)s"
+
+msgid "serviceChannelMessages/lootBoxesAutoOpen/button"
+msgstr "Посмотреть"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/counter"
 msgstr "x%(count)s"
@@ -2745,10 +2739,10 @@ msgid "serviceChannelMessages/piggyBank/continueAfterSmashed"
 msgstr "Начался новый цикл накопления."
 
 msgid "serviceChannelMessages/piggyBank/onPause"
-msgstr "Накопление кредитов в резервном хранилище приостановлено."
+msgstr "Накопление кредитов в хранилище приостановлено."
 
 msgid "serviceChannelMessages/piggyBank/title"
-msgstr "Резервное хранилище открыто!"
+msgstr "Хранилище кредитов открыто!"
 
 msgid "serviceChannelMessages/prebattle/battleType/clan"
 msgstr "Клановый бой"
@@ -2989,10 +2983,10 @@ msgid "serviceChannelMessages/sysMsg/converter/emblems"
 msgstr "Изменены эмблемы"
 
 msgid "serviceChannelMessages/sysMsg/converter/eventCoinReceived"
-msgstr "Начислено подарочных билетов: %(eventCoin)s"
+msgstr "Начислено юбилейных монет: %(eventCoin)s"
 
 msgid "serviceChannelMessages/sysMsg/converter/eventCoinWithdrawn"
-msgstr "Списано подарочных билетов: %(eventCoin)s"
+msgstr "Списано юбилейных монет: %(eventCoin)s"
 
 msgid "serviceChannelMessages/sysMsg/converter/freeXPReceived"
 msgstr "Начислено свободного опыта: %(freeXP)s"
@@ -3140,17 +3134,8 @@ msgstr "Платёжный способ «%(method)s» был отвязан"
 msgid "serviceChannelMessages/sysMsg/titles/powerlevel"
 msgstr "Исследовано:"
 
-msgid "serviceChannelMessages/sysMsg/titles/primeTime"
-msgstr "Режим прекращения огня"
-
 msgid "serviceChannelMessages/sysMsg/titles/purchase"
 msgstr "Куплено:"
-
-msgid "serviceChannelMessages/sysMsg/titles/rankedBattlesAvailable"
-msgstr "Ранговые бои доступны"
-
-msgid "serviceChannelMessages/sysMsg/titles/rankedBattlesNotSet"
-msgstr "Ранговые бои недоступны"
 
 msgid "serviceChannelMessages/sysMsg/titles/remove"
 msgstr "Удаление из Ангара:"
@@ -3206,6 +3191,28 @@ msgid ""
 "title"
 msgstr "Отмена модификации"
 
+msgid ""
+"serviceChannelMessages/vehiclePostProgression/prebattleSwitchToggled/disabled"
+msgstr "отключена"
+
+msgid ""
+"serviceChannelMessages/vehiclePostProgression/prebattleSwitchToggled/enabled"
+msgstr "включена"
+
+msgid ""
+"serviceChannelMessages/vehiclePostProgression/prebattleSwitchToggled/"
+"opt_dev_boosters_switch"
+msgstr ""
+"Смена комплектов оборудования и инструкций во время предбоевого отсчёта "
+"%(state)s для %(tankName)s."
+
+msgid ""
+"serviceChannelMessages/vehiclePostProgression/prebattleSwitchToggled/"
+"shells_consumables_switch"
+msgstr ""
+"Смена комплектов снарядов и снаряжения во время предбоевого отсчёта "
+"%(state)s для %(tankName)s."
+
 msgid "serviceChannelMessages/vehicleReceivedAsGift"
 msgstr "От администрации получена премиум машина: %(vehicleName)s"
 
@@ -3226,6 +3233,90 @@ msgid "serviceChannelMessages/waresSoldAsGold"
 msgstr ""
 "%(srcWares)s золота отправлено игроку %(dstName)s. Комиссия составила "
 "%(fee)s."
+
+msgid "serviceChannelMessages/wotPlus/expireMessage/text"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/expireMessage/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/freeDirectives/isDisabled/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/freeDirectives/isEnabled/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/freeDirectives/received/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/goldReserve/isDisabled/text"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/goldReserve/isDisabled/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/goldReserve/isEnabled/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/goldReserve/isFull/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/goldReserve/smash/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/nextDateOfRenewal"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/incompatibleCrew/text"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/isDisabled/text"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/isDisabled/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/isEnabled/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/noTank/text"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/passiveXP/wasting/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/renewMessage/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/rental/end/text"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/rental/end/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/rental/noTank/text"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/rental/noTank/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/tankRental/isDisabled/text"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/tankRental/isDisabled/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/tankRental/isEnabled/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/tankRental/isPending/text"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/tankRental/isPending/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/unlockMessage/title"
+msgstr "?empty?"
 
 msgid "serviceChannelMessages/xpReceivedAsGift"
 msgstr "От администрации получен свободный опыт: %(freeXP)s."

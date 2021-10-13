@@ -1,6 +1,7 @@
 from constants import ENDLESS_TOKEN_TIME
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.impl import backport
+from items.components.tankmen_components import SPECIAL_CREW_TAG
 from items.tankmen import TankmanDescr, MAX_SKILL_LEVEL
 from nations import NONE_INDEX, INDICES, NAMES as NationNames
 from items import tankmen, vehicles
@@ -15,7 +16,7 @@ from gui.Scaleform.locale.QUESTS import QUESTS
 from helpers.i18n import makeString as _ms
 from account_helpers.AccountSettings import AccountSettings, RECRUIT_NOTIFICATIONS
 from soft_exception import SoftException
-from shared_utils import first
+from shared_utils import first, findFirst
 from .events_helpers import getTankmanRewardQuests
 
 class RecruitSourceID(object):
@@ -70,7 +71,7 @@ _INCREASE_LIMIT_LOGIN = 5
 class _BaseRecruitInfo(object):
     __slots__ = ('_recruitID', '_expiryTime', '_nations', '_learntSkills', '_freeXP',
                  '_roleLevel', '_lastSkillLevel', '_roles', '_firstName', '_lastName',
-                 '_icon', '_sourceID', '_isFemale', '_hasNewSkill')
+                 '_icon', '_sourceID', '_isFemale', '_hasNewSkill', '_tankmanSkill')
 
     def __init__(self, recruitID, expiryTime, nations, learntSkills, freeXP, roleLevel, lastSkillLevel, firstName, lastName, roles, icon, sourceID, isFemale, hasNewSkill):
         self._recruitID = recruitID
@@ -87,6 +88,7 @@ class _BaseRecruitInfo(object):
         self._sourceID = sourceID
         self._isFemale = isFemale
         self._hasNewSkill = hasNewSkill
+        self._tankmanSkill = self._getTankmanSkill()
 
     def __cmp__(self, other):
         return cmp(self.getExpiryTimeStamp(), other.getExpiryTimeStamp())
@@ -181,11 +183,17 @@ class _BaseRecruitInfo(object):
              count, lastSkillLevel)
         return (0, 0)
 
+    def getTankmanSkill(self):
+        return self._tankmanSkill
+
     def _getSkillsForDescr(self):
         return self._learntSkills
 
     def _getFreeSkillsForDescr(self):
         return ()
+
+    def _getTankmanSkill(self):
+        return Tankman.TankmanSkill
 
     def __makeFakeDescriptor(self):
         vehType = vehicles.VehicleDescr(typeID=(0, 0)).type
@@ -293,16 +301,28 @@ class _TokenRecruitInfo(_BaseRecruitInfo):
     def _getFreeSkillsForDescr(self):
         return self.__freeSkills
 
+    def _getTankmanSkill(self):
+        nationID = self._getDefaultNation()
+        nationGroup = self.__getNationGroup(nationID)
+        if self.__hasTagInTankmenGroup(nationID, nationGroup, SPECIAL_CREW_TAG.SABATON):
+            return Tankman.SabatonTankmanSkill
+        if self.__hasTagInTankmenGroup(nationID, nationGroup, SPECIAL_CREW_TAG.OFFSPRING):
+            return Tankman.OffspringTankmanSkill
+        if self.__hasTagInTankmenGroup(nationID, nationGroup, SPECIAL_CREW_TAG.YHA):
+            return Tankman.YhaTankmanSkill
+        return super(_TokenRecruitInfo, self)._getTankmanSkill()
+
     def __parseTankmanData(self, nationID):
-        config = tankmen.getNationGroups(nationID, self.__isPremium)
-        found = [ c for c in config.itervalues() if c.name == self.__group ]
-        if found:
-            nationGroup = found[0]
+        empty = ([], EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, False)
+        nationGroup = self.__getNationGroup(nationID)
+        if nationGroup is None:
+            return empty
+        else:
             firstNamesList = nationGroup.firstNamesList
             lastNamesList = nationGroup.lastNamesList
             iconsList = nationGroup.iconsList
             if not firstNamesList or not lastNamesList or not iconsList:
-                return ([], EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, False)
+                return empty
             if len(firstNamesList) > 1 or len(lastNamesList) > 1 or len(iconsList) > 1:
                 if nationGroup.isFemales:
                     return (nationGroup.rolesList, _ms(QUESTS.BONUSES_ITEM_TANKWOMAN), EMPTY_STRING, _TANKWOMAN_ICON,
@@ -317,7 +337,14 @@ class _TokenRecruitInfo(_BaseRecruitInfo):
              nationGroup.rolesList, nationConfig.getFirstName(firstNameId),
              nationConfig.getLastName(lastNameId), nationConfig.getIcon(iconId),
              nationGroup.isFemales)
-        return ([], EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, False)
+
+    def __getNationGroup(self, nationID):
+        groups = tankmen.getNationGroups(nationID, self.__isPremium)
+        group = findFirst(lambda g: g.name == self.__group, groups.itervalues())
+        return group
+
+    def __hasTagInTankmenGroup(self, nationID, group, tag):
+        return tankmen.hasTagInTankmenGroup(nationID, group.groupID, self.__isPremium, tag)
 
 
 def _getRecruitInfoFromQuest(questID):

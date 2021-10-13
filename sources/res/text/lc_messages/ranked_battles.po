@@ -10,8 +10,15 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "alertMessage/allPeripheriesHalt"
-msgstr "Режим прекращения огня на всех серверах. Бои начнутся через %(time)s"
+msgid "alertMessage/allNotAvailable"
+msgstr ""
+"Режим прекращения огня на всех серверах. Бои начнутся через %(primeDelta)s"
+
+msgid "alertMessage/allNotAvailableEnd"
+msgstr "Сезон %(leftSeasonName)s завершён"
+
+msgid "alertMessage/allNotSet"
+msgstr "Режим недоступен на сервере %(serverName)s"
 
 msgid "alertMessage/button/changeServer"
 msgstr "Сменить сервер"
@@ -19,17 +26,38 @@ msgstr "Сменить сервер"
 msgid "alertMessage/button/moreInfo"
 msgstr "Подробнее"
 
-msgid "alertMessage/seasonFinished"
-msgstr "Сезон %(seasonName)s завершён"
-
-msgid "alertMessage/singleModeHalt"
-msgstr "Режим прекращения огня на сервере. Бои начнутся через %(time)s"
-
-msgid "alertMessage/somePeripheriesHalt"
+msgid "alertMessage/notAvailable"
 msgstr "Режим прекращения огня на сервере %(serverName)s"
 
-msgid "alertMessage/unsuitablePeriphery"
+msgid "alertMessage/notAvailableEnd"
+msgstr "Режим прекращения огня на сервере %(serverName)s"
+
+msgid "alertMessage/notSet"
 msgstr "Режим недоступен на сервере %(serverName)s"
+
+msgid "alertMessage/standaloneNotAvailable"
+msgstr "Режим прекращения огня на сервере. Бои начнутся через %(primeDelta)s"
+
+msgid "alertMessage/standaloneNotAvailableEnd"
+msgstr "Сезон %(leftSeasonName)s завершён"
+
+msgid "alertMessage/standaloneNotSet"
+msgstr "Режим недоступен на сервере %(serverName)s"
+
+msgid "alertMessage/timeLeft/days"
+msgstr "%(day)s д"
+
+msgid "alertMessage/timeLeft/hours"
+msgstr "%(hour)s ч"
+
+msgid "alertMessage/timeLeft/lessMin"
+msgstr "минуту"
+
+msgid "alertMessage/timeLeft/min"
+msgstr "%(min)s мин"
+
+msgid "alertMessage/undefined"
+msgstr "?empty?"
 
 msgid "alertMessage/unsuitableVehicles"
 msgstr "В Ангаре нет подходящей техники %(levels)s уровня"
@@ -470,59 +498,110 @@ msgstr "получен ранг машины"
 msgid "notification/vehicleRankLost"
 msgstr "потерян ранг машины"
 
-msgid "primeTime/applyBtn"
-msgstr "Перейти"
+msgid "primeTimes/serverTooltip/allNotAvailable"
+msgstr ""
+"Сервер %(serverName)s\n"
+"Бои станут доступны через %(primeDelta)s"
 
-msgid "primeTime/continueBtn"
-msgstr "Продолжить"
+msgid "primeTimes/serverTooltip/allNotAvailableEnd"
+msgstr ""
+"Сервер %(serverName)s\n"
+"%(leftSeasonName)s сезон завершился."
 
-msgid "primeTime/serverTooltip"
-msgstr "Сервер"
+msgid "primeTimes/serverTooltip/available"
+msgstr ""
+"Сервер %(serverName)s\n"
+"Бои будут доступны ещё %(primeDelta)s"
 
-msgid "primeTime/status/allServersDisabled"
+msgid "primeTimes/serverTooltip/notAvailable"
+msgstr ""
+"Сервер %(serverName)s\n"
+"Бои станут доступны через %(primeDelta)s"
+
+msgid "primeTimes/serverTooltip/notAvailableEnd"
+msgstr ""
+"Сервер %(serverName)s\n"
+"%(leftSeasonName)s сезон завершился."
+
+msgid "primeTimes/serverTooltip/standaloneNotAvailable"
+msgstr ""
+"Сервер %(serverName)s\n"
+"Бои станут доступны через %(primeDelta)s"
+
+msgid "primeTimes/serverTooltip/standaloneNotAvailableEnd"
+msgstr ""
+"Сервер %(serverName)s\n"
+"%(leftSeasonName)s сезон завершился."
+
+msgid "primeTimes/serverTooltip/timeLeft/days"
+msgstr "%(day)s д"
+
+msgid "primeTimes/serverTooltip/timeLeft/hours"
+msgstr "%(hour)s ч"
+
+msgid "primeTimes/serverTooltip/timeLeft/lessMin"
+msgstr "минуту"
+
+msgid "primeTimes/serverTooltip/timeLeft/min"
+msgstr "%(min)s мин"
+
+msgid "primeTimes/serverTooltip/undefined"
+msgstr "?empty?"
+
+msgid "primeTimes/statusText/allNotAvailable"
 msgstr "Режим прекращения огня на всех серверах"
 
-msgid "primeTime/status/disable"
+msgid "primeTimes/statusText/allNotAvailableEnd"
+msgstr "%(leftSeasonName)s сезон на сервере %(serverName)s завершился."
+
+msgid "primeTimes/statusText/notAvailable"
 msgstr ""
-"Вы можете перейти на выбранный сервер, чтобы продолжить предбоевую "
-"подготовку."
+"Режим прекращения огня до %(primeDeltaDate)s%(primeDeltaTime)s на сервере "
+"%(serverName)s"
 
-msgid "primeTime/status/disableFirst"
-msgstr "Режим на сервере %(server)s недоступен"
+msgid "primeTimes/statusText/notAvailableEnd"
+msgstr "%(leftSeasonName)s сезон на сервере %(serverName)s завершился."
 
-msgid "primeTime/status/primeIsAvailable"
-msgstr "Бои на %(server)s будут доступны ещё %(time)s"
+msgid "primeTimes/statusText/notSet"
+msgstr "Режим на сервере %(serverName)s недоступен"
 
-msgid "primeTime/status/primeWillBeAvailable"
-msgstr "Начало боёв на %(server)s через %(time)s"
-
-msgid "primeTime/status/seasonDisabled"
-msgstr "%(season)s сезон на сервере %(server)s завершился."
-
-msgid "primeTime/status/untill"
-msgstr "Режим прекращения огня до %(startTime)s на сервере %(server)s"
-
-msgid "primeTime/title"
+msgid "primeTimes/statusText/standaloneNotAvailable"
 msgstr ""
-"Ранговые бои\n"
-"пока не проводятся"
+"Режим прекращения огня до %(primeDeltaDate)s%(primeDeltaTime)s на сервере "
+"%(serverName)s"
 
-msgid "primeTime/titleWelcome"
-msgstr ""
-"Добро пожаловать\n"
-"в Ранговые бои!"
+msgid "primeTimes/statusText/standaloneNotAvailableEnd"
+msgstr "%(leftSeasonName)s сезон на сервере %(serverName)s завершился."
 
-msgid "primeTime/tooltip/server/available/untill"
-msgstr "Бои будут доступны ещё %(time)s"
+msgid "primeTimes/statusText/standaloneNotSet"
+msgstr "Режим на сервере %(serverName)s недоступен"
 
-msgid "primeTime/tooltip/server/onServer"
-msgstr "Сервер %(server)s"
+msgid "primeTimes/statusText/undefined"
+msgstr "?empty?"
 
-msgid "primeTime/tooltip/server/unavailable/inTime"
-msgstr "Бои станут доступны через %(time)s"
+msgid "primeTimes/timeText/allNotAvailable"
+msgstr "Начало боёв на %(serverName)s через %(primeDelta)s"
 
-msgid "primeTimeAlertMessageBlock/message"
-msgstr "Режим прекращения огня. Окончание через: %(time)s"
+msgid "primeTimes/timeText/allNotAvailableEnd"
+msgstr "%(leftSeasonName)s сезон на сервере %(serverName)s завершился."
+
+msgid "primeTimes/timeText/available"
+msgstr "Бои на %(serverName)s будут доступны ещё %(primeDelta)s"
+
+msgid "primeTimes/timeText/notAvailable"
+msgstr "Начало боёв на %(serverName)s через %(primeDelta)s"
+
+msgid "primeTimes/timeText/notAvailableEnd"
+msgstr "%(leftSeasonName)s сезон на сервере %(serverName)s завершился."
+
+msgid "primeTimes/timeText/standaloneNotAvailable"
+msgstr "Начало боёв на %(serverName)s через %(primeDelta)s"
+
+msgid "primeTimes/timeText/standaloneNotAvailableEnd"
+msgstr "%(leftSeasonName)s сезон на сервере %(serverName)s завершился."
+
+msgid "primeTimes/timeText/undefined"
+msgstr "?empty?"
 
 msgid "qualificationRewards/description"
 msgstr ""
@@ -1341,6 +1420,9 @@ msgstr "До конца сезона:"
 
 msgid "selectorTooltip/timeTable/empty"
 msgstr "—"
+
+msgid "selectorTooltip/timeTable/time"
+msgstr "%(start)s–%(end)s"
 
 msgid "selectorTooltip/timeTable/title"
 msgstr "Расписание боёв"

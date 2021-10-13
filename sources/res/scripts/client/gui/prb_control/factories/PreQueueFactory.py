@@ -13,7 +13,6 @@ from gui.prb_control.entities.tutorial.pre_queue.entity import TutorialEntity, T
 from gui.prb_control.entities.ranked.pre_queue.entity import RankedEntity, RankedEntryPoint
 from gui.prb_control.entities.epic.pre_queue.entity import EpicEntity, EpicEntryPoint
 from gui.prb_control.entities.mapbox.pre_queue.entity import MapboxEntity, MapboxEntryPoint
-from gui.prb_control.entities.event.pre_queue.entity import EventBattleEntity, EventBattleEntryPoint
 from gui.prb_control.items import FunctionalState
 from gui.prb_control.settings import FUNCTIONAL_FLAG as _FLAG
 from gui.prb_control.settings import PREBATTLE_ACTION_NAME, CTRL_ENTITY_TYPE
@@ -28,8 +27,7 @@ _SUPPORTED_QUEUES = {QUEUE_TYPE.RANDOMS: RandomEntity,
    QUEUE_TYPE.BATTLE_ROYALE: br_entity.BattleRoyaleEntity, 
    QUEUE_TYPE.BATTLE_ROYALE_TOURNAMENT: br_tournament.BattleRoyaleTournamentEntity, 
    QUEUE_TYPE.MAPBOX: MapboxEntity, 
-   QUEUE_TYPE.MAPS_TRAINING: MapsTrainingEntity, 
-   QUEUE_TYPE.EVENT_BATTLES: EventBattleEntity}
+   QUEUE_TYPE.MAPS_TRAINING: MapsTrainingEntity}
 _SUPPORTED_ENTRY_BY_ACTION = {PREBATTLE_ACTION_NAME.RANDOM: RandomEntryPoint, 
    PREBATTLE_ACTION_NAME.BATTLE_TUTORIAL: TutorialEntryPoint, 
    PREBATTLE_ACTION_NAME.SANDBOX: SandboxEntryPoint, 
@@ -39,8 +37,7 @@ _SUPPORTED_ENTRY_BY_ACTION = {PREBATTLE_ACTION_NAME.RANDOM: RandomEntryPoint,
    PREBATTLE_ACTION_NAME.BATTLE_ROYALE: br_entity.BattleRoyaleEntryPoint, 
    PREBATTLE_ACTION_NAME.BATTLE_ROYALE_TOURNAMENT: br_tournament.BattleRoyaleTournamentEntryPoint, 
    PREBATTLE_ACTION_NAME.MAPBOX: MapboxEntryPoint, 
-   PREBATTLE_ACTION_NAME.MAPS_TRAINING: MapsTrainingEntryPoint, 
-   PREBATTLE_ACTION_NAME.EVENT_BATTLE: EventBattleEntryPoint}
+   PREBATTLE_ACTION_NAME.MAPS_TRAINING: MapsTrainingEntryPoint}
 
 class PreQueueFactory(ControlFactory):
 
@@ -66,10 +63,6 @@ class PreQueueFactory(ControlFactory):
 
     @prequeue_storage_getter(QUEUE_TYPE.MAPS_TRAINING)
     def mapsTrainingStorage(self):
-        return
-
-    @prequeue_storage_getter(QUEUE_TYPE.EVENT_BATTLES)
-    def eventBattlesStorage(self):
         return
 
     def createEntry(self, ctx):
@@ -135,6 +128,4 @@ class PreQueueFactory(ControlFactory):
                 return MapboxEntity()
             if self.mapsTrainingStorage.isModeSelected():
                 return MapsTrainingEntity()
-            if self.eventBattlesStorage.isModeSelected():
-                return EventBattleEntity()
             return

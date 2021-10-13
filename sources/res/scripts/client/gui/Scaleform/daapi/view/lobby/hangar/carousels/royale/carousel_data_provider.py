@@ -13,7 +13,6 @@ class RoyaleCarouselDataProvider(HangarCarouselDataProvider):
 
     def _setBaseCriteria(self):
         self._baseCriteria = REQ_CRITERIA.INVENTORY
-        self._baseCriteria |= ~REQ_CRITERIA.VEHICLE.EVENT_BATTLE
 
     @classmethod
     def _vehicleComparisonKey(cls, vehicle):
@@ -28,6 +27,9 @@ class RoyaleCarouselDataProvider(HangarCarouselDataProvider):
          vehicle.level,
          tuple(vehicle.buyPrices.itemPrice.price.iterallitems(byWeight=True)),
          vehicle.userName)
+
+    def _isWotPlusRentEnabled(self):
+        return False
 
     def _buildVehicle(self, vehicle):
         result = super(RoyaleCarouselDataProvider, self)._buildVehicle(vehicle)

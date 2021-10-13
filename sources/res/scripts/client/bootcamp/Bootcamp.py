@@ -38,6 +38,7 @@ from skeletons.gui.shared import IItemsCache
 from gui.impl.gen.view_models.views.bootcamp.bootcamp_lesson_model import BootcampLessonModel
 from gui.impl.gen.view_models.views.bootcamp.bootcamp_reward_item_model import BootcampRewardItemModel
 from frameworks.wulf import Array
+from skeletons.tutorial import ITutorialLoader
 from .BootcampGUI import BootcampGUI
 from .BootcampReplayController import BootcampReplayController
 from .BootcampConstants import BOOTCAMP_BATTLE_RESULT_MESSAGE
@@ -95,6 +96,7 @@ class Bootcamp(EventSystemEntity):
     itemsCache = dependency.descriptor(IItemsCache)
     appLoader = dependency.descriptor(IAppLoader)
     bootcampController = dependency.descriptor(IBootcampController)
+    tutorialLoader = dependency.descriptor(ITutorialLoader)
 
     def __init__(self):
         super(Bootcamp, self).__init__()
@@ -276,13 +278,13 @@ class Bootcamp(EventSystemEntity):
 
     def setBattleResults(self, arenaUniqueID, resultType, resultReason):
         self.__arenaUniqueID = arenaUniqueID
-        from gui.battle_results.br_constants import PlayerTeamResult
+        from gui.battle_results.settings import PLAYER_TEAM_RESULT
         if not resultType:
-            teamResult = PlayerTeamResult.DRAW
+            teamResult = PLAYER_TEAM_RESULT.DRAW
         elif resultType == BOOTCAMP_BATTLE_RESULT_MESSAGE.VICTORY:
-            teamResult = PlayerTeamResult.WIN
+            teamResult = PLAYER_TEAM_RESULT.WIN
         else:
-            teamResult = PlayerTeamResult.DEFEAT
+            teamResult = PLAYER_TEAM_RESULT.DEFEAT
         self.__battleResults = _BattleResults(resultType, makeHtmlString('html_templates:bootcamp/battle_results', teamResult))
 
     def getBattleResults(self):
@@ -512,7 +514,6 @@ class Bootcamp(EventSystemEntity):
                 TriggersManager.g_manager.deactivateTrigger(TriggersManager.TRIGGER_TYPE.PLAYER_VEHICLE_OBSERVED)
         else:
             g_bootcampEvents.onBattleAction(actionId, actionArgs)
-            self.__currentState.onBattleAction(actionId, actionArgs)
 
     def isInBattleResultState(self):
         return isinstance(self.__currentState, StateResultScreen)
@@ -546,6 +547,8 @@ class Bootcamp(EventSystemEntity):
             LOG_DEBUG_DEV_BOOTCAMP('Finished last lesson', lessonId)
         else:
             self.enqueueBattleLesson()
+        functional = self.tutorialLoader.tutorial.getChapterFunctionalContext()
+        functional.stopVSEPlans()
 
     def onRequestBootcampFinish(self):
         LOG_DEBUG_DEV_BOOTCAMP('onRequestBootcampFinish')

@@ -1,5 +1,5 @@
 from adisp import process
-from gui.battle_results.br_constants import EmblemType
+from gui.battle_results.settings import EMBLEM_TYPE
 from gui.shared.ClanCache import g_clanCache
 
 class EmblemFetcher(object):
@@ -40,6 +40,6 @@ class ClanEmblemFetcher(EmblemFetcher):
 def createFetcher(ctx):
     emblemType = ctx.getEmblemType()
     fetcher = None
-    if emblemType == EmblemType.CLAN:
+    if emblemType == EMBLEM_TYPE.CLAN:
         fetcher = ClanEmblemFetcher(ctx.getFormationDBID(), ctx.getTextureID())
     return fetcher

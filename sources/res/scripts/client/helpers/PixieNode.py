@@ -148,8 +148,8 @@ class NodeEffectList(BaseNodeEffect):
 
 
 class EffectNode(object):
-    __slots__ = ('__node', '__nodeDefaultLocalTranslation', '__drawOrder', '__waterY',
-                 '__effects')
+    __slots__ = ('__node', '__nodeName', '__remappedNode', '__nodeDefaultLocalTranslation',
+                 '__drawOrder', '__waterY', '__effects')
     _PIXIE_NAME = 0
     _PIXIE_ENABLED = 1
     _PIXIE_REF = 2
@@ -160,10 +160,21 @@ class EffectNode(object):
 
     @property
     def node(self):
-        return self.__node
+        if self.__remappedNode is None:
+            return self.__node
+        else:
+            return self.__remappedNode
 
-    def __init__(self, model, node, waterY, drawOrder, effects):
+    @property
+    def nodeName(self):
+        return self.__nodeName
+
+    def __init__(self, model, nodeName, waterY, drawOrder, effects):
+        node = model.node(nodeName)
+        model.node(nodeName, Math.Matrix(node.localMatrix))
         self.__node = node
+        self.__remappedNode = None
+        self.__nodeName = nodeName
         self.__nodeDefaultLocalTranslation = Math.Matrix(self.__node.local).translation
         self.__drawOrder = drawOrder
         self.__waterY = waterY
@@ -173,6 +184,25 @@ class EffectNode(object):
                 self.__effects[effectDesc[self.EFFECT_ID]] = NodeEffectList(effectName, model, self)
             else:
                 self.__effects[effectDesc[self.EFFECT_ID]] = PixieEffect(effectName, self, effectDesc[self.EFFECT_TTL])
+
+        return
+
+    def remapNode(self, fromNode, toNode, model):
+        if self.__nodeName != fromNode:
+            return
+        else:
+            if toNode != '':
+                node = model.node(toNode)
+                model.node(toNode, Math.Matrix(node.localMatrix))
+                self.__remappedNode = node
+            else:
+                self.__remappedNode = None
+            for effect in self.__effects.itervalues():
+                if effect.enabled:
+                    effect.detach()
+                    effect.attach()
+
+            return
 
     def deactivate(self):
         for effect in self.__effects.values():

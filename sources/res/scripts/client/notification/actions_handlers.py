@@ -1,5 +1,4 @@
 from collections import defaultdict
-from functools import partial
 import typing, BigWorld
 from CurrentVehicle import g_currentVehicle
 from account_helpers.settings_core.settings_constants import BattlePassStorageKeys
@@ -20,15 +19,13 @@ from gui.customization.constants import CustomizationModes, CustomizationModeSou
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.platform.wgnp.controller import isEmailConfirmationNeeded, getEmail
-from gui.prb_control import prbInvitesProperty, prbDispatcherProperty, prbEntityProperty
+from gui.prb_control import prbInvitesProperty, prbDispatcherProperty
 from gui.ranked_battles import ranked_helpers
-from gui.server_events.events_constants import EVENT_GROUP_PREFIX
-from gui.server_events.events_dispatcher import showPersonalMission, showMissionsBattlePassCommonProgression, showBattlePass3dStyleChoiceWindow, showMissionsMapboxProgression, showMissionsCategories
+from gui.server_events.events_dispatcher import showPersonalMission, showMissionsBattlePassCommonProgression, showBattlePass3dStyleChoiceWindow, showMissionsMapboxProgression
 from gui.shared import g_eventBus, events, actions, EVENT_BUS_SCOPE, event_dispatcher as shared_events
 from gui.shared.event_dispatcher import showProgressiveRewardWindow, showRankedYearAwardWindow, showBlueprintsSalePage, showConfirmEmailOverlay
 from gui.shared.notifications import NotificationPriorityLevel
 from gui.shared.utils import decorators
-from gui.shop import showBuyLootboxOverlay
 from gui.wgcg.clan import contexts as clan_ctxs
 from gui.wgnc import g_wgncProvider
 from skeletons.account_helpers.settings_core import ISettingsCore
@@ -43,7 +40,7 @@ from notification.settings import NOTIFICATION_TYPE, NOTIFICATION_BUTTON_STATE
 from notification.tutorial_helper import TutorialGlobalStorage, TUTORIAL_GLOBAL_VAR
 from predefined_hosts import g_preDefinedHosts
 from skeletons.gui.battle_results import IBattleResultsService
-from skeletons.gui.game_control import IBrowserController, IRankedBattlesController, IBattleRoyaleController, IMapboxController, IGameEventController
+from skeletons.gui.game_control import IBrowserController, IRankedBattlesController, IBattleRoyaleController, IMapboxController, IBattlePassController
 from skeletons.gui.web import IWebController
 from soft_exception import SoftException
 from skeletons.gui.customization import ICustomizationService
@@ -106,68 +103,6 @@ class _OpenEventBoardsHandler(_ActionHandler):
     def handleAction(self, model, entityID, action):
         super(_OpenEventBoardsHandler, self).handleAction(model, entityID, action)
         g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_MISSIONS), ctx={'tab': QUESTS_ALIASES.MISSIONS_EVENT_BOARDS_VIEW_PY_ALIAS}), scope=EVENT_BUS_SCOPE.LOBBY)
-
-
-class _WTEventHandler(_NavigationDisabledActionHandler):
-    _gameEventCtrl = dependency.descriptor(IGameEventController)
-
-    @classmethod
-    def getNotType(cls):
-        return NOTIFICATION_TYPE.MESSAGE
-
-    def _canNavigate(self):
-        result = super(_WTEventHandler, self)._canNavigate()
-        return self._gameEventCtrl.isEnabled() and result
-
-
-class _OpenWTEventPortalsHandler(_WTEventHandler):
-
-    @classmethod
-    def getActions(cls):
-        return ('openWTEventPortals', )
-
-    def doAction(self, model, entityID, action):
-        self._gameEventCtrl.doSelectEventPrbAndCallback(shared_events.showEventStorageWindow)
-
-
-class _OpenWTEventCollectionHandler(_WTEventHandler):
-
-    @classmethod
-    def getActions(cls):
-        return ('openWTEventCollection', )
-
-    def doAction(self, model, entityID, action):
-        self._gameEventCtrl.doSelectEventPrbAndCallback(shared_events.showEventCollectionWindow)
-
-
-class _OpenWTEventHandler(_WTEventHandler):
-
-    @classmethod
-    def getActions(cls):
-        return ('openWTEvent', )
-
-    def doAction(self, model, entityID, action):
-        self._gameEventCtrl.doSelectEventPrb()
-
-
-class _OpenWTEventQuestsHandler(_WTEventHandler):
-
-    @classmethod
-    def getActions(cls):
-        return ('openWTEventQuests', )
-
-    def doAction(self, model, entityID, action):
-        self._gameEventCtrl.doSelectEventPrbAndCallback(partial(showMissionsCategories, groupID=EVENT_GROUP_PREFIX))
-
-
-class _OpenWTEventTicketPurchasingHandler(_WTEventHandler):
-
-    @classmethod
-    def getActions(cls):
-        return ('openWTEventTicketPurchasing', )
-
-    def doAction(self, model, entityID, action):
-        self._gameEventCtrl.doSelectEventPrbAndCallback(showBuyLootboxOverlay)
 
 
 class _ShowArenaResultHandler(_ActionHandler):
@@ -514,36 +449,6 @@ class ShowBattleResultsHandler(_ShowArenaResultHandler):
             self._updateNotification(notification)
 
 
-class ShowWTBattleResultsHandler(_ShowArenaResultHandler):
-    gameEventCtrl = dependency.descriptor(IGameEventController)
-    battleResults = dependency.descriptor(IBattleResultsService)
-
-    def _updateNotification(self, notification):
-        super(ShowWTBattleResultsHandler, self)._updateNotification(notification)
-        self._showI18nMessage('#battle_results:noData', SystemMessages.SM_TYPE.Warning)
-
-    @classmethod
-    def getActions(cls):
-        return ('showWTBattleResults', )
-
-    @prbEntityProperty
-    def prbEntity(self):
-        return
-
-    @decorators.process('loadStats')
-    def _showWindow(self, notification, arenaUniqueID):
-        uniqueID = long(arenaUniqueID)
-        if self.prbEntity.isInQueue():
-            self._showI18nMessage('#event:notifications/battleResults/disableInQueue', SystemMessages.SM_TYPE.Warning)
-            return
-        if not self.gameEventCtrl.isEventPrbActive():
-            self._showI18nMessage('#event:notifications/battleResults/disableNotInPrebattle', SystemMessages.SM_TYPE.Warning)
-            return
-        result = yield self.battleResults.requestResults(RequestResultsContext(uniqueID, showImmediately=False, showIfPosted=True, resetCache=False))
-        if not result:
-            self._updateNotification(notification)
-
-
 class ShowFortBattleResultsHandler(_ShowArenaResultHandler):
 
     @classmethod
@@ -718,17 +623,35 @@ class CancelFriendshipHandler(_ActionHandler):
 
 class WGNCActionsHandler(_ActionHandler):
 
+    @prbDispatcherProperty
+    def prbDispatcher(self):
+        pass
+
     @classmethod
     def getNotType(cls):
         return NOTIFICATION_TYPE.WGNC_POP_UP
 
     def handleAction(self, model, entityID, action):
+        if not self._canNavigate():
+            return
         notification = model.collection.getItem(NOTIFICATION_TYPE.WGNC_POP_UP, entityID)
         if notification:
             actorName = notification.getSavedData()
         else:
             actorName = ''
         g_wgncProvider.doAction(entityID, action, actorName)
+
+    def _canNavigate(self):
+        prbDispatcher = self.prbDispatcher
+        if prbDispatcher is not None and prbDispatcher.getFunctionalState().isNavigationDisabled():
+            BigWorld.callback(0.0, self.__showMessage)
+            return False
+        else:
+            return True
+
+    @staticmethod
+    def __showMessage():
+        SystemMessages.pushI18nMessage('#system_messages:queue/isInQueue', type=SystemMessages.SM_TYPE.Error, priority='high')
 
 
 class SecurityLinkHandler(_ActionHandler):
@@ -1010,6 +933,7 @@ class _OpentBlueprintsConvertSale(_NavigationDisabledActionHandler):
 
 class _OpenBattlePassStyleChoiceView(_NavigationDisabledActionHandler):
     __settingsCore = dependency.descriptor(ISettingsCore)
+    __battlePassController = dependency.descriptor(IBattlePassController)
 
     @classmethod
     def getNotType(cls):
@@ -1020,7 +944,8 @@ class _OpenBattlePassStyleChoiceView(_NavigationDisabledActionHandler):
         return ('openBattlePassStyleChoiceView', )
 
     def doAction(self, model, entityID, action):
-        if self.__settingsCore.serverSettings.getBPStorage().get(BattlePassStorageKeys.INTRO_SHOWN):
+        isPaused = self.__battlePassController.isPaused()
+        if self.__settingsCore.serverSettings.getBPStorage().get(BattlePassStorageKeys.INTRO_SHOWN) and not isPaused:
             showBattlePass3dStyleChoiceWindow()
         else:
             showMissionsBattlePassCommonProgression()
@@ -1058,7 +983,6 @@ class _OpenMapboxSurvey(_NavigationDisabledActionHandler):
 
 _AVAILABLE_HANDLERS = (
  ShowBattleResultsHandler,
- ShowWTBattleResultsHandler,
  ShowTutorialBattleHistoryHandler,
  ShowFortBattleResultsHandler,
  OpenPollHandler,
@@ -1100,12 +1024,7 @@ _AVAILABLE_HANDLERS = (
  _OpentBlueprintsConvertSale,
  _OpenConfirmEmailHandler,
  _OpenMapboxProgression,
- _OpenMapboxSurvey,
- _OpenWTEventPortalsHandler,
- _OpenWTEventCollectionHandler,
- _OpenWTEventHandler,
- _OpenWTEventQuestsHandler,
- _OpenWTEventTicketPurchasingHandler)
+ _OpenMapboxSurvey)
 
 class NotificationsActionsHandlers(object):
     __slots__ = ('__single', '__multi')

@@ -88,8 +88,9 @@ package net.wg.gui.login.impl.components
       
       private function updateLinkPosition() : void
       {
+         var _loc1_:Number = NaN;
          var _loc2_:TextLineMetrics = null;
-         var _loc1_:Number = this.textField.numLines - 1;
+         _loc1_ = this.textField.numLines - 1;
          if(_loc1_ < 0)
          {
             return;
