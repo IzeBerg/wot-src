@@ -1169,6 +1169,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_SERVERDOWNTIMECOMPENSATION_RENTALS:String = "#messenger:serviceChannelMessages/serverDowntimeCompensation/rentals";
       
+      public static const SERVICECHANNELMESSAGES_SERVERDOWNTIMECOMPENSATION_PREMIUM_SUBS:String = "#messenger:serviceChannelMessages/serverDowntimeCompensation/premium_subs";
+      
       public static const SERVICECHANNELMESSAGES_ACTIONBEGIN:String = "#messenger:serviceChannelMessages/actionBegin";
       
       public static const SERVICECHANNELMESSAGES_ACTIONEND:String = "#messenger:serviceChannelMessages/actionEnd";

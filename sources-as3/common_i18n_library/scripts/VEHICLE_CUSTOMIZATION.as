@@ -2625,6 +2625,14 @@ package
       
       public static const CAMOUFLAGE_TANK_ON_FIRE_2021_DESCRIPTION:String = "#vehicle_customization:camouflage/tank_on_fire_2021/description";
       
+      public static const CAMOUFLAGE_TWITCH_OCTOBER_2021_MAIN_LABEL:String = "#vehicle_customization:camouflage/twitch_october_2021_main/label";
+      
+      public static const CAMOUFLAGE_TWITCH_OCTOBER_2021_MAIN_DESCRIPTION:String = "#vehicle_customization:camouflage/twitch_october_2021_main/description";
+      
+      public static const CAMOUFLAGE_TWITCH_OCTOBER_2021_GUN_LABEL:String = "#vehicle_customization:camouflage/twitch_october_2021_gun/label";
+      
+      public static const CAMOUFLAGE_TWITCH_OCTOBER_2021_GUN_DESCRIPTION:String = "#vehicle_customization:camouflage/twitch_october_2021_gun/description";
+      
       public static const CAMOUFLAGE_YEAR_HARE_AFFAIR_LABEL:String = "#vehicle_customization:camouflage/year_hare_affair/label";
       
       public static const CAMOUFLAGE_YEAR_HARE_AFFAIR_DESCRIPTION:String = "#vehicle_customization:camouflage/year_hare_affair/description";
@@ -7387,6 +7395,8 @@ package
       
       public static const REPAINT_CZECHOSLOVAKIA_ID217:String = "#vehicle_customization:repaint/czechoslovakia_id217";
       
+      public static const REPAINT_TWITCH_OCTOBER_2021:String = "#vehicle_customization:repaint/twitch_october_2021";
+      
       public static const REPAINT_YEAR_HARE_AFFAIR_WINTER:String = "#vehicle_customization:repaint/year_hare_affair_winter";
       
       public static const REPAINT_YEAR_HARE_AFFAIR_SUMMER:String = "#vehicle_customization:repaint/year_hare_affair_summer";
@@ -9501,6 +9511,8 @@ package
       
       public static const SPECIAL_STYLE_TWITCH_AUGUST_2021:String = "#vehicle_customization:special_style/twitch_august_2021";
       
+      public static const SPECIAL_STYLE_TWITCH_OCTOBER_2021:String = "#vehicle_customization:special_style/twitch_october_2021";
+      
       public static const SPECIAL_STYLE_YEAR_HARE_AFFAIR:String = "#vehicle_customization:special_style/year_hare_affair";
       
       public static const SPECIAL_STYLE_YEAR_HARE_AFFAIR_DESC:String = "#vehicle_customization:special_style/year_hare_affair_desc";
@@ -11280,6 +11292,8 @@ package
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_305:String = "#vehicle_customization:projection_decals/special/projection_decal_305";
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_306:String = "#vehicle_customization:projection_decals/special/projection_decal_306";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_339:String = "#vehicle_customization:projection_decals/special/projection_decal_339";
       
       public static const PROPERTYSHEET_KEYBOARD_HINT:String = "#vehicle_customization:propertySheet/keyboard/hint";
       
