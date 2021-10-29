@@ -1,1 +1,0 @@
-from Crypto.Hash.RIPEMD160 import new, block_size, digest_size

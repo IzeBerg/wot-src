@@ -273,6 +273,18 @@ msgstr "Нужна помощь!"
 msgid "chat_shortcuts/help_me_ex"
 msgstr "%(target)s, помоги!"
 
+msgid "chat_shortcuts/moveto_camp"
+msgstr "К зоне!"
+
+msgid "chat_shortcuts/moveto_collector"
+msgstr "К Волоту!"
+
+msgid "chat_shortcuts/moving_to_camp"
+msgstr "Еду к зоне!"
+
+msgid "chat_shortcuts/moving_to_collector"
+msgstr "Еду к Волоту!"
+
 msgid "chat_shortcuts/negative"
 msgstr "Никак нет!"
 
@@ -653,6 +665,9 @@ msgstr "Цель защищена"
 msgid "efficiencyRibbons/enemySectorCaptured"
 msgstr "Зона захвачена"
 
+msgid "efficiencyRibbons/eventDeathOnPhaseChange"
+msgstr "Машина уничтожена"
+
 msgid "efficiencyRibbons/kill"
 msgstr "Уничтожил"
 
@@ -773,6 +788,9 @@ msgstr "для знакомства с особенностями обновле
 msgid "hitMarker/blocked"
 msgstr "Броня не пробита"
 
+msgid "hitMarker/boss"
+msgstr "Бессмысленно!"
+
 msgid "hitMarker/critical"
 msgstr "Критический урон"
 
@@ -856,6 +874,12 @@ msgstr "Уже активно в данный момент: [%(name)s]"
 
 msgid "player_errors/equipment/extinguisher/doesNotActivated"
 msgstr "Снаряжение [%(name)s] не активировано: нет пожара."
+
+msgid "player_errors/equipment/hpRepairAndCrewHeal/notRequired"
+msgstr "Танк не повреждён."
+
+msgid "player_errors/equipment/instantReload/notRequired"
+msgstr "Орудие уже заряжено."
 
 msgid "player_errors/equipment/isInCooldown"
 msgstr "Недоступно. [%(name)s] на перезарядке."
@@ -981,6 +1005,9 @@ msgstr "Машина уничтожена союзником %(attacker)s."
 msgid "player_messages/DEATH_FROM_DEATH_ZONE_ALLY_SUICIDE"
 msgstr "Союзник %(target)s поглощён зоной."
 
+msgid "player_messages/DEATH_FROM_DEATH_ZONE_ALLY_SUICIDE_ARTILLERY"
+msgstr "%(target)s уничтожен запретной зоной."
+
 msgid "player_messages/DEATH_FROM_DEATH_ZONE_ENEMY_ALLY"
 msgstr "%(attacker)s уничтожил %(target)s."
 
@@ -1001,6 +1028,9 @@ msgstr "%(target)s уничтожен."
 
 msgid "player_messages/DEATH_FROM_DEATH_ZONE_SELF_SUICIDE"
 msgstr "Машина уничтожена."
+
+msgid "player_messages/DEATH_FROM_DEATH_ZONE_SELF_SUICIDE_ARTILLERY"
+msgstr "Машина уничтожена запретной зоной."
 
 msgid "player_messages/DEATH_FROM_DEVICE_EXPLOSION_AT_FIRE"
 msgstr "Устройство [%(device)s] взорвалось при пожаре."
@@ -1346,17 +1376,38 @@ msgstr "Устройство [%(device)s] вышло из строя из-за �
 msgid "player_messages/ENGINE_DESTROYED_AT_UNLIMITED_RPM"
 msgstr "Устройство [%(device)s] разрушено из-за снятого ограничителя оборотов."
 
+msgid "player_messages/EQUIPMENT_USAGE"
+msgstr "Активировано снаряжение %(equipment_name)s"
+
+msgid "player_messages/EVENT_ADD_AMMO"
+msgstr "Получены снаряды: %(value)s ед."
+
+msgid "player_messages/EVENT_DEATH_FROM_BOSS_AURA_ENEMY_ALLY"
+msgstr "Союзник %(target)s уничтожен аурой противника."
+
+msgid "player_messages/EVENT_DEATH_FROM_BOSS_AURA_ENEMY_SELF"
+msgstr "Машина уничтожена аурой противника."
+
+msgid "player_messages/EVENT_HEAL"
+msgstr "Восстановлено %(value)s ед. прочности"
+
 msgid "player_messages/FIRE_STOPPED"
 msgstr "Пожар потушен."
 
 msgid "player_messages/OPT_DEVICE_USED"
 msgstr "%(message)s"
 
+msgid "player_messages/PICKUP_SOULS"
+msgstr "Вы собрали %(souls)s ед. Мириума"
+
 msgid "player_messages/TANKMAN_HIT_AT_SHOT"
 msgstr "[%(device)s] ранен выстрелом %(entity)s."
 
 msgid "player_messages/TANKMAN_RESTORED"
 msgstr "[%(device)s] снова в строю."
+
+msgid "player_messages/TEAM_EQUIPMENT_USAGE"
+msgstr "%(player_name)s активирует снаряжение %(equipment_name)s"
 
 msgid "player_messages/allied_team_name"
 msgstr "Союзники"
@@ -1426,6 +1477,15 @@ msgstr "Скорость воспроизведения: %(speed)sx"
 
 msgid "player_messages/tank_in_fire"
 msgstr "Машина горит!"
+
+msgid "players_panel/info/collector"
+msgstr "Осталось доставить к Волоту"
+
+msgid "players_panel/info/collector_full"
+msgstr "Волот заполнен"
+
+msgid "players_panel/info/team"
+msgstr "Собрано командой"
 
 msgid "players_panel/state/large/body"
 msgstr "Показать имя игрока, уничтоженные цели, иконку и название машины"
@@ -1497,6 +1557,12 @@ msgstr ""
 "Esc > Выйти в Ангар.\n"
 "Начните бой на другой машине."
 
+msgid "postmortem/tips/hint/desc"
+msgstr "если ваша команда совершит переход в следующую фазу"
+
+msgid "postmortem/tips/hint/title"
+msgstr "ВЫ ВОЗРОДИТЕСЬ,"
+
 msgid "postmortem/tips/observerMode/label"
 msgstr "Режим Наблюдателя"
 
@@ -1509,11 +1575,14 @@ msgstr "Машина уничтожена огнём артбатареи."
 msgid "postmortem_messages/DEATH_FROM_DEATH_ZONE_ALLY_SELF"
 msgstr "Машина уничтожена в запретной зоне союзником"
 
+msgid "postmortem_messages/DEATH_FROM_DEATH_ZONE_ARTILLERY"
+msgstr "Машина уничтожена запретной зоной"
+
 msgid "postmortem_messages/DEATH_FROM_DEATH_ZONE_ENEMY_SELF"
 msgstr "Машина уничтожена в запретной зоне"
 
 msgid "postmortem_messages/DEATH_FROM_DEATH_ZONE_SELF_SUICIDE"
-msgstr "Вы не успели покинуть опасную зону"
+msgstr "Вы не успели покинуть запретную зону"
 
 msgid "postmortem_messages/DEATH_FROM_DEVICE_EXPLOSION_AT_FIRE"
 msgstr "Устройство [%(device)s] взорвалось при пожаре"
@@ -1599,6 +1668,24 @@ msgstr "Машина разбита"
 msgid "postmortem_messages/DEATH_UNKNOWN"
 msgstr "Ваша машина уничтожена"
 
+msgid "postmortem_messages/EVENT_DEATH_FROM_BOSS_AURA"
+msgstr "Машина уничтожена аурой противника"
+
+msgid "postmortem_messages/EVENT_DEATH_FROM_DEATH_ZONE"
+msgstr "Машина уничтожена запретной зоной"
+
+msgid "postmortem_messages/EVENT_DEATH_FROM_SHOT"
+msgstr "Машина уничтожена выстрелом противника"
+
+msgid "postmortem_messages/EVENT_DEATH_ON_BOSS_PHASE_END"
+msgstr "Вы не успели. В следующий раз не тратьте время зря."
+
+msgid "postmortem_messages/EVENT_DEATH_ON_PHASE_CHANGE"
+msgstr "Машина уничтожена. Коллектор не заполнен."
+
+msgid "postmortem_messages/EVENT_DEATH_ON_PHASE_CHANGE_FULL_SC"
+msgstr "Машина уничтожена. Вне области заполненного коллектора."
+
 msgid "prebattleAmmunitionPanel/currentSetup"
 msgstr "В бою используется выбранный комплект:"
 
@@ -1611,7 +1698,7 @@ msgid "prebattleAmmunitionPanel/header"
 msgstr "Выбор комплектации"
 
 msgid "prebattleAmmunitionPanel/loadingTimer"
-msgstr "Выбор комплекта оснащения: {seconds} с"
+msgstr "Выбор комплекта оснащения: {seconds} с"
 
 msgid "prebattleAmmunitionPanel/waitinForPlayers"
 msgstr "Выбор комплекта оснащения:"
@@ -1894,6 +1981,18 @@ msgstr "Получены награды"
 
 msgid "rewardWindow/countLabel"
 msgstr "x{count}"
+
+msgid "rewardWindow/hw19_commanders/btnLabel"
+msgstr "rewardWindow/hw19_commanders/btnLabel"
+
+msgid "rewardWindow/hw19_commanders/descText"
+msgstr "rewardWindow/hw19_commanders/descText"
+
+msgid "rewardWindow/hw19_commanders/headerText"
+msgstr "rewardWindow/hw19_commanders/headerText"
+
+msgid "rewardWindow/hw19_commanders/subHeaderText"
+msgstr "rewardWindow/hw19_commanders/subHeaderText"
 
 msgid "rewardWindow/lootbox/btnLabel"
 msgstr "Перейти к коробкам"
@@ -2537,6 +2636,9 @@ msgstr "в бою"
 msgid "statistics/playerState/4"
 msgstr "----"
 
+msgid "statistics/tab/event/title"
+msgstr "Аномалии Мирного"
+
 msgid "statistics/tab/line_up/header"
 msgstr "Состав"
 
@@ -2640,7 +2742,7 @@ msgid "vehicle_messages/DEATH_FROM_DEATH_ZONE_ENEMY_SELF"
 msgstr "Машина уничтожена %(entity)s в запретной зоне."
 
 msgid "vehicle_messages/DEATH_FROM_DEATH_ZONE_SELF_SUICIDE"
-msgstr "Машина уничтожена запретной зоной."
+msgstr "Машина уничтожена запретной зоной"
 
 msgid "vehicle_messages/DEATH_FROM_DROWNING_ALLY_SELF"
 msgstr "Машина потоплена союзником %(entity)s."

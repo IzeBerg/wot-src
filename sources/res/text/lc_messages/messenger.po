@@ -270,6 +270,12 @@ msgstr "%s не может отправлять вам голосовые соо
 msgid "client/information/unsetMuted/message"
 msgstr "%s может отправлять вам голосовые сообщения."
 
+msgid "client/warning/AFKWarning/message"
+msgstr ""
+"Бездействие приравнивается к дезертирству\n"
+"и жёстко наказывается! Для победы нужны\n"
+"усилия всех членов команды!"
+
 msgid "client/warning/emptyUserSearchToken/message"
 msgstr "Задан пустой запрос"
 
@@ -869,6 +875,45 @@ msgstr "Выберите специальную машину"
 msgid "dialogs/simpleSquad/epicBattle/VehicleRestriction"
 msgstr "Выберите машину VIII уровня"
 
+msgid "dialogs/simpleSquad/recommendationLevel"
+msgstr "Рекомендовать игроков"
+
+msgid "dialogs/squadChannel/battleType"
+msgstr "Режим боя:"
+
+msgid "dialogs/squadChannel/battleTypeDomination"
+msgstr "Случайный бой"
+
+msgid "dialogs/squadChannel/bonuses/credits"
+msgstr "К кредитам"
+
+msgid "dialogs/squadChannel/bonuses/experience"
+msgstr "К опыту"
+
+msgid "dialogs/squadChannel/buttons/afk"
+msgstr "Перерыв"
+
+msgid "dialogs/squadChannel/buttons/dismiss"
+msgstr "Покинуть взвод"
+
+msgid "dialogs/squadChannel/buttons/invite"
+msgstr "Пригласить игроков"
+
+msgid "dialogs/squadChannel/buttons/leave"
+msgstr "Выйти из взвода"
+
+msgid "dialogs/squadChannel/buttons/notReady"
+msgstr "Не готов"
+
+msgid "dialogs/squadChannel/buttons/ready"
+msgstr "Готов!"
+
+msgid "dialogs/squadChannel/buttons/recommend"
+msgstr "Рекомендовать игроков"
+
+msgid "dialogs/squadChannel/context/kickPlayer"
+msgstr "Исключить из взвода"
+
 msgid "dialogs/squadChannel/headerMsg/battleRoyaleHint"
 msgstr "Основная задача — остаться последним выжившим взводом."
 
@@ -879,8 +924,8 @@ msgstr ""
 
 msgid "dialogs/squadChannel/headerMsg/eventFormationRestriction"
 msgstr ""
-"+++ event +++\n"
-"+++ event +++"
+"Режим боя:\n"
+"«Мирный: Надежда»‎"
 
 msgid "dialogs/squadChannel/headerMsg/squadFormation"
 msgstr ""
@@ -891,6 +936,12 @@ msgid "dialogs/squadChannel/headerMsg/squadFormationRestriction"
 msgstr ""
 "Играйте на технике одного уровня\n"
 "начиная с IV и получайте больше опыта"
+
+msgid "dialogs/squadChannel/messege/noPremium"
+msgstr ""
+"Пригласить во взвод третьего\n"
+"игрока возможно только при\n"
+"действующем премиум аккаунте."
 
 msgid "dialogs/squadChannel/simpleChatAlert/anonymizer"
 msgstr ""
@@ -1883,6 +1934,9 @@ msgstr "Добавлено"
 msgid "serviceChannelMessages/battleResults/quests/items/name"
 msgstr "%(name)s (x%(count)s)"
 
+msgid "serviceChannelMessages/battleResults/quests/items/singleName"
+msgstr "%(name)s"
+
 msgid "serviceChannelMessages/battleResults/quests/premium"
 msgstr "Добавлено дней Общего премиум аккаунта"
 
@@ -2377,6 +2431,50 @@ msgstr ""
 
 msgid "serviceChannelMessages/goldReceivedAsGift"
 msgstr "От администрации получено золота: %(gold)s."
+
+msgid "serviceChannelMessages/halloweenHangar/bestdealBought"
+msgstr "Набор куплен"
+
+msgid "serviceChannelMessages/halloweenHangar/buyShopItem"
+msgstr "Товар куплен"
+
+msgid "serviceChannelMessages/halloweenHangar/eventTokenBought"
+msgstr "Начислено ключей дешифровки: %(count)s"
+
+msgid "serviceChannelMessages/halloweenHangar/eventVehicleAcquired"
+msgstr "Машина %(vehicle)s доступна для игры в событии «Мирный: Надежда»."
+
+msgid "serviceChannelMessages/halloweenHangar/halloweenDifficultyLevelReached"
+msgstr "Доступна новая сложность"
+
+msgid ""
+"serviceChannelMessages/halloweenHangar/halloweenDifficultyLevelReachedText"
+msgstr "Вы можете выбрать другую сложность в Ангаре"
+
+msgid "serviceChannelMessages/halloweenHangar/purchased/bundle/gold"
+msgstr ""
+"«%(purchaseName)s» приобретён\n"
+"Списано %(price)s"
+
+msgid "serviceChannelMessages/halloweenHangar/purchased/c11nItem/gold"
+msgstr ""
+"Куплен стиль «%(purchaseName)s»\n"
+"Списано %(price)s"
+
+msgid ""
+"serviceChannelMessages/halloweenHangar/purchased/c11nItem/hw_rewardBoxKey"
+msgstr ""
+"%(purchaseName)s успешно приобретено.\n"
+"Списано ключей дешифровки: %(price)s."
+
+msgid "serviceChannelMessages/halloweenHangar/styleBought"
+msgstr "Стиль куплен"
+
+msgid "serviceChannelMessages/halloweenHangar/styleBundleBought"
+msgstr "Набор стилей куплен"
+
+msgid "serviceChannelMessages/halloweenHangar/vehicleRent"
+msgstr "Танк куплен"
 
 msgid "serviceChannelMessages/invoiceReceived/berthsAccrued"
 msgstr "Добавлены койки в Казарму"
@@ -3105,6 +3203,9 @@ msgstr "Зимняя карта: "
 msgid "serviceChannelMessages/sysMsg/customizations/sell"
 msgstr "%(itemType)s «%(itemName)s», %(count)s шт. Получено %(money)s"
 
+msgid "serviceChannelMessages/sysMsg/message/eventOpenedRewardBox"
+msgstr "Расшифровка плёнки."
+
 msgid "serviceChannelMessages/sysMsg/openCustomization/button"
 msgstr "К внешнему виду"
 
@@ -3121,6 +3222,9 @@ msgstr "Демонтировано:"
 
 msgid "serviceChannelMessages/sysMsg/titles/error"
 msgstr "Ошибка:"
+
+msgid "serviceChannelMessages/sysMsg/titles/eventOpenedRewardBox"
+msgstr "Куплено:"
 
 msgid "serviceChannelMessages/sysMsg/titles/financialTransaction"
 msgstr "Финансовая операция:"

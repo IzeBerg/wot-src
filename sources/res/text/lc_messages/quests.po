@@ -1953,6 +1953,12 @@ msgstr "Очки защиты"
 msgid "details/conditions/cumulative/enemyHits"
 msgstr "Попадания по противнику"
 
+msgid "details/conditions/cumulative/environmentID"
+msgstr "Дойдите до указанной фазы в составе разведотряда «Мирный: Надежда»"
+
+msgid "details/conditions/cumulative/eventPoints"
+msgstr "Соберите материю"
+
 msgid "details/conditions/cumulative/explosionEnemyHits"
 msgstr "Разрывы ОФ-снарядов САУ рядом с противником, нанёсшие урон осколками."
 
@@ -4627,6 +4633,9 @@ msgstr "Предыдущие"
 msgid "missionDetails/requirements/conclusion/available"
 msgstr "Требования выполнены (%(count)s)"
 
+msgid "missionDetails/requirements/conclusion/previousIncomplete"
+msgstr "Выполните задачу «%(quest_name)s»."
+
 msgid "missionDetails/requirements/conclusion/unavailable"
 msgstr "Требования не выполнены (%(count)s)"
 
@@ -4639,14 +4648,25 @@ msgstr "Задача недоступна:"
 msgid "missionDetails/resetDate"
 msgstr "Обнуление задачи в %(time)s"
 
+msgid "missionDetails/status/complete"
+msgstr "Выполнено"
+
 msgid "missionDetails/status/completed/daily"
 msgstr "Следующее доступное выполнение через: %(time)s"
+
+msgid "missionDetails/status/completed/event"
+msgstr ""
+"Боевая задача выполнена. Следующее доступное\n"
+"выполнение: %(time)s."
 
 msgid "missionDetails/status/completed/weekly"
 msgstr "Следующее доступное выполнение через: %(time)s"
 
 msgid "missionDetails/status/disabled"
 msgstr "Задача отключена"
+
+msgid "missionDetails/status/inProgress"
+msgstr "Выполняется"
 
 msgid "missionDetails/status/notAvailable"
 msgstr "Недоступно"
@@ -5401,6 +5421,9 @@ msgstr "«Франция»"
 
 msgid "token/default/germany"
 msgstr "«Германия»"
+
+msgid "token/default/he21_afk_pardon_order"
+msgstr "Приказ о реабилитации"
 
 msgid "token/default/heavyTank"
 msgstr "«Тяжёлый танк»"

@@ -368,6 +368,12 @@ msgstr "Купить"
 msgid "buyInstallConfirmation/title"
 msgstr "Подтверждение покупки"
 
+msgid "buyItemPackConfirmation/cancel"
+msgstr "buyItemPackConfirmation/cancel"
+
+msgid "buyItemPackConfirmation/submit"
+msgstr "buyItemPackConfirmation/submit"
+
 msgid "buyPremWithoutBenefitsConfirmation/cancel"
 msgstr "Отменить"
 
@@ -1347,6 +1353,51 @@ msgstr ""
 "СОГЛАШЕНИЯ И ДОПОЛНЕНИЙ К НЕМУ ЯВЛЯЮТСЯ СУЩЕСТВЕННЫМИ И ОБЯЗАТЕЛЬНЫМИ ДЛЯ "
 "ВСЕХ УЧАСТНИКОВ ПРОЕКТА."
 
+msgid "event/afk/afterBattle/cancel"
+msgstr "Ознакомлен"
+
+msgid "event/afk/afterBattle/message"
+msgstr ""
+"%(subTitleOpenTag)sПредупреждение%(closeTag)s%(indent)sВаши действия вредят "
+"успеху всей операции в Мирном. Это совершенно недопустимо. При повторном "
+"нарушении ваш доступ к событию будет ограничен."
+
+msgid "event/afk/afterBattle/title"
+msgstr "Недопустимое поведение"
+
+msgid "event/afk/ban/cancel"
+msgstr "Ознакомлен"
+
+msgid "event/afk/ban/message"
+msgstr ""
+"%(subTitleOpenTag)sВы отстранены%(closeTag)s%(indent)sЗа систематический "
+"саботаж операций в Мирном (бездействие/дезертирство) вам запрещено "
+"участвовать в боях события. %(indent)sБлокировка будет снята автоматически "
+"%(pardonDate)s или после выполнения специальной боевой задачи в Случайных "
+"боях."
+
+msgid "event/afk/ban/submit"
+msgstr "К задаче"
+
+msgid "event/afk/ban/title"
+msgstr "Недопустимое поведение"
+
+msgid "event/afk/battle/cancel"
+msgstr "Отменить"
+
+msgid "event/afk/battle/message"
+msgstr ""
+"%(subTitleOpenTag)sВы нужны команде!%(closeTag)s%(indent)sДаже если ваша "
+"машина уничтожена, вы вернётесь в бой, если команда перейдёт в другую фазу. "
+"Бегство с поля боя расценивается как дезертирство и может повлечь применение "
+"дисциплинарного взыскания."
+
+msgid "event/afk/battle/submit"
+msgstr "Бежать"
+
+msgid "event/afk/battle/title"
+msgstr "Бегство с поля боя"
+
 msgid "exchangeGoldConfirmation/cancel"
 msgstr "Отменить"
 
@@ -1699,6 +1750,18 @@ msgstr "Зал славы временно недоступен. Повтори�
 
 msgid "hofDisabled/title"
 msgstr "Внимание!"
+
+msgid "hw19RepairVehicle/cancel"
+msgstr "Отменить"
+
+msgid "hw19RepairVehicle/message"
+msgstr "Провести восстановление машины за %(money)s?"
+
+msgid "hw19RepairVehicle/submit"
+msgstr "Подтвердить"
+
+msgid "hw19RepairVehicle/title"
+msgstr "Подтверждение восстановления"
 
 msgid "idleCrewBonus/cancel"
 msgstr "?empty?"
@@ -2859,10 +2922,10 @@ msgid "squad/eventDisabled/cancel"
 msgstr "Так точно!"
 
 msgid "squad/eventDisabled/message"
-msgstr "Событие недоступно. Взвод будет расформирован."
+msgstr "Событие недоступно. Разведотряд будет расформирован."
 
 msgid "squad/eventDisabled/title"
-msgstr "Событие завершено"
+msgstr "Событие закончилось"
 
 msgid "squad/goToAnother/cancel"
 msgstr "Отменить"

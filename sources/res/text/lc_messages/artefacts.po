@@ -592,6 +592,23 @@ msgstr ""
 msgid "deluxeTurbocharger/name"
 msgstr "Улучшенный компрессор"
 
+msgid "drainEnemyHpInRadius/always"
+msgstr "?empty?"
+
+msgid "drainEnemyHpInRadius/descr"
+msgstr "Восстанавливает прочность за счёт целей вокруг."
+
+msgid "drainEnemyHpInRadius/name"
+msgstr "Вампиризм"
+
+msgid "drainEnemyHpInRadius/onUse"
+msgstr ""
+"Восстанавливает прочность собственной машины, отнимая очки прочности у машин "
+"противника в радиусе 25 м"
+
+msgid "drainEnemyHpInRadius/restriction"
+msgstr "?empty?"
+
 msgid "eb_minefield/descr"
 msgstr "На определённое время размещает в указанной области минное поле."
 
@@ -901,6 +918,40 @@ msgstr "Только для техники Франции."
 msgid "hotCoffee/short_special"
 msgstr "Повышает эффективность французских экипажей"
 
+msgid "hpRepairAndCrewHeal/always"
+msgstr "?empty?"
+
+msgid "hpRepairAndCrewHeal/descr"
+msgstr "Восстанавливает прочность, тушит пожар и чинит повреждённые модули."
+
+msgid "hpRepairAndCrewHeal/name"
+msgstr "Экстренный ремонт"
+
+msgid "hpRepairAndCrewHeal/onUse"
+msgstr ""
+"• Сразу восстанавливает 400 ед. прочности машины.\n"
+"• Дополнительно восстанавливает 300 ед. прочности в течение 30 с.\n"
+"• Восстановление прервётся, если машина получит урон.\n"
+"• Также тушит пожар и чинит повреждённые модули."
+
+msgid "hpRepairAndCrewHeal/restriction"
+msgstr "?empty?"
+
+msgid "igniteEnemiesInRadius/always"
+msgstr "?empty?"
+
+msgid "igniteEnemiesInRadius/descr"
+msgstr "Поджигает цели вокруг."
+
+msgid "igniteEnemiesInRadius/name"
+msgstr "Пирокинетика"
+
+msgid "igniteEnemiesInRadius/onUse"
+msgstr "На некоторое время поджигает машины противника в радиусе 25 м."
+
+msgid "igniteEnemiesInRadius/restriction"
+msgstr "?empty?"
+
 msgid "improvedConfiguration/additional_descr"
 msgstr ""
 "По одному разу за бой предотвращает взрыв боеукладки, возгорание баков и "
@@ -1130,6 +1181,40 @@ msgstr "Воодушевление"
 msgid "inspire/shortDescr"
 msgstr "Добавляет бонус к основным специальностям экипажей игрока и союзников."
 
+msgid "instantReload/always"
+msgstr "?empty?"
+
+msgid "instantReload/descr"
+msgstr "Мгновенно завершает перезарядку."
+
+msgid "instantReload/name"
+msgstr "Всегда готов!"
+
+msgid "instantReload/onUse"
+msgstr ""
+"Мгновенно завершает перезарядку орудий с циклическим или магазинным "
+"заряжанием."
+
+msgid "instantReload/restriction"
+msgstr "?empty?"
+
+msgid "invulnerability/always"
+msgstr "?empty?"
+
+msgid "invulnerability/descr"
+msgstr "В течение 7 секунд защищает от любого урона кроме тарана."
+
+msgid "invulnerability/name"
+msgstr "Энергощит"
+
+msgid "invulnerability/onUse"
+msgstr ""
+"Создаёт энергощит, который в течение 7 секунд защищает машину от любых "
+"повреждений кроме урона от тарана."
+
+msgid "invulnerability/restriction"
+msgstr "?empty?"
+
 msgid "largeCaliberHowitzerRammer/name"
 msgstr "Гаубичный досылатель крупного калибра"
 
@@ -1252,6 +1337,36 @@ msgstr "Гаубичный досылатель среднего калибра"
 msgid "mediumCaliberTankRammer/name"
 msgstr "Орудийный досылатель среднего калибра"
 
+msgid "nearestEnemyDamage1/always"
+msgstr "?empty?"
+
+msgid "nearestEnemyDamage1/descr"
+msgstr "?empty?"
+
+msgid "nearestEnemyDamage1/name"
+msgstr "?empty?"
+
+msgid "nearestEnemyDamage1/onUse"
+msgstr "?empty?"
+
+msgid "nearestEnemyDamage1/restriction"
+msgstr "?empty?"
+
+msgid "nearestEnemyDamage2/always"
+msgstr "?empty?"
+
+msgid "nearestEnemyDamage2/descr"
+msgstr "Наносит урон целям вокруг."
+
+msgid "nearestEnemyDamage2/name"
+msgstr "Энергоудар"
+
+msgid "nearestEnemyDamage2/onUse"
+msgstr "Наносит немедленный урон двум машинам противника в радиусе 25 м."
+
+msgid "nearestEnemyDamage2/restriction"
+msgstr "?empty?"
+
 msgid "nitro/descr"
 msgstr ""
 "Временно увеличивает мощность двигателя, максимальную скорость и скорость "
@@ -1265,6 +1380,86 @@ msgstr "Форсаж"
 
 msgid "nitro/short_special"
 msgstr "Улучшает динамические ТТХ на %(duration)s секунд."
+
+msgid "nitroRamDamage/always"
+msgstr "?empty?"
+
+msgid "nitroRamDamage/descr"
+msgstr ""
+"На определённое время разгоняет танк и увеличивает наносимый тараном урон."
+
+msgid "nitroRamDamage/name"
+msgstr "Форсаж"
+
+msgid "nitroRamDamage/onUse"
+msgstr "Разгоняет танк и увеличивает наносимый тараном урон."
+
+msgid "nitroRamDamage/restriction"
+msgstr "?empty?"
+
+msgid "nitroRamDamage2/always"
+msgstr "?empty?"
+
+msgid "nitroRamDamage2/descr"
+msgstr ""
+"На определённое время разгоняет танк и увеличивает наносимый тараном урон."
+
+msgid "nitroRamDamage2/name"
+msgstr "Форсаж"
+
+msgid "nitroRamDamage2/onUse"
+msgstr "Разгоняет танк и увеличивает наносимый тараном урон."
+
+msgid "nitroRamDamage2/restriction"
+msgstr "?empty?"
+
+msgid "nitroRamDamage3/always"
+msgstr "?empty?"
+
+msgid "nitroRamDamage3/descr"
+msgstr ""
+"На определённое время разгоняет танк и увеличивает наносимый тараном урон."
+
+msgid "nitroRamDamage3/name"
+msgstr "Форсаж"
+
+msgid "nitroRamDamage3/onUse"
+msgstr "Разгоняет танк и увеличивает наносимый тараном урон."
+
+msgid "nitroRamDamage3/restriction"
+msgstr "?empty?"
+
+msgid "nitroRamDamage4/always"
+msgstr "?empty?"
+
+msgid "nitroRamDamage4/descr"
+msgstr ""
+"На определённое время разгоняет танк и увеличивает наносимый тараном урон."
+
+msgid "nitroRamDamage4/name"
+msgstr "Форсаж"
+
+msgid "nitroRamDamage4/onUse"
+msgstr "Разгоняет танк и увеличивает наносимый тараном урон."
+
+msgid "nitroRamDamage4/restriction"
+msgstr "?empty?"
+
+msgid "nitroRamDamage5/always"
+msgstr "?empty?"
+
+msgid "nitroRamDamage5/descr"
+msgstr ""
+"На определённое время разгоняет танк и увеличивает наносимый тараном урон."
+
+msgid "nitroRamDamage5/name"
+msgstr "Форсаж"
+
+msgid "nitroRamDamage5/onUse"
+msgstr "Разгоняет танк и увеличивает наносимый тараном урон."
+
+msgid "nitroRamDamage5/restriction"
+msgstr "?empty?"
 
 msgid "opt_dev_boosters_switch/name"
 msgstr "Альтернативная комплектация — дополнительное оснащение"
@@ -1642,6 +1837,14 @@ msgid "repairpoint/short_special"
 msgstr ""
 "Устанавливает временную статическую область, в которой происходит ремонт "
 "всех повреждённых модулей, снятие оглушения и восстановление прочности."
+
+msgid "resurrect_equipment/descr"
+msgstr ""
+"Вы возрождаетесь с 50% прочности, если ваша команда перейдёт в следующую "
+"фазу боя."
+
+msgid "resurrect_equipment/name"
+msgstr "Феникс"
 
 msgid "rifled_barrels_cleaning_1/name"
 msgstr "Чистка нарезов ствола (Тип 1)"
@@ -2596,6 +2799,25 @@ msgstr "Орудийный досылатель (Класс 1)"
 
 msgid "tankRammer_tier2/name"
 msgstr "Орудийный досылатель (Класс 2)"
+
+msgid "teamRepairKit/always"
+msgstr "Пассивно добавляет 20% к скорости ремонта модулей."
+
+msgid "teamRepairKit/descr"
+msgstr ""
+"Чинит модули, тушит пожар и восстанавливает часть прочности союзникам в "
+"радиусе действия."
+
+msgid "teamRepairKit/name"
+msgstr "Аварийный набор"
+
+msgid "teamRepairKit/onUse"
+msgstr ""
+"Мгновенно чинит все модули и восстанавливает часть прочности всем союзникам "
+"в радиусе действия. Также тушит пожар."
+
+msgid "teamRepairKit/restriction"
+msgstr "?empty?"
 
 msgid "trappoint/descr"
 msgstr ""

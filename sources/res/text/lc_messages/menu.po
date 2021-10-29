@@ -1128,7 +1128,7 @@ msgid "contextMenu/createContactNote"
 msgstr "Создать заметку"
 
 msgid "contextMenu/createEventSquad"
-msgstr "Создать взвод события"
+msgstr "Создать разведотряд"
 
 msgid "contextMenu/createMapboxSquad"
 msgstr "Разведка боем: создать взвод"
@@ -2397,6 +2397,11 @@ msgstr "Стоимость"
 msgid "hangar/ammunitionPanel/technicalMaitenance/equipmentDisabled"
 msgstr "Изменение снаряжения недоступно для данной машины"
 
+msgid "hangar/ammunitionPanel/technicalMaitenance/eventInfo"
+msgstr ""
+"После завершения события оставшееся у вас специальное снаряжение будет "
+"компенсировано в кредитах."
+
 msgid "hangar/ammunitionPanel/technicalMaitenance/repair/checkboxAuto"
 msgstr "Ремонтировать автоматически"
 
@@ -2820,8 +2825,11 @@ msgstr "Тренировочный бой"
 msgid "headerButtons/battle/types/epicTraining/descr"
 msgstr "Линия фронта"
 
+msgid "headerButtons/battle/types/eventBattle"
+msgstr "Мирный: Надежда"
+
 msgid "headerButtons/battle/types/eventSquad"
-msgstr "Взвод события"
+msgstr "headerButtons/battle/types/eventSquad"
 
 msgid "headerButtons/battle/types/fallout"
 msgstr "«Бой до последнего»"
@@ -2947,8 +2955,35 @@ msgstr "Специальный бой"
 msgid "headerButtons/battle/types/squad"
 msgstr "Взвод"
 
+msgid "headerButtons/battle/types/squad/battleRoyale"
+msgstr ": Стальной охотник"
+
+msgid "headerButtons/battle/types/squad/descr"
+msgstr "Формирование из 2–3 игроков для совместной игры в Случайных боях."
+
 msgid "headerButtons/battle/types/squad/description"
 msgstr "Игра взводом до 3 бойцов"
+
+msgid "headerButtons/battle/types/squad/epic"
+msgstr ": Линия фронта"
+
+msgid "headerButtons/battle/types/squad/event"
+msgstr ": Мирный: Надежда"
+
+msgid "headerButtons/battle/types/squad/randomBattle"
+msgstr ": Случайный бой"
+
+msgid "headerButtons/battle/types/squadBattle"
+msgstr "Отправить взвод в бой"
+
+msgid "headerButtons/battle/types/squadLeave"
+msgstr "Взвод"
+
+msgid "headerButtons/battle/types/squadLeave/descr"
+msgstr "Нажмите, чтобы покинуть взвод."
+
+msgid "headerButtons/battle/types/squadLeaveOwner"
+msgstr "Взвод"
 
 msgid "headerButtons/battle/types/standart"
 msgstr "Случайный бой"
@@ -3595,7 +3630,9 @@ msgid "loading/battleTypes/6"
 msgstr "Исторический бой"
 
 msgid "loading/battleTypes/7"
-msgstr "Специальный игровой режим"
+msgstr ""
+"Задача: полностью заполните Волот,\n"
+"чтобы защититься от взрыва по истечении времени фазы."
 
 msgid "loading/battleTypes/8"
 msgstr "Вылазки"
@@ -4527,8 +4564,14 @@ msgstr "Во взводной очереди"
 msgid "prebattle/description"
 msgstr "prebattle/description"
 
+msgid "prebattle/difficultyLabel/event"
+msgstr "Сложность"
+
 msgid "prebattle/exitButton"
 msgstr "Выйти из боя"
+
+msgid "prebattle/exitButton/event"
+msgstr "Отменить"
 
 msgid "prebattle/groupsLabel"
 msgstr "Команд в очереди:"
@@ -4599,6 +4642,14 @@ msgstr "Вы выбрали:"
 
 msgid "prebattle/timerLabel"
 msgstr "Время ожидания:"
+
+msgid "prebattle/timerLabel/event"
+msgstr "Поиск союзников..."
+
+msgid "prebattle/tipsLabel/event"
+msgstr ""
+"Долго не можете найти команду?\n"
+"Попробуйте изменить уровень сложности."
 
 msgid "prebattle/title"
 msgstr "Стандартный бой"

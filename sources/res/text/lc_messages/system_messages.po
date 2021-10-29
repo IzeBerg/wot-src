@@ -204,7 +204,8 @@ msgstr ""
 
 msgid "artefact_buy/success"
 msgstr ""
-"%(kind)s «%(name)s» успешно приобретено (%(count)s шт.). Потрачено %(money)s."
+"%(kind)s «%(name)s» успешно приобретено (%(count)s шт.).\n"
+"Списано %(money)s."
 
 msgid "artefact_buy/vehicle_locked"
 msgstr ""
@@ -1421,6 +1422,90 @@ msgstr "Ошибка перемещения члена экипажа на ма�
 msgid "equip_tankman/vehicle_need_repair"
 msgstr "Ошибка перемещения члена экипажа на машину. Необходим ремонт."
 
+msgid "event/afk/ban/body"
+msgstr ""
+"Доступ к операциям в Мирном закрыт. Блокировка будет снята %(pardonDate)s"
+
+msgid "event/afk/ban/header"
+msgstr "«Мирный: Надежда», блокировка"
+
+msgid "event/afk/button"
+msgstr "Подробнее"
+
+msgid "event/afk/error/body"
+msgstr "В данный момент операция невозможна. Попробуйте позже."
+
+msgid "event/afk/error/header"
+msgstr "Ошибка:"
+
+msgid "event/afk/quest/body"
+msgstr "Доступна специальная задача %(questName)s"
+
+msgid "event/afk/quest/button"
+msgstr "К задаче"
+
+msgid "event/afk/quest/header"
+msgstr "Вам дан шанс"
+
+msgid "event/afk/quest/questName"
+msgstr "«%(questName)s»"
+
+msgid "event/afk/questUnban/body"
+msgstr "Получен приказ о реабилитации: доступ к операциям в Мирном открыт."
+
+msgid "event/afk/questUnban/header"
+msgstr "Блокировка снята"
+
+msgid "event/afk/unban/body"
+msgstr "Истёк срок блокировки в событии: доступ к операциям в Мирном открыт."
+
+msgid "event/afk/unban/header"
+msgstr "Блокировка снята"
+
+msgid "event/afk/warning/body"
+msgstr "Вы получили предупреждение за бездействие или бегство с поля боя."
+
+msgid "event/afk/warning/header"
+msgstr "«Мирный: Надежда», предупреждение"
+
+msgid "event_progression_buy_style/server_error"
+msgstr "Покупка стиля «%(name)s» не была совершена"
+
+msgid "event_progression_buy_style/success"
+msgstr ""
+"Дата: %(date)s\n"
+"Стиль «%(name)s» успешно приобретён.\n"
+"Списано жетонов: %(count)s."
+
+msgid "event_progression_buy_vehicle/buy"
+msgstr ""
+"Дата: %(date)s\n"
+"%(veh_name)s, 100%%-й экипаж и слот успешно приобретены.\n"
+"Списано жетонов: %(count)s."
+
+msgid "event_progression_buy_vehicle/server_error"
+msgstr "Покупка %(name)s не была совершена"
+
+msgid "event_progression_buy_vehicle/success"
+msgstr ""
+"Дата: %(date)s\n"
+"%(name)s, 100%%-й экипаж и слот успешно приобретены.\n"
+"Списано жетонов: %(count)s."
+
+msgid "event_progression_reward_box_achieved/body"
+msgstr "Вам доступна новая плёнка для расшифровки."
+
+msgid "event_progression_reward_box_achieved/final/body"
+msgstr ""
+"«%(vehicle)s»\n"
+"успешно начислен на игровой аккаунт и ожидает вас в Ангаре!"
+
+msgid "event_progression_reward_box_achieved/final/title"
+msgstr "Главная награда получена!"
+
+msgid "event_progression_reward_box_achieved/title"
+msgstr "Зашифрованная плёнка"
+
 msgid "exchange/not_enough_gold"
 msgstr "Недостаточно золота для обмена."
 
@@ -1922,6 +2007,42 @@ msgid "graficsPresetFail"
 msgstr ""
 "Невозможно применить выбранное качество графики по причине несовместимости с "
 "вашей видеокартой."
+
+msgid "hw19_draw_energy/server_error"
+msgstr ""
+"Ошибка восстановления.\n"
+"У вас недостаточно средств, или произошёл технический сбой."
+
+msgid "hw19_lock_energy/server_error"
+msgstr ""
+"Ошибка активации.\n"
+"У вас недостаточно средств, или произошёл технический сбой."
+
+msgid "hw19_open_interrogation/account_has_no_requested_rewardbox"
+msgstr "Ошибка расшифровки. У вас нет необходимой плёнки."
+
+msgid "hw19_open_interrogation/not_enough_tokens_to_open_rewardbox"
+msgstr ""
+"Ошибка расшифровки.\n"
+"У вас недостаточно ключей для расшифровки плёнки."
+
+msgid ""
+"hw19_open_interrogation/quest_skip_for_requested_rewardbox_is_not_allowed"
+msgstr "Ошибка расшифровки. Вам необходимо выполнить основное условие."
+
+msgid "hw19_open_interrogation/server_error"
+msgstr ""
+"Ошибка операции.\n"
+"У вас недостаточно ключей для расшифровки плёнки, или произошёл технический "
+"сбой."
+
+msgid "hw19_open_interrogation/success"
+msgstr "Потрачено: %(money)s ключей"
+
+msgid "hw21/server_error"
+msgstr ""
+"Ошибка покупки.\n"
+"У вас недостаточно средств, или произошёл технический сбой."
 
 msgid "igr/customization/begin"
 msgstr ""
@@ -3567,6 +3688,9 @@ msgstr "У вас нет прав на выполнение операции."
 msgid "unit/errors/JOIN_CTX_LOCK"
 msgstr "Аккаунт заблокирован."
 
+msgid "unit/errors/MISSING_DIFFICULTY_LEVEL"
+msgstr "Действие недоступно. У одного из игроков взвода отсутствует сложность."
+
 msgid "unit/errors/NOT_IDLE"
 msgstr "Команда в очереди или в поиске."
 
@@ -3655,6 +3779,9 @@ msgstr "Действие недоступно. Машина не соответ�
 msgid "unit/errors/VEHICLE_NOT_CHOSEN"
 msgstr "Действие недоступно. Сначала выберите машину."
 
+msgid "unit/errors/WRONG_DIFFICULTY_LEVEL"
+msgstr "Действие недоступно. В составе взвода игроки с различными сложностями."
+
 msgid "unit/errors/WRONG_UNIT_REQUISITES"
 msgstr "Команды не существует."
 
@@ -3677,8 +3804,17 @@ msgstr "Чемпионский"
 msgid "unit/notification/divisionType/MIDDLE"
 msgstr "Средний"
 
+msgid "unit/notification/eventPlayerAdded"
+msgstr "%(userName)s присоединился к разведотряду «Мирный: Надежда»."
+
+msgid "unit/notification/eventPlayerRemoved"
+msgstr "%(userName)s покинул разведотряд «Мирный: Надежда»."
+
 msgid "unit/notification/giveLeadership"
 msgstr "%(userName)s был назначен командиром."
+
+msgid "unit/notification/notReadyDifficultyLevel"
+msgstr "Игрок %(userName)s не готов. Доступна сложность %(level)s."
 
 msgid "unit/notification/playerAdded"
 msgstr "%(userName)s присоединился к отряду."
@@ -3695,6 +3831,9 @@ msgstr "Связь с %(userName)s восстановлена."
 
 msgid "unit/notification/playerRemoved"
 msgstr "%(userName)s покинул отряд."
+
+msgid "unit/notification/selectedDifficultyLevel"
+msgstr "Игрок %(userName)s изменил сложность на %(level)s."
 
 msgid "unit/warnings/ALREADY_INVITED"
 msgstr "Приглашение игроку уже отправлено."
