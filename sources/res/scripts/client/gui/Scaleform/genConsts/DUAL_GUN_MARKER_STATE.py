@@ -1,0 +1,7 @@
+
+
+class DUAL_GUN_MARKER_STATE(object):
+    DIMMED = 0
+    LEFT_PART_ACTIVE = 1
+    RIGHT_PART_ACTIVE = 2
+    VISIBLE = 3

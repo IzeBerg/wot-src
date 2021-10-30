@@ -1,0 +1,112 @@
+from constants import ATTACK_REASON, ATTACK_REASON_INDICES
+BATTLE_EVENTS_PROCESSING_TIMEOUT = 0.2
+CAPTURE_POINTS_TO_REPORT = 10
+CAPTURE_BLOCKED_SESSION_TIMEOUT = 3
+CAPTURE_BLOCKED_POINTS_TO_REPORT = 10
+NONE_SHELL_TYPE = 127
+
+class BATTLE_EVENT_TYPE:
+    SPOTTED = 0
+    RADIO_ASSIST = 1
+    TRACK_ASSIST = 2
+    BASE_CAPTURE_POINTS = 3
+    BASE_CAPTURE_DROPPED = 4
+    TANKING = 5
+    CRIT = 6
+    DAMAGE = 7
+    KILL = 8
+    RECEIVED_CRIT = 9
+    RECEIVED_DAMAGE = 10
+    STUN_ASSIST = 11
+    TARGET_VISIBILITY = 12
+    ENEMY_SECTOR_CAPTURED = 13
+    DESTRUCTIBLE_DAMAGED = 14
+    DESTRUCTIBLE_DESTROYED = 15
+    DESTRUCTIBLES_DEFENDED = 16
+    DEFENDER_BONUS = 17
+    SMOKE_ASSIST = 18
+    INSPIRE_ASSIST = 19
+    BASE_CAPTURE_BLOCKED = 20
+    MULTI_STUN = 21
+    DETECTED = 22
+    EQUIPMENT_TIMER_EXPIRED = 23
+    BUFF_APPLIED = 24
+    BUFF_EFFECT_APPLIED = 25
+    EVENT_ACTION_APPLIED = 26
+    HIDE_IF_TARGET_INVISIBLE = (
+     CRIT, DAMAGE, TRACK_ASSIST, STUN_ASSIST, RADIO_ASSIST, MULTI_STUN)
+    DISCLOSED_ATTACK_REASON_IDS = (
+     ATTACK_REASON_INDICES[ATTACK_REASON.MINEFIELD_EQ],)
+    DAMAGE_EVENTS = frozenset([RADIO_ASSIST, TRACK_ASSIST, STUN_ASSIST, TANKING, DAMAGE, RECEIVED_DAMAGE,
+     SMOKE_ASSIST, INSPIRE_ASSIST])
+    CRITS_EVENTS = frozenset([CRIT, RECEIVED_CRIT])
+    TARGET_EVENTS = frozenset([SPOTTED, KILL, DETECTED])
+    POINTS_EVENTS = frozenset([BASE_CAPTURE_POINTS, BASE_CAPTURE_DROPPED, BASE_CAPTURE_BLOCKED])
+    VISIBILITY_EVENTS = frozenset([TARGET_VISIBILITY])
+    STUN_EVENTS = frozenset([MULTI_STUN])
+    TARGET_POINTS_EVENTS = frozenset([DESTRUCTIBLE_DAMAGED, DESTRUCTIBLE_DESTROYED, DESTRUCTIBLES_DEFENDED,
+     ENEMY_SECTOR_CAPTURED, DEFENDER_BONUS])
+    EQUIPMENT_EVENTS = frozenset([EQUIPMENT_TIMER_EXPIRED])
+    BUFF_EVENTS = frozenset([BUFF_APPLIED, BUFF_EFFECT_APPLIED])
+    EVENT_ACTION_EVENTS = frozenset([EVENT_ACTION_APPLIED])
+    ALL = frozenset([SPOTTED, RADIO_ASSIST, TRACK_ASSIST, STUN_ASSIST, BASE_CAPTURE_POINTS, BASE_CAPTURE_DROPPED,
+     TANKING, CRIT, DAMAGE, KILL, RECEIVED_CRIT, RECEIVED_DAMAGE, TARGET_VISIBILITY,
+     ENEMY_SECTOR_CAPTURED, DESTRUCTIBLE_DAMAGED, DESTRUCTIBLE_DESTROYED, DESTRUCTIBLES_DEFENDED,
+     DEFENDER_BONUS, SMOKE_ASSIST, INSPIRE_ASSIST, BASE_CAPTURE_BLOCKED, MULTI_STUN, DETECTED,
+     BUFF_APPLIED, BUFF_EFFECT_APPLIED, EQUIPMENT_TIMER_EXPIRED, EVENT_ACTION_APPLIED])
+    __EVENT_ACTIONS_INDEXES = list(enumerate(['healVehicleAction', 'addAmmoVehicleAction']))
+    __EVENT_ACTIONS_BY_INDEX = {i:eventAction for i, eventAction in __EVENT_ACTIONS_INDEXES}
+    __EVENT_ACTIONS_INDEX_BY_ACTION = {eventAction:i for i, eventAction in __EVENT_ACTIONS_INDEXES}
+
+    @staticmethod
+    def packDamage(damage, attackReasonID, isBurst=False, shellTypeID=NONE_SHELL_TYPE, shellIsGold=False, secondaryAttackReasonID=ATTACK_REASON_INDICES[ATTACK_REASON.NONE], isRoleAction=False):
+        return (int(damage) & 65535) << 25 | (int(attackReasonID) & 255) << 17 | (1 if isBurst else 0) << 16 | (int(shellTypeID) & 127) << 9 | (1 if shellIsGold else 0) << 8 | int(secondaryAttackReasonID) & 255 | (1 if isRoleAction else 0) << 41
+
+    @staticmethod
+    def unpackDamage(packedDamage):
+        return (
+         packedDamage >> 25 & 65535,
+         packedDamage >> 17 & 255, packedDamage >> 16 & 1, packedDamage >> 9 & 127,
+         packedDamage >> 8 & 1, packedDamage & 255, packedDamage >> 41 & 1)
+
+    @staticmethod
+    def unpackAttackReason(packedDamage):
+        return packedDamage >> 17 & 255
+
+    @staticmethod
+    def packCrits(critsCount, attackReasonID, shellTypeID=NONE_SHELL_TYPE, shellIsGold=False, secondaryAttackReasonID=ATTACK_REASON_INDICES[ATTACK_REASON.NONE]):
+        return (int(critsCount) & 65535) << 24 | (int(attackReasonID) & 255) << 16 | (int(shellTypeID) & 127) << 9 | (1 if shellIsGold else 0) << 8 | int(secondaryAttackReasonID) & 255
+
+    @staticmethod
+    def unpackCrits(packedCrits):
+        return (
+         packedCrits >> 24 & 65535, packedCrits >> 16 & 255, packedCrits >> 9 & 127,
+         packedCrits >> 8 & 1, packedCrits & 255)
+
+    @staticmethod
+    def packVisibility(isVisible, isDirect, isRoleAction):
+        return (1 if isVisible else 0) | (2 if isDirect else 0) | (4 if isRoleAction else 0)
+
+    @staticmethod
+    def unpackVisibility(packedVisibility):
+        return (
+         packedVisibility & 1, packedVisibility & 2, packedVisibility & 4)
+
+    @staticmethod
+    def packBuffEffectApplied(effectValue, buffIndex, victimID):
+        return (int(victimID) & 65535) << 24 | (int(effectValue) & 4095) << 12 | buffIndex & 255
+
+    @staticmethod
+    def unpackBuffEffectApplied(packedEffect):
+        return (
+         packedEffect >> 24 & 65535, packedEffect >> 12 & 4095, packedEffect & 255)
+
+    @classmethod
+    def packEventActionApplied(cls, victimID, effectValue, action):
+        actionIndex = cls.__EVENT_ACTIONS_INDEX_BY_ACTION[action]
+        return (int(victimID) & 65535) << 24 | (int(effectValue) & 4095) << 12 | actionIndex & 255
+
+    @classmethod
+    def unpackEventActionApplied(cls, packedEffect):
+        action = cls.__EVENT_ACTIONS_BY_INDEX[(packedEffect & 255)]
+        return (packedEffect >> 24 & 65535, packedEffect >> 12 & 4095, action)

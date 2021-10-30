@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<Properties>
+		<dogTag>
+			<Type>BATTLE_DOG_TAG</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<DetailLevel>MY_VEHICLE</DetailLevel>
+		</dogTag>
+		<victimsDogTags>
+			<Type>
+				ARRAY
+				<of>VEHICLE_DOG_TAG</of>
+			</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<DetailLevel>MY_VEHICLE</DetailLevel>
+		</victimsDogTags>
+		<killerDogTag>
+			<Type>VEHICLE_DOG_TAG</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<DetailLevel>MY_VEHICLE</DetailLevel>
+		</killerDogTag>
+	</Properties>
+	<ofEntity>
+		<Vehicle/>
+	</ofEntity>
+	<DefaultKeyName>dogTagComponent</DefaultKeyName>
+</root>

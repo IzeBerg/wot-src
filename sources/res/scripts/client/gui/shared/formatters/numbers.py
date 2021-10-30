@@ -1,0 +1,17 @@
+from gui.impl import backport
+
+def formatInt(value, negativeOrZero=None, formatter=backport.getIntegralFormat):
+    if value <= 0 and negativeOrZero is not None:
+        result = negativeOrZero
+    else:
+        result = formatter(value)
+    return result
+
+
+def makeStringWithThousandSymbol(value, digitLimit=4, formatter=backport.getIntegralFormat):
+    limitValue = 10 ** digitLimit - 1
+    if value > limitValue:
+        result = formatter(int(value * 0.001)) + 'K'
+    else:
+        result = formatInt(value, '-', formatter)
+    return result

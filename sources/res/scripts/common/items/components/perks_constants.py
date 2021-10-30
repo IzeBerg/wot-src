@@ -1,0 +1,8 @@
+PERKS_XML_FILE = 'perks.xml'
+
+class PERKS_TYPE:
+    SIMPLE = 1
+    ULTIMATE = 2
+    ANY = SIMPLE | ULTIMATE
+    CONFIGURATION_MAPPING = {True: ULTIMATE, 
+       False: SIMPLE}

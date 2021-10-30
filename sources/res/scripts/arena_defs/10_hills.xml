@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<name>#arenas:10_hills/name</name>
+	<description>#arenas:10_hills/description</description>
+	<geometry>spaces/10_hills</geometry>
+	<estimatedLoad>
+		0.3
+		<!--BW_String-->
+	</estimatedLoad>
+	<roundLength>900</roundLength>
+	<boundingBox>
+		<bottomLeft>
+			-400.0 -400.0
+			<!--BW_String-->
+		</bottomLeft>
+		<upperRight>
+			400.0 400.0
+			<!--BW_String-->
+		</upperRight>
+	</boundingBox>
+	<minimap>spaces/10_hills/mmap.dds</minimap>
+	<vehicleCamouflageKind>summer</vehicleCamouflageKind>
+	<defaultGroundEffect>None</defaultGroundEffect>
+	<umbraEnabled>1</umbraEnabled>
+	<batchingEnabled>0</batchingEnabled>
+	<wwmusicSetup>
+		<wwmusicLoading>music_mines_loading_screen</wwmusicLoading>
+		<wwmusicIntensive>music_mines_dron_intensive</wwmusicIntensive>
+		<wwmusicRelaxed>music_mines_dron_relaxed</wwmusicRelaxed>
+		<wwmusicStop>music_dron_stop</wwmusicStop>
+		<wwmusicEndbattleStop>music_dron_endbattle_stop</wwmusicEndbattleStop>
+		<wwmusicResultWin>music_mines_result_win</wwmusicResultWin>
+		<wwmusicResultDrawn>music_mines_result_drawn</wwmusicResultDrawn>
+		<wwmusicResultDefeat>music_mines_result_defeat</wwmusicResultDefeat>
+	</wwmusicSetup>
+	<wwambientSound>amb_map_10_hills_wind_summer</wwambientSound>
+	<soundRemapping>
+		<loadBanks>
+			<bank>
+				<name>env_Mountain.bnk</name>
+			</bank>
+		</loadBanks>
+	</soundRemapping>
+	<water>
+		<texScale>0</texScale>
+		<freqX>0</freqX>
+		<freqZ>0</freqZ>
+	</water>
+	<gameplayTypes>
+		<ctf>
+			<artilleryPreparationChance>
+				0.0
+				<!--BW_String-->
+			</artilleryPreparationChance>
+			<teamBasePositions>
+				<team1>
+					<position1>175.783722 -305.848389</position1>
+				</team1>
+				<team2>
+					<position1>-236.649124 329.674500</position1>
+				</team2>
+			</teamBasePositions>
+		</ctf>
+		<domination>
+			<teamSpawnPoints>
+				<team1>
+					<position>-14 -330</position>
+				</team1>
+				<team2>
+					<position>-177 305</position>
+				</team2>
+			</teamSpawnPoints>
+			<controlPoint>258.448517 132.453354</controlPoint>
+		</domination>
+		<assault2>
+			<roundLength>420</roundLength>
+			<winnerIfTimeout>1</winnerIfTimeout>
+			<winnerIfExtermination>1</winnerIfExtermination>
+			<teamSpawnPoints>
+				<team1>
+					<position>
+						86.705 -311.497
+						<!--BW_String-->
+					</position>
+				</team1>
+				<team2>
+					<position>
+						-172.927 264.269
+						<!--BW_String-->
+					</position>
+				</team2>
+			</teamSpawnPoints>
+			<teamBasePositions>
+				<team1>
+					<position1>195.064713 -18.873474</position1>
+					<position2>-222.885651 -81.280098</position2>
+				</team1>
+			</teamBasePositions>
+		</assault2>
+		<sandbox>
+			<artilleryPreparationChance>
+				0.0
+				<!--BW_String-->
+			</artilleryPreparationChance>
+			<battleScenarios>
+				<level>
+					<id>1</id>
+					<scenario>spaces/10_hills/bot_scenarios_1_lv1.xml</scenario>
+					<scenario>spaces/10_hills/bot_scenarios_2_lv1.xml</scenario>
+					<scenario>spaces/10_hills/bot_scenarios_1_lv1.xml</scenario>
+					<scenario>spaces/10_hills/bot_scenarios_2_lv1.xml</scenario>
+				</level>
+				<level>
+					<id>2</id>
+					<scenario>spaces/10_hills/bot_scenarios_1_lv2.xml</scenario>
+					<scenario>spaces/10_hills/bot_scenarios_2_lv2.xml</scenario>
+					<scenario>spaces/10_hills/bot_scenarios_1_lv2.xml</scenario>
+					<scenario>spaces/10_hills/bot_scenarios_2_lv2.xml</scenario>
+				</level>
+			</battleScenarios>
+			<wwmusic>bc_music_mission_05</wwmusic>
+			<teamBasePositions>
+				<team1>
+					<position1>175.783722 -305.848389</position1>
+				</team1>
+				<team2>
+					<position1>-236.649124 329.674500</position1>
+				</team2>
+			</teamBasePositions>
+		</sandbox>
+		<bootcamp>
+			<wwmusicSetup>
+				<wwmusicLoading>bc_music_loadingscreen</wwmusicLoading>
+				<wwmusicIntensive>bc_music_mission_05</wwmusicIntensive>
+				<wwmusicRelaxed>bc_music_mission_05</wwmusicRelaxed>
+				<wwmusicStop>music_dron_stop</wwmusicStop>
+				<wwmusicEndbattleStop>music_dron_endbattle_stop</wwmusicEndbattleStop>
+				<wwmusicResultWin>music_mines_result_win</wwmusicResultWin>
+				<wwmusicResultDrawn>music_mines_result_drawn</wwmusicResultDrawn>
+				<wwmusicResultDefeat>music_mines_result_defeat</wwmusicResultDefeat>
+			</wwmusicSetup>
+			<teamBasePositions>
+				<team1>
+					<position1>175.783722 -305.848389</position1>
+				</team1>
+				<team2>
+					<position1>-236.649109 329.674500</position1>
+				</team2>
+			</teamBasePositions>
+			<maxPlayersInTeam>1</maxPlayersInTeam>
+			<runDelay>10</runDelay>
+			<visualScript>
+				<server>
+					<plan>BootCamp/Lesson_5_arena_10_hills</plan>
+				</server>
+				<client>
+					<plan>BootCamp/Lesson_5_client_10_hills</plan>
+				</client>
+			</visualScript>
+		</bootcamp>
+	</gameplayTypes>
+	<waypoints>spaces/10_hills/paths.xml</waypoints>
+	<roadMap/>
+</root>
