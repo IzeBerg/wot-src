@@ -582,4 +582,4 @@ def gen_extract_fn(use={}):
             return func
 
     else:
-        return lambda data: data
+        return lambda data: data# Decompile failed :(

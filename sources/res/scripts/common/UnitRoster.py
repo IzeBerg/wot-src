@@ -550,4 +550,4 @@ Parse error at or near `JUMP_ABSOLUTE' instruction at offset 178
         vehLevel = vehType.level
         if not self.checkVehicleLevel(vehClassIdx, vehLevel):
             return False
-        return True
+        return True# Decompile failed :(

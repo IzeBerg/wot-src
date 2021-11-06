@@ -394,4 +394,4 @@ def reduceTo2PI(inAngle):
     outAngle = math.fmod(inAngle, 2.0 * math.pi)
     if outAngle < 0.0:
         outAngle += 2.0 * math.pi
-    return outAngle
+    return outAngle# Decompile failed :(
