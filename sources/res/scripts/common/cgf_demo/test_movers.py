@@ -99,4 +99,4 @@ class TestAxisRotatorManager(CGF.ComponentManager):
         if shift.length > 0.001:
             print 'going up by', t, shift, shift * t
         transform.position = startPos + shift * t
-        return
+        return# Decompile failed :(

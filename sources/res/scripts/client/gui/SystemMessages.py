@@ -73,7 +73,13 @@ SM_TYPE = Enumeration('System message type', [
  'EventAFKUnbanByQuest',
  'EventOpenedRewardBox',
  'halloweenProgressionUpdate',
- 'halloweenNewDailyQuests'])
+ 'halloweenNewDailyQuests',
+ 'EventInfo',
+ 'EventInfoWithButton',
+ 'EventWarning',
+ 'EventWarningWithButton',
+ 'EventError',
+ 'EventErrorWithButton'])
 CURRENCY_TO_SM_TYPE = {Currency.CREDITS: SM_TYPE.PurchaseForCredits, 
    Currency.GOLD: SM_TYPE.PurchaseForGold, 
    Currency.CRYSTAL: SM_TYPE.PurchaseForCrystal, 

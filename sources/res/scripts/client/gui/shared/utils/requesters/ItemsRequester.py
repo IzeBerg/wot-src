@@ -1149,4 +1149,4 @@ Parse error at or near `None' instruction at offset -1
          self.__stats, self.__inventory, self.__recycleBin, self.__shop, self.__dossiers,
          self.__goodies, self.__vehicleRotation, self.ranked, self.__battleRoyale)
         unsyncedList = [ r.__class__.__name__ for r in [ r for r in requesters if not r.isSynced() ] ]
-        LOG_ERROR('Trying to create fitting item when requesters are not fully synced:', unsyncedList, stack=True)
+        LOG_ERROR('Trying to create fitting item when requesters are not fully synced:', unsyncedList, stack=True)# Decompile failed :(

@@ -48,4 +48,4 @@ def _getCounter(settingsCore=None):
 
 @dependency.replace_none_kwargs(settingsCore=ISettingsCore)
 def _setCounter(counter, settingsCore=None):
-    return settingsCore.serverSettings.setSectionSettings(SETTINGS_SECTIONS.CONTACTS, {CONTACTS.ANTISPAM_MESSAGES_COUNTER: counter})
+    return settingsCore.serverSettings.setSectionSettings(SETTINGS_SECTIONS.CONTACTS, {CONTACTS.ANTISPAM_MESSAGES_COUNTER: counter})# Decompile failed :(

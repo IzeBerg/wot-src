@@ -359,6 +359,12 @@ class YearHareAffairAccessor(BaseAccessor):
         return self._data_source.get_yha_video(callback)
 
 
+class ShopSalesEventAccessor(BaseAccessor):
+
+    def shop_sales_event_fetch_favorites(self, callback):
+        return self._data_source.shop_sales_event_fetch_favorites(callback)
+
+
 class Requester(object):
     available_data_sources = {'stagings': StagingDataAccessor, 
        'fake': FakeDataAccessor, 
@@ -379,6 +385,7 @@ class Requester(object):
     craftmachine = RequestDescriptor(CrafmachineAccessor)
     mapbox = RequestDescriptor(MapboxAccessor)
     yha = RequestDescriptor(YearHareAffairAccessor)
+    shop_sales_event = RequestDescriptor(ShopSalesEventAccessor)
 
     @classmethod
     def create_requester(cls, url_fetcher, config, client_lang=None, user_agent=None):
