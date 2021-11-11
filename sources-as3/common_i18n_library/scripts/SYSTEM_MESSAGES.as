@@ -2489,6 +2489,14 @@ package
       
       public static const VEHICLEPOSTPROGRESSION_RESEARCHSTEPS_BODY:String = "#system_messages:vehiclePostProgression/researchSteps/body";
       
+      public static const TELECOM_RENTALS_SWITCH_OFF_TITLE:String = "#system_messages:telecom_rentals/switch_off/title";
+      
+      public static const TELECOM_RENTALS_SWITCH_OFF_BODY:String = "#system_messages:telecom_rentals/switch_off/body";
+      
+      public static const TELECOM_RENTALS_SWITCH_ON_TITLE:String = "#system_messages:telecom_rentals/switch_on/title";
+      
+      public static const TELECOM_RENTALS_SWITCH_ON_BODY:String = "#system_messages:telecom_rentals/switch_on/body";
+      
       public static const VEHICLEPOSTPROGRESSION_RESEARCHSTEPS_LEVELS_SEPARATOR:String = "#system_messages:vehiclePostProgression/researchSteps/levels/separator";
       
       public static const VEHICLEPOSTPROGRESSION_UNLOCKFEATURE_SHELLS_CONSUMABLES_SWITCH_TITLE:String = "#system_messages:vehiclePostProgression/unlockFeature/shells_consumables_switch/title";

@@ -2026,3 +2026,9 @@ class IShopSalesEventController(IGameController):
 
     def closeMainView(self):
         raise NotImplementedError
+
+
+class ITelecomRentalsNotificationController(IGameController):
+
+    def processSwitchNotifications(self):
+        raise NotImplementedError

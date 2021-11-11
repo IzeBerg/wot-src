@@ -1168,6 +1168,7 @@ class TOOLTIPS(object):
     VEHICLE_WOTPLUSRENTING = '#tooltips:vehicle/wotPlusRenting'
     VEHICLE_WOTPLUSRENTING_REMAININGTIME_DAYS = '#tooltips:vehicle/wotPlusRenting/remainingTime/days'
     VEHICLE_WOTPLUSRENTING_REMAININGTIME_HOURS = '#tooltips:vehicle/wotPlusRenting/remainingTime/hours'
+    VEHICLE_TELECOMRENTALSRENTING = '#tooltips:vehicle/telecomRentalsRenting'
     VEHICLE_RESTORELEFT_DAYS = '#tooltips:vehicle/restoreLeft/days'
     VEHICLE_RESTORELEFT_HOURS = '#tooltips:vehicle/restoreLeft/hours'
     VEHICLEIGR_SPECIALABILITY = '#tooltips:vehicleIgr/specialAbility'
@@ -3022,6 +3023,8 @@ class TOOLTIPS(object):
     NOTRECRUITEDTANKMAN_CH_COMPENSATION_DESC = '#tooltips:notrecruitedtankman/ch_compensation/desc'
     NOTRECRUITEDTANKMAN_COMMANDER_TWITCH_MOCHIZUKI_LABEL = '#tooltips:notrecruitedtankman/commander_twitch_mochizuki/label'
     NOTRECRUITEDTANKMAN_COMMANDER_TWITCH_MOCHIZUKI_DESC = '#tooltips:notrecruitedtankman/commander_twitch_mochizuki/desc'
+    NOTRECRUITEDTANKMAN_COMMANDER_BJORNSON_LABEL = '#tooltips:notrecruitedtankman/commander_bjornson/label'
+    NOTRECRUITEDTANKMAN_COMMANDER_BJORNSON_DESC = '#tooltips:notrecruitedtankman/commander_bjornson/desc'
     NOTRECRUITEDTANKMAN_YHA_COMMANDER_LABEL = '#tooltips:notrecruitedtankman/yha_commander/label'
     NOTRECRUITEDTANKMAN_YHA_COMMANDER_DESC = '#tooltips:notrecruitedtankman/yha_commander/desc'
     NOTRECRUITEDTANKMAN_YHA_DRIVER_LABEL = '#tooltips:notrecruitedtankman/yha_driver/label'
@@ -4083,6 +4086,7 @@ class TOOLTIPS(object):
      NOTRECRUITEDTANKMAN_TANKMEN_BP2_2_LABEL,
      NOTRECRUITEDTANKMAN_CH_COMPENSATION_LABEL,
      NOTRECRUITEDTANKMAN_COMMANDER_TWITCH_MOCHIZUKI_LABEL,
+     NOTRECRUITEDTANKMAN_COMMANDER_BJORNSON_LABEL,
      NOTRECRUITEDTANKMAN_YHA_COMMANDER_LABEL,
      NOTRECRUITEDTANKMAN_YHA_DRIVER_LABEL,
      NOTRECRUITEDTANKMAN_YHA_GUNNER_LABEL,
@@ -4182,6 +4186,7 @@ class TOOLTIPS(object):
      NOTRECRUITEDTANKMAN_TANKMEN_BP2_2_DESC,
      NOTRECRUITEDTANKMAN_CH_COMPENSATION_DESC,
      NOTRECRUITEDTANKMAN_COMMANDER_TWITCH_MOCHIZUKI_DESC,
+     NOTRECRUITEDTANKMAN_COMMANDER_BJORNSON_DESC,
      NOTRECRUITEDTANKMAN_YHA_COMMANDER_DESC,
      NOTRECRUITEDTANKMAN_YHA_DRIVER_DESC,
      NOTRECRUITEDTANKMAN_YHA_GUNNER_DESC,

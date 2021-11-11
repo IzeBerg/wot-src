@@ -583,6 +583,8 @@ package
       
       public static const TANKCAROUSEL_WOTPLUSSELECTIONAVAILABLE:String = "#menu:tankCarousel/wotPlusSelectionAvailable";
       
+      public static const TANKCAROUSEL_WOTPLUSSELECTIONPENDING:String = "#menu:tankCarousel/wotPlusSelectionPending";
+      
       public static const TANKCAROUSEL_VEHICLESTATES_XPMULTRECEIVED:String = "#menu:tankCarousel/vehicleStates/xpMultReceived";
       
       public static const TANKCAROUSEL_VEHICLESTATES_XPMULTRECEIVED_NOT:String = "#menu:tankCarousel/vehicleStates/xpMultReceived/not";

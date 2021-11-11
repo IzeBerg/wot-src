@@ -2345,6 +2345,8 @@ package
       
       public static const VEHICLE_WOTPLUSRENTING_REMAININGTIME_HOURS:String = "#tooltips:vehicle/wotPlusRenting/remainingTime/hours";
       
+      public static const VEHICLE_TELECOMRENTALSRENTING:String = "#tooltips:vehicle/telecomRentalsRenting";
+      
       public static const VEHICLE_RESTORELEFT_DAYS:String = "#tooltips:vehicle/restoreLeft/days";
       
       public static const VEHICLE_RESTORELEFT_HOURS:String = "#tooltips:vehicle/restoreLeft/hours";
@@ -6052,6 +6054,10 @@ package
       public static const NOTRECRUITEDTANKMAN_COMMANDER_TWITCH_MOCHIZUKI_LABEL:String = "#tooltips:notrecruitedtankman/commander_twitch_mochizuki/label";
       
       public static const NOTRECRUITEDTANKMAN_COMMANDER_TWITCH_MOCHIZUKI_DESC:String = "#tooltips:notrecruitedtankman/commander_twitch_mochizuki/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_BJORNSON_LABEL:String = "#tooltips:notrecruitedtankman/commander_bjornson/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_BJORNSON_DESC:String = "#tooltips:notrecruitedtankman/commander_bjornson/desc";
       
       public static const NOTRECRUITEDTANKMAN_YHA_COMMANDER_LABEL:String = "#tooltips:notrecruitedtankman/yha_commander/label";
       

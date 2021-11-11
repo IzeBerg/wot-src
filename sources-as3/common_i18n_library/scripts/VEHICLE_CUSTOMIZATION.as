@@ -11369,6 +11369,20 @@ package
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_339:String = "#vehicle_customization:projection_decals/special/projection_decal_339";
       
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_341:String = "#vehicle_customization:projection_decals/special/projection_decal_341";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_342:String = "#vehicle_customization:projection_decals/special/projection_decal_342";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_343:String = "#vehicle_customization:projection_decals/special/projection_decal_343";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_344:String = "#vehicle_customization:projection_decals/special/projection_decal_344";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_345:String = "#vehicle_customization:projection_decals/special/projection_decal_345";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_346:String = "#vehicle_customization:projection_decals/special/projection_decal_346";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_347:String = "#vehicle_customization:projection_decals/special/projection_decal_347";
+      
       public static const PROPERTYSHEET_KEYBOARD_HINT:String = "#vehicle_customization:propertySheet/keyboard/hint";
       
       public static const PROPERTYSHEET_INSCRIPTIONCONTROLLER_INVALID_INSCRIPTION:String = "#vehicle_customization:propertySheet/inscriptionController/invalid_inscription";
