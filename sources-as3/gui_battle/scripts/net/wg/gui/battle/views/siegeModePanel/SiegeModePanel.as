@@ -35,6 +35,8 @@ package net.wg.gui.battle.views.siegeModePanel
       
       public function as_setSiegeModeType(param1:String) : void
       {
+         var _loc2_:String = null;
+         var _loc3_:Class = null;
          App.utils.asserter.assert(SIEGE_MODE_CONSTS.SIEGE_MODE_TYPES.indexOf(param1) >= 0,"Unknown siege mode type: " + param1);
          if(this._siegeModeType == param1)
          {
@@ -46,12 +48,19 @@ package net.wg.gui.battle.views.siegeModePanel
             this.animationContainer.removeChild(this._currentAnimation);
             this._currentAnimation.dispose();
          }
-         var _loc2_:String = Linkages.SIEGE_MODE_ANIMATION_UI;
-         var _loc3_:Class = SiegeModeAnimation;
-         if(this._siegeModeType == SIEGE_MODE_CONSTS.TURBOSHAFT_ENGINE_TYPE)
+         switch(this._siegeModeType)
          {
-            _loc2_ = Linkages.TURBO_SIEGE_MODE_ANIMATION_UI;
-            _loc3_ = TurboSiegeModeAnimation;
+            case SIEGE_MODE_CONSTS.TURBOSHAFT_ENGINE_TYPE:
+               _loc2_ = Linkages.TURBO_SIEGE_MODE_ANIMATION_UI;
+               _loc3_ = TurboSiegeModeAnimation;
+               break;
+            case SIEGE_MODE_CONSTS.TRACK_WITHIN_TRACK_TYPE:
+               _loc2_ = Linkages.YOH_CHASSIS_MODE_ANIMATION_UI;
+               _loc3_ = YohChassisModeAnimation;
+               break;
+            default:
+               _loc2_ = Linkages.SIEGE_MODE_ANIMATION_UI;
+               _loc3_ = SiegeModeAnimation;
          }
          this._currentAnimation = App.utils.classFactory.getComponent(_loc2_,_loc3_);
          this.animationContainer.addChild(this._currentAnimation);

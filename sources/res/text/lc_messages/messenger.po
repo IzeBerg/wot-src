@@ -10,9 +10,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "battle/hints/changeReceiver"
-msgstr "..."
-
 msgid "battle/history/downMessage"
 msgstr "перейти к новым сообщениям"
 
@@ -2123,6 +2120,9 @@ msgstr "%(label)s x%(count)s"
 msgid "serviceChannelMessages/currencyUpdate/auction"
 msgstr "Аукцион"
 
+msgid "serviceChannelMessages/currencyUpdate/battlepass"
+msgstr "Боевой пропуск"
+
 msgid "serviceChannelMessages/currencyUpdate/date"
 msgstr "Дата"
 
@@ -2137,6 +2137,9 @@ msgstr "Списано бон"
 
 msgid "serviceChannelMessages/currencyUpdate/debited/eventCoin"
 msgstr "Списано юбилейных монет"
+
+msgid "serviceChannelMessages/currencyUpdate/debited/freeXp"
+msgstr "Списано свободного опыта"
 
 msgid "serviceChannelMessages/currencyUpdate/debited/gold"
 msgstr "Списано золота"
@@ -2155,6 +2158,9 @@ msgstr "Получено бон"
 
 msgid "serviceChannelMessages/currencyUpdate/received/eventCoin"
 msgstr "Получено юбилейных монет"
+
+msgid "serviceChannelMessages/currencyUpdate/received/freeXp"
+msgstr "Получено свободного опыта"
 
 msgid "serviceChannelMessages/currencyUpdate/received/gold"
 msgstr "Получено золота"
@@ -2641,13 +2647,13 @@ msgid "serviceChannelMessages/lootBoxesAutoOpen/counter"
 msgstr "x%(count)s"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/event/boxes"
-msgstr "Открыто энергоблоков: %(boxes)s"
+msgstr "Открыто порталов: %(boxes)s"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/event/counter"
 msgstr "%(boxName)s (x%(count)d)"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/event/header"
-msgstr "Открытие энергоблоков"
+msgstr "Открытие порталов"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/event/rewards"
 msgstr ""
@@ -2655,7 +2661,7 @@ msgstr ""
 "%(rewards)s"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/event/text"
-msgstr "Мы открыли за вас энергоблоки и начиcлили их содержимое:"
+msgstr "Мы открыли за вас порталы и начислили их содержимое:"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/header"
 msgstr "Получены награды"
@@ -2929,6 +2935,9 @@ msgstr "Общего премиум аккаунта"
 
 msgid "serviceChannelMessages/serverDowntimeCompensation/premium_plus"
 msgstr "Танкового премиум аккаунта"
+
+msgid "serviceChannelMessages/serverDowntimeCompensation/premium_subs"
+msgstr "?empty?"
 
 msgid "serviceChannelMessages/serverDowntimeCompensation/rentals"
 msgstr "аренды"
@@ -3299,6 +3308,12 @@ msgid "serviceChannelMessages/wotPlus/tankRental/isDisabled/title"
 msgstr "?empty?"
 
 msgid "serviceChannelMessages/wotPlus/tankRental/isEnabled/title"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/tankRental/isPending/text"
+msgstr "?empty?"
+
+msgid "serviceChannelMessages/wotPlus/tankRental/isPending/title"
 msgstr "?empty?"
 
 msgid "serviceChannelMessages/wotPlus/unlockMessage/title"

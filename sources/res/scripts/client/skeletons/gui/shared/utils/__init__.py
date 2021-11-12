@@ -70,6 +70,10 @@ class IItemsRequester(requesters.IRequester):
     def battlePass(self):
         raise NotImplementedError
 
+    @property
+    def giftSystem(self):
+        raise NotImplementedError
+
     def requestUserDossier(self, databaseID, callback):
         raise NotImplementedError
 

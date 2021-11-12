@@ -13,6 +13,7 @@ package net.wg.gui.battle.epicRandom.views
    import net.wg.gui.battle.epicRandom.views.stats.components.fullStats.EpicRandomFullStats;
    import net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.PlayersPanel;
    import net.wg.gui.battle.random.views.fragCorrelationBar.FragCorrelationBar;
+   import net.wg.gui.battle.random.views.stats.components.playersPanel.events.PlayersPanelEvent;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.events.PlayersPanelSwitchEvent;
    import net.wg.gui.battle.random.views.teamBasesPanel.TeamBasesPanel;
    import net.wg.gui.battle.views.BattlePageQuestsProgress;
@@ -152,6 +153,7 @@ package net.wg.gui.battle.epicRandom.views
          this.battleMessenger.addEventListener(FocusRequestEvent.REQUEST_FOCUS,this.onBattleMessengerRequestFocusHandler);
          this.battleMessenger.addEventListener(BattleMessenger.REMOVE_FOCUS,this.onBattleMessengerRemoveFocusHandler);
          this.epicRandomPlayersPanel.addEventListener(PlayersPanelSwitchEvent.STATE_REQUESTED,this.onPlayersPanelStateRequestedHandler);
+         this.epicRandomPlayersPanel.addEventListener(PlayersPanelEvent.ON_ITEMS_COUNT_CHANGE,this.onEpicRandomPlayersPanelOnItemsCountChangeHandler);
          super.configUI();
          minimap.updateSizeIndex(false);
          this.hintPanel.addEventListener(Event.RESIZE,this.onHintPanelResizeHandler);
@@ -189,6 +191,7 @@ package net.wg.gui.battle.epicRandom.views
          this.battleMessenger.removeEventListener(MouseEvent.ROLL_OUT,this.onBattleMessengerRollOutHandler);
          this.epicRandomPlayersPanel.removeEventListener(Event.CHANGE,this.onPlayersPanelChangeHandler);
          this.epicRandomPlayersPanel.removeEventListener(PlayersPanelSwitchEvent.STATE_REQUESTED,this.onPlayersPanelStateRequestedHandler);
+         this.epicRandomPlayersPanel.removeEventListener(PlayersPanelEvent.ON_ITEMS_COUNT_CHANGE,this.onEpicRandomPlayersPanelOnItemsCountChangeHandler);
          this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
          this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.SWITCH_POPUP,this.onConsumablesPanelSwitchPopupHandler);
          this.battleMessenger.removeEventListener(FocusRequestEvent.REQUEST_FOCUS,this.onBattleMessengerRequestFocusHandler);
@@ -376,6 +379,11 @@ package net.wg.gui.battle.epicRandom.views
       private function onPlayersPanelStateRequestedHandler(param1:PlayersPanelSwitchEvent) : void
       {
          this.updateDamageLogPosition(param1.state);
+      }
+      
+      private function onEpicRandomPlayersPanelOnItemsCountChangeHandler(param1:PlayersPanelEvent) : void
+      {
+         minimap.updateSizeIndex(false);
       }
       
       private function onPlayersPanelChangeHandler(param1:Event) : void

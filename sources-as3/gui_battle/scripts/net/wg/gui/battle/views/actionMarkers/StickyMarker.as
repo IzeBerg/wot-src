@@ -31,19 +31,20 @@ package net.wg.gui.battle.views.actionMarkers
          this.targetHighlight = null;
       }
       
-      public function setTextLabelVisible(param1:Boolean) : void
+      public function setArrowPosition(param1:Point) : void
       {
-         this.txtLabel.visible = param1;
-      }
-      
-      public function setTextLabelEnabled(param1:Boolean) : void
-      {
-         this.txtLabel.alpha = !!param1 ? Number(1) : Number(0);
+         this.arrow.x = param1.x;
+         this.arrow.y = param1.y;
       }
       
       public function setArrowVisible(param1:Boolean) : void
       {
          this.arrow.visible = param1;
+      }
+      
+      public function setTextLabelEnabled(param1:Boolean) : void
+      {
+         this.txtLabel.alpha = !!param1 ? Number(1) : Number(0);
       }
       
       public function setTextLabelPosition(param1:Point) : void
@@ -52,10 +53,9 @@ package net.wg.gui.battle.views.actionMarkers
          this.txtLabel.y = param1.y;
       }
       
-      public function setArrowPosition(param1:Point) : void
+      public function setTextLabelVisible(param1:Boolean) : void
       {
-         this.arrow.x = param1.x;
-         this.arrow.y = param1.y;
+         this.txtLabel.visible = param1;
       }
    }
 }

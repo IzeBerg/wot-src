@@ -20,6 +20,8 @@ COLUMN_SETTINGS = {PREBATTLE_ACTION_NAME.RANDOM: (
                                 ModeSelectorColumns.COLUMN_2, 10), 
    PREBATTLE_ACTION_NAME.BATTLE_ROYALE: (
                                        ModeSelectorColumns.COLUMN_2, 20), 
+   PREBATTLE_ACTION_NAME.EVENT_BATTLE: (
+                                      ModeSelectorColumns.COLUMN_2, 40), 
    PREBATTLE_ACTION_NAME.STRONGHOLDS_BATTLES_LIST: (
                                                   ModeSelectorColumns.COLUMN_3, 10), 
    PREBATTLE_ACTION_NAME.SPEC_BATTLES_LIST: (

@@ -13,7 +13,6 @@ package net.wg.gui.lobby.colorSettings
    import net.wg.data.constants.DragType;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.COLOR_SETTINGS;
-   import net.wg.data.constants.generated.LAYER_NAMES;
    import net.wg.gui.components.controls.ResizableScrollPane;
    import net.wg.gui.interfaces.ISoundButtonEx;
    import net.wg.gui.lobby.colorSettings.events.ColorSettingsRendererEvent;
@@ -28,8 +27,6 @@ package net.wg.gui.lobby.colorSettings
    
    public class ColorSettingsView extends ColorSettingsViewMeta implements IColorSettingsViewMeta, IDraggable
    {
-      
-      private static const excludeContainers:Vector.<int> = Vector.<int>([LAYER_NAMES.LAYER_ORDER.indexOf(LAYER_NAMES.FULLSCREEN_WINDOWS),LAYER_NAMES.LAYER_ORDER.indexOf(LAYER_NAMES.CURSOR),LAYER_NAMES.LAYER_ORDER.indexOf(LAYER_NAMES.WAITING),LAYER_NAMES.LAYER_ORDER.indexOf(LAYER_NAMES.SERVICE_LAYOUT)]);
       
       private static const INVALID_SETTINGS:String = "INVALID_SETTINGS";
       
@@ -115,8 +112,6 @@ package net.wg.gui.lobby.colorSettings
       
       override protected function onDispose() : void
       {
-         App.containerMgr.setVisibleContainers(true,excludeContainers);
-         App.graphicsOptimizationMgr.switchEnabled(true);
          this.scrollPane.dispose();
          this.scrollPane = null;
          this.beforeAfterPxBg = null;
@@ -155,14 +150,6 @@ package net.wg.gui.lobby.colorSettings
          this.beforeAfterPxBg.alpha = BEFORE_AFTER_ALPHA;
          this.beforeAfterPxBg.x = this._panelWidth;
          this.beforeAfterPxBg.height = this._smallPanelHeight;
-      }
-      
-      override protected function onPopulate() : void
-      {
-         super.onPopulate();
-         App.containerMgr.storeVisibleContainers();
-         App.containerMgr.setVisibleContainers(false,excludeContainers);
-         App.graphicsOptimizationMgr.switchEnabled(false);
       }
       
       override protected function configUI() : void
@@ -284,11 +271,10 @@ package net.wg.gui.lobby.colorSettings
       
       private function updateBeforeAfter() : void
       {
-         var _loc1_:int = 0;
          var _loc2_:int = 0;
          var _loc4_:int = 0;
          var _loc5_:int = 0;
-         _loc1_ = _originalHeight - (this._smallPanelHeight << 1);
+         var _loc1_:int = _originalHeight - (this._smallPanelHeight << 1);
          _loc2_ = _originalWidth - this._panelWidth;
          var _loc3_:Graphics = graphics;
          this.onePxWhite.visible = this.beforeAfterPxBg.visible = this.afterTF.visible = this.beforeTF.visible = this._isManualSelected;

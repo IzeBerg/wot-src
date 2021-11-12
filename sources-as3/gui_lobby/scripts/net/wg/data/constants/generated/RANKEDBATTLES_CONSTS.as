@@ -70,6 +70,12 @@ package net.wg.data.constants.generated
       public static const WIDGET_MEDIUM_WIDTH:int = 340;
       
       public static const WIDGET_SMALL_WIDTH:int = 290;
+      
+      public static const INTRO_STATE_NORMAL:int = 0;
+      
+      public static const INTRO_STATE_BEFORE_SEASON:int = 1;
+      
+      public static const INTRO_STATE_DISABLED:int = 2;
        
       
       public function RANKEDBATTLES_CONSTS()

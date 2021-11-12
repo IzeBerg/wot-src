@@ -1545,7 +1545,8 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'passiveXPNoTank',
  'passiveXPIncompatibleCrew',
  'wotPlusRentEnd',
- 'wotPlusNoRentSelected'])
+ 'wotPlusNoRentSelected',
+ 'giftSystemMessage'])
 SYS_MESSAGE_IMPORTANCE = Enumeration('systemMessageImportance', [
  'normal',
  'high'])

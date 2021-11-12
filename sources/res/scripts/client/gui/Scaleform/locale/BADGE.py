@@ -13,6 +13,8 @@ class BADGE(object):
     BADGESPAGE_DUMMY_BUTTON_LABEL = '#badge:badgesPage/dummy/button/label'
     BADGESPAGE_ACCOUNTCOMPLETION_BUTTON_CONFIRMEMAIL = '#badge:badgesPage/accountCompletion/button/confirmEmail'
     BADGESPAGE_ACCOUNTCOMPLETION_BUTTON_PROVIDEEMAIL = '#badge:badgesPage/accountCompletion/button/provideEmail'
+    BADGESPAGE_ACCOUNTCOMPLETION_BUTTON_DEMOACCRENAME = '#badge:badgesPage/accountCompletion/button/demoAccRename'
+    BADGESPAGE_ACCOUNTCOMPLETION_REFRESHING = '#badge:badgesPage/accountCompletion/refreshing'
     BADGESPAGE_ACCOUNTCOMPLETION_BUTTON_STATUSUPDATE = '#badge:badgesPage/accountCompletion/button/statusUpdate'
     BADGESPAGE_ACCOUNTCOMPLETION_BUTTON_SERVICEUNAVAILABLE = '#badge:badgesPage/accountCompletion/button/serviceUnavailable'
     BADGE_0 = '#badge:badge_0'
@@ -241,6 +243,8 @@ class BADGE(object):
     BADGE_102_DESCR_LONG = '#badge:badge_102_descr_long'
     BADGE_103 = '#badge:badge_103'
     BADGE_103_DESCR = '#badge:badge_103_descr'
+    BADGE_104 = '#badge:badge_104'
+    BADGE_104_DESCR = '#badge:badge_104_descr'
     BADGE_105 = '#badge:badge_105'
     BADGE_105_DESCR = '#badge:badge_105_descr'
     BADGE_106 = '#badge:badge_106'
@@ -469,6 +473,8 @@ class BADGE(object):
      BADGE_102_DESCR_LONG,
      BADGE_103,
      BADGE_103_DESCR,
+     BADGE_104,
+     BADGE_104_DESCR,
      BADGE_105,
      BADGE_105_DESCR,
      BADGE_106,
@@ -595,6 +601,7 @@ class BADGE(object):
      BADGE_101_DESCR,
      BADGE_102_DESCR,
      BADGE_103_DESCR,
+     BADGE_104_DESCR,
      BADGE_105_DESCR,
      BADGE_106_DESCR)
     BADGE_ALL_DESCR_LONG_ENUM = (

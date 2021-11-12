@@ -1,14 +1,12 @@
-import logging, BigWorld, math_utils, VehicleStickers
-_logger = logging.getLogger(__name__)
+import BigWorld, math_utils, VehicleStickers
 
 class DestructibleStickers(object):
 
-    def __init__(self, model, nodeToAttach, entityId):
+    def __init__(self, model, nodeToAttach):
         self.__model = model
         self.__stickerModel = BigWorld.WGStickerModel()
         self.__stickerModel.setLODDistance(1000.0)
         self.__stickerModel.setupSuperModel(model, math_utils.createIdentityMatrix())
-        self.__entityId = entityId
         nodeToAttach.attach(self.__stickerModel)
         self.__damageStickers = {}
 
@@ -23,7 +21,6 @@ class DestructibleStickers(object):
             return
 
     def addDamageSticker(self, code, stickerID, segStart, segEnd):
-        _logger.info('DestructibleStickers::addDamageSticker. eid=%s', self.__entityId)
         if code in self.__damageStickers:
             return
         else:
@@ -34,7 +31,6 @@ class DestructibleStickers(object):
             return
 
     def delDamageSticker(self, code):
-        _logger.info('DestructibleStickers::delDamageSticker. eid=%s', self.__entityId)
         if self.__stickerModel is None:
             return
         else:

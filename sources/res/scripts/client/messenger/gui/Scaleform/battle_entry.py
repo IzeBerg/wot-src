@@ -59,6 +59,7 @@ class BattleEntry(IGUIEntry):
 
     def show(self):
         g_messengerEvents.channels.onMessageReceived += self.__me_onMessageReceived
+        g_messengerEvents.channels.onHistoryReceived += self.__me_onHistoryReceived
         g_messengerEvents.channels.onCommandReceived += self.__me_onCommandReceived
         g_messengerEvents.users.onBattleUserActionReceived += self.__me_onBattleUserActionReceived
         g_messengerEvents.onErrorReceived += self.__me_onErrorReceived
@@ -74,6 +75,7 @@ class BattleEntry(IGUIEntry):
 
     def close(self, nextScope):
         g_messengerEvents.channels.onMessageReceived -= self.__me_onMessageReceived
+        g_messengerEvents.channels.onHistoryReceived -= self.__me_onHistoryReceived
         g_messengerEvents.channels.onCommandReceived -= self.__me_onCommandReceived
         g_messengerEvents.users.onBattleUserActionReceived -= self.__me_onBattleUserActionReceived
         g_messengerEvents.onErrorReceived -= self.__me_onErrorReceived
@@ -194,6 +196,16 @@ class BattleEntry(IGUIEntry):
             if controller is None or not controller.isEnabled():
                 return
             controller.addMessage(message)
+        return
+
+    def __me_onHistoryReceived(self, history, channel):
+        if channel is not None:
+            controller = self.__channelsCtrl.getController(channel.getClientID())
+            if controller is None or not controller.isEnabled():
+                return
+            for message in history:
+                controller.addMessage(message)
+
         return
 
     def __me_onCommandReceived(self, command):

@@ -29,9 +29,22 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel
          isPlayerSwitchingAllowed = false;
       }
       
+      override public function as_setChatCommandsVisibility(param1:Boolean) : void
+      {
+         this._listLeftEpic.setChatCommandVisibility(param1);
+         this._listRightEpic.setChatCommandVisibility(param1);
+      }
+      
+      override public function as_setPanelHPBarVisibilityState(param1:uint) : void
+      {
+         this._listLeftEpic.setPanelHPBarVisibilityState(param1);
+         this._listRightEpic.setPanelHPBarVisibilityState(param1);
+      }
+      
       override public function updateVehiclesData(param1:IDAAPIDataClass) : void
       {
          this.applyVehicleData(param1);
+         dispatchEvent(new PlayersPanelEvent(PlayersPanelEvent.ON_ITEMS_COUNT_CHANGE));
       }
       
       override protected function initialize() : void
@@ -45,10 +58,9 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel
       {
          super.configUI();
          this._listLeftEpic.addEventListener(PlayersPanelListEvent.ITEMS_GROUP_CHANGED,this.onListItemsGroupChangedHandler);
-         this._listLeftEpic.addEventListener(PlayersPanelListEvent.ITEMS_COUNT_CHANGE,this.onListLeftEpicItemsCountChangeHandler);
          this._listLeftEpic.addEventListener(PlayersPanelListEvent.ITEMS_GROUP_MOUSE_OVER_CHANGED,this.onListItemsGroupMouseOverChangedHandler);
-         this._listRightEpic.addEventListener(PlayersPanelListEvent.ITEMS_GROUP_MOUSE_OVER_CHANGED,this.onListItemsGroupMouseOverChangedHandler);
          this._listRightEpic.addEventListener(PlayersPanelListEvent.ITEMS_GROUP_CHANGED,this.onListItemsGroupChangedHandler);
+         this._listRightEpic.addEventListener(PlayersPanelListEvent.ITEMS_GROUP_MOUSE_OVER_CHANGED,this.onListItemsGroupMouseOverChangedHandler);
          this._listLeftEpic.updateColorBlind();
          this._listRightEpic.updateColorBlind();
       }
@@ -56,10 +68,9 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel
       override protected function onDispose() : void
       {
          this._listLeftEpic.removeEventListener(PlayersPanelListEvent.ITEMS_GROUP_CHANGED,this.onListItemsGroupChangedHandler);
-         this._listLeftEpic.removeEventListener(PlayersPanelListEvent.ITEMS_COUNT_CHANGE,this.onListLeftEpicItemsCountChangeHandler);
          this._listLeftEpic.removeEventListener(PlayersPanelListEvent.ITEMS_GROUP_MOUSE_OVER_CHANGED,this.onListItemsGroupMouseOverChangedHandler);
-         this._listRightEpic.removeEventListener(PlayersPanelListEvent.ITEMS_GROUP_MOUSE_OVER_CHANGED,this.onListItemsGroupMouseOverChangedHandler);
          this._listRightEpic.removeEventListener(PlayersPanelListEvent.ITEMS_GROUP_CHANGED,this.onListItemsGroupChangedHandler);
+         this._listRightEpic.removeEventListener(PlayersPanelListEvent.ITEMS_GROUP_MOUSE_OVER_CHANGED,this.onListItemsGroupMouseOverChangedHandler);
          this._listLeftEpic = null;
          this._listRightEpic = null;
          super.onDispose();
@@ -87,6 +98,10 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel
          this._listRightEpic.updateOrder(_loc2_.rightVehiclesIDs);
       }
       
+      override protected function notifyChangeItemsCount() : void
+      {
+      }
+      
       public function as_setPlayersSwitchingAllowed(param1:Boolean) : void
       {
          isPlayerSwitchingAllowed = param1;
@@ -110,6 +125,11 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel
                this.setListsState(PLAYERS_PANEL_STATE.EPIC_RANDOM_THREE_COLUMN_MEDIUM_PLAYER);
             }
          }
+      }
+      
+      override public function get panelHeight() : Number
+      {
+         return this.y + this._listRightEpic.y + this._listRightEpic.listHeight;
       }
       
       override protected function onListItemSelected(param1:PlayersPanelListEvent) : void
@@ -154,11 +174,6 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel
          }
       }
       
-      private function onListLeftEpicItemsCountChangeHandler(param1:PlayersPanelListEvent) : void
-      {
-         dispatchEvent(new PlayersPanelEvent(PlayersPanelEvent.ON_ITEMS_COUNT_CHANGE));
-      }
-      
       private function onListItemsGroupChangedHandler(param1:PlayersPanelListEvent) : void
       {
          this._listLeftEpic.setAndSortByGroup(param1.group,param1.vehicleID);
@@ -171,18 +186,6 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel
          {
             this.updateColumnAndStateLayout(param1.group);
          }
-      }
-      
-      override public function as_setChatCommandsVisibility(param1:Boolean) : void
-      {
-         this._listLeftEpic.setChatCommandVisibility(param1);
-         this._listRightEpic.setChatCommandVisibility(param1);
-      }
-      
-      override public function as_setPanelHPBarVisibilityState(param1:uint) : void
-      {
-         this._listLeftEpic.setPanelHPBarVisibilityState(param1);
-         this._listRightEpic.setPanelHPBarVisibilityState(param1);
       }
    }
 }

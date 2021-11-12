@@ -1,4 +1,5 @@
 from frameworks.wulf import WindowLayer
+from gui.Scaleform.daapi.view.dialogs.button_dialog import ButtonDialog
 from gui.shared import EVENT_BUS_SCOPE
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.framework import ViewSettings, GroupedViewSettings, ScopeTemplates, ComponentSettings
@@ -25,6 +26,7 @@ def getViewSettings():
      ViewSettings(VIEW_ALIAS.WAITING, WaitingView, 'waiting.swf', WindowLayer.WAITING, None, ScopeTemplates.GLOBAL_SCOPE),
      ComponentSettings(VIEW_ALIAS.REPORT_BUG, ReportBugPanel, ScopeTemplates.DEFAULT_SCOPE),
      GroupedViewSettings(VIEW_ALIAS.SIMPLE_DIALOG, SimpleDialog, 'simpleDialog.swf', WindowLayer.TOP_WINDOW, '', None, ScopeTemplates.DYNAMIC_SCOPE, isModal=True, canDrag=False),
+     GroupedViewSettings(VIEW_ALIAS.BUTTON_DIALOG, ButtonDialog, 'buttonDialog.swf', WindowLayer.TOP_WINDOW, '', None, ScopeTemplates.DYNAMIC_SCOPE, isModal=True, canDrag=False),
      GroupedViewSettings(VIEW_ALIAS.SETTINGS_WINDOW, SettingsWindow, 'settingsWindow.swf', WindowLayer.TOP_WINDOW, 'settingsWindow', None, ScopeTemplates.DEFAULT_SCOPE, isModal=True, canDrag=False),
      ViewSettings(VIEW_ALIAS.GAMMA_WIZARD, GammaWizardView, 'gammaWizard.swf', WindowLayer.FULLSCREEN_WINDOW, VIEW_ALIAS.GAMMA_WIZARD, ScopeTemplates.DEFAULT_SCOPE),
      ViewSettings(VIEW_ALIAS.COLOR_SETTING, ColorSettingsView, 'colorSettings.swf', WindowLayer.FULLSCREEN_WINDOW, VIEW_ALIAS.COLOR_SETTING, ScopeTemplates.DEFAULT_SCOPE),
@@ -60,12 +62,21 @@ class CommonDialogsHandler(PackageBusinessHandler):
          (
           ShowDialogEvent.SHOW_SIMPLE_DLG, self.__loadSimpleDialog),
          (
+          ShowDialogEvent.SHOW_BUTTON_DLG, self.__loadButtonDialog),
+         (
           ShowDialogEvent.SHOW_EXECUTION_CHOOSER_DIALOG, self.__showBootcampExecutionChooser))
         super(CommonDialogsHandler, self).__init__(listeners, scope=EVENT_BUS_SCOPE.GLOBAL)
 
+    def __loadSimpleDialogView(self, alias, meta, handler):
+        self.loadViewWithGenName(alias, meta.getMessage(), meta.getTitle(), meta.getButtonLabels(), meta.getCallbackWrapper(handler), meta.getViewScopeType(), meta.getTimer())
+
     def __loadSimpleDialog(self, event):
         meta = event.meta
-        self.loadViewWithGenName(VIEW_ALIAS.SIMPLE_DIALOG, meta.getMessage(), meta.getTitle(), meta.getButtonLabels(), meta.getCallbackWrapper(event.handler), meta.getViewScopeType(), meta.getTimer())
+        self.__loadSimpleDialogView(VIEW_ALIAS.SIMPLE_DIALOG, meta, event.handler)
+
+    def __loadButtonDialog(self, event):
+        meta = event.meta
+        self.__loadSimpleDialogView(VIEW_ALIAS.BUTTON_DIALOG, meta, event.handler)
 
     def __showBootcampExecutionChooser(self, event):
         self.loadViewWithGenName(VIEW_ALIAS.BOOTCAMP_EXECUTION_CHOOSER, event.meta, event.handler)

@@ -444,6 +444,7 @@ class AmmoPlugin(CrosshairPlugin):
         self.__setup(ctrl, self.sessionProvider.isReplayPlaying)
         ctrl.onGunSettingsSet += self.__onGunSettingsSet
         ctrl.onGunReloadTimeSet += self.__onGunReloadTimeSet
+        ctrl.onShellsCleared += self.__onGunReloadCleared
         ctrl.onGunAutoReloadTimeSet += self.__onGunAutoReloadTimeSet
         ctrl.onGunAutoReloadBoostUpdated += self.__onGunAutoReloadBoostUpd
         ctrl.onShellsUpdated += self.__onShellsUpdated
@@ -467,6 +468,7 @@ class AmmoPlugin(CrosshairPlugin):
             ctrl.onGunAutoReloadTimeSet -= self.__onGunAutoReloadTimeSet
             ctrl.onGunAutoReloadBoostUpdated -= self.__onGunAutoReloadBoostUpd
             ctrl.onGunReloadTimeSet -= self.__onGunReloadTimeSet
+            ctrl.onShellsCleared -= self.__onGunReloadCleared
             ctrl.onShellsUpdated -= self.__onShellsUpdated
             ctrl.onCurrentShellChanged -= self.__onCurrentShellChanged
             ctrl.onCurrentShellReset -= self.__onCurrentShellReset
@@ -510,6 +512,9 @@ class AmmoPlugin(CrosshairPlugin):
         guiSettings = _createAmmoSettings(gunSettings)
         self.__guiSettings = guiSettings
         self._parentObj.as_setClipParamsS(guiSettings.getClipCapacity(), guiSettings.getBurstSize(), guiSettings.hasAutoReload)
+
+    def __onGunReloadCleared(self, state):
+        self.__setReloadingState(state)
 
     def __onGunReloadTimeSet(self, _, state, skipAutoLoader):
         self.__setReloadingState(state)

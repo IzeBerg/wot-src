@@ -7,7 +7,9 @@ package net.wg.data.constants.generated
       
       public static const TURBOSHAFT_ENGINE_TYPE:String = "turboshaftEngineType";
       
-      public static const SIEGE_MODE_TYPES:Array = [HYDRAULIC_CHASSIS_TYPE,TURBOSHAFT_ENGINE_TYPE];
+      public static const TRACK_WITHIN_TRACK_TYPE:String = "trackWithinTrackType";
+      
+      public static const SIEGE_MODE_TYPES:Array = [HYDRAULIC_CHASSIS_TYPE,TURBOSHAFT_ENGINE_TYPE,TRACK_WITHIN_TRACK_TYPE];
        
       
       public function SIEGE_MODE_CONSTS()

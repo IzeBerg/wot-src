@@ -5,7 +5,6 @@ package net.wg.gui.lobby.gamma
    import flash.events.MouseEvent;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
-   import net.wg.data.constants.generated.LAYER_NAMES;
    import net.wg.gui.components.controls.Slider;
    import net.wg.gui.interfaces.ISoundButtonEx;
    import net.wg.infrastructure.base.meta.IGammaWizardViewMeta;
@@ -16,8 +15,6 @@ package net.wg.gui.lobby.gamma
    
    public class GammaWizardView extends GammaWizardViewMeta implements IGammaWizardViewMeta
    {
-      
-      private static const excludeContainers:Vector.<int> = Vector.<int>([LAYER_NAMES.LAYER_ORDER.indexOf(LAYER_NAMES.FULLSCREEN_WINDOWS),LAYER_NAMES.LAYER_ORDER.indexOf(LAYER_NAMES.CURSOR),LAYER_NAMES.LAYER_ORDER.indexOf(LAYER_NAMES.WAITING),LAYER_NAMES.LAYER_ORDER.indexOf(LAYER_NAMES.SERVICE_LAYOUT)]);
       
       private static const SHINE_STATE_SMALL:String = "small";
       
@@ -94,8 +91,6 @@ package net.wg.gui.lobby.gamma
       override protected function onPopulate() : void
       {
          super.onPopulate();
-         App.containerMgr.storeVisibleContainers();
-         App.containerMgr.setVisibleContainers(false,excludeContainers);
          var _loc1_:int = this.getTextureSize();
          var _loc2_:int = width - _loc1_ >> 1;
          this._textureY = this.title.y + this.title.height + TEXTURE_OFFSET;
@@ -149,7 +144,6 @@ package net.wg.gui.lobby.gamma
       
       override protected function onDispose() : void
       {
-         App.containerMgr.setVisibleContainers(true,excludeContainers);
          this.title = null;
          this.description = null;
          this._applyButton.removeEventListener(ButtonEvent.CLICK,this.onApplyButtonClickHandler);

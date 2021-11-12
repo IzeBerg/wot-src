@@ -32,7 +32,8 @@ from gui.Scaleform.genConsts.STORAGE_CONSTANTS import STORAGE_CONSTANTS
 from gui.game_control.links import URLMacros
 from gui.impl import backport
 from gui.impl.gen import R
-from gui.impl.lobby.account_completion.decorators import waitShowOverlay
+from gui.impl.lobby.account_completion.utils.common import AccountCompletionType
+from gui.impl.lobby.account_completion.utils.decorators import waitShowOverlay
 from gui.impl.lobby.common.congrats.common_congrats_view import CongratsWindow
 from gui.impl.lobby.maps_training.maps_training_queue_view import MapsTrainingQueueView
 from gui.impl.lobby.tank_setup.dialogs.confirm_dialog import TankSetupConfirmDialog, TankSetupExitConfirmDialog
@@ -106,6 +107,10 @@ def showRankedAwardWindow(awardsSequence, rankedInfo, notificationMgr=None):
 
 def showRankedPrimeTimeWindow():
     g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(RANKEDBATTLES_ALIASES.RANKED_BATTLE_PRIME_TIME), ctx={}), EVENT_BUS_SCOPE.LOBBY)
+
+
+def showRankedBattleIntro():
+    g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(RANKEDBATTLES_ALIASES.RANKED_BATTLES_INTRO_ALIAS)), scope=EVENT_BUS_SCOPE.LOBBY)
 
 
 def showEpicBattlesPrimeTimeWindow():
@@ -321,7 +326,9 @@ def showBattleBoosterSellDialog(battleBoosterIntCD):
 
 @async
 def showPlatoonResourceDialog(resources, callback):
-    result = yield await(showResSimpleDialog(resources, None, ''))
+    app = dependency.instance(IAppLoader).getApp()
+    parent = app.containerManager.getViewByKey(ViewKey(VIEW_ALIAS.LOBBY)) if app is not None else None
+    result = yield await(showResSimpleDialog(resources, None, '', parent))
     if result:
         callback(result)
     return
@@ -899,26 +906,26 @@ def showPreformattedDialog(preset, title, message, buttons, focusedButton, btnDo
 
 
 @async
-def showResSimpleDialog(resources, icon, formattedMessage):
+def showResSimpleDialog(resources, icon, formattedMessage, parent=None):
     from gui.impl.dialogs import dialogs
     from gui.impl.dialogs.builders import ResSimpleDialogBuilder
     builder = ResSimpleDialogBuilder()
     builder.setMessagesAndButtons(resources)
     builder.setIcon(icon)
     builder.setFormattedMessage(formattedMessage)
-    result = yield await(dialogs.showSimple(builder.build()))
+    result = yield await(dialogs.showSimple(builder.build(parent)))
     raise AsyncReturn(result)
 
 
 @async
-def showDynamicButtonInfoDialogBuilder(resources, icon, formattedMessage):
+def showDynamicButtonInfoDialogBuilder(resources, icon, formattedMessage, parent=None):
     from gui.impl.dialogs import dialogs
     from gui.impl.dialogs.builders import InfoDialogBuilder
     builder = InfoDialogBuilder()
     builder.setMessagesAndButtons(resources, resources)
     builder.setIcon(icon)
     builder.setFormattedMessage(formattedMessage)
-    result = yield await(dialogs.showSimple(builder.build()))
+    result = yield await(dialogs.showSimple(builder.build(parent)))
     raise AsyncReturn(result)
 
 
@@ -1271,21 +1278,91 @@ def showMapboxRewardChoice(selectableCrewbook):
 
 
 @waitShowOverlay
-def showAddEmailOverlay(initialEmail='', fadeAnimation=False):
-    if isViewLoaded(R.views.lobby.account_completion.EmailConfirmationCurtainView()):
-        return
-    from gui.impl.lobby.account_completion.add_email_overlay_view import AddEmailOverlayWindow
-    wnd = AddEmailOverlayWindow(initialEmail, fadeAnimation)
-    wnd.load()
+def showSteamAddEmailOverlay(initialEmail='', onClose=None):
+    from gui.impl.lobby.account_completion.steam_add_email_overlay_view import SteamAddEmailOverlayView
+    from gui.impl.lobby.account_completion.curtain.curtain_view import CurtainWindow
+    wnd = CurtainWindow.getInstance()
+    wnd.setSubView(SteamAddEmailOverlayView, initialEmail=initialEmail, onClose=onClose)
 
 
 @waitShowOverlay
-def showConfirmEmailOverlay(email='', fadeAnimation=False):
-    if isViewLoaded(R.views.lobby.account_completion.EmailActivateCurtainView()):
-        return
-    from gui.impl.lobby.account_completion.confirm_email_overlay_view import ConfirmEmailOverlayWindow
-    wnd = ConfirmEmailOverlayWindow(email, fadeAnimation)
-    wnd.load()
+def showDemoAddCredentialsOverlay(initialEmail='', emailError='', onClose=None):
+    from gui.impl.lobby.account_completion.demo_add_credentials_overlay_view import DemoAddCredentialsOverlayView
+    from gui.impl.lobby.account_completion.curtain.curtain_view import CurtainWindow
+    wnd = CurtainWindow.getInstance()
+    wnd.setSubView(DemoAddCredentialsOverlayView, initialEmail=initialEmail, emailError=emailError, onClose=onClose)
+
+
+@waitShowOverlay
+def showSteamConfirmEmailOverlay(email='', onClose=None):
+    from gui.impl.lobby.account_completion.steam_confirm_email_overlay_view import SteamConfirmEmailOverlayView
+    from gui.impl.lobby.account_completion.curtain.curtain_view import CurtainWindow
+    wnd = CurtainWindow.getInstance()
+    wnd.setSubView(SteamConfirmEmailOverlayView, email=email, onClose=onClose)
+
+
+@waitShowOverlay
+def showDemoRenamingUnavailableOverlay(onClose=None):
+    from gui.impl.lobby.account_completion.curtain.curtain_view import CurtainWindow
+    wnd = CurtainWindow.getInstance()
+    from gui.impl.lobby.account_completion.demo_renaming_unavailable_overlay_view import DemoRenamingUnavailableOverlayView
+    wnd.setSubView(DemoRenamingUnavailableOverlayView, onClose=onClose)
+
+
+@waitShowOverlay
+def showDemoConfirmCredentialsOverlay(email='', onClose=None):
+    from gui.impl.lobby.account_completion.demo_confirm_credentials_overlay_view import DemoConfirmCredentialsOverlayView
+    from gui.impl.lobby.account_completion.curtain.curtain_view import CurtainWindow
+    wnd = CurtainWindow.getInstance()
+    wnd.setSubView(DemoConfirmCredentialsOverlayView, email=email, onClose=onClose)
+
+
+@waitShowOverlay
+def showDemoWaitingForTokenOverlayViewOverlay(completionType=AccountCompletionType.UNDEFINED, onClose=None):
+    from gui.impl.lobby.account_completion.demo_waiting_for_token_overlay_view import DemoWaitingForTokenOverlayView
+    from gui.impl.lobby.account_completion.curtain.curtain_view import CurtainWindow
+    wnd = CurtainWindow.getInstance()
+    wnd.setSubView(DemoWaitingForTokenOverlayView, completionType=completionType, onClose=onClose)
+
+
+@waitShowOverlay
+def showDemoCompleteOverlay(completionType=AccountCompletionType.UNDEFINED, onClose=None):
+    from gui.impl.lobby.account_completion.demo_complete_overlay_view import DemoCompleteOverlayView
+    from gui.impl.lobby.account_completion.curtain.curtain_view import CurtainWindow
+    wnd = CurtainWindow.getInstance()
+    wnd.setSubView(DemoCompleteOverlayView, completionType=completionType, onClose=onClose)
+
+
+@waitShowOverlay
+def showDemoErrorOverlay(onClose=None):
+    from gui.impl.lobby.account_completion.demo_error_overlay_view import DemoErrorOverlayView
+    from gui.impl.lobby.account_completion.curtain.curtain_view import CurtainWindow
+    wnd = CurtainWindow.getInstance()
+    wnd.setSubView(DemoErrorOverlayView, onClose=onClose)
+
+
+@waitShowOverlay
+def showDemoAccRenamingOverlay(onClose=None):
+    from gui.impl.lobby.account_completion.demo_renaming_overlay_view import DemoRenamingOverlayView
+    from gui.impl.lobby.account_completion.curtain.curtain_view import CurtainWindow
+    wnd = CurtainWindow.getInstance()
+    wnd.setSubView(DemoRenamingOverlayView, onClose=onClose)
+
+
+@waitShowOverlay
+def showDemoAccRenamingCompleteOverlay(name, onClose=None):
+    from gui.impl.lobby.account_completion.demo_renaming_complete_overlay_view import DemoRenamingCompleteOverlayView
+    from gui.impl.lobby.account_completion.curtain.curtain_view import CurtainWindow
+    wnd = CurtainWindow.getInstance()
+    wnd.setSubView(DemoRenamingCompleteOverlayView, name=name, onClose=onClose)
+
+
+@waitShowOverlay
+def showContactSupportOverlay(message, isCloseVisible=True, onClose=None):
+    from gui.impl.lobby.account_completion.contact_support_overlay_view import ContactSupportOverlayView
+    from gui.impl.lobby.account_completion.curtain.curtain_view import CurtainWindow
+    wnd = CurtainWindow.getInstance()
+    wnd.setSubView(ContactSupportOverlayView, message=message, isCloseVisible=isCloseVisible, onClose=onClose)
 
 
 def showModeSelectorWindow(isEventEnabled, provider=None):

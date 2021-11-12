@@ -1,6 +1,6 @@
 import logging, math, random, weakref
 from collections import namedtuple
-import BigWorld, Math, WoT, AreaDestructibles, ArenaType, BattleReplay, DestructiblesCache, TriggersManager, constants, physics_shared
+import BigWorld, Math, Health, WoT, AreaDestructibles, ArenaType, BattleReplay, DestructiblesCache, TriggersManager, constants, physics_shared
 from account_helpers.settings_core.settings_constants import GAME
 from TriggersManager import TRIGGER_TYPE
 from VehicleEffects import DamageFromShotDecoder
@@ -165,7 +165,7 @@ class Vehicle(BigWorld.Entity, BattleAbilitiesComponent):
         return
 
     def reload(self):
-        _logger.info('reload(%d)', self.id)
+        _logger.debug('reload(%d)', self.id)
         vehicles.reload()
         Vehicle.respawnVehicle(self.id, self.publicInfo.compDescr)
 
@@ -173,7 +173,7 @@ class Vehicle(BigWorld.Entity, BattleAbilitiesComponent):
         global _g_respawnQueue
         pair = _g_respawnQueue.pop(self.id, None)
         if pair is not None:
-            _logger.info('found delayed respawn request(%d)', self.id)
+            _logger.debug('found delayed respawn request(%d)', self.id)
             self.respawnCompactDescr = pair[0]
             self.respawnOutfitCompactDescr = pair[1]
             return True
@@ -181,7 +181,7 @@ class Vehicle(BigWorld.Entity, BattleAbilitiesComponent):
             return False
 
     def onEnterWorld(self, _=None):
-        _logger.info('onEnterWorld(%d)', self.id)
+        _logger.debug('onEnterWorld(%d)', self.id)
         isDelayedRespawn = self.__checkDelayedRespawn()
         if self.respawnOutfitCompactDescr is not None:
             outfitDescr = self.respawnOutfitCompactDescr
@@ -217,7 +217,7 @@ class Vehicle(BigWorld.Entity, BattleAbilitiesComponent):
 
     @staticmethod
     def respawnVehicle(vID, compactDescr=None, outfitCompactDescr=None):
-        _logger.info('respawnVehicle(%d)', vID)
+        _logger.debug('respawnVehicle(%d)', vID)
         vehicle = BigWorld.entities.get(vID)
         if vehicle is not None:
             vehicle.respawnCompactDescr = compactDescr
@@ -226,7 +226,7 @@ class Vehicle(BigWorld.Entity, BattleAbilitiesComponent):
             vehicle.onLeaveWorld()
             vehicle.onEnterWorld()
         else:
-            _logger.info('Delayed respawn %d', vID)
+            _logger.debug('Delayed respawn %d', vID)
             _g_respawnQueue[vID] = [compactDescr, outfitCompactDescr]
         return
 
@@ -260,13 +260,13 @@ class Vehicle(BigWorld.Entity, BattleAbilitiesComponent):
         if self.id != vehID:
             _logger.error('__onVehicleInfoAdded(): Received unexpected vehicle id %d. Waiting for %d', vehID, self.id)
             return
-        _logger.info('__onVehicleInfoAdded(%d)', self.id)
+        _logger.debug('__onVehicleInfoAdded(%d)', self.id)
         player = BigWorld.player()
         player.arena.onVehicleAdded -= self.__onVehicleInfoAdded
         self.appearance.setVehicleInfo(player.arena.vehicles[vehID])
 
     def onLeaveWorld(self):
-        _logger.info('onLeaveWorld %d', self.id)
+        _logger.debug('onLeaveWorld %d', self.id)
         self.__appearanceCache.stopLoading(self.id)
         self.__stopExtras()
         BigWorld.player().vehicle_onLeaveWorld(self)
@@ -457,7 +457,6 @@ class Vehicle(BigWorld.Entity, BattleAbilitiesComponent):
             return
 
     def set_damageStickers(self, _=None):
-        _logger.info('set_damageStickers(%d)', self.id)
         if self.isStarted:
             prev = self.__prevDamageStickers
             curr = frozenset(self.damageStickers)
@@ -619,7 +618,6 @@ class Vehicle(BigWorld.Entity, BattleAbilitiesComponent):
         return
 
     def onHealthChanged(self, newHealth, oldHealth, attackerID, attackReasonID):
-        _logger.info('onHealthChanged(%d): old=%s, new=%s', self.id, oldHealth, newHealth)
         if newHealth > 0 and self.health <= 0:
             self.health = newHealth
             self.__prevHealth = newHealth
@@ -648,7 +646,12 @@ class Vehicle(BigWorld.Entity, BattleAbilitiesComponent):
 
     def set_stunInfo(self, prev=None):
         _logger.debug('Set stun info(curr,~ prev): %s, %s', self.stunInfo, prev)
+        if self.stunInfo > 0.0 and self.appearance.findComponentByType(Health.StunComponent) is None:
+            self.appearance.createComponent(Health.StunComponent)
+        if self.stunInfo < 0.01:
+            self.appearance.removeComponentByType(Health.StunComponent)
         self.updateStunInfo()
+        return
 
     def __updateCachedStunInfo(self, endTime):
         if endTime:
@@ -810,7 +813,7 @@ class Vehicle(BigWorld.Entity, BattleAbilitiesComponent):
         return decodeGunAngles(self.gunAnglesPacked, self.typeDescriptor.gun.pitchLimits['absolute'])
 
     def startVisual(self):
-        _logger.info('startVisual(%d)', self.id)
+        _logger.debug('startVisual(%d)', self.id)
         if not self.appearance.isConstructed:
             _logger.warning('Vehicle appearance is not constructed')
             return
@@ -877,7 +880,7 @@ class Vehicle(BigWorld.Entity, BattleAbilitiesComponent):
             self.__specialSounds.setPlayerVehicle(self.publicInfo, True)
 
     def stopVisual(self):
-        _logger.info('Vehicle.stopVisual(%d)', self.id)
+        _logger.debug('Vehicle.stopVisual(%d)', self.id)
         if not self.isStarted:
             raise SoftException('Vehicle is already stopped')
         self.__stopExtras()
@@ -1014,7 +1017,6 @@ class Vehicle(BigWorld.Entity, BattleAbilitiesComponent):
                 _logger.exception('Update modifiers')
 
     def __onVehicleDeath(self, isDeadStarted=False):
-        _logger.info('__onVehicleDeath(%d)', self.id)
         if not self.isPlayerVehicle:
             ctrl = self.guiSessionProvider.shared.feedback
             if ctrl is not None:
@@ -1029,9 +1031,10 @@ class Vehicle(BigWorld.Entity, BattleAbilitiesComponent):
 
     def confirmTurretDetachment(self):
         self.__turretDetachmentConfirmed = True
-        if not self.isTurretDetached:
+        if self.isTurretDetached:
+            self.appearance.updateTurretVisibility()
+        else:
             _logger.error('Vehicle::confirmTurretDetachment: Confirming turret detachment, though the turret is not detached')
-        self.appearance.updateTurretVisibility()
 
     def updateLaserSight(self, vehicleID, isTakesAim, beamMode):
         if self.id == vehicleID and not self.isPlayerVehicle:
@@ -1049,14 +1052,12 @@ class Vehicle(BigWorld.Entity, BattleAbilitiesComponent):
             self.appearance.highlighter.highlight(False, forceSimpleEdge)
 
     def addModel(self, model):
-        _logger.info('Vehicle::addModel(%d)', self.id)
         super(Vehicle, self).addModel(model)
         highlighter = self.appearance.highlighter
         if highlighter.isOn:
             highlighter.highlight(True)
 
     def delModel(self, model):
-        _logger.info('Vehicle::delModel(%d)', self.id)
         highlighter = self.appearance.highlighter
         hlOn = highlighter.isOn
         hlSimpleEdge = highlighter.isSimpleEdge
@@ -1133,9 +1134,6 @@ class Vehicle(BigWorld.Entity, BattleAbilitiesComponent):
         self.set_wheelsState()
         if hasattr(self, 'ownVehicle'):
             self.ownVehicle.initialUpdate(True)
-
-    def __repr__(self):
-        return str(self.id)
 
 
 @dependency.replace_none_kwargs(lobbyContext=ILobbyContext)

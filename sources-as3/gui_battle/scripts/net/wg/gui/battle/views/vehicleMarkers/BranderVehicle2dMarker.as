@@ -306,11 +306,6 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.updateMarkerSettings();
       }
       
-      public function stopActionMarker() : void
-      {
-         this.actionMarker.stopAction();
-      }
-      
       public function setVehicleInfo(param1:String, param2:String, param3:String, param4:int, param5:String, param6:String, param7:String, param8:String, param9:int, param10:String, param11:Boolean, param12:int, param13:String) : void
       {
          var _loc14_:int = 0;
@@ -372,6 +367,11 @@ package net.wg.gui.battle.views.vehicleMarkers
       {
          this.statusContainer.showMarker(param1,param2,param3,param4,param5,param6,param7);
          this.updateMarkerSettings();
+      }
+      
+      public function stopActionMarker() : void
+      {
+         this.actionMarker.stopAction();
       }
       
       public function update() : void
@@ -615,11 +615,6 @@ package net.wg.gui.battle.views.vehicleMarkers
          return _loc2_;
       }
       
-      private function get isObserver() : Boolean
-      {
-         return this._markerSchemeName.indexOf(OBSERVER_SCHEME_NAME) != -1;
-      }
-      
       private function getDamageColor(param1:int) : String
       {
          var _loc2_:String = VehicleMarkerFlags.DAMAGE_FROM[param1];
@@ -637,7 +632,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private function setHealthText() : void
       {
-         var _loc1_:String = Values.EMPTY_STR;
+         var _loc1_:String = null;
          var _loc2_:int = this.markerSettings[MARKER + (!!this.exInfo ? ALT : BASE) + HEALTH_LBL];
          switch(_loc2_)
          {
@@ -717,6 +712,11 @@ package net.wg.gui.battle.views.vehicleMarkers
       public function set entityType(param1:String) : void
       {
          this._entityType = param1;
+      }
+      
+      private function get isObserver() : Boolean
+      {
+         return this._markerSchemeName.indexOf(OBSERVER_SCHEME_NAME) != -1;
       }
       
       private function onShowExInfoHandler(param1:VehicleMarkersManagerEvent) : void

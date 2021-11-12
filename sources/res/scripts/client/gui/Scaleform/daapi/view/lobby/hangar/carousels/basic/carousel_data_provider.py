@@ -37,16 +37,28 @@ class HangarCarouselDataProvider(CarouselDataProvider):
         self._supplyItems = []
         self._emptySlotsCount = 0
         self._restorableVehiclesCount = 0
+        self._wotPlusInfo = None
+        return
+
+    def _populate(self):
         self._wotPlusInfo = BigWorld.player().renewableSubscription
         self._wotPlusInfo.onRenewableSubscriptionDataChanged += self._onWotPlusDataChanged
+        self._wotPlusInfo.onPendingRentChanged += self._onWotPlusPendingRentChanged
+        super(HangarCarouselDataProvider, self)._populate()
 
     def _dispose(self):
         self._wotPlusInfo.onRenewableSubscriptionDataChanged -= self._onWotPlusDataChanged
+        self._wotPlusInfo.onPendingRentChanged -= self._onWotPlusPendingRentChanged
         super(HangarCarouselDataProvider, self)._dispose()
 
     def _onWotPlusDataChanged(self, diff):
         if 'isEnabled' in diff:
             self.buildList()
+
+    def _onWotPlusPendingRentChanged(self, vehCD):
+        if vehCD is not None:
+            self.buildList()
+        return
 
     @property
     def collection(self):
@@ -63,10 +75,13 @@ class HangarCarouselDataProvider(CarouselDataProvider):
         if vehiclesCDs:
             filterCriteria |= REQ_CRITERIA.IN_CD_LIST(vehiclesCDs)
         criteria = self._baseCriteria | filterCriteria | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP | REQ_CRITERIA.VEHICLE.WOTPLUS_RENT
-        newWotPlusVehicles = self._itemsCache.items.getVehicles(criteria)
-        isVehicleRemoved = not set(vehiclesCDs or ()).issubset(newWotPlusVehicles.viewkeys())
+        newWotPlusVehicles = self._itemsCache.items.getVehicles(criteria).viewkeys()
+        isVehicleRemoved = not set(vehiclesCDs or ()).issubset(newWotPlusVehicles)
         isVehicleAdded = not set(vehiclesCDs or ()).issubset(self._wotPlusVehicles)
         if changeInWotPlus or isVehicleRemoved or isVehicleAdded:
+            rentPendingVehCD = self._wotPlusInfo.getRentPending()
+            if isVehicleAdded and rentPendingVehCD in newWotPlusVehicles:
+                self._wotPlusInfo.resetRentPending()
             self.buildList()
             return
         super(HangarCarouselDataProvider, self).updateVehicles(vehiclesCDs, filterCriteria, forceUpdate)
@@ -191,7 +206,8 @@ class HangarCarouselDataProvider(CarouselDataProvider):
     def _isWotPlusRentEnabled(self):
         hasWotPlusActive = self._wotPlusInfo.isEnabled()
         isRentalEnabled = self._serverSettings.isWotPlusTankRentalEnabled()
-        return hasWotPlusActive and isRentalEnabled
+        isNotRentPending = self._wotPlusInfo.getRentPending() is None
+        return hasWotPlusActive and isRentalEnabled and isNotRentPending
 
 
 class BCCarouselDataProvider(CarouselDataProvider):

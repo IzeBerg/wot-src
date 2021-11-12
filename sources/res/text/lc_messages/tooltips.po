@@ -147,6 +147,14 @@ msgstr ""
 msgid "XP/header"
 msgstr "Опыт"
 
+msgid "accountCompletion/credentials/subtitle/body"
+msgstr ""
+"Полученные награды вы сможете найти среди своего имущества после завершения "
+"регистрации."
+
+msgid "accountCompletion/credentials/subtitle/header"
+msgstr "Ваши награды"
+
 msgid "accountCompletion/email/titleTooltip"
 msgstr ""
 "Без подтверждённой почты могут быть недоступны следующие возможности:\n"
@@ -1339,10 +1347,10 @@ msgstr "Увеличение скидки на товары из раздела 
 msgid "awardItem/ranked_2020_discount/header"
 msgstr "Увеличение скидки"
 
-msgid "awardItem/ranked_202109_access/body"
+msgid "awardItem/ranked_202201_access/body"
 msgstr "Вы сможете купить товары из раздела «Товары Ранговых боёв»."
 
-msgid "awardItem/ranked_202109_access/header"
+msgid "awardItem/ranked_202201_access/header"
 msgstr "Доступ к покупке"
 
 msgid "awardItem/slots/body"
@@ -1941,6 +1949,9 @@ msgstr ""
 msgid "battleTypes/ranked/rank/conditions/first"
 msgstr "Для получения необходимо заработать шевронов: %(stepsNumber)s"
 
+msgid "battleTypes/ranked/rank/conditions/qualification"
+msgstr "Для прохождения квалификации проведите %(count)s боёв."
+
 msgid "battleTypes/ranked/rank/isFirstInDivision"
 msgstr ""
 "Это первый ранг, при его потере игрок не вернётся в предыдущий дивизион."
@@ -1959,6 +1970,9 @@ msgstr ""
 msgid "battleTypes/ranked/rank/name"
 msgstr "Ранг %(rank)s"
 
+msgid "battleTypes/ranked/rank/qualificationReward"
+msgstr "Награда за бои (количество %(count)s)"
+
 msgid "battleTypes/ranked/rank/reward"
 msgstr "Награда:"
 
@@ -1968,8 +1982,14 @@ msgstr "Ранг потерян"
 msgid "battleTypes/ranked/rank/status/notearned"
 msgstr "Ранг не получен"
 
+msgid "battleTypes/ranked/rank/status/qualificationNotEarned"
+msgstr "Квалификация не пройдена"
+
 msgid "battleTypes/ranked/rank/status/received"
 msgstr "Ранг получен"
+
+msgid "battleTypes/ranked/rank/status/receivedQualification"
+msgstr "Квалификация пройдена"
 
 msgid "battleTypes/ranked/shieldBreaked"
 msgstr ""
@@ -3511,6 +3531,25 @@ msgstr ""
 
 msgid "cyberSport/waitingPlayers/configAlert/header"
 msgstr "Настройки требований не учитываются"
+
+msgid "demoAccountRenaming/notAvailable/body"
+msgstr ""
+"Вы сможете сменить имя в игре, выбрав «Случайный бой» в меню выбора режима "
+"боя."
+
+msgid "demoAccountRenaming/notAvailable/header"
+msgstr "Смена имени недоступна"
+
+msgid "demoAccountRenamingHangar/holder"
+msgstr "Ваше имя обновляется. Смена может занять некоторое время."
+
+msgid "demoAccountRenamingHangar/text"
+msgstr ""
+"Нажмите, чтобы посмотреть подробную информацию об\n"
+"аккаунте игрока."
+
+msgid "demoAccountRenamingHangar/title"
+msgstr "Аккаунт игрока"
 
 msgid "demonstrator/platoonWarning/body"
 msgstr ""
@@ -6875,6 +6914,16 @@ msgstr ""
 msgid "notrecruitedtankman/ch_compensation/label"
 msgstr "Уникальный член экипажа"
 
+msgid "notrecruitedtankman/commander_bjornson/desc"
+msgstr ""
+"Его предки захватывали города, покоряли континенты и наводили ужас на врага."
+" Он — плоть и кровь великих воинов, не знавших страха смерти. В его руках "
+"теперь не щит с мечом, но, как и его предки, он знает толк в военном "
+"ремесле."
+
+msgid "notrecruitedtankman/commander_bjornson/label"
+msgstr "Уникальный командир"
+
 msgid "notrecruitedtankman/commander_bp1/desc"
 msgstr ""
 "Исключительно темпераментный военный со сложным импульсивным характером, "
@@ -7028,6 +7077,59 @@ msgstr ""
 "У этого члена экипажа достаточно опыта для изучения трёх навыков или умений на выбор."
 
 msgid "notrecruitedtankman/hw19_commanders/label"
+msgstr "Для всех режимов игры"
+
+msgid "notrecruitedtankman/hw21_commander1/desc"
+msgstr ""
+"Немногие смогут похвастаться таким послужным списком и подобным количеством "
+"наград. Однако сослуживцы отмечают, что он очень неоднозначный военный. С "
+"одной стороны — профессионал высочайшего уровня, с другой — тяжёлый в "
+"общении человек, чьи методы порой вызывают оторопь, хоть и являются "
+"результативными."
+
+msgid "notrecruitedtankman/hw21_commander1/howToGetInfo"
+msgstr "За участие в событии «Мирный: Надежда»."
+
+msgid "notrecruitedtankman/hw21_commander1/label"
+msgstr "Для всех режимов игры"
+
+msgid "notrecruitedtankman/hw21_commander2/desc"
+msgstr ""
+"За годы службы в танковых войсках превратился в закалённого ветерана, "
+"которым наверняка гордились бы его славные предки. В обучении прежде всего "
+"опирается на свой богатый опыт, а не на сухие параграфы учебников."
+
+msgid "notrecruitedtankman/hw21_commander2/howToGetInfo"
+msgstr "За участие в событии «Мирный: Надежда»."
+
+msgid "notrecruitedtankman/hw21_commander2/label"
+msgstr "Для всех режимов игры"
+
+msgid "notrecruitedtankman/hw21_commander4/desc"
+msgstr ""
+"Пройдя множество горячих точек, он умудрился не растерять ни доброты, ни "
+"присущего ему чувства юмора, и остаться отцом для молодых солдат. Смекалка, "
+"интуиция и чувство долга нередко помогали ему выбраться из, казалось бы, "
+"безвыходных ситуаций, и сейчас Лопахин бережно делится своими знаниями с "
+"курсантами."
+
+msgid "notrecruitedtankman/hw21_commander4/howToGetInfo"
+msgstr "За участие в событии «Мирный: Надежда»."
+
+msgid "notrecruitedtankman/hw21_commander4/label"
+msgstr "Для всех режимов игры"
+
+msgid "notrecruitedtankman/hw21_commander5/desc"
+msgstr ""
+"Очень ценный специалист, за спиной которого огромное количество танковых "
+"сражений с различными противниками. Незаменим при обучении новых кадров. "
+"Считает лучшей наградой для военного не очередную правительственную медаль, "
+"а успешное выполнение поставленной задачи с минимальными потерями."
+
+msgid "notrecruitedtankman/hw21_commander5/howToGetInfo"
+msgstr "За участие в событии «Мирный: Надежда»."
+
+msgid "notrecruitedtankman/hw21_commander5/label"
 msgstr "Для всех режимов игры"
 
 msgid "notrecruitedtankman/ny19men/desc"
@@ -7418,6 +7520,90 @@ msgstr "Уникальный член экипажа"
 
 msgid "notrecruitedtankman/useBefore"
 msgstr "Доступно до: %(date)s"
+
+msgid "notrecruitedtankman/wt2021_boss/desc"
+msgstr ""
+"Выдающийся немецкий инженер, конструктор передового вооружения и защитных "
+"систем, основанных на добыче электричества и взятии его под полный контроль."
+" Один из пионеров робототехники, считающий, что в современных конфликтах "
+"основную нагрузку должны брать машины, нежели их операторы."
+
+msgid "notrecruitedtankman/wt2021_boss/label"
+msgstr "Возвращение Ваффентрагера"
+
+msgid "notrecruitedtankman/wt2021_hunter_1/desc"
+msgstr ""
+"Опытный танкист и механик, прекрасно разбирающийся в предоставленном "
+"Альянсом оборудовании. Формально считается руководителем операции, но при "
+"этом себя не выделяет, считает, что успех зависит от общей слаженности "
+"действий и личной инициативы каждого в отряде. Уверен, что удачная и "
+"своевременная импровизация спасёт любое положение, даже если что-то идёт не "
+"по плану."
+
+msgid "notrecruitedtankman/wt2021_hunter_1/label"
+msgstr "Возвращение Ваффентрагера"
+
+msgid "notrecruitedtankman/wt2021_hunter_2/desc"
+msgstr ""
+"Выпускница «Эн-Кейв» — особого учебно-боевого отдела Альянса, в чьи "
+"полномочия входит поиск и захват (или возврат) ценных технологий с целью их "
+"дальнейшего изучения уже под крылом организации. Весьма уважительно "
+"относится к деятельности фон Кригера, однако полагает, что и ему, и его "
+"технологиям место в стенах лабораторий Альянса."
+
+msgid "notrecruitedtankman/wt2021_hunter_2/label"
+msgstr "Возвращение Ваффентрагера"
+
+msgid "notrecruitedtankman/wt2021_hunter_3/desc"
+msgstr ""
+"Настоящее имя и биография неизвестны. Национальная принадлежность также "
+"только предположительна. Очевидно, что Альянс не подпишет на столь "
+"ответственную операцию кого попало, однако то, что личность этого танкиста "
+"не раскрыта даже его отряду, вызывает множественные подозрения и домыслы."
+
+msgid "notrecruitedtankman/wt2021_hunter_3/label"
+msgstr "Возвращение Ваффентрагера"
+
+msgid "notrecruitedtankman/yha_commander/desc"
+msgstr ""
+"Капитан этого разностороннего танкового экипажа. Опора команды, спокойный и "
+"с чувством юмора. Способен принимать правильные решения в пылу сражения."
+
+msgid "notrecruitedtankman/yha_commander/label"
+msgstr "Уникальный член экипажа"
+
+msgid "notrecruitedtankman/yha_driver/desc"
+msgstr ""
+"Самый молодой заяц в команде. Недостаток опыта он компенсирует "
+"энергичностью, свойственной всем в этом возрасте. Ему ещё многому нужно "
+"научиться."
+
+msgid "notrecruitedtankman/yha_driver/label"
+msgstr "Уникальный член экипажа"
+
+msgid "notrecruitedtankman/yha_gunner/desc"
+msgstr ""
+"Наводчица. Не делайте поспешных выводов, связанных с её полом! Она ничем не "
+"хуже остальных зайцев во всех отношениях."
+
+msgid "notrecruitedtankman/yha_gunner/label"
+msgstr "Уникальный член экипажа"
+
+msgid "notrecruitedtankman/yha_loader/desc"
+msgstr ""
+"Простой и честный заяц, который любит вкусно поесть. Лично отвечает за "
+"хорошую атмосферу в команде."
+
+msgid "notrecruitedtankman/yha_loader/label"
+msgstr "Уникальный член экипажа"
+
+msgid "notrecruitedtankman/yha_radioman/desc"
+msgstr ""
+"Самый старый заяц в команде. Хоть он уже и достиг среднего возраста, его "
+"кровь всё так же горяча."
+
+msgid "notrecruitedtankman/yha_radioman/label"
+msgstr "Уникальный член экипажа"
 
 msgid "only10Mode/attention"
 msgstr "Работает только при выборе машины X уровня"

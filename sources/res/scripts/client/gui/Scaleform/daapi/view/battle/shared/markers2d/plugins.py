@@ -301,7 +301,7 @@ class ChatCommunicationComponent(IPlugin):
 class VehicleMarkerTargetPlugin(MarkerPlugin, IArenaVehiclesController):
     __slots__ = ('_markers', '_vehicleID', '_showExtendedInfo', '_markersStates', '_clazz',
                  '__markerType', '__markerBaseAimMarker2D', '__markerAltAimMarker2D',
-                 '__arenaDP')
+                 '__arenaDP', '__baseMarker', '__altMarker')
 
     def __init__(self, parentObj, clazz=markers.VehicleTargetMarker):
         super(VehicleMarkerTargetPlugin, self).__init__(parentObj)
@@ -314,6 +314,8 @@ class VehicleMarkerTargetPlugin(MarkerPlugin, IArenaVehiclesController):
         self.__markerBaseAimMarker2D = VehicleMarkerSetting.OPTIONS.getOptionName(VehicleMarkerSetting.OPTIONS.TYPES.BASE, VehicleMarkerSetting.OPTIONS.PARAMS.AIM_MARKER_2D)
         self.__markerAltAimMarker2D = VehicleMarkerSetting.OPTIONS.getOptionName(VehicleMarkerSetting.OPTIONS.TYPES.ALT, VehicleMarkerSetting.OPTIONS.PARAMS.AIM_MARKER_2D)
         self.__arenaDP = None
+        self.__baseMarker = None
+        self.__altMarker = None
         return
 
     def start(self):
@@ -330,7 +332,9 @@ class VehicleMarkerTargetPlugin(MarkerPlugin, IArenaVehiclesController):
         add = g_eventBus.addListener
         add(GameEvent.ADD_AUTO_AIM_MARKER, self.__addAutoAimMarker, scope=settings.SCOPE)
         add(GameEvent.HIDE_AUTO_AIM_MARKER, self._hideAllMarkers, scope=settings.SCOPE)
-        add(GameEvent.SHOW_EXTENDED_INFO, self.__ShowExtendedInfo, scope=settings.SCOPE)
+        add(GameEvent.SHOW_EXTENDED_INFO, self.__showExtendedInfo, scope=settings.SCOPE)
+        self.__baseMarker = self.settingsCore.getSetting(MARKERS.ENEMY).get(self.__markerBaseAimMarker2D)
+        self.__altMarker = self.settingsCore.getSetting(MARKERS.ENEMY).get(self.__markerAltAimMarker2D)
         self.settingsCore.onSettingsChanged += self.__onSettingsChanged
         return
 
@@ -349,7 +353,9 @@ class VehicleMarkerTargetPlugin(MarkerPlugin, IArenaVehiclesController):
         remove = g_eventBus.removeListener
         remove(GameEvent.ADD_AUTO_AIM_MARKER, self.__addAutoAimMarker, scope=settings.SCOPE)
         remove(GameEvent.HIDE_AUTO_AIM_MARKER, self._hideAllMarkers, scope=settings.SCOPE)
-        remove(GameEvent.SHOW_EXTENDED_INFO, self.__ShowExtendedInfo, scope=settings.SCOPE)
+        remove(GameEvent.SHOW_EXTENDED_INFO, self.__showExtendedInfo, scope=settings.SCOPE)
+        self.__baseMarker = None
+        self.__altMarker = None
         self.settingsCore.onSettingsChanged -= self.__onSettingsChanged
         self.sessionProvider.removeArenaCtrl(self)
         super(VehicleMarkerTargetPlugin, self).stop()
@@ -432,9 +438,9 @@ class VehicleMarkerTargetPlugin(MarkerPlugin, IArenaVehiclesController):
         vehicle = event.ctx.get('vehicle')
         self._vehicleID = vehicle.id if vehicle is not None else None
         if self._showExtendedInfo:
-            if self.settingsCore.getSetting(MARKERS.ENEMY).get(self.__markerAltAimMarker2D):
+            if self.__altMarker:
                 self._addMarker(self._vehicleID)
-        elif self.settingsCore.getSetting(MARKERS.ENEMY).get(self.__markerBaseAimMarker2D):
+        elif self.__baseMarker:
             self._addMarker(self._vehicleID)
         return
 
@@ -449,15 +455,17 @@ class VehicleMarkerTargetPlugin(MarkerPlugin, IArenaVehiclesController):
                 self._addMarker(self._vehicleID)
             elif isMarkerEnabled is False:
                 self._hideAllMarkers(clearVehicleID=False)
+            self.__baseMarker = diff[MARKERS.ENEMY].get(self.__markerBaseAimMarker2D)
+            self.__altMarker = diff[MARKERS.ENEMY].get(self.__markerAltAimMarker2D)
 
-    def __ShowExtendedInfo(self, event):
+    def __showExtendedInfo(self, event):
         isDown = event.ctx['isDown']
         self._showExtendedInfo = isDown if isDown is not None else False
         self._hideAllMarkers(clearVehicleID=False)
         if self._showExtendedInfo:
-            if self.settingsCore.getSetting(MARKERS.ENEMY).get(self.__markerAltAimMarker2D):
+            if self.__altMarker:
                 self._addMarker(self._vehicleID)
-        elif self.settingsCore.getSetting(MARKERS.ENEMY).get(self.__markerBaseAimMarker2D):
+        elif self.__baseMarker:
             self._addMarker(self._vehicleID)
         return
 

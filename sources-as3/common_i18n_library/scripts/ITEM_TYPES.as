@@ -141,6 +141,8 @@ package
       
       public static const TANKMAN_SKILLS_BROTHERHOOD_OFFSPRING:String = "#item_types:tankman/skills/brotherhood_offspring";
       
+      public static const TANKMAN_SKILLS_BROTHERHOOD_YHA:String = "#item_types:tankman/skills/brotherhood_yha";
+      
       public static const TANKMAN_SKILLS_COMMANDER_TUTOR:String = "#item_types:tankman/skills/commander_tutor";
       
       public static const TANKMAN_SKILLS_COMMANDER_TUTOR_DESCR:String = "#item_types:tankman/skills/commander_tutor_descr";

@@ -264,6 +264,7 @@ class ServerSettingsManager(object):
                                                     'bonus': 6, 
                                                     'event': 7, 
                                                     'crystals': 8, 
+                                                    'ranked': 9, 
                                                     'role_HT_assault': 11, 
                                                     'role_HT_break': 12, 
                                                     'role_HT_support': 13, 
@@ -908,7 +909,7 @@ class ServerSettingsManager(object):
     @process
     def _updateToVersion(self, callback=None):
         currentVersion = self.settingsCache.getVersion()
-        data = {'gameData': {}, 'gameExtData': {}, 'gameExtData2': {}, 'gameplayData': {}, 'controlsData': {}, 'aimData': {}, 'markersData': {}, 'graphicsData': {}, 'marksOnGun': {}, 'fallout': {}, 'carousel_filter': {}, 'feedbackDamageIndicator': {}, 'feedbackDamageLog': {}, 'feedbackBattleEvents': {}, 'onceOnlyHints': {}, 'onceOnlyHints2': {}, 'uiStorage': {}, 'epicCarouselFilter2': {}, 'rankedCarouselFilter2': {}, 'sessionStats': {}, 'battleComm': {}, 'dogTags': {}, 'battleHud': {}, 'spgAim': {}, GUI_START_BEHAVIOR: {}, 'battlePassStorage': {}, 'clear': {}, 'delete': []}
+        data = {'gameData': {}, 'gameExtData': {}, 'gameExtData2': {}, 'gameplayData': {}, 'controlsData': {}, 'aimData': {}, 'markersData': {}, 'graphicsData': {}, 'marksOnGun': {}, 'fallout': {}, 'carousel_filter': {}, 'feedbackDamageIndicator': {}, 'feedbackDamageLog': {}, 'feedbackBattleEvents': {}, 'onceOnlyHints': {}, 'onceOnlyHints2': {}, 'uiStorage': {}, 'epicCarouselFilter2': {}, 'rankedCarouselFilter1': {}, 'rankedCarouselFilter2': {}, 'sessionStats': {}, 'battleComm': {}, 'dogTags': {}, 'battleHud': {}, 'spgAim': {}, GUI_START_BEHAVIOR: {}, 'battlePassStorage': {}, 'clear': {}, 'delete': []}
         yield migrateToVersion(currentVersion, self._core, data)
         self._setSettingsSections(data)
         callback(self)
@@ -960,10 +961,14 @@ class ServerSettingsManager(object):
         clearEpicFilterCarousel = clear.get('epicCarouselFilter2', 0)
         if epicFilterCarousel or clearEpicFilterCarousel:
             settings[SETTINGS_SECTIONS.EPICBATTLE_CAROUSEL_FILTER_2] = self._buildSectionSettings(SETTINGS_SECTIONS.EPICBATTLE_CAROUSEL_FILTER_2, epicFilterCarousel) ^ clearEpicFilterCarousel
-        rankedFilterCarousel = data.get('rankedCarouselFilter2', {})
-        clearRankedFilterCarousel = clear.get('rankedCarouselFilter2', 0)
-        if rankedFilterCarousel or clearRankedFilterCarousel:
-            settings[SETTINGS_SECTIONS.RANKED_CAROUSEL_FILTER_2] = self._buildSectionSettings(SETTINGS_SECTIONS.RANKED_CAROUSEL_FILTER_2, rankedFilterCarousel) ^ clearRankedFilterCarousel
+        rankedFilterCarousel1 = data.get('rankedCarouselFilter1', {})
+        clearRankedFilterCarousel1 = clear.get('rankedCarouselFilter1', 0)
+        if rankedFilterCarousel1 or clearRankedFilterCarousel1:
+            settings[SETTINGS_SECTIONS.RANKED_CAROUSEL_FILTER_1] = self._buildSectionSettings(SETTINGS_SECTIONS.RANKED_CAROUSEL_FILTER_1, rankedFilterCarousel1) ^ clearRankedFilterCarousel1
+        rankedFilterCarousel2 = data.get('rankedCarouselFilter2', {})
+        clearRankedFilterCarousel2 = clear.get('rankedCarouselFilter2', 0)
+        if rankedFilterCarousel2 or clearRankedFilterCarousel2:
+            settings[SETTINGS_SECTIONS.RANKED_CAROUSEL_FILTER_2] = self._buildSectionSettings(SETTINGS_SECTIONS.RANKED_CAROUSEL_FILTER_2, rankedFilterCarousel2) ^ clearRankedFilterCarousel2
         feedbackDamageIndicator = data.get('feedbackDamageIndicator', {})
         if feedbackDamageIndicator:
             settings[SETTINGS_SECTIONS.DAMAGE_INDICATOR] = self._buildSectionSettings(SETTINGS_SECTIONS.DAMAGE_INDICATOR, feedbackDamageIndicator)

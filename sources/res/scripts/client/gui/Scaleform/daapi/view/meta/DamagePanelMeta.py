@@ -49,9 +49,9 @@ class DamagePanelMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_updateDeviceState(deviceName, deviceState)
 
-    def as_updateRepairingDeviceS(self, deviceName, percents, seconds, needsHighlightText):
+    def as_updateRepairingDeviceS(self, deviceName, percents, seconds, repairMode):
         if self._isDAAPIInited():
-            return self.flashObject.as_updateRepairingDevice(deviceName, percents, seconds, needsHighlightText)
+            return self.flashObject.as_updateRepairingDevice(deviceName, percents, seconds, repairMode)
 
     def as_setVehicleDestroyedS(self):
         if self._isDAAPIInited():

@@ -37,7 +37,6 @@ class MESSENGER(object):
     LOBBY_USERS_ACTIONS_COPYNAMETOCLIPBOARD = '#messenger:lobby/users/actions/copyNameToClipboard'
     LOBBY_FAQ_TITLE = '#messenger:lobby/faq/title'
     LOBBY_FAQ_CLOSE = '#messenger:lobby/faq/close'
-    BATTLE_HINTS_CHANGERECEIVER = '#messenger:battle/hints/changeReceiver'
     BATTLE_TOOLTIPS_USINGCHAT = '#messenger:battle/toolTips/usingChat'
     BATTLE_TOOLTIPS_STARTCHAT = '#messenger:battle/toolTips/startChat'
     BATTLE_TOOLTIPS_DEFAULT = '#messenger:battle/toolTips/default'
@@ -379,6 +378,7 @@ class MESSENGER(object):
     SERVICECHANNELMESSAGES_BOOTCAMP_DEVICES = '#messenger:serviceChannelMessages/bootcamp/devices'
     SERVICECHANNELMESSAGES_BOOTCAMP_CREW = '#messenger:serviceChannelMessages/bootcamp/crew'
     SERVICECHANNELMESSAGES_CURRENCYUPDATE_AUCTION = '#messenger:serviceChannelMessages/currencyUpdate/auction'
+    SERVICECHANNELMESSAGES_CURRENCYUPDATE_BATTLEPASS = '#messenger:serviceChannelMessages/currencyUpdate/battlepass'
     SERVICECHANNELMESSAGES_CURRENCYUPDATE_FINANCIAL_TRANSACTION = '#messenger:serviceChannelMessages/currencyUpdate/financial_transaction'
     SERVICECHANNELMESSAGES_CURRENCYUPDATE_DATE = '#messenger:serviceChannelMessages/currencyUpdate/date'
     SERVICECHANNELMESSAGES_CURRENCYUPDATE_RECEIVED_CREDITS = '#messenger:serviceChannelMessages/currencyUpdate/received/credits'
@@ -386,11 +386,13 @@ class MESSENGER(object):
     SERVICECHANNELMESSAGES_CURRENCYUPDATE_RECEIVED_CRYSTAL = '#messenger:serviceChannelMessages/currencyUpdate/received/crystal'
     SERVICECHANNELMESSAGES_CURRENCYUPDATE_RECEIVED_EVENTCOIN = '#messenger:serviceChannelMessages/currencyUpdate/received/eventCoin'
     SERVICECHANNELMESSAGES_CURRENCYUPDATE_RECEIVED_BPCOIN = '#messenger:serviceChannelMessages/currencyUpdate/received/bpcoin'
+    SERVICECHANNELMESSAGES_CURRENCYUPDATE_RECEIVED_FREEXP = '#messenger:serviceChannelMessages/currencyUpdate/received/freeXp'
     SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_CREDITS = '#messenger:serviceChannelMessages/currencyUpdate/debited/credits'
     SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_GOLD = '#messenger:serviceChannelMessages/currencyUpdate/debited/gold'
     SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_CRYSTAL = '#messenger:serviceChannelMessages/currencyUpdate/debited/crystal'
     SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_EVENTCOIN = '#messenger:serviceChannelMessages/currencyUpdate/debited/eventCoin'
     SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_BPCOIN = '#messenger:serviceChannelMessages/currencyUpdate/debited/bpcoin'
+    SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_FREEXP = '#messenger:serviceChannelMessages/currencyUpdate/debited/freeXp'
     SERVICECHANNELMESSAGES_INVOICERECEIVED_GOLDACCRUED = '#messenger:serviceChannelMessages/invoiceReceived/goldAccrued'
     SERVICECHANNELMESSAGES_INVOICERECEIVED_GOLDDEBITED = '#messenger:serviceChannelMessages/invoiceReceived/goldDebited'
     SERVICECHANNELMESSAGES_INVOICERECEIVED_CRYSTALACCRUED = '#messenger:serviceChannelMessages/invoiceReceived/crystalAccrued'
@@ -585,6 +587,7 @@ class MESSENGER(object):
     SERVICECHANNELMESSAGES_SERVERDOWNTIMECOMPENSATION_PLAYEREMBLEMS = '#messenger:serviceChannelMessages/serverDowntimeCompensation/playerEmblems'
     SERVICECHANNELMESSAGES_SERVERDOWNTIMECOMPENSATION_PLAYERINSCRIPTIONS = '#messenger:serviceChannelMessages/serverDowntimeCompensation/playerInscriptions'
     SERVICECHANNELMESSAGES_SERVERDOWNTIMECOMPENSATION_RENTALS = '#messenger:serviceChannelMessages/serverDowntimeCompensation/rentals'
+    SERVICECHANNELMESSAGES_SERVERDOWNTIMECOMPENSATION_PREMIUM_SUBS = '#messenger:serviceChannelMessages/serverDowntimeCompensation/premium_subs'
     SERVICECHANNELMESSAGES_ACTIONBEGIN = '#messenger:serviceChannelMessages/actionBegin'
     SERVICECHANNELMESSAGES_ACTIONEND = '#messenger:serviceChannelMessages/actionEnd'
     SERVICECHANNELMESSAGES_SYSMSG_CONVERTER_TITLE = '#messenger:serviceChannelMessages/sysMsg/converter/title'
@@ -1017,6 +1020,8 @@ class MESSENGER(object):
     SERVICECHANNELMESSAGES_WOTPLUS_TANKRENTAL_ISDISABLED_TITLE = '#messenger:serviceChannelMessages/wotPlus/tankRental/isDisabled/title'
     SERVICECHANNELMESSAGES_WOTPLUS_TANKRENTAL_ISDISABLED_TEXT = '#messenger:serviceChannelMessages/wotPlus/tankRental/isDisabled/text'
     SERVICECHANNELMESSAGES_WOTPLUS_TANKRENTAL_ISENABLED_TITLE = '#messenger:serviceChannelMessages/wotPlus/tankRental/isEnabled/title'
+    SERVICECHANNELMESSAGES_WOTPLUS_TANKRENTAL_ISPENDING_TITLE = '#messenger:serviceChannelMessages/wotPlus/tankRental/isPending/title'
+    SERVICECHANNELMESSAGES_WOTPLUS_TANKRENTAL_ISPENDING_TEXT = '#messenger:serviceChannelMessages/wotPlus/tankRental/isPending/text'
     SERVICECHANNELMESSAGES_WOTPLUS_FREEDIRECTIVES_RECEIVED_TITLE = '#messenger:serviceChannelMessages/wotPlus/freeDirectives/received/title'
     SERVICECHANNELMESSAGES_WOTPLUS_FREEDIRECTIVES_ISDISABLED_TITLE = '#messenger:serviceChannelMessages/wotPlus/freeDirectives/isDisabled/title'
     SERVICECHANNELMESSAGES_WOTPLUS_FREEDIRECTIVES_ISENABLED_TITLE = '#messenger:serviceChannelMessages/wotPlus/freeDirectives/isEnabled/title'
@@ -1130,11 +1135,13 @@ class MESSENGER(object):
      SERVICECHANNELMESSAGES_CURRENCYUPDATE_RECEIVED_CRYSTAL,
      SERVICECHANNELMESSAGES_CURRENCYUPDATE_RECEIVED_EVENTCOIN,
      SERVICECHANNELMESSAGES_CURRENCYUPDATE_RECEIVED_BPCOIN,
+     SERVICECHANNELMESSAGES_CURRENCYUPDATE_RECEIVED_FREEXP,
      SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_CREDITS,
      SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_GOLD,
      SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_CRYSTAL,
      SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_EVENTCOIN,
-     SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_BPCOIN)
+     SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_BPCOIN,
+     SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_FREEXP)
 
     @classmethod
     def client_error_shared(cls, key0):

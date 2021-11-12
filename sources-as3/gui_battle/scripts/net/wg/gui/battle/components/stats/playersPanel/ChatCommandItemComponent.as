@@ -139,6 +139,15 @@ package net.wg.gui.battle.components.stats.playersPanel
          this.setChatCommandState(param1,param2);
       }
       
+      public function setChatCommandVisibility(param1:Boolean) : void
+      {
+         if(param1 == this._shouldBeShown)
+         {
+            return;
+         }
+         visible = this._shouldBeShown = param1;
+      }
+      
       public function updateColors(param1:Boolean) : void
       {
          if(this._isColorBlind == param1)
@@ -150,15 +159,6 @@ package net.wg.gui.battle.components.stats.playersPanel
          {
             this.setChatCommandState(this._activeChatCommand,this._chatCommandFlags);
          }
-      }
-      
-      public function setChatCommandVisibility(param1:Boolean) : void
-      {
-         if(param1 == this._shouldBeShown)
-         {
-            return;
-         }
-         visible = this._shouldBeShown = param1;
       }
       
       private function setChatCommandState(param1:String, param2:uint) : void
@@ -175,17 +175,20 @@ package net.wg.gui.battle.components.stats.playersPanel
                _loc3_ = PLAYER_IS_ALLY_TARGET_STATE;
             }
          }
-         if(ATTACK_BASE_COMMANDS.indexOf(param1) != INVALID_INDEX && this._isColorBlind)
+         if(this._isColorBlind)
          {
-            _loc3_ = ATTACK_BASE_PURPLE_STATE;
-         }
-         else if(ATTACK_OBJECTIVE_COMMANDS.indexOf(param1) != INVALID_INDEX && this._isColorBlind)
-         {
-            _loc3_ = ATTACK_OBJECTIVE_PURPLE_STATE;
-         }
-         else if(RED_COLOR_ANIMATION_LIST.indexOf(param1) != INVALID_INDEX && this._isColorBlind)
-         {
-            _loc3_ = ATTACK_PURPLE_STATE;
+            if(ATTACK_BASE_COMMANDS.indexOf(param1) != INVALID_INDEX)
+            {
+               _loc3_ = ATTACK_BASE_PURPLE_STATE;
+            }
+            else if(ATTACK_OBJECTIVE_COMMANDS.indexOf(param1) != INVALID_INDEX)
+            {
+               _loc3_ = ATTACK_OBJECTIVE_PURPLE_STATE;
+            }
+            else if(RED_COLOR_ANIMATION_LIST.indexOf(param1) != INVALID_INDEX)
+            {
+               _loc3_ = ATTACK_PURPLE_STATE;
+            }
          }
          this.activeChatCommand.gotoAndStop(COMMAND_NAME_TO_FRAME_STATE[_loc3_]);
          this.activeChatCommand.visible = _loc3_ != EMPTY_FRAME_STATE;

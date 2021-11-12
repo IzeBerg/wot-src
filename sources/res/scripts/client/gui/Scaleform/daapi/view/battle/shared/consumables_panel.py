@@ -351,7 +351,7 @@ class ConsumablesPanel(IAmmoListener, ConsumablesPanelMeta, BattleGUIKeyHandler,
     def _onGunSettingsSet(self, _):
         self._resetAmmo()
 
-    def __onShellsCleared(self):
+    def __onShellsCleared(self, _):
         self._resetAmmo()
 
     def __onEquipmentsCleared(self):

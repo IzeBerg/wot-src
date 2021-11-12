@@ -26,6 +26,7 @@ def _removeCamouflageModifier(vehicle, bonusID):
             outfit = vehicle.getOutfit(season)
             if outfit:
                 outfit.hull.slotFor(GUI_ITEM_TYPE.CAMOUFLAGE).clear()
+                vehicle.removeOutfitForSeason(season)
 
     return vehicle
 
@@ -121,11 +122,20 @@ class _BonusSorter(object):
 
     def __conditionsSorter(self, bonuses):
         if self.__paramName in CONDITIONAL_BONUSES:
-            condition, _ = CONDITIONAL_BONUSES[self.__paramName]
-            if condition in bonuses:
-                bonuses.remove(condition)
-                bonuses.append(condition)
+            prioritizedBonuses = {}
+            for bonus in bonuses:
+                numDependencies = self.__getNumDependencies(bonus)
+                if numDependencies not in prioritizedBonuses:
+                    prioritizedBonuses[numDependencies] = []
+                prioritizedBonuses[numDependencies].append(bonus)
+
+            bonuses = [ bonus for key in sorted(prioritizedBonuses.keys())[::-1] for bonus in prioritizedBonuses[key] ]
         return bonuses
+
+    def __getNumDependencies(self, bonus, dependenciesNum=0):
+        if bonus in CONDITIONAL_BONUSES[self.__paramName]:
+            return self.__getNumDependencies(CONDITIONAL_BONUSES[self.__paramName][bonus], dependenciesNum + 1)
+        return dependenciesNum
 
     def __notStackSorter(self, bonuses):
         if self.__paramName in _NOT_STACK_BONUSES:

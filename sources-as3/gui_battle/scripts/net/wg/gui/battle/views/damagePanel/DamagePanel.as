@@ -12,6 +12,7 @@ package net.wg.gui.battle.views.damagePanel
    import net.wg.data.constants.InvalidationType;
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.RolesState;
+   import net.wg.data.constants.Time;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.VehicleModules;
    import net.wg.data.constants.generated.ATLAS_CONSTANTS;
@@ -493,9 +494,9 @@ package net.wg.gui.battle.views.damagePanel
          this.updateHealth(param1,param2);
       }
       
-      public function as_updateRepairingDevice(param1:String, param2:int, param3:Number, param4:Boolean) : void
+      public function as_updateRepairingDevice(param1:String, param2:int, param3:Number, param4:int) : void
       {
-         ModulesCtrl(this._modulesCtrl).setModuleRepairing(param1,param2,param3 * 1000,param4);
+         ModulesCtrl(this._modulesCtrl).setModuleRepairing(param1,param2,param3 * Time.MILLISECOND_IN_SECOND,param4);
       }
       
       public function as_updateSpeed(param1:int) : void

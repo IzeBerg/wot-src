@@ -36,8 +36,8 @@ package net.wg.gui.battle.views.siegeModePanel
       override protected function initialize() : void
       {
          super.initialize();
-         _states.splice(0,_states.length);
-         _states = new <String>["base","siege","siege","base"];
+         states.splice(0,states.length);
+         states = new <String>[CHASSIS_STATE_BASE,CHASSIS_STATE_SIEGE,CHASSIS_STATE_SIEGE,CHASSIS_STATE_BASE];
          this._turboWave = this.turboWaveContainer.turboWave;
          addFrameScript(START_SWITCHING_FRAME,this.onSwitchingAnimationStart);
       }
@@ -53,7 +53,7 @@ package net.wg.gui.battle.views.siegeModePanel
       override protected function configUI() : void
       {
          super.configUI();
-         _atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,TURBO_WAVE_ICON_NAME,this._turboWave.graphics,Values.EMPTY_STR,true,false,true);
+         atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,TURBO_WAVE_ICON_NAME,this._turboWave.graphics,Values.EMPTY_STR,true,false,true);
       }
       
       override protected function onDispose() : void
@@ -67,9 +67,9 @@ package net.wg.gui.battle.views.siegeModePanel
       
       override protected function drawSiegeStatusIcon() : void
       {
-         var _loc1_:String = ICON_NAME_PREFIX + DELIMITER + _engineState + DELIMITER + _states[_siegeState];
-         _atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,_loc1_,statusSiegeIcon.turboStatusSiegeIconGraphics.graphics,Values.EMPTY_STR,true,false,true);
-         _switchIndicator.stop();
+         var _loc1_:String = ICON_NAME_PREFIX + DELIMITER + engineState + DELIMITER + states[siegeState];
+         atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,_loc1_,statusSiegeIcon.turboStatusSiegeIconGraphics.graphics,Values.EMPTY_STR,true,false,true);
+         switchIndicator.stop();
          if(this.isSiegeState)
          {
             statusSiegeIcon.play();
@@ -82,26 +82,26 @@ package net.wg.gui.battle.views.siegeModePanel
       
       override protected function drawSwitchIndicator() : void
       {
-         var _loc1_:String = ICON_NAME_PREFIX + DELIMITER + STATE_SWITCHING_NAME + DELIMITER + _engineState + DELIMITER + _states[_siegeState];
-         _atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,_loc1_,_switchIndicator.turboSwitchIndicatorGraphics.graphics,Values.EMPTY_STR,true,false,true);
+         var _loc1_:String = ICON_NAME_PREFIX + DELIMITER + STATE_SWITCHING_NAME + DELIMITER + engineState + DELIMITER + states[siegeState];
+         atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,_loc1_,switchIndicator.turboSwitchIndicatorGraphics.graphics,Values.EMPTY_STR,true,false,true);
       }
       
       override protected function onSwitchIndicatorAnimation(param1:Number) : void
       {
-         if(_engineState != BATTLE_ITEM_STATES.DESTROYED)
+         if(engineState != BATTLE_ITEM_STATES.DESTROYED)
          {
-            _switchIndicator.play();
+            switchIndicator.play();
          }
          else
          {
-            _switchIndicator.stop();
+            switchIndicator.stop();
          }
       }
       
       override protected function stopSwitchAnimation() : void
       {
          super.stopSwitchAnimation();
-         _switchIndicator.stop();
+         switchIndicator.stop();
       }
       
       override protected function getChangeTimeTextColor() : uint
@@ -120,7 +120,7 @@ package net.wg.gui.battle.views.siegeModePanel
       
       private function get isSiegeState() : Boolean
       {
-         return _siegeState == SIEGE_SWITCHING_ON || _siegeState == SIEGE_STATE_ENABLED;
+         return siegeState == SIEGE_SWITCHING_ON || siegeState == SIEGE_STATE_ENABLED;
       }
    }
 }

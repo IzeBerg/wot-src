@@ -112,6 +112,7 @@ class VIEW_ALIAS(COMMON_VIEW_ALIAS):
     STRONGHOLD_ADS = 'StrongholdAdsView'
     BROWSER_VIEW = 'BrowserView'
     SIMPLE_DIALOG = 'simpleDialog'
+    BUTTON_DIALOG = 'buttonDialog'
     CONFIRM_MODULE_DIALOG = 'confirmModuleDialog'
     USE_FREEW_AWARD_SHEET_DIALOG = 'useFreeAwardSheetDialog'
     ICON_DIALOG = 'iconDialog'

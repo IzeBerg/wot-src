@@ -73,8 +73,6 @@ package
       
       public static const LOBBY_FAQ_CLOSE:String = "#messenger:lobby/faq/close";
       
-      public static const BATTLE_HINTS_CHANGERECEIVER:String = "#messenger:battle/hints/changeReceiver";
-      
       public static const BATTLE_TOOLTIPS_USINGCHAT:String = "#messenger:battle/toolTips/usingChat";
       
       public static const BATTLE_TOOLTIPS_STARTCHAT:String = "#messenger:battle/toolTips/startChat";
@@ -757,6 +755,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_AUCTION:String = "#messenger:serviceChannelMessages/currencyUpdate/auction";
       
+      public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_BATTLEPASS:String = "#messenger:serviceChannelMessages/currencyUpdate/battlepass";
+      
       public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_FINANCIAL_TRANSACTION:String = "#messenger:serviceChannelMessages/currencyUpdate/financial_transaction";
       
       public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_DATE:String = "#messenger:serviceChannelMessages/currencyUpdate/date";
@@ -771,6 +771,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_RECEIVED_BPCOIN:String = "#messenger:serviceChannelMessages/currencyUpdate/received/bpcoin";
       
+      public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_RECEIVED_FREEXP:String = "#messenger:serviceChannelMessages/currencyUpdate/received/freeXp";
+      
       public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_CREDITS:String = "#messenger:serviceChannelMessages/currencyUpdate/debited/credits";
       
       public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_GOLD:String = "#messenger:serviceChannelMessages/currencyUpdate/debited/gold";
@@ -780,6 +782,8 @@ package
       public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_EVENTCOIN:String = "#messenger:serviceChannelMessages/currencyUpdate/debited/eventCoin";
       
       public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_BPCOIN:String = "#messenger:serviceChannelMessages/currencyUpdate/debited/bpcoin";
+      
+      public static const SERVICECHANNELMESSAGES_CURRENCYUPDATE_DEBITED_FREEXP:String = "#messenger:serviceChannelMessages/currencyUpdate/debited/freeXp";
       
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_GOLDACCRUED:String = "#messenger:serviceChannelMessages/invoiceReceived/goldAccrued";
       
@@ -1168,6 +1172,8 @@ package
       public static const SERVICECHANNELMESSAGES_SERVERDOWNTIMECOMPENSATION_PLAYERINSCRIPTIONS:String = "#messenger:serviceChannelMessages/serverDowntimeCompensation/playerInscriptions";
       
       public static const SERVICECHANNELMESSAGES_SERVERDOWNTIMECOMPENSATION_RENTALS:String = "#messenger:serviceChannelMessages/serverDowntimeCompensation/rentals";
+      
+      public static const SERVICECHANNELMESSAGES_SERVERDOWNTIMECOMPENSATION_PREMIUM_SUBS:String = "#messenger:serviceChannelMessages/serverDowntimeCompensation/premium_subs";
       
       public static const SERVICECHANNELMESSAGES_ACTIONBEGIN:String = "#messenger:serviceChannelMessages/actionBegin";
       
@@ -2032,6 +2038,10 @@ package
       public static const SERVICECHANNELMESSAGES_WOTPLUS_TANKRENTAL_ISDISABLED_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/tankRental/isDisabled/text";
       
       public static const SERVICECHANNELMESSAGES_WOTPLUS_TANKRENTAL_ISENABLED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/tankRental/isEnabled/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_TANKRENTAL_ISPENDING_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/tankRental/isPending/title";
+      
+      public static const SERVICECHANNELMESSAGES_WOTPLUS_TANKRENTAL_ISPENDING_TEXT:String = "#messenger:serviceChannelMessages/wotPlus/tankRental/isPending/text";
       
       public static const SERVICECHANNELMESSAGES_WOTPLUS_FREEDIRECTIVES_RECEIVED_TITLE:String = "#messenger:serviceChannelMessages/wotPlus/freeDirectives/received/title";
       

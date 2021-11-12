@@ -809,8 +809,7 @@ class HangarVehicleAppearance(ScriptGameObject):
         insigniaRank = 0
         if self.__showMarksOnGun:
             insigniaRank = self._getThisVehicleDossierInsigniaRank()
-        vId = self.__vEntity.id if self.__vEntity is not None else -1
-        self.__vehicleStickers = VehicleStickers.VehicleStickers(self.__vDesc, insigniaRank, outfit, vehicleId=vId)
+        self.__vehicleStickers = VehicleStickers.VehicleStickers(self.__vDesc, insigniaRank, outfit)
         self.__vehicleStickers.alpha = self.__currentEmblemsAlpha
         self.__vehicleStickers.attach(self.__vEntity.model, self.__isVehicleDestroyed, False)
         self._requestClanDBIDForStickers(self.__onClanDBIDRetrieved)

@@ -1,2 +1,3 @@
 from . import config
-__all__ = ('config', )
+from . import adapters
+__all__ = ('config', 'adapters')

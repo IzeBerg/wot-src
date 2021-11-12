@@ -29,6 +29,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.data.constants.generated.ANIMATION_TYPES;
    import net.wg.data.constants.generated.BATTLE_CONSUMABLES_PANEL_TAGS;
    import net.wg.data.constants.generated.BATTLE_CONTEXT_MENU_HANDLER_TYPE;
+   import net.wg.data.constants.generated.BATTLE_DEVICES_REPAIR_MODES;
    import net.wg.data.constants.generated.BATTLE_ITEM_STATES;
    import net.wg.data.constants.generated.BATTLE_MARKER_STATES;
    import net.wg.data.constants.generated.BATTLE_MESSAGES_CONSTS;
@@ -726,6 +727,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.siegeModePanel.SiegeModeAnimation;
    import net.wg.gui.battle.views.siegeModePanel.SiegeModePanel;
    import net.wg.gui.battle.views.siegeModePanel.TurboSiegeModeAnimation;
+   import net.wg.gui.battle.views.siegeModePanel.YohChassisModeAnimation;
    import net.wg.gui.battle.views.sixthSense.SixthSense;
    import net.wg.gui.battle.views.staticMarkers.epic.ObjectiveIdReplyState;
    import net.wg.gui.battle.views.staticMarkers.epic.headquarter.HeadquarterActionMarker;
@@ -991,6 +993,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_DATA_CONSTANTS_GENERATED_BATTLE_CONSUMABLES_PANEL_TAGS:Class = BATTLE_CONSUMABLES_PANEL_TAGS;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_BATTLE_CONTEXT_MENU_HANDLER_TYPE:Class = BATTLE_CONTEXT_MENU_HANDLER_TYPE;
+      
+      public static const NET_WG_DATA_CONSTANTS_GENERATED_BATTLE_DEVICES_REPAIR_MODES:Class = BATTLE_DEVICES_REPAIR_MODES;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_BATTLE_ITEM_STATES:Class = BATTLE_ITEM_STATES;
       
@@ -2419,6 +2423,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_SIEGEMODEPANEL_SIEGEMODEPANEL:Class = SiegeModePanel;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_SIEGEMODEPANEL_TURBOSIEGEMODEANIMATION:Class = TurboSiegeModeAnimation;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_SIEGEMODEPANEL_YOHCHASSISMODEANIMATION:Class = YohChassisModeAnimation;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_SIXTHSENSE_SIXTHSENSE:Class = SixthSense;
       

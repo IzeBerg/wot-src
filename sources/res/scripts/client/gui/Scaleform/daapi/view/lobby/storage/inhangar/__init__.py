@@ -81,6 +81,7 @@ class StorageCarouselDataProvider(CarouselDataProvider):
 
     def _setBaseCriteria(self):
         self._baseCriteria = REQ_CRITERIA.INVENTORY
+        self._baseCriteria |= ~REQ_CRITERIA.VEHICLE.CAN_NOT_BE_SOLD
         self._baseCriteria |= ~REQ_CRITERIA.VEHICLE.RENT
         self._baseCriteria |= ~REQ_CRITERIA.VEHICLE.BATTLE_ROYALE
         self._baseCriteria |= ~REQ_CRITERIA.VEHICLE.MAPS_TRAINING

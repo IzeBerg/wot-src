@@ -293,12 +293,9 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       override protected function draw() : void
       {
          super.draw();
-         if(isInvalid(PlayersPanelInvalidationType.DOG_TAG_CHANGED))
+         if(this._showDogTag && isInvalid(PlayersPanelInvalidationType.DOG_TAG_CHANGED))
          {
-            if(this._showDogTag)
-            {
-               this.updateDogTag();
-            }
+            this.updateDogTag();
          }
          if(isInvalid(PlayersPanelInvalidationType.BADGE_CHANGED))
          {
@@ -335,12 +332,9 @@ package net.wg.gui.battle.components.stats.playersPanel.list
                this.disableCommunication.visible = this._isIgnoredTmp;
             }
          }
-         if(isInvalid(PlayersPanelInvalidationType.IS_SPEAKING))
+         if(!this._isMute && isInvalid(PlayersPanelInvalidationType.IS_SPEAKING))
          {
-            if(!this._isMute)
-            {
-               this.speakAnimation.speaking = this._isSpeaking;
-            }
+            this.speakAnimation.speaking = this._isSpeaking;
          }
          if(isInvalid(PlayersPanelInvalidationType.SELECTED))
          {
@@ -352,14 +346,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
             this.deadBg.visible = !this._isAlive && !this._isHpBarsVisible;
             this.normAltBg.visible = this._isAlive && this._isHpBarsVisible;
             this.deadAltBg.visible = !this._isAlive && this._isHpBarsVisible;
-            if(this.deadAltBg.visible)
-            {
-               this.playerNameFullTF.alpha = this.fragsTF.alpha = this.playerNameCutTF.alpha = this.vehicleTF.alpha = DEAD_ALT_TEXT_ALPHA;
-            }
-            else
-            {
-               this.playerNameFullTF.alpha = this.fragsTF.alpha = this.playerNameCutTF.alpha = this.vehicleTF.alpha = this._originalTFAlpha;
-            }
+            this.playerNameFullTF.alpha = this.fragsTF.alpha = this.playerNameCutTF.alpha = this.vehicleTF.alpha = !!this.deadAltBg.visible ? Number(DEAD_ALT_TEXT_ALPHA) : Number(this._originalTFAlpha);
          }
          if(isInvalid(PlayersPanelInvalidationType.PLAYER_SCHEME))
          {
@@ -384,6 +371,11 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          }
       }
       
+      public function getDynamicSquad() : PlayersPanelDynamicSquad
+      {
+         return null;
+      }
+      
       public function getPlayerNameFullWidth() : uint
       {
          return (this.playerNameFullTF.textWidth | 0) + PLAYER_NAME_MARGIN;
@@ -404,17 +396,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          return false;
       }
       
-      public function showDogTag() : void
-      {
-         this._showDogTag = true;
-         invalidate(PlayersPanelInvalidationType.DOG_TAG_CHANGED);
-      }
-      
-      public function setChatCommandVisibility(param1:Boolean) : void
-      {
-         this.chatCommandState.setChatCommandVisibility(param1);
-      }
-      
       public function setBadge(param1:BadgeVisualVO, param2:Boolean) : void
       {
          if(this._badgeVO == null || !this._badgeVO.isEquals(param1) && this._hasBadge != param2)
@@ -425,6 +406,16 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          }
       }
       
+      public function setChatCommand(param1:String, param2:uint) : void
+      {
+         this.chatCommandState.setActiveChatCommand(param1,param2);
+      }
+      
+      public function setChatCommandVisibility(param1:Boolean) : void
+      {
+         this.chatCommandState.setChatCommandVisibility(param1);
+      }
+      
       public function setFrags(param1:int) : void
       {
          if(this._frags == param1)
@@ -433,21 +424,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          }
          this._frags = param1;
          invalidate(PlayersPanelInvalidationType.FRAGS);
-      }
-      
-      public function setChatCommand(param1:String, param2:uint) : void
-      {
-         this.chatCommandState.setActiveChatCommand(param1,param2);
-      }
-      
-      public function triggerChatCommand(param1:String) : void
-      {
-         this.chatCommandState.playCommandAnimation(param1);
-      }
-      
-      public function setSpottedStatus(param1:uint) : void
-      {
-         this.spottedIndicator.updateSpottedStatus(param1);
       }
       
       public function setIsAlive(param1:Boolean) : void
@@ -478,24 +454,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          }
          this._isIGR = param1;
          invalidate(PlayersPanelInvalidationType.IGR_CHANGED);
-      }
-      
-      public function setVehicleHealth(param1:int) : void
-      {
-         this.hpBarPlayersPanelListItem.updateHP(param1);
-      }
-      
-      public function setPanelHPBarVisibilityState(param1:uint) : void
-      {
-         this._hpSettingValue = param1;
-         this._isHpBarsVisible = param1 == PLAYERS_PANEL_STATE.ALWAYS_SHOW_HP;
-         invalidate(PlayersPanelInvalidationType.HP_BAR_VISIBILITY | PlayersPanelInvalidationType.ALIVE | PlayersPanelInvalidationType.PLAYER_SCHEME);
-      }
-      
-      public function setOverrideExInfo(param1:Boolean) : void
-      {
-         this._isHpBarsVisible = this._hpSettingValue == PLAYERS_PANEL_STATE.ALWAYS_SHOW_HP || param1 && this._hpSettingValue == PLAYERS_PANEL_STATE.SHOW_HP_ON_ALT;
-         invalidate(PlayersPanelInvalidationType.HP_BAR_VISIBILITY | PlayersPanelInvalidationType.ALIVE | PlayersPanelInvalidationType.PLAYER_SCHEME);
       }
       
       public function setIsInteractive(param1:Boolean) : void
@@ -568,6 +526,19 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          invalidate(PlayersPanelInvalidationType.PLAYER_SCHEME);
       }
       
+      public function setOverrideExInfo(param1:Boolean) : void
+      {
+         this._isHpBarsVisible = this._hpSettingValue == PLAYERS_PANEL_STATE.ALWAYS_SHOW_HP || param1 && this._hpSettingValue == PLAYERS_PANEL_STATE.SHOW_HP_ON_ALT;
+         invalidate(PlayersPanelInvalidationType.HP_BAR_VISIBILITY | PlayersPanelInvalidationType.ALIVE | PlayersPanelInvalidationType.PLAYER_SCHEME);
+      }
+      
+      public function setPanelHPBarVisibilityState(param1:uint) : void
+      {
+         this._hpSettingValue = param1;
+         this._isHpBarsVisible = param1 == PLAYERS_PANEL_STATE.ALWAYS_SHOW_HP;
+         invalidate(PlayersPanelInvalidationType.HP_BAR_VISIBILITY | PlayersPanelInvalidationType.ALIVE | PlayersPanelInvalidationType.PLAYER_SCHEME);
+      }
+      
       public function setPlayerNameFullWidth(param1:uint) : void
       {
          param1 = Math.min(this.maxPlayerNameWidth,param1);
@@ -591,6 +562,11 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this._commons.formatPlayerName(this.playerNameFullTF,this._userProps,!this._isCurrentPlayer,this._isCurrentPlayer);
       }
       
+      public function setSpottedStatus(param1:uint) : void
+      {
+         this.spottedIndicator.updateSpottedStatus(param1);
+      }
+      
       public function setState(param1:uint) : void
       {
          if(this._state == param1)
@@ -605,6 +581,11 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       {
          this.actionMarker.imageName = BATTLEATLAS.getVehicleActionMarker(VehicleActions.getActionName(param1));
          this.actionMarker.visible = true;
+      }
+      
+      public function setVehicleHealth(param1:int) : void
+      {
+         this.hpBarPlayersPanelListItem.updateHP(param1);
       }
       
       public function setVehicleIcon(param1:String) : void
@@ -641,6 +622,17 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          }
          this._vehicleName = param1;
          invalidate(PlayersPanelInvalidationType.VEHILCE_NAME);
+      }
+      
+      public function showDogTag() : void
+      {
+         this._showDogTag = true;
+         invalidate(PlayersPanelInvalidationType.DOG_TAG_CHANGED);
+      }
+      
+      public function triggerChatCommand(param1:String) : void
+      {
+         this.chatCommandState.playCommandAnimation(param1);
       }
       
       public function updateColorBlind() : void
@@ -787,10 +779,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
                this.dogTag.x = this.fragsTF.x + this.fragsTF.width + DOG_TAG_OFFSET;
             }
             this.chatCommandState.iconOffset(CHAT_COMMAND_RIGHT_SIDE_OFFSET_FROM_HIT);
-            if(this.chatCommandState.x != 0)
-            {
-               this.chatCommandState.x = 0;
-            }
+            this.chatCommandState.x = 0;
             this.updatePositionsRight();
          }
          else
@@ -1057,11 +1046,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       public function get holderItemID() : uint
       {
          return this._holderItemID;
-      }
-      
-      public function getDynamicSquad() : PlayersPanelDynamicSquad
-      {
-         return null;
       }
       
       public function set holderItemID(param1:uint) : void

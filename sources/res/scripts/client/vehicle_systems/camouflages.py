@@ -8,7 +8,6 @@ import BigWorld, Math, Vehicular, AnimationSequence
 from helpers import dependency
 from items.customization_slot_tags_validator import getDirectionAndFormFactorTags
 from shared_utils import first
-from skeletons.gui.customization import ICustomizationService
 from skeletons.gui.shared import IItemsCache
 import items.vehicles
 from constants import IS_EDITOR
@@ -431,8 +430,10 @@ def getRepaint(outfit, containerId, vDesc):
     overlapMetallic = overlapGloss = None
     nationID = vDesc.type.customizationNationID
     colorId = vDesc.type.baseColorID
-    defaultColors = items.vehicles.g_cache.customization20().defaultColors
-    defaultColor = defaultColors[nationID][colorId]
+    defaultColor = 0
+    if items.vehicles.g_cache.customization20(createNew=False):
+        defaultColors = items.vehicles.g_cache.customization20().defaultColors
+        defaultColor = defaultColors[nationID][colorId]
     intCD = outfit.misc.slotFor(GUI_ITEM_TYPE.MODIFICATION).getItemCD()
     if intCD:
         mod = getItemByCompactDescr(intCD)
@@ -652,9 +653,10 @@ def _findAndMatchProjectionDecalsSlotsByTags(decals, appliedDecals, slotsByTagMa
     return []
 
 
-@dependency.replace_none_kwargs(service=ICustomizationService)
-def _checkAndMirrorProjectionDecal(component, slot, service=None):
-    item = service.getItemByID(GUI_ITEM_TYPE.PROJECTION_DECAL, component.id)
+@dependency.replace_none_kwargs(guiItemsFactory=IGuiItemsFactory)
+def _checkAndMirrorProjectionDecal(component, slot, guiItemsFactory=None):
+    intCD = makeIntCompactDescrByID('customizationItem', CustomizationType.PROJECTION_DECAL, component.id)
+    item = guiItemsFactory.createCustomization(intCD)
     if not item.canBeMirroredHorizontally:
         return
     slorDirection = first([ tag for tag in slot.tags if tag.startswith(ProjectionDecalDirectionTags.PREFIX) ], ProjectionDecalDirectionTags.ANY)

@@ -1,28 +1,32 @@
 import typing
 from constants import ARENA_BONUS_TYPE
 if typing.TYPE_CHECKING:
+    from typing import Callable, Dict, Iterable, Iterator, List, Optional, Set, Tuple
     from Event import Event
     from gui.Scaleform.daapi.view.lobby.epicBattle.epic_helpers import EpicBattleScreens
-    from gui.game_control.mapbox_controller import ProgressionData
-    from gui.game_control.epic_meta_game_ctrl import EpicMetaGameSkill
-    from gui.shared.gui_items import Vehicle, Tankman
-    from gui.periodic_battles.models import PrimeTime, PeriodInfo, AlertData
-    from gui.prb_control.items import ValidationResult
-    from gui.ranked_battles.ranked_helpers.sound_manager import RankedSoundManager
-    from gui.ranked_battles.ranked_helpers.web_season_provider import WebSeasonInfo, RankedWebSeasonProvider
-    from gui.ranked_battles.ranked_helpers.stats_composer import RankedBattlesStatsComposer
-    from gui.ranked_battles.ranked_models import PostBattleRankInfo, Rank, Division
-    from gui.ranked_battles.constants import YearAwardsNames
-    from gui.shared.gui_items.fitting_item import RentalInfoProvider
-    from gui.shared.utils.requesters.EpicMetaGameRequester import EpicMetaGameRequester
-    from gui.server_events.event_items import RankedQuest
-    from helpers.server_settings import _MapboxConfig
-    from season_common import GameSeason
-    from gui.ranked_battles.ranked_models import BattleRankInfo
-    from gui.server_events.bonuses import SimpleBonus
     from gui.battle_pass.state_machine.delegator import BattlePassRewardLogic
-    from helpers.server_settings import BattleRoyaleConfig, EpicGameConfig, RankedBattlesConfig, VehiclePostProgressionConfig
+    from gui.game_control.epic_meta_game_ctrl import EpicMetaGameSkill
+    from gui.game_control.mapbox_controller import ProgressionData
+    from gui.game_control.trade_in import TradeInInfo
+    from gui.gift_system.hubs.base.hub_core import IGiftEventHub
+    from gui.periodic_battles.models import AlertData, PeriodInfo, PrimeTime
+    from gui.prb_control.items import ValidationResult
+    from gui.ranked_battles.constants import YearAwardsNames
+    from gui.ranked_battles.ranked_helpers.sound_manager import RankedSoundManager
+    from gui.ranked_battles.ranked_helpers.stats_composer import RankedBattlesStatsComposer
+    from gui.ranked_battles.ranked_helpers.web_season_provider import RankedWebSeasonProvider, WebSeasonInfo
+    from gui.ranked_battles.ranked_models import BattleRankInfo, Division, PostBattleRankInfo, Rank
+    from gui.server_events.bonuses import SimpleBonus
+    from gui.server_events.event_items import RankedQuest
+    from gui.shared.gui_items import Tankman, Vehicle
+    from gui.shared.gui_items.fitting_item import RentalInfoProvider
+    from gui.shared.gui_items.gui_item_economics import ItemPrice
+    from gui.shared.gui_items.Tankman import TankmanSkill
+    from gui.shared.money import Money
+    from gui.shared.utils.requesters.EpicMetaGameRequester import EpicMetaGameRequester
+    from helpers.server_settings import BattleRoyaleConfig, EpicGameConfig, GiftSystemConfig, RankedBattlesConfig, VehiclePostProgressionConfig, _MapboxConfig
     from items.vehicles import VehicleType
+    from season_common import GameSeason
 
 class IGameController(object):
 
@@ -940,6 +944,12 @@ class IRankedBattlesController(IGameController, ISeasonProvider):
     def getRankedWelcomeCallback(self):
         raise NotImplementedError
 
+    def getQuestsForRank(self, rankID):
+        raise NotImplementedError
+
+    def setRankedWelcomeCallback(self, value):
+        raise NotImplementedError
+
     def getRanksChain(self, leftRequiredBorder, rightRequiredBorder):
         raise NotImplementedError
 
@@ -980,6 +990,9 @@ class IRankedBattlesController(IGameController, ISeasonProvider):
         raise NotImplementedError
 
     def getWebOpenPageCtx(self):
+        raise NotImplementedError
+
+    def getQualificationQuests(self, quests=None):
         raise NotImplementedError
 
     def awardWindowShouldBeShown(self, rankChangeInfo):
@@ -1800,7 +1813,7 @@ class IMapboxController(IGameController, ISeasonProvider):
 
 class IOverlayController(IGameController):
 
-    def switchOverlay(self):
+    def isActive(self):
         raise NotImplementedError
 
     def setOverlayState(self, state):
@@ -1810,15 +1823,31 @@ class IOverlayController(IGameController):
         raise NotImplementedError
 
 
-class ISteamRegistrationOverlay(IOverlayController):
+class ISteamCompletionController(IGameController):
 
-    def switchOverlay(self):
+    @property
+    def isSteamAccount(self):
         raise NotImplementedError
 
-    def setOverlayState(self, state):
+
+class IDemoAccCompletionController(IGameController):
+
+    @property
+    def isDemoAccount(self):
         raise NotImplementedError
 
-    def waitShow(self):
+    @property
+    def isInDemoAccRegistration(self):
+        raise NotImplementedError
+
+    @isInDemoAccRegistration.setter
+    def isInDemoAccRegistration(self, value):
+        raise NotImplementedError
+
+    def runDemoAccRegistration(self):
+        raise NotImplementedError
+
+    def updateOverlayState(self, waitingID=None, onComplete=None):
         raise NotImplementedError
 
 
@@ -1916,4 +1945,34 @@ class IVehiclePostProgressionController(IGameController):
 class IWotPlusNotificationController(IGameController):
 
     def processSwitchNotifications(self):
+        raise NotImplementedError
+
+
+class IEventBattlesController(IGameController, ISeasonProvider):
+    onPrimeTimeStatusUpdated = None
+
+    def isEnabled(self):
+        raise NotImplementedError
+
+    def isAvailable(self):
+        raise NotImplementedError
+
+    def isFrozen(self):
+        raise NotImplementedError
+
+    def getConfig(self):
+        raise NotImplementedError
+
+
+class IGiftSystemController(IGameController):
+    onEventHubsCreated = None
+    onEventHubsDestroyed = None
+
+    def getEventHub(self, eventID):
+        raise NotImplementedError
+
+    def getSettings(self):
+        raise NotImplementedError
+
+    def requestWebState(self, eventID):
         raise NotImplementedError

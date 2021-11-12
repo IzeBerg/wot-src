@@ -281,6 +281,20 @@ package net.wg.infrastructure.managers.impl
          _loc2_.removeEventListener(FocusEvent.FOCUS_OUT,this.onContainerFocusOutHandler);
       }
       
+      public function as_getVisibleLayers() : Array
+      {
+         var _loc2_:ISimpleManagedContainer = null;
+         var _loc1_:Array = [];
+         for each(_loc2_ in this._containersMap)
+         {
+            if(_loc2_ && _loc2_.visible)
+            {
+               _loc1_.push(_loc2_.layer);
+            }
+         }
+         return _loc1_;
+      }
+      
       public function getContainer(param1:uint) : ISimpleManagedContainer
       {
          return ISimpleManagedContainer(this._containersMap[param1]);
@@ -328,35 +342,17 @@ package net.wg.infrastructure.managers.impl
          this.removeItemFromContainer(param1,IManagedContent(param2));
       }
       
-      public function setVisibleContainers(param1:Boolean, param2:Vector.<int>) : void
+      override protected function setVisibleLayers(param1:Vector.<int>) : void
       {
-         var _loc3_:ISimpleManagedContainer = null;
-         var _loc4_:int = 0;
-         for each(_loc4_ in this._visibleContainers)
+         var _loc2_:ISimpleManagedContainer = null;
+         for each(_loc2_ in this._containersMap)
          {
-            if(param2.indexOf(_loc4_) == -1)
+            if(_loc2_)
             {
-               _loc3_ = this._containersMap[_loc4_];
-               if(_loc3_)
-               {
-                  _loc3_.visible = param1;
-               }
+               _loc2_.visible = param1.indexOf(_loc2_.layer) != -1;
             }
          }
          this.updateFocus();
-      }
-      
-      public function storeVisibleContainers() : void
-      {
-         var _loc1_:ISimpleManagedContainer = null;
-         this._visibleContainers = new Vector.<int>();
-         for each(_loc1_ in this._containersMap)
-         {
-            if(_loc1_ && _loc1_.visible)
-            {
-               this._visibleContainers.push(_loc1_.layer);
-            }
-         }
       }
       
       public function updateFocus(param1:Object = null) : void

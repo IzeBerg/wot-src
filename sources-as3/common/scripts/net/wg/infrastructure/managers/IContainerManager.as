@@ -22,10 +22,6 @@ package net.wg.infrastructure.managers
       
       function getFocusPriority(param1:int) : Number;
       
-      function setVisibleContainers(param1:Boolean, param2:Vector.<int>) : void;
-      
-      function storeVisibleContainers() : void;
-      
       function set loader(param1:ILoaderManager) : void;
       
       function get lastFocusedView() : IView;

@@ -232,11 +232,10 @@ class StorageCategoryCustomizationView(StorageCategoryCustomizationViewMeta):
         if tooltipKey:
             title = _ms(tooltipKey, group=item.userType, value=item.userName)
         if item.itemTypeID == GUI_ITEM_TYPE.PROJECTION_DECAL:
-            icon = item.previewIconUrl
             formfactor = item.formfactor
         else:
-            icon = item.icon
             formfactor = ''
+        icon = item.icon
         levelIcon = ''
         customizationSuitableText = backport.text(R.strings.storage.customizationSuitable.label())
         if vehicleCD is None:

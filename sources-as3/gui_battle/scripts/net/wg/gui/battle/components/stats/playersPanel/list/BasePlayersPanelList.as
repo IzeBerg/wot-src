@@ -14,6 +14,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
    import net.wg.gui.battle.random.views.stats.components.playersPanel.events.PlayersPanelItemEvent;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.interfaces.IPlayersPanelList;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.interfaces.IPlayersPanelListItemHolder;
+   import net.wg.gui.battle.random.views.stats.components.playersPanel.list.PlayersPanelDynamicSquad;
    import net.wg.gui.battle.views.minimap.MinimapEntryController;
    import net.wg.gui.components.dogtag.DogtagComponent;
    import net.wg.gui.components.dogtag.VO.DogTagVO;
@@ -31,15 +32,15 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       private static const ITEM_HEIGHT:int = 25;
        
       
-      protected var panelListItems:Vector.<IPlayersPanelListItem> = null;
+      protected var panelListItems:Vector.<IPlayersPanelListItem>;
       
       private var _state:int;
       
-      private var _items:Vector.<IPlayersPanelListItemHolder> = null;
+      private var _items:Vector.<IPlayersPanelListItemHolder>;
       
-      private var _itemsHealth:Dictionary = null;
+      private var _itemsHealth:Dictionary;
       
-      private var _currOrder:Vector.<Number> = null;
+      private var _currOrder:Vector.<Number>;
       
       private var _holderItemUnderMouseID:int = -1;
       
@@ -47,9 +48,9 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       private var _isCursorVisible:Boolean = false;
       
-      private var _renderersContainer:Sprite = null;
+      private var _renderersContainer:Sprite;
       
-      private var _mapHolderByVehicleID:Dictionary = null;
+      private var _mapHolderByVehicleID:Dictionary;
       
       private var _currentPlayerIsAnonymized:Boolean = false;
       
@@ -73,28 +74,19 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       public function BasePlayersPanelList()
       {
+         this.panelListItems = new Vector.<IPlayersPanelListItem>();
+         this._items = new Vector.<IPlayersPanelListItemHolder>();
+         this._itemsHealth = new Dictionary();
+         this._currOrder = new Vector.<Number>();
+         this._renderersContainer = new Sprite();
+         this._mapHolderByVehicleID = new Dictionary();
          this._commons = App.utils.commons;
          this._tooltipMgr = App.toolTipMgr;
          this._locale = App.utils.locale;
          this._classFactory = App.utils.classFactory;
          super();
-         this._items = new Vector.<IPlayersPanelListItemHolder>();
-         this._mapHolderByVehicleID = new Dictionary();
-         this._itemsHealth = new Dictionary();
-         this.panelListItems = new Vector.<IPlayersPanelListItem>();
-         this._currOrder = new Vector.<Number>();
-         this._renderersContainer = new Sprite();
          addChild(this._renderersContainer);
          this.initDogTag();
-      }
-      
-      private function initDogTag() : void
-      {
-         this._dogTag = App.utils.classFactory.getComponent(Linkages.DOGTAG,DogtagComponent);
-         this._dogTag.hideNameAndClan();
-         this._dogTag.x = -this._dogTag.width - DOG_TAG_OFFSET_X;
-         this._dogTag.goToLabel(DogtagComponent.DOGTAG_LABEL_END_FULL);
-         this._dogTag.alpha = 0;
       }
       
       public final function dispose() : void
@@ -159,12 +151,18 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          }
       }
       
-      public function setFrags(param1:Number, param2:int) : void
+      public function resetFrags() : void
       {
-         var _loc3_:IPlayersPanelListItemHolder = this.getHolderByVehicleID(param1);
-         if(_loc3_)
+         if(this.panelListItems == null)
          {
-            _loc3_.setFrags(param2);
+            return;
+         }
+         var _loc1_:int = this.panelListItems.length;
+         var _loc2_:uint = 0;
+         while(_loc2_ < _loc1_)
+         {
+            this.panelListItems[_loc2_].setFrags(0);
+            _loc2_++;
          }
       }
       
@@ -177,21 +175,26 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          }
       }
       
-      public function triggerChatCommand(param1:Number, param2:String) : void
+      public function setChatCommandVisibility(param1:Boolean) : void
       {
-         var _loc3_:IPlayersPanelListItemHolder = this.getHolderByVehicleID(param1);
-         if(_loc3_)
+         var _loc2_:IPlayersPanelListItem = null;
+         if(param1 == this._isChatCommVisible)
          {
-            _loc3_.triggerChatCommand(param2);
+            return;
+         }
+         this._isChatCommVisible = param1;
+         for each(_loc2_ in this.panelListItems)
+         {
+            _loc2_.setChatCommandVisibility(param1);
          }
       }
       
-      public function setSpottedStatus(param1:Number, param2:uint) : void
+      public function setFrags(param1:Number, param2:int) : void
       {
          var _loc3_:IPlayersPanelListItemHolder = this.getHolderByVehicleID(param1);
          if(_loc3_)
          {
-            _loc3_.setSpottedStatus(param2);
+            _loc3_.setFrags(param2);
          }
       }
       
@@ -231,12 +234,27 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       {
       }
       
-      public function setPlayerStatus(param1:Number, param2:uint) : void
+      public function setOverrideExInfo(param1:Boolean) : void
       {
-         var _loc3_:IPlayersPanelListItemHolder = this.getHolderByVehicleID(param1);
-         if(_loc3_)
+         var _loc2_:IPlayersPanelListItemHolder = null;
+         this._overrideExInfoValue = param1;
+         for each(_loc2_ in this._items)
          {
-            _loc3_.setPlayerStatus(param2);
+            _loc2_.setOverrideExInfo(param1);
+         }
+      }
+      
+      public function setPanelHPBarVisibilityState(param1:uint) : void
+      {
+         var _loc2_:IPlayersPanelListItem = null;
+         if(param1 == this._HPBarVisibilityState)
+         {
+            return;
+         }
+         this._HPBarVisibilityState = param1;
+         for each(_loc2_ in this.panelListItems)
+         {
+            _loc2_.setPanelHPBarVisibilityState(param1);
          }
       }
       
@@ -254,14 +272,17 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          }
       }
       
-      public function setOverrideExInfo(param1:Boolean) : void
+      public function setPlayerStatus(param1:Number, param2:uint) : void
       {
-         var _loc2_:IPlayersPanelListItemHolder = null;
-         this._overrideExInfoValue = param1;
-         for each(_loc2_ in this._items)
+         var _loc3_:IPlayersPanelListItemHolder = this.getHolderByVehicleID(param1);
+         if(_loc3_)
          {
-            _loc2_.setOverrideExInfo(param1);
+            _loc3_.setPlayerStatus(param2);
          }
+      }
+      
+      public function setShowDogTag(param1:Boolean) : void
+      {
       }
       
       public function setSpeaking(param1:Number, param2:Boolean) : void
@@ -270,6 +291,15 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          if(_loc3_)
          {
             _loc3_.setIsSpeaking(param2);
+         }
+      }
+      
+      public function setSpottedStatus(param1:Number, param2:uint) : void
+      {
+         var _loc3_:IPlayersPanelListItemHolder = this.getHolderByVehicleID(param1);
+         if(_loc3_)
+         {
+            _loc3_.setSpottedStatus(param2);
          }
       }
       
@@ -332,13 +362,24 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       public function showDogTag(param1:Number, param2:DogTagVO) : void
       {
+         var _loc4_:IPlayersPanelListItem = null;
          var _loc3_:IPlayersPanelListItemHolder = this.getHolderByVehicleID(param1);
          if(_loc3_)
          {
-            _loc3_.getListItem().showDogTag();
-            _loc3_.getListItem().addEventListener(MouseEvent.MOUSE_OVER,this.onHitDogTagMouseOverHandler);
-            _loc3_.getListItem().addEventListener(MouseEvent.MOUSE_OUT,this.onHitDogTagMouseOutHandler);
+            _loc4_ = _loc3_.getListItem();
+            _loc4_.showDogTag();
+            _loc4_.addEventListener(MouseEvent.MOUSE_OVER,this.onHitDogTagMouseOverHandler);
+            _loc4_.addEventListener(MouseEvent.MOUSE_OUT,this.onHitDogTagMouseOutHandler);
             _loc3_.setDogTag(param2);
+         }
+      }
+      
+      public function triggerChatCommand(param1:Number, param2:String) : void
+      {
+         var _loc3_:IPlayersPanelListItemHolder = this.getHolderByVehicleID(param1);
+         if(_loc3_)
+         {
+            _loc3_.triggerChatCommand(param2);
          }
       }
       
@@ -375,78 +416,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
             }
             _loc5_++;
          }
-      }
-      
-      public function resetFrags() : void
-      {
-         if(this.panelListItems == null)
-         {
-            return;
-         }
-         var _loc1_:int = this.panelListItems.length;
-         var _loc2_:uint = 0;
-         while(_loc2_ < _loc1_)
-         {
-            this.panelListItems[_loc2_].setFrags(0);
-            _loc2_++;
-         }
-      }
-      
-      public function get state() : int
-      {
-         return this._state;
-      }
-      
-      public function set state(param1:int) : void
-      {
-         var _loc2_:IPlayersPanelListItem = null;
-         if(this._state == param1)
-         {
-            return;
-         }
-         for each(_loc2_ in this.panelListItems)
-         {
-            _loc2_.setState(param1);
-         }
-         this._state = param1;
-         this.initializeState();
-      }
-      
-      public function setShowDogTag(param1:Boolean) : void
-      {
-      }
-      
-      public function setChatCommandVisibility(param1:Boolean) : void
-      {
-         var _loc2_:IPlayersPanelListItem = null;
-         if(param1 == this._isChatCommVisible)
-         {
-            return;
-         }
-         this._isChatCommVisible = param1;
-         for each(_loc2_ in this.panelListItems)
-         {
-            _loc2_.setChatCommandVisibility(param1);
-         }
-      }
-      
-      public function setPanelHPBarVisibilityState(param1:uint) : void
-      {
-         var _loc2_:IPlayersPanelListItem = null;
-         if(param1 == this._HPBarVisibilityState)
-         {
-            return;
-         }
-         this._HPBarVisibilityState = param1;
-         for each(_loc2_ in this.panelListItems)
-         {
-            _loc2_.setPanelHPBarVisibilityState(param1);
-         }
-      }
-      
-      public function get isInviteReceived() : Boolean
-      {
-         return false;
       }
       
       protected function updateVehicleData() : void
@@ -489,20 +458,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       {
       }
       
-      protected function get itemLinkage() : String
-      {
-         throw new AbstractException(Errors.ABSTRACT_INVOKE);
-      }
-      
-      protected function get isRightAligned() : Boolean
-      {
-         throw new AbstractException(Errors.ABSTRACT_INVOKE);
-      }
-      
-      protected function onPlayersListItemRightClick(param1:PlayersPanelItemEvent) : void
-      {
-      }
-      
       protected function getHolderByVehicleID(param1:Number) : IPlayersPanelListItemHolder
       {
          return this._mapHolderByVehicleID[param1];
@@ -526,6 +481,15 @@ package net.wg.gui.battle.components.stats.playersPanel.list
             }
          }
          return _loc1_;
+      }
+      
+      private function initDogTag() : void
+      {
+         this._dogTag = App.utils.classFactory.getComponent(Linkages.DOGTAG,DogtagComponent);
+         this._dogTag.hideNameAndClan();
+         this._dogTag.x = -this._dogTag.width - DOG_TAG_OFFSET_X;
+         this._dogTag.goToLabel(DogtagComponent.DOGTAG_LABEL_END_FULL);
+         this._dogTag.alpha = 0;
       }
       
       private function addItem(param1:DAAPIVehicleInfoVO) : void
@@ -571,35 +535,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this._toolTipString = !!param2 ? this._locale.makeString(TOOLTIPS.ANONYMIZER_BATTLE_TEAMLIST_CLAN,{"fakeName":param1}) : this._locale.makeString(TOOLTIPS.ANONYMIZER_BATTLE_TEAMLIST_NOCLAN,{"fakeName":param1});
       }
       
-      private function onHitMouseOverHandler(param1:MouseEvent) : void
-      {
-         this._tooltipMgr.show(this._toolTipString);
-      }
-      
-      private function onHitMouseOutHandler(param1:MouseEvent) : void
-      {
-         this._tooltipMgr.hide();
-      }
-      
-      private function onHitDogTagMouseOverHandler(param1:MouseEvent) : void
-      {
-         var _loc2_:IPlayersPanelListItem = param1.currentTarget as IPlayersPanelListItem;
-         var _loc3_:IPlayersPanelListItemHolder = this._items[_loc2_.holderItemID];
-         var _loc4_:DogTagVO = _loc3_.getDogTag();
-         addChild(this._dogTag);
-         this._dogTag.setDogTagInfo(_loc4_);
-         this._dogTag.y = _loc2_.y;
-         this._dogTag.fadeIn();
-      }
-      
-      private function onHitDogTagMouseOutHandler(param1:MouseEvent) : void
-      {
-         if(this._dogTag)
-         {
-            this._dogTag.fadeOut(this.setDogTagVisibleOff);
-         }
-      }
-      
       private function setDogTagVisibleOff() : void
       {
          removeChild(this._dogTag);
@@ -630,13 +565,13 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       private function updatePlayerNameWidth() : void
       {
-         var _loc2_:int = 0;
          var _loc3_:int = 0;
          var _loc1_:int = this.panelListItems.length;
          if(!_loc1_)
          {
             return;
          }
+         var _loc2_:int = 0;
          _loc3_ = 0;
          while(_loc3_ < _loc1_)
          {
@@ -703,13 +638,88 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       private function setSquadTooltipInfo(param1:Boolean) : void
       {
          var _loc2_:IPlayersPanelListItem = null;
+         var _loc3_:PlayersPanelDynamicSquad = null;
          for each(_loc2_ in this.panelListItems)
          {
-            if(_loc2_.getDynamicSquad())
+            _loc3_ = _loc2_.getDynamicSquad();
+            if(_loc3_)
             {
-               _loc2_.getDynamicSquad().setCurrentPlayerAnonymized();
-               _loc2_.getDynamicSquad().setIsCurrentPlayerInClan(param1);
+               _loc3_.setCurrentPlayerAnonymized();
+               _loc3_.setIsCurrentPlayerInClan(param1);
             }
+         }
+      }
+      
+      public function get state() : int
+      {
+         return this._state;
+      }
+      
+      public function set state(param1:int) : void
+      {
+         var _loc2_:IPlayersPanelListItem = null;
+         if(this._state == param1)
+         {
+            return;
+         }
+         for each(_loc2_ in this.panelListItems)
+         {
+            _loc2_.setState(param1);
+         }
+         this._state = param1;
+         this.initializeState();
+      }
+      
+      public function get isInviteReceived() : Boolean
+      {
+         return false;
+      }
+      
+      protected function get itemLinkage() : String
+      {
+         throw new AbstractException(Errors.ABSTRACT_INVOKE);
+      }
+      
+      protected function get isRightAligned() : Boolean
+      {
+         throw new AbstractException(Errors.ABSTRACT_INVOKE);
+      }
+      
+      protected function onPlayersListItemRightClick(param1:PlayersPanelItemEvent) : void
+      {
+      }
+      
+      private function onHitMouseOverHandler(param1:MouseEvent) : void
+      {
+         this._tooltipMgr.show(this._toolTipString);
+      }
+      
+      private function onHitMouseOutHandler(param1:MouseEvent) : void
+      {
+         this._tooltipMgr.hide();
+      }
+      
+      private function onHitDogTagMouseOverHandler(param1:MouseEvent) : void
+      {
+         var _loc3_:IPlayersPanelListItemHolder = null;
+         var _loc4_:DogTagVO = null;
+         var _loc2_:IPlayersPanelListItem = param1.currentTarget as IPlayersPanelListItem;
+         if(_loc2_)
+         {
+            _loc3_ = this._items[_loc2_.holderItemID];
+            _loc4_ = _loc3_.getDogTag();
+            addChild(this._dogTag);
+            this._dogTag.setDogTagInfo(_loc4_);
+            this._dogTag.y = _loc2_.y;
+         }
+         this._dogTag.fadeIn();
+      }
+      
+      private function onHitDogTagMouseOutHandler(param1:MouseEvent) : void
+      {
+         if(this._dogTag)
+         {
+            this._dogTag.fadeOut(this.setDogTagVisibleOff);
          }
       }
       

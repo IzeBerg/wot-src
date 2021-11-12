@@ -165,7 +165,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
          }
       }
       
-      public function setModuleRepairing(param1:String, param2:int, param3:int, param4:Boolean = false) : void
+      public function setModuleRepairing(param1:String, param2:int, param3:int, param4:int = 0) : void
       {
          var _loc5_:ModuleAssets = null;
          var _loc6_:PartState = null;
@@ -473,9 +473,9 @@ class YohChassisState implements IDisposable
    
    public var rightTrack1:PartState;
    
-   private var prevState:String = "";
+   private var _prevState:String = "normal";
    
-   private var currentState:String = "";
+   private var _currentState:String = "normal";
    
    function YohChassisState()
    {
@@ -502,6 +502,8 @@ class YohChassisState implements IDisposable
       this.leftTrack1.reset();
       this.rightTrack1.reset();
       this.rightTrack0.reset();
+      this._prevState = BATTLE_ITEM_STATES.NORMAL;
+      this._currentState = BATTLE_ITEM_STATES.NORMAL;
    }
    
    public function getChassisState() : String
@@ -566,13 +568,13 @@ class YohChassisState implements IDisposable
    
    public function hasSameState() : Boolean
    {
-      return this.currentState == this.prevState;
+      return this._currentState == this._prevState;
    }
    
    private function saveState(param1:String) : String
    {
-      this.prevState = this.currentState;
-      this.currentState = param1;
+      this._prevState = this._currentState;
+      this._currentState = param1;
       return param1;
    }
 }
@@ -617,6 +619,7 @@ class PartState
    public function reset() : void
    {
       this.state = BATTLE_ITEM_STATES.NORMAL;
+      this.prevState = BATTLE_ITEM_STATES.NORMAL;
       this.repairTime = Values.ZERO;
       this.repairPercent = Values.ZERO;
    }

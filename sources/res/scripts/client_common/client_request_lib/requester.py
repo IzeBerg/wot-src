@@ -353,6 +353,15 @@ class MapboxAccessor(BaseAccessor):
         return self._data_source.request_authorized_survey_url(callback, mapURL)
 
 
+class GiftSystemAccessor(BaseAccessor):
+
+    def get_gift_system_state(self, callback, reqEventIds):
+        return self._data_source.get_gift_system_state(callback, reqEventIds)
+
+    def post_gift_system_gift(self, callback, entitlementCode, receiverID, metaInfo):
+        return self._data_source.post_gift_system_gift(callback, entitlementCode, receiverID, metaInfo)
+
+
 class Requester(object):
     available_data_sources = {'stagings': StagingDataAccessor, 
        'fake': FakeDataAccessor, 
@@ -372,6 +381,7 @@ class Requester(object):
     freya = RequestDescriptor(FreyaAccessor)
     craftmachine = RequestDescriptor(CrafmachineAccessor)
     mapbox = RequestDescriptor(MapboxAccessor)
+    gifts = RequestDescriptor(GiftSystemAccessor)
 
     @classmethod
     def create_requester(cls, url_fetcher, config, client_lang=None, user_agent=None):

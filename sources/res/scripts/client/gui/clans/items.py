@@ -1033,11 +1033,11 @@ class ClanInviteWrapper(object):
 
     @property
     def awgExp(self):
-        return self.getBattlesPerformanceAvg()
+        return self.getBattleXpAvg()
 
     @property
     def wins(self):
-        return self.getBattleXpAvg()
+        return self.getBattlesPerformanceAvg()
 
     @property
     def invite(self):

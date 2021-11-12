@@ -1227,11 +1227,11 @@ class RankedCustomizationsBonusFormatter(CustomizationsBonusFormatter):
         for size in AWARDS_SIZES.ALL():
             resource = R.images.gui.maps.icons.rankedBattles.bonusIcons.dyn(('style_{}').format(c11nItem.id))
             iconName = c11nItem.itemTypeName
-            if resource is None:
+            if not resource.isValid():
                 if iconName == 'style' and c11nItem.modelsSet:
                     iconName = 'style_3d'
                 resource = R.images.gui.maps.icons.quests.bonuses.dyn(size).dyn(iconName)
-            if resource:
+            if resource.isValid():
                 result[size] = backport.image(resource())
 
         return result

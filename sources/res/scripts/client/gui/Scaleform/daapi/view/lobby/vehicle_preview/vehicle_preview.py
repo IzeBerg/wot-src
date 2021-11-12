@@ -352,7 +352,8 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
     def _getExitEvent(self):
         hangarVehicleCD = None
         hangarVehicle = self.__hangarSpace.getVehicleEntity()
-        if self.__isHeroTank and hangarVehicle.typeDescriptor.type.compactDescr != g_currentVehicle.item.compactDescr:
+        currentVehicle = g_currentVehicle.item
+        if self.__isHeroTank and currentVehicle is not None and hangarVehicle.typeDescriptor.type.compactDescr != currentVehicle.compactDescr:
             hangarVehicleCD = hangarVehicle.typeDescriptor.type.compactDescr
         return events.LoadViewEvent(SFViewLoadParams(self.alias), ctx={'itemCD': self._vehicleCD, 
            'previewAlias': self._backAlias, 

@@ -91,6 +91,10 @@ package
       
       public static const TOOLTIP_RENTED_BODY:String = "#tank_carousel_filter:tooltip/rented/body";
       
+      public static const TOOLTIP_RANKED_HEADER:String = "#tank_carousel_filter:tooltip/ranked/header";
+      
+      public static const TOOLTIP_RANKED_BODY:String = "#tank_carousel_filter:tooltip/ranked/body";
+      
       public static const TOOLTIP_EVENT_HEADER:String = "#tank_carousel_filter:tooltip/event/header";
       
       public static const TOOLTIP_EVENT_BODY:String = "#tank_carousel_filter:tooltip/event/body";

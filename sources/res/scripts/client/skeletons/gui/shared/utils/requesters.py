@@ -326,6 +326,10 @@ class IStatsRequester(IRequester):
         raise NotImplementedError
 
     @property
+    def entitlements(self):
+        raise NotImplementedError
+
+    @property
     def dummySessionStats(self):
         raise NotImplementedError
 
@@ -1065,4 +1069,11 @@ class IOffersRequester(IRequester):
         raise NotImplementedError
 
     def getReceivedGifts(self, offerID):
+        raise NotImplementedError
+
+
+class IGiftSystemRequester(IRequester):
+
+    @property
+    def isHistoryReady(self):
         raise NotImplementedError

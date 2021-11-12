@@ -11,7 +11,7 @@ from tutorial.control.context import GLOBAL_FLAG, GlobalStorage
 from tutorial.control.listener import AppLoaderListener
 from tutorial.doc_loader import loadDescriptorData
 from tutorial.hints_manager import HintsManager
-from skeletons.gui.game_control import IBootcampController
+from skeletons.gui.game_control import IBootcampController, IDemoAccCompletionController
 from soft_exception import SoftException
 if typing.TYPE_CHECKING:
     from tutorial.core import Tutorial
@@ -56,6 +56,7 @@ class RunCtx(object):
 
 
 class TutorialLoader(ITutorialLoader):
+    demoAccController = dependency.descriptor(IDemoAccCompletionController)
 
     def __init__(self):
         super(TutorialLoader, self).__init__()
@@ -179,7 +180,7 @@ class TutorialLoader(ITutorialLoader):
         self.__restoreID = _SETTINGS.QUESTS.id
         bootcampController = dependency.instance(IBootcampController)
         isInBootcampAccount = bootcampController.isInBootcampAccount()
-        if isInBootcampAccount:
+        if isInBootcampAccount and not self.demoAccController.isInDemoAccRegistration:
             selectedSettings = self.__doAutoRun((_SETTINGS.OFFBATTLE, _SETTINGS.QUESTS,
              _SETTINGS.BOOTCAMP_LOBBY), state)
         else:

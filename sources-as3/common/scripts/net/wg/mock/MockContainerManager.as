@@ -60,15 +60,7 @@ package net.wg.mock
       {
       }
       
-      public function setVisibleContainers(param1:Boolean, param2:Vector.<int>) : void
-      {
-      }
-      
       public function show(param1:Array) : void
-      {
-      }
-      
-      public function storeVisibleContainers() : void
       {
       }
       

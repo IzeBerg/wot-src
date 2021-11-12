@@ -1067,15 +1067,23 @@ package
       
       public static const BATTLETYPES_RANKED_RANK_REWARD:String = "#tooltips:battleTypes/ranked/rank/reward";
       
+      public static const BATTLETYPES_RANKED_RANK_QUALIFICATIONREWARD:String = "#tooltips:battleTypes/ranked/rank/qualificationReward";
+      
       public static const BATTLETYPES_RANKED_RANK_AWARD_RECEIVED:String = "#tooltips:battleTypes/ranked/rank/award/received";
       
       public static const BATTLETYPES_RANKED_RANK_STATUS_RECEIVED:String = "#tooltips:battleTypes/ranked/rank/status/received";
       
+      public static const BATTLETYPES_RANKED_RANK_STATUS_RECEIVEDQUALIFICATION:String = "#tooltips:battleTypes/ranked/rank/status/receivedQualification";
+      
       public static const BATTLETYPES_RANKED_RANK_STATUS_NOTEARNED:String = "#tooltips:battleTypes/ranked/rank/status/notearned";
+      
+      public static const BATTLETYPES_RANKED_RANK_STATUS_QUALIFICATIONNOTEARNED:String = "#tooltips:battleTypes/ranked/rank/status/qualificationNotEarned";
       
       public static const BATTLETYPES_RANKED_RANK_STATUS_LOST:String = "#tooltips:battleTypes/ranked/rank/status/lost";
       
       public static const BATTLETYPES_RANKED_RANK_CONDITIONS:String = "#tooltips:battleTypes/ranked/rank/conditions";
+      
+      public static const BATTLETYPES_RANKED_RANK_CONDITIONS_QUALIFICATION:String = "#tooltips:battleTypes/ranked/rank/conditions/qualification";
       
       public static const BATTLETYPES_RANKED_RANK_CONDITIONS_FIRST:String = "#tooltips:battleTypes/ranked/rank/conditions/first";
       
@@ -3837,9 +3845,9 @@ package
       
       public static const AWARDITEM_RANKED_2020_DISCOUNT_BODY:String = "#tooltips:awardItem/ranked_2020_discount/body";
       
-      public static const AWARDITEM_RANKED_202109_ACCESS_HEADER:String = "#tooltips:awardItem/ranked_202109_access/header";
+      public static const AWARDITEM_RANKED_202201_ACCESS_HEADER:String = "#tooltips:awardItem/ranked_202201_access/header";
       
-      public static const AWARDITEM_RANKED_202109_ACCESS_BODY:String = "#tooltips:awardItem/ranked_202109_access/body";
+      public static const AWARDITEM_RANKED_202201_ACCESS_BODY:String = "#tooltips:awardItem/ranked_202201_access/body";
       
       public static const AWARDITEM_RANKEDDAILYBATTLES_HEADER:String = "#tooltips:awardItem/rankedDailyBattles/header";
       
@@ -5921,6 +5929,30 @@ package
       
       public static const NOTRECRUITEDTANKMAN_HW19_COMMANDERS_DESC:String = "#tooltips:notrecruitedtankman/hw19_commanders/desc";
       
+      public static const NOTRECRUITEDTANKMAN_HW21_COMMANDER1_LABEL:String = "#tooltips:notrecruitedtankman/hw21_commander1/label";
+      
+      public static const NOTRECRUITEDTANKMAN_HW21_COMMANDER1_DESC:String = "#tooltips:notrecruitedtankman/hw21_commander1/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_HW21_COMMANDER1_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/hw21_commander1/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_HW21_COMMANDER2_LABEL:String = "#tooltips:notrecruitedtankman/hw21_commander2/label";
+      
+      public static const NOTRECRUITEDTANKMAN_HW21_COMMANDER2_DESC:String = "#tooltips:notrecruitedtankman/hw21_commander2/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_HW21_COMMANDER2_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/hw21_commander2/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_HW21_COMMANDER4_LABEL:String = "#tooltips:notrecruitedtankman/hw21_commander4/label";
+      
+      public static const NOTRECRUITEDTANKMAN_HW21_COMMANDER4_DESC:String = "#tooltips:notrecruitedtankman/hw21_commander4/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_HW21_COMMANDER4_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/hw21_commander4/howToGetInfo";
+      
+      public static const NOTRECRUITEDTANKMAN_HW21_COMMANDER5_LABEL:String = "#tooltips:notrecruitedtankman/hw21_commander5/label";
+      
+      public static const NOTRECRUITEDTANKMAN_HW21_COMMANDER5_DESC:String = "#tooltips:notrecruitedtankman/hw21_commander5/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_HW21_COMMANDER5_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/hw21_commander5/howToGetInfo";
+      
       public static const NOTRECRUITEDTANKMAN_COMMANDER_BP1_LABEL:String = "#tooltips:notrecruitedtankman/commander_bp1/label";
       
       public static const NOTRECRUITEDTANKMAN_COMMANDER_BP1_DESC:String = "#tooltips:notrecruitedtankman/commander_bp1/desc";
@@ -5968,6 +6000,30 @@ package
       public static const NOTRECRUITEDTANKMAN_COMMANDER_TWITCH_ERMELINDA_LABEL:String = "#tooltips:notrecruitedtankman/commander_twitch_ermelinda/label";
       
       public static const NOTRECRUITEDTANKMAN_COMMANDER_TWITCH_ERMELINDA_DESC:String = "#tooltips:notrecruitedtankman/commander_twitch_ermelinda/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_BJORNSON_LABEL:String = "#tooltips:notrecruitedtankman/commander_bjornson/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_BJORNSON_DESC:String = "#tooltips:notrecruitedtankman/commander_bjornson/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_YHA_COMMANDER_LABEL:String = "#tooltips:notrecruitedtankman/yha_commander/label";
+      
+      public static const NOTRECRUITEDTANKMAN_YHA_COMMANDER_DESC:String = "#tooltips:notrecruitedtankman/yha_commander/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_YHA_DRIVER_LABEL:String = "#tooltips:notrecruitedtankman/yha_driver/label";
+      
+      public static const NOTRECRUITEDTANKMAN_YHA_DRIVER_DESC:String = "#tooltips:notrecruitedtankman/yha_driver/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_YHA_GUNNER_LABEL:String = "#tooltips:notrecruitedtankman/yha_gunner/label";
+      
+      public static const NOTRECRUITEDTANKMAN_YHA_GUNNER_DESC:String = "#tooltips:notrecruitedtankman/yha_gunner/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_YHA_LOADER_LABEL:String = "#tooltips:notrecruitedtankman/yha_loader/label";
+      
+      public static const NOTRECRUITEDTANKMAN_YHA_LOADER_DESC:String = "#tooltips:notrecruitedtankman/yha_loader/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_YHA_RADIOMAN_LABEL:String = "#tooltips:notrecruitedtankman/yha_radioman/label";
+      
+      public static const NOTRECRUITEDTANKMAN_YHA_RADIOMAN_DESC:String = "#tooltips:notrecruitedtankman/yha_radioman/desc";
       
       public static const QUESTS_AWARDS_VEHICLERENT_HEADER:String = "#tooltips:quests/awards/vehicleRent/header";
       
@@ -6423,6 +6479,10 @@ package
       
       public static const ACCOUNTCOMPLETION_EMAIL_TITLETOOLTIP:String = "#tooltips:accountCompletion/email/titleTooltip";
       
+      public static const ACCOUNTCOMPLETION_CREDENTIALS_SUBTITLE_HEADER:String = "#tooltips:accountCompletion/credentials/subtitle/header";
+      
+      public static const ACCOUNTCOMPLETION_CREDENTIALS_SUBTITLE_BODY:String = "#tooltips:accountCompletion/credentials/subtitle/body";
+      
       public static const MODE_SELECTOR_UNAVAILABLE_TECHPROBLEMS:String = "#tooltips:mode_selector/unavailable/techProblems";
       
       public static const MODE_SELECTOR_UNAVAILABLE_BOOTCAMP:String = "#tooltips:mode_selector/unavailable/bootcamp";
@@ -6541,6 +6601,16 @@ package
       
       public static const IDLE_CREW_TOOLTIP_WARNINGINCOMPLETE:String = "#tooltips:idle_crew_tooltip/warningIncomplete";
       
+      public static const DEMOACCOUNTRENAMINGHANGAR_TITLE:String = "#tooltips:demoAccountRenamingHangar/title";
+      
+      public static const DEMOACCOUNTRENAMINGHANGAR_TEXT:String = "#tooltips:demoAccountRenamingHangar/text";
+      
+      public static const DEMOACCOUNTRENAMINGHANGAR_HOLDER:String = "#tooltips:demoAccountRenamingHangar/holder";
+      
+      public static const DEMOACCOUNTRENAMING_NOTAVAILABLE_HEADER:String = "#tooltips:demoAccountRenaming/notAvailable/header";
+      
+      public static const DEMOACCOUNTRENAMING_NOTAVAILABLE_BODY:String = "#tooltips:demoAccountRenaming/notAvailable/body";
+      
       public static const VEHPOSTPROGRESSIONVIEW_BUTTON_COMPARE_DISABLED_HEADER:String = "#tooltips:vehPostProgressionView/button/compare/disabled/header";
       
       public static const VEHPOSTPROGRESSIONVIEW_BUTTON_COMPARE_DISABLED_BODY:String = "#tooltips:vehPostProgressionView/button/compare/disabled/body";
@@ -6568,6 +6638,22 @@ package
       public static const PREBATTLE_DOWNBUTTON_UNAVAILABLE:String = "#tooltips:prebattle/downButton/unavailable";
       
       public static const PREBATTLE_HASPERMISSIONS:String = "#tooltips:prebattle/hasPermissions";
+      
+      public static const NOTRECRUITEDTANKMAN_WT2021_HUNTER_1_DESC:String = "#tooltips:notrecruitedtankman/wt2021_hunter_1/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_WT2021_HUNTER_1_LABEL:String = "#tooltips:notrecruitedtankman/wt2021_hunter_1/label";
+      
+      public static const NOTRECRUITEDTANKMAN_WT2021_HUNTER_2_DESC:String = "#tooltips:notrecruitedtankman/wt2021_hunter_2/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_WT2021_HUNTER_2_LABEL:String = "#tooltips:notrecruitedtankman/wt2021_hunter_2/label";
+      
+      public static const NOTRECRUITEDTANKMAN_WT2021_HUNTER_3_DESC:String = "#tooltips:notrecruitedtankman/wt2021_hunter_3/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_WT2021_HUNTER_3_LABEL:String = "#tooltips:notrecruitedtankman/wt2021_hunter_3/label";
+      
+      public static const NOTRECRUITEDTANKMAN_WT2021_BOSS_DESC:String = "#tooltips:notrecruitedtankman/wt2021_boss/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_WT2021_BOSS_LABEL:String = "#tooltips:notrecruitedtankman/wt2021_boss/label";
       
       public static const ELEN_SUMMARY_RANK_ENUM:Array = [ELEN_SUMMARY_RANK_1,ELEN_SUMMARY_RANK_2,ELEN_SUMMARY_RANK_3,ELEN_SUMMARY_RANK_4,ELEN_SUMMARY_RANK_NORANK];
       

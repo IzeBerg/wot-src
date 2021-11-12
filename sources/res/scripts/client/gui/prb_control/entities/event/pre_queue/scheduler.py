@@ -1,20 +1,35 @@
-from gui.prb_control.entities.base.pre_queue.ctx import LeavePreQueueCtx
 from gui.prb_control.entities.base.scheduler import BaseScheduler
+from gui.prb_control.events_dispatcher import g_eventDispatcher
+from gui.periodic_battles.models import PrimeTimeStatus
 from helpers import dependency
-from skeletons.gui.server_events import IEventsCache
+from skeletons.gui.game_control import IEventBattlesController
 
 class EventScheduler(BaseScheduler):
-    _eventsCache = dependency.descriptor(IEventsCache)
+    __eventBattlesCtrl = dependency.descriptor(IEventBattlesController)
+
+    def __init__(self, entity):
+        super(EventScheduler, self).__init__(entity)
+        self.__isPrimeTime = False
+        self.__isConfigured = False
 
     def init(self):
-        self._eventsCache.onSyncCompleted += self._onSyncCompleted
+        status, _, _ = self.__eventBattlesCtrl.getPrimeTimeStatus()
+        self.__isPrimeTime = status == PrimeTimeStatus.AVAILABLE
+        self.__isConfigured = status != PrimeTimeStatus.NOT_SET
+        self.__eventBattlesCtrl.onPrimeTimeStatusUpdated += self.__update
+        self.__show(status, isInit=True)
 
     def fini(self):
-        self._eventsCache.onSyncCompleted -= self._onSyncCompleted
+        self.__eventBattlesCtrl.onPrimeTimeStatusUpdated -= self.__update
 
-    def _onSyncCompleted(self, *_):
-        if not self._eventsCache.isEventEnabled():
-            self._doLeave()
+    def __update(self, status):
+        isPrimeTime = status == PrimeTimeStatus.AVAILABLE
+        isConfigured = status != PrimeTimeStatus.NOT_SET
+        if isPrimeTime != self.__isPrimeTime or isConfigured != self.__isConfigured:
+            self.__isPrimeTime = isPrimeTime
+            self.__isConfigured = isConfigured
+            self.__show(status)
+            g_eventDispatcher.updateUI()
 
-    def _doLeave(self):
-        self._entity.leave(LeavePreQueueCtx(waitingID='prebattle/leave'))
+    def __show(self, status, isInit=False):
+        pass

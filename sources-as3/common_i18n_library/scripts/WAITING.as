@@ -227,6 +227,8 @@ package
       
       public static const DOWNLOAD_BATTLEPASS:String = "#waiting:download/battlePass";
       
+      public static const DOWNLOAD_GIFTSYSTEM:String = "#waiting:download/giftSystem";
+      
       public static const UPDATINGSKILLWINDOW:String = "#waiting:updatingSkillWindow";
       
       public static const PREBATTLE_CREATE:String = "#waiting:prebattle/create";

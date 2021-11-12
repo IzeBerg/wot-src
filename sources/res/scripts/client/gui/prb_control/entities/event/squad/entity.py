@@ -15,11 +15,11 @@ from gui.prb_control.settings import PREBATTLE_ACTION_NAME, FUNCTIONAL_FLAG
 from gui.shared.utils import getPlayerDatabaseID
 from gui.shared.utils.decorators import ReprInjector
 from gui.prb_control import settings as prb_settings
-from helpers import dependency
 from gui.prb_control.entities.event.squad.scheduler import EventSquadScheduler
-from skeletons.gui.server_events import IEventsCache
 from gui.prb_control.storages import prequeue_storage_getter
 from gui.prb_control.entities.base import vehicleAmmoCheck
+from helpers import dependency
+from skeletons.gui.game_control import IEventBattlesController
 
 @ReprInjector.withParent()
 class EventSquadSettingsCtx(SquadSettingsCtx):
@@ -50,7 +50,7 @@ class EventBattleSquadEntryPoint(SquadEntryPoint):
 
 
 class EventBattleSquadEntity(SquadEntity):
-    eventsCache = dependency.descriptor(IEventsCache)
+    __eventBattlesCtrl = dependency.descriptor(IEventBattlesController)
 
     def __init__(self):
         super(EventBattleSquadEntity, self).__init__(FUNCTIONAL_FLAG.EVENT, PREBATTLE_TYPE.EVENT)
@@ -100,7 +100,7 @@ class EventBattleSquadEntity(SquadEntity):
             return
 
     def getConfirmDialogMeta(self, ctx):
-        if not self.eventsCache.isEventEnabled():
+        if not self.__eventBattlesCtrl.isEnabled():
             self.__showDialog(ctx)
             return None
         else:

@@ -3,6 +3,7 @@ package net.wg.gui.battle.views.battleMessenger.actionPanel
    import flash.display.Sprite;
    import flash.events.MouseEvent;
    import flash.utils.Dictionary;
+   import net.wg.data.constants.InteractiveStates;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.ATLAS_CONSTANTS;
    import net.wg.data.constants.generated.BATTLEATLAS;
@@ -28,6 +29,8 @@ package net.wg.gui.battle.views.battleMessenger.actionPanel
       private static const BLACK_LIST_BTN_Y_POS:int = 2;
       
       private static const BG_SHAPE_TOP_PADDING:int = -2;
+      
+      private static const BTN_STATE_NAME:String = "_blackListBtn";
        
       
       public var onClickButtonCallback:Function = null;
@@ -179,15 +182,20 @@ package net.wg.gui.battle.views.battleMessenger.actionPanel
       
       private function updateBlackListButton(param1:ButtonToxicStatusVO, param2:BattleStateButton, param3:Dictionary) : Number
       {
-         var _loc4_:Number = param1.status;
-         var _loc5_:Boolean = param1.enabled;
+         var _loc4_:Number = NaN;
+         var _loc5_:Boolean = false;
+         var _loc6_:String = null;
+         var _loc7_:Object = null;
+         _loc4_ = param1.status;
+         _loc5_ = param1.enabled;
          if(this._blackListState == _loc4_ && param2.enabled == _loc5_)
          {
             return this._blackListState;
          }
-         var _loc6_:String = param1.tooltip;
-         var _loc7_:Object = param3[_loc4_];
+         _loc6_ = param1.tooltip;
+         _loc7_ = param3[_loc4_];
          param2.clearAllStates();
+         param2.state = InteractiveStates.UP;
          param2.tooltipStr = _loc6_;
          param2.setUpOutState(_loc7_.defaultState);
          param2.setOverState(_loc7_.hoverState);
@@ -202,6 +210,7 @@ package net.wg.gui.battle.views.battleMessenger.actionPanel
       private function buttonsConfig() : void
       {
          this._blackListButton = new BattleStateButton();
+         this._blackListButton.name = BTN_STATE_NAME;
          this.setAtlasProperties(this._blackListButton);
          this._blackListButton.addClickCallBack(this);
          this._blackListButton.x = BLACK_LIST_BTN_X_POS;

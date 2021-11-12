@@ -178,6 +178,7 @@ UNLOCK_VEHICLES_IN_BATTLE_HINTS = 'unlockVehiclesInBattleHints'
 BECOME_ELITE_VEHICLES_WATCHED = 'becomeEliteWatched'
 VPP_ENTRY_POINT_LAST_SEEN_STEP = 'vehiclePostProgressionLastSeenStep'
 CLAN_PREBATTLE_SORTING_KEY = 'ClanPrebattleSortingKey'
+SHOW_DEMO_ACC_REGISTRATION = 'showDemoAccRegistration'
 KNOWN_SELECTOR_BATTLES = 'knownSelectorBattles'
 MODE_SELECTOR_BATTLE_PASS_SHOWN = 'modeSelectorBattlePassShown'
 RANKED_LAST_CYCLE_ID = 'rankedLastCycleID'
@@ -318,7 +319,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                             'level_7': False, 
                                             'level_8': False, 
                                             'level_9': False, 
-                                            'level_10': True}, 
+                                            'level_10': False}, 
                  RANKED_CAROUSEL_FILTER_2: {'premium': False, 
                                             'elite': False, 
                                             'igr': False, 
@@ -328,6 +329,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                             'favorite': False, 
                                             'bonus': False, 
                                             'crystals': False, 
+                                            'ranked': True, 
                                             'role_HT_assault': False, 
                                             'role_HT_break': False, 
                                             'role_HT_universal': False, 
@@ -641,7 +643,8 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                              'isGoldReserveEnabled': True, 
                              'isPassiveXpEnabled': True, 
                              'isTankRentalEnabled': True, 
-                             'isFreeDirectivesEnabled': True}, 
+                             'isFreeDirectivesEnabled': True, 
+                             'rentPendingVehCD': None}, 
                   CUSTOMIZATION_SECTION: {CAROUSEL_ARROWS_HINT_SHOWN_FIELD: False, 
                                           PROJECTION_DECAL_HINT_SHOWN_FIELD: False}, 
                   SESSION_STATS_SECTION: {BATTLE_EFFICIENCY_SECTION_EXPANDED_FIELD: False}, 'showVehModelsOnMap': 0, 
@@ -778,7 +781,8 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   MAPBOX_PROGRESSION: {'previous_battles_played': 0, 
                                        'visited_maps': [], 'stored_rewards': {}, 'lastCycleId': None}, 
                   UNLOCK_VEHICLES_IN_BATTLE_HINTS: 5, 
-                  MODE_SELECTOR_BATTLE_PASS_SHOWN: {}, RANKED_LAST_CYCLE_ID: None}, 
+                  MODE_SELECTOR_BATTLE_PASS_SHOWN: {}, RANKED_LAST_CYCLE_ID: None, 
+                  SHOW_DEMO_ACC_REGISTRATION: False}, 
    KEY_COUNTERS: {NEW_HOF_COUNTER: {PROFILE_CONSTANTS.HOF_ACHIEVEMENTS_BUTTON: True, 
                                     PROFILE_CONSTANTS.HOF_VEHICLES_BUTTON: True, 
                                     PROFILE_CONSTANTS.HOF_VIEW_RATING_BUTTON: True}, 
@@ -933,7 +937,7 @@ def _recursiveStep(defaultDict, savedDict, finalDict):
 
 class AccountSettings(object):
     onSettingsChanging = Event.Event()
-    version = 47
+    version = 49
     settingsCore = dependency.descriptor(ISettingsCore)
     __cache = {'login': None, 'section': None}
     __sessionSettings = {'login': None, 'section': None}
@@ -1437,6 +1441,26 @@ class AccountSettings(object):
                         defaults = AccountSettings.getFilterDefault(filterSection)
                         updatedFilters = {key:savedFilters.get(key, defaults[key]) for key in defaults}
                         filtersSection.write(filterSection, _pack(updatedFilters))
+
+            if currVersion < 48:
+                pass
+            if currVersion < 49:
+                for key, section in _filterAccountSection(ads):
+                    filtersSection = AccountSettings._readSection(section, KEY_FILTERS)
+                    existingSections = set(filtersSection.keys()).intersection((
+                     CAROUSEL_FILTER_CLIENT_1,
+                     RANKED_CAROUSEL_FILTER_CLIENT_1,
+                     ROYALE_CAROUSEL_FILTER_CLIENT_1,
+                     EPICBATTLE_CAROUSEL_FILTER_CLIENT_1,
+                     EPICBATTLE_CAROUSEL_FILTER_CLIENT_2,
+                     MAPBOX_CAROUSEL_FILTER_CLIENT_1,
+                     STORAGE_VEHICLES_CAROUSEL_FILTER_1,
+                     STORAGE_BLUEPRINTS_CAROUSEL_FILTER))
+                    for filterSection in existingSections:
+                        savedFilters = _unpack(filtersSection[filterSection].asString)
+                        if 'clanRented' in savedFilters:
+                            savedFilters['clanRented'] = False
+                        filtersSection.write(filterSection, _pack(savedFilters))
 
         return
 

@@ -1,4 +1,5 @@
 import SoundGroups
+from gui.Scaleform.genConsts.RANKEDBATTLES_ALIASES import RANKEDBATTLES_ALIASES
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.ranked_battles.ranked_helpers.sound_manager import RANKED_OVERLAY_SOUND_SPACE
@@ -29,6 +30,10 @@ class PostbattleRankedAwardsView(RankedBattlesAwardsViewMeta):
         self.as_setDataS({'vosSequence': vosSequence, 
            'title': backport.text(R.strings.ranked_battles.awards.congratulation()), 
            'nextButtonLabel': backport.text(R.strings.ranked_battles.awards.yes())})
+
+    def _dispose(self):
+        self.onSoundTrigger(RANKEDBATTLES_ALIASES.SOUND_AWARD_QUALIFICATION_STOP)
+        super(PostbattleRankedAwardsView, self)._dispose()
 
     def __close(self):
         self.destroy()

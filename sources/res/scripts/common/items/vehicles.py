@@ -2732,8 +2732,7 @@ _itemGetters = {ITEM_TYPES.vehicle: lambda nationID, compTypeID: g_cache.vehicle
    ITEM_TYPES.vehicleRadio: lambda nationID, compTypeID: g_cache.radios(nationID)[compTypeID], 
    ITEM_TYPES.vehicleChassis: lambda nationID, compTypeID: g_cache.chassis(nationID)[compTypeID], 
    ITEM_TYPES.vehicleFuelTank: lambda nationID, compTypeID: g_cache.fuelTanks(nationID)[compTypeID], 
-   ITEM_TYPES.customizationItem: lambda cType, compTypeID: g_cache.customization20().itemTypes[cType][compTypeID], 
-   ITEM_TYPES.slot: lambda _, compTypeID: g_cache.supplySlots().getSlotDescr(compTypeID)}
+   ITEM_TYPES.customizationItem: lambda cType, compTypeID: g_cache.customization20().itemTypes[cType][compTypeID]}
 VEHICLE_ITEM_TYPES = _itemGetters.keys()
 
 def isVehicleTypeCompactDescr(vehDescr):
@@ -6246,15 +6245,19 @@ def __readDamagedStateEffects(xmlCtx, damagedStateGroupName, personalEffects, ca
 
 def __readNormalEffects(xmlCtx, section, personalEffects, cachedEffects, defaultEffects):
     res = {}
+    isPersonalEffects = personalEffects is not None and len(personalEffects) > 0
     for effectKind in _vehicleEffectKindNames:
-        effect = personalEffects.get(effectKind) if personalEffects is not None and len(personalEffects) > 0 else None
-        if effect is None:
+        effect = personalEffects.get(effectKind) if isPersonalEffects else None
+        if not effect:
             subsection = section[effectKind]
             if subsection is not None:
                 effectName = subsection.asString
-                effect = cachedEffects.get(effectName)
-                if effect is None:
-                    _xml.raiseWrongXml((xmlCtx, section.asString), effectKind, 'missing or wrong effect name')
+                if effectName:
+                    effect = cachedEffects.get(effectName)
+                    if effect is None:
+                        _xml.raiseWrongXml((xmlCtx, section.asString), effectKind, 'missing or wrong effect name')
+                else:
+                    effect = []
             elif defaultEffects is not None:
                 effect = defaultEffects.get(effectKind)
         if effect is not None:

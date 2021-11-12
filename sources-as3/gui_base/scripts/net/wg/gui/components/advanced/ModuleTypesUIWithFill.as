@@ -3,21 +3,26 @@ package net.wg.gui.components.advanced
    import flash.display.Sprite;
    import flash.events.Event;
    import net.wg.data.constants.Errors;
-   import net.wg.gui.components.controls.BitmapFill;
    import net.wg.gui.components.controls.Image;
    import net.wg.infrastructure.base.UIComponentEx;
    
    public class ModuleTypesUIWithFill extends UIComponentEx
    {
       
-      private static const INV_MODULE_ICON_POS:String = "invModuleIconPos";
-      
       protected static const MODULE_TYPE_NONE:String = "none";
       
-      private static const ERROR_NO_MODULE_ICON:String = "[ModuleTypesUIWithFill] moduleIcon ";
-       
+      private static const INV_MODULE_ICON_POS:String = "invModuleIconPos";
       
-      public var extraIconBitmapFill:BitmapFill = null;
+      private static const INV_EXTRA_ICON_POS:String = "invExtraIconPos";
+      
+      private static const ERROR_NO_MODULE_ICON:String = "[ModuleTypesUIWithFill] moduleIcon ";
+      
+      private static const EXTRA_ICON_PADDING_RIGHT:int = 2;
+      
+      private static const EXTRA_ICON_PADDING_BOTTOM:int = 2;
+      
+      private static const EXTRA_ICON_NAME:String = "extraIconImage";
+       
       
       public var moduleIcon:Image = null;
       
@@ -35,13 +40,9 @@ package net.wg.gui.components.advanced
       override protected function configUI() : void
       {
          super.configUI();
-         if(!this._isExtraIconShowedBeforeInit)
-         {
-            this.hideExtraIcon();
-         }
          if(this.moduleIcon != null)
          {
-            this.moduleIcon.addEventListener(Event.CHANGE,this.onModuleIconHandler);
+            this.moduleIcon.addEventListener(Event.CHANGE,this.onModuleIconChangeHandler);
          }
          else
          {
@@ -53,28 +54,32 @@ package net.wg.gui.components.advanced
       {
          if(this._extraIcon != null)
          {
-            this._extraIcon.removeEventListener(Event.CHANGE,this.onIconLoadedHandler);
+            this._extraIcon.removeEventListener(Event.CHANGE,this.onIconChangeHandler);
             this._extraIcon.dispose();
             this._extraIcon = null;
          }
-         this.extraIconBitmapFill.dispose();
-         this.extraIconBitmapFill = null;
          if(this.moduleIcon != null)
          {
-            this.moduleIcon.removeEventListener(Event.CHANGE,this.onModuleIconHandler);
+            this.moduleIcon.removeEventListener(Event.CHANGE,this.onModuleIconChangeHandler);
             this.moduleIcon.dispose();
             this.moduleIcon = null;
          }
+         this.bg = null;
          super.onDispose();
       }
       
       override protected function draw() : void
       {
          super.draw();
-         if(INV_MODULE_ICON_POS && this.moduleIcon)
+         if(this.moduleIcon && isInvalid(INV_MODULE_ICON_POS))
          {
             this.moduleIcon.x = (this.bg.width - this.moduleIcon.width) * scaleX >> 1;
             this.moduleIcon.y = (this.bg.height - this.moduleIcon.height) * scaleY >> 1;
+         }
+         if(this._extraIcon && isInvalid(INV_EXTRA_ICON_POS))
+         {
+            this._extraIcon.x = this.bg.width - this._extraIcon.width - EXTRA_ICON_PADDING_RIGHT | 0;
+            this._extraIcon.y = this.bg.height - this._extraIcon.height - EXTRA_ICON_PADDING_BOTTOM | 0;
          }
       }
       
@@ -84,21 +89,21 @@ package net.wg.gui.components.advanced
          {
             this._isExtraIconShowedBeforeInit = false;
          }
-         this.extraIconBitmapFill.visible = false;
-      }
-      
-      public function setExtraIconByLinkage(param1:String) : void
-      {
-         this.extraIconBitmapFill.source = param1;
-         this.extraIconBitmapFill.validateNow();
+         if(this._extraIcon)
+         {
+            this._extraIcon.visible = false;
+         }
       }
       
       public function setExtraIconBySource(param1:String) : void
       {
-         if(this._extraIcon == null)
+         if(!this._extraIcon)
          {
             this._extraIcon = new Image();
-            this._extraIcon.addEventListener(Event.CHANGE,this.onIconLoadedHandler);
+            this._extraIcon.name = EXTRA_ICON_NAME;
+            this._extraIcon.addEventListener(Event.CHANGE,this.onIconChangeHandler);
+            this._extraIcon.visible = this._isExtraIconShowedBeforeInit;
+            addChild(this._extraIcon);
          }
          this._extraIcon.source = param1;
       }
@@ -126,38 +131,28 @@ package net.wg.gui.components.advanced
          {
             this._isExtraIconShowedBeforeInit = true;
          }
-         this.extraIconBitmapFill.visible = true;
-      }
-      
-      public function set extraIconX(param1:Number) : void
-      {
-         this.extraIconBitmapFill.x = param1;
-      }
-      
-      public function set extraIconY(param1:Number) : void
-      {
-         this.extraIconBitmapFill.y = param1;
-      }
-      
-      public function get extraIconAlpha() : Number
-      {
-         return this.extraIconBitmapFill.alpha;
+         if(this._extraIcon)
+         {
+            this._extraIcon.visible = true;
+         }
       }
       
       public function set extraIconAlpha(param1:Number) : void
       {
-         this.extraIconBitmapFill.alpha = param1;
+         if(this._extraIcon)
+         {
+            this._extraIcon.alpha = param1;
+         }
       }
       
-      private function onModuleIconHandler(param1:Event) : void
+      private function onModuleIconChangeHandler(param1:Event) : void
       {
          invalidate(INV_MODULE_ICON_POS);
       }
       
-      private function onIconLoadedHandler(param1:Event) : void
+      private function onIconChangeHandler(param1:Event) : void
       {
-         this.extraIconBitmapFill.setBitmap(this._extraIcon.bitmapData);
-         this.extraIconBitmapFill.validateNow();
+         invalidate(INV_EXTRA_ICON_POS);
       }
    }
 }

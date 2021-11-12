@@ -191,6 +191,7 @@ class BrowserEvent(HasCtxEvent):
 
 class ShowDialogEvent(SharedEvent):
     SHOW_SIMPLE_DLG = 'showSimpleDialog'
+    SHOW_BUTTON_DLG = 'showButtonDialog'
     SHOW_ICON_DIALOG = 'showIconDialog'
     SHOW_ICON_PRICE_DIALOG = 'showIconPriceDialog'
     SHOW_CREW_SKINS_COMPENSATION_DIALOG = 'showCrewSkinsCompensationDialog'
@@ -617,7 +618,6 @@ class VehicleBuyEvent(HasCtxEvent):
 class HangarVehicleEvent(HasCtxEvent):
     ON_HERO_TANK_LOADED = 'hangarVehicle/onHeroTankLoaded'
     ON_HERO_TANK_DESTROY = 'hangarVehicle/onHeroTankDestroy'
-    HERO_TANK_MARKER = 'hangarVehicle/heroTankMarker'
     ON_PLATOON_TANK_LOADED = 'hangarVehicle/onPlatoonTankLoaded'
     ON_PLATOON_TANK_DESTROY = 'hangarVehicle/onPlatoonTankDestroy'
     PLATOON_TANK_MARKER = 'hangarVehicle/platoonTankMarker'

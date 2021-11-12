@@ -98,6 +98,9 @@ class MinimapComponent(MinimapMeta, IMinimapComponent):
     def isModalViewShown(self):
         return self.app is not None and self.app.isModalViewShown()
 
+    def canChangeAlpha(self):
+        return True
+
     def getPlugin(self, name):
         if self.__plugins is not None:
             return self.__plugins.getPlugin(name)

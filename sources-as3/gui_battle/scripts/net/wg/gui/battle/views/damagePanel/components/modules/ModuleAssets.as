@@ -157,7 +157,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
          this.applyState(this._moduleState.updateState(BATTLE_ITEM_STATES.NORMAL,true));
       }
       
-      public function setModuleRepairing(param1:int, param2:int, param3:Boolean = false) : void
+      public function setModuleRepairing(param1:int, param2:int, param3:int = 0) : void
       {
          this._repairAnim.setRepairSeconds(param1,param2,param3);
       }

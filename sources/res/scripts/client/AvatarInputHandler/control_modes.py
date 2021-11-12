@@ -609,6 +609,8 @@ class ArcadeControlMode(_GunControlMode):
     def setForcedGuiControlMode(self, enable):
         if enable:
             self._cam.update(0, 0, 0, False, False)
+            if self._aih.dualGunControl:
+                self._aih.dualGunControl.cancelShootKeyEvent()
 
     def updateTargetedEnemiesForGuns(self, gunsData):
         self.__chargeMarkerState = CHARGE_MARKER_STATE.VISIBLE if any(gunsData) else CHARGE_MARKER_STATE.DIMMED
@@ -1233,6 +1235,10 @@ class DualGunControlMode(SniperControlMode):
         if not isDown:
             return True
         return False
+
+    def setForcedGuiControlMode(self, enable):
+        if enable and self._aih.dualGunControl:
+            self._aih.dualGunControl.cancelShootKeyEvent()
 
     def __onActiveGunChanged(self, gunIndex, switchTime):
         self._cam.aimingSystem.onActiveGunChanged(gunIndex, switchTime)

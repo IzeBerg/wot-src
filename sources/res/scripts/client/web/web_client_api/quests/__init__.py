@@ -1,4 +1,6 @@
-import itertools, sys, typing
+import itertools, logging, sys, typing
+from gui.Scaleform.locale.RES_ICONS import RES_ICONS
+from gui.server_events.awards_formatters import AWARDS_SIZES
 from gui.server_events.bonuses import HIDDEN_BONUSES
 from gui.Scaleform.daapi.view.lobby.missions.cards_formatters import CardBattleConditionsFormatters
 from gui.server_events.cond_formatters import CONDITION_SIZE
@@ -8,9 +10,14 @@ from skeletons.gui.server_events import IEventsCache
 from web.web_client_api import w2c, w2capi, Field, W2CSchema
 from gui.server_events.event_items import Quest
 from web.web_client_api.common import sanitizeResPath
+_logger = logging.getLogger(__name__)
 
 class _QuestsSchema(W2CSchema):
     ids = Field(type=list)
+
+
+class _RequestQuestBonusSchema(W2CSchema):
+    quest_id_base = Field(required=True, type=basestring, default='')
 
 
 class _RawQuestConditionsFormatters(CardBattleConditionsFormatters):
@@ -106,3 +113,20 @@ class QuestsWebApi(W2CSchema):
                 return {'current_step': currentStep, 
                    'all_steps': allSteps}
         return
+
+    @w2c(_RequestQuestBonusSchema, 'get_quest_descr')
+    def requestQuestDescr(self, cmd):
+        questInfo = {}
+        questIdBase = cmd.quest_id_base
+        allQuests = self._eventsCache.getAllQuests(filterFunc=lambda q: q.getID().startswith(questIdBase))
+        for questData in allQuests.itervalues():
+            questInfo['title'] = questData.getUserName()
+            questInfo['description'] = questData.getDescription()
+            iconKey = questData.getID().replace(questIdBase, '').lstrip('_')
+            if iconKey:
+                questInfo['icon'] = {AWARDS_SIZES.BIG: RES_ICONS.get128ConditionIcon(iconKey), AWARDS_SIZES.SMALL: RES_ICONS.get90ConditionIcon(iconKey)}
+                break
+        else:
+            _logger.warning('Missing icon for quest: %s', questIdBase)
+
+        return questInfo

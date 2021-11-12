@@ -709,6 +709,7 @@ class Configs(enum.Enum):
     BATTLE_ROYALE_CONFIG = 'battle_royale_config'
     EPIC_CONFIG = 'epic_config'
     MAPBOX_CONFIG = 'mapbox_config'
+    GIFTS_CONFIG = 'gifts_config'
 
 
 class RESTRICTION_TYPE:
@@ -1130,6 +1131,7 @@ LOOTBOX_TOKEN_PREFIX = 'lootBox:'
 TWITCH_TOKEN_PREFIX = 'token:twitch'
 EMAIL_CONFIRMATION_QUEST_ID = 'email_confirmation'
 EMAIL_CONFIRMATION_TOKEN_NAME = 'acc_completion:email_confirm'
+DEMO_ACCOUNT_ATTR = 'isDemoAccount'
 
 def personalMissionFreeTokenName(branch):
     if branch <= 1:
@@ -1285,12 +1287,14 @@ class GameSeasonType(object):
     EPIC = 2
     BATTLE_ROYALE = 3
     MAPBOX = 4
+    EVENT_BATTLES = 5
 
 
 SEASON_TYPE_BY_NAME = {'ranked': GameSeasonType.RANKED, 
    'epic': GameSeasonType.EPIC, 
    'battle_royale': GameSeasonType.BATTLE_ROYALE, 
-   'mapbox': GameSeasonType.MAPBOX}
+   'mapbox': GameSeasonType.MAPBOX, 
+   'event_battles': GameSeasonType.EVENT_BATTLES}
 SEASON_NAME_BY_TYPE = {val:key for key, val in SEASON_TYPE_BY_NAME.iteritems()}
 CHANNEL_SEARCH_RESULTS_LIMIT = 50
 USER_SEARCH_RESULTS_LIMIT = 50
@@ -1414,6 +1418,7 @@ class REQUEST_COOLDOWN:
     TANKMAN_RESPECIALIZE = 1.0
     POST_PROGRESSION_BASE = 1.0
     POST_PROGRESSION_CELL = 0.5
+    SYNC_GIFTS = 0.5
 
 
 IS_SHOW_INGAME_HELP_FIRST_TIME = False
@@ -2600,16 +2605,22 @@ class EquipSideEffect(enum.IntEnum):
     AMMO_AUTO_LOAD_FAILED = 2
 
 
-class TrackBreakMode(enum.Enum):
+class TrackBreakMode(enum.IntEnum):
     STOP = 0
     SLOW = 1
 
 
-class VehicleSide(enum.Enum):
+class VehicleSide(enum.IntEnum):
     FRONT = 0
     BACK = 1
     LEFT = 2
     RIGHT = 3
+
+
+class DeviceRepairMode(enum.IntEnum):
+    NORMAL = 0
+    SLOWED = 1
+    SUSPENDED = 2
 
 
 BATTLE_MODE_VEHICLE_TAGS = {
@@ -2619,6 +2630,36 @@ BATTLE_MODE_VEHICLE_TAGS = {
  'bob',
  'battle_royale',
  'clanWarsBattles'}
+
+@enum.unique
+class EventPhase(enum.Enum):
+    NOT_STARTED = 0
+    IN_PROGRESS = 1
+    FINISHED = 2
+
+
+class ACCOUNT_KICK_REASONS(object):
+    UNKNOWN = 0
+    LOGIN_TO_OTHER_GAME = 1
+    SESSION_TRACKER_KICK = 2
+    CLIENT_INACTIVE = 4
+    SYSTEM_FAILURE = 5
+    ROAMING_NOT_ALLOWED = 6
+    SERVER_SHUT_DOWN = 7
+    BAN = 8
+    STEAM_LOGIN_NOT_ALLOWED = 9
+    DOSSIERS_UNAVAILABLE = 10
+    PRIVATE_CHANNEL_NAME_PROTECTION = 11
+    PRIVATE_CHANNEL_IS_DISABLED = 12
+    ACCOUNT_WAS_RESTORED = 13
+    SPAM_PROTECTION_PDATA = 14
+    SPAM_PROTECTION_SHOP = 15
+    SPAM_PROTECTION_DOSSIER = 16
+    CURFEW_BAN = 17
+    DEMO_ACCOUNT_BOOTCAMP_FAILURE = 18
+    BAN_RANGE = (
+     BAN, CURFEW_BAN)
+
 
 class BATTLE_MODE_LOCK_MASKS(object):
     _COMMON_FIRST_BIT = 0
@@ -2643,9 +2684,3 @@ class BATTLE_MODE_LOCK_MASKS(object):
         if 'clanWarsBattles' in vehType.tags:
             return BATTLE_MODE_LOCK_MASKS.getClanRentedVehLockMode(vehLockMode)
         return BATTLE_MODE_LOCK_MASKS.getCommonVehLockMode(vehLockMode)
-
-
-class DeviceRepairMode(enum.Enum):
-    NORMAL = 0
-    SLOWED = 1
-    SUSPENDED = 2

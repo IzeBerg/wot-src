@@ -10,7 +10,7 @@ from gui.shared.formatters.ranges import toRomanRangeString
 from gui.Scaleform.genConsts.RANKEDBATTLES_ALIASES import RANKEDBATTLES_ALIASES
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from season_common import GameSeason
-from shared_utils import CONST_CONTAINER
+from shared_utils import CONST_CONTAINER, first
 ShieldStatus = namedtuple('ShieldStatus', 'prevHP, hp, maxHP, shieldState, newShieldState')
 RankData = namedtuple('RankData', 'rank, steps')
 BattleRankInfo = namedtuple('BattleRankInfo', 'level, division, isGroup')
@@ -207,13 +207,13 @@ class Rank(object):
     _ICON_SIZES = {'tiny': '24x24', 
        'small': '58x80', 'medium': '80x110', 'big': '114x160', 'huge': '190x260', 'final': '216x300'}
 
-    def __init__(self, rankID, rankState, progress=None, division=None, quest=None, shield=None, isUnburnable=False):
+    def __init__(self, rankID, rankState, progress=None, division=None, quests=None, shield=None, isUnburnable=False):
         super(Rank, self).__init__()
         self.__rankID = rankID
         self.__state = rankState
         self.__progress = progress
         self.__division = division
-        self.__quest = quest
+        self.__quests = quests
         self.__shieldStatus = shield
         self.__isUnburnable = isUnburnable
         self.__type = RankTypes.ACCOUNT
@@ -261,7 +261,7 @@ class Rank(object):
         return self.__division.isQualification()
 
     def isRewardClaimed(self):
-        return self.__quest is None or self.__quest.isCompleted()
+        return self.getQuest() is None or self.getQuest().isCompleted()
 
     def isUnburnable(self):
         return self.__isUnburnable
@@ -292,7 +292,7 @@ class Rank(object):
         return self.__progress
 
     def getQuest(self):
-        return self.__quest
+        return first(self.__quests)
 
     def getState(self):
         return self.__state
@@ -305,6 +305,9 @@ class Rank(object):
 
     def getType(self):
         return self.__type
+
+    def getQuests(self):
+        return self.__quests
 
     def getUserName(self):
         return self.__division.getRankUserName(self.__rankID)

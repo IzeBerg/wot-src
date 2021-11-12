@@ -1,5 +1,6 @@
 package net.wg.gui.battle.views.battleMessenger
 {
+   import flash.display.Graphics;
    import flash.display.InteractiveObject;
    import flash.display.MovieClip;
    import flash.display.Sprite;
@@ -37,11 +38,13 @@ package net.wg.gui.battle.views.battleMessenger
       
       private static const EMPTY_STR:String = "";
       
-      private static const HOVER_SIZE:Number = 10;
-      
       private static const BOTTOM_SIDE_Y_POSITION:Number = 48;
       
       private static const BOTTOM_SIDE_WIDTH:Number = 230;
+      
+      private static const MAX_MESSAGES_HEIGHT_KOEF:Number = 0.7;
+      
+      private static const SHOW_NEXT_MSG_DURATION:uint = 200;
        
       
       public var receiverField:TextField = null;
@@ -64,9 +67,9 @@ package net.wg.gui.battle.views.battleMessenger
       
       public var backgroundLayer:Sprite = null;
       
-      public var hoverMC:Sprite;
-      
       public var swapArea:Sprite = null;
+      
+      private var _messagesContainer:Sprite;
       
       private var _receiverIdx:int = 0;
       
@@ -80,9 +83,9 @@ package net.wg.gui.battle.views.battleMessenger
       
       private var _isHistoryEnabled:Boolean = false;
       
-      private var _maxMessages:int = -1;
+      private var _calculatedMaxVisibleMessages:int = -1;
       
-      private var _maxVisibleMessages:int = -1;
+      private var _defaultMaxVisibleMessages:int = -1;
       
       private var _redMessagesPool:BattleMessengerPool = null;
       
@@ -102,23 +105,15 @@ package net.wg.gui.battle.views.battleMessenger
       
       private var _isBottomMessageVisible:Boolean = false;
       
-      private var _isFullVisibleMessagesInHistoryStack:Boolean = false;
-      
-      private var _isFullMessagesStack:Boolean = false;
-      
       private var _inactiveStateAlpha:Number = 0.5;
-      
-      private var _scheduler:IScheduler;
-      
-      private var _isUnlimitedMessageStack:Boolean = false;
       
       private var _battleSmileyMap:BattleSmileyMap;
       
       private var _isChannelsInited:Boolean = false;
       
-      private var _selectionBeginIndex:int = 0;
+      private var _selectionBeginIndex:int = -1;
       
-      private var _selectionEndIndex:int = 0;
+      private var _selectionEndIndex:int = -1;
       
       private var _selectedTargetOnMouseDown:Object = null;
       
@@ -136,42 +131,41 @@ package net.wg.gui.battle.views.battleMessenger
       
       private var _defaultWidth:int = -1;
       
-      private var _availableWidth:int = 360;
-      
-      private var _hoverWidth:int = 0;
-      
-      private var _hoverHeight:int = 0;
-      
-      private var _hoverYPosition:int = 0;
-      
-      private var _hoverState:int = 0;
-      
       private var _isSmallState:Boolean = false;
+      
+      private var _maxMessagesInHistory:int = -1;
+      
+      private var _isFullMessagesStack:Boolean = false;
+      
+      private var _nextMsgPosY:int = 0;
+      
+      private var _isTooltipShow:Boolean = false;
+      
+      private var _scheduler:IScheduler = null;
+      
+      private var _nextMsgKeyCode:int = 0;
       
       public function BattleMessenger()
       {
-         this.hoverMC = new Sprite();
+         this._messagesContainer = new Sprite();
          this._receivers = new Vector.<BattleMessengerReceiverVO>();
          this._messages = new Vector.<BattleMessage>();
-         this._scheduler = App.utils.scheduler;
          this._battleSmileyMap = new BattleSmileyMap();
          super();
          this._defaultWidth = this.hit.width;
-         this.drawRect(this.hoverMC,0,0,HOVER_SIZE,HOVER_SIZE);
-         this.hoverMC.x = 0;
-         this.hoverMC.alpha = 0;
          this.swapArea = new Sprite();
          this.swapArea.alpha = 0;
          addChild(this.swapArea);
-         this.addChildAt(this.hoverMC,this.getChildIndex(this.backgroundLayer) - 1);
          addEventListener(MouseEvent.ROLL_OUT,this.onBattleMessengerRollOutHandler);
          addEventListener(MouseEvent.ROLL_OVER,this.onBattleMessengerRollOverHandler);
          hitArea = this.swapArea;
-         mouseChildren = false;
          TextFieldEx.setNoTranslate(this.receiverField,true);
          TextFieldEx.setNoTranslate(this.messageInputField,true);
          this.tooltipSymbol.addEventListener(MouseEvent.MOUSE_OVER,this.onMouseOverHandler);
-         this.tooltipSymbol.addEventListener(MouseEvent.MOUSE_OUT,this.onMouseOutHandler);
+         this.tooltipSymbol.addEventListener(MouseEvent.MOUSE_OUT,onMouseOutHandler);
+         addChild(this._messagesContainer);
+         this._messagesContainer.mouseEnabled = false;
+         this._scheduler = App.utils.scheduler;
       }
       
       private static function receiversSort(param1:BattleMessengerReceiverVO, param2:BattleMessengerReceiverVO) : int
@@ -179,11 +173,38 @@ package net.wg.gui.battle.views.battleMessenger
          return param1.orderIndex - param2.orderIndex;
       }
       
+      private static function drawRect(param1:Sprite, param2:Number, param3:Number, param4:Number, param5:Number, param6:Boolean = true) : void
+      {
+         var _loc7_:Graphics = param1.graphics;
+         if(param6)
+         {
+            _loc7_.clear();
+         }
+         _loc7_.beginFill(0);
+         _loc7_.drawRect(param2,param3,param4,param5);
+         _loc7_.endFill();
+      }
+      
+      private static function onMouseOutHandler(param1:MouseEvent) : void
+      {
+         App.toolTipMgr.hide();
+      }
+      
+      private static function onMessageInputFieldInputHandler(param1:InputEvent) : void
+      {
+         param1.handled = true;
+      }
+      
+      private function pushMessageWithToxicLogic(param1:BattleMessage) : void
+      {
+         param1.setState(BattleMessage.HIDDEN_MES,true);
+         this.updateHistoryButtons();
+      }
+      
       override protected function setupList(param1:BattleMessengerSettingsVO) : void
       {
-         this._maxMessages = param1.maxLinesCount;
-         this._isUnlimitedMessageStack = this._maxMessages == -1;
-         this._maxVisibleMessages = param1.numberOfMessagesInHistory;
+         this._maxMessagesInHistory = param1.maxLinesCount;
+         this._defaultMaxVisibleMessages = this._calculatedMaxVisibleMessages = param1.numberOfMessagesInHistory;
          this._inactiveStateAlpha = param1.inactiveStateAlpha;
          if(!this._isCtrlButtonPressed && !this._isEnterButtonPressed)
          {
@@ -197,19 +218,21 @@ package net.wg.gui.battle.views.battleMessenger
          var _loc4_:Number = param1.lastMessageAlpha;
          var _loc5_:Number = param1.recoveredLatestMessagesAlpha;
          var _loc6_:int = param1.recoveredMessagesLifeTime;
-         this._redMessagesPool = new BattleMessengerPool(this._maxMessages,_loc2_,_loc3_,_loc4_,_loc5_,_loc6_,BATTLE_MESSAGES_CONSTS.RED_MESSAGE_RENDERER,this._battleSmileyMap,this.userInteraction);
-         this._greenMessagesPool = new BattleMessengerPool(this._maxMessages,_loc2_,_loc3_,_loc4_,_loc5_,_loc6_,BATTLE_MESSAGES_CONSTS.GREEN_MESSAGE_RENDERER,this._battleSmileyMap,this.userInteraction);
-         this._blackMessagesPool = new BattleMessengerPool(this._maxMessages,_loc2_,_loc3_,_loc4_,_loc5_,_loc6_,BATTLE_MESSAGES_CONSTS.BLACK_MESSAGE_RENDERER,this._battleSmileyMap,this.userInteraction);
-         this._selfMessagesPool = new BattleMessengerPool(this._maxMessages,_loc2_,_loc3_,_loc4_,_loc5_,_loc6_,BATTLE_MESSAGES_CONSTS.SELF_MESSAGE_RENDERER,this._battleSmileyMap,this.userInteraction);
+         this._redMessagesPool = new BattleMessengerPool(this._maxMessagesInHistory,_loc2_,_loc3_,_loc4_,_loc5_,_loc6_,BATTLE_MESSAGES_CONSTS.RED_MESSAGE_RENDERER,this._battleSmileyMap,this.userInteraction);
+         this._greenMessagesPool = new BattleMessengerPool(this._maxMessagesInHistory,_loc2_,_loc3_,_loc4_,_loc5_,_loc6_,BATTLE_MESSAGES_CONSTS.GREEN_MESSAGE_RENDERER,this._battleSmileyMap,this.userInteraction);
+         this._blackMessagesPool = new BattleMessengerPool(this._maxMessagesInHistory,_loc2_,_loc3_,_loc4_,_loc5_,_loc6_,BATTLE_MESSAGES_CONSTS.BLACK_MESSAGE_RENDERER,this._battleSmileyMap,this.userInteraction);
+         this._selfMessagesPool = new BattleMessengerPool(this._maxMessagesInHistory,_loc2_,_loc3_,_loc4_,_loc5_,_loc6_,BATTLE_MESSAGES_CONSTS.SELF_MESSAGE_RENDERER,this._battleSmileyMap,this.userInteraction);
       }
       
       override protected function configUI() : void
       {
          super.configUI();
          this.receiverField.autoSize = TextFieldAutoSize.LEFT;
+         this.historyUpBtn.addPressCallBack(this);
+         this.historyDownBtn.addPressCallBack(this);
+         this.historyLastMessageBtn.addPressCallBack(this);
          this.historyUpBtn.addClickCallBack(this);
          this.historyDownBtn.addClickCallBack(this);
-         this.historyLastMessageBtn.addClickCallBack(this);
          this.hideViewElements();
          this.hit.tabEnabled = false;
          this.receiverField.tabEnabled = false;
@@ -220,8 +243,6 @@ package net.wg.gui.battle.views.battleMessenger
       override protected function onDispose() : void
       {
          var _loc1_:BattleMessage = null;
-         this._scheduler.cancelTask(this.updateMesYPositions);
-         this._scheduler = null;
          if(this._userInteractionCmp)
          {
             this._toxicPanelData = null;
@@ -237,24 +258,25 @@ package net.wg.gui.battle.views.battleMessenger
          this._battleSmileyMap = null;
          this.hit.removeEventListener(MouseEvent.CLICK,this.onBattleMessengerMouseClickHandler);
          this.tooltipSymbol.removeEventListener(MouseEvent.MOUSE_OVER,this.onMouseOverHandler);
-         this.tooltipSymbol.removeEventListener(MouseEvent.MOUSE_OUT,this.onMouseOutHandler);
+         this.tooltipSymbol.removeEventListener(MouseEvent.MOUSE_OUT,onMouseOutHandler);
          this.hintBackground.removeEventListener(MouseEvent.MOUSE_OVER,this.onMouseOverHandler);
-         this.hintBackground.removeEventListener(MouseEvent.MOUSE_OUT,this.onMouseOutHandler);
+         this.hintBackground.removeEventListener(MouseEvent.MOUSE_OUT,onMouseOutHandler);
+         this.messageInputField.removeEventListener(InputEvent.INPUT,onMessageInputFieldInputHandler);
          this.messageInputField.removeEventListener(KeyboardEvent.KEY_DOWN,this.onMessageInputFieldKeyDownHandler);
-         this.messageInputField.removeEventListener(KeyboardEvent.KEY_UP,this.onKeyUpHandler);
-         this.messageInputField.removeEventListener(InputEvent.INPUT,this.onMessageInputFieldInputHandler);
+         App.stage.removeEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDownHandler);
          App.stage.removeEventListener(KeyboardEvent.KEY_UP,this.onKeyUpHandler);
          this.hit.removeEventListener(MouseEvent.MOUSE_OVER,this.onMouseOverHandler);
-         this.hit.removeEventListener(MouseEvent.MOUSE_OUT,this.onMouseOutHandler);
+         this.hit.removeEventListener(MouseEvent.MOUSE_OUT,onMouseOutHandler);
          App.stage.removeEventListener(MouseEvent.MOUSE_DOWN,this.onStageMouseDownHandler);
          App.stage.removeEventListener(MouseEvent.MOUSE_UP,this.onStageMouseUpHandler);
          App.stage.removeEventListener(MouseEvent.MOUSE_WHEEL,this.onStageMouseWheelHandler);
          for each(_loc1_ in this._messages)
          {
             this.backgroundLayer.removeChild(_loc1_.background);
-            removeChild(_loc1_.messageField);
+            this._messagesContainer.removeChild(_loc1_.messageField);
          }
          this.backgroundLayer = null;
+         this._messagesContainer = null;
          this._messages.fixed = false;
          this._messages.splice(0,this._messages.length);
          this._messages = null;
@@ -280,7 +302,9 @@ package net.wg.gui.battle.views.battleMessenger
          this.historyLastMessageBtn = null;
          this.tooltipSymbol = null;
          this.hit = null;
-         this.hoverMC = null;
+         this._scheduler.cancelTask(this.selectMessageInputField);
+         this.cancelNextMessageShow();
+         this._scheduler = null;
          super.onDispose();
       }
       
@@ -318,7 +342,7 @@ package net.wg.gui.battle.views.battleMessenger
          this._userInteractionCmp.onClosedCallback = onToxicPanelClosedS;
          this._userInteractionCmp.visible = false;
          this._isToxicEnabled = true;
-         this.addChild(this._userInteractionCmp);
+         this._messagesContainer.addChild(this._userInteractionCmp);
       }
       
       public function as_enterPressed(param1:int) : void
@@ -339,8 +363,8 @@ package net.wg.gui.battle.views.battleMessenger
                {
                   if(sendMessageToChannelS(param1,_loc2_))
                   {
-                     this.hideViewElements();
                      this.showLastIndexMessages();
+                     this.hideViewElements();
                   }
                }
                else
@@ -435,6 +459,7 @@ package net.wg.gui.battle.views.battleMessenger
          {
             this.hideViewElements();
          }
+         this.switchSwapArea(!this._isCtrlButtonPressed);
       }
       
       public function as_unSetFocus() : void
@@ -478,70 +503,53 @@ package net.wg.gui.battle.views.battleMessenger
          switch(param1.name)
          {
             case this.historyUpBtn.name:
+            case this.historyDownBtn.name:
+               this.cancelNextMessageShow();
+         }
+      }
+      
+      public function onButtonPress(param1:Object) : void
+      {
+         switch(param1.name)
+         {
+            case this.historyUpBtn.name:
+               this._nextMsgKeyCode = Keyboard.UP;
                this.showPrevVisibleMessages();
                break;
             case this.historyDownBtn.name:
+               this._nextMsgKeyCode = Keyboard.DOWN;
                this.showNextVisibleMessages();
                break;
             case this.historyLastMessageBtn.name:
                this.showLastIndexMessages();
+         }
+         if(this._nextMsgKeyCode == Keyboard.UP || this._nextMsgKeyCode == Keyboard.DOWN)
+         {
+            this._scheduler.scheduleTask(this.showNextMessage,SHOW_NEXT_MSG_DURATION);
          }
       }
       
       public function setAvailableWidthForMessages(param1:int) : void
       {
          var _loc2_:BattleMessage = null;
-         this._availableWidth = param1;
          for each(_loc2_ in this._messages)
          {
             _loc2_.setAvailableWidth(param1);
          }
-         this._scheduler.cancelTask(this.updateMesYPositions);
-         this._scheduler.scheduleOnNextFrame(this.updateMesYPositions);
       }
       
       public function updateSwapAreaHeight(param1:Number) : void
       {
          this.swapArea.graphics.clear();
-         this.drawRect(this.swapArea,0,param1 - BOTTOM_SIDE_Y_POSITION,BOTTOM_SIDE_WIDTH,BOTTOM_SIDE_Y_POSITION);
-         this.drawRect(this.swapArea,0,0,!!this._isSmallState ? Number(BOTTOM_SIDE_WIDTH) : Number(BattleMessage.DEFAULT_TEXT_WIDTH),param1 - BOTTOM_SIDE_Y_POSITION);
+         drawRect(this.swapArea,0,param1 - BOTTOM_SIDE_Y_POSITION,BOTTOM_SIDE_WIDTH,BOTTOM_SIDE_Y_POSITION);
+         drawRect(this.swapArea,0,0,!!this._isSmallState ? Number(BOTTOM_SIDE_WIDTH) : Number(BattleMessage.DEFAULT_TEXT_WIDTH),param1 - BOTTOM_SIDE_Y_POSITION,false);
          this.swapArea.y = -param1 + BOTTOM_SIDE_Y_POSITION;
       }
       
       private function switchSwapArea(param1:Boolean) : void
       {
-         if(param1)
-         {
-            hitArea = this.swapArea;
-         }
-         else
-         {
-            hitArea = null;
-         }
+         hitArea = !!param1 ? this.swapArea : null;
          this.swapArea.mouseEnabled = param1;
-         mouseChildren = !param1;
-      }
-      
-      private function drawRect(param1:Sprite, param2:Number, param3:Number, param4:Number, param5:Number) : void
-      {
-         param1.graphics.beginFill(0);
-         param1.graphics.drawRect(param2,param3,param4,param5);
-         param1.graphics.endFill();
-      }
-      
-      private function fillBG() : void
-      {
-         if(this._hoverState == BattleMessage.VISIBLE_MES)
-         {
-            this.hoverMC.visible = true;
-            this.hoverMC.y = this._hoverYPosition - this._hoverHeight;
-            this.hoverMC.width = this._hoverWidth;
-            this.hoverMC.height = this._hoverHeight;
-         }
-         else
-         {
-            this.hoverMC.visible = false;
-         }
       }
       
       private function userInteraction(param1:Boolean, param2:Function, param3:String = "", param4:int = 0, param5:int = 0, param6:int = 0) : Boolean
@@ -573,7 +581,7 @@ package net.wg.gui.battle.views.battleMessenger
             return;
          }
          this.updateFocus(param1);
-         this.onMouseOutHandler(null);
+         onMouseOutHandler(null);
          this.setPanelElementsVisibility(true);
          this.switchListenersViewElements(true);
          this.setAlpha(Values.DEFAULT_ALPHA);
@@ -584,11 +592,6 @@ package net.wg.gui.battle.views.battleMessenger
             App.utils.IME.setVisible(true);
             dispatchEvent(new FocusRequestEvent(FocusRequestEvent.REQUEST_FOCUS,this));
             this.messageInputField.setSelection(0,this.messageInputField.length);
-         }
-         if(this._isCtrlButtonPressed)
-         {
-            this._selectionBeginIndex = this.messageInputField.selectionBeginIndex;
-            this._selectionEndIndex = this.messageInputField.selectionEndIndex;
          }
          if(this._isEnterButtonPressed)
          {
@@ -609,7 +612,7 @@ package net.wg.gui.battle.views.battleMessenger
             return;
          }
          this.updateFocus(false);
-         this.onMouseOutHandler(null);
+         onMouseOutHandler(null);
          this.setPanelElementsVisibility(false);
          this.switchListenersViewElements(false);
          this.setAlpha(this._inactiveStateAlpha);
@@ -687,94 +690,86 @@ package net.wg.gui.battle.views.battleMessenger
       private function pushMessage(param1:BattleMessage) : void
       {
          this._messages.push(param1);
-         this.backgroundLayer.addChild(param1.background);
-         addChildAt(param1.messageField,getChildIndex(this.backgroundLayer) + 1);
          param1.x = 0;
-         param1.y = -param1.height;
-         if(this.isToxicOver() || App.contextMenuMgr.isShown())
+         param1.y = this._nextMsgPosY;
+         this._nextMsgPosY += param1.height;
+         this.backgroundLayer.addChild(param1.background);
+         this._messagesContainer.addChild(param1.messageField);
+         var _loc2_:uint = this._messages.length;
+         if(this._maxMessagesInHistory > 0)
          {
+            this._isFullMessagesStack = _loc2_ >= this._maxMessagesInHistory;
+         }
+         if(_loc2_ > 1 && (this.isToxicOver() || App.contextMenuMgr.isShown()))
+         {
+            this.checkBottomMessageVisible();
             this.pushMessageWithToxicLogic(param1);
          }
          else
          {
+            if(this._isBottomMessageVisible)
+            {
+               ++this._bottomMessageIndex;
+            }
+            this.checkTopVisibleMes();
+            this.checkBottomMessageVisible();
             this.pushMessageDefaultLogic(param1);
+         }
+         this.updateHistoryButtons();
+      }
+      
+      private function checkTopVisibleMes() : void
+      {
+         this._isTopMessageVisible = this._topMessageIndex == 0;
+         this.updateTopMesState();
+      }
+      
+      private function updateAfterTopMesState() : void
+      {
+         if(this.userInteractsWithMessenger)
+         {
+            this._messages[this._topMessageIndex + 1].setState(BattleMessage.VISIBLE_WHEEL_MES,true);
          }
       }
       
-      private function pushMessageWithToxicLogic(param1:BattleMessage) : void
+      private function checkBottomMessageVisible() : void
       {
-         var _loc2_:Boolean = this._isFullVisibleMessagesInHistoryStack && this._isFocused;
-         if(!_loc2_ && this._messages.length == this._maxVisibleMessages)
-         {
-            this._isFullVisibleMessagesInHistoryStack = true;
-         }
-         this.updateHistoryButtons();
-         param1.setState(BattleMessage.HIDDEN_MES);
+         this._isBottomMessageVisible = this._bottomMessageIndex == this._messages.length - 1;
       }
       
       private function pushMessageDefaultLogic(param1:BattleMessage) : void
       {
-         if(this._isFullVisibleMessagesInHistoryStack && this._isFocused)
+         var _loc2_:int = this._messages.length;
+         var _loc3_:Boolean = !(this._isFocused || this._isActive) && !this._isCtrlButtonPressed;
+         if(_loc2_ >= this._calculatedMaxVisibleMessages)
          {
             if(this._isBottomMessageVisible)
             {
-               if(this._isFullMessagesStack)
-               {
-                  --this._topMessageIndex;
-                  --this._bottomMessageIndex;
-               }
-               this.showNextVisibleMessages();
-               param1.show(!this._isFocused && !this._isCtrlButtonPressed);
-            }
-            else if(this._isTopMessageVisible)
-            {
-               if(this._isFullMessagesStack)
-               {
-                  this.moveUpMessages();
-                  this._messages[this._bottomMessageIndex - 1].setState(BattleMessage.VISIBLE_MES);
-               }
-               param1.setState(BattleMessage.HIDDEN_MES);
+               this.showLastIndexMessages();
+               param1.show(_loc3_);
             }
             else
             {
-               if(this._isFullMessagesStack)
-               {
-                  --this._topMessageIndex;
-                  --this._bottomMessageIndex;
-                  this.updateHistoryButtons();
-               }
-               if(this._isTopMessageVisible)
-               {
-                  this._messages[this._topMessageIndex].setState(BattleMessage.VISIBLE_MES);
-               }
-               param1.setState(BattleMessage.HIDDEN_MES);
-            }
-            if(!this._isUnlimitedMessageStack && !this._isFullMessagesStack && this._messages.length == this._maxMessages)
-            {
-               this._isFullMessagesStack = true;
+               param1.setState(BattleMessage.HIDDEN_MES,true);
+               this.updateHistoryButtons();
             }
          }
          else
          {
-            if(!this._isFullMessagesStack)
-            {
-               ++this._bottomMessageIndex;
-            }
-            this.moveUpMessages();
-            if(this._messages.length == this._maxVisibleMessages)
-            {
-               this._isFullVisibleMessagesInHistoryStack = true;
-               this.updateHistoryButtons();
-            }
-            if(!this._isUnlimitedMessageStack && !this._isFullMessagesStack && this._messages.length == this._maxMessages)
-            {
-               this._isFullMessagesStack = true;
-            }
-            param1.show(!(this._isFocused || this._isActive) && !this._isCtrlButtonPressed);
-            if(this._messages.length > this._maxVisibleMessages)
-            {
-               this.showLastIndexMessages();
-            }
+            param1.show(_loc3_);
+            this._bottomMessageIndex = _loc2_ - 1;
+            this.updateMessagesPosition();
+            this.checkBigMessagesInSmallScreen(true);
+         }
+      }
+      
+      private function updateTopMesState() : void
+      {
+         var _loc1_:int = 0;
+         if(this._isFocused || this._isActive || this._isCtrlButtonPressed)
+         {
+            _loc1_ = !!this._isTopMessageVisible ? int(BattleMessage.VISIBLE_WHEEL_MES) : int(BattleMessage.HIDEHALF_MES);
+            this._messages[this._topMessageIndex].setState(_loc1_,true);
          }
       }
       
@@ -787,154 +782,118 @@ package net.wg.gui.battle.views.battleMessenger
          this.historyLastMessageBtn.visible = param1;
       }
       
-      private function updateMesYPositions() : void
-      {
-         var _loc1_:int = this._bottomMessageIndex - 1;
-         var _loc2_:int = 0;
-         while(_loc1_ >= this._topMessageIndex)
-         {
-            _loc2_ -= this._messages[_loc1_].height;
-            this._messages[_loc1_].y = _loc2_;
-            _loc1_--;
-         }
-      }
-      
-      private function moveDownMessages() : void
-      {
-         var _loc1_:int = this._messages[this._bottomMessageIndex].height;
-         var _loc2_:int = this._topMessageIndex + 1;
-         while(_loc2_ < this._bottomMessageIndex)
-         {
-            this._messages[_loc2_].y += _loc1_;
-            _loc2_++;
-         }
-      }
-      
       private function showPrevVisibleMessages() : void
       {
-         --this._topMessageIndex;
-         --this._bottomMessageIndex;
-         this.updateHistoryButtons();
-         var _loc1_:BattleMessage = this._messages[this._topMessageIndex];
-         _loc1_.setState(!!this._isTopMessageVisible ? int(BattleMessage.VISIBLE_WHEEL_MES) : int(BattleMessage.HIDEHALF_MES));
-         this.showMessageByIndex(this._topMessageIndex + 1,false,true);
-         this.moveDownMessages();
-         _loc1_.y = this._messages[this._topMessageIndex + 1].y - _loc1_.height;
-         this.hideMessageByIndex(this._bottomMessageIndex);
-         this._hoverHeight = -_loc1_.y;
-         this._hoverYPosition = this.backgroundLayer.y;
-         this.fillBG();
+         if(!this._isTopMessageVisible)
+         {
+            this.hideMessageByIndex(this._bottomMessageIndex);
+            --this._bottomMessageIndex;
+            --this._topMessageIndex;
+            this._isTopMessageVisible = this._topMessageIndex == 0;
+            this.showMessageByIndex(this._topMessageIndex);
+            this.updateAfterTopMesState();
+            this.checkBottomMessageVisible();
+            this.updateHistoryButtons();
+            this.updateMessagesPosition();
+            this.checkBigMessagesInSmallScreen(false);
+         }
       }
       
-      private function moveUpMessages() : void
+      private function updateMessagesPosition() : void
       {
-         var _loc1_:int = this._bottomMessageIndex - 1;
-         var _loc2_:int = this._messages[_loc1_].height;
-         var _loc3_:int = this._topMessageIndex;
-         while(_loc3_ < _loc1_)
+         var _loc1_:BattleMessage = this._messages[this._bottomMessageIndex];
+         if(_loc1_)
          {
-            this._messages[_loc3_].y -= _loc2_;
-            _loc3_++;
+            this.backgroundLayer.y = this._messagesContainer.y = -(_loc1_.y + _loc1_.height);
          }
       }
       
       private function showNextVisibleMessages() : void
       {
-         var _loc1_:Boolean = this._maxVisibleMessages - this._bottomMessageIndex <= 0;
-         if(this._isFullVisibleMessagesInHistoryStack && _loc1_)
+         if(!this._isBottomMessageVisible)
          {
-            ++this._topMessageIndex;
-            this.hideMessageByIndex(this._topMessageIndex - 1,true);
-            this._messages[this._topMessageIndex].setState(!!this._isTopMessageVisible ? int(BattleMessage.VISIBLE_WHEEL_MES) : int(BattleMessage.HIDEHALF_MES));
-         }
-         ++this._bottomMessageIndex;
-         this.updateHistoryButtons();
-         this.moveUpMessages();
-         this.showMessageByIndex(this._bottomMessageIndex - 1,true,true);
-         this._hoverYPosition = this.backgroundLayer.y;
-         this.fillBG();
-      }
-      
-      private function showMessageByIndex(param1:int, param2:Boolean = false, param3:Boolean = false) : void
-      {
-         var _loc4_:BattleMessage = this._messages[param1];
-         _loc4_.setState(BattleMessage.VISIBLE_WHEEL_MES);
-         if(param2)
-         {
-            this._hoverHeight += _loc4_.height;
-         }
-         if(param3)
-         {
-            this._hoverWidth = Math.max(this._hoverWidth,_loc4_.width);
+            if(this._bottomMessageIndex - this._topMessageIndex >= this._calculatedMaxVisibleMessages)
+            {
+               this.hideMessageByIndex(this._topMessageIndex);
+               ++this._topMessageIndex;
+            }
+            ++this._bottomMessageIndex;
+            this.showMessageByIndex(this._bottomMessageIndex);
+            this.checkBottomMessageVisible();
+            this.checkTopVisibleMes();
+            this.updateMessagesPosition();
+            this.checkBigMessagesInSmallScreen(true);
+            this.updateHistoryButtons();
          }
       }
       
-      private function hideMessageByIndex(param1:int, param2:Boolean = false) : void
+      private function showMessageByIndex(param1:int) : void
       {
-         var _loc3_:BattleMessage = this._messages[param1];
-         _loc3_.setState(BattleMessage.HIDDEN_MES);
-         if(param2)
+         var _loc2_:BattleMessage = this._messages[param1];
+         var _loc3_:int = param1 == this._topMessageIndex && this._topMessageIndex != 0 ? int(BattleMessage.HIDEHALF_MES) : int(BattleMessage.VISIBLE_WHEEL_MES);
+         _loc2_.setState(_loc3_,true);
+         if(!this.userInteractsWithMessenger)
          {
-            this._hoverHeight -= _loc3_.height;
+            _loc2_.isWaitingAutoHide = true;
          }
+      }
+      
+      private function hideMessageByIndex(param1:int) : void
+      {
+         this._messages[param1].setState(BattleMessage.HIDDEN_MES,true);
       }
       
       private function showLastIndexMessages() : void
       {
-         var _loc3_:int = 0;
-         var _loc7_:BattleMessage = null;
-         var _loc1_:int = this._defaultWidth;
          var _loc2_:int = 0;
-         var _loc4_:Boolean = !(this._isFocused || this._isActive || this._isCtrlButtonPressed);
-         var _loc5_:int = this._messages.length;
-         var _loc6_:int = this._isFocused || this._isCtrlButtonPressed ? int(BattleMessage.VISIBLE_MES) : int(BattleMessage.RECOVERED_MES);
-         _loc3_ = 0;
-         while(_loc3_ < _loc5_)
+         var _loc5_:BattleMessage = null;
+         if(!this._messages.length)
          {
-            this._messages[_loc3_].setState(BattleMessage.HIDDEN_MES);
-            _loc3_++;
+            return;
          }
-         this._bottomMessageIndex = _loc5_;
-         if(this._isFullVisibleMessagesInHistoryStack)
+         var _loc1_:int = this._defaultWidth;
+         var _loc3_:int = this._messages.length;
+         var _loc4_:int = this._isFocused || this._isCtrlButtonPressed ? int(BattleMessage.VISIBLE_MES) : int(BattleMessage.RECOVERED_MES);
+         this._bottomMessageIndex = _loc3_ - 1;
+         this._calculatedMaxVisibleMessages = this._defaultMaxVisibleMessages;
+         this._topMessageIndex = this._bottomMessageIndex - this._calculatedMaxVisibleMessages + 1;
+         this._topMessageIndex = Math.max(this._topMessageIndex,0);
+         this.checkTopVisibleMes();
+         this.checkBottomMessageVisible();
+         _loc2_ = 0;
+         while(_loc2_ < this._topMessageIndex)
          {
-            this._topMessageIndex = this._bottomMessageIndex - this._maxVisibleMessages;
+            this.hideMessageByIndex(_loc2_);
+            _loc2_++;
+         }
+         this.updateMessagesPosition();
+         this.checkBigMessagesInSmallScreen(true);
+         _loc2_ = this._bottomMessageIndex;
+         while(_loc2_ >= this._topMessageIndex)
+         {
+            _loc5_ = this._messages[_loc2_];
+            _loc5_.clearAnim();
+            if((this._isFocused || this._isCtrlButtonPressed) && _loc2_ == this._topMessageIndex && !this._isTopMessageVisible)
+            {
+               this._messages[_loc2_].setState(BattleMessage.HIDEHALF_MES);
+            }
+            else
+            {
+               _loc5_.setState(_loc4_,true);
+            }
+            _loc5_.isWaitingAutoHide = !this.userInteractsWithMessenger;
+            _loc1_ = Math.max(_loc1_,_loc5_.width);
+            _loc2_--;
          }
          this.updateHistoryButtons();
-         _loc3_ = this._bottomMessageIndex - 1;
-         while(_loc3_ >= this._topMessageIndex)
-         {
-            _loc7_ = this._messages[_loc3_];
-            _loc2_ -= _loc7_.height;
-            _loc7_.y = _loc2_;
-            _loc7_.clear();
-            _loc7_.setState(_loc6_);
-            _loc7_.hidingState = _loc4_;
-            _loc1_ = Math.max(_loc1_,_loc7_.width);
-            _loc3_--;
-         }
-         this._hoverWidth = _loc1_;
-         this._hoverHeight = -_loc2_;
-         this._hoverYPosition = this.backgroundLayer.y;
-         this._hoverState = _loc6_;
-         this.fillBG();
-         if(!this._isTopMessageVisible && this._isFocused)
-         {
-            this._messages[this._topMessageIndex].setState(BattleMessage.HIDEHALF_MES);
-         }
       }
       
       private function updateHistoryButtons() : void
       {
-         this._isTopMessageVisible = this._topMessageIndex == 0;
-         if(this._bottomMessageIndex > this._messages.length)
-         {
-            this._bottomMessageIndex = this._messages.length;
-         }
-         this._isBottomMessageVisible = this._bottomMessageIndex == this._messages.length;
          if(this._isHistoryEnabled)
          {
             this.historyUpBtn.enabled = !this._isTopMessageVisible;
-            this.historyDownBtn.enabled = this._bottomMessageIndex < this._messages.length;
+            this.historyDownBtn.enabled = this._bottomMessageIndex + 1 < this._messages.length;
             this.historyLastMessageBtn.enabled = !this._isBottomMessageVisible;
          }
       }
@@ -962,25 +921,33 @@ package net.wg.gui.battle.views.battleMessenger
       {
          if(this._isChannelsInited)
          {
+            this.messageInputField.addEventListener(InputEvent.INPUT,onMessageInputFieldInputHandler);
             this.messageInputField.addEventListener(KeyboardEvent.KEY_DOWN,this.onMessageInputFieldKeyDownHandler);
-            this.messageInputField.addEventListener(KeyboardEvent.KEY_UP,this.onKeyUpHandler);
-            this.messageInputField.addEventListener(InputEvent.INPUT,this.onMessageInputFieldInputHandler);
-            App.stage.addEventListener(KeyboardEvent.KEY_UP,this.onKeyUpHandler);
             this.messageInputField.selectable = true;
             this.messageInputField.mouseEnabled = true;
             this.messageInputField.type = TextFieldType.INPUT;
+            App.stage.addEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDownHandler);
+            App.stage.addEventListener(KeyboardEvent.KEY_UP,this.onKeyUpHandler);
          }
       }
       
       private function disableInput() : void
       {
+         this.messageInputField.removeEventListener(InputEvent.INPUT,onMessageInputFieldInputHandler);
          this.messageInputField.removeEventListener(KeyboardEvent.KEY_DOWN,this.onMessageInputFieldKeyDownHandler);
-         this.messageInputField.removeEventListener(KeyboardEvent.KEY_UP,this.onKeyUpHandler);
-         this.messageInputField.removeEventListener(InputEvent.INPUT,this.onMessageInputFieldInputHandler);
-         App.stage.removeEventListener(KeyboardEvent.KEY_UP,this.onKeyUpHandler);
          this.messageInputField.selectable = false;
          this.messageInputField.mouseEnabled = false;
          this.messageInputField.type = TextFieldType.DYNAMIC;
+         if(this._isFocused)
+         {
+            App.stage.addEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDownHandler);
+            App.stage.addEventListener(KeyboardEvent.KEY_UP,this.onKeyUpHandler);
+         }
+         else
+         {
+            App.stage.removeEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDownHandler);
+            App.stage.removeEventListener(KeyboardEvent.KEY_UP,this.onKeyUpHandler);
+         }
       }
       
       private function showMessage(param1:String, param2:BattleMessengerPool, param3:String = "") : void
@@ -991,13 +958,26 @@ package net.wg.gui.battle.views.battleMessenger
             _loc5_ = this._messages.shift();
             _loc5_.close();
             this.backgroundLayer.removeChild(_loc5_.background);
-            removeChild(_loc5_.messageField);
+            this._messagesContainer.removeChild(_loc5_.messageField);
+            _loc5_.dispose();
+            this.updateFullStack();
          }
          var _loc4_:BattleMessage = param2.createItem(this.userInteraction);
          _loc4_.messageID = param3;
-         _loc4_.setAvailableWidth(this._availableWidth);
          _loc4_.setMessageData(param1);
          this.pushMessage(_loc4_);
+      }
+      
+      private function updateFullStack() : void
+      {
+         var _loc1_:BattleMessage = null;
+         this._nextMsgPosY = 0;
+         for each(_loc1_ in this._messages)
+         {
+            _loc1_.y = this._nextMsgPosY;
+            this._nextMsgPosY += _loc1_.height;
+         }
+         this.updateMessagesPosition();
       }
       
       private function clearReceivers() : void
@@ -1019,6 +999,191 @@ package net.wg.gui.battle.views.battleMessenger
          }
       }
       
+      private function checkBigMessagesInSmallScreen(param1:Boolean) : void
+      {
+         var _loc2_:int = 0;
+         var _loc3_:int = 0;
+         if(this.hasExtraMessagesInFreeSpace())
+         {
+            _loc2_ = this.getCountExtraMesInSmallScreen(param1);
+            _loc3_ = 0;
+            while(_loc3_ < _loc2_)
+            {
+               if(param1)
+               {
+                  this.hideMessageByIndex(this._topMessageIndex + _loc3_);
+               }
+               else
+               {
+                  this.hideMessageByIndex(this._bottomMessageIndex - _loc3_);
+               }
+               _loc3_++;
+            }
+            if(param1)
+            {
+               this._topMessageIndex += _loc2_;
+               this.updateAfterTopMesState();
+               this.checkTopVisibleMes();
+            }
+            else
+            {
+               this._bottomMessageIndex -= _loc2_;
+               this.checkBottomMessageVisible();
+               this.updateMessagesPosition();
+            }
+            this._calculatedMaxVisibleMessages = this._bottomMessageIndex - this._topMessageIndex + 1;
+            this.updateHistoryButtons();
+         }
+         else if(this._calculatedMaxVisibleMessages < this._defaultMaxVisibleMessages)
+         {
+            this.checkFreeSpaceForInvisibleMessages();
+         }
+      }
+      
+      private function hasExtraMessagesInFreeSpace() : Boolean
+      {
+         var _loc1_:int = 0;
+         if(this._messages.length <= 1)
+         {
+            return false;
+         }
+         _loc1_ = y;
+         var _loc2_:Number = this.calculateVisibleMessagesHeight() / _loc1_;
+         return _loc2_ > MAX_MESSAGES_HEIGHT_KOEF;
+      }
+      
+      private function getCountExtraMesInSmallScreen(param1:Boolean) : int
+      {
+         var _loc5_:int = 0;
+         var _loc7_:Boolean = false;
+         var _loc8_:BattleMessage = null;
+         var _loc2_:int = y;
+         var _loc3_:int = this._topMessageIndex;
+         var _loc4_:int = this._bottomMessageIndex;
+         var _loc6_:Number = 0;
+         var _loc9_:int = 0;
+         do
+         {
+            _loc8_ = this._messages[_loc4_];
+            _loc5_ = _loc8_.y + _loc8_.height - this._messages[_loc3_].y;
+            _loc6_ = _loc5_ / _loc2_;
+            if(param1)
+            {
+               _loc3_++;
+            }
+            else
+            {
+               _loc4_--;
+            }
+            if(_loc6_ > MAX_MESSAGES_HEIGHT_KOEF)
+            {
+               _loc9_++;
+               _loc7_ = true;
+            }
+         }
+         while(_loc6_ > MAX_MESSAGES_HEIGHT_KOEF);
+         
+         return !!_loc7_ ? int(_loc9_) : int(0);
+      }
+      
+      private function checkFreeSpaceForInvisibleMessages() : void
+      {
+         var _loc2_:int = 0;
+         var _loc3_:Number = NaN;
+         var _loc1_:int = y;
+         if(this._topMessageIndex > 0)
+         {
+            _loc2_ = this.calculateVisibleMessagesHeight();
+            _loc3_ = _loc2_ / _loc1_;
+            while(_loc3_ < MAX_MESSAGES_HEIGHT_KOEF && this._topMessageIndex > 0 && this._calculatedMaxVisibleMessages < this._defaultMaxVisibleMessages)
+            {
+               _loc2_ = -this._messagesContainer.y - this._messages[this._topMessageIndex - 1].y;
+               _loc3_ = _loc2_ / _loc1_;
+               this.updateHistoryButtons();
+               if(_loc3_ < MAX_MESSAGES_HEIGHT_KOEF)
+               {
+                  --this._topMessageIndex;
+                  ++this._calculatedMaxVisibleMessages;
+                  this.showMessageByIndex(this._topMessageIndex);
+                  this.checkAdditionalMsgAlpha(this._topMessageIndex);
+                  this.updateAfterTopMesState();
+               }
+            }
+            this.checkTopVisibleMes();
+         }
+      }
+      
+      private function checkAdditionalMsgAlpha(param1:int) : void
+      {
+         var _loc2_:BattleMessage = this._messages[param1];
+         var _loc3_:BattleMessage = this._messages[param1 + 1];
+         if(_loc3_.getState() == BattleMessage.FADE_OUT_MES)
+         {
+            _loc2_.alpha = _loc3_.alpha;
+            _loc2_.setState(BattleMessage.FADE_OUT_MES,true);
+         }
+      }
+      
+      private function calculateVisibleMessagesHeight() : int
+      {
+         return -this._messagesContainer.y - this._messages[this._topMessageIndex].y;
+      }
+      
+      private function showNextMessage() : void
+      {
+         if(this._nextMsgKeyCode == Keyboard.UP)
+         {
+            if(!this._isTopMessageVisible)
+            {
+               this.showPrevVisibleMessages();
+               this._scheduler.scheduleTask(this.showNextMessage,SHOW_NEXT_MSG_DURATION);
+            }
+            else
+            {
+               this.cancelNextMessageShow();
+            }
+         }
+         else if(this._nextMsgKeyCode == Keyboard.DOWN)
+         {
+            if(!this._isBottomMessageVisible)
+            {
+               this.showNextVisibleMessages();
+               this._scheduler.scheduleTask(this.showNextMessage,SHOW_NEXT_MSG_DURATION);
+            }
+            else
+            {
+               this.cancelNextMessageShow();
+            }
+         }
+      }
+      
+      private function cancelNextMessageShow() : void
+      {
+         this._nextMsgKeyCode = 0;
+         this._scheduler.cancelTask(this.showNextMessage);
+      }
+      
+      private function selectMessageInputField() : void
+      {
+         this.messageInputField.setSelection(this._selectionBeginIndex,this._selectionEndIndex);
+         this._scheduler.cancelTask(this.selectMessageInputField);
+         this._selectionBeginIndex = -1;
+         this._selectionEndIndex = -1;
+      }
+      
+      override public function set y(param1:Number) : void
+      {
+         super.y = param1;
+         if(this._messages.length > 0)
+         {
+            if(this._messages[this._bottomMessageIndex].getState() != BattleMessage.HIDDEN_MES)
+            {
+               this.checkBigMessagesInSmallScreen(true);
+            }
+            this.updateMessagesPosition();
+         }
+      }
+      
       public function set isSmallState(param1:Boolean) : void
       {
          this._isSmallState = param1;
@@ -1027,6 +1192,11 @@ package net.wg.gui.battle.views.battleMessenger
       public function get isEnterButtonPressed() : Boolean
       {
          return this._isEnterButtonPressed;
+      }
+      
+      private function get userInteractsWithMessenger() : Boolean
+      {
+         return this._isFocused || this._isActive || this._isCtrlButtonPressed;
       }
       
       private function set receiverIdx(param1:int) : void
@@ -1061,7 +1231,14 @@ package net.wg.gui.battle.views.battleMessenger
       
       private function onBattleMessengerRollOutHandler(param1:MouseEvent) : void
       {
-         this.switchSwapArea(true);
+         if(this._isTooltipShow)
+         {
+            this._isTooltipShow = false;
+         }
+         else
+         {
+            this.switchSwapArea(true);
+         }
       }
       
       private function onMessengerRollOutHandler(param1:MouseEvent) : void
@@ -1112,19 +1289,38 @@ package net.wg.gui.battle.views.battleMessenger
          }
       }
       
-      private function onMouseOutHandler(param1:MouseEvent) : void
-      {
-         App.toolTipMgr.hide();
-      }
-      
       private function onMouseOverHandler(param1:MouseEvent) : void
       {
          App.toolTipMgr.showComplex(this._tooltipStr);
+         this._isTooltipShow = true;
       }
       
       private function onMessageInputFieldKeyDownHandler(param1:KeyboardEvent) : void
       {
          var _loc2_:int = param1.keyCode;
+         if(_loc2_ == Keyboard.UP || _loc2_ == Keyboard.DOWN || _loc2_ == Keyboard.PAGE_DOWN)
+         {
+            if(this._selectionBeginIndex == -1)
+            {
+               this._scheduler.scheduleOnNextFrame(this.selectMessageInputField);
+            }
+            this._selectionBeginIndex = this.messageInputField.selectionBeginIndex;
+            this._selectionEndIndex = this.messageInputField.selectionEndIndex;
+         }
+      }
+      
+      private function onKeyDownHandler(param1:KeyboardEvent) : void
+      {
+         if(this._messages.length == 0)
+         {
+            return;
+         }
+         var _loc2_:int = param1.keyCode;
+         if(_loc2_ == Keyboard.UP || _loc2_ == Keyboard.DOWN)
+         {
+            this._nextMsgKeyCode = _loc2_;
+            this._scheduler.scheduleTask(this.showNextMessage,SHOW_NEXT_MSG_DURATION);
+         }
          if(_loc2_ == Keyboard.UP)
          {
             if(!this._isTopMessageVisible)
@@ -1152,43 +1348,30 @@ package net.wg.gui.battle.views.battleMessenger
             }
             dispatchEvent(new Event(REMOVE_FOCUS));
          }
-         else
-         {
-            this._selectionBeginIndex = this.messageInputField.selectionBeginIndex;
-            this._selectionEndIndex = this.messageInputField.selectionEndIndex;
-         }
-      }
-      
-      private function onMessageInputFieldInputHandler(param1:InputEvent) : void
-      {
-         param1.handled = true;
       }
       
       private function onKeyUpHandler(param1:KeyboardEvent) : void
       {
+         if(this._messages.length == 0)
+         {
+            return;
+         }
          var _loc2_:int = param1.keyCode;
+         if(this._nextMsgKeyCode == Keyboard.UP || this._nextMsgKeyCode == Keyboard.DOWN)
+         {
+            this.cancelNextMessageShow();
+         }
          if(_loc2_ == Keyboard.UP || _loc2_ == Keyboard.DOWN || _loc2_ == Keyboard.PAGE_DOWN)
          {
             dispatchEvent(new FocusRequestEvent(FocusRequestEvent.REQUEST_FOCUS,this));
-            this.messageInputField.setSelection(this._selectionBeginIndex,this._selectionEndIndex);
-         }
-         else
-         {
-            this._selectionBeginIndex = this.messageInputField.selectionBeginIndex;
-            this._selectionEndIndex = this.messageInputField.selectionEndIndex;
          }
       }
       
       private function onBattleMessengerMouseClickHandler(param1:MouseEvent) : void
       {
-         if(param1 is MouseEventEx)
+         if(param1 is MouseEventEx && MouseEventEx(param1).buttonIdx == MouseEventEx.LEFT_BUTTON)
          {
-            if(MouseEventEx(param1).buttonIdx == MouseEventEx.LEFT_BUTTON)
-            {
-               this.showViewElements(true);
-               this._selectionBeginIndex = this.messageInputField.selectionBeginIndex;
-               this._selectionEndIndex = this.messageInputField.selectionEndIndex;
-            }
+            this.showViewElements(true);
          }
       }
       

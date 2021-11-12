@@ -48,7 +48,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          super();
          sInstance = this;
          this._atlasManager = RootSWFAtlasManager.instance;
-         this._atlasManager.addEventListener(AtlasEvent.ATLAS_INITIALIZED,this.onAtlasInitialized);
+         this._atlasManager.addEventListener(AtlasEvent.ATLAS_INITIALIZED,this.onAtlasManagerAtlasInitializedHandler);
          this._atlasManager.initAtlas(ATLAS_CONSTANTS.VEHICLE_MARKER_ATLAS);
          this._markersCallback = [];
       }
@@ -68,11 +68,12 @@ package net.wg.gui.battle.views.vehicleMarkers
          this._defaultSchemes = null;
          this._colorBlindSchemes = null;
          this._currentSchemes = null;
-         this._atlasManager.removeEventListener(AtlasEvent.ATLAS_INITIALIZED,this.onAtlasInitialized);
+         this._atlasManager.removeEventListener(AtlasEvent.ATLAS_INITIALIZED,this.onAtlasManagerAtlasInitializedHandler);
          this._atlasManager = null;
          RootSWFAtlasManager.instance.dispose();
          this._markersCallback.splice(0,this._markersCallback.length);
          this._markersCallback = null;
+         sInstance = null;
          super.onDispose();
       }
       
@@ -177,17 +178,19 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       public function getTransform(param1:String) : ColorTransform
       {
-         var _loc2_:Array = null;
+         var _loc2_:* = undefined;
          var _loc3_:Array = null;
+         var _loc4_:Array = null;
          if(this._currentSchemes == null)
          {
             return null;
          }
          if(this._currentSchemes.hasOwnProperty(param1))
          {
-            _loc2_ = this._currentSchemes[param1].transform.mult;
-            _loc3_ = this._currentSchemes[param1].transform.offset;
-            return new ColorTransform(_loc2_[0],_loc2_[1],_loc2_[2],_loc2_[3],_loc3_[0],_loc3_[1],_loc3_[2],_loc3_[3]);
+            _loc2_ = this._currentSchemes[param1].transform;
+            _loc3_ = _loc2_.mult;
+            _loc4_ = _loc2_.offset;
+            return new ColorTransform(_loc3_[0],_loc3_[1],_loc3_[2],_loc3_[3],_loc4_[0],_loc4_[1],_loc4_[2],_loc4_[3]);
          }
          return null;
       }
@@ -212,13 +215,13 @@ package net.wg.gui.battle.views.vehicleMarkers
          return this._isColorBlind;
       }
       
-      private function onAtlasInitialized(param1:AtlasEvent) : void
+      private function onAtlasManagerAtlasInitializedHandler(param1:AtlasEvent) : void
       {
          var _loc2_:IMarkerManagerHandler = null;
          if(this._atlasManager.isAtlasInitialized(ATLAS_CONSTANTS.VEHICLE_MARKER_ATLAS))
          {
             this.isAtlasInited = true;
-            this._atlasManager.removeEventListener(AtlasEvent.ATLAS_INITIALIZED,this.onAtlasInitialized);
+            this._atlasManager.removeEventListener(AtlasEvent.ATLAS_INITIALIZED,this.onAtlasManagerAtlasInitializedHandler);
             while(this._markersCallback.length > 0)
             {
                _loc2_ = this._markersCallback.shift();

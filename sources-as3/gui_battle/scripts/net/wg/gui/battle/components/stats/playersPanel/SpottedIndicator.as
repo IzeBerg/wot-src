@@ -31,6 +31,19 @@ package net.wg.gui.battle.components.stats.playersPanel
          super();
       }
       
+      private static function getTimeLineStateForSpottingStatus(param1:uint) : String
+      {
+         if((param1 & SPOTTED_STATUS) > 0)
+         {
+            return SPOTTED_TIMELINE_STATE;
+         }
+         if((param1 & UNSPOTTED_STATUS) > 0)
+         {
+            return UNSPOTTED_TIMELINE_STATE;
+         }
+         return Values.EMPTY_STR;
+      }
+      
       override protected function configUI() : void
       {
          super.configUI();
@@ -47,7 +60,7 @@ package net.wg.gui.battle.components.stats.playersPanel
       
       public function updateSpottedStatus(param1:uint) : void
       {
-         var _loc2_:String = this.getTimeLineStateForSpottingStatus(param1);
+         var _loc2_:String = getTimeLineStateForSpottingStatus(param1);
          if(_loc2_ == this._spotState)
          {
             return;
@@ -63,19 +76,6 @@ package net.wg.gui.battle.components.stats.playersPanel
          {
             this.spottedState.gotoAndStop(this._spotState);
          }
-      }
-      
-      private function getTimeLineStateForSpottingStatus(param1:uint) : String
-      {
-         if((param1 & SPOTTED_STATUS) > 0)
-         {
-            return SPOTTED_TIMELINE_STATE;
-         }
-         if((param1 & UNSPOTTED_STATUS) > 0)
-         {
-            return UNSPOTTED_TIMELINE_STATE;
-         }
-         return Values.EMPTY_STR;
       }
       
       private function updateVisibility() : void

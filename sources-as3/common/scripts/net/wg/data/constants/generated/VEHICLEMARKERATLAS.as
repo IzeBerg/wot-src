@@ -141,6 +141,8 @@ package net.wg.data.constants.generated
       
       public static const CHINA_CH44_114_SP2:String = "china-Ch44_114_SP2";
       
+      public static const CHINA_CH45_WZ_114:String = "china-Ch45_WZ_114";
+      
       public static const CHINA_CH46_113_140:String = "china-Ch46_113_140";
       
       public static const CZECH_CZ01_SKODA_T40:String = "czech-Cz01_Skoda_T40";

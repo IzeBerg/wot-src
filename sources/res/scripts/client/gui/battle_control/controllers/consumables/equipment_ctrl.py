@@ -444,6 +444,8 @@ class _RepairCrewAndModules(_ExpandedItem):
 
 class _OrderItem(_TriggerItem):
     __sessionProvider = dependency.descriptor(IBattleSessionProvider)
+    _ACTIVATION_COOLDOWN = 0.2
+    _lastActivationTime = 0
 
     def deactivate(self):
         if self._descriptor is not None:
@@ -453,11 +455,20 @@ class _OrderItem(_TriggerItem):
     def canActivate(self, entityName=None, avatar=None):
         if self._timeRemaining > 0 and self._stage and self._stage in (
          EQUIPMENT_STAGES.DEPLOYING, EQUIPMENT_STAGES.COOLDOWN, EQUIPMENT_STAGES.SHARED_COOLDOWN):
-            result = False
             error = self._getErrorMsg()
             return (
+             False, error)
+        else:
+            result, error = super(_OrderItem, self).canActivate(entityName, avatar)
+            if result:
+                currentTime = BigWorld.time()
+                if currentTime - _OrderItem._lastActivationTime > _OrderItem._ACTIVATION_COOLDOWN:
+                    _OrderItem._lastActivationTime = currentTime
+                else:
+                    _logger.info('Attempt to use Arcade equipments simultaneously!')
+                    return (False, None)
+            return (
              result, error)
-        return super(_OrderItem, self).canActivate(entityName, avatar)
 
     def update(self, quantity, stage, timeRemaining, totalTime):
         self.updateMapCase(stage)

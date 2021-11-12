@@ -10,7 +10,7 @@ def bonusCapToTag(cap):
 def notInReplay():
     if IS_CLIENT:
         return not BattleReplay.isPlaying()
-    return False
+    return True
 
 
 class PlanTags(object):

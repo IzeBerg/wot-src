@@ -1,4 +1,4 @@
-import weakref
+import weakref, logging
 from ArtilleryEquipment import ArtilleryEquipment
 from AvatarInputHandler import gun_marker_ctrl
 from CombatSelectedArea import CombatSelectedArea
@@ -18,6 +18,7 @@ from constants import SERVER_TICK_LENGTH
 from debug_utils import LOG_ERROR, LOG_WARNING
 from items import vehicles as vehs_core, artefacts
 from constants import AIMING_MODE
+_logger = logging.getLogger(__name__)
 
 class _DefaultStrikeSelector(CallbackDelayer):
     _TICK_DELAY = 0.1
@@ -836,6 +837,15 @@ def activateMapCase(equipmentID, deactivateCallback, controlMode):
         preferredPos = None if mapCaseCtrl.isEnabled else mapCaseCtrl.getDesiredShotPoint(ignoreAimingMode=True)
         inputHandler.ctrl.activateEquipment(equipmentID, preferredPos)
     else:
+        currentMode = inputHandler.ctrlModeName
+        mapCaseModes = (
+         CTRL_MODE_NAME.MAP_CASE_ARCADE_EPIC_MINEFIELD,
+         CTRL_MODE_NAME.MAP_CASE,
+         CTRL_MODE_NAME.MAP_CASE_ARCADE,
+         CTRL_MODE_NAME.MAP_CASE_ARCADE_EPIC_MINEFIELD)
+        if currentMode in mapCaseModes:
+            _logger.warning('MapCaseMode is active! Attempt to switch MapCaseModes simultaneously!')
+            return
         controlMode.deactivateCallback = deactivateCallback
         pos = inputHandler.getDesiredShotPoint()
         if pos is None:
@@ -844,7 +854,7 @@ def activateMapCase(equipmentID, deactivateCallback, controlMode):
                 pos = camera.aimingSystem.getDesiredShotPoint()
             if pos is None:
                 pos = Vector3(0.0, 0.0, 0.0)
-        controlMode.prevCtlMode = [pos, inputHandler.ctrlModeName, inputHandler.ctrl.aimingMode]
+        controlMode.prevCtlMode = [pos, currentMode, inputHandler.ctrl.aimingMode]
         inputHandler.onControlModeChanged(controlMode.MODE_NAME, preferredPos=pos, aimingMode=inputHandler.ctrl.aimingMode, equipmentID=equipmentID, saveDist=False)
     return
 

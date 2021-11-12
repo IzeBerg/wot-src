@@ -281,8 +281,8 @@ class DamagePanel(DamagePanelMeta, IPrebattleSetupsListener):
             return
 
     def _updateRepairingDevice(self, value):
-        deviceName, progress, seconds, isLimited = value
-        self.as_updateRepairingDeviceS(deviceName, progress, seconds, isLimited)
+        deviceName, progress, seconds, repairMode = value
+        self.as_updateRepairingDeviceS(deviceName, progress, seconds, repairMode)
 
     def _updateCrewDeactivated(self, _):
         self.as_setCrewDeactivatedS()

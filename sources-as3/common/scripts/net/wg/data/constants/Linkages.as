@@ -531,6 +531,8 @@ package net.wg.data.constants
       
       public static const TURBO_SIEGE_MODE_ANIMATION_UI:String = "TurboSiegeModeAnimationUI";
       
+      public static const YOH_CHASSIS_MODE_ANIMATION_UI:String = "YohChassisModeAnimationUI";
+      
       public static const POSTMORTEN_PANEL:String = "PostmortemPanelUI";
       
       public static const ROLE_DESCRIPTION:String = "RoleDescriptionUI";

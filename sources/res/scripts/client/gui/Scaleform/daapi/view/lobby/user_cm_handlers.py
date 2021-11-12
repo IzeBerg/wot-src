@@ -30,7 +30,7 @@ from messenger.proto.entities import SharedUserEntity
 from messenger.proto.entities import ClanInfo as UserClanInfo
 from messenger.storage import storage_getter
 from nation_change_helpers.client_nation_change_helper import getValidVehicleCDForNationChange
-from skeletons.gui.game_control import IVehicleComparisonBasket, IBattleRoyaleController, IMapboxController
+from skeletons.gui.game_control import IVehicleComparisonBasket, IBattleRoyaleController, IMapboxController, IEventBattlesController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
@@ -73,6 +73,7 @@ class BaseUserCMHandler(AbstractContextMenuHandler, EventSystemEntity):
     lobbyContext = dependency.descriptor(ILobbyContext)
     __battleRoyale = dependency.descriptor(IBattleRoyaleController)
     __mapboxCtrl = dependency.descriptor(IMapboxController)
+    __eventBattlesCtrl = dependency.descriptor(IEventBattlesController)
 
     def __init__(self, cmProxy, ctx=None):
         super(BaseUserCMHandler, self).__init__(cmProxy, ctx, handlers=self._getHandlers())
@@ -279,7 +280,7 @@ class BaseUserCMHandler(AbstractContextMenuHandler, EventSystemEntity):
         if not isIgnored and not self.isSquadCreator() and self.prbDispatcher is not None:
             canCreate = self.prbEntity.getPermissions().canCreateSquad()
             options.append(self._makeItem(USER.CREATE_SQUAD, MENU.contextmenu(USER.CREATE_SQUAD), optInitData={'enabled': canCreate}))
-            if self.eventsCache.isEventEnabled():
+            if self.__eventBattlesCtrl.isEnabled():
                 options.append(self._makeItem(USER.CREATE_EVENT_SQUAD, MENU.contextmenu(USER.CREATE_EVENT_SQUAD), optInitData={'enabled': canCreate, 'textColor': 13347959}))
             if self.__battleRoyale.isEnabled():
                 primeTimeStatus, _, _ = self.__battleRoyale.getPrimeTimeStatus()

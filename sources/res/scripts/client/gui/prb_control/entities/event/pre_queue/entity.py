@@ -12,7 +12,7 @@ from CurrentVehicle import g_currentVehicle
 from gui.prb_control.storages import prequeue_storage_getter
 from gui.prb_control.entities.event.pre_queue.scheduler import EventScheduler
 from helpers import dependency
-from skeletons.gui.server_events import IEventsCache
+from skeletons.gui.game_control import IEventBattlesController
 
 class EventBattleSubscriber(PreQueueSubscriber):
 
@@ -40,7 +40,7 @@ class EventBattleEntryPoint(PreQueueEntryPoint):
 
 
 class EventBattleEntity(PreQueueEntity):
-    eventsCache = dependency.descriptor(IEventsCache)
+    __eventBattlesCtrl = dependency.descriptor(IEventBattlesController)
 
     def __init__(self):
         super(EventBattleEntity, self).__init__(FUNCTIONAL_FLAG.EVENT, QUEUE_TYPE.EVENT_BATTLES, EventBattleSubscriber())
@@ -76,7 +76,7 @@ class EventBattleEntity(PreQueueEntity):
         super(EventBattleEntity, self).leave(ctx, callback=callback)
 
     def _doQueue(self, ctx):
-        BigWorld.player().enqueueEventBattles(ctx.getVehicleInventoryIDs(), ctx.getBattleType(), canAddToSquad=ctx.canAddToSquad())
+        BigWorld.player().enqueueEventBattles(ctx.getVehicleInventoryID())
         LOG_DEBUG('Sends request on queuing to the event battles', ctx)
 
     def _doDequeue(self, ctx):
@@ -88,13 +88,13 @@ class EventBattleEntity(PreQueueEntity):
         return FUNCTIONAL_FLAG.LOAD_PAGE
 
     def _exitFromQueueUI(self):
-        if not self.eventsCache.isEventEnabled():
+        if not self.__eventBattlesCtrl.isEnabled():
             g_eventDispatcher.loadHangar()
         else:
             g_eventDispatcher.loadEventHangar()
 
     def _makeQueueCtxByAction(self, action=None):
-        return EventBattleQueueCtx([g_currentVehicle.item.invID], waitingID='prebattle/join')
+        return EventBattleQueueCtx(g_currentVehicle.item.invID, waitingID='prebattle/join')
 
     def _createScheduler(self):
         return EventScheduler(self)

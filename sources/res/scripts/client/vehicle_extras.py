@@ -3,7 +3,10 @@ from functools import partial
 from vehicle_systems.stricted_loading import makeCallbackWeak
 import BigWorld, Math, material_kinds, AnimationSequence
 from debug_utils import LOG_CODEPOINT_WARNING, LOG_CURRENT_EXCEPTION
+from gui.impl import backport
+from gui.impl.gen import R
 from items import vehicles
+from items.components.component_constants import MAIN_TRACK_PAIR_IDX
 from common_tank_appearance import MAX_DISTANCE
 from helpers import i18n
 from helpers.EffectsList import EffectsListPlayer
@@ -211,13 +214,17 @@ class DamageMarker(EntityExtra):
         self.deviceUserString = dataSection.readString('deviceUserString')
         if not self.deviceUserString:
             self._raiseWrongConfig('deviceUserString', containerName)
-        self.deviceUserString = i18n.makeString(self.deviceUserString)
+        deviceUserString = self._getDeviceUserString(dataSection, containerName)
+        self.deviceUserString = deviceUserString
         soundSection = dataSection['sounds']
         self.sounds = {}
         for state in ('critical', 'destroyed', 'functional', 'fixed'):
             sound = soundSection.readString(state)
             if sound:
                 self.sounds[state] = sound
+
+    def _getDeviceUserString(self, dataSection, containerName):
+        return i18n.makeString(dataSection.readString('deviceUserString'))
 
     @property
     def isTankman(self):
@@ -237,20 +244,33 @@ def wheelHealths(name, index, containerName, dataSection, vehType):
 
 
 class TrackHealth(DamageMarker):
-    __slots__ = ('__isLeft', '__trackPairIndex')
+    __slots__ = ('__isLeft', '_trackPairIndex')
 
     def _readConfig(self, dataSection, containerName):
-        DamageMarker._readConfig(self, dataSection, containerName)
         self.__isLeft = dataSection.readBool('isLeft')
+        self._trackPairIndex = dataSection.readInt('trackPairIdx', 0)
+        DamageMarker._readConfig(self, dataSection, containerName)
         functionalCanMoveState = 'functionalCanMove'
         self.sounds[functionalCanMoveState] = dataSection.readString('sounds/' + functionalCanMoveState)
-        self.__trackPairIndex = dataSection.readInt('trackPairIdx', 0)
+
+    def _getDeviceUserString(self, dataSection, _):
+        resource = R.strings.ingame_gui.devices.track
+        typeTxt = backport.text(resource.left() if self.__isLeft else resource.right())
+        return backport.text(resource(), type=typeTxt)
 
     def _start(self, data, args):
-        data['entity'].appearance.addCrashedTrack(self.__isLeft, self.__trackPairIndex)
+        data['entity'].appearance.addCrashedTrack(self.__isLeft, self._trackPairIndex)
 
     def _cleanup(self, data):
-        data['entity'].appearance.delCrashedTrack(self.__isLeft, self.__trackPairIndex)
+        data['entity'].appearance.delCrashedTrack(self.__isLeft, self._trackPairIndex)
+
+
+class TrackWithinTrackHealth(TrackHealth):
+
+    def _getDeviceUserString(self, dataSection, _):
+        resource = R.strings.ingame_gui.devices.track
+        typeTxt = backport.text(resource.main() if self._trackPairIndex == MAIN_TRACK_PAIR_IDX else resource.outer())
+        return backport.text(resource(), type=typeTxt)
 
 
 class Fire(EntityExtra):

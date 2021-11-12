@@ -1245,7 +1245,7 @@ class QUESTS(object):
     BONUSNAME_RANKEDBONUSBATTLES = '#quests:bonusName/rankedBonusBattles'
     BONUSNAME_ENTITLEMENTS_TESTENTITLEMENT = '#quests:bonusName/entitlements/testEntitlement'
     BONUSNAME_ENTITLEMENTS_RANKED_2020_DISCOUNT = '#quests:bonusName/entitlements/ranked_2020_discount'
-    BONUSNAME_ENTITLEMENTS_RANKED_202109_ACCESS = '#quests:bonusName/entitlements/ranked_202109_access'
+    BONUSNAME_ENTITLEMENTS_RANKED_202201_ACCESS = '#quests:bonusName/entitlements/ranked_202201_access'
     BONUSNAME_BATTLE_BONUS_X5 = '#quests:bonusName/battle_bonus_x5'
     BONUSNAME_BATTLEPASSPOINTS = '#quests:bonusName/battlePassPoints'
     BONUSNAME_BATTLEPASSPOINTS_PREVIEW = '#quests:bonusName/battlePassPoints/preview'
@@ -1669,6 +1669,7 @@ class QUESTS(object):
     DAILYQUESTS_CONDITION_DODAMAGEVEH_ACCUM = '#quests:dailyQuests/condition/doDamageVeh_accum'
     DAILYQUESTS_CONDITION_DESTROYVEH_FEW_ACCUM = '#quests:dailyQuests/condition/destroyVeh_few_accum'
     DAILYQUESTS_CONDITION_DESTROYVEH_PLURAL_ACCUM = '#quests:dailyQuests/condition/destroyVeh_plural_accum'
+    DETAILS_CONDITIONS_CUMULATIVE_DAMAGEDHP = '#quests:details/conditions/cumulative/damagedHp'
     TOKEN_DEFAULT_ENUM = (
      TOKEN_DEFAULT_USSR,
      TOKEN_DEFAULT_GERMANY,
@@ -1772,7 +1773,7 @@ class QUESTS(object):
      BONUSNAME_RANKEDBONUSBATTLES,
      BONUSNAME_ENTITLEMENTS_TESTENTITLEMENT,
      BONUSNAME_ENTITLEMENTS_RANKED_2020_DISCOUNT,
-     BONUSNAME_ENTITLEMENTS_RANKED_202109_ACCESS,
+     BONUSNAME_ENTITLEMENTS_RANKED_202201_ACCESS,
      BONUSNAME_BATTLE_BONUS_X5,
      BONUSNAME_BATTLEPASSPOINTS,
      BONUSNAME_BATTLEPASSPOINTS_PREVIEW)

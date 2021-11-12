@@ -160,7 +160,7 @@ def getGuiServicesConfig(manager):
     manager.addInstance(ILobbyContext, lobby_context.LobbyContext(), finalizer='clear')
     manager.addConfig(offers.getOffersConfig)
     manager.addConfig(server_events.getLinkedSetController)
-    manager.addConfig(wgnp.getWGNPRequestController)
+    manager.addConfig(wgnp.getWGNPRequestControllers)
     manager.addConfig(catalog_service.getPurchaseCache)
     if HAS_DEV_RESOURCES:
         try:

@@ -2495,7 +2495,7 @@ package
       
       public static const BONUSNAME_ENTITLEMENTS_RANKED_2020_DISCOUNT:String = "#quests:bonusName/entitlements/ranked_2020_discount";
       
-      public static const BONUSNAME_ENTITLEMENTS_RANKED_202109_ACCESS:String = "#quests:bonusName/entitlements/ranked_202109_access";
+      public static const BONUSNAME_ENTITLEMENTS_RANKED_202201_ACCESS:String = "#quests:bonusName/entitlements/ranked_202201_access";
       
       public static const BONUSNAME_BATTLE_BONUS_X5:String = "#quests:bonusName/battle_bonus_x5";
       
@@ -3342,6 +3342,8 @@ package
       public static const DAILYQUESTS_CONDITION_DESTROYVEH_FEW_ACCUM:String = "#quests:dailyQuests/condition/destroyVeh_few_accum";
       
       public static const DAILYQUESTS_CONDITION_DESTROYVEH_PLURAL_ACCUM:String = "#quests:dailyQuests/condition/destroyVeh_plural_accum";
+      
+      public static const DETAILS_CONDITIONS_CUMULATIVE_DAMAGEDHP:String = "#quests:details/conditions/cumulative/damagedHp";
       
       public static const BATTLECONDITION_STATE_ENUM:Array = [BATTLECONDITION_STATE_COMPLETED,BATTLECONDITION_STATE_COMPLETED_PERFECTLY,BATTLECONDITION_STATE_IN_PROGRESS,BATTLECONDITION_STATE_FAILED];
       

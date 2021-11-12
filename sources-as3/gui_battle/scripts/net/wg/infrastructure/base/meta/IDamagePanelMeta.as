@@ -32,7 +32,7 @@ package net.wg.infrastructure.base.meta
       
       function as_updateDeviceState(param1:String, param2:String) : void;
       
-      function as_updateRepairingDevice(param1:String, param2:int, param3:Number, param4:Boolean) : void;
+      function as_updateRepairingDevice(param1:String, param2:int, param3:Number, param4:int) : void;
       
       function as_setVehicleDestroyed() : void;
       

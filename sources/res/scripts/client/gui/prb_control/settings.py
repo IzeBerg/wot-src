@@ -154,7 +154,7 @@ class PREBATTLE_ACTION_NAME(object):
     BATTLE_ROYALE = 'battleRoyaleQueue'
     BATTLE_ROYALE_TOURNAMENT = 'battleRoyaleTournamentQueue'
     MAPS_TRAINING = 'mapsTraining'
-    EVENT_BATTLE = 'eventBattle'
+    EVENT_BATTLE = 'event'
     MAPBOX = 'mapbox'
 
 
@@ -173,6 +173,7 @@ class SELECTOR_BATTLE_TYPES(object):
     BATTLE_ROYALE = 'battleRoyale'
     MAPBOX = 'mapbox'
     MAPS_TRAINING = 'mapsTraining'
+    EVENT = 'event'
 
 
 class REQUEST_TYPE(object):

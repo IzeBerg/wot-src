@@ -36,21 +36,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this.onDispose();
       }
       
-      public function setFrags(param1:int) : void
-      {
-         if(this._frags == param1)
-         {
-            return;
-         }
-         this._frags = param1;
-         this._listItem.setFrags(this._frags);
-      }
-      
-      public function setDogTag(param1:DogTagVO) : void
-      {
-         this._dogTag = param1;
-      }
-      
       public function getDogTag() : DogTagVO
       {
          return this._dogTag;
@@ -66,14 +51,19 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this._listItem.setChatCommand(param1,param2);
       }
       
-      public function setSpottedStatus(param1:uint) : void
+      public function setDogTag(param1:DogTagVO) : void
       {
-         this._listItem.setSpottedStatus(param1);
+         this._dogTag = param1;
       }
       
-      public function triggerChatCommand(param1:String) : void
+      public function setFrags(param1:int) : void
       {
-         this._listItem.triggerChatCommand(param1);
+         if(this._frags == param1)
+         {
+            return;
+         }
+         this._frags = param1;
+         this._listItem.setFrags(this._frags);
       }
       
       public function setInvitationStatus(param1:uint) : void
@@ -84,6 +74,16 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          }
          this.vehicleData.invitationStatus = param1;
          this.updateInvitationValues();
+      }
+      
+      public function setOverrideExInfo(param1:Boolean) : void
+      {
+         this._listItem.setOverrideExInfo(param1);
+      }
+      
+      public function setPlayerHP(param1:int) : void
+      {
+         this._listItem.setVehicleHealth(param1);
       }
       
       public function setPlayerStatus(param1:int) : void
@@ -97,14 +97,9 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this.updatePlayerStatusValues();
       }
       
-      public function setPlayerHP(param1:int) : void
+      public function setSpottedStatus(param1:uint) : void
       {
-         this._listItem.setVehicleHealth(param1);
-      }
-      
-      public function setOverrideExInfo(param1:Boolean) : void
-      {
-         this._listItem.setOverrideExInfo(param1);
+         this._listItem.setSpottedStatus(param1);
       }
       
       public function setUserTags(param1:Array) : void
@@ -125,11 +120,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this.applyVehicleData();
       }
       
-      public function getVehicleData() : DAAPIVehicleInfoVO
-      {
-         return this.vehicleData;
-      }
-      
       public function setVehicleStatus(param1:int) : void
       {
          if(!this.vehicleData || this.vehicleData.vehicleStatus == param1)
@@ -138,6 +128,11 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          }
          this.vehicleData.vehicleStatus = param1;
          this.applyVehicleStatus();
+      }
+      
+      public function triggerChatCommand(param1:String) : void
+      {
+         this._listItem.triggerChatCommand(param1);
       }
       
       protected function onDispose() : void
@@ -238,17 +233,17 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       private function updateUserProps() : void
       {
-         if(!this._userProps)
-         {
-            this._userProps = new StatsUserProps(this.vehicleData.playerName,this.vehicleData.playerFakeName,this.vehicleData.clanAbbrev,this.vehicleData.region,0,this.vehicleData.userTags);
-         }
-         else
+         if(this._userProps)
          {
             this._userProps.userName = this.vehicleData.playerName;
             this._userProps.fakeName = this.vehicleData.playerFakeName;
             this._userProps.clanAbbrev = this.vehicleData.clanAbbrev;
             this._userProps.region = this.vehicleData.region;
             this._userProps.tags = this.vehicleData.userTags;
+         }
+         else
+         {
+            this._userProps = new StatsUserProps(this.vehicleData.playerName,this.vehicleData.playerFakeName,this.vehicleData.clanAbbrev,this.vehicleData.region,0,this.vehicleData.userTags);
          }
          if(this._userProps.isChanged)
          {

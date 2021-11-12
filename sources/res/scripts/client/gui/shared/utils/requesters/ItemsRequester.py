@@ -369,7 +369,7 @@ class ItemsRequester(IItemsRequester):
     __vehPostProgressionCtrl = dependency.descriptor(IVehiclePostProgressionController)
     _AccountItem = namedtuple('_AccountItem', ['dossier', 'clanInfo', 'seasons', 'ranked', 'dogTag'])
 
-    def __init__(self, inventory, stats, dossiers, goodies, shop, recycleBin, vehicleRotation, ranked, battleRoyale, badges, epicMetaGame, tokens, festivityRequester, blueprints=None, sessionStatsRequester=None, anonymizerRequester=None):
+    def __init__(self, inventory, stats, dossiers, goodies, shop, recycleBin, vehicleRotation, ranked, battleRoyale, badges, epicMetaGame, tokens, festivityRequester, blueprints=None, sessionStatsRequester=None, anonymizerRequester=None, giftSystemRequester=None):
         self.__inventory = inventory
         self.__stats = stats
         self.__dossiers = dossiers
@@ -387,6 +387,7 @@ class ItemsRequester(IItemsRequester):
         self.__sessionStats = sessionStatsRequester
         self.__anonymizer = anonymizerRequester
         self.__battlePass = BattlePassRequester()
+        self.__giftSystem = giftSystemRequester
         self.__itemsCache = defaultdict(dict)
         self.__brokenSyncAlreadyLoggedTypes = set()
         self.__fittingItemRequesters = {
@@ -461,6 +462,10 @@ class ItemsRequester(IItemsRequester):
     def battlePass(self):
         return self.__battlePass
 
+    @property
+    def giftSystem(self):
+        return self.__giftSystem
+
     @async
     @process
     def request(self, callback=None):
@@ -510,90 +515,99 @@ class ItemsRequester(IItemsRequester):
         Waiting.show('download/festivity')
         yield self.__festivity.request()
         Waiting.hide('download/festivity')
+        Waiting.show('download/giftSystem')
+        yield self.__giftSystem.request()
+        Waiting.hide('download/giftSystem')
         self.__brokenSyncAlreadyLoggedTypes.clear()
         callback(self)
 
     def isSynced--- This code section failed: ---
 
- L. 867         0  LOAD_FAST             0  'self'
+ L. 878         0  LOAD_FAST             0  'self'
                 3  LOAD_ATTR             0  '__blueprints'
                 6  LOAD_CONST               None
                 9  COMPARE_OP            9  is-not
-               12  POP_JUMP_IF_FALSE   193  'to 193'
+               12  POP_JUMP_IF_FALSE   208  'to 208'
                15  LOAD_FAST             0  'self'
                18  LOAD_ATTR             2  '__stats'
                21  LOAD_ATTR             3  'isSynced'
                24  CALL_FUNCTION_0       0  None
-               27  JUMP_IF_FALSE_OR_POP   196  'to 196'
+               27  JUMP_IF_FALSE_OR_POP   211  'to 211'
                30  LOAD_FAST             0  'self'
                33  LOAD_ATTR             4  '__inventory'
                36  LOAD_ATTR             3  'isSynced'
                39  CALL_FUNCTION_0       0  None
-               42  JUMP_IF_FALSE_OR_POP   196  'to 196'
+               42  JUMP_IF_FALSE_OR_POP   211  'to 211'
                45  LOAD_FAST             0  'self'
                48  LOAD_ATTR             5  '__recycleBin'
                51  LOAD_ATTR             3  'isSynced'
                54  CALL_FUNCTION_0       0  None
-               57  JUMP_IF_FALSE_OR_POP   196  'to 196'
+               57  JUMP_IF_FALSE_OR_POP   211  'to 211'
                60  LOAD_FAST             0  'self'
                63  LOAD_ATTR             6  '__shop'
                66  LOAD_ATTR             3  'isSynced'
                69  CALL_FUNCTION_0       0  None
-               72  JUMP_IF_FALSE_OR_POP   196  'to 196'
+               72  JUMP_IF_FALSE_OR_POP   211  'to 211'
                75  LOAD_FAST             0  'self'
                78  LOAD_ATTR             7  '__dossiers'
                81  LOAD_ATTR             3  'isSynced'
                84  CALL_FUNCTION_0       0  None
-               87  JUMP_IF_FALSE_OR_POP   196  'to 196'
+               87  JUMP_IF_FALSE_OR_POP   211  'to 211'
                90  LOAD_FAST             0  'self'
-               93  LOAD_ATTR             8  '__goodies'
+               93  LOAD_ATTR             8  '__giftSystem'
                96  LOAD_ATTR             3  'isSynced'
                99  CALL_FUNCTION_0       0  None
-              102  JUMP_IF_FALSE_OR_POP   196  'to 196'
+              102  JUMP_IF_FALSE_OR_POP   211  'to 211'
               105  LOAD_FAST             0  'self'
-              108  LOAD_ATTR             9  '__vehicleRotation'
+              108  LOAD_ATTR             9  '__goodies'
               111  LOAD_ATTR             3  'isSynced'
               114  CALL_FUNCTION_0       0  None
-              117  JUMP_IF_FALSE_OR_POP   196  'to 196'
+              117  JUMP_IF_FALSE_OR_POP   211  'to 211'
               120  LOAD_FAST             0  'self'
-              123  LOAD_ATTR            10  'ranked'
+              123  LOAD_ATTR            10  '__vehicleRotation'
               126  LOAD_ATTR             3  'isSynced'
               129  CALL_FUNCTION_0       0  None
-              132  JUMP_IF_FALSE_OR_POP   196  'to 196'
+              132  JUMP_IF_FALSE_OR_POP   211  'to 211'
               135  LOAD_FAST             0  'self'
-              138  LOAD_ATTR            11  '__anonymizer'
+              138  LOAD_ATTR            11  'ranked'
               141  LOAD_ATTR             3  'isSynced'
               144  CALL_FUNCTION_0       0  None
-              147  JUMP_IF_FALSE_OR_POP   196  'to 196'
+              147  JUMP_IF_FALSE_OR_POP   211  'to 211'
               150  LOAD_FAST             0  'self'
-              153  LOAD_ATTR            12  'epicMetaGame'
+              153  LOAD_ATTR            12  '__anonymizer'
               156  LOAD_ATTR             3  'isSynced'
               159  CALL_FUNCTION_0       0  None
-              162  JUMP_IF_FALSE_OR_POP   196  'to 196'
+              162  JUMP_IF_FALSE_OR_POP   211  'to 211'
               165  LOAD_FAST             0  'self'
-              168  LOAD_ATTR            13  '__battleRoyale'
+              168  LOAD_ATTR            13  'epicMetaGame'
               171  LOAD_ATTR             3  'isSynced'
               174  CALL_FUNCTION_0       0  None
-              177  JUMP_IF_FALSE_OR_POP   196  'to 196'
+              177  JUMP_IF_FALSE_OR_POP   211  'to 211'
               180  LOAD_FAST             0  'self'
-              183  LOAD_ATTR             0  '__blueprints'
+              183  LOAD_ATTR            14  '__battleRoyale'
               186  LOAD_ATTR             3  'isSynced'
               189  CALL_FUNCTION_0       0  None
-              192  RETURN_END_IF    
-            193_0  COME_FROM           177  '177'
-            193_1  COME_FROM           162  '162'
-            193_2  COME_FROM           147  '147'
-            193_3  COME_FROM           132  '132'
-            193_4  COME_FROM           117  '117'
-            193_5  COME_FROM           102  '102'
-            193_6  COME_FROM            87  '87'
-            193_7  COME_FROM            72  '72'
-            193_8  COME_FROM            57  '57'
-            193_9  COME_FROM            42  '42'
-           193_10  COME_FROM            27  '27'
-           193_11  COME_FROM            12  '12'
-              193  LOAD_GLOBAL          14  'False'
-              196  RETURN_VALUE     
+              192  JUMP_IF_FALSE_OR_POP   211  'to 211'
+              195  LOAD_FAST             0  'self'
+              198  LOAD_ATTR             0  '__blueprints'
+              201  LOAD_ATTR             3  'isSynced'
+              204  CALL_FUNCTION_0       0  None
+              207  RETURN_END_IF    
+            208_0  COME_FROM           192  '192'
+            208_1  COME_FROM           177  '177'
+            208_2  COME_FROM           162  '162'
+            208_3  COME_FROM           147  '147'
+            208_4  COME_FROM           132  '132'
+            208_5  COME_FROM           117  '117'
+            208_6  COME_FROM           102  '102'
+            208_7  COME_FROM            87  '87'
+            208_8  COME_FROM            72  '72'
+            208_9  COME_FROM            57  '57'
+           208_10  COME_FROM            42  '42'
+           208_11  COME_FROM            27  '27'
+           208_12  COME_FROM            12  '12'
+              208  LOAD_GLOBAL          15  'False'
+              211  RETURN_VALUE     
 
 Parse error at or near `None' instruction at offset -1
 
@@ -650,6 +664,7 @@ Parse error at or near `None' instruction at offset -1
         self.__blueprints.clear()
         self.__festivity.clear()
         self.__anonymizer.clear()
+        self.__giftSystem.clear()
 
     def onDisconnected(self):
         self.__tokens.onDisconnected()

@@ -47,19 +47,16 @@ package net.wg.gui.battle.views.staticMarkers.location
          this.hoverShadow.visible = false;
       }
       
-      override protected function get getReplyPosition() : Point
+      override public function setMarkerReplied(param1:Boolean) : void
       {
-         return new Point(this.REPLY_POSITION_X,this.REPLY_POSITION_Y);
+         this._replyMarkerVisible = param1;
+         invalidateData();
       }
       
-      override protected function get getArrowPosition() : Point
+      override public function setReplyCount(param1:int) : void
       {
-         return ARROW_POSITION;
-      }
-      
-      override protected function get getDistanceToMarkerPosition() : Point
-      {
-         return new Point(this.DISTANCE_POSITION_X,this.DISTANCE_POSITION_Y);
+         this._replyMarkerCount = param1;
+         invalidateData();
       }
       
       override protected function onDispose() : void
@@ -71,25 +68,6 @@ package net.wg.gui.battle.views.staticMarkers.location
          this.hoverShadow = null;
          this.creatorNameField = null;
          super.onDispose();
-      }
-      
-      override public function setMarkerReplied(param1:Boolean) : void
-      {
-         this._replyMarkerVisible = param1;
-         invalidateData();
-      }
-      
-      public function triggerClickAnimation() : void
-      {
-         this.clickAnimation.visible = true;
-         this.clickAnimation.alpha = 1;
-         this.clickAnimation.play();
-      }
-      
-      override public function setReplyCount(param1:int) : void
-      {
-         this._replyMarkerCount = param1;
-         invalidateData();
       }
       
       override protected function draw() : void
@@ -108,6 +86,11 @@ package net.wg.gui.battle.views.staticMarkers.location
          this.locationLineElement.gotoAndStop(param1);
       }
       
+      public function setCreatorNameText(param1:String) : void
+      {
+         this.creatorNameField.text = param1;
+      }
+      
       public function setCreatorNameVisible(param1:Boolean) : void
       {
          this.creatorNameField.visible = param1;
@@ -117,9 +100,26 @@ package net.wg.gui.battle.views.staticMarkers.location
          }
       }
       
-      public function setCreatorNameText(param1:String) : void
+      public function triggerClickAnimation() : void
       {
-         this.creatorNameField.text = param1;
+         this.clickAnimation.visible = true;
+         this.clickAnimation.alpha = 1;
+         this.clickAnimation.play();
+      }
+      
+      override protected function get getReplyPosition() : Point
+      {
+         return new Point(this.REPLY_POSITION_X,this.REPLY_POSITION_Y);
+      }
+      
+      override protected function get getArrowPosition() : Point
+      {
+         return ARROW_POSITION;
+      }
+      
+      override protected function get getDistanceToMarkerPosition() : Point
+      {
+         return new Point(this.DISTANCE_POSITION_X,this.DISTANCE_POSITION_Y);
       }
    }
 }

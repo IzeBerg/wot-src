@@ -1,6 +1,6 @@
 from frameworks.wulf import ViewSettings
 from gui.impl.gen import R
-from gui.impl.lobby.account_completion.common import fillRewards
+from gui.impl.lobby.account_completion.utils.common import fillRewards
 from gui.impl.pub import ViewImpl
 from gui.impl.gen.view_models.views.lobby.account_completion.tooltips.hangar_tooltip_model import HangarTooltipModel
 

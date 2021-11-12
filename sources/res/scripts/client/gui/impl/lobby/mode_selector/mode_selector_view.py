@@ -101,7 +101,7 @@ class ModeSelectorView(ViewImpl):
                     body = modeSelectorItem.calendarTooltipText
                 return self.__createSimpleTooltip(event, body=body)
             if tooltipId == ModeSelectorTooltipsConstants.RANDOM_BP_PAUSED_TOOLTIP:
-                return self.__createSimpleTooltip(event, header=backport.text(R.strings.battle_pass_2020.tooltips.entryPoint.disabled.header()), body=backport.text(R.strings.battle_pass_2020.tooltips.entryPoint.disabled.body()))
+                return self.__createSimpleTooltip(event, header=backport.text(R.strings.battle_pass.tooltips.entryPoint.disabled.header()), body=backport.text(R.strings.battle_pass.tooltips.entryPoint.disabled.body()))
             if tooltipId in [
              ModeSelectorTooltipsConstants.RANKED_CALENDAR_DAY_INFO_TOOLTIP,
              ModeSelectorTooltipsConstants.RANKED_STEP_TOOLTIP,

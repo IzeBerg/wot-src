@@ -366,9 +366,7 @@ def _getSlotsData(unitMgrID, fullData, levelsRange=None, checkForVehicles=True, 
             isVisibleAdtMsg = player and player.isCurrentPlayer() and not vehicle
             additionMsg = ''
             if isVisibleAdtMsg:
-                eventsCache = dependency.instance(IEventsCache)
-                vehiclesNames = [ veh.userName for veh in eventsCache.getEventVehicles() ]
-                additionMsg = i18n.makeString(MESSENGER.DIALOGS_EVENTSQUAD_VEHICLE, vehName=(', ').join(vehiclesNames))
+                additionMsg = i18n.makeString(MESSENGER.DIALOGS_EVENTSQUAD_VEHICLE, vehName='')
             slot.update({'isVisibleAdtMsg': isVisibleAdtMsg, 
                'additionalMsg': additionMsg})
         elif unit.getPrebattleType() == PREBATTLE_TYPE.EPIC and squadPremBonusEnabled:

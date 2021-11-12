@@ -1,5 +1,6 @@
 import logging
 from CurrentVehicle import g_currentVehicle
+from gui.prb_control import prbDispatcherProperty
 from Event import Event
 from frameworks.wulf import ViewFlags, ViewSettings, ViewStatus
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
@@ -78,11 +79,18 @@ class BaseAmmunitionPanelView(ViewImpl):
     def setLastSlotAction(self, *args, **kwargs):
         setLastSlotAction(self.viewModel, self.vehItem, *args, **kwargs)
 
+    @prbDispatcherProperty
+    def prbDispatcher(self):
+        return
+
     def update(self, fullUpdate=True):
         if fullUpdate:
             clearLastSlotAction(self.viewModel)
         self.viewModel.setIsMaintenanceEnabled(not g_currentVehicle.isLocked())
-        self.viewModel.setIsDisabled(self._getIsDisabled())
+        if not self.__canChangeVehicle():
+            self.viewModel.setIsDisabled(True)
+        else:
+            self.viewModel.setIsDisabled(self._getIsDisabled())
         self._ammunitionPanel.update(self.vehItem, fullUpdate=fullUpdate)
 
     def destroy(self):
@@ -131,7 +139,7 @@ class BaseAmmunitionPanelView(ViewImpl):
         self._itemsCache.onSyncCompleted -= self.__itemCacheChanged
 
     def _onPanelSectionSelected(self, args):
-        if not self._getIsDisabled():
+        if not self._getIsDisabled() and self.__canChangeVehicle():
             clearLastSlotAction(self.viewModel)
             self.onPanelSectionSelected(**args)
 
@@ -160,3 +168,10 @@ class BaseAmmunitionPanelView(ViewImpl):
 
     def __onViewSizeInitialized(self, args=None):
         self.onSizeChanged(args.get('width', 0), args.get('height', 0), args.get('offsetY', 0))
+
+    def __canChangeVehicle(self):
+        if self.prbDispatcher is not None:
+            permission = self.prbDispatcher.getGUIPermissions()
+            if permission is not None:
+                return permission.canChangeVehicle()
+        return True

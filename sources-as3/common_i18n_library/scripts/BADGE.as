@@ -29,6 +29,10 @@ package
       
       public static const BADGESPAGE_ACCOUNTCOMPLETION_BUTTON_PROVIDEEMAIL:String = "#badge:badgesPage/accountCompletion/button/provideEmail";
       
+      public static const BADGESPAGE_ACCOUNTCOMPLETION_BUTTON_DEMOACCRENAME:String = "#badge:badgesPage/accountCompletion/button/demoAccRename";
+      
+      public static const BADGESPAGE_ACCOUNTCOMPLETION_REFRESHING:String = "#badge:badgesPage/accountCompletion/refreshing";
+      
       public static const BADGESPAGE_ACCOUNTCOMPLETION_BUTTON_STATUSUPDATE:String = "#badge:badgesPage/accountCompletion/button/statusUpdate";
       
       public static const BADGESPAGE_ACCOUNTCOMPLETION_BUTTON_SERVICEUNAVAILABLE:String = "#badge:badgesPage/accountCompletion/button/serviceUnavailable";
@@ -484,6 +488,10 @@ package
       public static const BADGE_103:String = "#badge:badge_103";
       
       public static const BADGE_103_DESCR:String = "#badge:badge_103_descr";
+      
+      public static const BADGE_104:String = "#badge:badge_104";
+      
+      public static const BADGE_104_DESCR:String = "#badge:badge_104_descr";
       
       public static const BADGE_105:String = "#badge:badge_105";
       

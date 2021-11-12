@@ -10,7 +10,7 @@ from gui.Scaleform.daapi.view.meta.SixthSenseMeta import SixthSenseMeta
 from gui.Scaleform.genConsts.DAMAGEINDICATOR import DAMAGEINDICATOR
 from gui.Scaleform.genConsts.SIEGE_MODE_CONSTS import SIEGE_MODE_CONSTS
 from gui.Scaleform.locale.INGAME_GUI import INGAME_GUI
-from gui.battle_control.battle_constants import DEVICE_STATES_RANGE, DEVICE_STATE_NORMAL, DEVICE_STATE_CRITICAL, VEHICLE_DEVICE_IN_COMPLEX_ITEM
+from gui.battle_control.battle_constants import DEVICE_STATES_RANGE, DEVICE_STATE_NORMAL, DEVICE_STATE_CRITICAL, VEHICLE_DEVICE_IN_COMPLEX_ITEM, DEVICE_STATE_DESTROYED
 from gui.battle_control.battle_constants import HIT_INDICATOR_MAX_ON_SCREEN
 from gui.battle_control.battle_constants import PREDICTION_INDICATOR_MAX_ON_SCREEN
 from gui.battle_control.battle_constants import VEHICLE_VIEW_STATE, CROSSHAIR_VIEW_ID
@@ -601,20 +601,23 @@ class SiegeModeIndicator(SiegeModeIndicatorMeta):
         vType = vTypeDesc.type
         self.__resetDevices()
         self.__updateDevicesView()
-        if vehicle.isAlive() and vTypeDesc.hasSiegeMode and (vTypeDesc.hasTurboshaftEngine or vTypeDesc.hasHydraulicChassis or vTypeDesc.hasAutoSiegeMode):
-            siegeModeParams = vType.siegeModeParams
+        hasSiegeMode = vTypeDesc.hasSiegeMode and (vTypeDesc.hasTurboshaftEngine or vTypeDesc.hasHydraulicChassis or vTypeDesc.hasAutoSiegeMode)
+        if vehicle.isAlive() and (hasSiegeMode or vTypeDesc.isTrackWithinTrack):
             uiType = self.__getUIType(vTypeDesc)
             self.as_setSiegeModeTypeS(uiType)
-            self._siegeComponent.staticMode = vTypeDesc.hasAutoSiegeMode
-            self._switchTimeTable.update({_SIEGE_STATE.DISABLED: siegeModeParams[_SIEGE_STATE.SWITCHING_ON], 
-               _SIEGE_STATE.SWITCHING_ON: siegeModeParams[_SIEGE_STATE.SWITCHING_ON], 
-               _SIEGE_STATE.ENABLED: siegeModeParams[_SIEGE_STATE.SWITCHING_OFF], 
-               _SIEGE_STATE.SWITCHING_OFF: siegeModeParams[_SIEGE_STATE.SWITCHING_OFF]})
             self._devices = self.__createDevicesMap(vTypeDesc)
             self._deviceStateConverter = self.__getDeviceStateConverter(vTypeDesc)
             self._isEnabled = True
-            for stateID in (VEHICLE_VIEW_STATE.DEVICES,
-             VEHICLE_VIEW_STATE.SIEGE_MODE):
+            states = [VEHICLE_VIEW_STATE.DEVICES]
+            if hasSiegeMode:
+                siegeModeParams = vType.siegeModeParams
+                self._siegeComponent.staticMode = vTypeDesc.hasAutoSiegeMode
+                self._switchTimeTable.update({_SIEGE_STATE.DISABLED: siegeModeParams[_SIEGE_STATE.SWITCHING_ON], 
+                   _SIEGE_STATE.SWITCHING_ON: siegeModeParams[_SIEGE_STATE.SWITCHING_ON], 
+                   _SIEGE_STATE.ENABLED: siegeModeParams[_SIEGE_STATE.SWITCHING_OFF], 
+                   _SIEGE_STATE.SWITCHING_OFF: siegeModeParams[_SIEGE_STATE.SWITCHING_OFF]})
+                states.append(VEHICLE_VIEW_STATE.SIEGE_MODE)
+            for stateID in states:
                 value = vStateCtrl.getStateValue(stateID)
                 if value is not None:
                     if stateID == VEHICLE_VIEW_STATE.DEVICES:
@@ -688,16 +691,30 @@ class SiegeModeIndicator(SiegeModeIndicatorMeta):
 
     @classmethod
     def __getDeviceStateConverter(cls, vTypeDesc):
+        converter = None
         if vTypeDesc.hasHydraulicChassis or vTypeDesc.hasAutoSiegeMode:
-            return cls.__hydraulicDeviceStateConverter
-        if vTypeDesc.hasTurboshaftEngine:
-            return cls.__turboshaftDeviceStateConverter
-        raise SoftException("Can't get device state converter for siege mode")
+            converter = cls.__hydraulicDeviceStateConverter
+        elif vTypeDesc.hasTurboshaftEngine:
+            converter = cls.__turboshaftDeviceStateConverter
+        elif vTypeDesc.isTrackWithinTrack:
+            converter = cls.__trackWithinTrackDeviceStateConverter
+        if converter is None:
+            raise SoftException("Can't get device state converter for siege mode")
+        return converter
 
     @staticmethod
     def __hydraulicDeviceStateConverter(deviceName, state):
         if state == DEVICE_STATE_CRITICAL and deviceName in ('leftTrack0', 'rightTrack0'):
-            return DEVICE_STATE_NORMAL
+            state = DEVICE_STATE_NORMAL
+        return state
+
+    @staticmethod
+    def __trackWithinTrackDeviceStateConverter(deviceName, state):
+        allTracks = ('leftTrack0', 'rightTrack0', 'leftTrack1', 'rightTrack1')
+        if state == DEVICE_STATE_DESTROYED and deviceName in ('leftTrack1', 'rightTrack1'):
+            state = DEVICE_STATE_CRITICAL
+        elif state == DEVICE_STATE_CRITICAL and deviceName in allTracks:
+            state = DEVICE_STATE_NORMAL
         return state
 
     @staticmethod
@@ -708,11 +725,16 @@ class SiegeModeIndicator(SiegeModeIndicatorMeta):
 
     @staticmethod
     def __getUIType(vTypeDesc):
+        uiType = None
         if vTypeDesc.hasHydraulicChassis or vTypeDesc.hasAutoSiegeMode:
-            return SIEGE_MODE_CONSTS.HYDRAULIC_CHASSIS_TYPE
-        if vTypeDesc.hasTurboshaftEngine:
-            return SIEGE_MODE_CONSTS.TURBOSHAFT_ENGINE_TYPE
-        raise SoftException("Can't get UI siege mode type")
+            uiType = SIEGE_MODE_CONSTS.HYDRAULIC_CHASSIS_TYPE
+        elif vTypeDesc.hasTurboshaftEngine:
+            uiType = SIEGE_MODE_CONSTS.TURBOSHAFT_ENGINE_TYPE
+        elif vTypeDesc.isTrackWithinTrack:
+            uiType = SIEGE_MODE_CONSTS.TRACK_WITHIN_TRACK_TYPE
+        if uiType is None:
+            raise SoftException("Can't get UI siege mode type")
+        return uiType
 
     @staticmethod
     def __createDevicesMap(vTypeDesc):
@@ -720,6 +742,8 @@ class SiegeModeIndicator(SiegeModeIndicatorMeta):
             deviceNames = ('engine', 'leftTrack0', 'rightTrack0')
         elif vTypeDesc.hasTurboshaftEngine:
             deviceNames = ('engine', )
+        elif vTypeDesc.isTrackWithinTrack:
+            deviceNames = ('leftTrack0', 'rightTrack0', 'leftTrack1', 'rightTrack1')
         else:
             raise SoftException("Can't create updatable devices")
         return {name:DEVICE_STATE_NORMAL for name in deviceNames}

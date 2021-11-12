@@ -184,7 +184,7 @@ def __getIcon(item, progressionLevel):
         else:
             icon = item.iconByProgressionLevel(progressionLevel)
     else:
-        icon = item.previewIconUrl if isProjectionDecal else item.icon
+        icon = item.icon
     return icon
 
 

@@ -671,6 +671,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.data.WaitingPointcutsVO;
    import net.wg.gui.data.WaitingQueueCounterMessageVO;
    import net.wg.gui.data.WaitingQueueWindowVO;
+   import net.wg.gui.dialogs.ButtonDialog;
    import net.wg.gui.dialogs.ItemStatusData;
    import net.wg.gui.dialogs.SimpleDialog;
    import net.wg.gui.eventcomponents.NumberProgress;
@@ -2249,6 +2250,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_DATA_WAITINGQUEUECOUNTERMESSAGEVO:Class = WaitingQueueCounterMessageVO;
       
       public static const NET_WG_GUI_DATA_WAITINGQUEUEWINDOWVO:Class = WaitingQueueWindowVO;
+      
+      public static const NET_WG_GUI_DIALOGS_BUTTONDIALOG:Class = ButtonDialog;
       
       public static const NET_WG_GUI_DIALOGS_ITEMSTATUSDATA:Class = ItemStatusData;
       

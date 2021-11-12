@@ -23,10 +23,13 @@ msgid "accountCompletion/accountAlreadyHasEmail"
 msgstr "К вашему аккаунту уже была привязана почта."
 
 msgid "accountCompletion/activate/button"
-msgstr "Выслать код/сменить email"
+msgstr "Выслать код / сменить email"
 
 msgid "accountCompletion/activate/coundownText"
 msgstr "Выслать код повторно или сменить email через %(timer) с"
+
+msgid "accountCompletion/activate/enterCredentialsAgain"
+msgstr "Ввести email ещё раз"
 
 msgid "accountCompletion/activate/keyDied"
 msgstr "Код устарел. Введите ваш email ещё раз."
@@ -56,8 +59,32 @@ msgstr "К вашему аккаунту уже привязан email."
 msgid "accountCompletion/alreadyLinked/title"
 msgstr "Email уже привязан"
 
+msgid "accountCompletion/badPassword"
+msgstr "Пароль может содержать только латинские буквы, цифры и подчёркивание."
+
 msgid "accountCompletion/cancel"
 msgstr "Не сейчас"
+
+msgid "accountCompletion/contactSupport"
+msgstr "Обратитесь в Центр поддержки"
+
+msgid "accountCompletion/credentials/subTitle"
+msgstr ""
+"Завершите регистрацию, получите награду — и вперёд, к победам! %(emailIcon)"
+
+msgid "accountCompletion/credentials/title"
+msgstr "Зарегистрируйтесь"
+
+msgid "accountCompletion/demoComplete/button"
+msgstr "Продолжить"
+
+msgid "accountCompletion/demoComplete/description"
+msgstr ""
+"Ваш аккаунт подтверждён, добро пожаловать "
+"в&nbsp;World&nbsp;of&nbsp;Tanks.%(br)Скоро вам будет начислена награда."
+
+msgid "accountCompletion/demoComplete/title"
+msgstr "Регистрация завершена"
 
 msgid "accountCompletion/email/fieldName"
 msgstr "Ваш email"
@@ -87,11 +114,11 @@ msgstr "На этот email уже зарегистрирован аккаунт
 msgid "accountCompletion/emailForbidden"
 msgstr "Этот email запрещён."
 
-msgid "accountCompletion/emailIsToLong"
-msgstr "Слишком длинный email. Максимальное количество символов — 50."
+msgid "accountCompletion/emailIsTooLong"
+msgstr "Email должен содержать не более %(amount)s символов."
 
-msgid "accountCompletion/emailIsToShort"
-msgstr "Слишком короткий email."
+msgid "accountCompletion/emailIsTooShort"
+msgstr "Email должен содержать не менее %(amount)s символов."
 
 msgid "accountCompletion/emailOverlay/alreadyConfirmed/subTitle"
 msgstr "Ваш email уже подтверждён."
@@ -108,26 +135,165 @@ msgid "accountCompletion/emailProviderBanned"
 msgstr "Этот почтовый сервис заблокирован на территории вашей страны."
 
 msgid "accountCompletion/emailRestrictedByCountry"
-msgstr "Вы пока не можете привязать email к вашему аккаунту."
+msgstr "Этот почтовый сервис запрещён в вашей стране."
 
 msgid "accountCompletion/emailRestrictedByCountryHeader"
 msgstr "Невозможно привязать email"
 
+msgid "accountCompletion/error/button/continue"
+msgstr "Продолжить"
+
+msgid "accountCompletion/error/button/tryAgain"
+msgstr "Попробовать ещё раз"
+
+msgid "accountCompletion/error/notAvailable"
+msgstr "Сервис временно недоступен."
+
+msgid "accountCompletion/error/renamingMalfunction"
+msgstr ""
+"Смена имени недоступна.\n"
+"Ваше текущее имя в игре — %(nickname)s."
+
+msgid "accountCompletion/error/renamingNotAvailable"
+msgstr ""
+"Смена имени временно недоступна,\n"
+"приносим извинения."
+
+msgid "accountCompletion/error/somethingWentWrong"
+msgstr ""
+"Что-то пошло не так.\n"
+"Ваше текущее имя в игре — %(nickname)s."
+
+msgid "accountCompletion/error/tryAgainTimerMessage"
+msgstr "Попробовать ещё раз через %(time)"
+
 msgid "accountCompletion/errorIsWrong"
-msgstr "Неверный email. Проверьте правильность указанного адреса."
+msgstr ""
+"Email может содержать только латинские буквы, цифры, символ @, точку и "
+"подчёркивание."
+
+msgid "accountCompletion/leaveSquad/cancel"
+msgstr "Отменить"
+
+msgid "accountCompletion/leaveSquad/message"
+msgstr ""
+"При смене имени в игре вы не должны находиться в составе взвода. Нажав "
+"кнопку «Подтвердить», вы покинете взвод."
+
+msgid "accountCompletion/leaveSquad/submit"
+msgstr "Подтвердить"
+
+msgid "accountCompletion/leaveSquad/title"
+msgstr "Покинуть взвод?"
+
+msgid "accountCompletion/loginAlreadyTaken"
+msgstr "На этот email уже зарегистрирован аккаунт."
+
+msgid "accountCompletion/password/fieldName"
+msgstr "Пароль"
+
+msgid "accountCompletion/passwordIsTooLong"
+msgstr "Пароль должен содержать не более %(amount)s символов."
+
+msgid "accountCompletion/passwordIsTooShort"
+msgstr "Пароль должен содержать не менее 8 символов."
+
+msgid "accountCompletion/passwordIsWeak"
+msgstr "Пароль слишком простой. Попробуйте придумать более сложный пароль."
+
+msgid "accountCompletion/registrationRewardsTitle"
+msgstr "Награда за регистрацию!"
+
+msgid "accountCompletion/renaming/skip/cancel"
+msgstr "Отменить"
+
+msgid "accountCompletion/renaming/skip/message"
+msgstr "Вы сможете выбрать имя позже в Личном кабинете клиента игры."
+
+msgid "accountCompletion/renaming/skip/submit"
+msgstr "Пропустить"
+
+msgid "accountCompletion/renaming/skip/title"
+msgstr "Пропустить выбор имени?"
+
+msgid "accountCompletion/renamingCompleteOverlay/subTitle"
+msgstr ""
+"Позывной сохранён.\n"
+"Смена имени может занять некоторое время."
+
+msgid "accountCompletion/renamingCompleteOverlay/title"
+msgstr "Ваше имя в игре"
+
+msgid "accountCompletion/renamingOverlay/button"
+msgstr "Подтвердить"
+
+msgid "accountCompletion/renamingOverlay/fieldName"
+msgstr "Ваше имя"
+
+msgid "accountCompletion/renamingOverlay/nameForbidden"
+msgstr "Это имя запрещено."
+
+msgid "accountCompletion/renamingOverlay/nameForbiddenPickVariant"
+msgstr ""
+"Это имя запрещено. Придумайте другое или выберите из предложенных вариантов."
+
+msgid "accountCompletion/renamingOverlay/nameInvalid"
+msgstr ""
+"Имя содержит недопустимые символы. Можно использовать только латинские "
+"буквы, цифры и подчёркивание."
+
+msgid "accountCompletion/renamingOverlay/nameTaken"
+msgstr "Это имя уже занято."
+
+msgid "accountCompletion/renamingOverlay/nameTakenPickVariant"
+msgstr ""
+"Это имя уже занято. Придумайте другое или выберите из предложенных "
+"вариантов."
+
+msgid "accountCompletion/renamingOverlay/nameTooShort"
+msgstr "Имя должно содержать не менее %(amount)s символов."
+
+msgid "accountCompletion/renamingOverlay/nameToolong"
+msgstr "Имя должно содержать не более %(amount)s символов."
+
+msgid "accountCompletion/renamingOverlay/subTitle"
+msgstr ""
+"Выберите позывной, по которому вас будут встречать и провожать на поле боя."
+
+msgid "accountCompletion/renamingOverlay/title"
+msgstr "Выберите имя в игре"
 
 msgid "accountCompletion/rewardsTitle"
 msgstr "Награда за подтверждение почты"
+
+msgid "accountCompletion/spa/passwordIsWeak"
+msgstr ""
+"Этот пароль не прошёл проверку на сложность. Используйте другой пароль."
 
 msgid "accountCompletion/submit"
 msgstr "Подтвердить"
 
 msgid "accountCompletion/tooManyRequests"
 msgstr ""
-"Слишком много запросов на сервер. Повторите попытку через несколько секунд."
+"%(icon) Слишком много запросов на сервер.\n"
+"Повторите попытку через %(time)s."
 
-msgid "accountCompletion/warningServerIsMissing"
+msgid "accountCompletion/waiting/confirmation"
+msgstr ""
+"Ожидание подтверждения регистрации.\n"
+"Это может занять некоторое время."
+
+msgid "accountCompletion/waiting/queue"
+msgstr ""
+"Ожидание в очереди на сервере.\n"
+"Это может занять некоторое время."
+
+msgid "accountCompletion/warningServerUnavailable"
 msgstr "%(icon) Сервис временно недоступен.%(br) Попробуйте позже."
+
+msgid "accountCompletion/warningServerUnavailableTimed"
+msgstr ""
+"%(icon) Сервис временно недоступен.%(br)Повторите попытку через %(time)s."
 
 msgid "accountCompletion/warningSomethingWentWrong"
 msgstr "Что-то пошло не так."
@@ -1147,6 +1313,18 @@ msgstr "Получена награда «Герой нашего времени
 msgid "dedication/sub-headline"
 msgstr "За {battlesNum} сыгранных боёв"
 
+msgid "demoAccountBootcampFailure/cancel"
+msgstr "Сменить аккаунт"
+
+msgid "demoAccountBootcampFailure/message"
+msgstr ""
+"Этот аккаунт временно не может войти в игру. Попробуйте сменить аккаунт в WGC.\n"
+"\n"
+"<font color=\"#FF7009\"><u><A HREF='event:hyperLink'>Или дополните свой аккаунт.</A></u></font>"
+
+msgid "demoAccountBootcampFailure/title"
+msgstr "Ошибка"
+
 msgid "dialogTemplates/cancel"
 msgstr "Отменить"
 
@@ -2111,7 +2289,7 @@ msgstr ""
 
 msgid "punishmentWindow/message/warning"
 msgstr ""
-"Уважаемый игрок, ввиду нарушения вами игровых правил на карте %(arenaName)s в %(time)s, а именно статьи «%(reason)s», вам объявлено первое и последнее предупреждение. Обратите внимание, что в случае повторного нарушения вы будете лишены всех заработанных за бой кредитов, опыта и наград. В том случае, если досрочный выход из боя связан с разрывами соединения или иными техническими трудностями, обратитесь в службу технической поддержки.\n"
+"Уважаемый игрок, ввиду нарушения вами игровых правил на карте %(arenaName)s в %(time)s, а именно статьи «%(reason)s», вам объявлено первое и последнее предупреждение. Обратите внимание, что в случае повторного нарушения вы будете лишены всех заработанных за бой кредитов, опыта и наград. В том случае, если досрочный выход из боя связан с разрывами соединения или иными техническими трудностями, обратитесь в Центр поддержки пользователей.\n"
 "\n"
 " "
 

@@ -2,7 +2,6 @@ package net.wg.gui.battle.views.vehicleMarkers
 {
    import flash.display.MovieClip;
    import flash.geom.Point;
-   import flash.utils.getDefinitionByName;
    import net.wg.data.constants.Values;
    import net.wg.gui.battle.views.actionMarkers.ActionMarkerStates;
    import net.wg.gui.battle.views.actionMarkers.BaseActionMarker;
@@ -57,32 +56,23 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private var _count:int = 0;
       
+      private var _lastState:int = -1;
+      
       public const ARROW_POSITION:Point = new Point(0,0);
       
       public const REPLY_POSITION:Point = new Point(20,-1);
       
       public const DISTANCE_POSITION:Point = new Point(-43,15);
       
-      private var _lastState:int = -1;
-      
       public function VehicleActionMarker()
       {
          super();
       }
       
-      override protected function get getReplyPosition() : Point
+      override public function setReplyCount(param1:int) : void
       {
-         return this.REPLY_POSITION;
-      }
-      
-      override protected function get getArrowPosition() : Point
-      {
-         return this.ARROW_POSITION;
-      }
-      
-      override protected function get getDistanceToMarkerPosition() : Point
-      {
-         return this.DISTANCE_POSITION;
+         this._count = param1;
+         super.setReplyCount(param1);
       }
       
       override protected function onDispose() : void
@@ -102,12 +92,9 @@ package net.wg.gui.battle.views.vehicleMarkers
          super.onDispose();
       }
       
-      public function triggerClickAnimation() : void
+      public function isVisible() : Boolean
       {
-         if(this._actionIconStateMarker != null)
-         {
-            this._actionIconStateMarker.playClickAnimation();
-         }
+         return this._isVisible;
       }
       
       public function showAction(param1:String, param2:Boolean = false) : void
@@ -127,6 +114,30 @@ package net.wg.gui.battle.views.vehicleMarkers
          if(param2 && this._lastState != -1)
          {
             this.updateActionRenderer(this._lastState);
+         }
+      }
+      
+      public function stopAction(param1:Boolean = true) : void
+      {
+         if(this._currentRenderer)
+         {
+            if(param1)
+            {
+               this._hideTween = new Tween(HIDE_DURATION,this._currentRenderer,{"alpha":0});
+            }
+            else
+            {
+               this._currentRenderer.alpha = 0;
+            }
+            this._isVisible = false;
+         }
+      }
+      
+      public function triggerClickAnimation() : void
+      {
+         if(this._actionIconStateMarker != null)
+         {
+            this._actionIconStateMarker.playClickAnimation();
          }
       }
       
@@ -152,28 +163,6 @@ package net.wg.gui.battle.views.vehicleMarkers
          }
       }
       
-      override public function setReplyCount(param1:int) : void
-      {
-         this._count = param1;
-         super.setReplyCount(param1);
-      }
-      
-      public function stopAction(param1:Boolean = true) : void
-      {
-         if(this._currentRenderer)
-         {
-            if(param1)
-            {
-               this._hideTween = new Tween(HIDE_DURATION,this._currentRenderer,{"alpha":0});
-            }
-            else
-            {
-               this._currentRenderer.alpha = 0;
-            }
-            this._isVisible = false;
-         }
-      }
-      
       private function removeActionRenderer() : void
       {
          if(!this._currentRenderer)
@@ -192,7 +181,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          var renderer:MovieClip = null;
          try
          {
-            rendererClass = getDefinitionByName(rendererLinkage) as Class;
+            rendererClass = App.utils.classFactory.getClass(rendererLinkage);
             renderer = new rendererClass();
             if(renderer)
             {
@@ -205,6 +194,26 @@ package net.wg.gui.battle.views.vehicleMarkers
          return renderer;
       }
       
+      override protected function get getReplyPosition() : Point
+      {
+         return this.REPLY_POSITION;
+      }
+      
+      override protected function get getArrowPosition() : Point
+      {
+         return this.ARROW_POSITION;
+      }
+      
+      override protected function get getDistanceToMarkerPosition() : Point
+      {
+         return this.DISTANCE_POSITION;
+      }
+      
+      override public function get height() : Number
+      {
+         return BASE_HEIGHT;
+      }
+      
       public function get entityName() : String
       {
          return this._entityName;
@@ -213,16 +222,6 @@ package net.wg.gui.battle.views.vehicleMarkers
       public function set entityName(param1:String) : void
       {
          this._entityName = param1;
-      }
-      
-      public function isVisible() : Boolean
-      {
-         return this._isVisible;
-      }
-      
-      override public function get height() : Number
-      {
-         return BASE_HEIGHT;
       }
    }
 }

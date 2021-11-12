@@ -6,7 +6,6 @@ package net.wg.gui.lobby.modulesPanel.components
    import net.wg.gui.components.advanced.AmmunitionButton;
    import net.wg.gui.lobby.components.data.DeviceSlotVO;
    import net.wg.gui.lobby.modulesPanel.interfaces.IDeviceSlot;
-   import net.wg.infrastructure.events.IconLoaderEvent;
    import net.wg.infrastructure.managers.ITooltipMgr;
    import net.wg.infrastructure.managers.counter.CounterProps;
    import net.wg.utils.ICounterManager;
@@ -17,13 +16,9 @@ package net.wg.gui.lobby.modulesPanel.components
    [Event(name="deviceChange",type="net.wg.gui.events.DeviceEvent")]
    public class DeviceSlot extends AmmunitionButton implements IDeviceSlot
    {
-      
-      private static const EXTRA_ICON_PADDING:int = 2;
        
       
       private var _slotData:DeviceSlotVO = null;
-      
-      private var _extraIcon:ExtraIcon = null;
       
       private var _type:String = null;
       
@@ -56,7 +51,6 @@ package net.wg.gui.lobby.modulesPanel.components
       
       override protected function onDispose() : void
       {
-         this.removeExtraIcon();
          this._toolTipMgr = null;
          this._slotData = null;
          this._counterManager = null;
@@ -79,7 +73,6 @@ package net.wg.gui.lobby.modulesPanel.components
          super.draw();
          if(isInvalid(InvalidationType.DATA) && this._slotData != null)
          {
-            this.updateExtraIcon();
             this.tryAddCounter();
          }
       }
@@ -100,45 +93,9 @@ package net.wg.gui.lobby.modulesPanel.components
          invalidate(InvalidationType.DATA);
       }
       
-      protected function createExtraIcon() : void
-      {
-         this._extraIcon = new ExtraIcon();
-         this._extraIcon.addEventListener(IconLoaderEvent.ICON_LOADED,this.onExtraIconIconLoadedHandler);
-         this._extraIcon.mouseChildren = false;
-         this._extraIcon.mouseEnabled = false;
-         addChild(this._extraIcon);
-      }
-      
       protected function isEmpty() : Boolean
       {
          return isNaN(this._slotData.id);
-      }
-      
-      private function removeExtraIcon() : void
-      {
-         if(this._extraIcon != null)
-         {
-            this._extraIcon.removeEventListener(IconLoaderEvent.ICON_LOADED,this.onExtraIconIconLoadedHandler);
-            this._extraIcon.dispose();
-            removeChild(this._extraIcon);
-            this._extraIcon = null;
-         }
-      }
-      
-      private function updateExtraIcon() : void
-      {
-         if(!this.isEmpty() && StringUtils.isNotEmpty(this._slotData.extraModuleInfo))
-         {
-            if(this._extraIcon == null)
-            {
-               this.createExtraIcon();
-            }
-            this._extraIcon.setSource(this._slotData.extraModuleInfo);
-         }
-         else if(this._extraIcon)
-         {
-            this._extraIcon.clear();
-         }
       }
       
       private function tryAddCounter() : void
@@ -205,12 +162,6 @@ package net.wg.gui.lobby.modulesPanel.components
       public function get slotData() : DeviceSlotVO
       {
          return this._slotData;
-      }
-      
-      private function onExtraIconIconLoadedHandler(param1:IconLoaderEvent) : void
-      {
-         this._extraIcon.x = width - this._extraIcon.width - EXTRA_ICON_PADDING | 0;
-         this._extraIcon.y = height - this._extraIcon.height - EXTRA_ICON_PADDING | 0;
       }
       
       private function onRollOverHandler(param1:MouseEvent) : void

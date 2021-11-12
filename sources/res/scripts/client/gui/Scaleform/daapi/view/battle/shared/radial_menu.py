@@ -466,7 +466,11 @@ class RadialMenu(RadialMenuMeta, BattleGUIKeyHandler, CallbackDelayer):
         if RadialMenu.__isMarkerEmptyLocationOrOutOfBorder(targetMarkerType, targetMarkerSubtype) and targetMarkerType != self.__crosshairData.targetMarkerType:
             self.hide(allowAction=False)
             self.show(reshowPreviousState=False)
-        return self._REFRESH_TIME_IN_SECONDS
+        hasDelayedCallback = self.hasDelayedCallback(self.__checkForValidLocationMarkerLoop)
+        if not hasDelayedCallback:
+            return self._REFRESH_TIME_IN_SECONDS
+        else:
+            return
 
     def __checkForTemporaryRespondUpdateLoop(self):
         if self.__crosshairData is None or self.__isVisible is False:

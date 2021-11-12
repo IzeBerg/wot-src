@@ -531,6 +531,8 @@ package
       
       public static const AWARDS_GOTQUALIFICATION:String = "#ranked_battles:awards/gotQualification";
       
+      public static const AWARDS_GOTQUALIFICATIONQUEST:String = "#ranked_battles:awards/gotQualificationQuest";
+      
       public static const AWARDS_GOTDIVISION:String = "#ranked_battles:awards/gotDivision";
       
       public static const AWARDS_GOTLEAGUE:String = "#ranked_battles:awards/gotLeague";
@@ -711,6 +713,10 @@ package
       
       public static const DIVISION_STATUS_QUALIFICATION_PROGRESS:String = "#ranked_battles:division/status/qualification/progress";
       
+      public static const DIVISION_STATUS_QUALIFICATIONDESCR_PROGRESS:String = "#ranked_battles:division/status/qualificationDescr/progress";
+      
+      public static const DIVISION_STATUS_QUALIFICATIONDESCR_COMPLETE:String = "#ranked_battles:division/status/qualificationDescr/complete";
+      
       public static const REWARDSVIEW_TABS_RANKS:String = "#ranked_battles:rewardsView/tabs/ranks";
       
       public static const REWARDSVIEW_TABS_LEAGUES:String = "#ranked_battles:rewardsView/tabs/leagues";
@@ -787,7 +793,13 @@ package
       
       public static const INTROPAGE_BTNS_ACCEPT:String = "#ranked_battles:introPage/btns/accept";
       
+      public static const INTROPAGE_BTNS_TOHANGAR:String = "#ranked_battles:introPage/btns/toHangar";
+      
       public static const INTROPAGE_BTNS_DETAILED:String = "#ranked_battles:introPage/btns/detailed";
+      
+      public static const INTROPAGE_ALERT_DISABLED:String = "#ranked_battles:introPage/alert/disabled";
+      
+      public static const INTROPAGE_ALERT_BEFORESEASON:String = "#ranked_battles:introPage/alert/beforeSeason";
       
       public static const INTROPAGE_BLOCKS_BLOCK1_TITLE:String = "#ranked_battles:introPage/blocks/block1/title";
       
@@ -802,6 +814,14 @@ package
       public static const INTROPAGE_BLOCKS_BLOCK3_DESCRIPTION:String = "#ranked_battles:introPage/blocks/block3/description";
       
       public static const INTROPAGE_BLOCKS_YEARREWARDDISABLED:String = "#ranked_battles:introPage/blocks/yearRewardDisabled";
+      
+      public static const INTROPAGE_TIMELEFT_DAYS:String = "#ranked_battles:introPage/timeLeft/days";
+      
+      public static const INTROPAGE_TIMELEFT_HOURS:String = "#ranked_battles:introPage/timeLeft/hours";
+      
+      public static const INTROPAGE_TIMELEFT_MIN:String = "#ranked_battles:introPage/timeLeft/min";
+      
+      public static const INTROPAGE_TIMELEFT_LESSMIN:String = "#ranked_battles:introPage/timeLeft/lessMin";
       
       public static const YEARREWARDS_BOX_SMALL_TITLE:String = "#ranked_battles:yearRewards/box/small/title";
       
@@ -993,21 +1013,19 @@ package
       
       public static const ENTRYPOINT_TITLE:String = "#ranked_battles:entryPoint/title";
       
-      public static const ENTRYPOINT_BEFORESEASON:String = "#ranked_battles:entryPoint/beforeSeason";
+      public static const ENTRYPOINT_SEASON_STARTS:String = "#ranked_battles:entryPoint/season/starts";
       
-      public static const ENTRYPOINT_ACTIVESEASON:String = "#ranked_battles:entryPoint/activeSeason";
+      public static const ENTRYPOINT_SEASON_LASTS:String = "#ranked_battles:entryPoint/season/lasts";
       
-      public static const ENTRYPOINT_WAITNEXTSEASONDATE_WIDE:String = "#ranked_battles:entryPoint/waitNextSeasonDate/wide";
-      
-      public static const ENTRYPOINT_WAITNEXTSEASONDATE_THIN_SEASONEND:String = "#ranked_battles:entryPoint/waitNextSeasonDate/thin/seasonEnd";
-      
-      public static const ENTRYPOINT_WAITNEXTSEASONDATE_THIN_NEWSEASONSOON:String = "#ranked_battles:entryPoint/waitNextSeasonDate/thin/newSeasonSoon";
-      
-      public static const ENTRYPOINT_WAITNEXTSEASONWITHOUTDATE:String = "#ranked_battles:entryPoint/waitNextSeasonWithoutDate";
+      public static const ENTRYPOINT_SEASON_END:String = "#ranked_battles:entryPoint/season/end";
       
       public static const ENTRYPOINT_FROZEN_WIDE:String = "#ranked_battles:entryPoint/frozen/wide";
       
       public static const ENTRYPOINT_FROZEN_THIN:String = "#ranked_battles:entryPoint/frozen/thin";
+      
+      public static const QUALIFICATIONREWARDS_BATTLESPLAYED:String = "#ranked_battles:qualificationRewards/battlesPlayed";
+      
+      public static const QUALIFICATIONREWARDS_BATTLESNEEDED:String = "#ranked_battles:qualificationRewards/battlesNeeded";
        
       
       public function RANKED_BATTLES()

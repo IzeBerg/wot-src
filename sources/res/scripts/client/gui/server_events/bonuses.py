@@ -490,6 +490,9 @@ class BattleTokensBonus(TokensBonus):
         webCache = self.eventsCache.prefetcher
         return i18n.makeString(webCache.getTokenInfo(styleID))
 
+    def getWrappedEpicBonusList(self):
+        return []
+
 
 class BattlePassTokensBonus(TokensBonus):
 
@@ -604,7 +607,7 @@ class X5BattleTokensBonus(TokensBonus):
 
 class EntitlementBonus(SimpleBonus):
     _ENTITLEMENT_RECORD = namedtuple('_ENTITLEMENT_RECORD', ['id', 'amount'])
-    _FORMATTED_AMOUNT = ('ranked_202109_access', )
+    _FORMATTED_AMOUNT = ('ranked_202201_access', )
 
     @staticmethod
     def hasConfiguredResources(entitlementID):

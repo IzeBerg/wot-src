@@ -1164,7 +1164,7 @@ msgstr "Эмблемa"
 msgid "bonusName/entitlements/ranked_2020_discount"
 msgstr "Увеличение скидки"
 
-msgid "bonusName/entitlements/ranked_202109_access"
+msgid "bonusName/entitlements/ranked_202201_access"
 msgstr "Доступ к покупке"
 
 msgid "bonusName/entitlements/testEntitlement"
@@ -1739,7 +1739,7 @@ msgid "details/conditions/crits/destroyed/surveyingDevice/not"
 msgstr "Не выводить из строя приборы наблюдения"
 
 msgid "details/conditions/crits/destroyed/track"
-msgstr "Сбить гусеницу"
+msgstr "Обездвижить, сбив гусеницу"
 
 msgid "details/conditions/crits/destroyed/track/not"
 msgstr "Не сбивать гусеницы"
@@ -1814,12 +1814,13 @@ msgstr ""
 "обнаружены в момент нанесения урона)"
 
 msgid "details/conditions/cumulative/damageAssistedTrack"
-msgstr "Урон союзников после попадания, сбившего гусеницу"
+msgstr ""
+"Урон союзников после попадания, сбившего гусеницу и обездвижившего цель"
 
 msgid "details/conditions/cumulative/damageAssistedTrackWhileInvisible"
 msgstr ""
-"Урон союзников по противнику, которому вы сбили гусеницу (при условии, что "
-"вы не обнаружены в момент нанесения урона)"
+"Урон союзников по противнику, которому вы сбили гусеницу и обездвижили (при "
+"условии, что вы не обнаружены в момент нанесения урона)"
 
 msgid "details/conditions/cumulative/damageBlockedByArmor"
 msgstr "Заблокированный урон"
@@ -1831,6 +1832,9 @@ msgid "details/conditions/cumulative/damageReceived"
 msgstr "Полученный урон"
 
 msgid "details/conditions/cumulative/damaged"
+msgstr "Повреждённые машины противника"
+
+msgid "details/conditions/cumulative/damagedHp"
 msgstr "Повреждённые машины противника"
 
 msgid "details/conditions/cumulative/damagedVehicleCntAssistedRadio"
@@ -1845,7 +1849,7 @@ msgstr ""
 msgid "details/conditions/cumulative/damagedVehicleCntAssistedTrack"
 msgstr ""
 "Обеспечить союзникам нанесение урона по противнику, которому вы сбили "
-"гусеницу"
+"гусеницу и обездвижили"
 
 msgid "details/conditions/cumulative/damagedWhileEnemyMoving"
 msgstr "Урон машинам противника, находящимся в движении"
@@ -1930,7 +1934,9 @@ msgid "details/conditions/cumulative/killsAssistedStun"
 msgstr "Союзники должны уничтожить противника, которого вы оглушили"
 
 msgid "details/conditions/cumulative/killsAssistedTrack"
-msgstr "Союзники должны уничтожить противника, которому вы сбили гусеницу"
+msgstr ""
+"Союзники должны уничтожить противника, которому вы сбили гусеницу и "
+"обездвижили"
 
 msgid "details/conditions/cumulative/lifeTime"
 msgstr "Время жизни в бою, не менее (с)"
@@ -3152,8 +3158,8 @@ msgstr "Урон по вашим разведданным в «Мировой в
 
 msgid "details/dossier/clan/damageAssistedTrack"
 msgstr ""
-"Урон, нанесённый союзниками после попадания, сбившего гусеницу в «Мировой "
-"войне»"
+"Урон, нанесённый союзниками после попадания, сбившего гусеницу и "
+"обездвижившего цель в «Мировой войне»"
 
 msgid "details/dossier/clan/damageBlockedByArmor"
 msgstr "Заблокированного бронёй урона в «Мировой войне»"
@@ -3246,8 +3252,8 @@ msgstr "Урон по вашим разведданным в режиме «Ис
 
 msgid "details/dossier/historical/damageAssistedTrack"
 msgstr ""
-"Урон, нанесённый союзниками после попадания, сбившего гусеницу в режиме "
-"«Исторический бой»"
+"Урон, нанесённый союзниками после попадания, сбившего гусеницу и "
+"обездвижившего цель в режиме «Исторический бой»"
 
 msgid "details/dossier/historical/damageBlockedByArmor"
 msgstr "Заблокированного бронёй урона в режиме «Исторический бой»"
@@ -3339,8 +3345,8 @@ msgstr "Урон по вашим разведданным в режиме «Ко
 
 msgid "details/dossier/ladder/damageAssistedTrack"
 msgstr ""
-"Урон, нанесённый союзниками после попадания, сбившего гусеницу, в режиме "
-"«Командный бой: игра в Ладдере»"
+"Урон, нанесённый союзниками после попадания, сбившего гусеницу и "
+"обездвижившего цель в режиме «Командный бой: игра в Ладдере»"
 
 msgid "details/dossier/ladder/damageBlockedByArmor"
 msgstr ""
@@ -3554,7 +3560,9 @@ msgid "details/dossier/random/damageAssistedRadio"
 msgstr "Урон по вашим разведданным"
 
 msgid "details/dossier/random/damageAssistedTrack"
-msgstr "Урон, нанесённый союзниками после попадания, сбившего гусеницу"
+msgstr ""
+"Урон, нанесённый союзниками после попадания, сбившего гусеницу и "
+"обездвижившего цель"
 
 msgid "details/dossier/random/damageBlockedByArmor"
 msgstr "Заблокированного бронёй урона"
@@ -3672,8 +3680,8 @@ msgstr "Урон по вашим разведданным в режиме «Ко
 
 msgid "details/dossier/team/damageAssistedTrack"
 msgstr ""
-"Урон, нанесённый союзниками после попадания, сбившего гусеницу в режиме "
-"«Командный бой»"
+"Урон, нанесённый союзниками после попадания, сбившего гусеницу и "
+"обездвижившего цель в режиме «Командный бой»"
 
 msgid "details/dossier/team/damageBlockedByArmor"
 msgstr "Заблокированного бронёй урона в режиме «Командный бой»"

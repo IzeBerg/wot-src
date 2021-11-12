@@ -2,7 +2,7 @@ import functools, logging, math
 from functools import partial
 import BigWorld, Keys, Math, ResMgr
 from helpers.CallbackDelayer import CallbackDelayer
-import BattleReplay, CommandMapping, DynamicCameras.ArcadeCamera, DynamicCameras.ArtyCamera, DynamicCameras.DualGunCamera, DynamicCameras.SniperCamera, DynamicCameras.StrategicCamera, MapCaseMode, RespawnDeathMode, aih_constants, cameras, constants, control_modes, epic_battle_death_mode
+import BattleReplay, CommandMapping, DynamicCameras.ArcadeCamera, DynamicCameras.ArtyCamera, DynamicCameras.DualGunCamera, DynamicCameras.SniperCamera, DynamicCameras.StrategicCamera, GenericComponents, MapCaseMode, RespawnDeathMode, aih_constants, cameras, constants, control_modes, epic_battle_death_mode
 from AvatarInputHandler import AimingSystems
 from AvatarInputHandler import aih_global_binding, gun_marker_ctrl
 from AvatarInputHandler import steel_hunter_control_modes
@@ -285,6 +285,8 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
                 self.__detachedCommands.append(VehicleUpgradePanelControl())
             if ARENA_BONUS_TYPE_CAPS.checkAny(player.arena.bonusType, ARENA_BONUS_TYPE_CAPS.SWITCH_SETUPS):
                 self.__persistentCommands.append(PrebattleSetupsControl())
+            vehicle.appearance.removeComponentByType(GenericComponents.ControlModeStatus)
+            vehicle.appearance.createComponent(GenericComponents.ControlModeStatus, _CTRL_MODES.index(self.__ctrlModeName))
             return
 
     def prerequisites(self):
@@ -414,6 +416,8 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
         if not self.__curCtrl.enableSwitchAutorotationMode(triggeredByKey):
             return
         else:
+            if triggeredByKey and BigWorld.player().isVehicleMoving():
+                return
             if not BigWorld.player().isOnArena:
                 return
             if self.__isAutorotation != bValue:
@@ -635,6 +639,8 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
             self.onCameraChanged(eMode, vehicleID)
             if not isReplayPlaying and vehicle is not None and not vehicle.isUpgrading:
                 self.__curCtrl.handleMouseEvent(0.0, 0.0, 0.0)
+            vehicle.appearance.removeComponentByType(GenericComponents.ControlModeStatus)
+            vehicle.appearance.createComponent(GenericComponents.ControlModeStatus, _CTRL_MODES.index(eMode))
             return
 
     def onVehicleControlModeChanged(self, eMode):

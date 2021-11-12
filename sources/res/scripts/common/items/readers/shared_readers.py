@@ -64,10 +64,17 @@ def _readCompatibleModels(subsection, ctx):
 
 __customizationSlotIdRanges = None
 
-def getCustomizationSlotIdRanges():
+def __getInitedSlotIdRanges():
     global __customizationSlotIdRanges
+    if __customizationSlotIdRanges is None:
+        __customizationSlotIdRanges = defaultdict(dict)
+        _readCustomizationSlotIdRanges()
+    return __customizationSlotIdRanges
+
+
+def getCustomizationSlotIdRanges():
     if IS_EDITOR:
-        return __customizationSlotIdRanges
+        return __getInitedSlotIdRanges()
     else:
         return
 
@@ -90,7 +97,6 @@ def _readCustomizationSlotIdRanges():
 
 
 def _verifySlotId(ctx, slotType, slotId):
-    global __customizationSlotIdRanges
     tankPart = ctx[0][1]
     if tankPart == 'hull':
         tankArea = tankPart
@@ -102,10 +108,8 @@ def _verifySlotId(ctx, slotType, slotId):
         tankArea = 'chassis'
     else:
         return
-    if __customizationSlotIdRanges is None:
-        __customizationSlotIdRanges = defaultdict(dict)
-        _readCustomizationSlotIdRanges()
-    minSlotId, maxSlotId = __customizationSlotIdRanges[tankArea][slotType]
+    slotIdRanges = __getInitedSlotIdRanges()
+    minSlotId, maxSlotId = slotIdRanges[tankArea][slotType]
     if not minSlotId <= slotId <= maxSlotId:
         xmlContext, fileName = ctx
         while xmlContext is not None:

@@ -13,6 +13,7 @@ class SPECIAL_VOICE_TAG(object):
     CELEBRITY_2021 = 'celebrity21SpecialVoice'
     DAY_OF_COSMONAUTICS_21 = 'gagarin21_specialVoice'
     MIHO = 'mihoSpecialVoice'
+    YHA = 'yhaSpecialVoice'
     BATTLE_OF_BLOGGERS = ('ru1_LebwaSpecialVoice', 'ru2_YushaSpecialVoice', 'ru3_Amway921SpecialVoice',
                           'ru4_KorbenDallasSpecialVoice', 'eu1_MailandSpecialVoice',
                           'eu2_Skill4ltuSpecialVoice', 'eu3_DezgamezSpecialVoice',
@@ -31,15 +32,16 @@ class SPECIAL_VOICE_TAG(object):
                               'krieger_SpecialVoice')
     SABATON_2021 = 'sabaton21_specialVoice'
     ALL = (
-     BUFFON, SABATON, OFFSPRING, RACER, RACER_EN, CELEBRITY_2021, MIHO, DAY_OF_COSMONAUTICS_21, SABATON_2021) + BATTLE_OF_BLOGGERS + BATTLE_OF_BLOGGERS_2021 + G_I_JOE_TWITCH_2021 + WHITE_TIGER_EVENT_2021
+     BUFFON, SABATON, OFFSPRING, RACER, RACER_EN, CELEBRITY_2021, MIHO, YHA, DAY_OF_COSMONAUTICS_21, SABATON_2021) + BATTLE_OF_BLOGGERS + BATTLE_OF_BLOGGERS_2021 + G_I_JOE_TWITCH_2021 + WHITE_TIGER_EVENT_2021
 
 
 class SPECIAL_CREW_TAG(object):
     SABATON = 'sabatonCrew'
     OFFSPRING = 'offspringCrew'
     MIHO = 'mihoCrew'
+    YHA = 'yhaCrew'
     ALL = (
-     SABATON, OFFSPRING, MIHO)
+     SABATON, OFFSPRING, MIHO, YHA)
 
 
 class GROUP_TAG(object):

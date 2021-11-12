@@ -723,6 +723,8 @@ package net.wg.data.constants.generated
       
       public static const ACCOUNT_COMPLETION:String = "AccountCompletion";
       
+      public static const DEMO_ACCOUNT_RENAME_PROCESSING:String = "DemoAccountRenameProcessing";
+      
       public static const VEH_POST_PROGRESSION_ENTRY_POINT:String = "VehPostProgressionEntryPoint";
       
       public static const EPIC_RANK_UNLOCK_INFO:String = "epicRankUnlockTooltip";
@@ -809,7 +811,7 @@ package net.wg.data.constants.generated
       
       public static const MAPBOX_LOBBY_SET:Array = [MAPBOX_SELECTOR_INFO,MAPBOX_PROGRESSION_PREVIEW,SELECTABLE_CREWBOOK,RANDOM_CREWBOOK,MAPBOX_CALENDAR];
       
-      public static const ACCOUNT_COMPLETION_SET:Array = [ACCOUNT_COMPLETION];
+      public static const ACCOUNT_COMPLETION_SET:Array = [ACCOUNT_COMPLETION,DEMO_ACCOUNT_RENAME_PROCESSING];
       
       public static const REFERRAL_PROGRAM_SET:Array = [REFERRAL_AWARDS];
        

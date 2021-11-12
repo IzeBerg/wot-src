@@ -72,6 +72,8 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
       private static const THIRD_COLUMN:int = 2;
       
       private static const DOG_TAG_OFFSET_X:int = 30;
+      
+      private static const HEADER_HEIGHT:int = 32;
        
       
       public var inviteReceivedIndicator:InviteReceivedIndicator;
@@ -186,14 +188,6 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
          this.spawnGroupIcon3.addEventListener(MouseEvent.MOUSE_OVER,this.onThirdSpawnGroupMouseOverHandler);
       }
       
-      public function initDogTag() : void
-      {
-         this._dogTag = App.utils.classFactory.getComponent(Linkages.DOGTAG,DogtagComponent);
-         this._dogTag.hideNameAndClan();
-         this._dogTag.goToLabel(DogtagComponent.DOGTAG_LABEL_END_FULL);
-         this._dogTag.alpha = 0;
-      }
-      
       public final function dispose() : void
       {
          this.onDispose();
@@ -212,6 +206,14 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
       public function getRenderersVisibleWidth() : uint
       {
          return this._listWidths[this._currentState];
+      }
+      
+      public function initDogTag() : void
+      {
+         this._dogTag = App.utils.classFactory.getComponent(Linkages.DOGTAG,DogtagComponent);
+         this._dogTag.hideNameAndClan();
+         this._dogTag.goToLabel(DogtagComponent.DOGTAG_LABEL_END_FULL);
+         this._dogTag.alpha = 0;
       }
       
       public function removeAllItems() : void
@@ -271,6 +273,27 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
          this.sortColumns(this._currOrder,param1);
          this.respositionSelfBg(this._currOrder[this._playerGroupID - 1].indexOf(this._playerVehicleID));
          this.refreshSelfBackground();
+      }
+      
+      public function setChatCommand(param1:Number, param2:String, param3:uint) : void
+      {
+         var _loc4_:IPlayersPanelListItemHolder = this.getHolderByVehicleID(param1);
+         if(_loc4_)
+         {
+            _loc4_.setChatCommand(param2,param3);
+         }
+      }
+      
+      public function setChatCommandVisibility(param1:Boolean) : void
+      {
+         var _loc2_:PlayersPanelListItem = null;
+         if(this._panelListItems)
+         {
+            for each(_loc2_ in this._panelListItems)
+            {
+               _loc2_.setChatCommandVisibility(param1);
+            }
+         }
       }
       
       public function setFrags(param1:Number, param2:int) : void
@@ -365,6 +388,46 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
          }
       }
       
+      public function setOverrideExInfo(param1:Boolean) : void
+      {
+         var _loc2_:IPlayersPanelListItemHolder = null;
+         for each(_loc2_ in this._items)
+         {
+            _loc2_.setOverrideExInfo(param1);
+         }
+      }
+      
+      public function setPanelHPBarVisibilityState(param1:uint) : void
+      {
+         var _loc2_:PlayersPanelListItem = null;
+         if(this._HPBarVisibilityState == param1)
+         {
+            return;
+         }
+         this._HPBarVisibilityState = param1;
+         if(this._panelListItems)
+         {
+            for each(_loc2_ in this._panelListItems)
+            {
+               _loc2_.setPanelHPBarVisibilityState(param1);
+            }
+         }
+      }
+      
+      public function setPlayerHP(param1:int, param2:int) : void
+      {
+         var _loc3_:PlayersPanelListItemHolder = this.getHolderByVehicleID(param1);
+         if(_loc3_)
+         {
+            _loc3_.setPlayerHP(param2);
+            this._itemsHealth[param1] = param2;
+         }
+         else
+         {
+            this._itemsHealth[param1] = param2;
+         }
+      }
+      
       public function setPlayerStatus(param1:Number, param2:uint) : void
       {
          var _loc3_:IPlayersPanelListItemHolder = this.getHolderByVehicleID(param1);
@@ -392,12 +455,25 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
          }
       }
       
+      public function setShowDogTag(param1:Boolean) : void
+      {
+      }
+      
       public function setSpeaking(param1:Number, param2:Boolean) : void
       {
          var _loc3_:PlayersPanelListItem = this.getItemByAccountID(param1);
          if(_loc3_)
          {
             _loc3_.setIsSpeaking(param2);
+         }
+      }
+      
+      public function setSpottedStatus(param1:Number, param2:uint) : void
+      {
+         var _loc3_:IPlayersPanelListItemHolder = this.getHolderByVehicleID(param1);
+         if(_loc3_)
+         {
+            _loc3_.setSpottedStatus(param2);
          }
       }
       
@@ -474,22 +550,10 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
          }
       }
       
-      public function updateColorBlind() : void
+      public function showDogTag(param1:Number, param2:DogTagVO) : void
       {
-         var _loc1_:PlayersPanelListItem = null;
-         for each(_loc1_ in this._panelListItems)
-         {
-            _loc1_.updateColorBlind();
-         }
-      }
-      
-      public function setChatCommand(param1:Number, param2:String, param3:uint) : void
-      {
-         var _loc4_:IPlayersPanelListItemHolder = this.getHolderByVehicleID(param1);
-         if(_loc4_)
-         {
-            _loc4_.setChatCommand(param2,param3);
-         }
+         var _loc3_:PlayersPanelListItemHolder = this.getHolderByVehicleID(param1);
+         _loc3_.listItem.showDogTag(param2);
       }
       
       public function triggerChatCommand(param1:Number, param2:String) : void
@@ -501,12 +565,12 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
          }
       }
       
-      public function setSpottedStatus(param1:Number, param2:uint) : void
+      public function updateColorBlind() : void
       {
-         var _loc3_:IPlayersPanelListItemHolder = this.getHolderByVehicleID(param1);
-         if(_loc3_)
+         var _loc1_:PlayersPanelListItem = null;
+         for each(_loc1_ in this._panelListItems)
          {
-            _loc3_.setSpottedStatus(param2);
+            _loc1_.updateColorBlind();
          }
       }
       
@@ -544,6 +608,7 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
          this.evaluateRendererStates(this._state);
          this.sortColumns(_loc5_,this.selectedPlayerGroup);
          this.respositionSelfBg(this._currOrder[this._playerGroupID - 1].indexOf(this._playerVehicleID));
+         dispatchEvent(new PlayersPanelListEvent(PlayersPanelListEvent.ITEMS_COUNT_CHANGE,0));
       }
       
       protected function onDispose() : void
@@ -735,16 +800,6 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
          this._toolTipString = !!param2 ? App.utils.locale.makeString(TOOLTIPS.ANONYMIZER_BATTLE_TEAMLIST_CLAN,{"fakeName":param1}) : App.utils.locale.makeString(TOOLTIPS.ANONYMIZER_BATTLE_TEAMLIST_NOCLAN,{"fakeName":param1});
       }
       
-      public function setShowDogTag(param1:Boolean) : void
-      {
-      }
-      
-      public function showDogTag(param1:Number, param2:DogTagVO) : void
-      {
-         var _loc3_:PlayersPanelListItemHolder = this.getHolderByVehicleID(param1);
-         _loc3_.listItem.showDogTag(param2);
-      }
-      
       private function getHolderByVehicleID(param1:Number) : PlayersPanelListItemHolder
       {
          var _loc2_:PlayersPanelListItemHolder = null;
@@ -837,6 +892,16 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
          }
       }
       
+      private function removeDogTag() : void
+      {
+         removeChild(this._dogTag);
+      }
+      
+      public function get listHeight() : int
+      {
+         return this.rowContainer.rowHeight + HEADER_HEIGHT;
+      }
+      
       public function get state() : int
       {
          return this._state;
@@ -875,6 +940,11 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
          }
          this._playerGroupID = param1;
          this.setGroupIcons();
+      }
+      
+      public function get isInviteReceived() : Boolean
+      {
+         return this._isInviteReceived;
       }
       
       protected function get itemLinkage() : String
@@ -959,11 +1029,6 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
          }
       }
       
-      private function removeDogTag() : void
-      {
-         removeChild(this._dogTag);
-      }
-      
       private function onPlayersPanelOnItemClickHandler(param1:PlayersPanelItemEvent) : void
       {
          var _loc2_:PlayersPanelListItemHolder = this._items[param1.holderItemID] as PlayersPanelListItemHolder;
@@ -983,63 +1048,6 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
             {
                dispatchEvent(new PlayersPanelListEvent(PlayersPanelListEvent.ITEM_SELECTED,_loc2_.vehicleID,_loc2_.listItem.columnNumber));
             }
-         }
-      }
-      
-      public function get isInviteReceived() : Boolean
-      {
-         return this._isInviteReceived;
-      }
-      
-      public function setChatCommandVisibility(param1:Boolean) : void
-      {
-         var _loc2_:PlayersPanelListItem = null;
-         if(this._panelListItems)
-         {
-            for each(_loc2_ in this._panelListItems)
-            {
-               _loc2_.setChatCommandVisibility(param1);
-            }
-         }
-      }
-      
-      public function setPanelHPBarVisibilityState(param1:uint) : void
-      {
-         var _loc2_:PlayersPanelListItem = null;
-         if(this._HPBarVisibilityState == param1)
-         {
-            return;
-         }
-         this._HPBarVisibilityState = param1;
-         if(this._panelListItems)
-         {
-            for each(_loc2_ in this._panelListItems)
-            {
-               _loc2_.setPanelHPBarVisibilityState(param1);
-            }
-         }
-      }
-      
-      public function setPlayerHP(param1:int, param2:int) : void
-      {
-         var _loc3_:PlayersPanelListItemHolder = this.getHolderByVehicleID(param1);
-         if(_loc3_)
-         {
-            _loc3_.setPlayerHP(param2);
-            this._itemsHealth[param1] = param2;
-         }
-         else
-         {
-            this._itemsHealth[param1] = param2;
-         }
-      }
-      
-      public function setOverrideExInfo(param1:Boolean) : void
-      {
-         var _loc2_:IPlayersPanelListItemHolder = null;
-         for each(_loc2_ in this._items)
-         {
-            _loc2_.setOverrideExInfo(param1);
          }
       }
    }

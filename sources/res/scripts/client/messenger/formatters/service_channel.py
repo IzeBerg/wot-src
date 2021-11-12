@@ -28,7 +28,7 @@ from gui.impl.gen import R
 from gui.mapbox.mapbox_helpers import formatMapboxRewards
 from gui.prb_control.formatters import getPrebattleFullDescription
 from gui.ranked_battles.constants import YEAR_POINTS_TOKEN
-from gui.ranked_battles.ranked_helpers import getBonusBattlesIncome
+from gui.ranked_battles.ranked_helpers import getBonusBattlesIncome, isQualificationQuestID, getQualificationBattlesCountFromID
 from gui.ranked_battles.ranked_models import PostBattleRankInfo, RankChangeStates
 from gui.server_events.awards_formatters import CompletionTokensBonusFormatter
 from gui.server_events.bonuses import VehiclesBonus, EntitlementBonus, DEFAULT_CREW_LVL, MetaBonus, getMergedBonusesFromDicts
@@ -597,7 +597,7 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
                     badges.append(name)
                 else:
                     achieve = getAchievementFactory(recordName).create(value=value)
-                    if achieve is not None and not achieve.isApproachable() and achieve not in popUpRecords:
+                    if achieve is not None and achieve not in popUpRecords:
                         popUpRecords.append(achieve)
 
             if 'markOfMastery' in vehBattleResults and vehBattleResults['markOfMastery'] > 0:
@@ -848,7 +848,8 @@ class AchievementFormatter(ServiceChannelFormatter):
 
 
 class CurrencyUpdateFormatter(ServiceChannelFormatter):
-    _EMITTER_ID_TO_TITLE = {2525: R.strings.messenger.serviceChannelMessages.currencyUpdate.auction()}
+    _EMITTER_ID_TO_TITLE = {2525: R.strings.messenger.serviceChannelMessages.currencyUpdate.auction(), 
+       2524: R.strings.messenger.serviceChannelMessages.currencyUpdate.battlepass()}
     _DEFAULT_TITLE = R.strings.messenger.serviceChannelMessages.currencyUpdate.financial_transaction()
 
     def format(self, message, *args):
@@ -3442,6 +3443,7 @@ class RankedQuestFormatter(WaitItemsSyncFormatter):
         formattedMessage = None
         formattedRanks = {}
         quests = self.__eventsCache.getHiddenQuests()
+        qualificationBattles = 0
         for questID in completedQuestIDs:
             quest = quests.get(questID)
             if quest is not None and quest.isForRank():
@@ -3449,8 +3451,12 @@ class RankedQuestFormatter(WaitItemsSyncFormatter):
                 division = self.__rankedController.getDivision(rankID)
                 textID = R.strings.system_messages.ranked.notifications.singleRank.text()
                 if division.isQualification():
-                    textID = R.strings.system_messages.ranked.notifications.qualificationFinish()
-                formattedRanks[rankID] = backport.text(textID, rankName=division.getRankUserName(rankID), divisionName=division.getUserName())
+                    if isQualificationQuestID(questID):
+                        textID = R.strings.ranked_battles.awards.gotQualificationQuest()
+                        qualificationBattles = getQualificationBattlesCountFromID(questID)
+                    else:
+                        textID = R.strings.system_messages.ranked.notifications.qualificationFinish()
+                formattedRanks[rankID] = backport.text(textID, rankName=division.getRankUserName(rankID), divisionName=division.getUserName(), count=qualificationBattles)
 
         if formattedRanks:
             formattedMessage = g_settings.msgTemplates.format('rankedRankQuest', ctx={'ranksBlock': EOL.join([ formattedRanks[key] for key in sorted(formattedRanks) ]), 

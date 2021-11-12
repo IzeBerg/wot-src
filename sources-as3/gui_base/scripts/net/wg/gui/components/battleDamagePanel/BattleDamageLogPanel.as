@@ -87,6 +87,15 @@ package net.wg.gui.components.battleDamagePanel
          this._detailsBottomContainer.name = "detailsBottomContainer";
       }
       
+      private static function updateSummaryCounter(param1:SummaryAnimation, param2:TextField, param3:String) : void
+      {
+         if(param2.visible)
+         {
+            param1.playAnimation();
+            param2.text = param3;
+         }
+      }
+      
       override protected function initialize() : void
       {
          super.initialize();
@@ -171,22 +180,22 @@ package net.wg.gui.components.battleDamagePanel
       
       public function as_updateSummaryAssistValue(param1:String) : void
       {
-         this.updateSummaryCounter(this.supportAnimation,this.supportValTF,param1);
+         updateSummaryCounter(this.supportAnimation,this.supportValTF,param1);
       }
       
       public function as_updateSummaryBlockedValue(param1:String) : void
       {
-         this.updateSummaryCounter(this.defenceAnimation,this.defenceValTF,param1);
+         updateSummaryCounter(this.defenceAnimation,this.defenceValTF,param1);
       }
       
       public function as_updateSummaryDamageValue(param1:String) : void
       {
-         this.updateSummaryCounter(this.damageAnimation,this.damageValTF,param1);
+         updateSummaryCounter(this.damageAnimation,this.damageValTF,param1);
       }
       
       public function as_updateSummaryStunValue(param1:String) : void
       {
-         this.updateSummaryCounter(this.stunAnimation,this.stunValTF,param1);
+         updateSummaryCounter(this.stunAnimation,this.stunValTF,param1);
       }
       
       public function init(param1:String) : void
@@ -199,14 +208,14 @@ package net.wg.gui.components.battleDamagePanel
          this.summaryDamageBlock.visible = this.summaryDefenceBlock.visible = this.summarySupportBlock.visible = this.summaryStunBlock.visible = false;
       }
       
-      public function setCompVisible(param1:Boolean) : void
-      {
-         visible = param1;
-      }
-      
       public function isCompVisible() : Boolean
       {
          return visible;
+      }
+      
+      public function setCompVisible(param1:Boolean) : void
+      {
+         visible = param1;
       }
       
       public function setDetailActionCount(param1:int) : void
@@ -303,15 +312,6 @@ package net.wg.gui.components.battleDamagePanel
          param3.y = param2.y + (param2.height - param3.height >> 1);
          param4.x = param2.x + ANIMATION_PADDING;
          param4.y = param2.y + (param2.height >> 1);
-      }
-      
-      private function updateSummaryCounter(param1:SummaryAnimation, param2:TextField, param3:String) : void
-      {
-         if(param2.visible)
-         {
-            param1.playAnimation();
-            param2.text = param3;
-         }
       }
    }
 }

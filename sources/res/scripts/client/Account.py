@@ -22,6 +22,7 @@ from account_helpers.renewable_subscription import RenewableSubscription
 from account_helpers.settings_core import IntUserSettings
 from account_helpers.session_statistics import SessionStatistics
 from account_helpers.spa_flags import SPAFlags
+from account_helpers.gift_system import GiftSystem
 from account_shared import NotificationItem, readClientServerVersion
 from adisp import process
 from bootcamp.Bootcamp import g_bootcamp
@@ -164,6 +165,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.dogTags = g_accountRepository.dogTags
         self.mapsTraining = g_accountRepository.mapsTraining
         self.renewableSubscription = g_accountRepository.renewableSubscription
+        self.giftSystem = g_accountRepository.giftSystem
         self.customFilesCache = g_accountRepository.customFilesCache
         self.syncData.setAccount(self)
         self.inventory.setAccount(self)
@@ -255,6 +257,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.anonymizer.onAccountBecomePlayer()
         self.battlePass.onAccountBecomePlayer()
         self.offers.onAccountBecomePlayer()
+        self.giftSystem.onAccountBecomePlayer()
         chatManager.switchPlayerProxy(self)
         events.onAccountBecomePlayer()
         BigWorld.target.source = BigWorld.MouseTargetingMatrix()
@@ -296,6 +299,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.dogTags.onAccountBecomeNonPlayer()
         self.mapsTraining.onAccountBecomeNonPlayer()
         self.renewableSubscription.onAccountBecomeNonPlayer()
+        self.giftSystem.onAccountBecomeNonPlayer()
         self.__cancelCommands()
         self.syncData.setAccount(None)
         self.inventory.setAccount(None)
@@ -363,9 +367,9 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         except Exception:
             LOG_ERROR('Error while unpickling igr data information', data)
 
-    def onKickedFromServer(self, reason, isBan, expiryTime):
-        LOG_DEBUG('onKickedFromServer', reason, isBan, expiryTime)
-        self.connectionMgr.setKickedFromServer(reason, isBan, expiryTime)
+    def onKickedFromServer(self, reason, kickReasonType, expiryTime):
+        LOG_DEBUG('onKickedFromServer', reason, kickReasonType, expiryTime)
+        self.connectionMgr.setKickedFromServer(reason, kickReasonType, expiryTime)
 
     def getUnpackedEventsData(self, typeID):
         eventsData = {}
@@ -874,15 +878,14 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         if not events.isPlayerEntityChanging:
             self.base.doCmdInt3(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_DEQUEUE_SANDBOX, 0, 0, 0)
 
-    def enqueueEventBattles(self, vehInvIDs):
+    def enqueueEventBattles(self, vehInvID):
         if not events.isPlayerEntityChanging:
-            arr = [
-             len(vehInvIDs)] + vehInvIDs
-            self.base.doCmdIntArr(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_ENQUEUE_EVENT_BATTLES, arr)
+            self.base.doCmdIntArr(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_ENQUEUE_IN_BATTLE_QUEUE, [
+             QUEUE_TYPE.EVENT_BATTLES, vehInvID])
 
     def dequeueEventBattles(self):
         if not events.isPlayerEntityChanging:
-            self.base.doCmdInt3(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_DEQUEUE_EVENT_BATTLES, 0, 0, 0)
+            self.base.doCmdInt(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_DEQUEUE_FROM_BATTLE_QUEUE, QUEUE_TYPE.EVENT_BATTLES)
 
     def enqueueRanked(self, vehInvID):
         if events.isPlayerEntityChanging:
@@ -1305,6 +1308,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
             self.dogTags.synchronize(isFullSync, diff)
             self.mapsTraining.synchronize(isFullSync, diff)
             self.renewableSubscription.synchronize(isFullSync, diff)
+            self.giftSystem.synchronize(isFullSync, diff)
             self.__synchronizeServerSettings(diff)
             self.__synchronizeDisabledPersonalMissions(diff)
             self.__synchronizeEventNotifications(diff)
@@ -1552,6 +1556,7 @@ class _AccountRepository(object):
         self.dogTags = DogTags(self.syncData)
         self.mapsTraining = MapsTraining(self.syncData)
         self.renewableSubscription = RenewableSubscription(self.syncData)
+        self.giftSystem = GiftSystem(self.syncData, self.commandProxy)
         self.platformBlueprintsConvertSaleLimits = {}
         self.gMap = ClientGlobalMap()
         self.onTokenReceived = Event.Event()

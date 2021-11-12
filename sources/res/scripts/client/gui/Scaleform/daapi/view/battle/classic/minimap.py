@@ -43,7 +43,7 @@ class ClassicMinimapComponent(component.MinimapComponent):
 
 
 class GlobalSettingsPlugin(common.SimplePlugin):
-    __slots__ = ('__currentSizeSettings', '__isVisible', '__sizeIndex')
+    __slots__ = ('__currentSizeSettings', '__isVisible', '__sizeIndex', '__canChangeAlpha')
     _AccountSettingsClass = AccountSettings
 
     def __init__(self, parentObj):
@@ -51,6 +51,7 @@ class GlobalSettingsPlugin(common.SimplePlugin):
         self.__currentSizeSettings = 'minimapSize'
         self.__isVisible = True
         self.__sizeIndex = 0
+        self.__canChangeAlpha = parentObj.canChangeAlpha()
 
     def start(self):
         super(GlobalSettingsPlugin, self).start()
@@ -124,6 +125,8 @@ class GlobalSettingsPlugin(common.SimplePlugin):
         self.__handleKey(event.ctx['key'])
 
     def __updateAlpha(self):
+        if not self.__canChangeAlpha:
+            return
         if self.settingsCore.getSetting(settings_constants.GAME.MINIMAP_ALPHA_ENABLED):
             value = int(self.settingsCore.getSetting(settings_constants.GAME.MINIMAP_ALPHA))
         else:

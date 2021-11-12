@@ -21,7 +21,7 @@ from gui.impl.lobby.tank_setup.tank_setup_sounds import playEnterTankSetupView, 
 from gui.prb_control import prbDispatcherProperty
 from gui.shared import g_eventBus, EVENT_BUS_SCOPE
 from gui.shared.close_confiramtor_helper import CloseConfirmatorsHelper
-from gui.shared.events import AmmunitionSetupViewEvent, HangarVehicleEvent, PrbActionEvent
+from gui.shared.events import AmmunitionSetupViewEvent, PrbActionEvent
 from gui.shared.view_helpers.blur_manager import CachedBlur
 from helpers import dependency
 from post_progression_common import TANK_SETUP_GROUPS, TankSetupGroupsId
@@ -152,7 +152,6 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
         self.onAnimationEnd.clear()
         if self.__blur is not None:
             self.__blur.fini()
-        g_eventBus.handleEvent(HangarVehicleEvent(HangarVehicleEvent.HERO_TANK_MARKER, ctx={'isDisable': False}), EVENT_BUS_SCOPE.LOBBY)
         g_eventBus.handleEvent(CameraRelatedEvents(CameraRelatedEvents.FORCE_DISABLE_IDLE_PARALAX_MOVEMENT, ctx={'isDisable': False, 'setIdle': True, 'setParallax': True}), EVENT_BUS_SCOPE.LOBBY)
         return
 
@@ -202,6 +201,9 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
         currentSubView = self._tankSetup.getCurrentSubView()
         if currentSubView is not None:
             g_eventBus.handleEvent(AmmunitionSetupViewEvent(AmmunitionSetupViewEvent.UPDATE_TTC, {'vehicleItem': currentSubView.getInteractor().getVehicleAfterInstall()}), EVENT_BUS_SCOPE.LOBBY)
+            vehicleAfterInstall = currentSubView.getInteractor().getVehicleAfterInstall()
+            if vehicleAfterInstall.intCD != g_currentVehicle.item.intCD:
+                self._tankSetup.currentVehicleUpdated(vehicleAfterInstall)
         return
 
     def __createCopyVehicle(self):
@@ -225,7 +227,6 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
     def __onAnimationEnd(self):
         if self.__blur is not None:
             self.__blur.enable()
-        g_eventBus.handleEvent(HangarVehicleEvent(HangarVehicleEvent.HERO_TANK_MARKER, ctx={'isDisable': True}), EVENT_BUS_SCOPE.LOBBY)
         g_eventBus.handleEvent(CameraRelatedEvents(CameraRelatedEvents.FORCE_DISABLE_IDLE_PARALAX_MOVEMENT, ctx={'isDisable': True, 'setIdle': True, 'setParallax': True}), EVENT_BUS_SCOPE.LOBBY)
         if not self.viewModel.getIsReady():
             self.viewModel.setIsReady(True)
@@ -282,8 +283,8 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
             else:
                 self._vehItem.getItem().settings = g_currentVehicle.item.settings
                 self._vehItem.getItem().optDevices.dynSlotType = g_currentVehicle.item.optDevices.dynSlotType
-                self._tankSetup.currentVehicleUpdated(g_currentVehicle.item)
                 self._tankSetup.update(fullUpdate=True)
+            self._tankSetup.currentVehicleUpdated(g_currentVehicle.item)
             self._updateAmmunitionPanel()
             return
 
