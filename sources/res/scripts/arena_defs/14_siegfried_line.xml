@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<name>#arenas:14_siegfried_line/name</name>
+	<description>#arenas:14_siegfried_line/description</description>
+	<geometry>spaces/14_siegfried_line</geometry>
+	<estimatedLoad>
+		0.3
+		<!--BW_String-->
+	</estimatedLoad>
+	<roundLength>900</roundLength>
+	<boundingBox>
+		<bottomLeft>
+			-500.0 -500.0
+			<!--BW_String-->
+		</bottomLeft>
+		<upperRight>
+			500.0 500.0
+			<!--BW_String-->
+		</upperRight>
+	</boundingBox>
+	<minimap>spaces/14_siegfried_line/mmap.dds</minimap>
+	<vehicleCamouflageKind>summer</vehicleCamouflageKind>
+	<umbraEnabled>1</umbraEnabled>
+	<wwmusicSetup>
+		<wwmusicLoading>music_siegfried_loading_screen</wwmusicLoading>
+		<wwmusicIntensive>music_siegfried_dron_intensive</wwmusicIntensive>
+		<wwmusicRelaxed>music_siegfried_dron_relaxed</wwmusicRelaxed>
+		<wwmusicStop>music_dron_stop</wwmusicStop>
+		<wwmusicEndbattleStop>music_dron_endbattle_stop</wwmusicEndbattleStop>
+		<wwmusicResultWin>music_siegfried_result_win</wwmusicResultWin>
+		<wwmusicResultDrawn>music_siegfried_result_drawn</wwmusicResultDrawn>
+		<wwmusicResultDefeat>music_siegfried_result_defeat</wwmusicResultDefeat>
+	</wwmusicSetup>
+	<wwambientSound>amb_map_14_siegfried_line_wind_autumn</wwambientSound>
+	<soundRemapping>
+		<loadBanks>
+			<bank>
+				<name>env_Forest.bnk</name>
+			</bank>
+		</loadBanks>
+	</soundRemapping>
+	<water>
+		<texScale>0</texScale>
+		<freqX>0</freqX>
+		<freqZ>0</freqZ>
+	</water>
+	<gameplayTypes>
+		<ctf>
+			<teamBasePositions>
+				<team1>
+					<position1>255.799805 -439.829620</position1>
+				</team1>
+				<team2>
+					<position1>284.238800 434.601593</position1>
+				</team2>
+			</teamBasePositions>
+		</ctf>
+		<domination>
+			<teamSpawnPoints>
+				<team1>
+					<position>-81 -415</position>
+					<position>179 -422</position>
+				</team1>
+				<team2>
+					<position>-127 414</position>
+					<position>100 397</position>
+				</team2>
+			</teamSpawnPoints>
+			<teamBasePositions>
+				<team1/>
+				<team2/>
+			</teamBasePositions>
+			<controlPoint>334.886841 42.860886</controlPoint>
+		</domination>
+		<assault>
+			<winnerIfTimeout>1</winnerIfTimeout>
+			<teamSpawnPoints>
+				<team1>
+					<position>
+						444.353 209.906
+						<!--BW_String-->
+					</position>
+					<position>
+						261.879 -97.97
+						<!--BW_String-->
+					</position>
+				</team1>
+				<team2>
+					<position>
+						-233.664 384.832
+						<!--BW_String-->
+					</position>
+					<position>
+						-260.158 -334.038
+						<!--BW_String-->
+					</position>
+				</team2>
+			</teamSpawnPoints>
+			<teamBasePositions>
+				<team1>
+					<position1>317.609314 42.661865</position1>
+				</team1>
+				<team2/>
+			</teamBasePositions>
+		</assault>
+		<assault2>
+			<winnerIfTimeout>1</winnerIfTimeout>
+			<winnerIfExtermination>1</winnerIfExtermination>
+			<teamSpawnPoints>
+				<team1>
+					<position>
+						158.534 248.794
+						<!--BW_String-->
+					</position>
+				</team1>
+				<team2>
+					<position>
+						240.942 -397.861
+						<!--BW_String-->
+					</position>
+				</team2>
+			</teamSpawnPoints>
+			<teamBasePositions>
+				<team1>
+					<position1>-69.218735 4.509724</position1>
+					<position2>307.172699 43.119991</position2>
+				</team1>
+				<team2/>
+			</teamBasePositions>
+		</assault2>
+	</gameplayTypes>
+</root>

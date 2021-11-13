@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<xmlns:xsi>http://www.w3.org/2001/XMLSchema-instance</xmlns:xsi>
+	<xsi:noNamespaceSchemaLocation>../../../../tools/schema/entity_def.xsd</xsi:noNamespaceSchemaLocation>
+	<BaseMethods>
+		<accountUnitAssembler_onNeedToJoinToUnitMgr>
+			<Arg>MAILBOX</Arg>
+			<Arg>INT8</Arg>
+		</accountUnitAssembler_onNeedToJoinToUnitMgr>
+		<accountUnitAssembler_onAssemblerEnqueued>
+			<Arg>MAILBOX</Arg>
+			<Arg>UINT8</Arg>
+		</accountUnitAssembler_onAssemblerEnqueued>
+		<accountUnitAssembler_onAssemblerDequeued>
+			<Arg>MAILBOX</Arg>
+			<Arg>UINT8</Arg>
+		</accountUnitAssembler_onAssemblerDequeued>
+	</BaseMethods>
+</root>

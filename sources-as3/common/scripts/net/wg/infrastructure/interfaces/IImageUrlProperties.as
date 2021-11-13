@@ -1,27 +1,7 @@
-package net.wg.infrastructure.interfaces
-{
-   public interface IImageUrlProperties
-   {
-       
-      
-      function get imageAlias() : String;
-      
-      function set imageAlias(param1:String) : void;
-      
-      function get width() : int;
-      
-      function set width(param1:int) : void;
-      
-      function get height() : int;
-      
-      function set height(param1:int) : void;
-      
-      function get vSpace() : int;
-      
-      function set vSpace(param1:int) : void;
-      
-      function get hSpace() : int;
-      
-      function set hSpace(param1:int) : void;
-   }
-}
+/*
+ * Decompilation error
+ * Code may be obfuscated
+ * Tip: You can try enabling "Automatic deobfuscation" in Settings
+ * Error type: ExecutionException (java.lang.OutOfMemoryError: unable to create native thread: possibly out of memory or process/resource limits reached)
+ */
+throw new flash.errors.IllegalOperationError("Not decompiled due to error");

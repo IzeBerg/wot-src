@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<name>#arenas:45_north_america/name</name>
+	<description>#arenas:45_north_america/description</description>
+	<geometry>spaces/45_north_america</geometry>
+	<estimatedLoad>
+		0.3
+		<!--BW_String-->
+	</estimatedLoad>
+	<boundingBox>
+		<bottomLeft>
+			-500.0 -500.0
+			<!--BW_String-->
+		</bottomLeft>
+		<upperRight>
+			500.0 500.0
+			<!--BW_String-->
+		</upperRight>
+	</boundingBox>
+	<roundLength>900</roundLength>
+	<minimap>spaces/45_north_america/mmap.dds</minimap>
+	<vehicleCamouflageKind>summer</vehicleCamouflageKind>
+	<maxPlayersInTeam>15</maxPlayersInTeam>
+	<wwmusicSetup>
+		<wwmusicLoading>music_highway_loading_screen</wwmusicLoading>
+		<wwmusicIntensive>music_highway_dron_intensive</wwmusicIntensive>
+		<wwmusicRelaxed>music_highway_dron_relaxed</wwmusicRelaxed>
+		<wwmusicStop>music_dron_stop</wwmusicStop>
+		<wwmusicEndbattleStop>music_dron_endbattle_stop</wwmusicEndbattleStop>
+		<wwmusicResultWin>music_highway_result_win</wwmusicResultWin>
+		<wwmusicResultDrawn>music_highway_result_drawn</wwmusicResultDrawn>
+		<wwmusicResultDefeat>music_highway_result_defeat</wwmusicResultDefeat>
+	</wwmusicSetup>
+	<wwambientSound>amb_map_45_wind</wwambientSound>
+	<water>
+		<texScale>0</texScale>
+		<freqX>0</freqX>
+		<freqZ>0</freqZ>
+	</water>
+	<gameplayTypes>
+		<ctf>
+			<teamBasePositions>
+				<team1>
+					<position1>195.850876 352.781586</position1>
+				</team1>
+				<team2>
+					<position1>-343.188385 -327.369965</position1>
+				</team2>
+			</teamBasePositions>
+		</ctf>
+	</gameplayTypes>
+</root>

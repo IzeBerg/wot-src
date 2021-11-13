@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<role_HT_assault>
+		<actions>blockAndTakeDamage doNearDamage</actions>
+	</role_HT_assault>
+	<role_HT_break>
+		<actions>blockAndTakeDamage doNearDamage</actions>
+	</role_HT_break>
+	<role_HT_universal>
+		<actions>blockAndTakeDamage doOwnDamage</actions>
+	</role_HT_universal>
+	<role_HT_support>
+		<actions>blockAndTakeDamage doNearDamage</actions>
+	</role_HT_support>
+	<role_MT_assault>
+		<actions>blockAndTakeDamage doNearDamage</actions>
+	</role_MT_assault>
+	<role_MT_universal>
+		<actions>blockAndTakeDamage doOwnDamage</actions>
+	</role_MT_universal>
+	<role_MT_sniper>
+		<actions>searchEnemy doFarDamage</actions>
+	</role_MT_sniper>
+	<role_MT_support>
+		<actions>searchEnemy doNearDamage</actions>
+	</role_MT_support>
+	<role_ATSPG_assault>
+		<actions>blockAndTakeDamage doNearDamage</actions>
+	</role_ATSPG_assault>
+	<role_ATSPG_universal>
+		<actions>blockAndTakeDamage doOwnDamage</actions>
+	</role_ATSPG_universal>
+	<role_ATSPG_sniper>
+		<actions>doFarDamage</actions>
+	</role_ATSPG_sniper>
+	<role_ATSPG_support>
+		<actions>doNearDamageSq</actions>
+	</role_ATSPG_support>
+	<role_LT_universal>
+		<actions>searchEnemy doOwnDamage doInvisAssist</actions>
+	</role_LT_universal>
+	<role_LT_wheeled>
+		<actions>searchEnemy fragAssist doOwnDamage</actions>
+	</role_LT_wheeled>
+	<role_SPG>
+		<actions>doStun doGroupStun doSpgDamage</actions>
+	</role_SPG>
+</root>
