@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<Domain>CLIENT</Domain>
+	<Properties>
+		<radius>
+			<Type>FLOAT</Type>
+			<Editable>True</Editable>
+			<Default>
+				10.0
+				<!--BW_String-->
+			</Default>
+		</radius>
+		<rotationPeriod>
+			<Type>FLOAT</Type>
+			<Editable>True</Editable>
+			<Default>
+				1.0
+				<!--BW_String-->
+			</Default>
+		</rotationPeriod>
+		<rotateClockwise>
+			<Type>UINT8</Type>
+			<Editable>True</Editable>
+			<Default>1</Default>
+		</rotateClockwise>
+		<modelName>
+			<Type>STRING</Type>
+			<Editable>True</Editable>
+		</modelName>
+		<actionName>
+			<Type>STRING</Type>
+			<Editable>True</Editable>
+		</actionName>
+		<pixieName>
+			<Type>STRING</Type>
+			<Editable>True</Editable>
+		</pixieName>
+		<pixieHardPoint>
+			<Type>STRING</Type>
+			<Editable>True</Editable>
+		</pixieHardPoint>
+		<soundName>
+			<Type>STRING</Type>
+			<Editable>True</Editable>
+		</soundName>
+	</Properties>
+</root>

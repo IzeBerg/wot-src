@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<quests>
+		<potapovQuest>
+			<enabled>true</enabled>
+			<id>pm2_5_3_15_main</id>
+			<serverOnly>true</serverOnly>
+			<conditions/>
+			<scripts>
+pass
+         </scripts>
+			<bonus>
+				<token>
+					<id>token:pt:final:s2:t5:main</id>
+					<expires>
+						28.01.2100 00:01
+						<!--BW_String-->
+					</expires>
+					<count>1</count>
+					<limit>75</limit>
+				</token>
+				<token>
+					<id>token:pt:final:s2:t5</id>
+					<expires>
+						28.01.2100 00:01
+						<!--BW_String-->
+					</expires>
+					<count>1</count>
+					<limit>5</limit>
+				</token>
+			</bonus>
+			<bonusDelayed>
+				<dossier>
+					<name>achievements:tankwomenProgress</name>
+					<value>1</value>
+					<type>add</type>
+				</dossier>
+				<berths>1</berths>
+				<tankmen>
+					<tman>
+						<isPremium>true</isPremium>
+						<isFemale>true</isFemale>
+						<role>commander</role>
+						<roleLevel>100</roleLevel>
+						<freeXP>210063</freeXP>
+						<fnGroupID>1</fnGroupID>
+						<lnGroupID>1</lnGroupID>
+						<iGroupID>1</iGroupID>
+						<nationID>0</nationID>
+						<vehicleTypeID>0</vehicleTypeID>
+						<freeSkills>brotherhood</freeSkills>
+					</tman>
+				</tankmen>
+			</bonusDelayed>
+		</potapovQuest>
+		<potapovQuest>
+			<enabled>true</enabled>
+			<id>pm2_5_3_15_main_award_list</id>
+			<serverOnly>true</serverOnly>
+			<conditions>
+				<preBattle>
+					<account>
+						<token>
+							<id>pm2_5_3_15_main_award_list</id>
+							<equal>1</equal>
+						</token>
+					</account>
+				</preBattle>
+			</conditions>
+			<bonus>
+				<token>
+					<id>token:pt:final:s2:t5:main</id>
+					<expires>
+						28.01.2100 00:01
+						<!--BW_String-->
+					</expires>
+					<count>1</count>
+					<limit>75</limit>
+				</token>
+				<token>
+					<id>token:pt:final:s2:t5</id>
+					<expires>
+						28.01.2100 00:01
+						<!--BW_String-->
+					</expires>
+					<count>1</count>
+					<limit>5</limit>
+				</token>
+			</bonus>
+			<bonusDelayed>
+				<dossier>
+					<name>achievements:tankwomenProgress</name>
+					<value>1</value>
+					<type>add</type>
+				</dossier>
+				<berths>1</berths>
+				<tankmen>
+					<tman>
+						<isPremium>true</isPremium>
+						<isFemale>true</isFemale>
+						<role>commander</role>
+						<roleLevel>100</roleLevel>
+						<freeXP>210063</freeXP>
+						<fnGroupID>1</fnGroupID>
+						<lnGroupID>1</lnGroupID>
+						<iGroupID>1</iGroupID>
+						<nationID>0</nationID>
+						<vehicleTypeID>0</vehicleTypeID>
+						<freeSkills>brotherhood</freeSkills>
+					</tman>
+				</tankmen>
+			</bonusDelayed>
+		</potapovQuest>
+		<potapovQuest>
+			<enabled>true</enabled>
+			<id>pm2_5_3_15_add</id>
+			<serverOnly>true</serverOnly>
+			<conditions/>
+			<scripts>
+LOG = globals().get(&apos;LOG&apos;)
+&quot;&quot;&quot;:type: typing.LOG_DEBUG_DEV&quot;&quot;&quot;
+
+QUEST_EVENT_TYPE = globals().get(&apos;QUEST_EVENT_TYPE&apos;)
+&quot;&quot;&quot;:type: quest_definitions.QUEST_EVENT_TYPE&quot;&quot;&quot;
+
+quest_progress = globals().get(&apos;quest_progress&apos;)
+&quot;&quot;&quot;:type: quest_progress&quot;&quot;&quot;
+
+filter = globals().get(&apos;BattleResults&apos;)
+
+PROGRESS_ID_MAIN = &apos;markOfMasteryI&apos;
+PROGRESS_ID_MAIN_SERIES = &apos;markOfMasteryISeries&apos;
+PROGRESS_ID_ADD = &quot;markOfMasteryMaster&quot;
+PROGRESS_SERIES = &apos;markOfMasteryMasterSeries&apos;
+
+def onInit(eventType, eventData, quest, processor):
+    for event in events.iterkeys():
+        processor.subscribe(event, quest)
+    return True
+
+
+def onFinishBattle(eventType, eventData, quest, processor):
+    questProgress = quest_progress.BaseQuestProgress(quest.config, processor.getQuestProgress(quest.progressID))
+
+    brfilter = filter.BattleResultsFilter(eventData)
+    addCondition = bool(eventData[&apos;avatarResults&apos;][&apos;markOfMastery&apos;] &gt;=
+                        questProgress.getProgress(PROGRESS_ID_ADD).getParam(&quot;markOfMastery&quot;))
+    if addCondition:
+        questProgress.setCompleted(PROGRESS_ID_ADD)
+        questProgress.increaseUntilComplete(PROGRESS_SERIES, 1)
+    mainCondition = bool(eventData[&apos;avatarResults&apos;][&apos;markOfMastery&apos;] &gt;=
+                         questProgress.getProgress(PROGRESS_ID_MAIN).getParam(&quot;markOfMastery&quot;))
+    if mainCondition:
+        questProgress.setCompleted(PROGRESS_ID_MAIN)
+        questProgress.increaseUntilComplete(PROGRESS_ID_MAIN_SERIES, 1)
+
+    eventData[&apos;results&apos;].update(processor.checkComplete(questProgress, quest.progressID,
+                                additionalProgressID=PROGRESS_SERIES))
+    processor.setQuestProgress(quest.progressID, questProgress.save())
+
+events = {
+    QUEST_EVENT_TYPE.INIT: onInit,
+    QUEST_EVENT_TYPE.FINISH_BATTLE: onFinishBattle,
+}
+
+def quest(eventType, eventData, quest, processor):
+    LOG(&apos;QUEST EVENT:&apos;, eventType, quest.id)
+    return events.get(eventType, lambda *args: False)(eventType, eventData, quest, processor)
+         </scripts>
+			<bonus>
+				<credits>100000</credits>
+				<token>
+					<id>token:pt:final:s2:t5:add</id>
+					<expires>
+						28.01.2100 00:01
+						<!--BW_String-->
+					</expires>
+					<count>1</count>
+					<limit>75</limit>
+				</token>
+				<token>
+					<id>free_award_list_2</id>
+					<expires>
+						28.01.2100 00:01
+						<!--BW_String-->
+					</expires>
+					<count>1</count>
+				</token>
+			</bonus>
+		</potapovQuest>
+		<potapovQuest>
+			<enabled>true</enabled>
+			<id>pm2_5_3_15_add_award_list</id>
+			<serverOnly>true</serverOnly>
+			<conditions>
+				<preBattle>
+					<account>
+						<token>
+							<id>pm2_5_3_15_main_award_list</id>
+							<greaterOrEqual>1</greaterOrEqual>
+							<consume>
+								100
+								<force/>
+							</consume>
+						</token>
+					</account>
+				</preBattle>
+				<postBattle>
+					<and>
+						<results>
+							<key>addQuestCompleted</key>
+							<greaterOrEqual>1</greaterOrEqual>
+						</results>
+					</and>
+				</postBattle>
+			</conditions>
+			<bonus>
+				<token>
+					<id>free_award_list_2</id>
+					<expires>
+						28.01.2100 00:01
+						<!--BW_String-->
+					</expires>
+					<count>3</count>
+				</token>
+			</bonus>
+		</potapovQuest>
+	</quests>
+</root>

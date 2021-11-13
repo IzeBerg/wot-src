@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<Domain>CLIENT</Domain>
+	<Properties>
+		<next>
+			<Type>UDO_REF</Type>
+			<Editable>True</Editable>
+		</next>
+		<name>
+			<Type>STRING</Type>
+			<Editable>True</Editable>
+		</name>
+		<speed>
+			<Type>FLOAT</Type>
+			<Editable>True</Editable>
+		</speed>
+		<radius>
+			<Type>FLOAT</Type>
+			<Editable>True</Editable>
+			<Default>
+				0.0
+				<!--BW_String-->
+			</Default>
+		</radius>
+		<fov>
+			<Type>FLOAT</Type>
+			<Editable>True</Editable>
+			<Default>
+				60.0
+				<!--BW_String-->
+			</Default>
+		</fov>
+	</Properties>
+</root>

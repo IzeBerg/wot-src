@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<Domain>CLIENT</Domain>
+	<SupportVSE>True</SupportVSE>
+	<Properties>
+		<name>
+			<Type>STRING</Type>
+			<Editable>True</Editable>
+		</name>
+		<radius>
+			<Type>FLOAT</Type>
+			<Editable>False</Editable>
+		</radius>
+		<scale>
+			<Type>VECTOR3</Type>
+			<Editable>False</Editable>
+			<Default>
+				1.0 1.0 1.0
+				<!--BW_String-->
+			</Default>
+		</scale>
+		<exitInterval>
+			<Type>FLOAT</Type>
+			<Editable>True</Editable>
+			<Default>
+				1.0
+				<!--BW_String-->
+			</Default>
+		</exitInterval>
+		<direction>
+			<Type>VECTOR3</Type>
+			<Editable>False</Editable>
+			<Default>
+				1.0 1.0 1.0
+				<!--BW_String-->
+			</Default>
+		</direction>
+	</Properties>
+</root>

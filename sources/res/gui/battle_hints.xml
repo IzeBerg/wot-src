@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<hint>
+		<name>default</name>
+		<component>battleHint</component>
+		<htmlTemplate/>
+		<duration>10</duration>
+		<maxWaitTime>20</maxWaitTime>
+		<priority>50</priority>
+	</hint>
+	<hint>
+		<name>testMessage</name>
+		<component>battleHint</component>
+		<htmlTemplate>testMessage</htmlTemplate>
+		<duration>10</duration>
+		<maxWaitTime>20</maxWaitTime>
+		<priority>50</priority>
+		<iconPath>iconPointBlue</iconPath>
+		<soundNotification>target_captured</soundNotification>
+	</hint>
+	<hint>
+		<name>testMessageWithParams</name>
+		<component>battleHint</component>
+		<htmlTemplate>testMessageWithParams</htmlTemplate>
+		<duration>10</duration>
+		<maxWaitTime>20</maxWaitTime>
+		<priority>51</priority>
+		<iconPath>iconPointBlue</iconPath>
+		<soundNotification>target_captured</soundNotification>
+	</hint>
+	<hint>
+		<name>CaptureBase</name>
+		<component>gameMessagesPanel</component>
+		<htmlTemplate/>
+	</hint>
+</root>

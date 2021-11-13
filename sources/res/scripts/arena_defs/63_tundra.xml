@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<name>#arenas:63_tundra/name</name>
+	<description>#arenas:63_tundra/description</description>
+	<geometry>spaces/63_tundra</geometry>
+	<estimatedLoad>
+		0.3
+		<!--BW_String-->
+	</estimatedLoad>
+	<roundLength>900</roundLength>
+	<boundingBox>
+		<bottomLeft>
+			-400.0 -400.0
+			<!--BW_String-->
+		</bottomLeft>
+		<upperRight>
+			400.0 400.0
+			<!--BW_String-->
+		</upperRight>
+	</boundingBox>
+	<minimap>spaces/63_tundra/mmap.dds</minimap>
+	<vehicleCamouflageKind>summer</vehicleCamouflageKind>
+	<umbraEnabled>1</umbraEnabled>
+	<wwmusicSetup>
+		<wwmusicLoading>music_tundra_loading_screen</wwmusicLoading>
+		<wwmusicIntensive>music_tundra_dron_intensive</wwmusicIntensive>
+		<wwmusicRelaxed>music_tundra_dron_relaxed</wwmusicRelaxed>
+		<wwmusicStop>music_dron_stop</wwmusicStop>
+		<wwmusicEndbattleStop>music_dron_endbattle_stop</wwmusicEndbattleStop>
+		<wwmusicResultWin>music_tundra_result_win</wwmusicResultWin>
+		<wwmusicResultDrawn>music_tundra_result_drawn</wwmusicResultDrawn>
+		<wwmusicResultDefeat>music_tundra_result_defeat</wwmusicResultDefeat>
+	</wwmusicSetup>
+	<wwambientSound>ambient_wind_autumn_01</wwambientSound>
+	<water>
+		<texScale>0</texScale>
+		<freqX>0</freqX>
+		<freqZ>0</freqZ>
+	</water>
+	<gameplayTypes>
+		<ctf>
+			<teamBasePositions>
+				<team1>
+					<position1>85.432190 -167.152176</position1>
+				</team1>
+				<team2>
+					<position1>-72.202568 141.256195</position1>
+				</team2>
+			</teamBasePositions>
+			<teamSpawnPoints>
+				<team1>
+					<position>
+						13.326 -306.419
+						<!--BW_String-->
+					</position>
+				</team1>
+				<team2>
+					<position>
+						-3.164 282.311
+						<!--BW_String-->
+					</position>
+				</team2>
+			</teamSpawnPoints>
+		</ctf>
+		<assault2>
+			<winnerIfTimeout>1</winnerIfTimeout>
+			<winnerIfExtermination>1</winnerIfExtermination>
+			<teamSpawnPoints>
+				<team1>
+					<position>
+						-325.562 96.459
+						<!--BW_String-->
+					</position>
+				</team1>
+				<team2>
+					<position>
+						316.803 0.031
+						<!--BW_String-->
+					</position>
+				</team2>
+			</teamSpawnPoints>
+			<teamBasePositions>
+				<team1>
+					<position1>-41.347172 224.069397</position1>
+					<position2>-215.285431 -235.364349</position2>
+				</team1>
+				<team2/>
+			</teamBasePositions>
+		</assault2>
+	</gameplayTypes>
+</root>
