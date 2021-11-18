@@ -31,6 +31,9 @@ class RoyaleCarouselDataProvider(HangarCarouselDataProvider):
     def _isWotPlusRentEnabled(self):
         return False
 
+    def _isTelecomRentalsEnabled(self):
+        return False
+
     def _buildVehicle(self, vehicle):
         result = super(RoyaleCarouselDataProvider, self)._buildVehicle(vehicle)
         state, _ = vehicle.getState()

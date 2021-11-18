@@ -33,7 +33,10 @@ package net.wg.infrastructure.managers.impl
       {
          if(this._popoverCaller)
          {
-            this._stage.removeEventListener(MouseEvent.MOUSE_DOWN,this.onStageMouseDownHandler,true);
+            if(this._stage != null)
+            {
+               this._stage.removeEventListener(MouseEvent.MOUSE_DOWN,this.onStageMouseDownHandler,true);
+            }
             if(this._client != null)
             {
                this._client.onPopoverClose();

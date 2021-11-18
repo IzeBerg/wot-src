@@ -135,6 +135,7 @@ ITEMS_PARAMS_LIST = {ITEM_TYPES.vehicleRadio: ('radioDistance', 'weight'),
                          'dispertionRadius', 'aimingTime', 'maxShotDistance', 'weight')}
 FORMAT_NAME_C_S_VALUE_S_UNITS = '{paramName} {paramValue} {paramUnits}'
 _COUNT_OF_AUTO_RELOAD_SLOTS_TIMES_TO_SHOW_IN_INFO = 5
+_EQUAL_TO_ZERO_LITERAL = '~0'
 
 def needUseYohChassisRepairTime(vehicleDescr):
     return vehicleDescr and vehicleDescr.isTrackWithinTrack
@@ -370,7 +371,7 @@ def _deltaWrapper(fn):
     def wrapped(paramValue):
         formattedValue = fn(paramValue)
         if formattedValue == '0':
-            return '~0'
+            return _EQUAL_TO_ZERO_LITERAL
         if isinstance(paramValue, (int, float)) and paramValue > 0:
             return '+%s' % formattedValue
         return formattedValue
@@ -437,6 +438,14 @@ def _applyFormat(value, state, settings, doSmartRound, colorScheme):
     else:
         paramStr = settings['rounder'](value)
     if state is not None and colorScheme is not None:
+        if paramStr == _EQUAL_TO_ZERO_LITERAL and isinstance(state, (tuple, list)):
+            stateType, value = state
+            if value > 0:
+                paramStr = '+&lt;0.01'
+            elif value < 0:
+                paramStr = '-&lt;0.01'
+            if stateType == PARAM_STATE.NORMAL:
+                paramStr = '0'
         paramStr = colorize(paramStr, state, colorScheme)
     return paramStr
 

@@ -348,8 +348,8 @@ package net.wg.gui.battle.views.battleMessenger
       {
          this.messageField.width = this._availableWidth;
          this.messageField.htmlText = param1;
-         this.messageField.height = this.messageField.textHeight + TEXT_HEIGHT_OFFSET | 0;
          App.utils.commons.updateTextFieldSize(this.messageField,true,false);
+         this.messageField.height = Math.ceil(this.messageField.textHeight) + TEXT_HEIGHT_OFFSET | 0;
          if(param2)
          {
             this.background.width = this.messageField.textWidth + TEXT_RIGHT_PADDING | 0;

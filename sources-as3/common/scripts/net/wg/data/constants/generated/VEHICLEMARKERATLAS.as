@@ -1465,6 +1465,8 @@ package net.wg.data.constants.generated
       
       public static const USA_A148_CONVERTIBLE_MEDIUM_TANK_T3:String = "usa-A148_Convertible_Medium_Tank_T3";
       
+      public static const USA_A149_AMBT:String = "usa-a149_ambt";
+      
       public static const USA_A15_T57:String = "usa-A15_T57";
       
       public static const USA_A16_M7_PRIEST:String = "usa-A16_M7_Priest";

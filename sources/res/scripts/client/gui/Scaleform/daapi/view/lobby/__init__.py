@@ -91,6 +91,7 @@ def getViewSettings():
     from gui.Scaleform.daapi.view.lobby.vehicle_preview.bp_exchange_vehicle_preview import BlueprintsExchangeVehicleStypePreview
     from gui.Scaleform.daapi.view.bootcamp.bootcamp_progress_component import BootcampProgressComponent
     from gui.Scaleform.daapi.view.lobby.vehicle_preview.wot_plus_vehicle_preview import WotPlusVehiclePreview
+    from gui.Scaleform.daapi.view.lobby.telecom_rentals.telecom_rentals_browser_pages import VehicleTelecomRentalView
     return (
      ViewSettings(VIEW_ALIAS.LOBBY, LobbyView, 'lobbyPage.swf', WindowLayer.VIEW, None, ScopeTemplates.DEFAULT_SCOPE, False, (
       ContainerSettings(WindowLayer.SUB_VIEW, containers.DefaultContainer),
@@ -118,6 +119,7 @@ def getViewSettings():
      ViewSettings(VIEW_ALIAS.BATTLE_PASS_BROWSER_VIEW, BattlePassBrowserView, 'browserScreen.swf', WindowLayer.TOP_SUB_VIEW, VIEW_ALIAS.BATTLE_PASS_BROWSER_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.WOT_PLUS_INFO_VIEW, WotPlusInfoView, 'browserScreen.swf', WindowLayer.FULLSCREEN_WINDOW, VIEW_ALIAS.WOT_PLUS_INFO_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.VEHICLE_RENTAL_VIEW, VehicleRentalView, 'browserScreen.swf', WindowLayer.TOP_SUB_VIEW, VIEW_ALIAS.VEHICLE_RENTAL_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
+     ViewSettings(VIEW_ALIAS.TELECOM_RENTAL_VIEW, VehicleTelecomRentalView, 'browserScreen.swf', WindowLayer.TOP_SUB_VIEW, VIEW_ALIAS.TELECOM_RENTAL_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      GroupedViewSettings(VIEW_ALIAS.CHECK_BOX_DIALOG, CheckBoxDialog, 'confirmDialog.swf', WindowLayer.TOP_WINDOW, 'confirmDialog', None, ScopeTemplates.DYNAMIC_SCOPE, isModal=True, canDrag=False),
      GroupedViewSettings(VIEW_ALIAS.CONFIRM_MODULE_DIALOG, ConfirmModuleDialog, 'confirmModuleWindow.swf', WindowLayer.TOP_WINDOW, 'confirmModuleDialog', None, ScopeTemplates.DEFAULT_SCOPE, isModal=True, canDrag=False),
      GroupedViewSettings(VIEW_ALIAS.USE_FREEW_AWARD_SHEET_DIALOG, UseAwardSheetWindow, 'useAwardSheetWindow.swf', WindowLayer.TOP_WINDOW, 'useAwardSheetWindow', None, ScopeTemplates.DEFAULT_SCOPE, isModal=True, canDrag=False),
@@ -218,6 +220,8 @@ class LobbyPackageBusinessHandler(PackageBusinessHandler):
           VIEW_ALIAS.WOT_PLUS_INFO_VIEW, self.loadViewByCtxEvent),
          (
           VIEW_ALIAS.VEHICLE_RENTAL_VIEW, self.loadViewByCtxEvent),
+         (
+          VIEW_ALIAS.TELECOM_RENTAL_VIEW, self.loadViewByCtxEvent),
          (
           VIEW_ALIAS.OFFER_GIFT_VEHICLE_PREVIEW, self.loadViewByCtxEvent),
          (
