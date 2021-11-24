@@ -33,7 +33,7 @@ package net.wg.gui.components.common.waiting
       {
          super();
          focusRect = false;
-         focusable = true;
+         focusable = false;
          this.awards.visible = false;
       }
       
@@ -76,7 +76,7 @@ package net.wg.gui.components.common.waiting
       
       public function as_hideWaiting() : void
       {
-         removeEventListener(InputEvent.INPUT,this.handleInput);
+         App.stage.removeEventListener(InputEvent.INPUT,this.handleInput);
          if(this._frameOnShow == this.waitingComponent.waitingMc.currentFrame)
          {
             this.performHide();
@@ -103,7 +103,7 @@ package net.wg.gui.components.common.waiting
       {
          this._frameOnShow = this.waitingComponent.waitingMc.currentFrame;
          App.utils.scheduler.cancelTask(this.performHide);
-         addEventListener(InputEvent.INPUT,this.handleInput,false,0,true);
+         App.stage.addEventListener(InputEvent.INPUT,this.handleInput,false,int.MAX_VALUE,true);
          assertNotNull(this.waitingComponent,WAITING_COMPONENT_NAME);
          this.waitingComponent.setMessage(param1);
          this.setAnimationStatus(true);

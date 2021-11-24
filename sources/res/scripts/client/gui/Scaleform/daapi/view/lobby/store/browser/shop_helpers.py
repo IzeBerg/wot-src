@@ -113,6 +113,10 @@ def getBlueprintsExchangeUrl():
     return _getUrl('blueprintsExchange')
 
 
+def getPlayerSeniorityAwardsUrl():
+    return _getUrl('psaProducts')
+
+
 def getSplitPageUrl(params):
     url = _getUrl('splitUrl')
     return addParamsToUrlQuery(url, params, True)

@@ -781,10 +781,6 @@ package net.wg.data.constants
       
       public static const BATTLE_ABILITIES_BTN_AREA_UI:String = "BattleAbilitiesBtnAreaUI";
       
-      public static const SENIORITY_AWARDS_HANGAR_ENTRY_POINT:String = "SeniorityAwardsHangarEntryPointUI";
-      
-      public static const SENIORITY_AWARDS_WIDGET_BLOCK:String = "SeniorityAwardsWidgetBockUI";
-      
       public static const HANGAR_HEADER:String = "HangarHeaderUI";
       
       public static const ALERT_MESSAGE_BLOCK:String = "AlertMessageBlockUI";

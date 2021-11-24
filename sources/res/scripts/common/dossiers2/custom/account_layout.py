@@ -302,7 +302,7 @@ _SINGLE_ACHIEVEMENTS_VALUES = [
  'february21', 'BattlePassCommonPr_4', 'march21', 'april21', 'gagarin21', 'may21',
  'june21', 'BattlePassCommonPr_5', 'mapboxSeason1', 'mapboxSeason2', 'mapboxSeason3',
  'july21', 'august21', 'BattlePassCommonPr_6', 'september21', 'october21',
- 'hw2021Medal1', 'hw2021Medal2', 'november21']
+ 'hw2021Medal1', 'hw2021Medal2', 'november21', '11YearsOfService']
 _singleAchievementsPopUps = [
  'titleSniper', 'invincible', 'diehard', 'handOfDeath',
  'armorPiercer', 'battleCitizen', 'WFC2014', 'tacticalBreakthrough', 'aimer',
@@ -341,7 +341,7 @@ _singleAchievementsPopUps = [
  'march21', 'april21', 'gagarin21', 'may21', 'june21', 'BattlePassCommonPr_5',
  'mapboxSeason1', 'mapboxSeason2', 'mapboxSeason3', 'july21', 'august21',
  'BattlePassCommonPr_6', 'september21', 'october21', 'hw2021Medal1', 'hw2021Medal2',
- 'november21']
+ 'november21', '11YearsOfService']
 _singleAchievementsBlockBuilder = BinarySetDossierBlockBuilder('singleAchievements', _SINGLE_ACHIEVEMENTS_VALUES, SINGLE_ACHIEVEMENTS_DEPENDENCIES, _singleAchievementsPopUps)
 FORT_ACHIEVEMENTS_BLOCK_LAYOUT = [
  'conqueror', 'fireAndSword', 'crusher', 'counterblow', 'kampfer', 'soldierOfFortune']

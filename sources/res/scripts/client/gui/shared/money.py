@@ -1,4 +1,3 @@
-import typing
 from collections import namedtuple
 from shared_utils import CONST_CONTAINER
 from soft_exception import SoftException

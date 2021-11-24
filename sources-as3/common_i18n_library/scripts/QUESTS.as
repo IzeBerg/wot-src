@@ -23,6 +23,8 @@ package
       
       public static const MISSIONS_TAB_MAY21_MARATHON:String = "#quests:missions/tab/may21_marathon";
       
+      public static const MISSIONS_TAB_WINTER_MARATHON:String = "#quests:missions/tab/winter_marathon";
+      
       public static const MISSIONS_FILTERCOUNTER_CLOSEBUTTON:String = "#quests:missions/filterCounter/closeButton";
       
       public static const MISSIONS_FILTER_FILTERBUTTON:String = "#quests:missions/filter/filterButton";
@@ -2045,6 +2047,12 @@ package
       
       public static const MISSIONS_TAB_LABEL_MARATHON:String = "#quests:missions/tab/label/marathon";
       
+      public static const MISSIONS_TAB_LABEL_WINTER_MARATHON:String = "#quests:missions/tab/label/winter_marathon";
+      
+      public static const MISSIONS_TAB_WINTER_MARATHON_HEADER:String = "#quests:missions/tab/winter_marathon/header";
+      
+      public static const MISSIONS_TAB_WINTER_MARATHON_BODY:String = "#quests:missions/tab/winter_marathon/body";
+      
       public static const MISSIONS_TAB_KURSK_HEADER:String = "#quests:missions/tab/kursk/header";
       
       public static const MISSIONS_TAB_KURSK_BODY:String = "#quests:missions/tab/kursk/body";
@@ -3351,44 +3359,4 @@ package
       
       public static const DAILYQUESTS_CONDITION_DESTROYMODULE_PLURAL_ACCUM:String = "#quests:dailyQuests/condition/destroyModule_plural_accum";
       
-      public static const DAILYQUESTS_CONDITION_DODAMAGEVEH_ACCUM:String = "#quests:dailyQuests/condition/doDamageVeh_accum";
-      
-      public static const DAILYQUESTS_CONDITION_DESTROYVEH_FEW_ACCUM:String = "#quests:dailyQuests/condition/destroyVeh_few_accum";
-      
-      public static const DAILYQUESTS_CONDITION_DESTROYVEH_PLURAL_ACCUM:String = "#quests:dailyQuests/condition/destroyVeh_plural_accum";
-      
-      public static const BATTLECONDITION_STATE_ENUM:Array = [BATTLECONDITION_STATE_COMPLETED,BATTLECONDITION_STATE_COMPLETED_PERFECTLY,BATTLECONDITION_STATE_IN_PROGRESS,BATTLECONDITION_STATE_FAILED];
-      
-      public static const QUEST_FLAG_STATUS_ENUM:Array = [QUEST_FLAG_STATUS_NOT_STARTED,QUEST_FLAG_STATUS_LOCKED,QUEST_FLAG_STATUS_FAILED,QUEST_FLAG_STATUS_COMPLETED,QUEST_FLAG_STATUS_IN_PROGRESS,QUEST_FLAG_STATUS_COMPLETED_PERFECTLY];
-       
-      
-      public function QUESTS()
-      {
-         super();
-      }
-      
-      public static function battlecondition_state(param1:String) : String
-      {
-         var _loc2_:String = null;
-         _loc2_ = "#quests:" + "battleCondition/state/" + param1;
-         if(BATTLECONDITION_STATE_ENUM.indexOf(_loc2_) == -1)
-         {
-            DebugUtils.LOG_WARNING("[battlecondition_state]:locale key \"" + _loc2_ + "\" was not found");
-            return null;
-         }
-         return _loc2_;
-      }
-      
-      public static function getFlagStatus(param1:String) : String
-      {
-         var _loc2_:String = null;
-         _loc2_ = "#quests:" + "quest/flag/status/" + param1;
-         if(QUEST_FLAG_STATUS_ENUM.indexOf(_loc2_) == -1)
-         {
-            DebugUtils.LOG_WARNING("[getFlagStatus]:locale key \"" + _loc2_ + "\" was not found");
-            return null;
-         }
-         return _loc2_;
-      }
-   }
-}
+      public static const DAILYQUESTS_CONDITION_DO

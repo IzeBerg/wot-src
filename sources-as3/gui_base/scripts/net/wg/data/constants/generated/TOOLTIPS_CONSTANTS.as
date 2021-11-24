@@ -539,8 +539,6 @@ package net.wg.data.constants.generated
       
       public static const BLUEPRINT_RANDOM_NATIONAL_INFO:String = "blueprintRandomNationalInfo";
       
-      public static const SENIORITY_FLAG:String = "seniorityFlag";
-      
       public static const MAPBOX_SELECTOR_INFO:String = "mapboxSelectorInfo";
       
       public static const MAPBOX_PROGRESSION_PREVIEW:String = "mapboxProgressionPreview";
@@ -828,8 +826,6 @@ package net.wg.data.constants.generated
       public static const BADGES_SET:Array = [BADGES_SUFFIX_ITEM,BADGES_SUFFIX_RANKED_ITEM];
       
       public static const BATTLE_BLOCK_TOOLTIPS:Array = [BATTLE_OPT_DEVICE];
-      
-      public static const SENIORITY_SET:Array = [SENIORITY_FLAG];
       
       public static const SHOP_SALES_EVENT_SET:Array = [CURRENT_DISCOUNT_INFO,SHOP_SALES_FREE_SHUFFLE_INFO,SHOP_SALES_PAID_SHUFFLE_INFO,SHOP_SALES_VOTE_FOR_DISCOUNT];
       
