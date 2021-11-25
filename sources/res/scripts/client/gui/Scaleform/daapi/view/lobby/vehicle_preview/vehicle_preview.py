@@ -1,4 +1,6 @@
-import itertools, BigWorld
+import itertools
+from copy import deepcopy
+import BigWorld
 from CurrentVehicle import g_currentPreviewVehicle, g_currentVehicle
 from HeroTank import HeroTank
 from account_helpers import AccountSettings
@@ -152,6 +154,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         self.__description = ctx.get('description')
         self.__endTime = ctx.get('endTime')
         self.__buyParams = ctx.get('buyParams')
+        self.__unmodifiedItemsPack = deepcopy(self._itemsPack)
         addBuiltInEquipment(self._itemsPack, self.__itemsCache, self._vehicleCD)
         notInteractive = (
          VIEW_ALIAS.LOBBY_STORE, VIEW_ALIAS.RANKED_BATTLE_PAGE, VIEW_ALIAS.VEH_POST_PROGRESSION)
@@ -226,6 +229,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         if self._backAlias == VIEW_ALIAS.VEHICLE_PREVIEW:
             g_currentVehicle.refreshModel()
         self._previewBackCb = None
+        self.__unmodifiedItemsPack = None
         super(VehiclePreview, self)._dispose()
         if not self._heroInteractive:
             self.__heroTanksControl.setInteractive(True)
@@ -360,7 +364,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
            'previousBackAlias': self._previousBackAlias, 
            'vehicleStrCD': self.__vehicleStrCD, 
            'previewBackCb': self._previewBackCb, 
-           'itemsPack': self._itemsPack, 
+           'itemsPack': self.__unmodifiedItemsPack, 
            'offers': self.__offers, 
            'price': self._price, 
            'oldPrice': self._oldPrice, 

@@ -8,6 +8,8 @@
 		<loader/>
 	</crew>
 	<supplySlots>5 1 1 6 6 6 7 8 8 8</supplySlots>
+	<postProgressionTree>role_HT_assault</postProgressionTree>
+	<customRoleSlotOptions>2 4</customRoleSlotOptions>
 	<speedLimits>
 		<forward>33</forward>
 		<backward>10</backward>
@@ -57,11 +59,11 @@
 		</trophyUpgradedAdditionalInvisibilityDevice>
 	</optDevsOverrides>
 	<repairCost>
-		5.7
+		8.945
 		<!--BW_String-->
 	</repairCost>
 	<premiumVehicleXPFactor>
-		0.1
+		0.05
 		<!--BW_String-->
 	</premiumVehicleXPFactor>
 	<crewXpFactor>
@@ -70,7 +72,7 @@
 	</crewXpFactor>
 	<camouflage>
 		<priceFactor>
-			1.6
+			1.8
 			<!--BW_String-->
 		</priceFactor>
 		<tiling>1 1 0 0</tiling>
@@ -79,12 +81,12 @@
 	</camouflage>
 	<hull>
 		<armor>
-			<armor_1>125</armor_1>
-			<armor_2>130</armor_2>
+			<armor_1>140</armor_1>
+			<armor_2>150</armor_2>
 			<armor_3>60</armor_3>
 			<armor_4>60</armor_4>
 			<armor_5>30</armor_5>
-			<armor_6>110</armor_6>
+			<armor_6>120</armor_6>
 			<armor_7>80</armor_7>
 			<armor_8>0</armor_8>
 			<armor_9>45</armor_9>
@@ -117,7 +119,7 @@
 		</armor>
 		<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
 		<weight>27026</weight>
-		<maxHealth>1440</maxHealth>
+		<maxHealth>1840</maxHealth>
 		<ammoBayHealth>
 			<maxHealth>210</maxHealth>
 			<maxRegenHealth>140</maxRegenHealth>
@@ -2001,8 +2003,8 @@
 		<Chassis_Ch45_WZ_114>
 			<userString>#china_vehicles:Chassis_Ch45_WZ_114</userString>
 			<tags/>
-			<level>8</level>
-			<price>30200</price>
+			<level>9</level>
+			<price>61000</price>
 			<notInShop>true</notInShop>
 			<armor>
 				<leftTrack>20</leftTrack>
@@ -2031,8 +2033,8 @@
 				3.0
 				<!--BW_String-->
 			</bulkHealthFactor>
-			<maxHealth>220</maxHealth>
-			<maxRegenHealth>165</maxRegenHealth>
+			<maxHealth>240</maxHealth>
+			<maxRegenHealth>180</maxRegenHealth>
 			<repairCost>
 				5.0
 				<!--BW_String-->
@@ -3448,8 +3450,8 @@
 		<Turret_1_Ch45_WZ_114>
 			<userString>#china_vehicles:Turret_1_Ch45_WZ_114</userString>
 			<tags/>
-			<level>8</level>
-			<price>28000</price>
+			<level>9</level>
+			<price>61000</price>
 			<notInShop>true</notInShop>
 			<armor>
 				<armor_1>300</armor_1>
@@ -3479,29 +3481,29 @@
 			</armor>
 			<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
 			<weight>22000</weight>
-			<maxHealth>360</maxHealth>
+			<maxHealth>460</maxHealth>
 			<rotationSpeed>18</rotationSpeed>
 			<turretRotatorHealth>
-				<maxHealth>150</maxHealth>
-				<maxRegenHealth>75</maxRegenHealth>
+				<maxHealth>160</maxHealth>
+				<maxRegenHealth>80</maxRegenHealth>
 				<repairCost>
 					1.0
 					<!--BW_String-->
 				</repairCost>
 			</turretRotatorHealth>
-			<circularVisionRadius>380</circularVisionRadius>
+			<circularVisionRadius>390</circularVisionRadius>
 			<surveyingDeviceHealth>
-				<maxHealth>100</maxHealth>
-				<maxRegenHealth>50</maxRegenHealth>
+				<maxHealth>110</maxHealth>
+				<maxRegenHealth>55</maxRegenHealth>
 				<repairCost>
 					1.0
 					<!--BW_String-->
 				</repairCost>
 			</surveyingDeviceHealth>
 			<guns>
-				<_122mm_vz_60>
+				<_130mm_59_130M>
 					shared
-					<maxAmmo>55</maxAmmo>
+					<maxAmmo>33</maxAmmo>
 					<pitchLimits>
 						<minPitch>0 -20 1 -20</minPitch>
 						<maxPitch>
@@ -3551,7 +3553,7 @@
 						0.33
 						<!--BW_String-->
 					</shotDispersionRadius>
-					<reloadTime>12</reloadTime>
+					<reloadTime>17</reloadTime>
 					<aimingTime>
 						3.6
 						<!--BW_String-->
@@ -3572,13 +3574,13 @@
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
 					<models>
-						<undamaged>vehicles/chinese/Ch45_WZ_114/normal/lod0/Gun_01.model</undamaged>
-						<destroyed>vehicles/chinese/Ch45_WZ_114/crash/lod0/Gun_01.model</destroyed>
-						<exploded>vehicles/chinese/Ch45_WZ_114/crash/lod0/Gun_01.model</exploded>
+						<undamaged>vehicles/chinese/Ch45_WZ_114/normal/lod0/Gun_02.model</undamaged>
+						<destroyed>vehicles/chinese/Ch45_WZ_114/crash/lod0/Gun_02.model</destroyed>
+						<exploded>vehicles/chinese/Ch45_WZ_114/crash/lod0/Gun_02.model</exploded>
 					</models>
 					<hitTester>
-						<collisionModelServer>vehicles/chinese/Ch45_WZ_114/collision/Gun_01.model</collisionModelServer>
-						<collisionModelClient>vehicles/chinese/Ch45_WZ_114/collision_client/Gun_01.model</collisionModelClient>
+						<collisionModelServer>vehicles/chinese/Ch45_WZ_114/collision/Gun_02.model</collisionModelServer>
+						<collisionModelClient>vehicles/chinese/Ch45_WZ_114/collision_client/Gun_02.model</collisionModelClient>
 					</hitTester>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<shotOffset>0.000000 0.000000 0.000000</shotOffset>
@@ -3649,7 +3651,7 @@
 						</density>
 						<aoTextureSize>512 512</aoTextureSize>
 					</camouflage>
-				</_122mm_vz_60>
+				</_130mm_59_130M>
 			</guns>
 			<models>
 				<undamaged>vehicles/chinese/Ch45_WZ_114/normal/lod0/Turret_01.model</undamaged>
@@ -3667,7 +3669,7 @@
 			<wwturretRotatorSoundManual>tur_mech_trav</wwturretRotatorSoundManual>
 			<showEmblemsOnGun>false</showEmblemsOnGun>
 			<physicsShape>
-				0.983 0.253 0.928 0.000 0.267 -1.069 0.500 0.704 0.178 0.500 0.247 0.500 0.396 0.227 0.004
+				0.993 -0.016 1.041 0.000 0.774 0.035 0.251 0.000 0.535 0.500 0.247 0.500 0.012 0.227 0.004
 				<!--BW_String-->
 			</physicsShape>
 			<customization>

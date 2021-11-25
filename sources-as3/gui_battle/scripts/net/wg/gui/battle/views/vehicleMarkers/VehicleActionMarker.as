@@ -2,6 +2,7 @@ package net.wg.gui.battle.views.vehicleMarkers
 {
    import flash.display.MovieClip;
    import flash.geom.Point;
+   import flash.utils.getDefinitionByName;
    import net.wg.data.constants.Values;
    import net.wg.gui.battle.views.actionMarkers.ActionMarkerStates;
    import net.wg.gui.battle.views.actionMarkers.BaseActionMarker;
@@ -181,7 +182,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          var renderer:MovieClip = null;
          try
          {
-            rendererClass = App.utils.classFactory.getClass(rendererLinkage);
+            rendererClass = getDefinitionByName(rendererLinkage) as Class;
             renderer = new rendererClass();
             if(renderer)
             {
