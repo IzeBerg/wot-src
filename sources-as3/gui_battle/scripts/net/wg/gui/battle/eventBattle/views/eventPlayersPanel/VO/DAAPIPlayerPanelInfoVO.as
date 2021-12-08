@@ -23,11 +23,9 @@ package net.wg.gui.battle.eventBattle.views.eventPlayersPanel.VO
       
       public var isSquad:Boolean = false;
       
-      public var isSelf:Boolean = false;
+      public var isResurrect:Boolean = false;
       
-      public var countSouls:int = 0;
-      
-      public var squadIndex:int = 0;
+      public var countPoints:int = 0;
       
       public var badgeVO:BadgeVisualVO = null;
       

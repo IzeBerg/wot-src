@@ -1,4 +1,4 @@
-
+from new_year.ny_constants import NY_FILTER
 
 class FilterSetupContext(object):
 
@@ -14,7 +14,8 @@ def getFilterSetupContexts(xpRateMultiplier):
        'premium': FilterSetupContext(asset='prem_small_icon'), 
        'igr': FilterSetupContext(asset='premium_small'), 
        'bonus': FilterSetupContext(ctx={'multiplier': xpRateMultiplier}, asset='bonus_x{multiplier}'), 
-       'battleRoyale': FilterSetupContext(asset='battle_royale_toggle')}
+       'battleRoyale': FilterSetupContext(asset='battle_royale_toggle'), 
+       NY_FILTER: FilterSetupContext(asset='newYear_small')}
 
 
 def getFilterPopoverSetupContexts(xpRateMultiplier):
@@ -23,8 +24,10 @@ def getFilterPopoverSetupContexts(xpRateMultiplier):
        'premium': FilterSetupContext(asset='prem_small_icon'), 
        'igr': FilterSetupContext(asset='premium_igr_small'), 
        'bonus': FilterSetupContext(ctx={'multiplier': xpRateMultiplier}, asset='bonus_x'), 
+       NY_FILTER: FilterSetupContext(asset='newYear_small'), 
        'rented': FilterSetupContext(asset='marathon/time_icon'), 
        'event': FilterSetupContext(asset='event_small_icon'), 
        'isCommonProgression': FilterSetupContext(asset='common_progression'), 
        'crystals': FilterSetupContext(asset='bons_small'), 
-       'clanRented': FilterSetupContext(asset='clan_wars')}
+       'clanRented': FilterSetupContext(asset='clan_wars'), 
+       'ranked': FilterSetupContext(asset='ranked')}

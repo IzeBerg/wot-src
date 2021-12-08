@@ -10,7 +10,8 @@ __all__ = ('ArgsEvent', 'ComponentEvent', 'LoadViewEvent', 'LoadGuiImplViewEvent
            'FightButtonEvent', 'CloseWindowEvent', 'BrowserEvent', 'HangarVehicleEvent',
            'HangarCustomizationEvent', 'GameEvent', 'BootcampEvent', 'ViewEventType',
            'OpenLinkEvent', 'ChannelManagementEvent', 'PreBattleChannelEvent', 'AmmunitionSetupViewEvent',
-           'HasCtxEvent', 'DogTagsEvent', 'FullscreenModeSelectorEvent', 'ModeSelectorPopoverEvent')
+           'HasCtxEvent', 'DogTagsEvent', 'FullscreenModeSelectorEvent', 'ModeSelectorPopoverEvent',
+           'NewYearEvent')
 _logger = logging.getLogger(__name__)
 
 class HasCtxEvent(SharedEvent):
@@ -75,7 +76,6 @@ class GameEvent(HasCtxEvent):
     PRE_CHARGE = 'game/preCharge'
     CONTROL_MODE_CHANGE = 'game/controlModeChange'
     SNIPER_CAMERA_TRANSITION = 'game/sniperCameraTransition'
-    WORLD_MARKERS_COMPONENT_LIFETIME = 'game/worldMarkersComponentLifetime'
     FADE_OUT_AND_IN = 'game/fadeOutIn'
     CALLOUT_DISPLAY_EVENT = 'game/calloutDisplayEvent'
     RESPOND_TO_CALLOUT = 'game/respondToCallout'
@@ -84,9 +84,7 @@ class GameEvent(HasCtxEvent):
     ROLE_HINT_TOGGLE = 'roleHintToggle'
     COMMANDER_HINT = 'game/commanderHint'
     CHANGE_AMMUNITION_SETUP = 'game/changeAmmunitionSetup'
-    COLLECTOR_PROGRESS = 'game/collectorProgress'
-    COLLECTOR_PROGRESS_STOP = 'game/collectorProgressStop'
-    SHOW_BOSS_HP_BAR = 'game/showBossHPBar'
+    IMAGE_VIEW_DONE = 'game/imageViewDone'
 
 
 class GUICommonEvent(SharedEvent):
@@ -195,6 +193,7 @@ class BrowserEvent(HasCtxEvent):
 
 class ShowDialogEvent(SharedEvent):
     SHOW_SIMPLE_DLG = 'showSimpleDialog'
+    SHOW_BUTTON_DLG = 'showButtonDialog'
     SHOW_ICON_DIALOG = 'showIconDialog'
     SHOW_ICON_PRICE_DIALOG = 'showIconPriceDialog'
     SHOW_CREW_SKINS_COMPENSATION_DIALOG = 'showCrewSkinsCompensationDialog'
@@ -216,7 +215,6 @@ class ShowDialogEvent(SharedEvent):
     SHOW_USE_AWARD_SHEET_DIALOG = 'useAwardSheetDialog'
     SHOW_CONFIRM_C11N_BUY_DIALOG = 'showConfirmC11nBuyDialog'
     SHOW_CONFIRM_C11N_SELL_DIALOG = 'showConfirmC11nSellDialog'
-    SHOW_EVENT_AFK_DIALOG = 'showEventAFKDialog'
 
     def __init__(self, meta, handler):
         super(ShowDialogEvent, self).__init__(ViewEventType.LOAD_VIEW)
@@ -301,9 +299,13 @@ class LobbySimpleEvent(HasCtxEvent):
     WAITING_SHOWN = 'waitingShown'
     WAITING_HIDDEN = 'waitingHidden'
     BATTLE_RESULTS_POSTED = 'battleResultsPosted'
+    TURN_LOBBY_DRAGGING_ON = 'turnLobbyDraggingOn'
+    TURN_LOBBY_DRAGGING_OFF = 'turnLobbyDraggingOff'
     BATTLE_RESULTS_SHOW_QUEST = 'battleResultsWindowShowQuest'
     CHANGE_SOUND_ENVIRONMENT = 'changeSoundEnvironment'
     VEHICLE_PREVIEW_HIDDEN = 'vehiclePreviewHidden'
+    SWITCH_NEW_YEAR_VIEW = 'switchNewYearView'
+    SHOW_LOOT_BOX_VIEW = 'showLootBoxView'
 
 
 class MissionsEvent(HasCtxEvent):
@@ -620,14 +622,12 @@ class VehicleBuyEvent(HasCtxEvent):
 
 
 class HangarVehicleEvent(HasCtxEvent):
+    ON_HERO_TANK_LABEL_UPDATE_REQUIRED = 'hangarVehicle/onHeroTankLabelUpdateRequired'
     ON_HERO_TANK_LOADED = 'hangarVehicle/onHeroTankLoaded'
     ON_HERO_TANK_DESTROY = 'hangarVehicle/onHeroTankDestroy'
-    HERO_TANK_MARKER = 'hangarVehicle/heroTankMarker'
     ON_PLATOON_TANK_LOADED = 'hangarVehicle/onPlatoonTankLoaded'
     ON_PLATOON_TANK_DESTROY = 'hangarVehicle/onPlatoonTankDestroy'
     PLATOON_TANK_MARKER = 'hangarVehicle/platoonTankMarker'
-    ON_HALLOWEEN_TANK_LOADED = 'hangarVehicle/onHalloweenTankLoaded'
-    ON_HALLOWEEN_TANK_DESTROY = 'hangarVehicle/onHalloweenTankDestroy'
 
 
 class LinkedSetEvent(HasCtxEvent):
@@ -654,22 +654,39 @@ class SeniorityAwardsEvent(HasCtxEvent):
     ON_ENTRY_VIEW_LOADED = 'seniorityAwards/onEntryViewLoaded'
 
 
-class PickUpEvent(HasCtxEvent):
-    ON_PICKUP = 'PickUpEvent/onPickup'
+class NewYearEvent(HasCtxEvent):
+    ON_BREAK_TOYS_FILTER_APPLIED = 'newYear/onBreakToysFilterApplied'
+    ON_BREAK_TOYS_ANIMATION_COMPLETED = 'newYear/onBreakToysAnimationCompleted'
+    ON_PRE_SWITCH_VIEW = 'newYear/onPreSwitchView'
+    ON_SWITCH_VIEW = 'newYear/onSwitchView'
+    ON_SIDEBAR_SELECTED = 'newYear/onSidebarSelected'
+    SELECT_SIDEBAR_TAB_OUTSIDE = 'newYear/selectSidebarTabOutside'
+    UPDATE_BACK_BUTTON = 'newYear/updateBackButton'
+    ON_TOY_INSTALLED = 'newYear/onToyInstalled'
 
 
-class BuffUiEvent(HasCtxEvent):
-    ON_APPLY = 'BuffUiEvent/onApply'
-    ON_UNAPPLY = 'BuffUiEvent/onUnapply'
-
-
-class BattleHintEvent(HasCtxEvent):
-    ON_SHOW = 'BattleHintEvent/onShow'
-    ON_HIDE = 'BattleHintEvent/onHide'
-
-
-class BossHPBarEvent(HasCtxEvent):
-    ON_HIDE = 'BossHPBarEvent/onHide'
+class LootboxesEvent(HasCtxEvent):
+    ON_REWARD_VIEW_CLOSED = 'lootboxes/onRewardViewClosed'
+    ON_MULTI_OPEN_VIEW_CLOSED = 'lootboxes/onMultiOpenViewClosed'
+    ON_SHOW_SPECIAL_REWARDS_CLOSED = 'lootboxes/onShowSpecialRewardsClosed'
+    ON_ENTRY_VIEW_LOADED = 'lootboxes/onEntryViewLoaded'
+    ON_MAIN_VIEW_CLOSED = 'lootboxes/onMainViewClosed'
+    ON_OPENING_START = 'lootboxes/onOpeningStart'
+    ON_OPENING_END = 'lootboxes/onOpeningEnd'
+    ON_OPEN_LOOTBOX = 'lootboxes/onOpenNext'
+    NEED_SHOW_REWARDS = 'lootboxes/needShowRewards'
+    NEED_STOP_ENTRY_VIDEO = 'lootboxes/needStopEntryVideo'
+    REMOVE_HIDE_VIEW = 'lootboxes/removeHideView'
+    HIDE_COMPLETE = 'lootboxes/hideComplete'
+    ON_VIDEO_OFF_MOVIE_LOADED = 'lootboxes/onVideoOffMovieLoaded'
+    ON_VIDEO_LOAD_ERROR = 'lootboxes/onVideoLoadError'
+    ON_TAB_SELECTED = 'lootboxes/onTabSelected'
+    NEED_DELIVERY_VIDEO_START = 'lootboxes/needDeliveryVideoStart'
+    NEED_DELIVERY_VIDEO_STOP = 'lootboxes/needDeliveryVideoStop'
+    ON_DELIVERY_VIDEO_END = 'lootboxes/onDeliveryVideoEnd'
+    ON_BOX_TRANSITION_END = 'lootboxes/onBoxTransitionEnd'
+    ON_STATISTICS_RESET = 'lootboxes/onStatisticsReset'
+    SWITCH_BOX_HOVER = 'lootboxes/switchBoxHover'
 
 
 class ReferralProgramEvent(HasCtxEvent):
@@ -786,6 +803,6 @@ class ModeSelectorPopoverEvent(HasCtxEvent):
     NAME = 'ModeSelectorPopoverEvent'
 
 
-class HalloweenEvent(HasCtxEvent):
-    BOX_OPENED = 'halloween/box/opened'
-    BOX_SELECTED = 'halloween/box/selected'
+class GiftSystemOperationEvent(HasCtxEvent):
+    GIFT_SENT = 'GiftSentEvent'
+    GIFT_OPENED = 'GiftOpenedEvent'

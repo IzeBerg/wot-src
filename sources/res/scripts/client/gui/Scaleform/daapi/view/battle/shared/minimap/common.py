@@ -50,9 +50,6 @@ class SimplePlugin(IPlugin):
     def applyNewSize(self, sizeIndex):
         pass
 
-    def invokeMarker(self, entryID, name, *args):
-        self._invoke(entryID, name, *args)
-
     def _addEntry(self, symbol, container, matrix=None, active=False, transformProps=settings.TRANSFORM_FLAG.DEFAULT):
         return self._parentObj.addEntry(symbol, container, matrix=matrix, active=active, transformProps=transformProps)
 
@@ -201,11 +198,6 @@ class BaseAreaMarkerEntriesPlugin(EntriesPlugin):
             return True
         else:
             return False
-
-    def invokeMarker(self, uniqueID, name, *args):
-        if uniqueID not in self._entries:
-            return
-        super(BaseAreaMarkerEntriesPlugin, self).invokeMarker(self._entries[uniqueID].getID(), name, *args)
 
     def deleteMarker(self, uniqueID):
         self._delEntryEx(uniqueID)

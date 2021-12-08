@@ -168,6 +168,7 @@ class _VehCmpCache(FileLocalCache):
 
 
 class _VehCompareData(object):
+    itemsCache = dependency.descriptor(IItemsCache)
 
     def __init__(self, vehicleIntCD, vehicleStrCD, vehStockStrCD, isFromCache=False, rentalIsOver=False):
         super(_VehCompareData, self).__init__()
@@ -361,6 +362,7 @@ class _VehCompareData(object):
         dataClone.setInvEquipment(self.__invEquipment)
         dataClone.setHasCamouflage(self.__hasCamouflage)
         dataClone.setHasBattleBooster(self.__hasBattleBooster)
+        dataClone.setBattleBooster(self.getBattleBooster())
         dataClone.setInvHasCamouflage(self.__invHasCamouflage)
         dataClone.setSelectedShellIndex(self.getSelectedShellIndex())
         dataClone.setDynSlotType(self.__dynSlotType)
@@ -375,7 +377,7 @@ class _VehCompareData(object):
         return [None] * eqCapacity
 
     def __addBuiltInEquipment(self, equipmentIDs):
-        if not self.__isInInventory:
+        if not self.__isInInventory and self.itemsCache.isSynced():
             vehicleType = self.__getVehicleType()
             builtInEquipmentIDs = vehicles.getBuiltinEqsForVehicle(vehicleType)
             for slotId, eqID in enumerate(builtInEquipmentIDs):

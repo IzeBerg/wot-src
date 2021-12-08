@@ -35,7 +35,6 @@ package net.wg.gui.components.dogtag
       {
          this._characters = [];
          super();
-         this._engravingStatValueContainer = new Sprite();
          this._plate = new Image();
          this._engravingStatValueContainer = new Sprite();
       }

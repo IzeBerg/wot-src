@@ -22,7 +22,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private static const SHOW_GLOW_GREEN_UPGRADE_STATE:String = "greenUpgrade";
       
-      protected static const SHOW_GLOW_ORANGE_STATE:String = "orange";
+      private static const SHOW_GLOW_ORANGE_STATE:String = "orange";
       
       private static const SHOW_GLOW_GREEN_NO_HOT_KEY_STATE:String = "greenNoHotKey";
       
@@ -34,7 +34,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private static const GREEN_TEXT_COLOR:uint = 11854471;
       
-      protected static const NORMAL_TEXT_COLOR:uint = 0;
+      private static const NORMAL_TEXT_COLOR:uint = 0;
        
       
       public var tfContainer:MovieClip = null;
@@ -68,11 +68,6 @@ package net.wg.gui.battle.views.consumablesPanel
          this._textField = null;
          this.tfContainer = null;
          super.onDispose();
-      }
-      
-      protected function get bindKeyField() : TextField
-      {
-         return this._textField;
       }
       
       public function showGlow(param1:int, param2:Boolean = true) : void

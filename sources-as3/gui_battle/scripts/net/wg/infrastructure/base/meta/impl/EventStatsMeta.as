@@ -2,7 +2,6 @@ package net.wg.infrastructure.base.meta.impl
 {
    import net.wg.data.constants.Errors;
    import net.wg.gui.battle.components.BattleDisplayable;
-   import net.wg.gui.battle.eventBattle.views.eventStats.VO.EventStatsBuffsVO;
    import net.wg.gui.battle.eventBattle.views.eventStats.VO.EventStatsPlayerVO;
    import net.wg.infrastructure.exceptions.AbstractException;
    
@@ -11,8 +10,6 @@ package net.wg.infrastructure.base.meta.impl
        
       
       private var _vectorEventStatsPlayerVO:Vector.<EventStatsPlayerVO>;
-      
-      private var _eventStatsBuffsVO:EventStatsBuffsVO;
       
       public function EventStatsMeta()
       {
@@ -30,11 +27,6 @@ package net.wg.infrastructure.base.meta.impl
             }
             this._vectorEventStatsPlayerVO.splice(0,this._vectorEventStatsPlayerVO.length);
             this._vectorEventStatsPlayerVO = null;
-         }
-         if(this._eventStatsBuffsVO)
-         {
-            this._eventStatsBuffsVO.dispose();
-            this._eventStatsBuffsVO = null;
          }
          super.onDispose();
       }
@@ -62,27 +54,9 @@ package net.wg.infrastructure.base.meta.impl
          }
       }
       
-      public final function as_updateBuffs(param1:Object) : void
-      {
-         var _loc2_:EventStatsBuffsVO = this._eventStatsBuffsVO;
-         this._eventStatsBuffsVO = new EventStatsBuffsVO(param1);
-         this.updateBuffs(this._eventStatsBuffsVO);
-         if(_loc2_)
-         {
-            _loc2_.dispose();
-         }
-      }
-      
       protected function updatePlayerStats(param1:Vector.<EventStatsPlayerVO>) : void
       {
          var _loc2_:String = "as_updatePlayerStats" + Errors.ABSTRACT_INVOKE;
-         DebugUtils.LOG_ERROR(_loc2_);
-         throw new AbstractException(_loc2_);
-      }
-      
-      protected function updateBuffs(param1:EventStatsBuffsVO) : void
-      {
-         var _loc2_:String = "as_updateBuffs" + Errors.ABSTRACT_INVOKE;
          DebugUtils.LOG_ERROR(_loc2_);
          throw new AbstractException(_loc2_);
       }

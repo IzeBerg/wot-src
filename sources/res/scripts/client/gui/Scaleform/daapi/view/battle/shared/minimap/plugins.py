@@ -374,7 +374,7 @@ class PersonalEntriesPlugin(common.SimplePlugin):
         return self.__isAlive
 
     def _onVehicleStateUpdated(self, state, value):
-        if state in (VEHICLE_VIEW_STATE.SWITCHING, VEHICLE_VIEW_STATE.RESPAWNING) and not (self.sessionProvider.arenaVisitor.gui.isEventBattle() and self.__isAlive):
+        if state in (VEHICLE_VIEW_STATE.SWITCHING, VEHICLE_VIEW_STATE.RESPAWNING):
             self._hideMarkup()
 
     def _hideMarkup(self):
@@ -780,7 +780,7 @@ class ArenaVehiclesPlugin(common.EntriesPlugin, IVehiclesAndPositionsController)
 
     def _setVehicleInfo(self, vehicleID, entry, vInfo, guiProps, isSpotted=False):
         vehicleType = vInfo.vehicleType
-        classTag = self._getClassTag(vInfo)
+        classTag = vehicleType.classTag
         name = vehicleType.shortNameWithPrefix
         if classTag is not None:
             entry.setVehicleInfo(not guiProps.isFriend, guiProps.name(), classTag, vInfo.isAlive())
@@ -807,9 +807,6 @@ class ArenaVehiclesPlugin(common.EntriesPlugin, IVehiclesAndPositionsController)
             info = self.sessionProvider.getArenaDP().getVehicleInfo(vehicleID)
             self._onVehicleHealthChanged(info, 0, info.vehicleType.maxHealth)
 
-    def _getSymbolName(self, vehicleID):
-        return _S_NAME.VEHICLE
-
     def __addEntryToPool(self, vehicleID, location=VEHICLE_LOCATION.UNDEFINED, positions=None):
         if location != VEHICLE_LOCATION.UNDEFINED:
             matrix = matrix_factory.makeVehicleMPByLocation(vehicleID, location, positions or {})
@@ -818,14 +815,10 @@ class ArenaVehiclesPlugin(common.EntriesPlugin, IVehiclesAndPositionsController)
         else:
             matrix, location = matrix_factory.getVehicleMPAndLocation(vehicleID, positions or {})
         active = location != VEHICLE_LOCATION.UNDEFINED
-        symbolName = self._getSymbolName(vehicleID)
-        model = self._addEntryEx(vehicleID, symbolName, _C_NAME.ALIVE_VEHICLES, matrix=matrix, active=active)
+        model = self._addEntryEx(vehicleID, _S_NAME.VEHICLE, _C_NAME.ALIVE_VEHICLES, matrix=matrix, active=active)
         if model is not None:
             model.setLocation(location)
         return model
-
-    def _getClassTag(self, vInfo):
-        return vInfo.vehicleType.classTag
 
     def __setGUILabel(self, entry, guiLabel):
         if entry.setGUILabel(guiLabel):
@@ -920,9 +913,6 @@ class ArenaVehiclesPlugin(common.EntriesPlugin, IVehiclesAndPositionsController)
 
     def __showVehicleHp(self, vehicleId, entryId):
         self._invoke(entryId, 'showVehicleHp', self.__canShowVehicleHp)
-
-    def eventSwitchToVehicle(self, prevCtrlID):
-        self.__switchToVehicle(prevCtrlID)
 
     def __showFeatures(self, flag):
         self._parentObj.as_showVehiclesNameS(flag)
@@ -1037,8 +1027,8 @@ class ArenaVehiclesPlugin(common.EntriesPlugin, IVehiclesAndPositionsController)
             return
         isDown = event.ctx['isDown']
         if isDown:
-            features = _FEATURES.addIfNot(self.__flags, _FEATURES.DO_REQUEST)
-            hpFeature = _FEATURES.addIfNot(self.__flagHpMinimap, _FEATURES.DO_REQUEST)
+            features = _FEATURES.addIfNot(self.__flags, _FEATURES.DO_REQUEST) if self.__flags != _FEATURES.OFF else self.__flags
+            hpFeature = _FEATURES.addIfNot(self.__flagHpMinimap, _FEATURES.DO_REQUEST) if self.__flagHpMinimap != _FEATURES.OFF else self.__flagHpMinimap
         else:
             features = _FEATURES.removeIfHas(self.__flags, _FEATURES.DO_REQUEST)
             hpFeature = _FEATURES.removeIfHas(self.__flagHpMinimap, _FEATURES.DO_REQUEST)

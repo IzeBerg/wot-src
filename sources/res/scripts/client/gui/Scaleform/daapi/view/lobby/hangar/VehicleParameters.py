@@ -78,8 +78,6 @@ class VehicleParameters(VehicleParametersMeta):
             self.rebuildParams()
 
     def _getVehicleCache(self):
-        if g_currentPreviewVehicle.isPresent() and g_currentPreviewVehicle.item.isOnlyForEventBattles:
-            return g_currentPreviewVehicle
         return g_currentVehicle
 
 

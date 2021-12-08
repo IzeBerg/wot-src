@@ -80,7 +80,7 @@ class TankmanRecruit(Processor):
     def _successHandler(self, code, ctx=None):
         tmanCost = self.__getRecruitPrice(self.tmanCostTypeIdx)
         if tmanCost:
-            return makeI18nSuccess(sysMsgKey='recruit_window/financial_success', auxData=ctx, price=formatPrice(tmanCost), type=self.__getSysMsgType())
+            return makeI18nSuccess(sysMsgKey='recruit_window/financial_success', auxData=ctx, price=formatPrice(tmanCost, useStyle=True), type=self.__getSysMsgType())
         return makeI18nSuccess('recruit_window/success', type=self.__getSysMsgType(), auxData=ctx)
 
     def _request(self, callback):

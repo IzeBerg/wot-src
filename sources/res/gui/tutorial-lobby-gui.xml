@@ -4287,20 +4287,6 @@
 			</value>
 		</item>
 		<item>
-			<name>OnlineCounter</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>lobby</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>header.onlineCounter</value>
-				</item>
-			</value>
-		</item>
-		<item>
 			<name>MainMenuButtonBar</name>
 			<type>dict</type>
 			<value>
@@ -4545,6 +4531,46 @@
 				<item>
 					<name>path</name>
 					<value>fragmentItem</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>NyGiftSystemFriendSelectHintZone</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>R.views.lobby.new_year.MainView</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>div[id^=friend-select_control]</value>
 				</item>
 				<item>
 					<name>padding</name>
@@ -5265,86 +5291,6 @@
 				<item>
 					<name>path</name>
 					<value>div[class*=specializationButton]</value>
-				</item>
-				<item>
-					<name>padding</name>
-					<type>dict</type>
-					<value>
-						<item>
-							<name>left</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>top</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>right</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>bottom</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-					</value>
-				</item>
-			</value>
-		</item>
-		<item>
-			<name>EventNewDifficultyUnlocked</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>R.views.lobby.halloween.DifficultyWindowView</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>div[id=UnlockedDifficulty]</value>
-				</item>
-				<item>
-					<name>padding</name>
-					<type>dict</type>
-					<value>
-						<item>
-							<name>left</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>top</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>right</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-						<item>
-							<name>bottom</name>
-							<type>float</type>
-							<value>0</value>
-						</item>
-					</value>
-				</item>
-			</value>
-		</item>
-		<item>
-			<name>EventNewDifficultyUnlockedSmall</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>R.views.lobby.halloween.DifficultyWindowView</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>div[id=UnlockedDifficultySmall]</value>
 				</item>
 				<item>
 					<name>padding</name>

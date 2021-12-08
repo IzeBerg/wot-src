@@ -21,12 +21,6 @@ if typing.TYPE_CHECKING:
 _LifeTimeInfo = namedtuple('_LifeTimeInfo', (
  'isKilled',
  'lifeTime'))
-_CrystalDetails = namedtuple('_CrystalDetails', ('earned', 'expenses'))
-
-def _createCrystalDetails(earned=None, expenses=0):
-    earned = earned if earned is not None else []
-    return _CrystalDetails(earned=earned, expenses=expenses)
-
 
 class _SquadBonusInfo(object):
     itemsCache = dependency.descriptor(IItemsCache)
@@ -149,6 +143,29 @@ class _AdditionalRecords(records.RawRecords):
         return
 
 
+class _CrystalRecords(records.RawRecords):
+    __slots__ = ()
+
+    def __init__(self, replay, results):
+        rawRecords = {}
+        eventToken = 'eventCrystalList_'
+        eventsCrystals = 0
+        for _, (appliedName, appliedValue), (_, _) in replay:
+            if appliedName == 'originalCrystal' and appliedValue:
+                rawRecords[appliedName] = appliedValue
+            elif appliedName.startswith(eventToken):
+                eventsCrystals += appliedValue
+
+        if eventsCrystals:
+            rawRecords['events'] = eventsCrystals
+        if 'autoEquipCost' in results:
+            cost = results['autoEquipCost']
+            if cost is not None:
+                rawRecords['autoEquipCrystals'] = -cost[2]
+        super(_CrystalRecords, self).__init__(rawRecords)
+        return
+
+
 class _CreditsReplayRecords(records.ReplayRecords):
     __slots__ = ()
 
@@ -224,7 +241,7 @@ class _EconomicsRecordsChains(object):
         self._premiumFreeXPAdd = records.RecordsIterator()
         self._premiumPlusFreeXPAdd = records.RecordsIterator()
         self._crystal = records.RecordsIterator()
-        self._crystalDetails = _createCrystalDetails()
+        self._crystalDetails = records.RecordsIterator()
 
     def getBaseCreditsRecords(self):
         return self._baseCredits
@@ -237,9 +254,6 @@ class _EconomicsRecordsChains(object):
 
     def getBaseXPRecords(self):
         return self._baseXP
-
-    def getBaseFreeXPRecords(self):
-        return self._baseFreeXP
 
     def getPremiumXPRecords(self):
         return self._premiumXP
@@ -358,23 +372,10 @@ class _EconomicsRecordsChains(object):
         if 'crystalReplay' in results and results['crystalReplay'] is not None:
             replay = ValueReplay(connector, recordName=Currency.CRYSTAL, replay=results['crystalReplay'])
             self._crystal.addRecords(records.ReplayRecords(replay, Currency.CRYSTAL))
-            self._addCrystalDetails(replay)
+            self._crystalDetails.addRecords(_CrystalRecords(replay, results))
         else:
-            LOG_ERROR('crystal replay is not found', results)
+            LOG_ERROR('crystalReplay is not found', results)
         return
-
-    def _addCrystalDetails(self, replay):
-        eventToken = 'eventCrystalList_'
-        crystalDetails = []
-        for _, (appliedName, appliedValue), (_, _) in replay:
-            if appliedName == 'originalCrystal' and appliedValue:
-                crystalDetails.insert(0, (appliedName, appliedValue))
-            elif appliedName.startswith(eventToken):
-                eventName = appliedName.split(eventToken)[1]
-                crystalDetails.append((eventName, appliedValue))
-
-        autoBoosters = self._additionalRecords.getRecord('autoEquipCrystals', 0)
-        self._crystalDetails = _createCrystalDetails(crystalDetails, autoBoosters)
 
     def __buildCreditsReplayForPremType(self, targetPremiumType, results, replay):
         initialSquadFactor = results['premSquadCreditsFactor100']
@@ -422,7 +423,7 @@ class PersonalInfo(shared.UnpackedInfo):
     __slots__ = ('__avatar', '__vehicles', '__lifeTimeInfo', '__isObserver', '_economicsRecords',
                  '__questsProgress', '__PM2Progress', '__rankInfo', '__isTeamKiller',
                  '__progressiveReward', '__premiumMask', '__isAddXPBonusApplied',
-                 '__c11nProgress', '__dogTags', '__goldBankGain', '__difficultyLevel')
+                 '__c11nProgress', '__dogTags', '__goldBankGain')
     itemsCache = dependency.descriptor(IItemsCache)
 
     def __init__(self, personal):
@@ -445,7 +446,6 @@ class PersonalInfo(shared.UnpackedInfo):
         self.__rankInfo = PostBattleRankInfo(0, 0, 0, 0, 0, 0, 0, 0, {}, {}, False, 0, 0)
         self.__dogTags = {}
         self.__goldBankGain = 0
-        self.__difficultyLevel = 0
         if not self.hasUnpackedItems():
             self.__collectRequiredData(personal)
         return
@@ -485,10 +485,6 @@ class PersonalInfo(shared.UnpackedInfo):
     @property
     def isTeamKiller(self):
         return self.__isTeamKiller
-
-    @property
-    def difficultyLevel(self):
-        return self.__difficultyLevel
 
     def getVehicleCDsIterator(self, result):
         for intCD in self.__vehicles:
@@ -568,9 +564,6 @@ class PersonalInfo(shared.UnpackedInfo):
     def getPremiumXPRecords(self):
         return self._economicsRecords.getPremiumXPRecords()
 
-    def getBaseFreeXPRecords(self):
-        return self._economicsRecords.getBaseFreeXPRecords()
-
     def getPremiumXPAddRecords(self):
         return self._economicsRecords.getPremiumXPAddRecords()
 
@@ -580,7 +573,7 @@ class PersonalInfo(shared.UnpackedInfo):
     def getXPDiff(self):
         return self._economicsRecords.getXPDiff()
 
-    def getCrystalDetails(self):
+    def getCrystalDetailsRecords(self):
         return self._economicsRecords.getCrystalDetails()
 
     def __collectRequiredData(self, info):
@@ -610,7 +603,6 @@ class PersonalInfo(shared.UnpackedInfo):
             lifeTime = data['lifeTime'] if 'lifeTime' in data else 0
             if killerID and lifeTime:
                 lifeTimes.append(lifeTime)
-            self.__difficultyLevel = data.get('difficultyLevel', 0)
             self.__isTeamKiller = data['isTeamKiller'] if 'isTeamKiller' in data else False
             self.__premiumMask = data.get('premMask', PREMIUM_TYPE.NONE)
             self.__questsProgress.update(data.get('questsProgress', {}))

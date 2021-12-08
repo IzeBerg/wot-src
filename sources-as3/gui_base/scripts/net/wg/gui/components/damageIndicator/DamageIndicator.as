@@ -10,13 +10,13 @@ package net.wg.gui.components.damageIndicator
       
       private static const DEFAULT_HEIGHT:int = 1018;
       
-      private static const PADDING_LEFT:int = 251;
+      private static const PADDING_LEFT:Number = 251;
       
-      private static const PADDING_TOP:int = 188;
+      private static const PADDING_TOP:Number = 188;
       
-      private static const SMALL_SCREEN_OFFSET:int = 40;
+      private static const SMALL_SCREEN_OFFSET:Number = 40;
       
-      private static const SMALL_SCREEN_MAX_HEIGHT:int = 800;
+      private static const SMALL_SCREEN_MAX_HEIGHT:Number = 800;
        
       
       public var hit_0:DamageIndicatorItem = null;
@@ -31,15 +31,15 @@ package net.wg.gui.components.damageIndicator
       
       private var _items:Vector.<DamageIndicatorItem> = null;
       
-      private var _stageHalfWidth:int = 0;
+      private var _stageHalfWidth:Number = 0;
       
-      private var _stageHeight:int = 0;
+      private var _stageHeight:Number = 0;
       
-      private var _stageHalfHeight:int = 0;
+      private var _stageHalfHeight:Number = 0;
       
-      private var _xPos:int = 0;
+      private var _xPos:Number = 0;
       
-      private var _yPos:int = 0;
+      private var _yPos:Number = 0;
       
       private var _guiScale:int = 1;
       
@@ -86,11 +86,11 @@ package net.wg.gui.components.damageIndicator
          this._items[param1].setYaw(param2);
       }
       
-      public function as_showExtended(param1:int, param2:String, param3:String, param4:int, param5:String, param6:String, param7:String, param8:Boolean, param9:String) : void
+      public function as_showExtended(param1:int, param2:String, param3:String, param4:int, param5:String, param6:String, param7:String, param8:Boolean) : void
       {
-         var _loc10_:DamageIndicatorItem = this._items[param1];
-         _loc10_.showExtended(param2,param3,param4,param5,param6,param7,param8,param9);
-         setChildIndex(_loc10_,numChildren - 1);
+         var _loc9_:DamageIndicatorItem = this._items[param1];
+         _loc9_.showExtended(param2,param3,param4,param5,param6,param7,param8);
+         setChildIndex(_loc9_,numChildren - 1);
       }
       
       public function as_showStandard(param1:int, param2:String, param3:int) : void
@@ -168,7 +168,7 @@ package net.wg.gui.components.damageIndicator
          var _loc2_:DamageIndicatorItem = null;
          x = PADDING_LEFT - this._stageHalfWidth + this._xPos;
          y = PADDING_TOP - this._stageHalfHeight + this._yPos;
-         var _loc1_:int = 0;
+         var _loc1_:Number = 0;
          if(this._isStandard)
          {
             if(this._guiScale <= 1)

@@ -780,6 +780,20 @@
 			<ignore-outside-click>True</ignore-outside-click>
 		</hint>
 		<hint>
+			NyGiftSystemFriendSelectHint
+			<item-id>NyGiftSystemFriendSelectHintZone</item-id>
+			<text>_(#ny:giftSystem/submissionForm/triggerHint/text)</text>
+			<arrow>
+				<direction>R</direction>
+				<loop>True</loop>
+			</arrow>
+			<update-runtime>True</update-runtime>
+			<check-view-area>True</check-view-area>
+			<ignore-outside-click>True</ignore-outside-click>
+			<hide-immediately>True</hide-immediately>
+			<equal-actions>True</equal-actions>
+		</hint>
+		<hint>
 			ModeSelectorWidgetsBtnHint
 			<item-id>ModeSelectorWidgetsBtn</item-id>
 			<text>_(#mode_selector:hint/showProgression)</text>
@@ -1015,30 +1029,6 @@
 			<text>_(#veh_post_progression:hint/CompareSpecializationButton)</text>
 			<arrow>
 				<direction>R</direction>
-				<loop>True</loop>
-			</arrow>
-			<update-runtime>True</update-runtime>
-			<hide-immediately>True</hide-immediately>
-			<ignore-outside-click>True</ignore-outside-click>
-		</hint>
-		<hint>
-			EventNewDifficultyHint
-			<item-id>EventNewDifficultyUnlocked</item-id>
-			<text>_(#event:hint/unlockedDifficulty)</text>
-			<arrow>
-				<direction>B</direction>
-				<loop>True</loop>
-			</arrow>
-			<update-runtime>True</update-runtime>
-			<hide-immediately>True</hide-immediately>
-			<ignore-outside-click>True</ignore-outside-click>
-		</hint>
-		<hint>
-			EventNewDifficultySmallHint
-			<item-id>EventNewDifficultyUnlockedSmall</item-id>
-			<text>_(#event:hint/unlockedDifficulty)</text>
-			<arrow>
-				<direction>T</direction>
 				<loop>True</loop>
 			</arrow>
 			<update-runtime>True</update-runtime>

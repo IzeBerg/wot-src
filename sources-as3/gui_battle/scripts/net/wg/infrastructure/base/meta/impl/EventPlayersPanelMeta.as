@@ -1,6 +1,5 @@
 package net.wg.infrastructure.base.meta.impl
 {
-   import net.wg.data.VO.daapi.DAAPITriggeredCommandsVO;
    import net.wg.data.constants.Errors;
    import net.wg.gui.battle.components.BattleDisplayable;
    import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.VO.DAAPIPlayerPanelInfoVO;
@@ -38,22 +37,9 @@ package net.wg.infrastructure.base.meta.impl
          }
       }
       
-      public final function as_updateTriggeredChatCommands(param1:Object) : void
-      {
-         var _loc2_:DAAPITriggeredCommandsVO = new DAAPITriggeredCommandsVO(param1);
-         this.updateTriggeredChatCommands(_loc2_);
-      }
-      
       protected function setPlayerPanelInfo(param1:DAAPIPlayerPanelInfoVO) : void
       {
          var _loc2_:String = "as_setPlayerPanelInfo" + Errors.ABSTRACT_INVOKE;
-         DebugUtils.LOG_ERROR(_loc2_);
-         throw new AbstractException(_loc2_);
-      }
-      
-      protected function updateTriggeredChatCommands(param1:DAAPITriggeredCommandsVO) : void
-      {
-         var _loc2_:String = "as_updateTriggeredChatCommands" + Errors.ABSTRACT_INVOKE;
          DebugUtils.LOG_ERROR(_loc2_);
          throw new AbstractException(_loc2_);
       }

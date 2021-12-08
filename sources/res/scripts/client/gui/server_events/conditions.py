@@ -829,9 +829,6 @@ class VehicleDescr(_VehicleRequirement, _VehsListParser, _Updatable):
     def _isAvailable(self, vehicle):
         return vehicle.intCD in self._getVehiclesCache(self._data)
 
-    def getParsedConditions(self):
-        return self._parseFilters(self._data)
-
 
 class _DossierValue(_Requirement):
 
@@ -1592,56 +1589,3 @@ def getProgressFromQuestWithSingleAccumulative(quest):
             return (
              currentProgress, totalProgress)
     return (None, None)
-
-
-def getBattleResultItemDataFromQuestCondition(quest, itemKeyValue):
-    conditions = quest.postBattleCond.getConditions()
-    for item in conditions.items:
-        if isinstance(item, BattleResults) and itemKeyValue in item.keyName:
-            value, topRange = item.relationValue, item.getTopRange()
-            return (
-             value, topRange)
-
-    return (
-     BattleResults.TOP_RANGE_HIGHEST, (BattleResults.TOP_RANGE_HIGHEST, BattleResults.TOP_RANGE_LOWEST))
-
-
-def getTokenNeededCountInCondition(quest, tokenName, default=None):
-    if quest is None:
-        return default
-    else:
-        return _getTokenNeededCountInCondition(quest.accountReqs.getConditions().items, tokenName, default)
-
-
-def _getTokenNeededCountInCondition(items, tokenName, default=None):
-    item = _getTokenItemInCondition(items, tokenName)
-    if item is None:
-        return default
-    else:
-        return item.getNeededCount()
-
-
-def getTokenReceivedCountInCondition(quest, tokenName, default=None):
-    if quest is None:
-        return default
-    else:
-        return _getTokenReceivedCountInCondition(quest.accountReqs.getConditions().items, tokenName, default)
-
-
-def _getTokenReceivedCountInCondition(items, tokenName, default=None):
-    item = _getTokenItemInCondition(items, tokenName)
-    if item is None:
-        return default
-    else:
-        return item.getReceivedCount()
-
-
-def _getTokenItemInCondition(items, tokenName):
-    res = None
-    for item in items:
-        if isinstance(item, _ConditionsGroup):
-            res = _getTokenItemInCondition(item.items, tokenName)
-        elif item.getName() == 'token' and item.getID() == tokenName:
-            return item
-
-    return res

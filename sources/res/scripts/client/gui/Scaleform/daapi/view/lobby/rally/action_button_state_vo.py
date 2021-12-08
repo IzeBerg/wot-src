@@ -40,8 +40,6 @@ class ActionButtonStateVO(dict):
                                                  CYBERSPORT.WINDOW_UNIT_MESSAGE_VEHICLENOTSELECTED, {}), 
            UNIT_RESTRICTION.VEHICLE_NOT_VALID: (
                                               CYBERSPORT.WINDOW_UNIT_MESSAGE_VEHICLENOTVALID, {}), 
-           UNIT_RESTRICTION.EVENT_AFK_BAN: (
-                                          TOOLTIPS.EVENT_AFK_BAN_HEADER, {}), 
            UNIT_RESTRICTION.VEHICLE_BROKEN: (
                                            CYBERSPORT.WINDOW_UNIT_MESSAGE_VEHICLEINNOTREADY_BROKEN, {}), 
            UNIT_RESTRICTION.VEHICLE_CREW_NOT_FULL: (
@@ -98,12 +96,6 @@ class ActionButtonStateVO(dict):
            UNIT_RESTRICTION.UNIT_MIN_CLAN_MEMBERS: BoundMethodWeakref(self._clanMembersNotEnoughMessage), 
            UNIT_RESTRICTION.UNIT_IS_IN_PLAYERS_MATCHING: (
                                                         CYBERSPORT.WINDOW_UNIT_MESSAGE_IN_PLAYERS_MATCHING, {}), 
-           UNIT_RESTRICTION.EVENT_UNIT_DIFFICULTY_LEVEL_INACTIVE: (
-                                                                 CYBERSPORT.WINDOW_UNIT_MESSAGE_DIFFICULTYLEVELINACTIVE, {}), 
-           UNIT_RESTRICTION.EVENT_UNIT_DIFFICULTY_LEVEL_NOT_VALID: (
-                                                                  CYBERSPORT.WINDOW_UNIT_MESSAGE_DIFFICULTYLEVELNOTVALID, {}), 
-           UNIT_RESTRICTION.EVENT_UNIT_SQUAD_DIFFICULTY_LEVEL_NOT_ENABLE: (
-                                                                         self.__getBlockerIcon() + i18n.makeString(CYBERSPORT.WINDOW_UNIT_MESSAGE_SQUADDIFFICULTYLEVELNOTENABLE), {}), 
            UNIT_RESTRICTION.UNIT_NOT_FULL: (
                                           '', {}), 
            UNIT_RESTRICTION.UNSUITABLE_VEHICLE: (
@@ -129,9 +121,6 @@ class ActionButtonStateVO(dict):
         return self.__toolTipData == TOOLTIPS.CYBERSPORT_UNIT_FIGHTBTN_PRESSFORNOTREADY or self.__toolTipData == TOOLTIPS.CYBERSPORT_UNIT_FIGHTBTN_PRESSFORREADY
 
     def __getNotAvailableIcon(self):
-        return icons.makeImageTag(RES_ICONS.MAPS_ICONS_LIBRARY_REDNOTAVAILABLE, 12, 12, 0, 0) + ' '
-
-    def __getBlockerIcon(self):
         return icons.makeImageTag(RES_ICONS.MAPS_ICONS_LIBRARY_REDNOTAVAILABLE, 12, 12, 0, 0) + ' '
 
     def _getReadyValidInSlotStateStr(self):
@@ -201,8 +190,6 @@ class ActionButtonStateVO(dict):
          UNIT_RESTRICTION.UNSUITABLE_VEHICLE,
          UNIT_RESTRICTION.UNIT_WRONG_DATA):
             return TOOLTIPS.CYBERSPORT_UNIT_FIGHTBTN_EVENTVEHICLEWRONGMODE
-        if self.__restrictionType == UNIT_RESTRICTION.EVENT_UNIT_SQUAD_DIFFICULTY_LEVEL_NOT_ENABLE:
-            return TOOLTIPS.CYBERSPORT_UNIT_FIGHTBTN_DIFFICULTYLEVELNOTUNLOCKED
         if self.__isEnabled and not self._playerInfo.isReady:
             return TOOLTIPS.CYBERSPORT_UNIT_FIGHTBTN_PRESSFORREADY
         if self.__isEnabled and self._playerInfo.isReady:

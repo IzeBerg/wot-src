@@ -66,6 +66,11 @@ class IntSettingsRequester(object):
        'EPICBATTLE_CAROUSEL_FILTER_2': 88, 
        'LINKEDSET_QUESTS': constants.USER_SERVER_SETTINGS.LINKEDSET_QUESTS, 
        'QUESTS_PROGRESS': constants.USER_SERVER_SETTINGS.QUESTS_PROGRESS, 
+       'LOOT_BOX_VIEWED': 91, 
+       'LOOT_BOX_ORIENTAL': 92, 
+       'LOOT_BOX_NEW_YEAR': 93, 
+       'LOOT_BOX_FAIRYTALE': 94, 
+       'LOOT_BOX_CHRISTMAS': 95, 
        'SESSION_STATS': constants.USER_SERVER_SETTINGS.SESSION_STATS, 
        'BATTLEPASS_CAROUSEL_FILTER_1': 97, 
        'BATTLE_PASS_STORAGE': 98, 
@@ -76,9 +81,8 @@ class IntSettingsRequester(object):
        'SPG_AIM': constants.USER_SERVER_SETTINGS.SPG_AIM, 
        MAPBOX_CAROUSEL_FILTER_1: 103, 
        MAPBOX_CAROUSEL_FILTER_2: 104, 
-       'GAME_EVENT': constants.USER_SERVER_SETTINGS.GAME_EVENT, 
-       'HW21_NARRATIVE': constants.USER_SERVER_SETTINGS.HW21_NARRATIVE, 
-       'HW21_SHOWN_NOTIFICATIONS': constants.USER_SERVER_SETTINGS.HW21_SHOWN_NOTIFICATIONS}
+       'NEW_YEAR': 105, 
+       'LOOT_BOX_COMMON': 106}
 
     def __init__(self):
         self.__isSynced = False

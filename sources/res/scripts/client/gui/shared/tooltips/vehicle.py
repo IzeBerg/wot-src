@@ -1,8 +1,8 @@
 import collections, logging, typing
 from CurrentVehicle import g_currentVehicle, g_currentPreviewVehicle
 import constants
-from skeletons.gui.game_event_controller import IGameEventController
 from gui.impl.gen import R
+from gui.impl.gen_utils import INVALID_RES_ID
 from gui.impl import backport
 from gui.Scaleform.daapi.view.lobby.techtree.settings import UnlockProps
 from gui.Scaleform.genConsts.BLOCKS_TOOLTIP_TYPES import BLOCKS_TOOLTIP_TYPES
@@ -57,6 +57,11 @@ _CREW_TYPES = (_PERK_BONUS_TYPE, _SKILL_BONUS_TYPE)
 _TOOLTIP_MIN_WIDTH = 420
 _TOOLTIP_MAX_WIDTH = 460
 _TOOLTIP_ANNOUNCEMENT_MAX_WIDTH = 310
+_EXPLAINED_DEPENDENCIES = (
+ (
+  'camouflage', constants.BonusTypes.SKILL),
+ (
+  'repair', constants.BonusTypes.SKILL))
 _CREW_TOOLTIP_PARAMS = {Tankman.ROLES.COMMANDER: {'paramName': TOOLTIPS.VEHICLEPREVIEW_CREW_INFLUENCE_RECONNAISSANCE, 'commanderPercents': '10%', 
                              'crewPercents': '1%'}, 
    Tankman.ROLES.GUNNER: {'paramName': TOOLTIPS.VEHICLEPREVIEW_CREW_INFLUENCE_FIREPOWER}, Tankman.ROLES.DRIVER: {'paramName': TOOLTIPS.VEHICLEPREVIEW_CREW_INFLUENCE_MOBILITY}, Tankman.ROLES.RADIOMAN: {'paramName': TOOLTIPS.VEHICLEPREVIEW_CREW_INFLUENCE_RECONNAISSANCE}, Tankman.ROLES.LOADER: {'paramName': TOOLTIPS.VEHICLEPREVIEW_CREW_INFLUENCE_FIREPOWER}}
@@ -92,12 +97,11 @@ def _makeModuleFitTooltipError(reason):
 
 
 _SHORTEN_TOOLTIP_CASES = (
- 'shopVehicle', 'eventCarouselVehicle')
+ 'shopVehicle',)
 
 class VehicleInfoTooltipData(BlocksTooltipData):
     __itemsCache = dependency.descriptor(IItemsCache)
     __bootcamp = dependency.descriptor(IBootcampController)
-    _gameEventController = dependency.descriptor(IGameEventController)
     _LEFT_PADDING = 20
     _RIGHT_PADDING = 20
 
@@ -113,8 +117,6 @@ class VehicleInfoTooltipData(BlocksTooltipData):
         self.item = self.context.buildItem(*args, **kwargs)
         items = super(VehicleInfoTooltipData, self)._packBlocks()
         vehicle = self.item
-        if self._gameEventController.needEventCrew(vehicle):
-            vehicle.crew = self._gameEventController.getEventCrew(vehicle)
         statsConfig = self.context.getStatsConfiguration(vehicle)
         paramsConfig = self.context.getParamsConfiguration(vehicle)
         statusConfig = self.context.getStatusConfiguration(vehicle)
@@ -126,9 +128,8 @@ class VehicleInfoTooltipData(BlocksTooltipData):
         blockPadding = formatters.packPadding(left=leftPadding, right=rightPadding, top=blockTopPadding)
         valueWidth = 75
         textGap = -2
-        headerBlockConstructorDescr = self._getHeaderBlockConstructorDescr()
         headerItems = [
-         formatters.packBuildUpBlockData(headerBlockConstructorDescr(vehicle, statsConfig, leftPadding, rightPadding).construct(), padding=leftRightPadding, blockWidth=410),
+         formatters.packBuildUpBlockData(HeaderBlockConstructor(vehicle, statsConfig, leftPadding, rightPadding).construct(), padding=leftRightPadding, blockWidth=410),
          formatters.packBuildUpBlockData(self._getCrewIconBlock(), gap=2, layout=BLOCKS_TOOLTIP_TYPES.LAYOUT_HORIZONTAL, align=BLOCKS_TOOLTIP_TYPES.ALIGN_RIGHT, padding=formatters.packPadding(top=34, right=0), blockWidth=20)]
         headerBlockItems = [
          formatters.packBuildUpBlockData(headerItems, layout=BLOCKS_TOOLTIP_TYPES.LAYOUT_HORIZONTAL, padding=formatters.packPadding(bottom=-16))]
@@ -167,7 +168,7 @@ class VehicleInfoTooltipData(BlocksTooltipData):
             self._setWidth(_TOOLTIP_MAX_WIDTH if invalidWidth else _TOOLTIP_MIN_WIDTH)
             items.append(formatters.packBuildUpBlockData(priceBlock, linkage=BLOCKS_TOOLTIP_TYPES.TOOLTIP_BUILDUP_BLOCK_WHITE_BG_LINKAGE, gap=5, padding=formatters.packPadding(left=98), layout=BLOCKS_TOOLTIP_TYPES.LAYOUT_HORIZONTAL))
         if not vehicle.isRotationGroupLocked:
-            statusBlock, operationError = self._getStatusBlockConstructorDescr()(vehicle, statusConfig).construct()
+            statusBlock, operationError = StatusBlockConstructor(vehicle, statusConfig).construct()
             if statusBlock and not (operationError and shouldBeCut):
                 items.append(formatters.packBuildUpBlockData(statusBlock, padding=blockPadding, blockWidth=440))
             else:
@@ -184,12 +185,6 @@ class VehicleInfoTooltipData(BlocksTooltipData):
             block.append(formatters.packImageBlockData(img=tImg, alpha=tAlpha))
 
         return block
-
-    def _getHeaderBlockConstructorDescr(self):
-        return HeaderBlockConstructor
-
-    def _getStatusBlockConstructorDescr(self):
-        return StatusBlockConstructor
 
     def __createStatusBlock(self, vehicle, items, statsConfig, paramsConfig, valueWidth):
         ctxParams = self.context.getParams()
@@ -405,7 +400,7 @@ def _getBonusID(bnsType, bnsId):
         return bnsId
 
 
-def _packBonusName(bnsType, bnsId, enabled=True, inactive=False):
+def _packBonusName(bnsType, bnsId, enabled=True, unmatchedDependency=None):
     itemStr = ''
     textStyle = text_styles.main if enabled else text_styles.standard
     if bnsType in (_EQUIPMENT, _OPTION_DEVICE):
@@ -443,18 +438,18 @@ def _packBonusName(bnsType, bnsId, enabled=True, inactive=False):
             itemStr += backport.text(R.strings.tooltips.vehicleParams.bonus.possible.notInstalled.pairModification())
         elif bnsType == constants.BonusTypes.BASE_MODIFICATION:
             itemStr += backport.text(R.strings.tooltips.vehicleParams.bonus.possible.notInstalled.baseModification())
-        elif bnsType not in _CREW_TYPES:
-            itemStr += backport.text(R.strings.tooltips.vehicleParams.bonus.possible.notInstalled.default())
-        else:
+        elif bnsType in _CREW_TYPES or unmatchedDependency is not None:
             itemStr += backport.text(R.strings.tooltips.vehicleParams.bonus.possible.isInactive())
-            if inactive:
+            if unmatchedDependency is not None:
                 icon = icons.makeImageTag(backport.image(R.images.gui.maps.icons.tooltip.asterisk_red()), 16, 16, 0, 2)
-                itemStr = param_formatter.packSituationalIcon(itemStr, icon)
+                if unmatchedDependency in _EXPLAINED_DEPENDENCIES:
+                    itemStr = param_formatter.packSituationalIcon(itemStr, icon)
+        else:
+            itemStr += backport.text(R.strings.tooltips.vehicleParams.bonus.possible.notInstalled.default())
     return textStyle(itemStr)
 
 
 class VehicleAdvancedParametersTooltipData(BaseVehicleAdvancedParametersTooltipData):
-    _gameEventController = dependency.descriptor(IGameEventController)
 
     def __init__(self, context):
         super(VehicleAdvancedParametersTooltipData, self).__init__(context)
@@ -474,7 +469,9 @@ class VehicleAdvancedParametersTooltipData(BaseVehicleAdvancedParametersTooltipD
         if len(self._extendedData.bonuses) > 1 and paramName in _MULTI_KPI_PARAMS:
             blocks.append(formatters.packTextBlockData(text_styles.standard(backport.text(R.strings.menu.extraParams.multiDesc()))))
         if self._extendedData.inactiveBonuses:
-            blocks.append(formatters.packBuildUpBlockData(self._getFootNoteBlock('inactive'), padding=0))
+            footNoteBlock = self._getFootNoteBlock('inactive')
+            if footNoteBlock is not None:
+                blocks.append(formatters.packBuildUpBlockData(footNoteBlock, padding=0))
         if hasSituational:
             blocks.append(formatters.packBuildUpBlockData(self._getFootNoteBlock('optional'), padding=0))
         return blocks
@@ -494,7 +491,10 @@ class VehicleAdvancedParametersTooltipData(BaseVehicleAdvancedParametersTooltipD
             img = RES_ICONS.MAPS_ICONS_TOOLTIP_ASTERISK_OPTIONAL
         else:
             conditionsToActivate = set(self._extendedData.inactiveBonuses.values())
-            conditionsToActivate = [ _ms(ITEM_TYPES.tankman_skills(bnsID)) for bnsID, _ in conditionsToActivate ]
+            conditionsToActivate = [ backport.text(R.strings.item_types.tankman.skills.dyn(bnsID)()) for bnsID, _ in conditionsToActivate if R.strings.item_types.tankman.skills.dyn(bnsID)() != INVALID_RES_ID
+                                   ]
+            if not conditionsToActivate:
+                return None
             desc = text_styles.standard(_ms(TOOLTIPS.VEHICLEPARAMS_BONUS_INACTIVEDESCRIPTION, skillName=(', ').join(conditionsToActivate)))
             img = RES_ICONS.MAPS_ICONS_TOOLTIP_ASTERISK_RED
         return [
@@ -509,11 +509,10 @@ class VehicleAdvancedParametersTooltipData(BaseVehicleAdvancedParametersTooltipD
             vehPostProgressionBonusLevels = {step.action.getTechName():step.getLevel() for step in item.postProgression.iterUnorderedSteps() if step.action.actionType == ACTION_TYPES.MODIFICATION if step.action.actionType == ACTION_TYPES.MODIFICATION}
             bonuses = sorted(self._extendedData.bonuses, cmp=_bonusCmp)
             bonusExtractor = self.context.getBonusExtractor(item, bonuses, self._paramName)
-            if bonusExtractor.getVehicle() and self._gameEventController.needEventCrew(bonusExtractor.getVehicle()):
-                bonusExtractor.getVehicle().crew = self._gameEventController.getEventCrew(bonusExtractor.getVehicle())
-                bonusExtractor.reUpdateCurrValue()
             hasSituational = False
             for bnsType, bnsId, pInfo in bonusExtractor.getBonusInfo():
+                if pInfo.getParamDiff() == 0.0:
+                    continue
                 formattedBnsID = _getBonusID(bnsType, bnsId)
                 isSituational = isSituationalBonus(formattedBnsID, bnsType)
                 scheme = SITUATIONAL_SCHEME if isSituational else EXTRACTED_BONUS_SCHEME
@@ -538,8 +537,8 @@ class VehicleAdvancedParametersTooltipData(BaseVehicleAdvancedParametersTooltipD
                     continue
                 formattedBnsId = _getBonusID(bnsType, bnsId)
                 isEnabled = (formattedBnsId, bnsType) in bonuses if bnsType in _CREW_TYPES else False
-                isInactive = (formattedBnsId, bnsType) in inactiveBonuses
-                result.append(self.__packBonusField(formattedBnsId, _packBonusName(bnsType, formattedBnsId, enabled=isEnabled, inactive=isInactive), bnsType, isDisabled=True, levelIcon=self.__getLevelIcon(bnsId, bnsType, vehPostProgressionBonusLevels)))
+                unmatchedDependency = inactiveBonuses.get((bnsId, bnsType), None)
+                result.append(self.__packBonusField(formattedBnsId, _packBonusName(bnsType, formattedBnsId, enabled=isEnabled, unmatchedDependency=unmatchedDependency), bnsType, isDisabled=True, levelIcon=self.__getLevelIcon(bnsId, bnsType, vehPostProgressionBonusLevels)))
 
             return (result, hasSituational)
 

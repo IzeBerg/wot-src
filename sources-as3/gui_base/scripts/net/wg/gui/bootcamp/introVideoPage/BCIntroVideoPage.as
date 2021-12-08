@@ -186,11 +186,8 @@ package net.wg.gui.bootcamp.introVideoPage
             this._playerOriginalScaleX = this.videoPlayer.scaleX;
             this._playerOriginalScaleY = this.videoPlayer.scaleY;
          }
-         if(this.introPage)
-         {
-            this.introPage.logoDescription = BOOTCAMP.WELLCOME_BOOTCAMP_DESCRIPTION;
-            this.introPage.setReferralVisibility(false);
-         }
+         this.introPage.logoDescription = BOOTCAMP.WELLCOME_BOOTCAMP_DESCRIPTION;
+         this.introPage.setReferralVisibility(false);
          this.btnSkip.label = BOOTCAMP.BTN_TUTORIAL_SKIP;
          this.btnSkipVideo.label = BOOTCAMP.BTN_SKIPVIDEO;
          this.btnSkipVideo.addEventListener(ButtonEvent.CLICK,this.onSkipVideoButtonClickHandler);
@@ -246,11 +243,8 @@ package net.wg.gui.bootcamp.introVideoPage
          this.closeBtn.dispose();
          this.closeBtn = null;
          this._tutorialPageList = null;
-         if(this.introPage)
-         {
-            this.introPage.dispose();
-            this.introPage = null;
-         }
+         this.introPage.dispose();
+         this.introPage = null;
          this.backgroundContainer = null;
          this.backgroundVignette = null;
          this.blackBG = null;
@@ -483,7 +477,7 @@ package net.wg.gui.bootcamp.introVideoPage
          }
       }
       
-      protected function updateUIPosition() : void
+      private function updateUIPosition() : void
       {
          var _loc5_:Number = NaN;
          var _loc1_:int = App.appWidth;
@@ -531,7 +525,7 @@ package net.wg.gui.bootcamp.introVideoPage
             this.backgroundContainer.x = -((!!this._useBigPictures ? BACK_WIDTH_BIG : BACK_WIDTH_SMALL) - _loc1_ >> 1);
             this.backgroundContainer.y = -((!!this._useBigPictures ? BACK_HEIGHT_SMALL : BACK_HEIGHT_BIG) - _loc2_ >> 1);
          }
-         else if(this.introPage)
+         else
          {
             this.introPage.setSize(_loc1_,_loc2_,_loc3_);
             this.btnSelect.y = this.introPage.y + this.introPage.getBottomY() + (!!_loc3_ ? SELECT_SMALL_PADDING : SELECT_PADDING);
@@ -562,7 +556,7 @@ package net.wg.gui.bootcamp.introVideoPage
          }
       }
       
-      protected function updateBackgroundRenderer() : void
+      private function updateBackgroundRenderer() : void
       {
          this._logger.startPageLog(this._picIndex);
          if(this.backgroundContainer.numChildren > 0)
@@ -585,7 +579,7 @@ package net.wg.gui.bootcamp.introVideoPage
          }
       }
       
-      protected function tweenFadeIn() : void
+      private function tweenFadeIn() : void
       {
          if(this._imageGoRight)
          {
@@ -681,11 +675,6 @@ package net.wg.gui.bootcamp.introVideoPage
                this.tweenFadeOut();
             }
          }
-      }
-      
-      protected function getCurrentPage() : TutorialPageContainer
-      {
-         return this._tutorialPageList[this._picIndex];
       }
       
       private function onKeyDownHandler(param1:Event) : void

@@ -9,7 +9,7 @@ package net.wg.infrastructure.base.meta
       
       function onMarkerClickS(param1:int) : void;
       
-      function as_createMarker(param1:int, param2:String, param3:String, param4:int) : DisplayObject;
+      function as_createMarker(param1:int, param2:String, param3:String) : DisplayObject;
       
       function as_createPlatoonMarker(param1:int, param2:String, param3:String) : DisplayObject;
       

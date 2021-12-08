@@ -8,7 +8,7 @@ from ClientUnitMgr import ClientUnitMgr, ClientUnitBrowser
 from ContactInfo import ContactInfo
 from OfflineMapCreator import g_offlineMapCreator
 from PlayerEvents import g_playerEvents as events
-from account_helpers import AccountSyncData, Inventory, DossierCache, Shop, shop_sales_event, Stats, QuestProgress, CustomFilesCache, BattleResultsCache, ClientGoodies, client_blueprints, client_recycle_bin, AccountSettings, client_anonymizer, ClientBattleRoyale
+from account_helpers import AccountSyncData, Inventory, DossierCache, Shop, Stats, QuestProgress, CustomFilesCache, BattleResultsCache, ClientGoodies, client_blueprints, client_recycle_bin, AccountSettings, client_anonymizer, ClientBattleRoyale
 from account_helpers.dog_tags import DogTags
 from account_helpers.maps_training import MapsTraining
 from account_helpers.offers.sync_data import OffersSyncData
@@ -23,6 +23,7 @@ from account_helpers.telecom_rentals import TelecomRentals
 from account_helpers.settings_core import IntUserSettings
 from account_helpers.session_statistics import SessionStatistics
 from account_helpers.spa_flags import SPAFlags
+from account_helpers.gift_system import GiftSystem
 from account_shared import NotificationItem, readClientServerVersion
 from adisp import process
 from bootcamp.Bootcamp import g_bootcamp
@@ -35,7 +36,6 @@ from gui.wgnc import g_wgncProvider
 from helpers import dependency
 from helpers import uniprof
 from messenger import MessengerEntry
-from messenger.proto.events import g_messengerEvents
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.connection_mgr import IConnectionManager
 from skeletons.gui.lobby_context import ILobbyContext
@@ -72,6 +72,8 @@ class _ClientCommandProxy(object):
       'doCmdStr', lambda args: len(args) == 1 and _isStr(args[0])),
      (
       'doCmdIntStr', lambda args: len(args) == 2 and _isInt(args[0]) and _isStr(args[1])),
+     (
+      'doCmdInt', lambda args: len(args) == 1 and all([ _isInt(arg) for arg in args ])),
      (
       'doCmdInt2', lambda args: len(args) == 2 and all([ _isInt(arg) for arg in args ])),
      (
@@ -163,11 +165,11 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.dailyQuests = g_accountRepository.dailyQuests
         self.battlePass = g_accountRepository.battlePass
         self.offers = g_accountRepository.offers
-        self.shopSalesEvent = g_accountRepository.shopSalesEvent
         self.dogTags = g_accountRepository.dogTags
         self.mapsTraining = g_accountRepository.mapsTraining
         self.renewableSubscription = g_accountRepository.renewableSubscription
         self.telecomRentals = g_accountRepository.telecomRentals
+        self.giftSystem = g_accountRepository.giftSystem
         self.customFilesCache = g_accountRepository.customFilesCache
         self.syncData.setAccount(self)
         self.inventory.setAccount(self)
@@ -192,7 +194,6 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.spaFlags.setAccount(self)
         self.anonymizer.setAccount(self)
         self.offers.setAccount(self)
-        self.shopSalesEvent.setAccount(self)
         self.dogTags.setAccount(self)
         self.mapsTraining.setAccount(self)
         self.renewableSubscription.setAccount(self)
@@ -262,7 +263,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.anonymizer.onAccountBecomePlayer()
         self.battlePass.onAccountBecomePlayer()
         self.offers.onAccountBecomePlayer()
-        self.shopSalesEvent.onAccountBecomePlayer()
+        self.giftSystem.onAccountBecomePlayer()
         chatManager.switchPlayerProxy(self)
         events.onAccountBecomePlayer()
         BigWorld.target.source = BigWorld.MouseTargetingMatrix()
@@ -270,6 +271,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         BigWorld.target.skeletonCheckEnabled = True
         BigWorld.target.caps()
         BigWorld.target.isEnabled = True
+        BigWorld.target.isFastPicking = True
         uniprof.exitFromRegion('player.account.entering')
         return
 
@@ -301,11 +303,11 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.anonymizer.onAccountBecomeNonPlayer()
         self.battlePass.onAccountBecomeNonPlayer()
         self.offers.onAccountBecomeNonPlayer()
-        self.shopSalesEvent.onAccountBecomeNonPlayer()
         self.dogTags.onAccountBecomeNonPlayer()
         self.mapsTraining.onAccountBecomeNonPlayer()
         self.renewableSubscription.onAccountBecomeNonPlayer()
         self.telecomRentals.onAccountBecomeNonPlayer()
+        self.giftSystem.onAccountBecomeNonPlayer()
         self.__cancelCommands()
         self.syncData.setAccount(None)
         self.inventory.setAccount(None)
@@ -329,7 +331,6 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.spaFlags.setAccount(None)
         self.anonymizer.setAccount(None)
         self.offers.setAccount(None)
-        self.shopSalesEvent.setAccount(None)
         g_accountRepository.commandProxy.setGateway(None)
         self.unitMgr.clear()
         self.unitBrowser.clear()
@@ -525,6 +526,10 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         events.onTutorialEnqueued(number, queueLen, avgWaitingTime)
         events.onEnqueued(QUEUE_TYPE.TUTORIAL)
 
+    @property
+    def selectedEntity(self):
+        return self.__selectedEntity
+
     def targetFocus(self, entity):
         if self.__objectsSelectionEnabled:
             self.hangarSpace.onMouseEnter(entity)
@@ -539,7 +544,6 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
     def objectsSelectionEnabled(self, enabled):
         if not enabled and self.__selectedEntity is not None:
             self.targetBlur(self.__selectedEntity)
-        self.hangarSpace.onObjectsSelectionEnabled(enabled)
         self.__objectsSelectionEnabled = enabled
         return
 
@@ -886,15 +890,14 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         if not events.isPlayerEntityChanging:
             self.base.doCmdInt3(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_DEQUEUE_SANDBOX, 0, 0, 0)
 
-    def enqueueEventBattles(self, vehInvIDs, difficultyLevel):
+    def enqueueEventBattles(self, vehInvID):
         if not events.isPlayerEntityChanging:
-            arr = [
-             len(vehInvIDs)] + vehInvIDs + [difficultyLevel]
-            self.base.doCmdIntArr(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_ENQUEUE_EVENT_BATTLES, arr)
+            self.base.doCmdIntArr(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_ENQUEUE_IN_BATTLE_QUEUE, [
+             QUEUE_TYPE.EVENT_BATTLES, vehInvID])
 
     def dequeueEventBattles(self):
         if not events.isPlayerEntityChanging:
-            self.base.doCmdInt3(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_DEQUEUE_EVENT_BATTLES, 0, 0, 0)
+            self.base.doCmdInt(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_DEQUEUE_FROM_BATTLE_QUEUE, QUEUE_TYPE.EVENT_BATTLES)
 
     def enqueueRanked(self, vehInvID):
         if events.isPlayerEntityChanging:
@@ -1158,52 +1161,6 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self._doCmdIntArrStrArr(AccountCommands.CMD_CHANGE_EVENT_ENQUEUE_DATA, intArr, strArr, proxy)
         return
 
-    def rentHalloweenVehicle(self, vehTypeCompDescr, callback=None):
-        if callback is not None:
-            proxy = lambda requestID, resultID, errorCode, ext={}: callback(resultID, errorCode)
-        else:
-            proxy = None
-        self._doCmdIntArr(AccountCommands.CMD_RENT_HALLOWEEN_TANKS, [vehTypeCompDescr], proxy)
-        return
-
-    def unlockHalloweenVehicles(self, callback=None):
-        if callback is not None:
-            proxy = lambda requestID, resultID, errorCode: callback(resultID, errorCode)
-        else:
-            proxy = None
-        self._doCmdIntArr(AccountCommands.CMD_UNLOCK_HALLOWEEN_TANKS, [], proxy)
-        return
-
-    def addDifficultyEventPoints(self, eventPoints, callback=None):
-        if callback is not None:
-            proxy = lambda requestID, resultID, errorCode: callback(resultID, errorCode)
-        else:
-            proxy = None
-        self._doCmdInt(AccountCommands.CMD_ADD_DIFFICULTY_EVENT_POINTS, eventPoints, proxy)
-        return
-
-    def changeSelectedDifficultyLevel(self, difficultyLevel, force=False, callback=None):
-        if callback is not None:
-            proxy = lambda requestID, resultID, errorCode: callback(resultID, errorCode)
-        else:
-            proxy = None
-        strArr = [
-         'difficultyLevel', 'force']
-        intArr = [difficultyLevel, int(force)]
-        self._doCmdIntArrStrArr(AccountCommands.CMD_CHANGE_EVENT_ENQUEUE_DATA, intArr, strArr, proxy)
-        return
-
-    def addHW19AFKPenalty(self, penaltyType):
-        self._doCmdStr(AccountCommands.CMD_HW19_AFK_ADD_PENALTY, penaltyType, None)
-        return
-
-    def drawHW19AFKPenalty(self, penaltyType):
-        self._doCmdStr(AccountCommands.CMD_HW19_AFK_DRAW_PENALTY, penaltyType, None)
-        return
-
-    def openRewardBox(self, boxId, isSkipQuest, callback=None):
-        self.shop.openRewardBox(boxId, isSkipQuest, callback)
-
     def logClientSystem(self, stats):
         self.base.logClientSystem(stats)
 
@@ -1255,9 +1212,6 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
 
     def requestSingleToken(self, tokenName, callback=None):
         self._doCmdStr(AccountCommands.CMD_GET_SINGLE_TOKEN, tokenName, callback)
-
-    def broadcastAFKWarning(self):
-        g_messengerEvents.onAFKWarningReceived()
 
     def messenger_onActionByServer_chat2(self, actionID, reqID, args):
         from messenger_common_chat2 import MESSENGER_ACTION_IDS as actions
@@ -1328,6 +1282,9 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
     def _doCmdIntArr(self, cmd, arr, callback):
         return self.__doCmd('doCmdIntArr', cmd, callback, arr)
 
+    def _doCmdIntArrStr(self, cmd, arr, s, callback):
+        return self.__doCmd('doCmdIntArrStr', cmd, callback, arr, s)
+
     def _doCmdIntStrArr(self, cmd, int1, strArr, callback):
         return self.__doCmd('doCmdIntStrArr', cmd, callback, int1, strArr)
 
@@ -1367,6 +1324,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
             self.mapsTraining.synchronize(isFullSync, diff)
             self.renewableSubscription.synchronize(isFullSync, diff)
             self.telecomRentals.synchronize(isFullSync, diff)
+            self.giftSystem.synchronize(isFullSync, diff)
             self.__synchronizeServerSettings(diff)
             self.__synchronizeDisabledPersonalMissions(diff)
             self.__synchronizeEventNotifications(diff)
@@ -1611,11 +1569,11 @@ class _AccountRepository(object):
         self.dailyQuests = {}
         self.battlePass = BattlePassManager(self.syncData, self.commandProxy)
         self.offers = OffersSyncData(self.syncData)
-        self.shopSalesEvent = shop_sales_event.ShopSalesEvent()
         self.dogTags = DogTags(self.syncData)
         self.mapsTraining = MapsTraining(self.syncData)
         self.renewableSubscription = RenewableSubscription(self.syncData)
         self.telecomRentals = TelecomRentals(self.syncData)
+        self.giftSystem = GiftSystem(self.syncData, self.commandProxy)
         self.platformBlueprintsConvertSaleLimits = {}
         self.gMap = ClientGlobalMap()
         self.onTokenReceived = Event.Event()

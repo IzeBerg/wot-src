@@ -434,7 +434,7 @@
 	<itemGroup>
 		<userString>#vehicle_customization:styles/main_styles</userString>
 		<season>ALL</season>
-		<historical>1</historical>
+		<historical>2</historical>
 		<priceGroup>styles 3750g notInShop</priceGroup>
 		<vehicleFilter>
 			<include>
@@ -484,7 +484,7 @@
 	<itemGroup>
 		<userString>#vehicle_customization:styles/main_styles</userString>
 		<season>ALL</season>
-		<historical>1</historical>
+		<historical>2</historical>
 		<priceGroup>styles 13g notInShop</priceGroup>
 		<vehicleFilter>
 			<include>
@@ -524,7 +524,7 @@
 	<itemGroup>
 		<userString>#vehicle_customization:styles/main_styles</userString>
 		<season>ALL</season>
-		<historical>1</historical>
+		<historical>2</historical>
 		<priceGroup>styles 3500g notInShop</priceGroup>
 		<vehicleFilter>
 			<include>
@@ -574,7 +574,7 @@
 	<itemGroup>
 		<userString>#vehicle_customization:styles/main_styles</userString>
 		<season>ALL</season>
-		<historical>1</historical>
+		<historical>2</historical>
 		<priceGroup>styles 13g notInShop</priceGroup>
 		<vehicleFilter>
 			<include>
@@ -614,7 +614,7 @@
 	<itemGroup>
 		<userString>#vehicle_customization:styles/main_styles</userString>
 		<season>ALL</season>
-		<historical>1</historical>
+		<historical>2</historical>
 		<priceGroup>styles 4000g notInShop</priceGroup>
 		<vehicleFilter>
 			<include>
@@ -664,7 +664,7 @@
 	<itemGroup>
 		<userString>#vehicle_customization:styles/main_styles</userString>
 		<season>ALL</season>
-		<historical>1</historical>
+		<historical>2</historical>
 		<priceGroup>styles 13g notInShop</priceGroup>
 		<vehicleFilter>
 			<include>
@@ -1094,7 +1094,7 @@
 	<itemGroup>
 		<userString>#vehicle_customization:styles/main_styles</userString>
 		<season>ALL</season>
-		<historical>1</historical>
+		<historical>2</historical>
 		<priceGroup>styles 4500g notInShop</priceGroup>
 		<vehicleFilter>
 			<include>
@@ -1138,22 +1138,22 @@
 		</style>
 	</itemGroup>
 	<itemGroup>
-		<userString>#vehicle_customization:styles/unique_styles</userString>
+		<userString>#vehicle_customization:styles/main_styles</userString>
 		<season>ALL</season>
 		<historical>0</historical>
-		<priceGroup>styles 5000g notInShop</priceGroup>
+		<priceGroup>styles 4000g notInShop</priceGroup>
 		<vehicleFilter>
 			<include>
-				<vehicles>germany:G42_Maus</vehicles>
+				<vehicles>germany:G92_VK7201</vehicles>
 			</include>
 		</vehicleFilter>
 		<style>
-			<id>429</id>
-			<texture>gui/maps/vehicles/styles/G42_Maus_3Dst.png</texture>
-			<longDescriptionSpecial>#vehicle_customization:unique_style/G42_Maus_3Dst_desc/long</longDescriptionSpecial>
-			<modelsSet>G42_Maus_3Dst</modelsSet>
+			<id>430</id>
+			<texture>gui/maps/vehicles/styles/G92_VK7201_3Dst.png</texture>
+			<longDescriptionSpecial>#vehicle_customization:main_style/G92_VK7201_3Dst_desc/long</longDescriptionSpecial>
+			<modelsSet>G92_VK7201_3Dst</modelsSet>
 			<maxNumber>1</maxNumber>
-			<userString>#vehicle_customization:unique_style/G42_Maus_3Dst</userString>
+			<userString>#vehicle_customization:main_style/G92_VK7201_3Dst</userString>
 			<tags>NY_style progression_required</tags>
 			<outfits>
 				<outfit>
@@ -1178,23 +1178,23 @@
 		</style>
 	</itemGroup>
 	<itemGroup>
-		<userString>#vehicle_customization:styles/main_styles</userString>
+		<userString>#vehicle_customization:styles/unique_styles</userString>
 		<season>ALL</season>
 		<historical>0</historical>
-		<priceGroup>styles 4000g notInShop</priceGroup>
+		<priceGroup>styles 5000g notInShop</priceGroup>
 		<vehicleFilter>
 			<include>
-				<vehicles>germany:G92_VK7201</vehicles>
+				<vehicles>germany:G42_Maus</vehicles>
 			</include>
 		</vehicleFilter>
 		<style>
-			<id>430</id>
-			<texture>gui/maps/vehicles/styles/G92_VK7201_3Dst.png</texture>
-			<longDescriptionSpecial>#vehicle_customization:main_style/G92_VK7201_3Dst_desc/long</longDescriptionSpecial>
-			<modelsSet>G92_VK7201_3Dst</modelsSet>
+			<id>429</id>
+			<texture>gui/maps/vehicles/styles/G42_Maus_3Dst.png</texture>
+			<longDescriptionSpecial>#vehicle_customization:unique_style/G42_Maus_3Dst_desc/long</longDescriptionSpecial>
+			<modelsSet>G42_Maus_3Dst</modelsSet>
 			<maxNumber>1</maxNumber>
-			<userString>#vehicle_customization:main_style/G92_VK7201_3Dst</userString>
-			<tags>progression_required</tags>
+			<userString>#vehicle_customization:unique_style/G42_Maus_3Dst</userString>
+			<tags>progression_required NY_style</tags>
 			<outfits>
 				<outfit>
 					<season>ALL</season>
@@ -1512,5 +1512,51 @@
 			<modelsSet/>
 		</style>
 		<modelsSet/>
+	</itemGroup>
+	<itemGroup>
+		<userString>#vehicle_customization:styles/special_styles</userString>
+		<season>ALL</season>
+		<historical>2</historical>
+		<priceGroup>styles 4500g notInShop</priceGroup>
+		<vehicleFilter>
+			<include>
+				<vehicles>germany:G144_Kpz_50t</vehicles>
+			</include>
+		</vehicleFilter>
+		<style>
+			<id>300</id>
+			<texture>gui/maps/vehicles/styles/G144_Kpz_50t_3Dst_DRXXI.png</texture>
+			<longDescriptionSpecial>#vehicle_customization:special_style/G144_Kpz_50t_3Dst_DRXXI_desc/long</longDescriptionSpecial>
+			<modelsSet>G144_Kpz_50t_3Dst_DRXXI</modelsSet>
+			<maxNumber>1</maxNumber>
+			<userString>#vehicle_customization:special_style/G144_Kpz_50t_3Dst_DRXXI</userString>
+			<tags>progression_required</tags>
+			<outfits>
+				<outfit>
+					<season>ALL</season>
+					<camouflages>
+						<item>
+							<id>1</id>
+							<appliedTo>4368</appliedTo>
+							<patternSize>1</patternSize>
+							<palette>0</palette>
+						</item>
+					</camouflages>
+					<attachments>
+						<item>
+							<slotId>18000</slotId>
+							<id>18</id>
+						</item>
+					</attachments>
+				</outfit>
+			</outfits>
+			<itemFilters>
+				<projection_decal>
+					<include>
+						<itemGroupName>Progression Decals</itemGroupName>
+					</include>
+				</projection_decal>
+			</itemFilters>
+		</style>
 	</itemGroup>
 </root>

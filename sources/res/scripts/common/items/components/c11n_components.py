@@ -5,7 +5,7 @@ from debug_utils import LOG_CURRENT_EXCEPTION
 from items import vehicles
 from items.components import shared_components
 from soft_exception import SoftException
-from items.components.c11n_constants import ApplyArea, SeasonType, Options, ItemTags, CustomizationType, MAX_CAMOUFLAGE_PATTERN_SIZE, DecalType, HIDDEN_CAMOUFLAGE_ID, PROJECTION_DECALS_SCALE_ID_VALUES, MAX_USERS_PROJECTION_DECALS, CustomizationTypeNames, DecalTypeNames, CustomizationNamesToTypes, ProjectionDecalFormTags, DEFAULT_SCALE_FACTOR_ID, CUSTOMIZATION_SLOTS_VEHICLE_PARTS, CamouflageTilingType, SLOT_TYPE_NAMES, EMPTY_ITEM_ID, SLOT_DEFAULT_ALLOWED_MODEL, EDITING_STYLE_REASONS, CustomizationDisplayType
+from items.components.c11n_constants import ApplyArea, SeasonType, Options, ItemTags, CustomizationType, MAX_CAMOUFLAGE_PATTERN_SIZE, DecalType, HIDDEN_CAMOUFLAGE_ID, PROJECTION_DECALS_SCALE_ID_VALUES, MAX_USERS_PROJECTION_DECALS, CustomizationTypeNames, DecalTypeNames, ProjectionDecalFormTags, DEFAULT_SCALE_FACTOR_ID, CUSTOMIZATION_SLOTS_VEHICLE_PARTS, CamouflageTilingType, SLOT_TYPE_NAMES, EMPTY_ITEM_ID, SLOT_DEFAULT_ALLOWED_MODEL, EDITING_STYLE_REASONS, CustomizationDisplayType
 from typing import List, Dict, Type, Tuple, Optional, TypeVar, FrozenSet, Set
 from string import lower, upper
 from copy import deepcopy
@@ -840,8 +840,12 @@ def _validateItem(typeName, item, season, tokens, vehType, styleID):
         raise SoftException(('{} {} incompatible season {}').format(typeName, item.id, season))
     if not item.isUnlocked(tokens):
         raise SoftException(('{} {} locked').format(typeName, item.id))
-    if vehType.progressionDecalsOnly and not item.isProgressive() and ItemTags.NATIONAL_EMBLEM not in item.tags:
-        raise SoftException(('{} can have only progression customization').format(vehType))
+    if vehType.progressionDecalsOnly and not item.isProgressive():
+        if ItemTags.NATIONAL_EMBLEM in item.tags:
+            if item.id != vehType.defaultPlayerEmblemID:
+                raise SoftException(('{} can have only progression customization').format(vehType.name))
+        else:
+            raise SoftException(('{} can have only progression customization').format(vehType.name))
     if styleID == 0 and item.isStyleOnly:
         raise SoftException(("styleOnly {} {} can't be used with custom style").format(typeName, item.id, vehType))
 

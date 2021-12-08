@@ -237,7 +237,7 @@ package net.wg.gui.battle.views.ribbonsPanel
          if(_loc1_ != null)
          {
             _loc2_ = _loc1_.ribbonId;
-            if(_loc1_.animationType == RibbonQueueItem.SHOW && !this._isShowPlaying && !this._isHidePlaying)
+            if(_loc1_.animationType == RibbonQueueItem.SHOW && !this._isShowPlaying)
             {
                _loc4_ = _loc1_.isNew;
                if(!_loc4_)

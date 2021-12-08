@@ -1,5 +1,5 @@
 import logging
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
 import typing
 from Event import SafeEvent
 from gui.Scaleform.daapi.view.lobby.header import battle_selector_items
@@ -7,7 +7,7 @@ from gui.impl.gen.view_models.views.lobby.mode_selector.mode_selector_columns im
 from gui.impl.lobby.mode_selector.items.base_item import ModeSelectorLegacyItem
 from gui.impl.lobby.mode_selector.items.bootcamp_mode_selector_item import BootcampModeSelectorItem
 from gui.impl.lobby.mode_selector.items.epic_mode_selector_item import EpicModeSelectorItem
-from gui.impl.lobby.mode_selector.items.event_battle_mode_selector_item import EventModeSelectorItem
+from gui.impl.lobby.mode_selector.items.items_constants import CustomModeName
 from gui.impl.lobby.mode_selector.items.mapbox_mode_selector_item import MapboxModeSelectorItem
 from gui.impl.lobby.mode_selector.items.random_mode_selector_item import RandomModeSelectorItem
 from gui.impl.lobby.mode_selector.items.ranked_mode_selector_item import RankedModeSelectorItem
@@ -18,8 +18,8 @@ from gui.prb_control.dispatcher import g_prbLoader
 from gui.prb_control.entities.listener import IGlobalListener
 from gui.prb_control.settings import PREBATTLE_ACTION_NAME
 if typing.TYPE_CHECKING:
-    from typing import Dict, Type, List, Optional
-    from gui.Scaleform.daapi.view.lobby.header.battle_selector_items import _SelectorItem, _BattleSelectorItems
+    from typing import Dict, Type
+    from gui.Scaleform.daapi.view.lobby.header.battle_selector_items import _SelectorItem
     from gui.impl.lobby.mode_selector.items.base_item import ModeSelectorItem
 _logger = logging.getLogger(__name__)
 _modeSelectorLegacyItemByModeName = {PREBATTLE_ACTION_NAME.RANDOM: RandomModeSelectorItem, 
@@ -29,40 +29,24 @@ _modeSelectorLegacyItemByModeName = {PREBATTLE_ACTION_NAME.RANDOM: RandomModeSel
    PREBATTLE_ACTION_NAME.TRAININGS_LIST: TrainingsModeSelectorItem, 
    PREBATTLE_ACTION_NAME.MAPBOX: MapboxModeSelectorItem, 
    PREBATTLE_ACTION_NAME.EPIC: EpicModeSelectorItem, 
-   PREBATTLE_ACTION_NAME.EVENT_BATTLE: EventModeSelectorItem}
-
-def _getModeSelectorLegacyItem(selectorItem):
-    modeName = selectorItem.getData()
-    if not selectorItem.isVisible():
-        return None
-    else:
-        if modeName in _modeSelectorLegacyItemByModeName:
-            return _modeSelectorLegacyItemByModeName.get(modeName)(selectorItem)
-        return ModeSelectorLegacyItem(selectorItem)
-
-
-def _getModeSelectorItems():
-    modeSelectorItemList = [
-     BootcampModeSelectorItem()]
-    itemList = battle_selector_items.getItems()
-    modeSelectorItemList.extend([ _getModeSelectorLegacyItem(item) for item in itemList.allItems ])
-    return [ item for item in modeSelectorItemList if item ]
-
+   CustomModeName.BOOTCAMP: BootcampModeSelectorItem}
+_additionalItems = {CustomModeName.BOOTCAMP: None}
 
 class ModeSelectorDataProvider(IGlobalListener):
-    __slots__ = ('onListChanged', '__items')
+    __slots__ = ('onListChanged', '_items')
     MAX_COLUMN_SIZE = 6
 
     def __init__(self):
         super(ModeSelectorDataProvider, self).__init__()
         self.onListChanged = SafeEvent()
-        self.__items = []
-        self.updateItems(_getModeSelectorItems())
+        self._items = OrderedDict()
+        self._initializeModeSelectorItems()
+        self.updateItems()
         self.startGlobalListening()
 
     @property
     def itemList(self):
-        return self.__items
+        return self._items.values()
 
     @property
     def isDemonstrator(self):
@@ -83,55 +67,61 @@ class ModeSelectorDataProvider(IGlobalListener):
 
     def dispose(self):
         self.stopGlobalListening()
-        self.updateItems([])
+        self._clearItems()
 
-    def refreshItems(self):
-        self.updateItems(_getModeSelectorItems())
-
-    def updateItems(self, newList):
-        self._setItems(newList)
+    def updateItems(self):
         self._updateItemsPosition()
         self._updateSelection()
         self.onListChanged()
 
     def getItemByIndex(self, index):
-        if len(self.__items) > index:
-            return self.__items[index]
+        items = self.itemList
+        if len(items) > index:
+            return items[index]
         else:
             return
 
     def onPrbEntitySwitched(self):
-        self.updateItems(_getModeSelectorItems())
+        items = self.__getItems()
+        self.__createItems(items)
+        for nameItem in self._items:
+            if nameItem not in items:
+                self._items.pop(nameItem).dispose()
 
-    def _setItems(self, newList):
-        for item in self.__items:
-            if item not in newList:
-                item.dispose()
+        self.updateItems()
 
-        for item in newList:
-            if item not in self.__items:
-                item.initialize()
+    def _clearItems(self):
+        for key in self._items:
+            self._items.pop(key).dispose()
 
-        self.__items = newList
+    def _initializeModeSelectorItems(self):
+        self.__createItems(self.__getItems())
+
+    @staticmethod
+    def _getModeSelectorLegacyItem(modeName, selectorItem):
+        if selectorItem is not None and not selectorItem.isVisible():
+            return
+        else:
+            return _modeSelectorLegacyItemByModeName.get(modeName, ModeSelectorLegacyItem)(selectorItem)
 
     def _updateSelection(self):
         prbDispatcher = g_prbLoader.getDispatcher()
         if prbDispatcher:
             state = prbDispatcher.getFunctionalState()
             selected = battle_selector_items.getItems().update(state)
-            for idx, item in enumerate(self.__items):
+            for idx, item in enumerate(self.itemList):
                 item.viewModel.setIndex(idx)
                 if item.isSelectable:
                     isSelected = item.modeName == selected.getData()
                     item.viewModel.setIsSelected(isSelected)
 
     def _updateItemsPosition(self):
-        for item in self.__items:
+        self._items = OrderedDict(sorted(self._items.iteritems(), key=lambda x: x[1].priority, reverse=True))
+        for item in self.itemList:
             item.viewModel.hold()
 
         counts = defaultdict(int)
-        self.__items.sort(key=lambda x: x.priority, reverse=True)
-        for item in self.__items:
+        for item in self.itemList:
             columnId = item.preferredColumn
             while counts[columnId] >= self.MAX_COLUMN_SIZE and columnId != ModeSelectorColumns.COLUMN_0:
                 _logger.warning("Incorrect settings. Can't add item %s to the column %s. Max column size has been reached. Move it to the previous column", item.modeName, columnId)
@@ -147,5 +137,22 @@ class ModeSelectorDataProvider(IGlobalListener):
             if key != ModeSelectorColumns.COLUMN_0 and value > self.MAX_COLUMN_SIZE:
                 _logger.warning('Max column size  %s has been overflown', self.MAX_COLUMN_SIZE)
 
-        for item in self.__items:
+        for item in self.itemList:
             item.viewModel.commit()
+
+    def __createItems(self, items):
+        for modeName in items:
+            if modeName not in self._items:
+                item = self._getModeSelectorLegacyItem(modeName, items[modeName])
+                if item is not None:
+                    self._items[modeName] = item
+                    item.initialize()
+
+        return
+
+    @staticmethod
+    def __getItems():
+        allItems = battle_selector_items.getItems().allItems
+        items = {nameItem.getData():nameItem for nameItem in allItems}
+        items.update(_additionalItems)
+        return items

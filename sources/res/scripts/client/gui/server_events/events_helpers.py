@@ -1,7 +1,6 @@
-import operator, time, typing, BigWorld
+import operator, time, BigWorld
 from constants import EVENT_TYPE, EMAIL_CONFIRMATION_QUEST_ID
 from gui import makeHtmlString
-from gui.Scaleform.genConsts.HANGAR_HEADER_QUESTS import HANGAR_HEADER_QUESTS
 from gui.Scaleform.genConsts.MISSIONS_STATES import MISSIONS_STATES
 from gui.Scaleform.locale.MENU import MENU
 from gui.Scaleform.locale.QUESTS import QUESTS
@@ -10,20 +9,16 @@ from gui.impl import backport
 from gui.impl.gen import R
 from gui.server_events import formatters
 from gui.server_events.personal_missions_navigation import PersonalMissionsNavigation
-from gui.shared.utils.requesters import REQ_CRITERIA
 from helpers import time_utils, i18n, dependency, isPlayerAccount
 from shared_utils import CONST_CONTAINER, findFirst
 from skeletons.gui.game_control import IMarathonEventsController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
-from gui.server_events.events_constants import LINKEDSET_GROUP_PREFIX, MARATHON_GROUP_PREFIX, PREMIUM_GROUP_PREFIX, DAILY_QUEST_ID_PREFIX, RANKED_DAILY_GROUP_ID, RANKED_PLATFORM_GROUP_ID, BATTLE_ROYALE_GROUPS_ID, EPIC_BATTLE_GROUPS_ID, MAPS_TRAINING_GROUPS_ID, MAPS_TRAINING_QUEST_PREFIX
+from gui.server_events.events_constants import LINKEDSET_GROUP_PREFIX, MARATHON_GROUP_PREFIX, PREMIUM_GROUP_PREFIX, DAILY_QUEST_ID_PREFIX, RANKED_DAILY_GROUP_ID, RANKED_PLATFORM_GROUP_ID, BATTLE_ROYALE_GROUPS_ID, EPIC_BATTLE_GROUPS_ID, MAPS_TRAINING_GROUPS_ID, MAPS_TRAINING_QUEST_PREFIX, CELEBRITY_GROUP_PREFIX
 from helpers.i18n import makeString as _ms
 from gui.Scaleform.locale.LINKEDSET import LINKEDSET
 from gui.server_events.conditions import getProgressFromQuestWithSingleAccumulative
-if typing.TYPE_CHECKING:
-    from typing import Optional
-    from gui.server_events.event_items import Quest, Group
 FINISH_TIME_LEFT_TO_SHOW = time_utils.ONE_DAY
 START_TIME_LIMIT = 5 * time_utils.ONE_DAY
 AWARDS_PER_PAGE = 3
@@ -213,7 +208,7 @@ def missionsSortFunc(q):
     isAvailable, status = q.isAvailable()
     isCompleted = q.isCompleted()
     return (
-     isAvailable and not isCompleted or isHalloween(q.getGroupID()),
+     isAvailable and not isCompleted,
      q.getPriority(),
      status == 'requirement',
      bool(status),
@@ -339,26 +334,15 @@ def isACEmailConfirmationQuest(eventID):
     return False
 
 
+def isCelebrityQuest(eventID):
+    if eventID:
+        return eventID.startswith(CELEBRITY_GROUP_PREFIX)
+    return False
+
+
 def isRegularQuest(eventID):
-    idGameModeEvent = isDailyEpic(eventID) or isRankedDaily(eventID) or isRankedPlatform(eventID)
+    idGameModeEvent = isDailyEpic(eventID) or isRankedDaily(eventID) or isRankedPlatform(eventID) or isCelebrityQuest(eventID)
     return not (isMarathon(eventID) or isLinkedSet(eventID) or isPremium(eventID) or idGameModeEvent)
-
-
-def isHalloween(eventID):
-    if eventID:
-        return eventID.startswith(HANGAR_HEADER_QUESTS.QUEST_GROUP_HALLOWEEN)
-    return False
-
-
-def isHalloweenAFK(eventID):
-    if eventID:
-        return eventID.startswith(HANGAR_HEADER_QUESTS.QUEST_GROUP_HALLOWEEN_AFK)
-    return False
-
-
-def filterHalloweenAvailableQuest(quest):
-    groupID = quest.getGroupID()
-    return not isHalloween(groupID) and not isHalloweenAFK(groupID) or quest.isAvailable()[0]
 
 
 def getLocalizedMissionNameForLinkedSet(missionID):
@@ -421,7 +405,7 @@ def getLootboxesFromBonuses(bonuses, itemsCache=None):
             tokens = bonus.getTokens()
             boxes = itemsCache.items.tokens.getLootBoxes()
             for token in tokens.values():
-                if 'lootBox' in token.id:
+                if 'lootBox' in token.id and token.id in boxes:
                     lootboxType = boxes[token.id].getType()
                     if lootboxType not in lootboxes:
                         lootboxes[lootboxType] = {'count': token.count, 'isFree': boxes[token.id].isFree()}
@@ -540,26 +524,3 @@ def getEventsData(eventsTypeName):
     if isPlayerAccount():
         return BigWorld.player().getUnpackedEventsData(eventsTypeName)
     return {}
-
-
-def getPreviousBattleQuest(quest):
-    eventsCache = dependency.instance(IEventsCache)
-    group = eventsCache.getGroups().get(quest.getGroupID())
-    if group is not None:
-        questID = quest.getID()
-        quests = eventsCache.getQuests()
-        groupContent = group.getGroupContent(quests)
-        sortedQuests = sorted(groupContent, key=operator.methodcaller('getPriority'), reverse=True)
-        for idx, quest_ in enumerate(sortedQuests):
-            if quest_.getID() == questID:
-                if idx != 0:
-                    return sortedQuests[(idx - 1)]
-
-    return
-
-
-def isVehicleRequirementsOk(quest):
-    suitableVehicles = quest.vehicleReqs.getSuitableVehicles()
-    if isHalloween(quest.getGroupID()):
-        suitableVehicles = filter(~REQ_CRITERIA.VEHICLE.EVENT, suitableVehicles)
-    return quest.vehicleReqs.isAnyVehicleAcceptable() or suitableVehicles

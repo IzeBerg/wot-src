@@ -123,10 +123,6 @@ package net.wg.data.constants.generated
       
       public static const EVENT_POINT_COUNTER:String = "eventPointCounter";
       
-      public static const BOSS_INDICATOR_PROGRESS:String = "bossIndicatorProgress";
-      
-      public static const BOSS_HPBAR:String = "bossHPBar";
-      
       public static const EVENT_TIMER:String = "eventTimer";
       
       public static const EVENT_STATS:String = "eventStats";
@@ -140,10 +136,6 @@ package net.wg.data.constants.generated
       public static const CALLOUT_PANEL:String = "calloutPanel";
       
       public static const BATTLE_NOTIFIER:String = "battleNotifier";
-      
-      public static const EVENT_PHASE_INDICATOR:String = "eventPhaseIndicator";
-      
-      public static const EVENT_BUFF_NOTIFICATION_SYSTEM:String = "eventBuffNotificationSystem";
       
       public static const EVENT_POSTMORTEM_PANEL:String = "eventPostmortemPanel";
       

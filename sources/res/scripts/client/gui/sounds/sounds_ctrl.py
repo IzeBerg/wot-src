@@ -1,6 +1,5 @@
 import weakref, MusicControllerWWISE as _MC, SoundGroups
 from gui.sounds.ambients import GuiAmbientsCtrl
-from gui.sounds.event_sound_subctrl import EventSoundSubController
 from gui.sounds.sound_constants import EnabledStatus
 from gui.sounds.sound_systems import getCurrentSoundSystem
 from gui.sounds.sound_utils import SOUND_DEBUG
@@ -17,18 +16,15 @@ class SoundsController(ISoundsController):
         super(SoundsController, self).__init__()
         self.__soundSystem = getCurrentSoundSystem()
         self.__guiAmbients = GuiAmbientsCtrl(weakref.proxy(self))
-        self.__eventSoundSubCtrl = EventSoundSubController()
         SOUND_DEBUG('Sound system has been created', self.__soundSystem)
 
     def init(self):
         self.__soundSystem.init()
         self.__guiAmbients.init()
-        self.__eventSoundSubCtrl.init()
 
     def fini(self):
         self.__soundSystem.fini()
         self.__guiAmbients.fini()
-        self.__eventSoundSubCtrl.fini()
 
     def start(self):
         self.__guiAmbients.start()

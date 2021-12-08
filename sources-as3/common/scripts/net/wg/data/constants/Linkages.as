@@ -29,6 +29,8 @@ package net.wg.data.constants
       
       public static const CURRENCY_CONTEXT_MENU_ITEM:String = "CurrencyContextMenuItem";
       
+      public static const NY_CONTEXT_MENU_ITEM:String = "NYContextMenuItemUI";
+      
       public static const CONTEXT_MENU_SEPARATE:String = "ContextMenuItemSeparate";
       
       public static const MINIMAP_ENTRY:String = "MinimapEntry";
@@ -239,8 +241,6 @@ package net.wg.data.constants
       
       public static const EVENTWARNING_ICON:String = "destroyTimerEventWarningUI";
       
-      public static const EVENTOVERTURNED_ICON:String = "halfOverTurnedIconUI";
-      
       public static const GAS_DRAFT_ICON:String = "destroyTimerGazDraftUI";
       
       public static const STUN_ICON:String = "secondaryStunIconUI";
@@ -266,18 +266,6 @@ package net.wg.data.constants
       public static const SIDE_BAR_NORMAL_RENDERER:String = "SideBarRendererUI";
       
       public static const RESUPPLY_TIMER_SMALL_UI:String = "resupplyTimerSmallUI";
-      
-      public static const EVENT_WAIT_FOR_ALLIES_UI:String = "EventWaitForAlliesUI";
-      
-      public static const SECONDARY_EVENT_WAIT_FOR_ALLIES_UI:String = "secondaryEventWaitForAlliesUI";
-      
-      public static const EVENT_FILLING_IN_PROGRESS_UI:String = "EventFillingInProgressUI";
-      
-      public static const SECONDARY_EVENT_FILLING_IN_PROGRESS_UI:String = "secondaryEventFillingInProgressUI";
-      
-      public static const EVENT_GOTO_POINT_TIMER_UI:String = "EventGotoPointTimerUI";
-      
-      public static const SECONDARY_EVENT_GOTO_POINT_TIMER_UI:String = "secondaryEventGotoPointTimerUI";
       
       public static const CHEVRON_ADD_ANIM:String = "AddItemAnimUI";
       
@@ -544,6 +532,8 @@ package net.wg.data.constants
       public static const SIEGE_MODE_ANIMATION_UI:String = "SiegeModeAnimationUI";
       
       public static const TURBO_SIEGE_MODE_ANIMATION_UI:String = "TurboSiegeModeAnimationUI";
+      
+      public static const YOH_CHASSIS_MODE_ANIMATION_UI:String = "YohChassisModeAnimationUI";
       
       public static const POSTMORTEN_PANEL:String = "PostmortemPanelUI";
       
@@ -1015,6 +1005,20 @@ package net.wg.data.constants
       
       public static const TIER_GROUPING_UI:String = "TierGroupingUI";
       
+      public static const NY_COUNTER_VIEW_UI:String = "NYCounterViewUI";
+      
+      public static const NY_COUNTER_ORANGE_VIEW_UI:String = "NYCounterOrangeViewUI";
+      
+      public static const NY_LB_NOTIFICATION_BG_UI:String = "NYLBNotificationBg_UI";
+      
+      public static const NY_LB_NO_BORDER_NOTIFICATION_BG_UI:String = "NYLBNoBorderNotificationBg_UI";
+      
+      public static const NY_LB_SPECIAL_NOTIFICATION_BG_UI:String = "NYLBSpecialNotificationBg_UI";
+      
+      public static const NY_LB_SPECIAL_NO_BORDER_NOTIFICATION_BG_UI:String = "NYLBSpecialNoBorderNotificationBg_UI";
+      
+      public static const NY_VEHICLE_BONUS_UI:String = "NYVehicleBonusUI";
+      
       public static const YELLOW_HP_BAR:String = "yellow_hp_bar";
       
       public static const PURPLE_HP_BAR:String = "purple_hp_bar";
@@ -1028,8 +1032,6 @@ package net.wg.data.constants
       public static const STORE_BLUEPRINT_COST_RENDERER:String = "BlueprintCostRendererUI";
       
       public static const RESEARCH_POST_PROGRESSION_ENTRY_POINT:String = "PostProgressionEntryPointUI";
-      
-      public static const STATS_PLAYERBLOCK_RENDERER:String = "StatsPlayerBlockRendererUI";
        
       
       public function Linkages()

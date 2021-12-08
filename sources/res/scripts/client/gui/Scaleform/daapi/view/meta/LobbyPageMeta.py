@@ -22,6 +22,10 @@ class LobbyPageMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_closeHelpLayout()
 
+    def as_switchLobbyDraggingS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_switchLobbyDragging(value)
+
     def as_showWaitingS(self, message):
         if self._isDAAPIInited():
             return self.flashObject.as_showWaiting(message)

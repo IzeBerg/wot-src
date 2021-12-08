@@ -1,4 +1,4 @@
-import copy, constants, nations
+import copy, BattleReplay, constants, nations
 from account_helpers.AccountSettings import AccountSettings, CAROUSEL_FILTER_1, CAROUSEL_FILTER_2
 from account_helpers.AccountSettings import CAROUSEL_FILTER_CLIENT_1
 from gui.prb_control.settings import VEHICLE_LEVELS
@@ -6,7 +6,10 @@ from gui.shared.utils import makeSearchableString
 from gui.shared.utils.requesters import REQ_CRITERIA
 from gui.shared.gui_items.Vehicle import VEHICLE_ROLES_LABELS, VEHICLE_CLASS_NAME
 from helpers import dependency
+from new_year.ny_constants import NY_FILTER
 from skeletons.account_helpers.settings_core import ISettingsCore
+from skeletons.gui.shared import IItemsCache
+from skeletons.new_year import INewYearController
 
 def _filterDict(dictionary, keys):
     return {key:value for key, value in dictionary.iteritems() if key in keys}
@@ -111,6 +114,7 @@ class CriteriesGroup(object):
 
 
 class CarouselFilter(_CarouselFilter):
+    _nyController = dependency.descriptor(INewYearController)
     settingsCore = dependency.descriptor(ISettingsCore)
 
     def __init__(self):
@@ -120,7 +124,7 @@ class CarouselFilter(_CarouselFilter):
         self._setCriteriaGroups()
 
     def save(self):
-        self.settingsCore.serverSettings.setSections(self._serverSections, self._filters)
+        self._saveToServer()
         for section in self._clientSections:
             defaultFilter = AccountSettings.getFilterDefault(section)
             filtersToSave = {key:self._filters.get(key, defaultFilter[key]) for key in defaultFilter}
@@ -128,7 +132,7 @@ class CarouselFilter(_CarouselFilter):
 
     def load(self):
         defaultFilters = AccountSettings.getFilterDefaults(self._serverSections)
-        savedFilters = self.settingsCore.serverSettings.getSections(self._serverSections, defaultFilters)
+        savedFilters = self._getFromServerStorage(defaultFilters)
         for section in self._clientSections:
             defaultFilters.update(AccountSettings.getFilterDefault(section))
             savedFilters.update(AccountSettings.getFilter(section))
@@ -138,10 +142,15 @@ class CarouselFilter(_CarouselFilter):
             savedFilters[key] = type(value)(savedFilters.get(key, value))
 
         self.update(savedFilters, save=False)
+        self.newYearReset()
 
     def _setCriteriaGroups(self):
         self._criteriesGroups = (
          EventCriteriesGroup(), RoleCriteriesGroup())
+
+    def newYearReset(self):
+        if not self._nyController.isVehicleBranchEnabled() and NY_FILTER in self._filters:
+            self.reset([NY_FILTER], save=False)
 
     def switch(self, key, save=True):
         updateDict = {key: not self._filters[key]}
@@ -152,6 +161,15 @@ class CarouselFilter(_CarouselFilter):
 
     def __getCurrentVehicleClasses(self, updateDict):
         return {vehClass for vehClass in VEHICLE_CLASS_NAME.ALL() if (self._filters[vehClass] or updateDict.get(vehClass)) and updateDict.get(vehClass) is not False}
+
+    def _saveToServer(self):
+        if not BattleReplay.isPlaying():
+            self.settingsCore.serverSettings.setSections(self._serverSections, self._filters)
+
+    def _getFromServerStorage(self, defaultFilters):
+        if BattleReplay.isPlaying():
+            return defaultFilters
+        return self.settingsCore.serverSettings.getSections(self._serverSections, defaultFilters)
 
     @staticmethod
     def __resetRoles():
@@ -208,6 +226,7 @@ class SessionCarouselFilter(_CarouselFilter):
 
 
 class BasicCriteriesGroup(CriteriesGroup):
+    itemsCache = dependency.descriptor(IItemsCache)
 
     @staticmethod
     def isApplicableFor(vehicle):
@@ -258,6 +277,8 @@ class BasicCriteriesGroup(CriteriesGroup):
             self._criteria |= REQ_CRITERIA.VEHICLE.EARN_CRYSTALS
         if filters['searchNameVehicle']:
             self._criteria |= REQ_CRITERIA.VEHICLE.NAME_VEHICLE(makeSearchableString(filters['searchNameVehicle']))
+        if NY_FILTER in filters and filters[NY_FILTER]:
+            self._criteria |= REQ_CRITERIA.VEHICLE.SPECIFIC_BY_INV_ID(set(self.itemsCache.items.festivity.getVehicleBranch()))
 
 
 class RoleCriteriesGroup(BasicCriteriesGroup):

@@ -2,6 +2,7 @@ import operator, time
 from collections import namedtuple
 import typing, constants
 from debug_utils import LOG_WARNING
+from gui.ranked_battles.ranked_helpers import isRankedQuestID
 from gui.Scaleform.daapi.view.lobby.missions import cards_formatters
 from gui.Scaleform.daapi.view.lobby.missions.awards_formatters import CurtailingAwardsComposer, AwardsWindowComposer, DetailedCardAwardComposer, PersonalMissionsAwardComposer, LinkedSetAwardsComposer
 from gui.Scaleform.daapi.view.lobby.server_events.events_helpers import getChainVehTypeAndLevelRestrictions
@@ -15,14 +16,13 @@ from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
 from gui.impl import backport
 from gui.impl.gen import R
-from gui.ranked_battles.ranked_helpers import isRankedQuestID
 from gui.server_events.awards_formatters import AWARDS_SIZES, getEpicAwardFormatter, EPIC_AWARD_SIZE
 from gui.server_events.bonuses import SimpleBonus
 from gui.server_events.cond_formatters.prebattle import MissionsPreBattleConditionsFormatter
-from gui.server_events.cond_formatters.requirements import AccountRequirementsFormatter, TQAccountRequirementsFormatter, EventRequirementsFormatter
+from gui.server_events.cond_formatters.requirements import AccountRequirementsFormatter, TQAccountRequirementsFormatter
 from gui.server_events.conditions import GROUP_TYPE
 from gui.server_events.events_constants import BATTLE_ROYALE_GROUPS_ID, EPIC_BATTLE_GROUPS_ID
-from gui.server_events.events_helpers import MISSIONS_STATES, QuestInfoModel, AWARDS_PER_SINGLE_PAGE, isMarathon, AwardSheetPresenter, isPremium, isHalloween, isVehicleRequirementsOk, isHalloweenAFK
+from gui.server_events.events_helpers import MISSIONS_STATES, QuestInfoModel, AWARDS_PER_SINGLE_PAGE, isMarathon, AwardSheetPresenter, isPremium
 from gui.server_events.formatters import DECORATION_SIZES
 from gui.server_events.personal_progress import formatters
 from gui.shared.formatters import text_styles, icons, time_formatters
@@ -45,7 +45,6 @@ DETAILED_CARD_AWARDS_COUNT = 10
 _preBattleConditionFormatter = MissionsPreBattleConditionsFormatter()
 _accountReqsFormatter = AccountRequirementsFormatter()
 _tqAccountReqsFormatter = TQAccountRequirementsFormatter()
-_eventReqsFormatter = EventRequirementsFormatter()
 _cardCondFormatter = cards_formatters.CardBattleConditionsFormatters()
 _detailedCardCondFormatter = cards_formatters.DetailedCardBattleConditionsFormatters()
 _cardTokenConditionFormatter = cards_formatters.CardTokenConditionFormatter()
@@ -58,7 +57,6 @@ _personalMissionsAwardsFormatter = PersonalMissionsAwardComposer(DETAILED_CARD_A
 _linkedSetAwardsComposer = LinkedSetAwardsComposer(LINKED_SET_CARD_AWARDS_COUNT)
 HIDE_DONE = 'hideDone'
 HIDE_UNAVAILABLE = 'hideUnavailable'
-_REQUIREMENTS = 'requirements'
 PostponedOperationState = namedtuple('PostponedOperationState', [
  'state',
  'postponeTime'])
@@ -261,9 +259,6 @@ class _MissionInfo(QuestInfoModel):
 
     def getInfo(self, mainQuest=None):
         isAvailable, errorMsg = self.event.isAvailable()
-        if isHalloween(self.event.getGroupID()) and isAvailable and not isVehicleRequirementsOk(self.event):
-            isAvailable = False
-            errorMsg = _REQUIREMENTS
         statusData = self._getStatusFields(isAvailable, errorMsg)
         return self._getInfo(statusData, isAvailable, errorMsg, mainQuest)
 
@@ -1329,61 +1324,6 @@ class _DetailedPersonalMissionInfo(_MissionInfo):
         return self.eventsCache.getPersonalMissions().getFreeTokensCount(quest.getPMType().branch) >= quest.getPawnCost()
 
 
-def getEventRegularStatusField(bonusCount, bonusLimit):
-    flagIcon = icons.makeImageTag(backport.image(R.images.gui.maps.icons.library.inProgressIcon()), 16, 16, -2, 8)
-    statusText = backport.text(R.strings.quests.missionDetails.status.inProgress())
-    statusLabel = text_styles.concatStylesWithSpace(flagIcon, text_styles.neutral(statusText))
-    statusTooltipData = getBonusLimitTooltip(bonusCount, bonusLimit, False, False)
-    return {'statusLabel': statusLabel, 
-       'status': MISSIONS_STATES.NONE, 
-       'statusTooltipData': statusTooltipData}
-
-
-class _EventMissionInfo(_MissionInfo):
-
-    def _getUIDecoration(self):
-        return backport.image(R.images.gui.maps.icons.event.quests.missionBG482x222())
-
-    def _getRegularStatusFields(self, isLimited, bonusCount, bonusLimit):
-        return getEventRegularStatusField(bonusCount, bonusLimit)
-
-    def _getCompleteStatusFields(self, isLimited, bonusCount, bonusLimit):
-        rLibrary = R.images.gui.maps.icons.library
-        rMissionDetails = R.strings.quests.missionDetails
-        clockIcon = icons.makeImageTag(backport.image(rLibrary.timerIcon()), 16, 16, -2, 0)
-        tickIcon = icons.makeImageTag(backport.image(rLibrary.ConfirmIcon_1()), 16, 16, -2, 0)
-        statusText = backport.text(rMissionDetails.status.complete())
-        statusLabel = text_styles.concatStylesToSingleLine(clockIcon, tickIcon, text_styles.bonusAppliedText(statusText))
-        header = backport.text(R.strings.tooltips.quests.unavailable.time.statusTooltip())
-        body = self._getCompleteDailyStatus(backport.text(rMissionDetails.status.completed.event()))
-        return {'statusLabel': statusLabel, 
-           'status': MISSIONS_STATES.COMPLETED, 
-           'statusTooltipData': {'tooltip': makeTooltip(header=header, body=body), 
-                                 'isSpecial': False, 
-                                 'specialArgs': []}}
-
-
-class _DetailedEventMissionInfo(_DetailedMissionInfo):
-
-    def _getUIDecoration(self):
-        return backport.image(R.images.gui.maps.icons.event.quests.missionBG752x264())
-
-    def _getAccountRequirements(self):
-        return _eventReqsFormatter.format(self.event.accountReqs, self.event)
-
-    def _getCompleteStatusFields(self, isLimited, bonusCount, bonusLimit):
-        statusFields = super(_DetailedEventMissionInfo, self)._getCompleteStatusFields(isLimited, bonusCount, bonusLimit)
-        statusFields['status'] = MISSIONS_STATES.COMPLETED
-        return statusFields
-
-    def _getRegularStatusFields(self, isLimited, bonusCount, bonusLimit):
-        if isLimited and not self.event.bonusCond.isDaily() and not self.event.bonusCond.isWeekly():
-            data = getEventRegularStatusField(bonusCount, bonusLimit)
-            data['dateLabel'] = self._getActiveTimeDateLabel()
-            return data
-        return super(_DetailedEventMissionInfo, self)._getRegularStatusFields(isLimited, bonusCount, bonusLimit)
-
-
 def getMissionInfoData(event):
     if event.getType() == constants.EVENT_TYPE.TOKEN_QUEST:
         return _TokenMissionInfo(event)
@@ -1402,8 +1342,6 @@ def getMissionInfoData(event):
         if isRankedQuestID(event.getID()):
             return _RankedMissionInfo(event)
         if event.getType() in constants.EVENT_TYPE.LIKE_BATTLE_QUESTS:
-            if isHalloween(event.getGroupID()) or isHalloweenAFK(event.getGroupID()):
-                return _EventMissionInfo(event)
             return _MissionInfo(event)
         return
 
@@ -1425,8 +1363,6 @@ def getDetailedMissionData(event):
         if isRankedQuestID(event.getID()):
             return _RankedDetailedMissionInfo(event)
         if event.getType() in constants.EVENT_TYPE.LIKE_BATTLE_QUESTS:
-            if isHalloween(event.getGroupID()) or isHalloweenAFK(event.getGroupID()):
-                return _DetailedEventMissionInfo(event)
             return _DetailedMissionInfo(event)
         return
 

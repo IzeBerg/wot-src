@@ -70,10 +70,6 @@ package net.wg.data.constants.generated
       public static const STEALTH_INACTIVE_ICON:String = "secondaryTimerStealthInactiveIconUI";
       
       public static const ENEMY_SMOKE_ICON:String = "enemySmokeIconUI";
-      
-      public static const EVENT_STATIC_DEATH_ZONE:String = "destroyTimerEventStaticDeathZoneUI";
-      
-      public static const EVENT_PERSONAL_DEATH_ZONE:String = "destroyTimerEventPersonalDeathZoneUI";
        
       
       public function BATTLE_NOTIFICATIONS_TIMER_LINKAGES()

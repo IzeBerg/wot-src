@@ -23,8 +23,6 @@ package
       
       public static const MISSIONS_TAB_MAY21_MARATHON:String = "#quests:missions/tab/may21_marathon";
       
-      public static const MISSIONS_TAB_WINTER_MARATHON:String = "#quests:missions/tab/winter_marathon";
-      
       public static const MISSIONS_FILTERCOUNTER_CLOSEBUTTON:String = "#quests:missions/filterCounter/closeButton";
       
       public static const MISSIONS_FILTER_FILTERBUTTON:String = "#quests:missions/filter/filterButton";
@@ -154,6 +152,14 @@ package
       public static const BONUSES_ITEM_TANKMEN_WITH_SKILLS:String = "#quests:bonuses/item/tankmen/with_skills";
       
       public static const BONUSES_NOTAVAILABLE:String = "#quests:bonuses/notAvailable";
+      
+      public static const BONUSNAME_NY22FILLERS:String = "#quests:bonusName/ny22Fillers";
+      
+      public static const BONUSNAME_NEWYEARSLOT:String = "#quests:bonusName/newYearSlot";
+      
+      public static const BONUSES_VARIADICDISCOUNT_DISCOUNTAMOUNT:String = "#quests:bonuses/variadicDiscount/discountAmount";
+      
+      public static const BONUSES_VARIADICDISCOUNT_BUTTONLABEL:String = "#quests:bonuses/variadicDiscount/buttonLabel";
       
       public static const QUESTS_TITLE:String = "#quests:quests/title";
       
@@ -1473,10 +1479,6 @@ package
       
       public static const DETAILS_CONDITIONS_CUMULATIVE_XP_OTHER:String = "#quests:details/conditions/cumulative/xp/other";
       
-      public static const DETAILS_CONDITIONS_CUMULATIVE_EVENTPOINTS:String = "#quests:details/conditions/cumulative/eventPoints";
-      
-      public static const DETAILS_CONDITIONS_CUMULATIVE_ENVIRONMENTID:String = "#quests:details/conditions/cumulative/environmentID";
-      
       public static const DETAILS_DOSSIER_SNIPERSERIES:String = "#quests:details/dossier/sniperSeries";
       
       public static const DETAILS_DOSSIER_MAXSNIPERSERIES:String = "#quests:details/dossier/maxSniperSeries";
@@ -2047,12 +2049,6 @@ package
       
       public static const MISSIONS_TAB_LABEL_MARATHON:String = "#quests:missions/tab/label/marathon";
       
-      public static const MISSIONS_TAB_LABEL_WINTER_MARATHON:String = "#quests:missions/tab/label/winter_marathon";
-      
-      public static const MISSIONS_TAB_WINTER_MARATHON_HEADER:String = "#quests:missions/tab/winter_marathon/header";
-      
-      public static const MISSIONS_TAB_WINTER_MARATHON_BODY:String = "#quests:missions/tab/winter_marathon/body";
-      
       public static const MISSIONS_TAB_KURSK_HEADER:String = "#quests:missions/tab/kursk/header";
       
       public static const MISSIONS_TAB_KURSK_BODY:String = "#quests:missions/tab/kursk/body";
@@ -2183,12 +2179,6 @@ package
       
       public static const MISSIONDETAILS_STATUS_COMPLETED_WEEKLY:String = "#quests:missionDetails/status/completed/weekly";
       
-      public static const MISSIONDETAILS_STATUS_COMPLETED_EVENT:String = "#quests:missionDetails/status/completed/event";
-      
-      public static const MISSIONDETAILS_STATUS_COMPLETE:String = "#quests:missionDetails/status/complete";
-      
-      public static const MISSIONDETAILS_STATUS_INPROGRESS:String = "#quests:missionDetails/status/inProgress";
-      
       public static const MISSIONDETAILS_STATUS_NOTAVAILABLE:String = "#quests:missionDetails/status/notAvailable";
       
       public static const MISSIONDETAILS_STATUS_WRONGVEHICLE:String = "#quests:missionDetails/status/wrongVehicle";
@@ -2278,8 +2268,6 @@ package
       public static const MISSIONDETAILS_REQUIREMENTS_CONCLUSION_AVAILABLE:String = "#quests:missionDetails/requirements/conclusion/available";
       
       public static const MISSIONDETAILS_REQUIREMENTS_CONCLUSION_UNAVAILABLE:String = "#quests:missionDetails/requirements/conclusion/unavailable";
-      
-      public static const MISSIONDETAILS_REQUIREMENTS_CONCLUSION_PREVIOUSINCOMPLETE:String = "#quests:missionDetails/requirements/conclusion/previousIncomplete";
       
       public static const MISSIONDETAILS_VEHICLESSELECT:String = "#quests:missionDetails/vehiclesSelect";
       
@@ -2382,8 +2370,6 @@ package
       public static const TOKEN_DEFAULT_BOX:String = "#quests:token/default/box";
       
       public static const TOKEN_DEFAULT_TANKREWARDS:String = "#quests:token/default/tankrewards";
-      
-      public static const TOKEN_DEFAULT_HE21_AFK_PARDON_ORDER:String = "#quests:token/default/he21_afk_pardon_order";
       
       public static const BONUSNAME_CREDITS:String = "#quests:bonusName/credits";
       
@@ -2517,7 +2503,9 @@ package
       
       public static const BONUSNAME_ENTITLEMENTS_RANKED_2020_DISCOUNT:String = "#quests:bonusName/entitlements/ranked_2020_discount";
       
-      public static const BONUSNAME_ENTITLEMENTS_RANKED_202109_ACCESS:String = "#quests:bonusName/entitlements/ranked_202109_access";
+      public static const BONUSNAME_ENTITLEMENTS_RANKED_202201_ACCESS:String = "#quests:bonusName/entitlements/ranked_202201_access";
+      
+      public static const BONUSNAME_ENTITLEMENTS_GIFTSYSTEM_2_NYSTAMP:String = "#quests:bonusName/entitlements/giftSystem_2_nyStamp";
       
       public static const BONUSNAME_BATTLE_BONUS_X5:String = "#quests:bonusName/battle_bonus_x5";
       
@@ -3293,11 +3281,15 @@ package
       
       public static const DAILYQUESTS_INFO_DAILYMISSIONS:String = "#quests:dailyQuests/info/dailyMissions";
       
+      public static const DAILYQUESTS_INFO_NYDAILYMISSIONS:String = "#quests:dailyQuests/info/NYDailyMissions";
+      
       public static const DAILYQUESTS_INFO_DAILYMISSIONTITLE:String = "#quests:dailyQuests/info/dailyMissionTitle";
       
       public static const DAILYQUESTS_INFO_BATTLEPASSDAILYMISSIONS:String = "#quests:dailyQuests/info/battlePassDailyMissions";
       
       public static const DAILYQUESTS_INFO_BATTLEPASSDAILYMISSIONTITLE:String = "#quests:dailyQuests/info/battlePassDailyMissionTitle";
+      
+      public static const DAILYQUESTS_INFO_GIFTSYSTEMDISABLEDDAILYMISSIONS:String = "#quests:dailyQuests/info/giftSystemDisabledDailyMissions";
       
       public static const PREMIUMQUESTS_INFO_PREMIUMMISSIONS:String = "#quests:premiumQuests/info/premiumMissions";
       
@@ -3359,4 +3351,46 @@ package
       
       public static const DAILYQUESTS_CONDITION_DESTROYMODULE_PLURAL_ACCUM:String = "#quests:dailyQuests/condition/destroyModule_plural_accum";
       
-      public static const DAILYQUESTS_CONDITION_DO
+      public static const DAILYQUESTS_CONDITION_DODAMAGEVEH_ACCUM:String = "#quests:dailyQuests/condition/doDamageVeh_accum";
+      
+      public static const DAILYQUESTS_CONDITION_DESTROYVEH_FEW_ACCUM:String = "#quests:dailyQuests/condition/destroyVeh_few_accum";
+      
+      public static const DAILYQUESTS_CONDITION_DESTROYVEH_PLURAL_ACCUM:String = "#quests:dailyQuests/condition/destroyVeh_plural_accum";
+      
+      public static const DETAILS_CONDITIONS_CUMULATIVE_DAMAGEDHP:String = "#quests:details/conditions/cumulative/damagedHp";
+      
+      public static const BATTLECONDITION_STATE_ENUM:Array = [BATTLECONDITION_STATE_COMPLETED,BATTLECONDITION_STATE_COMPLETED_PERFECTLY,BATTLECONDITION_STATE_IN_PROGRESS,BATTLECONDITION_STATE_FAILED];
+      
+      public static const QUEST_FLAG_STATUS_ENUM:Array = [QUEST_FLAG_STATUS_NOT_STARTED,QUEST_FLAG_STATUS_LOCKED,QUEST_FLAG_STATUS_FAILED,QUEST_FLAG_STATUS_COMPLETED,QUEST_FLAG_STATUS_IN_PROGRESS,QUEST_FLAG_STATUS_COMPLETED_PERFECTLY];
+       
+      
+      public function QUESTS()
+      {
+         super();
+      }
+      
+      public static function battlecondition_state(param1:String) : String
+      {
+         var _loc2_:String = null;
+         _loc2_ = "#quests:" + "battleCondition/state/" + param1;
+         if(BATTLECONDITION_STATE_ENUM.indexOf(_loc2_) == -1)
+         {
+            DebugUtils.LOG_WARNING("[battlecondition_state]:locale key \"" + _loc2_ + "\" was not found");
+            return null;
+         }
+         return _loc2_;
+      }
+      
+      public static function getFlagStatus(param1:String) : String
+      {
+         var _loc2_:String = null;
+         _loc2_ = "#quests:" + "quest/flag/status/" + param1;
+         if(QUEST_FLAG_STATUS_ENUM.indexOf(_loc2_) == -1)
+         {
+            DebugUtils.LOG_WARNING("[getFlagStatus]:locale key \"" + _loc2_ + "\" was not found");
+            return null;
+         }
+         return _loc2_;
+      }
+   }
+}

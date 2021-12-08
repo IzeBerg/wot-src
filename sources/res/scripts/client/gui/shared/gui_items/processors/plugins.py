@@ -1,10 +1,10 @@
 import logging, typing
 from collections import namedtuple
 from functools import partial
+import adisp, async
 from account_helpers.AccountSettings import AccountSettings
-import async as future_async
 from account_helpers import isLongDisconnectedFromCenter
-from adisp import process, async
+from constants import IS_EDITOR
 from gui import DialogsInterface
 from gui import makeHtmlString
 from gui.Scaleform.Waiting import Waiting
@@ -36,6 +36,8 @@ from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
 from soft_exception import SoftException
+if not IS_EDITOR:
+    from gui.impl.pub.dialog_window import DialogResult, DialogButtons
 if typing.TYPE_CHECKING:
     from gui.shared.gui_items.Vehicle import Vehicle
     from post_progression_common import ACTION_TYPES
@@ -85,13 +87,13 @@ class AsyncValidator(ProcessorPlugin):
     def __init__(self, isEnabled=True):
         super(AsyncValidator, self).__init__(self.TYPE.VALIDATOR, True, isEnabled=isEnabled)
 
-    @async
-    @process
+    @adisp.async
+    @adisp.process
     def validate(self, callback):
         result = yield self._validate()
         callback(result)
 
-    @async
+    @adisp.async
     def _validate(self, callback):
         callback(makeSuccess())
 
@@ -101,13 +103,13 @@ class AsyncConfirmator(ProcessorPlugin):
     def __init__(self, isEnabled=True):
         super(AsyncConfirmator, self).__init__(self.TYPE.CONFIRMATOR, True, isEnabled=isEnabled)
 
-    @async
-    @process
+    @adisp.async
+    @adisp.process
     def confirm(self, callback):
         result = yield self._confirm()
         callback(result)
 
-    @async
+    @adisp.async
     def _confirm(self, callback):
         callback(makeSuccess())
 
@@ -117,14 +119,14 @@ class AwaitConfirmator(ProcessorPlugin):
     def __init__(self, isEnabled=True):
         super(AwaitConfirmator, self).__init__(self.TYPE.CONFIRMATOR, isAsync=True, isEnabled=isEnabled)
 
-    @async
-    @future_async.async
+    @adisp.async
+    @async.async
     def confirm(self, callback):
         Waiting.suspend(lockerID=id(self))
-        yield future_async.await(self._confirm(callback))
+        yield async.await(self._confirm(callback))
         Waiting.resume(lockerID=id(self))
 
-    @future_async.async
+    @async.async
     def _confirm(self, callback):
         callback(makeSuccess())
 
@@ -281,7 +283,7 @@ class EliteVehiclesValidator(SyncValidator):
                 return makeError('invalid_vehicle')
             if item.itemTypeID is not GUI_ITEM_TYPE.VEHICLE:
                 return makeError('invalid_module_type')
-            if not item.isElite and not item.isOnlyForEventBattles:
+            if not item.isElite:
                 return makeError('vehicle_not_elite')
 
         return makeSuccess()
@@ -462,7 +464,7 @@ class DialogAbstractConfirmator(AsyncConfirmator):
     def _gfMakeMeta(self):
         return
 
-    @async
+    @adisp.async
     def _showDialog(self, callback):
         callback(None)
         return
@@ -470,8 +472,8 @@ class DialogAbstractConfirmator(AsyncConfirmator):
     def _activeHandler(self):
         return self.activeHandler()
 
-    @async
-    @process
+    @adisp.async
+    @adisp.process
     def _confirm(self, callback):
         yield lambda callback: callback(None)
         if self._activeHandler():
@@ -572,8 +574,8 @@ class TankmanOperationConfirmator(I18nMessageAbstractConfirmator):
         self.__previousPrice, _ = restore_contoller.getTankmenRestoreInfo(tankman)
         return
 
-    @async
-    @process
+    @adisp.async
+    @adisp.process
     def _confirm(self, callback):
         if self._activeHandler():
             isOk = yield DialogsInterface.showDialog(meta=self._makeMeta())
@@ -785,19 +787,6 @@ class PMFreeTokensValidator(_EventsCacheValidator):
         return makeSuccess()
 
 
-class TokenValidator(_EventsCacheValidator):
-
-    def __init__(self, tokenID, amount, isEnabled=True):
-        super(TokenValidator, self).__init__(isEnabled)
-        self._tokenID = tokenID
-        self._amount = amount
-
-    def _validate(self):
-        if self.eventsCache.questsProgress.getTokenCount(self._tokenID) < self._amount:
-            return makeError('NOT_ENOUGH_TOKENS')
-        return makeSuccess()
-
-
 class CheckBoxConfirmator(DialogAbstractConfirmator):
     __ACC_SETT_MAIN_KEY = 'checkBoxConfirmator'
 
@@ -808,8 +797,8 @@ class CheckBoxConfirmator(DialogAbstractConfirmator):
     def _activeHandler(self):
         return self._getSetting().get(self.settingFieldName)
 
-    @async
-    @process
+    @adisp.async
+    @adisp.process
     def _confirm(self, callback):
         yield lambda callback: callback(None)
         if self._activeHandler():
@@ -1021,6 +1010,41 @@ class BattleBoosterValidator(SyncValidator):
         if self.boosters and not self.__lobbyContext.getServerSettings().isBattleBoostersEnabled():
             return makeError('disabledService')
         return makeSuccess()
+
+
+class AsyncDialogConfirmator(AsyncConfirmator):
+
+    def __init__(self, dialogMethod, *args, **kwargs):
+        super(AsyncDialogConfirmator, self).__init__()
+        self.__dialogMethod = dialogMethod
+        self.__dialogArgs = args
+        self.__dialogKwargs = kwargs
+        self.__dialogResult = None
+        return
+
+    def getResult(self):
+        return self.__dialogResult
+
+    @adisp.async
+    def _confirm(self, callback):
+        self._makeConfirm(callback)
+
+    @async.async
+    def _makeConfirm(self, callback):
+        Waiting.suspend()
+        self.__dialogResult = yield async.await(self.__dialogMethod(*self.__dialogArgs, **self.__dialogKwargs))
+        Waiting.resume()
+        if isinstance(self.__dialogResult, DialogResult):
+            result = self.__dialogResult.result in DialogButtons.ACCEPT_BUTTONS
+        else:
+            if isinstance(self.__dialogResult, tuple):
+                result, _ = self.__dialogResult
+            else:
+                result = self.__dialogResult
+            if result:
+                callback(makeSuccess())
+                return
+        callback(makeError())
 
 
 class DismountForDemountKitValidator(SyncValidator):
@@ -1298,49 +1322,4 @@ class PostProgressionSetSlotTypeValidator(SyncValidator):
             return makeError('role_slot_switch_unavailable')
         if self.__slotID not in [ slot.slotID for slot in self.__vehicle.optDevices.dynSlotTypeOptions ]:
             return makeError('role_slot_invalid_option')
-        return makeSuccess()
-
-
-class CheckRewardBox(SyncValidator):
-
-    def __init__(self, controller, rewardBoxID, isSkipQuest, isEnabled=True):
-        super(CheckRewardBox, self).__init__(isEnabled)
-        self.controller = controller
-        self.rewardBoxID = rewardBoxID
-        self.isSkipQuest = isSkipQuest
-
-    def _validate(self):
-        controller = self.controller
-        rewardBox = controller.rewardBoxesConfig[self.rewardBoxID]
-        if not self.isSkipQuest:
-            if not controller.isRewardBoxRecieved(self.rewardBoxID):
-                return makeError('account_has_no_requested_rewardbox')
-            decodePrice = rewardBox.decodePrice
-            if decodePrice.currency is None or decodePrice.amount > controller.getRewardBoxKeyQuantity():
-                return makeError('not_enough_tokens_to_open_rewardbox')
-        else:
-            skipPrice = rewardBox.skipPrice
-            if skipPrice.currency is None or skipPrice.amount > controller.getRewardBoxKeyQuantity():
-                return makeError('quest_skip_for_requested_rewardbox_is_not_allowed')
-        return makeSuccess()
-
-
-class RandomStylesSellingAvailable(SyncValidator):
-
-    def __init__(self, isAvailable, isEnabled=True):
-        super(RandomStylesSellingAvailable, self).__init__(isEnabled)
-        self.isAvailable = isAvailable
-
-    def _validate(self):
-        if not self.isAvailable:
-            return makeError('sales_disabled')
-        return makeSuccess()
-
-
-class VehicleInBattle(SyncValidator):
-
-    def _validate(self):
-        from CurrentVehicle import g_currentVehicle
-        if g_currentVehicle.isInBattle():
-            return makeError('vehicle_in_battle')
         return makeSuccess()

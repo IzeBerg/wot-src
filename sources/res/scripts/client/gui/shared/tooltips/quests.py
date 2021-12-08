@@ -1,20 +1,19 @@
 import constants
 from CurrentVehicle import g_currentVehicle
 from gui import makeHtmlString
+from gui.impl import backport
+from gui.impl.gen import R
+from gui.ranked_battles.ranked_helpers import isRankedQuestID
 from gui.Scaleform.daapi.view.lobby.missions import missions_helper
 from gui.Scaleform.genConsts.BLOCKS_TOOLTIP_TYPES import BLOCKS_TOOLTIP_TYPES
 from gui.Scaleform.genConsts.ICON_TEXT_FRAMES import ICON_TEXT_FRAMES
 from gui.Scaleform.locale.ITEM_TYPES import ITEM_TYPES
 from gui.Scaleform.locale.MENU import MENU
 from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
-from gui.impl import backport
-from gui.impl.gen import R
-from gui.ranked_battles.ranked_helpers import isRankedQuestID
 from gui.server_events import events_helpers
 from gui.server_events.awards_formatters import TokenBonusFormatter, PreformattedBonus, LABEL_ALIGN
 from gui.server_events.bonuses import CustomizationsBonus
 from gui.server_events.cond_formatters.tooltips import MissionsAccountRequirementsFormatter
-from gui.server_events.events_helpers import isVehicleRequirementsOk, filterHalloweenAvailableQuest
 from gui.shared.formatters import text_styles, icons
 from gui.shared.gui_items import GUI_ITEM_TYPE_NAMES, GUI_ITEM_TYPE
 from gui.shared.gui_items.Vehicle import getTypeSmallIconPath
@@ -25,10 +24,10 @@ from gui.shared.utils.functions import makeTooltip
 from helpers import dependency, time_utils
 from helpers.i18n import makeString as _ms
 from shared_utils import findFirst
-from skeletons.gui.afk_controller import IAFKController
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.game_control import IQuestsController, IRankedBattlesController, IBattleRoyaleController
 from gui.Scaleform.daapi.view.lobby.battle_royale.tooltips.battle_royale_tooltip_quest_helper import getQuestsDescriptionForHangarFlag, getQuestTooltipBlock
+from skeletons.new_year import INewYearController
 _MAX_AWARDS_PER_TOOLTIP = 5
 _MAX_QUESTS_PER_TOOLTIP = 4
 _MAX_BONUSES_PER_QUEST = 2
@@ -43,20 +42,15 @@ class _StringTokenBonusFormatter(TokenBonusFormatter):
     def _formatComplexToken(self, complexToken, token, bonus):
         rTokenAlias = R.strings.tooltips.quests.bonuses.token
         userName = self._getUserName(complexToken.styleID)
-        header = backport.text(rTokenAlias.header(), userName=userName)
-        if TOOLTIPS.hasBonusesTokenHeader(complexToken.styleID):
-            header = _ms(TOOLTIPS.getBonusesTokenHeader(complexToken.styleID))
-        body = backport.text(rTokenAlias.body())
-        if TOOLTIPS.hasBonusesTokenBody(complexToken.styleID):
-            body = _ms(TOOLTIPS.getBonusesTokenBody(complexToken.styleID))
-        tooltip = makeTooltip(header, body)
-        return PreformattedBonus(bonusName=bonus.getName(), images=self._getTokenImages(complexToken.styleID), label=self._formatBonusLabel(token.count), userName=header, labelFormatter=self._getLabelFormatter(bonus), tooltip=tooltip, align=LABEL_ALIGN.RIGHT, isCompensation=self._isCompensation(bonus))
+        tooltip = makeTooltip(backport.text(rTokenAlias.header(), userName=userName), backport.text(rTokenAlias.body()))
+        return PreformattedBonus(bonusName=bonus.getName(), images=self._getTokenImages(complexToken.styleID), label=self._formatBonusLabel(token.count), userName=backport.text(rTokenAlias.header(), userName=userName), labelFormatter=self._getLabelFormatter(bonus), tooltip=tooltip, align=LABEL_ALIGN.RIGHT, isCompensation=self._isCompensation(bonus))
 
 
 class QuestsPreviewTooltipData(BlocksTooltipData):
     _questController = dependency.descriptor(IQuestsController)
     _eventsCache = dependency.descriptor(IEventsCache)
     __battleRoyaleController = dependency.descriptor(IBattleRoyaleController)
+    _nyController = dependency.descriptor(INewYearController)
 
     def __init__(self, context):
         super(QuestsPreviewTooltipData, self).__init__(context, TOOLTIP_TYPE.QUESTS)
@@ -64,15 +58,10 @@ class QuestsPreviewTooltipData(BlocksTooltipData):
         self._setMargins(afterBlock=0)
         self._setWidth(297)
 
-    def _getQuestList(self, vehicle):
-        afkController = dependency.instance(IAFKController)
-        return sorted([ q for q in self._questController.getCurrentModeQuestsForVehicle(vehicle, True) if filterHalloweenAvailableQuest(q) and afkController.questFilter(q)
-                      ], key=events_helpers.questsSortFunc)
-
     def _packBlocks(self, *args, **kwargs):
         items = super(QuestsPreviewTooltipData, self)._packBlocks()
         vehicle = g_currentVehicle.item
-        quests = self._getQuestList(vehicle)
+        quests = sorted(self._questController.getCurrentModeQuestsForVehicle(vehicle, True), key=events_helpers.questsSortFunc)
         if quests:
             items.append(self._getHeader(len(quests), vehicle.shortUserName, R.strings.tooltips.hangar.header.quests.description.vehicle()))
             for quest in quests:
@@ -91,7 +80,7 @@ class QuestsPreviewTooltipData(BlocksTooltipData):
             allQuests = self._eventsCache.getQuests(filterFunc=_filter)
             if allQuests:
                 items.append(self._getHeader(len(quests), vehicle.shortUserName, R.strings.tooltips.hangar.header.quests.description.vehicle()))
-                items.append(self._getAllQuestsCompleteBlock())
+                items.append(self._getBody(TOOLTIPS.HANGAR_HEADER_QUESTS_EMPTY_VEHICLE))
             else:
                 items.append(self._getHeader(len(quests), vehicle.shortUserName, R.strings.tooltips.hangar.header.quests.description()))
                 items.append(self._getBody(TOOLTIPS.HANGAR_HEADER_QUESTS_EMPTY))
@@ -124,9 +113,6 @@ class QuestsPreviewTooltipData(BlocksTooltipData):
         isAvailable, _ = quest.isAvailable()
         return self._packQuest(quest.getUserName(), bonusNames, isAvailable)
 
-    def _getAllQuestsCompleteBlock(self):
-        return self._getBody(TOOLTIPS.HANGAR_HEADER_QUESTS_EMPTY_VEHICLE)
-
     def _getHeader(self, count, vehicleName, description):
         if self.__battleRoyaleController.isBattleRoyaleMode():
             questHeader = backport.text(R.strings.epic_battle.questsTooltip.epicBattle.steelhunter.header())
@@ -136,7 +122,8 @@ class QuestsPreviewTooltipData(BlocksTooltipData):
             questHeader = backport.text(R.strings.tooltips.hangar.header.quests.header(), count=count)
             img = backport.image(R.images.gui.maps.icons.quests.questTooltipHeader())
             desc = text_styles.main(backport.text(description, vehicle=vehicleName))
-        return formatters.packImageTextBlockData(title=text_styles.highTitle(questHeader), img=img, txtPadding=formatters.packPadding(top=20), txtOffset=20, desc=desc)
+        isNYEventEnabled = self._nyController.isEnabled()
+        return formatters.packImageTextBlockData(title=text_styles.highTitle(questHeader), img=backport.image(R.images.gui.maps.icons.quests.nyQuestTooltipHeader()) if isNYEventEnabled else img, txtPadding=formatters.packPadding(top=20), txtOffset=20, desc=desc)
 
     def _getBottom(self, value):
         if value > 0:
@@ -232,7 +219,7 @@ class UnavailableQuestTooltipData(BlocksTooltipData):
         reqList = self.__getList(requirements)
         if reqList:
             items.extend(self.__getListBlock(TOOLTIPS.QUESTS_UNAVAILABLE_REQUIREMENT_HEADER, reqList))
-        if not isVehicleRequirementsOk(quest):
+        if not (quest.vehicleReqs.isAnyVehicleAcceptable() or quest.vehicleReqs.getSuitableVehicles()):
             items.extend(self.__getNotVehicle())
         items.append(self.__getBootom(backport.text(R.strings.tooltips.quests.unavailable.bottom())))
         return items
@@ -298,7 +285,7 @@ class AdditionalAwardTooltipData(BlocksTooltipData):
 
     def _packBlocks(self, *args, **kwargs):
         items = super(AdditionalAwardTooltipData, self)._packBlocks()
-        items.append(self._getHeaderBlock())
+        items.append(formatters.packTextBlockData(text_styles.middleTitle(TOOLTIPS.QUESTS_AWARDS_ADDITIONAL_HEADER), padding=formatters.packPadding(top=8, bottom=8)))
         for bonus in args:
             bonusDict = flashObject2Dict(bonus)
             bonusName = bonusDict.get('name', '')
@@ -324,9 +311,6 @@ class AdditionalAwardTooltipData(BlocksTooltipData):
                 break
 
         return items
-
-    def _getHeaderBlock(self):
-        return formatters.packTextBlockData(text_styles.middleTitle(TOOLTIPS.QUESTS_AWARDS_ADDITIONAL_HEADER), padding=formatters.packPadding(top=8, bottom=8))
 
 
 class RentVehicleAwardTooltipData(BlocksTooltipData):

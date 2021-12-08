@@ -161,6 +161,10 @@ class EffectsListPlayer(object):
         self.__data = dict()
         return
 
+    @property
+    def isStarted(self):
+        return self.__isStarted
+
     def play(self, model, startKeyPoint=None, callbackFunc=None, waitForKeyOff=False):
         needPlay, newKey = self.__isNeedToPlay(waitForKeyOff)
         if not needPlay:
@@ -1538,30 +1542,27 @@ def __keyPointsFromTimeLineSection(keyPointSection):
 
 
 def effectsFromSection(section):
-    if section is None:
-        return
-    else:
-        keyPoints = None
-        stagesSection = section['stages']
-        if stagesSection is not None:
-            keyPoints = __keyPointsFromStagesSection(stagesSection)
-        timeLineSection = section['timeline']
-        if timeLineSection is not None:
-            if keyPoints is None:
-                keyPoints = __keyPointsFromTimeLineSection(timeLineSection)
-            else:
-                raise SoftException('Both stages and timeline defined in effect %s' % section.name)
+    keyPoints = None
+    stagesSection = section['stages']
+    if stagesSection is not None:
+        keyPoints = __keyPointsFromStagesSection(stagesSection)
+    timeLineSection = section['timeline']
+    if timeLineSection is not None:
         if keyPoints is None:
-            raise SoftException('Neither stages nor timeline defined in effect %s' % section.name)
-        if isinstance(keyPoints, str):
-            raise SoftException('Duplicate keypoint %s in effect %s' % (keyPoints, section.name))
-        effectsSec = section['effects']
-        effectList = EffectsList(effectsSec)
-        if section['relatedEffects'] is not None:
-            for tagName, subSection in section['relatedEffects'].items():
-                effectList.relatedEffects[tagName] = effectsFromSection(subSection)
+            keyPoints = __keyPointsFromTimeLineSection(timeLineSection)
+        else:
+            raise SoftException('Both stages and timeline defined in effect %s' % section.name)
+    if keyPoints is None:
+        raise SoftException('Neither stages nor timeline defined in effect %s' % section.name)
+    if isinstance(keyPoints, str):
+        raise SoftException('Duplicate keypoint %s in effect %s' % (keyPoints, section.name))
+    effectsSec = section['effects']
+    effectList = EffectsList(effectsSec)
+    if section['relatedEffects'] is not None:
+        for tagName, subSection in section['relatedEffects'].items():
+            effectList.relatedEffects[tagName] = effectsFromSection(subSection)
 
-        return EffectsTimeLine(keyPoints, effectList)
+    return EffectsTimeLine(keyPoints, effectList)
 
 
 class RespawnDestroyEffect(object):

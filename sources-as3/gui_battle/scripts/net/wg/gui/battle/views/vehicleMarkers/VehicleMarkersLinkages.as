@@ -38,10 +38,6 @@ package net.wg.gui.battle.views.vehicleMarkers
       public static const ACTION_SUPPORTING_ALLY:String = "SupportingAllyUI";
       
       public static const ACTION_SUPPORTING_ALLY_ALTERNATIVE:String = "SupportingAllyAlternativeUI";
-      
-      public static const ACTION_EVENT_GOTO_VOLOT_ALTERNATIVE:String = "EventGotoVolotAltUI";
-      
-      public static const ACTION_EVENT_GOTO_CAMP_ALTERNATIVE:String = "EventGotoCampAltUI";
        
       
       public function VehicleMarkersLinkages()

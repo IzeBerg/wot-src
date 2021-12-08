@@ -4,8 +4,7 @@ class SafeUnpickler(object):
     PICKLE_SAFE = {'__builtin__': set(['object', 'set', 'frozenset', 'list', 'tuple']), 
        'datetime': set(['datetime']), 
        '_BWp': set(['Array', 'FixedDict']), 
-       'Math': set(['Vector2', 'Vector3']), 
-       'enumerations': set(['EnumItem'])}
+       'Math': set(['Vector2', 'Vector3'])}
 
     @classmethod
     def find_class(cls, module, name):

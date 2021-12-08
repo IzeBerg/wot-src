@@ -110,7 +110,7 @@ def decorator(dec):
     return wrapper
 
 
-def condition(attributeName, logFunc=None, logStack=True, result=None):
+def condition(attributeName, logFunc=None, logStack=True):
 
     def decorator(func):
 
@@ -119,7 +119,7 @@ def condition(attributeName, logFunc=None, logStack=True, result=None):
             if not bool(attribute):
                 if logFunc:
                     logFunc('Method condition failed', func, args, kwargs, stack=logStack)
-                return result
+                return
             return func(*args, **kwargs)
 
         return decorate(func, wrapper)

@@ -19,6 +19,3 @@ class EventLoadingPage(BCIntroPage, IArenaLoadController):
 
     def videoFinished(self):
         pass
-
-    def _muteLoginScreenMusic(self):
-        pass

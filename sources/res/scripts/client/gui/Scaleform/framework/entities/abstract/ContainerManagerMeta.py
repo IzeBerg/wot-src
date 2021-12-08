@@ -44,3 +44,19 @@ class ContainerManagerMeta(BaseDAAPIComponent):
     def as_isContainerShownS(self, layer):
         if self._isDAAPIInited():
             return self.flashObject.as_isContainerShown(layer)
+
+    def as_getVisibleLayersS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_getVisibleLayers()
+
+    def as_setVisibleLayersS(self, layers):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setVisibleLayers(layers)
+
+    def as_setContainersVisibleS(self, visible, excludes):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setContainersVisible(visible, excludes)
+
+    def as_storeContainersVisibleS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_storeContainersVisible()

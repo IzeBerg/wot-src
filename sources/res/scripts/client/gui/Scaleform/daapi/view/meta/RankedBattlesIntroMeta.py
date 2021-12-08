@@ -14,6 +14,14 @@ class RankedBattlesIntroMeta(View):
     def onPlayVideoClick(self):
         self._printOverrideError('onPlayVideoClick')
 
-    def as_setDataS(self, headerData, blocksData):
+    def as_setDataS(self, data):
         if self._isDAAPIInited():
-            return self.flashObject.as_setData(headerData, blocksData)
+            return self.flashObject.as_setData(data)
+
+    def as_setAlertMessageBlockDataS(self, data):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setAlertMessageBlockData(data)
+
+    def as_setBeforeSeasonBlockDataS(self, data):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setBeforeSeasonBlockData(data)

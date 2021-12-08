@@ -144,10 +144,6 @@ package net.wg.gui.battle.views.epicSpectatorView
          showDeadReason();
       }
       
-      public function as_showHint(param1:Boolean) : void
-      {
-      }
-      
       public function updateStage(param1:int, param2:int) : void
       {
          this.damagePanelOverlay.x = 0;

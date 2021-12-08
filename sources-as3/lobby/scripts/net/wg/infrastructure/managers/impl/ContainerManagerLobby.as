@@ -2,6 +2,7 @@ package net.wg.infrastructure.managers.impl
 {
    import flash.display.DisplayObject;
    import flash.utils.Dictionary;
+   import net.wg.infrastructure.interfaces.ISimpleManagedContainer;
    import scaleform.clik.motion.Tween;
    
    public class ContainerManagerLobby extends ContainerManagerBase
@@ -20,6 +21,12 @@ package net.wg.infrastructure.managers.impl
       
       override protected function onDispose() : void
       {
+         this.killTweens();
+         super.onDispose();
+      }
+      
+      protected function killTweens() : void
+      {
          var _loc1_:DisplayObject = null;
          var _loc2_:Tween = null;
          var _loc3_:* = null;
@@ -30,7 +37,6 @@ package net.wg.infrastructure.managers.impl
             _loc2_.dispose();
             delete this._tweenByContainer[_loc1_];
          }
-         super.onDispose();
       }
       
       override protected function showContainers(param1:Vector.<int>, param2:int) : void
@@ -51,6 +57,7 @@ package net.wg.infrastructure.managers.impl
                   "onComplete":this.onShowingComplete,
                   "fastTransform":false
                });
+               _loc3_.data = {"isHiding":false};
                this._tweenByContainer[_loc4_] = _loc3_;
             }
             else
@@ -77,6 +84,7 @@ package net.wg.infrastructure.managers.impl
                   "onComplete":this.onHidingComplete,
                   "fastTransform":false
                });
+               _loc3_.data = {"isHiding":true};
                this._tweenByContainer[_loc4_] = _loc3_;
             }
             else
@@ -112,6 +120,44 @@ package net.wg.infrastructure.managers.impl
          _loc2_.cacheAsBitmap = false;
          param1.dispose();
          delete this._tweenByContainer[_loc2_];
+      }
+      
+      override public function as_getVisibleLayers() : Array
+      {
+         var _loc3_:int = 0;
+         var _loc4_:DisplayObject = null;
+         var _loc5_:Tween = null;
+         var _loc1_:Array = super.as_getVisibleLayers();
+         var _loc2_:int = _loc1_.length - 1;
+         while(_loc2_ >= 0)
+         {
+            _loc3_ = _loc1_[_loc2_];
+            _loc4_ = _containersMap[_loc3_] as DisplayObject;
+            if(_loc4_)
+            {
+               _loc5_ = this._tweenByContainer[_loc4_];
+               if(_loc5_ && _loc5_.data.isHiding)
+               {
+                  _loc1_.splice(_loc2_,1);
+               }
+            }
+            _loc2_--;
+         }
+         return _loc1_;
+      }
+      
+      override protected function setVisibleLayers(param1:Vector.<int>) : void
+      {
+         var _loc2_:ISimpleManagedContainer = null;
+         super.setVisibleLayers(param1);
+         this.killTweens();
+         for each(_loc2_ in _containersMap)
+         {
+            if(_loc2_)
+            {
+               _loc2_.alpha = !!_loc2_.visible ? Number(1) : Number(0);
+            }
+         }
       }
    }
 }

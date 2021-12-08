@@ -13,8 +13,6 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
       private static var LINE_THICKNESS:Number = 1;
       
       private static var AREA_MAX_SIZE_REAL:Number = 210;
-      
-      private static var INITIAL_DYNAMIC_RADIUS:Number = 0;
        
       
       private var _minMC:Shape = null;
@@ -31,11 +29,10 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
       
       private var _circleDiameterCoeff:Number = 0;
       
-      private var _currentDynamicRadius:Number;
+      private var _currentDynamicRadius:Number = 0;
       
       public function ViewRangeCirclesMinimapEntry()
       {
-         this._currentDynamicRadius = INITIAL_DYNAMIC_RADIUS;
          super();
       }
       
@@ -87,7 +84,7 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
          {
             this.removeChild(this._dynamicMC);
             this._dynamicMC = null;
-            this._currentDynamicRadius = INITIAL_DYNAMIC_RADIUS;
+            this._currentDynamicRadius = 0;
          }
       }
       
@@ -143,8 +140,7 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
       
       private function initializeCircle(param1:Number, param2:Number, param3:Number) : Shape
       {
-         var _loc4_:Shape = null;
-         _loc4_ = new Shape();
+         var _loc4_:Shape = new Shape();
          this.addChild(_loc4_);
          _loc4_.blendMode = BlendMode.ADD;
          _loc4_.x = 0;

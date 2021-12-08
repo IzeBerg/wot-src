@@ -1,14 +1,21 @@
 package net.wg.gui.lobby.hangar.ammunitionPanel
 {
+   import flash.display.Graphics;
+   import flash.display.MovieClip;
+   import flash.display.Sprite;
+   import flash.events.Event;
    import flash.events.MouseEvent;
    import flash.text.TextField;
    import net.wg.data.constants.Directions;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
+   import net.wg.gui.components.controls.Image;
    import net.wg.gui.components.tooltips.helpers.TankTypeIco;
    import net.wg.gui.lobby.hangar.ammunitionPanel.data.VehicleStatusVO;
    import net.wg.gui.lobby.hangar.ammunitionPanel.events.AmmunitionPanelEvents;
+   import net.wg.gui.lobby.ny2020.NYVehicleBonusPanel;
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.managers.ITooltipMgr;
+   import net.wg.infrastructure.uilogger.new_year.LogTankBonus;
    import net.wg.utils.ICommons;
    import net.wg.utils.helpLayout.HelpLayoutVO;
    import org.idmedia.as3commons.util.StringUtils;
@@ -16,6 +23,18 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
    
    public class VehicleStatus extends UIComponentEx
    {
+      
+      private static const CHECKED_BONUS_ICON:String = "icon_free_exp_main_screen";
+      
+      private static const CHECKED_ICON_OFFSET:int = -4;
+      
+      private static const NY_BONUS_ICON_OFFSET:int = 8;
+      
+      private static const NY_CREDITS_ICON_Y_OFFSET:int = 9;
+      
+      private static const NY_CREDITS_BONUS_ICON_OFFSET:int = 12;
+      
+      private static const ICON_OFFSET_Y:int = 3;
       
       private static const ELITE_TYPE_GAP:int = -2;
       
@@ -33,6 +52,8 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
       
       private static const HELP_LAYOUT_OFFSET_Y:int = -5;
       
+      private static const BONUS_HIT_OFFSET_Y:int = 10;
+      
       private static const MESSAGE_Y:int = 38;
       
       private static const MESSAGE_Y_OFFSET:int = -6;
@@ -48,17 +69,32 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
       
       public var roleMessage:VehicleStatusMsg = null;
       
+      public var nyIcon:Image = null;
+      
+      public var nyTfBonusLabel:TextField = null;
+      
+      public var nyCreditsIcon:MovieClip = null;
+      
+      public var nyTfCreditsBonusLabel:TextField = null;
+      
+      public var nyBonusPanel:NYVehicleBonusPanel = null;
+      
       private var _data:VehicleStatusVO = null;
       
       private var _vehicleStateHelpLayoutId:String = "";
       
       private var _toolTipMgr:ITooltipMgr;
       
+      private var _logger:LogTankBonus;
+      
       private var _commons:ICommons;
+      
+      private var _bonusHitArea:Sprite;
       
       public function VehicleStatus()
       {
          this._toolTipMgr = App.toolTipMgr;
+         this._logger = new LogTankBonus();
          this._commons = App.utils.commons;
          super();
       }
@@ -66,13 +102,27 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
       override protected function configUI() : void
       {
          super.configUI();
+         this.nyBonusPanel.visible = false;
          this.tankTypeIcon.mouseEnabled = this.tankTypeIcon.mouseChildren = false;
+         this.vehicleName.mouseEnabled = false;
+         this.vehicleLevel.mouseEnabled = false;
+         this.nyIcon.mouseEnabled = this.nyIcon.mouseChildren = false;
+         this.nyCreditsIcon.mouseEnabled = this.nyCreditsIcon.mouseChildren = false;
+         this.nyTfBonusLabel.mouseEnabled = false;
+         this.nyTfCreditsBonusLabel.mouseEnabled = false;
+         this.message.mouseEnabled = false;
          this.roleMessage.addEventListener(MouseEvent.ROLL_OVER,this.onRoleMessageRollOverHandler);
          this.roleMessage.addEventListener(MouseEvent.ROLL_OUT,this.onRoleMessageRollOutHandler);
+         this.nyBonusPanel.addEventListener(MouseEvent.CLICK,this.onNYBonusPanelClickHandler);
       }
       
       override protected function onDispose() : void
       {
+         if(this._bonusHitArea != null)
+         {
+            this._bonusHitArea.removeEventListener(MouseEvent.ROLL_OVER,this.onBonusRollOverHandler);
+            this._bonusHitArea.removeEventListener(MouseEvent.ROLL_OUT,this.onBonusRollOutHandler);
+         }
          this.roleMessage.removeEventListener(MouseEvent.ROLL_OVER,this.onRoleMessageRollOverHandler);
          this.roleMessage.removeEventListener(MouseEvent.ROLL_OUT,this.onRoleMessageRollOutHandler);
          this.roleMessage.dispose();
@@ -81,11 +131,22 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
          this.message = null;
          this.tankTypeIcon.dispose();
          this.tankTypeIcon = null;
+         this._logger.dispose();
+         this._logger = null;
          this.vehicleName = null;
          this.vehicleLevel = null;
          this._data = null;
          this._toolTipMgr = null;
          this._commons = null;
+         this.nyBonusPanel.removeEventListener(MouseEvent.CLICK,this.onNYBonusPanelClickHandler);
+         this.nyBonusPanel.dispose();
+         this.nyBonusPanel = null;
+         this.nyIcon.removeEventListener(Event.CHANGE,this.onNyIconChangeHandler);
+         this.nyIcon.dispose();
+         this.nyIcon = null;
+         this.nyTfBonusLabel = null;
+         this.nyCreditsIcon = null;
+         this.nyTfCreditsBonusLabel = null;
          super.onDispose();
       }
       
@@ -123,6 +184,19 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
                   this.roleMessage.setMessage(_loc3_);
                   this.roleMessage.validateNow();
                }
+               this.nyBonusPanel.setTooltip(this._data.nyTooltip);
+               this.nyBonusPanel.visible = this._data.isNYVehicle;
+               if(!this.nyIcon.hasEventListener(Event.CHANGE))
+               {
+                  this.nyIcon.addEventListener(Event.CHANGE,this.onNyIconChangeHandler);
+               }
+               this.nyIcon.source = this._data.nyBonusIcon;
+               this.nyTfBonusLabel.text = this._data.nyBonusValue;
+               this.nyTfCreditsBonusLabel.text = this._data.creditsAmount;
+               App.utils.commons.updateTextFieldSize(this.nyTfBonusLabel,true,true);
+               this.nyIcon.visible = this._data.isNYVehicle;
+               this.nyTfBonusLabel.visible = this._data.isNYVehicle;
+               this.nyTfCreditsBonusLabel.visible = this.nyCreditsIcon.visible = this._data.isCreditsBonusVisible;
                invalidateSize();
             }
             if(isInvalid(InvalidationType.SIZE))
@@ -134,9 +208,35 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
                this.tankTypeIcon.x = this.vehicleLevel.x + this.vehicleLevel.width + this.tankTypeIcon.width + _loc5_ ^ 0;
                this.vehicleName.x = this.tankTypeIcon.x + this.tankTypeIcon.width + _loc5_ ^ 0;
                _loc6_ = this.vehicleName.x + this.vehicleName.width >> 1;
+               if(this._data.isNYVehicle)
+               {
+                  this.nyIcon.x = this.vehicleName.x + this.vehicleName.textWidth + NY_BONUS_ICON_OFFSET;
+                  this.nyIcon.y = (this.nyTfBonusLabel.y + this.nyTfBonusLabel.textHeight - this.nyIcon.height >> 1) + ICON_OFFSET_Y;
+                  this.nyTfBonusLabel.x = this.nyIcon.x + this.nyIcon.width + (this._data.nyBonusIcon.indexOf(CHECKED_BONUS_ICON) > -1 ? CHECKED_ICON_OFFSET : 0);
+                  _loc6_ = this.nyTfBonusLabel.x + this.nyTfBonusLabel.width >> 1;
+                  if(this._data.isCreditsBonusVisible)
+                  {
+                     this.nyCreditsIcon.x = this.nyTfBonusLabel.x + this.nyTfBonusLabel.textWidth + NY_CREDITS_BONUS_ICON_OFFSET;
+                     this.nyCreditsIcon.y = this.nyIcon.y + NY_CREDITS_ICON_Y_OFFSET;
+                     this.nyTfCreditsBonusLabel.x = this.nyCreditsIcon.x + this.nyCreditsIcon.width;
+                     _loc6_ = this.nyTfCreditsBonusLabel.x + this.nyTfCreditsBonusLabel.width >> 1;
+                  }
+               }
                this.vehicleLevel.x -= _loc6_;
                this.tankTypeIcon.x -= _loc6_;
                this.vehicleName.x -= _loc6_;
+               this.nyIcon.x -= _loc6_;
+               this.nyTfBonusLabel.x -= _loc6_;
+               this.nyCreditsIcon.x -= _loc6_;
+               this.nyTfCreditsBonusLabel.x -= _loc6_;
+               if(this._data.isCreditsBonusVisible)
+               {
+                  this.updateBonusHitArea();
+               }
+               else if(this._bonusHitArea)
+               {
+                  this._bonusHitArea.visible = false;
+               }
                _loc7_ = MESSAGE_Y;
                if(this.roleMessage.visible)
                {
@@ -187,6 +287,28 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
          invalidateSize();
       }
       
+      private function updateBonusHitArea() : void
+      {
+         if(this._bonusHitArea == null)
+         {
+            this._bonusHitArea = new Sprite();
+            addChild(this._bonusHitArea);
+            this._bonusHitArea.buttonMode = true;
+            this._bonusHitArea.addEventListener(MouseEvent.ROLL_OVER,this.onBonusRollOverHandler);
+            this._bonusHitArea.addEventListener(MouseEvent.ROLL_OUT,this.onBonusRollOutHandler);
+            this._bonusHitArea.addEventListener(MouseEvent.CLICK,this.onNYBonusPanelClickHandler);
+            this._bonusHitArea.alpha = 0;
+         }
+         this._bonusHitArea.visible = true;
+         this._bonusHitArea.x = this.nyIcon.x;
+         var _loc1_:Graphics = this._bonusHitArea.graphics;
+         _loc1_.clear();
+         _loc1_.beginFill(16711680,0.3);
+         var _loc2_:int = this.nyTfCreditsBonusLabel.x + this.nyTfCreditsBonusLabel.textWidth - this.nyIcon.x;
+         _loc1_.drawRect(0,-BONUS_HIT_OFFSET_Y,_loc2_,this.nyIcon.height + BONUS_HIT_OFFSET_Y);
+         _loc1_.endFill();
+      }
+      
       override public function get height() : Number
       {
          var _loc1_:int = this.vehicleName.height;
@@ -209,6 +331,27 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
       public function get statusStartY() : int
       {
          return this.y + this.message.y;
+      }
+      
+      private function onBonusRollOutHandler(param1:MouseEvent) : void
+      {
+         this._toolTipMgr.hide();
+      }
+      
+      private function onBonusRollOverHandler(param1:MouseEvent) : void
+      {
+         this._toolTipMgr.showWulfTooltip(TOOLTIPS_CONSTANTS.NY_AMMUNITION_BONUSES,this._data.vehicleCD);
+      }
+      
+      private function onNYBonusPanelClickHandler(param1:MouseEvent) : void
+      {
+         this._logger.bonusClick();
+         dispatchEvent(new AmmunitionPanelEvents(AmmunitionPanelEvents.NY_BONUS_PANEL_CLICKED));
+      }
+      
+      private function onNyIconChangeHandler(param1:Event) : void
+      {
+         invalidateSize();
       }
       
       private function onRoleMessageRollOverHandler(param1:MouseEvent) : void

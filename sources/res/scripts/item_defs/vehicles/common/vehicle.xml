@@ -81,8 +81,6 @@
 		<groundCollisionLight>groundCollisionLight</groundCollisionLight>
 		<groundCollisionHeavy>groundCollisionHeavy</groundCollisionHeavy>
 		<collisionDamage>collisionDamage</collisionDamage>
-		<oilCollisionLight>oilCollisionLight</oilCollisionLight>
-		<oilCollisionHeavy>oilCollisionHeavy</oilCollisionHeavy>
 		<sandCollisionLight>sandCollisionLight</sandCollisionLight>
 		<sandCollisionHeavy>sandCollisionHeavy</sandCollisionHeavy>
 		<snowCollisionLight>snowCollisionLight</snowCollisionLight>
@@ -113,7 +111,6 @@
 		<flamingOnGround>turret_flaming_medium</flamingOnGround>
 		<collision>
 			<ground>turret_touchdown_medium</ground>
-			<oil>turret_touchdown_medium</oil>
 			<sand>turret_touchdown_medium</sand>
 			<snow>turret_touchdown_medium</snow>
 			<stone>turret_touchdown_medium_solid</stone>
@@ -125,7 +122,6 @@
 		</collision>
 		<pull>
 			<ground>turret_pull_ground</ground>
-			<oil>turret_pull_oil</oil>
 			<sand>turret_pull_sand</sand>
 			<snow>turret_pull_snow</snow>
 			<stone>turret_pull_stone</stone>
@@ -234,40 +230,6 @@
 				</visionRadius>
 			</gameplayFactors>
 		</overturn>
-		<overturn_event_battles>
-			NoneExtra : OverturnEventBattles
-			<correctionDelay>
-				5.0
-				<!--BW_String-->
-			</correctionDelay>
-			<isOnboardShotAllowed>true</isOnboardShotAllowed>
-			<gameplayFactors>
-				<reloadTime>
-					2.0
-					<!--BW_String-->
-				</reloadTime>
-				<turretRotationSpeed>
-					0.5
-					<!--BW_String-->
-				</turretRotationSpeed>
-				<gunRotationSpeed>
-					0.5
-					<!--BW_String-->
-				</gunRotationSpeed>
-				<aimingTime>
-					2.0
-					<!--BW_String-->
-				</aimingTime>
-				<shotDispersion>
-					2.0
-					<!--BW_String-->
-				</shotDispersion>
-				<visionRadius>
-					0.5
-					<!--BW_String-->
-				</visionRadius>
-			</gameplayFactors>
-		</overturn_event_battles>
 		<drowning>NoneExtra : Drowning</drowning>
 		<burnout>NoneExtra : Burnout</burnout>
 		<afterburning>NoneExtra : Afterburning</afterburning>
@@ -312,7 +274,7 @@
 				<functional>track_functional</functional>
 				<functionalCanMove>track_functional_can_move</functionalCanMove>
 			</sounds>
-			<deviceUserString>#ingame_gui:devices/left_track</deviceUserString>
+			<deviceUserString>#ingame_gui:devices/track</deviceUserString>
 		</leftTrack0Health>
 		<rightTrack0Health>
 			TrackHealth : TrackHealth
@@ -324,7 +286,7 @@
 				<functional>track_functional</functional>
 				<functionalCanMove>track_functional_can_move</functionalCanMove>
 			</sounds>
-			<deviceUserString>#ingame_gui:devices/right_track</deviceUserString>
+			<deviceUserString>#ingame_gui:devices/track</deviceUserString>
 		</rightTrack0Health>
 		<gunHealth>
 			DamageMarker : GunHealth
@@ -449,23 +411,6 @@
 			</beamLength>
 			<bindNode>HP_gunFire</bindNode>
 		</laserSight>
-		<visionDistanceTuner>NoneExtra : VehicleVisionDistanceTuner</visionDistanceTuner>
-		<radioDistanceTuner>NoneExtra : VehicleRadioDistanceTuner</radioDistanceTuner>
-		<deathPit>NoneExtra : DeathPit</deathPit>
-		<visibilityOverwrite>NoneExtra: VisibilityOverwrite</visibilityOverwrite>
-		<nitroRamDamage>NoneExtra : BuffExtra</nitroRamDamage>
-		<nitroRamDamage2>NoneExtra : BuffExtra</nitroRamDamage2>
-		<nitroRamDamage3>NoneExtra : BuffExtra</nitroRamDamage3>
-		<nitroRamDamage4>NoneExtra : BuffExtra</nitroRamDamage4>
-		<nitroRamDamage5>NoneExtra : BuffExtra</nitroRamDamage5>
-		<nitroRamDamage6>NoneExtra : BuffExtra</nitroRamDamage6>
-		<invulnerability>NoneExtra : BuffExtra</invulnerability>
-		<instantReload>NoneExtra : InstantReloadExtra</instantReload>
-		<hpRepairAndCrewHeal>NoneExtra : HpRepairAndCrewHealExtra</hpRepairAndCrewHeal>
-		<teamRepairKit>NoneExtra : TeamRepairKitExtra</teamRepairKit>
-		<nearestEnemyDamage2>NoneExtra : DamageNearestEnemyEquipment</nearestEnemyDamage2>
-		<igniteEnemiesInRadius>NoneExtra : ApplyBuffInRadiusExtra</igniteEnemiesInRadius>
-		<drainEnemyHpInRadius>NoneExtra : DrainHpInRadiusEquipment</drainEnemyHpInRadius>
 		<large_repairkit_battle_royale>NoneExtra : RepairkitBattleRoyale</large_repairkit_battle_royale>
 		<overturn_battle_royale>
 			NoneExtra : OverturnBattleRoyale

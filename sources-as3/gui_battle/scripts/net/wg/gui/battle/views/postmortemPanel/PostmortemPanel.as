@@ -47,12 +47,6 @@ package net.wg.gui.battle.views.postmortemPanel
       
       public var exitToHangarDescTF:TextField = null;
       
-      public var hintBg:BattleAtlasSprite = null;
-      
-      public var hintTitleTF:TextField = null;
-      
-      public var hintDescTF:TextField = null;
-      
       private var _dogTagVictim:DogtagComponent = null;
       
       private var _dogTagKiller:DogtagComponent = null;
@@ -80,9 +74,6 @@ package net.wg.gui.battle.views.postmortemPanel
          super();
          mouseChildren = false;
          mouseEnabled = false;
-         this.hintBg.visible = false;
-         this.hintTitleTF.visible = false;
-         this.hintDescTF.visible = false;
       }
       
       override protected function configUI() : void
@@ -320,9 +311,6 @@ package net.wg.gui.battle.views.postmortemPanel
          this.observerModeDescTF = null;
          this.exitToHangarTitleTF = null;
          this.exitToHangarDescTF = null;
-         this.hintBg = null;
-         this.hintTitleTF = null;
-         this.hintDescTF = null;
          if(this._dogTagVictim)
          {
             this._dogTagVictim.dispose();
@@ -388,19 +376,6 @@ package net.wg.gui.battle.views.postmortemPanel
                this._victimDogTagTweenOut.dispose();
                this._victimDogTagTweenOut = null;
             }
-         }
-      }
-      
-      public function as_showHint(param1:Boolean) : void
-      {
-         this.hintBg.visible = param1;
-         this.hintTitleTF.visible = param1;
-         this.hintDescTF.visible = param1;
-         if(param1)
-         {
-            this.hintBg.imageName = BATTLEATLAS.POSTMORTEM_TIPS_HINTBG;
-            this.hintTitleTF.text = INGAME_GUI.POSTMORTEM_TIPS_HINT_TITLE;
-            this.hintDescTF.text = INGAME_GUI.POSTMORTEM_TIPS_HINT_DESC;
          }
       }
    }

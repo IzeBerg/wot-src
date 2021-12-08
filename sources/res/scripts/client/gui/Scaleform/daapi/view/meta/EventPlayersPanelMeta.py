@@ -14,22 +14,10 @@ class EventPlayersPanelMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_setPlayerDead(vehID)
 
-    def as_setPlayerPanelCountSoulsS(self, vehID, countSouls):
+    def as_setPlayerResurrectS(self, vehID, isResurrect):
         if self._isDAAPIInited():
-            return self.flashObject.as_setPlayerPanelCountSouls(vehID, countSouls)
+            return self.flashObject.as_setPlayerResurrect(vehID, isResurrect)
 
-    def as_setCollectorGoalS(self, goal):
+    def as_setPlayerPanelCountPointsS(self, vehID, count):
         if self._isDAAPIInited():
-            return self.flashObject.as_setCollectorGoal(goal)
-
-    def as_setCollectorNeedValueS(self, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setCollectorNeedValue(value)
-
-    def as_updateTriggeredChatCommandsS(self, data):
-        if self._isDAAPIInited():
-            return self.flashObject.as_updateTriggeredChatCommands(data)
-
-    def as_setChatCommandS(self, vehicleID, chatCommand, chatCommandFlags):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setChatCommand(vehicleID, chatCommand, chatCommandFlags)
+            return self.flashObject.as_setPlayerPanelCountPoints(vehID, count)

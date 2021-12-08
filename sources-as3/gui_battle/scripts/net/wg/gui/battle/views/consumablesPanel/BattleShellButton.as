@@ -32,7 +32,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private static const KEY_VALIDATION:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 2;
       
-      protected static const QUANTITY_VALIDATION:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 3;
+      private static const QUANTITY_VALIDATION:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 3;
       
       private static const SELECTED_INDICATOR_VISIBILITY:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 4;
       
@@ -42,8 +42,6 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private static const SPG_SHOT_RESULT_FALSE_STATE:int = 0;
        
-      
-      public var hit:MovieClip = null;
       
       public var spgShotResultIndicator:MovieClip = null;
       
@@ -106,11 +104,6 @@ package net.wg.gui.battle.views.consumablesPanel
          super.configUI();
          this.nextIndicator.visible = this._isNext;
          this._colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemasUpdatedHandler);
-         if(this.hit != null)
-         {
-            this.hit.mouseEnabled = false;
-            hitArea = this.hit;
-         }
       }
       
       override protected function draw() : void
@@ -135,7 +128,6 @@ package net.wg.gui.battle.views.consumablesPanel
       
       override protected function onDispose() : void
       {
-         this.hit = null;
          this._colorSchemeMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemasUpdatedHandler);
          this._colorSchemeMgr = null;
          addFrameScript(END_RELOADING_FRAME,null);
@@ -203,9 +195,9 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      public function setCoolDownTime(param1:Number, param2:Number, param3:Number, param4:int = 1, param5:Boolean = false) : void
+      public function setCoolDownTime(param1:Number, param2:Number, param3:Number, param4:int = 1) : void
       {
-         var _loc6_:Number = NaN;
+         var _loc5_:Number = NaN;
          this._isAfterCoolDown = false;
          if(param1 >= 0 && param2 != -1)
          {
@@ -214,10 +206,10 @@ package net.wg.gui.battle.views.consumablesPanel
          }
          if(param1 > 0)
          {
-            _loc6_ = param3 / param2;
+            _loc5_ = param3 / param2;
             this.state = BATTLE_ITEM_STATES.COOLDOWN;
             this._isReloading = true;
-            this._coolDownTimer.start(param1,this,(END_FRAME - START_FRAME) * _loc6_,DEFAULT_TIME_COEF);
+            this._coolDownTimer.start(param1,this,(END_FRAME - START_FRAME) * _loc5_,DEFAULT_TIME_COEF);
          }
          else
          {
@@ -337,10 +329,6 @@ package net.wg.gui.battle.views.consumablesPanel
       {
       }
       
-      public function setCoolDownReverse() : void
-      {
-      }
-      
       public function showGlow(param1:int) : void
       {
          this.glow.showGlow(param1);
@@ -433,21 +421,12 @@ package net.wg.gui.battle.views.consumablesPanel
          return false;
       }
       
-      public function setStage(param1:int) : void
-      {
-      }
-      
       public function set showConsumableBorder(param1:Boolean) : void
       {
       }
       
       public function set isReplay(param1:Boolean) : void
       {
-      }
-      
-      public function getQuantity() : int
-      {
-         return this._quantity;
       }
       
       private function onColorSchemasUpdatedHandler(param1:ColorSchemeEvent) : void

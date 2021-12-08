@@ -1,5 +1,5 @@
 import logging
-from gui.Scaleform.daapi.view.battle.shared.component_marker.markers_components import World2DMarkerComponent, MinimapMarkerComponent, AnimationSequenceMarkerComponent, DirectionIndicatorMarkerComponent, ComponentBitMask, TerrainMarkerComponent, SafeZoneMinimapAreaMarkerComponent
+from gui.Scaleform.daapi.view.battle.shared.component_marker.markers_components import World2DMarkerComponent, MinimapMarkerComponent, AnimationSequenceMarkerComponent, DirectionIndicatorMarkerComponent, ComponentBitMask, TerrainMarkerComponent
 from ids_generators import SequenceIDGenerator
 _logger = logging.getLogger(__name__)
 
@@ -9,8 +9,7 @@ class MarkerBase(object):
        ComponentBitMask.MINIMAP_MARKER: MinimapMarkerComponent, 
        ComponentBitMask.DIRECTION_INDICATOR: DirectionIndicatorMarkerComponent, 
        ComponentBitMask.ANIM_SEQUENCE_MARKER: AnimationSequenceMarkerComponent, 
-       ComponentBitMask.TERRAIN_MARKER: TerrainMarkerComponent, 
-       ComponentBitMask.SAFE_ZONE_MINIMAP_MARKER: SafeZoneMinimapAreaMarkerComponent}
+       ComponentBitMask.TERRAIN_MARKER: TerrainMarkerComponent}
 
     def __init__(self, markerData):
         super(MarkerBase, self).__init__()
@@ -130,14 +129,3 @@ class AreaMarker(MarkerBase):
     @property
     def areaRadius(self):
         return self._areaRadius
-
-
-class SafeZoneMarker(AreaMarker):
-
-    def hasMinimap(self):
-        return True
-
-    def setSize(self, size):
-        components = self.getComponentByType(ComponentBitMask.SAFE_ZONE_MINIMAP_MARKER)
-        if components:
-            components[0].updateSize(size)

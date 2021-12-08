@@ -11,7 +11,6 @@ class QUESTS(object):
     MISSIONS_TAB_DAILY = '#quests:missions/tab/daily'
     MISSIONS_TAB_MAPBOX = '#quests:missions/tab/mapbox'
     MISSIONS_TAB_MAY21_MARATHON = '#quests:missions/tab/may21_marathon'
-    MISSIONS_TAB_WINTER_MARATHON = '#quests:missions/tab/winter_marathon'
     IGR_TOOLTIP_BATTLESLABEL = '#quests:igr/tooltip/battlesLabel'
     IGR_TOOLTIP_WINSLABEL = '#quests:igr/tooltip/winsLabel'
     POSTBATTLE_PROGRESSRESET = '#quests:postBattle/progressReset'
@@ -75,6 +74,10 @@ class QUESTS(object):
     BONUSES_ITEM_TANKMEN_NO_SKILLS = '#quests:bonuses/item/tankmen/no_skills'
     BONUSES_ITEM_TANKMEN_WITH_SKILLS = '#quests:bonuses/item/tankmen/with_skills'
     BONUSES_NOTAVAILABLE = '#quests:bonuses/notAvailable'
+    BONUSNAME_NY22FILLERS = '#quests:bonusName/ny22Fillers'
+    BONUSNAME_NEWYEARSLOT = '#quests:bonusName/newYearSlot'
+    BONUSES_VARIADICDISCOUNT_DISCOUNTAMOUNT = '#quests:bonuses/variadicDiscount/discountAmount'
+    BONUSES_VARIADICDISCOUNT_BUTTONLABEL = '#quests:bonuses/variadicDiscount/buttonLabel'
     QUESTS_TITLE = '#quests:quests/title'
     QUESTS_TITLE_MANEUVERSQUESTS = '#quests:quests/title/maneuversQuests'
     QUESTS_TITLE_CURRENTLYAVAILABLE = '#quests:quests/title/currentlyAvailable'
@@ -734,8 +737,6 @@ class QUESTS(object):
     DETAILS_CONDITIONS_CUMULATIVE_AGGREGATED = '#quests:details/conditions/cumulative/aggregated'
     DETAILS_CONDITIONS_CUMULATIVE_RANKCHANGE = '#quests:details/conditions/cumulative/rankChange'
     DETAILS_CONDITIONS_CUMULATIVE_XP_OTHER = '#quests:details/conditions/cumulative/xp/other'
-    DETAILS_CONDITIONS_CUMULATIVE_EVENTPOINTS = '#quests:details/conditions/cumulative/eventPoints'
-    DETAILS_CONDITIONS_CUMULATIVE_ENVIRONMENTID = '#quests:details/conditions/cumulative/environmentID'
     DETAILS_DOSSIER_SNIPERSERIES = '#quests:details/dossier/sniperSeries'
     DETAILS_DOSSIER_MAXSNIPERSERIES = '#quests:details/dossier/maxSniperSeries'
     DETAILS_DOSSIER_INVINCIBLESERIES = '#quests:details/dossier/invincibleSeries'
@@ -1021,9 +1022,6 @@ class QUESTS(object):
     MISSIONS_AWARDS_MERGED = '#quests:missions/awards/merged'
     MISSIONS_TAB_LABEL_KURSK = '#quests:missions/tab/label/kursk'
     MISSIONS_TAB_LABEL_MARATHON = '#quests:missions/tab/label/marathon'
-    MISSIONS_TAB_LABEL_WINTER_MARATHON = '#quests:missions/tab/label/winter_marathon'
-    MISSIONS_TAB_WINTER_MARATHON_HEADER = '#quests:missions/tab/winter_marathon/header'
-    MISSIONS_TAB_WINTER_MARATHON_BODY = '#quests:missions/tab/winter_marathon/body'
     MISSIONS_TAB_KURSK_HEADER = '#quests:missions/tab/kursk/header'
     MISSIONS_TAB_KURSK_BODY = '#quests:missions/tab/kursk/body'
     MISSIONS_TAB_MARATHONS_HEADER = '#quests:missions/tab/marathons/header'
@@ -1089,9 +1087,6 @@ class QUESTS(object):
     MISSIONDETAILS_VEHICLE_CONDITIONS_LEVEL_ALL = '#quests:missionDetails/vehicle/conditions/level/all'
     MISSIONDETAILS_STATUS_COMPLETED_DAILY = '#quests:missionDetails/status/completed/daily'
     MISSIONDETAILS_STATUS_COMPLETED_WEEKLY = '#quests:missionDetails/status/completed/weekly'
-    MISSIONDETAILS_STATUS_COMPLETED_EVENT = '#quests:missionDetails/status/completed/event'
-    MISSIONDETAILS_STATUS_COMPLETE = '#quests:missionDetails/status/complete'
-    MISSIONDETAILS_STATUS_INPROGRESS = '#quests:missionDetails/status/inProgress'
     MISSIONDETAILS_STATUS_NOTAVAILABLE = '#quests:missionDetails/status/notAvailable'
     MISSIONDETAILS_STATUS_WRONGVEHICLE = '#quests:missionDetails/status/wrongVehicle'
     MISSIONDETAILS_STATUS_DISABLED = '#quests:missionDetails/status/disabled'
@@ -1137,7 +1132,6 @@ class QUESTS(object):
     MISSIONDETAILS_REQUIREMENTS_HEADER_AVAILABLE = '#quests:missionDetails/requirements/header/available'
     MISSIONDETAILS_REQUIREMENTS_CONCLUSION_AVAILABLE = '#quests:missionDetails/requirements/conclusion/available'
     MISSIONDETAILS_REQUIREMENTS_CONCLUSION_UNAVAILABLE = '#quests:missionDetails/requirements/conclusion/unavailable'
-    MISSIONDETAILS_REQUIREMENTS_CONCLUSION_PREVIOUSINCOMPLETE = '#quests:missionDetails/requirements/conclusion/previousIncomplete'
     MISSIONDETAILS_VEHICLESSELECT = '#quests:missionDetails/vehiclesSelect'
     MISSIONDETAILS_VEHICLESAVAILABLE = '#quests:missionDetails/vehiclesAvailable'
     MISSIONDETAILS_BOTTOMSTATUSCOMPLETE = '#quests:missionDetails/bottomStatusComplete'
@@ -1189,7 +1183,6 @@ class QUESTS(object):
     TOKEN_DEFAULT_WHEEL = '#quests:token/default/wheel'
     TOKEN_DEFAULT_BOX = '#quests:token/default/box'
     TOKEN_DEFAULT_TANKREWARDS = '#quests:token/default/tankrewards'
-    TOKEN_DEFAULT_HE21_AFK_PARDON_ORDER = '#quests:token/default/he21_afk_pardon_order'
     BONUSNAME_CREDITS = '#quests:bonusName/credits'
     BONUSNAME_GOLD = '#quests:bonusName/gold'
     BONUSNAME_CRYSTAL = '#quests:bonusName/crystal'
@@ -1256,7 +1249,8 @@ class QUESTS(object):
     BONUSNAME_RANKEDBONUSBATTLES = '#quests:bonusName/rankedBonusBattles'
     BONUSNAME_ENTITLEMENTS_TESTENTITLEMENT = '#quests:bonusName/entitlements/testEntitlement'
     BONUSNAME_ENTITLEMENTS_RANKED_2020_DISCOUNT = '#quests:bonusName/entitlements/ranked_2020_discount'
-    BONUSNAME_ENTITLEMENTS_RANKED_202109_ACCESS = '#quests:bonusName/entitlements/ranked_202109_access'
+    BONUSNAME_ENTITLEMENTS_RANKED_202201_ACCESS = '#quests:bonusName/entitlements/ranked_202201_access'
+    BONUSNAME_ENTITLEMENTS_GIFTSYSTEM_2_NYSTAMP = '#quests:bonusName/entitlements/giftSystem_2_nyStamp'
     BONUSNAME_BATTLE_BONUS_X5 = '#quests:bonusName/battle_bonus_x5'
     BONUSNAME_BATTLEPASSPOINTS = '#quests:bonusName/battlePassPoints'
     BONUSNAME_BATTLEPASSPOINTS_PREVIEW = '#quests:bonusName/battlePassPoints/preview'
@@ -1644,9 +1638,11 @@ class QUESTS(object):
     GENERAL_INFO_BACK_TITLE = '#quests:general/info/back/title'
     GENERAL_INFO_BACK_GOTO = '#quests:general/info/back/goto'
     DAILYQUESTS_INFO_DAILYMISSIONS = '#quests:dailyQuests/info/dailyMissions'
+    DAILYQUESTS_INFO_NYDAILYMISSIONS = '#quests:dailyQuests/info/NYDailyMissions'
     DAILYQUESTS_INFO_DAILYMISSIONTITLE = '#quests:dailyQuests/info/dailyMissionTitle'
     DAILYQUESTS_INFO_BATTLEPASSDAILYMISSIONS = '#quests:dailyQuests/info/battlePassDailyMissions'
     DAILYQUESTS_INFO_BATTLEPASSDAILYMISSIONTITLE = '#quests:dailyQuests/info/battlePassDailyMissionTitle'
+    DAILYQUESTS_INFO_GIFTSYSTEMDISABLEDDAILYMISSIONS = '#quests:dailyQuests/info/giftSystemDisabledDailyMissions'
     PREMIUMQUESTS_INFO_PREMIUMMISSIONS = '#quests:premiumQuests/info/premiumMissions'
     PREMIUMQUESTS_INFO_PREMIUMMISSIONSTITLE = '#quests:premiumQuests/info/premiumMissionsTitle'
     PREMIUMQUESTS_INFO_CONDITIONS = '#quests:premiumQuests/info/conditions'
@@ -1680,6 +1676,7 @@ class QUESTS(object):
     DAILYQUESTS_CONDITION_DODAMAGEVEH_ACCUM = '#quests:dailyQuests/condition/doDamageVeh_accum'
     DAILYQUESTS_CONDITION_DESTROYVEH_FEW_ACCUM = '#quests:dailyQuests/condition/destroyVeh_few_accum'
     DAILYQUESTS_CONDITION_DESTROYVEH_PLURAL_ACCUM = '#quests:dailyQuests/condition/destroyVeh_plural_accum'
+    DETAILS_CONDITIONS_CUMULATIVE_DAMAGEDHP = '#quests:details/conditions/cumulative/damagedHp'
     TOKEN_DEFAULT_ENUM = (
      TOKEN_DEFAULT_USSR,
      TOKEN_DEFAULT_GERMANY,
@@ -1709,8 +1706,7 @@ class QUESTS(object):
      TOKEN_DEFAULT_LEAFLET,
      TOKEN_DEFAULT_WHEEL,
      TOKEN_DEFAULT_BOX,
-     TOKEN_DEFAULT_TANKREWARDS,
-     TOKEN_DEFAULT_HE21_AFK_PARDON_ORDER)
+     TOKEN_DEFAULT_TANKREWARDS)
     BONUSNAME_ENUM = (
      BONUSNAME_BLUEPRINTS_ANY,
      BONUSNAME_BLUEPRINTS_VEHICLE,
@@ -1718,6 +1714,8 @@ class QUESTS(object):
      BONUSNAME_BLUEPRINTS_NATION,
      BONUSNAME_BLUEPRINTS_NATION_ANY,
      BONUSNAME_BLUEPRINTS_UNIVERSAL,
+     BONUSNAME_NY22FILLERS,
+     BONUSNAME_NEWYEARSLOT,
      BONUSNAME_CREDITS,
      BONUSNAME_GOLD,
      BONUSNAME_CRYSTAL,
@@ -1784,7 +1782,8 @@ class QUESTS(object):
      BONUSNAME_RANKEDBONUSBATTLES,
      BONUSNAME_ENTITLEMENTS_TESTENTITLEMENT,
      BONUSNAME_ENTITLEMENTS_RANKED_2020_DISCOUNT,
-     BONUSNAME_ENTITLEMENTS_RANKED_202109_ACCESS,
+     BONUSNAME_ENTITLEMENTS_RANKED_202201_ACCESS,
+     BONUSNAME_ENTITLEMENTS_GIFTSYSTEM_2_NYSTAMP,
      BONUSNAME_BATTLE_BONUS_X5,
      BONUSNAME_BATTLEPASSPOINTS,
      BONUSNAME_BATTLEPASSPOINTS_PREVIEW)

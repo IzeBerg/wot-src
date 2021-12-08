@@ -61,6 +61,8 @@ class TOOLTIP_TYPE(CONST_CONTAINER):
     BATTLE_ROYALE_SELECTOR_INFO = 'battleRoyaleSelectorInfo'
     BATTLE_ROYALE_WIDGET_INFO = 'battleRoyaleWidgetInfo'
     SQUAD_BONUS = 'squadBonus'
+    NY_CREDIT_BONUS = 'nyTotalCreditBonus'
+    NY_VEHICLE_BONUS = 'nyVehicleBonus'
     SESSION_STATS = 'sessionStats'
     TRADE_IN_INFO = 'tradeInInfo'
     PERSONAL_TRADE_IN_INFO = 'personalTradeInInfo'
@@ -75,7 +77,6 @@ class TOOLTIP_TYPE(CONST_CONTAINER):
     RANDOM_CREWBOOK = 'randomCrewbook'
     REFERRAL_PROGRAMM = 'referralProgram'
     EPIC_RANK_UNLOCK = 'epicRankUnlock'
-    SHOP_SALES_ENTRY_POINT = 'shopSalesEntryPoint'
 
 
 class TOOLTIP_COMPONENT(CONST_CONTAINER):

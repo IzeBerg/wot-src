@@ -26,22 +26,22 @@ package net.wg.infrastructure.base.meta.impl
          super.onDispose();
       }
       
-      public final function as_showHint(param1:String, param2:Object) : void
+      public final function as_showHint(param1:Object) : void
       {
-         var _loc3_:HintInfoVO = this._hintInfoVO;
-         this._hintInfoVO = new HintInfoVO(param2);
-         this.showHint(param1,this._hintInfoVO);
-         if(_loc3_)
+         var _loc2_:HintInfoVO = this._hintInfoVO;
+         this._hintInfoVO = new HintInfoVO(param1);
+         this.showHint(this._hintInfoVO);
+         if(_loc2_)
          {
-            _loc3_.dispose();
+            _loc2_.dispose();
          }
       }
       
-      protected function showHint(param1:String, param2:HintInfoVO) : void
+      protected function showHint(param1:HintInfoVO) : void
       {
-         var _loc3_:String = "as_showHint" + Errors.ABSTRACT_INVOKE;
-         DebugUtils.LOG_ERROR(_loc3_);
-         throw new AbstractException(_loc3_);
+         var _loc2_:String = "as_showHint" + Errors.ABSTRACT_INVOKE;
+         DebugUtils.LOG_ERROR(_loc2_);
+         throw new AbstractException(_loc2_);
       }
    }
 }

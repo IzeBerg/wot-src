@@ -432,7 +432,7 @@ package net.wg.gui.components.crosshairPanel
             if(this._quickReloadingTimerVisible && this._quickReloadingTimerActive && this._quickReloadingTime > 0)
             {
                _loc1_ = ExternalInterface.call.apply(this,[FRACTIONAL_FORMAT_CMD,this._quickReloadingTime]);
-               this.quickReloadingTimerTextField.text = _loc1_.slice(0,_loc1_.length - 1);
+               this.quickReloadingTimerTextField.text = _loc1_;
                this.quickReloadingTimerTextField.visible = true;
             }
             else

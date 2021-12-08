@@ -36,8 +36,6 @@ def _makeRecoveryPeriodText(restoreInfo):
 def _getTankmanLockMessage(invVehicle):
     if invVehicle.isInBattle:
         return (True, i18n.makeString('#menu:tankmen/lockReason/inbattle'))
-    if invVehicle.isBroken:
-        return (False, i18n.makeString('#menu:tankmen/lockReason/broken'))
     if invVehicle.invID == g_currentVehicle.invID and (g_currentVehicle.isInPrebattle() or g_currentVehicle.isInBattle()):
         return (True, i18n.makeString('#menu:tankmen/lockReason/prebattle'))
     if invVehicle.isDisabled:
@@ -259,8 +257,6 @@ class BarracksDataProvider(DAAPIDataProvider):
         tankmenInBarracks = 0
         tankmenList = [_packBuyBerthsSlot()]
         for tankman in allTankmen:
-            if tankman.vehicleInvID > 0 and self.itemsCache.items.getVehicle(tankman.vehicleInvID) is not None and self.itemsCache.items.getVehicle(tankman.vehicleInvID).isOnlyForEventBattles:
-                continue
             if not tankman.isInTank:
                 tankmenInBarracks += 1
             if criteria(tankman):
@@ -273,4 +269,3 @@ class BarracksDataProvider(DAAPIDataProvider):
         self.__placeCount = max(slots - tankmenInBarracks, 0)
         self.setItemWrapper(_packActiveTankman)
         self.buildList(tankmenList)
-        return

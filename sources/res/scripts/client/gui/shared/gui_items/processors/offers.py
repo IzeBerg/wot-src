@@ -19,7 +19,7 @@ class ReceiveOfferGiftProcessor(Processor):
 
     def _errorHandler(self, code, errStr='', ctx=None):
         Waiting.hide('loadContent')
-        defaultKey = 'lootboxes/open/server_error'
+        defaultKey = 'offers/server_error'
         return makeI18nError(('/').join((defaultKey, errStr)), defaultKey)
 
     def _successHandler(self, code, ctx=None):

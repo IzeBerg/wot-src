@@ -1,4 +1,4 @@
-import math, random, logging, ArenaComponents, BigWorld, CGF, GenericComponents, Triggers, Math, DataLinks, Vehicular, NetworkFilters, material_kinds
+import math, random, logging, BigWorld, CGF, GenericComponents, Triggers, Math, DataLinks, Vehicular, NetworkFilters, material_kinds
 from constants import IS_EDITOR, VEHICLE_SIEGE_STATE
 from CustomEffectManager import CustomEffectManager, EffectSettings
 from helpers.EffectMaterialCalculation import calcEffectMaterialIndex
@@ -18,7 +18,7 @@ from vehicle_outfit.outfit import Outfit
 from items.battle_royale import isSpawnedBot
 from helpers import isPlayerAvatar
 from ModelHitTester import ModelStatus
-from vehicle_systems.components.debris_crashed_tracks import TrackCrashWithDebrisComponent
+from vehicle_systems.components import debris_crashed_tracks
 _logger = logging.getLogger(__name__)
 DEFAULT_STICKERS_ALPHA = 1.0
 MATKIND_COUNT = 3
@@ -150,6 +150,7 @@ class CommonTankAppearance(ScriptGameObject):
         self.__filterRetrievers = []
         self.__filterRetrieverGameObjects = []
         self._vehicleStickers = None
+        self._vehicleInfo = {}
         self.__vID = 0
         self.__renderMode = None
         self.__frameTimestamp = 0
@@ -158,7 +159,6 @@ class CommonTankAppearance(ScriptGameObject):
         return
 
     def prerequisites(self, typeDescriptor, vID, health, isCrewActive, isTurretDetached, outfitCD, renderMode=None):
-        _logger.info('CommonTankAppearance::prerequisites. v=%s. ds=%s', self._vehicle, self.damageState.state)
         self.damageState.update(health, isCrewActive, False)
         self.__typeDesc = typeDescriptor
         self.__vID = vID
@@ -192,43 +192,11 @@ class CommonTankAppearance(ScriptGameObject):
 
         return prereqs
 
-    @staticmethod
-    def collectPrerequisitesForEventBattle(typeDescriptor, outfit, spaceID, isTurretDetached, damageState):
-        isUndamaged = VehicleDamageState.isUndamagedModel(damageState)
-        prereqs = typeDescriptor.prerequisites(True)
-        attachments = camouflages.getAttachments(outfit, typeDescriptor) if isUndamaged else []
-        prereqs.extend(camouflages.getCamoPrereqs(outfit, typeDescriptor))
-        prereqs.extend(camouflages.getModelAnimatorsPrereqs(outfit, spaceID))
-        prereqs.extend(camouflages.getAttachmentsAnimatorsPrereqs(attachments, spaceID))
-        splineDesc = typeDescriptor.chassis.splineDesc
-        if splineDesc is not None:
-            if splineDesc.trackPairs:
-                trackPairsDesc = splineDesc.trackPairs[0]
-                modelsSet = outfit.modelsSet
-                prereqs.append(trackPairsDesc.segmentModelLeft(modelsSet))
-                prereqs.append(trackPairsDesc.segmentModelRight(modelsSet))
-                segment2ModelLeft = trackPairsDesc.segment2ModelLeft(modelsSet)
-                if segment2ModelLeft is not None:
-                    prereqs.append(segment2ModelLeft)
-                segment2ModelRight = trackPairsDesc.segment2ModelRight(modelsSet)
-                if segment2ModelRight is not None:
-                    prereqs.append(segment2ModelRight)
-        modelsSetParams = ModelsSetParams(outfit.modelsSet, damageState, attachments)
-        compoundAssembler = model_assembler.prepareCompoundAssembler(typeDescriptor, modelsSetParams, spaceID, isTurretDetached)
-        prereqs.append(compoundAssembler)
-        collisionAssembler = model_assembler.prepareCollisionAssembler(typeDescriptor, isTurretDetached, spaceID)
-        prereqs.append(collisionAssembler)
-        physicalTracksBuilders = typeDescriptor.chassis.physicalTracks
-        for name, builders in physicalTracksBuilders.iteritems():
-            for index, builder in enumerate(builders):
-                prereqs.append(builder.createLoader(spaceID, ('{0}{1}PhysicalTrack').format(name, index), modelsSetParams.skin))
-
-        return prereqs
-
     def construct(self, isPlayer, resourceRefs):
-        _logger.info('CommonTankAppearance::construct. v=%s. ds=%s', self._vehicle, self.damageState.state)
         self.__isObserver = 'observer' in self.typeDescriptor.type.tags
         self._compoundModel = resourceRefs[self.typeDescriptor.name]
+        if not self._compoundModel.isValid():
+            _logger.error('compoundModel is not valid')
         self.__boundEffects = bound_effects.ModelBoundEffects(self.compoundModel)
         isCurrentModelDamaged = self.damageState.isCurrentModelDamaged
         fashions = camouflages.prepareFashions(isCurrentModelDamaged)
@@ -306,10 +274,11 @@ class CommonTankAppearance(ScriptGameObject):
         compoundModel.setPartBoundingBoxAttachNode(TankPartIndexes.GUN, TankNodeNames.GUN_INCLINATION)
         camouflages.updateFashions(self)
         model_assembler.assembleCustomLogicComponents(self, self.__attachments, self.__modelAnimators)
+        self._createStickers()
         return
 
     def destroy(self):
-        _logger.info('CommonTankAppearance::destroy. v=%s. ds=%s', self._vehicle, self.damageState.state)
+        self._vehicleInfo = {}
         self.flagComponent = None
         self._destroySystems()
         fashions = VehiclePartsTuple(None, None, None, None)
@@ -327,10 +296,10 @@ class CommonTankAppearance(ScriptGameObject):
         self._chassisDecal.destroy()
         self._chassisDecal = None
         self._compoundModel = None
+        self._destroyStickers()
         return
 
     def activate(self):
-        _logger.info('CommonTankAppearance::activate. v=%s. ds=%s', self._vehicle, self.damageState.state)
         typeDescr = self.typeDescriptor
         wheelConfig = typeDescr.chassis.generalWheelsAnimatorConfig
         if self.wheelsAnimator is not None and wheelConfig is not None:
@@ -362,10 +331,10 @@ class CommonTankAppearance(ScriptGameObject):
         if self.isObserver:
             self.compoundModel.visible = False
         self._connectCollider()
+        self._attachStickers()
         return
 
     def deactivate(self):
-        _logger.info('CommonTankAppearance::deactivate. v=%s. ds=%s', self._vehicle, self.damageState.state)
         for modelAnimator in self.__modelAnimators:
             modelAnimator.animator.setEnabled(False)
 
@@ -377,11 +346,10 @@ class CommonTankAppearance(ScriptGameObject):
             go.deactivate()
 
         self._chassisDecal.detach()
-        if self.vehicleStickers:
-            self.vehicleStickers.detach()
+        self._detachStickers()
 
     def setVehicleInfo(self, vehInfo):
-        self._createAndAttachStickers(vehInfo)
+        self._vehicleInfo = vehInfo
 
     def setupGunMatrixTargets(self, target):
         self.turretMatrix = target.turretMatrix
@@ -507,9 +475,39 @@ class CommonTankAppearance(ScriptGameObject):
                 node = self.compoundModel.node(TankPartNames.HULL)
                 node.attach(splodge)
 
-    def _createStickers(self, vehInfo):
-        vId = self._vehicle.id if self._vehicle is not None else -1
-        return VehicleStickers(self.typeDescriptor, 0, self.outfit, vehicleId=vId)
+    def _createStickers(self):
+        _logger.debug('Creating VehicleStickers for vehicleType: %s', self.typeDescriptor)
+        isCurrentModelDamaged = self.damageState.isCurrentModelDamaged
+        if isCurrentModelDamaged:
+            return
+        else:
+            if self.vehicleStickers is not None:
+                self._destroyStickers()
+            self._vehicleStickers = VehicleStickers(self.typeDescriptor, outfit=self.outfit)
+            return
+
+    def _destroyStickers(self):
+        _logger.debug('Attaching VehicleStickers for vehicleType: %s', self.typeDescriptor)
+        self._detachStickers()
+        self._vehicleStickers = None
+        return
+
+    def _attachStickers(self):
+        _logger.debug('Attaching VehicleStickers for vehicle: %s', self._vehicle)
+        if self.vehicleStickers is None:
+            _logger.error('Failed to attach VehicleStickers. Missing VehicleStickers. Vehicle: %s', self._vehicle)
+            return
+        else:
+            isCurrentModelDamaged = self.damageState.isCurrentModelDamaged
+            self.vehicleStickers.alpha = DEFAULT_STICKERS_ALPHA
+            self.vehicleStickers.attach(compoundModel=self.compoundModel, isDamaged=isCurrentModelDamaged, showDamageStickers=not isCurrentModelDamaged)
+            return
+
+    def _detachStickers(self):
+        _logger.debug('Detaching VehicleStickers for vehicle: %s', self._vehicle)
+        if self.vehicleStickers is not None:
+            self.vehicleStickers.detach()
+        return
 
     @property
     def _vehicleColliderInfo(self):
@@ -575,7 +573,6 @@ class CommonTankAppearance(ScriptGameObject):
         return
 
     def _onRequestModelsRefresh(self):
-        _logger.info('CommonTankAppearance::_onRequestModelsRefresh. v=%s. ds=%s', self._vehicle, self.damageState.state)
         self.flagComponent = None
         self.__updateModelStatus()
         return
@@ -658,19 +655,6 @@ class CommonTankAppearance(ScriptGameObject):
         placingOnGround = not (suspensionWorking or self.leveredSuspension is not None)
         self.filter.placingOnGround = placingOnGround
         return
-
-    def _createAndAttachStickers(self, vehInfo):
-        _logger.debug('CommonTankAppearance::_createAndAttachStickers. v=%s. ds=%s', self._vehicle, self.damageState.state)
-        isCurrentModelDamaged = self.damageState.isCurrentModelDamaged
-        stickersAlpha = DEFAULT_STICKERS_ALPHA
-        if isCurrentModelDamaged:
-            return
-        else:
-            if self.vehicleStickers is None:
-                self._vehicleStickers = self._createStickers(vehInfo)
-            self.vehicleStickers.alpha = stickersAlpha
-            self.vehicleStickers.attach(compoundModel=self.compoundModel, isDamaged=self.damageState.isCurrentModelDamaged, showDamageStickers=not isCurrentModelDamaged)
-            return
 
     def __onPeriodicTimer(self):
         timeStamp = BigWorld.wg_getFrameTimestamp()
@@ -802,9 +786,6 @@ class CommonTankAppearance(ScriptGameObject):
         for modelAnimator in self.__modelAnimators:
             modelAnimator.animator.setEnabled(isEnabled)
 
-        self.removeComponentByType(ArenaComponents.TriggerComponent)
-        self.createComponent(ArenaComponents.TriggerComponent, cameraName)
-
     def __onEngineStateGearUp(self):
         if self.customEffectManager is not None:
             self.customEffectManager.onGearUp()
@@ -828,7 +809,7 @@ class CommonTankAppearance(ScriptGameObject):
                 self.crashedTracksController.addTrack(isLeft, isSideFlying)
             return
         track = self.tracks.getTrackGameObject(isLeft, pairIndex)
-        debris = track.createComponent(TrackCrashWithDebrisComponent, isLeft, pairIndex, self.typeDescriptor, self.gameObject, self.boundEffects)
+        debris = track.createComponent(debris_crashed_tracks.TrackCrashWithDebrisComponent, isLeft, pairIndex, self.typeDescriptor, self.gameObject, self.boundEffects)
         debris.isTopPriority = self._vehicle.isPlayerVehicle
         debris.isPlayer = self._vehicle.isPlayerVehicle
         debris.isFlying = isSideFlying
@@ -843,7 +824,7 @@ class CommonTankAppearance(ScriptGameObject):
             return
         else:
             track = self.tracks.getTrackGameObject(isLeft, pairIndex)
-            debris = track.findComponentByType(TrackCrashWithDebrisComponent)
+            debris = track.findComponentByType(debris_crashed_tracks.TrackCrashWithDebrisComponent)
             if debris is not None:
                 debris.markAsRepaired()
                 track.removeComponent(debris)

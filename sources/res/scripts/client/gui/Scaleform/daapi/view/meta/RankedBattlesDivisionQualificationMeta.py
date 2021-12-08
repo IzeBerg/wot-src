@@ -14,6 +14,6 @@ class RankedBattlesDivisionQualificationMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_setQualificationData(imageSrcSmall, imageSrcBig, isFirstEnter)
 
-    def as_setQualificationProgressS(self, progressTextSmall, progressTextBig, isCompleted):
+    def as_setQualificationProgressS(self, progressTextSmall, progressTextBig, isCompleted, descr):
         if self._isDAAPIInited():
-            return self.flashObject.as_setQualificationProgress(progressTextSmall, progressTextBig, isCompleted)
+            return self.flashObject.as_setQualificationProgress(progressTextSmall, progressTextBig, isCompleted, descr)

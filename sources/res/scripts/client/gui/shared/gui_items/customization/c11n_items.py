@@ -7,6 +7,7 @@ from gui.impl.gen import R
 from gui.shared.gui_items import GUI_ITEM_TYPE_NAMES, GUI_ITEM_TYPE
 from gui.shared.gui_items.fitting_item import FittingItem, RentalInfoProvider
 from gui.shared.gui_items.gui_item_economics import ItemPrice, ITEM_PRICE_EMPTY
+from gui.shared.gui_items.customization import directionByTag
 from gui.shared.image_helper import getTextureLinkByID
 from gui.shared.money import Money
 from gui.shared.utils.functions import getImageResourceFromPath
@@ -15,7 +16,7 @@ from gui.Scaleform.locale.VEHICLE_CUSTOMIZATION import VEHICLE_CUSTOMIZATION
 from helpers import dependency
 from items import makeIntCompactDescrByID
 from items.components.c11n_components import EditingStyleReason
-from items.components.c11n_constants import SeasonType, ItemTags, ProjectionDecalDirectionTags, ProjectionDecalFormTags, UNBOUND_VEH_KEY, ImageOptions, EDITING_STYLE_REASONS, CustomizationType
+from items.components.c11n_constants import SeasonType, ItemTags, ProjectionDecalFormTags, UNBOUND_VEH_KEY, ImageOptions, EDITING_STYLE_REASONS, CustomizationType
 from items.customizations import parseCompDescr, isEditedStyle, createNationalEmblemComponents, parseOutfitDescr
 from items.vehicles import VehicleDescr
 from shared_utils import first
@@ -95,17 +96,19 @@ class SpecialEvents(object):
     NY19 = 'NY2019_style'
     NY20 = 'NY2020_style'
     NY21 = 'NY2021_style'
+    NY22 = 'NY2022_style'
     FOOTBALL18 = 'football2018'
     WINTER_HUNT = 'winter_hunt'
     KURSK_BATTLE = 'Kursk_battle'
     HALLOWEEN = 'Halloween'
     ALL = (
-     NY, NY18, NY19, NY20, NY21, FOOTBALL18, WINTER_HUNT, KURSK_BATTLE, HALLOWEEN)
+     NY, NY18, NY19, NY20, NY21, NY22, FOOTBALL18, WINTER_HUNT, KURSK_BATTLE, HALLOWEEN)
     ICONS = {NY: backport.image(R.images.gui.maps.icons.customization.style_info.newYear()), 
        NY18: backport.image(R.images.gui.maps.icons.customization.style_info.newYear()), 
        NY19: backport.image(R.images.gui.maps.icons.customization.style_info.newYear()), 
        NY20: backport.image(R.images.gui.maps.icons.customization.style_info.newYear()), 
        NY21: backport.image(R.images.gui.maps.icons.customization.style_info.newYear()), 
+       NY22: backport.image(R.images.gui.maps.icons.customization.style_info.newYear()), 
        FOOTBALL18: backport.image(R.images.gui.maps.icons.customization.style_info.football()), 
        WINTER_HUNT: backport.image(R.images.gui.maps.icons.customization.style_info.marathon()), 
        KURSK_BATTLE: backport.image(R.images.gui.maps.icons.customization.style_info.marathon()), 
@@ -115,6 +118,7 @@ class SpecialEvents(object):
        NY19: backport.text(R.strings.vehicle_customization.styleInfo.event.ny19()), 
        NY20: backport.text(R.strings.vehicle_customization.styleInfo.event.ny20()), 
        NY21: backport.text(R.strings.vehicle_customization.styleInfo.event.ny21()), 
+       NY22: backport.text(R.strings.vehicle_customization.styleInfo.event.ny22()), 
        FOOTBALL18: backport.text(R.strings.vehicle_customization.styleInfo.event.football18()), 
        WINTER_HUNT: backport.text(R.strings.vehicle_customization.styleInfo.event.winter_hunt()), 
        KURSK_BATTLE: backport.text(R.strings.vehicle_customization.styleInfo.event.kursk_battle()), 
@@ -747,8 +751,7 @@ class ProjectionDecal(Decal):
 
     @property
     def direction(self):
-        directionTags = (tag for tag in self.tags if tag.startswith(ProjectionDecalDirectionTags.PREFIX))
-        return first(directionTags, ProjectionDecalDirectionTags.ANY)
+        return directionByTag(self.tags)
 
     @property
     def formfactor(self):
@@ -778,17 +781,12 @@ class ProjectionDecal(Decal):
         return self.__previewIcon
 
     @property
-    def previewIconUrl(self):
+    def icon(self):
         return getTextureLinkByID(self.previewIcon)
 
     @property
     def previewIconRes(self):
         return getImageResourceFromPath(self.previewIcon)
-
-    @property
-    def icon(self):
-        texture, size, innerSize = self.__getPreviewParams()
-        return previewTemplate(texture, size[0], size[1], innerSize[0], innerSize[1])
 
     @property
     def iconUrl(self):

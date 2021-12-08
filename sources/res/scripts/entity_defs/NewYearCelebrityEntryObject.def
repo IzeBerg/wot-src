@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<Parent>NewYearBaseEntryObject</Parent>
+	<Properties>
+		<minAlpha>
+			<Type>FLOAT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<Editable>true</Editable>
+			<Default>
+				0.1
+				<!--BW_String-->
+			</Default>
+		</minAlpha>
+		<maxAlphaDistance>
+			<Type>FLOAT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<Editable>true</Editable>
+			<Default>
+				10.0
+				<!--BW_String-->
+			</Default>
+		</maxAlphaDistance>
+	</Properties>
+</root>

@@ -286,12 +286,6 @@ package
       public static const DETAILSHELP_TRACKWITHINTRACK_TITLE:String = "#ingame_help:detailsHelp/trackWithinTrack/title";
       
       public static const DETAILSHELP_TRACKWITHINTRACK_DESCRIPTION:String = "#ingame_help:detailsHelp/trackWithinTrack/description";
-      
-      public static const EVENTRADIALMENU_CANCEL:String = "#ingame_help:eventRadialMenu/cancel";
-      
-      public static const EVENTRADIALMENU_CAMP:String = "#ingame_help:eventRadialMenu/camp";
-      
-      public static const EVENTRADIALMENU_COLLECTOR:String = "#ingame_help:eventRadialMenu/collector";
        
       
       public function INGAME_HELP()

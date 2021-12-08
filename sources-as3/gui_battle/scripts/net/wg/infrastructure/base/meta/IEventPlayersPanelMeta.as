@@ -12,14 +12,8 @@ package net.wg.infrastructure.base.meta
       
       function as_setPlayerDead(param1:int) : void;
       
-      function as_setPlayerPanelCountSouls(param1:int, param2:int) : void;
+      function as_setPlayerResurrect(param1:int, param2:Boolean) : void;
       
-      function as_setCollectorGoal(param1:int) : void;
-      
-      function as_setCollectorNeedValue(param1:int) : void;
-      
-      function as_updateTriggeredChatCommands(param1:Object) : void;
-      
-      function as_setChatCommand(param1:Number, param2:String, param3:uint) : void;
+      function as_setPlayerPanelCountPoints(param1:int, param2:int) : void;
    }
 }

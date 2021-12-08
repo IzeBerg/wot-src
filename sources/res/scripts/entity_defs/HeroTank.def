@@ -11,6 +11,11 @@
 				<!--BW_String-->
 			</Default>
 		</markerHeightFactor>
+		<effectsXmlPath>
+			<Type>STRING</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<Editable>true</Editable>
+		</effectsXmlPath>
 		<vehicleTurretYaw>
 			<Type>FLOAT32</Type>
 			<Flags>ALL_CLIENTS</Flags>
@@ -29,11 +34,5 @@
 				<!--BW_String-->
 			</Default>
 		</vehicleGunPitch>
-		<markerStyleId>
-			<Type>UINT32</Type>
-			<Flags>ALL_CLIENTS</Flags>
-			<Editable>true</Editable>
-			<Default>1</Default>
-		</markerStyleId>
 	</Properties>
 </root>

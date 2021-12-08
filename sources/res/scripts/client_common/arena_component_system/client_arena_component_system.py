@@ -38,13 +38,6 @@ class ClientArenaComponent(Component):
     def getSyncDataObjectData(self, syncDataObjectType, key):
         return self._componentSystem().getSyncDataObjectData(syncDataObjectType, key)
 
-    def hasSyncDataObjectData(self, syncDataObjectType, key):
-        componentSystem = self._componentSystem()
-        if componentSystem is not None:
-            return componentSystem.hasSyncDataObjectData(syncDataObjectType, key)
-        else:
-            return False
-
 
 class ClientArenaComponentSystem(ScriptGameObject):
 
@@ -92,13 +85,6 @@ class ClientArenaComponentSystem(ScriptGameObject):
         else:
             LOG_ERROR(("No arena sync data object found for object type '{}:{}'. Returning None.").format(syncDataObjectType, ARENA_SYNC_OBJECT_NAMES.get(syncDataObjectType, '<Unknown>')))
             return
-
-    def hasSyncDataObjectData(self, syncDataObjectType, key):
-        syncDataObject = self.__syncDataObjects.get(syncDataObjectType, None)
-        if syncDataObject is not None:
-            return syncDataObject.hasData(key)
-        else:
-            return False
 
     def __onFullSyncObjectReceived(self, argStr):
         o = cPickle.loads(argStr)

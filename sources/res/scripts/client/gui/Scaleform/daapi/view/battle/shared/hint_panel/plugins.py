@@ -56,8 +56,6 @@ def createPlugins():
         result['commanderCameraHints'] = CommanderCameraHintPlugin
     if MapsTrainingHelpHintPlugin.isSuitable():
         result['mapsTrainingHelpHint'] = MapsTrainingHelpHintPlugin
-    if EventHelpHintPlugin.isSuitable():
-        result['eventHelpHint'] = EventHelpHintPlugin
     return result
 
 
@@ -603,7 +601,7 @@ class PreBattleHintPlugin(HintPanelPlugin):
     @classmethod
     def isSuitable(cls):
         guiType = cls.sessionProvider.arenaVisitor.getArenaGuiType()
-        return guiType != ARENA_GUI_TYPE.RANKED and guiType != ARENA_GUI_TYPE.BATTLE_ROYALE and guiType != ARENA_GUI_TYPE.MAPS_TRAINING and guiType != ARENA_GUI_TYPE.EVENT_BATTLES
+        return guiType != ARENA_GUI_TYPE.RANKED and guiType != ARENA_GUI_TYPE.BATTLE_ROYALE and guiType != ARENA_GUI_TYPE.MAPS_TRAINING
 
     def start(self):
         prbSettings = dict(AccountSettings.getSettings(PRE_BATTLE_HINT_SECTION))
@@ -715,7 +713,7 @@ class PreBattleHintPlugin(HintPanelPlugin):
 
     def __updateHintCounterOnStart(self, section, vehicle, setting):
         if section not in setting:
-            setting[section] = {HINTS_LEFT: 1, LAST_DISPLAY_DAY: 0, NUM_BATTLES: 0}
+            setting[section] = {HINTS_LEFT: 3, LAST_DISPLAY_DAY: 0, NUM_BATTLES: 0}
         if vehicle.isAlive() and vehicle.isPlayerVehicle:
             self._updateCounterOnBattle(setting[section])
             HintPanelPlugin._updateCounterOnStart(setting[section], PRBSettings.HINT_DAY_COOLDOWN, PRBSettings.HINT_BATTLES_COOLDOWN)
@@ -940,8 +938,7 @@ class CommanderCameraHintPlugin(HintPanelPlugin, CallbackDelayer):
 
     @classmethod
     def isSuitable(cls):
-        guiType = cls.sessionProvider.arenaVisitor.getArenaGuiType()
-        return guiType != ARENA_GUI_TYPE.MAPS_TRAINING and guiType != ARENA_GUI_TYPE.EVENT_BATTLES
+        return cls.sessionProvider.arenaVisitor.getArenaGuiType() != ARENA_GUI_TYPE.MAPS_TRAINING
 
     def start(self):
         settings = dict(AccountSettings.getSettings(COMMANDER_CAM_HINT_SECTION))
@@ -995,19 +992,6 @@ class MapsTrainingHelpHintPlugin(PreBattleHintPlugin):
 
     def _getHint(self):
         return HintData(getReadableKey(CommandMapping.CMD_SHOW_HELP), backport.text(R.strings.maps_training.helpScreen.hint.press()), backport.text(R.strings.maps_training.helpScreen.hint.description()), 0, 0, HintPriority.HELP, False)
-
-    def _canDisplayCustomHelpHint(self):
-        return True
-
-
-class EventHelpHintPlugin(PreBattleHintPlugin):
-
-    @classmethod
-    def isSuitable(cls):
-        return cls.sessionProvider.arenaVisitor.getArenaGuiType() == ARENA_GUI_TYPE.EVENT_BATTLES
-
-    def _getHint(self):
-        return HintData(getReadableKey(CommandMapping.CMD_SHOW_HELP), backport.text(R.strings.event.ingameHelp.hint.press()), backport.text(R.strings.event.ingameHelp.hint.description()), 0, 0, HintPriority.HELP, False)
 
     def _canDisplayCustomHelpHint(self):
         return True

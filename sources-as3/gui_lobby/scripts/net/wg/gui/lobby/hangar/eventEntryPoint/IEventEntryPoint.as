@@ -13,7 +13,5 @@ package net.wg.gui.lobby.hangar.eventEntryPoint
       function set size(param1:int) : void;
       
       function get margin() : Rectangle;
-      
-      function set isPair(param1:Boolean) : void;
    }
 }

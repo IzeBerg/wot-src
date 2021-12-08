@@ -1,6 +1,7 @@
-import itertools, BigWorld
+import itertools
+from copy import deepcopy
+import BigWorld
 from CurrentVehicle import g_currentPreviewVehicle, g_currentVehicle
-from HalloweenHangarTank import HalloweenHangarTank
 from HeroTank import HeroTank
 from account_helpers import AccountSettings
 from account_helpers.AccountSettings import PREVIEW_INFO_PANEL_IDX
@@ -34,10 +35,8 @@ from gui.shared.formatters import text_styles, getRoleTextWithIcon
 from gui.shared.gui_items import GUI_ITEM_TYPE
 from gui.shared.money import MONEY_UNDEFINED
 from gui.shared.tutorial_helper import getTutorialGlobalStorage
-from gui.shared.event_dispatcher import isViewLoaded
 from helpers import dependency
 from helpers.i18n import makeString as _ms
-from preview_selectable_logic import PreviewSelectableLogic
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.game_control import IHeroTankController, IVehicleComparisonBasket, IMapsTrainingController
 from skeletons.gui.shared import IItemsCache
@@ -62,8 +61,7 @@ _BACK_BTN_LABELS = {VIEW_ALIAS.LOBBY_HANGAR: 'hangar',
    VIEW_ALIAS.ADVENT_CALENDAR: 'adventCalendar', 
    VIEW_ALIAS.VEH_POST_PROGRESSION: 'vehPostProgression', 
    PERSONAL_MISSIONS_ALIASES.PERSONAL_MISSIONS_AWARDS_VIEW_ALIAS: 'personalAwards', 
-   VIEW_ALIAS.WOT_PLUS_VEHICLE_PREVIEW: None, 
-   VIEW_ALIAS.SHOP_SALES_MAIN_VIEW: 'event'}
+   VIEW_ALIAS.WOT_PLUS_VEHICLE_PREVIEW: None}
 _TABS_DATA = (
  {'id': VEHPREVIEW_CONSTANTS.BROWSE_LINKAGE, 
     'label': VEHICLE_PREVIEW.INFOPANEL_TAB_BROWSE_NAME, 
@@ -129,7 +127,6 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
     __hangarSpace = dependency.descriptor(IHangarSpace)
     __settingsCore = dependency.descriptor(ISettingsCore)
     __mapsTrainingController = dependency.descriptor(IMapsTrainingController)
-    _OWN_VIEW_ALIAS = VIEW_ALIAS.VEHICLE_PREVIEW
 
     def __init__(self, ctx=None):
         self._backAlias = ctx.get('previewAlias', VIEW_ALIAS.LOBBY_HANGAR)
@@ -156,6 +153,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         self.__description = ctx.get('description')
         self.__endTime = ctx.get('endTime')
         self.__buyParams = ctx.get('buyParams')
+        self.__unmodifiedItemsPack = deepcopy(self._itemsPack)
         addBuiltInEquipment(self._itemsPack, self.__itemsCache, self._vehicleCD)
         notInteractive = (
          VIEW_ALIAS.LOBBY_STORE, VIEW_ALIAS.RANKED_BATTLE_PAGE, VIEW_ALIAS.VEH_POST_PROGRESSION)
@@ -219,8 +217,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         self.__comparisonBasket.onChange -= self.__onCompareBasketChanged
         self.__comparisonBasket.onSwitchChange -= self.__updateHeaderData
         self.__hangarSpace.onSpaceCreate -= self.__onHangarCreateOrRefresh
-        if not isViewLoaded(R.views.lobby.halloween.CustomizationShopView()):
-            self.__hangarSpace.setVehicleSelectable(self.__keepVehicleSelectionEnabled)
+        self.__hangarSpace.setVehicleSelectable(self.__keepVehicleSelectionEnabled)
         self.removeListener(CameraRelatedEvents.CAMERA_ENTITY_UPDATED, self.handleSelectedEntityUpdated)
         if self.__mapsTrainingController.isMapsTrainingPrbActive:
             self._needToResetAppearance = self._needToResetAppearance and self.__mapsTrainingController.getSelectedVehicle() <= 0
@@ -228,9 +225,10 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
             g_currentPreviewVehicle.selectNoVehicle()
             g_currentPreviewVehicle.resetAppearance()
         g_eventBus.handleEvent(events.LobbySimpleEvent(events.LobbySimpleEvent.VEHICLE_PREVIEW_HIDDEN), scope=EVENT_BUS_SCOPE.LOBBY)
-        if self._backAlias == self._OWN_VIEW_ALIAS:
+        if self._backAlias == VIEW_ALIAS.VEHICLE_PREVIEW:
             g_currentVehicle.refreshModel()
         self._previewBackCb = None
+        self.__unmodifiedItemsPack = None
         super(VehiclePreview, self)._dispose()
         if not self._heroInteractive:
             self.__heroTanksControl.setInteractive(True)
@@ -264,19 +262,11 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         ctx = event.ctx
         entity = BigWorld.entities.get(ctx['entityId'], None)
         if ctx['state'] == CameraMovementStates.MOVING_TO_OBJECT:
-            if isinstance(entity, HalloweenHangarTank):
-                descriptor = entity.typeDescriptor
-                if descriptor:
-                    if entity.isKingReward:
-                        event_dispatcher.showHalloweenKingRewardPreview(descriptor.type.compactDescr)
-                    else:
-                        self._needToResetAppearance = False
-                        event_dispatcher.showCustomizationShopView(entity.id)
-            elif isinstance(entity, HeroTank):
+            if isinstance(entity, HeroTank):
                 descriptor = entity.typeDescriptor
                 if descriptor:
                     self._needToResetAppearance = False
-                    event_dispatcher.showHeroTankPreview(descriptor.type.compactDescr, previewAlias=self._OWN_VIEW_ALIAS, previousBackAlias=self._backAlias)
+                    event_dispatcher.showHeroTankPreview(descriptor.type.compactDescr, previewAlias=VIEW_ALIAS.VEHICLE_PREVIEW, previousBackAlias=self._backAlias)
             elif entity.id == self.__hangarSpace.space.vehicleEntityId:
                 self._processBackClick({'entity': entity})
         return
@@ -290,7 +280,10 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         self.as_hide3DSceneTooltipS()
 
     def _createSelectableLogic(self):
-        return PreviewSelectableLogic()
+        if self.__isHeroTank:
+            return super(VehiclePreview, self)._createSelectableLogic()
+        from new_year.custom_selectable_logic import WithoutNewYearObjectsSelectableLogic
+        return WithoutNewYearObjectsSelectableLogic()
 
     def _onRegisterFlashComponent(self, viewPy, alias):
         super(VehiclePreview, self)._onRegisterFlashComponent(viewPy, alias)
@@ -365,14 +358,15 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
     def _getExitEvent(self):
         hangarVehicleCD = None
         hangarVehicle = self.__hangarSpace.getVehicleEntity()
-        if self.__isHeroTank and hangarVehicle.typeDescriptor.type.compactDescr != g_currentVehicle.item.compactDescr:
+        currentVehicle = g_currentVehicle.item
+        if self.__isHeroTank and currentVehicle is not None and hangarVehicle.typeDescriptor.type.compactDescr != currentVehicle.compactDescr:
             hangarVehicleCD = hangarVehicle.typeDescriptor.type.compactDescr
         return events.LoadViewEvent(SFViewLoadParams(self.alias), ctx={'itemCD': self._vehicleCD, 
            'previewAlias': self._backAlias, 
            'previousBackAlias': self._previousBackAlias, 
            'vehicleStrCD': self.__vehicleStrCD, 
            'previewBackCb': self._previewBackCb, 
-           'itemsPack': self._itemsPack, 
+           'itemsPack': self.__unmodifiedItemsPack, 
            'offers': self.__offers, 
            'price': self._price, 
            'oldPrice': self._oldPrice, 
@@ -463,11 +457,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
             return QUEUE_TYPE.UNKNOWN
 
     def __onHangarCreateOrRefresh(self):
-        if self._getPrbEntityType() in (QUEUE_TYPE.BATTLE_ROYALE, QUEUE_TYPE.BATTLE_ROYALE_TOURNAMENT):
-            self.closeView()
-            return
-        self.__keepVehicleSelectionEnabled = True
-        self.__handleWindowClose()
+        self.closeView()
 
     @event_bus_handlers.eventBusHandler(events.HideWindowEvent.HIDE_VEHICLE_PREVIEW, EVENT_BUS_SCOPE.LOBBY)
     def __handleWindowClose(self, event=None):
@@ -484,7 +474,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
             self._previewBackCb()
         elif self._backAlias == VIEW_ALIAS.LOBBY_RESEARCH and g_currentPreviewVehicle.isPresent():
             event_dispatcher.showResearchView(self._vehicleCD, exitEvent=events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_TECHTREE), ctx={'nation': g_currentPreviewVehicle.item.nationName}))
-        elif self._backAlias == self._OWN_VIEW_ALIAS:
+        elif self._backAlias == VIEW_ALIAS.VEHICLE_PREVIEW:
             entity = ctx.get('entity', None) if ctx else None
             if entity:
                 descriptor = entity.typeDescriptor
@@ -511,10 +501,3 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
     def __resetPostProgressionBullet(self):
         if _isPostProgressionBulletVisible(settingsCore=self.__settingsCore):
             self.__settingsCore.serverSettings.saveInUIStorage({UI_STORAGE_KEYS.VEH_PREVIEW_POST_PROGRESSION_BULLET_SHOWN: True})
-
-
-class HalloweenVehiclePreview(VehiclePreview):
-
-    def __init__(self, ctx=None):
-        self._OWN_VIEW_ALIAS = VIEW_ALIAS.HALLOWEEN_VEHICLE_PREVIEW
-        super(HalloweenVehiclePreview, self).__init__(ctx)

@@ -40,12 +40,9 @@ class MarathonEventTooltipData(BlocksTooltipData):
     def _getBody(self, state):
         if state == MarathonState.FINISHED:
             if self._marathonEvent.isRewardObtained():
-                text = self.__tooltipData.bodyExtraStyle
+                text = text_styles.main(backport.text(self.__tooltipData.bodyExtraSmart))
             else:
-                text = self.__tooltipData.bodyExtraVehicle
-            text = text_styles.main(backport.text(text, hours=self._marathonEvent.getExtraTimeToBuy()))
-        elif self._marathonEvent.isRewardObtained():
-            text = text_styles.main(backport.text(self.__tooltipData.bodyExtraSmart))
+                text = text_styles.main(backport.text(self.__tooltipData.bodyExtra, hours=self._marathonEvent.getExtraTimeToBuy()))
         else:
             text = text_styles.main(backport.text(self.__tooltipData.body))
         return formatters.packTextBlockData(text=text, padding=formatters.packPadding(left=20, top=10, bottom=20, right=10))
@@ -72,7 +69,7 @@ class MarathonEventTooltipData(BlocksTooltipData):
         else:
             discount = self._marathonEvent.getMarathonDiscount()
             return formatters.packTextBlockData(text=makeHtmlString('html_templates:lobby/textStyle', 'alignText', {'align': 'center', 
-               'message': text_styles.statusAttention(backport.text(self.__tooltipData.extraStateDiscount, discount=discount))}), padding=formatters.packPadding(bottom=20))
+               'message': text_styles.bonusPreviewText(backport.text(self.__tooltipData.extraStateDiscount, discount=discount))}), padding=formatters.packPadding(bottom=20))
 
     def _getAttentionNotice(self):
         return formatters.packImageTextBlockData(title=text_styles.stats(backport.text(self.__tooltipData.expRateAttention)), img=self.__iconsData.attentionIcon, imgPadding=formatters.packPadding(left=24, top=3), txtPadding=formatters.packPadding(left=6), padding=formatters.packPadding(bottom=15))

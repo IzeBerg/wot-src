@@ -24,7 +24,6 @@ from gui.Scaleform.managers.TweenSystem import TweenManager
 from gui.Scaleform.managers.UtilsManager import UtilsManager
 from gui.Scaleform.managers.battle_input import BattleGameInputMgr
 from gui.Scaleform.managers.voice_chat import BattleVoiceChatManager
-from gui.Scaleform.managers.fade_manager import FadeManager
 from gui.impl.gen import R
 from gui.shared import EVENT_BUS_SCOPE
 from helpers import uniprof
@@ -162,9 +161,6 @@ class BattleEntry(AppEntry):
     def _createGraphicsOptimizationManager(self):
         return GraphicsOptimizationManager(config=BATTLE_OPTIMIZATION_CONFIG)
 
-    def _createFadeManager(self):
-        return FadeManager()
-
     def _setup(self):
         self.component.wg_inputKeyMode = InputKeyMode.IGNORE_RESULT
         self.component.position.z = DEPTH_OF_Battle
@@ -176,7 +172,7 @@ class BattleEntry(AppEntry):
         pass
 
     def _getRequiredLibraries(self):
-        return ('windows.swf', 'common_i18n.swf', 'popovers.swf', 'guiControlsLobbyBattleDynamic.swf',
+        return ('windows.swf', 'popovers.swf', 'guiControlsLobbyBattleDynamic.swf',
                 'guiControlsLoginBattleDynamic.swf', 'guiControlsBattleDynamic.swf',
                 'battleMessages.swf')
 

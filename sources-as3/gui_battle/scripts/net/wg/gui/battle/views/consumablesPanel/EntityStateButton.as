@@ -133,6 +133,10 @@ package net.wg.gui.battle.views.consumablesPanel
       private function showIcon(param1:Sprite, param2:String) : void
       {
          var _loc4_:String = null;
+         if(param2 == null)
+         {
+            return;
+         }
          var _loc3_:String = this._entityState == BATTLE_ITEM_STATES.NORMAL ? Values.EMPTY_STR : ENTITY_STATE_POSTFIX;
          if(param2 == RolesState.LOADER + FIRST_MAN_POSTFIX || param2 == RolesState.LOADER + SECOND_MAN_POSTFIX)
          {

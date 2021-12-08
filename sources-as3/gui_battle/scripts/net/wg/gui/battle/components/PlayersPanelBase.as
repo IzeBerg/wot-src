@@ -84,13 +84,7 @@ package net.wg.gui.battle.components
          addEventListener(DynamicSquadEvent.ADD,this.onDynamicSquadAddHandler);
       }
       
-      public function resetFrags() : void
-      {
-         this.listLeft.resetFrags();
-         this.listRight.resetFrags();
-      }
-      
-      override protected function onDispose() : void
+      override protected function onBeforeDispose() : void
       {
          this.listLeft.removeEventListener(MouseEvent.ROLL_OVER,this.onListRollOverHandler);
          this.listLeft.removeEventListener(MouseEvent.ROLL_OUT,this.onListRollOutHandler);
@@ -108,6 +102,11 @@ package net.wg.gui.battle.components
          removeEventListener(DynamicSquadEvent.ACCEPT,this.onDynamicSquadAcceptHandler);
          removeEventListener(DynamicSquadEvent.ADD,this.onDynamicSquadAddHandler);
          App.utils.scheduler.cancelTask(this.addMouseClickHandlerToStageTask);
+         super.onBeforeDispose();
+      }
+      
+      override protected function onDispose() : void
+      {
          this.listLeft.dispose();
          this.listRight.dispose();
          this.panelSwitch.dispose();
@@ -122,6 +121,12 @@ package net.wg.gui.battle.components
       {
          this.applyVehicleData(param1);
          dispatchEvent(new Event(Event.CHANGE));
+      }
+      
+      public function as_setChatCommandsVisibility(param1:Boolean) : void
+      {
+         this.listLeft.setChatCommandVisibility(param1);
+         this.listRight.setChatCommandVisibility(param1);
       }
       
       public function as_setIsInteractive(param1:Boolean) : void
@@ -143,6 +148,18 @@ package net.wg.gui.battle.components
          this.applyListsInteractivity();
       }
       
+      public function as_setOverrideExInfo(param1:Boolean) : void
+      {
+         this.listRight.setOverrideExInfo(param1);
+         this.listLeft.setOverrideExInfo(param1);
+      }
+      
+      public function as_setPanelHPBarVisibilityState(param1:uint) : void
+      {
+         this.listLeft.setPanelHPBarVisibilityState(param1);
+         this.listRight.setPanelHPBarVisibilityState(param1);
+      }
+      
       public function as_setPanelMode(param1:int) : void
       {
          this._isStateRequested = false;
@@ -157,16 +174,22 @@ package net.wg.gui.battle.components
          this.panelSwitch.setState(param1);
       }
       
-      public function as_setChatCommandsVisibility(param1:Boolean) : void
+      public function as_setPlayerHP(param1:Boolean, param2:int, param3:int) : void
       {
-         this.listLeft.setChatCommandVisibility(param1);
-         this.listRight.setChatCommandVisibility(param1);
+         if(param1)
+         {
+            this.listLeft.setPlayerHP(param2,param3);
+         }
+         else
+         {
+            this.listRight.setPlayerHP(param2,param3);
+         }
       }
       
-      public function as_setPanelHPBarVisibilityState(param1:uint) : void
+      public function resetFrags() : void
       {
-         this.listLeft.setPanelHPBarVisibilityState(param1);
-         this.listRight.setPanelHPBarVisibilityState(param1);
+         this.listLeft.resetFrags();
+         this.listRight.resetFrags();
       }
       
       public function setArenaInfo(param1:IDAAPIDataClass) : void
@@ -258,6 +281,18 @@ package net.wg.gui.battle.components
          this.listRight.x = param1;
       }
       
+      public function updateTriggeredChatCommands(param1:IDAAPIDataClass) : void
+      {
+         var _loc2_:DAAPITriggeredCommandsVO = null;
+         var _loc4_:DAAPITriggeredCommandVO = null;
+         _loc2_ = DAAPITriggeredCommandsVO(param1);
+         var _loc3_:Vector.<DAAPITriggeredCommandVO> = _loc2_.triggeredCommands;
+         for each(_loc4_ in _loc3_)
+         {
+            this.listLeft.triggerChatCommand(_loc4_.vehicleID,_loc4_.chatCommandName);
+         }
+      }
+      
       public function updateUserTags(param1:IDAAPIDataClass) : void
       {
          var _loc2_:DAAPIVehicleUserTagsVO = DAAPIVehicleUserTagsVO(param1);
@@ -319,17 +354,6 @@ package net.wg.gui.battle.components
          }
       }
       
-      public function updateTriggeredChatCommands(param1:IDAAPIDataClass) : void
-      {
-         var _loc4_:DAAPITriggeredCommandVO = null;
-         var _loc2_:DAAPITriggeredCommandsVO = DAAPITriggeredCommandsVO(param1);
-         var _loc3_:Vector.<DAAPITriggeredCommandVO> = _loc2_.triggeredCommands;
-         for each(_loc4_ in _loc3_)
-         {
-            this.listLeft.triggerChatCommand(_loc4_.vehicleID,_loc4_.chatCommandName);
-         }
-      }
-      
       protected function applyVehicleData(param1:IDAAPIDataClass) : void
       {
       }
@@ -346,6 +370,11 @@ package net.wg.gui.battle.components
          }
          this._isStateRequested = true;
          tryToSetPanelModeByMouseS(param1);
+      }
+      
+      protected function notifyChangeItemsCount() : void
+      {
+         dispatchEvent(new PlayersPanelEvent(PlayersPanelEvent.ON_ITEMS_COUNT_CHANGE));
       }
       
       private function clearVehicleData() : void
@@ -408,24 +437,6 @@ package net.wg.gui.battle.components
          return this.y + this.listRight.y + this.listRight.height;
       }
       
-      public function as_setPlayerHP(param1:Boolean, param2:int, param3:int) : void
-      {
-         if(param1)
-         {
-            this.listLeft.setPlayerHP(param2,param3);
-         }
-         else
-         {
-            this.listRight.setPlayerHP(param2,param3);
-         }
-      }
-      
-      public function as_setOverrideExInfo(param1:Boolean) : void
-      {
-         this.listRight.setOverrideExInfo(param1);
-         this.listLeft.setOverrideExInfo(param1);
-      }
-      
       protected function onListItemSelected(param1:PlayersPanelListEvent) : void
       {
       }
@@ -444,7 +455,7 @@ package net.wg.gui.battle.components
       
       private function onListItemsCountChangeHandler(param1:PlayersPanelListEvent) : void
       {
-         dispatchEvent(new PlayersPanelEvent(PlayersPanelEvent.ON_ITEMS_COUNT_CHANGE));
+         this.notifyChangeItemsCount();
       }
       
       private function onListItemContextMenuOpenHandler(param1:PlayersPanelListEvent) : void

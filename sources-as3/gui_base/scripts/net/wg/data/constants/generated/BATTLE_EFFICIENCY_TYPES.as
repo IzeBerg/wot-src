@@ -74,36 +74,6 @@ package net.wg.data.constants.generated
       public static const DAMAGE_BY_MINEFIELD:String = "damageByMinefield";
       
       public static const RECEIVED_BY_SMOKE:String = "receivedBySmoke";
-      
-      public static const EVENT_DEATH_ON_PHASE_CHANGE:String = "eventDeathOnPhaseChange";
-      
-      public static const EVENT_HEAL_UP:String = "eventHealUp";
-      
-      public static const EVENT_ADD_AMMO:String = "eventAddAmmo";
-      
-      public static const EVENT_SET:Array = [EVENT_HEAL_UP,EVENT_ADD_AMMO];
-      
-      public static const BUFFS_RATION:String = "buffsRation";
-      
-      public static const BUFFS_FUEL:String = "buffsFuel";
-      
-      public static const BUFFS_RATE_FIRE:String = "buffsRateFire";
-      
-      public static const BUFFS_CONVERSION_SPEED:String = "buffsConversionSpeed";
-      
-      public static const BUFFS_INCREASED_MAXIMUM_DAMAGE:String = "buffsIncreasedMaximumDamage";
-      
-      public static const BUFFS_DOUBLE_DAMAGE:String = "buffsDoubleDamage";
-      
-      public static const BUFFS_INCENDIARY_SHOT:String = "buffsIncendiaryShot";
-      
-      public static const BUFFS_VAMPIRIC_SHOT:String = "buffsVampiricShot";
-      
-      public static const BUFFS_CONSTANT_HP_REGENERATION:String = "buffsConstantHpRegeneration";
-      
-      public static const BUFFS_ARMOR:String = "buffsArmor";
-      
-      public static const BUFFS_SET:Array = [BUFFS_RATION,BUFFS_FUEL,BUFFS_RATE_FIRE,BUFFS_CONVERSION_SPEED,BUFFS_INCREASED_MAXIMUM_DAMAGE,BUFFS_DOUBLE_DAMAGE,BUFFS_INCENDIARY_SHOT,BUFFS_VAMPIRIC_SHOT,BUFFS_CONSTANT_HP_REGENERATION,BUFFS_ARMOR];
        
       
       public function BATTLE_EFFICIENCY_TYPES()

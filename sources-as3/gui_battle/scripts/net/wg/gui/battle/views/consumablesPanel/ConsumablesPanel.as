@@ -190,30 +190,29 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      public function as_addEquipmentSlot(param1:int, param2:Number, param3:Number, param4:int, param5:Number, param6:Number, param7:String, param8:String, param9:int, param10:String) : void
+      public function as_addEquipmentSlot(param1:int, param2:Number, param3:Number, param4:int, param5:Number, param6:Number, param7:String, param8:String, param9:int) : void
       {
-         var _loc11_:IConsumablesButton = null;
+         var _loc10_:IConsumablesButton = null;
          if(this._renderers[param1] == null)
          {
-            _loc11_ = this.createEquipmentButton();
-            this._renderers[param1] = _loc11_;
-            addChild(DisplayObject(_loc11_));
+            _loc10_ = this.createEquipmentButton();
+            this._renderers[param1] = _loc10_;
+            addChild(DisplayObject(_loc10_));
          }
          else
          {
-            _loc11_ = this.getRendererBySlotIdx(param1);
+            _loc10_ = this.getRendererBySlotIdx(param1);
          }
-         var _loc12_:ConsumablesVO = _loc11_.consumablesVO;
-         _loc12_.keyCode = param2;
-         _loc12_.idx = param1;
-         _loc12_.tag = param10;
-         _loc11_.isReplay = this._isReplay;
-         _loc11_.icon = param7;
-         _loc11_.tooltipStr = param8;
-         _loc11_.key = param3;
-         _loc11_.addClickCallBack(this);
-         _loc11_.setCoolDownTime(param5,param6,param6 - param5,param9);
-         _loc11_.quantity = param4;
+         var _loc11_:ConsumablesVO = _loc10_.consumablesVO;
+         _loc11_.keyCode = param2;
+         _loc11_.idx = param1;
+         _loc10_.isReplay = this._isReplay;
+         _loc10_.icon = param7;
+         _loc10_.tooltipStr = param8;
+         _loc10_.key = param3;
+         _loc10_.addClickCallBack(this);
+         _loc10_.setCoolDownTime(param5,param6,param6 - param5,param9);
+         _loc10_.quantity = param4;
          invalidate(INVALIDATE_DRAW_LAYOUT);
       }
       
@@ -361,12 +360,12 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      public function as_setCoolDownTime(param1:int, param2:Number, param3:Number, param4:Number, param5:Boolean) : void
+      public function as_setCoolDownTime(param1:int, param2:Number, param3:Number, param4:Number) : void
       {
-         var _loc6_:IConsumablesButton = this.getRendererBySlotIdx(param1);
-         if(_loc6_)
+         var _loc5_:IConsumablesButton = this.getRendererBySlotIdx(param1);
+         if(_loc5_)
          {
-            _loc6_.setCoolDownTime(param2,param3,param4);
+            _loc5_.setCoolDownTime(param2,param3,param4);
          }
       }
       
@@ -435,14 +434,13 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      public function as_setItemTimeQuantityInSlot(param1:int, param2:int, param3:Number, param4:Number, param5:int, param6:int) : void
+      public function as_setItemTimeQuantityInSlot(param1:int, param2:int, param3:Number, param4:Number, param5:int) : void
       {
-         var _loc7_:IConsumablesButton = this.getRendererBySlotIdx(param1);
-         if(_loc7_)
+         var _loc6_:IConsumablesButton = this.getRendererBySlotIdx(param1);
+         if(_loc6_)
          {
-            _loc7_.quantity = param2;
-            _loc7_.setStage(param6);
-            _loc7_.setCoolDownTime(param3,param4,param4 - param3,param5);
+            _loc6_.quantity = param2;
+            _loc6_.setCoolDownTime(param3,param4,param4 - param3,param5);
          }
       }
       
@@ -804,31 +802,6 @@ package net.wg.gui.battle.views.consumablesPanel
       public function get panelWidth() : Number
       {
          return this.x + this._basePanelWidth;
-      }
-      
-      protected function get itemsPadding() : int
-      {
-         return this._itemsPadding;
-      }
-      
-      protected function set basePanelWidth(param1:Number) : void
-      {
-         this._basePanelWidth = param1;
-      }
-      
-      protected function get renderers() : Vector.<IConsumablesButton>
-      {
-         return this._renderers;
-      }
-      
-      protected function get customIndexGap() : Vector.<uint>
-      {
-         return this._customIndexGap;
-      }
-      
-      protected function get groupsGap() : int
-      {
-         return this._groupsGap;
       }
       
       private function onStageMouseDownHandler(param1:MouseEvent) : void

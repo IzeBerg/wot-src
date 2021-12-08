@@ -79,7 +79,6 @@ package net.wg.gui.components.ribbon
          this._countVehiclesTF.autoSize = TextFieldAutoSize.LEFT;
          this._valueTF.autoSize = TextFieldAutoSize.LEFT;
          this.ribbonNameTF.autoSize = TextFieldAutoSize.LEFT;
-         this.vNameTF.autoSize = TextFieldAutoSize.LEFT;
          this._countVehiclesTF.autoSize = TextFieldAutoSize.LEFT;
          this._iconPaddings = RibbonSettings.ICON_X_PADDINGS;
          this._items = new <TextField>[this._valueTF,this._countVehiclesTF];

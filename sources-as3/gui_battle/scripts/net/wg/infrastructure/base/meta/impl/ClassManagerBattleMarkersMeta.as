@@ -1,8 +1,5 @@
 package net.wg.infrastructure.base.meta.impl
 {
-   import net.wg.gui.battle.eventBattle.views.vehicleMarkers.EventVehicleMarker;
-   import net.wg.gui.battle.eventBattle.views.vehicleMarkers.EventVehicleMarkerMessage;
-   import net.wg.gui.battle.eventBattle.views.vehicleMarkers.EventVehicleMarkerSouls;
    import net.wg.gui.battle.views.staticMarkers.epic.ObjectiveIdReplyState;
    import net.wg.gui.battle.views.staticMarkers.epic.headquarter.HeadquarterActionMarker;
    import net.wg.gui.battle.views.staticMarkers.epic.headquarter.HeadquarterAnimation;
@@ -29,7 +26,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.vehicleMarkers.AnimateExplosion;
    import net.wg.gui.battle.views.vehicleMarkers.BranderVehicle2dMarker;
    import net.wg.gui.battle.views.vehicleMarkers.DamageLabel;
-   import net.wg.gui.battle.views.vehicleMarkers.EventVolotMarker;
    import net.wg.gui.battle.views.vehicleMarkers.FlagContainer;
    import net.wg.gui.battle.views.vehicleMarkers.FortConsumablesMarker;
    import net.wg.gui.battle.views.vehicleMarkers.HPFieldContainer;
@@ -56,10 +52,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.vehicleMarkers.VehicleMarkersLinkages;
    import net.wg.gui.battle.views.vehicleMarkers.VehicleMarkersManager;
    import net.wg.gui.battle.views.vehicleMarkers.VehicleStatusContainerMarker;
-   import net.wg.gui.battle.views.vehicleMarkers.event.EventConstants;
-   import net.wg.gui.battle.views.vehicleMarkers.event.EventVolotBase;
-   import net.wg.gui.battle.views.vehicleMarkers.event.EventVolotProgress;
-   import net.wg.gui.battle.views.vehicleMarkers.event.EventVolotTimer;
    import net.wg.gui.battle.views.vehicleMarkers.events.StatusAnimationEvent;
    import net.wg.gui.battle.views.vehicleMarkers.events.TimelineEvent;
    import net.wg.gui.battle.views.vehicleMarkers.events.VehicleMarkersManagerEvent;
@@ -74,12 +66,6 @@ package net.wg.infrastructure.base.meta.impl
    
    public class ClassManagerBattleMarkersMeta
    {
-      
-      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_VEHICLEMARKERS_EVENTVEHICLEMARKER:Class = EventVehicleMarker;
-      
-      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_VEHICLEMARKERS_EVENTVEHICLEMARKERMESSAGE:Class = EventVehicleMarkerMessage;
-      
-      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_VEHICLEMARKERS_EVENTVEHICLEMARKERSOULS:Class = EventVehicleMarkerSouls;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EPIC_OBJECTIVEIDREPLYSTATE:Class = ObjectiveIdReplyState;
       
@@ -133,8 +119,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_DAMAGELABEL:Class = DamageLabel;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_EVENTVOLOTMARKER:Class = EventVolotMarker;
-      
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_FLAGCONTAINER:Class = FlagContainer;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_FORTCONSUMABLESMARKER:Class = FortConsumablesMarker;
@@ -174,14 +158,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VEHICLESTATUSCONTAINERMARKER:Class = VehicleStatusContainerMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VMATLASITEMNAME:Class = VMAtlasItemName;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_EVENT_EVENTCONSTANTS:Class = EventConstants;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_EVENT_EVENTVOLOTBASE:Class = EventVolotBase;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_EVENT_EVENTVOLOTPROGRESS:Class = EventVolotProgress;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_EVENT_EVENTVOLOTTIMER:Class = EventVolotTimer;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_EVENTS_STATUSANIMATIONEVENT:Class = StatusAnimationEvent;
       

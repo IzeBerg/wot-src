@@ -36,8 +36,6 @@ package net.wg.gui.battle.mapsTraining.views
       
       private static const VEHICLE_MESSAGES_LIST_OFFSET_Y:int = 106;
       
-      private static const PANEL_VEHICLES_OFFSET:int = 61;
-      
       private static const PREBATTLE_TIMER_Y:int = -25;
       
       private static const PREBATTLE_TIMER_Y_SMALL:int = -63;
@@ -90,11 +88,12 @@ package net.wg.gui.battle.mapsTraining.views
       
       override public function updateStage(param1:Number, param2:Number) : void
       {
+         var _loc3_:uint = 0;
          super.updateStage(param1,param2);
          this.battleDamageLogPanel.x = BATTLE_DAMAGE_LOG_X_POSITION;
          this.battleDamageLogPanel.y = damagePanel.y + BATTLE_DAMAGE_LOG_Y_PADDING >> 0;
          this.battleDamageLogPanel.updateSize(param1,param2);
-         var _loc3_:uint = param1 >> 1;
+         _loc3_ = param1 >> 1;
          this.sixthSense.x = _loc3_;
          this.sixthSense.y = param2 >> 2;
          this.consumablesPanel.updateStage(param1,param2);
@@ -105,7 +104,7 @@ package net.wg.gui.battle.mapsTraining.views
          this.goals.x = _loc3_;
          this.goals.updateStage(param1,param2);
          this.battleMessenger.x = damagePanel.x;
-         this.battleMessenger.y = damagePanel.y - this.battleMessenger.height + MESSENGER_Y_OFFSET - PANEL_VEHICLES_OFFSET >> 0;
+         this.battleMessenger.y = damagePanel.y - this.battleMessenger.height + MESSENGER_Y_OFFSET;
          this.destroyTimersPanel.updateStage(param1,param2);
          this.updateHintPanelPosition();
       }

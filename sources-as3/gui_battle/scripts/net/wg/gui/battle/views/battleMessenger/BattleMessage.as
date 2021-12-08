@@ -43,9 +43,9 @@ package net.wg.gui.battle.views.battleMessenger
       
       public static const HIDDEN_MES:int = 2;
       
-      public static const PRESHOWANIM_MES:int = 3;
+      public static const FADE_IN_MES:int = 3;
       
-      public static const ANIM_MES:int = 4;
+      public static const FADE_OUT_MES:int = 4;
       
       public static const VISIBLE_MES:int = 5;
       
@@ -81,10 +81,6 @@ package net.wg.gui.battle.views.battleMessenger
       
       private static const INVALID_MESSAGE_VISIBILITY:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 1;
       
-      private static const INVALID_X_POSITION:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 2;
-      
-      private static const INVALID_Y_POSITION:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 3;
-      
       private static const INVALID_MESSAGES_SIZE:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 4;
       
       private static const USER_INTERACTION_TIMER_BY_MILLISECONDS:int = 100;
@@ -110,11 +106,9 @@ package net.wg.gui.battle.views.battleMessenger
       
       private var _deleteFromPoolFunc:Function = null;
       
-      private var _alphaCurrentStep:int = 0;
-      
       private var _currentStateId:int = -1;
       
-      private var _isHidingState:Boolean = false;
+      private var _isWaitingAutoHide:Boolean = false;
       
       private var _lastMessageAlpha:Number = -1;
       
@@ -127,8 +121,6 @@ package net.wg.gui.battle.views.battleMessenger
       private var _atlasManager:IAtlasManager;
       
       private var _textFormat:TextFormat;
-      
-      private var _isHidingShowState:Boolean = false;
       
       private var _isEnterFrameEnable:Boolean = false;
       
@@ -179,63 +171,7 @@ package net.wg.gui.battle.views.battleMessenger
          super.draw();
          if(isInvalid(INVALID_MESSAGE_VISIBILITY))
          {
-            if(this._currentStateId == VISIBLE_MES)
-            {
-               this.updateMessageElements(Values.DEFAULT_ALPHA,true);
-               this.backgroundAddListeners(true);
-            }
-            else if(this._currentStateId == VISIBLE_WHEEL_MES)
-            {
-               this.updateMessageElements(Values.DEFAULT_ALPHA,true);
-               this.backgroundAddListeners();
-            }
-            else if(this._currentStateId == RECOVERED_MES)
-            {
-               this.backgroundRemoveListeners();
-               this.updateMessageElements(this._recoveredLatestMessagesAlpha,true);
-            }
-            else if(this._currentStateId == HIDEHALF_MES)
-            {
-               this.updateMessageElements(this._lastMessageAlpha,true);
-               this.backgroundAddListeners();
-            }
-            else if(this._currentStateId == HIDDEN_MES)
-            {
-               this.clear();
-               this.updateMessageElements(this._recoveredLatestMessagesAlpha,false);
-            }
-            else if(this._currentStateId == PRESHOWANIM_MES)
-            {
-               this.clear();
-               this.updateMessageElements(0,true);
-               this._alphaCurrentStep = 0;
-               this._scheduler.scheduleRepeatableTask(this.showAnimation,ANIM_SHOW_INTERVAL,ANIM_SHOW_STEPS);
-               if(this._isHidingShowState)
-               {
-                  if(this._lifeTime > 0)
-                  {
-                     this._scheduler.scheduleTask(this.onEndLifeHandler,this._lifeTime);
-                  }
-                  this._isHidingState = true;
-               }
-            }
-         }
-         if(isInvalid(INVALID_X_POSITION))
-         {
-            this.messageField.x = this._x + TEXT_OFFSET_X;
-            this.background.x = this._x;
-         }
-         if(isInvalid(INVALID_Y_POSITION))
-         {
-            this.background.y = this._y;
-            if(this._isBlockedMessage)
-            {
-               this.setYPositionByCenter();
-            }
-            else
-            {
-               this.messageField.y = this._y + TEXT_OFFSET_Y;
-            }
+            this.applyState();
          }
          if(isInvalid(INVALID_MESSAGES_SIZE))
          {
@@ -245,7 +181,7 @@ package net.wg.gui.battle.views.battleMessenger
       
       override protected function onDispose() : void
       {
-         this.clear();
+         this.clearAnim();
          this.backgroundRemoveListeners();
          this._deleteFromPoolFunc = null;
          this.messageField = null;
@@ -257,17 +193,23 @@ package net.wg.gui.battle.views.battleMessenger
          super.onDispose();
       }
       
-      public function clear() : void
+      public function clearAnim() : void
       {
-         this._scheduler.cancelTask(this.showAnimation);
-         this.hidingState = false;
+         this._scheduler.cancelTask(this.fadeInAnimation);
+         this.isWaitingAutoHide = false;
+         this._scheduler.cancelTask(this.onEnterFrameHandler);
          this._isEnterFrameEnable = false;
       }
       
       public function close() : void
       {
-         this.clear();
+         this.clearAnim();
          this._deleteFromPoolFunc(this);
+      }
+      
+      public function getState() : int
+      {
+         return this._currentStateId;
       }
       
       public function restoreMessage() : void
@@ -319,14 +261,69 @@ package net.wg.gui.battle.views.battleMessenger
          if(this._currentStateId != param1 || param2)
          {
             this._currentStateId = param1;
-            invalidate(INVALID_MESSAGE_VISIBILITY);
+            if(param2)
+            {
+               this.applyState();
+            }
+            else
+            {
+               invalidate(INVALID_MESSAGE_VISIBILITY);
+            }
          }
       }
       
       public function show(param1:Boolean) : void
       {
-         this._isHidingShowState = param1;
-         this.setState(PRESHOWANIM_MES,true);
+         this.setState(FADE_IN_MES,true);
+         if(param1 && this._lifeTime > 0)
+         {
+            this.setWaitingAutoHideTime(this._lifeTime);
+         }
+      }
+      
+      private function applyState() : void
+      {
+         if(this._currentStateId == VISIBLE_MES)
+         {
+            this.updateMessageElements(Values.DEFAULT_ALPHA,true);
+            this.backgroundAddListeners(true);
+         }
+         else if(this._currentStateId == VISIBLE_WHEEL_MES)
+         {
+            this.updateMessageElements(Values.DEFAULT_ALPHA,true);
+            this.backgroundAddListeners();
+         }
+         else if(this._currentStateId == RECOVERED_MES)
+         {
+            this.backgroundRemoveListeners();
+            this.updateMessageElements(this._recoveredLatestMessagesAlpha,true);
+         }
+         else if(this._currentStateId == HIDEHALF_MES)
+         {
+            this.updateMessageElements(this._lastMessageAlpha,true);
+            this.backgroundAddListeners();
+         }
+         else if(this._currentStateId == FADE_OUT_MES)
+         {
+            this.clearAnim();
+            this.onEndLifeHandler();
+         }
+         else if(this._currentStateId == HIDDEN_MES)
+         {
+            this.hideMes();
+         }
+         else if(this._currentStateId == FADE_IN_MES)
+         {
+            this.clearAnim();
+            this.updateMessageElements(0,true);
+            this._scheduler.scheduleRepeatableTask(this.fadeInAnimation,ANIM_SHOW_INTERVAL,ANIM_SHOW_STEPS);
+         }
+      }
+      
+      private function hideMes() : void
+      {
+         this.clearAnim();
+         this.updateMessageElements(this._recoveredLatestMessagesAlpha,false);
       }
       
       private function updateMessageSize() : void
@@ -339,7 +336,7 @@ package net.wg.gui.battle.views.battleMessenger
          {
             this.background.width += ADDITIONAL_TF_PADDING;
          }
-         this.background.height = this.messageField.height + TEXT_BOTTOM_PADDING | 0;
+         this.background.height = this.getBackgroundHeight();
       }
       
       private function setYPositionByCenter() : void
@@ -351,8 +348,8 @@ package net.wg.gui.battle.views.battleMessenger
       {
          this.messageField.width = this._availableWidth;
          this.messageField.htmlText = param1;
-         this.messageField.height = this.messageField.textHeight + TEXT_HEIGHT_OFFSET | 0;
          App.utils.commons.updateTextFieldSize(this.messageField,true,false);
+         this.messageField.height = Math.ceil(this.messageField.textHeight) + TEXT_HEIGHT_OFFSET | 0;
          if(param2)
          {
             this.background.width = this.messageField.textWidth + TEXT_RIGHT_PADDING | 0;
@@ -363,13 +360,18 @@ package net.wg.gui.battle.views.battleMessenger
          }
          if(param3)
          {
-            this.background.height = this.messageField.height + TEXT_BOTTOM_PADDING | 0;
+            this.background.height = this.getBackgroundHeight();
          }
+      }
+      
+      private function getBackgroundHeight() : Number
+      {
+         return this.messageField.height + TEXT_BOTTOM_PADDING | 0;
       }
       
       private function updateMessageElements(param1:Number, param2:Boolean) : void
       {
-         this.background.alpha = this.messageField.alpha = param1;
+         this.alpha = param1;
          this.background.visible = this.messageField.visible = param2;
       }
       
@@ -433,30 +435,32 @@ package net.wg.gui.battle.views.battleMessenger
          this.messageField.defaultTextFormat = this._textFormat;
       }
       
-      private function showAnimation() : void
+      private function fadeInAnimation() : void
       {
-         ++this._alphaCurrentStep;
          this.background.alpha += ANIM_SHOW_STEP;
-         this.messageField.alpha += ANIM_SHOW_STEP;
-         if(this._alphaCurrentStep == ANIM_SHOW_STEPS)
+         this.messageField.alpha = this.background.alpha;
+         if(this.background.alpha >= 1)
          {
             this.setState(VISIBLE_MES);
-            this._scheduler.cancelTask(this.showAnimation);
+            this._scheduler.cancelTask(this.fadeInAnimation);
          }
       }
       
       private function onEndLifeHandler() : void
       {
+         var _loc1_:Number = NaN;
+         this._currentStateId = FADE_OUT_MES;
+         this._isWaitingAutoHide = false;
          if(this._fadeTime > 0)
          {
-            this._endFadeTime = getTimer() + this._fadeTime;
-            this.setState(ANIM_MES);
+            _loc1_ = this.alpha < this._lastMessageAlpha ? Number(this.alpha * this._fadeTime) : Number(this._fadeTime);
+            this._endFadeTime = getTimer() + _loc1_;
             this._isEnterFrameEnable = true;
             this._scheduler.scheduleOnNextFrame(this.onEnterFrameHandler);
          }
          else
          {
-            this.clear();
+            this.clearAnim();
             this.setState(HIDDEN_MES);
          }
       }
@@ -476,7 +480,7 @@ package net.wg.gui.battle.views.battleMessenger
          }
          if(_loc2_ <= 0)
          {
-            this.clear();
+            this.clearAnim();
             this.setState(HIDDEN_MES);
          }
          else
@@ -485,12 +489,33 @@ package net.wg.gui.battle.views.battleMessenger
          }
       }
       
+      private function setWaitingAutoHideTime(param1:int) : void
+      {
+         if(this._isWaitingAutoHide)
+         {
+            this._scheduler.cancelTask(this.onEndLifeHandler);
+         }
+         this._isWaitingAutoHide = true;
+         this._scheduler.scheduleTask(this.onEndLifeHandler,param1);
+      }
+      
+      public function get alpha() : Number
+      {
+         return this.background.alpha;
+      }
+      
+      public function set alpha(param1:Number) : void
+      {
+         this.background.alpha = this.messageField.alpha = param1;
+      }
+      
       public function set x(param1:Number) : void
       {
          if(this._x != param1)
          {
             this._x = param1;
-            invalidate(INVALID_X_POSITION);
+            this.messageField.x = this._x + TEXT_OFFSET_X;
+            this.background.x = this._x;
          }
       }
       
@@ -504,7 +529,15 @@ package net.wg.gui.battle.views.battleMessenger
          if(param1 != this._y)
          {
             this._y = param1;
-            invalidate(INVALID_Y_POSITION);
+            this.background.y = this._y;
+            if(this._isBlockedMessage)
+            {
+               this.setYPositionByCenter();
+            }
+            else
+            {
+               this.messageField.y = this._y + TEXT_OFFSET_Y;
+            }
          }
       }
       
@@ -514,16 +547,16 @@ package net.wg.gui.battle.views.battleMessenger
          this._inverseFadeTime = 1 / this._fadeTime;
       }
       
-      public function set hidingState(param1:Boolean) : void
+      public function set isWaitingAutoHide(param1:Boolean) : void
       {
-         if(this._isHidingState != param1)
+         if(this._isWaitingAutoHide != param1)
          {
-            this._isHidingState = param1;
-            if(this._isHidingState)
+            this._isWaitingAutoHide = param1;
+            if(this._isWaitingAutoHide)
             {
                if(this._recoveredMessagesLifeTime > 0)
                {
-                  this._scheduler.scheduleTask(this.onEndLifeHandler,this._recoveredMessagesLifeTime);
+                  this.setWaitingAutoHideTime(this._recoveredMessagesLifeTime);
                }
             }
             else

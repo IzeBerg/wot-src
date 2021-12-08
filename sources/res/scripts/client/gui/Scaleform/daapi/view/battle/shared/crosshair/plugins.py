@@ -34,7 +34,6 @@ from gui.shared.utils.plugins import IPlugin
 from helpers import dependency
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.battle_session import IBattleSessionProvider
-from skeletons.gui.game_control import IBootcampController
 from soft_exception import SoftException
 from helpers.time_utils import MS_IN_SECOND
 _logger = logging.getLogger(__name__)
@@ -163,6 +162,10 @@ class CrosshairPlugin(IPlugin):
     __slots__ = ('__weakref__', )
     sessionProvider = dependency.descriptor(IBattleSessionProvider)
     settingsCore = dependency.descriptor(ISettingsCore)
+
+    def _isHideAmmo(self):
+        arenaGuiTypeVisitor = self.sessionProvider.arenaVisitor.gui
+        return arenaGuiTypeVisitor.isBootcampBattle() or arenaGuiTypeVisitor.isMapsTraining()
 
 
 class CorePlugin(CrosshairPlugin):
@@ -423,7 +426,6 @@ class AmmoPlugin(CrosshairPlugin):
     __slots__ = ('__guiSettings', '__burstSize', '__shellsInClip', '__autoReloadCallbackID',
                  '__autoReloadSnapshot', '__scaledInterval', '__reloadAnimator',
                  '__isShowingAutoloadingBoost')
-    bootcampController = dependency.descriptor(IBootcampController)
 
     def __init__(self, parentObj):
         super(AmmoPlugin, self).__init__(parentObj)
@@ -444,6 +446,7 @@ class AmmoPlugin(CrosshairPlugin):
         self.__setup(ctrl, self.sessionProvider.isReplayPlaying)
         ctrl.onGunSettingsSet += self.__onGunSettingsSet
         ctrl.onGunReloadTimeSet += self.__onGunReloadTimeSet
+        ctrl.onShellsCleared += self.__onGunReloadCleared
         ctrl.onGunAutoReloadTimeSet += self.__onGunAutoReloadTimeSet
         ctrl.onGunAutoReloadBoostUpdated += self.__onGunAutoReloadBoostUpd
         ctrl.onShellsUpdated += self.__onShellsUpdated
@@ -467,6 +470,7 @@ class AmmoPlugin(CrosshairPlugin):
             ctrl.onGunAutoReloadTimeSet -= self.__onGunAutoReloadTimeSet
             ctrl.onGunAutoReloadBoostUpdated -= self.__onGunAutoReloadBoostUpd
             ctrl.onGunReloadTimeSet -= self.__onGunReloadTimeSet
+            ctrl.onShellsCleared -= self.__onGunReloadCleared
             ctrl.onShellsUpdated -= self.__onShellsUpdated
             ctrl.onCurrentShellChanged -= self.__onCurrentShellChanged
             ctrl.onCurrentShellReset -= self.__onCurrentShellReset
@@ -496,7 +500,7 @@ class AmmoPlugin(CrosshairPlugin):
         self.__setReloadingState(reloadingState)
         if self.__guiSettings.hasAutoReload:
             self.__reloadAnimator.setClipAutoLoading(reloadingState.getActualValue(), reloadingState.getBaseValue(), isStun=False)
-        if self.bootcampController.isInBootcamp():
+        if self._isHideAmmo():
             self._parentObj.as_setNetVisibleS(CROSSHAIR_CONSTANTS.VISIBLE_NET)
         self._parentObj.as_setShellChangeTimeS(ctrl.canQuickShellChange(), ctrl.getQuickShellChangeTime())
 
@@ -510,6 +514,9 @@ class AmmoPlugin(CrosshairPlugin):
         guiSettings = _createAmmoSettings(gunSettings)
         self.__guiSettings = guiSettings
         self._parentObj.as_setClipParamsS(guiSettings.getClipCapacity(), guiSettings.getBurstSize(), guiSettings.hasAutoReload)
+
+    def __onGunReloadCleared(self, state):
+        self.__setReloadingState(state)
 
     def __onGunReloadTimeSet(self, _, state, skipAutoLoader):
         self.__setReloadingState(state)
@@ -543,16 +550,13 @@ class AmmoPlugin(CrosshairPlugin):
         return
 
     def __onGunAutoReloadTimeSet(self, state, stunned):
-        if self.__autoReloadCallbackID:
-            BigWorld.cancelCallback(self.__autoReloadCallbackID)
-            self.__autoReloadCallbackID = None
-        timeLeft = min(state.getTimeLeft(), state.getActualValue())
-        baseValue = state.getBaseValue()
-        if self.__shellsInClip == 0:
-            baseValue = self.__reCalcFirstShellAutoReload(baseValue)
-        self.__reloadAnimator.setClipAutoLoading(timeLeft, baseValue, isStun=stunned, isTimerOn=True, isRedText=self.__shellsInClip == 0)
+        if not self.__autoReloadCallbackID:
+            timeLeft = min(state.getTimeLeft(), state.getActualValue())
+            baseValue = state.getBaseValue()
+            if self.__shellsInClip == 0:
+                baseValue = self.__reCalcFirstShellAutoReload(baseValue)
+            self.__reloadAnimator.setClipAutoLoading(timeLeft, baseValue, isStun=stunned, isTimerOn=True, isRedText=self.__shellsInClip == 0)
         self.__autoReloadSnapshot = state
-        return
 
     def __onGunAutoReloadBoostUpd(self, state, stateDuration, stateTotalTime, extraData):
         _logger.debug('Auto loader boost incoming state=%s, stateDuration=%s, stateTotalTime=%s, extraData=%s', state, stateDuration, stateTotalTime, extraData)
@@ -975,7 +979,6 @@ class ShotResultIndicatorPlugin(CrosshairPlugin):
 
 class SiegeModePlugin(CrosshairPlugin):
     __slots__ = ('__siegeState', )
-    bootcampController = dependency.descriptor(IBootcampController)
 
     def __init__(self, parentObj):
         super(SiegeModePlugin, self).__init__(parentObj)
@@ -1039,7 +1042,7 @@ class SiegeModePlugin(CrosshairPlugin):
             self._parentObj.as_setNetTypeS(self.__getEnabledNetType(vTypeDescr))
         elif self.__siegeState == _SIEGE_STATE.DISABLED:
             self._parentObj.as_setNetTypeS(NET_TYPE_OVERRIDE.DISABLED)
-        visibleMask = CROSSHAIR_CONSTANTS.VISIBLE_NET if self.bootcampController.isInBootcamp() else CROSSHAIR_CONSTANTS.VISIBLE_ALL
+        visibleMask = CROSSHAIR_CONSTANTS.VISIBLE_NET if self._isHideAmmo() else CROSSHAIR_CONSTANTS.VISIBLE_ALL
         visibleMask = visibleMask if self.__siegeState not in _SIEGE_STATE.SWITCHING else CROSSHAIR_CONSTANTS.INVISIBLE
         self._parentObj.as_setNetVisibleS(visibleMask)
         return

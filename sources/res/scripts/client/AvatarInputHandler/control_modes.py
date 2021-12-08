@@ -28,7 +28,6 @@ from items import _xml
 from shared_utils import findFirst
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.battle_session import IBattleSessionProvider
-from constants import ARENA_GUI_TYPE
 _logger = logging.getLogger(__name__)
 _WHEELED_VEHICLE_POSTMORTEM_DELAY = 3
 
@@ -559,9 +558,6 @@ class ArcadeControlMode(_GunControlMode):
                 BigWorld.player().autoAim(None)
                 return True
             if cmdMap.isFired(CommandMapping.CMD_CM_VEHICLE_SWITCH_AUTOROTATION, key) and isDown:
-                arena = avatar_getter.getArena()
-                if arena and arena.guiType == ARENA_GUI_TYPE.EVENT_BATTLES:
-                    return False
                 self._aih.switchAutorotation(True)
                 return True
             if cmdMap.isFiredList((CommandMapping.CMD_CM_CAMERA_ROTATE_LEFT,
@@ -613,6 +609,8 @@ class ArcadeControlMode(_GunControlMode):
     def setForcedGuiControlMode(self, enable):
         if enable:
             self._cam.update(0, 0, 0, False, False)
+            if self._aih.dualGunControl:
+                self._aih.dualGunControl.cancelShootKeyEvent()
 
     def updateTargetedEnemiesForGuns(self, gunsData):
         self.__chargeMarkerState = CHARGE_MARKER_STATE.VISIBLE if any(gunsData) else CHARGE_MARKER_STATE.DIMMED
@@ -1238,6 +1236,10 @@ class DualGunControlMode(SniperControlMode):
             return True
         return False
 
+    def setForcedGuiControlMode(self, enable):
+        if enable and self._aih.dualGunControl:
+            self._aih.dualGunControl.cancelShootKeyEvent()
+
     def __onActiveGunChanged(self, gunIndex, switchTime):
         self._cam.aimingSystem.onActiveGunChanged(gunIndex, switchTime)
 
@@ -1306,8 +1308,6 @@ class PostMortemControlMode(IControlMode):
             self.__selfVehicleID = player.playerVehicleID
             self.__isObserverMode = 'observer' in player.vehicleTypeDescriptor.type.tags
             self.__curVehicleID = self.__selfVehicleID
-            if self.guiSessionProvider.arenaVisitor.gui.isEventBattle():
-                self.selectPlayer(None)
         camTransitionParams = {'cameraTransitionDuration': args.get('transitionDuration', -1), 'camMatrix': args.get('camMatrix', None)}
         self.__cam.enable(None, False, args.get('postmortemParams'), None, None, camTransitionParams)
         newVehicle = args.get('newVehicleID', None)
@@ -1316,7 +1316,6 @@ class PostMortemControlMode(IControlMode):
         _setCameraFluency(self.__cam.camera, self.__CAM_FLUENCY)
         self.__isEnabled = True
         BigWorld.player().consistentMatrices.onVehicleMatrixBindingChanged += self._onMatrixBound
-        isEventBattle = self.guiSessionProvider.arenaVisitor.gui.isEventBattle()
         if not BattleReplay.g_replayCtrl.isPlaying:
             if self.__isObserverMode:
                 vehicleID = args.get('vehicleID')
@@ -1325,7 +1324,7 @@ class PostMortemControlMode(IControlMode):
                 else:
                     self.__fakeSwitchToVehicle(vehicleID)
                 return
-            if (self._isPostmortemDelayEnabled() or bool(args.get('respawn', False)) and not isEventBattle) and bool(args.get('bPostmortemDelay')):
+            if (self._isPostmortemDelayEnabled() or bool(args.get('respawn', False))) and bool(args.get('bPostmortemDelay')):
                 self.__startPostmortemDelay(self.__selfVehicleID)
             else:
                 self.__switchToVehicle(None)
@@ -1342,7 +1341,7 @@ class PostMortemControlMode(IControlMode):
 
     def __startPostmortemDelay(self, vehicleID):
         initialDelay = self.__calculatePostMortemInitialDelayForVehicle(vehicleID)
-        self.__postmortemDelay = PostmortemDelay(self.__cam, self._onPostmortemDelayStart, self.onPostmortemDelayStop, initialDelay, self._isPostmortemDelayEnabled())
+        self.__postmortemDelay = PostmortemDelay(self.__cam, self._onPostmortemDelayStart, self._onPostmortemDelayStop, initialDelay, self._isPostmortemDelayEnabled())
         self.__postmortemDelay.start()
 
     def __calculatePostMortemInitialDelayForVehicle(self, vehicleID):
@@ -1456,7 +1455,7 @@ class PostMortemControlMode(IControlMode):
     def _onPostmortemDelayStart(self, killerVehicleID):
         self.__aih.onPostmortemKillerVisionEnter(killerVehicleID)
 
-    def onPostmortemDelayStop(self):
+    def _onPostmortemDelayStop(self):
         self.__cam.vehicleMProv = BigWorld.player().consistentMatrices.attachedVehicleMatrix
         self.__aih.onPostmortemKillerVisionExit()
         if not self.__isEnabled:

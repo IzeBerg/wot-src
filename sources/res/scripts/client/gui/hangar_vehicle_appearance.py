@@ -40,8 +40,6 @@ AnchorLocation = namedtuple('AnchorLocation', ['position', 'normal', 'up'])
 AnchorId = namedtuple('AnchorId', ('slotType', 'areaId', 'regionIdx'))
 AnchorHelper = namedtuple('AnchorHelper', ['location', 'descriptor', 'turretYaw', 'partIdx', 'attachedPartIdx'])
 AnchorParams = namedtuple('AnchorParams', ['location', 'descriptor', 'id'])
-_DEFAULT_TURRET_YAW_ANGLE = 0.0
-_DEFAULT_GUN_PITCH_ANGLE = 0.0
 _logger = logging.getLogger(__name__)
 
 class _LoadStateNotifier(object):
@@ -266,12 +264,6 @@ class HangarVehicleAppearance(ScriptGameObject):
 
     def _getGunPitch(self):
         return self.turretAndGunAngles.getGunPitch()
-
-    def _getGunPitchLimits(self):
-        return self.__vDesc.gun.pitchLimits['absolute']
-
-    def _getTurretYawLimits(self):
-        return self.__vDesc.gun.turretYawLimits
 
     def __reload(self, vDesc, vState, outfit):
         self.__clearModelAnimators()
@@ -598,10 +590,13 @@ class HangarVehicleAppearance(ScriptGameObject):
           self.__vEntity.model.node(TankPartNames.TURRET)),
          (
           TankPartNames.getIdx(TankPartNames.GUN) + 3, gunLink))
-        self.collisions.connect(self.__vEntity.id, ColliderTypes.HANGAR_VEHICLE_COLLIDER, collisionData)
+        self.collisions.connect(self.__vEntity.id, self._getColliderType(), collisionData)
         self._reloadColliderType(self.__vEntity.state)
         self.__reloadShadowManagerTarget(self.__vEntity.state)
         return
+
+    def _getColliderType(self):
+        return ColliderTypes.HANGAR_VEHICLE_COLLIDER
 
     def __handleEntityUpdated(self, event):
         ctx = event.ctx
@@ -724,38 +719,38 @@ class HangarVehicleAppearance(ScriptGameObject):
         return
 
     def updateCustomization(self, outfit=None, callback=None):
-        if self.__isVehicleDestroyed or g_currentVehicle.item is None:
-            return
-        if g_currentVehicle.item:
-            vehicleCD = g_currentVehicle.item.descriptor.makeCompactDescr()
-        else:
-            vehicleCD = g_currentPreviewVehicle.item.descriptor.makeCompactDescr()
-        outfit = outfit or self.customizationService.getEmptyOutfitWithNationalEmblems(vehicleCD=vehicleCD)
-        if self.recreateRequired(outfit):
-            self.refresh(outfit, callback)
+        if self.__isVehicleDestroyed:
             return
         else:
+            if g_currentVehicle.item:
+                vehicleCD = g_currentVehicle.item.descriptor.makeCompactDescr()
+            else:
+                vehicleCD = g_currentPreviewVehicle.item.descriptor.makeCompactDescr()
+            outfit = outfit or self.customizationService.getEmptyOutfitWithNationalEmblems(vehicleCD=vehicleCD)
+            if self.recreateRequired(outfit):
+                self.refresh(outfit, callback)
+                return
             if self.c11nComponent is None:
                 self.__onLoadedAfterRefreshCallback = partial(self.__applyCustomization, outfit, callback)
                 return
             self.__applyCustomization(outfit, None)
             return
 
-    def rotateTurretForAnchor(self, anchorId, duration=EASING_TRANSITION_DURATION, useStaticTurretYaw=False):
+    def rotateTurretForAnchor(self, anchorId, duration=EASING_TRANSITION_DURATION):
         if self.compoundModel is None or self.__vDesc is None:
             return False
-        defaultYaw = self.__staticTurretYaw if useStaticTurretYaw else self._getTurretYaw()
+        defaultYaw = self._getTurretYaw()
         turretYaw = self.__getTurretYawForAnchor(anchorId, defaultYaw)
         self.turretRotator.start(turretYaw, rotationTime=duration)
         return
 
-    def rotateGunToDefault(self, useStaticGunPitch=False):
+    def rotateGunToDefault(self):
         if self.compoundModel is None:
             return False
         else:
             localGunMatrix = self.__getGunNode().local
             currentGunPitch = localGunMatrix.pitch
-            gunPitchAngle = self.__staticGunPitch if useStaticGunPitch else self._getGunPitch()
+            gunPitchAngle = self._getGunPitch()
             if abs(currentGunPitch - gunPitchAngle) < 0.0001:
                 return False
             gunPitchMatrix = math_utils.createRotationMatrix((0.0, gunPitchAngle, 0.0))
@@ -817,8 +812,7 @@ class HangarVehicleAppearance(ScriptGameObject):
         insigniaRank = 0
         if self.__showMarksOnGun:
             insigniaRank = self._getThisVehicleDossierInsigniaRank()
-        vId = self.__vEntity.id if self.__vEntity is not None else -1
-        self.__vehicleStickers = VehicleStickers.VehicleStickers(self.__vDesc, insigniaRank, outfit, vehicleId=vId)
+        self.__vehicleStickers = VehicleStickers.VehicleStickers(self.__vDesc, insigniaRank, outfit)
         self.__vehicleStickers.alpha = self.__currentEmblemsAlpha
         self.__vehicleStickers.attach(self.__vEntity.model, self.__isVehicleDestroyed, False)
         self._requestClanDBIDForStickers(self.__onClanDBIDRetrieved)

@@ -308,13 +308,6 @@ class BattleSessionProvider(IBattleSessionProvider):
             ctrl.setVehicleHealth(vehicleID, newHealth)
         return
 
-    def setVehicleMaxHealth(self, isPlayerVehicle, vehicleID, newHealth):
-        if not isPlayerVehicle:
-            ctrl = self.__sharedRepo.feedback
-            if ctrl is not None:
-                ctrl.setVehicleMaxHealth(vehicleID, newHealth)
-        return
-
     def repairPointAction(self, repairPointIndex, action, nextActionTime):
         ctrl = self.__dynamicRepo.repair
         if ctrl is not None:
@@ -377,15 +370,6 @@ class BattleSessionProvider(IBattleSessionProvider):
         else:
             ctrl.handleContexChatCommand(key)
             return
-
-    def updateScenarioTimer(self, waitTime, alarmTime, visible):
-        ctrl = self.__sharedRepo.vehicleState
-        if ctrl is not None:
-            ctrl.updateScenarioTimer(waitTime, alarmTime, visible)
-        return
-
-    def sendPlayerBattleLogNotification(self, messageKey, messageParams):
-        self.shared.messages.showPlayerMessageByKey(messageKey, messageParams)
 
     def __pe_onBattleResultsReceived(self, isActiveVehicle, _):
         if isActiveVehicle and not BattleReplay.g_replayCtrl.isPlaying:

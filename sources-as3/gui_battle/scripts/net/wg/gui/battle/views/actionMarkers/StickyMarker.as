@@ -10,7 +10,7 @@ package net.wg.gui.battle.views.actionMarkers
    {
        
       
-      public var arrow:StickyArrow = null;
+      public var arrow:MovieClip = null;
       
       public var txtLabel:TextField = null;
       
@@ -35,11 +35,6 @@ package net.wg.gui.battle.views.actionMarkers
       {
          this.arrow.x = param1.x;
          this.arrow.y = param1.y;
-      }
-      
-      public function setArrowRadius(param1:int) : void
-      {
-         this.arrow.setRadius(param1);
       }
       
       public function setArrowVisible(param1:Boolean) : void

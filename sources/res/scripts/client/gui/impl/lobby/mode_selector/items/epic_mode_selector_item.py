@@ -2,7 +2,6 @@ import typing
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.mode_selector.mode_selector_card_types import ModeSelectorCardTypes
-from gui.impl.gen.view_models.views.lobby.mode_selector.mode_selector_columns import ModeSelectorColumns
 from gui.impl.lobby.mode_selector.items import setBattlePassState
 from gui.impl.lobby.mode_selector.items.base_item import ModeSelectorLegacyItem
 from gui.impl.lobby.mode_selector.items.items_constants import ModeSelectorRewardID
@@ -11,7 +10,6 @@ from gui.shared.formatters.ranges import toRomanRangeString
 from helpers import dependency, time_utils, int2roman
 from skeletons.gui.game_control import IEpicBattleMetaGameController
 from gui.impl.gen.view_models.views.lobby.mode_selector.mode_selector_normal_card_model import BattlePassState
-from skeletons.gui.server_events import IEventsCache
 if typing.TYPE_CHECKING:
     from gui.impl.gen.view_models.views.lobby.mode_selector.mode_selector_normal_card_model import ModeSelectorNormalCardModel
 
@@ -19,13 +17,6 @@ class EpicModeSelectorItem(ModeSelectorLegacyItem):
     __slots__ = ()
     _CARD_VISUAL_TYPE = ModeSelectorCardTypes.EPIC_BATTLE
     __epicController = dependency.descriptor(IEpicBattleMetaGameController)
-    __eventsCache = dependency.descriptor(IEventsCache)
-
-    @property
-    def preferredColumn(self):
-        if self.__eventsCache.isEventEnabled():
-            return ModeSelectorColumns.COLUMN_2
-        return self._preferredColumn
 
     def _getIsDisabled(self):
         return not self.__epicController.isEnabled()

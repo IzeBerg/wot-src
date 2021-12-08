@@ -54,11 +54,6 @@ package net.wg.gui.eventcomponents
          }
       }
       
-      public function setTextFieldWidth(param1:int) : void
-      {
-         this.txtField.width = param1;
-      }
-      
       public function getTextWidth() : Number
       {
          App.utils.commons.updateTextFieldSize(this.txtField);

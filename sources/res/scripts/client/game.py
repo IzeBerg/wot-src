@@ -89,8 +89,6 @@ def init(scriptConfig, engineConfig, userPreferences, loadingScreenGUI=None):
         player_ranks.init()
         import destructible_entities
         destructible_entities.init()
-        from helpers.buffs import ClientBuffsRepository
-        ClientBuffsRepository.init()
         from AvatarInputHandler.cameras import FovExtended
         FovExtended.instance().resetFov()
         BigWorld.pauseDRRAutoscaling(True)
@@ -224,8 +222,6 @@ def fini():
         SoundGroups.g_instance.destroy()
         Settings.g_instance.save()
         g_onBeforeSendEvent = None
-        from helpers.buffs import ClientBuffsRepository
-        ClientBuffsRepository.fini()
         WebBrowser.destroyExternalCache()
         if constants.HAS_DEV_RESOURCES:
             import development
@@ -341,7 +337,7 @@ def handleKeyEvent(event):
         if inputHandler is not None:
             if inputHandler.handleKeyEvent(event):
                 return True
-        for handler in g_keyEventHandlers:
+        for handler in g_keyEventHandlers.copy():
             try:
                 if handler(event):
                     return True
@@ -432,11 +428,7 @@ _PYTHON_MACROS = {'p': 'BigWorld.player()',
    'setHero': 'from HeroTank import debugReloadHero; debugReloadHero', 
    'switchNation': 'import Account; Account.g_accountRepository.inventory.switchNation()', 
    'plugins': 'from gui.Scaleform.daapi.view.battle.shared.markers2d.plugins import Ping3DPositionPlugin', 
-   'setPlatoonTanks': 'from gui.development.dev_platoon_tank_models import debugSetPlatoonTanks; debugSetPlatoonTanks', 
-   'switchEnv': 'from EnvironmentSwitcher import debugSwitchEnvironment; debugSwitchEnvironment', 
-   'rankedCtrl': 'from helpers import dependency; from skeletons.gui.game_control import IRankedBattlesController;rc = dependency.instance(IRankedBattlesController)', 
-   'eventsCache': 'from helpers import dependency; from skeletons.gui.server_events import IEventsCache;ec = dependency.instance(IEventsCache)', 
-   'items': 'from helpers import dependency; from skeletons.gui.shared import IItemsCache;items = dependency.instance(IItemsCache).items'}
+   'setPlatoonTanks': 'from gui.development.dev_platoon_tank_models import debugSetPlatoonTanks; debugSetPlatoonTanks'}
 
 def expandMacros(line):
     import re
@@ -493,8 +485,6 @@ def checkBotNet():
     sys.path.append('test_libs')
     from path_manager import g_pathManager
     g_pathManager.setPathes()
-    from bigworld_reactor import installBWReactor
-    installBWReactor()
     from scenario_player import g_scenarioPlayer
     rpycPort = sys.argv[(sys.argv.index(botArg) + 1)]
     g_scenarioPlayer.setRpycConection(rpycPort)

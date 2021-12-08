@@ -1,4 +1,4 @@
-from CurrentVehicle import g_currentVehicle
+from CurrentVehicle import g_currentVehicle, g_currentPreviewVehicle
 from gui.Scaleform.daapi.view.lobby.customization.shared import getItemInventoryCount, makeVehiclesShortNamesString, getSuitableText, ITEM_TYPE_TO_TAB, CustomizationTabs
 from gui.Scaleform.daapi.view.lobby.customization.shared import getProgressionItemStatusText
 from gui.Scaleform.genConsts.BLOCKS_TOOLTIP_TYPES import BLOCKS_TOOLTIP_TYPES
@@ -12,7 +12,6 @@ from gui.customization.constants import CustomizationModes
 from gui.customization.shared import PROJECTION_DECAL_TEXT_FORM_TAG, SEASON_TYPE_TO_NAME, PROJECTION_DECAL_FORM_TO_UI_ID, getBaseStyleItems, getAncestors, getInheritors
 from gui.impl import backport
 from gui.impl.gen import R
-from gui.impl.lobby.halloween.event_helpers import getCurrentVehicle
 from gui.shared.formatters import text_styles, icons
 from gui.shared.gui_items import GUI_ITEM_TYPE, GUI_ITEM_TYPE_NAMES
 from gui.shared.gui_items.customization import CustomizationTooltipContext
@@ -172,21 +171,18 @@ class ElementTooltip(BlocksTooltipData):
         self._showOnlyProgressBlock = False
         self.__ctx = None
         self.__vehicle = None
-        self._customVehicleCD = -1
+        self.__isInPreview = g_currentPreviewVehicle.isPresent()
         return
 
     def _packBlocks(self, *args):
         config = CustomizationTooltipContext(*args)
-        self._customVehicleCD = config.customVehicleCD
         self._item = self.itemsCache.items.getItemByCD(config.itemCD)
         statsConfig = self.context.getStatsConfiguration(self._item)
         self.__ctx = self.service.getCtx()
-        if self._customVehicleCD > 0:
-            self.__vehicle = self.itemsCache.items.getItemByCD(self._customVehicleCD)
-        elif config.vehicleIntCD == 0:
+        if config.vehicleIntCD == 0:
             self.__vehicle = None
         elif config.vehicleIntCD == -1:
-            self.__vehicle = getCurrentVehicle(self.itemsCache) or g_currentVehicle.item
+            self.__vehicle = g_currentPreviewVehicle.item if self.__isInPreview else g_currentVehicle.item
         else:
             self.__vehicle = self.itemsCache.items.getItemByCD(config.vehicleIntCD)
         showInventoryBlock = config.showInventoryBlock
@@ -203,7 +199,6 @@ class ElementTooltip(BlocksTooltipData):
         topBlocks = [self._packTitleBlock(), self._packIconBlock(self._item.isDim())]
         items = [formatters.packBuildUpBlockData(blocks=topBlocks, gap=10)]
         self.boundVehs = self._item.getBoundVehicles()
-        self.boundVehs.add(self._customVehicleCD)
         self.installedVehs = self._item.getInstalledVehicles()
         self.installedCount = self._item.installedCount(vehIntCD) if vehIntCD else 0
         itemCD = self._item.intCD
@@ -230,7 +225,8 @@ class ElementTooltip(BlocksTooltipData):
         self._appliedCount = 0
         bonusEnabled = False
         bonus = None
-        if self._item.itemTypeID != GUI_ITEM_TYPE.STYLE:
+        isApplied = False
+        if self._item.itemTypeID != GUI_ITEM_TYPE.STYLE and not self.__isInPreview:
             bonus = self._item.bonus
             if self.__ctx is not None:
                 self._appliedCount = self.__ctx.mode.getItemAppliedCount(self._item)
@@ -248,7 +244,7 @@ class ElementTooltip(BlocksTooltipData):
                         bonus = camo.bonus
                         break
 
-            if self.__ctx is not None:
+            if self.__ctx is not None and not self.__isInPreview:
                 currentStyleDesc = self.__ctx.mode.currentOutfit.style
                 isApplied = currentStyleDesc is not None and self._item.id == currentStyleDesc.id
                 bonusEnabled = bonus is not None and isApplied
@@ -343,11 +339,8 @@ class ElementTooltip(BlocksTooltipData):
         if self._item.itemTypeID == GUI_ITEM_TYPE.STYLE:
             modifiedStrRoot = rCharacteristics.collapsible
             if self._item.isEditable:
-                vehicleIntCD = self.__vehicle.intCD if self.__vehicle is not None else -1
-                if vehicleIntCD == -1:
-                    modifiedStr = modifiedStrRoot.mutableWithDecal()
-                    modifiedIcon = self.EDITABLE_DISABLE_ICON
-                elif not self._item.canBeEditedForVehicle(vehicleIntCD) and self._progressionLevel <= 0:
+                vehicleIntCD = self.__vehicle.intCD
+                if not self._item.canBeEditedForVehicle(vehicleIntCD) and self._progressionLevel <= 0:
                     modifiedStr = modifiedStrRoot.mutableWithDecal()
                     modifiedIcon = self.EDITABLE_DISABLE_ICON
                 elif self._item.isEditedForVehicle(vehicleIntCD):
@@ -379,8 +372,7 @@ class ElementTooltip(BlocksTooltipData):
         else:
             boundAndInstalledVehs = self.boundVehs | self.installedVehs
             if self._item.isVehicleBound and not self._item.mayApply and boundAndInstalledVehs:
-                isCustom = self._customVehicleCD > 0
-                return formatters.packTitleDescBlock(title=text_styles.middleTitle(VEHICLE_CUSTOMIZATION.CUSTOMIZATION_TOOLTIP_SUITABLE_TITLE), desc=text_styles.main(makeVehiclesShortNamesString(boundAndInstalledVehs, self.__vehicle, flat=isCustom)), padding=formatters.packPadding(top=-2))
+                return formatters.packTitleDescBlock(title=text_styles.middleTitle(VEHICLE_CUSTOMIZATION.CUSTOMIZATION_TOOLTIP_SUITABLE_TITLE), desc=text_styles.main(makeVehiclesShortNamesString(boundAndInstalledVehs, self.__vehicle)), padding=formatters.packPadding(top=-2))
             if not self._item.descriptor.filter or not self._item.descriptor.filter.include:
                 return formatters.packTitleDescBlock(title=text_styles.middleTitle(VEHICLE_CUSTOMIZATION.CUSTOMIZATION_TOOLTIP_SUITABLE_TITLE), desc=text_styles.main(backport.text(R.strings.vehicle_customization.customization.tooltip.suitable.text.allVehicle())), padding=formatters.packPadding(top=-2))
             blocks = []
@@ -418,7 +410,7 @@ class ElementTooltip(BlocksTooltipData):
                 specials.append(_ms(VEHICLE_CUSTOMIZATION.CUSTOMIZATION_RENT_SPECIAL_TEXT))
             else:
                 specials.append(_ms(VEHICLE_CUSTOMIZATION.CUSTOMIZATION_BOUND_SPECIAL_TEXT))
-        if self._item.isLimited:
+        if self._item.isLimited and not self.__isInPreview:
             if self.__ctx is not None:
                 purchaseLimit = self.__ctx.mode.getPurchaseLimit(self._item)
             else:
@@ -692,6 +684,26 @@ class ElementAwardTooltip(ElementTooltip):
         bonusPercent = ('{min:.0f}-{max:.0f}%').format(min=CamouflageBonus.MIN * 100, max=CamouflageBonus.MAX * 100)
         blocks.append(formatters.packCustomizationCharacteristicBlockData(text=text_styles.main(text_styles.main(bonusDescription)), icon=bonusPercent, isTextIcon=True))
         return formatters.packBuildUpBlockData(blocks, gap=-6, padding=formatters.packPadding(bottom=-5), linkage=BLOCKS_TOOLTIP_TYPES.TOOLTIP_BUILDUP_BLOCK_WHITE_BG_LINKAGE)
+
+
+class MultiElementAwardTooltip(ElementTooltip):
+
+    def _packBlocks(self, *args):
+        result = []
+        for intCD in args:
+            self._item = self.itemsCache.items.getItemByCD(intCD)
+            topBlocks = [self._packTitleBlock(), self._packIconBlock(self._item.isDim())]
+            result.append(formatters.packBuildUpBlockData(blocks=topBlocks))
+
+        block = self._packCharacteristicsBlock()
+        if block:
+            result.append(block)
+        self.boundVehs = self._item.getBoundVehicles()
+        self.installedVehs = self._item.getInstalledVehicles()
+        block = self._packSuitableBlock()
+        if block:
+            result.append(block)
+        return result
 
 
 class ElementPurchaseTooltip(ElementTooltip):

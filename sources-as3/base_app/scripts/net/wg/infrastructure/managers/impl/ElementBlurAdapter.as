@@ -40,14 +40,14 @@ package net.wg.infrastructure.managers.impl
       {
          var _loc4_:ISimpleManagedContainer = null;
          var _loc5_:ISimpleManagedContainer = null;
-         var _loc6_:IManagedContainer = null;
+         var _loc6_:int = 0;
          var _loc7_:int = 0;
-         var _loc8_:uint = 0;
-         var _loc9_:IView = null;
-         var _loc10_:Array = null;
-         var _loc11_:ISimpleManagedContainer = null;
-         var _loc12_:int = 0;
-         var _loc13_:int = 0;
+         var _loc8_:IManagedContainer = null;
+         var _loc9_:int = 0;
+         var _loc10_:uint = 0;
+         var _loc11_:IView = null;
+         var _loc12_:Array = null;
+         var _loc13_:ISimpleManagedContainer = null;
          var _loc14_:DisplayObject = null;
          this.cancelScheduled();
          var _loc3_:Vector.<DisplayObject> = new Vector.<DisplayObject>(0);
@@ -61,28 +61,28 @@ package net.wg.infrastructure.managers.impl
                }
                else
                {
-                  _loc6_ = IManagedContainer(_loc5_);
-                  _loc7_ = _loc6_.numChildren;
-                  _loc8_ = 0;
-                  while(_loc8_ < _loc7_)
+                  _loc8_ = IManagedContainer(_loc5_);
+                  _loc9_ = _loc8_.numChildren;
+                  _loc10_ = 0;
+                  while(_loc10_ < _loc9_)
                   {
-                     _loc9_ = _loc6_.getChildAt(_loc8_) as IView;
-                     if(_loc9_)
+                     _loc11_ = _loc8_.getChildAt(_loc10_) as IView;
+                     if(_loc11_)
                      {
-                        _loc10_ = _loc9_.getSubContainers();
-                        for each(_loc11_ in _loc10_)
+                        _loc12_ = _loc11_.getSubContainers();
+                        for each(_loc13_ in _loc12_)
                         {
-                           if(_loc11_.layer < param1)
+                           if(_loc13_.layer < param1)
                            {
-                              _loc3_.push(_loc11_);
+                              _loc3_.push(_loc13_);
                            }
                            else
                            {
-                              _loc4_ = _loc11_;
+                              _loc4_ = _loc13_;
                            }
                         }
                      }
-                     _loc8_++;
+                     _loc10_++;
                   }
                }
             }
@@ -91,15 +91,12 @@ package net.wg.infrastructure.managers.impl
                _loc4_ = _loc5_;
             }
          }
-         if(_loc4_)
+         _loc6_ = _loc4_.numChildren;
+         _loc7_ = 0;
+         while(_loc7_ < _loc6_)
          {
-            _loc12_ = _loc4_.numChildren;
-            _loc13_ = 0;
-            while(_loc13_ < _loc12_)
-            {
-               _loc3_.push(_loc4_.getChildAt(_loc13_));
-               _loc13_++;
-            }
+            _loc3_.push(_loc4_.getChildAt(_loc7_));
+            _loc7_++;
          }
          if(this._bluredElements && this._bluredElements.length)
          {

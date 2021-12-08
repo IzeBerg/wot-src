@@ -35,6 +35,14 @@ package net.wg.gui.components.carousels.data
       
       public var iconSmallAlt:String = "";
       
+      public var iconHover:String = "";
+      
+      public var iconHoverAlt:String = "";
+      
+      public var iconHoverSmall:String = "";
+      
+      public var iconHoverSmallAlt:String = "";
+      
       public var clanLock:Number = -1;
       
       public var slotPrice:Number = 0;
@@ -50,6 +58,8 @@ package net.wg.gui.components.carousels.data
       public var buySlot:Boolean = false;
       
       public var isWotPlusSlot:Boolean = false;
+      
+      public var nySlot:Boolean = false;
       
       public var lockBackground:Boolean = false;
       
@@ -68,6 +78,16 @@ package net.wg.gui.components.carousels.data
       public var isEarnCrystals:Boolean = false;
       
       public var isCrystalsLimitReached:Boolean = false;
+      
+      public var hasNyBonus:Boolean = false;
+      
+      public var nyBonusValue:String = "";
+      
+      public var nyBonusIcon:String = "";
+      
+      public var nyBlinkEnabled:Boolean = false;
+      
+      public var showBubble:Boolean = false;
       
       public var label:String = "";
       

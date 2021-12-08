@@ -23,10 +23,6 @@ package net.wg.data.constants.generated
       
       public static const EVENT_WARNING:String = "eventWarning";
       
-      public static const LOSE_SOULS_IN_AURA:String = "loseSoulsInAura";
-      
-      public static const EVENT_DEATH_ZONE:String = "eventDeathZone";
-      
       public static const STUN:String = "stun";
       
       public static const CAPTURE_BLOCK:String = "captureLock";

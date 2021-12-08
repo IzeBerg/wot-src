@@ -6,12 +6,14 @@ package net.wg.gui.battle.eventBattle.views.eventStats.VO
    public class EventStatsPlayerVO extends DAAPIDataClass
    {
       
-      private static const BADGE_FIELD_NAME:String = "badgeVisualVO";
+      private static const BADGE_FIELD:String = "badgeVO";
        
       
       public var playerName:String = "";
       
       public var squadIndex:String = "";
+      
+      public var badgeVO:BadgeVisualVO = null;
       
       public var suffixBadgeIcon:String = "";
       
@@ -19,11 +21,7 @@ package net.wg.gui.battle.eventBattle.views.eventStats.VO
       
       public var vehicleTypeIcon:String = "";
       
-      public var energy:String = "";
-      
-      public var damage:String = "";
-      
-      public var blocked:String = "";
+      public var points:String = "";
       
       public var kills:String = "";
       
@@ -35,8 +33,6 @@ package net.wg.gui.battle.eventBattle.views.eventStats.VO
       
       public var isPlayerHimself:Boolean = false;
       
-      public var badgeVisualVO:BadgeVisualVO = null;
-      
       public function EventStatsPlayerVO(param1:Object)
       {
          super(param1);
@@ -44,9 +40,9 @@ package net.wg.gui.battle.eventBattle.views.eventStats.VO
       
       override protected function onDataWrite(param1:String, param2:Object) : Boolean
       {
-         if(param1 == BADGE_FIELD_NAME && param2 != null)
+         if(param1 == BADGE_FIELD)
          {
-            this.badgeVisualVO = new BadgeVisualVO(param2);
+            this.badgeVO = new BadgeVisualVO(param2);
             return false;
          }
          return super.onDataWrite(param1,param2);
@@ -54,10 +50,10 @@ package net.wg.gui.battle.eventBattle.views.eventStats.VO
       
       override protected function onDispose() : void
       {
-         if(this.badgeVisualVO)
+         if(this.badgeVO)
          {
-            this.badgeVisualVO.dispose();
-            this.badgeVisualVO = null;
+            this.badgeVO.dispose();
+            this.badgeVO = null;
          }
          super.onDispose();
       }

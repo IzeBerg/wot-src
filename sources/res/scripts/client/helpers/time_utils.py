@@ -1,4 +1,4 @@
-import calendar, datetime, re, time, BigWorld
+import re, calendar, datetime, time, BigWorld
 from debug_utils import LOG_CURRENT_EXCEPTION
 from helpers.i18n import makeString as _ms
 from soft_exception import SoftException
@@ -6,7 +6,6 @@ ONE_SECOND = 1
 DAYS_IN_YEAR = 365
 HOURS_IN_DAY = 24
 MINUTES_IN_HOUR = 60
-ONE_SECOND = 1
 ONE_MINUTE = 60
 MS_IN_SECOND = 1000
 QUARTER = 15
@@ -50,13 +49,6 @@ class _TimeCorrector(object):
 
 
 _g_instance = _TimeCorrector()
-
-def getTodayStartingTimeUTC():
-    serverRegionalSettings = BigWorld.player().serverSettings['regional_settings']
-    resetTimeUTC = serverRegionalSettings.get('starting_time_of_a_new_day', 0)
-    resetHourUTC = resetTimeUTC / ONE_HOUR
-    return getTimeTodayForUTC(hour=resetHourUTC)
-
 
 def setTimeCorrection(serverUTCTime):
     _g_instance._evalTimeCorrection(serverUTCTime)

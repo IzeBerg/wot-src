@@ -147,9 +147,6 @@ msgstr "Приглашения"
 msgid "invites/comment"
 msgstr "«%(comment)s»"
 
-msgid "invites/error/afkban"
-msgstr "Вы не сможете выйти в бой"
-
 msgid "invites/note/change_and_leave/PREBATTLE_BATTLE_ROYALE"
 msgstr ""
 "Приняв приглашение, вы будете автоматически исключены из состава "
@@ -205,11 +202,6 @@ msgstr ""
 "После принятия приглашения вы будете автоматически исключены из состава "
 "взвода в режиме «Разведка боем» и перемещены на сервер %(host)s."
 
-msgid "invites/note/change_and_leave/PREBATTLE_MAPS_TRAINING"
-msgstr ""
-"Приняв приглашение, вы покинете режим «Топография» и будете перемещены на "
-"сервер %(host)s."
-
 msgid "invites/note/change_and_leave/PREBATTLE_SORTIE"
 msgstr ""
 "Приняв приглашение, вы покинете «Укрепрайон: сражения» и будете перемещены "
@@ -257,13 +249,18 @@ msgstr ""
 
 msgid "invites/note/change_and_leave/QUEUE_EVENT_BATTLES"
 msgstr ""
-"Приняв приглашение, вы покинете текущий режим и будете перемещены на сервер "
-"%(host)s."
+"Приняв приглашение, вы покинете режим «+++Event battle+++» и будете "
+"перемещены на сервер %(host)s."
 
 msgid "invites/note/change_and_leave/QUEUE_MAPBOX"
 msgstr ""
 "Приняв приглашение, вы покинете режим «Разведка боем» и будете перемещены на"
 " сервер %(host)s."
+
+msgid "invites/note/change_and_leave/QUEUE_MAPS_TRAINING"
+msgstr ""
+"Приняв приглашение, вы покинете режим «Топография» и будете перемещены на "
+"сервер %(host)s."
 
 msgid "invites/note/change_and_leave/QUEUE_RANDOMS"
 msgstr ""
@@ -328,9 +325,6 @@ msgstr ""
 "После принятия приглашения вы будете автоматически исключены из состава "
 "взвода в режиме «Разведка боем»."
 
-msgid "invites/note/leave/PREBATTLE_MAPS_TRAINING"
-msgstr "Приняв приглашение, вы покинете режим «Топография»."
-
 msgid "invites/note/leave/PREBATTLE_SORTIE"
 msgstr "Приняв приглашение, вы покинете «Укрепрайон: сражения»."
 
@@ -364,10 +358,13 @@ msgid "invites/note/leave/QUEUE_EPIC"
 msgstr "Приняв приглашение, вы покинете режим «Линия фронта»."
 
 msgid "invites/note/leave/QUEUE_EVENT_BATTLES"
-msgstr "Приняв приглашение, вы покинете режим «Мирный: Надежда»."
+msgstr "Приняв приглашение, вы покинете режим «+++Event battle+++»."
 
 msgid "invites/note/leave/QUEUE_MAPBOX"
 msgstr "Приняв приглашение, вы покинете режим «Разведка боем»."
+
+msgid "invites/note/leave/QUEUE_MAPS_TRAINING"
+msgstr "Приняв приглашение, вы покинете режим «Топография»."
 
 msgid "invites/note/leave/QUEUE_RANDOMS"
 msgstr "Приняв приглашение, вы покинете режим «Случайный бой»."
@@ -452,9 +449,7 @@ msgstr ""
 "«Линия фронта»%(titleEndTag)s"
 
 msgid "invites/text/EVENT"
-msgstr ""
-"%(titleStartTag)sПриглашение войти в состав разведотряда «Мирный: "
-"Надежда»%(titleEndTag)s"
+msgstr "++%(titleStartTag)sПриглашение войти в состав взвода%(titleEndTag)s++"
 
 msgid "invites/text/FALLOUT"
 msgstr ""

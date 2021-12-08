@@ -295,42 +295,42 @@ package net.wg.gui.battle.battleRoyale.views.components
          }
       }
       
-      public function setCoolDownTime(param1:Number, param2:Number, param3:Number, param4:int = 0, param5:Boolean = false) : void
+      public function setCoolDownTime(param1:Number, param2:Number, param3:Number, param4:int = 0) : void
       {
+         var _loc6_:Boolean = false;
          var _loc7_:Boolean = false;
-         var _loc8_:Boolean = false;
-         var _loc9_:Number = NaN;
-         var _loc10_:uint = 0;
+         var _loc8_:Number = NaN;
+         var _loc9_:uint = 0;
          if(param1 < 0)
          {
             param1 = 0;
          }
-         var _loc6_:uint = Math.ceil(param1 * Time.MILLISECOND_IN_SECOND);
-         if(this._cooldown == _loc6_)
+         var _loc5_:uint = Math.ceil(param1 * Time.MILLISECOND_IN_SECOND);
+         if(this._cooldown == _loc5_)
          {
             return;
          }
          this.clearCoolDownTime();
-         if(_loc6_ > 0)
+         if(_loc5_ > 0)
          {
-            this._cooldown = _loc6_;
-            _loc7_ = (param4 & (ANIMATION_TYPES.MOVE_GREEN_BAR_UP | ANIMATION_TYPES.MOVE_GREEN_BAR_DOWN)) > 0;
-            this.cooldownTimerTf.textColor = !!_loc7_ ? uint(GREEN_COOLDOWN_TEXT_COLOR) : uint(ORANGE_COOLDOWN_TEXT_COLOR);
-            this.status |= !!_loc7_ ? IN_USE_FLAG : COOLDOWN_FLAG;
-            _loc8_ = (param4 & (ANIMATION_TYPES.MOVE_GREEN_BAR_DOWN | ANIMATION_TYPES.MOVE_ORANGE_BAR_DOWN)) > 0;
+            this._cooldown = _loc5_;
+            _loc6_ = (param4 & (ANIMATION_TYPES.MOVE_GREEN_BAR_UP | ANIMATION_TYPES.MOVE_GREEN_BAR_DOWN)) > 0;
+            this.cooldownTimerTf.textColor = !!_loc6_ ? uint(GREEN_COOLDOWN_TEXT_COLOR) : uint(ORANGE_COOLDOWN_TEXT_COLOR);
+            this.status |= !!_loc6_ ? IN_USE_FLAG : COOLDOWN_FLAG;
+            _loc7_ = (param4 & (ANIMATION_TYPES.MOVE_GREEN_BAR_DOWN | ANIMATION_TYPES.MOVE_ORANGE_BAR_DOWN)) > 0;
             param2 = param2 > param1 ? Number(param2) : Number(param1);
             param3 = param2 - param1;
-            _loc9_ = !!_loc8_ ? Number(param1 / param2) : Number(param3 / param2);
-            _loc10_ = TOTAL_COOLDOWN_FRAMES * _loc9_;
+            _loc8_ = !!_loc7_ ? Number(param1 / param2) : Number(param3 / param2);
+            _loc9_ = TOTAL_COOLDOWN_FRAMES * _loc8_;
             if(!this._isReplay)
             {
                this.onCooldownTick();
-               this._cooldownTimer.start(param1,this,_loc10_,1,_loc8_);
-               this._scheduler.scheduleRepeatableTask(this.onCooldownTick,COOLDOWN_INTERVAL,_loc6_ / COOLDOWN_INTERVAL);
+               this._cooldownTimer.start(param1,this,_loc9_,1,_loc7_);
+               this._scheduler.scheduleRepeatableTask(this.onCooldownTick,COOLDOWN_INTERVAL,_loc5_ / COOLDOWN_INTERVAL);
             }
             else
             {
-               this._cooldownTimer.step(this,_loc10_,1,_loc8_);
+               this._cooldownTimer.step(this,_loc9_,1,_loc7_);
             }
          }
       }
@@ -360,10 +360,6 @@ package net.wg.gui.battle.battleRoyale.views.components
          {
             this.cooldownTimerTf.text = Values.EMPTY_STR;
          }
-      }
-      
-      public function setCoolDownReverse() : void
-      {
       }
       
       public function showGlow(param1:int) : void
@@ -477,10 +473,6 @@ package net.wg.gui.battle.battleRoyale.views.components
       }
       
       public function updateLevelInformation(param1:int) : void
-      {
-      }
-      
-      public function setStage(param1:int) : void
       {
       }
       

@@ -67,9 +67,6 @@ msgstr "В Боевом обучении"
 msgid "Contact/status/inBattle/unknown"
 msgstr "В бою"
 
-msgid "Contact/status/maxdifficultylevel"
-msgstr "Максимально доступная сложность $(level)s"
-
 msgid "Contact/status/online"
 msgstr "В сети"
 
@@ -149,6 +146,14 @@ msgstr ""
 
 msgid "XP/header"
 msgstr "Опыт"
+
+msgid "accountCompletion/credentials/subtitle/body"
+msgstr ""
+"Полученные награды вы сможете найти среди своего имущества после завершения "
+"регистрации."
+
+msgid "accountCompletion/credentials/subtitle/header"
+msgstr "Ваши награды"
 
 msgid "accountCompletion/email/titleTooltip"
 msgstr ""
@@ -477,6 +482,66 @@ msgstr ""
 
 msgid "actionPrice/severalActions/personal"
 msgstr "Максимальной является ваша персональная скидка."
+
+msgid "additionalRewards/credits"
+msgstr "%(value)d кредитов"
+
+msgid "additionalRewards/crystal"
+msgstr "%(value)d бон"
+
+msgid "additionalRewards/customizations/3d_style"
+msgstr "3D-стиль «%(value)s»"
+
+msgid "additionalRewards/customizations/camouflage"
+msgstr "Камуфляж «%(value)s»"
+
+msgid "additionalRewards/customizations/decal"
+msgstr "Декаль «%(value)s»"
+
+msgid "additionalRewards/customizations/emblem"
+msgstr "Эмблема «%(value)s»"
+
+msgid "additionalRewards/customizations/inscription"
+msgstr "Надпись «%(value)s»"
+
+msgid "additionalRewards/customizations/modification"
+msgstr "Эффект «%(value)s»"
+
+msgid "additionalRewards/customizations/paint"
+msgstr "Краска «%(value)s»"
+
+msgid "additionalRewards/customizations/projection_decal"
+msgstr "Декаль «%(value)s»"
+
+msgid "additionalRewards/customizations/style"
+msgstr "Стиль «%(value)s»"
+
+msgid "additionalRewards/dossier_achievement"
+msgstr "Медаль «%(value)s»"
+
+msgid "additionalRewards/dossier_badge"
+msgstr "Нашивка «%(value)s»"
+
+msgid "additionalRewards/freeXP"
+msgstr "%(value)s свободного опыта"
+
+msgid "additionalRewards/gold"
+msgstr "%(value)d золота"
+
+msgid "additionalRewards/levelHeader"
+msgstr "Дополнительно за уровень %(count)d"
+
+msgid "additionalRewards/premium"
+msgstr "Дней Общего премиум аккаунта: %(daysCount)s"
+
+msgid "additionalRewards/premium_plus"
+msgstr "Дней Танкового премиум аккаунта: %(daysCount)s"
+
+msgid "additionalRewards/tankmenXP"
+msgstr "%(value)s опыта экипажа"
+
+msgid "additionalRewards/xp"
+msgstr "%(value)s боевого опыта"
 
 msgid "advanced/ARMOR_PIERCING"
 msgstr ""
@@ -1254,6 +1319,12 @@ msgstr "Увеличенный коэффициент заработка сво�
 msgid "awardItem/freeXPFactor/header"
 msgstr "Коэффициент свободного опыта"
 
+msgid "awardItem/giftSystem_2_nyStamp/body"
+msgstr "Используйте марки для отправки друзьям посылок с подарками."
+
+msgid "awardItem/giftSystem_2_nyStamp/header"
+msgstr "Праздничная марка"
+
 msgid "awardItem/gold/body"
 msgstr ""
 "Ценная игровая валюта, которую можно потратить на широкий спектр целей: "
@@ -1303,8 +1374,9 @@ msgstr "Премиум дни"
 
 msgid "awardItem/premium_plus/body"
 msgstr ""
-"Особый статус аккаунта, позволяющий зарабатывать больше опыта и кредитов, а "
-"также предоставляющий дополнительные возможности."
+"Особый статус аккаунта, позволяющий зарабатывать\n"
+"больше опыта и кредитов, а также предоставляющий\n"
+"дополнительные возможности."
 
 msgid "awardItem/premium_plus/header"
 msgstr "Танковый премиум аккаунт"
@@ -1341,10 +1413,10 @@ msgstr "Увеличение скидки на товары из раздела 
 msgid "awardItem/ranked_2020_discount/header"
 msgstr "Увеличение скидки"
 
-msgid "awardItem/ranked_202109_access/body"
+msgid "awardItem/ranked_202201_access/body"
 msgstr "Вы сможете купить товары из раздела «Товары Ранговых боёв»."
 
-msgid "awardItem/ranked_202109_access/header"
+msgid "awardItem/ranked_202201_access/header"
 msgstr "Доступ к покупке"
 
 msgid "awardItem/slots/body"
@@ -1468,7 +1540,7 @@ msgid "barracks/tankmen/recovery/header"
 msgstr "Член экипажа демобилизован"
 
 msgid "barracks/tankmen/recovery/newSkill"
-msgstr "Умения/навыки на выбор"
+msgstr "Умения/навыки не выбраны"
 
 msgid "barracks/tankmen/recoveryBtn/header"
 msgstr "Восстановить члена экипажа"
@@ -1797,34 +1869,6 @@ msgstr ""
 msgid "battleTypes/epic_training/header"
 msgstr "Тренировочный бой на Линии фронта"
 
-msgid "battleTypes/event/body"
-msgstr ""
-"Военная разведывательная операция.\n"
-"Примите управление одной из пяти уникальных машин и сражайтесь против тёмных сил за ценные награды в специальном игровом событии."
-
-msgid "battleTypes/event/days"
-msgstr "Осталось: %(day)s д"
-
-msgid "battleTypes/event/description"
-msgstr ""
-"Режим требователен к компьютеру. В случае недостаточной производительности "
-"попробуйте понизить настройки графики."
-
-msgid "battleTypes/event/end"
-msgstr "Осталось: {}"
-
-msgid "battleTypes/event/header"
-msgstr "«Мирный: Надежда»"
-
-msgid "battleTypes/event/hours"
-msgstr "Осталось: %(hour)s ч"
-
-msgid "battleTypes/event/lessMin"
-msgstr "Осталось: меньше минуты"
-
-msgid "battleTypes/event/min"
-msgstr "Осталось: %(min)s мин"
-
 msgid "battleTypes/fallout/body"
 msgstr ""
 "Выбор из двух подрежимов, отличающихся по формату и условиям победы.\n"
@@ -1971,6 +2015,9 @@ msgstr ""
 msgid "battleTypes/ranked/rank/conditions/first"
 msgstr "Для получения необходимо заработать шевронов: %(stepsNumber)s"
 
+msgid "battleTypes/ranked/rank/conditions/qualification"
+msgstr "Для прохождения квалификации проведите %(count)s боёв."
+
 msgid "battleTypes/ranked/rank/isFirstInDivision"
 msgstr ""
 "Это первый ранг, при его потере игрок не вернётся в предыдущий дивизион."
@@ -1989,6 +2036,9 @@ msgstr ""
 msgid "battleTypes/ranked/rank/name"
 msgstr "Ранг %(rank)s"
 
+msgid "battleTypes/ranked/rank/qualificationReward"
+msgstr "Награда за бои (количество %(count)s)"
+
 msgid "battleTypes/ranked/rank/reward"
 msgstr "Награда:"
 
@@ -1998,8 +2048,14 @@ msgstr "Ранг потерян"
 msgid "battleTypes/ranked/rank/status/notearned"
 msgstr "Ранг не получен"
 
+msgid "battleTypes/ranked/rank/status/qualificationNotEarned"
+msgstr "Квалификация не пройдена"
+
 msgid "battleTypes/ranked/rank/status/received"
 msgstr "Ранг получен"
+
+msgid "battleTypes/ranked/rank/status/receivedQualification"
+msgstr "Квалификация пройдена"
 
 msgid "battleTypes/ranked/shieldBreaked"
 msgstr ""
@@ -2723,7 +2779,8 @@ msgstr "Внимание"
 msgid "credits/body"
 msgstr ""
 "Основная игровая валюта.\n"
-"Зарабатывается в боях или приобретается за золото."
+"Зарабатывается в боях\n"
+"или приобретается за золото."
 
 msgid "credits/header"
 msgstr "Кредиты"
@@ -3342,9 +3399,6 @@ msgstr "Нажмите, чтобы указать необходимую для 
 msgid "cyberSport/unit/configure/header"
 msgstr "Настройка требований"
 
-msgid "cyberSport/unit/fightBtn/difficultyLevelNotUnlocked/body"
-msgstr "Неподходящий уровень сложности взвода"
-
 msgid "cyberSport/unit/fightBtn/eventVehicleWrongMode/body"
 msgstr "Вы не можете участвовать на этой машине."
 
@@ -3543,6 +3597,25 @@ msgstr ""
 
 msgid "cyberSport/waitingPlayers/configAlert/header"
 msgstr "Настройки требований не учитываются"
+
+msgid "demoAccountRenaming/notAvailable/body"
+msgstr ""
+"Вы сможете сменить имя в игре, выбрав «Случайный бой» в меню выбора режима "
+"боя."
+
+msgid "demoAccountRenaming/notAvailable/header"
+msgstr "Смена имени недоступна"
+
+msgid "demoAccountRenamingHangar/holder"
+msgstr "Ваше имя обновляется. Смена может занять некоторое время."
+
+msgid "demoAccountRenamingHangar/text"
+msgstr ""
+"Нажмите, чтобы посмотреть подробную информацию об\n"
+"аккаунте игрока."
+
+msgid "demoAccountRenamingHangar/title"
+msgstr "Аккаунт игрока"
 
 msgid "demonstrator/platoonWarning/body"
 msgstr ""
@@ -4579,220 +4652,11 @@ msgstr "При использовании:"
 msgid "equipment/restriction"
 msgstr "Ограничение:"
 
-msgid "event/afk/ban/body"
-msgstr ""
-"Доступ к операциям в Мирном заблокирован. Дождитесь снятия блокировки или "
-"выполните боевую задачу «Индульгенция»."
-
-msgid "event/afk/ban/fbBody"
-msgstr "Вы не можете участвовать в операциях в Мирном до %(value)s"
-
-msgid "event/afk/ban/header"
-msgstr "Вы отстранены"
-
-msgid "event/afk/warning/body"
-msgstr ""
-"Игрок был уличён в бездействии или дезертирстве. Рецидив ведёт к наказанию."
-
-msgid "event/afk/warning/header"
-msgstr "Предупреждение"
-
-msgid "event/commander/canNotUse/inBattle/description"
-msgstr "event/commander/canNotUse/inBattle/description"
-
-msgid "event/commander/canNotUse/inBattle/title"
-msgstr "event/commander/canNotUse/inBattle/title"
-
-msgid "event/cost/description"
-msgstr ""
-"Выходите в бой и зарабатывайте <font color='#E9E2BF'>ключи дешифровки</font>, уничтожая противника и проходя фазы Мирного.\n"
-"\n"
-"В зависимости от личной и командной эффективности, а также от выбранной сложности, в конце каждой фазы вам будут начисляться <font color='#E9E2BF'>ключи дешифровки</font>, которые станут доступны после боя."
-
-msgid "event/cost/title"
-msgstr "Получение ключей дешифровки"
-
-msgid "event/daily/description"
-msgstr ""
-"Вы выполнили ежедневное задание. Начислены дополнительные ключи дешифровки."
-
-msgid "event/daily/title"
-msgstr "Ежедневное задание"
-
-msgid "event/efficient/description"
-msgstr ""
-"Начислена награда за эффективность.\n"
-"Награды эффективности напрямую влияют на количество получаемых ключей дешифровки."
-
-msgid "event/efficient/how_to_get"
-msgstr "Как получить:"
-
-msgid "event/efficient/how_to_get_variants"
-msgstr ""
-"Выходите в бой, наносите урон, добывайте Мириум эффективнее своих союзников "
-"и получайте ценные предметы в Мирном."
-
-msgid "event/efficient/key_label"
-msgstr "Ключей для расшифровки"
-
-msgid "event/efficient/title"
-msgstr "Награда за эффективность при прохождении фазы"
-
-msgid "event/header/quests/empty"
-msgstr "Новые боевые задачи события станут доступны в %(hour)s:%(min)s"
-
-msgid "event/interrogation/award_decode"
-msgstr "Награда за расшифровку"
-
-msgid "event/interrogation/award_received"
-msgstr "Награда получена"
-
-msgid "event/interrogation/currency"
-msgstr "ключи"
-
-msgid "event/interrogation/description/last"
-msgstr ""
-"Ключ к загадке Мирного. Расшифруйте все плёнки и получите в награду премиум "
-"танк King Tiger (C) c уникальным 3D-стилем и другую добычу."
-
-msgid "event/interrogation/description/not_decoded"
-msgstr "Расшифруйте плёнку, используя %(currency)s"
-
-msgid "event/interrogation/description/not_received"
-msgstr ""
-"Получите зашифрованную плёнку за прохождение %(phase)s на %(difficulty)s"
-
-msgid "event/interrogation/difficulty/1"
-msgstr "низкой сложности"
-
-msgid "event/interrogation/difficulty/2"
-msgstr "средней сложности"
-
-msgid "event/interrogation/difficulty/3"
-msgstr "высокой сложности"
-
-msgid "event/interrogation/memories_decoded"
-msgstr "Плёнок расшифровано: %(number_memories)s/%(total_memories)s"
-
-msgid "event/interrogation/not_enough/description"
-msgstr ""
-"Выходите в бой и зарабатывайте ключи дешифровки, уничтожая технику "
-"противника и проходя фазы Мирного."
-
-msgid "event/interrogation/not_enough/title"
-msgstr "Недостаточно ключей дешифровки"
-
-msgid "event/interrogation/phase"
-msgstr "фазы %(number)s"
-
-msgid "event/interrogation/title/decoded"
-msgstr "Плёнка расшифрована"
-
-msgid "event/interrogation/title/last"
-msgstr "Заключительная плёнка"
-
-msgid "event/interrogation/title/last_decoded"
-msgstr "Заключительная плёнка расшифрована"
-
-msgid "event/interrogation/title/not_decoded"
-msgstr "Плёнка не расшифрована"
-
-msgid "event/interrogation/title/not_received"
-msgstr "Плёнка не получена"
-
-msgid "event/interrogation/uniq_tank"
-msgstr "уникальный танк VII уровня"
-
-msgid "event/interrogation/value_to_decoded"
-msgstr "Стоимость расшифровки"
-
-msgid "event/key/description"
-msgstr ""
-"Уникальная валюта события, необходимая для расшифровки плёнок и получения "
-"специальной техники и наград."
-
-msgid "event/key/how_to_get"
-msgstr "Как получить:"
-
-msgid "event/key/how_to_get_variants"
-msgstr ""
-"Выходите в бой и зарабатывайте ключи дешифровки, уничтожая технику "
-"противника и проходя фазы Мирного."
-
-msgid "event/key/title"
-msgstr "Ключи дешифровки"
-
-msgid "event/key/what_accrual"
-msgstr "Начислено:"
-
-msgid "event/key/what_accrual_variants/boss"
-msgstr "• Победа над Неуязвимым: %(value)s"
-
-msgid "event/key/what_accrual_variants/daily"
-msgstr "• Ежедневное задание: %(value)s"
-
-msgid "event/key/what_accrual_variants/efficiency"
-msgstr "• Награда за эффективность: %(value)s"
-
-msgid "event/lobby/ban/expiration"
-msgstr "Блокировка будет снята %(value)s"
-
-msgid "event/lobby/ban/header"
-msgstr "Вы отстранены"
-
-msgid "event/lobby/ban/headerDescription"
-msgstr ""
-"За систематический саботаж операций в "
-"%(color_tag_open)sМирном%(color_tag_close)s (бездействие/дезертирство) вам "
-"запрещено участвовать в боях события."
-
-msgid "event/lobby/ban/quest"
-msgstr "Реабилитация"
-
-msgid "event/lobby/ban/questDescription"
-msgstr ""
-"Чтобы вернуться в строй, выполните задачу "
-"%(color_tag_open)s«Индульгенция»%(color_tag_close)s в Случайных боях."
-
-msgid "event/squad/difficulty/dropdown/body"
-msgstr "Только командир может менять сложность."
-
-msgid "event/squad/difficulty/dropdown/commander/body"
-msgstr ""
-"Вы можете выбрать сложность из доступных.\n"
-"От сложности зависят потенциальные награды."
-
-msgid "event/squad/difficulty/dropdown/header"
-msgstr "Выбор %(level)s сложности недоступен"
-
-msgid "event/squad/difficulty/lock"
-msgstr ""
-"%(icon)s Продолжайте играть на %(level)s сложности, чтобы разблокировать "
-"следующую."
-
-msgid "event/squad/difficulty/warning"
-msgstr ""
-"%(icon)s Сложность разблокирована, но доступ к ней есть не у всех "
-"совзводных."
-
 msgid "event/squad/disable/body"
-msgstr "Для этого взвода подходят %(tankName)s"
+msgstr "Для высадки на тёмной стороне Луны выберите %(tankName)s"
 
 msgid "event/squad/disable/header"
 msgstr "Внимание!"
-
-msgid "event/squad/disableWrongDifficulty/header"
-msgstr "Недоступно: взвод не готов"
-
-msgid "event/squad/disableWrongDifficultyCommander/body"
-msgstr ""
-"Несоответствие уровней сложности среди игроков. Измените уровень сложности "
-"для разведотряда."
-
-msgid "event/squad/disableWrongDifficultyPlayer/body"
-msgstr ""
-"Уровень сложности, установленный во взводе, не соответствует вашему "
-"максимально доступному."
 
 msgid "falloutBattleSelectorWindow/btnDisabled/body"
 msgstr "Вы находитесь в очереди на вход в бой."
@@ -5252,17 +5116,6 @@ msgstr "Бои будут учитываться позже:"
 msgid "hangar/elen/primetime/valid"
 msgstr "Бои учитываются:"
 
-msgid "hangar/header/halloween/noVehicle/body"
-msgstr ""
-"Уровень выбранной машины слишком низкий. Для выполнения задач события "
-"«Мирный: Надежда» выберите технику %(min)s–%(max)s уровней."
-
-msgid "hangar/header/halloween/noVehicle/header"
-msgstr "Доступных задач нет"
-
-msgid "hangar/header/halloween/quests/header"
-msgstr "Задачи события «Мирный: Надежда»: %(count)s"
-
 msgid "hangar/header/personalMissions/available/body"
 msgstr ""
 "Боевая задача не выбрана. Нажмите, чтобы перейти к списку доступных задач."
@@ -5433,7 +5286,7 @@ msgid "hangar/header/wgmoneyTooltip/goldName"
 msgstr "Ваше золото"
 
 msgid "hangar/header/wgmoneyTooltip/purchasedValue"
-msgstr "Куплено:"
+msgstr "Куплено"
 
 msgid "hangar/header/wgmoneyTooltip/totalValue"
 msgstr "ИТОГО"
@@ -5827,12 +5680,6 @@ msgstr "Поиск клана временно недоступен."
 msgid "header/accountPopover/unavailable"
 msgstr "Функциональность временно недоступна. Пожалуйста, попробуйте позже."
 
-msgid "header/battleRoyaleSquad/body"
-msgstr "Создать взвод для совместной игры в режиме «Стальной охотник»."
-
-msgid "header/battleRoyaleSquad/header"
-msgstr "Взвод охотников"
-
 msgid "header/battleType/body"
 msgstr "Нажмите, чтобы открыть список доступных режимов боёв."
 
@@ -6053,15 +5900,6 @@ msgstr "Действуют скидки на технику наций:"
 msgid "header/buttons/techtree/header"
 msgstr "Исследования"
 
-msgid "header/dominationSquad/body"
-msgstr ""
-"Создание формирования из 2–3 игроков для совместной игры.\n"
-"• Режимы боёв: «Бой до последнего».\n"
-"• Типы боёв: «Стальная охота», «Превосходство»."
-
-msgid "header/dominationSquad/header"
-msgstr "Взвод"
-
 msgid "header/eliteIcon/body"
 msgstr ""
 "Все модули исследованы.\n"
@@ -6070,12 +5908,6 @@ msgstr ""
 
 msgid "header/eliteIcon/header"
 msgstr "Элитная машина"
-
-msgid "header/eventSquad/body"
-msgstr "header/eventSquad/body"
-
-msgid "header/eventSquad/header"
-msgstr "header/eventSquad/header"
 
 msgid "header/info/players_online_full/body"
 msgstr ""
@@ -6139,30 +5971,10 @@ msgstr "Выберите желаемое количество дней Танк
 msgid "header/premium_upgrade/header"
 msgstr "Улучшить до Танкового премиум аккаунта"
 
-msgid "header/rankedSquad/body"
-msgstr "Игра в составе формирования недоступна в Ранговых боях."
-
-msgid "header/rankedSquad/header"
-msgstr "Создать взвод"
-
 msgid "header/refill_action/attention"
 msgstr ""
 "При первой покупке вы бесплатно получите\n"
 "дополнительное золото."
-
-msgid "header/squad/body"
-msgstr ""
-"Создание формирования из 2–3 игроков для совместной игры в Случайных боях.\n"
-"• Типы боёв: Стандартный бой, Штурм, Встречный бой, Генеральное сражение, а также Линия фронта, когда она доступна."
-
-msgid "header/squad/header"
-msgstr "Взвод"
-
-msgid "header/squad_member/body"
-msgstr "Нажмите, чтобы перейти в меню взвода."
-
-msgid "header/squad_member/header"
-msgstr "Взвод"
 
 msgid "header/versionInfoHint"
 msgstr ""
@@ -6471,28 +6283,21 @@ msgstr "Показывать выбор сервера при запуске и�
 
 msgid "marathon/body"
 msgstr ""
-"Выполняйте условия каждого этапа, при этом задачи на мастерство можно "
-"выполнять на технике IX и X уровней, а на усердие с VI по X. За прохождение "
+"Выполняйте задачи каждого этапа, причём задачи за мастерство можно выполнять"
+" только на Х уровне техники, а задачи за усердие — на любом. За прохождение "
 "каждого из 10 этапов вас ждут специальные награды. Завершите все этапы и "
-"получите французский средний премиум танк VIII&nbsp;уровня "
-"AltProto&nbsp;AMX&nbsp;30 бесплатно!"
+"получите уникальный премиум танк VIII уровня бесплатно."
+
+msgid "marathon/body/extra"
+msgstr ""
+"%(hours)s до завершения события «Кристальная охота». Вы ещё некоторое время "
+"можете купить немецкий средний премиум танк VIII уровня Kampfpanzer 07 RH с "
+"учётом персональной скидки в Магазине."
 
 msgid "marathon/body/extra_smart"
 msgstr ""
-"Поспешите выполнить ежедневные задачи Главы II для получения "
-"3D-стиля&nbsp;«Char de Chastel» бесплатно или с текущей скидкой!"
-
-msgid "marathon/body/extra_style"
-msgstr ""
-"%(hours)s до завершения события «Легенда об охотнике». Вы ещё некоторое "
-"время можете купить уникальный 3D-стиль&nbsp;«Char de Chastel» с текущей "
-"скидкой!"
-
-msgid "marathon/body/extra_vehicle"
-msgstr ""
-"%(hours)s до завершения события «Легенда об охотнике». Вы ещё некоторое "
-"время можете купить французский средний премиум танк VIII&nbsp;уровня "
-"AltProto&nbsp;AMX&nbsp;30 с учётом персональной скидки в Магазине."
+"После активной фазы вы ещё некоторое время сможете купить уникального "
+"премиум танка VIII уровня с учётом персональной скидки."
 
 msgid "marathon/date"
 msgstr "%(day)s %(month)s %(hour)s:%(minutes)s"
@@ -6504,16 +6309,16 @@ msgid "marathon/error/veh_type"
 msgstr "Доступно только на технике VI уровня и выше"
 
 msgid "marathon/extra_state/completed"
-msgstr "Машина получена"
+msgstr "Танк получен"
 
 msgid "marathon/extra_state/discount"
-msgstr "Ваша скидка %(discount)s%%"
+msgstr "Ваша скидка: %(discount)s%%"
 
 msgid "marathon/extra_state/steps"
 msgstr "Пройдено этапов: %(currentStep)s / %(allStep)s"
 
 msgid "marathon/header"
-msgstr "Легенда об охотнике"
+msgstr "Кристальная охота"
 
 msgid "marathon/off/body"
 msgstr ""
@@ -6849,6 +6654,11 @@ msgstr "Информационные уведомления"
 
 msgid "notificationsView/tab/invites/body"
 msgstr "Приглашения в формирования и запросы на добавление в друзья"
+
+msgid "notificationsView/tab/nyInvites/body"
+msgstr ""
+"Приглашения в формирования, запросы на добавления в друзья и новогодние "
+"посылки"
 
 msgid "notificationsView/tab/offers/body"
 msgstr "Персональные уведомления"
@@ -7337,9 +7147,6 @@ msgstr ""
 "• специальность.\n"
 "У этого члена экипажа достаточно опыта для изучения трёх навыков или умений на выбор."
 
-msgid "notrecruitedtankman/hw19_commanders/howToGetInfo"
-msgstr "За участие в событии «Мирный-13»."
-
 msgid "notrecruitedtankman/hw19_commanders/label"
 msgstr "Для всех режимов игры"
 
@@ -7414,22 +7221,6 @@ msgstr ""
 msgid "notrecruitedtankman/ny19woman/label"
 msgstr "Новогоднее наступление 2019"
 
-msgid "notrecruitedtankman/ny20defaultGirl/additionalAlert"
-msgstr "Рекрутирование становится возможным после активации снегурочки"
-
-msgid "notrecruitedtankman/ny20defaultGirl/desc"
-msgstr ""
-"Девушка-танкист выдаётся за активацию снегурочки. У неё изучен навык «Боевое"
-" братство» и достаточно опыта для изучения ещё одного навыка или умения на "
-"выбор."
-
-msgid "notrecruitedtankman/ny20defaultGirl/howToGetInfo"
-msgstr ""
-"Достичь определённого уровня атмосферы праздника и активировать снегурочку."
-
-msgid "notrecruitedtankman/ny20defaultGirl/label"
-msgstr "Новогоднее наступление 2020"
-
 msgid "notrecruitedtankman/ny20men/additionalAlert"
 msgstr "?empty?"
 
@@ -7476,6 +7267,57 @@ msgstr ""
 
 msgid "notrecruitedtankman/ny21men/label"
 msgstr "Новогоднее наступление 2021"
+
+msgid "notrecruitedtankman/ny21woman/desc"
+msgstr ""
+"Выдавалась в награду за достижение определённого уровня атмосферы праздника "
+"в рамках события «Новогоднее наступление 2021». У девушки-танкиста изучено "
+"«Боевое братство», а также достаточно опыта для изучения дополнительного "
+"навыка или умения на выбор."
+
+msgid "notrecruitedtankman/ny21woman/label"
+msgstr "Новогоднее наступление 2021"
+
+msgid "notrecruitedtankman/ny22defaultGirl/desc"
+msgstr ""
+"Девушка-танкист выдаётся на определённом уровне атмосферы праздника. У неё "
+"изучен навык «Боевое братство» и достаточно опыта для изучения ещё одного "
+"навыка или умения на выбор."
+
+msgid "notrecruitedtankman/ny22defaultGirl/howToGetInfo"
+msgstr "Достичь указанного уровня атмосферы праздника."
+
+msgid "notrecruitedtankman/ny22defaultGirl/label"
+msgstr "Новогоднее наступление 2022"
+
+msgid "notrecruitedtankman/ny22men/desc"
+msgstr ""
+"Дорогие игроки! Да, это действительно Арнольд Шварценеггер, и мы прекрасно знаем, как давно вы просили добавить его в игру. Мы сами безумно рады, что нам удалось завязать с ним сотрудничество и порадовать вас такой неожиданной новостью. Арни много раз обещал вернуться — и вот он с нами. Надеемся, вы тепло его встретите и выберете для него свой самый лучший и любимый танк.\n"
+"\n"
+"Команда разработки World of Tanks"
+
+msgid "notrecruitedtankman/ny22men/label"
+msgstr "Новогоднее наступление 2022"
+
+msgid "notrecruitedtankman/ny22men_A/desc"
+msgstr ""
+"«Так-так... Опять жалуемся на попадание 152-миллиметрового снаряда в лёгкий "
+"танк без урона? Давайте я лично приму командование одной из ваших машин и "
+"докажу в бою, что это нормально. Если нужны сухие факты, то причина "
+"заключается в (длинный монолог на разработческом)»."
+
+msgid "notrecruitedtankman/ny22men_A/label"
+msgstr "Новогоднее наступление 2022"
+
+msgid "notrecruitedtankman/ny22woman/desc"
+msgstr ""
+"Выдавалась в награду за достижение определённого уровня атмосферы праздника "
+"в рамках события «Новогоднее наступление 2022». У девушки изучено «Боевое "
+"братство», а также достаточно опыта на дополнительный навык или умение на "
+"выбор."
+
+msgid "notrecruitedtankman/ny22woman/label"
+msgstr "Новогоднее наступление 2022"
 
 msgid "notrecruitedtankman/offspring_commander/desc"
 msgstr ""
@@ -8676,13 +8518,13 @@ msgid "questProgressTracking/status/onPause/header"
 msgstr "Задача на паузе"
 
 msgid "quests/awards/additional/bottom"
-msgstr "И ещё: %(count)d"
+msgstr "И ещё: %(count)s"
 
 msgid "quests/awards/additional/header"
 msgstr "Награды:"
 
 msgid "quests/awards/vehicleRent/bottom"
-msgstr "И ещё: %(count)d"
+msgstr "И ещё: %(count)s"
 
 msgid "quests/awards/vehicleRent/expire"
 msgstr "Срок ограничен"
@@ -8699,6 +8541,9 @@ msgstr "дней аренды: %(count)s"
 msgid "quests/awards/vehicleRent/rentLeft/rentWins"
 msgstr "побед в аренду: %(count)s"
 
+msgid "quests/bonuses/lootBoxToken/body"
+msgstr "В коробке содержатся осколки и дополнительное имущество."
+
 msgid "quests/bonuses/token/battle_bonus_x5/body"
 msgstr ""
 "Возможность получить в пять раз больше опыта за бой, начиная со второго боя "
@@ -8712,22 +8557,8 @@ msgstr ""
 "Данная марка — наградной элемент, необходимый для выполнения определённой "
 "боевой задачи."
 
-msgid "quests/bonuses/token/body/he21_afk_pardon_order"
-msgstr "Позволяет досрочно вернуться к операциям в <b>Мирном</b>."
-
-msgid "quests/bonuses/token/he19_money/specialConditions"
-msgstr "Обратите внимание!"
-
-msgid "quests/bonuses/token/he19_money/specialConditionsDesc"
-msgstr ""
-"После завершения события «Мирный:&nbsp;Надежда» ({0} в {1}) оставшиеся ключи"
-" дешифровки будут списаны."
-
 msgid "quests/bonuses/token/header"
 msgstr "Марка %(userName)s"
-
-msgid "quests/bonuses/token/header/he21_afk_pardon_order"
-msgstr "Приказ о реабилитации"
 
 msgid "quests/bonuses/token/resource/clan_promoresource/body"
 msgstr ""
@@ -8932,7 +8763,7 @@ msgstr ""
 " задачи."
 
 msgid "quests/unavailable/vehicle/header"
-msgstr "Нет подходящей техники"
+msgstr "Нет техники"
 
 msgid "quests/vehicleSeasonAward/aboutBtn/body"
 msgstr ""
@@ -9636,102 +9467,6 @@ msgstr ""
 msgid "shell/basic/description/bold"
 msgstr "Базовый снаряд"
 
-msgid "shell/event/description"
-msgstr "Снаряд, используемый по умолчанию для выбранного орудия. %(bold)s"
-
-msgid "shell/event/description/bold"
-msgstr "Боезапас неограничен."
-
-msgid "shell/pickups/description"
-msgstr "Альтернативный снаряд. Можно подобрать и использовать %(bold)s"
-
-msgid "shell/pickups/description/bold"
-msgstr "только на поле боя."
-
-msgid "shopSales/active/desc"
-msgstr "?empty?"
-
-msgid "shopSales/active/subheader"
-msgstr "?empty?"
-
-msgid "shopSales/currentDiscount/footer"
-msgstr "?empty?"
-
-msgid "shopSales/currentDiscount/header"
-msgstr "?empty?"
-
-msgid "shopSales/currentDiscount/howToBlock/body"
-msgstr "?empty?"
-
-msgid "shopSales/currentDiscount/howToBlock/header"
-msgstr "?empty?"
-
-msgid "shopSales/disabled/desc"
-msgstr "?empty?"
-
-msgid "shopSales/disabled/footer"
-msgstr "?empty?"
-
-msgid "shopSales/disabled/subheader"
-msgstr "?empty?"
-
-msgid "shopSales/ended/desc"
-msgstr "?empty?"
-
-msgid "shopSales/ended/footer/purchased"
-msgstr "?empty?"
-
-msgid "shopSales/ended/footer/saved"
-msgstr "?empty?"
-
-msgid "shopSales/ended/subheader"
-msgstr "?empty?"
-
-msgid "shopSales/freeShuffle/body"
-msgstr "?empty?"
-
-msgid "shopSales/freeShuffle/header"
-msgstr "?empty?"
-
-msgid "shopSales/freeShuffle/maximumFree"
-msgstr "?empty?"
-
-msgid "shopSales/freeShuffle/paidShuffleCost"
-msgstr "?empty?"
-
-msgid "shopSales/header"
-msgstr "?empty?"
-
-msgid "shopSales/locked/desc"
-msgstr "?empty?"
-
-msgid "shopSales/locked/subheader"
-msgstr "?empty?"
-
-msgid "shopSales/paidShuffle/header"
-msgstr "?empty?"
-
-msgid "shopSales/paidShuffle/startTime"
-msgstr "?empty?"
-
-msgid "shopSales/voteForDiscount/available/body"
-msgstr "?empty?"
-
-msgid "shopSales/voteForDiscount/available/header"
-msgstr "?empty?"
-
-msgid "shopSales/voteForDiscount/available/maximumVotes"
-msgstr "?empty?"
-
-msgid "shopSales/voteForDiscount/unavailable/availabilityBlock"
-msgstr "?empty?"
-
-msgid "shopSales/voteForDiscount/unavailable/footer"
-msgstr "?empty?"
-
-msgid "shopSales/voteForDiscount/unavailable/header"
-msgstr "?empty?"
-
 msgid "showArtyHitOnMap/body"
 msgstr ""
 "Включение или отключение отображения на мини-карте области, по которой САУ "
@@ -10004,14 +9739,6 @@ msgstr "Дополнительный опыт"
 msgid "squadBonus/title"
 msgstr "Бонусы за игру взводом"
 
-msgid "squadWindow/eventVehicle"
-msgstr "squadWindow/eventVehicle"
-
-msgid "squadWindow/headerRestriction/difficultyNotUnlocked"
-msgstr ""
-"Уровень сложности взвода не соответствует вашему максимально доступному "
-"уровню сложности"
-
 msgid "statistics/tab/quests/status/onPause/body"
 msgstr ""
 "Выполнение задачи приостановлено.\n"
@@ -10036,7 +9763,7 @@ msgid "storage/filter/modules/btns/type/towers"
 msgstr "Башни"
 
 msgid "storage/filter/noResultsBtn/body"
-msgstr "Нажмите, чтобы сбросить фильтр."
+msgstr "Нажмите, чтобы сбросить настройки фильтра на состояние по умолчанию."
 
 msgid "storage/filter/noResultsBtn/header"
 msgstr "Сбросить фильтр"
@@ -10203,6 +9930,12 @@ msgstr ""
 
 msgid "tankCarusel/lock/rotation/header"
 msgstr "Машина группы %(groupNum)s недоступна"
+
+msgid "tankCarusel/newYearSlot/body"
+msgstr "Нажмите, чтобы перейти на экран управления новогодней техникой."
+
+msgid "tankCarusel/newYearSlot/header"
+msgstr "Новогодняя техника"
 
 msgid "tankCaruselTooltip/vehicleType/elite/AT-SPG"
 msgstr "Элитная ПТ-САУ"
@@ -11266,7 +10999,7 @@ msgid "vehiclePreview/boxTooltip/equipment/header"
 msgstr "Снаряжение «%(value)s»"
 
 msgid "vehiclePreview/boxTooltip/header"
-msgstr "Сопутствующие награды"
+msgstr "Сопутствующие товары"
 
 msgid "vehiclePreview/boxTooltip/inscription/header"
 msgstr "Надпись «%(value)s»"
@@ -11339,6 +11072,12 @@ msgstr "Сначала исследуйте саму машину и преды�
 
 msgid "vehiclePreview/buyButton/parentVehicleIsLocked/header"
 msgstr "Исследование недоступно"
+
+msgid "vehiclePreview/buyButton/restoreRequested/body"
+msgstr "Восстановление данной машины будет доступно через %(days)s д"
+
+msgid "vehiclePreview/buyButton/restoreRequested/header"
+msgstr "Восстановление"
 
 msgid "vehiclePreview/buyButton/walletUnavailable/body"
 msgstr "Единый кошелёк временно недоступен. Приносим извинения за неудобства."

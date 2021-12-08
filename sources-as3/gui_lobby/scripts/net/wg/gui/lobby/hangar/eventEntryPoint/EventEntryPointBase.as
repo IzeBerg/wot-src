@@ -50,9 +50,5 @@ package net.wg.gui.lobby.hangar.eventEntryPoint
       {
          return new Rectangle(0,0,0,0);
       }
-      
-      public function set isPair(param1:Boolean) : void
-      {
-      }
    }
 }

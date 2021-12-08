@@ -1,16 +1,17 @@
 import BigWorld, SoundGroups
 from gui.Scaleform.Waiting import Waiting
+from new_year.cgf_components.highlight_manager import HighlightManager
 from hangar_selectable_objects import ISelectableObject
+from new_year.cgf_components.current_camera_object_manager import CurrentCameraObject
 from .base_selectable_logic import BaseSelectableLogic
 
 class HangarSelectableLogic(BaseSelectableLogic):
-    __slots__ = ('__selected3DEntity', '__selected3DEntityUnderMouseDown', '__objectsSelectionEnabled')
+    __slots__ = ('__selected3DEntity', '__selected3DEntityUnderMouseDown')
 
     def __init__(self):
         super(HangarSelectableLogic, self).__init__()
         self.__selected3DEntity = None
         self.__selected3DEntityUnderMouseDown = None
-        self.__objectsSelectionEnabled = True
         return
 
     def fini(self):
@@ -38,11 +39,11 @@ class HangarSelectableLogic(BaseSelectableLogic):
         if entity is None:
             return False
         else:
+            if entity.entityGameObject.findComponentByType(CurrentCameraObject) is not None:
+                return False
             if not isinstance(entity, ISelectableObject):
                 return False
             if not self._hangarSpace.isCursorOver3DScene:
-                return False
-            if not entity.enabled:
                 return False
             return True
 
@@ -58,8 +59,7 @@ class HangarSelectableLogic(BaseSelectableLogic):
         if not isinstance(entity, ISelectableObject):
             return
         else:
-            if self._hangarSpace.isCursorOver3DScene:
-                self.__fade3DEntity(entity)
+            self.__fade3DEntity(entity)
             return
 
     def _onMouseDown(self):
@@ -70,22 +70,14 @@ class HangarSelectableLogic(BaseSelectableLogic):
 
     def _onMouseUp(self):
         if self._hangarSpace.isCursorOver3DScene:
-            if self.__selected3DEntityUnderMouseDown:
+            if self.__selected3DEntityUnderMouseDown is not None and self.__selected3DEntityUnderMouseDown.enabled:
                 self.__selected3DEntityUnderMouseDown.onMouseUp()
                 if self.__selected3DEntityUnderMouseDown == self.__selected3DEntity:
                     self.__selected3DEntityUnderMouseDown.onMouseClick()
-            self.__onMouseEnter(self.__selected3DEntity)
-            self.__selected3DEntityUnderMouseDown = None
+        self.__selected3DEntityUnderMouseDown = None
         return
 
-    def _onObjectsSelectionEnabled(self, enabled):
-        self.__objectsSelectionEnabled = enabled
-        if not enabled and self.__selected3DEntity:
-            self._onMouseExit(self.__selected3DEntity)
-
     def __onMouseEnter(self, entity):
-        if not self.__objectsSelectionEnabled:
-            return False
         if Waiting.isVisible():
             return False
         if not self._filterEntity(entity):
@@ -95,9 +87,9 @@ class HangarSelectableLogic(BaseSelectableLogic):
         return True
 
     def __highlight3DEntity(self, entity):
-        entity.setHighlight(True)
+        HighlightManager.toggleEntityHighlight(entity, True)
         self._callbackMethodCall('onHighlight3DEntity', entity)
 
     def __fade3DEntity(self, entity):
-        entity.setHighlight(False)
+        HighlightManager.toggleEntityHighlight(entity, False)
         self._callbackMethodCall('onFade3DEntity', entity)

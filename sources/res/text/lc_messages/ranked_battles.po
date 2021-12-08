@@ -93,6 +93,9 @@ msgstr "Вы достигли уровня лиг"
 msgid "awards/gotQualification"
 msgstr "Вы прошли квалификацию и перешли в третий дивизион."
 
+msgid "awards/gotQualificationQuest"
+msgstr "Вы получили награду за квалификацию. Проведено боёв: %(count)s"
+
 msgid "awards/gotRank"
 msgstr "Получен новый ранг"
 
@@ -333,10 +336,18 @@ msgid "division/status/locked/description"
 msgstr "Предыдущий дивизион ещё не пройден."
 
 msgid "division/status/qualification"
-msgstr "Квалификационных боёв: %(progress)s"
+msgstr "Проведено боёв: %(progress)s"
 
 msgid "division/status/qualification/progress"
 msgstr "%(current)s / %(total)s"
+
+msgid "division/status/qualificationDescr/complete"
+msgstr "Квалификация пройдена"
+
+msgid "division/status/qualificationDescr/progress"
+msgstr ""
+"Для прохождения квалификации проведите %(battlesTotal)s боёв.\n"
+"При прохождении квалификации вы получите награды за проведение %(battlesList)s боёв."
 
 msgid "division/tooltip/battlesDescription"
 msgstr "Состоит из %(battlesCount)s боёв"
@@ -362,8 +373,8 @@ msgstr ""
 
 msgid "division/tooltip/desc/currentQual/text"
 msgstr ""
-"После прохождения квалификации вы перейдёте в третий дивизион, а также "
-"получите призовые бои, которые помогут вам ускорить прогресс."
+"При прохождении квалификации вы получите награды за проведение %(battles)s боёв.\n"
+"После прохождения квалификации вы перейдёте в третий дивизион, а также получите призовые бои, которые помогут вам ускорить прогресс."
 
 msgid "division/tooltip/desc/locked/text"
 msgstr ""
@@ -402,36 +413,33 @@ msgstr "Сначала необходимо пройти предыдущий д
 msgid "division/tooltip/status/locked/descQual"
 msgstr "Квалификация ещё не пройдена."
 
-msgid "entryPoint/activeSeason"
-msgstr "Сезон {season}, до {date}"
-
-msgid "entryPoint/beforeSeason"
-msgstr "Сезон {season}, с {date}"
-
 msgid "entryPoint/frozen/thin"
 msgstr "Временно отключён"
 
 msgid "entryPoint/frozen/wide"
 msgstr "Режим временно отключён"
 
+msgid "entryPoint/season/end"
+msgstr "Сезон %(season)s завершён"
+
+msgid "entryPoint/season/lasts"
+msgstr "Сезон %(season)s, до %(day)s %(month)s"
+
+msgid "entryPoint/season/starts"
+msgstr "Сезон %(season)s, с %(day)s %(month)s"
+
 msgid "entryPoint/title"
 msgstr "РАНГОВЫЙ БОЙ"
 
-msgid "entryPoint/waitNextSeasonDate/thin/newSeasonSoon"
-msgstr "Сезон {nextSeason}, с {date}"
+msgid "introPage/alert/beforeSeason"
+msgstr "До начала события:"
 
-msgid "entryPoint/waitNextSeasonDate/thin/seasonEnd"
-msgstr "Сезон {season} завершён"
-
-msgid "entryPoint/waitNextSeasonDate/wide"
-msgstr "Сезон {season} завершён | Сезон {nextSeason} с {date}"
-
-msgid "entryPoint/waitNextSeasonWithoutDate"
-msgstr "Сезон {season} завершён"
+msgid "introPage/alert/disabled"
+msgstr "Режим временно недоступен. Зайдите позже."
 
 msgid "introPage/blocks/block1/description"
 msgstr ""
-"Сражения проходят в формате 10x10, по правилам Стандартного боя, на "
+"Сражения проходят в формате 10х10 по правилам Стандартного боя, на "
 "ограниченном количестве карт и только на исследуемой и коллекционной технике"
 " Х уровня."
 
@@ -440,11 +448,11 @@ msgstr "Техника Х уровня"
 
 msgid "introPage/blocks/block2/description"
 msgstr ""
-"На пути к победе необходимо пройти через квалификацию и 3 дивизиона, а после"
-" — попасть в одну из лиг, сражаясь с равным по силе противником."
+"На пути к победе необходимо пройти через 3 дивизиона и попасть в одну из "
+"лиг, сражаясь с равным по силе противником."
 
 msgid "introPage/blocks/block2/title"
-msgstr "3 дивизиона"
+msgstr "Ранговая карьера"
 
 msgid "introPage/blocks/block3/description"
 msgstr ""
@@ -457,8 +465,9 @@ msgstr "Уникальные награды"
 
 msgid "introPage/blocks/yearRewardDisabled"
 msgstr ""
-"За прохождение каждого из трёх сезонов вы сможете получить специальный стиль"
-" для техники X уровня."
+"Каждый полученный ранг обеспечит вам достойную награду, а за прохождение "
+"всех трёх сезонов вы сможете получить специальный стиль для техники X "
+"уровня."
 
 msgid "introPage/btns/accept"
 msgstr "Так точно!"
@@ -466,8 +475,23 @@ msgstr "Так точно!"
 msgid "introPage/btns/detailed"
 msgstr "Подробнее о режиме"
 
+msgid "introPage/btns/toHangar"
+msgstr "В Ангар"
+
 msgid "introPage/description"
 msgstr "Бои 10x10, X уровень техники, 3 дивизиона на пути к победе."
+
+msgid "introPage/timeLeft/days"
+msgstr "%(day)s д %(hour)s ч"
+
+msgid "introPage/timeLeft/hours"
+msgstr "%(hour)s ч %(min)s мин"
+
+msgid "introPage/timeLeft/lessMin"
+msgstr "1 мин"
+
+msgid "introPage/timeLeft/min"
+msgstr "%(min)s мин"
 
 msgid "notification/rankEarned"
 msgstr "получен ранг"
@@ -602,6 +626,12 @@ msgstr "%(leftSeasonName)s сезон на сервере %(serverName)s зав�
 
 msgid "primeTimes/timeText/undefined"
 msgstr "?empty?"
+
+msgid "qualificationRewards/battlesNeeded"
+msgstr "Для прохождения квалификации проведите %(battlesCount)s боёв."
+
+msgid "qualificationRewards/battlesPlayed"
+msgstr "Проведено боёв:"
 
 msgid "qualificationRewards/description"
 msgstr ""

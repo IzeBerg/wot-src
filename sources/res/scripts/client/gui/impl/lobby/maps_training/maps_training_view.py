@@ -18,6 +18,7 @@ from gui.shared.missions.packers.bonus import getDefaultBonusPacker
 from gui.shared.view_helpers.blur_manager import CachedBlur
 from helpers import dependency
 from items import vehicles
+from skeletons.gui.customization import ICustomizationService
 from skeletons.gui.game_control import IMapsTrainingController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
@@ -47,6 +48,7 @@ class MapsTrainingView(MapsTrainingBaseView, IGlobalListener):
     itemsCache = dependency.descriptor(IItemsCache)
     mapsTrainingController = dependency.descriptor(IMapsTrainingController)
     hangarSpace = dependency.descriptor(IHangarSpace)
+    c11nService = dependency.descriptor(ICustomizationService)
 
     def __init__(self, *args, **kwargs):
         super(MapsTrainingView, self).__init__(viewResource=R.views.lobby.maps_training.MapsTrainingPage(), viewModel=MapsTrainingViewModel())
@@ -137,6 +139,7 @@ class MapsTrainingView(MapsTrainingBaseView, IGlobalListener):
         self.hangarSpace.onSpaceCreate += self.__onHangarSpaceCreate
         g_currentPreviewVehicle.onChangeStarted += self.__onPreviewVehicleChangeStarted
         g_currentPreviewVehicle.onChanged += self.__onPreviewVehicleChanged
+        self.c11nService.onVisibilityChanged += self.__onC11nVisibilityChanged
 
     def _removeListeners(self):
         super(MapsTrainingView, self)._removeListeners()
@@ -151,6 +154,7 @@ class MapsTrainingView(MapsTrainingBaseView, IGlobalListener):
         self.hangarSpace.onSpaceCreate -= self.__onHangarSpaceCreate
         g_currentPreviewVehicle.onChangeStarted -= self.__onPreviewVehicleChangeStarted
         g_currentPreviewVehicle.onChanged -= self.__onPreviewVehicleChanged
+        self.c11nService.onVisibilityChanged -= self.__onC11nVisibilityChanged
 
     def __onHangarSpaceCreate(self):
         self.__hangarCameraManager = self.hangarSpace.space.getCameraManager()
@@ -186,7 +190,6 @@ class MapsTrainingView(MapsTrainingBaseView, IGlobalListener):
         isMapSelected = bool(self.__selectedMap)
         model.setIsMapSelected(isMapSelected)
         if isMapSelected:
-            self.__blur.enable()
             mapConfig = self.__mapsConfig.getMapConfig(self.__selectedMap)
             geometryID = ArenaType.g_geometryNamesToIDs[self.__selectedMap]
             data = self.__account.mapsTraining.getGeometryData(geometryID)
@@ -383,6 +386,8 @@ class MapsTrainingView(MapsTrainingBaseView, IGlobalListener):
     def __onBlurRectUpdated(self, args):
         viewX, viewY = self.getParentWindow().globalPosition
         blurRect = Math.Vector4(int(args.get('left')) + viewX, int(args.get('top')) + viewY, int(args.get('right')) + viewX, int(args.get('bottom')) + viewY)
+        if not self.__blur.enabled:
+            self.__blur.enable()
         if self.__blurRectId:
             self.__blur.changeRect(self.__blurRectId, blurRect)
         else:
@@ -398,6 +403,12 @@ class MapsTrainingView(MapsTrainingBaseView, IGlobalListener):
         if self.__tickCallback is None and not self.__finalizationInProgress:
             self.__tickCallback = BigWorld.callback(self._UPDATE_TICK_RATE, self.__tick)
         return
+
+    def __onC11nVisibilityChanged(self, _):
+        vehCompDescr = self.mapsTrainingController.getSelectedVehicle()
+        if self.__selectedMap and vehCompDescr:
+            g_currentPreviewVehicle.selectNoVehicle()
+            g_currentPreviewVehicle.selectVehicle(vehCompDescr)
 
     def __updateMarkerPosition(self):
         if self.__selectedMap and self.viewModel.isBound() and self.hangarSpace.spaceInited:

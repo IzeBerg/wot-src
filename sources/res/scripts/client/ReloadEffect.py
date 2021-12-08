@@ -510,7 +510,6 @@ class AutoReload(_GunReload):
     def onFull(self):
         if BARREL_DEBUG_ENABLED:
             LOG_DEBUG('AutoReload::onFull')
-        self.stopCallback(self.__onAlmostComplete)
         playByName(self._desc.autoLoaderFull)
 
     def shotFail(self):
@@ -588,8 +587,7 @@ class DualGunReload(_GunReload):
         return
 
     def reloadEnd(self):
-        self.stopCallback(self.__onReloadStart)
-        self.stopCallback(self.__onAmmoLow)
+        pass
 
     def __onReloadStart(self, time):
         if fabs(time - BigWorld.time()) > 0.1:

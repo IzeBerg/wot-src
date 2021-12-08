@@ -1,4 +1,4 @@
-import time
+import math, time
 from collections import namedtuple
 import BigWorld
 from adisp import process, async
@@ -93,6 +93,10 @@ class _CouponData(object):
     @property
     def discount(self):
         return self.__discount
+
+
+def _buildRestoreButtonTooltip(key, timeLeft):
+    return makeTooltip(header=TOOLTIPS.vehiclepreview_buybutton_all(key, 'header'), body=backport.text(R.strings.tooltips.vehiclePreview.buyButton.dyn(key).dyn('body')(), days=int(math.ceil(timeLeft / 86400))))
 
 
 class VehiclePreviewBuyingPanel(VehiclePreviewBuyingPanelMeta):
@@ -359,7 +363,7 @@ class VehiclePreviewBuyingPanel(VehiclePreviewBuyingPanelMeta):
         else:
             btnData = self.__getBtnData()
             self._actionType = self.__previewDP.getBuyType(item)
-            if self.__items is not None:
+            if self.__items:
                 buyingPanelData = self.__previewDP.getItemPackBuyingPanelData(btnData, self.__items, self.__couponInfo.selected if self.__couponInfo else False, self.__price.get(Currency.GOLD))
             elif self.__offers:
                 buyingPanelData = self.__previewDP.getOffersBuyingPanelData(btnData)
@@ -653,7 +657,7 @@ class VehiclePreviewBuyingPanel(VehiclePreviewBuyingPanelMeta):
     @process
     def __hasExternalLink(self, callback=None):
         url = ''
-        if self._marathonEvent and not self._marathonEvent.hasIgbLink():
+        if self._marathonEvent:
             url = yield self._marathonEvent.getMarathonVehicleUrl()
         elif self.__isHeroTank:
             if not self._heroTanks.isAdventHero() and not self._heroTanks.getCurrentShopUrl():

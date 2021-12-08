@@ -35,6 +35,8 @@ class HeroTankController(IHeroTankController):
         self.__actionInfo = None
         self.onUpdated = Event.Event()
         self.onInteractive = Event.Event()
+        self.onHeroTankChanged = Event.Event()
+        self.onHeroTankBought = Event.Event()
         return
 
     def init(self):
@@ -46,7 +48,7 @@ class HeroTankController(IHeroTankController):
         self.itemsCache.onSyncCompleted -= self.__updateInventoryVehiclesData
 
     def __onEventsCacheSyncCompleted(self, *_):
-        self.__applyActions()
+        self.__updateSettings()
 
     def onLobbyStarted(self, ctx):
         self.lobbyContext.getServerSettings().onServerSettingsChange += self.__onServerSettingsChanged

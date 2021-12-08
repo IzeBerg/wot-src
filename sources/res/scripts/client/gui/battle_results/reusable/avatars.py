@@ -44,9 +44,6 @@ class AvatarInfo(shared.ItemInfo):
     def hasPenalties(self):
         return self.__fairplayViolations.hasPenalties()
 
-    def getPenaltyName(self):
-        return self.__fairplayViolations.getPenaltyName()
-
     @property
     def accRank(self):
         if self.__accRank:

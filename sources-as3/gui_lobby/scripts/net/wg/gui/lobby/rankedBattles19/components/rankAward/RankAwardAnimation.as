@@ -19,7 +19,11 @@ package net.wg.gui.lobby.rankedBattles19.components.rankAward
       
       public static const RANK_ICON_X:int = 350;
       
-      public static const AWARDS_HGAP:int = 115;
+      public static const AWARDS_X_SHIFT:int = 115;
+      
+      private static const AWARD_WIDTH:int = 80;
+      
+      private static const AWARD_HGAP:int = 24;
       
       private static const SHOW_STATE:String = "show";
       
@@ -133,7 +137,14 @@ package net.wg.gui.lobby.rankedBattles19.components.rankAward
             this._rankMc.gotoAndStop(END_STATE);
             this._scheduler.cancelTask(this.showAwards);
             this._rankMc.x = (this._view.width - RANK_ICON_X >> 1) - this._view.smallHeightXShift;
-            this._awardsMc.x = this._rankMc.x + AWARDS_HGAP;
+            this._awardsMc.x = this._rankMc.x + AWARDS_X_SHIFT;
+            this._awardsMc.gotoAndStop(IDLE_AWARDS_STATE + this._awardsCount);
+            this.updateAwardData();
+         }
+         else if(this._state == RANKEDBATTLES_ALIASES.AWARD_VIEW_QUAL_BATTLES_STATE)
+         {
+            this._scheduler.cancelTask(this.showAwards);
+            this._awardsMc.x = this._view.width - this.getAwardsWidth() >> 1;
             this._awardsMc.gotoAndStop(IDLE_AWARDS_STATE + this._awardsCount);
             this.updateAwardData();
          }
@@ -143,7 +154,7 @@ package net.wg.gui.lobby.rankedBattles19.components.rankAward
             this._qualMc.update(this._data.qualVO);
             this._scheduler.cancelTask(this.showAwards);
             this._qualMc.x = (this._view.width - RANK_ICON_X >> 1) - this._view.smallHeightXShift;
-            this._awardsMc.x = this._qualMc.x + AWARDS_HGAP;
+            this._awardsMc.x = this._qualMc.x + AWARDS_X_SHIFT;
             this._awardsMc.gotoAndStop(IDLE_AWARDS_STATE + this._awardsCount);
             this.updateAwardData();
          }
@@ -173,7 +184,14 @@ package net.wg.gui.lobby.rankedBattles19.components.rankAward
             this._awardsCount = Math.min(this._data.awards.length,MAX_AWARD_INDEX);
             this._awardsMc.gotoAndStop(IDLE_AWARDS_STATE);
             this._rankMc.x = this._view.width >> 1;
-            this._awardsMc.x = this._rankMc.x + AWARDS_HGAP;
+            this._awardsMc.x = this._rankMc.x + AWARDS_X_SHIFT;
+         }
+         else if(this._state == RANKEDBATTLES_ALIASES.AWARD_VIEW_QUAL_BATTLES_STATE)
+         {
+            this._awardFrameHelper = new FrameHelper(MovieClip(this._awardsMc));
+            this._awardsCount = Math.min(this._data.awards.length,MAX_AWARD_INDEX);
+            this._awardsMc.gotoAndStop(IDLE_AWARDS_STATE);
+            this._awardsMc.x = (this._view.width - this.getAwardsWidth() >> 1) - AWARDS_X_SHIFT;
          }
          else if(this._state == RANKEDBATTLES_ALIASES.AWARD_VIEW_QUAL_STATE)
          {
@@ -185,7 +203,7 @@ package net.wg.gui.lobby.rankedBattles19.components.rankAward
             this._awardsCount = Math.min(this._data.awards.length,MAX_AWARD_INDEX);
             this._awardsMc.gotoAndStop(IDLE_AWARDS_STATE);
             this._qualMc.x = this._view.width >> 1;
-            this._awardsMc.x = this._qualMc.x + AWARDS_HGAP;
+            this._awardsMc.x = this._qualMc.x + AWARDS_X_SHIFT;
          }
          else if(this._state == RANKEDBATTLES_ALIASES.AWARD_VIEW_DIVISION_STATE)
          {
@@ -202,7 +220,7 @@ package net.wg.gui.lobby.rankedBattles19.components.rankAward
          }
          this._rankMc.visible = this._state == RANKEDBATTLES_ALIASES.AWARD_VIEW_RANK_STATE;
          this._qualMc.visible = this._state == RANKEDBATTLES_ALIASES.AWARD_VIEW_QUAL_STATE;
-         this._awardsMc.visible = this._rankMc.visible || this._qualMc.visible;
+         this._awardsMc.visible = this._rankMc.visible || this._qualMc.visible || this._state == RANKEDBATTLES_ALIASES.AWARD_VIEW_QUAL_BATTLES_STATE;
          this._view.division.visible = this._state == RANKEDBATTLES_ALIASES.AWARD_VIEW_DIVISION_STATE;
          this._view.league.visible = this._state == RANKEDBATTLES_ALIASES.AWARD_VIEW_LEAGUE_STATE;
       }
@@ -239,7 +257,15 @@ package net.wg.gui.lobby.rankedBattles19.components.rankAward
                "paused":false,
                "ease":Strong.easeInOut
             }));
-            this._tweens.push(new Tween(ANIMATION_CONTAINER_DURATION,this._awardsMc,{"x":_loc1_ + AWARDS_HGAP},{
+            this._tweens.push(new Tween(ANIMATION_CONTAINER_DURATION,this._awardsMc,{"x":_loc1_ + AWARDS_X_SHIFT},{
+               "paused":false,
+               "ease":Strong.easeInOut
+            }));
+            this._scheduler.scheduleTask(this.showAwards,SHAW_AWARDS_TIME);
+         }
+         else if(this._state == RANKEDBATTLES_ALIASES.AWARD_VIEW_QUAL_BATTLES_STATE)
+         {
+            this._tweens.push(new Tween(ANIMATION_CONTAINER_DURATION,this._awardsMc,{"x":this._view.width - this.getAwardsWidth() >> 1},{
                "paused":false,
                "ease":Strong.easeInOut
             }));
@@ -253,7 +279,7 @@ package net.wg.gui.lobby.rankedBattles19.components.rankAward
                "paused":false,
                "ease":Strong.easeInOut
             }));
-            this._tweens.push(new Tween(ANIMATION_CONTAINER_DURATION,this._awardsMc,{"x":_loc2_ + AWARDS_HGAP},{
+            this._tweens.push(new Tween(ANIMATION_CONTAINER_DURATION,this._awardsMc,{"x":_loc2_ + AWARDS_X_SHIFT},{
                "paused":false,
                "ease":Strong.easeInOut
             }));
@@ -367,6 +393,11 @@ package net.wg.gui.lobby.rankedBattles19.components.rankAward
       private function animationFinish(param1:Boolean = false) : void
       {
          this._view.animationFinish(param1);
+      }
+      
+      private function getAwardsWidth() : uint
+      {
+         return this._awardsCount * AWARD_WIDTH + (this._awardsCount - 1) * AWARD_HGAP;
       }
       
       private function onShowAwardsAnimHandler() : void

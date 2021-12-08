@@ -78,7 +78,6 @@ class AppEntry(FlashComponentWrapper, ApplicationMeta):
         self._imageManager = None
         self._graphicsOptimizationMgr = None
         self._cursorMgr = None
-        self._fadeMgr = None
         self.__initialized = False
         self.__ns = appNS
         self.__viewEventsListener = ViewEventsListener(weakref.proxy(self))
@@ -173,10 +172,6 @@ class AppEntry(FlashComponentWrapper, ApplicationMeta):
     def ctrlModeFlags(self):
         return self.__guiCtrlModeFlags
 
-    @property
-    def fadeMgr(self):
-        return self._fadeMgr
-
     def isModalViewShown(self):
         manager = self._containerMgr
         if manager is not None:
@@ -207,11 +202,8 @@ class AppEntry(FlashComponentWrapper, ApplicationMeta):
         self._addGameCallbacks()
         self.addListener(GameEvent.CHANGE_APP_RESOLUTION, self.__onAppResolutionChanged, scope=EVENT_BUS_SCOPE.GLOBAL)
         self.updateScale()
-        if self._fadeMgr is not None:
-            self._fadeMgr.setup()
         self.__viewEventsListener.handleWaitingEvents()
         self._loadWaiting()
-        return
 
     def beforeDelete(self):
         _logger.debug('AppEntry.beforeDelete: %s', self.__ns)
@@ -278,9 +270,6 @@ class AppEntry(FlashComponentWrapper, ApplicationMeta):
         if self._graphicsOptimizationMgr is not None:
             self._graphicsOptimizationMgr.destroy()
             self._graphicsOptimizationMgr = None
-        if self._fadeMgr is not None:
-            self._fadeMgr.destroy()
-            self._fadeMgr = None
         if self.__mainWnd is not None:
             self.__mainWnd.onStatusChanged -= self.__onMainWindowStatusChanged
             self.__mainWnd.destroy()
@@ -436,6 +425,9 @@ class AppEntry(FlashComponentWrapper, ApplicationMeta):
     def unblurBackgroundViews(self):
         self.as_unblurBackgroundViewsS()
 
+    def setMouseEventsEnabled(self, enabled):
+        self.as_setMouseEventsEnabledS(enabled)
+
     def _createManagers(self):
         self._loaderMgr = self._createLoaderManager()
         self._containerMgr = self._createContainerManager()
@@ -456,7 +448,6 @@ class AppEntry(FlashComponentWrapper, ApplicationMeta):
         self._uiLoggerMgr = self._createUILoggerManager()
         self._imageManager = self._createImageManager()
         self._graphicsOptimizationMgr = self._createGraphicsOptimizationManager()
-        self._fadeMgr = self._createFadeManager()
 
     def _addGameCallbacks(self):
         g_guiResetters.add(self.__onScreenResolutionChanged)
@@ -526,9 +517,6 @@ class AppEntry(FlashComponentWrapper, ApplicationMeta):
         return
 
     def _createGraphicsOptimizationManager(self):
-        return
-
-    def _createFadeManager(self):
         return
 
     def _setup(self):

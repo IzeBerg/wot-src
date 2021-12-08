@@ -1,4 +1,5 @@
 import BigWorld
+from gui.Scaleform.daapi.view.common.settings.mixins import LayerVisibilityMixin
 from gui.Scaleform.daapi.view.meta.GammaWizardViewMeta import GammaWizardViewMeta
 from gui.Scaleform.locale.SETTINGS import SETTINGS
 from gui.shared import EVENT_BUS_SCOPE
@@ -6,7 +7,7 @@ from gui.shared.events import GameEvent
 from gui.shared.formatters import text_styles
 from gui.shared.utils.functions import makeTooltip
 
-class GammaWizardView(GammaWizardViewMeta):
+class GammaWizardView(LayerVisibilityMixin, GammaWizardViewMeta):
     MIN_VALUE = 0
     MAX_VALUE = 1
     DEFAULT_VALUE = 0.5

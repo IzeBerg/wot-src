@@ -1,8 +1,13 @@
 from chat_shared import SYS_MESSAGE_TYPE as _SM_TYPE
+from gui.gift_system.proxy import GiftSystemMessagesProxy
 from messenger.formatters import service_channel as _sc
 from messenger.formatters import wot_plus as _wotPlusFormatters
-from messenger.formatters import token_quest_subformatters
+from messenger.formatters import auto_boxes_subformatters, token_quest_subformatters
 from messenger.m_constants import SCH_CLIENT_MSG_TYPE
+_AUTO_BOXES_SUB_FORMATTERS = (
+ auto_boxes_subformatters.EventBoxesFormatter(),
+ auto_boxes_subformatters.NYPostEventBoxesFormatter(),
+ auto_boxes_subformatters.NYGiftSystemSurpriseFormatter())
 _TOKEN_QUEST_SUB_FORMATTERS = (
  token_quest_subformatters.LootBoxTokenQuestFormatter(),
  token_quest_subformatters.RecruitQuestsFormatter(),
@@ -12,7 +17,15 @@ _TOKEN_QUEST_SUB_FORMATTERS = (
  token_quest_subformatters.SeniorityAwardsFormatter(),
  token_quest_subformatters.PersonalMissionsTokenQuestsFormatter(),
  token_quest_subformatters.BattlePassDefaultAwardsFormatter(),
- token_quest_subformatters.WotPlusDirectivesFormatter())
+ token_quest_subformatters.WotPlusDirectivesFormatter(),
+ token_quest_subformatters.NewYearCollectionRewardFormatter(),
+ token_quest_subformatters.NewYearCollectionMegaRewardFormatter(),
+ token_quest_subformatters.NewYearLevelUpRewardFormatter(),
+ token_quest_subformatters.NewYearOldCollectionRewardFormatter(),
+ token_quest_subformatters.NewYearCelebrityQuestRewardFormatter(),
+ token_quest_subformatters.NewYearCelebrityMarathonRewardFormatter(),
+ token_quest_subformatters.NewYearGiftSystemSubProgressRewardFormatter(),
+ token_quest_subformatters.NewYearGiftSystemProgressionRewardFormatter())
 _PERSONAL_MISSIONS_SUB_FORMATTERS = (
  token_quest_subformatters.PersonalMissionsFormatter(),)
 SERVER_FORMATTERS = {_SM_TYPE.serverReboot.index(): _sc.ServerRebootFormatter(), 
@@ -62,7 +75,7 @@ SERVER_FORMATTERS = {_SM_TYPE.serverReboot.index(): _sc.ServerRebootFormatter(),
    _SM_TYPE.currencyUpdate.index(): _sc.CurrencyUpdateFormatter(), 
    _SM_TYPE.personalMissionFailed.index(): _sc.PersonalMissionFailedFormatter(), 
    _SM_TYPE.customizationChanged.index(): _sc.CustomizationChangedFormatter(), 
-   _SM_TYPE.lootBoxesAutoOpenReward.index(): _sc.LootBoxAutoOpenFormatter(), 
+   _SM_TYPE.lootBoxesAutoOpenReward.index(): _sc.LootBoxAutoOpenFormatter(subFormatters=_AUTO_BOXES_SUB_FORMATTERS), 
    _SM_TYPE.progressiveReward.index(): _sc.ProgressiveRewardFormatter(), 
    _SM_TYPE.piggyBankSmashed.index(): _sc.PiggyBankSmashedFormatter(), 
    _SM_TYPE.blackMapRemoved.index(): _sc.BlackMapRemovedFormatter(), 
@@ -90,15 +103,7 @@ SERVER_FORMATTERS = {_SM_TYPE.serverReboot.index(): _sc.ServerRebootFormatter(),
    _SM_TYPE.passiveXPIncompatibleCrew.index(): _wotPlusFormatters.SimpleFormatter('PassiveXPIncompatibleCrewMessage'), 
    _SM_TYPE.wotPlusRentEnd.index(): _wotPlusFormatters.RentEnd(), 
    _SM_TYPE.wotPlusNoRentSelected.index(): _wotPlusFormatters.SimpleFormatter('WotPlusRentNoRentSelectedMessage'), 
-   _SM_TYPE.halloweenVehicleRent.index(): _sc.VehicleRentFormatter(), 
-   _SM_TYPE.halloweenStyleBought.index(): _sc.StyleBoughtFormatter(), 
-   _SM_TYPE.halloweenStyleBoughtByGold.index(): _sc.StyleBoughtByGoldFormatter(), 
-   _SM_TYPE.halloweenStyleBundleBought.index(): _sc.StyleBundleFormatter(), 
-   _SM_TYPE.halloweenDifficultyLevelReached.index(): _sc.DifficultyLevelReachedFormatter(), 
-   _SM_TYPE.bestDealBandleBought.index(): _sc.BestDealBandleFormatter(), 
-   _SM_TYPE.eventVehiclePurchased.index(): _sc.EventVehiclePurchasedFormatter(), 
-   _SM_TYPE.eventTokenPurchased.index(): _sc.EventTokenPurchasedFormatter(), 
-   _SM_TYPE.eventC11nItemPurchased.index(): _sc.EventC11nItemPurchasedFormatter()}
+   _SM_TYPE.giftSystemMessage.index(): GiftSystemMessagesProxy()}
 CLIENT_FORMATTERS = {SCH_CLIENT_MSG_TYPE.SYS_MSG_TYPE: _sc.ClientSysMessageFormatter(), 
    SCH_CLIENT_MSG_TYPE.PREMIUM_ACCOUNT_EXPIRY_MSG: _sc.PremiumAccountExpiryFormatter(), 
    SCH_CLIENT_MSG_TYPE.AOGAS_NOTIFY_TYPE: _sc.AOGASNotifyFormatter(), 
@@ -118,4 +123,6 @@ CLIENT_FORMATTERS = {SCH_CLIENT_MSG_TYPE.SYS_MSG_TYPE: _sc.ClientSysMessageForma
    SCH_CLIENT_MSG_TYPE.WOTPLUS_TANKRENTAL_ENABLED: _wotPlusFormatters.SimpleFormatter('TankRentalEnabledMessage'), 
    SCH_CLIENT_MSG_TYPE.WOTPLUS_TANKRENTAL_DISABLED: _wotPlusFormatters.SimpleFormatter('TankRentalDisabledMessage'), 
    SCH_CLIENT_MSG_TYPE.WOTPLUS_FREEDIRECTIVES_ENABLED: _wotPlusFormatters.SimpleFormatter('FreeDirectivesEnabledMessage'), 
-   SCH_CLIENT_MSG_TYPE.WOTPLUS_FREEDIRECTIVES_DISABLED: _wotPlusFormatters.SimpleFormatter('FreeDirectivesDisabledMessage')}
+   SCH_CLIENT_MSG_TYPE.WOTPLUS_FREEDIRECTIVES_DISABLED: _wotPlusFormatters.SimpleFormatter('FreeDirectivesDisabledMessage'), 
+   SCH_CLIENT_MSG_TYPE.NEW_NY_LOOT_BOXES: _sc.NewNYLootBoxesFormatter(), 
+   SCH_CLIENT_MSG_TYPE.NY_EVENT_BUTTON_MESSAGE: _sc.NewNYEventFormatter()}

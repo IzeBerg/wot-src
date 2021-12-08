@@ -166,20 +166,14 @@ package net.wg.gui.components.tooltips.inblocks
          {
             for each(_loc2_ in this._blocks)
             {
-               if(_loc2_)
+               _loc2_.removeEventListener(ToolTipBlockEvent.SIZE_CHANGE,this.onBlockSizeChangeHandler);
+               content.removeChild(_loc2_.getDisplayObject());
+               _loc1_ = _loc2_.getBg();
+               if(_loc1_ != null)
                {
-                  _loc2_.removeEventListener(ToolTipBlockEvent.SIZE_CHANGE,this.onBlockSizeChangeHandler);
-                  if(content)
-                  {
-                     content.removeChild(_loc2_.getDisplayObject());
-                  }
-                  _loc1_ = _loc2_.getBg();
-                  if(_loc1_ != null)
-                  {
-                     removeChild(_loc1_);
-                  }
-                  _loc2_.dispose();
+                  removeChild(_loc1_);
                }
+               _loc2_.dispose();
             }
             this._blocks.fixed = false;
             this._blocks.splice(0,this._blocks.length);

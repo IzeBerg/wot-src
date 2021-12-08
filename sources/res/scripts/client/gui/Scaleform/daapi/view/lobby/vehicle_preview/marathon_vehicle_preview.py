@@ -15,34 +15,26 @@ class MarathonVehiclePreview(VehiclePreview):
         super(MarathonVehiclePreview, self).__init__(ctx)
         self.__marathonPrefix = ctx.get('marathonPrefix')
         self.__marathon = self.__marathonCtrl.getMarathon(self.__marathonPrefix)
-        self.__backToHangar = ctx.get('backToHangar', False)
 
     def _onRegisterFlashComponent(self, viewPy, alias):
         if alias == VEHPREVIEW_CONSTANTS.BUYING_PANEL_PY_ALIAS:
-            if self._itemsPack is not None:
+            if self._itemsPack:
                 viewPy.setMarathonEvent(self.__marathonPrefix)
                 viewPy.setInfoTooltip()
-                items = tuple(item for item in self._itemsPack if item.type not in ItemPackTypeGroup.CREW)
-                viewPy.setPackItems(items, self._price, self._oldPrice, self._title)
+                viewPy.setPackItems(self._itemsPack, self._price, self._oldPrice, self._title)
         elif alias == VEHPREVIEW_CONSTANTS.CREW_LINKAGE:
             if self._itemsPack:
                 crewItems = tuple(item for item in self._itemsPack if item.type in ItemPackTypeGroup.CREW)
                 vehicleItems = tuple(item for item in self._itemsPack if item.type in ItemPackTypeGroup.VEHICLE)
                 viewPy.setVehicleCrews(vehicleItems, crewItems)
-        return
 
     def _processBackClick(self, ctx=None):
-        if self.__backToHangar:
-            super(MarathonVehiclePreview, self)._processBackClick(ctx)
-        else:
-            showMissionsMarathon(self.__marathonPrefix)
+        showMissionsMarathon(self.__marathonPrefix)
 
     def _getBackBtnLabel(self):
-        if self.__backToHangar:
-            return backport.text(R.strings.vehicle_preview.header.backBtn.descrLabel.hangar())
+        if self.__marathon is None:
+            return backport.text(R.strings.vehicle_preview.header.backBtn.descrLabel.marathon())
         else:
-            if self.__marathon is None:
-                return backport.text(R.strings.vehicle_preview.header.backBtn.descrLabel.marathon())
             return backport.text(self.__marathon.backBtnLabel)
 
     def _getExitEvent(self):

@@ -1,4 +1,0 @@
-
-
-class IEventHangarSoundEnv(object):
-    pass

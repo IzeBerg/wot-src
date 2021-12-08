@@ -25,7 +25,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private static const COOLDOWN_COUNTER_BG_RED:String = "red";
       
-      protected static const COOLDOWN_COUNTER_BG_GREEN:String = "green";
+      private static const COOLDOWN_COUNTER_BG_GREEN:String = "green";
       
       private static const COOLDOWN_COUNTER_BG_HIDE:String = "hide";
       
@@ -41,9 +41,9 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private static const INTERVALS_RATIO:int = INTERVAL_SIZE / SMALL_INTERVAL_SIZE;
       
-      private static const COOLDOWN_TEXT_COLOR:uint = 15327935;
+      private static const COOLDOWN_TEXT_COLOR:uint = 16768409;
       
-      private static const NORMAL_TEXT_COLOR:uint = 13434726;
+      private static const NORMAL_TEXT_COLOR:uint = 11854471;
       
       private static const GREEN_GLOW_MC_SHOW:String = "show";
       
@@ -129,7 +129,6 @@ package net.wg.gui.battle.views.consumablesPanel
          this.hit.mouseEnabled = false;
          hitArea = this.hit;
          this.consumableBackground.visible = false;
-         this.greenGlowMc.mouseEnabled = this.greenGlowMc.mouseChildren = false;
       }
       
       protected function setBindKeyText() : void
@@ -277,9 +276,9 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      public function setCoolDownTime(param1:Number, param2:Number, param3:Number, param4:int = 1, param5:Boolean = false) : void
+      public function setCoolDownTime(param1:Number, param2:Number, param3:Number, param4:int = 1) : void
       {
-         var _loc6_:int = 0;
+         var _loc5_:int = 0;
          this._isActivated = false;
          this._isPermanent = false;
          this._baseTime = param2;
@@ -331,7 +330,7 @@ package net.wg.gui.battle.views.consumablesPanel
             this._currentIntervalTime = param2 - param3;
             this._useBigTimer = (param4 & ANIMATION_TYPES.CENTER_COUNTER) > 0;
             this.cooldownTimerTf.visible = this.counterBg.visible = !this._useBigTimer;
-            _loc6_ = !!this._useBigTimer ? int(SMALL_INTERVAL_SIZE) : int(INTERVAL_SIZE);
+            _loc5_ = !!this._useBigTimer ? int(SMALL_INTERVAL_SIZE) : int(INTERVAL_SIZE);
             if(this._useBigTimer)
             {
                this.bigCooldownTimerTf.visible = true;
@@ -376,7 +375,7 @@ package net.wg.gui.battle.views.consumablesPanel
             {
                this.startCooldownTimer(param1,this._currReloadingInPercent,this._curAnimReversed,this._isFillPartially);
                this.disableMouse();
-               this._scheduler.scheduleRepeatableTask(this.intervalRun,_loc6_,param2,this._useBigTimer);
+               this._scheduler.scheduleRepeatableTask(this.intervalRun,_loc5_,param2,this._useBigTimer);
             }
          }
          else
@@ -441,11 +440,6 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      public function setCoolDownReverse() : void
-      {
-         this._coolDownTimer.setReverse();
-      }
-      
       public function showGlow(param1:int) : void
       {
          if(!enabled || this._isReloading)
@@ -484,7 +478,7 @@ package net.wg.gui.battle.views.consumablesPanel
          mouseEnabled = mouseChildren = true;
       }
       
-      protected function disableMouse() : void
+      private function disableMouse() : void
       {
          mouseEnabled = mouseChildren = false;
       }
@@ -500,7 +494,7 @@ package net.wg.gui.battle.views.consumablesPanel
          this._coolDownTimer.start(param1,this,Math.round((COOLDOWN_END_FRAME - COOLDOWN_START_FRAME) * param2),DEFAULT_TIME_COEF,param3,param4);
       }
       
-      protected function clearCoolDownText() : void
+      private function clearCoolDownText() : void
       {
          this.cooldownTimerTf.text = Values.EMPTY_STR;
          this.counterBg.gotoAndStop(COOLDOWN_COUNTER_BG_HIDE);
@@ -580,10 +574,6 @@ package net.wg.gui.battle.views.consumablesPanel
       public function get showConsumableBorder() : Boolean
       {
          return this.consumableBackground.visible;
-      }
-      
-      public function setStage(param1:int) : void
-      {
       }
       
       public function set showConsumableBorder(param1:Boolean) : void

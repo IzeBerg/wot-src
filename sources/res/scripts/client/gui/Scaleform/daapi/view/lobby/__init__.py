@@ -22,8 +22,6 @@ def getContextMenuHandlers():
      (
       CONTEXT_MENU_HANDLER_TYPE.BATTLE_RESULTS_USER, user_cm_handlers.UserVehicleCMHandler),
      (
-      CONTEXT_MENU_HANDLER_TYPE.EVENT_BATTLE_RESULTS_USER, user_cm_handlers.EventBattleResultsUserCMHandler),
-     (
       CONTEXT_MENU_HANDLER_TYPE.BASE_USER, user_cm_handlers.BaseUserCMHandler),
      (
       CONTEXT_MENU_HANDLER_TYPE.UNIT_USER, UnitUserCMHandler),
@@ -47,7 +45,7 @@ def getViewSettings():
     from gui.Scaleform.daapi.view.dialogs.SystemMessageDialog import SystemMessageDialog
     from gui.Scaleform.daapi.view.lobby.AwardWindow import AwardWindow
     from gui.Scaleform.daapi.view.lobby.AwardWindow import MissionAwardWindow
-    from gui.Scaleform.daapi.view.lobby.battle_queue import BattleQueue, BattleStrongholdsQueue, EventBattleQueue
+    from gui.Scaleform.daapi.view.lobby.battle_queue import BattleQueue, BattleStrongholdsQueue
     from gui.Scaleform.daapi.view.lobby.BrowserWindow import BrowserWindow
     from gui.Scaleform.daapi.view.lobby.Browser import Browser
     from gui.Scaleform.daapi.view.lobby.components.CalendarComponent import CalendarComponent
@@ -74,7 +72,7 @@ def getViewSettings():
     from gui.Scaleform.daapi.view.lobby.vehicle_obtain_windows import VehicleRestoreWindow
     from gui.Scaleform.daapi.view.lobby.VehicleInfoWindow import VehicleInfoWindow
     from gui.Scaleform.daapi.view.lobby.vehicle_sell_dialog import VehicleSellDialog
-    from gui.Scaleform.daapi.view.lobby.vehicle_preview.vehicle_preview import VehiclePreview, HalloweenVehiclePreview
+    from gui.Scaleform.daapi.view.lobby.vehicle_preview.vehicle_preview import VehiclePreview
     from gui.Scaleform.daapi.view.lobby.trade_in.trade_in_vehicle_preview import TradeInVehiclePreview
     from gui.Scaleform.daapi.view.lobby.vehicle_preview.marathon_vehicle_preview import MarathonVehiclePreview
     from gui.Scaleform.daapi.view.lobby.vehicle_preview.configurable_vehicle_preview import ConfigurableVehiclePreview
@@ -91,27 +89,25 @@ def getViewSettings():
     from gui.Scaleform.daapi.view.lobby.vehicle_preview.progression_styles_style_preview import ProgressionStylesStylePreview
     from gui.Scaleform.daapi.view.lobby.trade_in.personal_trade_in_vehicle_preview import PersonalTradeInVehiclePreview
     from gui.Scaleform.daapi.view.lobby.vehicle_preview.bp_exchange_vehicle_preview import BlueprintsExchangeVehicleStypePreview
+    from gui.impl.lobby.new_year.popovers.ny_select_vehicle_popover import NySelectVehiclePopover
+    from gui.impl.lobby.new_year.ny_browser_view import NyBrowserView
+    from gui.impl.new_year.views.ny_select_vehicle_for_discount_popover import NYSelectVehicleForDiscountPopover
     from gui.Scaleform.daapi.view.bootcamp.bootcamp_progress_component import BootcampProgressComponent
     from gui.Scaleform.daapi.view.lobby.vehicle_preview.wot_plus_vehicle_preview import WotPlusVehiclePreview
+    from gui.Scaleform.daapi.view.lobby.loot_box_shop import LootBoxShopOverlay
     from gui.Scaleform.daapi.view.lobby.telecom_rentals.telecom_rentals_browser_pages import VehicleTelecomRentalView
-    from gui.Scaleform.daapi.view.lobby.year_hare_affair_view import YearHareAffairBrowserView
-    from gui.Scaleform.daapi.view.lobby.halloween_event.event_battle_results import EventBattleResult
-    from gui.Scaleform.daapi.view.lobby.hangar.event.event_message_window import EventMessageWindow
-    from gui.Scaleform.daapi.view.lobby.hangar.event.event_king_reward_preview import EventKingRewardPreview
     return (
      ViewSettings(VIEW_ALIAS.LOBBY, LobbyView, 'lobbyPage.swf', WindowLayer.VIEW, None, ScopeTemplates.DEFAULT_SCOPE, False, (
       ContainerSettings(WindowLayer.SUB_VIEW, containers.DefaultContainer),
       ContainerSettings(WindowLayer.TOP_SUB_VIEW, containers.PopUpContainer))),
      ViewSettings(VIEW_ALIAS.LOBBY_VEHICLE_MARKER_VIEW, LobbyVehicleMarkerView, 'lobbyVehicleMarkerView.swf', WindowLayer.MARKER, VIEW_ALIAS.LOBBY_VEHICLE_MARKER_VIEW, ScopeTemplates.DEFAULT_SCOPE),
      ViewSettings(VIEW_ALIAS.BATTLE_QUEUE, BattleQueue, 'battleQueue.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.BATTLE_QUEUE, ScopeTemplates.DEFAULT_SCOPE),
-     ViewSettings(VIEW_ALIAS.EVENT_BATTLE_QUEUE, EventBattleQueue, 'eventBattleQueue.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.EVENT_BATTLE_QUEUE, ScopeTemplates.DEFAULT_SCOPE),
      ViewSettings(VIEW_ALIAS.BATTLE_STRONGHOLDS_QUEUE, BattleStrongholdsQueue, 'battleStrongholdsQueue.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.BATTLE_STRONGHOLDS_QUEUE, ScopeTemplates.DEFAULT_SCOPE),
      ViewSettings(VIEW_ALIAS.LOBBY_CUSTOMIZATION, CustomizationMainView, 'customizationMainView.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.LOBBY_CUSTOMIZATION, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.VEHICLE_PREVIEW, VehiclePreview, 'vehiclePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.VEHICLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.HERO_VEHICLE_PREVIEW, VehiclePreview, 'vehiclePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.HERO_VEHICLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.CONFIGURABLE_VEHICLE_PREVIEW, ConfigurableVehiclePreview, 'vehiclePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.CONFIGURABLE_VEHICLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.WOT_PLUS_VEHICLE_PREVIEW, WotPlusVehiclePreview, 'vehiclePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.WOT_PLUS_VEHICLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
-     ViewSettings(VIEW_ALIAS.HALLOWEEN_VEHICLE_PREVIEW, HalloweenVehiclePreview, 'vehiclePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.HALLOWEEN_VEHICLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.STYLE_PREVIEW, VehicleStylePreview, 'vehicleBasePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.STYLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.PROGRESSION_STYLES_STYLE_PREVIEW, ProgressionStylesStylePreview, 'vehicleBasePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.PROGRESSION_STYLES_STYLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.BLUEPRINTS_EXCHANGE_STYLE_PREVIEW, BlueprintsExchangeVehicleStypePreview, 'vehicleBasePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.BLUEPRINTS_EXCHANGE_STYLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
@@ -128,7 +124,7 @@ def getViewSettings():
      ViewSettings(VIEW_ALIAS.WOT_PLUS_INFO_VIEW, WotPlusInfoView, 'browserScreen.swf', WindowLayer.FULLSCREEN_WINDOW, VIEW_ALIAS.WOT_PLUS_INFO_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.VEHICLE_RENTAL_VIEW, VehicleRentalView, 'browserScreen.swf', WindowLayer.TOP_SUB_VIEW, VIEW_ALIAS.VEHICLE_RENTAL_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.TELECOM_RENTAL_VIEW, VehicleTelecomRentalView, 'browserScreen.swf', WindowLayer.TOP_SUB_VIEW, VIEW_ALIAS.TELECOM_RENTAL_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
-     ViewSettings(VIEW_ALIAS.YEAR_HARE_AFFAIR_VIEW, YearHareAffairBrowserView, 'browserScreen.swf', WindowLayer.TOP_SUB_VIEW, VIEW_ALIAS.YEAR_HARE_AFFAIR_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
+     ViewSettings(VIEW_ALIAS.NY_BROWSER_VIEW, NyBrowserView, 'browserScreen.swf', WindowLayer.FULLSCREEN_WINDOW, VIEW_ALIAS.NY_BROWSER_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      GroupedViewSettings(VIEW_ALIAS.CHECK_BOX_DIALOG, CheckBoxDialog, 'confirmDialog.swf', WindowLayer.TOP_WINDOW, 'confirmDialog', None, ScopeTemplates.DYNAMIC_SCOPE, isModal=True, canDrag=False),
      GroupedViewSettings(VIEW_ALIAS.CONFIRM_MODULE_DIALOG, ConfirmModuleDialog, 'confirmModuleWindow.swf', WindowLayer.TOP_WINDOW, 'confirmModuleDialog', None, ScopeTemplates.DEFAULT_SCOPE, isModal=True, canDrag=False),
      GroupedViewSettings(VIEW_ALIAS.USE_FREEW_AWARD_SHEET_DIALOG, UseAwardSheetWindow, 'useAwardSheetWindow.swf', WindowLayer.TOP_WINDOW, 'useAwardSheetWindow', None, ScopeTemplates.DEFAULT_SCOPE, isModal=True, canDrag=False),
@@ -146,8 +142,6 @@ def getViewSettings():
      GroupedViewSettings(VIEW_ALIAS.AWARD_WINDOW, AwardWindow, 'awardWindow.swf', WindowLayer.WINDOW, 'awardWindow', None, ScopeTemplates.DEFAULT_SCOPE),
      GroupedViewSettings(VIEW_ALIAS.AWARD_WINDOW_MODAL, AwardWindow, 'awardWindow.swf', WindowLayer.WINDOW, 'awardWindow', None, ScopeTemplates.DEFAULT_SCOPE, isModal=True),
      ConditionalViewSettings(VIEW_ALIAS.BATTLE_RESULTS, BootcampComponentOverride(BattleResultsWindow, BCBattleResult), BootcampComponentOverride('battleResults.swf', 'BCBattleResult.swf'), WindowLayer.WINDOW, BootcampComponentOverride('BattleResultsWindow', ''), None, ScopeTemplates.DEFAULT_SCOPE),
-     GroupedViewSettings(VIEW_ALIAS.EVENT_BATTLE_RESULTS, EventBattleResult, 'battleResultPage.swf', WindowLayer.FULLSCREEN_WINDOW, '', None, ScopeTemplates.LOBBY_SUB_SCOPE),
-     GroupedViewSettings(VIEW_ALIAS.EVENT_MESSAGE_WINDOW, EventMessageWindow, 'EventMessageWindow.swf', WindowLayer.TOP_WINDOW, '', None, ScopeTemplates.TOP_WINDOW_SCOPE, canClose=False, canDrag=True),
      GroupedViewSettings(VIEW_ALIAS.BROWSER_WINDOW, BrowserWindow, 'browserWindow.swf', WindowLayer.WINDOW, '', None, ScopeTemplates.DEFAULT_SCOPE),
      GroupedViewSettings(VIEW_ALIAS.BROWSER_WINDOW_MODAL, BrowserWindow, 'browserWindow.swf', WindowLayer.WINDOW, '', None, ScopeTemplates.DEFAULT_SCOPE, isModal=True, canDrag=False),
      GroupedViewSettings(VIEW_ALIAS.DEMONSTRATOR_WINDOW, DemonstratorWindow, 'demonstratorWindow.swf', WindowLayer.WINDOW, '', None, ScopeTemplates.DEFAULT_SCOPE),
@@ -169,9 +163,12 @@ def getViewSettings():
      GroupedViewSettings(VIEW_ALIAS.SANDBOX_QUEUE_DIALOG, SandboxQueueDialog, 'PvESandboxQueueWindow.swf', WindowLayer.TOP_WINDOW, '', None, ScopeTemplates.DEFAULT_SCOPE, isModal=True, canClose=False),
      GroupedViewSettings(VIEW_ALIAS.MISSION_AWARD_WINDOW, MissionAwardWindow, 'missionAwardWindow.swf', WindowLayer.WINDOW, '', None, ScopeTemplates.DEFAULT_SCOPE),
      GroupedViewSettings(VIEW_ALIAS.TRADEIN_POPOVER, TradeInPopup, 'TradeInPopover.swf', WindowLayer.TOP_WINDOW, 'TradeInPopover', VIEW_ALIAS.TRADEIN_POPOVER, ScopeTemplates.TOP_WINDOW_SCOPE),
+     GroupedViewSettings(VIEW_ALIAS.NY_SELECT_VEHICLE_POPOVER, NySelectVehiclePopover, 'NYSelectVehiclePopover.swf', WindowLayer.TOP_WINDOW, VIEW_ALIAS.NY_SELECT_VEHICLE_POPOVER, VIEW_ALIAS.NY_SELECT_VEHICLE_POPOVER, ScopeTemplates.TOP_WINDOW_SCOPE),
+     GroupedViewSettings(VIEW_ALIAS.NY_SELECT_VEHICLE_FOR_DISCOUNT_POPOVER, NYSelectVehicleForDiscountPopover, 'NYSelectVehiclePopover.swf', WindowLayer.TOP_WINDOW, VIEW_ALIAS.NY_SELECT_VEHICLE_FOR_DISCOUNT_POPOVER, VIEW_ALIAS.NY_SELECT_VEHICLE_FOR_DISCOUNT_POPOVER, ScopeTemplates.TOP_WINDOW_SCOPE),
      ViewSettings(VIEW_ALIAS.REFERRAL_PROGRAM_WINDOW, BrowserView, 'browserScreen.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.BROWSER_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE, True),
      ViewSettings(VIEW_ALIAS.CLAN_NOTIFICATION_WINDOW, BrowserView, 'browserScreen.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.BROWSER_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE, True),
      ViewSettings(VIEW_ALIAS.BADGES_PAGE, BadgesPage, 'badgesPage.swf', WindowLayer.TOP_SUB_VIEW, VIEW_ALIAS.BADGES_PAGE, ScopeTemplates.LOBBY_SUB_SCOPE),
+     ViewSettings(VIEW_ALIAS.LOOT_BOX_SHOP_OVERLAY, LootBoxShopOverlay, 'browserScreen.swf', WindowLayer.OVERLAY, VIEW_ALIAS.BROWSER_OVERLAY, ScopeTemplates.LOBBY_SUB_SCOPE),
      ComponentSettings(VIEW_ALIAS.CALENDAR, CalendarComponent, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(VIEW_ALIAS.MINIMAP_LOBBY, MinimapLobby, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(VIEW_ALIAS.MINIMAP_GRID, MinimapGrid, ScopeTemplates.DEFAULT_SCOPE),
@@ -179,8 +176,7 @@ def getViewSettings():
      ComponentSettings(VIEW_ALIAS.RECRUIT_PARAMS, RecruitParamsComponent, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(VIEW_ALIAS.SERVERS_STATS, ServerStats, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(VIEW_ALIAS.BROWSER, Browser, ScopeTemplates.DEFAULT_SCOPE),
-     ComponentSettings(VIEW_ALIAS.BOOTCAMP_PROGRESS, BootcampProgressComponent, ScopeTemplates.DEFAULT_SCOPE),
-     ViewSettings(VIEW_ALIAS.EVENT_KING_REWARD_PREVIEW, EventKingRewardPreview, 'vehiclePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.EVENT_KING_REWARD_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE))
+     ComponentSettings(VIEW_ALIAS.BOOTCAMP_PROGRESS, BootcampProgressComponent, ScopeTemplates.DEFAULT_SCOPE))
 
 
 def getBusinessHandlers():
@@ -201,15 +197,9 @@ class LobbyPackageBusinessHandler(PackageBusinessHandler):
          (
           VIEW_ALIAS.BATTLE_QUEUE, self.loadViewByCtxEvent),
          (
-          VIEW_ALIAS.EVENT_BATTLE_QUEUE, self.loadViewByCtxEvent),
-         (
           VIEW_ALIAS.BATTLE_STRONGHOLDS_QUEUE, self.loadViewByCtxEvent),
          (
           VIEW_ALIAS.BATTLE_RESULTS, self.loadViewByCtxEvent),
-         (
-          VIEW_ALIAS.EVENT_BATTLE_RESULTS, self.loadViewByCtxEvent),
-         (
-          VIEW_ALIAS.EVENT_DIFFICULTY_UNLOCK, self.loadViewByCtxEvent),
          (
           VIEW_ALIAS.BROWSER_WINDOW, self.loadViewByCtxEvent),
          (
@@ -242,8 +232,6 @@ class LobbyPackageBusinessHandler(PackageBusinessHandler):
           VIEW_ALIAS.TELECOM_RENTAL_VIEW, self.loadViewByCtxEvent),
          (
           VIEW_ALIAS.OFFER_GIFT_VEHICLE_PREVIEW, self.loadViewByCtxEvent),
-         (
-          VIEW_ALIAS.HALLOWEEN_VEHICLE_PREVIEW, self.loadViewByCtxEvent),
          (
           VIEW_ALIAS.STYLE_PREVIEW, self.loadViewByCtxEvent),
          (
@@ -297,6 +285,8 @@ class LobbyPackageBusinessHandler(PackageBusinessHandler):
          (
           VIEW_ALIAS.SANDBOX_QUEUE_DIALOG, self.loadViewBySharedEvent),
          (
+          VIEW_ALIAS.ADVENT_CALENDAR, self.showAdventCalendarWindow),
+         (
           VIEW_ALIAS.MISSION_AWARD_WINDOW, self.loadViewByCtxEvent),
          (
           VIEW_ALIAS.ACOUSTIC_POPOVER, self.loadViewByCtxEvent),
@@ -305,19 +295,21 @@ class LobbyPackageBusinessHandler(PackageBusinessHandler):
          (
           VIEW_ALIAS.REFERRAL_PROGRAM_WINDOW, self.loadViewByCtxEvent),
          (
+          VIEW_ALIAS.NY_SELECT_VEHICLE_POPOVER, self.loadViewByCtxEvent),
+         (
+          VIEW_ALIAS.NY_SELECT_VEHICLE_FOR_DISCOUNT_POPOVER, self.loadViewByCtxEvent),
+         (
+          VIEW_ALIAS.NY_BROWSER_VIEW, self.loadViewByCtxEvent),
+         (
           VIEW_ALIAS.CLAN_NOTIFICATION_WINDOW, self.loadViewByCtxEvent),
          (
           VIEW_ALIAS.BADGES_PAGE, self.loadViewByCtxEvent),
          (
           VIEW_ALIAS.UNBOUND_INJECT_WINDOW, self.loadViewByCtxEvent),
          (
-          VIEW_ALIAS.BATTLE_PASS_BADGES_DEMO, self.loadViewByCtxEvent),
+          VIEW_ALIAS.LOOT_BOX_SHOP_OVERLAY, self.loadViewByCtxEvent),
          (
-          VIEW_ALIAS.YEAR_HARE_AFFAIR_VIEW, self.loadViewByCtxEvent),
-         (
-          VIEW_ALIAS.EVENT_KING_REWARD_PREVIEW, self.loadViewByCtxEvent),
-         (
-          VIEW_ALIAS.EVENT_MESSAGE_WINDOW, self.loadViewByCtxEvent))
+          VIEW_ALIAS.BATTLE_PASS_BADGES_DEMO, self.loadViewByCtxEvent))
         super(LobbyPackageBusinessHandler, self).__init__(listeners, app_settings.APP_NAME_SPACE.SF_LOBBY, EVENT_BUS_SCOPE.LOBBY)
 
     def __moduleWindowHandler(self, event):
@@ -325,6 +317,13 @@ class LobbyPackageBusinessHandler(PackageBusinessHandler):
         window = self.findViewByName(WindowLayer.WINDOW, name)
         if window is not None:
             self.bringViewToFront(name)
+        else:
+            self.loadViewByCtxEvent(event)
+        return
+
+    def showAdventCalendarWindow(self, event):
+        if self.findViewByName(WindowLayer.WINDOW, event.name) is not None:
+            self.bringViewToFront(event.name)
         else:
             self.loadViewByCtxEvent(event)
         return

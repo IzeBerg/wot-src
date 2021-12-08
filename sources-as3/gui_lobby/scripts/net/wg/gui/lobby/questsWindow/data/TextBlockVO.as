@@ -2,14 +2,11 @@ package net.wg.gui.lobby.questsWindow.data
 {
    import net.wg.data.constants.Errors;
    import net.wg.data.daapi.base.DAAPIDataClass;
-   import net.wg.gui.components.paginator.vo.ToolTipVO;
    
    public class TextBlockVO extends DAAPIDataClass
    {
       
       private static const ITEMS_FIELD_NAME:String = "items";
-      
-      private static const TOOLTIP:String = "tooltip";
        
       
       public var linkage:String = "";
@@ -26,7 +23,7 @@ package net.wg.gui.lobby.questsWindow.data
       
       public var complexTooltip:String = "";
       
-      public var tooltipVO:ToolTipVO = null;
+      public var specialTooltip:String = "";
       
       public function TextBlockVO(param1:Object)
       {
@@ -52,11 +49,6 @@ package net.wg.gui.lobby.questsWindow.data
             }
             return false;
          }
-         if(param1 == TOOLTIP)
-         {
-            this.tooltipVO = new ToolTipVO(param2);
-            return false;
-         }
          return super.onDataWrite(param1,param2);
       }
       
@@ -67,11 +59,6 @@ package net.wg.gui.lobby.questsWindow.data
             this.items.fixed = false;
             this.items.splice(0,this.items.length);
             this.items = null;
-         }
-         if(this.tooltipVO != null)
-         {
-            this.tooltipVO.dispose();
-            this.tooltipVO = null;
          }
          super.onDispose();
       }

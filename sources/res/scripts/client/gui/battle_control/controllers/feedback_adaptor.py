@@ -51,7 +51,7 @@ class BattleFeedbackAdaptor(IBattleController):
                  'onShotDone', 'onAddCommandReceived', 'setGoals', 'destroyGoal',
                  'onLocalKillGoalsUpdated', 'onEnemySPGShotReceived', '__arenaDP',
                  '__visible', '__pending', '__attrs', '__weakref__', '__arenaVisitor',
-                 '__devInfo', '__eventsCache', '__eManager', 'onBuffApplied')
+                 '__devInfo', '__eventsCache', '__eManager')
 
     def __init__(self, setup):
         super(BattleFeedbackAdaptor, self).__init__()
@@ -87,7 +87,6 @@ class BattleFeedbackAdaptor(IBattleController):
         self.setGoals = Event.Event(self.__eManager)
         self.destroyGoal = Event.Event(self.__eManager)
         self.onLocalKillGoalsUpdated = Event.Event(self.__eManager)
-        self.onBuffApplied = Event.Event(self.__eManager)
 
     def getControllerID(self):
         return BATTLE_CTRL_ID.FEEDBACK
@@ -216,9 +215,6 @@ class BattleFeedbackAdaptor(IBattleController):
 
     def setVehicleNewHealth(self, vehicleID, newHealth, attackerID=0, attackReasonID=0):
         self._setVehicleHealthChanged(vehicleID, newHealth, attackerID, attackReasonID)
-
-    def setVehicleMaxHealth(self, vehicleID, newHealth):
-        self.onVehicleFeedbackReceived(_FET.VEHICLE_MARKER_HEALTH, vehicleID, newHealth)
 
     def setEnemySPGHit(self, position):
         self.onEnemySPGShotReceived(position)

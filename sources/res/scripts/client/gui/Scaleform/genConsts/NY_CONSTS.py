@@ -1,0 +1,6 @@
+
+
+class NY_CONSTS(object):
+    NY_MAIN_NO_INJECT = 0
+    NY_MAIN_UB_INJECT = 1
+    NY_MAIN_GF_INJECT = 2

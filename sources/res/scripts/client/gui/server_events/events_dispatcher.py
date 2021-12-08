@@ -9,17 +9,20 @@ from gui.Scaleform.genConsts.QUESTS_ALIASES import QUESTS_ALIASES
 from gui.impl.pub.notification_commands import WindowNotificationCommand
 from gui.prb_control.dispatcher import g_prbLoader
 from gui.server_events import awards, events_helpers, recruit_helper, anniversary_helper
-from gui.server_events.events_helpers import getLootboxesFromBonuses
+from gui.server_events.events_helpers import getLootboxesFromBonuses, isCelebrityQuest
 from gui.shared import g_eventBus, events, event_dispatcher as shared_events, EVENT_BUS_SCOPE
 from gui.shared.event_dispatcher import showProgressiveItemsView
 from gui.shared.events import PersonalMissionsEvent
+from gui.shared.gui_items.loot_box import NewYearLootBoxes
 from helpers import dependency
+from new_year.ny_constants import AnchorNames
+from new_year.ny_navigation_helper import switchNewYearView
 from skeletons.gui.customization import ICustomizationService
 from skeletons.gui.game_control import IMarathonEventsController
 from skeletons.gui.impl import INotificationWindowController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
-from gui.impl.lobby.reward_window import TwitchRewardWindow, GiveAwayRewardWindow, PiggyBankRewardWindow
+from gui.impl.lobby.reward_window import TwitchRewardWindow, GiveAwayRewardWindow, PiggyBankRewardWindow, LootBoxRewardWindow
 from shared_utils import first
 from battle_pass_common import BattlePassConsts
 OPERATIONS = {PERSONAL_MISSIONS_ALIASES.PERONAL_MISSIONS_OPERATIONS_SEASON_1_ID: PERSONAL_MISSIONS_ALIASES.PERSONAL_MISSIONS_OPERATIONS_PAGE_ALIAS, 
@@ -53,6 +56,7 @@ _EVENTS_REWARD_WINDOW = {recruit_helper.RecruitSourceID.TWITCH_0: TwitchRewardWi
    recruit_helper.RecruitSourceID.TWITCH_26: TwitchRewardWindow, 
    recruit_helper.RecruitSourceID.TWITCH_27: TwitchRewardWindow, 
    recruit_helper.RecruitSourceID.TWITCH_28: TwitchRewardWindow, 
+   recruit_helper.RecruitSourceID.TWITCH_29: TwitchRewardWindow, 
    recruit_helper.RecruitSourceID.COMMANDER_MARINA: TwitchRewardWindow, 
    recruit_helper.RecruitSourceID.COMMANDER_PATRICK: TwitchRewardWindow, 
    anniversary_helper.ANNIVERSARY_EVENT_PREFIX: GiveAwayRewardWindow}
@@ -139,10 +143,6 @@ def showMissionsCategories(missionID=None, groupID=None, anchor=None):
     showMissions(tab=QUESTS_ALIASES.MISSIONS_CATEGORIES_VIEW_PY_ALIAS, missionID=missionID, groupID=groupID, anchor=anchor)
 
 
-def showMissionsHalloween(groupID=None):
-    showMissions(tab=QUESTS_ALIASES.MISSIONS_CATEGORIES_VIEW_PY_ALIAS, groupID=groupID)
-
-
 def showMissionsForCurrentVehicle(missionID=None, groupID=None, anchor=None):
     showMissions(tab=QUESTS_ALIASES.CURRENT_VEHICLE_MISSIONS_VIEW_PY_ALIAS, missionID=missionID, groupID=groupID, anchor=anchor)
 
@@ -208,6 +208,9 @@ def showMission(eventID, eventType=None):
         service.showCustomization(vehicle.invID, lambda : showProgressiveItemsView(itemIntCD))
         return
     else:
+        if isCelebrityQuest(eventID):
+            switchNewYearView(AnchorNames.CELEBRITY)
+            return
         eventsCache = dependency.instance(IEventsCache)
         quests = eventsCache.getQuests()
         quest = quests.get(eventID)
@@ -295,6 +298,8 @@ def showMissionAward(quest, ctx):
             lootboxes = getLootboxesFromBonuses(bonuses)
             if lootboxes:
                 for lootboxId, lootboxInfo in lootboxes.iteritems():
+                    if lootboxId in NewYearLootBoxes.ALL():
+                        continue
                     showLootboxesAward(lootboxId=lootboxId, lootboxCount=lootboxInfo['count'], isFree=lootboxInfo['isFree'])
 
             else:
@@ -304,7 +309,12 @@ def showMissionAward(quest, ctx):
 
 
 def showLootboxesAward(lootboxId, lootboxCount, isFree):
-    pass
+    ctx = {'eventName': recruit_helper.RecruitSourceID.LOOTBOX, 
+       'lootboxType': lootboxId, 
+       'lootboxesCount': lootboxCount, 
+       'isFree': isFree}
+    rewardWindow = LootBoxRewardWindow(ctx)
+    rewardWindow.load()
 
 
 def showPiggyBankRewardWindow(creditsValue, isPremActive):
@@ -357,8 +367,3 @@ def showActions(tab=None, anchor=None):
 def showBattlePass3dStyleChoiceWindow():
     from gui.battle_pass.battle_pass_helpers import BattlePassProgressionSubTabs
     showMissionsBattlePassCommonProgression(subTab=BattlePassProgressionSubTabs.SELECT_STYLE_TAB)
-
-
-def showEventHangar():
-    from gui.shared.event_dispatcher import showHangar
-    showHangar()

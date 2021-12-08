@@ -126,7 +126,7 @@ package net.wg.gui.lobby.rankedBattles19.view
             this.background.height = param2;
             this.background.scaleX = this.background.scaleY;
          }
-         this.background.x = this.width - this.background.width >> 1;
+         this.background.x = Math.ceil((this.width - this.background.width) / 2);
          this.background.y = -y + this._topOffset;
          this.closeButton.x = (this.width + param1 >> 1) - this.closeButton.width - CLOSE_BUTTON_OFFSET;
          this.closeButton.y = (this.height - param2 >> 1) + CLOSE_BUTTON_OFFSET;
@@ -152,12 +152,12 @@ package net.wg.gui.lobby.rankedBattles19.view
          if(this.rankIcon.visible)
          {
             this.rankIcon.x = (this.width - RankAwardAnimation.RANK_ICON_X >> 1) - this.smallHeightXShift;
-            this.awards.x = this.rankIcon.x + RankAwardAnimation.AWARDS_HGAP;
+            this.awards.x = this.rankIcon.x + RankAwardAnimation.AWARDS_X_SHIFT;
          }
          if(this.qual.visible)
          {
             this.qual.x = (this.width - RankAwardAnimation.RANK_ICON_X >> 1) - this.smallHeightXShift;
-            this.awards.x = this.qual.x + RankAwardAnimation.AWARDS_HGAP;
+            this.awards.x = this.qual.x + RankAwardAnimation.AWARDS_X_SHIFT;
          }
       }
       
@@ -289,6 +289,10 @@ package net.wg.gui.lobby.rankedBattles19.view
          else if(_loc1_ == RANKEDBATTLES_ALIASES.AWARD_VIEW_DIVISION_STATE || _loc1_ == RANKEDBATTLES_ALIASES.AWARD_VIEW_QUAL_STATE)
          {
             onSoundTriggerS(RANKEDBATTLES_ALIASES.SOUND_AWARD_DIVISION);
+         }
+         else if(_loc1_ == RANKEDBATTLES_ALIASES.AWARD_VIEW_QUAL_BATTLES_STATE)
+         {
+            onSoundTriggerS(RANKEDBATTLES_ALIASES.SOUND_AWARD_QUALIFICATION);
          }
          else
          {

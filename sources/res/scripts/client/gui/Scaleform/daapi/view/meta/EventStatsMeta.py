@@ -6,10 +6,6 @@ class EventStatsMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_updatePlayerStats(data)
 
-    def as_updateDataS(self, title, desc, difficulty, goal):
+    def as_updateTitleS(self, title, desc):
         if self._isDAAPIInited():
-            return self.flashObject.as_updateData(title, desc, difficulty, goal)
-
-    def as_updateBuffsS(self, data):
-        if self._isDAAPIInited():
-            return self.flashObject.as_updateBuffs(data)
+            return self.flashObject.as_updateTitle(title, desc)

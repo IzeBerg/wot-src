@@ -201,7 +201,7 @@ msgid "common/tooltip/assist/description"
 msgstr ""
 "Засчитывается урон союзников по противнику:\n"
 "• Нанесённый по вашим разведданным\n"
-"• После вашего попадания, сбившего противнику гусеницу"
+"• После вашего попадания, сбившего гусеницу и обездвижившего противника"
 
 msgid "common/tooltip/assist/header"
 msgstr "Помощь в уничтожении"
@@ -210,7 +210,8 @@ msgid "common/tooltip/assist/part1"
 msgstr "По вашим разведданным %(vals)s"
 
 msgid "common/tooltip/assist/part2"
-msgstr "После попадания, сбившего гусеницу %(vals)s"
+msgstr ""
+"После попадания, сбившего гусеницу и обездвижившего противника %(vals)s"
 
 msgid "common/tooltip/assist/total"
 msgstr "Всего урона, нанесённого союзниками %(vals)s"
@@ -540,6 +541,9 @@ msgstr "Награда за первую победу в день"
 msgid "details/calculations/multiplierInfo/vehicleSeparator"
 msgstr "• "
 
+msgid "details/calculations/newYear"
+msgstr "Новогодний бонус"
+
 msgid "details/calculations/noPenalty"
 msgstr "За достойное сопротивление"
 
@@ -572,6 +576,9 @@ msgstr "За тактическую подготовку"
 
 msgid "details/calculations/total"
 msgstr "Итого:"
+
+msgid "details/calculations/vehicleBranch"
+msgstr "Бонус новогодней техники"
 
 msgid "details/calculations/xpRecord"
 msgstr "Начислено за бой (%(color_tag_open)sрекорд%(color_tag_close)s)"
@@ -803,7 +810,7 @@ msgid "team/damageAndConsumablesHeader/header"
 msgstr "Нанесённый урон"
 
 msgid "team/damageHeader/body"
-msgstr "Сортировать по нанесённому урону"
+msgstr "Сортировать по нанесённому урону."
 
 msgid "team/damageHeader/header"
 msgstr "Нанесённый урон"
@@ -856,10 +863,10 @@ msgid "team/flagsNoSort/header"
 msgstr "Захваченные флаги"
 
 msgid "team/fragHeader/body"
-msgstr "Сортировать по количеству уничтоженных машин противника"
+msgstr "Сортировать по количеству уничтоженных машин противника."
 
 msgid "team/fragHeader/header"
-msgstr "Уничтоженные машины противника"
+msgstr "Уничтоженная техника противника"
 
 msgid "team/fragHeaderNoSort/header"
 msgstr "Уничтоженная техника противника"
@@ -921,7 +928,7 @@ msgstr "Противник"
 msgid "team/stats/infotip_xpForAssist/body"
 msgstr ""
 "Учитывается:\n"
-"• помощь передачей разведданных, сбитием гусениц или оглушением;\n"
+"• помощь передачей разведданных, сбитием гусениц с обездвиживанием, а также оглушением;\n"
 "• захват базы;\n"
 "• первое обнаружение машины противника."
 

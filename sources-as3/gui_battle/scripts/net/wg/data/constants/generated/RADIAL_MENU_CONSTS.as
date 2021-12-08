@@ -21,8 +21,6 @@ package net.wg.data.constants.generated
       
       public static const PURPLE_STATE:String = "purple";
       
-      public static const SILVER_STATE:String = "silver";
-      
       public static const SOS:String = "Sos";
       
       public static const RELOAD:String = "Reload";
@@ -65,12 +63,6 @@ package net.wg.data.constants.generated
       
       public static const DEFENDING_HQ:String = "SupportingBaseHQ";
       
-      public static const EVENT_COLLECTOR:String = "EventCollector";
-      
-      public static const EVENT_CAMP:String = "EventCamp";
-      
-      public static const EVENT_CANCEL:String = "EventCancel";
-      
       public static const TARGET_STATE_DEFAULT:String = "default";
       
       public static const TARGET_STATE_ALLY:String = "ally";
@@ -91,19 +83,13 @@ package net.wg.data.constants.generated
       
       public static const TARGET_STATE_EMPTY:String = "empty_state";
       
-      public static const TARGET_STATE_EVENT_COLLECTOR:String = "eventCollector";
-      
-      public static const TARGET_STATE_EVENT_CAMP:String = "eventCamp";
-      
-      public static const ALL_TARGET_STATES:Array = [TARGET_STATE_DEFAULT,TARGET_STATE_ALLY,TARGET_STATE_ENEMY,TARGET_STATE_BASE_ALLY,TARGET_STATE_BASE_ENEMY,TARGET_STATE_SPG_DEFAULT,TARGET_STATE_SPG_ENEMY,TARGET_STATE_EMPTY,TARGET_STATE_HQ_ALLY,TARGET_STATE_HQ_ENEMY,TARGET_STATE_EVENT_COLLECTOR,TARGET_STATE_EVENT_CAMP];
+      public static const ALL_TARGET_STATES:Array = [TARGET_STATE_DEFAULT,TARGET_STATE_ALLY,TARGET_STATE_ENEMY,TARGET_STATE_BASE_ALLY,TARGET_STATE_BASE_ENEMY,TARGET_STATE_SPG_DEFAULT,TARGET_STATE_SPG_ENEMY,TARGET_STATE_EMPTY,TARGET_STATE_HQ_ALLY,TARGET_STATE_HQ_ENEMY];
       
       public static const GREEN_TARGET_STATES:Array = [TARGET_STATE_ALLY,TARGET_STATE_BASE_ALLY,TARGET_STATE_HQ_ALLY];
       
       public static const RED_TARGET_STATES:Array = [TARGET_STATE_ENEMY,TARGET_STATE_BASE_ENEMY,TARGET_STATE_SPG_ENEMY,TARGET_STATE_HQ_ENEMY];
       
       public static const ORANGE_TARGET_STATES:Array = [TARGET_STATE_DEFAULT,TARGET_STATE_SPG_DEFAULT];
-      
-      public static const WHITE_TARGET_STATES:Array = [TARGET_STATE_EVENT_COLLECTOR,TARGET_STATE_EVENT_CAMP];
       
       public static const ELEMENT_INDEX_FIRST:int = 0;
       

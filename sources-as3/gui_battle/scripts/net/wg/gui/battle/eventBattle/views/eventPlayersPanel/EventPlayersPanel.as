@@ -1,8 +1,6 @@
 package net.wg.gui.battle.eventBattle.views.eventPlayersPanel
 {
    import flash.display.Sprite;
-   import net.wg.data.VO.daapi.DAAPITriggeredCommandVO;
-   import net.wg.data.VO.daapi.DAAPITriggeredCommandsVO;
    import net.wg.data.constants.InvalidationType;
    import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.VO.DAAPIPlayerPanelInfoVO;
    import net.wg.infrastructure.base.meta.IEventPlayersPanelMeta;
@@ -26,7 +24,7 @@ package net.wg.gui.battle.eventBattle.views.eventPlayersPanel
       
       private var _playersCount:int = 0;
       
-      private var _soulsCount:uint = 0;
+      private var _pointsCount:uint = 0;
       
       public function EventPlayersPanel()
       {
@@ -36,6 +34,7 @@ package net.wg.gui.battle.eventBattle.views.eventPlayersPanel
          this._playersPanelListItems = new Vector.<EventPlayersPanelListItem>();
          this._playerRendererContainer = new Sprite();
          addChild(this._playerRendererContainer);
+         this.eventPlayersInfo.visible = false;
       }
       
       override protected function draw() : void
@@ -47,23 +46,44 @@ package net.wg.gui.battle.eventBattle.views.eventPlayersPanel
          }
          if(isInvalid(InvalidationType.DATA))
          {
-            this.eventPlayersInfo.setCountSouls(this._soulsCount);
+            this.eventPlayersInfo.setCountPoints(this._pointsCount);
          }
       }
       
-      override protected function updateTriggeredChatCommands(param1:DAAPITriggeredCommandsVO) : void
+      public function as_setPlayerPanelCountPoints(param1:int, param2:int) : void
       {
-         var _loc4_:DAAPITriggeredCommandVO = null;
-         var _loc5_:int = 0;
-         var _loc2_:DAAPITriggeredCommandsVO = DAAPITriggeredCommandsVO(param1);
-         var _loc3_:Vector.<DAAPITriggeredCommandVO> = _loc2_.triggeredCommands;
-         for each(_loc4_ in _loc3_)
+         var _loc3_:int = this.getPlayerIndex(param1);
+         if(_loc3_ >= 0)
          {
-            _loc5_ = this.getPlayerIndex(_loc4_.vehicleID);
-            if(_loc5_ >= 0)
-            {
-               this._playersPanelListItems[_loc5_].triggerChatCommand(_loc4_.chatCommandName);
-            }
+            this._playersPanelListItems[_loc3_].setCountPoints(param2);
+         }
+         this.updateTotalPointsCount();
+      }
+      
+      public function as_setPlayerPanelHp(param1:int, param2:int, param3:int) : void
+      {
+         var _loc4_:int = this.getPlayerIndex(param1);
+         if(_loc4_ >= 0)
+         {
+            this._playersPanelListItems[_loc4_].setHp(param2,param3);
+         }
+      }
+      
+      public function as_setPlayerDead(param1:int) : void
+      {
+         var _loc2_:int = this.getPlayerIndex(param1);
+         if(_loc2_ >= 0)
+         {
+            this._playersPanelListItems[_loc2_].setEnable(false);
+         }
+      }
+      
+      public function as_setPlayerResurrect(param1:int, param2:Boolean) : void
+      {
+         var _loc3_:int = this.getPlayerIndex(param1);
+         if(_loc3_ >= 0)
+         {
+            this._playersPanelListItems[_loc3_].setResurrect(param2);
          }
       }
       
@@ -94,35 +114,7 @@ package net.wg.gui.battle.eventBattle.views.eventPlayersPanel
             ++this._playersCount;
          }
          invalidatePosition();
-         this.updateTotalSoulsCount();
-      }
-      
-      public function as_setPlayerDead(param1:int) : void
-      {
-         var _loc2_:int = this.getPlayerIndex(param1);
-         if(_loc2_ >= 0)
-         {
-            this._playersPanelListItems[_loc2_].setEnable(false);
-         }
-      }
-      
-      public function as_setPlayerPanelCountSouls(param1:int, param2:int) : void
-      {
-         var _loc3_:int = this.getPlayerIndex(param1);
-         if(_loc3_ >= 0)
-         {
-            this._playersPanelListItems[_loc3_].setCountSouls(param2);
-         }
-         this.updateTotalSoulsCount();
-      }
-      
-      public function as_setPlayerPanelHp(param1:int, param2:int, param3:int) : void
-      {
-         var _loc4_:int = this.getPlayerIndex(param1);
-         if(_loc4_ >= 0)
-         {
-            this._playersPanelListItems[_loc4_].setHp(param2,param3);
-         }
+         this.updateTotalPointsCount();
       }
       
       private function clearPlayerRendererContainer() : void
@@ -169,36 +161,17 @@ package net.wg.gui.battle.eventBattle.views.eventPlayersPanel
          return -1;
       }
       
-      private function updateTotalSoulsCount() : void
+      private function updateTotalPointsCount() : void
       {
-         this._soulsCount = 0;
+         this._pointsCount = 0;
          var _loc1_:int = this._playersPanelListItems.length;
          var _loc2_:int = 0;
          while(_loc2_ < _loc1_)
          {
-            this._soulsCount += this._playersPanelListItems[_loc2_].getCountSouls();
+            this._pointsCount += this._playersPanelListItems[_loc2_].getCountPoints();
             _loc2_++;
          }
          invalidateData();
-      }
-      
-      public function as_setChatCommand(param1:Number, param2:String, param3:uint) : void
-      {
-         var _loc4_:int = this.getPlayerIndex(param1);
-         if(_loc4_ >= 0)
-         {
-            this._playersPanelListItems[_loc4_].setChatCommand(param2,param3);
-         }
-      }
-      
-      public function as_setCollectorGoal(param1:int) : void
-      {
-         this.eventPlayersInfo.setGoal(param1);
-      }
-      
-      public function as_setCollectorNeedValue(param1:int) : void
-      {
-         this.eventPlayersInfo.setCollectorValue(param1);
       }
    }
 }

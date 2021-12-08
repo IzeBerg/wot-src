@@ -22,8 +22,6 @@ package net.wg.gui.components.ribbon.data
       
       private static const PURPLE_RIBBON_SHADOW_COLOR:String = "ribbonPurpleShadow";
       
-      private static const BUFFS_TEXT_COLOR:uint = 15054420;
-      
       public static const SHADOW_BLUR:Number = 5;
       
       public static const SHADOW_STRENGTH:Number = 1.5;
@@ -80,11 +78,6 @@ package net.wg.gui.components.ribbon.data
                this._valueTextColor = _loc3_;
                this._shadowColor = _loc2_.getRGB(PURPLE_RIBBON_SHADOW_COLOR);
                this._ribbonNameTextColor = _loc3_;
-               break;
-            case RibbonColors.BUFFS:
-               this._valueTextColor = BUFFS_TEXT_COLOR;
-               this._shadowColor = _loc2_.getRGB(ORANGE_RIBBON_SHADOW_COLOR);
-               this._ribbonNameTextColor = BUFFS_TEXT_COLOR;
                break;
             default:
                App.utils.asserter.assert(false,"No such rendererType: " + param1);

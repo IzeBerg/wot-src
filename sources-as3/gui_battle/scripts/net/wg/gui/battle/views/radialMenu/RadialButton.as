@@ -105,6 +105,60 @@ package net.wg.gui.battle.views.radialMenu
          this.hitAreaSpr.visible = false;
       }
       
+      public function setTitle(param1:String, param2:String) : void
+      {
+         if(this._titleStr != param1)
+         {
+            this._titleStr = param1;
+            this._titleColor = param2;
+            invalidate(TITLE_VALIDATION);
+         }
+      }
+      
+      public function set icon(param1:String) : void
+      {
+         this.showIcon(param1);
+      }
+      
+      public function set hotKey(param1:String) : void
+      {
+         if(this._keyStr != param1)
+         {
+            this._keyStr = param1;
+            this._hasButtonCustomIcon = BUTTONS_WITH_CUSTOM_ICON.indexOf(param1) >= 0 && param1 != DEFAULT_NONE_KEY;
+            invalidate(KEY_VALIDATION);
+         }
+      }
+      
+      public function set buttonVisualState(param1:String) : void
+      {
+         if(param1 != this._buttonVisualState)
+         {
+            this._buttonVisualState = param1;
+            invalidate(VISUAL_STATE_VALIDATION);
+         }
+      }
+      
+      public function get buttonVisualState() : String
+      {
+         return this._buttonVisualState;
+      }
+      
+      private function showIcon(param1:String) : void
+      {
+         this.icons.showIcon(param1);
+         this.iconsHovered.showIcon(param1);
+      }
+      
+      public function set angle(param1:Number) : void
+      {
+         if(this._angle != param1)
+         {
+            this._angle = param1;
+            invalidate(ANGLE_VALIDATION);
+         }
+      }
+      
       override protected function draw() : void
       {
          var _loc1_:int = 0;
@@ -153,84 +207,6 @@ package net.wg.gui.battle.views.radialMenu
          }
       }
       
-      override protected function onDispose() : void
-      {
-         this.sectorWrapper.dispose();
-         this.sectorWrapperHovered.dispose();
-         this.sectorWrapper = null;
-         this.sectorWrapperHovered = null;
-         this.icons = null;
-         this.iconsHovered = null;
-         this.content = null;
-         this.contentHovered = null;
-         this.hitAreaSpr = null;
-         super.onDispose();
-      }
-      
-      public function setTitle(param1:String, param2:String) : void
-      {
-         if(this._titleStr != param1)
-         {
-            this._titleStr = param1;
-            this._titleColor = param2;
-            invalidate(TITLE_VALIDATION);
-         }
-      }
-      
-      private function showIcon(param1:String) : void
-      {
-         this.icons.showIcon(param1);
-         this.iconsHovered.showIcon(param1);
-      }
-      
-      private function updateKeyVisibility() : void
-      {
-         var _loc1_:Boolean = this._buttonVisualState == RADIAL_MENU_CONSTS.NORMAL_BUTTON_STATE;
-         var _loc2_:Boolean = this._keyStr != DEFAULT_NONE_KEY && _loc1_;
-         var _loc3_:Boolean = _loc2_ && !this._hasButtonCustomIcon;
-         this.content.setKeyVisibility(_loc3_);
-         this.contentHovered.setKeyVisibility(_loc3_);
-         this.content.customButtonIcon.visible = this.contentHovered.customButtonIcon.visible = _loc2_ && this._hasButtonCustomIcon;
-      }
-      
-      public function set icon(param1:String) : void
-      {
-         this.showIcon(param1);
-      }
-      
-      public function set hotKey(param1:String) : void
-      {
-         if(this._keyStr != param1)
-         {
-            this._keyStr = param1;
-            this._hasButtonCustomIcon = BUTTONS_WITH_CUSTOM_ICON.indexOf(param1) >= 0 && param1 != DEFAULT_NONE_KEY;
-            invalidate(KEY_VALIDATION);
-         }
-      }
-      
-      public function get buttonVisualState() : String
-      {
-         return this._buttonVisualState;
-      }
-      
-      public function set buttonVisualState(param1:String) : void
-      {
-         if(param1 != this._buttonVisualState)
-         {
-            this._buttonVisualState = param1;
-            invalidate(VISUAL_STATE_VALIDATION);
-         }
-      }
-      
-      public function set angle(param1:Number) : void
-      {
-         if(this._angle != param1)
-         {
-            this._angle = param1;
-            invalidate(ANGLE_VALIDATION);
-         }
-      }
-      
       public function set state(param1:String) : void
       {
          if(this._buttonVisualState == RADIAL_MENU_CONSTS.EMPTY_BUTTON_STATE || this._buttonVisualState == RADIAL_MENU_CONSTS.DISABLED_BUTTON_STATE)
@@ -257,6 +233,30 @@ package net.wg.gui.battle.views.radialMenu
          this.icons.setState(param1);
          this.iconsHovered.setState(param1);
          this.sectorWrapperHovered.setLightState(param1);
+      }
+      
+      private function updateKeyVisibility() : void
+      {
+         var _loc1_:Boolean = this._buttonVisualState == RADIAL_MENU_CONSTS.NORMAL_BUTTON_STATE;
+         var _loc2_:Boolean = this._keyStr != DEFAULT_NONE_KEY && _loc1_;
+         var _loc3_:Boolean = _loc2_ && !this._hasButtonCustomIcon;
+         this.content.setKeyVisibility(_loc3_);
+         this.contentHovered.setKeyVisibility(_loc3_);
+         this.content.customButtonIcon.visible = this.contentHovered.customButtonIcon.visible = _loc2_ && this._hasButtonCustomIcon;
+      }
+      
+      override protected function onDispose() : void
+      {
+         this.sectorWrapper.dispose();
+         this.sectorWrapperHovered.dispose();
+         this.sectorWrapper = null;
+         this.sectorWrapperHovered = null;
+         this.icons = null;
+         this.iconsHovered = null;
+         this.content = null;
+         this.contentHovered = null;
+         this.hitAreaSpr = null;
+         super.onDispose();
       }
    }
 }

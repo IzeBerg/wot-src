@@ -5,7 +5,6 @@ package net.wg.gui.battle.views.ribbonsPanel
    import flash.text.TextField;
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.generated.ATLAS_CONSTANTS;
-   import net.wg.data.constants.generated.BATTLE_EFFICIENCY_TYPES;
    import net.wg.gui.battle.views.ribbonsPanel.data.RibbonAnimationStates;
    import net.wg.gui.components.ribbon.RibbonIcons;
    import net.wg.gui.components.ribbon.RibbonTexts;
@@ -193,38 +192,10 @@ package net.wg.gui.battle.views.ribbonsPanel
          return false;
       }
       
-      private function isBuff() : Boolean
-      {
-         var _loc1_:int = BATTLE_EFFICIENCY_TYPES.BUFFS_SET.length;
-         var _loc2_:int = 0;
-         while(_loc2_ < _loc1_)
-         {
-            if(BATTLE_EFFICIENCY_TYPES.BUFFS_SET[_loc2_] == this.ribbonType)
-            {
-               return true;
-            }
-            _loc2_++;
-         }
-         return false;
-      }
-      
-      private function isEventAction() : Boolean
-      {
-         return BATTLE_EFFICIENCY_TYPES.EVENT_SET.indexOf(this.ribbonType) != -1;
-      }
-      
       public function setSettings(param1:Boolean, param2:Boolean, param3:Boolean) : void
       {
-         if(this.isBuff() || this.isEventAction())
-         {
-            this._texts.setSettings(param1,true,true);
-            this._icons.setSettings(true,true);
-         }
-         else
-         {
-            this._texts.setSettings(param1,param2,param3);
-            this._icons.setSettings(param2,param3);
-         }
+         this._texts.setSettings(param1,param2,param3);
+         this._icons.setSettings(param2,param3);
          this._bonus.setSettings(param1);
          this._isExtendedAnim = param1;
          if(param1)

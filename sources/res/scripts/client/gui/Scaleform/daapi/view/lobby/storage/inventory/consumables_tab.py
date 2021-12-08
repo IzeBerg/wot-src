@@ -1,4 +1,3 @@
-from constants import EVENT_BATTLES_TAG
 from gui.Scaleform.daapi.view.lobby.store.browser.shop_helpers import getBuyEquipmentUrl
 from gui.Scaleform.daapi.view.lobby.storage.inventory.filters.filter_by_type import FiltrableRegularCategoryByTypeTabView
 from gui.impl.gen import R
@@ -59,5 +58,4 @@ class ConsumablesTabView(FiltrableRegularCategoryByTypeTabView):
 
     def _getRequestCriteria(self, invVehicles):
         criteria = REQ_CRITERIA.INVENTORY
-        criteria |= ~REQ_CRITERIA.EQUIPMENT.HAS_TAGS([EVENT_BATTLES_TAG])
         return criteria

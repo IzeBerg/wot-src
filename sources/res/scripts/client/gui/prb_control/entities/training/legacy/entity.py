@@ -78,7 +78,7 @@ class TrainingIntroEntity(LegacyIntroEntity):
         if not woEvents:
             aliasToLoad = [
              PREBATTLE_ALIASES.TRAINING_LIST_VIEW_PY, PREBATTLE_ALIASES.TRAINING_ROOM_VIEW_PY]
-            if not self.canSwitch(ctx) and g_eventDispatcher.needToLoadHangar(ctx, self.getModeFlags(), aliasToLoad) and not ctx.hasFlags(FUNCTIONAL_FLAG.LOAD_PAGE):
+            if not self.canSwitch(ctx) and g_eventDispatcher.needToLoadHangar(ctx, self.getModeFlags(), aliasToLoad):
                 g_eventDispatcher.loadHangar()
             g_eventDispatcher.removeTrainingFromCarousel()
         else:
@@ -153,7 +153,7 @@ class TrainingEntity(LegacyEntity):
         if not woEvents:
             aliasToLoad = [
              PREBATTLE_ALIASES.TRAINING_LIST_VIEW_PY, PREBATTLE_ALIASES.TRAINING_ROOM_VIEW_PY]
-            if not self.canSwitch(ctx) and g_eventDispatcher.needToLoadHangar(ctx, self.getModeFlags(), aliasToLoad) and (ctx is None or not ctx.hasFlags(FUNCTIONAL_FLAG.LOAD_PAGE)):
+            if not self.canSwitch(ctx) and g_eventDispatcher.needToLoadHangar(ctx, self.getModeFlags(), aliasToLoad):
                 g_eventDispatcher.loadHangar()
             g_eventDispatcher.removeTrainingFromCarousel(False)
             self.storage.suspend()

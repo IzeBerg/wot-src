@@ -14,8 +14,6 @@ package net.wg.gui.components.ribbon.constants
       public static const YELLOW:String = "yellow";
       
       public static const PURPLE:String = "purple";
-      
-      public static const BUFFS:String = "buffs";
        
       
       public function RibbonColors()

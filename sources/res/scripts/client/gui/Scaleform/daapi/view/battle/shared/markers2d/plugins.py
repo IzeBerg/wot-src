@@ -1,4 +1,4 @@
-import logging, math
+import logging
 from collections import defaultdict
 from functools import partial
 import BattleReplay, BigWorld, Math, constants
@@ -122,9 +122,6 @@ class MarkerPlugin(IPlugin):
     def _setMarkerSticky(self, markerID, isSticky):
         self._parentObj.setMarkerSticky(markerID, isSticky)
 
-    def _markerSetCustomStickyRadiusScale(self, markerID, scale):
-        self._parentObj.markerSetCustomStickyRadiusScale(markerID, scale)
-
     def _setMarkerRenderInfo(self, markerID, minScale, offset, innerOffset, cullDistance, boundsMinScale):
         self._parentObj.setMarkerRenderInfo(markerID, minScale, offset, innerOffset, cullDistance, boundsMinScale)
 
@@ -244,9 +241,6 @@ class ChatCommunicationComponent(IPlugin):
     def _getMarkerFromTargetID(self, targetID, markerType):
         raise NotImplementedError
 
-    def _invokeMarker(self, markerID, function, *args):
-        raise NotImplementedError
-
     def _onReplyFeedbackReceived(self, targetID, replierID, markerType, oldReplyCount, newReplyCount):
         marker = self._getMarkerFromTargetID(targetID, markerType)
         if marker is not None:
@@ -262,7 +256,7 @@ class ChatCommunicationComponent(IPlugin):
             else:
                 isRepliedByPlayer = count > oldReplyCount
             marker.setIsRepliedByPlayer(isRepliedByPlayer)
-            self._invokeMarker(markerID, 'triggerClickAnimation')
+            self._parentObj.invokeMarker(markerID, 'triggerClickAnimation')
         if oldReplyCount != count and (oldReplyCount == 0 or count == 0):
             self._setMarkerReplied(marker, count > 0)
         self._setMarkerReplyCount(marker, count)
@@ -288,26 +282,26 @@ class ChatCommunicationComponent(IPlugin):
 
     def _setMarkerReplied(self, marker, isReplied):
         if marker.getIsReplied() != isReplied:
-            self._invokeMarker(marker.getMarkerID(), 'setMarkerReplied', isReplied)
+            self._parentObj.invokeMarker(marker.getMarkerID(), 'setMarkerReplied', isReplied)
             marker.setIsReplied(isReplied)
 
     def _setMarkerReplyCount(self, marker, replyCount):
         if marker.getReplyCount() != replyCount:
-            self._invokeMarker(marker.getMarkerID(), 'setReplyCount', replyCount)
+            self._parentObj.invokeMarker(marker.getMarkerID(), 'setReplyCount', replyCount)
             marker.setReplyCount(replyCount)
 
     def _setActiveState(self, marker, state):
         markerID = marker.getMarkerID()
         if state is None:
             state = marker.getState()
-        self._invokeMarker(markerID, 'setActiveState', state.value)
+        self._parentObj.invokeMarker(markerID, 'setActiveState', state.value)
         return
 
 
 class VehicleMarkerTargetPlugin(MarkerPlugin, IArenaVehiclesController):
     __slots__ = ('_markers', '_vehicleID', '_showExtendedInfo', '_markersStates', '_clazz',
                  '__markerType', '__markerBaseAimMarker2D', '__markerAltAimMarker2D',
-                 '__arenaDP')
+                 '__arenaDP', '__baseMarker', '__altMarker')
 
     def __init__(self, parentObj, clazz=markers.VehicleTargetMarker):
         super(VehicleMarkerTargetPlugin, self).__init__(parentObj)
@@ -320,6 +314,8 @@ class VehicleMarkerTargetPlugin(MarkerPlugin, IArenaVehiclesController):
         self.__markerBaseAimMarker2D = VehicleMarkerSetting.OPTIONS.getOptionName(VehicleMarkerSetting.OPTIONS.TYPES.BASE, VehicleMarkerSetting.OPTIONS.PARAMS.AIM_MARKER_2D)
         self.__markerAltAimMarker2D = VehicleMarkerSetting.OPTIONS.getOptionName(VehicleMarkerSetting.OPTIONS.TYPES.ALT, VehicleMarkerSetting.OPTIONS.PARAMS.AIM_MARKER_2D)
         self.__arenaDP = None
+        self.__baseMarker = None
+        self.__altMarker = None
         return
 
     def start(self):
@@ -336,7 +332,9 @@ class VehicleMarkerTargetPlugin(MarkerPlugin, IArenaVehiclesController):
         add = g_eventBus.addListener
         add(GameEvent.ADD_AUTO_AIM_MARKER, self.__addAutoAimMarker, scope=settings.SCOPE)
         add(GameEvent.HIDE_AUTO_AIM_MARKER, self._hideAllMarkers, scope=settings.SCOPE)
-        add(GameEvent.SHOW_EXTENDED_INFO, self.__ShowExtendedInfo, scope=settings.SCOPE)
+        add(GameEvent.SHOW_EXTENDED_INFO, self.__showExtendedInfo, scope=settings.SCOPE)
+        self.__baseMarker = self.settingsCore.getSetting(MARKERS.ENEMY).get(self.__markerBaseAimMarker2D)
+        self.__altMarker = self.settingsCore.getSetting(MARKERS.ENEMY).get(self.__markerAltAimMarker2D)
         self.settingsCore.onSettingsChanged += self.__onSettingsChanged
         return
 
@@ -355,7 +353,9 @@ class VehicleMarkerTargetPlugin(MarkerPlugin, IArenaVehiclesController):
         remove = g_eventBus.removeListener
         remove(GameEvent.ADD_AUTO_AIM_MARKER, self.__addAutoAimMarker, scope=settings.SCOPE)
         remove(GameEvent.HIDE_AUTO_AIM_MARKER, self._hideAllMarkers, scope=settings.SCOPE)
-        remove(GameEvent.SHOW_EXTENDED_INFO, self.__ShowExtendedInfo, scope=settings.SCOPE)
+        remove(GameEvent.SHOW_EXTENDED_INFO, self.__showExtendedInfo, scope=settings.SCOPE)
+        self.__baseMarker = None
+        self.__altMarker = None
         self.settingsCore.onSettingsChanged -= self.__onSettingsChanged
         self.sessionProvider.removeArenaCtrl(self)
         super(VehicleMarkerTargetPlugin, self).stop()
@@ -438,9 +438,9 @@ class VehicleMarkerTargetPlugin(MarkerPlugin, IArenaVehiclesController):
         vehicle = event.ctx.get('vehicle')
         self._vehicleID = vehicle.id if vehicle is not None else None
         if self._showExtendedInfo:
-            if self.settingsCore.getSetting(MARKERS.ENEMY).get(self.__markerAltAimMarker2D):
+            if self.__altMarker:
                 self._addMarker(self._vehicleID)
-        elif self.settingsCore.getSetting(MARKERS.ENEMY).get(self.__markerBaseAimMarker2D):
+        elif self.__baseMarker:
             self._addMarker(self._vehicleID)
         return
 
@@ -455,15 +455,17 @@ class VehicleMarkerTargetPlugin(MarkerPlugin, IArenaVehiclesController):
                 self._addMarker(self._vehicleID)
             elif isMarkerEnabled is False:
                 self._hideAllMarkers(clearVehicleID=False)
+            self.__baseMarker = diff[MARKERS.ENEMY].get(self.__markerBaseAimMarker2D)
+            self.__altMarker = diff[MARKERS.ENEMY].get(self.__markerAltAimMarker2D)
 
-    def __ShowExtendedInfo(self, event):
+    def __showExtendedInfo(self, event):
         isDown = event.ctx['isDown']
         self._showExtendedInfo = isDown if isDown is not None else False
         self._hideAllMarkers(clearVehicleID=False)
         if self._showExtendedInfo:
-            if self.settingsCore.getSetting(MARKERS.ENEMY).get(self.__markerAltAimMarker2D):
+            if self.__altMarker:
                 self._addMarker(self._vehicleID)
-        elif self.settingsCore.getSetting(MARKERS.ENEMY).get(self.__markerBaseAimMarker2D):
+        elif self.__baseMarker:
             self._addMarker(self._vehicleID)
         return
 
@@ -521,14 +523,10 @@ class EquipmentsMarkerPlugin(MarkerPlugin):
         super(EquipmentsMarkerPlugin, self).stop()
         return
 
-    def _getSymbolName(self):
-        return settings.MARKER_SYMBOL_NAME.EQUIPMENT_MARKER
-
     def __onEquipmentMarkerShown(self, item, position, _, delay):
-        markerID = self._createMarkerWithPosition(self._getSymbolName(), position + settings.MARKER_POSITION_ADJUSTMENT)
-        self._invokeMarker(markerID, 'init', item.getMarker(), _EQUIPMENT_DELAY_FORMAT.format(math.ceil(delay)), self.__defaultPostfix)
-        firstUpdateTime = delay - math.floor(delay)
-        self.__setCallback(markerID, BigWorld.serverTime() + delay, firstUpdateTime)
+        markerID = self._createMarkerWithPosition(settings.MARKER_SYMBOL_NAME.EQUIPMENT_MARKER, position + settings.MARKER_POSITION_ADJUSTMENT)
+        self._invokeMarker(markerID, 'init', item.getMarker(), _EQUIPMENT_DELAY_FORMAT.format(round(delay)), self.__defaultPostfix)
+        self.__setCallback(markerID, round(BigWorld.serverTime() + delay))
 
     def __setCallback(self, markerID, finishTime, interval=_EQUIPMENT_DEFAULT_INTERVAL):
         self.__callbackIDs[markerID] = BigWorld.callback(interval, partial(self.__handleCallback, markerID, finishTime))
@@ -719,12 +717,12 @@ class AreaStaticMarkerPlugin(MarkerPlugin, ChatCommunicationComponent):
 
 
 class TeamsOrControlsPointsPlugin(MarkerPlugin, ChatCommunicationComponent):
-    __slots__ = ('_personalTeam', '_markers', '_clazz')
+    __slots__ = ('__personalTeam', '_markers', '__clazz')
 
     def __init__(self, parentObj, clazz=BaseMarker):
         super(TeamsOrControlsPointsPlugin, self).__init__(parentObj)
-        self._personalTeam = 0
-        self._clazz = clazz
+        self.__personalTeam = 0
+        self.__clazz = clazz
         self._markers = {}
 
     def start(self):
@@ -781,7 +779,7 @@ class TeamsOrControlsPointsPlugin(MarkerPlugin, ChatCommunicationComponent):
             return DefaultMarkerSubType.ENEMY_MARKER_SUBTYPE
 
     def _restart(self):
-        self._personalTeam = self.sessionProvider.getArenaDP().getNumberOfTeam()
+        self.__personalTeam = self.sessionProvider.getArenaDP().getNumberOfTeam()
         self.__removeExistingMarkers()
         self.__addTeamBasePositions()
         self.__addControlPoints()
@@ -809,7 +807,7 @@ class TeamsOrControlsPointsPlugin(MarkerPlugin, ChatCommunicationComponent):
         self._invokeMarker(markerID, 'setIdentifier', RANDOM_BATTLE_BASE_ID)
         self._invokeMarker(markerID, 'setActive', True)
         self._setMarkerRenderInfo(markerID, _BASE_MARKER_MIN_SCALE, _BASE_MARKER_BOUNDS, _INNER_BASE_MARKER_BOUNDS, _STATIC_MARKER_CULL_DISTANCE, _BASE_MARKER_BOUND_MIN_SCALE)
-        marker = self._clazz(markerID, True, owner)
+        marker = self.__clazz(markerID, True, owner)
         self._markers[baseOrControlPointID] = marker
         marker.setState(ReplyStateForMarker.NO_ACTION)
         self._setActiveState(marker, marker.getState())
@@ -819,7 +817,7 @@ class TeamsOrControlsPointsPlugin(MarkerPlugin, ChatCommunicationComponent):
     def __addTeamBasePositions(self):
         positions = self.sessionProvider.arenaVisitor.type.getTeamBasePositionsIterator()
         for team, position, number in positions:
-            if team == self._personalTeam:
+            if team == self.__personalTeam:
                 owner = 'ally'
             else:
                 owner = 'enemy'

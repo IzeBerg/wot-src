@@ -21,7 +21,5 @@ package net.wg.infrastructure.base.meta
       function as_showVictimDogTag(param1:Object) : void;
       
       function as_preloadComponents(param1:Array) : void;
-      
-      function as_showHint(param1:Boolean) : void;
    }
 }

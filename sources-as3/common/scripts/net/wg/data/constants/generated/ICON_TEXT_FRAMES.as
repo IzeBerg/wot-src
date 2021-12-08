@@ -74,12 +74,6 @@ package net.wg.data.constants.generated
       public static const RANKED_POINTS:String = "rankedPoints";
       
       public static const BONUS_BATTLE:String = "bonusBattle";
-      
-      public static const HW20_EVENT_COIN:String = "HW20EventCoin";
-      
-      public static const HW21_EVENT_COIN:String = "HW21EventCoin";
-      
-      public static const ATTENTION1:String = "attention1";
        
       
       public function ICON_TEXT_FRAMES()

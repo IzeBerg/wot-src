@@ -6,7 +6,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
    import net.wg.data.constants.Errors;
    import net.wg.data.constants.InvalidationType;
    import net.wg.data.constants.Linkages;
-   import net.wg.data.constants.Values;
    import net.wg.gui.battle.components.BattleUIComponent;
    
    public class HPBarPlayersPanelListItem extends BattleUIComponent
@@ -39,14 +38,13 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       private var _percentHP:int = -1;
       
-      private var _hpBarHeight:int = 0;
+      private var _hpBarHeight:int = 24;
       
       private var _offsetY:int = 0;
       
       public function HPBarPlayersPanelListItem()
       {
          super();
-         this._hpBarHeight = DEFAULT_HEIGHT;
       }
       
       override protected function onDispose() : void
@@ -113,20 +111,29 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       public function updateHP(param1:int) : void
       {
-         this._percentHP = param1;
-         invalidateData();
+         if(this._percentHP != param1)
+         {
+            this._percentHP = param1;
+            invalidateData();
+         }
       }
       
       public function setVehicleIconX(param1:int) : void
       {
-         this._vehicleIconX = param1;
-         invalidateData();
+         if(this._vehicleIconX != param1)
+         {
+            this._vehicleIconX = param1;
+            invalidateData();
+         }
       }
       
       public function setParentX(param1:int) : void
       {
-         this._parentX = param1;
-         invalidateData();
+         if(this._parentX != param1)
+         {
+            this._parentX = param1;
+            invalidateData();
+         }
       }
       
       public function setHPBarHeight(param1:int) : void
@@ -149,7 +156,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       public function updateBarColor(param1:Boolean, param2:Boolean = false) : void
       {
-         var _loc3_:String = Values.EMPTY_STR;
+         var _loc3_:String = null;
          if(param2)
          {
             _loc3_ = Linkages.YELLOW_HP_BAR;
@@ -182,9 +189,12 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       public function setRightAligned(param1:Boolean) : void
       {
-         this._isRightAligned = param1;
-         this._vehicleIconDistance = !!this._isRightAligned ? int(DISTANCE_TO_VEHICLE_ICON) : int(-DISTANCE_TO_VEHICLE_ICON);
-         invalidateData();
+         if(this._isRightAligned != param1)
+         {
+            this._isRightAligned = param1;
+            this._vehicleIconDistance = !!this._isRightAligned ? int(DISTANCE_TO_VEHICLE_ICON) : int(-DISTANCE_TO_VEHICLE_ICON);
+            invalidateData();
+         }
       }
    }
 }

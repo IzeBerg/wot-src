@@ -61,11 +61,10 @@ class ComponentFilter(object):
 
 class SubFilter(object):
 
-    def __init__(self, nationIDs, vehTypeFilter, moduleFilters, vehiclesNames=None):
+    def __init__(self, nationIDs, vehTypeFilter, moduleFilters):
         self._nationIDs = nationIDs
         self._typeFilter = vehTypeFilter
         self._compFilters = moduleFilters
-        self._vehicleNames = vehiclesNames
 
     def __str__(self):
         info = ('{}: nationIDs = {}, typeFilter = {}').format(self.__class__.__name__, self._nationIDs, str(self._typeFilter))
@@ -81,19 +80,12 @@ class SubFilter(object):
         return self._nationIDs
 
     @property
-    def vehicleNames(self):
-        return self._vehicleNames
-
-    @property
     def vehTypeFilter(self):
         return self._typeFilter
 
     def isVehTypeCompatible(self, vehicleType):
         nationID = vehicleType.id[0]
         if self._nationIDs and nationID not in self._nationIDs:
-            return False
-        vehicleName = vehicleType.name
-        if self.vehicleNames and vehicleName not in self.vehicleNames:
             return False
         return self._typeFilter.isItemCompatible(vehicleType)
 
@@ -107,21 +99,14 @@ class SubFilter(object):
 
     @staticmethod
     def readSubFilter(xmlCtx, filterSection):
-        filterNations, vehTypeFilter, moduleFilters, filterVehs = SubFilter._readSubFilterInfo(xmlCtx, filterSection)
-        return SubFilter(filterNations, vehTypeFilter, moduleFilters, filterVehs)
+        filterNations, vehTypeFilter, moduleFilters = SubFilter._readSubFilterInfo(xmlCtx, filterSection)
+        return SubFilter(filterNations, vehTypeFilter, moduleFilters)
 
     @staticmethod
     def _readSubFilterInfo(xmlCtx, filterSection):
         vehTypeFilter = None
         moduleFilters = {}
         filterNations = set()
-        filterVehicles = set()
-        vehiclesSection = filterSection['vehicles']
-        if vehiclesSection is not None:
-            vahiclesNames = vehiclesSection.asString
-            for name in vahiclesNames.split():
-                filterVehicles.add(name)
-
         nationsSection = filterSection['nations']
         if nationsSection is not None:
             nationNames = nationsSection.asString
@@ -152,7 +137,7 @@ class SubFilter(object):
                     _xml.raiseWrongXml(ctx, '', ('unknown section name ({})').format(componentName))
 
         return (
-         filterNations, vehTypeFilter, moduleFilters, filterVehicles)
+         filterNations, vehTypeFilter, moduleFilters)
 
 
 class VehicleFilter(object):

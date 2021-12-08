@@ -49,6 +49,9 @@ class FullScreenDialogBaseView(ViewImpl):
         self.__result = result
         self.__event.set()
 
+    def stopWaiting(self, result):
+        self._setResult(result)
+
 
 class FullScreenDialogView(FullScreenDialogBaseView, typing.Generic[TViewModel]):
     __slots__ = ('_stats', )
@@ -141,8 +144,8 @@ class FullScreenDialogWindowWrapper(LobbyWindow):
     __slots__ = ('_wrappedView', '_blur', '_doBlur')
     __gui = dependency.descriptor(IGuiLoader)
 
-    def __init__(self, wrappedView, parent=None, doBlur=True):
-        super(FullScreenDialogWindowWrapper, self).__init__(DialogFlags.TOP_FULLSCREEN_WINDOW, content=wrappedView, parent=parent)
+    def __init__(self, wrappedView, parent=None, doBlur=True, **kwargs):
+        super(FullScreenDialogWindowWrapper, self).__init__(DialogFlags.TOP_FULLSCREEN_WINDOW, content=wrappedView, parent=parent, **kwargs)
         self._wrappedView = wrappedView
         self._blur = None
         self._doBlur = doBlur
@@ -156,11 +159,14 @@ class FullScreenDialogWindowWrapper(LobbyWindow):
     def wait(self):
         return self._wrappedView.wait()
 
+    def stopWaiting(self, result):
+        self._wrappedView.stopWaiting(result)
+
     @classmethod
-    def createIfNotExist(cls, layoutID, wrappedViewClass, parent=None, doBlur=True, *args, **kwargs):
+    def createIfNotExist(cls, layoutID, wrappedViewClass, parent=None, *args, **kwargs):
         currentView = cls.__gui.windowsManager.getViewByLayoutID(layoutID)
         if currentView is None:
-            return FullScreenDialogWindowWrapper(wrappedViewClass(*args, **kwargs), parent, doBlur)
+            return FullScreenDialogWindowWrapper(wrappedViewClass(*args, **kwargs), parent)
         else:
             return
 

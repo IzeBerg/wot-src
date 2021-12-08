@@ -176,10 +176,7 @@ package net.wg.gui.components.carousels
       
       override protected function completeScroll() : void
       {
-         if(this.tooltipDecorator != null)
-         {
-            this.tooltipDecorator.enabled = true;
-         }
+         this.tooltipDecorator.enabled = true;
          super.completeScroll();
       }
       

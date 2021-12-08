@@ -111,6 +111,11 @@ package net.wg.gui.battle.random.views.stats.components.playersPanel.list
          this.inviteReceivedIndicator.visible = state == PLAYERS_PANEL_STATE.HIDDEN && this._isInviteReceived;
       }
       
+      override public function get isInviteReceived() : Boolean
+      {
+         return this._isInviteReceived;
+      }
+      
       override protected function onPlayersListItemRightClick(param1:PlayersPanelItemEvent) : void
       {
          super.onPlayersListItemRightClick(param1);
@@ -118,11 +123,6 @@ package net.wg.gui.battle.random.views.stats.components.playersPanel.list
          var _loc3_:PlayersPanelDynamicSquad = IRandomPlayersPanelListItem(param1.playersListItem).getDynamicSquad();
          _loc3_.onItemOut();
          dispatchEvent(new PlayersPanelListEvent(PlayersPanelListEvent.ITEM_CONTEXT_MENU_OPEN,_loc2_.vehicleID));
-      }
-      
-      override public function get isInviteReceived() : Boolean
-      {
-         return this._isInviteReceived;
       }
    }
 }

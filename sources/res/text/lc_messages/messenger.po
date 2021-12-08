@@ -10,9 +10,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "battle/hints/changeReceiver"
-msgstr "..."
-
 msgid "battle/history/downMessage"
 msgstr "перейти к новым сообщениям"
 
@@ -271,12 +268,6 @@ msgstr "%s не может отправлять вам голосовые соо
 
 msgid "client/information/unsetMuted/message"
 msgstr "%s может отправлять вам голосовые сообщения."
-
-msgid "client/warning/AFKWarning/message"
-msgstr ""
-"Бездействие приравнивается к дезертирству\n"
-"и жёстко наказывается! Для победы нужны\n"
-"усилия всех членов команды!"
 
 msgid "client/warning/emptyUserSearchToken/message"
 msgstr "Задан пустой запрос"
@@ -878,45 +869,6 @@ msgstr "Выберите специальную машину"
 msgid "dialogs/simpleSquad/epicBattle/VehicleRestriction"
 msgstr "Выберите машину VIII уровня"
 
-msgid "dialogs/simpleSquad/recommendationLevel"
-msgstr "Рекомендовать игроков"
-
-msgid "dialogs/squadChannel/battleType"
-msgstr "Режим боя:"
-
-msgid "dialogs/squadChannel/battleTypeDomination"
-msgstr "Случайный бой"
-
-msgid "dialogs/squadChannel/bonuses/credits"
-msgstr "К кредитам"
-
-msgid "dialogs/squadChannel/bonuses/experience"
-msgstr "К опыту"
-
-msgid "dialogs/squadChannel/buttons/afk"
-msgstr "Перерыв"
-
-msgid "dialogs/squadChannel/buttons/dismiss"
-msgstr "Покинуть взвод"
-
-msgid "dialogs/squadChannel/buttons/invite"
-msgstr "Пригласить игроков"
-
-msgid "dialogs/squadChannel/buttons/leave"
-msgstr "Выйти из взвода"
-
-msgid "dialogs/squadChannel/buttons/notReady"
-msgstr "Не готов"
-
-msgid "dialogs/squadChannel/buttons/ready"
-msgstr "Готов!"
-
-msgid "dialogs/squadChannel/buttons/recommend"
-msgstr "Рекомендовать игроков"
-
-msgid "dialogs/squadChannel/context/kickPlayer"
-msgstr "Исключить из взвода"
-
 msgid "dialogs/squadChannel/headerMsg/battleRoyaleHint"
 msgstr "Основная задача — остаться последним выжившим взводом."
 
@@ -927,8 +879,8 @@ msgstr ""
 
 msgid "dialogs/squadChannel/headerMsg/eventFormationRestriction"
 msgstr ""
-"Режим боя:\n"
-"«Мирный: Надежда»‎"
+"+++ event +++\n"
+"+++ event +++"
 
 msgid "dialogs/squadChannel/headerMsg/squadFormation"
 msgstr ""
@@ -939,12 +891,6 @@ msgid "dialogs/squadChannel/headerMsg/squadFormationRestriction"
 msgstr ""
 "Играйте на технике одного уровня\n"
 "начиная с IV и получайте больше опыта"
-
-msgid "dialogs/squadChannel/messege/noPremium"
-msgstr ""
-"Пригласить во взвод третьего\n"
-"игрока возможно только при\n"
-"действующем премиум аккаунте."
 
 msgid "dialogs/squadChannel/simpleChatAlert/anonymizer"
 msgstr ""
@@ -1289,10 +1235,19 @@ msgstr "Настройки"
 msgid "personalMissions/completionTokenGain"
 msgstr "Добавлен компонент"
 
-msgid "platformCurrencyMsg/debited/sacoin"
+msgid "platformCurrencyMsg/currencyUpdate/debited/sacoin"
 msgstr "Списано жетонов за выслугу лет"
 
-msgid "platformCurrencyMsg/received/sacoin"
+msgid "platformCurrencyMsg/currencyUpdate/received/sacoin"
+msgstr "Добавлено жетонов за выслугу лет"
+
+msgid "platformCurrencyMsg/invoice/accrued/sacoin"
+msgstr "Добавлено жетонов за выслугу лет"
+
+msgid "platformCurrencyMsg/invoice/debited/sacoin"
+msgstr "Списано жетонов за выслугу лет"
+
+msgid "platformCurrencyMsg/sacoin"
 msgstr "Добавлено жетонов за выслугу лет"
 
 msgid "prebattle/addAllBtn/tooltip/body"
@@ -1941,8 +1896,11 @@ msgstr "Добавлено"
 msgid "serviceChannelMessages/battleResults/quests/items/name"
 msgstr "%(name)s (x%(count)s)"
 
-msgid "serviceChannelMessages/battleResults/quests/items/singleName"
-msgstr "%(name)s"
+msgid "serviceChannelMessages/battleResults/quests/nyBoxes"
+msgstr "Малые коробки: (x%(count)s)"
+
+msgid "serviceChannelMessages/battleResults/quests/nyGiftStamps"
+msgstr "Праздничные марки: (x%(count)s)"
 
 msgid "serviceChannelMessages/battleResults/quests/premium"
 msgstr "Добавлено дней Общего премиум аккаунта"
@@ -1959,6 +1917,9 @@ msgstr "%(count)s ежедневных"
 msgid ""
 "serviceChannelMessages/battleResults/quests/rankedBonusBattles/persistent"
 msgstr "%(count)s стандартных"
+
+msgid "serviceChannelMessages/battleResults/quests/variadicDiscount"
+msgstr "Добавлена скидка %(discount)s%% на технику %(level)s уровня"
 
 msgid "serviceChannelMessages/battleResults/quests/vehicleSlots"
 msgstr "Добавлено слотов"
@@ -2183,6 +2144,9 @@ msgstr "%(label)s x%(count)s"
 msgid "serviceChannelMessages/currencyUpdate/auction"
 msgstr "Аукцион"
 
+msgid "serviceChannelMessages/currencyUpdate/battlepass"
+msgstr "Боевой пропуск"
+
 msgid "serviceChannelMessages/currencyUpdate/date"
 msgstr "Дата"
 
@@ -2197,6 +2161,9 @@ msgstr "Списано бон"
 
 msgid "serviceChannelMessages/currencyUpdate/debited/eventCoin"
 msgstr "Списано юбилейных монет"
+
+msgid "serviceChannelMessages/currencyUpdate/debited/freeXp"
+msgstr "Списано свободного опыта"
 
 msgid "serviceChannelMessages/currencyUpdate/debited/gold"
 msgstr "Списано золота"
@@ -2215,6 +2182,9 @@ msgstr "Получено бон"
 
 msgid "serviceChannelMessages/currencyUpdate/received/eventCoin"
 msgstr "Получено юбилейных монет"
+
+msgid "serviceChannelMessages/currencyUpdate/received/freeXp"
+msgstr "Получено свободного опыта"
 
 msgid "serviceChannelMessages/currencyUpdate/received/gold"
 msgstr "Получено золота"
@@ -2431,55 +2401,8 @@ msgid "serviceChannelMessages/fortificationStartUp"
 msgstr ""
 "На склад командного центра зачислено %(defResCount)s единиц промресурса."
 
-msgid "serviceChannelMessages/goToEventButton"
-msgstr "?empty?"
-
 msgid "serviceChannelMessages/goldReceivedAsGift"
 msgstr "От администрации получено золота: %(gold)s."
-
-msgid "serviceChannelMessages/halloweenHangar/bestdealBought"
-msgstr "Набор куплен"
-
-msgid "serviceChannelMessages/halloweenHangar/buyShopItem"
-msgstr "Товар куплен"
-
-msgid "serviceChannelMessages/halloweenHangar/eventTokenBought"
-msgstr "Начислено ключей дешифровки: %(count)s"
-
-msgid "serviceChannelMessages/halloweenHangar/eventVehicleAcquired"
-msgstr "Машина %(vehicle)s доступна для игры в событии «Мирный: Надежда»."
-
-msgid "serviceChannelMessages/halloweenHangar/halloweenDifficultyLevelReached"
-msgstr "Доступна новая сложность"
-
-msgid ""
-"serviceChannelMessages/halloweenHangar/halloweenDifficultyLevelReachedText"
-msgstr "Вы можете выбрать другую сложность в Ангаре"
-
-msgid "serviceChannelMessages/halloweenHangar/purchased/bundle/gold"
-msgstr ""
-"«%(purchaseName)s» приобретён\n"
-"Списано %(price)s"
-
-msgid "serviceChannelMessages/halloweenHangar/purchased/c11nItem/gold"
-msgstr ""
-"Куплен стиль «%(purchaseName)s»\n"
-"Списано %(price)s"
-
-msgid ""
-"serviceChannelMessages/halloweenHangar/purchased/c11nItem/hw_rewardBoxKey"
-msgstr ""
-"%(purchaseName)s успешно приобретено.\n"
-"Списано ключей дешифровки: %(price)s."
-
-msgid "serviceChannelMessages/halloweenHangar/styleBought"
-msgstr "Стиль куплен"
-
-msgid "serviceChannelMessages/halloweenHangar/styleBundleBought"
-msgstr "Набор стилей куплен"
-
-msgid "serviceChannelMessages/halloweenHangar/vehicleRent"
-msgstr "Танк куплен"
 
 msgid "serviceChannelMessages/invoiceReceived/berthsAccrued"
 msgstr "Добавлены койки в Казарму"
@@ -2652,6 +2575,28 @@ msgstr "Начислено фрагментов чертежей на техн�
 msgid "serviceChannelMessages/invoiceReceived/nationalBlueprintsDebited"
 msgstr "Списано фрагментов чертежей на технику %(nationName)s"
 
+msgid "serviceChannelMessages/invoiceReceived/nyFillersAccrued"
+msgstr "Начислено зарядов: "
+
+msgid "serviceChannelMessages/invoiceReceived/nyFillersDebited"
+msgstr "Списано зарядов: "
+
+msgid "serviceChannelMessages/invoiceReceived/nyFragmentsAccrued"
+msgstr "Начислено осколков: "
+
+msgid "serviceChannelMessages/invoiceReceived/nyFragmentsDebited"
+msgstr "Списано осколков: "
+
+msgid ""
+"serviceChannelMessages/invoiceReceived/nyFragmentsDebitedForAntiduplicator"
+msgstr "За использование антиповторителя списано осколков: %(count)s"
+
+msgid "serviceChannelMessages/invoiceReceived/nyToysAccruedInvoiceReceived"
+msgstr "Начислены украшения: "
+
+msgid "serviceChannelMessages/invoiceReceived/nyToysDebitedInvoiceReceived"
+msgstr "Списаны украшения: "
+
 msgid "serviceChannelMessages/invoiceReceived/pieces"
 msgstr "шт."
 
@@ -2709,6 +2654,9 @@ msgstr "Списано нераспределённого опыта с член
 msgid "serviceChannelMessages/invoiceReceived/tankmenToRemove"
 msgstr "Демобилизованные"
 
+msgid "serviceChannelMessages/invoiceReceived/toyTypeWrapper"
+msgstr "«%(name)s» (x%(count)s)"
+
 msgid "serviceChannelMessages/invoiceReceived/vehicleBlueprintsAccrued"
 msgstr "Начислено фрагментов чертежей на %(vehicleName)s"
 
@@ -2730,7 +2678,7 @@ msgstr ""
 "%(amount)d шт."
 
 msgid "serviceChannelMessages/lootBoxes/button"
-msgstr "К коробкам"
+msgstr "Получить"
 
 msgid "serviceChannelMessages/lootBoxes/footer"
 msgstr "Нажмите кнопку, чтобы перейти к содержимому."
@@ -2743,9 +2691,6 @@ msgstr "«%(name)s» %(colorTagOpen)sx%(count)s%(colorTagClose)s"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/button"
 msgstr "Посмотреть"
-
-msgid "serviceChannelMessages/lootBoxesAutoOpen/counter"
-msgstr "x%(count)s"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/event/boxes"
 msgstr "Открыто порталов: %(boxes)s"
@@ -2769,7 +2714,8 @@ msgstr "Получены награды"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/text"
 msgstr ""
-"Мы открыли за вас коробки и начиcлили награды за «Новогоднее наступление»"
+"Мы открыли за вас коробки и посылки от друзей и начиcлили награды за "
+"«Новогоднее наступление»."
 
 msgid "serviceChannelMessages/mapbox/buttons/toSurvey"
 msgstr "К опросу"
@@ -3058,21 +3004,6 @@ msgstr "Игровой сервер будет отключён %(date)s."
 msgid "serviceChannelMessages/serverRebootCancelled"
 msgstr "Отключение игрового сервера, запланированное %(date)s, отменено."
 
-msgid "serviceChannelMessages/shopSalesEvent/activePhaseFinished"
-msgstr "?empty?"
-
-msgid "serviceChannelMessages/shopSalesEvent/activePhaseStarted"
-msgstr "?empty?"
-
-msgid "serviceChannelMessages/shopSalesEvent/disabledBySwitch"
-msgstr "?empty?"
-
-msgid "serviceChannelMessages/shopSalesEvent/enabledBySwitch"
-msgstr "?empty?"
-
-msgid "serviceChannelMessages/shopSalesEvent/eventFinished"
-msgstr "?empty?"
-
 msgid "serviceChannelMessages/specialReward/intelligenceBlueprints"
 msgstr "Универсальный фрагмент (x%(fragmentsCount)s)"
 
@@ -3233,9 +3164,6 @@ msgstr "Зимняя карта: "
 msgid "serviceChannelMessages/sysMsg/customizations/sell"
 msgstr "%(itemType)s «%(itemName)s», %(count)s шт. Получено %(money)s"
 
-msgid "serviceChannelMessages/sysMsg/message/eventOpenedRewardBox"
-msgstr "Расшифровка плёнки."
-
 msgid "serviceChannelMessages/sysMsg/openCustomization/button"
 msgstr "К внешнему виду"
 
@@ -3252,9 +3180,6 @@ msgstr "Демонтировано:"
 
 msgid "serviceChannelMessages/sysMsg/titles/error"
 msgstr "Ошибка:"
-
-msgid "serviceChannelMessages/sysMsg/titles/eventOpenedRewardBox"
-msgstr "Куплено:"
 
 msgid "serviceChannelMessages/sysMsg/titles/financialTransaction"
 msgstr "Финансовая операция:"

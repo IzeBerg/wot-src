@@ -34,9 +34,23 @@ package net.wg.gui.battle.views.staticMarkers.location
          this._vmManager.addEventListener(VehicleMarkersManagerEvent.SHOW_EX_INFO,this.onShowExInfoHandler);
       }
       
-      public function setCreator(param1:String) : void
+      override protected function onDispose() : void
       {
-         this.marker.setCreatorNameText(param1);
+         this._vmManager.removeEventListener(VehicleMarkersManagerEvent.SHOW_EX_INFO,this.onShowExInfoHandler);
+         this._vmManager = null;
+         this.marker.highlightAnimation.stop();
+         this.marker.highlightAnimation = null;
+         this.marker.hoverShadow = null;
+         this.marker.dispose();
+         this.marker = null;
+         this.greenPoint = null;
+         super.onDispose();
+      }
+      
+      public function activateHover(param1:Boolean) : void
+      {
+         this.marker.hoverShadow.visible = param1;
+         this.marker.setCreatorNameVisible(this._alwaysShowCreatorName);
       }
       
       public function alwaysShowCreatorName(param1:Boolean) : void
@@ -44,31 +58,6 @@ package net.wg.gui.battle.views.staticMarkers.location
          this.marker.setCreatorNameVisible(param1);
          this._alwaysShowCreatorName = param1;
          this.marker.setTextLabelEnabled(!param1);
-      }
-      
-      override protected function onDispose() : void
-      {
-         this.marker.highlightAnimation.stop();
-         this.marker.highlightAnimation = null;
-         this.marker.hoverShadow = null;
-         this.marker.dispose();
-         this.marker = null;
-         this._vmManager.removeEventListener(VehicleMarkersManagerEvent.SHOW_EX_INFO,this.onShowExInfoHandler);
-         this.greenPoint = null;
-         this._vmManager = null;
-         super.onDispose();
-      }
-      
-      private function onShowExInfoHandler(param1:VehicleMarkersManagerEvent) : void
-      {
-         var _loc2_:Boolean = this._vmManager.showExInfo && this._lastActiveState == ActionMarkerStates.PING_CREATE_STATE;
-         this.marker.setCreatorNameVisible(this._alwaysShowCreatorName || _loc2_);
-      }
-      
-      public function activateHover(param1:Boolean) : void
-      {
-         this.marker.hoverShadow.visible = param1;
-         this.marker.setCreatorNameVisible(this._alwaysShowCreatorName);
       }
       
       public function setActiveState(param1:int) : void
@@ -95,6 +84,11 @@ package net.wg.gui.battle.views.staticMarkers.location
          this.onShowExInfoHandler(null);
       }
       
+      public function setCreator(param1:String) : void
+      {
+         this.marker.setCreatorNameText(param1);
+      }
+      
       public function setIsStickyAndOutOfScreen(param1:Boolean) : void
       {
          this._isStickyAndOutOfScreen = param1;
@@ -108,14 +102,20 @@ package net.wg.gui.battle.views.staticMarkers.location
          this.marker.setMarkerReplied(param1);
       }
       
+      public function setReplyCount(param1:int) : void
+      {
+         this.marker.setReplyCount(param1);
+      }
+      
       public function triggerClickAnimation() : void
       {
          this.marker.triggerClickAnimation();
       }
       
-      public function setReplyCount(param1:int) : void
+      private function onShowExInfoHandler(param1:VehicleMarkersManagerEvent) : void
       {
-         this.marker.setReplyCount(param1);
+         var _loc2_:Boolean = this._vmManager.showExInfo && this._lastActiveState == ActionMarkerStates.PING_CREATE_STATE;
+         this.marker.setCreatorNameVisible(this._alwaysShowCreatorName || _loc2_);
       }
    }
 }

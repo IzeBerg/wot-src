@@ -902,12 +902,8 @@ class SYSTEM_MESSAGES(object):
     UNIT_NOTIFICATION_PLAYERONLINE = '#system_messages:unit/notification/playerOnline'
     UNIT_NOTIFICATION_PLAYERADDED = '#system_messages:unit/notification/playerAdded'
     UNIT_NOTIFICATION_PLAYERADDEDWITHFILTER = '#system_messages:unit/notification/playerAddedWithFilter'
-    UNIT_NOTIFICATION_EVENTPLAYERADDED = '#system_messages:unit/notification/eventPlayerAdded'
     UNIT_NOTIFICATION_PLAYERREMOVED = '#system_messages:unit/notification/playerRemoved'
-    UNIT_NOTIFICATION_EVENTPLAYERREMOVED = '#system_messages:unit/notification/eventPlayerRemoved'
     UNIT_NOTIFICATION_GIVELEADERSHIP = '#system_messages:unit/notification/giveLeadership'
-    UNIT_NOTIFICATION_SELECTEDDIFFICULTYLEVEL = '#system_messages:unit/notification/selectedDifficultyLevel'
-    UNIT_NOTIFICATION_NOTREADYDIFFICULTYLEVEL = '#system_messages:unit/notification/notReadyDifficultyLevel'
     UNIT_NOTIFICATION_CHANGEDIVISION = '#system_messages:unit/notification/changeDivision'
     UNIT_NOTIFICATION_DIVISIONTYPE_MIDDLE = '#system_messages:unit/notification/divisionType/MIDDLE'
     UNIT_NOTIFICATION_DIVISIONTYPE_CHAMPION = '#system_messages:unit/notification/divisionType/CHAMPION'
@@ -926,8 +922,6 @@ class SYSTEM_MESSAGES(object):
     UNIT_ERRORS_SWITCH_SIZE_CONSTRAINTS = '#system_messages:unit/errors/SWITCH_SIZE_CONSTRAINTS'
     UNIT_ERRORS_BAD_VEHICLES_SET = '#system_messages:unit/errors/BAD_VEHICLES_SET'
     UNIT_ERRORS_WRONG_VEHICLE = '#system_messages:unit/errors/WRONG_VEHICLE'
-    UNIT_ERRORS_WRONG_DIFFICULTY_LEVEL = '#system_messages:unit/errors/WRONG_DIFFICULTY_LEVEL'
-    UNIT_ERRORS_MISSING_DIFFICULTY_LEVEL = '#system_messages:unit/errors/MISSING_DIFFICULTY_LEVEL'
     IGR_CUSTOMIZATION_BEGIN = '#system_messages:igr/customization/begin'
     IGR_CUSTOMIZATION_END = '#system_messages:igr/customization/end'
     INFO_NOAVAILABLE = '#system_messages:info/noAvailable'
@@ -1131,15 +1125,6 @@ class SYSTEM_MESSAGES(object):
     PROGRESSIVEREWARD_SWITCH_OFF = '#system_messages:progressiveReward/switch_off'
     PROGRESSIVEREWARD_SWITCH_ON = '#system_messages:progressiveReward/switch_on'
     PROGRESSIVEREWARD_ERROR = '#system_messages:progressiveReward/error'
-    EVENT_PROGRESSION_BUY_VEHICLE_SERVER_ERROR = '#system_messages:event_progression_buy_vehicle/server_error'
-    EVENT_PROGRESSION_BUY_VEHICLE_SUCCESS = '#system_messages:event_progression_buy_vehicle/success'
-    EVENT_PROGRESSION_BUY_STYLE_SERVER_ERROR = '#system_messages:event_progression_buy_style/server_error'
-    EVENT_PROGRESSION_BUY_STYLE_SUCCESS = '#system_messages:event_progression_buy_style/success'
-    EVENT_PROGRESSION_BUY_VEHICLE_BUY = '#system_messages:event_progression_buy_vehicle/buy'
-    EVENT_PROGRESSION_REWARD_BOX_ACHIEVED_TITLE = '#system_messages:event_progression_reward_box_achieved/title'
-    EVENT_PROGRESSION_REWARD_BOX_ACHIEVED_BODY = '#system_messages:event_progression_reward_box_achieved/body'
-    EVENT_PROGRESSION_REWARD_BOX_ACHIEVED_FINAL_TITLE = '#system_messages:event_progression_reward_box_achieved/final/title'
-    EVENT_PROGRESSION_REWARD_BOX_ACHIEVED_FINAL_BODY = '#system_messages:event_progression_reward_box_achieved/final/body'
     MAPS_BLACK_LIST_SELECT_SUCCESS = '#system_messages:maps_black_list/select/success'
     MAPS_BLACK_LIST_SELECT_SERVER_ERROR_COOLDOWN = '#system_messages:maps_black_list/select/server_error/COOLDOWN'
     MAPS_BLACK_LIST_SELECT_SERVER_ERROR = '#system_messages:maps_black_list/select/server_error'
@@ -1147,8 +1132,6 @@ class SYSTEM_MESSAGES(object):
     MAPS_BLACK_LIST_SWITCH_OFF_BODY = '#system_messages:maps_black_list/switch_off/body'
     MAPS_BLACK_LIST_SWITCH_ON_TITLE = '#system_messages:maps_black_list/switch_on/title'
     MAPS_BLACK_LIST_SWITCH_ON_BODY = '#system_messages:maps_black_list/switch_on/body'
-    SHOP_SALES_EVENT_SUCCESS = '#system_messages:shop_sales_event/success'
-    SHOP_SALES_EVENT_ERROR = '#system_messages:shop_sales_event/error'
     PREMIUM_QUESTS_SWITCH_OFF_TITLE = '#system_messages:premium_quests/switch_off/title'
     PREMIUM_QUESTS_SWITCH_OFF_BODY = '#system_messages:premium_quests/switch_off/body'
     PREMIUM_QUESTS_SWITCH_ON_TITLE = '#system_messages:premium_quests/switch_on/title'
@@ -1181,6 +1164,27 @@ class SYSTEM_MESSAGES(object):
     NATION_CHANGE_FAILED = '#system_messages:nation_change/FAILED'
     NATION_CHANGE_WRONG_ARG_VALUE = '#system_messages:nation_change/WRONG_ARG_VALUE'
     NATION_CHANGE_ERROR = '#system_messages:nation_change/error'
+    NEWYEAR_CRAFTTOY_SERVER_ERROR = '#system_messages:newYear/craftToy/server_error'
+    NEWYEAR_BUYTOY_SERVER_ERROR = '#system_messages:newYear/buyToy/server_error'
+    NEWYEAR_BUYMEGATOY_SERVER_ERROR = '#system_messages:newYear/buyMegaToy/server_error'
+    NEWYEAR_APPLYVEHICLEDISCOUNT_SUCCESS = '#system_messages:newYear/applyVehicleDiscount/success'
+    NEWYEAR_APPLYVEHICLEDISCOUNT_SERVER_ERROR = '#system_messages:newYear/applyVehicleDiscount/server_error'
+    NEWYEAR_APPLYVEHICLEDISCOUNT_SERVER_ERROR_NODISCOUNTS = '#system_messages:newYear/applyVehicleDiscount/server_error/noDiscounts'
+    NEWYEAR_APPLYVEHICLEDISCOUNT_SERVER_ERROR_ALREADYACTIVE = '#system_messages:newYear/applyVehicleDiscount/server_error/alreadyActive'
+    NEWYEAR_APPLYVEHICLEDISCOUNT_SERVER_ERROR_ALREADYBOUGHT = '#system_messages:newYear/applyVehicleDiscount/server_error/alreadyBought'
+    NEWYEAR_APPLYVEHICLEDISCOUNT_SERVER_ERROR_NODISCOUNTFORVEHICLE = '#system_messages:newYear/applyVehicleDiscount/server_error/noDiscountForVehicle'
+    NEWYEAR_HANGTOY_SERVER_ERROR = '#system_messages:newYear/hangToy/server_error'
+    NEWYEAR_BREAKTOYS_SERVER_ERROR = '#system_messages:newYear/breakToys/server_error'
+    NEWYEAR_SETVEHICLEBRANCH_SERVER_ERROR = '#system_messages:newYear/setVehicleBranch/server_error'
+    NEWYEAR_BUYCOLLECTION_SERVER_ERROR = '#system_messages:newYear/buyCollection/server_error'
+    NEWYEAR_SETVEHICLEBRANCHSLOTBONUS_SERVER_ERROR = '#system_messages:newYear/setVehicleBranchSlotBonus/server_error'
+    NEWYEAR_RESETLOOTBOXSTATISTICS_SERVER_ERROR_HEADER = '#system_messages:newYear/resetLootboxStatistics/server_error/header'
+    NEWYEAR_RESETLOOTBOXSTATISTICS_SERVER_ERROR = '#system_messages:newYear/resetLootboxStatistics/server_error'
+    NEWYEAR_CELEBRITYCHALLENGE_CONGRATULATIONS = '#system_messages:newYear/celebrityChallenge/congratulations'
+    NEWYEAR_CELEBRITYCHALLENGE_SIMPLIFICATION_TITLE = '#system_messages:newYear/celebrityChallenge/simplification/title'
+    NEWYEAR_CELEBRITYCHALLENGE_SIMPLIFICATION_MESSAGE = '#system_messages:newYear/celebrityChallenge/simplification/message'
+    NEWYEAR_CELEBRITYCHALLENGE_PROGRESSREWARD = '#system_messages:newYear/celebrityChallenge/progressReward'
+    NEWYEAR_CELEBRITYCHALLENGE_QUESTREWARD = '#system_messages:newYear/celebrityChallenge/questReward'
     DEMOUNTKIT_RESTORED_SWITCHEDON = '#system_messages:demountKit_restored/switchedOn'
     DEMOUNTKIT_FAILED_SWITCHEDOFF = '#system_messages:demountKit_failed/switchedOff'
     DAILY_QUESTS_SWITCH_OFF_TITLE = '#system_messages:daily_quests/switch_off/title'
@@ -1231,6 +1235,7 @@ class SYSTEM_MESSAGES(object):
     OFFERS_SWITCH_OFF_BODY = '#system_messages:offers/switch_off/body'
     OFFERS_UNAVAILABLE_ONE = '#system_messages:offers/unavailable_one'
     OFFERS_UNAVAILABLE_MANY = '#system_messages:offers/unavailable_many'
+    OFFERS_SERVER_ERROR = '#system_messages:offers/server_error'
     MISSINGEVENTS_BUTTON = '#system_messages:missingEvents/button'
     MISSINGEVENTS_HEADER = '#system_messages:missingEvents/header'
     MISSINGEVENTS_TEXT = '#system_messages:missingEvents/text'
@@ -1271,29 +1276,6 @@ class SYSTEM_MESSAGES(object):
     VEHICLEPOSTPROGRESSION_VEHICLESUNLOCKPOSTPROGRESSION_SINGLE_BODY = '#system_messages:vehiclePostProgression/vehiclesUnlockPostProgression/single/body'
     VEHICLEPOSTPROGRESSION_VEHICLESUNLOCKPOSTPROGRESSION_WELCOMEUNLOCK_BODY = '#system_messages:vehiclePostProgression/vehiclesUnlockPostProgression/welcomeUnlock/body'
     VEHICLEPOSTPROGRESSION_DISCARDALLPAIRSMODIFICATION_BODY = '#system_messages:vehiclePostProgression/discardAllPairsModification/body'
-    HW21_SERVER_ERROR = '#system_messages:hw21/server_error'
-    HW19_OPEN_INTERROGATION_SUCCESS = '#system_messages:hw19_open_interrogation/success'
-    HW19_OPEN_INTERROGATION_SERVER_ERROR = '#system_messages:hw19_open_interrogation/server_error'
-    HW19_OPEN_INTERROGATION_NOT_ENOUGH_TOKENS_TO_OPEN_REWARDBOX = '#system_messages:hw19_open_interrogation/not_enough_tokens_to_open_rewardbox'
-    HW19_OPEN_INTERROGATION_ACCOUNT_HAS_NO_REQUESTED_REWARDBOX = '#system_messages:hw19_open_interrogation/account_has_no_requested_rewardbox'
-    HW19_OPEN_INTERROGATION_QUEST_SKIP_FOR_REQUESTED_REWARDBOX_IS_NOT_ALLOWED = '#system_messages:hw19_open_interrogation/quest_skip_for_requested_rewardbox_is_not_allowed'
-    HW19_DRAW_ENERGY_SERVER_ERROR = '#system_messages:hw19_draw_energy/server_error'
-    HW19_LOCK_ENERGY_SERVER_ERROR = '#system_messages:hw19_lock_energy/server_error'
-    EVENT_AFK_WARNING_HEADER = '#system_messages:event/afk/warning/header'
-    EVENT_AFK_WARNING_BODY = '#system_messages:event/afk/warning/body'
-    EVENT_AFK_BAN_HEADER = '#system_messages:event/afk/ban/header'
-    EVENT_AFK_BAN_BODY = '#system_messages:event/afk/ban/body'
-    EVENT_AFK_BUTTON = '#system_messages:event/afk/button'
-    EVENT_AFK_QUEST_HEADER = '#system_messages:event/afk/quest/header'
-    EVENT_AFK_QUEST_BODY = '#system_messages:event/afk/quest/body'
-    EVENT_AFK_QUEST_QUESTNAME = '#system_messages:event/afk/quest/questName'
-    EVENT_AFK_QUEST_BUTTON = '#system_messages:event/afk/quest/button'
-    EVENT_AFK_ERROR_HEADER = '#system_messages:event/afk/error/header'
-    EVENT_AFK_ERROR_BODY = '#system_messages:event/afk/error/body'
-    EVENT_AFK_UNBAN_HEADER = '#system_messages:event/afk/unban/header'
-    EVENT_AFK_UNBAN_BODY = '#system_messages:event/afk/unban/body'
-    EVENT_AFK_QUESTUNBAN_HEADER = '#system_messages:event/afk/questUnban/header'
-    EVENT_AFK_QUESTUNBAN_BODY = '#system_messages:event/afk/questUnban/body'
     UNIT_NOTIFICATION_DIVISIONTYPE_ENUM = (
      UNIT_NOTIFICATION_DIVISIONTYPE_MIDDLE,
      UNIT_NOTIFICATION_DIVISIONTYPE_CHAMPION,
@@ -1352,9 +1334,7 @@ class SYSTEM_MESSAGES(object):
      UNIT_ERRORS_PREV_RATED_BATTLE_IN_PROGRESS,
      UNIT_ERRORS_SWITCH_SIZE_CONSTRAINTS,
      UNIT_ERRORS_BAD_VEHICLES_SET,
-     UNIT_ERRORS_WRONG_VEHICLE,
-     UNIT_ERRORS_WRONG_DIFFICULTY_LEVEL,
-     UNIT_ERRORS_MISSING_DIFFICULTY_LEVEL)
+     UNIT_ERRORS_WRONG_VEHICLE)
     UNIT_WARNINGS_ENUM = (
      UNIT_WARNINGS_NO_CLAN_MEMBERS,
      UNIT_WARNINGS_CANT_PICK_LEADER,
@@ -1383,12 +1363,8 @@ class SYSTEM_MESSAGES(object):
      UNIT_NOTIFICATION_PLAYERONLINE,
      UNIT_NOTIFICATION_PLAYERADDED,
      UNIT_NOTIFICATION_PLAYERADDEDWITHFILTER,
-     UNIT_NOTIFICATION_EVENTPLAYERADDED,
      UNIT_NOTIFICATION_PLAYERREMOVED,
-     UNIT_NOTIFICATION_EVENTPLAYERREMOVED,
      UNIT_NOTIFICATION_GIVELEADERSHIP,
-     UNIT_NOTIFICATION_SELECTEDDIFFICULTYLEVEL,
-     UNIT_NOTIFICATION_NOTREADYDIFFICULTYLEVEL,
      UNIT_NOTIFICATION_CHANGEDIVISION,
      UNIT_NOTIFICATION_DIVISIONTYPE_MIDDLE,
      UNIT_NOTIFICATION_DIVISIONTYPE_CHAMPION,
@@ -2331,12 +2307,8 @@ class SYSTEM_MESSAGES(object):
      UNIT_NOTIFICATION_PLAYERONLINE,
      UNIT_NOTIFICATION_PLAYERADDED,
      UNIT_NOTIFICATION_PLAYERADDEDWITHFILTER,
-     UNIT_NOTIFICATION_EVENTPLAYERADDED,
      UNIT_NOTIFICATION_PLAYERREMOVED,
-     UNIT_NOTIFICATION_EVENTPLAYERREMOVED,
      UNIT_NOTIFICATION_GIVELEADERSHIP,
-     UNIT_NOTIFICATION_SELECTEDDIFFICULTYLEVEL,
-     UNIT_NOTIFICATION_NOTREADYDIFFICULTYLEVEL,
      UNIT_NOTIFICATION_CHANGEDIVISION,
      UNIT_NOTIFICATION_DIVISIONTYPE_MIDDLE,
      UNIT_NOTIFICATION_DIVISIONTYPE_CHAMPION,
@@ -2355,8 +2327,6 @@ class SYSTEM_MESSAGES(object):
      UNIT_ERRORS_SWITCH_SIZE_CONSTRAINTS,
      UNIT_ERRORS_BAD_VEHICLES_SET,
      UNIT_ERRORS_WRONG_VEHICLE,
-     UNIT_ERRORS_WRONG_DIFFICULTY_LEVEL,
-     UNIT_ERRORS_MISSING_DIFFICULTY_LEVEL,
      IGR_CUSTOMIZATION_BEGIN,
      IGR_CUSTOMIZATION_END,
      INFO_NOAVAILABLE,
@@ -2560,15 +2530,6 @@ class SYSTEM_MESSAGES(object):
      PROGRESSIVEREWARD_SWITCH_OFF,
      PROGRESSIVEREWARD_SWITCH_ON,
      PROGRESSIVEREWARD_ERROR,
-     EVENT_PROGRESSION_BUY_VEHICLE_SERVER_ERROR,
-     EVENT_PROGRESSION_BUY_VEHICLE_SUCCESS,
-     EVENT_PROGRESSION_BUY_STYLE_SERVER_ERROR,
-     EVENT_PROGRESSION_BUY_STYLE_SUCCESS,
-     EVENT_PROGRESSION_BUY_VEHICLE_BUY,
-     EVENT_PROGRESSION_REWARD_BOX_ACHIEVED_TITLE,
-     EVENT_PROGRESSION_REWARD_BOX_ACHIEVED_BODY,
-     EVENT_PROGRESSION_REWARD_BOX_ACHIEVED_FINAL_TITLE,
-     EVENT_PROGRESSION_REWARD_BOX_ACHIEVED_FINAL_BODY,
      MAPS_BLACK_LIST_SELECT_SUCCESS,
      MAPS_BLACK_LIST_SELECT_SERVER_ERROR_COOLDOWN,
      MAPS_BLACK_LIST_SELECT_SERVER_ERROR,
@@ -2576,8 +2537,6 @@ class SYSTEM_MESSAGES(object):
      MAPS_BLACK_LIST_SWITCH_OFF_BODY,
      MAPS_BLACK_LIST_SWITCH_ON_TITLE,
      MAPS_BLACK_LIST_SWITCH_ON_BODY,
-     SHOP_SALES_EVENT_SUCCESS,
-     SHOP_SALES_EVENT_ERROR,
      PREMIUM_QUESTS_SWITCH_OFF_TITLE,
      PREMIUM_QUESTS_SWITCH_OFF_BODY,
      PREMIUM_QUESTS_SWITCH_ON_TITLE,
@@ -2610,6 +2569,27 @@ class SYSTEM_MESSAGES(object):
      NATION_CHANGE_FAILED,
      NATION_CHANGE_WRONG_ARG_VALUE,
      NATION_CHANGE_ERROR,
+     NEWYEAR_CRAFTTOY_SERVER_ERROR,
+     NEWYEAR_BUYTOY_SERVER_ERROR,
+     NEWYEAR_BUYMEGATOY_SERVER_ERROR,
+     NEWYEAR_APPLYVEHICLEDISCOUNT_SUCCESS,
+     NEWYEAR_APPLYVEHICLEDISCOUNT_SERVER_ERROR,
+     NEWYEAR_APPLYVEHICLEDISCOUNT_SERVER_ERROR_NODISCOUNTS,
+     NEWYEAR_APPLYVEHICLEDISCOUNT_SERVER_ERROR_ALREADYACTIVE,
+     NEWYEAR_APPLYVEHICLEDISCOUNT_SERVER_ERROR_ALREADYBOUGHT,
+     NEWYEAR_APPLYVEHICLEDISCOUNT_SERVER_ERROR_NODISCOUNTFORVEHICLE,
+     NEWYEAR_HANGTOY_SERVER_ERROR,
+     NEWYEAR_BREAKTOYS_SERVER_ERROR,
+     NEWYEAR_SETVEHICLEBRANCH_SERVER_ERROR,
+     NEWYEAR_BUYCOLLECTION_SERVER_ERROR,
+     NEWYEAR_SETVEHICLEBRANCHSLOTBONUS_SERVER_ERROR,
+     NEWYEAR_RESETLOOTBOXSTATISTICS_SERVER_ERROR_HEADER,
+     NEWYEAR_RESETLOOTBOXSTATISTICS_SERVER_ERROR,
+     NEWYEAR_CELEBRITYCHALLENGE_CONGRATULATIONS,
+     NEWYEAR_CELEBRITYCHALLENGE_SIMPLIFICATION_TITLE,
+     NEWYEAR_CELEBRITYCHALLENGE_SIMPLIFICATION_MESSAGE,
+     NEWYEAR_CELEBRITYCHALLENGE_PROGRESSREWARD,
+     NEWYEAR_CELEBRITYCHALLENGE_QUESTREWARD,
      DEMOUNTKIT_RESTORED_SWITCHEDON,
      DEMOUNTKIT_FAILED_SWITCHEDOFF,
      DAILY_QUESTS_SWITCH_OFF_TITLE,
@@ -2660,6 +2640,7 @@ class SYSTEM_MESSAGES(object):
      OFFERS_SWITCH_OFF_BODY,
      OFFERS_UNAVAILABLE_ONE,
      OFFERS_UNAVAILABLE_MANY,
+     OFFERS_SERVER_ERROR,
      MISSINGEVENTS_BUTTON,
      MISSINGEVENTS_HEADER,
      MISSINGEVENTS_TEXT,
@@ -2699,30 +2680,7 @@ class SYSTEM_MESSAGES(object):
      VEHICLEPOSTPROGRESSION_VEHICLESUNLOCKPOSTPROGRESSION_TITLE,
      VEHICLEPOSTPROGRESSION_VEHICLESUNLOCKPOSTPROGRESSION_SINGLE_BODY,
      VEHICLEPOSTPROGRESSION_VEHICLESUNLOCKPOSTPROGRESSION_WELCOMEUNLOCK_BODY,
-     VEHICLEPOSTPROGRESSION_DISCARDALLPAIRSMODIFICATION_BODY,
-     HW21_SERVER_ERROR,
-     HW19_OPEN_INTERROGATION_SUCCESS,
-     HW19_OPEN_INTERROGATION_SERVER_ERROR,
-     HW19_OPEN_INTERROGATION_NOT_ENOUGH_TOKENS_TO_OPEN_REWARDBOX,
-     HW19_OPEN_INTERROGATION_ACCOUNT_HAS_NO_REQUESTED_REWARDBOX,
-     HW19_OPEN_INTERROGATION_QUEST_SKIP_FOR_REQUESTED_REWARDBOX_IS_NOT_ALLOWED,
-     HW19_DRAW_ENERGY_SERVER_ERROR,
-     HW19_LOCK_ENERGY_SERVER_ERROR,
-     EVENT_AFK_WARNING_HEADER,
-     EVENT_AFK_WARNING_BODY,
-     EVENT_AFK_BAN_HEADER,
-     EVENT_AFK_BAN_BODY,
-     EVENT_AFK_BUTTON,
-     EVENT_AFK_QUEST_HEADER,
-     EVENT_AFK_QUEST_BODY,
-     EVENT_AFK_QUEST_QUESTNAME,
-     EVENT_AFK_QUEST_BUTTON,
-     EVENT_AFK_ERROR_HEADER,
-     EVENT_AFK_ERROR_BODY,
-     EVENT_AFK_UNBAN_HEADER,
-     EVENT_AFK_UNBAN_BODY,
-     EVENT_AFK_QUESTUNBAN_HEADER,
-     EVENT_AFK_QUESTUNBAN_BODY)
+     VEHICLEPOSTPROGRESSION_DISCARDALLPAIRSMODIFICATION_BODY)
 
     @classmethod
     def unit_notification_divisiontype(cls, key0):

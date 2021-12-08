@@ -12,26 +12,40 @@ package net.wg.gui.battle.components
       public static const HIDING_STATE:String = "hiding";
        
       
+      private var _prevState:String = "";
+      
       private var _isAoI:Boolean = false;
+      
+      private var _originalState:String = "";
       
       public function HpProgressCircle()
       {
          super();
       }
       
-      public function setType(param1:String, param2:Boolean, param3:Boolean) : void
+      public function setType(param1:String) : void
       {
-         this._isAoI = param2;
-         colorblindMode = param3;
-         var _loc4_:String = state;
+         this._originalState = param1;
          state = this.getCorrectState(param1);
-         if(_loc4_ == state)
+         if(this._prevState == state)
          {
             return;
          }
          gotoAndStop(state);
          curFrame = SEMI_LAST_FRAME;
          progressCircle.gotoAndStop(SEMI_LAST_FRAME);
+      }
+      
+      public function setIsAoI(param1:Boolean) : void
+      {
+         this._isAoI = param1;
+         this.setType(this._originalState);
+      }
+      
+      public function setColorBlindMode(param1:Boolean) : void
+      {
+         colorblindMode = param1;
+         this.setType(this._originalState);
       }
       
       override protected function getCorrectState(param1:String) : String

@@ -19,10 +19,12 @@ from gui.shared.gui_items.Vehicle import VEHICLE_TYPES_ORDER, VEHICLE_ROLES_LABE
 from gui.shared.utils.functions import makeTooltip
 from helpers import dependency
 from helpers.i18n import makeString as _ms
+from new_year.ny_constants import NY_FILTER
 from shared_utils import CONST_CONTAINER
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.game_control import IBattlePassController
 from skeletons.gui.shared import IItemsCache
+from skeletons.new_year import INewYearController
 from uilogging.veh_post_progression.constants import LogGroups, ParentScreens
 from uilogging.veh_post_progression.loggers import VehPostProgressionLogger
 if typing.TYPE_CHECKING:
@@ -43,16 +45,20 @@ class VehiclesFilterPopover(TankCarouselFilterPopoverMeta):
         super(VehiclesFilterPopover, self).__init__()
         self._carousel = None
         self._isFrontline = False
+        self._isRanked = False
         self._withRoles = False
         if ctx and 'data' in ctx:
             data = ctx['data']
             self._isFrontline = getattr(data, 'isFrontline', False)
+            self._isRanked = getattr(data, 'isRanked', False)
         self.__mapping = {}
         self.__usedFilters = ()
         return
 
     def setTankCarousel(self, carousel):
-        self.__mapping = self._generateMapping((carousel.hasRentedVehicles() or not carousel.filter.isDefault(('rented', ))), (carousel.hasEventVehicles() or not carousel.filter.isDefault(('event', ))), carousel.hasRoles(), **carousel.getCustomParams())
+        customParams = carousel.getCustomParams()
+        customParams['isRanked'] = self._isRanked
+        self.__mapping = self._generateMapping((carousel.hasRentedVehicles() or not carousel.filter.isDefault(('rented', ))), (carousel.hasEventVehicles() or not carousel.filter.isDefault(('event', ))), carousel.hasRoles(), **customParams)
         self.__usedFilters = list(itertools.chain.from_iterable(self.__mapping.itervalues()))
         self._carousel = carousel
         self._carousel.setPopoverCallback(self.__onCarouselSwitched)
@@ -236,6 +242,7 @@ class VehiclesFilterPopover(TankCarouselFilterPopoverMeta):
 
 
 class TankCarouselFilterPopover(VehiclesFilterPopover):
+    _nyController = dependency.descriptor(INewYearController)
     __settingsCore = dependency.descriptor(ISettingsCore)
 
     def __init__(self, ctx):
@@ -259,7 +266,12 @@ class TankCarouselFilterPopover(VehiclesFilterPopover):
         super(TankCarouselFilterPopover, self)._update(isInitial)
         self._carousel.updateHotFilters()
 
+    def _populate(self):
+        super(TankCarouselFilterPopover, self)._populate()
+        self._nyController.onStateChanged += self.__onNyStateChanged
+
     def _dispose(self):
+        self._nyController.onStateChanged -= self.__onNyStateChanged
         self.__settingsCore.serverSettings.setSectionSettings(SETTINGS_SECTIONS.GAME_EXTENDED, {settings_constants.GAME.CAROUSEL_TYPE: self.__carouselRowCount})
         super(TankCarouselFilterPopover, self)._dispose()
 
@@ -276,11 +288,18 @@ class TankCarouselFilterPopover(VehiclesFilterPopover):
         clanWarsVehicles = cls.itemsCache.items.getItems(GUI_ITEM_TYPE.VEHICLE, REQ_CRITERIA.INVENTORY | REQ_CRITERIA.VEHICLE.CLAN_WARS)
         if bool(clanWarsVehicles):
             mapping[_SECTION.SPECIALS].append('clanRented')
+        if kwargs.get('isRanked', False):
+            mapping[_SECTION.SPECIALS].append('ranked')
+        elif cls._nyController.isVehicleBranchEnabled():
+            mapping[_SECTION.SPECIALS].append(NY_FILTER)
         return mapping
 
     @classmethod
     def _getBaseSpecialSection(cls):
         return ['bonus', 'favorite', 'premium', 'elite', 'crystals']
+
+    def __onNyStateChanged(self):
+        self.destroy()
 
 
 class BattlePassCarouselFilterPopover(TankCarouselFilterPopover):

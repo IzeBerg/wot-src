@@ -5,8 +5,6 @@ package net.wg.data.constants.generated
       
       public static const TOOLTIP_TEXT_BLOCK_LINKAGE:String = "TooltipTextBlockUI";
       
-      public static const TOOLTIP_GLOW_TEXT_BLOCK_LINKAGE:String = "TooltipGlowTextBlockUI";
-      
       public static const TOOLTIP_TEXT_WITH_BG_BLOCK_LINKAGE:String = "TooltipTextWithBgBlockUI";
       
       public static const TOOLTIP_BUILDUP_BLOCK_LINKAGE:String = "TooltipBuildUpBlockUI";
@@ -109,15 +107,11 @@ package net.wg.data.constants.generated
       
       public static const TOOLTIP_BUILD_BLOCK_VIOLET_BIG_LINKAGE:String = "TooltipBuildUpBlockVioletBgBigUI";
       
-      public static const TOOLTIP_BUILD_BLOCK_BLUE_BIG_LINKAGE:String = "TooltipBuildUpBlockBlueBgBigUI";
-      
       public static const TOOLTIP_BUILD_BLOCK_GRAY_LINKAGE:String = "TooltipBuildUpBlockGrayBgUI";
       
       public static const TOOLTIP_EPIC_PROGRESS_BLOCK_LINKAGE:String = "EpicProgressBlockUI";
       
       public static const BATTLE_ROYALE_WEAK_ZONES_UI:String = "BattleRoyaleWeakZonesBlockUI";
-      
-      public static const TOOLTIP_BUILD_BLOCK_EVENT_AWARD_UI:String = "TooltipBuildUpBlockEventAwardUI";
       
       public static const ALIGN_LEFT:String = "left";
       

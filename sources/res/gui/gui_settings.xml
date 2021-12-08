@@ -783,12 +783,12 @@
 		<type>dict</type>
 		<value>
 			<item>
-				/auth/entry?spa_id=$DB_ID&amp;periphery_id=$PERIPHERY_ID
+				/
 				<name>tabUrl</name>
 				<type>url</type>
 			</item>
 			<item>
-				/auth/entry?spa_id=$DB_ID&amp;periphery_id=$PERIPHERY_ID&amp;next=/%23/units/rebuild/$UNIT_SERVER_ID
+				/#/units/rebuild/$UNIT_SERVER_ID
 				<name>changeModeUrl</name>
 				<type>url</type>
 			</item>
@@ -798,7 +798,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				/auth/entry?spa_id=$DB_ID&amp;periphery_id=$PERIPHERY_ID&amp;next=/%23/battlerooms
+				/#/battlerooms
 				<name>battlesListUrl</name>
 				<type>url</type>
 			</item>
@@ -1030,23 +1030,28 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/subscription-rental)
-				<name>rentVehicle</name>
-				<type>url</type>
-			</item>
-			<item>
 				$PARAMS(/featured/featured/items/platform_subscription/preview)
 				<name>buyRenewableSubscription</name>
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/telecom-tank-rental)
-				<name>telecomTankRental</name>
+				$PARAMS(/psa2021/psa2021)
+				<name>psaProducts</name>
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/psa2021/psa2021)
-				<name>psaProducts</name>
+				$PARAMS(/subscription-rental)
+				<name>rentVehicle</name>
+				<type>url</type>
+			</item>
+			<item>
+				$PARAMS(/api/external/v1/products/items)
+				<name>productsUrl</name>
+				<type>url</type>
+			</item>
+			<item>
+				$PARAMS(/telecom-tank-rental)
+				<name>telecomTankRental</name>
 				<type>url</type>
 			</item>
 		</value>
@@ -1280,6 +1285,17 @@
 				Utilizes Vivox, © 2018 Vivox, Inc. All rights reserved. See www.vivox.com for details.\n
 				<name>default</name>
 				<type>string</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>newYearInfo</name>
+		<type>dict</type>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HO2021Video/
+				<name>baseURL</name>
+				<type>url</type>
 			</item>
 		</value>
 	</setting>
@@ -1777,444 +1793,32 @@
 		</value>
 	</setting>
 	<setting>
-		<name>infoPageEventBattle</name>
+		<name>accountCompletionSupportURL</name>
 		<type>macros</type>
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/Halloween21/
+				https://na.wargaming.net/support/$LANGUAGE_CODE/help/login/
 				<name>NA</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/Halloween21/
+				https://eu.wargaming.net/support/$LANGUAGE_CODE/help/login/
 				<name>EU</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/Halloween21/
+				https://asia.wargaming.net/support/$LANGUAGE_CODE/help/login/
 				<name>ASIA</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/Halloween21/
+				https://asia.wargaming.net/support/$LANGUAGE_CODE/help/login/
 				<name>CN</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/Halloween21/
-				<name>RU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/Halloween21/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>EventAllVideoURL</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21PlayAll/
-				<name>RU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/HW21PlayAll/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/HW21PlayAll/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/HW21PlayAll/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/HW21PlayAll/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21PlayAll/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>EventIntroVideoURL</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21Intro/
-				<name>RU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/HW21Intro/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/HW21Intro/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/HW21Intro/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/HW21Intro/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21Intro/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>hw21RewardBox_1</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21Video1/
-				<name>RU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/HW21Video1/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/HW21Video1/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/HW21Video1/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/HW21Video1/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21Video1/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>hw21RewardBox_2</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21Video2/
-				<name>RU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/HW21Video2/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/HW21Video2/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/HW21Video2/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/HW21Video2/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21Video2/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>hw21RewardBox_3</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21Video3/
-				<name>RU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/HW21Video3/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/HW21Video3/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/HW21Video3/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/HW21Video3/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21Video3/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>hw21RewardBox_4</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21Video4/
-				<name>RU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/HW21Video4/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/HW21Video4/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/HW21Video4/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/HW21Video4/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21Video4/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>hw21RewardBox_5</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21Video5/
-				<name>RU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/HW21Video5/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/HW21Video5/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/HW21Video5/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/HW21Video5/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21Video5/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>hw21RewardBox_6</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21Video6/
-				<name>RU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/HW21Video6/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/HW21Video6/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/HW21Video6/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/HW21Video6/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21Video6/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>hw21RewardBox_7</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21Video7/
-				<name>RU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/HW21Video7/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/HW21Video7/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/HW21Video7/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/HW21Video7/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21Video7/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>hw21RewardBox_8</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21Video8/
-				<name>RU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/HW21Video8/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/HW21Video8/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/HW21Video8/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/HW21Video8/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21Video8/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>hw21RewardBox_9</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21Outro/
-				<name>RU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/HW21Outro/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/HW21Outro/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/HW21Outro/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/HW21Outro/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HW21Outro/
+				https://ru.wargaming.net/support/$LANGUAGE_CODE/help/login/
 				<name>default</name>
 				<type>url</type>
 			</item>

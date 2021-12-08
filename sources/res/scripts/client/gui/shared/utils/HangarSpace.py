@@ -40,7 +40,7 @@ class _execute_after_hangar_space_inited(object):
         return wrapped
 
     def checkConditionForExit(self):
-        if not self.hangarSpace.spaceInited:
+        if not self.hangarSpace.spaceInited or not self.hangarSpace.space.getVehicleEntity():
             BigWorld.callback(_Q_CHECK_DELAY, self.checkConditionForExit)
             return
         self.delayCall()
@@ -168,7 +168,6 @@ class HangarSpace(IHangarSpace):
         self.onVehicleChangeStarted = Event.Event()
         self.onSpaceChangedByAction = Event.Event()
         self.onNotifyCursorOver3dScene = Event.Event()
-        self.onObjectsSelectionEnabled = Event.Event()
         self.__isCursorOver3DScene = False
         return
 
@@ -379,6 +378,10 @@ class HangarSpace(IHangarSpace):
         if premiumHangar != defaultHangar:
             self.refreshSpace(isPremium)
         self.__isSpacePremium = isPremium
+
+    def resetLastUpdatedVehicle(self):
+        self.__lastUpdatedVehicle = None
+        return
 
     @uniprof.regionDecorator(label='hangar.space.loading', scope='exit')
     def __spaceDone(self):

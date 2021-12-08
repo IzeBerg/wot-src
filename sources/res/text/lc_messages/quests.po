@@ -1161,10 +1161,13 @@ msgstr "Декаль"
 msgid "bonusName/emblem"
 msgstr "Эмблемa"
 
+msgid "bonusName/entitlements/giftSystem_2_nyStamp"
+msgstr "Праздничная марка"
+
 msgid "bonusName/entitlements/ranked_2020_discount"
 msgstr "Увеличение скидки"
 
-msgid "bonusName/entitlements/ranked_202109_access"
+msgid "bonusName/entitlements/ranked_202201_access"
 msgstr "Доступ к покупке"
 
 msgid "bonusName/entitlements/testEntitlement"
@@ -1191,6 +1194,12 @@ msgstr "Надпись"
 msgid "bonusName/modification"
 msgstr "Эффект"
 
+msgid "bonusName/newYearSlot"
+msgstr "Новогодний слот"
+
+msgid "bonusName/ny22Fillers"
+msgstr "Антиповторитель"
+
 msgid "bonusName/paint"
 msgstr "Краска"
 
@@ -1213,7 +1222,7 @@ msgid "bonusName/rankedDailyBattles"
 msgstr "Ежедневный призовой бой."
 
 msgid "bonusName/slots"
-msgstr "Слотов в Ангаре"
+msgstr "Слот в Ангаре"
 
 msgid "bonusName/style"
 msgstr "Стиль"
@@ -1339,6 +1348,12 @@ msgstr "Дней Танкового премиум аккаунта: %(value)s"
 
 msgid "bonuses/tankmen/description"
 msgstr "%(value)s"
+
+msgid "bonuses/variadicDiscount/buttonLabel"
+msgstr "Выбрать"
+
+msgid "bonuses/variadicDiscount/discountAmount"
+msgstr "-{amount}%"
 
 msgid "bonuses/vehicles/crewLvl"
 msgstr "%d%%-й экипаж"
@@ -1489,6 +1504,16 @@ msgstr "О ежедневных задачах"
 msgid "dailyQuests/header/title"
 msgstr "ЕЖЕДНЕВНЫЕ ЗАДАЧИ"
 
+msgid "dailyQuests/info/NYDailyMissions"
+msgstr ""
+"Стандартные задачи состоят из случайных условий, а выполнять их можно "
+"ежедневно. Как и в Личных боевых задачах, прогресс выполнения стандартных "
+"задач обновляется после каждого боя. Эти задачи предпочтительно выполнять в "
+"день их выдачи, иначе они перенесутся на следующий день, а следующая задача "
+"не будет выдана до выполнения текущей. В период Новогоднего наступления в "
+"задачу обязательно добавляются малые новогодние коробки и праздничные марки "
+"в дополнение к награде."
+
 msgid "dailyQuests/info/battlePassDailyMissionTitle"
 msgstr "Стандартные задачи"
 
@@ -1519,6 +1544,15 @@ msgstr ""
 "ежедневно. Как и в личных боевых задачах, прогресс выполнения стандартных "
 "задач обновляется после каждого боя. Эти задачи не имеют ограничений по "
 "времени и могут быть выполнены в любой момент."
+
+msgid "dailyQuests/info/giftSystemDisabledDailyMissions"
+msgstr ""
+"Стандартные задачи состоят из случайных условий, а выполнять их можно "
+"ежедневно. Как и в личных боевых задачах, прогресс выполнения стандартных "
+"задач обновляется после каждого боя. Эти задачи предпочтительно выполнять в "
+"день их выдачи, иначе они перенесутся на следующий день, а следующая задача "
+"не будет выдана до выполнения текущей. На период Новогоднего наступления в "
+"каждую задачу обязательно добавляются малые коробки в дополнение к награде."
 
 msgid "dailyQuests/info/missionSwitchTitle"
 msgstr "Замена задачи"
@@ -1739,7 +1773,7 @@ msgid "details/conditions/crits/destroyed/surveyingDevice/not"
 msgstr "Не выводить из строя приборы наблюдения"
 
 msgid "details/conditions/crits/destroyed/track"
-msgstr "Сбить гусеницу"
+msgstr "Обездвижить, сбив гусеницу"
 
 msgid "details/conditions/crits/destroyed/track/not"
 msgstr "Не сбивать гусеницы"
@@ -1814,12 +1848,13 @@ msgstr ""
 "обнаружены в момент нанесения урона)"
 
 msgid "details/conditions/cumulative/damageAssistedTrack"
-msgstr "Урон союзников после попадания, сбившего гусеницу"
+msgstr ""
+"Урон союзников после попадания, сбившего гусеницу и обездвижившего цель"
 
 msgid "details/conditions/cumulative/damageAssistedTrackWhileInvisible"
 msgstr ""
-"Урон союзников по противнику, которому вы сбили гусеницу (при условии, что "
-"вы не обнаружены в момент нанесения урона)"
+"Урон союзников по противнику, которому вы сбили гусеницу и обездвижили (при "
+"условии, что вы не обнаружены в момент нанесения урона)"
 
 msgid "details/conditions/cumulative/damageBlockedByArmor"
 msgstr "Заблокированный урон"
@@ -1831,6 +1866,9 @@ msgid "details/conditions/cumulative/damageReceived"
 msgstr "Полученный урон"
 
 msgid "details/conditions/cumulative/damaged"
+msgstr "Повреждённые машины противника"
+
+msgid "details/conditions/cumulative/damagedHp"
 msgstr "Повреждённые машины противника"
 
 msgid "details/conditions/cumulative/damagedVehicleCntAssistedRadio"
@@ -1845,7 +1883,7 @@ msgstr ""
 msgid "details/conditions/cumulative/damagedVehicleCntAssistedTrack"
 msgstr ""
 "Обеспечить союзникам нанесение урона по противнику, которому вы сбили "
-"гусеницу"
+"гусеницу и обездвижили"
 
 msgid "details/conditions/cumulative/damagedWhileEnemyMoving"
 msgstr "Урон машинам противника, находящимся в движении"
@@ -1867,12 +1905,6 @@ msgstr "Очки защиты"
 
 msgid "details/conditions/cumulative/enemyHits"
 msgstr "Попадания по противнику"
-
-msgid "details/conditions/cumulative/environmentID"
-msgstr "Дойдите до указанной фазы в составе разведотряда «Мирный: Надежда»"
-
-msgid "details/conditions/cumulative/eventPoints"
-msgstr "Соберите материю"
 
 msgid "details/conditions/cumulative/explosionEnemyHits"
 msgstr "Разрывы ОФ-снарядов САУ рядом с противником, нанёсшие урон осколками."
@@ -1936,7 +1968,9 @@ msgid "details/conditions/cumulative/killsAssistedStun"
 msgstr "Союзники должны уничтожить противника, которого вы оглушили"
 
 msgid "details/conditions/cumulative/killsAssistedTrack"
-msgstr "Союзники должны уничтожить противника, которому вы сбили гусеницу"
+msgstr ""
+"Союзники должны уничтожить противника, которому вы сбили гусеницу и "
+"обездвижили"
 
 msgid "details/conditions/cumulative/lifeTime"
 msgstr "Время жизни в бою, не менее (с)"
@@ -3158,8 +3192,8 @@ msgstr "Урон по вашим разведданным в «Мировой в
 
 msgid "details/dossier/clan/damageAssistedTrack"
 msgstr ""
-"Урон, нанесённый союзниками после попадания, сбившего гусеницу в «Мировой "
-"войне»"
+"Урон, нанесённый союзниками после попадания, сбившего гусеницу и "
+"обездвижившего цель в «Мировой войне»"
 
 msgid "details/dossier/clan/damageBlockedByArmor"
 msgstr "Заблокированного бронёй урона в «Мировой войне»"
@@ -3252,8 +3286,8 @@ msgstr "Урон по вашим разведданным в режиме «Ис
 
 msgid "details/dossier/historical/damageAssistedTrack"
 msgstr ""
-"Урон, нанесённый союзниками после попадания, сбившего гусеницу в режиме "
-"«Исторический бой»"
+"Урон, нанесённый союзниками после попадания, сбившего гусеницу и "
+"обездвижившего цель в режиме «Исторический бой»"
 
 msgid "details/dossier/historical/damageBlockedByArmor"
 msgstr "Заблокированного бронёй урона в режиме «Исторический бой»"
@@ -3345,8 +3379,8 @@ msgstr "Урон по вашим разведданным в режиме «Ко
 
 msgid "details/dossier/ladder/damageAssistedTrack"
 msgstr ""
-"Урон, нанесённый союзниками после попадания, сбившего гусеницу, в режиме "
-"«Командный бой: игра в Ладдере»"
+"Урон, нанесённый союзниками после попадания, сбившего гусеницу и "
+"обездвижившего цель в режиме «Командный бой: игра в Ладдере»"
 
 msgid "details/dossier/ladder/damageBlockedByArmor"
 msgstr ""
@@ -3560,7 +3594,9 @@ msgid "details/dossier/random/damageAssistedRadio"
 msgstr "Урон по вашим разведданным"
 
 msgid "details/dossier/random/damageAssistedTrack"
-msgstr "Урон, нанесённый союзниками после попадания, сбившего гусеницу"
+msgstr ""
+"Урон, нанесённый союзниками после попадания, сбившего гусеницу и "
+"обездвижившего цель"
 
 msgid "details/dossier/random/damageBlockedByArmor"
 msgstr "Заблокированного бронёй урона"
@@ -3678,8 +3714,8 @@ msgstr "Урон по вашим разведданным в режиме «Ко
 
 msgid "details/dossier/team/damageAssistedTrack"
 msgstr ""
-"Урон, нанесённый союзниками после попадания, сбившего гусеницу в режиме "
-"«Командный бой»"
+"Урон, нанесённый союзниками после попадания, сбившего гусеницу и "
+"обездвижившего цель в режиме «Командный бой»"
 
 msgid "details/dossier/team/damageBlockedByArmor"
 msgstr "Заблокированного бронёй урона в режиме «Командный бой»"
@@ -4558,9 +4594,6 @@ msgstr "Предыдущие"
 msgid "missionDetails/requirements/conclusion/available"
 msgstr "Требования выполнены (%(count)s)"
 
-msgid "missionDetails/requirements/conclusion/previousIncomplete"
-msgstr "Выполните задачу «%(quest_name)s»."
-
 msgid "missionDetails/requirements/conclusion/unavailable"
 msgstr "Требования не выполнены (%(count)s)"
 
@@ -4573,25 +4606,14 @@ msgstr "Задача недоступна:"
 msgid "missionDetails/resetDate"
 msgstr "Обнуление задачи в %(time)s"
 
-msgid "missionDetails/status/complete"
-msgstr "Выполнено"
-
 msgid "missionDetails/status/completed/daily"
 msgstr "Следующее доступное выполнение через: %(time)s"
-
-msgid "missionDetails/status/completed/event"
-msgstr ""
-"Боевая задача выполнена. Следующее доступное\n"
-"выполнение: %(time)s."
 
 msgid "missionDetails/status/completed/weekly"
 msgstr "Следующее доступное выполнение через: %(time)s"
 
 msgid "missionDetails/status/disabled"
 msgstr "Задача отключена"
-
-msgid "missionDetails/status/inProgress"
-msgstr "Выполняется"
 
 msgid "missionDetails/status/notAvailable"
 msgstr "Недоступно"
@@ -4692,7 +4714,7 @@ msgid "missions/filter/popover/title"
 msgstr "Фильтр задач"
 
 msgid "missions/filterCounter/closeButton/body"
-msgstr "Нажмите, чтобы сбросить настройки фильтра на стандартные."
+msgstr "Нажмите, чтобы сбросить настройки фильтра на состояние по умолчанию."
 
 msgid "missions/filterCounter/closeButton/header"
 msgstr "Установить по умолчанию"
@@ -4798,9 +4820,6 @@ msgstr "Кристальная охота"
 msgid "missions/tab/label/missions"
 msgstr "Учебные задачи"
 
-msgid "missions/tab/label/winter_marathon"
-msgstr "Легенда&nbsp;об&nbsp;охотнике"
-
 msgid "missions/tab/mapbox/body"
 msgstr "Изучайте новые карты, выбирайте лучшую и получайте награды."
 
@@ -4850,14 +4869,6 @@ msgid "missions/tab/moon_marathon/body"
 msgstr ""
 "Игровое событие, в рамках которого вы можете бесплатно получить британскую "
 "премиум ПТ-САУ VIII уровня GSOR 1008."
-
-msgid "missions/tab/winter_marathon/body"
-msgstr ""
-"Событие, в рамках которого вы можете бесплатно получить французский средний "
-"премиум танк VIII&nbsp;уровня AltProto&nbsp;AMX&nbsp;30."
-
-msgid "missions/tab/winter_marathon/header"
-msgstr "Легенда об охотнике"
 
 msgid "missions/tokenPopover/buyBtn/label"
 msgstr "Купить марку"
@@ -5358,9 +5369,6 @@ msgstr "«Франция»"
 
 msgid "token/default/germany"
 msgstr "«Германия»"
-
-msgid "token/default/he21_afk_pardon_order"
-msgstr "Приказ о реабилитации"
 
 msgid "token/default/heavyTank"
 msgstr "«Тяжёлый танк»"

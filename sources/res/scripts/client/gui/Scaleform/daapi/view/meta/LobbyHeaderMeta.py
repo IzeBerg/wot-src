@@ -186,3 +186,7 @@ class LobbyHeaderMeta(BaseDAAPIComponent):
     def as_setIsFullscreenBattleSelectorShowingS(self, visible):
         if self._isDAAPIInited():
             return self.flashObject.as_setIsFullscreenBattleSelectorShowing(visible)
+
+    def as_updateNYVisibilityS(self, isShowBattleBtnGlow, isShowMainMenuGlow, nyWidgetVisible):
+        if self._isDAAPIInited():
+            return self.flashObject.as_updateNYVisibility(isShowBattleBtnGlow, isShowMainMenuGlow, nyWidgetVisible)

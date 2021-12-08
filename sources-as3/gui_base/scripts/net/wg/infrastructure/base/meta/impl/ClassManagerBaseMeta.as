@@ -46,6 +46,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.data.constants.generated.BATTLE_EFFICIENCY_TYPES;
    import net.wg.data.constants.generated.BLOCKS_TOOLTIP_TYPES;
    import net.wg.data.constants.generated.COLOR_SETTINGS;
+   import net.wg.data.constants.generated.CONTACTS_ACTION_CONSTS;
    import net.wg.data.constants.generated.CROSSHAIR_CONSTANTS;
    import net.wg.data.constants.generated.CURRENCIES_CONSTANTS;
    import net.wg.data.constants.generated.CUSTOMIZATION_DIALOGS;
@@ -311,6 +312,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.controls.ListItemRedererImageText;
    import net.wg.gui.components.controls.ListItemRendererWithFocusOnDis;
    import net.wg.gui.components.controls.Money;
+   import net.wg.gui.components.controls.NYContextMenuItem;
    import net.wg.gui.components.controls.NationDropDownMenu;
    import net.wg.gui.components.controls.NormalSortingBtnVO;
    import net.wg.gui.components.controls.NormalSortingButton;
@@ -636,7 +638,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.tooltips.inblocks.blocks.BaseTooltipBlock;
    import net.wg.gui.components.tooltips.inblocks.blocks.BuildUpBlock;
    import net.wg.gui.components.tooltips.inblocks.blocks.CounterTextBlock;
-   import net.wg.gui.components.tooltips.inblocks.blocks.GlowTextBlock;
    import net.wg.gui.components.tooltips.inblocks.blocks.ImageTextBlockInBlocks;
    import net.wg.gui.components.tooltips.inblocks.blocks.ItemTitleDescBlock;
    import net.wg.gui.components.tooltips.inblocks.blocks.SpriteTextBlockInBlocks;
@@ -649,7 +650,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.tooltips.inblocks.data.BlocksVO;
    import net.wg.gui.components.tooltips.inblocks.data.BuildUpBlockVO;
    import net.wg.gui.components.tooltips.inblocks.data.CounterTextBlockVO;
-   import net.wg.gui.components.tooltips.inblocks.data.GlowTextBlockVO;
    import net.wg.gui.components.tooltips.inblocks.data.ImageBlockVO;
    import net.wg.gui.components.tooltips.inblocks.data.ImageTextBlockVO;
    import net.wg.gui.components.tooltips.inblocks.data.SpriteTextBlockVO;
@@ -673,7 +673,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.data.WaitingPointcutsVO;
    import net.wg.gui.data.WaitingQueueCounterMessageVO;
    import net.wg.gui.data.WaitingQueueWindowVO;
-   import net.wg.gui.dialogs.EventAFKDialog;
+   import net.wg.gui.dialogs.ButtonDialog;
    import net.wg.gui.dialogs.ItemStatusData;
    import net.wg.gui.dialogs.SimpleDialog;
    import net.wg.gui.eventcomponents.NumberProgress;
@@ -863,7 +863,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.meta.IColorSettingsViewMeta;
    import net.wg.infrastructure.base.meta.ICrosshairPanelContainerMeta;
    import net.wg.infrastructure.base.meta.IDAAPISimpleContainerMeta;
-   import net.wg.infrastructure.base.meta.IEventAFKDialogMeta;
    import net.wg.infrastructure.base.meta.IGameLoadingMeta;
    import net.wg.infrastructure.base.meta.IGammaWizardViewMeta;
    import net.wg.infrastructure.base.meta.IMinimapEntityMeta;
@@ -904,6 +903,9 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.uilogger.bootcamp.events.TooltipLogEvent;
    import net.wg.infrastructure.uilogger.manual.MANUAL_LOGGER_CONSTANTS;
    import net.wg.infrastructure.uilogger.manual.ManualPageLogger;
+   import net.wg.infrastructure.uilogger.new_year.Constants;
+   import net.wg.infrastructure.uilogger.new_year.LogTankBonus;
+   import net.wg.infrastructure.uilogger.new_year.LogTankSlot;
    import net.wg.infrastructure.uilogger.veh_post_progression.Constants;
    import net.wg.infrastructure.uilogger.veh_post_progression.LogDemountAllBtn;
    import net.wg.infrastructure.uilogger.veh_post_progression.LogModificationTree;
@@ -969,6 +971,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_DATA_CONSTANTS_GENERATED_BLOCKS_TOOLTIP_TYPES:Class = BLOCKS_TOOLTIP_TYPES;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_COLOR_SETTINGS:Class = COLOR_SETTINGS;
+      
+      public static const NET_WG_DATA_CONSTANTS_GENERATED_CONTACTS_ACTION_CONSTS:Class = CONTACTS_ACTION_CONSTS;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_CROSSHAIR_CONSTANTS:Class = CROSSHAIR_CONSTANTS;
       
@@ -1541,6 +1545,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_NORMALSORTINGBUTTON:Class = NormalSortingButton;
       
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_NUMERICSTEPPER:Class = NumericStepper;
+      
+      public static const NET_WG_GUI_COMPONENTS_CONTROLS_NYCONTEXTMENUITEM:Class = NYContextMenuItem;
       
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_PROGRESSBAR:Class = ProgressBar;
       
@@ -2172,8 +2178,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_TOOLTIPS_INBLOCKS_BLOCKS_COUNTERTEXTBLOCK:Class = CounterTextBlock;
       
-      public static const NET_WG_GUI_COMPONENTS_TOOLTIPS_INBLOCKS_BLOCKS_GLOWTEXTBLOCK:Class = GlowTextBlock;
-      
       public static const NET_WG_GUI_COMPONENTS_TOOLTIPS_INBLOCKS_BLOCKS_IMAGETEXTBLOCKINBLOCKS:Class = ImageTextBlockInBlocks;
       
       public static const NET_WG_GUI_COMPONENTS_TOOLTIPS_INBLOCKS_BLOCKS_ITEMTITLEDESCBLOCK:Class = ItemTitleDescBlock;
@@ -2197,8 +2201,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_TOOLTIPS_INBLOCKS_DATA_BUILDUPBLOCKVO:Class = BuildUpBlockVO;
       
       public static const NET_WG_GUI_COMPONENTS_TOOLTIPS_INBLOCKS_DATA_COUNTERTEXTBLOCKVO:Class = CounterTextBlockVO;
-      
-      public static const NET_WG_GUI_COMPONENTS_TOOLTIPS_INBLOCKS_DATA_GLOWTEXTBLOCKVO:Class = GlowTextBlockVO;
       
       public static const NET_WG_GUI_COMPONENTS_TOOLTIPS_INBLOCKS_DATA_IMAGEBLOCKVO:Class = ImageBlockVO;
       
@@ -2258,7 +2260,7 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_DATA_WAITINGQUEUEWINDOWVO:Class = WaitingQueueWindowVO;
       
-      public static const NET_WG_GUI_DIALOGS_EVENTAFKDIALOG:Class = EventAFKDialog;
+      public static const NET_WG_GUI_DIALOGS_BUTTONDIALOG:Class = ButtonDialog;
       
       public static const NET_WG_GUI_DIALOGS_ITEMSTATUSDATA:Class = ItemStatusData;
       
@@ -2638,8 +2640,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IDAAPISIMPLECONTAINERMETA:Class = IDAAPISimpleContainerMeta;
       
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTAFKDIALOGMETA:Class = IEventAFKDialogMeta;
-      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IGAMELOADINGMETA:Class = IGameLoadingMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IGAMMAWIZARDVIEWMETA:Class = IGammaWizardViewMeta;
@@ -2691,8 +2691,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_CROSSHAIRPANELCONTAINERMETA:Class = CrosshairPanelContainerMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_DAAPISIMPLECONTAINERMETA:Class = DAAPISimpleContainerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTAFKDIALOGMETA:Class = EventAFKDialogMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_GAMELOADINGMETA:Class = GameLoadingMeta;
       
@@ -2779,6 +2777,12 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_UILOGGER_MANUAL_MANUALPAGELOGGER:Class = ManualPageLogger;
       
       public static const NET_WG_INFRASTRUCTURE_UILOGGER_MANUAL_MANUAL_LOGGER_CONSTANTS:Class = MANUAL_LOGGER_CONSTANTS;
+      
+      public static const NET_WG_INFRASTRUCTURE_UILOGGER_NEW_YEAR_CONSTANTS:Class = Constants;
+      
+      public static const NET_WG_INFRASTRUCTURE_UILOGGER_NEW_YEAR_LOGTANKBONUS:Class = LogTankBonus;
+      
+      public static const NET_WG_INFRASTRUCTURE_UILOGGER_NEW_YEAR_LOGTANKSLOT:Class = LogTankSlot;
       
       public static const NET_WG_INFRASTRUCTURE_UILOGGER_VEH_POST_PROGRESSION_CONSTANTS:Class = Constants;
       

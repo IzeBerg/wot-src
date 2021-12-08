@@ -1,83 +1,71 @@
 package net.wg.gui.battle.eventBattle.views
 {
-   import fl.motion.easing.Cubic;
-   import flash.geom.Rectangle;
+   import flash.display.DisplayObject;
+   import flash.events.Event;
+   import flash.events.MouseEvent;
+   import net.wg.data.constants.generated.ATLAS_CONSTANTS;
    import net.wg.data.constants.generated.BATTLE_VIEW_ALIASES;
-   import net.wg.gui.battle.battleRoyale.views.components.DamageScreen;
-   import net.wg.gui.battle.battleloading.BaseBattleLoading;
+   import net.wg.data.constants.generated.DAMAGE_INFO_PANEL_CONSTS;
    import net.wg.gui.battle.eventBattle.views.battleHints.EventBattleHint;
-   import net.wg.gui.battle.eventBattle.views.battleHints.event.BattleHintEvent;
-   import net.wg.gui.battle.eventBattle.views.bossHP.BossHPBar;
-   import net.wg.gui.battle.eventBattle.views.bossIndicatorProgress.BossIndicatorEvent;
-   import net.wg.gui.battle.eventBattle.views.bossIndicatorProgress.BossIndicatorProgress;
+   import net.wg.gui.battle.eventBattle.views.battleHints.EventObjectives;
    import net.wg.gui.battle.eventBattle.views.buffsPanel.BuffsPanel;
-   import net.wg.gui.battle.eventBattle.views.eventBuffNotificationSystem.EventBuffNotificationSystem;
-   import net.wg.gui.battle.eventBattle.views.eventBuffNotificationSystem.ResizableBuffNotificationSystemEvent;
    import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.EventPlayersPanel;
    import net.wg.gui.battle.eventBattle.views.eventPointCounter.EventPointCounter;
    import net.wg.gui.battle.eventBattle.views.eventStats.EventStats;
    import net.wg.gui.battle.eventBattle.views.eventTimer.EventTimer;
-   import net.wg.gui.battle.eventBattle.views.eventTimer.EventTimerEvent;
-   import net.wg.gui.battle.eventBattle.views.phaseIndicator.PhaseIndicator;
+   import net.wg.gui.battle.views.BaseBattlePage;
+   import net.wg.gui.battle.views.battleMessenger.BattleMessenger;
+   import net.wg.gui.battle.views.consumablesPanel.ConsumablesPanel;
+   import net.wg.gui.battle.views.consumablesPanel.events.ConsumablesPanelEvent;
+   import net.wg.gui.battle.views.damageInfoPanel.DamageInfoPanel;
+   import net.wg.gui.battle.views.debugPanel.DebugPanel;
    import net.wg.gui.battle.views.destroyTimers.EventDestroyTimersPanel;
-   import net.wg.gui.battle.views.minimap.constants.MinimapSizeConst;
-   import net.wg.gui.battle.views.minimap.events.MinimapEvent;
-   import net.wg.gui.battle.views.ribbonsPanel.RibbonCtrl;
+   import net.wg.gui.battle.views.radialMenu.RadialMenu;
+   import net.wg.gui.battle.views.sixthSense.SixthSense;
+   import net.wg.gui.components.battleDamagePanel.BattleDamageLogPanel;
    import net.wg.gui.components.battleDamagePanel.constants.BattleDamageLogConstants;
-   import net.wg.gui.components.ribbon.data.PaddingSettings;
-   import net.wg.gui.components.ribbon.data.RibbonSettings;
-   import net.wg.infrastructure.base.meta.IEventBattlePageMeta;
-   import net.wg.infrastructure.base.meta.impl.EventBattlePageMeta;
-   import net.wg.infrastructure.helpers.statisticsDataController.BattleStatisticDataController;
-   import scaleform.clik.motion.Tween;
+   import net.wg.gui.components.hintPanel.HintPanel;
+   import net.wg.infrastructure.events.FocusRequestEvent;
    
-   public class EventBattlePage extends EventBattlePageMeta implements IEventBattlePageMeta
+   public class EventBattlePage extends BaseBattlePage
    {
       
-      private static const TOP_DETAILS_OFFSET_Y:Number = 510;
+      private static const BATTLE_DAMAGE_LOG_X_POSITION:int = 229;
       
-      private static const POINT_COUNTER_HALFWIDTH:int = 64;
+      private static const BATTLE_DAMAGE_LOG_Y_PADDING:int = 3;
       
-      private static const POINT_COUNTER_HEIGHT:int = 60;
+      private static const CONSUMABLES_POPUP_OFFSET:int = 60;
       
-      private static const POINT_COUNTER_ADAPTIVE_OFFSET:int = 30;
+      private static const HINT_PANEL_Y_SHIFT_MULTIPLIER:Number = 1.5;
       
-      private static const MINIMAP_BORDER:int = 15;
-      
-      private static const BOSS_INDICATOR_PROGRESS_WIDTH:int = 406;
-      
-      private static const BOSS_INDICATOR_PROGRESS_HEIGHT:int = 34;
-      
-      private static const BOSS_INDICATOR_PROGRESS_HEIGHT_ALL:int = 45;
+      private static const POINT_COUNTER_HEIGHT:int = 160;
       
       private static const VEHICLE_MESSAGES_LIST_OFFSET_Y:int = 106;
       
-      private static const PLAYER_MESSAGES_ADAPTIVE_MAX_WIDTH:int = 1200;
+      private static const BUFF_PANEL_OFFSET_Y:int = 135;
       
-      private static const ADAPTIVE_PLAYER_MESSAGES_RIBBON_PANEL_OFFSET:int = -20;
-      
-      private static const BUFF_PANEL_OFFSET_Y:int = 240;
-      
-      private static const BOSS_HP_OFFSET_Y_SMALL:int = 74;
-      
-      private static const BOSS_HP_OFFSET_Y_BIG:int = 108;
-      
-      private static const HEIGHT_MIN:int = 810;
-      
-      private static const MIN_COUNT_RIBBONS:int = 2;
-      
-      private static const MAX_COUNT_RIBBONS:int = 3;
-      
-      private static const RIBBONS_PANEL_OFFSET_Y:int = 15;
-      
-      private static const PHASE_INDICATOR_TOP:int = 15;
-      
-      private static const PHASE_INDICATOR_RIGHT:int = 18;
-      
-      private static const BUFF_NOTIFICATION_SYSTEM_OFFSET:int = 20;
-      
-      private static const BUFF_TWEEN_TIME:int = 300;
+      private static const PANEL_VEHICLES_OFFSET:int = 61;
        
+      
+      public var debugPanel:DebugPanel = null;
+      
+      public var battleDamageLogPanel:BattleDamageLogPanel = null;
+      
+      public var sixthSense:SixthSense = null;
+      
+      public var consumablesPanel:ConsumablesPanel = null;
+      
+      public var destroyTimersPanel:EventDestroyTimersPanel = null;
+      
+      public var hintPanel:HintPanel = null;
+      
+      public var damageInfoPanel:DamageInfoPanel = null;
+      
+      public var battleMessenger:BattleMessenger = null;
+      
+      public var fullStats:EventStats = null;
+      
+      public var radialMenu:RadialMenu = null;
       
       public var playersPanelEvent:EventPlayersPanel = null;
       
@@ -85,205 +73,117 @@ package net.wg.gui.battle.eventBattle.views
       
       public var eventPointCounter:EventPointCounter = null;
       
-      public var bossIndicatorProgress:BossIndicatorProgress = null;
-      
-      public var bossHPBar:BossHPBar = null;
-      
       public var eventTimer:EventTimer = null;
-      
-      public var eventStats:EventStats = null;
-      
-      public var eventDestroyTimersPanel:EventDestroyTimersPanel = null;
       
       public var buffsPanel:BuffsPanel = null;
       
-      public var phaseIndicator:PhaseIndicator = null;
-      
-      public var eventBuffNotificationSystem:EventBuffNotificationSystem = null;
-      
-      public var damageScreen:DamageScreen = null;
-      
-      private var _buffTween:Tween = null;
+      public var eventObjectives:EventObjectives = null;
       
       public function EventBattlePage()
       {
          super();
-         this.bossIndicatorProgress.visible = false;
+         this.battleDamageLogPanel.init(ATLAS_CONSTANTS.BATTLE_ATLAS);
          battleTimer.visible = false;
-         this.bossHPBar.visible = false;
-         endWarningPanel.visible = false;
-         this.bossIndicatorProgress.addEventListener(BossIndicatorEvent.INDICATOR_ENABLED,this.onBossProgressIndicatorEnabledHandler);
-         this.eventTimer.addEventListener(EventTimerEvent.SIZE_CHANGED,this.onEventTimerSizeChangedHandler);
-         battleDamageLogPanel.setTopDetailsOffsetY(TOP_DETAILS_OFFSET_Y);
-         this.eventBuffNotificationSystem.addEventListener(ResizableBuffNotificationSystemEvent.CHANGED_WIDTH_EVENT,this.onChangedWidthBuffNotificationSystemHandler);
-         this.eventTimer.addEventListener(ResizableBuffNotificationSystemEvent.CHANGED_TOP_EVENT,this.onChangedTopBuffNotificationSystemHandler);
-         this.eventMessage.addEventListener(BattleHintEvent.HINT_CHANGED,this.hintChangedEventHandler);
       }
       
-      public function as_updateDamageScreen(param1:Boolean) : void
+      override public function as_setPostmortemTipsVisible(param1:Boolean) : void
       {
-         this.damageScreen.visible = param1;
-         if(param1)
+         super.as_setPostmortemTipsVisible(param1);
+         if(!param1 && !this.consumablesPanel.hasEventListener(ConsumablesPanelEvent.UPDATE_POSITION))
          {
-            this.damageScreen.showSingleShineAnim();
+            this.consumablesPanel.addEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
          }
       }
       
       override public function updateStage(param1:Number, param2:Number) : void
       {
-         var _loc4_:uint = 0;
          super.updateStage(param1,param2);
+         this.battleDamageLogPanel.x = BATTLE_DAMAGE_LOG_X_POSITION;
+         this.battleDamageLogPanel.y = damagePanel.y + BATTLE_DAMAGE_LOG_Y_PADDING >> 0;
+         this.battleDamageLogPanel.updateSize(param1,param2);
          var _loc3_:uint = param1 >> 1;
-         _loc4_ = param2 >> 1;
+         var _loc4_:uint = param2 >> 1;
+         this.sixthSense.x = _loc3_;
+         this.sixthSense.y = param2 >> 2;
+         this.consumablesPanel.updateStage(param1,param2);
+         this.destroyTimersPanel.updateStage(param1,param2);
+         this.damageInfoPanel.y = (param2 >> 1) / scaleY + DAMAGE_INFO_PANEL_CONSTS.HEIGHT * scaleY | 0;
+         this.damageInfoPanel.x = param1 - DAMAGE_INFO_PANEL_CONSTS.WIDTH >> 1;
+         this.radialMenu.updateStage(param1,param2);
          this.eventMessage.updateStage(param1,param2);
-         this.eventStats.updateStageSize(param1,param2);
-         this.eventDestroyTimersPanel.updateStage(param1,param2);
-         this.eventStats.x = _loc3_;
-         this.eventStats.y = _loc4_;
+         this.fullStats.updateStageSize(param1,param2);
+         this.fullStats.x = _loc3_;
+         this.fullStats.y = _loc4_;
          this.eventTimer.x = _loc3_;
-         this.bossHPBar.x = _loc3_;
+         this.eventObjectives.x = param1 - this.eventObjectives.width >> 0;
          this.buffsPanel.x = _loc3_;
          this.buffsPanel.y = App.appHeight - BUFF_PANEL_OFFSET_Y;
-         var _loc5_:int = param2 < HEIGHT_MIN ? int(MIN_COUNT_RIBBONS) : int(MAX_COUNT_RIBBONS);
-         var _loc6_:int = this.buffsPanel.y - RibbonCtrl.ITEM_HEIGHT * _loc5_ - RIBBONS_PANEL_OFFSET_Y;
-         if(ribbonsPanel.y > _loc6_)
-         {
-            ribbonsPanel.y = _loc6_;
-         }
-         ribbonsPanel.setFreeWorkingHeight(this.buffsPanel.y - ribbonsPanel.y);
-         this.phaseIndicator.x = _originalWidth - PHASE_INDICATOR_RIGHT;
-         this.phaseIndicator.y = PHASE_INDICATOR_TOP;
-         this.setBossIndicatorProgressPosition();
-         this.consumablesPanelPositionUpdated();
-         this.playerMessageListPositionUpdate();
-         this.setBuffNotificationSystemPositionX();
-         this.setBuffNotificationSystemPositionY();
-         this.damageScreen.updateStage(param1,param2);
+         this.battleMessenger.x = damagePanel.x;
+         this.battleMessenger.y = damagePanel.y - this.battleMessenger.height + MESSENGER_Y_OFFSET - PANEL_VEHICLES_OFFSET >> 0;
+         this.updateHintPanelPosition();
+         this.updateConsumablesPanelPosition();
       }
       
-      override protected function setRibbonsPanelX() : void
+      override protected function configUI() : void
       {
-         var _loc1_:int = 0;
-         var _loc2_:PaddingSettings = RibbonSettings.getBuffsPaddings();
-         if(_loc2_)
-         {
-            _loc1_ = _loc2_.ribbonOffset;
-         }
-         ribbonsPanel.x = (_originalWidth >> 1) + _loc1_;
-      }
-      
-      override protected function consumablesPanelPositionUpdated() : void
-      {
-         this.eventPointCounter.x = App.appWidth - consumablesPanel.panelWidth - POINT_COUNTER_HALFWIDTH;
-         this.eventPointCounter.y = App.appHeight - POINT_COUNTER_HEIGHT;
-         if(battleDamageLogPanel.x + BattleDamageLogConstants.MAX_DAMAGE_LOG_VIEW_WIDTH > this.eventPointCounter.x - POINT_COUNTER_HALFWIDTH)
-         {
-            this.eventPointCounter.y += POINT_COUNTER_ADAPTIVE_OFFSET;
-         }
-      }
-      
-      override protected function getDamageLogPanelRightSpace() : int
-      {
-         return App.appWidth - consumablesPanel.panelWidth - (POINT_COUNTER_HALFWIDTH << 1);
-      }
-      
-      override protected function getPlayersPanelBottom() : int
-      {
-         return this.playersPanelEvent.y + this.playersPanelEvent.height;
-      }
-      
-      override protected function onRegisterStatisticController() : void
-      {
-      }
-      
-      override protected function createStatisticsController() : BattleStatisticDataController
-      {
-         return null;
-      }
-      
-      override protected function initializeStatisticsController(param1:BattleStatisticDataController) : void
-      {
-      }
-      
-      override protected function getBattleLoading() : BaseBattleLoading
-      {
-         return null;
+         this.battleMessenger.addEventListener(MouseEvent.ROLL_OVER,this.onBattleMessengerRollOverHandler);
+         this.battleMessenger.addEventListener(MouseEvent.ROLL_OUT,this.onBattleMessengerRollOutHandler);
+         this.consumablesPanel.addEventListener(ConsumablesPanelEvent.SWITCH_POPUP,this.onConsumablesPanelSwitchPopupHandler);
+         this.consumablesPanel.addEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
+         this.consumablesPanel.addEventListener(ConsumablesPanelEvent.SWITCH_POPUP,this.onConsumablesPanelSwitchPopupHandler);
+         this.battleMessenger.addEventListener(FocusRequestEvent.REQUEST_FOCUS,this.onBattleMessengerRequestFocusHandler);
+         this.battleMessenger.addEventListener(BattleMessenger.REMOVE_FOCUS,this.onBattleMessengerRemoveFocusHandler);
+         this.hintPanel.addEventListener(Event.RESIZE,this.onHintPanelResizeHandler);
+         super.configUI();
       }
       
       override protected function onPopulate() : void
       {
+         registerComponent(this.debugPanel,BATTLE_VIEW_ALIASES.DEBUG_PANEL);
+         registerComponent(this.battleDamageLogPanel,BATTLE_VIEW_ALIASES.BATTLE_DAMAGE_LOG_PANEL);
+         registerComponent(this.sixthSense,BATTLE_VIEW_ALIASES.SIXTH_SENSE);
+         registerComponent(this.battleMessenger,BATTLE_VIEW_ALIASES.BATTLE_MESSENGER);
+         registerComponent(this.consumablesPanel,BATTLE_VIEW_ALIASES.CONSUMABLES_PANEL);
+         registerComponent(this.destroyTimersPanel,BATTLE_VIEW_ALIASES.TIMERS_PANEL);
+         registerComponent(this.hintPanel,BATTLE_VIEW_ALIASES.HINT_PANEL);
+         registerComponent(this.damageInfoPanel,BATTLE_VIEW_ALIASES.DAMAGE_INFO_PANEL);
+         registerComponent(this.fullStats,BATTLE_VIEW_ALIASES.EVENT_STATS);
          registerComponent(this.playersPanelEvent,BATTLE_VIEW_ALIASES.PLAYERS_PANEL_EVENT);
          registerComponent(this.eventMessage,BATTLE_VIEW_ALIASES.BATTLE_HINT);
-         registerComponent(this.eventPointCounter,BATTLE_VIEW_ALIASES.EVENT_POINT_COUNTER);
-         registerComponent(this.bossIndicatorProgress,BATTLE_VIEW_ALIASES.BOSS_INDICATOR_PROGRESS);
-         registerComponent(this.bossHPBar,BATTLE_VIEW_ALIASES.BOSS_HPBAR);
          registerComponent(this.eventTimer,BATTLE_VIEW_ALIASES.EVENT_TIMER);
-         registerComponent(this.eventStats,BATTLE_VIEW_ALIASES.EVENT_STATS);
-         registerComponent(this.eventDestroyTimersPanel,BATTLE_VIEW_ALIASES.EVENT_DESTROY_TIMERS_PANEL);
          registerComponent(this.buffsPanel,BATTLE_VIEW_ALIASES.EVENT_BUFFS_PANEL);
-         registerComponent(this.phaseIndicator,BATTLE_VIEW_ALIASES.EVENT_PHASE_INDICATOR);
-         registerComponent(this.eventBuffNotificationSystem,BATTLE_VIEW_ALIASES.EVENT_BUFF_NOTIFICATION_SYSTEM);
+         registerComponent(this.eventPointCounter,BATTLE_VIEW_ALIASES.EVENT_POINT_COUNTER);
+         registerComponent(this.radialMenu,BATTLE_VIEW_ALIASES.RADIAL_MENU);
+         registerComponent(this.eventObjectives,BATTLE_VIEW_ALIASES.EVENT_OBJECTIVES);
          super.onPopulate();
       }
       
       override protected function onDispose() : void
       {
-         this.eventBuffNotificationSystem.removeEventListener(ResizableBuffNotificationSystemEvent.CHANGED_WIDTH_EVENT,this.onChangedWidthBuffNotificationSystemHandler);
-         this.eventTimer.removeEventListener(ResizableBuffNotificationSystemEvent.CHANGED_TOP_EVENT,this.onChangedTopBuffNotificationSystemHandler);
-         this.bossIndicatorProgress.removeEventListener(BossIndicatorEvent.INDICATOR_ENABLED,this.onBossProgressIndicatorEnabledHandler);
-         this.eventTimer.removeEventListener(EventTimerEvent.SIZE_CHANGED,this.onEventTimerSizeChangedHandler);
-         this.eventMessage.removeEventListener(BattleHintEvent.HINT_CHANGED,this.hintChangedEventHandler);
-         this.clearBuffTween();
+         this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
+         this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.SWITCH_POPUP,this.onConsumablesPanelSwitchPopupHandler);
+         this.consumablesPanel = null;
+         this.battleMessenger.removeEventListener(MouseEvent.ROLL_OVER,this.onBattleMessengerRollOverHandler);
+         this.battleMessenger.removeEventListener(MouseEvent.ROLL_OUT,this.onBattleMessengerRollOutHandler);
+         this.battleMessenger.removeEventListener(FocusRequestEvent.REQUEST_FOCUS,this.onBattleMessengerRequestFocusHandler);
+         this.battleMessenger.removeEventListener(BattleMessenger.REMOVE_FOCUS,this.onBattleMessengerRemoveFocusHandler);
+         this.battleMessenger = null;
+         this.hintPanel.removeEventListener(Event.RESIZE,this.onHintPanelResizeHandler);
+         this.hintPanel = null;
+         this.debugPanel = null;
+         this.battleDamageLogPanel = null;
+         this.sixthSense = null;
+         this.destroyTimersPanel = null;
+         this.damageInfoPanel = null;
+         this.fullStats = null;
+         this.radialMenu = null;
          this.playersPanelEvent = null;
          this.eventMessage = null;
+         this.eventObjectives = null;
          this.eventPointCounter = null;
-         this.bossIndicatorProgress = null;
-         this.bossHPBar = null;
-         this.eventTimer = null;
-         this.eventStats = null;
-         this.eventDestroyTimersPanel = null;
          this.buffsPanel = null;
-         this.phaseIndicator = null;
-         this.eventBuffNotificationSystem = null;
-         this.damageScreen.dispose();
-         this.damageScreen = null;
+         this.eventTimer = null;
          super.onDispose();
-      }
-      
-      override protected function getAllowedMinimapSizeIndex(param1:Number) : Number
-      {
-         var _loc2_:Number = App.appWidth - consumablesPanel.panelWidth;
-         var _loc3_:Rectangle = null;
-         while(param1 > MinimapSizeConst.MIN_SIZE_INDEX)
-         {
-            _loc3_ = minimap.getMinimapRectBySizeIndex(param1);
-            if(_loc2_ - _loc3_.width >= 0)
-            {
-               break;
-            }
-            param1--;
-         }
-         return param1;
-      }
-      
-      override protected function playerMessageListPositionUpdate() : void
-      {
-         var _loc1_:int = 0;
-         var _loc2_:int = 0;
-         if(minimap.visible)
-         {
-            _loc1_ = _originalHeight - minimap.getMessageCoordinate() + PLAYER_MESSAGES_LIST_OFFSET.y;
-            _loc2_ = ribbonsPanel.y + ADAPTIVE_PLAYER_MESSAGES_RIBBON_PANEL_OFFSET;
-            if(_originalWidth < PLAYER_MESSAGES_ADAPTIVE_MAX_WIDTH && _loc2_ < _loc1_)
-            {
-               _loc1_ = _loc2_;
-            }
-            playerMessageList.setLocation(_originalWidth - PLAYER_MESSAGES_LIST_OFFSET.x | 0,_loc1_);
-         }
-         else
-         {
-            playerMessageList.setLocation(_originalWidth - PLAYER_MESSAGES_LIST_OFFSET.x | 0,battleMessenger.y);
-         }
       }
       
       override protected function vehicleMessageListPositionUpdate() : void
@@ -298,112 +198,100 @@ package net.wg.gui.battle.eventBattle.views
          }
       }
       
-      private function setBossIndicatorProgressPosition() : void
+      private function updateBattleDamageLogPanelPosition() : void
       {
-         if(!this.bossIndicatorProgress.isEnabled)
+         var _loc1_:int = BattleDamageLogConstants.MAX_VIEW_RENDER_COUNT;
+         if(this.battleDamageLogPanel.x + BattleDamageLogConstants.MAX_DAMAGE_LOG_VIEW_WIDTH >= this.consumablesPanel.x)
          {
-            return;
+            _loc1_ = BattleDamageLogConstants.MIN_VIEW_RENDER_COUNT;
          }
-         this.bossIndicatorProgress.x = minimap.x + minimap.currentTopLeftPoint.x - MINIMAP_BORDER;
-         this.bossIndicatorProgress.width = App.appWidth - this.bossIndicatorProgress.x;
-         var _loc1_:Number = (App.appWidth - this.bossIndicatorProgress.x) / BOSS_INDICATOR_PROGRESS_WIDTH;
-         var _loc2_:Number = BOSS_INDICATOR_PROGRESS_HEIGHT * _loc1_;
-         this.bossIndicatorProgress.y = minimap.y + minimap.currentTopLeftPoint.y - MINIMAP_BORDER - _loc2_;
-         this.bossIndicatorProgress.height = BOSS_INDICATOR_PROGRESS_HEIGHT_ALL * _loc1_;
-         minimap.messageCoordinateOffset = _loc2_;
-         this.playerMessageListPositionUpdate();
+         this.battleDamageLogPanel.setDetailActionCount(_loc1_);
       }
       
-      private function setBuffNotificationSystemPositionX() : void
+      private function updateHintPanelPosition() : void
       {
-         this.eventBuffNotificationSystem.x = App.appWidth - this.eventBuffNotificationSystem.width >> 1;
+         this.hintPanel.x = _originalWidth - this.hintPanel.width >> 1;
+         this.hintPanel.y = HINT_PANEL_Y_SHIFT_MULTIPLIER * (_originalHeight - this.hintPanel.height >> 1) ^ 0;
       }
       
-      private function setBuffNotificationSystemPositionY() : void
+      private function updateConsumablesPanelPosition() : void
       {
-         var _loc1_:int = 0;
-         if(this.eventMessage.isShown)
+         this.eventPointCounter.x = App.appWidth >> 1;
+         this.eventPointCounter.y = App.appHeight - POINT_COUNTER_HEIGHT;
+      }
+      
+      private function swapElementsByMouseInteraction(param1:DisplayObject, param2:DisplayObject) : void
+      {
+         if(!App.contextMenuMgr.isShown() && this.checkZIndexes(param1,param2))
          {
-            _loc1_ = this.eventMessage.y + this.eventMessage.getMessageBottom() + BUFF_NOTIFICATION_SYSTEM_OFFSET;
+            this.swapChildren(param1,param2);
          }
-         else if(this.bossHPBar.visible)
+      }
+      
+      private function checkZIndexes(param1:DisplayObject, param2:DisplayObject) : Boolean
+      {
+         return this.getChildIndex(param1) > this.getChildIndex(param2);
+      }
+      
+      private function onBattleMessengerRollOutHandler(param1:MouseEvent) : void
+      {
+         if(!this.battleMessenger.isEnterButtonPressed)
          {
-            _loc1_ = this.bossHPBar.y + this.bossHPBar.height + BUFF_NOTIFICATION_SYSTEM_OFFSET;
+            this.swapElementsByMouseInteraction(this.battleMessenger,this.playersPanelEvent);
+         }
+      }
+      
+      private function onBattleMessengerRollOverHandler(param1:MouseEvent) : void
+      {
+         this.swapElementsByMouseInteraction(this.playersPanelEvent,this.battleMessenger);
+      }
+      
+      private function onBattleMessengerRequestFocusHandler(param1:FocusRequestEvent) : void
+      {
+         setFocus(param1.focusContainer.getComponentForFocus());
+         if(this.battleMessenger.isEnterButtonPressed)
+         {
+            this.swapElementsByMouseInteraction(this.playersPanelEvent,this.battleMessenger);
          }
          else
          {
-            _loc1_ = this.eventTimer.y + this.eventTimer.getTitleBottom() + BUFF_NOTIFICATION_SYSTEM_OFFSET;
+            this.swapElementsByMouseInteraction(this.battleMessenger,this.playersPanelEvent);
          }
-         this.clearBuffTween();
-         if(this.eventBuffNotificationSystem.isShown())
+      }
+      
+      private function onBattleMessengerRemoveFocusHandler(param1:Event) : void
+      {
+         setFocus(this);
+         this.swapElementsByMouseInteraction(this.playersPanelEvent,this.battleMessenger);
+      }
+      
+      private function onConsumablesPanelUpdatePositionHandler(param1:ConsumablesPanelEvent) : void
+      {
+         if(isPostMortem)
          {
-            this._buffTween = new Tween(BUFF_TWEEN_TIME,this.eventBuffNotificationSystem,{"y":_loc1_},{
-               "ease":Cubic.easeInOut,
-               "fastTransform":false
-            });
+            this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
+            updateBattleDamageLogPosInPostmortem();
          }
          else
          {
-            this.eventBuffNotificationSystem.y = _loc1_;
+            this.updateBattleDamageLogPanelPosition();
          }
+         minimap.updateSizeIndex(false);
       }
       
-      override protected function get isQuestProgress() : Boolean
+      private function onConsumablesPanelSwitchPopupHandler(param1:ConsumablesPanelEvent) : void
       {
-         return false;
-      }
-      
-      override protected function onMiniMapChangeHandler(param1:MinimapEvent) : void
-      {
-         this.setBossIndicatorProgressPosition();
-         super.onMiniMapChangeHandler(param1);
-      }
-      
-      private function onBossProgressIndicatorEnabledHandler(param1:BossIndicatorEvent) : void
-      {
-         this.setBossIndicatorProgressPosition();
-      }
-      
-      private function onChangedWidthBuffNotificationSystemHandler(param1:ResizableBuffNotificationSystemEvent) : void
-      {
-         this.setBuffNotificationSystemPositionX();
-      }
-      
-      private function onChangedTopBuffNotificationSystemHandler(param1:ResizableBuffNotificationSystemEvent) : void
-      {
-         this.setBuffNotificationSystemPositionY();
-      }
-      
-      private function hintChangedEventHandler(param1:BattleHintEvent) : void
-      {
-         this.setBuffNotificationSystemPositionY();
-      }
-      
-      private function onEventTimerSizeChangedHandler(param1:EventTimerEvent) : void
-      {
-         this.bossHPBar.y = param1.state == 0 ? Number(BOSS_HP_OFFSET_Y_SMALL) : Number(BOSS_HP_OFFSET_Y_BIG);
-         if(this.bossHPBar.visible)
+         var _loc2_:int = 0;
+         if(!postmortemTips || !postmortemTips.visible)
          {
-            this.setBuffNotificationSystemPositionY();
+            _loc2_ = !!this.consumablesPanel.isExpand ? int(CONSUMABLES_POPUP_OFFSET) : int(0);
+            vehicleMessageList.setLocation(_originalWidth - VEHICLE_MESSAGES_LIST_OFFSET.x >> 1,_originalHeight - VEHICLE_MESSAGES_LIST_OFFSET.y - _loc2_ | 0);
          }
       }
       
-      private function clearBuffTween() : void
+      private function onHintPanelResizeHandler(param1:Event) : void
       {
-         if(this._buffTween)
-         {
-            this._buffTween.dispose();
-            this._buffTween = null;
-         }
-      }
-      
-      override protected function setComponentsVisibility(param1:Vector.<String>, param2:Vector.<String>) : void
-      {
-         super.setComponentsVisibility(param1,param2);
-         if(param1.indexOf(BATTLE_VIEW_ALIASES.BOSS_HPBAR) != -1)
-         {
-            this.setBuffNotificationSystemPositionY();
-         }
+         this.updateHintPanelPosition();
       }
    }
 }

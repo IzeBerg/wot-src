@@ -893,6 +893,110 @@
 		<name>Italy Battle</name>
 		<type>EMBLEM</type>
 	</itemGroup>
+	<itemGroup>
+		<userString>#vehicle_customization:emblem/battle</userString>
+		<season>ALL</season>
+		<historical>0</historical>
+		<priceGroup>emblems 50g notInShop</priceGroup>
+		<decal>
+			<id>570</id>
+			<texture>gui/maps/vehicles/decals/player_stickers/battle/sticker_89.dds</texture>
+			<userString>#vehicle_customization:emblem/battle/sticker_89</userString>
+			<mirror>false</mirror>
+		</decal>
+		<decal>
+			<id>571</id>
+			<texture>gui/maps/vehicles/decals/player_stickers/battle/sticker_90.dds</texture>
+			<userString>#vehicle_customization:emblem/battle/sticker_90</userString>
+			<mirror>false</mirror>
+		</decal>
+		<decal>
+			<id>572</id>
+			<texture>gui/maps/vehicles/decals/player_stickers/battle/sticker_91.dds</texture>
+			<userString>#vehicle_customization:emblem/battle/sticker_91</userString>
+			<mirror>false</mirror>
+		</decal>
+		<decal>
+			<id>573</id>
+			<texture>gui/maps/vehicles/decals/player_stickers/battle/sticker_92.dds</texture>
+			<userString>#vehicle_customization:emblem/battle/sticker_92</userString>
+			<mirror>false</mirror>
+		</decal>
+		<decal>
+			<id>574</id>
+			<texture>gui/maps/vehicles/decals/player_stickers/battle/sticker_93.dds</texture>
+			<userString>#vehicle_customization:emblem/battle/sticker_93</userString>
+			<mirror>false</mirror>
+		</decal>
+		<decal>
+			<id>575</id>
+			<texture>gui/maps/vehicles/decals/player_stickers/battle/sticker_94.dds</texture>
+			<userString>#vehicle_customization:emblem/battle/sticker_94</userString>
+			<mirror>false</mirror>
+		</decal>
+		<decal>
+			<id>576</id>
+			<texture>gui/maps/vehicles/decals/player_stickers/battle/sticker_95.dds</texture>
+			<userString>#vehicle_customization:emblem/battle/sticker_95</userString>
+			<mirror>false</mirror>
+		</decal>
+		<decal>
+			<id>577</id>
+			<texture>gui/maps/vehicles/decals/player_stickers/battle/sticker_96.dds</texture>
+			<userString>#vehicle_customization:emblem/battle/sticker_96</userString>
+			<mirror>false</mirror>
+		</decal>
+		<decal>
+			<id>578</id>
+			<texture>gui/maps/vehicles/decals/player_stickers/battle/sticker_97.dds</texture>
+			<userString>#vehicle_customization:emblem/battle/sticker_97</userString>
+			<mirror>false</mirror>
+		</decal>
+		<decal>
+			<id>579</id>
+			<texture>gui/maps/vehicles/decals/player_stickers/battle/sticker_98.dds</texture>
+			<userString>#vehicle_customization:emblem/battle/sticker_98</userString>
+			<mirror>false</mirror>
+		</decal>
+		<decal>
+			<id>598</id>
+			<texture>gui/maps/vehicles/decals/player_stickers/battle/sticker_99.dds</texture>
+			<userString>#vehicle_customization:emblem/battle/sticker_99</userString>
+			<mirror>false</mirror>
+		</decal>
+		<decal>
+			<id>736</id>
+			<texture>gui/maps/vehicles/decals/player_stickers/battle/sticker_100.dds</texture>
+			<userString>#vehicle_customization:emblem/battle/sticker_100</userString>
+			<mirror>false</mirror>
+		</decal>
+		<decal>
+			<id>748</id>
+			<texture>gui/maps/vehicles/decals/player_stickers/battle/sticker_101.dds</texture>
+			<userString>#vehicle_customization:emblem/battle/sticker_101</userString>
+			<mirror>false</mirror>
+		</decal>
+		<decal>
+			<id>749</id>
+			<texture>gui/maps/vehicles/decals/player_stickers/battle/sticker_102.dds</texture>
+			<userString>#vehicle_customization:emblem/battle/sticker_102</userString>
+			<mirror>false</mirror>
+		</decal>
+		<decal>
+			<id>750</id>
+			<texture>gui/maps/vehicles/decals/player_stickers/battle/sticker_103.dds</texture>
+			<userString>#vehicle_customization:emblem/battle/sticker_103</userString>
+			<mirror>false</mirror>
+		</decal>
+		<decal>
+			<id>772</id>
+			<texture>gui/maps/vehicles/decals/player_stickers/battle/sticker_104.dds</texture>
+			<userString>#vehicle_customization:emblem/battle/sticker_104</userString>
+			<mirror>false</mirror>
+		</decal>
+		<name>NA Divisional</name>
+		<type>EMBLEM</type>
+	</itemGroup>
 	<xmlns:ussr>ussr</xmlns:ussr>
 	<xmlns:germany>germany</xmlns:germany>
 	<xmlns:usa>usa</xmlns:usa>
@@ -4689,17 +4793,6 @@
 			<id>57</id>
 			<texture>gui/maps/vehicles/decals/player_stickers/special/sticker_516.dds</texture>
 			<userString>#vehicle_customization:emblem/special/sticker_516</userString>
-			<mirror>false</mirror>
-		</decal>
-		<decal>
-			<id>9350</id>
-			<texture>gui/maps/vehicles/decals/player_stickers/special/sticker_517.dds</texture>
-			<userString>#vehicle_customization:emblem/special/sticker_517</userString>
-			<vehicleFilter>
-				<include>
-					<vehicles>france:F17_AMX_13_90_Halloween_event uk:GB24_Centurion_Mk3_Halloween_event usa:A100_T49_Halloween_event usa:A66_M103_Halloween_event ussr:R40_T-54_Halloween_event</vehicles>
-				</include>
-			</vehicleFilter>
 			<mirror>false</mirror>
 		</decal>
 		<decal>
@@ -11306,6 +11399,41 @@
 		<historical>1</historical>
 		<tags>hiddenInUI</tags>
 		<priceGroup>inscriptions 50g notInShop</priceGroup>
+		<vehicleFilter>
+			<include>
+				<levels>10</levels>
+			</include>
+		</vehicleFilter>
+		<decal>
+			<id>836</id>
+			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_569.dds</texture>
+			<userString>#vehicle_customization:inscription/special/special_569</userString>
+			<mirror>false</mirror>
+		</decal>
+		<name>Ranked Battle 2021_2</name>
+		<type>INSCRIPTION</type>
+	</itemGroup>
+	<itemGroup>
+		<userString>#vehicle_customization:inscription/special</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>inscriptions 50g notInShop</priceGroup>
+		<decal>
+			<id>837</id>
+			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_571.dds</texture>
+			<maxNumber>6</maxNumber>
+			<userString>#vehicle_customization:inscription/special/special_571</userString>
+			<mirror>false</mirror>
+		</decal>
+		<name>NY 2022</name>
+		<type>INSCRIPTION</type>
+	</itemGroup>
+	<itemGroup>
+		<userString>#vehicle_customization:inscription/special</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<tags>hiddenInUI</tags>
+		<priceGroup>inscriptions 50g notInShop</priceGroup>
 		<decal>
 			<id>844</id>
 			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_572.dds</texture>
@@ -11333,6 +11461,38 @@
 			<mirror>false</mirror>
 		</decal>
 		<name>Seniority Awards 2021</name>
+		<type>INSCRIPTION</type>
+	</itemGroup>
+	<itemGroup>
+		<userString>#vehicle_customization:inscription/special</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>inscriptions 50g notInShop</priceGroup>
+		<decal>
+			<id>849</id>
+			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_599.dds</texture>
+			<maxNumber>6</maxNumber>
+			<userString>#vehicle_customization:inscription/special/special_599</userString>
+			<description>#vehicle_customization:inscription/special/special_599/description</description>
+			<mirror>false</mirror>
+		</decal>
+		<decal>
+			<id>850</id>
+			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_600.dds</texture>
+			<maxNumber>6</maxNumber>
+			<userString>#vehicle_customization:inscription/special/special_600</userString>
+			<description>#vehicle_customization:inscription/special/special_599/description</description>
+			<mirror>false</mirror>
+		</decal>
+		<decal>
+			<id>851</id>
+			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_601.dds</texture>
+			<maxNumber>6</maxNumber>
+			<userString>#vehicle_customization:inscription/special/special_601</userString>
+			<description>#vehicle_customization:inscription/special/special_599/description</description>
+			<mirror>false</mirror>
+		</decal>
+		<name>NY 2022</name>
 		<type>INSCRIPTION</type>
 	</itemGroup>
 	<xmlns:ussr>ussr</xmlns:ussr>
@@ -11906,6 +12066,20 @@
 			<tags>hiddenInUI</tags>
 		</decal>
 		<name>twitch_august_2021</name>
+		<type>INSCRIPTION</type>
+	</itemGroup>
+	<itemGroup>
+		<userString>#vehicle_customization:inscription/special</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>inscriptions 50g notInShop</priceGroup>
+		<decal>
+			<id>852</id>
+			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_64.dds</texture>
+			<userString>#vehicle_customization:inscription/special/special_64</userString>
+			<mirror>false</mirror>
+		</decal>
+		<name>Twitch December 2021</name>
 		<type>INSCRIPTION</type>
 	</itemGroup>
 	<itemGroup>

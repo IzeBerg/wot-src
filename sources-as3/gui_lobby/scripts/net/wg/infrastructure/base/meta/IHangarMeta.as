@@ -50,6 +50,8 @@ package net.wg.infrastructure.base.meta
       
       function as_setNotificationEnabled(param1:Boolean) : void;
       
+      function as_setLootboxesVisible(param1:Boolean) : void;
+      
       function as_createDQWidget() : void;
       
       function as_destroyDQWidget() : void;
@@ -60,10 +62,6 @@ package net.wg.infrastructure.base.meta
       
       function as_toggleCnSubscription(param1:Boolean) : void;
       
-      function as_setYHAVisible(param1:Boolean) : void;
-      
       function as_setDQWidgetLayout(param1:int) : void;
-      
-      function as_setShopSalesVisible(param1:Boolean) : void;
    }
 }

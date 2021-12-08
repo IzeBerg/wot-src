@@ -20,7 +20,7 @@ package net.wg.gui.battle.eventBattle.views.battleHints
          super.onDispose();
       }
       
-      public function setText(param1:String, param2:uint = 16777215, param3:String = "center") : void
+      public function setText(param1:String) : void
       {
          this.txt.htmlText = param1;
       }

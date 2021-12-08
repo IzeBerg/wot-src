@@ -68,18 +68,6 @@ package net.wg.data.constants.generated
       public static const DAMAGELOG_BY_MINE_FIELD_16X16:String = "damageLog_by_mine_field_16x16";
       
       public static const DAMAGELOG_DMG_BY_SMOKE_16X16:String = "damageLog_by_smoke_16x16";
-      
-      public static const DAMAGELOG_BOSS_16X16:String = "eventBigBossBot";
-      
-      public static const DAMAGELOG_SENTRY_16X16:String = "eventSentryBot";
-      
-      public static const DAMAGELOG_RUNNER_16X16:String = "eventRunnerBot";
-      
-      public static const DAMAGELOG_HUNTER_16X16:String = "eventHunterBot";
-      
-      public static const DAMAGELOG_BOMBER_16X16:String = "eventBomberBot";
-      
-      public static const DAMAGELOG_TURRET_16X16:String = "eventTurretBot";
        
       
       public function BATTLEDAMAGELOG_IMAGES()

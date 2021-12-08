@@ -121,7 +121,7 @@ package net.wg.gui.battle.views.prebattleTimer
          }
          if(isInvalid(INVALID_MESSAGE_TF))
          {
-            this.message.htmlLabel = this._messageText;
+            this.message.label = this._messageText;
             invalidateSize();
          }
          if(isInvalid(INVALID_WIN_TF))

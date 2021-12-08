@@ -1,4 +1,5 @@
 import time, ArenaType, ResMgr, nations
+from items.components.ny_constants import CurrentNYConstants
 from soft_exception import SoftException
 from copy import deepcopy
 from pprint import pformat
@@ -196,7 +197,6 @@ class Source(object):
                 questClientData['conditions'] = mainNode.questClientConditions
             if mainNode.groupContent:
                 questClientData['groupContent'] = mainNode.groupContent
-                mainNode.info['groupContent'] = mainNode.groupContent
             self.__stripServerQuestData(questClientData)
             mainNode.info['questClientData'] = questClientData
             nodes.setdefault(eventType, []).append(mainNode)
@@ -479,7 +479,8 @@ class Source(object):
          'premium', 'premium_plus', 'premium_vip', 'token', 'goodie', 'vehicle', 'dossier', 'tankmen',
          'customizations', 'vehicleChoice', 'crewSkin', 'blueprint', 'blueprintAny', 'enhancement',
          'eventCoin', 'bpcoin', 'entitlement', 'rankedDailyBattles', 'rankedBonusBattles',
-         'dogTagComponent', 'battlePassPoints', 'currency'}
+         'dogTagComponent', 'battlePassPoints', 'currency', CurrentNYConstants.TOY_FRAGMENTS,
+         CurrentNYConstants.FILLERS, CurrentNYConstants.TOY_BONUS, CurrentNYConstants.ANY_OF}
         if eventType in (EVENT_TYPE.BATTLE_QUEST, EVENT_TYPE.PERSONAL_QUEST, EVENT_TYPE.NT_QUEST):
             bonusTypes.update(('xp', 'tankmenXP', 'xpFactor', 'creditsFactor', 'freeXPFactor',
                                'tankmenXPFactor'))

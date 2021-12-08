@@ -19,6 +19,7 @@ _EPIC_BATTLE_TIPS_PATTERN = '^(epicTip\\d+)'
 _EPIC_RANDOM_TIPS_PATTERN = '^(epicRandom\\d+)'
 _RANKED_BATTLES_TIPS_PATTERN = '^(ranked\\d+)'
 _BATTLE_ROYALE_TIPS_PATTERN = '^(battleRoyale\\d+$)'
+_NEW_YEAR_TIP_CHANCE = 0.25
 
 class _BattleLoadingTipPriority(object):
     GENERIC = 1
@@ -241,7 +242,8 @@ class _TipsValidator(object):
          _RealmsValidator(),
          _BattlePassValidator(),
          _RankedBattlesValidator(),
-         _PostProgressionValidator())
+         _PostProgressionValidator(),
+         _ChassisTypeValidator())
 
     def validateRegularTip(self, tipFilter, ctx=None):
         if not tipFilter:
@@ -312,6 +314,14 @@ class _PrecedingBattleLoadingTip(_BattleLoadingTip):
         if watchedTimes < self._showLimit:
             return _BattleLoadingTipPriority.PRECEDING
         return _BattleLoadingTipPriority.GENERIC
+
+
+class _ChassisTypeValidator(object):
+
+    @staticmethod
+    def validate(tipFilter, ctx):
+        chassisType = tipFilter['chassisType']
+        return chassisType < 0 or ctx['vehicleType'].chassisType == chassisType
 
 
 class _BattlesValidator(object):

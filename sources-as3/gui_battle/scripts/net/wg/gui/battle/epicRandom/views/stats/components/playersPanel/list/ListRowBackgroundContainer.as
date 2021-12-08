@@ -72,5 +72,10 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
          }
          this._listRowBackgroundItems.splice(0,this._listRowBackgroundItems.length);
       }
+      
+      public function get rowHeight() : int
+      {
+         return this._listRowBackgroundItems.length * ITEM_HEIGHT;
+      }
    }
 }

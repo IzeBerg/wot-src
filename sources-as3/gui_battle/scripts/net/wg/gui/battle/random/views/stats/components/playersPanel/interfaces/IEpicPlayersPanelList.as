@@ -9,5 +9,7 @@ package net.wg.gui.battle.random.views.stats.components.playersPanel.interfaces
       function get selectedPlayerGroup() : int;
       
       function set selectedPlayerGroup(param1:int) : void;
+      
+      function get listHeight() : int;
    }
 }

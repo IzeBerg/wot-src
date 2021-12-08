@@ -44,7 +44,6 @@ from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.utils import IHangarSpace, IRaresCache
 from skeletons.gui.sounds import ISoundsController
 from skeletons.gui.web import IWebController
-from skeletons.gui.game_event_controller import IGameEventController
 from skeletons.helpers.statistics import IStatisticsCollector
 _logger = logging.getLogger(__name__)
 try:
@@ -77,13 +76,11 @@ class ServicesLocator(object):
     appLoader = dependency.descriptor(IAppLoader)
     offersProvider = dependency.descriptor(IOffersDataProvider)
     bootcamp = dependency.descriptor(IBootcampController)
-    gameEventController = dependency.descriptor(IGameEventController)
 
     @classmethod
     def clear(cls):
         cls.itemsCache.clear()
         cls.goodiesCache.clear()
-        cls.gameEventController.clear()
         cls.eventsCache.clear()
         cls.lobbyContext.clear()
         cls.settingsCore.clear()
@@ -149,7 +146,6 @@ def onAccountBecomeNonPlayer():
     ServicesLocator.hangarSpace.destroy()
     g_prbLoader.onAccountBecomeNonPlayer()
     ServicesLocator.gameState.onAccountBecomeNonPlayer()
-    ServicesLocator.gameEventController.stop()
     guiModsSendEvent('onAccountBecomeNonPlayer')
     UsersInfoHelper.clear()
     g_blueprintGenerator.fini()
@@ -162,7 +158,6 @@ def onAvatarBecomePlayer():
     ServicesLocator.settingsCore.serverSettings.applySettings()
     ServicesLocator.soundCtrl.stop()
     ServicesLocator.webCtrl.stop(logout=False)
-    ServicesLocator.gameEventController.stop()
     ServicesLocator.eventsCache.stop()
     g_prbLoader.onAvatarBecomePlayer()
     ServicesLocator.gameState.onAvatarBecomePlayer()
@@ -212,6 +207,8 @@ def onShopResync():
 
 
 def onCenterIsLongDisconnected(isLongDisconnected):
+    if not BigWorld.player():
+        return
     isAvailable = not BigWorld.player().isLongDisconnectedFromCenter
     if isAvailable and not isLongDisconnected:
         SystemMessages.pushI18nMessage(MENU.CENTERISAVAILABLE, type=SystemMessages.SM_TYPE.Information)
@@ -394,7 +391,6 @@ def __runQuestSync(_, callback=None):
 @async
 @process
 def __runSettingsSync(_, callback=None):
-    ServicesLocator.gameEventController.start()
     ServicesLocator.statsCollector.noteHangarLoadingState(HANGAR_LOADING_STATE.USER_SERVER_SETTINGS_SYNC)
     yield ServicesLocator.settingsCache.update()
     ServicesLocator.settingsCore.serverSettings.applySettings()

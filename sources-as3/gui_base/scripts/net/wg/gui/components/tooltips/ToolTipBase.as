@@ -118,7 +118,7 @@ package net.wg.gui.components.tooltips
          this.clearDelayIntervalID();
          this.tryClearTween();
          this.cleaUpSeparators();
-         if(this._data && App.utils.data)
+         if(this._data)
          {
             App.utils.data.cleanupDynamicObject(this._data);
          }
@@ -185,15 +185,9 @@ package net.wg.gui.components.tooltips
          {
             for each(_loc1_ in this.separators)
             {
-               if(_loc1_)
-               {
-                  if(this.content)
-                  {
-                     this.content.removeChild(_loc1_);
-                  }
-                  _loc1_.x = _loc1_.y = 0;
-                  _loc1_.dispose();
-               }
+               this.content.removeChild(_loc1_);
+               _loc1_.x = _loc1_.y = 0;
+               _loc1_.dispose();
             }
             this.separators.splice(0,this.separators.length);
             this.separators = null;

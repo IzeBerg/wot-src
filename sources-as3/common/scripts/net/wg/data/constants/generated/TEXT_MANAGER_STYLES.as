@@ -67,6 +67,8 @@ package net.wg.data.constants.generated
       
       public static const TUTORIAL_TEXT:String = "tutorialText";
       
+      public static const TUTORIAL_TEXT_BIG:String = "tutorialTextBig";
+      
       public static const VEHICLE_STATUS_INFO_TEXT:String = "vehicleStatusInfoText";
       
       public static const VEHICLE_STATUS_CRITICAL_TEXT:String = "vehicleStatusCriticalText";
@@ -96,6 +98,14 @@ package net.wg.data.constants.generated
       public static const GRAND_TITLE_YELLOW:String = "grandTitleYellow";
       
       public static const GRAND_TITLE_TK:String = "grandTitleTK";
+      
+      public static const NY_VEHICLE_TITLE:String = "nyVehicleTitle";
+      
+      public static const NY_VEHICLE_SMALL_TITLE:String = "nyVehicleSmallTitle";
+      
+      public static const NY_VEHICLE_MAIN:String = "nyVehicleMain";
+      
+      public static const NY_VEHICLE_SMALL_MAIN:String = "nyVehicleSmallMain";
        
       
       public function TEXT_MANAGER_STYLES()

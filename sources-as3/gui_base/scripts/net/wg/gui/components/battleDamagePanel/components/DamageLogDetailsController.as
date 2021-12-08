@@ -60,6 +60,12 @@ package net.wg.gui.components.battleDamagePanel.components
          this._poolRenderers = new Vector.<DamageLogRenderer>();
       }
       
+      private static function changeRendererVisible(param1:DamageLogRenderer, param2:Boolean) : void
+      {
+         param1.visible = param2;
+         param1.externalImagesContainer.visible = param2;
+      }
+      
       public function addDetailsMessage(param1:String, param2:String, param3:String, param4:String, param5:String, param6:String) : void
       {
          if(this._nextItemInPoolIdx >= this._poolRenderers.length)
@@ -144,7 +150,7 @@ package net.wg.gui.components.battleDamagePanel.components
          }
          while(_loc2_ >= _loc3_)
          {
-            this.changeRendererVisible(this._poolRenderers[_loc2_],_loc4_);
+            changeRendererVisible(this._poolRenderers[_loc2_],_loc4_);
             _loc2_--;
          }
          this._visibilityRowsCount = param1;
@@ -174,6 +180,7 @@ package net.wg.gui.components.battleDamagePanel.components
       
       private function scroll(param1:int) : void
       {
+         var _loc3_:int = 0;
          var _loc2_:int = this._scrollPosition + param1;
          if(param1 > 0 && _loc2_ > this._totalFilledData)
          {
@@ -188,26 +195,28 @@ package net.wg.gui.components.battleDamagePanel.components
             return;
          }
          _loc2_ = this._scrollPosition + param1;
-         var _loc3_:int = param1 / Math.abs(param1);
+         _loc3_ = param1 / Math.abs(param1);
+         var _loc4_:Boolean = _loc3_ > 0;
          while(this._scrollPosition != _loc2_)
          {
-            if(_loc3_ > 0)
+            if(_loc4_)
             {
-               this.changeRendererVisible(this._poolRenderers[this._scrollPosition],true);
+               changeRendererVisible(this._poolRenderers[this._scrollPosition],true);
                if(this._scrollPosition >= this._visibilityRowsCount)
                {
-                  this.changeRendererVisible(this._poolRenderers[this._scrollPosition - this._visibilityRowsCount],false);
+                  changeRendererVisible(this._poolRenderers[this._scrollPosition - this._visibilityRowsCount],false);
                }
             }
             else
             {
-               this.changeRendererVisible(this._poolRenderers[this._scrollPosition - this._visibilityRowsCount - 1],true);
-               this.changeRendererVisible(this._poolRenderers[this._scrollPosition - 1],false);
+               changeRendererVisible(this._poolRenderers[this._scrollPosition - this._visibilityRowsCount - 1],true);
+               changeRendererVisible(this._poolRenderers[this._scrollPosition - 1],false);
             }
             this._scrollPosition += _loc3_;
          }
-         this._damageLogDetailsImages.y = BattleDamageLogConstants.RENDER_STEP_SIZE * this._scrollPosition;
-         this._damageLogDetailsText.y = BattleDamageLogConstants.RENDER_STEP_SIZE * this._scrollPosition;
+         var _loc5_:int = BattleDamageLogConstants.RENDER_STEP_SIZE * this._scrollPosition;
+         this._damageLogDetailsImages.y = _loc5_;
+         this._damageLogDetailsText.y = _loc5_;
       }
       
       private function makePool(param1:int) : void
@@ -258,14 +267,8 @@ package net.wg.gui.components.battleDamagePanel.components
          this._totalFilledData = 0;
          for each(_loc1_ in this._poolRenderers)
          {
-            this.changeRendererVisible(_loc1_,false);
+            changeRendererVisible(_loc1_,false);
          }
-      }
-      
-      private function changeRendererVisible(param1:DamageLogRenderer, param2:Boolean) : void
-      {
-         param1.visible = param2;
-         param1.externalImagesContainer.visible = param2;
       }
       
       private function onDmgLogDetailsImagesMouseWheelHandler(param1:MouseEvent) : void

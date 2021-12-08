@@ -65,20 +65,6 @@ package net.wg.data.constants.generated
       
       public static const ENGINE_CIRCLE:String = "engineCircle";
       
-      public static const EVENT_BIG_BOSS_BOT:String = "eventBigBossBot";
-      
-      public static const EVENT_BOMBER_BOT:String = "eventBomberBot";
-      
-      public static const EVENT_HUNTER_BOT:String = "eventHunterBot";
-      
-      public static const EVENT_RUNNER_BOT:String = "eventRunnerBot";
-      
-      public static const EVENT_RUNNER_SHOOTER_BOT:String = "eventRunnerShooterBot";
-      
-      public static const EVENT_SENTRY_BOT:String = "eventSentryBot";
-      
-      public static const EVENT_TURRET_BOT:String = "eventTurretBot";
-      
       public static const GUN_CIRCLE:String = "gunCircle";
       
       public static const GUNNER_CIRCLE:String = "gunnerCircle";
