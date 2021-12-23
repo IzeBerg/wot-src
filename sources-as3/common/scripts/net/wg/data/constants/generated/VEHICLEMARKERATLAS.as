@@ -1833,6 +1833,8 @@ package net.wg.data.constants.generated
       
       public static const USSR_R193_M4_A2_T_34:String = "ussr-R193_M4A2_T_34";
       
+      public static const USSR_R195_T34_M_54:String = "ussr-R195_T34M_54";
+      
       public static const USSR_R20_T_44:String = "ussr-R20_T-44";
       
       public static const USSR_R20_T_44_FL:String = "ussr-R20_T-44_FL";

@@ -141,16 +141,19 @@ class NyAlbumView(HistorySubModelPresenter):
             model.setIsFaded(True)
 
     def __onCollectionSelected(self, args):
-        if args is None or 'collectionName' not in args:
+        if not (self.isCurrentYear or self._nyController.isMaxAtmosphereLevel()):
             return
-        state = (
-         TabState.PAGE_STATE,
-         {'collectionType': args['collectionName'], 
-            'rankToCollection': {args['collectionName']: self.albumPresenter.DEFAULT_RANK}})
-        self._tabCache.saveState(self.__yearName, state)
-        with self.viewModel.transaction() as (model):
-            model.setIsFaded(True)
-        return
+        else:
+            if args is None or 'collectionName' not in args:
+                return
+            state = (
+             TabState.PAGE_STATE,
+             {'collectionType': args['collectionName'], 
+                'rankToCollection': {args['collectionName']: self.albumPresenter.DEFAULT_RANK}})
+            self._tabCache.saveState(self.__yearName, state)
+            with self.viewModel.transaction() as (model):
+                model.setIsFaded(True)
+            return
 
     def __onAlbumFaded(self):
         tabState, stateInfo = self._tabCache.getState(self.__yearName)

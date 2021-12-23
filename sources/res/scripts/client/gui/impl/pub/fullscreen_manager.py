@@ -1,6 +1,7 @@
 import logging, weakref, typing
 from frameworks.state_machine import SingleStateObserver
 from frameworks.wulf import WindowLayer, WindowStatus
+from gui.impl.gen import R
 from helpers import dependency
 from skeletons.gameplay import GameplayStateID, IGameplayLogic
 from skeletons.gui.impl import IGuiLoader, IFullscreenManager, INotificationWindowController
@@ -19,6 +20,9 @@ class FullscreenManager(IFullscreenManager):
     __gui = dependency.descriptor(IGuiLoader)
     __gameplay = dependency.descriptor(IGameplayLogic)
     __notificationMgr = dependency.descriptor(INotificationWindowController)
+    _NOT_BRAKING_VIEWS = (
+     R.views.lobby.new_year.views.NyLootBoxMainView(),
+     R.views.lobby.loot_box.views.loot_box_entry_video_view.LootBoxEntryVideoView())
 
     def __init__(self):
         super(FullscreenManager, self).__init__()
@@ -59,7 +63,7 @@ class FullscreenManager(IFullscreenManager):
                 else:
                     _logger.info("Window %r hasn't been destroyed by opening window %r", window, newWindow)
 
-        if (not windows or windowsToClose) and not self.__notificationMgr.hasWindow(newWindow) and self.__isAllowed(newWindow):
+        if (not windows or windowsToClose) and not self.__notificationMgr.hasWindow(newWindow) and self.__requiresPostpone(newWindow):
             _logger.info('Notification queue postpones by opening window %r', newWindow)
             self.__notificationMgr.postponeActive()
         for window in windowsToClose:
@@ -79,6 +83,14 @@ class FullscreenManager(IFullscreenManager):
     def __fullscreenPredicate(window):
         return window.layer == WindowLayer.FULLSCREEN_WINDOW and window.windowStatus in (
          WindowStatus.LOADING, WindowStatus.LOADED)
+
+    @classmethod
+    def __requiresPostpone(cls, window):
+        if not cls.__isAllowed(window):
+            return False
+        if window.content and window.content.layoutID in cls._NOT_BRAKING_VIEWS:
+            return False
+        return True
 
     @staticmethod
     def __isAllowed(window):

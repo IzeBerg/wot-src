@@ -4301,6 +4301,8 @@ package
       
       public static const EMBLEM_SPECIAL_STICKER_701:String = "#vehicle_customization:emblem/special/sticker_701";
       
+      public static const EMBLEM_SPECIAL_STICKER_702:String = "#vehicle_customization:emblem/special/sticker_702";
+      
       public static const INSCRIPTION:String = "#vehicle_customization:inscription";
       
       public static const INSCRIPTION_HISTORICAL:String = "#vehicle_customization:inscription/historical";
@@ -9752,6 +9754,10 @@ package
       public static const SPECIAL_STYLE_NY_2022_SCHWARZ_DESC_LONG:String = "#vehicle_customization:special_style/ny_2022_schwarz_desc/long";
       
       public static const SPECIAL_STYLE_TWITCH_DECEMBER_2021:String = "#vehicle_customization:special_style/twitch_december_2021";
+      
+      public static const MAIN_STYLE_IT18_PROGETTO_C45_MOD_71_3DST_WHAC_2021:String = "#vehicle_customization:main_style/It18_Progetto_C45_mod_71_3DSt_WHAC_2021";
+      
+      public static const MAIN_STYLE_IT18_PROGETTO_C45_MOD_71_3DST_WHAC_2021_DESC_LONG:String = "#vehicle_customization:main_style/It18_Progetto_C45_mod_71_3DSt_WHAC_2021_desc/long";
       
       public static const CUSTOMIZATION_POPOVER_STYLE_SUMMER:String = "#vehicle_customization:customization/popover/style/summer";
       
