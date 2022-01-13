@@ -387,6 +387,9 @@ class IHeroTankController(IGameController):
     def getCurrentVehicleName(self):
         raise NotImplementedError
 
+    def getCurrentVehicleAction(self):
+        raise NotImplementedError
+
     def getCurrentShopUrl(self):
         raise NotImplementedError
 
@@ -1430,6 +1433,15 @@ class ICalendarController(IGameController):
         raise NotImplementedError
 
     def hideWindow(self):
+        raise NotImplementedError
+
+
+class IWOController(IGameController):
+
+    def isAuctionActive(self):
+        raise NotImplementedError
+
+    def goToAuction(self):
         raise NotImplementedError
 
 

@@ -2689,6 +2689,10 @@ package
       
       public static const CAMOUFLAGE_TWITCH_DECEMBER_2021_DESCRIPTION:String = "#vehicle_customization:camouflage/twitch_december_2021/description";
       
+      public static const CAMOUFLAGE_LUNAR_NY_2022_LABEL:String = "#vehicle_customization:camouflage/lunar_ny_2022/label";
+      
+      public static const CAMOUFLAGE_LUNAR_NY_2022_DESCRIPTION:String = "#vehicle_customization:camouflage/lunar_ny_2022/description";
+      
       public static const EMBLEM:String = "#vehicle_customization:emblem";
       
       public static const EMBLEM_CLAN_CONTENT:String = "#vehicle_customization:emblem/clan_content";
@@ -7527,6 +7531,8 @@ package
       
       public static const REPAINT_TWITCH_DECEMBER_2021:String = "#vehicle_customization:repaint/twitch_december_2021";
       
+      public static const REPAINT_LUNAR_NY_2022:String = "#vehicle_customization:repaint/lunar_ny_2022";
+      
       public static const MODIFICATIONS_AGE_EFFECT_01:String = "#vehicle_customization:modifications/age_effect_01";
       
       public static const MODIFICATIONS_AGE_EFFECT_01_DESCRIPTION:String = "#vehicle_customization:modifications/age_effect_01/description";
@@ -9759,6 +9765,12 @@ package
       
       public static const MAIN_STYLE_IT18_PROGETTO_C45_MOD_71_3DST_WHAC_2021_DESC_LONG:String = "#vehicle_customization:main_style/It18_Progetto_C45_mod_71_3DSt_WHAC_2021_desc/long";
       
+      public static const SPECIAL_STYLE_LUNAR_NY_2022:String = "#vehicle_customization:special_style/lunar_ny_2022";
+      
+      public static const SPECIAL_STYLE_LUNAR_NY_2022_DESC:String = "#vehicle_customization:special_style/lunar_ny_2022_desc";
+      
+      public static const SPECIAL_STYLE_LUNAR_NY_2022_DESC_LONG:String = "#vehicle_customization:special_style/lunar_ny_2022_desc/long";
+      
       public static const CUSTOMIZATION_POPOVER_STYLE_SUMMER:String = "#vehicle_customization:customization/popover/style/summer";
       
       public static const CUSTOMIZATION_POPOVER_STYLE_DESERT:String = "#vehicle_customization:customization/popover/style/desert";
@@ -11590,6 +11602,16 @@ package
       public static const PROJECTION_DECALS_HOLIDAY_PROJECTION_DECAL_95:String = "#vehicle_customization:projection_decals/holiday/projection_decal_95";
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_03:String = "#vehicle_customization:projection_decals/special/projection_decal_03";
+      
+      public static const PROJECTION_DECALS_HOLIDAY_PROJECTION_DECAL_147:String = "#vehicle_customization:projection_decals/holiday/projection_decal_147";
+      
+      public static const PROJECTION_DECALS_HOLIDAY_PROJECTION_DECAL_148:String = "#vehicle_customization:projection_decals/holiday/projection_decal_148";
+      
+      public static const PROJECTION_DECALS_HOLIDAY_PROJECTION_DECAL_149:String = "#vehicle_customization:projection_decals/holiday/projection_decal_149";
+      
+      public static const PROJECTION_DECALS_HOLIDAY_PROJECTION_DECAL_150:String = "#vehicle_customization:projection_decals/holiday/projection_decal_150";
+      
+      public static const PROJECTION_DECALS_HOLIDAY_PROJECTION_DECAL_151:String = "#vehicle_customization:projection_decals/holiday/projection_decal_151";
       
       public static const PROPERTYSHEET_KEYBOARD_HINT:String = "#vehicle_customization:propertySheet/keyboard/hint";
       

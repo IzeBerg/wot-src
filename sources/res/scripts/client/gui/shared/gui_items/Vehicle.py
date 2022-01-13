@@ -1994,6 +1994,15 @@ def getIconShopPath(vehicleName, size=STORE_CONSTANTS.ICON_SIZE_MEDIUM):
         return '../maps/shop/vehicles/%s/empty_tank.png' % size
 
 
+def getShopIconResource(vehicleName, size=STORE_CONSTANTS.ICON_SIZE_MEDIUM):
+    rName = getNationLessName(vehicleName=vehicleName)
+    image = R.images.gui.maps.shop.vehicles.dyn(('c_{}').format(size)).dyn(rName)
+    if image.isValid():
+        return image()
+    else:
+        return
+
+
 def getIconResource(vehicleName):
     rName = getIconResourceName(vehicleName=vehicleName)
     image = R.images.gui.maps.icons.vehicle.dyn(rName)

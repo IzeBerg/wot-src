@@ -129,6 +129,8 @@ package
       
       public static const BUYINGPANEL_BUYBTN_LABEL_OFFSPRING:String = "#vehicle_preview:buyingPanel/buyBtn/label/offspring";
       
+      public static const BUYINGPANEL_BUYBTN_LABEL_AUCTION:String = "#vehicle_preview:buyingPanel/buyBtn/label/auction";
+      
       public static const BUYINGPANEL_NOTRESEARCHEDVEHICLEWARNING:String = "#vehicle_preview:buyingPanel/notResearchedVehicleWarning";
       
       public static const BUYINGPANEL_COLLECTIBLE_NOTRESEARCHEDVEHICLESWARNING:String = "#vehicle_preview:buyingPanel/collectible/notResearchedVehiclesWarning";

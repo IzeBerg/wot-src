@@ -17,8 +17,9 @@ _logger = logging.getLogger(__name__)
 _HERO_VEHICLES = 'hero_vehicles'
 _ADD_HERO_STEP_NAME = 'add_HeroVehicle'
 _CALENDAR_ACTION_CHANGED = events.AdventCalendarEvent.HERO_ADVENT_ACTION_STATE_CHANGED
-_HeroTankInfo = namedtuple('_HeroTankInfo', ('url', 'styleID', 'crew', 'name', 'shopUrl'))
-_HeroTankInfo.__new__.__defaults__ = ('', None, None, '', '')
+_HeroTankInfo = namedtuple('_HeroTankInfo', ('url', 'styleID', 'crew', 'name', 'shopUrl',
+                                             'action'))
+_HeroTankInfo.__new__.__defaults__ = ('', None, None, '', '', '')
 
 class HeroTankController(IHeroTankController):
     itemsCache = dependency.descriptor(IItemsCache)
@@ -47,6 +48,11 @@ class HeroTankController(IHeroTankController):
         g_eventBus.removeListener(_CALENDAR_ACTION_CHANGED, self.__updateActionInfo, EVENT_BUS_SCOPE.LOBBY)
         self.itemsCache.onSyncCompleted -= self.__updateInventoryVehiclesData
 
+    def onDisconnected(self):
+        super(HeroTankController, self).onDisconnected()
+        self.__currentTankCD = None
+        return
+
     def __onEventsCacheSyncCompleted(self, *_):
         self.__updateSettings()
 
@@ -60,6 +66,8 @@ class HeroTankController(IHeroTankController):
     def onAvatarBecomePlayer(self):
         self.lobbyContext.getServerSettings().onServerSettingsChange -= self.__onServerSettingsChanged
         self._eventsCache.onSyncCompleted -= self.__onEventsCacheSyncCompleted
+        self.__currentTankCD = None
+        return
 
     def isEnabled(self):
         return self.__isEnabled and not self.bootcampController.isInBootcamp()
@@ -71,11 +79,14 @@ class HeroTankController(IHeroTankController):
         return self.hasAdventHero() and self.__currentTankCD == self.__actionInfo.vehicleCD
 
     def getRandomTankCD(self):
+        prevTankCD = self.__currentTankCD
         adventTankCD, _ = self._getAdventHeroTankData()
         if adventTankCD:
             self.__currentTankCD = adventTankCD
         else:
             self.__currentTankCD = random.choice(self.__data.keys() or [None]) if self.isEnabled() else None
+        if prevTankCD != self.__currentTankCD:
+            self.onHeroTankChanged()
         return self.__currentTankCD
 
     def getCurrentTankCD(self):
@@ -109,6 +120,11 @@ class HeroTankController(IHeroTankController):
     def getCurrentVehicleName(self):
         if self.isEnabled() and self.__currentTankCD in self.__data:
             return self.__data[self.__currentTankCD].name
+        return ''
+
+    def getCurrentVehicleAction(self):
+        if self.isEnabled() and self.__currentTankCD in self.__data:
+            return self.__data[self.__currentTankCD].action
         return ''
 
     def setInteractive(self, interactive):
@@ -168,7 +184,7 @@ class HeroTankController(IHeroTankController):
             for vCompDescr, vData in heroVehicles.iteritems():
                 if vCompDescr in self.__invVehiclesIntCD:
                     continue
-                self.__data[vCompDescr] = _HeroTankInfo(name=vData.get('name'), url=vData.get('url'), shopUrl=vData.get('shopUrl'), styleID=vData.get('styleID'), crew=self.__createCrew(vData.get('crew'), vCompDescr))
+                self.__data[vCompDescr] = _HeroTankInfo(name=vData.get('name'), url=vData.get('url'), shopUrl=vData.get('shopUrl'), styleID=vData.get('styleID'), action=vData.get('action'), crew=self.__createCrew(vData.get('crew'), vCompDescr))
 
         self.__applyActions()
         self.__isEnabled = bool(self.__data)
@@ -196,7 +212,7 @@ class HeroTankController(IHeroTankController):
                 return
             styleStr = params.get('styleID')
             styleId = int(styleStr) if styleStr else None
-            self.__data[vCompDescr] = _HeroTankInfo(name=vName, url=params.get('url'), shopUrl=params.get('shopUrl'), styleID=styleId, crew=self.__createCrew(params.get('crew'), vCompDescr))
+            self.__data[vCompDescr] = _HeroTankInfo(name=vName, url=params.get('url'), shopUrl=params.get('shopUrl'), styleID=styleId, action=params.get('action'), crew=self.__createCrew(params.get('crew'), vCompDescr))
             return
 
     def __createCrew(self, crewXml, vCompDescr):
@@ -227,9 +243,9 @@ class HeroTankController(IHeroTankController):
                     tmanDict['isPremium'] = True
                     tmanDict['gId'] = tIdx
                     tmanDict['nationID'] = nationId
-                    tmanDict['firstNameID'] = first(tData.firstNames)
-                    tmanDict['lastNameID'] = first(tData.lastNames)
-                    tmanDict['iconID'] = first(tData.icons)
+                    tmanDict['firstNameID'] = tankmanSection.readInt('firstNameID', first(tData.firstNames))
+                    tmanDict['lastNameID'] = tankmanSection.readInt('lastNameID', first(tData.lastNames))
+                    tmanDict['iconID'] = tankmanSection.readInt('iconID', first(tData.icons))
                     tmanDict['vehicleTypeID'] = vehTypeId
                     tmanDict['role'] = tankmanSection.readString('role')
                     for param in ('roleLevel', 'freeXP'):

@@ -1017,6 +1017,10 @@ package net.wg.data.constants
       
       public static const NY_LB_SPECIAL_NO_BORDER_NOTIFICATION_BG_UI:String = "NYLBSpecialNoBorderNotificationBg_UI";
       
+      public static const WINTER_OFFER_BORDER_NOTIFICATION_BG_UI:String = "WONotificationBg_UI";
+      
+      public static const WINTER_OFFER_NO_BORDER_NOTIFICATION_BG_UI:String = "WONoBorderNotificationBg_UI";
+      
       public static const NY_VEHICLE_BONUS_UI:String = "NYVehicleBonusUI";
       
       public static const YELLOW_HP_BAR:String = "yellow_hp_bar";
