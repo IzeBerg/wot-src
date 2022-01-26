@@ -25,9 +25,11 @@ package
       
       public static const HEADER_BACKBTN_DESCRLABEL_EVENTPROGRESSION:String = "#vehicle_preview:header/backBtn/descrLabel/eventProgression";
       
-      public static const HEADER_BACKBTN_DESCRLABEL_MARATHON:String = "#vehicle_preview:header/backBtn/descrLabel/marathon";
+      public static const HEADER_BACKBTN_DESCRLABEL_LUNAR_MARATHON:String = "#vehicle_preview:header/backBtn/descrLabel/lunar_marathon";
       
-      public static const HEADER_BACKBTN_DESCRLABEL_MAY21_MARATHON:String = "#vehicle_preview:header/backBtn/descrLabel/may21_marathon";
+      public static const HEADER_BACKBTN_DESCRLABEL_LUNAR_MARATHON_POST:String = "#vehicle_preview:header/backBtn/descrLabel/lunar_marathon_post";
+      
+      public static const HEADER_BACKBTN_DESCRLABEL_MARATHON:String = "#vehicle_preview:header/backBtn/descrLabel/marathon";
       
       public static const HEADER_BACKBTN_DESCRLABEL_RANKED:String = "#vehicle_preview:header/backBtn/descrLabel/ranked";
       
@@ -204,6 +206,8 @@ package
       public static const BUYINGPANEL_PERSONALTRADEIN_TITLE:String = "#vehicle_preview:buyingPanel/personalTradeIn/title";
       
       public static const BUYINGPANEL_PROGRESSIONSTYLES_NOTIFICATION_TEXT:String = "#vehicle_preview:buyingPanel/progressionStyles/notification/text";
+      
+      public static const BUYINGPANEL_PROGRESSIONSTYLES_NOTIFICATION_REWIND_ENABLE_TEXT:String = "#vehicle_preview:buyingPanel/progressionStyles/notification/rewind_enable/text";
       
       public static const BUYINGPANEL_PROGRESSIONSTYLES_CURRENTLEVEL:String = "#vehicle_preview:buyingPanel/progressionStyles/currentLevel";
        

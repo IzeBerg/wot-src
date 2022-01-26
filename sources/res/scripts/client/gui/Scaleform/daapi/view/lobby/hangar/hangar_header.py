@@ -27,6 +27,7 @@ from gui.shared.formatters import icons
 from gui.shared.personality import ServicesLocator
 from helpers import dependency
 from helpers.i18n import makeString as _ms
+from lunar_ny import ILunarNYController
 from new_year.ny_bonuses import CreditsBonusHelper
 from personal_missions import PM_BRANCH
 from skeletons.connection_mgr import IConnectionManager
@@ -82,6 +83,8 @@ FLAG_BY_QUEST_TYPE = {HANGAR_HEADER_QUESTS.QUEST_TYPE_PERSONAL_REGULAR: RES_ICON
    HANGAR_HEADER_QUESTS.QUEST_TYPE_COMMON: RES_ICONS.MAPS_ICONS_LIBRARY_HANGARFLAG_FLAG_BLUE, 
    HANGAR_HEADER_QUESTS.QUEST_TYPE_EVENT: RES_ICONS.MAPS_ICONS_LIBRARY_HANGARFLAG_FLAG_KHACKI, 
    HANGAR_HEADER_QUESTS.QUEST_TYPE_BATTLE_ROYALE: RES_ICONS.MAPS_ICONS_LIBRARY_HANGARFLAG_FLAG_EPIC_STEELHUNTER}
+LUNAR_NY_FLAG_BY_QUEST_TYPE = {HANGAR_HEADER_QUESTS.QUEST_TYPE_PERSONAL_REGULAR: RES_ICONS.MAPS_ICONS_LIBRARY_HANGARFLAG_FLAG_RED, 
+   HANGAR_HEADER_QUESTS.QUEST_TYPE_PERSONAL_PM2: RES_ICONS.MAPS_ICONS_LIBRARY_HANGARFLAG_FLAG_VINOUS}
 NY_FLAG_BY_QUEST_TYPE = {HANGAR_HEADER_QUESTS.QUEST_TYPE_PERSONAL_REGULAR: RES_ICONS.MAPS_ICONS_LIBRARY_HANGARFLAG_FLAG_RED, 
    HANGAR_HEADER_QUESTS.QUEST_TYPE_PERSONAL_PM2: RES_ICONS.MAPS_ICONS_LIBRARY_HANGARFLAG_FLAG_VINOUS}
 TOOLTIPS_HANGAR_HEADER_PM = {WIDGET_PM_STATE.BRANCH_DISABLED: TOOLTIPS.HANGAR_HEADER_PERSONALMISSIONS_BRANCH_DISABLED, 
@@ -217,6 +220,7 @@ class HangarHeader(HangarHeaderMeta, IGlobalListener, IEventBoardsListener):
     __tutorialLoader = dependency.descriptor(ITutorialLoader)
     __mapboxCtrl = dependency.descriptor(IMapboxController)
     __epicController = dependency.descriptor(IEpicBattleMetaGameController)
+    __lunarNYController = dependency.descriptor(ILunarNYController)
 
     def __init__(self):
         super(HangarHeader, self).__init__()
@@ -279,6 +283,7 @@ class HangarHeader(HangarHeaderMeta, IGlobalListener, IEventBoardsListener):
         self.__battlePassController.onSeasonStateChange += self.update
         self.__rankedController.onGameModeStatusUpdated += self.update
         self.__mapboxCtrl.onPrimeTimeStatusUpdated += self.update
+        self.__lunarNYController.onStatusChange += self.update
         self.__mapboxCtrl.addProgressionListener(self.update)
         g_clientUpdateManager.addCallbacks({'inventory.1': self.update, 
            'stats.tutorialsCompleted': self.update})
@@ -299,6 +304,7 @@ class HangarHeader(HangarHeaderMeta, IGlobalListener, IEventBoardsListener):
         self._festivityController.onStateChanged -= self.update
         self.__battlePassController.onSeasonStateChange -= self.update
         self.__rankedController.onGameModeStatusUpdated -= self.update
+        self.__lunarNYController.onStatusChange -= self.update
         self._currentVehicle = None
         self.__screenWidth = None
         if self._eventsController:
@@ -317,6 +323,10 @@ class HangarHeader(HangarHeaderMeta, IGlobalListener, IEventBoardsListener):
             return {'isVisible': True, 'quests': self.__getRankedQuestsToHeaderVO()}
         if self.__epicController.isEpicPrbActive():
             return {'isVisible': True, 'quests': self.__getEpicQuestsToHeaderVO()}
+        if self.__lunarNYController.isActive() and not self.__bootcampController.isInBootcamp():
+            isCurrentVehiclePresent = self._currentVehicle.isPresent()
+            quests = self._getCommonQuestsToHeaderVO(self._currentVehicle.item) if isCurrentVehiclePresent else []
+            return {'isVisible': True, 'quests': quests, 'isLunarNYWidgetVisible': True}
         if self._currentVehicle.isPresent():
             vehicle = self._currentVehicle.item
             isNYWidgetVisible = self._festivityController.isEnabled()
@@ -429,73 +439,79 @@ class HangarHeader(HangarHeaderMeta, IGlobalListener, IEventBoardsListener):
         states = []
         if vehicle.isOnlyForBattleRoyaleBattles:
             return []
-        isRightSide = not self._festivityController.isEnabled()
-        for branch in reversed(PM_BRANCH.ACTIVE_BRANCHES):
-            questType = QUEST_TYPE_BY_PM_BRANCH[branch]
-            if not isRightSide:
-                flag = NY_FLAG_BY_QUEST_TYPE[questType] if 1 else None
-                self._lobbyContext.getServerSettings().isPersonalMissionsEnabled(branch) or result.append(self._headerQuestFormaterVo(False, _getPersonalMissionsIcon(vehicle, branch, False), _ms(MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.EMPTY)), questType, tooltip=_getPersonalMissionsTooltip(branch, WIDGET_PM_STATE.BRANCH_DISABLED), flag=flag))
-                states.append(WIDGET_PM_STATE.BRANCH_DISABLED)
-            else:
-                pmState, quest = _findPersonalMissionsState(self._eventsCache, vehicle, branch)
-                states.append(pmState)
-                enable = True
-                personalMissionID = ''
-                if pmState == WIDGET_PM_STATE.IN_PROGRESS:
-                    icon = _getPersonalMissionsIcon(vehicle, branch, True)
-                    label = _ms(MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.ACTIVE), current=quest.getInternalID())
-                    personalMissionID = quest.getID()
-                    tooltip = TOOLTIPS_CONSTANTS.PERSONAL_QUESTS_PREVIEW
-                elif pmState == WIDGET_PM_STATE.ON_PAUSE:
-                    icon = _getPersonalMissionsIcon(vehicle, branch, True)
-                    label = _ms(MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.ALL_DONE), icon=icons.makeImageTag(RES_ICONS.MAPS_ICONS_LIBRARY_OUTLINE_QUESTS_ON_PAUSE))
-                    personalMissionID = quest.getID()
-                    tooltip = TOOLTIPS_CONSTANTS.PERSONAL_QUESTS_PREVIEW
-                elif pmState == WIDGET_PM_STATE.AVAILABLE:
-                    icon = RES_ICONS.MAPS_ICONS_LIBRARY_OUTLINE_PLUS
-                    label = MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.EMPTY)
-                    tooltip = _getPersonalMissionsTooltip(branch, WIDGET_PM_STATE.AVAILABLE)
-                elif pmState == WIDGET_PM_STATE.COMPLETED:
-                    icon = _getPersonalMissionsIcon(vehicle, branch, True)
-                    label = _ms(MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.ALL_DONE), icon=icons.makeImageTag(RES_ICONS.MAPS_ICONS_LIBRARY_OUTLINE_QUESTS_ALL_DONE))
-                    tooltip = _getPersonalMissionsTooltip(branch, WIDGET_PM_STATE.COMPLETED)
-                elif pmState == WIDGET_PM_STATE.COMPLETED_LOW_NEXT:
-                    icon = _getPersonalMissionsIcon(vehicle, branch, True)
-                    label = _ms(MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.ALL_DONE), icon=icons.makeImageTag(RES_ICONS.MAPS_ICONS_LIBRARY_OUTLINE_QUESTS_ALL_DONE))
-                    tooltip = _getPersonalMissionsTooltip(branch, WIDGET_PM_STATE.COMPLETED_LOW_NEXT)
-                elif pmState == WIDGET_PM_STATE.COMPLETED_LOCKED_NEXT:
-                    icon = _getPersonalMissionsIcon(vehicle, branch, True)
-                    label = _ms(MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.ALL_DONE), icon=icons.makeImageTag(RES_ICONS.MAPS_ICONS_LIBRARY_OUTLINE_QUESTS_ALL_DONE))
-                    tooltip = _getPersonalMissionsTooltip(branch, WIDGET_PM_STATE.COMPLETED_LOCKED_NEXT)
-                elif pmState == WIDGET_PM_STATE.DONE:
-                    icon = _getPersonalMissionsIcon(vehicle, branch, True)
-                    label = _ms(MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.ALL_DONE), icon=icons.makeImageTag(RES_ICONS.MAPS_ICONS_LIBRARY_OUTLINE_QUESTS_ALL_DONE))
-                    tooltip = _getPersonalMissionsTooltip(branch, WIDGET_PM_STATE.DONE)
-                elif pmState == WIDGET_PM_STATE.DONE_LOW_NEXT:
-                    icon = _getPersonalMissionsIcon(vehicle, branch, True)
-                    label = _ms(MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.ALL_DONE), icon=icons.makeImageTag(RES_ICONS.MAPS_ICONS_LIBRARY_OUTLINE_QUESTS_ALL_DONE))
-                    tooltip = _getPersonalMissionsTooltip(branch, WIDGET_PM_STATE.DONE_LOW_NEXT)
-                elif pmState == WIDGET_PM_STATE.DONE_LOCKED_NEXT:
-                    icon = _getPersonalMissionsIcon(vehicle, branch, True)
-                    label = _ms(MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.ALL_DONE), icon=icons.makeImageTag(RES_ICONS.MAPS_ICONS_LIBRARY_OUTLINE_QUESTS_ALL_DONE))
-                    tooltip = _getPersonalMissionsTooltip(branch, WIDGET_PM_STATE.DONE_LOCKED_NEXT)
-                    enable = False
+        else:
+            isRightSide = not (self._festivityController.isEnabled() or self.__lunarNYController.isActive())
+            for branch in reversed(PM_BRANCH.ACTIVE_BRANCHES):
+                questType = QUEST_TYPE_BY_PM_BRANCH[branch]
+                if self.__lunarNYController.isActive():
+                    flag = LUNAR_NY_FLAG_BY_QUEST_TYPE[questType]
+                elif self._festivityController.isEnabled():
+                    flag = NY_FLAG_BY_QUEST_TYPE[questType]
                 else:
-                    icon = _getPersonalMissionsIcon(vehicle, branch, False)
-                    label = MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.INACTIVE)
-                    tooltip = _getPersonalMissionsTooltip(branch, pmState)
-                    enable = False
-                result.append(self._headerQuestFormaterVo(enable, icon, label, questType, questID=personalMissionID, tooltip=tooltip, flag=flag, isTooltipSpecial=bool(pmState & WIDGET_PM_STATE.IN_PROGRESS or pmState & WIDGET_PM_STATE.ON_PAUSE)))
+                    flag = None
+                if not self._lobbyContext.getServerSettings().isPersonalMissionsEnabled(branch):
+                    result.append(self._headerQuestFormaterVo(False, _getPersonalMissionsIcon(vehicle, branch, False), _ms(MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.EMPTY)), questType, tooltip=_getPersonalMissionsTooltip(branch, WIDGET_PM_STATE.BRANCH_DISABLED), flag=flag))
+                    states.append(WIDGET_PM_STATE.BRANCH_DISABLED)
+                else:
+                    pmState, quest = _findPersonalMissionsState(self._eventsCache, vehicle, branch)
+                    states.append(pmState)
+                    enable = True
+                    personalMissionID = ''
+                    if pmState == WIDGET_PM_STATE.IN_PROGRESS:
+                        icon = _getPersonalMissionsIcon(vehicle, branch, True)
+                        label = _ms(MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.ACTIVE), current=quest.getInternalID())
+                        personalMissionID = quest.getID()
+                        tooltip = TOOLTIPS_CONSTANTS.PERSONAL_QUESTS_PREVIEW
+                    elif pmState == WIDGET_PM_STATE.ON_PAUSE:
+                        icon = _getPersonalMissionsIcon(vehicle, branch, True)
+                        label = _ms(MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.ALL_DONE), icon=icons.makeImageTag(RES_ICONS.MAPS_ICONS_LIBRARY_OUTLINE_QUESTS_ON_PAUSE))
+                        personalMissionID = quest.getID()
+                        tooltip = TOOLTIPS_CONSTANTS.PERSONAL_QUESTS_PREVIEW
+                    elif pmState == WIDGET_PM_STATE.AVAILABLE:
+                        icon = RES_ICONS.MAPS_ICONS_LIBRARY_OUTLINE_PLUS
+                        label = MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.EMPTY)
+                        tooltip = _getPersonalMissionsTooltip(branch, WIDGET_PM_STATE.AVAILABLE)
+                    elif pmState == WIDGET_PM_STATE.COMPLETED:
+                        icon = _getPersonalMissionsIcon(vehicle, branch, True)
+                        label = _ms(MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.ALL_DONE), icon=icons.makeImageTag(RES_ICONS.MAPS_ICONS_LIBRARY_OUTLINE_QUESTS_ALL_DONE))
+                        tooltip = _getPersonalMissionsTooltip(branch, WIDGET_PM_STATE.COMPLETED)
+                    elif pmState == WIDGET_PM_STATE.COMPLETED_LOW_NEXT:
+                        icon = _getPersonalMissionsIcon(vehicle, branch, True)
+                        label = _ms(MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.ALL_DONE), icon=icons.makeImageTag(RES_ICONS.MAPS_ICONS_LIBRARY_OUTLINE_QUESTS_ALL_DONE))
+                        tooltip = _getPersonalMissionsTooltip(branch, WIDGET_PM_STATE.COMPLETED_LOW_NEXT)
+                    elif pmState == WIDGET_PM_STATE.COMPLETED_LOCKED_NEXT:
+                        icon = _getPersonalMissionsIcon(vehicle, branch, True)
+                        label = _ms(MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.ALL_DONE), icon=icons.makeImageTag(RES_ICONS.MAPS_ICONS_LIBRARY_OUTLINE_QUESTS_ALL_DONE))
+                        tooltip = _getPersonalMissionsTooltip(branch, WIDGET_PM_STATE.COMPLETED_LOCKED_NEXT)
+                    elif pmState == WIDGET_PM_STATE.DONE:
+                        icon = _getPersonalMissionsIcon(vehicle, branch, True)
+                        label = _ms(MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.ALL_DONE), icon=icons.makeImageTag(RES_ICONS.MAPS_ICONS_LIBRARY_OUTLINE_QUESTS_ALL_DONE))
+                        tooltip = _getPersonalMissionsTooltip(branch, WIDGET_PM_STATE.DONE)
+                    elif pmState == WIDGET_PM_STATE.DONE_LOW_NEXT:
+                        icon = _getPersonalMissionsIcon(vehicle, branch, True)
+                        label = _ms(MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.ALL_DONE), icon=icons.makeImageTag(RES_ICONS.MAPS_ICONS_LIBRARY_OUTLINE_QUESTS_ALL_DONE))
+                        tooltip = _getPersonalMissionsTooltip(branch, WIDGET_PM_STATE.DONE_LOW_NEXT)
+                    elif pmState == WIDGET_PM_STATE.DONE_LOCKED_NEXT:
+                        icon = _getPersonalMissionsIcon(vehicle, branch, True)
+                        label = _ms(MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.ALL_DONE), icon=icons.makeImageTag(RES_ICONS.MAPS_ICONS_LIBRARY_OUTLINE_QUESTS_ALL_DONE))
+                        tooltip = _getPersonalMissionsTooltip(branch, WIDGET_PM_STATE.DONE_LOCKED_NEXT)
+                        enable = False
+                    else:
+                        icon = _getPersonalMissionsIcon(vehicle, branch, False)
+                        label = MENU.hangarHeaderPersonalMissionsLabel(LABEL_STATE.INACTIVE)
+                        tooltip = _getPersonalMissionsTooltip(branch, pmState)
+                        enable = False
+                    result.append(self._headerQuestFormaterVo(enable, icon, label, questType, questID=personalMissionID, tooltip=tooltip, flag=flag, isTooltipSpecial=bool(pmState & WIDGET_PM_STATE.IN_PROGRESS or pmState & WIDGET_PM_STATE.ON_PAUSE)))
 
-        if all([ st == WIDGET_PM_STATE.DONE for st in states ]):
-            for vo in result:
-                vo['tooltip'] = TOOLTIPS.HANGAR_HEADER_PERSONALMISSIONS_DONEALL
+            if all([ st == WIDGET_PM_STATE.DONE for st in states ]):
+                for vo in result:
+                    vo['tooltip'] = TOOLTIPS.HANGAR_HEADER_PERSONALMISSIONS_DONEALL
 
-        elif all([ st == WIDGET_PM_STATE.NO_VEHICLE for st in states ]):
-            for vo in result:
-                vo['tooltip'] = TOOLTIPS.HANGAR_HEADER_PERSONALMISSIONS_DISABLEDALL
+            elif all([ st == WIDGET_PM_STATE.NO_VEHICLE for st in states ]):
+                for vo in result:
+                    vo['tooltip'] = TOOLTIPS.HANGAR_HEADER_PERSONALMISSIONS_DISABLEDALL
 
-        return self._wrapQuestGroup(HANGAR_HEADER_QUESTS.QUEST_GROUP_PERSONAL, RES_ICONS.MAPS_ICONS_QUESTS_HEADERFLAGICONS_PERSONAL, result, isRightSide)
+            return self._wrapQuestGroup(HANGAR_HEADER_QUESTS.QUEST_GROUP_PERSONAL, RES_ICONS.MAPS_ICONS_QUESTS_HEADERFLAGICONS_PERSONAL, result, isRightSide)
 
     def __onServerSettingChanged(self, diff):
         if 'elenSettings' in diff or constants.PremiumConfigs.PREM_QUESTS in diff:

@@ -311,6 +311,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.controls.LabelControl;
    import net.wg.gui.components.controls.ListItemRedererImageText;
    import net.wg.gui.components.controls.ListItemRendererWithFocusOnDis;
+   import net.wg.gui.components.controls.LunarNYContextMenuItem;
    import net.wg.gui.components.controls.Money;
    import net.wg.gui.components.controls.NYContextMenuItem;
    import net.wg.gui.components.controls.NationDropDownMenu;
@@ -1535,6 +1536,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_LISTITEMREDERERIMAGETEXT:Class = ListItemRedererImageText;
       
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_LISTITEMRENDERERWITHFOCUSONDIS:Class = ListItemRendererWithFocusOnDis;
+      
+      public static const NET_WG_GUI_COMPONENTS_CONTROLS_LUNARNYCONTEXTMENUITEM:Class = LunarNYContextMenuItem;
       
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_MONEY:Class = Money;
       

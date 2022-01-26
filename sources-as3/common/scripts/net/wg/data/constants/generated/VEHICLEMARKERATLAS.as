@@ -1457,6 +1457,8 @@ package net.wg.data.constants.generated
       
       public static const USA_A136_T42:String = "usa-A136_T42";
       
+      public static const USA_A139_M_III_Y:String = "usa-A139_M_III_Y";
+      
       public static const USA_A14_T30:String = "usa-A14_T30";
       
       public static const USA_A14_T30_FL:String = "usa-A14_T30_FL";
@@ -1464,6 +1466,14 @@ package net.wg.data.constants.generated
       public static const USA_A140_ASTRON_REX_105MM:String = "usa-A140_ASTRON_REX_105mm";
       
       public static const USA_A141_M_IV_Y:String = "usa-A141_M_IV_Y";
+      
+      public static const USA_A142_PAWLACK_TANK:String = "usa-A142_Pawlack_Tank";
+      
+      public static const USA_A143_M_V_Y:String = "usa-A143_M_V_Y";
+      
+      public static const USA_A144_M_VI_Y:String = "usa-A144_M_VI_Y";
+      
+      public static const USA_A147_M_II_Y:String = "usa-A147_M_II_Y";
       
       public static const USA_A148_CONVERTIBLE_MEDIUM_TANK_T3:String = "usa-A148_Convertible_Medium_Tank_T3";
       

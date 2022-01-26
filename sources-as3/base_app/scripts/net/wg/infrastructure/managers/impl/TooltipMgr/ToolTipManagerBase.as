@@ -49,6 +49,12 @@ package net.wg.infrastructure.managers.impl.TooltipMgr
          this._cachedComponents = new Dictionary();
       }
       
+      private static function rescheduleTask(param1:Function, ... rest) : void
+      {
+         rest.unshift(param1,SCHEDULE_TIME);
+         App.utils.scheduler.scheduleTask.apply(App.utils.scheduler,rest);
+      }
+      
       override protected function onDispose() : void
       {
          var _loc1_:DisplayObject = null;
@@ -158,14 +164,14 @@ package net.wg.infrastructure.managers.impl.TooltipMgr
       {
          this.cancelTasks();
          this._props = this.prepareProperties(param2);
-         this.rescheduleTask(this.as_show,param1,Linkages.TOOL_TIP_COMPLEX,false);
+         rescheduleTask(this.as_show,param1,Linkages.TOOL_TIP_COMPLEX,false);
       }
       
       public function showComplex(param1:String, param2:ITooltipProps = null) : void
       {
          this.cancelTasks();
          this._props = this.prepareProperties(param2);
-         this.rescheduleTask(this.createComplexTooltip,param1,this._props.type);
+         rescheduleTask(this.createComplexTooltip,param1,this._props.type);
       }
       
       public function showComplexWithParams(param1:String, param2:IToolTipParams, param3:ITooltipProps = null) : void
@@ -248,12 +254,6 @@ package net.wg.infrastructure.managers.impl.TooltipMgr
          _loc1_.cancelTask(this.createWulfTooltip);
       }
       
-      private function rescheduleTask(param1:Function, ... rest) : void
-      {
-         rest.unshift(param1,SCHEDULE_TIME);
-         App.utils.scheduler.scheduleTask.apply(App.utils.scheduler,rest);
-      }
-      
       private function callLogEvent(param1:String) : void
       {
          App.eventLogManager.logUIElementTooltip(this._currentTooltip,param1,0);
@@ -267,8 +267,15 @@ package net.wg.infrastructure.managers.impl.TooltipMgr
       
       private function createTypedTooltip(param1:String, param2:Array, param3:String) : void
       {
-         onCreateTypedTooltipS(param1,param2,param3);
-         this._currentTooltipId = param1;
+         if(param1 == "wulf" && param2.length > 0)
+         {
+            this.createWulfTooltip(param2[0],param2.slice(1,param2.length));
+         }
+         else
+         {
+            onCreateTypedTooltipS(param1,param2,param3);
+            this._currentTooltipId = param1;
+         }
       }
       
       private function createWulfTooltip(param1:String, param2:Array) : void

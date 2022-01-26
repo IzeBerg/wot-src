@@ -5,6 +5,7 @@ package net.wg.gui.prebattle.battleSession
    import flash.text.TextField;
    import net.wg.data.Aliases;
    import net.wg.data.constants.Time;
+   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.CONTEXT_MENU_HANDLER_TYPE;
    import net.wg.gui.components.advanced.TextAreaSimple;
    import net.wg.gui.components.controls.DropdownMenu;
@@ -474,13 +475,21 @@ package net.wg.gui.prebattle.battleSession
          this.updateMoveControlsTooltips();
       }
       
-      public function as_setInfo(param1:Boolean, param2:String, param3:String, param4:String, param5:String, param6:String, param7:String, param8:String) : void
+      public function as_setInfo(param1:Boolean, param2:String, param3:String, param4:String, param5:String, param6:String, param7:String, param8:String, param9:int, param10:int, param11:uint) : void
       {
          this.winsValue.text = param2;
          this.mapValue.text = param3;
          this.topInfo.firstTeamText.text = param4;
          this.topInfo.secondTeamText.text = param5;
          this.topInfo.winTeamsText.text = param6;
+         if(param1)
+         {
+            this.topInfo.updateUnitInfoData(Values.DEFAULT_INT,Values.ZERO,Values.ZERO);
+         }
+         else
+         {
+            this.topInfo.updateUnitInfoData(param9,param10,param11);
+         }
          window.title = param7;
          param1 = param1 && !this._isAssigned;
          this.commentValue.text = param8;
@@ -759,12 +768,9 @@ package net.wg.gui.prebattle.battleSession
       {
          var _loc2_:IDataProvider = this.memberList.dataProvider;
          var _loc3_:int = this.memberList.selectedIndex;
-         if(_loc2_.length > 0)
+         if(_loc2_.length > 0 && _loc3_ > -1)
          {
-            if(_loc3_ > -1)
-            {
-               this.checkAndUnassignMember(PlayerPrbInfoVO(_loc2_.requestItemAt(_loc3_)));
-            }
+            this.checkAndUnassignMember(PlayerPrbInfoVO(_loc2_.requestItemAt(_loc3_)));
          }
       }
       

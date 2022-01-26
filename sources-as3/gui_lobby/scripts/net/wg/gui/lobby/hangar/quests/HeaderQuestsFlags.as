@@ -21,6 +21,8 @@ package net.wg.gui.lobby.hangar.quests
    public class HeaderQuestsFlags extends UIComponentEx implements IQuestsButtonsContainer
    {
       
+      public static var ENTRY_POINT_RESIZE:String = "entryPointResize";
+      
       private static const DISABLE_TWEEN_DURATION:int = 120;
       
       private static const TWEEN_DURATION:int = 400;
@@ -38,8 +40,6 @@ package net.wg.gui.lobby.hangar.quests
       private static const LEFTSIDE_SIDE_OFFSET_X:int = 20;
       
       private static const INV_RECREATE_DATA:String = "invRecreateData";
-      
-      public static var ENTRY_POINT_RESIZE:String = "entryPointResize";
        
       
       public var questsHitArea:Sprite = null;
@@ -156,12 +156,6 @@ package net.wg.gui.lobby.hangar.quests
          super.onDispose();
       }
       
-      public function set offsetRightSideX(param1:Number) : void
-      {
-         this._offsetRightSideX = param1;
-         invalidateSize();
-      }
-      
       public function getEntryPoint() : IHeaderFlagsEntryPoint
       {
          return this._entryPoint;
@@ -211,25 +205,23 @@ package net.wg.gui.lobby.hangar.quests
          var _loc2_:Boolean = false;
          var _loc3_:int = 0;
          var _loc4_:int = 0;
-         var _loc5_:int = 0;
          if(param1 != null && this._questsGroupsData != param1)
          {
             _loc2_ = false;
             if(this._questsGroupsContainers)
             {
                _loc3_ = this._questsGroupsContainers.length;
-               _loc4_ = param1.length;
-               if(_loc3_ == _loc4_)
+               if(_loc3_ == param1.length)
                {
-                  _loc5_ = 0;
-                  while(_loc5_ < _loc3_)
+                  _loc4_ = 0;
+                  while(_loc4_ < _loc3_)
                   {
-                     if(param1[_loc5_].isRightSide != this._questsGroupsContainers[_loc5_].isRightSide)
+                     if(param1[_loc4_].isRightSide != this._questsGroupsContainers[_loc4_].isRightSide)
                      {
                         _loc2_ = true;
                         break;
                      }
-                     _loc5_++;
+                     _loc4_++;
                   }
                }
                else
@@ -606,6 +598,12 @@ package net.wg.gui.lobby.hangar.quests
       {
          this._isMoveContainerInProgress = false;
          this.updateHitArea();
+      }
+      
+      public function set offsetRightSideX(param1:Number) : void
+      {
+         this._offsetRightSideX = param1;
+         invalidateSize();
       }
       
       public function set useLeftSideOffset(param1:Boolean) : void

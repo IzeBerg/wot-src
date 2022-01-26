@@ -194,7 +194,11 @@ package net.wg.gui.components.controls
                   {
                      _loc16_ = _loc14_.linkage;
                   }
-                  if(_loc16_ == Linkages.NY_CONTEXT_MENU_ITEM)
+                  if(_loc16_ == Linkages.LUNAR_NY_CONTEXT_MENU_ITEM)
+                  {
+                     _loc12_ = this._classFactory.getComponent(_loc16_,LunarNYContextMenuItem,_loc14_.initData);
+                  }
+                  else if(_loc16_ == Linkages.NY_CONTEXT_MENU_ITEM)
                   {
                      _loc12_ = this._classFactory.getComponent(_loc16_,NYContextMenuItem,_loc14_.initData);
                   }

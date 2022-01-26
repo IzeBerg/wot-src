@@ -31,6 +31,10 @@ package
       
       public static const TITLE_BATTLESESSION_HEADER_STARTTIME:String = "#prebattle:title/battleSession/header/startTime";
       
+      public static const TITLE_BATTLESESSION_HEADER_BATTLESETTINGS:String = "#prebattle:title/battleSession/header/battleSettings";
+      
+      public static const TITLE_BATTLESESSION_UNIT:String = "#prebattle:title/battleSession/unit";
+      
       public static const TITLE_BATTLESESSION_COMMENT:String = "#prebattle:title/battleSession/comment";
       
       public static const TITLE_BATTLESESSION_ARENATYPE:String = "#prebattle:title/battleSession/arenaType";
@@ -44,6 +48,8 @@ package
       public static const STATS_BATTLESESSION_VEHICLETYPE:String = "#prebattle:stats/battleSession/vehicleType";
       
       public static const BUTTONS_BATTLESESSION_LEAVE:String = "#prebattle:buttons/battleSession/leave";
+      
+      public static const TITLE_BATTLESESSION_CLANBATTLE_STARTTIME:String = "#prebattle:title/battleSession/clanBattle/startTime";
       
       public static const LABELS_COMPANY_QUEUE:String = "#prebattle:labels/company/queue";
       

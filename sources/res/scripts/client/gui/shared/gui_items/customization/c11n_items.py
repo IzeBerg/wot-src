@@ -416,6 +416,10 @@ class Customization(FittingItem):
         else:
             return
 
+    @property
+    def isProgressionRewindEnabled(self):
+        return ItemTags.PROGRESSION_REWIND_ENABLED in self.tags
+
     def getIconApplied(self, component):
         return self.icon
 
@@ -1002,6 +1006,10 @@ class Style(Customization):
     def changeableSlotTypes(self):
         return self.descriptor.changeableSlotTypes
 
+    @property
+    def maxProgressionLevel(self):
+        return len(self.descriptor.styleProgressions)
+
     def getDescription(self):
         return self.longDescriptionSpecial or self.fullDescription or self.shortDescriptionSpecial or self.shortDescription
 
@@ -1009,11 +1017,10 @@ class Style(Customization):
 
         def _getLevelPrice(level):
             levelDescr = self.descriptor.progression.levels.get(level)
-            if levelDescr is not None:
+            if levelDescr:
                 price = Money(**levelDescr['price'])
                 return ItemPrice(price=price, defPrice=price)
-            else:
-                return ITEM_PRICE_EMPTY
+            return ITEM_PRICE_EMPTY
 
         return sum((_getLevelPrice(lvl) for lvl in xrange(currentLvl + 1, targetLvl + 1)), ITEM_PRICE_EMPTY)
 
@@ -1126,6 +1133,13 @@ class Style(Customization):
         if vehDescr and self.isProgressive:
             vehicle = self._itemsCache.items.getItemByCD(vehDescr.type.compactDescr)
             component.styleProgressionLevel = self.getLatestOpenedProgressionLevel(vehicle)
+            if self.isProgressionRewindEnabled:
+                component.styleProgressionLevel = self.maxProgressionLevel
+            styleOutfitData = self._itemsCache.items.inventory.getOutfitData(vehDescr.type.compactDescr, SeasonType.ALL)
+            if styleOutfitData:
+                styledOutfitComponent = parseCompDescr(styleOutfitData)
+                outfitLvl = styledOutfitComponent.styleProgressionLevel
+                component.styleProgressionLevel = outfitLvl if outfitLvl else 1
         if diff is not None:
             diffComponent = parseCompDescr(diff)
             if component.styleId != diffComponent.styleId:

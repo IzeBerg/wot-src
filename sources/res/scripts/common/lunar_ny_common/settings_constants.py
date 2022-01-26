@@ -1,0 +1,4 @@
+LUNAR_NY_PDATA_KEY = 'lunarNewYear'
+INVENTORY_CHARMS = 'inventoryCharms'
+ALBUM_SLOTS = 'slots'
+ALBOM_SLOTS_COUNT = 20

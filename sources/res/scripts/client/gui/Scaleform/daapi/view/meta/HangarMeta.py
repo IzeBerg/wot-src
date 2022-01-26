@@ -84,6 +84,10 @@ class HangarMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_setNotificationEnabled(value)
 
+    def as_setEnvelopesVisibleS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setEnvelopesVisible(value)
+
     def as_setLootboxesVisibleS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setLootboxesVisible(value)

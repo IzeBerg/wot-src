@@ -29,6 +29,8 @@ package net.wg.data.constants
       
       public static const CURRENCY_CONTEXT_MENU_ITEM:String = "CurrencyContextMenuItem";
       
+      public static const LUNAR_NY_CONTEXT_MENU_ITEM:String = "LunarNYContextMenuItemUI";
+      
       public static const NY_CONTEXT_MENU_ITEM:String = "NYContextMenuItemUI";
       
       public static const CONTEXT_MENU_SEPARATE:String = "ContextMenuItemSeparate";
@@ -1036,6 +1038,14 @@ package net.wg.data.constants
       public static const STORE_BLUEPRINT_COST_RENDERER:String = "BlueprintCostRendererUI";
       
       public static const RESEARCH_POST_PROGRESSION_ENTRY_POINT:String = "PostProgressionEntryPointUI";
+      
+      public static const LUNAR_NY_NOTIFICATION_BG_UI:String = "LunarNYNotificationBg_UI";
+      
+      public static const LUNAR_NY_COUNTER_VIEW_UI:String = "LunarNYCounterViewUI";
+      
+      public static const LUNAR_NY_NO_BORDER_NOTIFICATION_BG_UI:String = "LunarNYNoBorderNotificationBg_UI";
+      
+      public static const LUNAR_NY_NOTIFICATION_HIT_UI:String = "LunarNYNotificationHit_UI";
        
       
       public function Linkages()

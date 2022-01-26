@@ -47,6 +47,9 @@ class IGiftEventHub(object):
     def getSettings(self):
         raise NotImplementedError
 
+    def onBootcampFinished(self):
+        pass
+
     def processHistory(self, history):
         raise NotImplementedError
 
@@ -111,6 +114,10 @@ class GiftEventBaseHub(IGiftEventHub):
 
     def getSettings(self):
         return self._settings
+
+    def onBootcampFinished(self):
+        self._isHistoryReceived = False
+        self._isWebStateReceived = False
 
     def processMessage(self, incomeData):
         self._messenger.pushIncomeMessage(incomeData)

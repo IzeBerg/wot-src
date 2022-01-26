@@ -937,44 +937,4 @@ package
       
       public static const PROFILE_PARAMS_TOOLTIP_FORT_BATTLESWINSEFFICIENCY_HEADER:String = "#profile:profile/params/tooltip/fort/battlesWinsEfficiency/header";
       
-      public static const PROFILE_PARAMS_TOOLTIP_FORT_BATTLESWINSEFFICIENCY_BODY:String = "#profile:profile/params/tooltip/fort/battlesWinsEfficiency/body";
-      
-      public static const PROFILE_PARAMS_TOOLTIP_UNAVAILABLE_FORT_WINSEFFICIENCY_HEADER:String = "#profile:profile/params/tooltip/unavailable/fort/winsEfficiency/header";
-      
-      public static const PROFILE_PARAMS_TOOLTIP_UNAVAILABLE_FORT_WINSEFFICIENCY_BODY:String = "#profile:profile/params/tooltip/unavailable/fort/winsEfficiency/body";
-      
-      public static const PROFILE_PARAMS_TOOLTIP_FORT_SORTIE_HEADER:String = "#profile:profile/params/tooltip/fort/sortie/header";
-      
-      public static const PROFILE_PARAMS_TOOLTIP_FORT_SORTIE_BODY:String = "#profile:profile/params/tooltip/fort/sortie/body";
-      
-      public static const PROFILE_PARAMS_TOOLTIP_FORT_LOOTING_HEADER:String = "#profile:profile/params/tooltip/fort/looting/header";
-      
-      public static const PROFILE_PARAMS_TOOLTIP_FORT_LOOTING_BODY:String = "#profile:profile/params/tooltip/fort/looting/body";
-      
-      public static const PROFILE_PARAMS_TOOLTIP_FORTBATTLES_ATTACKS_HEADER:String = "#profile:profile/params/tooltip/fortBattles/attacks/header";
-      
-      public static const PROFILE_PARAMS_TOOLTIP_FORTBATTLES_ATTACKS_BODY:String = "#profile:profile/params/tooltip/fortBattles/attacks/body";
-      
-      public static const PROFILE_PARAMS_TOOLTIP_FORTBATTLES_DEFENCES_HEADER:String = "#profile:profile/params/tooltip/fortBattles/defences/header";
-      
-      public static const PROFILE_PARAMS_TOOLTIP_FORTBATTLES_DEFENCES_BODY:String = "#profile:profile/params/tooltip/fortBattles/defences/body";
-      
-      public static const PROFILE_PARAMS_TOOLTIP_FORT_SORTIEWINSEFFICIENCY_HEADER:String = "#profile:profile/params/tooltip/fort/sortieWinsEfficiency/header";
-      
-      public static const PROFILE_PARAMS_TOOLTIP_FORT_SORTIEWINSEFFICIENCY_BODY:String = "#profile:profile/params/tooltip/fort/sortieWinsEfficiency/body";
-      
-      public static const PROFILE_PARAMS_TOOLTIP_FORT_RESOURCE_HEADER:String = "#profile:profile/params/tooltip/fort/resource/header";
-      
-      public static const PROFILE_PARAMS_TOOLTIP_FORT_RESOURCE_BODY:String = "#profile:profile/params/tooltip/fort/resource/body";
-      
-      public static const PROFILE_PARAMS_TOOLTIP_CLAN_SUMMARYDAMAGECOEFFICIENT_HEADER:String = "#profile:profile/params/tooltip/clan/summaryDamageCoefficient/header";
-      
-      public static const PROFILE_PARAMS_TOOLTIP_CLAN_SUMMARYDAMAGECOEFFICIENT_BODY:String = "#profile:profile/params/tooltip/clan/summaryDamageCoefficient/body";
-       
-      
-      public function PROFILE()
-      {
-         super();
-      }
-   }
-}
+      public static const PROFILE_PARAMS_TOOLTIP_FORT_BATTLESWINSEFFICIENCY_BODY:String = "#profile:profile/params/tooltip/fort/battlesWinsEfficiency/bod

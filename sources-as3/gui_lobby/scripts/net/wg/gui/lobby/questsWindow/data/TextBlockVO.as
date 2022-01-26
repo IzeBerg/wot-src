@@ -7,6 +7,8 @@ package net.wg.gui.lobby.questsWindow.data
    {
       
       private static const ITEMS_FIELD_NAME:String = "items";
+      
+      private static const ARGS_FIELD_NAME:String = "specialTooltipArgs";
        
       
       public var linkage:String = "";
@@ -25,8 +27,11 @@ package net.wg.gui.lobby.questsWindow.data
       
       public var specialTooltip:String = "";
       
+      public var specialTooltipArgs:Array;
+      
       public function TextBlockVO(param1:Object)
       {
+         this.specialTooltipArgs = [];
          super(param1);
       }
       
@@ -47,6 +52,12 @@ package net.wg.gui.lobby.questsWindow.data
                this.items[_loc5_] = _loc3_[_loc5_];
                _loc5_++;
             }
+            return false;
+         }
+         if(param1 == ARGS_FIELD_NAME)
+         {
+            _loc3_ = param2 as Array;
+            this.specialTooltipArgs = Boolean(_loc3_) ? [].concat(_loc3_[0]) : [];
             return false;
          }
          return super.onDataWrite(param1,param2);

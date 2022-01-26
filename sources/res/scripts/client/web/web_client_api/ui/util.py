@@ -4,7 +4,7 @@ from account_helpers.AccountSettings import NEW_LOBBY_TAB_COUNTER
 from dossiers2.ui.achievements import ACHIEVEMENT_BLOCK
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.lobby.header.LobbyHeader import HEADER_BUTTONS_COUNTERS_CHANGED_EVENT
-from gui.Scaleform.daapi.view.lobby.vehicle_preview.items_kit_helper import lookupItem, showItemTooltip, getCDFromId, canInstallStyle, showAwardsTooltip
+from gui.Scaleform.daapi.view.lobby.vehicle_preview.items_kit_helper import lookupItem, showItemTooltip, getCDFromId, canInstallStyle, showAwardsTooltip, WULF_TOOLTIP_TYPES
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS as TC
 from gui.Scaleform.daapi.view.lobby.header import battle_selector_items
 from gui.shared import g_eventBus
@@ -155,7 +155,7 @@ class UtilWebApiMixin(object):
         withLongIntArgs = (
          TC.AWARD_SHELL,)
         withLongOnlyArgs = (TC.AWARD_VEHICLE, TC.AWARD_MODULE, TC.INVENTORY_BATTLE_BOOSTER, TC.BOOSTERS_BOOSTER_INFO,
-         TC.BADGE, TC.TECH_CUSTOMIZATION_ITEM)
+         TC.BADGE, TC.TECH_CUSTOMIZATION_ITEM, TC.SHOP_LUNAR_NY_ENVELOPE)
         if tooltipType in withLongIntArgs:
             args = [
              itemId, 0]
@@ -168,7 +168,10 @@ class UtilWebApiMixin(object):
             achievement = dossier.getTotalStats().getAchievement((cmd.blockId, itemId))
             args = [dossier.getDossierType(), dossierCompDescr, achievement.getBlock(), cmd.itemId,
              isRareAchievement(achievement)]
-        self.__getTooltipMgr().onCreateTypedTooltip(tooltipType, args, 'INFO')
+        if tooltipType in WULF_TOOLTIP_TYPES:
+            self.__getTooltipMgr().showWulfTooltip(tooltipType, args)
+        else:
+            self.__getTooltipMgr().onCreateTypedTooltip(tooltipType, args, 'INFO')
 
     @w2c(_ShowItemTooltipSchema, 'show_item_tooltip')
     def showItemTooltip(self, cmd):
@@ -177,7 +180,11 @@ class UtilWebApiMixin(object):
             itemId = makeIntCompactDescrByID('crewBook', CrewBookCacheType.CREW_BOOK, cmd.id)
         else:
             itemId = getCDFromId(itemType=cmd.type, itemId=cmd.id)
-        rawItem = ItemPackEntry(type=itemType, id=itemId, count=cmd.count or 1, extra=cmd.extra or {})
+        if itemType == ItemPackType.LUNAR_NY_PREREQUISITE:
+            count = max(cmd.count, 0)
+        else:
+            count = cmd.count or 1
+        rawItem = ItemPackEntry(type=itemType, id=itemId, count=count, extra=cmd.extra or {})
         item = lookupItem(rawItem, self.itemsCache, self.goodiesCache)
         showItemTooltip(self.__getTooltipMgr(), rawItem, item)
 
@@ -232,7 +239,7 @@ class UtilWebApiMixin(object):
             receiver = self.__usersInfoHelper.getContact(receiverId)
             return receiver.hasValidName() and not receiver.isIgnored()
 
-        def onNamesReceivedCallback():
+        def onNamesReceivedCallback(_):
             callback(isAvailable())
 
         if not bool(self.__usersInfoHelper.getUserName(receiverId)):

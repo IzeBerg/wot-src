@@ -18,6 +18,8 @@ package net.wg.data.constants.generated
       public static const REJECT_FRIENDSHIP:String = "rejectFriendship";
       
       public static const NY_SEND_GIFT:String = "nySendGift";
+      
+      public static const LUNAR_NY_SEND_GIFT:String = "lunarNYSendGift";
        
       
       public function CONTACTS_ACTION_CONSTS()
