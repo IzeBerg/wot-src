@@ -134,13 +134,13 @@ package net.wg.gui.lobby.hangar.quests
       {
          this.removeEventListener(MouseEvent.ROLL_OUT,this.onThisRollOutHandler);
          this.removeEventListener(MouseEvent.ROLL_OVER,this.onThisRollOverHandler);
+         this._scheduler.cancelTask(this.showCollapseAnim);
+         this._scheduler = null;
          super.onBeforeDispose();
       }
       
       override protected function onDispose() : void
       {
-         this._scheduler.cancelTask(this.showCollapseAnim);
-         this._scheduler = null;
          this.disposeQuestContainers();
          this.questsHitArea = null;
          this._questsGroupsData = null;

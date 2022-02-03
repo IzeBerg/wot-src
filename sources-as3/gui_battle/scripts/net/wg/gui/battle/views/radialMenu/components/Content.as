@@ -26,6 +26,8 @@ package net.wg.gui.battle.views.radialMenu.components
       
       public var keyBackgroundMC:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function Content()
       {
          super();
@@ -77,6 +79,7 @@ package net.wg.gui.battle.views.radialMenu.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          if(this.icons != null)
          {
             this.icons.dispose();
@@ -86,6 +89,11 @@ package net.wg.gui.battle.views.radialMenu.components
          this.keyTF = null;
          this.customButtonIcon = null;
          this.keyBackgroundMC = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

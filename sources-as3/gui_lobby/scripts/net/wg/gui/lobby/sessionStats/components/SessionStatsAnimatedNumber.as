@@ -20,6 +20,8 @@ package net.wg.gui.lobby.sessionStats.components
       
       public var counter:SessionStatsAnimatedNumberCounter = null;
       
+      private var _disposed:Boolean = false;
+      
       private var currentNumber:int = 0;
       
       private var currentTween:Tween = null;
@@ -86,8 +88,9 @@ package net.wg.gui.lobby.sessionStats.components
          });
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          this.clearTween();
          this.counter.dispose();
          this.counter = null;
@@ -101,6 +104,11 @@ package net.wg.gui.lobby.sessionStats.components
             this.currentTween.dispose();
             this.currentTween = null;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

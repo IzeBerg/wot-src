@@ -139,6 +139,9 @@ class Stats(object):
             entitlementsDiff = cacheDiff.get('entitlements', None)
             if entitlementsDiff is not None:
                 synchronizeDicts(entitlementsDiff, cache.setdefault('entitlements', {}))
+            dynamicCurrenciesDiff = cacheDiff.get('dynamicCurrencies', None)
+            if dynamicCurrenciesDiff:
+                synchronizeDicts(dynamicCurrenciesDiff, cache.setdefault('dynamicCurrencies', dict()))
         piggyBankDiff = diff.get(PIGGY_BANK_PDATA_KEY, None)
         if piggyBankDiff is not None:
             synchronizeDicts(piggyBankDiff, cache.setdefault(PIGGY_BANK_PDATA_KEY, dict()))

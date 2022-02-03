@@ -1,24 +1,25 @@
+import operator
 from abc import ABCMeta, abstractmethod
 from collections import defaultdict, namedtuple
-import typing, operator, constants, dossiers2, nations
+import typing, constants, dossiers2, nations
 from account_shared import LayoutIterator
 from adisp import async, process
+from battle_pass_common import BATTLE_PASS_PDATA_KEY
 from constants import CustomizationInvData, SkinInvData
-from debug_utils import LOG_WARNING, LOG_DEBUG, LOG_ERROR
+from debug_utils import LOG_DEBUG, LOG_ERROR, LOG_WARNING
 from goodies.goodie_constants import GOODIE_STATE
 from gui.shared.gui_items import GUI_ITEM_TYPE, GUI_ITEM_TYPE_NAMES, ItemsCollection, getVehicleSuitablesByType
-from gui.shared.utils.requesters import vehicle_items_getter
 from gui.shared.gui_items.gui_item_economics import ITEM_PRICE_EMPTY
-from gui.shared.utils.requesters.battle_pass_requester import BattlePassRequester
+from gui.shared.utils.requesters import vehicle_items_getter
 from helpers import dependency
-from items import vehicles, tankmen, getTypeOfCompactDescr, makeIntCompactDescrByID
-from items.components.c11n_constants import SeasonType, CustomizationDisplayType
+from items import getTypeOfCompactDescr, makeIntCompactDescrByID, tankmen, vehicles
+from items.components.c11n_constants import CustomizationDisplayType, SeasonType
 from items.components.crew_skins_constants import CrewSkinType
-from skeletons.gui.shared import IItemsRequester, IItemsCache
-from skeletons.gui.shared.gui_items import IGuiItemsFactory
-from skeletons.gui.game_control import IVehiclePostProgressionController
-from nation_change.nation_change_helpers import iterVehiclesWithNationGroupInOrder, iterVehTypeCDsInNationGroup, isMainInNationGroupSafe
+from nation_change.nation_change_helpers import isMainInNationGroupSafe, iterVehTypeCDsInNationGroup, iterVehiclesWithNationGroupInOrder
 from shared_utils.account_helpers.diff_utils import synchronizeDicts
+from skeletons.gui.game_control import IVehiclePostProgressionController
+from skeletons.gui.shared import IItemsCache, IItemsRequester
+from skeletons.gui.shared.gui_items import IGuiItemsFactory
 if typing.TYPE_CHECKING:
     import skeletons.gui.shared.utils.requesters as requesters
     from gui.veh_post_progression.models.progression import PostProgressionItem
@@ -370,7 +371,7 @@ class ItemsRequester(IItemsRequester):
     __vehPostProgressionCtrl = dependency.descriptor(IVehiclePostProgressionController)
     _AccountItem = namedtuple('_AccountItem', ['dossier', 'clanInfo', 'seasons', 'ranked', 'dogTag'])
 
-    def __init__(self, inventory, stats, dossiers, goodies, shop, recycleBin, vehicleRotation, ranked, battleRoyale, badges, epicMetaGame, tokens, festivityRequester, blueprints=None, sessionStatsRequester=None, anonymizerRequester=None, giftSystemRequester=None):
+    def __init__(self, inventory, stats, dossiers, goodies, shop, recycleBin, vehicleRotation, ranked, battleRoyale, badges, epicMetaGame, tokens, festivityRequester, blueprints=None, sessionStatsRequester=None, anonymizerRequester=None, battlePassRequester=None, giftSystemRequester=None):
         self.__inventory = inventory
         self.__stats = stats
         self.__dossiers = dossiers
@@ -387,7 +388,7 @@ class ItemsRequester(IItemsRequester):
         self.__tokens = tokens
         self.__sessionStats = sessionStatsRequester
         self.__anonymizer = anonymizerRequester
-        self.__battlePass = BattlePassRequester()
+        self.__battlePass = battlePassRequester
         self.__giftSystem = giftSystemRequester
         self.__itemsCache = defaultdict(dict)
         self.__brokenSyncAlreadyLoggedTypes = set()
@@ -524,7 +525,7 @@ class ItemsRequester(IItemsRequester):
 
     def isSynced--- This code section failed: ---
 
- L. 880         0  LOAD_FAST             0  'self'
+ L. 881         0  LOAD_FAST             0  'self'
                 3  LOAD_ATTR             0  '__blueprints'
                 6  LOAD_CONST               None
                 9  COMPARE_OP            9  is-not
@@ -800,11 +801,13 @@ Parse error at or near `None' instruction at offset -1
                     else:
                         invalidate[GUI_ITEM_TYPE.VEHICLE].add(itemID)
 
-            if ('battlePass', '_r') in diff or 'battlePass' in diff:
-                if ('battlePass', '_r') in diff:
-                    invalidate['battlePass'] = diff[('battlePass', '_r')]
-                if 'battlePass' in diff:
-                    synchronizeDicts(diff['battlePass'], invalidate.setdefault('battlePass', {}))
+            if (
+             BATTLE_PASS_PDATA_KEY, '_r') in diff or BATTLE_PASS_PDATA_KEY in diff:
+                if (
+                 BATTLE_PASS_PDATA_KEY, '_r') in diff:
+                    invalidate[BATTLE_PASS_PDATA_KEY] = diff[(BATTLE_PASS_PDATA_KEY, '_r')]
+                if BATTLE_PASS_PDATA_KEY in diff:
+                    synchronizeDicts(diff[BATTLE_PASS_PDATA_KEY], invalidate.setdefault(BATTLE_PASS_PDATA_KEY, {}))
             if 'goodies' in diff:
                 vehicleDiscounts = self.__shop.getVehicleDiscountDescriptions()
                 for goodieID in diff['goodies'].iterkeys():

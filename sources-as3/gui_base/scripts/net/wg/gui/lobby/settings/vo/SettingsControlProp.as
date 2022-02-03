@@ -40,6 +40,8 @@ package net.wg.gui.lobby.settings.vo
       
       private var _current:Object = null;
       
+      private var _disposed:Boolean = false;
+      
       public function SettingsControlProp(param1:Object = null, param2:Array = null, param3:String = null, param4:Boolean = false, param5:Boolean = false, param6:String = null, param7:Boolean = false, param8:Boolean = false, param9:Object = null, param10:Boolean = false, param11:Object = null, param12:Object = null)
       {
          super();
@@ -65,6 +67,7 @@ package net.wg.gui.lobby.settings.vo
       
       public final function dispose() : void
       {
+         this._disposed = true;
          if(this.options != null)
          {
             this.options.splice(0,this.options.length);
@@ -94,6 +97,11 @@ package net.wg.gui.lobby.settings.vo
             return;
          }
          this._current = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

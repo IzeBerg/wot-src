@@ -13,6 +13,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       public var hpFieldWithoutBar:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function HPFieldContainer()
       {
          super();
@@ -20,8 +22,9 @@ package net.wg.gui.battle.views.vehicleMarkers
          TextFieldEx.setNoTranslate(this.hpFieldWithoutBar,true);
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          this.hpFieldWithBar = null;
          this.hpFieldWithoutBar = null;
       }
@@ -48,6 +51,11 @@ package net.wg.gui.battle.views.vehicleMarkers
       {
          this.hpFieldWithBar.visible = param1;
          this.hpFieldWithoutBar.visible = !param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

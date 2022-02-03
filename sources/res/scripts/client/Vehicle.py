@@ -1,6 +1,6 @@
 import logging, math, random, weakref
 from collections import namedtuple
-import BigWorld, Math, Health, WoT, AreaDestructibles, ArenaType, BattleReplay, DestructiblesCache, TriggersManager, constants, physics_shared
+import BigWorld, Math, Health, WoT, AreaDestructibles, BattleReplay, DestructiblesCache, TriggersManager, constants, physics_shared
 from account_helpers.settings_core.settings_constants import GAME
 from TriggersManager import TRIGGER_TYPE
 from VehicleEffects import DamageFromShotDecoder
@@ -977,7 +977,6 @@ class Vehicle(BigWorld.Entity, BattleAbilitiesComponent):
         physics.staticMode = False
         physics.movementSignals = 0
         self.filter.setVehiclePhysics(physics)
-        physics.visibilityMask = ArenaType.getVisibilityMask(BigWorld.player().arenaTypeID >> 16)
         yaw, pitch = decodeGunAngles(self.gunAnglesPacked, typeDescr.gun.pitchLimits['absolute'])
         self.filter.syncGunAngles(yaw, pitch)
         self.__speedInfo.set(self.filter.speedInfo)

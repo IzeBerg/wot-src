@@ -10,6 +10,8 @@ package net.wg.gui.components.advanced.tutorial
       
       public var hintTF:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function TutorialHintText()
       {
          super();
@@ -17,7 +19,13 @@ package net.wg.gui.components.advanced.tutorial
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.hintTF = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

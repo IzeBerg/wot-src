@@ -158,7 +158,6 @@ package net.wg.gui.battle.epicBattle.views
       {
          super();
          this.battleDamageLogPanel.init(ATLAS_CONSTANTS.BATTLE_ATLAS);
-         playerMessageList.extendedLog = true;
       }
       
       override public function as_setPostmortemTipsVisible(param1:Boolean) : void

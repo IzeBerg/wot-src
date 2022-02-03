@@ -25,6 +25,8 @@ package net.wg.gui.components.crosshairPanel
       
       private var _container:DisplayObjectContainer;
       
+      private var _disposed:Boolean = false;
+      
       public function GunMarkersManager(param1:DisplayObjectContainer)
       {
          super();
@@ -98,6 +100,7 @@ package net.wg.gui.components.crosshairPanel
       public final function dispose() : void
       {
          var _loc1_:IGunMarker = null;
+         this._disposed = true;
          for each(_loc1_ in this._gunMarkers)
          {
             _loc1_.dispose();
@@ -165,6 +168,11 @@ package net.wg.gui.components.crosshairPanel
          {
             _loc2_.setSettings(param1.gunTagType,param1.mixingType,param1.gunTagAlpha,param1.mixingAlpha);
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

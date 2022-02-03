@@ -27,6 +27,8 @@ package net.wg.gui.battle.views.questProgress.components
       
       private var _lockTween:Tween = null;
       
+      private var _disposed:Boolean = false;
+      
       public function QPLock()
       {
          super();
@@ -43,6 +45,7 @@ package net.wg.gui.battle.views.questProgress.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          addFrameScript(totalFrames - 1,null);
          this._lockTween.paused = true;
          this._lockTween.dispose();
@@ -96,6 +99,11 @@ package net.wg.gui.battle.views.questProgress.components
       private function onHide() : void
       {
          visible = false;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

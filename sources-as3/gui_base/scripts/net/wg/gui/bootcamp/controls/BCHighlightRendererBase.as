@@ -9,6 +9,8 @@ package net.wg.gui.bootcamp.controls
    {
        
       
+      private var _disposed:Boolean = false;
+      
       public function BCHighlightRendererBase()
       {
          super();
@@ -18,6 +20,7 @@ package net.wg.gui.bootcamp.controls
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -28,6 +31,11 @@ package net.wg.gui.bootcamp.controls
       
       protected function onDispose() : void
       {
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

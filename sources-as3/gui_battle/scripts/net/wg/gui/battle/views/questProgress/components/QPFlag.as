@@ -19,6 +19,8 @@ package net.wg.gui.battle.views.questProgress.components
       
       public var flag:Sprite = null;
       
+      private var _disposed:Boolean = false;
+      
       public function QPFlag()
       {
          super();
@@ -27,6 +29,7 @@ package net.wg.gui.battle.views.questProgress.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.taskIndexTF = null;
          this.taskIco.dispose();
          this.taskIco = null;
@@ -49,6 +52,11 @@ package net.wg.gui.battle.views.questProgress.components
          super.visible = param1;
          var _loc2_:String = !!param1 ? QuestProgressComponentEvent.SHOW : QuestProgressComponentEvent.HIDE;
          dispatchEvent(new QuestProgressComponentEvent(_loc2_));
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

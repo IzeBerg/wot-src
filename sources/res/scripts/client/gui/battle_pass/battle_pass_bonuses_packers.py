@@ -284,7 +284,7 @@ class SelectBonusPacker(BaseBonusUIPacker):
         tooltipData = []
         for tokenID in bonus.getTokens().iterkeys():
             tooltipData.append(TooltipData(tooltip=None, isSpecial=True, specialAlias=TOOLTIPS_CONSTANTS.BATTLE_PASS_GIFT_TOKEN, specialArgs=[
-             tokenID]))
+             tokenID] + [bonus.getContext().get('isReceived', True)]))
 
         return tooltipData
 

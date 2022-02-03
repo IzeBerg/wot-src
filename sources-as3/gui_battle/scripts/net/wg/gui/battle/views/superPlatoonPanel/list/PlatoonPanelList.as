@@ -29,6 +29,8 @@ package net.wg.gui.battle.views.superPlatoonPanel.list
       
       private var _itemsHealth:Dictionary = null;
       
+      private var _disposed:Boolean = false;
+      
       public function PlatoonPanelList()
       {
          super();
@@ -41,6 +43,7 @@ package net.wg.gui.battle.views.superPlatoonPanel.list
       public final function dispose() : void
       {
          var _loc1_:PlatoonMemberListItemHolder = null;
+         this._disposed = true;
          this._currOrder.splice(0,this._currOrder.length);
          this._currOrder = null;
          this._totalOrder.fixed = false;
@@ -303,6 +306,11 @@ package net.wg.gui.battle.views.superPlatoonPanel.list
             }
          }
          return null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

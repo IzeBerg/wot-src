@@ -11,6 +11,8 @@ package net.wg.gui.battle.views.prebattleInfo.questInfo
       
       private var _bgHeight:int;
       
+      private var _disposed:Boolean = false;
+      
       private const MIN_FLAG_BG_HEIGHT:int = 166;
       
       public function QuestInfoFlagBg()
@@ -21,6 +23,7 @@ package net.wg.gui.battle.views.prebattleInfo.questInfo
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.scaledFlag = null;
       }
       
@@ -32,6 +35,11 @@ package net.wg.gui.battle.views.prebattleInfo.questInfo
          }
          this._bgHeight = param1;
          this.scaledFlag.height = this._bgHeight + this.MIN_FLAG_BG_HEIGHT;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

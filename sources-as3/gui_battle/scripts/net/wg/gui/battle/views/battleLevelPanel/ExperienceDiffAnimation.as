@@ -23,6 +23,8 @@ package net.wg.gui.battle.views.battleLevelPanel
       
       private var _isActive:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function ExperienceDiffAnimation()
       {
          super();
@@ -32,6 +34,7 @@ package net.wg.gui.battle.views.battleLevelPanel
       
       public final function dispose() : void
       {
+         this._disposed = true;
          stop();
          this.onFadeOutComplete = null;
          this.textContainer.dispose();
@@ -105,6 +108,11 @@ package net.wg.gui.battle.views.battleLevelPanel
       public function get isActive() : Boolean
       {
          return this._isActive;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

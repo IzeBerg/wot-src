@@ -33,6 +33,7 @@ class TabsController(object):
             tabsArray.addViewModel(viewModel)
 
         self._autoCreating = False
+        tabsArray.invalidate()
 
     def updateTabModels(self, tabsArray):
         if self._autoCreating:

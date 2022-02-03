@@ -8,6 +8,8 @@ package net.wg.gui.battle.views.destroyTimers.components.secondaryTimerFx
       
       private var _fxContainer:SecondaryTimerFXContainer;
       
+      private var _disposed:Boolean = false;
+      
       public function StunTimerFX()
       {
          super();
@@ -20,6 +22,7 @@ package net.wg.gui.battle.views.destroyTimers.components.secondaryTimerFx
       
       public function dispose() : void
       {
+         this._disposed = true;
          this._fxContainer = null;
       }
       
@@ -32,6 +35,11 @@ package net.wg.gui.battle.views.destroyTimers.components.secondaryTimerFx
       public function hide() : void
       {
          this._fxContainer.hideAll();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

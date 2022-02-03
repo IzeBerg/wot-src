@@ -28,5 +28,10 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
          this._isDisposed = true;
          this.anim = null;
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._isDisposed;
+      }
    }
 }

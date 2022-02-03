@@ -1,8 +1,10 @@
 import typing
-from gui.shared.event_dispatcher import showVehicleRentalPage, showHangar
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
-from web.web_client_api import Schema2Command, webApiCollection
+from gui.shared.event_dispatcher import showHangar, showVehicleRentalPage
+from web.web_client_api import Schema2Command
 from web.web_client_api.ui import OpenTabWebApi
+if typing.TYPE_CHECKING:
+    from typing import Callable, Dict
 
 class _OpenTabWebApi(OpenTabWebApi):
 
@@ -24,12 +26,5 @@ class _OpenTabWebApi(OpenTabWebApi):
         return _returnToVehicleRental
 
 
-_NAME_TO_API_MAP = {'open_tab': _OpenTabWebApi}
-
-def replaceHandlers(handlers):
-    handlersToReplace = [ e for e in handlers if e.name in _NAME_TO_API_MAP.keys() ]
-    for element in handlersToReplace:
-        handlers.remove(element)
-
-    newHandlers = webApiCollection(*_NAME_TO_API_MAP.values())
-    handlers.extend(newHandlers)
+def getReplaceHandlers():
+    return {'open_tab': _OpenTabWebApi}

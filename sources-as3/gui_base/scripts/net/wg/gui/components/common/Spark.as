@@ -14,6 +14,8 @@ package net.wg.gui.components.common
       
       private var _zone:Rectangle = null;
       
+      private var _disposed:Boolean = false;
+      
       public function Spark()
       {
          super();
@@ -26,6 +28,7 @@ package net.wg.gui.components.common
       
       public function dispose() : void
       {
+         this._disposed = true;
          removeEventListener(Event.ADDED_TO_STAGE,this.onAddedToStage);
          this.zone = null;
          this.sparkAnimation.stop();
@@ -94,6 +97,11 @@ package net.wg.gui.components.common
       private function onAddedToStage(param1:Event) : void
       {
          this.startAnimation();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

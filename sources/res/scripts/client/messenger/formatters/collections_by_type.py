@@ -2,8 +2,13 @@ from chat_shared import SYS_MESSAGE_TYPE as _SM_TYPE
 from gui.gift_system.proxy import GiftSystemMessagesProxy
 from messenger.formatters import service_channel as _sc
 from messenger.formatters import wot_plus as _wotPlusFormatters
-from messenger.formatters import token_quest_subformatters
+from messenger.formatters import auto_boxes_subformatters, token_quest_subformatters
 from messenger.m_constants import SCH_CLIENT_MSG_TYPE
+_AUTO_BOXES_SUB_FORMATTERS = (
+ auto_boxes_subformatters.EventBoxesFormatter(),
+ auto_boxes_subformatters.NYPostEventBoxesFormatter(),
+ auto_boxes_subformatters.NYGiftSystemSurpriseFormatter(),
+ auto_boxes_subformatters.LunarNYEnvelopeAutoOpenFormatter())
 _TOKEN_QUEST_SUB_FORMATTERS = (
  token_quest_subformatters.LootBoxTokenQuestFormatter(),
  token_quest_subformatters.RecruitQuestsFormatter(),
@@ -63,7 +68,7 @@ SERVER_FORMATTERS = {_SM_TYPE.serverReboot.index(): _sc.ServerRebootFormatter(),
    _SM_TYPE.currencyUpdate.index(): _sc.CurrencyUpdateFormatter(), 
    _SM_TYPE.personalMissionFailed.index(): _sc.PersonalMissionFailedFormatter(), 
    _SM_TYPE.customizationChanged.index(): _sc.CustomizationChangedFormatter(), 
-   _SM_TYPE.lootBoxesAutoOpenReward.index(): _sc.LootBoxAutoOpenFormatter(), 
+   _SM_TYPE.lootBoxesAutoOpenReward.index(): _sc.LootBoxAutoOpenFormatter(subFormatters=_AUTO_BOXES_SUB_FORMATTERS), 
    _SM_TYPE.progressiveReward.index(): _sc.ProgressiveRewardFormatter(), 
    _SM_TYPE.piggyBankSmashed.index(): _sc.PiggyBankSmashedFormatter(), 
    _SM_TYPE.blackMapRemoved.index(): _sc.BlackMapRemovedFormatter(), 
@@ -71,9 +76,9 @@ SERVER_FORMATTERS = {_SM_TYPE.serverReboot.index(): _sc.ServerRebootFormatter(),
    _SM_TYPE.enhancementsWiped.index(): _sc.EnhancementsWipedFormatter(), 
    _SM_TYPE.battlePassReward.index(): _sc.BattlePassRewardFormatter(), 
    _SM_TYPE.battlePassReachedCap.index(): _sc.BattlePassReachedCapFormatter(), 
-   _SM_TYPE.battlePassStyleChoiceAvailable.index(): _sc.BattlePassStyleChoiceAvailableFormatter(), 
-   _SM_TYPE.battlePassStyleChosen.index(): _sc.BattlePassStyleChosenFormatter(), 
+   _SM_TYPE.battlePassStyleRecieved.index(): _sc.BattlePassStyleReceivedFormatter(), 
    _SM_TYPE.battlePassSeasonEnd.index(): _sc.BattlePassSeasonEndFormatter(), 
+   _SM_TYPE.battlePassUseNonChapterPoints.index(): _sc.BattlePassFreePointsUsedFormatter(), 
    _SM_TYPE.badges.index(): _sc.BadgesFormatter(), 
    _SM_TYPE.collectibleVehiclesUnlocked.index(): _sc.CollectibleVehiclesUnlockedFormatter(), 
    _SM_TYPE.customizationProgress.index(): _sc.CustomizationProgressFormatter(), 
@@ -91,7 +96,8 @@ SERVER_FORMATTERS = {_SM_TYPE.serverReboot.index(): _sc.ServerRebootFormatter(),
    _SM_TYPE.passiveXPIncompatibleCrew.index(): _wotPlusFormatters.SimpleFormatter('PassiveXPIncompatibleCrewMessage'), 
    _SM_TYPE.wotPlusRentEnd.index(): _wotPlusFormatters.RentEnd(), 
    _SM_TYPE.wotPlusNoRentSelected.index(): _wotPlusFormatters.SimpleFormatter('WotPlusRentNoRentSelectedMessage'), 
-   _SM_TYPE.giftSystemMessage.index(): GiftSystemMessagesProxy()}
+   _SM_TYPE.giftSystemMessage.index(): GiftSystemMessagesProxy(), 
+   _SM_TYPE.telecomMergeResults.index(): _sc.TelecomMergeResultsFormatter()}
 CLIENT_FORMATTERS = {SCH_CLIENT_MSG_TYPE.SYS_MSG_TYPE: _sc.ClientSysMessageFormatter(), 
    SCH_CLIENT_MSG_TYPE.PREMIUM_ACCOUNT_EXPIRY_MSG: _sc.PremiumAccountExpiryFormatter(), 
    SCH_CLIENT_MSG_TYPE.AOGAS_NOTIFY_TYPE: _sc.AOGASNotifyFormatter(), 

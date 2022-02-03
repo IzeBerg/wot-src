@@ -93,5 +93,10 @@ package net.wg.gui.lobby.epicBattles.components
          this._bgIsLoaded = true;
          this.resize();
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._baseDisposed;
+      }
    }
 }

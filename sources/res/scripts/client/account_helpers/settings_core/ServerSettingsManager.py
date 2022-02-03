@@ -2,9 +2,10 @@ import weakref
 from collections import namedtuple
 from account_helpers.settings_core import settings_constants
 from account_helpers.settings_core.migrations import migrateToVersion
-from account_helpers.settings_core.settings_constants import TUTORIAL, VERSION, GuiSettingsBehavior, OnceOnlyHints, BattlePassStorageKeys, SPGAim
+from account_helpers.settings_core.settings_constants import TUTORIAL, VERSION, GuiSettingsBehavior, OnceOnlyHints, SPGAim
 from adisp import process, async
 from debug_utils import LOG_ERROR, LOG_DEBUG
+from gui.battle_pass.battle_pass_helpers import updateBattlePassVersion
 from gui.server_events.pm_constants import PM_TUTOR_FIELDS
 from helpers import dependency
 from shared_utils import CONST_CONTAINER
@@ -335,8 +336,6 @@ class ServerSettingsManager(object):
                                               GuiSettingsBehavior.RANKED_WELCOME_VIEW_SHOWED: 1, 
                                               GuiSettingsBehavior.RANKED_WELCOME_VIEW_STARTED: 2, 
                                               GuiSettingsBehavior.EPIC_RANDOM_CHECKBOX_CLICKED: 3, 
-                                              GuiSettingsBehavior.TECHTREE_INTRO_BLUEPRINTS_RECEIVED: 23, 
-                                              GuiSettingsBehavior.TECHTREE_INTRO_SHOWED: 24, 
                                               GuiSettingsBehavior.DISPLAY_PLATOON_MEMBER_CLICKED: 25, 
                                               GuiSettingsBehavior.VEH_POST_PROGRESSION_UNLOCK_MSG_NEED_SHOW: 26, 
                                               GuiSettingsBehavior.BIRTHDAY_CALENDAR_INTRO_SHOWED: 27}, offsets={}), 
@@ -486,12 +485,9 @@ class ServerSettingsManager(object):
                                          SESSION_STATS.SHOW_SURVIVED_RATE: 15, 
                                          SESSION_STATS.SHOW_SPOTTED: 16, 
                                          SESSION_STATS.ONLY_ONCE_HINT_SHOWN_FIELD: 17}, offsets={}), 
-       SETTINGS_SECTIONS.BATTLE_PASS_STORAGE: Section(masks={BATTLE_PASS.NEW_DEVICE_NOTIFICATION_SHOWN: 0, 
-                                               BATTLE_PASS.TROPHY_NOTIFICATION_SHOWN: 1, 
-                                               BATTLE_PASS.INTRO_SHOWN: 16, 
-                                               BATTLE_PASS.BUY_BUTTON_HINT_IS_SHOWN: 17, 
+       SETTINGS_SECTIONS.BATTLE_PASS_STORAGE: Section(masks={BATTLE_PASS.INTRO_SHOWN: 16, 
                                                BATTLE_PASS.INTRO_VIDEO_SHOWN: 20, 
-                                               BATTLE_PASS.DAILY_QUESTS_INTRO_SHOWN: 27}, offsets={BATTLE_PASS.BUY_ANIMATION_WAS_SHOWN: Offset(10, 7168), 
+                                               BATTLE_PASS.DAILY_QUESTS_INTRO_SHOWN: 27}, offsets={BATTLE_PASS.BUY_ANIMATION_WAS_SHOWN: Offset(10, 15360), 
                                                BATTLE_PASS.FLAGS_VERSION: Offset(21, 132120576)}), 
        SETTINGS_SECTIONS.BATTLE_COMM: Section(masks={BATTLE_COMM.ENABLE_BATTLE_COMMUNICATION: 0, 
                                        BATTLE_COMM.SHOW_COM_IN_PLAYER_LIST: 1, 
@@ -686,7 +682,7 @@ class ServerSettingsManager(object):
 
     def getBPStorage(self, defaults=None):
         storageData = self.getSection(SETTINGS_SECTIONS.BATTLE_PASS_STORAGE, defaults)
-        if _updateBattlePassVersion(storageData):
+        if updateBattlePassVersion(storageData):
             self.saveInBPStorage(storageData)
         return storageData
 
@@ -1033,15 +1029,3 @@ class ServerSettingsManager(object):
         if res and increase:
             self.updateUIStorageCounter(key)
         return res
-
-
-def _updateBattlePassVersion(data):
-    version = 6
-    if data[BattlePassStorageKeys.FLAGS_VERSION] < version:
-        data[BattlePassStorageKeys.FLAGS_VERSION] = version
-        data[BattlePassStorageKeys.INTRO_SHOWN] = False
-        data[BattlePassStorageKeys.INTRO_VIDEO_SHOWN] = False
-        data[BattlePassStorageKeys.BUY_ANIMATION_WAS_SHOWN] = 0
-        data[BattlePassStorageKeys.BUY_BUTTON_HINT_IS_SHOWN] = False
-        return True
-    return False

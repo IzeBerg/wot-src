@@ -42,6 +42,8 @@ package net.wg.gui.battle.views.questProgress.animated
       
       private var _tween:Tween = null;
       
+      private var _disposed:Boolean = false;
+      
       public function AnimationItem()
       {
          super();
@@ -110,6 +112,7 @@ package net.wg.gui.battle.views.questProgress.animated
       
       protected function onDispose() : void
       {
+         this._disposed = true;
          stop();
          this.clearTween();
          this.animRing.dispose();
@@ -180,6 +183,11 @@ package net.wg.gui.battle.views.questProgress.animated
             this._tween.dispose();
             this._tween = null;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

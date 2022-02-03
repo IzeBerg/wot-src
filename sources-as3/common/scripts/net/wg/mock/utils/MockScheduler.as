@@ -43,5 +43,10 @@ package net.wg.mock.utils
       public function scheduleTask(param1:Function, param2:Number, ... rest) : void
       {
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return false;
+      }
    }
 }

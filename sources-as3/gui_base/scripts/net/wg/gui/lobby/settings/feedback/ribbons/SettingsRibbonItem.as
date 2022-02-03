@@ -21,6 +21,8 @@ package net.wg.gui.lobby.settings.feedback.ribbons
       
       private var _texts:RibbonTexts;
       
+      private var _disposed:Boolean = false;
+      
       public function SettingsRibbonItem(param1:RibbonSettingsLobby)
       {
          super();
@@ -61,12 +63,18 @@ package net.wg.gui.lobby.settings.feedback.ribbons
       
       protected function onDispose() : void
       {
+         this._disposed = true;
          this._icons.dispose();
          removeChild(this._icons);
          this._icons = null;
          this._texts.dispose();
          removeChild(this._texts);
          this._texts = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

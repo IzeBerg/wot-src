@@ -23,6 +23,8 @@ package net.wg.gui.lobby.vehicleCustomization.controls.seasonBar
       
       private var _isMinResolution:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function CustomizationSeasonBGAnimation()
       {
          super();
@@ -31,6 +33,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls.seasonBar
       
       public final function dispose() : void
       {
+         this._disposed = true;
          stop();
          addFrameScript(ANIM_SHOW_FINAL_FRAME,null);
          this.image.dispose();
@@ -62,6 +65,11 @@ package net.wg.gui.lobby.vehicleCustomization.controls.seasonBar
          }
          this._isMinResolution = param1;
          this.image.image.alpha = !!param1 ? Number(SMALL_ALPHA) : Number(1);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

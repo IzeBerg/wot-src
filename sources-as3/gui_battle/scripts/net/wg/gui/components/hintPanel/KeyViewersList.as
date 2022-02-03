@@ -25,6 +25,8 @@ package net.wg.gui.components.hintPanel
       
       private var _keySideOffset:int = 17;
       
+      private var _disposed:Boolean = false;
+      
       public function KeyViewersList()
       {
          this._keys = new Vector.<KeyViewer>(0);
@@ -55,6 +57,7 @@ package net.wg.gui.components.hintPanel
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.clearKeys();
          this._keys = null;
          this._pluses = null;
@@ -114,6 +117,11 @@ package net.wg.gui.components.hintPanel
       public function set keySideOffset(param1:int) : void
       {
          this._keySideOffset = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

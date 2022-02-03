@@ -11,7 +11,7 @@ from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
 from gui.Scaleform.settings import ICONS_SIZES
 from gui.impl import backport
 from gui.impl.gen import R
-from gui.ranked_battles.constants import YEAR_POINTS_TOKEN, YEAR_AWARD_SELECTABLE_OPT_DEVICE
+from gui.ranked_battles.constants import YEAR_POINTS_TOKEN
 from gui.server_events.formatters import parseComplexToken, TOKEN_SIZES
 from gui.server_events.recruit_helper import getRecruitInfo
 from gui.shared.formatters import text_styles
@@ -28,6 +28,7 @@ from items.tankmen import RECRUIT_TMAN_TOKEN_PREFIX
 from personal_missions import PM_BRANCH
 from shared_utils import CONST_CONTAINER, findFirst
 from skeletons.gui.customization import ICustomizationService
+from skeletons.gui.offers import IOffersDataProvider
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
 if typing.TYPE_CHECKING:
@@ -229,10 +230,11 @@ def getPostBattleFormatterMap():
     return mapping
 
 
-def getRankedFormatterMap():
+def getRankedFormatterMap(context=None):
     tokenBonusFormatter = RankedPointFormatter()
     mapping = getDefaultFormattersMap()
     mapping.update({'tokens': tokenBonusFormatter, 
+       'selectableBonus': RankedSelectableAwardFormatter(context.get('selectionsLeft') if context else None), 
        'battleToken': tokenBonusFormatter, 
        'vehicles': RankedVehiclesBonusFormatter(), 
        'items': RankedItemsBonusFormatter(), 
@@ -259,6 +261,14 @@ def getRoyaleFormatterMap():
        PREMIUM_ENTITLEMENTS.PLUS: PremiumDaysBonusFormatter(), 
        'customizations': CustomizationsBonusFormatter(), 
        'dossier': DossierBonusFormatter()}
+
+
+def getMarathonRewardScrenFormatterMap():
+    mapping = getDefaultFormattersMap()
+    mapping[PREMIUM_ENTITLEMENTS.BASIC] = PremiumDaysMarathonFormatter()
+    mapping[PREMIUM_ENTITLEMENTS.PLUS] = PremiumDaysMarathonFormatter()
+    mapping['tankmen'] = TankmenMarathonRewardBonusFormatter()
+    return mapping
 
 
 def getDefaultAwardFormatter():
@@ -297,8 +307,8 @@ def getPostBattleAwardsPacker():
     return AwardsPacker(getPostBattleFormatterMap())
 
 
-def getRankedAwardsPacker():
-    return AwardsPacker(getRankedFormatterMap())
+def getRankedAwardsPacker(context=None):
+    return AwardsPacker(getRankedFormatterMap(context))
 
 
 def getRoyaleAwardsPacker():
@@ -327,6 +337,10 @@ def getAnniversaryPacker():
 
 def getBattlePassAwardsPacker():
     return AwardsPacker(getBattlePassFormatterMap())
+
+
+def getMarathonRewardScreenPacker():
+    return AwardsPacker(getMarathonRewardScrenFormatterMap())
 
 
 def formatCountLabel(count, defaultStr=''):
@@ -625,6 +639,22 @@ class PremiumDaysBonusFormatter(SimpleBonusFormatter):
         return result
 
 
+class PremiumDaysMarathonFormatter(PremiumDaysBonusFormatter):
+
+    def _format(self, bonus):
+        return [
+         PreformattedBonus(bonusName='items', label=formatCountLabel(bonus.getValue()), userName=self._getUserName(bonus), images=self._getImages(bonus), tooltip=bonus.getTooltip(), isCompensation=self._isCompensation(bonus))]
+
+    @classmethod
+    def _getImages(cls, bonus):
+        result = {}
+        for size in AWARDS_SIZES.ALL():
+            imgPath = RES_ICONS.getPremiumDaysAwardIcon(size, bonus.getName(), 'universal')
+            result[size] = imgPath
+
+        return result
+
+
 class PremiumDaysEpicBonusFormatter(PremiumDaysBonusFormatter):
 
     @classmethod
@@ -769,8 +799,6 @@ class RankedPointFormatter(TokenBonusFormatter):
             formatted = None
             if tokenID.startswith(YEAR_POINTS_TOKEN):
                 formatted = self.__formatRankedPointToken(tokenID, token, bonus)
-            elif tokenID == YEAR_AWARD_SELECTABLE_OPT_DEVICE:
-                formatted = self.__formatRankedSelectableOptDevice(tokenID, token, bonus)
             if formatted is not None:
                 result.append(formatted)
 
@@ -783,9 +811,6 @@ class RankedPointFormatter(TokenBonusFormatter):
     def __formatRankedPointToken(self, tokenID, token, bonus):
         return PreformattedBonus(label=self._formatBonusLabel(token.count), userName=self._getUserName(bonus), labelFormatter=self._getLabelFormatter(bonus), images=self.__getImages(tokenID), tooltip=makeTooltip(header=backport.text(R.strings.tooltips.rankedBattleView.scorePoint.header()), body=backport.text(R.strings.tooltips.rankedBattleView.scorePoint.body())), align=self._getLabelAlign(bonus), isCompensation=self._isCompensation(bonus))
 
-    def __formatRankedSelectableOptDevice(self, tokenID, token, bonus):
-        return PreformattedBonus(label=self._formatBonusLabel(token.count), userName=backport.text(R.strings.ranked_battles.yearRewards.tooltip.equipmentChoice.title()), labelFormatter=self._getLabelFormatter(bonus), images=self.__getImages(tokenID), align=self._getLabelAlign(bonus), isCompensation=self._isCompensation(bonus))
-
     def __getImages(self, tokenID):
         return {size:backport.image(self.__getImagePath(tokenID, size)()) for size in AWARDS_SIZES.ALL() if self.__getImagePath(tokenID, size)}
 
@@ -794,13 +819,35 @@ class RankedPointFormatter(TokenBonusFormatter):
         if tokenID.startswith(YEAR_POINTS_TOKEN):
             return R.images.gui.maps.icons.quests.bonuses.dyn(size).dyn('rankedPoint')
         else:
-            if tokenID == YEAR_AWARD_SELECTABLE_OPT_DEVICE:
-                return R.images.gui.maps.icons.quests.bonuses.dyn(size).dyn('delux_gift')
             return
 
     @classmethod
     def _getLabelAlign(cls, bonus):
         return LABEL_ALIGN.RIGHT
+
+
+class RankedSelectableAwardFormatter(TokenBonusFormatter):
+    __offersDP = dependency.descriptor(IOffersDataProvider)
+
+    def __init__(self, overloadCount=None):
+        super(RankedSelectableAwardFormatter, self).__init__()
+        self.__overloadCount = overloadCount
+
+    def _format(self, bonus):
+        return [
+         PreformattedBonus(bonusName=bonus.getName(), label=self._formatBonusLabel(self.__overloadCount or self.__getCountForLabel(bonus)), userName=backport.text(R.strings.ranked_battles.yearRewards.tooltip.equipmentChoice.title()), labelFormatter=self._getLabelFormatter(bonus), images=self.__getImages(), align=LABEL_ALIGN.RIGHT, isCompensation=self._isCompensation(bonus), specialAlias=TOOLTIPS_CONSTANTS.RANKED_BATTLES_SELECTABLE_REWARD, specialArgs=[], isSpecial=True)]
+
+    def __getCountForLabel(self, bonus):
+        for tokenID, token in bonus.getTokens().iteritems():
+            if self.__offersDP.getOfferByToken(tokenID) is not None:
+                return self.__offersDP.getAmountOfGiftsGenerated(tokenID, token.count)
+            return int(tokenID.split(':')[(-1)])
+
+        return 0
+
+    def __getImages(self):
+        imagesRoot = R.images.gui.maps.icons.quests.bonuses
+        return {size:backport.image(imagesRoot.dyn(size).dyn('deluxe_gift')()) for size in AWARDS_SIZES.ALL()}
 
 
 class EpicAbilityPtsFormatter(SimpleBonusFormatter):
@@ -1159,6 +1206,21 @@ class TankmenBonusFormatter(SimpleBonusFormatter):
         result = {}
         for size in AWARDS_SIZES.ALL():
             result[size] = RES_ICONS.getBonusIcon(size, bonus.getName())
+
+        return result
+
+
+class TankmenMarathonRewardBonusFormatter(TankmenBonusFormatter):
+
+    def _format(self, bonus):
+        result = []
+        for group in bonus.getTankmenGroups().itervalues():
+            if group['skills']:
+                key = 'with_skills'
+            else:
+                key = 'no_skills'
+            label = '#quests:bonuses/item/tankmen/%s' % key
+            result.append(PreformattedBonus(bonusName=bonus.getName(), userName=self._getUserName(key), images=self._getImages(bonus), specialAlias=TOOLTIPS_CONSTANTS.TANKMAN, tooltip=makeTooltip(backport.text(R.strings.marathon.rewardTooltip.tankmen.header()), i18n.makeString(label, **group)), isCompensation=self._isCompensation(bonus)))
 
         return result
 

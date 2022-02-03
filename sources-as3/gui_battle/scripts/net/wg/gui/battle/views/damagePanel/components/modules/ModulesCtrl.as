@@ -53,6 +53,8 @@ package net.wg.gui.battle.views.damagePanel.components.modules
       
       private var _yohChassisState:YohChassisState = null;
       
+      private var _disposed:Boolean = false;
+      
       public function ModulesCtrl()
       {
          super();
@@ -281,6 +283,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
       
       protected function onDispose() : void
       {
+         this._disposed = true;
          this._engine.dispose();
          this._engine = null;
          this._ammoBay.dispose();
@@ -455,6 +458,11 @@ package net.wg.gui.battle.views.damagePanel.components.modules
             this._turretRotator.hideAsset();
          }
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
    }
 }
 
@@ -476,6 +484,8 @@ class YohChassisState implements IDisposable
    private var _prevState:String = "normal";
    
    private var _currentState:String = "normal";
+   
+   private var _disposed:Boolean = false;
    
    function YohChassisState()
    {
@@ -560,6 +570,7 @@ class YohChassisState implements IDisposable
    
    public function dispose() : void
    {
+      this._disposed = true;
       this.leftTrack0 = null;
       this.leftTrack1 = null;
       this.rightTrack0 = null;
@@ -576,6 +587,11 @@ class YohChassisState implements IDisposable
       this._prevState = this._currentState;
       this._currentState = param1;
       return param1;
+   }
+   
+   public function isDisposed() : Boolean
+   {
+      return this._disposed;
    }
 }
 

@@ -23,6 +23,8 @@ package net.wg.gui.components.hintPanel
       
       private var _frameHelper:FrameHelper = null;
       
+      private var _disposed:Boolean = false;
+      
       public function KeyViewerContainerAnim()
       {
          super();
@@ -32,6 +34,7 @@ package net.wg.gui.components.hintPanel
       
       public final function dispose() : void
       {
+         this._disposed = true;
          stop();
          this.keyViewerContainer.dispose();
          this.keyViewerContainer = null;
@@ -63,6 +66,11 @@ package net.wg.gui.components.hintPanel
       private function onPlaySnd() : void
       {
          dispatchEvent(new BattleSoundEvent(BattleSoundEvent.ON_SOUND_PLAY,BATTLE_SOUND.SOUND_TYPE_HINT_PANNEL_FLASH));
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -14,6 +14,8 @@ package net.wg.gui.components.controls.listselection
       
       private var _dataProvider:IDataProvider;
       
+      private var _disposed:Boolean = false;
+      
       public function AbstractListSelectionNavigator()
       {
          super();
@@ -21,6 +23,7 @@ package net.wg.gui.components.controls.listselection
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._dataProvider = null;
       }
       
@@ -69,6 +72,11 @@ package net.wg.gui.components.controls.listselection
       public function set dataProvider(param1:IDataProvider) : void
       {
          this._dataProvider = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

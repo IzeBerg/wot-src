@@ -31,6 +31,8 @@ package net.wg.gui.battle.views.battleLevelPanel
       
       private var _isActive:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function TextAnimation()
       {
          super();
@@ -79,6 +81,7 @@ package net.wg.gui.battle.views.battleLevelPanel
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.stop();
          this.onFadeIndEnd = null;
          this.onFadeOutEnd = null;
@@ -160,6 +163,11 @@ package net.wg.gui.battle.views.battleLevelPanel
       public function set autoSize(param1:String) : void
       {
          this.tfContainer.autoSize = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

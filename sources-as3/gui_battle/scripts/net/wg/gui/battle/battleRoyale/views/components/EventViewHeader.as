@@ -41,6 +41,8 @@ package net.wg.gui.battle.battleRoyale.views.components
       
       private var _battleType:String = "";
       
+      private var _disposed:Boolean = false;
+      
       public function EventViewHeader()
       {
          super();
@@ -49,6 +51,7 @@ package net.wg.gui.battle.battleRoyale.views.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.battleIcon.removeEventListener(Event.CHANGE,this.onBattleIconChangeHandler);
          this.battleIcon.dispose();
          this.battleIcon = null;
@@ -103,14 +106,13 @@ package net.wg.gui.battle.battleRoyale.views.components
       
       private function onBattleIconChangeHandler(param1:Event) : void
       {
-         var _loc4_:int = 0;
-         var _loc5_:int = 0;
+         var _loc3_:Number = NaN;
          var _loc2_:Number = !!this._isSmallScreenSize ? Number(HEADER_BG_SMALL_HEIGHT) : Number(HEADER_BG_BIG_HEIGHT);
-         var _loc3_:Number = -this.battleIcon.width >> 1;
+         _loc3_ = -this.battleIcon.width >> 1;
          this.battleIcon.x = _loc3_;
          this.battleIcon.y = _loc2_ - this.battleIcon.height >> 1;
-         _loc4_ = this.titleTF.textHeight;
-         _loc5_ = !!this._isSmallScreenSize ? int(ICON_SMALL_MARGIN_X) : int(ICON_BIG_MARGIN_X);
+         var _loc4_:int = this.titleTF.textHeight;
+         var _loc5_:int = !!this._isSmallScreenSize ? int(ICON_SMALL_MARGIN_X) : int(ICON_BIG_MARGIN_X);
          this.titleTF.x = _loc3_ - _loc5_ - this.titleTF.width;
          this.subTitleTF.x = _loc3_ - _loc5_ - this.subTitleTF.width;
          var _loc6_:Number = _loc4_ + this.subTitleTF.textHeight;
@@ -118,6 +120,11 @@ package net.wg.gui.battle.battleRoyale.views.components
          this.subTitleTF.y = this.titleTF.y + _loc4_;
          this.descriptionTF.x = _loc3_ + this.battleIcon.width + _loc5_;
          this.descriptionTF.y = _loc2_ - this.descriptionTF.height >> 1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

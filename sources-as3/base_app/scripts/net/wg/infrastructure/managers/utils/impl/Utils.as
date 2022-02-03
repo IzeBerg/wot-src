@@ -8,6 +8,8 @@ package net.wg.infrastructure.managers.utils.impl
    import net.wg.infrastructure.interfaces.IStrCaseProperties;
    import net.wg.infrastructure.interfaces.entity.ISerializable;
    import net.wg.infrastructure.interfaces.pool.IPoolManager;
+   import net.wg.infrastructure.managers.IAtlasManager;
+   import net.wg.infrastructure.managers.IElementBlurAdapter;
    import net.wg.utils.IAnimBuilder;
    import net.wg.utils.IAssertable;
    import net.wg.utils.IClassFactory;
@@ -78,7 +80,11 @@ package net.wg.infrastructure.managers.utils.impl
       
       private var _universalBtnStyles:IUniversalBtnStyles = null;
       
-      public function Utils(param1:IAssertable, param2:IScheduler, param3:ILocale, param4:ISerializable, param5:IHelpLayout, param6:IClassFactory, param7:IPopUpManager, param8:ICommons, param9:IFocusHandler, param10:IIME, param11:IVOManager, param12:IIcons, param13:IStyleSheetManager, param14:ITweenAnimator, param15:IAnimBuilder, param16:IDateTime, param17:IPoolManager, param18:IDataUtils, param19:ICounterManager, param20:IViewRestrictions, param21:IUniversalBtnStyles)
+      private var _atlasManager:IAtlasManager = null;
+      
+      private var _blurAdapter:IElementBlurAdapter = null;
+      
+      public function Utils(param1:IAssertable, param2:IScheduler, param3:ILocale, param4:ISerializable, param5:IHelpLayout, param6:IClassFactory, param7:IPopUpManager, param8:ICommons, param9:IFocusHandler, param10:IIME, param11:IVOManager, param12:IIcons, param13:IStyleSheetManager, param14:ITweenAnimator, param15:IAnimBuilder, param16:IDateTime, param17:IPoolManager, param18:IDataUtils, param19:ICounterManager, param20:IViewRestrictions, param21:IUniversalBtnStyles, param22:IAtlasManager, param23:IElementBlurAdapter)
       {
          super();
          this._asserter = param1;
@@ -102,10 +108,17 @@ package net.wg.infrastructure.managers.utils.impl
          this._counterManager = param19;
          this._viewRestrinctions = param20;
          this._universalBtnStyles = param21;
+         this._atlasManager = param22;
+         this._blurAdapter = param23;
       }
       
-      public final function dispose() : void
+      override protected function onDispose() : void
       {
+         if(this._blurAdapter != null)
+         {
+            this._blurAdapter.dispose();
+            this._blurAdapter = null;
+         }
          if(this._scheduler != null)
          {
             this._scheduler.dispose();
@@ -130,6 +143,11 @@ package net.wg.infrastructure.managers.utils.impl
          {
             this._universalBtnStyles.dispose();
             this._universalBtnStyles = null;
+         }
+         if(this._atlasManager != null)
+         {
+            this._atlasManager.dispose();
+            this._atlasManager = null;
          }
          if(this._classFactory != null)
          {
@@ -172,6 +190,7 @@ package net.wg.infrastructure.managers.utils.impl
          this._JSON = null;
          this._dataUtils = null;
          this._commons = null;
+         super.onDispose();
       }
       
       public function getImageUrlProperties(param1:String, param2:int, param3:int, param4:int = -4, param5:int = 0) : IImageUrlProperties
@@ -324,6 +343,16 @@ package net.wg.infrastructure.managers.utils.impl
       public function get universalBtnStyles() : IUniversalBtnStyles
       {
          return this._universalBtnStyles;
+      }
+      
+      public function get atlasManager() : IAtlasManager
+      {
+         return this._atlasManager;
+      }
+      
+      public function get blurAdapter() : IElementBlurAdapter
+      {
+         return this._blurAdapter;
       }
    }
 }

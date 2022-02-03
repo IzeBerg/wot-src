@@ -95,15 +95,12 @@ package net.wg.gui.components.tooltips
       
       private function setContent() : void
       {
-         var _loc2_:int = 0;
-         var _loc3_:Number = NaN;
-         var _loc4_:Number = NaN;
          var _loc1_:ToolTipBuySkillVO = new ToolTipBuySkillVO(_data);
          this.header.htmlText = _loc1_.header;
-         _loc2_ = _loc1_.count - 1;
-         _loc3_ = _loc1_.level;
+         var _loc2_:int = _loc1_.count - 1;
+         var _loc3_:Number = _loc1_.level;
          this.separator.y = this.header.y + this.header.textHeight + TOP_MARGIN + MARGIN_AFTER_SEPARETOR | 0;
-         _loc4_ = this.separator.y + MARGIN_AFTER_SEPARETOR;
+         var _loc4_:Number = this.separator.y + MARGIN_AFTER_SEPARETOR;
          if(_loc3_ == MAX_LEVEL_PERCENTAGE)
          {
             _loc2_++;

@@ -12,6 +12,8 @@ package net.wg.gui.lobby.settings.vo
       
       public var colorFilterChanged:Boolean = true;
       
+      private var _disposed:Boolean = false;
+      
       public function ColorFilerSettingsVo()
       {
          super();
@@ -21,6 +23,12 @@ package net.wg.gui.lobby.settings.vo
       
       public function dispose() : void
       {
+         this._disposed = true;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

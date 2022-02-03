@@ -14,6 +14,8 @@ package net.wg.gui.battle.views.staticMarkers.safeZone
       
       public var marker2:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function SafeZoneMarker()
       {
          super();
@@ -40,9 +42,15 @@ package net.wg.gui.battle.views.staticMarkers.safeZone
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.marker = null;
          this.bgShadow = null;
          this.marker2 = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

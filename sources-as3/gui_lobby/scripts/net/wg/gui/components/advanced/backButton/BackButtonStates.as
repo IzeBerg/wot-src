@@ -9,6 +9,8 @@ package net.wg.gui.components.advanced.backButton
       
       public var textMc:BackButtonText = null;
       
+      private var _disposed:Boolean = false;
+      
       public function BackButtonStates()
       {
          super();
@@ -16,8 +18,14 @@ package net.wg.gui.components.advanced.backButton
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.textMc.dispose();
          this.textMc = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

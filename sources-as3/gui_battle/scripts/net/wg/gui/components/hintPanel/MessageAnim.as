@@ -10,6 +10,8 @@ package net.wg.gui.components.hintPanel
       
       public var textFieldContainer:TextFieldContainer = null;
       
+      private var _disposed:Boolean = false;
+      
       public function MessageAnim()
       {
          super();
@@ -17,6 +19,7 @@ package net.wg.gui.components.hintPanel
       
       public final function dispose() : void
       {
+         this._disposed = true;
          stop();
          this.textFieldContainer.dispose();
          this.textFieldContainer = null;
@@ -30,6 +33,11 @@ package net.wg.gui.components.hintPanel
       public function setTextFieldWidth(param1:Number) : void
       {
          this.textFieldContainer.textField.width = param1 | 0;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

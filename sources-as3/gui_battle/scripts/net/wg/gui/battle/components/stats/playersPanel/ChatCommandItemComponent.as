@@ -84,6 +84,8 @@ package net.wg.gui.battle.components.stats.playersPanel
       
       private var _shouldBeShown:Boolean = true;
       
+      private var _disposed:Boolean = false;
+      
       public function ChatCommandItemComponent()
       {
          super();
@@ -93,6 +95,7 @@ package net.wg.gui.battle.components.stats.playersPanel
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.chatCommandAnimation.stop();
          this.chatCommandAnimation = null;
          this.activeChatCommand = null;
@@ -192,6 +195,11 @@ package net.wg.gui.battle.components.stats.playersPanel
          }
          this.activeChatCommand.gotoAndStop(COMMAND_NAME_TO_FRAME_STATE[_loc3_]);
          this.activeChatCommand.visible = _loc3_ != EMPTY_FRAME_STATE;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

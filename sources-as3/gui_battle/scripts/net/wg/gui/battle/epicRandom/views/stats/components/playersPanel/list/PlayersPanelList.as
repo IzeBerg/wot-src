@@ -136,6 +136,8 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
       
       private var _HPBarVisibilityState:uint = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function PlayersPanelList()
       {
          super();
@@ -190,6 +192,7 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -214,6 +217,11 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
          this._dogTag.hideNameAndClan();
          this._dogTag.goToLabel(DogtagComponent.DOGTAG_LABEL_END_FULL);
          this._dogTag.alpha = 0;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
       
       public function removeAllItems() : void

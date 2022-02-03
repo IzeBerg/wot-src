@@ -11,6 +11,8 @@ package net.wg.gui.battle.views.messages.VO
       
       public var colorType:String = "";
       
+      private var _disposed:Boolean = false;
+      
       public function PoolSettingsVO(param1:Array)
       {
          super();
@@ -20,8 +22,14 @@ package net.wg.gui.battle.views.messages.VO
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.colorType = Values.EMPTY_STR;
          this.renderer = Values.EMPTY_STR;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

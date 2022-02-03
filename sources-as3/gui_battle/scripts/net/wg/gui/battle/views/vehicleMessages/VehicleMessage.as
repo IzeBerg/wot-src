@@ -318,5 +318,10 @@ package net.wg.gui.battle.views.vehicleMessages
       {
          return this._used;
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
    }
 }

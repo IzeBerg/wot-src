@@ -25,6 +25,8 @@ package net.wg.gui.components.controls
       
       private var _autoSize:String = "none";
       
+      private var _disposed:Boolean = false;
+      
       public function TextFieldContainer()
       {
          super();
@@ -39,6 +41,7 @@ package net.wg.gui.components.controls
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._tf = null;
          this.textField = null;
       }
@@ -134,6 +137,11 @@ package net.wg.gui.components.controls
       {
          this._autoSize = param1;
          this.textField.autoSize = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

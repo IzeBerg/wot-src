@@ -44,6 +44,8 @@ package net.wg.gui.components.ribbon.data
       
       private var _ribbonSettingsByType:RibbonSettingByType = null;
       
+      private var _disposed:Boolean = false;
+      
       public function RibbonSettings(param1:String, param2:String)
       {
          super();
@@ -76,6 +78,7 @@ package net.wg.gui.components.ribbon.data
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._ribbonSettingsByType = null;
          var _loc1_:int = RIBBON_TYPES_MAP.length;
          var _loc2_:int = 0;
@@ -233,6 +236,11 @@ package net.wg.gui.components.ribbon.data
             ICON_Y_PADDINGS[DAMAGE_SOURCE_TYPES.ARTILLERY] = -6;
             ICON_Y_PADDINGS[DAMAGE_SOURCE_TYPES.AIRSTRIKE] = -6;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

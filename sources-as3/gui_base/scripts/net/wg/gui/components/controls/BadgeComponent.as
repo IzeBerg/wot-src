@@ -30,6 +30,8 @@ package net.wg.gui.components.controls
       
       private var _size:String = "";
       
+      private var _disposed:Boolean = false;
+      
       public function BadgeComponent()
       {
          super();
@@ -38,6 +40,7 @@ package net.wg.gui.components.controls
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.icon.removeEventListener(Event.CHANGE,this.onIconChangeHandler);
          this.icon.dispose();
          this.icon = null;
@@ -107,6 +110,11 @@ package net.wg.gui.components.controls
       {
          this.updateSize();
          dispatchEvent(new Event(Event.CHANGE));
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -48,6 +48,8 @@ package net.wg.infrastructure.managers.utils.animation.impl
       
       private var stateTargetAfterAnim:Object;
       
+      private var _disposed:Boolean = false;
+      
       public function TweenConstruction(param1:DisplayObject, param2:ITweenConstructionHandler)
       {
          this.tweensData = new Vector.<TweenLinkedObjects>(0);
@@ -180,6 +182,7 @@ package net.wg.infrastructure.managers.utils.animation.impl
       public function dispose() : void
       {
          var _loc1_:TweenLinkedObjects = null;
+         this._disposed = true;
          while(this.tweensData.length > 0)
          {
             _loc1_ = this.tweensData.pop();
@@ -475,6 +478,11 @@ package net.wg.infrastructure.managers.utils.animation.impl
       private function get tweenMgrHelper() : ITweenManagerHelper
       {
          return App.tweenMgr.getTweenManagerHelper();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

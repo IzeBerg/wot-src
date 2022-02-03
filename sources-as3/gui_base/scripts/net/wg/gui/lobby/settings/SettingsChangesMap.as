@@ -10,6 +10,8 @@ package net.wg.gui.lobby.settings
       
       private var _len:uint;
       
+      private var _disposed:Boolean = false;
+      
       public function SettingsChangesMap()
       {
          super();
@@ -25,6 +27,7 @@ package net.wg.gui.lobby.settings
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.clear();
          this._data = null;
       }
@@ -112,6 +115,11 @@ package net.wg.gui.lobby.settings
          for(_loc1_ in this._data)
          {
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

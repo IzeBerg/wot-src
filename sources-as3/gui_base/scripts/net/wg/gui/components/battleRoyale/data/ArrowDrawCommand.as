@@ -17,6 +17,8 @@ package net.wg.gui.components.battleRoyale.data
       
       public var isWithArrow:Boolean = true;
       
+      private var _disposed:Boolean = false;
+      
       public function ArrowDrawCommand(param1:Point, param2:Point, param3:int, param4:Boolean = false, param5:Boolean = true)
       {
          super();
@@ -29,8 +31,14 @@ package net.wg.gui.components.battleRoyale.data
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.fromPoint = null;
          this.toPoint = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

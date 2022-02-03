@@ -22,6 +22,8 @@ package net.wg.infrastructure.managers.impl
       
       private var _processedCounter:int = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function LibrariesLoader()
       {
          this._librariesDict = new Dictionary();
@@ -31,6 +33,7 @@ package net.wg.infrastructure.managers.impl
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.clear();
          this._loaders = null;
          App.utils.data.cleanupDynamicObject(this._librariesDict);
@@ -111,6 +114,11 @@ package net.wg.infrastructure.managers.impl
          var _loc3_:String = this._librariesDict[_loc2_.loader];
          dispatchEvent(new LibraryLoaderEvent(LibraryLoaderEvent.LOADING_FAILED,_loc2_.loader,_loc2_.url,_loc3_));
          this.checkLoadComplete();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

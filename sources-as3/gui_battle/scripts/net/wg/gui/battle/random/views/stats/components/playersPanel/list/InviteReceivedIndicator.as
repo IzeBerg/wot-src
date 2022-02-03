@@ -14,6 +14,8 @@ package net.wg.gui.battle.random.views.stats.components.playersPanel.list
       
       public var inviteIcon:BattleAtlasSprite;
       
+      private var _disposed:Boolean = false;
+      
       public function InviteReceivedIndicator()
       {
          super();
@@ -22,10 +24,16 @@ package net.wg.gui.battle.random.views.stats.components.playersPanel.list
          App.utils.commons.updateTextFieldSize(this.inviteTF,true,false);
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          this.inviteTF = null;
          this.inviteIcon = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

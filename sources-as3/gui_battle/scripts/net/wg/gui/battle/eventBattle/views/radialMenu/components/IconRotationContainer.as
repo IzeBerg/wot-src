@@ -10,6 +10,8 @@ package net.wg.gui.battle.eventBattle.views.radialMenu.components
       
       public var icons:Icons = null;
       
+      private var _disposed:Boolean = false;
+      
       public function IconRotationContainer()
       {
          super();
@@ -31,8 +33,14 @@ package net.wg.gui.battle.eventBattle.views.radialMenu.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.icons.dispose();
          this.icons = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

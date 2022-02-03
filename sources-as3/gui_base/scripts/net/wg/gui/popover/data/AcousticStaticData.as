@@ -9,6 +9,8 @@ package net.wg.gui.popover.data
       
       private var _data:Object = null;
       
+      private var _disposed:Boolean = false;
+      
       public function AcousticStaticData()
       {
          super();
@@ -36,8 +38,14 @@ package net.wg.gui.popover.data
       
       public final function dispose() : void
       {
+         this._disposed = true;
          App.utils.data.cleanupDynamicObject(this._data);
          this._data = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

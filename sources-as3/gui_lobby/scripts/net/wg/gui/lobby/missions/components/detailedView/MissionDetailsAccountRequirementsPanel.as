@@ -100,6 +100,7 @@ package net.wg.gui.lobby.missions.components.detailedView
       
       override protected function configUI() : void
       {
+         var _loc1_:int = 0;
          super.configUI();
          this.shadow.mouseEnabled = false;
          this.buttonUp.visible = this.buttonDown.visible = false;
@@ -109,7 +110,7 @@ package net.wg.gui.lobby.missions.components.detailedView
          this.bodyMask.x = body.x;
          this.bodyMask.y = body.y;
          this.bodyMask.visible = false;
-         var _loc1_:int = -body.height + HEADER_HEIGHT;
+         _loc1_ = -body.height + HEADER_HEIGHT;
          body.mask = this.bodyMask;
          body.y = _loc1_;
          this.contentOpacity = 0;

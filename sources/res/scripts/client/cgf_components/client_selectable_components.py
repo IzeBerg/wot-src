@@ -3,11 +3,11 @@ from adisp import process
 from cgf_script.component_meta_class import CGFComponent, CGFMetaTypes, ComponentProperty
 from cgf_script.managers_registrator import autoregister, onAddedQuery, onRemovedQuery
 from constants import MarathonConfig, IS_CLIENT
-from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
-from gui.game_control.links import URLMacros
 from helpers import dependency
 from skeletons.gui.lobby_context import ILobbyContext
 if IS_CLIENT:
+    from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
+    from gui.game_control.links import URLMacros
     from gui.shared.event_dispatcher import showBrowserOverlayView
 
 class OnClickComponent(CGFComponent):

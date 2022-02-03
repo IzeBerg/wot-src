@@ -10,6 +10,8 @@ package net.wg.gui.components.tooltips
       
       private var _isInPool:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function Separator()
       {
          super();
@@ -21,6 +23,7 @@ package net.wg.gui.components.tooltips
       
       public function dispose() : void
       {
+         this._disposed = true;
          if(this._isInPool)
          {
             dispatchEvent(new PoolItemEvent(PoolItemEvent.ITEM_TURN_OUT,this));
@@ -35,6 +38,11 @@ package net.wg.gui.components.tooltips
       public function set isInPool(param1:Boolean) : void
       {
          this._isInPool = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

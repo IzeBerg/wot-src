@@ -31,6 +31,8 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
       
       private var _currentDynamicRadius:Number = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function ViewRangeCirclesMinimapEntry()
       {
          super();
@@ -135,6 +137,7 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.as_removeAllCircles();
       }
       
@@ -159,6 +162,11 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
          _loc5_.lineStyle(LINE_THICKNESS,param3,param4,false,LineScaleMode.NONE);
          _loc5_.drawCircle(0,0,param2);
          _loc5_.endFill();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

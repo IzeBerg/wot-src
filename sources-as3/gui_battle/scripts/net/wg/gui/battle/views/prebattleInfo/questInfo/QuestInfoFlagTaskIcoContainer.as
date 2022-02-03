@@ -10,6 +10,8 @@ package net.wg.gui.battle.views.prebattleInfo.questInfo
       
       public var taskIco:UILoaderAlt = null;
       
+      private var _disposed:Boolean = false;
+      
       public function QuestInfoFlagTaskIcoContainer()
       {
          super();
@@ -17,6 +19,7 @@ package net.wg.gui.battle.views.prebattleInfo.questInfo
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.taskIco.dispose();
          this.taskIco = null;
       }
@@ -24,6 +27,11 @@ package net.wg.gui.battle.views.prebattleInfo.questInfo
       public function setData(param1:String) : void
       {
          this.taskIco.source = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

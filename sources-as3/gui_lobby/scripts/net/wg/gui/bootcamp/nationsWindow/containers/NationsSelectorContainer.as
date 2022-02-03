@@ -43,6 +43,8 @@ package net.wg.gui.bootcamp.nationsWindow.containers
       
       private var _nationButtons:Vector.<NationButton>;
       
+      private var _disposed:Boolean = false;
+      
       public function NationsSelectorContainer()
       {
          this._nationButtons = new Vector.<NationButton>();
@@ -53,6 +55,7 @@ package net.wg.gui.bootcamp.nationsWindow.containers
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._nationButtons.splice(0,this._nationButtons.length);
          this._nationButtons = null;
          this.btnUsa.removeEventListener(ButtonEvent.CLICK,this.onBtnNationClickHandler);
@@ -182,6 +185,11 @@ package net.wg.gui.bootcamp.nationsWindow.containers
          }
          this.selectNation(_loc3_);
          dispatchEvent(new NationSelectEvent(NationSelectEvent.NATION_SHOW,this._selectedNation));
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

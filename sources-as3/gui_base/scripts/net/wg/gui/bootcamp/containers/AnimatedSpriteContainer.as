@@ -11,6 +11,8 @@ package net.wg.gui.bootcamp.containers
       
       public var content:IAnimatedRenderer;
       
+      private var _disposed:Boolean = false;
+      
       public function AnimatedSpriteContainer()
       {
          super();
@@ -33,6 +35,7 @@ package net.wg.gui.bootcamp.containers
       
       protected function onDispose() : void
       {
+         this._disposed = true;
          this.content.dispose();
          this.content = null;
       }
@@ -60,6 +63,11 @@ package net.wg.gui.bootcamp.containers
       public function set htmlText(param1:String) : void
       {
          this.content.htmlText = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

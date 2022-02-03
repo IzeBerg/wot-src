@@ -20,6 +20,8 @@ package net.wg.gui.battle.views.destroyTimers.components.secondaryTimerFx
       
       private var _fxMap:Dictionary;
       
+      private var _disposed:Boolean = false;
+      
       public function SecondaryTimerFXContainer()
       {
          super();
@@ -35,6 +37,7 @@ package net.wg.gui.battle.views.destroyTimers.components.secondaryTimerFx
       
       public function dispose() : void
       {
+         this._disposed = true;
          App.utils.data.cleanupDynamicObject(this._fxMap);
          this._fxMap = null;
       }
@@ -55,6 +58,11 @@ package net.wg.gui.battle.views.destroyTimers.components.secondaryTimerFx
             _loc2_ = this._fxMap[_loc1_];
             _loc2_.gotoAndStop(1);
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

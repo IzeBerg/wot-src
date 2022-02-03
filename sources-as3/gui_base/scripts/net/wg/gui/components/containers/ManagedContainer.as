@@ -464,6 +464,8 @@ class GroupCounter implements IDisposable
    
    public var isReverceY:Boolean = false;
    
+   private var _disposed:Boolean = false;
+   
    function GroupCounter()
    {
       super();
@@ -485,6 +487,7 @@ class GroupCounter implements IDisposable
    
    public function dispose() : void
    {
+      this._disposed = true;
       this.views.splice(0,this.views.length);
       this.views = null;
    }
@@ -509,6 +512,11 @@ class GroupCounter implements IDisposable
    public function get yAdjust() : int
    {
       return this.views.length > 0 ? int(this.views[this.views.length - 1].yAdjust) : int(0);
+   }
+   
+   public function isDisposed() : Boolean
+   {
+      return this._disposed;
    }
 }
 

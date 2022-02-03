@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
 	<setting>
-		https://ct.wargaming.net/registration/ru/?game=wot&amp;utm_source=login-screen&amp;utm_medium=link&amp;utm_campaign=wot-client
 		<name>registrationURL</name>
 		<type>url</type>
 	</setting>
@@ -10,7 +9,6 @@
 		<type>url</type>
 	</setting>
 	<setting>
-		https://ct.wargaming.net/personal/password_reset/new/?utm_source=login-screen&amp;utm_medium=link&amp;utm_campaign=wot-client
 		<name>recoveryPswdURL</name>
 		<type>url</type>
 	</setting>
@@ -35,12 +33,11 @@
 		<type>url</type>
 	</setting>
 	<setting>
-		https://ct.wargaming.net/clans/recruitstation/
+		https://ru.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://ru.wargaming.net/clans/recruitstation/?utm_campaign=wot-client&amp;utm_medium=link&amp;utm_source=strongholds)
 		<name>clanSearch</name>
 		<type>url</type>
 	</setting>
 	<setting>
-		https://portal-ct.worldoftanks.ru/community/clans/new/
 		<name>clanCreate</name>
 		<type>url</type>
 	</setting>
@@ -1043,7 +1040,7 @@
 			</item>
 			<item>
 				$PARAMS(/purchase-product)
-				<name>buyVehicle</name>
+				<name>buyProduct</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1107,7 +1104,12 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/battlepass/battlepass)
+				$PARAMS(/bpbit_category)
+				<name>bpProducts</name>
+				<type>url</type>
+			</item>
+			<item>
+				$PARAMS(/bpcoin_category/bpcoin_category)
 				<name>bpcoinProducts</name>
 				<type>url</type>
 			</item>
@@ -1129,6 +1131,11 @@
 			<item>
 				$PARAMS(/telecom-tank-rental)
 				<name>telecomTankRental</name>
+				<type>url</type>
+			</item>
+			<item>
+				$PARAMS(/psa2021/psa2021)
+				<name>psaProducts</name>
 				<type>url</type>
 			</item>
 		</value>
@@ -1175,14 +1182,32 @@
 		<type>dict</type>
 		<value>
 			<item>
-				 https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/6BPContentPage/
+				 https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/7BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/6BPIntroVideo/
+				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/7BPIntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
+			</item>
+			<item>
+				<name>chaptersOrder</name>
+				<type>list</type>
+				<value>
+					<item>
+						<type>int</type>
+						<value>2</value>
+					</item>
+					<item>
+						<type>int</type>
+						<value>1</value>
+					</item>
+					<item>
+						<type>int</type>
+						<value>3</value>
+					</item>
+				</value>
 			</item>
 		</value>
 	</setting>
@@ -1294,58 +1319,6 @@
 				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/dogtagVideo2/
 				<name>default</name>
 				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>techTreeUpdateNewsURL</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://worldoftanks.com/news/updates/tech-trees-update/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://worldoftanks.eu/news/general-news/tech-trees-update/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://worldoftanks.asia/news/general-news/tech-trees-update/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://worldoftanks.ru/$LANGUAGE_CODE/news/updates/tech-trees-update/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>techTreeIntroStartDate</name>
-		<type>dict</type>
-		<value>
-			<item>
-				21
-				<name>day</name>
-				<type>int</type>
-			</item>
-			<item>
-				4
-				<name>month</name>
-				<type>int</type>
-			</item>
-			<item>
-				2020
-				<name>year</name>
-				<type>int</type>
 			</item>
 		</value>
 	</setting>

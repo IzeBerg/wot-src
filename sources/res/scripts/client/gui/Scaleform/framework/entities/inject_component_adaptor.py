@@ -72,10 +72,13 @@ class InjectComponentAdaptor(BaseDAAPIComponent):
         pass
 
     def _createInjectView(self, *args):
-        if self.__injected is not None:
-            _logger.error('Inject view %r is already created in component %s', self.__injected.content, self.getAlias())
+        if not self._isDAAPIInited():
+            _logger.error('GFxValue is not created for %s', self.getAlias())
             return
         else:
+            if self.__injected is not None:
+                _logger.error('Inject view %r is already created in component %s', self.__injected.content, self.getAlias())
+                return
             view = self._makeInjectView(*args)
             settings = WindowSettings()
             settings.content = view

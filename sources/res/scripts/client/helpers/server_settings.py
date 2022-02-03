@@ -1,29 +1,28 @@
-import copy, functools, types
+import copy, functools, logging, types
 from collections import namedtuple
-from typing import TYPE_CHECKING
-import logging, constants, post_progression_common
+import typing, constants, post_progression_common
+from BonusCaps import BonusCapsConst
 from Event import Event
-from constants import IS_TUTORIAL_ENABLED, PremiumConfigs, DAILY_QUESTS_CONFIG, ClansConfig, MAGNETIC_AUTO_AIM_CONFIG, Configs, DOG_TAGS_CONFIG, BATTLE_NOTIFIER_CONFIG, MISC_GUI_SETTINGS, RENEWABLE_SUBSCRIPTION_CONFIG
-from helpers import time_utils
-from ranked_common import SwitchState
+from UnitBase import PREBATTLE_TYPE_TO_UNIT_ASSEMBLER, UNIT_ASSEMBLER_IMPL_TO_CONFIG
+from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS as BONUS_CAPS
+from battle_pass_common import BATTLE_PASS_CONFIG_NAME, BattlePassConfig
 from collector_vehicle import CollectorVehicleConsts
-from debug_utils import LOG_WARNING, LOG_DEBUG
-from battle_pass_common import BattlePassConfig, BATTLE_PASS_CONFIG_NAME
+from constants import BATTLE_NOTIFIER_CONFIG, ClansConfig, Configs, DAILY_QUESTS_CONFIG, DOG_TAGS_CONFIG, IS_TUTORIAL_ENABLED, MAGNETIC_AUTO_AIM_CONFIG, MISC_GUI_SETTINGS, PremiumConfigs, RENEWABLE_SUBSCRIPTION_CONFIG
+from debug_utils import LOG_DEBUG, LOG_WARNING
 from gifts.gifts_common import ClientReqStrategy, GiftEventID, GiftEventState
 from gui import GUI_SETTINGS, SystemMessages
-from gui.SystemMessages import SM_TYPE
 from gui.Scaleform.locale.SYSTEM_MESSAGES import SYSTEM_MESSAGES
+from gui.SystemMessages import SM_TYPE
 from gui.shared.utils.decorators import ReprInjector
+from helpers import time_utils
 from personal_missions import PM_BRANCH
-from renewable_subscription_common.settings_constants import GOLD_RESERVE_GAINS_SECTION
 from post_progression_common import FEATURE_BY_GROUP_ID, ROLESLOT_FEATURE
+from ranked_common import SwitchState
+from renewable_subscription_common.settings_constants import GOLD_RESERVE_GAINS_SECTION
 from shared_utils import makeTupleByDict, updateDict
-from UnitBase import PREBATTLE_TYPE_TO_UNIT_ASSEMBLER, UNIT_ASSEMBLER_IMPL_TO_CONFIG
-from BonusCaps import BonusCapsConst
-from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS as BONUS_CAPS
 from telecom_rentals_common import TELECOM_RENTALS_CONFIG
-if TYPE_CHECKING:
-    from typing import List as TList
+if typing.TYPE_CHECKING:
+    from typing import Callable, Dict, List, Sequence
 _logger = logging.getLogger(__name__)
 _CLAN_EMBLEMS_SIZE_MAPPING = {16: 'clan_emblems_16', 
    32: 'clan_emblems_small', 
@@ -482,16 +481,13 @@ class BattleRoyaleConfig(namedtuple('BattleRoyaleConfig', ('isEnabled', 'periphe
 
 
 class _TelecomConfig(object):
-    __slots__ = ('__vehCDToProvider', )
+    __slots__ = ('__bundleIdToProvider', )
 
     def __init__(self, telecomConfig):
-        self.__vehCDToProvider = {}
-        for _, bundleData in telecomConfig['bundles'].iteritems():
-            for vehCD in bundleData['vehicles']:
-                self.__vehCDToProvider[vehCD] = bundleData['operator']
+        self.__bundleIdToProvider = {bundleId:bundleData['operator'] for bundleId, bundleData in telecomConfig['bundles'].iteritems()}
 
-    def getInternetProvider(self, vehCD):
-        provider = self.__vehCDToProvider.get(vehCD, '')
+    def getInternetProvider(self, bundleId):
+        provider = self.__bundleIdToProvider.get(bundleId, '')
         return provider
 
     @classmethod
@@ -554,11 +550,11 @@ class _BlueprintsConfig(namedtuple('_BlueprintsConfig', ('allowBlueprintsConvers
         return 'isEnabled' in diff or 'useBlueprintsForUnlock' in diff
 
 
-class _SeniorityAwardsConfig(namedtuple('_SeniorityAwardsConfig', ('enabled', 'autoOpenTime', 'hangarWidgetVisibility', 'secretBoxToken'))):
+class _SeniorityAwardsConfig(namedtuple('_SeniorityAwardsConfig', ('enabled', 'endTime'))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(enabled=False, autoOpenTime=0, hangarWidgetVisibility=False, secretBoxToken='')
+        defaults = dict(enabled=False, endTime=0)
         defaults.update(kwargs)
         return super(_SeniorityAwardsConfig, cls).__new__(cls, **defaults)
 
@@ -573,14 +569,8 @@ class _SeniorityAwardsConfig(namedtuple('_SeniorityAwardsConfig', ('enabled', 'a
     def isEnabled(self):
         return self.enabled
 
-    def autoOpenTimestamp(self):
-        return self.autoOpenTime
-
-    def hangarWidgetIsVisible(self):
-        return self.hangarWidgetVisibility
-
-    def getSecretBoxToken(self):
-        return self.secretBoxToken
+    def endTimestamp(self):
+        return self.endTime
 
 
 class _AdventCalendarConfig(namedtuple('_AdventCalendarConfig', ('calendarURL', 'popupIntervalInHours'))):
@@ -1403,7 +1393,7 @@ class ServerSettings(object):
         return self.__getGlobalSetting(CollectorVehicleConsts.CONFIG_NAME, {}).get(CollectorVehicleConsts.IS_ENABLED, False)
 
     def isOffersEnabled(self):
-        return self.__getGlobalSetting('isOffersEnabled', False)
+        return self.__getGlobalSetting(constants.OFFERS_ENABLED_KEY, False)
 
     def getProgressiveRewardConfig(self):
         return self.__progressiveReward

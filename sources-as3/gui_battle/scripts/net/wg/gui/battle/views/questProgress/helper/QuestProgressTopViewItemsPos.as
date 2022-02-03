@@ -30,6 +30,8 @@ package net.wg.gui.battle.views.questProgress.helper
       
       private var _lockToX:int = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function QuestProgressTopViewItemsPos()
       {
          this._itemsToX = [];
@@ -38,6 +40,7 @@ package net.wg.gui.battle.views.questProgress.helper
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.clearItemsToX();
          this._itemsToX = null;
       }
@@ -110,6 +113,11 @@ package net.wg.gui.battle.views.questProgress.helper
       public function get lockToX() : int
       {
          return this._lockToX;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

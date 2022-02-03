@@ -11,6 +11,8 @@ package net.wg.gui.battle.views.radialMenu.components
       
       public var hitAreaSpr:Sprite = null;
       
+      private var _disposed:Boolean = false;
+      
       public function SectorWrapper()
       {
          super();
@@ -18,9 +20,15 @@ package net.wg.gui.battle.views.radialMenu.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.content.dispose();
          this.content = null;
          this.hitAreaSpr = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

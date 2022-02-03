@@ -19,6 +19,8 @@ package net.wg.gui.battle.views.radialMenu.components
       
       public var center:BattleAtlasSprite = null;
       
+      private var _disposed:Boolean = false;
+      
       public function BackGround()
       {
          super();
@@ -38,11 +40,17 @@ package net.wg.gui.battle.views.radialMenu.components
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.lback = null;
          this.rback = null;
          this.tback = null;
          this.bback = null;
          this.center = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -93,6 +93,7 @@ package net.wg.gui.components.common.serverStats
          this.regionDD.removeEventListener(DropdownMenuEvent.SHOW_DROP_DOWN,this.onRegionShowDropDownHandler);
          this.regionDD.removeEventListener(DropdownMenuEvent.CLOSE_DROP_DOWN,this.onRegionCloseDropDownHandler);
          this.regionDD.removeEventListener(ListEvent.INDEX_CHANGE,this.onRegionIndexChangeHandler);
+         this.regionDD.checkItemDisabledFunction = null;
          this._dataProvider.removeEventListener(Event.CHANGE,this.onDataProviderChangeHandler);
          this.serverInfo.dispose();
          this.serverInfo = null;

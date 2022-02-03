@@ -44,6 +44,8 @@ package net.wg.gui.components.battleDamagePanel.components
       
       private var _isShortMode:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function DamageLogDetailsController(param1:DisplayObjectContainer, param2:Boolean, param3:String)
       {
          super();
@@ -94,6 +96,7 @@ package net.wg.gui.components.battleDamagePanel.components
       public final function dispose() : void
       {
          var _loc1_:DamageLogRenderer = null;
+         this._disposed = true;
          this._damageLogDetailsImages.removeEventListener(MouseEvent.MOUSE_WHEEL,this.onDmgLogDetailsImagesMouseWheelHandler);
          for each(_loc1_ in this._poolRenderers)
          {
@@ -278,6 +281,11 @@ package net.wg.gui.components.battleDamagePanel.components
             return;
          }
          this.scroll(param1.delta);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

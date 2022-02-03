@@ -77,11 +77,6 @@ package net.wg.gui.battle.views.messages
          dispatchEvent(new MessageEvent(Event.CLOSE,this));
       }
       
-      public function deleteFromPool() : void
-      {
-         this._pool.deleteItem(this);
-      }
-      
       public final function dispose() : void
       {
          if(this._disposed && App.instance)
@@ -95,24 +90,6 @@ package net.wg.gui.battle.views.messages
       public function getDisplayObjects() : Vector.<DisplayObject>
       {
          return this._displayObjects;
-      }
-      
-      public function getExtendedInfo() : String
-      {
-         var _loc1_:Number = this._textField != null ? Number(this._textField.alpha) : Number(-1);
-         var _loc2_:Number = this._backround != null ? Number(this._backround.alpha) : Number(-1);
-         var _loc3_:String = this._textField != null ? this._textField.text : "";
-         return App.utils.JSON.encode({
-            "_endFadeTime":this._endFadeTime,
-            "_disposed":this._disposed,
-            "_lifeTime":this._lifeTime,
-            "_fadeTime":this._fadeTime,
-            "_inverseFadeTime":this._inverseFadeTime,
-            "_isEnterFrameEnable":this._isEnterFrameEnable,
-            "tfAlpha":_loc1_,
-            "bgAlpha":_loc2_,
-            "tfTextx":_loc3_
-         });
       }
       
       public function setData(param1:String, param2:String, param3:Boolean = false, param4:uint = 0) : void
@@ -172,6 +149,7 @@ package net.wg.gui.battle.views.messages
       
       protected function onDispose() : void
       {
+         this._disposed = true;
          this.clear();
          this._pool = null;
          this._textField = null;
@@ -217,29 +195,6 @@ package net.wg.gui.battle.views.messages
          else
          {
             this.close();
-         }
-      }
-      
-      private function onEnterFrameHandler() : void
-      {
-         if(!this._isEnterFrameEnable)
-         {
-            return;
-         }
-         var _loc1_:int = getTimer();
-         var _loc2_:Number = (this._endFadeTime - _loc1_) * this._inverseFadeTime;
-         this._textField.alpha = _loc2_;
-         if(this._backround != null)
-         {
-            this._backround.alpha = _loc2_;
-         }
-         if(_loc2_ <= 0)
-         {
-            this.close();
-         }
-         else
-         {
-            App.utils.scheduler.scheduleOnNextFrame(this.onEnterFrameHandler);
          }
       }
       
@@ -320,6 +275,39 @@ package net.wg.gui.battle.views.messages
       public function set textBottomPadding(param1:Number) : void
       {
          this._textBottomPadding = param1;
+      }
+      
+      public function deleteFromPool() : void
+      {
+         this._pool.deleteItem(this);
+      }
+      
+      private function onEnterFrameHandler() : void
+      {
+         if(!this._isEnterFrameEnable)
+         {
+            return;
+         }
+         var _loc1_:int = getTimer();
+         var _loc2_:Number = (this._endFadeTime - _loc1_) * this._inverseFadeTime;
+         this._textField.alpha = _loc2_;
+         if(this._backround != null)
+         {
+            this._backround.alpha = _loc2_;
+         }
+         if(_loc2_ <= 0)
+         {
+            this.close();
+         }
+         else
+         {
+            App.utils.scheduler.scheduleOnNextFrame(this.onEnterFrameHandler);
+         }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

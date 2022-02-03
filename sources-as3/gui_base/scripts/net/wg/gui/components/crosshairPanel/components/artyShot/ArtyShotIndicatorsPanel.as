@@ -167,5 +167,10 @@ package net.wg.gui.components.crosshairPanel.components.artyShot
          addChild(_loc2_);
          this._renderers.push(_loc2_);
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._baseDisposed;
+      }
    }
 }

@@ -22,17 +22,16 @@ package net.wg.infrastructure.managers.utils.impl
    import flash.text.TextFormat;
    import flash.text.TextLineMetrics;
    import flash.ui.Keyboard;
-   import flash.utils.getQualifiedClassName;
    import net.wg.data.constants.Errors;
    import net.wg.data.constants.KeyProps;
    import net.wg.data.constants.KeysMap;
    import net.wg.data.constants.Values;
    import net.wg.infrastructure.exceptions.AbstractException;
-   import net.wg.infrastructure.interfaces.IDAAPIModule;
    import net.wg.infrastructure.interfaces.IUserProps;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
    import net.wg.utils.ICommons;
    import net.wg.utils.TextFieldUtils;
+   import scaleform.clik.core.UIComponent;
    import scaleform.gfx.MouseEventEx;
    
    public class CommonsBase implements ICommons
@@ -164,30 +163,6 @@ package net.wg.infrastructure.managers.utils.impl
          }
       }
       
-      private function getVirtualKey(param1:Number) : Number
-      {
-         var _loc2_:Number = NaN;
-         if(param1 != KeyProps.KEY_NONE && isKeyboardKey(param1))
-         {
-            _loc2_ = App.utils.mapScaleformToVirtualKeyS(param1);
-            if(_loc2_ != 0)
-            {
-               param1 = _loc2_;
-            }
-         }
-         return param1;
-      }
-      
-      private function getCharFromKey(param1:Number) : Number
-      {
-         var _loc2_:Number = App.utils.getCharFromVirtualKeyS(param1);
-         if(_loc2_ != 0)
-         {
-            return _loc2_;
-         }
-         return param1;
-      }
-      
       public function keyToString(param1:Number) : KeyProps
       {
          var _loc2_:Number = this.getVirtualKey(param1);
@@ -258,48 +233,44 @@ package net.wg.infrastructure.managers.utils.impl
       
       public function releaseReferences(param1:Object, param2:Boolean = true) : void
       {
-         var _loc3_:* = null;
-         var _loc4_:DisplayObjectContainer = null;
-         var _loc5_:Object = null;
-         var _loc6_:DisplayObject = null;
-         if(param1 == null)
+         var _loc4_:IDisposable = null;
+         var _loc5_:* = null;
+         var _loc6_:DisplayObjectContainer = null;
+         var _loc7_:Object = null;
+         var _loc8_:DisplayObject = null;
+         if(param1 == null || param1 == App.stage || _s_found.indexOf(param1) != -1)
          {
-            param1 = App.stage;
+            return;
          }
-         if(_s_found.indexOf(param1) == -1)
+         if(!param2)
          {
-            _s_found.push(param1);
-            for(_loc3_ in param1)
+            _loc4_ = param1 as IDisposable;
+            if(_loc4_ && !_loc4_.isDisposed())
             {
-               _loc5_ = param1[_loc3_];
-               if(this.canToDestroying(_loc5_))
-               {
-                  this.releaseReferences(_loc5_,false);
-                  if(_loc5_ is IDisposable)
-                  {
-                     IDisposable(_loc5_).dispose();
-                  }
-                  delete param1[_loc3_];
-               }
+               _loc4_.dispose();
             }
-            _loc4_ = param1 as DisplayObjectContainer;
-            if(_loc4_)
+         }
+         _s_found.push(param1);
+         var _loc3_:UIComponent = param1 as UIComponent;
+         if(!_loc3_ || !_loc3_._deferredDispose)
+         {
+            for(_loc5_ in param1)
             {
-               while(_loc4_.numChildren > 0)
+               _loc7_ = param1[_loc5_];
+               if(_loc7_ is IDisposable || _loc7_ is DisplayObject)
                {
-                  _loc6_ = _loc4_.getChildAt(0);
-                  if(this.canToDestroying(_loc6_))
-                  {
-                     this.releaseReferences(_loc6_,false);
-                     if(_s_found.indexOf(param1) == -1)
-                     {
-                        if(_loc6_ is IDisposable)
-                        {
-                           IDisposable(_loc6_).dispose();
-                        }
-                     }
-                  }
-                  _loc4_.removeChild(_loc6_);
+                  this.releaseReferences(_loc7_,false);
+               }
+               delete param1[_loc5_];
+            }
+            _loc6_ = param1 as DisplayObjectContainer;
+            if(_loc6_)
+            {
+               while(_loc6_.numChildren > 0)
+               {
+                  _loc8_ = _loc6_.getChildAt(0);
+                  this.releaseReferences(_loc8_,false);
+                  _loc6_.removeChild(_loc8_);
                }
             }
          }
@@ -307,7 +278,7 @@ package net.wg.infrastructure.managers.utils.impl
          {
             if(_s_found.length > 1)
             {
-               DebugUtils.LOG_DEBUG("try to release: " + param1 + " " + getQualifiedClassName(param1) + " has been released. Collected: " + _s_found.length + " objects.");
+               DebugUtils.LOG_DEBUG("try to release: " + param1 + " has been released. Collected: " + _s_found.length + " objects.");
             }
             _s_found.splice(0);
          }
@@ -495,9 +466,28 @@ package net.wg.infrastructure.managers.utils.impl
          param1.setTextFormat(param3);
       }
       
-      private function canToDestroying(param1:Object) : Boolean
+      private function getVirtualKey(param1:Number) : Number
       {
-         return !(param1 is IDAAPIModule) || !IDAAPIModule(param1).disposed;
+         var _loc2_:Number = NaN;
+         if(param1 != KeyProps.KEY_NONE && isKeyboardKey(param1))
+         {
+            _loc2_ = App.utils.mapScaleformToVirtualKeyS(param1);
+            if(_loc2_ != 0)
+            {
+               param1 = _loc2_;
+            }
+         }
+         return param1;
+      }
+      
+      private function getCharFromKey(param1:Number) : Number
+      {
+         var _loc2_:Number = App.utils.getCharFromVirtualKeyS(param1);
+         if(_loc2_ != 0)
+         {
+            return _loc2_;
+         }
+         return param1;
       }
       
       public function isLeftButton(param1:MouseEvent) : Boolean

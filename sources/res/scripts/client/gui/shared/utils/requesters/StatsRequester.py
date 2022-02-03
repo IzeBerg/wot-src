@@ -1,5 +1,5 @@
 from collections import namedtuple
-import BigWorld
+import json, BigWorld
 from account_helpers.premium_info import PremiumInfo
 from adisp import async
 from gui.shared.money import Money, Currency
@@ -27,6 +27,10 @@ class StatsRequester(AbstractSyncDataRequester, IStatsRequester):
     @property
     def currencyStatuses(self):
         return self.wallet.componentsStatuses
+
+    @property
+    def dynamicCurrencyStatuses(self):
+        return self.wallet.dynamicComponentsStatuses
 
     @property
     def credits(self):
@@ -265,6 +269,14 @@ class StatsRequester(AbstractSyncDataRequester, IStatsRequester):
             result = int(spaDict[gfKey])
         return result
 
+    def getTelecomBundleId(self):
+        for key, attrValue in self.SPA.iteritems():
+            if key.startswith(SPA_ATTRS.RSS):
+                value = json.loads(attrValue)
+                return value['bundleID']
+
+        return
+
     @property
     def tutorialsCompleted(self):
         return self.getCacheValue('tutorialsCompleted', 0)
@@ -272,6 +284,10 @@ class StatsRequester(AbstractSyncDataRequester, IStatsRequester):
     @property
     def oldVehInvIDs(self):
         return self.getCacheValue('oldVehInvIDs', ())
+
+    @property
+    def dynamicCurrencies(self):
+        return self.getCacheValue('dynamicCurrencies', {})
 
     def getMapsBlackList(self):
         blackList = self.getCacheValue('preferredMaps', {}).get('blackList', ())

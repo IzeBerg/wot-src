@@ -10,6 +10,8 @@ package net.wg.gui.components.containers
       
       public var textFieldMc:ILabel;
       
+      private var _disposed:Boolean = false;
+      
       public function CounterTFContainer()
       {
          super();
@@ -17,6 +19,7 @@ package net.wg.gui.components.containers
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.textFieldMc.dispose();
          this.textFieldMc = null;
       }
@@ -29,6 +32,11 @@ package net.wg.gui.components.containers
       public function set text(param1:String) : void
       {
          this.textFieldMc.text = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

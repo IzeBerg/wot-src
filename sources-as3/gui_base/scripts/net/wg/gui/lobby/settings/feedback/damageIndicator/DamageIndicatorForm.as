@@ -179,6 +179,8 @@ package net.wg.gui.lobby.settings.feedback.damageIndicator
          this.damageIndicatorCritsCheckbox = null;
          this.damageIndicatorAlliesCheckbox.dispose();
          this.damageIndicatorAlliesCheckbox = null;
+         this.damageIndicator.dispose();
+         this.damageIndicator = null;
          super.onDispose();
          this._colorMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorMgrSchemasUpdateHandler);
          this._colorMgr = null;

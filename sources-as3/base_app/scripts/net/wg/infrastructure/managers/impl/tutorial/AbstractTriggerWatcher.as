@@ -14,6 +14,8 @@ package net.wg.infrastructure.managers.impl.tutorial
       
       private var _type:String;
       
+      private var _disposed:Boolean = false;
+      
       function AbstractTriggerWatcher(param1:String, param2:String)
       {
          super();
@@ -21,8 +23,9 @@ package net.wg.infrastructure.managers.impl.tutorial
          this._type = param2;
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          if(this._target)
          {
             this.stop();
@@ -57,6 +60,11 @@ package net.wg.infrastructure.managers.impl.tutorial
       public function get target() : DisplayObject
       {
          return this._target;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -157,12 +157,6 @@ package net.wg.infrastructure.managers.impl
          return _loc2_;
       }
       
-      override protected function onDispose() : void
-      {
-         this.dispose();
-         super.onDispose();
-      }
-      
       public function as_addKeyHandler(param1:Number, param2:String, param3:Boolean, param4:String, param5:Number) : void
       {
          this.setKeyHandler(param1,param2,this.pyInputHandler,param3,param4,param5);
@@ -201,13 +195,14 @@ package net.wg.infrastructure.managers.impl
          this._exclusiveHandlers = null;
       }
       
-      public function dispose() : void
+      override protected function onDispose() : void
       {
          this.clearKeyHandlers();
          this._handlersContainers = null;
          this._dispatcher.removeEventListener(InputEvent.INPUT,this.onInputHandler);
          this._dispatcher.removeEventListener(FocusEvent.FOCUS_IN,this.onFocusInHandler,true);
          this._dispatcher = null;
+         super.onDispose();
       }
       
       public function initStage(param1:IEventDispatcher) : void
@@ -376,6 +371,8 @@ class GameInputCallback implements IDisposable
    
    private var _cancelEvent:String = null;
    
+   private var _disposed:Boolean = false;
+   
    function GameInputCallback(param1:Function, param2:Boolean, param3:String = null)
    {
       super();
@@ -402,6 +399,7 @@ class GameInputCallback implements IDisposable
    
    public function dispose() : void
    {
+      this._disposed = true;
       this._handler = null;
       this._cancelEvent = null;
    }
@@ -409,5 +407,10 @@ class GameInputCallback implements IDisposable
    public function isHasSameHandler(param1:Function) : Boolean
    {
       return param1 == this._handler;
+   }
+   
+   public function isDisposed() : Boolean
+   {
+      return this._disposed;
    }
 }

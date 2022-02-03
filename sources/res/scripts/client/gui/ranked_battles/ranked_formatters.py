@@ -10,8 +10,8 @@ _PERCENT_SYMBOL = '%'
 
 class _RankedAwardsComposer(CurtailingAwardsComposer):
 
-    def __init__(self, displayedAwardsCount):
-        super(_RankedAwardsComposer, self).__init__(displayedAwardsCount, awardsFormatter=getRankedAwardsPacker())
+    def __init__(self, displayedAwardsCount, context=None):
+        super(_RankedAwardsComposer, self).__init__(displayedAwardsCount, awardsFormatter=getRankedAwardsPacker(context))
 
     def setMaxRewardsCount(self, maxRewardsCount):
         self._displayedRewardsCount = maxRewardsCount
@@ -51,9 +51,10 @@ def getRankedAwardsFormatter(maxRewardsCount=DEFAULT_REWARDS_COUNT):
     return _RankedAwardsComposer(maxRewardsCount)
 
 
-def getFormattedBonusesForYearAwardsWindow(rawRewards, maxRewardsCount=DEFAULT_REWARDS_COUNT):
+def getFormattedBonusesForYearAwardsWindow(rawRewards, maxRewardsCount=DEFAULT_REWARDS_COUNT, selectionsLeft=None):
     bonuses = []
-    composer = _BonusNameRankedAwardsComposer(maxRewardsCount)
+    context = {'selectionsLeft': selectionsLeft} if selectionsLeft is not None else None
+    composer = _BonusNameRankedAwardsComposer(maxRewardsCount, context)
     for name, value in rawRewards.iteritems():
         bonuses.extend(getNonQuestBonuses(name, value))
 

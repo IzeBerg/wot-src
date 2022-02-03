@@ -1,49 +1,47 @@
 from collections import defaultdict
 import typing, BigWorld
 from CurrentVehicle import g_currentVehicle
-from account_helpers.settings_core.settings_constants import BattlePassStorageKeys
 from adisp import process
 from async import async, await
-from debug_utils import LOG_ERROR, LOG_DEBUG
-from gui import DialogsInterface, makeHtmlString, SystemMessages
-from gui.battle_pass.battle_pass_helpers import showOfferByBonusName
+from debug_utils import LOG_DEBUG, LOG_ERROR
+from gui import DialogsInterface, SystemMessages, makeHtmlString
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.lobby.customization.shared import CustomizationTabs
+from gui.Scaleform.daapi.view.lobby.store.browser.shop_helpers import getPlayerSeniorityAwardsUrl, getBattlePassCoinProductsUrl
 from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
+from gui.Scaleform.genConsts.BARRACKS_CONSTANTS import BARRACKS_CONSTANTS
 from gui.Scaleform.genConsts.FORTIFICATION_ALIASES import FORTIFICATION_ALIASES
 from gui.Scaleform.genConsts.QUESTS_ALIASES import QUESTS_ALIASES
-from gui.Scaleform.genConsts.BARRACKS_CONSTANTS import BARRACKS_CONSTANTS
 from gui.battle_results import RequestResultsContext
 from gui.clans.clan_helpers import showAcceptClanInviteDialog
-from gui.customization.constants import CustomizationModes, CustomizationModeSource
+from gui.customization.constants import CustomizationModeSource, CustomizationModes
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.platform.base.statuses.constants import StatusTypes
-from gui.prb_control import prbInvitesProperty, prbDispatcherProperty
+from gui.prb_control import prbDispatcherProperty, prbInvitesProperty
 from gui.ranked_battles import ranked_helpers
-from gui.server_events.events_dispatcher import showPersonalMission, showMissionsBattlePassCommonProgression, showBattlePass3dStyleChoiceWindow, showMissionsMapboxProgression
-from gui.shared import g_eventBus, events, actions, EVENT_BUS_SCOPE, event_dispatcher as shared_events
-from gui.shared.event_dispatcher import showProgressiveRewardWindow, showRankedYearAwardWindow, showBlueprintsSalePage, showSteamConfirmEmailOverlay
+from gui.server_events.events_dispatcher import showMissionsBattlePass, showMissionsMapboxProgression, showPersonalMission
+from gui.shared import EVENT_BUS_SCOPE, actions, event_dispatcher as shared_events, events, g_eventBus
+from gui.shared.event_dispatcher import showBlueprintsSalePage, showProgressiveRewardWindow, showRankedYearAwardWindow, showShop, showSteamConfirmEmailOverlay, hideWebBrowserOverlay
 from gui.shared.notifications import NotificationPriorityLevel
 from gui.shared.utils import decorators
 from gui.wgcg.clan import contexts as clan_ctxs
 from gui.wgnc import g_wgncProvider
-from skeletons.account_helpers.settings_core import ISettingsCore
-from skeletons.gui.impl import INotificationWindowController
-from skeletons.gui.platform.wgnp_controllers import IWGNPSteamAccRequestController
-from web.web_client_api import webApiCollection
-from web.web_client_api.sound import HangarSoundWebApi
 from helpers import dependency
 from messenger.m_constants import PROTO_TYPE
 from messenger.proto import proto_getter
-from notification.settings import NOTIFICATION_TYPE, NOTIFICATION_BUTTON_STATE
-from notification.tutorial_helper import TutorialGlobalStorage, TUTORIAL_GLOBAL_VAR
+from notification.settings import NOTIFICATION_BUTTON_STATE, NOTIFICATION_TYPE
+from notification.tutorial_helper import TUTORIAL_GLOBAL_VAR, TutorialGlobalStorage
 from predefined_hosts import g_preDefinedHosts
 from skeletons.gui.battle_results import IBattleResultsService
-from skeletons.gui.game_control import IBrowserController, IRankedBattlesController, IBattleRoyaleController, IMapboxController, IBattlePassController
+from skeletons.gui.customization import ICustomizationService
+from skeletons.gui.game_control import IBattleRoyaleController, IBrowserController, IMapboxController, IRankedBattlesController
+from skeletons.gui.impl import INotificationWindowController
+from skeletons.gui.platform.wgnp_controllers import IWGNPSteamAccRequestController
 from skeletons.gui.web import IWebController
 from soft_exception import SoftException
-from skeletons.gui.customization import ICustomizationService
+from web.web_client_api import webApiCollection
+from web.web_client_api.sound import HangarSoundWebApi
 if typing.TYPE_CHECKING:
     from notification.NotificationsModel import NotificationsModel
     from gui.platform.wgnp.steam_account.statuses import SteamAccEmailStatus
@@ -897,24 +895,13 @@ class _OpenBattlePassProgressionView(_NavigationDisabledActionHandler):
         return ('openBattlePassProgressionView', )
 
     def doAction(self, model, entityID, action):
-        showMissionsBattlePassCommonProgression()
-
-
-class _OpenSelectDevicesHandler(_NavigationDisabledActionHandler):
-
-    @classmethod
-    def getNotType(cls):
-        return NOTIFICATION_TYPE.CHOOSING_DEVICES
-
-    @classmethod
-    def getActions(cls):
-        return ('openSelectDevices', )
-
-    def doAction(self, model, entityID, action):
         notification = model.getNotification(self.getNotType(), entityID)
         savedData = notification.getSavedData()
+        hideWebBrowserOverlay()
         if savedData is not None:
-            showOfferByBonusName(savedData.get('bonusName'))
+            showMissionsBattlePass(R.views.lobby.battle_pass.BattlePassProgressionsView(), savedData.get('chapterID'))
+        else:
+            showMissionsBattlePass()
         return
 
 
@@ -930,26 +917,6 @@ class _OpentBlueprintsConvertSale(_NavigationDisabledActionHandler):
 
     def doAction(self, model, entityID, action):
         showBlueprintsSalePage()
-
-
-class _OpenBattlePassStyleChoiceView(_NavigationDisabledActionHandler):
-    __settingsCore = dependency.descriptor(ISettingsCore)
-    __battlePassController = dependency.descriptor(IBattlePassController)
-
-    @classmethod
-    def getNotType(cls):
-        return NOTIFICATION_TYPE.MESSAGE
-
-    @classmethod
-    def getActions(cls):
-        return ('openBattlePassStyleChoiceView', )
-
-    def doAction(self, model, entityID, action):
-        isPaused = self.__battlePassController.isPaused()
-        if self.__settingsCore.serverSettings.getBPStorage().get(BattlePassStorageKeys.INTRO_SHOWN) and not isPaused:
-            showBattlePass3dStyleChoiceWindow()
-        else:
-            showMissionsBattlePassCommonProgression()
 
 
 class _OpenMapboxProgression(_NavigationDisabledActionHandler):
@@ -980,6 +947,41 @@ class _OpenMapboxSurvey(_NavigationDisabledActionHandler):
     def doAction(self, model, entityID, action):
         notification = model.getNotification(self.getNotType(), entityID)
         self.__mapboxCtrl.showSurvey(notification.getSavedData())
+
+
+class _OpenPsaShop(_NavigationDisabledActionHandler):
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.PSACOIN_REMINDER
+
+    @classmethod
+    def getActions(cls):
+        return ('openPsaShop', )
+
+    def doAction(self, model, entityID, action):
+        showShop(getPlayerSeniorityAwardsUrl())
+
+
+class _OpenBattlePassPointsShop(_NavigationDisabledActionHandler):
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.MESSAGE
+
+    @classmethod
+    def getActions(cls):
+        return ('openBattlePassPointsShop', )
+
+    def doAction(self, model, entityID, action):
+        showShop(getBattlePassCoinProductsUrl())
+
+
+class _OpenChapterChoiceView(_OpenBattlePassProgressionView):
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.BATTLE_PASS_SWITCH_CHAPTER_REMINDER
 
 
 _AVAILABLE_HANDLERS = (
@@ -1018,14 +1020,15 @@ _AVAILABLE_HANDLERS = (
  _OpenProgressiveRewardView,
  ProlongStyleRent,
  _OpenBattlePassProgressionView,
- _OpenSelectDevicesHandler,
- _OpenBattlePassStyleChoiceView,
  _OpenMissingEventsHandler,
  _OpenNotrecruitedSysMessageHandler,
  _OpentBlueprintsConvertSale,
  _OpenConfirmEmailHandler,
  _OpenMapboxProgression,
- _OpenMapboxSurvey)
+ _OpenMapboxSurvey,
+ _OpenPsaShop,
+ _OpenBattlePassPointsShop,
+ _OpenChapterChoiceView)
 
 class NotificationsActionsHandlers(object):
     __slots__ = ('__single', '__multi')

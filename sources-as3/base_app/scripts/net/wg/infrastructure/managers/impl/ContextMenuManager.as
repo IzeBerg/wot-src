@@ -52,9 +52,10 @@ package net.wg.infrastructure.managers.impl
          this.show(param1,null,param2);
       }
       
-      public function dispose() : void
+      override protected function onDispose() : void
       {
          this.hide();
+         super.onDispose();
       }
       
       public function hide() : void
@@ -75,7 +76,7 @@ package net.wg.infrastructure.managers.impl
             App.utils.popupMgr.popupCanvas.removeChild(_loc1_);
             this._currentMenu = null;
          }
-         if(!disposed)
+         if(!isDisposed())
          {
             onHideS();
          }

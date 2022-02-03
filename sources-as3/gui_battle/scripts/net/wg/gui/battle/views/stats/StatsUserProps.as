@@ -31,6 +31,8 @@ package net.wg.gui.battle.views.stats
       
       private var _isTeamKiller:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function StatsUserProps(param1:String, param2:String, param3:String, param4:String, param5:int, param6:Array = null)
       {
          super();
@@ -50,6 +52,7 @@ package net.wg.gui.battle.views.stats
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -257,6 +260,11 @@ package net.wg.gui.battle.views.stats
       public function get isAnonymized() : Boolean
       {
          return this._fakeName && this._fakeName != this._userName;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

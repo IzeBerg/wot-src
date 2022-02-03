@@ -12,6 +12,8 @@ package net.wg.gui.lobby.settings.vo
       
       private var _ids:Array = null;
       
+      private var _disposed:Boolean = false;
+      
       public function VisitedCounters(param1:String, param2:String, param3:Array)
       {
          super();
@@ -22,6 +24,7 @@ package net.wg.gui.lobby.settings.vo
       
       public function dispose() : void
       {
+         this._disposed = true;
          if(this._ids)
          {
             this._ids.splice(0,this._ids.length);
@@ -42,6 +45,11 @@ package net.wg.gui.lobby.settings.vo
       public function get ids() : Array
       {
          return this._ids;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -89,5 +89,10 @@ package net.wg.gui.battle.components
          this._invalidMask = InvalidationType.VALID;
          this._invalid = false;
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._isDisposed;
+      }
    }
 }

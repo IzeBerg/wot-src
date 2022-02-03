@@ -13,6 +13,8 @@ package net.wg.gui.battle.views.damagePanel.components.statusIndicator
       public static const STATE_HIDDEN:String = "hidden";
        
       
+      private var _disposed:Boolean = false;
+      
       public function StatusArrow()
       {
          super();
@@ -22,6 +24,7 @@ package net.wg.gui.battle.views.damagePanel.components.statusIndicator
       
       public final function dispose() : void
       {
+         this._disposed = true;
       }
       
       public function showStatus(param1:Boolean = true) : void
@@ -45,6 +48,11 @@ package net.wg.gui.battle.views.damagePanel.components.statusIndicator
       public function isVisible() : Boolean
       {
          return visible || currentFrameLabel != STATE_HIDDEN;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

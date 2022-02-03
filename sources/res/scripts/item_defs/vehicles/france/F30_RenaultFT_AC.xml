@@ -4005,6 +4005,8 @@
 						<collisionModelServer>vehicles/french/F30_RenaultFT_AC/collision/Gun_02.model</collisionModelServer>
 						<collisionModelClient>vehicles/french/F30_RenaultFT_AC/collision_client/Gun_02.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_small</effects>
+					<reloadEffect>reload20_45</reloadEffect>
 					<customization>
 						<customizableVehicleAreas>
 							<paint>GUN_2</paint>
@@ -4151,6 +4153,8 @@
 						<collisionModelServer>vehicles/french/F30_RenaultFT_AC/collision/Gun_03.model</collisionModelServer>
 						<collisionModelClient>vehicles/french/F30_RenaultFT_AC/collision_client/Gun_03.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_small</effects>
+					<reloadEffect>reload20_45</reloadEffect>
 					<customization>
 						<customizableVehicleAreas>
 							<paint>GUN GUN_2</paint>
@@ -4196,11 +4200,11 @@
 							<slotId>45000</slotId>
 							<tags>formfactor_square</tags>
 							<position>
-								-0.000005 1.96025 0.453022
+								-0.000011 1.96036 0.481192
 								<!--BW_String-->
 							</position>
 							<rotation>
-								1.51768 -0.00111282 3.13875
+								1.29128 -0.000053 3.13981
 								<!--BW_String-->
 							</rotation>
 							<scale>
@@ -4315,6 +4319,8 @@
 						<collisionModelServer>vehicles/french/F30_RenaultFT_AC/collision/Gun_04.model</collisionModelServer>
 						<collisionModelClient>vehicles/french/F30_RenaultFT_AC/collision_client/Gun_04.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_auto</effects>
+					<reloadEffect>reload20_45</reloadEffect>
 					<customization>
 						<customizableVehicleAreas>
 							<paint>GUN_2</paint>

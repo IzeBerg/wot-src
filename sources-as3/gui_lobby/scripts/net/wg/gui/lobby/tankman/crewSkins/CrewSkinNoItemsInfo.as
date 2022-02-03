@@ -14,6 +14,8 @@ package net.wg.gui.lobby.tankman.crewSkins
       
       public var tfReason:TextField;
       
+      private var _disposed:Boolean = false;
+      
       public function CrewSkinNoItemsInfo()
       {
          super();
@@ -28,8 +30,14 @@ package net.wg.gui.lobby.tankman.crewSkins
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.tfTitle = null;
          this.tfReason = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -15,6 +15,7 @@ package net.wg.infrastructure.managers.impl
    import net.wg.infrastructure.base.meta.impl.TutorialManagerMeta;
    import net.wg.infrastructure.events.LifeCycleEvent;
    import net.wg.infrastructure.events.TutorialEvent;
+   import net.wg.infrastructure.interfaces.IContainerWrapper;
    import net.wg.infrastructure.interfaces.ICustomObjectFinder;
    import net.wg.infrastructure.interfaces.ITriggerWatcher;
    import net.wg.infrastructure.interfaces.ITutorialBuilder;
@@ -26,7 +27,6 @@ package net.wg.infrastructure.managers.impl
    import net.wg.infrastructure.managers.impl.tutorial.BuildersMap;
    import net.wg.infrastructure.managers.impl.tutorial.TriggerEvent;
    import net.wg.infrastructure.managers.impl.tutorial.TriggerWatcherFactory;
-   import net.wg.infrastructure.managers.impl.tutorial.TutorialHintZone;
    import org.idmedia.as3commons.util.StringUtils;
    
    public class TutorialManager extends TutorialManagerMeta implements ITutorialManager
@@ -124,6 +124,11 @@ package net.wg.infrastructure.managers.impl
          param1.y = param2.y / App.appScale;
          param1.width = param2.width / App.appScale;
          param1.height = param2.height / App.appScale;
+      }
+      
+      private static function getTutorialHintZoneName(param1:String) : String
+      {
+         return param1 + "_HintArea";
       }
       
       override protected function onDispose() : void
@@ -621,45 +626,62 @@ package net.wg.infrastructure.managers.impl
       
       public function as_disposeExternalComponent(param1:String, param2:String) : void
       {
-         var _loc4_:IView = null;
-         var _loc5_:Vector.<ITriggerWatcher> = null;
          DebugUtils.LOG_DEBUG("as_disposeExternalComponent",param1,param2);
          var _loc3_:TutorialComponentPathVO = this._idToVO[param1];
-         if(_loc3_ && _loc3_.foundComponent)
-         {
-            _loc4_ = this._idToView[param2];
-            if(_loc4_ != null)
-            {
-               _loc4_.removeChild(_loc3_.foundComponent);
-            }
-            _loc5_ = this._compIdToWatchers[_loc3_.id];
-            if(_loc5_ && _loc5_.length > 0)
-            {
-               this.cleanupTriggerWatchers(_loc5_);
-               this._compIdToWatchers[_loc3_.id] = null;
-            }
-            this._buildersMap.removeBuildersForComponent(_loc3_.viewName,_loc3_.id);
-            delete this._componentToVO[_loc3_.foundComponent];
-            _loc3_.foundComponent = null;
-         }
+         this.unregisterExternalComponent(_loc3_);
       }
       
       override protected function externalComponentFound(param1:String, param2:String, param3:TutorialComponentData) : void
       {
-         var _loc5_:IView = null;
-         var _loc6_:TutorialHintZone = null;
+         var _loc5_:IContainerWrapper = null;
+         var _loc6_:DisplayObject = null;
          DebugUtils.LOG_DEBUG("as_externalComponentFound",param1,param2);
          var _loc4_:TutorialComponentPathVO = this._idToVO[param1];
          if(_loc4_ && !_loc4_.foundComponent)
          {
-            _loc5_ = this._idToView[param2];
+            _loc5_ = IContainerWrapper(this._idToView[param2]);
             App.utils.asserter.assertNotNull(_loc5_,"view id " + param2 + Errors.WASNT_FOUND);
-            _loc6_ = new TutorialHintZone(_loc5_);
-            _loc6_.name = param1 + "_HintArea";
+            _loc6_ = _loc5_.getTutorialHintZone(getTutorialHintZoneName(param1));
             updateExternalHintComponent(_loc6_,param3.rect);
-            _loc5_.addChild(_loc6_);
+            _loc6_.addEventListener(LifeCycleEvent.ON_BEFORE_DISPOSE,this.onExternalComponentDisposedHandler);
             _loc4_.foundComponent = _loc6_;
             this._componentToVO[_loc6_] = _loc4_;
+         }
+      }
+      
+      private function onExternalComponentDisposedHandler(param1:LifeCycleEvent) : void
+      {
+         var _loc3_:TutorialComponentPathVO = null;
+         var _loc2_:DisplayObject = param1.target as DisplayObject;
+         if(_loc2_ != null)
+         {
+            _loc2_.removeEventListener(LifeCycleEvent.ON_BEFORE_DISPOSE,this.onExternalComponentDisposedHandler);
+            _loc3_ = this._componentToVO[_loc2_];
+            this.unregisterExternalComponent(_loc3_);
+         }
+      }
+      
+      private function unregisterExternalComponent(param1:TutorialComponentPathVO) : void
+      {
+         var _loc2_:IContainerWrapper = null;
+         var _loc3_:Vector.<ITriggerWatcher> = null;
+         if(param1 && param1.foundComponent)
+         {
+            _loc2_ = IContainerWrapper(this._idToView[param1.viewTutorialId]);
+            if(_loc2_ != null)
+            {
+               _loc2_.removeTutorialHintZone(getTutorialHintZoneName(param1.id));
+            }
+            this.clearCriteriaHash(CriteriaUtils.componentPathVoPredicate(param1));
+            _loc3_ = this._compIdToWatchers[param1.id];
+            if(_loc3_ && _loc3_.length > 0)
+            {
+               this.cleanupTriggerWatchers(_loc3_);
+               this._compIdToWatchers[param1.id] = null;
+            }
+            this._buildersMap.removeBuildersForComponent(param1.viewName,param1.id);
+            delete this._componentToVO[param1.foundComponent];
+            param1.foundComponent = null;
          }
       }
       
@@ -1030,7 +1052,6 @@ package net.wg.infrastructure.managers.impl
       
       private function unregisterComponent(param1:DisplayObject) : void
       {
-         var _loc4_:* = null;
          var _loc2_:TutorialComponentPathVO = this._componentToVO[param1];
          var _loc3_:Vector.<ITriggerWatcher> = this._compIdToWatchers[_loc2_.id];
          if(_loc3_ && _loc3_.length > 0)
@@ -1040,14 +1061,7 @@ package net.wg.infrastructure.managers.impl
          }
          if(_loc2_)
          {
-            for(_loc4_ in this._criteriaHash)
-            {
-               if(this._criteriaHash[_loc4_].vo == _loc2_)
-               {
-                  this._criteriaHash[_loc4_].dispose();
-                  delete this._criteriaHash[_loc4_];
-               }
-            }
+            this.clearCriteriaHash(CriteriaUtils.componentPathVoPredicate(_loc2_));
             this._buildersMap.removeBuildersForComponent(_loc2_.viewName,_loc2_.id);
             _loc2_.foundComponent = null;
             delete this._componentToVO[param1];
@@ -1060,11 +1074,31 @@ package net.wg.infrastructure.managers.impl
          return this._isSystemEnabled;
       }
       
+      private function clearCriteriaHash(param1:Function) : void
+      {
+         var _loc3_:* = null;
+         var _loc4_:* = undefined;
+         var _loc2_:Array = [];
+         for(_loc3_ in this._criteriaHash)
+         {
+            if(param1(this._criteriaHash[_loc3_]))
+            {
+               _loc2_.push(_loc3_);
+            }
+         }
+         for each(_loc4_ in _loc2_)
+         {
+            this._criteriaHash[_loc4_].dispose();
+            delete this._criteriaHash[_loc4_];
+         }
+      }
+      
       private function onViewOnDisposeHandler(param1:Event) : void
       {
          var _loc2_:IView = IView(param1.currentTarget);
          _loc2_.removeEventListener(LifeCycleEvent.ON_DISPOSE,this.onViewOnDisposeHandler);
          var _loc3_:String = _loc2_.as_config.viewTutorialId;
+         this.clearCriteriaHash(CriteriaUtils.viewIdPredicate(_loc3_));
          this._buildersMap.removeBuildersForView(_loc3_);
          delete this._idToView[_loc3_];
       }
@@ -1188,5 +1222,36 @@ package net.wg.infrastructure.managers.impl
             }
          }
       }
+   }
+}
+
+import net.wg.data.vo.TutorialComponentPathVO;
+import net.wg.data.vo.TutorialCriteriaVo;
+
+class CriteriaUtils
+{
+    
+   
+   function CriteriaUtils()
+   {
+      super();
+   }
+   
+   public static function viewIdPredicate(param1:String) : Function
+   {
+      var id:String = param1;
+      return function(param1:TutorialCriteriaVo):Boolean
+      {
+         return param1.viewTutorialId == id;
+      };
+   }
+   
+   public static function componentPathVoPredicate(param1:TutorialComponentPathVO) : Function
+   {
+      var cmpVo:TutorialComponentPathVO = param1;
+      return function(param1:TutorialCriteriaVo):Boolean
+      {
+         return param1.vo == cmpVo;
+      };
    }
 }

@@ -75,6 +75,8 @@ package net.wg.infrastructure.managers.utils.impl
       
       private var _classFactory:IClassFactory = null;
       
+      private var _disposed:Boolean = false;
+      
       public function UniversalBtnStyles()
       {
          super();
@@ -114,6 +116,7 @@ package net.wg.infrastructure.managers.utils.impl
       public final function dispose() : void
       {
          var _loc2_:* = null;
+         this._disposed = true;
          var _loc1_:UniversalStyle = null;
          for(_loc2_ in this._styles)
          {
@@ -174,6 +177,11 @@ package net.wg.infrastructure.managers.utils.impl
          _loc2_.removeEventListener(UniversalBtnEvent.CLEAR_STYLE,this.onUniversalBtnClearStyleHandler);
          var _loc3_:IUniversalStyle = this.getStyle(_loc2_.styleID);
          _loc3_.addStyledDisplayObjects(_loc2_.styledDisplayObjects);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

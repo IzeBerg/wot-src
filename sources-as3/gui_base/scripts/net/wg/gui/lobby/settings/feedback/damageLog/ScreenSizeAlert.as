@@ -13,6 +13,8 @@ package net.wg.gui.lobby.settings.feedback.damageLog
       
       public var alertIcon:UILoaderAlt = null;
       
+      private var _disposed:Boolean = false;
+      
       public function ScreenSizeAlert()
       {
          super();
@@ -20,9 +22,15 @@ package net.wg.gui.lobby.settings.feedback.damageLog
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.alertIcon.dispose();
          this.alertIcon = null;
          this.tf = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

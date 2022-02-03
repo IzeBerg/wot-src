@@ -590,9 +590,11 @@ class Vehicle(FittingItem):
 
     def createAppliedOutfits(self, proxy):
         styleOutfitData = proxy.inventory.getOutfitData(self.intCD, SeasonType.ALL)
+        styleProgressionLevel = 0
         if styleOutfitData is not None:
             self._isStyleInstalled = True
             styledOutfitComponent = customizations.parseCompDescr(styleOutfitData)
+            styleProgressionLevel = styledOutfitComponent.styleProgressionLevel
             styleIntCD = vehicles.makeIntCompactDescrByID('customizationItem', CustomizationType.STYLE, styledOutfitComponent.styleId)
             style = vehicles.getItemByCompactDescr(styleIntCD)
         else:
@@ -604,12 +606,12 @@ class Vehicle(FittingItem):
             else:
                 isCustomOutfitInstalled = any(proxy.inventory.getOutfitData(self.intCD, s) for s in SeasonType.SEASONS)
                 self._isStyleInstalled = not isCustomOutfitInstalled
-        self._outfitComponents = {season:self._getOutfitComponent(proxy, style, season) for season in SeasonType.SEASONS}
+        self._outfitComponents = {season:self._getOutfitComponent(proxy, style, styleProgressionLevel, season) for season in SeasonType.SEASONS}
         return
 
-    def _getOutfitComponent(self, proxy, style, season):
+    def _getOutfitComponent(self, proxy, style, styleProgressionLevel, season):
         if style is not None:
-            return self.__getStyledOutfitComponent(proxy, style, season)
+            return self.__getStyledOutfitComponent(proxy, style, styleProgressionLevel, season)
         else:
             if self._isStyleInstalled:
                 return self.__getEmptyOutfitComponent()
@@ -1908,17 +1910,20 @@ class Vehicle(FittingItem):
         else:
             return self.__getEmptyOutfitComponent()
 
-    def __getStyledOutfitComponent(self, proxy, style, season):
-        componentProgression = 0
-        if style.progression:
-            progressionData = self.itemsCache.items.inventory.getC11nProgressionDataForItem(style.compactDescr)
-            if progressionData is not None:
-                vehCD = self.intCD if style.progression.autobound else 0
-                vehProgressionData = progressionData.get(vehCD, None)
-                if vehProgressionData is not None:
-                    componentProgression = vehProgressionData.currentLevel
+    def __getStyledOutfitComponent(self, proxy, style, styleProgressionLevel, season):
         component = deepcopy(style.outfits.get(season))
-        component.styleProgressionLevel = componentProgression
+        if style.progression:
+            if not style.isProgressionRewindEnabled:
+                componentProgression = 0
+                progressionData = self.itemsCache.items.inventory.getC11nProgressionDataForItem(style.compactDescr)
+                if progressionData is not None:
+                    vehCD = self.intCD if style.progression.autobound else 0
+                    vehProgressionData = progressionData.get(vehCD, None)
+                    if vehProgressionData is not None:
+                        componentProgression = vehProgressionData.currentLevel
+                    component.styleProgressionLevel = componentProgression
+            else:
+                component.styleProgressionLevel = styleProgressionLevel
         if ItemTags.ADD_NATIONAL_EMBLEM in style.tags:
             emblems = createNationalEmblemComponents(self._descriptor)
             component.decals.extend(emblems)

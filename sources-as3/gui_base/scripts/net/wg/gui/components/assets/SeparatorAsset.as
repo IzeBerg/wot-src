@@ -32,6 +32,8 @@ package net.wg.gui.components.assets
       
       private var _tileScaleY:Number = 1;
       
+      private var _disposed:Boolean = false;
+      
       public function SeparatorAsset()
       {
          super();
@@ -55,6 +57,7 @@ package net.wg.gui.components.assets
       
       public function dispose() : void
       {
+         this._disposed = true;
          removeEventListener(Event.ADDED_TO_STAGE,this.onAddToStageHandler);
          this.deleteParts();
       }
@@ -278,6 +281,11 @@ package net.wg.gui.components.assets
       {
          removeEventListener(Event.ADDED_TO_STAGE,this.onAddToStageHandler);
          this.draw();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

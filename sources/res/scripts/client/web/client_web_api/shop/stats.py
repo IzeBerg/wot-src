@@ -1,10 +1,10 @@
 from gui.ClientUpdateManager import g_clientUpdateManager
-from gui.game_control.wallet import WalletController
 from gui.shared.money import Currency
 from helpers import dependency
 from skeletons.gui.game_control import IWalletController
 from skeletons.gui.shared import IItemsCache
 from web.client_web_api.api import C2WHandler, c2w
+from web.common import formatWalletCurrencyStatuses, formatBalance
 
 class BalanceEventHandler(C2WHandler):
     __walletController = dependency.descriptor(IWalletController)
@@ -14,6 +14,7 @@ class BalanceEventHandler(C2WHandler):
         super(BalanceEventHandler, self).init()
         self.__walletController.onWalletStatusChanged += self.__onWalletUpdate
         g_clientUpdateManager.addCallbacks({('stats.{}').format(c):self.__onBalanceUpdate for c in Currency.ALL})
+        g_clientUpdateManager.addCallbacks({'cache.dynamicCurrencies': self.__onBalanceUpdate})
 
     def fini(self):
         g_clientUpdateManager.removeObjectCallbacks(self, force=True)
@@ -22,12 +23,8 @@ class BalanceEventHandler(C2WHandler):
 
     @c2w(name='balance_update')
     def __onBalanceUpdate(self, *_):
-        stats = self.__itemsCache.items.stats
-        actualMoney = stats.actualMoney.toDict()
-        balanceData = {Currency.currencyExternalName(currency):actualMoney[currency] for currency in Currency.ALL if currency in actualMoney}
-        return balanceData
+        return formatBalance(self.__itemsCache.items.stats)
 
     @c2w(name='wallet_update')
     def __onWalletUpdate(self, *_):
-        stats = self.__itemsCache.items.stats
-        return {Currency.currencyExternalName(key):WalletController.STATUS.getKeyByValue(code).lower() for key, code in stats.currencyStatuses.items() if key in Currency.ALL if key in Currency.ALL}
+        return formatWalletCurrencyStatuses(self.__itemsCache.items.stats)

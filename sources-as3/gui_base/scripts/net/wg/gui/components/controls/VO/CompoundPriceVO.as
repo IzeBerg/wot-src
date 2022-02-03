@@ -10,6 +10,8 @@ package net.wg.gui.components.controls.VO
       
       public var items:Vector.<PriceVO> = null;
       
+      private var _disposed:Boolean = false;
+      
       public function CompoundPriceVO(param1:Array)
       {
          var _loc4_:Array = null;
@@ -27,6 +29,7 @@ package net.wg.gui.components.controls.VO
       
       public final function dispose() : void
       {
+         this._disposed = true;
          if(this.items != null)
          {
             this.items.splice(0,this.items.length);
@@ -93,6 +96,11 @@ package net.wg.gui.components.controls.VO
          }
          App.utils.asserter.assert(true,Errors.WRONG_VALUE);
          return 0;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

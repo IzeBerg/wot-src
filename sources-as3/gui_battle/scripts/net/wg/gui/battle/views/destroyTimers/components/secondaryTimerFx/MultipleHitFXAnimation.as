@@ -23,13 +23,18 @@ package net.wg.gui.battle.views.destroyTimers.components.secondaryTimerFx
          this._flare = this.timerFx.flare;
       }
       
-      override public function dispose() : void
+      override public function onDispose() : void
       {
-         super.dispose();
          this.timer = null;
          this.timerFx = null;
          this._timerLabel = null;
          this._flare = null;
+         super.onDispose();
+      }
+      
+      public function setLabelVisibility(param1:Boolean) : void
+      {
+         this._timerLabel.visible = this._flare.visible = param1;
       }
       
       public function updateLabelPosition(param1:int) : void
@@ -41,11 +46,6 @@ package net.wg.gui.battle.views.destroyTimers.components.secondaryTimerFx
       public function updateText(param1:String) : void
       {
          this._timerLabel.text = param1;
-      }
-      
-      public function setLabelVisibility(param1:Boolean) : void
-      {
-         this._timerLabel.visible = this._flare.visible = param1;
       }
    }
 }

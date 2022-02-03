@@ -10,6 +10,8 @@ package net.wg.gui.components.controls.price
       
       public var hit:Sprite = null;
       
+      private var _disposed:Boolean = false;
+      
       public function PriceBG()
       {
          super();
@@ -17,7 +19,13 @@ package net.wg.gui.components.controls.price
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.hit = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -8,6 +8,8 @@ package net.wg.infrastructure.base
       
       private var _target:Object;
       
+      private var _disposed:Boolean = false;
+      
       public function BaseLayout()
       {
          super();
@@ -30,7 +32,13 @@ package net.wg.infrastructure.base
       
       public function dispose() : void
       {
+         this._disposed = true;
          this._target = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

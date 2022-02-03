@@ -4,7 +4,6 @@ package net.wg.gui.lobby.hangar
    import flash.display.DisplayObject;
    import flash.display.InteractiveObject;
    import flash.display.MovieClip;
-   import flash.display.Sprite;
    import flash.display.Stage;
    import flash.events.Event;
    import flash.events.KeyboardEvent;
@@ -98,7 +97,9 @@ package net.wg.gui.lobby.hangar
       
       private static const BR_UNBOUND_HEADER_TOP_MARGIN:int = 17;
       
-      private static const VEH_RESERCH_PANEL_Y:int = 45;
+      private static const VEH_RESEARCH_PANEL_Y:int = 45;
+      
+      private static const VEH_RESEARCH_PANEL_OFFSET:int = 37;
       
       private static const CREW_OPERATION_BG_Y:int = 47;
       
@@ -159,13 +160,13 @@ package net.wg.gui.lobby.hangar
       
       public var ammunitionPanelInject:AmmunitionPanelInject;
       
-      public var bottomBg:Sprite;
+      public var bottomBg:TutorialClip;
       
       public var carouselContainer:TutorialClip;
       
       public var switchModePanel:SwitchModePanel;
       
-      public var crewBG:Sprite;
+      public var crewBG:TutorialClip;
       
       public var teaser:Teaser;
       
@@ -244,6 +245,7 @@ package net.wg.gui.lobby.hangar
          this.setupWidgetSizes();
          this._eventsEntryContainer = new HangarEventEntriesContainer();
          this._eventsEntryContainer.addEventListener(Event.RESIZE,this.onEventsEntryContainerResizeHandler);
+         this._eventsEntryContainer.visible = false;
          addChildAt(this._eventsEntryContainer,getChildIndex(this.carouselContainer) + 1);
          this._header = App.instance.utils.classFactory.getComponent(Linkages.HANGAR_HEADER,HangarHeader);
          this._header.name = HANGAR_ALIASES.HEADER;
@@ -347,7 +349,9 @@ package net.wg.gui.lobby.hangar
          }
          this.crewOperationBtn.dispose();
          this.crewOperationBtn = null;
+         this.bottomBg.dispose();
          this.bottomBg = null;
+         this.crewBG.dispose();
          this.crewBG = null;
          this.teaser.dispose();
          this.teaser = null;
@@ -824,18 +828,21 @@ package net.wg.gui.lobby.hangar
       
       private function updateEntriesPosition() : void
       {
-         var _loc2_:Boolean = false;
-         var _loc1_:DisplayObject = this.ammunitionPanelInject.hitObject;
-         if(this.carousel && this._eventsEntryContainer.isActive && _loc1_ && _loc1_.width > 0)
+         var _loc1_:DisplayObject = null;
+         var _loc3_:Boolean = false;
+         _loc1_ = this.ammunitionPanelInject.hitObject;
+         var _loc2_:Boolean = this.carousel && this._eventsEntryContainer.isActive && _loc1_ && _loc1_.width > 0;
+         this._eventsEntryContainer.visible = _loc2_;
+         if(_loc2_)
          {
             this._eventsEntryContainer.x = _width - this._eventsEntryContainer.width - this._eventsEntryContainer.margin.width | 0;
             this._eventsEntryContainer.y = this.carousel.y - this._eventsEntryContainer.height | 0;
-            _loc2_ = false;
+            _loc3_ = false;
             if(this.ammunitionPanelInject.visible)
             {
-               _loc2_ = this.ammunitionPanelInject.x + _loc1_.x + _loc1_.width + AMMUNITION_PANEL_INJECT_OFFSET_RIGHT > this._eventsEntryContainer.x;
+               _loc3_ = this.ammunitionPanelInject.x + _loc1_.x + _loc1_.width + AMMUNITION_PANEL_INJECT_OFFSET_RIGHT > this._eventsEntryContainer.x;
             }
-            if(_loc2_)
+            if(_loc3_)
             {
                this._eventsEntryContainer.y -= _loc1_.y + (_loc1_.height >> 1);
             }
@@ -931,7 +938,7 @@ package net.wg.gui.lobby.hangar
             this.tmenXpPanel.y = this.crewOperationBtn.y = CREW_OPERATION_Y + this._topMargin;
             this.crewXPPanelInject.y = this.crewBG.y = _loc2_;
             this.crew.y = _loc2_ + this.crewBG.height + CREW_OPERATION_MARGIN_Y;
-            _loc3_ = VEH_RESERCH_PANEL_Y + this._topMargin;
+            _loc3_ = VEH_RESEARCH_PANEL_Y + this._topMargin;
             this.vehResearchPanel.y = this.vehResearchBG.y = _loc3_;
             this.updateParamsPosition();
          }
@@ -970,6 +977,7 @@ package net.wg.gui.lobby.hangar
       
       private function updateParamsPosition() : void
       {
+         this.vehResearchBG.y = VEH_RESEARCH_PANEL_OFFSET + this.vehResearchPanel.offset;
          this.params.x = _originalWidth - this.params.width - RIGHT_MARGIN ^ 0;
          this.params.y = this.vehResearchBG.y + this.vehResearchBG.height + PARAMS_TOP_MARGIN ^ 0;
          var _loc1_:int = _originalWidth <= SMALL_SCREEN_WIDTH_THRESHOLD ? int(PARAMS_SMALL_SCREEN_BOTTOM_MARGIN) : int(0);

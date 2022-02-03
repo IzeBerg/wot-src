@@ -38,6 +38,8 @@ package net.wg.gui.data
       
       protected var isManualControlled:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function ViewModel()
       {
          this._embedViewModels = new Vector.<ViewModel>(0);
@@ -57,6 +59,7 @@ package net.wg.gui.data
       public function dispose() : void
       {
          var _loc1_:ViewModel = null;
+         this._disposed = true;
          for each(_loc1_ in this._embedViewModels)
          {
             _loc1_.removeEventListener(Event.CHANGE,this.onChangeHanlder);
@@ -138,6 +141,11 @@ package net.wg.gui.data
       protected function registerCallbackByIdx(param1:int, param2:Function) : void
       {
          this.callbacks[param1] = param2;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

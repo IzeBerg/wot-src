@@ -15,6 +15,8 @@ package net.wg.gui.battle.eventBattle.views.battleHints
       
       public var icon:Image = null;
       
+      private var _disposed:Boolean = false;
+      
       public function InfoContainer()
       {
          super();
@@ -47,10 +49,16 @@ package net.wg.gui.battle.eventBattle.views.battleHints
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.txtMessage.dispose();
          this.txtMessage = null;
          this.icon.dispose();
          this.icon = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

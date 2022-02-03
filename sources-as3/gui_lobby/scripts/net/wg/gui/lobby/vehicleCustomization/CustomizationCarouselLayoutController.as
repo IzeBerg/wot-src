@@ -34,6 +34,8 @@ package net.wg.gui.lobby.vehicleCustomization
       
       private var _layoutValid:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function CustomizationCarouselLayoutController(param1:IScroller)
       {
          this._itemLayouts = new Vector.<Rectangle>();
@@ -45,6 +47,7 @@ package net.wg.gui.lobby.vehicleCustomization
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._itemLayouts.splice(0,this._itemLayouts.length);
          this._itemLayouts = null;
          this._bookmarkLayouts.splice(0,this._bookmarkLayouts.length);
@@ -218,6 +221,11 @@ package net.wg.gui.lobby.vehicleCustomization
          _loc3_.x = param1 + this._scrollList.horizontalGap + BOOK_MARK_HORIZONTAL_SHIFT;
          _loc3_.y = BOOK_MARK_VERTICAL_SHIFT;
          return _loc3_;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

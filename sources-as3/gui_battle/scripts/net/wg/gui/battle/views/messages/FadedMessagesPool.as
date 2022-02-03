@@ -11,6 +11,8 @@ package net.wg.gui.battle.views.messages
       
       private var _numAvailableItems:int;
       
+      private var _disposed:Boolean = false;
+      
       public function FadedMessagesPool(param1:FadingMessageListSettingsVO, param2:String)
       {
          var _loc4_:FadedTextMessage = null;
@@ -54,6 +56,7 @@ package net.wg.gui.battle.views.messages
       
       public final function dispose() : void
       {
+         this._disposed = true;
          var _loc1_:int = this._items.length - 1;
          while(_loc1_ >= 0)
          {
@@ -73,6 +76,11 @@ package net.wg.gui.battle.views.messages
       public function get capacity() : int
       {
          return this._items != null ? int(this._items.length) : int(0);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

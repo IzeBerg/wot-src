@@ -32,6 +32,8 @@ package net.wg.gui.battle.random.views.fragCorrelationBar.components
       
       private var _int_2_roman:Vector.<String> = null;
       
+      private var _disposed:Boolean = false;
+      
       public function TierGroupingElement()
       {
          super();
@@ -40,6 +42,7 @@ package net.wg.gui.battle.random.views.fragCorrelationBar.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.mainTF = null;
          this._int_2_roman.splice(0,this._int_2_roman.length);
          this._int_2_roman = null;
@@ -52,6 +55,11 @@ package net.wg.gui.battle.random.views.fragCorrelationBar.components
          {
             this.mainTF.text = this._int_2_roman[_loc2_];
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

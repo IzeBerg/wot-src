@@ -146,7 +146,7 @@ _ACHIEVEMENTS15X15_BLOCK_LAYOUT = [
  'rankedStayingPower', 'collectorVehicleStrg', 'TenYearsCountdownStageMedal',
  'wtHunterWins', 'wtBossWins', 'wtSpecBossDefeat', 'RP2018sergeantCounter',
  'wtxHunterWins', 'wtxBossWins', 'wtxSpecBossDefeat',
- 'whiteTiger2012']
+ 'whiteTiger2012', 'lunarNY2022Progression']
 _achievements15x15PopUps = [
  'warrior', 'invader', 'sniper', 'defender', 'steelwall', 'supporter',
  'scout', 'medalKay', 'medalCarius', 'medalKnispel', 'medalPoppel', 'medalAbrams',
@@ -188,7 +188,7 @@ _achievements15x15PopUps = [
  'collectorVehicle8', 'collectorVehicle9', 'collectorVehicle10', 'collectorVehicle11',
  'collectorVehicle12', 'collectorVehicle13', 'collectorVehicle14',
  'TenYearsCountdownStageMedal', 'wtHunterWins', 'wtBossWins', 'wtSpecBossDefeat',
- 'wtxHunterWins', 'wtxBossWins', 'wtxSpecBossDefeat']
+ 'wtxHunterWins', 'wtxBossWins', 'wtxSpecBossDefeat', 'lunarNY2022Progression']
 _achievements15x15BlockBuilder = StaticSizeBlockBuilder('achievements', _ACHIEVEMENTS15X15_BLOCK_LAYOUT, ACHIEVEMENT15X15_DEPENDENCIES, _achievements15x15PopUps)
 _STEAM_BLOCK_LAYOUT = [
  'steamBattleCredits', 'steamLittleSavingsMedal', 'steamMintedCoinMedal', 'steamKingMidasMedal',
@@ -302,7 +302,8 @@ _SINGLE_ACHIEVEMENTS_VALUES = [
  'february21', 'BattlePassCommonPr_4', 'march21', 'april21', 'gagarin21', 'may21',
  'june21', 'BattlePassCommonPr_5', 'mapboxSeason1', 'mapboxSeason2', 'mapboxSeason3',
  'july21', 'august21', 'BattlePassCommonPr_6', 'september21', 'october21',
- 'hw2021Medal1', 'hw2021Medal2', 'november21']
+ 'hw2021Medal1', 'hw2021Medal2', 'november21', '11YearsOfService',
+ 'NY22_AtmsphrLevel', 'NY22_CelebChallenge', 'december21', 'BattlePassCommonPr_7']
 _singleAchievementsPopUps = [
  'titleSniper', 'invincible', 'diehard', 'handOfDeath',
  'armorPiercer', 'battleCitizen', 'WFC2014', 'tacticalBreakthrough', 'aimer',
@@ -341,7 +342,8 @@ _singleAchievementsPopUps = [
  'march21', 'april21', 'gagarin21', 'may21', 'june21', 'BattlePassCommonPr_5',
  'mapboxSeason1', 'mapboxSeason2', 'mapboxSeason3', 'july21', 'august21',
  'BattlePassCommonPr_6', 'september21', 'october21', 'hw2021Medal1', 'hw2021Medal2',
- 'november21']
+ 'november21', '11YearsOfService', 'NY22_AtmsphrLevel', 'NY22_CelebChallenge',
+ 'december21', 'BattlePassCommonPr_7']
 _singleAchievementsBlockBuilder = BinarySetDossierBlockBuilder('singleAchievements', _SINGLE_ACHIEVEMENTS_VALUES, SINGLE_ACHIEVEMENTS_DEPENDENCIES, _singleAchievementsPopUps)
 FORT_ACHIEVEMENTS_BLOCK_LAYOUT = [
  'conqueror', 'fireAndSword', 'crusher', 'counterblow', 'kampfer', 'soldierOfFortune']

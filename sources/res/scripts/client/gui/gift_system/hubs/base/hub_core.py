@@ -55,6 +55,9 @@ class IGiftEventHub(object):
     def processWebState(self, webState):
         raise NotImplementedError
 
+    def reset(self):
+        pass
+
     def updateSettings(self, eventSettings):
         raise NotImplementedError
 
@@ -131,6 +134,14 @@ class GiftEventBaseHub(IGiftEventHub):
         self._isWebStateReceived = True
         self.onHubUpdated(HubUpdateReason.WEB_STATE, webState)
         return
+
+    def reset(self):
+        self._isHistoryReceived = False
+        self._isWebStateReceived = False
+        self._gifter.reset()
+        self._keeper.reset()
+        self._messenger.reset()
+        self._stamper.reset()
 
     def updateSettings(self, eventSettings):
         if self._settings == eventSettings:

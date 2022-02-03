@@ -1,5 +1,6 @@
 import BigWorld
 from ClientSelectableObject import ClientSelectableObject
+from CurrentVehicle import g_currentPreviewVehicle
 from gui.game_control import CalendarInvokeOrigin
 from gui.shared import g_eventBus
 from gui.hangar_cameras.hangar_camera_common import CameraMovementStates, CameraRelatedEvents
@@ -23,10 +24,12 @@ class HangarPoster(ClientSelectableObject):
         self.__alphaFadeFashion.maxAlphaDist = self.maxAlphaDistance * self.maxAlphaDistance
         self.model.fashion = self.__alphaFadeFashion
         g_eventBus.addListener(CameraRelatedEvents.CAMERA_ENTITY_UPDATED, self.__onCameraEntityUpdated)
+        g_currentPreviewVehicle.onSelected += self.__onHeroTankSelected
 
     def onLeaveWorld(self):
         super(HangarPoster, self).onLeaveWorld()
         g_eventBus.removeListener(CameraRelatedEvents.CAMERA_ENTITY_UPDATED, self.__onCameraEntityUpdated)
+        g_currentPreviewVehicle.onSelected -= self.__onHeroTankSelected
 
     def onMouseClick(self):
         super(HangarPoster, self).onMouseClick()
@@ -46,3 +49,8 @@ class HangarPoster(ClientSelectableObject):
 
     def __isHangarVehicleEntity(self, entityId):
         return entityId == self._hangarSpace.space.vehicleEntityId
+
+    def __onHeroTankSelected(self):
+        if g_currentPreviewVehicle.item is not None:
+            self.setEnable(g_currentPreviewVehicle.isHeroTank)
+        return

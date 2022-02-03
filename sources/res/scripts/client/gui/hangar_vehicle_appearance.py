@@ -590,10 +590,13 @@ class HangarVehicleAppearance(ScriptGameObject):
           self.__vEntity.model.node(TankPartNames.TURRET)),
          (
           TankPartNames.getIdx(TankPartNames.GUN) + 3, gunLink))
-        self.collisions.connect(self.__vEntity.id, ColliderTypes.HANGAR_VEHICLE_COLLIDER, collisionData)
+        self.collisions.connect(self.__vEntity.id, self._getColliderType(), collisionData)
         self._reloadColliderType(self.__vEntity.state)
         self.__reloadShadowManagerTarget(self.__vEntity.state)
         return
+
+    def _getColliderType(self):
+        return ColliderTypes.HANGAR_VEHICLE_COLLIDER
 
     def __handleEntityUpdated(self, event):
         ctx = event.ctx

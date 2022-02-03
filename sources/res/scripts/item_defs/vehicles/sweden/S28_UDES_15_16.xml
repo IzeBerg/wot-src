@@ -2176,7 +2176,7 @@
 								3.02291
 								<!--BW_String-->
 							</startAngle>
-							<teethCount>6</teethCount>
+							<teethCount>13</teethCount>
 						</sync>
 						<sync>
 							<name>WD_L0</name>
@@ -2184,7 +2184,7 @@
 								-0.21535
 								<!--BW_String-->
 							</startAngle>
-							<teethCount>6</teethCount>
+							<teethCount>13</teethCount>
 						</sync>
 					</teethSyncs>
 					<sourceCollisionHullPoints>
@@ -2607,12 +2607,12 @@
 								3.02373
 								<!--BW_String-->
 							</startAngle>
-							<teethCount>6</teethCount>
+							<teethCount>13</teethCount>
 						</sync>
 						<sync>
 							<name>WD_R0</name>
 							<startAngle>-0.215308</startAngle>
-							<teethCount>6</teethCount>
+							<teethCount>13</teethCount>
 						</sync>
 					</teethSyncs>
 					<sourceCollisionHullPoints>
@@ -3016,6 +3016,8 @@
 						<collisionModelServer>vehicles/sweden/S28_UDES_15_16/collision/Gun_02.model</collisionModelServer>
 						<collisionModelClient>vehicles/sweden/S28_UDES_15_16/collision_client/Gun_02.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_large_mb</effects>
+					<reloadEffect>reload115_152</reloadEffect>
 					<customization>
 						<customizableVehicleAreas>
 							<paint>GUN GUN_2</paint>

@@ -11,6 +11,8 @@ package net.wg.infrastructure.managers.pool
       
       private var _pools:Dictionary;
       
+      private var _disposed:Boolean = false;
+      
       public function PoolManager()
       {
          super();
@@ -36,6 +38,7 @@ package net.wg.infrastructure.managers.pool
       public final function dispose() : void
       {
          var _loc1_:IPool = null;
+         this._disposed = true;
          for each(_loc1_ in this._pools)
          {
             _loc1_.dispose();
@@ -77,6 +80,11 @@ package net.wg.infrastructure.managers.pool
       private function getPool(param1:String) : IPool
       {
          return IPool(this._pools[param1]);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -20,6 +20,8 @@ package net.wg.gui.battle.views.postMortemTips
       
       public var exitToHangarDescTF:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function PostmortemTips()
       {
          super();
@@ -30,13 +32,19 @@ package net.wg.gui.battle.views.postMortemTips
          this.exitToHangarDescTF.text = INGAME_GUI.POSTMORTEM_TIPS_EXITHANGAR_TEXT;
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          this.bg = null;
          this.observerModeTitleTF = null;
          this.observerModeDescTF = null;
          this.exitToHangarTitleTF = null;
          this.exitToHangarDescTF = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

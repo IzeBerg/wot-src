@@ -10,6 +10,8 @@ package net.wg.gui.battle.views.minimap.components.entries.fallout.absorptionFla
       
       public var animItem:Sprite = null;
       
+      private var _disposed:Boolean = false;
+      
       public function AbsorptionFlagAnimContainer()
       {
          super();
@@ -17,7 +19,13 @@ package net.wg.gui.battle.views.minimap.components.entries.fallout.absorptionFla
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.animItem = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

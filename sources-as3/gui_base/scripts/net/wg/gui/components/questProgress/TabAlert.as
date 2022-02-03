@@ -17,6 +17,8 @@ package net.wg.gui.components.questProgress
       
       public var descrTf:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function TabAlert()
       {
          super();
@@ -29,6 +31,7 @@ package net.wg.gui.components.questProgress
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.icon = null;
          this.alertTf = null;
          this.descrTf = null;
@@ -50,6 +53,11 @@ package net.wg.gui.components.questProgress
             }
          }
          this.descrTf.visible = Boolean(param1);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

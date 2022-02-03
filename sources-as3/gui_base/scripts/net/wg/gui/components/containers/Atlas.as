@@ -46,6 +46,8 @@ package net.wg.gui.components.containers
       
       private var _initializationMask:uint = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function Atlas()
       {
          super();
@@ -161,6 +163,7 @@ package net.wg.gui.components.containers
       public function dispose() : void
       {
          var _loc1_:* = null;
+         this._disposed = true;
          this.assert(!this._isDisposed,"Atlas manager" + Errors.ALREADY_DISPOSED);
          this._isDisposed = true;
          if(this._atlasBitmapLoader && !(this._initializationMask & BITMAP_LOADED_MASK))
@@ -214,6 +217,11 @@ package net.wg.gui.components.containers
          this._atlasXMLURLLoader.removeEventListener(Event.COMPLETE,this.onAtlasXMLLoadingCompleteHandler);
          this._atlasXMLURLLoader.removeEventListener(IOErrorEvent.IO_ERROR,this.onAtlasXMLIOErrorHandler);
          this._atlasXMLURLLoader = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -34,10 +34,14 @@ class CollisionVolumeGroup(namedtuple('CollisionVolumeGroup', (
  'criticalDistance',
  'canSkip'))):
 
+    def __new__(cls, minVolume=0.0, lowSpeedLimit=0.0, vehicleVisibilityLimit=0.0, approachSpeed=Math.Vector2(1.5, 10000.0), cameraSpeedFactor=0.1, criticalDistance=5.0, canSkip=False):
+        return super(CollisionVolumeGroup, cls).__new__(cls, minVolume, lowSpeedLimit, vehicleVisibilityLimit, approachSpeed, cameraSpeedFactor, criticalDistance, canSkip)
+
     @staticmethod
     def fromSection(dataSection):
         it = iter(CollisionVolumeGroup._fields)
-        return CollisionVolumeGroup(dataSection.readFloat(next(it), 0.0), dataSection.readFloat(next(it), 0.0), dataSection.readFloat(next(it), 0.0), dataSection.readVector2(next(it), Math.Vector2(1.5, 10000.0)), dataSection.readFloat(next(it), 0.1), dataSection.readFloat(next(it), 5.0), dataSection.readBool(next(it), False))
+        defaultIt = iter(CollisionVolumeGroup.__new__.__defaults__)
+        return CollisionVolumeGroup(dataSection.readFloat(next(it), next(defaultIt)), dataSection.readFloat(next(it), next(defaultIt)), dataSection.readFloat(next(it), next(defaultIt)), dataSection.readVector2(next(it), next(defaultIt)), dataSection.readFloat(next(it), next(defaultIt)), dataSection.readFloat(next(it), next(defaultIt)), dataSection.readBool(next(it), next(defaultIt)))
 
 
 VOLUME_GROUPS_NAMES = [

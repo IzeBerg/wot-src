@@ -20,6 +20,8 @@ package net.wg.gui.battle.epicRandom.battleloading.components
       
       private var _table:EpicRandomStatsTable = null;
       
+      private var _disposed:Boolean = false;
+      
       public function EpicRandomStatsTableCtrl(param1:EpicRandomStatsTable)
       {
          super();
@@ -41,6 +43,7 @@ package net.wg.gui.battle.epicRandom.battleloading.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -191,6 +194,11 @@ package net.wg.gui.battle.epicRandom.battleloading.components
       {
          this._table.team1TF.text = param1;
          this._table.team2TF.text = param2;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

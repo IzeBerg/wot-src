@@ -8,7 +8,7 @@ from cgf_obsolete_script.auto_properties import AutoProperty
 from vehicle_systems import model_assembler
 from vehicle_systems import camouflages
 from vehicle_systems.vehicle_damage_state import VehicleDamageState
-from vehicle_systems.tankStructure import VehiclePartsTuple, ModelsSetParams, TankPartNames, ColliderTypes, TankPartIndexes, TankNodeNames, TankRenderMode
+from vehicle_systems.tankStructure import VehiclePartsTuple, ModelsSetParams, TankPartNames, ColliderTypes, TankPartIndexes, TankNodeNames, TankRenderMode, CgfTankNodes
 from vehicle_systems.components.CrashedTracks import CrashedTrackController
 from vehicle_systems.components.vehicleDecal import VehicleDecal
 from vehicle_systems.components.siegeEffectsController import SiegeEffectsController
@@ -112,7 +112,7 @@ class CommonTankAppearance(ScriptGameObject):
     flagComponent = ComponentDescriptor()
 
     def __init__(self, spaceID):
-        ScriptGameObject.__init__(self, spaceID, 'Tank.Root')
+        ScriptGameObject.__init__(self, spaceID, CgfTankNodes.TANK_ROOT)
         self._vehicle = None
         self.__wheelsGameObject = ScriptGameObject(spaceID, 'Tank.Wheels.Root')
         self.__filter = None

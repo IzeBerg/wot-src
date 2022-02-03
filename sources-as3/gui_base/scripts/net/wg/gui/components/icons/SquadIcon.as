@@ -16,6 +16,8 @@ package net.wg.gui.components.icons
       
       public var icoFeelPlace:BitmapFill = null;
       
+      private var _disposed:Boolean = false;
+      
       public function SquadIcon()
       {
          super();
@@ -34,6 +36,7 @@ package net.wg.gui.components.icons
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.icoFeelPlace.dispose();
          this.icoFeelPlace = null;
       }
@@ -47,6 +50,11 @@ package net.wg.gui.components.icons
       {
          this.icoFeelPlace.source = getBitmapName(param1,param2);
          visible = true;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

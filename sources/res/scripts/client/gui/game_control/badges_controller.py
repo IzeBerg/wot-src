@@ -133,10 +133,10 @@ class BadgesController(IBadgesController, Notifiable):
                     self.__tutorStorage.setValue(GLOBAL_FLAG.HAVE_NEW_BADGE, True)
                 elif badge.isSuffixLayout():
                     self.__tutorStorage.setValue(GLOBAL_FLAG.HAVE_NEW_SUFFIX_BADGE, True)
-            if currentSelectedPrefix is not None and currentSelectedPrefix.isCollapsible() and badge.isCollapsible() and badge.group == currentSelectedPrefix.group and badge.getBadgeClass() > currentSelectedPrefix.getBadgeClass():
+            if currentSelectedPrefix is not None and currentSelectedPrefix.isCollapsible() and badge.isCollapsible() and badge.group == currentSelectedPrefix.group and badge.getBadgeClass() > currentSelectedPrefix.getBadgeClass() and badge.isAchieved:
                 currentSelectedPrefix = badge
 
-        if currentSelectedPrefix != self.__currentSelectedPrefix:
+        if currentSelectedPrefix != self.__currentSelectedPrefix and self.itemsCache.isSynced():
             self.__currentSelectedPrefix.isSelected = False
             self.__currentSelectedPrefix = currentSelectedPrefix
             self.select([ b.badgeID for b in (self.__currentSelectedPrefix, self.__currentSelectedSuffix) if b is not None ])

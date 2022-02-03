@@ -28,9 +28,9 @@ class BattleSessionWindowMeta(PrebattleWindow):
         if self._isDAAPIInited():
             return self.flashObject.as_setTotalPlayersCount(value)
 
-    def as_setInfoS(self, isTurnamentBattle, wins, map, firstTeam, secondTeam, count, description, comment):
+    def as_setInfoS(self, isTurnamentBattle, wins, map, firstTeam, secondTeam, count, description, comment, unitLetter, vehicleLevel, teamIndex):
         if self._isDAAPIInited():
-            return self.flashObject.as_setInfo(isTurnamentBattle, wins, map, firstTeam, secondTeam, count, description, comment)
+            return self.flashObject.as_setInfo(isTurnamentBattle, wins, map, firstTeam, secondTeam, count, description, comment, unitLetter, vehicleLevel, teamIndex)
 
     def as_setWinnerIfDrawS(self, value=0):
         if self._isDAAPIInited():

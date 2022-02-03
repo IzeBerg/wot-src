@@ -338,7 +338,7 @@
 		<priceGroup>paints 20g notInShop</priceGroup>
 		<vehicleFilter>
 			<include>
-				<vehicles>ussr:R127_T44_100_P</vehicles>
+				<vehicles>ussr:R127_T44_100_I</vehicles>
 			</include>
 		</vehicleFilter>
 		<paint>
@@ -2418,7 +2418,7 @@
 		</usages>
 	</itemGroup>
 	<itemGroup>
-		<name>NY 2021</name>
+		<name>NY</name>
 		<userString>#vehicle_customization:repaint/color_group_04</userString>
 		<season>ALL</season>
 		<historical>1</historical>
@@ -2503,6 +2503,81 @@
 			<userString>#vehicle_customization:repaint/ny_2021_chuck</userString>
 			<tags>hiddenInUI</tags>
 		</paint>
+		<paint>
+			<id>197</id>
+			<texture>gui/maps/vehicles/repaints/italy_color_06.png</texture>
+			<color>82 127 112 255</color>
+			<gloss>
+				0.509
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.24
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/ny_2022_east</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
+		<paint>
+			<id>198</id>
+			<texture>gui/maps/vehicles/repaints/primer_marmot_01.png</texture>
+			<color>81 16 16 255</color>
+			<gloss>
+				0.6
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.3
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/ny_2022_xmas</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
+		<paint>
+			<id>199</id>
+			<texture>gui/maps/vehicles/repaints/custom_color_26.png</texture>
+			<color>36 49 66 255</color>
+			<gloss>
+				0.509
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.203
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/ny_2022_fantasy</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
+		<paint>
+			<id>201</id>
+			<texture>gui/maps/vehicles/repaints/custom_color_20.png</texture>
+			<color>37 38 37 255</color>
+			<gloss>
+				0.509
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.203
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/ny_2022_bro</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
+		<paint>
+			<id>233</id>
+			<texture>gui/maps/vehicles/repaints/custom_color_20.png</texture>
+			<color>33 33 33 255</color>
+			<gloss>
+				0.52
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.2
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/ny_2022_schwarz</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
 		<usages>
 			<item>
 				<componentType>ALL</componentType>
@@ -2534,6 +2609,20 @@
 				<!--BW_String-->
 			</metallic>
 			<userString>#vehicle_customization:repaint/seniority_awards_2020</userString>
+		</paint>
+		<paint>
+			<id>231</id>
+			<texture>gui/maps/vehicles/repaints/germany_base_color.png</texture>
+			<color>101 101 101 255</color>
+			<gloss>
+				0.509
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.23
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/seniority_awards_2021</userString>
 		</paint>
 		<usages>
 			<item>
@@ -2991,6 +3080,20 @@
 			</metallic>
 			<userString>#vehicle_customization:repaint/kraken</userString>
 		</paint>
+		<paint>
+			<id>234</id>
+			<texture>gui/maps/vehicles/repaints/custom_color_25.png</texture>
+			<color>10 6 22 255</color>
+			<gloss>
+				0.6
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.3
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/cerberus</userString>
+		</paint>
 		<usages>
 			<item>
 				<componentType>ALL</componentType>
@@ -3134,6 +3237,25 @@
 				<!--BW_String-->
 			</metallic>
 			<userString>#vehicle_customization:repaint/bp2021_6_3</userString>
+		</paint>
+		<paint>
+			<id>237</id>
+			<texture>gui/maps/vehicles/repaints/custom_color_20.png</texture>
+			<color>61.000000 55.000000 50.000000 255.000000</color>
+			<gloss>0.630000</gloss>
+			<metallic>0.235000</metallic>
+			<userString>#vehicle_customization:repaint/bp2022_1</userString>
+		</paint>
+		<paint>
+			<id>238</id>
+			<texture>gui/maps/vehicles/repaints/custom_color_20.png</texture>
+			<color>92.000000 88.000000 54.000000 255.000000</color>
+			<gloss>0.600000</gloss>
+			<metallic>
+				0.3
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/bp2022_3</userString>
 		</paint>
 		<usages>
 			<item>
@@ -3919,5 +4041,140 @@
 				<cost>1</cost>
 			</item>
 		</usages>
+	</itemGroup>
+	<itemGroup>
+		<name>Lunar NY 2022</name>
+		<userString>#vehicle_customization:repaint/color_group_04</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>paints 20g notInShop</priceGroup>
+		<vehicleFilter>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+		</vehicleFilter>
+		<paint>
+			<id>239</id>
+			<texture>gui/maps/vehicles/repaints/custom_color_20.png</texture>
+			<color>10 8 25 255</color>
+			<gloss>
+				0.74
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.38
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/lunar_ny_2022</userString>
+		</paint>
+		<paint>
+			<id>240</id>
+			<texture>gui/maps/vehicles/repaints/custom_color_20.png</texture>
+			<color>0.000000 0.000000 23.000000 255.000000</color>
+			<gloss>0.700000</gloss>
+			<metallic>0.110000</metallic>
+			<userString>#vehicle_customization:repaint/cn_lunar_ny_2022</userString>
+		</paint>
+		<usages>
+			<item>
+				<componentType>ALL</componentType>
+				<cost>1</cost>
+			</item>
+		</usages>
+	</itemGroup>
+	<itemGroup>
+		<name>
+			11.11
+			<!--BW_String-->
+		</name>
+		<userString>#vehicle_customization:repaint/color_group_04</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>paints 20g notInShop</priceGroup>
+		<vehicleFilter>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+		</vehicleFilter>
+		<paint>
+			<id>241</id>
+			<texture>gui/maps/vehicles/repaints/custom_color_28.png</texture>
+			<color>17.000000 16.000000 30.000000 255.000000</color>
+			<gloss>0.460000</gloss>
+			<metallic>0.230000</metallic>
+			<userString>#vehicle_customization:repaint/11_11</userString>
+		</paint>
+		<usages>
+			<item>
+				<componentType>ALL</componentType>
+				<cost>1</cost>
+			</item>
+		</usages>
+	</itemGroup>
+	<itemGroup>
+		<name>BVII_3DSt</name>
+		<userString>#vehicle_customization:repaint/color_group_04</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>paints 20g notInShop</priceGroup>
+		<vehicleFilter>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+		</vehicleFilter>
+		<paint>
+			<id>242</id>
+			<texture>gui/maps/vehicles/repaints/germany_base_color.png</texture>
+			<color>99.000000 99.000000 99.000000 255.000000</color>
+			<gloss>0.506000</gloss>
+			<metallic>0.230000</metallic>
+			<userString>#vehicle_customization:repaint/G89_Leopard1_BVII_3DSt_stage1-3</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
+		<paint>
+			<id>243</id>
+			<texture>gui/maps/vehicles/repaints/germany_base_color.png</texture>
+			<color>84.000000 84.000000 84.000000 255.000000</color>
+			<gloss>0.506000</gloss>
+			<metallic>0.230000</metallic>
+			<userString>#vehicle_customization:repaint/G89_Leopard1_BVII_3DSt_stage4</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
+		<paint>
+			<id>244</id>
+			<texture>gui/maps/vehicles/repaints/germany_base_color.png</texture>
+			<color>117.000000 109.000000 82.000000 255.000000</color>
+			<gloss>0.506000</gloss>
+			<metallic>0.230000</metallic>
+			<userString>#vehicle_customization:repaint/A83_T110E4_BVII_3DSt_stage1-3</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
+		<paint>
+			<id>245</id>
+			<texture>gui/maps/vehicles/repaints/germany_base_color.png</texture>
+			<color>87.000000 81.000000 65.000000 255.000000</color>
+			<gloss>0.506000</gloss>
+			<metallic>0.230000</metallic>
+			<userString>#vehicle_customization:repaint/A83_T110E4_BVII_3DSt_stage4</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
+		<paint>
+			<id>246</id>
+			<texture>gui/maps/vehicles/repaints/china_color_03.png</texture>
+			<color>75.000000 81.000000 63.000000 255.000000</color>
+			<gloss>0.506000</gloss>
+			<metallic>0.230000</metallic>
+			<userString>#vehicle_customization:repaint/S16_Kranvagn_BVII_3DSt_stage1-3</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
+		<paint>
+			<id>247</id>
+			<texture>gui/maps/vehicles/repaints/china_color_03.png</texture>
+			<color>57.000000 64.000000 49.000000 255.000000</color>
+			<gloss>0.506000</gloss>
+			<metallic>0.230000</metallic>
+			<userString>#vehicle_customization:repaint/S16_Kranvagn_BVII_3DSt_stage4</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
 	</itemGroup>
 </root>

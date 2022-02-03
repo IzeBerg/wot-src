@@ -33,10 +33,11 @@ package net.wg.gui.components.questProgress
       
       public function QuestProgressOrConditionTab()
       {
+         var _loc1_:int = 0;
          super();
          this.labelTf.text = PERSONAL_MISSIONS.CONDITIONS_ORGROUP;
          App.utils.commons.updateTextFieldSize(this.labelTf,true,false);
-         var _loc1_:int = this.labelTf.width;
+         _loc1_ = this.labelTf.width;
          this.labelTf.x = -_loc1_ >> 1;
          this.arrowBg.width = Math.max(_loc1_ + BG_HORIZONTAL_GAP,MIN_BG_WIDTH);
          App.utils.commons.setShadowFilterWithParams(this.labelTf,DS_DISTANCE,DS_ANGLE,DS_COLOR,DS_ALPHA,DS_BLUR_X,DS_BLUR_Y,DS_STRENGTH,DS_QUALITY);

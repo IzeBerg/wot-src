@@ -767,7 +767,8 @@ class TelecomBlockConstructor(VehicleTooltipBlockConstructor):
     def construct(self):
         if self.vehicle.isTelecom:
             telecomConfig = self.lobbyContext.getServerSettings().telecomConfig
-            provider = telecomConfig.getInternetProvider(self.vehicle.intCD)
+            telecomBundleId = self.itemsCache.items.stats.getTelecomBundleId()
+            provider = telecomConfig.getInternetProvider(telecomBundleId)
             providerLocRes = R.strings.menu.internet_provider.dyn(provider)
             telecomTextRes = R.strings.tooltips.vehicle.deal.telecom.main.dyn(provider, R.strings.tooltips.vehicle.deal.telecom.main.default)
             return [
@@ -1072,7 +1073,8 @@ class ClanLockAdditionalStatsBlockConstructor(LockAdditionalStatsBlockConstructo
 
 
 class StatusBlockConstructor(VehicleTooltipBlockConstructor):
-    lobbyContext = dependency.descriptor(ILobbyContext)
+    __lobbyContext = dependency.descriptor(ILobbyContext)
+    __bootcamp = dependency.descriptor(IBootcampController)
 
     def construct(self):
         block = []
@@ -1120,11 +1122,14 @@ class StatusBlockConstructor(VehicleTooltipBlockConstructor):
             parentCD = int(config.node.unlockProps.parentID) or None
         _, _, need2Unlock, _, _ = getUnlockPrice(vehicle.intCD, parentCD, vehicle.level)
         if not nodeState & NODE_STATE_FLAGS.UNLOCKED and not nodeState & NODE_STATE_FLAGS.COLLECTIBLE:
-            level = Vehicle.VEHICLE_STATE_LEVEL.CRITICAL
-            if not nodeState & NODE_STATE_FLAGS.NEXT_2_UNLOCK:
+            if self.__bootcamp.isInBootcamp() and nodeState & NODE_STATE_FLAGS.PURCHASE_DISABLED:
+                tooltip = None
+            elif not nodeState & NODE_STATE_FLAGS.NEXT_2_UNLOCK:
                 tooltip = TOOLTIPS.RESEARCHPAGE_VEHICLE_STATUS_PARENTMODULEISLOCKED
             elif need2Unlock > 0:
                 tooltip = TOOLTIPS.RESEARCHPAGE_MODULE_STATUS_NOTENOUGHXP
+            if tooltip is not None:
+                level = Vehicle.VEHICLE_STATE_LEVEL.CRITICAL
         elif nodeState & NODE_STATE_FLAGS.IN_INVENTORY:
             return self.__getVehicleStatus(False, vehicle)
         mayObtain, reason = vehicle.mayObtainForMoney(self.itemsCache.items.stats.money)
@@ -1183,8 +1188,9 @@ class StatusBlockConstructor(VehicleTooltipBlockConstructor):
             if state == Vehicle.VEHICLE_STATE.ROTATION_GROUP_UNLOCKED:
                 header, text = getComplexStatus('#tooltips:vehicleStatus/%s' % state, groupNum=vehicle.rotationGroupNum, battlesLeft=getBattlesLeft(vehicle))
             elif state == Vehicle.VEHICLE_STATE.DEAL_IS_OVER:
-                telecomConfig = self.lobbyContext.getServerSettings().telecomConfig
-                provider = telecomConfig.getInternetProvider(vehicle.intCD)
+                telecomConfig = self.__lobbyContext.getServerSettings().telecomConfig
+                telecomBundleId = self.itemsCache.items.stats.getTelecomBundleId()
+                provider = telecomConfig.getInternetProvider(telecomBundleId)
                 providerLocRes = R.strings.menu.internet_provider.dyn(provider)
                 keyString = ('#tooltips:vehicleStatus/{}').format(state)
                 if provider != '':

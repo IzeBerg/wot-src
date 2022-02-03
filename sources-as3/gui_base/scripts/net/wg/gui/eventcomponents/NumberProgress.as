@@ -14,6 +14,8 @@ package net.wg.gui.eventcomponents
       
       public var txtField:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function NumberProgress()
       {
          super();
@@ -21,6 +23,7 @@ package net.wg.gui.eventcomponents
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.txtField = null;
       }
       
@@ -58,6 +61,11 @@ package net.wg.gui.eventcomponents
       {
          App.utils.commons.updateTextFieldSize(this.txtField);
          return this.txtField.textWidth;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

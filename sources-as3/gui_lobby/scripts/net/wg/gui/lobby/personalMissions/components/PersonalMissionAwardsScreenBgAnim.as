@@ -22,6 +22,8 @@ package net.wg.gui.lobby.personalMissions.components
       
       private var _frameHelper:FrameHelper = null;
       
+      private var _disposed:Boolean = false;
+      
       public function PersonalMissionAwardsScreenBgAnim()
       {
          super();
@@ -47,6 +49,7 @@ package net.wg.gui.lobby.personalMissions.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          stop();
          this._frameHelper.dispose();
          this._frameHelper = null;
@@ -75,6 +78,11 @@ package net.wg.gui.lobby.personalMissions.components
       public function setCampaignId(param1:int) : void
       {
          this.bg.gotoAndStop(param1);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

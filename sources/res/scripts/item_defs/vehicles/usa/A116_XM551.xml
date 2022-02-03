@@ -144,6 +144,13 @@
 			<undamaged>vehicles/american/A116_XM551/normal/lod0/Hull.model</undamaged>
 			<destroyed>vehicles/american/A116_XM551/crash/lod0/Hull.model</destroyed>
 			<exploded>vehicles/american/A116_XM551/crash/lod0/Hull.model</exploded>
+			<sets>
+				<A116_XM551_3DSt_MD_21_XXII>
+					<undamaged>vehicles/american/A116_XM551/_skins/A116_XM551_3DSt_MD_21_XXII/normal/lod0/Hull.model</undamaged>
+					<destroyed>vehicles/american/A116_XM551/_skins/A116_XM551_3DSt_MD_21_XXII/crash/lod0/Hull.model</destroyed>
+					<exploded>vehicles/american/A116_XM551/_skins/A116_XM551_3DSt_MD_21_XXII/crash/lod0/Hull.model</exploded>
+				</A116_XM551_3DSt_MD_21_XXII>
+			</sets>
 		</models>
 		<swinging>
 			<lodDist>FAR</lodDist>
@@ -180,11 +187,11 @@
 				<slotType>clan</slotType>
 				<slotId>10000</slotId>
 				<rayStart>
-					0.646777 0.67541 2.45683
+					0.517102 0.649586 2.51764
 					<!--BW_String-->
 				</rayStart>
 				<rayEnd>
-					0.646777 0.624053 2.43501
+					0.517102 0.598227 2.49582
 					<!--BW_String-->
 				</rayEnd>
 				<rayUp>
@@ -1937,7 +1944,7 @@
 			<slot>
 				<slotType>projectionDecal</slotType>
 				<slotId>15076</slotId>
-				<tags>formfactor_rect1x2  safe left direction_right_to_left</tags>
+				<tags>formfactor_rect1x2 safe left direction_right_to_left</tags>
 				<position>
 					-1.43126 1.37188 0.934165
 					<!--BW_String-->
@@ -1962,7 +1969,7 @@
 			<slot>
 				<slotType>projectionDecal</slotType>
 				<slotId>15077</slotId>
-				<tags>formfactor_rect1x2  safe right direction_left_to_right</tags>
+				<tags>formfactor_rect1x2 safe right direction_left_to_right</tags>
 				<position>
 					1.43128 1.37183 0.93417
 					<!--BW_String-->
@@ -2053,6 +2060,88 @@
 				<clipAngle>0.344284</clipAngle>
 				<anchorShift>0.111538</anchorShift>
 			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15081</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>A116_XM551_3DSt_MD_21_XXII</compatibleModels>
+				<position>
+					1.17593 1.2573 2.84446
+					<!--BW_String-->
+				</position>
+				<rotation>
+					0.410607 -0.000052 3.14148
+					<!--BW_String-->
+				</rotation>
+				<scale>
+					0.335984 0.0471745 0.335997
+					<!--BW_String-->
+				</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>0.338742</clipAngle>
+				<anchorShift>0.065968</anchorShift>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15082</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>A116_XM551_3DSt_MD_21_XXII</compatibleModels>
+				<position>
+					-1.35026 1.32245 0.202493
+					<!--BW_String-->
+				</position>
+				<rotation>
+					1.56918 -0.608175 -2.20385
+					<!--BW_String-->
+				</rotation>
+				<scale>0.531166 0.154826 0.531166</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>0.749149</clipAngle>
+				<anchorShift>0.086131</anchorShift>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15083</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>A116_XM551_3DSt_MD_21_XXII</compatibleModels>
+				<position>
+					1.32347 1.27349 -0.706146
+					<!--BW_String-->
+				</position>
+				<rotation>
+					1.55176 1.42594 2.99225
+					<!--BW_String-->
+				</rotation>
+				<scale>0.481206 0.140263 0.481204</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>0.749149</clipAngle>
+				<anchorShift>0.126722</anchorShift>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15084</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>A116_XM551_3DSt_MD_21_XXII</compatibleModels>
+				<position>
+					0.000024 1.71539 -2.78776
+					<!--BW_String-->
+				</position>
+				<rotation>
+					3.14159 -0.000008 -0.000028
+					<!--BW_String-->
+				</rotation>
+				<scale>
+					0.457083 0.13323 0.457083
+					<!--BW_String-->
+				</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>0.449704</clipAngle>
+				<anchorShift>0.030956</anchorShift>
+			</slot>
 		</customizationSlots>
 		<customization>
 			<customizableVehicleAreas>
@@ -2116,6 +2205,13 @@
 				<undamaged>vehicles/american/A116_XM551/normal/lod0/Chassis.model</undamaged>
 				<destroyed>vehicles/american/A116_XM551/crash/lod0/Chassis.model</destroyed>
 				<exploded>vehicles/american/A116_XM551/crash/lod0/Chassis.model</exploded>
+				<sets>
+					<A116_XM551_3DSt_MD_21_XXII>
+						<undamaged>vehicles/american/A116_XM551/_skins/A116_XM551_3DSt_MD_21_XXII/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/american/A116_XM551/_skins/A116_XM551_3DSt_MD_21_XXII/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/american/A116_XM551/_skins/A116_XM551_3DSt_MD_21_XXII/crash/lod0/Chassis.model</exploded>
+					</A116_XM551_3DSt_MD_21_XXII>
+				</sets>
 			</models>
 			<traces>
 				<lodDist>FAR</lodDist>
@@ -4005,11 +4101,20 @@
 						<undamaged>vehicles/american/A116_XM551/normal/lod0/Gun_01.model</undamaged>
 						<destroyed>vehicles/american/A116_XM551/crash/lod0/Gun_01.model</destroyed>
 						<exploded>vehicles/american/A116_XM551/crash/lod0/Gun_01.model</exploded>
+						<sets>
+							<A116_XM551_3DSt_MD_21_XXII>
+								<undamaged>vehicles/american/A116_XM551/_skins/A116_XM551_3DSt_MD_21_XXII/normal/lod0/Gun_01.model</undamaged>
+								<destroyed>vehicles/american/A116_XM551/_skins/A116_XM551_3DSt_MD_21_XXII/crash/lod0/Gun_01.model</destroyed>
+								<exploded>vehicles/american/A116_XM551/_skins/A116_XM551_3DSt_MD_21_XXII/crash/lod0/Gun_01.model</exploded>
+							</A116_XM551_3DSt_MD_21_XXII>
+						</sets>
 					</models>
 					<hitTester>
 						<collisionModelServer>vehicles/american/A116_XM551/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/american/A116_XM551/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_large</effects>
+					<reloadEffect>reload85_107</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customizationSlots>
 						<slot>
@@ -4163,11 +4268,20 @@
 						<undamaged>vehicles/american/A116_XM551/normal/lod0/Gun_02.model</undamaged>
 						<destroyed>vehicles/american/A116_XM551/crash/lod0/Gun_02.model</destroyed>
 						<exploded>vehicles/american/A116_XM551/crash/lod0/Gun_02.model</exploded>
+						<sets>
+							<A116_XM551_3DSt_MD_21_XXII>
+								<undamaged>vehicles/american/A116_XM551/_skins/A116_XM551_3DSt_MD_21_XXII/normal/lod0/Gun_02.model</undamaged>
+								<destroyed>vehicles/american/A116_XM551/_skins/A116_XM551_3DSt_MD_21_XXII/crash/lod0/Gun_02.model</destroyed>
+								<exploded>vehicles/american/A116_XM551/_skins/A116_XM551_3DSt_MD_21_XXII/crash/lod0/Gun_02.model</exploded>
+							</A116_XM551_3DSt_MD_21_XXII>
+						</sets>
 					</models>
 					<hitTester>
 						<collisionModelServer>vehicles/american/A116_XM551/collision/Gun_02.model</collisionModelServer>
 						<collisionModelClient>vehicles/american/A116_XM551/collision_client/Gun_02.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_huge</effects>
+					<reloadEffect>reload115_152</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>
@@ -4244,6 +4358,13 @@
 				<undamaged>vehicles/american/A116_XM551/normal/lod0/Turret_01.model</undamaged>
 				<destroyed>vehicles/american/A116_XM551/crash/lod0/Turret_01.model</destroyed>
 				<exploded>vehicles/american/A116_XM551/crash/lod0/Turret_01.model</exploded>
+				<sets>
+					<A116_XM551_3DSt_MD_21_XXII>
+						<undamaged>vehicles/american/A116_XM551/_skins/A116_XM551_3DSt_MD_21_XXII/normal/lod0/Turret_01.model</undamaged>
+						<destroyed>vehicles/american/A116_XM551/_skins/A116_XM551_3DSt_MD_21_XXII/crash/lod0/Turret_01.model</destroyed>
+						<exploded>vehicles/american/A116_XM551/_skins/A116_XM551_3DSt_MD_21_XXII/crash/lod0/Turret_01.model</exploded>
+					</A116_XM551_3DSt_MD_21_XXII>
+				</sets>
 			</models>
 			<hitTester>
 				<collisionModelServer>vehicles/american/A116_XM551/collision/Turret_01.model</collisionModelServer>
@@ -4642,7 +4763,7 @@
 				<slot>
 					<slotType>projectionDecal</slotType>
 					<slotId>35015</slotId>
-					<tags>formfactor_rect1x2 mimic  right direction_left_to_right</tags>
+					<tags>formfactor_rect1x2 mimic right direction_left_to_right</tags>
 					<position>
 						0.78682 2.13607 0.878424
 						<!--BW_String-->
@@ -4667,7 +4788,7 @@
 				<slot>
 					<slotType>projectionDecal</slotType>
 					<slotId>35016</slotId>
-					<tags>formfactor_rect1x2 mimic  left direction_right_to_left</tags>
+					<tags>formfactor_rect1x2 mimic left direction_right_to_left</tags>
 					<position>
 						-0.78677 2.1361 0.878421
 						<!--BW_String-->
@@ -4688,6 +4809,85 @@
 						<!--BW_String-->
 					</clipAngle>
 					<anchorShift>0.068232</anchorShift>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35017</slotId>
+					<tags>formfactor_square</tags>
+					<compatibleModels>A116_XM551_3DSt_MD_21_XXII</compatibleModels>
+					<position>
+						-0.795875 2.07844 0.841084
+						<!--BW_String-->
+					</position>
+					<rotation>
+						0.734581 -1.21087 3.0812
+						<!--BW_String-->
+					</rotation>
+					<scale>0.418484 0.211486 0.418488</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>256</showOn>
+					<clipAngle>0.344284</clipAngle>
+					<anchorShift>0.048834</anchorShift>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35018</slotId>
+					<tags>formfactor_square</tags>
+					<compatibleModels>A116_XM551_3DSt_MD_21_XXII</compatibleModels>
+					<position>
+						0.000027 2.23575 0.940205
+						<!--BW_String-->
+					</position>
+					<rotation>
+						0.118183 -0.000018 3.13987
+						<!--BW_String-->
+					</rotation>
+					<scale>0.557886 0.251477 0.557909</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>256</showOn>
+					<clipAngle>0.610896</clipAngle>
+					<anchorShift>0.145986</anchorShift>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35019</slotId>
+					<tags>formfactor_square</tags>
+					<compatibleModels>A116_XM551_3DSt_MD_21_XXII</compatibleModels>
+					<position>
+						-0.145685 2.32431 -0.808005
+						<!--BW_String-->
+					</position>
+					<rotation>
+						-3.13985 -0.000002 -0.000020
+						<!--BW_String-->
+					</rotation>
+					<scale>0.386696 0.113381 0.386711</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>256</showOn>
+					<clipAngle>
+						0.0431199
+						<!--BW_String-->
+					</clipAngle>
+					<anchorShift>0.105985</anchorShift>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35020</slotId>
+					<tags>formfactor_square</tags>
+					<compatibleModels>A116_XM551_3DSt_MD_21_XXII</compatibleModels>
+					<position>
+						1.13433 1.98549 0.0997047
+						<!--BW_String-->
+					</position>
+					<rotation>
+						0.64548 1.55323 -3.09425
+						<!--BW_String-->
+					</rotation>
+					<scale>0.296186 0.191447 0.296187</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>256</showOn>
+					<clipAngle>0.749149</clipAngle>
+					<anchorShift>0.151712</anchorShift>
 				</slot>
 			</customizationSlots>
 			<customization>

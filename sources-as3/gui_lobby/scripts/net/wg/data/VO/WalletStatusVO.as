@@ -22,6 +22,8 @@ package net.wg.data.VO
       
       private var _crystalStatus:uint;
       
+      private var _disposed:Boolean = false;
+      
       public function WalletStatusVO()
       {
          super();
@@ -29,6 +31,7 @@ package net.wg.data.VO
       
       public final function dispose() : void
       {
+         this._disposed = true;
       }
       
       public function get goldStatus() : uint
@@ -79,6 +82,11 @@ package net.wg.data.VO
             this._creditsStatus = 1;
             this._crystalStatus = 1;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

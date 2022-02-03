@@ -25,6 +25,8 @@ package net.wg.infrastructure.managers.utils.impl
       
       private var _isShown:Boolean;
       
+      private var _disposed:Boolean = false;
+      
       public function HelpLayoutManager()
       {
          super();
@@ -32,9 +34,10 @@ package net.wg.infrastructure.managers.utils.impl
          this._controlsByComponentsMap = new Dictionary();
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
          var _loc1_:* = null;
+         this._disposed = true;
          this.removeBackground();
          this.removeControls(true);
          this._components.length = 0;
@@ -199,6 +202,11 @@ package net.wg.infrastructure.managers.utils.impl
       private function onComponentDisposeHandler(param1:LifeCycleEvent) : void
       {
          this.unregisterComponent(param1.currentTarget as IHelpLayoutComponent);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

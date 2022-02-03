@@ -15,6 +15,8 @@ package net.wg.gui.lobby.hangar.quests
       
       private var _isHorizontalFlipped:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function FlagContainer()
       {
          super();
@@ -23,6 +25,7 @@ package net.wg.gui.lobby.hangar.quests
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.flagIcon.removeEventListener(Event.CHANGE,this.onFlagIconChangeHandler);
          this.flagIcon.dispose();
          this.flagIcon = null;
@@ -51,6 +54,11 @@ package net.wg.gui.lobby.hangar.quests
             this.flagIcon.scaleX = 1;
             this.flagIcon.x = 0;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -15,6 +15,8 @@ package net.wg.data.vo
       
       private var _toggleIndicator:IUniversalBtnToggleIndicator = null;
       
+      private var _disposed:Boolean = false;
+      
       public function UniversalBtnStyledDisplayObjects(param1:MovieClip, param2:Sprite, param3:IUniversalBtnToggleIndicator)
       {
          super();
@@ -25,6 +27,7 @@ package net.wg.data.vo
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._states = null;
          this._toggleGlow = null;
          this._toggleIndicator.dispose();
@@ -44,6 +47,11 @@ package net.wg.data.vo
       public function get toggleIndicator() : IUniversalBtnToggleIndicator
       {
          return this._toggleIndicator;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

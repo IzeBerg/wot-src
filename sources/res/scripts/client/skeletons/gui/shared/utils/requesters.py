@@ -1,7 +1,11 @@
 import typing
 if typing.TYPE_CHECKING:
+    from typing import Dict, Generator, List, NamedTuple, Optional, Sequence, Set, Tuple, Union
     from collections import OrderedDict
+    from gui.shared.gui_items.dossier.achievements.abstract import RegularAchievement
+    from gui.shared.gui_items.gui_item_economics import ItemPrice
     from gui.shared.money import Money
+    from gui.shared.utils.requesters import InventoryRequester
     from gui.veh_post_progression.models.ext_money import ExtendedMoney
     from post_progression_common import VehicleState
     from items.vehicles import VehicleType
@@ -127,6 +131,10 @@ class IStatsRequester(IRequester):
 
     @property
     def currencyStatuses(self):
+        raise NotImplementedError
+
+    @property
+    def dynamicCurrencyStatuses(self):
         raise NotImplementedError
 
     @property
@@ -351,6 +359,10 @@ class IStatsRequester(IRequester):
 
     @property
     def oldVehInvIDs(self):
+        raise NotImplementedError
+
+    @property
+    def dynamicCurrencies(self):
         raise NotImplementedError
 
     def getMapsBlackList(self):
@@ -1069,6 +1081,36 @@ class IOffersRequester(IRequester):
         raise NotImplementedError
 
     def getReceivedGifts(self, offerID):
+        raise NotImplementedError
+
+
+class IBattlePassRequester(IRequester):
+
+    def getSeasonID(self):
+        raise NotImplementedError
+
+    def getState(self):
+        raise NotImplementedError
+
+    def getActiveChapterID(self):
+        raise NotImplementedError
+
+    def getPointsForVehicle(self, vehicleID, default=0):
+        raise NotImplementedError
+
+    def getPackedStats(self):
+        raise NotImplementedError
+
+    def getChapterStats(self):
+        raise NotImplementedError
+
+    def getCurrentLevelByChapterID(self, chapterID):
+        raise NotImplementedError
+
+    def getPointsByChapterID(self, chapterID):
+        raise NotImplementedError
+
+    def getNonChapterPoints(self):
         raise NotImplementedError
 
 

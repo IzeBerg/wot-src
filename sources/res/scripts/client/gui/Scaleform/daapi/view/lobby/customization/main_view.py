@@ -535,6 +535,14 @@ class MainView(LobbySubView, CustomizationMainViewMeta):
     def resetC11nItemsNovelty(self, itemsList):
         self.__ctx.resetItemsNovelty(itemsList)
 
+    @adisp.async
+    @adisp.process
+    def applyItems(self, purchaseItems, callback=None):
+        self.service.stopHighlighter()
+        yield self.__ctx.applyItems(purchaseItems)
+        callback(None)
+        return
+
     def __locateCameraOnAnchor(self, slotId, forceRotate=False):
         if self.__ctx.c11nCameraManager is None:
             return
@@ -1196,4 +1204,4 @@ class MainView(LobbySubView, CustomizationMainViewMeta):
 
     @adisp.process
     def __applyItems(self, purchaseItems):
-        yield self.__ctx.applyItems(purchaseItems)
+        yield self.applyItems(purchaseItems)

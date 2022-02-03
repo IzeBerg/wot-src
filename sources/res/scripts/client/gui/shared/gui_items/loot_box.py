@@ -1,3 +1,4 @@
+from enum import Enum
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.shared.gui_items.gui_item import GUIItem
@@ -5,6 +6,8 @@ from shared_utils import CONST_CONTAINER
 
 class NewYearLootBoxes(CONST_CONTAINER):
     PREMIUM = 'newYear_premium'
+    SPECIAL = 'newYear_special'
+    SPECIAL_AUTO = 'newYear_special_auto'
     COMMON = 'newYear_usual'
 
 
@@ -25,6 +28,14 @@ class EventLootBoxes(CONST_CONTAINER):
     WT_SPECIAL = 'wt_special'
 
 
+class LunarNYLootBoxTypes(Enum):
+    BASE = 'lunar_base'
+    SIMPLE = 'lunar_simple'
+    SPECIAL = 'lunar_special'
+
+
+ALL_LUNAR_NY_LOOT_BOX_TYPES = ('lunar_base', 'lunar_simple', 'lunar_special')
+LUNAR_NY_LOOT_BOXES_CATEGORIES = 'LunarNY'
 SENIORITY_AWARDS_LOOT_BOXES_TYPE = 'seniorityAwards'
 GUI_ORDER = (
  NewYearLootBoxes.COMMON, NewYearLootBoxes.PREMIUM)

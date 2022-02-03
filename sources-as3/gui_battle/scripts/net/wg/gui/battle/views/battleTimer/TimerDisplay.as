@@ -15,6 +15,8 @@ package net.wg.gui.battle.views.battleTimer
       
       public var dotsTF:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function TimerDisplay()
       {
          super();
@@ -30,9 +32,15 @@ package net.wg.gui.battle.views.battleTimer
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.minutesTF = null;
          this.secondsTF = null;
          this.dotsTF = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

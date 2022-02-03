@@ -37,6 +37,8 @@ package net.wg.gui.battle.views.battleLevelPanel
       
       private var _isFadeOutActive:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function ProgressDeltaAnimation()
       {
          this._scheduler = App.utils.scheduler;
@@ -47,6 +49,7 @@ package net.wg.gui.battle.views.battleLevelPanel
       
       public final function dispose() : void
       {
+         this._disposed = true;
          stop();
          this.cancelFadeOutTask();
          this.clearTween();
@@ -198,6 +201,11 @@ package net.wg.gui.battle.views.battleLevelPanel
       public function get isActive() : Boolean
       {
          return this._isActive;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

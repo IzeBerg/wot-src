@@ -18,6 +18,8 @@ package net.wg.data.daapi.base
       
       private var _hash:Object = null;
       
+      private var _disposed:Boolean = false;
+      
       public function DAAPIDataClass(param1:Object = null)
       {
          super();
@@ -82,6 +84,7 @@ package net.wg.data.daapi.base
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
          this._hash = null;
       }
@@ -209,6 +212,11 @@ package net.wg.data.daapi.base
             return true;
          }
          return false;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -17,6 +17,8 @@ package net.wg.gui.utils
       
       private var _scriptOnFrames:Vector.<int> = null;
       
+      private var _disposed:Boolean = false;
+      
       public function FrameHelper(param1:MovieClip)
       {
          var _loc2_:FrameLabel = null;
@@ -58,6 +60,7 @@ package net.wg.gui.utils
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.clearFrameScripts();
          App.utils.data.cleanupDynamicObject(this._frames);
          this._target = null;
@@ -92,6 +95,11 @@ package net.wg.gui.utils
       {
          this.clearFrameScripts();
          this._target = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

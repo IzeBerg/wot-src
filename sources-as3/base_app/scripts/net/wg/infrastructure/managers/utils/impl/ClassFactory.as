@@ -15,6 +15,8 @@ package net.wg.infrastructure.managers.utils.impl
       
       private var _createComponentCallback:Function;
       
+      private var _disposed:Boolean = false;
+      
       public function ClassFactory()
       {
          super();
@@ -22,6 +24,7 @@ package net.wg.infrastructure.managers.utils.impl
       
       public function dispose() : void
       {
+         this._disposed = true;
          this._createComponentCallback = null;
       }
       
@@ -105,6 +108,11 @@ package net.wg.infrastructure.managers.utils.impl
       public function set createComponentCallback(param1:Function) : void
       {
          this._createComponentCallback = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

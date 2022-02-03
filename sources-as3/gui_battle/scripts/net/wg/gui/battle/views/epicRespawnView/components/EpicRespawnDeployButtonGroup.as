@@ -63,6 +63,8 @@ package net.wg.gui.battle.views.epicRespawnView.components
       
       private var _isWide:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function EpicRespawnDeployButtonGroup()
       {
          super();
@@ -78,6 +80,7 @@ package net.wg.gui.battle.views.epicRespawnView.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.deployButton.dispose();
          this.deployButton = null;
          this.buttonAnimation.stop();
@@ -204,6 +207,11 @@ package net.wg.gui.battle.views.epicRespawnView.components
       {
          this._isWide = param1;
          this.updateNotifyPositions();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

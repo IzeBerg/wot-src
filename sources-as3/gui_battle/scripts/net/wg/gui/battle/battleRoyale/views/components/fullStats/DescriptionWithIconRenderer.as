@@ -63,5 +63,10 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats
             }
          }
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._baseDisposed;
+      }
    }
 }

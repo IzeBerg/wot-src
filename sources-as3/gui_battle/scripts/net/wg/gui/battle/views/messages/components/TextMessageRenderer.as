@@ -14,6 +14,8 @@ package net.wg.gui.battle.views.messages.components
       
       public var background:DisplayObject;
       
+      private var _disposed:Boolean = false;
+      
       public function TextMessageRenderer()
       {
          super();
@@ -22,6 +24,7 @@ package net.wg.gui.battle.views.messages.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -33,6 +36,11 @@ package net.wg.gui.battle.views.messages.components
          }
          this.background = null;
          this.textField = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

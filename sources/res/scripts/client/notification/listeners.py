@@ -3,7 +3,7 @@ from collections import defaultdict
 from PlayerEvents import g_playerEvents
 from constants import ARENA_BONUS_TYPE, MAPS_TRAINING_ENABLED_KEY
 from account_helpers import AccountSettings
-from account_helpers.AccountSettings import PROGRESSIVE_REWARD_VISITED, SENIORITY_AWARDS_COUNTER
+from account_helpers.AccountSettings import PROGRESSIVE_REWARD_VISITED
 from adisp import process
 from async import async, await
 from chat_shared import SYS_MESSAGE_TYPE
@@ -40,17 +40,16 @@ from messenger.proto.events import g_messengerEvents
 from messenger.proto.xmpp.xmpp_constants import XMPP_ITEM_TYPE
 from messenger.formatters import TimeFormatter
 from notification import tutorial_helper
-from notification.decorators import MessageDecorator, PrbInviteDecorator, C11nMessageDecorator, FriendshipRequestDecorator, WGNCPopUpDecorator, ClanAppsDecorator, ClanInvitesDecorator, ClanAppActionDecorator, ClanInvitesActionDecorator, ClanSingleAppDecorator, ClanSingleInviteDecorator, ProgressiveRewardDecorator, MissingEventsDecorator, RecruitReminderMessageDecorator, EmailConfirmationReminderMessageDecorator, LockButtonMessageDecorator
+from notification.decorators import MessageDecorator, PrbInviteDecorator, C11nMessageDecorator, FriendshipRequestDecorator, WGNCPopUpDecorator, ClanAppsDecorator, ClanInvitesDecorator, ClanAppActionDecorator, ClanInvitesActionDecorator, ClanSingleAppDecorator, ClanSingleInviteDecorator, ProgressiveRewardDecorator, MissingEventsDecorator, RecruitReminderMessageDecorator, EmailConfirmationReminderMessageDecorator, LockButtonMessageDecorator, PsaCoinReminderMessageDecorator, BattlePassSwitchChapterReminderDecorator, BattlePassLockButtonDecorator
 from notification.settings import NOTIFICATION_TYPE, NOTIFICATION_BUTTON_STATE
 from shared_utils import first
-from skeletons.gui.game_control import IBootcampController, IGameSessionController, IBattlePassController, IEventsNotificationsController, ISteamCompletionController
+from skeletons.gui.game_control import IBootcampController, IGameSessionController, IBattlePassController, IEventsNotificationsController, ISteamCompletionController, ISeniorityAwardsController
 from skeletons.gui.impl import INotificationWindowController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.login_manager import ILoginManager
 from skeletons.gui.platform.wgnp_controllers import IWGNPSteamAccRequestController
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
-from gui.Scaleform.daapi.view.lobby.hangar.seniority_awards import getSeniorityAwardsBoxesCount
 if typing.TYPE_CHECKING:
     from notification.NotificationsModel import NotificationsModel
     from gui.platform.wgnp.steam_account.statuses import SteamAccEmailStatus
@@ -257,6 +256,8 @@ class ServiceChannelListener(_NotificationListener):
                 return C11nMessageDecorator
             if messageType == SYS_MESSAGE_TYPE.personalMissionFailed.index():
                 return LockButtonMessageDecorator
+            if messageType == SYS_MESSAGE_TYPE.battlePassReward.index():
+                return BattlePassLockButtonDecorator
         return MessageDecorator
 
 
@@ -898,10 +899,7 @@ class ProgressiveRewardListener(_NotificationListener):
             return
         else:
             model.removeNotification(NOTIFICATION_TYPE.PROGRESSIVE_REWARD, ProgressiveRewardDecorator.ENTITY_ID)
-            if self.__seniorityAwardsIsActive():
-                AccountSettings.setCounters(SENIORITY_AWARDS_COUNTER, 1)
-            else:
-                AccountSettings.setNotifications(PROGRESSIVE_REWARD_VISITED, True)
+            AccountSettings.setNotifications(PROGRESSIVE_REWARD_VISITED, True)
             return
 
     def __onServerSettingsChange(self, diff):
@@ -923,8 +921,6 @@ class ProgressiveRewardListener(_NotificationListener):
         else:
             model.removeNotificationsByType(NOTIFICATION_TYPE.PROGRESSIVE_REWARD)
             wasVisited = AccountSettings.getNotifications(PROGRESSIVE_REWARD_VISITED)
-            if self.__seniorityAwardsIsActive():
-                wasVisited = wasVisited and AccountSettings.getCounters(SENIORITY_AWARDS_COUNTER)
             if wasVisited:
                 return
             progressiveConfig = self.__lobbyContext.getServerSettings().getProgressiveRewardConfig()
@@ -932,9 +928,6 @@ class ProgressiveRewardListener(_NotificationListener):
                 return
             model.addNotification(ProgressiveRewardDecorator())
             return
-
-    def __seniorityAwardsIsActive(self):
-        return getSeniorityAwardsBoxesCount() > 0
 
 
 class SwitcherListener(_NotificationListener):
@@ -1104,17 +1097,19 @@ class BattlePassListener(_NotificationListener):
         SystemMessages.pushMessage(text=backport.text(R.strings.system_messages.battlePass.switch_pause.body()), type=SystemMessages.SM_TYPE.ErrorSimple, priority=NotificationPriorityLevel.HIGH)
 
     def __pushFinished(self):
-        styleCD, styleLevel = getStyleInfoForChapter(self.__battlePassController.getCurrentChapter())
-        style = self.__itemsCache.items.getItemByCD(styleCD) if styleCD is not None else None
-        if style is not None and style.getMaxProgressionLevel() != styleLevel:
-            text = backport.text(R.strings.system_messages.battlePass.switch_disable.body.incompleteStyle(), styleName=style.userName)
-        else:
-            text = backport.text(R.strings.system_messages.battlePass.switch_disable.body())
-        SystemMessages.pushMessage(text=text, priority=NotificationPriorityLevel.HIGH, type=SystemMessages.SM_TYPE.BattlePassInfo, messageData={'header': backport.text(R.strings.system_messages.battlePass.switch_disable.title(), seasonNum=self.__battlePassController.getSeasonNum())})
-        return
+        styles = []
+        for chapterID in self.__battlePassController.getChapterIDs():
+            styleCD, styleLevel = getStyleInfoForChapter(chapterID)
+            style = self.__itemsCache.items.getItemByCD(styleCD)
+            if style.fullInventoryCount() and styleLevel != style.getMaxProgressionLevel():
+                styles.append(backport.text(R.strings.system_messages.battlePass.switch_disable.incompleteStyle(), styleName=style.userName))
+
+        SystemMessages.pushMessage(text=backport.text(R.strings.system_messages.battlePass.switch_disable.body()), priority=NotificationPriorityLevel.HIGH, type=SystemMessages.SM_TYPE.BattlePassInfo, messageData={'header': backport.text(R.strings.system_messages.battlePass.switch_disable.title(), seasonNum=self.__battlePassController.getSeasonNum()), 
+           'additionalText': ('\n').join(styles)})
 
     def __pushStarted(self):
-        SystemMessages.pushMessage(text=backport.text(R.strings.system_messages.battlePass.switch_started.body()), priority=NotificationPriorityLevel.HIGH, type=SystemMessages.SM_TYPE.BattlePassInfo, messageData={'header': backport.text(R.strings.system_messages.battlePass.switch_started.title(), seasonNum=self.__battlePassController.getSeasonNum())})
+        SystemMessages.pushMessage(text=backport.text(R.strings.system_messages.battlePass.switch_started.body()), priority=NotificationPriorityLevel.HIGH, type=SystemMessages.SM_TYPE.BattlePassInfo, messageData={'header': backport.text(R.strings.system_messages.battlePass.switch_started.title(), seasonNum=self.__battlePassController.getSeasonNum()), 
+           'additionalText': ''})
 
     def __pushEnabled(self):
         expiryTime = self.__battlePassController.getSeasonFinishTime()
@@ -1154,6 +1149,57 @@ class BattlePassListener(_NotificationListener):
         SystemMessages.pushMessage(text=msg, type=msgType)
 
 
+class BattlePassSwitchChapterReminder(_NotificationListener):
+    __battlePassController = dependency.descriptor(IBattlePassController)
+    __ENTITY_ID = 0
+
+    def start(self, model):
+        result = super(BattlePassSwitchChapterReminder, self).start(model)
+        if result:
+            self.__addListeners()
+            self.__tryNotify()
+        return result
+
+    def stop(self):
+        self.__removeListeners()
+        super(BattlePassSwitchChapterReminder, self).stop()
+
+    def __addListeners(self):
+        self.__battlePassController.onChapterChanged += self.__tryNotify
+        self.__battlePassController.onBattlePassSettingsChange += self.__tryNotify
+        self.__battlePassController.onPointsUpdated += self.__tryNotify
+
+    def __removeListeners(self):
+        self.__battlePassController.onChapterChanged -= self.__tryNotify
+        self.__battlePassController.onBattlePassSettingsChange -= self.__tryNotify
+        self.__battlePassController.onPointsUpdated -= self.__tryNotify
+
+    def __tryNotify(self, *_):
+        if self.__battlePassController.hasActiveChapter() or self.__battlePassController.isCompleted() or self.__battlePassController.isDisabled():
+            self.__removeNotification()
+        else:
+            notification = BattlePassSwitchChapterReminderDecorator(self.__ENTITY_ID, self.__makeMessage())
+            self.__addNotification(notification)
+
+    def __addNotification(self, notification):
+        model = self._model()
+        if model:
+            prevNotification = model.getNotification(NOTIFICATION_TYPE.BATTLE_PASS_SWITCH_CHAPTER_REMINDER, notification.getID())
+            if prevNotification is None:
+                model.addNotification(notification)
+            else:
+                model.updateNotification(notification.getType(), notification.getID(), notification.getEntity(), True)
+        return
+
+    def __removeNotification(self):
+        model = self._model()
+        if model:
+            model.removeNotification(NOTIFICATION_TYPE.BATTLE_PASS_SWITCH_CHAPTER_REMINDER, self.__ENTITY_ID)
+
+    def __makeMessage(self):
+        return backport.text(R.strings.system_messages.battlePass.switchChapter.reminder())
+
+
 class UpgradeTrophyDeviceListener(_NotificationListener):
     __slots__ = ('__enabled', )
     __lobbyContext = dependency.descriptor(ILobbyContext)
@@ -1180,44 +1226,6 @@ class UpgradeTrophyDeviceListener(_NotificationListener):
                 SystemMessages.pushMessage(text=backport.text(R.strings.system_messages.upgradeTrophyDevice.switch_on.body()), priority=NotificationPriorityLevel.MEDIUM)
             else:
                 SystemMessages.pushMessage(text=backport.text(R.strings.system_messages.upgradeTrophyDevice.switch_off.body()), type=SystemMessages.SM_TYPE.ErrorSimple, priority=NotificationPriorityLevel.MEDIUM)
-
-
-class ChoosingDeviceslListener(_NotificationListener):
-
-    def start(self, model):
-        result = super(ChoosingDeviceslListener, self).start(model)
-        if result:
-            g_eventBus.addListener(events.ChoosingDevicesEvent.DEVICE_ADDED, self.__onDeviceAdded)
-            g_eventBus.addListener(events.ChoosingDevicesEvent.DEVICE_REMOVED, self.__onDeviceRemoved)
-        return result
-
-    def stop(self):
-        super(ChoosingDeviceslListener, self).stop()
-        g_eventBus.removeListener(events.ChoosingDevicesEvent.DEVICE_ADDED, self.__onDeviceAdded)
-        g_eventBus.removeListener(events.ChoosingDevicesEvent.DEVICE_REMOVED, self.__onDeviceRemoved)
-
-    def __onDeviceAdded(self, event):
-        model = self._model()
-        newNotification = event.ctx.get('notifacation')
-        if newNotification is None:
-            return
-        else:
-            if model:
-                prevNotifacation = model.getNotification(NOTIFICATION_TYPE.CHOOSING_DEVICES, newNotification.getID())
-                if prevNotifacation is None:
-                    model.addNotification(newNotification)
-                else:
-                    savedData = newNotification.getSavedData()
-                    prevSavedData = prevNotifacation.getSavedData()
-                    if prevSavedData.get('count') != savedData.get('count'):
-                        model.updateNotification(NOTIFICATION_TYPE.CHOOSING_DEVICES, newNotification.getID(), newNotification.getEntity(), False)
-            return
-
-    def __onDeviceRemoved(self, event):
-        entityID = event.ctx.get('entityID')
-        model = self._model()
-        if model:
-            model.removeNotification(NOTIFICATION_TYPE.CHOOSING_DEVICES, entityID)
 
 
 class RecruitReminderlListener(_NotificationListener):
@@ -1352,6 +1360,55 @@ class VehiclePostProgressionUnlockListener(_NotificationListener):
         return
 
 
+class PsaCoinReminderListener(_NotificationListener):
+    __bootCampController = dependency.descriptor(IBootcampController)
+    __saCtrl = dependency.descriptor(ISeniorityAwardsController)
+    __itemsCache = dependency.descriptor(IItemsCache)
+    MSG_ID = 0
+
+    def start(self, model):
+        result = super(PsaCoinReminderListener, self).start(model)
+        if result:
+            self.__saCtrl.onUpdated += self.__tryNotify
+            self.__itemsCache.onSyncCompleted += self.__tryNotify
+            self.__tryNotify()
+        return result
+
+    def stop(self):
+        super(PsaCoinReminderListener, self).stop()
+        self.__saCtrl.onUpdated -= self.__tryNotify
+        self.__itemsCache.onSyncCompleted -= self.__tryNotify
+
+    def __tryNotify(self, *_):
+        if self.__bootCampController.isInBootcamp():
+            return
+        coinsCount = self.__saCtrl.getSACoin()
+        if not self.__saCtrl.isEnabled or coinsCount <= 0:
+            self.__onCoinsRemoved()
+        else:
+            msgPrLevel = NotificationPriorityLevel.LOW
+            notification = PsaCoinReminderMessageDecorator(self.MSG_ID, coinsCount, msgPrLevel)
+            self.__onCoinsAdded(notification)
+
+    def __onCoinsAdded(self, newNotification):
+        model = self._model()
+        if model:
+            prevNotifacation = model.getNotification(NOTIFICATION_TYPE.PSACOIN_REMINDER, newNotification.getID())
+            if prevNotifacation is None:
+                model.addNotification(newNotification)
+            else:
+                savedCount = newNotification.getSavedData()
+                prevSavedCount = prevNotifacation.getSavedData()
+                if prevSavedCount != savedCount:
+                    model.updateNotification(NOTIFICATION_TYPE.PSACOIN_REMINDER, newNotification.getID(), newNotification.getEntity(), False)
+        return
+
+    def __onCoinsRemoved(self):
+        model = self._model()
+        if model:
+            model.removeNotification(NOTIFICATION_TYPE.PSACOIN_REMINDER, self.MSG_ID)
+
+
 class NotificationsListeners(_NotificationListener):
 
     def __init__(self):
@@ -1368,10 +1425,11 @@ class NotificationsListeners(_NotificationListener):
          TankPremiumListener(),
          BattlePassListener(),
          UpgradeTrophyDeviceListener(),
-         ChoosingDeviceslListener(),
          RecruitReminderlListener(),
          EmailConfirmationReminderListener(),
-         VehiclePostProgressionUnlockListener())
+         VehiclePostProgressionUnlockListener(),
+         PsaCoinReminderListener(),
+         BattlePassSwitchChapterReminder())
 
     def start(self, model):
         for listener in self.__listeners:

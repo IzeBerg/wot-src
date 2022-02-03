@@ -546,7 +546,6 @@ class OpenLinkEvent(SharedEvent):
     PREM_SHOP = 'premShopURL'
     TOKEN_SHOP = 'tokenShopUrl'
     FRONTLINE_CHANGES = 'frontlineChangesURL'
-    TECHTREE_UPDATE_NEWS = 'techTreeUpdateNewsURL'
 
     def __init__(self, eventType, url='', title='', params=None):
         super(OpenLinkEvent, self).__init__(eventType)
@@ -680,11 +679,6 @@ class BattlePassEvent(HasCtxEvent):
     AWARD_VIEW_CLOSE = 'onAwardViewClose'
     ON_PURCHASE_LEVELS = 'onPurchaseLevels'
     ON_PREVIEW_PROGRESSION_STYLE_CLOSE = 'onPreviewProgressionStyleClose'
-
-
-class ChoosingDevicesEvent(HasCtxEvent):
-    DEVICE_ADDED = 'deviceAdded'
-    DEVICE_REMOVED = 'deviceRemoved'
 
 
 class ItemRemovalByDemountKitEvent(HasCtxEvent):

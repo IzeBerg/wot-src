@@ -1,15 +1,14 @@
-import logging, typing
+import logging
 from collections import namedtuple
 from functools import partial
-from account_helpers.AccountSettings import AccountSettings
-import async as future_async
+import typing, async as future_async
 from account_helpers import isLongDisconnectedFromCenter
-from adisp import process, async
-from gui import DialogsInterface
-from gui import makeHtmlString
+from account_helpers.AccountSettings import AccountSettings
+from adisp import async, process
+from gui import DialogsInterface, makeHtmlString
 from gui.Scaleform.Waiting import Waiting
 from gui.Scaleform.daapi.view import dialogs
-from gui.Scaleform.daapi.view.dialogs import I18nConfirmDialogMeta, I18nInfoDialogMeta, DIALOG_BUTTON_ID, IconPriceDialogMeta, IconDialogMeta, PMConfirmationDialogMeta, TankmanOperationDialogMeta, HtmlMessageDialogMeta, HtmlMessageLocalDialogMeta, CheckBoxDialogMeta, CrewSkinsRemovalCompensationDialogMeta, CrewSkinsRemovalDialogMeta
+from gui.Scaleform.daapi.view.dialogs import CheckBoxDialogMeta, CrewSkinsRemovalCompensationDialogMeta, CrewSkinsRemovalDialogMeta, DIALOG_BUTTON_ID, HtmlMessageDialogMeta, HtmlMessageLocalDialogMeta, I18nConfirmDialogMeta, I18nInfoDialogMeta, IconDialogMeta, IconPriceDialogMeta, PMConfirmationDialogMeta, TankmanOperationDialogMeta
 from gui.Scaleform.daapi.view.dialogs.missions_dialogs_meta import UseAwardSheetDialogMeta
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.game_control import restore_contoller
@@ -17,7 +16,7 @@ from gui.goodies.demount_kit import getDemountKitForOptDevice
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.shared.formatters.tankmen import formatDeletedTankmanStr
-from gui.shared.gui_items import GUI_ITEM_TYPE, GUI_ITEM_ECONOMY_CODE
+from gui.shared.gui_items import GUI_ITEM_ECONOMY_CODE, GUI_ITEM_TYPE
 from gui.shared.gui_items.Vehicle import VEHICLE_TAGS
 from gui.shared.gui_items.artefacts import OptionalDevice
 from gui.shared.gui_items.vehicle_equipment import EMPTY_ITEM

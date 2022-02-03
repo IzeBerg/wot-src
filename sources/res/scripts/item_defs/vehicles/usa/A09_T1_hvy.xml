@@ -7666,6 +7666,7 @@
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
 					<effects>shot_medium</effects>
+					<reloadEffect>reload50_75</reloadEffect>
 					<models>
 						<undamaged>vehicles/american/A09_T1_hvy/normal/lod0/Gun_02.model</undamaged>
 						<destroyed>vehicles/american/A09_T1_hvy/crash/lod0/Gun_02.model</destroyed>
@@ -8495,6 +8496,7 @@
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
 					<effects>shot_medium</effects>
+					<reloadEffect>reload50_75</reloadEffect>
 					<models>
 						<undamaged>vehicles/american/A09_T1_hvy/normal/lod0/Gun_04.model</undamaged>
 						<destroyed>vehicles/american/A09_T1_hvy/crash/lod0/Gun_04.model</destroyed>
@@ -8583,6 +8585,12 @@
 				</_75mm_Gun_M7_L50>
 				<_76mm_Gun_M1A1>
 					shared
+					<unlocks>
+						<vehicle>
+							A142_Pawlack_Tank
+							<cost>28550</cost>
+						</vehicle>
+					</unlocks>
 					<maxAmmo>90</maxAmmo>
 					<pitchLimits>
 						<minPitch>0 -30 1 -30</minPitch>
@@ -8619,6 +8627,8 @@
 						<collisionModelServer>vehicles/american/A09_T1_hvy/collision/Gun_04.model</collisionModelServer>
 						<collisionModelClient>vehicles/american/A09_T1_hvy/collision_client/Gun_04.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_medium</effects>
+					<reloadEffect>reload50_75</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>

@@ -13,6 +13,8 @@ package net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel.container
       
       public var taskTF:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function TaskAnimation()
       {
          super();
@@ -21,6 +23,7 @@ package net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel.container
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.taskTF = null;
       }
       
@@ -33,6 +36,11 @@ package net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel.container
       public function getTaskTextHeight() : int
       {
          return this.taskTF.textHeight;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

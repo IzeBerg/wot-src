@@ -25,8 +25,6 @@ class QUESTS_ALIASES(object):
     CURRENT_VEHICLE_MISSIONS_VIEW_LINKAGE = 'CurrentVehicleMissionsViewUI'
     BATTLE_PASS_MISSIONS_VIEW_PY_ALIAS = 'BattlePassMissionsView'
     BATTLE_PASS_MISSIONS_VIEW_LINKAGE = 'BattlePassMissionsViewUI'
-    OLD_BATTLE_PASS_MISSIONS_VIEW_PY_ALIAS = 'OldBattlePassMissionsView'
-    OLD_BATTLE_PASS_MISSIONS_VIEW_LINKAGE = 'OldBattlePassMissionsViewUI'
     MISSIONS_FILTER_POPOVER_ALIAS = 'MissionsFilterPopover'
     MISSIONS_TOKEN_POPOVER_ALIAS = 'MissionsTokenPopover'
     MISSIONS_VEHICLE_SELECTOR_ALIAS = 'MissionsVehicleSelector'

@@ -16,6 +16,8 @@ package net.wg.gui.battle.epicBattle.battleloading.components
       
       public var team2ScrollBar:ScrollBar = null;
       
+      private var _disposed:Boolean = false;
+      
       public function EpicBattleStatsTable()
       {
          super();
@@ -23,6 +25,7 @@ package net.wg.gui.battle.epicBattle.battleloading.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -36,6 +39,11 @@ package net.wg.gui.battle.epicBattle.battleloading.components
          this.team1ScrollBar = null;
          this.team2ScrollBar.dispose();
          this.team2ScrollBar = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

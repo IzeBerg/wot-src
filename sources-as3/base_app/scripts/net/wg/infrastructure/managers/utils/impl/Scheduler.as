@@ -188,6 +188,11 @@ package net.wg.infrastructure.managers.utils.impl
       {
          this.processTaskStack();
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
    }
 }
 
@@ -201,6 +206,8 @@ class Task implements ICallable, IDisposable
    private var _handler:Function = null;
    
    private var _args:Array = null;
+   
+   private var _disposed:Boolean = false;
    
    function Task(param1:Function, param2:Array)
    {
@@ -228,9 +235,15 @@ class Task implements ICallable, IDisposable
    
    public function dispose() : void
    {
+      this._disposed = true;
       this._handler = null;
       this._args.splice(0,this._args.length);
       this._args = null;
+   }
+   
+   public function isDisposed() : Boolean
+   {
+      return this._disposed;
    }
 }
 
@@ -296,6 +309,8 @@ class TimedTaskStack implements IDisposable
    
    private var _tasks:Vector.<TimedTask> = null;
    
+   private var _disposed:Boolean = false;
+   
    function TimedTaskStack()
    {
       super();
@@ -304,6 +319,7 @@ class TimedTaskStack implements IDisposable
    
    public function dispose() : void
    {
+      this._disposed = true;
       this._tasks.splice(0,this._tasks.length);
       this._tasks = null;
    }
@@ -388,6 +404,11 @@ class TimedTaskStack implements IDisposable
    {
       return this._tasks.length == 0;
    }
+   
+   public function isDisposed() : Boolean
+   {
+      return this._disposed;
+   }
 }
 
 import net.wg.infrastructure.interfaces.entity.IDisposable;
@@ -397,6 +418,8 @@ class InProcessTaskStack implements IDisposable
     
    
    private var _tasks:Vector.<TimedTask> = null;
+   
+   private var _disposed:Boolean = false;
    
    function InProcessTaskStack()
    {
@@ -435,10 +458,16 @@ class InProcessTaskStack implements IDisposable
       return null;
    }
    
-   public function dispose() : void
+   public final function dispose() : void
    {
+      this._disposed = true;
       this._tasks.splice(0,this._tasks.length);
       this._tasks = null;
+   }
+   
+   public function isDisposed() : Boolean
+   {
+      return this._disposed;
    }
 }
 
@@ -453,6 +482,8 @@ class NextFrameTasks implements IDisposable
    private var _tasks:Vector.<Task> = null;
    
    private var _nextFrameListener:Sprite = null;
+   
+   private var _disposed:Boolean = false;
    
    function NextFrameTasks()
    {
@@ -510,8 +541,9 @@ class NextFrameTasks implements IDisposable
       }
    }
    
-   public function dispose() : void
+   public final function dispose() : void
    {
+      this._disposed = true;
       this.cancelAll();
       this._tasks = null;
       this._nextFrameListener = null;
@@ -536,5 +568,10 @@ class NextFrameTasks implements IDisposable
          _loc4_++;
       }
       _loc2_.splice(0,_loc3_);
+   }
+   
+   public function isDisposed() : Boolean
+   {
+      return this._disposed;
    }
 }

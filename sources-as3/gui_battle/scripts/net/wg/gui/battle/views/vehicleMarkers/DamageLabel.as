@@ -28,6 +28,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private var tfMap:Object;
       
+      private var _disposed:Boolean = false;
+      
       public function DamageLabel()
       {
          this.tfMap = {};
@@ -63,8 +65,9 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.tfMap["white"] = this.white;
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          this.green = null;
          this.red = null;
          this.gold = null;
@@ -113,6 +116,11 @@ package net.wg.gui.battle.views.vehicleMarkers
       public function get textWidth() : Number
       {
          return Boolean(this._currentTF) ? Number(this._currentTF.textWidth) : Number(0);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

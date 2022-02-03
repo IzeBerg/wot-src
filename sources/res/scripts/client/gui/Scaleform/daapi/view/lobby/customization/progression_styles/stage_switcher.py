@@ -3,7 +3,7 @@ from frameworks.wulf import ViewFlags, ViewSettings
 from gui.Scaleform.daapi.view.meta.StageSwitcherMeta import StageSwitcherMeta
 from gui.customization.constants import CustomizationModes
 from gui.impl.gen import R
-from gui.impl.gen.view_models.views.lobby.customization.progression_styles.stage_switcher_model import StageSwitcherModel
+from gui.impl.gen.view_models.views.lobby.customization.progression_styles.stage_switcher_model import StageSwitcherModel, SwitcherType
 from gui.impl.pub import ViewImpl
 from helpers import dependency
 from skeletons.gui.customization import ICustomizationService
@@ -36,6 +36,7 @@ class StageSwitcherView(ViewImpl):
         super(StageSwitcherView, self)._initialize(*args, **kwargs)
         self.viewModel.onChange += self.__onChange
         self.__ctx.events.onItemsRemoved += self.__onItemsRemoved
+        self.__ctx.events.onItemInstalled += self.__onItemInstalled
 
     def _onLoading(self, *args, **kwargs):
         super(StageSwitcherView, self)._onLoading(*args, **kwargs)
@@ -43,11 +44,13 @@ class StageSwitcherView(ViewImpl):
         with self.getViewModel().transaction() as (model):
             model.setCurrentLevel(progressionLevel)
             model.setSelectedLevel(progressionLevel)
+            self.__setAdditionalStyleInfo(model)
 
     def _finalize(self):
         super(StageSwitcherView, self)._finalize()
         self.viewModel.onChange -= self.__onChange
         self.__ctx.events.onItemsRemoved -= self.__onItemsRemoved
+        self.__ctx.events.onItemInstalled -= self.__onItemInstalled
         self.__ctx = None
         return
 
@@ -55,6 +58,18 @@ class StageSwitcherView(ViewImpl):
         if self.__ctx is not None and self.__ctx.modeId == CustomizationModes.STYLED:
             with self.viewModel.transaction() as (tx):
                 tx.setSelectedLevel(self.__ctx.mode.getStyleProgressionLevel())
+        return
+
+    def __onItemInstalled(self, *_):
+        if self.__ctx is not None and self.__ctx.modeId == CustomizationModes.STYLED:
+            style = self.__ctx.mode.modifiedStyle
+            if not style.isProgressionRewindEnabled:
+                return
+            level = self.__ctx.mode.getStyleProgressionLevel()
+            with self.viewModel.transaction() as (tx):
+                tx.setSelectedLevel(level)
+                tx.setCurrentLevel(level)
+                self.__setAdditionalStyleInfo(tx)
         return
 
     def __onChange(self, *args):
@@ -66,4 +81,13 @@ class StageSwitcherView(ViewImpl):
                 self.__ctx.mode.changeStyleProgressionLevel(selectedLevel)
             else:
                 self.__customizationService.changeStyleProgressionLevelPreview(selectedLevel)
+        return
+
+    def __setAdditionalStyleInfo(self, model):
+        style = self.__ctx.mode.modifiedStyle
+        if style is not None and style.isProgressionRewindEnabled:
+            model.setNumberOfBullets(style.maxProgressionLevel)
+            model.setIsBulletsBeforeCurrentDisabled(False)
+            model.setSwitcherType(SwitcherType.TEXT)
+            model.setStyleID(style.id)
         return

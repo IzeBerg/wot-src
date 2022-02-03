@@ -10,36 +10,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "hangar/flagTooltip/body"
-msgstr ""
-"Бойцы! Этот подарок откроется со стартом одного очень ожидаемого в декабре "
-"события. Внутри — несколько приятных мелочей, которые помогут быстрее "
-"украсить Ангар и сделать его более праздничным!"
-
-msgid "hangar/flagTooltip/header"
-msgstr "Новогодний сюрприз"
-
-msgid "hangarEntryPoint/awardsDescr"
-msgstr "ящиков с заслуженной наградой"
-
-msgid "hangarEntryPoint/btn"
-msgstr "Открыть"
-
-msgid "hangarEntryPoint/multiplier"
-msgstr "x"
-
-msgid "infoView/btnLabel"
-msgstr "Так точно!"
-
-msgid "infoView/descr"
-msgstr ""
-"Бойцы! Этот подарок откроется со стартом одного очень ожидаемого в декабре "
-"события. Внутри — несколько приятных мелочей, которые помогут быстрее "
-"украсить Ангар и сделать его более праздничным!"
-
-msgid "infoView/title"
-msgstr "Новогодний сюрприз"
-
 msgid "multiOpenView/applyLabel"
 msgstr "Так точно!"
 
@@ -56,6 +26,21 @@ msgid "multiOpenView/skipBtn"
 msgstr "ПРОПУСТИТЬ АНИМАЦИЮ"
 
 msgid "multiOpenView/title"
+msgstr "Поздравляем!"
+
+msgid "notificationView/gotoRewardsBtn"
+msgstr "К выбору наград"
+
+msgid "notificationView/subtitle/second"
+msgstr "Используйте жетоны за выслугу лет для получения награды!"
+
+msgid "notificationView/subtitle/timeout"
+msgstr "У вас остались неиспользованные жетоны за выслугу лет."
+
+msgid "notificationView/timeout"
+msgstr "До обнуления жетонов: %(timeout)s"
+
+msgid "notificationView/title"
 msgstr "Поздравляем!"
 
 msgid "notifications/description"
@@ -86,11 +71,6 @@ msgstr "Заслуженная награда"
 msgid "openBoxView/openBoxesLabel"
 msgstr "Открыть {count} шт."
 
-msgid "rewardsScreen/giftTitle"
-msgstr ""
-"Новогодний\n"
-"сюрприз"
-
 msgid "rewardsScreen/moreRewards"
 msgstr "... и ещё"
 
@@ -99,6 +79,9 @@ msgstr "К награде"
 
 msgid "rewardsView/applyBtn"
 msgstr "Так точно!"
+
+msgid "rewardsView/gotoRewardsBtn"
+msgstr "К наградам"
 
 msgid "rewardsView/lootBox/descr"
 msgstr "Откройте и заберите содержимое!"
@@ -118,6 +101,13 @@ msgstr "К следующей награде (%(count)s)"
 msgid "rewardsView/openBtn"
 msgstr "Открыть"
 
+msgid "rewardsView/sacoin/body"
+msgstr ""
+"Вы получили жетоны за выслугу лет. Можете обменять их на ценные награды."
+
+msgid "rewardsView/sacoin/title"
+msgstr "Получены жетоны"
+
 msgid "rewardsView/subTitle/AT"
 msgstr "Награда за активное участие в Альфа-тесте"
 
@@ -132,6 +122,9 @@ msgstr "Награда за 1 год в строю"
 
 msgid "rewardsView/subTitle/Y10"
 msgstr "Награда за 10 лет в строю"
+
+msgid "rewardsView/subTitle/Y11"
+msgstr "Награда за 11 лет в строю"
 
 msgid "rewardsView/subTitle/Y2"
 msgstr "Награда за 2 года в строю"
@@ -157,8 +150,19 @@ msgstr "Награда за 8 лет в строю"
 msgid "rewardsView/subTitle/Y9"
 msgstr "Награда за 9 лет в строю"
 
+msgid "rewardsView/subTitle/otherRewards"
+msgstr "Также начислено:"
+
 msgid "rewardsView/title"
-msgstr "ПОЗДРАВЛЯЕМ!"
+msgstr "Поздравляем!"
+
+msgid "specialItem/body"
+msgstr ""
+"Выдаются за боевые заслуги. После закрытия Магазина оставшиеся жетоны будут "
+"обнулены."
+
+msgid "specialItem/header"
+msgstr "%(count)s шт. жетонов за выслугу лет"
 
 msgid "tooltip/restrictedMode"
 msgstr "Операция временно недоступна. Попробуйте позже."

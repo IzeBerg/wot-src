@@ -35,6 +35,8 @@ package net.wg.gui.components.crosshairPanel.components
       
       private var _initMode:String = "percent";
       
+      private var _disposed:Boolean = false;
+      
       public function CrosshairClipQuantityBar()
       {
          super();
@@ -42,6 +44,7 @@ package net.wg.gui.components.crosshairPanel.components
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.capacityBar = null;
          this.quantityInClipBar = null;
       }
@@ -96,6 +99,11 @@ package net.wg.gui.components.crosshairPanel.components
             }
          }
          return _loc1_;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

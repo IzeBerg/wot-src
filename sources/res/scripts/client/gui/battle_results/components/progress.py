@@ -1,33 +1,35 @@
-import logging, math, operator, typing
+import logging, math, operator
 from collections import namedtuple
-import BigWorld, personal_missions
+import typing, BigWorld, personal_missions
 from dog_tags_common.components_config import componentConfigAdapter as cca
-from gui.dog_tag_composer import dogTagComposer
-from gui.Scaleform.daapi.view.lobby.server_events.events_helpers import getEventPostBattleInfo, getBattlePassQuestInfo
-from gui.Scaleform.daapi.view.lobby.customization.progression_helpers import getProgressionPostBattleInfo, parseEventID, getC11nProgressionLinkBtnParams
+from gui.Scaleform.daapi.view.common.battle_royale.br_helpers import currentHangarIsSteelHunter
+from gui.Scaleform.daapi.view.lobby.customization.progression_helpers import getC11nProgressionLinkBtnParams, getProgressionPostBattleInfo, parseEventID
+from gui.Scaleform.daapi.view.lobby.server_events.events_helpers import getBattlePassQuestInfo, getEventPostBattleInfo
 from gui.Scaleform.daapi.view.lobby.techtree.techtree_dp import g_techTreeDP
 from gui.Scaleform.genConsts.PROGRESSIVEREWARD_CONSTANTS import PROGRESSIVEREWARD_CONSTANTS as prConst
 from gui.Scaleform.locale.BATTLE_RESULTS import BATTLE_RESULTS
-from gui.Scaleform.daapi.view.common.battle_royale.br_helpers import currentHangarIsSteelHunter
 from gui.battle_results.components import base
 from gui.battle_results.settings import PROGRESS_ACTION
+from gui.dog_tag_composer import dogTagComposer
 from gui.impl import backport
 from gui.impl.auxiliary.rewards_helper import getProgressiveRewardVO
 from gui.impl.gen import R
-from gui.shared.formatters import text_styles, getItemUnlockPricesVO, getItemPricesVO
+from gui.shared.formatters import getItemPricesVO, getItemUnlockPricesVO, text_styles
 from gui.shared.gui_items import GUI_ITEM_TYPE, Tankman, getVehicleComponentsByType
-from gui.shared.gui_items.crew_skin import localizedFullName
-from gui.shared.gui_items.Vehicle import getLevelIconPath
 from gui.shared.gui_items.Tankman import getCrewSkinIconSmall
+from gui.shared.gui_items.Vehicle import getLevelIconPath
+from gui.shared.gui_items.crew_skin import localizedFullName
 from gui.shared.gui_items.gui_item_economics import ItemPrice
 from gui.shared.money import Currency
 from helpers import dependency
 from helpers.i18n import makeString as _ms
+from items.components.crew_skins_constants import NO_CREW_SKIN_ID
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
-from items.components.crew_skins_constants import NO_CREW_SKIN_ID
-from battle_pass_common import BattlePassConsts
+if typing.TYPE_CHECKING:
+    from typing import Dict
+    from gui.battle_results.reusable import _ReusableInfo
 MIN_BATTLES_TO_SHOW_PROGRESS = 5
 _logger = logging.getLogger(__name__)
 
@@ -240,14 +242,8 @@ PMComplete = namedtuple('PMComplete', [
 class BattlePassProgressBlock(base.StatsBlock):
 
     def setRecord(self, result, reusable):
-        if reusable.battlePassProgress is not None:
-            if BattlePassConsts.PROGRESSION_INFO_PREV in reusable.battlePassProgress:
-                info = reusable.battlePassProgress[BattlePassConsts.PROGRESSION_INFO_PREV]
-                self.addComponent(self.getNextComponentIndex(), base.DirectStatsItem('', getBattlePassQuestInfo(info)))
-            if BattlePassConsts.PROGRESSION_INFO in reusable.battlePassProgress:
-                info = reusable.battlePassProgress[BattlePassConsts.PROGRESSION_INFO]
-                self.addComponent(self.getNextComponentIndex(), base.DirectStatsItem('', getBattlePassQuestInfo(info)))
-        return
+        if reusable.battlePassProgress.hasProgress:
+            self.addComponent(self.getNextComponentIndex(), base.DirectStatsItem('', getBattlePassQuestInfo(reusable.battlePassProgress)))
 
 
 class QuestsProgressBlock(base.StatsBlock):

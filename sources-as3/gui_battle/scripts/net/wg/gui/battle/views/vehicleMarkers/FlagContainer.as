@@ -24,6 +24,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private var _currFlag:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function FlagContainer()
       {
          super();
@@ -31,6 +33,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       public function dispose() : void
       {
+         this._disposed = true;
          this._flagGreen = null;
          this._flagRed = null;
          this._flagPurple = null;
@@ -89,6 +92,11 @@ package net.wg.gui.battle.views.vehicleMarkers
          }
          this._currFlag = flag;
          return flag;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

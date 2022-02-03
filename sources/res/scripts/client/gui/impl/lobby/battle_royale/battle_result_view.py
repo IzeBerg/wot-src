@@ -144,7 +144,7 @@ class BrBattleResultsViewInLobby(ViewImpl):
             self.__setLeaderboard(model.leaderboardLobbyModel)
 
     def __onBattlePassClick(self):
-        events_dispatcher.showMissionsBattlePassCommonProgression()
+        events_dispatcher.showMissionsBattlePass()
 
     def __updateBattlePass(self):
         self.__setBattlePass(self.viewModel.personalResults.battlePassProgress)

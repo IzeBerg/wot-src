@@ -66,6 +66,8 @@ package net.wg.gui.components.ribbon
       
       private var _valueTotalFrames:int = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function RibbonTexts()
       {
          super();
@@ -88,6 +90,7 @@ package net.wg.gui.components.ribbon
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._ribbonSettings = null;
          this._iconPaddings = null;
          this.ribbonNameTF = null;
@@ -234,6 +237,11 @@ package net.wg.gui.components.ribbon
       public function get left() : int
       {
          return this.valueAnim && StringUtils.isNotEmpty(this._value) ? int(this.valueAnim.x) : int(VALUE_DEFAULT_LEFT);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

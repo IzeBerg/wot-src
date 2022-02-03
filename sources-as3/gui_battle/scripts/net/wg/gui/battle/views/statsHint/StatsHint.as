@@ -10,6 +10,8 @@ package net.wg.gui.battle.views.statsHint
       
       public var label:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function StatsHint()
       {
          super();
@@ -18,7 +20,13 @@ package net.wg.gui.battle.views.statsHint
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.label = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

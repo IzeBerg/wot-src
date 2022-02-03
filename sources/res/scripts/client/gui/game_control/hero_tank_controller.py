@@ -225,9 +225,9 @@ class HeroTankController(IHeroTankController):
                     tmanDict['isPremium'] = True
                     tmanDict['gId'] = tIdx
                     tmanDict['nationID'] = nationId
-                    tmanDict['firstNameID'] = first(tData.firstNames)
-                    tmanDict['lastNameID'] = first(tData.lastNames)
-                    tmanDict['iconID'] = first(tData.icons)
+                    tmanDict['firstNameID'] = tankmanSection.readInt('firstNameID', first(tData.firstNames))
+                    tmanDict['lastNameID'] = tankmanSection.readInt('lastNameID', first(tData.lastNames))
+                    tmanDict['iconID'] = tankmanSection.readInt('iconID', first(tData.icons))
                     tmanDict['vehicleTypeID'] = vehTypeId
                     tmanDict['role'] = tankmanSection.readString('role')
                     for param in ('roleLevel', 'freeXP'):

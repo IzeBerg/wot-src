@@ -82,5 +82,10 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats
             this.separator.y = this._separatorDefaultY;
          }
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._baseDisposed;
+      }
    }
 }

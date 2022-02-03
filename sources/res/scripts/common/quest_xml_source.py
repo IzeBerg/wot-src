@@ -2,7 +2,7 @@ import time, ArenaType, ResMgr, nations
 from soft_exception import SoftException
 from copy import deepcopy
 from pprint import pformat
-from bonus_readers import readBonusSection, readUTC
+from bonus_readers import readBonusSection, readUTC, timeDataToUTC
 from constants import VEHICLE_CLASS_INDICES, ARENA_BONUS_TYPE, EVENT_TYPE, IGR_TYPE, ATTACK_REASONS, QUEST_RUN_FLAGS, DEFAULT_QUEST_START_TIME, DEFAULT_QUEST_FINISH_TIME, ROLE_LABEL_TO_TYPE
 from debug_utils import LOG_WARNING
 from dossiers2.custom.layouts import accountDossierLayout, vehicleDossierLayout, StaticSizeBlockBuilder, BinarySetDossierBlockBuilder
@@ -327,11 +327,11 @@ class Source(object):
         return questSection.readString('groupContent').split()
 
     def __getConditionReaders(self, eventType):
-        condition_readers = {'greater': self.__readCondition_float, 
-           'equal': self.__readCondition_float, 
-           'less': self.__readCondition_float, 
-           'lessOrEqual': self.__readCondition_float, 
-           'greaterOrEqual': self.__readCondition_float, 
+        condition_readers = {'greater': self.__readCondition_DateTimeOrFloat, 
+           'equal': self.__readCondition_DateTimeOrFloat, 
+           'less': self.__readCondition_DateTimeOrFloat, 
+           'lessOrEqual': self.__readCondition_DateTimeOrFloat, 
+           'greaterOrEqual': self.__readCondition_DateTimeOrFloat, 
            'and': self.__readBattleResultsConditionList, 
            'or': self.__readBattleResultsConditionList, 
            'not': self.__readBattleResultsConditionList, 
@@ -478,7 +478,7 @@ class Source(object):
          'premium', 'premium_plus', 'premium_vip', 'token', 'goodie', 'vehicle', 'dossier', 'tankmen',
          'customizations', 'vehicleChoice', 'crewSkin', 'blueprint', 'blueprintAny', 'enhancement',
          'eventCoin', 'bpcoin', 'entitlement', 'rankedDailyBattles', 'rankedBonusBattles',
-         'dogTagComponent', 'battlePassPoints'}
+         'dogTagComponent', 'battlePassPoints', 'currency'}
         if eventType in (EVENT_TYPE.BATTLE_QUEST, EVENT_TYPE.PERSONAL_QUEST, EVENT_TYPE.NT_QUEST):
             bonusTypes.update(('xp', 'tankmenXP', 'xpFactor', 'creditsFactor', 'freeXPFactor',
                                'tankmenXPFactor'))
@@ -658,6 +658,15 @@ class Source(object):
 
     def __readCondition_float(self, _, section, node):
         node.addChild(section.asFloat)
+
+    def __readCondition_DateTimeOrFloat(self, _, section, node):
+        try:
+            value = timeDataToUTC(section.asString, None)
+        except SoftException:
+            value = section.asFloat
+
+        node.addChild(value)
+        return
 
     def __readCondition_consume(self, _, section, node):
         node.addChild(section.asInt)

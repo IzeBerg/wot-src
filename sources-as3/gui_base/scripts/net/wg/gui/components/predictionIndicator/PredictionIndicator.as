@@ -34,6 +34,8 @@ package net.wg.gui.components.predictionIndicator
       
       private var _guiScale:int = 1;
       
+      private var _disposed:Boolean = false;
+      
       public function PredictionIndicator()
       {
          super();
@@ -83,6 +85,7 @@ package net.wg.gui.components.predictionIndicator
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._items.length = 0;
          this._items = null;
          this.hit_0.dispose();
@@ -119,6 +122,11 @@ package net.wg.gui.components.predictionIndicator
       
       public function set rotateInfo(param1:Boolean) : void
       {
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

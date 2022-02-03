@@ -9,6 +9,8 @@ package net.wg.gui.battle.views.prebattleTimer
       
       public var shadow:Sprite = null;
       
+      private var _disposed:Boolean = false;
+      
       public function PrebattleTimerBg()
       {
          super();
@@ -16,6 +18,7 @@ package net.wg.gui.battle.views.prebattleTimer
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.shadow = null;
       }
       
@@ -24,6 +27,11 @@ package net.wg.gui.battle.views.prebattleTimer
          this.shadow.x = -param1 >> 1;
          this.shadow.width = param1;
          this.shadow.height = param2;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

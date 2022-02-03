@@ -10,6 +10,8 @@ package net.wg.infrastructure.managers.utils.impl
       
       private var _walletStatusVO:IWalletStatusVO;
       
+      private var _disposed:Boolean = false;
+      
       public function VOManager()
       {
          super();
@@ -18,6 +20,7 @@ package net.wg.infrastructure.managers.utils.impl
       
       public function dispose() : void
       {
+         this._disposed = true;
          this._walletStatusVO.dispose();
          this._walletStatusVO = null;
       }
@@ -25,6 +28,11 @@ package net.wg.infrastructure.managers.utils.impl
       public function get walletStatusVO() : IWalletStatusVO
       {
          return this._walletStatusVO;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

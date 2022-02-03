@@ -63,6 +63,8 @@ package net.wg.gui.battle.views.damagePanel.components.modules
       
       private var _moduleState:ModuleStateAdapter;
       
+      private var _disposed:Boolean = false;
+      
       public function ModuleAssets(param1:String, param2:Boolean, param3:int)
       {
          this._moduleState = new ModuleStateAdapter();
@@ -110,6 +112,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
       
       public final function dispose() : void
       {
+         this._disposed = true;
          if(this._iconHolderTween)
          {
             this._iconHolderTween.dispose();
@@ -281,6 +284,11 @@ package net.wg.gui.battle.views.damagePanel.components.modules
             this._iconHolderTween.reset();
             this._iconHolderTween.paused = false;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

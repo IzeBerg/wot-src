@@ -31,6 +31,8 @@ package net.wg.gui.components.damageIndicator
       
       private var _rotateInfo:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function DamageIndicatorItem()
       {
          super();
@@ -43,6 +45,7 @@ package net.wg.gui.components.damageIndicator
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._standardStateContainer = null;
          this._extendedStateContainer = null;
          this.standardAnimation.dispose();
@@ -157,6 +160,11 @@ package net.wg.gui.components.damageIndicator
       public function set rotateInfo(param1:Boolean) : void
       {
          this._rotateInfo = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

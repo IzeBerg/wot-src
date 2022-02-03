@@ -19,7 +19,7 @@
 			<!--BW_String-->
 		</moving>
 		<still>
-			0.119
+			0.123
 			<!--BW_String-->
 		</still>
 		<camouflageBonus>
@@ -27,7 +27,7 @@
 			<!--BW_String-->
 		</camouflageBonus>
 		<firePenalty>
-			0.179
+			0.185
 			<!--BW_String-->
 		</firePenalty>
 	</invisibility>
@@ -4055,7 +4055,7 @@
 					<reloadTime>25</reloadTime>
 					<clip>
 						<count>2</count>
-						<rate>15</rate>
+						<rate>16</rate>
 					</clip>
 					<autoreload>
 						<reloadTime>25 40</reloadTime>
@@ -4076,7 +4076,7 @@
 						</whileGunDamaged>
 					</shotDispersionFactors>
 					<aimingTime>
-						4.5
+						4.1
 						<!--BW_String-->
 					</aimingTime>
 					<invisibilityFactorAtShot>
@@ -4093,6 +4093,8 @@
 						<collisionModelServer>vehicles/british/GB112_Caliban/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/british/GB112_Caliban/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_huge</effects>
+					<reloadEffect>autoloader_reload85_107</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>

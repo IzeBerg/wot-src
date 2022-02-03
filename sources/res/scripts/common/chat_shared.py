@@ -1535,8 +1535,7 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'royaleQuests',
  'premiumChanged',
  'customizationProgressionChanged',
- 'battlePassStyleChoiceAvailable',
- 'battlePassStyleChosen',
+ 'battlePassStyleRecieved',
  'battlePassSeasonEnd',
  'wotPlusUnlocked',
  'wotPlusRenewed',
@@ -1546,7 +1545,9 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'passiveXPIncompatibleCrew',
  'wotPlusRentEnd',
  'wotPlusNoRentSelected',
- 'giftSystemMessage'])
+ 'giftSystemMessage',
+ 'telecomMergeResults',
+ 'battlePassUseNonChapterPoints'])
 SYS_MESSAGE_IMPORTANCE = Enumeration('systemMessageImportance', [
  'normal',
  'high'])

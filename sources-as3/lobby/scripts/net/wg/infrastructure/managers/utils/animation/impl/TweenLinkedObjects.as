@@ -15,6 +15,8 @@ package net.wg.infrastructure.managers.utils.animation.impl
       
       private var _delay:int;
       
+      private var _disposed:Boolean = false;
+      
       public function TweenLinkedObjects(param1:ITween, param2:int, param3:String)
       {
          super();
@@ -28,8 +30,9 @@ package net.wg.infrastructure.managers.utils.animation.impl
          this._delay = param2;
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          this._tween = null;
       }
       
@@ -61,6 +64,11 @@ package net.wg.infrastructure.managers.utils.animation.impl
       public function set delay(param1:int) : void
       {
          this._delay = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

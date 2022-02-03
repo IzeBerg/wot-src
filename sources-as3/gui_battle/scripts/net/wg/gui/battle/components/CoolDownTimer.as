@@ -24,6 +24,8 @@ package net.wg.gui.battle.components
       
       private var _scheduler:IScheduler;
       
+      private var _disposed:Boolean = false;
+      
       public function CoolDownTimer(param1:MovieClip)
       {
          this._scheduler = App.utils.scheduler;
@@ -33,6 +35,7 @@ package net.wg.gui.battle.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._scheduler.cancelTask(this.run);
          this._scheduler = null;
          this._context.stop();
@@ -150,6 +153,11 @@ package net.wg.gui.battle.components
       public function get currentFrame() : int
       {
          return this._currentFrame;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

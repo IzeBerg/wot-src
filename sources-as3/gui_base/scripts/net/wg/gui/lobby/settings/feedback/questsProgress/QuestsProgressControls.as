@@ -12,6 +12,8 @@ package net.wg.gui.lobby.settings.feedback.questsProgress
       
       public var questsProgressIndicatorsWithFlag:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function QuestsProgressControls()
       {
          super();
@@ -30,8 +32,14 @@ package net.wg.gui.lobby.settings.feedback.questsProgress
       
       protected function onDispose() : void
       {
+         this._disposed = true;
          this.questsProgressIndicators = null;
          this.questsProgressIndicatorsWithFlag = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

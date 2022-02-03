@@ -20,6 +20,8 @@ package net.wg.gui.bootcamp.battleResult.containers.base
       
       public var content:AnimatedLoaderTextContainer = null;
       
+      private var _disposed:Boolean = false;
+      
       public function BattleResultVideoButtonContent()
       {
          super();
@@ -46,6 +48,7 @@ package net.wg.gui.bootcamp.battleResult.containers.base
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.content.dispose();
          this.content = null;
       }
@@ -53,6 +56,11 @@ package net.wg.gui.bootcamp.battleResult.containers.base
       public function set source(param1:String) : void
       {
          this.content.source = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

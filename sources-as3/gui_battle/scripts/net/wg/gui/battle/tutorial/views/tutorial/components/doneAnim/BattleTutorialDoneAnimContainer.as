@@ -10,15 +10,23 @@ package net.wg.gui.battle.tutorial.views.tutorial.components.doneAnim
       
       public var textField:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function BattleTutorialDoneAnimContainer()
       {
          super();
          this.textField.text = BATTLE_TUTORIAL.TASKS_ANIM_DONE;
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          this.textField = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

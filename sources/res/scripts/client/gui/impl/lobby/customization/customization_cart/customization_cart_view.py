@@ -335,7 +335,7 @@ class CustomizationCartView(ViewImpl):
     @adisp_process
     def __onBuyConfirmed(self, isOk):
         if isOk:
-            yield self.__ctx.applyItems(self.__purchaseItems)
+            yield self.__c11nView.applyItems(self.__purchaseItems)
             self.destroyWindow()
 
     def __onSelectAutoRent(self, _=None):
@@ -429,6 +429,7 @@ class _ItemUIDataPacker(_BaseUIDataPacker):
             currentProgression = item.getLatestOpenedProgressionLevel(g_currentVehicle.item)
             model.setTypeId(item.itemTypeID)
             model.setProgressionLevel(desc.progressionLevel)
+            model.setIsProgressionRewindEnabled(item.isProgressionRewindEnabled)
             model.price.assign(item.getUpgradePrice(currentProgression, desc.progressionLevel))
             model.setIcon(item.iconUrl)
         else:

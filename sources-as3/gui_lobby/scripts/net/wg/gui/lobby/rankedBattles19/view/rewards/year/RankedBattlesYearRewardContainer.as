@@ -41,6 +41,12 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.year
       
       private var _counterScale:Number = 1;
       
+      private var _disposed:Boolean = false;
+      
+      private var _isCaptionVisible:Boolean = false;
+      
+      private var _isChooseRewardVisible:Boolean = false;
+      
       public function RankedBattlesYearRewardContainer()
       {
          var _loc1_:RankedBattlesYearRewardBtn = null;
@@ -65,6 +71,7 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.year
       public final function dispose() : void
       {
          var _loc1_:RankedBattlesYearRewardBtn = null;
+         this._disposed = true;
          this.captionTF = null;
          this._selectedBtn = null;
          for each(_loc1_ in this._buttons)
@@ -88,11 +95,16 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.year
          return this.reward0.y + this.reward0.points.y;
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function setData(param1:Vector.<RankedRewardYearItemVO>) : void
       {
          var _loc3_:RankedBattlesYearRewardBtn = null;
          var _loc4_:RankedRewardYearItemVO = null;
-         var _loc7_:Boolean = false;
+         var _loc6_:Boolean = false;
          var _loc2_:int = param1.length;
          this._selectedBtn = null;
          var _loc5_:int = 0;
@@ -110,35 +122,37 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.year
             }
             _loc5_++;
          }
-         var _loc6_:Boolean = this._selectedBtn != null;
-         this.captionTF.visible = this.captionImg.visible = _loc6_;
-         if(_loc6_)
+         this._isChooseRewardVisible = this._selectedBtn != null && this._selectedBtn.status == RANKEDBATTLES_CONSTS.YEAR_REWARD_STATUS_CURRENT_CHOOSE;
+         this._isCaptionVisible = this._selectedBtn != null && !this._isChooseRewardVisible;
+         this.captionTF.visible = this.captionImg.visible = this._isCaptionVisible;
+         if(this._isCaptionVisible)
          {
             this.captionTF.htmlText = this._selectedBtn.statusText;
-            _loc7_ = this._selectedBtn.status == RANKEDBATTLES_CONSTS.YEAR_REWARD_STATUS_CURRENT_FINAL;
-            this.captionImg.visible = _loc7_;
-            if(_loc7_ && StringUtils.isEmpty(this.captionImg.source))
+            _loc6_ = this._selectedBtn.status == RANKEDBATTLES_CONSTS.YEAR_REWARD_STATUS_CURRENT_FINAL;
+            this.captionImg.visible = _loc6_;
+            if(_loc6_ && StringUtils.isEmpty(this.captionImg.source))
             {
                this.captionImg.source = RES_ICONS.MAPS_ICONS_LIBRARY_DONE;
             }
+            App.utils.commons.updateTextFieldSize(this.captionTF,true,false);
          }
-         App.utils.commons.updateTextFieldSize(this.captionTF,true,false);
-         this.updateCaption();
+         this.updateLayout();
       }
       
-      private function updateCaption() : void
+      private function updateLayout() : void
       {
-         if(this._selectedBtn)
+         if(!this._isCaptionVisible)
          {
-            this.captionTF.scaleX = this.captionTF.scaleY = this._counterScale;
-            this.captionTF.x = this._selectedBtn.x - (this.captionTF.width >> 1);
-            this.captionTF.y = this._selectedBtn.y + CAPTION_TOP_SHIFT * this._counterScale;
-            if(this.captionImg.visible)
-            {
-               this.captionImg.scaleX = this.captionImg.scaleY = this._counterScale;
-               this.captionImg.x = this.captionTF.x + CAPTION_IMG_LEFT_SHIFT * this._counterScale;
-               this.captionImg.y = this.captionTF.y + CAPTION_IMG_TOP_SHIFT * this._counterScale;
-            }
+            return;
+         }
+         this.captionTF.scaleX = this.captionTF.scaleY = this._counterScale;
+         this.captionTF.x = this._selectedBtn.x - (this.captionTF.width >> 1) | 0;
+         this.captionTF.y = this._selectedBtn.y + CAPTION_TOP_SHIFT * this._counterScale | 0;
+         if(this.captionImg.visible)
+         {
+            this.captionImg.scaleX = this.captionImg.scaleY = this._counterScale;
+            this.captionImg.x = this.captionTF.x + CAPTION_IMG_LEFT_SHIFT * this._counterScale | 0;
+            this.captionImg.y = this.captionTF.y + CAPTION_IMG_TOP_SHIFT * this._counterScale | 0;
          }
       }
       
@@ -151,7 +165,17 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.year
          {
             _loc2_.containerScale(this._counterScale);
          }
-         this.updateCaption();
+         this.updateLayout();
+      }
+      
+      public function get selectedBtn() : RankedBattlesYearRewardBtn
+      {
+         return this._selectedBtn;
+      }
+      
+      public function get isChooseRewardVisible() : Boolean
+      {
+         return this._isChooseRewardVisible;
       }
       
       private function onBtnMouseRollOutHandler(param1:MouseEvent) : void

@@ -101,13 +101,17 @@ def _updatePostProgressionParameters():
         return
 
 
-def _isModuleBulletVisible():
-    return _isCollectorModuleBulletVisible() or _isPostProgressionBulletVisible()
-
-
 @dependency.replace_none_kwargs(settingsCore=ISettingsCore)
-def _isCollectorModuleBulletVisible(settingsCore=None):
-    return _isCollectibleVehicleWithModules() and settingsCore.serverSettings.getOnceOnlyHintsSetting(OnceOnlyHints.VEHICLE_PREVIEW_MODULES_BUTTON_HINT)
+def _isCollectibleHintNotActive(settingsCore=None):
+    return not g_currentPreviewVehicle.isCollectible() or not g_currentPreviewVehicle.hasModulesToSelect() or settingsCore.serverSettings.getOnceOnlyHintsSetting(OnceOnlyHints.VEHICLE_PREVIEW_MODULES_BUTTON_HINT)
+
+
+def _isModuleButtonHintNotActive():
+    return _isCollectibleHintNotActive()
+
+
+def _isModuleBulletVisible():
+    return _isModuleButtonHintNotActive() and (_isCollectibleVehicleWithModules() or _isPostProgressionBulletVisible())
 
 
 @dependency.replace_none_kwargs(settingsCore=ISettingsCore)
@@ -175,7 +179,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         return
 
     def setBottomPanel(self):
-        self.as_setBottomPanelS(VEHPREVIEW_CONSTANTS.BUYING_PANEL_LINKAGE)
+        self.as_setBottomPanelS(VEHPREVIEW_CONSTANTS.BOTTOM_PANEL_LINKAGE)
 
     def _populate(self):
         self.addListener(CameraRelatedEvents.VEHICLE_LOADING, self.__onVehicleLoading, EVENT_BUS_SCOPE.DEFAULT)
@@ -285,7 +289,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
 
     def _onRegisterFlashComponent(self, viewPy, alias):
         super(VehiclePreview, self)._onRegisterFlashComponent(viewPy, alias)
-        if alias == VEHPREVIEW_CONSTANTS.BUYING_PANEL_PY_ALIAS:
+        if alias == VEHPREVIEW_CONSTANTS.BOTTOM_PANEL_PY_ALIAS:
             viewPy.setIsHeroTank(self.__isHeroTank)
             viewPy.setBackAlias(self._backAlias)
             viewPy.setBackCallback(self._previewBackCb)
@@ -323,7 +327,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
             if self.__offers:
                 offer = self.__currentOffer if self.__currentOffer is not None else getActiveOffer(self.__offers)
                 viewPy.setActiveOffer(offer)
-        elif alias == VEHPREVIEW_CONSTANTS.WOT_PLUS_PANEL_LINKAGE:
+        elif alias == VEHPREVIEW_CONSTANTS.BOTTOM_PANEL_WOT_PLUS_LINKAGE:
             viewPy.setOffers(self.__offers)
         return
 
@@ -357,8 +361,9 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         hangarVehicleCD = None
         hangarVehicle = self.__hangarSpace.getVehicleEntity()
         currentVehicle = g_currentVehicle.item
-        if self.__isHeroTank and currentVehicle is not None and hangarVehicle.typeDescriptor.type.compactDescr != currentVehicle.compactDescr:
-            hangarVehicleCD = hangarVehicle.typeDescriptor.type.compactDescr
+        hangarVehicleDescr = hangarVehicle.typeDescriptor
+        if self.__isHeroTank and currentVehicle is not None and hangarVehicleDescr is not None and hangarVehicleDescr.type.compactDescr != currentVehicle.compactDescr:
+            hangarVehicleCD = hangarVehicleDescr.type.compactDescr
         return events.LoadViewEvent(SFViewLoadParams(self.alias), ctx={'itemCD': self._vehicleCD, 
            'previewAlias': self._backAlias, 
            'previousBackAlias': self._previousBackAlias, 
@@ -479,8 +484,11 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         elif self._backAlias == VIEW_ALIAS.VEHICLE_PREVIEW:
             entity = ctx.get('entity', None) if ctx else None
             if entity:
-                descriptor = entity.typeDescriptor
-                event_dispatcher.showVehiclePreview(descriptor.type.compactDescr, previewAlias=self._previousBackAlias)
+                compactDescr = entity.typeDescriptor.type.compactDescr
+                if self.__itemsCache.items.inventory.getItemData(compactDescr) is not None:
+                    event_dispatcher.showHangar()
+                else:
+                    event_dispatcher.showVehiclePreview(compactDescr, previewAlias=self._previousBackAlias)
             else:
                 event_dispatcher.showHangar()
         elif self._backAlias == VIEW_ALIAS.LOBBY_STORE:

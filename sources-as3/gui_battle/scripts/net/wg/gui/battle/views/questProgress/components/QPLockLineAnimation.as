@@ -9,6 +9,8 @@ package net.wg.gui.battle.views.questProgress.components
       
       public var lineAnimation:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function QPLockLineAnimation()
       {
          super();
@@ -16,6 +18,7 @@ package net.wg.gui.battle.views.questProgress.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.lineAnimation.stop();
          this.lineAnimation = null;
       }
@@ -33,6 +36,11 @@ package net.wg.gui.battle.views.questProgress.components
       public function showContent() : void
       {
          this.lineAnimation.gotoAndStop(this.lineAnimation.totalFrames - 1);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

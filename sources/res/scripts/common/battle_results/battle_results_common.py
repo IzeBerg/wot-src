@@ -479,6 +479,8 @@ BATTLE_RESULTS = [
  (
   'recruiterID', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
+  'referralBonusVehicles', list, [], None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+ (
   'fareTeamXPPosition', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
   'questsProgress', dict, {}, None, 'joinDicts', ENTRY_TYPE.ACCOUNT_SELF),

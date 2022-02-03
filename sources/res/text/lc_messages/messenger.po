@@ -1235,6 +1235,18 @@ msgstr "Настройки"
 msgid "personalMissions/completionTokenGain"
 msgstr "Добавлен компонент"
 
+msgid "platformCurrencyMsg/debited/bpbit"
+msgstr "Списано очков Боевого пропуска"
+
+msgid "platformCurrencyMsg/debited/sacoin"
+msgstr "Списано жетонов за выслугу лет"
+
+msgid "platformCurrencyMsg/received/bpbit"
+msgstr "Начислено очков Боевого пропуска"
+
+msgid "platformCurrencyMsg/received/sacoin"
+msgstr "Добавлено жетонов за выслугу лет"
+
 msgid "prebattle/addAllBtn/tooltip/body"
 msgstr "Добавить все контакты в список адресатов."
 
@@ -1626,6 +1638,14 @@ msgid "serviceChannelMessages/battlePass/badges/text/remove"
 msgstr ""
 "Нашивка %(badgeName)s списана в связи с окончанием сезона Боевого пропуска."
 
+msgid "serviceChannelMessages/battlePass/freePointsUsed/header"
+msgstr "Использованы нераспределённые очки"
+
+msgid "serviceChannelMessages/battlePass/freePointsUsed/text"
+msgstr ""
+"Вы использовали нераспределённые очки Боевого пропуска: %(points)s для главы"
+" «%(chapter)s»."
+
 msgid "serviceChannelMessages/battlePass/newDeviceToken"
 msgstr "Штатное оборудование на выбор"
 
@@ -1638,14 +1658,6 @@ msgstr ""
 "Награда за достижение лимита: %(bonusPoints)s.\n"
 "Чтобы продолжить зарабатывать очки, смените машину."
 
-msgid "serviceChannelMessages/battlePass/styleChoiceAvailable/button"
-msgstr "Выбрать стиль"
-
-msgid "serviceChannelMessages/battlePass/styleChoiceAvailable/text"
-msgstr ""
-"Выберите стиль в главе %(chapter)s. Его можно сразу же установить на машину "
-"и улучшать по мере прохождения Боевого пропуска."
-
 msgid "serviceChannelMessages/battlePass/styleChosen/header"
 msgstr "Поздравляем!"
 
@@ -1657,6 +1669,17 @@ msgstr ""
 msgid "serviceChannelMessages/battlePass/trophySelectToken"
 msgstr "Трофейное оборудование на выбор"
 
+msgid "serviceChannelMessages/battlePassReward/activateChapter/text"
+msgstr "Получена награда за пройденные этапы за счёт накопленных очков:"
+
+msgid "serviceChannelMessages/battlePassReward/battle/chapterFinal/text"
+msgstr ""
+"Вы завершили главу «%(chapter)s»!\n"
+"Получена награда:"
+
+msgid "serviceChannelMessages/battlePassReward/battle/final/additionalText"
+msgstr "Продолжайте играть и зарабатывать очки!"
+
 msgid "serviceChannelMessages/battlePassReward/battle/final/text"
 msgstr ""
 "Вы завершили все главы Боевого пропуска %(season)s сезона!\n"
@@ -1664,7 +1687,7 @@ msgstr ""
 
 msgid "serviceChannelMessages/battlePassReward/battle/newLevel/text"
 msgstr ""
-"Вы завершили %(newLevel)s-й этап прогрессии.\n"
+"Вы завершили %(newLevel)s-й этап прогрессии главы «%(chapter)s».\n"
 "Получена награда:"
 
 msgid "serviceChannelMessages/battlePassReward/button"
@@ -1688,7 +1711,7 @@ msgstr ""
 "Получены награды:"
 
 msgid "serviceChannelMessages/battlePassReward/buyWithRewards/additionalText"
-msgstr "Данный улучшенный пропуск действует только для главы %(chapter)s."
+msgstr "Данный Улучшенный пропуск действует только для главы «%(chapter)s»."
 
 msgid "serviceChannelMessages/battlePassReward/buyWithRewards/text"
 msgstr ""
@@ -1696,8 +1719,8 @@ msgstr ""
 
 msgid "serviceChannelMessages/battlePassReward/buyWithoutRewards/text"
 msgstr ""
-"Теперь вы будете получать награды из базовой и улучшенной линеек одновременно в рамках главы %(chapter)s.\n"
-"Данный улучшенный пропуск действует только для главы %(chapter)s."
+"Теперь вы будете получать награды из базовой и улучшенной линеек одновременно в рамках главы «%(chapter)s».\n"
+"Данный Улучшенный пропуск действует только для главы «%(chapter)s»."
 
 msgid "serviceChannelMessages/battlePassReward/header/buyBP"
 msgstr "Улучшенный пропуск куплен"
@@ -1998,7 +2021,7 @@ msgstr ""
 "Получены шевроны"
 
 msgid "serviceChannelMessages/battleResults/seniorityRewardBody"
-msgstr "Вы получили следующую награду за выслугу лет"
+msgstr "Вы получили награду за выслугу лет"
 
 msgid "serviceChannelMessages/battleResults/seniorityRewardHeader"
 msgstr "Поздравляем!"
@@ -2668,7 +2691,19 @@ msgstr "Получены награды"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/text"
 msgstr ""
-"Мы открыли за вас коробки и начиcлили награды за «Новогоднее наступление»"
+"Мы открыли за вас коробки и начислили награды за Новогоднее наступление"
+
+msgid "serviceChannelMessages/lunarBoxesAutoOpen/body"
+msgstr "Мы открыли за вас конверты Лунного нового года."
+
+msgid "serviceChannelMessages/lunarBoxesAutoOpen/header"
+msgstr "Получены награды"
+
+msgid "serviceChannelMessages/lunarBoxesAutoOpen/many/projection_decal"
+msgstr "Начислено декалей: "
+
+msgid "serviceChannelMessages/lunarBoxesAutoOpen/projection_decal"
+msgstr "Начислена декаль: "
 
 msgid "serviceChannelMessages/mapbox/buttons/toSurvey"
 msgstr "К опросу"
@@ -2717,16 +2752,8 @@ msgstr "Вы можете пройти опрос о карте %(mapName)s в �
 msgid "serviceChannelMessages/mapbox/surveyRequest"
 msgstr "Не забудьте поделиться своими впечатлениями в опросах."
 
-msgid "serviceChannelMessages/nonSelectedDevices/button"
-msgstr "Выбрать"
-
-msgid ""
-"serviceChannelMessages/nonSelectedDevices/text/battlePassNewDeviceGiftToken"
-msgstr "Вам доступно штатное оборудование на выбор: %(count)s"
-
-msgid ""
-"serviceChannelMessages/nonSelectedDevices/text/battlePassTrophyGiftToken"
-msgstr "Вам доступно трофейное оборудование на выбор: %(count)s"
+msgid "serviceChannelMessages/multiplier"
+msgstr " (x%(count)s)"
 
 msgid "serviceChannelMessages/notrecruitedTankman/button"
 msgstr "В Казарму"
@@ -2736,6 +2763,15 @@ msgstr "Списано членов экипажа: %(count)s"
 
 msgid "serviceChannelMessages/offerTokenBonus/title"
 msgstr "Поставки из тыла"
+
+msgid "serviceChannelMessages/payerSeniority/coins/body"
+msgstr "У вас остались неиспользованные жетоны за выслугу лет."
+
+msgid "serviceChannelMessages/payerSeniority/coins/button"
+msgstr "К наградам"
+
+msgid "serviceChannelMessages/payerSeniority/coins/header"
+msgstr "Заслуженная награда"
 
 msgid "serviceChannelMessages/piggyBank/continueAfterSmashed"
 msgstr "Начался новый цикл накопления."

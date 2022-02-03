@@ -11,6 +11,8 @@ package net.wg.gui.battle.tutorial.views.tutorial.utils.tween
       
       private var _cache:Dictionary;
       
+      private var _disposed:Boolean = false;
+      
       public function TweenFlowFactory()
       {
          this._cache = new Dictionary();
@@ -49,14 +51,20 @@ package net.wg.gui.battle.tutorial.views.tutorial.utils.tween
          return _loc3_.concat();
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
          var _loc1_:Object = null;
+         this._disposed = true;
          for each(_loc1_ in this._cache)
          {
             delete this._cache[_loc1_];
          }
          this._cache = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

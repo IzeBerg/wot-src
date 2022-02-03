@@ -19,6 +19,8 @@ package net.wg.gui.lobby.profile.pages.formations
       
       private var _statItems:Vector.<LineDescrIconText>;
       
+      private var _disposed:Boolean = false;
+      
       public function FormationInfoAbstract()
       {
          var _loc1_:LineDescrIconText = null;
@@ -33,6 +35,7 @@ package net.wg.gui.lobby.profile.pages.formations
       
       public function dispose() : void
       {
+         this._disposed = true;
          this._header.dispose();
          this._header = null;
          if(this._statItems != null)
@@ -92,6 +95,11 @@ package net.wg.gui.lobby.profile.pages.formations
       protected function initHeader() : FormationHeader
       {
          throw new AbstractException("FormationInfoAbstract::initHeader " + Errors.ABSTRACT_INVOKE);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -14,6 +14,8 @@ package net.wg.gui.components.advanced.tutorial
       
       private var _animations:Vector.<MovieClip> = null;
       
+      private var _disposed:Boolean = false;
+      
       public function TutorialHintAnimation()
       {
          super();
@@ -23,6 +25,7 @@ package net.wg.gui.components.advanced.tutorial
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -87,6 +90,11 @@ package net.wg.gui.components.advanced.tutorial
       public function get animations() : Vector.<MovieClip>
       {
          return this._animations;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -18,6 +18,8 @@ package net.wg.gui.bootcamp.battleTopHint.containers
       
       private var _currentbackground:HintBackground = null;
       
+      private var _disposed:Boolean = false;
+      
       public function HintContainer()
       {
          super();
@@ -32,6 +34,7 @@ package net.wg.gui.bootcamp.battleTopHint.containers
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.disposeInfo();
          this.disposeBackground();
          this.iconMessage.dispose();
@@ -121,6 +124,11 @@ package net.wg.gui.bootcamp.battleTopHint.containers
             this.disposeBackground();
             this._currentbackground = this.hintBg;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

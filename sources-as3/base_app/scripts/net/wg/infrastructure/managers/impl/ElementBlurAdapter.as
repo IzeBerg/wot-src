@@ -8,9 +8,9 @@ package net.wg.infrastructure.managers.impl
    import net.wg.infrastructure.interfaces.IManagedContainer;
    import net.wg.infrastructure.interfaces.ISimpleManagedContainer;
    import net.wg.infrastructure.interfaces.IView;
-   import net.wg.infrastructure.interfaces.entity.IDisposable;
+   import net.wg.infrastructure.managers.IElementBlurAdapter;
    
-   public class ElementBlurAdapter implements IDisposable
+   public class ElementBlurAdapter implements IElementBlurAdapter
    {
       
       private static const ANIM_STEP_TIME:int = 20;
@@ -30,9 +30,15 @@ package net.wg.infrastructure.managers.impl
       
       private var _containers:Vector.<DisplayObject> = null;
       
-      public function ElementBlurAdapter(param1:Vector.<DisplayObject>)
+      private var _disposed:Boolean = false;
+      
+      public function ElementBlurAdapter()
       {
          super();
+      }
+      
+      public function set containers(param1:Vector.<DisplayObject>) : void
+      {
          this._containers = param1;
       }
       
@@ -116,6 +122,7 @@ package net.wg.infrastructure.managers.impl
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.cancelScheduled();
          this.cleanUpBluredElements();
          this._containers = null;
@@ -190,6 +197,11 @@ package net.wg.infrastructure.managers.impl
       {
          App.utils.scheduler.cancelTask(this.animateBlur);
          App.utils.scheduler.cancelTask(this.animateUnblur);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

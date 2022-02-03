@@ -21,6 +21,8 @@ package net.wg.gui.battle.views.stats.fullStats
       
       private var _columns:Dictionary = null;
       
+      private var _disposed:Boolean = false;
+      
       public function StatsTableItemPositionController(param1:Number, param2:Number, param3:int, param4:int, ... rest)
       {
          var _loc6_:DisplayObject = null;
@@ -93,12 +95,18 @@ package net.wg.gui.battle.views.stats.fullStats
          this._columns[param1] = param2;
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          App.utils.data.cleanupDynamicObject(this._objectsPositions);
          App.utils.data.cleanupDynamicObject(this._columns);
          this._objectsPositions = null;
          this._columns = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

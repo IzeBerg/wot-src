@@ -22,7 +22,7 @@ package net.wg.gui.prebattle.meta
       
       function as_setTotalPlayersCount(param1:String) : void;
       
-      function as_setInfo(param1:Boolean, param2:String, param3:String, param4:String, param5:String, param6:String, param7:String, param8:String) : void;
+      function as_setInfo(param1:Boolean, param2:String, param3:String, param4:String, param5:String, param6:String, param7:String, param8:String, param9:int, param10:int, param11:uint) : void;
       
       function as_setWinnerIfDraw(param1:int) : void;
       

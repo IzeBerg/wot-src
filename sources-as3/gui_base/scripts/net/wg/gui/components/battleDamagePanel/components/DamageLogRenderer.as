@@ -63,6 +63,8 @@ package net.wg.gui.components.battleDamagePanel.components
       
       private var _isShortMode:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function DamageLogRenderer()
       {
          super();
@@ -71,6 +73,7 @@ package net.wg.gui.components.battleDamagePanel.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._atlasMgr = null;
          this.externalImagesContainer = null;
          this.actionTypeImg = null;
@@ -192,6 +195,11 @@ package net.wg.gui.components.battleDamagePanel.components
             _shellTFMaxWidth = Math.max(_shellTFMaxWidth,this.shellTypeTF.textWidth) ^ 0;
             _loc3_++;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

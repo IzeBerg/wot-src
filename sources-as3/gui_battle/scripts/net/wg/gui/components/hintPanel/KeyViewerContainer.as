@@ -9,6 +9,8 @@ package net.wg.gui.components.hintPanel
       
       public var keyViewer:KeyViewer = null;
       
+      private var _disposed:Boolean = false;
+      
       public function KeyViewerContainer()
       {
          super();
@@ -17,6 +19,7 @@ package net.wg.gui.components.hintPanel
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.keyViewer.dispose();
          this.keyViewer = null;
       }
@@ -24,6 +27,11 @@ package net.wg.gui.components.hintPanel
       public function setKey(param1:String) : void
       {
          this.keyViewer.setKey(param1);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

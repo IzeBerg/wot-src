@@ -485,8 +485,6 @@ def checkBotNet():
     sys.path.append('test_libs')
     from path_manager import g_pathManager
     g_pathManager.setPathes()
-    from bigworld_reactor import installBWReactor
-    installBWReactor()
     from scenario_player import g_scenarioPlayer
     rpycPort = sys.argv[(sys.argv.index(botArg) + 1)]
     g_scenarioPlayer.setRpycConection(rpycPort)

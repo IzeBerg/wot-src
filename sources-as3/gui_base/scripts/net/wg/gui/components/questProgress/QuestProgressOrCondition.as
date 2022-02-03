@@ -12,6 +12,8 @@ package net.wg.gui.components.questProgress
       
       private var _item:IQPItemRenderer = null;
       
+      private var _disposed:Boolean = false;
+      
       public function QuestProgressOrCondition()
       {
          super();
@@ -19,6 +21,7 @@ package net.wg.gui.components.questProgress
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -42,6 +45,11 @@ package net.wg.gui.components.questProgress
       public function get previousItem() : IQPItemRenderer
       {
          return this._previousItem;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

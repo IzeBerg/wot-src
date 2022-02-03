@@ -16,6 +16,8 @@ package net.wg.gui.battle.views.destroyTimers.components
       
       public var textField:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function TimerContainer()
       {
          super();
@@ -31,7 +33,13 @@ package net.wg.gui.battle.views.destroyTimers.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

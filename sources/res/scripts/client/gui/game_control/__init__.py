@@ -69,6 +69,7 @@ def getGameControllersConfig(manager):
     from gui.game_control.telecom_rentals_controller import TelecomRentalsNotificationController
     from gui.game_control.event_battles_controller import EventBattlesController
     from gui.game_control.gift_system_controller import GiftSystemController
+    from gui.game_control.seniority_awards_controller import SeniorityAwardsController as _SeniorityAwardsController
     tracker = GameStateTracker()
     tracker.init()
     manager.addInstance(_interface.IGameStateTracker, tracker, finalizer='fini')
@@ -139,3 +140,4 @@ def getGameControllersConfig(manager):
     _config(_interface.IWotPlusNotificationController, WotPlusNotificationController())
     _config(_interface.ITelecomRentalsNotificationController, TelecomRentalsNotificationController())
     _config(_interface.IGiftSystemController, GiftSystemController())
+    _config(_interface.ISeniorityAwardsController, _SeniorityAwardsController())

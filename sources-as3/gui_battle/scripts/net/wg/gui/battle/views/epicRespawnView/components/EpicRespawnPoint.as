@@ -187,5 +187,10 @@ package net.wg.gui.battle.views.epicRespawnView.components
             gotoAndPlay(OUT_ANIM_LABEL);
          }
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._baseDisposed;
+      }
    }
 }

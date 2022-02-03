@@ -1,6 +1,6 @@
 package net.wg.infrastructure.interfaces.entity
 {
-   public interface IDAAPIEntity
+   public interface IDAAPIEntity extends IDisposable
    {
        
    }

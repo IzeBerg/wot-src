@@ -31,6 +31,8 @@ package net.wg.gui.battle.views.staticMarkers.repairPoint
       
       private var _isIconShown:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function RepairPointMarker()
       {
          super();
@@ -73,6 +75,7 @@ package net.wg.gui.battle.views.staticMarkers.repairPoint
       
       public function dispose() : void
       {
+         this._disposed = true;
          this._vmManager.removeEventListener(VehicleMarkersManagerEvent.UPDATE_COLORS,this.onUpdateColorsHandler);
          this.marker.dispose();
          this.labelTF = null;
@@ -88,6 +91,11 @@ package net.wg.gui.battle.views.staticMarkers.repairPoint
          {
             this.marker.showMarker(this._isCooldown,this._isAlly,this._isColorBlind);
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

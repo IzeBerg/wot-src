@@ -38,6 +38,8 @@ package net.wg.gui.components.controls
       
       private var _textFormat:TextFormat = null;
       
+      private var _disposed:Boolean = false;
+      
       public function TradeIco()
       {
          super();
@@ -47,6 +49,7 @@ package net.wg.gui.components.controls
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.removeEventListener(MouseEvent.MOUSE_OVER,this.onHitMouseOverHandler,false);
          this.removeEventListener(MouseEvent.MOUSE_OUT,this.onHitMouseOutHandler,false);
          this.removeEventListener(MouseEvent.CLICK,this.onHitClickHandler,false);
@@ -124,6 +127,11 @@ package net.wg.gui.components.controls
       private function onHitMouseOutHandler(param1:MouseEvent) : void
       {
          App.toolTipMgr.hide();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -64,8 +64,7 @@ package net.wg.gui.lobby.vehicleCustomization
       
       override protected function initialize() : void
       {
-         var _loc1_:Sprite = null;
-         _loc1_ = new Sprite();
+         var _loc1_:Sprite = new Sprite();
          this.topShadow.hitArea = _loc1_;
          this.bottomShadow.hitArea = _loc1_;
          addChild(_loc1_);

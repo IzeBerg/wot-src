@@ -9,6 +9,8 @@ package net.wg.gui.bootcamp.introVideoPage.containers
       
       public var gradientBg:MovieClip;
       
+      private var _disposed:Boolean = false;
+      
       public function LoadingContainer()
       {
          super();
@@ -16,6 +18,7 @@ package net.wg.gui.bootcamp.introVideoPage.containers
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.gradientBg = null;
       }
       
@@ -23,6 +26,11 @@ package net.wg.gui.bootcamp.introVideoPage.containers
       {
          this.gradientBg.width = param1;
          this.gradientBg.x = -param1 >> 1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

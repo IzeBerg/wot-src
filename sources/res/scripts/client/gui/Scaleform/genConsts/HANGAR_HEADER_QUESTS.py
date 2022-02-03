@@ -8,7 +8,6 @@ class HANGAR_HEADER_QUESTS(object):
     QUEST_TYPE_PERSONAL_PM2 = 'pm2'
     QUEST_TYPE_EVENT = 'eventQuest'
     QUEST_TYPE_BATTLE_PASS = 'questBattlePass'
-    QUEST_TYPE_SENIORITY = 'questSeniority'
     QUEST_TYPE_BATTLE_ROYALE = 'questBattleRoyale'
     QUEST_TYPE_MAPBOX = 'mapboxProgression'
     QUEST_GROUP_COMMON = 'commonQuestsGroup'
@@ -17,4 +16,3 @@ class HANGAR_HEADER_QUESTS(object):
     QUEST_GROUP_EVENTS = 'eventsQuestsGroup'
     QUEST_GROUP_BATTLE_PASS = 'questGroupBattlePass'
     QUEST_GROUP_RANKED_DAILY = 'questGroupRankedDaily'
-    QUEST_GROUP_SENIORITY = 'questGroupSeniority'

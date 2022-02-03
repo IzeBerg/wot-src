@@ -28,6 +28,8 @@ package net.wg.gui.lobby.settings.feedback.questsProgress
       
       public var scorePanelVehicleIconsRegular:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function ScorePanelControls()
       {
          super();
@@ -35,6 +37,7 @@ package net.wg.gui.lobby.settings.feedback.questsProgress
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -77,6 +80,11 @@ package net.wg.gui.lobby.settings.feedback.questsProgress
          this.scorePanelTierGrouping = null;
          this.scorePanelVehicleIconsRegular = null;
          this.scorePanelNoHPRegular = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

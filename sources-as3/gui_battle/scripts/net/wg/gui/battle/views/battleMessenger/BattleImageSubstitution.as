@@ -13,6 +13,8 @@ package net.wg.gui.battle.views.battleMessenger
       
       public var baseLineY:int = 11;
       
+      private var _disposed:Boolean = false;
+      
       public function BattleImageSubstitution(param1:String, param2:BitmapData)
       {
          super();
@@ -20,13 +22,19 @@ package net.wg.gui.battle.views.battleMessenger
          this.image = param2;
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          if(this.image.width != 0 && this.image.height != 0)
          {
             this.image.dispose();
          }
          this.image = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -167,5 +167,10 @@ package net.wg.gui.lobby.battleRoyale.vehicleInfoView.components
             this._tooltipMgr.hide();
          }
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._baseDisposed;
+      }
    }
 }

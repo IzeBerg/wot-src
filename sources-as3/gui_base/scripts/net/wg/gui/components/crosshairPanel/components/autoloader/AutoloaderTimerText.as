@@ -13,6 +13,8 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
       
       private var _text:String = "";
       
+      private var _disposed:Boolean = false;
+      
       public function AutoloaderTimerText()
       {
          super();
@@ -20,6 +22,7 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.textField = null;
       }
       
@@ -36,6 +39,11 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
       public function set noTranslateTextfield(param1:Boolean) : void
       {
          TextFieldEx.setNoTranslate(this.textField,param1);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

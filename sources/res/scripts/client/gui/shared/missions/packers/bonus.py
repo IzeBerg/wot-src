@@ -28,6 +28,7 @@ DOSSIER_BADGE_POSTFIX = '_badge'
 VEHICLE_RENT_ICON_POSTFIX = '_rent'
 BACKPORT_TOOLTIP_CONTENT_ID = R.views.common.tooltip_window.backport_tooltip_content.BackportTooltipContent()
 if typing.TYPE_CHECKING:
+    from typing import Dict, List
     from frameworks.wulf.view.array import Array
     from gui.goodies.goodie_items import BoosterUICommon
     from gui.server_events.bonuses import CustomizationsBonus, CrewSkinsBonus, TokensBonus, SimpleBonus, ItemsBonus, DossierBonus, VehicleBlueprintBonus, CrewBooksBonus, GoodiesBonus, TankmenBonus, VehiclesBonus, DogTagComponentBonus, BattlePassPointsBonus

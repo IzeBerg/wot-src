@@ -13,6 +13,8 @@ package net.wg.gui.lobby.linkedSet.components
       
       public var contentText:AnimatedHtmlTextContainer = null;
       
+      private var _disposed:Boolean = false;
+      
       public function AnimatedMovieClipContainer()
       {
          super();
@@ -20,6 +22,7 @@ package net.wg.gui.lobby.linkedSet.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -54,6 +57,11 @@ package net.wg.gui.lobby.linkedSet.components
       public function set text(param1:String) : void
       {
          this.contentText.text = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

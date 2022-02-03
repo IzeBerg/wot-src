@@ -47,6 +47,8 @@ package net.wg.gui.bootcamp.containers
       
       private var _loaderHeight:int = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function TutorialPageContainer()
       {
          super();
@@ -172,6 +174,7 @@ package net.wg.gui.bootcamp.containers
       
       public final function dispose() : void
       {
+         this._disposed = true;
          if(this.txtHeader1)
          {
             this.txtHeader1 = null;
@@ -234,6 +237,11 @@ package net.wg.gui.bootcamp.containers
             this.loader.dispose();
             this.loader = null;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

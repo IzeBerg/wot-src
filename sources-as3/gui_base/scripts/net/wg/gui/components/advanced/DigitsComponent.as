@@ -24,6 +24,8 @@ package net.wg.gui.components.advanced
       
       private var _size:String = null;
       
+      private var _disposed:Boolean = false;
+      
       public function DigitsComponent(param1:Boolean)
       {
          this._digits = new Vector.<AtlasDigit>();
@@ -34,6 +36,7 @@ package net.wg.gui.components.advanced
       public final function dispose() : void
       {
          var _loc3_:AtlasDigit = null;
+         this._disposed = true;
          var _loc1_:int = this._digits.length;
          var _loc2_:int = 0;
          while(_loc2_ < _loc1_)
@@ -106,6 +109,11 @@ package net.wg.gui.components.advanced
             _loc1_ += _loc2_.sprite.width + GAPS[this._size];
          }
          dispatchEvent(new Event(Event.CHANGE));
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

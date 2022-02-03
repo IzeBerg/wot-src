@@ -9,6 +9,8 @@ package net.wg.gui.battle.battleRoyale.views.configurator
       
       public var module:ModuleInfo = null;
       
+      private var _disposed:Boolean = false;
+      
       public function ModuleInfoPanel()
       {
          super();
@@ -16,8 +18,14 @@ package net.wg.gui.battle.battleRoyale.views.configurator
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.module.dispose();
          this.module = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

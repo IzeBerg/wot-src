@@ -31,6 +31,8 @@ package net.wg.infrastructure.managers.impl.cursor.base
       
       private var _asserter:IAssertable;
       
+      private var _disposed:Boolean = false;
+      
       public function BaseInfo(param1:IDragDropHitArea, param2:String, param3:String)
       {
          this._asserter = App.utils.asserter;
@@ -49,6 +51,7 @@ package net.wg.infrastructure.managers.impl.cursor.base
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._cursor = null;
          this._container = null;
          this._processState = null;
@@ -88,6 +91,11 @@ package net.wg.infrastructure.managers.impl.cursor.base
          }
          this._asserter.assert(DRAG_STATES.indexOf(param1) != -1,UNKNOWN_DRAG_STATE + param1);
          this._processState = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

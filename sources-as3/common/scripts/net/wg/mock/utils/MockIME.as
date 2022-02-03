@@ -32,5 +32,10 @@ package net.wg.mock.utils
       public function setVisible(param1:Boolean) : void
       {
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return false;
+      }
    }
 }

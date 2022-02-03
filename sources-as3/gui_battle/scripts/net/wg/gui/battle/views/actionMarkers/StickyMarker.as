@@ -16,6 +16,8 @@ package net.wg.gui.battle.views.actionMarkers
       
       public var targetHighlight:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function StickyMarker()
       {
          super();
@@ -26,6 +28,7 @@ package net.wg.gui.battle.views.actionMarkers
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.arrow = null;
          this.txtLabel = null;
          this.targetHighlight = null;
@@ -56,6 +59,11 @@ package net.wg.gui.battle.views.actionMarkers
       public function setTextLabelVisible(param1:Boolean) : void
       {
          this.txtLabel.visible = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -69,6 +69,7 @@ class DemoAccCompletionController(IDemoAccCompletionController):
     def __init__(self):
         super(DemoAccCompletionController, self).__init__()
         self._isDemoAccount = False
+        self._isDemoAccountOnce = False
         self._controllerDestroyed = False
 
     def init(self):
@@ -80,9 +81,17 @@ class DemoAccCompletionController(IDemoAccCompletionController):
         self._hangarSpace.onSpaceCreate -= self._onSpaceCreated
         self._controllerDestroyed = True
 
+    def onDisconnected(self):
+        self._isDemoAccount = False
+        self._isDemoAccountOnce = False
+
     @property
     def isDemoAccount(self):
         return self._isDemoAccount
+
+    @property
+    def isDemoAccountOnce(self):
+        return self._isDemoAccountOnce
 
     @property
     def isInDemoAccRegistration(self):
@@ -133,3 +142,4 @@ class DemoAccCompletionController(IDemoAccCompletionController):
     def _onClientUpdate(self, diff, _):
         if constants.DEMO_ACCOUNT_ATTR in diff:
             self._isDemoAccount = bool(diff.get(constants.DEMO_ACCOUNT_ATTR))
+            self._isDemoAccountOnce = self._isDemoAccountOnce or self._isDemoAccount

@@ -21,6 +21,8 @@ package net.wg.gui.battle.views.upgradePanel
       
       private var _height:Number;
       
+      private var _disposed:Boolean = false;
+      
       public function NotificationBorderAnimation()
       {
          super();
@@ -31,6 +33,7 @@ package net.wg.gui.battle.views.upgradePanel
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.notificationBorder01.dispose();
          this.notificationBorder01 = null;
          this.notificationBorder02.dispose();
@@ -73,6 +76,11 @@ package net.wg.gui.battle.views.upgradePanel
          this.notificationBorder02.height = param1;
          this.notificationBorder03.height = param1;
          this._height = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

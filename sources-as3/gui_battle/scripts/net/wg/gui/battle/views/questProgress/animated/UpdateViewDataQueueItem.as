@@ -13,6 +13,8 @@ package net.wg.gui.battle.views.questProgress.animated
       
       private var _id:String = null;
       
+      private var _disposed:Boolean = false;
+      
       public function UpdateViewDataQueueItem(param1:IQuestProgressView, param2:String, param3:IQPProgressData)
       {
          super();
@@ -23,6 +25,7 @@ package net.wg.gui.battle.views.questProgress.animated
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._view = null;
          this._data = null;
       }
@@ -31,6 +34,11 @@ package net.wg.gui.battle.views.questProgress.animated
       {
          this._view.update(this._id,this._data);
          param1();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

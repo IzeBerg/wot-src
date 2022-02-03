@@ -22,7 +22,7 @@ package net.wg.data.daapi.base
          super();
       }
       
-      public function get disposed() : Boolean
+      public function isDisposed() : Boolean
       {
          return false;
       }
@@ -89,6 +89,11 @@ package net.wg.data.daapi.base
       }
       
       public function as_dispose() : void
+      {
+         this.dispose();
+      }
+      
+      public final function dispose() : void
       {
       }
       

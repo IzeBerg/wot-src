@@ -13,16 +13,24 @@ package net.wg.gui.battle.views.battleEndWarning.containers
       
       public var timeText:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function Timer()
       {
          super();
          this.infoText.autoSize = TextFieldAutoSize.LEFT;
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          this.infoText = null;
          this.timeText = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

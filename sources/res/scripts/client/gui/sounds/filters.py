@@ -175,6 +175,12 @@ class WWISEMarathonPageFilter(WWISEHangarTasksFilter):
         return States.HANGAR_PLACE_TASKS_EVENTS
 
 
+class WWISEEventPageFilter(WWISEHangarTasksFilter):
+
+    def _getStartState(self):
+        return States.HANGAR_PLACE_TASKS_EVENTS
+
+
 def getEmptyFilter():
     return EmptySoundFilter()
 
@@ -196,7 +202,8 @@ _filters = {SoundFilters.FILTERED_HANGAR: _selectFilter(WWISEFilteredHangarFilte
    SoundFilters.HANGAR_OVERLAY: _selectFilter(WWISEHangarOverlayFilter()), 
    SoundFilters.HANGAR_PLACE_TASKS_DAILY: _selectFilter(WWISEHangarTasksDailyFilter()), 
    SoundFilters.HANGAR_PLACE_TASKS_MISSIONS: _selectFilter(WWISEHangarTasksMissionsFilter()), 
-   SoundFilters.HANGAR_PLACE_TASKS_BATTLE_PASS: _selectFilter(WWISEHangarTasksBPFilter())}
+   SoundFilters.HANGAR_PLACE_TASKS_BATTLE_PASS: _selectFilter(WWISEHangarTasksBPFilter()), 
+   SoundFilters.HANGAR_PLACE_TASKS_EVENTS: _selectFilter(WWISEEventPageFilter())}
 
 def _setState(stateGroup, stateName):
     WWISE.WW_setState(stateGroup, stateName)

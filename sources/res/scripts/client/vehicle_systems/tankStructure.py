@@ -1,6 +1,10 @@
 from collections import namedtuple
 import random
 
+class CgfTankNodes(object):
+    TANK_ROOT = 'Tank.Root'
+
+
 class ModelStates(object):
     UNDAMAGED = 'undamaged'
     DESTROYED = 'destroyed'
@@ -170,6 +174,7 @@ class ColliderTypes(object):
     PLAYER_FLAG = 8
     DYNAMIC_COLLIDER = DYNAMIC_FLAG
     VEHICLE_COLLIDER = DYNAMIC_FLAG | TANK_FLAG
+    PLATOON_VEHICLE_COLLIDER = TANK_FLAG | HANGAR_FLAG
     PLAYER_VEHICLE_COLLIDER = DYNAMIC_FLAG | TANK_FLAG | PLAYER_FLAG
     HANGAR_VEHICLE_COLLIDER = DYNAMIC_FLAG | TANK_FLAG | HANGAR_FLAG
     HANGAR_PLAYER_VEHICLE_COLLIDER = DYNAMIC_FLAG | TANK_FLAG | HANGAR_FLAG | PLAYER_FLAG

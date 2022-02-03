@@ -227,8 +227,8 @@ class BaseHangarAmmunitionSetupView(BaseAmmunitionSetupView):
     def __onAnimationEnd(self):
         if self.__blur is not None:
             self.__blur.enable()
-        g_eventBus.handleEvent(CameraRelatedEvents(CameraRelatedEvents.FORCE_DISABLE_IDLE_PARALAX_MOVEMENT, ctx={'isDisable': True, 'setIdle': True, 'setParallax': True}), EVENT_BUS_SCOPE.LOBBY)
         if not self.viewModel.getIsReady():
+            g_eventBus.handleEvent(CameraRelatedEvents(CameraRelatedEvents.FORCE_DISABLE_IDLE_PARALAX_MOVEMENT, ctx={'isDisable': True, 'setIdle': True, 'setParallax': True}), EVENT_BUS_SCOPE.LOBBY)
             self.viewModel.setIsReady(True)
         self.onAnimationEnd()
         return

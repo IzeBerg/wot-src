@@ -1,5 +1,5 @@
 from math import ceil
-_CEIL_EPS = 6
+_CEIL_EPS = 1
 
 def ceilTo(num, decimals=0):
     multiplier = 10 ** decimals

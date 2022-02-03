@@ -94,6 +94,8 @@ package net.wg.gui.battle.views.ribbonsPanel
       
       private var _glowAnim:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function RibbonCtrl(param1:RibbonSettings, param2:Function)
       {
          super();
@@ -134,6 +136,7 @@ package net.wg.gui.battle.views.ribbonsPanel
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.iconsAnim.addFrameScript(this._hideLeftLastFrameIdx,null);
          this.iconsAnim.addFrameScript(this._hideBottomLastFrameIdx,null);
          this.iconsAnim.addFrameScript(this._shiftLastFrameIdx,null);
@@ -402,6 +405,11 @@ package net.wg.gui.battle.views.ribbonsPanel
       {
          this._icons.updateIcons();
          this._texts.updateTextFields();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

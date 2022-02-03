@@ -1,6 +1,7 @@
 from constants import IS_DEVELOPMENT
 from soft_exception import SoftException
 UNKNOWN_SENDER_ID = 0
+UNPROCESSED_GIFT_DB_ID = -1
 
 class ClientReqStrategy(object):
     AUTO = 'auto'

@@ -665,6 +665,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.wgnpSteamAccCtrl.statusEvents.unsubscribe(StatusTypes.ADD_NEEDED, self.__onEmailAddNeeded)
         self.wgnpDemoAccCtrl.statusEvents.unsubscribe(StatusTypes.PROCESSING, self.__onDemoAccountRenameProcessing, context=NICKNAME_CONTEXT)
         self.wgnpDemoAccCtrl.statusEvents.unsubscribe(StatusTypes.ADDED, self.__onDemoAccountRenameCompleted, context=NICKNAME_CONTEXT)
+        self.wgnpDemoAccCtrl.statusEvents.unsubscribe(StatusTypes.UNDEFINED, self.__onDemoAccountRenameCompleted, context=NICKNAME_CONTEXT)
 
     def __closeWindowsWithTopSubViewLayer(self):
         windows = self.gui.windowsManager.findWindows(lambda w: w.layer == WindowLayer.TOP_SUB_VIEW)

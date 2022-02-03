@@ -18,6 +18,8 @@ package net.wg.gui.lobby.settings.feedback.damageIndicator
       
       private var _isInitialized:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function DamageIndicatorsContainer()
       {
          super();
@@ -26,6 +28,7 @@ package net.wg.gui.lobby.settings.feedback.damageIndicator
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._tfWithArrow.splice(0,this._tfWithArrow.length);
          this._tfWithArrow = null;
          this.extendedMc.dispose();
@@ -56,6 +59,11 @@ package net.wg.gui.lobby.settings.feedback.damageIndicator
             this._isInitialized = true;
             this._isWithValue = param2;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

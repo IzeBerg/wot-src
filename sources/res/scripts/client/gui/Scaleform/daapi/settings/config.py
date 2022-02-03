@@ -101,8 +101,6 @@ LOBBY_TOOLTIPS_BUILDERS_PATHS = (
  (
   'gui.Scaleform.daapi.view.tooltips.battle_pass_builders', _TOOLTIPS.BATTLE_PASS_SET),
  (
-  'gui.Scaleform.daapi.view.tooltips.seniority_builders', _TOOLTIPS.SENIORITY_SET),
- (
   'gui.Scaleform.daapi.view.tooltips.mapbox_lobby_builders', _TOOLTIPS.MAPBOX_LOBBY_SET),
  (
   'gui.Scaleform.daapi.view.tooltips.account_completion_builders', _TOOLTIPS.ACCOUNT_COMPLETION_SET),

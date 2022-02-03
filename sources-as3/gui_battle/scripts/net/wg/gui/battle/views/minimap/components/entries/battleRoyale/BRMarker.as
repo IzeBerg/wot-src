@@ -29,6 +29,8 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
       
       private var _entryName:String = "";
       
+      private var _disposed:Boolean = false;
+      
       public function BRMarker()
       {
          this._colorSchMgr = App.colorSchemeMgr;
@@ -39,8 +41,9 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
          this._iconContainer.smoothing = true;
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          this._iconContainer = null;
          this._colorSchMgr = null;
          this._atlasMgr = null;
@@ -106,6 +109,11 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
       private function get colorSchemeName() : String
       {
          return "vm_" + this._entryName;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

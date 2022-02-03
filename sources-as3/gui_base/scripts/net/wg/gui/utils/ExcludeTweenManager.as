@@ -10,6 +10,8 @@ package net.wg.gui.utils
       
       private var _currentTweens:Dictionary;
       
+      private var _disposed:Boolean = false;
+      
       public function ExcludeTweenManager()
       {
          super();
@@ -52,8 +54,14 @@ package net.wg.gui.utils
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.unregisterAll();
          this._currentTweens = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

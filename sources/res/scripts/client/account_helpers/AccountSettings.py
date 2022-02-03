@@ -79,6 +79,7 @@ RANKED_YEAR_RATING_COUNTER = 'rankedYearRatingCounter'
 RANKED_SHOP_COUNTER = 'rankedShopCounter'
 BOOSTERS_FOR_CREDITS_SLOT_COUNTER = 'boostersForCreditsSlotCounter'
 SENIORITY_AWARDS_COUNTER = 'seniorityAwardsCounter'
+SENIORITY_AWARDS_WINDOW_SHOWN = 'seniorityAwardsWindowShown'
 DEMOUNT_KIT_SEEN = 'demountKitSeen'
 VIEWED_OFFERS = 'viewedOffers'
 OFFERS_DISABLED_MSG_SEEN = 'offersDisabledMsgSeen'
@@ -153,13 +154,13 @@ STYLE_PREVIEW_VEHICLES_POOL = 'stylePreviewVehiclesPool'
 RANKED_WEB_INFO = 'rankedWebLeague'
 RANKED_WEB_INFO_UPDATE = 'rankedWebLeagueUpdate'
 RANKED_AWARDS_BUBBLE_YEAR_REACHED = 'rankedAwardsBubbleYearReached'
+RANKED_CURRENT_AWARDS_BUBBLE_YEAR_REACHED = 'rankedCurrentAwardsBubbleYearReached'
 RANKED_ENTITLEMENT_EVENTS_AMOUNT = 'rankedEntitlementEventsAmount'
 RANKED_YEAR_POSITION = 'rankedYearPosition'
 BATTLE_ROYALE_HANGAR_BOTTOM_PANEL_VIEWED = 'battleRoyaleHangarBottomPanelViewed'
 MARATHON_REWARD_WAS_SHOWN_PREFIX = 'marathonRewardScreenWasShown'
 MARATHON_VIDEO_WAS_SHOWN_PREFIX = 'marathonRewardVideoWasShown'
 SUBTITLES = 'subtitles'
-TECHTREE_INTRO_BLUEPRINTS = 'techTreeIntroBlueprints'
 MODULES_ANIMATION_SHOWN = 'collectibleVehiclesAnimWasShown'
 NEW_SHOP_TABS = 'newShopTabs'
 IS_COLLECTIBLE_VEHICLES_VISITED = 'isCollectibleVehiclesVisited'
@@ -502,8 +503,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                  BARRACKS_FILTER: {'nation': -1, 'role': 'None', 'tankType': 'None', 'location': 3, 'nationID': None}, ORDERS_FILTER: {'isSelected': False}, GUI_START_BEHAVIOR: {'isFreeXPInfoDialogShowed': False, 'isRankedWelcomeViewShowed': False, 
                                       'isRankedWelcomeViewStarted': False, 
                                       'isEpicRandomCheckboxClicked': False, 
-                                      'techTreeIntroBlueprintsReceived': False, 
-                                      'techTreeIntroShowed': False, 'isDisplayPlatoonMembersClicked': False, 
+                                      'isDisplayPlatoonMembersClicked': False, 
                                       GuiSettingsBehavior.VEH_POST_PROGRESSION_UNLOCK_MSG_NEED_SHOW: True}, 
                  EULA_VERSION: {'version': 0}, LINKEDSET_QUESTS: {'shown': 0}, FORT_MEMBER_TUTORIAL: {'wasShown': False}, IGR_PROMO: {'wasShown': False}, CONTACTS: {'showOfflineUsers': True, 'showOthersCategory': True}, GOLD_FISH_LAST_SHOW_TIME: 0, 
                  BOOSTERS_FILTER: 0, 
@@ -774,9 +774,9 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   RANKED_STYLED_VEHICLES_POOL: [], RANKED_WEB_INFO: None, 
                   RANKED_WEB_INFO_UPDATE: None, 
                   RANKED_AWARDS_BUBBLE_YEAR_REACHED: False, 
+                  RANKED_CURRENT_AWARDS_BUBBLE_YEAR_REACHED: False, 
                   NATION_CHANGE_VIEWED: False, 
-                  LAST_BATTLE_PASS_POINTS_SEEN: 0, 
-                  TECHTREE_INTRO_BLUEPRINTS: {}, MODULES_ANIMATION_SHOWN: False, 
+                  LAST_BATTLE_PASS_POINTS_SEEN: {}, MODULES_ANIMATION_SHOWN: False, 
                   SUBTITLES: True, 
                   RANKED_YEAR_POSITION: None, 
                   TOP_OF_TREE_CONFIG: {}, BECOME_ELITE_VEHICLES_WATCHED: set(), 
@@ -902,7 +902,8 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                           ACTIVE_TEST_PARTICIPATION_CONFIRMED: False, 
                           IS_SHOP_VISITED: False, 
                           LAST_SHOP_ACTION_COUNTER_MODIFICATION: None, 
-                          OVERRIDEN_HEADER_COUNTER_ACTION_ALIASES: set()}, 
+                          OVERRIDEN_HEADER_COUNTER_ACTION_ALIASES: set(), 
+                          SENIORITY_AWARDS_WINDOW_SHOWN: False}, 
    KEY_UI_FLAGS: {}}
 
 def _filterAccountSection(dataSec):
@@ -940,7 +941,7 @@ def _recursiveStep(defaultDict, savedDict, finalDict):
 
 class AccountSettings(object):
     onSettingsChanging = Event.Event()
-    version = 49
+    version = 52
     settingsCore = dependency.descriptor(ISettingsCore)
     __cache = {'login': None, 'section': None}
     __sessionSettings = {'login': None, 'section': None}
@@ -1465,6 +1466,29 @@ class AccountSettings(object):
                             savedFilters['clanRented'] = False
                         filtersSection.write(filterSection, _pack(savedFilters))
 
+            if currVersion < 50:
+                for key, section in _filterAccountSection(ads):
+                    accFilters = AccountSettings._readSection(section, KEY_FILTERS)
+                    if GUI_START_BEHAVIOR in accFilters.keys():
+                        guiSettings = _unpack(accFilters[GUI_START_BEHAVIOR].asString)
+                        obsoleteKeys = ('techTreeIntroBlueprintsReceived', 'techTreeIntroShowed')
+                        for sectionName in obsoleteKeys:
+                            if sectionName in guiSettings:
+                                del guiSettings[sectionName]
+
+                        accFilters.write(GUI_START_BEHAVIOR, _pack(guiSettings))
+
+            if currVersion < 51:
+                for key, section in _filterAccountSection(ads):
+                    keyFlush = (
+                     RANKED_AWARDS_BUBBLE_YEAR_REACHED, RANKED_CURRENT_AWARDS_BUBBLE_YEAR_REACHED)
+                    keySettings = AccountSettings._readSection(section, KEY_SETTINGS)
+                    for flushName in keyFlush:
+                        if flushName in keySettings.keys():
+                            keySettings.write(flushName, _pack(False))
+
+            if currVersion < 52:
+                AccountSettings.setSettings(LAST_BATTLE_PASS_POINTS_SEEN, {})
         return
 
     @staticmethod

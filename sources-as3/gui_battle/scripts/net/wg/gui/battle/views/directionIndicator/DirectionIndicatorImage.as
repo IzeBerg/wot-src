@@ -16,6 +16,8 @@ package net.wg.gui.battle.views.directionIndicator
       
       public var yellow:DisplayObject;
       
+      private var _disposed:Boolean = false;
+      
       public function DirectionIndicatorImage()
       {
          super();
@@ -27,6 +29,7 @@ package net.wg.gui.battle.views.directionIndicator
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.green = null;
          this.red = null;
          this.purple = null;
@@ -44,6 +47,11 @@ package net.wg.gui.battle.views.directionIndicator
       {
          this.green.y = this.red.y = this.purple.y = param1;
          this.yellow = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -73,6 +73,8 @@ package net.wg.gui.battle.random.views.fragCorrelationBar.components
       
       private var _activeTierLevels:Vector.<int>;
       
+      private var _disposed:Boolean = false;
+      
       public function VehicleMarkersList(param1:MovieClip, param2:Boolean, param3:String)
       {
          this._vehicleMarkers = new Vector.<FCVehicleMarker>(0);
@@ -110,6 +112,7 @@ package net.wg.gui.battle.random.views.fragCorrelationBar.components
       {
          var _loc1_:FCVehicleMarker = null;
          var _loc2_:TierGroupingElement = null;
+         this._disposed = true;
          for each(_loc1_ in this._vehicleMarkers)
          {
             _loc1_.dispose();
@@ -556,6 +559,11 @@ package net.wg.gui.battle.random.views.fragCorrelationBar.components
       protected function get vehicleMarkers() : Vector.<FCVehicleMarker>
       {
          return this._vehicleMarkers;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

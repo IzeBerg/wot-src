@@ -1,4 +1,5 @@
 from collections import namedtuple
+import re
 from gui.impl.gen import R
 from gui.shared.gui_items import Vehicle
 from helpers import dependency, int2roman
@@ -41,3 +42,22 @@ def showMarathonReward(vehicleCD, videoShownKey):
             window = MarathonRewardViewWindow(specialRewardData)
             window.load()
     return
+
+
+def getRewardImage(path):
+    if path is None:
+        return ''
+    else:
+        return path.replace('../', 'img://gui/')
+
+
+def getRewardLabel(label):
+    if label is None:
+        return ''
+    else:
+        return re.sub('\\D', '', label)
+
+
+def getRewardOverlayType(overlayType):
+    label = overlayType['big'] if overlayType else ''
+    return label.replace('Big', '')

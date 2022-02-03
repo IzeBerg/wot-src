@@ -2318,106 +2318,6 @@
 				</_105mm_c_g_105_55_HESH_M353>
 			</shots>
 		</Cannone_da_105_55>
-		<_127mm_OTO_Melara>
-			<userString>#italy_vehicles:_127mm_OTO_Melara</userString>
-			<tags/>
-			<level>10</level>
-			<price>312000</price>
-			<notInShop>true</notInShop>
-			<impulse>
-				0.48
-				<!--BW_String-->
-			</impulse>
-			<recoil>
-				<lodDist>MEDIUM</lodDist>
-				<amplitude>
-					0.44
-					<!--BW_String-->
-				</amplitude>
-				<recoilEffect>main</recoilEffect>
-			</recoil>
-			<effects>shot_largeext</effects>
-			<reloadEffect>autoloader_reload85_107</reloadEffect>
-			<pitchLimits>
-				<minPitch>
-					0.0 -20.0 1.0 -20.0
-					<!--BW_String-->
-				</minPitch>
-				<maxPitch>
-					0.0 10.0 1.0 10.0
-					<!--BW_String-->
-				</maxPitch>
-			</pitchLimits>
-			<turretYawLimits>-180 180</turretYawLimits>
-			<rotationSpeed>20</rotationSpeed>
-			<reloadTime>
-				7.5
-				<!--BW_String-->
-			</reloadTime>
-			<maxAmmo>60</maxAmmo>
-			<aimingTime>2</aimingTime>
-			<weight>2600</weight>
-			<maxHealth>208</maxHealth>
-			<maxRegenHealth>104</maxRegenHealth>
-			<repairCost>8</repairCost>
-			<invisibilityFactorAtShot>
-				0.1
-				<!--BW_String-->
-			</invisibilityFactorAtShot>
-			<shotDispersionRadius>
-				0.4
-				<!--BW_String-->
-			</shotDispersionRadius>
-			<shotDispersionFactors>
-				<turretRotation>
-					0.05
-					<!--BW_String-->
-				</turretRotation>
-				<afterShot>
-					4.0
-					<!--BW_String-->
-				</afterShot>
-				<whileGunDamaged>
-					2.0
-					<!--BW_String-->
-				</whileGunDamaged>
-			</shotDispersionFactors>
-			<shots>
-				<_127mm_APDS_127_54>
-					<defaultPortion>1</defaultPortion>
-					<speed>1452</speed>
-					<gravity>
-						9.81
-						<!--BW_String-->
-					</gravity>
-					<maxDistance>720</maxDistance>
-					<piercingPower>268 242</piercingPower>
-				</_127mm_APDS_127_54>
-				<_127mm_HEAT_127_54>
-					<defaultPortion>
-						0.0
-						<!--BW_String-->
-					</defaultPortion>
-					<speed>756</speed>
-					<gravity>
-						9.81
-						<!--BW_String-->
-					</gravity>
-					<maxDistance>720</maxDistance>
-					<piercingPower>325 325</piercingPower>
-				</_127mm_HEAT_127_54>
-				<_127mm_Mark_116>
-					<defaultPortion>0</defaultPortion>
-					<speed>756</speed>
-					<gravity>
-						9.81
-						<!--BW_String-->
-					</gravity>
-					<maxDistance>720</maxDistance>
-					<piercingPower>127 127</piercingPower>
-				</_127mm_Mark_116>
-			</shots>
-		</_127mm_OTO_Melara>
 		<_120mm_Cannone_Da_120_62>
 			<userString>#italy_vehicles:_120mm_Cannone_Da_120_62</userString>
 			<tags/>
@@ -2617,5 +2517,105 @@
 				</_120mm_a_e_T15HE>
 			</shots>
 		</_120mm_Cannone_da_120_67_T53>
+		<_127mm_OTO_Melara>
+			<userString>#italy_vehicles:_127mm_OTO_Melara</userString>
+			<tags/>
+			<level>10</level>
+			<price>312000</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.48
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.44
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>main</recoilEffect>
+			</recoil>
+			<effects>shot_largeext</effects>
+			<reloadEffect>autoloader_reload85_107</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -20.0 1.0 -20.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 10.0 1.0 10.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>20</rotationSpeed>
+			<reloadTime>
+				7.5
+				<!--BW_String-->
+			</reloadTime>
+			<maxAmmo>60</maxAmmo>
+			<aimingTime>2</aimingTime>
+			<weight>2600</weight>
+			<maxHealth>208</maxHealth>
+			<maxRegenHealth>104</maxRegenHealth>
+			<repairCost>8</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.4
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.05
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					4.0
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_127mm_APDS_127_54>
+					<defaultPortion>1</defaultPortion>
+					<speed>1452</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>268 242</piercingPower>
+				</_127mm_APDS_127_54>
+				<_127mm_HEAT_127_54>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>756</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>325 325</piercingPower>
+				</_127mm_HEAT_127_54>
+				<_127mm_Mark_116>
+					<defaultPortion>0</defaultPortion>
+					<speed>756</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>127 127</piercingPower>
+				</_127mm_Mark_116>
+			</shots>
+		</_127mm_OTO_Melara>
 	</shared>
 </root>

@@ -16,6 +16,8 @@ package net.wg.gui.components.predictionIndicator
       
       public var animMc:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function PredictionIndicatorItem()
       {
          super();
@@ -24,6 +26,7 @@ package net.wg.gui.components.predictionIndicator
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.animMc = null;
       }
       
@@ -42,6 +45,11 @@ package net.wg.gui.components.predictionIndicator
       {
          this.animMc.gotoAndPlay(LBL_SHOW);
          visible = true;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

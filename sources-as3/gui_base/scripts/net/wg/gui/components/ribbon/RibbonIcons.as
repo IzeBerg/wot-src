@@ -36,6 +36,8 @@ package net.wg.gui.components.ribbon
       
       private var _ribbonSettings:RibbonSettings = null;
       
+      private var _disposed:Boolean = false;
+      
       public function RibbonIcons()
       {
          super();
@@ -52,6 +54,7 @@ package net.wg.gui.components.ribbon
       
       public final function dispose() : void
       {
+         this._disposed = true;
          removeChild(this._background);
          removeChild(this._ribbonTypeIcon);
          removeChild(this._damageSourceIcon);
@@ -142,6 +145,11 @@ package net.wg.gui.components.ribbon
             _loc1_ = this._ribbonSettings.getAtlas();
             this._atlasMgr.drawGraphics(_loc1_,this._ribbonSettings.getDamageSourceIcon(this._damageSourceTypeStr),this._damageSourceIcon.graphics);
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -59,7 +59,7 @@
 		</trophyUpgradedAdditionalInvisibilityDevice>
 	</optDevsOverrides>
 	<repairCost>
-		7.0
+		12.0
 		<!--BW_String-->
 	</repairCost>
 	<premiumVehicleXPFactor>
@@ -2157,6 +2157,8 @@
 						<collisionModelServer>vehicles/chinese/Ch22_113_Beijing_Opera/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/chinese/Ch22_113_Beijing_Opera/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_large_mb</effects>
+					<reloadEffect>reload115_152</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>

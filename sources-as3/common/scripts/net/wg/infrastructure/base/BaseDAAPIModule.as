@@ -23,7 +23,7 @@ package net.wg.infrastructure.base
          super();
       }
       
-      public function get disposed() : Boolean
+      public function isDisposed() : Boolean
       {
          return this._disposed;
       }
@@ -34,6 +34,14 @@ package net.wg.infrastructure.base
       
       protected function onDispose() : void
       {
+      }
+      
+      public final function dispose() : void
+      {
+         dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_BEFORE_DISPOSE));
+         this._disposed = true;
+         this.onDispose();
+         dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_AFTER_DISPOSE));
       }
       
       [Event(name="onAfterPopulate",type="net.wg.infrastructure.events.LifeCycleEvent")]
@@ -61,10 +69,7 @@ package net.wg.infrastructure.base
       [Event(name="onBeforeDispose",type="net.wg.infrastructure.events.LifeCycleEvent")]
       public final function as_dispose() : void
       {
-         dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_BEFORE_DISPOSE));
-         this.onDispose();
-         this._disposed = true;
-         dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_AFTER_DISPOSE));
+         this.dispose();
       }
       
       protected final function assert(param1:Boolean, param2:String = "failed assert") : void

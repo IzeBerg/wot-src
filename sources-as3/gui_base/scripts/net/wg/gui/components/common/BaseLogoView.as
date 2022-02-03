@@ -10,6 +10,8 @@ package net.wg.gui.components.common
       
       private var overrides:Array;
       
+      private var _disposed:Boolean = false;
+      
       public function BaseLogoView()
       {
          this.overrides = [];
@@ -41,8 +43,14 @@ package net.wg.gui.components.common
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.overrides.splice(0,this.overrides.length);
          this.overrides = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

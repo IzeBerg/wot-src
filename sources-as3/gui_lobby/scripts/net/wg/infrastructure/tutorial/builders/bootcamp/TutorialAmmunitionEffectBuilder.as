@@ -21,8 +21,11 @@ package net.wg.infrastructure.tutorial.builders.bootcamp
       
       override protected function onDispose() : void
       {
-         this.disposeTweens();
-         this._tweens = null;
+         if(this._tweens != null)
+         {
+            this.disposeTweens();
+            this._tweens = null;
+         }
          super.onDispose();
       }
       

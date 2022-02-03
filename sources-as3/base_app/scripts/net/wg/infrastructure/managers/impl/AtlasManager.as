@@ -30,7 +30,7 @@ package net.wg.infrastructure.managers.impl
          this._atlasesDict = new Dictionary(true);
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
          var _loc1_:AtlasVO = null;
          App.utils.asserter.assert(!this._isDisposed,"AtlasManager " + Errors.ALREADY_DISPOSED);
@@ -216,6 +216,11 @@ package net.wg.infrastructure.managers.impl
          }
          _loc3_.pendingInitialization.length = 0;
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._isDisposed;
+      }
    }
 }
 
@@ -227,6 +232,8 @@ class AtlasVO implements IDisposable
     
    
    public var atlas:IAtlas;
+   
+   private var _disposed:Boolean = false;
    
    public var locks:Array;
    
@@ -242,10 +249,16 @@ class AtlasVO implements IDisposable
    
    public function dispose() : void
    {
+      this._disposed = true;
       this.atlas = null;
       this.locks.length = 0;
       this.locks = null;
       this.pendingInitialization.length = 0;
       this.pendingInitialization = null;
+   }
+   
+   public function isDisposed() : Boolean
+   {
+      return this._disposed;
    }
 }

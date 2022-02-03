@@ -11,6 +11,8 @@ package net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel.container
       
       public var taskAnimSpr:TaskAnimation = null;
       
+      private var _disposed:Boolean = false;
+      
       public function Task()
       {
          super();
@@ -31,10 +33,16 @@ package net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel.container
          return this.taskAnimSpr.getTaskTextHeight();
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          this.taskAnimSpr.dispose();
          this.taskAnimSpr = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

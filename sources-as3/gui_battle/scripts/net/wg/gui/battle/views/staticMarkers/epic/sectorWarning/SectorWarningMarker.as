@@ -13,6 +13,8 @@ package net.wg.gui.battle.views.staticMarkers.epic.sectorWarning
       
       public var txtLabel:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function SectorWarningMarker()
       {
          super();
@@ -27,6 +29,7 @@ package net.wg.gui.battle.views.staticMarkers.epic.sectorWarning
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.marker = null;
          this.txtLabel = null;
       }
@@ -43,6 +46,11 @@ package net.wg.gui.battle.views.staticMarkers.epic.sectorWarning
       public function showWarning(param1:String) : void
       {
          this.marker.gotoAndStop(param1);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

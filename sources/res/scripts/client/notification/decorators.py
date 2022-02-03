@@ -7,12 +7,15 @@ from gui.Scaleform.daapi.view.common.battle_royale.br_helpers import currentHang
 from gui.clans.formatters import ClanSingleNotificationHtmlTextFormatter, ClanMultiNotificationsHtmlTextFormatter, ClanAppActionHtmlTextFormatter
 from gui.clans.settings import CLAN_APPLICATION_STATES, CLAN_INVITE_STATES
 from gui.customization.shared import isVehicleCanBeCustomized
+from gui.impl import backport
+from gui.impl.gen import R
 from gui.prb_control import prbInvitesProperty
 from gui.prb_control.formatters.invites import getPrbInviteHtmlFormatter
 from gui.shared import g_eventBus, EVENT_BUS_SCOPE
 from gui.shared.events import ViewEventType, HangarSpacesSwitcherEvent
 from gui.shared.gui_items import GUI_ITEM_TYPE
 from gui.shared.notifications import NotificationPriorityLevel, NotificationGuiSettings, NotificationGroup
+from gui.shared.utils.functions import makeTooltip
 from gui.wgnc.settings import WGNC_DEFAULT_ICON, WGNC_POP_UP_BUTTON_WIDTH
 from helpers import dependency
 from helpers import i18n
@@ -24,6 +27,7 @@ from messenger.proto import proto_getter
 from messenger.proto.xmpp.xmpp_constants import XMPP_ITEM_TYPE
 from notification.settings import NOTIFICATION_TYPE, NOTIFICATION_BUTTON_STATE
 from notification.settings import makePathToIcon
+from skeletons.gui.game_control import IBattlePassController
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.web import IWebController
 if typing.TYPE_CHECKING:
@@ -216,18 +220,6 @@ class MessageDecorator(_NotificationDecorator):
            'notify': self.isNotify()}
 
 
-class ChoosingDevicesMessageDecorator(MessageDecorator):
-
-    def getType(self):
-        return NOTIFICATION_TYPE.CHOOSING_DEVICES
-
-    def getGroup(self):
-        return NotificationGroup.OFFER
-
-    def getSavedData(self):
-        return self._vo['message'].get('savedData', {})
-
-
 class RecruitReminderMessageDecorator(MessageDecorator):
 
     def __init__(self, entityID, message, savedData, msgPrLevel=NotificationPriorityLevel.LOW):
@@ -257,6 +249,23 @@ class EmailConfirmationReminderMessageDecorator(MessageDecorator):
 
     def getGroup(self):
         return NotificationGroup.OFFER
+
+
+class PsaCoinReminderMessageDecorator(MessageDecorator):
+
+    def __init__(self, entityID, coinCount, msgPrLevel=NotificationPriorityLevel.LOW):
+        entity = g_settings.msgTemplates.format('PsaCoinReminder', ctx={'count': str(coinCount)}, data={'savedData': coinCount})
+        settings = NotificationGuiSettings(isNotify=True, priorityLevel=msgPrLevel)
+        super(PsaCoinReminderMessageDecorator, self).__init__(entityID, entity, settings)
+
+    def getType(self):
+        return NOTIFICATION_TYPE.PSACOIN_REMINDER
+
+    def getGroup(self):
+        return NotificationGroup.OFFER
+
+    def getSavedData(self):
+        return self._vo['message'].get('savedData', 0)
 
 
 class LockButtonMessageDecorator(MessageDecorator):
@@ -857,3 +866,64 @@ class MissingEventsDecorator(_NotificationDecorator):
            'message': message, 
            'notify': self.isNotify(), 
            'auxData': []}
+
+
+class BattlePassSwitchChapterReminderDecorator(MessageDecorator):
+
+    def __init__(self, entityID, message):
+        super(BattlePassSwitchChapterReminderDecorator, self).__init__(entityID, self.__makeEntity(message), self.__makeSettings())
+
+    def getGroup(self):
+        return NotificationGroup.OFFER
+
+    def getType(self):
+        return NOTIFICATION_TYPE.BATTLE_PASS_SWITCH_CHAPTER_REMINDER
+
+    def __makeEntity(self, message):
+        return g_settings.msgTemplates.format('BattlePassSwitchChapterReminder', ctx={'text': message})
+
+    def __makeSettings(self):
+        return NotificationGuiSettings(isNotify=True, priorityLevel=NotificationPriorityLevel.LOW)
+
+
+class BattlePassLockButtonDecorator(MessageDecorator):
+    __battlePassController = dependency.descriptor(IBattlePassController)
+
+    def __init__(self, entityID, entity=None, settings=None, model=None):
+        super(BattlePassLockButtonDecorator, self).__init__(entityID, entity, settings, model)
+        self.__battlePassController.onBattlePassSettingsChange += self.__update
+        self.__battlePassController.onSeasonStateChange += self.__update
+
+    def clear(self):
+        self.__battlePassController.onBattlePassSettingsChange -= self.__update
+        self.__battlePassController.onSeasonStateChange -= self.__update
+        super(BattlePassLockButtonDecorator, self).clear()
+
+    def _make(self, formatted=None, settings=None):
+        self.__updateEntityButtons()
+        super(BattlePassLockButtonDecorator, self)._make(formatted, settings)
+
+    def __updateEntityButtons(self):
+        if self._entity is None:
+            return
+        else:
+            buttonsLayout = self._entity.get('buttonsLayout')
+            if not buttonsLayout:
+                return
+            if self.__battlePassController.isActive():
+                state, tooltip = NOTIFICATION_BUTTON_STATE.DEFAULT, ''
+            else:
+                state = NOTIFICATION_BUTTON_STATE.VISIBLE
+                tooltip = makeTooltip(body=backport.text(R.strings.system_messages.battlePass.switch_pause.body()))
+            buttonsStates = self._entity.get('buttonsStates')
+            if buttonsStates is None:
+                return
+            buttonsStates['submit'] = state
+            buttonsLayout[0]['tooltip'] = tooltip
+            return
+
+    def __update(self, *_):
+        self.__updateEntityButtons()
+        if self._model is not None:
+            self._model.updateNotification(self.getType(), self._entityID, self._entity, False)
+        return

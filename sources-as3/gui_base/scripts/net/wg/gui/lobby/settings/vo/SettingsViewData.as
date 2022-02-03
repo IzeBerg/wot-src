@@ -7,6 +7,8 @@ package net.wg.gui.lobby.settings.vo
    {
        
       
+      private var _disposed:Boolean = false;
+      
       private var _id:String = null;
       
       private var _data:SettingsDataVo = null;
@@ -20,6 +22,7 @@ package net.wg.gui.lobby.settings.vo
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._data = null;
       }
       
@@ -31,6 +34,11 @@ package net.wg.gui.lobby.settings.vo
       public function get data() : SettingsDataVo
       {
          return this._data;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -207,5 +207,10 @@ package net.wg.gui.battle.components
             super.visible = param1;
          }
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._baseDisposed;
+      }
    }
 }

@@ -34,6 +34,8 @@ package net.wg.gui.battle.tutorial.views.tutorial.utils.tween
       
       private var _isExternalLinkToInstance:Boolean = true;
       
+      private var _disposed:Boolean = false;
+      
       public function TutorialTweener(param1:Boolean)
       {
          super();
@@ -124,8 +126,9 @@ package net.wg.gui.battle.tutorial.views.tutorial.utils.tween
          }
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          this._params.length = 0;
          if(this._tweenFlow)
          {
@@ -137,6 +140,11 @@ package net.wg.gui.battle.tutorial.views.tutorial.utils.tween
          this._tweenHandler = null;
          this._params = null;
          this._tweenFlow = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

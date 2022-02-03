@@ -1,6 +1,6 @@
 import copy, json
 from logging import getLogger
-import BigWorld, Math, MusicControllerWWISE, ResMgr, constants
+import itertools, BigWorld, Math, MusicControllerWWISE, ResMgr, constants
 from PlayerEvents import g_playerEvents
 from debug_utils import LOG_DEBUG, LOG_ERROR, LOG_CURRENT_EXCEPTION
 from gui.hangar_config import HangarConfig
@@ -11,8 +11,10 @@ from gui.hangar_cameras.hangar_camera_manager import HangarCameraManager
 from skeletons.gui.shared.gui_items import IGuiItemsFactory
 from skeletons.gui.turret_gun_angles import ITurretAndGunAngles
 from skeletons.map_activities import IMapActivities
-from visual_script.multi_plan_provider import MultiPlanProvider
-from visual_script.misc import ASPECT, VisualScriptTag
+from visual_script.multi_plan_provider import makeMultiPlanProvider, CallableProviderType
+from visual_script.misc import ASPECT, VisualScriptTag, readVisualScriptPlans
+from SpaceVisibilityFlags import SpaceVisibilityFlagsFactory
+from constants import HANGAR_VISIBILITY_TAGS
 from skeletons.gui.shared.utils import IHangarSpace
 _DEFAULT_SPACES_PATH = 'spaces'
 SERVER_CMD_CHANGE_HANGAR = 'cmd_change_hangar'
@@ -20,9 +22,7 @@ SERVER_CMD_CHANGE_HANGAR_PREM = 'cmd_change_hangar_prem'
 _CUSTOMIZATION_HANGAR_SETTINGS_SEC = 'customizationHangarSettings'
 _LOGIN_BLACK_BG_IMG = 'gui/maps/login/blackBg.png'
 _SECONDARY_HANGAR_SETTINGS_SEC = 'secondaryHangarSettings'
-_FULL_VISIBILITY = (1 << 10) - 1 | 1 << 16 | 1 << 17 | 1 << 18 | 1 << 19
-_RANKED_ON_MASK, _RANKED_GAP_MASK, _RANKED_OFF_MASK = (128, 256, 512)
-SPACE_FULL_VISIBILITY_MASK = _FULL_VISIBILITY & ~_RANKED_ON_MASK & ~_RANKED_GAP_MASK & ~_RANKED_OFF_MASK
+FULL_VISIBILITY_TAG_IDS = set(HANGAR_VISIBILITY_TAGS.IDS[key] for key in itertools.chain(HANGAR_VISIBILITY_TAGS.LAYERS, HANGAR_VISIBILITY_TAGS.REGIONS))
 
 def _getDefaultHangarPath(isPremium):
     global _HANGAR_CFGS
@@ -48,10 +48,17 @@ def _getHangarType(isPremium):
     return 'basic'
 
 
-def _getHangarVisibilityMask(isPremium):
+def getHangarFullVisibilityMask(spacePath):
+    spaceName = _getSpaceNameFromPath(spacePath)
+    spaceVisibilityFlags = SpaceVisibilityFlagsFactory.create(spaceName)
+    availableFullVisibilityIDs = FULL_VISIBILITY_TAG_IDS.intersection(spaceVisibilityFlags.typeIDToIndex.iterkeys())
+    return spaceVisibilityFlags.getMaskForGameplayIDs(availableFullVisibilityIDs)
+
+
+def _getHangarVisibilityMask(isPremium, spacePath):
     if isPremium in _EVENT_HANGAR_PATHS:
         return _EVENT_HANGAR_PATHS[isPremium][1]
-    return SPACE_FULL_VISIBILITY_MASK
+    return getHangarFullVisibilityMask(spacePath)
 
 
 _CFG = HangarConfig()
@@ -123,7 +130,13 @@ def _validateConfigValues(cfg):
 def _loadVisualScript(cfg, section):
     if section.has_key(VisualScriptTag):
         vseSection = section[VisualScriptTag]
-        cfg['vse_plans'] = [ value.asString for name, value in vseSection.items() if name == 'plan' ]
+        cfg['vse_plans'] = readVisualScriptPlans(vseSection)
+
+
+def _getSpaceNameFromPath(path):
+    if 'spaces' not in path:
+        return path
+    return path.split('/')[(-1)]
 
 
 class ClientHangarSpace(object):
@@ -149,7 +162,8 @@ class ClientHangarSpace(object):
         self.__onVehicleLoadedCallback = onVehicleLoadedCallback
         self.__spacePath = None
         self.__spaceVisibilityMask = None
-        self._vsePlans = MultiPlanProvider(ASPECT.CLIENT)
+        self.__geometryID = None
+        self._vsePlans = makeMultiPlanProvider(ASPECT.HANGAR, CallableProviderType.HANGAR)
         _HANGAR_CFGS = _readHangarSettings()
         return
 
@@ -162,7 +176,7 @@ class ClientHangarSpace(object):
         isIGR = self.igrCtrl.getRoomType() == constants.IGR_TYPE.PREMIUM
         spacePath = _getHangarPath(isPremium, isIGR)
         spaceType = _getHangarType(isPremium)
-        spaceVisibilityMask = _getHangarVisibilityMask(isPremium)
+        spaceVisibilityMask = _getHangarVisibilityMask(isPremium, spacePath)
         LOG_DEBUG(('load hangar: hangar type = <{0:>s}>, space = <{1:>s}>').format(spaceType, spacePath))
         safeSpacePath = _getDefaultHangarPath(False)
         if ResMgr.openSection(spacePath) is None:
@@ -373,12 +387,14 @@ class _ClientHangarSpacePathOverride(object):
     def setPremium(self, isPremium):
         self.hangarSpace.refreshSpace(isPremium, True)
 
-    def setPath(self, path, visibilityMask=SPACE_FULL_VISIBILITY_MASK, isPremium=None, isReload=True):
+    def setPath(self, path, visibilityMask=None, isPremium=None, isReload=True):
         if path is not None and not path.startswith('spaces/'):
             path = 'spaces/' + path
         if isPremium is None:
             isPremium = self.hangarSpace.isPremium
         if path is not None:
+            if visibilityMask is None:
+                visibilityMask = getHangarFullVisibilityMask(path)
             _EVENT_HANGAR_PATHS[isPremium] = (
              path, visibilityMask)
         elif isPremium in _EVENT_HANGAR_PATHS:
@@ -408,7 +424,7 @@ class _ClientHangarSpacePathOverride(object):
                     hasChanged = True
 
         for notification in diff['added']:
-            if not notification['data']:
+            if not notification['data'] or notification['type'] not in (SERVER_CMD_CHANGE_HANGAR, SERVER_CMD_CHANGE_HANGAR_PREM):
                 continue
             try:
                 data = json.loads(notification['data'])
@@ -416,10 +432,10 @@ class _ClientHangarSpacePathOverride(object):
                 if 'visibilityMask' in data:
                     visibilityMask = int(data['visibilityMask'], 16)
                 else:
-                    visibilityMask = SPACE_FULL_VISIBILITY_MASK
+                    visibilityMask = getHangarFullVisibilityMask(path)
             except Exception:
                 path = notification['data']
-                visibilityMask = SPACE_FULL_VISIBILITY_MASK
+                visibilityMask = getHangarFullVisibilityMask(path)
 
             if notification['type'] == SERVER_CMD_CHANGE_HANGAR:
                 _EVENT_HANGAR_PATHS[False] = (

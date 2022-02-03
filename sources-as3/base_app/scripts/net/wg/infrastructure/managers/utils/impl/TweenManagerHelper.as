@@ -14,6 +14,8 @@ package net.wg.infrastructure.managers.utils.impl
       
       private var durationByType:Vector.<Object>;
       
+      private var _disposed:Boolean = false;
+      
       public function TweenManagerHelper(param1:TweenConstraintsVO)
       {
          super();
@@ -145,11 +147,17 @@ package net.wg.infrastructure.managers.utils.impl
          return new Vector.<String>(0);
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          this.data = null;
          this.durationByType.splice(0,this.durationByType.length);
          this.durationByType = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

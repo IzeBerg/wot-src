@@ -77,6 +77,8 @@ package net.wg.gui.components.paginator
       
       private var _paginatorPos:Point = null;
       
+      private var _disposed:Boolean = false;
+      
       public function PaginatorArrowsController(param1:DisplayObjectContainer, param2:PaginationGroup, param3:ISoundButtonEx, param4:ISoundButtonEx, param5:String, param6:int = 0, param7:Boolean = false, param8:int = 0, param9:Boolean = false)
       {
          super();
@@ -108,6 +110,7 @@ package net.wg.gui.components.paginator
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -467,6 +470,11 @@ package net.wg.gui.components.paginator
          {
             this.setPageIndex(this._currentMissionIndex);
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

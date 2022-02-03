@@ -14,6 +14,8 @@ package net.wg.gui.bootcamp.introVideoPage.containers
       
       public var introLogo:IntroLogoContainer;
       
+      private var _disposed:Boolean = false;
+      
       public function IntroPageContainer()
       {
          super();
@@ -26,6 +28,7 @@ package net.wg.gui.bootcamp.introVideoPage.containers
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.introLogo.dispose();
          this.introLogo = null;
       }
@@ -71,6 +74,11 @@ package net.wg.gui.bootcamp.introVideoPage.containers
       public function set logoDescription(param1:String) : void
       {
          this.introLogo.logoDescription = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

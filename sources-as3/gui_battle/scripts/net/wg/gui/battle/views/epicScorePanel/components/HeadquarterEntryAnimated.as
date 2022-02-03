@@ -15,6 +15,8 @@ package net.wg.gui.battle.views.epicScorePanel.components
       
       public var primaryTarget:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function HeadquarterEntryAnimated()
       {
          super();
@@ -22,6 +24,7 @@ package net.wg.gui.battle.views.epicScorePanel.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          stop();
          this.base.dispose();
          this.base = null;
@@ -52,6 +55,11 @@ package net.wg.gui.battle.views.epicScorePanel.components
       public function setHealth(param1:Number) : void
       {
          this.base.health = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

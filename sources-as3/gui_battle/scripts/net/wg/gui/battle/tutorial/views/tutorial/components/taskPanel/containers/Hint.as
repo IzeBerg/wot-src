@@ -16,6 +16,8 @@ package net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel.container
       
       public var picture:UILoaderAlt = null;
       
+      private var _disposed:Boolean = false;
+      
       public function Hint()
       {
          super();
@@ -72,11 +74,17 @@ package net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel.container
          return this.picture.sourceAlt;
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          this.picture.dispose();
          this.picture = null;
          this.hintTF = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

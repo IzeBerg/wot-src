@@ -2485,8 +2485,8 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         self.inputHandler.detachCursor(value, enableAiming)
 
     __cantMoveCriticals = {'engine_destroyed': 'cantMoveEngineDamaged', 
-       'leftTrack_destroyed': 'cantMoveChassisDamaged', 
-       'rightTrack_destroyed': 'cantMoveChassisDamaged', 
+       'leftTrack0_destroyed': 'cantMoveChassisDamaged', 
+       'rightTrack0_destroyed': 'cantMoveChassisDamaged', 
        'vehicle_destroyed': 'cantMoveVehicleDestroyed', 
        'crew_destroyed': 'cantMoveCrewInactive'}
 

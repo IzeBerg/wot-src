@@ -9,6 +9,8 @@ package net.wg.gui.bootcamp.battleTopHint.containers
       
       public var animBlind:HintBlindContainer = null;
       
+      private var _disposed:Boolean = false;
+      
       public function HintAnimationBlind()
       {
          super();
@@ -16,8 +18,14 @@ package net.wg.gui.bootcamp.battleTopHint.containers
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.animBlind.dispose();
          this.animBlind = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

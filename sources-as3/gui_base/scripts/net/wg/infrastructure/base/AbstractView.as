@@ -117,14 +117,16 @@ package net.wg.infrastructure.base
       {
          if(!this._config.cached)
          {
-            this.assertNotNull(this.loader,"loader in " + getQualifiedClassName(this) + "(" + this._config.alias + " alias)");
-            this._loader.unloadAndStop();
+            if(!this._loader)
+            {
+               this.assert(false,"loader in " + getQualifiedClassName(this) + "(" + this._config.alias + " alias)");
+            }
+            App.utils.scheduler.scheduleOnNextFrame(this._loader.unloadAndStop);
             this._loader = null;
          }
          this._config.dispose();
          this._config = null;
          super.onDispose();
-         App.utils.commons.releaseReferences(this);
       }
       
       public function getSubContainers() : Array

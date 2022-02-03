@@ -23,6 +23,8 @@ package net.wg.gui.components.questProgress.components.headerProgress
       
       private var _startXAddType:int = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function HeaderProgressContainer()
       {
          super();
@@ -30,6 +32,7 @@ package net.wg.gui.components.questProgress.components.headerProgress
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.cleanHeaders(this._headerConditions);
          this._headerConditions = null;
       }
@@ -104,6 +107,11 @@ package net.wg.gui.components.questProgress.components.headerProgress
             }
          }
          return null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

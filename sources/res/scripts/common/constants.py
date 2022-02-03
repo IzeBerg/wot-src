@@ -2,7 +2,7 @@ import enum, calendar, time
 from math import cos, radians
 from time import time as timestamp
 from collections import namedtuple
-from itertools import izip
+from itertools import izip, chain
 from realm import CURRENT_REALM
 try:
     import BigWorld
@@ -14,11 +14,13 @@ except ImportError:
 
 IS_CLIENT = BigWorld.component == 'client'
 IS_EDITOR = BigWorld.component == 'editor'
+IS_VS_EDITOR = BigWorld.component == 'vs_editor'
 IS_BOT = BigWorld.component == 'bot'
 IS_CELLAPP = BigWorld.component == 'cell'
 IS_BASEAPP = BigWorld.component in ('base', 'service')
 IS_WEB = BigWorld.component == 'web'
 IS_DYNAPDATER = False
+IS_CGF_DUMP = BigWorld.component == 'client_cgf_dump'
 DEFAULT_LANGUAGE = 'ru'
 AUTH_REALM = 'RU'
 IS_DEVELOPMENT = CURRENT_REALM == 'DEV'
@@ -127,8 +129,27 @@ class WOT_GAMEPLAY:
 
 ARENA_GAMEPLAY_NAMES = ('ctf', 'domination', 'assault', 'nations', 'ctf2', 'domination2',
                         'assault2', 'fallout', 'fallout2', 'fallout3', 'fallout4',
-                        'ctf30x30', 'domination30x30', 'sandbox', 'bootcamp', 'epic')
+                        'ctf30x30', 'domination30x30', 'sandbox', 'bootcamp', 'epic',
+                        'maps_training')
+if IS_EDITOR:
+    ARENA_GAMEPLAY_READABLE_NAMES = ('Capture The Flag', 'Domination', 'Assault', 'Nations',
+                                     'Capture The Flag 2', 'Domination 2', 'Assault 2',
+                                     'Fallout Bomb', 'Fallout 2 Flag', 'Fallout 3',
+                                     'Fallout 4', 'Capture The Flag 30 vs 30', 'Domination 30 vs 30',
+                                     'Sandbox', 'Bootcamp', 'Epic', 'Maps Training')
 ARENA_GAMEPLAY_IDS = dict((value, index) for index, value in enumerate(ARENA_GAMEPLAY_NAMES))
+ARENA_GAMEPLAY_MASK_DEFAULT = 1048575
+
+class HANGAR_VISIBILITY_TAGS:
+    LAYERS = ('1', '2', '3', '4', '5', '6', '7')
+    FIRST_BIT_RANKED = len(LAYERS)
+    RANKED_TAGS = ('R_ON', 'R_GAP', 'R_OFF')
+    FIRST_BIT_REGIONS = 16
+    REGIONS = ('NA', 'ASIA', 'EU', 'RU')
+    IDS = dict((value, index) for index, value in chain(enumerate(LAYERS), enumerate(RANKED_TAGS, FIRST_BIT_RANKED), enumerate(REGIONS, FIRST_BIT_REGIONS)))
+    NAMES = dict((index, value) for index, value in chain(enumerate(LAYERS), enumerate(RANKED_TAGS, FIRST_BIT_RANKED), enumerate(REGIONS, FIRST_BIT_REGIONS)))
+    ALL_BITS_DEFAULT = (1 << len(LAYERS)) - 1 | sum(1 << key for key in NAMES.iterkeys())
+
 
 class ARENA_GUI_TYPE:
     UNKNOWN = 0
@@ -254,7 +275,7 @@ ARENA_BONUS_TYPE_IDS = dict([ (v, k) for k, v in ARENA_BONUS_TYPE_NAMES.iteritem
 
 class ARENA_BONUS_MASK:
     TYPE_BITS = dict((name, 2 ** id) for id, name in enumerate(ARENA_BONUS_TYPE.RANGE[1:]))
-    ANY = 8589934591
+    ANY = sum(1 << index for index in xrange(len(TYPE_BITS)))
 
     @staticmethod
     def mask(*args):
@@ -704,6 +725,7 @@ ACTIVE_TEST_CONFIRMATION_CONFIG = 'active_test_confirmation_config'
 MISC_GUI_SETTINGS = 'misc_gui_settings'
 META_GAME_SETTINGS = 'meta_game_settings'
 MAPS_TRAINING_ENABLED_KEY = 'isMapsTrainingEnabled'
+OFFERS_ENABLED_KEY = 'isOffersEnabled'
 
 class Configs(enum.Enum):
     BATTLE_ROYALE_CONFIG = 'battle_royale_config'
@@ -741,6 +763,7 @@ class SPA_ATTRS:
     LOGGING_ENABLED = '/wot/game/logging_enabled/'
     BOOTCAMP_VIDEO_DISABLED = '/wot/game/bc_video_disabled/'
     STEAM_ALLOW = '/wot/steam/allow/'
+    RSS = '/wot/game/service/rss/'
 
     @staticmethod
     def toClientAttrs():
@@ -1410,6 +1433,7 @@ class REQUEST_COOLDOWN:
     CUSTOMIZATION_NOVELTY = 0.5
     REPAIR_VEHICLE = 0.5
     RECEIVE_OFFER_GIFT = 1.0
+    RECEIVE_OFFER_GIFT_MULTIPLE = 1.0
     SET_OFFER_BANNER_SEEN = 0.3
     EQUIP_OPTDEV = 1.0
     CHANGE_EVENT_ENQUEUE_DATA = 1.0

@@ -506,8 +506,7 @@ class ProjectionDecalComponent(SerializableComponent):
      (
       'progressionLevel', intField(0))))
     __slots__ = ('id', 'options', 'slotId', 'scaleFactorId', 'showOn', 'scale', 'rotation',
-                 'position', 'tintColor', 'doubleSided', 'hiddenForUser', 'tags',
-                 'preview', 'progressionLevel')
+                 'position', 'tintColor', 'doubleSided', 'tags', 'preview', 'progressionLevel')
 
     def __init__(self, id=0, options=Options.NONE, slotId=0, scaleFactorId=DEFAULT_SCALE_FACTOR_ID, showOn=ApplyArea.NONE, scale=DEFAULT_SCALE, rotation=DEFAULT_ROTATION, position=DEFAULT_POSITION, tintColor=DEFAULT_DECAL_TINT_COLOR, doubleSided=0, tags=None, preview=False, progressionLevel=0):
         self.id = id
@@ -526,7 +525,7 @@ class ProjectionDecalComponent(SerializableComponent):
         super(ProjectionDecalComponent, self).__init__()
 
     def __str__(self):
-        return ('ProjectionDecalComponent(id={0}, options={1}, slotId={2}, scaleFactorId={3}, showOn={4}, scale={5}, rotation={6}, position={7}, tintColor={8}, doubleSided={9}, hiddenForUser={10}, preview={11}, progressionLevel={12})').format(self.id, self.options, self.slotId, self.scaleFactorId, self.showOn, self.scale, self.rotation, self.position, self.tintColor, self.doubleSided, self.hiddenForUser, self.preview, self.progressionLevel)
+        return ('ProjectionDecalComponent(id={0}, options={1}, slotId={2}, scaleFactorId={3}, showOn={4}, scale={5}, rotation={6}, position={7}, tintColor={8}, doubleSided={9}, preview={10}, progressionLevel={11})').format(self.id, self.options, self.slotId, self.scaleFactorId, self.showOn, self.scale, self.rotation, self.position, self.tintColor, self.doubleSided, self.preview, self.progressionLevel)
 
     def isMirroredHorizontally(self):
         return self.options & Options.MIRRORED_HORIZONTALLY
@@ -1290,4 +1289,9 @@ def _getDifferVehiclePartNames(newVehDescr, oldVehDescr):
         if getattr(newVehDescr, partName).compactDescr != getattr(oldVehDescr, partName).compactDescr:
             differPartNames.append(partName)
 
+    if 'turret' in differPartNames:
+        if 'gun' not in differPartNames:
+            differPartNames.append('gun')
+    elif 'gun' in differPartNames:
+        differPartNames.append('turret')
     return differPartNames

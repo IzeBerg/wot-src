@@ -18,6 +18,8 @@ package net.wg.infrastructure.tutorial.builders
       
       private var _asserter:IAssertable;
       
+      private var _disposed:Boolean = false;
+      
       public function TutorialBuilder()
       {
          super();
@@ -54,14 +56,18 @@ package net.wg.infrastructure.tutorial.builders
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
       protected function onDispose() : void
       {
-         this._view.removeEventListener(Event.RESIZE,this.onViewResizeHandler);
-         this._view.removeEventListener(LifeCycleEvent.ON_DISPOSE,this.onViewDisposeHandler);
-         this._view = null;
+         if(this._view)
+         {
+            this._view.removeEventListener(Event.RESIZE,this.onViewResizeHandler);
+            this._view.removeEventListener(LifeCycleEvent.ON_DISPOSE,this.onViewDisposeHandler);
+            this._view = null;
+         }
          this._asserter = null;
       }
       
@@ -85,6 +91,11 @@ package net.wg.infrastructure.tutorial.builders
       private function onViewDisposeHandler(param1:LifeCycleEvent) : void
       {
          this.dispose();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

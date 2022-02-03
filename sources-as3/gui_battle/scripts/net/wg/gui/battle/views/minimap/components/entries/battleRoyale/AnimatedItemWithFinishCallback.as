@@ -12,6 +12,8 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
       
       private var _totalFrames:int = 1;
       
+      private var _disposed:Boolean = false;
+      
       public function AnimatedItemWithFinishCallback()
       {
          super();
@@ -20,6 +22,7 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
       
       public function dispose() : void
       {
+         this._disposed = true;
          removeEventListener(Event.REMOVED_FROM_STAGE,this.onRemovedFromStage);
          if(this._callback != null)
          {
@@ -79,6 +82,11 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
          {
             DebugUtils.LOG_ERROR("AnimatedItemWithFinishCallback: \"dispose\" must be called");
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

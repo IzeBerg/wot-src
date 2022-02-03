@@ -1,6 +1,7 @@
 import logging, typing
 from functools import partial
 import BigWorld
+from gui.marathon.marathon_event import MarathonEvent
 from shared_utils import nextTick
 from CurrentVehicle import g_currentVehicle
 from HeroTank import HeroTank
@@ -44,7 +45,7 @@ from helpers.CallbackDelayer import CallbackDelayer
 from helpers.statistics import HANGAR_LOADING_STATE
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.connection_mgr import IConnectionManager
-from skeletons.gui.game_control import IRankedBattlesController, IEpicBattleMetaGameController, IPromoController, IIGRController, IBattlePassController, IBattleRoyaleController, IBootcampController, IMapboxController
+from skeletons.gui.game_control import IRankedBattlesController, IEpicBattleMetaGameController, IPromoController, IIGRController, IBattlePassController, IBattleRoyaleController, IBootcampController, IMapboxController, IMarathonEventsController
 from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.offers import IOffersBannerController
@@ -93,6 +94,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
     _connectionMgr = dependency.descriptor(IConnectionManager)
     _offersBannerController = dependency.descriptor(IOffersBannerController)
     __mapboxCtrl = dependency.descriptor(IMapboxController)
+    __marathonCtrl = dependency.descriptor(IMarathonEventsController)
     _COMMON_SOUND_SPACE = __SOUND_SETTINGS
 
     def __init__(self, _=None):
@@ -357,7 +359,13 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
             if isinstance(entity, HeroTank):
                 descriptor = entity.typeDescriptor
                 if descriptor:
-                    shared_events.showHeroTankPreview(descriptor.type.compactDescr)
+                    marathons = self.__marathonCtrl.getMarathons()
+                    activeMarathon = next((marathon for marathon in marathons if marathon.vehicleID == descriptor.type.compactDescr), None)
+                    if activeMarathon:
+                        title = backport.text(R.strings.marathon.vehiclePreview.buyingPanel.title())
+                        shared_events.showMarathonVehiclePreview(descriptor.type.compactDescr, activeMarathon.remainingPackedRewards, title, activeMarathon.prefix, True)
+                    else:
+                        shared_events.showHeroTankPreview(descriptor.type.compactDescr)
         self.__checkVehicleCameraState()
         self.__updateState()
         return
@@ -592,7 +600,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         if 'isRegularQuestEnabled' in diff:
             self.__updateHeaderComponent()
             self.__updateHeaderEpicWidget()
-        if 'isCustomizationEnabled' in diff:
+        if 'isCustomizationEnabled' in diff or 'isNationChangeEnabled' in diff:
             self.__updateState()
         if BATTLE_PASS_CONFIG_NAME in diff:
             self.__switchCarousels()

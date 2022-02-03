@@ -1,8 +1,11 @@
-import collections, weakref, itertools, types, logging
+import collections, itertools, logging, types, weakref
 from functools import partial
-import BigWorld
+import typing, BigWorld
 from adisp import async
-from debug_utils import LOG_ERROR
+if typing.TYPE_CHECKING:
+    from typing import Callable, Dict, Iterable, List, Optional, Sequence, Tuple, Type, TypeVar, Union
+    T = TypeVar('T')
+    R = TypeVar('R')
 _logger = logging.getLogger(__name__)
 ScalarTypes = (
  types.IntType, types.LongType, types.FloatType,
@@ -67,6 +70,12 @@ def first(sequence, default=None):
     return findFirst(None, sequence, default)
 
 
+def safeIndexOf(item, collection, default=None):
+    if item in collection:
+        return collection.index(item)
+    return default
+
+
 def collapseIntervals(sequence):
     result = []
     prevElement = []
@@ -79,6 +88,12 @@ def collapseIntervals(sequence):
             result.append(prevElement)
 
     return result
+
+
+def getSafeFromCollection(lst, ndx, default=None):
+    if 0 <= ndx < len(lst):
+        return lst[ndx]
+    return default
 
 
 def allEqual(sequence, accessor=None):

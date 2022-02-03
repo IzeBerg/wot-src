@@ -1,4 +1,5 @@
 import BigWorld, Math, math_utils
+from Event import EventManager, Event
 from helpers.CallbackDelayer import CallbackDelayer
 _EASING_METHOD = math_utils.easeInOutQuad
 _INTERPOLATION_TIME = 0.2
@@ -16,7 +17,14 @@ class StrategicCamerasInterpolator(CallbackDelayer):
         self.__initialFov = 0.0
         self.__finalFov = 0.0
         self.__cam = None
+        self._eventManager = EventManager()
+        self.onInterpolationStart = Event(self._eventManager)
+        self.onInterpolationStop = Event(self._eventManager)
         return
+
+    def destroy(self):
+        self._eventManager.clear()
+        super(StrategicCamerasInterpolator, self).destroy()
 
     def enable(self, initialState, finalState, initialFov, finalFov):
         self.__prevTime = BigWorld.timeExact()
@@ -28,6 +36,7 @@ class StrategicCamerasInterpolator(CallbackDelayer):
         self.__finalFov = finalFov
         self.__setupCamera()
         self.__cameraUpdate()
+        self.onInterpolationStart()
         self.delayCallback(0.0, self.__cameraUpdate)
 
     def __setupCamera(self):
@@ -53,6 +62,7 @@ class StrategicCamerasInterpolator(CallbackDelayer):
         self.__initialState = None
         self.__finalState = None
         self.__cam = None
+        self.onInterpolationStop()
         return
 
     def __cameraUpdate(self):

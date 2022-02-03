@@ -9,6 +9,8 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
       
       public var animation:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function HeadquarterAnimation()
       {
          super();
@@ -26,8 +28,14 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.animation.stop();
          this.animation = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

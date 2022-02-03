@@ -16,6 +16,8 @@ package net.wg.gui.battle.views.questProgress.animated
       
       private var _scriptFrame:int = 1;
       
+      private var _disposed:Boolean = false;
+      
       public function AnimationRing()
       {
          super();
@@ -24,6 +26,7 @@ package net.wg.gui.battle.views.questProgress.animated
       
       public final function dispose() : void
       {
+         this._disposed = true;
          addFrameScript(this._scriptFrame,null);
          this._onAnimStartCallback = null;
       }
@@ -52,6 +55,11 @@ package net.wg.gui.battle.views.questProgress.animated
       private function onAnimationFinished() : void
       {
          this._onAnimStartCallback.call();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

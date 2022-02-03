@@ -25,7 +25,6 @@ package net.wg.app.impl
    import net.wg.gui.components.questProgress.data.metrics.QPMetricsVehicleVO;
    import net.wg.infrastructure.interfaces.ICursorManager;
    import net.wg.infrastructure.managers.GlobalVarsManager;
-   import net.wg.infrastructure.managers.IAtlasManager;
    import net.wg.infrastructure.managers.ICacheManager;
    import net.wg.infrastructure.managers.IColorSchemeManager;
    import net.wg.infrastructure.managers.IContainerManager;
@@ -49,6 +48,7 @@ package net.wg.app.impl
    import net.wg.infrastructure.managers.impl.CommonsBattle;
    import net.wg.infrastructure.managers.impl.ContainerManagerBattle;
    import net.wg.infrastructure.managers.impl.ContextMenuManager;
+   import net.wg.infrastructure.managers.impl.ElementBlurAdapter;
    import net.wg.infrastructure.managers.impl.EnvironmentManager;
    import net.wg.infrastructure.managers.impl.ImageManager;
    import net.wg.infrastructure.managers.impl.LoaderManager;
@@ -146,7 +146,7 @@ package net.wg.app.impl
       
       override protected function getNewUtils() : IUtils
       {
-         var _loc1_:IUtils = new Utils(new Asserter(),new Scheduler(),new LocaleBase(),new WGJSON(),null,new ClassFactory(),new PopupManager(),new CommonsBattle(),new FocusHandlerEx(),new IME(new SimpleManagedContainer(LAYER_NAMES.IME)),null,null,new StyleSheetManager(),new TweenAnimator(),null,new DateTimeBattle(),new PoolManager(),new DataUtils(),new CounterManager(),new ViewRestrictions(),new UniversalBtnStyles());
+         var _loc1_:IUtils = new Utils(new Asserter(),new Scheduler(),new LocaleBase(),new WGJSON(),null,new ClassFactory(),new PopupManager(),new CommonsBattle(),new FocusHandlerEx(),new IME(new SimpleManagedContainer(LAYER_NAMES.IME)),null,null,new StyleSheetManager(),new TweenAnimator(),null,new DateTimeBattle(),new PoolManager(),new DataUtils(),new CounterManager(),new ViewRestrictions(),new UniversalBtnStyles(),new AtlasManager(),new ElementBlurAdapter());
          _loc1_.universalBtnStyles.setClassFactory(_loc1_.classFactory);
          return _loc1_;
       }
@@ -319,11 +319,6 @@ package net.wg.app.impl
       {
          DebugUtils.LOG_DEBUG("BattleApp configure finished");
          super.onAfterAppConfiguring();
-      }
-      
-      override protected function getNewAtlasManagerManager() : IAtlasManager
-      {
-         return new AtlasManager();
       }
       
       public function as_traceObject(param1:*) : void

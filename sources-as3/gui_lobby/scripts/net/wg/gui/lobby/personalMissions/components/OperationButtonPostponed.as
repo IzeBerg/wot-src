@@ -17,6 +17,8 @@ package net.wg.gui.lobby.personalMissions.components
       
       public var icon:Sprite = null;
       
+      private var _disposed:Boolean = false;
+      
       public function OperationButtonPostponed()
       {
          super();
@@ -25,6 +27,7 @@ package net.wg.gui.lobby.personalMissions.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.labelTF = null;
          this.icon = null;
       }
@@ -33,6 +36,11 @@ package net.wg.gui.lobby.personalMissions.components
       {
          this.labelTF.text = param1;
          this.icon.x = -(this.labelTF.textWidth >> 1) - this.icon.width - ICON_RIGHT_MARGIN;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

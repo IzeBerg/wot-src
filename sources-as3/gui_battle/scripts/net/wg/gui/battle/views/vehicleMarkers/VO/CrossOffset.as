@@ -9,6 +9,8 @@ package net.wg.gui.battle.views.vehicleMarkers.VO
       
       private var _offsetByObject:Dictionary;
       
+      private var _disposed:Boolean = false;
+      
       public function CrossOffset(... rest)
       {
          var _loc4_:int = 0;
@@ -35,6 +37,7 @@ package net.wg.gui.battle.views.vehicleMarkers.VO
       public final function dispose() : void
       {
          var _loc1_:* = undefined;
+         this._disposed = true;
          for(_loc1_ in this._offsetByObject)
          {
             this._offsetByObject[_loc1_] = null;
@@ -51,6 +54,11 @@ package net.wg.gui.battle.views.vehicleMarkers.VO
       public function hasOffset(param1:Object) : Boolean
       {
          return this._offsetByObject[param1] != undefined && this._offsetByObject[param1] != null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

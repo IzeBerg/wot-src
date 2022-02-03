@@ -16,6 +16,8 @@ package net.wg.gui.battle.views.staticMarkers.epic
       
       public var highlight:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function ObjectiveIdReplyState()
       {
          super();
@@ -58,9 +60,15 @@ package net.wg.gui.battle.views.staticMarkers.epic
       
       public final function dispose() : void
       {
+         this._disposed = true;
          stop();
          this.replied = null;
          this.highlight = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

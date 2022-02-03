@@ -48,5 +48,10 @@ package net.wg.gui.battle.tutorial.views.tutorial.components.progressBar
          this.failLine = null;
          this.doneLine = null;
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._isDisposed;
+      }
    }
 }

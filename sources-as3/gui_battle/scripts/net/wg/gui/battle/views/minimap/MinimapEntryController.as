@@ -244,6 +244,11 @@ package net.wg.gui.battle.views.minimap
       {
          this._asserter.assert(!this._isDisposed,"MinimapEntryController " + Errors.ALREADY_DISPOSED);
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._isDisposed;
+      }
    }
 }
 

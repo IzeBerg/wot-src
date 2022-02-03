@@ -104,6 +104,13 @@
 			<undamaged>vehicles/french/F75_Char_de_25t/normal/lod0/Hull.model</undamaged>
 			<destroyed>vehicles/french/F75_Char_de_25t/crash/lod0/Hull.model</destroyed>
 			<exploded>vehicles/french/F75_Char_de_25t/crash/lod0/Hull.model</exploded>
+			<sets>
+				<F75_Char_de_25t_3DSt_TIR>
+					<undamaged>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/normal/lod0/Hull.model</undamaged>
+					<destroyed>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/crash/lod0/Hull.model</destroyed>
+					<exploded>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/crash/lod0/Hull.model</exploded>
+				</F75_Char_de_25t_3DSt_TIR>
+			</sets>
 		</models>
 		<swinging>
 			<lodDist>FAR</lodDist>
@@ -146,11 +153,11 @@
 				<slotType>clan</slotType>
 				<slotId>10000</slotId>
 				<rayStart>
-					-0.614221 0.434901 2.09796
+					-0.564984 0.718449 1.18644
 					<!--BW_String-->
 				</rayStart>
 				<rayEnd>
-					-0.614209 0.249796 2.02222
+					-0.564984 0.518448 1.18644
 					<!--BW_String-->
 				</rayEnd>
 				<rayUp>
@@ -1735,6 +1742,44 @@
 				<hiddenForUser>true</hiddenForUser>
 				<anchorShift>1.177862</anchorShift>
 			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15068</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>F75_Char_de_25t_3DSt_TIR</compatibleModels>
+				<position>
+					0.52784 1.30801 1.99151
+					<!--BW_String-->
+				</position>
+				<rotation>
+					0.345838 0.000007 3.14157
+					<!--BW_String-->
+				</rotation>
+				<scale>0.343072 0.197397 0.343077</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>0.807679</clipAngle>
+				<anchorShift>0.036618</anchorShift>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15069</slotId>
+				<tags>formfactor_square direction_left_to_right</tags>
+				<compatibleModels>F75_Char_de_25t_3DSt_TIR</compatibleModels>
+				<position>
+					-1.21763 1.39435 0.437945
+					<!--BW_String-->
+				</position>
+				<rotation>
+					-0.000000 0.000011 3.13986
+					<!--BW_String-->
+				</rotation>
+				<scale>0.438512 0.131468 0.438524</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>0.027851</clipAngle>
+				<anchorShift>0.041488</anchorShift>
+			</slot>
 		</customizationSlots>
 		<camouflage>
 			<tiling>
@@ -1797,6 +1842,13 @@
 				<undamaged>vehicles/french/F75_Char_de_25t/normal/lod0/Chassis.model</undamaged>
 				<destroyed>vehicles/french/F75_Char_de_25t/crash/lod0/Chassis.model</destroyed>
 				<exploded>vehicles/french/F75_Char_de_25t/crash/lod0/Chassis.model</exploded>
+				<sets>
+					<F75_Char_de_25t_3DSt_TIR>
+						<undamaged>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/crash/lod0/Chassis.model</exploded>
+					</F75_Char_de_25t_3DSt_TIR>
+				</sets>
 			</models>
 			<traces>
 				<lodDist>FAR</lodDist>
@@ -2231,10 +2283,13 @@
 				<left>
 					<segmentsCount>82</segmentsCount>
 					<segmentsOuterThickness>
-						0.0227587
+						0.0225619
 						<!--BW_String-->
 					</segmentsOuterThickness>
-					<segmentsInnerThickness>0.021436</segmentsInnerThickness>
+					<segmentsInnerThickness>
+						0.0216431
+						<!--BW_String-->
+					</segmentsInnerThickness>
 					<segmentsPlaneOffset>
 						-1.22914
 						<!--BW_String-->
@@ -2258,22 +2313,22 @@
 					</springsLength>
 					<mainSegment>
 						<model>vehicles/french/F75_Char_de_25t/track/segment.model</model>
-						<length>0.138713</length>
+						<length>0.137036</length>
 					</mainSegment>
 					<collisionHull>
 						<bottom/>
 						<top>
 							<part>
 								<xStart>
-									-2.51535
+									-2.55226
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.0693567
+									0.0685178
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
-									1.02728 1.06941 1.10183 1.10991 1.10991 1.1099 1.1099 1.1099 1.10989 1.10989 1.10988 1.10988 1.10988 1.10987 1.10987 1.10986 1.10986 1.10986 1.10985 1.10985 1.10984 1.10984 1.10984 1.10983 1.10983 1.10982 1.10982 1.10981 1.10981 1.10981 1.1098 1.1098 1.10979 1.10979 1.10979 1.10978 1.10978 1.10977 1.10977 1.10977 1.10976 1.10976 1.10975 1.10975 1.10975 1.10974 1.10974 1.10973 1.10973 1.10972 1.10972 1.10972 1.10971 1.10971 1.1097 1.1097 1.1097 1.10969 1.10969 1.10968 1.10652 1.0963 1.08896 1.09015 1.09412 1.09809 1.10205 1.10602 1.10965 1.10964 1.11523 1.11979 1.11674 1.09218
+									1.00193 1.04996 1.08421 1.10991 1.10991 1.1099 1.1099 1.1099 1.10989 1.10989 1.10989 1.10988 1.10988 1.10987 1.10987 1.10987 1.10986 1.10986 1.10985 1.10985 1.10985 1.10984 1.10984 1.10983 1.10983 1.10983 1.10982 1.10982 1.10981 1.10981 1.10981 1.1098 1.1098 1.10979 1.10979 1.10979 1.10978 1.10978 1.10977 1.10977 1.10977 1.10976 1.10976 1.10975 1.10975 1.10975 1.10974 1.10974 1.10973 1.10973 1.10973 1.10972 1.10972 1.10971 1.10971 1.10971 1.1097 1.1097 1.10969 1.10969 1.10969 1.10927 1.09918 1.08909 1.08895 1.09286 1.09677 1.10069 1.10461 1.10853 1.10965 1.11345 1.11795 1.12011 1.10644 1.0626
 									<!--BW_String-->
 								</ySamples>
 							</part>
@@ -2295,7 +2350,7 @@
 								<!--BW_String-->
 							</basePos>
 							<shiftVec>
-								0.311225 0.0926157
+								0.315333 0.0834139
 								<!--BW_String-->
 							</shiftVec>
 							<jointIdx>11</jointIdx>
@@ -2307,7 +2362,7 @@
 								<!--BW_String-->
 							</basePos>
 							<shiftVec>
-								-0.320758 0.0892564
+								-0.32753 0.101361
 								<!--BW_String-->
 							</shiftVec>
 							<jointIdx>50</jointIdx>
@@ -2315,23 +2370,23 @@
 						<bottomBack>
 							<wheelName>W_L3</wheelName>
 							<basePos>
-								-1.45108 0.470764
+								-1.45108 0.470763
 								<!--BW_String-->
 							</basePos>
 							<shiftVec>
-								-0.0639292 -0.464309
+								0.0511988 -0.468896
 								<!--BW_String-->
 							</shiftVec>
-							<jointIdx>60</jointIdx>
+							<jointIdx>61</jointIdx>
 						</bottomBack>
 						<bottomFront>
 							<wheelName>W_L0</wheelName>
 							<basePos>
-								1.44428 0.470767
+								1.44428 0.470764
 								<!--BW_String-->
 							</basePos>
 							<shiftVec>
-								0.0194765 -0.468284
+								0.00658846 -0.46885
 								<!--BW_String-->
 							</shiftVec>
 							<jointIdx>0</jointIdx>
@@ -2340,33 +2395,27 @@
 					<radiusOverrides>
 						<wheel>
 							<name>WD_L1</name>
-							<radius>0.331787</radius>
+							<radius>0.341759</radius>
 						</wheel>
 						<wheel>
 							<name>WD_L0</name>
-							<radius>0.323526</radius>
+							<radius>0.325025</radius>
 						</wheel>
 					</radiusOverrides>
 					<teethSyncs>
 						<syncWithMainModel>true</syncWithMainModel>
-						<segmentSyncPivotOffset>
-							-1.22914
-							<!--BW_String-->
-						</segmentSyncPivotOffset>
+						<segmentSyncPivotOffset>0.000000</segmentSyncPivotOffset>
 						<sync>
 							<name>WD_L1</name>
 							<startAngle>
-								-428.787
+								3.0868
 								<!--BW_String-->
 							</startAngle>
 							<teethCount>15</teethCount>
 						</sync>
 						<sync>
 							<name>WD_L0</name>
-							<startAngle>
-								-425.859
-								<!--BW_String-->
-							</startAngle>
+							<startAngle>0.153559</startAngle>
 							<teethCount>15</teethCount>
 						</sync>
 					</teethSyncs>
@@ -2374,299 +2423,299 @@
 						<top>
 							<range>
 								<point>
-									-1.42411 1.07434 -2.5155
+									1.42411 1.07434 -2.5155
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42411 1.11647 -2.44614
+									1.42411 1.11647 -2.44614
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.28411 1.14889 -2.37678
+									1.28411 1.14889 -2.37678
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.39411 1.15697 -2.30743
+									1.39411 1.15697 -2.30743
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.39411 1.15696 -2.23807
+									1.39411 1.15696 -2.23807
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.40411 1.15696 -2.16871
+									1.40411 1.15696 -2.16871
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.40411 1.15696 -2.09936
+									1.40411 1.15696 -2.09936
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.40411 1.15695 -2.03
+									1.40411 1.15695 -2.03
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.38411 1.15695 -1.96064
+									1.38411 1.15695 -1.96064
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.40411 1.15695 -1.89129
+									1.40411 1.15695 -1.89129
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.40411 1.15694 -1.82193
+									1.40411 1.15694 -1.82193
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42411 1.15694 -1.75257
+									1.42411 1.15694 -1.75257
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42411 1.15693 -1.68322
+									1.42411 1.15693 -1.68322
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42411 1.15693 -1.61386
+									1.42411 1.15693 -1.61386
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42411 1.15692 -1.5445
+									1.42411 1.15692 -1.5445
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15692 -1.47515
+									1.42412 1.15692 -1.47515
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15692 -1.40579
+									1.42412 1.15692 -1.40579
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15691 -1.33643
+									1.42412 1.15691 -1.33643
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15691 -1.26708
+									1.42412 1.15691 -1.26708
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.1569 -1.19772
+									1.42412 1.1569 -1.19772
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.1569 -1.12836
+									1.42412 1.1569 -1.12836
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.1569 -1.05901
+									1.42412 1.1569 -1.05901
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15689 -0.98965
+									1.42412 1.15689 -0.98965
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15689 -0.920294
+									1.42412 1.15689 -0.920294
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15688 -0.850937
+									1.42412 1.15688 -0.850937
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15688 -0.78158
+									1.42412 1.15688 -0.78158
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15688 -0.712224
+									1.42412 1.15688 -0.712224
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15687 -0.642867
+									1.42412 1.15687 -0.642867
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15687 -0.57351
+									1.42412 1.15687 -0.57351
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15686 -0.504153
+									1.42412 1.15686 -0.504153
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15686 -0.434797
+									1.42412 1.15686 -0.434797
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15686 -0.36544
+									1.42412 1.15686 -0.36544
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15685 -0.296083
+									1.42412 1.15685 -0.296083
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15685 -0.226727
+									1.42412 1.15685 -0.226727
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15684 -0.15737
+									1.42412 1.15684 -0.15737
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15684 -0.0880137
+									1.42412 1.15684 -0.0880137
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15684 -0.0186568
+									1.42412 1.15684 -0.0186568
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15683 0.0507002
+									1.42413 1.15683 0.0507002
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15683 0.120057
+									1.42413 1.15683 0.120057
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15682 0.189413
+									1.42413 1.15682 0.189413
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15682 0.25877
+									1.42413 1.15682 0.25877
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15681 0.328127
+									1.42413 1.15681 0.328127
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15681 0.397483
+									1.42413 1.15681 0.397483
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15681 0.46684
+									1.42413 1.15681 0.46684
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.1568 0.536197
+									1.42413 1.1568 0.536197
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.1568 0.605554
+									1.42413 1.1568 0.605554
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15679 0.67491
+									1.42413 1.15679 0.67491
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15679 0.744267
+									1.42413 1.15679 0.744267
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15679 0.813623
+									1.42413 1.15679 0.813623
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15678 0.88298
+									1.42413 1.15678 0.88298
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15678 0.952337
+									1.42413 1.15678 0.952337
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15677 1.02169
+									1.42413 1.15677 1.02169
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15677 1.09105
+									1.42413 1.15677 1.09105
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15677 1.16041
+									1.42413 1.15677 1.16041
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15676 1.22976
+									1.42413 1.15676 1.22976
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15676 1.29912
+									1.42413 1.15676 1.29912
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15675 1.36848
+									1.42413 1.15675 1.36848
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15675 1.43783
+									1.42413 1.15675 1.43783
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15675 1.50719
+									1.42413 1.15675 1.50719
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15674 1.57655
+									1.42413 1.15674 1.57655
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15357 1.6459
+									1.42413 1.15357 1.6459
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.14336 1.71526
+									1.42414 1.14336 1.71526
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.13601 1.78462
+									1.42414 1.13601 1.78462
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.13721 1.85397
+									1.42414 1.13721 1.85397
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.14118 1.92333
+									1.42414 1.14118 1.92333
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.14514 1.99269
+									1.42414 1.14514 1.99269
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.14911 2.06204
+									1.42414 1.14911 2.06204
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.15307 2.1314
+									1.42414 1.15307 2.1314
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.15671 2.20076
+									1.42414 1.15671 2.20076
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.1567 2.27011
+									1.42414 1.1567 2.27011
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.16229 2.33947
+									1.42414 1.16229 2.33947
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.16685 2.40883
+									1.42414 1.16685 2.40883
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.1638 2.47818
+									1.42414 1.1638 2.47818
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.27414 1.13924 2.54754
+									1.27414 1.13924 2.54754
 									<!--BW_String-->
 								</point>
 							</range>
@@ -2677,11 +2726,11 @@
 				<right>
 					<segmentsCount>82</segmentsCount>
 					<segmentsOuterThickness>
-						0.0256471
+						0.0225619
 						<!--BW_String-->
 					</segmentsOuterThickness>
 					<segmentsInnerThickness>
-						0.0185668
+						0.0216432
 						<!--BW_String-->
 					</segmentsInnerThickness>
 					<segmentsPlaneOffset>
@@ -2707,22 +2756,19 @@
 					</springsLength>
 					<mainSegment>
 						<model>vehicles/french/F75_Char_de_25t/track/segment.model</model>
-						<length>0.139223</length>
+						<length>0.137036</length>
 					</mainSegment>
 					<collisionHull>
 						<bottom/>
 						<top>
 							<part>
 								<xStart>
-									-2.50413
+									-2.55225
 									<!--BW_String-->
 								</xStart>
-								<xStep>
-									0.0696117
-									<!--BW_String-->
-								</xStep>
+								<xStep>0.068518</xStep>
 								<ySamples>
-									1.02065 1.07546 1.11379 1.11786 1.11777 1.11768 1.11759 1.11749 1.1174 1.11731 1.11722 1.11712 1.11703 1.11694 1.11685 1.11675 1.11666 1.11657 1.11647 1.11638 1.11629 1.1162 1.11619 1.11619 1.11618 1.11618 1.11617 1.11617 1.11617 1.11616 1.11616 1.11616 1.11615 1.11615 1.11307 1.10932 1.10532 1.10126 1.09855 1.09634 1.09698 1.09979 1.1026 1.10467 1.10572 1.10941 1.1139 1.11495 1.11408 1.11321 1.11234 1.11151 1.11151 1.1115 1.1112 1.10792 1.10463 1.10194 1.1014 1.10163 1.10258 1.10353 1.1045 1.10547 1.10645 1.10742 1.1084 1.10937 1.1077 1.10804 1.10758 1.09342 1.0742 1.0376
+									0.969748 1.04231 1.08609 1.11793 1.11784 1.11775 1.11766 1.11757 1.11748 1.11739 1.11729 1.1172 1.11711 1.11702 1.11693 1.11684 1.11675 1.11666 1.11656 1.11647 1.11638 1.11629 1.1162 1.11619 1.11619 1.11618 1.11618 1.11617 1.11617 1.11617 1.11616 1.11616 1.11616 1.11615 1.11615 1.11397 1.11028 1.10642 1.10243 1.09923 1.09695 1.09633 1.0988 1.10157 1.10434 1.10505 1.10755 1.11197 1.11534 1.11448 1.11363 1.11277 1.11191 1.11151 1.1115 1.1115 1.10979 1.10656 1.10347 1.10141 1.1014 1.10196 1.1029 1.10383 1.10479 1.10575 1.10671 1.10767 1.10863 1.10959 1.10773 1.10813 1.10616 1.09041 1.06887 1.02948
 									<!--BW_String-->
 								</ySamples>
 							</part>
@@ -2744,7 +2790,7 @@
 								<!--BW_String-->
 							</basePos>
 							<shiftVec>
-								0.314156 0.0966488
+								0.315227 0.0838133
 								<!--BW_String-->
 							</shiftVec>
 							<jointIdx>11</jointIdx>
@@ -2755,23 +2801,20 @@
 								-2.20058 0.670058
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								-0.320217 0.0872706
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>-0.327539 0.101332</shiftVec>
 							<jointIdx>50</jointIdx>
 						</topBack>
 						<bottomBack>
 							<wheelName>W_R3</wheelName>
 							<basePos>
-								-1.44817 0.470729
+								-1.44817 0.470732
 								<!--BW_String-->
 							</basePos>
 							<shiftVec>
-								-0.0616956 -0.461716
+								0.0483388 -0.468896
 								<!--BW_String-->
 							</shiftVec>
-							<jointIdx>60</jointIdx>
+							<jointIdx>61</jointIdx>
 						</bottomBack>
 						<bottomFront>
 							<wheelName>W_R0</wheelName>
@@ -2780,7 +2823,7 @@
 								<!--BW_String-->
 							</basePos>
 							<shiftVec>
-								0.0364511 -0.464391
+								0.0173917 -0.468574
 								<!--BW_String-->
 							</shiftVec>
 							<jointIdx>0</jointIdx>
@@ -2789,23 +2832,20 @@
 					<radiusOverrides>
 						<wheel>
 							<name>WD_R1</name>
-							<radius>0.330726</radius>
+							<radius>0.341759</radius>
 						</wheel>
 						<wheel>
 							<name>WD_R0</name>
-							<radius>0.327505</radius>
+							<radius>0.325025</radius>
 						</wheel>
 					</radiusOverrides>
 					<teethSyncs>
 						<syncWithMainModel>true</syncWithMainModel>
-						<segmentSyncPivotOffset>
-							1.22914
-							<!--BW_String-->
-						</segmentSyncPivotOffset>
+						<segmentSyncPivotOffset>0.000000</segmentSyncPivotOffset>
 						<sync>
 							<name>WD_R1</name>
 							<startAngle>
-								-423.079
+								3.0868
 								<!--BW_String-->
 							</startAngle>
 							<teethCount>15</teethCount>
@@ -2813,7 +2853,7 @@
 						<sync>
 							<name>WD_R0</name>
 							<startAngle>
-								-426.002
+								0.0240
 								<!--BW_String-->
 							</startAngle>
 							<teethCount>15</teethCount>
@@ -2823,299 +2863,299 @@
 						<top>
 							<range>
 								<point>
-									1.34418 1.06777 -2.50426
+									1.42411 1.07434 -2.5155
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.12258 -2.43465
+									1.42411 1.11647 -2.44614
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16091 -2.36504
+									1.28411 1.14889 -2.37678
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16498 -2.29542
+									1.39411 1.15697 -2.30743
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16489 -2.22581
+									1.39411 1.15696 -2.23807
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16479 -2.1562
+									1.40411 1.15696 -2.16871
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.1647 -2.08659
+									1.40411 1.15696 -2.09936
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16461 -2.01698
+									1.40411 1.15695 -2.03
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16452 -1.94737
+									1.38411 1.15695 -1.96064
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16442 -1.87775
+									1.40411 1.15695 -1.89129
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16433 -1.80814
+									1.40411 1.15694 -1.82193
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16424 -1.73853
+									1.42411 1.15694 -1.75257
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16415 -1.66892
+									1.42411 1.15693 -1.68322
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16405 -1.59931
+									1.42411 1.15693 -1.61386
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16396 -1.5297
+									1.42411 1.15692 -1.5445
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16387 -1.46008
+									1.42412 1.15692 -1.47515
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16378 -1.39047
+									1.42412 1.15692 -1.40579
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16368 -1.32086
+									1.42412 1.15691 -1.33643
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16359 -1.25125
+									1.42412 1.15691 -1.26708
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.1635 -1.18164
+									1.42412 1.1569 -1.19772
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.1634 -1.11203
+									1.42412 1.1569 -1.12836
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16331 -1.04241
+									1.42412 1.1569 -1.05901
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16331 -0.972802
+									1.42412 1.15689 -0.98965
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.1633 -0.90319
+									1.42412 1.15689 -0.920294
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.1633 -0.833579
+									1.42412 1.15688 -0.850937
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16329 -0.763967
+									1.42412 1.15688 -0.78158
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16329 -0.694355
+									1.42412 1.15688 -0.712224
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16329 -0.624744
+									1.42412 1.15687 -0.642867
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16328 -0.555132
+									1.42412 1.15687 -0.57351
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16328 -0.48552
+									1.42412 1.15686 -0.504153
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16327 -0.415908
+									1.42412 1.15686 -0.434797
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16327 -0.346297
+									1.42412 1.15686 -0.36544
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16327 -0.276685
+									1.42412 1.15685 -0.296083
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16326 -0.207073
+									1.42412 1.15685 -0.226727
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16018 -0.137462
+									1.42412 1.15684 -0.15737
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.15643 -0.0678498
+									1.42412 1.15684 -0.0880137
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.15243 0.00176179
+									1.42412 1.15684 -0.0186568
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.14838 0.0713733
+									1.42413 1.15683 0.0507002
 									<!--BW_String-->
 								</point>
 								<point>
-									1.34416 1.14567 0.140986
+									1.42413 1.15683 0.120057
 									<!--BW_String-->
 								</point>
 								<point>
-									1.42416 1.14346 0.210598
+									1.42413 1.15682 0.189413
 									<!--BW_String-->
 								</point>
 								<point>
-									1.42416 1.1441 0.280209
+									1.42413 1.15682 0.25877
 									<!--BW_String-->
 								</point>
 								<point>
-									1.42416 1.14691 0.349821
+									1.42413 1.15681 0.328127
 									<!--BW_String-->
 								</point>
 								<point>
-									1.42415 1.14972 0.419433
+									1.42413 1.15681 0.397483
 									<!--BW_String-->
 								</point>
 								<point>
-									1.42415 1.15179 0.489045
+									1.42413 1.15681 0.46684
 									<!--BW_String-->
 								</point>
 								<point>
-									1.32415 1.15284 0.558656
+									1.42413 1.1568 0.536197
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15653 0.628267
+									1.42413 1.1568 0.605554
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.16102 0.697879
+									1.42413 1.15679 0.67491
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.16207 0.76749
+									1.42413 1.15679 0.744267
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.1612 0.837102
+									1.42413 1.15679 0.813623
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.16033 0.906714
+									1.42413 1.15678 0.88298
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15946 0.976325
+									1.42413 1.15678 0.952337
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15863 1.04594
+									1.42413 1.15677 1.02169
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15862 1.11555
+									1.42413 1.15677 1.09105
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15862 1.18516
+									1.42413 1.15677 1.16041
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15831 1.25477
+									1.42413 1.15676 1.22976
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15503 1.32438
+									1.42413 1.15676 1.29912
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15175 1.394
+									1.42413 1.15675 1.36848
 									<!--BW_String-->
 								</point>
 								<point>
-									1.39415 1.14906 1.46361
+									1.42413 1.15675 1.43783
 									<!--BW_String-->
 								</point>
 								<point>
-									1.42415 1.14852 1.53322
+									1.42413 1.15675 1.50719
 									<!--BW_String-->
 								</point>
 								<point>
-									1.41415 1.14875 1.60283
+									1.42413 1.15674 1.57655
 									<!--BW_String-->
 								</point>
 								<point>
-									1.35415 1.1497 1.67244
+									1.42413 1.15357 1.6459
 									<!--BW_String-->
 								</point>
 								<point>
-									1.29415 1.15065 1.74205
+									1.42414 1.14336 1.71526
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15161 1.81167
+									1.42414 1.13601 1.78462
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15259 1.88128
+									1.42414 1.13721 1.85397
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15356 1.95089
+									1.42414 1.14118 1.92333
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27414 1.15454 2.0205
+									1.42414 1.14514 1.99269
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27414 1.15551 2.09011
+									1.42414 1.14911 2.06204
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27414 1.15649 2.15972
+									1.42414 1.15307 2.1314
 									<!--BW_String-->
 								</point>
 								<point>
-									1.42414 1.15482 2.22934
+									1.42414 1.15671 2.20076
 									<!--BW_String-->
 								</point>
 								<point>
-									1.38414 1.15516 2.29895
+									1.42414 1.1567 2.27011
 									<!--BW_String-->
 								</point>
 								<point>
-									1.42414 1.1547 2.36856
+									1.42414 1.16229 2.33947
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27414 1.14054 2.43817
+									1.42414 1.16685 2.40883
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27414 1.12131 2.50778
+									1.42414 1.1638 2.47818
 									<!--BW_String-->
 								</point>
 								<point>
-									1.31414 1.08472 2.57739
+									1.27414 1.13924 2.54754
 									<!--BW_String-->
 								</point>
 							</range>
@@ -3203,6 +3243,13 @@
 				<undamaged>vehicles/french/F75_Char_de_25t/normal/lod0/Chassis.model</undamaged>
 				<destroyed>vehicles/french/F75_Char_de_25t/crash/lod0/Chassis.model</destroyed>
 				<exploded>vehicles/french/F75_Char_de_25t/crash/lod0/Chassis.model</exploded>
+				<sets>
+					<F75_Char_de_25t_3DSt_TIR>
+						<undamaged>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/crash/lod0/Chassis.model</exploded>
+					</F75_Char_de_25t_3DSt_TIR>
+				</sets>
 			</models>
 			<traces>
 				<lodDist>FAR</lodDist>
@@ -3637,10 +3684,13 @@
 				<left>
 					<segmentsCount>82</segmentsCount>
 					<segmentsOuterThickness>
-						0.0227587
+						0.0225619
 						<!--BW_String-->
 					</segmentsOuterThickness>
-					<segmentsInnerThickness>0.021436</segmentsInnerThickness>
+					<segmentsInnerThickness>
+						0.0216431
+						<!--BW_String-->
+					</segmentsInnerThickness>
 					<segmentsPlaneOffset>
 						-1.22914
 						<!--BW_String-->
@@ -3664,22 +3714,22 @@
 					</springsLength>
 					<mainSegment>
 						<model>vehicles/french/F75_Char_de_25t/track/segment.model</model>
-						<length>0.138713</length>
+						<length>0.137036</length>
 					</mainSegment>
 					<collisionHull>
 						<bottom/>
 						<top>
 							<part>
 								<xStart>
-									-2.51535
+									-2.55226
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.0693567
+									0.0685178
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
-									1.02728 1.06941 1.10183 1.10991 1.10991 1.1099 1.1099 1.1099 1.10989 1.10989 1.10988 1.10988 1.10988 1.10987 1.10987 1.10986 1.10986 1.10986 1.10985 1.10985 1.10984 1.10984 1.10984 1.10983 1.10983 1.10982 1.10982 1.10981 1.10981 1.10981 1.1098 1.1098 1.10979 1.10979 1.10979 1.10978 1.10978 1.10977 1.10977 1.10977 1.10976 1.10976 1.10975 1.10975 1.10975 1.10974 1.10974 1.10973 1.10973 1.10972 1.10972 1.10972 1.10971 1.10971 1.1097 1.1097 1.1097 1.10969 1.10969 1.10968 1.10652 1.0963 1.08896 1.09015 1.09412 1.09809 1.10205 1.10602 1.10965 1.10964 1.11523 1.11979 1.11674 1.09218
+									1.00193 1.04996 1.08421 1.10991 1.10991 1.1099 1.1099 1.1099 1.10989 1.10989 1.10989 1.10988 1.10988 1.10987 1.10987 1.10987 1.10986 1.10986 1.10985 1.10985 1.10985 1.10984 1.10984 1.10983 1.10983 1.10983 1.10982 1.10982 1.10981 1.10981 1.10981 1.1098 1.1098 1.10979 1.10979 1.10979 1.10978 1.10978 1.10977 1.10977 1.10977 1.10976 1.10976 1.10975 1.10975 1.10975 1.10974 1.10974 1.10973 1.10973 1.10973 1.10972 1.10972 1.10971 1.10971 1.10971 1.1097 1.1097 1.10969 1.10969 1.10969 1.10927 1.09918 1.08909 1.08895 1.09286 1.09677 1.10069 1.10461 1.10853 1.10965 1.11345 1.11795 1.12011 1.10644 1.0626
 									<!--BW_String-->
 								</ySamples>
 							</part>
@@ -3701,7 +3751,7 @@
 								<!--BW_String-->
 							</basePos>
 							<shiftVec>
-								0.311225 0.0926157
+								0.315333 0.0834139
 								<!--BW_String-->
 							</shiftVec>
 							<jointIdx>11</jointIdx>
@@ -3713,7 +3763,7 @@
 								<!--BW_String-->
 							</basePos>
 							<shiftVec>
-								-0.320758 0.0892564
+								-0.32753 0.101361
 								<!--BW_String-->
 							</shiftVec>
 							<jointIdx>50</jointIdx>
@@ -3721,23 +3771,23 @@
 						<bottomBack>
 							<wheelName>W_L3</wheelName>
 							<basePos>
-								-1.45108 0.470764
+								-1.45108 0.470763
 								<!--BW_String-->
 							</basePos>
 							<shiftVec>
-								-0.0639292 -0.464309
+								0.0511988 -0.468896
 								<!--BW_String-->
 							</shiftVec>
-							<jointIdx>60</jointIdx>
+							<jointIdx>61</jointIdx>
 						</bottomBack>
 						<bottomFront>
 							<wheelName>W_L0</wheelName>
 							<basePos>
-								1.44428 0.470767
+								1.44428 0.470764
 								<!--BW_String-->
 							</basePos>
 							<shiftVec>
-								0.0194765 -0.468284
+								0.00658846 -0.46885
 								<!--BW_String-->
 							</shiftVec>
 							<jointIdx>0</jointIdx>
@@ -3746,33 +3796,27 @@
 					<radiusOverrides>
 						<wheel>
 							<name>WD_L1</name>
-							<radius>0.331787</radius>
+							<radius>0.341759</radius>
 						</wheel>
 						<wheel>
 							<name>WD_L0</name>
-							<radius>0.323526</radius>
+							<radius>0.325025</radius>
 						</wheel>
 					</radiusOverrides>
 					<teethSyncs>
 						<syncWithMainModel>true</syncWithMainModel>
-						<segmentSyncPivotOffset>
-							-1.22914
-							<!--BW_String-->
-						</segmentSyncPivotOffset>
+						<segmentSyncPivotOffset>0.000000</segmentSyncPivotOffset>
 						<sync>
 							<name>WD_L1</name>
 							<startAngle>
-								-428.787
+								3.0868
 								<!--BW_String-->
 							</startAngle>
 							<teethCount>15</teethCount>
 						</sync>
 						<sync>
 							<name>WD_L0</name>
-							<startAngle>
-								-425.859
-								<!--BW_String-->
-							</startAngle>
+							<startAngle>0.153559</startAngle>
 							<teethCount>15</teethCount>
 						</sync>
 					</teethSyncs>
@@ -3780,299 +3824,299 @@
 						<top>
 							<range>
 								<point>
-									-1.42411 1.07434 -2.5155
+									1.42411 1.07434 -2.5155
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42411 1.11647 -2.44614
+									1.42411 1.11647 -2.44614
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.28411 1.14889 -2.37678
+									1.28411 1.14889 -2.37678
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.39411 1.15697 -2.30743
+									1.39411 1.15697 -2.30743
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.39411 1.15696 -2.23807
+									1.39411 1.15696 -2.23807
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.40411 1.15696 -2.16871
+									1.40411 1.15696 -2.16871
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.40411 1.15696 -2.09936
+									1.40411 1.15696 -2.09936
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.40411 1.15695 -2.03
+									1.40411 1.15695 -2.03
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.38411 1.15695 -1.96064
+									1.38411 1.15695 -1.96064
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.40411 1.15695 -1.89129
+									1.40411 1.15695 -1.89129
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.40411 1.15694 -1.82193
+									1.40411 1.15694 -1.82193
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42411 1.15694 -1.75257
+									1.42411 1.15694 -1.75257
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42411 1.15693 -1.68322
+									1.42411 1.15693 -1.68322
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42411 1.15693 -1.61386
+									1.42411 1.15693 -1.61386
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42411 1.15692 -1.5445
+									1.42411 1.15692 -1.5445
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15692 -1.47515
+									1.42412 1.15692 -1.47515
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15692 -1.40579
+									1.42412 1.15692 -1.40579
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15691 -1.33643
+									1.42412 1.15691 -1.33643
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15691 -1.26708
+									1.42412 1.15691 -1.26708
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.1569 -1.19772
+									1.42412 1.1569 -1.19772
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.1569 -1.12836
+									1.42412 1.1569 -1.12836
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.1569 -1.05901
+									1.42412 1.1569 -1.05901
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15689 -0.98965
+									1.42412 1.15689 -0.98965
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15689 -0.920294
+									1.42412 1.15689 -0.920294
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15688 -0.850937
+									1.42412 1.15688 -0.850937
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15688 -0.78158
+									1.42412 1.15688 -0.78158
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15688 -0.712224
+									1.42412 1.15688 -0.712224
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15687 -0.642867
+									1.42412 1.15687 -0.642867
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15687 -0.57351
+									1.42412 1.15687 -0.57351
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15686 -0.504153
+									1.42412 1.15686 -0.504153
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15686 -0.434797
+									1.42412 1.15686 -0.434797
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15686 -0.36544
+									1.42412 1.15686 -0.36544
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15685 -0.296083
+									1.42412 1.15685 -0.296083
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15685 -0.226727
+									1.42412 1.15685 -0.226727
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15684 -0.15737
+									1.42412 1.15684 -0.15737
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15684 -0.0880137
+									1.42412 1.15684 -0.0880137
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42412 1.15684 -0.0186568
+									1.42412 1.15684 -0.0186568
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15683 0.0507002
+									1.42413 1.15683 0.0507002
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15683 0.120057
+									1.42413 1.15683 0.120057
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15682 0.189413
+									1.42413 1.15682 0.189413
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15682 0.25877
+									1.42413 1.15682 0.25877
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15681 0.328127
+									1.42413 1.15681 0.328127
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15681 0.397483
+									1.42413 1.15681 0.397483
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15681 0.46684
+									1.42413 1.15681 0.46684
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.1568 0.536197
+									1.42413 1.1568 0.536197
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.1568 0.605554
+									1.42413 1.1568 0.605554
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15679 0.67491
+									1.42413 1.15679 0.67491
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15679 0.744267
+									1.42413 1.15679 0.744267
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15679 0.813623
+									1.42413 1.15679 0.813623
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15678 0.88298
+									1.42413 1.15678 0.88298
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15678 0.952337
+									1.42413 1.15678 0.952337
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15677 1.02169
+									1.42413 1.15677 1.02169
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15677 1.09105
+									1.42413 1.15677 1.09105
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15677 1.16041
+									1.42413 1.15677 1.16041
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15676 1.22976
+									1.42413 1.15676 1.22976
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15676 1.29912
+									1.42413 1.15676 1.29912
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15675 1.36848
+									1.42413 1.15675 1.36848
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15675 1.43783
+									1.42413 1.15675 1.43783
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15675 1.50719
+									1.42413 1.15675 1.50719
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15674 1.57655
+									1.42413 1.15674 1.57655
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42413 1.15357 1.6459
+									1.42413 1.15357 1.6459
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.14336 1.71526
+									1.42414 1.14336 1.71526
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.13601 1.78462
+									1.42414 1.13601 1.78462
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.13721 1.85397
+									1.42414 1.13721 1.85397
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.14118 1.92333
+									1.42414 1.14118 1.92333
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.14514 1.99269
+									1.42414 1.14514 1.99269
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.14911 2.06204
+									1.42414 1.14911 2.06204
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.15307 2.1314
+									1.42414 1.15307 2.1314
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.15671 2.20076
+									1.42414 1.15671 2.20076
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.1567 2.27011
+									1.42414 1.1567 2.27011
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.16229 2.33947
+									1.42414 1.16229 2.33947
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.16685 2.40883
+									1.42414 1.16685 2.40883
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.42414 1.1638 2.47818
+									1.42414 1.1638 2.47818
 									<!--BW_String-->
 								</point>
 								<point>
-									-1.27414 1.13924 2.54754
+									1.27414 1.13924 2.54754
 									<!--BW_String-->
 								</point>
 							</range>
@@ -4083,11 +4127,11 @@
 				<right>
 					<segmentsCount>82</segmentsCount>
 					<segmentsOuterThickness>
-						0.0256471
+						0.0225619
 						<!--BW_String-->
 					</segmentsOuterThickness>
 					<segmentsInnerThickness>
-						0.0185668
+						0.0216432
 						<!--BW_String-->
 					</segmentsInnerThickness>
 					<segmentsPlaneOffset>
@@ -4113,22 +4157,22 @@
 					</springsLength>
 					<mainSegment>
 						<model>vehicles/french/F75_Char_de_25t/track/segment.model</model>
-						<length>0.139223</length>
+						<length>0.137036</length>
 					</mainSegment>
 					<collisionHull>
 						<bottom/>
 						<top>
 							<part>
 								<xStart>
-									-2.50413
+									-2.55226
 									<!--BW_String-->
 								</xStart>
 								<xStep>
-									0.0696117
+									0.0685178
 									<!--BW_String-->
 								</xStep>
 								<ySamples>
-									1.02065 1.07546 1.11379 1.11786 1.11777 1.11768 1.11759 1.11749 1.1174 1.11731 1.11722 1.11712 1.11703 1.11694 1.11685 1.11675 1.11666 1.11657 1.11647 1.11638 1.11629 1.1162 1.11619 1.11619 1.11618 1.11618 1.11617 1.11617 1.11617 1.11616 1.11616 1.11616 1.11615 1.11615 1.11307 1.10932 1.10532 1.10126 1.09855 1.09634 1.09698 1.09979 1.1026 1.10467 1.10572 1.10941 1.1139 1.11495 1.11408 1.11321 1.11234 1.11151 1.11151 1.1115 1.1112 1.10792 1.10463 1.10194 1.1014 1.10163 1.10258 1.10353 1.1045 1.10547 1.10645 1.10742 1.1084 1.10937 1.1077 1.10804 1.10758 1.09342 1.0742 1.0376
+									0.969743 1.0423 1.08609 1.11793 1.11784 1.11775 1.11766 1.11757 1.11748 1.11739 1.11729 1.1172 1.11711 1.11702 1.11693 1.11684 1.11675 1.11666 1.11656 1.11647 1.11638 1.11629 1.1162 1.11619 1.11619 1.11618 1.11618 1.11617 1.11617 1.11617 1.11616 1.11616 1.11616 1.11615 1.11615 1.11397 1.11028 1.10642 1.10243 1.09923 1.09695 1.09633 1.0988 1.10157 1.10434 1.10505 1.10755 1.11197 1.11534 1.11448 1.11363 1.11277 1.11191 1.11151 1.1115 1.1115 1.10979 1.10656 1.10347 1.10141 1.1014 1.10196 1.1029 1.10383 1.10479 1.10575 1.10671 1.10767 1.10863 1.10959 1.10773 1.10813 1.10616 1.09042 1.06887 1.02949
 									<!--BW_String-->
 								</ySamples>
 							</part>
@@ -4150,7 +4194,7 @@
 								<!--BW_String-->
 							</basePos>
 							<shiftVec>
-								0.314156 0.0966488
+								0.315227 0.0838133
 								<!--BW_String-->
 							</shiftVec>
 							<jointIdx>11</jointIdx>
@@ -4161,23 +4205,20 @@
 								-2.20058 0.670058
 								<!--BW_String-->
 							</basePos>
-							<shiftVec>
-								-0.320217 0.0872706
-								<!--BW_String-->
-							</shiftVec>
+							<shiftVec>-0.327539 0.101332</shiftVec>
 							<jointIdx>50</jointIdx>
 						</topBack>
 						<bottomBack>
 							<wheelName>W_R3</wheelName>
 							<basePos>
-								-1.44817 0.470729
+								-1.44817 0.470732
 								<!--BW_String-->
 							</basePos>
 							<shiftVec>
-								-0.0616956 -0.461716
+								0.0483388 -0.468896
 								<!--BW_String-->
 							</shiftVec>
-							<jointIdx>60</jointIdx>
+							<jointIdx>61</jointIdx>
 						</bottomBack>
 						<bottomFront>
 							<wheelName>W_R0</wheelName>
@@ -4186,7 +4227,7 @@
 								<!--BW_String-->
 							</basePos>
 							<shiftVec>
-								0.0364511 -0.464391
+								0.0173917 -0.468574
 								<!--BW_String-->
 							</shiftVec>
 							<jointIdx>0</jointIdx>
@@ -4195,23 +4236,20 @@
 					<radiusOverrides>
 						<wheel>
 							<name>WD_R1</name>
-							<radius>0.330726</radius>
+							<radius>0.341759</radius>
 						</wheel>
 						<wheel>
 							<name>WD_R0</name>
-							<radius>0.327505</radius>
+							<radius>0.325025</radius>
 						</wheel>
 					</radiusOverrides>
 					<teethSyncs>
 						<syncWithMainModel>true</syncWithMainModel>
-						<segmentSyncPivotOffset>
-							1.22914
-							<!--BW_String-->
-						</segmentSyncPivotOffset>
+						<segmentSyncPivotOffset>0.000000</segmentSyncPivotOffset>
 						<sync>
 							<name>WD_R1</name>
 							<startAngle>
-								-423.079
+								3.0868
 								<!--BW_String-->
 							</startAngle>
 							<teethCount>15</teethCount>
@@ -4219,7 +4257,7 @@
 						<sync>
 							<name>WD_R0</name>
 							<startAngle>
-								-426.002
+								0.0240
 								<!--BW_String-->
 							</startAngle>
 							<teethCount>15</teethCount>
@@ -4229,299 +4267,299 @@
 						<top>
 							<range>
 								<point>
-									1.34418 1.06777 -2.50426
+									1.42411 1.07434 -2.5155
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.12258 -2.43465
+									1.42411 1.11647 -2.44614
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16091 -2.36504
+									1.28411 1.14889 -2.37678
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16498 -2.29542
+									1.39411 1.15697 -2.30743
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16489 -2.22581
+									1.39411 1.15696 -2.23807
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16479 -2.1562
+									1.40411 1.15696 -2.16871
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.1647 -2.08659
+									1.40411 1.15696 -2.09936
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16461 -2.01698
+									1.40411 1.15695 -2.03
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16452 -1.94737
+									1.38411 1.15695 -1.96064
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16442 -1.87775
+									1.40411 1.15695 -1.89129
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16433 -1.80814
+									1.40411 1.15694 -1.82193
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16424 -1.73853
+									1.42411 1.15694 -1.75257
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16415 -1.66892
+									1.42411 1.15693 -1.68322
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16405 -1.59931
+									1.42411 1.15693 -1.61386
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16396 -1.5297
+									1.42411 1.15692 -1.5445
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16387 -1.46008
+									1.42412 1.15692 -1.47515
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16378 -1.39047
+									1.42412 1.15692 -1.40579
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16368 -1.32086
+									1.42412 1.15691 -1.33643
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27417 1.16359 -1.25125
+									1.42412 1.15691 -1.26708
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.1635 -1.18164
+									1.42412 1.1569 -1.19772
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.1634 -1.11203
+									1.42412 1.1569 -1.12836
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16331 -1.04241
+									1.42412 1.1569 -1.05901
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16331 -0.972802
+									1.42412 1.15689 -0.98965
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.1633 -0.90319
+									1.42412 1.15689 -0.920294
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.1633 -0.833579
+									1.42412 1.15688 -0.850937
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16329 -0.763967
+									1.42412 1.15688 -0.78158
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16329 -0.694355
+									1.42412 1.15688 -0.712224
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16329 -0.624744
+									1.42412 1.15687 -0.642867
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16328 -0.555132
+									1.42412 1.15687 -0.57351
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16328 -0.48552
+									1.42412 1.15686 -0.504153
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16327 -0.415908
+									1.42412 1.15686 -0.434797
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16327 -0.346297
+									1.42412 1.15686 -0.36544
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16327 -0.276685
+									1.42412 1.15685 -0.296083
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16326 -0.207073
+									1.42412 1.15685 -0.226727
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.16018 -0.137462
+									1.42412 1.15684 -0.15737
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.15643 -0.0678498
+									1.42412 1.15684 -0.0880137
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.15243 0.00176179
+									1.42412 1.15684 -0.0186568
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27416 1.14838 0.0713733
+									1.42413 1.15683 0.0507002
 									<!--BW_String-->
 								</point>
 								<point>
-									1.34416 1.14567 0.140986
+									1.42413 1.15683 0.120057
 									<!--BW_String-->
 								</point>
 								<point>
-									1.42416 1.14346 0.210598
+									1.42413 1.15682 0.189413
 									<!--BW_String-->
 								</point>
 								<point>
-									1.42416 1.1441 0.280209
+									1.42413 1.15682 0.25877
 									<!--BW_String-->
 								</point>
 								<point>
-									1.42416 1.14691 0.349821
+									1.42413 1.15681 0.328127
 									<!--BW_String-->
 								</point>
 								<point>
-									1.42415 1.14972 0.419433
+									1.42413 1.15681 0.397483
 									<!--BW_String-->
 								</point>
 								<point>
-									1.42415 1.15179 0.489045
+									1.42413 1.15681 0.46684
 									<!--BW_String-->
 								</point>
 								<point>
-									1.32415 1.15284 0.558656
+									1.42413 1.1568 0.536197
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15653 0.628267
+									1.42413 1.1568 0.605554
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.16102 0.697879
+									1.42413 1.15679 0.67491
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.16207 0.76749
+									1.42413 1.15679 0.744267
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.1612 0.837102
+									1.42413 1.15679 0.813623
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.16033 0.906714
+									1.42413 1.15678 0.88298
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15946 0.976325
+									1.42413 1.15678 0.952337
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15863 1.04594
+									1.42413 1.15677 1.02169
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15862 1.11555
+									1.42413 1.15677 1.09105
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15862 1.18516
+									1.42413 1.15677 1.16041
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15831 1.25477
+									1.42413 1.15676 1.22976
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15503 1.32438
+									1.42413 1.15676 1.29912
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15175 1.394
+									1.42413 1.15675 1.36848
 									<!--BW_String-->
 								</point>
 								<point>
-									1.39415 1.14906 1.46361
+									1.42413 1.15675 1.43783
 									<!--BW_String-->
 								</point>
 								<point>
-									1.42415 1.14852 1.53322
+									1.42413 1.15675 1.50719
 									<!--BW_String-->
 								</point>
 								<point>
-									1.41415 1.14875 1.60283
+									1.42413 1.15674 1.57655
 									<!--BW_String-->
 								</point>
 								<point>
-									1.35415 1.1497 1.67244
+									1.42413 1.15357 1.6459
 									<!--BW_String-->
 								</point>
 								<point>
-									1.29415 1.15065 1.74205
+									1.42414 1.14336 1.71526
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15161 1.81167
+									1.42414 1.13601 1.78462
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15259 1.88128
+									1.42414 1.13721 1.85397
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27415 1.15356 1.95089
+									1.42414 1.14118 1.92333
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27414 1.15454 2.0205
+									1.42414 1.14514 1.99269
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27414 1.15551 2.09011
+									1.42414 1.14911 2.06204
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27414 1.15649 2.15972
+									1.42414 1.15307 2.1314
 									<!--BW_String-->
 								</point>
 								<point>
-									1.42414 1.15482 2.22934
+									1.42414 1.15671 2.20076
 									<!--BW_String-->
 								</point>
 								<point>
-									1.38414 1.15516 2.29895
+									1.42414 1.1567 2.27011
 									<!--BW_String-->
 								</point>
 								<point>
-									1.42414 1.1547 2.36856
+									1.42414 1.16229 2.33947
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27414 1.14054 2.43817
+									1.42414 1.16685 2.40883
 									<!--BW_String-->
 								</point>
 								<point>
-									1.27414 1.12131 2.50778
+									1.42414 1.1638 2.47818
 									<!--BW_String-->
 								</point>
 								<point>
-									1.31414 1.08472 2.57739
+									1.27414 1.13924 2.54754
 									<!--BW_String-->
 								</point>
 							</range>
@@ -4667,12 +4705,20 @@
 						<undamaged>vehicles/french/F75_Char_de_25t/normal/lod0/Gun_02.model</undamaged>
 						<destroyed>vehicles/french/F75_Char_de_25t/crash/lod0/Gun_02.model</destroyed>
 						<exploded>vehicles/french/F75_Char_de_25t/crash/lod0/Gun_02.model</exploded>
+						<sets>
+							<F75_Char_de_25t_3DSt_TIR>
+								<undamaged>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/normal/lod0/Gun_02.model</undamaged>
+								<destroyed>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/crash/lod0/Gun_02.model</destroyed>
+								<exploded>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/crash/lod0/Gun_02.model</exploded>
+							</F75_Char_de_25t_3DSt_TIR>
+						</sets>
 					</models>
 					<hitTester>
 						<collisionModelServer>vehicles/french/F75_Char_de_25t/collision/Gun_02.model</collisionModelServer>
 						<collisionModelClient>vehicles/french/F75_Char_de_25t/collision_client/Gun_02.model</collisionModelClient>
 					</hitTester>
 					<reloadEffect>reload_automat_reloading_85_107</reloadEffect>
+					<effects>shot_main_mb</effects>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>
@@ -5478,6 +5524,183 @@
 							<anchorShift>0.118629</anchorShift>
 						</slot>
 						<slot>
+							<slotType>projectionDecal</slotType>
+							<slotId>45035</slotId>
+							<rayStart>
+								-0.000366154 0.0036708 2.54598
+								<!--BW_String-->
+							</rayStart>
+							<rayEnd>
+								-0.00323342 -0.00365305 2.54398
+								<!--BW_String-->
+							</rayEnd>
+							<rayUp>
+								0.079 0.000000 0.000000
+								<!--BW_String-->
+							</rayUp>
+							<applyToFabric>true</applyToFabric>
+							<size>
+								0.5
+								<!--BW_String-->
+							</size>
+							<hideIfDamaged>false</hideIfDamaged>
+							<isUVProportional>true</isUVProportional>
+							<tags>formfactor_square</tags>
+							<compatibleModels>F75_Char_de_25t_3DSt_TIR</compatibleModels>
+							<position>
+								-0.93537 1.89654 -1.91799
+								<!--BW_String-->
+							</position>
+							<rotation>
+								1.56897 1.56903 -0.000003
+								<!--BW_String-->
+							</rotation>
+							<scale>0.262472 0.193731 0.244209</scale>
+							<doubleSided>false</doubleSided>
+							<showOn>4096</showOn>
+							<clipAngle>0.511428</clipAngle>
+							<anchorShift>0.108641</anchorShift>
+						</slot>
+						<slot>
+							<slotType>projectionDecal</slotType>
+							<slotId>45036</slotId>
+							<tags>formfactor_square</tags>
+							<compatibleModels>F75_Char_de_25t_3DSt_TIR</compatibleModels>
+							<position>
+								0.943089 1.97981 -1.45556
+								<!--BW_String-->
+							</position>
+							<rotation>
+								1.56891 -1.5689 -0.000032
+								<!--BW_String-->
+							</rotation>
+							<scale>0.426492 0.158727 0.396816</scale>
+							<doubleSided>false</doubleSided>
+							<showOn>4096</showOn>
+							<clipAngle>0.511428</clipAngle>
+							<anchorShift>0.108630</anchorShift>
+						</slot>
+						<slot>
+							<slotType>projectionDecal</slotType>
+							<slotId>45037</slotId>
+							<rayStart>
+								-0.000366154 0.0036708 2.54598
+								<!--BW_String-->
+							</rayStart>
+							<rayEnd>
+								-0.00323342 -0.00365305 2.54398
+								<!--BW_String-->
+							</rayEnd>
+							<rayUp>
+								0.079 0.000000 0.000000
+								<!--BW_String-->
+							</rayUp>
+							<applyToFabric>true</applyToFabric>
+							<size>
+								0.5
+								<!--BW_String-->
+							</size>
+							<hideIfDamaged>false</hideIfDamaged>
+							<isUVProportional>true</isUVProportional>
+							<tags>formfactor_square</tags>
+							<compatibleModels>F75_Char_de_25t_3DSt_TIR</compatibleModels>
+							<position>
+								-0.759502 2.00636 -0.531411
+								<!--BW_String-->
+							</position>
+							<rotation>
+								0.675059 0.000003 3.14156
+								<!--BW_String-->
+							</rotation>
+							<scale>0.358769 0.137953 0.358774</scale>
+							<doubleSided>false</doubleSided>
+							<showOn>4096</showOn>
+							<clipAngle>0.358398</clipAngle>
+							<anchorShift>0.097795</anchorShift>
+						</slot>
+						<slot>
+							<slotType>projectionDecal</slotType>
+							<slotId>45038</slotId>
+							<tags>formfactor_square</tags>
+							<compatibleModels>F75_Char_de_25t_3DSt_TIR</compatibleModels>
+							<position>
+								-0.403673 1.98378 -2.43464
+								<!--BW_String-->
+							</position>
+							<rotation>
+								1.56859 -0.0070252 -0.00695559
+								<!--BW_String-->
+							</rotation>
+							<scale>0.269551 0.107821 0.269551</scale>
+							<doubleSided>false</doubleSided>
+							<showOn>4096</showOn>
+							<clipAngle>0.511428</clipAngle>
+							<anchorShift>0.078620</anchorShift>
+						</slot>
+						<slot>
+							<slotType>projectionDecal</slotType>
+							<slotId>45039</slotId>
+							<rayStart>
+								-0.000366154 0.0036708 2.54598
+								<!--BW_String-->
+							</rayStart>
+							<rayEnd>
+								-0.00323342 -0.00365305 2.54398
+								<!--BW_String-->
+							</rayEnd>
+							<rayUp>
+								0.079 0.000000 0.000000
+								<!--BW_String-->
+							</rayUp>
+							<applyToFabric>true</applyToFabric>
+							<size>
+								0.5
+								<!--BW_String-->
+							</size>
+							<hideIfDamaged>false</hideIfDamaged>
+							<isUVProportional>true</isUVProportional>
+							<tags>formfactor_square</tags>
+							<compatibleModels>F75_Char_de_25t_3DSt_TIR</compatibleModels>
+							<position>
+								0.0242051 2.1949 -0.903392
+								<!--BW_String-->
+							</position>
+							<rotation>
+								-0.000000 0.000018 3.14157
+								<!--BW_String-->
+							</rotation>
+							<scale>
+								0.38041 0.146275 0.380417
+								<!--BW_String-->
+							</scale>
+							<doubleSided>false</doubleSided>
+							<showOn>4096</showOn>
+							<clipAngle>
+								1.26247
+								<!--BW_String-->
+							</clipAngle>
+							<anchorShift>0.057801</anchorShift>
+						</slot>
+						<slot>
+							<slotType>projectionDecal</slotType>
+							<slotId>45040</slotId>
+							<tags>formfactor_square</tags>
+							<position>
+								0.759538 2.00634 -0.53141
+								<!--BW_String-->
+							</position>
+							<rotation>
+								0.675059 0.000003 3.14156
+								<!--BW_String-->
+							</rotation>
+							<scale>0.358769 0.137953 0.358774</scale>
+							<doubleSided>false</doubleSided>
+							<showOn>4096</showOn>
+							<clipAngle>0.358398</clipAngle>
+							<compatibleModels>F75_Char_de_25t_3DSt_TIR</compatibleModels>
+							<anchorShift>0.097799</anchorShift>
+						</slot>
+						<slot>
 							<slotType>insigniaOnGun</slotType>
 							<slotId>49000</slotId>
 							<rayStart>
@@ -5499,6 +5722,30 @@
 							</size>
 							<hideIfDamaged>false</hideIfDamaged>
 							<isUVProportional>true</isUVProportional>
+						</slot>
+						<slot>
+							<slotType>insigniaOnGun</slotType>
+							<slotId>49001</slotId>
+							<rayStart>
+								-0.000366154 0.0036708 1.67298
+								<!--BW_String-->
+							</rayStart>
+							<rayEnd>
+								-0.0292422 0.0771506 1.67288
+								<!--BW_String-->
+							</rayEnd>
+							<rayUp>
+								0.087 0.000000 0.000000
+								<!--BW_String-->
+							</rayUp>
+							<applyToFabric>true</applyToFabric>
+							<size>
+								0.5
+								<!--BW_String-->
+							</size>
+							<hideIfDamaged>false</hideIfDamaged>
+							<isUVProportional>true</isUVProportional>
+							<compatibleModels>F75_Char_de_25t_3DSt_TIR</compatibleModels>
 						</slot>
 					</customizationSlots>
 					<camouflage>
@@ -5574,12 +5821,20 @@
 						<undamaged>vehicles/french/F75_Char_de_25t/normal/lod0/Gun_01.model</undamaged>
 						<destroyed>vehicles/french/F75_Char_de_25t/crash/lod0/Gun_01.model</destroyed>
 						<exploded>vehicles/french/F75_Char_de_25t/crash/lod0/Gun_01.model</exploded>
+						<sets>
+							<F75_Char_de_25t_3DSt_TIR>
+								<undamaged>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/normal/lod0/Gun_01.model</undamaged>
+								<destroyed>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/crash/lod0/Gun_01.model</destroyed>
+								<exploded>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/crash/lod0/Gun_01.model</exploded>
+							</F75_Char_de_25t_3DSt_TIR>
+						</sets>
 					</models>
 					<hitTester>
 						<collisionModelServer>vehicles/french/F75_Char_de_25t/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/french/F75_Char_de_25t/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
 					<reloadEffect>reload_automat_reloading_85_107</reloadEffect>
+					<effects>shot_main_mb</effects>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>
@@ -6383,6 +6638,123 @@
 							</clipAngle>
 							<verticalMirror>true</verticalMirror>
 							<anchorShift>0.118629</anchorShift>
+						</slot>
+						<slot>
+							<slotType>projectionDecal</slotType>
+							<slotId>45035</slotId>
+							<rayStart>
+								-0.000366154 0.0036708 2.54598
+								<!--BW_String-->
+							</rayStart>
+							<rayEnd>
+								-0.00323342 -0.00365305 2.54398
+								<!--BW_String-->
+							</rayEnd>
+							<rayUp>
+								0.079 0.000000 0.000000
+								<!--BW_String-->
+							</rayUp>
+							<applyToFabric>true</applyToFabric>
+							<size>
+								0.5
+								<!--BW_String-->
+							</size>
+							<hideIfDamaged>false</hideIfDamaged>
+							<isUVProportional>true</isUVProportional>
+							<tags>formfactor_square</tags>
+							<compatibleModels>F75_Char_de_25t_3DSt_TIR</compatibleModels>
+							<position>
+								-0.966866 1.89657 -1.77538
+								<!--BW_String-->
+							</position>
+							<rotation>
+								1.56904 1.569 0.000000
+								<!--BW_String-->
+							</rotation>
+							<scale>0.270966 0.100845 0.252112</scale>
+							<doubleSided>false</doubleSided>
+							<showOn>4096</showOn>
+							<clipAngle>0.511428</clipAngle>
+							<anchorShift>0.078632</anchorShift>
+						</slot>
+						<slot>
+							<slotType>projectionDecal</slotType>
+							<slotId>45036</slotId>
+							<tags>formfactor_square</tags>
+							<compatibleModels>F75_Char_de_25t_3DSt_TIR</compatibleModels>
+							<position>
+								0.943094 1.98171 -1.45556
+								<!--BW_String-->
+							</position>
+							<rotation>
+								1.56894 -1.569 0.000000
+								<!--BW_String-->
+							</rotation>
+							<scale>0.426493 0.158727 0.396817</scale>
+							<doubleSided>false</doubleSided>
+							<showOn>4096</showOn>
+							<clipAngle>0.511428</clipAngle>
+							<anchorShift>
+								0.09863
+								<!--BW_String-->
+							</anchorShift>
+						</slot>
+						<slot>
+							<slotType>projectionDecal</slotType>
+							<slotId>45037</slotId>
+							<rayStart>
+								-0.000366154 0.0036708 2.54598
+								<!--BW_String-->
+							</rayStart>
+							<rayEnd>
+								-0.00323342 -0.00365305 2.54398
+								<!--BW_String-->
+							</rayEnd>
+							<rayUp>
+								0.079 0.000000 0.000000
+								<!--BW_String-->
+							</rayUp>
+							<applyToFabric>true</applyToFabric>
+							<size>
+								0.5
+								<!--BW_String-->
+							</size>
+							<hideIfDamaged>false</hideIfDamaged>
+							<isUVProportional>true</isUVProportional>
+							<tags>formfactor_square</tags>
+							<compatibleModels>F75_Char_de_25t_3DSt_TIR</compatibleModels>
+							<position>
+								-0.759502 2.00636 -0.531411
+								<!--BW_String-->
+							</position>
+							<rotation>
+								0.675059 0.000003 3.14156
+								<!--BW_String-->
+							</rotation>
+							<scale>0.358769 0.137953 0.358774</scale>
+							<doubleSided>false</doubleSided>
+							<showOn>4096</showOn>
+							<clipAngle>0.358398</clipAngle>
+							<anchorShift>0.097795</anchorShift>
+						</slot>
+						<slot>
+							<slotType>projectionDecal</slotType>
+							<slotId>45038</slotId>
+							<tags>formfactor_square</tags>
+							<compatibleModels>F75_Char_de_25t_3DSt_TIR</compatibleModels>
+							<position>
+								-0.403673 1.98378 -2.43464
+								<!--BW_String-->
+							</position>
+							<rotation>
+								1.56859 -0.0070252 -0.00695559
+								<!--BW_String-->
+							</rotation>
+							<scale>0.269551 0.107821 0.269551</scale>
+							<doubleSided>false</doubleSided>
+							<showOn>4096</showOn>
+							<clipAngle>0.511428</clipAngle>
+							<anchorShift>0.078620</anchorShift>
 						</slot>
 						<slot>
 							<slotType>insigniaOnGun</slotType>
@@ -6481,12 +6853,20 @@
 						<undamaged>vehicles/french/F75_Char_de_25t/normal/lod0/Gun_03.model</undamaged>
 						<destroyed>vehicles/french/F75_Char_de_25t/crash/lod0/Gun_03.model</destroyed>
 						<exploded>vehicles/french/F75_Char_de_25t/crash/lod0/Gun_03.model</exploded>
+						<sets>
+							<F75_Char_de_25t_3DSt_TIR>
+								<undamaged>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/normal/lod0/Gun_03.model</undamaged>
+								<destroyed>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/crash/lod0/Gun_03.model</destroyed>
+								<exploded>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/crash/lod0/Gun_03.model</exploded>
+							</F75_Char_de_25t_3DSt_TIR>
+						</sets>
 					</models>
 					<hitTester>
 						<collisionModelServer>vehicles/french/F75_Char_de_25t/collision/Gun_03.model</collisionModelServer>
 						<collisionModelClient>vehicles/french/F75_Char_de_25t/collision_client/Gun_03.model</collisionModelClient>
 					</hitTester>
 					<reloadEffect>reload_automat_reloading_85_107</reloadEffect>
+					<effects>shot_mainext_mb</effects>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>
@@ -7292,6 +7672,123 @@
 							<anchorShift>0.367960</anchorShift>
 						</slot>
 						<slot>
+							<slotType>projectionDecal</slotType>
+							<slotId>45035</slotId>
+							<rayStart>
+								-0.000366154 0.0036708 2.54598
+								<!--BW_String-->
+							</rayStart>
+							<rayEnd>
+								-0.00323342 -0.00365305 2.54398
+								<!--BW_String-->
+							</rayEnd>
+							<rayUp>
+								0.079 0.000000 0.000000
+								<!--BW_String-->
+							</rayUp>
+							<applyToFabric>true</applyToFabric>
+							<size>
+								0.5
+								<!--BW_String-->
+							</size>
+							<hideIfDamaged>false</hideIfDamaged>
+							<isUVProportional>true</isUVProportional>
+							<tags>formfactor_square</tags>
+							<compatibleModels>F75_Char_de_25t_3DSt_TIR</compatibleModels>
+							<position>
+								-0.967076 1.89837 -1.69391
+								<!--BW_String-->
+							</position>
+							<rotation>
+								1.56904 1.56904 0.000021
+								<!--BW_String-->
+							</rotation>
+							<scale>0.270966 0.100845 0.252112</scale>
+							<doubleSided>false</doubleSided>
+							<showOn>4096</showOn>
+							<clipAngle>0.511428</clipAngle>
+							<anchorShift>0.078632</anchorShift>
+						</slot>
+						<slot>
+							<slotType>projectionDecal</slotType>
+							<slotId>45036</slotId>
+							<tags>formfactor_square</tags>
+							<compatibleModels>F75_Char_de_25t_3DSt_TIR</compatibleModels>
+							<position>
+								0.943097 1.98363 -1.45556
+								<!--BW_String-->
+							</position>
+							<rotation>
+								1.56887 -1.56906 -0.000046
+								<!--BW_String-->
+							</rotation>
+							<scale>0.425629 0.158406 0.396014</scale>
+							<doubleSided>false</doubleSided>
+							<showOn>4096</showOn>
+							<clipAngle>0.511428</clipAngle>
+							<anchorShift>
+								0.09863
+								<!--BW_String-->
+							</anchorShift>
+						</slot>
+						<slot>
+							<slotType>projectionDecal</slotType>
+							<slotId>45037</slotId>
+							<rayStart>
+								-0.000366154 0.0036708 2.54598
+								<!--BW_String-->
+							</rayStart>
+							<rayEnd>
+								-0.00323342 -0.00365305 2.54398
+								<!--BW_String-->
+							</rayEnd>
+							<rayUp>
+								0.079 0.000000 0.000000
+								<!--BW_String-->
+							</rayUp>
+							<applyToFabric>true</applyToFabric>
+							<size>
+								0.5
+								<!--BW_String-->
+							</size>
+							<hideIfDamaged>false</hideIfDamaged>
+							<isUVProportional>true</isUVProportional>
+							<tags>formfactor_square</tags>
+							<compatibleModels>F75_Char_de_25t_3DSt_TIR</compatibleModels>
+							<position>
+								-0.759502 2.00636 -0.531411
+								<!--BW_String-->
+							</position>
+							<rotation>
+								0.675059 0.000003 3.14156
+								<!--BW_String-->
+							</rotation>
+							<scale>0.358769 0.137953 0.358774</scale>
+							<doubleSided>false</doubleSided>
+							<showOn>4096</showOn>
+							<clipAngle>0.358398</clipAngle>
+							<anchorShift>0.097795</anchorShift>
+						</slot>
+						<slot>
+							<slotType>projectionDecal</slotType>
+							<slotId>45038</slotId>
+							<tags>formfactor_square</tags>
+							<compatibleModels>F75_Char_de_25t_3DSt_TIR</compatibleModels>
+							<position>
+								-0.403673 1.98378 -2.43464
+								<!--BW_String-->
+							</position>
+							<rotation>
+								1.56859 -0.0070252 -0.00695559
+								<!--BW_String-->
+							</rotation>
+							<scale>0.269551 0.107821 0.269551</scale>
+							<doubleSided>false</doubleSided>
+							<showOn>4096</showOn>
+							<clipAngle>0.511428</clipAngle>
+							<anchorShift>0.078620</anchorShift>
+						</slot>
+						<slot>
 							<slotType>insigniaOnGun</slotType>
 							<slotId>49000</slotId>
 							<rayStart>
@@ -7314,6 +7811,27 @@
 							<hideIfDamaged>false</hideIfDamaged>
 							<isUVProportional>true</isUVProportional>
 						</slot>
+						<slot>
+							<slotType>insigniaOnGun</slotType>
+							<slotId>49001</slotId>
+							<rayStart>
+								0.00163382 0.00467078 4.68995
+								<!--BW_String-->
+							</rayStart>
+							<rayEnd>
+								0.0584387 0.0138598 4.68965
+								<!--BW_String-->
+							</rayEnd>
+							<rayUp>0.077312 0.000000 0.000000</rayUp>
+							<applyToFabric>true</applyToFabric>
+							<size>
+								0.5
+								<!--BW_String-->
+							</size>
+							<hideIfDamaged>false</hideIfDamaged>
+							<isUVProportional>true</isUVProportional>
+							<compatibleModels>F75_Char_de_25t_3DSt_TIR</compatibleModels>
+						</slot>
 					</customizationSlots>
 					<camouflage>
 						<tiling>
@@ -7332,6 +7850,13 @@
 				<undamaged>vehicles/french/F75_Char_de_25t/normal/lod0/Turret_01.model</undamaged>
 				<destroyed>vehicles/french/F75_Char_de_25t/crash/lod0/Turret_01.model</destroyed>
 				<exploded>vehicles/french/F75_Char_de_25t/crash/lod0/Turret_01.model</exploded>
+				<sets>
+					<F75_Char_de_25t_3DSt_TIR>
+						<undamaged>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/normal/lod0/Turret_01.model</undamaged>
+						<destroyed>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/crash/lod0/Turret_01.model</destroyed>
+						<exploded>vehicles/french/F75_Char_de_25t/_skins/F75_Char_de_25t_3DSt_TIR/crash/lod0/Turret_01.model</exploded>
+					</F75_Char_de_25t_3DSt_TIR>
+				</sets>
 			</models>
 			<hitTester>
 				<collisionModelServer>vehicles/french/F75_Char_de_25t/collision/Turret_01.model</collisionModelServer>

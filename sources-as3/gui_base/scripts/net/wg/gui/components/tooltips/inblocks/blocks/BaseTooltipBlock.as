@@ -15,6 +15,8 @@ package net.wg.gui.components.tooltips.inblocks.blocks
       
       private var _isInPool:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function BaseTooltipBlock()
       {
          super();
@@ -32,6 +34,7 @@ package net.wg.gui.components.tooltips.inblocks.blocks
          }
          else
          {
+            this._disposed = true;
             this.onDispose();
          }
       }
@@ -108,6 +111,11 @@ package net.wg.gui.components.tooltips.inblocks.blocks
       public function set isInPool(param1:Boolean) : void
       {
          this._isInPool = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

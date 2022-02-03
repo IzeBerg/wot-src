@@ -1283,6 +1283,8 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
       
       public var icoTesterCollection:Vector.<BattleAtlasSprite> = null;
       
+      private var _disposed:Boolean = false;
+      
       public function FullStatsTable()
       {
          super();
@@ -2003,6 +2005,12 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
          this.rightFrag = null;
          this.rightTank = null;
          this.rightPlatoon = null;
+         this._disposed = true;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

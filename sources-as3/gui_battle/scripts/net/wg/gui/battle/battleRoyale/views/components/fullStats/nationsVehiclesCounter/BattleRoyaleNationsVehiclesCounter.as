@@ -21,6 +21,8 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
       
       private var _data:BattleRoyaleNationsVehiclesCounterVO = null;
       
+      private var _disposed:Boolean = false;
+      
       public function BattleRoyaleNationsVehiclesCounter()
       {
          super();
@@ -30,6 +32,7 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.cleanUpNationsVehiclesRenderers();
          this.renderers = null;
          App.utils.data.cleanupDynamicObject(this._renderersByNation);
@@ -154,6 +157,11 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
             _loc5_++;
          }
          dispatchEvent(new Event(Event.RESIZE));
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

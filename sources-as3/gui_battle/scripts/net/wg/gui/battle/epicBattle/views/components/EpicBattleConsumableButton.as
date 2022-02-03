@@ -73,10 +73,9 @@ package net.wg.gui.battle.epicBattle.views.components
       
       override protected function draw() : void
       {
-         var _loc1_:Boolean = false;
          var _loc4_:Boolean = false;
          super.draw();
-         _loc1_ = this.isLockedRank();
+         var _loc1_:Boolean = this.isLockedRank();
          var _loc2_:Boolean = isInvalid(LOCKED_INFO_INV);
          var _loc3_:Boolean = isInvalid(CONSUMABLE_LEVEL_INV);
          if(_loc2_)

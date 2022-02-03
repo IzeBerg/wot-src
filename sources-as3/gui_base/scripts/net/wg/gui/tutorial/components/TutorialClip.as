@@ -14,6 +14,8 @@ package net.wg.gui.tutorial.components
       private static var _onReadyForTutorialPointer:Function = checkTutorialFunctionType;
        
       
+      private var _disposed:Boolean = false;
+      
       public function TutorialClip()
       {
          super();
@@ -57,8 +59,10 @@ package net.wg.gui.tutorial.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
+         dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_BEFORE_DISPOSE));
          this.onDispose();
-         dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_DISPOSE));
+         dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_AFTER_DISPOSE));
       }
       
       protected function onDispose() : void
@@ -79,6 +83,11 @@ package net.wg.gui.tutorial.components
       {
          removeEventListener(Event.ADDED_TO_STAGE,this.onTutorialClipAddedToStageHandler);
          _onReadyForTutorialPointer(this);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

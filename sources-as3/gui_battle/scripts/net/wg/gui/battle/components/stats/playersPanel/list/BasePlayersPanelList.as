@@ -72,6 +72,8 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       private var _overrideExInfoValue:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function BasePlayersPanelList()
       {
          this.panelListItems = new Vector.<IPlayersPanelListItem>();
@@ -91,6 +93,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -747,6 +750,11 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          {
             dispatchEvent(new PlayersPanelListEvent(PlayersPanelListEvent.ITEM_SELECTED,_loc2_.vehicleID));
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -824,6 +824,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.popover.vo.AcousticPopoverVo;
    import net.wg.gui.rally.vo.VehicleVO;
    import net.wg.gui.tutorial.components.TutorialClip;
+   import net.wg.gui.tutorial.components.TutorialHintZone;
    import net.wg.gui.tutorial.data.BonusItemVO;
    import net.wg.gui.tutorial.data.BonusValuesVO;
    import net.wg.gui.tutorial.data.TutorialDialogVO;
@@ -2556,6 +2557,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_RALLY_VO_VEHICLEVO:Class = VehicleVO;
       
       public static const NET_WG_GUI_TUTORIAL_COMPONENTS_TUTORIALCLIP:Class = TutorialClip;
+      
+      public static const NET_WG_GUI_TUTORIAL_COMPONENTS_TUTORIALHINTZONE:Class = TutorialHintZone;
       
       public static const NET_WG_GUI_TUTORIAL_DATA_BONUSITEMVO:Class = BonusItemVO;
       

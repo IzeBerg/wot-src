@@ -12,7 +12,7 @@ UNDEFINED_ITEM_CD = 0
 ITEM_TYPE_NAMES = ('_reserved', 'vehicle', 'vehicleChassis', 'vehicleTurret', 'vehicleGun',
                    'vehicleEngine', 'vehicleFuelTank', 'vehicleRadio', 'tankman',
                    'optionalDevice', 'shell', 'equipment', 'customizationItem', 'crewSkin',
-                   'crewBook', 'customizationProgression')
+                   'crewBook')
 
 class ITEM_TYPES(dict):
 

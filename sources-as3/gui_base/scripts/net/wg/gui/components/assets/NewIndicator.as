@@ -20,6 +20,8 @@ package net.wg.gui.components.assets
       
       private var _hitMC:Sprite = null;
       
+      private var _disposed:Boolean = false;
+      
       public function NewIndicator()
       {
          super();
@@ -27,6 +29,7 @@ package net.wg.gui.components.assets
       
       public function dispose() : void
       {
+         this._disposed = true;
          this._hitMC = null;
          this.newLabel = null;
       }
@@ -57,6 +60,11 @@ package net.wg.gui.components.assets
       public function set hitMC(param1:Sprite) : void
       {
          this._hitMC = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -12,7 +12,8 @@ VehicleOfferEntry.__new__.__defaults__ = (
 ItemPackEntry = namedtuple('ItemPackEntry', ('type', 'id', 'count', 'groupID', 'compensation',
                                              'iconSource', 'title', 'description',
                                              'extra'))
-ItemPackEntry.__new__.__defaults__ = (None, None, None, None, None, None, '', '', None)
+ItemPackEntry.__new__.__defaults__ = (
+ None, None, None, None, None, None, '', '', {})
 
 class ShopItemType(CONST_CONTAINER):
     VEHICLE = 'vehicle'
@@ -170,9 +171,20 @@ class ItemPackTypeGroup(CONST_CONTAINER):
      ItemPackType.FRONTLINE_TOKEN,)
     TRADE_IN = (
      ItemPackType.TRADE_IN_INFO,)
+    CREW_BOOKS = (
+     ItemPackType.CREW_BOOK,
+     ItemPackType.CREW_BOOK_BROCHURE,
+     ItemPackType.CREW_BOOK_GUIDE,
+     ItemPackType.CREW_BOOK_CREW_BOOK,
+     ItemPackType.CREW_BOOK_PERSONAL_BOOK,
+     ItemPackType.CREW_BOOK_UNIVERSAL_BOOK)
 
 
 CompensationSpec = namedtuple('CompensationSpec', ('type', 'value', 'count'))
+
+def getItemPackByGroupAndName(group, name, default=None):
+    return next((itemPackName for itemPackName in group if name in itemPackName), default)
+
 
 class CompensationType(CONST_CONTAINER):
     MONEY = 'money'

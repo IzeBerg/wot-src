@@ -14,6 +14,8 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
       
       private var _bgState:String = "";
       
+      private var _disposed:Boolean = false;
+      
       public function ListRowBackgroundContainer()
       {
          super();
@@ -22,8 +24,14 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.cleanUpContainer();
          this._listRowBackgroundItems = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
       
       public function setBackgroundRowEntries(param1:int) : void

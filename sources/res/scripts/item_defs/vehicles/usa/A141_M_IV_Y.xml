@@ -8,6 +8,8 @@
 		<loader/>
 	</crew>
 	<supplySlots>5 1 1 6 6 6 7 8 8 8</supplySlots>
+	<postProgressionTree>role_HT_universal</postProgressionTree>
+	<customRoleSlotOptions>2 4</customRoleSlotOptions>
 	<speedLimits>
 		<forward>45</forward>
 		<backward>18</backward>
@@ -4281,6 +4283,8 @@
 						<collisionModelServer>vehicles/american/A141_M_IV_Y/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/american/A141_M_IV_Y/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_large_mb</effects>
+					<reloadEffect>reload85_107</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>

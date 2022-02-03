@@ -197,7 +197,7 @@ class HangarCameraManager(object):
             else:
                 self.__camConstraints[1] = camConstraints[1]
             if camConstraints is None or camConstraints[2] is None:
-                self.__updateCameraDistanceLimits()
+                self.__updateCameraLimits()
             else:
                 self.__camConstraints[2] = camConstraints[2]
             if not ignoreConstraints:
@@ -366,7 +366,7 @@ class HangarCameraManager(object):
         isDone = not ctx['started']
         self.__cam.isMovementEnabled = isDone
         if isDone:
-            self.__updateCameraDistanceLimits()
+            self.__updateCameraLimits()
             self.__cam.pivotMaxDist = self.__getCameraPivotDistance()
             self.__cam.forceUpdate()
 
@@ -385,7 +385,7 @@ class HangarCameraManager(object):
         ctx = event.ctx
         if ctx['state'] != CameraMovementStates.FROM_OBJECT:
             self.__currentEntityId = ctx['entityId']
-            self.__updateCameraDistanceLimits()
+            self.__updateCameraLimits()
 
     def __handleDisableMovement(self, event):
         enabled = not event.ctx['disable']
@@ -394,8 +394,8 @@ class HangarCameraManager(object):
     def __updateCameraDistanceLimits(self):
         from gui.ClientHangarSpace import hangarCFG
         cfg = hangarCFG()
-        if self.__allowCustomCamDistance and self.__isInPlatoon and cfg.camDistConstPlatoon:
-            minDist, maxDist = cfg.camDistConstPlatoon
+        if self.__allowCustomCamDistance and self.__isInPlatoon and cfg.camDistConstrPlatoon:
+            minDist, maxDist = cfg.camDistConstrPlatoon
         else:
             entity = BigWorld.entities.get(self.__currentEntityId)
             modelLength = entity.getModelLength() if entity is not None and hasattr(entity, 'getModelLength') else 0.0
@@ -406,6 +406,23 @@ class HangarCameraManager(object):
             maxDist = minDist
         self.__camConstraints[2] = (minDist, maxDist)
         return
+
+    def __updateCameraPitchLimits(self):
+        from gui.ClientHangarSpace import hangarCFG
+        cfg = hangarCFG()
+        if self.__allowCustomCamDistance and self.__isInPlatoon and cfg.camPitchConstrPlatoon:
+            minDist, maxDist = cfg.camPitchConstrPlatoon
+            if maxDist < minDist:
+                _logger.warning('incorrect values - camera MAX pitch < camera MIN pitch, use min distance as max')
+                maxDist = minDist
+            self.__camConstraints[0] = (
+             minDist, maxDist)
+        else:
+            self.__camConstraints[0] = cfg['cam_pitch_constr']
+
+    def __updateCameraLimits(self):
+        self.__updateCameraDistanceLimits()
+        self.__updateCameraPitchLimits()
 
     def __getCameraPivotDistance(self):
         from gui.ClientHangarSpace import hangarCFG
@@ -423,11 +440,11 @@ class HangarCameraManager(object):
 
     def setPlatoonCameraDistance(self, enable):
         self.__isInPlatoon = enable
-        self.__updateCameraDistanceLimits()
+        self.__updateCameraLimits()
 
     def setAllowCustomCamDistance(self, enable):
         self.__allowCustomCamDistance = enable
-        self.__updateCameraDistanceLimits()
+        self.__updateCameraLimits()
 
     def setPlatoonStartingCameraPosition(self):
         from gui.ClientHangarSpace import hangarCFG
@@ -438,7 +455,7 @@ class HangarCameraManager(object):
         mat.setRotateYPR((yaw, math.radians(startPitch), 0.0))
         self.__cam.source = mat
         cameraDist = cfg.camStartDistPlatoon
-        minDist, maxDist = cfg.camDistConstPlatoon
+        minDist, maxDist = cfg.camDistConstrPlatoon
         self.setPlatoonCameraDistance(enable=True)
         self.__cam.pivotMaxDist = math_utils.clamp(minDist, maxDist, cameraDist)
         self.__cam.forceUpdate()

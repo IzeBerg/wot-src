@@ -28,7 +28,6 @@ package net.wg.app.impl
    import net.wg.gui.lobby.hangar.crew.TankmenResponseVO;
    import net.wg.infrastructure.interfaces.ICursorManager;
    import net.wg.infrastructure.managers.GlobalVarsManager;
-   import net.wg.infrastructure.managers.IAtlasManager;
    import net.wg.infrastructure.managers.ICacheManager;
    import net.wg.infrastructure.managers.IColorSchemeManager;
    import net.wg.infrastructure.managers.IContainerManager;
@@ -52,6 +51,7 @@ package net.wg.app.impl
    import net.wg.infrastructure.managers.impl.ColorSchemeManagerLobby;
    import net.wg.infrastructure.managers.impl.ContainerManagerLobby;
    import net.wg.infrastructure.managers.impl.ContextMenuManager;
+   import net.wg.infrastructure.managers.impl.ElementBlurAdapter;
    import net.wg.infrastructure.managers.impl.EnvironmentManager;
    import net.wg.infrastructure.managers.impl.EventLogManager;
    import net.wg.infrastructure.managers.impl.GameInputManager;
@@ -155,7 +155,7 @@ package net.wg.app.impl
       
       override protected function getNewUtils() : IUtils
       {
-         var _loc1_:IUtils = new Utils(new Asserter(),new Scheduler(),new LocaleLobby(),new WGJSON(),new HelpLayoutManager(),new ClassFactory(),new PopupManager(),new CommonsLobby(),new FocusHandlerEx(),new IME(new SimpleManagedContainer(LAYER_NAMES.IME)),new VOManager(),new Icons(),new StyleSheetManager(),new TweenAnimator(),new AnimBuilder(),new DateTimeLobby(),new PoolManager(),new DataUtils(),new CounterManager(),new ViewRestrictions(),new UniversalBtnStyles());
+         var _loc1_:IUtils = new Utils(new Asserter(),new Scheduler(),new LocaleLobby(),new WGJSON(),new HelpLayoutManager(),new ClassFactory(),new PopupManager(),new CommonsLobby(),new FocusHandlerEx(),new IME(new SimpleManagedContainer(LAYER_NAMES.IME)),new VOManager(),new Icons(),new StyleSheetManager(),new TweenAnimator(),new AnimBuilder(),new DateTimeLobby(),new PoolManager(),new DataUtils(),new CounterManager(),new ViewRestrictions(),new UniversalBtnStyles(),new AtlasManager(),new ElementBlurAdapter());
          _loc1_.setNations(new Nations(_loc1_));
          _loc1_.universalBtnStyles.setClassFactory(_loc1_.classFactory);
          return _loc1_;
@@ -334,11 +334,6 @@ package net.wg.app.impl
       override protected function getRegCmdName() : String
       {
          return APP_REG_CMD;
-      }
-      
-      override protected function getNewAtlasManagerManager() : IAtlasManager
-      {
-         return new AtlasManager();
       }
       
       public function as_traceObject(param1:*) : void

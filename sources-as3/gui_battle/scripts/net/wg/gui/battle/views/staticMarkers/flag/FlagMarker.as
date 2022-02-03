@@ -22,6 +22,8 @@ package net.wg.gui.battle.views.staticMarkers.flag
       
       private var _labelText:String = null;
       
+      private var _disposed:Boolean = false;
+      
       public function FlagMarker()
       {
          super();
@@ -64,6 +66,7 @@ package net.wg.gui.battle.views.staticMarkers.flag
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.marker.dispose();
          this.cooldownTF = null;
          this.cooldownBG = null;
@@ -81,6 +84,11 @@ package net.wg.gui.battle.views.staticMarkers.flag
          {
             this.labelTF.text = this._labelText;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

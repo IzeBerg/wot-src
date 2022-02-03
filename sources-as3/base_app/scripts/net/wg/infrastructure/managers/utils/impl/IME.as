@@ -26,6 +26,8 @@ package net.wg.infrastructure.managers.utils.impl
       
       private var _statusWindowLoader:Loader = null;
       
+      private var _disposed:Boolean = false;
+      
       private const BGColor:Number = 4145200;
       
       private const BGColorOnOver:Number = 6448204;
@@ -41,8 +43,9 @@ package net.wg.infrastructure.managers.utils.impl
          this._container.visible = false;
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          if(this._container)
          {
             if(this.langBar)
@@ -208,6 +211,11 @@ package net.wg.infrastructure.managers.utils.impl
       {
          this.updateStyle();
          this.removeStatusContainerHandler();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -5549,6 +5549,8 @@
 						<collisionModelServer>vehicles/german/G03_PzV_Panther/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/german/G03_PzV_Panther/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_medium_mb</effects>
+					<reloadEffect>reload50_75</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>
@@ -5757,6 +5759,8 @@
 						<collisionModelServer>vehicles/german/G03_PzV_Panther/collision/Gun_06.model</collisionModelServer>
 						<collisionModelClient>vehicles/german/G03_PzV_Panther/collision_client/Gun_06.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_large_mb</effects>
+					<reloadEffect>reload85_107</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>
@@ -5963,7 +5967,8 @@
 						</maxPitch>
 					</pitchLimits>
 					<turretYawLimits>-180 180</turretYawLimits>
-					<effects>shot_main_mb</effects>
+					<effects>shot_medium_mb</effects>
+					<reloadEffect>reload50_75</reloadEffect>
 					<models>
 						<undamaged>vehicles/german/G03_PzV_Panther/normal/lod0/Gun_03.model</undamaged>
 						<destroyed>vehicles/german/G03_PzV_Panther/crash/lod0/Gun_03.model</destroyed>
@@ -7035,7 +7040,8 @@
 						<!--BW_String-->
 					</aimingTime>
 					<turretYawLimits>-180 180</turretYawLimits>
-					<effects>shot_main</effects>
+					<effects>shot_medium</effects>
+					<reloadEffect>reload50_75</reloadEffect>
 					<models>
 						<undamaged>vehicles/german/G03_PzV_Panther/normal/lod0/Gun_02.model</undamaged>
 						<destroyed>vehicles/german/G03_PzV_Panther/crash/lod0/Gun_02.model</destroyed>
@@ -7212,6 +7218,8 @@
 						<collisionModelServer>vehicles/german/G03_PzV_Panther/collision/Gun_05.model</collisionModelServer>
 						<collisionModelClient>vehicles/german/G03_PzV_Panther/collision_client/Gun_05.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_large_mb</effects>
+					<reloadEffect>reload85_107</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>
@@ -7371,7 +7379,8 @@
 						</maxPitch>
 					</pitchLimits>
 					<turretYawLimits>-180 180</turretYawLimits>
-					<effects>shot_main_mb</effects>
+					<effects>shot_medium_mb</effects>
+					<reloadEffect>reload50_75</reloadEffect>
 					<models>
 						<undamaged>vehicles/german/G03_PzV_Panther/normal/lod0/Gun_04.model</undamaged>
 						<destroyed>vehicles/german/G03_PzV_Panther/crash/lod0/Gun_04.model</destroyed>

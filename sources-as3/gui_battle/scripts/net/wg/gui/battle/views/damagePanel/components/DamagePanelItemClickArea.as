@@ -13,6 +13,8 @@ package net.wg.gui.battle.views.damagePanel.components
       
       private var _itemName:String;
       
+      private var _disposed:Boolean = false;
+      
       public function DamagePanelItemClickArea(param1:String, param2:int, param3:int, param4:int)
       {
          super();
@@ -26,6 +28,7 @@ package net.wg.gui.battle.views.damagePanel.components
       
       public function dispose() : void
       {
+         this._disposed = true;
          graphics.clear();
       }
       
@@ -37,6 +40,11 @@ package net.wg.gui.battle.views.damagePanel.components
       public function set itemName(param1:String) : void
       {
          this._itemName = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

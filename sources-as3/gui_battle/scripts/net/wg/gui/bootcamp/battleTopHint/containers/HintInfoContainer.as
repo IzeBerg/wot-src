@@ -11,6 +11,8 @@ package net.wg.gui.bootcamp.battleTopHint.containers
       
       public var txt:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function HintInfoContainer()
       {
          super();
@@ -19,12 +21,18 @@ package net.wg.gui.bootcamp.battleTopHint.containers
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.txt = null;
       }
       
       public function setHintText(param1:String) : void
       {
          this.txt.text = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

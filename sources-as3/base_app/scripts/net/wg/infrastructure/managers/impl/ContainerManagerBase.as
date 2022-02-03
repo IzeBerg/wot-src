@@ -216,6 +216,10 @@ package net.wg.infrastructure.managers.impl
          var _loc4_:IView = _loc3_.view;
          var _loc5_:Array = _loc4_.getSubContainers();
          var _loc6_:int = _loc5_.length;
+         if(_loc6_)
+         {
+            _loc4_.addEventListener(LifeCycleEvent.ON_BEFORE_DISPOSE,this.onViewSubContainersDisposeHandler);
+         }
          var _loc7_:ISimpleManagedContainer = null;
          var _loc8_:int = 0;
          while(_loc8_ < _loc6_ && _loc7_ == null)
@@ -234,6 +238,21 @@ package net.wg.infrastructure.managers.impl
          else
          {
             assert(false,"ContainerManager.as_registerContainer container is null for layer " + param1 + " in view for name " + param2);
+         }
+      }
+      
+      private function onViewSubContainersDisposeHandler(param1:LifeCycleEvent) : void
+      {
+         var _loc3_:ISimpleManagedContainer = null;
+         var _loc2_:IView = IView(param1.target);
+         _loc2_.removeEventListener(LifeCycleEvent.ON_BEFORE_DISPOSE,this.onViewSubContainersDisposeHandler);
+         for each(_loc3_ in _loc2_.getSubContainers())
+         {
+            this.cancelLoadingsForContainer(_loc3_.layer);
+            delete this._containersForLoadingViews[_loc3_.layer];
+            this._containersMap[_loc3_.layer] = null;
+            _loc3_.removeEventListener(FocusEvent.FOCUS_OUT,this.onContainerFocusOutHandler);
+            _loc3_.dispose();
          }
       }
       
@@ -716,6 +735,8 @@ class ViewInfo implements IDisposable
    
    private var _container:IManagedContainer = null;
    
+   private var _disposed:Boolean = false;
+   
    function ViewInfo(param1:IManagedContainer, param2:IView)
    {
       super();
@@ -732,6 +753,7 @@ class ViewInfo implements IDisposable
    
    public function dispose() : void
    {
+      this._disposed = true;
       this._container = null;
       this._view = null;
    }
@@ -766,6 +788,11 @@ class ViewInfo implements IDisposable
    public function get container() : IManagedContainer
    {
       return this._container;
+   }
+   
+   public function isDisposed() : Boolean
+   {
+      return this._disposed;
    }
 }
 

@@ -16,32 +16,50 @@ msgstr "Смотреть видео"
 msgid "entryPoint/activeDiscountText"
 msgstr "-{discount}%"
 
-msgid "entryPoint/chapterText"
-msgstr "ГЛАВА %(stage)"
+msgid "entryPoint/chapterDateText"
+msgstr "Глава %(chapter)s, %(date)s"
+
+msgid "entryPoint/chapterDoneText"
+msgstr "Глава %(chapter) пройдена"
+
+msgid "entryPoint/chapterStageText"
+msgstr "Глава %(chapter)s, этап %(stage)s"
 
 msgid "entryPoint/discountText"
 msgstr "{discount}%"
 
-msgid "entryPoint/finalDiscountText"
-msgstr "Купить %(vehicleLabel) Strv K со скидкой %(discount)%(icon)"
+msgid "entryPoint/finalDiscountText/long"
+msgstr "Купить %(vehicleLabel) %(name) со скидкой %(discount)%(icon)"
 
-msgid "entryPoint/finalNoDiscountText"
-msgstr "Купить %(vehicleLabel) Strv K%(icon)"
+msgid "entryPoint/finalDiscountText/short"
+msgstr "%(vehicleLabel) %(name) со скидкой %(discount)%(icon)"
+
+msgid "entryPoint/finalNoDiscountText/long"
+msgstr "Купить %(vehicleLabel) %(name)%(icon)"
+
+msgid "entryPoint/finalNoDiscountText/short"
+msgstr "%(vehicleLabel) %(name)%(icon)"
 
 msgid "entryPoint/finalSaleText"
 msgstr "Покупка доступна ещё: %(time)"
 
 msgid "entryPoint/postProgression/finalDiscountText"
-msgstr "Купить стиль «Дух войны» со скидкой %(discount)%(icon)"
+msgstr "Купить стиль %(name) со скидкой %(discount)%(icon)"
 
 msgid "entryPoint/postProgression/finalNoDiscountText"
-msgstr "Купить стиль «Дух войны»"
+msgstr "Купить стиль %(name)"
 
 msgid "entryPoint/separatorText"
 msgstr "ИЛИ"
 
 msgid "entryPoint/stageText"
 msgstr "%(stage) этап"
+
+msgid "entryPoint/styleName"
+msgstr "«Коготь тигра»"
+
+msgid "entryPoint/taskDoneText"
+msgstr "Задача выполнена"
 
 msgid "entryPoint/time/period/day"
 msgstr "{day} д"
@@ -56,7 +74,7 @@ msgid "entryPoint/time/period/minute"
 msgstr "{min} мин"
 
 msgid "entryPoint/title"
-msgstr "ДУХ ВОЙНЫ"
+msgstr "ЗАТАИВШИЙСЯ ТИГР"
 
 msgid "entryPoint/untilEndText"
 msgstr "%(time)"
@@ -64,34 +82,82 @@ msgstr "%(time)"
 msgid "entryPoint/untilStartText"
 msgstr "До начала: %(time)"
 
+msgid "entryPoint/vehicleName"
+msgstr "WZ-114"
+
+msgid "reward/confirm"
+msgstr "Показать в Ангаре"
+
+msgid "reward/confirmStyle"
+msgstr "Так точно!"
+
 msgid "reward/goToVehicleBtn"
 msgstr "Показать в Ангаре"
+
+msgid "reward/nameStyle"
+msgstr "«Коготь тигра»"
+
+msgid "reward/nameVehicle"
+msgstr "%(level)s %(type)s %(name)s."
+
+msgid "reward/rest"
+msgstr "И ещё: %(count)s"
+
+msgid "reward/secondary"
+msgstr "К внешнему виду"
+
+msgid "reward/stage"
+msgstr "ГЛАВА %(stage)s: %(text)s"
+
+msgid "reward/stageAllComplete"
+msgstr "НАГРАДЫ ЗА ВСЕ ЭТАПЫ ПОЛУЧЕНЫ."
+
+msgid "reward/stageCompleteLast"
+msgstr "ВЫ ЗАВЕРШИЛИ ПОСЛЕДНИЙ ЭТАП."
+
+msgid "reward/stageNotAllComplete"
+msgstr "НАГРАДЫ ЗА ЭТАПЫ, КОТОРЫЕ ВЫ НЕ ЗАВЕРШИЛИ."
+
+msgid "reward/stageStyle"
+msgstr "БРОСОК ТИГРА"
+
+msgid "reward/styleTitle"
+msgstr "СТИЛЬ ПОЛУЧЕН!"
 
 msgid "reward/title"
 msgstr "Охота на ренегата"
 
+msgid "reward/vehicleTitle"
+msgstr "ТАНК ПОЛУЧЕН!"
+
 msgid "reward/viewRewardsBtn"
 msgstr "Посмотреть награды"
 
-msgid "vehiclePreview/buyingPanel/buyBtn/label/buy"
-msgstr "К покупке"
+msgid "rewardTooltip/tankmen/header"
+msgstr "Укомплектованный экипаж с изученным навыком «Боевое братство»"
 
-msgid "vehiclePreview/buyingPanel/buyBtn/label/buyWithDiscount"
-msgstr "Купить сейчас со скидкой"
+msgid "rewardTooltip/title"
+msgstr "Награды:"
+
+msgid "vehiclePreview/buyingPanel/buyBtn/label/buy"
+msgstr "К покупке танка"
 
 msgid "vehiclePreview/buyingPanel/buyBtn/tooltip/active/body"
 msgstr "Нажмите, чтобы перейти к покупке товара."
 
 msgid "vehiclePreview/buyingPanel/buyBtn/tooltip/inactive/body"
 msgstr ""
-"Покупка машины станет доступна после старта события «%(event_name)s».\n"
+"Покупка возможна после старта события «%(event_name)s».\n"
 "%(addInfo)s"
 
 msgid "vehiclePreview/buyingPanel/buyBtn/tooltip/inactive/header"
-msgstr "Покупка недоступна"
+msgstr "Недоступно"
 
 msgid "vehiclePreview/buyingPanel/customOffer/discount"
 msgstr "Ваша скидка:"
+
+msgid "vehiclePreview/buyingPanel/title"
+msgstr "Машина и другие награды за незавершённые этапы"
 
 msgid "vehiclePreview/title/tooltip/body/addInfo/announce"
 msgstr ""
@@ -108,24 +174,30 @@ msgstr "Событие начнётся %(marathonStartDate)s."
 
 msgid "vehiclePreview/title/tooltip/body/marathon/inprogress"
 msgstr ""
-"Покупая сейчас шведский тяжёлый премиум танк IX уровня Strv K, вы также "
-"получаете награды за те этапы события, которые ещё не успели завершить."
+"Покупая сейчас китайский тяжёлый премиум танк IX&nbsp;уровня WZ-114, вы "
+"также получаете награды за те этапы события, которые ещё не успели "
+"завершить."
 
 msgid "vehiclePreview/title/tooltip/header"
 msgstr "%(event_name)s"
 
 msgid "vehiclePreview/title/tooltip/info/body/announce"
 msgstr ""
-"Машина будет доступна для покупки в рамках события "
-"«%(event_name)s»%(addInfo)s"
+"Машина и сопутствующие награды будут доступны для покупки в рамках события "
+"«%(event_name)s»."
 
 msgid "vehiclePreview/title/tooltip/info/body/progress"
 msgstr ""
-"Машина доступна для покупки в рамках события «%(event_name)s»%(addInfo)s"
+"Машина и сопутствующие награды доступны для покупки в рамках события "
+"«%(event_name)s»%(addInfo)s"
 
 msgid "vehiclePreview/title/tooltip/info/body/progress/withDiscount"
 msgstr ""
-"Машина доступна для покупки в рамках события «%(event_name)s»%(addInfo)s"
+"Машина и сопутствующие награды доступны для покупки в рамках события "
+"«%(event_name)s»%(addInfo)s"
+
+msgid "vehiclePreview/title/tooltip/rewards"
+msgstr "Комплект наград"
 
 msgid "vehiclePreview/tooltip/dateTime"
 msgstr "%(day)s %(monthName)s %(year)s, %(hour)s:%(min)s"

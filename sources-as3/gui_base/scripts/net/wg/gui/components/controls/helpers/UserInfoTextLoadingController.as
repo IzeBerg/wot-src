@@ -21,6 +21,8 @@ package net.wg.gui.components.controls.helpers
       
       private var _userRating:TextFieldLoadingContainer;
       
+      private var _disposed:Boolean = false;
+      
       public function UserInfoTextLoadingController()
       {
          super();
@@ -40,6 +42,7 @@ package net.wg.gui.components.controls.helpers
       
       public function dispose() : void
       {
+         this._disposed = true;
          this._userName.dispose();
          this._userName = null;
          this._userRating.dispose();
@@ -95,6 +98,11 @@ package net.wg.gui.components.controls.helpers
             this._userRating.hide();
          }
          dispatchEvent(new UserInfoTextEvent(UserInfoTextEvent.USER_RATING_CHANGED));
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

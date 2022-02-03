@@ -17,6 +17,8 @@ package net.wg.gui.battle.views.stats
       
       private var _totalFrames:int = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function SpeakAnimation()
       {
          super();
@@ -27,8 +29,9 @@ package net.wg.gui.battle.views.stats
          visible = false;
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          addFrameScript(this._totalFrames - 1,null);
          this.waveAnimationMC = null;
       }
@@ -62,6 +65,11 @@ package net.wg.gui.battle.views.stats
             gotoAndPlay(FRAME_HIDE);
          }
          this._isSpeaking = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

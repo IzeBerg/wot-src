@@ -10,6 +10,8 @@ package net.wg.gui.components.containers
       
       private var _gap:int = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function GroupLayout()
       {
          super();
@@ -17,6 +19,7 @@ package net.wg.gui.components.containers
       
       public function dispose() : void
       {
+         this._disposed = true;
          this._target = null;
       }
       
@@ -43,6 +46,11 @@ package net.wg.gui.components.containers
       public function set gap(param1:int) : void
       {
          this._gap = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

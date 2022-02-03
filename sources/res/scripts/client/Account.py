@@ -28,7 +28,7 @@ from account_shared import NotificationItem, readClientServerVersion
 from adisp import process
 from bootcamp.Bootcamp import g_bootcamp
 from constants import ARENA_BONUS_TYPE, QUEUE_TYPE, EVENT_CLIENT_DATA
-from constants import PREBATTLE_INVITE_STATUS, PREBATTLE_TYPE
+from constants import PREBATTLE_INVITE_STATUS, PREBATTLE_TYPE, ARENA_GAMEPLAY_MASK_DEFAULT
 from debug_utils import LOG_DEBUG, LOG_CURRENT_EXCEPTION, LOG_ERROR, LOG_DEBUG_DEV, LOG_WARNING
 from gui.Scaleform.Waiting import Waiting
 from gui.shared.ClanCache import g_clanCache
@@ -820,7 +820,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self._doCmdIntArrStrArr(AccountCommands.CMD_REQ_PLAYERS_GLOBAL_RATING, accountIDs, [], proxy)
         return
 
-    def enqueueRandom(self, vehInvID, gameplaysMask=65535, arenaTypeID=0, isOnly10ModeEnabled=False):
+    def enqueueRandom(self, vehInvID, gameplaysMask=ARENA_GAMEPLAY_MASK_DEFAULT, arenaTypeID=0, isOnly10ModeEnabled=False):
         if events.isPlayerEntityChanging:
             return
         self.base.doCmdIntArr(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_ENQUEUE_IN_BATTLE_QUEUE, [
@@ -1234,6 +1234,9 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
 
     def receiveOfferGift(self, offerID, giftID, callback=None):
         return self._doCmdInt2(AccountCommands.CMD_RECEIVE_OFFER_GIFT, offerID, giftID, callback)
+
+    def receiveMultipleOfferGifts(self, chosenGifts, callback=None):
+        return self._doCmdStr(AccountCommands.CMD_RECEIVE_OFFER_GIFT_MULTIPLE, chosenGifts, callback)
 
     def dismountEnhancement(self, vehicleInvID, slot, callback):
         if callback is not None:

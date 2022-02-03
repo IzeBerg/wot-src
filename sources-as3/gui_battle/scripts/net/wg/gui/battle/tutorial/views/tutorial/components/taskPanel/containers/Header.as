@@ -11,6 +11,8 @@ package net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel.container
       
       public var headerTF:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function Header()
       {
          super();
@@ -19,6 +21,7 @@ package net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel.container
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.headerTF = null;
       }
       
@@ -30,6 +33,11 @@ package net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel.container
       public function getHeaderTextHeight() : int
       {
          return this.headerTF.textHeight;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

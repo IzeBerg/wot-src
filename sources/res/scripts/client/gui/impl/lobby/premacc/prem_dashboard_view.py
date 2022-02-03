@@ -17,11 +17,13 @@ from gui.impl.pub import ViewImpl
 from gui.shared.event_dispatcher import showHangar
 from helpers import dependency
 from skeletons.gui.lobby_context import ILobbyContext
+from skeletons.account_helpers.settings_core import ISettingsCore
 _logger = logging.getLogger(__name__)
 
 class PremDashboardView(ViewImpl, SoundViewMixin):
     __slots__ = ()
     __lobbyContext = dependency.descriptor(ILobbyContext)
+    __settingsCore = dependency.descriptor(ISettingsCore)
 
     def __init__(self, layoutID):
         settings = ViewSettings(layoutID)
@@ -40,6 +42,7 @@ class PremDashboardView(ViewImpl, SoundViewMixin):
         self.viewModel.onCloseAction += self.__onCloseAction
         self.viewModel.onInitialized += self.__onInitialized
         self.__lobbyContext.getServerSettings().onServerSettingsChange += self._onServerSettingsChange
+        self.__settingsCore.interfaceScale.onScaleExactlyChanged += self.__onInterfaceScaleChanged
         self.setChildView(R.dynamic_ids.prem_dashboard.premium_card(), DashboardPremiumCard())
         self.setChildView(R.dynamic_ids.prem_dashboard.double_xp_card(), PremDashboardDoubleExperienceCard())
         self.__setPiggyBankCard()
@@ -69,6 +72,7 @@ class PremDashboardView(ViewImpl, SoundViewMixin):
         self.viewModel.onCloseAction -= self.__onCloseAction
         self.viewModel.onInitialized -= self.__onInitialized
         self.__lobbyContext.getServerSettings().onServerSettingsChange -= self._onServerSettingsChange
+        self.__settingsCore.interfaceScale.onScaleExactlyChanged -= self.__onInterfaceScaleChanged
         self._removeSoundEvent()
 
     def __onCloseAction(self):
@@ -76,3 +80,6 @@ class PremDashboardView(ViewImpl, SoundViewMixin):
 
     def __onInitialized(self):
         Waiting.hide('loadPage')
+
+    def __onInterfaceScaleChanged(self, scale):
+        self.viewModel.setInterfaceScale(scale)

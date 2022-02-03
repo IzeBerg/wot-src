@@ -18,6 +18,8 @@ package net.wg.gui.components.battleDamagePanel.components
       
       private var _atlasMgr:IAtlasManager = null;
       
+      private var _disposed:Boolean = false;
+      
       public function DefaultSummaryImages()
       {
          super();
@@ -32,6 +34,7 @@ package net.wg.gui.components.battleDamagePanel.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._atlasMgr = null;
          this._bg = null;
          this._img = null;
@@ -49,6 +52,11 @@ package net.wg.gui.components.battleDamagePanel.components
          this._bg.x = 0;
          this._img.x = IMG_X_POSITION;
          this._img.y = this._bg.height - this._img.height >> 1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

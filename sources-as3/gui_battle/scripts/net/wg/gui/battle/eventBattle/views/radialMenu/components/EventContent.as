@@ -26,6 +26,8 @@ package net.wg.gui.battle.eventBattle.views.radialMenu.components
       
       private var _isChat:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function EventContent()
       {
          super();
@@ -35,6 +37,7 @@ package net.wg.gui.battle.eventBattle.views.radialMenu.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.commandContainer.dispose();
          this.commandContainer = null;
          this.chatContainer.dispose();
@@ -90,6 +93,11 @@ package net.wg.gui.battle.eventBattle.views.radialMenu.components
          this.commandContainer.x = -TITLE_OFFSET_RADIUS * Math.sin(_loc4_) >> 0;
          this.commandContainer.y = -Math.abs(TITLE_OFFSET_RADIUS * Math.cos(_loc4_)) >> 0;
          this.chatContainer.y = MESSAGE_OFFSET * Math.abs(Math.sin(_loc2_)) >> 0;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

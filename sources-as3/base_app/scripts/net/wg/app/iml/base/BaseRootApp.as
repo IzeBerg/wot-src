@@ -12,6 +12,8 @@ package net.wg.app.iml.base
       
       private var _main:IRootAppMainContent = null;
       
+      private var _disposed:Boolean = false;
+      
       public function BaseRootApp(param1:IRootAppMainContent = null)
       {
          super();
@@ -20,6 +22,7 @@ package net.wg.app.iml.base
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -62,6 +65,11 @@ package net.wg.app.iml.base
       public function get main() : IRootAppMainContent
       {
          return this._main;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

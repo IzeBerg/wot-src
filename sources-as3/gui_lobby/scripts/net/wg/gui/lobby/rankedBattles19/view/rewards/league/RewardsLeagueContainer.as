@@ -23,6 +23,8 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.league
       
       private var _renderersWidth:Number = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function RewardsLeagueContainer()
       {
          super();
@@ -30,6 +32,7 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.league
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.clearRenderers();
       }
       
@@ -188,6 +191,11 @@ package net.wg.gui.lobby.rankedBattles19.view.rewards.league
          this._rewardsData = param1;
          this.updateRenderers();
          this.updateRenderersPositions();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

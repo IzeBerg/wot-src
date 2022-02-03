@@ -8,6 +8,8 @@ package net.wg.gui.bootcamp.messageWindow.containers
    {
        
       
+      private var _disposed:Boolean = false;
+      
       public function AnimatedShapeContainer()
       {
          super();
@@ -15,6 +17,7 @@ package net.wg.gui.bootcamp.messageWindow.containers
       
       public final function dispose() : void
       {
+         this._disposed = true;
       }
       
       public function get contentWidth() : int
@@ -38,6 +41,11 @@ package net.wg.gui.bootcamp.messageWindow.containers
       
       public function set htmlText(param1:String) : void
       {
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

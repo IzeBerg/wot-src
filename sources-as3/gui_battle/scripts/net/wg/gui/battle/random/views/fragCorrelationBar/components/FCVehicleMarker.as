@@ -134,5 +134,10 @@ package net.wg.gui.battle.random.views.fragCorrelationBar.components
          this._color = param1;
          this.redraw();
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._isDisposed;
+      }
    }
 }

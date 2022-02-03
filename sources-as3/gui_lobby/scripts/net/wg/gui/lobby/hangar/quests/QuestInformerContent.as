@@ -14,6 +14,8 @@ package net.wg.gui.lobby.hangar.quests
       
       public var textFieldMc:MovieClip;
       
+      private var _disposed:Boolean = false;
+      
       public function QuestInformerContent()
       {
          super();
@@ -21,6 +23,7 @@ package net.wg.gui.lobby.hangar.quests
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.icon.dispose();
          this.icon = null;
          this.iconSecond.dispose();
@@ -33,6 +36,11 @@ package net.wg.gui.lobby.hangar.quests
          this.icon.source = param1;
          this.iconSecond.source = param2;
          this.textFieldMc.textField.htmlText = param3;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

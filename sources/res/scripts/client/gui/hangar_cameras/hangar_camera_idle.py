@@ -96,6 +96,7 @@ class HangarCameraIdle(HangarCameraIdleController, CallbackDelayer, TimeDeltaMet
         self.__distParams.maxValue = cfg['cam_idle_dist_constr'][1]
         self.__distParams.period = cfg['cam_idle_dist_period']
         self.__yawPeriod = cfg['cam_idle_yaw_period']
+        self.__currentIdleTime = 0.0
 
     def destroy(self):
         self.stopCallback(self.__updateIdleMovement)
@@ -116,7 +117,7 @@ class HangarCameraIdle(HangarCameraIdleController, CallbackDelayer, TimeDeltaMet
         if delay > 0:
             BigWorld.addIdleCallbackForDelay(delay, self.__startCameraIdle, self.__stopCameraIdle)
         else:
-            self.__stopCameraIdle()
+            self.stopCallback(self.__updateIdleMovement)
 
     def __startCameraIdle(self):
         g_eventBus.handleEvent(CameraRelatedEvents(CameraRelatedEvents.IDLE_CAMERA, ctx={'started': True}), scope=EVENT_BUS_SCOPE.DEFAULT)
@@ -178,7 +179,6 @@ class HangarCameraIdle(HangarCameraIdleController, CallbackDelayer, TimeDeltaMet
         self.__setCameraParams(yaw, pitch, dist)
         if self.__currentIdleTime < self.TIME_OUT:
             return 0.0
-        g_eventBus.handleEvent(CameraRelatedEvents(CameraRelatedEvents.IDLE_CAMERA, ctx={'started': False}), scope=EVENT_BUS_SCOPE.DEFAULT)
         g_eventBus.handleEvent(CameraRelatedEvents(CameraRelatedEvents.IDLE_CAMERA, ctx={'started': False}), scope=EVENT_BUS_SCOPE.DEFAULT)
 
     def __easeOutValue(self, startSpeed, prevValue, dt):

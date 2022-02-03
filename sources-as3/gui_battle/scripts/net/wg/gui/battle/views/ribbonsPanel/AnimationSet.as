@@ -11,6 +11,8 @@ package net.wg.gui.battle.views.ribbonsPanel
       
       public var glowAnim:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function AnimationSet()
       {
          super();
@@ -24,8 +26,14 @@ package net.wg.gui.battle.views.ribbonsPanel
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.glowAnim = null;
          this.wrapper = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

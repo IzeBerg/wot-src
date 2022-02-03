@@ -11,6 +11,8 @@ package net.wg.gui.battle.views.minimap
       
       public var iconInfoRight:MinimapHintIconInfo = null;
       
+      private var _disposed:Boolean = false;
+      
       public function MinimapHint()
       {
          super();
@@ -28,10 +30,16 @@ package net.wg.gui.battle.views.minimap
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.iconInfoLeft.dispose();
          this.iconInfoRight.dispose();
          this.iconInfoLeft = null;
          this.iconInfoRight = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

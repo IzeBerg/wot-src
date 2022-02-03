@@ -9,6 +9,8 @@ package net.wg.gui.components.questProgress.components
       
       private var _viewType:String = null;
       
+      private var _disposed:Boolean = false;
+      
       public function SpriteComponent()
       {
          super();
@@ -16,6 +18,7 @@ package net.wg.gui.components.questProgress.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -31,6 +34,11 @@ package net.wg.gui.components.questProgress.components
       public function set viewType(param1:String) : void
       {
          this._viewType = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

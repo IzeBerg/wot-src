@@ -646,7 +646,6 @@ class StyleXmlWriter(BaseCustomizationItemXmlWriter):
                 projectionDecal.rotation = None
                 projectionDecal.scale = None
                 projectionDecal.doubleSided = None
-                projectionDecal.hiddenForUser = None
                 projectionDecal.showOn = None
 
         changed |= self.__outfitSerializer.encode(oSection, outfit)

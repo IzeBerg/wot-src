@@ -1,18 +1,26 @@
 import typing
-from frameworks.wulf import View, ViewEvent, Window, WindowLayer
+from frameworks.wulf import View, ViewEvent, ViewModel, Window, WindowLayer
 from gui.impl.gen.resources import R
-from gui.impl.pub.context_menu_window import ContextMenuWindow, ContextMenuContent
+from gui.impl.pub.context_menu_window import ContextMenuContent, ContextMenuWindow
 from gui.impl.pub.pop_over_window import PopOverWindow
-from gui.impl.pub.tooltip_window import SimpleToolTipWindow, ToolTipWindow, AdvancedToolTipWindow
+from gui.impl.pub.tooltip_window import AdvancedToolTipWindow, SimpleToolTipWindow, ToolTipWindow
 from helpers import dependency
+from helpers.events_handler import EventsHandler
 from skeletons.gui.impl import IGuiLoader
 from soft_exception import SoftException
-from frameworks.wulf import ViewModel
 TViewModel = typing.TypeVar('TViewModel', bound=ViewModel)
 
-class ViewImpl(View, typing.Generic[TViewModel]):
+class ViewImpl(View, EventsHandler, typing.Generic[TViewModel]):
     __slots__ = ()
     gui = dependency.descriptor(IGuiLoader)
+
+    def _initialize(self, *args, **kwargs):
+        super(ViewImpl, self)._initialize(*args, **kwargs)
+        self._subscribe()
+
+    def _finalize(self):
+        self._unsubscribe()
+        super(ViewImpl, self)._finalize()
 
     def createToolTipContent(self, event, contentID):
         return

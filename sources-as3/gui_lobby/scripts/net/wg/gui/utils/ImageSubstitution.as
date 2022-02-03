@@ -27,6 +27,8 @@ package net.wg.gui.utils
       
       public var height:Number = 16;
       
+      private var _disposed:Boolean = false;
+      
       public function ImageSubstitution(param1:String, param2:String, param3:Number = 0, param4:Number = 16, param5:Number = 16, param6:Boolean = false)
       {
          super();
@@ -67,6 +69,7 @@ package net.wg.gui.utils
       
       protected function onDispose() : void
       {
+         this._disposed = true;
          if(this.image != null)
          {
             this.image.dispose();
@@ -77,6 +80,11 @@ package net.wg.gui.utils
       public function get valid() : Boolean
       {
          return this.image != null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

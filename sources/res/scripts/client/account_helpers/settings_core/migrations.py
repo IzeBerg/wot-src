@@ -137,7 +137,7 @@ def _migrateTo6(core, data, initialized):
     maskOffset = 7168
     currentMask = (storedValue & maskOffset) >> 10
     import ArenaType
-    newMask = currentMask | ArenaType.getVisibilityMask(ArenaType.getGameplayIDForName('nations'))
+    newMask = currentMask | ArenaType.getGameplaysMask(('nations', ))
     data['gameplayData'][GAME.GAMEPLAY_MASK] = newMask
     clear = data['clear']
     clear[SETTINGS_SECTIONS.GAME] = clear.get(SETTINGS_SECTIONS.GAME, 0) | maskOffset
@@ -363,8 +363,8 @@ def _migrateTo36(core, data, initialized):
     storedValue = _getSettingsCache().getSectionSettings(SETTINGS_SECTIONS.GAMEPLAY, default)
     currentMask = storedValue & 65535
     import ArenaType
-    newMask = currentMask | ArenaType.getVisibilityMask(ArenaType.getGameplayIDForName('ctf30x30'))
-    newnewMask = newMask | ArenaType.getVisibilityMask(ArenaType.getGameplayIDForName('domination30x30'))
+    newMask = currentMask | ArenaType.getGameplaysMask(('ctf30x30', ))
+    newnewMask = newMask | ArenaType.getGameplaysMask(('domination30x30', ))
     data['gameplayData'][GAME.GAMEPLAY_MASK] = newnewMask
 
 
@@ -379,10 +379,10 @@ def _migrateTo38(core, data, initialized):
     storedValue = _getSettingsCache().getSectionSettings(SETTINGS_SECTIONS.GAMEPLAY, default)
     currentGameplayMask = storedValue & 65535
     import ArenaType
-    epicCtfEnabled = bool(currentGameplayMask & 1 << ArenaType.getGameplayIDForName('ctf30x30'))
-    dominationEnabled = bool(currentGameplayMask & 1 << ArenaType.getGameplayIDForName('domination'))
+    epicCtfEnabled = bool(currentGameplayMask & ArenaType.getGameplaysMask(('ctf30x30', )))
+    dominationEnabled = bool(currentGameplayMask & ArenaType.getGameplaysMask(('domination', )))
     if not epicCtfEnabled or not dominationEnabled:
-        currentGameplayMask &= ~ArenaType.getVisibilityMask(ArenaType.getGameplayIDForName('domination30x30'))
+        currentGameplayMask &= ~ArenaType.getGameplaysMask(('domination30x30', ))
     data['gameplayData'][GAME.GAMEPLAY_MASK] = currentGameplayMask
     data['gameData'][GAME.MINIMAP_ALPHA] = 0
     data['gameExtData'][GAME.MINIMAP_ALPHA_ENABLED] = False
@@ -493,7 +493,6 @@ def _migrateTo55(core, data, initialized):
 def _migrateTo56(core, data, initialized):
     data['battlePassStorage'][BattlePassStorageKeys.BUY_ANIMATION_WAS_SHOWN] = False
     data['battlePassStorage'][BattlePassStorageKeys.INTRO_VIDEO_SHOWN] = False
-    data['battlePassStorage'][BattlePassStorageKeys.BUY_BUTTON_HINT_IS_SHOWN] = False
 
 
 def _migrateTo57(core, data, initialized):
@@ -727,6 +726,28 @@ def _migrateTo82(core, data, initialized):
     data['guiStartBehavior']['isRankedWelcomeViewShowed'] = False
 
 
+def _migrateTo83(core, data, initialized):
+    pass
+
+
+def _migrateTo84(core, data, initialized):
+    pass
+
+
+def _migrateTo85(core, data, initialized):
+    from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS, GUI_START_BEHAVIOR
+    storedValue = _getSettingsCache().getSectionSettings(SETTINGS_SECTIONS.GUI_START_BEHAVIOR, 0)
+    settingOffset = 25165824
+    if storedValue & settingOffset:
+        clear = data['clear']
+        clear[GUI_START_BEHAVIOR] = clear.get(SETTINGS_SECTIONS.GUI_START_BEHAVIOR, 0) | settingOffset
+
+
+def _migrateTo86(core, data, initialized):
+    for position in range(2) + range(17, 18):
+        data['clear']['battlePassStorage'] = data['clear'].get('battlePassStorage', 0) | 1 << position
+
+
 _versions = (
  (
   1, _initializeDefaultSettings, True, False),
@@ -889,7 +910,15 @@ _versions = (
  (
   81, _migrateTo81, False, False),
  (
-  82, _migrateTo82, False, False))
+  82, _migrateTo82, False, False),
+ (
+  83, _migrateTo83, False, False),
+ (
+  84, _migrateTo84, False, False),
+ (
+  85, _migrateTo85, False, False),
+ (
+  86, _migrateTo86, False, False))
 
 @async
 @process
