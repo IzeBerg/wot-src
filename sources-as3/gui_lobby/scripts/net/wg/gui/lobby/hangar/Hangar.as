@@ -63,6 +63,8 @@ package net.wg.gui.lobby.hangar
       
       private static const INVALIDATE_LOOTBOXES_VISIBLE:String = "invalidateLootboxesVisible";
       
+      private static const INVALIDATE_EVENT_ENTRIES_VISIBLE:String = "invalidateEventEntriesVisible";
+      
       private static const ENTRY_CONT_POSITION_INVALID:String = "enrtyContPositionInvalid";
       
       private static const PARAMS_POSITION_INVALID:String = "paramsPositionInvalid";
@@ -151,6 +153,12 @@ package net.wg.gui.lobby.hangar
       
       private static const WIDGETS_OFFSET_Y:int = 64;
       
+      private static const SHOP_SALES_ENTRY_POINT_W:int = 185;
+      
+      private static const SHOP_SALES_ENTRY_POINT_X_OFFSET:int = -20;
+      
+      private static const SHOP_SALES_ENTRY_POINT_Y_OFFSET:int = -68;
+      
       private static const LOOTBOXES_ENTRY_POINT_W:int = 185;
       
       private static const LOOTBOXES_ENTRY_POINT_Y_OFFSET:int = 53;
@@ -191,6 +199,8 @@ package net.wg.gui.lobby.hangar
       public var envelopesEntrancePoint:EnvelopesEntrancePointWidget;
       
       public var lootboxesEntrancePoint:LootboxesEntrancePointWidget;
+      
+      public var shopSalesEntryPoint:ShopSalesEntryPoint;
       
       public var crewXPPanelInject:CrewXPPanelInject;
       
@@ -233,6 +243,8 @@ package net.wg.gui.lobby.hangar
       private var _isCnSubscribeVisible:Boolean = false;
       
       private var _isBattleRoyale:Boolean = false;
+      
+      private var _isShopSalesVisible:Boolean = false;
       
       private var _appStage:Stage;
       
@@ -328,6 +340,7 @@ package net.wg.gui.lobby.hangar
          registerFlashComponentS(this._header,HANGAR_ALIASES.HEADER);
          registerFlashComponentS(this.envelopesEntrancePoint,HANGAR_ALIASES.ENVELOPES_ENTRANCE_POINT);
          registerFlashComponentS(this.lootboxesEntrancePoint,HANGAR_ALIASES.LOOTBOXES_ENTRANCE_POINT);
+         registerFlashComponentS(this.shopSalesEntryPoint,HANGAR_ALIASES.SHOP_SALES_ENTRY_POINT);
          this.ammunitionPanelInject.addEventListener(Event.RESIZE,this.onAmmunitionPanelInjectResizeHandler);
          this.ammunitionPanelInject.addEventListener(AmmunitionPanelInjectEvents.HELP_LAYOUT_CHANGED,this.onAmmunitionPanelInjectHelpLayoutChangedHandler);
          if(this.vehResearchPanel != null)
@@ -411,6 +424,7 @@ package net.wg.gui.lobby.hangar
          this._header = null;
          this._alertMessageBlock = null;
          this.dqWidget = null;
+         this.shopSalesEntryPoint = null;
          this._widgetInitialized = false;
          this.crewXPPanelInject = null;
          App.utils.data.cleanupDynamicObject(this._widgetSizes);
@@ -484,7 +498,7 @@ package net.wg.gui.lobby.hangar
             this.lootboxesEntrancePoint.visible = this._lootboxesVisible;
             if(this.carousel)
             {
-               this.carousel.setRightMargin(!!this._lootboxesVisible ? int(LOOTBOXES_ENTRY_POINT_W) : int(0));
+               this.updateRightMargin();
             }
          }
          if(isInvalid(INVALIDATE_ENVELOPES_VISIBLE))
@@ -492,7 +506,15 @@ package net.wg.gui.lobby.hangar
             this.envelopesEntrancePoint.visible = this._envelopesVisible;
             if(this.carousel)
             {
-               this.carousel.setRightMargin(!!this._envelopesVisible ? int(ENVELOPES_ENTRY_POINT_W) : int(0));
+               this.updateRightMargin();
+            }
+         }
+         if(isInvalid(INVALIDATE_EVENT_ENTRIES_VISIBLE))
+         {
+            this.shopSalesEntryPoint.visible = this._isShopSalesVisible;
+            if(this.carousel)
+            {
+               this.updateRightMargin();
             }
          }
          if(this.carousel && isInvalid(INVALIDATE_CAROUSEL_SIZE))
@@ -647,14 +669,7 @@ package net.wg.gui.lobby.hangar
          this._carouselAlias = param2;
          this._carousel = this._classFactory.getComponent(param1,TankCarousel);
          this.carousel.visible = false;
-         if(this._envelopesVisible)
-         {
-            this.carousel.setRightMargin(ENVELOPES_ENTRY_POINT_W);
-         }
-         if(this._lootboxesVisible)
-         {
-            this.carousel.setRightMargin(LOOTBOXES_ENTRY_POINT_W);
-         }
+         this.updateRightMargin();
          this.carousel.addEventListener(Event.RESIZE,this.onCarouselResizeHandler);
          this.carousel.updateStage(_originalWidth,_originalHeight);
          this.carousel.name = CAROUSEL_NAME;
@@ -717,6 +732,15 @@ package net.wg.gui.lobby.hangar
          else
          {
             App.utils.counterManager.removeCounter(this.crewOperationBtn);
+         }
+      }
+      
+      public function as_setShopSalesVisible(param1:Boolean) : void
+      {
+         if(param1 != this._isShopSalesVisible)
+         {
+            this._isShopSalesVisible = param1;
+            invalidate(INVALIDATE_EVENT_ENTRIES_VISIBLE);
          }
       }
       
@@ -872,6 +896,26 @@ package net.wg.gui.lobby.hangar
          }
       }
       
+      private function updateRightMargin() : void
+      {
+         this.carousel.setRightMargin(this.calculateLootBoxesRightMargin() + this.calculateShopSalesRightMargin() + this.calculateEnvelopesRightMargin());
+      }
+      
+      private function calculateLootBoxesRightMargin() : int
+      {
+         return !!this._lootboxesVisible ? int(this.lootboxesEntrancePoint.offsetX) : int(0);
+      }
+      
+      private function calculateShopSalesRightMargin() : int
+      {
+         return !!this._isShopSalesVisible ? int(SHOP_SALES_ENTRY_POINT_W) : int(0);
+      }
+      
+      private function calculateEnvelopesRightMargin() : int
+      {
+         return !!this._envelopesVisible ? int(ENVELOPES_ENTRY_POINT_W) : int(0);
+      }
+      
       private function resolveVisibility() : void
       {
          super.visible = this._isVisibleByAnimator && this._isVisible;
@@ -881,7 +925,7 @@ package net.wg.gui.lobby.hangar
       {
          if(!this._hangarViewSwitchAnimator)
          {
-            this._hangarViewSwitchAnimator = new HangarAmunitionSwitchAnimator(this,Vector.<DisplayObject>([this.params,this.crew,this.dqWidget,this.teaser,this.crewBG,this.crewOperationBtn,this.crewXPPanelInject,this._alertMessageBlock,this.vehResearchPanel,this.vehResearchBG,this.tmenXpPanel,this.header,this.ammunitionPanel,this.bottomBg,this.envelopesEntrancePoint,this.lootboxesEntrancePoint]),Vector.<DisplayObject>([this.carouselContainer]),this.ammunitionPanelInject,height);
+            this._hangarViewSwitchAnimator = new HangarAmunitionSwitchAnimator(this,Vector.<DisplayObject>([this.params,this.crew,this.dqWidget,this.teaser,this.crewBG,this.crewOperationBtn,this.crewXPPanelInject,this._alertMessageBlock,this.vehResearchPanel,this.vehResearchBG,this.tmenXpPanel,this.header,this.ammunitionPanel,this.bottomBg,this.envelopesEntrancePoint,this.lootboxesEntrancePoint,this.shopSalesEntryPoint]),Vector.<DisplayObject>([this.carouselContainer]),this.ammunitionPanelInject,height);
          }
       }
       
@@ -1068,10 +1112,24 @@ package net.wg.gui.lobby.hangar
       {
          var _loc1_:int = _height - this._carousel.getBottom();
          this._carousel.updateCarouselPosition(_loc1_);
-         this.lootboxesEntrancePoint.x = this._carousel.x + this._carousel.rightArrow.x + this._carousel.rightArrow.width - this.lootboxesEntrancePoint.offsetX;
-         this.lootboxesEntrancePoint.y = this._carousel.y + this._carousel.leftArrow.y + (this._carousel.leftArrow.height >> 1) - LOOTBOXES_ENTRY_POINT_Y_OFFSET - this.lootboxesEntrancePoint.offsetY;
-         this.envelopesEntrancePoint.x = this._carousel.x + this._carousel.rightArrow.x + this._carousel.rightArrow.width - ENVELOPES_ENTRY_POINT_X_OFFSET;
-         this.envelopesEntrancePoint.y = this._carousel.y + this._carousel.leftArrow.y + (this._carousel.leftArrow.height >> 1) - ENVELOPES_ENTRY_POINT_Y_OFFSET;
+         var _loc2_:int = this._carousel.x + this._carousel.rightArrow.x + this._carousel.rightArrow.width;
+         if(this._lootboxesVisible)
+         {
+            this.lootboxesEntrancePoint.x = _loc2_ - this.lootboxesEntrancePoint.offsetX;
+            this.lootboxesEntrancePoint.y = this._carousel.y + this._carousel.leftArrow.y + (this._carousel.leftArrow.height >> 1) - LOOTBOXES_ENTRY_POINT_Y_OFFSET - this.lootboxesEntrancePoint.offsetY;
+            _loc2_ += this.calculateLootBoxesRightMargin();
+         }
+         if(this._isShopSalesVisible)
+         {
+            this.shopSalesEntryPoint.x = _loc2_ + SHOP_SALES_ENTRY_POINT_X_OFFSET | 0;
+            this.shopSalesEntryPoint.y = this._carousel.y + this._carousel.leftArrow.y + (this._carousel.leftArrow.height >> 1) + SHOP_SALES_ENTRY_POINT_Y_OFFSET | 0;
+            _loc2_ += this.calculateShopSalesRightMargin();
+         }
+         if(this._envelopesVisible)
+         {
+            this.envelopesEntrancePoint.x = _loc2_ - ENVELOPES_ENTRY_POINT_X_OFFSET;
+            this.envelopesEntrancePoint.y = this._carousel.y + this._carousel.leftArrow.y + (this._carousel.leftArrow.height >> 1) - ENVELOPES_ENTRY_POINT_Y_OFFSET;
+         }
          this.updateAmmunitionPanelPosition();
          if(this._hangarViewSwitchAnimator)
          {

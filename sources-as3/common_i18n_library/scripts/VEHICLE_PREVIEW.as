@@ -15,6 +15,8 @@ package
       
       public static const HEADER_BACKBTN_DESCRLABEL_ADVENTCALENDAR:String = "#vehicle_preview:header/backBtn/descrLabel/adventCalendar";
       
+      public static const HEADER_BACKBTN_DESCRLABEL_EVENT:String = "#vehicle_preview:header/backBtn/descrLabel/event";
+      
       public static const HEADER_BACKBTN_DESCRLABEL_HANGAR:String = "#vehicle_preview:header/backBtn/descrLabel/hangar";
       
       public static const HEADER_BACKBTN_DESCRLABEL_VEHICLECOMPARE:String = "#vehicle_preview:header/backBtn/descrLabel/vehicleCompare";

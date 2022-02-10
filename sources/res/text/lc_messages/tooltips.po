@@ -67,6 +67,9 @@ msgstr "В Боевом обучении"
 msgid "Contact/status/inBattle/unknown"
 msgstr "В бою"
 
+msgid "Contact/status/maxdifficultylevel"
+msgstr "Максимально доступная сложность $(level)s"
+
 msgid "Contact/status/online"
 msgstr "В сети"
 
@@ -3414,6 +3417,9 @@ msgstr "Нажмите, чтобы указать необходимую для 
 msgid "cyberSport/unit/configure/header"
 msgstr "Настройка требований"
 
+msgid "cyberSport/unit/fightBtn/difficultyLevelNotUnlocked/body"
+msgstr "Неподходящий уровень сложности взвода"
+
 msgid "cyberSport/unit/fightBtn/eventVehicleWrongMode/body"
 msgstr "Вы не можете участвовать на этой машине."
 
@@ -4667,11 +4673,45 @@ msgstr "При использовании:"
 msgid "equipment/restriction"
 msgstr "Ограничение:"
 
+msgid "event/squad/difficulty/dropdown/body"
+msgstr "Только командир может менять сложность."
+
+msgid "event/squad/difficulty/dropdown/commander/body"
+msgstr ""
+"Вы можете выбрать сложность из доступных.\n"
+"От сложности зависят потенциальные награды."
+
+msgid "event/squad/difficulty/dropdown/header"
+msgstr "Выбор %(level)s сложности недоступен"
+
+msgid "event/squad/difficulty/lock"
+msgstr ""
+"%(icon)s Продолжайте играть на %(level)s сложности, чтобы разблокировать "
+"следующую."
+
+msgid "event/squad/difficulty/warning"
+msgstr ""
+"%(icon)s Сложность разблокирована, но доступ к ней есть не у всех "
+"совзводных."
+
 msgid "event/squad/disable/body"
 msgstr "Для высадки на тёмной стороне Луны выберите %(tankName)s"
 
 msgid "event/squad/disable/header"
 msgstr "Внимание!"
+
+msgid "event/squad/disableWrongDifficulty/header"
+msgstr "Недоступно: взвод не готов"
+
+msgid "event/squad/disableWrongDifficultyCommander/body"
+msgstr ""
+"Несоответствие уровней сложности среди игроков. Измените уровень сложности "
+"для разведотряда."
+
+msgid "event/squad/disableWrongDifficultyPlayer/body"
+msgstr ""
+"Уровень сложности, установленный во взводе, не соответствует вашему "
+"максимально доступному."
 
 msgid "falloutBattleSelectorWindow/btnDisabled/body"
 msgstr "Вы находитесь в очереди на вход в бой."
@@ -5695,6 +5735,12 @@ msgstr "Поиск клана временно недоступен."
 msgid "header/accountPopover/unavailable"
 msgstr "Функциональность временно недоступна. Пожалуйста, попробуйте позже."
 
+msgid "header/battleRoyaleSquad/body"
+msgstr "Создать взвод для совместной игры в режиме «Стальной охотник»."
+
+msgid "header/battleRoyaleSquad/header"
+msgstr "Взвод охотников"
+
 msgid "header/battleType/body"
 msgstr "Нажмите, чтобы открыть список доступных режимов боёв."
 
@@ -5915,6 +5961,15 @@ msgstr "Действуют скидки на технику наций:"
 msgid "header/buttons/techtree/header"
 msgstr "Исследования"
 
+msgid "header/dominationSquad/body"
+msgstr ""
+"Создание формирования из 2–3 игроков для совместной игры.\n"
+"• Режимы боёв: «Бой до последнего».\n"
+"• Типы боёв: «Стальная охота», «Превосходство»."
+
+msgid "header/dominationSquad/header"
+msgstr "Взвод"
+
 msgid "header/eliteIcon/body"
 msgstr ""
 "Все модули исследованы.\n"
@@ -5923,6 +5978,12 @@ msgstr ""
 
 msgid "header/eliteIcon/header"
 msgstr "Элитная машина"
+
+msgid "header/eventSquad/body"
+msgstr "header/eventSquad/body"
+
+msgid "header/eventSquad/header"
+msgstr "header/eventSquad/header"
 
 msgid "header/info/players_online_full/body"
 msgstr ""
@@ -5986,10 +6047,30 @@ msgstr "Выберите желаемое количество дней Танк
 msgid "header/premium_upgrade/header"
 msgstr "Улучшить до Танкового премиум аккаунта"
 
+msgid "header/rankedSquad/body"
+msgstr "Игра в составе формирования недоступна в Ранговых боях."
+
+msgid "header/rankedSquad/header"
+msgstr "Создать взвод"
+
 msgid "header/refill_action/attention"
 msgstr ""
 "При первой покупке вы бесплатно получите\n"
 "дополнительное золото."
+
+msgid "header/squad/body"
+msgstr ""
+"Создание формирования из 2–3 игроков для совместной игры в Случайных боях.\n"
+"• Типы боёв: Стандартный бой, Штурм, Встречный бой, Генеральное сражение, а также Линия фронта, когда она доступна."
+
+msgid "header/squad/header"
+msgstr "Взвод"
+
+msgid "header/squad_member/body"
+msgstr "Нажмите, чтобы перейти в меню взвода."
+
+msgid "header/squad_member/header"
+msgstr "Взвод"
 
 msgid "header/versionInfoHint"
 msgstr ""
@@ -7168,6 +7249,9 @@ msgstr ""
 "• тип техники и машину;\n"
 "• специальность.\n"
 "У этого члена экипажа достаточно опыта для изучения трёх навыков или умений на выбор."
+
+msgid "notrecruitedtankman/hw19_commanders/howToGetInfo"
+msgstr "За участие в событии «Мирный-13»."
 
 msgid "notrecruitedtankman/hw19_commanders/label"
 msgstr "Для всех режимов игры"
@@ -9498,6 +9582,111 @@ msgstr ""
 msgid "shell/basic/description/bold"
 msgstr "Базовый снаряд"
 
+msgid "shell/event/description"
+msgstr "Снаряд, используемый по умолчанию для выбранного орудия. %(bold)s"
+
+msgid "shell/event/description/bold"
+msgstr "Боезапас неограничен."
+
+msgid "shell/pickups/description"
+msgstr "Альтернативный снаряд. Можно подобрать и использовать %(bold)s"
+
+msgid "shell/pickups/description/bold"
+msgstr "только на поле боя."
+
+msgid "shopSales/active/desc"
+msgstr ""
+"Событие скоро завершится. Успейте приобрести нужные вам наборы до истечения "
+"времени."
+
+msgid "shopSales/active/subheader"
+msgstr "До завершения: %(timeout)s"
+
+msgid "shopSales/currentDiscount/footer"
+msgstr "За определённый набор можно проголосовать только один раз."
+
+msgid "shopSales/currentDiscount/header"
+msgstr "Текущая скидка"
+
+msgid "shopSales/currentDiscount/howToBlock/body"
+msgstr "Скидка меняется в зависимости от общего количества голосов игроков."
+
+msgid "shopSales/currentDiscount/howToBlock/header"
+msgstr "Как получить скидку"
+
+msgid "shopSales/disabled/desc"
+msgstr ""
+"Событие «Торговый караван» временно недоступно по техническим причинам."
+
+msgid "shopSales/disabled/footer"
+msgstr "Временно недоступно"
+
+msgid "shopSales/disabled/subheader"
+msgstr "До завершения: %(timeout)s"
+
+msgid "shopSales/ended/desc"
+msgstr "Успейте приобрести сохранённые наборы до истечения времени."
+
+msgid "shopSales/ended/footer/purchased"
+msgstr "Все сохранённые наборы куплены."
+
+msgid "shopSales/ended/footer/saved"
+msgstr "Наборов сохранено: %(count)s"
+
+msgid "shopSales/ended/subheader"
+msgstr "Активная фаза завершена"
+
+msgid "shopSales/freeShuffle/body"
+msgstr "Заменяет текущий набор на новый, содержащий другие товары."
+
+msgid "shopSales/freeShuffle/header"
+msgstr "Замена наборов"
+
+msgid "shopSales/freeShuffle/maximumFree"
+msgstr "Максимальное количество бесплатных замен в день:%(max_number)s"
+
+msgid "shopSales/freeShuffle/paidShuffleCost"
+msgstr "Платная замена"
+
+msgid "shopSales/header"
+msgstr "Торговый караван"
+
+msgid "shopSales/locked/desc"
+msgstr ""
+"Совсем скоро стартует событие «Торговый караван», в течение которого у вас "
+"будет возможность приобрести уникальные товары, премиум машины, стили и "
+"другое полезное внутриигровое имущество со скидкой."
+
+msgid "shopSales/locked/subheader"
+msgstr "До начала: %(timeout)s"
+
+msgid "shopSales/paidShuffle/header"
+msgstr "Бесплатная замена будет доступна через %(timeout)s"
+
+msgid "shopSales/paidShuffle/startTime"
+msgstr "00:00"
+
+msgid "shopSales/voteForDiscount/available/body"
+msgstr ""
+"Голосуйте за набор, на который вы хотели бы увеличить скидку. Скидка "
+"меняется в зависимости от общего количества голосов игроков."
+
+msgid "shopSales/voteForDiscount/available/header"
+msgstr "Голосование для получения скидки"
+
+msgid "shopSales/voteForDiscount/available/maximumVotes"
+msgstr "Максимальное количество голосов в день: %(max_number)s"
+
+msgid "shopSales/voteForDiscount/unavailable/availabilityBlock"
+msgstr "Доступно через: %(timeout)s"
+
+msgid "shopSales/voteForDiscount/unavailable/footer"
+msgstr ""
+"Вы можете голосовать для получения скидки %(max_number)s раза каждый день."
+
+msgid "shopSales/voteForDiscount/unavailable/header"
+msgstr "Голосование для получения скидки заблокировано"
+
 msgid "showArtyHitOnMap/body"
 msgstr ""
 "Включение или отключение отображения на мини-карте области, по которой САУ "
@@ -9769,6 +9958,14 @@ msgstr "Дополнительный опыт"
 
 msgid "squadBonus/title"
 msgstr "Бонусы за игру взводом"
+
+msgid "squadWindow/eventVehicle"
+msgstr "squadWindow/eventVehicle"
+
+msgid "squadWindow/headerRestriction/difficultyNotUnlocked"
+msgstr ""
+"Уровень сложности взвода не соответствует вашему максимально доступному "
+"уровню сложности"
 
 msgid "statistics/tab/quests/status/onPause/body"
 msgstr ""

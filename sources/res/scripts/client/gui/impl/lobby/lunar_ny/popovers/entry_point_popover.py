@@ -1,4 +1,5 @@
 import typing, logging
+from adisp import process
 from constants import Configs
 from frameworks.wulf import ViewSettings
 from gui.impl.gen import R
@@ -87,8 +88,10 @@ class EnvelopesPopover(PopOverViewImpl):
             _logger.warning('Argument "envelopeType" doesn\'t exist')
         return
 
+    @process
     def __showBuyView(self, args):
-        g_eventBus.handleEvent(OpenLinkEvent(OpenLinkEvent.SPECIFIED, self.__lunarNYController.getEnvelopesExternalShopURL()))
+        url = yield self.__lunarNYController.getEnvelopesExternalShopURL()
+        g_eventBus.handleEvent(OpenLinkEvent(OpenLinkEvent.SPECIFIED, url))
         self.destroyWindow()
         envelopeType = args.get('envelopeType', None)
         LunarPopoverBuyBtnLogger().logBuyBtnClick(envelopeType)

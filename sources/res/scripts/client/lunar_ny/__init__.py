@@ -1,4 +1,5 @@
 import typing
+from adisp import process, async
 from skeletons.gui.game_control import IGameController
 if typing.TYPE_CHECKING:
     from lunar_ny.lunar_ny_charm import LunarNYCharm
@@ -50,7 +51,9 @@ class ILunarNYController(IGameController):
     def getInfoVideoURL(self):
         raise NotImplementedError
 
-    def getEnvelopesExternalShopURL(self):
+    @async
+    @process
+    def getEnvelopesExternalShopURL(self, callback=None):
         raise NotImplementedError
 
     def getEnvelopePurchasesLimit(self):

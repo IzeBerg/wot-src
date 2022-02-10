@@ -144,7 +144,8 @@ package net.wg.gui.components.common
       
       protected function applyPosition() : void
       {
-         var _loc1_:Rectangle = this.target.getBounds(this.target.parent);
+         var _loc1_:Rectangle = null;
+         _loc1_ = this.target.getBounds(this.target.parent);
          x = _loc1_.x;
          y = _loc1_.y | 0;
          if(this.offset != null)

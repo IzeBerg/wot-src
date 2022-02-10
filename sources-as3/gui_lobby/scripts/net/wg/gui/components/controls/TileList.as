@@ -135,11 +135,12 @@ package net.wg.gui.components.controls
       
       override protected function drawScrollBar() : void
       {
+         var _loc1_:ScrollIndicator = null;
          if(!_autoScrollBar)
          {
             return;
          }
-         var _loc1_:ScrollIndicator = _scrollBar as ScrollIndicator;
+         _loc1_ = _scrollBar as ScrollIndicator;
          App.utils.asserter.assertNotNull(_loc1_,"sb" + Errors.CANT_NULL);
          _loc1_.direction = _direction;
          if(_direction == DirectionMode.VERTICAL)

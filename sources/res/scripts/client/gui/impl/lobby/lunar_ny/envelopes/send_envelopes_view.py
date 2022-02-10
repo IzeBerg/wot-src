@@ -1,5 +1,6 @@
 from account_helpers import AccountSettings
 from account_helpers.AccountSettings import LUNAR_NY_ENTITLEMENTS_VIEWED, LUNAR_NY_PROGRESSION_TOKENS_VIEWED
+from adisp import process
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.lunar_ny.main_view.send_envelopes.send_envelopes_model import SendEnvelopesModel
 from gui.impl.lobby.lunar_ny.lunar_ny_base_main_view_component import BaseLunarNYViewComponent
@@ -84,8 +85,10 @@ class SendEnvelopesView(BaseLunarNYViewComponent[SendEnvelopesModel]):
     def __showQuestView(self):
         showDailyQuests(subTab=DailyTabs.QUESTS)
 
+    @process
     def __showBuyView(self, args):
-        g_eventBus.handleEvent(OpenLinkEvent(OpenLinkEvent.SPECIFIED, self.__lunarNYController.getEnvelopesExternalShopURL()))
+        url = yield self.__lunarNYController.getEnvelopesExternalShopURL()
+        g_eventBus.handleEvent(OpenLinkEvent(OpenLinkEvent.SPECIFIED, url))
         envelopeType = args.get('envelopeType')
         LunarBuyBtnLogger().logClick(envelopeType)
 
@@ -93,8 +96,10 @@ class SendEnvelopesView(BaseLunarNYViewComponent[SendEnvelopesModel]):
         showEnvelopesSendView(args.get('envelopeType', None))
         return
 
+    @process
     def __showExternalEventShop(self):
-        g_eventBus.handleEvent(OpenLinkEvent(OpenLinkEvent.SPECIFIED, self.__lunarNYController.getEnvelopesExternalShopURL()))
+        url = yield self.__lunarNYController.getEnvelopesExternalShopURL()
+        g_eventBus.handleEvent(OpenLinkEvent(OpenLinkEvent.SPECIFIED, url))
         LunarBuyAdditionalBtnLogger().logClick()
 
     def __onProgressionUpdated(self):

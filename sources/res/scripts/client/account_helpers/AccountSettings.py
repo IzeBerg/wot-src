@@ -160,6 +160,7 @@ RANKED_AWARDS_BUBBLE_YEAR_REACHED = 'rankedAwardsBubbleYearReached'
 RANKED_ENTITLEMENT_EVENTS_AMOUNT = 'rankedEntitlementEventsAmount'
 RANKED_YEAR_POSITION = 'rankedYearPosition'
 BATTLE_ROYALE_HANGAR_BOTTOM_PANEL_VIEWED = 'battleRoyaleHangarBottomPanelViewed'
+SHOP_SALES_EVENT_STATE = 'shopSalesEventState'
 MARATHON_REWARD_WAS_SHOWN_PREFIX = 'marathonRewardScreenWasShown'
 MARATHON_VIDEO_WAS_SHOWN_PREFIX = 'marathonRewardVideoWasShown'
 SUBTITLES = 'subtitles'
@@ -815,6 +816,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   UNLOCK_VEHICLES_IN_BATTLE_HINTS: 5, 
                   MODE_SELECTOR_BATTLE_PASS_SHOWN: {}, RANKED_LAST_CYCLE_ID: None, 
                   SHOW_DEMO_ACC_REGISTRATION: False, 
+                  SHOP_SALES_EVENT_STATE: {'enabled': True}, 
                   LUNAR_NY_RECEIVED_ENVELOPES_VIEWED: {}, LUNAR_NY_ENTITLEMENTS_VIEWED: 0, 
                   LUNAR_NY_CONGRATULATIONS: {}, IS_OPEN_ENVELOPES_ANIMATION_ENABLED: True, 
                   LUNAR_NY_DAILY_QUESTS_VISITED: False, 
