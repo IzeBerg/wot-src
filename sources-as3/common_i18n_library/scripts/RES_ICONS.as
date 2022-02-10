@@ -265,6 +265,8 @@ package
       
       public static const MAPS_ICONS_BATTLELOADING_TIPS_TIP188:String = "../maps/icons/battleLoading/tips/tip188.png";
       
+      public static const MAPS_ICONS_BATTLELOADING_TIPS_TIP189:String = "../maps/icons/battleLoading/tips/tip189.png";
+      
       public static const MAPS_ICONS_BATTLELOADING_TIPS_TIP190:String = "../maps/icons/battleLoading/tips/tip190.png";
       
       public static const MAPS_ICONS_BATTLELOADING_TIPS_TIP191:String = "../maps/icons/battleLoading/tips/tip191.png";
@@ -729,15 +731,17 @@ package
       
       public static const MAPS_ICONS_BATTLEPASS_CHAPTER_CHOICE_BG71:String = "../maps/icons/battlePass/chapter_choice/bg71.png";
       
+      public static const MAPS_ICONS_BATTLEPASS_CHAPTER_CHOICE_BG71_ACTIVE:String = "../maps/icons/battlePass/chapter_choice/bg71_active.png";
+      
       public static const MAPS_ICONS_BATTLEPASS_CHAPTER_CHOICE_BG72:String = "../maps/icons/battlePass/chapter_choice/bg72.png";
+      
+      public static const MAPS_ICONS_BATTLEPASS_CHAPTER_CHOICE_BG72_ACTIVE:String = "../maps/icons/battlePass/chapter_choice/bg72_active.png";
       
       public static const MAPS_ICONS_BATTLEPASS_CHAPTER_CHOICE_BG73:String = "../maps/icons/battlePass/chapter_choice/bg73.png";
       
-      public static const MAPS_ICONS_BATTLEPASS_CHAPTER_CHOICE_BGHOVER71:String = "../maps/icons/battlePass/chapter_choice/bgHover71.png";
+      public static const MAPS_ICONS_BATTLEPASS_CHAPTER_CHOICE_BG73_ACTIVE:String = "../maps/icons/battlePass/chapter_choice/bg73_active.png";
       
-      public static const MAPS_ICONS_BATTLEPASS_CHAPTER_CHOICE_BGHOVER72:String = "../maps/icons/battlePass/chapter_choice/bgHover72.png";
-      
-      public static const MAPS_ICONS_BATTLEPASS_CHAPTER_CHOICE_BGHOVER73:String = "../maps/icons/battlePass/chapter_choice/bgHover73.png";
+      public static const MAPS_ICONS_BATTLEPASS_CHAPTER_CHOICE_BGHOVER:String = "../maps/icons/battlePass/chapter_choice/bgHover.png";
       
       public static const MAPS_ICONS_BATTLEPASS_CHAPTER_CHOICE_CHAPTER_DONE:String = "../maps/icons/battlePass/chapter_choice/chapter_done.png";
       
@@ -746,6 +750,8 @@ package
       public static const MAPS_ICONS_BATTLEPASS_CHAPTER_CHOICE_CHECK_24:String = "../maps/icons/battlePass/chapter_choice/check_24.png";
       
       public static const MAPS_ICONS_BATTLEPASS_CHAPTER_CHOICE_CHECK_GLOW:String = "../maps/icons/battlePass/chapter_choice/check_glow.png";
+      
+      public static const MAPS_ICONS_BATTLEPASS_CHAPTER_CHOICE_CHECK_LINES:String = "../maps/icons/battlePass/chapter_choice/check_lines.png";
       
       public static const MAPS_ICONS_BATTLEPASS_CHAPTER_CHOICE_COMPLETED_BG:String = "../maps/icons/battlePass/chapter_choice/completed_bg.png";
       
@@ -837,8 +843,6 @@ package
       
       public static const MAPS_ICONS_BATTLEPASS_INTRO_DIVIDER:String = "../maps/icons/battlePass/intro/divider.png";
       
-      public static const MAPS_ICONS_BATTLEPASS_INTRO_GOODS:String = "../maps/icons/battlePass/intro/goods.png";
-      
       public static const MAPS_ICONS_BATTLEPASS_INTRO_NEXT:String = "../maps/icons/battlePass/intro/next.png";
       
       public static const MAPS_ICONS_BATTLEPASS_INTRO_POINTS:String = "../maps/icons/battlePass/intro/points.png";
@@ -846,6 +850,8 @@ package
       public static const MAPS_ICONS_BATTLEPASS_INTRO_PREV:String = "../maps/icons/battlePass/intro/prev.png";
       
       public static const MAPS_ICONS_BATTLEPASS_INTRO_TANKS:String = "../maps/icons/battlePass/intro/tanks.png";
+      
+      public static const MAPS_ICONS_BATTLEPASS_INTRO_TOKEN_SHOP:String = "../maps/icons/battlePass/intro/token_shop.png";
       
       public static const MAPS_ICONS_BATTLEPASS_INTRO_TROPHY:String = "../maps/icons/battlePass/intro/trophy.png";
       

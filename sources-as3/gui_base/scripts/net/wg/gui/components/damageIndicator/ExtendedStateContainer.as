@@ -45,6 +45,10 @@ package net.wg.gui.components.damageIndicator
       private static const CRITS_ITEMS_CIRCLES:Vector.<String> = new <String>[DAMAGEINDICATOR.GUN_CIRCLE,DAMAGEINDICATOR.TRIPLEX_CIRCLE,DAMAGEINDICATOR.TRACKS_CIRCLE,DAMAGEINDICATOR.WHEEL_CIRCLE,DAMAGEINDICATOR.AMMO_CIRCLE,DAMAGEINDICATOR.COMMANDER_CIRCLE,DAMAGEINDICATOR.DRIVER_CIRCLE,DAMAGEINDICATOR.ENGINE_CIRCLE,DAMAGEINDICATOR.GUNNER_CIRCLE,DAMAGEINDICATOR.RADIO_CIRCLE,DAMAGEINDICATOR.RADIOMAN_CIRCLE,DAMAGEINDICATOR.RELOADER_CIRCLE,DAMAGEINDICATOR.TANKS_CIRCLE,DAMAGEINDICATOR.TURRET_CIRCLE];
       
       private static const TANK_TYPE_ICONS:Vector.<String> = new <String>[DAMAGEINDICATOR.HEAVY_TANK,DAMAGEINDICATOR.MEDIUM_TANK,DAMAGEINDICATOR.LIGHT_TANK,DAMAGEINDICATOR.AT_SPG,DAMAGEINDICATOR.SPG,DAMAGEINDICATOR.ALLY_HEAVY_TANK,DAMAGEINDICATOR.ALLY_MEDIUM_TANK,DAMAGEINDICATOR.ALLY_LIGHT_TANK,DAMAGEINDICATOR.ALLY_AT_SPG,DAMAGEINDICATOR.ALLY_SPG];
+      
+      private static const DAMAGE_TF_FRIENDLY_FIRE_Y_OFFSET:int = -2;
+      
+      private static const NODAMAGELABEL:String = "- -";
        
       
       public var offsetContainer:MovieClip = null;
@@ -98,6 +102,10 @@ package net.wg.gui.components.damageIndicator
       private var _tankNameTextFormat:TextFormat = null;
       
       private var _damageTextFormat:TextFormat = null;
+      
+      private var _damageTFdefaultY:int;
+      
+      private var _damageTFfriendlyFireY:int;
       
       public function ExtendedStateContainer()
       {
@@ -153,6 +161,8 @@ package net.wg.gui.components.damageIndicator
          this.tankNameTF = this.tankName.textField;
          this.damage = this.circleAnimContainer.damage;
          this.damageTF = this.damage.textField;
+         this._damageTFdefaultY = this.damageTF.y;
+         this._damageTFfriendlyFireY = this._damageTFdefaultY + DAMAGE_TF_FRIENDLY_FIRE_Y_OFFSET;
          this._tankTypeIconsMap = createItemsFromAtlas(TANK_TYPE_ICONS,this.tankIcon,null);
          this._circlesMap = createItemsFromAtlas(BASE_CIRCLES,this.damage,null);
          this._circlesMap = createItemsFromAtlas(CRITS_ITEMS_CIRCLES,this.damage,this._circlesMap);
@@ -252,6 +262,14 @@ package net.wg.gui.components.damageIndicator
                this.damageTF.setTextFormat(this._damageTextFormat);
             }
             this.damageTF.text = param5;
+            if(param6 && param5 == NODAMAGELABEL)
+            {
+               this.damageTF.y = this._damageTFfriendlyFireY;
+            }
+            else
+            {
+               this.damageTF.y = this._damageTFdefaultY;
+            }
          }
          var _loc9_:String = !!_loc8_ ? CRIT_FRAME_LABEL : DAMAGE_FRAME_LABEL;
          if(param7)

@@ -503,7 +503,7 @@ class CustomizationService(_ServiceItemShopMixin, _ServiceHelpersMixin, ICustomi
 
     def changeStyleProgressionLevelPreview(self, level):
         entity = self.hangarSpace.getVehicleEntity()
-        if not entity or not level:
+        if not entity or not level or not entity.isVehicleLoaded:
             return 1
         outfit = entity.appearance.outfit
         if not outfit.style or not outfit.style.isProgression:

@@ -64,7 +64,7 @@ from skeletons.gui.shared import IItemsCache
 from soft_exception import SoftException
 from uilogging.veh_post_progression.loggers import VehPostProgressionEntryPointLogger
 if typing.TYPE_CHECKING:
-    from typing import Callable, Dict, Generator, Iterable, List
+    from typing import Callable, Dict, Generator, Iterable, List, Union
     from gui.marathon.marathon_event import MarathonEvent
     from gui.Scaleform.framework.managers import ContainerManager
     from gui.shared.money import Money
@@ -354,8 +354,11 @@ def showHangar():
     g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_HANGAR)), scope=EVENT_BUS_SCOPE.LOBBY)
 
 
-def showBarracks():
-    g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_BARRACKS)), scope=EVENT_BUS_SCOPE.LOBBY)
+def showBarracks(location=None, nationID=None, tankType=None, role=None):
+    g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_BARRACKS), ctx={'location': location, 
+       'nationID': nationID, 
+       'tankType': tankType, 
+       'role': role}), scope=EVENT_BUS_SCOPE.LOBBY)
 
 
 def showBadges(backViewName=''):
@@ -1449,6 +1452,7 @@ def showMapsTrainingPage(ctx):
 
 
 def showMapsTrainingQueue():
+    _killOldView(R.views.lobby.maps_training.MapsTrainingQueue())
     g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(R.views.lobby.maps_training.MapsTrainingQueue(), MapsTrainingQueueView, ScopeTemplates.DEFAULT_SCOPE)), scope=EVENT_BUS_SCOPE.LOBBY)
 
 

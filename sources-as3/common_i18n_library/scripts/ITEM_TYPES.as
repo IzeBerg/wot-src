@@ -127,13 +127,11 @@ package
       
       public static const TANKMAN_SKILLS_CAMOUFLAGE_DESCR:String = "#item_types:tankman/skills/camouflage_descr";
       
+      public static const TANKMAN_SKILLS_PERMANENT_DESCR:String = "#item_types:tankman/skills/permanent_descr";
+      
       public static const TANKMAN_SKILLS_BROTHERHOOD:String = "#item_types:tankman/skills/brotherhood";
       
       public static const TANKMAN_SKILLS_BROTHERHOOD_DESCR:String = "#item_types:tankman/skills/brotherhood_descr";
-      
-      public static const TANKMAN_SKILLS_BROTHERHOOD_PERMANENT:String = "#item_types:tankman/skills/brotherhood_permanent";
-      
-      public static const TANKMAN_SKILLS_BROTHERHOOD_PERMANENT_DESCR:String = "#item_types:tankman/skills/brotherhood_permanent_descr";
       
       public static const TANKMAN_SKILLS_BROTHERHOOD_FEMALE_DESCR:String = "#item_types:tankman/skills/brotherhood_female_descr";
       
@@ -162,8 +160,6 @@ package
       public static const TANKMAN_SKILLS_COMMANDER_SIXTHSENSE:String = "#item_types:tankman/skills/commander_sixthSense";
       
       public static const TANKMAN_SKILLS_COMMANDER_SIXTHSENSE_DESCR:String = "#item_types:tankman/skills/commander_sixthSense_descr";
-      
-      public static const TANKMAN_SKILLS_COMMANDER_SIXTHSENSE_PERMANENT_DESCR:String = "#item_types:tankman/skills/commander_sixthSense_permanent_descr";
       
       public static const TANKMAN_SKILLS_COMMANDER_EAGLEEYE:String = "#item_types:tankman/skills/commander_eagleEye";
       
