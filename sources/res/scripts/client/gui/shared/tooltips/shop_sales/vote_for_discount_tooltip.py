@@ -1,6 +1,6 @@
 from gui.impl import backport
 from gui.impl.gen import R
-from gui.shared.formatters import text_styles
+from gui.shared.formatters import icons, text_styles
 from gui.shared.tooltips import formatters
 from gui.shared.tooltips.common import BlocksTooltipData
 from helpers import dependency
@@ -33,7 +33,7 @@ class VoteForDiscountTooltip(BlocksTooltipData):
             timeLeft = timeLeft % self.__shopSales.periodicRenewalPeriod
         rFormat = R.strings.menu.headerButtons.battle.types.ranked.availability
         timeLeftTxt = text_styles.stats(backport.getTillTimeStringByRClass(timeLeft, rFormat))
-        availabilityBlock = formatters.packImageTextBlockData(title=text_styles.highTitle(backport.text(R.strings.tooltips.shopSales.voteForDiscount.unavailable.header())), desc=text_styles.main(backport.text(R.strings.tooltips.shopSales.voteForDiscount.unavailable.availabilityBlock(), timeout=timeLeftTxt)), txtPadding=formatters.packPadding(left=-30), descPadding=formatters.packPadding(left=-4), img=backport.image(R.images.gui.maps.icons.shopSales.clock()), imgPadding=formatters.packPadding(left=-8, top=18), blockWidth=BLOCK_WIDTH)
+        availabilityBlock = formatters.packImageTextBlockData(title=text_styles.highTitle(backport.text(R.strings.tooltips.shopSales.voteForDiscount.unavailable.header())), desc=text_styles.main(text_styles.concatStylesToSingleLine(icons.makeImageTag(source=backport.image(R.images.gui.maps.icons.shopSales.clock()), width=37, height=37, vSpace=-13), text_styles.main(backport.text(R.strings.tooltips.shopSales.voteForDiscount.unavailable.availabilityBlock(), timeout=timeLeftTxt)))), txtPadding=formatters.packPadding(), descPadding=formatters.packPadding(), blockWidth=BLOCK_WIDTH)
         footerBlock = formatters.packTitleDescBlock(title=text_styles.main(backport.text(R.strings.tooltips.shopSales.voteForDiscount.unavailable.footer(), max_number=maxNumber)), padding=formatters.packPadding(top=45))
         return [
          formatters.packBuildUpBlockData(blocks=[

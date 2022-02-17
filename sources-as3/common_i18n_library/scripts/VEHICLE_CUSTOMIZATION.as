@@ -11711,6 +11711,8 @@ package
       
       public static const PROJECTION_DECALS_ANIMALS_PROJECTION_DECAL_56:String = "#vehicle_customization:projection_decals/animals/projection_decal_56";
       
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_365:String = "#vehicle_customization:projection_decals/special/projection_decal_365";
+      
       public static const PROPERTYSHEET_KEYBOARD_HINT:String = "#vehicle_customization:propertySheet/keyboard/hint";
       
       public static const PROPERTYSHEET_INSCRIPTIONCONTROLLER_INVALID_INSCRIPTION:String = "#vehicle_customization:propertySheet/inscriptionController/invalid_inscription";
