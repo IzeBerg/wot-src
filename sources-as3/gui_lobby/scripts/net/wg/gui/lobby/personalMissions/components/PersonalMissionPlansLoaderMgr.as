@@ -24,6 +24,8 @@ package net.wg.gui.lobby.personalMissions.components
       
       private var _librariesDict:Dictionary;
       
+      private var _disposed:Boolean = false;
+      
       public function PersonalMissionPlansLoaderMgr()
       {
          this._librariesDict = new Dictionary();
@@ -35,6 +37,7 @@ package net.wg.gui.lobby.personalMissions.components
       public final function dispose() : void
       {
          var _loc1_:Loader = null;
+         this._disposed = true;
          if(this._loaders != null && this._loaders.length > 0)
          {
             for each(_loc1_ in this._loaders)
@@ -97,6 +100,11 @@ package net.wg.gui.lobby.personalMissions.components
          this.removeListeners(_loc2_);
          var _loc3_:String = this._librariesDict[_loc2_.loader];
          DebugUtils.LOG_WARNING(ERR_LOADING_PLAN_MSG + _loc3_);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

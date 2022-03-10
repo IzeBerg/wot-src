@@ -15,6 +15,8 @@ package net.wg.gui.components.crosshairPanel
       
       public var distanceField:CrosshairDistanceField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function CrosshairDistanceContainer()
       {
          super();
@@ -22,6 +24,7 @@ package net.wg.gui.components.crosshairPanel
       
       public function dispose() : void
       {
+         this._disposed = true;
          if(this.distanceField)
          {
             this.distanceField.dispose();
@@ -50,6 +53,11 @@ package net.wg.gui.components.crosshairPanel
          {
             gotoAndPlay(DISTANCE_START_HIDE_FRAME);
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

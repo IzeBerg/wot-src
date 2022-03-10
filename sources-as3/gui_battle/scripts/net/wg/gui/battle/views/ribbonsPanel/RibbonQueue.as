@@ -19,6 +19,8 @@ package net.wg.gui.battle.views.ribbonsPanel
       
       private var _queueMapById:Dictionary = null;
       
+      private var _disposed:Boolean = false;
+      
       public function RibbonQueue()
       {
          super();
@@ -36,6 +38,7 @@ package net.wg.gui.battle.views.ribbonsPanel
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.clear();
          this._queueMapById = null;
          this._pool.splice(0,this._pool.length);
@@ -99,6 +102,11 @@ package net.wg.gui.battle.views.ribbonsPanel
             this._pool.push(new RibbonQueueItem());
             _loc2_++;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

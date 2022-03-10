@@ -11,6 +11,8 @@ package net.wg.gui.battle.mapsTraining.views.listTargets
       
       private var _items:Vector.<MovieClip>;
       
+      private var _disposed:Boolean = false;
+      
       public const TARGET_LINKAGE:String = "TargetItemUI";
       
       public const TARGET_GAP:int = 40;
@@ -24,6 +26,7 @@ package net.wg.gui.battle.mapsTraining.views.listTargets
       public final function dispose() : void
       {
          var _loc1_:MovieClip = null;
+         this._disposed = true;
          for each(_loc1_ in this._items)
          {
             removeChild(_loc1_);
@@ -55,6 +58,11 @@ package net.wg.gui.battle.mapsTraining.views.listTargets
       public function getWidth() : int
       {
          return Boolean(this._items.length) ? int(this.TARGET_GAP * (this._items.length - 1)) : int(0);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -1,5 +1,5 @@
 from collections import namedtuple
-import BigWorld
+import json, BigWorld
 from account_helpers.premium_info import PremiumInfo
 from adisp import async
 from gui.shared.money import Money, Currency
@@ -268,6 +268,14 @@ class StatsRequester(AbstractSyncDataRequester, IStatsRequester):
         if gfKey in spaDict:
             result = int(spaDict[gfKey])
         return result
+
+    def getTelecomBundleId(self):
+        for key, attrValue in self.SPA.iteritems():
+            if key.startswith(SPA_ATTRS.RSS):
+                value = json.loads(attrValue)
+                return value['bundleID']
+
+        return
 
     @property
     def tutorialsCompleted(self):

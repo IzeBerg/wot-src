@@ -13,6 +13,8 @@ package net.wg.gui.components.crosshairPanel.components.artyShot
       
       public var tf:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function ArtyShotIndicatorText()
       {
          super();
@@ -20,6 +22,7 @@ package net.wg.gui.components.crosshairPanel.components.artyShot
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.tf = null;
       }
       
@@ -51,6 +54,11 @@ package net.wg.gui.components.crosshairPanel.components.artyShot
       public function get defaultTextFormat() : TextFormat
       {
          return this.tf.defaultTextFormat;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

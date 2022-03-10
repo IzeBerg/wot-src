@@ -53,8 +53,6 @@ package
       
       public static const LOBBY_HELP:Class = LOBBY_HELP;
       
-      public static const LUNAR_NY:Class = LUNAR_NY;
-      
       public static const MAPS_TRAINING:Class = MAPS_TRAINING;
       
       public static const MENU:Class = MENU;

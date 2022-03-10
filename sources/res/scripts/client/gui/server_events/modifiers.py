@@ -1253,18 +1253,6 @@ class CalendarModifier(ActionModifier):
             return
 
 
-class AvailabilityModifier(ActionModifier):
-
-    def __init__(self, name, params):
-        super(AvailabilityModifier, self).__init__(name, params, modType=ACTION_MODIFIER_TYPE.AVAILABILITY)
-
-
-class EventStateModifier(AvailabilityModifier):
-
-    def getState(self):
-        return self.getParams().get('state')
-
-
 class CalendarSplashModifier(ActionModifier):
 
     def __init__(self, name, params):
@@ -1378,8 +1366,6 @@ _MODIFIERS = (
   'AdventCalendarEnabled', CalendarModifier),
  (
   'AdventCalendarForced', CalendarSplashModifier),
- (
-  'EventState', EventStateModifier),
  (
   'HeroTankAdventCalendarRedirect', HeroTankAdventCalendarRedirectModifier),
  (

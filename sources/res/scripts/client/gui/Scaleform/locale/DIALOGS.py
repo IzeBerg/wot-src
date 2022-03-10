@@ -1000,14 +1000,6 @@ class DIALOGS(object):
     CREWBOOKS_SUCCESS_DESC_CREWBOOK = '#dialogs:crewBooks/success/desc/crewBook'
     CREWBOOKS_SUCCESS_DESC_PERSONALBOOK = '#dialogs:crewBooks/success/desc/personalBook'
     CREWBOOKS_SUCCESS_TITLE = '#dialogs:crewBooks/success/title'
-    BREAKDECORATIONS_TITLE = '#dialogs:breakDecorations/title'
-    BREAKDECORATIONS_MESSAGE = '#dialogs:breakDecorations/message'
-    BREAKDECORATIONS_SUBMIT = '#dialogs:breakDecorations/submit'
-    BREAKDECORATIONS_CANCEL = '#dialogs:breakDecorations/cancel'
-    NEWYEAR_BUYTOY_TITLE = '#dialogs:newYear/buyToy/title'
-    NEWYEAR_BUYTOY_MESSAGE = '#dialogs:newYear/buyToy/message'
-    NEWYEAR_BUYTOY_SUBMIT = '#dialogs:newYear/buyToy/submit'
-    NEWYEAR_BUYTOY_CANCEL = '#dialogs:newYear/buyToy/cancel'
     CONFIRMEQUIPMENTBUYINSTALL_SUBMIT = '#dialogs:confirmEquipmentBuyInstall/submit'
     EQUIPMENTPURCASE_CONFORMATION_ALL = '#dialogs:equipmentPurcase/conformation/all'
     EQUIPMENTBUYINSTALL_PRICE = '#dialogs:equipmentBuyInstall/price'
@@ -1127,10 +1119,6 @@ class DIALOGS(object):
     DIALOGTEMPLATES_CONFIRM = '#dialogs:dialogTemplates/confirm'
     DIALOGTEMPLATES_CANCEL = '#dialogs:dialogTemplates/cancel'
     DIALOGTEMPLATES_OK = '#dialogs:dialogTemplates/ok'
-    CONFIRMAPPLYVEHICLEDISCOUNT_TITLE = '#dialogs:confirmApplyVehicleDiscount/title'
-    CONFIRMAPPLYVEHICLEDISCOUNT_MESSAGE = '#dialogs:confirmApplyVehicleDiscount/message'
-    CONFIRMAPPLYVEHICLEDISCOUNT_SUBMIT = '#dialogs:confirmApplyVehicleDiscount/submit'
-    CONFIRMAPPLYVEHICLEDISCOUNT_CANCEL = '#dialogs:confirmApplyVehicleDiscount/cancel'
     RECRUITWINDOW_VEHICLECLASSDROPDOWN_ENUM = (
      RECRUITWINDOW_VEHICLECLASSDROPDOWN_ALL,
      RECRUITWINDOW_VEHICLECLASSDROPDOWN_LIGHTTANK,
@@ -2131,14 +2119,6 @@ class DIALOGS(object):
      CREWBOOKS_SUCCESS_DESC_CREWBOOK,
      CREWBOOKS_SUCCESS_DESC_PERSONALBOOK,
      CREWBOOKS_SUCCESS_TITLE,
-     BREAKDECORATIONS_TITLE,
-     BREAKDECORATIONS_MESSAGE,
-     BREAKDECORATIONS_SUBMIT,
-     BREAKDECORATIONS_CANCEL,
-     NEWYEAR_BUYTOY_TITLE,
-     NEWYEAR_BUYTOY_MESSAGE,
-     NEWYEAR_BUYTOY_SUBMIT,
-     NEWYEAR_BUYTOY_CANCEL,
      CONFIRMEQUIPMENTBUYINSTALL_SUBMIT,
      EQUIPMENTPURCASE_CONFORMATION_ALL,
      EQUIPMENTBUYINSTALL_PRICE,
@@ -2257,11 +2237,7 @@ class DIALOGS(object):
      ACCOUNTCOMPLETION_RENAMINGCOMPLETEOVERLAY_SUBTITLE,
      DIALOGTEMPLATES_CONFIRM,
      DIALOGTEMPLATES_CANCEL,
-     DIALOGTEMPLATES_OK,
-     CONFIRMAPPLYVEHICLEDISCOUNT_TITLE,
-     CONFIRMAPPLYVEHICLEDISCOUNT_MESSAGE,
-     CONFIRMAPPLYVEHICLEDISCOUNT_SUBMIT,
-     CONFIRMAPPLYVEHICLEDISCOUNT_CANCEL)
+     DIALOGTEMPLATES_OK)
 
     @classmethod
     def recruitwindow_vehicleclassdropdown(cls, key0):

@@ -68,14 +68,14 @@ package net.wg.infrastructure.managers.impl.cursor
             }
             if(param1 is IView)
             {
-               IView(param1).addEventListener(LifeCycleEvent.ON_AFTER_DISPOSE,this.onAfterDraggableObjDispose);
+               IView(param1).addEventListener(LifeCycleEvent.ON_BEFORE_DISPOSE,this.onAfterDraggableObjDispose);
             }
          }
       }
       
       override public function unRegisterDragging(param1:IDragDropHitArea) : void
       {
-         if(!disposed)
+         if(!isDisposed())
          {
             if(!(param1 is IDraggable) && !(param1 is IDroppable))
             {
@@ -91,7 +91,7 @@ package net.wg.infrastructure.managers.impl.cursor
                }
                if(param1 is IView)
                {
-                  EventDispatcher(param1).removeEventListener(LifeCycleEvent.ON_AFTER_DISPOSE,this.onAfterDraggableObjDispose);
+                  EventDispatcher(param1).removeEventListener(LifeCycleEvent.ON_BEFORE_DISPOSE,this.onAfterDraggableObjDispose);
                }
             }
          }
@@ -201,7 +201,7 @@ package net.wg.infrastructure.managers.impl.cursor
       
       private function draggingHandler(param1:MouseEvent) : void
       {
-         this._asserter.assert(!disposed,Errors.MTHD_CORRUPT_INVOKE,InfrastructureException);
+         this._asserter.assert(!isDisposed(),Errors.MTHD_CORRUPT_INVOKE,InfrastructureException);
          if(!param1.buttonDown)
          {
             this.mouseUpLclHdr(param1);
@@ -218,7 +218,7 @@ package net.wg.infrastructure.managers.impl.cursor
       
       private function rollOutDragHandler(param1:MouseEvent) : void
       {
-         this._asserter.assert(!disposed,Errors.MTHD_CORRUPT_INVOKE,InfrastructureException);
+         this._asserter.assert(!isDisposed(),Errors.MTHD_CORRUPT_INVOKE,InfrastructureException);
          this._lastHoveredDragInfo = null;
          resetCursor();
       }
@@ -227,7 +227,7 @@ package net.wg.infrastructure.managers.impl.cursor
       {
          if(isLeftButton(param1))
          {
-            this._asserter.assert(!disposed,Errors.MTHD_CORRUPT_INVOKE,InfrastructureException);
+            this._asserter.assert(!isDisposed(),Errors.MTHD_CORRUPT_INVOKE,InfrastructureException);
             this._mouseDwnDragInfo = this.getDragInfoByHit(InteractiveObject(param1.currentTarget));
             this.setDragging(true);
             forceSetCursor(this._mouseDwnDragInfo.cursor);
@@ -243,7 +243,7 @@ package net.wg.infrastructure.managers.impl.cursor
       private function mouseUpLclHdr(param1:MouseEvent) : void
       {
          App.stage.removeEventListener(MouseEvent.MOUSE_UP,this.mouseReleaseOutsideLclHdr);
-         this._asserter.assert(!disposed,Errors.MTHD_CORRUPT_INVOKE,InfrastructureException);
+         this._asserter.assert(!isDisposed(),Errors.MTHD_CORRUPT_INVOKE,InfrastructureException);
          var _loc2_:DragInfo = this.getDragInfoByHit(InteractiveObject(param1.currentTarget));
          if(!this._mouseDwnDragInfo && !_loc2_)
          {
@@ -284,10 +284,10 @@ package net.wg.infrastructure.managers.impl.cursor
       
       private function onAfterDraggableObjDispose(param1:LifeCycleEvent) : void
       {
-         this._asserter.assert(!disposed,Errors.MTHD_CORRUPT_INVOKE,InfrastructureException);
+         this._asserter.assert(!isDisposed(),Errors.MTHD_CORRUPT_INVOKE,InfrastructureException);
          var _loc2_:IDraggable = IDraggable(param1.target);
          DebugUtils.LOG_DEBUG(_loc2_ + Errors.WASNT_UNREGISTERED);
-         IView(_loc2_).removeEventListener(LifeCycleEvent.ON_AFTER_DISPOSE,this.onAfterDraggableObjDispose);
+         IView(_loc2_).removeEventListener(LifeCycleEvent.ON_BEFORE_DISPOSE,this.onAfterDraggableObjDispose);
          var _loc3_:InteractiveObject = BaseInfo.getHitFromContainer(_loc2_);
          if(this._dragObjects[_loc3_] != undefined)
          {

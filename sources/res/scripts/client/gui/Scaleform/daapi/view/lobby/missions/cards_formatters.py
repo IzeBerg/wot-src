@@ -5,12 +5,12 @@ from gui.Scaleform.locale.QUESTS import QUESTS
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
 from gui.server_events import formatters
-from gui.server_events.cond_formatters import FORMATTER_IDS, FormattableField, CONDITION_SIZE, getCondIconBySize, postbattle
-from gui.server_events.cond_formatters.bonus import MissionsBonusConditionsFormatter, BattlesCountFormatter
+from gui.server_events.cond_formatters import CONDITION_SIZE, FORMATTER_IDS, FormattableField, getCondIconBySize, postbattle
+from gui.server_events.cond_formatters.bonus import BattlesCountFormatter, MissionsBonusConditionsFormatter
 from gui.server_events.cond_formatters.formatters import ConditionsFormatter
 from gui.server_events.cond_formatters.tokens import TokensConditionFormatter
 from gui.server_events.formatters import TOKEN_SIZES
-from gui.shared.formatters import text_styles, icons
+from gui.shared.formatters import icons, text_styles
 from gui.shared.utils.functions import makeTooltip
 from helpers import i18n
 from personal_missions_constants import CONDITION_ICON
@@ -290,7 +290,7 @@ class CardTokenConditionFormatter(ConditionsFormatter):
             return [self._packConditions(preFormattedConditions)]
         else:
             return [
-             self.__packConditionFromDescription(event)]
+             self._packConditionFromDescription(event)]
 
     def getPreformattedConditions(self, event):
         return self.tokensCondFormatter.format(event.accountReqs, event)
@@ -338,7 +338,7 @@ class CardTokenConditionFormatter(ConditionsFormatter):
         data.update(self._getIconData(preFormattedCondition))
         return data
 
-    def __packConditionFromDescription(self, event):
+    def _packConditionFromDescription(self, event):
         return {'linkage': MISSIONS_ALIASES.ANG_GROUP_LINKAGE, 
            'linkageBig': MISSIONS_ALIASES.ANG_GROUP_BIG_LINKAGE, 
            'rendererLinkage': MISSIONS_ALIASES.MINIMIZED_BATTLE_CONDITION, 
@@ -381,6 +381,13 @@ class DetailedCardTokenConditionFormatter(CardTokenConditionFormatter):
            'rendererLinkage': MISSIONS_ALIASES.TOKEN_CONDITION, 
            'data': result, 
            'isDetailed': True}
+
+    def _packConditionFromDescription(self, event):
+        data = super(DetailedCardTokenConditionFormatter, self)._packConditionFromDescription(event)
+        data.update({'linkage': MISSIONS_ALIASES.ANG_GROUP_DETAILED_LINKAGE, 
+           'rendererLinkage': MISSIONS_ALIASES.BATTLE_CONDITION, 
+           'isDetailed': True})
+        return data
 
 
 def _packPlayBattleCondition():

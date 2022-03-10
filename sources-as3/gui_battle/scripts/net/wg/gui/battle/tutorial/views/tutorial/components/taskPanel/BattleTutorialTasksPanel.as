@@ -137,6 +137,8 @@ package net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel
       
       private var _bgTweener:TutorialTweener = null;
       
+      private var _disposed:Boolean = false;
+      
       public function BattleTutorialTasksPanel()
       {
          super();
@@ -639,8 +641,9 @@ package net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel
          this._doneAnim = param1;
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          this.headerSpr.dispose();
          this.taskMc.dispose();
          this.iconSpr.dispose();
@@ -663,6 +666,11 @@ package net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel
          this._iconTweener = null;
          this._pictureTweener = null;
          this._bgTweener = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

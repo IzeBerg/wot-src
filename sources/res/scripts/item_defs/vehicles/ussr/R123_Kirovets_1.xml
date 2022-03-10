@@ -2834,6 +2834,8 @@
 						<collisionModelServer>vehicles/russian/R123_Kirovets_1/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/russian/R123_Kirovets_1/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_large_mb</effects>
+					<reloadEffect>reload115_152</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customizationSlots>
 						<slot>
@@ -4095,10 +4097,6 @@
 	<radios>
 		<_10RKM>shared</_10RKM>
 	</radios>
-	<premiumVehicleXPFactor>
-		0.1
-		<!--BW_String-->
-	</premiumVehicleXPFactor>
 	<physics>
 		<detailed>
 			<engines>

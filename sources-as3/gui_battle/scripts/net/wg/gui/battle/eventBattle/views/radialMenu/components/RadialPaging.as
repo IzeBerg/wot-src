@@ -18,6 +18,8 @@ package net.wg.gui.battle.eventBattle.views.radialMenu.components
       
       private var _pages:Vector.<Sprite> = null;
       
+      private var _disposed:Boolean = false;
+      
       public function RadialPaging()
       {
          super();
@@ -26,6 +28,7 @@ package net.wg.gui.battle.eventBattle.views.radialMenu.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._pages.splice(0,this._pages.length);
          this._pages = null;
          this.nextPageTF = null;
@@ -37,6 +40,11 @@ package net.wg.gui.battle.eventBattle.views.radialMenu.components
       public function setCurrentPage(param1:int) : void
       {
          this.pageDot.x = this._pages[param1].x;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

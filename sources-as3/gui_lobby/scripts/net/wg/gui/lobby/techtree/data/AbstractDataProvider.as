@@ -25,6 +25,8 @@ package net.wg.gui.lobby.techtree.data
       
       private var _nation:String = "";
       
+      private var _disposed:Boolean = false;
+      
       public function AbstractDataProvider()
       {
          super();
@@ -61,6 +63,7 @@ package net.wg.gui.lobby.techtree.data
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -203,6 +206,11 @@ package net.wg.gui.lobby.techtree.data
       public function dispatchEvent(param1:Event) : Boolean
       {
          return this.dispatcher.dispatchEvent(param1);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

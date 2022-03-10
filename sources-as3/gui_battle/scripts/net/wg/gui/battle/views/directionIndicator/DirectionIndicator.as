@@ -13,6 +13,8 @@ package net.wg.gui.battle.views.directionIndicator
       
       protected var shape:String = null;
       
+      private var _disposed:Boolean = false;
+      
       public function DirectionIndicator()
       {
          super();
@@ -36,10 +38,16 @@ package net.wg.gui.battle.views.directionIndicator
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.indicator.dispose();
          this.distance.dispose();
          this.indicator = null;
          this.distance = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -675,5 +675,10 @@ package net.wg.mock
       public function handleInput(param1:InputEvent) : void
       {
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return false;
+      }
    }
 }

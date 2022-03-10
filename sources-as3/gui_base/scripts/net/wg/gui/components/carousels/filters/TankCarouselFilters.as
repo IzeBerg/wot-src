@@ -86,6 +86,7 @@ package net.wg.gui.components.carousels.filters
          this.paramsFilter.removeEventListener(ButtonEvent.CLICK,this.onParamsFilterClickHandler);
          this.paramsFilter.dispose();
          this.paramsFilter = null;
+         App.utils.data.cleanupDynamicObject(this._popoverData);
          this._popoverData = null;
          removeEventListener(ComponentEvent.HIDE,this.onHideHandler);
          super.onDispose();
@@ -111,7 +112,6 @@ package net.wg.gui.components.carousels.filters
             this.paramsFilter.iconSource = this._initVO.mainBtn.value;
             this.paramsFilter.tooltip = this._initVO.mainBtn.tooltip;
             this.listHotFilter.dataProvider = this._initVO.hotFilters;
-            invalidateSize();
          }
          if(isInvalid(InvalidationType.SIZE) && _loc3_ && _loc2_)
          {

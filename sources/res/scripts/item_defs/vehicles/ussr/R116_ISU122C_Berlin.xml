@@ -2612,7 +2612,6 @@
 					</maxOffset>
 				</group>
 			</groundNodes>
-			<drivingWheels>WD_L0 WD_L4</drivingWheels>
 			<trackNodes>
 				<enable>true</enable>
 				<linkBones>true</linkBones>
@@ -2806,7 +2805,6 @@
 					</transform>
 				</decal>
 			</AODecals>
-			<trackThickness>0.000000</trackThickness>
 			<physicalTracks>
 				<left>
 					<segmentsCount>90</segmentsCount>
@@ -3978,6 +3976,8 @@
 						<collisionModelServer>vehicles/russian/R116_ISU122C_Berlin/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/russian/R116_ISU122C_Berlin/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_large_mb</effects>
+					<reloadEffect>reload115_152</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>

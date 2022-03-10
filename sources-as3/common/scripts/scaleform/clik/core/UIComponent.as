@@ -28,10 +28,28 @@ package scaleform.clik.core
    public class UIComponent extends MovieClip implements IUIComponent
    {
       
-      protected static var tutorialFunctionPointer:Function = checkTutorialFucntionType;
-       
+      protected static var tutorialFunctionPointer:Function = checkTutorialFunctionType;
       
-      public var initialized:Boolean = false;
+      private static const FLAG_INITIALIZED:uint = 1;
+      
+      private static const FLAG_DEFERRED_DISPOSE:uint = 2;
+      
+      private static const FLAG_BASE_BEFORE_DISPOSED:uint = 4;
+      
+      private static const FLAG_BASE_DISPOSED:uint = 8;
+      
+      private static const FLAG_ON_DISPOSED:uint = 16;
+      
+      private static const FLAG_INSPECTOR:uint = 32;
+      
+      private static const FLAG_ENABLE_INIT_CALLBACK:uint = 64;
+      
+      private static const FLAG_DISPLAY_FOCUS:uint = 128;
+      
+      private static const FLAG_MOUSE_WHEEL_ENABLED:uint = 256;
+      
+      private static const FLAG_FOCUSABLE:uint = 512;
+       
       
       protected var _invalidHash:Object;
       
@@ -47,32 +65,22 @@ package scaleform.clik.core
       
       protected var _focusTarget:UIComponent;
       
-      protected var _focusable:Boolean = true;
-      
       protected var _focused:Number = 0;
-      
-      protected var _displayFocus:Boolean = false;
-      
-      protected var _mouseWheelEnabled:Boolean = true;
-      
-      protected var _inspector:Boolean = false;
       
       protected var _labelHash:Object;
       
       protected var _layoutData:LayoutData;
       
-      protected var _enableInitCallback:Boolean = false;
-      
       private var _uiid:uint = 4.294967295E9;
       
       public var constraints:Constraints;
       
-      protected var _deferredDispose:Boolean = false;
-      
-      protected var _baseDisposed:Boolean = false;
+      private var flags:uint = 0;
       
       public function UIComponent()
       {
+         this._mouseWheelEnabled = true;
+         this._focusable = true;
          this.preInitialize();
          super();
          this._invalidHash = {};
@@ -98,7 +106,7 @@ package scaleform.clik.core
          return _loc2_;
       }
       
-      private static function checkTutorialFucntionType(param1:DisplayObject) : void
+      private static function checkTutorialFunctionType(param1:DisplayObject) : void
       {
          if(App.tutorialMgr.isSystemEnabled)
          {
@@ -120,6 +128,18 @@ package scaleform.clik.core
       
       private static function onReadyForTutorialFake(param1:DisplayObject) : void
       {
+      }
+      
+      private static function simpleAssert(param1:Boolean, param2:String, param3:Class = null) : void
+      {
+         if(!param1)
+         {
+            if(param3 == null)
+            {
+               param3 = AssertionException;
+            }
+            throw new param3(param2);
+         }
       }
       
       protected function preInitialize() : void
@@ -706,7 +726,7 @@ package scaleform.clik.core
             this.onBeforeDispose();
             if(App.instance && App.utils)
             {
-               App.utils.scheduler.scheduleNonCancelableTask(this.doDispose,100);
+               App.utils.scheduler.scheduleOnNextFrame(this.doDispose);
             }
          }
          else
@@ -734,6 +754,8 @@ package scaleform.clik.core
          {
             delete this._labelHash[_loc1_];
          }
+         stop();
+         this.setBeforeDisposed();
       }
       
       protected function onDispose() : void
@@ -747,17 +769,26 @@ package scaleform.clik.core
          this._invalidHash = null;
          this._labelHash = null;
          this._layoutData = null;
+         this.setOnDisposed();
       }
       
       private function doDispose() : void
       {
+         if(!this.isBeforeDisposed)
+         {
+            App.utils.asserter.assert(false,name + "(" + getQualifiedClassName(this) + ") super.onBeforeDispose should be called correctly!");
+         }
          if(this._baseDisposed)
          {
             App.utils.asserter.assert(false,name + "(" + getQualifiedClassName(this) + ") already disposed!");
          }
-         this._baseDisposed = true;
+         this.setBaseDisposed();
          dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_BEFORE_DISPOSE));
          this.onDispose();
+         if(!this.isOnDisposed)
+         {
+            App.utils.asserter.assert(false,name + "(" + getQualifiedClassName(this) + ") super.onDispose should be called correctly!");
+         }
          dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_AFTER_DISPOSE));
          while(numChildren > 0)
          {
@@ -771,18 +802,6 @@ package scaleform.clik.core
          CLIK.disableNullFocusMoves = false;
          App.utils.focusHandler.setFocus(null);
          CLIK.disableNullFocusMoves = _loc1_;
-      }
-      
-      private function simpleAssert(param1:Boolean, param2:String, param3:Class = null) : void
-      {
-         if(!param1)
-         {
-            if(param3 == null)
-            {
-               param3 = AssertionException;
-            }
-            throw new param3(param2);
-         }
       }
       
       private function throwLifeCycleException() : void
@@ -807,9 +826,114 @@ package scaleform.clik.core
          if(this._uiid != Values.EMPTY_UIID)
          {
             _loc2_ = "UIID is unique value and can not be modified.";
-            this.simpleAssert(this._uiid == param1,_loc2_,InfrastructureException);
+            simpleAssert(this._uiid == param1,_loc2_,InfrastructureException);
          }
          this._uiid = param1;
+      }
+      
+      public function set initialized(param1:Boolean) : void
+      {
+         this.flags = !!param1 ? uint(this.flags | FLAG_INITIALIZED) : uint(this.flags & ~FLAG_INITIALIZED);
+      }
+      
+      public function get initialized() : Boolean
+      {
+         return (this.flags & FLAG_INITIALIZED) > 0;
+      }
+      
+      public function set _deferredDispose(param1:Boolean) : void
+      {
+         this.flags = !!param1 ? uint(this.flags | FLAG_DEFERRED_DISPOSE) : uint(this.flags & ~FLAG_DEFERRED_DISPOSE);
+      }
+      
+      public function get _deferredDispose() : Boolean
+      {
+         return (this.flags & FLAG_DEFERRED_DISPOSE) > 0;
+      }
+      
+      private function setBeforeDisposed() : void
+      {
+         this.flags |= FLAG_BASE_BEFORE_DISPOSED;
+      }
+      
+      private function get isBeforeDisposed() : Boolean
+      {
+         return (this.flags & FLAG_BASE_BEFORE_DISPOSED) > 0;
+      }
+      
+      private function setOnDisposed() : void
+      {
+         this.flags |= FLAG_ON_DISPOSED;
+      }
+      
+      private function get isOnDisposed() : Boolean
+      {
+         return (this.flags & FLAG_ON_DISPOSED) > 0;
+      }
+      
+      private function setBaseDisposed() : void
+      {
+         this.flags |= FLAG_BASE_DISPOSED;
+      }
+      
+      public function get _baseDisposed() : Boolean
+      {
+         return (this.flags & FLAG_BASE_DISPOSED) > 0;
+      }
+      
+      protected function set _inspector(param1:Boolean) : void
+      {
+         this.flags = !!param1 ? uint(this.flags | FLAG_INSPECTOR) : uint(this.flags & ~FLAG_INSPECTOR);
+      }
+      
+      protected function get _inspector() : Boolean
+      {
+         return (this.flags & FLAG_INSPECTOR) > 0;
+      }
+      
+      private function set _enableInitCallback(param1:Boolean) : void
+      {
+         this.flags = !!param1 ? uint(this.flags | FLAG_ENABLE_INIT_CALLBACK) : uint(this.flags & ~FLAG_ENABLE_INIT_CALLBACK);
+      }
+      
+      private function get _enableInitCallback() : Boolean
+      {
+         return (this.flags & FLAG_ENABLE_INIT_CALLBACK) > 0;
+      }
+      
+      protected function set _displayFocus(param1:Boolean) : void
+      {
+         this.flags = !!param1 ? uint(this.flags | FLAG_DISPLAY_FOCUS) : uint(this.flags & ~FLAG_DISPLAY_FOCUS);
+      }
+      
+      protected function get _displayFocus() : Boolean
+      {
+         return (this.flags & FLAG_DISPLAY_FOCUS) > 0;
+      }
+      
+      protected function set _mouseWheelEnabled(param1:Boolean) : void
+      {
+         this.flags = !!param1 ? uint(this.flags | FLAG_MOUSE_WHEEL_ENABLED) : uint(this.flags & ~FLAG_MOUSE_WHEEL_ENABLED);
+      }
+      
+      protected function get _mouseWheelEnabled() : Boolean
+      {
+         return (this.flags & FLAG_MOUSE_WHEEL_ENABLED) > 0;
+      }
+      
+      protected function set _focusable(param1:Boolean) : void
+      {
+         this.flags = !!param1 ? uint(this.flags | FLAG_FOCUSABLE) : uint(this.flags & ~FLAG_FOCUSABLE);
+      }
+      
+      protected function get _focusable() : Boolean
+      {
+         return (this.flags & FLAG_FOCUSABLE) > 0;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this.isBeforeDisposed;
       }
    }
 }

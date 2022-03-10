@@ -9,6 +9,8 @@ package net.wg.gui.components.common
       
       public var frameStates:FrameStateCmpnt = null;
       
+      private var _disposed:Boolean = false;
+      
       public function FrameStatesContainer()
       {
          super();
@@ -16,6 +18,7 @@ package net.wg.gui.components.common
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.frameStates.dispose();
          this.frameStates = null;
       }
@@ -23,6 +26,11 @@ package net.wg.gui.components.common
       public function set frameLabel(param1:String) : void
       {
          this.frameStates.frameLabel = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

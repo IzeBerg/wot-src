@@ -887,7 +887,6 @@
 				6.0
 				<!--BW_String-->
 			</navmeshGirth>
-			<trackThickness>0.000000</trackThickness>
 			<AODecals>
 				<decal>
 					<transform>
@@ -3189,6 +3188,8 @@
 						<collisionModelServer>vehicles/american/A104_M4A3E8A/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/american/A104_M4A3E8A/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_medium_mb</effects>
+					<reloadEffect>reload50_75</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>

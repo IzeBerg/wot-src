@@ -3,7 +3,6 @@ from gui.Scaleform.daapi.view.lobby.hangar.carousels.basic.tank_carousel import 
 from gui.Scaleform.daapi.view.lobby.hangar.carousels.royale.carousel_data_provider import RoyaleCarouselDataProvider
 from gui.Scaleform.daapi.view.lobby.hangar.carousels.royale.carousel_filter import RoyaleCarouselFilter
 from helpers import dependency
-from new_year.ny_constants import NY_FILTER
 from skeletons.gui.game_control import IBattleRoyaleController
 
 class RoyaleTankCarousel(TankCarousel):
@@ -32,7 +31,7 @@ class RoyaleTankCarousel(TankCarousel):
 
     def _getFilters(self):
         isBattleRoyaleEnabled = self.battleRoyaleController.isEnabled()
-        parentFilters = tuple(filterName for filterName in super(RoyaleTankCarousel, self)._getFilters() if filterName != NY_FILTER)
+        parentFilters = super(RoyaleTankCarousel, self)._getFilters()
         if isBattleRoyaleEnabled:
             return parentFilters + ('battleRoyale', )
         return parentFilters

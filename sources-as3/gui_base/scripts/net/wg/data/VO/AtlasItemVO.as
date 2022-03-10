@@ -16,6 +16,8 @@ package net.wg.data.VO
       
       private var _name:String = "";
       
+      private var _disposed:Boolean = false;
+      
       public function AtlasItemVO()
       {
          super();
@@ -73,6 +75,12 @@ package net.wg.data.VO
       
       public function dispose() : void
       {
+         this._disposed = true;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

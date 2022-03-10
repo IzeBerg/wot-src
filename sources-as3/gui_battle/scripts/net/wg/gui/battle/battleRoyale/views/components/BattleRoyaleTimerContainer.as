@@ -31,6 +31,8 @@ package net.wg.gui.battle.battleRoyale.views.components
       
       private var _timeTfMinWidth:int = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function BattleRoyaleTimerContainer()
       {
          super();
@@ -53,6 +55,7 @@ package net.wg.gui.battle.battleRoyale.views.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.tf = null;
          this.timeTF = null;
       }
@@ -94,6 +97,11 @@ package net.wg.gui.battle.battleRoyale.views.components
       {
          this._countdownVisible = param1;
          this.updateTimeTfVisible();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

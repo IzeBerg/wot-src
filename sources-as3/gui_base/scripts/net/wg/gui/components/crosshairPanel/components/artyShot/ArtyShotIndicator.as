@@ -138,5 +138,10 @@ package net.wg.gui.components.crosshairPanel.components.artyShot
       {
          return this._data;
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._baseDisposed;
+      }
    }
 }

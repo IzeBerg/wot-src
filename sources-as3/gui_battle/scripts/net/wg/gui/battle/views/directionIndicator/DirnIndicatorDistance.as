@@ -23,6 +23,8 @@ package net.wg.gui.battle.views.directionIndicator
       
       private var _distance:Number = NaN;
       
+      private var _disposed:Boolean = false;
+      
       public function DirnIndicatorDistance()
       {
          super();
@@ -89,6 +91,7 @@ package net.wg.gui.battle.views.directionIndicator
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.greenTF = null;
          this.redTF = null;
          this.purpleTF = null;
@@ -99,6 +102,11 @@ package net.wg.gui.battle.views.directionIndicator
       private function updateDistance() : void
       {
          this._currTF.text = !!isNaN(this._distance) ? "" : this._distance + DISTANCE_POSTFIX;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

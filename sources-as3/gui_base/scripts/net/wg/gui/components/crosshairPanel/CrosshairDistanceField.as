@@ -10,6 +10,8 @@ package net.wg.gui.components.crosshairPanel
       
       public var distanceTF:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       private var _distance:String = "";
       
       public function CrosshairDistanceField()
@@ -19,6 +21,7 @@ package net.wg.gui.components.crosshairPanel
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.distanceTF = null;
       }
       
@@ -29,6 +32,11 @@ package net.wg.gui.components.crosshairPanel
             this._distance = param1;
             this.distanceTF.text = this._distance;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -37,6 +37,8 @@ package net.wg.gui.components.battleDamagePanel.components
       
       private var _currentWidth:Number = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function ShellTypeBG(param1:String)
       {
          super();
@@ -66,6 +68,7 @@ package net.wg.gui.components.battleDamagePanel.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._atlasMgr = null;
          this._compositeBGContainer = null;
          this._emptyShellBG = null;
@@ -124,6 +127,11 @@ package net.wg.gui.components.battleDamagePanel.components
             this._rightEdge.x = (this._edgeWidth << 1) + _loc2_;
             this._emptyShellBG.x = param1 - EMPTY_BG_WIDTH >> 1;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

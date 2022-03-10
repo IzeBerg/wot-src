@@ -7,14 +7,18 @@ package net.wg.gui.components.containers
    import flash.events.Event;
    import flash.events.FocusEvent;
    import flash.events.MouseEvent;
+   import flash.utils.Dictionary;
    import net.wg.data.daapi.LoadViewVO;
+   import net.wg.gui.tutorial.components.TutorialHintZone;
    import net.wg.infrastructure.base.UIComponentEx;
+   import net.wg.infrastructure.interfaces.IContainerWrapper;
    import net.wg.infrastructure.interfaces.IManagedContent;
    import net.wg.infrastructure.interfaces.IView;
    import net.wg.infrastructure.managers.IContainerManager;
    import org.idmedia.as3commons.util.StringUtils;
+   import scaleform.gfx.MouseEventEx;
    
-   public class BaseContainerWrapper extends UIComponentEx implements IView
+   public class BaseContainerWrapper extends UIComponentEx implements IContainerWrapper
    {
        
       
@@ -22,9 +26,44 @@ package net.wg.gui.components.containers
       
       private var _isFocused:Boolean = true;
       
+      private var _allowOnlyLMBClick:Boolean = false;
+      
+      private var _tutorialHintZones:Dictionary;
+      
       public function BaseContainerWrapper()
       {
+         this._tutorialHintZones = new Dictionary();
          super();
+      }
+      
+      public function set allowOnlyLMBClick(param1:Boolean) : void
+      {
+         this._allowOnlyLMBClick = param1;
+      }
+      
+      public function getTutorialHintZone(param1:String) : DisplayObject
+      {
+         var _loc2_:TutorialHintZone = null;
+         if(!(param1 in this._tutorialHintZones))
+         {
+            _loc2_ = new TutorialHintZone(this);
+            _loc2_.name = param1;
+            addChild(_loc2_);
+            this._tutorialHintZones[param1] = _loc2_;
+         }
+         return this._tutorialHintZones[param1];
+      }
+      
+      public function removeTutorialHintZone(param1:String) : void
+      {
+         var _loc2_:TutorialHintZone = null;
+         if(param1 in this._tutorialHintZones)
+         {
+            _loc2_ = this._tutorialHintZones[param1];
+            removeChild(_loc2_);
+            _loc2_.dispose();
+            delete this._tutorialHintZones[param1];
+         }
       }
       
       override protected function configUI() : void
@@ -37,6 +76,7 @@ package net.wg.gui.components.containers
       
       override protected function onDispose() : void
       {
+         var _loc2_:TutorialHintZone = null;
          if(this._loadViewVO != null)
          {
             this._loadViewVO.dispose();
@@ -51,6 +91,13 @@ package net.wg.gui.components.containers
          {
             _loc1_.updateFocus();
          }
+         for each(_loc2_ in this._tutorialHintZones)
+         {
+            removeChild(_loc2_);
+            _loc2_.dispose();
+         }
+         App.utils.data.cleanupDynamicObject(this._tutorialHintZones);
+         this._tutorialHintZones = null;
          super.onDispose();
       }
       
@@ -92,9 +139,9 @@ package net.wg.gui.components.containers
       
       public function setModalFocus() : void
       {
-         if(!_baseDisposed && !this.isFocused())
+         if(!_baseDisposed && focusable)
          {
-            if(!this.trySetFocus(this))
+            if(!this.isFocused() && !this.trySetFocus(this))
             {
                App.utils.focusHandler.setFocus(this);
             }
@@ -227,6 +274,10 @@ package net.wg.gui.components.containers
       
       private function onClickHandler(param1:MouseEvent) : void
       {
+         if(this._allowOnlyLMBClick && MouseEventEx(param1).buttonIdx != MouseEventEx.LEFT_BUTTON)
+         {
+            return;
+         }
          if(App && !App.stage.focus)
          {
             this.setModalFocus();

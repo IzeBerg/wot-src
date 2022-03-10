@@ -3815,10 +3815,6 @@
 						<gun>20</gun>
 					</armor>
 					<turretYawLimits>-180 180</turretYawLimits>
-					<pitchLimits>
-						<minPitch/>
-						<maxPitch/>
-					</pitchLimits>
 					<invisibilityFactorAtShot>
 						0.247
 						<!--BW_String-->
@@ -3851,6 +3847,8 @@
 						<collisionModelServer>vehicles/german/G116_Turan_III_prot/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/german/G116_Turan_III_prot/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_medium_mb</effects>
+					<reloadEffect>reload50_75</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>

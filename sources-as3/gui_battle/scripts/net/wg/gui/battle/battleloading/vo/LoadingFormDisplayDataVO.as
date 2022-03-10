@@ -26,6 +26,8 @@ package net.wg.gui.battle.battleloading.vo
       
       public var showTipsBackground:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function LoadingFormDisplayDataVO()
       {
          super();
@@ -33,6 +35,12 @@ package net.wg.gui.battle.battleloading.vo
       
       public function dispose() : void
       {
+         this._disposed = true;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

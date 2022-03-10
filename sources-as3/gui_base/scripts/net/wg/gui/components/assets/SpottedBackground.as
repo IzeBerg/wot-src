@@ -12,6 +12,8 @@ package net.wg.gui.components.assets
       
       private var _bitmapData:BitmapData;
       
+      private var _disposed:Boolean = false;
+      
       public function SpottedBackground()
       {
          super();
@@ -24,6 +26,7 @@ package net.wg.gui.components.assets
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._bitmapData.dispose();
          this._bitmapData = null;
       }
@@ -34,6 +37,11 @@ package net.wg.gui.components.assets
          graphics.beginBitmapFill(this._bitmapData);
          graphics.drawRect(0,0,param1,this._bitmapData.height);
          graphics.endFill();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

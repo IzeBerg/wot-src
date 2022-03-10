@@ -13,13 +13,11 @@ package
       
       public static const MAPS_PROMO_BG:String = "../maps/promo_bg.png";
       
+      public static const MAPS_ICONS_BATTLEPASS_CHAPTER_CHOICE_BG:String = "../maps/icons/battlePass/chapter_choice/bg.png";
+      
       public static const MAPS_ICONS_BATTLEPASS_OFF_SEASON_BG:String = "../maps/icons/battlePass/off_season/bg.png";
       
       public static const MAPS_ICONS_BATTLEPASS_PROGRESSION_BG:String = "../maps/icons/battlePass/progression/bg.png";
-      
-      public static const MAPS_ICONS_BATTLEPASS_TANK_3D_STYLE_BG:String = "../maps/icons/battlePass/tank_3d_style/bg.png";
-      
-      public static const MAPS_ICONS_BATTLEPASS_TANK_3D_STYLE_CONFIRM_BG:String = "../maps/icons/battlePass/tank_3d_style/confirm/bg.png";
       
       public static const MAPS_ICONS_BATTLEROYALE_BATTLERESULT_BG:String = "../maps/icons/battleRoyale/battleResult/bg.png";
       
@@ -42,26 +40,6 @@ package
       public static const MAPS_ICONS_MAPSTRAINING_MINIMAP_BG:String = "../maps/icons/mapsTraining/minimap/bg.png";
       
       public static const MAPS_ICONS_MARATHON_REWARDWINDOW_BG:String = "../maps/icons/marathon/rewardWindow/bg.png";
-      
-      public static const MAPS_ICONS_NEWYEAR_ATMOSPHERE_INTRO_BG:String = "../maps/icons/newYear/atmosphere_intro/bg.png";
-      
-      public static const MAPS_ICONS_NEWYEAR_COLLECTIONS_REWARD_BG:String = "../maps/icons/newYear/collections_reward/bg.png";
-      
-      public static const MAPS_ICONS_NEWYEAR_CRAFT_MACHINE_BG:String = "../maps/icons/newYear/craft_machine/bg.png";
-      
-      public static const MAPS_ICONS_NEWYEAR_INFO_BG:String = "../maps/icons/newYear/info/bg.png";
-      
-      public static const MAPS_ICONS_NEWYEAR_POPOVERS_BG:String = "../maps/icons/newYear/popovers/bg.png";
-      
-      public static const MAPS_ICONS_NEWYEAR_REWARDS_INFO_BG:String = "../maps/icons/newYear/rewards_info/bg.png";
-      
-      public static const MAPS_ICONS_NEWYEAR_STYLE_REWARD_BG:String = "../maps/icons/newYear/style_reward/bg.png";
-      
-      public static const MAPS_ICONS_NEWYEAR_TOOLTIPS_DISCOUNT_REWARD_TOOLTIP_BG:String = "../maps/icons/newYear/tooltips/discount_reward_tooltip/bg.png";
-      
-      public static const MAPS_ICONS_NEWYEAR_TOY_STORAGE_BG:String = "../maps/icons/newYear/toy_storage/bg.png";
-      
-      public static const MAPS_ICONS_NEWYEAR_VEHICLES_BG:String = "../maps/icons/newYear/vehicles/bg.png";
       
       public static const MAPS_ICONS_PREMACC_DASHBOARD_HEADER_BADGESLOT_BG:String = "../maps/icons/premacc/dashboard/header/badgeSlot/bg.png";
       

@@ -2,9 +2,10 @@ import weakref
 from collections import namedtuple
 from account_helpers.settings_core import settings_constants
 from account_helpers.settings_core.migrations import migrateToVersion
-from account_helpers.settings_core.settings_constants import TUTORIAL, VERSION, GuiSettingsBehavior, OnceOnlyHints, BattlePassStorageKeys, SPGAim, NYLootBoxesStorageKeys, NewYearStorageKeys
+from account_helpers.settings_core.settings_constants import TUTORIAL, VERSION, GuiSettingsBehavior, OnceOnlyHints, SPGAim
 from adisp import process, async
 from debug_utils import LOG_ERROR, LOG_DEBUG
+from gui.battle_pass.battle_pass_helpers import updateBattlePassVersion
 from gui.server_events.pm_constants import PM_TUTOR_FIELDS
 from helpers import dependency
 from shared_utils import CONST_CONTAINER
@@ -55,13 +56,6 @@ class SETTINGS_SECTIONS(CONST_CONTAINER):
     BATTLE_PASS_STORAGE = 'BATTLE_PASS_STORAGE'
     BATTLE_COMM = 'BATTLE_COMM'
     DOG_TAGS = 'DOG_TAGS'
-    LOOT_BOX_VIEWED = 'LOOT_BOX_VIEWED'
-    LOOT_BOX_ORIENTAL = 'LOOT_BOX_ORIENTAL'
-    LOOT_BOX_NEW_YEAR = 'LOOT_BOX_NEW_YEAR'
-    LOOT_BOX_FAIRYTALE = 'LOOT_BOX_FAIRYTALE'
-    LOOT_BOX_CHRISTMAS = 'LOOT_BOX_CHRISTMAS'
-    LOOT_BOX_COMMON = 'LOOT_BOX_COMMON'
-    NEW_YEAR = 'NEW_YEAR'
     UNIT_FILTER = 'UNIT_FILTER'
     BATTLE_HUD = 'BATTLE_HUD'
     SPG_AIM = 'SPG_AIM'
@@ -221,7 +215,6 @@ class ServerSettingsManager(object):
                                              'bonus': 6, 
                                              'event': 7, 
                                              'crystals': 8, 
-                                             'newYear': 10, 
                                              'role_HT_assault': 11, 
                                              'role_HT_break': 12, 
                                              'role_HT_support': 13, 
@@ -323,7 +316,6 @@ class ServerSettingsManager(object):
                                                         'bonus': 6, 
                                                         'event': 7, 
                                                         'crystals': 8, 
-                                                        'newYear': 10, 
                                                         'role_HT_assault': 11, 
                                                         'role_HT_break': 12, 
                                                         'role_HT_support': 13, 
@@ -344,8 +336,6 @@ class ServerSettingsManager(object):
                                               GuiSettingsBehavior.RANKED_WELCOME_VIEW_SHOWED: 1, 
                                               GuiSettingsBehavior.RANKED_WELCOME_VIEW_STARTED: 2, 
                                               GuiSettingsBehavior.EPIC_RANDOM_CHECKBOX_CLICKED: 3, 
-                                              GuiSettingsBehavior.TECHTREE_INTRO_BLUEPRINTS_RECEIVED: 23, 
-                                              GuiSettingsBehavior.TECHTREE_INTRO_SHOWED: 24, 
                                               GuiSettingsBehavior.DISPLAY_PLATOON_MEMBER_CLICKED: 25, 
                                               GuiSettingsBehavior.VEH_POST_PROGRESSION_UNLOCK_MSG_NEED_SHOW: 26, 
                                               GuiSettingsBehavior.BIRTHDAY_CALENDAR_INTRO_SHOWED: 27}, offsets={}), 
@@ -419,10 +409,7 @@ class ServerSettingsManager(object):
                                              OnceOnlyHints.WOTPLUS_HANGAR_HINT: 20, 
                                              OnceOnlyHints.WOTPLUS_PROFILE_HINT: 21, 
                                              OnceOnlyHints.HANGAR_HAVE_NEW_BADGE_HINT: 22, 
-                                             OnceOnlyHints.HANGAR_HAVE_NEW_SUFFIX_BADGE_HINT: 23, 
-                                             OnceOnlyHints.NY_GIFT_SYSTEM_FRIEND_SELECT_HINT: 24, 
-                                             OnceOnlyHints.LUNAR_NY_DROPDOWN_HINT: 25, 
-                                             OnceOnlyHints.LUNAR_NY_CONGRATULATION_HINT: 26}, offsets={}), 
+                                             OnceOnlyHints.HANGAR_HAVE_NEW_SUFFIX_BADGE_HINT: 23}, offsets={}), 
        SETTINGS_SECTIONS.DAMAGE_INDICATOR: Section(masks={DAMAGE_INDICATOR.TYPE: 0, 
                                             DAMAGE_INDICATOR.PRESET_CRITS: 1, 
                                             DAMAGE_INDICATOR.DAMAGE_VALUE: 2, 
@@ -498,12 +485,9 @@ class ServerSettingsManager(object):
                                          SESSION_STATS.SHOW_SURVIVED_RATE: 15, 
                                          SESSION_STATS.SHOW_SPOTTED: 16, 
                                          SESSION_STATS.ONLY_ONCE_HINT_SHOWN_FIELD: 17}, offsets={}), 
-       SETTINGS_SECTIONS.BATTLE_PASS_STORAGE: Section(masks={BATTLE_PASS.NEW_DEVICE_NOTIFICATION_SHOWN: 0, 
-                                               BATTLE_PASS.TROPHY_NOTIFICATION_SHOWN: 1, 
-                                               BATTLE_PASS.INTRO_SHOWN: 16, 
-                                               BATTLE_PASS.BUY_BUTTON_HINT_IS_SHOWN: 17, 
+       SETTINGS_SECTIONS.BATTLE_PASS_STORAGE: Section(masks={BATTLE_PASS.INTRO_SHOWN: 16, 
                                                BATTLE_PASS.INTRO_VIDEO_SHOWN: 20, 
-                                               BATTLE_PASS.DAILY_QUESTS_INTRO_SHOWN: 27}, offsets={BATTLE_PASS.BUY_ANIMATION_WAS_SHOWN: Offset(10, 7168), 
+                                               BATTLE_PASS.DAILY_QUESTS_INTRO_SHOWN: 27}, offsets={BATTLE_PASS.BUY_ANIMATION_WAS_SHOWN: Offset(10, 15360), 
                                                BATTLE_PASS.FLAGS_VERSION: Offset(21, 132120576)}), 
        SETTINGS_SECTIONS.BATTLE_COMM: Section(masks={BATTLE_COMM.ENABLE_BATTLE_COMMUNICATION: 0, 
                                        BATTLE_COMM.SHOW_COM_IN_PLAYER_LIST: 1, 
@@ -589,7 +573,6 @@ class ServerSettingsManager(object):
                                                     'bonus': 6, 
                                                     'event': 7, 
                                                     'crystals': 8, 
-                                                    'newYear': 10, 
                                                     'role_HT_assault': 11, 
                                                     'role_HT_break': 12, 
                                                     'role_HT_support': 13, 
@@ -605,28 +588,7 @@ class ServerSettingsManager(object):
                                                     'role_LT_universal': 23, 
                                                     'role_LT_wheeled': 24, 
                                                     'role_SPG': 25}, offsets={}), 
-       SETTINGS_SECTIONS.UNIT_FILTER: Section(masks={}, offsets={GAME.UNIT_FILTER: Offset(0, 2047)}), 
-       SETTINGS_SECTIONS.LOOT_BOX_VIEWED: Section(masks={}, offsets={'count': Offset(0, 4294967295)}), 
-       SETTINGS_SECTIONS.LOOT_BOX_ORIENTAL: Section(masks={}, offsets={NYLootBoxesStorageKeys.NEW_COUNT: Offset(0, 65535), 
-                                             NYLootBoxesStorageKeys.DELIVERED_COUNT: Offset(16, 4294901760)}), 
-       SETTINGS_SECTIONS.LOOT_BOX_NEW_YEAR: Section(masks={}, offsets={NYLootBoxesStorageKeys.NEW_COUNT: Offset(0, 65535), 
-                                             NYLootBoxesStorageKeys.DELIVERED_COUNT: Offset(16, 4294901760)}), 
-       SETTINGS_SECTIONS.LOOT_BOX_FAIRYTALE: Section(masks={}, offsets={NYLootBoxesStorageKeys.NEW_COUNT: Offset(0, 65535), 
-                                              NYLootBoxesStorageKeys.DELIVERED_COUNT: Offset(16, 4294901760)}), 
-       SETTINGS_SECTIONS.LOOT_BOX_CHRISTMAS: Section(masks={}, offsets={NYLootBoxesStorageKeys.NEW_COUNT: Offset(0, 65535), 
-                                              NYLootBoxesStorageKeys.DELIVERED_COUNT: Offset(16, 4294901760)}), 
-       SETTINGS_SECTIONS.LOOT_BOX_COMMON: Section(masks={}, offsets={NYLootBoxesStorageKeys.NEW_COUNT: Offset(0, 65535)}), 
-       SETTINGS_SECTIONS.NEW_YEAR: Section(masks={NewYearStorageKeys.HAS_TOYS_HINT_SHOWN: 0, 
-                                    NewYearStorageKeys.NY_VEHICLES_PROGRESS_ENTRY: 1, 
-                                    NewYearStorageKeys.NY_VEHICLES_POST_EVENT_ENTRY: 2, 
-                                    NewYearStorageKeys.NY_STATISTICS_HINT_SHOWN: 7, 
-                                    NewYearStorageKeys.GLADE_INTRO_VISITED: 8, 
-                                    NewYearStorageKeys.GIFT_SYSTEM_INTRO_VISITED: 9, 
-                                    NewYearStorageKeys.CELEBRITY_CHALLENGE_VISITED: 10, 
-                                    NewYearStorageKeys.CELEBRITY_WELCOME_VIEWED: 11, 
-                                    NewYearStorageKeys.DECORATIONS_POPOVER_VIEWED: 12, 
-                                    NewYearStorageKeys.DECORATIONS_POPOVER_BROKEN: 13, 
-                                    NewYearStorageKeys.LOOT_BOX_VIDEO_OFF: 14}, offsets={NewYearStorageKeys.NY_VEHICLES_LEVEL_UP_ENTRY: Offset(3, 120)})}
+       SETTINGS_SECTIONS.UNIT_FILTER: Section(masks={}, offsets={GAME.UNIT_FILTER: Offset(0, 2047)})}
     AIM_MAPPING = {'net': 1, 
        'netType': 1, 
        'centralTag': 1, 
@@ -720,20 +682,12 @@ class ServerSettingsManager(object):
 
     def getBPStorage(self, defaults=None):
         storageData = self.getSection(SETTINGS_SECTIONS.BATTLE_PASS_STORAGE, defaults)
-        if _updateBattlePassVersion(storageData):
+        if updateBattlePassVersion(storageData):
             self.saveInBPStorage(storageData)
         return storageData
 
     def saveInBPStorage(self, settings):
         return self.setSectionSettings(SETTINGS_SECTIONS.BATTLE_PASS_STORAGE, settings)
-
-    def getNewYearStorage(self, defaults=None):
-        if self.settingsCache.isSynced():
-            return self.getSection(SETTINGS_SECTIONS.NEW_YEAR, defaults)
-        return {}
-
-    def saveInNewYearStorage(self, settings):
-        return self.setSectionSettings(SETTINGS_SECTIONS.NEW_YEAR, settings)
 
     def checkAutoReloadHighlights(self, increase=False):
         return self.__checkUIHighlights(UI_STORAGE_KEYS.AUTO_RELOAD_HIGHLIGHTS_COUNTER, self._MAX_AUTO_RELOAD_HIGHLIGHTS_COUNT, increase)
@@ -951,7 +905,7 @@ class ServerSettingsManager(object):
     @process
     def _updateToVersion(self, callback=None):
         currentVersion = self.settingsCache.getVersion()
-        data = {'gameData': {}, 'gameExtData': {}, 'gameExtData2': {}, 'gameplayData': {}, 'controlsData': {}, 'aimData': {}, 'markersData': {}, 'graphicsData': {}, 'marksOnGun': {}, 'fallout': {}, 'carousel_filter': {}, 'feedbackDamageIndicator': {}, 'feedbackDamageLog': {}, 'feedbackBattleEvents': {}, 'onceOnlyHints': {}, 'onceOnlyHints2': {}, 'uiStorage': {}, 'epicCarouselFilter2': {}, 'rankedCarouselFilter1': {}, 'rankedCarouselFilter2': {}, 'sessionStats': {}, 'battleComm': {}, 'dogTags': {}, 'battleHud': {}, 'spgAim': {}, GUI_START_BEHAVIOR: {}, 'battlePassStorage': {}, 'nyStorage': {}, 'clear': {}, 'delete': []}
+        data = {'gameData': {}, 'gameExtData': {}, 'gameExtData2': {}, 'gameplayData': {}, 'controlsData': {}, 'aimData': {}, 'markersData': {}, 'graphicsData': {}, 'marksOnGun': {}, 'fallout': {}, 'carousel_filter': {}, 'feedbackDamageIndicator': {}, 'feedbackDamageLog': {}, 'feedbackBattleEvents': {}, 'onceOnlyHints': {}, 'onceOnlyHints2': {}, 'uiStorage': {}, 'epicCarouselFilter2': {}, 'rankedCarouselFilter1': {}, 'rankedCarouselFilter2': {}, 'sessionStats': {}, 'battleComm': {}, 'dogTags': {}, 'battleHud': {}, 'spgAim': {}, GUI_START_BEHAVIOR: {}, 'battlePassStorage': {}, 'clear': {}, 'delete': []}
         yield migrateToVersion(currentVersion, self._core, data)
         self._setSettingsSections(data)
         callback(self)
@@ -1011,10 +965,6 @@ class ServerSettingsManager(object):
         clearRankedFilterCarousel2 = clear.get('rankedCarouselFilter2', 0)
         if rankedFilterCarousel2 or clearRankedFilterCarousel2:
             settings[SETTINGS_SECTIONS.RANKED_CAROUSEL_FILTER_2] = self._buildSectionSettings(SETTINGS_SECTIONS.RANKED_CAROUSEL_FILTER_2, rankedFilterCarousel2) ^ clearRankedFilterCarousel2
-        mapBoxFilterCarousel2 = data.get('mapBoxCarouselFilter2', {})
-        clearMapBoxFilterCarousel2 = clear.get('mapBoxCarouselFilter2', 0)
-        if mapBoxFilterCarousel2 or clearMapBoxFilterCarousel2:
-            settings[SETTINGS_SECTIONS.MAPBOX_CAROUSEL_FILTER_2] = self._buildSectionSettings(SETTINGS_SECTIONS.MAPBOX_CAROUSEL_FILTER_2, mapBoxFilterCarousel2) ^ clearMapBoxFilterCarousel2
         feedbackDamageIndicator = data.get('feedbackDamageIndicator', {})
         if feedbackDamageIndicator:
             settings[SETTINGS_SECTIONS.DAMAGE_INDICATOR] = self._buildSectionSettings(SETTINGS_SECTIONS.DAMAGE_INDICATOR, feedbackDamageIndicator)
@@ -1064,9 +1014,6 @@ class ServerSettingsManager(object):
         clearSpgAimData = clear.get(SETTINGS_SECTIONS.SPG_AIM, 0)
         if spgAimData or clearSpgAimData:
             settings[SETTINGS_SECTIONS.SPG_AIM] = self._buildSectionSettings(SETTINGS_SECTIONS.SPG_AIM, spgAimData) ^ clearSpgAimData
-        nyData = data.get('nyStorage', {})
-        if nyData:
-            settings[SETTINGS_SECTIONS.NEW_YEAR] = self._buildSectionSettings(SETTINGS_SECTIONS.NEW_YEAR, nyData)
         version = data.get(VERSION)
         if version is not None:
             settings[VERSION] = version
@@ -1082,15 +1029,3 @@ class ServerSettingsManager(object):
         if res and increase:
             self.updateUIStorageCounter(key)
         return res
-
-
-def _updateBattlePassVersion(data):
-    version = 6
-    if data[BattlePassStorageKeys.FLAGS_VERSION] < version:
-        data[BattlePassStorageKeys.FLAGS_VERSION] = version
-        data[BattlePassStorageKeys.INTRO_SHOWN] = False
-        data[BattlePassStorageKeys.INTRO_VIDEO_SHOWN] = False
-        data[BattlePassStorageKeys.BUY_ANIMATION_WAS_SHOWN] = 0
-        data[BattlePassStorageKeys.BUY_BUTTON_HINT_IS_SHOWN] = False
-        return True
-    return False

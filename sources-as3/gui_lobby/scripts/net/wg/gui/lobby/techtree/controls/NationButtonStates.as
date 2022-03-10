@@ -12,6 +12,8 @@ package net.wg.gui.lobby.techtree.controls
       
       public var icoAdd:MovieClip;
       
+      private var _disposed:Boolean = false;
+      
       public function NationButtonStates()
       {
          super();
@@ -19,6 +21,7 @@ package net.wg.gui.lobby.techtree.controls
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.ico = null;
          this.icoAdd = null;
       }
@@ -38,6 +41,11 @@ package net.wg.gui.lobby.techtree.controls
       public function get contentSize() : Rectangle
       {
          return scale9Grid;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

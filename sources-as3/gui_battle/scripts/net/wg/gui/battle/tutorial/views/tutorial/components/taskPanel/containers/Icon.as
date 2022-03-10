@@ -14,6 +14,8 @@ package net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel.container
       
       public var doneIconMc:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function Icon()
       {
          super();
@@ -36,8 +38,14 @@ package net.wg.gui.battle.tutorial.views.tutorial.components.taskPanel.container
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.inProgressIconSpr = null;
          this.doneIconMc = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

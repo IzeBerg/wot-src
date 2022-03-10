@@ -19,6 +19,8 @@ package net.wg.gui.battle.views.epicDeploymentMap.components
       
       private var _clickAreaSpr:Sprite = null;
       
+      private var _disposed:Boolean = false;
+      
       public function EpicMapContainer()
       {
          super();
@@ -31,6 +33,7 @@ package net.wg.gui.battle.views.epicDeploymentMap.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._clickAreaSpr.removeEventListener(MouseEvent.CLICK,this.onMouseClickHandler);
          this._clickAreaSpr = null;
          this.mapHit = null;
@@ -54,6 +57,11 @@ package net.wg.gui.battle.views.epicDeploymentMap.components
             }
             dispatchEvent(new EpicDeploymentMapEvent(EpicDeploymentMapEvent.MAP_CLICKED,this.mapHit.mouseX,this.mapHit.mouseY,MouseEventEx(param1).buttonIdx));
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -2569,10 +2569,6 @@
 					</transform>
 				</decal>
 			</AODecals>
-			<trackThickness>
-				0.012
-				<!--BW_String-->
-			</trackThickness>
 			<physicalTracks>
 				<left>
 					<segmentsCount>94</segmentsCount>
@@ -5047,10 +5043,6 @@
 					</transform>
 				</decal>
 			</AODecals>
-			<trackThickness>
-				0.012
-				<!--BW_String-->
-			</trackThickness>
 			<customization>
 				<customizableVehicleAreas>
 					<paint>CHASSIS</paint>
@@ -5179,6 +5171,8 @@
 						<collisionModelServer>vehicles/russian/R47_ISU-152/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/russian/R47_ISU-152/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_huge</effects>
+					<reloadEffect>reload115_152</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>
@@ -5329,6 +5323,8 @@
 						<collisionModelServer>vehicles/russian/R47_ISU-152/collision/Gun_02.model</collisionModelServer>
 						<collisionModelClient>vehicles/russian/R47_ISU-152/collision_client/Gun_02.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_large</effects>
+					<reloadEffect>reload115_152</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>
@@ -5468,6 +5464,7 @@
 					</hitTester>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<effects>shot_huge_mb</effects>
+					<reloadEffect>reload115_152</reloadEffect>
 					<customization>
 						<customizableVehicleAreas>
 							<paint>GUN GUN_2</paint>

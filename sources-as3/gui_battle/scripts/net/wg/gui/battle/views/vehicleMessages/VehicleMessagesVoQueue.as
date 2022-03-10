@@ -15,6 +15,8 @@ package net.wg.gui.battle.views.vehicleMessages
       
       private var _items:Vector.<VehicleMessageVO> = null;
       
+      private var _disposed:Boolean = false;
+      
       public function VehicleMessagesVoQueue()
       {
          super();
@@ -63,6 +65,7 @@ package net.wg.gui.battle.views.vehicleMessages
       
       public final function dispose() : void
       {
+         this._disposed = true;
          if(this._items)
          {
             this._items.splice(0,this._items.length);
@@ -73,6 +76,11 @@ package net.wg.gui.battle.views.vehicleMessages
             this._pool.splice(0,this._pool.length);
             this._pool = null;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

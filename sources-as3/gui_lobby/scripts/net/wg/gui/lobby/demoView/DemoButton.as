@@ -19,14 +19,17 @@ package net.wg.gui.lobby.demoView
       
       private var _color:uint = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function DemoButton()
       {
          super();
          this.textField.type = TextFieldType.INPUT;
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          this.textField = null;
       }
       
@@ -63,6 +66,11 @@ package net.wg.gui.lobby.demoView
       override public function set width(param1:Number) : void
       {
          this._width = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

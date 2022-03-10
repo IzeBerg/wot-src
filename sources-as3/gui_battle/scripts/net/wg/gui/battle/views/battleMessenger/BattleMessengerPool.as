@@ -26,6 +26,8 @@ package net.wg.gui.battle.views.battleMessenger
       
       private var _battleSmileyMap:BattleSmileyMap = null;
       
+      private var _disposed:Boolean = false;
+      
       public function BattleMessengerPool(param1:int, param2:int, param3:int, param4:Number, param5:Number, param6:int, param7:String, param8:BattleSmileyMap, param9:Function = null)
       {
          var _loc10_:BattleMessage = null;
@@ -94,6 +96,7 @@ package net.wg.gui.battle.views.battleMessenger
       public final function dispose() : void
       {
          var _loc1_:BattleMessage = null;
+         this._disposed = true;
          for each(_loc1_ in this._items)
          {
             _loc1_.dispose();
@@ -102,6 +105,11 @@ package net.wg.gui.battle.views.battleMessenger
          this._items.splice(0,this._items.length);
          this._items = null;
          this._battleSmileyMap = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

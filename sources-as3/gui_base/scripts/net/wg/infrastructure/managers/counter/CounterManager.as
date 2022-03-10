@@ -28,6 +28,8 @@ package net.wg.infrastructure.managers.counter
       
       private var _countersContainers:Object;
       
+      private var _disposed:Boolean = false;
+      
       public function CounterManager()
       {
          super();
@@ -69,6 +71,7 @@ package net.wg.infrastructure.managers.counter
          var _loc2_:* = null;
          var _loc3_:int = 0;
          var _loc4_:int = 0;
+         this._disposed = true;
          var _loc1_:Vector.<String> = new Vector.<String>();
          for(_loc2_ in this._countersContainers)
          {
@@ -123,7 +126,10 @@ package net.wg.infrastructure.managers.counter
          {
             _loc4_ = getCounter(_loc3_,param1);
             delete _loc3_[param1];
-            _loc4_.dispose();
+            if(!_loc4_.isDisposed())
+            {
+               _loc4_.dispose();
+            }
          }
       }
       
@@ -164,10 +170,15 @@ package net.wg.infrastructure.managers.counter
          }
          if(param2)
          {
-            this._countersContainers[param1] = new Dictionary();
+            this._countersContainers[param1] = new Dictionary(true);
             return this._countersContainers[param1];
          }
          return null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

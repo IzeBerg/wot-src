@@ -134,7 +134,8 @@ package net.wg.gui.messenger.windows
       
       private function updatePartSize(param1:MovieClip, param2:ConstrainedElement, param3:Boolean) : void
       {
-         var _loc4_:Number = this.warningPanel.height - WARNING_PADDING;
+         var _loc4_:Number = NaN;
+         _loc4_ = this.warningPanel.height - WARNING_PADDING;
          if(param3)
          {
             param2.top += _loc4_;

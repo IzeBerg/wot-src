@@ -8,7 +8,6 @@ package net.wg.infrastructure.tutorial.builders
    import net.wg.gui.components.advanced.events.TutorialHelpBtnEvent;
    import net.wg.gui.components.advanced.tutorial.TutorialContextOverlay;
    import net.wg.gui.components.advanced.vo.TutorialContextOverlayVO;
-   import net.wg.infrastructure.interfaces.IView;
    import net.wg.infrastructure.tutorial.helpBtnControllers.interfaces.ITutorialHelpBtnController;
    
    public class TutorialOverlayBuilder extends TutorialBuilder
@@ -19,19 +18,11 @@ package net.wg.infrastructure.tutorial.builders
       
       private var _tutorialOverlay:TutorialContextOverlay = null;
       
-      private var _viewTutorialId:String = "";
-      
       private var _helpBtnController:ITutorialHelpBtnController = null;
       
       public function TutorialOverlayBuilder()
       {
          super();
-      }
-      
-      override public function setView(param1:IView) : void
-      {
-         super.setView(param1);
-         this._viewTutorialId = this.view.as_config.viewTutorialId;
       }
       
       override public function updateData(param1:Object) : void
@@ -63,8 +54,11 @@ package net.wg.infrastructure.tutorial.builders
             this._helpBtnController.dispose();
             this._helpBtnController = null;
          }
-         this._tutorialOverlay.dispose();
-         this._tutorialOverlay = null;
+         if(this._tutorialOverlay)
+         {
+            this._tutorialOverlay.dispose();
+            this._tutorialOverlay = null;
+         }
          if(this._model != null)
          {
             this._model.dispose();

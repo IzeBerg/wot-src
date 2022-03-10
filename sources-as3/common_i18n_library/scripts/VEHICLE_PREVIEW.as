@@ -15,8 +15,6 @@ package
       
       public static const HEADER_BACKBTN_DESCRLABEL_ADVENTCALENDAR:String = "#vehicle_preview:header/backBtn/descrLabel/adventCalendar";
       
-      public static const HEADER_BACKBTN_DESCRLABEL_EVENT:String = "#vehicle_preview:header/backBtn/descrLabel/event";
-      
       public static const HEADER_BACKBTN_DESCRLABEL_HANGAR:String = "#vehicle_preview:header/backBtn/descrLabel/hangar";
       
       public static const HEADER_BACKBTN_DESCRLABEL_VEHICLECOMPARE:String = "#vehicle_preview:header/backBtn/descrLabel/vehicleCompare";
@@ -38,8 +36,6 @@ package
       public static const HEADER_BACKBTN_DESCRLABEL_VEHPOSTPROGRESSION:String = "#vehicle_preview:header/backBtn/descrLabel/vehPostProgression";
       
       public static const HEADER_BACKBTN_DESCRLABEL_BLUEPRINTSEXCHANGE:String = "#vehicle_preview:header/backBtn/descrLabel/blueprintsExchange";
-      
-      public static const HEADER_BACKBTN_DESCRLABEL_LOOTBOXREWARDS:String = "#vehicle_preview:header/backBtn/descrLabel/lootBoxRewards";
       
       public static const HEADER_TITLE:String = "#vehicle_preview:header/title";
       
@@ -123,8 +119,6 @@ package
       
       public static const BUYINGPANEL_BUYBTN_LABEL_RESTORE:String = "#vehicle_preview:buyingPanel/buyBtn/label/restore";
       
-      public static const BUYINGPANEL_BUYBTN_LABEL_RESTOREREQUESTED:String = "#vehicle_preview:buyingPanel/buyBtn/label/restoreRequested";
-      
       public static const BUYINGPANEL_BUYBTN_LABEL_RESEARCH:String = "#vehicle_preview:buyingPanel/buyBtn/label/research";
       
       public static const BUYINGPANEL_BUYBTN_LABEL_OBTAIN:String = "#vehicle_preview:buyingPanel/buyBtn/label/obtain";
@@ -133,13 +127,9 @@ package
       
       public static const BUYINGPANEL_BUYBTN_LABEL_OFFSPRING:String = "#vehicle_preview:buyingPanel/buyBtn/label/offspring";
       
-      public static const BUYINGPANEL_BUYBTN_LABEL_AUCTION:String = "#vehicle_preview:buyingPanel/buyBtn/label/auction";
-      
       public static const BUYINGPANEL_NOTRESEARCHEDVEHICLEWARNING:String = "#vehicle_preview:buyingPanel/notResearchedVehicleWarning";
       
       public static const BUYINGPANEL_COLLECTIBLE_NOTRESEARCHEDVEHICLESWARNING:String = "#vehicle_preview:buyingPanel/collectible/notResearchedVehiclesWarning";
-      
-      public static const BUYINGPANEL_BUYBTN_LABEL_TOCALENDAR:String = "#vehicle_preview:buyingPanel/buyBtn/label/toCalendar";
       
       public static const BUYINGPANEL_COMPENSATION:String = "#vehicle_preview:buyingPanel/compensation";
       
@@ -212,6 +202,20 @@ package
       public static const BUYINGPANEL_PROGRESSIONSTYLES_NOTIFICATION_REWIND_ENABLE_TEXT:String = "#vehicle_preview:buyingPanel/progressionStyles/notification/rewind_enable/text";
       
       public static const BUYINGPANEL_PROGRESSIONSTYLES_CURRENTLEVEL:String = "#vehicle_preview:buyingPanel/progressionStyles/currentLevel";
+      
+      public static const BUYINGPANEL_STYLE_DESCRIPTION_WAITING:String = "#vehicle_preview:buyingPanel/style/description/waiting";
+      
+      public static const BUYINGPANEL_STYLE_DESCRIPTION_MAXLEVEL:String = "#vehicle_preview:buyingPanel/style/description/maxLevel";
+      
+      public static const BUYINGPANEL_STYLE_DESCRIPTION_NONPROGRESSION:String = "#vehicle_preview:buyingPanel/style/description/nonProgression";
+      
+      public static const BUYINGPANEL_STYLE_STATUS_1:String = "#vehicle_preview:buyingPanel/style/status/1";
+      
+      public static const BUYINGPANEL_STYLE_STATUS_2:String = "#vehicle_preview:buyingPanel/style/status/2";
+      
+      public static const BUYINGPANEL_STYLE_BUTTON_BUY:String = "#vehicle_preview:buyingPanel/style/button/buy";
+      
+      public static const BUYINGPANEL_STYLE_CAPTION_USERMONEY:String = "#vehicle_preview:buyingPanel/style/caption/userMoney";
        
       
       public function VEHICLE_PREVIEW()

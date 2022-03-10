@@ -4515,15 +4515,6 @@
 					<!--BW_String-->
 				</textureScale>
 			</tracks>
-			<tracks>
-				<lodDist>MEDIUM_TRACK</lodDist>
-				<leftMaterial>track_mat_L_skinned</leftMaterial>
-				<rightMaterial>track_mat_R_skinned</rightMaterial>
-				<textureScale>
-					-0.72
-					<!--BW_String-->
-				</textureScale>
-			</tracks>
 			<wheels>
 				<lodDist>MEDIUM</lodDist>
 				<group>
@@ -7430,6 +7421,8 @@
 						<collisionModelServer>vehicles/american/A14_T30/collision/Gun_02.model</collisionModelServer>
 						<collisionModelClient>vehicles/american/A14_T30/collision_client/Gun_02.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_large_mb</effects>
+					<reloadEffect>reload85_107</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>
@@ -7618,6 +7611,8 @@
 						<collisionModelServer>vehicles/american/A14_T30/collision/Gun_03.model</collisionModelServer>
 						<collisionModelClient>vehicles/american/A14_T30/collision_client/Gun_03.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_large_mb</effects>
+					<reloadEffect>reload115_152</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>
@@ -7793,6 +7788,8 @@
 						<collisionModelServer>vehicles/american/A14_T30/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/american/A14_T30/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_huge_mb</effects>
+					<reloadEffect>reload155_170</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>

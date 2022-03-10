@@ -24,6 +24,8 @@ package net.wg.gui.lobby.techtree.data.state
       private static const DISPOSE_DELAY:int = 1000;
        
       
+      private var _disposed:Boolean = false;
+      
       private var _defaultStateProps:StateProperties;
       
       private var _showAnimation:AnimationProperties;
@@ -70,6 +72,7 @@ package net.wg.gui.lobby.techtree.data.state
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._scheduler.scheduleTask(this.doDispose,DISPOSE_DELAY);
          this._disposeInitiated = true;
       }
@@ -166,6 +169,11 @@ package net.wg.gui.lobby.techtree.data.state
             }
          }
          return this._defaultStateProps;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

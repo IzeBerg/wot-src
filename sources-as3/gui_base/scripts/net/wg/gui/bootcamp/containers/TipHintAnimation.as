@@ -9,6 +9,8 @@ package net.wg.gui.bootcamp.containers
       
       public var container:HintContainer = null;
       
+      private var _disposed:Boolean = false;
+      
       public function TipHintAnimation()
       {
          super();
@@ -21,8 +23,14 @@ package net.wg.gui.bootcamp.containers
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.container.dispose();
          this.container = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

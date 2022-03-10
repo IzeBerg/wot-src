@@ -181,6 +181,8 @@ package net.wg.data.constants.generated
       
       public static const CZECH_CZ19_VZ_44_1:String = "czech-Cz19_Vz_44_1";
       
+      public static const CZECH_CZ20_SH_PTK_TVP_100_MM:String = "czech-Cz20_ShPTK_TVP_100_mm";
+      
       public static const DAMAGE_BAR_GOLD:String = "damageBar_gold";
       
       public static const DAMAGE_BAR_GREEN:String = "damageBar_green";
@@ -1725,6 +1727,8 @@ package net.wg.data.constants.generated
       
       public static const USSR_R126_OBJECT_730_5:String = "ussr-R126_Object_730_5";
       
+      public static const USSR_R127_T44_100_I:String = "ussr-R127_T44_100_I";
+      
       public static const USSR_R127_T44_100_K:String = "ussr-R127_T44_100_K";
       
       public static const USSR_R127_T44_100_M:String = "ussr-R127_T44_100_M";
@@ -1842,6 +1846,8 @@ package net.wg.data.constants.generated
       public static const USSR_R19_IS_3:String = "ussr-R19_IS-3";
       
       public static const USSR_R19_IS_3_IGR:String = "ussr-R19_IS-3_IGR";
+      
+      public static const USSR_R192_K_2:String = "ussr-R192_K_2";
       
       public static const USSR_R193_M4_A2_T_34:String = "ussr-R193_M4A2_T_34";
       

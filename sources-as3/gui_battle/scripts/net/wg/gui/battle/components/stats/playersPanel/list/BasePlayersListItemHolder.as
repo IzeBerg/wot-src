@@ -276,5 +276,10 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       {
          return this.vehicleData && this.vehicleData.isCurrentPlayer;
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._isDisposed;
+      }
    }
 }

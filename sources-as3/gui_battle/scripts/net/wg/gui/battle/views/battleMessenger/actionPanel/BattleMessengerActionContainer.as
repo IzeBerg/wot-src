@@ -55,6 +55,8 @@ package net.wg.gui.battle.views.battleMessenger.actionPanel
       
       private var _isShowContainer:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function BattleMessengerActionContainer()
       {
          this._atlasManager = App.atlasMgr;
@@ -85,6 +87,7 @@ package net.wg.gui.battle.views.battleMessenger.actionPanel
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.onClickButtonCallback = null;
          this.onClosedCallback = null;
          this._callbackFunction = null;
@@ -185,7 +188,6 @@ package net.wg.gui.battle.views.battleMessenger.actionPanel
          var _loc4_:Number = NaN;
          var _loc5_:Boolean = false;
          var _loc6_:String = null;
-         var _loc7_:Object = null;
          _loc4_ = param1.status;
          _loc5_ = param1.enabled;
          if(this._blackListState == _loc4_ && param2.enabled == _loc5_)
@@ -193,7 +195,7 @@ package net.wg.gui.battle.views.battleMessenger.actionPanel
             return this._blackListState;
          }
          _loc6_ = param1.tooltip;
-         _loc7_ = param3[_loc4_];
+         var _loc7_:Object = param3[_loc4_];
          param2.clearAllStates();
          param2.state = InteractiveStates.UP;
          param2.tooltipStr = _loc6_;
@@ -247,6 +249,11 @@ package net.wg.gui.battle.views.battleMessenger.actionPanel
       private function onActionContainerRollOutHandler(param1:MouseEvent) : void
       {
          this.hideElement();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

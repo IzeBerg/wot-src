@@ -194,5 +194,10 @@ package net.wg.gui.battle.views.stats.fullStats
             this.vehicleDataSync();
          }
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._isDisposed;
+      }
    }
 }

@@ -10,6 +10,8 @@ package net.wg.infrastructure.base
       
       private var _viewModel:ViewModel = null;
       
+      private var _disposed:Boolean = false;
+      
       public function ComponentWithModel()
       {
          super();
@@ -28,6 +30,7 @@ package net.wg.infrastructure.base
       
       public function dispose() : void
       {
+         this._disposed = true;
       }
       
       public function get viewModel() : ViewModel
@@ -42,6 +45,11 @@ package net.wg.infrastructure.base
       public function set viewModel(param1:ViewModel) : void
       {
          this._viewModel = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

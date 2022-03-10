@@ -40,6 +40,8 @@ package net.wg.gui.battle.views.damagePanel.VO
       
       public var loader2:TooltipStringByItemStateVO = null;
       
+      private var _disposed:Boolean = false;
+      
       public function DamagePanelTooltipVO()
       {
          super();
@@ -47,6 +49,7 @@ package net.wg.gui.battle.views.damagePanel.VO
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.turretRotator = null;
          this.engine = null;
          this.gun = null;
@@ -64,6 +67,11 @@ package net.wg.gui.battle.views.damagePanel.VO
          this.gunner2 = null;
          this.loader1 = null;
          this.loader2 = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

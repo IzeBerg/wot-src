@@ -67,6 +67,10 @@ package net.wg.data.constants.generated
       
       public static const YEAR_REWARD_STATUS_CURRENT_FINAL:String = "currentFinal";
       
+      public static const YEAR_REWARD_STATUS_CURRENT_CHOOSE:String = "currentChoose";
+      
+      public static const YEAR_REWARD_SELECTED_STATUSES:Array = [YEAR_REWARD_STATUS_CURRENT,YEAR_REWARD_STATUS_CURRENT_FINAL,YEAR_REWARD_STATUS_CURRENT_CHOOSE];
+      
       public static const WIDGET_MEDIUM_WIDTH:int = 340;
       
       public static const WIDGET_SMALL_WIDTH:int = 290;

@@ -30,6 +30,8 @@ package net.wg.gui.components.controls
       
       private var _cutRect:Rectangle;
       
+      private var _disposed:Boolean = false;
+      
       public function UILoaderCut()
       {
          super();
@@ -39,6 +41,7 @@ package net.wg.gui.components.controls
       
       public final function dispose() : void
       {
+         this._disposed = true;
          if(this._loader)
          {
             this._loader.contentLoaderInfo.removeEventListener(Event.COMPLETE,this.onLoaderCompleteHandler);
@@ -108,6 +111,11 @@ package net.wg.gui.components.controls
       {
          this._loader.unloadAndStop(true);
          this.source = ERROR_URL;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

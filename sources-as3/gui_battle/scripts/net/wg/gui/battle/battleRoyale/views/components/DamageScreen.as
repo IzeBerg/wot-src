@@ -14,6 +14,8 @@ package net.wg.gui.battle.battleRoyale.views.components
       
       private var _showMoveAnim:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function DamageScreen()
       {
          super();
@@ -23,6 +25,7 @@ package net.wg.gui.battle.battleRoyale.views.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.shine = null;
       }
       
@@ -41,6 +44,11 @@ package net.wg.gui.battle.battleRoyale.views.components
       {
          this._showMoveAnim = !visible && visible != param1;
          super.visible = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

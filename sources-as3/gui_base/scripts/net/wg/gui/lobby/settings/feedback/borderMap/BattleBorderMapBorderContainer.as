@@ -10,6 +10,8 @@ package net.wg.gui.lobby.settings.feedback.borderMap
       
       public var warningText:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function BattleBorderMapBorderContainer()
       {
          super();
@@ -17,6 +19,7 @@ package net.wg.gui.lobby.settings.feedback.borderMap
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.warningText = null;
       }
       
@@ -28,6 +31,11 @@ package net.wg.gui.lobby.settings.feedback.borderMap
       public function setTextVisible(param1:Boolean) : void
       {
          this.warningText.visible = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -79,6 +79,8 @@ package net.wg.gui.lobby.techtree.data.vo
       
       private var _isNationChangeAvailable:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function NodeData()
       {
          super();
@@ -210,6 +212,7 @@ package net.wg.gui.lobby.techtree.data.vo
       
       protected function onDispose() : void
       {
+         this._disposed = true;
          this.dataIsReady = false;
          this.clearUnlockProps();
          this.clearDisplayInfo();
@@ -305,6 +308,11 @@ package net.wg.gui.lobby.techtree.data.vo
       public function get hasTechTreeEvent() : Boolean
       {
          return (this.state & NODE_STATE_FLAGS.HAS_TECH_TREE_EVENT) > 0;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

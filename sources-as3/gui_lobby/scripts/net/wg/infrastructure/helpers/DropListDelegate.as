@@ -21,6 +21,8 @@ package net.wg.infrastructure.helpers
       
       private var _dropElementLinkage:String = null;
       
+      private var _disposed:Boolean = false;
+      
       public function DropListDelegate(param1:InteractiveObject, param2:String)
       {
          super();
@@ -30,6 +32,7 @@ package net.wg.infrastructure.helpers
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -115,6 +118,11 @@ package net.wg.infrastructure.helpers
       protected function dispatchDropEvent(param1:String, param2:InteractiveObject, param3:InteractiveObject, param4:InteractiveObject) : void
       {
          this._hitArea.dispatchEvent(new DropEvent(param1,param2,param3,param4));
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

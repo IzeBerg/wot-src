@@ -9,6 +9,8 @@ package net.wg.gui.components.damageIndicator
       
       public var stateContainer:StandardStateContainer = null;
       
+      private var _disposed:Boolean = false;
+      
       public function AnimationContainer()
       {
          super();
@@ -16,6 +18,7 @@ package net.wg.gui.components.damageIndicator
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.stateContainer.dispose();
          this.stateContainer = null;
       }
@@ -23,6 +26,11 @@ package net.wg.gui.components.damageIndicator
       public function rotateInfo(param1:Number) : void
       {
          this.stateContainer.rotateInfo(param1);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

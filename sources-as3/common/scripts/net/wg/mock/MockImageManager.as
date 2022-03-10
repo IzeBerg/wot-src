@@ -56,5 +56,10 @@ package net.wg.mock
       {
          return false;
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return false;
+      }
    }
 }

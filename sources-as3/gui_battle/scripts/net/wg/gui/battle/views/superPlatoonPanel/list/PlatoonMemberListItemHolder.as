@@ -23,6 +23,8 @@ package net.wg.gui.battle.views.superPlatoonPanel.list
       
       private var _isCurrPlayer:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function PlatoonMemberListItemHolder(param1:PlatoonMemberListItemRenderer)
       {
          super();
@@ -31,6 +33,7 @@ package net.wg.gui.battle.views.superPlatoonPanel.list
       
       public final function dispose() : void
       {
+         this._disposed = true;
          if(this._listItem)
          {
             this._listItem.dispose();
@@ -235,6 +238,11 @@ package net.wg.gui.battle.views.superPlatoonPanel.list
       public function get isCurrentPlayer() : Boolean
       {
          return this._isCurrPlayer;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

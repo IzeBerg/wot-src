@@ -3,7 +3,6 @@ package net.wg.gui.components.controls
    import flash.display.DisplayObject;
    import flash.display.DisplayObjectContainer;
    import flash.display.Graphics;
-   import flash.display.MovieClip;
    import flash.display.Sprite;
    import flash.events.Event;
    import flash.events.MouseEvent;
@@ -32,7 +31,7 @@ package net.wg.gui.components.controls
       
       public var thumbOffset:Object = null;
       
-      public var maskObject:MovieClip = null;
+      public var maskObject:Sprite = null;
       
       public var background:Sprite = null;
       
@@ -72,7 +71,7 @@ package net.wg.gui.components.controls
          super.configUI();
          if(this.maskObject == null)
          {
-            this.maskObject = new MovieClip();
+            this.maskObject = new Sprite();
             this.maskObject.name = DISPLAY_OBJ_NAME_MASK;
             addChild(this.maskObject);
          }
@@ -120,10 +119,12 @@ package net.wg.gui.components.controls
       
       override protected function onDispose() : void
       {
+         mask = null;
+         removeChild(this.maskObject);
+         this.maskObject = null;
          this.destroyScrollBar();
          this.thumbOffset = null;
          this._scrollBarValue = null;
-         this.maskObject = null;
          if(this.background)
          {
             this.background.removeEventListener(MouseEvent.MOUSE_WHEEL,this.onTargetMouseWheelHandler);
@@ -374,6 +375,10 @@ package net.wg.gui.components.controls
       
       public function set target(param1:DisplayObject) : void
       {
+         if(this._target)
+         {
+            this._target.removeEventListener(MouseEvent.MOUSE_WHEEL,this.onTargetMouseWheelHandler);
+         }
          this._target = param1;
          if(_invalidHash)
          {

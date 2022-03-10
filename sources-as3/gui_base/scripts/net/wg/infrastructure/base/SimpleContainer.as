@@ -3,9 +3,10 @@ package net.wg.infrastructure.base
    import flash.display.MovieClip;
    import flash.events.Event;
    import net.wg.infrastructure.events.LifeCycleEvent;
+   import net.wg.infrastructure.interfaces.entity.IDisposable;
    import scaleform.clik.constants.InvalidationType;
    
-   public class SimpleContainer extends MovieClip
+   public class SimpleContainer extends MovieClip implements IDisposable
    {
        
       
@@ -14,6 +15,8 @@ package net.wg.infrastructure.base
       private var _invalid:Boolean = false;
       
       private var _invalidHash:Object;
+      
+      private var _disposed:Boolean = false;
       
       public function SimpleContainer()
       {
@@ -24,6 +27,7 @@ package net.wg.infrastructure.base
       
       public final function dispose() : void
       {
+         this._disposed = true;
          dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_BEFORE_DISPOSE));
          this.onDispose();
          dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_AFTER_DISPOSE));
@@ -158,6 +162,11 @@ package net.wg.infrastructure.base
       
       protected function configUI() : void
       {
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

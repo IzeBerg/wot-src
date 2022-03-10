@@ -240,5 +240,10 @@ package net.wg.gui.battle.battleRoyale.views.configurator
          }
          this.dispatchEvent(new ModuleConfiguratorEvent(ModuleConfiguratorEvent.MODULE_CLICK,this._moduleIntCD,this._columnIndex,this._moduleIndex));
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._baseDisposed;
+      }
    }
 }

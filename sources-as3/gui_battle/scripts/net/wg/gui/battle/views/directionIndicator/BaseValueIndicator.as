@@ -27,6 +27,8 @@ package net.wg.gui.battle.views.directionIndicator
       
       private var _align:String = "center";
       
+      private var _disposed:Boolean = false;
+      
       public function BaseValueIndicator()
       {
          super();
@@ -42,6 +44,7 @@ package net.wg.gui.battle.views.directionIndicator
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.greenTF = null;
          this.redTF = null;
          this.purpleTF = null;
@@ -116,6 +119,11 @@ package net.wg.gui.battle.views.directionIndicator
          var _loc3_:TextFormat = param1.defaultTextFormat;
          _loc3_.align = param2;
          param1.defaultTextFormat = _loc3_;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

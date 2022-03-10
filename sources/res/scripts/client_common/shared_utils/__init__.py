@@ -1,13 +1,14 @@
-import collections, weakref, itertools, types, logging, typing
+import collections, itertools, logging, types, weakref
 from functools import partial
-import BigWorld
+import typing, BigWorld
 from adisp import async
-_logger = logging.getLogger(__name__)
 if typing.TYPE_CHECKING:
-    from typing import Callable, Iterable, List, Optional, Tuple, TypeVar, Union
+    from typing import Callable, Dict, Iterable, List, Optional, Sequence, Tuple, Type, TypeVar, Union
     T = TypeVar('T')
     R = TypeVar('R')
-ScalarTypes = (types.IntType, types.LongType, types.FloatType,
+_logger = logging.getLogger(__name__)
+ScalarTypes = (
+ types.IntType, types.LongType, types.FloatType,
  types.BooleanType) + types.StringTypes
 IntegralTypes = (types.IntType, types.LongType)
 
@@ -67,6 +68,12 @@ def findFirst(function_or_None, sequence, default=None):
 
 def first(sequence, default=None):
     return findFirst(None, sequence, default)
+
+
+def safeIndexOf(item, collection, default=None):
+    if item in collection:
+        return collection.index(item)
+    return default
 
 
 def collapseIntervals(sequence):
@@ -272,7 +279,3 @@ def nextTick(func):
 def awaitNextFrame(callback):
     BigWorld.callback(0.0, partial(callback, None))
     return
-
-
-def inPercents(fraction, digitsToRound=1):
-    return round(fraction * 100, digitsToRound)

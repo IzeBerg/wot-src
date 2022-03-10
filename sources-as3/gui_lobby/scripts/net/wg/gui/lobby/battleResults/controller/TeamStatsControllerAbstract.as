@@ -36,6 +36,8 @@ package net.wg.gui.lobby.battleResults.controller
       
       private var _sortingBonusType:int;
       
+      private var _disposed:Boolean = false;
+      
       public function TeamStatsControllerAbstract(param1:IEventDispatcher)
       {
          this._columnTooltip = new Dictionary();
@@ -49,6 +51,7 @@ package net.wg.gui.lobby.battleResults.controller
       
       public function dispose() : void
       {
+         this._disposed = true;
          this._dispatcher = null;
          this._columnTooltip = null;
          this._columnWidth = null;
@@ -234,6 +237,11 @@ package net.wg.gui.lobby.battleResults.controller
       protected function get dispatcher() : IEventDispatcher
       {
          return this._dispatcher;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

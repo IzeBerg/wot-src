@@ -34,6 +34,8 @@ package net.wg.gui.lobby.vehicleCustomization
       
       private var _styleInfoTextBig:String = "";
       
+      private var _disposed:Boolean = false;
+      
       public function CustomizationStyleScrollContainer()
       {
          super();
@@ -55,6 +57,7 @@ package net.wg.gui.lobby.vehicleCustomization
       
       public function dispose() : void
       {
+         this._disposed = true;
          if(this.paramsBlock)
          {
             this.paramsBlock.dispose();
@@ -91,6 +94,11 @@ package net.wg.gui.lobby.vehicleCustomization
          this._styleInfoTextBig = param1.styleInfoBig;
          this.suitableTf.htmlText = param1.suitableBlock;
          this.paramsBlock.dataProvider = new DataProvider(App.utils.data.vectorToArray(param1.styleParams));
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

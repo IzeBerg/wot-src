@@ -166,9 +166,9 @@ class EpicBattleRespawn(EpicRespawnViewMeta, IEpicRespawnView):
         return
 
     def setRespawnInfo(self, respawnInfo):
-        self.__lastRespawnPositions = respawnInfo.respawnZones
+        self.__lastRespawnPositions = respawnInfo.respawnZones if respawnInfo else []
         width, height = self.__mapDim
-        if self.__lastRespawnPositions is None or width * height == 0:
+        if width * height == 0:
             return
 
         def convert(val, dim):
@@ -183,10 +183,8 @@ class EpicBattleRespawn(EpicRespawnViewMeta, IEpicRespawnView):
         self.as_setRespawnLocationsS([ self.__makePointVO(getX(point['position']), getY(point['position']), bool(point['isEnemyNear'])) for point in self.__lastRespawnPositions
                                      ])
         positions = [ point['position'] for point in self.__lastRespawnPositions ]
-        if respawnInfo.chosenRespawnZone in positions:
-            self.__selectedPointID = positions.index(respawnInfo.chosenRespawnZone)
-            self.as_setSelectedLocationS(self.__selectedPointID)
-        return
+        self.__selectedPointID = positions.index(respawnInfo.chosenRespawnZone) if respawnInfo and respawnInfo.chosenRespawnZone in positions else -1
+        self.as_setSelectedLocationS(self.__selectedPointID)
 
     def setRespawnInfoExt(self, vehInfo, setupIndexes):
         self.__ammunitionPanel.setRespawnInfoExt(vehInfo, setupIndexes)

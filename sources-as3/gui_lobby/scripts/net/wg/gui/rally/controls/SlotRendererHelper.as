@@ -15,6 +15,8 @@ package net.wg.gui.rally.controls
       
       private var _chooseVehicleText:String = "#cyberSport:button/medallion/chooseVehicle";
       
+      private var _disposed:Boolean = false;
+      
       public function SlotRendererHelper()
       {
          super();
@@ -81,11 +83,17 @@ package net.wg.gui.rally.controls
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
       protected function onDispose() : void
       {
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

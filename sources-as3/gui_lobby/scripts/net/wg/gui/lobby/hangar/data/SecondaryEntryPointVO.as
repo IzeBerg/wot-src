@@ -22,7 +22,9 @@ package net.wg.gui.lobby.hangar.data
       
       public var isBought:Boolean = true;
       
-      public var is3DStyleChosen:Boolean = true;
+      public var chapterID:int = -1;
+      
+      public var points:int = -1;
       
       public function SecondaryEntryPointVO(param1:Object = null)
       {

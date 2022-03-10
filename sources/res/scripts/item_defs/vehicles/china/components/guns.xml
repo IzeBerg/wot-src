@@ -2342,6 +2342,118 @@
 				</_76mm_HE_M352>
 			</shots>
 		</_76mm_M32K1>
+		<_85mm_Tip_56-85JT_bootcamp>
+			<userString>#china_vehicles:_85mm_Tip_56-85JT</userString>
+			<tags/>
+			<level>6</level>
+			<price>72000</price>
+			<impulse>
+				0.44
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.3
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>main</recoilEffect>
+			</recoil>
+			<effects>shot_main</effects>
+			<reloadEffect>reload85_107</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -22.0 1.0 -22.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 5.0 1.0 5.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>
+				39.375
+				<!--BW_String-->
+			</rotationSpeed>
+			<reloadTime>
+				5.71428571428571
+				<!--BW_String-->
+			</reloadTime>
+			<maxAmmo>59</maxAmmo>
+			<aimingTime>
+				2.28571428571429
+				<!--BW_String-->
+			</aimingTime>
+			<weight>1750</weight>
+			<maxHealth>122</maxHealth>
+			<maxRegenHealth>61</maxRegenHealth>
+			<repairCost>6</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.34
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.16
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					4.0
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_85mm_CJ_365_bootcamp>
+					<defaultPortion>
+						0.3
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>792</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>128 111</piercingPower>
+				</_85mm_CJ_365_bootcamp>
+				<_85mm_367_bootcamp>
+					<defaultPortion>
+						0.3
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>990</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>172 139</piercingPower>
+				</_85mm_367_bootcamp>
+				<_85mm_SB_365_bootcamp>
+					<defaultPortion>
+						0.3
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>792</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>43 43</piercingPower>
+				</_85mm_SB_365_bootcamp>
+			</shots>
+			<notInShop>True</notInShop>
+		</_85mm_Tip_56-85JT_bootcamp>
 		<_85mm_Tip_62-85TS>
 			<userString>#china_vehicles:_85mm_Tip_62-85TS</userString>
 			<tags/>
@@ -7584,117 +7696,5 @@
 				</_122mm_SB-472>
 			</shots>
 		</_122-mm_60-122TG_IGR>
-		<_85mm_Tip_56-85JT_bootcamp>
-			<userString>#china_vehicles:_85mm_Tip_56-85JT</userString>
-			<tags/>
-			<level>6</level>
-			<price>72000</price>
-			<impulse>
-				0.44
-				<!--BW_String-->
-			</impulse>
-			<recoil>
-				<lodDist>MEDIUM</lodDist>
-				<amplitude>
-					0.3
-					<!--BW_String-->
-				</amplitude>
-				<recoilEffect>main</recoilEffect>
-			</recoil>
-			<effects>shot_main</effects>
-			<reloadEffect>reload85_107</reloadEffect>
-			<pitchLimits>
-				<minPitch>
-					0.0 -22.0 1.0 -22.0
-					<!--BW_String-->
-				</minPitch>
-				<maxPitch>
-					0.0 5.0 1.0 5.0
-					<!--BW_String-->
-				</maxPitch>
-			</pitchLimits>
-			<turretYawLimits>-180 180</turretYawLimits>
-			<rotationSpeed>
-				39.375
-				<!--BW_String-->
-			</rotationSpeed>
-			<reloadTime>
-				5.71428571428571
-				<!--BW_String-->
-			</reloadTime>
-			<maxAmmo>59</maxAmmo>
-			<aimingTime>
-				2.28571428571429
-				<!--BW_String-->
-			</aimingTime>
-			<weight>1750</weight>
-			<maxHealth>122</maxHealth>
-			<maxRegenHealth>61</maxRegenHealth>
-			<repairCost>6</repairCost>
-			<invisibilityFactorAtShot>
-				0.1
-				<!--BW_String-->
-			</invisibilityFactorAtShot>
-			<shotDispersionRadius>
-				0.34
-				<!--BW_String-->
-			</shotDispersionRadius>
-			<shotDispersionFactors>
-				<turretRotation>
-					0.16
-					<!--BW_String-->
-				</turretRotation>
-				<afterShot>
-					4.0
-					<!--BW_String-->
-				</afterShot>
-				<whileGunDamaged>
-					2.0
-					<!--BW_String-->
-				</whileGunDamaged>
-			</shotDispersionFactors>
-			<shots>
-				<_85mm_CJ_365_bootcamp>
-					<defaultPortion>
-						0.3
-						<!--BW_String-->
-					</defaultPortion>
-					<speed>792</speed>
-					<gravity>
-						9.81
-						<!--BW_String-->
-					</gravity>
-					<maxDistance>720</maxDistance>
-					<piercingPower>128 111</piercingPower>
-				</_85mm_CJ_365_bootcamp>
-				<_85mm_367_bootcamp>
-					<defaultPortion>
-						0.3
-						<!--BW_String-->
-					</defaultPortion>
-					<speed>990</speed>
-					<gravity>
-						9.81
-						<!--BW_String-->
-					</gravity>
-					<maxDistance>720</maxDistance>
-					<piercingPower>172 139</piercingPower>
-				</_85mm_367_bootcamp>
-				<_85mm_SB_365_bootcamp>
-					<defaultPortion>
-						0.3
-						<!--BW_String-->
-					</defaultPortion>
-					<speed>792</speed>
-					<gravity>
-						9.81
-						<!--BW_String-->
-					</gravity>
-					<maxDistance>720</maxDistance>
-					<piercingPower>43 43</piercingPower>
-				</_85mm_SB_365_bootcamp>
-			</shots>
-			<notInShop>True</notInShop>
-		</_85mm_Tip_56-85JT_bootcamp>
 	</shared>
 </root>

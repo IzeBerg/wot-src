@@ -261,11 +261,6 @@ package net.wg.gui.components.carousels
          invalidateSize();
       }
       
-      private function onScrollListScrollStartHandler(param1:Event) : void
-      {
-         this.updateAvailableScroll(this.scrollList.availableScrollLeft,this.scrollList.availableScrollRight);
-      }
-      
       private function onLeftArrowPressHandler(param1:ButtonEvent) : void
       {
          this._isArrowScroll = true;
@@ -296,6 +291,11 @@ package net.wg.gui.components.carousels
       private function onScrollListScrollCompleteHandler(param1:Event) : void
       {
          this.onScrollListScrollComplete();
+      }
+      
+      protected function onScrollListScrollStartHandler(param1:Event) : void
+      {
+         this.updateAvailableScroll(this.scrollList.availableScrollLeft,this.scrollList.availableScrollRight);
       }
    }
 }

@@ -841,6 +841,8 @@ class ConsumablesPanelSettings implements IDisposable
    
    public var shellButtonLinkage:String = "";
    
+   private var _disposed:Boolean = false;
+   
    function ConsumablesPanelSettings(param1:int, param2:int, param3:String, param4:String, param5:int = 0, param6:Vector.<uint> = null)
    {
       this.customIndexGap = new Vector.<uint>(0);
@@ -858,6 +860,7 @@ class ConsumablesPanelSettings implements IDisposable
    
    public final function dispose() : void
    {
+      this._disposed = true;
       this.onDispose();
    }
    
@@ -865,5 +868,10 @@ class ConsumablesPanelSettings implements IDisposable
    {
       this.customIndexGap.splice(0,this.customIndexGap.length);
       this.customIndexGap = null;
+   }
+   
+   public function isDisposed() : Boolean
+   {
+      return this._disposed;
    }
 }

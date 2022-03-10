@@ -14,6 +14,8 @@ package net.wg.gui.battle.mapsTraining.views.prebattleTimer
       
       public var container:TextFieldContainer = null;
       
+      private var _disposed:Boolean = false;
+      
       public function MapsTrainingTextFieldContainer()
       {
          super();
@@ -32,6 +34,7 @@ package net.wg.gui.battle.mapsTraining.views.prebattleTimer
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.container.dispose();
          this.container = null;
       }
@@ -39,6 +42,11 @@ package net.wg.gui.battle.mapsTraining.views.prebattleTimer
       public function set offset(param1:int) : void
       {
          this.container.y = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -35,5 +35,10 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       {
          this.markerMc = null;
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._baseDisposed;
+      }
    }
 }

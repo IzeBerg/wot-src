@@ -80,6 +80,8 @@ package net.wg.gui.battle.battleRoyale.views.configurator
       
       private var _moduleDefaultY:int = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function ChoiceInfoPanel()
       {
          super();
@@ -102,6 +104,7 @@ package net.wg.gui.battle.battleRoyale.views.configurator
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.clearSelectAnim();
          this.clearTweens();
          this.resetAvailableItems();
@@ -326,6 +329,11 @@ package net.wg.gui.battle.battleRoyale.views.configurator
          this.firstInfoForSelect.keyViewerPositionY = _loc2_;
          this.secondInfoForSelect.keyViewerPositionY = _loc2_;
          dispatchEvent(new Event(Event.RESIZE));
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

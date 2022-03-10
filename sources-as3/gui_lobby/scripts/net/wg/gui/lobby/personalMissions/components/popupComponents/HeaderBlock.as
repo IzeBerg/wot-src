@@ -10,6 +10,8 @@ package net.wg.gui.lobby.personalMissions.components.popupComponents
       
       public var headerTf:TextField;
       
+      private var _disposed:Boolean = false;
+      
       public function HeaderBlock()
       {
          super();
@@ -17,12 +19,18 @@ package net.wg.gui.lobby.personalMissions.components.popupComponents
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.headerTf = null;
       }
       
       public function setText(param1:String) : void
       {
          this.headerTf.text = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

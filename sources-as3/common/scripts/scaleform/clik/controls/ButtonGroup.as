@@ -23,6 +23,8 @@ package scaleform.clik.controls
       
       protected var _children:Array;
       
+      private var _isDisposed:Boolean = false;
+      
       public function ButtonGroup(param1:String, param2:DisplayObjectContainer)
       {
          super();
@@ -190,6 +192,7 @@ package scaleform.clik.controls
       public function dispose() : void
       {
          var _loc1_:Button = null;
+         this._isDisposed = true;
          for each(_loc1_ in this._children)
          {
             _loc1_.removeEventListener(Event.SELECT,this.handleSelect,false);
@@ -201,6 +204,11 @@ package scaleform.clik.controls
             this._children.splice(0,this._children.length);
             this._children = null;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._isDisposed;
       }
    }
 }

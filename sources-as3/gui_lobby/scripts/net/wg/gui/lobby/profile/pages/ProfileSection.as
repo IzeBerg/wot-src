@@ -47,11 +47,11 @@ package net.wg.gui.lobby.profile.pages
       override protected function draw() : void
       {
          super.draw();
-         if(isInvalid(ResizableInvalidationTypes.CURRENT_DIMENSION_INVALID) && this.currentDimension)
+         if(this.currentDimension && isInvalid(ResizableInvalidationTypes.CURRENT_DIMENSION_INVALID))
          {
             this.applyResizing();
          }
-         if(isInvalid(DOSSIER_DATA_INVALID) && this.currentData)
+         if(this.currentData && isInvalid(DOSSIER_DATA_INVALID))
          {
             if(!this._isDataInitialized)
             {
@@ -64,7 +64,7 @@ package net.wg.gui.lobby.profile.pages
             }
             this.applyData(this.currentData);
          }
-         if(isInvalid(ANIMATION_INVALID) && this._isActive && this._isDataInitialized && this._animationManager)
+         if(this._isActive && this._isDataInitialized && this._animationManager && isInvalid(ANIMATION_INVALID))
          {
             this._animationManager.play();
          }

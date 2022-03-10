@@ -21,6 +21,8 @@ package net.wg.gui.utils
       
       private var _atlasMap:Object;
       
+      private var _disposed:Boolean = false;
+      
       public function RootSWFAtlasManager()
       {
          this._atlasMap = {};
@@ -40,6 +42,7 @@ package net.wg.gui.utils
       {
          var _loc2_:* = null;
          var _loc3_:IAtlas = null;
+         this._disposed = true;
          var _loc1_:Array = [];
          for(_loc2_ in this._atlasMap)
          {
@@ -178,6 +181,11 @@ package net.wg.gui.utils
          IAtlas(param1.currentTarget).removeEventListener(AtlasEvent.ATLAS_INITIALIZED,this.onAtlasInitializedHandler);
          dispatchEvent(new AtlasEvent(AtlasEvent.ATLAS_INITIALIZED));
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
    }
 }
 
@@ -201,6 +209,8 @@ class AtlasItemData implements IDisposable
    
    public var centerVertically:Boolean = false;
    
+   private var _disposed:Boolean = false;
+   
    function AtlasItemData(param1:String, param2:String, param3:Graphics, param4:Point, param5:Boolean, param6:Boolean)
    {
       super();
@@ -212,10 +222,16 @@ class AtlasItemData implements IDisposable
       this.centerVertically = param6;
    }
    
-   public function dispose() : void
+   public final function dispose() : void
    {
+      this._disposed = true;
       this.name = null;
       this.graphics = null;
       this.position = null;
+   }
+   
+   public function isDisposed() : Boolean
+   {
+      return this._disposed;
    }
 }

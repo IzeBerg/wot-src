@@ -20,6 +20,8 @@ package net.wg.gui.bootcamp.introVideoPage.containers
       
       private var _prevStepper:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function StepperContainer()
       {
          this._stepperList = new Vector.<MovieClip>();
@@ -28,6 +30,7 @@ package net.wg.gui.bootcamp.introVideoPage.containers
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.disposeStepperList();
          this._stepperList = null;
          this._prevStepper = null;
@@ -67,6 +70,11 @@ package net.wg.gui.bootcamp.introVideoPage.containers
             addChild(this._stepperList[_loc2_]);
             _loc2_++;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

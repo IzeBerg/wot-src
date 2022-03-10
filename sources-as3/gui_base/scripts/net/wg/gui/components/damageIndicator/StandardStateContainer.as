@@ -26,6 +26,8 @@ package net.wg.gui.components.damageIndicator
       
       protected var offsetY:int = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function StandardStateContainer()
       {
          super();
@@ -63,6 +65,7 @@ package net.wg.gui.components.damageIndicator
       
       public function dispose() : void
       {
+         this._disposed = true;
          RootSWFAtlasManager.instance.removeEventListener(AtlasEvent.ATLAS_INITIALIZED,this.onAtlasInitializedHandler);
          this.cleanupDynamicObject(this.statesBG);
          this.statesBG = null;
@@ -129,6 +132,11 @@ package net.wg.gui.components.damageIndicator
       
       public function rotateInfo(param1:Number) : void
       {
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

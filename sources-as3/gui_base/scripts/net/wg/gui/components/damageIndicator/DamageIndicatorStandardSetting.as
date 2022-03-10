@@ -21,6 +21,8 @@ package net.wg.gui.components.damageIndicator
       
       protected var _colorMgr:IColorSchemeManager = null;
       
+      private var _disposed:Boolean = false;
+      
       public function DamageIndicatorStandardSetting(param1:int, param2:String, param3:String, param4:int, param5:int, param6:Number)
       {
          super();
@@ -35,12 +37,18 @@ package net.wg.gui.components.damageIndicator
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._colorMgr = null;
       }
       
       public function getBg() : String
       {
          return !!this._colorMgr.getIsColorBlindS() ? this._blindBG : this._bg;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -47,6 +47,10 @@ package net.wg.infrastructure.base
          {
             dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_BEFORE_DISPOSE));
             dispose();
+            if(parent)
+            {
+               parent.removeChild(this);
+            }
             this._disposed = true;
             dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_AFTER_DISPOSE));
          }
@@ -89,6 +93,12 @@ package net.wg.infrastructure.base
             "alias":param1,
             "component":param2
          };
+      }
+      
+      override protected function onDispose() : void
+      {
+         super.onDispose();
+         App.utils.commons.releaseReferences(this);
       }
    }
 }

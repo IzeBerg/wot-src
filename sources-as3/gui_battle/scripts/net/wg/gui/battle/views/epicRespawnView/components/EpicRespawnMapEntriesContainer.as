@@ -237,5 +237,10 @@ package net.wg.gui.battle.views.epicRespawnView.components
          this._selectedIdx = this._respawnPoints.indexOf(_loc4_);
          this.dispatchEvent(new EpicRespawnEvent(EpicRespawnEvent.RESPAWN_LOCATION_SELECT,this._selectedIdx));
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._baseDisposed;
+      }
    }
 }

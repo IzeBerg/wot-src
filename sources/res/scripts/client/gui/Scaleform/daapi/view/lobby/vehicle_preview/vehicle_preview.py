@@ -37,6 +37,7 @@ from gui.shared.money import MONEY_UNDEFINED
 from gui.shared.tutorial_helper import getTutorialGlobalStorage
 from helpers import dependency
 from helpers.i18n import makeString as _ms
+from preview_selectable_logic import PreviewSelectableLogic
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.game_control import IHeroTankController, IVehicleComparisonBasket, IMapsTrainingController
 from skeletons.gui.shared import IItemsCache
@@ -61,8 +62,7 @@ _BACK_BTN_LABELS = {VIEW_ALIAS.LOBBY_HANGAR: 'hangar',
    VIEW_ALIAS.ADVENT_CALENDAR: 'adventCalendar', 
    VIEW_ALIAS.VEH_POST_PROGRESSION: 'vehPostProgression', 
    PERSONAL_MISSIONS_ALIASES.PERSONAL_MISSIONS_AWARDS_VIEW_ALIAS: 'personalAwards', 
-   VIEW_ALIAS.WOT_PLUS_VEHICLE_PREVIEW: None, 
-   VIEW_ALIAS.SHOP_SALES_MAIN_VIEW: 'event'}
+   VIEW_ALIAS.WOT_PLUS_VEHICLE_PREVIEW: None}
 _TABS_DATA = (
  {'id': VEHPREVIEW_CONSTANTS.BROWSE_LINKAGE, 
     'label': VEHICLE_PREVIEW.INFOPANEL_TAB_BROWSE_NAME, 
@@ -101,13 +101,17 @@ def _updatePostProgressionParameters():
         return
 
 
-def _isModuleBulletVisible():
-    return _isCollectorModuleBulletVisible() or _isPostProgressionBulletVisible()
-
-
 @dependency.replace_none_kwargs(settingsCore=ISettingsCore)
-def _isCollectorModuleBulletVisible(settingsCore=None):
-    return _isCollectibleVehicleWithModules() and settingsCore.serverSettings.getOnceOnlyHintsSetting(OnceOnlyHints.VEHICLE_PREVIEW_MODULES_BUTTON_HINT)
+def _isCollectibleHintNotActive(settingsCore=None):
+    return not g_currentPreviewVehicle.isCollectible() or not g_currentPreviewVehicle.hasModulesToSelect() or settingsCore.serverSettings.getOnceOnlyHintsSetting(OnceOnlyHints.VEHICLE_PREVIEW_MODULES_BUTTON_HINT)
+
+
+def _isModuleButtonHintNotActive():
+    return _isCollectibleHintNotActive()
+
+
+def _isModuleBulletVisible():
+    return _isModuleButtonHintNotActive() and (_isCollectibleVehicleWithModules() or _isPostProgressionBulletVisible())
 
 
 @dependency.replace_none_kwargs(settingsCore=ISettingsCore)
@@ -175,7 +179,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         return
 
     def setBottomPanel(self):
-        self.as_setBottomPanelS(VEHPREVIEW_CONSTANTS.BUYING_PANEL_LINKAGE)
+        self.as_setBottomPanelS(VEHPREVIEW_CONSTANTS.BOTTOM_PANEL_LINKAGE)
 
     def _populate(self):
         self.addListener(CameraRelatedEvents.VEHICLE_LOADING, self.__onVehicleLoading, EVENT_BUS_SCOPE.DEFAULT)
@@ -281,14 +285,11 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         self.as_hide3DSceneTooltipS()
 
     def _createSelectableLogic(self):
-        if self.__isHeroTank:
-            return super(VehiclePreview, self)._createSelectableLogic()
-        from new_year.custom_selectable_logic import WithoutNewYearObjectsSelectableLogic
-        return WithoutNewYearObjectsSelectableLogic()
+        return PreviewSelectableLogic()
 
     def _onRegisterFlashComponent(self, viewPy, alias):
         super(VehiclePreview, self)._onRegisterFlashComponent(viewPy, alias)
-        if alias == VEHPREVIEW_CONSTANTS.BUYING_PANEL_PY_ALIAS:
+        if alias == VEHPREVIEW_CONSTANTS.BOTTOM_PANEL_PY_ALIAS:
             viewPy.setIsHeroTank(self.__isHeroTank)
             viewPy.setBackAlias(self._backAlias)
             viewPy.setBackCallback(self._previewBackCb)
@@ -326,7 +327,7 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
             if self.__offers:
                 offer = self.__currentOffer if self.__currentOffer is not None else getActiveOffer(self.__offers)
                 viewPy.setActiveOffer(offer)
-        elif alias == VEHPREVIEW_CONSTANTS.WOT_PLUS_PANEL_LINKAGE:
+        elif alias == VEHPREVIEW_CONSTANTS.BOTTOM_PANEL_WOT_PLUS_LINKAGE:
             viewPy.setOffers(self.__offers)
         return
 
@@ -360,8 +361,9 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         hangarVehicleCD = None
         hangarVehicle = self.__hangarSpace.getVehicleEntity()
         currentVehicle = g_currentVehicle.item
-        if self.__isHeroTank and currentVehicle is not None and hangarVehicle.typeDescriptor.type.compactDescr != currentVehicle.compactDescr:
-            hangarVehicleCD = hangarVehicle.typeDescriptor.type.compactDescr
+        hangarVehicleDescr = hangarVehicle.typeDescriptor
+        if self.__isHeroTank and currentVehicle is not None and hangarVehicleDescr is not None and hangarVehicleDescr.type.compactDescr != currentVehicle.compactDescr:
+            hangarVehicleCD = hangarVehicleDescr.type.compactDescr
         return events.LoadViewEvent(SFViewLoadParams(self.alias), ctx={'itemCD': self._vehicleCD, 
            'previewAlias': self._backAlias, 
            'previousBackAlias': self._previousBackAlias, 
@@ -458,7 +460,11 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
             return QUEUE_TYPE.UNKNOWN
 
     def __onHangarCreateOrRefresh(self):
-        self.closeView()
+        if self._getPrbEntityType() in (QUEUE_TYPE.BATTLE_ROYALE, QUEUE_TYPE.BATTLE_ROYALE_TOURNAMENT):
+            self.closeView()
+            return
+        self.__keepVehicleSelectionEnabled = True
+        self.__handleWindowClose()
 
     @event_bus_handlers.eventBusHandler(events.HideWindowEvent.HIDE_VEHICLE_PREVIEW, EVENT_BUS_SCOPE.LOBBY)
     def __handleWindowClose(self, event=None):
@@ -478,8 +484,11 @@ class VehiclePreview(LobbySelectableView, VehiclePreviewMeta):
         elif self._backAlias == VIEW_ALIAS.VEHICLE_PREVIEW:
             entity = ctx.get('entity', None) if ctx else None
             if entity:
-                descriptor = entity.typeDescriptor
-                event_dispatcher.showVehiclePreview(descriptor.type.compactDescr, previewAlias=self._previousBackAlias)
+                compactDescr = entity.typeDescriptor.type.compactDescr
+                if self.__itemsCache.items.inventory.getItemData(compactDescr) is not None:
+                    event_dispatcher.showHangar()
+                else:
+                    event_dispatcher.showVehiclePreview(compactDescr, previewAlias=self._previousBackAlias)
             else:
                 event_dispatcher.showHangar()
         elif self._backAlias == VIEW_ALIAS.LOBBY_STORE:

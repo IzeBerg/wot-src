@@ -34,7 +34,6 @@ package net.wg.app.iml.base
    import net.wg.infrastructure.managers.IUILoggerManager;
    import net.wg.infrastructure.managers.IVoiceChatManager;
    import net.wg.infrastructure.managers.IWaitingView;
-   import net.wg.infrastructure.managers.impl.ElementBlurAdapter;
    import net.wg.infrastructure.managers.impl.GraphicsOptimizationManager;
    import net.wg.utils.IGameInputManager;
    import net.wg.utils.ITextManager;
@@ -93,8 +92,6 @@ package net.wg.app.iml.base
       
       private var _uiLoggerManager:IUILoggerManager = null;
       
-      private var _atlasManager:IAtlasManager = null;
-      
       private var _imageManager:IImageManager = null;
       
       private var _graphicsOptimizationManager:IGraphicsOptimizationManager = null;
@@ -110,8 +107,6 @@ package net.wg.app.iml.base
       private var _isDAAPIInited:Boolean = false;
       
       private var _ubPlayerProxy:UbPlayerProxy;
-      
-      private var _elementBlurAdapter:ElementBlurAdapter = null;
       
       public function AbstractApplication()
       {
@@ -143,19 +138,18 @@ package net.wg.app.iml.base
       {
          this.disposeManagers();
          this.disposeContainers();
-         this._utils.dispose();
          this._utils = null;
          super.onDispose();
       }
       
       public function as_blurBackgroundViews(param1:int, param2:Number) : void
       {
-         this._elementBlurAdapter.blurElements(param1,param2);
+         this._utils.blurAdapter.blurElements(param1,param2);
       }
       
       public final function as_dispose() : void
       {
-         this.onDispose();
+         dispose();
       }
       
       public function as_isDAAPIInited() : Boolean
@@ -179,13 +173,7 @@ package net.wg.app.iml.base
       
       public function as_unblurBackgroundViews() : void
       {
-         this._elementBlurAdapter.unblurElements();
-      }
-      
-      public function as_setMouseEventsEnabled(param1:Boolean) : void
-      {
-         mouseEnabled = param1;
-         mouseChildren = param1;
+         this._utils.blurAdapter.unblurElements();
       }
       
       public function as_updateStage(param1:Number, param2:Number, param3:Number) : void
@@ -245,14 +233,12 @@ package net.wg.app.iml.base
       
       protected function createContainers() : void
       {
-         this._elementBlurAdapter = new ElementBlurAdapter(this.getContainers());
+         this._utils.blurAdapter.containers = this.getContainers();
       }
       
       protected function disposeContainers() : void
       {
          var _loc1_:DisplayObject = null;
-         this._elementBlurAdapter.dispose();
-         this._elementBlurAdapter = null;
          if(this.containers)
          {
             for each(_loc1_ in this.containers)
@@ -358,7 +344,7 @@ package net.wg.app.iml.base
       {
          if(this.isDAAPIInited)
          {
-            if(this._atlasManager)
+            if(this.atlasMgr)
             {
                this.initializeAtlasManager();
             }
@@ -406,11 +392,6 @@ package net.wg.app.iml.base
       protected function getNewUILoggerManager() : IUILoggerManager
       {
          throw new AbstractException("BaseApp.getNewUILoggerManager" + Errors.ABSTRACT_INVOKE);
-      }
-      
-      protected function getNewAtlasManagerManager() : IAtlasManager
-      {
-         throw new AbstractException("BaseApp.getNewAtlasManagerManager" + Errors.ABSTRACT_INVOKE);
       }
       
       protected function getNewImageManagerManager() : IImageManager
@@ -467,7 +448,6 @@ package net.wg.app.iml.base
          this._textMrg = this.getNewTextManager();
          this._tutorialManager = this.getNewTutorialManager();
          this._uiLoggerManager = this.getNewUILoggerManager();
-         this._atlasManager = this.getNewAtlasManagerManager();
          this._imageManager = this.getNewImageManagerManager();
          this._graphicsOptimizationManager = this.getNewGraphicsOptimizationManager();
          this._stageSizeManager = this.getNewStageSizeManager();
@@ -515,11 +495,6 @@ package net.wg.app.iml.base
          {
             this._stageSizeManager.dispose();
             this._stageSizeManager = null;
-         }
-         if(this._atlasManager)
-         {
-            this._atlasManager.dispose();
-            this._atlasManager = null;
          }
       }
       
@@ -689,7 +664,7 @@ package net.wg.app.iml.base
       
       public function get atlasMgr() : IAtlasManager
       {
-         return this._atlasManager;
+         return this._utils.atlasManager;
       }
       
       public function get ubPlayerProxy() : UbPlayerProxy

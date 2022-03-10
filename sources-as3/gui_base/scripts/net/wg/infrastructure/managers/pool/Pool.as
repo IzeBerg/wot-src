@@ -24,6 +24,8 @@ package net.wg.infrastructure.managers.pool
       
       private var _recommendedNumItems:uint;
       
+      private var _disposed:Boolean = false;
+      
       public function Pool(param1:uint, param2:Function)
       {
          super();
@@ -38,6 +40,7 @@ package net.wg.infrastructure.managers.pool
       public final function dispose() : void
       {
          var _loc1_:IPoolItem = null;
+         this._disposed = true;
          for each(_loc1_ in this._items)
          {
             this.disposeItem(_loc1_);
@@ -147,6 +150,11 @@ package net.wg.infrastructure.managers.pool
       private function onItemTurnOutHandler(param1:PoolItemEvent) : void
       {
          this.releaseItem(param1.item);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -44,5 +44,10 @@ package net.wg.mock
       public function set popoverCaller(param1:IPopOverCaller) : void
       {
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return false;
+      }
    }
 }

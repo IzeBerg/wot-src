@@ -23,6 +23,8 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
       
       private var _currentSectorRadius:Number = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function ViewRangeSectorMinimapEntry()
       {
          super();
@@ -106,6 +108,7 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.as_delSector();
       }
       
@@ -125,6 +128,11 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
          _loc3_.width = _loc5_;
          _loc3_.height = _loc5_;
          return _loc3_;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

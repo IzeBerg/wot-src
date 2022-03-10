@@ -13,6 +13,8 @@ package net.wg.gui.components.crosshairPanel
       
       private var _strAmmoState:String = "";
       
+      private var _disposed:Boolean = false;
+      
       public function CrosshairPostmortem()
       {
          super();
@@ -32,6 +34,7 @@ package net.wg.gui.components.crosshairPanel
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.ammoInfo = null;
       }
       
@@ -153,6 +156,11 @@ package net.wg.gui.components.crosshairPanel
       
       public function setGunMarkersData(param1:Vector.<GunMarkerIndicatorVO>, param2:Boolean) : void
       {
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

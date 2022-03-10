@@ -16,6 +16,8 @@ package net.wg.gui.battle.views.questProgress.components
       
       public var bg:Sprite = null;
       
+      private var _disposed:Boolean = false;
+      
       public function QuestTrackingOnPause()
       {
          super();
@@ -29,9 +31,15 @@ package net.wg.gui.battle.views.questProgress.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.bg = null;
          this.textField = null;
          this.ico = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

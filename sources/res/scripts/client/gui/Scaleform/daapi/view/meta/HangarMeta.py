@@ -84,14 +84,6 @@ class HangarMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_setNotificationEnabled(value)
 
-    def as_setEnvelopesVisibleS(self, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setEnvelopesVisible(value)
-
-    def as_setLootboxesVisibleS(self, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setLootboxesVisible(value)
-
     def as_createDQWidgetS(self):
         if self._isDAAPIInited():
             return self.flashObject.as_createDQWidget()
@@ -115,7 +107,3 @@ class HangarMeta(View):
     def as_setDQWidgetLayoutS(self, lyout):
         if self._isDAAPIInited():
             return self.flashObject.as_setDQWidgetLayout(lyout)
-
-    def as_setShopSalesVisibleS(self, value):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setShopSalesVisible(value)

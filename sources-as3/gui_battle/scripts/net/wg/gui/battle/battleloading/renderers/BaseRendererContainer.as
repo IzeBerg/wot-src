@@ -684,6 +684,8 @@ package net.wg.gui.battle.battleloading.renderers
       
       public var selfBgs:Vector.<BattleAtlasSprite>;
       
+      private var _disposed:Boolean = false;
+      
       public function BaseRendererContainer()
       {
          super();
@@ -714,6 +716,7 @@ package net.wg.gui.battle.battleloading.renderers
       {
          var _loc1_:IDisposable = null;
          var _loc2_:DisplayObject = null;
+         this._disposed = true;
          for each(_loc1_ in this.playerActionMarkersAlly)
          {
             _loc1_.dispose();
@@ -1041,6 +1044,11 @@ package net.wg.gui.battle.battleloading.renderers
          this.selfBgAlly12 = null;
          this.selfBgAlly13 = null;
          this.selfBgAlly14 = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

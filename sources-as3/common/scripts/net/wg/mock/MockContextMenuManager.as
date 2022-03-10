@@ -80,5 +80,10 @@ package net.wg.mock
       public function as_show(param1:String, param2:Object) : void
       {
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return false;
+      }
    }
 }

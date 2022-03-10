@@ -23,6 +23,8 @@ package net.wg.gui.components.advanced
       
       private var _image:Image = null;
       
+      private var _disposed:Boolean = false;
+      
       public function AtlasDigit(param1:Boolean, param2:Function)
       {
          super();
@@ -60,6 +62,7 @@ package net.wg.gui.components.advanced
       
       public final function dispose() : void
       {
+         this._disposed = true;
          if(this._image)
          {
             this._image.removeEventListener(Event.CHANGE,this.onImageChangeHandler);
@@ -85,6 +88,11 @@ package net.wg.gui.components.advanced
             return this._sprite;
          }
          return this._image;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -42,6 +42,8 @@ package net.wg.gui.battle.views.damagePanel.components.stunIndicator
       
       private var _scheduler:IScheduler;
       
+      private var _disposed:Boolean = false;
+      
       public function StunCounter()
       {
          this._scheduler = App.utils.scheduler;
@@ -53,6 +55,7 @@ package net.wg.gui.battle.views.damagePanel.components.stunIndicator
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.clearTimeout();
          this._scheduler = null;
          this.bgMc = null;
@@ -141,6 +144,11 @@ package net.wg.gui.battle.views.damagePanel.components.stunIndicator
             TextFieldEx.setNoTranslate(TextField(this.timerMc.labelTf),true);
          }
          this.timerMc.labelTf.text = param1 + this._secString;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

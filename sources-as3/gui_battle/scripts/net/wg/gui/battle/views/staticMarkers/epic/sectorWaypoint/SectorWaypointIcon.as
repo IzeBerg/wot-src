@@ -13,6 +13,8 @@ package net.wg.gui.battle.views.staticMarkers.epic.sectorWaypoint
       
       public var targetHighlight:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function SectorWaypointIcon()
       {
          super();
@@ -20,6 +22,7 @@ package net.wg.gui.battle.views.staticMarkers.epic.sectorWaypoint
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.targetHighlight = null;
       }
       
@@ -33,6 +36,11 @@ package net.wg.gui.battle.views.staticMarkers.epic.sectorWaypoint
          {
             gotoAndStop(RETREAT_STATE);
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

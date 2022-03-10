@@ -13,6 +13,8 @@ package net.wg.gui.lobby.vehicleCustomization.controls.slot
       
       public var bg:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function CustomizationSlotBase()
       {
          super();
@@ -21,6 +23,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls.slot
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.imgIcon.removeEventListener(Event.CHANGE,this.onImgIconChangeHandler);
          this.imgIcon.dispose();
          this.imgIcon = null;
@@ -31,6 +34,11 @@ package net.wg.gui.lobby.vehicleCustomization.controls.slot
       {
          this.bg.width = this.imgIcon.width;
          dispatchEvent(new Event(Event.RESIZE));
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -12,6 +12,8 @@ package net.wg.gui.lobby.vehicleInfo
       
       public var crewValue:TextField;
       
+      private var _disposed:Boolean = false;
+      
       public function CrewBlock()
       {
          super();
@@ -19,6 +21,7 @@ package net.wg.gui.lobby.vehicleInfo
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.crewTankMan = null;
          this.crewValue = null;
       }
@@ -28,6 +31,11 @@ package net.wg.gui.lobby.vehicleInfo
          var _loc2_:VehicleInfoCrewBlockVO = VehicleInfoCrewBlockVO(param1);
          this.crewTankMan.text = _loc2_.tankmanType;
          this.crewValue.text = _loc2_.value;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

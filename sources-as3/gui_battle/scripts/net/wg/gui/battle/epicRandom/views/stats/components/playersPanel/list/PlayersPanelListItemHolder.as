@@ -275,5 +275,10 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
       {
          this._listItem.setSpottedStatus(param1);
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._isDisposed;
+      }
    }
 }

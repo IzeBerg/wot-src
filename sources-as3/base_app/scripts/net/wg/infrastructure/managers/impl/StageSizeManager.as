@@ -18,6 +18,8 @@ package net.wg.infrastructure.managers.impl
       
       private var _currentBoundaries:Rectangle;
       
+      private var _disposed:Boolean = false;
+      
       public function StageSizeManager()
       {
          super();
@@ -60,6 +62,7 @@ package net.wg.infrastructure.managers.impl
       public function dispose() : void
       {
          var _loc1_:IStageSizeDependComponent = null;
+         this._disposed = true;
          for each(_loc1_ in this._components)
          {
             _loc1_.removeEventListener(LifeCycleEvent.ON_BEFORE_DISPOSE,this.onComponentDisposeHandler);
@@ -108,6 +111,11 @@ package net.wg.infrastructure.managers.impl
       private function onComponentDisposeHandler(param1:LifeCycleEvent) : void
       {
          this.unregister(param1.currentTarget as IStageSizeDependComponent);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

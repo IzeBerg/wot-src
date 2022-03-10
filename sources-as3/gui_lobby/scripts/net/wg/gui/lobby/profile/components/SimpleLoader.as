@@ -15,6 +15,8 @@ package net.wg.gui.lobby.profile.components
       private static const CONTENT_TYPE_SWF:String = "application/x-shockwave-flash";
        
       
+      private var _disposed:Boolean = false;
+      
       private var _loader:Loader;
       
       private var _currentSourcePath:String;
@@ -69,6 +71,7 @@ package net.wg.gui.lobby.profile.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -136,6 +139,11 @@ package net.wg.gui.lobby.profile.components
       {
          this.onLoadingComplete();
          dispatchEvent(new IconLoaderEvent(IconLoaderEvent.ICON_LOADED,this._loader,this._currentSourcePath));
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -28,6 +28,8 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       
       private var _statusID:int = -1;
       
+      private var _disposed:Boolean = false;
+      
       public function VehicleAnimatedStatusBaseMarker()
       {
          super();
@@ -38,6 +40,7 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -166,6 +169,11 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
          {
             this.onHiddenStateShowed();
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

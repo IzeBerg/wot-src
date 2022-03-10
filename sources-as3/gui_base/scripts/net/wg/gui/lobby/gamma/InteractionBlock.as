@@ -20,6 +20,8 @@ package net.wg.gui.lobby.gamma
       
       public var slider:Slider = null;
       
+      private var _disposed:Boolean = false;
+      
       public function InteractionBlock()
       {
          super();
@@ -27,6 +29,7 @@ package net.wg.gui.lobby.gamma
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.header = null;
          this.applyButton.dispose();
          this.applyButton = null;
@@ -47,6 +50,11 @@ package net.wg.gui.lobby.gamma
          this.slider.minimum = param1.minValue;
          this.slider.maximum = param1.maxValue;
          this.slider.value = param1.currentValue;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

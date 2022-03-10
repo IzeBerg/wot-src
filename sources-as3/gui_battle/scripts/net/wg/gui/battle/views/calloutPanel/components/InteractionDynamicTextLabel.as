@@ -28,6 +28,8 @@ package net.wg.gui.battle.views.calloutPanel.components
       
       public var rightTextMC:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function InteractionDynamicTextLabel()
       {
          super();
@@ -39,6 +41,7 @@ package net.wg.gui.battle.views.calloutPanel.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.keyTF = null;
          this.keyButtonBackgroundMC = null;
          this.leftTextMC = null;
@@ -62,6 +65,11 @@ package net.wg.gui.battle.views.calloutPanel.components
          this.leftTextMC.text = param1;
          this.rightTextMC.text = param3;
          this.keyButtonBackgroundMC.width = Math.max(this.keyTF.textWidth + KEY_TF_PADDING,BG_IMAGE_MIN_WIDTH);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

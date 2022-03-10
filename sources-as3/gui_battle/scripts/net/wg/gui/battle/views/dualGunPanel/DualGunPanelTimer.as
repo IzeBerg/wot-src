@@ -40,6 +40,8 @@ package net.wg.gui.battle.views.dualGunPanel
       
       private var _currentTimer:TextField;
       
+      private var _disposed:Boolean = false;
+      
       public function DualGunPanelTimer()
       {
          super();
@@ -56,6 +58,7 @@ package net.wg.gui.battle.views.dualGunPanel
       
       public final function dispose() : void
       {
+         this._disposed = true;
          App.utils.data.cleanupDynamicObject(this._timersMap);
          this.timerReloading = null;
          this.timerAutoload = null;
@@ -98,6 +101,11 @@ package net.wg.gui.battle.views.dualGunPanel
          var _loc2_:Number = param1 / Time.MILLISECOND_IN_SECOND;
          var _loc3_:String = ExternalInterface.call.apply(this,[FRACTIONAL_FORMAT_CMD,this._mathAbs.call(null,_loc2_)]);
          return _loc3_.slice(0,_loc3_.length - 1);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

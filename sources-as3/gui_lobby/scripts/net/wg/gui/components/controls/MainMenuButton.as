@@ -90,6 +90,7 @@ package net.wg.gui.components.controls
       
       override protected function onDispose() : void
       {
+         App.utils.scheduler.cancelTask(this.changeEffectState);
          removeEventListener(MouseEvent.ROLL_OVER,this.onRollOverHandler);
          removeEventListener(MouseEvent.ROLL_OUT,this.onRollOutHandler);
          this.icon.removeEventListener(Event.CHANGE,this.onIconChangeHandler);

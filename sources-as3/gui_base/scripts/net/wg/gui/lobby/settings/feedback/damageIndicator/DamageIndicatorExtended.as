@@ -21,6 +21,8 @@ package net.wg.gui.lobby.settings.feedback.damageIndicator
       
       public var allyTF:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function DamageIndicatorExtended()
       {
          super();
@@ -37,12 +39,18 @@ package net.wg.gui.lobby.settings.feedback.damageIndicator
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.critTF = null;
          this.blockedTF = null;
          this.damageTF = null;
          this.damageModuleTF = null;
          this.damageCountTF = null;
          this.allyTF = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -172,7 +172,7 @@ class BattleEntry(AppEntry):
         pass
 
     def _getRequiredLibraries(self):
-        return ('windows.swf', 'popovers.swf', 'guiControlsLobbyBattleDynamic.swf',
+        return ('windows.swf', 'common_i18n.swf', 'popovers.swf', 'guiControlsLobbyBattleDynamic.swf',
                 'guiControlsLoginBattleDynamic.swf', 'guiControlsBattleDynamic.swf',
                 'battleMessages.swf')
 

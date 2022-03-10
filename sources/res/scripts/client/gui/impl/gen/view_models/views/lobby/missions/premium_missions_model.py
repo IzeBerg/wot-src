@@ -5,7 +5,7 @@ from frameworks.wulf import ViewModel
 class PremiumMissionsModel(ViewModel):
     __slots__ = ()
 
-    def __init__(self, properties=5, commands=0):
+    def __init__(self, properties=6, commands=0):
         super(PremiumMissionsModel, self).__init__(properties=properties, commands=commands)
 
     def getIsPremiumAccount(self):
@@ -38,6 +38,12 @@ class PremiumMissionsModel(ViewModel):
     def setMissionsCompletedVisited(self, value):
         self._setArray(4, value)
 
+    def getSyncInitiator(self):
+        return self._getNumber(5)
+
+    def setSyncInitiator(self, value):
+        self._setNumber(5, value)
+
     def _initialize(self):
         super(PremiumMissionsModel, self)._initialize()
         self._addBoolProperty('isPremiumAccount', False)
@@ -45,3 +51,4 @@ class PremiumMissionsModel(ViewModel):
         self._addResourceProperty('title', R.invalid())
         self._addArrayProperty('missions', Array())
         self._addArrayProperty('missionsCompletedVisited', Array())
+        self._addNumberProperty('syncInitiator', 0)

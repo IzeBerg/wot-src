@@ -1,8 +1,8 @@
 from importlib import import_module
 from types import ModuleType
 from typing import List
-from constants import IS_EDITOR
-if IS_EDITOR:
+from constants import IS_VS_EDITOR
+if IS_VS_EDITOR:
 
     class MockObjectMeta(type):
 
@@ -56,7 +56,7 @@ if IS_EDITOR:
 
 
 def dependencyImporter(*modules):
-    if IS_EDITOR:
+    if IS_VS_EDITOR:
         return list(tryImportGen(modules))
     return [ import_module(module) for module in modules ]
 

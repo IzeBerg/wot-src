@@ -10,6 +10,8 @@ package net.wg.gui.battle.views.questProgress.animated
       
       public var progressValue:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function AnimStepProgress()
       {
          super();
@@ -18,12 +20,18 @@ package net.wg.gui.battle.views.questProgress.animated
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.progressValue = null;
       }
       
       public function setProgress(param1:int) : void
       {
          this.progressValue.gotoAndStop(param1);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

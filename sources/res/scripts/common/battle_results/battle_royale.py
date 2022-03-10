@@ -12,7 +12,11 @@ BATTLE_RESULTS = [
  (
   'achivedLevel', int, 1, None, 'skip', ENTRY_TYPE.VEHICLE_ALL),
  (
+  'bpChapter', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL),
+ (
   'basePointsDiff', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL),
+ (
+  'bpNonChapterPointsDiff', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL),
  (
   'sumPoints', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL),
  (

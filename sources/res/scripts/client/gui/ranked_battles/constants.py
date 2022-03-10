@@ -27,7 +27,7 @@ AWARDS_ORDER = (
  'items', Currency.CREDITS, 'premium', 'premium_plus', 'premium_vip',
  Currency.GOLD, 'battleToken', 'tokens', 'entitlements', Currency.CRYSTAL)
 YEAR_AWARDS_BONUS_ORDER = (
- Currency.CRYSTAL, 'customizations', 'items', 'vehicles')
+ Currency.CRYSTAL, 'customizations', 'items', 'selectableBonus', 'vehicles')
 DEFAULT_REWARDS_COUNT = 7
 
 class RankedDossierKeys(CONST_CONTAINER):
@@ -45,7 +45,7 @@ RANKED_QUEST_ID_PREFIX = 'ranked'
 YEAR_POINTS_TOKEN = 'rb2021'
 YEAR_STRIPE_SERVER_TOKEN = 'ranked_2021_final_top'
 YEAR_STRIPE_CLIENT_TOKEN = 'ranked_final_ready'
-YEAR_AWARD_SELECTABLE_OPT_DEVICE = 'ranked_selectable_opt_device'
+YEAR_AWARD_SELECTABLE_OPT_DEVICE_PREFIX = 'offer:ranked_battles:deluxe'
 ENTITLEMENT_EVENT_TOKEN = 'ranked_entitlement_event'
 LOBBY_SUB_LANDING_PARAM = '?is_landing='
 SEASON_RATING_PARAM = '?spaID={}'

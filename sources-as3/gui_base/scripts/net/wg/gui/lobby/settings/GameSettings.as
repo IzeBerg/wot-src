@@ -162,6 +162,7 @@ package net.wg.gui.lobby.settings
                         _loc15_ = new RandomXLvlVO(_loc6_.extraData);
                         _loc9_.visible = _loc15_.enabled;
                         _loc7_.fieldSetBattleTypes.height = !!_loc15_.enabled ? Number(BATTLE_TYPES_HEIGHT_EXTRA) : Number(BATTLE_TYPES_HEIGHT);
+                        _loc7_.updateOnly10ModeDependentControls(_loc15_.enabled);
                      }
                      break;
                   case SettingsConfigHelper.TYPE_DROPDOWN:

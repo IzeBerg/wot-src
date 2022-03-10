@@ -10,6 +10,8 @@ package net.wg.gui.battle.views.questProgress.animated
       
       public var valueTf:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function AnimValueContainer()
       {
          super();
@@ -17,6 +19,7 @@ package net.wg.gui.battle.views.questProgress.animated
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.valueTf = null;
       }
       
@@ -24,6 +27,11 @@ package net.wg.gui.battle.views.questProgress.animated
       {
          this.valueTf.text = param1;
          this.valueTf.textColor = param2;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

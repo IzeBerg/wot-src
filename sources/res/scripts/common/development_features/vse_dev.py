@@ -46,7 +46,7 @@ def collectPlans(vseDir, testDir, include, exclude=None):
     return collected
 
 
-def runTestPlan(planPath):
+def runTestPlan(planPath, aspect=None):
     global planObj
     if not planObj:
         planObj = VSE.Plan()
@@ -59,5 +59,8 @@ def runTestPlan(planPath):
 
     wrapBlock(Assert, _logAssert)
     logger.warn('-- running VSE test plan: %s ', planPath)
-    planObj.load(planPath, ['CLIENT'])
-    planObj.start()
+    if aspect is None:
+        aspect = 'CLIENT'
+    if planObj.load(planPath, aspect):
+        planObj.start()
+    return

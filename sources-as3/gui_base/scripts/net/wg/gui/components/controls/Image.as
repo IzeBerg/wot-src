@@ -29,6 +29,8 @@ package net.wg.gui.components.controls
       
       private var _cacheType:int = 2;
       
+      private var _disposed:Boolean = false;
+      
       public function Image()
       {
          super();
@@ -39,6 +41,7 @@ package net.wg.gui.components.controls
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -204,6 +207,11 @@ package net.wg.gui.components.controls
          {
             dispatchEvent(new Event(Event.CHANGE));
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

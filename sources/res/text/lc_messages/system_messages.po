@@ -403,6 +403,9 @@ msgstr ""
 "Операция невозможна. Всё ваше золото станет доступно после автоматического "
 "восстановления работоспособности Единого кошелька."
 
+msgid "battlePass/activateChapter/success"
+msgstr "Активирована глава «%(chapter)s»"
+
 msgid "battlePass/badgeRemoved/text"
 msgstr ""
 "Нашивка %(badgeName)s списана в связи с окончанием сезона Боевого пропуска."
@@ -448,6 +451,16 @@ msgstr ""
 "Сезон Боевого пропуска завершился. Все награды, которые вы не выбрали во "
 "время сезона, начислены вам по умолчанию:"
 
+msgid "battlePass/switchChapter/error"
+msgstr "Произошла ошибка при выборе главы. Пожалуйста, попробуйте ещё раз."
+
+msgid "battlePass/switchChapter/reminder"
+msgstr ""
+"Выберите главу. В любой момент времени вы сможете переключиться на другую."
+
+msgid "battlePass/switchChapter/success"
+msgstr "Вы сменили главу. Теперь активна глава «%(chapter)s»"
+
 msgid "battlePass/switch_disable/battle_royale/body"
 msgstr ""
 "Боевой пропуск для Стального охотника временно недоступен: идут технические "
@@ -456,15 +469,13 @@ msgstr ""
 msgid "battlePass/switch_disable/body"
 msgstr "Сезон завершился, но мы обязательно встретимся в следующем!"
 
-msgid "battlePass/switch_disable/body/incompleteStyle"
-msgstr ""
-"Сезон завершился, но мы обязательно встретимся в следующем!\n"
-"Стиль «%(styleName)s» можно улучшить на экране «Внешний вид»."
-
 msgid "battlePass/switch_disable/epicBattle/body"
 msgstr ""
 "Боевой пропуск на Линии фронта временно недоступен. Ведутся технические "
 "работы."
+
+msgid "battlePass/switch_disable/incompleteStyle"
+msgstr "Стиль «%(styleName)s» можно улучшить на экране внешнего вида."
 
 msgid "battlePass/switch_disable/ranked/body"
 msgstr ""
@@ -1072,7 +1083,7 @@ msgstr ""
 "восстановления работоспособности Единого кошелька."
 
 msgid "crewBooks/failed"
-msgstr "Возникла ошибка при изучение учебного материала."
+msgstr "Возникла ошибка при изучении учебного материала."
 
 msgid "crewBooksNotification/bookUsed"
 msgstr "Использовано: %(name)s"
@@ -2105,13 +2116,13 @@ msgstr ""
 "для входа в World&nbsp;of&nbsp;Warships"
 
 msgid "lootboxes/open/server_error"
-msgstr "Ошибка открытия коробки: серверный сбой."
+msgstr "Ошибка получения подарка: серверный сбой."
 
 msgid "lootboxes/open/server_error/COOLDOWN"
-msgstr "Ошибка открытия коробки: дождитесь завершения предыдущей операции."
+msgstr "Ошибка получения подарка: дождитесь завершения предыдущей операции."
 
 msgid "lootboxes/open/server_error/DISABLED"
-msgstr "Ошибка открытия коробки: серверный сбой."
+msgstr "Операция временно недоступна. Попробуйте позже."
 
 msgid "mapbox/notification/primeTime"
 msgstr "Режим «Разведка боем» недоступен до окончания комендантского часа."
@@ -2353,85 +2364,22 @@ msgstr "Ошибка смены комплектации"
 msgid "nation_change/success"
 msgstr "%(veh_name)s: Национальная комплектация изменена"
 
-msgid "newYear/applyVehicleDiscount/server_error"
-msgstr "Ошибка активации скидки на технику: серверный сбой."
-
-msgid "newYear/applyVehicleDiscount/server_error/alreadyActive"
-msgstr "Ошибка активации скидки: скидка на данную машину уже активирована."
-
-msgid "newYear/applyVehicleDiscount/server_error/alreadyBought"
-msgstr "Ошибка активации скидки на технику: машина уже куплена."
-
-msgid "newYear/applyVehicleDiscount/server_error/noDiscountForVehicle"
-msgstr "Ошибка активации скидки: скидка на данную машину не найдена."
-
-msgid "newYear/applyVehicleDiscount/server_error/noDiscounts"
-msgstr "Ошибка активации скидки на технику: скидок не найдено."
-
-msgid "newYear/applyVehicleDiscount/success"
-msgstr "Вы активировали %(discount)s%% скидку на %(vehName)s"
-
-msgid "newYear/breakToys/server_error"
-msgstr "Ошибка разбития украшений: серверный сбой."
-
-msgid "newYear/buyCollection/server_error"
-msgstr "Ошибка покупки коллекции: серверный сбой."
-
-msgid "newYear/buyMegaToy/server_error"
-msgstr "Ошибка покупки большого украшения: серверный сбой."
-
-msgid "newYear/buyToy/server_error"
-msgstr "Ошибка покупки украшения: серверный сбой."
-
-msgid "newYear/celebrityChallenge/congratulations"
-msgstr "Поздравляем!"
-
-msgid "newYear/celebrityChallenge/progressReward"
-msgstr "Выполнено задач Арни: %(value)s! Награда:"
-
-msgid "newYear/celebrityChallenge/questReward"
-msgstr "Задача Арни выполнена! Награда:"
-
-msgid "newYear/celebrityChallenge/simplification/message"
-msgstr "За упрощение задачи Арни списано осколков: %(value)s"
-
-msgid "newYear/celebrityChallenge/simplification/title"
-msgstr "Задача Арни упрощена"
-
-msgid "newYear/craftToy/server_error"
-msgstr "Ошибка создания украшения: серверный сбой."
-
-msgid "newYear/hangToy/server_error"
-msgstr "Ошибка размещения украшения: серверный сбой."
-
-msgid "newYear/resetLootboxStatistics/server_error"
-msgstr ""
-"Сбросить статистику не удалось, попробуйте ещё раз сейчас или немного позже."
-" Мы постараемся устранить проблему."
-
-msgid "newYear/resetLootboxStatistics/server_error/header"
-msgstr "Не сработало..."
-
-msgid "newYear/setVehicleBranch/server_error"
-msgstr "Ошибка установки в слот: серверный сбой."
-
-msgid "newYear/setVehicleBranchSlotBonus/server_error"
-msgstr "Ошибка изменения бонуса: серверный сбой."
-
 msgid "notrecruit_window/success"
 msgstr ""
 "Член экипажа успешно рекрутирован.\n"
 "%(colorTagOpen)s%(rank)s %(fullName)s\n"
 "(%(role)s, %(vehicleName)s, %(roleLevel)d%%)%(colorTagClose)s"
 
-msgid "offers/server_error"
-msgstr "Ошибка получения подарка: серверный сбой."
-
 msgid "offers/server_error/COOLDOWN"
 msgstr "Ошибка получения подарка: дождитесь завершения предыдущей операции."
 
 msgid "offers/server_error/DISABLED"
 msgstr "Операция временно недоступна. Попробуйте позже."
+
+msgid "offers/server_error/MULTI_ERROR"
+msgstr ""
+"Ошибка получения подарка: часть наград задержалась на почте, попробуйте "
+"забрать их позже."
 
 msgid "offers/switch_off/body"
 msgstr "Сервис «Поставки из тыла» временно недоступен."
@@ -2630,6 +2578,11 @@ msgstr "Технические проблемы решены. Приносим �
 
 msgid "piggybank/switch_on/title"
 msgstr "Хранилище кредитов снова доступно"
+
+msgid "prebattle/bootcamp/inOtherQueue"
+msgstr ""
+"Так как вы в режиме ожидания боя, нельзя начать прохождение Учебного "
+"полигона."
 
 msgid "prebattle/hasLockedState"
 msgstr ""
@@ -2946,6 +2899,11 @@ msgstr "Получено юбилейных монет:"
 
 msgid "ranked/notifications/bonusName/gold"
 msgstr "Получено золота:"
+
+msgid "ranked/notifications/bonusName/selectableReward"
+msgstr ""
+"Добавлено усовершенствованное оборудование на выбор: "
+"%(selectableRewardCount)s"
 
 msgid "ranked/notifications/bonusName/style"
 msgstr "Получен стиль:"
@@ -3401,15 +3359,6 @@ msgid "shop_resync"
 msgstr ""
 "%(date)s в %(time)s произошли серверные изменения, интерфейс обновлен."
 
-msgid "shop_sales_event/error"
-msgstr "Ошибка замены набора. Попробуйте позже."
-
-msgid "shop_sales_event/success"
-msgstr "Использована платная замена набора. Потрачено %(money)s."
-
-msgid "shop_sales_event/success_free"
-msgstr "Использована бесплатная замена набора."
-
 msgid "squad/createError"
 msgstr "Создание взводов доступно только игрокам с премиум аккаунтом."
 
@@ -3557,6 +3506,60 @@ msgstr " "
 
 msgid "telecom/notifications/vehicleUnblocked/title/default"
 msgstr "Машина снова доступна"
+
+msgid "telecomMergeResults/body/accrualMsg"
+msgstr "Начислен танк Т-44-100 Игровой, списано: %(tanks)s."
+
+msgid "telecomMergeResults/body/battleQuestsMsg"
+msgstr "Боевые задачи теперь доступны для выполнения на Т-44-100 Игровой."
+
+msgid "telecomMergeResults/body/conjunction"
+msgstr " и "
+
+msgid "telecomMergeResults/body/credits"
+msgstr "%(value)s кредитов"
+
+msgid "telecomMergeResults/body/crewRetrainingMsg"
+msgstr "Все члены экипажа %(tanks)s переобучены на Т-44-100 Игровой."
+
+msgid "telecomMergeResults/body/demountMsg"
+msgstr ""
+"Оборудование демонтировано на Склад.\n"
+"Элементы внешнего вида перемещены на Склад.\n"
+"Снаряды и предбоевые инструкции перемещены на Склад."
+
+msgid "telecomMergeResults/body/equipAndStatisticMovedMsg"
+msgstr ""
+"Оснащение, элементы внешнего вида, боевой опыт, статистика и достижения "
+"перенесены с %(mergedTank)s на Т-44-100 Игровой."
+
+msgid "telecomMergeResults/body/freeXP"
+msgstr "%(value)s свободного опыта"
+
+msgid "telecomMergeResults/body/listSeparator"
+msgstr ", "
+
+msgid "telecomMergeResults/body/postprogressionMsg"
+msgstr ""
+"Опыт на проведение полевой модернизации компенсирован, начислено "
+"%(compensation)s."
+
+msgid "telecomMergeResults/body/progressDecalesCompens"
+msgstr "Купленные этапные декали компенсированы, начислено %(value)s золота."
+
+msgid "telecomMergeResults/body/statisticMovedMsg"
+msgstr ""
+"Игровая статистика и достижения с %(mergedTank)s перенесены на Т-44-100 "
+"Игровой."
+
+msgid "telecomMergeResults/body/tankXPMsg"
+msgstr "Боевой опыт просуммирован и перенесён на Т-44-100 Игровой."
+
+msgid "telecomMergeResults/body/wishMsg"
+msgstr "Приятной игры."
+
+msgid "telecomMergeResults/title"
+msgstr "Изменения тарифа «Игровой»"
 
 msgid "telecom_rentals/switch_off/body"
 msgstr "Выбор и аренда техники приостановлены."

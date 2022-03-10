@@ -2045,7 +2045,6 @@
 					</transform>
 				</decal>
 			</AODecals>
-			<trackThickness>0.000000</trackThickness>
 			<customization>
 				<customizableVehicleAreas>
 					<paint>CHASSIS</paint>
@@ -2156,6 +2155,8 @@
 						<collisionModelServer>vehicles/russian/R45_IS-7/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/russian/R45_IS-7/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_largeext_mb</effects>
+					<reloadEffect>reload115_152</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>

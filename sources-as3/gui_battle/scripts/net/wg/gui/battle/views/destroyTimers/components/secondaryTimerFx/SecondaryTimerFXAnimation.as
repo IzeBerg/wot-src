@@ -7,13 +7,21 @@ package net.wg.gui.battle.views.destroyTimers.components.secondaryTimerFx
    {
        
       
+      private var _disposed:Boolean = false;
+      
       public function SecondaryTimerFXAnimation()
       {
          super();
          this.init();
       }
       
-      public function dispose() : void
+      public final function dispose() : void
+      {
+         this._disposed = true;
+         this.onDispose();
+      }
+      
+      public function onDispose() : void
       {
          addFrameScript(totalFrames - 1,null);
       }
@@ -28,6 +36,11 @@ package net.wg.gui.battle.views.destroyTimers.components.secondaryTimerFx
       {
          visible = false;
          addFrameScript(totalFrames - 1,this.resetAnimation);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

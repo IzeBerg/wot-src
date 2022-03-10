@@ -1,7 +1,9 @@
 import CGF, Vehicular
-from CustomEffectManager import CustomEffectManager
 from cgf_script.component_meta_class import CGFComponent, ComponentProperty, CGFMetaTypes
 from cgf_script.managers_registrator import onAddedQuery, autoregister
+from constants import IS_CGF_DUMP
+if not IS_CGF_DUMP:
+    from CustomEffectManager import CustomEffectManager
 
 class VehicleCustomEffectsSettings(CGFComponent):
     category = 'Vehicle'

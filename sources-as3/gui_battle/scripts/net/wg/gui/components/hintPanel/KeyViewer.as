@@ -46,6 +46,8 @@ package net.wg.gui.components.hintPanel
       
       public var customButtonIcon:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       private var _keySideOffset:int = 17;
       
       public function KeyViewer()
@@ -56,6 +58,7 @@ package net.wg.gui.components.hintPanel
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.keyTF = null;
          this.buttonBgMc = null;
          this.customButtonIcon = null;
@@ -84,6 +87,11 @@ package net.wg.gui.components.hintPanel
       public function set keySideOffset(param1:int) : void
       {
          this._keySideOffset = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

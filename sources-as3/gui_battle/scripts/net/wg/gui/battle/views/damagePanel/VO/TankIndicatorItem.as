@@ -19,6 +19,8 @@ package net.wg.gui.battle.views.damagePanel.VO
       
       public var hullLinkage:String = "";
       
+      private var _disposed:Boolean = false;
+      
       public function TankIndicatorItem(param1:String, param2:String)
       {
          super();
@@ -28,6 +30,7 @@ package net.wg.gui.battle.views.damagePanel.VO
       
       public final function dispose() : void
       {
+         this._disposed = true;
          if(this.turret != null)
          {
             this.turret.dispose();
@@ -43,6 +46,11 @@ package net.wg.gui.battle.views.damagePanel.VO
             this.gun.dispose();
          }
          this.gun = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

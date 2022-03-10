@@ -13,6 +13,8 @@ package net.wg.gui.battle.mapsTraining.views.goals.hint
       
       public var hint:MapsTrainingTimerHint = null;
       
+      private var _disposed:Boolean = false;
+      
       public function MapsTrainingTimerAnim()
       {
          super();
@@ -34,8 +36,14 @@ package net.wg.gui.battle.mapsTraining.views.goals.hint
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.hint.dispose();
          this.hint = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -391,6 +391,13 @@ class MissionsPremiumSoundEnv(SoundEnv):
          SoundFilters.HANGAR_PLACE_TASKS_DAILY,))
 
 
+class MissionsEventsSoundEnv(SoundEnv):
+
+    def __init__(self, soundsCtrl):
+        super(MissionsEventsSoundEnv, self).__init__(soundsCtrl, 'missionEvent', filters=(
+         SoundFilters.HANGAR_PLACE_TASKS_EVENTS,))
+
+
 class GuiAmbientsCtrl(object):
     _spaces = {GuiGlobalSpaceID.LOGIN: LoginSpaceEnv, 
        GuiGlobalSpaceID.LOBBY: LobbySpaceEnv, 

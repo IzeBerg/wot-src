@@ -13,6 +13,8 @@ package net.wg.gui.lobby.battleResults.data
       
       public var iconUrl:String = "";
       
+      private var _disposed:Boolean = false;
+      
       public function EpicEfficiencyData(param1:String = "", param2:String = "", param3:String = "")
       {
          super();
@@ -23,9 +25,15 @@ package net.wg.gui.lobby.battleResults.data
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.name = null;
          this.count = null;
          this.iconUrl = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

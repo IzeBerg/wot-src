@@ -24,6 +24,8 @@ package net.wg.gui.lobby.vehicleInfo
       
       private var _counterManager:ICounterManager;
       
+      private var _disposed:Boolean = false;
+      
       public function PropBlock()
       {
          this._counterManager = App.utils.counterManager;
@@ -32,6 +34,7 @@ package net.wg.gui.lobby.vehicleInfo
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._counterManager.removeCounter(this);
          this._counterManager = null;
          this.propValue = null;
@@ -49,6 +52,11 @@ package net.wg.gui.lobby.vehicleInfo
             _loc3_ = new CounterProps(COUNTER_OFFSET_X,COUNTER_OFFSET_Y,TextFormatAlign.LEFT,true,Linkages.COUNTER_LINE_BIG_UI);
             this._counterManager.setCounter(this,CounterManager.COUNTER_EMPTY,null,_loc3_);
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -3590,7 +3590,6 @@
 					</transform>
 				</decal>
 			</AODecals>
-			<trackThickness>0.000000</trackThickness>
 			<customization>
 				<customizableVehicleAreas>
 					<paint>CHASSIS</paint>
@@ -3739,6 +3738,8 @@
 						<collisionModelServer>vehicles/russian/R04_T-34/collision/Gun_07.model</collisionModelServer>
 						<collisionModelClient>vehicles/russian/R04_T-34/collision_client/Gun_07.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_medium</effects>
+					<reloadEffect>reload50_75</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>

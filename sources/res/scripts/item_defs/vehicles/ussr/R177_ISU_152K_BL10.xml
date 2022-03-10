@@ -3621,16 +3621,6 @@
 					<VTiles>1</VTiles>
 				</atlas>
 			</splineDesc>
-			<AODecals>
-				<decal>
-					<transform>
-						<row0>4.318590 -0.000000 0.000000</row0>
-						<row1>-0.000000 1.471520 0.000000</row1>
-						<row2>0.000000 -0.000000 8.467650</row2>
-						<row3>-0.000000 0.000000 -0.000000</row3>
-					</transform>
-				</decal>
-			</AODecals>
 			<trackThickness>
 				0.012
 				<!--BW_String-->
@@ -4839,6 +4829,8 @@
 						<collisionModelServer>vehicles/russian/R177_ISU_152K_BL10/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/russian/R177_ISU_152K_BL10/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_huge_mb</effects>
+					<reloadEffect>reload115_152</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>

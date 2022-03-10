@@ -108,7 +108,6 @@ package net.wg.gui.notification
                   _loc1_.addEventListener(ServiceMessageEvent.MESSAGE_BUTTON_CLICKED,this.onPopUpMessageButtonClickedHandler,false,0,true);
                   _loc1_.addEventListener(ServiceMessageEvent.MESSAGE_LINK_CLICKED,this.onPopUpMessageLinkClickedHandler,false,0,true);
                   _loc1_.addEventListener(ServiceMessagePopUp.HIDED,this.onPopUpHidedHandler,false,0,true);
-                  _loc1_.addEventListener(Event.RESIZE,this.onPopUpResizeHanlder,false,0,true);
                   _loc4_ += _loc2_;
                   this._displayingNowPopUps.splice(_loc7_,0,_loc1_);
                   _loc7_++;
@@ -321,7 +320,6 @@ package net.wg.gui.notification
          _loc4_.removeEventListener(ServiceMessageEvent.MESSAGE_AREA_CLICKED,this.onPopUpMessageAreaClickedHandler);
          _loc4_.removeEventListener(ServiceMessageEvent.MESSAGE_BUTTON_CLICKED,this.onPopUpMessageButtonClickedHandler);
          _loc4_.removeEventListener(ServiceMessageEvent.MESSAGE_LINK_CLICKED,this.onPopUpMessageLinkClickedHandler);
-         _loc4_.removeEventListener(Event.RESIZE,this.onPopUpResizeHanlder);
          if(param3)
          {
             _loc5_ = PopUpNotificationInfoVO(_loc4_.data);
@@ -395,12 +393,6 @@ package net.wg.gui.notification
             this._arrangeLayout = true;
             invalidate();
          }
-      }
-      
-      private function onPopUpResizeHanlder(param1:Event) : void
-      {
-         this._arrangeLayout = true;
-         invalidate();
       }
       
       private function onSMContainerMouseOverHandler(param1:MouseEvent) : void

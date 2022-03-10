@@ -21,6 +21,8 @@ package net.wg.gui.battle.views.calloutPanel.components
       
       private var _atlasMgr:IAtlasManager = null;
       
+      private var _disposed:Boolean = false;
+      
       public function VehicleInfoLabel()
       {
          super();
@@ -31,6 +33,7 @@ package net.wg.gui.battle.views.calloutPanel.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._atlasMgr = null;
          this.vehNameTF = null;
          this.vehTypeImg = null;
@@ -38,8 +41,7 @@ package net.wg.gui.battle.views.calloutPanel.components
       
       public function updatePositionOnDraw() : void
       {
-         var _loc1_:int = 0;
-         _loc1_ = -(VEHICLE_TYPE_NAME_OFFSET + this.vehNameTF.textWidth >> 1);
+         var _loc1_:int = -(VEHICLE_TYPE_NAME_OFFSET + this.vehNameTF.textWidth >> 1);
          this.vehTypeImg.x = _loc1_;
          this.vehNameTF.x = _loc1_ + (VEHICLE_TYPE_NAME_OFFSET - this.vehTypeImg.width);
       }
@@ -51,6 +53,11 @@ package net.wg.gui.battle.views.calloutPanel.components
          {
             this._atlasMgr.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,param1,this.vehTypeImg.graphics,Values.EMPTY_STR,false,false,true);
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

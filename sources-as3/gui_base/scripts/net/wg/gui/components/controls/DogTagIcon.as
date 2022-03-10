@@ -10,6 +10,8 @@ package net.wg.gui.components.controls
       
       public var icon:IImage = null;
       
+      private var _disposed:Boolean = false;
+      
       public function DogTagIcon()
       {
          super();
@@ -18,8 +20,14 @@ package net.wg.gui.components.controls
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.icon.dispose();
          this.icon = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

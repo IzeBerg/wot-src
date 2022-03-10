@@ -46,7 +46,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.data.constants.generated.BATTLE_EFFICIENCY_TYPES;
    import net.wg.data.constants.generated.BLOCKS_TOOLTIP_TYPES;
    import net.wg.data.constants.generated.COLOR_SETTINGS;
-   import net.wg.data.constants.generated.CONTACTS_ACTION_CONSTS;
    import net.wg.data.constants.generated.CROSSHAIR_CONSTANTS;
    import net.wg.data.constants.generated.CURRENCIES_CONSTANTS;
    import net.wg.data.constants.generated.CUSTOMIZATION_DIALOGS;
@@ -311,9 +310,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.controls.LabelControl;
    import net.wg.gui.components.controls.ListItemRedererImageText;
    import net.wg.gui.components.controls.ListItemRendererWithFocusOnDis;
-   import net.wg.gui.components.controls.LunarNYContextMenuItem;
    import net.wg.gui.components.controls.Money;
-   import net.wg.gui.components.controls.NYContextMenuItem;
    import net.wg.gui.components.controls.NationDropDownMenu;
    import net.wg.gui.components.controls.NormalSortingBtnVO;
    import net.wg.gui.components.controls.NormalSortingButton;
@@ -827,6 +824,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.popover.vo.AcousticPopoverVo;
    import net.wg.gui.rally.vo.VehicleVO;
    import net.wg.gui.tutorial.components.TutorialClip;
+   import net.wg.gui.tutorial.components.TutorialHintZone;
    import net.wg.gui.tutorial.data.BonusItemVO;
    import net.wg.gui.tutorial.data.BonusValuesVO;
    import net.wg.gui.tutorial.data.TutorialDialogVO;
@@ -904,9 +902,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.uilogger.bootcamp.events.TooltipLogEvent;
    import net.wg.infrastructure.uilogger.manual.MANUAL_LOGGER_CONSTANTS;
    import net.wg.infrastructure.uilogger.manual.ManualPageLogger;
-   import net.wg.infrastructure.uilogger.new_year.Constants;
-   import net.wg.infrastructure.uilogger.new_year.LogTankBonus;
-   import net.wg.infrastructure.uilogger.new_year.LogTankSlot;
    import net.wg.infrastructure.uilogger.veh_post_progression.Constants;
    import net.wg.infrastructure.uilogger.veh_post_progression.LogDemountAllBtn;
    import net.wg.infrastructure.uilogger.veh_post_progression.LogModificationTree;
@@ -972,8 +967,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_DATA_CONSTANTS_GENERATED_BLOCKS_TOOLTIP_TYPES:Class = BLOCKS_TOOLTIP_TYPES;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_COLOR_SETTINGS:Class = COLOR_SETTINGS;
-      
-      public static const NET_WG_DATA_CONSTANTS_GENERATED_CONTACTS_ACTION_CONSTS:Class = CONTACTS_ACTION_CONSTS;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_CROSSHAIR_CONSTANTS:Class = CROSSHAIR_CONSTANTS;
       
@@ -1537,8 +1530,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_LISTITEMRENDERERWITHFOCUSONDIS:Class = ListItemRendererWithFocusOnDis;
       
-      public static const NET_WG_GUI_COMPONENTS_CONTROLS_LUNARNYCONTEXTMENUITEM:Class = LunarNYContextMenuItem;
-      
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_MONEY:Class = Money;
       
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_NATIONDROPDOWNMENU:Class = NationDropDownMenu;
@@ -1548,8 +1539,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_NORMALSORTINGBUTTON:Class = NormalSortingButton;
       
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_NUMERICSTEPPER:Class = NumericStepper;
-      
-      public static const NET_WG_GUI_COMPONENTS_CONTROLS_NYCONTEXTMENUITEM:Class = NYContextMenuItem;
       
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_PROGRESSBAR:Class = ProgressBar;
       
@@ -2569,6 +2558,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_TUTORIAL_COMPONENTS_TUTORIALCLIP:Class = TutorialClip;
       
+      public static const NET_WG_GUI_TUTORIAL_COMPONENTS_TUTORIALHINTZONE:Class = TutorialHintZone;
+      
       public static const NET_WG_GUI_TUTORIAL_DATA_BONUSITEMVO:Class = BonusItemVO;
       
       public static const NET_WG_GUI_TUTORIAL_DATA_BONUSVALUESVO:Class = BonusValuesVO;
@@ -2780,12 +2771,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_UILOGGER_MANUAL_MANUALPAGELOGGER:Class = ManualPageLogger;
       
       public static const NET_WG_INFRASTRUCTURE_UILOGGER_MANUAL_MANUAL_LOGGER_CONSTANTS:Class = MANUAL_LOGGER_CONSTANTS;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_NEW_YEAR_CONSTANTS:Class = Constants;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_NEW_YEAR_LOGTANKBONUS:Class = LogTankBonus;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_NEW_YEAR_LOGTANKSLOT:Class = LogTankSlot;
       
       public static const NET_WG_INFRASTRUCTURE_UILOGGER_VEH_POST_PROGRESSION_CONSTANTS:Class = Constants;
       

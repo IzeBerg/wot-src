@@ -5,6 +5,8 @@ package net.wg.mock
    import net.wg.infrastructure.interfaces.IStrCaseProperties;
    import net.wg.infrastructure.interfaces.entity.ISerializable;
    import net.wg.infrastructure.interfaces.pool.IPoolManager;
+   import net.wg.infrastructure.managers.IAtlasManager;
+   import net.wg.infrastructure.managers.IElementBlurAdapter;
    import net.wg.mock.utils.MockAnimBuilder;
    import net.wg.mock.utils.MockAssertable;
    import net.wg.mock.utils.MockClassFactory;
@@ -340,6 +342,21 @@ package net.wg.mock
       public function dispatchEvent(param1:Event) : Boolean
       {
          return false;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return false;
+      }
+      
+      public function get atlasManager() : IAtlasManager
+      {
+         return null;
+      }
+      
+      public function get blurAdapter() : IElementBlurAdapter
+      {
+         return null;
       }
    }
 }

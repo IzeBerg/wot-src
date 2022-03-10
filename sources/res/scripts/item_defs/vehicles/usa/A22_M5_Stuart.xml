@@ -2732,7 +2732,6 @@
 					</transform>
 				</decal>
 			</AODecals>
-			<trackThickness>0.000000</trackThickness>
 			<physicalTracks>
 				<left>
 					<segmentsCount>77</segmentsCount>
@@ -4851,7 +4850,6 @@
 					</transform>
 				</decal>
 			</AODecals>
-			<trackThickness>0.000000</trackThickness>
 			<customization>
 				<customizableVehicleAreas>
 					<paint>CHASSIS</paint>
@@ -5032,6 +5030,8 @@
 						<collisionModelServer>vehicles/american/A22_M5_Stuart/collision/Gun_02.model</collisionModelServer>
 						<collisionModelClient>vehicles/american/A22_M5_Stuart/collision_client/Gun_02.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_small</effects>
+					<reloadEffect>reload20_45</reloadEffect>
 					<customization>
 						<customizableVehicleAreas>
 							<paint>GUN GUN_2</paint>
@@ -5170,7 +5170,8 @@
 						<collisionModelServer>vehicles/american/A22_M5_Stuart/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/american/A22_M5_Stuart/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
-					<reloadEffect>reload_automat_reloading_85_107</reloadEffect>
+					<reloadEffect>reload20_45</reloadEffect>
+					<effects>shot_small</effects>
 					<customization>
 						<customizableVehicleAreas>
 							<paint>GUN GUN_2</paint>
@@ -5895,6 +5896,8 @@
 						<collisionModelServer>vehicles/american/A22_M5_Stuart/collision/Gun_04.model</collisionModelServer>
 						<collisionModelClient>vehicles/american/A22_M5_Stuart/collision_client/Gun_04.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_small</effects>
+					<reloadEffect>reload20_45</reloadEffect>
 					<customization>
 						<customizableVehicleAreas>
 							<paint>GUN GUN_2</paint>
@@ -6027,7 +6030,8 @@
 						<collisionModelServer>vehicles/american/A22_M5_Stuart/collision/Gun_03.model</collisionModelServer>
 						<collisionModelClient>vehicles/american/A22_M5_Stuart/collision_client/Gun_03.model</collisionModelClient>
 					</hitTester>
-					<reloadEffect>reload_automat_reloading_85_107</reloadEffect>
+					<reloadEffect>reload20_45</reloadEffect>
+					<effects>shot_small</effects>
 					<customization>
 						<customizableVehicleAreas>
 							<paint>GUN GUN_2</paint>

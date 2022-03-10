@@ -59,6 +59,8 @@ package net.wg.gui.components.crosshairPanel
       
       private var _timer:Timer;
       
+      private var _disposed:Boolean = false;
+      
       public function CrosshairPanelSniperCameraTransitionFx()
       {
          super();
@@ -76,6 +78,7 @@ package net.wg.gui.components.crosshairPanel
       
       public function dispose() : void
       {
+         this._disposed = true;
          this._timer.removeEventListener(TimerEvent.TIMER,this.update);
          this._timer = null;
          this._crosshair = null;
@@ -160,6 +163,11 @@ package net.wg.gui.components.crosshairPanel
          {
             this.resetAnimation();
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

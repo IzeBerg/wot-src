@@ -101,7 +101,7 @@ package net.wg.infrastructure.managers.impl
          this.initCache();
       }
       
-      public final function dispose() : void
+      override protected function onDispose() : void
       {
          var _loc1_:ImageData = null;
          if(this._init)
@@ -123,6 +123,7 @@ package net.wg.infrastructure.managers.impl
             _loc1_.dispose();
          }
          this._cache = null;
+         super.onDispose();
       }
       
       public function getImageData(param1:String, param2:int = 1) : IImageData
@@ -278,6 +279,8 @@ class WeakRef implements IDisposable
    
    private var _lock:Boolean = false;
    
+   private var _disposed:Boolean = false;
+   
    function WeakRef(param1:*, param2:Boolean = false)
    {
       super();
@@ -309,6 +312,7 @@ class WeakRef implements IDisposable
    public function dispose() : void
    {
       var _loc1_:* = undefined;
+      this._disposed = true;
       this.unlock();
       for(_loc1_ in this._dict)
       {
@@ -344,6 +348,11 @@ class WeakRef implements IDisposable
          this._target = null;
          this._lock = false;
       }
+   }
+   
+   public function isDisposed() : Boolean
+   {
+      return this._disposed;
    }
 }
 
@@ -383,6 +392,8 @@ class ImageData extends EventDispatcher implements IDisposable, IImageData
    
    private var _cacheType:int = 1;
    
+   private var _disposed:Boolean = false;
+   
    function ImageData(param1:String, param2:int)
    {
       super();
@@ -397,6 +408,7 @@ class ImageData extends EventDispatcher implements IDisposable, IImageData
    
    public function dispose() : void
    {
+      this._disposed = true;
       if(this._ready)
       {
          this._weakBitmapData.dispose();
@@ -518,5 +530,10 @@ class ImageData extends EventDispatcher implements IDisposable, IImageData
    public function set permanent(param1:Boolean) : void
    {
       this._permanent = param1;
+   }
+   
+   public function isDisposed() : Boolean
+   {
+      return this._disposed;
    }
 }

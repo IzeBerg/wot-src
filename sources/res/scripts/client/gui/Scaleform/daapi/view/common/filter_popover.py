@@ -8,8 +8,6 @@ from gui.Scaleform.daapi.view.lobby.hangar.carousels.battle_pass import BattlePa
 from gui.Scaleform.daapi.view.meta.TankCarouselFilterPopoverMeta import TankCarouselFilterPopoverMeta
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.Scaleform.locale.TANK_CAROUSEL_FILTER import TANK_CAROUSEL_FILTER
-from gui.shared import g_eventBus
-from gui.shared.events import CarouselEvent
 from gui.shared.gui_items import GUI_ITEM_TYPE
 from gui.shared.utils.requesters.ItemsRequester import REQ_CRITERIA
 from gui.impl import backport
@@ -21,12 +19,10 @@ from gui.shared.gui_items.Vehicle import VEHICLE_TYPES_ORDER, VEHICLE_ROLES_LABE
 from gui.shared.utils.functions import makeTooltip
 from helpers import dependency
 from helpers.i18n import makeString as _ms
-from new_year.ny_constants import NY_FILTER
 from shared_utils import CONST_CONTAINER
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.game_control import IBattlePassController
 from skeletons.gui.shared import IItemsCache
-from skeletons.new_year import INewYearController
 from uilogging.veh_post_progression.constants import LogGroups, ParentScreens
 from uilogging.veh_post_progression.loggers import VehPostProgressionLogger
 if typing.TYPE_CHECKING:
@@ -244,7 +240,6 @@ class VehiclesFilterPopover(TankCarouselFilterPopoverMeta):
 
 
 class TankCarouselFilterPopover(VehiclesFilterPopover):
-    _nyController = dependency.descriptor(INewYearController)
     __settingsCore = dependency.descriptor(ISettingsCore)
 
     def __init__(self, ctx):
@@ -255,7 +250,6 @@ class TankCarouselFilterPopover(VehiclesFilterPopover):
     def switchCarouselType(self, selected):
         setting = self.__settingsCore.options.getSetting(settings_constants.GAME.CAROUSEL_TYPE)
         self.__carouselRowCount = setting.CAROUSEL_TYPES.index(setting.OPTIONS.DOUBLE if selected else setting.OPTIONS.SINGLE)
-        g_eventBus.handleEvent(CarouselEvent(eventType=CarouselEvent.CAROUSEL_TYPE_WAS_CHANGED, ctx={CarouselEvent.CAROUSEL_TYPE_ARG: setting.CAROUSEL_TYPES[self.__carouselRowCount]}))
         self._carousel.setRowCount(self.__carouselRowCount + 1)
 
     def _getInitialVO(self, filters, xpRateMultiplier):
@@ -269,12 +263,7 @@ class TankCarouselFilterPopover(VehiclesFilterPopover):
         super(TankCarouselFilterPopover, self)._update(isInitial)
         self._carousel.updateHotFilters()
 
-    def _populate(self):
-        super(TankCarouselFilterPopover, self)._populate()
-        self._nyController.onStateChanged += self.__onNyStateChanged
-
     def _dispose(self):
-        self._nyController.onStateChanged -= self.__onNyStateChanged
         self.__settingsCore.serverSettings.setSectionSettings(SETTINGS_SECTIONS.GAME_EXTENDED, {settings_constants.GAME.CAROUSEL_TYPE: self.__carouselRowCount})
         super(TankCarouselFilterPopover, self)._dispose()
 
@@ -293,16 +282,11 @@ class TankCarouselFilterPopover(VehiclesFilterPopover):
             mapping[_SECTION.SPECIALS].append('clanRented')
         if kwargs.get('isRanked', False):
             mapping[_SECTION.SPECIALS].append('ranked')
-        elif cls._nyController.isVehicleBranchEnabled():
-            mapping[_SECTION.SPECIALS].append(NY_FILTER)
         return mapping
 
     @classmethod
     def _getBaseSpecialSection(cls):
         return ['bonus', 'favorite', 'premium', 'elite', 'crystals']
-
-    def __onNyStateChanged(self):
-        self.destroy()
 
 
 class BattlePassCarouselFilterPopover(TankCarouselFilterPopover):

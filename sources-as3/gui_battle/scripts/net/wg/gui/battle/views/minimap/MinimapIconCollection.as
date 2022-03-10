@@ -23,6 +23,8 @@ package net.wg.gui.battle.views.minimap
       
       public var repositionView:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function MinimapIconCollection()
       {
          super();
@@ -30,6 +32,7 @@ package net.wg.gui.battle.views.minimap
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.attention = null;
          this.SPG = null;
          this.waypoint = null;
@@ -56,6 +59,11 @@ package net.wg.gui.battle.views.minimap
             default:
                this.attention.visible = true;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

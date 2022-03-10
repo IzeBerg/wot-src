@@ -65,8 +65,11 @@ package net.wg.infrastructure.tutorial.builders
       private function onComponentOnDisposeHandler(param1:LifeCycleEvent) : void
       {
          this.removeEffect();
-         this._component.removeEventListener(LifeCycleEvent.ON_DISPOSE,this.onComponentOnDisposeHandler);
-         this._component = null;
+         if(this._component != null)
+         {
+            this._component.removeEventListener(LifeCycleEvent.ON_DISPOSE,this.onComponentOnDisposeHandler);
+            this._component = null;
+         }
       }
    }
 }

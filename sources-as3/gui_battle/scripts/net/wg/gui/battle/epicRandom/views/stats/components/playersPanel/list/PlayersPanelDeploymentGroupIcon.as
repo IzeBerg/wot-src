@@ -22,6 +22,8 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
       
       public var hitBox:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function PlayersPanelDeploymentGroupIcon()
       {
          super();
@@ -29,6 +31,7 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -62,6 +65,11 @@ package net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.list
       {
          this.groupIdTF = null;
          this.hitBox = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

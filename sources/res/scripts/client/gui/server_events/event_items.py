@@ -1,9 +1,7 @@
 import operator, time
 from abc import ABCMeta
 from collections import namedtuple
-import logging, typing
-from typing import Union
-import constants, nations
+import typing, constants, nations
 from debug_utils import LOG_ERROR
 from dossiers2.ui.achievements import ACHIEVEMENT_BLOCK
 from gui.Scaleform.locale.PERSONAL_MISSIONS import PERSONAL_MISSIONS
@@ -11,31 +9,29 @@ from gui.Scaleform.locale.QUESTS import QUESTS
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.impl import backport
 from gui.impl.gen import R
-from gui.server_events import finders
-from gui.server_events.bonuses import getBonuses, compareBonuses
-from gui.server_events import events_helpers
-from gui.server_events.events_helpers import isPremium, isDailyQuest, isCelebrityQuest
+from gui.ranked_battles.ranked_helpers import getQualificationBattlesCountFromID, isQualificationQuestID
+from gui.server_events import events_helpers, finders
+from gui.server_events.bonuses import compareBonuses, getBonuses
+from gui.server_events.events_helpers import isDailyQuest, isPremium
 from gui.server_events.formatters import getLinkedActionID
-from gui.server_events.modifiers import getModifierObj, compareModifiers
-from gui.server_events.parsers import AccountRequirements, VehicleRequirements, TokenQuestAccountRequirements, PreBattleConditions, PostBattleConditions, BonusConditions
+from gui.server_events.modifiers import compareModifiers, getModifierObj
+from gui.server_events.parsers import AccountRequirements, BonusConditions, PostBattleConditions, PreBattleConditions, TokenQuestAccountRequirements, VehicleRequirements
 from gui.shared.gui_items import Vehicle
 from gui.shared.gui_items.Vehicle import VEHICLE_TYPES_ORDER
 from gui.shared.utils import ValidationResult
 from gui.shared.utils.requesters.QuestsProgressRequester import PersonalMissionsProgressRequester
-from items.components.ny_constants import CelebrityQuestLevels, CelebrityQuestTokenParts
-from helpers import dependency
-from helpers import getLocalizedData, i18n, time_utils
-from personal_missions import PM_STATE as _PMS, PM_FLAG, PM_BRANCH, PM_BRANCH_TO_FINAL_PAWN_COST
+from helpers import dependency, getLocalizedData, i18n, time_utils
+from personal_missions import PM_BRANCH, PM_BRANCH_TO_FINAL_PAWN_COST, PM_FLAG, PM_STATE as _PMS
 from personal_missions_config import getQuestConfig
 from personal_missions_constants import DISPLAY_TYPE
-from shared_utils import first, findFirst
+from shared_utils import findFirst, first
 from skeletons.connection_mgr import IConnectionManager
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
-from gui.ranked_battles.ranked_helpers import isQualificationQuestID, getQualificationBattlesCountFromID
-from lunar_ny.lunar_ny_constants import ENVELOPE_ENTITLEMENT_CODE_TO_TYPE
-_logger = logging.getLogger()
+if typing.TYPE_CHECKING:
+    from typing import Dict, List, Union
+    from gui.server_events.bonuses import SimpleBonus
 
 class DEFAULTS_GROUPS(object):
     FOR_CURRENT_VEHICLE = 'currentlyAvailable'
@@ -247,7 +243,6 @@ class ServerEventAbstract(object):
 
 
 class Group(ServerEventAbstract):
-    __slots__ = ServerEventAbstract.__slots__
 
     def getGroupEvents(self):
         return self._data.get('groupContent', [])
@@ -269,9 +264,6 @@ class Group(ServerEventAbstract):
 
     def isPremium(self):
         return events_helpers.isPremium(self.getID())
-
-    def isCelebrityQuest(self):
-        return events_helpers.isCelebrityQuest(self.getID())
 
     def isRegularQuest(self):
         return events_helpers.isRegularQuest(self.getID())
@@ -424,7 +416,6 @@ class Quest(ServerEventAbstract):
     def getBonuses(self, bonusName=None, isCompensation=False, bonusData=None, ctx=None):
         result = []
         bonusData = bonusData or self._data.get('bonus', {})
-        hasEnvelope = False
         if bonusName is None:
             for name, value in bonusData.iteritems():
                 for bonus in getBonuses(self, name, value, isCompensation, ctx=ctx):
@@ -432,21 +423,14 @@ class Quest(ServerEventAbstract):
 
                 if name == 'vehicles':
                     stylesData = self.__getVehicleStyleBonuses(value)
-                    if stylesData:
-                        for bonus in getBonuses(self, 'customizations', stylesData, isCompensation, ctx=ctx):
-                            result.append(self._bonusDecorator(bonus))
-
-                if name == 'entitlements' and set(value.keys()).intersection(ENVELOPE_ENTITLEMENT_CODE_TO_TYPE.keys()):
-                    hasEnvelope = True
+                    for bonus in getBonuses(self, 'customizations', stylesData, isCompensation, ctx=ctx):
+                        result.append(self._bonusDecorator(bonus))
 
         elif bonusName in bonusData:
             for bonus in getBonuses(self, bonusName, bonusData[bonusName], isCompensation, ctx=ctx):
                 result.append(self._bonusDecorator(bonus))
 
-        result = sorted(result, cmp=compareBonuses, key=operator.methodcaller('getName'))
-        if hasEnvelope:
-            result = sorted(result, key=lambda x: x.getName() != 'entitlements')
-        return result
+        return sorted(result, cmp=compareBonuses, key=operator.methodcaller('getName'))
 
     def __getVehicleStyleBonuses(self, vehiclesData):
         stylesData = []
@@ -639,139 +623,6 @@ class RankedQuest(Quest):
         return result
 
 
-class CelebrityQuest(Quest):
-    __slots__ = Quest.__slots__ + ('__level', )
-
-    def __init__(self, qID, data, progress=None):
-        super(CelebrityQuest, self).__init__(qID, data, progress)
-        self.__level = self.__getQuestLevel(qID)
-
-    @property
-    def level(self):
-        return self.__level
-
-    @staticmethod
-    def __getQuestLevel(qID):
-        levelName = qID.rsplit(':', 1)[(-1)]
-        if levelName not in CelebrityQuestLevels.LEVEL_BY_NAME:
-            _logger.error('Wrong level for celebrity quest. QuestID: %s', qID)
-            return CelebrityQuestLevels.NONE
-        return CelebrityQuestLevels.LEVEL_BY_NAME[levelName]
-
-
-class CelebrityTokenQuest(TokenQuest):
-    pass
-
-
-class CelebrityGroup(Group):
-    __slots__ = Group.__slots__ + ('__groupContent', '__bonusQuest', '__regularQuests',
-                                   '__isValid', '__needUpdate')
-
-    def __init__(self, eID, data):
-        super(CelebrityGroup, self).__init__(eID, data)
-        self.__groupContent = ()
-        self.__bonusQuest = None
-        self.__regularQuests = ()
-        self.__isValid = False
-        self.__needUpdate = False
-        return
-
-    @property
-    def isValid(self):
-        if self.__needUpdate:
-            self.__update()
-        if not self.__isValid:
-            _logger.error('Invalid Celebrity quests group. groupID: %s.', self.getID())
-        return self.__isValid
-
-    @property
-    def isGroupCompleted(self):
-        if self.__needUpdate:
-            self.__update()
-        if self.isValid:
-            return self.bonusQuest.isCompleted()
-        return False
-
-    @property
-    def bonusQuest(self):
-        if self.__needUpdate:
-            self.__update()
-        if self.isValid:
-            return self.__bonusQuest
-        else:
-            return
-
-    @property
-    def regularQuests(self):
-        if self.__needUpdate:
-            self.__update()
-        if self.isValid:
-            return self.__regularQuests
-        return ()
-
-    def getActiveQuest(self, tokens):
-        if self.__needUpdate:
-            self.__update()
-        if not self.isValid:
-            return
-        else:
-            prefix = self.getID()
-            postfix = CelebrityQuestTokenParts.POSTFIX_SIMPLIFIED
-            simplificationToken = findFirst(lambda token: token.startswith(prefix) and token.endswith(postfix), tokens)
-            if simplificationToken is None:
-                _logger.warning('Missing simplification token for Celebrity quests group. groupID: %s.', prefix)
-                return
-            activeLevel = CelebrityQuestTokenParts.getLevelFromSimplificationToken(simplificationToken)
-            if activeLevel is None:
-                _logger.error('Wrong simplification token for Celebrity quest. groupID: %s; Token: %s', prefix, simplificationToken)
-                return
-            activeQuest = findFirst(lambda quest: quest.level == activeLevel, self.__regularQuests)
-            if activeQuest is None:
-                _logger.error('Failed to find active quest for Celebrity quests group. groupID: %s, level: %s', prefix, activeLevel)
-                return
-            return activeQuest
-
-    def update(self, quests):
-        self.__groupContent = self.getGroupContent(quests)
-        self.__needUpdate = True
-
-    def __update(self):
-        self.__regularQuests = tuple(quest for quest in self.__groupContent if self.__isRegularQuest(quest))
-        self.__bonusQuest = findFirst(self.__isBonusQuest, self.__groupContent)
-        self.__needUpdate = False
-        self.__validate()
-
-    def __validate(self):
-        if self.__bonusQuest is None:
-            _logger.error('Missing bonus quest for Celebrity quests group. groupID: %s.', self.getID())
-            self.__invalidate()
-            return
-        else:
-            levels = set(CelebrityQuestLevels.ALL)
-            if len(self.__regularQuests) != len(levels) or set(quest.level for quest in self.__regularQuests) != levels:
-                _logger.error('Wrong regular quests for Celebrity quests group. groupID: %s.', self.getID())
-                self.__invalidate()
-                return
-            self.__isValid = True
-            return
-
-    def __invalidate(self):
-        self.__groupContent = ()
-        self.__bonusQuest = None
-        self.__regularQuests = ()
-        self.__isValid = False
-        self.__needUpdate = False
-        return
-
-    @staticmethod
-    def __isRegularQuest(quest):
-        return isinstance(quest, CelebrityQuest)
-
-    @staticmethod
-    def __isBonusQuest(quest):
-        return isinstance(quest, CelebrityTokenQuest)
-
-
 ActionData = namedtuple('ActionData', 'discountObj priority uiDecoration')
 
 class Action(ServerEventAbstract):
@@ -827,7 +678,7 @@ class Action(ServerEventAbstract):
 
             return result
 
-    def getModifiersDict(self):
+    def getModifiers(self):
         result = {}
         for stepData in self._data.get('steps'):
             mName = stepData.get('name')
@@ -839,10 +690,7 @@ class Action(ServerEventAbstract):
             else:
                 result[mName] = m
 
-        return result
-
-    def getModifiers(self):
-        return sorted(self.getModifiersDict().itervalues(), key=operator.methodcaller('getName'), cmp=compareModifiers)
+        return sorted(result.itervalues(), key=operator.methodcaller('getName'), cmp=compareModifiers)
 
 
 class PMCampaign(object):
@@ -1492,11 +1340,7 @@ def createQuest(questType, qID, data, progress=None, expiryTime=None):
     if questType == constants.EVENT_TYPE.PERSONAL_QUEST:
         return PersonalQuest(qID, data, progress, expiryTime)
     if questType == constants.EVENT_TYPE.GROUP:
-        if isCelebrityQuest(qID):
-            groupClass = CelebrityGroup
-        else:
-            groupClass = Group
-        return groupClass(qID, data)
+        return Group(qID, data)
     if questType == constants.EVENT_TYPE.MOTIVE_QUEST:
         return MotiveQuest(qID, data, progress)
     if questType == constants.EVENT_TYPE.RANKED_QUEST:
@@ -1506,8 +1350,6 @@ def createQuest(questType, qID, data, progress=None, expiryTime=None):
             tokenClass = LinkedSetTokenQuest
         elif isDailyQuest(qID):
             tokenClass = DailyEpicTokenQuest
-        elif isCelebrityQuest(qID):
-            tokenClass = CelebrityTokenQuest
         else:
             tokenClass = TokenQuest
         return tokenClass(qID, data, progress)
@@ -1518,8 +1360,6 @@ def createQuest(questType, qID, data, progress=None, expiryTime=None):
         questClass = PremiumQuest
     elif isDailyQuest(qID):
         questClass = DailyQuest
-    elif isCelebrityQuest(qID):
-        questClass = CelebrityQuest
     return questClass(qID, data, progress)
 
 

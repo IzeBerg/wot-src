@@ -603,15 +603,5 @@ class GatewayDataAccessor(base.BaseDataAccessor):
         post_data.update(meta_info)
         return self._request_data(callback, url, method='POST', post_data=post_data)
 
-    def shop_sales_event_fetch_favorites(self, callback):
-        url = '/wgds/favorites/'
-        return self._request_data(callback, url)
-
-    def post_secret_santa_gift(self, callback, entitlement_code, meta_info):
-        url = '/giftsystem/gift/secret_santa'
-        post_data = {'entitlement_code': entitlement_code}
-        post_data.update(meta_info)
-        return self._request_data(callback, url, method='POST', post_data=post_data)
-
     def _get_formatted_language_code(self):
         return self.client_lang.replace('_', '-')

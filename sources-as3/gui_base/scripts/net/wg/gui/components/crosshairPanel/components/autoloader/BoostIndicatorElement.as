@@ -61,6 +61,8 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
       
       private var _timeOutId:int = -1;
       
+      private var _disposed:Boolean = false;
+      
       public function BoostIndicatorElement()
       {
          super();
@@ -73,6 +75,7 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
       
       public final function dispose() : void
       {
+         this._disposed = true;
          stop();
          addFrameScript(RECHARGE_END_FRAME - 1,null);
          addFrameScript(CHARGE_MAX_FRAME - 1,null);
@@ -279,6 +282,11 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
          {
             this.onFadeOutComplete();
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

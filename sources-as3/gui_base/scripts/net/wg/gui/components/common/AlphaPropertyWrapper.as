@@ -9,6 +9,8 @@ package net.wg.gui.components.common
       
       private var _target:DisplayObject = null;
       
+      private var _disposed:Boolean = false;
+      
       public function AlphaPropertyWrapper(param1:DisplayObject)
       {
          super();
@@ -17,6 +19,7 @@ package net.wg.gui.components.common
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._target = null;
       }
       
@@ -48,6 +51,11 @@ package net.wg.gui.components.common
       public function set y(param1:Number) : void
       {
          this._target.y = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

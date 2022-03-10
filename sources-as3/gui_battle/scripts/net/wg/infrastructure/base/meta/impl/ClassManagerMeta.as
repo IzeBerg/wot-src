@@ -294,6 +294,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.mapsTraining.views.goals.MapsTrainingGoals;
    import net.wg.gui.battle.mapsTraining.views.goals.data.MapsTrainingGoalVO;
    import net.wg.gui.battle.mapsTraining.views.goals.hint.MapsTrainingGoal;
+   import net.wg.gui.battle.mapsTraining.views.goals.hint.MapsTrainingGoalItem;
    import net.wg.gui.battle.mapsTraining.views.goals.hint.MapsTrainingTimerAnim;
    import net.wg.gui.battle.mapsTraining.views.goals.hint.MapsTrainingTimerHint;
    import net.wg.gui.battle.mapsTraining.views.listTargets.ListTargets;
@@ -1557,6 +1558,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_GOALS_DATA_MAPSTRAININGGOALVO:Class = MapsTrainingGoalVO;
       
       public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_GOALS_HINT_MAPSTRAININGGOAL:Class = MapsTrainingGoal;
+      
+      public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_GOALS_HINT_MAPSTRAININGGOALITEM:Class = MapsTrainingGoalItem;
       
       public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_GOALS_HINT_MAPSTRAININGTIMERANIM:Class = MapsTrainingTimerAnim;
       

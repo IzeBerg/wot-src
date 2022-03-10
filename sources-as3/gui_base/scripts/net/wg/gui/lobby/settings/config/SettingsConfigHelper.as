@@ -322,6 +322,8 @@ package net.wg.gui.lobby.settings.config
       
       private var _tabsDataProvider:Array;
       
+      private var _disposed:Boolean = false;
+      
       public function SettingsConfigHelper()
       {
          this._settingsData = new SettingConfigDataVo();
@@ -515,6 +517,7 @@ package net.wg.gui.lobby.settings.config
       {
          var _loc1_:SettingsDataVo = null;
          var _loc2_:SettingsControlProp = null;
+         this._disposed = true;
          this._settingsData.dispose();
          this._settingsData = null;
          this._changesData.dispose();
@@ -672,6 +675,11 @@ package net.wg.gui.lobby.settings.config
       public function get graphicSettingsTabsDataProvider() : IDataProvider
       {
          return this._graphicSettingsTabsDataProvider;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

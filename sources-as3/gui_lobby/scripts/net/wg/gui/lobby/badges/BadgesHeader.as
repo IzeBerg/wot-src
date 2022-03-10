@@ -3,6 +3,7 @@ package net.wg.gui.lobby.badges
    import flash.display.MovieClip;
    import flash.display.Sprite;
    import flash.events.Event;
+   import flash.events.MouseEvent;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
    import net.wg.data.constants.Values;
@@ -18,6 +19,7 @@ package net.wg.gui.lobby.badges
    import net.wg.gui.lobby.badges.data.BadgesHeaderVO;
    import net.wg.gui.lobby.badges.events.BadgesEvent;
    import net.wg.infrastructure.base.UIComponentEx;
+   import net.wg.infrastructure.managers.ITooltipMgr;
    import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.events.ButtonEvent;
@@ -50,6 +52,8 @@ package net.wg.gui.lobby.badges
       private static const PLAYER_TF_DEFAULT_Y:int = 55;
       
       private static const SLOT_CLOSE_BTN_GAP:int = -17;
+      
+      private static const NAME_MAX_LENGTH:int = 14;
        
       
       public var backButton:BackButton = null;
@@ -94,8 +98,11 @@ package net.wg.gui.lobby.badges
       
       private var _suffixSelected:Boolean = false;
       
+      private var _tooltipMgr:ITooltipMgr;
+      
       public function BadgesHeader()
       {
+         this._tooltipMgr = App.toolTipMgr;
          super();
       }
       
@@ -114,14 +121,23 @@ package net.wg.gui.lobby.badges
       
       override protected function draw() : void
       {
-         var _loc1_:BadgeSuffixItemVO = null;
+         var _loc1_:String = null;
+         var _loc2_:BadgeSuffixItemVO = null;
          super.draw();
          if(this._data != null && isInvalid(InvalidationType.DATA))
          {
             this.backButton.label = this._data.backBtnLabel;
             this.backButton.descrLabel = this._data.backBtnDescrLabel;
             this.descrTf.htmlText = this._data.descrTf;
-            this.playerTf.htmlText = this._data.playerText;
+            _loc1_ = this._data.playerText;
+            if(_loc1_.length > NAME_MAX_LENGTH)
+            {
+               _loc1_ = _loc1_.slice(0,NAME_MAX_LENGTH - 1) + Values.THREE_DOTS;
+               this.playerTf.mouseEnabled = true;
+               this.playerTf.addEventListener(MouseEvent.ROLL_OVER,this.onRollOverHandler);
+               this.playerTf.addEventListener(MouseEvent.ROLL_OUT,this.onRollOutHandler);
+            }
+            this.playerTf.text = _loc1_;
             invalidateLayout();
          }
          if(this._badgeVisualVO != null && isInvalid(INV_BADGE_VISUAL))
@@ -132,9 +148,9 @@ package net.wg.gui.lobby.badges
          }
          if(this._suffixData != null && isInvalid(INV_SUFFIX_DATA))
          {
-            _loc1_ = this._suffixData.items[this._suffixData.selectedItemIdx];
-            this._suffixBadgeImg = _loc1_.img;
-            this._suffixBadgeStrip = _loc1_.stripImg;
+            _loc2_ = this._suffixData.items[this._suffixData.selectedItemIdx];
+            this._suffixBadgeImg = _loc2_.img;
+            this._suffixBadgeStrip = _loc2_.stripImg;
             this._hasSuffixBadgeImg = StringUtils.isNotEmpty(this._suffixBadgeImg);
             this._suffixSelected = this._suffixData.checkboxSelected;
             if(this._hasSuffixBadgeImg)
@@ -187,6 +203,8 @@ package net.wg.gui.lobby.badges
          this.suffixSetting.removeEventListener(Event.RESIZE,this.onSuffixSettingResizeHandler);
          this.suffixSetting.removeEventListener(BadgesEvent.SUFFIX_BADGE_SELECT,this.onSuffixBadgeSelectHandler);
          this.suffixSetting.removeEventListener(BadgesEvent.SUFFIX_BADGE_DESELECT,this.onSuffixBadgeDeselectHandler);
+         this.playerTf.removeEventListener(MouseEvent.ROLL_OVER,this.onRollOverHandler);
+         this.playerTf.removeEventListener(MouseEvent.ROLL_OUT,this.onRollOutHandler);
          this.suffixSetting.dispose();
          this.suffixSetting = null;
          this.suffixBadgeImg.dispose();
@@ -203,6 +221,7 @@ package net.wg.gui.lobby.badges
          this.slotCloseBtn.dispose();
          this.slotCloseBtn = null;
          this._badgeVisualVO = null;
+         this._tooltipMgr = null;
          this.descrTf = null;
          this.playerTf = null;
          this.separator = null;
@@ -262,6 +281,16 @@ package net.wg.gui.lobby.badges
             this.suffixBadgeStrip.x = this.suffixBadgeImg.x + SUFFIX_BADGE_STRIP_OFFSET_X;
             this.suffixSetting.x = this.playerTf.x - (this.suffixSetting.width - this.playerTf.width >> 1);
          }
+      }
+      
+      private function onRollOverHandler(param1:MouseEvent) : void
+      {
+         this._tooltipMgr.show(this._data.playerText);
+      }
+      
+      private function onRollOutHandler(param1:MouseEvent) : void
+      {
+         this._tooltipMgr.hide();
       }
       
       private function onSuffixSettingResizeHandler(param1:Event) : void

@@ -16,6 +16,8 @@ package net.wg.gui.battle.views.epicMessagesPanel.components
       
       public var lineElementMc:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function RankUpSubElement()
       {
          super();
@@ -25,19 +27,24 @@ package net.wg.gui.battle.views.epicMessagesPanel.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.mainTF = null;
          this.lineElementMc = null;
       }
       
       public function setText(param1:String) : void
       {
-         var _loc2_:int = 0;
          this.visible = param1 != "";
          this.mainTF.text = param1;
-         _loc2_ = this.mainTF.textWidth;
+         var _loc2_:int = this.mainTF.textWidth;
          this.mainTF.x = -(_loc2_ >> 1);
          this.lineElementMc.width = _loc2_ + LINE_PADDING;
          this.lineElementMc.x = -(_loc2_ + LINE_PADDING) >> 1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

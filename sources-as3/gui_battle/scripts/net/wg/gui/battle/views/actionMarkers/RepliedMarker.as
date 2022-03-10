@@ -10,6 +10,8 @@ package net.wg.gui.battle.views.actionMarkers
       
       public var replyElement:RepliedMarkerIcon = null;
       
+      private var _disposed:Boolean = false;
+      
       public function RepliedMarker()
       {
          super();
@@ -17,6 +19,7 @@ package net.wg.gui.battle.views.actionMarkers
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.replyElement.dispose();
          this.replyElement = null;
       }
@@ -31,6 +34,11 @@ package net.wg.gui.battle.views.actionMarkers
       {
          this.replyElement.playIconAnimation();
          this.replyElement.txtLabel.text = param1.toString();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

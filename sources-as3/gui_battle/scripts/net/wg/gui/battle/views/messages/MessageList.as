@@ -297,5 +297,10 @@ package net.wg.gui.battle.views.messages
       {
          return this.visible;
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
    }
 }

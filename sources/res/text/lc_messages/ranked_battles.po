@@ -48,10 +48,10 @@ msgid "alertMessage/timeLeft/days"
 msgstr "%(day)s д"
 
 msgid "alertMessage/timeLeft/hours"
-msgstr "%(hour)s ч"
+msgstr "%(hour)s ч %(min)s мин"
 
 msgid "alertMessage/timeLeft/lessMin"
-msgstr "минуту"
+msgstr "1 мин"
 
 msgid "alertMessage/timeLeft/min"
 msgstr "%(min)s мин"
@@ -1398,6 +1398,9 @@ msgstr "Получена компенсация в %(crystal)s %(crystalImg)s"
 msgid "rewardsView/tabs/year/current"
 msgstr "Претендуете на награду"
 
+msgid "rewardsView/tabs/year/currentChoose"
+msgstr "Выбрать награду"
+
 msgid "rewardsView/tabs/year/currentFinal"
 msgstr "Награда получена"
 
@@ -1439,6 +1442,29 @@ msgstr "Вы достигли лиг в числе первых."
 
 msgid "seasonComplete/tooltip/body"
 msgstr "Ваш результат в %(season)s сезоне"
+
+msgid "selectableReward/subTitle"
+msgstr "ВЫБЕРИТЕ НАГРАДУ"
+
+msgid "selectableReward/title"
+msgstr "РАНГОВЫЕ БОИ. %(rewardName)s"
+
+msgid "selectableReward/tooltip/equipmentChoice/limit"
+msgstr "Каждый предмет из списка можно забрать только один раз."
+
+msgid "selectableReward/tooltip/equipmentChoice/list"
+msgstr ""
+"• Система отвода пороховых газов\n"
+"• Комплекс стабилизационного оборудования\n"
+"• Экспериментальная система заряжания\n"
+"• Износостойкие приводы наводки\n"
+"• Юстированная оптика\n"
+"• Усовершенствованная компоновка\n"
+"• Улучшенный компрессор\n"
+"• Повышенная снарядостойкость"
+
+msgid "selectableReward/tooltip/equipmentChoice/title"
+msgstr "Усовершенствованное оборудование на выбор"
 
 msgid "selectorTooltip/desc"
 msgstr ""
@@ -1701,17 +1727,25 @@ msgstr "Необходимо ранговых жетонов"
 
 msgid "yearRewards/tooltip/status/current/description"
 msgstr ""
-"Вы претендуете на данную награду, так как заработали необходимое количество "
-"ранговых жетонов."
+"Вы заработали необходимое количество ранговых жетонов и претендуете на "
+"годовую награду."
 
 msgid "yearRewards/tooltip/status/current/title"
 msgstr "Ваша текущая награда"
+
+msgid "yearRewards/tooltip/status/currentChoose/description"
+msgstr ""
+"Вы получили годовую награду! Для выбора усовершенствованного оборудования "
+"нажмите на кнопку «Выбрать награду»."
+
+msgid "yearRewards/tooltip/status/currentChoose/title"
+msgstr "Награда получена! Доступно усовершенствованное оборудование на выбор."
 
 msgid "yearRewards/tooltip/status/currentFinal/description"
 msgstr "Вы получили годовую награду!"
 
 msgid "yearRewards/tooltip/status/currentFinal/title"
-msgstr "Награда получена"
+msgstr "Награда получена!"
 
 msgid "yearRewards/tooltip/status/locked/description"
 msgstr ""
@@ -1721,7 +1755,7 @@ msgid "yearRewards/tooltip/status/locked/title"
 msgstr "Недостаточно ранговых жетонов"
 
 msgid "yearRewards/tooltip/status/lockedFinal/description"
-msgstr "Вам не хватило жетонов для этой награды. Удачи в следующем году!"
+msgstr "Вам не хватило жетонов для этой награды."
 
 msgid "yearRewards/tooltip/status/lockedFinal/title"
 msgstr "Недостаточно ранговых жетонов"
@@ -1751,3 +1785,9 @@ msgstr ""
 
 msgid "year_award/rankedLabel"
 msgstr "Ранговый бой"
+
+msgid "year_award/rewardSelected"
+msgstr "Награда получена"
+
+msgid "year_award/rewardsToSelect"
+msgstr "Осталось наград на выбор: {count}"

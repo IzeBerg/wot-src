@@ -27,6 +27,8 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
       
       private var _colorSchMgr:IColorSchemeManager;
       
+      private var _disposed:Boolean = false;
+      
       public function DiscoveredItemMarker()
       {
          this._atlasMgr = App.atlasMgr;
@@ -37,6 +39,7 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.clearTweens();
          this._atlasMgr = null;
          this._colorSchMgr = null;
@@ -87,6 +90,11 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
             this._fadeOutTween.dispose();
             this._fadeOutTween = null;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

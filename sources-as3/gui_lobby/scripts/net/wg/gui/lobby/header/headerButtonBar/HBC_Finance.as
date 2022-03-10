@@ -80,6 +80,7 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       override protected function updateSize() : void
       {
+         var _loc5_:Boolean = false;
          updateFontSize(this.moneyIconText.textField,useFontSize);
          var _loc1_:IUIComponentEx = !!this.moneyIconText.visible ? this.moneyIconText : this.wallet;
          var _loc2_:Number = doItTextField.textWidth;
@@ -87,7 +88,7 @@ package net.wg.gui.lobby.header.headerButtonBar
          var _loc4_:Number = Math.max(_loc3_,_loc2_) + RIGHT_PADDING;
          _loc1_.x = (_loc4_ - _loc3_ >> 1) + LEFT_PADDING;
          bounds.width = _loc4_;
-         var _loc5_:Boolean = _loc2_ > 0;
+         _loc5_ = _loc2_ > 0;
          doItTextField.x = _loc4_ - _loc2_ >> 1;
          this.moneyIconText.y = !!_loc5_ ? Number(MONEY_TOP_Y) : Number(MONEY_CENTER_Y);
          this.wallet.y = !!_loc5_ ? Number(WALLET_TOP_Y) : Number(WALLET_CENTER_Y);

@@ -17,6 +17,8 @@ package net.wg.gui.battle.views.questProgress.animated
       
       private var _tweenFadeOut:Tween = null;
       
+      private var _disposed:Boolean = false;
+      
       public function AnimationTopContainer()
       {
          super();
@@ -39,6 +41,7 @@ package net.wg.gui.battle.views.questProgress.animated
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.clearTweens();
          this.shadow = null;
       }
@@ -75,6 +78,11 @@ package net.wg.gui.battle.views.questProgress.animated
       {
          this.hide();
          this.shadow.alpha = Values.ZERO;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

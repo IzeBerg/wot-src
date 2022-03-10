@@ -22,6 +22,8 @@ package net.wg.infrastructure.managers.utils.impl
       
       private var tweensData:Vector.<TweenLinkedObjects>;
       
+      private var _disposed:Boolean = false;
+      
       public function TweenAnimator()
       {
          this.tweensData = new Vector.<TweenLinkedObjects>(0);
@@ -177,9 +179,10 @@ package net.wg.infrastructure.managers.utils.impl
       {
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
          var _loc1_:TweenLinkedObjects = null;
+         this._disposed = true;
          while(this.tweensData.length > 0 && this.tweenManager)
          {
             _loc1_ = this.tweensData.pop();
@@ -350,6 +353,11 @@ package net.wg.infrastructure.managers.utils.impl
          }
          return -1;
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
    }
 }
 
@@ -367,6 +375,8 @@ class TweenLinkedObjects implements IDisposable
    private var _target:DisplayObject;
    
    private var _handler:ITweenAnimatorHandler;
+   
+   private var _disposed:Boolean = false;
    
    function TweenLinkedObjects(param1:ITween, param2:DisplayObject, param3:ITweenAnimatorHandler)
    {
@@ -413,8 +423,14 @@ class TweenLinkedObjects implements IDisposable
    
    public function dispose() : void
    {
+      this._disposed = true;
       this._tween = null;
       this._target = null;
       this._handler = null;
+   }
+   
+   public function isDisposed() : Boolean
+   {
+      return this._disposed;
    }
 }

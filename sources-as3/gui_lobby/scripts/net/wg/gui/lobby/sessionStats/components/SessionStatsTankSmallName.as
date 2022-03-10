@@ -26,6 +26,8 @@ package net.wg.gui.lobby.sessionStats.components
       
       private var _isElite:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function SessionStatsTankSmallName()
       {
          super();
@@ -61,10 +63,16 @@ package net.wg.gui.lobby.sessionStats.components
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.tankIcon.dispose();
          this.tankIcon = null;
          this.tankNameSmall = null;
          this.tankTier = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

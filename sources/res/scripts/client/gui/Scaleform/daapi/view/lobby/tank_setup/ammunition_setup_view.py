@@ -29,7 +29,7 @@ class AmmunitionSetupView(AmmunitionSetupViewMeta):
 
     def _onUnregisterFlashComponent(self, viewPy, alias):
         super(AmmunitionSetupView, self)._onUnregisterFlashComponent(viewPy, alias)
-        if alias == HANGAR_ALIASES.AMMUNITION_SETUP_VIEW_INJECT:
+        if alias == HANGAR_ALIASES.AMMUNITION_SETUP_VIEW_INJECT and viewPy.getInjectView():
             viewPy.getInjectView().onClose -= self.__onCloseInjectView
             viewPy.getInjectView().onAnimationEnd -= self.__onAnimationEnd
 

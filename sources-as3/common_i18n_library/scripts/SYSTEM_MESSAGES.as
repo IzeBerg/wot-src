@@ -189,6 +189,8 @@ package
       
       public static const PREBATTLE_HASLOCKEDSTATE:String = "#system_messages:prebattle/hasLockedState";
       
+      public static const PREBATTLE_BOOTCAMP_INOTHERQUEUE:String = "#system_messages:prebattle/bootcamp/inOtherQueue";
+      
       public static const PREBATTLE_INVITES_SENDINVITE_NAME:String = "#system_messages:prebattle/invites/sendInvite/name";
       
       public static const PREBATTLE_INVITES_SENDINVITE:String = "#system_messages:prebattle/invites/sendInvite";
@@ -2135,6 +2137,8 @@ package
       
       public static const RANKED_NOTIFICATIONS_BONUSNAME_YEARPOINTS:String = "#system_messages:ranked/notifications/bonusName/yearPoints";
       
+      public static const RANKED_NOTIFICATIONS_BONUSNAME_SELECTABLEREWARD:String = "#system_messages:ranked/notifications/bonusName/selectableReward";
+      
       public static const RANKED_NOTIFICATIONS_BONUSNAME_CRYSTAL:String = "#system_messages:ranked/notifications/bonusName/crystal";
       
       public static const RANKED_NOTIFICATIONS_BONUSNAME_EVENTCOIN:String = "#system_messages:ranked/notifications/bonusName/eventCoin";
@@ -2265,12 +2269,6 @@ package
       
       public static const MAPS_BLACK_LIST_SWITCH_ON_BODY:String = "#system_messages:maps_black_list/switch_on/body";
       
-      public static const SHOP_SALES_EVENT_SUCCESS_FREE:String = "#system_messages:shop_sales_event/success_free";
-      
-      public static const SHOP_SALES_EVENT_SUCCESS:String = "#system_messages:shop_sales_event/success";
-      
-      public static const SHOP_SALES_EVENT_ERROR:String = "#system_messages:shop_sales_event/error";
-      
       public static const PREMIUM_QUESTS_SWITCH_OFF_TITLE:String = "#system_messages:premium_quests/switch_off/title";
       
       public static const PREMIUM_QUESTS_SWITCH_OFF_BODY:String = "#system_messages:premium_quests/switch_off/body";
@@ -2335,48 +2333,6 @@ package
       
       public static const NATION_CHANGE_ERROR:String = "#system_messages:nation_change/error";
       
-      public static const NEWYEAR_CRAFTTOY_SERVER_ERROR:String = "#system_messages:newYear/craftToy/server_error";
-      
-      public static const NEWYEAR_BUYTOY_SERVER_ERROR:String = "#system_messages:newYear/buyToy/server_error";
-      
-      public static const NEWYEAR_BUYMEGATOY_SERVER_ERROR:String = "#system_messages:newYear/buyMegaToy/server_error";
-      
-      public static const NEWYEAR_APPLYVEHICLEDISCOUNT_SUCCESS:String = "#system_messages:newYear/applyVehicleDiscount/success";
-      
-      public static const NEWYEAR_APPLYVEHICLEDISCOUNT_SERVER_ERROR:String = "#system_messages:newYear/applyVehicleDiscount/server_error";
-      
-      public static const NEWYEAR_APPLYVEHICLEDISCOUNT_SERVER_ERROR_NODISCOUNTS:String = "#system_messages:newYear/applyVehicleDiscount/server_error/noDiscounts";
-      
-      public static const NEWYEAR_APPLYVEHICLEDISCOUNT_SERVER_ERROR_ALREADYACTIVE:String = "#system_messages:newYear/applyVehicleDiscount/server_error/alreadyActive";
-      
-      public static const NEWYEAR_APPLYVEHICLEDISCOUNT_SERVER_ERROR_ALREADYBOUGHT:String = "#system_messages:newYear/applyVehicleDiscount/server_error/alreadyBought";
-      
-      public static const NEWYEAR_APPLYVEHICLEDISCOUNT_SERVER_ERROR_NODISCOUNTFORVEHICLE:String = "#system_messages:newYear/applyVehicleDiscount/server_error/noDiscountForVehicle";
-      
-      public static const NEWYEAR_HANGTOY_SERVER_ERROR:String = "#system_messages:newYear/hangToy/server_error";
-      
-      public static const NEWYEAR_BREAKTOYS_SERVER_ERROR:String = "#system_messages:newYear/breakToys/server_error";
-      
-      public static const NEWYEAR_SETVEHICLEBRANCH_SERVER_ERROR:String = "#system_messages:newYear/setVehicleBranch/server_error";
-      
-      public static const NEWYEAR_BUYCOLLECTION_SERVER_ERROR:String = "#system_messages:newYear/buyCollection/server_error";
-      
-      public static const NEWYEAR_SETVEHICLEBRANCHSLOTBONUS_SERVER_ERROR:String = "#system_messages:newYear/setVehicleBranchSlotBonus/server_error";
-      
-      public static const NEWYEAR_RESETLOOTBOXSTATISTICS_SERVER_ERROR_HEADER:String = "#system_messages:newYear/resetLootboxStatistics/server_error/header";
-      
-      public static const NEWYEAR_RESETLOOTBOXSTATISTICS_SERVER_ERROR:String = "#system_messages:newYear/resetLootboxStatistics/server_error";
-      
-      public static const NEWYEAR_CELEBRITYCHALLENGE_CONGRATULATIONS:String = "#system_messages:newYear/celebrityChallenge/congratulations";
-      
-      public static const NEWYEAR_CELEBRITYCHALLENGE_SIMPLIFICATION_TITLE:String = "#system_messages:newYear/celebrityChallenge/simplification/title";
-      
-      public static const NEWYEAR_CELEBRITYCHALLENGE_SIMPLIFICATION_MESSAGE:String = "#system_messages:newYear/celebrityChallenge/simplification/message";
-      
-      public static const NEWYEAR_CELEBRITYCHALLENGE_PROGRESSREWARD:String = "#system_messages:newYear/celebrityChallenge/progressReward";
-      
-      public static const NEWYEAR_CELEBRITYCHALLENGE_QUESTREWARD:String = "#system_messages:newYear/celebrityChallenge/questReward";
-      
       public static const DEMOUNTKIT_RESTORED_SWITCHEDON:String = "#system_messages:demountKit_restored/switchedOn";
       
       public static const DEMOUNTKIT_FAILED_SWITCHEDOFF:String = "#system_messages:demountKit_failed/switchedOff";
@@ -2413,7 +2369,7 @@ package
       
       public static const BATTLEPASS_SWITCH_DISABLE_BODY:String = "#system_messages:battlePass/switch_disable/body";
       
-      public static const BATTLEPASS_SWITCH_DISABLE_BODY_INCOMPLETESTYLE:String = "#system_messages:battlePass/switch_disable/body/incompleteStyle";
+      public static const BATTLEPASS_SWITCH_DISABLE_INCOMPLETESTYLE:String = "#system_messages:battlePass/switch_disable/incompleteStyle";
       
       public static const BATTLEPASS_SWITCH_ENABLED_BODY:String = "#system_messages:battlePass/switch_enabled/body";
       
@@ -2455,6 +2411,14 @@ package
       
       public static const BATTLEPASS_SEASONEND_REWARDS_BLUEPRINTS:String = "#system_messages:battlePass/seasonEnd/rewards/blueprints";
       
+      public static const BATTLEPASS_SWITCHCHAPTER_ERROR:String = "#system_messages:battlePass/switchChapter/error";
+      
+      public static const BATTLEPASS_SWITCHCHAPTER_SUCCESS:String = "#system_messages:battlePass/switchChapter/success";
+      
+      public static const BATTLEPASS_SWITCHCHAPTER_REMINDER:String = "#system_messages:battlePass/switchChapter/reminder";
+      
+      public static const BATTLEPASS_ACTIVATECHAPTER_SUCCESS:String = "#system_messages:battlePass/activateChapter/success";
+      
       public static const COLLECTORVEHICLE_SWITCH_OFF_TITLE:String = "#system_messages:collectorVehicle/switch_off/title";
       
       public static const COLLECTORVEHICLE_SWITCH_OFF_BODY:String = "#system_messages:collectorVehicle/switch_off/body";
@@ -2477,11 +2441,11 @@ package
       
       public static const OFFERS_UNAVAILABLE_MANY:String = "#system_messages:offers/unavailable_many";
       
-      public static const OFFERS_SERVER_ERROR:String = "#system_messages:offers/server_error";
-      
       public static const OFFERS_SERVER_ERROR_COOLDOWN:String = "#system_messages:offers/server_error/COOLDOWN";
       
       public static const OFFERS_SERVER_ERROR_DISABLED:String = "#system_messages:offers/server_error/DISABLED";
+      
+      public static const OFFERS_SERVER_ERROR_MULTI_ERROR:String = "#system_messages:offers/server_error/MULTI_ERROR";
       
       public static const MISSINGEVENTS_BUTTON:String = "#system_messages:missingEvents/button";
       
@@ -2562,6 +2526,36 @@ package
       public static const VEHICLEPOSTPROGRESSION_VEHICLESUNLOCKPOSTPROGRESSION_WELCOMEUNLOCK_BODY:String = "#system_messages:vehiclePostProgression/vehiclesUnlockPostProgression/welcomeUnlock/body";
       
       public static const VEHICLEPOSTPROGRESSION_DISCARDALLPAIRSMODIFICATION_BODY:String = "#system_messages:vehiclePostProgression/discardAllPairsModification/body";
+      
+      public static const TELECOMMERGERESULTS_TITLE:String = "#system_messages:telecomMergeResults/title";
+      
+      public static const TELECOMMERGERESULTS_BODY_LISTSEPARATOR:String = "#system_messages:telecomMergeResults/body/listSeparator";
+      
+      public static const TELECOMMERGERESULTS_BODY_ACCRUALMSG:String = "#system_messages:telecomMergeResults/body/accrualMsg";
+      
+      public static const TELECOMMERGERESULTS_BODY_STATISTICMOVEDMSG:String = "#system_messages:telecomMergeResults/body/statisticMovedMsg";
+      
+      public static const TELECOMMERGERESULTS_BODY_EQUIPANDSTATISTICMOVEDMSG:String = "#system_messages:telecomMergeResults/body/equipAndStatisticMovedMsg";
+      
+      public static const TELECOMMERGERESULTS_BODY_CREWRETRAININGMSG:String = "#system_messages:telecomMergeResults/body/crewRetrainingMsg";
+      
+      public static const TELECOMMERGERESULTS_BODY_BATTLEQUESTSMSG:String = "#system_messages:telecomMergeResults/body/battleQuestsMsg";
+      
+      public static const TELECOMMERGERESULTS_BODY_DEMOUNTMSG:String = "#system_messages:telecomMergeResults/body/demountMsg";
+      
+      public static const TELECOMMERGERESULTS_BODY_TANKXPMSG:String = "#system_messages:telecomMergeResults/body/tankXPMsg";
+      
+      public static const TELECOMMERGERESULTS_BODY_POSTPROGRESSIONMSG:String = "#system_messages:telecomMergeResults/body/postprogressionMsg";
+      
+      public static const TELECOMMERGERESULTS_BODY_FREEXP:String = "#system_messages:telecomMergeResults/body/freeXP";
+      
+      public static const TELECOMMERGERESULTS_BODY_CREDITS:String = "#system_messages:telecomMergeResults/body/credits";
+      
+      public static const TELECOMMERGERESULTS_BODY_CONJUNCTION:String = "#system_messages:telecomMergeResults/body/conjunction";
+      
+      public static const TELECOMMERGERESULTS_BODY_PROGRESSDECALESCOMPENS:String = "#system_messages:telecomMergeResults/body/progressDecalesCompens";
+      
+      public static const TELECOMMERGERESULTS_BODY_WISHMSG:String = "#system_messages:telecomMergeResults/body/wishMsg";
        
       
       public function SYSTEM_MESSAGES()

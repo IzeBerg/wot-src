@@ -29,10 +29,6 @@ package net.wg.data.constants
       
       public static const CURRENCY_CONTEXT_MENU_ITEM:String = "CurrencyContextMenuItem";
       
-      public static const LUNAR_NY_CONTEXT_MENU_ITEM:String = "LunarNYContextMenuItemUI";
-      
-      public static const NY_CONTEXT_MENU_ITEM:String = "NYContextMenuItemUI";
-      
       public static const CONTEXT_MENU_SEPARATE:String = "ContextMenuItemSeparate";
       
       public static const MINIMAP_ENTRY:String = "MinimapEntry";
@@ -995,6 +991,8 @@ package net.wg.data.constants
       
       public static const SESSION_STATS_CHECKBOX_RENDERER:String = "SessionStatsSettingsCheckboxUI";
       
+      public static const SESSION_STATS_DASH_LINE_TEXT_ITEM_RENDERER_UI:String = "StatisticsDashLineTextItemIRenderer_UI";
+      
       public static const NATION_TREE_LEVEL_RENDERER:String = "NationalTreeLevelRendererUI";
       
       public static const NATION_TREE_PREMIUM_PANEL_DOTTY_PATTERN:String = "PremiumNTDottyUI";
@@ -1006,24 +1004,6 @@ package net.wg.data.constants
       public static const NATION_TREE_PREMIUM_DOTS_PATTERN:String = "PremiumDotUI";
       
       public static const TIER_GROUPING_UI:String = "TierGroupingUI";
-      
-      public static const NY_COUNTER_VIEW_UI:String = "NYCounterViewUI";
-      
-      public static const NY_COUNTER_ORANGE_VIEW_UI:String = "NYCounterOrangeViewUI";
-      
-      public static const NY_LB_NOTIFICATION_BG_UI:String = "NYLBNotificationBg_UI";
-      
-      public static const NY_LB_NO_BORDER_NOTIFICATION_BG_UI:String = "NYLBNoBorderNotificationBg_UI";
-      
-      public static const NY_LB_SPECIAL_NOTIFICATION_BG_UI:String = "NYLBSpecialNotificationBg_UI";
-      
-      public static const NY_LB_SPECIAL_NO_BORDER_NOTIFICATION_BG_UI:String = "NYLBSpecialNoBorderNotificationBg_UI";
-      
-      public static const WINTER_OFFER_BORDER_NOTIFICATION_BG_UI:String = "WONotificationBg_UI";
-      
-      public static const WINTER_OFFER_NO_BORDER_NOTIFICATION_BG_UI:String = "WONoBorderNotificationBg_UI";
-      
-      public static const NY_VEHICLE_BONUS_UI:String = "NYVehicleBonusUI";
       
       public static const YELLOW_HP_BAR:String = "yellow_hp_bar";
       
@@ -1039,13 +1019,7 @@ package net.wg.data.constants
       
       public static const RESEARCH_POST_PROGRESSION_ENTRY_POINT:String = "PostProgressionEntryPointUI";
       
-      public static const LUNAR_NY_NOTIFICATION_BG_UI:String = "LunarNYNotificationBg_UI";
-      
-      public static const LUNAR_NY_COUNTER_VIEW_UI:String = "LunarNYCounterViewUI";
-      
-      public static const LUNAR_NY_NO_BORDER_NOTIFICATION_BG_UI:String = "LunarNYNoBorderNotificationBg_UI";
-      
-      public static const LUNAR_NY_NOTIFICATION_HIT_UI:String = "LunarNYNotificationHit_UI";
+      public static const LOBBY_MINIMAP:String = "LobbyMinimap";
        
       
       public function Linkages()

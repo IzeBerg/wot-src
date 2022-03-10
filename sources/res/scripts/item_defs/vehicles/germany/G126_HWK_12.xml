@@ -4434,25 +4434,6 @@
 					</offset>
 				</node>
 			</trackNodes>
-			<splineDesc>
-				<segmentModelLeft>vehicles/german/G126_HWK_12/track/segment.model</segmentModelLeft>
-				<segmentModelRight>vehicles/german/G126_HWK_12/track/segment.model</segmentModelRight>
-				<left>vehicles/german/G126_HWK_12/track/left.track</left>
-				<right>vehicles/german/G126_HWK_12/track/right.track</right>
-				<segmentLength>
-					0.114
-					<!--BW_String-->
-				</segmentLength>
-				<segmentOffset>
-					0.082
-					<!--BW_String-->
-				</segmentOffset>
-				<lodDist>SPLINE_TRACK</lodDist>
-				<atlas>
-					<UTiles>1</UTiles>
-					<VTiles>1</VTiles>
-				</atlas>
-			</splineDesc>
 			<physicalTracks>
 				<left>
 					<segmentsCount>93</segmentsCount>
@@ -6257,6 +6238,8 @@
 						<collisionModelServer>vehicles/german/G126_HWK_12/collision/Gun_02.model</collisionModelServer>
 						<collisionModelClient>vehicles/german/G126_HWK_12/collision_client/Gun_02.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_main_mb</effects>
+					<reloadEffect>reload85_107</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>
@@ -6429,7 +6412,6 @@
 						0.000000 1 0.000000
 						<!--BW_String-->
 					</rayUp>
-					<isMirrored>true</isMirrored>
 					<size>
 						0.25
 						<!--BW_String-->
@@ -7503,6 +7485,8 @@
 						<collisionModelServer>vehicles/german/G126_HWK_12/collision/Gun_04.model</collisionModelServer>
 						<collisionModelClient>vehicles/german/G126_HWK_12/collision_client/Gun_04.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_main_mb</effects>
+					<reloadEffect>reload85_107</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<drivenJoints>
 						<master>
@@ -7947,7 +7931,6 @@
 						0.000000 1 0.000000
 						<!--BW_String-->
 					</rayUp>
-					<isMirrored>true</isMirrored>
 					<size>
 						0.25
 						<!--BW_String-->

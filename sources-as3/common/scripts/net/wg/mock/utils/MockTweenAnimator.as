@@ -89,5 +89,10 @@ package net.wg.mock.utils
       public function removeAnims(param1:DisplayObject) : void
       {
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return false;
+      }
    }
 }

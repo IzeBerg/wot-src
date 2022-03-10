@@ -17,6 +17,8 @@ package net.wg.gui.battle.eventBattle.views.radialMenu.components
       
       public var bg:Sprite = null;
       
+      private var _disposed:Boolean = false;
+      
       public function ChatContainer()
       {
          super();
@@ -24,6 +26,7 @@ package net.wg.gui.battle.eventBattle.views.radialMenu.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.allyTF = null;
          this.normalTF = null;
          this.bg = null;
@@ -52,6 +55,11 @@ package net.wg.gui.battle.eventBattle.views.radialMenu.components
          param2.text = param1;
          this.bg.width = Math.ceil(param2.textWidth) + BG_OFFSET;
          this.bg.x = -this.bg.width >> 1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

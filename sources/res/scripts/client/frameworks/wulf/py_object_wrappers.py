@@ -28,9 +28,10 @@ getNumberFormat = _py_objects.getNumberFormat
 getRealFormat = _py_objects.getRealFormat
 getTimeFormat = _py_objects.getTimeFormat
 getDateFormat = _py_objects.getDateFormat
+caseMap = _py_objects.caseMap
 __all__ = ('PyObjectArray', 'PyObjectCommand', 'PyGuiApplication', 'PyObjectViewSettings',
            'PyObjectView', 'PyObjectViewModel', 'PyObjectWindowSettings', 'PyObjectWindow',
            'PyObjectWindowsArea', 'isTranslatedKeyValid', 'isTranslatedTextExisted',
            'getTranslatedText', 'getImagePath', 'getSoundEffectId', 'getLayoutPath',
            'getTranslatedTextByResId', 'getTranslatedKey', 'getNumberFormat', 'getRealFormat',
-           'getTimeFormat', 'getDateFormat')
+           'getTimeFormat', 'getDateFormat', 'caseMap')

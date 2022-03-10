@@ -2637,34 +2637,6 @@ package
       
       public static const CAMOUFLAGE_YEAR_HARE_AFFAIR_VIOLET_DESCRIPTION:String = "#vehicle_customization:camouflage/year_hare_affair_violet/description";
       
-      public static const CAMOUFLAGE_TWITCH_OCTOBER_2021_MAIN_LABEL:String = "#vehicle_customization:camouflage/twitch_october_2021_main/label";
-      
-      public static const CAMOUFLAGE_TWITCH_OCTOBER_2021_MAIN_DESCRIPTION:String = "#vehicle_customization:camouflage/twitch_october_2021_main/description";
-      
-      public static const CAMOUFLAGE_TWITCH_OCTOBER_2021_GUN_LABEL:String = "#vehicle_customization:camouflage/twitch_october_2021_gun/label";
-      
-      public static const CAMOUFLAGE_TWITCH_OCTOBER_2021_GUN_DESCRIPTION:String = "#vehicle_customization:camouflage/twitch_october_2021_gun/description";
-      
-      public static const CAMOUFLAGE_ARMISTICE_DAY_2021_LABEL:String = "#vehicle_customization:camouflage/armistice_day_2021/label";
-      
-      public static const CAMOUFLAGE_ARMISTICE_DAY_2021_DESCRIPTION:String = "#vehicle_customization:camouflage/armistice_day_2021/description";
-      
-      public static const CAMOUFLAGE_ZHANG_HANYU_LABEL:String = "#vehicle_customization:camouflage/zhang_hanyu/label";
-      
-      public static const CAMOUFLAGE_ZHANG_HANYU_DESCRIPTION:String = "#vehicle_customization:camouflage/zhang_hanyu/description";
-      
-      public static const CAMOUFLAGE_YANDEX_LABEL:String = "#vehicle_customization:camouflage/yandex/label";
-      
-      public static const CAMOUFLAGE_YANDEX_DESCRIPTION:String = "#vehicle_customization:camouflage/yandex/description";
-      
-      public static const CAMOUFLAGE_CERBERUS_LABEL:String = "#vehicle_customization:camouflage/cerberus/label";
-      
-      public static const CAMOUFLAGE_CERBERUS_DESCRIPTION:String = "#vehicle_customization:camouflage/cerberus/description";
-      
-      public static const CAMOUFLAGE_SENIORITY_AWARDS_2021_LABEL:String = "#vehicle_customization:camouflage/seniority_awards_2021/label";
-      
-      public static const CAMOUFLAGE_SENIORITY_AWARDS_2021_DESCRIPTION:String = "#vehicle_customization:camouflage/seniority_awards_2021/description";
-      
       public static const CAMOUFLAGE_NY_2022_EAST_LABEL:String = "#vehicle_customization:camouflage/ny_2022_east/label";
       
       public static const CAMOUFLAGE_NY_2022_EAST_DESCRIPTION:String = "#vehicle_customization:camouflage/ny_2022_east/description";
@@ -2681,9 +2653,33 @@ package
       
       public static const CAMOUFLAGE_NY_2022_FANTASY_DESCRIPTION:String = "#vehicle_customization:camouflage/ny_2022_fantasy/description";
       
+      public static const CAMOUFLAGE_TWITCH_OCTOBER_2021_MAIN_LABEL:String = "#vehicle_customization:camouflage/twitch_october_2021_main/label";
+      
+      public static const CAMOUFLAGE_TWITCH_OCTOBER_2021_MAIN_DESCRIPTION:String = "#vehicle_customization:camouflage/twitch_october_2021_main/description";
+      
+      public static const CAMOUFLAGE_TWITCH_OCTOBER_2021_GUN_LABEL:String = "#vehicle_customization:camouflage/twitch_october_2021_gun/label";
+      
+      public static const CAMOUFLAGE_TWITCH_OCTOBER_2021_GUN_DESCRIPTION:String = "#vehicle_customization:camouflage/twitch_october_2021_gun/description";
+      
       public static const CAMOUFLAGE_NY_2022_BRO_LABEL:String = "#vehicle_customization:camouflage/ny_2022_bro/label";
       
       public static const CAMOUFLAGE_NY_2022_BRO_DESCRIPTION:String = "#vehicle_customization:camouflage/ny_2022_bro/description";
+      
+      public static const CAMOUFLAGE_ARMISTICE_DAY_2021_LABEL:String = "#vehicle_customization:camouflage/armistice_day_2021/label";
+      
+      public static const CAMOUFLAGE_ARMISTICE_DAY_2021_DESCRIPTION:String = "#vehicle_customization:camouflage/armistice_day_2021/description";
+      
+      public static const CAMOUFLAGE_ZHANG_HANYU_LABEL:String = "#vehicle_customization:camouflage/zhang_hanyu/label";
+      
+      public static const CAMOUFLAGE_ZHANG_HANYU_DESCRIPTION:String = "#vehicle_customization:camouflage/zhang_hanyu/description";
+      
+      public static const CAMOUFLAGE_SENIORITY_AWARDS_2021_LABEL:String = "#vehicle_customization:camouflage/seniority_awards_2021/label";
+      
+      public static const CAMOUFLAGE_SENIORITY_AWARDS_2021_DESCRIPTION:String = "#vehicle_customization:camouflage/seniority_awards_2021/description";
+      
+      public static const CAMOUFLAGE_YANDEX_LABEL:String = "#vehicle_customization:camouflage/yandex/label";
+      
+      public static const CAMOUFLAGE_YANDEX_DESCRIPTION:String = "#vehicle_customization:camouflage/yandex/description";
       
       public static const CAMOUFLAGE_NY_2022_SCHWARZ_LABEL:String = "#vehicle_customization:camouflage/ny_2022_schwarz/label";
       
@@ -2693,17 +2689,45 @@ package
       
       public static const CAMOUFLAGE_TWITCH_DECEMBER_2021_DESCRIPTION:String = "#vehicle_customization:camouflage/twitch_december_2021/description";
       
+      public static const CAMOUFLAGE_CERBERUS_LABEL:String = "#vehicle_customization:camouflage/cerberus/label";
+      
+      public static const CAMOUFLAGE_CERBERUS_DESCRIPTION:String = "#vehicle_customization:camouflage/cerberus/description";
+      
+      public static const CAMOUFLAGE_BP2022_1_LABEL:String = "#vehicle_customization:camouflage/bp2022_1/label";
+      
+      public static const CAMOUFLAGE_BP2022_1_DESCRIPTION:String = "#vehicle_customization:camouflage/bp2022_1/description";
+      
+      public static const CAMOUFLAGE_BP2022_2_LABEL:String = "#vehicle_customization:camouflage/bp2022_2/label";
+      
+      public static const CAMOUFLAGE_BP2022_2_DESCRIPTION:String = "#vehicle_customization:camouflage/bp2022_2/description";
+      
+      public static const CAMOUFLAGE_BP2022_3_LABEL:String = "#vehicle_customization:camouflage/bp2022_3/label";
+      
+      public static const CAMOUFLAGE_BP2022_3_DESCRIPTION:String = "#vehicle_customization:camouflage/bp2022_3/description";
+      
       public static const CAMOUFLAGE_LUNAR_NY_2022_LABEL:String = "#vehicle_customization:camouflage/lunar_ny_2022/label";
       
       public static const CAMOUFLAGE_LUNAR_NY_2022_DESCRIPTION:String = "#vehicle_customization:camouflage/lunar_ny_2022/description";
+      
+      public static const CAMOUFLAGE_CN_LUNAR_NY_2022_LABEL:String = "#vehicle_customization:camouflage/cn_lunar_ny_2022/label";
+      
+      public static const CAMOUFLAGE_CN_LUNAR_NY_2022_DESCRIPTION:String = "#vehicle_customization:camouflage/cn_lunar_ny_2022/description";
       
       public static const CAMOUFLAGE_11_11_LABEL:String = "#vehicle_customization:camouflage/11_11/label";
       
       public static const CAMOUFLAGE_11_11_DESCRIPTION:String = "#vehicle_customization:camouflage/11_11/description";
       
-      public static const CAMOUFLAGE_CN_LUNAR_NY_2022_LABEL:String = "#vehicle_customization:camouflage/cn_lunar_ny_2022/label";
+      public static const CAMOUFLAGE_G89_LEOPARD1_BVII_3DST_LABEL:String = "#vehicle_customization:camouflage/G89_Leopard1_BVII_3DSt/label";
       
-      public static const CAMOUFLAGE_CN_LUNAR_NY_2022_DESCRIPTION:String = "#vehicle_customization:camouflage/cn_lunar_ny_2022/description";
+      public static const CAMOUFLAGE_G89_LEOPARD1_BVII_3DST_DESCRIPTION:String = "#vehicle_customization:camouflage/G89_Leopard1_BVII_3DSt/description";
+      
+      public static const CAMOUFLAGE_A83_T110E4_BVII_3DST_LABEL:String = "#vehicle_customization:camouflage/A83_T110E4_BVII_3DSt/label";
+      
+      public static const CAMOUFLAGE_A83_T110E4_BVII_3DST_DESCRIPTION:String = "#vehicle_customization:camouflage/A83_T110E4_BVII_3DSt/description";
+      
+      public static const CAMOUFLAGE_S16_KRANVAGN_BVII_3DST_LABEL:String = "#vehicle_customization:camouflage/S16_Kranvagn_BVII_3DSt/label";
+      
+      public static const CAMOUFLAGE_S16_KRANVAGN_BVII_3DST_DESCRIPTION:String = "#vehicle_customization:camouflage/S16_Kranvagn_BVII_3DSt/description";
       
       public static const CAMOUFLAGE_LUNAR_MARATHON_2022_LABEL:String = "#vehicle_customization:camouflage/lunar_marathon_2022/label";
       
@@ -4285,8 +4309,6 @@ package
       
       public static const EMBLEM_SPECIAL_STICKER_700:String = "#vehicle_customization:emblem/special/sticker_700";
       
-      public static const EMBLEM_COOL_STICKER_74:String = "#vehicle_customization:emblem/cool/sticker_74";
-      
       public static const EMBLEM_BATTLE_STICKER_89:String = "#vehicle_customization:emblem/battle/sticker_89";
       
       public static const EMBLEM_BATTLE_STICKER_90:String = "#vehicle_customization:emblem/battle/sticker_90";
@@ -4320,6 +4342,8 @@ package
       public static const EMBLEM_BATTLE_STICKER_104:String = "#vehicle_customization:emblem/battle/sticker_104";
       
       public static const EMBLEM_SPECIAL_STICKER_701:String = "#vehicle_customization:emblem/special/sticker_701";
+      
+      public static const EMBLEM_COOL_STICKER_74:String = "#vehicle_customization:emblem/cool/sticker_74";
       
       public static const EMBLEM_SPECIAL_STICKER_702:String = "#vehicle_customization:emblem/special/sticker_702";
       
@@ -6155,6 +6179,8 @@ package
       
       public static const INSCRIPTION_SPECIAL_SPECIAL_64:String = "#vehicle_customization:inscription/special/special_64";
       
+      public static const INSCRIPTION_SPECIAL_SPECIAL_602:String = "#vehicle_customization:inscription/special/special_602";
+      
       public static const ITEM_EMBLEM1:String = "#vehicle_customization:item/emblem1";
       
       public static const ITEM_EMBLEM2:String = "#vehicle_customization:item/emblem2";
@@ -7527,35 +7553,51 @@ package
       
       public static const REPAINT_YEAR_HARE_AFFAIR_DESERT:String = "#vehicle_customization:repaint/year_hare_affair_desert";
       
-      public static const REPAINT_TWITCH_OCTOBER_2021:String = "#vehicle_customization:repaint/twitch_october_2021";
-      
-      public static const REPAINT_ARMISTICE_DAY_2021:String = "#vehicle_customization:repaint/armistice_day_2021";
-      
-      public static const REPAINT_ZHANG_HANYU:String = "#vehicle_customization:repaint/zhang_hanyu";
-      
-      public static const REPAINT_YANDEX:String = "#vehicle_customization:repaint/yandex";
-      
-      public static const REPAINT_SENIORITY_AWARDS_2021:String = "#vehicle_customization:repaint/seniority_awards_2021";
-      
       public static const REPAINT_NY_2022_EAST:String = "#vehicle_customization:repaint/ny_2022_east";
       
       public static const REPAINT_NY_2022_XMAS:String = "#vehicle_customization:repaint/ny_2022_xmas";
       
       public static const REPAINT_NY_2022_FANTASY:String = "#vehicle_customization:repaint/ny_2022_fantasy";
       
+      public static const REPAINT_TWITCH_OCTOBER_2021:String = "#vehicle_customization:repaint/twitch_october_2021";
+      
       public static const REPAINT_NY_2022_BRO:String = "#vehicle_customization:repaint/ny_2022_bro";
       
       public static const REPAINT_NY_2022_SCHWARZ:String = "#vehicle_customization:repaint/ny_2022_schwarz";
+      
+      public static const REPAINT_ARMISTICE_DAY_2021:String = "#vehicle_customization:repaint/armistice_day_2021";
+      
+      public static const REPAINT_ZHANG_HANYU:String = "#vehicle_customization:repaint/zhang_hanyu";
+      
+      public static const REPAINT_SENIORITY_AWARDS_2021:String = "#vehicle_customization:repaint/seniority_awards_2021";
+      
+      public static const REPAINT_YANDEX:String = "#vehicle_customization:repaint/yandex";
       
       public static const REPAINT_TWITCH_DECEMBER_2021:String = "#vehicle_customization:repaint/twitch_december_2021";
       
       public static const REPAINT_CERBERUS:String = "#vehicle_customization:repaint/cerberus";
       
+      public static const REPAINT_BP2022_1:String = "#vehicle_customization:repaint/bp2022_1";
+      
+      public static const REPAINT_BP2022_3:String = "#vehicle_customization:repaint/bp2022_3";
+      
       public static const REPAINT_LUNAR_NY_2022:String = "#vehicle_customization:repaint/lunar_ny_2022";
+      
+      public static const REPAINT_CN_LUNAR_NY_2022:String = "#vehicle_customization:repaint/cn_lunar_ny_2022";
       
       public static const REPAINT_11_11:String = "#vehicle_customization:repaint/11_11";
       
-      public static const REPAINT_CN_LUNAR_NY_2022:String = "#vehicle_customization:repaint/cn_lunar_ny_2022";
+      public static const REPAINT_G89_LEOPARD1_BVII_3DST_STAGE1_3:String = "#vehicle_customization:repaint/G89_Leopard1_BVII_3DSt_stage1-3";
+      
+      public static const REPAINT_G89_LEOPARD1_BVII_3DST_STAGE4:String = "#vehicle_customization:repaint/G89_Leopard1_BVII_3DSt_stage4";
+      
+      public static const REPAINT_A83_T110E4_BVII_3DST_STAGE1_3:String = "#vehicle_customization:repaint/A83_T110E4_BVII_3DSt_stage1-3";
+      
+      public static const REPAINT_A83_T110E4_BVII_3DST_STAGE4:String = "#vehicle_customization:repaint/A83_T110E4_BVII_3DSt_stage4";
+      
+      public static const REPAINT_S16_KRANVAGN_BVII_3DST_STAGE1_3:String = "#vehicle_customization:repaint/S16_Kranvagn_BVII_3DSt_stage1-3";
+      
+      public static const REPAINT_S16_KRANVAGN_BVII_3DST_STAGE4:String = "#vehicle_customization:repaint/S16_Kranvagn_BVII_3DSt_stage4";
       
       public static const MODIFICATIONS_AGE_EFFECT_01:String = "#vehicle_customization:modifications/age_effect_01";
       
@@ -9669,6 +9711,14 @@ package
       
       public static const SPECIAL_STYLE_TWITCH_AUGUST_2021:String = "#vehicle_customization:special_style/twitch_august_2021";
       
+      public static const MAIN_STYLE_F88_AMX_13_105_3DST_TIR:String = "#vehicle_customization:main_style/F88_AMX_13_105_3DSt_TIR";
+      
+      public static const MAIN_STYLE_F88_AMX_13_105_3DST_TIR_DESC_LONG:String = "#vehicle_customization:main_style/F88_AMX_13_105_3DSt_TIR_desc/long";
+      
+      public static const MAIN_STYLE_F75_CHAR_DE_25T_3DST_TIR:String = "#vehicle_customization:main_style/F75_Char_de_25t_3DSt_TIR";
+      
+      public static const MAIN_STYLE_F75_CHAR_DE_25T_3DST_TIR_DESC_LONG:String = "#vehicle_customization:main_style/F75_Char_de_25t_3DSt_TIR_desc/long";
+      
       public static const SPECIAL_STYLE_G144_KPZ_50T_3DST_DRXXI:String = "#vehicle_customization:special_style/G144_Kpz_50t_3Dst_DRXXI";
       
       public static const SPECIAL_STYLE_G144_KPZ_50T_3DST_DRXXI_DESC_LONG:String = "#vehicle_customization:special_style/G144_Kpz_50t_3Dst_DRXXI_desc/long";
@@ -9689,6 +9739,10 @@ package
       
       public static const SPECIAL_STYLE_A126_PZVI_TIGER_II_CAPT_3DST_HW21_DESC_LONG:String = "#vehicle_customization:special_style/A126_PzVI_Tiger_II_capt_3DSt_HW21_desc/long";
       
+      public static const SPECIAL_STYLE_A116_XM551_3DST_MD_21_XXII:String = "#vehicle_customization:special_style/A116_XM551_3DSt_MD_21_XXII";
+      
+      public static const SPECIAL_STYLE_A116_XM551_3DST_MD_21_XXII_DESC_LONG:String = "#vehicle_customization:special_style/A116_XM551_3DSt_MD_21_XXII_desc/long";
+      
       public static const SPECIAL_STYLE_RANKED_2021_2_GOLD:String = "#vehicle_customization:special_style/ranked_2021_2_gold";
       
       public static const SPECIAL_STYLE_RANKED_2021_2_GOLD_DESC:String = "#vehicle_customization:special_style/ranked_2021_2_gold_desc";
@@ -9699,45 +9753,19 @@ package
       
       public static const SPECIAL_STYLE_RANKED_2021_2_BRONZE:String = "#vehicle_customization:special_style/ranked_2021_2_bronze";
       
-      public static const SPECIAL_STYLE_GB83_FV4005_3DST_MD_21_XXII:String = "#vehicle_customization:special_style/GB83_FV4005_3DSt_MD_21_XXII";
-      
       public static const SPECIAL_STYLE_RANKED_2021_2_BRONZE_DESC:String = "#vehicle_customization:special_style/ranked_2021_2_bronze_desc";
-      
-      public static const SPECIAL_STYLE_GB83_FV4005_3DST_MD_21_XXII_DESC_LONG:String = "#vehicle_customization:special_style/GB83_FV4005_3DSt_MD_21_XXII_desc/long";
       
       public static const SPECIAL_STYLE_F117_ALT_PROTO_AMX_30_3DST_MH:String = "#vehicle_customization:special_style/F117_Alt_Proto_AMX_30_3DSt_MH";
       
       public static const SPECIAL_STYLE_F117_ALT_PROTO_AMX_30_3DST_MH_DESC_LONG:String = "#vehicle_customization:special_style/F117_Alt_Proto_AMX_30_3DSt_MH_desc/long";
       
-      public static const SPECIAL_STYLE_TWITCH_OCTOBER_2021:String = "#vehicle_customization:special_style/twitch_october_2021";
+      public static const MAIN_STYLE_A69_T110E5_3DST_TIR:String = "#vehicle_customization:main_style/A69_T110E5_3DSt_TIR";
       
-      public static const SPECIAL_STYLE_A92_M60_3DST_ZI_21:String = "#vehicle_customization:special_style/A92_M60_3DSt_ZI_21";
+      public static const MAIN_STYLE_A69_T110E5_3DST_TIR_DESC_LONG:String = "#vehicle_customization:main_style/A69_T110E5_3DSt_TIR_desc/long";
       
-      public static const SPECIAL_STYLE_A92_M60_3DST_ZI_21_DESC_LONG:String = "#vehicle_customization:special_style/A92_M60_3DSt_ZI_21_desc/long";
+      public static const MAIN_STYLE_A89_T54E1_3DST_TIR:String = "#vehicle_customization:main_style/A89_T54E1_3DSt_TIR";
       
-      public static const SPECIAL_STYLE_ARMISTICE_DAY_2021:String = "#vehicle_customization:special_style/armistice_day_2021";
-      
-      public static const SPECIAL_STYLE_ARMISTICE_DAY_2021_DESC:String = "#vehicle_customization:special_style/armistice_day_2021_desc";
-      
-      public static const SPECIAL_STYLE_ARMISTICE_DAY_2021_DESC_LONG:String = "#vehicle_customization:special_style/armistice_day_2021_desc/long";
-      
-      public static const SPECIAL_STYLE_ZHANG_HANYU:String = "#vehicle_customization:special_style/zhang_hanyu";
-      
-      public static const SPECIAL_STYLE_ZHANG_HANYU_DESC:String = "#vehicle_customization:special_style/zhang_hanyu_desc";
-      
-      public static const SPECIAL_STYLE_ZHANG_HANYU_DESC_LONG:String = "#vehicle_customization:special_style/zhang_hanyu_desc/long";
-      
-      public static const SPECIAL_STYLE_YANDEX:String = "#vehicle_customization:special_style/yandex";
-      
-      public static const SPECIAL_STYLE_YANDEX_DESC:String = "#vehicle_customization:special_style/yandex_desc";
-      
-      public static const SPECIAL_STYLE_YANDEX_DESC_LONG:String = "#vehicle_customization:special_style/yandex_desc/long";
-      
-      public static const SPECIAL_STYLE_SENIORITY_AWARDS_2021_SHOP:String = "#vehicle_customization:special_style/seniority_awards_2021_shop";
-      
-      public static const SPECIAL_STYLE_SENIORITY_AWARDS_2021_SHOP_DESC:String = "#vehicle_customization:special_style/seniority_awards_2021_shop_desc";
-      
-      public static const SPECIAL_STYLE_SENIORITY_AWARDS_2021_DESC_LONG:String = "#vehicle_customization:special_style/seniority_awards_2021_desc/long";
+      public static const MAIN_STYLE_A89_T54E1_3DST_TIR_DESC_LONG:String = "#vehicle_customization:main_style/A89_T54E1_3DSt_TIR_desc/long";
       
       public static const SPECIAL_STYLE_NY_2022_EAST:String = "#vehicle_customization:special_style/ny_2022_east";
       
@@ -9761,15 +9789,23 @@ package
       
       public static const SPECIAL_STYLE_IT15_RINOCERONTE_3DST_MD_21_XXII_DESC_LONG:String = "#vehicle_customization:special_style/It15_Rinoceronte_3DSt_MD_21_XXII_desc/long";
       
+      public static const SPECIAL_STYLE_TWITCH_OCTOBER_2021:String = "#vehicle_customization:special_style/twitch_october_2021";
+      
+      public static const SPECIAL_STYLE_A92_M60_3DST_ZI_21:String = "#vehicle_customization:special_style/A92_M60_3DSt_ZI_21";
+      
+      public static const SPECIAL_STYLE_A92_M60_3DST_ZI_21_DESC_LONG:String = "#vehicle_customization:special_style/A92_M60_3DSt_ZI_21_desc/long";
+      
       public static const SPECIAL_STYLE_NY_2022_BRO:String = "#vehicle_customization:special_style/ny_2022_bro";
       
       public static const SPECIAL_STYLE_NY_2022_BRO_DESC:String = "#vehicle_customization:special_style/ny_2022_bro_desc";
       
       public static const SPECIAL_STYLE_NY_2022_BRO_DESC_LONG:String = "#vehicle_customization:special_style/ny_2022_bro_desc/long";
       
-      public static const SPECIAL_STYLE_A116_XM551_3DST_MD_21_XXII:String = "#vehicle_customization:special_style/A116_XM551_3DSt_MD_21_XXII";
+      public static const SPECIAL_STYLE_ARMISTICE_DAY_2021:String = "#vehicle_customization:special_style/armistice_day_2021";
       
-      public static const SPECIAL_STYLE_A116_XM551_3DST_MD_21_XXII_DESC_LONG:String = "#vehicle_customization:special_style/A116_XM551_3DSt_MD_21_XXII_desc/long";
+      public static const SPECIAL_STYLE_ARMISTICE_DAY_2021_DESC:String = "#vehicle_customization:special_style/armistice_day_2021_desc";
+      
+      public static const SPECIAL_STYLE_ARMISTICE_DAY_2021_DESC_LONG:String = "#vehicle_customization:special_style/armistice_day_2021_desc/long";
       
       public static const SPECIAL_STYLE_R169_ST_II_3DST_MD_21_XXII:String = "#vehicle_customization:special_style/R169_ST_II_3DSt_MD_21_XXII";
       
@@ -9783,31 +9819,31 @@ package
       
       public static const SPECIAL_STYLE_NY_2022_SCHWARZ_DESC_LONG:String = "#vehicle_customization:special_style/ny_2022_schwarz_desc/long";
       
-      public static const SPECIAL_STYLE_TWITCH_DECEMBER_2021:String = "#vehicle_customization:special_style/twitch_december_2021";
+      public static const SPECIAL_STYLE_ZHANG_HANYU:String = "#vehicle_customization:special_style/zhang_hanyu";
+      
+      public static const SPECIAL_STYLE_ZHANG_HANYU_DESC:String = "#vehicle_customization:special_style/zhang_hanyu_desc";
+      
+      public static const SPECIAL_STYLE_ZHANG_HANYU_DESC_LONG:String = "#vehicle_customization:special_style/zhang_hanyu_desc/long";
+      
+      public static const SPECIAL_STYLE_SENIORITY_AWARDS_2021_SHOP:String = "#vehicle_customization:special_style/seniority_awards_2021_shop";
+      
+      public static const SPECIAL_STYLE_SENIORITY_AWARDS_2021_SHOP_DESC:String = "#vehicle_customization:special_style/seniority_awards_2021_shop_desc";
+      
+      public static const SPECIAL_STYLE_SENIORITY_AWARDS_2021_DESC_LONG:String = "#vehicle_customization:special_style/seniority_awards_2021_desc/long";
+      
+      public static const SPECIAL_STYLE_YANDEX:String = "#vehicle_customization:special_style/yandex";
+      
+      public static const SPECIAL_STYLE_YANDEX_DESC:String = "#vehicle_customization:special_style/yandex_desc";
+      
+      public static const SPECIAL_STYLE_YANDEX_DESC_LONG:String = "#vehicle_customization:special_style/yandex_desc/long";
       
       public static const MAIN_STYLE_IT18_PROGETTO_C45_MOD_71_3DST_WHAC_2021:String = "#vehicle_customization:main_style/It18_Progetto_C45_mod_71_3DSt_WHAC_2021";
       
       public static const MAIN_STYLE_IT18_PROGETTO_C45_MOD_71_3DST_WHAC_2021_DESC_LONG:String = "#vehicle_customization:main_style/It18_Progetto_C45_mod_71_3DSt_WHAC_2021_desc/long";
       
-      public static const SPECIAL_STYLE_CERBERUS:String = "#vehicle_customization:special_style/cerberus";
+      public static const SPECIAL_STYLE_TWITCH_DECEMBER_2021:String = "#vehicle_customization:special_style/twitch_december_2021";
       
-      public static const SPECIAL_STYLE_CERBERUS_DESC_LONG:String = "#vehicle_customization:special_style/cerberus_desc/long";
-      
-      public static const SPECIAL_STYLE_LUNAR_NY_2022:String = "#vehicle_customization:special_style/lunar_ny_2022";
-      
-      public static const SPECIAL_STYLE_LUNAR_NY_2022_DESC:String = "#vehicle_customization:special_style/lunar_ny_2022_desc";
-      
-      public static const SPECIAL_STYLE_LUNAR_NY_2022_DESC_LONG:String = "#vehicle_customization:special_style/lunar_ny_2022_desc/long";
-      
-      public static const SPECIAL_STYLE_11_11:String = "#vehicle_customization:special_style/11_11";
-      
-      public static const SPECIAL_STYLE_11_11_DESC:String = "#vehicle_customization:special_style/11_11_desc";
-      
-      public static const SPECIAL_STYLE_CN_LUNAR_NY_2022:String = "#vehicle_customization:special_style/cn_lunar_ny_2022";
-      
-      public static const SPECIAL_STYLE_CN_LUNAR_NY_2022_DESC:String = "#vehicle_customization:special_style/cn_lunar_ny_2022_desc";
-      
-      public static const SPECIAL_STYLE_CN_LUNAR_NY_2022_DESC_LONG:String = "#vehicle_customization:special_style/cn_lunar_ny_2022_desc/long";
+      public static const SPECIAL_STYLE_TWITCH_DECEMBER_2021_DESC_LONG:String = "#vehicle_customization:special_style/twitch_december_2021_desc/long";
       
       public static const SPECIAL_STYLE_LUNAR_MARATHON_2022:String = "#vehicle_customization:special_style/lunar_marathon_2022";
       
@@ -9818,6 +9854,62 @@ package
       public static const SPECIAL_STYLE_CH45_WZ_114_3DST_CNG_21:String = "#vehicle_customization:special_style/Ch45_WZ_114_3DSt_CNG_21";
       
       public static const SPECIAL_STYLE_CH45_WZ_114_3DST_CNG_21_DESC_LONG:String = "#vehicle_customization:special_style/Ch45_WZ_114_3DSt_CNG_21_desc/long";
+      
+      public static const SPECIAL_STYLE_CERBERUS:String = "#vehicle_customization:special_style/cerberus";
+      
+      public static const SPECIAL_STYLE_CERBERUS_DESC_LONG:String = "#vehicle_customization:special_style/cerberus_desc/long";
+      
+      public static const MAIN_STYLE_IGELSCHNAUZCHEN:String = "#vehicle_customization:main_style/igelschnauzchen";
+      
+      public static const MAIN_STYLE_IGELSCHNAUZCHEN_DESCRIPTION_LONG:String = "#vehicle_customization:main_style/igelschnauzchen_description/long";
+      
+      public static const SPECIAL_STYLE_BP2022_1:String = "#vehicle_customization:special_style/bp2022_1";
+      
+      public static const SPECIAL_STYLE_BP2022_1_DESC:String = "#vehicle_customization:special_style/bp2022_1_desc";
+      
+      public static const SPECIAL_STYLE_BP2022_2:String = "#vehicle_customization:special_style/bp2022_2";
+      
+      public static const SPECIAL_STYLE_BP2022_3:String = "#vehicle_customization:special_style/bp2022_3";
+      
+      public static const SPECIAL_STYLE_GB83_FV4005_3DST_MD_21_XXII:String = "#vehicle_customization:special_style/GB83_FV4005_3DSt_MD_21_XXII";
+      
+      public static const SPECIAL_STYLE_GB83_FV4005_3DST_MD_21_XXII_DESC_LONG:String = "#vehicle_customization:special_style/GB83_FV4005_3DSt_MD_21_XXII_desc/long";
+      
+      public static const SPECIAL_STYLE_G89_LEOPARD1_BVII_3DST:String = "#vehicle_customization:special_style/G89_Leopard1_BVII_3DSt";
+      
+      public static const SPECIAL_STYLE_G89_LEOPARD1_BVII_3DST_DESC_LONG:String = "#vehicle_customization:special_style/G89_Leopard1_BVII_3DSt_desc/long";
+      
+      public static const SPECIAL_STYLE_A83_T110E4_BVII_3DST:String = "#vehicle_customization:special_style/A83_T110E4_BVII_3DSt";
+      
+      public static const SPECIAL_STYLE_A83_T110E4_BVII_3DST_DESC_LONG:String = "#vehicle_customization:special_style/A83_T110E4_BVII_3DSt_desc/long";
+      
+      public static const MAIN_STYLE_GRANIT_TIR:String = "#vehicle_customization:main_style/granit_TIR";
+      
+      public static const MAIN_STYLE_GRANIT_TIR_DESC_LONG:String = "#vehicle_customization:main_style/granit_TIR_desc/long";
+      
+      public static const SPECIAL_STYLE_LUNAR_NY_2022:String = "#vehicle_customization:special_style/lunar_ny_2022";
+      
+      public static const SPECIAL_STYLE_LUNAR_NY_2022_DESC:String = "#vehicle_customization:special_style/lunar_ny_2022_desc";
+      
+      public static const SPECIAL_STYLE_LUNAR_NY_2022_DESC_LONG:String = "#vehicle_customization:special_style/lunar_ny_2022_desc/long";
+      
+      public static const SPECIAL_STYLE_CN_LUNAR_NY_2022:String = "#vehicle_customization:special_style/cn_lunar_ny_2022";
+      
+      public static const SPECIAL_STYLE_CN_LUNAR_NY_2022_DESC:String = "#vehicle_customization:special_style/cn_lunar_ny_2022_desc";
+      
+      public static const SPECIAL_STYLE_CN_LUNAR_NY_2022_DESC_LONG:String = "#vehicle_customization:special_style/cn_lunar_ny_2022_desc/long";
+      
+      public static const SPECIAL_STYLE_A128_CONCEPT_1B_007_3DST:String = "#vehicle_customization:special_style/A128_Concept_1b_007_3DSt";
+      
+      public static const SPECIAL_STYLE_A128_CONCEPT_1B_007_3DST_DESC_LONG:String = "#vehicle_customization:special_style/A128_Concept_1b_007_3DSt_desc/long";
+      
+      public static const SPECIAL_STYLE_S16_KRANVAGN_BVII_3DST:String = "#vehicle_customization:special_style/S16_Kranvagn_BVII_3DSt";
+      
+      public static const SPECIAL_STYLE_S16_KRANVAGN_BVII_3DST_DESC_LONG:String = "#vehicle_customization:special_style/S16_Kranvagn_BVII_3DSt_desc/long";
+      
+      public static const SPECIAL_STYLE_11_11:String = "#vehicle_customization:special_style/11_11";
+      
+      public static const SPECIAL_STYLE_11_11_DESC:String = "#vehicle_customization:special_style/11_11_desc";
       
       public static const CUSTOMIZATION_POPOVER_STYLE_SUMMER:String = "#vehicle_customization:customization/popover/style/summer";
       
@@ -11617,10 +11709,6 @@ package
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_339:String = "#vehicle_customization:projection_decals/special/projection_decal_339";
       
-      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_340:String = "#vehicle_customization:projection_decals/special/projection_decal_340";
-      
-      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_340_DESCRIPTION:String = "#vehicle_customization:projection_decals/special/projection_decal_340/description";
-      
       public static const PROJECTION_DECALS_HOLIDAY_PROJECTION_DECAL_80:String = "#vehicle_customization:projection_decals/holiday/projection_decal_80";
       
       public static const PROJECTION_DECALS_HOLIDAY_PROJECTION_DECAL_81:String = "#vehicle_customization:projection_decals/holiday/projection_decal_81";
@@ -11629,9 +11717,13 @@ package
       
       public static const PROJECTION_DECALS_HOLIDAY_PROJECTION_DECAL_83:String = "#vehicle_customization:projection_decals/holiday/projection_decal_83";
       
+      public static const PROJECTION_DECALS_HOLIDAY_PROJECTION_DECAL_85:String = "#vehicle_customization:projection_decals/holiday/projection_decal_85";
+      
       public static const PROJECTION_DECALS_HOLIDAY_PROJECTION_DECAL_84:String = "#vehicle_customization:projection_decals/holiday/projection_decal_84";
       
-      public static const PROJECTION_DECALS_HOLIDAY_PROJECTION_DECAL_85:String = "#vehicle_customization:projection_decals/holiday/projection_decal_85";
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_340:String = "#vehicle_customization:projection_decals/special/projection_decal_340";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_340_DESCRIPTION:String = "#vehicle_customization:projection_decals/special/projection_decal_340/description";
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_341:String = "#vehicle_customization:projection_decals/special/projection_decal_341";
       
@@ -11652,6 +11744,12 @@ package
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_03:String = "#vehicle_customization:projection_decals/special/projection_decal_03";
       
       public static const PROJECTION_DECALS_HOLIDAY_PROJECTION_DECAL_146:String = "#vehicle_customization:projection_decals/holiday/projection_decal_146";
+      
+      public static const PROJECTION_DECALS_PIN_UP_PROJECTION_DECAL_33:String = "#vehicle_customization:projection_decals/pin_up/projection_decal_33";
+      
+      public static const PROJECTION_DECALS_PIN_UP_PROJECTION_DECAL_34:String = "#vehicle_customization:projection_decals/pin_up/projection_decal_34";
+      
+      public static const PROJECTION_DECALS_PIN_UP_PROJECTION_DECAL_35:String = "#vehicle_customization:projection_decals/pin_up/projection_decal_35";
       
       public static const PROJECTION_DECALS_HOLIDAY_PROJECTION_DECAL_147:String = "#vehicle_customization:projection_decals/holiday/projection_decal_147";
       
@@ -11707,9 +11805,9 @@ package
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_363:String = "#vehicle_customization:projection_decals/special/projection_decal_363";
       
-      public static const PROJECTION_DECALS_ANIMALS_PROJECTION_DECAL_55:String = "#vehicle_customization:projection_decals/animals/projection_decal_55";
-      
       public static const PROJECTION_DECALS_ANIMALS_PROJECTION_DECAL_56:String = "#vehicle_customization:projection_decals/animals/projection_decal_56";
+      
+      public static const PROJECTION_DECALS_ANIMALS_PROJECTION_DECAL_55:String = "#vehicle_customization:projection_decals/animals/projection_decal_55";
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_365:String = "#vehicle_customization:projection_decals/special/projection_decal_365";
       

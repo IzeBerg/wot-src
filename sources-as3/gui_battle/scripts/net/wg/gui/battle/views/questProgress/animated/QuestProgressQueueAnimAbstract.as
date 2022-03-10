@@ -22,6 +22,8 @@ package net.wg.gui.battle.views.questProgress.animated
       
       private var _viewAllowCallCompleteFn:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function QuestProgressQueueAnimAbstract(param1:IQuestProgressView, param2:IQueueAnimItemAbstract, param3:IAnimationTopContainer)
       {
          super();
@@ -32,6 +34,7 @@ package net.wg.gui.battle.views.questProgress.animated
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -103,6 +106,11 @@ package net.wg.gui.battle.views.questProgress.animated
       public function set viewAllowCallCompleteFn(param1:Boolean) : void
       {
          this._viewAllowCallCompleteFn = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

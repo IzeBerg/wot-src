@@ -50,6 +50,8 @@ package net.wg.gui.battle.views.questProgress
       
       private var _isPermanentStopAnimation:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function QuestProgressAnimatedWrapper(param1:IQuestProgressView, param2:IAnimationTopContainer)
       {
          super();
@@ -66,6 +68,7 @@ package net.wg.gui.battle.views.questProgress
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.clearDynamicData();
          this._animContainer = null;
          this._globalData = null;
@@ -246,6 +249,11 @@ package net.wg.gui.battle.views.questProgress
             return new QuestProgressQueueStateAnim(this._originalView,_loc12_,this._animContainer);
          }
          return null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

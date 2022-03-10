@@ -22,6 +22,8 @@ package net.wg.gui.battle.views.damagePanel.components.tankman
       
       private var _order:Vector.<IDamagePanelClickableItem> = null;
       
+      private var _disposed:Boolean = false;
+      
       public function TankmenCtrl(param1:Array)
       {
          var _loc7_:String = null;
@@ -79,6 +81,7 @@ package net.wg.gui.battle.views.damagePanel.components.tankman
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._identifiersByType = App.utils.data.cleanupDynamicObject(this._identifiersByType);
          this._identifiersByType = null;
          this._items.dispose();
@@ -160,6 +163,11 @@ package net.wg.gui.battle.views.damagePanel.components.tankman
             }
             _loc6_++;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

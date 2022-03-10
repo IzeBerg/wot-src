@@ -28,6 +28,8 @@ package net.wg.gui.lobby.personalMissions.components
       
       private var _frameHelper:FrameHelper = null;
       
+      private var _disposed:Boolean = false;
+      
       public function PersonalMissionAwardBtnAnim()
       {
          super();
@@ -55,6 +57,7 @@ package net.wg.gui.lobby.personalMissions.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          stop();
          this._frameHelper.dispose();
          this._frameHelper = null;
@@ -102,6 +105,11 @@ package net.wg.gui.lobby.personalMissions.components
       {
          this.reflect.replayAnim();
          dispatchEvent(new AnimationStateEvent(AnimationStateEvent.FADE_OUT_COMPLETE));
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

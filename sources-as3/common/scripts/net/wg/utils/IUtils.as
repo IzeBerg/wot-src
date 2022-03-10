@@ -6,6 +6,8 @@ package net.wg.utils
    import net.wg.infrastructure.interfaces.entity.IDisposable;
    import net.wg.infrastructure.interfaces.entity.ISerializable;
    import net.wg.infrastructure.interfaces.pool.IPoolManager;
+   import net.wg.infrastructure.managers.IAtlasManager;
+   import net.wg.infrastructure.managers.IElementBlurAdapter;
    import net.wg.utils.helpLayout.IHelpLayout;
    
    public interface IUtils extends IUtilsManagerMeta, IDisposable
@@ -65,5 +67,9 @@ package net.wg.utils
       function get viewRestrictions() : IViewRestrictions;
       
       function get universalBtnStyles() : IUniversalBtnStyles;
+      
+      function get atlasManager() : IAtlasManager;
+      
+      function get blurAdapter() : IElementBlurAdapter;
    }
 }

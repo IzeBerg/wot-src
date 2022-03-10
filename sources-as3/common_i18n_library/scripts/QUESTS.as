@@ -155,14 +155,6 @@ package
       
       public static const BONUSES_NOTAVAILABLE:String = "#quests:bonuses/notAvailable";
       
-      public static const BONUSNAME_NY22FILLERS:String = "#quests:bonusName/ny22Fillers";
-      
-      public static const BONUSNAME_NEWYEARSLOT:String = "#quests:bonusName/newYearSlot";
-      
-      public static const BONUSES_VARIADICDISCOUNT_DISCOUNTAMOUNT:String = "#quests:bonuses/variadicDiscount/discountAmount";
-      
-      public static const BONUSES_VARIADICDISCOUNT_BUTTONLABEL:String = "#quests:bonuses/variadicDiscount/buttonLabel";
-      
       public static const QUESTS_TITLE:String = "#quests:quests/title";
       
       public static const QUESTS_TITLE_MANEUVERSQUESTS:String = "#quests:quests/title/maneuversQuests";
@@ -2505,9 +2497,7 @@ package
       
       public static const BONUSNAME_ENTITLEMENTS_RANKED_2020_DISCOUNT:String = "#quests:bonusName/entitlements/ranked_2020_discount";
       
-      public static const BONUSNAME_ENTITLEMENTS_RANKED_202201_ACCESS:String = "#quests:bonusName/entitlements/ranked_202201_access";
-      
-      public static const BONUSNAME_ENTITLEMENTS_GIFTSYSTEM_2_NYSTAMP:String = "#quests:bonusName/entitlements/giftSystem_2_nyStamp";
+      public static const BONUSNAME_ENTITLEMENTS_RANKED_202203_ACCESS:String = "#quests:bonusName/entitlements/ranked_202203_access";
       
       public static const BONUSNAME_BATTLE_BONUS_X5:String = "#quests:bonusName/battle_bonus_x5";
       
@@ -3283,17 +3273,11 @@ package
       
       public static const DAILYQUESTS_INFO_DAILYMISSIONS:String = "#quests:dailyQuests/info/dailyMissions";
       
-      public static const DAILYQUESTS_INFO_NYDAILYMISSIONS:String = "#quests:dailyQuests/info/NYDailyMissions";
-      
       public static const DAILYQUESTS_INFO_DAILYMISSIONTITLE:String = "#quests:dailyQuests/info/dailyMissionTitle";
       
       public static const DAILYQUESTS_INFO_BATTLEPASSDAILYMISSIONS:String = "#quests:dailyQuests/info/battlePassDailyMissions";
       
-      public static const DAILYQUESTS_INFO_LUNARNYDAILYMISSIONS:String = "#quests:dailyQuests/info/lunarNYDailyMissions";
-      
       public static const DAILYQUESTS_INFO_BATTLEPASSDAILYMISSIONTITLE:String = "#quests:dailyQuests/info/battlePassDailyMissionTitle";
-      
-      public static const DAILYQUESTS_INFO_GIFTSYSTEMDISABLEDDAILYMISSIONS:String = "#quests:dailyQuests/info/giftSystemDisabledDailyMissions";
       
       public static const PREMIUMQUESTS_INFO_PREMIUMMISSIONS:String = "#quests:premiumQuests/info/premiumMissions";
       

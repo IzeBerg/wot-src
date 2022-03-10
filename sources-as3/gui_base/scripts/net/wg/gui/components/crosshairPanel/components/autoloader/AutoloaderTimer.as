@@ -28,6 +28,8 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
       
       private var _mathAbs:Function = null;
       
+      private var _disposed:Boolean = false;
+      
       public function AutoloaderTimer()
       {
          super();
@@ -42,6 +44,7 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.timerReloading.dispose();
          this.timerReloading = null;
          this.timerAutoload.dispose();
@@ -99,6 +102,11 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
          param1.label = this._currentLabel;
          this._currentTimer = param1;
          this._currentTimer.visible = true;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -3808,6 +3808,8 @@
 						<collisionModelServer>vehicles/american/A99_T92_LT/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/american/A99_T92_LT/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_medium_mb</effects>
+					<reloadEffect>reload50_75</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customizationSlots>
 						<slot>
@@ -4273,14 +4275,6 @@
 	<radios>
 		<AN_GRC_8>shared</AN_GRC_8>
 	</radios>
-	<premiumVehicleXPFactor>
-		0.2
-		<!--BW_String-->
-	</premiumVehicleXPFactor>
-	<crewXpFactor>
-		1.5
-		<!--BW_String-->
-	</crewXpFactor>
 	<physics>
 		<detailed>
 			<engines>

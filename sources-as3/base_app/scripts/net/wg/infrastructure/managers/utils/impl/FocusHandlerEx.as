@@ -28,6 +28,8 @@ package net.wg.infrastructure.managers.utils.impl
       
       private var _focusHandler:FocusHandler = null;
       
+      private var _disposed:Boolean = false;
+      
       public function FocusHandlerEx()
       {
          super();
@@ -37,6 +39,7 @@ package net.wg.infrastructure.managers.utils.impl
       
       public function dispose() : void
       {
+         this._disposed = true;
          this._focusHandler.setFocus(null);
          this._focusHandler = null;
          var _loc1_:InputDelegate = InputDelegate.getInstance();
@@ -146,6 +149,11 @@ package net.wg.infrastructure.managers.utils.impl
                App.eventLogManager.logUIEventHandleInput(param1.details.value,_loc2_);
             }
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -12,6 +12,8 @@ package net.wg.gui.battle.views.radialMenu.components
       
       public var light:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function SectorHoveredWrapper()
       {
          super();
@@ -25,9 +27,15 @@ package net.wg.gui.battle.views.radialMenu.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.content.dispose();
          this.content = null;
          this.light = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

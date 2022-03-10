@@ -121,9 +121,12 @@ package net.wg.gui.battle.random.views.teamBasesPanel
             "delay":ALPHA_FADE_SPEED,
             "onComplete":function(param1:Tween):void
             {
-               removeBar(id);
-               param1.dispose();
-               removeFadeOutTween(id);
+               if(!isDisposed())
+               {
+                  removeBar(id);
+                  param1.dispose();
+                  removeFadeOutTween(id);
+               }
             }
          });
          this._fadeOutTweens[id] = fadeoutTween;

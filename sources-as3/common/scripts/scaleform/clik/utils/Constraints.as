@@ -48,6 +48,8 @@ package scaleform.clik.utils
       
       public var lastHeight:Number = NaN;
       
+      private var _disposed:Boolean = false;
+      
       public function Constraints(param1:Sprite, param2:String = "counterScale")
       {
          super();
@@ -322,8 +324,9 @@ package scaleform.clik.utils
          this.update(this.lastWidth,this.lastHeight);
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          if(this.scope)
          {
             this.scope.removeEventListener(Event.ADDED_TO_STAGE,this.handleScopeAddedToStage,false);
@@ -335,6 +338,11 @@ package scaleform.clik.utils
             this.parentConstraints.removeEventListener(ResizeEvent.RESIZE,this.handleParentConstraintsResize);
             this.parentConstraints = null;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -22,6 +22,8 @@ package net.wg.infrastructure.managers.utils.impl
       
       private var _verticalOffset:int = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function ViewRestrictions()
       {
          super();
@@ -29,6 +31,7 @@ package net.wg.infrastructure.managers.utils.impl
       
       public function dispose() : void
       {
+         this._disposed = true;
          App.utils.data.cleanupDynamicObject(this._elementsRestrictions);
          this._elementsRestrictions = null;
       }
@@ -96,6 +99,11 @@ package net.wg.infrastructure.managers.utils.impl
       public function get verticalOffset() : int
       {
          return this._verticalOffset;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

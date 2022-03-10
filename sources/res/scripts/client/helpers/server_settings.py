@@ -1,35 +1,28 @@
-import copy, functools, types
+import copy, functools, logging, types
 from collections import namedtuple
-from typing import TYPE_CHECKING
-import logging, constants, post_progression_common
+import typing, constants, post_progression_common
+from BonusCaps import BonusCapsConst
 from Event import Event
-from constants import IS_TUTORIAL_ENABLED, PremiumConfigs, DAILY_QUESTS_CONFIG, ClansConfig, MAGNETIC_AUTO_AIM_CONFIG, Configs, DOG_TAGS_CONFIG, BATTLE_NOTIFIER_CONFIG, MISC_GUI_SETTINGS, RENEWABLE_SUBSCRIPTION_CONFIG
-from helpers import time_utils
-from ranked_common import SwitchState
+from UnitBase import PREBATTLE_TYPE_TO_UNIT_ASSEMBLER, UNIT_ASSEMBLER_IMPL_TO_CONFIG
+from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS as BONUS_CAPS
+from battle_pass_common import BATTLE_PASS_CONFIG_NAME, BattlePassConfig
 from collector_vehicle import CollectorVehicleConsts
-from debug_utils import LOG_WARNING, LOG_DEBUG
-from battle_pass_common import BattlePassConfig, BATTLE_PASS_CONFIG_NAME
+from constants import BATTLE_NOTIFIER_CONFIG, ClansConfig, Configs, DAILY_QUESTS_CONFIG, DOG_TAGS_CONFIG, IS_TUTORIAL_ENABLED, MAGNETIC_AUTO_AIM_CONFIG, MISC_GUI_SETTINGS, PremiumConfigs, RENEWABLE_SUBSCRIPTION_CONFIG
+from debug_utils import LOG_DEBUG, LOG_WARNING
 from gifts.gifts_common import ClientReqStrategy, GiftEventID, GiftEventState
 from gui import GUI_SETTINGS, SystemMessages
 from gui.Scaleform.locale.SYSTEM_MESSAGES import SYSTEM_MESSAGES
 from gui.SystemMessages import SM_TYPE
 from gui.shared.utils.decorators import ReprInjector
-from ny_common.CraftCost import CraftCostConfig
-from ny_common.GeneralConfig import GeneralConfig
-from ny_common.SettingBonus import SettingBonusConfig
-from ny_common.CelebrityConfig import CelebrityConfig
-from ny_common.ToyDecayCost import ToyDecayCostConfig
-from ny_common.settings import SettingBonusConsts, NYVehBranchConsts, NYLootBoxConsts, NYGeneralConsts, CraftCostConsts, ToyDecayCostConsts, NY_CONFIG_NAME, CelebrityConsts
+from helpers import time_utils
 from personal_missions import PM_BRANCH
-from renewable_subscription_common.settings_constants import GOLD_RESERVE_GAINS_SECTION
 from post_progression_common import FEATURE_BY_GROUP_ID, ROLESLOT_FEATURE
+from ranked_common import SwitchState
+from renewable_subscription_common.settings_constants import GOLD_RESERVE_GAINS_SECTION
 from shared_utils import makeTupleByDict, updateDict
-from UnitBase import PREBATTLE_TYPE_TO_UNIT_ASSEMBLER, UNIT_ASSEMBLER_IMPL_TO_CONFIG
-from BonusCaps import BonusCapsConst
-from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS as BONUS_CAPS
 from telecom_rentals_common import TELECOM_RENTALS_CONFIG
-if TYPE_CHECKING:
-    from typing import List as TList
+if typing.TYPE_CHECKING:
+    from typing import Callable, Dict, List, Sequence
 _logger = logging.getLogger(__name__)
 _CLAN_EMBLEMS_SIZE_MAPPING = {16: 'clan_emblems_16', 
    32: 'clan_emblems_small', 
@@ -488,16 +481,13 @@ class BattleRoyaleConfig(namedtuple('BattleRoyaleConfig', ('isEnabled', 'periphe
 
 
 class _TelecomConfig(object):
-    __slots__ = ('__vehCDToProvider', )
+    __slots__ = ('__bundleIdToProvider', )
 
     def __init__(self, telecomConfig):
-        self.__vehCDToProvider = {}
-        for _, bundleData in telecomConfig['bundles'].iteritems():
-            for vehCD in bundleData['vehicles']:
-                self.__vehCDToProvider[vehCD] = bundleData['operator']
+        self.__bundleIdToProvider = {bundleId:bundleData['operator'] for bundleId, bundleData in telecomConfig['bundles'].iteritems()}
 
-    def getInternetProvider(self, vehCD):
-        provider = self.__vehCDToProvider.get(vehCD, '')
+    def getInternetProvider(self, bundleId):
+        provider = self.__bundleIdToProvider.get(bundleId, '')
         return provider
 
     @classmethod
@@ -560,11 +550,11 @@ class _BlueprintsConfig(namedtuple('_BlueprintsConfig', ('allowBlueprintsConvers
         return 'isEnabled' in diff or 'useBlueprintsForUnlock' in diff
 
 
-class _SeniorityAwardsConfig(namedtuple('_SeniorityAwardsConfig', ('enabled', 'endTime', 'rewardViewEnabled'))):
+class _SeniorityAwardsConfig(namedtuple('_SeniorityAwardsConfig', ('enabled', 'endTime'))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(enabled=False, endTime=0, rewardViewEnabled=True)
+        defaults = dict(enabled=False, endTime=0)
         defaults.update(kwargs)
         return super(_SeniorityAwardsConfig, cls).__new__(cls, **defaults)
 
@@ -581,9 +571,6 @@ class _SeniorityAwardsConfig(namedtuple('_SeniorityAwardsConfig', ('enabled', 'e
 
     def endTimestamp(self):
         return self.endTime
-
-    def isRewardViewEnabled(self):
-        return self.rewardViewEnabled
 
 
 class _AdventCalendarConfig(namedtuple('_AdventCalendarConfig', ('calendarURL', 'popupIntervalInHours'))):
@@ -696,31 +683,6 @@ class _MapboxConfig(namedtuple('_MapboxConfig', (
         return cls()
 
 
-class _ShopSalesEventConfig(namedtuple('_ShopSalesEventConfig', (
- 'enabled',
- 'url',
- 'periodicRenewalPeriod',
- 'periodicRenewalStartTime',
- 'activePhaseStartTime',
- 'activePhaseFinishTime',
- 'eventFinishTime',
- 'rerollPrice'))):
-    __slots__ = ()
-
-    def __new__(cls, **kwargs):
-        defaults = dict(enabled=False, url='', periodicRenewalStartTime=0, periodicRenewalPeriod=86400, activePhaseStartTime=0, activePhaseFinishTime=0, eventFinishTime=0, rerollPrice={})
-        defaults.update(kwargs)
-        return super(_ShopSalesEventConfig, cls).__new__(cls, **defaults)
-
-    def asDict(self):
-        return self._asdict()
-
-    def replace(self, data):
-        allowedFields = self._fields
-        dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
-        return self._replace(**dataToUpdate)
-
-
 class VehiclePostProgressionConfig(namedtuple('_VehiclePostProgression', (
  'isPostProgressionEnabled',
  'enabledFeatures',
@@ -754,57 +716,6 @@ class VehiclePostProgressionConfig(namedtuple('_VehiclePostProgression', (
         return self._replace(**dataToUpdate)
 
 
-LUNAR_NY_EVENT_CONFIG = Configs.LUNAR_NY_EVENT_CONFIG.value
-
-class _LunarNYEventConfig(object):
-    __slots__ = ('__isEnabled', '__startDateInUTC', '__finishDateInUTC', '__aboutEnvelopesUrl',
-                 '__eventRulesURL', '__infoVideoURL', '__envelopePurchasesLimit',
-                 '__minRareCharmProbability', '__envelopesExternalShopURL')
-
-    def __init__(self, **kwargs):
-        self.__isEnabled = kwargs.get('enabled', False)
-        self.__startDateInUTC = kwargs.get('startDateInUTC', 0)
-        self.__finishDateInUTC = kwargs.get('finishDateInUTC', 0)
-        self.__aboutEnvelopesUrl = kwargs.get('aboutEnvelopesUrl', '')
-        self.__eventRulesURL = kwargs.get('eventRulesURL', '')
-        self.__infoVideoURL = kwargs.get('infoVideoURL', '')
-        self.__envelopesExternalShopURL = kwargs.get('envelopesExternalShopURL', '')
-        self.__envelopePurchasesLimit = kwargs.get('envelopePurchasesLimit', 0)
-        self.__minRareCharmProbability = kwargs.get('minRareCharmProbability', 0)
-
-    @property
-    def isEnabled(self):
-        return self.__isEnabled
-
-    @property
-    def aboutEnvelopesUrl(self):
-        return self.__aboutEnvelopesUrl
-
-    @property
-    def eventRulesURL(self):
-        return self.__eventRulesURL
-
-    @property
-    def infoVideoURL(self):
-        return self.__infoVideoURL
-
-    @property
-    def envelopesExternalShopURL(self):
-        return self.__envelopesExternalShopURL
-
-    @property
-    def envelopePurchasesLimit(self):
-        return self.__envelopePurchasesLimit
-
-    @property
-    def minRareCharmProbability(self):
-        return self.__minRareCharmProbability
-
-    def getEventActiveTime(self):
-        return (
-         self.__startDateInUTC, self.__finishDateInUTC)
-
-
 class _EventBattlesConfig(namedtuple('_EventBattlesConfig', (
  'isEnabled',
  'peripheryIDs',
@@ -835,12 +746,11 @@ class GiftEventConfig(namedtuple('_GiftEventConfig', (
  'eventID',
  'giftEventState',
  'giftItemIDs',
- 'clientReqStrategy',
- 'disabledGiftsForSend'))):
+ 'clientReqStrategy'))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
-        defaults = dict(eventID=GiftEventID.UNKNOWN, giftEventState=GiftEventState.DISABLED, giftItemIDs=[], clientReqStrategy=ClientReqStrategy.AUTO, disabledGiftsForSend=[])
+        defaults = dict(eventID=GiftEventID.UNKNOWN, giftEventState=GiftEventState.DISABLED, giftItemIDs=[], clientReqStrategy=ClientReqStrategy.AUTO)
         defaults.update(kwargs)
         return super(GiftEventConfig, cls).__new__(cls, **defaults)
 
@@ -860,12 +770,8 @@ class GiftEventConfig(namedtuple('_GiftEventConfig', (
     def isDisabled(self):
         return self.giftEventState == GiftEventState.DISABLED
 
-    @property
-    def disabledGifts(self):
-        return self.disabledGiftsForSend
 
-
-class GiftSystemConfig(namedtuple('_GiftSystemConfig', ('events', 'itemToEventID'))):
+class GiftSystemConfig(namedtuple('_GiftSystemConfig', ('events',))):
     __slots__ = ()
 
     def __new__(cls, **kwargs):
@@ -886,16 +792,7 @@ class GiftSystemConfig(namedtuple('_GiftSystemConfig', ('events', 'itemToEventID
 
     @classmethod
     def __packEventConfigs(cls, data):
-        events = {eID:makeTupleByDict(GiftEventConfig, eData) for eID, eData in data['events'].iteritems()}
-        data['events'], data['itemToEventID'] = events, cls.__getItemToEventMap(events)
-
-    @classmethod
-    def __getItemToEventMap(cls, events):
-        result = {}
-        for eventID, eventConfig in events.iteritems():
-            result.update({itemID:eventID for itemID in eventConfig.giftItemIDs})
-
-        return result
+        data['events'] = {eID:makeTupleByDict(GiftEventConfig, eData) for eID, eData in data['events'].iteritems()}
 
 
 class ServerSettings(object):
@@ -932,8 +829,6 @@ class ServerSettings(object):
         self.__vehiclePostProgressionConfig = VehiclePostProgressionConfig()
         self.__eventBattlesConfig = _EventBattlesConfig()
         self.__giftSystemConfig = GiftSystemConfig()
-        self.__shopSalesEventConfig = _ShopSalesEventConfig()
-        self.__lunarNYEventConfig = _LunarNYEventConfig()
         self.set(serverSettings)
 
     def set(self, serverSettings):
@@ -1034,9 +929,6 @@ class ServerSettings(object):
             self.__eventBattlesConfig = _EventBattlesConfig.defaults()
         if Configs.GIFTS_CONFIG.value in self.__serverSettings:
             self.__giftSystemConfig = makeTupleByDict(GiftSystemConfig, {'events': self.__serverSettings[Configs.GIFTS_CONFIG.value]})
-        if constants.SHOP_SALES_CONFIG in self.__serverSettings:
-            self.__shopSalesEventConfig = makeTupleByDict(_ShopSalesEventConfig, self.__serverSettings[constants.SHOP_SALES_CONFIG])
-        self.__updateLunarNYEventConfig(self.__serverSettings)
         self.onServerSettingsChange(serverSettings)
 
     def update(self, serverSettingsDiff):
@@ -1111,10 +1003,6 @@ class ServerSettings(object):
             self.__updateGiftSystemConfig(serverSettingsDiff)
         self.__updateBlueprintsConvertSaleConfig(serverSettingsDiff)
         self.__updateReactiveCommunicationConfig(serverSettingsDiff)
-        if constants.SHOP_SALES_CONFIG in serverSettingsDiff:
-            self.__updateShopSalesEvent(serverSettingsDiff)
-            self.__serverSettings[constants.SHOP_SALES_CONFIG] = serverSettingsDiff[constants.SHOP_SALES_CONFIG]
-        self.__updateLunarNYEventConfig(serverSettingsDiff)
         self.onServerSettingsChange(serverSettingsDiff)
 
     def clear(self):
@@ -1227,10 +1115,6 @@ class ServerSettings(object):
     def giftSystemConfig(self):
         return self.__giftSystemConfig
 
-    @property
-    def shopSalesEventConfig(self):
-        return self.__shopSalesEventConfig
-
     def isEpicBattleEnabled(self):
         return self.epicBattles.isEnabled
 
@@ -1273,9 +1157,6 @@ class ServerSettings(object):
 
     def isLootBoxesEnabled(self):
         return self.__getGlobalSetting('isLootBoxesEnabled')
-
-    def isLootBoxEnabled(self, boxId):
-        return self.__getGlobalSetting('lootBoxes_config', {}).get(boxId, {}).get('enabled', False)
 
     def isAnonymizerEnabled(self):
         return self.__getGlobalSetting('isAnonymizerEnabled', False)
@@ -1512,7 +1393,7 @@ class ServerSettings(object):
         return self.__getGlobalSetting(CollectorVehicleConsts.CONFIG_NAME, {}).get(CollectorVehicleConsts.IS_ENABLED, False)
 
     def isOffersEnabled(self):
-        return self.__getGlobalSetting('isOffersEnabled', False)
+        return self.__getGlobalSetting(constants.OFFERS_ENABLED_KEY, False)
 
     def getProgressiveRewardConfig(self):
         return self.__progressiveReward
@@ -1540,33 +1421,6 @@ class ServerSettings(object):
 
     def getActiveTestConfirmationConfig(self):
         return self.__getGlobalSetting(constants.ACTIVE_TEST_CONFIRMATION_CONFIG, {})
-
-    def getLunarNYEventConfig(self):
-        return self.__lunarNYEventConfig
-
-    def getNewYearBonusConfig(self):
-        return SettingBonusConfig(self.__getNYConfig(SettingBonusConsts.CONFIG_NAME))
-
-    def getNewYearToyDecayCostConfig(self):
-        return ToyDecayCostConfig(self.__getNYConfig(ToyDecayCostConsts.CONFIG_NAME))
-
-    def getNewYearCraftCostConfig(self):
-        return CraftCostConfig(self.__getNYConfig(CraftCostConsts.CONFIG_NAME))
-
-    def getLootBoxShop(self):
-        return self.__getNYConfig(NYLootBoxConsts.CONFIG_NAME)
-
-    def getNewYearVehBranchConfig(self):
-        return self.__getNYConfig(NYVehBranchConsts.CONFIG_NAME)
-
-    def getNewYearCelebrityConfig(self):
-        return CelebrityConfig(self.__getNYConfig(CelebrityConsts.CONFIG_NAME))
-
-    def getNewYearGeneralConfig(self):
-        return GeneralConfig(self.__getNYConfig(NYGeneralConsts.CONFIG_NAME))
-
-    def __getNYConfig(self, configName):
-        return self.__getGlobalSetting(NY_CONFIG_NAME, {}).get(configName, {})
 
     def __getGlobalSetting(self, settingsName, default=None):
         return self.__serverSettings.get(settingsName, default)
@@ -1645,26 +1499,11 @@ class ServerSettings(object):
     def __updateVehiclePostProgressionConfig(self, serverSettingsDiff):
         self.__vehiclePostProgressionConfig = self.__vehiclePostProgressionConfig.replace(serverSettingsDiff[post_progression_common.SERVER_SETTINGS_KEY])
 
-    def __updateLunarNYEventConfig(self, settings):
-        if LUNAR_NY_EVENT_CONFIG in settings:
-            config = settings[LUNAR_NY_EVENT_CONFIG]
-            if config is None:
-                self.__lunarNYEventConfig = _LunarNYEventConfig()
-            elif isinstance(config, dict):
-                self.__lunarNYEventConfig = _LunarNYEventConfig(**config)
-            else:
-                _logger.error('Unexpected format of subscriptions service config: %r', config)
-                self.__lunarNYEventConfig = _LunarNYEventConfig()
-        return
-
     def __updateEventBattles(self, targetSettings):
         self.__eventBattlesConfig = self.__eventBattlesConfig.replace(targetSettings['event_battles_config'])
 
     def __updateGiftSystemConfig(self, serverSettingsDiff):
         self.__giftSystemConfig = self.__giftSystemConfig.replace({'events': serverSettingsDiff[Configs.GIFTS_CONFIG.value]})
-
-    def __updateShopSalesEvent(self, targetSettings):
-        self.__shopSalesEventConfig = self.__shopSalesEventConfig.replace(targetSettings[constants.SHOP_SALES_CONFIG])
 
 
 def serverSettingsChangeListener(*configKeys):

@@ -18,6 +18,8 @@ package net.wg.gui.components.common
       
       private var _zone:Rectangle = null;
       
+      private var _disposed:Boolean = false;
+      
       public function SparksManager()
       {
          super();
@@ -37,9 +39,10 @@ package net.wg.gui.components.common
          }
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
          var _loc1_:IDisposable = null;
+         this._disposed = true;
          while(this._scope.numChildren)
          {
             _loc1_ = IDisposable(this._scope.getChildAt(0));
@@ -92,6 +95,11 @@ package net.wg.gui.components.common
       public function set zone(param1:Rectangle) : void
       {
          this._zone = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

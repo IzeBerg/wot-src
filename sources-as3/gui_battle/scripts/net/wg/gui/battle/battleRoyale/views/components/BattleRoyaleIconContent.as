@@ -9,6 +9,8 @@ package net.wg.gui.battle.battleRoyale.views.components
       
       public var animation:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function BattleRoyaleIconContent()
       {
          super();
@@ -23,6 +25,12 @@ package net.wg.gui.battle.battleRoyale.views.components
       
       protected function onDispose() : void
       {
+         this._disposed = true;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

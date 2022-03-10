@@ -30,6 +30,8 @@ package net.wg.gui.battle.views.epicScorePanel.components
       
       private var _captured:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function SectorBaseEntryAnimated()
       {
          super();
@@ -37,6 +39,7 @@ package net.wg.gui.battle.views.epicScorePanel.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          stop();
          this.primaryTarget = null;
          this.base.dispose();
@@ -122,6 +125,11 @@ package net.wg.gui.battle.views.epicScorePanel.components
       private function get progressCircleElement() : EpicProgressCircle
       {
          return this.base.progressCapture;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

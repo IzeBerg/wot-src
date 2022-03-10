@@ -10,29 +10,35 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "autoOpenView/bottomLabel"
+msgstr "Мы открыли все ваши новогодние коробки"
+
 msgid "autoOpenView/congratsLabel"
 msgstr "Поздравляем!"
 
-msgid "autoOpenView/descriptionLabel"
-msgstr "Мы открыли за вас коробки"
-
 msgid "autoOpenView/okBtnLabel"
-msgstr "Это прекрасно!"
+msgstr "Так точно!"
+
+msgid "buttonLabel/back"
+msgstr "Вернуться в Ангар"
 
 msgid "buttonLabel/buy"
 msgstr "Купить"
 
+msgid "buttonLabel/buyMore"
+msgstr "Купить коробки"
+
 msgid "buttonLabel/close"
 msgstr "Закрыть"
+
+msgid "buttonLabel/open"
+msgstr "Открыть"
 
 msgid "buttonLabel/openBox"
 msgstr "Открыть коробку"
 
-msgid "buttonLabel/openBoxes"
-msgstr "Открыть несколько"
-
 msgid "buttonLabel/quest"
-msgstr "К боевым задачам"
+msgstr "К задачам"
 
 msgid "buttonLabel/videoOff"
 msgstr "ПОКАЗЫВАТЬ АНИМАЦИЮ"
@@ -40,58 +46,83 @@ msgstr "ПОКАЗЫВАТЬ АНИМАЦИЮ"
 msgid "buttonLabel/videoOn"
 msgstr "НЕ ПОКАЗЫВАТЬ АНИМАЦИЮ"
 
-msgid "buttonLabel/videoSwitch/lowerCase"
-msgstr "Показывать анимацию"
-
-msgid "closeButtonLabel"
-msgstr "ЗАКРЫТЬ"
-
 msgid "compensationTooltip/after/header"
 msgstr "Компенсация:"
 
-msgid "compensationTooltip/before/header/multiple"
-msgstr "Машина (x{count}):"
-
-msgid "compensationTooltip/before/header/single"
-msgstr "Машина:"
+msgid "compensationTooltip/before/header"
+msgstr "Дубликат (x{count}):"
 
 msgid "compensationTooltip/crewSkin/header"
 msgstr "Компенсация за облик, который уже есть в наличии"
 
 msgid "compensationTooltip/vehicle/bottomText"
-msgstr "Золото, являющееся компенсацией за машину."
+msgstr "Награда, которая является компенсацией за машину."
 
 msgid "compensationTooltip/vehicle/header"
 msgstr "Компенсация за машину, которая уже есть в Ангаре."
 
-msgid "entryDesc/boxEmpty"
-msgstr "Коробки закончились"
+msgid "entryDesc/boxesCount"
+msgstr "x{count}"
 
 msgid "entryDesc/buySlot"
 msgstr "Большие коробки можно купить в Премиум магазине"
 
-msgid "entryDesc/newYear_premium/descr"
-msgstr ""
-"Покупаются в Магазине. Содержат украшения и золото, могут содержать "
-"трёхмерные стили и премиум технику."
-
-msgid "entryDesc/newYear_premium/title"
+msgid "entryDesc/newYear_premium"
 msgstr "Большие коробки"
 
-msgid "entryDesc/notAvailableNowShort"
-msgstr "Открытие и покупка временно недоступны."
+msgid "entryDesc/newYear_usual"
+msgstr "Малые коробки"
+
+msgid "entryDesc/questSlot"
+msgstr "Малые коробки можно заработать, выполняя задачи"
+
+msgid "entryDesc/restrictedMode"
+msgstr "Функциональность временно недоступна. Попробуйте позже."
 
 msgid "entryPoint/header"
 msgstr "Коробки"
 
-msgid "entryPoint/toBoxes"
-msgstr "К КОРОБКАМ"
+msgid "entryTooltip/body/h1"
+msgstr "Где купить большие коробки:"
+
+msgid "entryTooltip/body/h2"
+msgstr "Как получить малые коробки:"
+
+msgid "entryTooltip/body/p1"
+msgstr ""
+"Покупайте коробки с новогодними украшениями для себя и своих друзей в "
+"Премиум магазине."
+
+msgid "entryTooltip/body/p2"
+msgstr "Выдаются за выполнение новогодних боевых задач."
+
+msgid "entryTooltip/header"
+msgstr "Коробки"
+
+msgid "entryView/boxesCount"
+msgstr "ещё контейнеров: {count}"
 
 msgid "entryView/buyLabel"
-msgstr "ДОКУПИТЬ"
+msgstr "ДОКУПИТЬ КОРОБКИ"
+
+msgid "entryView/ended/newYear_premium"
+msgstr ""
+"Большие коробки на Складе закончились,\n"
+"можете купить их в Премиум магазине."
+
+msgid "entryView/ended/newYear_usual"
+msgstr ""
+"Малые коробки закончились,\n"
+"можете заработать их в бою."
 
 msgid "entryView/lootboxesCount"
 msgstr "x{count}"
+
+msgid "entryView/title"
+msgstr "Новогоднее наступление {year}"
+
+msgid "entryView/year"
+msgstr "2019"
 
 msgid "multiOpenView/applyLabel"
 msgstr "Так точно!"
@@ -103,91 +134,22 @@ msgid "multiOpenView/boxesNotAvailable"
 msgstr "Коробки закончились"
 
 msgid "multiOpenView/openBoxesLabel"
-msgstr "Открыть ещё {count} шт."
+msgstr "Открыть следующие {count} коробок"
 
 msgid "multiOpenView/openedCount"
 msgstr "x{count}"
 
-msgid "multiOpenView/pauseLabel"
-msgstr "Остановить ({count})"
-
 msgid "multiOpenView/title"
-msgstr "Вот что внутри"
-
-msgid "multiOpenView/unpauseLabel"
-msgstr "Автооткрытие ({count})"
-
-msgid "notification/giftFromFriend"
-msgstr "Посылка от друга %(userName)s"
-
-msgid "notification/giftFromUnknownFriend"
-msgstr "Посылка от друга"
+msgstr "Поздравляем!"
 
 msgid "notification/header"
 msgstr "Поздравляем!"
 
-msgid "notification/header/big"
-msgstr "ВОТ, ЧТО ВНУТРИ:"
-
 msgid "notification/ny19man"
 msgstr "Уникальный член экипажа: %(count)s"
 
-msgid "notification/ny22man"
-msgstr "Добавлен командир %(name)s"
-
 msgid "notification/rewards"
 msgstr "Вам присвоены следующие награды:"
-
-msgid "notification/style/subtitle"
-msgstr "3D-СТИЛЬ"
-
-msgid "notification/tankmen/subtitle"
-msgstr "Уникальный член экипажа"
-
-msgid "notification/vehicle/subtitle"
-msgstr "ВНЕЗАПНО!"
-
-msgid "premiumMultiOpenView/applyLabel"
-msgstr "Так точно!"
-
-msgid "premiumMultiOpenView/backToBoxesLabel"
-msgstr "К коробкам"
-
-msgid "premiumMultiOpenView/boxIndx"
-msgstr "Коробка {indx}"
-
-msgid "premiumMultiOpenView/boxesInStorage"
-msgstr "Осталось коробок: {count}"
-
-msgid "premiumMultiOpenView/boxesNotAvailable"
-msgstr "Коробки закончились"
-
-msgid "premiumMultiOpenView/openNextBoxesLabel"
-msgstr "Открыть ещё {count}"
-
-msgid "premiumMultiOpenView/pauseLabel"
-msgstr "Остановить автооткрытие ({count})"
-
-msgid "premiumMultiOpenView/subTitle/category/Christmas"
-msgstr "Рождественских коробок"
-
-msgid "premiumMultiOpenView/subTitle/category/Fairytale"
-msgstr "Волшебных коробок"
-
-msgid "premiumMultiOpenView/subTitle/category/NewYear"
-msgstr "Новогодних коробок"
-
-msgid "premiumMultiOpenView/subTitle/category/Oriental"
-msgstr "Восточных коробок"
-
-msgid "premiumMultiOpenView/subTitle/opened"
-msgstr "Вот что выпало из {category} (открыто {count} шт.)"
-
-msgid "premiumMultiOpenView/title"
-msgstr "ПОЗДРАВЛЯЕМ!"
-
-msgid "premiumMultiOpenView/unpauseLabel"
-msgstr "Продолжить открывать ({count})"
 
 msgid "restrictedMessage/body"
 msgstr "Операции с коробками временно приостановлены. Всё будет хорошо."
@@ -195,47 +157,32 @@ msgstr "Операции с коробками временно приостан
 msgid "restrictedMessage/header"
 msgstr "Внимание:"
 
-msgid "rewardGroups/blueprints"
-msgstr "Чертежи"
-
-msgid "rewardGroups/consumables"
-msgstr "Снаряжение"
-
-msgid "rewardGroups/crewBooks"
-msgstr "Учебные материалы"
-
-msgid "rewardGroups/crewBooksAndBattleBoosters"
-msgstr "Инструкции и учебные материалы"
-
-msgid "rewardGroups/other"
-msgstr "И ещё немного:"
-
-msgid "rewardGroups/shardsAndBigToys"
-msgstr "Осколки и украшения"
-
-msgid "rewardGroups/styles"
-msgstr "Стили"
-
-msgid "rewardGroups/toys"
-msgstr "Украшения"
-
-msgid "rewardGroups/vehicles"
-msgstr "Премиум техника"
-
 msgid "rewardView/boxesCount"
-msgstr "Коробок в наличии: %(count)"
+msgstr "Коробок в наличии: {count}"
 
 msgid "rewardView/closeBtnLabel"
 msgstr "Закрыть"
 
-msgid "rewardView/congratsBtnLabel/StyleLootBoxCongrats"
+msgid "rewardView/congratsBtnLabel/style"
 msgstr "Рассмотреть стиль"
 
-msgid "rewardView/congratsBtnLabel/TankmanLootBoxCongrats"
+msgid "rewardView/congratsBtnLabel/tankman"
 msgstr "Рекрутировать"
 
-msgid "rewardView/congratsBtnLabel/VehicleLootBoxCongrats"
+msgid "rewardView/congratsBtnLabel/vehicle"
 msgstr "Посмотреть в Ангаре"
+
+msgid "rewardView/congratsLabel/style"
+msgstr "Уникальный стиль для"
+
+msgid "rewardView/congratsLabel/tankman"
+msgstr "Уникальный член экипажа"
+
+msgid "rewardView/congratsLabel/usual"
+msgstr "Поздравляем!"
+
+msgid "rewardView/congratsLabel/vehicle"
+msgstr "ВНЕЗАПНО!"
 
 msgid "rewardView/nextOpenBtnLabel"
 msgstr "Открыть следующую"
@@ -246,29 +193,23 @@ msgstr "Так точно!"
 msgid "rewardView/openBtnLabel"
 msgstr "Так точно!"
 
-msgid "rewardView/toBoxes"
-msgstr "К коробкам"
+msgid "rewardView/rerollBtnLabel"
+msgstr "Переоткрыть"
 
 msgid "rewardView/zeroBoxes"
 msgstr "Коробки закончились"
 
-msgid "specialReward/StyleLootBoxCongrats/title"
-msgstr "3D-стиль для"
-
 msgid "specialReward/continueBtn"
 msgstr "Продолжить"
 
-msgid "specialReward/goToBtn/StyleLootBoxCongrats"
+msgid "specialReward/style/goToBtn"
 msgstr "Рассмотреть стиль"
 
-msgid "specialReward/goToBtn/VehicleLootBoxCongrats"
+msgid "specialReward/style/title"
+msgstr "Уникальный стиль для"
+
+msgid "specialReward/vehicle/goToBtn"
 msgstr "Посмотреть в Ангаре"
-
-msgid "specialReward/guaranteedReward"
-msgstr "А вот и пополнение!"
-
-msgid "specialReward/guaranteedRewardReceived"
-msgstr "Прибыл гарантированный танк"
 
 msgid "tooltip/category/header/Christmas"
 msgstr "Рождественские коробки"
@@ -281,9 +222,6 @@ msgstr "Новогодние коробки"
 
 msgid "tooltip/category/header/Oriental"
 msgstr "Восточные коробки"
-
-msgid "tooltip/category/header/newYear_usual"
-msgstr "Малые коробки"
 
 msgid "tooltip/category/rewards/Christmas"
 msgstr "Рождественской коллекции"
@@ -298,35 +236,25 @@ msgid "tooltip/category/rewards/Oriental"
 msgstr "Восточной коллекции"
 
 msgid "tooltip/category/rewards/description"
-msgstr ""
-"В коробках находится украшение из {category} и другое ценное имущество."
+msgstr "В коробках находятся украшения из {category} и другие ценные награды."
 
 msgid "tooltip/category/rewards/header"
 msgstr "Награды:"
 
-msgid "tooltip/category/usual_rewards"
-msgstr ""
-"В коробках можно найти большие украшения, осколки для создания украшений и "
-"другое ценное имущество."
+msgid "tooltip/entryView/buyBoxes"
+msgstr "Купить дополнительные коробки в Премиум магазине."
 
-msgid "tooltip/countButton/notEnabled"
-msgstr "Недостаточно коробок для данного варианта"
-
-msgid "tooltip/entryView/buyBoxesIngameShop"
-msgstr ""
-"Нажмите, чтобы перейти к покупке больших коробок во внутриигровом Магазине."
-
-msgid "tooltip/entryView/buyBoxesPremiumShop"
-msgstr "Нажмите, чтобы перейти к покупке больших коробок в Премиум магазине."
+msgid "tooltip/entryView/openBoxes"
+msgstr "Открывать одновременно по несколько коробок."
 
 msgid "tooltip/restrictedMode"
 msgstr "Операция временно недоступна. Попробуйте позже."
 
 msgid "type/newYear_premium"
-msgstr "Большая коробка"
+msgstr "БОЛЬШИЕ КОРОБКИ"
 
 msgid "type/newYear_usual"
-msgstr "Малая коробка"
+msgstr "МАЛЫЕ КОРОБКИ"
 
 msgid "type/wt_boss"
 msgstr "Инженера"

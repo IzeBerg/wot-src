@@ -115,16 +115,7 @@ _TOOLTIP_TYPE = {ItemPackType.ITEM_DEVICE: TOOLTIPS_CONSTANTS.SHOP_MODULE,
    ItemPackType.BLUEPRINT_ANY: TOOLTIPS_CONSTANTS.BLUEPRINT_RANDOM_INFO, 
    ItemPackType.REFERRAL_AWARDS: TOOLTIPS_CONSTANTS.REFERRAL_AWARDS, 
    ItemPackType.DEMOUNT_KIT: TOOLTIPS_CONSTANTS.AWARD_DEMOUNT_KIT, 
-   ItemPackType.CUSTOM_BATTLE_PASS_POINTS: TOOLTIPS_CONSTANTS.BATTLE_PASS_POINTS, 
-   ItemPackType.SHOP_SALES_CURRENT_DISCOUNT: TOOLTIPS_CONSTANTS.CURRENT_DISCOUNT_INFO, 
-   ItemPackType.SHOP_SALES_FREE_SHUFFLE: TOOLTIPS_CONSTANTS.SHOP_SALES_FREE_SHUFFLE_INFO, 
-   ItemPackType.SHOP_SALES_PAID_SHUFFLE: TOOLTIPS_CONSTANTS.SHOP_SALES_PAID_SHUFFLE_INFO, 
-   ItemPackType.SHOP_SALES_VOTE_FOR_DISCOUNT: TOOLTIPS_CONSTANTS.SHOP_SALES_VOTE_FOR_DISCOUNT, 
-   ItemPackType.LUNAR_NY_ENVELOPE: TOOLTIPS_CONSTANTS.SHOP_LUNAR_NY_ENVELOPE, 
-   ItemPackType.LUNAR_NY_PREREQUISITE: TOOLTIPS_CONSTANTS.SHOP_LUNAR_NY_PREREQUISITE}
-WULF_TOOLTIP_TYPES = (
- TOOLTIPS_CONSTANTS.SHOP_LUNAR_NY_ENVELOPE,
- TOOLTIPS_CONSTANTS.SHOP_LUNAR_NY_PREREQUISITE)
+   ItemPackType.CUSTOM_BATTLE_PASS_POINTS: TOOLTIPS_CONSTANTS.BATTLE_PASS_POINTS}
 _ICONS = {ItemPackType.CAMOUFLAGE_ALL: RES_SHOP.MAPS_SHOP_REWARDS_48X48_PRIZE_CAMOUFLAGE, 
    ItemPackType.CAMOUFLAGE_WINTER: RES_SHOP.MAPS_SHOP_REWARDS_48X48_PRIZE_CAMOUFLAGE, 
    ItemPackType.CAMOUFLAGE_SUMMER: RES_SHOP.MAPS_SHOP_REWARDS_48X48_PRIZE_CAMOUFLAGE, 
@@ -357,47 +348,14 @@ def getItemTooltipType(rawItem, item):
 def showItemTooltip(toolTipMgr, rawItem, item):
     tooltipType = getItemTooltipType(rawItem, item)
     if tooltipType is not None:
-        if tooltipType in WULF_TOOLTIP_TYPES:
-            buildArgs = [
-             rawItem.id, rawItem.count]
-            toolTipMgr.showWulfTooltip(tooltipType, buildArgs)
-        else:
-            defaults = toolTipMgr.getTypedTooltipDefaultBuildArgs(tooltipType)
-            buildArgs = [ rawItem.extra.get(argName, defaultValue) for argName, defaultValue in defaults ]
-            toolTipMgr.onCreateTypedTooltip(tooltipType, [rawItem.id] + buildArgs[1:], 'INFO')
+        defaults = toolTipMgr.getTypedTooltipDefaultBuildArgs(tooltipType)
+        buildArgs = [ rawItem.extra.get(argName, defaultValue) for argName, defaultValue in defaults ]
+        toolTipMgr.onCreateTypedTooltip(tooltipType, [rawItem.id] + buildArgs[1:], 'INFO')
     else:
         header = getItemTitle(rawItem, item)
         body = getItemDescription(rawItem, item)
         tooltip = makeTooltip(header, body)
         toolTipMgr.onCreateComplexTooltip(tooltip, 'INFO')
-    return
-
-
-def showCurrentDiscountTooltip(toolTipMgr, itemType, currentDiscount):
-    tooltipType = _TOOLTIP_TYPE.get(itemType)
-    if tooltipType is not None:
-        toolTipMgr.onCreateTypedTooltip(tooltipType, [currentDiscount], 'INFO')
-    return
-
-
-def showFreeShuffleTooltip(toolTipMgr, itemType, maxNumber, paidShuffleCost):
-    tooltipType = _TOOLTIP_TYPE.get(itemType)
-    if tooltipType is not None:
-        toolTipMgr.onCreateTypedTooltip(tooltipType, [maxNumber, paidShuffleCost], 'INFO')
-    return
-
-
-def showPaidShuffleTooltip(toolTipMgr, itemType):
-    tooltipType = _TOOLTIP_TYPE.get(itemType)
-    if tooltipType is not None:
-        toolTipMgr.onCreateTypedTooltip(tooltipType, [], 'INFO')
-    return
-
-
-def showVoteForDiscountTooltip(toolTipMgr, itemType, maxNumber, available):
-    tooltipType = _TOOLTIP_TYPE.get(itemType)
-    if tooltipType is not None:
-        toolTipMgr.onCreateTypedTooltip(tooltipType, [maxNumber, available], 'INFO')
     return
 
 

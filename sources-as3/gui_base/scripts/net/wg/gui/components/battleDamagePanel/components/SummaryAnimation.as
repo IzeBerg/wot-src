@@ -9,6 +9,8 @@ package net.wg.gui.components.battleDamagePanel.components
       
       private var _preCacheAnimation:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function SummaryAnimation()
       {
          super();
@@ -23,6 +25,7 @@ package net.wg.gui.components.battleDamagePanel.components
       
       public function dispose() : void
       {
+         this._disposed = true;
          gotoAndStop(1);
       }
       
@@ -46,6 +49,11 @@ package net.wg.gui.components.battleDamagePanel.components
             visible = true;
          }
          gotoAndPlay(1);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

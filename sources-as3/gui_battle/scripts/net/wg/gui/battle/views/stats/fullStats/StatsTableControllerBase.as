@@ -32,6 +32,8 @@ package net.wg.gui.battle.views.stats.fullStats
       
       private var _isRenderingAvailable:Boolean;
       
+      private var _disposed:Boolean = false;
+      
       public function StatsTableControllerBase()
       {
          super();
@@ -219,6 +221,7 @@ package net.wg.gui.battle.views.stats.fullStats
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -313,6 +316,11 @@ package net.wg.gui.battle.views.stats.fullStats
                this.setSelectedItem(true,this._enemyRenderers.indexOf(_loc2_));
             }
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -33,6 +33,8 @@ package net.wg.gui.lobby.settings.vo
       
       public var codependentID:String = null;
       
+      private var _disposed:Boolean = false;
+      
       public var showUnderline:Boolean = false;
       
       public var rendererYOffset:Number = 0;
@@ -87,6 +89,7 @@ package net.wg.gui.lobby.settings.vo
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.keysRang = null;
       }
       
@@ -105,6 +108,11 @@ package net.wg.gui.lobby.settings.vo
             "rendererYOffset":this.rendererYOffset,
             "tooltipID":this.tooltipID
          };
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

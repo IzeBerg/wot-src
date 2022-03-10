@@ -20,6 +20,8 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
       
       public var hitMarkerState:MovieClip;
       
+      private var _disposed:Boolean = false;
+      
       public function HeadquarterLifeStates()
       {
          super();
@@ -39,6 +41,7 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.liveMarkerState = null;
          this.hit_piercedMarkerState = null;
          this.hitMarkerState = null;
@@ -62,6 +65,11 @@ package net.wg.gui.battle.views.staticMarkers.epic.headquarter
             this.hitMarkerState.visible = true;
             this.hitMarkerState.gotoAndStop(ActionMarkerStates.STATE_INT_TO_STRING[param2]);
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

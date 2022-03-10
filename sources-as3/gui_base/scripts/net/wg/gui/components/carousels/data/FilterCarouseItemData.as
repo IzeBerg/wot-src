@@ -13,6 +13,8 @@ package net.wg.gui.components.carousels.data
       
       private var _dataProvider:DataProvider = null;
       
+      private var _disposed:Boolean = false;
+      
       public function FilterCarouseItemData(param1:int, param2:String, param3:DataProvider)
       {
          super();
@@ -23,6 +25,7 @@ package net.wg.gui.components.carousels.data
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -44,6 +47,11 @@ package net.wg.gui.components.carousels.data
       public function get dataProvider() : DataProvider
       {
          return this._dataProvider;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

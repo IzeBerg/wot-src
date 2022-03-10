@@ -9144,98 +9144,6 @@
 				</_90mm_HE_T91E3_L>
 			</shots>
 		</_90mm_Gun_T114>
-		<_105mm_SPH_M4_L23>
-			<userString>#usa_vehicles:_105mm_SPH_M4_L23</userString>
-			<tags/>
-			<level>5</level>
-			<price>40300</price>
-			<impulse>
-				0.48
-				<!--BW_String-->
-			</impulse>
-			<recoil>
-				<lodDist>MEDIUM</lodDist>
-				<amplitude>
-					0.24
-					<!--BW_String-->
-				</amplitude>
-				<recoilEffect>main</recoilEffect>
-			</recoil>
-			<effects>shot_large</effects>
-			<reloadEffect>reload85_107</reloadEffect>
-			<pitchLimits>
-				<minPitch>
-					0.0 -20.0 1.0 -20.0
-					<!--BW_String-->
-				</minPitch>
-				<maxPitch>
-					0.0 10.0 1.0 10.0
-					<!--BW_String-->
-				</maxPitch>
-			</pitchLimits>
-			<turretYawLimits>-180 180</turretYawLimits>
-			<rotationSpeed>
-				35.0
-				<!--BW_String-->
-			</rotationSpeed>
-			<reloadTime>8</reloadTime>
-			<maxAmmo>46</maxAmmo>
-			<aimingTime>
-				2.28571428571429
-				<!--BW_String-->
-			</aimingTime>
-			<weight>2600</weight>
-			<maxHealth>150</maxHealth>
-			<maxRegenHealth>75</maxRegenHealth>
-			<repairCost>8</repairCost>
-			<invisibilityFactorAtShot>
-				0.1
-				<!--BW_String-->
-			</invisibilityFactorAtShot>
-			<shotDispersionRadius>
-				0.548571428571429
-				<!--BW_String-->
-			</shotDispersionRadius>
-			<shotDispersionFactors>
-				<turretRotation>
-					0.16
-					<!--BW_String-->
-				</turretRotation>
-				<afterShot>
-					4.0
-					<!--BW_String-->
-				</afterShot>
-				<whileGunDamaged>
-					2.0
-					<!--BW_String-->
-				</whileGunDamaged>
-			</shotDispersionFactors>
-			<shots>
-				<_105mm_HE_M1>
-					<defaultPortion>1</defaultPortion>
-					<speed>472</speed>
-					<gravity>
-						9.81
-						<!--BW_String-->
-					</gravity>
-					<maxDistance>720</maxDistance>
-					<piercingPower>53 53</piercingPower>
-				</_105mm_HE_M1>
-				<_105mm_HEAT_M67>
-					<defaultPortion>
-						0.0
-						<!--BW_String-->
-					</defaultPortion>
-					<speed>381</speed>
-					<gravity>
-						9.81
-						<!--BW_String-->
-					</gravity>
-					<maxDistance>720</maxDistance>
-					<piercingPower>102 102</piercingPower>
-				</_105mm_HEAT_M67>
-			</shots>
-		</_105mm_SPH_M4_L23>
 		<_90mm_Gun_T15E2>
 			<userString>#usa_vehicles:_90mm_Gun_T15E2</userString>
 			<tags/>
@@ -9897,6 +9805,98 @@
 				</_90mm_HE_T340>
 			</shots>
 		</_90mm_Gun_T208_rifled>
+		<_105mm_SPH_M4_L23>
+			<userString>#usa_vehicles:_105mm_SPH_M4_L23</userString>
+			<tags/>
+			<level>5</level>
+			<price>40300</price>
+			<impulse>
+				0.48
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.24
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>main</recoilEffect>
+			</recoil>
+			<effects>shot_large</effects>
+			<reloadEffect>reload85_107</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -20.0 1.0 -20.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 10.0 1.0 10.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>
+				35.0
+				<!--BW_String-->
+			</rotationSpeed>
+			<reloadTime>8</reloadTime>
+			<maxAmmo>46</maxAmmo>
+			<aimingTime>
+				2.28571428571429
+				<!--BW_String-->
+			</aimingTime>
+			<weight>2600</weight>
+			<maxHealth>150</maxHealth>
+			<maxRegenHealth>75</maxRegenHealth>
+			<repairCost>8</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.548571428571429
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.16
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					4.0
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_105mm_HE_M1>
+					<defaultPortion>1</defaultPortion>
+					<speed>472</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>53 53</piercingPower>
+				</_105mm_HE_M1>
+				<_105mm_HEAT_M67>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>381</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>102 102</piercingPower>
+				</_105mm_HEAT_M67>
+			</shots>
+		</_105mm_SPH_M4_L23>
 		<_105mm_AT_SPH_M4_L23>
 			<userString>#usa_vehicles:_105mm_AT_SPH_M4_L23</userString>
 			<tags/>

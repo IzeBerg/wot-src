@@ -23,6 +23,8 @@ package net.wg.gui.lobby.battleResults.data
       
       private var _columnWidth:int;
       
+      private var _disposed:Boolean = false;
+      
       public function ColumnData(param1:int, param2:String, param3:String, param4:String, param5:int)
       {
          super();
@@ -35,6 +37,7 @@ package net.wg.gui.lobby.battleResults.data
       
       public function dispose() : void
       {
+         this._disposed = true;
          if(this._sortingKeys != null)
          {
             this._sortingKeys.splice(0);
@@ -84,6 +87,11 @@ package net.wg.gui.lobby.battleResults.data
       public function get columnId() : String
       {
          return this._columnId;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

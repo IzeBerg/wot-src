@@ -36,5 +36,10 @@ package net.wg.mock.utils
       public function unregisterComponent(param1:IHelpLayoutComponent) : void
       {
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return false;
+      }
    }
 }

@@ -96,6 +96,8 @@ package net.wg.gui.components.crosshairPanel
       
       private var _quickReloadingTimerVisible:Boolean = true;
       
+      private var _disposed:Boolean = false;
+      
       public function CrosshairBase()
       {
          super();
@@ -138,6 +140,7 @@ package net.wg.gui.components.crosshairPanel
       
       public function dispose() : void
       {
+         this._disposed = true;
          removeEventListener(CrosshairPanelEvent.SOUND,this.onCrosshairPanelSoundHandler);
          this.timerProgressTextField = null;
          this.timerCompleteTextField = null;
@@ -617,6 +620,11 @@ package net.wg.gui.components.crosshairPanel
          {
             param1.stopImmediatePropagation();
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

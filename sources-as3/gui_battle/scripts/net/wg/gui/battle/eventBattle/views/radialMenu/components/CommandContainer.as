@@ -21,6 +21,8 @@ package net.wg.gui.battle.eventBattle.views.radialMenu.components
       
       private var _align:String = "left";
       
+      private var _disposed:Boolean = false;
+      
       public function CommandContainer()
       {
          super();
@@ -36,6 +38,7 @@ package net.wg.gui.battle.eventBattle.views.radialMenu.components
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.titleEnemyTF = null;
          this.titleAllyTF = null;
          this.titleNormalTF = null;
@@ -45,10 +48,9 @@ package net.wg.gui.battle.eventBattle.views.radialMenu.components
       public function setTitleText(param1:String, param2:String) : void
       {
          var _loc3_:Boolean = false;
-         var _loc4_:Boolean = false;
          var _loc5_:Boolean = false;
          _loc3_ = param2 == EventRadialMenu.DEFAULT_STATE;
-         _loc4_ = param2 == EventRadialMenu.ALLY_STATE;
+         var _loc4_:Boolean = param2 == EventRadialMenu.ALLY_STATE;
          _loc5_ = param2 == EventRadialMenu.ENEMY_STATE;
          this.titleNormalTF.visible = _loc3_;
          this.titleAllyTF.visible = _loc4_;
@@ -83,6 +85,11 @@ package net.wg.gui.battle.eventBattle.views.radialMenu.components
          setTFAlign(this.titleAllyTF,param1);
          setTFAlign(this.titleNormalTF,param1);
          setTFAlign(this.keyTF,param1);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

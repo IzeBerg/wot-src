@@ -30,12 +30,13 @@ class EpicRespawnsController(RespawnsController):
     def startControl(self):
         super(EpicRespawnsController, self).startControl()
         playerDataComp = getattr(self.sessionProvider.arenaVisitor.getComponentSystem(), 'playerDataComponent', None)
-        if playerDataComp is not None:
+        if playerDataComp is None:
+            LOG_ERROR('Expected PlayerDataComponent not present!')
+            return
+        else:
             playerDataComp.onPlayerRespawnLaneUpdated += self.__onPlayerRespawnLaneUpdated
             playerDataComp.onPlayerGroupsChanged += self.__onPlayerGroupsChanged
-        else:
-            LOG_ERROR('Expected PlayerDataComponent not present!')
-        return
+            return
 
     def stopControl(self):
         super(EpicRespawnsController, self).stopControl()
@@ -47,12 +48,11 @@ class EpicRespawnsController(RespawnsController):
 
     def updateVehicleLimits(self, limits):
         super(EpicRespawnsController, self).updateVehicleLimits(limits)
-        self.__onPlayerGroupsChanged(None)
-        return
+        self.__onRespawnInfoUpdated()
 
     def updateRespawnInfo(self, respawnInfo):
         super(EpicRespawnsController, self).updateRespawnInfo(respawnInfo)
-        self.__onRespawnInfoUpdated(self.respawnInfo)
+        self.__onRespawnInfoUpdated()
 
     @staticmethod
     def requestLaneForRespawn(laneID):
@@ -66,62 +66,49 @@ class EpicRespawnsController(RespawnsController):
         super(EpicRespawnsController, self)._show()
         playerDataComp = getattr(self.sessionProvider.arenaVisitor.getComponentSystem(), 'playerDataComponent', None)
         if playerDataComp is not None:
-            self.__onRespawnInfoUpdated(self.respawnInfo)
             self.__onPlayerRespawnLaneUpdated(playerDataComp.respawnLane)
-            self.__onPlayerGroupsChanged(None)
         return
 
     def __onPlayerRespawnLaneUpdated(self, laneID):
         for viewCmp in self._viewComponents:
             viewCmp.setSelectedLane(laneID)
 
-        self.__onPlayerGroupsChanged(None)
-        return
-
-    def __onRespawnInfoUpdated(self, respawnInfo):
-        if not self.isRespawnVisible():
-            return
-        else:
-            for viewCmp in self._viewComponents:
-                viewCmp.setRespawnInfo(respawnInfo)
-
-            self.__onPlayerGroupsChanged(None)
-            return
+        self.__onRespawnInfoUpdated()
 
     def __onPlayerGroupsChanged(self, _):
-        if not self.isRespawnVisible():
-            return
-        else:
-            arena = avatar_getter.getArena()
-            if arena is None:
-                return
-            playerDataComp = getattr(self.sessionProvider.arenaVisitor.getComponentSystem(), 'playerDataComponent', None)
-            if playerDataComp is None:
-                LOG_ERROR('Expected PlayerDataComponent not present!')
-                return
-            vehicleLimits = self.getLimits()
-            limit = arena.arenaType.playerGroupLimit
-            selectedVehicleID = 0
-            availableLanes = [ lane for lane in range(EB_MIN_RESPAWN_LANE_IDX, EB_MAX_RESPAWN_LANE_IDX) if playerDataComp.getPlayersForTeamAndGroup(avatar_getter.getPlayerTeam(), lane) < limit
-                             ]
-            if self.respawnInfo:
-                selectedVehicleID = self.respawnInfo.vehicleID
-            for lane in range(EB_MIN_RESPAWN_LANE_IDX, EB_MAX_RESPAWN_LANE_IDX):
-                if playerDataComp.respawnLane == lane:
-                    isEnoughPlace = True
-                else:
-                    isEnoughPlace = playerDataComp.getPlayersForTeamAndGroup(avatar_getter.getPlayerTeam(), lane) < limit
-                isVehicleBlocked = lane in vehicleLimits and selectedVehicleID in vehicleLimits[lane]
-                isAvailableForPlayer = (isEnoughPlace or playerDataComp.respawnLane == lane and not availableLanes) and not isVehicleBlocked
-                reasonText = ''
-                if not isEnoughPlace:
-                    reasonText = backport.text(R.strings.epic_battle.deploymentMap.lanePlayerLimitReached())
-                else:
-                    if isVehicleBlocked:
-                        reasonText = backport.text(R.strings.epic_battle.deploymentMap.spgLimitReached())
-                    if not isEnoughPlace or isVehicleBlocked:
-                        LOG_DEBUG('lane %d is blocked for %d ', lane, selectedVehicleID, isVehicleBlocked, 0 if lane not in vehicleLimits else vehicleLimits[lane])
-                    for viewCmp in self._viewComponents:
-                        viewCmp.setLaneState(lane, isAvailableForPlayer, reasonText)
+        self.__onRespawnInfoUpdated()
 
+    def __onRespawnInfoUpdated(self):
+        arena = avatar_getter.getArena()
+        playerDataComp = getattr(self.sessionProvider.arenaVisitor.getComponentSystem(), 'playerDataComponent', None)
+        if not arena or not playerDataComp or not self.isRespawnVisible():
             return
+        for viewCmp in self._viewComponents:
+            viewCmp.setRespawnInfo(self.respawnInfo)
+
+        vehicleLimits = self.getLimits()
+        limit = arena.arenaType.playerGroupLimit
+        selectedVehicleID = 0
+        availableLanes = [ lane for lane in range(EB_MIN_RESPAWN_LANE_IDX, EB_MAX_RESPAWN_LANE_IDX) if playerDataComp.getPlayersForTeamAndGroup(avatar_getter.getPlayerTeam(), lane) < limit
+                         ]
+        if self.respawnInfo:
+            selectedVehicleID = self.respawnInfo.vehicleID
+        for lane in range(EB_MIN_RESPAWN_LANE_IDX, EB_MAX_RESPAWN_LANE_IDX):
+            if playerDataComp.respawnLane == lane:
+                isEnoughPlace = True
+            else:
+                isEnoughPlace = playerDataComp.getPlayersForTeamAndGroup(avatar_getter.getPlayerTeam(), lane) < limit
+            isVehicleBlocked = lane in vehicleLimits and selectedVehicleID in vehicleLimits[lane]
+            isAvailableForPlayer = (isEnoughPlace or playerDataComp.respawnLane == lane and not availableLanes) and not isVehicleBlocked
+            reasonText = ''
+            if not isEnoughPlace:
+                reasonText = backport.text(R.strings.epic_battle.deploymentMap.lanePlayerLimitReached())
+            else:
+                if isVehicleBlocked:
+                    reasonText = backport.text(R.strings.epic_battle.deploymentMap.spgLimitReached())
+                if not isEnoughPlace or isVehicleBlocked:
+                    LOG_DEBUG('lane %d is blocked for %d ', lane, selectedVehicleID, isVehicleBlocked, 0 if lane not in vehicleLimits else vehicleLimits[lane])
+                for viewCmp in self._viewComponents:
+                    viewCmp.setLaneState(lane, isAvailableForPlayer, reasonText)
+
+        return

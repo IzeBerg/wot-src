@@ -106,6 +106,7 @@ package net.wg.gui.lobby.tankman
             while(this._vehicleButtons.length)
             {
                _loc1_ = this._vehicleButtons.pop();
+               this.setToolTipListeners(_loc1_,false);
                _loc1_.removeEventListener(ButtonEvent.CLICK,this.onVehicleTypeButtonClickHandler);
                _loc1_.dispose();
             }

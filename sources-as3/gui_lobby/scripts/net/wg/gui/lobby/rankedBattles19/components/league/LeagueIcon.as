@@ -10,6 +10,8 @@ package net.wg.gui.lobby.rankedBattles19.components.league
       
       public var hit:Sprite = null;
       
+      private var _disposed:Boolean = false;
+      
       public function LeagueIcon()
       {
          super();
@@ -18,8 +20,14 @@ package net.wg.gui.lobby.rankedBattles19.components.league
       
       public final function dispose() : void
       {
+         this._disposed = true;
          hitArea = null;
          this.hit = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

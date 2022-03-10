@@ -33,6 +33,8 @@ _SNDID_BONUS = 'result_screen_bonus'
 _HMTL_STRING_FORMAT_PATH = 'html_templates:lobby/quests/linkedSet'
 _HMTL_STRING_FORMAT_DESC_KEY = 'awardWindowDescTemplate'
 _HMTL_STRING_FORMAT_HINT_DESC_KEY = 'awardWindowHintDescTemplate'
+_LINKEDSET_QUEST_PREFIX = LINKEDSET_GROUP_PREFIX[:-1]
+_QUESTS_WITH_AWARDS = frozenset(['2_2', '2_4', '3_1', '3_2'])
 
 class LinkedSetController(ILinkedSetController):
     battleResults = dependency.descriptor(IBattleResultsService)
@@ -135,6 +137,17 @@ class LinkedSetController(ILinkedSetController):
     def isBootcampQuest(self, quest):
         return getLinkedSetMissionIDFromQuest(quest) == 1
 
+    def isLinkedSetQuest(self, questID):
+        return questID.startswith(_LINKEDSET_QUEST_PREFIX)
+
+    def isLinkedSetQuestWithAwards(self, questID):
+        if not self.isLinkedSetQuest(questID):
+            return False
+        parts = questID.split('_', 1)
+        if len(parts) > 1:
+            return parts[1] in _QUESTS_WITH_AWARDS
+        return False
+
     def getInitialMissionID(self):
         return 1
 
@@ -157,6 +170,10 @@ class LinkedSetController(ILinkedSetController):
 
     def getLinkedSetQuests(self, filterFunc=None):
         return self.eventsCache.getLinkedSetQuests(filterFunc)
+
+    def showAwardView(self, questIDs):
+        quests = [ q for q in self.eventsCache.getLinkedSetQuests().values() if q.getID() in questIDs ]
+        self._showAwardsFor(quests)
 
     def _getIsLinkedSetEnabled(self):
         if self.lobbyContext.getServerSettings().isLinkedSetEnabled():

@@ -21,6 +21,8 @@ package net.wg.gui.battle.components.preBattleTimer
       
       private var _nextDigitToX:int = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function DigitsChain(param1:Vector.<DigitAnim>)
       {
          super();
@@ -29,6 +31,7 @@ package net.wg.gui.battle.components.preBattleTimer
       
       public final function dispose() : void
       {
+         this._disposed = true;
          var _loc1_:int = 0;
          while(_loc1_ < this._chainLen)
          {
@@ -142,6 +145,11 @@ package net.wg.gui.battle.components.preBattleTimer
             this._isAnimInProgress = false;
             this._isAnimInit = false;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -74,5 +74,10 @@ package net.wg.gui.lobby.rankedBattles19.view.seasonComplete
       {
          this.counter.endingChar = param1;
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._baseDisposed;
+      }
    }
 }

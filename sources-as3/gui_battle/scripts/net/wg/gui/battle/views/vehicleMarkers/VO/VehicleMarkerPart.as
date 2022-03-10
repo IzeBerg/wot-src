@@ -16,6 +16,8 @@ package net.wg.gui.battle.views.vehicleMarkers.VO
       
       private var _height:int = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function VehicleMarkerPart(param1:Object, param2:int, param3:CrossOffset)
       {
          super();
@@ -27,6 +29,7 @@ package net.wg.gui.battle.views.vehicleMarkers.VO
       
       public final function dispose() : void
       {
+         this._disposed = true;
          if(this._crossOffset)
          {
             this._crossOffset.dispose();
@@ -69,6 +72,11 @@ package net.wg.gui.battle.views.vehicleMarkers.VO
             this._height = this._part.height;
          }
          return this._height;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -11,6 +11,8 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell.utils
       
       private var _moneyByType:Object;
       
+      private var _disposed:Boolean = false;
+      
       public function VehicleSellDialogMoney()
       {
          this._money = new Vector.<VehicleSellDialogMoneyVO>(0);
@@ -23,6 +25,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell.utils
       
       public function dispose() : void
       {
+         this._disposed = true;
          this._money.splice(0,this._money.length);
          this._money = null;
          this._moneyByType = null;
@@ -103,6 +106,11 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell.utils
             _loc3_++;
          }
          return _loc1_;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

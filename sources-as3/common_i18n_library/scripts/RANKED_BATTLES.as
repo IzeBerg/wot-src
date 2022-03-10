@@ -751,6 +751,8 @@ package
       
       public static const REWARDSVIEW_TABS_YEAR_CURRENTFINAL:String = "#ranked_battles:rewardsView/tabs/year/currentFinal";
       
+      public static const REWARDSVIEW_TABS_YEAR_CURRENTCHOOSE:String = "#ranked_battles:rewardsView/tabs/year/currentChoose";
+      
       public static const REWARDSVIEW_COMMON_CURRENTREWARD:String = "#ranked_battles:rewardsView/common/currentReward";
       
       public static const DIVISION_TOOLTIP_RANKDESCRIPTION:String = "#ranked_battles:division/tooltip/rankDescription";
@@ -875,6 +877,10 @@ package
       
       public static const YEARREWARDS_TOOLTIP_STATUS_CURRENTFINAL_DESCRIPTION:String = "#ranked_battles:yearRewards/tooltip/status/currentFinal/description";
       
+      public static const YEARREWARDS_TOOLTIP_STATUS_CURRENTCHOOSE_TITLE:String = "#ranked_battles:yearRewards/tooltip/status/currentChoose/title";
+      
+      public static const YEARREWARDS_TOOLTIP_STATUS_CURRENTCHOOSE_DESCRIPTION:String = "#ranked_battles:yearRewards/tooltip/status/currentChoose/description";
+      
       public static const YEARREWARDS_TOOLTIP_STATUS_PASSEDFINAL_TITLE:String = "#ranked_battles:yearRewards/tooltip/status/passedFinal/title";
       
       public static const YEARREWARDS_TOOLTIP_STATUS_PASSEDFINAL_DESCRIPTION:String = "#ranked_battles:yearRewards/tooltip/status/passedFinal/description";
@@ -917,7 +923,11 @@ package
       
       public static const YEAR_AWARD_RANKEDLABEL:String = "#ranked_battles:year_award/rankedLabel";
       
+      public static const YEAR_AWARD_REWARDSELECTED:String = "#ranked_battles:year_award/rewardSelected";
+      
       public static const YEAR_AWARD_COMPENSATIONLABEL:String = "#ranked_battles:year_award/compensationLabel";
+      
+      public static const YEAR_AWARD_REWARDSTOSELECT:String = "#ranked_battles:year_award/rewardsToSelect";
       
       public static const YEAR_AWARD_ACCEPTBUTTON_ACCEPTLABEL:String = "#ranked_battles:year_award/acceptButton/acceptLabel";
       
@@ -1026,6 +1036,16 @@ package
       public static const QUALIFICATIONREWARDS_BATTLESPLAYED:String = "#ranked_battles:qualificationRewards/battlesPlayed";
       
       public static const QUALIFICATIONREWARDS_BATTLESNEEDED:String = "#ranked_battles:qualificationRewards/battlesNeeded";
+      
+      public static const SELECTABLEREWARD_TITLE:String = "#ranked_battles:selectableReward/title";
+      
+      public static const SELECTABLEREWARD_SUBTITLE:String = "#ranked_battles:selectableReward/subTitle";
+      
+      public static const SELECTABLEREWARD_TOOLTIP_EQUIPMENTCHOICE_TITLE:String = "#ranked_battles:selectableReward/tooltip/equipmentChoice/title";
+      
+      public static const SELECTABLEREWARD_TOOLTIP_EQUIPMENTCHOICE_LIST:String = "#ranked_battles:selectableReward/tooltip/equipmentChoice/list";
+      
+      public static const SELECTABLEREWARD_TOOLTIP_EQUIPMENTCHOICE_LIMIT:String = "#ranked_battles:selectableReward/tooltip/equipmentChoice/limit";
        
       
       public function RANKED_BATTLES()

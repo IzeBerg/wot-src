@@ -14,6 +14,8 @@ package net.wg.gui.components.crosshairPanel.components.speedometer
       
       private var _warningText:TextField;
       
+      private var _disposed:Boolean = false;
+      
       public function SpeedometerWarningAnim()
       {
          super();
@@ -22,6 +24,7 @@ package net.wg.gui.components.crosshairPanel.components.speedometer
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.warning = null;
          this._warningText = null;
       }
@@ -32,6 +35,11 @@ package net.wg.gui.components.crosshairPanel.components.speedometer
          this._warningText.text = param1;
          this._warningText.width = this._warningText.textWidth + TEXTFIELD_PADDING;
          this._warningText.x = _loc2_ - this._warningText.width | 0;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -10,6 +10,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       public var marker:Sprite;
       
+      private var _disposed:Boolean = false;
+      
       public function TargetMarker()
       {
          super();
@@ -17,7 +19,13 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.marker = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -23,6 +23,8 @@ package net.wg.infrastructure.uilogger
       
       private var _logPrefix:String;
       
+      private var _disposed:Boolean = false;
+      
       public function UILogger(param1:String, param2:String)
       {
          this._dataUtils = App.utils.data;
@@ -47,6 +49,7 @@ package net.wg.infrastructure.uilogger
       
       public function dispose() : void
       {
+         this._disposed = true;
          this._dataUtils.cleanupDynamicObject(this._logOnce);
          this._dataUtils.cleanupDynamicObject(this._timedActions);
          this._dataUtils = null;
@@ -138,6 +141,11 @@ package net.wg.infrastructure.uilogger
          {
             DebugUtils.LOG_DEBUG(this._logPrefix + "Action " + param1 + " isn\'t started");
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

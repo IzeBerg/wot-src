@@ -43,14 +43,16 @@ package net.wg.infrastructure.managers.impl
             }
             this._popoverCaller = null;
          }
+         this._client = null;
       }
       
-      public final function dispose() : void
+      override protected function onDispose() : void
       {
          this._popoverCaller = null;
          this._client = null;
          this._stage.removeEventListener(MouseEvent.MOUSE_DOWN,this.onStageMouseDownHandler,true);
          this._stage = null;
+         super.onDispose();
       }
       
       public function hide() : void

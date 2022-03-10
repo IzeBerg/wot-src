@@ -8,7 +8,7 @@ from ClientUnitMgr import ClientUnitMgr, ClientUnitBrowser
 from ContactInfo import ContactInfo
 from OfflineMapCreator import g_offlineMapCreator
 from PlayerEvents import g_playerEvents as events
-from account_helpers import AccountSyncData, Inventory, DossierCache, Shop, Stats, QuestProgress, CustomFilesCache, BattleResultsCache, ClientGoodies, client_blueprints, client_recycle_bin, AccountSettings, client_anonymizer, ClientBattleRoyale, shop_sales_event
+from account_helpers import AccountSyncData, Inventory, DossierCache, Shop, Stats, QuestProgress, CustomFilesCache, BattleResultsCache, ClientGoodies, client_blueprints, client_recycle_bin, AccountSettings, client_anonymizer, ClientBattleRoyale
 from account_helpers.dog_tags import DogTags
 from account_helpers.maps_training import MapsTraining
 from account_helpers.offers.sync_data import OffersSyncData
@@ -24,12 +24,11 @@ from account_helpers.settings_core import IntUserSettings
 from account_helpers.session_statistics import SessionStatistics
 from account_helpers.spa_flags import SPAFlags
 from account_helpers.gift_system import GiftSystem
-from lunar_ny.lunar_ny_account_helper import LunarNYAccountHelper
 from account_shared import NotificationItem, readClientServerVersion
 from adisp import process
 from bootcamp.Bootcamp import g_bootcamp
 from constants import ARENA_BONUS_TYPE, QUEUE_TYPE, EVENT_CLIENT_DATA
-from constants import PREBATTLE_INVITE_STATUS, PREBATTLE_TYPE
+from constants import PREBATTLE_INVITE_STATUS, PREBATTLE_TYPE, ARENA_GAMEPLAY_MASK_DEFAULT
 from debug_utils import LOG_DEBUG, LOG_CURRENT_EXCEPTION, LOG_ERROR, LOG_DEBUG_DEV, LOG_WARNING
 from gui.Scaleform.Waiting import Waiting
 from gui.shared.ClanCache import g_clanCache
@@ -70,13 +69,9 @@ def _isStrList(l):
 class _ClientCommandProxy(object):
     _COMMAND_SIGNATURES = (
      (
-      'doCmdInt', lambda args: len(args) == 1 and _isInt(args[0])),
-     (
       'doCmdStr', lambda args: len(args) == 1 and _isStr(args[0])),
      (
       'doCmdIntStr', lambda args: len(args) == 2 and _isInt(args[0]) and _isStr(args[1])),
-     (
-      'doCmdInt', lambda args: len(args) == 1 and all([ _isInt(arg) for arg in args ])),
      (
       'doCmdInt2', lambda args: len(args) == 2 and all([ _isInt(arg) for arg in args ])),
      (
@@ -168,13 +163,11 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.dailyQuests = g_accountRepository.dailyQuests
         self.battlePass = g_accountRepository.battlePass
         self.offers = g_accountRepository.offers
-        self.shopSalesEvent = g_accountRepository.shopSalesEvent
         self.dogTags = g_accountRepository.dogTags
         self.mapsTraining = g_accountRepository.mapsTraining
         self.renewableSubscription = g_accountRepository.renewableSubscription
         self.telecomRentals = g_accountRepository.telecomRentals
         self.giftSystem = g_accountRepository.giftSystem
-        self.lunarNY = g_accountRepository.lunarNY
         self.customFilesCache = g_accountRepository.customFilesCache
         self.syncData.setAccount(self)
         self.inventory.setAccount(self)
@@ -192,13 +185,13 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.ranked.setAccount(self)
         self.battleRoyale.setAccount(self)
         self.badges.setAccount(self)
+        self.tokens.setAccount(self)
         self.epicMetaGame.setAccount(self)
         self.blueprints.setAccount(self)
         self.sessionStats.setAccount(self)
         self.spaFlags.setAccount(self)
         self.anonymizer.setAccount(self)
         self.offers.setAccount(self)
-        self.shopSalesEvent.setAccount(self)
         self.dogTags.setAccount(self)
         self.mapsTraining.setAccount(self)
         self.renewableSubscription.setAccount(self)
@@ -255,7 +248,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.ranked.onAccountBecomePlayer()
         self.battleRoyale.onAccountBecomePlayer()
         self.badges.onAccountBecomePlayer()
-        self.tokens.onAccountBecomePlayer()
+        self.tokens.onAccountBecomeNonPlayer()
         self.epicMetaGame.onAccountBecomePlayer()
         self.blueprints.onAccountBecomePlayer()
         self.festivities.onAccountBecomePlayer()
@@ -268,9 +261,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.anonymizer.onAccountBecomePlayer()
         self.battlePass.onAccountBecomePlayer()
         self.offers.onAccountBecomePlayer()
-        self.shopSalesEvent.onAccountBecomePlayer()
         self.giftSystem.onAccountBecomePlayer()
-        self.lunarNY.onAccountBecomePlayer()
         chatManager.switchPlayerProxy(self)
         events.onAccountBecomePlayer()
         BigWorld.target.source = BigWorld.MouseTargetingMatrix()
@@ -278,7 +269,6 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         BigWorld.target.skeletonCheckEnabled = True
         BigWorld.target.caps()
         BigWorld.target.isEnabled = True
-        BigWorld.target.isFastPicking = True
         uniprof.exitFromRegion('player.account.entering')
         return
 
@@ -310,13 +300,11 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.anonymizer.onAccountBecomeNonPlayer()
         self.battlePass.onAccountBecomeNonPlayer()
         self.offers.onAccountBecomeNonPlayer()
-        self.shopSalesEvent.onAccountBecomeNonPlayer()
         self.dogTags.onAccountBecomeNonPlayer()
         self.mapsTraining.onAccountBecomeNonPlayer()
         self.renewableSubscription.onAccountBecomeNonPlayer()
         self.telecomRentals.onAccountBecomeNonPlayer()
         self.giftSystem.onAccountBecomeNonPlayer()
-        self.lunarNY.onAccountBecomeNonPlayer()
         self.__cancelCommands()
         self.syncData.setAccount(None)
         self.inventory.setAccount(None)
@@ -333,13 +321,13 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.ranked.setAccount(None)
         self.battleRoyale.setAccount(None)
         self.badges.setAccount(None)
+        self.tokens.setAccount(None)
         self.epicMetaGame.setAccount(None)
         self.blueprints.setAccount(None)
         self.sessionStats.setAccount(None)
         self.spaFlags.setAccount(None)
         self.anonymizer.setAccount(None)
         self.offers.setAccount(None)
-        self.shopSalesEvent.setAccount(None)
         g_accountRepository.commandProxy.setGateway(None)
         self.unitMgr.clear()
         self.unitBrowser.clear()
@@ -534,10 +522,6 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.isInTutorialQueue = True
         events.onTutorialEnqueued(number, queueLen, avgWaitingTime)
         events.onEnqueued(QUEUE_TYPE.TUTORIAL)
-
-    @property
-    def selectedEntity(self):
-        return self.__selectedEntity
 
     def targetFocus(self, entity):
         if self.__objectsSelectionEnabled:
@@ -836,7 +820,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self._doCmdIntArrStrArr(AccountCommands.CMD_REQ_PLAYERS_GLOBAL_RATING, accountIDs, [], proxy)
         return
 
-    def enqueueRandom(self, vehInvID, gameplaysMask=65535, arenaTypeID=0, isOnly10ModeEnabled=False):
+    def enqueueRandom(self, vehInvID, gameplaysMask=ARENA_GAMEPLAY_MASK_DEFAULT, arenaTypeID=0, isOnly10ModeEnabled=False):
         if events.isPlayerEntityChanging:
             return
         self.base.doCmdIntArr(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_ENQUEUE_IN_BATTLE_QUEUE, [
@@ -1251,6 +1235,9 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
     def receiveOfferGift(self, offerID, giftID, callback=None):
         return self._doCmdInt2(AccountCommands.CMD_RECEIVE_OFFER_GIFT, offerID, giftID, callback)
 
+    def receiveMultipleOfferGifts(self, chosenGifts, callback=None):
+        return self._doCmdStr(AccountCommands.CMD_RECEIVE_OFFER_GIFT_MULTIPLE, chosenGifts, callback)
+
     def dismountEnhancement(self, vehicleInvID, slot, callback):
         if callback is not None:
             proxy = lambda requestID, resultID, errorStr, ext=None: callback(resultID, errorStr, ext)
@@ -1290,9 +1277,6 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
 
     def _doCmdIntArr(self, cmd, arr, callback):
         return self.__doCmd('doCmdIntArr', cmd, callback, arr)
-
-    def _doCmdIntArrStr(self, cmd, arr, s, callback):
-        return self.__doCmd('doCmdIntArrStr', cmd, callback, arr, s)
 
     def _doCmdIntStrArr(self, cmd, int1, strArr, callback):
         return self.__doCmd('doCmdIntStrArr', cmd, callback, int1, strArr)
@@ -1334,7 +1318,6 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
             self.renewableSubscription.synchronize(isFullSync, diff)
             self.telecomRentals.synchronize(isFullSync, diff)
             self.giftSystem.synchronize(isFullSync, diff)
-            self.lunarNY.synchronize(isFullSync, diff)
             self.__synchronizeServerSettings(diff)
             self.__synchronizeDisabledPersonalMissions(diff)
             self.__synchronizeEventNotifications(diff)
@@ -1569,7 +1552,7 @@ class _AccountRepository(object):
         self.ranked = client_ranked.ClientRanked(self.syncData)
         self.battleRoyale = ClientBattleRoyale.ClientBattleRoyale(self.syncData)
         self.badges = ClientBadges.ClientBadges(self.syncData)
-        self.tokens = tokens.Tokens(self.syncData, self.commandProxy)
+        self.tokens = tokens.Tokens(self.syncData)
         self.epicMetaGame = client_epic_meta_game.ClientEpicMetaGame(self.syncData)
         self.blueprints = client_blueprints.ClientBlueprints(self.syncData)
         self.festivities = FestivityManager(self.syncData, self.commandProxy)
@@ -1579,13 +1562,11 @@ class _AccountRepository(object):
         self.dailyQuests = {}
         self.battlePass = BattlePassManager(self.syncData, self.commandProxy)
         self.offers = OffersSyncData(self.syncData)
-        self.shopSalesEvent = shop_sales_event.ShopSalesEvent()
         self.dogTags = DogTags(self.syncData)
         self.mapsTraining = MapsTraining(self.syncData)
         self.renewableSubscription = RenewableSubscription(self.syncData)
         self.telecomRentals = TelecomRentals(self.syncData)
         self.giftSystem = GiftSystem(self.syncData, self.commandProxy)
-        self.lunarNY = LunarNYAccountHelper(self.syncData, self.commandProxy)
         self.platformBlueprintsConvertSaleLimits = {}
         self.gMap = ClientGlobalMap()
         self.onTokenReceived = Event.Event()

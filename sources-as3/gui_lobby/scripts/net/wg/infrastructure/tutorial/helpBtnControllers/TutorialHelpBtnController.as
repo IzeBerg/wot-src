@@ -28,6 +28,8 @@ package net.wg.infrastructure.tutorial.helpBtnControllers
       
       private var _model:TutorialBtnControllerVO = null;
       
+      private var _disposed:Boolean = false;
+      
       public function TutorialHelpBtnController()
       {
          super();
@@ -50,6 +52,7 @@ package net.wg.infrastructure.tutorial.helpBtnControllers
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._view.removeEventListener(Event.RESIZE,this.onViewResizeHandler);
          this._helpBtn.removeEventListener(ButtonEvent.CLICK,this.onHelpBtnClickHandler);
          this._view = null;
@@ -120,6 +123,11 @@ package net.wg.infrastructure.tutorial.helpBtnControllers
       private function onHelpBtnClickHandler(param1:ButtonEvent) : void
       {
          dispatchEvent(new TutorialHelpBtnEvent(TutorialHelpBtnEvent.HELP_CLICK));
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

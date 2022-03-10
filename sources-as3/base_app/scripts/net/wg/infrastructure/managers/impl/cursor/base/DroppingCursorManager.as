@@ -214,7 +214,7 @@ package net.wg.infrastructure.managers.impl.cursor.base
       
       private function rollOutDropHandler(param1:MouseEvent) : void
       {
-         App.utils.asserter.assert(!disposed,Errors.MTHD_CORRUPT_INVOKE,InfrastructureException);
+         App.utils.asserter.assert(!isDisposed(),Errors.MTHD_CORRUPT_INVOKE,InfrastructureException);
          if(!this.isOnDropping)
          {
             resetCursor();
@@ -241,7 +241,7 @@ package net.wg.infrastructure.managers.impl.cursor.base
          var _loc5_:Boolean = false;
          if(isLeftButton(param1))
          {
-            App.utils.asserter.assert(!disposed,Errors.MTHD_CORRUPT_INVOKE,InfrastructureException);
+            App.utils.asserter.assert(!isDisposed(),Errors.MTHD_CORRUPT_INVOKE,InfrastructureException);
             _loc2_ = this.getDropInfoByHit(InteractiveObject(param1.currentTarget));
             _loc3_ = InteractiveObject(param1.target);
             _loc4_ = _loc2_.container.getHitArea();
@@ -262,7 +262,7 @@ package net.wg.infrastructure.managers.impl.cursor.base
       
       private function mouseUpDropHdlr(param1:MouseEvent) : void
       {
-         App.utils.asserter.assert(!disposed,Errors.MTHD_CORRUPT_INVOKE,InfrastructureException);
+         App.utils.asserter.assert(!isDisposed(),Errors.MTHD_CORRUPT_INVOKE,InfrastructureException);
          this._dropSenderInfo.hit.removeEventListener(MouseEvent.MOUSE_MOVE,this.droppingHandler);
          if(this._dropItem is IDropItem)
          {
@@ -284,7 +284,7 @@ package net.wg.infrastructure.managers.impl.cursor.base
       {
          var _loc3_:InteractiveObject = null;
          var _loc4_:Boolean = false;
-         App.utils.asserter.assert(!disposed,Errors.MTHD_CORRUPT_INVOKE,InfrastructureException);
+         App.utils.asserter.assert(!isDisposed(),Errors.MTHD_CORRUPT_INVOKE,InfrastructureException);
          assertNotNull(this._dropSenderInfo,DROP_SENDER_INFO_IS_NULL);
          var _loc2_:DropInfo = this.getDropInfoByHit(InteractiveObject(param1.currentTarget));
          if(_loc2_.state != BaseInfo.STATE_STARTED)

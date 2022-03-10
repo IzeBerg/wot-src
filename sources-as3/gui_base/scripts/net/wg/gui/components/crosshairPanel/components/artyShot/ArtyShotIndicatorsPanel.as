@@ -108,7 +108,6 @@ package net.wg.gui.components.crosshairPanel.components.artyShot
          var _loc5_:GunMarkerIndicatorVO = null;
          var _loc6_:uint = 0;
          var _loc7_:uint = 0;
-         var _loc10_:uint = 0;
          var _loc3_:uint = param1.length;
          while(this._renderers.length < _loc3_)
          {
@@ -131,7 +130,7 @@ package net.wg.gui.components.crosshairPanel.components.artyShot
          }
          var _loc8_:int = _loc6_ * _loc3_ + X_GAP * (_loc3_ - 1);
          var _loc9_:int = -_loc8_ >> 1;
-         _loc10_ = _loc6_ + X_GAP;
+         var _loc10_:uint = _loc6_ + X_GAP;
          _loc7_ = 0;
          while(_loc7_ < _loc3_)
          {
@@ -167,6 +166,11 @@ package net.wg.gui.components.crosshairPanel.components.artyShot
          var _loc2_:ArtyShotIndicator = new _loc1_();
          addChild(_loc2_);
          this._renderers.push(_loc2_);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._baseDisposed;
       }
    }
 }

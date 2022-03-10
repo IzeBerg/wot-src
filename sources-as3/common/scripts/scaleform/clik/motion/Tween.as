@@ -51,6 +51,8 @@ package scaleform.clik.motion
       
       public var deltaScale:Number = 1;
       
+      private var _disposed:Boolean = false;
+      
       public var frameBased:Boolean = false;
       
       public var delay:Number = 0;
@@ -147,6 +149,7 @@ package scaleform.clik.motion
       public function dispose() : void
       {
          var _loc1_:* = null;
+         this._disposed = true;
          this.paused = true;
          this.target = null;
          this.ease = null;
@@ -361,6 +364,11 @@ package scaleform.clik.motion
                this.onComplete(this);
             }
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

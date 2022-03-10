@@ -71,5 +71,10 @@ package net.wg.gui.battle.views.minimap.components.entries.arty
             this._fadeOutTween = null;
          }
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._baseDisposed;
+      }
    }
 }

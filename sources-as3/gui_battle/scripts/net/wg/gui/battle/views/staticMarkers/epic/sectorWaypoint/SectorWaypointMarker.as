@@ -15,6 +15,8 @@ package net.wg.gui.battle.views.staticMarkers.epic.sectorWaypoint
       
       public var txtLabel:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function SectorWaypointMarker()
       {
          super();
@@ -29,6 +31,7 @@ package net.wg.gui.battle.views.staticMarkers.epic.sectorWaypoint
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.marker.dispose();
          this.marker = null;
          this.arrow = null;
@@ -42,6 +45,11 @@ package net.wg.gui.battle.views.staticMarkers.epic.sectorWaypoint
       
       public function setCountdown(param1:String) : void
       {
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

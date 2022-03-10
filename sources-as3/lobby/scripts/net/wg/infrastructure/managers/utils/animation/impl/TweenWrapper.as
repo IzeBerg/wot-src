@@ -151,6 +151,8 @@ class LinkedObjects implements IDisposable
    
    private var _elementClassName:String = null;
    
+   private var _disposed:Boolean = false;
+   
    function LinkedObjects(param1:IAnimation, param2:String)
    {
       super();
@@ -178,9 +180,15 @@ class LinkedObjects implements IDisposable
       this._elementClassName = param1;
    }
    
-   public function dispose() : void
+   public final function dispose() : void
    {
+      this._disposed = true;
       this._element = null;
       this._elementClassName = null;
+   }
+   
+   public function isDisposed() : Boolean
+   {
+      return this._disposed;
    }
 }

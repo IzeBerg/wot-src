@@ -229,8 +229,6 @@ package
       
       public static const DOWNLOAD_GIFTSYSTEM:String = "#waiting:download/giftSystem";
       
-      public static const DOWNLOAD_LUNARNY:String = "#waiting:download/lunarNY";
-      
       public static const UPDATINGSKILLWINDOW:String = "#waiting:updatingSkillWindow";
       
       public static const PREBATTLE_CREATE:String = "#waiting:prebattle/create";
@@ -329,24 +327,6 @@ package
       
       public static const CREWBOOKS_USECREWBOOK:String = "#waiting:crewBooks/useCrewBook";
       
-      public static const NEWYEAR_BREAKDECORATIONSWAITING:String = "#waiting:newYear/breakDecorationsWaiting";
-      
-      public static const NEWYEAR_BUYCOLLECTIONWAITING:String = "#waiting:newYear/buyCollectionWaiting";
-      
-      public static const NEWYEAR_HANGTOYWAITING:String = "#waiting:newYear/hangToyWaiting";
-      
-      public static const NEWYEAR_BUYTOYWAITING:String = "#waiting:newYear/buyToyWaiting";
-      
-      public static const NEWYEAR_SETVEHICLEBRANCH:String = "#waiting:newYear/setVehicleBranch";
-      
-      public static const NEWYEAR_DELVEHICLEBRANCH:String = "#waiting:newYear/delVehicleBranch";
-      
-      public static const NEWYEAR_CHANGEEXTRASLOTBONUS:String = "#waiting:newYear/changeExtraSlotBonus";
-      
-      public static const NEWYEAR_APPLYVEHICLEDISCOUNT:String = "#waiting:newYear/applyVehicleDiscount";
-      
-      public static const NEWYEAR_RESETLOOTBOXSTATISTICS:String = "#waiting:newYear/resetLootboxStatistics";
-      
       public static const DAILYQUESTS_WAITREROLL:String = "#waiting:dailyQuests/waitReroll";
       
       public static const BUYBATTLEPASS:String = "#waiting:buyBattlePass";
@@ -354,6 +334,8 @@ package
       public static const BUYBATTLEPASSLEVELS:String = "#waiting:buyBattlePassLevels";
       
       public static const CHOOSESTYLE:String = "#waiting:chooseStyle";
+      
+      public static const SWITCHCHAPTER:String = "#waiting:switchChapter";
       
       public static const BATTLEROYALE_HANGARLOADING:String = "#waiting:battleRoyale/hangarLoading";
        

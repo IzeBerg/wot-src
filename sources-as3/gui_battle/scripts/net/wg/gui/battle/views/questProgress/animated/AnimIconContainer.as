@@ -10,6 +10,8 @@ package net.wg.gui.battle.views.questProgress.animated
       
       public var taskIcon:UILoaderAlt = null;
       
+      private var _disposed:Boolean = false;
+      
       public function AnimIconContainer()
       {
          super();
@@ -17,6 +19,7 @@ package net.wg.gui.battle.views.questProgress.animated
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.taskIcon.dispose();
          this.taskIcon = null;
       }
@@ -24,6 +27,11 @@ package net.wg.gui.battle.views.questProgress.animated
       public function set source(param1:String) : void
       {
          this.taskIcon.source = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

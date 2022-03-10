@@ -18,6 +18,8 @@ package net.wg.infrastructure.helpers
       
       private var _currentDroppedItem:InteractiveObject = null;
       
+      private var _disposed:Boolean = false;
+      
       public function DropListDelegateCtrlr(param1:Vector.<InteractiveObject>, param2:Class, param3:String)
       {
          var _loc4_:InteractiveObject = null;
@@ -42,6 +44,7 @@ package net.wg.infrastructure.helpers
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -111,6 +114,11 @@ package net.wg.infrastructure.helpers
       
       private function onControllerStartDropHandler(param1:DropEvent) : void
       {
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

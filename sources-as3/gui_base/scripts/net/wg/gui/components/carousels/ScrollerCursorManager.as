@@ -13,6 +13,8 @@ package net.wg.gui.components.carousels
    {
        
       
+      private var _disposed:Boolean = false;
+      
       public function ScrollerCursorManager()
       {
          super();
@@ -22,6 +24,7 @@ package net.wg.gui.components.carousels
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
          App.cursor.unRegisterDragging(this);
       }
@@ -79,6 +82,11 @@ package net.wg.gui.components.carousels
       public function set enable(param1:Boolean) : void
       {
          mouseEnabled = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

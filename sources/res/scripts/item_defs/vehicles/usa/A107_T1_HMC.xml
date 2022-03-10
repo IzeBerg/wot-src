@@ -5424,10 +5424,6 @@
 						<maxPitch>0 5 1 5</maxPitch>
 					</pitchLimits>
 					<turretYawLimits>-30 30</turretYawLimits>
-					<pitchLimits>
-						<minPitch/>
-						<maxPitch/>
-					</pitchLimits>
 					<invisibilityFactorAtShot>
 						0.221
 						<!--BW_String-->
@@ -5462,6 +5458,7 @@
 						<collisionModelClient>vehicles/american/A107_T1_HMC/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
 					<effects>shot_medium</effects>
+					<reloadEffect>reload50_75</reloadEffect>
 					<customization>
 						<customizableVehicleAreas>
 							<paint>GUN GUN_2</paint>

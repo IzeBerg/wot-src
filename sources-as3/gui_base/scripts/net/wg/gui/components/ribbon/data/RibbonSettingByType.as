@@ -19,6 +19,8 @@ package net.wg.gui.components.ribbon.data
       
       private var _colorMgr:IColorSchemeManager = null;
       
+      private var _disposed:Boolean = false;
+      
       public function RibbonSettingByType(param1:String, param2:String, param3:String, param4:String, param5:int)
       {
          super();
@@ -47,7 +49,13 @@ package net.wg.gui.components.ribbon.data
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._colorMgr = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -11,6 +11,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       public var clickAnimationMC:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function ActionIconStateMarker()
       {
          super();
@@ -31,6 +33,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       public final function dispose() : void
       {
+         this._disposed = true;
          if(this.blinkAnimationMC != null)
          {
             this.blinkAnimationMC.stop();
@@ -41,6 +44,11 @@ package net.wg.gui.battle.views.vehicleMarkers
             this.clickAnimationMC.stop();
             this.clickAnimationMC = null;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -30,5 +30,10 @@ package net.wg.mock
       public function dispose() : void
       {
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return false;
+      }
    }
 }

@@ -214,5 +214,10 @@ package net.wg.gui.battle.views.damagePanel.components.tankman
             this._statusAnimationTimeoutID = Values.DEFAULT_INT;
          }
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._isDisposed;
+      }
    }
 }

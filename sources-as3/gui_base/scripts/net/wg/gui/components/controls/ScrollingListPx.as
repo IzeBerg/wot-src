@@ -60,6 +60,17 @@ package net.wg.gui.components.controls
          mask = this.maskObject;
       }
       
+      override protected function onDispose() : void
+      {
+         if(this.maskObject)
+         {
+            removeChild(this.maskObject);
+            this.maskObject = null;
+         }
+         mask = null;
+         super.onDispose();
+      }
+      
       override public function handleInput(param1:InputEvent) : void
       {
          if(param1.handled)

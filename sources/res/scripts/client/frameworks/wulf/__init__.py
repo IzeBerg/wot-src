@@ -11,6 +11,7 @@ from .gui_constants import NumberFormatType
 from .gui_constants import RealFormatType
 from .gui_constants import TimeFormatType
 from .gui_constants import DateFormatType
+from .gui_constants import CaseType
 from .py_object_wrappers import isTranslatedKeyValid
 from .py_object_wrappers import isTranslatedTextExisted
 from .py_object_wrappers import getTranslatedText
@@ -23,6 +24,7 @@ from .py_object_wrappers import getNumberFormat
 from .py_object_wrappers import getRealFormat
 from .py_object_wrappers import getTimeFormat
 from .py_object_wrappers import getDateFormat
+from .py_object_wrappers import caseMap
 from .view.array import Array
 from .view.command import Command
 from .view.view import ViewSettings
@@ -34,9 +36,9 @@ from .windows_system.window import Window
 from .view.view_model import ViewModel
 __all__ = ('GuiApplication', 'PropertyType', 'PositionAnchor', 'ViewFlags', 'ViewStatus',
            'ViewEventType', 'WindowFlags', 'WindowLayer', 'WindowStatus', 'NumberFormatType',
-           'RealFormatType', 'TimeFormatType', 'DateFormatType', 'Array', 'Command',
-           'ViewSettings', 'View', 'ViewEvent', 'WindowsArea', 'WindowSettings',
+           'RealFormatType', 'TimeFormatType', 'DateFormatType', 'CaseType', 'Array',
+           'Command', 'ViewSettings', 'View', 'ViewEvent', 'WindowsArea', 'WindowSettings',
            'Window', 'ViewModel', 'isTranslatedKeyValid', 'isTranslatedTextExisted',
            'getTranslatedText', 'getImagePath', 'getSoundEffectId', 'getLayoutPath',
            'getTranslatedTextByResId', 'getTranslatedKey', 'getNumberFormat', 'getRealFormat',
-           'getTimeFormat', 'getDateFormat')
+           'getTimeFormat', 'getDateFormat', 'caseMap')

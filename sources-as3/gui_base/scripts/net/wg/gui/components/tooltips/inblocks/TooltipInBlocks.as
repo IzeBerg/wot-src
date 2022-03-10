@@ -85,6 +85,7 @@ package net.wg.gui.components.tooltips.inblocks
       private function rearrangeBlocks() : void
       {
          var _loc4_:int = 0;
+         var _loc8_:int = 0;
          var _loc1_:ITooltipBlock = null;
          var _loc2_:DisplayObject = null;
          var _loc3_:Number = bgShadowMargin.left + contentMargin.left | 0;
@@ -92,7 +93,7 @@ package net.wg.gui.components.tooltips.inblocks
          var _loc5_:Vector.<BlockDataItemVO> = this._inBlocksData.blocksData;
          var _loc6_:PaddingVO = null;
          var _loc7_:Boolean = false;
-         var _loc8_:int = 0;
+         _loc8_ = 0;
          while(_loc8_ < _loc4_)
          {
             _loc1_ = this._blocks[_loc8_];

@@ -89,5 +89,10 @@ package net.wg.mock.utils
       public function set createComponentCallback(param1:Function) : void
       {
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return false;
+      }
    }
 }

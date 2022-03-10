@@ -50,6 +50,7 @@ package net.wg.gui.components.common.serverStats
          this.hitMc.removeEventListener(MouseEvent.ROLL_OVER,this.showPlayersTooltip);
          this.hitMc.removeEventListener(MouseEvent.ROLL_OUT,this.hideTooltip);
          this.hitMc = null;
+         this.pCount = null;
          super.onDispose();
       }
       

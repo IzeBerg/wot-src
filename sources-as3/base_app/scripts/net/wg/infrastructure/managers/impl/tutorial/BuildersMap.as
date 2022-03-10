@@ -10,6 +10,8 @@ package net.wg.infrastructure.managers.impl.tutorial
       
       private var _buildersMap:Dictionary;
       
+      private var _disposed:Boolean = false;
+      
       public function BuildersMap()
       {
          this._buildersMap = new Dictionary();
@@ -32,6 +34,7 @@ package net.wg.infrastructure.managers.impl.tutorial
       public final function dispose() : void
       {
          var _loc1_:* = null;
+         this._disposed = true;
          for(_loc1_ in this._buildersMap)
          {
             this.removeBuildersForView(_loc1_);
@@ -60,12 +63,15 @@ package net.wg.infrastructure.managers.impl.tutorial
       public function removeBuildersForComponent(param1:String, param2:String) : void
       {
          var _loc3_:* = null;
+         var _loc4_:ITutorialBuilder = null;
          if(!(param1 in this._buildersMap) || !(param2 in this._buildersMap[param1]))
          {
             return;
          }
          for(_loc3_ in this._buildersMap[param1][param2])
          {
+            _loc4_ = this._buildersMap[param1][param2][_loc3_];
+            _loc4_.dispose();
             delete this._buildersMap[param1][param2][_loc3_];
          }
          delete this._buildersMap[param1][param2];
@@ -79,6 +85,11 @@ package net.wg.infrastructure.managers.impl.tutorial
             this.removeBuildersForComponent(param1,_loc2_);
          }
          delete this._buildersMap[param1];
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

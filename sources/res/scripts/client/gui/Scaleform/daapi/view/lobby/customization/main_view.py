@@ -301,8 +301,7 @@ class MainView(LobbySubView, CustomizationMainViewMeta):
                 self.__initAnchorsPositionsCallback = BigWorld.callback(0.0, self.__initAnchorsPositions)
                 return
         self.__setAnchorsInitData()
-        if not self.__styleInfo.visible:
-            self.__locateCameraToCustomizationPreview(updateTankCentralPoint=True, forceLocate=True)
+        self.__locateCameraToCustomizationPreview(updateTankCentralPoint=True, forceLocate=True)
         return
 
     def onBuyConfirmed(self, isOk):
@@ -536,6 +535,14 @@ class MainView(LobbySubView, CustomizationMainViewMeta):
     def resetC11nItemsNovelty(self, itemsList):
         self.__ctx.resetItemsNovelty(itemsList)
 
+    @adisp.async
+    @adisp.process
+    def applyItems(self, purchaseItems, callback=None):
+        self.service.stopHighlighter()
+        yield self.__ctx.applyItems(purchaseItems)
+        callback(None)
+        return
+
     def __locateCameraOnAnchor(self, slotId, forceRotate=False):
         if self.__ctx.c11nCameraManager is None:
             return
@@ -706,7 +713,6 @@ class MainView(LobbySubView, CustomizationMainViewMeta):
         self.__ctx.events.onHideStyleInfo += self.__onHideStyleInfo
         self.__ctx.events.onEditModeEnabled += self.__onEditModeEnabled
         self.__ctx.events.onGetItemBackToHand += self.__onGetItemBackToHand
-        self.__ctx.events.onCloseWindow += self.onCloseWindow
         self.__ctx.events.onSlotSelected += self.__onSlotSelected
         self.__ctx.events.onSlotUnselected += self.__onSlotUnselected
         self.__ctx.events.onAnchorsStateChanged += self.__onAnchorsStateChanged
@@ -805,7 +811,6 @@ class MainView(LobbySubView, CustomizationMainViewMeta):
         self.__ctx.events.onHideStyleInfo -= self.__onHideStyleInfo
         self.__ctx.events.onEditModeEnabled -= self.__onEditModeEnabled
         self.__ctx.events.onGetItemBackToHand -= self.__onGetItemBackToHand
-        self.__ctx.events.onCloseWindow -= self.onCloseWindow
         self.__ctx.events.onSlotSelected -= self.__onSlotSelected
         self.__ctx.events.onSlotUnselected -= self.__onSlotUnselected
         self.__ctx.events.onAnchorsStateChanged -= self.__onAnchorsStateChanged
@@ -815,9 +820,6 @@ class MainView(LobbySubView, CustomizationMainViewMeta):
         if self.__initAnchorsPositionsCallback is not None:
             BigWorld.cancelCallback(self.__initAnchorsPositionsCallback)
             self.__initAnchorsPositionsCallback = None
-        exitCallback = self.__ctx.getExitCallback()
-        if exitCallback is not None:
-            exitCallback.destroy()
         super(MainView, self)._dispose()
         self.__ctx = None
         self.service.closeCustomization()
@@ -1202,4 +1204,4 @@ class MainView(LobbySubView, CustomizationMainViewMeta):
 
     @adisp.process
     def __applyItems(self, purchaseItems):
-        yield self.__ctx.applyItems(purchaseItems)
+        yield self.applyItems(purchaseItems)

@@ -5,5 +5,7 @@ package net.wg.infrastructure.interfaces.entity
        
       
       function dispose() : void;
+      
+      function isDisposed() : Boolean;
    }
 }

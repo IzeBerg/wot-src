@@ -4013,38 +4013,6 @@
 					</sourceCollisionHullPoints>
 				</right>
 			</physicalTracks>
-			<customization>
-				<customizableVehicleAreas>
-					<paint>CHASSIS</paint>
-					<camouflage/>
-				</customizableVehicleAreas>
-			</customization>
-			<customizationSlots>
-				<slot>
-					<slotType>paint</slotType>
-					<slotId>21000</slotId>
-					<anchorPosition>
-						-1.37123 0.344529 0.173375
-						<!--BW_String-->
-					</anchorPosition>
-					<anchorDirection>
-						-0.948324 0.312874 -0.0528367
-						<!--BW_String-->
-					</anchorDirection>
-				</slot>
-				<slot>
-					<slotType>style</slotType>
-					<slotId>29000</slotId>
-					<anchorPosition>
-						-0.00086 2.37221 0.79343
-						<!--BW_String-->
-					</anchorPosition>
-					<anchorDirection>
-						-0.000000 1 -0.000000
-						<!--BW_String-->
-					</anchorDirection>
-				</slot>
-			</customizationSlots>
 			<repairTime>
 				5.71428585
 				<!--BW_String-->
@@ -5888,12 +5856,6 @@
 					</sourceCollisionHullPoints>
 				</right>
 			</physicalTracks>
-			<customization>
-				<customizableVehicleAreas>
-					<paint>CHASSIS</paint>
-					<camouflage/>
-				</customizableVehicleAreas>
-			</customization>
 			<repairTime>
 				5.71428585
 				<!--BW_String-->
@@ -6057,6 +6019,8 @@
 						<collisionModelServer>vehicles/poland/Pl20_CS_44/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/poland/Pl20_CS_44/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_main</effects>
+					<reloadEffect>reload85_107</reloadEffect>
 					<customization>
 						<customizableVehicleAreas>
 							<paint>GUN GUN_2</paint>
@@ -6294,6 +6258,8 @@
 						<collisionModelServer>vehicles/poland/Pl20_CS_44/collision/Gun_02.model</collisionModelServer>
 						<collisionModelClient>vehicles/poland/Pl20_CS_44/collision_client/Gun_02.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_main</effects>
+					<reloadEffect>reload85_107</reloadEffect>
 					<customization>
 						<customizableVehicleAreas>
 							<paint>GUN GUN_2</paint>
@@ -7472,6 +7438,8 @@
 						<collisionModelServer>vehicles/poland/Pl20_CS_44/collision/Gun_04.model</collisionModelServer>
 						<collisionModelClient>vehicles/poland/Pl20_CS_44/collision_client/Gun_04.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_main</effects>
+					<reloadEffect>reload85_107</reloadEffect>
 					<customization>
 						<customizableVehicleAreas>
 							<paint>GUN</paint>
@@ -7636,6 +7604,8 @@
 						<collisionModelServer>vehicles/poland/Pl20_CS_44/collision/Gun_05.model</collisionModelServer>
 						<collisionModelClient>vehicles/poland/Pl20_CS_44/collision_client/Gun_05.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_main</effects>
+					<reloadEffect>reload85_107</reloadEffect>
 					<customization>
 						<customizableVehicleAreas>
 							<paint>GUN</paint>
@@ -7806,6 +7776,8 @@
 						<collisionModelServer>vehicles/poland/Pl20_CS_44/collision/Gun_06.model</collisionModelServer>
 						<collisionModelClient>vehicles/poland/Pl20_CS_44/collision_client/Gun_06.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_mainext</effects>
+					<reloadEffect>reload85_107</reloadEffect>
 					<customization>
 						<customizableVehicleAreas>
 							<paint>GUN</paint>

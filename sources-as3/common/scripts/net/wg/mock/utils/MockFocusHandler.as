@@ -50,5 +50,10 @@ package net.wg.mock.utils
       public function set stage(param1:Stage) : void
       {
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return false;
+      }
    }
 }

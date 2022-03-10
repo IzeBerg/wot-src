@@ -30,10 +30,6 @@ package net.wg.infrastructure.managers.utils.impl
       
       private static const DISABLED:String = "disabled";
       
-      private static const HEAVY_STATES_NY_TRANSPARENT_LINKAGE:String = "UniHeavyNYTransparentStatesUI";
-      
-      private static const SLIM_STATES_NY_TRANSPARENT_LINKAGE:String = "UniSlimNYTransparentStatesUI";
-      
       private static const HEAVY_STATES_BLACK_LINKAGE:String = "UniHeavyBlackStatesUI";
       
       private static const HEAVY_STATES_GREEN_LINKAGE:String = "UniHeavyGreenStatesUI";
@@ -66,8 +62,6 @@ package net.wg.infrastructure.managers.utils.impl
       
       private static const TF_COLOR:uint = 16711404;
       
-      private static const TF_COLOR_NY:uint = 13434879;
-      
       private static const STATES_ORANGE_SHADOW_FILTER:DropShadowFilter = new DropShadowFilter(1,270,6684672,1,1,1,1,0,false,false,false);
       
       private static const STATES_BASIC_SHADOW_FILTER:DropShadowFilter = new DropShadowFilter(1,270,0,1,1,1,1,0,false,false,false);
@@ -75,13 +69,13 @@ package net.wg.infrastructure.managers.utils.impl
       private static const TF_SIZE_SLIM:uint = 13;
       
       private static const TF_SIZE_HEAVY:uint = 15;
-      
-      private static const TF_SIZE_NY_HEAVY:uint = 14;
        
       
       private var _styles:Dictionary = null;
       
       private var _classFactory:IClassFactory = null;
+      
+      private var _disposed:Boolean = false;
       
       public function UniversalBtnStyles()
       {
@@ -105,10 +99,6 @@ package net.wg.infrastructure.managers.utils.impl
          this._styles[UniversalBtnStylesConst.STYLE_HEAVY_ORANGE] = new UniversalStyle(HEAVY_STATES_ORANGE_LINKAGE,DISABLE_FILL_BMD_LINKAGE,SLIM_TOGGLE_INDICATOR_LINKAGE,SLIM_TOGGLE_GLOW_LINKAGE,TF_SIZE_HEAVY,TF_COLOR,_loc8_,STATES_ORANGE_SHADOW_FILTER);
          var _loc9_:Dictionary = createTextAlphaStates(1,1,1,1,1,0.6);
          this._styles[UniversalBtnStylesConst.STYLE_HEAVY_LIME] = new UniversalStyle(HEAVY_STATES_LIME_LINKAGE,DISABLE_FILL_BMD_LINKAGE,SLIM_TOGGLE_INDICATOR_LINKAGE,SLIM_TOGGLE_GLOW_LINKAGE,TF_SIZE_HEAVY,TF_COLOR,_loc9_,STATES_BASIC_SHADOW_FILTER);
-         var _loc10_:Dictionary = createTextAlphaStates(1,1,1,1,1,0.6);
-         this._styles[UniversalBtnStylesConst.STYLE_HEAVY_NY_TRANSPARENT] = new UniversalStyle(HEAVY_STATES_NY_TRANSPARENT_LINKAGE,DISABLE_FILL_BMD_LINKAGE,SLIM_TOGGLE_INDICATOR_LINKAGE,SLIM_TOGGLE_GLOW_LINKAGE,TF_SIZE_NY_HEAVY,TF_COLOR_NY,_loc10_,STATES_BASIC_SHADOW_FILTER);
-         var _loc11_:Dictionary = createTextAlphaStates(1,1,1,1,1,0.6);
-         this._styles[UniversalBtnStylesConst.STYLE_SLIM_NY_TRANSPARENT] = new UniversalStyle(SLIM_STATES_NY_TRANSPARENT_LINKAGE,DISABLE_FILL_BMD_LINKAGE,SLIM_TOGGLE_INDICATOR_LINKAGE,SLIM_TOGGLE_GLOW_LINKAGE,TF_SIZE_SLIM,TF_COLOR_NY,_loc11_,STATES_BASIC_SHADOW_FILTER);
       }
       
       private static function createTextAlphaStates(param1:Number, param2:Number, param3:Number, param4:Number, param5:Number, param6:Number) : Dictionary
@@ -126,6 +116,7 @@ package net.wg.infrastructure.managers.utils.impl
       public final function dispose() : void
       {
          var _loc2_:* = null;
+         this._disposed = true;
          var _loc1_:UniversalStyle = null;
          for(_loc2_ in this._styles)
          {
@@ -186,6 +177,11 @@ package net.wg.infrastructure.managers.utils.impl
          _loc2_.removeEventListener(UniversalBtnEvent.CLEAR_STYLE,this.onUniversalBtnClearStyleHandler);
          var _loc3_:IUniversalStyle = this.getStyle(_loc2_.styleID);
          _loc3_.addStyledDisplayObjects(_loc2_.styledDisplayObjects);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

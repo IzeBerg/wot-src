@@ -19,6 +19,8 @@ package net.wg.gui.components.carousels
       
       private var _postponedArgs:Array = null;
       
+      private var _disposed:Boolean = false;
+      
       public function TooltipDecorator()
       {
          super();
@@ -27,6 +29,7 @@ package net.wg.gui.components.carousels
       
       public function dispose() : void
       {
+         this._disposed = true;
          this._mgr = null;
          this._postponedFunction = null;
          this._postponedArgs = null;
@@ -160,6 +163,11 @@ package net.wg.gui.components.carousels
                this._postponedArgs = null;
             }
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

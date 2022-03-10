@@ -70,6 +70,12 @@ package net.wg.data
       
       public function as_dispose() : void
       {
+         this.dispose();
+      }
+      
+      public final function dispose() : void
+      {
+         this._isDisposed = true;
          this.onDispose();
       }
       
@@ -261,7 +267,6 @@ package net.wg.data
       protected function onDispose() : void
       {
          this.cleanUp();
-         this._isDisposed = true;
          this._dataUtils = null;
          this._cachedRange = null;
          this._itemsToDestroy = null;
@@ -486,7 +491,7 @@ package net.wg.data
          this._maxCacheSize = param1;
       }
       
-      public function get disposed() : Boolean
+      public function isDisposed() : Boolean
       {
          return this._isDisposed;
       }

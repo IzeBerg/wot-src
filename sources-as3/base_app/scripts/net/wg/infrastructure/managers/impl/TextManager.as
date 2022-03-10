@@ -28,10 +28,11 @@ package net.wg.infrastructure.managers.impl
          return _loc1_;
       }
       
-      public function dispose() : void
+      override protected function onDispose() : void
       {
          App.utils.data.cleanupDynamicObject(this._cashedStylesMap);
          this._cashedStylesMap = null;
+         super.onDispose();
       }
       
       public function getTextStyleById(param1:String, param2:String) : String

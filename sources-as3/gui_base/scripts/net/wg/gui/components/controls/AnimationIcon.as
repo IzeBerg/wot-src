@@ -9,6 +9,8 @@ package net.wg.gui.components.controls
       
       public var icon:UILoaderAlt = null;
       
+      private var _disposed:Boolean = false;
+      
       public function AnimationIcon()
       {
          super();
@@ -16,6 +18,7 @@ package net.wg.gui.components.controls
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.icon.dispose();
          this.icon = null;
       }
@@ -23,6 +26,11 @@ package net.wg.gui.components.controls
       public function setImage(param1:String) : void
       {
          this.icon.source = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

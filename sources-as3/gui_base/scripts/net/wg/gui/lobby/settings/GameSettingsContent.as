@@ -2,6 +2,7 @@ package net.wg.gui.lobby.settings
 {
    import flash.events.Event;
    import flash.text.TextField;
+   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
    import net.wg.gui.components.advanced.FieldSet;
    import net.wg.gui.components.controls.CheckBox;
@@ -15,6 +16,8 @@ package net.wg.gui.lobby.settings
    
    public class GameSettingsContent extends UIComponentEx
    {
+      
+      private static const OFFSET_ONLY_10_MODE_DISABLED:int = -26;
       
       private static const NEVER_INDEX:int = 0;
        
@@ -185,9 +188,38 @@ package net.wg.gui.lobby.settings
       
       public var showVictimsDogTagCheckbox:CheckBox = null;
       
+      private var _initYCarouselTypeFieldSet:int;
+      
+      private var _initYCarouselTypeButtonBar:int;
+      
+      private var _initYDoubleCarouselLabel:int;
+      
+      private var _initYDoubleCarouselTypeDropDown:int;
+      
+      private var _initYVehicleCarouselStatsCheckbox:int;
+      
+      private var _initYCustomizationDisplayTypeFieldSet:int;
+      
+      private var _initYCustomizationDisplayTypeButtonBar:int;
+      
+      private var _initYReplayEnabledLabel:int;
+      
+      private var _initYReplayEnabledDropDown:int;
+      
+      private var _initYShowMarksOnGunCheckbox:int;
+      
+      private var _initYDisplayPlatoonMembersCheckbox:int;
+      
+      private var _initYLoginServerSelectionCheckbox:int;
+      
+      private var _initYAnonymizerCheckbox:int;
+      
+      private var _only10ModeEnabled:Boolean = true;
+      
       public function GameSettingsContent()
       {
          super();
+         this.setOnly10ModeControlsY();
       }
       
       override protected function configUI() : void
@@ -501,6 +533,46 @@ package net.wg.gui.lobby.settings
          this.enableBattleNotifierCheckbox.dispose();
          this.enableBattleNotifierCheckbox = null;
          super.onDispose();
+      }
+      
+      public function updateOnly10ModeDependentControls(param1:Boolean) : void
+      {
+         var _loc2_:int = 0;
+         if(this._only10ModeEnabled != param1)
+         {
+            this._only10ModeEnabled = param1;
+            _loc2_ = !!this._only10ModeEnabled ? int(Values.ZERO) : int(OFFSET_ONLY_10_MODE_DISABLED);
+            this.carouselTypeFieldSet.y = this._initYCarouselTypeFieldSet + _loc2_;
+            this.carouselTypeButtonBar.y = this._initYCarouselTypeButtonBar + _loc2_;
+            this.doubleCarouselLabel.y = this._initYDoubleCarouselLabel + _loc2_;
+            this.doubleCarouselTypeDropDown.y = this._initYDoubleCarouselTypeDropDown + _loc2_;
+            this.vehicleCarouselStatsCheckbox.y = this._initYVehicleCarouselStatsCheckbox + _loc2_;
+            this.customizationDisplayTypeFieldSet.y = this._initYCustomizationDisplayTypeFieldSet + _loc2_;
+            this.customizationDisplayTypeButtonBar.y = this._initYCustomizationDisplayTypeButtonBar + _loc2_;
+            this.replayEnabledLabel.y = this._initYReplayEnabledLabel + _loc2_;
+            this.replayEnabledDropDown.y = this._initYReplayEnabledDropDown + _loc2_;
+            this.showMarksOnGunCheckbox.y = this._initYShowMarksOnGunCheckbox + _loc2_;
+            this.displayPlatoonMembersCheckbox.y = this._initYDisplayPlatoonMembersCheckbox + _loc2_;
+            this.loginServerSelectionCheckbox.y = this._initYLoginServerSelectionCheckbox + _loc2_;
+            this.anonymizerCheckbox.y = this._initYAnonymizerCheckbox + _loc2_;
+         }
+      }
+      
+      private function setOnly10ModeControlsY() : void
+      {
+         this._initYCarouselTypeFieldSet = this.carouselTypeFieldSet.y;
+         this._initYCarouselTypeButtonBar = this.carouselTypeButtonBar.y;
+         this._initYDoubleCarouselLabel = this.doubleCarouselLabel.y;
+         this._initYDoubleCarouselTypeDropDown = this.doubleCarouselTypeDropDown.y;
+         this._initYVehicleCarouselStatsCheckbox = this.vehicleCarouselStatsCheckbox.y;
+         this._initYCustomizationDisplayTypeFieldSet = this.customizationDisplayTypeFieldSet.y;
+         this._initYCustomizationDisplayTypeButtonBar = this.customizationDisplayTypeButtonBar.y;
+         this._initYReplayEnabledLabel = this.replayEnabledLabel.y;
+         this._initYReplayEnabledDropDown = this.replayEnabledDropDown.y;
+         this._initYShowMarksOnGunCheckbox = this.showMarksOnGunCheckbox.y;
+         this._initYDisplayPlatoonMembersCheckbox = this.displayPlatoonMembersCheckbox.y;
+         this._initYLoginServerSelectionCheckbox = this.loginServerSelectionCheckbox.y;
+         this._initYAnonymizerCheckbox = this.anonymizerCheckbox.y;
       }
       
       private function onGuiGraphicsOptimizationCheckboxSelectHandler(param1:Event) : void

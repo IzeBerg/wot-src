@@ -30,6 +30,8 @@ package net.wg.gui.battle.views.postmortemPanel
       
       private var _vehicleMC:Image = null;
       
+      private var _disposed:Boolean = false;
+      
       public function VehiclePanel()
       {
          super();
@@ -42,6 +44,7 @@ package net.wg.gui.battle.views.postmortemPanel
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.bgMC = null;
          this.levelTF = null;
          this.nameTF = null;
@@ -77,6 +80,11 @@ package net.wg.gui.battle.views.postmortemPanel
          this.nameTF.x = this.typeMC.x + this.typeMC.originalWidth + ELEMENTS_GAP;
          this.bgMC.width = this.nameTF.x + this.nameTF.width + HORIZONTAL_MARGIN;
          this.x = -this.width >> 1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

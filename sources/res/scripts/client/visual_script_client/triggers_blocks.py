@@ -2,7 +2,7 @@ import BigWorld
 from visual_script.block import Block, Meta
 from visual_script.slot_types import SLOT_TYPE
 from visual_script.misc import ASPECT
-from constants import IS_EDITOR
+from constants import IS_VS_EDITOR
 
 class TriggerMeta(Meta):
 
@@ -56,7 +56,7 @@ class TriggerExternal(Block, TriggerMeta):
         if self.isActive() == value:
             return
         self._active = value
-        if not IS_EDITOR:
+        if not IS_VS_EDITOR:
             if self._active:
                 BigWorld.player().onTrigger += self._onTrigger
             else:

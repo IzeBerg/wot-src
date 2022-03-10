@@ -33,6 +33,8 @@ package net.wg.gui.battle.views.ribbonsPanel
       
       private var _isWithVehName:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function RibbonsPool(param1:DisplayObjectContainer, param2:DisplayObjectContainer, param3:DisplayObjectContainer, param4:Array, param5:Function)
       {
          var _loc7_:Array = null;
@@ -76,6 +78,7 @@ package net.wg.gui.battle.views.ribbonsPanel
       {
          var _loc1_:RibbonCtrl = null;
          var _loc2_:Vector.<RibbonCtrl> = null;
+         this._disposed = true;
          this._iconsContainer = null;
          this._textsContainer = null;
          this._bonusContainer = null;
@@ -135,6 +138,11 @@ package net.wg.gui.battle.views.ribbonsPanel
          this._bonusContainer.addChild(_loc3_.bonusAnim);
          this._ribbonsStorage.push(_loc3_);
          return _loc3_;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

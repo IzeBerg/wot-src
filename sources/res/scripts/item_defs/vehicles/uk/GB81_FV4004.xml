@@ -2745,10 +2745,6 @@
 				6.0
 				<!--BW_String-->
 			</navmeshGirth>
-			<trackThickness>
-				-0.0073
-				<!--BW_String-->
-			</trackThickness>
 			<AODecals>
 				<decal>
 					<transform>
@@ -7774,6 +7770,8 @@
 						<collisionModelServer>vehicles/british/GB81_FV4004/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/british/GB81_FV4004/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_large</effects>
+					<reloadEffect>reload115_152</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>
@@ -7972,6 +7970,8 @@
 						<collisionModelServer>vehicles/british/GB81_FV4004/collision/Gun_02.model</collisionModelServer>
 						<collisionModelClient>vehicles/british/GB81_FV4004/collision_client/Gun_02.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_largeext</effects>
+					<reloadEffect>reload115_152</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>

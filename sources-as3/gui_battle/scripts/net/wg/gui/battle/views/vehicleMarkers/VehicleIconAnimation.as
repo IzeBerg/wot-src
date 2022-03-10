@@ -9,14 +9,22 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       public var vehicleTypeIcon:MovieClip = null;
       
+      private var _disposed:Boolean = false;
+      
       public function VehicleIconAnimation()
       {
          super();
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
+         this._disposed = true;
          this.vehicleTypeIcon = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -18,6 +18,8 @@ package net.wg.gui.battle.views.staticMarkers.epic.resupplyPoint
       
       public var marker:ResupplyIcon = null;
       
+      private var _disposed:Boolean = false;
+      
       public function ResupplyMarker()
       {
          super();
@@ -27,6 +29,7 @@ package net.wg.gui.battle.views.staticMarkers.epic.resupplyPoint
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.marker.dispose();
          this.marker = null;
          this.cooldownTF = null;
@@ -57,6 +60,11 @@ package net.wg.gui.battle.views.staticMarkers.epic.resupplyPoint
          this.marker.setState(param1);
          this.cooldownTF.text = Values.EMPTY_STR;
          this.cooldownTF.visible = param1 == 1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

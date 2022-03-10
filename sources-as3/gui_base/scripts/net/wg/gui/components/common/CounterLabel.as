@@ -11,6 +11,8 @@ package net.wg.gui.components.common
       
       public var countTF:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function CounterLabel()
       {
          super();
@@ -19,6 +21,7 @@ package net.wg.gui.components.common
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.countTF = null;
       }
       
@@ -30,6 +33,11 @@ package net.wg.gui.components.common
       public function set text(param1:String) : void
       {
          this.countTF.htmlText = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

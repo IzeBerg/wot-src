@@ -12,6 +12,8 @@ package net.wg.data.managers.impl
       
       private var _note:Object;
       
+      private var _disposed:Boolean = false;
+      
       public function ToolTipParams(param1:Object = null, param2:Object = null, param3:Object = null)
       {
          super();
@@ -52,9 +54,15 @@ package net.wg.data.managers.impl
       
       public function dispose() : void
       {
+         this._disposed = true;
          this._header = null;
          this._body = null;
          this._note = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

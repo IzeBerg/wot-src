@@ -25,6 +25,8 @@ package net.wg.gui.battle.epicBattle.views.data
       
       private var _enemyOrder:Vector.<Number> = null;
       
+      private var _disposed:Boolean = false;
+      
       public function EpicStatsDataProviderBaseCtrl()
       {
          super();
@@ -48,6 +50,7 @@ package net.wg.gui.battle.epicBattle.views.data
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -173,6 +176,11 @@ package net.wg.gui.battle.epicBattle.views.data
       private function onEnemyDPValidateItemsHandler(param1:ListDataProviderEvent) : void
       {
          this.updateEnemyDPItems(param1);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

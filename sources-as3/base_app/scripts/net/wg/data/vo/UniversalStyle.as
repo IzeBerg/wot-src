@@ -29,6 +29,8 @@ package net.wg.data.vo
       
       private var _shadowFilter:DropShadowFilter = null;
       
+      private var _disposed:Boolean = false;
+      
       public function UniversalStyle(param1:String, param2:String, param3:String, param4:String, param5:uint, param6:uint, param7:Dictionary, param8:DropShadowFilter)
       {
          super();
@@ -60,6 +62,7 @@ package net.wg.data.vo
       {
          var _loc1_:* = null;
          var _loc2_:IUniversalBtnStyledDisplayObjects = null;
+         this._disposed = true;
          for(_loc1_ in this._tfStateColors)
          {
             delete this._tfStateColors[_loc1_];
@@ -120,6 +123,11 @@ package net.wg.data.vo
       public function get tfShadowFilter() : DropShadowFilter
       {
          return this._shadowFilter;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

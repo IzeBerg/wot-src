@@ -81,7 +81,7 @@ package net.wg.gui.lobby.settings.feedback.damageIndicator
       public function DamageIndicatorForm()
       {
          this._standardSettings = new <DamageIndicatorStandardSetting>[new DamageIndicatorStandardSetting(0,DAMAGEINDICATOR.DAMAGE_STANDARD,DAMAGEINDICATOR.DAMAGE_STANDARD_BLIND,270,400,-0.25),new DamageIndicatorStandardSetting(1,DAMAGEINDICATOR.BLOCKED_STANDARD,DAMAGEINDICATOR.BLOCKED_STANDARD,140,400,0.43)];
-         this._extendedSettings = new <DamageIndicatorExtendedSetting>[new DamageIndicatorExtendedSetting(0,DAMAGEINDICATOR.CRIT,DAMAGEINDICATOR.CRIT_BLIND,DAMAGEINDICATOR.TRACKS_CIRCLE,DAMAGEINDICATOR.TRACKS_CIRCLE,T57_58,DAMAGEINDICATOR.HEAVY_TANK,Values.EMPTY_STR,220,280,-0.43,DamageIndicatorExtendedSetting.CRIT),new DamageIndicatorExtendedSetting(1,DAMAGEINDICATOR.BLOCKED_SMALL,DAMAGEINDICATOR.BLOCKED_SMALL,DAMAGEINDICATOR.BLOCK_CIRCLE,DAMAGEINDICATOR.BLOCK_CIRCLE,M103,DAMAGEINDICATOR.HEAVY_TANK,"400",245,245,-0.18,DamageIndicatorExtendedSetting.BLOCKED),new DamageIndicatorExtendedSetting(2,DAMAGEINDICATOR.BLOCKED_SMALL,DAMAGEINDICATOR.BLOCKED_SMALL,DAMAGEINDICATOR.BLOCK_CIRCLE,DAMAGEINDICATOR.BLOCK_CIRCLE,T110E5,DAMAGEINDICATOR.ALLY_HEAVY_TANK,INGAME_GUI.DAMAGEINDICATOR_FRIENDLYFIRE_NODAMAGELABEL,270,245,0.18,DamageIndicatorExtendedSetting.ALLY),new DamageIndicatorExtendedSetting(3,DAMAGEINDICATOR.DAMAGE_SMALL,DAMAGEINDICATOR.DAMAGE_SMALL_BLIND,DAMAGEINDICATOR.DAMAGE_CIRCLE,DAMAGEINDICATOR.DAMAGE_CIRCLE_BLIND,T34,DAMAGEINDICATOR.HEAVY_TANK,"400",295,280,0.43,DamageIndicatorExtendedSetting.DAMAGE)];
+         this._extendedSettings = new <DamageIndicatorExtendedSetting>[new DamageIndicatorExtendedSetting(0,DAMAGEINDICATOR.CRIT,DAMAGEINDICATOR.CRIT_BLIND,DAMAGEINDICATOR.TRACKS_CIRCLE,DAMAGEINDICATOR.TRACKS_CIRCLE,T57_58,DAMAGEINDICATOR.HEAVY_TANK,Values.EMPTY_STR,220,280,-0.43,DamageIndicatorExtendedSetting.CRIT),new DamageIndicatorExtendedSetting(1,DAMAGEINDICATOR.BLOCKED_SMALL,DAMAGEINDICATOR.BLOCKED_SMALL,DAMAGEINDICATOR.BLOCK_CIRCLE,DAMAGEINDICATOR.BLOCK_CIRCLE,M103,DAMAGEINDICATOR.HEAVY_TANK,"400",245,245,-0.18,DamageIndicatorExtendedSetting.BLOCKED),new DamageIndicatorExtendedSetting(2,DAMAGEINDICATOR.BLOCKED_SMALL,DAMAGEINDICATOR.BLOCKED_SMALL,DAMAGEINDICATOR.BLOCK_CIRCLE,DAMAGEINDICATOR.BLOCK_CIRCLE,T110E5,DAMAGEINDICATOR.ALLY_HEAVY_TANK,App.utils.locale.makeString(INGAME_GUI.DAMAGEINDICATOR_FRIENDLYFIRE_NODAMAGELABEL),270,245,0.18,DamageIndicatorExtendedSetting.ALLY),new DamageIndicatorExtendedSetting(3,DAMAGEINDICATOR.DAMAGE_SMALL,DAMAGEINDICATOR.DAMAGE_SMALL_BLIND,DAMAGEINDICATOR.DAMAGE_CIRCLE,DAMAGEINDICATOR.DAMAGE_CIRCLE_BLIND,T34,DAMAGEINDICATOR.HEAVY_TANK,"400",295,280,0.43,DamageIndicatorExtendedSetting.DAMAGE)];
          super();
          this._colorMgr = App.colorSchemeMgr;
          this._colorMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorMgrSchemasUpdateHandler);
@@ -179,6 +179,8 @@ package net.wg.gui.lobby.settings.feedback.damageIndicator
          this.damageIndicatorCritsCheckbox = null;
          this.damageIndicatorAlliesCheckbox.dispose();
          this.damageIndicatorAlliesCheckbox = null;
+         this.damageIndicator.dispose();
+         this.damageIndicator = null;
          super.onDispose();
          this._colorMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorMgrSchemasUpdateHandler);
          this._colorMgr = null;

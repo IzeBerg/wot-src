@@ -3,7 +3,6 @@ from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from gui.shared.tooltips import advanced
 from gui.shared.tooltips import common
 from gui.shared.tooltips import contexts
-from gui.shared.tooltips.shop_sales.entry_point_tooltip import ShopSalesEntryPointTooltipData
 from gui.shared.tooltips.builders import DataBuilder, DefaultFormatBuilder, AdvancedDataBuilder, TooltipWindowBuilder
 from gui.shared.tooltips.dog_tags import DogTagInfoTooltip
 from gui.shared.tooltips.filter import VehicleFilterTooltip
@@ -42,22 +41,16 @@ def getTooltipBuilders():
      DataBuilder(TOOLTIPS_CONSTANTS.VEHICLE_HISTORICAL_REFERENCE, TOOLTIPS_CONSTANTS.VEHICLE_INFO_UI, common.VehicleHistoricalReferenceTooltipData(contexts.VehicleHistoricalReferenceContext())),
      AdvancedDataBuilder(TOOLTIPS_CONSTANTS.BATTLE_TRAINING, TOOLTIPS_CONSTANTS.BLOCKS_DEFAULT_UI, common.BattleTraining(contexts.ToolTipContext(None)), advanced.BattleTraining(contexts.ToolTipContext(None))),
      TooltipWindowBuilder(TOOLTIPS_CONSTANTS.SQUAD_BONUS, None, common.SquadBonusTooltipWindowData(contexts.ToolTipContext(None))),
-     TooltipWindowBuilder(TOOLTIPS_CONSTANTS.NY_CREDIT_BONUS, None, common.NYCreditBonusTooltipWindowData(contexts.ToolTipContext(None))),
-     TooltipWindowBuilder(TOOLTIPS_CONSTANTS.NY_VEHICLE_BONUS, None, common.NYVehicleBonusTooltipWindowData(contexts.ToolTipContext(None))),
-     TooltipWindowBuilder(TOOLTIPS_CONSTANTS.NY_AMMUNITION_BONUSES, None, common.NYAmmunitionVehicleBonusTooltipWindowData(contexts.ToolTipContext(None))),
-     DataBuilder(TOOLTIPS_CONSTANTS.NY_GIFT_STAMPS, TOOLTIPS_CONSTANTS.BLOCKS_DEFAULT_UI, common.NYGiftStamps(contexts.ToolTipContext(None))),
-     DataBuilder(TOOLTIPS_CONSTANTS.NY_FILLERS, TOOLTIPS_CONSTANTS.BLOCKS_DEFAULT_UI, common.NewYearFillers(contexts.ToolTipContext(None))),
      TooltipWindowBuilder(TOOLTIPS_CONSTANTS.BATTLE_PASS_VEHICLE_POINTS, None, common.VehiclePointsTooltipContentWindowData(contexts.ToolTipContext(None))),
      TooltipWindowBuilder(TOOLTIPS_CONSTANTS.BATTLE_PASS_NOT_STARTED, None, common.BattlePassNotStartedTooltipWindowData(contexts.ToolTipContext(None))),
      TooltipWindowBuilder(TOOLTIPS_CONSTANTS.BATTLE_PASS_IN_PROGRESS, None, common.BattlePassInProgressTooltipContentWindowData(contexts.ToolTipContext(None))),
      TooltipWindowBuilder(TOOLTIPS_CONSTANTS.BATTLE_PASS_COMPLETED, None, common.BattlePassCompletedTooltipContentWindowData(contexts.ToolTipContext(None))),
-     TooltipWindowBuilder(TOOLTIPS_CONSTANTS.BATTLE_PASS_3D_NOT_CHOOSEN, None, common.BP3dStyleNotChosenTooltipWindowData(contexts.ToolTipContext(None))),
+     TooltipWindowBuilder(TOOLTIPS_CONSTANTS.BATTLE_PASS_NO_CHAPTER, None, common.BattlePassNoChapterTooltipWindowData(contexts.ToolTipContext(None))),
      DataBuilder(TOOLTIPS_CONSTANTS.TECHTREE_DISCOUNT_INFO, TOOLTIPS_CONSTANTS.BLOCKS_DEFAULT_UI, common.TechTreeDiscountInfoTooltip(contexts.QuestContext())),
      DataBuilder(TOOLTIPS_CONSTANTS.TECHTREE_NATION_DISCOUNT, TOOLTIPS_CONSTANTS.BLOCKS_DEFAULT_UI, common.TechTreeNationDiscountTooltip(contexts.TechTreeContext())),
      DataBuilder(TOOLTIPS_CONSTANTS.DOG_TAGS_INFO, TOOLTIPS_CONSTANTS.DOG_TAGS_INFO_UI, DogTagInfoTooltip(contexts.DogTagInfoContext())),
      TooltipWindowBuilder(TOOLTIPS_CONSTANTS.VEH_POST_PROGRESSION_ENTRY_POINT, None, common.VehPostProgressionEntryPointTooltipContentWindowData(contexts.ToolTipContext(None))),
-     TooltipWindowBuilder(TOOLTIPS_CONSTANTS.WOT_PLUS, None, common.WotPlusTooltipContentWindowData(contexts.ToolTipContext(None))),
-     DataBuilder(TOOLTIPS_CONSTANTS.SHOP_SALES_ENTRY_POINT, TOOLTIPS_CONSTANTS.BLOCKS_DEFAULT_UI, ShopSalesEntryPointTooltipData(contexts.DefaultContext())))
+     TooltipWindowBuilder(TOOLTIPS_CONSTANTS.WOT_PLUS, None, common.WotPlusTooltipContentWindowData(contexts.ToolTipContext(None))))
 
 
 class HeaderMoneyAndXpBuilder(DataBuilder):

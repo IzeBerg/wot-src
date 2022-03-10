@@ -18,6 +18,8 @@ package net.wg.gui.battle.views.prebattleInfo
       
       private var _hint:String = "";
       
+      private var _disposed:Boolean = false;
+      
       public function PrebattleInfoContainer()
       {
          super();
@@ -47,6 +49,7 @@ package net.wg.gui.battle.views.prebattleInfo
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.release();
       }
       
@@ -123,6 +126,11 @@ package net.wg.gui.battle.views.prebattleInfo
             return this._info.hasAnimation;
          }
          return false;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

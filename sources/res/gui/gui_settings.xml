@@ -956,7 +956,7 @@
 			</item>
 			<item>
 				$PARAMS(/purchase-product)
-				<name>buyVehicle</name>
+				<name>buyProduct</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1020,7 +1020,12 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/battlepass/battlepass)
+				$PARAMS(/bpbit_category)
+				<name>bpProducts</name>
+				<type>url</type>
+			</item>
+			<item>
+				$PARAMS(/bpcoin_category/bpcoin_category)
 				<name>bpcoinProducts</name>
 				<type>url</type>
 			</item>
@@ -1030,33 +1035,23 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/featured/featured/items/platform_subscription/preview)
-				<name>buyRenewableSubscription</name>
-				<type>url</type>
-			</item>
-			<item>
-				$PARAMS(/psa2021/psa2021)
-				<name>psaProducts</name>
-				<type>url</type>
-			</item>
-			<item>
 				$PARAMS(/subscription-rental)
 				<name>rentVehicle</name>
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/api/external/v1/products/items)
-				<name>productsUrl</name>
-				<type>url</type>
-			</item>
-			<item>
-				$PARAMS(/lny2022_category)
-				<name>envelopes</name>
+				$PARAMS(/featured/featured/items/platform_subscription/preview)
+				<name>buyRenewableSubscription</name>
 				<type>url</type>
 			</item>
 			<item>
 				$PARAMS(/telecom-tank-rental)
 				<name>telecomTankRental</name>
+				<type>url</type>
+			</item>
+			<item>
+				$PARAMS(/psa2021/psa2021)
+				<name>psaProducts</name>
 				<type>url</type>
 			</item>
 		</value>
@@ -1103,14 +1098,32 @@
 		<type>dict</type>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/6BPContentPage/
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/7BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/6BPIntroVideo/
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/7BPIntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
+			</item>
+			<item>
+				<name>chaptersOrder</name>
+				<type>list</type>
+				<value>
+					<item>
+						<type>int</type>
+						<value>2</value>
+					</item>
+					<item>
+						<type>int</type>
+						<value>1</value>
+					</item>
+					<item>
+						<type>int</type>
+						<value>3</value>
+					</item>
+				</value>
 			</item>
 		</value>
 	</setting>
@@ -1226,58 +1239,6 @@
 		</value>
 	</setting>
 	<setting>
-		<name>techTreeUpdateNewsURL</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://worldoftanks.com/news/updates/tech-trees-update/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://worldoftanks.eu/news/general-news/tech-trees-update/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://worldoftanks.asia/news/general-news/tech-trees-update/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://worldoftanks.ru/$LANGUAGE_CODE/news/updates/tech-trees-update/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>techTreeIntroStartDate</name>
-		<type>dict</type>
-		<value>
-			<item>
-				21
-				<name>day</name>
-				<type>int</type>
-			</item>
-			<item>
-				4
-				<name>month</name>
-				<type>int</type>
-			</item>
-			<item>
-				2020
-				<name>year</name>
-				<type>int</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
 		<name>vivoxLicense</name>
 		<type>macros</type>
 		<macros>AUTH_REALM</macros>
@@ -1290,17 +1251,6 @@
 				Utilizes Vivox, © 2018 Vivox, Inc. All rights reserved. See www.vivox.com for details.\n
 				<name>default</name>
 				<type>string</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>newYearInfo</name>
-		<type>dict</type>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/HO2021Video/
-				<name>baseURL</name>
-				<type>url</type>
 			</item>
 		</value>
 	</setting>

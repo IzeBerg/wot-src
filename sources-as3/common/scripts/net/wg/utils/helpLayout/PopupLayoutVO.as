@@ -26,5 +26,10 @@ package net.wg.utils.helpLayout
       {
          this.scope = null;
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return true;
+      }
    }
 }

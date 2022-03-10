@@ -278,5 +278,10 @@ package net.wg.gui.battle.battleRoyale.views.configurator
             this._module.hitArea = !!param1 ? this._moduleHitArea : null;
          }
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._baseDisposed;
+      }
    }
 }

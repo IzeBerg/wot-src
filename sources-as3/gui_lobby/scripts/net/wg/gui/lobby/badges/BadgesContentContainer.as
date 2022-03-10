@@ -189,7 +189,11 @@ package net.wg.gui.lobby.badges
       private function onBadgeRendererClickHandler(param1:Event) : void
       {
          var _loc2_:BadgeRenderer = BadgeRenderer(param1.target);
-         if(this._currentBadge != _loc2_)
+         if(this._currentBadge == _loc2_)
+         {
+            this._currentBadge.selected = !this._currentBadge.selected;
+         }
+         else
          {
             if(this._currentBadge != null)
             {
@@ -197,10 +201,6 @@ package net.wg.gui.lobby.badges
             }
             this._currentBadge = _loc2_;
             this._currentBadge.selected = true;
-         }
-         else
-         {
-            this._currentBadge.selected = !this._currentBadge.selected;
          }
          this.dispatchBadgeChangeEvent();
       }

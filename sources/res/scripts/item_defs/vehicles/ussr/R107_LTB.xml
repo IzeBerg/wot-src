@@ -2399,7 +2399,6 @@
 					</transform>
 				</decal>
 			</AODecals>
-			<trackThickness>0.000000</trackThickness>
 			<physicalTracks>
 				<left>
 					<segmentsCount>99</segmentsCount>
@@ -5644,7 +5643,6 @@
 					</transform>
 				</decal>
 			</AODecals>
-			<trackThickness>0.000000</trackThickness>
 			<customization>
 				<customizableVehicleAreas>
 					<paint>CHASSIS</paint>
@@ -5818,6 +5816,8 @@
 						<collisionModelServer>vehicles/russian/R107_LTB/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/russian/R107_LTB/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_main</effects>
+					<reloadEffect>reload85_107</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>
@@ -6043,6 +6043,8 @@
 						<collisionModelServer>vehicles/russian/R107_LTB/collision/Gun_03.model</collisionModelServer>
 						<collisionModelClient>vehicles/russian/R107_LTB/collision_client/Gun_03.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_main</effects>
+					<reloadEffect>reload85_107</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>

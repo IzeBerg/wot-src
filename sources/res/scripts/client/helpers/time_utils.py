@@ -167,7 +167,7 @@ def getTillTimeString(timeValue, keyNamespace='', isRoundUp=False, sourceStrGene
         else:
             fmtKey = 'lessMin'
         tm = time.struct_time(gmtime)
-        fmtValues = {'day': str(tm.tm_yday), 
+        fmtValues = {'day': str(datetime.timedelta(seconds=timeValue).days) if timeValue > ONE_YEAR else str(tm.tm_yday), 
            'hour': (removeLeadingZeros or time.strftime)('%H', gmtime) if 1 else str(tm.tm_hour), 
            'min': (removeLeadingZeros or time.strftime)('%M', gmtime) if 1 else str(tm.tm_min), 
            'sec': time.strftime('%S', gmtime)}

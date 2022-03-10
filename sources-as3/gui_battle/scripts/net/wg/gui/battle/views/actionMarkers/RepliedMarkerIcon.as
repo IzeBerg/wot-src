@@ -25,6 +25,8 @@ package net.wg.gui.battle.views.actionMarkers
       
       private var _timer:Timer;
       
+      private var _disposed:Boolean = false;
+      
       public function RepliedMarkerIcon()
       {
          super();
@@ -40,6 +42,7 @@ package net.wg.gui.battle.views.actionMarkers
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this._timer.stop();
          this._timer.removeEventListener(TimerEvent.TIMER_COMPLETE,this.onTimerCompleteHandler);
          this._timer = null;
@@ -55,6 +58,11 @@ package net.wg.gui.battle.views.actionMarkers
          {
             this.personIcon.gotoAndStop(DEFAULT);
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

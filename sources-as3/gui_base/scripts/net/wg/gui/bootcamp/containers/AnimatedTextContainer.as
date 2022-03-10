@@ -10,6 +10,8 @@ package net.wg.gui.bootcamp.containers
       
       public var textField:TextField;
       
+      private var _disposed:Boolean = false;
+      
       public function AnimatedTextContainer()
       {
          super();
@@ -17,6 +19,7 @@ package net.wg.gui.bootcamp.containers
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
@@ -58,6 +61,11 @@ package net.wg.gui.bootcamp.containers
       public function set autoSize(param1:String) : void
       {
          this.textField.autoSize = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

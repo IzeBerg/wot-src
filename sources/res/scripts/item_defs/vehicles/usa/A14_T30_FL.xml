@@ -1675,15 +1675,6 @@
 					<!--BW_String-->
 				</textureScale>
 			</tracks>
-			<tracks>
-				<lodDist>MEDIUM_TRACK</lodDist>
-				<leftMaterial>track_mat_L_skinned</leftMaterial>
-				<rightMaterial>track_mat_R_skinned</rightMaterial>
-				<textureScale>
-					-0.72
-					<!--BW_String-->
-				</textureScale>
-			</tracks>
 			<wheels>
 				<lodDist>MEDIUM</lodDist>
 				<group>
@@ -4574,6 +4565,8 @@
 						<collisionModelServer>vehicles/american/A14_T30/collision/Gun_01.model</collisionModelServer>
 						<collisionModelClient>vehicles/american/A14_T30/collision_client/Gun_01.model</collisionModelClient>
 					</hitTester>
+					<effects>shot_huge_mb</effects>
+					<reloadEffect>reload155_170</reloadEffect>
 					<animateEmblemSlots>true</animateEmblemSlots>
 					<customization>
 						<customizableVehicleAreas>

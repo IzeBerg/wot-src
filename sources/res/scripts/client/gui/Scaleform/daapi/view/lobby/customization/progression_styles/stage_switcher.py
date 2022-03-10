@@ -1,4 +1,5 @@
 import logging
+from CurrentVehicle import g_currentVehicle
 from frameworks.wulf import ViewFlags, ViewSettings
 from gui.Scaleform.daapi.view.meta.StageSwitcherMeta import StageSwitcherMeta
 from gui.customization.constants import CustomizationModes
@@ -36,6 +37,7 @@ class StageSwitcherView(ViewImpl):
         super(StageSwitcherView, self)._initialize(*args, **kwargs)
         self.viewModel.onChange += self.__onChange
         self.__ctx.events.onItemsRemoved += self.__onItemsRemoved
+        self.__ctx.events.onItemInstalled += self.__onItemInstalled
 
     def _onLoading(self, *args, **kwargs):
         super(StageSwitcherView, self)._onLoading(*args, **kwargs)
@@ -43,17 +45,13 @@ class StageSwitcherView(ViewImpl):
         with self.getViewModel().transaction() as (model):
             model.setCurrentLevel(progressionLevel)
             model.setSelectedLevel(progressionLevel)
-            style = self.__ctx.mode.modifiedStyle
-            if style.isProgressionRewindEnabled:
-                model.setNumberOfBullets(style.maxProgressionLevel)
-                model.setIsBulletsBeforeCurrentDisabled(False)
-                model.setSwitcherType(SwitcherType.TEXT)
-                model.setStyleID(style.id)
+            self.__setAdditionalStyleInfo(model)
 
     def _finalize(self):
         super(StageSwitcherView, self)._finalize()
         self.viewModel.onChange -= self.__onChange
         self.__ctx.events.onItemsRemoved -= self.__onItemsRemoved
+        self.__ctx.events.onItemInstalled -= self.__onItemInstalled
         self.__ctx = None
         return
 
@@ -63,13 +61,30 @@ class StageSwitcherView(ViewImpl):
                 tx.setSelectedLevel(self.__ctx.mode.getStyleProgressionLevel())
         return
 
+    def __onItemInstalled(self, item, *_):
+        if self.__ctx is not None and self.__ctx.modeId == CustomizationModes.STYLED and item is not None:
+            with self.viewModel.transaction() as (tx):
+                style = self.__ctx.mode.modifiedStyle
+                tx.setSelectedLevel(self.__ctx.mode.getStyleProgressionLevel())
+                tx.setCurrentLevel(style.getLatestOpenedProgressionLevel(g_currentVehicle.item))
+        return
+
     def __onChange(self, *args):
         if args and args[0]['selectedLevel'] is not None:
             selectedLevel = int(args[0]['selectedLevel'])
             with self.viewModel.transaction() as (tx):
-                tx.setSelectedLevel(args[0]['selectedLevel'])
+                tx.setSelectedLevel(selectedLevel)
             if self.__ctx is not None and self.__ctx.modeId == CustomizationModes.STYLED:
                 self.__ctx.mode.changeStyleProgressionLevel(selectedLevel)
             else:
                 self.__customizationService.changeStyleProgressionLevelPreview(selectedLevel)
+        return
+
+    def __setAdditionalStyleInfo(self, model):
+        style = self.__ctx.mode.modifiedStyle
+        if style is not None and style.isProgressionRewindEnabled:
+            model.setNumberOfBullets(style.maxProgressionLevel)
+            model.setIsBulletsBeforeCurrentDisabled(False)
+            model.setSwitcherType(SwitcherType.TEXT)
+            model.setStyleID(style.id)
         return

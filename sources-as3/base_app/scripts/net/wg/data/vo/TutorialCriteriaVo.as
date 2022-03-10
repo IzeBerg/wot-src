@@ -32,6 +32,7 @@ package net.wg.data.vo
          if(this.tutorialEvent)
          {
             this.clearTutorialEvent(this.tutorialEvent);
+            this.tutorialEvent = null;
          }
          this.vo = null;
          super.onDispose();

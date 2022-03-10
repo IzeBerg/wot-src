@@ -10,6 +10,8 @@ package net.wg.gui.components.damageIndicator
       
       public var textField:TextField = null;
       
+      private var _disposed:Boolean = false;
+      
       public function ItemWithRotation()
       {
          super();
@@ -17,7 +19,13 @@ package net.wg.gui.components.damageIndicator
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.textField = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

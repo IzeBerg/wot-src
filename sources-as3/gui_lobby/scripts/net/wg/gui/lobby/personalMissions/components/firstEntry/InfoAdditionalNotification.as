@@ -30,6 +30,8 @@ package net.wg.gui.lobby.personalMissions.components.firstEntry
       
       private var _notificationWidth:int = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function InfoAdditionalNotification()
       {
          super();
@@ -39,6 +41,7 @@ package net.wg.gui.lobby.personalMissions.components.firstEntry
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.lineUp = null;
          this.lineDown = null;
          this.labelTF = null;
@@ -80,6 +83,11 @@ package net.wg.gui.lobby.personalMissions.components.firstEntry
       {
          this.updatePositions();
          this.icon.visible = true;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

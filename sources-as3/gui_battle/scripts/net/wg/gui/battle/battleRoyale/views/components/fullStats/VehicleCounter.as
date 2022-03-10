@@ -49,6 +49,8 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats
       
       private var _isSquad:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function VehicleCounter()
       {
          super();
@@ -64,6 +66,7 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.counterTF = null;
          this.descriptionTF = null;
          this.icon = null;
@@ -112,6 +115,11 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats
             this.updateTfSizeAndPosY(this.counterTF,this._counterDefaultTextSize,this._counterDefaultY);
             this.updateTfSizeAndPosY(this.descriptionTF,this._descriptionDefaultTextSize,this._descriptionDefaultY);
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

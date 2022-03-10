@@ -32,6 +32,8 @@ package net.wg.gui.components.battleRoyale
       
       private var _status:int = -1;
       
+      private var _disposed:Boolean = false;
+      
       public function ColumnHeader()
       {
          super();
@@ -39,6 +41,7 @@ package net.wg.gui.components.battleRoyale
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.icon.dispose();
          this.icon = null;
          this.label = null;
@@ -75,6 +78,11 @@ package net.wg.gui.components.battleRoyale
                this.icon.alpha = DISABLED_ICON_ALPHA;
                this.label.alpha = DISABLED_TEXT_ALPHA;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

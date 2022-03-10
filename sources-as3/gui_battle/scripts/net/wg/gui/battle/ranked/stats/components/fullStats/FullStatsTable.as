@@ -835,6 +835,8 @@ package net.wg.gui.battle.ranked.stats.components.fullStats
       
       public var icoTesterCollection:Vector.<BattleAtlasSprite> = null;
       
+      private var _disposed:Boolean = false;
+      
       public function FullStatsTable()
       {
          super();
@@ -874,6 +876,7 @@ package net.wg.gui.battle.ranked.stats.components.fullStats
       {
          var _loc1_:IDisposable = null;
          var _loc2_:DisplayObject = null;
+         this._disposed = true;
          this.team1TF = null;
          this.team2TF = null;
          for each(_loc1_ in this.playerStatusCollection)
@@ -1283,6 +1286,11 @@ package net.wg.gui.battle.ranked.stats.components.fullStats
          this.rightFrag = null;
          this.rightTank = null;
          this.rightRank = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

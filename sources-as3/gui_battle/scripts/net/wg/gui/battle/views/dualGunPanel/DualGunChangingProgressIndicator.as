@@ -43,6 +43,8 @@ package net.wg.gui.battle.views.dualGunPanel
       
       private var _changeGunTweenDelay:uint = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function DualGunChangingProgressIndicator()
       {
          super();
@@ -55,6 +57,7 @@ package net.wg.gui.battle.views.dualGunPanel
       
       public final function dispose() : void
       {
+         this._disposed = true;
          this.content = null;
          this.cleanTween();
       }
@@ -155,6 +158,11 @@ package net.wg.gui.battle.views.dualGunPanel
             this._tween.dispose();
             this._tween = null;
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

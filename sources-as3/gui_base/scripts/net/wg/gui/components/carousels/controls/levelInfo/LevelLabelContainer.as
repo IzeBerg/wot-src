@@ -11,6 +11,8 @@ package net.wg.gui.components.carousels.controls.levelInfo
       
       public var levelTf:TextFieldContainer = null;
       
+      private var _disposed:Boolean = false;
+      
       public function LevelLabelContainer()
       {
          super();
@@ -33,8 +35,14 @@ package net.wg.gui.components.carousels.controls.levelInfo
       
       public function dispose() : void
       {
+         this._disposed = true;
          this.levelTf.dispose();
          this.levelTf = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

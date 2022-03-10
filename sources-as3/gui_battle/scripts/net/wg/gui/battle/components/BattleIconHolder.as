@@ -46,5 +46,10 @@ package net.wg.gui.battle.components
             this._currItem.visible = true;
          }
       }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._baseDisposed;
+      }
    }
 }

@@ -1,8 +1,6 @@
 import BigWorld, SoundGroups
 from gui.Scaleform.Waiting import Waiting
-from new_year.cgf_components.highlight_manager import HighlightManager
 from hangar_selectable_objects import ISelectableObject
-from new_year.cgf_components.current_camera_object_manager import CurrentCameraObject
 from .base_selectable_logic import BaseSelectableLogic
 
 class HangarSelectableLogic(BaseSelectableLogic):
@@ -39,11 +37,11 @@ class HangarSelectableLogic(BaseSelectableLogic):
         if entity is None:
             return False
         else:
-            if entity.entityGameObject.findComponentByType(CurrentCameraObject) is not None:
-                return False
             if not isinstance(entity, ISelectableObject):
                 return False
             if not self._hangarSpace.isCursorOver3DScene:
+                return False
+            if not entity.enabled:
                 return False
             return True
 
@@ -59,7 +57,8 @@ class HangarSelectableLogic(BaseSelectableLogic):
         if not isinstance(entity, ISelectableObject):
             return
         else:
-            self.__fade3DEntity(entity)
+            if self._hangarSpace.isCursorOver3DScene:
+                self.__fade3DEntity(entity)
             return
 
     def _onMouseDown(self):
@@ -70,10 +69,11 @@ class HangarSelectableLogic(BaseSelectableLogic):
 
     def _onMouseUp(self):
         if self._hangarSpace.isCursorOver3DScene:
-            if self.__selected3DEntityUnderMouseDown is not None and self.__selected3DEntityUnderMouseDown.enabled:
+            if self.__selected3DEntityUnderMouseDown:
                 self.__selected3DEntityUnderMouseDown.onMouseUp()
                 if self.__selected3DEntityUnderMouseDown == self.__selected3DEntity:
                     self.__selected3DEntityUnderMouseDown.onMouseClick()
+        self.__onMouseEnter(self.__selected3DEntity)
         self.__selected3DEntityUnderMouseDown = None
         return
 
@@ -87,9 +87,9 @@ class HangarSelectableLogic(BaseSelectableLogic):
         return True
 
     def __highlight3DEntity(self, entity):
-        HighlightManager.toggleEntityHighlight(entity, True)
+        entity.setHighlight(True)
         self._callbackMethodCall('onHighlight3DEntity', entity)
 
     def __fade3DEntity(self, entity):
-        HighlightManager.toggleEntityHighlight(entity, False)
+        entity.setHighlight(False)
         self._callbackMethodCall('onFade3DEntity', entity)

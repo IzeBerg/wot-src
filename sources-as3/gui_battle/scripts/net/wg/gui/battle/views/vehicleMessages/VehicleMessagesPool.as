@@ -11,6 +11,8 @@ package net.wg.gui.battle.views.vehicleMessages
       
       private var _itemsCount:int = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function VehicleMessagesPool(param1:FadingMessageListSettingsVO, param2:String)
       {
          var _loc3_:VehicleMessage = null;
@@ -43,6 +45,7 @@ package net.wg.gui.battle.views.vehicleMessages
       
       public final function dispose() : void
       {
+         this._disposed = true;
          var _loc1_:int = this._items.length - 1;
          while(_loc1_ >= 0)
          {
@@ -77,6 +80,11 @@ package net.wg.gui.battle.views.vehicleMessages
          {
             _loc1_.updateStage();
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -75,6 +75,8 @@ package net.wg.data.vo
       
       private var localDelayIsSet:Boolean = false;
       
+      private var _disposed:Boolean = false;
+      
       public function TweenPropertiesVO(param1:Object)
       {
          super();
@@ -307,6 +309,7 @@ package net.wg.data.vo
       
       public function dispose() : void
       {
+         this._disposed = true;
          this._target = null;
       }
       
@@ -318,6 +321,11 @@ package net.wg.data.vo
       public function getTweenIdx() : int
       {
          return this._idx;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }
