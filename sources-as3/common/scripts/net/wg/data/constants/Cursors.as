@@ -1,36 +1,7 @@
-package net.wg.data.constants
-{
-   import flash.ui.MouseCursor;
-   
-   public class Cursors
-   {
-      
-      public static const ARROW:String = MouseCursor.ARROW;
-      
-      public static const AUTO:String = MouseCursor.AUTO;
-      
-      public static const BUTTON:String = MouseCursor.BUTTON;
-      
-      public static const HAND:String = MouseCursor.HAND;
-      
-      public static const IBEAM:String = MouseCursor.IBEAM;
-      
-      public static const ROTATE:String = "rotate";
-      
-      public static const RESIZE:String = "resize";
-      
-      public static const MOVE:String = "move";
-      
-      public static const DRAG_OPEN:String = "dragopen";
-      
-      public static const DRAG_CLOSE:String = "dragclose";
-      
-      public static const NUT:String = "nut";
-       
-      
-      public function Cursors()
-      {
-         super();
-      }
-   }
-}
+/*
+ * Decompilation error
+ * Code may be obfuscated
+ * Tip: You can try enabling "Automatic deobfuscation" in Settings
+ * Error type: ExecutionException (java.lang.OutOfMemoryError: unable to create native thread: possibly out of memory or process/resource limits reached)
+ */
+throw new flash.errors.IllegalOperationError("Not decompiled due to error");
