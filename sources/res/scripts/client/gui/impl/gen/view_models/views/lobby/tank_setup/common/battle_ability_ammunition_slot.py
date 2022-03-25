@@ -1,3 +1,4 @@
+from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.tank_setup.common.base_ammunition_slot import BaseAmmunitionSlot
 
 class BattleAbilityAmmunitionSlot(BaseAmmunitionSlot):
@@ -13,12 +14,12 @@ class BattleAbilityAmmunitionSlot(BaseAmmunitionSlot):
         self._setNumber(11, value)
 
     def getRank(self):
-        return self._getString(12)
+        return self._getResource(12)
 
     def setRank(self, value):
-        self._setString(12, value)
+        self._setResource(12, value)
 
     def _initialize(self):
         super(BattleAbilityAmmunitionSlot, self)._initialize()
         self._addNumberProperty('level', 0)
-        self._addStringProperty('rank', 'private')
+        self._addResourceProperty('rank', R.invalid())

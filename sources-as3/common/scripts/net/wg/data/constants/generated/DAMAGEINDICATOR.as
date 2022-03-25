@@ -13,6 +13,20 @@ package net.wg.data.constants.generated
       
       public static const ALLY_SPG:String = "ally_SPG";
       
+      public static const ALLY_SUPPLY_A_TGUN:String = "ally_supply_ATgun";
+      
+      public static const ALLY_SUPPLY_BARRICADES:String = "ally_supply_Barricades";
+      
+      public static const ALLY_SUPPLY_BUNKER:String = "ally_supply_Bunker";
+      
+      public static const ALLY_SUPPLY_FLAMER:String = "ally_supply_Flamer";
+      
+      public static const ALLY_SUPPLY_MORTAR:String = "ally_supply_Mortar";
+      
+      public static const ALLY_SUPPLY_PILLBOX:String = "ally_supply_Pillbox";
+      
+      public static const ALLY_SUPPLY_WATCH_TOWER:String = "ally_supply_WatchTower";
+      
       public static const AMMO_CIRCLE:String = "ammoCircle";
       
       public static const ARTILLERY:String = "artillery";
@@ -82,6 +96,20 @@ package net.wg.data.constants.generated
       public static const RELOADER_CIRCLE:String = "reloaderCircle";
       
       public static const SPG:String = "SPG";
+      
+      public static const SUPPLY_A_TGUN:String = "supply_ATgun";
+      
+      public static const SUPPLY_BARRICADES:String = "supply_Barricades";
+      
+      public static const SUPPLY_BUNKER:String = "supply_Bunker";
+      
+      public static const SUPPLY_FLAMER:String = "supply_Flamer";
+      
+      public static const SUPPLY_MORTAR:String = "supply_Mortar";
+      
+      public static const SUPPLY_PILLBOX:String = "supply_Pillbox";
+      
+      public static const SUPPLY_WATCH_TOWER:String = "supply_WatchTower";
       
       public static const TANKS_CIRCLE:String = "tanksCircle";
       

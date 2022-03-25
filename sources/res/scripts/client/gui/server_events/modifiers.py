@@ -1275,6 +1275,12 @@ class HeroTankAdventCalendarRedirectModifier(ActionModifier):
         return self._params.get('enabled', '').lower() in ('1', 'yes', 'true')
 
 
+class TradeInModifier(ActionModifier):
+
+    def __init__(self, name, params):
+        super(TradeInModifier, self).__init__('tradein', params, modType=ACTION_MODIFIER_TYPE.AVAILABILITY)
+
+
 class LobbyHeaderTabCounterModifier(ActionModifier):
 
     def __init__(self, _, params):
@@ -1297,7 +1303,7 @@ _MODIFIERS = (
  (
   'set_EconomicsPrices', EconomicsSet),
  (
-  'set_TradeInParams', EconomicsSet),
+  'set_TradeIn', TradeInModifier),
  (
   'cond_VehPrice', VehPriceCond),
  (

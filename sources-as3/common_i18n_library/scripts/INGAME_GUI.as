@@ -137,6 +137,8 @@ package
       
       public static const PLAYER_MESSAGES_ALLY_HIT:String = "#ingame_gui:player_messages/ALLY_HIT";
       
+      public static const PLAYER_MESSAGES_SPAWN:String = "#ingame_gui:player_messages/SPAWN";
+      
       public static const PLAYER_MESSAGES_ALLY_BASE_CAPTURED_NOTIFICATION:String = "#ingame_gui:player_messages/ally_base_captured_notification";
       
       public static const PLAYER_MESSAGES_ENEMY_BASE_CAPTURED_NOTIFICATION:String = "#ingame_gui:player_messages/enemy_base_captured_notification";
@@ -846,6 +848,12 @@ package
       public static const VEHICLE_MESSAGES_DEATH_FROM_FIRE:String = "#ingame_gui:vehicle_messages/DEATH_FROM_FIRE";
       
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_FIRE:String = "#ingame_gui:postmortem_messages/DEATH_FROM_FIRE";
+      
+      public static const POSTMORTEM_MESSAGES_DEATH_FROM_SUPPLY_SHOT:String = "#ingame_gui:postmortem_messages/DEATH_FROM_SUPPLY_SHOT";
+      
+      public static const PLAYER_MESSAGES_DEATH_FROM_SUPPLY_SHOT_ALLY_ENEMY:String = "#ingame_gui:player_messages/DEATH_FROM_SUPPLY_SHOT_ALLY_ENEMY";
+      
+      public static const PLAYER_MESSAGES_DEATH_FROM_SUPPLY_SHOT_ENEMY_ALLY:String = "#ingame_gui:player_messages/DEATH_FROM_SUPPLY_SHOT_ENEMY_ALLY";
       
       public static const PLAYER_MESSAGES_DEATH_FROM_INACTIVE_CREW_AT_SHOT:String = "#ingame_gui:player_messages/DEATH_FROM_INACTIVE_CREW_AT_SHOT";
       
@@ -1654,8 +1662,6 @@ package
       public static const HELPSCREEN_HINT_PRESS:String = "#ingame_gui:helpScreen/hint/press";
       
       public static const HELPSCREEN_HINT_DESCRIPTION:String = "#ingame_gui:helpScreen/hint/description";
-      
-      public static const HELPSCREEN_SPGHINT_DESCRIPTION:String = "#ingame_gui:helpScreen/spgHint/description";
       
       public static const COMMANDERCAM_HINT_DESCRIPTION:String = "#ingame_gui:commanderCam/hint/description";
       

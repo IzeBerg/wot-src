@@ -13,6 +13,7 @@ package net.wg.gui.battle.eventBattle.views.battleHints
       public function EventBattleHint()
       {
          super();
+         mouseEnabled = mouseChildren = false;
       }
       
       override protected function onDispose() : void

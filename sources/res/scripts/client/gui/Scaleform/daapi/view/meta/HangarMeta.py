@@ -96,6 +96,14 @@ class HangarMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_showSwitchToAmmunition()
 
+    def as_showSwitchToRTSRosterS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_showSwitchToRTSRoster()
+
+    def as_showSwitchFromRTSRosterS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_showSwitchFromRTSRoster()
+
     def as_toggleBattleRoyaleS(self, isBattleRoyale):
         if self._isDAAPIInited():
             return self.flashObject.as_toggleBattleRoyale(isBattleRoyale)
@@ -107,3 +115,31 @@ class HangarMeta(View):
     def as_setDQWidgetLayoutS(self, lyout):
         if self._isDAAPIInited():
             return self.flashObject.as_setDQWidgetLayout(lyout)
+
+    def as_setCarouselRowsS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setCarouselRows(value)
+
+    def as_createRtsWarningWidgetS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_createRtsWarningWidget()
+
+    def as_destroyRtsWarningWidgetS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_destroyRtsWarningWidget()
+
+    def as_createRtsBannerWidgetS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_createRtsBannerWidget()
+
+    def as_destroyRtsBannerWidgetS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_destroyRtsBannerWidget()
+
+    def as_setRtsBannerWidgetVisibleS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setRtsBannerWidgetVisible(value)
+
+    def as_setRtsCarouselVisibleS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setRtsCarouselVisible(value)

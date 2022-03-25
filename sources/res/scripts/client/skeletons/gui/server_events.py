@@ -1,7 +1,7 @@
 import typing
-from Event import Event
 if typing.TYPE_CHECKING:
     from typing import Optional, Dict, Callable, Union
+    from Event import Event
     from gui.server_events.event_items import DailyEpicTokenQuest, Quest, DailyQuest, PremiumQuest
 
 class IEventsCache(object):
@@ -119,9 +119,6 @@ class IEventsCache(object):
         raise NotImplementedError
 
     def getHeroTankAdventCalendarRedirectAction(self):
-        raise NotImplementedError
-
-    def getTradeInActions(self):
         raise NotImplementedError
 
     def isBalancedSquadEnabled(self):

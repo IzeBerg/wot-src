@@ -152,6 +152,10 @@
 			<gold_small_inactive_label>&lt;font color=&quot;#4d3d21&quot;&gt;%(value)s&lt;/font&gt; &lt;IMG SRC=&quot;img://gui/maps/icons/library/GoldIconInactive-2.png&quot; width=&quot;16&quot; height=&quot;16&quot; vspace=&quot;-3&quot;/&gt;</gold_small_inactive_label>
 			<crystal_small_label>&lt;font color=&quot;#c9c9b6&quot;&gt;%(value)s&lt;/font&gt; &lt;IMG SRC=&quot;img://gui/maps/icons/library/CrystalIcon-2.png&quot; width=&quot;16&quot; height=&quot;16&quot; vspace=&quot;-3&quot;/&gt;</crystal_small_label>
 			<crystal_small_inactive_label>&lt;font color=&quot;#4d3d21&quot;&gt;%(value)s&lt;/font&gt; &lt;IMG SRC=&quot;img://gui/maps/icons/library/CrystalIconInactive-2.png&quot; width=&quot;16&quot; height=&quot;16&quot; vspace=&quot;-3&quot;/&gt;</crystal_small_inactive_label>
+			<rts1x7Currency_small_label>&lt;font color=&quot;#e9e2bf&quot;&gt;%(value)s&lt;/font&gt; &lt;IMG SRC=&quot;img://gui/maps/icons/rtsBattles/currency/rts1x7currency/icon_16.png&quot; width=&quot;16&quot; height=&quot;16&quot; vspace=&quot;-3&quot;/&gt;</rts1x7Currency_small_label>
+			<rts1x1Currency_small_label>&lt;font color=&quot;#e9e2bf&quot;&gt;%(value)s&lt;/font&gt; &lt;IMG SRC=&quot;img://gui/maps/icons/rtsBattles/currency/rts1x1currency/icon_16.png&quot; width=&quot;16&quot; height=&quot;16&quot; vspace=&quot;-3&quot;/&gt;</rts1x1Currency_small_label>
+			<rtsEventPoints_small_label>&lt;font color=&quot;#e9e2bf&quot;&gt;%(value)s&lt;/font&gt; &lt;IMG SRC=&quot;img://gui/maps/icons/rtsBattles/currency/rtsEventPoints/r4_points_16.png&quot; width=&quot;16&quot; height=&quot;16&quot; vspace=&quot;-3&quot;/&gt;</rtsEventPoints_small_label>
+			<rtsLeaderboardPoints_small_label>&lt;font color=&quot;#e9e2bf&quot;&gt;%(value)s&lt;/font&gt; &lt;IMG SRC=&quot;img://gui/maps/icons/rtsBattles/currency/rtsLeaderboardPoints/r4_leadershipPoints_16.png&quot; width=&quot;16&quot; height=&quot;16&quot; vspace=&quot;-3&quot;/&gt;</rtsLeaderboardPoints_small_label>
 			<eventCoin_small_label>&lt;font color=&quot;#c9c9b6&quot;&gt;%(value)s&lt;/font&gt; &lt;IMG SRC=&quot;img://gui/maps/icons/library/EventCoinIcon-2.png&quot; width=&quot;16&quot; height=&quot;16&quot; vspace=&quot;-3&quot;/&gt;</eventCoin_small_label>
 			<eventCoin_small_inactive_label>&lt;font color=&quot;#4d3d21&quot;&gt;%(value)s&lt;/font&gt; &lt;IMG SRC=&quot;img://gui/maps/icons/library/EventCoinIconInactive-2.png&quot; width=&quot;16&quot; height=&quot;16&quot; vspace=&quot;-3&quot;/&gt;</eventCoin_small_inactive_label>
 			<bpcoin_small_label>&lt;font color=&quot;#c9c9b6&quot;&gt;%(value)s&lt;/font&gt; &lt;IMG SRC=&quot;img://gui/maps/icons/library/BpcoinIcon-1.png&quot; width=&quot;16&quot; height=&quot;16&quot; vspace=&quot;-3&quot;/&gt;</bpcoin_small_label>
@@ -1135,6 +1139,7 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<alignText>&lt;p align=&apos;%(align)s&apos;&gt;%(message)s&lt;/p&gt;</alignText>
 			<leadingText>&lt;textformat leading=&apos;%(leading)s&apos;&gt;%(message)s&lt;/textformat&gt;</leadingText>
 			<bonusLocalText>&lt;font face=&apos;$FieldFont&apos; size=&apos;20&apos; color=&apos;#FEFEEC&apos;&gt;%(message)s&lt;/font&gt;</bonusLocalText>
+			<bonusLocalTextGold>&lt;font face=&apos;$TitleFont&apos; color=&apos;#FBC062&apos;&gt;%(message)s&lt;/font&gt;</bonusLocalTextGold>
 			<bonusLocalInfoTipText>&lt;font face=&apos;$FieldFont&apos; size=&apos;20&apos; color=&apos;#80D43A&apos;&gt;%(message)s&lt;/font&gt;</bonusLocalInfoTipText>
 			<bonusAppliedText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#80d43a&apos;&gt;%(message)s&lt;/font&gt;</bonusAppliedText>
 			<bonusPreviewText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#FEAB34&apos;&gt;%(message)s&lt;/font&gt;</bonusPreviewText>
@@ -1314,6 +1319,26 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 	</battleRoyale>
 	<battleHints>
 		<testMessage>&lt;font color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/testMessage)&lt;/font&gt;</testMessage>
+		<testMessage1>&lt;font color=&quot;#FFFFFF&quot;&gt;Используйте W S A D для того чтобы найти ваш Дот&lt;/font&gt;</testMessage1>
+		<testMessage2>&lt;font color=&quot;#FFFFFF&quot;&gt;Используйте среднюю кнопку миши (колесо) для того чтобы повернуть свою камеру и найти ваши танки&lt;/font&gt;</testMessage2>
+		<testMessage3>&lt;font color=&quot;#FFFFFF&quot;&gt;Используйте среднюю кнопку миши (колесо) для того чтобы поднять вашу камеру вверх и найти маркер&lt;/font&gt;</testMessage3>
+		<testMessage4>&lt;font color=&quot;#FFFFFF&quot;&gt;Выберете свой танк и при помощи ПКМ прикажите ему двигаться к маркеру&lt;/font&gt;</testMessage4>
+		<testMessage5>&lt;font color=&quot;#FFFFFF&quot;&gt;Используйте ПКМ нажав по противнику для того чтобы атаковать его&lt;/font&gt;</testMessage5>
+		<testMessage6>&lt;font color=&quot;#FFFFFF&quot;&gt;Выберете свой второй танк и при помощи ПКМ прикажите ему двигаться к маркеру&lt;/font&gt;</testMessage6>
+		<testMessage7>&lt;font color=&quot;#FFFFFF&quot;&gt;Используйте ПКМ нажав по противнику для того чтобы атаковать его&lt;/font&gt;</testMessage7>
+		<testMessage8>&lt;font color=&quot;#FFFFFF&quot;&gt;Уничтожте 2 противника&lt;/font&gt;</testMessage8>
+		<testMessage9>&lt;font color=&quot;#FFFFFF&quot;&gt;Используйте двойное нажатие ПКМ по противнику для того чтобы атаковать его агрессивно&lt;/font&gt;</testMessage9>
+		<testMessage10>&lt;font color=&quot;#FFFFFF&quot;&gt;Выберете первый танк и нажмите Q для того чтобы перейти в режим танкиста и следуйте к маркеру&lt;/font&gt;</testMessage10>
+		<testMessage11>&lt;font color=&quot;#FFFFFF&quot;&gt;Снова нажмите Q для того чтобы вернуться в режим коммандира&lt;/font&gt;</testMessage11>
+		<testMessage12>&lt;font color=&quot;#FFFFFF&quot;&gt;Удерживайте ЛКМ и выберете 2 своих танка&lt;/font&gt;</testMessage12>
+		<testMessage13>&lt;font color=&quot;#FFFFFF&quot;&gt;Двигайте свой отред к следующему маркеру/font&gt;</testMessage13>
+		<testMessage14>&lt;font color=&quot;#FFFFFF&quot;&gt;Уничтожте последние 3 цели, но будте внимательны они будут вас атаковать&lt;/font&gt;</testMessage14>
+		<testMessage15>&lt;font color=&quot;#FFFFFF&quot;&gt;Двигайтесь к следующему маркеру&lt;/font&gt;</testMessage15>
+		<testMessage16>&lt;font color=&quot;#FFFFFF&quot;&gt;Уничтожте противника&lt;/font&gt;</testMessage16>
+		<testMessage17>&lt;font color=&quot;#FFFFFF&quot;&gt;Используйте оба своих танка для того чтобы уничтожить противников&lt;/font&gt;</testMessage17>
+		<testMessage18>&lt;font color=&quot;#FFFFFF&quot;&gt;Ваши постройки атакуют противника без вашей команды и находятся под управлением ИИ&lt;/font&gt;</testMessage18>
+		<testMessage19>&lt;font color=&quot;#FFFFFF&quot;&gt;Уничтожте противника используя Блайнд-Шоты, так как ИИ не умеет этого делать&lt;/font&gt;</testMessage19>
+		<testMessage20>&lt;font color=&quot;#FFFFFF&quot;&gt;Передвинте свою камеру у следующему маркеру&lt;/font&gt;</testMessage20>
 		<testMessageWithParams>&lt;font color=&quot;#FFFFFF&quot;&gt;_(#event:battleHints/testMessageWithParams)&lt;/font&gt;</testMessageWithParams>
 	</battleHints>
 	<vehicleRoles>

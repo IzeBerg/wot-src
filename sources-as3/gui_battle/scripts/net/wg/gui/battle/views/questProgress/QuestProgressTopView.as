@@ -213,8 +213,11 @@ package net.wg.gui.battle.views.questProgress
          this._hideViewCompleteCallback = null;
          this._positions.dispose();
          this._positions = null;
-         this._frameHelper.dispose();
-         this._frameHelper = null;
+         if(this._frameHelper)
+         {
+            this._frameHelper.dispose();
+            this._frameHelper = null;
+         }
          this.shadow = null;
          this.separator = null;
          this.flag.removeEventListener(QuestProgressComponentEvent.SHOW,this.onFlagVisibilityChangeHandler);

@@ -53,6 +53,20 @@ package net.wg.data.constants.generated
       
       public static const WHITE_ICON_SPG_16X16:String = "whiteIconSPG16x16";
       
+      public static const WHITE_ICON_GUN_16X16:String = "whiteIconGun16x16";
+      
+      public static const WHITE_ICON_PILLBOX_16X16:String = "whiteIconPillbox16x16";
+      
+      public static const WHITE_ICON_TOWER_16X16:String = "whiteIconTower16x16";
+      
+      public static const WHITE_ICON_ATGUN_16X16:String = "whiteIconATgun16x16";
+      
+      public static const WHITE_ICON_BARRICADES_16X16:String = "whiteIconBarricades16x16";
+      
+      public static const WHITE_ICON_FLAMER_16X16:String = "whiteIconFlamer16x16";
+      
+      public static const WHITE_ICON_MORTAR_16X16:String = "whiteIconMortar16x16";
+      
       public static const DAMAGELOG_AIRSTRIKE_16X16:String = "damageLog_airstrike_16x16";
       
       public static const DAMAGELOG_ARTILLERY_16X16:String = "damageLog_artillery_16x16";
@@ -68,6 +82,10 @@ package net.wg.data.constants.generated
       public static const DAMAGELOG_BY_MINE_FIELD_16X16:String = "damageLog_by_mine_field_16x16";
       
       public static const DAMAGELOG_DMG_BY_SMOKE_16X16:String = "damageLog_by_smoke_16x16";
+      
+      public static const DAMAGELOG_SUPPLY_DAMAGE_16X16:String = "damageLog_supply_damage_16x16";
+      
+      public static const DAMAGELOG_SUM:String = "sum";
        
       
       public function BATTLEDAMAGELOG_IMAGES()

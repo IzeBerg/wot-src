@@ -13,29 +13,29 @@ package net.wg.gui.components.hintPanel
       
       private static const TEXTFIELD_PADDING:int = 5;
       
-      private static const LEFT_MOUSE_BUTTON:String = "LMB";
+      private static const LEFT_MOUSE_BUTTON:String = "KEY_MOUSE0";
       
       private static const LEFT_MOUSE_BUTTON_ALTERNATIVE:String = "KEY_LEFTMOUSE";
       
-      private static const RIGHT_MOUSE_BUTTON:String = "RMB";
+      private static const RIGHT_MOUSE_BUTTON:String = "KEY_MOUSE1";
       
       private static const RIGHT_MOUSE_BUTTON_ALTERNATIVE:String = "KEY_RIGHTMOUSE";
       
-      private static const MIDDLE_MOUSE_BUTTON:String = "MMB";
+      private static const MIDDLE_MOUSE_BUTTON:String = "KEY_MOUSE2";
       
       private static const MIDDLE_MOUSE_BUTTON_ALTERNATIVE:String = "KEY_MIDDLEMOUSE";
       
-      private static const ADDITIONAL_MOUSE_BUTTON_UP:String = "UP_MB";
+      private static const ADDITIONAL_MOUSE_BUTTON_UP:String = "KEY_MOUSE3";
       
-      private static const ADDITIONAL_MOUSE_BUTTON_DOWN:String = "DOWN_MB";
+      private static const ADDITIONAL_MOUSE_BUTTON_DOWN:String = "KEY_MOUSE4";
       
-      private static const LEFT_ARROW_BUTTON:String = "Left Arrow";
+      private static const LEFT_ARROW_BUTTON:String = "KEY_LEFTARROW";
       
-      private static const RIGHT_ARROW_BUTTON:String = "Right Arrow";
+      private static const RIGHT_ARROW_BUTTON:String = "KEY_RIGHTARROW";
       
-      private static const DOWN_ARROW_BUTTON:String = "Down Arrow";
+      private static const DOWN_ARROW_BUTTON:String = "KEY_DOWNARROW";
       
-      private static const UP_ARROW_BUTTON:String = "Up Arrow";
+      private static const UP_ARROW_BUTTON:String = "KEY_UPARROW";
       
       private static const BUTTONS_WITH_CUSTOM_ICON:Vector.<String> = new <String>[LEFT_MOUSE_BUTTON,LEFT_MOUSE_BUTTON_ALTERNATIVE,RIGHT_MOUSE_BUTTON,RIGHT_MOUSE_BUTTON_ALTERNATIVE,MIDDLE_MOUSE_BUTTON,MIDDLE_MOUSE_BUTTON_ALTERNATIVE,ADDITIONAL_MOUSE_BUTTON_UP,ADDITIONAL_MOUSE_BUTTON_DOWN,LEFT_ARROW_BUTTON,RIGHT_ARROW_BUTTON,DOWN_ARROW_BUTTON,UP_ARROW_BUTTON];
        
@@ -64,21 +64,21 @@ package net.wg.gui.components.hintPanel
          this.customButtonIcon = null;
       }
       
-      public function setKey(param1:String) : void
+      public function setKey(param1:String, param2:String) : void
       {
-         var _loc2_:Boolean = false;
-         _loc2_ = BUTTONS_WITH_CUSTOM_ICON.indexOf(param1) >= 0;
-         this.customButtonIcon.visible = _loc2_;
-         this.keyTF.visible = !_loc2_;
-         this.buttonBgMc.visible = !_loc2_;
-         if(_loc2_)
+         var _loc3_:Boolean = false;
+         _loc3_ = BUTTONS_WITH_CUSTOM_ICON.indexOf(param1) >= 0;
+         this.customButtonIcon.visible = _loc3_;
+         this.keyTF.visible = !_loc3_;
+         this.buttonBgMc.visible = !_loc3_;
+         if(_loc3_)
          {
             this.customButtonIcon.gotoAndStop(param1);
          }
          else
          {
             this.keyTF.x = this._keySideOffset;
-            this.keyTF.text = param1;
+            this.keyTF.text = param2;
             this.keyTF.width = this.keyTF.textWidth + TEXTFIELD_PADDING | 0;
             this.buttonBgMc.width = this.keyTF.width + (this._keySideOffset << 1);
          }

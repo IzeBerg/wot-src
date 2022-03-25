@@ -41,6 +41,8 @@ class GameEvent(HasCtxEvent):
     SHOW_EXTENDED_INFO = 'game/showExtendedInfo'
     CHOICE_CONSUMABLE = 'game/choiceConsumable'
     MINIMAP_CMD = 'game/minimapCmd'
+    MINIMAP_SET_VISIBILITY_CMD = 'game/minimapSetVisibilityCmd'
+    NUMBER_CMD = 'game/numberCmd'
     RADIAL_MENU_CMD = 'game/radialMenuCmd'
     TOGGLE_GUI = 'game/toggleGUI'
     GUI_VISIBILITY = 'game/guiVisibility'
@@ -52,6 +54,7 @@ class GameEvent(HasCtxEvent):
     EVENT_STATS = 'game/eventStats'
     FULL_STATS_QUEST_PROGRESS = 'game/fullStats/questProgress'
     HIDE_VEHICLE_UPGRADE = 'game/battleRoyale/hideVehicleUpgrade'
+    FULL_STATS_QUEST_PROGRESS = 'game/fullStats/questProgress'
     SHOW_CURSOR = 'game/showCursor'
     HIDE_CURSOR = 'game/hideCursor'
     NEXT_PLAYERS_PANEL_MODE = 'game/nextPlayersPanelMode'
@@ -83,6 +86,9 @@ class GameEvent(HasCtxEvent):
     ROLE_HINT_TOGGLE = 'roleHintToggle'
     COMMANDER_HINT = 'game/commanderHint'
     CHANGE_AMMUNITION_SETUP = 'game/changeAmmunitionSetup'
+    TOGGLE_DEBUG_PIERCING_PANEL = 'game/toggleDebugPiercingPanel'
+    COMMANDER_HELP = 'game/commanderHelp'
+    COMMANDER_HINT_TIME = 'game/commanderHintTime'
 
 
 class GUICommonEvent(SharedEvent):
@@ -324,6 +330,7 @@ class PersonalMissionsEvent(HasCtxEvent):
 class TrainingSettingsEvent(HasCtxEvent):
     UPDATE_TRAINING_SETTINGS = 'updateTrainingSettings'
     UPDATE_EPIC_TRAINING_SETTINGS = 'updateEpicTrainingSettings'
+    UPDATE_RTS_TRAINING_SETTINGS = 'updateRtsTrainingSettings'
 
 
 class TechnicalMaintenanceEvent(HasCtxEvent):
@@ -361,6 +368,7 @@ class SkillDropEvent(SharedEvent):
 class CloseWindowEvent(SharedEvent):
     EULA_CLOSED = 'EULAClosed'
     GOLD_FISH_CLOSED = 'GoldFishClosed'
+    RTS_ROSTER_CLOSED = 'RtsRosterClosed'
     ELITE_WINDOW_CLOSED = 'EliteWindowClosed'
     BUY_VEHICLE_VIEW_CLOSED = 'BuyVehicleViewClosed'
 
@@ -694,6 +702,7 @@ class TrainingEvent(HasCtxEvent):
     RETURN_TO_TRAINING_ROOM = 'trainingEvent/returnToTrainingRoom'
     SHOW_TRAINING_LIST = 'trainingEvent/showTrainingList'
     SHOW_EPIC_TRAINING_LIST = 'trainingEvent/showEpicTrainingList'
+    SHOW_RTS_TRAINING_LIST = 'trainingEvent/showRtsTrainingList'
 
 
 class RallyWindowEvent(HasCtxEvent):
@@ -753,3 +762,7 @@ class FullscreenModeSelectorEvent(HasCtxEvent):
 
 class ModeSelectorPopoverEvent(HasCtxEvent):
     NAME = 'ModeSelectorPopoverEvent'
+
+
+class GunMarkerEvent(HasCtxEvent):
+    UPDATE_PIERCING_DATA = 'onPiercingDataUpdated'

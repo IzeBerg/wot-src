@@ -1,5 +1,5 @@
 import logging
-from account_helpers.AccountSettings import AccountSettings
+from account_helpers.AccountSettings import AccountSettings, LOBBY_MENU_MANUAL_TRIGGER_SHOWN
 from frameworks.wulf import WindowLayer
 from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
 from gui.doc_loaders.manual_xml_data_reader import ManualPageTypes
@@ -124,7 +124,7 @@ class ManualController(IManualController):
 
     def getNewContentCount(self):
         number = self.countNewContent()
-        if number and AccountSettings.isLobbyMenuTriggerShown():
+        if number and AccountSettings.getManualData(LOBBY_MENU_MANUAL_TRIGGER_SHOWN):
             return number
         return 0
 

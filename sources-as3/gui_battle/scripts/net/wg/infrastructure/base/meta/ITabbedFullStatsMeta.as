@@ -16,6 +16,8 @@ package net.wg.infrastructure.base.meta
       
       function as_updateProgressTracking(param1:Object) : void;
       
+      function as_setTableVisibility(param1:Boolean) : void;
+      
       function as_updateTabs(param1:Array) : void;
    }
 }

@@ -12,8 +12,6 @@ package net.wg.gui.lobby.settings.vo.config.aim
       
       public var spgScaleWidget:SettingsControlProp = null;
       
-      public var scrollSmoothingEnabled:SettingsControlProp = null;
-      
       public var autoChangeAimMode:SettingsControlProp = null;
       
       public var spgStrategicCamMode:SettingsControlProp = null;
@@ -25,7 +23,6 @@ package net.wg.gui.lobby.settings.vo.config.aim
          super({
             "shotsResultIndicator":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "spgScaleWidget":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
-            "scrollSmoothingEnabled":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "autoChangeAimMode":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "spgStrategicCamMode":createControl(ControlsFactory.TYPE_DROPDOWN).build(),
             "aimEntranceMode":createControl(ControlsFactory.TYPE_DROPDOWN).build()
@@ -36,7 +33,6 @@ package net.wg.gui.lobby.settings.vo.config.aim
       {
          this.shotsResultIndicator = null;
          this.spgScaleWidget = null;
-         this.scrollSmoothingEnabled = null;
          this.autoChangeAimMode = null;
          this.spgStrategicCamMode = null;
          this.aimEntranceMode = null;

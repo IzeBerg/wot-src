@@ -145,6 +145,56 @@ package net.wg.data.constants.generated
       
       public static const CHINA_CH46_113_140:String = "china-Ch46_113_140";
       
+      public static const COMMADNER_ALLY_AT_SPG_SPOTTED:String = "commadner_ally_AT-SPG_spotted";
+      
+      public static const COMMANDER_ALLY_AT_SPG:String = "commander_ally_AT-SPG";
+      
+      public static const COMMANDER_ALLY_AT_SPG_DEAD:String = "commander_ally_AT-SPG_dead";
+      
+      public static const COMMANDER_ALLY_HEAVY_TANK:String = "commander_ally_heavyTank";
+      
+      public static const COMMANDER_ALLY_HEAVY_TANK_DEAD:String = "commander_ally_heavyTank_dead";
+      
+      public static const COMMANDER_ALLY_HEAVY_TANK_SPOTTED:String = "commander_ally_heavyTank_spotted";
+      
+      public static const COMMANDER_ALLY_LIGHT_TANK:String = "commander_ally_lightTank";
+      
+      public static const COMMANDER_ALLY_LIGHT_TANK_DEAD:String = "commander_ally_lightTank_dead";
+      
+      public static const COMMANDER_ALLY_LIGHT_TANK_SPOTTED:String = "commander_ally_lightTank_spotted";
+      
+      public static const COMMANDER_ALLY_MEDIUM_TANK:String = "commander_ally_mediumTank";
+      
+      public static const COMMANDER_ALLY_MEDIUM_TANK_DEAD:String = "commander_ally_mediumTank_dead";
+      
+      public static const COMMANDER_ALLY_MEDIUM_TANK_SPOTTED:String = "commander_ally_mediumTank_spotted";
+      
+      public static const COMMANDER_ALLY_SPG:String = "commander_ally_SPG";
+      
+      public static const COMMANDER_ALLY_SPG_DEAD:String = "commander_ally_SPG_dead";
+      
+      public static const COMMANDER_ALLY_SPG_SPOTTED:String = "commander_ally_SPG_spotted";
+      
+      public static const COMMANDER_ENEMY_AT_SPG:String = "commander_enemy_AT-SPG";
+      
+      public static const COMMANDER_ENEMY_AT_SPG_DEAD:String = "commander_enemy_AT-SPG_dead";
+      
+      public static const COMMANDER_ENEMY_HEAVY_TANK:String = "commander_enemy_heavyTank";
+      
+      public static const COMMANDER_ENEMY_HEAVY_TANK_DEAD:String = "commander_enemy_heavyTank_dead";
+      
+      public static const COMMANDER_ENEMY_LIGHT_TANK:String = "commander_enemy_lightTank";
+      
+      public static const COMMANDER_ENEMY_LIGHT_TANK_DEAD:String = "commander_enemy_lightTank_dead";
+      
+      public static const COMMANDER_ENEMY_MEDIUM_TANK:String = "commander_enemy_mediumTank";
+      
+      public static const COMMANDER_ENEMY_MEDIUM_TANK_DEAD:String = "commander_enemy_mediumTank_dead";
+      
+      public static const COMMANDER_ENEMY_SPG:String = "commander_enemy_SPG";
+      
+      public static const COMMANDER_ENEMY_SPG_DEAD:String = "commander_enemy_SPG_dead";
+      
       public static const CZECH_CZ01_SKODA_T40:String = "czech-Cz01_Skoda_T40";
       
       public static const CZECH_CZ02_TVP_T50:String = "czech-Cz02_TVP_T50";
@@ -388,6 +438,8 @@ package net.wg.data.constants.generated
       public static const GERMANY_G03_PZ_V_PANTHER:String = "germany-G03_PzV_Panther";
       
       public static const GERMANY_G03_PZ_V_PANTHER_BOOTCAMP:String = "germany-G03_PzV_Panther_bootcamp";
+      
+      public static const GERMANY_G03_PZ_V_PANTHER_EVENT:String = "germany-G03_PzV_Panther_Event";
       
       public static const GERMANY_G03_PZ_V_PANTHER_IGR:String = "germany-G03_PzV_Panther_IGR";
       
@@ -755,6 +807,8 @@ package net.wg.data.constants.generated
       
       public static const GREEN_AT_SPG:String = "green_AT-SPG";
       
+      public static const GREEN_AT_SPG_SPOTTED:String = "green_AT-SPG_spotted";
+      
       public static const GREEN_EXPLOSION:String = "green_explosion";
       
       public static const GREEN_FIRE:String = "green_fire";
@@ -765,7 +819,11 @@ package net.wg.data.constants.generated
       
       public static const GREEN_HEAVY_TANK:String = "green_heavyTank";
       
+      public static const GREEN_HEAVY_TANK_SPOTTED:String = "green_heavyTank_spotted";
+      
       public static const GREEN_LIGHT_TANK:String = "green_lightTank";
+      
+      public static const GREEN_LIGHT_TANK_SPOTTED:String = "green_lightTank_spotted";
       
       public static const GREEN_MEDIUM_AT_SPG:String = "green_mediumAT-SPG";
       
@@ -773,7 +831,11 @@ package net.wg.data.constants.generated
       
       public static const GREEN_MEDIUM_TANK:String = "green_mediumTank";
       
+      public static const GREEN_MEDIUM_TANK_SPOTTED:String = "green_mediumTank_spotted";
+      
       public static const GREEN_SPG:String = "green_SPG";
+      
+      public static const GREEN_SPG_SPOTTED:String = "green_SPG_spotted";
       
       public static const HIT_BLOCKED:String = "hit_blocked";
       
@@ -898,6 +960,16 @@ package net.wg.data.constants.generated
       public static const JAPAN_J29_NAMELESS:String = "japan-J29_Nameless";
       
       public static const JAPAN_J30_EDELWEISS:String = "japan-J30_Edelweiss";
+      
+      public static const MANNER_1:String = "manner_1";
+      
+      public static const MANNER_2:String = "manner_2";
+      
+      public static const MANNER_3:String = "manner_3";
+      
+      public static const MANNER_4:String = "manner_4";
+      
+      public static const MANNER_5:String = "manner_5";
       
       public static const NO_IMAGE:String = "noImage";
       
@@ -1345,6 +1417,8 @@ package net.wg.data.constants.generated
       
       public static const UNKNOWN:String = "unknown";
       
+      public static const UNKNOWN2:String = "unknown2";
+      
       public static const USA_A01_T1_CUNNINGHAM:String = "usa-A01_T1_Cunningham";
       
       public static const USA_A01_T1_CUNNINGHAM_BOT:String = "usa-A01_T1_Cunningham_bot";
@@ -1627,6 +1701,8 @@ package net.wg.data.constants.generated
       
       public static const USA_A99_T92_LT:String = "usa-A99_T92_LT";
       
+      public static const USSR_COMMANDER:String = "ussr-Commander";
+      
       public static const USSR_OBSERVER:String = "ussr-Observer";
       
       public static const USSR_R01_IS:String = "ussr-R01_IS";
@@ -1842,6 +1918,8 @@ package net.wg.data.constants.generated
       public static const USSR_R186_KV_1_SCREENED:String = "ussr-R186_KV_1_Screened";
       
       public static const USSR_R187_OBJECT_590:String = "ussr-R187_Object_590";
+      
+      public static const USSR_R188_OBJECT_259_A:String = "ussr-R188_Object_259A";
       
       public static const USSR_R19_IS_3:String = "ussr-R19_IS-3";
       

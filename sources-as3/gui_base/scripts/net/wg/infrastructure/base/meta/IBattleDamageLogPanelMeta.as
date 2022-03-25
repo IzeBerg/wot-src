@@ -8,7 +8,7 @@ package net.wg.infrastructure.base.meta
       
       function as_setSettingsDamageLogComponent(param1:Boolean, param2:Boolean) : void;
       
-      function as_summaryStats(param1:String, param2:String, param3:String, param4:String) : void;
+      function as_summaryStats(param1:String, param2:String, param3:String, param4:String, param5:String, param6:Boolean) : void;
       
       function as_updateSummaryDamageValue(param1:String) : void;
       
@@ -17,6 +17,8 @@ package net.wg.infrastructure.base.meta
       function as_updateSummaryAssistValue(param1:String) : void;
       
       function as_updateSummaryStunValue(param1:String) : void;
+      
+      function as_updateSummarySupplyDamageValue(param1:String) : void;
       
       function as_detailStatsTop(param1:Boolean, param2:Boolean, param3:Array) : void;
       

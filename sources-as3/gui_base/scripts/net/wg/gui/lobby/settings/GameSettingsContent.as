@@ -92,6 +92,8 @@ package net.wg.gui.lobby.settings
       
       public var dynamicCameraCheckbox:CheckBox = null;
       
+      public var scrollSmoothingCheckbox:CheckBox = null;
+      
       public var preCommanderCamCheckbox:CheckBox = null;
       
       public var commanderCamCheckbox:CheckBox = null;
@@ -286,6 +288,7 @@ package net.wg.gui.lobby.settings
          this.enableOpticalSnpEffectCheckbox.label = SETTINGS.GAME_ENABLEOPTICALSNPEFFECT;
          this.enablePostMortemDelayCheckbox.label = SETTINGS.GAME_ENABLEDELAYPOSTEFFECT;
          this.dynamicCameraCheckbox.label = SETTINGS.GAME_DYNAMICCAMERA;
+         this.scrollSmoothingCheckbox.label = SETTINGS.AIM_SPG_SCROLLSMOOTHINGENABLED;
          this.horStabilizationSnpCheckbox.label = SETTINGS.GAME_HORSTABILIZATIONSNP;
          this.preCommanderCamCheckbox.label = SETTINGS.GAME_PRECOMMANDERCAMENABLED;
          this.commanderCamCheckbox.label = SETTINGS.GAME_COMMANDERCAMENABLED;
@@ -442,6 +445,8 @@ package net.wg.gui.lobby.settings
          this.enablePostMortemDelayCheckbox = null;
          this.dynamicCameraCheckbox.dispose();
          this.dynamicCameraCheckbox = null;
+         this.scrollSmoothingCheckbox.dispose();
+         this.scrollSmoothingCheckbox = null;
          this.preCommanderCamCheckbox.dispose();
          this.preCommanderCamCheckbox = null;
          this.commanderCamCheckbox.dispose();

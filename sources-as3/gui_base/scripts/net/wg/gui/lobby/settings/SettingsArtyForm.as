@@ -25,8 +25,6 @@ package net.wg.gui.lobby.settings
       
       public var spgScaleWidgetCheckbox:CheckBox = null;
       
-      public var scrollSmoothingEnabledCheckbox:CheckBox = null;
-      
       public var autoChangeAimModeCheckbox:CheckBox = null;
       
       public var spgStrategicCamModeLabel:LabelControl = null;
@@ -44,8 +42,8 @@ package net.wg.gui.lobby.settings
       public function SettingsArtyForm()
       {
          super();
-         this.shotsResultIndicatorCheckbox.multiline = this.spgScaleWidgetCheckbox.multiline = this.scrollSmoothingEnabledCheckbox.multiline = this.autoChangeAimModeCheckbox.multiline = true;
-         this.shotsResultIndicatorCheckbox.wordWrap = this.spgScaleWidgetCheckbox.wordWrap = this.scrollSmoothingEnabledCheckbox.wordWrap = this.autoChangeAimModeCheckbox.wordWrap = true;
+         this.shotsResultIndicatorCheckbox.multiline = this.spgScaleWidgetCheckbox.multiline = this.autoChangeAimModeCheckbox.multiline = true;
+         this.shotsResultIndicatorCheckbox.wordWrap = this.spgScaleWidgetCheckbox.wordWrap = this.autoChangeAimModeCheckbox.wordWrap = true;
       }
       
       override protected function onDispose() : void
@@ -56,9 +54,6 @@ package net.wg.gui.lobby.settings
          this.spgScaleWidgetCheckbox.removeEventListener(Event.SELECT,this.onCheckBoxSelectHandler);
          this.spgScaleWidgetCheckbox.dispose();
          this.spgScaleWidgetCheckbox = null;
-         this.scrollSmoothingEnabledCheckbox.removeEventListener(Event.SELECT,this.onCheckBoxSelectHandler);
-         this.scrollSmoothingEnabledCheckbox.dispose();
-         this.scrollSmoothingEnabledCheckbox = null;
          this.autoChangeAimModeCheckbox.removeEventListener(Event.SELECT,this.onCheckBoxSelectHandler);
          this.autoChangeAimModeCheckbox.dispose();
          this.autoChangeAimModeCheckbox = null;
@@ -171,7 +166,7 @@ package net.wg.gui.lobby.settings
       
       private function disableAllControls() : void
       {
-         this.shotsResultIndicatorCheckbox.enabled = this.spgScaleWidgetCheckbox.enabled = this.scrollSmoothingEnabledCheckbox.enabled = this.autoChangeAimModeCheckbox.enabled = this.spgStrategicCamModeLabel.enabled = this.spgStrategicCamModeDropDown.enabled = this.aimEntranceModeLabel.enabled = this.aimEntranceModeDropDown.enabled = false;
+         this.shotsResultIndicatorCheckbox.enabled = this.spgScaleWidgetCheckbox.enabled = this.autoChangeAimModeCheckbox.enabled = this.spgStrategicCamModeLabel.enabled = this.spgStrategicCamModeDropDown.enabled = this.aimEntranceModeLabel.enabled = this.aimEntranceModeDropDown.enabled = false;
       }
       
       private function onDropDownIndexChangeHandler(param1:ListEvent) : void

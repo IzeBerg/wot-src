@@ -7,7 +7,9 @@ package net.wg.gui.battle.views.vehicleMarkers
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.ATLAS_CONSTANTS;
    import net.wg.gui.battle.views.vehicleMarkers.VO.VehicleMarkerSettings;
+   import net.wg.gui.battle.views.vehicleMarkers.events.RTSMarkerEvent;
    import net.wg.gui.battle.views.vehicleMarkers.events.VehicleMarkersManagerEvent;
+   import net.wg.gui.battle.views.vehicleMarkers.rtsMarkers.IRTSSelectableMarker;
    import net.wg.gui.utils.RootSWFAtlasManager;
    import net.wg.infrastructure.base.meta.impl.VehicleMarkersManagerMeta;
    import net.wg.infrastructure.events.AtlasEvent;
@@ -16,6 +18,8 @@ package net.wg.gui.battle.views.vehicleMarkers
    {
       
       public static var sInstance:VehicleMarkersManager = null;
+      
+      private static const NO_FOCUS_VEHICLE_ID:int = 0;
        
       
       public var isAtlasInited:Boolean;
@@ -38,6 +42,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private var _markersCallback:Array;
       
+      private var _vehicleMarkers:Vector.<IRTSSelectableMarker>;
+      
       public function VehicleMarkersManager()
       {
          this._markerSettings = {
@@ -45,6 +51,7 @@ package net.wg.gui.battle.views.vehicleMarkers
             "enemy":new VehicleMarkerSettings(),
             "dead":new VehicleMarkerSettings()
          };
+         this._vehicleMarkers = new Vector.<IRTSSelectableMarker>();
          super();
          sInstance = this;
          this._atlasManager = RootSWFAtlasManager.instance;
@@ -64,6 +71,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       override protected function onDispose() : void
       {
+         var _loc1_:IRTSSelectableMarker = null;
          this._markerSettings = null;
          this._defaultSchemes = null;
          this._colorBlindSchemes = null;
@@ -74,6 +82,13 @@ package net.wg.gui.battle.views.vehicleMarkers
          this._markersCallback.splice(0,this._markersCallback.length);
          this._markersCallback = null;
          sInstance = null;
+         for each(_loc1_ in this._vehicleMarkers)
+         {
+            _loc1_.removeEventListener(RTSMarkerEvent.MARKER_MOUSE_OVER,this.onRTSMarkerMouseOverHandler);
+            _loc1_.removeEventListener(RTSMarkerEvent.MARKER_MOUSE_OUT,this.onRTSMarkerMouseOutHandler);
+         }
+         this._vehicleMarkers.splice(0,this._vehicleMarkers.length);
+         this._vehicleMarkers = null;
          super.onDispose();
       }
       
@@ -92,6 +107,16 @@ package net.wg.gui.battle.views.vehicleMarkers
          if(this._markersCallback.indexOf(param1) == -1)
          {
             this._markersCallback.push(param1);
+         }
+      }
+      
+      public function addVehicleMarker(param1:IRTSSelectableMarker) : void
+      {
+         if(this._vehicleMarkers.indexOf(param1) == -1)
+         {
+            this._vehicleMarkers.push(param1);
+            param1.addEventListener(RTSMarkerEvent.MARKER_MOUSE_OVER,this.onRTSMarkerMouseOverHandler);
+            param1.addEventListener(RTSMarkerEvent.MARKER_MOUSE_OUT,this.onRTSMarkerMouseOutHandler);
          }
       }
       
@@ -213,6 +238,17 @@ package net.wg.gui.battle.views.vehicleMarkers
       public function get isColorBlind() : Boolean
       {
          return this._isColorBlind;
+      }
+      
+      private function onRTSMarkerMouseOverHandler(param1:RTSMarkerEvent) : void
+      {
+         var _loc2_:int = param1.vehicleId;
+         setFocusVehicle(_loc2_);
+      }
+      
+      private function onRTSMarkerMouseOutHandler(param1:RTSMarkerEvent) : void
+      {
+         setFocusVehicle(NO_FOCUS_VEHICLE_ID);
       }
       
       private function onAtlasManagerAtlasInitializedHandler(param1:AtlasEvent) : void

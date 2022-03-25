@@ -354,6 +354,10 @@ class IStatsRequester(IRequester):
         raise NotImplementedError
 
     @property
+    def isSsrPlayEnabled(self):
+        raise NotImplementedError
+
+    @property
     def tutorialsCompleted(self):
         raise NotImplementedError
 
@@ -618,10 +622,6 @@ class IShopCommonStats(object):
         raise NotImplementedError
 
     def getEmblemCost(self, days=0):
-        raise NotImplementedError
-
-    @property
-    def tradeIn(self):
         raise NotImplementedError
 
 
@@ -917,6 +917,9 @@ class ITokensRequester(IRequester):
     def getToken(self, tokenID):
         raise NotImplementedError
 
+    def getTokenInfo(self, tokenID):
+        raise NotImplementedError
+
     def getTokenCount(self, tokenID):
         raise NotImplementedError
 
@@ -1075,6 +1078,15 @@ class ISessionStatsRequester(IRequester):
         raise NotImplementedError
 
 
+class IAIRostersRequester(IRequester):
+
+    def getRosters(self):
+        raise NotImplementedError
+
+    def getRTSRoster(self, bonusType):
+        raise NotImplementedError
+
+
 class IOffersRequester(IRequester):
 
     def isBannerSeen(self, offerID):
@@ -1118,4 +1130,16 @@ class IGiftSystemRequester(IRequester):
 
     @property
     def isHistoryReady(self):
+        raise NotImplementedError
+
+
+class IRtsStatisticsRequester(IRequester):
+
+    def getRts1x7(self):
+        raise NotImplementedError
+
+    def getRts1x1(self):
+        raise NotImplementedError
+
+    def getTankist(self):
         raise NotImplementedError

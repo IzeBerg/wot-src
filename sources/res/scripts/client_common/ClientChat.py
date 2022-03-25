@@ -2,11 +2,11 @@ import cPickle, zlib, time
 from collections import deque
 from invites import INVITE_TYPES
 import helpers.time_utils as tm, BigWorld, Event, chat_shared
-from debug_utils import LOG_CURRENT_EXCEPTION, LOG_ERROR
+from debug_utils import LOG_CURRENT_EXCEPTION, LOG_ERROR, LOG_DEBUG
 from chat_shared import CHAT_RESPONSES, CHAT_ACTIONS, CHAT_COMMANDS, parseCommandMessage, ChatCommandError, isCommandMessage, buildChatActionData, ChatError, ChatCommandInCooldown, SYS_MESSAGE_TYPE
 from ids_generators import SequenceIDGenerator
 from messenger import MessengerEntry
-from constants import USER_SEARCH_MODE
+from constants import USER_SEARCH_MODE, IS_CLIENT
 
 class ClientChat(object):
     __dataProcessors = [
@@ -83,8 +83,8 @@ class ClientChat(object):
         MessengerEntry.g_instance.protos.BW.onChatActionFailure(actionData)
 
     def onChatAction(self, chatActionData):
-        from debug_utils import LOG_DEBUG
-        LOG_DEBUG('onChatAction:%s' % (dict(chatActionData),))
+        if IS_CLIENT:
+            LOG_DEBUG('onChatAction:%s' % (dict(chatActionData),))
         for processor in self.__dataProcessors:
             getattr(self, processor)(chatActionData)
 

@@ -46,7 +46,7 @@ package net.wg.gui.lobby.profile.pages.technique
       
       private var _resizeTask:Function = null;
       
-      private var _scheduler:IScheduler = null;
+      private var _scheduler:IScheduler;
       
       private var _enableRating:Boolean = true;
       
@@ -62,10 +62,10 @@ package net.wg.gui.lobby.profile.pages.technique
       
       public function TechniqueStackComponent()
       {
+         this._scheduler = App.utils.scheduler;
          this._counterManager = App.utils.counterManager;
          this._actualCounters = new Vector.<SoundButtonEx>();
          super();
-         this._scheduler = App.utils.scheduler;
       }
       
       override protected function initialize() : void
@@ -92,8 +92,8 @@ package net.wg.gui.lobby.profile.pages.technique
          this.viewRatingBtn.label = PROFILE.SECTION_HOF_VEHICLESRATINGSBTN;
          this.viewRatingBtn.mouseEnabledOnDisabled = true;
          this.viewRatingBtn.addEventListener(ButtonEvent.CLICK,this.onViewRatingBtnClickHandler);
-         this.viewRatingBtn.addEventListener(MouseEvent.ROLL_OVER,this.onViewRatingBtnOverHandler);
-         this.viewRatingBtn.addEventListener(MouseEvent.ROLL_OUT,this.onViewRatingBtnOutHandler);
+         this.viewRatingBtn.addEventListener(MouseEvent.ROLL_OVER,this.onViewRatingBtnRollOverHandler);
+         this.viewRatingBtn.addEventListener(MouseEvent.ROLL_OUT,this.onViewRatingBtnRollOutHandler);
       }
       
       override protected function draw() : void
@@ -160,8 +160,8 @@ package net.wg.gui.lobby.profile.pages.technique
          this.vNameTF = null;
          this._scheduler = null;
          this.viewRatingBtn.removeEventListener(ButtonEvent.CLICK,this.onViewRatingBtnClickHandler);
-         this.viewRatingBtn.removeEventListener(MouseEvent.ROLL_OVER,this.onViewRatingBtnOverHandler);
-         this.viewRatingBtn.removeEventListener(MouseEvent.ROLL_OUT,this.onViewRatingBtnOutHandler);
+         this.viewRatingBtn.removeEventListener(MouseEvent.ROLL_OVER,this.onViewRatingBtnRollOverHandler);
+         this.viewRatingBtn.removeEventListener(MouseEvent.ROLL_OUT,this.onViewRatingBtnRollOutHandler);
          this.viewRatingBtn.dispose();
          this.viewRatingBtn = null;
          if(this._countersToSet)
@@ -209,13 +209,13 @@ package net.wg.gui.lobby.profile.pages.technique
       public function updateLabel(param1:String, param2:String) : void
       {
          this.vNameTF.htmlText = param1;
-         if(param2 != null)
+         if(param2 == null)
          {
-            this.typeIcon.source = param2;
+            this.typeIcon.unload();
          }
          else
          {
-            this.typeIcon.unload();
+            this.typeIcon.source = param2;
          }
       }
       
@@ -263,7 +263,7 @@ package net.wg.gui.lobby.profile.pages.technique
          invalidateData();
       }
       
-      private function onViewRatingBtnOverHandler(param1:MouseEvent) : void
+      private function onViewRatingBtnRollOverHandler(param1:MouseEvent) : void
       {
          if(!this._enableRating)
          {
@@ -271,7 +271,7 @@ package net.wg.gui.lobby.profile.pages.technique
          }
       }
       
-      private function onViewRatingBtnOutHandler(param1:MouseEvent) : void
+      private function onViewRatingBtnRollOutHandler(param1:MouseEvent) : void
       {
          App.toolTipMgr.hide();
       }

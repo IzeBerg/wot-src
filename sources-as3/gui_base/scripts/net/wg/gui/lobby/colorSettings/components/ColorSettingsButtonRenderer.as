@@ -1,14 +1,15 @@
 package net.wg.gui.lobby.colorSettings.components
 {
    import flash.text.TextField;
+   import net.wg.data.constants.SoundTypes;
+   import net.wg.gui.components.controls.SoundListItemRenderer;
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.lobby.colorSettings.events.ColorSettingsRendererEvent;
    import net.wg.gui.lobby.colorSettings.vo.ColorSettingsRendererVO;
    import scaleform.clik.constants.InvalidationType;
-   import scaleform.clik.controls.ListItemRenderer;
    import scaleform.clik.events.ButtonEvent;
    
-   public class ColorSettingsButtonRenderer extends ListItemRenderer
+   public class ColorSettingsButtonRenderer extends SoundListItemRenderer
    {
       
       private static const INV_SELECTED:String = "inv_selected";
@@ -29,6 +30,7 @@ package net.wg.gui.lobby.colorSettings.components
       public function ColorSettingsButtonRenderer()
       {
          super();
+         soundType = SoundTypes.COLOR_SETTINGS_SOUND_TYPE;
       }
       
       override public function setData(param1:Object) : void

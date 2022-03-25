@@ -5,6 +5,7 @@ class FITTING_TYPES(object):
     EQUIPMENT = 'equipment'
     SHELL = 'shell'
     VEHICLE = 'vehicle'
+    SUPPLY = 'supply'
     MODULE = 'module'
     ORDER = 'order'
     BOOSTER = 'battleBooster'

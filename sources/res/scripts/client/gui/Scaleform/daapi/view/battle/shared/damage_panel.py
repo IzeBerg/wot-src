@@ -34,7 +34,8 @@ _STATE_HANDLERS = {VEHICLE_VIEW_STATE.HEALTH: '_updateHealthFromServer',
    VEHICLE_VIEW_STATE.DEBUFF: '_updateDebuff', 
    VEHICLE_VIEW_STATE.INSPIRE: '_updateInspire', 
    VEHICLE_VIEW_STATE.SIEGE_MODE: '_changeSpeedoType', 
-   VEHICLE_VIEW_STATE.REPAIR_POINT: '_updateRepairPoint'}
+   VEHICLE_VIEW_STATE.REPAIR_POINT: '_updateRepairPoint', 
+   VEHICLE_VIEW_STATE.GOD_MODE: '_onGodModeChanged'}
 
 class STATUS_ID(CONST_CONTAINER):
     STUN = 0
@@ -274,11 +275,10 @@ class DamagePanel(DamagePanelMeta, IPrebattleSetupsListener):
 
     def _updateDeviceState(self, value):
         controllingVehicle = self.sessionProvider.shared.vehicleState.getControllingVehicle()
-        if controllingVehicle is None:
+        if controllingVehicle is None or avatar_getter.isCommanderCtrlMode():
             return
-        else:
-            self.as_updateDeviceStateS(*value[:2])
-            return
+        self.as_updateDeviceStateS(*value[:2])
+        return
 
     def _updateRepairingDevice(self, value):
         deviceName, progress, seconds, repairMode = value
@@ -353,6 +353,14 @@ class DamagePanel(DamagePanelMeta, IPrebattleSetupsListener):
                 status.hideStatus(True)
         else:
             _logger.warning('Animations times are not initialized, inspire status can be lost: %r', values)
+        return
+
+    def _onGodModeChanged(self, _):
+        ctrl = self.sessionProvider.shared.vehicleState
+        if ctrl is not None:
+            vehicle = ctrl.getControllingVehicle()
+            if vehicle is not None:
+                self._updatePlayerInfo(vehicle.id)
         return
 
     def __changeVehicleSetting(self, tag, entityName):

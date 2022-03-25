@@ -219,8 +219,17 @@ msgstr ""
 msgid "battlePassBuyView/card/divider"
 msgstr "или"
 
+msgid "battlePassBuyView/card/purchased"
+msgstr "УЖЕ КУПЛЕНО"
+
 msgid "battlePassBuyView/card/shopOfferWaning"
 msgstr "Этот набор станет недоступен после покупки любой отдельной главы"
+
+msgid "battlePassBuyView/card/timer/lessMinute"
+msgstr "Осталось меньше минуты"
+
+msgid "battlePassBuyView/card/timer/time"
+msgstr "Осталось: %(time)s"
 
 msgid "battlePassBuyView/card/title/chapter"
 msgstr "ГЛАВА {chapter}"
@@ -336,6 +345,9 @@ msgstr "Работа для героев"
 msgid "chapter/fullName/3"
 msgstr "Полярный рассвет"
 
+msgid "chapter/fullName/4"
+msgstr "Новая глава"
+
 msgid "chapter/fullName/71"
 msgstr "ГОРОД БЕЗ ОКОН"
 
@@ -345,6 +357,9 @@ msgstr "ТОЛЬКО ПЫЛЬ"
 msgid "chapter/fullName/73"
 msgstr "СОЛНЦЕ СРЕДИ РУИН"
 
+msgid "chapter/fullName/74"
+msgstr "НОВАЯ ГЛАВА"
+
 msgid "chapter/fullNameUppercased/71"
 msgstr "ГОРОД БЕЗ ОКОН"
 
@@ -353,6 +368,9 @@ msgstr "ТОЛЬКО ПЫЛЬ"
 
 msgid "chapter/fullNameUppercased/73"
 msgstr "СОЛНЦЕ СРЕДИ РУИН"
+
+msgid "chapter/fullNameUppercased/74"
+msgstr "НОВАЯ ГЛАВА"
 
 msgid "chapter/title"
 msgstr "ГЛАВА %(chapter)s"
@@ -394,8 +412,8 @@ msgstr "Переключиться на другие главы можно бу�
 
 msgid "chapterChoice/confirmation/description/switch"
 msgstr ""
-"У вас уже активирована глава «%(chName)s». Сменив главу, прогресс в текущей "
-"будет поставлен на паузу."
+"У вас уже активирована глава «%(chName)s». При смене главы прогресс в "
+"текущей будет поставлен на паузу."
 
 msgid "chapterChoice/confirmation/title/select"
 msgstr "Активировать главу «%(chName)s»?"
@@ -405,6 +423,9 @@ msgstr "Переключиться на главу «%(chName)s»?"
 
 msgid "chapterChoice/description"
 msgstr "Все 3D-стили привязаны к определённым главам."
+
+msgid "chapterChoice/extraChapter/reward"
+msgstr "Машина и 3D-стиль"
 
 msgid "chapterChoice/freePoints/description"
 msgstr "Нераспределённые очки Боевого пропуска: "
@@ -419,6 +440,9 @@ msgstr "Нераспределённые очки Боевого пропуск�
 
 msgid "chapterChoice/stylePreview/backLabel"
 msgstr "К ГЛАВАМ"
+
+msgid "chapterChoice/stylePreview/extraLabel"
+msgstr "%(vehicleName)s"
 
 msgid "chapterChoice/stylePreview/forLabel"
 msgstr "Для %(vehicleName)s"
@@ -436,7 +460,7 @@ msgid "chosenBonuses/bonus/brochure_gift"
 msgstr "Учебная брошюра на выбор"
 
 msgid "chosenBonuses/bonus/guide_gift"
-msgstr "Учебное пособие на выбор"
+msgstr "Учебное руководство на выбор"
 
 msgid "chosenBonuses/bonus/new_device_fv_gift"
 msgstr "Штатное оборудование на выбор (Огневая мощь и Живучесть)"
@@ -467,6 +491,38 @@ msgstr "Очки Боевого пропуска"
 
 msgid "dailyQuests/title"
 msgstr "Очки Боевого пропуска за ежедневные задачи"
+
+msgid "extraIntroView/confirmLabel"
+msgstr "Так точно!"
+
+msgid "extraIntroView/freeProgression"
+msgstr "ОСНОВНАЯ ПРОГРЕССИЯ"
+
+msgid "extraIntroView/freeProgressionDescription"
+msgstr ""
+"Участвуйте в боях, зарабатывайте очки Боевого пропуска и проходите этапы "
+"этой главы, активировав её в любой момент. За каждый этап вы будете получать"
+" награды."
+
+msgid "extraIntroView/premium3dStyleVechicle"
+msgstr "3D-СТИЛЬ «%(styleName)s»"
+
+msgid "extraIntroView/premiumProgression"
+msgstr "ЭЛИТНАЯ ПРОГРЕССИЯ"
+
+msgid "extraIntroView/premiumProgressionDescription"
+msgstr ""
+"Эта линейка доступна только после приобретения Улучшенного пропуска. Также "
+"появится возможность получить %(vehicleName)s и 3D-стиль «%(styleName)s», "
+"выполнив только часть этапов, а после — докупить недостающие."
+
+msgid "extraIntroView/title"
+msgstr "ТОЧКА ПЛАВЛЕНИЯ"
+
+msgid "extraIntroView/titleDescription"
+msgstr ""
+"Событие, главная награда которого — %(vehicleName)s с персональным "
+"3D-стилем."
 
 msgid "finalReward/tankman/roles/commander"
 msgstr "командир"
@@ -584,7 +640,7 @@ msgid "howToEarnPoints/text/22"
 msgstr "Играйте на технике X уровня"
 
 msgid "howToEarnPoints/text/27"
-msgstr "Играйте на технике VIII–IX уровней"
+msgstr "Играйте на технике VIII уровня"
 
 msgid "howToEarnPoints/text/29"
 msgstr "Играйте на специальной технике режима"
@@ -701,6 +757,9 @@ msgstr "топ-{top}"
 msgid "progression/about"
 msgstr "О БОЕВОМ ПРОПУСКЕ"
 
+msgid "progression/aboutExtra"
+msgstr "О СОБЫТИИ"
+
 msgid "progression/activateChapter"
 msgstr "Активировать главу"
 
@@ -708,6 +767,16 @@ msgid "progression/activateChapterDescr"
 msgstr ""
 "За прохождение активной главы вы будете получать очки Боевого пропуска и "
 "другие награды."
+
+msgid "progression/activateExtraChapterDescr"
+msgstr ""
+"Приобретите и активируйте главу, чтобы получить в итоге уникальный 3D-стиль "
+"«%(styleName)s»."
+
+msgid "progression/activatePausedExtraChapterDescr"
+msgstr ""
+"За прохождение активной главы вы будете получать очки Боевого пропуска и "
+"награды."
 
 msgid "progression/backToCurrentStageArrow/descr"
 msgstr "Нажмите, чтобы вернуться к текущему этапу."
@@ -723,7 +792,7 @@ msgstr "Купить Улучшенный пропуск"
 
 msgid "progression/battlePassBuyDescr"
 msgstr ""
-"Улучшенный пропуск разблокирует линейку улучшенных наград для текущей главы."
+"Улучшенный пропуск разблокирует линейку улучшенных наград в текущей главе."
 
 msgid "progression/battlePassNextChapterBuyDescr"
 msgstr ""
@@ -785,7 +854,7 @@ msgid "progression/episodeBuyBtn"
 msgstr "Докупить этапы"
 
 msgid "progression/episodeBuyDescr"
-msgstr "Вы получите награды за каждый купленный этап."
+msgstr "Докупив этапы, вы будете получать награды."
 
 msgid "progression/episodeBuyDisableDescr"
 msgstr "Докупить любое количество этапов можно через %(day)"
@@ -798,6 +867,18 @@ msgstr ""
 msgid "progression/errorBtn"
 msgstr "В Ангар"
 
+msgid "progression/extraChapter/widget/reward/caption"
+msgstr "Главная награда за полное прохождение этой главы."
+
+msgid "progression/extraChapter/widget/reward/label"
+msgstr "%(vehicleName)s и 3D-стиль «%(styleName)s»"
+
+msgid "progression/extraChapter/widget/shortTimer"
+msgstr "%(H)s : %(m)s : %(s)s"
+
+msgid "progression/extraChapter/widget/timer"
+msgstr "%(D)s д %(H)s : %(m)s : %(s)s"
+
 msgid "progression/footer/freePointsDescr"
 msgstr "Нераспределённых очков Боевого пропуска: "
 
@@ -805,7 +886,7 @@ msgid "progression/footer/status/inactive"
 msgstr "Глава неактивна"
 
 msgid "progression/footer/status/paused"
-msgstr "Глава на паузе"
+msgstr "Глава на паузе."
 
 msgid "progression/header/chapter/status"
 msgstr "Глава «%(chapterName)s» %(status)s"
@@ -836,14 +917,17 @@ msgstr "ГЛАВЕ {chapter}"
 msgid "progression/progressionChapterGoTo"
 msgstr "ПЕРЕЙТИ К"
 
+msgid "progression/season/end/extra"
+msgstr "Событие завершится %(endDay)s %(endMonth)s в %(endTime)s"
+
+msgid "progression/season/end/normal"
+msgstr "Сезон %(seasonNum)s продлится до %(endDay)s %(endMonth)s"
+
 msgid "progression/seasonEndingDescr"
 msgstr "До окончания сезона осталось: "
 
 msgid "progression/seasonEndingTooltip"
 msgstr "До окончания: {day}"
-
-msgid "progression/seasonText"
-msgstr "Сезон %(seasonNum)s продлится до %(endDay)s %(endMonth)s"
 
 msgid "progression/takeReward"
 msgstr "Забрать награду"
@@ -1006,6 +1090,12 @@ msgstr ""
 
 msgid "tooltips/entryPoint/disabled/header"
 msgstr "Боевой пропуск временно недоступен"
+
+msgid "tooltips/extra/daysAndHours"
+msgstr "%(D)s д %(H)s ч"
+
+msgid "tooltips/extra/min"
+msgstr "%(m)s мин"
 
 msgid "tooltips/footerBuyBtn/activateChapter/descr"
 msgstr ""

@@ -18,7 +18,7 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
       
       public var atlasPlaceholder:Sprite = null;
       
-      private var _atlasManager:IAtlasManager;
+      protected var _atlasManager:IAtlasManager;
       
       public function ControlPointMinimapEntry()
       {
@@ -26,6 +26,12 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
          super();
          MinimapEntryController.instance.registerScalableEntry(this);
          this.checkForColorBlindMode();
+         mouseEnabled = mouseChildren = false;
+      }
+      
+      override protected function configUI() : void
+      {
+         App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeChangeHandler);
       }
       
       private function checkForColorBlindMode() : void
@@ -44,8 +50,12 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
       
       public function setPointNumber(param1:int) : void
       {
+         this.setControlPointIdentifier(param1);
+      }
+      
+      protected function setControlPointIdentifier(param1:int) : void
+      {
          this._atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,TeamBaseMinimapEntryConst.CONTROL_POINT_ATLAS_ITEM_NAME + "_" + param1,this.atlasPlaceholder.graphics,"",true);
-         App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeChangeHandler);
       }
       
       private function onColorSchemeChangeHandler(param1:ColorSchemeEvent) : void

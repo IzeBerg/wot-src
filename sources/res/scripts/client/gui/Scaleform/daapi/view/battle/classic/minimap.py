@@ -18,8 +18,8 @@ from messenger.proto.bw_chat2.battle_chat_cmd import BASE_CMD_NAMES
 from messenger_common_chat2 import MESSENGER_ACTION_IDS as _ACTIONS
 _C_NAME = settings.CONTAINER_NAME
 _S_NAME = settings.ENTRY_SYMBOL_NAME
-_MIN_BASE_SCALE = 1.0
-_MAX_BASE_SCALE = 0.6
+MIN_BASE_SCALE = 1.0
+MAX_BASE_SCALE = 0.6
 _logger = logging.getLogger(__name__)
 _CLASSIC_MINIMAP_DIMENSIONS = 10
 
@@ -56,12 +56,14 @@ class GlobalSettingsPlugin(common.SimplePlugin):
     def start(self):
         super(GlobalSettingsPlugin, self).start()
         if GUI_SETTINGS.minimapSize:
+            g_eventBus.addListener(events.GameEvent.MINIMAP_SET_VISIBILITY_CMD, self.__handleMinimapVisibilityCmd, scope=EVENT_BUS_SCOPE.BATTLE)
             g_eventBus.addListener(events.GameEvent.MINIMAP_CMD, self.__handleMinimapCmd, scope=EVENT_BUS_SCOPE.BATTLE)
             g_repeatKeyHandlers.add(self.__handleRepeatKeyEvent)
 
     def stop(self):
         if GUI_SETTINGS.minimapSize:
             g_eventBus.removeListener(events.GameEvent.MINIMAP_CMD, self.__handleMinimapCmd, scope=EVENT_BUS_SCOPE.BATTLE)
+            g_eventBus.removeListener(events.GameEvent.MINIMAP_SET_VISIBILITY_CMD, self.__handleMinimapVisibilityCmd, scope=EVENT_BUS_SCOPE.BATTLE)
             g_repeatKeyHandlers.discard(self.__handleRepeatKeyEvent)
         super(GlobalSettingsPlugin, self).stop()
 
@@ -90,7 +92,10 @@ class GlobalSettingsPlugin(common.SimplePlugin):
         return previousSettings
 
     def _toogleVisible(self):
-        self.__isVisible = not self.__isVisible
+        self._setVisibility(not self.__isVisible)
+
+    def _setVisibility(self, visibility):
+        self.__isVisible = visibility
         self._parentObj.as_setVisibleS(self.__isVisible)
 
     def __saveSettings(self):
@@ -124,6 +129,9 @@ class GlobalSettingsPlugin(common.SimplePlugin):
     def __handleMinimapCmd(self, event):
         self.__handleKey(event.ctx['key'])
 
+    def __handleMinimapVisibilityCmd(self, event):
+        self._setVisibility(event.ctx)
+
     def __updateAlpha(self):
         if not self.__canChangeAlpha:
             return
@@ -135,13 +143,13 @@ class GlobalSettingsPlugin(common.SimplePlugin):
 
 
 class TeamsOrControlsPointsPlugin(common.EntriesPlugin):
-    __slots__ = ('__personalTeam', '__entries', '__markerIDs', '__hasActiveCommit')
+    __slots__ = ('__personalTeam', '__entries', '_markerIDs', '__hasActiveCommit')
 
     def __init__(self, parentObj):
         super(TeamsOrControlsPointsPlugin, self).__init__(parentObj)
         self.__personalTeam = 0
         self.__entries = []
-        self.__markerIDs = {}
+        self._markerIDs = {}
         self.__hasActiveCommit = False
 
     def start(self):
@@ -172,16 +180,33 @@ class TeamsOrControlsPointsPlugin(common.EntriesPlugin):
         self.__entries = []
         self.__personalTeam = self._arenaDP.getNumberOfTeam()
         self.__addTeamSpawnPoints()
-        self.__addTeamBasePositions()
-        self.__addControlPoints()
+        self._addTeamBasePositions()
+        self._addControlPoints()
+
+    def _getMarkerIDByUID(self, uid):
+        if uid in self._markerIDs:
+            return self._markerIDs[uid].getID()
+        else:
+            return
+
+    def _addBaseEntry(self, symbol, position, uid):
+        matrix = Math.Matrix()
+        matrix.setTranslate(position)
+        model = self._addEntryEx(uid, symbol, _C_NAME.TEAM_POINTS, matrix=matrix, active=True)
+        if model is not None:
+            self._markerIDs[uid] = model
+            _, number = getBaseTeamAndIDFromUniqueID(uid)
+            self._invoke(model.getID(), BATTLE_MINIMAP_CONSTS.SET_POINT_NUMBER, number)
+            self._invoke(model.getID(), BATTLE_MINIMAP_CONSTS.SET_STATE, BATTLE_MINIMAP_CONSTS.STATE_DEFAULT)
+        return
 
     def __onActionAddedToMarkerReceived(self, senderID, commandID, markerType, objectID):
         if _ACTIONS.battleChatCommandFromActionID(commandID).name not in BASE_CMD_NAMES:
             return
         else:
-            if objectID not in self.__markerIDs:
+            if objectID not in self._markerIDs:
                 return
-            model = self.__markerIDs[objectID]
+            model = self._markerIDs[objectID]
             if model is not None:
                 if _ACTIONS.battleChatCommandFromActionID(commandID).name in [BATTLE_CHAT_COMMAND_NAMES.ATTACKING_BASE,
                  BATTLE_CHAT_COMMAND_NAMES.DEFENDING_BASE]:
@@ -195,39 +220,28 @@ class TeamsOrControlsPointsPlugin(common.EntriesPlugin):
             return
         newReply = newReplyCount > oldReplyCount
         playerHasReply = replierID == avatar_getter.getPlayerVehicleID()
-        if ucmdID in self.__markerIDs and newReply:
+        if ucmdID in self._markerIDs and newReply:
             if playerHasReply:
-                self._invoke(self.__markerIDs[ucmdID].getID(), BATTLE_MINIMAP_CONSTS.SET_STATE, BATTLE_MINIMAP_CONSTS.STATE_REPLY)
+                self._invoke(self._markerIDs[ucmdID].getID(), BATTLE_MINIMAP_CONSTS.SET_STATE, BATTLE_MINIMAP_CONSTS.STATE_REPLY)
                 self.__hasActiveCommit = True
             elif not self.__hasActiveCommit:
-                self._invoke(self.__markerIDs[ucmdID].getID(), BATTLE_MINIMAP_CONSTS.SET_STATE, BATTLE_MINIMAP_CONSTS.STATE_IDLE)
-        if ucmdID in self.__markerIDs:
+                self._invoke(self._markerIDs[ucmdID].getID(), BATTLE_MINIMAP_CONSTS.SET_STATE, BATTLE_MINIMAP_CONSTS.STATE_IDLE)
+        if ucmdID in self._markerIDs:
             if newReplyCount < oldReplyCount and playerHasReply or newReplyCount <= 0:
-                self._invoke(self.__markerIDs[ucmdID].getID(), BATTLE_MINIMAP_CONSTS.SET_STATE, BATTLE_MINIMAP_CONSTS.STATE_IDLE)
+                self._invoke(self._markerIDs[ucmdID].getID(), BATTLE_MINIMAP_CONSTS.SET_STATE, BATTLE_MINIMAP_CONSTS.STATE_IDLE)
                 if playerHasReply:
                     self.__hasActiveCommit = False
 
     def __onRemoveCommandReceived(self, removeID, markerType):
-        if not self.__markerIDs or markerType != MarkerType.BASE_MARKER_TYPE:
+        if not self._markerIDs or markerType != MarkerType.BASE_MARKER_TYPE:
             return
-        if removeID in self.__markerIDs:
-            self._invoke(self.__markerIDs[removeID].getID(), BATTLE_MINIMAP_CONSTS.SET_STATE, BATTLE_MINIMAP_CONSTS.STATE_DEFAULT)
+        if removeID in self._markerIDs:
+            self._invoke(self._markerIDs[removeID].getID(), BATTLE_MINIMAP_CONSTS.SET_STATE, BATTLE_MINIMAP_CONSTS.STATE_DEFAULT)
             return
         _logger.error(str(removeID) + ' not found in markerIDs')
 
     def __onTeamChanged(self, teamID):
         self.restart()
-
-    def __addBaseEntry(self, symbol, position, uid):
-        matrix = Math.Matrix()
-        matrix.setTranslate(position)
-        model = self._addEntryEx(uid, symbol, _C_NAME.TEAM_POINTS, matrix=matrix, active=True)
-        if model is not None:
-            self.__markerIDs[uid] = model
-            _, number = getBaseTeamAndIDFromUniqueID(uid)
-            self._invoke(model.getID(), BATTLE_MINIMAP_CONSTS.SET_POINT_NUMBER, number)
-            self._invoke(model.getID(), BATTLE_MINIMAP_CONSTS.SET_STATE, BATTLE_MINIMAP_CONSTS.STATE_DEFAULT)
-        return
 
     def __addPointEntry(self, symbol, position, number):
         matrix = Math.Matrix()
@@ -246,7 +260,7 @@ class TeamsOrControlsPointsPlugin(common.EntriesPlugin):
                 symbol = _S_NAME.ENEMY_TEAM_SPAWN
             self.__addPointEntry(symbol, position, number)
 
-    def __addTeamBasePositions(self):
+    def _addTeamBasePositions(self):
         positions = self._arenaVisitor.type.getTeamBasePositionsIterator()
         for team, position, number in positions:
             if team == self.__personalTeam:
@@ -254,13 +268,13 @@ class TeamsOrControlsPointsPlugin(common.EntriesPlugin):
             else:
                 symbol = _S_NAME.ENEMY_TEAM_BASE
             uid = getUniqueTeamOrControlPointID(team, number)
-            self.__addBaseEntry(symbol, position, uid)
+            self._addBaseEntry(symbol, position, uid)
 
-    def __addControlPoints(self):
+    def _addControlPoints(self):
         points = self._arenaVisitor.type.getControlPointsIterator()
         for position, number in points:
             uid = getUniqueTeamOrControlPointID(0, number)
-            self.__addBaseEntry(_S_NAME.CONTROL_POINT, position, uid)
+            self._addBaseEntry(_S_NAME.CONTROL_POINT, position, uid)
 
 
 class ClassicMinimapPingPlugin(plugins.MinimapPingPlugin):
@@ -272,9 +286,9 @@ class ClassicMinimapPingPlugin(plugins.MinimapPingPlugin):
         return getUniqueTeamOrControlPointID(team, number)
 
     def _processCommandByPosition(self, commands, locationCommand, position, minimapScaleIndex):
-        minimapScale = minimap_utils.getMinimapBasePingScale(minimapScaleIndex, _MIN_BASE_SCALE, _MAX_BASE_SCALE)
+        minimapScale = minimap_utils.getMinimapBasePingScale(minimapScaleIndex, MIN_BASE_SCALE, MAX_BASE_SCALE)
         scaledBaseRange = _BASE_PING_RANGE * minimapScale
-        bases = self.__getNearestBaseForPosition(position, scaledBaseRange)
+        bases = self._getNearestBaseForPosition(position, scaledBaseRange)
         if bases is not None:
             self._make3DPingBases(commands, bases)
             return
@@ -286,7 +300,7 @@ class ClassicMinimapPingPlugin(plugins.MinimapPingPlugin):
             commands.sendAttentionToPosition3D(position, locationCommand)
             return
 
-    def __getNearestBaseForPosition(self, inPosition, range_):
+    def _getNearestBaseForPosition(self, inPosition, range_):
         positions = self._arenaVisitor.type.getTeamBasePositionsIterator()
         minVal = None
         for team, position, number in positions:

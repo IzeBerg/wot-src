@@ -3,12 +3,13 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
    import flash.display.MovieClip;
    import net.wg.gui.battle.components.BattleUIComponent;
    import net.wg.gui.battle.views.minimap.MinimapEntryController;
+   import net.wg.gui.battle.views.minimap.components.entries.vehicle.MarkerTopAnimation;
    
    public class AnimationMinimapEntry extends BattleUIComponent
    {
        
       
-      public var mcTopAnimation:MovieClip = null;
+      public var mcTopAnimation:MarkerTopAnimation = null;
       
       public var mcBearer:MovieClip = null;
       
@@ -22,8 +23,7 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
       
       public function setAnimation(param1:String) : void
       {
-         this.mcTopAnimation.gotoAndStop(1);
-         this.mcTopAnimation.gotoAndStop(param1);
+         this.mcTopAnimation.playAnim(param1);
       }
       
       public function setFlagBearer(param1:Boolean) : void

@@ -4,8 +4,10 @@ package net.wg.gui.components.controls
    import flash.events.MouseEvent;
    import flash.events.TimerEvent;
    import net.wg.data.constants.Errors;
+   import net.wg.data.constants.Values;
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.interfaces.entity.ISoundable;
+   import net.wg.infrastructure.managers.ISoundManager;
    import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.controls.RadioButton;
    import scaleform.clik.events.InputEvent;
@@ -21,6 +23,8 @@ package net.wg.gui.components.controls
       [Inspectable(type="String")]
       public var soundId:String = "";
       
+      private var _soundMgr:ISoundManager;
+      
       private var _soundType:String = "radioButton";
       
       private var _infoIcoType:String = "";
@@ -29,15 +33,18 @@ package net.wg.gui.components.controls
       
       private var _infoTooltip:String;
       
+      private var _infoTooltipMaxWidth:uint = 0;
+      
       public function RadioButton()
       {
+         this._soundMgr = App.soundMgr;
          super();
       }
       
       override protected function initialize() : void
       {
          super.initialize();
-         _label = "";
+         _label = Values.EMPTY_STR;
          toggle = true;
          allowDeselect = false;
          buttonMode = true;
@@ -58,6 +65,7 @@ package net.wg.gui.components.controls
                {
                   this.createInfoIco();
                }
+               this._infoIco.tooltipMaxWidth = this._infoTooltipMaxWidth;
                this._infoIco.tooltip = this._infoTooltip;
                this._infoIco.icoType = this._infoIcoType;
                this.repositionInfoIcon();
@@ -72,7 +80,7 @@ package net.wg.gui.components.controls
       override protected function configUI() : void
       {
          super.configUI();
-         App.soundMgr.addSoundsHdlrs(this);
+         this._soundMgr.addSoundsHdlrs(this);
       }
       
       override protected function updateText() : void
@@ -103,9 +111,10 @@ package net.wg.gui.components.controls
             _repeatTimer.removeEventListener(TimerEvent.TIMER_COMPLETE,beginRepeat,false);
             _repeatTimer.removeEventListener(TimerEvent.TIMER,handleRepeat,false);
          }
-         if(App.soundMgr)
+         if(this._soundMgr)
          {
-            App.soundMgr.removeSoundHdlrs(this);
+            this._soundMgr.removeSoundHdlrs(this);
+            this._soundMgr = null;
          }
          if(owner != null)
          {
@@ -127,6 +136,11 @@ package net.wg.gui.components.controls
       public final function getSoundType() : String
       {
          return this._soundType;
+      }
+      
+      public function setInfoIconTooltipWidth(param1:uint) : void
+      {
+         this._infoTooltipMaxWidth = param1;
       }
       
       private function repositionInfoIcon() : void

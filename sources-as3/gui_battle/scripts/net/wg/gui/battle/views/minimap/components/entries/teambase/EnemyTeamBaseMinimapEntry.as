@@ -29,13 +29,19 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
          super();
          MinimapEntryController.instance.registerScalableEntry(this);
          this.checkForColorBlindMode();
+         mouseEnabled = mouseChildren = false;
+         this.atlasPlaceholder.mouseEnabled = this.atlasPlaceholder.mouseChildren = false;
+      }
+      
+      override protected function configUI() : void
+      {
+         App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeChangeHandler);
       }
       
       public function setPointNumber(param1:int) : void
       {
          this._pointNumber = param1;
          this.drawEntry();
-         App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeChangeHandler);
       }
       
       override protected function SetAtlasPlaceholderVisible(param1:Boolean) : void

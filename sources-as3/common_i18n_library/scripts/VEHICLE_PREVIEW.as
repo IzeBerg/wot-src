@@ -57,8 +57,6 @@ package
       
       public static const BUYINGPANEL_OFFER_RENT_TITLE_FRONTLINE_ORDINAL:String = "#vehicle_preview:buyingPanel/offer/rent/title/frontline/ordinal";
       
-      public static const BUYINGPANEL_OFFER_RENT_TITLE_FRONTLINE_SINGLE_CYCLE:String = "#vehicle_preview:buyingPanel/offer/rent/title/frontline/single_cycle";
-      
       public static const BUYINGPANEL_OFFER_RENT_FRONTLINE_DESCRIPTION_HEADER:String = "#vehicle_preview:buyingPanel/offer/rent/frontline/description/header";
       
       public static const BUYINGPANEL_OFFER_RENT_FRONTLINE_DESCRIPTION_BODY_CREDITS:String = "#vehicle_preview:buyingPanel/offer/rent/frontline/description/body/credits";
@@ -91,9 +89,11 @@ package
       
       public static const BUYINGPANEL_TRADEIN_TRADEOFFPRICETEXT:String = "#vehicle_preview:buyingPanel/tradeIn/tradeOffPriceText";
       
+      public static const BUYINGPANEL_TRADEIN_TRADEOFFPRICEFREETEXT:String = "#vehicle_preview:buyingPanel/tradeIn/tradeOffPriceFreeText";
+      
       public static const BUYINGPANEL_TRADEIN_PERSONALTRADEOFFPRICETEXT:String = "#vehicle_preview:buyingPanel/tradeIn/personaltradeOffPriceText";
       
-      public static const BUYINGPANEL_TRADEIN_AVAILABLELEVELS:String = "#vehicle_preview:buyingPanel/tradeIn/availableLevels";
+      public static const BUYINGPANEL_TRADEIN_FOOTERNOTE:String = "#vehicle_preview:buyingPanel/tradeIn/footerNote";
       
       public static const BUYINGPANEL_TRADEIN_NOTAVAILABLETRADEOFFVEHICLES:String = "#vehicle_preview:buyingPanel/tradeIn/notAvailableTradeOffVehicles";
       
@@ -216,6 +216,10 @@ package
       public static const BUYINGPANEL_STYLE_BUTTON_BUY:String = "#vehicle_preview:buyingPanel/style/button/buy";
       
       public static const BUYINGPANEL_STYLE_CAPTION_USERMONEY:String = "#vehicle_preview:buyingPanel/style/caption/userMoney";
+      
+      public static const TOPPANEL_TAB_VEHICLE:String = "#vehicle_preview:topPanel/tab/vehicle";
+      
+      public static const TOPPANEL_TAB_STYLE:String = "#vehicle_preview:topPanel/tab/style";
        
       
       public function VEHICLE_PREVIEW()

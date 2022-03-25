@@ -1,4 +1,4 @@
-from gui.prb_control.entities.base.actions_validator import BaseActionsValidator, ActionsValidatorComposite, CurrentVehicleActionsValidator, TutorialActionsValidator
+from gui.prb_control.entities.base.actions_validator import BaseActionsValidator, ActionsValidatorComposite, BaseVehicleActionsValidator, TutorialActionsValidator
 from gui.prb_control.items import ValidationResult
 
 class InQueueValidator(BaseActionsValidator):
@@ -25,7 +25,7 @@ class PreQueueActionsValidator(ActionsValidatorComposite):
         return InQueueValidator(entity)
 
     def _createVehiclesValidator(self, entity):
-        return CurrentVehicleActionsValidator(entity)
+        return BaseVehicleActionsValidator(entity)
 
     def _createTutorialValidator(self, entity):
         return TutorialActionsValidator(entity)

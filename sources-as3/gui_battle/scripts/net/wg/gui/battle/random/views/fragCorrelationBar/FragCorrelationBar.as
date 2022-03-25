@@ -329,6 +329,26 @@ package net.wg.gui.battle.random.views.fragCorrelationBar
       {
       }
       
+      public function getAllyMarkersTotalWidth() : int
+      {
+         return this._allyVehicleMarkersList.getMarkersTotalWidth();
+      }
+      
+      public function getAllyMarkersStartPosition() : int
+      {
+         return this._allyVehicleMarkersList.getMarkersStart();
+      }
+      
+      public function getEnemyMarkersTotalWidth() : int
+      {
+         return this._enemyVehicleMarkersList.getMarkersTotalWidth();
+      }
+      
+      public function getEnemyMarkersStartPosition() : int
+      {
+         return this._enemyVehicleMarkersList.getMarkersStart();
+      }
+      
       protected function createVehicleMarkersLists(param1:MovieClip, param2:Boolean, param3:String) : VehicleMarkersList
       {
          return new VehicleMarkersList(param1,param2,param3);

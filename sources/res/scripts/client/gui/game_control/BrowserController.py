@@ -51,7 +51,7 @@ class BrowserController(IBrowserController):
         super(BrowserController, self).fini()
         return
 
-    def onAvatarBecomePlayer(self):
+    def onAccountBecomeNonPlayer(self):
         self.__stop()
         BigWorld.destroyBrowser()
 

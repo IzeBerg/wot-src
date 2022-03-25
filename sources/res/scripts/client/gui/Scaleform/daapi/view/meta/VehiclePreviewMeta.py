@@ -33,6 +33,10 @@ class VehiclePreviewMeta(View):
         if self._isDAAPIInited():
             return self.flashObject.as_hide3DSceneTooltip()
 
+    def as_setTopPanelS(self, linkage):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setTopPanel(linkage)
+
     def as_setBottomPanelS(self, linkage):
         if self._isDAAPIInited():
             return self.flashObject.as_setBottomPanel(linkage)

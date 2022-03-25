@@ -2,7 +2,7 @@ import logging, math, BigWorld, CommandMapping
 from helpers import dependency
 from items import vehicles
 from skeletons.gui.game_control import IBattleRoyaleController
-from gui.Scaleform.daapi.view.common.keybord_helpers import getHotKeyList
+from gui.Scaleform.daapi.view.common.keybord_helpers import getHotKeyList, getHotKeyVkList
 from skeletons.gui.shared.hangar_spaces_switcher import IHangarSpacesSwitcher
 _logger = logging.getLogger(__name__)
 
@@ -10,14 +10,11 @@ def getEquipmentById(equipmentId):
     return vehicles.g_cache.equipments()[equipmentId]
 
 
-def getSmokeDataByPredicate(smokesInfo, predicate):
-    if smokesInfo is None or not predicate:
+def getSmokeDataByPredicate(smokeInfo, predicate):
+    if smokeInfo is None or not predicate:
         return (None, None)
-    activeSmokes = list((sInfo['endTime'], sInfo['equipmentID']) for sInfo in smokesInfo if predicate(sInfo['equipmentID']))
-    if activeSmokes:
-        maxEndTime, maxEndTimeEquipmentId = max(activeSmokes)
-        return (
-         maxEndTime, getEquipmentById(maxEndTimeEquipmentId))
+    if predicate(smokeInfo['equipmentID']):
+        return (smokeInfo['endTime'], getEquipmentById(smokeInfo['equipmentID']))
     else:
         return (None, None)
 
@@ -59,6 +56,14 @@ def getHotKeyListByIndex(index):
     else:
         command = CommandMapping.CMD_CM_VEHICLE_UPGRADE_PANEL_RIGHT
     return getHotKeyList(command)
+
+
+def getHotKeyVkListByIndex(index):
+    if index == 0:
+        command = CommandMapping.CMD_CM_VEHICLE_UPGRADE_PANEL_LEFT
+    else:
+        command = CommandMapping.CMD_CM_VEHICLE_UPGRADE_PANEL_RIGHT
+    return getHotKeyVkList(command)
 
 
 def isIncorrectVehicle(vehicle):

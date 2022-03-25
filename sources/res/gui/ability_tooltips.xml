@@ -181,9 +181,14 @@
 		<renderer>DirectNumericTextParam</renderer>
 	</item>
 	<item>
-		<identifier>visionRadiusFactor</identifier>
+		<identifier>attrFactorMods/circularVisionRadius</identifier>
 		<name>#epic_battle:abilityInfo/params/smoke/visionRadiusFactor</name>
-		<renderer>MulDirectPercentageTextParam</renderer>
+		<renderer>MulNestedPercentageTextTupleValueParam</renderer>
+	</item>
+	<item>
+		<identifier>attrFactorMods/crewRolesFactor</identifier>
+		<name>#epic_battle:abilityInfo/params/smoke/crewRolesFactor</name>
+		<renderer>MulNestedPercentageTextTupleValueParam</renderer>
 	</item>
 	<item>
 		<identifier>#epic_battle:abilityInfo/params/fl_regenerationKit/minesDamageReduceFactor/value</identifier>

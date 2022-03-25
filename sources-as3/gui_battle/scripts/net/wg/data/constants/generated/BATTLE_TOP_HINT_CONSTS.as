@@ -40,6 +40,22 @@ package net.wg.data.constants.generated
       public static const FRAME_CREW:int = 18;
       
       public static const FRAME_SIXTH_SENSE:int = 19;
+      
+      public static const FRAME_MOVE_TANK:int = 20;
+      
+      public static const FRAME_ATTACK_TANK:int = 21;
+      
+      public static const FRAME_ATTACK_TANK_DOUBLE_CLICK:int = 22;
+      
+      public static const FRAME_CONTROL_TANK:int = 23;
+      
+      public static const FRAME_RELEASE_TANK:int = 24;
+      
+      public static const FRAME_MULTISELECT_TANKS:int = 25;
+      
+      public static const FRAME_RTS_SUPPLIES:int = 26;
+      
+      public static const FRAME_RTS_ROTATE_CAMERA:int = 27;
        
       
       public function BATTLE_TOP_HINT_CONSTS()

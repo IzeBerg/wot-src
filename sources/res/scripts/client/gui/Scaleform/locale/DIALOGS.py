@@ -44,6 +44,10 @@ class DIALOGS(object):
     QUITBATTLE_DESERTER_MESSAGE = '#dialogs:quitBattle/deserter/message'
     QUITBATTLE_DESERTER_SUBMIT = '#dialogs:quitBattle/deserter/submit'
     QUITBATTLE_DESERTER_CANCEL = '#dialogs:quitBattle/deserter/cancel'
+    QUITBATTLE_RTS_DESERTER_TITLE = '#dialogs:quitBattle/rts_deserter/title'
+    QUITBATTLE_RTS_DESERTER_MESSAGE = '#dialogs:quitBattle/rts_deserter/message'
+    QUITBATTLE_RTS_DESERTER_SUBMIT = '#dialogs:quitBattle/rts_deserter/submit'
+    QUITBATTLE_RTS_DESERTER_CANCEL = '#dialogs:quitBattle/rts_deserter/cancel'
     QUITBATTLEIGR_TITLE = '#dialogs:quitBattleIGR/title'
     QUITBATTLEIGR_MESSAGE = '#dialogs:quitBattleIGR/message'
     QUITBATTLEIGR_SUBMIT = '#dialogs:quitBattleIGR/submit'
@@ -124,7 +128,7 @@ class DIALOGS(object):
     RENTCONFIRMATION_MESSAGE = '#dialogs:rentConfirmation/message'
     RENTCONFIRMATION_SUBMIT = '#dialogs:rentConfirmation/submit'
     RENTCONFIRMATION_CANCEL = '#dialogs:rentConfirmation/cancel'
-    RENTCONFIRMATION_PERIOD = '#dialogs:rentConfirmation/period'
+    RENTCONFIRMATION_EVENT = '#dialogs:rentConfirmation/event'
     RENTCONFIRMATIONRENEW_TITLE = '#dialogs:rentConfirmationRenew/title'
     RENTCONFIRMATIONRENEW_MESSAGE = '#dialogs:rentConfirmationRenew/message'
     RENTCONFIRMATIONRENEW_SUBMIT = '#dialogs:rentConfirmationRenew/submit'
@@ -166,6 +170,10 @@ class DIALOGS(object):
     LOWALTERNATIVEAMMOAUTOLOAD_MESSAGE = '#dialogs:lowAlternativeAmmoAutoLoad/message'
     LOWAMMOAUTOLOAD_SUBMIT = '#dialogs:lowAmmoAutoLoad/submit'
     LOWAMMOAUTOLOAD_CANCEL = '#dialogs:lowAmmoAutoLoad/cancel'
+    LOWAMMOSAUTOLOAD_TITLE = '#dialogs:lowAmmosAutoLoad/title'
+    LOWAMMOSAUTOLOAD_MESSAGE = '#dialogs:lowAmmosAutoLoad/message'
+    LOWAMMOSAUTOLOAD_SUBMIT = '#dialogs:lowAmmosAutoLoad/submit'
+    LOWAMMOSAUTOLOAD_CANCEL = '#dialogs:lowAmmosAutoLoad/cancel'
     SANDBOX_TITLE = '#dialogs:sandBox/title'
     SANDBOX_MESSAGE = '#dialogs:sandBox/message'
     SANDBOX_SUBMIT = '#dialogs:sandBox/submit'
@@ -1163,6 +1171,10 @@ class DIALOGS(object):
      QUITBATTLE_DESERTER_MESSAGE,
      QUITBATTLE_DESERTER_SUBMIT,
      QUITBATTLE_DESERTER_CANCEL,
+     QUITBATTLE_RTS_DESERTER_TITLE,
+     QUITBATTLE_RTS_DESERTER_MESSAGE,
+     QUITBATTLE_RTS_DESERTER_SUBMIT,
+     QUITBATTLE_RTS_DESERTER_CANCEL,
      QUITBATTLEIGR_TITLE,
      QUITBATTLEIGR_MESSAGE,
      QUITBATTLEIGR_SUBMIT,
@@ -1243,7 +1255,7 @@ class DIALOGS(object):
      RENTCONFIRMATION_MESSAGE,
      RENTCONFIRMATION_SUBMIT,
      RENTCONFIRMATION_CANCEL,
-     RENTCONFIRMATION_PERIOD,
+     RENTCONFIRMATION_EVENT,
      RENTCONFIRMATIONRENEW_TITLE,
      RENTCONFIRMATIONRENEW_MESSAGE,
      RENTCONFIRMATIONRENEW_SUBMIT,
@@ -1285,6 +1297,10 @@ class DIALOGS(object):
      LOWALTERNATIVEAMMOAUTOLOAD_MESSAGE,
      LOWAMMOAUTOLOAD_SUBMIT,
      LOWAMMOAUTOLOAD_CANCEL,
+     LOWAMMOSAUTOLOAD_TITLE,
+     LOWAMMOSAUTOLOAD_MESSAGE,
+     LOWAMMOSAUTOLOAD_SUBMIT,
+     LOWAMMOSAUTOLOAD_CANCEL,
      SANDBOX_TITLE,
      SANDBOX_MESSAGE,
      SANDBOX_SUBMIT,

@@ -3,8 +3,10 @@ package net.wg.gui.battle.epicBattle.views.components
    import flash.display.MovieClip;
    import flash.display.Sprite;
    import flash.events.MouseEvent;
+   import net.wg.data.constants.InteractiveStates;
    import net.wg.data.constants.InvalidationType;
    import net.wg.data.constants.generated.BATTLEATLAS;
+   import net.wg.data.constants.generated.BATTLE_ITEM_STATES;
    import net.wg.gui.battle.components.BattleAtlasSprite;
    import net.wg.gui.battle.views.consumablesPanel.BattleEquipmentButton;
    import org.idmedia.as3commons.util.StringUtils;
@@ -71,11 +73,26 @@ package net.wg.gui.battle.epicBattle.views.components
          invalidate(LOCKED_INFO_INV);
       }
       
+      override public function set activated(param1:Boolean) : void
+      {
+         if(param1)
+         {
+            state = BATTLE_ITEM_STATES.RELOADED;
+            isActivated = true;
+         }
+         else
+         {
+            isActivated = false;
+            state = InteractiveStates.UP;
+         }
+      }
+      
       override protected function draw() : void
       {
+         var _loc1_:Boolean = false;
          var _loc4_:Boolean = false;
          super.draw();
-         var _loc1_:Boolean = this.isLockedRank();
+         _loc1_ = this.isLockedRank();
          var _loc2_:Boolean = isInvalid(LOCKED_INFO_INV);
          var _loc3_:Boolean = isInvalid(CONSUMABLE_LEVEL_INV);
          if(_loc2_)

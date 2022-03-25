@@ -308,7 +308,7 @@ package net.wg.gui.battle.windows
          this.warning.visible = _loc3_;
          if(!_loc3_)
          {
-            this._keyViewersList.setKeys(_loc2_);
+            this._keyViewersList.setKeys(param1.vKeys,_loc2_);
             this._keyViewersList.x = width - this._keyViewersList.width >> 1;
          }
          var _loc4_:Boolean = StringUtils.isNotEmpty(param1.roleImage);

@@ -28,5 +28,32 @@
 				<color>yellow</color>
 			</world>
 		</marker>
+		<marker>
+			RTSMoveToPoint
+			<type>Area</type>
+			<model>
+				<path>content/Interface/Arrow/normal/lod0/arrow_03.model</path>
+				<action>ArrowAnimAction_01</action>
+				<offset>
+					-0.8 4.5 0
+					<!--BW_String-->
+				</offset>
+			</model>
+			<ground>
+				<path>content/Interface/CheckPoint/CheckPoint_circle.model</path>
+				<action/>
+				<offset>
+					0 0.2 0
+					<!--BW_String-->
+				</offset>
+			</ground>
+			<world>
+				<shape>bootcampArrow</shape>
+				<min-distance>0</min-distance>
+				<max-distance>100</max-distance>
+				<offset>0 9 0</offset>
+				<color>yellow</color>
+			</world>
+		</marker>
 	</has-id>
 </root>

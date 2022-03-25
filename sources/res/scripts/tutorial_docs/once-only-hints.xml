@@ -343,6 +343,11 @@
 			<ignore-outside-click>True</ignore-outside-click>
 			<condition>
 				<global-active>_DogTagsEnabled</global-active>
+				<class-condition>
+					UISpamCondition
+					<path>gui.ui_spam.tutorial_conditions</path>
+					<arguments>DogTagHangarHint</arguments>
+				</class-condition>
 			</condition>
 		</hint>
 		<hint>
@@ -418,6 +423,11 @@
 			<ignore-outside-click>True</ignore-outside-click>
 			<condition>
 				<global-active>_DogTagsEnabled</global-active>
+				<class-condition>
+					UISpamCondition
+					<path>gui.ui_spam.tutorial_conditions</path>
+					<arguments>DogTagHangarHint</arguments>
+				</class-condition>
 			</condition>
 		</hint>
 		<hint>
@@ -790,6 +800,13 @@
 			<update-runtime>True</update-runtime>
 			<hide-immediately>True</hide-immediately>
 			<ignore-outside-click>True</ignore-outside-click>
+			<condition>
+				<class-condition>
+					UISpamCondition
+					<path>gui.ui_spam.tutorial_conditions</path>
+					<arguments>ModeSelectorWidgetsBtnHint</arguments>
+				</class-condition>
+			</condition>
 		</hint>
 		<hint>
 			VehiclePreviewPostProgressionButtonHint
@@ -813,10 +830,6 @@
 				<condition-and>
 					<condition-hint-showed>
 						<hint-id>HeroVehiclePreviewPostProgressionButtonHint</hint-id>
-						<value>False</value>
-					</condition-hint-showed>
-					<condition-hint-showed>
-						<hint-id>PersonalTradeInVehiclePreviewPostProgressionButtonHint</hint-id>
 						<value>False</value>
 					</condition-hint-showed>
 					<condition-hint-showed>
@@ -848,10 +861,6 @@
 				<condition-and>
 					<condition-hint-showed>
 						<hint-id>VehiclePreviewPostProgressionButtonHint</hint-id>
-						<value>False</value>
-					</condition-hint-showed>
-					<condition-hint-showed>
-						<hint-id>PersonalTradeInVehiclePreviewPostProgressionButtonHint</hint-id>
 						<value>False</value>
 					</condition-hint-showed>
 					<condition-hint-showed>
@@ -887,45 +896,6 @@
 					</condition-hint-showed>
 					<condition-hint-showed>
 						<hint-id>HeroVehiclePreviewPostProgressionButtonHint</hint-id>
-						<value>False</value>
-					</condition-hint-showed>
-					<condition-hint-showed>
-						<hint-id>PersonalTradeInVehiclePreviewPostProgressionButtonHint</hint-id>
-						<value>False</value>
-					</condition-hint-showed>
-				</condition-and>
-			</condition>
-		</hint>
-		<hint>
-			PersonalTradeInVehiclePreviewPostProgressionButtonHint
-			<item-id>PersonalTradeInVehiclePreviewPostProgressionButton</item-id>
-			<text>_(#veh_post_progression:hint/vehiclePreview)</text>
-			<arrow>
-				<direction>R</direction>
-				<loop>True</loop>
-			</arrow>
-			<checked-ui-state>
-				<simple-state>
-					<state>visible</state>
-					<value>True</value>
-				</simple-state>
-			</checked-ui-state>
-			<update-runtime>True</update-runtime>
-			<hide-immediately>True</hide-immediately>
-			<ignore-outside-click>True</ignore-outside-click>
-			<condition>
-				<global-active>_VehPostProgressionEnabled</global-active>
-				<condition-and>
-					<condition-hint-showed>
-						<hint-id>VehiclePreviewPostProgressionButtonHint</hint-id>
-						<value>False</value>
-					</condition-hint-showed>
-					<condition-hint-showed>
-						<hint-id>HeroVehiclePreviewPostProgressionButtonHint</hint-id>
-						<value>False</value>
-					</condition-hint-showed>
-					<condition-hint-showed>
-						<hint-id>TradeInVehiclePreviewPostProgressionButtonHint</hint-id>
 						<value>False</value>
 					</condition-hint-showed>
 				</condition-and>

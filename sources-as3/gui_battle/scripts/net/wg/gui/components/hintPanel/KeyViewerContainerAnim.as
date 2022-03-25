@@ -40,9 +40,9 @@ package net.wg.gui.components.hintPanel
          this.keyViewerContainer = null;
       }
       
-      public function setKey(param1:String) : void
+      public function setKey(param1:String, param2:String) : void
       {
-         this.keyViewerContainer.setKey(param1);
+         this.keyViewerContainer.setKey(param1,param2);
       }
       
       private function initFramesScript() : void

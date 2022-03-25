@@ -2055,6 +2055,20 @@ msgstr "В бой!"
 msgid "lowAmmoAutoLoad/title"
 msgstr "Неполный боекомплект"
 
+msgid "lowAmmosAutoLoad/cancel"
+msgstr "Отменить"
+
+msgid "lowAmmosAutoLoad/message"
+msgstr ""
+"В боекомплекте одной из выбранных машин недостаточно снарядов. Подтвердить "
+"выход в бой?"
+
+msgid "lowAmmosAutoLoad/submit"
+msgstr "В бой!"
+
+msgid "lowAmmosAutoLoad/title"
+msgstr "Неполный боекомплект"
+
 msgid "lowFpsWarning/cancel"
 msgstr "Нет"
 
@@ -2412,6 +2426,21 @@ msgstr "Бегство с поля боя"
 msgid "quitBattle/message"
 msgstr "Покинуть бой?"
 
+msgid "quitBattle/rts_deserter/cancel"
+msgstr "Отменить"
+
+msgid "quitBattle/rts_deserter/message"
+msgstr ""
+"Отряду нужен командир! Выход из боя до его окончания или до уничтожения "
+"последней собственной машины расценивается как дезертирство и может повлечь "
+"наложение дисциплинарного взыскания."
+
+msgid "quitBattle/rts_deserter/submit"
+msgstr "Бежать"
+
+msgid "quitBattle/rts_deserter/title"
+msgstr "Бегство с поля боя"
+
 msgid "quitBattle/submit"
 msgstr "Да"
 
@@ -2695,11 +2724,11 @@ msgstr "Подтверждение снятия"
 msgid "rentConfirmation/cancel"
 msgstr "Отменить"
 
-msgid "rentConfirmation/message"
-msgstr "Арендовать «%(name)s» на %(period)s за %(price)s?"
+msgid "rentConfirmation/event"
+msgstr "для режима «%(eventName)s»"
 
-msgid "rentConfirmation/period"
-msgstr "%(stage)s режима %(event)s"
+msgid "rentConfirmation/message"
+msgstr "Арендовать машину %(name)s %(event)s за %(price)s?"
 
 msgid "rentConfirmation/submit"
 msgstr "Подтвердить"
@@ -2711,7 +2740,7 @@ msgid "rentConfirmationRenew/cancel"
 msgstr "Отменить"
 
 msgid "rentConfirmationRenew/message"
-msgstr "Продлить аренду «%(name)s» на %(period)s за %(price)s?"
+msgstr "Продлить аренду %(name)s %(event)s за %(price)s?"
 
 msgid "rentConfirmationRenew/submit"
 msgstr "Подтвердить"

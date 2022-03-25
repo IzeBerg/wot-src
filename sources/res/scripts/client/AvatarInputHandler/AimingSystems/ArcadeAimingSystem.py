@@ -121,9 +121,6 @@ class ArcadeAimingSystem(IAimingSystem):
             self.focusOnPos(self.__shotPointCalculator.focusAtPos(scanStart, scanDir, yawPitch))
             return
 
-    def disable(self):
-        pass
-
     def setDynamicCollisions(self, enable):
         self.__cursor.setDynamicCollisions(enable)
 

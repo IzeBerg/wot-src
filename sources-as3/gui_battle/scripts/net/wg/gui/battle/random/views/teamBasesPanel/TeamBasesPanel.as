@@ -174,6 +174,10 @@ package net.wg.gui.battle.random.views.teamBasesPanel
       
       private function removeBar(param1:Number) : void
       {
+         if(!this._capturedBarsIndexesById)
+         {
+            return;
+         }
          var _loc2_:uint = this._capturedBarsIndexesById[param1];
          var _loc3_:TeamCaptureBar = this._captureBars.splice(_loc2_,1)[0];
          removeChild(_loc3_);

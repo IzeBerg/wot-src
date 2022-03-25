@@ -1,7 +1,7 @@
 import operator
 from abc import ABCMeta, abstractmethod
 from collections import defaultdict, namedtuple
-import typing, constants, dossiers2, nations
+import typing, BigWorld, constants, dossiers2, nations, async as future_async
 from account_shared import LayoutIterator
 from adisp import async, process
 from battle_pass_common import BATTLE_PASS_PDATA_KEY
@@ -11,6 +11,7 @@ from goodies.goodie_constants import GOODIE_STATE
 from gui.shared.gui_items import GUI_ITEM_TYPE, GUI_ITEM_TYPE_NAMES, ItemsCollection, getVehicleSuitablesByType
 from gui.shared.gui_items.gui_item_economics import ITEM_PRICE_EMPTY
 from gui.shared.utils.requesters import vehicle_items_getter
+from gui.shared.utils.requesters.rts_statistics_requester import RtsStatisticsRequester
 from helpers import dependency
 from items import getTypeOfCompactDescr, makeIntCompactDescrByID, tankmen, vehicles
 from items.components.c11n_constants import CustomizationDisplayType, SeasonType
@@ -211,8 +212,8 @@ class VehsMultiNationSuitableCriteria(VehsSuitableCriteria):
 
 
 class REQ_CRITERIA(object):
-    EMPTY = RequestCriteria()
-    NONE = RequestCriteria(lambda i: False)
+    EMPTY = RequestCriteria(PredicateCondition(lambda i: True))
+    NONE = RequestCriteria(PredicateCondition(lambda i: False))
     CUSTOM = staticmethod(lambda predicate: RequestCriteria(PredicateCondition(predicate)))
     HIDDEN = RequestCriteria(PredicateCondition(operator.attrgetter('isHidden')))
     SECRET = RequestCriteria(PredicateCondition(operator.attrgetter('isSecret')))
@@ -278,15 +279,15 @@ class REQ_CRITERIA(object):
         CAN_TRADE_OFF = RequestCriteria(PredicateCondition(lambda item: item.canTradeOff))
         CAN_SELL = RequestCriteria(PredicateCondition(lambda item: item.canSell))
         CAN_NOT_BE_SOLD = RequestCriteria(PredicateCondition(lambda item: item.canNotBeSold))
-        CAN_PERSONAL_TRADE_IN_SALE = RequestCriteria(PredicateCondition(lambda item: item.canPersonalTradeInSale))
-        CAN_PERSONAL_TRADE_IN_BUY = RequestCriteria(PredicateCondition(lambda item: item.canPersonalTradeInBuy))
         IS_IN_BATTLE = RequestCriteria(PredicateCondition(lambda item: item.isInBattle))
         SECRET = RequestCriteria(PredicateCondition(lambda item: item.isSecret))
         NAME_VEHICLE = staticmethod(lambda nameVehicle: RequestCriteria(PredicateCondition(lambda item: nameVehicle in item.searchableUserName)))
         NAME_VEHICLE_WITH_SHORT = staticmethod(lambda nameVehicle: RequestCriteria(PredicateCondition(lambda item: nameVehicle in item.searchableShortUserName or nameVehicle in item.searchableUserName)))
         DISCOUNT_RENT_OR_BUY = RequestCriteria(PredicateCondition(lambda item: (item.buyPrices.itemPrice.isActionPrice() or item.getRentPackageActionPrc() != 0) and not item.isRestoreAvailable()))
         HAS_TAGS = staticmethod(lambda tags: RequestCriteria(PredicateCondition(lambda item: item.tags.issuperset(tags))))
+        HAS_ANY_OF_TAGS = staticmethod(lambda tags: RequestCriteria(PredicateCondition(lambda item: bool(item.tags & tags))))
         FOR_ITEM = staticmethod(lambda style: RequestCriteria(PredicateCondition(style.mayInstall)))
+        HAS_CUSTOM_STATE = staticmethod(lambda state: RequestCriteria(PredicateCondition(lambda item: item.getCustomState() == state)))
 
     class TANKMAN(object):
         IN_TANK = RequestCriteria(PredicateCondition(lambda item: item.isInTank))
@@ -371,7 +372,7 @@ class ItemsRequester(IItemsRequester):
     __vehPostProgressionCtrl = dependency.descriptor(IVehiclePostProgressionController)
     _AccountItem = namedtuple('_AccountItem', ['dossier', 'clanInfo', 'seasons', 'ranked', 'dogTag'])
 
-    def __init__(self, inventory, stats, dossiers, goodies, shop, recycleBin, vehicleRotation, ranked, battleRoyale, badges, epicMetaGame, tokens, festivityRequester, blueprints=None, sessionStatsRequester=None, anonymizerRequester=None, battlePassRequester=None, giftSystemRequester=None):
+    def __init__(self, inventory, stats, dossiers, goodies, shop, recycleBin, vehicleRotation, ranked, battleRoyale, badges, epicMetaGame, tokens, festivityRequester, blueprints=None, sessionStatsRequester=None, anonymizerRequester=None, battlePassRequester=None, giftSystemRequester=None, aiRostersRequester=None):
         self.__inventory = inventory
         self.__stats = stats
         self.__dossiers = dossiers
@@ -392,6 +393,8 @@ class ItemsRequester(IItemsRequester):
         self.__giftSystem = giftSystemRequester
         self.__itemsCache = defaultdict(dict)
         self.__brokenSyncAlreadyLoggedTypes = set()
+        self.__aiRosters = aiRostersRequester
+        self.__rtsStatisticsRequester = RtsStatisticsRequester()
         self.__fittingItemRequesters = {
          self.__inventory, self.__stats, self.__shop, self.__vehicleRotation, self.__recycleBin}
         self.__vehCustomStateCache = defaultdict(dict)
@@ -465,8 +468,16 @@ class ItemsRequester(IItemsRequester):
         return self.__battlePass
 
     @property
+    def rtsStatistics(self):
+        return self.__rtsStatisticsRequester
+
+    @property
     def giftSystem(self):
         return self.__giftSystem
+
+    @property
+    def aiRosters(self):
+        return self.__aiRosters
 
     @async
     @process
@@ -499,6 +510,9 @@ class ItemsRequester(IItemsRequester):
         Waiting.show('download/ranked')
         yield self.__battleRoyale.request()
         Waiting.hide('download/ranked')
+        Waiting.show('download/aiRosters')
+        yield self.__aiRosters.request()
+        Waiting.hide('download/aiRosters')
         Waiting.show('download/badges')
         yield self.__badges.request()
         Waiting.hide('download/badges')
@@ -517,6 +531,9 @@ class ItemsRequester(IItemsRequester):
         Waiting.show('download/festivity')
         yield self.__festivity.request()
         Waiting.hide('download/festivity')
+        Waiting.show('download/rtsStatistics')
+        yield self.__rtsStatisticsRequester.request()
+        Waiting.hide('download/rtsStatistics')
         Waiting.show('download/giftSystem')
         yield self.__giftSystem.request()
         Waiting.hide('download/giftSystem')
@@ -525,91 +542,98 @@ class ItemsRequester(IItemsRequester):
 
     def isSynced--- This code section failed: ---
 
- L. 881         0  LOAD_FAST             0  'self'
+ L. 910         0  LOAD_FAST             0  'self'
                 3  LOAD_ATTR             0  '__blueprints'
                 6  LOAD_CONST               None
                 9  COMPARE_OP            9  is-not
-               12  POP_JUMP_IF_FALSE   208  'to 208'
+               12  POP_JUMP_IF_FALSE   223  'to 223'
                15  LOAD_FAST             0  'self'
                18  LOAD_ATTR             2  '__stats'
                21  LOAD_ATTR             3  'isSynced'
                24  CALL_FUNCTION_0       0  None
-               27  JUMP_IF_FALSE_OR_POP   211  'to 211'
+               27  JUMP_IF_FALSE_OR_POP   226  'to 226'
                30  LOAD_FAST             0  'self'
                33  LOAD_ATTR             4  '__inventory'
                36  LOAD_ATTR             3  'isSynced'
                39  CALL_FUNCTION_0       0  None
-               42  JUMP_IF_FALSE_OR_POP   211  'to 211'
+               42  JUMP_IF_FALSE_OR_POP   226  'to 226'
                45  LOAD_FAST             0  'self'
                48  LOAD_ATTR             5  '__recycleBin'
                51  LOAD_ATTR             3  'isSynced'
                54  CALL_FUNCTION_0       0  None
-               57  JUMP_IF_FALSE_OR_POP   211  'to 211'
+               57  JUMP_IF_FALSE_OR_POP   226  'to 226'
                60  LOAD_FAST             0  'self'
                63  LOAD_ATTR             6  '__shop'
                66  LOAD_ATTR             3  'isSynced'
                69  CALL_FUNCTION_0       0  None
-               72  JUMP_IF_FALSE_OR_POP   211  'to 211'
+               72  JUMP_IF_FALSE_OR_POP   226  'to 226'
                75  LOAD_FAST             0  'self'
                78  LOAD_ATTR             7  '__dossiers'
                81  LOAD_ATTR             3  'isSynced'
                84  CALL_FUNCTION_0       0  None
-               87  JUMP_IF_FALSE_OR_POP   211  'to 211'
+               87  JUMP_IF_FALSE_OR_POP   226  'to 226'
                90  LOAD_FAST             0  'self'
                93  LOAD_ATTR             8  '__giftSystem'
                96  LOAD_ATTR             3  'isSynced'
                99  CALL_FUNCTION_0       0  None
-              102  JUMP_IF_FALSE_OR_POP   211  'to 211'
+              102  JUMP_IF_FALSE_OR_POP   226  'to 226'
               105  LOAD_FAST             0  'self'
               108  LOAD_ATTR             9  '__goodies'
               111  LOAD_ATTR             3  'isSynced'
               114  CALL_FUNCTION_0       0  None
-              117  JUMP_IF_FALSE_OR_POP   211  'to 211'
+              117  JUMP_IF_FALSE_OR_POP   226  'to 226'
               120  LOAD_FAST             0  'self'
               123  LOAD_ATTR            10  '__vehicleRotation'
               126  LOAD_ATTR             3  'isSynced'
               129  CALL_FUNCTION_0       0  None
-              132  JUMP_IF_FALSE_OR_POP   211  'to 211'
+              132  JUMP_IF_FALSE_OR_POP   226  'to 226'
               135  LOAD_FAST             0  'self'
               138  LOAD_ATTR            11  'ranked'
               141  LOAD_ATTR             3  'isSynced'
               144  CALL_FUNCTION_0       0  None
-              147  JUMP_IF_FALSE_OR_POP   211  'to 211'
+              147  JUMP_IF_FALSE_OR_POP   226  'to 226'
               150  LOAD_FAST             0  'self'
               153  LOAD_ATTR            12  '__anonymizer'
               156  LOAD_ATTR             3  'isSynced'
               159  CALL_FUNCTION_0       0  None
-              162  JUMP_IF_FALSE_OR_POP   211  'to 211'
+              162  JUMP_IF_FALSE_OR_POP   226  'to 226'
               165  LOAD_FAST             0  'self'
               168  LOAD_ATTR            13  'epicMetaGame'
               171  LOAD_ATTR             3  'isSynced'
               174  CALL_FUNCTION_0       0  None
-              177  JUMP_IF_FALSE_OR_POP   211  'to 211'
+              177  JUMP_IF_FALSE_OR_POP   226  'to 226'
               180  LOAD_FAST             0  'self'
               183  LOAD_ATTR            14  '__battleRoyale'
               186  LOAD_ATTR             3  'isSynced'
               189  CALL_FUNCTION_0       0  None
-              192  JUMP_IF_FALSE_OR_POP   211  'to 211'
+              192  JUMP_IF_FALSE_OR_POP   226  'to 226'
               195  LOAD_FAST             0  'self'
-              198  LOAD_ATTR             0  '__blueprints'
+              198  LOAD_ATTR            15  '__aiRosters'
               201  LOAD_ATTR             3  'isSynced'
               204  CALL_FUNCTION_0       0  None
-              207  RETURN_END_IF    
-            208_0  COME_FROM           192  '192'
-            208_1  COME_FROM           177  '177'
-            208_2  COME_FROM           162  '162'
-            208_3  COME_FROM           147  '147'
-            208_4  COME_FROM           132  '132'
-            208_5  COME_FROM           117  '117'
-            208_6  COME_FROM           102  '102'
-            208_7  COME_FROM            87  '87'
-            208_8  COME_FROM            72  '72'
-            208_9  COME_FROM            57  '57'
-           208_10  COME_FROM            42  '42'
-           208_11  COME_FROM            27  '27'
-           208_12  COME_FROM            12  '12'
-              208  LOAD_GLOBAL          15  'False'
-              211  RETURN_VALUE     
+              207  JUMP_IF_FALSE_OR_POP   226  'to 226'
+              210  LOAD_FAST             0  'self'
+              213  LOAD_ATTR             0  '__blueprints'
+              216  LOAD_ATTR             3  'isSynced'
+              219  CALL_FUNCTION_0       0  None
+              222  RETURN_END_IF    
+            223_0  COME_FROM           207  '207'
+            223_1  COME_FROM           192  '192'
+            223_2  COME_FROM           177  '177'
+            223_3  COME_FROM           162  '162'
+            223_4  COME_FROM           147  '147'
+            223_5  COME_FROM           132  '132'
+            223_6  COME_FROM           117  '117'
+            223_7  COME_FROM           102  '102'
+            223_8  COME_FROM            87  '87'
+            223_9  COME_FROM            72  '72'
+           223_10  COME_FROM            57  '57'
+           223_11  COME_FROM            42  '42'
+           223_12  COME_FROM            27  '27'
+           223_13  COME_FROM            12  '12'
+
+ L. 911       223  LOAD_GLOBAL          16  'False'
+              226  RETURN_VALUE     
 
 Parse error at or near `None' instruction at offset -1
 
@@ -667,6 +691,7 @@ Parse error at or near `None' instruction at offset -1
         self.__festivity.clear()
         self.__anonymizer.clear()
         self.__giftSystem.clear()
+        self.__aiRosters.clear()
 
     def onDisconnected(self):
         self.__tokens.onDisconnected()
@@ -901,6 +926,34 @@ Parse error at or near `None' instruction at offset -1
                         result[intCD] = item
 
         return result
+
+    @future_async.async
+    def getItemsAsync(self, itemTypeID=None, criteria=REQ_CRITERIA.EMPTY, nationID=None, onlyWithPrices=True, callback=None):
+        result = ItemsCollection()
+        if not isinstance(itemTypeID, tuple):
+            itemTypeID = (
+             itemTypeID,)
+
+        def asyncGetItems():
+            for typeID in itemTypeID:
+                itemGetter = self.getItemByCD
+                protector = criteria.getIntCDProtector()
+                if protector is not None and protector.isUnlinked():
+                    callback(result)
+                for intCD in vehicle_items_getter.getItemsIterator(self.__shop.getItemsData(), nationID, typeID, onlyWithPrices):
+                    if BigWorld.player() is None:
+                        return
+                    if protector is not None and protector.isTriggered(intCD):
+                        continue
+                    item = itemGetter(intCD)
+                    if criteria(item):
+                        result[intCD] = item
+                    yield item
+
+            return
+
+        yield future_async.await(future_async.distributeLoopOverTicks(asyncGetItems(), minPerTick=10, maxPerTick=100, logID='getItemsAsync', tickLength=0.0))
+        callback(result)
 
     def getTankmen(self, criteria=REQ_CRITERIA.TANKMAN.ACTIVE):
         result = ItemsCollection()

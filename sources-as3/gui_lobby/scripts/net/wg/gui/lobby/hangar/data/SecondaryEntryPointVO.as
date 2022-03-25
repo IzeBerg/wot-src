@@ -12,6 +12,8 @@ package net.wg.gui.lobby.hangar.data
       
       public var altIcon:String = "";
       
+      public var extraIcon:String = "";
+      
       public var text:String = "";
       
       public var tooltip:String = "";

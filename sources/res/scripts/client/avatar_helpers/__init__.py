@@ -9,6 +9,13 @@ def getAvatarDatabaseID():
         vehID = getattr(player, 'playerVehicleID', None)
         if vehID is not None and vehID in arena.vehicles:
             dbID = arena.vehicles[vehID]['accountDBID']
+        if not dbID:
+            sessionID = getAvatarSessionID()
+            for _, info in arena.vehicles.items():
+                if info['avatarSessionID'] == sessionID:
+                    dbID = info['accountDBID']
+                    break
+
     return dbID
 
 

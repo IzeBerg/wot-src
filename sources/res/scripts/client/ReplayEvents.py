@@ -16,6 +16,7 @@ class _ReplayEvents(object):
         self.onPause = Event.Event()
         self.onMuteSound = Event.Event()
         self.onWatcherNotify = Event.Event()
+        self.onReplayTerminated = Event.Event()
         self.__isPlaying = False
         self.__isRecording = False
 

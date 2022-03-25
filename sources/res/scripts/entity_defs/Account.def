@@ -33,8 +33,17 @@
 		<Interface>QuestProcessor</Interface>
 		<Interface>AvatarCreator</Interface>
 		<Interface>AccountVersion</Interface>
+		<Interface>RTSTokensController</Interface>
 	</Implements>
 	<Properties>
+		<requiredVersion_11010>
+			<Type>STRING</Type>
+			<Flags>BASE_AND_CLIENT</Flags>
+			<Default>
+				1.10.1
+				<!--BW_String-->
+			</Default>
+		</requiredVersion_11010>
 		<name>
 			<Type>STRING</Type>
 			<Flags>BASE_AND_CLIENT</Flags>
@@ -434,6 +443,7 @@
 			<Arg>MAILBOX</Arg>
 			<Arg>PYTHON</Arg>
 			<Arg>PYTHON</Arg>
+			<IsMulticast>true</IsMulticast>
 		</releaseClientForLogin>
 		<keepAliveFor>
 			<Arg>MAILBOX</Arg>
@@ -448,6 +458,7 @@
 			<Arg>STRING</Arg>
 			<Arg>UINT8</Arg>
 			<Arg>UINT32</Arg>
+			<IsMulticast>true</IsMulticast>
 		</kickSelf>
 		<destroyIfNoKeepers/>
 		<destroySelfForPeriphery>
@@ -501,6 +512,12 @@
 			<Arg>DB_ID</Arg>
 			<Arg>STRING</Arg>
 		</receiveClanMembersListDiff>
+		<reportAPM>
+			<Exposed/>
+			<Arg>UINT64</Arg>
+			<Arg>UINT16</Arg>
+			<Arg>UINT16</Arg>
+		</reportAPM>
 		<debugRunMethod>
 			<Arg>STRING</Arg>
 			<Arg>PYTHON</Arg>
@@ -576,6 +593,11 @@
 			<Arg>INT32</Arg>
 			<Exposed/>
 		</logStreamCorruption>
+		<updateAntiTeamingStorage>
+			<Arg>PYTHON</Arg>
+			<Arg>INT64</Arg>
+			<Arg>INT64</Arg>
+		</updateAntiTeamingStorage>
 	</BaseMethods>
 	<NetworkCompression>
 		<internal>

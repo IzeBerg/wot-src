@@ -1,8 +1,7 @@
 import operator, time
 from abc import ABCMeta
 from collections import namedtuple
-from typing import Union
-import constants, nations
+import typing, constants, nations
 from debug_utils import LOG_ERROR
 from dossiers2.ui.achievements import ACHIEVEMENT_BLOCK
 from gui.Scaleform.locale.PERSONAL_MISSIONS import PERSONAL_MISSIONS
@@ -10,28 +9,29 @@ from gui.Scaleform.locale.QUESTS import QUESTS
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.impl import backport
 from gui.impl.gen import R
-from gui.server_events import finders
-from gui.server_events.bonuses import getBonuses, compareBonuses
-from gui.server_events import events_helpers
-from gui.server_events.events_helpers import isPremium, isDailyQuest
+from gui.ranked_battles.ranked_helpers import getQualificationBattlesCountFromID, isQualificationQuestID
+from gui.server_events import events_helpers, finders
+from gui.server_events.bonuses import compareBonuses, getBonuses
+from gui.server_events.events_helpers import isDailyQuest, isPremium
 from gui.server_events.formatters import getLinkedActionID
-from gui.server_events.modifiers import getModifierObj, compareModifiers
-from gui.server_events.parsers import AccountRequirements, VehicleRequirements, TokenQuestAccountRequirements, PreBattleConditions, PostBattleConditions, BonusConditions
+from gui.server_events.modifiers import compareModifiers, getModifierObj
+from gui.server_events.parsers import AccountRequirements, BonusConditions, PostBattleConditions, PreBattleConditions, TokenQuestAccountRequirements, VehicleRequirements
 from gui.shared.gui_items import Vehicle
 from gui.shared.gui_items.Vehicle import VEHICLE_TYPES_ORDER
 from gui.shared.utils import ValidationResult
 from gui.shared.utils.requesters.QuestsProgressRequester import PersonalMissionsProgressRequester
-from helpers import dependency
-from helpers import getLocalizedData, i18n, time_utils
-from personal_missions import PM_STATE as _PMS, PM_FLAG, PM_BRANCH, PM_BRANCH_TO_FINAL_PAWN_COST
+from helpers import dependency, getLocalizedData, i18n, time_utils
+from personal_missions import PM_BRANCH, PM_BRANCH_TO_FINAL_PAWN_COST, PM_FLAG, PM_STATE as _PMS
 from personal_missions_config import getQuestConfig
 from personal_missions_constants import DISPLAY_TYPE
-from shared_utils import first, findFirst
+from shared_utils import findFirst, first
 from skeletons.connection_mgr import IConnectionManager
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
-from gui.ranked_battles.ranked_helpers import isQualificationQuestID, getQualificationBattlesCountFromID
+if typing.TYPE_CHECKING:
+    from typing import Dict, List, Union
+    from gui.server_events.bonuses import SimpleBonus
 
 class DEFAULTS_GROUPS(object):
     FOR_CURRENT_VEHICLE = 'currentlyAvailable'
@@ -328,6 +328,9 @@ class Quest(ServerEventAbstract):
     def shouldBeShown(self):
         if events_helpers.isMapsTraining(self.getGroupID()):
             return self.isAvailable().isValid and self.lobbyContext.getServerSettings().isMapsTrainingEnabled()
+        if events_helpers.isRts(self.getID()):
+            isRtsEnabled = self.lobbyContext.getServerSettings().getRTSBattlesConfig().isEnabled
+            return not self.isHidden() and isRtsEnabled
         return True
 
     def getGroupType(self):
@@ -431,6 +434,9 @@ class Quest(ServerEventAbstract):
                 result.append(self._bonusDecorator(bonus))
 
         return sorted(result, cmp=compareBonuses, key=operator.methodcaller('getName'))
+
+    def getSortKey(self):
+        return
 
     def __getVehicleStyleBonuses(self, vehiclesData):
         stylesData = []

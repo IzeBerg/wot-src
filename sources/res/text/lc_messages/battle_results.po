@@ -40,7 +40,7 @@ msgstr "Техника"
 msgid "common/battleEfficiency/title"
 msgstr "Боевая эффективность"
 
-msgid "common/battleEfficiencyWithoutOreders/title"
+msgid "common/battleEfficiencyWithoutReserves/title"
 msgstr "Боевая эффективность без учёта использованных резервов"
 
 msgid "common/battleType/sortie"
@@ -176,6 +176,9 @@ msgstr "Примерно осталось боёв: %(battles)s"
 
 msgid "common/resultsShareBtn"
 msgstr "Получить ссылку"
+
+msgid "common/supplyState"
+msgstr "Уцелело %(alive)d / %(total)d"
 
 msgid "common/tooltip/armor/description"
 msgstr ""
@@ -402,6 +405,12 @@ msgstr "Уничтожен пожаром"
 msgid "common/vehicleState/dead2"
 msgstr "Уничтожен тараном"
 
+msgid "common/vehicleState/dead21"
+msgstr "Уничтожен выстрелом"
+
+msgid "common/vehicleState/dead22"
+msgstr "Уничтожен объектом поддержки"
+
 msgid "common/vehicleState/dead3"
 msgstr "Разбит"
 
@@ -480,6 +489,9 @@ msgstr "Эффект от личных резервов"
 msgid "details/calculations/crystal/events"
 msgstr "За выполнение задач"
 
+msgid "details/calculations/crystal/rtsEvent"
+msgstr "За выполнение боевых задач события"
+
 msgid "details/calculations/crystal/total"
 msgstr "За особые свойства машины"
 
@@ -556,6 +568,18 @@ msgstr "Надбавка за уровень премиум машины"
 msgid "details/calculations/referralBonus"
 msgstr "Реферальный бонус (%(bonusFactor)d%%)"
 
+msgid "details/calculations/rtsEventPoints"
+msgstr "Очки события"
+
+msgid "details/calculations/rtsLeaderboardPoints"
+msgstr "Очки рейтинга"
+
+msgid "details/calculations/rtsToken1x1"
+msgstr "Приказы"
+
+msgid "details/calculations/rtsToken1x7"
+msgstr "Рапорты"
+
 msgid "details/calculations/squad/restrictions/title"
 msgstr "За игру взводом "
 
@@ -594,6 +618,9 @@ msgstr "Танковый премиум"
 
 msgid "details/resource"
 msgstr "Промресурс"
+
+msgid "details/specialCurrency"
+msgstr "Специальная валюта"
 
 msgid "details/stats"
 msgstr "Статистика"
@@ -789,6 +816,9 @@ msgstr ""
 "Играйте и получайте довольствие. Чем выше эффективность игры, тем ближе "
 "выдача довольствия."
 
+msgid "replayBtnLabel"
+msgstr "Скачать реплей"
+
 msgid "selectVehicle"
 msgstr "Выберите машину"
 
@@ -954,6 +984,9 @@ msgstr "Захваченные зоны / уничтоженные цели"
 msgid "team/stats/labels_capturePointsVal"
 msgstr "Очки захвата/защиты базы"
 
+msgid "team/stats/labels_commanderSupplyDamage"
+msgstr "Урон, нанесённый объектами поддержки"
+
 msgid "team/stats/labels_damageAssisted"
 msgstr "Урон, нанесённый с помощью данного игрока"
 
@@ -969,16 +1002,37 @@ msgstr "Урон по оглушённым вами целям"
 msgid "team/stats/labels_damageBlockedByArmor"
 msgstr "Урон, заблокированный бронёй"
 
+msgid "team/stats/labels_damageBlockedByTanksSupplies"
+msgstr "Урон, заблокированный бронёй машин/объектов поддержки"
+
 msgid "team/stats/labels_damageDealt"
 msgstr "Всего нанесено урона:"
 
 msgid "team/stats/labels_damageDealtByOrder"
 msgstr "\tВ т.ч. боевыми резервами"
 
+msgid "team/stats/labels_damageDealtBySupplies"
+msgstr "Всего нанесено урона"
+
+msgid "team/stats/labels_damageDealtByTanksSupplies"
+msgstr "Всего нанесено урона машинами/объектами поддержки"
+
 msgid "team/stats/labels_damageDealtRatio"
 msgstr "\tснято очков прочности с команды противника"
 
+msgid "team/stats/labels_damageToCommanderSupplies"
+msgstr "Урон, полученный объектами поддержки"
+
+msgid "team/stats/labels_damagedByWatchtowers"
+msgstr "Урон, нанесённый с помощью объекта поддержки"
+
 msgid "team/stats/labels_damagedKilled"
+msgstr "Повреждено/уничтожено машин противника"
+
+msgid "team/stats/labels_damagedKilledSupplies"
+msgstr "Повреждено/уничтожено объектов поддержки"
+
+msgid "team/stats/labels_damagedKilledTanksBySupplies"
 msgstr "Повреждено/уничтожено машин противника"
 
 msgid "team/stats/labels_deaths"
@@ -994,6 +1048,9 @@ msgid "team/stats/labels_destructiblesDamageDealt"
 msgstr "\tпо целям"
 
 msgid "team/stats/labels_directHitsReceived"
+msgstr "Получено попаданий"
+
+msgid "team/stats/labels_directHitsReceivedBySupplies"
 msgstr "Получено попаданий"
 
 msgid "team/stats/labels_equipmentDamageAssisted"
@@ -1014,7 +1071,16 @@ msgstr "Доставлено флагов"
 msgid "team/stats/labels_hits"
 msgstr "\tпрямых попаданий/пробитий"
 
+msgid "team/stats/labels_hitsBySupplies"
+msgstr "\tпрямых попаданий/пробитий объектами поддержки"
+
+msgid "team/stats/labels_hitsByTanks"
+msgstr "\tпрямых попаданий/пробитий машинами"
+
 msgid "team/stats/labels_killed"
+msgstr "Уничтожено машин противника"
+
+msgid "team/stats/labels_killedTanksByBarricades"
 msgstr "Уничтожено машин противника"
 
 msgid "team/stats/labels_killsByOrder"
@@ -1026,16 +1092,43 @@ msgstr "Пройдено километров"
 msgid "team/stats/labels_noDamageDirectHitsReceived"
 msgstr "\tне нанёсших урон"
 
+msgid "team/stats/labels_noDamageDirectHitsReceivedBySupplies"
+msgstr "\tне нанёсших урон"
+
 msgid "team/stats/labels_piercingsReceived"
+msgstr "\tпробитий"
+
+msgid "team/stats/labels_piercingsReceivedBySupplies"
 msgstr "\tпробитий"
 
 msgid "team/stats/labels_shots"
 msgstr "Произведено выстрелов"
 
+msgid "team/stats/labels_shotsBySupplies"
+msgstr "Произведено выстрелов"
+
+msgid "team/stats/labels_shotsByTanksSupplies"
+msgstr "Произведено выстрелов машинами/объектами поддержки"
+
 msgid "team/stats/labels_sniperDamageDealt"
 msgstr "\tс дистанции свыше 300 м"
 
+msgid "team/stats/labels_sniperDamageDealtBySupplies"
+msgstr "\tс дистанции свыше 300 м"
+
 msgid "team/stats/labels_spotted"
+msgstr "Обнаружено машин противника"
+
+msgid "team/stats/labels_spottedEnemiesByWatchtowers"
+msgstr "Обнаружено противников"
+
+msgid "team/stats/labels_spottedStrategistItems"
+msgstr "Обнаружено боевых единиц противника"
+
+msgid "team/stats/labels_spottedSupplies"
+msgstr "Обнаружено объектов поддержки"
+
+msgid "team/stats/labels_spottedTanksBySupplies"
 msgstr "Обнаружено машин противника"
 
 msgid "team/stats/labels_stunDuration"
@@ -1044,11 +1137,20 @@ msgstr "Общее время нанесённого оглушения, сек�
 msgid "team/stats/labels_stunNum"
 msgstr "Нанесено оглушений"
 
+msgid "team/stats/labels_supplyDamageToTankman"
+msgstr "Урон, полученный от объектов поддержки"
+
+msgid "team/stats/labels_tankmanDamageToSupplies"
+msgstr "Урон, нанесённый объектам поддержки"
+
 msgid "team/stats/labels_teamHitsDamage"
 msgstr "Урон союзникам (уничтожено/повреждений)"
 
 msgid "team/stats/labels_timesDestroyed"
 msgstr "Количество потерянных машин"
+
+msgid "team/stats/labels_totalDamagedByBarricades"
+msgstr "Всего нанесено урона"
 
 msgid "team/stats/labels_xp"
 msgstr "Всего получено опыта"

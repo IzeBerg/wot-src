@@ -124,7 +124,7 @@ class BattleTeamsBasesController(ITeamsBasesController, ViewComponentsController
                     isCapturing = True
                     viewCmp.addCapturedTeamBase(clientID, playerTeam, timeLeft, invadersCnt)
 
-            elif points and not BigWorld.player().isObserver():
+            elif points and (not BigWorld.player().isObserver() or BigWorld.player().isCommander()):
                 for viewCmp in self._viewComponents:
                     isCapturing = True
                     viewCmp.addCapturingTeamBase(clientID, playerTeam, points, self._getProgressRate(), timeLeft, invadersCnt, stopped)
@@ -151,7 +151,8 @@ class BattleTeamsBasesController(ITeamsBasesController, ViewComponentsController
         isEnemyBase = arenaDP.isEnemyTeam(baseTeam)
         self.__points[clientID] = (
          points, timeLeft, invadersCnt, capturingStopped)
-        if self._teamBaseLeft(points, invadersCnt):
+        capturingStartBlocked = points == 0 and capturingStopped and invadersCnt > 0
+        if self._teamBaseLeft(points, invadersCnt) and not capturingStartBlocked:
             if clientID in self.__clientIDs:
                 if not invadersCnt:
                     self.__clearUpdateCallback(clientID)
@@ -239,9 +240,8 @@ class BattleTeamsBasesController(ITeamsBasesController, ViewComponentsController
         for clientID in self.__clientIDs:
             self.__clearUpdateCallback(clientID)
             self.__stopCaptureSound(clientID)
-            if not BattleReplay.isPlaying():
-                for viewCmp in self._viewComponents:
-                    viewCmp.removeTeamBase(clientID)
+            for viewCmp in self._viewComponents:
+                viewCmp.removeTeamBase(clientID)
 
         self.__clientIDs.clear()
 

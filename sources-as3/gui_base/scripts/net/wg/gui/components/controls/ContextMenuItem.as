@@ -47,6 +47,8 @@ package net.wg.gui.components.controls
       
       public var isNew:Boolean;
       
+      public var soundEnabled:Boolean = true;
+      
       private var _type:String = "";
       
       private var _items:Vector.<IContextItem>;
@@ -73,6 +75,11 @@ package net.wg.gui.components.controls
          useRightButton = false;
          this._defItemTextWidth = width - textField.width;
          visible = this.iconsMc.visible = false;
+      }
+      
+      override public function canPlaySound(param1:String) : Boolean
+      {
+         return this.soundEnabled && super.canPlaySound(param1);
       }
       
       override public function toString() : String

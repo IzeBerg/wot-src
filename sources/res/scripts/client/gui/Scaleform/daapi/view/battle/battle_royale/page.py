@@ -11,7 +11,7 @@ from gui.Scaleform.daapi.view.battle.battle_royale.minefield_player_messenger im
 from gui.Scaleform.daapi.view.meta.BattleRoyalePageMeta import BattleRoyalePageMeta
 from gui.Scaleform.daapi.view.battle.classic.page import DynamicAliases
 from gui.Scaleform.daapi.view.battle.epic import drone_music_player
-from gui.Scaleform.daapi.view.battle.shared import period_music_listener, crosshair
+from gui.Scaleform.daapi.view.battle.shared import crosshair
 from gui.Scaleform.daapi.view.battle.shared.page import ComponentsConfig
 from gui.Scaleform.genConsts.BATTLE_VIEW_ALIASES import BATTLE_VIEW_ALIASES
 from gui.battle_control.battle_constants import BATTLE_CTRL_ID, VEHICLE_VIEW_STATE
@@ -48,7 +48,6 @@ class _BattleRoyaleComponentsConfig(ComponentsConfig):
            BATTLE_VIEW_ALIASES.BATTLE_END_WARNING_PANEL,
            BATTLE_VIEW_ALIASES.HINT_PANEL,
            DynamicAliases.DRONE_MUSIC_PLAYER,
-           DynamicAliases.PERIOD_MUSIC_LISTENER,
            BATTLE_VIEW_ALIASES.RADAR_BUTTON,
            _DynamicAliases.ARENA_PERIOD_SOUND_PLAYER,
            _DynamicAliases.SELECT_RESPAWN_SOUND_PLAYER)),
@@ -108,8 +107,6 @@ class _BattleRoyaleComponentsConfig(ComponentsConfig):
          (
           BATTLE_CTRL_ID.AMMO, (BATTLE_VIEW_ALIASES.CONSUMABLES_PANEL,))), (
          (
-          DynamicAliases.PERIOD_MUSIC_LISTENER, period_music_listener.PeriodMusicListener),
-         (
           DynamicAliases.DRONE_MUSIC_PLAYER, drone_music_player.DroneMusicPlayer),
          (
           _DynamicAliases.SELECT_RESPAWN_SOUND_PLAYER, SelectRespawnSoundPlayer),
@@ -159,7 +156,7 @@ class BattleRoyalePage(BattleRoyalePageMeta, ISpawnListener):
          BattleRoyaleMarkersManager))
         return
 
-    def showSpawnPoints(self):
+    def setSpawnPoints(self, _):
         visibleComponents = [
          BATTLE_VIEW_ALIASES.BR_SELECT_RESPAWN]
         if ARENA_BONUS_TYPE_CAPS.checkAny(BigWorld.player().arena.bonusType, ARENA_BONUS_TYPE_CAPS.SQUADS):

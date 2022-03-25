@@ -68,13 +68,13 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public var greenGlowMc:MovieClip = null;
       
+      protected var isActivated:Boolean;
+      
       private var _isReplay:Boolean;
       
       private var _lockColorTransform:Boolean = false;
       
       private var _isPermanent:Boolean;
-      
-      private var _isActivated:Boolean;
       
       private var _bindSfKeyCode:Number;
       
@@ -191,7 +191,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function clearCoolDownTime() : void
       {
-         this._isActivated = false;
+         this.isActivated = false;
          this.endCooldownTimer();
          this._isReloading = false;
          this.state = InteractiveStates.UP;
@@ -241,7 +241,7 @@ package net.wg.gui.battle.views.consumablesPanel
             return;
          }
          this.state = BATTLE_ITEM_STATES.RELOADED;
-         this._isActivated = true;
+         this.isActivated = true;
       }
       
       public function setColorTransform(param1:ColorTransform) : void
@@ -279,7 +279,7 @@ package net.wg.gui.battle.views.consumablesPanel
       public function setCoolDownTime(param1:Number, param2:Number, param3:Number, param4:int = 1) : void
       {
          var _loc5_:int = 0;
-         this._isActivated = false;
+         this.isActivated = false;
          this._isPermanent = false;
          this._baseTime = param2;
          this.greenGlowMc.visible = false;
@@ -502,7 +502,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       override public function set state(param1:String) : void
       {
-         if(!this._isPermanent && !this._isActivated)
+         if(!this._isPermanent && !this.isActivated)
          {
             super.state = param1;
          }

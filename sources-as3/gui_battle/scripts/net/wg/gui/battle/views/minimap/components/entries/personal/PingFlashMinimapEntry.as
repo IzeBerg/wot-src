@@ -32,6 +32,15 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
       public function PingFlashMinimapEntry()
       {
          super();
+         mouseEnabled = mouseChildren = false;
+         if(this.animation)
+         {
+            this.animation.mouseEnabled = this.animation.mouseChildren = false;
+         }
+         if(this.reply)
+         {
+            this.reply.mouseEnabled = this.reply.mouseChildren = false;
+         }
       }
       
       protected function SetAtlasPlaceholderVisible(param1:Boolean) : void

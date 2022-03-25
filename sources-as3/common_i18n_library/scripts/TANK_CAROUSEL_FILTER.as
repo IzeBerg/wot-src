@@ -45,6 +45,8 @@ package
       
       public static const POPOVER_CHECKBOX_BATTLEROYALE:String = "#tank_carousel_filter:popover/checkbox/battleRoyale";
       
+      public static const POPOVER_CHECKBOX_RTSBATTLES:String = "#tank_carousel_filter:popover/checkbox/rtsBattles";
+      
       public static const POPOVER_CHECKBOX_UNLOCK_AVAILABLE:String = "#tank_carousel_filter:popover/checkbox/unlock_available";
       
       public static const POPOVER_COUNTER:String = "#tank_carousel_filter:popover/counter";
@@ -102,6 +104,10 @@ package
       public static const TOOLTIP_BATTLEROYALE_HEADER:String = "#tank_carousel_filter:tooltip/battleRoyale/header";
       
       public static const TOOLTIP_BATTLEROYALE_BODY:String = "#tank_carousel_filter:tooltip/battleRoyale/body";
+      
+      public static const TOOLTIP_RTSBATTLES_HEADER:String = "#tank_carousel_filter:tooltip/rtsBattles/header";
+      
+      public static const TOOLTIP_RTSBATTLES_BODY:String = "#tank_carousel_filter:tooltip/rtsBattles/body";
       
       public static const TOOLTIP_IGR_HEADER:String = "#tank_carousel_filter:tooltip/igr/header";
       

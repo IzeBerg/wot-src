@@ -4,39 +4,55 @@ package net.wg.gui.components.battleDamagePanel.components
    import flash.display.Sprite;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
+   import flash.text.TextFormat;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.BATTLEDAMAGELOG_IMAGES;
+   import net.wg.data.constants.generated.DAMAGE_LOG_SHELL_BG_TYPES;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
    import net.wg.infrastructure.managers.IAtlasManager;
    
    public class DamageLogRenderer extends MovieClip implements IDisposable
    {
       
-      private static var _shellTFMaxWidth:Number = -1;
+      private static var _shellTFMaxWidth:int = -1;
       
-      private static const ACTION_TYPE_X_POS:int = 49;
+      private static const ACTION_TYPE_X_POS:uint = 49;
       
-      private static const ACTION_ICON_Y_POS:Number = 11;
+      private static const ACTION_ICON_Y_POS:uint = 11;
       
-      private static const VEH_ICON_Y_POS:Number = 19;
+      private static const VEH_ICON_Y_POS:uint = 19;
       
-      private static const SHELL_TEXT_PADDING:Number = 6;
+      private static const SHELL_TEXT_PADDING:uint = 8;
       
-      private static const SHELL_BG_Y_POS:Number = 13;
+      private static const SHELL_BG_Y_POS:uint = 12;
       
-      private static const SHELL_TYPE_X_POS:Number = 75;
+      private static const SHELL_TYPE_X_POS:uint = 75;
       
-      private static const SHELL_TF_X_OFFSET:Number = 1;
+      private static const SHELL_TF_X_OFFSET:uint = 2;
       
-      public static const SHELL_RIGHT_PADDING:Number = 13;
+      public static const SHELL_RIGHT_PADDING:uint = 13;
       
       private static const BLIND_POSTFIX:String = "Blind";
       
-      private static const VEH_TF_X_OFFSET:Number = 10;
+      private static const VEH_TF_X_OFFSET:uint = 10;
       
       private static const ICONS_WITH_BLIND:Vector.<String> = new <String>[BATTLEDAMAGELOG_IMAGES.DAMAGELOG_BURN_ENEMY_16X16,BATTLEDAMAGELOG_IMAGES.DAMAGELOG_CRITICAL_ENEMY_16X16,BATTLEDAMAGELOG_IMAGES.DAMAGELOG_DAMAGE_ENEMY_16X16,BATTLEDAMAGELOG_IMAGES.DAMAGELOG_RAM_ENEMY_16X16];
       
-      private static const SHELL_TF_BORDER_PADDING:Number = 2;
+      private static const SHELL_TF_BORDER_PADDING:uint = 2;
+      
+      private static const COLOR_SHELL_TF_BLACK:uint = 0;
+      
+      private static const COLOR_SHELL_TF_WHITE:uint = 16777215;
+      
+      private static const COLOR_SHELL_TF_GOLD:uint = 16761699;
+      
+      private static const NAME_BG_IMG:String = "bgImg";
+      
+      private static const NAME_SHELL_TYPE_BG:String = "_shellTypeBG";
+      
+      private static const NAME_VEH_TYPE_IMG:String = "vehTypeImg";
+      
+      private static const NAME_ACTION_TYPE_IMG:String = "actionTypeImg";
        
       
       public var externalImagesContainer:Sprite = null;
@@ -61,7 +77,7 @@ package net.wg.gui.components.battleDamagePanel.components
       
       private var _actionAtlasIconPath:String = "";
       
-      private var _isShortMode:Boolean = false;
+      private var _isLongMode:Boolean = true;
       
       private var _disposed:Boolean = false;
       
@@ -69,6 +85,19 @@ package net.wg.gui.components.battleDamagePanel.components
       {
          super();
          this._atlasMgr = App.atlasMgr;
+      }
+      
+      private static function getShellTfColorByType(param1:String) : uint
+      {
+         if(param1 == DAMAGE_LOG_SHELL_BG_TYPES.SPG)
+         {
+            return COLOR_SHELL_TF_WHITE;
+         }
+         if(param1 == DAMAGE_LOG_SHELL_BG_TYPES.SPG_HE_NO_STUN)
+         {
+            return COLOR_SHELL_TF_GOLD;
+         }
+         return COLOR_SHELL_TF_BLACK;
       }
       
       public final function dispose() : void
@@ -90,6 +119,7 @@ package net.wg.gui.components.battleDamagePanel.components
       {
          this._atlasName = param4;
          this._bgImg = new Sprite();
+         this._bgImg.name = NAME_BG_IMG;
          this.valueTF.autoSize = TextFieldAutoSize.RIGHT;
          this.vehNameTF.autoSize = TextFieldAutoSize.LEFT;
          if(_shellTFMaxWidth <= 0)
@@ -98,9 +128,12 @@ package net.wg.gui.components.battleDamagePanel.components
          }
          this.shellTypeTF.width = _shellTFMaxWidth + SHELL_TF_BORDER_PADDING;
          this._shellTypeBG = new ShellTypeBG(param4);
+         this._shellTypeBG.name = NAME_SHELL_TYPE_BG;
          this.externalImagesContainer = param1;
          this.vehTypeImg = new Sprite();
+         this.vehTypeImg.name = NAME_VEH_TYPE_IMG;
          this.actionTypeImg = new Sprite();
+         this.actionTypeImg.name = NAME_ACTION_TYPE_IMG;
          this.actionTypeImg.y = ACTION_ICON_Y_POS;
          this._shellTypeBG.y = SHELL_BG_Y_POS;
          this.vehTypeImg.y = VEH_ICON_Y_POS;
@@ -112,6 +145,11 @@ package net.wg.gui.components.battleDamagePanel.components
          this.updateBG(param2,param3);
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function setData(param1:String, param2:String, param3:String, param4:String, param5:String, param6:String, param7:Boolean, param8:Boolean) : void
       {
          this.valueTF.text = param1;
@@ -119,32 +157,23 @@ package net.wg.gui.components.battleDamagePanel.components
          this.setActionIcon(param7);
          this.shellTypeTF.text = param5;
          this._shellTypeBG.setData(param6);
+         var _loc9_:uint = getShellTfColorByType(param6);
+         var _loc10_:TextFormat = this.shellTypeTF.getTextFormat();
+         if(_loc9_ != _loc10_.color)
+         {
+            _loc10_.color = _loc9_;
+            this.shellTypeTF.setTextFormat(_loc10_);
+         }
          if(param3 != Values.EMPTY_STR)
          {
             this._atlasMgr.drawGraphics(this._atlasName,param3,this.vehTypeImg.graphics,Values.EMPTY_STR,false,false,true);
             this.vehNameTF.text = param4;
          }
-         if(this._isShortMode != param8)
+         if(this._isLongMode == param8)
          {
-            this._isShortMode = param8;
+            this._isLongMode = !param8;
             this.updateItemsPositions();
          }
-      }
-      
-      private function updateItemsPositions() : void
-      {
-         var _loc1_:Number = _shellTFMaxWidth + SHELL_TEXT_PADDING;
-         if(!this._isShortMode)
-         {
-            this._shellTypeBG.updateWidth(_loc1_);
-            this._shellTypeBG.x = SHELL_TYPE_X_POS;
-            this.shellTypeTF.x = SHELL_TYPE_X_POS + SHELL_TF_X_OFFSET;
-         }
-         this.shellTypeTF.visible = this._shellTypeBG.visible = !this._isShortMode;
-         this.actionTypeImg.x = ACTION_TYPE_X_POS;
-         var _loc2_:Number = !this._isShortMode ? Number(SHELL_TYPE_X_POS + _loc1_ + SHELL_RIGHT_PADDING) : Number(SHELL_TYPE_X_POS + SHELL_TF_X_OFFSET);
-         this.vehTypeImg.x = _loc2_;
-         this.vehNameTF.x = _loc2_ + VEH_TF_X_OFFSET;
       }
       
       public function updateBG(param1:Boolean, param2:Boolean) : void
@@ -170,6 +199,22 @@ package net.wg.gui.components.battleDamagePanel.components
          this.setActionIcon(param1);
       }
       
+      private function updateItemsPositions() : void
+      {
+         var _loc1_:int = _shellTFMaxWidth + SHELL_TEXT_PADDING;
+         if(this._isLongMode)
+         {
+            this._shellTypeBG.updateWidth(_loc1_);
+            this._shellTypeBG.x = SHELL_TYPE_X_POS;
+            this.shellTypeTF.x = SHELL_TYPE_X_POS + SHELL_TF_X_OFFSET;
+         }
+         this.shellTypeTF.visible = this._shellTypeBG.visible = this._isLongMode;
+         this.actionTypeImg.x = ACTION_TYPE_X_POS;
+         var _loc2_:int = !!this._isLongMode ? int(SHELL_TYPE_X_POS + _loc1_ + SHELL_RIGHT_PADDING) : int(SHELL_TYPE_X_POS + SHELL_TF_X_OFFSET);
+         this.vehTypeImg.x = _loc2_;
+         this.vehNameTF.x = _loc2_ + VEH_TF_X_OFFSET;
+      }
+      
       private function setActionIcon(param1:Boolean) : void
       {
          if(this._actionAtlasIconPath == Values.EMPTY_STR)
@@ -186,20 +231,16 @@ package net.wg.gui.components.battleDamagePanel.components
       
       private function calculateShellMaxWidth() : void
       {
-         var _loc1_:Vector.<String> = new <String>[INGAME_GUI.DAMAGELOG_SHELLTYPE_ARMOR_PIERCING,INGAME_GUI.DAMAGELOG_SHELLTYPE_HIGH_EXPLOSIVE,INGAME_GUI.DAMAGELOG_SHELLTYPE_ARMOR_PIERCING_HE,INGAME_GUI.DAMAGELOG_SHELLTYPE_ARMOR_PIERCING_CR,INGAME_GUI.DAMAGELOG_SHELLTYPE_HOLLOW_CHARGE];
+         var _loc1_:Vector.<String> = null;
+         _loc1_ = new <String>[INGAME_GUI.DAMAGELOG_SHELLTYPE_ARMOR_PIERCING,INGAME_GUI.DAMAGELOG_SHELLTYPE_HIGH_EXPLOSIVE,INGAME_GUI.DAMAGELOG_SHELLTYPE_ARMOR_PIERCING_HE,INGAME_GUI.DAMAGELOG_SHELLTYPE_ARMOR_PIERCING_CR,INGAME_GUI.DAMAGELOG_SHELLTYPE_HOLLOW_CHARGE];
          var _loc2_:int = _loc1_.length;
          var _loc3_:int = 0;
          while(_loc3_ < _loc2_)
          {
             this.shellTypeTF.text = _loc1_[_loc3_];
-            _shellTFMaxWidth = Math.max(_shellTFMaxWidth,this.shellTypeTF.textWidth) ^ 0;
+            _shellTFMaxWidth = Math.max(_shellTFMaxWidth,this.shellTypeTF.textWidth);
             _loc3_++;
          }
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

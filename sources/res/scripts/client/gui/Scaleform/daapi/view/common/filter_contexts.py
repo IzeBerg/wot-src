@@ -1,4 +1,4 @@
-
+from gui.rts_battles.rts_constants import RTS_CAROUSEL_FILTER_KEY
 
 class FilterSetupContext(object):
 
@@ -14,7 +14,8 @@ def getFilterSetupContexts(xpRateMultiplier):
        'premium': FilterSetupContext(asset='prem_small_icon'), 
        'igr': FilterSetupContext(asset='premium_small'), 
        'bonus': FilterSetupContext(ctx={'multiplier': xpRateMultiplier}, asset='bonus_x{multiplier}'), 
-       'battleRoyale': FilterSetupContext(asset='battle_royale_toggle')}
+       'battleRoyale': FilterSetupContext(asset='battle_royale_toggle'), 
+       RTS_CAROUSEL_FILTER_KEY: FilterSetupContext(asset=RTS_CAROUSEL_FILTER_KEY + '_toggle')}
 
 
 def getFilterPopoverSetupContexts(xpRateMultiplier):

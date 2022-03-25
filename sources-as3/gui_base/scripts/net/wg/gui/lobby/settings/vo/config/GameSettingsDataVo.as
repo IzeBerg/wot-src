@@ -26,6 +26,8 @@ package net.wg.gui.lobby.settings.vo.config
       
       public var dynamicCamera:SettingsControlProp = null;
       
+      public var scrollSmoothing:SettingsControlProp = null;
+      
       public var preCommanderCam:SettingsControlProp = null;
       
       public var commanderCam:SettingsControlProp = null;
@@ -152,6 +154,7 @@ package net.wg.gui.lobby.settings.vo.config
             "receiveInvitesInBattle":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "chatContactsListOnly":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "dynamicCamera":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
+            "scrollSmoothing":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "preCommanderCam":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "commanderCam":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "horStabilizationSnp":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
@@ -232,6 +235,8 @@ package net.wg.gui.lobby.settings.vo.config
          this.chatContactsListOnly = null;
          this.dynamicCamera.dispose();
          this.dynamicCamera = null;
+         this.scrollSmoothing.dispose();
+         this.scrollSmoothing = null;
          this.preCommanderCam.dispose();
          this.preCommanderCam = null;
          this.commanderCam.dispose();

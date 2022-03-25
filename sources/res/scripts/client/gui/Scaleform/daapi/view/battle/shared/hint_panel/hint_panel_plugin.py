@@ -3,7 +3,7 @@ from datetime import datetime
 from helpers import time_utils
 from account_helpers.AccountSettings import HINTS_LEFT, NUM_BATTLES, LAST_DISPLAY_DAY
 from gui.shared.utils.plugins import IPlugin
-HintData = namedtuple('HintData', ['key', 'messageLeft', 'messageRight', 'offsetX', 'offsetY', 'priority',
+HintData = namedtuple('HintData', ['vKey', 'key', 'messageLeft', 'messageRight', 'offsetX', 'offsetY', 'priority',
  'reducedPanning'])
 _HINT_DISPLAY_COUNT_AFTER_RESET = 1
 

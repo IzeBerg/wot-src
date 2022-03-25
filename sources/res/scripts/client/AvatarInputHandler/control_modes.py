@@ -1,7 +1,10 @@
 import logging, time, weakref
 from collections import namedtuple
 from functools import partial
-import BigWorld, GUI, Keys, Math, ResMgr, BattleReplay, CommandMapping, SoundGroups, TriggersManager, VideoCamera, cameras, constants, math_utils
+import BigWorld, GUI, Keys, Math, ResMgr, BattleReplay, CommandMapping
+from gui.battle_control.controllers.commander.common import MappedKeys
+from items import _xml
+import SoundGroups, TriggersManager, VideoCamera, cameras, constants, math_utils
 from AimingSystems import getShotTargetInfo
 from AimingSystems.magnetic_aim import autoAimProcessor, magneticAimProcessor, MagneticAimSettings
 from AvatarInputHandler import AimingSystems, aih_global_binding, gun_marker_ctrl
@@ -9,6 +12,7 @@ from AvatarInputHandler.DynamicCameras.camera_switcher import SwitchToPlaces
 from AvatarInputHandler.StrategicCamerasInterpolator import StrategicCamerasInterpolator
 from AvatarInputHandler.spg_marker_helpers.spg_marker_helpers import getSPGShotResult, getSPGShotFlyTime
 from DynamicCameras import SniperCamera, StrategicCamera, ArcadeCamera, ArtyCamera, DualGunCamera
+from DynamicCameras.main_tank_commander_camera import CommanderCamera
 from PostmortemDelay import PostmortemDelay
 from ProjectileMover import collideDynamicAndStatic
 from TriggersManager import TRIGGER_TYPE
@@ -18,13 +22,11 @@ from account_helpers.settings_core.settings_constants import SPGAim, SPGAimEntra
 from aih_constants import CTRL_MODE_NAME, GUN_MARKER_FLAG, STRATEGIC_CAMERA, CTRL_MODES, CHARGE_MARKER_STATE
 from constants import AIMING_MODE
 from constants import VEHICLE_SIEGE_STATE
-from debug_utils import LOG_DEBUG, LOG_CURRENT_EXCEPTION
 from gui import GUI_SETTINGS
 from gui.battle_control import avatar_getter, vehicle_getter
 from gui.battle_control import event_dispatcher as gui_event_dispatcher
 from gui.battle_control.battle_constants import FEEDBACK_EVENT_ID
-from helpers import dependency, uniprof
-from items import _xml
+from helpers import dependency, rts_trajectory_drawer, uniprof
 from shared_utils import findFirst
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.battle_session import IBattleSessionProvider
@@ -149,6 +151,7 @@ class _GunControlMode(IControlMode):
         self._currentMode = mode
         self._lockedDown = False
         self.__curVehicleID = None
+        super(_GunControlMode, self).__init__()
         return
 
     @property
@@ -174,6 +177,7 @@ class _GunControlMode(IControlMode):
         return
 
     def disable(self):
+        super(_GunControlMode, self).disable()
         self._isEnabled = False
         self._cam.disable()
         self._gunMarker.disable()
@@ -182,7 +186,9 @@ class _GunControlMode(IControlMode):
         return
 
     def destroy(self):
+        super(_GunControlMode, self).destroy()
         self._gunMarker.destroy()
+        self._gunMarker = None
         self._aih = None
         self._cam.destroy()
         self._cam = None
@@ -241,6 +247,7 @@ class VideoCameraControlMode(_GunControlMode):
         cameraDataSection = dataSection['camera'] if dataSection is not None else ResMgr.DataSection('camera')
         self.__showGunMarkerKey = getattr(Keys, cameraDataSection.readString('keyShowGunMarker', ''), None)
         self._createCamera(cameraDataSection)
+        self.__curVehicleID = None
         locationXmlPath = 'spaces/' + BigWorld.player().arena.arenaType.geometryName + '/locations.xml'
         xmlSec = ResMgr.openSection(locationXmlPath)
         self.__locationPoints = []
@@ -352,6 +359,10 @@ class DebugControlMode(IControlMode):
         self.__cam.disable()
         return
 
+    @property
+    def isEnabled(self):
+        return self.__isEnabled
+
     def handleKeyEvent(self, isDown, key, mods, event=None):
         if key == Keys.KEY_SYSRQ:
             return False
@@ -420,6 +431,10 @@ class CatControlMode(IControlMode):
         BigWorld.setWatcher('Client Settings/Camera Mass', 1)
         self.__shellingControl.setEnable(True)
         self.__isEnabled = True
+
+    @property
+    def isEnabled(self):
+        return self.__isEnabled
 
     def setForcedGuiControlMode(self, enable):
         if enable:
@@ -512,6 +527,10 @@ class ArcadeControlMode(_GunControlMode):
         cursorX, cursorY = self._aimOffset
         GUI.syncMousePosition(cursorX, cursorY)
         return
+
+    def disable(self, isDestroy=False):
+        super(ArcadeControlMode, self).disable()
+        self.resetAimingMode()
 
     def handleKeyEvent(self, isDown, key, mods, event=None):
         cmdMap = CommandMapping.g_instance
@@ -625,33 +644,35 @@ class ArcadeControlMode(_GunControlMode):
         ownVehicle = BigWorld.entity(BigWorld.player().playerVehicleID)
         if ownVehicle is not None and ownVehicle.isStarted and avatar_getter.isVehicleBarrelUnderWater() or BigWorld.player().isGunLocked:
             return
-        if self._aih.isSPG and not bByScroll:
-            self._cam.update(0, 0, 0, False, False)
-            equipmentID = None
-            if BattleReplay.isPlaying():
-                mode = BattleReplay.g_replayCtrl.getControlMode()
-                pos = BattleReplay.g_replayCtrl.getGunMarkerPos()
-                equipmentID = BattleReplay.g_replayCtrl.getEquipmentId()
-            else:
-                mode = self.__getSpgAlternativeMode()
-                if pos is None:
-                    pos = self.camera.aimingSystem.getDesiredShotPoint()
-                    if pos is None:
-                        pos = self._gunMarker.getPosition()
-                    vehicle = BigWorld.player().getVehicleAttached()
-                    checkHitPoint = True
-                    if ownVehicle.model is not None:
-                        gunNode = ownVehicle.model.node('gun')
-                        if gunNode is not None:
-                            gunPosition = Math.Matrix(gunNode).translation
-                            checkHitPoint = BigWorld.player().arena.isPointInsideArenaBB(gunPosition)
-                    if checkHitPoint:
-                        hitPoint, _ = getShotTargetInfo(vehicle, pos, BigWorld.player().gunRotator)
-                        if vehicle.position.distTo(hitPoint) < vehicle.position.distTo(pos):
-                            pos = hitPoint
-            self._aih.onControlModeChanged(mode, preferredPos=pos, aimingMode=self._aimingMode, saveDist=True, equipmentID=equipmentID)
+        if not ownVehicle.isAlive():
             return
         else:
+            if self._aih.isSPG and not bByScroll:
+                self._cam.update(0, 0, 0, False, False)
+                equipmentID = None
+                if BattleReplay.isPlaying():
+                    mode = BattleReplay.g_replayCtrl.getControlMode()
+                    pos = BattleReplay.g_replayCtrl.getGunMarkerPos()
+                    equipmentID = BattleReplay.g_replayCtrl.getEquipmentId()
+                else:
+                    mode = self.__getSpgAlternativeMode()
+                    if pos is None:
+                        pos = self.camera.aimingSystem.getDesiredShotPoint()
+                        if pos is None:
+                            pos = self._gunMarker.getPosition()
+                        vehicle = BigWorld.player().getVehicleAttached()
+                        checkHitPoint = True
+                        if ownVehicle.model is not None:
+                            gunNode = ownVehicle.model.node('gun')
+                            if gunNode is not None:
+                                gunPosition = Math.Matrix(gunNode).translation
+                                checkHitPoint = BigWorld.player().arena.isPointInsideArenaBB(gunPosition)
+                        if checkHitPoint:
+                            hitPoint, _ = getShotTargetInfo(vehicle, pos, BigWorld.player().gunRotator)
+                            if vehicle.position.distTo(hitPoint) < vehicle.position.distTo(pos):
+                                pos = hitPoint
+                self._aih.onControlModeChanged(mode, preferredPos=pos, aimingMode=self._aimingMode, saveDist=True, equipmentID=equipmentID)
+                return
             if not self._aih.isSPG:
                 self._cam.update(0, 0, 0, False, False)
                 if BattleReplay.isPlaying() and BigWorld.player().isGunLocked:
@@ -663,6 +684,7 @@ class ArcadeControlMode(_GunControlMode):
                     equipmentID = None
                     desiredShotPoint = self.camera.aimingSystem.getDesiredShotPoint()
                 self._aih.onControlModeChanged(mode, preferredPos=desiredShotPoint, aimingMode=self._aimingMode, saveZoom=not bByScroll, equipmentID=equipmentID)
+                self._aih.refreshGunMarkers()
                 return
             return
 
@@ -696,6 +718,8 @@ class _TrajectoryControlMode(_GunControlMode):
         self.__controllingVehicleID = None
         self.__targetVehicleID = None
         self._nextControlMode = modeName
+        self.__curVehicleID = None
+        self.__isEnabled = False
         return
 
     def create(self):
@@ -862,8 +886,8 @@ class _TrajectoryControlMode(_GunControlMode):
                 self.__trajectoryDrawer.setIgnoredIDs(nonCollideVehicles)
             self.__targetVehicleID = targetVehicleID
             self.__trajectoryDrawer.update(targetPoint, shotPos, shotVel, self.__updateInterval)
-        except Exception:
-            LOG_CURRENT_EXCEPTION()
+        except Exception as e:
+            _logger.error('%s', e)
 
         return
 
@@ -994,6 +1018,7 @@ class SniperControlMode(_GunControlMode):
 
     def __init__(self, dataSection, avatarInputHandler, mode=CTRL_MODE_NAME.SNIPER):
         super(SniperControlMode, self).__init__(dataSection, avatarInputHandler, mode)
+        self.__selfVehicleID = None
         self._binoculars = BigWorld.wg_binoculars()
         self._setupCamera(dataSection)
         self.__binocularsModes = {}
@@ -1001,6 +1026,8 @@ class SniperControlMode(_GunControlMode):
             prefPath = 'binoculars_' + suffix
             modeDesc = SniperControlMode.BinocularsModeDesc(dataSection.readString(prefPath + '/background'), dataSection.readString(prefPath + '/distortion'), dataSection.readString(prefPath + '/rgbCube'), dataSection.readFloat(prefPath + '/greenOffset'), dataSection.readFloat(prefPath + '/blueOffset'), dataSection.readFloat(prefPath + '/aberrationRadius'), dataSection.readFloat(prefPath + '/distortionAmount'))
             self.__binocularsModes[suffix] = modeDesc
+
+        return
 
     def create(self):
         self._cam.create(self.onChangeControlModeByScroll)
@@ -1383,6 +1410,10 @@ class PostMortemControlMode(IControlMode):
         self.__selfVehicleID = None
         return
 
+    @property
+    def isEnabled(self):
+        return self.__isEnabled
+
     def handleKeyEvent(self, isDown, key, mods, event=None):
         cmdMap = CommandMapping.g_instance
         guiCtrlEnabled = BigWorld.player().isForcedGuiControlMode()
@@ -1482,7 +1513,7 @@ class PostMortemControlMode(IControlMode):
         if self.curPostmortemDelay is not None or self.__altTargetMode is None:
             return
         if targetID == self.__curVehicleID:
-            LOG_DEBUG('target vehicle killed, switch to alternative mode')
+            _logger.debug('target vehicle killed, switch to alternative mode')
             self._switchToCtrlMode(self.__altTargetMode)
         return
 
@@ -1563,7 +1594,7 @@ class PostMortemControlMode(IControlMode):
                 return
             vehicleID = BigWorld.player().playerVehicleID
             vehicle = BigWorld.entities.get(vehicleID)
-            if vehicle is not None and 'observer' in vehicle.typeDescriptor.type.tags:
+            if vehicle is not None and vehicle.isObserver():
                 return
             self.__switchToVehicle(None)
         return
@@ -1608,10 +1639,6 @@ class PostMortemControlMode(IControlMode):
     @property
     def camera(self):
         return self.__cam
-
-    @property
-    def isEnabled(self):
-        return self.__isEnabled
 
     @property
     def altTargetMode(self):
@@ -1729,7 +1756,7 @@ class _ShellingControl(object):
                 nextCallbackInterval = 2.0
         except Exception:
             nextCallbackInterval = 2.0
-            LOG_DEBUG('<_targetModelAutoUpdateCallbackFunc>: target model is not updated')
+            _logger.debug('<_targetModelAutoUpdateCallbackFunc>: target model is not updated')
 
         self.__targetModelAutoUpdateCallbackID = BigWorld.callback(nextCallbackInterval, self.__targetModelAutoUpdateCallbackFunc)
         return
@@ -1870,6 +1897,127 @@ def getFocalPoint():
         return point[0]
     else:
         return AimingSystems.shootInSkyPoint(start, direction)
+
+
+class CommanderControlMode(IControlMode):
+    __sessionProvider = dependency.descriptor(IBattleSessionProvider)
+
+    def __init__(self, dataSection, avatarInputHandler):
+        self.__aih = weakref.proxy(avatarInputHandler)
+        self.__cam = CommanderCamera(dataSection)
+        self.__trajectoryDrawer = rts_trajectory_drawer.createTrajectoryDrawer()
+        self.__curVehicleID = None
+        return
+
+    @property
+    def camera(self):
+        return self.__cam
+
+    @property
+    def curVehicleID(self):
+        return self.__curVehicleID
+
+    @property
+    def isTrajectoriesVisible(self):
+        return self.__trajectoryDrawer.isVisible
+
+    @property
+    def isEnabled(self):
+        return self.__getCtrl().enabled
+
+    def create(self):
+        self.__cam.create()
+        self.__sessionProvider.dynamic.rtsCommander.setCamera(self.__cam)
+
+    def destroy(self):
+        self.disable()
+        self.__cam.destroy()
+        self.__cam = None
+        self.__trajectoryDrawer.destroy()
+        return
+
+    def enable(self, *args, **kwargs):
+        rtsCommander = self.__getCtrl()
+        if rtsCommander.enabled:
+            return
+        SoundGroups.g_instance.changePlayMode(0)
+        rtsCommander.enable(*args, **kwargs)
+        self.__trajectoryDrawer.enable()
+
+    def disable(self):
+        rtsCommander = self.__getCtrl()
+        if not rtsCommander.enabled:
+            return
+        rtsCommander.disable()
+        self.__cam.disable()
+        self.__trajectoryDrawer.disable()
+
+    def handleKeyEvent(self, isDown, key, mods, event=None):
+        rtsCommander = self.__getCtrl()
+        if not rtsCommander.enabled:
+            return False
+        else:
+            player = BigWorld.player()
+            if player is None:
+                return False
+            replayCtrl = BattleReplay.g_replayCtrl
+            if player.isOnArena and not replayCtrl.isPlaying:
+                if MappedKeys.isMappedTo(key, MappedKeys.KEY_SHOW_TRAJECTORY):
+                    if self.__trajectoryDrawer.handleKeyEvent(isDown, key, mods, event=None):
+                        return True
+            return rtsCommander.handleKeyEvent(isDown, key, mods, event)
+
+    def handleMouseEvent(self, dx, dy, dz):
+        rtsCommander = self.__getCtrl()
+        return rtsCommander.enabled and rtsCommander.handleMouseEvent(dx, dy, dz)
+
+    def __getCtrl(self):
+        return self.__sessionProvider.dynamic.rtsCommander
+
+
+class RTSReplayFreeControlMode(IControlMode):
+    __sessionProvider = dependency.descriptor(IBattleSessionProvider)
+
+    def __init__(self, dataSection, avatarInputHandler):
+        self.__aih = weakref.proxy(avatarInputHandler)
+        self.__cam = CommanderCamera(dataSection)
+        self.__curVehicleID = None
+        self._isEnabled = False
+        return
+
+    @property
+    def camera(self):
+        return self.__cam
+
+    def create(self):
+        self.__cam.create()
+
+    def destroy(self):
+        self.disable()
+        self.__cam.destroy()
+        self.__cam = None
+        return
+
+    @property
+    def curVehicleID(self):
+        return self.__curVehicleID
+
+    @property
+    def isEnabled(self):
+        return self._isEnabled
+
+    def enable(self, **args):
+        self._isEnabled = True
+
+    def disable(self):
+        self._isEnabled = False
+        self.__cam.disable()
+
+    def handleKeyEvent(self, isDown, key, mods, event=None):
+        return self.__cam.handleKeyEvent(isDown, key, mods, event)
+
+    def handleMouseEvent(self, dx, dy, dz):
+        return self.__cam.handleMouseEvent(dx, dy, dz)
 
 
 def _readCameraTransitionSettings(cameraDataSec):

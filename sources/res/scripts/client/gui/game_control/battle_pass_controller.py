@@ -16,7 +16,7 @@ from gui.shared.utils.scheduled_notifications import SimpleNotifier
 from helpers import dependency, time_utils
 from helpers.events_handler import EventsHandler
 from helpers.server_settings import serverSettingsChangeListener
-from shared_utils import first
+from shared_utils import first, findFirst
 from skeletons.gui.game_control import IBattlePassController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.offers import IOffersDataProvider
@@ -37,11 +37,13 @@ class BattlePassController(IBattlePassController, EventsHandler):
         self.__currentMode = None
         self.__eventsManager = EventManager()
         self.__seasonChangeNotifier = SimpleNotifier(self.__getTimeToNotifySeasonChange, self.__onNotifySeasonChange)
+        self.__extraChapterNotifier = SimpleNotifier(self.__getTimeToExtraChapterExpired, self.__onNotifyExtraChapterExpired)
         self.onPointsUpdated = Event(self.__eventsManager)
         self.onLevelUp = Event(self.__eventsManager)
         self.onBattlePassIsBought = Event(self.__eventsManager)
         self.onSelectTokenUpdated = Event(self.__eventsManager)
         self.onSeasonStateChange = Event(self.__eventsManager)
+        self.onExtraChapterExpired = Event(self.__eventsManager)
         self.onBattlePassSettingsChange = Event(self.__eventsManager)
         self.onFinalRewardStateChange = Event(self.__eventsManager)
         self.onOffersUpdated = Event(self.__eventsManager)
@@ -59,6 +61,8 @@ class BattlePassController(IBattlePassController, EventsHandler):
     def onLobbyInited(self, event):
         self._subscribe()
         self.__seasonChangeNotifier.startNotification()
+        if any(self.isExtraChapter(chapterID) for chapterID in self.getChapterIDs()):
+            self.__extraChapterNotifier.startNotification()
         self.__rewardLogic.start()
         if self.__currentMode is None:
             self.__currentMode = self.__getConfig().mode
@@ -83,21 +87,22 @@ class BattlePassController(IBattlePassController, EventsHandler):
         g_playerEvents.onClientUpdated -= self.__onTokensUpdate
         super(BattlePassController, self).fini()
 
-    def isBought(self, seasonID=None, chapterID=None):
+    def isBought(self, chapterID, seasonID=None):
 
         def getTokens(season, chapter):
             return self.__itemsCache.items.tokens.getTokens().get(getBattlePassPassTokenName(season, chapter))
 
         if seasonID is None:
             seasonID = self.getSeasonID()
-        if all(getTokens(seasonID, chapterID) for chapterID in self.getChapterIDs()) or bool(getTokens(seasonID, 0)):
-            return True
         if chapterID is None:
             chapterID = self.getCurrentChapterID()
             if not chapterID:
                 return False
-        token = getTokens(seasonID, chapterID)
-        return token is not None
+        if not self.isExtraChapter(chapterID) and bool(getTokens(seasonID, 0)):
+            return True
+        else:
+            token = getTokens(seasonID, chapterID)
+            return token is not None
 
     def isOfferEnabled(self):
         return self.__lobbyContext.getServerSettings().isOffersEnabled()
@@ -110,9 +115,6 @@ class BattlePassController(IBattlePassController, EventsHandler):
 
     def isVisible(self):
         return self.isSeasonStarted() and not self.isDisabled() and not self.isSeasonFinished()
-
-    def isOffSeasonEnable(self):
-        return False
 
     def isDisabled(self):
         return not self.isActive() and not self.isPaused()
@@ -143,8 +145,36 @@ class BattlePassController(IBattlePassController, EventsHandler):
             chapterId = first(self.getChapterIDs())
         return self.__getConfig().getMaxChapterLevel(chapterId)
 
+    def hasExtra(self):
+        return any(self.isExtraChapter(chID) for chID in self.getChapterIDs())
+
+    def getExtraChapterID(self):
+        return findFirst(self.isExtraChapter, self.getChapterIDs(), 0)
+
+    def isChapterExists(self, chapterID):
+        return chapterID in self.getChapterIDs()
+
     def getChapterIDs(self):
-        return self.__getConfig().getChapterIds()
+
+        def isActive(chID):
+            expireTimestamp = self.__getConfig().getChapterExpireTimestamp(chID)
+            return not expireTimestamp or time_utils.getServerUTCTime() < expireTimestamp
+
+        return [ chapterID for chapterID in self.__getConfig().getChapterIDs() if isActive(chapterID) ]
+
+    def isExtraChapter(self, chapterID):
+        return self.__getConfig().isExtraChapter(chapterID)
+
+    def getChapterExpiration(self, chapterID):
+        if self.isExtraChapter(chapterID):
+            return self.__getConfig().getChapterExpireTimestamp(chapterID)
+        return 0
+
+    def getChapterRemainingTime(self, chapterID):
+        remainingTime = 0
+        if self.isExtraChapter(chapterID):
+            remainingTime = max(0, self.getChapterExpiration(chapterID) - time_utils.getServerUTCTime())
+        return remainingTime
 
     def isRareLevel(self, chapterID, level):
         realLevel = min(level, self.getMaxLevelInChapter(chapterID))
@@ -257,7 +287,10 @@ class BattlePassController(IBattlePassController, EventsHandler):
         return self.getLevelInChapter(self.getCurrentChapterID())
 
     def getCurrentChapterID(self):
-        return self.__itemsCache.items.battlePass.getActiveChapterID()
+        activeChapter = self.__itemsCache.items.battlePass.getActiveChapterID()
+        if activeChapter not in self.getChapterIDs():
+            activeChapter = 0
+        return activeChapter
 
     def hasActiveChapter(self):
         return bool(self.getCurrentChapterID())
@@ -265,9 +298,6 @@ class BattlePassController(IBattlePassController, EventsHandler):
     @process
     def activateChapter(self, chapterID, seasonID=None):
         yield BattlePassActivateChapterProcessor(chapterID, seasonID or self.getSeasonID()).request()
-
-    def getChapterByLevel(self, level):
-        return self.__getConfig().getChapter(level)
 
     def getFreePoints(self):
         return self.__itemsCache.items.battlePass.getNonChapterPoints()
@@ -337,7 +367,7 @@ class BattlePassController(IBattlePassController, EventsHandler):
 
     def getProgressionByPoints(self, chapterID, points, level):
         levelsConfig = self.getLevelsConfig(chapterID)
-        if level >= self.getMaxLevelInChapter():
+        if level >= self.getMaxLevelInChapter(chapterID):
             points = levelsConfig[(-1)] - levelsConfig[(-2)]
             return (
              points, points)
@@ -418,9 +448,6 @@ class BattlePassController(IBattlePassController, EventsHandler):
             return 0
         else:
             return self.__getConfig().capBonus(vehicle.level)
-
-    def getCapacityList(self):
-        return enumerate(self.__getConfig().capacityList(), 1)
 
     def getSeasonTimeLeft(self):
         return max(0, self.getSeasonFinishTime() - time_utils.getServerUTCTime())
@@ -510,6 +537,7 @@ class BattlePassController(IBattlePassController, EventsHandler):
 
     def __stop(self):
         self.__seasonChangeNotifier.stopNotification()
+        self.__extraChapterNotifier.stopNotification()
         self._unsubscribe()
 
     def __getConfig(self):
@@ -538,13 +566,27 @@ class BattlePassController(IBattlePassController, EventsHandler):
                 return self.getSeasonTimeLeft()
         return 0
 
+    def __getTimeToExtraChapterExpired(self):
+        extraChapterID = findFirst(self.isExtraChapter, self.getChapterIDs(), 0)
+        return max(0, self.getChapterExpiration(extraChapterID) - time_utils.getServerUTCTime())
+
     def __onNotifySeasonChange(self):
         self.onSeasonStateChange()
+
+    def __onNotifyExtraChapterExpired(self):
+        self.onExtraChapterExpired()
 
     @serverSettingsChangeListener(BATTLE_PASS_CONFIG_NAME)
     def __onConfigChanged(self, diff):
         config = diff[BATTLE_PASS_CONFIG_NAME]
         self.__seasonChangeNotifier.startNotification()
+        chapters = config.get('season', {}).get('chapters', {})
+        if any(self.isExtraChapter(chapterID) for chapterID in chapters):
+            self.__extraChapterNotifier.stopNotification()
+            self.__extraChapterNotifier = SimpleNotifier(self.__getTimeToExtraChapterExpired, self.__onNotifyExtraChapterExpired)
+            self.__extraChapterNotifier.startNotification()
+        else:
+            self.__extraChapterNotifier.stopNotification()
         newMode = None
         oldMode = self.__currentMode
         if 'mode' in config:

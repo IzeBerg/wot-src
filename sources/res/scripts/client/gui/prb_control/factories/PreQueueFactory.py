@@ -14,6 +14,9 @@ from gui.prb_control.entities.ranked.pre_queue.entity import RankedEntity, Ranke
 from gui.prb_control.entities.epic.pre_queue.entity import EpicEntity, EpicEntryPoint
 from gui.prb_control.entities.mapbox.pre_queue.entity import MapboxEntity, MapboxEntryPoint
 from gui.prb_control.entities.event.pre_queue.entity import EventBattleEntity, EventBattleEntryPoint
+from gui.prb_control.entities.rts_battles.pre_queue.entity import RTSBattleEntryPoint, RTSBattleEntity
+from gui.prb_control.entities.rts_1vs1_battles.pre_queue.entity import RTS1x1BattleEntryPoint, RTS1x1BattleEntity
+from gui.prb_control.entities.rts_bootcamp.pre_queue.entity import RTSBootcampEntryPoint, RTSBootcampEntity
 from gui.prb_control.items import FunctionalState
 from gui.prb_control.settings import FUNCTIONAL_FLAG as _FLAG
 from gui.prb_control.settings import PREBATTLE_ACTION_NAME, CTRL_ENTITY_TYPE
@@ -29,7 +32,10 @@ _SUPPORTED_QUEUES = {QUEUE_TYPE.RANDOMS: RandomEntity,
    QUEUE_TYPE.BATTLE_ROYALE_TOURNAMENT: br_tournament.BattleRoyaleTournamentEntity, 
    QUEUE_TYPE.MAPBOX: MapboxEntity, 
    QUEUE_TYPE.MAPS_TRAINING: MapsTrainingEntity, 
-   QUEUE_TYPE.EVENT_BATTLES: EventBattleEntity}
+   QUEUE_TYPE.EVENT_BATTLES: EventBattleEntity, 
+   QUEUE_TYPE.RTS: RTSBattleEntity, 
+   QUEUE_TYPE.RTS_1x1: RTS1x1BattleEntity, 
+   QUEUE_TYPE.RTS_BOOTCAMP: RTSBootcampEntity}
 _SUPPORTED_ENTRY_BY_ACTION = {PREBATTLE_ACTION_NAME.RANDOM: RandomEntryPoint, 
    PREBATTLE_ACTION_NAME.BATTLE_TUTORIAL: TutorialEntryPoint, 
    PREBATTLE_ACTION_NAME.SANDBOX: SandboxEntryPoint, 
@@ -40,7 +46,10 @@ _SUPPORTED_ENTRY_BY_ACTION = {PREBATTLE_ACTION_NAME.RANDOM: RandomEntryPoint,
    PREBATTLE_ACTION_NAME.BATTLE_ROYALE_TOURNAMENT: br_tournament.BattleRoyaleTournamentEntryPoint, 
    PREBATTLE_ACTION_NAME.MAPBOX: MapboxEntryPoint, 
    PREBATTLE_ACTION_NAME.MAPS_TRAINING: MapsTrainingEntryPoint, 
-   PREBATTLE_ACTION_NAME.EVENT_BATTLE: EventBattleEntryPoint}
+   PREBATTLE_ACTION_NAME.EVENT_BATTLE: EventBattleEntryPoint, 
+   PREBATTLE_ACTION_NAME.RTS: RTSBattleEntryPoint, 
+   PREBATTLE_ACTION_NAME.RTS_1x1: RTS1x1BattleEntryPoint, 
+   PREBATTLE_ACTION_NAME.RTS_BOOTCAMP: RTSBootcampEntryPoint}
 
 class PreQueueFactory(ControlFactory):
 
@@ -68,8 +77,16 @@ class PreQueueFactory(ControlFactory):
     def mapsTrainingStorage(self):
         return
 
-    @prequeue_storage_getter(QUEUE_TYPE.EVENT_BATTLES)
-    def eventBattlesStorage(self):
+    @prequeue_storage_getter(QUEUE_TYPE.RTS)
+    def rtsBattlesStorage(self):
+        return
+
+    @prequeue_storage_getter(QUEUE_TYPE.RTS_1x1)
+    def rts1x1BattlesStorage(self):
+        return
+
+    @prequeue_storage_getter(QUEUE_TYPE.RTS_BOOTCAMP)
+    def rtsBootcampStorage(self):
         return
 
     def createEntry(self, ctx):
@@ -135,6 +152,10 @@ class PreQueueFactory(ControlFactory):
                 return MapboxEntity()
             if self.mapsTrainingStorage.isModeSelected():
                 return MapsTrainingEntity()
-            if self.eventBattlesStorage.isModeSelected():
-                return EventBattleEntity()
+            if self.rtsBattlesStorage.isModeSelected():
+                return RTSBattleEntity()
+            if self.rts1x1BattlesStorage.isModeSelected():
+                return RTS1x1BattleEntity()
+            if self.rtsBootcampStorage.isModeSelected():
+                return RTSBootcampEntity(isCreatedByDefault=True)
             return

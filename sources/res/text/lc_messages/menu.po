@@ -749,8 +749,17 @@ msgstr "«Разведка боем»"
 msgid "bonusType/38"
 msgstr "«Топография»"
 
+msgid "bonusType/39"
+msgstr "Искусство стратегии"
+
 msgid "bonusType/4"
 msgstr "Специальный бой"
+
+msgid "bonusType/40"
+msgstr "Искусство стратегии"
+
+msgid "bonusType/41"
+msgstr "Искусство стратегии"
 
 msgid "bonusType/5"
 msgstr "Специальный бой"
@@ -1238,9 +1247,6 @@ msgstr "?empty?"
 msgid "contextMenu/personalCase/statsBlockTitle"
 msgstr "НА ПРЕМИУМ МАШИНЕ"
 
-msgid "contextMenu/personalTradeExchange"
-msgstr "Обменять"
-
 msgid "contextMenu/profileVehicleCompare"
 msgstr "Добавить к сравнению"
 
@@ -1562,9 +1568,6 @@ msgstr "Информация"
 msgid "cst_item_ctx_menu/nationChange"
 msgstr "Сменить нацию"
 
-msgid "cst_item_ctx_menu/personalTradeExchange"
-msgstr "Обменять"
-
 msgid "cst_item_ctx_menu/preview"
 msgstr "Предпросмотр машины"
 
@@ -1857,6 +1860,9 @@ msgstr "%(day)s %(month)s %(year)s"
 
 msgid "dateTime/shortDateFormatWithoutYear"
 msgstr "%(weekDay)s, %(month)s, %(monthDay)d-е число"
+
+msgid "dateTime/trade_in/undefined"
+msgstr "Невозможно отобразить время"
 
 msgid "dateTime/unlimited"
 msgstr "не определено."
@@ -2797,12 +2803,6 @@ msgstr ""
 "Режим с автоматическим подбором союзников для игры против случайных "
 "противников."
 
-msgid "headerButtons/battle/types/epic/extra/currentCycle"
-msgstr "Сезон %(season)s. Этап %(cycle)s"
-
-msgid "headerButtons/battle/types/epic/extra/currentSeason"
-msgstr "Сезон %(season)s"
-
 msgid "headerButtons/battle/types/epic/extra/frozen"
 msgstr "Режим отключён"
 
@@ -2932,6 +2932,24 @@ msgstr ""
 msgid "headerButtons/battle/types/rankedLeave/descr"
 msgstr "Выйти из боя"
 
+msgid "headerButtons/battle/types/rts"
+msgstr "Искусство стратегии"
+
+msgid "headerButtons/battle/types/rts/availability/afterCycle"
+msgstr "Событие завершено"
+
+msgid "headerButtons/battle/types/rts/availability/beforeCycle"
+msgstr "C %(rightCycleDate)s %(rightCycleTime)s"
+
+msgid "headerButtons/battle/types/rts/availability/betweenCycles"
+msgstr "C %(rightCycleDate)s %(rightCycleTime)s"
+
+msgid "headerButtons/battle/types/rts/availability/default"
+msgstr "Режим доступен"
+
+msgid "headerButtons/battle/types/rts/availability/frozen"
+msgstr "Режим отключён"
+
 msgid "headerButtons/battle/types/simpleSquad"
 msgstr "Взвод"
 
@@ -3017,6 +3035,9 @@ msgstr "!"
 
 msgid "headerButtons/doLabel/premium"
 msgstr "Продлить"
+
+msgid "headerButtons/fightBtn/tooltip/aiRosterNotSet/body"
+msgstr "Отряд не сформирован."
 
 msgid "headerButtons/fightBtn/tooltip/battleRoyaleDisabled/body"
 msgstr "На текущем сервере комендантский час."
@@ -3126,6 +3147,49 @@ msgstr "На %(forbiddenType)s нельзя участвовать в Ранго
 
 msgid "headerButtons/fightBtn/tooltip/rankedVehType/header"
 msgstr "Неподходящая машина"
+
+msgid "headerButtons/fightBtn/tooltip/rtsNoBattles/body"
+msgstr "На этом сервере комендантский час."
+
+msgid "headerButtons/fightBtn/tooltip/rtsNoBattles/header"
+msgstr "Выход в бой недоступен"
+
+msgid "headerButtons/fightBtn/tooltip/rtsNoCurrency1x1/body"
+msgstr ""
+"Недостаточно приказов для выхода в бой за Стратега 1х1.\n"
+"Приказы можно заработать, играя за Танкистов."
+
+msgid "headerButtons/fightBtn/tooltip/rtsNoCurrency1x7/body"
+msgstr ""
+"Недостаточно рапортов для выхода в бой за Стратега 1х7.\n"
+"Рапорты можно заработать, играя за Танкистов."
+
+msgid "headerButtons/fightBtn/tooltip/rtsNoVehicleWithLevel/body"
+msgstr "Нет подходящей техники."
+
+msgid "headerButtons/fightBtn/tooltip/rtsNotAvailable/body"
+msgstr "Режим прекращения огня, бои недоступны."
+
+msgid "headerButtons/fightBtn/tooltip/rtsNotAvailable/header"
+msgstr "?empty?"
+
+msgid "headerButtons/fightBtn/tooltip/rtsNotSet/body"
+msgstr "Режим недоступен на выбранном сервере."
+
+msgid "headerButtons/fightBtn/tooltip/rtsNotSet/header"
+msgstr "Выход в бой недоступен"
+
+msgid "headerButtons/fightBtn/tooltip/rtsSubmodeNotAvailable/body"
+msgstr "Бои недоступны. Пожалуйста, попробуйте позже."
+
+msgid "headerButtons/fightBtn/tooltip/rtsSubmodeNotEligible/body"
+msgstr "Необходимо провести один Случайный бой на технике X уровня."
+
+msgid "headerButtons/fightBtn/tooltip/rtsUnsuitableVehicleLevel/body"
+msgstr "Выбрана неподходящая техника."
+
+msgid "headerButtons/fightBtn/tooltip/rtsVehicleNotReady/body"
+msgstr "Машина не готова к бою"
 
 msgid "headerButtons/fightBtn/tooltip/sandbox/invalid/header"
 msgstr "Выход в бой недоступен"
@@ -3583,6 +3647,12 @@ msgstr "Разведка боем"
 msgid "loading/battleTypes/25"
 msgstr "Обучение на картах"
 
+msgid "loading/battleTypes/26"
+msgstr "Искусство стратегии"
+
+msgid "loading/battleTypes/28"
+msgstr "Основы стратегии"
+
 msgid "loading/battleTypes/4"
 msgstr "Боевое обучение"
 
@@ -3657,6 +3727,12 @@ msgid "loading/battleTypes/desc/24"
 msgstr " "
 
 msgid "loading/battleTypes/desc/25"
+msgstr " "
+
+msgid "loading/battleTypes/desc/26"
+msgstr " "
+
+msgid "loading/battleTypes/desc/28"
 msgstr " "
 
 msgid "loading/battleTypes/desc/4"
@@ -4247,7 +4323,7 @@ msgid "moduleInfo/params/enginePowerPerTon"
 msgstr "К удельной мощности (л.с./т) "
 
 msgid "moduleInfo/params/explosionRadius"
-msgstr "Радиус разлёта осколков"
+msgstr "Радиус поражения"
 
 msgid "moduleInfo/params/fireStartingChance"
 msgstr "Вероятность пожара при попадании"
@@ -4581,6 +4657,9 @@ msgstr "Список адресатов"
 
 msgid "prebattle/playersLabel"
 msgstr "Игроков в очереди:"
+
+msgid "prebattle/rts/tankLabel"
+msgstr "Ваша роль:"
 
 msgid "prebattle/sideA"
 msgstr "Сторона А:"
@@ -5991,7 +6070,7 @@ msgid "tank_params/enginePowerPerTon"
 msgstr "Удельная мощность"
 
 msgid "tank_params/explosionRadius"
-msgstr "Радиус разлёта осколков"
+msgstr "Радиус поражения"
 
 msgid "tank_params/extraRepairSpeed"
 msgstr "к скорости ремонта"
@@ -6136,6 +6215,54 @@ msgstr "Максимальное время оглушения"
 
 msgid "tank_params/stunMinDuration"
 msgstr "Минимальное время оглушения"
+
+msgid "tank_params/supply_aimingTime"
+msgstr "Время сведения"
+
+msgid "tank_params/supply_armor"
+msgstr "Бронирование"
+
+msgid "tank_params/supply_avgDamage"
+msgstr "Средний урон"
+
+msgid "tank_params/supply_avgPiercingPower"
+msgstr "Средняя бронепробиваемость"
+
+msgid "tank_params/supply_barricadesDamage"
+msgstr "Урон"
+
+msgid "tank_params/supply_bunkerClipFireRate"
+msgstr "Перезарядка"
+
+msgid "tank_params/supply_circularVisionRadius"
+msgstr "Обзор"
+
+msgid "tank_params/supply_flamethrowerClipFireRate"
+msgstr "Перезарядка"
+
+msgid "tank_params/supply_flamethrowerDamage"
+msgstr "Средний урон"
+
+msgid "tank_params/supply_maxHealth"
+msgstr "Прочность"
+
+msgid "tank_params/supply_mortarClipFireRate"
+msgstr "Перезарядка"
+
+msgid "tank_params/supply_pillboxClipFireRate"
+msgstr "Перезарядка"
+
+msgid "tank_params/supply_reloadTimeSecs"
+msgstr "Заряжание орудия"
+
+msgid "tank_params/supply_shotDispersionAngle"
+msgstr "Разброс на 100 м"
+
+msgid "tank_params/supply_stunDuration"
+msgstr "Время оглушения"
+
+msgid "tank_params/supply_turretArmor"
+msgstr "Бронирование"
 
 msgid "tank_params/switchOffTime"
 msgstr "Время перехода в походный режим "
@@ -6578,7 +6705,7 @@ msgid "training/info/notUseChat"
 msgstr "нет"
 
 msgid "training/info/observer"
-msgstr "Наблюдатель"
+msgstr "Танковый командир"
 
 msgid "training/info/otherLabel"
 msgstr "Нераспределённые игроки: %(total)s"
@@ -6727,11 +6854,8 @@ msgstr "Боёв доступно: %(battles)s"
 msgid "vehicle/rentLeft/days"
 msgstr "Дней аренды: %(days)s"
 
-msgid "vehicle/rentLeft/epic/cycle"
-msgstr "Аренда на этап %(cycle)s"
-
-msgid "vehicle/rentLeft/epic/cycles"
-msgstr "Аренда на этапы %(cycles)s"
+msgid "vehicle/rentLeft/epic/base"
+msgstr "Аренда для ЛФ"
 
 msgid "vehicle/rentLeft/epic/days"
 msgstr "Аренда на %(days)s д"

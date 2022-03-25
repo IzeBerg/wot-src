@@ -6,7 +6,7 @@ from constants import EVENT_TYPE
 from gui import GUI_NATIONS, makeHtmlString
 from gui.Scaleform import getNationsFilterAssetPath
 from gui.Scaleform.daapi.view.lobby.event_boards.formaters import getNationText
-from gui.Scaleform.daapi.view.lobby.server_events.awards_formatters import BattlePassTextBonusesPacker, OldStyleBonusesFormatter
+from gui.Scaleform.daapi.view.lobby.server_events.awards_formatters import OldStyleBonusesFormatter
 from gui.Scaleform.genConsts.PERSONAL_MISSIONS_ALIASES import PERSONAL_MISSIONS_ALIASES
 from gui.Scaleform.genConsts.QUESTS_ALIASES import QUESTS_ALIASES
 from gui.Scaleform.locale.LINKEDSET import LINKEDSET
@@ -16,9 +16,8 @@ from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.server_events import conditions, formatters, settings as quest_settings
-from gui.server_events.awards_formatters import QuestsBonusComposer
 from gui.server_events.bonuses import VehiclesBonus
-from gui.server_events.events_helpers import EventInfoModel, MISSIONS_STATES, QuestInfoModel, getLocalizedMissionNameForLinkedSetQuest, getLocalizedQuestDescForLinkedSetQuest, getLocalizedQuestNameForLinkedSetQuest, isDailyQuest, isLinkedSet
+from gui.server_events.events_helpers import EventInfoModel, MISSIONS_STATES, QuestInfoModel, getLocalizedMissionNameForLinkedSetQuest, getLocalizedQuestDescForLinkedSetQuest, getLocalizedQuestNameForLinkedSetQuest, isDailyQuest, isLinkedSet, isRts
 from gui.server_events.personal_progress.formatters import PostBattleConditionsFormatter
 from gui.shared.formatters import icons, text_styles
 from helpers import dependency, i18n, int2roman, time_utils
@@ -30,15 +29,16 @@ from skeletons.gui.game_control import IBattlePassController
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
 if typing.TYPE_CHECKING:
-    from typing import Dict, Iterable, Union
-    from gui.server_events.bonuses import BattlePassStyleProgressTokenBonus, TokensBonus
+    from typing import Iterable, List, Union
+    from gui.server_events.bonuses import BattlePassPointsBonus, BattlePassStyleProgressTokenBonus, TokensBonus
 FINISH_TIME_LEFT_TO_SHOW = time_utils.ONE_DAY
 START_TIME_LIMIT = 5 * time_utils.ONE_DAY
 _AWARDS_PER_PAGE = 3
-_POST_BATTLE_RES = R.strings.battle_pass.reward.postBattle
 
 class BattlePassProgress(object):
     __battlePassController = dependency.descriptor(IBattlePassController)
+    __eventsCache = dependency.descriptor(IEventsCache)
+    __BATTLE_PASS_POINTS = 'battlePassPoints'
 
     def __init__(self, arenaBonusType, *args, **kwargs):
         self.__arenaBonusType = arenaBonusType
@@ -47,10 +47,12 @@ class BattlePassProgress(object):
         self.__pointsAux = kwargs.get('bpNonChapterPointsDiff', 0)
         self.__pointsTotal = kwargs.get('sumPoints', 0)
         self.__hasBattlePass = kwargs.get('hasBattlePass', False)
+        self.__questsProgress = kwargs.get('questsProgress', {})
         self.__prevLevel = 0
         self.__currLevel = 0
         self.__pointsNew = 0
         self.__pointsMax = 0
+        self.__pointsQst = 0
         self.__initExtendedData()
 
     @property
@@ -75,7 +77,7 @@ class BattlePassProgress(object):
 
     @property
     def isLevelMax(self):
-        return self.__currLevel == self.__battlePassController.getMaxLevelInChapter(self.__chapterID)
+        return self.__chapterID > 0 and self.__currLevel == self.__battlePassController.getMaxLevelInChapter(self.__chapterID)
 
     @property
     def level(self):
@@ -98,17 +100,33 @@ class BattlePassProgress(object):
         return self.__pointsMax
 
     @property
+    def pointsQst(self):
+        return self.__pointsQst
+
+    @property
     def awards(self):
         if self.isLevelReached:
             return self.__battlePassController.getSingleAward(self.chapterID, self.level, self.__getRewardType())
         return []
 
     def __initExtendedData(self):
-        if not self.__battlePassController.isEnabled():
+        if not self.__battlePassController.isEnabled() or self.__chapterID == 0:
             return
-        self.__prevLevel = self.__battlePassController.getLevelByPoints(self.__chapterID, self.__pointsTotal - self.__basePoints)
+        self.__pointsQst = self.__getQuestPoints()
+        self.__prevLevel = self.__battlePassController.getLevelByPoints(self.__chapterID, self.__pointsTotal - self.__basePoints - self.__pointsQst)
         self.__currLevel = self.__battlePassController.getLevelByPoints(self.__chapterID, self.__pointsTotal)
         self.__pointsNew, self.__pointsMax = self.__battlePassController.getProgressionByPoints(self.__chapterID, self.__pointsTotal, self.__currLevel)
+
+    def __getQuestPoints(self):
+        if not self.__questsProgress:
+            return 0
+        allQuests = self.__eventsCache.getQuests()
+        allQuests.update(self.__eventsCache.getHiddenQuests(lambda quest: quest.isShowedPostBattle()))
+        bpQuestsBonuses = [ q.getBonuses(self.__BATTLE_PASS_POINTS) for q in allQuests.itervalues() if q.getID() in self.__questsProgress
+                          ]
+        if not bpQuestsBonuses:
+            return 0
+        return sum(sum(b.getCount() for b in bonuses) for bonuses in bpQuestsBonuses)
 
     def __getRewardType(self):
         if self.__hasBattlePass:
@@ -150,12 +168,12 @@ class _EventInfo(EventInfoModel):
     def getPostBattleInfo(self, svrEvents, pCur, pPrev, isProgressReset, isCompleted, progressData):
         index = 0
         progresses = []
-        isQuestDailyQuest = isDailyQuest(str(self.event.getID()))
+        questID = str(self.event.getID())
         if not isProgressReset and not isCompleted:
             for cond in self.event.bonusCond.getConditions().items:
                 if isinstance(cond, conditions._Cumulativable):
                     for _, (curProg, totalProg, diff, _) in cond.getProgressPerGroup(pCur, pPrev).iteritems():
-                        if not isQuestDailyQuest:
+                        if not isDailyQuest(questID) and not isRts(questID):
                             label = cond.getUserString()
                         else:
                             label = cond.getCustomDescription()
@@ -465,64 +483,3 @@ def getChainVehTypeAndLevelRestrictions(operation, chainID):
 
 
 _questBranchToTabMap = {PM_BRANCH.REGULAR: QUESTS_ALIASES.SEASON_VIEW_TAB_RANDOM}
-
-def getBattlePassQuestInfo(progress):
-    return {'awards': _makeProgressAwards(progress), 
-       'questInfo': _makeProgressQuestInfo(progress), 
-       'questType': EVENT_TYPE.BATTLE_QUEST, 
-       'progressList': _makeProgressList(progress), 
-       'questState': {'statusState': _getMissionState(progress.isDone)}, 
-       'linkBtnTooltip': '' if progress.isApplied else backport.text(R.strings.battle_pass.progression.error()), 
-       'linkBtnEnabled': progress.isApplied}
-
-
-def _makeProgressAwards(progress):
-    if progress.isDone and not progress.pointsAux:
-        awardsList = QuestsBonusComposer(BattlePassTextBonusesPacker()).getPreformattedBonuses(progress.awards)
-
-        def makeUnavailableBlockData():
-            return formatters.packTextBlock(text_styles.alert(backport.text(R.strings.quests.bonuses.notAvailable())))
-
-        if awardsList:
-            return [ award.getDict() for award in awardsList ]
-        return [
-         makeUnavailableBlockData().getDict()]
-    return []
-
-
-def _makeProgressQuestInfo(progress):
-    return {'status': _getMissionState(progress.isDone), 
-       'questID': BattlePassConsts.FAKE_QUEST_ID, 
-       'rendererType': QUESTS_ALIASES.RENDERER_TYPE_QUEST, 
-       'eventType': EVENT_TYPE.BATTLE_QUEST, 
-       'maxProgrVal': progress.pointsMax, 
-       'tooltip': TOOLTIPS.QUESTS_RENDERER_LABEL, 
-       'description': backport.text(_POST_BATTLE_RES.title.free() if progress.pointsAux else _POST_BATTLE_RES.title(), level=progress.level, chapter=backport.text(R.strings.battle_pass.chapter.fullName.num(progress.chapterID)())), 
-       'currentProgrVal': progress.pointsNew, 
-       'tasksCount': -1, 
-       'progrBarType': _getProgressBarType(not progress.isDone), 
-       'linkTooltip': TOOLTIPS.QUESTS_LINKBTN_BATTLEPASS if progress.chapterID else TOOLTIPS.QUESTS_LINKBTN_BATTLEPASS_SELECT}
-
-
-def _makeProgressList(progress):
-    if not progress.isDone or progress.pointsAux:
-        return [
-         {'description': backport.text(_POST_BATTLE_RES.progress()), 
-            'maxProgrVal': progress.pointsMax, 
-            'progressDiff': ('+ {}').format(progress.pointsAdd), 
-            'progressDiffTooltip': backport.text(_POST_BATTLE_RES.progress.tooltip(), points=progress.pointsAdd), 
-            'currentProgrVal': progress.pointsNew, 
-            'progrBarType': _getProgressBarType(not progress.pointsAux)}]
-    return []
-
-
-def _getMissionState(isDone):
-    if isDone:
-        return MISSIONS_STATES.COMPLETED
-    return MISSIONS_STATES.IN_PROGRESS
-
-
-def _getProgressBarType(needShow):
-    if needShow:
-        return formatters.PROGRESS_BAR_TYPE.SIMPLE
-    return formatters.PROGRESS_BAR_TYPE.NONE

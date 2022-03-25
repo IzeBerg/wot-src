@@ -11,7 +11,6 @@ from debug_utils_bootcamp import LOG_DEBUG_DEV_BOOTCAMP, LOG_ERROR_BOOTCAMP
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.battle.classic.minimap import ClassicMinimapComponent, GlobalSettingsPlugin
 from gui.Scaleform.daapi.view.battle.classic.page import DynamicAliases
-from gui.Scaleform.daapi.view.battle.shared import period_music_listener
 from gui.Scaleform.daapi.view.battle.shared.crosshair import CrosshairPanelContainer
 from gui.Scaleform.daapi.view.battle.shared.minimap import common
 from gui.Scaleform.daapi.view.battle.shared.minimap import settings
@@ -41,8 +40,7 @@ class _BCComponentsConfig(ComponentsConfig):
            DynamicAliases.PREBATTLE_TIMER_SOUND_PLAYER,
            BATTLE_VIEW_ALIASES.PLAYERS_PANEL,
            BATTLE_VIEW_ALIASES.BATTLE_END_WARNING_PANEL,
-           self.BC_FINISH_SOUND_PLAYER,
-           DynamicAliases.PERIOD_MUSIC_LISTENER)),
+           self.BC_FINISH_SOUND_PLAYER)),
          (
           BATTLE_CTRL_ID.TEAM_BASES,
           (
@@ -60,8 +58,6 @@ class _BCComponentsConfig(ComponentsConfig):
           BATTLE_CTRL_ID.GAME_MESSAGES_PANEL, (BATTLE_VIEW_ALIASES.GAME_MESSAGES_PANEL,))), viewsConfig=(
          (
           self.BC_FINISH_SOUND_PLAYER, BCFinishSoundPlayer),
-         (
-          DynamicAliases.PERIOD_MUSIC_LISTENER, period_music_listener.PeriodMusicListener),
          (
           DynamicAliases.PREBATTLE_TIMER_SOUND_PLAYER, StartCountdownSoundPlayer)))
 

@@ -10,7 +10,6 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
    import net.wg.gui.lobby.rankedBattles19.components.interfaces.IRankIcon;
    import net.wg.gui.lobby.rankedBattles19.data.RankIconVO;
    import net.wg.gui.lobby.rankedBattles19.data.RankShieldVO;
-   import net.wg.gui.lobby.rankedBattles19.events.RankWidgetEvent;
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.interfaces.IImage;
    import net.wg.infrastructure.managers.ITooltipMgr;
@@ -162,7 +161,6 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
          if(param1 && this._isReflectionEnabled)
          {
             this.reflection.gotoAndPlay(1);
-            this.dispatchBlink();
          }
          else
          {
@@ -208,15 +206,6 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
          {
             this.reflection.gotoAndStop(1);
          }
-         else
-         {
-            this.dispatchBlink();
-         }
-      }
-      
-      private function dispatchBlink() : void
-      {
-         dispatchEvent(new RankWidgetEvent(RankWidgetEvent.BLINK_STARTED));
       }
       
       override public function get width() : Number

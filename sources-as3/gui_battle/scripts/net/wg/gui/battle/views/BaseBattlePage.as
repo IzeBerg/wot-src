@@ -19,6 +19,7 @@ package net.wg.gui.battle.views
    import net.wg.gui.battle.views.minimap.BaseMinimap;
    import net.wg.gui.battle.views.minimap.MinimapEntryController;
    import net.wg.gui.battle.views.minimap.events.MinimapEvent;
+   import net.wg.gui.battle.views.piercingDebugPanel.PiercingDebugPanel;
    import net.wg.gui.battle.views.postmortemPanel.BasePostmortemPanel;
    import net.wg.gui.battle.views.postmortemPanel.PostmortemPanel;
    import net.wg.gui.battle.views.ribbonsPanel.RibbonsPanel;
@@ -54,6 +55,10 @@ package net.wg.gui.battle.views
       private static const CALLOUT_CENTER_SCREEN_OFFSET_X:int = 136;
       
       private static const AMMUNITION_PANEL_Y_SHIFT:int = 498;
+      
+      private static const RESPAWN_RIGHT_PADDING:int = 250;
+      
+      private static const RESPAWN_AUTO_TIMER_EMPTY_DATA:String = "";
        
       
       public var battleLoading:BaseBattleLoading = null;
@@ -86,11 +91,15 @@ package net.wg.gui.battle.views
       
       protected var postmortemTips:BasePostmortemPanel = null;
       
+      protected var piercingDebugPanel:PiercingDebugPanel = null;
+      
       protected var isPostMortem:Boolean = false;
       
       private var _messagesContainer:Sprite = null;
       
       private var _componentsStorage:Object;
+      
+      protected var lastMinimapSize:int = -1;
       
       public function BaseBattlePage()
       {
@@ -132,6 +141,7 @@ package net.wg.gui.battle.views
          var _loc7_:int = _loc4_ + (_loc6_ - this.ribbonsPanel.freeHeightForRenderers >> 1) + _loc5_;
          this.ribbonsPanel.y = _loc7_;
          this.updateMinimapPosition();
+         this.lastMinimapSize = this.minimap.currentSizeIndex;
          if(this.postmortemTips)
          {
             this.updatePostmortemTipsPosition();
@@ -153,6 +163,35 @@ package net.wg.gui.battle.views
             this.prebattleAmmunitionPanel.x = _originalWidth - this.prebattleAmmunitionPanel.width >> 1;
             this.updateAmmunitionPanelY();
          }
+         if(this.piercingDebugPanel)
+         {
+            this.piercingDebugPanel.updateStage(param1,param2);
+         }
+      }
+      
+      public function as_togglePiercingPanel() : void
+      {
+         if(this.piercingDebugPanel == null)
+         {
+            this.piercingDebugPanel = App.utils.classFactory.getComponent(Linkages.PIERCING_DEBUG_PANEL,PiercingDebugPanel);
+            addChild(this.piercingDebugPanel);
+            this.registerComponent(this.piercingDebugPanel,BATTLE_VIEW_ALIASES.PIERCING_DEBUG_PANEL);
+            this.piercingDebugPanel.updateStage(_originalWidth,_originalHeight);
+         }
+         else
+         {
+            this.piercingDebugPanel.visible = !this.piercingDebugPanel.visible;
+         }
+      }
+      
+      protected function updateMinimap(param1:Number, param2:Number) : void
+      {
+         this.minimap.updateSizeIndex(true);
+         var _loc3_:int = -1;
+         this.minimap.x = param1 - this.minimap.currentWidth;
+         this.minimap.y = param2 - this.minimap.currentHeight;
+         _loc3_ = this.lastMinimapSize;
+         this.minimap.setAllowedSizeIndex(_loc3_);
       }
       
       override protected function initialize() : void
@@ -249,6 +288,7 @@ package net.wg.gui.battle.views
          this.playerMessageList = null;
          this.battleStatisticDataController = null;
          this.postmortemTips = null;
+         this.piercingDebugPanel = null;
          App.utils.data.cleanupDynamicObject(this._componentsStorage);
          this._componentsStorage = null;
          super.onDispose();

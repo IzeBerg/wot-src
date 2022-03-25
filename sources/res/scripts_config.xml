@@ -39,25 +39,102 @@
 				0.992 0.780 0.259 1
 				<!--BW_String-->
 			</hangar>
+			<rtsFocus>
+				0.66 0.78 0.52 1
+				<!--BW_String-->
+			</rtsFocus>
+			<overlaySolidColors>
+				<enemy>
+					<overlay>
+						1 0 0 0.5
+						<!--BW_String-->
+					</overlay>
+					<destructible>
+						0.522 0 0 0.5
+						<!--BW_String-->
+					</destructible>
+				</enemy>
+				<friend>
+					<overlay>
+						0.486 0.835 0.023 0.5
+						<!--BW_String-->
+					</overlay>
+					<destructible>
+						0.282 0.502 0 0.5
+						<!--BW_String-->
+					</destructible>
+				</friend>
+			</overlaySolidColors>
+			<overlayPatternColors>
+				<enemy>
+					<overlay>
+						0.298 0 0 0.25
+						<!--BW_String-->
+					</overlay>
+					<overlayForeground>1 0 0 1</overlayForeground>
+					<destructible>
+						0.298 0 0 0.25
+						<!--BW_String-->
+					</destructible>
+					<destructibleForeground>1 0 0 1</destructibleForeground>
+				</enemy>
+				<friend>
+					<overlay>
+						0.192 0.337 0 0.25
+						<!--BW_String-->
+					</overlay>
+					<overlayForeground>
+						0.482 0.835 0.023 1
+						<!--BW_String-->
+					</overlayForeground>
+					<destructible>
+						0.192 0.337 0 0.25
+						<!--BW_String-->
+					</destructible>
+					<destructibleForeground>
+						0.482 0.835 0.023 1
+						<!--BW_String-->
+					</destructibleForeground>
+				</friend>
+			</overlayPatternColors>
 		</common>
 		<colorBlind>
-			<self>
-				0.5 0.5 0.5 1
-				<!--BW_String-->
-			</self>
 			<enemy>
 				0.511 0.472 0.992 1
 				<!--BW_String-->
 			</enemy>
-			<friend>
-				0.488 0.839 0.023 1
-				<!--BW_String-->
-			</friend>
-			<flag>1 1 1 1</flag>
-			<hangar>
-				0.992 0.780 0.259 1
-				<!--BW_String-->
-			</hangar>
+			<overlaySolidColors>
+				<enemy>
+					<overlay>
+						0.510 0.471 0.988 0.5
+						<!--BW_String-->
+					</overlay>
+					<destructible>
+						0.263 0.239 0.518 0.5
+						<!--BW_String-->
+					</destructible>
+				</enemy>
+			</overlaySolidColors>
+			<overlayPatternColors>
+				<enemy>
+					<overlay>
+						0.157 0.145 0.310 0.25
+						<!--BW_String-->
+					</overlay>
+					<overlayForeground>
+						0.510 0.471 0.988 1
+						<!--BW_String-->
+					</overlayForeground>
+					<destructible>
+						0.157 0.145 0.310 0.25
+						<!--BW_String-->
+					</destructible>
+					<destructibleForeground>
+						0.510 0.471 0.988 1
+						<!--BW_String-->
+					</destructibleForeground>
+				</enemy>
+			</overlayPatternColors>
 		</colorBlind>
 	</silhouetteColors>
 	<decal>

@@ -1,5 +1,5 @@
-import collections, itertools, logging, types, weakref
-from functools import partial
+import collections, inspect, time, itertools, logging, types, weakref
+from functools import partial, wraps
 import typing, BigWorld
 from adisp import async
 if typing.TYPE_CHECKING:
@@ -106,6 +106,24 @@ def allEqual(sequence, accessor=None):
     if accessor:
         return all(accessor(first_) == accessor(rest) for rest in iterable)
     return all(first_ == rest for rest in iterable)
+
+
+def unwrap(obj):
+    if isinstance(obj, type):
+        return obj
+    closure = obj.func_closure
+    if closure:
+        for cell in closure:
+            contents = cell.cell_contents
+            if contents is obj:
+                continue
+            isDecorator = inspect.isfunction(contents) or inspect.ismethod(contents) or inspect.isclass(contents)
+            if isDecorator:
+                unwrapped = unwrap(contents)
+                if unwrapped:
+                    return unwrapped
+
+    return obj
 
 
 class CONST_CONTAINER(object):
@@ -279,3 +297,16 @@ def nextTick(func):
 def awaitNextFrame(callback):
     BigWorld.callback(0.0, partial(callback, None))
     return
+
+
+def timeit(method):
+
+    def timed(*args, **kw):
+        ts = time.time()
+        result = method(*args, **kw)
+        te = time.time()
+        rt = te - ts
+        _logger.info('%s elapsed time: %s sec', method.__name__, rt)
+        return result
+
+    return timed

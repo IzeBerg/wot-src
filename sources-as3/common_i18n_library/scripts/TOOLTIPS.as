@@ -1391,6 +1391,10 @@ package
       
       public static const HEADER_PREMSHOP_BODY:String = "#tooltips:header/premShop/body";
       
+      public static const HEADER_RTSSQUAD_HEADER:String = "#tooltips:header/rtsSquad/header";
+      
+      public static const HEADER_RTSSQUAD_BODY:String = "#tooltips:header/rtsSquad/body";
+      
       public static const HEADER_BATTLETYPE_HEADER:String = "#tooltips:header/battleType/header";
       
       public static const HEADER_BATTLETYPE_BODY:String = "#tooltips:header/battleType/body";
@@ -2293,9 +2297,7 @@ package
       
       public static const VEHICLE_RENTLEFT_WINS:String = "#tooltips:vehicle/rentLeft/wins";
       
-      public static const VEHICLE_RENTLEFT_EPIC_CYCLE:String = "#tooltips:vehicle/rentLeft/epic/cycle";
-      
-      public static const VEHICLE_RENTLEFT_EPIC_CYCLES:String = "#tooltips:vehicle/rentLeft/epic/cycles";
+      public static const VEHICLE_RENTLEFT_EPIC_BASE:String = "#tooltips:vehicle/rentLeft/epic/base";
       
       public static const VEHICLE_RENTLEFT_EPIC_DAYSLEFT:String = "#tooltips:vehicle/rentLeft/epic/daysLeft";
       
@@ -2311,9 +2313,7 @@ package
       
       public static const VEHICLE_RENTLEFTFUTURE_WINS:String = "#tooltips:vehicle/rentLeftFuture/wins";
       
-      public static const VEHICLE_RENTLEFTFUTURE_EPIC_CYCLE:String = "#tooltips:vehicle/rentLeftFuture/epic/cycle";
-      
-      public static const VEHICLE_RENTLEFTFUTURE_EPIC_CYCLES:String = "#tooltips:vehicle/rentLeftFuture/epic/cycles";
+      public static const VEHICLE_RENTLEFTFUTURE_EPIC_BASE:String = "#tooltips:vehicle/rentLeftFuture/epic/base";
       
       public static const VEHICLE_RENTAVAILABLE:String = "#tooltips:vehicle/rentAvailable";
       
@@ -2547,17 +2547,11 @@ package
       
       public static const TRADEININFO_HEADER:String = "#tooltips:tradeInInfo/header";
       
-      public static const TRADEININFO_TRADEOFFLEVELS:String = "#tooltips:tradeInInfo/tradeOffLevels";
+      public static const TRADEININFO_TRADEOFFOFFER:String = "#tooltips:tradeInInfo/tradeOffOffer";
       
       public static const TRADEININFO_DISCOUNT:String = "#tooltips:tradeInInfo/discount";
       
       public static const TRADEININFO_ACTIONTIME:String = "#tooltips:tradeInInfo/actionTime";
-      
-      public static const PERSONALTRADEININFO_HEADER:String = "#tooltips:personalTradeInInfo/header";
-      
-      public static const PERSONALTRADEININFO_INFO:String = "#tooltips:personalTradeInInfo/info";
-      
-      public static const PERSONALTRADEININFO_DISCOUNT:String = "#tooltips:personalTradeInInfo/discount";
       
       public static const TRADEINUNAVAILABLE_HEADER:String = "#tooltips:tradeInUnavailable/header";
       
@@ -3304,6 +3298,8 @@ package
       public static const BATTLERESULTS_PREMIUMBONUS_TANKMENSTATECHANGED_BODY:String = "#tooltips:battleResults/premiumBonus/tankmenStateChanged/body";
       
       public static const BATTLERESULTS_PREMIUMBONUS_XPTOTMENCHANGED_BODY:String = "#tooltips:battleResults/premiumBonus/xpToTmenChanged/body";
+      
+      public static const BATTLERESULTS_DEFENCE_TOTALPOINTS:String = "#tooltips:battleResults/defence/totalPoints";
       
       public static const CONTACT_STATUS_INBATTLE_UNKNOWN:String = "#tooltips:Contact/status/inBattle/unknown";
       
@@ -6043,6 +6039,36 @@ package
       
       public static const NOTRECRUITEDTANKMAN_YHA_RADIOMAN_DESC:String = "#tooltips:notrecruitedtankman/yha_radioman/desc";
       
+      public static const NOTRECRUITEDTANKMAN_OOW21_STRATEGIST_COMMANDER_EVENT:String = "#tooltips:notrecruitedtankman/oow21_strategist_commander/event";
+      
+      public static const NOTRECRUITEDTANKMAN_OOW21_STRATEGIST_COMMANDER_DESC:String = "#tooltips:notrecruitedtankman/oow21_strategist_commander/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_OOW21_STRATEGIST_COMMANDER_LABEL:String = "#tooltips:notrecruitedtankman/oow21_strategist_commander/label";
+      
+      public static const NOTRECRUITEDTANKMAN_OOW21_TANKER_1_COMMANDER_EVENT:String = "#tooltips:notrecruitedtankman/oow21_tanker_1_commander/event";
+      
+      public static const NOTRECRUITEDTANKMAN_OOW21_TANKER_1_COMMANDER_DESC:String = "#tooltips:notrecruitedtankman/oow21_tanker_1_commander/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_OOW21_TANKER_1_COMMANDER_LABEL:String = "#tooltips:notrecruitedtankman/oow21_tanker_1_commander/label";
+      
+      public static const NOTRECRUITEDTANKMAN_OOW21_TANKER_2_COMMANDER_EVENT:String = "#tooltips:notrecruitedtankman/oow21_tanker_2_commander/event";
+      
+      public static const NOTRECRUITEDTANKMAN_OOW21_TANKER_2_COMMANDER_DESC:String = "#tooltips:notrecruitedtankman/oow21_tanker_2_commander/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_OOW21_TANKER_2_COMMANDER_LABEL:String = "#tooltips:notrecruitedtankman/oow21_tanker_2_commander/label";
+      
+      public static const NOTRECRUITEDTANKMAN_OOW21_TANKER_3_COMMANDER_EVENT:String = "#tooltips:notrecruitedtankman/oow21_tanker_3_commander/event";
+      
+      public static const NOTRECRUITEDTANKMAN_OOW21_TANKER_3_COMMANDER_DESC:String = "#tooltips:notrecruitedtankman/oow21_tanker_3_commander/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_OOW21_TANKER_3_COMMANDER_LABEL:String = "#tooltips:notrecruitedtankman/oow21_tanker_3_commander/label";
+      
+      public static const NOTRECRUITEDTANKMAN_OOW21_TANKER_4_COMMANDER_EVENT:String = "#tooltips:notrecruitedtankman/oow21_tanker_4_commander/event";
+      
+      public static const NOTRECRUITEDTANKMAN_OOW21_TANKER_4_COMMANDER_DESC:String = "#tooltips:notrecruitedtankman/oow21_tanker_4_commander/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_OOW21_TANKER_4_COMMANDER_LABEL:String = "#tooltips:notrecruitedtankman/oow21_tanker_4_commander/label";
+      
       public static const QUESTS_AWARDS_VEHICLERENT_HEADER:String = "#tooltips:quests/awards/vehicleRent/header";
       
       public static const QUESTS_AWARDS_VEHICLERENT_EXPIRE:String = "#tooltips:quests/awards/vehicleRent/expire";
@@ -6190,6 +6216,30 @@ package
       public static const SENIORITYAWARDS_ADDITIONAL_TOOLTIP_HEADER:String = "#tooltips:seniorityAwards/additional/tooltip/header";
       
       public static const SENIORITYAWARDS_HANGARSLOT_TOOLTIP_HEADER:String = "#tooltips:seniorityAwards/hangarSlot/tooltip/header";
+      
+      public static const COMMANDER_MANNERS_MANNER_1_HEADER:String = "#tooltips:commander/manners/manner_1/header";
+      
+      public static const COMMANDER_MANNERS_MANNER_1_BODY:String = "#tooltips:commander/manners/manner_1/body";
+      
+      public static const COMMANDER_MANNERS_MANNER_2_HEADER:String = "#tooltips:commander/manners/manner_2/header";
+      
+      public static const COMMANDER_MANNERS_MANNER_2_BODY:String = "#tooltips:commander/manners/manner_2/body";
+      
+      public static const COMMANDER_MANNERS_MANNER_3_HEADER:String = "#tooltips:commander/manners/manner_3/header";
+      
+      public static const COMMANDER_MANNERS_MANNER_3_BODY:String = "#tooltips:commander/manners/manner_3/body";
+      
+      public static const COMMANDER_MANNERS_MANNER_4_HEADER:String = "#tooltips:commander/manners/manner_4/header";
+      
+      public static const COMMANDER_MANNERS_MANNER_4_BODY:String = "#tooltips:commander/manners/manner_4/body";
+      
+      public static const COMMANDER_MANNERS_MANNER_5_HEADER:String = "#tooltips:commander/manners/manner_5/header";
+      
+      public static const COMMANDER_MANNERS_MANNER_5_BODY:String = "#tooltips:commander/manners/manner_5/body";
+      
+      public static const COMMANDER_HALT_HEADER:String = "#tooltips:commander/halt/header";
+      
+      public static const COMMANDER_STARTVEHICLECONTROL_HEADER:String = "#tooltips:commander/startVehicleControl/header";
       
       public static const VEHICLECRYSTAL_LIMITSTATUS_COMMON_TITLE:String = "#tooltips:vehicleCrystal/limitStatus/common/title";
       
@@ -6737,7 +6787,7 @@ package
       
       public static const ADDITIONALREWARDS_CUSTOMIZATIONS_DECAL:String = "#tooltips:additionalRewards/customizations/decal";
       
-      public static const ADDITIONALREWARDS_CUSTOMIZATIONS_PROJECTION_DECAL:String = "#tooltips:additionalRewards/customizations/projection_decal";
+      public static const ADDITIONALREWARDS_CUSTOMIZATIONS_PROJECTIONDECAL:String = "#tooltips:additionalRewards/customizations/projectionDecal";
       
       public static const ADDITIONALREWARDS_CUSTOMIZATIONS_MODIFICATION:String = "#tooltips:additionalRewards/customizations/modification";
       
@@ -6754,6 +6804,38 @@ package
       public static const ADDITIONALREWARDS_DOSSIER_ACHIEVEMENT:String = "#tooltips:additionalRewards/dossier_achievement";
       
       public static const ADDITIONALREWARDS_DOSSIER_BADGE:String = "#tooltips:additionalRewards/dossier_badge";
+      
+      public static const TANK_PARAMS_DESC_SUPPLY_AVGDAMAGE:String = "#tooltips:tank_params/desc/supply_avgDamage";
+      
+      public static const TANK_PARAMS_DESC_SUPPLY_FLAMETHROWERDAMAGE:String = "#tooltips:tank_params/desc/supply_flamethrowerDamage";
+      
+      public static const TANK_PARAMS_DESC_SUPPLY_BARRICADESDAMAGE:String = "#tooltips:tank_params/desc/supply_barricadesDamage";
+      
+      public static const TANK_PARAMS_DESC_SUPPLY_AVGPIERCINGPOWER:String = "#tooltips:tank_params/desc/supply_avgPiercingPower";
+      
+      public static const TANK_PARAMS_DESC_SUPPLY_RELOADTIMESECS:String = "#tooltips:tank_params/desc/supply_reloadTimeSecs";
+      
+      public static const TANK_PARAMS_DESC_SUPPLY_PILLBOXCLIPFIRERATE:String = "#tooltips:tank_params/desc/supply_pillboxClipFireRate";
+      
+      public static const TANK_PARAMS_DESC_SUPPLY_BUNKERCLIPFIRERATE:String = "#tooltips:tank_params/desc/supply_bunkerClipFireRate";
+      
+      public static const TANK_PARAMS_DESC_SUPPLY_MORTARCLIPFIRERATE:String = "#tooltips:tank_params/desc/supply_mortarClipFireRate";
+      
+      public static const TANK_PARAMS_DESC_SUPPLY_FLAMETHROWERCLIPFIRERATE:String = "#tooltips:tank_params/desc/supply_flamethrowerClipFireRate";
+      
+      public static const TANK_PARAMS_DESC_SUPPLY_AIMINGTIME:String = "#tooltips:tank_params/desc/supply_aimingTime";
+      
+      public static const TANK_PARAMS_DESC_SUPPLY_MAXHEALTH:String = "#tooltips:tank_params/desc/supply_maxHealth";
+      
+      public static const TANK_PARAMS_DESC_SUPPLY_ARMOR:String = "#tooltips:tank_params/desc/supply_armor";
+      
+      public static const VEHICLEPARAMS_SUPPLY_TURRETARMOR:String = "#tooltips:vehicleParams/supply_turretArmor";
+      
+      public static const TANK_PARAMS_DESC_SUPPLY_CIRCULARVISIONRADIUS:String = "#tooltips:tank_params/desc/supply_circularVisionRadius";
+      
+      public static const TANK_PARAMS_DESC_SUPPLY_SHOTDISPERSIONANGLE:String = "#tooltips:tank_params/desc/supply_shotDispersionAngle";
+      
+      public static const TANK_PARAMS_DESC_SUPPLY_STUNDURATION:String = "#tooltips:tank_params/desc/supply_stunDuration";
       
       public static const ELEN_SUMMARY_RANK_ENUM:Array = [ELEN_SUMMARY_RANK_1,ELEN_SUMMARY_RANK_2,ELEN_SUMMARY_RANK_3,ELEN_SUMMARY_RANK_4,ELEN_SUMMARY_RANK_NORANK];
       

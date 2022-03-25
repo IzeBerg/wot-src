@@ -279,6 +279,8 @@ package
       
       public static const SMOKE_INENEMYSMOKE:String = "#epic_battle:smoke/InEnemySmoke";
       
+      public static const SMOKE_INENEMYSMOKEPOSTEFFECT:String = "#epic_battle:smoke/InEnemySmokePostEffect";
+      
       public static const ABILITYINFO_PARAMS_COMMON_COOLDOWNTIME:String = "#epic_battle:abilityInfo/params/common/cooldownTime";
       
       public static const ABILITYINFO_PARAMS_COMMON_DELAY:String = "#epic_battle:abilityInfo/params/common/delay";
@@ -320,6 +322,8 @@ package
       public static const ABILITYINFO_PARAMS_SMOKE_TOTALDURATION:String = "#epic_battle:abilityInfo/params/smoke/totalDuration";
       
       public static const ABILITYINFO_PARAMS_SMOKE_VISIONRADIUSFACTOR:String = "#epic_battle:abilityInfo/params/smoke/visionRadiusFactor";
+      
+      public static const ABILITYINFO_PARAMS_SMOKE_CREWROLESFACTOR:String = "#epic_battle:abilityInfo/params/smoke/crewRolesFactor";
       
       public static const ABILITYINFO_PARAMS_PASSIVE_ENGINEERING_RESUPPLYCOOLDOWNFACTOR:String = "#epic_battle:abilityInfo/params/passive_engineering/resupplyCooldownFactor";
       
@@ -581,27 +585,19 @@ package
       
       public static const INTRO_CARD_TYPES_DESC:String = "#epic_battle:intro/card/types/desc";
       
-      public static const TOOLTIPS_TIMETOSTART_SEASON:String = "#epic_battle:tooltips/timeToStart/season";
+      public static const TOOLTIPS_TIMETOSTART:String = "#epic_battle:tooltips/timeToStart";
       
-      public static const TOOLTIPS_TIMETOEND_SEASON:String = "#epic_battle:tooltips/timeToEnd/season";
-      
-      public static const TOOLTIPS_TIMETOSTART_CYCLE:String = "#epic_battle:tooltips/timeToStart/cycle";
-      
-      public static const TOOLTIPS_TIMETOEND_CYCLE:String = "#epic_battle:tooltips/timeToEnd/cycle";
+      public static const TOOLTIPS_TIMETOEND:String = "#epic_battle:tooltips/timeToEnd";
       
       public static const TOOLTIPS_COMMON_DISABLED:String = "#epic_battle:tooltips/common/disabled";
       
       public static const TOOLTIPS_COMMON_TITLE:String = "#epic_battle:tooltips/common/title";
       
-      public static const TOOLTIPS_COMMON_TITLEWITHCYCLE:String = "#epic_battle:tooltips/common/titleWithCycle";
-      
       public static const TOOLTIPS_WIDGET_REACHEDMAXLEVEL:String = "#epic_battle:tooltips/widget/reachedMaxLevel";
       
       public static const TOOLTIPS_WIDGET_LEVEL:String = "#epic_battle:tooltips/widget/level";
       
-      public static const TOOLTIPS_WIDGET_ALLCYCLESFINISHED:String = "#epic_battle:tooltips/widget/allCyclesFinished";
-      
-      public static const TOOLTIPS_WIDGET_SEASONFINISHED:String = "#epic_battle:tooltips/widget/seasonFinished";
+      public static const TOOLTIPS_WIDGET_FINISHED:String = "#epic_battle:tooltips/widget/finished";
       
       public static const TOOLTIPS_SLOTUNLOCKED_MESSAGE:String = "#epic_battle:tooltips/slotUnlocked/message";
       

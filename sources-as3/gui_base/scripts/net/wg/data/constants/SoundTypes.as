@@ -51,6 +51,8 @@ package net.wg.data.constants
       
       public static const BARRACKS_BUY_SOUND_TYPE:String = "barracksItemRendererBuy";
       
+      public static const COLOR_SETTINGS_SOUND_TYPE:String = "colorSettingsButtonRenderer";
+      
       public static const ARTEFACT_RENDERER:String = "artefactRenderer";
       
       public static const TANK_SHELL_SLOT:String = "tankShell";
@@ -106,6 +108,16 @@ package net.wg.data.constants
       public static const EPIC_RESPAWN_POINT_WARNING:String = "epicRespawnPointWarning";
       
       public static const EPIC_INFO_LEVEL_BTN:String = "epicInfoLevelBtn";
+      
+      public static const RTS_SPAWN_MENU_AUTO_SET_BTN:String = "rtsSpawnMenuAutoSetBtn";
+      
+      public static const RTS_SPAWN_MENU_RESET_BTN:String = "rtsSpawnMenuResetBtn";
+      
+      public static const RTS_SPAWN_MENU_ALLY_VEHICLE_ITEM:String = "rtsSpawnMenuAllyVehicleItem";
+      
+      public static const RTS_SPAWN_MENU_VEHICLE_ENTRY:String = "rtsSpawnMenuVehicleEntry";
+      
+      public static const RTS_SPAWN_MENU_PLACE_POINT_ENTRY:String = "rtsSpawnMenuPlacePointEntry";
       
       public static const PREMIUM_PANEL:String = "premiumPanel";
       

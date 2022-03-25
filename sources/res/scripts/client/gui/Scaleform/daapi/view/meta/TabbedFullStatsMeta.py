@@ -21,6 +21,10 @@ class TabbedFullStatsMeta(StatsBase):
         if self._isDAAPIInited():
             return self.flashObject.as_updateProgressTracking(data)
 
+    def as_setTableVisibilityS(self, isVisible):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setTableVisibility(isVisible)
+
     def as_updateTabsS(self, dataProvider):
         if self._isDAAPIInited():
             return self.flashObject.as_updateTabs(dataProvider)
