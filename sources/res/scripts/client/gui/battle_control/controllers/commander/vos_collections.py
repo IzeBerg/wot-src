@@ -1,4 +1,5 @@
 from RTSShared import RTSSupply
+from gui.battle_control import avatar_getter
 from gui.battle_control.arena_info.vos_collections import VehicleInfoSortKey, VehiclesInfoCollection
 from gui.shared.sort_key import SortKey
 from gui.battle_control.arena_info.arena_vos import RtsKeys
@@ -8,7 +9,7 @@ class RTSVehicleInfoSortKey(VehicleInfoSortKey):
     def _cmp(self, other):
         selfInfoVO = self.vInfoVO
         otherInfoVO = other.vInfoVO
-        if selfInfoVO and otherInfoVO:
+        if avatar_getter.isCommanderCtrlMode():
             result = cmp(selfInfoVO.gameModeSpecific.getValue(RtsKeys.VEHICLE_GROUP), otherInfoVO.gameModeSpecific.getValue(RtsKeys.VEHICLE_GROUP))
             if result:
                 return result

@@ -18,8 +18,6 @@ package net.wg.gui.battle.views.vehicleMarkers
    {
       
       public static var sInstance:VehicleMarkersManager = null;
-      
-      private static const NO_FOCUS_VEHICLE_ID:int = 0;
        
       
       public var isAtlasInited:Boolean;
@@ -243,12 +241,13 @@ package net.wg.gui.battle.views.vehicleMarkers
       private function onRTSMarkerMouseOverHandler(param1:RTSMarkerEvent) : void
       {
          var _loc2_:int = param1.vehicleId;
-         setFocusVehicle(_loc2_);
+         setFocusVehicle(_loc2_,true);
       }
       
       private function onRTSMarkerMouseOutHandler(param1:RTSMarkerEvent) : void
       {
-         setFocusVehicle(NO_FOCUS_VEHICLE_ID);
+         var _loc2_:int = param1.vehicleId;
+         setFocusVehicle(_loc2_,false);
       }
       
       private function onAtlasManagerAtlasInitializedHandler(param1:AtlasEvent) : void

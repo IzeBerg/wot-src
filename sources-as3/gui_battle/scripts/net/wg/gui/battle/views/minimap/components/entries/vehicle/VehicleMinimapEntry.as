@@ -276,6 +276,11 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
          return this._classTagName;
       }
       
+      public function getDeadState() : String
+      {
+         return this._deadState;
+      }
+      
       protected function getAtlasItemName() : String
       {
          var _loc1_:String = null;

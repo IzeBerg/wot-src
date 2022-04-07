@@ -1057,6 +1057,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.meta.IBattleUpgradePanelMeta;
    import net.wg.infrastructure.base.meta.IBattleVehicleConfiguratorMeta;
    import net.wg.infrastructure.base.meta.ICalloutPanelMeta;
+   import net.wg.infrastructure.base.meta.ICommanderBattlePageMeta;
    import net.wg.infrastructure.base.meta.ICommanderHelpMeta;
    import net.wg.infrastructure.base.meta.IConsumablesPanelMeta;
    import net.wg.infrastructure.base.meta.IDamageInfoPanelMeta;
@@ -3252,6 +3253,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ICALLOUTPANELMETA:Class = ICalloutPanelMeta;
       
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_ICOMMANDERBATTLEPAGEMETA:Class = ICommanderBattlePageMeta;
+      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ICOMMANDERHELPMETA:Class = ICommanderHelpMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ICONSUMABLESPANELMETA:Class = IConsumablesPanelMeta;
@@ -3461,6 +3464,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BCSECONDARYHINTMETA:Class = BCSecondaryHintMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_CALLOUTPANELMETA:Class = CalloutPanelMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_COMMANDERBATTLEPAGEMETA:Class = CommanderBattlePageMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_COMMANDERHELPMETA:Class = CommanderHelpMeta;
       

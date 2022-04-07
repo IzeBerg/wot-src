@@ -137,7 +137,7 @@ class BattlePassProgressionsView(ViewImpl):
          (
           self.__battlePassController.onOffersUpdated, self.__onOffersUpdated),
          (
-          self.__battlePassController.onSeasonStateChange, self.__updateProgressData),
+          self.__battlePassController.onSeasonStateChanged, self.__updateProgressData),
          (
           self.__battlePassController.onSelectTokenUpdated, self.__onSelectTokenUpdated),
          (
@@ -215,6 +215,8 @@ class BattlePassProgressionsView(ViewImpl):
         self.__settingsCore.serverSettings.saveInBPStorage({BattlePassStorageKeys.INTRO_SHOWN: True})
 
     def __updateProgressData(self):
+        if not self.__battlePassController.isActive():
+            showHangar()
         with self.viewModel.transaction() as (model):
             self.__setAwards(model)
             self.__updateData(model=model)
@@ -309,6 +311,7 @@ class BattlePassProgressionsView(ViewImpl):
         model.setIsExtra(self.__battlePassController.isExtraChapter(self.__chapterID))
         model.setIsSeasonEndingSoon(isSeasonEndingSoon())
         model.setSeasonText(self.__makeSeasonTimeText())
+        model.setHasExtra(self.__battlePassController.hasExtra())
         self.__setExpirations(model)
         self.__setStyleTaken(model)
         self.__updateRewardSelectButton(model=model)

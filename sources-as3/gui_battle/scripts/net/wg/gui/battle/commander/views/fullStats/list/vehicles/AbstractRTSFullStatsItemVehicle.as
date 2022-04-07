@@ -221,7 +221,7 @@ package net.wg.gui.battle.commander.views.fullStats.list.vehicles
          {
             _loc1_ = App.utils.commons.getUserProps(this._vehicleData.playerName,this._vehicleData.clanAbbrev,this._vehicleData.region,Values.ZERO,this._vehicleData.userTags,this._vehicleData.playerFakeName);
             App.utils.commons.formatPlayerName(this.playerName,_loc1_,!this._vehicleData.isCurrentPlayer,this._vehicleData.isCurrentPlayer);
-            if(this._vehicleData.isCurrentPlayer && StringUtils.isNotEmpty(_loc1_.fakeName))
+            if(this._vehicleData.isCurrentPlayer && StringUtils.isNotEmpty(_loc1_.fakeName) && _loc1_.isAnonymized)
             {
                this._toolTipString = _loc1_.clanAbbrev != Values.EMPTY_STR ? App.utils.locale.makeString(TOOLTIPS.ANONYMIZER_BATTLE_TEAMLIST_CLAN,{"fakeName":_loc1_.fakeName}) : App.utils.locale.makeString(TOOLTIPS.ANONYMIZER_BATTLE_TEAMLIST_NOCLAN,{"fakeName":_loc1_.fakeName});
             }

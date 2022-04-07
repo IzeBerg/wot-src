@@ -2,7 +2,7 @@ import logging
 from helpers import dependency
 from constants import QUEUE_TYPE
 from daily_quest_widget import DailyQuestWidget
-from gui.impl.lobby.missions.rts_quests_widget_view import RtsQuestsWidgetView
+from gui.impl.lobby.rts.quests_widget_view import RtsQuestsWidgetView
 from skeletons.gui.game_control import IRTSProgressionController
 from skeletons.gui.game_control import IRTSBattlesController
 _logger = logging.getLogger(__name__)
@@ -16,6 +16,14 @@ class RtsQuestWidget(DailyQuestWidget):
             self._animateHide()
         else:
             self._showOrHide()
+
+    def _populate(self):
+        super(RtsQuestWidget, self)._populate()
+        self.__battlesController.onControlModeChanged += self.__onGameModeChanged
+
+    def _dispose(self):
+        self.__battlesController.onControlModeChanged -= self.__onGameModeChanged
+        super(RtsQuestWidget, self)._dispose()
 
     def _makeInjectView(self):
         return RtsQuestsWidgetView()
@@ -31,13 +39,18 @@ class RtsQuestWidget(DailyQuestWidget):
         isCommander = self.__battlesController.isCommander()
         return self.__progressionCtrl.getQuests(isCommander, includeFuture=False)
 
+    def _executeShowOrHide(self):
+        haveQuestsToShow = self._hasIncompleteQuests() or self._hasQuestStatusChanged()
+        if self._shouldHide() or not haveQuestsToShow:
+            self._hide()
+            return
+        if haveQuestsToShow:
+            self._show()
+
     def __getQueueType(self):
         if self.prbEntity:
             return self.prbEntity.getQueueType()
         return QUEUE_TYPE.UNKNOWN
 
-    def _executeShowOrHide(self):
-        if self._shouldHide():
-            self._hide()
-            return
-        self._show()
+    def __onGameModeChanged(self, *_):
+        self._showOrHide()

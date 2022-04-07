@@ -39,33 +39,27 @@ package net.wg.gui.battle.commander.views.common
       
       override protected function draw() : void
       {
-         var _loc1_:Boolean = false;
-         var _loc2_:String = null;
+         var _loc1_:String = null;
          super.draw();
          if(isInvalid(InvalidationType.DATA) && this._data != null)
          {
-            _loc1_ = true;
-            if(parent)
-            {
-               _loc1_ = parent.visible;
-            }
-            visible = isAlive && isShown && _loc1_;
+            visible = isAlive && isShown;
             if(visible)
             {
                this._data.update();
-               _loc2_ = FRAME_DONE;
+               _loc1_ = FRAME_DONE;
                if(this._data.isNoAmmo)
                {
-                  _loc2_ = FRAME_NO_AMMO;
+                  _loc1_ = FRAME_NO_AMMO;
                }
                else if(this._data.isReloading || this._data.isFreeze)
                {
-                  _loc2_ = FRAME_RELOADING;
+                  _loc1_ = FRAME_RELOADING;
                }
-               if(_loc2_ != this._currentFrame)
+               if(_loc1_ != this._currentFrame)
                {
-                  gotoAndStop(_loc2_);
-                  this._currentFrame = _loc2_;
+                  gotoAndStop(_loc1_);
+                  this._currentFrame = _loc1_;
                }
                this.setTime(this._data.value);
             }
@@ -85,11 +79,14 @@ package net.wg.gui.battle.commander.views.common
          invalidateData();
       }
       
-      public function setReloading(param1:Number, param2:Number, param3:Number) : void
+      public function setReloading(param1:Number, param2:Number, param3:Number, param4:Boolean = true) : void
       {
          if(this._data.updateValues(param1,param2,param3))
          {
-            invalidateData();
+            if(param4)
+            {
+               invalidateData();
+            }
          }
       }
       

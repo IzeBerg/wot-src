@@ -14,10 +14,10 @@ package net.wg.infrastructure.base.meta.impl
          super();
       }
       
-      public function setFocusVehicleS(param1:int) : void
+      public function setFocusVehicleS(param1:int, param2:Boolean) : void
       {
          App.utils.asserter.assertNotNull(this.setFocusVehicle,"setFocusVehicle" + Errors.CANT_NULL);
-         this.setFocusVehicle(param1);
+         this.setFocusVehicle(param1,param2);
       }
    }
 }

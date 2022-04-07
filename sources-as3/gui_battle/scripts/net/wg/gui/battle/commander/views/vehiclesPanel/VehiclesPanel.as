@@ -311,15 +311,9 @@ package net.wg.gui.battle.commander.views.vehiclesPanel
       
       public function setBackgroundWidth(param1:Number) : void
       {
-         var _loc2_:Boolean = false;
          if(param1 != this._backgroundWidth)
          {
             this._backgroundWidth = param1;
-            _loc2_ = this._backgroundWidth - COMMANDER_DAMAGE_LOG_OFFSET > VehiclesPanelItem.getWidth(true) * this._visibleItems.length + CONTAINER_MARGIN_WIDTH;
-            if(_loc2_ != this._isBigItems)
-            {
-               this._isBigItems = _loc2_;
-            }
             invalidateSize();
          }
       }
@@ -410,6 +404,16 @@ package net.wg.gui.battle.commander.views.vehiclesPanel
             {
                this._visibleItems.push(_loc2_);
             }
+         }
+         this.checkForBigItems();
+      }
+      
+      private function checkForBigItems() : void
+      {
+         var _loc1_:Boolean = this._backgroundWidth - COMMANDER_DAMAGE_LOG_OFFSET > VehiclesPanelItem.getWidth(true) * this._visibleItems.length + CONTAINER_MARGIN_WIDTH;
+         if(_loc1_ != this._isBigItems)
+         {
+            this._isBigItems = _loc1_;
          }
       }
       

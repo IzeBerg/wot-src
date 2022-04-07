@@ -1793,10 +1793,6 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
     def __getTokensString(self, data):
         count = 0
         tokenStrings = []
-        rts1x7CurrencyTokensCount = 0
-        rts1x1CurrencyTokensCount = 0
-        rts1x7CurrencyToken = self.__rtsController.getSettings().getCurrencyTokenName(ARENA_BONUS_TYPE.RTS)
-        rts1x1CurrencyToken = self.__rtsController.getSettings().getCurrencyTokenName(ARENA_BONUS_TYPE.RTS_1x1)
         for tokenName, tokenData in data.iteritems():
             tankmanTokenResult = _processTankmanToken(tokenName)
             if tankmanTokenResult:
@@ -1807,10 +1803,6 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
                     tokenStrings.append(offerTokenResult)
             if tokenName == constants.PERSONAL_MISSION_FREE_TOKEN_NAME:
                 count += tokenData.get('count', 0)
-            elif tokenName == rts1x7CurrencyToken:
-                rts1x7CurrencyTokensCount += tokenData.get('count', 0)
-            elif tokenName == rts1x1CurrencyToken:
-                rts1x1CurrencyTokensCount += tokenData.get('count', 0)
             else:
                 quests = self.__eventsCache.getQuestsByTokenRequirement(tokenName)
                 for quest in quests:
@@ -1821,12 +1813,6 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
         if count != 0:
             template = 'awardListAccruedInvoiceReceived' if count > 0 else 'awardListDebitedInvoiceReceived'
             tokenStrings.append(g_settings.htmlTemplates.format(template, {'count': count}))
-        if rts1x7CurrencyTokensCount > 0:
-            template = 'rts1x7CurrencyAccruedInvoiceReceived'
-            tokenStrings.append(g_settings.htmlTemplates.format(template, {'count': rts1x7CurrencyTokensCount}))
-        if rts1x1CurrencyTokensCount > 0:
-            template = 'rts1x1CurrencyAccruedInvoiceReceived'
-            tokenStrings.append(g_settings.htmlTemplates.format(template, {'count': rts1x1CurrencyTokensCount}))
         return tokenStrings
 
     def __getEntitlementsString(self, data):
@@ -3964,7 +3950,7 @@ class BattlePassRewardFormatter(WaitItemsSyncFormatter):
         chapterID = ctx.get('chapter')
         header = backport.text(R.strings.messenger.serviceChannelMessages.battlePassReward.header.buyBP())
         description = backport.text(R.strings.messenger.serviceChannelMessages.battlePassReward.buyWithRewards.text())
-        price = self.__itemsCache.items.shop.getBattlePassCost().get(Currency.GOLD, 0)
+        price = self.__battlePassController.getBattlePassCost(chapterID).get(Currency.GOLD, 0)
         additionalText = backport.text(R.strings.messenger.serviceChannelMessages.battlePassReward.buyWithRewards.additionalText(), chapter=text_styles.credits(backport.text(R.strings.battle_pass.chapter.fullName.num(chapterID)())))
         additionalText += '<br/>' + self.__makeGoldString(price)
         priorityLevel = NotificationPriorityLevel.LOW

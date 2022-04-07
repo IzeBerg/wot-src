@@ -744,8 +744,8 @@ package net.wg.gui.lobby.hangar
             this.carouselContainer.addChild(this.carousel);
             registerFlashComponentS(this.carousel,this._carouselAlias);
             this.carousel.validateNow();
-            this.ammunitionPanel.visible = true;
-            this.ammunitionPanelInject.visible = true;
+            this.ammunitionPanel.visible = this.isControlsVisible;
+            this.ammunitionPanelInject.visible = this.isControlsVisible;
             invalidate(INVALIDATE_CAROUSEL_SIZE);
          }
       }

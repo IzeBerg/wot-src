@@ -71,6 +71,8 @@ package net.wg.data.constants.generated
       
       public static const CHINA_CH17_WZ131_1_WZ132:String = "china-Ch17_WZ131_1_WZ132";
       
+      public static const CHINA_CH17_WZ131_1_WZ132_FL:String = "china-Ch17_WZ131_1_WZ132_FL";
+      
       public static const CHINA_CH17_WZ131_1_WZ132_IGR:String = "china-Ch17_WZ131_1_WZ132_IGR";
       
       public static const CHINA_CH18_WZ_120:String = "china-Ch18_WZ-120";
@@ -354,6 +356,8 @@ package net.wg.data.constants.generated
       public static const FRANCE_F35_AMX_AC_MLE1946:String = "france-F35_AMX_AC_Mle1946";
       
       public static const FRANCE_F36_AMX_AC_MLE1948:String = "france-F36_AMX_AC_Mle1948";
+      
+      public static const FRANCE_F36_AMX_AC_MLE1948_FL:String = "france-F36_AMX_AC_Mle1948_FL";
       
       public static const FRANCE_F36_AMX_AC_MLE1948_IGR:String = "france-F36_AMX_AC_Mle1948_IGR";
       

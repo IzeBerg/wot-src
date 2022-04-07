@@ -46,6 +46,8 @@ package net.wg.gui.battle.commander.views.fullStats.list.vehicles
       
       private var _suffixBadgeStripType:String = null;
       
+      private var _isCommander:Boolean = false;
+      
       public function AbstractRTSFullStatsListVehicles()
       {
          super();
@@ -74,7 +76,7 @@ package net.wg.gui.battle.commander.views.fullStats.list.vehicles
          super.draw();
          if(isInvalid(INVALID_COMMANDER_INFO))
          {
-            setHeaderText(!!Boolean(this._commanderInfo) ? RTS_BATTLES.TEAM_COMMANDER : RTS_BATTLES.TEAM_TANKERS);
+            setHeaderText(!!this._isCommander ? RTS_BATTLES.TEAM_COMMANDER : RTS_BATTLES.TEAM_TANKERS);
          }
          if(isInvalid(INVALID_COMMANDER_INFO | InvalidationType.DATA))
          {
@@ -83,7 +85,7 @@ package net.wg.gui.battle.commander.views.fullStats.list.vehicles
                this.commanderName.visible = true;
                _loc1_ = App.utils.commons.getUserProps(this._commanderInfo.playerName,this._commanderInfo.clanAbbrev,this._commanderInfo.region,Values.ZERO,this._commanderInfo.userTags,this._commanderInfo.playerFakeName);
                App.utils.commons.formatPlayerName(this.commanderName,_loc1_,!this._commanderInfo.isCurrentPlayer,this._commanderInfo.isCurrentPlayer);
-               if(this._commanderInfo.isCurrentPlayer && StringUtils.isNotEmpty(_loc1_.fakeName))
+               if(this._commanderInfo.isCurrentPlayer && StringUtils.isNotEmpty(_loc1_.fakeName) && _loc1_.isAnonymized)
                {
                   this._toolTipString = _loc1_.clanAbbrev != Values.EMPTY_STR ? App.utils.locale.makeString(TOOLTIPS.ANONYMIZER_BATTLE_TEAMLIST_CLAN,{"fakeName":_loc1_.fakeName}) : App.utils.locale.makeString(TOOLTIPS.ANONYMIZER_BATTLE_TEAMLIST_NOCLAN,{"fakeName":_loc1_.fakeName});
                }
@@ -183,6 +185,10 @@ package net.wg.gui.battle.commander.views.fullStats.list.vehicles
          if(this._commanderInfo != param1)
          {
             this._commanderInfo = param1;
+            if(this._commanderInfo)
+            {
+               this._isCommander = true;
+            }
             invalidate(INVALID_COMMANDER_INFO);
          }
          if(param1)

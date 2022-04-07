@@ -78,7 +78,6 @@ package net.wg.gui.battle.random.views.teamBasesPanel
       
       private function drawGraphic() : void
       {
-         var _loc3_:Graphics = null;
          if(this._bitmapSrcPrefix == Values.EMPTY_STR || this._colorType == Values.EMPTY_STR)
          {
             return;
@@ -89,7 +88,7 @@ package net.wg.gui.battle.random.views.teamBasesPanel
          {
             return;
          }
-         _loc3_ = this._fillTarget.graphics;
+         var _loc3_:Graphics = this._fillTarget.graphics;
          _loc3_.beginFill(13762560);
          _loc3_.beginBitmapFill(_loc2_);
          var _loc4_:Number = _loc2_.width;

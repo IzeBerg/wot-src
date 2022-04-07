@@ -84,6 +84,8 @@ class ChapterChoiceView(ViewImpl):
          (
           self.__battlePassController.onOffersUpdated, self.__updateRewardChoice),
          (
+          self.__battlePassController.onSeasonStateChanged, self.__checkBPState),
+         (
           g_playerEvents.onClientUpdated, self.__onBpBitUpdated))
 
     def _getCallbacks(self):
@@ -165,12 +167,11 @@ class ChapterChoiceView(ViewImpl):
         if self.__battlePassController.isPaused():
             showMissionsBattlePass()
             return
-        if not (self.__battlePassController.isEnabled() and self.__battlePassController.isActive()):
+        if not self.__battlePassController.isActive():
             showHangar()
             return
         if len(self.__battlePassController.getChapterIDs()) != len(self.viewModel.getChapters()):
-            with self.viewModel.transaction() as (model):
-                self.__updateChapters(model.getChapters())
+            showMissionsBattlePass(R.views.lobby.battle_pass.ChapterChoiceView())
 
     @staticmethod
     def __buyBattlePass(_):
@@ -202,7 +203,7 @@ class ChapterChoiceView(ViewImpl):
         return partial(showMissionsBattlePass, R.views.lobby.battle_pass.ChapterChoiceView())
 
     def __showProgressionStylePreview(self, style, vehicleCD):
-        showStyleProgressionPreview(vehicleCD, style, style.getDescription(), self.__previewCallback, backport.text(R.strings.battle_pass.chapterChoice.stylePreview.backLabel()), styleLevel=style.getMaxProgressionLevel())
+        showStyleProgressionPreview(vehicleCD, style, style.getDescription(), self.__getPreviewCallback(), backport.text(R.strings.battle_pass.chapterChoice.stylePreview.backLabel()), styleLevel=style.getMaxProgressionLevel())
 
     def __selectChapter(self, args):
         chapterID = int(args.get('chapterID', 0))
@@ -220,10 +221,6 @@ class ChapterChoiceView(ViewImpl):
 
     def __showPointsInfoView(self):
         showBattlePassHowToEarnPointsView(parent=self.getParentWindow())
-
-    @staticmethod
-    def __previewCallback():
-        showMissionsBattlePass(R.views.lobby.battle_pass.ChapterChoiceView())
 
     def __takeAllRewards(self):
         self.__battlePassController.takeAllRewards()

@@ -39,14 +39,18 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
       
       override protected function getAtlasItemName() : String
       {
-         var _loc1_:String = super.getAtlasItemName();
-         if(this._isSupplyAndSpotted)
-         {
-            _loc1_ += ATLAS_NAME_DELIMITER + "spotted";
-         }
+         var _loc1_:String = null;
          if(this._isSelected)
          {
             _loc1_ = getClassTagName() + ATLAS_NAME_DELIMITER + "selected" + ATLAS_NAME_DELIMITER + "green";
+         }
+         else
+         {
+            _loc1_ = super.getAtlasItemName();
+            if(this._isSupplyAndSpotted && getDeadState() != VehicleMinimapEntryConst.DEAD)
+            {
+               _loc1_ = super.getAtlasItemName() + ATLAS_NAME_DELIMITER + "spotted";
+            }
          }
          return _loc1_;
       }

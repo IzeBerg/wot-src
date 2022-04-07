@@ -11,6 +11,9 @@ package net.wg.gui.battle.views.vehicleMarkers
    {
       
       private static const ENTITY_NAME_TO_FRAME:Object = {
+         "green":1,
+         "red":2,
+         "gold":3,
          "ally":1,
          "enemy":2
       };
@@ -34,7 +37,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private var _fxTween:Tween = null;
       
-      private var _entityName:String = "ally";
+      private var _entityName:String;
       
       public function SupplyHealthBar()
       {

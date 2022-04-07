@@ -6,6 +6,7 @@ package net.wg.gui.battle.views.vehicleMarkers
    import flash.text.TextField;
    import net.wg.data.constants.InvalidationType;
    import net.wg.data.constants.Values;
+   import net.wg.gui.battle.commander.views.common.HoverIcon;
    import net.wg.gui.battle.commander.views.common.Reloading;
    import net.wg.gui.battle.commander.views.common.ReloadingData;
    import net.wg.gui.battle.components.BattleUIComponent;
@@ -50,6 +51,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       private static const CURRENT_MAX_HP_SEPARATOR:String = " / ";
       
       private static const EMPTY_STRING:String = "";
+      
+      private static const BRACKETS_RANGE:Number = 21;
        
       
       public var hitMC:MovieClip = null;
@@ -57,6 +60,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       public var marker:MovieClip = null;
       
       public var supplyIconMarker:SupplyIconMarker = null;
+      
+      public var hover:HoverIcon = null;
       
       public var healthBar:SupplyHealthBar = null;
       
@@ -97,6 +102,10 @@ package net.wg.gui.battle.views.vehicleMarkers
       private var _hitIconOffset:int = -1;
       
       private var _entityType:String = "ally";
+      
+      protected var _focused:Boolean = false;
+      
+      protected var _selected:Boolean = false;
       
       public function CommanderSupplyMarker()
       {
@@ -205,6 +214,8 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.reloadingContext = null;
          this._model = null;
          this.vmManager = null;
+         this.hover.dispose();
+         this.hover = null;
          super.onDispose();
       }
       
@@ -286,6 +297,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.hitLabel.fakeDamage = this._model.maxHealth - this._model.currHealth;
          this.hitLabel.imitationFlag = this.getDamageColor(param7);
          this.hitLabel.imitation = false;
+         this.healthBar.entityName = param6;
          this.updateMarkerSettings();
          invalidateData();
       }
@@ -303,7 +315,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          }
          this.updateHitLabel(param1,param2);
          this._model.currHealth = param1;
-         if(VehicleMarkerFlags.checkAllowedDamages(param3) && this.hitExplosion.visible)
+         if(VehicleMarkerFlags.checkAllowedDamages(param3) && this.isDamagePanelVisible())
          {
             this.hitExplosion.setColorAndDamageType(this.getDamageColor(param2),param3);
             this.hitExplosion.playShowTween();
@@ -313,6 +325,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          if(this.isPopulated)
          {
             this.healthBar.currentHP = this._model.currHealth;
+            this.healthBar.entityName = this.getDamageColor(param2);
             this.setHealthText();
          }
       }
@@ -370,6 +383,15 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.actionMarker.stopAction();
       }
       
+      public function updateFocusedSelected(param1:Boolean, param2:Boolean) : void
+      {
+         if(this._focused != param1 || this._selected != param2)
+         {
+            this._selected = this.hover.selected = param2;
+            this._focused = this.hover.hovered = param1;
+         }
+      }
+      
       public function triggerClickAnimation() : void
       {
          this.actionMarker.triggerClickAnimation();
@@ -396,13 +418,12 @@ package net.wg.gui.battle.views.vehicleMarkers
       {
          var _loc1_:Boolean = this.getIsPartVisible(HEALTH_BAR) || this.isAllyMarker();
          var _loc2_:Boolean = this.getIsPartVisible(HEALTH_LBL) || this.isAllyMarker();
-         var _loc3_:Boolean = this.getIsPartVisible(DAMAGE_PANEL) || this.isAllyMarker();
+         var _loc3_:Boolean = this.isDamagePanelVisible();
          if(_loc1_)
          {
             this.healthBar.currentHP = this._model.currHealth;
          }
          this.healthBar.visible = _loc1_;
-         this.healthBar.entityName = this._model.entityName;
          this.setHealthText();
          this.adjustHitMCPosition();
          this.supplyIconMarker.setSupplyType(this._model.sClass);
@@ -411,6 +432,12 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.hitExplosion.visible = _loc3_;
          this.hpField.visible = _loc2_;
          this.criticalHitLabel.visible = true;
+         this.hover.visible = false;
+         this.hover.isSupply = true;
+         this.hover.attach(this.marker);
+         this.hover.type = HoverIcon.BRACKETS_IN;
+         this.hover.range = BRACKETS_RANGE;
+         this.hover.isAlive = true;
          this.setMarkerState(this._markerState);
       }
       
@@ -433,6 +460,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          {
             this._vehicleDestroyed = true;
             this.healthBar.isAlive = false;
+            this.hover.isAlive = false;
          }
          if(initialized)
          {
@@ -476,7 +504,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       private function updateHitLabel(param1:int, param2:int) : void
       {
          var _loc3_:int = this._model.currHealth - param1;
-         if(_loc3_ > 0 && this.hitLabel != null && this.hitLabel.visible)
+         if(_loc3_ > 0 && this.hitLabel != null && this.isDamagePanelVisible())
          {
             this.hitLabel.damage(_loc3_,this.getDamageColor(param2));
             this.hitLabel.playShowTween();
@@ -537,6 +565,11 @@ package net.wg.gui.battle.views.vehicleMarkers
       private function showExInfo() : Boolean
       {
          return this.vmManager.showExInfo && !this.isAllyMarker();
+      }
+      
+      private function isDamagePanelVisible() : Boolean
+      {
+         return this.getIsPartVisible(DAMAGE_PANEL) || this.isAllyMarker();
       }
    }
 }

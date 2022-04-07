@@ -70,7 +70,7 @@ package net.wg.gui.battle.commander.views.fullStats
          this.listLeft.addEventListener(Event.RESIZE,this.onVehiclesListResized);
          this.listRight.addEventListener(Event.RESIZE,this.onVehiclesListResized);
          this.onVehiclesListResized();
-         super.onDispose();
+         super.configUI();
       }
       
       public function addVehiclesInfo(param1:IDAAPIDataClass) : void

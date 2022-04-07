@@ -392,7 +392,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         BigWorld.worldDrawEnabled(False)
         BigWorld.target.clear()
         if self.arenaBonusType in constants.ARENA_BONUS_TYPE.RTS_RANGE:
-            if self.isAICommander:
+            if self.isCommander():
                 SoundGroups.g_instance.playSound2D(R4_SOUND.R4_COMMANDER_EXIT)
             else:
                 SoundGroups.g_instance.playSound2D(R4_SOUND.R4_TANKMAN_EXIT)
@@ -1938,7 +1938,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         return self.__isVehicleMoving
 
     def isCommander(self):
-        return self.isAICommander
+        return getattr(self, 'isAICommander', False)
 
     def isCommanderCtrlMode(self):
         return self.inputHandler.isCommanderCtrlMode()
@@ -1962,7 +1962,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         return hasNoRelatedAccount
 
     def commanderVehicleID(self):
-        if not self.isAICommander:
+        if not self.isCommander():
             return
         else:
             if self.__commanderVehicleID is None:
@@ -2634,7 +2634,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         SoundGroups.g_instance.enableArenaSounds(True)
         SoundGroups.g_instance.applyPreferences()
         if self.arenaBonusType in constants.ARENA_BONUS_TYPE.RTS_RANGE:
-            if self.isAICommander:
+            if self.isCommander():
                 SoundGroups.g_instance.playSound2D(R4_SOUND.R4_COMMANDER_ENTER)
             else:
                 SoundGroups.g_instance.playSound2D(R4_SOUND.R4_TANKMAN_ENTER)
@@ -2667,7 +2667,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         if not g_offlineMapCreator.Active():
             self.inputHandler = AvatarInputHandler.AvatarInputHandler(self.spaceID)
             prereqs += self.inputHandler.prerequisites()
-        if self.isAICommander:
+        if self.isCommander():
             self.soundNotifications = IngameSoundNotifications.R4SoundNotifications()
         else:
             self.soundNotifications = IngameSoundNotifications.IngameSoundNotifications()
@@ -3235,7 +3235,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
 
     def __updateTargetVehicleMarker(self):
         if self.isCommanderCtrlMode():
-            gui_event_dispatcher.hideAutoAimMarker()
+            self.autoAim()
         else:
             targetVehicleID = self.__targetVehicleIDs.get(self.currentVehicleID, None)
             vehicle = BigWorld.entity(targetVehicleID) if targetVehicleID else None

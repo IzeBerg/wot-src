@@ -25,7 +25,6 @@ package net.wg.gui.battle.commander.views
    import net.wg.gui.battle.random.views.stats.components.playersPanel.events.PlayersPanelEvent;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.events.PlayersPanelSwitchEvent;
    import net.wg.gui.battle.random.views.teamBasesPanel.TeamBasesPanel;
-   import net.wg.gui.battle.views.BattlePageQuestsProgress;
    import net.wg.gui.battle.views.battleEndWarning.BattleEndWarningPanel;
    import net.wg.gui.battle.views.battleEndWarning.EndWarningPanelEvent;
    import net.wg.gui.battle.views.battleMessenger.BattleMessenger;
@@ -43,12 +42,14 @@ package net.wg.gui.battle.commander.views
    import net.wg.gui.components.battleDamagePanel.BattleDamageLogPanel;
    import net.wg.gui.components.battleDamagePanel.constants.BattleDamageLogConstants;
    import net.wg.gui.components.hintPanel.HintPanel;
+   import net.wg.infrastructure.base.meta.ICommanderBattlePageMeta;
+   import net.wg.infrastructure.base.meta.impl.CommanderBattlePageMeta;
    import net.wg.infrastructure.events.FocusRequestEvent;
    import net.wg.infrastructure.helpers.statisticsDataController.BattleStatisticDataController;
    import net.wg.infrastructure.helpers.statisticsDataController.RTSBattleStatisticDataController;
    import net.wg.infrastructure.helpers.statisticsDataController.intarfaces.IRTSBattleStatisticDataController;
    
-   public class CommanderBattlePage extends BattlePageQuestsProgress implements IRTSBattleStatisticDataController
+   public class CommanderBattlePage extends CommanderBattlePageMeta implements IRTSBattleStatisticDataController, ICommanderBattlePageMeta
    {
       
       private static const COMMANDER_BATTLE_LOG_OFFSET_WIDE_SCREEN:Number = 16;
@@ -731,6 +732,11 @@ package net.wg.gui.battle.commander.views
       
       public function setRTSCondition(param1:Number, param2:String) : void
       {
+      }
+      
+      public function as_spawnPointWindowClosed() : void
+      {
+         this.playerMessageListPositionUpdate();
       }
    }
 }

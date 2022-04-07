@@ -1,12 +1,11 @@
 from bootcamp.BootCampEvents import g_bootcampEvents
-from gui.Scaleform.daapi.view.battle.commander.page import CommonCommanderBattlePage, CommonRTSComponentsConfig, BASE_COMMANDER_EXTENDED_CMPNTS
+from gui.Scaleform.daapi.view.battle.commander import page as cpage
 from gui.Scaleform.genConsts.BATTLE_VIEW_ALIASES import BATTLE_VIEW_ALIASES
-from gui.battle_control.controllers.commander.spawn_ctrl.interfaces import IRTSSpawnListener
 
-class BCCommanderBattlePage(CommonCommanderBattlePage, IRTSSpawnListener):
+class BCCommanderBattlePage(cpage.CommonCommanderBattlePage):
 
     def __init__(self):
-        super(BCCommanderBattlePage, self).__init__(CommonRTSComponentsConfig() + BASE_COMMANDER_EXTENDED_CMPNTS)
+        super(BCCommanderBattlePage, self).__init__(cpage.CommonRTSComponentsConfig() + cpage.BASE_COMMANDER_EXTENDED_CMPNTS)
 
     @property
     def topHint(self):

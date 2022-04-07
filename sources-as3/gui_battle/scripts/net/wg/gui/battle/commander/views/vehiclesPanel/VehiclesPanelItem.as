@@ -193,6 +193,7 @@ package net.wg.gui.battle.commander.views.vehiclesPanel
                this.reloading.setContext(this._reloadingContext);
             }
             this.bgVehicleLight.cutRect = this.bgVehicle.cutRect = !!this.isBig ? VEHICLE_IMAGE_CUT_BIG : VEHICLE_IMAGE_CUT_SMALL;
+            this.moduleIcons.isBig = this.isBig;
          }
          if(_loc1_ || isInvalid(INVALIDATE_GROUP))
          {
@@ -292,7 +293,7 @@ package net.wg.gui.battle.commander.views.vehiclesPanel
       
       public function setReloading(param1:Number, param2:Number, param3:Number) : void
       {
-         this.reloading.setReloading(param1,param2,param3);
+         this.reloading.setReloading(param1,param2,param3,this.visible);
       }
       
       public function setOrderIconState(param1:Number, param2:Boolean) : void
@@ -434,6 +435,10 @@ package net.wg.gui.battle.commander.views.vehiclesPanel
       public function setCompVisible(param1:Boolean) : void
       {
          this.visible = param1;
+         if(param1)
+         {
+            this.reloading.invalidateData();
+         }
       }
    }
 }

@@ -785,9 +785,13 @@ package
       
       public static const CURRENCY_RTS1X1CURRENCY_NAMEPLURAL:String = "#rts_battles:currency/rts1x1currency/namePlural";
       
+      public static const CURRENCY_RTS1X1CURRENCY_NAMEGENITIVEPLURAL:String = "#rts_battles:currency/rts1x1currency/nameGenitivePlural";
+      
       public static const CURRENCY_RTS1X7CURRENCY_NAME:String = "#rts_battles:currency/rts1x7currency/name";
       
       public static const CURRENCY_RTS1X7CURRENCY_NAMEPLURAL:String = "#rts_battles:currency/rts1x7currency/namePlural";
+      
+      public static const CURRENCY_RTS1X7CURRENCY_NAMEGENITIVEPLURAL:String = "#rts_battles:currency/rts1x7currency/nameGenitivePlural";
       
       public static const TUTORIAL_BANNER_HEADER:String = "#rts_battles:tutorial/banner/header";
       

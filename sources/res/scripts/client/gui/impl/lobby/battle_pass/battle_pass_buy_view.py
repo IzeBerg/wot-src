@@ -125,7 +125,9 @@ class BattlePassBuyView(ViewImpl):
          (
           self.__wallet.onWalletStatusChanged, self.__onWalletChanged),
          (
-          self.__battlePassController.onBattlePassSettingsChange, self.__onBattlePassSettingsChange),
+          self.__battlePassController.onBattlePassSettingsChange, self.__onBattlePassSettingsChanged),
+         (
+          self.__battlePassController.onSeasonStateChanged, self.__onBattlePassSettingsChanged),
          (
           self.__battlePassController.onExtraChapterExpired, self.__onExtraChapterExpired))
 
@@ -266,7 +268,7 @@ class BattlePassBuyView(ViewImpl):
 
         model.packages.invalidate()
 
-    def __onBattlePassSettingsChange(self, *_):
+    def __onBattlePassSettingsChanged(self, *_):
         self.__update()
 
     def __onExtraChapterExpired(self):

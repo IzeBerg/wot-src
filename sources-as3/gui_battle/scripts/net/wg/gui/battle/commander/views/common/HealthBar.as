@@ -182,7 +182,10 @@ package net.wg.gui.battle.commander.views.common
             this._fxTween.dispose();
             this._fxTween = null;
          }
-         this.fxMC.visible = false;
+         if(this.fxMC != null)
+         {
+            this.fxMC.visible = false;
+         }
       }
    }
 }

@@ -402,6 +402,11 @@ class ClientArena(object):
     def __vehicleInfoAsDict(self, info):
         extVehicleTypeData = {'vehPostProgression': info[25], 
            'customRoleSlotTypeId': info[26]}
+        try:
+            isGodModeActive = info[27]
+        except IndexError:
+            isGodModeActive = False
+
         infoAsDict = {'vehicleType': self.__getVehicleType(info[1], extVehicleTypeData), 
            'name': info[2], 
            'team': info[3], 
@@ -428,7 +433,7 @@ class ClientArena(object):
            'maxHealth': info[24], 
            'vehPostProgression': info[25], 
            'customRoleSlotTypeId': info[26], 
-           'isGodModeActive': info[27]}
+           'isGodModeActive': isGodModeActive}
         return (
          info[0], infoAsDict)
 

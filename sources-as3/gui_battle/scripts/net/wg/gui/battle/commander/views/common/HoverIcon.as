@@ -29,6 +29,8 @@ package net.wg.gui.battle.commander.views.common
       
       private var _attachedMC:MovieClip = null;
       
+      private var _isSupply:Boolean = false;
+      
       public function HoverIcon()
       {
          super();
@@ -55,7 +57,14 @@ package net.wg.gui.battle.commander.views.common
          {
             if(this._attachedMC)
             {
-               this.moveTo(this._attachedMC.x,this._attachedMC.y + this._attachedMC.height / 2);
+               if(this._isSupply)
+               {
+                  this.moveTo(this._attachedMC.x,this.y);
+               }
+               else
+               {
+                  this.moveTo(this._attachedMC.x,this._attachedMC.y + this._attachedMC.height / 2);
+               }
             }
          }
          if(isInvalid(INVALID_RANGE))
@@ -132,6 +141,15 @@ package net.wg.gui.battle.commander.views.common
          {
             this._selected = param1;
             invalidateData();
+         }
+      }
+      
+      public function set isSupply(param1:Boolean) : void
+      {
+         if(this._isSupply != param1)
+         {
+            this._isSupply = param1;
+            invalidate(INVALID_POSITION);
          }
       }
    }

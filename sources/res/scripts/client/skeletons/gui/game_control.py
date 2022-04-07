@@ -1506,7 +1506,7 @@ class IBattlePassController(IGameController):
     onLevelUp = None
     onBattlePassIsBought = None
     onSelectTokenUpdated = None
-    onSeasonStateChange = None
+    onSeasonStateChanged = None
     onBattlePassSettingsChange = None
     onFinalRewardStateChange = None
     onRewardSelectChange = None
@@ -1563,6 +1563,9 @@ class IBattlePassController(IGameController):
         raise NotImplementedError
 
     def isExtraChapter(self, chapterID):
+        raise NotImplementedError
+
+    def getBattlePassCost(self, chapterID):
         raise NotImplementedError
 
     def getChapterExpiration(self, chapterID):

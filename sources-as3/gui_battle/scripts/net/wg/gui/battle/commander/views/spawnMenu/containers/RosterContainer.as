@@ -228,7 +228,7 @@ package net.wg.gui.battle.commander.views.spawnMenu.containers
          var _loc7_:IUserProps = App.utils.commons.getUserProps(param1,param2,param3,Values.ZERO,param5,param4);
          App.utils.commons.formatPlayerName(this.playerNameTF,_loc7_,!_loc6_,_loc6_);
          App.utils.commons.formatPlayerName(this.playerNameVehiclesTF,_loc7_,!_loc6_,_loc6_);
-         if(_loc6_ && StringUtils.isNotEmpty(_loc7_.fakeName))
+         if(_loc6_ && StringUtils.isNotEmpty(_loc7_.fakeName) && _loc7_.isAnonymized)
          {
             this._toolTipString = _loc7_.clanAbbrev != Values.EMPTY_STR ? App.utils.locale.makeString(TOOLTIPS.ANONYMIZER_BATTLE_TEAMLIST_CLAN,{"fakeName":_loc7_.fakeName}) : App.utils.locale.makeString(TOOLTIPS.ANONYMIZER_BATTLE_TEAMLIST_NOCLAN,{"fakeName":_loc7_.fakeName});
          }

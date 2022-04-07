@@ -113,9 +113,10 @@ class NYPostEventBoxesFormatter(AsyncAutoLootBoxSubFormatter):
         return cls._isBoxOfRequiredTypes(boxID, cls.__REQUIERED_BOX_TYPES)
 
     def __getMainMessage(self, message, openedBoxesIDs):
+        count = backport.text(R.strings.messenger.serviceChannelMessages.lootBoxesAutoOpen.counter(), count=sum(message.data[boxId]['count'] for boxId in openedBoxesIDs))
         oldStyleCount = {bID:message.data[bID]['count'] for bID in openedBoxesIDs}
         rewards = getRewardsForBoxes(message, openedBoxesIDs)
-        formatted = g_settings.msgTemplates.format(self.__MESSAGE_TEMPLATE, ctx={}, data={'savedData': {'rewards': rewards, 'boxIDs': oldStyleCount}})
+        formatted = g_settings.msgTemplates.format(self.__MESSAGE_TEMPLATE, ctx={'count': count}, data={'savedData': {'rewards': rewards, 'boxIDs': oldStyleCount}})
         settings = self._getGuiSettings(message, self.__MESSAGE_TEMPLATE)
         settings.groupID = NotificationGroup.OFFER
         settings.showAt = BigWorld.time()
