@@ -232,33 +232,33 @@ class EpicDroneMusicPlayer(DroneMusicPlayer):
                       (
                        _EpicTimeRemainedCondition,),
                       lambda name, key, data: (
-                       data[name][key], data['musicStopPredelay'][key])), 
+                       data[name].getValue(key), data['musicStopPredelay'].getValue(key))), 
        'capturedPoints': (
                         lambda player: True,
                         (
                          _EpicAlliedBaseCaptureCondition, _EpicEnemyBaseCaptureCondition),
                         lambda name, key, data: (
-                         data[name][key], data['musicStopPredelay'][key])), 
+                         data[name].getValue(key), data['musicStopPredelay'].getValue(key))), 
        'epicRespawnView': (
                          lambda player: True,
                          (
                           _EpicRespawnViewCondition,),
-                         lambda name, key, data: data[name][key]), 
+                         lambda name, key, data: data[name].getValue(key)), 
        'epicMainObjectivesTotalHealth': (
                                        lambda player: True,
                                        (
                                         _EpicMainObjectivesTotalHealthCondition,),
-                                       lambda name, key, data: data[name][key]), 
+                                       lambda name, key, data: data[name].getValue(key)), 
        'epicMainObjectivesNumDestroyed': (
                                         lambda player: True,
                                         (
                                          _EpicMainObjectivesNumDestroyedCondition,),
-                                        lambda name, key, data: data[name][key]), 
+                                        lambda name, key, data: data[name].getValue(key)), 
        'epicZoneTransition': (
                             lambda player: True,
                             (
                              _EpicZoneTransitionCondition,),
-                            lambda name, key, data: data[name][key])}
+                            lambda name, key, data: data[name].getValue(key))}
 
     def __init__(self):
         super(EpicDroneMusicPlayer, self).__init__()

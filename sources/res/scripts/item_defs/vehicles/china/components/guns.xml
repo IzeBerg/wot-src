@@ -66,6 +66,7 @@
 		<_122mm_vz_60>259</_122mm_vz_60>
 		<_130mm_59_130M>260</_130mm_59_130M>
 		<_130mm_59-130T_FL>501</_130mm_59-130T_FL>
+		<_100mm_60-100TA_FL>502</_100mm_60-100TA_FL>
 		<_100mm_60-100TA_IGR>60001</_100mm_60-100TA_IGR>
 		<_100mm_62-100T_IGR>60002</_100mm_62-100T_IGR>
 		<_122-mm_60-122TG_IGR>60003</_122-mm_60-122TG_IGR>
@@ -4207,6 +4208,118 @@
 				</_100mm_UOF-412>
 			</shots>
 		</_100mm_60-100TA>
+		<_100mm_60-100TA_FL>
+			<userString>#china_vehicles:_100mm_60-100TA</userString>
+			<tags/>
+			<level>9</level>
+			<price>166000</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.44
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.56
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>main</recoilEffect>
+			</recoil>
+			<effects>shot_mainext</effects>
+			<reloadEffect>reload85_107</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -20.0 1.0 -20.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 7.0 1.0 7.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>
+				33.25
+				<!--BW_String-->
+			</rotationSpeed>
+			<reloadTime>
+				8.0
+				<!--BW_String-->
+			</reloadTime>
+			<maxAmmo>34</maxAmmo>
+			<aimingTime>
+				2.85714285714286
+				<!--BW_String-->
+			</aimingTime>
+			<weight>2257</weight>
+			<maxHealth>180</maxHealth>
+			<maxRegenHealth>90</maxRegenHealth>
+			<repairCost>8</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.27
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.16
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					4.0
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_100mm_UBR-412>
+					<defaultPortion>
+						0.95
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>920</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>189 167</piercingPower>
+				</_100mm_UBR-412>
+				<_100mm_UBR-412P>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>1150</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>225 200</piercingPower>
+				</_100mm_UBR-412P>
+				<_100mm_UOF-412>
+					<defaultPortion>
+						0.05
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>920</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>50 50</piercingPower>
+				</_100mm_UOF-412>
+			</shots>
+		</_100mm_60-100TA_FL>
 		<_100mm_D54_TA>
 			<userString>#china_vehicles:_100mm_D54_TA</userString>
 			<tags/>

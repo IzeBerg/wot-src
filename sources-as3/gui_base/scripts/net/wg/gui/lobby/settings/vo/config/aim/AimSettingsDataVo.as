@@ -12,12 +12,15 @@ package net.wg.gui.lobby.settings.vo.config.aim
       
       public var spg:AimSettingsArtyDataVo = null;
       
+      public var contour:AimSettingsContourDataVo = null;
+      
       public function AimSettingsDataVo()
       {
          super({
             "arcade":new AimSettingsArcadeDataVo(),
             "sniper":new AimSettingsSniperDataVo(),
-            "spg":new AimSettingsArtyDataVo()
+            "spg":new AimSettingsArtyDataVo(),
+            "contour":new AimSettingsContourDataVo()
          });
       }
       
@@ -26,6 +29,7 @@ package net.wg.gui.lobby.settings.vo.config.aim
          this.arcade = null;
          this.sniper = null;
          this.spg = null;
+         this.contour = null;
          super.onDispose();
       }
    }

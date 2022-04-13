@@ -530,6 +530,7 @@ package net.wg.gui.components.crosshairPanel
       
       public function as_setReloading(param1:Number, param2:Number, param3:Number, param4:Boolean) : void
       {
+         var _loc5_:Number = NaN;
          this.clearReloadingTimer();
          this._baseReloadingTimeInSec = param2;
          if(param1 == 0)
@@ -565,7 +566,8 @@ package net.wg.gui.components.crosshairPanel
          }
          else
          {
-            if(this._currReloadingState == CrosshairConsts.RELOADING_PROGRESS)
+            _loc5_ = this._baseReloadingTimeInSec * MSEC_TO_SEC_FACTOR;
+            if(this._currReloadingState == CrosshairConsts.RELOADING_PROGRESS && _loc5_ == this._baseReloadingTimeInMsec)
             {
                this._remainingTimeInSec = param1;
                this._previousReloadingPercent = this._currReloadingPercent;
@@ -577,7 +579,7 @@ package net.wg.gui.components.crosshairPanel
             }
             this._currReloadingState = CrosshairConsts.RELOADING_PROGRESS;
             this._initReloadingTime = getTimer();
-            this._baseReloadingTimeInMsec = this._baseReloadingTimeInSec * MSEC_TO_SEC_FACTOR;
+            this._baseReloadingTimeInMsec = _loc5_;
             this._reloadingInterval = setInterval(this.updateReloadingTimer,CrosshairConsts.COUNTER_UPDATE_TICK,false);
          }
          this.updateCurrentCrosshairReloadingParams();

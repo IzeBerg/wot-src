@@ -25,7 +25,9 @@ package net.wg.gui.lobby.battleResults.data
       
       private var _disposed:Boolean = false;
       
-      public function ColumnData(param1:int, param2:String, param3:String, param4:String, param5:int)
+      private var _isLeft:Boolean;
+      
+      public function ColumnData(param1:int, param2:String, param3:String, param4:String, param5:int, param6:Boolean)
       {
          super();
          this._index = param1;
@@ -33,6 +35,7 @@ package net.wg.gui.lobby.battleResults.data
          this._iconSource = param3;
          this._tooltipId = param4;
          this._columnWidth = param5;
+         this._isLeft = param6;
       }
       
       public function dispose() : void
@@ -92,6 +95,11 @@ package net.wg.gui.lobby.battleResults.data
       public function isDisposed() : Boolean
       {
          return this._disposed;
+      }
+      
+      public function get isLeft() : Boolean
+      {
+         return this._isLeft;
       }
    }
 }

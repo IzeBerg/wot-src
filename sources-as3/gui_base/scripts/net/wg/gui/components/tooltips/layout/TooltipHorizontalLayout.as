@@ -31,13 +31,11 @@ package net.wg.gui.components.tooltips.layout
          var _loc6_:DisplayObject = null;
          var _loc7_:PaddingVO = null;
          var _loc8_:Boolean = false;
-         var _loc9_:int = 0;
-         var _loc10_:int = 0;
          var _loc2_:Vector.<BlockDataItemVO> = param1.data.blocks;
          var _loc3_:int = _loc2_.length;
          var _loc4_:int = param1.data.layoutGap;
-         _loc9_ = _loc3_ > 0 ? int(-_loc4_) : int(0);
-         _loc10_ = 0;
+         var _loc9_:int = _loc3_ > 0 ? int(-_loc4_) : int(0);
+         var _loc10_:int = 0;
          var _loc11_:int = 0;
          var _loc12_:int = 0;
          while(_loc12_ < _loc3_)

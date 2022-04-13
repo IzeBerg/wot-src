@@ -127,6 +127,8 @@ BATTLE_RESULTS = [
  (
   'destructiblesHits', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_ALL),
  (
+  'destructibleDeaths', list, [], None, 'extend', ENTRY_TYPE.VEHICLE_ALL),
+ (
   'numDefended', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_ALL),
  (
   'accountDBID', int, 0, None, 'any', ENTRY_TYPE.VEHICLE_ALL),
@@ -702,4 +704,6 @@ BATTLE_RESULTS = [
  (
   'startAmmo', list, [], None, 'skip', ENTRY_TYPE.SERVER),
  (
-  'initialVehicleAmmo', list, [], None, 'skip', ENTRY_TYPE.SERVER)]
+  'initialVehicleAmmo', list, [], None, 'skip', ENTRY_TYPE.SERVER),
+ (
+  'replayURL', str, '', None, 'skip', ENTRY_TYPE.ACCOUNT_SELF)]

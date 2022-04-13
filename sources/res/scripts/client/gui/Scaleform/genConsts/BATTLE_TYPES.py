@@ -5,6 +5,7 @@ class BATTLE_TYPES(object):
     RANDOM = 'random'
     TRAINING = 'training'
     EPIC_TRAINING = 'epicTraining'
+    RTS_TRAINING = 'rtsTraining'
     TEAM = 'team'
     TUTORIAL = 'tutorial'
     CTF = 'ctf'

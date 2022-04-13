@@ -1,17 +1,15 @@
-import logging, typing
+import logging
 from enum import unique, Enum
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.shared.formatters import time_formatters, text_styles
 from gui.periodic_battles.models import AlertData, PrimeTimeStatus
-from helpers import dependency, i18n, time_utils, int2roman
+from helpers import dependency, i18n, time_utils
 from items import vehicles
 from items.components.supply_slot_categories import SlotCategories
 from shared_utils import first
 from skeletons.connection_mgr import IConnectionManager
 from skeletons.gui.game_control import IEpicBattleMetaGameController
-if typing.TYPE_CHECKING:
-    from season_common import GameSeason
 _logger = logging.getLogger(__name__)
 FRONTLINE_HIDDEN_TAG = 'fr_hidden'
 _EPIC_GAME_PARAMS = {'artillery': {'cooldownTime': 'Cooldown', 
@@ -39,7 +37,8 @@ _EPIC_GAME_PARAMS = {'artillery': {'cooldownTime': 'Cooldown',
              'areaLength_areaWidth-targetedArea': 'Targeted Area (length, width)', 
              'projectilesNumber': 'Grenades', 
              'totalDuration': 'Smoke Lifetime', 
-             'visionRadiusFactor': 'visionRadiusFactor'}, 
+             'attrFactorMods/circularVisionRadius': 'visionRadiusFactor', 
+             'attrFactorMods/crewRolesFactor': 'crewRoles'}, 
    'passive_engineering': {'resupplyCooldownFactor': 'Resupply Circle Refresh', 
                            'resupplyHealthPointsFactor': 'Resupply Speed', 
                            'captureSpeedFactor': 'Capture Speed', 
@@ -120,11 +119,11 @@ class NestedValuesMixin(DisplayValuesMixin):
     def _getParamValue(cls, curEq, param):
         param = _getAttrName(param)
         params = param.split('/')
-        curValue = cls.__getEqParam(curEq, params)
+        curValue = cls._getEqParam(curEq, params)
         return _getFormattedNum(curValue)
 
     @classmethod
-    def __getEqParam(cls, eq, params):
+    def _getEqParam(cls, eq, params):
         data = {}
         if hasattr(eq, params[0]):
             data = getattr(eq, params[0])
@@ -159,6 +158,16 @@ class NestedPercentValueMixin(NestedValuesMixin):
     def _getParamValue(cls, curEq, param):
         value = super(NestedPercentValueMixin, cls)._getParamValue(curEq, param)
         return value * 100 - 100
+
+
+class NestedAbsPercentTupleValueMixin(NestedValuesMixin):
+
+    @classmethod
+    def _getParamValue(cls, curEq, param):
+        param = _getAttrName(param)
+        params = param.split('/')
+        curValue = cls._getEqParam(curEq, params)
+        return abs(_getFormattedNum(curValue[0]) * 100)
 
 
 class DirectPercentValueMixin(DirectValuesMixin):
@@ -281,6 +290,10 @@ class NestedPercentNumericTextParam(TextParam, NestedPercentValueMixin):
     pass
 
 
+class NestedAbsPercentNumbericTextParam(TextParam, NestedAbsPercentTupleValueMixin):
+    pass
+
+
 class DirectPercentNumericTextParam(TextParam, DirectPercentValueMixin):
     pass
 
@@ -342,7 +355,8 @@ epicEquipmentParameterFormaters = {'cooldownTime': DirectNumericTextParam.update
    'selfIncreaseFactors/crewRolesFactor': NestedPercentNumericTextParam.updateParams, 
    'resupplyShellsFactor': PercentNumericTextParam.updateParams, 
    '#epic_battle:abilityInfo/params/fl_regenerationKit/minesDamageReduceFactor/value': FixedTextParam.updateParams, 
-   'visionRadiusFactor': AbsPercentNumericTextParam.updateParams, 
+   'attrFactorMods/circularVisionRadius': NestedAbsPercentNumbericTextParam.updateParams, 
+   'attrFactorMods/crewRolesFactor': NestedAbsPercentNumbericTextParam.updateParams, 
    'radius': DirectMetersTextParam.updateParams}
 
 def checkIfVehicleIsHidden(intCD):
@@ -397,14 +411,12 @@ def createEpicParam(curLvlEq, tooltipIdentifier):
         return
 
 
-def getTimeToEndStr(timeStamp, season=None):
-    resID = R.strings.epic_battle.tooltips.timeToEnd.season() if season is not None and season.isSingleCycleSeason() else R.strings.epic_battle.tooltips.timeToEnd.cycle()
-    return backport.text(resID, timeLeft=_getTimeLeftStr(timeStamp))
+def getTimeToEndStr(timeStamp):
+    return backport.text(R.strings.epic_battle.tooltips.timeToEnd(), timeLeft=_getTimeLeftStr(timeStamp))
 
 
-def getTimeToStartStr(timeStamp, season=None):
-    resID = R.strings.epic_battle.tooltips.timeToStart.season() if season is not None and season.isSingleCycleSeason() else R.strings.epic_battle.tooltips.timeToStart.cycle()
-    return backport.text(resID, timeLeft=_getTimeLeftStr(timeStamp))
+def getTimeToStartStr(timeStamp):
+    return backport.text(R.strings.epic_battle.tooltips.timeToStart(), timeLeft=_getTimeLeftStr(timeStamp))
 
 
 @dependency.replace_none_kwargs(epicController=IEpicBattleMetaGameController)
@@ -438,19 +450,17 @@ def _getAlertStatusText(timeLeft, hasAvailableServers, connectionMgr=None, epicC
             if nextSeason is not None:
                 nextCycle = nextSeason.getNextByTimeCycle(currTime)
                 if nextCycle is not None:
-                    cycleNumber = nextCycle.getEpicCycleNumber()
                     if nextCycle.announceOnly:
-                        alertStr = backport.text(rAlertMsgBlock.announcement(), cycle=int2roman(cycleNumber))
+                        alertStr = backport.text(rAlertMsgBlock.announcement())
                     else:
                         timeLeftStr = time_formatters.getTillTimeByResource(nextCycle.startDate - currTime, R.strings.epic_battle.status.timeLeft, removeLeadingZeros=True)
-                        alertStr = backport.text(rAlertMsgBlock.startIn(), cycle=int2roman(cycleNumber), time=timeLeftStr)
+                        alertStr = backport.text(rAlertMsgBlock.startIn(), time=timeLeftStr)
             if not alertStr:
                 prevSeason = currSeason or epicController.getPreviousSeason()
                 if prevSeason is not None:
                     prevCycle = prevSeason.getLastActiveCycleInfo(currTime)
                     if prevCycle is not None:
-                        cycleNumber = prevCycle.getEpicCycleNumber()
-                        alertStr = backport.text(rAlertMsgBlock.noCycleMessage(), cycle=int2roman(cycleNumber))
+                        alertStr = backport.text(rAlertMsgBlock.noCycleMessage())
     return text_styles.vehicleStatusCriticalText(alertStr)
 
 

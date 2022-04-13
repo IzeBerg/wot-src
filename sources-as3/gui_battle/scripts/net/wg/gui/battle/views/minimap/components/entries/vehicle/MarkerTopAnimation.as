@@ -14,6 +14,7 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
       public function MarkerTopAnimation()
       {
          super();
+         mouseEnabled = mouseChildren = false;
       }
       
       public function playAnim(param1:String) : void

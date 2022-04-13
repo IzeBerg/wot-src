@@ -433,7 +433,7 @@ package net.wg.infrastructure.managers.impl
          var layer:int = param1;
          var item:IManagedContent = param2;
          var stayInvisible:Boolean = param3;
-         if(!(layer in this._containersMap))
+         if(layer >= this._containersMap.length || !this._containersMap[layer])
          {
             assert(true,"Failed to add to container layer " + layer);
             return false;

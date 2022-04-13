@@ -216,6 +216,7 @@
 		<_76mm_S-54_MapsTraining_Player_MT_1>51</_76mm_S-54_MapsTraining_Player_MT_1>
 		<_85mm_D5T-85BM_MapsTraining_Player_MT_2>60</_85mm_D5T-85BM_MapsTraining_Player_MT_2>
 		<_107mm_ZiS-6_MapsTraining_Dummy_HT_2>63</_107mm_ZiS-6_MapsTraining_Dummy_HT_2>
+		<Commander>64008</Commander>
 	</ids>
 	<shared>
 		<_12.7mm_DSHK>
@@ -15303,45 +15304,45 @@
 				</whileGunDamaged>
 			</shotDispersionFactors>
 			<shots>
-				<_122mm_53-VBR-471B>
+				<_122mm_3BM145>
 					<defaultPortion>
 						0.9
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>780</speed>
+					<speed>1400</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->
 					</gravity>
 					<maxDistance>720</maxDistance>
-					<piercingPower>226 182</piercingPower>
-				</_122mm_53-VBR-471B>
-				<_122mm_53-VBR-471D>
+					<piercingPower>233 210</piercingPower>
+				</_122mm_3BM145>
+				<_122mm_3VBK61>
 					<defaultPortion>
 						0.0
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>975</speed>
+					<speed>820</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->
 					</gravity>
 					<maxDistance>720</maxDistance>
-					<piercingPower>248 226</piercingPower>
-				</_122mm_53-VBR-471D>
-				<_122mm_53-VOF-471>
+					<piercingPower>285 285</piercingPower>
+				</_122mm_3VBK61>
+				<_122mm_UOF-471>
 					<defaultPortion>
 						0.1
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>780</speed>
+					<speed>790</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->
 					</gravity>
 					<maxDistance>720</maxDistance>
 					<piercingPower>61 61</piercingPower>
-				</_122mm_53-VOF-471>
+				</_122mm_UOF-471>
 			</shots>
 		</_122mm_S34_II>
 		<_122mm_S34_II_dualgun>
@@ -21466,6 +21467,117 @@
 				</_37mm_UOT1>
 			</shots>
 		</Observer>
+		<Commander>
+			<userString>#ussr_vehicles:_37mm_Gochkins</userString>
+			<tags/>
+			<level>1</level>
+			<price>0</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.24
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.28
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>small</recoilEffect>
+			</recoil>
+			<effects>shot_Gochkins_auto</effects>
+			<pitchLimits>
+				<minPitch>
+					0.0 -25.0 1.0 -25.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 8.0 1.0 8.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>
+				52.5
+				<!--BW_String-->
+			</rotationSpeed>
+			<reloadTime>
+				2.28571428571429
+				<!--BW_String-->
+			</reloadTime>
+			<maxAmmo>92</maxAmmo>
+			<aimingTime>
+				2.28571428571429
+				<!--BW_String-->
+			</aimingTime>
+			<weight>104</weight>
+			<maxHealth>54</maxHealth>
+			<maxRegenHealth>27</maxRegenHealth>
+			<repairCost>2</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.537142857142857
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.16
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					4.0
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_37mm_UBRT1>
+					<defaultPortion>
+						1.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>442</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>34 27</piercingPower>
+				</_37mm_UBRT1>
+				<_37mm_BPT1>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>354</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>44 44</piercingPower>
+				</_37mm_BPT1>
+				<_37mm_UOT1>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>442</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>19 19</piercingPower>
+				</_37mm_UOT1>
+			</shots>
+		</Commander>
 		<_152mm_BL-10_IGR>
 			<userString>#igr_vehicles:_152mm_BL-10_IGR</userString>
 			<tags/>

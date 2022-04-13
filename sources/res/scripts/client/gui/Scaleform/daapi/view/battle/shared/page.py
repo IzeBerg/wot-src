@@ -1,4 +1,4 @@
-import logging, typing, BattleReplay, aih_constants
+import logging, typing, BigWorld, BattleReplay, aih_constants
 from AvatarInputHandler import aih_global_binding
 from account_helpers.settings_core.settings_constants import SPGAim
 from frameworks.wulf import WindowLayer
@@ -58,7 +58,10 @@ class _SharedComponentsConfig(ComponentsConfig):
     def __init__(self):
         super(_SharedComponentsConfig, self).__init__((
          (
-          BATTLE_CTRL_ID.HIT_DIRECTION, (_ALIASES.PREDICTION_INDICATOR, _ALIASES.HIT_DIRECTION)),
+          BATTLE_CTRL_ID.HIT_DIRECTION,
+          (
+           _ALIASES.PREDICTION_INDICATOR,
+           _ALIASES.HIT_DIRECTION)),
          (
           BATTLE_CTRL_ID.BATTLE_NOTIFIER, (_ALIASES.BATTLE_NOTIFIER,)),
          (
@@ -104,6 +107,12 @@ class SharedPage(BattlePageMeta):
     def isGuiVisible(self):
         return self._isVisible
 
+    def onMouseWheel(self, delta):
+        inputHandler = getattr(BigWorld.player(), 'inputHandler', None)
+        if inputHandler is not None:
+            inputHandler.handleMouseEvent(0, 0, delta * 40)
+        return
+
     def reload(self):
         self._stopBattleSession()
         self.__onPostMortemReload()
@@ -123,6 +132,7 @@ class SharedPage(BattlePageMeta):
             component.setOwner(self.app)
 
         self.addListener(events.GameEvent.RADIAL_MENU_CMD, self._handleRadialMenuCmd, scope=EVENT_BUS_SCOPE.BATTLE)
+        self.addListener(events.GameEvent.NUMBER_CMD, self._processNum, scope=EVENT_BUS_SCOPE.BATTLE)
         self.addListener(events.GameEvent.FULL_STATS, self._handleToggleFullStats, scope=EVENT_BUS_SCOPE.BATTLE)
         self.addListener(events.GameEvent.FULL_STATS_QUEST_PROGRESS, self._handleToggleFullStatsQuestProgress, scope=EVENT_BUS_SCOPE.BATTLE)
         self.addListener(events.GameEvent.TOGGLE_GUI, self._handleGUIToggled, scope=EVENT_BUS_SCOPE.BATTLE)
@@ -136,6 +146,7 @@ class SharedPage(BattlePageMeta):
         self.addListener(events.GameEvent.CALLOUT_DISPLAY_EVENT, self.__handleCalloutDisplayEvent, scope=EVENT_BUS_SCOPE.GLOBAL)
         self.addListener(events.ViewEventType.LOAD_VIEW, self.__handleLobbyEvent, scope=EVENT_BUS_SCOPE.BATTLE)
         self.addListener(events.GameEvent.DESTROY_TIMERS_PANEL, self.__destroyTimersListener, scope=EVENT_BUS_SCOPE.BATTLE)
+        self.addListener(events.GameEvent.TOGGLE_DEBUG_PIERCING_PANEL, self.__toggleDebugPiercingPanel, scope=EVENT_BUS_SCOPE.BATTLE)
         self.gameplay.postStateEvent(PlayerEventID.AVATAR_SHOW_GUI)
 
     @uniprof.regionDecorator(label='avatar.show_gui', scope='exit')
@@ -145,6 +156,7 @@ class SharedPage(BattlePageMeta):
             component.close()
 
         self.removeListener(events.GameEvent.BATTLE_LOADING, self.__handleBattleLoading, scope=EVENT_BUS_SCOPE.BATTLE)
+        self.removeListener(events.GameEvent.NUMBER_CMD, self._processNum, scope=EVENT_BUS_SCOPE.BATTLE)
         self.removeListener(events.GameEvent.RADIAL_MENU_CMD, self._handleRadialMenuCmd, scope=EVENT_BUS_SCOPE.BATTLE)
         self.removeListener(events.GameEvent.FULL_STATS, self._handleToggleFullStats, scope=EVENT_BUS_SCOPE.BATTLE)
         self.removeListener(events.GameEvent.FULL_STATS_QUEST_PROGRESS, self._handleToggleFullStatsQuestProgress, scope=EVENT_BUS_SCOPE.BATTLE)
@@ -158,6 +170,7 @@ class SharedPage(BattlePageMeta):
         self.removeListener(events.GameEvent.CALLOUT_DISPLAY_EVENT, self.__handleCalloutDisplayEvent, scope=EVENT_BUS_SCOPE.GLOBAL)
         self.removeListener(events.ViewEventType.LOAD_VIEW, self.__handleLobbyEvent, scope=EVENT_BUS_SCOPE.BATTLE)
         self.removeListener(events.GameEvent.DESTROY_TIMERS_PANEL, self.__destroyTimersListener, scope=EVENT_BUS_SCOPE.BATTLE)
+        self.removeListener(events.GameEvent.TOGGLE_DEBUG_PIERCING_PANEL, self.__toggleDebugPiercingPanel, scope=EVENT_BUS_SCOPE.BATTLE)
         self._stopBattleSession()
         super(SharedPage, self)._dispose()
 
@@ -244,6 +257,9 @@ class SharedPage(BattlePageMeta):
     def _handleHelpEvent(self, event):
         raise NotImplementedError
 
+    def _processNum(self, event):
+        pass
+
     def _onBattleLoadingStart(self):
         self._isBattleLoading = True
         if not self._blToggling:
@@ -309,6 +325,9 @@ class SharedPage(BattlePageMeta):
             else:
                 self._onDestroyTimerFinish()
         return
+
+    def __toggleDebugPiercingPanel(self, event):
+        self.as_togglePiercingPanelS()
 
     def _switchToPostmortem(self):
         alias = _ALIASES.CONSUMABLES_PANEL

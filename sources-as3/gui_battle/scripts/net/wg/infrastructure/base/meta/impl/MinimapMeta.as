@@ -11,6 +11,10 @@ package net.wg.infrastructure.base.meta.impl
       
       public var applyNewSize:Function;
       
+      public var handleMouseOverUIMinimap:Function;
+      
+      public var onHoverEntry:Function;
+      
       public function MinimapMeta()
       {
          super();
@@ -26,6 +30,18 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.applyNewSize,"applyNewSize" + Errors.CANT_NULL);
          this.applyNewSize(param1);
+      }
+      
+      public function handleMouseOverUIMinimapS(param1:Number) : void
+      {
+         App.utils.asserter.assertNotNull(this.handleMouseOverUIMinimap,"handleMouseOverUIMinimap" + Errors.CANT_NULL);
+         this.handleMouseOverUIMinimap(param1);
+      }
+      
+      public function onHoverEntryS(param1:Number) : void
+      {
+         App.utils.asserter.assertNotNull(this.onHoverEntry,"onHoverEntry" + Errors.CANT_NULL);
+         this.onHoverEntry(param1);
       }
    }
 }

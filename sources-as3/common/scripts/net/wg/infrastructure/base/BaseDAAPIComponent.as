@@ -12,8 +12,6 @@ package net.wg.infrastructure.base
    {
        
       
-      private var _disposed:Boolean = false;
-      
       private var _isDAAPIInited:Boolean = false;
       
       public function BaseDAAPIComponent()
@@ -51,7 +49,6 @@ package net.wg.infrastructure.base
             {
                parent.removeChild(this);
             }
-            this._disposed = true;
             dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_AFTER_DISPOSE));
          }
          catch(error:WGGUIException)
@@ -75,7 +72,7 @@ package net.wg.infrastructure.base
       
       public function get disposed() : Boolean
       {
-         return this._disposed;
+         return isDisposed();
       }
       
       protected function onPopulate() : void

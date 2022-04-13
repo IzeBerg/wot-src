@@ -980,23 +980,13 @@
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/trade_in)
+				$PARAMS(/unified_trade_in)
 				<name>tradeIn</name>
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(/trade_in_personal)
-				<name>trade_in_personal</name>
-				<type>url</type>
-			</item>
-			<item>
-				$PARAMS(/trade-off-overlay)
+				$PARAMS(/unified-trade-in-vehicle-to-sell-change-overlay)
 				<name>tradeOffOverlay</name>
-				<type>url</type>
-			</item>
-			<item>
-				$PARAMS(/trade-off-personal-overlay)
-				<name>personalTradeOffOverlay</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1103,8 +1093,18 @@
 				<type>url</type>
 			</item>
 			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/7BPContentPage#bp7extrachapter/
+				<name>extraInfoPage</name>
+				<type>url</type>
+			</item>
+			<item>
 				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/7BPIntroVideo/
 				<name>introVideo</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/7BPExtraChapter/
+				<name>extraIntroVideo</name>
 				<type>url</type>
 			</item>
 			<item>
@@ -1122,6 +1122,10 @@
 					<item>
 						<type>int</type>
 						<value>3</value>
+					</item>
+					<item>
+						<type>int</type>
+						<value>4</value>
 					</item>
 				</value>
 			</item>
@@ -1774,6 +1778,80 @@
 			</item>
 			<item>
 				https://ru.wargaming.net/support/$LANGUAGE_CODE/help/login/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>rtsIntroVideoURL</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022Video/
+				<name>NA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022Video/
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022Video/
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022Video/
+				<name>CN</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022Video/
+				<name>CT</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022Video/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>rtsInfoPageURL</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022/
+				<name>NA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022/
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022/
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022/
+				<name>CN</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022/
+				<name>CT</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022/
 				<name>default</name>
 				<type>url</type>
 			</item>

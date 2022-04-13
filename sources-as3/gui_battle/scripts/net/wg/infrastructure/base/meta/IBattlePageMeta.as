@@ -21,5 +21,7 @@ package net.wg.infrastructure.base.meta
       function as_createRoleDescription() : void;
       
       function as_setArtyShotIndicatorFlag(param1:Boolean) : void;
+      
+      function as_togglePiercingPanel() : void;
    }
 }

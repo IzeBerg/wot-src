@@ -192,8 +192,7 @@ class ArcadeCamera(CameraWithSettings, CallbackDelayer, TimeDeltaMeter):
                 self.__aimingSystem.addVolumeGroup(self.__adCfg['volumeGroups'][group_name])
 
         self.setCameraDistance(self._cfg['startDist'])
-        self.__aimingSystem.pitch = self._cfg['startAngle']
-        self.__aimingSystem.yaw = Math.Matrix(targetMat).yaw
+        self.setYawPitch(Math.Matrix(targetMat).yaw, self._cfg['startAngle'])
         self.__aimingSystem.cursorShouldCheckCollisions(True)
         self.__updateAngles(0, 0)
         cameraPosProvider = Math.Vector4Translation(self.__aimingSystem.matrix)
@@ -279,8 +278,8 @@ class ArcadeCamera(CameraWithSettings, CallbackDelayer, TimeDeltaMeter):
             if closesDist:
                 camDist = self.__distRange.min
         elif postmortemParams is not None:
-            self.__aimingSystem.yaw = postmortemParams[0][0]
-            self.__aimingSystem.pitch = postmortemParams[0][1]
+            yawPitch = postmortemParams[0]
+            self.setYawPitch(yawPitch[0], yawPitch[1])
             camDist = postmortemParams[1]
         else:
             camDist = self.__distRange.max
@@ -510,6 +509,8 @@ class ArcadeCamera(CameraWithSettings, CallbackDelayer, TimeDeltaMeter):
         matInv = Matrix(self.__aimingSystem.matrix)
         matInv.invert()
         self.__inputInertia.glide(matInv.applyVector(worldDeltaPos), duration=duration, easing=easing)
+        if not self.__isSettingsEnabled(GAME.SCROLL_SMOOTHING):
+            self.__inputInertia.update(duration)
 
     def __checkNewDistance(self, newDistance):
         distMinMax = self.__distRange

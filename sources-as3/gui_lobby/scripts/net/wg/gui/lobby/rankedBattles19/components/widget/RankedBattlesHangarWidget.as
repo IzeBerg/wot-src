@@ -239,8 +239,6 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
          this.shineAnim.hitArea = this._hitArea;
          this.shineAnim.mouseEnabled = this.shineAnim.mouseChildren = false;
          addEventListener(MouseEvent.CLICK,this.onClickHandler);
-         this.rankLeft.addEventListener(RankWidgetEvent.BLINK_STARTED,this.onRankLeftBlinkStartedHandler);
-         this.rankRight.addEventListener(RankWidgetEvent.BLINK_STARTED,this.onRankRightBlinkStartedHandler);
          App.soundMgr.addSoundsHdlrs(this);
          this.division.visible = false;
          this.useButtonMode();
@@ -263,8 +261,6 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
          this._scheduler.cancelTask(this.showReflectionCallback);
          removeEventListener(MouseEvent.CLICK,this.onClickHandler);
          this.removeHoverListeners();
-         this.rankLeft.removeEventListener(RankWidgetEvent.BLINK_STARTED,this.onRankLeftBlinkStartedHandler);
-         this.rankRight.removeEventListener(RankWidgetEvent.BLINK_STARTED,this.onRankRightBlinkStartedHandler);
          this.stepsContainer.removeEventListener(StepEvent.STEP_ANIM_IN_PROGRESS,this.onStepsContStepAnimInProgressHandler);
          super.onBeforeDispose();
       }
@@ -1028,22 +1024,6 @@ package net.wg.gui.lobby.rankedBattles19.components.widget
       public function get marginTop() : int
       {
          return 0;
-      }
-      
-      private function onRankLeftBlinkStartedHandler(param1:RankWidgetEvent) : void
-      {
-         if(!this._model.isHuge)
-         {
-            onSoundTriggerS(RANKEDBATTLES_ALIASES.SOUND_RANK_BLINK);
-         }
-      }
-      
-      private function onRankRightBlinkStartedHandler(param1:RankWidgetEvent) : void
-      {
-         if(!this._model.isHuge)
-         {
-            onSoundTriggerS(RANKEDBATTLES_ALIASES.SOUND_RANK_BLINK);
-         }
       }
       
       private function onClickHandler(param1:MouseEvent) : void

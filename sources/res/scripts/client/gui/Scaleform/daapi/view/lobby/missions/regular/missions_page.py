@@ -1,6 +1,7 @@
 import weakref
 from collections import namedtuple
 import typing, BigWorld, Windowing
+from constants import ARENA_BONUS_TYPE
 from CurrentVehicle import g_currentVehicle
 from account_helpers import AccountSettings
 from account_helpers.AccountSettings import MISSIONS_PAGE
@@ -26,7 +27,7 @@ from gui.battle_pass.battle_pass_helpers import isBattlePassDailyQuestsIntroShow
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.marathon.marathon_event_controller import getMarathons
-from gui.server_events import caches, settings
+from gui.server_events import caches, settings, events_helpers
 from gui.server_events.events_dispatcher import hideMissionDetails, showMissionDetails
 from gui.server_events.events_helpers import isLinkedSet
 from gui.shared import event_bus_handlers, events, g_eventBus
@@ -184,7 +185,7 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
         if enterEvent is not None:
             self.soundManager.playSound(enterEvent)
         g_currentVehicle.onChanged += self.__updateHeader
-        self.battlePassCtrl.onSeasonStateChange += self.__updateHeader
+        self.battlePassCtrl.onSeasonStateChanged += self.__updateHeader
         self.marathonsCtrl.onVehicleReceived += self.__onMarathonVehicleReceived
         Windowing.addWindowAccessibilitynHandler(self.__onWindowAccessibilityChanged)
         if self.marathonsCtrl.isAnyActive():
@@ -215,7 +216,7 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
         Windowing.removeWindowAccessibilityHandler(self.__onWindowAccessibilityChanged)
         self.marathonsCtrl.onVehicleReceived -= self.__onMarathonVehicleReceived
         g_currentVehicle.onChanged -= self.__updateHeader
-        self.battlePassCtrl.onSeasonStateChange -= self.__updateHeader
+        self.battlePassCtrl.onSeasonStateChanged -= self.__updateHeader
         self.removeListener(MissionsEvent.ON_GROUPS_DATA_CHANGED, self.__onPageUpdate, EVENT_BUS_SCOPE.LOBBY)
         self.removeListener(MissionsEvent.ON_FILTER_CHANGED, self.__onFilterChanged, EVENT_BUS_SCOPE.LOBBY)
         self.removeListener(MissionsEvent.ON_FILTER_CLOSED, self.__onFilterClosed, EVENT_BUS_SCOPE.LOBBY)
@@ -427,7 +428,13 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
         return (headerTab, tab)
 
     def __elenHasEvents(self):
-        return self.lobbyContext.getServerSettings().isElenEnabled() and self.eventsController.hasEvents()
+        if self.lobbyContext.getServerSettings().isElenEnabled():
+            evts = self.eventsController.getEventsSettingsData().getEvents()
+            for evt in evts:
+                if evt.getBattleType() not in ARENA_BONUS_TYPE.RTS_RANGE:
+                    return True
+
+        return False
 
     def __filterApplied(self):
         for attr in self.__filterData:
@@ -584,6 +591,7 @@ class MissionView(MissionViewBase):
         result = []
         self._totalQuestsCount = 0
         self._filteredQuestsCount = 0
+        self._appendBanner(result)
         for data in self._builder.getBlocksData(self.__viewQuests, self.__filter):
             self._appendBlockDataToResult(result, data)
             self._totalQuestsCount += self._getQuestTotalCountFromBlockData(data)
@@ -638,6 +646,8 @@ class MissionView(MissionViewBase):
         settings.updateCommonEventsSettings(self.__viewQuests)
 
     def __filter(self, event):
+        if events_helpers.isRts(event.getID()):
+            return False
         if self._filterData.get(HIDE_UNAVAILABLE, False) and not event.isAvailable()[0]:
             return False
         if self._filterData.get(HIDE_DONE, False) and event.isCompleted():
@@ -646,6 +656,9 @@ class MissionView(MissionViewBase):
 
     def _getViewQuestFilter(self):
         return
+
+    def _appendBanner(self, _):
+        pass
 
     def __onPremiumTypeChanged(self, newAcctType):
         self.markVisited()

@@ -17,6 +17,8 @@ package
       
       public static const SOUNDS_SPEAKERS_OPTIONALSUB:String = "#settings:sounds/speakers/optionalsub";
       
+      public static const CURSOR_OVERLAPCONTOUR_TOOLTIP:String = "#settings:cursor/overlapContour/tooltip";
+      
       public static const LANGUAGE_CODE:String = "#settings:LANGUAGE_CODE";
       
       public static const WINDOWTITLE:String = "#settings:windowTitle";
@@ -824,6 +826,44 @@ package
       public static const CURSOR_SNIPPERTITLE:String = "#settings:cursor/SnipperTitle";
       
       public static const CURSOR_ARTYTITLE:String = "#settings:cursor/ArtyTitle";
+      
+      public static const CURSOR_CONTOURTITLE:String = "#settings:cursor/ContourTitle";
+      
+      public static const CURSOR_CONTOURLABEL:String = "#settings:cursor/contourLabel";
+      
+      public static const CURSOR_CONTOUR_TYPE0:String = "#settings:cursor/contour/type0";
+      
+      public static const CURSOR_CONTOUR_TYPE1:String = "#settings:cursor/contour/type1";
+      
+      public static const CURSOR_CONTOUR_TYPE0_TOOLTIP:String = "#settings:cursor/contour/type0/tooltip";
+      
+      public static const CURSOR_CONTOUR_TYPE1_TOOLTIP:String = "#settings:cursor/contour/type1/tooltip";
+      
+      public static const CURSOR_OVERLAPCONTOUR:String = "#settings:cursor/overlapContour";
+      
+      public static const CURSOR_OVERLAPCONTOURLABEL:String = "#settings:cursor/overlapContourLabel";
+      
+      public static const CURSOR_OVERLAPCONTOUR_TOOLTIP_HEADER:String = "#settings:cursor/overlapContour/tooltip/header";
+      
+      public static const CURSOR_OVERLAPCONTOUR_TOOLTIP_BODY:String = "#settings:cursor/overlapContour/tooltip/body";
+      
+      public static const CURSOR_OVERLAPCONTOUR_TOOLTIP_ATTENTION:String = "#settings:cursor/overlapContour/tooltip/attention";
+      
+      public static const CURSOR_CONTOURPENETRABLEZONE:String = "#settings:cursor/contourPenetrableZone";
+      
+      public static const CURSOR_CONTOURPENETRABLEZONE_TYPE0:String = "#settings:cursor/contourPenetrableZone/type0";
+      
+      public static const CURSOR_CONTOURPENETRABLEZONE_TYPE1:String = "#settings:cursor/contourPenetrableZone/type1";
+      
+      public static const CURSOR_CONTOURPENETRABLEZONE_TYPE2:String = "#settings:cursor/contourPenetrableZone/type2";
+      
+      public static const CURSOR_CONTOURIMPENETRABLEZONE:String = "#settings:cursor/contourImpenetrableZone";
+      
+      public static const CURSOR_CONTOURIMPENETRABLEZONE_TYPE0:String = "#settings:cursor/contourImpenetrableZone/type0";
+      
+      public static const CURSOR_CONTOURIMPENETRABLEZONE_TYPE1:String = "#settings:cursor/contourImpenetrableZone/type1";
+      
+      public static const CURSOR_CONTOURIMPENETRABLEZONE_TYPE2:String = "#settings:cursor/contourImpenetrableZone/type2";
       
       public static const CURSOR_SERVERAIM:String = "#settings:cursor/ServerAim";
       

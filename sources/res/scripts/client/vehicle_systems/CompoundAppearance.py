@@ -130,7 +130,8 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
             self.__dirtUpdateTime = BigWorld.time()
         BigWorld.player().arena.onPeriodChange += self.__arenaPeriodChanged
         BigWorld.player().arena.onVehicleUpdated += self.__vehicleUpdated
-        BigWorld.player().inputHandler.onCameraChanged += self._onCameraChanged
+        inputHandler = BigWorld.player().inputHandler
+        inputHandler.onCameraChanged += self._onCameraChanged
         if self.detailedEngineState is not None:
             engine_state.checkEngineStart(self.detailedEngineState, BigWorld.player().arena.period)
         self.__activated = True
@@ -142,7 +143,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         else:
             self.__engineStarted = False
             self.__activated = False
-            self.highlighter.removeHighlight()
+            self.highlighter.deactivate()
             super(CompoundAppearance, self).deactivate()
             if self.__inSpeedTreeCollision:
                 BigWorld.setSpeedTreeCollisionBody(None)
@@ -274,11 +275,11 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         CallbackDelayer.destroy(self)
         return
 
-    def construct(self, isPlayer, resourceRefs):
-        super(CompoundAppearance, self).construct(isPlayer, resourceRefs)
+    def construct(self, isPlayer, isControllableVehicle, resourceRefs):
+        super(CompoundAppearance, self).construct(isPlayer, isControllableVehicle, resourceRefs)
         if self.damageState.effect is not None:
             self.playEffect(self.damageState.effect, SpecialKeyPointNames.STATIC)
-        self.highlighter = Highlighter(self.isAlive)
+        self.highlighter = Highlighter(self.isAlive, self.collisions)
         if isPlayer and BigWorld.player().isInTutorial:
             self.tutorialMatKindsController = TutorialMatKindsController()
             self.tutorialMatKindsController.terrainGroundTypesLink = lambda : self.terrainGroundType
@@ -548,14 +549,18 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         if isUnderWater and self.damageState.effect not in ('submersionDeath', ):
             self._stopEffects()
         if self._vehicle is not None:
-            extra = self._vehicle.typeDescriptor.extrasDict['fire']
-            if extra.isRunningFor(self._vehicle):
-                extra.checkUnderwater(self._vehicle, isUnderWater)
+            if self._vehicle.isOnFire():
+                self._vehicle.fire.onUnderWaterSwitch(isUnderWater)
         return
 
     def updateTracksScroll(self, leftScroll, rightScroll):
         if self.trackScrollController is not None:
             self.trackScrollController.setExternal(leftScroll, rightScroll)
+        return
+
+    def disableExternalTracksScroll(self):
+        if self.trackScrollController is not None:
+            self.trackScrollController.disableExternal()
         return
 
     def __onPeriodicTimerEngine(self):
@@ -672,13 +677,25 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
     def _onCameraChanged(self, cameraName, currentVehicleId=None):
         if self.engineAudition is not None:
             self.engineAudition.onCameraChanged(cameraName, currentVehicleId if currentVehicleId is not None else 0)
+        if self.suspensionSound is not None:
+            self.suspensionSound.onCameraChanged(cameraName, currentVehicleId if currentVehicleId is not None else 0)
         if self.tracks is not None:
             if cameraName == 'sniper':
                 self.tracks.sniperMode(True)
             else:
                 self.tracks.sniperMode(False)
+        if self._vehicle and self._vehicle.isOnFire():
+            self._vehicle.fire.onCameraChanged(self.id == currentVehicleId)
         super(CompoundAppearance, self)._onCameraChanged(cameraName, currentVehicleId=currentVehicleId)
         return
+
+    def setIsPlayerVehicle(self, isPlayerVehicle):
+        from vehicle_systems.model_assembler import _NPC_UPDATE_PERIOD, _PLAYER_UPDATE_PERIOD
+        if self.detailedEngineState:
+            self.detailedEngineState.setIsPlayerVehicle(isPlayerVehicle)
+            self.detailedEngineState.updatePeriod = _PLAYER_UPDATE_PERIOD if isPlayerVehicle else _NPC_UPDATE_PERIOD
+        if self.engineAudition:
+            self.engineAudition.setUpdatePeriod(_PLAYER_UPDATE_PERIOD if isPlayerVehicle else _NPC_UPDATE_PERIOD)
 
     def __updateTransmissionScroll(self):
         self._commonSlip = 0.0

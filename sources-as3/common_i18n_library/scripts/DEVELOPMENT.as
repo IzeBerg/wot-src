@@ -173,7 +173,7 @@ package
       
       public static const ADDITIONALREWARDS_CUSTOMIZATIONS_DECAL:String = "#development:additionalRewards/customizations/decal";
       
-      public static const ADDITIONALREWARDS_CUSTOMIZATIONS_PROJECTION_DECAL:String = "#development:additionalRewards/customizations/projection_decal";
+      public static const ADDITIONALREWARDS_CUSTOMIZATIONS_PROJECTIONDECAL:String = "#development:additionalRewards/customizations/projectionDecal";
       
       public static const ADDITIONALREWARDS_CUSTOMIZATIONS_MODIFICATION:String = "#development:additionalRewards/customizations/modification";
       
@@ -214,6 +214,34 @@ package
       public static const DIALOGTEMPLATES_ERROR_TITLE:String = "#development:dialogTemplates/error/title";
       
       public static const DIALOGTEMPLATES_ERROR_DESCRIPTION:String = "#development:dialogTemplates/error/description";
+      
+      public static const PIERCINGDEBUGPANEL_HEADER_SHELLTYPE:String = "#development:piercingDebugPanel/header/shellType";
+      
+      public static const PIERCINGDEBUGPANEL_HEADER_PIERCINGPOWER:String = "#development:piercingDebugPanel/header/piercingPower";
+      
+      public static const PIERCINGDEBUGPANEL_HEADER_DISPERSION:String = "#development:piercingDebugPanel/header/dispersion";
+      
+      public static const PIERCINGDEBUGPANEL_TABLE_VEHPART:String = "#development:piercingDebugPanel/table/vehPart";
+      
+      public static const PIERCINGDEBUGPANEL_TABLE_ARMOR:String = "#development:piercingDebugPanel/table/armor";
+      
+      public static const PIERCINGDEBUGPANEL_TABLE_ANGLE:String = "#development:piercingDebugPanel/table/angle";
+      
+      public static const PIERCINGDEBUGPANEL_TABLE_PENETRATIONARMOR:String = "#development:piercingDebugPanel/table/penetrationArmor";
+      
+      public static const PIERCINGDEBUGPANEL_TABLE_PIERCINGPOWERLEFT:String = "#development:piercingDebugPanel/table/piercingPowerLeft";
+      
+      public static const PIERCINGDEBUGPANEL_TABLE_PIERCINGPERCENT:String = "#development:piercingDebugPanel/table/piercingPercent";
+      
+      public static const PIERCINGDEBUGPANEL_VEHPART_TRACKS:String = "#development:piercingDebugPanel/vehPart/tracks";
+      
+      public static const PIERCINGDEBUGPANEL_VEHPART_WHEELS:String = "#development:piercingDebugPanel/vehPart/wheels";
+      
+      public static const PIERCINGDEBUGPANEL_VEHPART_ARMOR:String = "#development:piercingDebugPanel/vehPart/armor";
+      
+      public static const PIERCINGDEBUGPANEL_VEHPART_SCREEN:String = "#development:piercingDebugPanel/vehPart/screen";
+      
+      public static const PIERCINGDEBUGPANEL_RICOCHET:String = "#development:piercingDebugPanel/ricochet";
        
       
       public function DEVELOPMENT()

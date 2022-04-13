@@ -167,6 +167,14 @@
 					barracksItemRenderer
 					barracksItemRendererEmpty</groups>
 			</rendererNormal>
+			<colorSettings>
+				<sounds>
+					<wwover>highlight</wwover>
+					<wwout>highlight</wwout>
+					<wwpress>play</wwpress>
+				</sounds>
+				<groups>colorSettingsButtonRenderer</groups>
+			</colorSettings>
 			<timerTick>
 				<sounds>
 					<wwpress>cybersport_timer</wwpress>
@@ -283,6 +291,41 @@
 				</sounds>
 				<groups/>
 			</postProgressionModules>
+			<rtsSpawnMenuAutoSetBtn>
+				<sounds>
+					<wwover>highlight</wwover>
+					<wwpress>ui_r4_respawn_selection_auto</wwpress>
+				</sounds>
+				<groups/>
+			</rtsSpawnMenuAutoSetBtn>
+			<rtsSpawnMenuResetBtn>
+				<sounds>
+					<wwover>highlight</wwover>
+					<wwpress>ui_r4_respawn_deselection</wwpress>
+				</sounds>
+				<groups/>
+			</rtsSpawnMenuResetBtn>
+			<rtsSpawnMenuAllyVehicleItem>
+				<sounds>
+					<wwover>highlight</wwover>
+					<wwpress>ui_r4_ally_selected_interface</wwpress>
+				</sounds>
+				<groups/>
+			</rtsSpawnMenuAllyVehicleItem>
+			<rtsSpawnMenuVehicleEntry>
+				<sounds>
+					<wwover>highlight</wwover>
+					<wwpress>ui_r4_ally_selected_interface</wwpress>
+				</sounds>
+				<groups/>
+			</rtsSpawnMenuVehicleEntry>
+			<rtsSpawnMenuPlacePointEntry>
+				<sounds>
+					<wwover>ui_r4_respawn_hover</wwover>
+					<wwpress>ui_r4_respawn_selection</wwpress>
+				</sounds>
+				<groups/>
+			</rtsSpawnMenuPlacePointEntry>
 		</schemas>
 		<overrides/>
 	</controls>
@@ -436,5 +479,7 @@
 		<ev_mapbox_enter>ev_mapbox_enter</ev_mapbox_enter>
 		<ev_mapbox_exit>ev_mapbox_exit</ev_mapbox_exit>
 		<tank_selection>tank_selection</tank_selection>
+		<shop_arrows>arrows</shop_arrows>
+		<shop_tank_slot>tank_slot</shop_tank_slot>
 	</effects>
 </root>

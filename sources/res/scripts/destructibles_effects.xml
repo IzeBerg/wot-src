@@ -43,48 +43,6 @@
 				</effects>
 			</variant1>
 		</inf_deadtree_touchdown>
-		<inf_tree_poplar_fall>
-			<variant1>
-				<stages>
-					<base>
-						4.0
-						<!--BW_String-->
-					</base>
-				</stages>
-				<effects>
-					<pixie>
-						<startKey>base</startKey>
-						<file>particles/Environment/trees/Broadleaves/inf_tree_Poplar_fall.eff</file>
-						<force>1</force>
-					</pixie>
-					<destructionSound>
-						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
-					</destructionSound>
-				</effects>
-			</variant1>
-		</inf_tree_poplar_fall>
-		<inf_tree_poplar_touchdown>
-			<variant1>
-				<stages>
-					<base>
-						4.0
-						<!--BW_String-->
-					</base>
-				</stages>
-				<effects>
-					<pixie>
-						<startKey>base</startKey>
-						<file>particles/Environment/trees/Broadleaves/inf_tree_Poplar_touchdown.eff</file>
-						<force>1</force>
-					</pixie>
-					<destructionSound>
-						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
-					</destructionSound>
-				</effects>
-			</variant1>
-		</inf_tree_poplar_touchdown>
 		<inf_tree_horseweed_fall>
 			<variant1>
 				<stages>
@@ -127,48 +85,6 @@
 				</effects>
 			</variant1>
 		</inf_tree_horseweed_touchdown>
-		<inf_tree_grapevine_fall>
-			<variant1>
-				<stages>
-					<base>
-						4.0
-						<!--BW_String-->
-					</base>
-				</stages>
-				<effects>
-					<pixie>
-						<startKey>base</startKey>
-						<file>particles/Environment/trees/Broadleaves/inf_tree_grapevine_fall.eff</file>
-						<force>1</force>
-					</pixie>
-					<destructionSound>
-						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
-					</destructionSound>
-				</effects>
-			</variant1>
-		</inf_tree_grapevine_fall>
-		<inf_tree_grapevine_touchdown>
-			<variant1>
-				<stages>
-					<base>
-						4.0
-						<!--BW_String-->
-					</base>
-				</stages>
-				<effects>
-					<pixie>
-						<startKey>base</startKey>
-						<file>particles/Environment/trees/Broadleaves/inf_tree_grapevine_touchdown.eff</file>
-						<force>1</force>
-					</pixie>
-					<destructionSound>
-						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
-					</destructionSound>
-				</effects>
-			</variant1>
-		</inf_tree_grapevine_touchdown>
 		<inf_tree_stone_pine_fall_med>
 			<variant1>
 				<stages>
@@ -185,7 +101,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -206,7 +122,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -227,7 +143,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -248,7 +164,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -269,7 +185,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -290,7 +206,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -311,7 +227,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -332,7 +248,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -353,7 +269,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -374,7 +290,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -395,7 +311,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -416,7 +332,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -437,7 +353,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -458,7 +374,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -479,7 +395,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -500,7 +416,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -521,7 +437,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -542,7 +458,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -563,7 +479,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -584,7 +500,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -605,7 +521,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -626,7 +542,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -647,7 +563,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -668,7 +584,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -689,7 +605,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -710,7 +626,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -731,7 +647,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -752,7 +668,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -773,7 +689,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -794,7 +710,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -815,7 +731,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -836,7 +752,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -857,7 +773,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -878,7 +794,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -899,7 +815,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -920,7 +836,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -941,7 +857,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -962,7 +878,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -983,7 +899,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1004,7 +920,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1025,7 +941,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1046,7 +962,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1067,7 +983,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1088,7 +1004,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1109,7 +1025,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1130,7 +1046,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1151,7 +1067,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1172,7 +1088,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1193,7 +1109,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1214,7 +1130,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1235,7 +1151,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1256,7 +1172,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1277,7 +1193,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1298,7 +1214,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1319,7 +1235,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1340,7 +1256,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1361,7 +1277,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1382,7 +1298,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1403,7 +1319,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1424,7 +1340,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1445,7 +1361,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1466,7 +1382,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1487,7 +1403,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1508,7 +1424,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1529,7 +1445,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1550,7 +1466,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1571,7 +1487,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1592,7 +1508,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1613,7 +1529,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1634,7 +1550,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1697,7 +1613,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1752,7 +1668,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1773,7 +1689,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1794,7 +1710,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1815,7 +1731,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1836,7 +1752,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1857,7 +1773,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1878,7 +1794,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1899,7 +1815,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1920,7 +1836,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1941,7 +1857,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -1962,7 +1878,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2067,7 +1983,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2088,7 +2004,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2109,7 +2025,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_broken_treefall</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2130,7 +2046,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_broken_treefall_down</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2151,7 +2067,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2172,7 +2088,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2193,7 +2109,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2214,7 +2130,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2235,7 +2151,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2256,7 +2172,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2277,7 +2193,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2298,7 +2214,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2319,7 +2235,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_broken_treefall</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2340,7 +2256,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_broken_treefall_down</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2361,7 +2277,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2382,7 +2298,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2403,7 +2319,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2424,7 +2340,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2445,7 +2361,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2466,7 +2382,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2487,7 +2403,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2508,7 +2424,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2529,7 +2445,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2550,7 +2466,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2571,7 +2487,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2592,7 +2508,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2613,7 +2529,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2634,7 +2550,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2655,7 +2571,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2676,7 +2592,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2697,7 +2613,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2718,7 +2634,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2739,7 +2655,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2760,7 +2676,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2781,7 +2697,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2802,7 +2718,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2823,7 +2739,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2844,7 +2760,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2865,7 +2781,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2886,7 +2802,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2907,7 +2823,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2928,7 +2844,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2949,7 +2865,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2970,7 +2886,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -2991,7 +2907,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3012,7 +2928,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3033,7 +2949,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3054,7 +2970,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3075,7 +2991,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3096,7 +3012,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3117,7 +3033,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3138,7 +3054,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3159,7 +3075,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3180,7 +3096,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3201,7 +3117,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3222,7 +3138,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3243,7 +3159,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3264,7 +3180,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3285,7 +3201,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3306,7 +3222,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3327,7 +3243,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3348,7 +3264,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3369,7 +3285,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3390,7 +3306,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3411,7 +3327,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3432,7 +3348,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3453,7 +3369,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3474,7 +3390,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3495,7 +3411,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3516,7 +3432,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3537,7 +3453,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3558,7 +3474,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3579,7 +3495,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3600,7 +3516,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3621,7 +3537,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3642,7 +3558,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3663,7 +3579,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3684,7 +3600,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3705,7 +3621,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3726,7 +3642,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3747,7 +3663,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3768,7 +3684,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3789,7 +3705,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3810,7 +3726,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3831,7 +3747,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3852,7 +3768,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3873,7 +3789,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3894,7 +3810,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3915,7 +3831,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3936,7 +3852,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3957,7 +3873,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3978,7 +3894,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -3999,7 +3915,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -4020,7 +3936,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -4041,7 +3957,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -4062,7 +3978,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -4083,7 +3999,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -4104,7 +4020,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -4125,7 +4041,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -4146,7 +4062,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -4167,7 +4083,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -4188,7 +4104,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -4209,7 +4125,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -4230,7 +4146,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_med</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -4251,7 +4167,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -4272,7 +4188,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_big</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -4293,7 +4209,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_creak</wwsound>
+						<wwsound>obj_treefall_creak_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -4314,7 +4230,7 @@
 					</pixie>
 					<destructionSound>
 						<startKey>base</startKey>
-						<wwsound>obj_treefall_down</wwsound>
+						<wwsound>obj_treefall_down_small</wwsound>
 					</destructionSound>
 				</effects>
 			</variant1>
@@ -11096,6 +11012,34 @@
 				</effects>
 			</variant1>
 		</inf_env_AM_016_AdvertisingBigBoard_02_01_hit>
+		<hd_env_AM_025_WoodConstructions_Tile_01>
+			<variant1>
+				<stages>
+					<base>
+						4.0
+						<!--BW_String-->
+					</base>
+				</stages>
+				<effects>
+					<pixie>
+						<startKey>base</startKey>
+						<file>particles/Environment/objects/hd_env_AM_025_WoodConstructions_Tile_01.eff</file>
+						<force>1</force>
+					</pixie>
+					<destructionSound>
+						<startKey>base</startKey>
+						<wwsound>obj_generative</wwsound>
+						<params>
+							<metal_2>12</metal_2>
+							<wood_1>70</wood_1>
+							<wood_2>24</wood_2>
+							<debrisAmount>100</debrisAmount>
+							<weight>5500</weight>
+						</params>
+					</destructionSound>
+				</effects>
+			</variant1>
+		</hd_env_AM_025_WoodConstructions_Tile_01>
 		<inf_bld004_LittleStoneShed_01>
 			<variant1>
 				<stages>
@@ -58190,26 +58134,13 @@
 						<startKey>base</startKey>
 						<wwsound>obj_generative</wwsound>
 						<params>
-							<wood_1>
-								68.66
-								<!--BW_String-->
-							</wood_1>
-							<glass>
-								23.51
-								<!--BW_String-->
-							</glass>
+							<wood_1>67.000000</wood_1>
 							<debrisAmount>
 								49.88
 								<!--BW_String-->
 							</debrisAmount>
-							<weight>
-								7761.21
-								<!--BW_String-->
-							</weight>
-							<metal_1>
-								30.74
-								<!--BW_String-->
-							</metal_1>
+							<weight>6379.000000</weight>
+							<wood_2>31.000000</wood_2>
 						</params>
 					</destructionSound>
 				</effects>
@@ -58233,26 +58164,10 @@
 						<startKey>base</startKey>
 						<wwsound>obj_generative</wwsound>
 						<params>
-							<wood_1>
-								68.66
-								<!--BW_String-->
-							</wood_1>
-							<glass>
-								23.51
-								<!--BW_String-->
-							</glass>
-							<debrisAmount>
-								49.88
-								<!--BW_String-->
-							</debrisAmount>
-							<weight>
-								7761.21
-								<!--BW_String-->
-							</weight>
-							<metal_1>
-								30.74
-								<!--BW_String-->
-							</metal_1>
+							<wood_1>61.000000</wood_1>
+							<debrisAmount>49.000000</debrisAmount>
+							<weight>6056.000000</weight>
+							<wood_2>21.000000</wood_2>
 						</params>
 					</destructionSound>
 				</effects>
@@ -58276,26 +58191,10 @@
 						<startKey>base</startKey>
 						<wwsound>obj_generative</wwsound>
 						<params>
-							<wood_1>
-								68.66
-								<!--BW_String-->
-							</wood_1>
-							<glass>
-								23.51
-								<!--BW_String-->
-							</glass>
-							<debrisAmount>
-								49.88
-								<!--BW_String-->
-							</debrisAmount>
-							<weight>
-								7761.21
-								<!--BW_String-->
-							</weight>
-							<metal_1>
-								30.74
-								<!--BW_String-->
-							</metal_1>
+							<wood_1>60.000000</wood_1>
+							<debrisAmount>49.000000</debrisAmount>
+							<weight>5976.000000</weight>
+							<wood_2>15.000000</wood_2>
 						</params>
 					</destructionSound>
 				</effects>
@@ -58319,26 +58218,13 @@
 						<startKey>base</startKey>
 						<wwsound>obj_generative</wwsound>
 						<params>
-							<wood_1>
-								68.66
-								<!--BW_String-->
-							</wood_1>
-							<glass>
-								23.51
-								<!--BW_String-->
-							</glass>
+							<wood_1>60.000000</wood_1>
 							<debrisAmount>
 								49.88
 								<!--BW_String-->
 							</debrisAmount>
-							<weight>
-								7761.21
-								<!--BW_String-->
-							</weight>
-							<metal_1>
-								30.74
-								<!--BW_String-->
-							</metal_1>
+							<weight>6380.000000</weight>
+							<wood_2>30.000000</wood_2>
 						</params>
 					</destructionSound>
 				</effects>
@@ -58366,22 +58252,11 @@
 								68.66
 								<!--BW_String-->
 							</wood_1>
-							<glass>
-								23.51
-								<!--BW_String-->
-							</glass>
 							<debrisAmount>
 								49.88
 								<!--BW_String-->
 							</debrisAmount>
-							<weight>
-								7761.21
-								<!--BW_String-->
-							</weight>
-							<metal_1>
-								30.74
-								<!--BW_String-->
-							</metal_1>
+							<weight>5579.000000</weight>
 						</params>
 					</destructionSound>
 				</effects>

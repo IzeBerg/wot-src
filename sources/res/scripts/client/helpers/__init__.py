@@ -1,4 +1,4 @@
-import types, BigWorld, ResMgr, Settings, i18n, constants
+import types, weakref, BigWorld, ResMgr, Settings, i18n, constants
 from debug_utils import LOG_CURRENT_EXCEPTION
 from soft_exception import SoftException
 VERSION_FILE_PATH = '../version.xml'
@@ -205,3 +205,9 @@ class ClanQuestButtonHandler(object):
         url = value.get('action_url', '') if isinstance(value, dict) else ''
         showClanQuestWindow(getClanQuestURL() + url)
         return
+
+
+def weakProxy(obj):
+    if type(obj).__name__ != 'weakproxy':
+        return weakref.proxy(obj)
+    return obj

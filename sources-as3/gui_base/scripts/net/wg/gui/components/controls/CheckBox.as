@@ -8,6 +8,8 @@ package net.wg.gui.components.controls
    import net.wg.infrastructure.exceptions.AbstractException;
    import net.wg.infrastructure.interfaces.ITextContainer;
    import net.wg.infrastructure.interfaces.entity.ISoundable;
+   import net.wg.infrastructure.managers.ISoundManager;
+   import net.wg.infrastructure.managers.ITooltipMgr;
    import scaleform.clik.constants.ConstrainMode;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.controls.CheckBox;
@@ -31,9 +33,9 @@ package net.wg.gui.components.controls
       
       private static const INFO_INV:String = "infoInv";
       
-      private static const HIT_MARGIN_WIDTH:Number = 4;
+      private static const HIT_MARGIN_WIDTH:uint = 4;
       
-      private static const HIT_MARGIN_HEIGHT:Number = 4;
+      private static const HIT_MARGIN_HEIGHT:uint = 4;
       
       private static const INV_MOUSE_ENABLED:String = "invMouseEnabled";
       
@@ -43,7 +45,7 @@ package net.wg.gui.components.controls
       
       private static const TEXT_ALIGN_EXCEPTION:String = "setter CheckBox::textAlign";
       
-      private static const HEIGHT_PADDING:int = 5;
+      private static const HEIGHT_PADDING:uint = 5;
        
       
       [Inspectable(type="String")]
@@ -75,6 +77,8 @@ package net.wg.gui.components.controls
       
       private var _infoIcoType:String = "";
       
+      private var _infoTooltipMaxWidth:uint = 0;
+      
       private var _hitHeight:int;
       
       private var _hitWidth:int;
@@ -83,9 +87,15 @@ package net.wg.gui.components.controls
       
       private var _showLabel:Boolean = true;
       
+      private var _soundMgr:ISoundManager;
+      
+      private var _toolTipMgr:ITooltipMgr;
+      
       public function CheckBox()
       {
          this.tooltipType = ToolTipShowType.COMPLEX;
+         this._soundMgr = App.soundMgr;
+         this._toolTipMgr = App.toolTipMgr;
          super();
       }
       
@@ -93,10 +103,12 @@ package net.wg.gui.components.controls
       {
          this.hit = null;
          this.tooltipType = null;
-         if(App.soundMgr)
+         if(this._soundMgr)
          {
-            App.soundMgr.removeSoundHdlrs(this);
+            this._soundMgr.removeSoundHdlrs(this);
+            this._soundMgr = null;
          }
+         this._toolTipMgr = null;
          if(this._infoIco)
          {
             this.removeInfoIco();
@@ -128,9 +140,9 @@ package net.wg.gui.components.controls
             this._hitHeight = this.hit.height;
             this._hitWidth = this.hit.width;
          }
-         if(App.soundMgr != null)
+         if(this._soundMgr)
          {
-            App.soundMgr.addSoundsHdlrs(this);
+            this._soundMgr.addSoundsHdlrs(this);
          }
       }
       
@@ -170,6 +182,7 @@ package net.wg.gui.components.controls
                   isInvalid(VISIBILITY_INV);
                }
                this._infoIco.tooltipType = this.tooltipType;
+               this._infoIco.tooltipMaxWidth = this._infoTooltipMaxWidth;
                this._infoIco.tooltip = this._tooltip;
                this._infoIco.icoType = this._infoIcoType;
                this.repositionInfoIcon();
@@ -218,12 +231,6 @@ package net.wg.gui.components.controls
          }
       }
       
-      override public function set visible(param1:Boolean) : void
-      {
-         super.visible = param1;
-         invalidate(VISIBILITY_INV);
-      }
-      
       override protected function updateAfterStateChange() : void
       {
          super.updateAfterStateChange();
@@ -261,23 +268,28 @@ package net.wg.gui.components.controls
       
       public function hideTooltip() : void
       {
-         if(App.toolTipMgr)
+         if(this._toolTipMgr)
          {
-            App.toolTipMgr.hide();
+            this._toolTipMgr.hide();
          }
+      }
+      
+      public function setInfoIconTooltipWidth(param1:uint) : void
+      {
+         this._infoTooltipMaxWidth = param1;
       }
       
       public function showTooltip() : void
       {
-         if(this._tooltip && App.toolTipMgr && !this._infoIco)
+         if(this._tooltip && this._toolTipMgr && !this._infoIco)
          {
             if(this.tooltipType.value == ToolTipShowType.COMPLEX.value)
             {
-               App.toolTipMgr.showComplex(this._tooltip);
+               this._toolTipMgr.showComplex(this._tooltip);
             }
             else if(this.tooltipType.value == ToolTipShowType.SPECIAL.value)
             {
-               App.toolTipMgr.showSpecial(this._tooltip,null);
+               this._toolTipMgr.showSpecial(this._tooltip,null);
             }
          }
       }
@@ -334,6 +346,21 @@ package net.wg.gui.components.controls
             owner.removeChild(this._infoIco);
             this._infoIco = null;
          }
+      }
+      
+      private function resetText() : void
+      {
+         if(textField && textField.text && textField.text.length > 0)
+         {
+            textField.text = EMPTY_STR;
+            invalidate(INVALIDATION_TEXT_FIELD_SIZE);
+         }
+      }
+      
+      override public function set visible(param1:Boolean) : void
+      {
+         super.visible = param1;
+         invalidate(VISIBILITY_INV);
       }
       
       override public function set label(param1:String) : void
@@ -532,6 +559,21 @@ package net.wg.gui.components.controls
          invalidate(TEXT_FORMAT_INV);
       }
       
+      public function get showLabel() : Boolean
+      {
+         return this._showLabel;
+      }
+      
+      public function set showLabel(param1:Boolean) : void
+      {
+         if(this._showLabel == param1)
+         {
+            return;
+         }
+         this._showLabel = param1;
+         invalidate(INVALIDATION_LABEL_VISIBILITY);
+      }
+      
       override protected function handleMouseRollOver(param1:MouseEvent) : void
       {
          super.handleMouseRollOver(param1);
@@ -553,30 +595,6 @@ package net.wg.gui.components.controls
       private function onConstraintsResizeHandler(param1:ResizeEvent) : void
       {
          invalidate(INVALIDATION_TEXT_FIELD_SIZE);
-      }
-      
-      public function set showLabel(param1:Boolean) : void
-      {
-         if(this._showLabel == param1)
-         {
-            return;
-         }
-         this._showLabel = param1;
-         invalidate(INVALIDATION_LABEL_VISIBILITY);
-      }
-      
-      public function get showLabel() : Boolean
-      {
-         return this._showLabel;
-      }
-      
-      private function resetText() : void
-      {
-         if(textField && textField.text && textField.text.length > 0)
-         {
-            textField.text = EMPTY_STR;
-            invalidate(INVALIDATION_TEXT_FIELD_SIZE);
-         }
       }
    }
 }

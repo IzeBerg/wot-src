@@ -580,7 +580,6 @@ def _migrateTo70(core, data, initialized):
     spgAim[SPGAim.SPG_STRATEGIC_CAM_MODE] = 0
     spgAim[SPGAim.AUTO_CHANGE_AIM_MODE] = True
     spgAim[SPGAim.AIM_ENTRANCE_MODE] = 0
-    spgAim[SPGAim.SCROLL_SMOOTHING_ENABLED] = True
 
 
 def _migrateTo71(core, data, initialized):
@@ -746,6 +745,24 @@ def _migrateTo85(core, data, initialized):
 def _migrateTo86(core, data, initialized):
     for position in range(2) + range(17, 18):
         data['clear']['battlePassStorage'] = data['clear'].get('battlePassStorage', 0) | 1 << position
+
+
+def _migrateTo87(core, data, initialized):
+    gameData = data['gameExtData2']
+    gameData[GAME.SCROLL_SMOOTHING] = True
+
+
+def _migrateTo88(core, data, initialized):
+    data['battlePassStorage'][BattlePassStorageKeys.EXTRA_CHAPTER_INTRO_SHOWN] = False
+    data['battlePassStorage'][BattlePassStorageKeys.EXTRA_CHAPTER_VIDEO_SHOWN] = False
+
+
+def _migrateTo89(core, data, initialized):
+    from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS
+    from account_helpers.settings_core.settings_constants import CONTOUR
+    data[SETTINGS_SECTIONS.CONTOUR][CONTOUR.ENHANCED_CONTOUR] = False
+    data[SETTINGS_SECTIONS.CONTOUR][CONTOUR.CONTOUR_PENETRABLE_ZONE] = 0
+    data[SETTINGS_SECTIONS.CONTOUR][CONTOUR.CONTOUR_IMPENETRABLE_ZONE] = 0
 
 
 _versions = (
@@ -918,7 +935,13 @@ _versions = (
  (
   85, _migrateTo85, False, False),
  (
-  86, _migrateTo86, False, False))
+  86, _migrateTo86, False, False),
+ (
+  87, _migrateTo87, False, False),
+ (
+  88, _migrateTo88, False, False),
+ (
+  89, _migrateTo89, False, False))
 
 @async
 @process

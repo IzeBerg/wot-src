@@ -62,9 +62,17 @@ package net.wg.gui.lobby.settings
       
       private static const ARTY_TAB_INDEX:int = 2;
       
+      private static const CONTOUR_TAB_INDEX:int = 3;
+      
       private static const ARTY_SHOT_NOTIFY_NORMAL:String = "red";
       
       private static const ARTY_SHOT_NOTIFY_COLORBLIND:String = "purple";
+      
+      private static const CONTOUR_TAB_NAME:String = "contour";
+      
+      private static const CONTOUR_PENETRABLE_ZONE_TAB_NAME:String = "contourPenetrableZone";
+      
+      private static const CONTOUR_IMPENETRABLE_ZONE_TAB_NAME:String = "contourImpenetrableZone";
        
       
       private var _aimData:AimSettingsDataVo = null;
@@ -107,6 +115,7 @@ package net.wg.gui.lobby.settings
          arcadeForm.addEventListener(SettingViewEvent.ON_CONTROL_NEW_COUNTERS_VISITED,this.onFormOnControlNewCountersVisitedHandler);
          sniperForm.addEventListener(SettingViewEvent.ON_CONTROL_NEW_COUNTERS_VISITED,this.onFormOnControlNewCountersVisitedHandler);
          spgForm.addEventListener(SettingViewEvent.ON_CONTROL_NEW_COUNTERS_VISITED,this.onFormOnControlNewCountersVisitedHandler);
+         contourForm.addEventListener(SettingViewEvent.ON_CONTROL_NEW_COUNTERS_VISITED,this.onFormOnControlNewCountersVisitedHandler);
       }
       
       override protected function setData(param1:SettingsDataVo) : void
@@ -168,6 +177,7 @@ package net.wg.gui.lobby.settings
          arcadeForm.removeEventListener(SettingViewEvent.ON_CONTROL_NEW_COUNTERS_VISITED,this.onFormOnControlNewCountersVisitedHandler);
          sniperForm.removeEventListener(SettingViewEvent.ON_CONTROL_NEW_COUNTERS_VISITED,this.onFormOnControlNewCountersVisitedHandler);
          spgForm.removeEventListener(SettingViewEvent.ON_CONTROL_NEW_COUNTERS_VISITED,this.onFormOnControlNewCountersVisitedHandler);
+         contourForm.removeEventListener(SettingViewEvent.ON_CONTROL_NEW_COUNTERS_VISITED,this.onFormOnControlNewCountersVisitedHandler);
          this._colorSchemeMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemesUpdatedHandler);
          this._colorSchemeMgr = null;
          super.onBeforeDispose();
@@ -288,6 +298,11 @@ package net.wg.gui.lobby.settings
          }
          artyShotIndicatorsPanel.visible = artyShotNotify.visible = param1 == ARTY_TAB_INDEX && _loc3_[SHOTS_RESULT_INDICATOR_STR];
          artyZoomPanel.visible = param1 == ARTY_TAB_INDEX && _loc3_[SPG_SCALE_WIDGET_STR];
+         contourCrosshair.visible = param1 == CONTOUR_TAB_INDEX;
+         if(contourCrosshair.visible)
+         {
+            contourCrosshair.updateData(_loc3_[CONTOUR_TAB_NAME],_loc3_[CONTOUR_PENETRABLE_ZONE_TAB_NAME],_loc3_[CONTOUR_IMPENETRABLE_ZONE_TAB_NAME]);
+         }
          if(_loc18_)
          {
             _loc18_.setCenterType(_loc4_);
@@ -338,6 +353,7 @@ package net.wg.gui.lobby.settings
          var _loc2_:Boolean = this._colorSchemeMgr.getIsColorBlindS();
          artyShotIndicatorsPanel.setDummyData(_loc2_);
          artyShotNotify.gotoAndStop(!!_loc2_ ? ARTY_SHOT_NOTIFY_COLORBLIND : ARTY_SHOT_NOTIFY_NORMAL);
+         contourCrosshair.isColorBlind = _loc2_;
       }
    }
 }

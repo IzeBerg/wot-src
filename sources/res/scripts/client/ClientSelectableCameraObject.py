@@ -86,7 +86,7 @@ class ClientSelectableCameraObject(ClientSelectableObject, CallbackDelayer, Time
         self.__startFov = None
         self.__goalFov = None
         if self.enableYawLimits:
-            self.__yawLimits = Math.Vector2(self.yawLimitMin, self.yawLimitMax)
+            self.__yawLimits = Math.Vector2(math.degrees(self.yawLimitMin), math.degrees(self.yawLimitMax))
         else:
             self.__yawLimits = None
         self.__pitchLimits = Math.Vector2(math.degrees(self.pitchLimitMin), math.degrees(self.pitchLimitMax))
@@ -94,6 +94,7 @@ class ClientSelectableCameraObject(ClientSelectableObject, CallbackDelayer, Time
         self.__p2 = Math.Vector3(0.0, 0.0, 0.0)
         self.__wasPreviousUpdateSkipped = False
         self.camDistState = CameraDistanceModes.DEFAULT
+        self._distLimits = None
         return
 
     def onEnterWorld(self, prereqs):
@@ -229,9 +230,15 @@ class ClientSelectableCameraObject(ClientSelectableObject, CallbackDelayer, Time
     def __teleportHangarSpaceCamera(self):
         yaw = self.cameraYaw
         pitch = -1 * self.cameraPitch
-        camLimits = (
-         self.__pitchLimits, self.__yawLimits, None)
+        self.__refreshCameraLimits()
+        camLimits = (self.__pitchLimits, self.__yawLimits, self._distLimits)
         self.hangarSpace.space.setCameraLocation(self.__goalTarget, self.cameraPivot, yaw, pitch, self.__goalDistance, camLimits, False, IMMEDIATE_CAMERA_MOVEMENT_MODE)
+
+    def __refreshCameraLimits(self):
+        if self.enableYawLimits:
+            self.__yawLimits = Math.Vector2(math.degrees(self.yawLimitMin), math.degrees(self.yawLimitMax))
+        else:
+            self.__yawLimits = None
         return
 
     def __update(self):

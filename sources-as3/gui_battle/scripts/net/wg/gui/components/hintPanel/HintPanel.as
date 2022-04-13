@@ -5,7 +5,6 @@ package net.wg.gui.components.hintPanel
    import flash.display.MovieClip;
    import flash.display.Sprite;
    import flash.events.Event;
-   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.BATTLE_SOUND;
    import net.wg.gui.battle.events.BattleSoundEvent;
    import net.wg.infrastructure.base.meta.IBattleHintPanelMeta;
@@ -143,47 +142,42 @@ package net.wg.gui.components.hintPanel
          super.onDispose();
       }
       
-      public function as_setData(param1:String, param2:String, param3:String, param4:int, param5:int, param6:Boolean) : void
+      public function as_setData(param1:String, param2:String, param3:String, param4:String, param5:int, param6:int, param7:Boolean) : void
       {
-         if(param1 != this._keyValue)
+         if(param2 != this._keyValue)
          {
-            this._keyValue = param1;
-            this._keySelected = Boolean(param1);
+            this._keyValue = param2;
+            this._keySelected = Boolean(param2);
             if(this._keySelected)
             {
-               this.keyAnim.setKey(param1);
-               this.keyEffectAnim.setKey(param1);
+               this.keyAnim.setKey(param1,param2);
+               this.keyEffectAnim.setKey(param1,param2);
             }
          }
          if(this._keySelected)
          {
-            if(param2 != this._messageLeft)
+            if(param3 != this._messageLeft)
             {
-               this._messageLeft = param2;
-               this.messageLeftAnim.setText(param2);
+               this._messageLeft = param3;
+               this.messageLeftAnim.setText(param3);
                this.messageLeftAnim.setTextFieldWidth(this.messageLeftAnim.textFieldContainer.textField.textWidth + TEXTFIELD_PADDING);
             }
          }
-         if(param3 != this._messageRight)
+         if(param4 != this._messageRight)
          {
-            this._messageRight = param3;
-            this.messageRightAnim.setText(param3);
+            this._messageRight = param4;
+            this.messageRightAnim.setText(param4);
             this.messageRightAnim.setTextFieldWidth(this.messageRightAnim.textFieldContainer.textField.textWidth + TEXTFIELD_PADDING);
          }
-         this._offsetX = param4;
-         this._offsetY = param5;
-         this._reducedPanning = param6;
+         this._offsetX = param5;
+         this._offsetY = param6;
+         this._reducedPanning = param7;
          this.update();
       }
       
       public function hide() : void
       {
          visible = false;
-      }
-      
-      public function show(param1:String, param2:String, param3:String) : void
-      {
-         this.as_setData(param1,param2,param3,Values.ZERO,Values.ZERO,false);
       }
       
       private function update() : void

@@ -1062,10 +1062,10 @@ package net.wg.infrastructure.managers.impl
          if(_loc2_)
          {
             this.clearCriteriaHash(CriteriaUtils.componentPathVoPredicate(_loc2_));
-            this._buildersMap.removeBuildersForComponent(_loc2_.viewName,_loc2_.id);
             _loc2_.foundComponent = null;
             delete this._componentToVO[param1];
             onComponentDisposedS(_loc2_.id);
+            this._buildersMap.removeBuildersForComponent(_loc2_.viewName,_loc2_.id);
          }
       }
       
@@ -1152,15 +1152,19 @@ package net.wg.infrastructure.managers.impl
       
       private function onUnboundComponentRemovedHandler(param1:Event) : void
       {
-         var _loc3_:* = null;
+         var _loc4_:* = null;
          var _loc2_:DisplayObject = DisplayObject(param1.target);
          _loc2_.removeEventListener(Event.REMOVED_FROM_STAGE,this.onUnboundComponentRemovedHandler);
-         this.unregisterComponent(_loc2_);
-         for(_loc3_ in this._unboundComponents)
+         var _loc3_:TutorialComponentPathVO = this._componentToVO[_loc2_];
+         if(_loc3_)
          {
-            if(this._unboundComponents[_loc3_] == _loc2_)
+            this.unregisterComponent(_loc2_);
+         }
+         for(_loc4_ in this._unboundComponents)
+         {
+            if(this._unboundComponents[_loc4_] == _loc2_)
             {
-               delete this._unboundComponents[_loc3_];
+               delete this._unboundComponents[_loc4_];
                break;
             }
          }

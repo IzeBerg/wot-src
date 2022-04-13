@@ -17,6 +17,8 @@ package net.wg.gui.battle.windows.vo
       
       public var image:String = "";
       
+      public var vKeys:Array;
+      
       public var buttons:Array;
       
       public var roleImage:String = "";
@@ -46,6 +48,8 @@ package net.wg.gui.battle.windows.vo
          var _loc1_:IDisposable = null;
          this.buttons.splice(0,this.buttons.length);
          this.buttons = null;
+         this.vKeys.splice(0,this.vKeys.length);
+         this.vKeys = null;
          if(this._roleActions != null)
          {
             for each(_loc1_ in this._roleActions)

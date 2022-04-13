@@ -28,15 +28,21 @@ package net.wg.gui.gameloading
       
       private static const INVALID_INFO:String = "invalidInfo";
       
-      private static const FORM_VERTICAL_OFFSET:Number = 52;
+      private static const FORM_VERTICAL_OFFSET:uint = 52;
       
-      private static const INFO_TEXT_PADDING:Number = 20;
+      private static const INFO_TEXT_PADDING:uint = 20;
       
-      private static const MAX_INFO_FONT_SIZE:Number = 64;
+      private static const MAX_INFO_FONT_SIZE:uint = 64;
       
-      private static const CHINA_AGE_RATING_OFFSET_X:Number = 30;
+      private static const CHINA_AGE_RATING_OFFSET_X:uint = 30;
       
-      private static const CHINA_AGE_RATING_OFFSET_Y:Number = 80;
+      private static const CHINA_AGE_RATING_OFFSET_Y:uint = 80;
+      
+      private static const INFO_TEXT_HEIGHT_CORRECTION:uint = 10;
+      
+      private static const INIT_COMPONENT_HALF_WIDTH:uint = StageSizeBoundaries.WIDTH_1920 >> 1;
+      
+      private static const INIT_COMPONENT_HALF_HEIGHT:uint = StageSizeBoundaries.HEIGHT_1080 >> 1;
        
       
       public var versionTF:TextField;
@@ -68,6 +74,8 @@ package net.wg.gui.gameloading
       private var _appWidth:Number;
       
       private var _appHeight:Number;
+      
+      private var _scale:Number;
       
       private var _isLocaleSet:Boolean = false;
       
@@ -195,17 +203,16 @@ package net.wg.gui.gameloading
       
       public function as_updateStage(param1:Number, param2:Number, param3:Number) : void
       {
-         if(this._appWidth == param1 && this._appHeight == param2)
+         param2 = param2 / param3 >> 0;
+         param1 = param1 / param3 >> 0;
+         if(this._appWidth == param1 && this._appHeight == param2 && param3 == this._scale)
          {
             return;
          }
-         param2 = param2 / param3 >> 0;
-         param1 = param1 / param3 >> 0;
          stage.scaleX = stage.scaleY = param3;
+         this._scale = param3;
          this._appWidth = param1;
          this._appHeight = param2;
-         x = -(param3 - 1) * ((width >> 1) + this.background.x) / param3;
-         y = -(param3 - 1) * ((height >> 1) + this.background.y) / param3;
          invalidateSize();
       }
       
@@ -213,17 +220,19 @@ package net.wg.gui.gameloading
       {
          this.background.x = App.appWidth - this.background.width >> 1;
          this.background.y = App.appHeight - this.background.height >> 1;
+         x = -(this._scale - 1) * (INIT_COMPONENT_HALF_WIDTH + this.background.x) / this._scale >> 0;
+         y = -(this._scale - 1) * (INIT_COMPONENT_HALF_HEIGHT + this.background.y) / this._scale >> 0;
       }
       
       private function relayout() : void
       {
+         this.updateBg();
          var _loc1_:Number = this._appWidth - StageSizeBoundaries.WIDTH_1024 >> 1;
          var _loc2_:Number = this._appHeight - StageSizeBoundaries.HEIGHT_768 >> 1;
          this.versionTF.x = this._initVersionTFPos.x - _loc1_;
          this.versionTF.y = this._initVersionTFPos.y - _loc2_;
          this.form.y = this.wotLogo.y + FORM_VERTICAL_OFFSET ^ 0;
          this.copyright.y = this._initCopyrightPos.y + _loc2_;
-         this.updateBg();
          this.relayoutForLocale(_loc1_,_loc2_);
       }
       
@@ -263,7 +272,7 @@ package net.wg.gui.gameloading
                this._infoTF.setTextFormat(_loc4_);
             }
          }
-         this._infoTF.height = this._infoTF.textHeight + 10;
+         this._infoTF.height = this._infoTF.textHeight + INFO_TEXT_HEIGHT_CORRECTION;
       }
       
       private function relayoutChina(param1:Number, param2:Number) : void

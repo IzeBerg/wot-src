@@ -32,7 +32,6 @@ class IntroView(ViewImpl):
     def _onLoading(self, *args, **kwargs):
         super(IntroView, self)._onLoading(*args, **kwargs)
         self.__updateBattlePassState()
-        self.__showIntroVideo(onStart=True)
         with self.viewModel.transaction() as (tx):
             vehIntCDs = self.__battlePassController.getSpecialVehicles()
             capacity = self.__battlePassController.getVehicleProgression(vehIntCDs[0])[1]
@@ -50,20 +49,20 @@ class IntroView(ViewImpl):
          (
           self.viewModel.onVideo, self.__showIntroVideo),
          (
-          self.__battlePassController.onBattlePassSettingsChange, self.__updateBattlePassState))
+          self.__battlePassController.onBattlePassSettingsChange, self.__updateBattlePassState),
+         (
+          self.__battlePassController.onSeasonStateChanged, self.__updateBattlePassState))
 
-    def __onSubmit(self):
+    @staticmethod
+    def __onSubmit():
         showMissionsBattlePass()
 
-    def __showIntroVideo(self, onStart=False):
-        settings = self.__settingsCore.serverSettings
-        if onStart:
-            if settings.getBPStorage().get(BattlePassStorageKeys.INTRO_VIDEO_SHOWN):
-                return False
-            settings.saveInBPStorage({BattlePassStorageKeys.INTRO_VIDEO_SHOWN: True})
+    @staticmethod
+    def __showIntroVideo():
         showBrowserOverlayView(getIntroVideoURL(), VIEW_ALIAS.BROWSER_OVERLAY)
-        return True
 
     def __updateBattlePassState(self, *_):
-        if not self.__battlePassController.isActive():
+        if self.__battlePassController.isPaused():
+            showMissionsBattlePass()
+        elif not self.__battlePassController.isActive():
             showHangar()

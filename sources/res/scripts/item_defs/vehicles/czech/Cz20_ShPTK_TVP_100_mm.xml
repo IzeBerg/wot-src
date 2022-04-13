@@ -16,11 +16,11 @@
 	</speedLimits>
 	<invisibility>
 		<moving>
-			0.163
+			0.169
 			<!--BW_String-->
 		</moving>
 		<still>
-			0.271
+			0.282
 			<!--BW_String-->
 		</still>
 		<camouflageBonus>
@@ -28,7 +28,7 @@
 			<!--BW_String-->
 		</camouflageBonus>
 		<firePenalty>
-			0.407
+			0.423
 			<!--BW_String-->
 		</firePenalty>
 	</invisibility>
@@ -3384,10 +3384,13 @@
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
 					<shotDispersionRadius>
-						0.33
+						0.3
 						<!--BW_String-->
 					</shotDispersionRadius>
-					<reloadTime>6</reloadTime>
+					<reloadTime>
+						5.4
+						<!--BW_String-->
+					</reloadTime>
 					<shotDispersionFactors>
 						<turretRotation>
 							0.08
@@ -3598,6 +3601,7 @@
 							<isUVProportional>true</isUVProportional>
 						</slot>
 					</customizationSlots>
+					<edgeByVisualModel>false</edgeByVisualModel>
 					<camouflage>
 						<density>
 							105.439 105.118

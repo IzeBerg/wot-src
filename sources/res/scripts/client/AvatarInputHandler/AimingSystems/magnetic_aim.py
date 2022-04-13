@@ -73,9 +73,9 @@ def magneticAimFindTarget():
 def getVehiclePointsGen(vehicle):
     vehicleDesr = vehicle.typeDescriptor
     hullPos = vehicleDesr.chassis.hullPosition
-    hullBboxMin, hullBboxMax, _ = vehicleDesr.hull.hitTester.bbox
+    hullBboxMin, hullBboxMax, _ = vehicleDesr.hitTesters.hull.bbox
     turretPosOnHull = vehicleDesr.hull.turretPositions[0]
-    turretLocalTopY = max(hullBboxMax.y, turretPosOnHull.y + vehicleDesr.turret.hitTester.bbox[1].y)
+    turretLocalTopY = max(hullBboxMax.y, turretPosOnHull.y + vehicleDesr.hitTesters.turret.bbox[1].y)
     yield Vector3(0.0, hullPos.y + turretLocalTopY, 0.0)
     gunPosOnHull = turretPosOnHull + vehicleDesr.turret.gunPosition
     yield hullPos + gunPosOnHull

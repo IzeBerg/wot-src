@@ -188,7 +188,8 @@ class SeparateItemsProcessor(ItemsProcessor):
             if purchaseItem.item.isProgressive and purchaseItem.component is not None:
                 return (purchaseItem.isEdited, not purchaseItem.isFromInventory, purchaseItem.intCD,
                  purchaseItem.component.progressionLevel, purchaseItem.selected)
-            return (not purchaseItem.isEdited, purchaseItem.isFromInventory, purchaseItem.intCD, -1, purchaseItem.selected)
+            return (not purchaseItem.isEdited, not purchaseItem.isFromInventory, purchaseItem.intCD, -1,
+             purchaseItem.selected)
 
 
 class StyleItemsProcessor(ItemsProcessor):

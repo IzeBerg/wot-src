@@ -30,6 +30,8 @@ package net.wg.infrastructure.managers.utils.impl
       
       private static const DISABLED:String = "disabled";
       
+      private static const HEAVY_STATES_RTS_TRANSPARENT_LINKAGE:String = "UniHeavyRTSTransparentStatesUI";
+      
       private static const HEAVY_STATES_BLACK_LINKAGE:String = "UniHeavyBlackStatesUI";
       
       private static const HEAVY_STATES_GREEN_LINKAGE:String = "UniHeavyGreenStatesUI";
@@ -99,6 +101,8 @@ package net.wg.infrastructure.managers.utils.impl
          this._styles[UniversalBtnStylesConst.STYLE_HEAVY_ORANGE] = new UniversalStyle(HEAVY_STATES_ORANGE_LINKAGE,DISABLE_FILL_BMD_LINKAGE,SLIM_TOGGLE_INDICATOR_LINKAGE,SLIM_TOGGLE_GLOW_LINKAGE,TF_SIZE_HEAVY,TF_COLOR,_loc8_,STATES_ORANGE_SHADOW_FILTER);
          var _loc9_:Dictionary = createTextAlphaStates(1,1,1,1,1,0.6);
          this._styles[UniversalBtnStylesConst.STYLE_HEAVY_LIME] = new UniversalStyle(HEAVY_STATES_LIME_LINKAGE,DISABLE_FILL_BMD_LINKAGE,SLIM_TOGGLE_INDICATOR_LINKAGE,SLIM_TOGGLE_GLOW_LINKAGE,TF_SIZE_HEAVY,TF_COLOR,_loc9_,STATES_BASIC_SHADOW_FILTER);
+         var _loc10_:Dictionary = createTextAlphaStates(1,1,1,1,1,0.6);
+         this._styles[UniversalBtnStylesConst.STYLE_HEAVY_RTS_TRANSPARENT] = new UniversalStyle(HEAVY_STATES_RTS_TRANSPARENT_LINKAGE,DISABLE_FILL_BMD_LINKAGE,SLIM_TOGGLE_INDICATOR_LINKAGE,SLIM_TOGGLE_GLOW_LINKAGE,TF_SIZE_HEAVY,16711404,_loc10_,null);
       }
       
       private static function createTextAlphaStates(param1:Number, param2:Number, param3:Number, param4:Number, param5:Number, param6:Number) : Dictionary

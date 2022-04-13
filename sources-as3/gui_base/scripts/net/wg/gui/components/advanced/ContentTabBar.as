@@ -54,6 +54,10 @@ package net.wg.gui.components.advanced
          if(_loc1_)
          {
             this.calculateRendererWidth();
+            if(_baseDisposed)
+            {
+               return;
+            }
             if(_buttonWidth > 0)
             {
                _loc2_ = _buttonWidth / scaleX;
@@ -63,6 +67,10 @@ package net.wg.gui.components.advanced
             {
                this.selectionBg.scaleX = 1 / scaleX;
             }
+         }
+         if(_baseDisposed)
+         {
+            return;
          }
          super.draw();
          if(isInvalid(INVALID_SEPARATOR_VISIBLE))
@@ -179,6 +187,10 @@ package net.wg.gui.components.advanced
          var _loc4_:int = 0;
          while(_loc4_ < _loc3_)
          {
+            if(_baseDisposed)
+            {
+               return;
+            }
             _loc1_ = Button(App.utils.classFactory.getComponent(_itemRenderer,Button));
             this.populateRendererData(_loc1_,_loc4_);
             _loc1_.validateNow();

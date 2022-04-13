@@ -33,3 +33,7 @@ class BattlePageMeta(View):
     def as_setArtyShotIndicatorFlagS(self, isVisible):
         if self._isDAAPIInited():
             return self.flashObject.as_setArtyShotIndicatorFlag(isVisible)
+
+    def as_togglePiercingPanelS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_togglePiercingPanel()

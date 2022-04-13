@@ -213,6 +213,10 @@ package
       
       public static const DOWNLOAD_RANKED:String = "#waiting:download/ranked";
       
+      public static const DOWNLOAD_RTS:String = "#waiting:download/rts";
+      
+      public static const DOWNLOAD_AIROSTERS:String = "#waiting:download/aiRosters";
+      
       public static const DOWNLOAD_BADGES:String = "#waiting:download/badges";
       
       public static const DOWNLOAD_EPICMETAGAME:String = "#waiting:download/epicMetaGame";
@@ -226,6 +230,8 @@ package
       public static const DOWNLOAD_ANONYMIZER:String = "#waiting:download/anonymizer";
       
       public static const DOWNLOAD_BATTLEPASS:String = "#waiting:download/battlePass";
+      
+      public static const DOWNLOAD_RTSSTATISTICS:String = "#waiting:download/rtsStatistics";
       
       public static const DOWNLOAD_GIFTSYSTEM:String = "#waiting:download/giftSystem";
       

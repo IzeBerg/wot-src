@@ -700,6 +700,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.interfaces.ISoundButton;
    import net.wg.gui.interfaces.ISoundButtonEx;
    import net.wg.gui.interfaces.IUserVO;
+   import net.wg.gui.lobby.aimSettings.AimContourContent;
    import net.wg.gui.lobby.battleResults.components.CustomAchievement;
    import net.wg.gui.lobby.colorSettings.ColorSettingsContainer;
    import net.wg.gui.lobby.colorSettings.ColorSettingsView;
@@ -739,6 +740,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.settings.SettingsArtyForm;
    import net.wg.gui.lobby.settings.SettingsBaseView;
    import net.wg.gui.lobby.settings.SettingsChangesMap;
+   import net.wg.gui.lobby.settings.SettingsContourForm;
    import net.wg.gui.lobby.settings.SettingsMarkersForm;
    import net.wg.gui.lobby.settings.SettingsNewCountersForm;
    import net.wg.gui.lobby.settings.SettingsSniperForm;
@@ -803,6 +805,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.settings.vo.config.SoundSettingsDataVo;
    import net.wg.gui.lobby.settings.vo.config.aim.AimSettingsArcadeDataVo;
    import net.wg.gui.lobby.settings.vo.config.aim.AimSettingsArtyDataVo;
+   import net.wg.gui.lobby.settings.vo.config.aim.AimSettingsContourDataVo;
    import net.wg.gui.lobby.settings.vo.config.aim.AimSettingsDataVo;
    import net.wg.gui.lobby.settings.vo.config.aim.AimSettingsSniperDataVo;
    import net.wg.gui.lobby.settings.vo.config.feedback.BattleBorderMapDataVo;
@@ -2310,6 +2313,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_INTERFACES_IUSERVO:Class = IUserVO;
       
+      public static const NET_WG_GUI_LOBBY_AIMSETTINGS_AIMCONTOURCONTENT:Class = AimContourContent;
+      
       public static const NET_WG_GUI_LOBBY_BATTLERESULTS_COMPONENTS_CUSTOMACHIEVEMENT:Class = CustomAchievement;
       
       public static const NET_WG_GUI_LOBBY_COLORSETTINGS_COLORSETTINGSCONTAINER:Class = ColorSettingsContainer;
@@ -2387,6 +2392,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_SETTINGS_SETTINGSBASEVIEW:Class = SettingsBaseView;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_SETTINGSCHANGESMAP:Class = SettingsChangesMap;
+      
+      public static const NET_WG_GUI_LOBBY_SETTINGS_SETTINGSCONTOURFORM:Class = SettingsContourForm;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_SETTINGSMARKERSFORM:Class = SettingsMarkersForm;
       
@@ -2515,6 +2522,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_SETTINGS_VO_CONFIG_AIM_AIMSETTINGSARCADEDATAVO:Class = AimSettingsArcadeDataVo;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_VO_CONFIG_AIM_AIMSETTINGSARTYDATAVO:Class = AimSettingsArtyDataVo;
+      
+      public static const NET_WG_GUI_LOBBY_SETTINGS_VO_CONFIG_AIM_AIMSETTINGSCONTOURDATAVO:Class = AimSettingsContourDataVo;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_VO_CONFIG_AIM_AIMSETTINGSDATAVO:Class = AimSettingsDataVo;
       

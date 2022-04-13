@@ -300,6 +300,12 @@ package net.wg.gui.lobby.settings.config
       private static const ARTY_FORM_STR:String = ARTY_STR + "Form";
       
       private static const ARTY_CROSSHAIR_STR:String = ARTY_STR + "Crosshair";
+      
+      private static const CONTOUR_STR:String = "contour";
+      
+      private static const CONTOUR_FORM_STR:String = CONTOUR_STR + "Form";
+      
+      private static const CONTOUR_CROSSHAIR_STR:String = CONTOUR_FORM_STR + "Crosshair";
        
       
       private var _settingsData:SettingsDataVo;
@@ -369,6 +375,12 @@ package net.wg.gui.lobby.settings.config
             "id":ARTY_STR,
             "formID":ARTY_FORM_STR,
             "crosshairID":ARTY_CROSSHAIR_STR
+         }),new CursorTabsDataVo({
+            "label":SETTINGS.CURSOR_CONTOURTITLE,
+            "linkage":CONTOUR_STR,
+            "id":CONTOUR_STR,
+            "formID":CONTOUR_FORM_STR,
+            "crosshairID":CONTOUR_CROSSHAIR_STR
          })]);
          this._graphicSettingsTabsDataProvider = new DataProvider([new TabsDataVo({
             "label":SETTINGS.GRAPHICS_TABSCREEN,

@@ -257,32 +257,6 @@ package
       
       public static const RADIALMENU_POSITIVE:String = "#ingame_help:radialMenu/positive";
       
-      public static const DETAILSHELP_SPGREWORK_DIFFERENTTRAJECTORIES_TITLE:String = "#ingame_help:detailsHelp/spgRework/differentTrajectories/title";
-      
-      public static const DETAILSHELP_SPGREWORK_DIFFERENTTRAJECTORIES_DESCRIPTION:String = "#ingame_help:detailsHelp/spgRework/differentTrajectories/description";
-      
-      public static const DETAILSHELP_SPGREWORK_MINIMAP_TITLE:String = "#ingame_help:detailsHelp/spgRework/miniMap/title";
-      
-      public static const DETAILSHELP_SPGREWORK_MINIMAP_DESCRIPTION:String = "#ingame_help:detailsHelp/spgRework/miniMap/description";
-      
-      public static const DETAILSHELP_SPGREWORK_TRACERS_TITLE:String = "#ingame_help:detailsHelp/spgRework/tracers/title";
-      
-      public static const DETAILSHELP_SPGREWORK_TRACERS_DESCRIPTION:String = "#ingame_help:detailsHelp/spgRework/tracers/description";
-      
-      public static const DETAILSHELP_SPGREWORK_INTUITION_TITLE:String = "#ingame_help:detailsHelp/spgRework/intuition/title";
-      
-      public static const DETAILSHELP_SPGREWORK_INTUITION_DESCRIPTION:String = "#ingame_help:detailsHelp/spgRework/intuition/description";
-      
-      public static const DETAILSHELP_SPGREWORK_LAMP_TITLE:String = "#ingame_help:detailsHelp/spgRework/lamp/title";
-      
-      public static const DETAILSHELP_SPGREWORK_LAMP_DESCRIPTION:String = "#ingame_help:detailsHelp/spgRework/lamp/description";
-      
-      public static const DETAILSHELP_SPGREWORK_SHOTSRESULTINDICATOR_TITLE:String = "#ingame_help:detailsHelp/spgRework/shotsResultIndicator/title";
-      
-      public static const DETAILSHELP_SPGREWORK_SHOTSRESULTINDICATOR_DESCRIPTION:String = "#ingame_help:detailsHelp/spgRework/shotsResultIndicator/description";
-      
-      public static const DETAILSHELP_SPGREWORKTITLE:String = "#ingame_help:detailsHelp/spgReworkTitle";
-      
       public static const DETAILSHELP_TRACKWITHINTRACK_TITLE:String = "#ingame_help:detailsHelp/trackWithinTrack/title";
       
       public static const DETAILSHELP_TRACKWITHINTRACK_DESCRIPTION:String = "#ingame_help:detailsHelp/trackWithinTrack/description";

@@ -74,8 +74,9 @@ class MissionsWebApiMixin(object):
     @w2c(W2CSchema, 'battle_pass_levels_buy:')
     def openBattlePassMainWithBuyLevels(self, _):
         battlePass = dependency.instance(IBattlePassController)
-        if battlePass.hasActiveChapter() and battlePass.isBought():
-            showBattlePassBuyLevelWindow(ctx={'chapterID': battlePass.getCurrentChapterID(), 'backCallback': showShop})
+        currentChapterID = battlePass.getCurrentChapterID()
+        if battlePass.hasActiveChapter() and battlePass.isBought(chapterID=currentChapterID):
+            showBattlePassBuyLevelWindow(ctx={'chapterID': currentChapterID, 'backCallback': showShop})
 
 
 class PersonalMissionsWebApiMixin(object):

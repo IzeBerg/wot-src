@@ -7,7 +7,7 @@ from gui.impl.gen.view_models.views.lobby.battle_pass.tooltips.reward_points_mod
 class BattlePassInProgressTooltipViewModel(ViewModel):
     __slots__ = ()
 
-    def __init__(self, properties=12, commands=0):
+    def __init__(self, properties=14, commands=0):
         super(BattlePassInProgressTooltipViewModel, self).__init__(properties=properties, commands=commands)
 
     @property
@@ -74,6 +74,18 @@ class BattlePassInProgressTooltipViewModel(ViewModel):
     def setNotChosenRewardCount(self, value):
         self._setNumber(11, value)
 
+    def getIsExtra(self):
+        return self._getBool(12)
+
+    def setIsExtra(self, value):
+        self._setBool(12, value)
+
+    def getExpireTime(self):
+        return self._getNumber(13)
+
+    def setExpireTime(self, value):
+        self._setNumber(13, value)
+
     def _initialize(self):
         super(BattlePassInProgressTooltipViewModel, self)._initialize()
         self._addViewModelProperty('rewardPoints', UserListModel())
@@ -88,3 +100,5 @@ class BattlePassInProgressTooltipViewModel(ViewModel):
         self._addStringProperty('timeTillEnd', '')
         self._addStringProperty('battleType', '')
         self._addNumberProperty('notChosenRewardCount', 0)
+        self._addBoolProperty('isExtra', False)
+        self._addNumberProperty('expireTime', 0)

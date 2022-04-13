@@ -10,9 +10,9 @@ package net.wg.gui.components.battleDamagePanel.components
    public class ShellTypeBG extends Sprite implements IDisposable
    {
       
-      private static const EMPTY_BG_POS_Y:Number = 6;
+      private static const EMPTY_BG_POS_Y:uint = 7;
       
-      private static const EMPTY_BG_WIDTH:Number = 14;
+      private static const EMPTY_BG_WIDTH:uint = 14;
        
       
       private var _leftEdge:Shape = null;
@@ -29,7 +29,7 @@ package net.wg.gui.components.battleDamagePanel.components
       
       private var _edgeWidth:Number = 0;
       
-      private var _isGold:Boolean = false;
+      private var _currentState:String = "white";
       
       private var _isEmpty:Boolean = false;
       
@@ -77,11 +77,15 @@ package net.wg.gui.components.battleDamagePanel.components
          this._center = null;
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function setData(param1:String) : void
       {
          var _loc3_:String = null;
          var _loc4_:String = null;
-         var _loc5_:Boolean = false;
          var _loc2_:Boolean = param1 == DAMAGE_LOG_SHELL_BG_TYPES.EMPTY;
          if(_loc2_ != this._isEmpty)
          {
@@ -93,26 +97,30 @@ package net.wg.gui.components.battleDamagePanel.components
          {
             this._atlasMgr.drawGraphics(this._atlasName,BATTLEATLAS.EMPTY_SHELL_BG,this._emptyShellBG.graphics);
          }
-         else
+         else if(this._currentState != param1)
          {
-            _loc5_ = param1 == DAMAGE_LOG_SHELL_BG_TYPES.GOLD;
-            if(this._isGold != _loc5_)
+            this._currentState = param1;
+            switch(param1)
             {
-               this._isGold = _loc5_;
-               if(_loc5_)
-               {
+               case DAMAGE_LOG_SHELL_BG_TYPES.GOLD:
                   _loc3_ = BATTLEATLAS.GOLD_EDGE;
                   _loc4_ = BATTLEATLAS.GOLD_CENTER;
-               }
-               else
-               {
+                  break;
+               case DAMAGE_LOG_SHELL_BG_TYPES.DEFAULT:
                   _loc3_ = BATTLEATLAS.WHITE_EDGE;
                   _loc4_ = BATTLEATLAS.WHITE_CENTER;
-               }
-               this._atlasMgr.drawGraphics(this._atlasName,_loc3_,this._leftEdge.graphics);
-               this._atlasMgr.drawGraphics(this._atlasName,_loc4_,this._center.graphics);
-               this._atlasMgr.drawGraphics(this._atlasName,_loc3_,this._rightEdge.graphics);
+                  break;
+               case DAMAGE_LOG_SHELL_BG_TYPES.SPG:
+                  _loc3_ = BATTLEATLAS.WHITE_BLACK_EDGE;
+                  _loc4_ = BATTLEATLAS.WHITE_BLACK_CENTER;
+                  break;
+               case DAMAGE_LOG_SHELL_BG_TYPES.SPG_HE_NO_STUN:
+                  _loc3_ = BATTLEATLAS.GOLD_BLACK_EDGE;
+                  _loc4_ = BATTLEATLAS.GOLD_BLACK_CENTER;
             }
+            this._atlasMgr.drawGraphics(this._atlasName,_loc3_,this._leftEdge.graphics);
+            this._atlasMgr.drawGraphics(this._atlasName,_loc4_,this._center.graphics);
+            this._atlasMgr.drawGraphics(this._atlasName,_loc3_,this._rightEdge.graphics);
          }
       }
       
@@ -127,11 +135,6 @@ package net.wg.gui.components.battleDamagePanel.components
             this._rightEdge.x = (this._edgeWidth << 1) + _loc2_;
             this._emptyShellBG.x = param1 - EMPTY_BG_WIDTH >> 1;
          }
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

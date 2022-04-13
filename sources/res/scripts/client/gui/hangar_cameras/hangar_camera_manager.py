@@ -32,8 +32,10 @@ class HangarCameraYawFilter(object):
         return
 
     def setConstraints(self, start, end):
-        self.__start = start
-        self.__end = end
+        self.__start = math_utils.reduceToPI(start)
+        self.__end = math_utils.reduceToPI(end)
+        self.__reversed = self.__start > self.__end
+        self.__cycled = int(math.degrees(math.fabs(self.__end - self.__start))) >= 359.0
         if int(math.fabs(math.degrees(self.__start)) + 0.5) >= 180:
             self.__start *= 179 / 180.0
         if int(math.fabs(math.degrees(self.__end)) + 0.5) >= 180:
@@ -47,7 +49,7 @@ class HangarCameraYawFilter(object):
         if self.__cycled:
             return inAngle
         if self.__reversed:
-            if inAngle >= self.__start and inAngle <= self.__end:
+            if inAngle >= self.__start or inAngle <= self.__end:
                 return inAngle
         elif self.__start <= inAngle <= self.__end:
             return inAngle
@@ -82,11 +84,11 @@ class HangarCameraYawFilter(object):
                     nextYaw = self.__end
                 elif delta < 0.0 and (nextYaw < self.__start or nextYaw > currentYaw):
                     nextYaw = self.__start
-            elif delta > 0.0 and nextYaw > self.__end and nextYaw <= self.__start:
+            elif delta > 0.0 and self.__end < nextYaw <= self.__start:
                 nextYaw = self.__end
-            elif delta < 0.0 and nextYaw < self.__start and nextYaw >= self.__end:
+            elif delta < 0.0 and self.__start > nextYaw >= self.__end:
                 nextYaw = self.__start
-        if self.__yawLimits is not None:
+        if self.__yawLimits is not None and not self.__cycled:
             if nextYaw < 0.0:
                 nextYaw += 2.0 * math.pi
             nextYaw = math_utils.clamp(self.__yawLimits[0], self.__yawLimits[1], nextYaw)
@@ -127,6 +129,7 @@ class HangarCameraManager(object):
         self.__handleInactiveCamera = False
         self.__isInPlatoon = False
         self.__allowCustomCamDistance = True
+        self.__isInC11nMode = False
         return
 
     def init(self):
@@ -161,6 +164,11 @@ class HangarCameraManager(object):
         self.__cam = None
         FovExtended.instance().resetFov()
         return
+
+    def setC11nDistMode(self, enabled):
+        self.__isInC11nMode = enabled
+        if self.__isInPlatoon and not self.__isInC11nMode:
+            self.__updateCameraLimits()
 
     def __onSpaceCreated(self):
         self.__cam.isMovementEnabled = True
@@ -202,10 +210,11 @@ class HangarCameraManager(object):
                 self.__camConstraints[2] = camConstraints[2]
             if not ignoreConstraints:
                 if yaw is not None:
-                    camYawConstr = self.__camConstraints[1]
-                    startYaw, endYaw = camYawConstr
-                    self.__yawCameraFilter.setConstraints(math.radians(startYaw), math.radians(endYaw))
-                    self.__yawCameraFilter.setYawLimits(camYawConstr)
+                    startYaw, endYaw = self.__camConstraints[1]
+                    startYawRad = math.radians(startYaw)
+                    endYawRad = math.radians(endYaw)
+                    self.__yawCameraFilter.setConstraints(startYawRad, endYawRad)
+                    self.__yawCameraFilter.setYawLimits((startYawRad, endYawRad))
                     yawS = self.__yawCameraFilter.toLimit(yawS)
                 if pitch is not None:
                     camPitchConstr = self.__camConstraints[0]
@@ -324,8 +333,10 @@ class HangarCameraManager(object):
         self.__camConstraints[2] = (0.0, 0.0)
         camYawConstr = self.__camConstraints[1]
         startYaw, endYaw = camYawConstr
-        self.__yawCameraFilter = HangarCameraYawFilter(math.radians(startYaw), math.radians(endYaw), cfg['cam_sens'])
-        self.__yawCameraFilter.setYawLimits(camYawConstr)
+        startYawRad = math.radians(startYaw)
+        endYawRad = math.radians(endYaw)
+        self.__yawCameraFilter = HangarCameraYawFilter(startYawRad, endYawRad, cfg['cam_sens'])
+        self.__yawCameraFilter.setYawLimits((startYawRad, endYawRad))
         mat = Math.Matrix()
         yaw = self.__yawCameraFilter.toLimit(math.radians(cfg['cam_start_angles'][0]))
         mat.setRotateYPR((yaw, math.radians(cfg['cam_start_angles'][1]), 0.0))
@@ -417,8 +428,9 @@ class HangarCameraManager(object):
                 maxDist = minDist
             self.__camConstraints[0] = (
              minDist, maxDist)
-        else:
+        elif self.__camConstraints[0] is None:
             self.__camConstraints[0] = cfg['cam_pitch_constr']
+        return
 
     def __updateCameraLimits(self):
         self.__updateCameraDistanceLimits()
@@ -440,7 +452,8 @@ class HangarCameraManager(object):
 
     def setPlatoonCameraDistance(self, enable):
         self.__isInPlatoon = enable
-        self.__updateCameraLimits()
+        if not self.__isInC11nMode:
+            self.__updateCameraLimits()
 
     def setAllowCustomCamDistance(self, enable):
         self.__allowCustomCamDistance = enable

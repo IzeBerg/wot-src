@@ -155,6 +155,7 @@ package net.wg.gui.lobby.training
       
       protected function doUpdateData(param1:TrainingRoomRendererVO) : void
       {
+         var _loc4_:Array = null;
          var _loc2_:String = param1.icon;
          var _loc3_:Boolean = StringUtils.isNotEmpty(_loc2_);
          this.iconLoader.visible = _loc3_;
@@ -162,7 +163,7 @@ package net.wg.gui.lobby.training
          {
             this.iconLoader.source = _loc2_;
          }
-         var _loc4_:Array = param1.tags;
+         _loc4_ = param1.tags;
          App.utils.commons.truncateTextFieldText(this.vehicleField,param1.vShortName,true,true);
          this.vehicleLevelField.text = String(param1.vLevel);
          this.enabled = true;

@@ -1,4 +1,4 @@
-import weakref, BigWorld
+import weakref, math, random, BigWorld
 from helpers import dependency
 import BattleReplay, Event
 from ReplayEvents import g_replayEvents
@@ -6,8 +6,10 @@ from constants import ATTACK_REASON_INDICES as _AR_INDICES
 from gui.battle_control.arena_info.arena_vos import EPIC_BATTLE_KEYS
 from gui.battle_control.battle_constants import BATTLE_CTRL_ID
 from gui.battle_control.controllers.interfaces import IBattleController
+from gui.battle_control import avatar_getter
 from items.battle_royale import isSpawnedBot
 from skeletons.gui.battle_session import IBattleSessionProvider
+from gui.sounds.r4_sound_constants import R4_SOUND
 
 class _ENTITY_TYPE(object):
     UNKNOWN = 'unknown'
@@ -31,7 +33,8 @@ _ATTACK_REASON_CODE = {_AR_INDICES['shot']: 'DEATH_FROM_SHOT',
    _AR_INDICES['artillery_eq']: 'DEATH_FROM_SHOT', 
    _AR_INDICES['bomber_eq']: 'DEATH_FROM_SHOT', 
    _AR_INDICES['minefield_eq']: 'DEATH_FROM_SHOT', 
-   _AR_INDICES['spawned_bot_explosion']: 'DEATH_FROM_SHOT'}
+   _AR_INDICES['spawned_bot_explosion']: 'DEATH_FROM_SHOT', 
+   _AR_INDICES['supply_shot']: 'DEATH_FROM_SUPPLY_SHOT'}
 _PLAYER_KILL_ENEMY_SOUND = 'enemy_killed_by_player'
 _PLAYER_KILL_ALLY_SOUND = 'ally_killed_by_player'
 _ALLY_KILLED_SOUND = 'ally_killed_by_enemy'
@@ -94,7 +97,7 @@ class BattleMessagesController(IBattleController):
         if isMyVehicle:
             return
         else:
-            if targetID == attackerID and self._battleCtx.isObserver(targetID):
+            if targetID == attackerID and (self._battleCtx.isObserver(targetID) or self._battleCtx.isCommander(targetID)):
                 return
             if not avatar.isVehicleAlive:
                 if avatar.isObserver() and targetID == avatar.observedVehicleID:
@@ -122,12 +125,16 @@ class BattleMessagesController(IBattleController):
         self.onShowVehicleErrorByKey(key, args, None)
         return
 
+    def showVehicleSpawnMessage(self, team, name):
+        key = 'SPAWN_ALLY' if BigWorld.player().team == team else 'SPAWN_ENEMY'
+        self.onShowPlayerMessageByKey(key, {'entity': name})
+
     def showAllyHitMessage(self, vehicleID=None):
         self.onShowPlayerMessageByKey('ALLY_HIT', {'entity': self._battleCtx.getPlayerFullName(vID=vehicleID)}, (
          (
           'entity', vehicleID),))
 
-    def __getEntityString(self, avatar, entityID):
+    def _getEntityString(self, avatar, entityID):
         if entityID == avatar.playerVehicleID:
             return _ENTITY_TYPE.SELF
         if self._battleCtx.isAlly(entityID):
@@ -137,19 +144,19 @@ class BattleMessagesController(IBattleController):
         return _ENTITY_TYPE.UNKNOWN
 
     def __getDamageInfo(self, avatar, code, entityID, targetID):
-        target = self.__getEntityString(avatar, targetID)
+        target = self._getEntityString(avatar, targetID)
         if not entityID or entityID == targetID:
             postfix = '%s_%s' % (target.upper(), _ENTITY_TYPE.SUICIDE.upper())
         else:
-            entity = self.__getEntityString(avatar, entityID)
+            entity = self._getEntityString(avatar, entityID)
             postfix = '%s_%s' % (entity.upper(), target.upper())
         return (code, postfix)
 
     def __getKillInfo(self, avatar, targetID, attackerID, equipmentID, reason):
-        attacker = self.__getEntityString(avatar, attackerID)
+        attacker = self._getEntityString(avatar, attackerID)
         target = _ENTITY_TYPE.SUICIDE
         if targetID != attackerID:
-            target = self.__getEntityString(avatar, targetID)
+            target = self._getEntityString(avatar, targetID)
         code = _ATTACK_REASON_CODE.get(reason)
         sound = None
         soundExt = None
@@ -319,6 +326,58 @@ class BattleRoyaleBattleMessagesPlayer(BattleMessagesPlayer):
         super(BattleRoyaleBattleMessagesPlayer, self).showVehicleKilledMessage(avatar, targetID, attackerID, equipmentID, reason)
 
 
+class R4Messages(object):
+    __sessionProvider = dependency.descriptor(IBattleSessionProvider)
+
+    def _playVehicleKilledNotification(self, avatar, targetID, attackerID):
+        soundNotify = avatar.soundNotifications
+        vehicles = self.__sessionProvider.dynamic.rtsCommander.vehicles
+        target = vehicles[targetID]
+        if not (target.isObserver or target.isCommander) and not target.isSupply and target.isAlly:
+            aliveVehiclesCount = len(vehicles.values(lambda v: not (v.isObserver or v.isCommander) and not v.isSupply and v.isAlly and v.isAlive))
+            if aliveVehiclesCount > len(R4_SOUND.R4_ALLY_DESTROYED_EVENTS) - 1:
+                soundNotify.playOnHeadVehicle(R4_SOUND.R4_ALLY_DESTROYED)
+            else:
+                soundNotify.playOnHeadVehicle(R4_SOUND.R4_ALLY_DESTROYED_EVENTS[aliveVehiclesCount])
+            soundNotify.play(R4_SOUND.R4_ALLY_DESTROYED_UI, targetID)
+            return
+        attacker = vehicles[attackerID]
+        if not (not (target.isObserver or target.isCommander) and not target.isSupply and not target.isAlly and not (attacker.isObserver or attacker.isCommander) and attacker.isAlly):
+            return
+        enemies = vehicles.values(lambda v: not (v.isObserver or v.isCommander) and not v.isSupply and not v.isAlly)
+        enemiesCount = len(enemies)
+        aliveEnemiesCount = len([ e for e in enemies if e.isAlive ])
+        destroyedEnemiesCount = enemiesCount - aliveEnemiesCount
+        halfEnemiesCount = math.ceil(enemiesCount / 2.0) if random.randrange(2) else math.floor(enemiesCount / 2.0)
+        canPlayCounter = destroyedEnemiesCount < len(R4_SOUND.R4_ENEMY_DESTROYED_COUNTER_EVENTS)
+        canPlayRemain = aliveEnemiesCount < len(R4_SOUND.R4_ENEMY_DESTROYED_REMAIN_EVENTS)
+        if canPlayCounter and canPlayRemain:
+            if aliveEnemiesCount > halfEnemiesCount:
+                soundNotify.play(R4_SOUND.R4_ENEMY_DESTROYED_COUNTER_EVENTS[destroyedEnemiesCount], attackerID)
+            else:
+                soundNotify.play(R4_SOUND.R4_ENEMY_DESTROYED_REMAIN_EVENTS[aliveEnemiesCount], attackerID)
+        elif canPlayCounter:
+            soundNotify.play(R4_SOUND.R4_ENEMY_DESTROYED_COUNTER_EVENTS[destroyedEnemiesCount], attackerID)
+        elif canPlayRemain:
+            soundNotify.play(R4_SOUND.R4_ENEMY_DESTROYED_REMAIN_EVENTS[aliveEnemiesCount], attackerID)
+        else:
+            soundNotify.play(R4_SOUND.R4_ENEMY_DESTROYED, attackerID)
+
+
+class R4MessagesPlayer(BattleMessagesPlayer, R4Messages):
+
+    def showVehicleKilledMessage(self, avatar, targetID, attackerID, equipmentID, reason):
+        BattleMessagesPlayer.showVehicleKilledMessage(self, avatar, targetID, attackerID, equipmentID, reason)
+        R4Messages._playVehicleKilledNotification(self, avatar, targetID, attackerID)
+
+
+class R4MessagesController(BattleMessagesController, R4Messages):
+
+    def showVehicleKilledMessage(self, avatar, targetID, attackerID, equipmentID, reason):
+        BattleMessagesController.showVehicleKilledMessage(self, avatar, targetID, attackerID, equipmentID, reason)
+        R4Messages._playVehicleKilledNotification(self, avatar, targetID, attackerID)
+
+
 def createBattleMessagesCtrl(setup):
     sessionProvider = dependency.instance(IBattleSessionProvider)
     arenaVisitor = sessionProvider.arenaVisitor
@@ -333,6 +392,11 @@ def createBattleMessagesCtrl(setup):
             ctrl = BattleRoyaleBattleMessagesPlayer(setup)
         else:
             ctrl = BattleRoyaleBattleMessagesController(setup)
+    elif avatar_getter.isPlayerCommander():
+        if setup.isReplayPlaying:
+            ctrl = R4MessagesPlayer(setup)
+        else:
+            ctrl = R4MessagesController(setup)
     elif setup.isReplayPlaying:
         ctrl = BattleMessagesPlayer(setup)
     else:

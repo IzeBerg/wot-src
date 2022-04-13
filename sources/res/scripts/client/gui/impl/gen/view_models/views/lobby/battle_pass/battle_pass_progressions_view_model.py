@@ -9,6 +9,7 @@ class ChapterStates(Enum):
     ACTIVE = 'active'
     PAUSED = 'paused'
     COMPLETED = 'completed'
+    NOTSTARTED = 'notStarted'
 
 
 class ButtonStates(Enum):
@@ -24,7 +25,7 @@ class BattlePassProgressionsViewModel(CommonViewModel):
                  'onTakeRewardsClick', 'onFinishedAnimation', 'onLevelsAnimationFinished',
                  'onChapterChoice', 'onViewLoaded')
 
-    def __init__(self, properties=37, commands=15):
+    def __init__(self, properties=40, commands=15):
         super(BattlePassProgressionsViewModel, self).__init__(properties=properties, commands=commands)
 
     @property
@@ -63,10 +64,10 @@ class BattlePassProgressionsViewModel(CommonViewModel):
     def setSeasonText(self, value):
         self._setString(10, value)
 
-    def getSeasonTimeLeft(self):
+    def getExpireTimeStr(self):
         return self._getString(11)
 
-    def setSeasonTimeLeft(self, value):
+    def setExpireTimeStr(self, value):
         self._setString(11, value)
 
     def getPreviousPointsInChapter(self):
@@ -219,6 +220,24 @@ class BattlePassProgressionsViewModel(CommonViewModel):
     def setIsSeasonEndingSoon(self, value):
         self._setBool(36, value)
 
+    def getIsExtra(self):
+        return self._getBool(37)
+
+    def setIsExtra(self, value):
+        self._setBool(37, value)
+
+    def getHasExtra(self):
+        return self._getBool(38)
+
+    def setHasExtra(self, value):
+        self._setBool(38, value)
+
+    def getExpireTime(self):
+        return self._getNumber(39)
+
+    def setExpireTime(self, value):
+        self._setNumber(39, value)
+
     def _initialize(self):
         super(BattlePassProgressionsViewModel, self)._initialize()
         self._addViewModelProperty('offSeason', BattlePassOffSeasonViewModel())
@@ -228,7 +247,7 @@ class BattlePassProgressionsViewModel(CommonViewModel):
         self._addStringProperty('chapterState')
         self._addBoolProperty('showOffSeason', False)
         self._addStringProperty('seasonText', '')
-        self._addStringProperty('seasonTimeLeft', '')
+        self._addStringProperty('expireTimeStr', '')
         self._addNumberProperty('previousPointsInChapter', 0)
         self._addNumberProperty('currentPointsInChapter', 0)
         self._addNumberProperty('previousFreePointsInChapter', 0)
@@ -254,6 +273,9 @@ class BattlePassProgressionsViewModel(CommonViewModel):
         self._addStringProperty('buttonState')
         self._addBoolProperty('isStyleTaken', False)
         self._addBoolProperty('isSeasonEndingSoon', False)
+        self._addBoolProperty('isExtra', False)
+        self._addBoolProperty('hasExtra', False)
+        self._addNumberProperty('expireTime', 0)
         self.onClose = self._addCommand('onClose')
         self.onActionClick = self._addCommand('onActionClick')
         self.onTakeClick = self._addCommand('onTakeClick')

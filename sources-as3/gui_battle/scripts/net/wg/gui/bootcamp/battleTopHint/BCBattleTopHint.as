@@ -41,6 +41,7 @@ package net.wg.gui.bootcamp.battleTopHint
          this.hintContainer.addFrameScript(FRAME_COMPLETE_FINISH,this.animFinishHandler);
          this.hintContainer.addFrameScript(FRAME_SHOW_FINISH,this.animFinishHandler);
          this.penetrationHint.visible = false;
+         this.mouseEnabled = this.mouseChildren = false;
       }
       
       override protected function onDispose() : void

@@ -1,7 +1,7 @@
 import logging
 from collections import namedtuple
 import typing
-from account_helpers.AccountSettings import AccountSettings, LAST_BATTLE_PASS_POINTS_SEEN
+from account_helpers.AccountSettings import AccountSettings, LAST_BATTLE_PASS_POINTS_SEEN, IS_BATTLE_PASS_EXTRA_STARTED
 from account_helpers.settings_core.settings_constants import BattlePassStorageKeys
 from battle_pass_common import BattlePassState
 from constants import ARENA_BONUS_TYPE, QUEUE_TYPE
@@ -49,11 +49,6 @@ def isSeasonEndingSoon():
     return battlePassController.getFinalOfferTime() <= time_utils.getServerUTCTime()
 
 
-def isBattlePassBought():
-    battlePassController = dependency.instance(IBattlePassController)
-    return battlePassController.isBought()
-
-
 def getFormattedTimeLeft(seconds):
     return time_formatters.getTillTimeByResource(seconds, R.strings.battle_pass.status.timeLeft, removeLeadingZeros=True)
 
@@ -84,8 +79,16 @@ def getInfoPageURL():
     return GUI_SETTINGS.battlePass.get('infoPage')
 
 
+def getExtraInfoPageURL():
+    return GUI_SETTINGS.battlePass.get('extraInfoPage')
+
+
 def getIntroVideoURL():
     return GUI_SETTINGS.battlePass.get('introVideo')
+
+
+def getExtraIntroVideoURL():
+    return GUI_SETTINGS.battlePass.get('extraIntroVideo')
 
 
 @dependency.replace_none_kwargs(battlePass=IBattlePassController)
@@ -221,6 +224,7 @@ def updateBattlePassVersion(data, battlePass=None):
 
 def _updateClientSettings():
     AccountSettings.setSettings(LAST_BATTLE_PASS_POINTS_SEEN, {})
+    AccountSettings.setSettings(IS_BATTLE_PASS_EXTRA_STARTED, False)
 
 
 def _updateServerSettings(data, version):
@@ -228,6 +232,8 @@ def _updateServerSettings(data, version):
     data[BattlePassStorageKeys.INTRO_VIDEO_SHOWN] = False
     data[BattlePassStorageKeys.BUY_ANIMATION_WAS_SHOWN] = 0
     data[BattlePassStorageKeys.FLAGS_VERSION] = version
+    data[BattlePassStorageKeys.EXTRA_CHAPTER_INTRO_SHOWN] = False
+    data[BattlePassStorageKeys.EXTRA_CHAPTER_VIDEO_SHOWN] = False
 
 
 def _isChapterShown(shownChapters, chapter):

@@ -243,6 +243,7 @@ class BattleVehicleConfigurator(BattleVehicleConfiguratorMeta, IProgressionListe
         module = self.__getModuleItem(intCD)
         return {'header': getTreeModuleHeader(module), 
            'parameters': getShortListParameters(module, self.__getProgressionVehicle(), self.__getInstalledOnVehicleAnalogByIntCD(intCD)), 
+           'hotKeysVKeys': getHotKeyListByIndex(index), 
            'hotKeys': getHotKeyListByIndex(index), 
            'module': {'icon': icon, 
                       'intCD': intCD, 

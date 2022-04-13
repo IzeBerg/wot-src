@@ -279,10 +279,8 @@ class TankmanTooltipDataBlock(BlocksTooltipData):
         items = super(TankmanTooltipDataBlock, self)._packBlocks()
         item = self.context.buildItem(*args, **kwargs)
         self.item = item
-        vehicle = None
         nativeVehicle = self._itemsCache.items.getItemByCD(item.vehicleNativeDescr.type.compactDescr)
-        if item.isInTank:
-            vehicle = self._itemsCache.items.getVehicle(item.vehicleInvID)
+        vehicle = self._getVehicle(item)
         fullUserName = self._getFullUserName(item)
         items.append(formatters.packImageTextBlockData(title=text_styles.highTitle(fullUserName), desc=text_styles.main(self._getTankmanDescription(item))))
         innerBlock = []
@@ -345,6 +343,12 @@ class TankmanTooltipDataBlock(BlocksTooltipData):
     def _getTankmanDescription(self, item):
         return item.rankUserName
 
+    def _getVehicle(self, item):
+        if item.isInTank:
+            return self._itemsCache.items.getVehicle(item.vehicleInvID)
+        else:
+            return
+
     def _getVehicleName(self, vehicle=None, nativeVehicle=None):
         if not vehicle or nativeVehicle.shortUserName == vehicle.shortUserName:
             return text_styles.main(nativeVehicle.shortUserName)
@@ -372,6 +376,24 @@ class TankmanTooltipDataBlock(BlocksTooltipData):
         status = value or {}
         if 'header' in status and status['header'] != '':
             items.append(formatters.packImageTextBlockData(title=text_styles.warning(status['header']), desc=makeHtmlString('html_templates:lobby/textStyle', 'statusWarningField', {'message': status['text']})))
+
+
+class RtsTankmanTooltipDataBlock(TankmanTooltipDataBlock):
+
+    def _getFullUserName(self, item):
+        return item.roleUserName
+
+    def _getTankmanDescription(self, item):
+        return ''
+
+    def _createVehicleBlock(self, innerBlock, vehicle):
+        innerBlock.append(formatters.packImageTextBlockData(img=vehicle.iconContour, txtGap=-4, padding=formatters.packPadding(bottom=0, top=10, left=0), title=text_styles.stats(vehicle.shortUserName), desc=text_styles.stats(backport.text(R.strings.rts_battles.tooltip.tankman.specialVehicleType())), flipHorizontal=True))
+
+    def _createBlockForNewSkills(self, items):
+        pass
+
+    def _getVehicle(self, item):
+        return self.context.getVehicle()
 
 
 class BattleRoyaleTankmanTooltipDataBlock(TankmanTooltipDataBlock):

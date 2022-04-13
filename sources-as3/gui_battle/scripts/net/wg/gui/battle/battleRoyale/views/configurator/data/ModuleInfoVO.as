@@ -18,6 +18,8 @@ package net.wg.gui.battle.battleRoyale.views.configurator.data
       
       public var hotKeys:Array = null;
       
+      public var hotKeysVKeys:Array = null;
+      
       public var parameters:Vector.<ModuleParameterVO>;
       
       public var module:ConfiguratorModuleVO = null;
@@ -69,6 +71,11 @@ package net.wg.gui.battle.battleRoyale.views.configurator.data
          {
             this.hotKeys.splice(0,this.hotKeys.length);
             this.hotKeys = null;
+         }
+         if(this.hotKeysVKeys)
+         {
+            this.hotKeysVKeys.splice(0,this.hotKeysVKeys.length);
+            this.hotKeysVKeys = null;
          }
          this.module.dispose();
          this.module = null;

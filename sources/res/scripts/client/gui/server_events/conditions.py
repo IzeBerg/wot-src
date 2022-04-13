@@ -1126,6 +1126,8 @@ class _Cumulativable(_Condition):
         if curBonusCount > prevBonusCount:
             if self.__isProgressCompleted(curProg):
                 return total - min(prevProg.get(key, 0), total)
+            if curBonusCount > 0:
+                return total + curProg.get(key, 0) - prevProg.get(key, 0)
             return current
         return current - min(prevProg.get(key, 0), total)
 
@@ -1150,7 +1152,7 @@ class BattlesCount(_Cumulativable):
     def getUserString(self):
         result = []
         for bType in self._bonusTypes:
-            result.append(i18n.makeString(QUESTS.getDetailsDossier(bType, self._getKey())))
+            result.append(str(i18n.makeString(QUESTS.getDetailsDossier(bType, self._getKey()))))
 
         if not result:
             _logger.warning('There are no matching condition strings for selected arenaBonusTypes')

@@ -1,5 +1,5 @@
 import operator
-from constants import IGR_TYPE, PREMIUM_TYPE
+from constants import IGR_TYPE, PREMIUM_TYPE, ARENA_BONUS_TYPE
 from gui import makeHtmlString
 from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
 from gui.battle_results.components import base
@@ -200,9 +200,9 @@ class BaseXPBlock(base.StatsBlock):
     __slots__ = ()
 
     def setRecord(self, result, reusable):
-        isPremuim = not reusable.hasAnyPremiumInPostBattle and reusable.canResourceBeFaded
+        isPremium = not reusable.hasAnyPremiumInPostBattle and reusable.canResourceBeFaded
         for records in reusable.personal.getBaseXPRecords():
-            value = style.makeXpLabel(records.getRecord('xpToShow'), canBeFaded=isPremuim)
+            value = style.makeXpLabel(records.getRecord('xpToShow'), canBeFaded=isPremium)
             self.addNextComponent(base.DirectStatsItem('', value))
 
 
@@ -781,7 +781,7 @@ class PremiumBonusDetailsBlock(base.StatsBlock):
         self.description = text_styles.highlightText(backport.text(R.strings.battle_results.common.premiumBonus.description()))
 
     def __setBonusLeft(self):
-        if self.__itemsCache.items.stats.isActivePremium(PREMIUM_TYPE.PLUS):
+        if self.__itemsCache.items.stats.isActivePremium(PREMIUM_TYPE.PLUS) or self.__arenaBonusType in (ARENA_BONUS_TYPE.RTS, ARENA_BONUS_TYPE.RTS_1x1):
             applyAdditionalXPCount = self.__itemsCache.items.stats.applyAdditionalXPCount
         else:
             applyAdditionalXPCount = '-'

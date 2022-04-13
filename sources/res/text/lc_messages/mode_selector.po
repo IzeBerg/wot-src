@@ -37,6 +37,15 @@ msgstr ""
 msgid "event/ranked/name"
 msgstr "Сезон %(seasonNum)s"
 
+msgid "event/rts/finished"
+msgstr "Бои завершены"
+
+msgid "event/rts/notStarted"
+msgstr "Событие начнётся через"
+
+msgid "event/rts/paused"
+msgstr "Бои приостановлены"
+
 msgid "hint/showProgression"
 msgstr "ПРОСМОТР В РЕЖИМЕ ПРОГРЕССИИ"
 
@@ -60,26 +69,23 @@ msgstr "30x30&nbsp;{par_open}I{par_close}&nbsp;%(levels)s&nbsp;уровни"
 
 msgid "mode/epicBattle/cycleNext"
 msgstr ""
-"Этап %(cycle)s\n"
+"Событие\n"
 "начнётся %(date)s"
 
 msgid "mode/epicBattle/cycleSoon"
 msgstr ""
-"Этап %(cycle)s\n"
-"скоро стартует"
+"Событие\n"
+"скоро начнётся"
 
 msgid "mode/epicBattle/description"
 msgstr "Сражение по особым правилам."
 
-msgid "mode/epicBattle/seasonActive"
-msgstr "Этап %(cycle)s"
-
 msgid "mode/epicBattle/seasonEnd"
-msgstr "Все этапы завершены"
+msgstr "Событие завершено"
 
 msgid "mode/epicQueue/battlePassTooltip/body"
 msgstr ""
-"Играя на технике VIII–IX уровней в режиме {whiteSpanish_open}«Линия "
+"Играя на технике VIII уровня в режиме {whiteSpanish_open}«Линия "
 "фронта»{whiteSpanish_close}, вы будете зарабатывать очки. Они нужны для "
 "продвижения по прогрессии Боевого пропуска."
 
@@ -129,6 +135,12 @@ msgstr "10x10 %(parSecondary_open)sI%(parSecondary_close)s X&nbsp;уровень
 
 msgid "mode/ranked/description"
 msgstr "Режим с прогрессией и наградами."
+
+msgid "mode/rts/condition"
+msgstr "X уровень"
+
+msgid "mode/rts/description"
+msgstr "Стратегический режим"
 
 msgid "mode/specBattlesList/call/1"
 msgstr "Запишитесь на турнир"
@@ -240,6 +252,9 @@ msgstr "Играя в режиме, вы можете получить %(name)s"
 
 msgid "reward/vehicle/name"
 msgstr "Наградная техника"
+
+msgid "rts/widget/progress"
+msgstr "Собрано элементов коллекции:"
 
 msgid "selectMap"
 msgstr "Предустановки для Случайных боёв"

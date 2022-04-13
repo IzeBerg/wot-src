@@ -782,9 +782,6 @@ msgstr "для знакомства с особенностями машины"
 msgid "helpScreen/hint/press"
 msgstr "Нажмите"
 
-msgid "helpScreen/spgHint/description"
-msgstr "для знакомства с особенностями обновления"
-
 msgid "hitMarker/blocked"
 msgstr "Броня не пробита"
 
@@ -922,7 +919,7 @@ msgid "player_messages/COMBAT_EQUIPMENT_READY_SMOKE"
 msgstr "Батарея дымопуска готова вести огонь."
 
 msgid "player_messages/COMBAT_EQUIPMENT_READY_STEALTH_RADAR"
-msgstr "Скрытность готова к использованию."
+msgstr "Дозор готов к использованию."
 
 msgid "player_messages/COMBAT_EQUIPMENT_USED_ARTILLERY"
 msgstr "Артбатарея %(player)s произвела залп."
@@ -949,7 +946,7 @@ msgid "player_messages/COMBAT_EQUIPMENT_USED_SMOKE"
 msgstr "%(player)s поставил дымовую завесу."
 
 msgid "player_messages/COMBAT_EQUIPMENT_USED_STEALTH_RADAR"
-msgstr "%(player)s скрыт."
+msgstr "%(player)s в дозоре."
 
 msgid "player_messages/DEATH_FROM_ARTILLERY_ALLY_ALLY"
 msgstr "%(target)s уничтожен огнём артбатареи."
@@ -1286,6 +1283,12 @@ msgstr "%(target)s уничтожен залпом артбатареи."
 msgid "player_messages/DEATH_FROM_SHOT_SELF_ENEMY_BOMBER"
 msgstr "%(target)s уничтожен бомбометанием."
 
+msgid "player_messages/DEATH_FROM_SUPPLY_SHOT_ALLY_ENEMY"
+msgstr "%(attacker)s уничтожил %(target)s."
+
+msgid "player_messages/DEATH_FROM_SUPPLY_SHOT_ENEMY_ALLY"
+msgstr "%(attacker)s уничтожил %(target)s."
+
 msgid "player_messages/DEATH_FROM_WORLD_COLLISION_ALLY_ALLY"
 msgstr "Союзник %(attacker)s разбил союзника %(target)s."
 
@@ -1368,6 +1371,9 @@ msgstr "Пожар потушен."
 
 msgid "player_messages/OPT_DEVICE_USED"
 msgstr "%(message)s"
+
+msgid "player_messages/SPAWN"
+msgstr "Прибыло подкрепление %(entity)s!"
 
 msgid "player_messages/TANKMAN_HIT_AT_SHOT"
 msgstr "[%(device)s] ранен выстрелом %(entity)s."
@@ -1603,6 +1609,9 @@ msgstr "Машина уничтожена залпом артбатареи"
 
 msgid "postmortem_messages/DEATH_FROM_SHOT_BOMBER"
 msgstr "Машина уничтожена бомбометанием"
+
+msgid "postmortem_messages/DEATH_FROM_SUPPLY_SHOT"
+msgstr "Машина уничтожена объектом поддержки игрока"
 
 msgid "postmortem_messages/DEATH_FROM_WORLD_COLLISION_ALLY_SELF"
 msgstr "Машина разбита союзником"
@@ -2436,7 +2445,7 @@ msgid "shells_kinds/params/damage"
 msgstr "Средний урон: %(value)s ед."
 
 msgid "shells_kinds/params/explosionRadius"
-msgstr "Радиус разлёта осколков: %(value)s м"
+msgstr "Радиус поражения: %(value)s м"
 
 msgid "shells_kinds/params/piercingPower"
 msgstr "Средняя бронепробиваемость: %(value)s мм"

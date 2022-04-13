@@ -106,6 +106,9 @@ msgstr "300x750 м"
 msgid "abilityInfo/params/recon/spottingDuration"
 msgstr "Продолжительность полёта"
 
+msgid "abilityInfo/params/smoke/crewRolesFactor"
+msgstr "Штраф к эффективности экипажа"
+
 msgid "abilityInfo/params/smoke/projectilesNumber"
 msgstr "Заряды"
 
@@ -134,7 +137,7 @@ msgid "abilityInfo/params/stealth_radar/passiveCircularVisionRadius"
 msgstr "Пассивный бонус к обзору"
 
 msgid "abilityInfo/properties/dynamic"
-msgstr "Усиление при получении званий в бою"
+msgstr "Усиление резерва"
 
 msgid "abilityInfo/properties/static"
 msgstr "Постоянные характеристики"
@@ -503,7 +506,7 @@ msgid "primeTime/continueBtn"
 msgstr "Продолжить"
 
 msgid "primeTime/endOfCycle"
-msgstr "Этап на сервере %(server)s завершился."
+msgstr "Режим на сервере %(server)s завершился."
 
 msgid "primeTime/manyServersAvailable"
 msgstr "Доступные для входа серверы:"
@@ -529,7 +532,7 @@ msgid "primeTime/servers"
 msgstr "Доступные для входа серверы: %(server)s"
 
 msgid "primeTime/status/cycleFinishedOnThisServer"
-msgstr "Этап %(cycleNo)s на сервере %(server)s завершился."
+msgstr "Бои на сервере %(server)s завершены"
 
 msgid "primeTime/status/disable"
 msgstr ""
@@ -596,7 +599,7 @@ msgid "questsTooltip/epicBattle/steelhunter/header"
 msgstr "Задачи Стального охотника"
 
 msgid "questsTooltip/epicBattle/timeLeft"
-msgstr "До конца этапа %(cycle)s: %(time)s"
+msgstr "До окончания события «Линия фронта»: %(time)s"
 
 msgid "questsTooltip/epicBattle/unavailable"
 msgstr "Недоступно: %(reason)s."
@@ -769,10 +772,10 @@ msgid "selectorTooltip/epicBattle/header"
 msgstr "Линия фронта"
 
 msgid "selectorTooltip/epicBattle/startIn"
-msgstr "До начала этапа: "
+msgstr "До начала боёв: "
 
 msgid "selectorTooltip/epicBattle/timeLeft"
-msgstr "До конца этапа: "
+msgstr "До завершения боёв: "
 
 msgid "selectorTooltip/epicBattle/timeTable/dash"
 msgstr "—"
@@ -790,7 +793,10 @@ msgid "smoke/InAllySmoke"
 msgstr "В дымах: замаскирован"
 
 msgid "smoke/InEnemySmoke"
-msgstr "В дымах: обзор уменьшен"
+msgstr "В дымах. Обзор и эффективность экипажа уменьшены."
+
+msgid "smoke/InEnemySmokePostEffect"
+msgstr "Остаточное явление. Обзор и эффективность экипажа уменьшены."
 
 msgid "smoke/In_smoke"
 msgstr "В дымах"
@@ -835,7 +841,7 @@ msgid "status/timeLeft/min"
 msgstr "%(min)s мин"
 
 msgid "stealthRadar/active"
-msgstr "Скрытность активирована"
+msgstr "Режим дозора активирован"
 
 msgid "stealthRadar/inactive"
 msgstr "Активируется через %(activationDelay)s с после остановки"
@@ -861,13 +867,11 @@ msgstr "Режим отключён"
 msgid "tooltips/common/title"
 msgstr "Линия фронта"
 
-msgid "tooltips/common/titleWithCycle"
-msgstr "Линия фронта. Этап %(season)s"
-
 msgid "tooltips/slotSetupInfo/open/desc"
 msgstr ""
-"первый слот открыт изначально, второй и третий становятся доступны по "
-"достижении званий «сержант» и «лейтенант» соответственно."
+"порядок открытия резервов зависит от типа техники. Один резерв открыт "
+"изначально, остальные становятся доступны по достижении званий «сержант» и "
+"«лейтенант»."
 
 msgid "tooltips/slotSetupInfo/open/title"
 msgstr "Открытие: %(desc)s"
@@ -877,7 +881,8 @@ msgstr "Разблокировка и усиление резервов в бо�
 
 msgid "tooltips/slotSetupInfo/subtitle"
 msgstr ""
-"Слоты открываются и улучшаются в бою в зависимости от полученного звания."
+"Резервы открываются и улучшаются в бою в зависимости от типа техники и "
+"полученного звания."
 
 msgid "tooltips/slotSetupInfo/title/AT-SPG"
 msgstr "Конфигурация резервов для ПТ-САУ"
@@ -896,8 +901,9 @@ msgstr "Конфигурация резервов для средних танк
 
 msgid "tooltips/slotSetupInfo/upgrade/desc"
 msgstr ""
-"для первого слота по достижении званий «капитан» и «майор», усиление второго"
-" слота — на звании «генерал»."
+"после открытия всех резервов по достижении новых званий происходит улучшение"
+" этих резервов. Открытый изначально резерв может быть улучшен до третьего "
+"уровня, открытый вторым — до второго уровня."
 
 msgid "tooltips/slotSetupInfo/upgrade/title"
 msgstr "Улучшение: %(desc)s"
@@ -905,29 +911,20 @@ msgstr "Улучшение: %(desc)s"
 msgid "tooltips/slotUnlocked/message"
 msgstr "Слот откроется по достижении звания %(rank)s."
 
-msgid "tooltips/timeToEnd/cycle"
-msgstr "До конца этапа: %(timeLeft)s"
+msgid "tooltips/timeToEnd"
+msgstr "Режим доступен: %(timeLeft)s"
 
-msgid "tooltips/timeToEnd/season"
-msgstr "До конца: %(timeLeft)s"
+msgid "tooltips/timeToStart"
+msgstr "Бои начнутся через: %(timeLeft)s"
 
-msgid "tooltips/timeToStart/cycle"
-msgstr "До начала этапа: %(timeLeft)s"
-
-msgid "tooltips/timeToStart/season"
-msgstr "До начала: %(timeLeft)s"
-
-msgid "tooltips/widget/allCyclesFinished"
-msgstr "Все этапы завершены"
+msgid "tooltips/widget/finished"
+msgstr "Бои завершены"
 
 msgid "tooltips/widget/level"
 msgstr "Уровень %(level)s"
 
 msgid "tooltips/widget/reachedMaxLevel"
 msgstr "Достигнут максимальный уровень."
-
-msgid "tooltips/widget/seasonFinished"
-msgstr "Сезон завершён"
 
 msgid "tutorial/hint/epicReservesSlotHint"
 msgstr "БОЕВЫЕ РЕЗЕРВЫ"
@@ -936,13 +933,13 @@ msgid "widgetAlertMessageBlock/allPeripheriesHalt"
 msgstr "Комендантский час на всех серверах, бои начнутся через %(time)s"
 
 msgid "widgetAlertMessageBlock/announcement"
-msgstr "Этап %(cycle)s скоро начнётся"
+msgstr "Бои скоро начнутся"
 
 msgid "widgetAlertMessageBlock/button"
 msgstr "Сменить сервер"
 
 msgid "widgetAlertMessageBlock/noCycleMessage"
-msgstr "Этап %(cycle)s завершён"
+msgstr "Бои завершены"
 
 msgid "widgetAlertMessageBlock/singleModeHalt"
 msgstr "Комендантский час на сервере, бои начнутся через %(time)s"
@@ -951,7 +948,7 @@ msgid "widgetAlertMessageBlock/somePeripheriesHalt"
 msgstr "Комендантский час на %(serverName)s"
 
 msgid "widgetAlertMessageBlock/startIn"
-msgstr "Этап %(cycle)s начнётся через %(time)s"
+msgstr "Бои начнутся через: %(time)s"
 
 msgid "zone/arrived_text"
 msgstr "прибыло!"

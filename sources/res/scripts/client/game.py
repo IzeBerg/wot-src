@@ -26,6 +26,7 @@ class ServiceLocator(object):
 
 g_replayCtrl = None
 g_onBeforeSendEvent = None
+RECURSION_LIMIT = 1100
 
 def autoFlushPythonLog():
     BigWorld.flushPythonLog()
@@ -95,6 +96,7 @@ def init(scriptConfig, engineConfig, userPreferences, loadingScreenGUI=None):
         if constants.HAS_DEV_RESOURCES:
             import development
             development.init()
+        sys.setrecursionlimit(RECURSION_LIMIT)
     except Exception:
         LOG_CURRENT_EXCEPTION()
         BigWorld.quit()
@@ -184,6 +186,8 @@ def fini():
     else:
         if LightingGenerationMode.enabled():
             return
+        if g_replayCtrl is not None:
+            g_replayCtrl.stop(isDestroyed=True)
         BigWorld.wg_setScreenshotNotifyCallback(None)
         g_critMemHandler.restore()
         g_critMemHandler.destroy()
@@ -428,7 +432,8 @@ _PYTHON_MACROS = {'p': 'BigWorld.player()',
    'setHero': 'from HeroTank import debugReloadHero; debugReloadHero', 
    'switchNation': 'import Account; Account.g_accountRepository.inventory.switchNation()', 
    'plugins': 'from gui.Scaleform.daapi.view.battle.shared.markers2d.plugins import Ping3DPositionPlugin', 
-   'setPlatoonTanks': 'from gui.development.dev_platoon_tank_models import debugSetPlatoonTanks; debugSetPlatoonTanks'}
+   'setPlatoonTanks': 'from gui.development.dev_platoon_tank_models import debugSetPlatoonTanks; debugSetPlatoonTanks', 
+   'loadFormation': 'from gui.battle_control.controllers.commander.commands.vehicle_formation import g_formationMgr,RTS_VEHICLE_FORMATION_CFG; g_formationMgr.load(RTS_VEHICLE_FORMATION_CFG)'}
 
 def expandMacros(line):
     import re

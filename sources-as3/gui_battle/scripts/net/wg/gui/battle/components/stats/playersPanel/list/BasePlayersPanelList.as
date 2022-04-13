@@ -34,13 +34,13 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       protected var panelListItems:Vector.<IPlayersPanelListItem>;
       
+      protected var currOrder:Vector.<Number>;
+      
       private var _state:int;
       
       private var _items:Vector.<IPlayersPanelListItemHolder>;
       
       private var _itemsHealth:Dictionary;
-      
-      private var _currOrder:Vector.<Number>;
       
       private var _holderItemUnderMouseID:int = -1;
       
@@ -77,9 +77,9 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       public function BasePlayersPanelList()
       {
          this.panelListItems = new Vector.<IPlayersPanelListItem>();
+         this.currOrder = new Vector.<Number>();
          this._items = new Vector.<IPlayersPanelListItemHolder>();
          this._itemsHealth = new Dictionary();
-         this._currOrder = new Vector.<Number>();
          this._renderersContainer = new Sprite();
          this._mapHolderByVehicleID = new Dictionary();
          this._commons = App.utils.commons;
@@ -128,9 +128,9 @@ package net.wg.gui.battle.components.stats.playersPanel.list
             }
             this._items.splice(0,_loc1_);
          }
-         if(this._currOrder)
+         if(this.currOrder)
          {
-            this._currOrder.splice(0,this._currOrder.length);
+            this.currOrder.splice(0,this.currOrder.length);
          }
          if(this.panelListItems)
          {
@@ -408,13 +408,13 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          while(_loc5_ < _loc2_)
          {
             _loc3_ = param1[_loc5_];
-            if(this._currOrder[_loc5_] != _loc3_)
+            if(this.currOrder[_loc5_] != _loc3_)
             {
                _loc4_ = this.getItemByVehicleID(_loc3_);
                if(_loc4_)
                {
                   _loc4_.y = ITEM_HEIGHT * _loc5_;
-                  this._currOrder[_loc5_] = _loc3_;
+                  this.currOrder[_loc5_] = _loc3_;
                }
             }
             _loc5_++;
@@ -437,7 +437,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          }
          this._itemsHealth = null;
          this._items = null;
-         this._currOrder = null;
+         this.currOrder = null;
          this.panelListItems = null;
          this._renderersContainer = null;
          this._toolTipString = null;
@@ -519,7 +519,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          var _loc6_:Number = param1.vehicleID;
          this._mapHolderByVehicleID[_loc6_] = _loc5_;
          this._items.push(_loc5_);
-         this._currOrder.push(_loc6_);
+         this.currOrder.push(_loc6_);
          if(this._itemsHealth[_loc6_] !== undefined)
          {
             _loc5_.setPlayerHP(this._itemsHealth[_loc6_]);
@@ -589,21 +589,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          }
       }
       
-      private function getItemByVehicleID(param1:Number) : IPlayersPanelListItem
-      {
-         var _loc2_:int = this._items.length;
-         var _loc3_:int = 0;
-         while(_loc3_ < _loc2_)
-         {
-            if(this._items[_loc3_].vehicleID == param1)
-            {
-               return this.panelListItems[_loc3_];
-            }
-            _loc3_++;
-         }
-         return null;
-      }
-      
       private function getItemByAccountID(param1:Number) : IPlayersPanelListItem
       {
          var _loc2_:int = this._items.length;
@@ -622,14 +607,14 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       private function checkIfOrderIsValid(param1:Vector.<Number>) : Boolean
       {
          var _loc2_:int = param1.length;
-         if(_loc2_ != this._currOrder.length)
+         if(_loc2_ != this.currOrder.length)
          {
             return false;
          }
          var _loc3_:int = 0;
          while(_loc3_ < _loc2_)
          {
-            if(this._currOrder.indexOf(param1[_loc3_]) == Values.DEFAULT_INT)
+            if(this.currOrder.indexOf(param1[_loc3_]) == Values.DEFAULT_INT)
             {
                return false;
             }
@@ -676,6 +661,21 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       public function get isInviteReceived() : Boolean
       {
          return false;
+      }
+      
+      protected function getItemByVehicleID(param1:Number) : IPlayersPanelListItem
+      {
+         var _loc2_:int = this._items.length;
+         var _loc3_:int = 0;
+         while(_loc3_ < _loc2_)
+         {
+            if(this._items[_loc3_].vehicleID == param1)
+            {
+               return this.panelListItems[_loc3_];
+            }
+            _loc3_++;
+         }
+         return null;
       }
       
       protected function get itemLinkage() : String

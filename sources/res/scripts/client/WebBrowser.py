@@ -370,6 +370,8 @@ class WebBrowser(object):
         return
 
     def handleKeyEvent(self, event):
+        if not self.__isNavigationComplete:
+            return True
         e = event
         keyState = (e.key, e.isKeyDown(), e.isAltDown(), e.isShiftDown(), e.isCtrlDown())
         toolTipMgr = self.__uiObj.getToolTipMgr()
@@ -520,8 +522,8 @@ class WebBrowser(object):
             self.__successfulLoad = False
 
     def __onLoadEnd(self, url, isLoaded=True, httpStatusCode=None, errorDesc=None):
+        self.__isNavigationComplete = True
         if url == self.__browser.url or errorDesc:
-            self.__isNavigationComplete = True
             self.__successfulLoad = isLoaded
             if not isLoaded or httpStatusCode and httpStatusCode >= 400 or errorDesc:
                 _logger.error('FAILED Url: %s, Http code: %r, Browser error: %s', self.__browser.url, httpStatusCode, errorDesc)

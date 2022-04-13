@@ -109,7 +109,7 @@ class SmokeScreen(object):
     def enableSmokePostEffect(enabled, smokeInfos=None):
         if enabled:
             if smokeInfos:
-                equipmentID = smokeInfos[0]['equipmentID']
+                equipmentID = smokeInfos['equipmentID']
                 if SmokeScreen.vignetteEnabled and SmokeScreen.activeVignetteEquipmentID == equipmentID:
                     return
                 smokeScreenEquipment = vehicles.g_cache.equipments()[equipmentID]

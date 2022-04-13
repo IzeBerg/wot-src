@@ -16,6 +16,8 @@ package net.wg.gui.lobby.settings.components
       
       private var _warningData:Dictionary;
       
+      private var _infoTooltipMaxWidth:uint = 0;
+      
       public function RadioButtonBar()
       {
          this._infoData = new Dictionary();
@@ -39,6 +41,7 @@ package net.wg.gui.lobby.settings.components
          {
             param1.enabled = _loc3_[SUPPORTED];
          }
+         RadioButton(param1).setInfoIconTooltipWidth(this._infoTooltipMaxWidth);
          if(param2 in this._infoData)
          {
             RadioButton(param1).infoIcoType = InfoIcon.TYPE_INFO;
@@ -55,6 +58,11 @@ package net.wg.gui.lobby.settings.components
       public function setInfoButton(param1:String, param2:int) : void
       {
          this._infoData[param2] = param1;
+      }
+      
+      public function setInfoIconTooltipWidth(param1:uint) : void
+      {
+         this._infoTooltipMaxWidth = param1;
       }
       
       public function setWarningButton(param1:String, param2:int) : void

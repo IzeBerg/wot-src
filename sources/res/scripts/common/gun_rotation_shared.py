@@ -1,6 +1,8 @@
 import BigWorld, Math
-from math import pi, fabs
+from math import pi, fabs, fmod
 from debug_utils import *
+_DPI = 2.0 * pi
+_FLT_EPSILON = 1e-05
 
 def calcPitchLimitsFromDesc(turretYaw, pitchLimitsDesc, turretPitch=0.0, gunJointPitch=0.0):
     minPitch = pitchLimitsDesc['minPitch']
@@ -55,7 +57,9 @@ def getLocalAimPoint(vehicleDescriptor):
     if vehicleDescriptor is None:
         return Math.Vector3(0.0, 0.0, 0.0)
     else:
-        hullBox = vehicleDescriptor.hull.hitTester.bbox
+        if vehicleDescriptor.type.localAimPoint is not None:
+            return Math.Vector3(vehicleDescriptor.type.localAimPoint)
+        hullBox = vehicleDescriptor.hitTesters.hull.bbox
         hullPosition = vehicleDescriptor.chassis.hullPosition
         middleX = (hullBox[0].x + hullBox[1].x) * 0.5 + hullPosition.x
         middleZ = (hullBox[0].z + hullBox[1].z) * 0.5 + hullPosition.z
@@ -65,3 +69,18 @@ def getLocalAimPoint(vehicleDescriptor):
         turretPosition.z = max(-maxZOffset, min(maxZOffset, turretPosition.z))
         localAimPoint = calculatedHullPosition + turretPosition
         return localAimPoint
+
+
+def isOutOfLimits(angle, limits):
+    if limits is None:
+        return
+    else:
+        if abs(limits[1] - angle) < _FLT_EPSILON or abs(limits[0] - angle) < _FLT_EPSILON:
+            return
+        minDiff = fmod(limits[0] - angle + _DPI, _DPI)
+        maxDiff = fmod(limits[1] - angle + _DPI, _DPI)
+        if minDiff > maxDiff:
+            return
+        if minDiff < _DPI - maxDiff:
+            return limits[0]
+        return limits[1]

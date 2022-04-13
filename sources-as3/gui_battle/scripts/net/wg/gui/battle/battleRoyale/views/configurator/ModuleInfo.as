@@ -132,9 +132,9 @@ package net.wg.gui.battle.battleRoyale.views.configurator
          this.updateKeyViewerPosition();
       }
       
-      public function setHotKeys(param1:Array) : void
+      public function setHotKeys(param1:Array, param2:Array) : void
       {
-         this._keyViewerList.setKeys(param1);
+         this._keyViewerList.setKeys(param1,param2);
       }
       
       protected function onDispose() : void

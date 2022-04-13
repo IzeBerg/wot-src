@@ -27,13 +27,13 @@ package net.wg.gui.lobby.battleResults.components
          super(param1);
       }
       
-      override public function dispose() : void
+      override protected function onDispose() : void
       {
          teamResourceTotal.removeEventListener(MouseEvent.MOUSE_OVER,this.onTeamResourceTotalMouseOverHandler);
          teamResourceTotal.removeEventListener(MouseEvent.MOUSE_OUT,this.onTeamTextFieldsTotalMouseOutHandler);
          teamInfluenceTotal.removeEventListener(MouseEvent.MOUSE_OVER,this.onTeamInfluenceTotalMouseOverHandler);
          teamInfluenceTotal.removeEventListener(MouseEvent.MOUSE_OUT,this.onTeamTextFieldsTotalMouseOutHandler);
-         super.dispose();
+         super.onDispose();
       }
       
       override protected function initColumnsData(param1:CommonStatsVO) : void

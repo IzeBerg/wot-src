@@ -115,5 +115,18 @@ package net.wg.data.VO.daapi
          }
          super.onDispose();
       }
+      
+      public function getLeftVehicleInfo(param1:int) : DAAPIVehicleInfoVO
+      {
+         var _loc2_:DAAPIVehicleInfoVO = null;
+         for each(_loc2_ in this.leftVehicleInfos)
+         {
+            if(_loc2_.vehicleID == param1)
+            {
+               return _loc2_;
+            }
+         }
+         return null;
+      }
    }
 }

@@ -7,11 +7,9 @@ from frameworks.wulf import WindowLayer
 from gui.shared import EVENT_BUS_SCOPE, events
 from gui.battle_control.battle_constants import BATTLE_CTRL_ID
 from gui.Scaleform.genConsts.BATTLE_VIEW_ALIASES import BATTLE_VIEW_ALIASES
-from gui.Scaleform.daapi.view.battle.shared import period_music_listener
 from gui.Scaleform.daapi.view.battle.shared.page import ComponentsConfig
 from gui.Scaleform.daapi.view.battle.shared.crosshair import CrosshairPanelContainer
 from gui.Scaleform.daapi.view.battle.classic.page import ClassicPage
-from gui.Scaleform.daapi.view.battle.classic.page import DynamicAliases
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.battle.event.manager import EventMarkersManager
 from gui.shared.events import LoadViewEvent
@@ -24,16 +22,13 @@ EVENT_CONFIG = ComponentsConfig(config=(
   (
    BATTLE_VIEW_ALIASES.BATTLE_TIMER,
    BATTLE_VIEW_ALIASES.PREBATTLE_TIMER,
-   BATTLE_VIEW_ALIASES.BATTLE_END_WARNING_PANEL,
-   DynamicAliases.PERIOD_MUSIC_LISTENER)),
+   BATTLE_VIEW_ALIASES.BATTLE_END_WARNING_PANEL)),
  (
   BATTLE_CTRL_ID.CALLOUT, (BATTLE_VIEW_ALIASES.CALLOUT_PANEL,)),
  (
   BATTLE_CTRL_ID.DEBUG, (BATTLE_VIEW_ALIASES.DEBUG_PANEL,)),
  (
-  BATTLE_CTRL_ID.MAPS, (BATTLE_VIEW_ALIASES.MINIMAP,))), viewsConfig=(
- (
-  DynamicAliases.PERIOD_MUSIC_LISTENER, period_music_listener.PeriodMusicListener),))
+  BATTLE_CTRL_ID.MAPS, (BATTLE_VIEW_ALIASES.MINIMAP,))), viewsConfig=())
 _TUTORIAL_PAGES = ('eventHint1', 'eventHint2')
 _EVENT_EXTERNAL_COMPONENTS = (
  CrosshairPanelContainer, EventMarkersManager)
@@ -111,7 +106,8 @@ class EventBattlePage(ClassicPage):
                 return
             if manager.isModalViewsIsExists():
                 return
-            if self.as_isComponentVisibleS(BATTLE_VIEW_ALIASES.RADIAL_MENU):
+            ctrl = self.sessionProvider.shared.calloutCtrl
+            if ctrl is not None and ctrl.isRadialMenuOpened():
                 return
             if self.as_isComponentVisibleS(BATTLE_VIEW_ALIASES.EVENT_STATS) != isShown:
                 if isShown:

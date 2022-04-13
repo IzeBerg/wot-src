@@ -16,7 +16,7 @@ class TimerComponent(object):
             self._startTime = finishTime - totalTime
             self._finishTime = finishTime
         else:
-            self._startTime = BigWorld.serverTime()
+            self._startTime = startTime or BigWorld.serverTime()
             self._finishTime = self._startTime + totalTime
 
     def __repr__(self):

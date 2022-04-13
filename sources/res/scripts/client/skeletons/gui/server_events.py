@@ -121,9 +121,6 @@ class IEventsCache(object):
     def getHeroTankAdventCalendarRedirectAction(self):
         raise NotImplementedError
 
-    def getTradeInActions(self):
-        raise NotImplementedError
-
     def isBalancedSquadEnabled(self):
         raise NotImplementedError
 

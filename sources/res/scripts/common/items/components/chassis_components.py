@@ -10,13 +10,13 @@ __all__ = ('Wheel', 'WheelGroup', 'TrackPair', 'TrackNode', 'TrackBasicVisualPar
 Wheel = reflectedNamedTuple('Wheel', ('index', 'isLeft', 'radius', 'nodeName', 'isLeading',
                                       'leadingSyncAngle', 'hitTesterManager', 'materials',
                                       'position'))
-Wheel.hitTester = property(lambda self: self.hitTesterManager.activeHitTester)
+Wheel.getHitTester = property(lambda self: self.hitTesterManager.getHitTester)
 WheelGroup = reflectedNamedTuple('WheelGroup', ('isLeft', 'template', 'count', 'startIndex',
                                                 'radius'))
 WheelsConfig = reflectedNamedTuple('WheelsConfig', ('groups', 'wheels'))
 TrackPair = namedtuple('TrackPair', ('hitTesterManager', 'materials', 'healthParams',
                                      'breakMode'))
-TrackPair.hitTester = property(lambda self: self.hitTesterManager.activeHitTester)
+TrackPair.getHitTester = property(lambda self: self.hitTesterManager.getHitTester)
 TrackNode = reflectedNamedTuple('TrackNode', ('name', 'isLeft', 'initialOffset', 'leftNodeName',
                                               'rightNodeName', 'damping', 'elasticity',
                                               'forwardElasticityCoeff', 'backwardElasticityCoeff'))

@@ -95,7 +95,7 @@ package net.wg.gui.lobby.settings.feedback.damageLog
          var _loc11_:String = null;
          var _loc12_:String = null;
          var _loc13_:String = null;
-         var _loc14_:Vector.<MessageRenderModel> = null;
+         var _loc15_:Vector.<MessageRenderModel> = null;
          super.updateContent(param1);
          var _loc2_:Boolean = param1[DAMAGE_LOG_TOTAL_DAMAGE_ID];
          var _loc3_:Boolean = param1[DAMAGE_LOG_ASSIST_DAMAGE_ID];
@@ -121,42 +121,43 @@ package net.wg.gui.lobby.settings.feedback.damageLog
          {
             _loc13_ = SETTINGS.FEEDBACK_TAB_DAMAGELOGPANEL_SUMMARYASSISTSTUN;
          }
-         this.damageLogPanelComponent.setSummaryStats(_loc10_,_loc11_,_loc12_,_loc13_);
-         var _loc15_:Boolean = true;
-         var _loc16_:Boolean = false;
-         var _loc17_:Boolean = _loc7_ == DETAILS_LOG_POSITIVE_EVENTS_IDX;
+         var _loc14_:String = null;
+         this.damageLogPanelComponent.setSummaryStats(_loc10_,_loc11_,_loc12_,_loc13_,_loc14_);
+         var _loc16_:Boolean = true;
+         var _loc17_:Boolean = false;
+         var _loc18_:Boolean = _loc7_ == DETAILS_LOG_POSITIVE_EVENTS_IDX;
          if(_loc8_ == DETAILS_LOG_BOTTOM_POSITION_IDX)
          {
             if(_loc7_ == DETAILS_LOG_ALL_EVENTS_IDX)
             {
-               _loc14_ = SettingsDamageLogData.getTotal();
+               _loc15_ = SettingsDamageLogData.getTotal();
             }
-            else if(_loc17_)
+            else if(_loc18_)
             {
-               _loc14_ = SettingsDamageLogData.getPositive();
-               _loc15_ = false;
+               _loc15_ = SettingsDamageLogData.getPositive();
+               _loc16_ = false;
             }
             else
             {
-               _loc14_ = SettingsDamageLogData.getNegative();
+               _loc15_ = SettingsDamageLogData.getNegative();
             }
-            this.damageLogPanelComponent.settingsDetailStatsBottom(_loc9_,_loc17_,_loc14_);
+            this.damageLogPanelComponent.settingsDetailStatsBottom(_loc9_,_loc18_,_loc15_);
             this.damageLogPanelComponent.settingsDetailStatsTop(_loc9_,SettingsDamageLogData.getEmpty());
          }
          else
          {
-            if(_loc17_ || _loc7_ == DETAILS_LOG_ALL_EVENTS_IDX)
+            if(_loc18_ || _loc7_ == DETAILS_LOG_ALL_EVENTS_IDX)
             {
                this.damageLogPanelComponent.settingsDetailStatsBottom(_loc9_,true,SettingsDamageLogData.getPositive());
             }
-            if(_loc17_)
+            if(_loc18_)
             {
                this.damageLogPanelComponent.settingsDetailStatsTop(_loc9_,SettingsDamageLogData.getEmpty());
-               _loc15_ = false;
+               _loc16_ = false;
             }
             if(_loc7_ == DETAILS_LOG_NEGATIVE_EVENTS_IDX || _loc7_ == DETAILS_LOG_ALL_EVENTS_IDX)
             {
-               _loc16_ = true;
+               _loc17_ = true;
                this.damageLogPanelComponent.settingsDetailStatsTop(_loc9_,SettingsDamageLogData.getNegative());
                if(_loc7_ == DETAILS_LOG_NEGATIVE_EVENTS_IDX)
                {
@@ -164,8 +165,8 @@ package net.wg.gui.lobby.settings.feedback.damageLog
                }
             }
          }
-         this.damageLogEventsPositionButtonBar.enabled = _loc15_;
-         this.screenSizeAlert.visible = _loc16_ && _loc9_;
+         this.damageLogEventsPositionButtonBar.enabled = _loc16_;
+         this.screenSizeAlert.visible = _loc17_ && _loc9_;
       }
       
       override protected function getContainerId() : String

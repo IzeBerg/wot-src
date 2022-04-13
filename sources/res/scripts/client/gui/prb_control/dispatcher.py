@@ -124,6 +124,34 @@ class _PreBattleDispatcher(ListenersCollection):
 
     @async
     @process
+    def createDev(self, ctx, entry, callback=None):
+        if ctx.getRequestType() != _RQ_TYPE.CREATE:
+            LOG_ERROR('Invalid context to create prebattle/unit', ctx)
+            if callback is not None:
+                callback(False)
+            return
+        if not entry.canCreate():
+            if callback is not None:
+                callback(False)
+            return
+        ctx.addFlags(entry.getFunctionalFlags() | FUNCTIONAL_FLAG.SWITCH)
+        if not self.__validateJoinOp(ctx):
+            if callback is not None:
+                callback(False)
+            return
+        result = yield self.unlock(ctx)
+        if not result:
+            if callback is not None:
+                callback(False)
+            return
+        ctx.setForced(True)
+        LOG_DEBUG('Request to create', ctx, entry)
+        self.__requestCtx = ctx
+        entry.create(ctx, callback=callback)
+        return
+
+    @async
+    @process
     def join(self, ctx, callback=None):
         if ctx.getRequestType() != _RQ_TYPE.JOIN:
             LOG_ERROR('Invalid context to join prebattle/unit', ctx)

@@ -11,7 +11,6 @@ package net.wg.gui.login.impl
    import net.wg.data.Aliases;
    import net.wg.data.ListDAAPIDataProvider;
    import net.wg.data.constants.Linkages;
-   import net.wg.data.constants.LobbyMetrics;
    import net.wg.data.constants.Locales;
    import net.wg.data.constants.Values;
    import net.wg.gui.components.common.BaseLogoView;
@@ -72,8 +71,6 @@ package net.wg.gui.login.impl
       
       private static const FREE_SPACE_FACTOR:Number = 0.6;
       
-      private static const FREE_SPACE_BORDER_FACTOR:Number = 0.17;
-      
       private static const WOT_LOGO_OFFSET_Y:Number = 190;
       
       private static const AGE_RATING_OFFSET_X:Number = 30;
@@ -113,6 +110,12 @@ package net.wg.gui.login.impl
       private static const HEALTH_NOTICE_TEXT_ALPHA:Number = 0.6;
       
       private static const HEALTH_NOTICE_OFFSET:int = 25;
+      
+      private static const LOGO_OFFSET_Y_2k:int = -78;
+      
+      private static const LOGO_OFFSET_Y_4k:int = -54;
+      
+      private static const FREE_SPACE_BORDER_FACTOR:Number = 0.17;
        
       
       public var bgImage:UILoaderAlt = null;
@@ -638,7 +641,7 @@ package net.wg.gui.login.impl
       private function updateContentPosition() : void
       {
          this.loginViewStack.x = App.appWidth >> 1;
-         this.loginViewStack.y = Math.round(App.appHeight * FREE_SPACE_FACTOR + (App.appHeight - LobbyMetrics.MIN_STAGE_HEIGHT) * FREE_SPACE_BORDER_FACTOR);
+         this.loginViewStack.y = LoginFormPositionHelper.getLoginFormPosition(App.appHeight);
          this.wotLogo.x = this.loginViewStack.x;
          this.wotLogo.y = this.loginViewStack.y - WOT_LOGO_OFFSET_Y;
          this.ageRating.x = App.appWidth - AGE_RATING_OFFSET_X;
@@ -1032,5 +1035,73 @@ package net.wg.gui.login.impl
       {
          this.updateCopyrightPos();
       }
+   }
+}
+
+import net.wg.data.constants.LobbyMetrics;
+
+class LoginFormPositionHelper
+{
+   
+   private static const POS_Y_SCREEN_HEIGHT_768:int = 461;
+   
+   private static const POS_Y_SCREEN_HEIGHT_1080:int = 700;
+   
+   private static const POS_Y_SCREEN_HEIGHT_1440:int = 848;
+   
+   private static const POS_Y_SCREEN_HEIGHT_2160:int = 1240;
+   
+   private static const POSITION_BY_RESOLUTION:Object = {};
+   
+   private static const SCREEN_HEIGHT:Vector.<int> = new <int>[LobbyMetrics.MIN_STAGE_HEIGHT,LobbyMetrics.STAGE_HEIGHT_1080,LobbyMetrics.STAGE_HEIGHT_1440,LobbyMetrics.STAGE_HEIGHT_2160];
+   
+   {
+      POSITION_BY_RESOLUTION[LobbyMetrics.MIN_STAGE_HEIGHT] = POS_Y_SCREEN_HEIGHT_768;
+      POSITION_BY_RESOLUTION[LobbyMetrics.STAGE_HEIGHT_1080] = POS_Y_SCREEN_HEIGHT_1080;
+      POSITION_BY_RESOLUTION[LobbyMetrics.STAGE_HEIGHT_1440] = POS_Y_SCREEN_HEIGHT_1440;
+      POSITION_BY_RESOLUTION[LobbyMetrics.STAGE_HEIGHT_2160] = POS_Y_SCREEN_HEIGHT_2160;
+   }
+   
+   function LoginFormPositionHelper()
+   {
+      super();
+   }
+   
+   public static function getLoginFormPosition(param1:int) : int
+   {
+      var _loc3_:int = 0;
+      var _loc4_:int = 0;
+      var _loc6_:int = 0;
+      var _loc7_:Number = NaN;
+      var _loc8_:int = 0;
+      var _loc2_:int = 0;
+      var _loc5_:uint = SCREEN_HEIGHT.length;
+      while(_loc2_ < _loc5_ - 1)
+      {
+         _loc3_ = SCREEN_HEIGHT[_loc2_];
+         _loc4_ = SCREEN_HEIGHT[_loc2_ + 1];
+         if(_loc3_ <= param1 && param1 <= _loc4_)
+         {
+            break;
+         }
+         _loc2_++;
+      }
+      if(!POSITION_BY_RESOLUTION[SCREEN_HEIGHT[_loc2_]])
+      {
+         DebugUtils.LOG_ERROR("Invalid settings for loginForm! See LoginFormPositionHelper!");
+         return 0;
+      }
+      if(_loc2_ < SCREEN_HEIGHT.length - 1)
+      {
+         _loc7_ = 1 - (_loc4_ - param1) / (_loc4_ - SCREEN_HEIGHT[_loc2_]);
+         _loc6_ = POSITION_BY_RESOLUTION[_loc3_] + (POSITION_BY_RESOLUTION[_loc4_] - POSITION_BY_RESOLUTION[_loc3_]) * _loc7_;
+      }
+      else
+      {
+         _loc8_ = SCREEN_HEIGHT[SCREEN_HEIGHT.length - 1];
+         _loc7_ = POSITION_BY_RESOLUTION[_loc8_] / _loc8_;
+         _loc6_ = _loc7_ * param1;
+      }
+      return _loc6_;
    }
 }

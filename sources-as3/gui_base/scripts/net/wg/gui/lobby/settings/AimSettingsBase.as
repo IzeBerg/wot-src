@@ -8,6 +8,7 @@ package net.wg.gui.lobby.settings
    import net.wg.gui.components.crosshairPanel.components.artyShot.ArtyShotIndicatorsPanel;
    import net.wg.gui.components.crosshairPanel.components.gunMarker.IGunMarker;
    import net.wg.gui.components.crosshairPanel.constants.CrosshairConsts;
+   import net.wg.gui.lobby.aimSettings.AimContourContent;
    import net.wg.gui.lobby.settings.config.SettingsConfigHelper;
    import scaleform.clik.interfaces.IDataProvider;
    
@@ -31,6 +32,8 @@ package net.wg.gui.lobby.settings
       
       public var spgForm:SettingsArtyForm = null;
       
+      public var contourForm:SettingsContourForm = null;
+      
       public var arcadeCrosshair:ICrosshair = null;
       
       public var sniperCrosshair:ICrosshair = null;
@@ -40,6 +43,8 @@ package net.wg.gui.lobby.settings
       public var artyZoomPanel:Sprite = null;
       
       public var artyShotNotify:MovieClip = null;
+      
+      public var contourCrosshair:AimContourContent = null;
       
       public var artyShotIndicatorsPanel:ArtyShotIndicatorsPanel = null;
       
@@ -89,6 +94,8 @@ package net.wg.gui.lobby.settings
          this.artyShotIndicatorsPanel.dispose();
          this.artyShotIndicatorsPanel = null;
          this.artyShotNotify = null;
+         this.contourCrosshair.dispose();
+         this.contourCrosshair = null;
          this.artyZoomPanel = null;
          this.arcadeForm.dispose();
          this.arcadeForm = null;
@@ -96,6 +103,8 @@ package net.wg.gui.lobby.settings
          this.sniperForm = null;
          this.spgForm.dispose();
          this.spgForm = null;
+         this.contourForm.dispose();
+         this.contourForm = null;
          super.onDispose();
       }
    }

@@ -1909,6 +1909,10 @@ package
       
       public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_TMAN:String = "#messenger:serviceChannelMessages/battlePassReward/tman";
       
+      public static const SERVICECHANNELMESSAGES_BATTLEPASSEXTRASTART_BUTTON:String = "#messenger:serviceChannelMessages/battlePassExtraStart/button";
+      
+      public static const SERVICECHANNELMESSAGES_BATTLEPASSEXTRAWILLENDSOON_BUTTON:String = "#messenger:serviceChannelMessages/battlePassExtraWillEndSoon/button";
+      
       public static const SERVICECHANNELMESSAGES_BATTLEPASS_REACHEDCAP_HEADER:String = "#messenger:serviceChannelMessages/battlePass/reachedCap/header";
       
       public static const SERVICECHANNELMESSAGES_BATTLEPASS_REACHEDCAP_TEXT:String = "#messenger:serviceChannelMessages/battlePass/reachedCap/text";
@@ -2084,6 +2088,14 @@ package
       public static const PLATFORMCURRENCYMSG_RECEIVED_BPBIT:String = "#messenger:platformCurrencyMsg/received/bpbit";
       
       public static const PLATFORMCURRENCYMSG_DEBITED_BPBIT:String = "#messenger:platformCurrencyMsg/debited/bpbit";
+      
+      public static const SERVICECHANNELMESSAGES_RTS_PASSACCURED:String = "#messenger:serviceChannelMessages/RTS/passAccured";
+      
+      public static const SERVICECHANNELMESSAGES_RTS_RTS1X7CURRENCYDEBITED:String = "#messenger:serviceChannelMessages/RTS/rts1x7CurrencyDebited";
+      
+      public static const SERVICECHANNELMESSAGES_RTS_RTS1X1CURRENCYDEBITED:String = "#messenger:serviceChannelMessages/RTS/rts1x1CurrencyDebited";
+      
+      public static const SERVICECHANNELMESSAGES_RTS_RTS1X7PASSDEBITED:String = "#messenger:serviceChannelMessages/RTS/rts1x7PassDebited";
       
       public static const DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_ENUM:Array = [DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_OFFLINE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_NOTREADY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_READY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_INBATTLE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_AFK];
        

@@ -115,6 +115,8 @@ package
       
       public static const ARENA_START_ERRORS_JOIN_QUEUE_FAILURE:String = "#system_messages:arena_start_errors/join/QUEUE_FAILURE";
       
+      public static const ARENA_START_ERRORS_JOIN_INSUFFICIENT_FUNDS:String = "#system_messages:arena_start_errors/join/INSUFFICIENT_FUNDS";
+      
       public static const PREBATTLE_KICK_TYPE_SQUAD:String = "#system_messages:prebattle/kick/type/squad";
       
       public static const PREBATTLE_KICK_TYPE_UNKNOWN:String = "#system_messages:prebattle/kick/type/unknown";
@@ -922,6 +924,10 @@ package
       public static const VEHICLE_SELL_SUCCESS_DISMANTLING_WITH_DEMOUNT_KIT:String = "#system_messages:vehicle_sell/success_dismantling/with_demount_kit";
       
       public static const VEHICLE_SELL_DEMOUNT_KIT_DISABLED:String = "#system_messages:vehicle_sell/demount_kit_disabled";
+      
+      public static const VEHICLE_TRADE_IN_OFFER_AVAILABLE:String = "#system_messages:vehicle_trade_in/offer_available";
+      
+      public static const VEHICLE_TRADE_IN_OFFER_UNAVAILABLE:String = "#system_messages:vehicle_trade_in/offer_unavailable";
       
       public static const VEHICLE_TRADE_IN_SERVER_ERROR:String = "#system_messages:vehicle_trade_in/server_error";
       
@@ -2203,6 +2209,20 @@ package
       
       public static const RANKED_NOTIFICATION_AVAILABLE_TITLE:String = "#system_messages:ranked/notification/available/title";
       
+      public static const RTS_NOTIFICATION_NOTAVAILABLE:String = "#system_messages:rts/notification/notAvailable";
+      
+      public static const RTS_NOTIFICATION_PRIMETIME:String = "#system_messages:rts/notification/primeTime";
+      
+      public static const RTS_NOTIFICATION_PRIMETIME_TITLE:String = "#system_messages:rts/notification/primeTime/title";
+      
+      public static const RTS_NOTIFICATION_NOTSET:String = "#system_messages:rts/notification/notSet";
+      
+      public static const RTS_NOTIFICATION_NOTSET_TITLE:String = "#system_messages:rts/notification/notSet/title";
+      
+      public static const RTS_NOTIFICATION_AVAILABLE:String = "#system_messages:rts/notification/available";
+      
+      public static const RTS_NOTIFICATION_AVAILABLE_TITLE:String = "#system_messages:rts/notification/available/title";
+      
       public static const ROYALE_NOTIFICATION_PRIMETIME:String = "#system_messages:royale/notification/primeTime";
       
       public static const ROYALE_NOTIFICATION_PRIMETIME_TITLE:String = "#system_messages:royale/notification/primeTime/title";
@@ -2391,6 +2411,18 @@ package
       
       public static const BATTLEPASS_REWARDCHOICE_ERROR:String = "#system_messages:battlePass/rewardChoice/error";
       
+      public static const BATTLEPASS_EXTRASTARTED_HEADER:String = "#system_messages:battlePass/extraStarted/header";
+      
+      public static const BATTLEPASS_EXTRASTARTED_BODY:String = "#system_messages:battlePass/extraStarted/body";
+      
+      public static const BATTLEPASS_EXTRAFINISH_HEADER:String = "#system_messages:battlePass/extraFinish/header";
+      
+      public static const BATTLEPASS_EXTRAFINISH_BODY:String = "#system_messages:battlePass/extraFinish/body";
+      
+      public static const BATTLEPASS_EXTRAWILLENDSOON_HEADER:String = "#system_messages:battlePass/extraWillEndSoon/header";
+      
+      public static const BATTLEPASS_EXTRAWILLENDSOON_BODY:String = "#system_messages:battlePass/extraWillEndSoon/body";
+      
       public static const BATTLEPASS_GAMEMODEENABLED_HEADER:String = "#system_messages:battlePass/gameModeEnabled/header";
       
       public static const BATTLEPASS_GAMEMODEENABLED_BODY_22:String = "#system_messages:battlePass/gameModeEnabled/body/22";
@@ -2556,6 +2588,8 @@ package
       public static const TELECOMMERGERESULTS_BODY_PROGRESSDECALESCOMPENS:String = "#system_messages:telecomMergeResults/body/progressDecalesCompens";
       
       public static const TELECOMMERGERESULTS_BODY_WISHMSG:String = "#system_messages:telecomMergeResults/body/wishMsg";
+      
+      public static const SSR_UNAVAILABLE:String = "#system_messages:ssr/unavailable";
        
       
       public function SYSTEM_MESSAGES()

@@ -65,6 +65,8 @@ package net.wg.gui.components.carousels.data
       
       public var hasProgression:Boolean = false;
       
+      public var rtsRosterIndex:Number = 0;
+      
       public var isEarnCrystals:Boolean = false;
       
       public var isCrystalsLimitReached:Boolean = false;

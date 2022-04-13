@@ -24,9 +24,9 @@ package net.wg.gui.components.hintPanel
          this.keyViewer = null;
       }
       
-      public function setKey(param1:String) : void
+      public function setKey(param1:String, param2:String) : void
       {
-         this.keyViewer.setKey(param1);
+         this.keyViewer.setKey(param1,param2);
       }
       
       public function isDisposed() : Boolean

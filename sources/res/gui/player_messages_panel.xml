@@ -1177,5 +1177,37 @@
 				<item>green</item>
 			</value>
 		</message>
+		<message>
+			<name>SPAWN_ALLY</name>
+			<type>list</type>
+			<value>
+				<item>_(#ingame_gui:player_messages/SPAWN)</item>
+				<item>green</item>
+			</value>
+		</message>
+		<message>
+			<name>SPAWN_ENEMY</name>
+			<type>list</type>
+			<value>
+				<item>_(#ingame_gui:player_messages/SPAWN)</item>
+				<item>red</item>
+			</value>
+		</message>
+		<message>
+			<name>DEATH_FROM_SUPPLY_SHOT_ALLY_ENEMY</name>
+			<type>list</type>
+			<value>
+				<item>_(#ingame_gui:player_messages/DEATH_FROM_SUPPLY_SHOT_ALLY_ENEMY)</item>
+				<item>green</item>
+			</value>
+		</message>
+		<message>
+			<name>DEATH_FROM_SUPPLY_SHOT_ENEMY_ALLY</name>
+			<type>list</type>
+			<value>
+				<item>_(#ingame_gui:player_messages/DEATH_FROM_SUPPLY_SHOT_ENEMY_ALLY)</item>
+				<item>red,purple</item>
+			</value>
+		</message>
 	</messages>
 </root>

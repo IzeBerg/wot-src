@@ -2,7 +2,7 @@ import weakref, logging
 from ArtilleryEquipment import ArtilleryEquipment
 from AvatarInputHandler import gun_marker_ctrl
 from CombatSelectedArea import CombatSelectedArea
-from aih_constants import GUN_MARKER_TYPE, CTRL_MODE_NAME
+from aih_constants import GUN_MARKER_TYPE, CTRL_MODE_NAME, MAP_CASE_MODES
 from gui.sounds.epic_sound_constants import EPIC_SOUND
 from helpers import dependency
 from helpers.CallbackDelayer import CallbackDelayer
@@ -87,7 +87,7 @@ class _VehiclesSelector(object):
 
     def highlightVehicles(self):
         self.__clearEdgedVehicles()
-        vehicles = [ v for v in BigWorld.player().vehicles if v.isStarted and v.isAlive() ]
+        vehicles = [ v for v in BigWorld.player().vehicles if v.isStarted and v.isAlive() and not v.isPlayerVehicle ]
         selected = self.__intersectChecker(vehicles)
         for v in selected:
             v.drawEdge(True)
@@ -214,7 +214,7 @@ class _AreaStrikeSelector(_DefaultStrikeSelector):
 
     def __init__(self, position, equipment, direction=_DEFAULT_STRIKE_DIRECTION):
         _DefaultStrikeSelector.__init__(self, position, equipment)
-        self.area = BigWorld.player().createEquipmentSelectedArea(position, direction, equipment)
+        self.area = BigWorld.player().createEquipmentSelectedArea(position, direction, equipment, doYCutOff=False)
         self.area.setOverTerrainOffset(10.0)
         self.direction = direction
         self.__sightUpdateActivity = None
@@ -838,12 +838,7 @@ def activateMapCase(equipmentID, deactivateCallback, controlMode):
         inputHandler.ctrl.activateEquipment(equipmentID, preferredPos)
     else:
         currentMode = inputHandler.ctrlModeName
-        mapCaseModes = (
-         CTRL_MODE_NAME.MAP_CASE_ARCADE_EPIC_MINEFIELD,
-         CTRL_MODE_NAME.MAP_CASE,
-         CTRL_MODE_NAME.MAP_CASE_ARCADE,
-         CTRL_MODE_NAME.MAP_CASE_ARCADE_EPIC_MINEFIELD)
-        if currentMode in mapCaseModes:
+        if currentMode in MAP_CASE_MODES:
             _logger.warning('MapCaseMode is active! Attempt to switch MapCaseModes simultaneously!')
             return
         controlMode.deactivateCallback = deactivateCallback

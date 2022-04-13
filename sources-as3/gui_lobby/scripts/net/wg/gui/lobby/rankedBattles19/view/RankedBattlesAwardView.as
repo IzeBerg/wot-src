@@ -16,7 +16,6 @@ package net.wg.gui.lobby.rankedBattles19.view
    import net.wg.gui.lobby.rankedBattles19.components.rankAward.RankAwardAnimation;
    import net.wg.gui.lobby.rankedBattles19.data.RankedBattleAwardViewVO;
    import net.wg.gui.lobby.rankedBattles19.data.RankedBattlesCurrentAwardVO;
-   import net.wg.gui.lobby.rankedBattles19.events.RankWidgetEvent;
    import net.wg.infrastructure.base.meta.IRankedBattlesAwardsViewMeta;
    import net.wg.infrastructure.base.meta.impl.RankedBattlesAwardsViewMeta;
    import net.wg.infrastructure.managers.ITooltipMgr;
@@ -173,7 +172,6 @@ package net.wg.gui.lobby.rankedBattles19.view
          this.bonusBattleMc.removeEventListener(MouseEvent.ROLL_OVER,this.onBonusBattleMcRollOverHandler);
          this.bonusBattleMc.removeEventListener(MouseEvent.ROLL_OUT,this.onBonusBattleMcRollOutHandler);
          this.bonusBattleMc = null;
-         this.rankIcon.removeEventListener(RankWidgetEvent.BLINK_STARTED,this.onRankIconBlinkStartedHandler);
          this.rankIcon.dispose();
          this.rankIcon = null;
          this.qual.dispose();
@@ -211,7 +209,6 @@ package net.wg.gui.lobby.rankedBattles19.view
          this.closeButton.tooltip = RANKED_BATTLES.TOOLTIP_CLOSEBUTTON;
          this.closeButton.addEventListener(ButtonEvent.CLICK,this.onCloseButtonClickHandler);
          this.title.mouseChildren = this.title.mouseEnabled = false;
-         this.rankIcon.addEventListener(RankWidgetEvent.BLINK_STARTED,this.onRankIconBlinkStartedHandler);
          this.rankIcon.mouseChildren = this.rankIcon.mouseEnabled = false;
          App.utils.universalBtnStyles.setStyle(this.nextButton,UniversalBtnStylesConst.STYLE_HEAVY_GREEN);
          this.nextButton.addEventListener(ButtonEvent.CLICK,this.onNextButtonClickHandler);
@@ -377,12 +374,6 @@ package net.wg.gui.lobby.rankedBattles19.view
       private function onCloseButtonClickHandler(param1:ButtonEvent) : void
       {
          closeViewS();
-      }
-      
-      private function onRankIconBlinkStartedHandler(param1:RankWidgetEvent) : void
-      {
-         param1.stopImmediatePropagation();
-         onSoundTriggerS(RANKEDBATTLES_ALIASES.SOUND_RANK_BLINK);
       }
       
       private function onBonusBattleMcRollOverHandler(param1:MouseEvent) : void

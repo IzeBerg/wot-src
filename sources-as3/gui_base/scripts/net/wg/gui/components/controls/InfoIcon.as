@@ -4,9 +4,11 @@ package net.wg.gui.components.controls
    import flash.display.MovieClip;
    import flash.events.Event;
    import flash.events.MouseEvent;
+   import net.wg.data.managers.ITooltipProps;
    import net.wg.gui.components.controls.constants.ToolTipShowType;
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.interfaces.IInfoIcon;
+   import net.wg.infrastructure.managers.ITooltipMgr;
    
    public class InfoIcon extends UIComponentEx implements IInfoIcon
    {
@@ -28,15 +30,20 @@ package net.wg.gui.components.controls
       
       public var hit:MovieClip = null;
       
+      public var tooltipType:ToolTipShowType;
+      
+      private var _toolTipMgr:ITooltipMgr;
+      
       private var _icoType:String = "info";
       
       private var _tooltip:String = "";
       
-      public var tooltipType:ToolTipShowType;
+      private var _tooltipMaxWidth:uint = 0;
       
       public function InfoIcon()
       {
          this.tooltipType = ToolTipShowType.COMPLEX;
+         this._toolTipMgr = App.toolTipMgr;
          super();
          hitArea = this.hit;
       }
@@ -47,6 +54,7 @@ package net.wg.gui.components.controls
          removeEventListener(MouseEvent.MOUSE_OUT,this.onHitMouseOutHandler);
          removeEventListener(MouseEvent.CLICK,this.onHitClickHandler);
          this.hit = null;
+         this._toolTipMgr = null;
          super.onDispose();
       }
       
@@ -117,29 +125,13 @@ package net.wg.gui.components.controls
          this._tooltip = param1;
       }
       
-      private function onHitMouseOverHandler(param1:MouseEvent) : void
+      public function set tooltipMaxWidth(param1:uint) : void
       {
-         if(this._tooltip && enabled)
+         if(param1 == this._tooltipMaxWidth)
          {
-            if(this.tooltipType.value == ToolTipShowType.COMPLEX.value)
-            {
-               App.toolTipMgr.showComplex(this._tooltip);
-            }
-            else if(this.tooltipType.value == ToolTipShowType.SPECIAL.value)
-            {
-               App.toolTipMgr.showSpecial(this._tooltip,null);
-            }
+            return;
          }
-      }
-      
-      private function onHitMouseOutHandler(param1:MouseEvent) : void
-      {
-         App.toolTipMgr.hide();
-      }
-      
-      private function onHitClickHandler(param1:MouseEvent) : void
-      {
-         App.toolTipMgr.hide();
+         this._tooltipMaxWidth = param1;
       }
       
       override protected function handleStageChange(param1:Event) : void
@@ -154,6 +146,39 @@ package net.wg.gui.components.controls
                stage.invalidate();
             }
          }
+      }
+      
+      private function onHitMouseOverHandler(param1:MouseEvent) : void
+      {
+         var _loc2_:ITooltipProps = null;
+         if(this._tooltip && enabled)
+         {
+            if(this.tooltipType.value == ToolTipShowType.COMPLEX.value)
+            {
+               _loc2_ = null;
+               if(this._tooltipMaxWidth)
+               {
+                  _loc2_ = this._toolTipMgr.getDefaultTooltipProps();
+                  _loc2_ = ITooltipProps(_loc2_.clone());
+                  _loc2_.maxWidth = this._tooltipMaxWidth;
+               }
+               this._toolTipMgr.showComplex(this._tooltip,_loc2_);
+            }
+            else if(this.tooltipType.value == ToolTipShowType.SPECIAL.value)
+            {
+               this._toolTipMgr.showSpecial(this._tooltip,null);
+            }
+         }
+      }
+      
+      private function onHitMouseOutHandler(param1:MouseEvent) : void
+      {
+         this._toolTipMgr.hide();
+      }
+      
+      private function onHitClickHandler(param1:MouseEvent) : void
+      {
+         this._toolTipMgr.hide();
       }
    }
 }

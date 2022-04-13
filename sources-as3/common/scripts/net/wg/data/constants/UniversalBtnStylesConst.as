@@ -20,6 +20,8 @@ package net.wg.data.constants
       public static const STYLE_HEAVY_ORANGE:String = "heavyOrange";
       
       public static const STYLE_HEAVY_LIME:String = "heavyLime";
+      
+      public static const STYLE_HEAVY_RTS_TRANSPARENT:String = "heavyRTSTransparent";
        
       
       public function UniversalBtnStylesConst()

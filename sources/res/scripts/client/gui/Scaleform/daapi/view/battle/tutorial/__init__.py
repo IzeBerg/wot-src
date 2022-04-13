@@ -1,5 +1,6 @@
 from frameworks.wulf import WindowLayer
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
+from gui.Scaleform.daapi.view.battle.shared.indicators import SixthSenseIndicator
 from gui.Scaleform.daapi.view.battle.tutorial.tutorial_page import TutorialPage, TutorialComponent, TutorialMinimapComponent
 from gui.Scaleform.framework import ViewSettings, ScopeTemplates, ComponentSettings
 from gui.Scaleform.framework.package_layout import PackageBusinessHandler
@@ -27,7 +28,8 @@ def getViewSettings():
      ComponentSettings(BATTLE_VIEW_ALIASES.MINIMAP, TutorialMinimapComponent, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(BATTLE_VIEW_ALIASES.CONSUMABLES_PANEL, consumables_panel.ConsumablesPanel, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(BATTLE_VIEW_ALIASES.RIBBONS_PANEL, ribbons_panel.BattleRibbonsPanel, ScopeTemplates.DEFAULT_SCOPE),
-     ComponentSettings(BATTLE_VIEW_ALIASES.GAME_MESSAGES_PANEL, game_messages_panel.GameMessagesPanel, ScopeTemplates.DEFAULT_SCOPE))
+     ComponentSettings(BATTLE_VIEW_ALIASES.GAME_MESSAGES_PANEL, game_messages_panel.GameMessagesPanel, ScopeTemplates.DEFAULT_SCOPE),
+     ComponentSettings(BATTLE_VIEW_ALIASES.SIXTH_SENSE, SixthSenseIndicator, ScopeTemplates.DEFAULT_SCOPE))
 
 
 def getBusinessHandlers():

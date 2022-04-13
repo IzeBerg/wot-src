@@ -251,6 +251,13 @@ def showInvitationInWindowsBar():
         LOG_CURRENT_EXCEPTION()
 
 
+def hideInvitationInWindowsBar():
+    try:
+        BigWorld.WGWindowsNotifier.resetTaskbar()
+    except AttributeError:
+        LOG_CURRENT_EXCEPTION()
+
+
 def getPlayerDatabaseID():
     return getAccountDatabaseID() or getAvatarDatabaseID()
 

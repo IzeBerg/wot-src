@@ -1,6 +1,7 @@
 from constants import ARENA_GAMEPLAY_IDS, HANGAR_VISIBILITY_TAGS
 import ResMgr
 from soft_exception import SoftException
+from debug_utils import LOG_WARNING
 
 class SpaceVisibilityFlagsFactory(object):
     _g_cache = {}
@@ -23,10 +24,16 @@ class SpaceVisibilityFlags(object):
     def __init__(self, geometryName):
         settingsPath = SpaceVisibilityFlags.__formSettingPath(geometryName)
         settingsSection = _openSection(settingsPath)
+        flagsSection = None
+        self.types = ARENA_GAMEPLAY_IDS
+        if settingsSection is not None:
+            flagsSection = settingsSection[SpaceVisibilityFlags.FLAGS_CONFIG_SECTION]
+            if SpaceVisibilityFlags.__isHangarSpace(settingsSection):
+                self.types = HANGAR_VISIBILITY_TAGS.IDS
         self.typeIDToIndex = {}
-        if not SpaceVisibilityFlags.__isHangarSpace(settingsSection):
-            self.types = ARENA_GAMEPLAY_IDS if 1 else HANGAR_VISIBILITY_TAGS.IDS
-            raise (self.__formMapping(settingsSection) or SoftException)('Cannot create SpaceVisibilityFlags for space.settings %s' % settingsPath)
+        if not self.__formMapping(flagsSection):
+            raise SoftException('Cannot create SpaceVisibilityFlags for space.settings %s' % settingsPath)
+        return
 
     def getMaskForGameplayID(self, gameplayID):
         return 1 << self.typeIDToIndex[gameplayID]
@@ -34,8 +41,7 @@ class SpaceVisibilityFlags(object):
     def getMaskForGameplayIDs(self, gameplayIDs):
         return sum(self.getMaskForGameplayID(gameplayID) for gameplayID in gameplayIDs)
 
-    def __formMapping(self, settingsSection):
-        flagsSection = settingsSection[SpaceVisibilityFlags.FLAGS_CONFIG_SECTION]
+    def __formMapping(self, flagsSection):
         if flagsSection is not None:
             typeIDToIndex = self.typeIDToIndex
             for name, data in flagsSection.items():
@@ -65,8 +71,7 @@ class SpaceVisibilityFlags(object):
 
 
 def _openSection(path):
-    ResMgr.purge(path, True)
-    settingsSection = ResMgr.openSection(path)
-    if settingsSection is None:
-        raise SoftException('space.settings file is missing %s' % path)
-    return settingsSection
+    section = ResMgr.openSection(path)
+    if section is None:
+        LOG_WARNING('space.settings file is missing %s' % path)
+    return section

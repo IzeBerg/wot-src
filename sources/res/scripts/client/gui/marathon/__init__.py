@@ -1,1 +1,1 @@
-from gui.marathon.lunar_marathon_2022 import LunarMarathon
+from gui.marathon.example_marathon import ExampleMarathon

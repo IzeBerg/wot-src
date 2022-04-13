@@ -81,11 +81,17 @@ package net.wg.data.constants.generated
       
       public static const DAMAGE_LOG_STUN_16X16:String = "damageLog_stun_16x16";
       
+      public static const DAMAGE_LOG_SUPPLY_DAMAGE_16X16:String = "damageLog_supply_damage_16x16";
+      
       public static const EMPTY_SHELL_BG:String = "emptyShellBg";
       
       public static const ENGINE_ACCELERATION:String = "engine_acceleration";
       
       public static const ENGINE_SPEED:String = "engine_speed";
+      
+      public static const GOLD_BLACK_CENTER:String = "goldBlackCenter";
+      
+      public static const GOLD_BLACK_EDGE:String = "goldBlackEdge";
       
       public static const GOLD_CENTER:String = "goldCenter";
       
@@ -191,6 +197,8 @@ package net.wg.data.constants.generated
       
       public static const RIBBONS_STUN:String = "ribbonsStun";
       
+      public static const SUM:String = "sum";
+      
       public static const TURRET_ARMOR:String = "turret_armor";
       
       public static const TURRET_HEALTH:String = "turret_health";
@@ -199,11 +207,23 @@ package net.wg.data.constants.generated
       
       public static const VEHICLE:String = "vehicle";
       
+      public static const WHITE_BLACK_CENTER:String = "whiteBlackCenter";
+      
+      public static const WHITE_BLACK_EDGE:String = "whiteBlackEdge";
+      
       public static const WHITE_CENTER:String = "whiteCenter";
       
       public static const WHITE_EDGE:String = "whiteEdge";
       
+      public static const WHITE_ICON_A_TGUN16X16:String = "whiteIconATgun16x16";
+      
       public static const WHITE_ICON_AT_SPG16X16:String = "whiteIconAt-SPG16x16";
+      
+      public static const WHITE_ICON_BARRICADES16X16:String = "whiteIconBarricades16x16";
+      
+      public static const WHITE_ICON_FLAMER16X16:String = "whiteIconFlamer16x16";
+      
+      public static const WHITE_ICON_GUN16X16:String = "whiteIconGun16x16";
       
       public static const WHITE_ICON_HEAVY_TANK16X16:String = "whiteIconHeavyTank16x16";
       
@@ -211,7 +231,13 @@ package net.wg.data.constants.generated
       
       public static const WHITE_ICON_MEDIUM_TANK16X16:String = "whiteIconMediumTank16x16";
       
+      public static const WHITE_ICON_MORTAR16X16:String = "whiteIconMortar16x16";
+      
+      public static const WHITE_ICON_PILLBOX16X16:String = "whiteIconPillbox16x16";
+      
       public static const WHITE_ICON_SPG16X16:String = "whiteIconSPG16x16";
+      
+      public static const WHITE_ICON_TOWER16X16:String = "whiteIconTower16x16";
        
       
       public function COMMONBATTLELOBBY()
