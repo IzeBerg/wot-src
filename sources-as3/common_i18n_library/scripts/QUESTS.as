@@ -3357,4 +3357,38 @@ package
       
       public static const DETAILS_CONDITIONS_CUMULATIVE_DAMAGEDHP:String = "#quests:details/conditions/cumulative/damagedHp";
       
-      public static const BATTLECONDITION_STATE_ENUM:Array = [BATTLECONDITION_STATE_COMPLETED,BATTLECONDITION_STATE_COMPLETED_PERFECTLY,BATTL
+      public static const BATTLECONDITION_STATE_ENUM:Array = [BATTLECONDITION_STATE_COMPLETED,BATTLECONDITION_STATE_COMPLETED_PERFECTLY,BATTLECONDITION_STATE_IN_PROGRESS,BATTLECONDITION_STATE_FAILED];
+      
+      public static const QUEST_FLAG_STATUS_ENUM:Array = [QUEST_FLAG_STATUS_NOT_STARTED,QUEST_FLAG_STATUS_LOCKED,QUEST_FLAG_STATUS_FAILED,QUEST_FLAG_STATUS_COMPLETED,QUEST_FLAG_STATUS_IN_PROGRESS,QUEST_FLAG_STATUS_COMPLETED_PERFECTLY];
+       
+      
+      public function QUESTS()
+      {
+         super();
+      }
+      
+      public static function battlecondition_state(param1:String) : String
+      {
+         var _loc2_:String = null;
+         _loc2_ = "#quests:" + "battleCondition/state/" + param1;
+         if(BATTLECONDITION_STATE_ENUM.indexOf(_loc2_) == -1)
+         {
+            DebugUtils.LOG_WARNING("[battlecondition_state]:locale key \"" + _loc2_ + "\" was not found");
+            return null;
+         }
+         return _loc2_;
+      }
+      
+      public static function getFlagStatus(param1:String) : String
+      {
+         var _loc2_:String = null;
+         _loc2_ = "#quests:" + "quest/flag/status/" + param1;
+         if(QUEST_FLAG_STATUS_ENUM.indexOf(_loc2_) == -1)
+         {
+            DebugUtils.LOG_WARNING("[getFlagStatus]:locale key \"" + _loc2_ + "\" was not found");
+            return null;
+         }
+         return _loc2_;
+      }
+   }
+}

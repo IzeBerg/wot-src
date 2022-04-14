@@ -56,7 +56,10 @@ class RTSProgressionController(IRTSProgressionController, IGlobalListener):
         self.__clear()
 
     def isEnabled(self):
-        return self.getConfig().isEnabled
+        config = self.getConfig()
+        if config:
+            return config.isEnabled
+        return False
 
     def getConfig(self):
         if self.__serverSettings is not None:
@@ -72,10 +75,15 @@ class RTSProgressionController(IRTSProgressionController, IGlobalListener):
 
     def getCollectionProgress(self):
         config = self.getConfig()
-        return self.__itemsCache.items.tokens.getTokenCount(config.rtsCollectionToken)
+        if config:
+            return self.__itemsCache.items.tokens.getTokenCount(config.rtsCollectionToken)
+        return 0
 
     def getProgressLeftToNextStage(self):
-        progression = self.getConfig().progression
+        config = self.getConfig()
+        if not config:
+            return 0
+        progression = config.progression
         progress = self.getCollectionProgress()
         left = 0
         for stage in progression:
@@ -108,9 +116,11 @@ class RTSProgressionController(IRTSProgressionController, IGlobalListener):
         result = [
          (
           0, {})]
-        for data in self.getConfig().progression:
-            rewards = self.getQuestRewards(data.get('quest', ''))
-            result.append((data.get('itemsCount', 0), rewards))
+        config = self.getConfig()
+        if config:
+            for data in config.progression:
+                rewards = self.getQuestRewards(data.get('quest', ''))
+                result.append((data.get('itemsCount', 0), rewards))
 
         return result
 
@@ -135,7 +145,7 @@ class RTSProgressionController(IRTSProgressionController, IGlobalListener):
 
     def __onTokensUpdate(self, diff):
         config = self.getConfig()
-        if config.rtsCollectionToken in diff:
+        if config and config.rtsCollectionToken in diff:
             self.onProgressUpdated()
 
     def __onServerSettingsChanged(self, serverSettings):

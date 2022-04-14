@@ -387,9 +387,10 @@ class SpawnMenu(SpawnMenuMeta, IRTSSpawnListener, IAbstractPeriodView):
             return
 
     def _isStrategistEnemyVehicle(self, vInfo):
-        vehicle = BigWorld.player().arena.vehicles.get(vInfo.vehicleID, {})
+        arena = BigWorld.player().arena
+        vehicle = arena.vehicles.get(vInfo.vehicleID, {})
         if vehicle is not None:
-            return vehicle.get('accountDBID') == 0
+            return vehicle.get('accountDBID') == 0 and arena.bonusType == constants.ARENA_BONUS_TYPE.RTS_1x1
         else:
             return True
 
