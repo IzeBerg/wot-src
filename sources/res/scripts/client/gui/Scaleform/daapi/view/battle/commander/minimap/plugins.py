@@ -150,7 +150,7 @@ class PersonalEntriesPlugin(common.SimplePlugin):
                 value = getter(settings_constants.GAME.SHOW_SECTOR_ON_MAP)
                 if value and self.__viewPointID:
                     self._invoke(self.__viewPointID, 'setYawLimit', *self.__yawLimits)
-            if (not self.__isObserver or self._isCommanderAttached()) and self.__isAlive:
+            if self.__areCirclesCanBeShown():
                 if self.__circlesID is None:
                     self.__updateViewRangeCircle()
                 if getter(settings_constants.GAME.MINIMAP_DRAW_RANGE):
@@ -179,7 +179,7 @@ class PersonalEntriesPlugin(common.SimplePlugin):
                 self.__setupYawLimit()
             else:
                 self.__clearYawLimit()
-        if not self.__isObserver or self._isCommanderAttached():
+        if self.__areCirclesCanBeShown():
             if settings_constants.GAME.MINIMAP_DRAW_RANGE in diff:
                 value = diff[settings_constants.GAME.MINIMAP_DRAW_RANGE]
                 if value:
@@ -354,7 +354,7 @@ class PersonalEntriesPlugin(common.SimplePlugin):
 
     def __updateViewRangeCircle(self):
         ownMatrix = matrix_factory.makeAttachedVehicleMatrix()
-        isActive = (not self.__isObserver or self._isCommanderAttached()) and self.__isAlive
+        isActive = self.__areCirclesCanBeShown()
         if self.__circlesID:
             self._setActive(self.__circlesID, isActive)
             self._setMatrix(self.__circlesID, ownMatrix)
@@ -487,12 +487,13 @@ class PersonalEntriesPlugin(common.SimplePlugin):
                 marker, _ = value
                 self._invoke(self.__animationID, 'setAnimation', marker)
 
-    def __onVehicleFeedbackReceived(self, eventID, _, value):
+    def __onVehicleFeedbackReceived(self, eventID, vehicleID, value):
         if eventID == FEEDBACK_EVENT_ID.VEHICLE_ATTRS_CHANGED and self.__circlesVisibilityState & settings.CIRCLE_TYPE.VIEW_RANGE:
             self._invoke(self.__circlesID, settings.VIEW_RANGE_CIRCLES_AS3_DESCR.AS_UPDATE_DYN_CIRCLE, min(value.get('circularVisionRadius', VISIBILITY.MIN_RADIUS), VISIBILITY.MAX_RADIUS))
-        if eventID == FEEDBACK_EVENT_ID.VEHICLE_DEAD and (self.__isObserver or self.__isCommander):
-            self.__removeAllCircles()
-            self.__hideDirectionLine()
+        if eventID == FEEDBACK_EVENT_ID.VEHICLE_DEAD:
+            if self.__isObserver or self.__isCommander and vehicleID == self._ctrlVehicleID:
+                self.__removeAllCircles()
+                self.__hideDirectionLine()
 
     def __addDrawRangeCircle(self):
         if self.__circlesVisibilityState & settings.CIRCLE_TYPE.DRAW_RANGE:
@@ -560,6 +561,9 @@ class PersonalEntriesPlugin(common.SimplePlugin):
         if self.__viewPointID and self.__yawLimits is not None:
             self._invoke(self.__viewPointID, 'clearYawLimit')
         return
+
+    def __areCirclesCanBeShown(self):
+        return not self.__isObserver and self._isCommanderAttached() and self.__isAlive
 
 
 class ArenaVehiclesPlugin(common.EntriesPlugin, IVehiclesAndPositionsController):

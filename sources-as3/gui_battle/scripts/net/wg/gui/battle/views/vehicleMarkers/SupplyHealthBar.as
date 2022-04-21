@@ -128,6 +128,12 @@ package net.wg.gui.battle.views.vehicleMarkers
          return this.bgMC.height;
       }
       
+      override public function set visible(param1:Boolean) : void
+      {
+         super.visible = param1;
+         invalidateData();
+      }
+      
       override protected function onDispose() : void
       {
          this.disposeFx();
