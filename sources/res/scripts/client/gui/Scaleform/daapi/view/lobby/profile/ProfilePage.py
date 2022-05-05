@@ -17,6 +17,7 @@ from skeletons.gui.lobby_context import ILobbyContext
 from gui.Scaleform.daapi.view.lobby.profile.sound_constants import ACHIEVEMENTS_SOUND_SPACE
 from gui.Scaleform.daapi.view.lobby.hof.web_handlers import createHofWebHandlers
 from gui.Scaleform.daapi.view.lobby.hof.hof_helpers import getHofDisabledKeys, onServerSettingsChange
+from gui.shared.events import ProfilePageEvent
 
 class ProfilePage(LobbySubView, ProfileMeta):
     __sound_env__ = LobbySubViewEnv
@@ -75,9 +76,14 @@ class ProfilePage(LobbySubView, ProfileMeta):
             selectedAlias = self.__tabNavigator.tabId
         else:
             selectedAlias = self.__ctx.get('selectedAlias')
+        itemCD = None
         if selectedAlias is None or selectedAlias == VIEW_ALIAS.PROFILE_HOF and not isHofEnabled:
             itemCD = self.__ctx.get('itemCD')
             selectedAlias = VIEW_ALIAS.PROFILE_TECHNIQUE_PAGE if itemCD else VIEW_ALIAS.PROFILE_SUMMARY_PAGE
+        if itemCD is None:
+            event = ProfilePageEvent(ProfilePageEvent.SELECT_PROFILE_ALIAS)
+            g_eventBus.handleEvent(event, scope=EVENT_BUS_SCOPE.LOBBY)
+            selectedAlias = event.ctx.get('selectedAlias', selectedAlias)
         sectionsData = [
          (
           PROFILE.SECTION_SUMMARY_TITLE,

@@ -69,11 +69,7 @@ package net.wg.gui.battle.views.prebattleTimer
       
       private var _isNeedWinChangePosition:Boolean = true;
       
-      private var _isBackgroundHidden:Boolean = false;
-      
-      private var _isDescriptionHidden:Boolean = false;
-      
-      private var _isDirtyCompVisible:Boolean = false;
+      private var _isBackgroundHided:Boolean = false;
       
       public function PrebattleTimerBase()
       {
@@ -191,28 +187,10 @@ package net.wg.gui.battle.views.prebattleTimer
          invalidateSize();
       }
       
-      public function showBackground() : void
-      {
-         this._isBackgroundHidden = false;
-         this.background.visible = this._isDirtyCompVisible;
-      }
-      
-      public function showDescription() : void
-      {
-         this._isDescriptionHidden = false;
-         this.win.visible = this.message.visible = this._isDirtyCompVisible;
-      }
-      
       public function hideBackground() : void
       {
-         this._isBackgroundHidden = true;
+         this._isBackgroundHided = true;
          this.background.visible = false;
-      }
-      
-      public function hideDescription() : void
-      {
-         this._isDescriptionHidden = true;
-         this.win.visible = this.message.visible = false;
       }
       
       protected function doUpdateSize(param1:Boolean) : void
@@ -228,10 +206,10 @@ package net.wg.gui.battle.views.prebattleTimer
       
       protected function doComponentVisibility(param1:Boolean) : void
       {
-         this.win.visible = this.message.visible = !this._isDescriptionHidden && param1;
+         this.win.visible = param1;
          this.timer.visible = param1;
-         this.background.visible = !!this._isBackgroundHidden ? Boolean(false) : Boolean(param1);
-         this._isDirtyCompVisible = param1;
+         this.message.visible = param1;
+         this.background.visible = !!this._isBackgroundHided ? Boolean(false) : Boolean(param1);
          if(!param1)
          {
             dispatchEvent(new PrebattleTimerEvent(PrebattleTimerEvent.START_HIDING,false));

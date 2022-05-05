@@ -175,6 +175,44 @@ package net.wg.gui.components.hintPanel
          this.update();
       }
       
+      public function as_toggle(param1:Boolean) : void
+      {
+         if(this._isShow != param1)
+         {
+            this._isShow = param1;
+            if(param1)
+            {
+               this._fadeOutBgTween.paused = true;
+               this.bg.y = BG_INIT_Y;
+               this.bg.scaleY = BG_INIT_SCALE;
+               this.bg.alpha = BG_INIT_ALPHA;
+               this.keyEffectAnim.gotoAndPlay(FADE_IN_FRAME);
+               this.keyAnim.gotoAndPlay(FADE_IN_FRAME);
+               this.keyAnim.blendMode = BlendMode.SCREEN;
+               this.messageLeftAnim.gotoAndPlay(FADE_IN_FRAME);
+               this.messageRightAnim.gotoAndPlay(FADE_IN_FRAME);
+               this.appearanceEffectAnim.gotoAndPlay(FADE_IN_FRAME);
+               this._fadeInBgTween.reset();
+               this._fadeInBgTween.paused = false;
+            }
+            else
+            {
+               this._fadeInBgTween.paused = true;
+               this.bg.y = BG_INIT_Y;
+               this.bg.scaleY = FADE_IN_BG_SCALE_Y;
+               this.bg.alpha = BG_FADE_OUT_ALPHA;
+               this.keyEffectAnim.gotoAndStop(1);
+               this.keyAnim.gotoAndPlay(FADE_OUT_FRAME);
+               this.keyAnim.blendMode = BlendMode.ADD;
+               this.messageLeftAnim.gotoAndPlay(FADE_OUT_FRAME);
+               this.messageRightAnim.gotoAndPlay(FADE_OUT_FRAME);
+               this._fadeOutBgTween.reset();
+               this._fadeOutBgTween.paused = false;
+            }
+            this.playSnd(!!param1 ? BATTLE_SOUND.SOUND_TYPE_HINT_PANNEL_SHOW : BATTLE_SOUND.SOUND_TYPE_HINT_PANNEL_HIDE);
+         }
+      }
+      
       public function hide() : void
       {
          visible = false;
@@ -229,44 +267,6 @@ package net.wg.gui.components.hintPanel
       private function playSnd(param1:String) : void
       {
          onPlaySoundS(param1);
-      }
-      
-      public function as_toggle(param1:Boolean) : void
-      {
-         if(this._isShow != param1)
-         {
-            this._isShow = param1;
-            if(param1)
-            {
-               this._fadeOutBgTween.paused = true;
-               this.bg.y = BG_INIT_Y;
-               this.bg.scaleY = BG_INIT_SCALE;
-               this.bg.alpha = BG_INIT_ALPHA;
-               this.keyEffectAnim.gotoAndPlay(FADE_IN_FRAME);
-               this.keyAnim.gotoAndPlay(FADE_IN_FRAME);
-               this.keyAnim.blendMode = BlendMode.SCREEN;
-               this.messageLeftAnim.gotoAndPlay(FADE_IN_FRAME);
-               this.messageRightAnim.gotoAndPlay(FADE_IN_FRAME);
-               this.appearanceEffectAnim.gotoAndPlay(FADE_IN_FRAME);
-               this._fadeInBgTween.reset();
-               this._fadeInBgTween.paused = false;
-            }
-            else
-            {
-               this._fadeInBgTween.paused = true;
-               this.bg.y = BG_INIT_Y;
-               this.bg.scaleY = FADE_IN_BG_SCALE_Y;
-               this.bg.alpha = BG_FADE_OUT_ALPHA;
-               this.keyEffectAnim.gotoAndStop(1);
-               this.keyAnim.gotoAndPlay(FADE_OUT_FRAME);
-               this.keyAnim.blendMode = BlendMode.ADD;
-               this.messageLeftAnim.gotoAndPlay(FADE_OUT_FRAME);
-               this.messageRightAnim.gotoAndPlay(FADE_OUT_FRAME);
-               this._fadeOutBgTween.reset();
-               this._fadeOutBgTween.paused = false;
-            }
-            this.playSnd(!!param1 ? BATTLE_SOUND.SOUND_TYPE_HINT_PANNEL_SHOW : BATTLE_SOUND.SOUND_TYPE_HINT_PANNEL_HIDE);
-         }
       }
       
       override public function get width() : Number

@@ -2,7 +2,7 @@ from collections import namedtuple
 import json, BigWorld
 from account_helpers.premium_info import PremiumInfo
 from adisp import async
-from gui.shared.money import Money, Currency
+from gui.shared.money import Money, Currency, DynamicMoney
 from gui.shared.utils.requesters.abstract import AbstractSyncDataRequester
 from gui.veh_post_progression.models.ext_money import ExtendedMoney
 from helpers import time_utils, dependency
@@ -306,6 +306,11 @@ class StatsRequester(AbstractSyncDataRequester, IStatsRequester):
     def getMoneyExt(self, vehCD):
         vehicleXP = self.vehiclesXPs.get(vehCD, 0)
         return ExtendedMoney(xp=(self.freeXP + vehicleXP), vehXP=vehicleXP, freeXP=self.freeXP, **self.money.toDict())
+
+    def getDynamicMoney(self):
+        money = self.money.toDict()
+        money.update(self.dynamicCurrencies)
+        return DynamicMoney(**money)
 
     def getWeeklyVehicleCrystals(self, vehCD):
         return self.getCacheValue('weeklyVehicleCrystals', {}).get(vehCD, 0)

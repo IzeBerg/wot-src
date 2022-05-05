@@ -16,7 +16,7 @@ class EpicBattleServerPresenter(ServerListItemPresenter):
 
     def _buildTooltip(self, peripheryID):
         if not self.getTimeLeft():
-            tooltipStr = text_styles.expText(backport.text(R.strings.epic_battle.primeTime.endOfCycle(), server=self.getName()))
+            tooltipStr = text_styles.expText(self._getEndOfCycleTooltipText())
         else:
             timeStr = text_styles.neutral(time_formatters.getTillTimeByResource(self.getTimeLeft(), R.strings.menu.Time.timeValueShort))
             if self._getIsAvailable():
@@ -26,6 +26,9 @@ class EpicBattleServerPresenter(ServerListItemPresenter):
         return {'tooltip': tooltipStr, 
            'specialArgs': [], 'specialAlias': None, 
            'isSpecial': None}
+
+    def _getEndOfCycleTooltipText(self):
+        return backport.text(R.strings.epic_battle.primeTime.endOfCycle(), server=self.getName())
 
 
 class EpicBattlesPrimeTimeView(EpicPrimeTimeMeta):

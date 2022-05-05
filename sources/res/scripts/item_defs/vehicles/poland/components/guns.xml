@@ -21,12 +21,6 @@
 		<_130mm_R_14_wz_56>22</_130mm_R_14_wz_56>
 		<_152mm_J_2>23</_152mm_J_2>
 		<_85mm_ZiS_S-53_B>24</_85mm_ZiS_S-53_B>
-		<Gun_1_Pl201_Gun_D_74_RTS>20200</Gun_1_Pl201_Gun_D_74_RTS>
-		<Gun_1_Pl203_WatchTower1_RTS>23300</Gun_1_Pl203_WatchTower1_RTS>
-		<Gun_1_Pl205_203mm50_Mle_1924_RTS>23400</Gun_1_Pl205_203mm50_Mle_1924_RTS>
-		<Gun_Pl208_Pillbox_SPM_4_RTS>23500</Gun_Pl208_Pillbox_SPM_4_RTS>
-		<Gun_1_Pl207_Mortar_RTS>23600</Gun_1_Pl207_Mortar_RTS>
-		<Gun_Pl206_Firedot_RTS>23700</Gun_Pl206_Firedot_RTS>
 		<_105mm_wz_52>25</_105mm_wz_52>
 		<_105mm_armata_wz_64>26</_105mm_armata_wz_64>
 		<_100mm_haubica_wz_14_19>27</_100mm_haubica_wz_14_19>
@@ -37,6 +31,12 @@
 		<_100mm_armata_wz_58>32</_100mm_armata_wz_58>
 		<_100mm_armata_wz_62>33</_100mm_armata_wz_62>
 		<_105mm_armata_wz_59>34</_105mm_armata_wz_59>
+		<_105mm_wz_22_24_G1_SH>35</_105mm_wz_22_24_G1_SH>
+		<_75mm_wz_36_37_G2_SH>36</_75mm_wz_36_37_G2_SH>
+		<_90mm_armata_wz_46_G3_SH>37</_90mm_armata_wz_46_G3_SH>
+		<_100mm_armata_wz_62_G4_SH>38</_100mm_armata_wz_62_G4_SH>
+		<_100mm_armata_wz_58_G5_SH>39</_100mm_armata_wz_58_G5_SH>
+		<_122mm_wz_43_50_G6_SH>40</_122mm_wz_43_50_G6_SH>
 	</ids>
 	<shared>
 		<_20mm_n_k_m_20_A>
@@ -3298,91 +3298,11 @@
 				</_152mm_pocisk_wybuchowy>
 			</shots>
 		</_152mm_J_2>
-		<Gun_1_Pl201_Gun_D_74_RTS>
-			<userString>#poland_vehicles:Gun_1_Pl201_Gun_D_74_RTS</userString>
+		<_105mm_wz_22_24_G1_SH>
+			<userString>#poland_vehicles:_105mm_wz_22_24_G1_SH</userString>
 			<tags/>
-			<level>5</level>
-			<price>30750</price>
-			<notInShop>true</notInShop>
-			<impulse>
-				0.38
-				<!--BW_String-->
-			</impulse>
-			<recoil>
-				<lodDist>MEDIUM</lodDist>
-				<amplitude>
-					0.36
-					<!--BW_String-->
-				</amplitude>
-				<recoilEffect>large</recoilEffect>
-			</recoil>
-			<effects>shot_large_mb</effects>
-			<reloadEffect>reload50_75</reloadEffect>
-			<turretYawLimits>-50 50</turretYawLimits>
-			<pitchLimits>
-				<minPitch>0 -20 1 -20</minPitch>
-				<maxPitch>0 10 1 10</maxPitch>
-			</pitchLimits>
-			<rotationSpeed>
-				8.0
-				<!--BW_String-->
-			</rotationSpeed>
-			<reloadTime>
-				9.3
-				<!--BW_String-->
-			</reloadTime>
-			<maxAmmo>1000</maxAmmo>
-			<aimingTime>
-				2.0
-				<!--BW_String-->
-			</aimingTime>
-			<weight>1</weight>
-			<maxHealth>1000</maxHealth>
-			<maxRegenHealth>60</maxRegenHealth>
-			<repairCost>5</repairCost>
-			<invisibilityFactorAtShot>
-				0.5
-				<!--BW_String-->
-			</invisibilityFactorAtShot>
-			<shotDispersionRadius>
-				0.15
-				<!--BW_String-->
-			</shotDispersionRadius>
-			<shotDispersionFactors>
-				<turretRotation>
-					0.001
-					<!--BW_String-->
-				</turretRotation>
-				<afterShot>
-					3.0
-					<!--BW_String-->
-				</afterShot>
-				<whileGunDamaged>
-					2.0
-					<!--BW_String-->
-				</whileGunDamaged>
-			</shotDispersionFactors>
-			<shots>
-				<_shot_1_Pl201_Gun_D_74_RTS>
-					<defaultPortion>
-						1.0
-						<!--BW_String-->
-					</defaultPortion>
-					<speed>1500</speed>
-					<gravity>
-						9.81
-						<!--BW_String-->
-					</gravity>
-					<maxDistance>720</maxDistance>
-					<piercingPower>270 250</piercingPower>
-				</_shot_1_Pl201_Gun_D_74_RTS>
-			</shots>
-		</Gun_1_Pl201_Gun_D_74_RTS>
-		<Gun_1_Pl203_WatchTower1_RTS>
-			<userString>#poland_vehicles:Gun_1_Pl203_WatchTower1_RTS</userString>
-			<tags/>
-			<level>5</level>
-			<price>30750</price>
+			<level>1</level>
+			<price>0</price>
 			<notInShop>true</notInShop>
 			<impulse>
 				0.38
@@ -3396,8 +3316,105 @@
 				</amplitude>
 				<recoilEffect>medium</recoilEffect>
 			</recoil>
+			<effects>shot_large</effects>
+			<reloadEffect>reload85_107</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -20.0 1.0 -20.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 10.0 1.0 10.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>
+				35.0
+				<!--BW_String-->
+			</rotationSpeed>
+			<reloadTime>6</reloadTime>
+			<maxAmmo>50</maxAmmo>
+			<aimingTime>
+				2.3
+				<!--BW_String-->
+			</aimingTime>
+			<weight>1000</weight>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>130</maxRegenHealth>
+			<repairCost>0</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.34
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.12
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					3.24
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					2.0
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_105mm_wz_22_24_G1_HEAT_SH>
+					<defaultPortion>
+						0.2
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>600</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>140 140</piercingPower>
+				</_105mm_wz_22_24_G1_HEAT_SH>
+				<_105mm_wz_22_24_G1_APCR_SH>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>900</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>180 167</piercingPower>
+				</_105mm_wz_22_24_G1_APCR_SH>
+			</shots>
+		</_105mm_wz_22_24_G1_SH>
+		<_75mm_wz_36_37_G2_SH>
+			<userString>#poland_vehicles:_75mm_wz_36_37_G2_SH</userString>
+			<tags/>
+			<level>4</level>
+			<price>0</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.38
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.48
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>medium</recoilEffect>
+			</recoil>
 			<effects>shot_medium_mb</effects>
-			<reloadEffect>reload50_75</reloadEffect>
+			<reloadEffect>reload_automat_reloading_50_75</reloadEffect>
+			<turretYawLimits>-180 180</turretYawLimits>
 			<pitchLimits>
 				<minPitch>
 					0.0 -17.0 1.0 -17.0
@@ -3408,36 +3425,35 @@
 					<!--BW_String-->
 				</maxPitch>
 			</pitchLimits>
-			<turretYawLimits>-180 180</turretYawLimits>
 			<rotationSpeed>
-				8.0
+				35.0
 				<!--BW_String-->
 			</rotationSpeed>
-			<reloadTime>360</reloadTime>
-			<maxAmmo>87</maxAmmo>
+			<reloadTime>7</reloadTime>
+			<maxAmmo>50</maxAmmo>
 			<aimingTime>
-				2.0
+				2.40
 				<!--BW_String-->
 			</aimingTime>
-			<weight>1</weight>
-			<maxHealth>120</maxHealth>
-			<maxRegenHealth>60</maxRegenHealth>
-			<repairCost>5</repairCost>
+			<weight>1000</weight>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>130</maxRegenHealth>
+			<repairCost>0</repairCost>
 			<invisibilityFactorAtShot>
 				0.1
 				<!--BW_String-->
 			</invisibilityFactorAtShot>
 			<shotDispersionRadius>
-				0.15
+				0.35
 				<!--BW_String-->
 			</shotDispersionRadius>
 			<shotDispersionFactors>
 				<turretRotation>
-					0.001
+					0.12
 					<!--BW_String-->
 				</turretRotation>
 				<afterShot>
-					3.0
+					3.24
 					<!--BW_String-->
 				</afterShot>
 				<whileGunDamaged>
@@ -3446,9 +3462,22 @@
 				</whileGunDamaged>
 			</shotDispersionFactors>
 			<shots>
-				<_shot_Pl205_203mm50_Mle_1924_RTS>
+				<_75mm_wz_36_37_G2_HEAT_SH>
 					<defaultPortion>
-						1.0
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>600</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>170 170</piercingPower>
+				</_75mm_wz_36_37_G2_HEAT_SH>
+				<_75mm_wz_36_37_G2_APCR_SH>
+					<defaultPortion>
+						0.0
 						<!--BW_String-->
 					</defaultPortion>
 					<speed>900</speed>
@@ -3456,241 +3485,257 @@
 						9.81
 						<!--BW_String-->
 					</gravity>
-					<maxDistance>0</maxDistance>
-					<piercingPower>32 13</piercingPower>
-					<maxHeight>200</maxHeight>
-				</_shot_Pl205_203mm50_Mle_1924_RTS>
+					<maxDistance>720</maxDistance>
+					<piercingPower>220 205</piercingPower>
+				</_75mm_wz_36_37_G2_APCR_SH>
 			</shots>
-		</Gun_1_Pl203_WatchTower1_RTS>
-		<Gun_1_Pl205_203mm50_Mle_1924_RTS>
-			<userString>#poland_vehicles:Gun_1_Pl205_203mm50_Mle_1924_RTS</userString>
+		</_75mm_wz_36_37_G2_SH>
+		<_90mm_armata_wz_46_G3_SH>
+			<userString>#poland_vehicles:_90mm_armata_wz_46_G3_SH</userString>
 			<tags/>
-			<level>10</level>
-			<price>2750</price>
+			<level>4</level>
+			<price>0</price>
 			<notInShop>true</notInShop>
-			<models>
-				<undamaged>vehicles/poland/Pl205_203mm50_Mle_1924_RTS/normal/lod0/Gun_01.model</undamaged>
-				<destroyed>vehicles/poland/Pl205_203mm50_Mle_1924_RTS/crash/lod0/Gun_01.model</destroyed>
-				<exploded>vehicles/poland/Pl205_203mm50_Mle_1924_RTS/crash/lod0/Gun_01.model</exploded>
-			</models>
-			<impulse>0.000000</impulse>
-			<recoil>
-				<lodDist>MEDIUM</lodDist>
-				<amplitude>
-					0.48
-					<!--BW_String-->
-				</amplitude>
-				<recoilEffect>huge</recoilEffect>
-			</recoil>
-			<effects>shot_superhuge</effects>
-			<reloadEffect>reload155_170</reloadEffect>
-			<turretYawLimits>-180 180</turretYawLimits>
-			<pitchLimits>
-				<minPitch>0 -30 1 -30</minPitch>
-				<maxPitch>
-					0.0 3.0 1.0 3.0
-					<!--BW_String-->
-				</maxPitch>
-			</pitchLimits>
-			<rotationSpeed>
-				4.0
-				<!--BW_String-->
-			</rotationSpeed>
-			<reloadTime>
-				15.0
-				<!--BW_String-->
-			</reloadTime>
-			<maxAmmo>1000</maxAmmo>
-			<aimingTime>
-				1.5
-				<!--BW_String-->
-			</aimingTime>
-			<weight>5900</weight>
-			<maxHealth>300</maxHealth>
-			<maxRegenHealth>150</maxRegenHealth>
-			<repairCost>15</repairCost>
-			<invisibilityFactorAtShot>
-				0.1
-				<!--BW_String-->
-			</invisibilityFactorAtShot>
-			<shotDispersionRadius>
-				0.85
-				<!--BW_String-->
-			</shotDispersionRadius>
-			<shotDispersionFactors>
-				<turretRotation>
-					0.4
-					<!--BW_String-->
-				</turretRotation>
-				<afterShot>
-					2.0
-					<!--BW_String-->
-				</afterShot>
-				<whileGunDamaged>
-					1.0
-					<!--BW_String-->
-				</whileGunDamaged>
-			</shotDispersionFactors>
-			<shots>
-				<_shot_Pl205_203mm50_Mle_1924_RTS>
-					<defaultPortion>
-						1.0
-						<!--BW_String-->
-					</defaultPortion>
-					<speed>400</speed>
-					<gravity>50</gravity>
-					<maxDistance>10000</maxDistance>
-					<piercingPower>66 66</piercingPower>
-				</_shot_Pl205_203mm50_Mle_1924_RTS>
-			</shots>
-		</Gun_1_Pl205_203mm50_Mle_1924_RTS>
-		<Gun_Pl206_Firedot_RTS>
-			<userString>#poland_vehicles:Pl206_Firedot_RTS</userString>
-			<tags/>
-			<level>10</level>
-			<price>2750</price>
-			<notInShop>true</notInShop>
-			<models>
-				<undamaged>vehicles/poland/Pl206_Firedot_RTS/normal/lod0/Gun_01.model</undamaged>
-				<destroyed>vehicles/poland/Pl206_Firedot_RTS/crash/lod0/Gun_01.model</destroyed>
-				<exploded>vehicles/poland/Pl206_Firedot_RTS/crash/lod0/Gun_01.model</exploded>
-			</models>
 			<impulse>
-				0.01
+				0.44
 				<!--BW_String-->
 			</impulse>
 			<recoil>
 				<lodDist>MEDIUM</lodDist>
 				<amplitude>
-					0.6
+					0.32
 					<!--BW_String-->
 				</amplitude>
 				<recoilEffect>main</recoilEffect>
 			</recoil>
-			<effects>shot_flamethrower</effects>
-			<groundWave/>
+			<effects>shot_main</effects>
+			<reloadEffect>reload85_107</reloadEffect>
 			<pitchLimits>
 				<minPitch>
-					0.0 -22.0 1.0 -22.0
+					0.0 -25.0 1.0 -25.0
 					<!--BW_String-->
 				</minPitch>
 				<maxPitch>
-					0.0 15.0 1.0 15.0
+					0.0 7.0 1.0 7.0
 					<!--BW_String-->
 				</maxPitch>
 			</pitchLimits>
 			<turretYawLimits>-180 180</turretYawLimits>
 			<rotationSpeed>
-				40.0
+				35.0
 				<!--BW_String-->
 			</rotationSpeed>
-			<reloadTime>
-				10.0
-				<!--BW_String-->
-			</reloadTime>
-			<maxAmmo>1000</maxAmmo>
+			<reloadTime>6</reloadTime>
+			<maxAmmo>50</maxAmmo>
 			<aimingTime>
-				1.2
+				2.20
 				<!--BW_String-->
 			</aimingTime>
-			<weight>1</weight>
-			<maxHealth>30</maxHealth>
-			<maxRegenHealth>14</maxRegenHealth>
-			<repairCost>2</repairCost>
+			<weight>1000</weight>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>130</maxRegenHealth>
+			<repairCost>0</repairCost>
 			<invisibilityFactorAtShot>
 				0.1
 				<!--BW_String-->
 			</invisibilityFactorAtShot>
 			<shotDispersionRadius>
-				0.7
+				0.34
 				<!--BW_String-->
 			</shotDispersionRadius>
 			<shotDispersionFactors>
 				<turretRotation>
-					0.08
+					0.11
 					<!--BW_String-->
 				</turretRotation>
 				<afterShot>
-					0.016
+					3.24
 					<!--BW_String-->
 				</afterShot>
 				<whileGunDamaged>
-					2.0
+					1.8
 					<!--BW_String-->
 				</whileGunDamaged>
 			</shotDispersionFactors>
 			<shots>
-				<_shot_Pl206_Firedot_RTS>
+				<_90mm_armata_wz_46_G3_HEAT_SH>
 					<defaultPortion>
-						1.0
+						0.0
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>75</speed>
+					<speed>600</speed>
 					<gravity>
-						4.0
+						9.81
 						<!--BW_String-->
 					</gravity>
-					<maxDistance>100</maxDistance>
-					<piercingPower>1000 1000</piercingPower>
-				</_shot_Pl206_Firedot_RTS>
+					<maxDistance>720</maxDistance>
+					<piercingPower>160 160</piercingPower>
+				</_90mm_armata_wz_46_G3_HEAT_SH>
+				<_90mm_armata_wz_46_G3_APCR_SH>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>900</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>210 195</piercingPower>
+				</_90mm_armata_wz_46_G3_APCR_SH>
 			</shots>
-		</Gun_Pl206_Firedot_RTS>
-		<Gun_1_Pl207_Mortar_RTS>
-			<userString>#poland_vehicles:Gun_1_Pl207_Mortar_RTS</userString>
+		</_90mm_armata_wz_46_G3_SH>
+		<_100mm_armata_wz_62_G4_SH>
+			<userString>#poland_vehicles:_100mm_armata_wz_62_G4_SH</userString>
 			<tags/>
-			<level>10</level>
-			<price>2750</price>
+			<level>7</level>
+			<price>0</price>
 			<notInShop>true</notInShop>
-			<models>
-				<undamaged>vehicles/poland/Pl205_203mm50_Mle_1924_RTS/normal/lod0/Gun_01.model</undamaged>
-				<destroyed>vehicles/poland/Pl205_203mm50_Mle_1924_RTS/crash/lod0/Gun_01.model</destroyed>
-				<exploded>vehicles/poland/Pl205_203mm50_Mle_1924_RTS/crash/lod0/Gun_01.model</exploded>
-			</models>
 			<impulse>
-				0.2
+				0.44
 				<!--BW_String-->
 			</impulse>
 			<recoil>
 				<lodDist>MEDIUM</lodDist>
 				<amplitude>
-					0.48
+					0.26
 					<!--BW_String-->
 				</amplitude>
-				<recoilEffect>huge</recoilEffect>
+				<recoilEffect>main</recoilEffect>
 			</recoil>
-			<effects>shot_mortal</effects>
-			<reloadEffect>reload155_170</reloadEffect>
-			<turretYawLimits>-180 180</turretYawLimits>
+			<effects>shot_mainext_mb</effects>
+			<reloadEffect>reload_automat_reloading_85_107</reloadEffect>
 			<pitchLimits>
 				<minPitch>
-					0.0 -50.0 1.0 -50.0
+					0.0 -18.0 1.0 -18.0
 					<!--BW_String-->
 				</minPitch>
 				<maxPitch>
-					0.0 -9.0 1.0 -9.0
+					0.0 6.0 1.0 6.0
 					<!--BW_String-->
 				</maxPitch>
 			</pitchLimits>
-			<rotationSpeed>
-				20.0
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>35</rotationSpeed>
+			<reloadTime>
+				8.57142857142857
 				<!--BW_String-->
-			</rotationSpeed>
-			<reloadTime>30</reloadTime>
-			<maxAmmo>10000</maxAmmo>
+			</reloadTime>
+			<maxAmmo>50</maxAmmo>
 			<aimingTime>
-				1.0
+				2.3
 				<!--BW_String-->
 			</aimingTime>
-			<weight>10</weight>
-			<maxHealth>30</maxHealth>
-			<maxRegenHealth>14</maxRegenHealth>
-			<repairCost>1</repairCost>
+			<weight>1000</weight>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>130</maxRegenHealth>
+			<repairCost>0</repairCost>
 			<invisibilityFactorAtShot>
 				0.1
 				<!--BW_String-->
 			</invisibilityFactorAtShot>
 			<shotDispersionRadius>
-				5.0
+				0.34
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.10
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					3.24
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					1.8
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_100mm_armata_wz_62_G4_HEAT_SH>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>600</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>290 290</piercingPower>
+				</_100mm_armata_wz_62_G4_HEAT_SH>
+				<_100mm_armata_wz_62_G4_APCR_SH>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>900</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>370 344</piercingPower>
+				</_100mm_armata_wz_62_G4_APCR_SH>
+			</shots>
+		</_100mm_armata_wz_62_G4_SH>
+		<_100mm_armata_wz_58_G5_SH>
+			<userString>#poland_vehicles:_100mm_armata_wz_58_G5_SH</userString>
+			<tags/>
+			<level>7</level>
+			<price>0</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.44
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.26
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>main</recoilEffect>
+			</recoil>
+			<effects>shot_mainext_mb</effects>
+			<reloadEffect>reload85_107</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -18.0 1.0 -18.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 6.0 1.0 6.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>
+				35.0
+				<!--BW_String-->
+			</rotationSpeed>
+			<reloadTime>
+				5.2
+				<!--BW_String-->
+			</reloadTime>
+			<maxAmmo>50</maxAmmo>
+			<aimingTime>
+				2.2
+				<!--BW_String-->
+			</aimingTime>
+			<weight>1000</weight>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>130</maxRegenHealth>
+			<repairCost>0</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.33
 				<!--BW_String-->
 			</shotDispersionRadius>
 			<shotDispersionFactors>
@@ -3699,112 +3744,138 @@
 					<!--BW_String-->
 				</turretRotation>
 				<afterShot>
-					0.5
+					2.59
 					<!--BW_String-->
 				</afterShot>
 				<whileGunDamaged>
-					2.0
+					1.6
 					<!--BW_String-->
 				</whileGunDamaged>
 			</shotDispersionFactors>
 			<shots>
-				<_shot_Pl207_Mortar_RTS>
+				<_100mm_armata_wz_58_G5_HEAT_SH>
 					<defaultPortion>
-						1.0
+						0.6
 						<!--BW_String-->
 					</defaultPortion>
-					<speed>200</speed>
-					<gravity>40</gravity>
-					<maxDistance>10000</maxDistance>
-					<piercingPower>49 49</piercingPower>
-				</_shot_Pl207_Mortar_RTS>
-			</shots>
-		</Gun_1_Pl207_Mortar_RTS>
-		<Gun_Pl208_Pillbox_SPM_4_RTS>
-			<userString>#poland_vehicles:Gun_Pl208_Pillbox_SPM_4_RTS</userString>
-			<tags/>
-			<level>10</level>
-			<price>2750</price>
-			<notInShop>true</notInShop>
-			<models>
-				<undamaged>vehicles/poland/Pl208_Pillbox_SPM_4_RTS/normal/lod0/Gun_01.model</undamaged>
-				<destroyed>vehicles/poland/Pl208_Pillbox_SPM_4_RTS/crash/lod0/Gun_01.model</destroyed>
-				<exploded>vehicles/poland/Pl208_Pillbox_SPM_4_RTS/crash/lod0/Gun_01.model</exploded>
-			</models>
-			<impulse>0.000000</impulse>
-			<recoil>
-				<lodDist>MEDIUM</lodDist>
-				<amplitude>0.015000</amplitude>
-				<backoffTime>0.090000</backoffTime>
-				<returnTime>0.100000</returnTime>
-			</recoil>
-			<effects>shot_auto</effects>
-			<groundWave/>
-			<pitchLimits>
-				<minPitch>
-					0.0 -20.0 1.0 -20.0
-					<!--BW_String-->
-				</minPitch>
-				<maxPitch>
-					0.0 15.0 1.0 15.0
-					<!--BW_String-->
-				</maxPitch>
-			</pitchLimits>
-			<turretYawLimits>-180 180</turretYawLimits>
-			<rotationSpeed>
-				70.0
-				<!--BW_String-->
-			</rotationSpeed>
-			<reloadTime>
-				2.0
-				<!--BW_String-->
-			</reloadTime>
-			<maxAmmo>10000</maxAmmo>
-			<aimingTime>
-				1.2
-				<!--BW_String-->
-			</aimingTime>
-			<weight>1</weight>
-			<maxHealth>1000</maxHealth>
-			<maxRegenHealth>14</maxRegenHealth>
-			<repairCost>2</repairCost>
-			<invisibilityFactorAtShot>
-				0.2
-				<!--BW_String-->
-			</invisibilityFactorAtShot>
-			<shotDispersionRadius>
-				1.0
-				<!--BW_String-->
-			</shotDispersionRadius>
-			<shotDispersionFactors>
-				<turretRotation>
-					0.05
-					<!--BW_String-->
-				</turretRotation>
-				<afterShot>
-					0.01
-					<!--BW_String-->
-				</afterShot>
-				<whileGunDamaged>
-					0.1
-					<!--BW_String-->
-				</whileGunDamaged>
-			</shotDispersionFactors>
-			<shots>
-				<_shot_Pl208_Pillbox_SPM_4_RTS>
-					<defaultPortion>
-						1.0
-						<!--BW_String-->
-					</defaultPortion>
-					<speed>1200</speed>
+					<speed>800</speed>
 					<gravity>
 						9.81
 						<!--BW_String-->
 					</gravity>
-					<maxDistance>350</maxDistance>
-					<piercingPower>160 160</piercingPower>
-				</_shot_Pl208_Pillbox_SPM_4_RTS>
+					<maxDistance>720</maxDistance>
+					<piercingPower>260 260</piercingPower>
+				</_100mm_armata_wz_58_G5_HEAT_SH>
+				<_100mm_armata_wz_58_G5_APCR_SH>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>1000</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>330 300</piercingPower>
+				</_100mm_armata_wz_58_G5_APCR_SH>
 			</shots>
-		</Gun_Pl208_Pillbox_SPM_4_RTS>
+		</_100mm_armata_wz_58_G5_SH>
+		<_122mm_wz_43_50_G6_SH>
+			<userString>#poland_vehicles:_122mm_wz_43_50_G6_SH</userString>
+			<tags/>
+			<level>7</level>
+			<price>0</price>
+			<notInShop>true</notInShop>
+			<impulse>
+				0.62
+				<!--BW_String-->
+			</impulse>
+			<recoil>
+				<lodDist>MEDIUM</lodDist>
+				<amplitude>
+					0.66
+					<!--BW_String-->
+				</amplitude>
+				<recoilEffect>large</recoilEffect>
+			</recoil>
+			<effects>shot_large_mb</effects>
+			<reloadEffect>reload_automat_reloading_155_170</reloadEffect>
+			<pitchLimits>
+				<minPitch>
+					0.0 -18.0 1.0 -18.0
+					<!--BW_String-->
+				</minPitch>
+				<maxPitch>
+					0.0 6.0 1.0 6.0
+					<!--BW_String-->
+				</maxPitch>
+			</pitchLimits>
+			<turretYawLimits>-180 180</turretYawLimits>
+			<rotationSpeed>35</rotationSpeed>
+			<reloadTime>
+				7.5
+				<!--BW_String-->
+			</reloadTime>
+			<maxAmmo>50</maxAmmo>
+			<aimingTime>
+				2.4
+				<!--BW_String-->
+			</aimingTime>
+			<weight>1000</weight>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>130</maxRegenHealth>
+			<repairCost>0</repairCost>
+			<invisibilityFactorAtShot>
+				0.1
+				<!--BW_String-->
+			</invisibilityFactorAtShot>
+			<shotDispersionRadius>
+				0.35
+				<!--BW_String-->
+			</shotDispersionRadius>
+			<shotDispersionFactors>
+				<turretRotation>
+					0.11
+					<!--BW_String-->
+				</turretRotation>
+				<afterShot>
+					3.24
+					<!--BW_String-->
+				</afterShot>
+				<whileGunDamaged>
+					1.8
+					<!--BW_String-->
+				</whileGunDamaged>
+			</shotDispersionFactors>
+			<shots>
+				<_122mm_wz_43_50_G6_HEAT_SH>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>600</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>290 290</piercingPower>
+				</_122mm_wz_43_50_G6_HEAT_SH>
+				<_122mm_wz_43_50_G6_APCR_SH>
+					<defaultPortion>
+						0.0
+						<!--BW_String-->
+					</defaultPortion>
+					<speed>800</speed>
+					<gravity>
+						9.81
+						<!--BW_String-->
+					</gravity>
+					<maxDistance>720</maxDistance>
+					<piercingPower>370 344</piercingPower>
+				</_122mm_wz_43_50_G6_APCR_SH>
+			</shots>
+		</_122mm_wz_43_50_G6_SH>
 	</shared>
 </root>

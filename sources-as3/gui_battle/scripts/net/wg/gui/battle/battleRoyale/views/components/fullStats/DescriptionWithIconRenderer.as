@@ -61,6 +61,8 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats
             {
                App.utils.asserter.assert(false,Errors.INVALID_TYPE + DescriptionBlockWithIconVO);
             }
+            App.utils.commons.updateTextFieldSize(this.descriptionTF);
+            this.descriptionTF.y = this.icon.y - (this.descriptionTF.height >> 1);
          }
       }
       

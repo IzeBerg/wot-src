@@ -32,9 +32,7 @@ package net.wg.gui.lobby.battleResults.controller
       
       private var _sortingDirection:Dictionary;
       
-      private var _leftColumns:ColumnCollection;
-      
-      private var _rightColumns:ColumnCollection;
+      private var _columns:ColumnCollection;
       
       private var _sortingBonusType:int;
       
@@ -47,16 +45,12 @@ package net.wg.gui.lobby.battleResults.controller
          this._sortingKey = new Dictionary();
          this._sortingIsNumeric = new Dictionary();
          this._sortingDirection = new Dictionary();
-         this._leftColumns = new ColumnCollection(true);
-         this._rightColumns = new ColumnCollection(false);
          super();
          this._dispatcher = param1;
       }
       
-      public final function dispose() : void
+      public function dispose() : void
       {
-         this.onDispose();
-         this.clearColumnsData();
          this._disposed = true;
          this._dispatcher = null;
          this._columnTooltip = null;
@@ -64,30 +58,24 @@ package net.wg.gui.lobby.battleResults.controller
          this._sortingKey = null;
          this._sortingIsNumeric = null;
          this._sortingDirection = null;
-         this._leftColumns.dispose();
-         this._leftColumns = null;
-         this._rightColumns.dispose();
-         this._rightColumns = null;
+         this._columns = null;
       }
       
-      protected function onDispose() : void
+      public function onHeaderClick(param1:InteractiveSortingButton, param2:SortableHeaderButtonBar) : void
       {
+         this.applySort(param1.id,param1.sortDirection);
       }
       
-      public function onHeaderClick(param1:InteractiveSortingButton, param2:SortableHeaderButtonBar, param3:Boolean) : void
+      public function setColumns(param1:ColumnCollection) : void
       {
-         var _loc4_:ColumnCollection = !!param3 ? this._leftColumns : this._rightColumns;
-         this.applySort(_loc4_,param1.id,param1.sortDirection);
+         this._columns = param1;
       }
       
       public function update(param1:BattleResultsVO) : void
       {
-         var _loc2_:CommonStatsVO = param1.common;
-         this.setupColumns(this._leftColumns,_loc2_);
-         this.setupColumns(this._rightColumns,_loc2_);
+         this.setupColumns(this._columns,param1.common);
          this.setupLists(param1);
-         this.setupInitialSorting(this._leftColumns,_loc2_);
-         this.setupInitialSorting(this._rightColumns,_loc2_);
+         this.setupInitialSorting(param1.common);
       }
       
       protected function sortLists(param1:ColumnData, param2:Number) : void
@@ -146,19 +134,14 @@ package net.wg.gui.lobby.battleResults.controller
          this._sortingKey[ColumnConstants.MEDAL] = [ColumnConstants.KEY_MEDALS];
       }
       
-      protected function initColumns(param1:ColumnCollection, param2:CommonStatsVO) : Vector.<String>
-      {
-         this.initColumnsData(param2);
-         return this.getColumnIds(param2);
-      }
-      
       private function setupColumns(param1:ColumnCollection, param2:CommonStatsVO) : void
       {
          var _loc4_:String = null;
          var _loc5_:ColumnData = null;
          var _loc6_:Boolean = false;
          var _loc7_:String = null;
-         var _loc3_:Vector.<String> = this.initColumns(param1,param2);
+         this.initColumnsData(param2);
+         var _loc3_:Vector.<String> = this.getColumnIds(param2);
          for each(_loc4_ in _loc3_)
          {
             _loc5_ = param1.add(_loc4_,this._columnTooltip[_loc4_],RES_ICONS.maps_icons_buttons_tab_sort_button(_loc4_ + ".png"),this._columnWidth[_loc4_]);
@@ -182,53 +165,48 @@ package net.wg.gui.lobby.battleResults.controller
          App.utils.data.cleanupDynamicObject(this._sortingIsNumeric);
       }
       
-      private function setupInitialSorting(param1:ColumnCollection, param2:CommonStatsVO) : void
+      private function setupInitialSorting(param1:CommonStatsVO) : void
       {
-         this._sortingBonusType = param2.bonusType;
-         var _loc3_:String = param2.iconType;
-         var _loc4_:String = param2.sortDirection;
-         var _loc5_:int = 1;
-         var _loc6_:int = _loc5_;
-         var _loc7_:ColumnData = param1.getById(_loc3_);
-         if(_loc7_ != null && _loc7_.sortingKeys != null)
+         this._sortingBonusType = param1.bonusType;
+         var _loc2_:String = param1.iconType;
+         var _loc3_:String = param1.sortDirection;
+         var _loc4_:int = 1;
+         var _loc5_:int = _loc4_;
+         var _loc6_:ColumnData = this._columns.getById(_loc2_);
+         if(_loc6_ != null && _loc6_.sortingKeys != null)
          {
-            _loc6_ = _loc7_.index;
+            _loc5_ = _loc6_.index;
          }
          else
          {
-            _loc7_ = param1.getByIndex(_loc6_);
-            _loc3_ = _loc7_.columnId;
+            _loc6_ = this._columns.getByIndex(_loc5_);
+            _loc2_ = _loc6_.columnId;
          }
-         this.setupTeamListHeaders(param1,_loc6_,_loc4_);
-         this.applySort(param1,_loc3_,_loc4_);
+         this.setupTeamListHeaders(this._columns,_loc5_,_loc3_);
+         this.applySort(_loc2_,_loc3_);
       }
       
-      private function applySort(param1:ColumnCollection, param2:String, param3:String) : void
+      private function applySort(param1:String, param2:String) : void
       {
-         var _loc4_:Number = 0;
-         var _loc5_:ColumnData = param1.getById(param2);
-         if(_loc5_ && _loc5_.sortingKeys)
+         var _loc3_:Number = 0;
+         var _loc4_:ColumnData = this._columns.getById(param1);
+         if(_loc4_ && _loc4_.sortingKeys)
          {
-            if(_loc5_.isNumeric)
+            if(_loc4_.isNumeric)
             {
-               _loc4_ |= Array.NUMERIC;
+               _loc3_ |= Array.NUMERIC;
             }
             else
             {
-               _loc4_ |= Array.CASEINSENSITIVE;
+               _loc3_ |= Array.CASEINSENSITIVE;
             }
-            if(param3 == SortingInfo.DESCENDING_SORT)
+            if(param2 == SortingInfo.DESCENDING_SORT)
             {
-               _loc4_ |= Array.DESCENDING;
+               _loc3_ |= Array.DESCENDING;
             }
-            this.sortLists(_loc5_,_loc4_);
-            this._dispatcher.dispatchEvent(new TeamTableSortEvent(param2,param3,this._sortingBonusType));
+            this.sortLists(_loc4_,_loc3_);
+            this._dispatcher.dispatchEvent(new TeamTableSortEvent(param1,param2,this._sortingBonusType));
          }
-      }
-      
-      protected function getColumns(param1:Boolean) : ColumnCollection
-      {
-         return !!param1 ? this._leftColumns : this._rightColumns;
       }
       
       protected function get columnTooltip() : Dictionary

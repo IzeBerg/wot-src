@@ -87,8 +87,6 @@ package
       
       public static const RETRAIN_CREW:Class = RETRAIN_CREW;
       
-      public static const RTS_BATTLES:Class = RTS_BATTLES;
-      
       public static const SETTINGS:Class = SETTINGS;
       
       public static const STORAGE:Class = STORAGE;

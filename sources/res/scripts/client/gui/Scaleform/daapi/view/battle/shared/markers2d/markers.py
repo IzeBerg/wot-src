@@ -146,6 +146,9 @@ class VehicleMarker(Marker):
     def getVehicleID(self):
         return self._vehicleID
 
+    def getVehicleEntity(self):
+        return self._vProxy
+
     def isAlive(self):
         if self._vProxy is not None:
             return self._vProxy.isAlive()

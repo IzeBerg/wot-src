@@ -23,8 +23,6 @@ package net.wg.gui.battle.views.minimap.containers
       public function EpicMinimapEntriesContainer()
       {
          super();
-         this.maskTop.mouseEnabled = this.hqs.mouseEnabled = this.maskBottom.mouseEnabled = this.zones.mouseEnabled = this.landingZone.mouseEnabled = this.background.mouseEnabled = false;
-         this.maskTop.mouseChildren = this.hqs.mouseChildren = this.maskBottom.mouseChildren = this.zones.mouseChildren = this.landingZone.mouseChildren = this.background.mouseChildren = false;
       }
       
       override protected function onDispose() : void

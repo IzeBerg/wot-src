@@ -71,6 +71,10 @@ package net.wg.gui.components.controls
       
       private var _textHeight:int = 0;
       
+      private var _iconOffsetX:int = 0;
+      
+      private var _iconOffsetY:int = 0;
+      
       public function ImageTextComponent()
       {
          super();
@@ -186,30 +190,30 @@ package net.wg.gui.components.controls
             if(this._iconPosition == IconTextPosition.LEFT)
             {
                _loc1_ = this.textField.width + this.icon.width + this._gap;
-               this.icon.x = (_width - _loc1_ >> 1) + this._horizontalCenter;
+               this.icon.x = (_width - _loc1_ >> 1) + this._horizontalCenter + this._iconOffsetX;
                this.textField.x = this.icon.x + this.icon.width + this._gap;
             }
             else if(this._iconPosition == IconTextPosition.RIGHT)
             {
                _loc1_ = this.textField.width + this.icon.width + this._gap;
                this.textField.x = (_width - _loc1_ >> 1) + this._horizontalCenter;
-               this.icon.x = this.textField.x + this.textField.width + this._gap;
+               this.icon.x = this.textField.x + this.textField.width + this._gap + this._iconOffsetX;
             }
             else
             {
                _loc1_ = Math.max(this.icon.width,this.textField.width);
                _loc2_ = (_width - _loc1_ >> 1) + this._horizontalCenter;
-               this.icon.x = _loc2_ + (_loc1_ - this.icon.width >> 1);
+               this.icon.x = _loc2_ + (_loc1_ - this.icon.width >> 1) + this._iconOffsetX;
                this.textField.x = _loc2_ + (_loc1_ - this.textField.width >> 1);
             }
          }
          else if(this._horizontalAlign == AlignType.RIGHT)
          {
-            this.icon.x = _width - this.icon.width - this._paddingRight;
+            this.icon.x = _width - this.icon.width - this._paddingRight + this._iconOffsetX;
             this.textField.x = _width - this.textField.width - this._paddingRight;
             if(this._iconPosition == IconTextPosition.LEFT)
             {
-               this.icon.x -= this.textField.width - this._gap;
+               this.icon.x -= this.textField.width - this._gap + this._iconOffsetX;
             }
             else if(this._iconPosition == IconTextPosition.RIGHT)
             {
@@ -218,7 +222,7 @@ package net.wg.gui.components.controls
          }
          else if(this._horizontalAlign == AlignType.FIT_TO_SIZE)
          {
-            this.icon.x = this.textField.x = this._paddingLeft;
+            this.icon.x = this.textField.x = this._paddingLeft + this._iconOffsetX;
             if(this._iconPosition == IconTextPosition.LEFT)
             {
                this.textField.width = _width - this._paddingLeft - this._paddingRight - this.icon.width - this._gap;
@@ -227,7 +231,7 @@ package net.wg.gui.components.controls
             else if(this._iconPosition == IconTextPosition.RIGHT)
             {
                this.textField.width = _width - this._paddingLeft - this._paddingRight - this.icon.width - this._gap;
-               this.icon.x += this.textField.width + this._gap;
+               this.icon.x += this.textField.width + this._gap + this._iconOffsetX;
             }
             else
             {
@@ -240,14 +244,14 @@ package net.wg.gui.components.controls
          }
          if(this._verticalAlign == AlignType.TOP)
          {
-            this.icon.y = this.textField.y = this._paddingTop;
+            this.icon.y = this.textField.y = this._paddingTop + this._iconOffsetY;
             if(this._iconPosition == IconTextPosition.TOP)
             {
                this.textField.y += this.icon.height + this._gap;
             }
             else if(this._iconPosition == IconTextPosition.BOTTOM)
             {
-               this.icon.y += this.textField.height + this._gap;
+               this.icon.y += this.textField.height + this._gap + this._iconOffsetY;
             }
          }
          else if(this._verticalAlign == AlignType.CENTER)
@@ -256,30 +260,30 @@ package net.wg.gui.components.controls
             if(this._iconPosition == IconTextPosition.TOP)
             {
                _loc3_ = this.textField.height + this.icon.height + this._gap;
-               this.icon.y = (_height - _loc3_ >> 1) + this._verticalCenter;
+               this.icon.y = (_height - _loc3_ >> 1) + this._verticalCenter + this._iconOffsetY;
                this.textField.y = this.icon.y + this.icon.height + this._gap;
             }
             else if(this._iconPosition == IconTextPosition.BOTTOM)
             {
                _loc3_ = this.textField.height + this.icon.height + this._gap;
                this.textField.y = (_height - _loc3_ >> 1) + this._verticalCenter;
-               this.icon.y = this.textField.y + this.textField.height + this._gap;
+               this.icon.y = this.textField.y + this.textField.height + this._gap + this._iconOffsetY;
             }
             else
             {
                _loc3_ = Math.max(this.icon.height,this.textField.height);
                _loc4_ = (_height - _loc3_ >> 1) + this._verticalCenter;
-               this.icon.y = _loc4_ + (_loc3_ - this.icon.height >> 1);
+               this.icon.y = _loc4_ + (_loc3_ - this.icon.height >> 1) + this._iconOffsetY;
                this.textField.y = _loc4_ + (_loc3_ - this.textField.height >> 1);
             }
          }
          else if(this._verticalAlign == AlignType.BOTTOM)
          {
-            this.icon.y = _height - this.icon.height - this._paddingBottom;
+            this.icon.y = _height - this.icon.height - this._paddingBottom + this._iconOffsetY;
             this.textField.y = _height - this.textField.height - this._paddingBottom;
             if(this._iconPosition == IconTextPosition.TOP)
             {
-               this.icon.y -= this.textField.height - this._gap;
+               this.icon.y -= this.textField.height - this._gap + this._iconOffsetY;
             }
             else if(this._iconPosition == IconTextPosition.BOTTOM)
             {
@@ -288,7 +292,7 @@ package net.wg.gui.components.controls
          }
          else if(this._verticalAlign == AlignType.FIT_TO_SIZE)
          {
-            this.icon.y = this.textField.y = this._paddingTop;
+            this.icon.y = this.textField.y = this._paddingTop + this._iconOffsetY;
             if(this._iconPosition == IconTextPosition.TOP)
             {
                this.textField.height = _height - this._paddingTop - this._paddingBottom - this.icon.height - this._gap;
@@ -297,7 +301,7 @@ package net.wg.gui.components.controls
             else if(this._iconPosition == IconTextPosition.BOTTOM)
             {
                this.textField.height = _height - this._paddingTop - this._paddingBottom - this.icon.height - this._gap;
-               this.icon.y += this.textField.height + this._gap;
+               this.icon.y += this.textField.height + this._gap + this._iconOffsetY;
             }
             else
             {
@@ -707,6 +711,26 @@ package net.wg.gui.components.controls
             this._paddingBottom = param1;
             invalidateLayout();
          }
+      }
+      
+      public function get iconOffsetX() : int
+      {
+         return this._iconOffsetX;
+      }
+      
+      public function set iconOffsetX(param1:int) : void
+      {
+         this._iconOffsetX = param1;
+      }
+      
+      public function get iconOffsetY() : int
+      {
+         return this._iconOffsetY;
+      }
+      
+      public function set iconOffsetY(param1:int) : void
+      {
+         this._iconOffsetY = param1;
       }
       
       private function onRollOverHandler(param1:MouseEvent) : void

@@ -114,6 +114,7 @@ ConditionalViewSettings.__new__.__defaults__ = (
 g_entitiesFactories = EntitiesFactories((
  DAAPIModuleFactory((WindowLayer.UNDEFINED,)),
  ViewFactory((
+  WindowLayer.HIDDEN_SERVICE_LAYOUT,
   WindowLayer.MARKER,
   WindowLayer.VIEW,
   WindowLayer.SUB_VIEW,

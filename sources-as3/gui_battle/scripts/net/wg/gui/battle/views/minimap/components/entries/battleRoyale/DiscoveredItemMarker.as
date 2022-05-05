@@ -1,9 +1,7 @@
 package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
 {
-   import flash.display.BlendMode;
    import flash.display.Sprite;
    import net.wg.data.constants.generated.ATLAS_CONSTANTS;
-   import net.wg.data.constants.generated.BATTLEATLAS;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
    import net.wg.infrastructure.managers.IAtlasManager;
    import net.wg.infrastructure.managers.IColorSchemeManager;
@@ -13,8 +11,6 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
    {
       
       private static const DELAY_MAX_TIE_MS:int = 500;
-      
-      private static const ITESM_WITH_ADD:Vector.<String> = new <String>[BATTLEATLAS.LOOT,BATTLEATLAS.LOOT_BIG,BATTLEATLAS.IMPROVED_LOOT,BATTLEATLAS.IMPROVED_LOOT_BIG];
        
       
       private var _fadeInTween:Tween = null;
@@ -72,7 +68,6 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
             {
                transform.colorTransform = this._colorSchMgr.getTransform("vm_" + param2);
             }
-            blendMode = ITESM_WITH_ADD.indexOf(param1) >= 0 ? BlendMode.ADD : BlendMode.NORMAL;
          }
       }
       

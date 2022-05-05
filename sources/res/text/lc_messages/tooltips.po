@@ -1039,6 +1039,15 @@ msgstr "Начисляются в рамках Боевого пропуска"
 msgid "awardItem/bpcoin/header"
 msgstr "Жетоны"
 
+msgid "awardItem/brcoin/body"
+msgstr ""
+"Получайте печати за эффективные действия в бою, высокие позиции в "
+"послебоевой статистике в одиночных и взводных сражениях, а также за "
+"выполнение боевых задач режима."
+
+msgid "awardItem/brcoin/header"
+msgstr "Стальные печати"
+
 msgid "awardItem/completionTokens/body"
 msgstr "Набор компонентов, узлов и агрегатов для сборки наградной машины."
 
@@ -1719,9 +1728,6 @@ msgstr "Влияние"
 msgid "battleResults/FortResource/teamResourceTotal/header"
 msgstr "Промресурс"
 
-msgid "battleResults/defence/totalPoints"
-msgstr "Суммарно очков защиты"
-
 msgid "battleResults/efficiencyHeader/summArmor"
 msgstr "Использование брони"
 
@@ -1828,13 +1834,13 @@ msgid "battleTypes/battleRoyale/header"
 msgstr "Стальной охотник"
 
 msgid "battleTypes/battleRoyale/tillEnd"
-msgstr "До конца эпизода:"
+msgstr "До конца события осталось"
 
 msgid "battleTypes/battleRoyale/tillEndCycle"
 msgstr "До конца:"
 
 msgid "battleTypes/battleRoyale/tillStart"
-msgstr "До начала эпизода:"
+msgstr "До начала события осталось"
 
 msgid "battleTypes/battleRoyale/tillStartCycle"
 msgstr "До начала:"
@@ -2195,14 +2201,12 @@ msgstr ""
 msgid "battle_royale/hangar/perf/medium_risk/header"
 msgstr "Возможно снижение производительности"
 
-msgid "battle_royale/hangar/repair_button/header"
-msgstr "Ремонт техники"
-
-msgid "battle_royale/hangar/repair_disabled/description"
-msgstr "Недостаточно кредитов для ремонта машины."
-
-msgid "battle_royale/hangar/repair_enabled/description"
-msgstr "Нажмите, чтобы починить повреждённую машину."
+msgid "battle_royale/hangar/vehicle/description/china"
+msgstr ""
+"У китайцев прекрасно настроена агентурная сеть, что помогает заимствовать "
+"самые передовые наработки в области танкостроения. А возможность испытать "
+"новое железо в экстремальных условиях «Стального охотника» — настоящий "
+"подарок для их инженерии."
 
 msgid "battle_royale/hangar/vehicle/description/france"
 msgstr ""
@@ -2214,21 +2218,36 @@ msgstr ""
 msgid "battle_royale/hangar/vehicle/description/germany"
 msgstr ""
 "Немцы знают толк и в металлургии, и в надёжности сборки. Данная машина — "
-"прекрасный «волк-одиночка»: самодостаточный, универсальный и прекрасно "
+"настоящий «волк-одиночка»: самодостаточный, универсальный и прекрасно "
 "приспособленный к выживанию в любых условиях, даже в самых неблагоприятных."
+
+msgid "battle_royale/hangar/vehicle/description/poland"
+msgstr ""
+"Польские инженеры знают, что подчёркивание какой-либо сильной стороны машины"
+" автоматически влечёт ухудшение другой характеристики. Именно поэтому они "
+"уделили вооружению и боевым умениям машины такое количество внимания, чтобы "
+"не оставить противнику ни секунды на поиск уязвимых зон. Как показало время,"
+" это было верным решением."
+
+msgid "battle_royale/hangar/vehicle/description/sweden"
+msgstr ""
+"Шведы никогда не упускали из виду новые веяния в танкостроении, а участие в "
+"«Стальном охотнике» означало карт-бланш для лучших инженеров. Машина "
+"сочетает в себе самые гениальные и рискованные идеи. Она способна как "
+"наносить, так и держать очень серьёзные удары, и пока это работает."
 
 msgid "battle_royale/hangar/vehicle/description/uk"
 msgstr ""
-"Пионеры танкостроения не теряют хватку, производя прекрасные машины, которые"
-" ценят танкисты и которых боится противник. Образец, которого выпустили на "
-"«охоту» — не исключение. Легендарная британская сталь снова готова показать "
-"своё превосходство."
+"Пионеры танкостроения не теряют хватку, производя прекрасные машины. Их "
+"технику ценят танкисты и боится противник. Образец, выпущенный на «охоту», —"
+" не исключение. Легендарная британская сталь снова готова показать своё "
+"превосходство."
 
 msgid "battle_royale/hangar/vehicle/description/usa"
 msgstr ""
 "Классика и современность — всё в этой машине. Проверенные временем "
 "технологии вперемешку с новейшими разработками послужили основой для "
-"создания танка, управлять которым одно удовольствие. Если вам не претит "
+"создания танка, управлять которым — одно удовольствие. Если вам не претит "
 "наблюдать ржавый металл, конечно."
 
 msgid "battle_royale/hangar/vehicle/description/ussr"
@@ -2646,7 +2665,7 @@ msgid "boostersWindow/booster/longDescriptionSpecial"
 msgstr ""
 "При активации позволяют получать дополнительные надбавки по результатам "
 "боёв. Действуют определённое время в Случайных и Ранговых боях, а также в "
-"турнирных играх и на Линии фронта."
+"турнирных играх, Стальном охотнике и на Линии фронта."
 
 msgid "boostersWindow/booster/quality/big"
 msgstr "(большой)"
@@ -2757,42 +2776,6 @@ msgstr ""
 
 msgid "colorFilter/header"
 msgstr "Цветокоррекция"
-
-msgid "commander/halt/header"
-msgstr "Отмена приказа"
-
-msgid "commander/manners/manner_1/body"
-msgstr "Разведчик"
-
-msgid "commander/manners/manner_1/header"
-msgstr "Разведчик"
-
-msgid "commander/manners/manner_2/body"
-msgstr "Защитник"
-
-msgid "commander/manners/manner_2/header"
-msgstr "Защитник"
-
-msgid "commander/manners/manner_3/body"
-msgstr "Штурмовик"
-
-msgid "commander/manners/manner_3/header"
-msgstr "Штурмовик"
-
-msgid "commander/manners/manner_4/body"
-msgstr "?empty?"
-
-msgid "commander/manners/manner_4/header"
-msgstr "?empty?"
-
-msgid "commander/manners/manner_5/body"
-msgstr "Держать позицию!"
-
-msgid "commander/manners/manner_5/header"
-msgstr "Держать позицию!"
-
-msgid "commander/startVehicleControl/header"
-msgstr "Контроль"
 
 msgid "common/notEnough"
 msgstr "Не хватает:"
@@ -4820,6 +4803,16 @@ msgstr "Готов!"
 msgid "fortification/sortie/battleRoom/status/notReady"
 msgstr "Не готов"
 
+msgid "fortification/sortie/bothRole/body"
+msgstr ""
+"Этот игрок может вызвать в указанную им область Артобстрел, а также добавить"
+" бонус к основным специальностям и всем умениям экипажа своей машины и "
+"ближайших союзников, если резервы «Артобстрел» и «Воодушевление» были "
+"установлены перед боем."
+
+msgid "fortification/sortie/bothRole/header"
+msgstr "Артобстрел и Воодушевление"
+
 msgid "fortification/sortie/chat/description/body"
 msgstr "Нажмите, чтобы добавить описание для вашего отряда."
 
@@ -4842,13 +4835,22 @@ msgstr ""
 "Назначить определённые машины, на одной из которых автоматически подберётся "
 "легионер после нажатия кнопки «В бой!»."
 
-msgid "fortification/sortie/gunnerIcon/body"
+msgid "fortification/sortie/gunnerRole/body"
 msgstr ""
-"Наводчик может вызвать в указанную им область Артобстрел (или Авиаудар), "
-"если этот резерв был установлен перед боем."
+"Этот игрок может вызвать в указанную им область Артобстрел, если этот резерв"
+" был установлен перед боем."
 
-msgid "fortification/sortie/gunnerIcon/header"
-msgstr "Наводчик"
+msgid "fortification/sortie/gunnerRole/header"
+msgstr "Артобстрел"
+
+msgid "fortification/sortie/inspireRole/body"
+msgstr ""
+"Этот игрок может добавить бонус к основным специальностям и всем умениям "
+"экипажа своей машины и ближайших союзников, если резерв «Воодушевление» был "
+"установлен перед боем."
+
+msgid "fortification/sortie/inspireRole/header"
+msgstr "Воодушевление"
 
 msgid "fortification/sortie/listRoom/joinBtn/body"
 msgstr "Занять место в основном составе."
@@ -5360,6 +5362,12 @@ msgstr "Недоступно"
 msgid "hangar/nationChange/header"
 msgstr "Смена нации"
 
+msgid "hangar/startBtn/battleRoyale/notRented/body"
+msgstr "Необходимо арендовать машину."
+
+msgid "hangar/startBtn/battleRoyale/notRented/header"
+msgstr "Недоступно"
+
 msgid "hangar/startBtn/battleRoyaleSquadNotReady/notReady/body"
 msgstr "Для выхода в бой все игроки взвода должны подтвердить готовность."
 
@@ -5367,7 +5375,7 @@ msgid "hangar/startBtn/battleRoyaleSquadNotReady/notReady/header"
 msgstr "Недоступно"
 
 msgid "hangar/startBtn/battleRoyaleSquadNotReady/wrongPlayers/body"
-msgstr "Взвод должен быть полностью укомплектован (три машины)."
+msgstr "Взвод должен быть полностью укомплектован (две машины)."
 
 msgid "hangar/startBtn/battleRoyaleSquadNotReady/wrongPlayers/header"
 msgstr "Недоступно"
@@ -5674,7 +5682,7 @@ msgid "header/accountPopover/boostersTitle/body"
 msgstr ""
 "При активации позволяют получать дополнительные надбавки по результатам "
 "боёв. Действуют определённое время в Случайных и Ранговых боях, а также в "
-"турнирных играх и на Линии фронта."
+"турнирных играх, Стальном охотнике и на Линии фронта."
 
 msgid "header/accountPopover/boostersTitle/header"
 msgstr "Личные резервы"
@@ -5726,6 +5734,15 @@ msgstr "Рекрутировать и демобилизовать членов 
 
 msgid "header/buttons/barracks/header"
 msgstr "Казарма"
+
+msgid "header/buttons/brcoin/firstDesc"
+msgstr ""
+"Получайте печати за эффективные действия в бою, высокие позиции в "
+"послебоевой статистике в одиночных и взводных сражениях, а также за "
+"выполнение боевых задач режима."
+
+msgid "header/buttons/brcoin/title"
+msgstr "Стальные печати"
 
 msgid "header/buttons/browser/body"
 msgstr "Открыть браузер."
@@ -6007,12 +6024,6 @@ msgid "header/refill_action/attention"
 msgstr ""
 "При первой покупке вы бесплатно получите\n"
 "дополнительное золото."
-
-msgid "header/rtsSquad/body"
-msgstr "Игра в составе формирования недоступна в данном режиме."
-
-msgid "header/rtsSquad/header"
-msgstr "Создать взвод"
 
 msgid "header/versionInfoHint"
 msgstr ""
@@ -7430,7 +7441,7 @@ msgid "notrecruitedtankman/oow21_tanker_2_commander/desc"
 msgstr ""
 "Опытный снабженец и логист. Умеет прокладывать самые эффективные маршруты, "
 "учитывает все потребности войск на передовой. Уверен, что без хорошего "
-"тылового обеспечения невозможно выиграть ни одно сражение."
+"тылового обеспечения невозможно выиграть ни одного сражения."
 
 msgid "notrecruitedtankman/oow21_tanker_2_commander/event"
 msgstr "событие «Искусство стратегии»"
@@ -8434,8 +8445,8 @@ msgid "prem/dashboard/header/clanReserves/body"
 msgstr ""
 "При активации позволяют получать дополнительные надбавки по результатам "
 "боёв. Имеют несколько уровней качества, действуют определённое время в "
-"Случайных, Ранговых и Клановых боях, а также в турнирных играх и на Линии "
-"фронта."
+"Случайных и Ранговых боях, а также в турнирных играх, Стальном охотнике и на"
+" Линии фронта."
 
 msgid "prem/dashboard/header/clanReserves/emptySlot/body"
 msgstr "Нажмите, чтобы перейти к выбору и активации клановых резервов."
@@ -8447,7 +8458,7 @@ msgid "prem/dashboard/header/personalReserves/body"
 msgstr ""
 "При активации позволяют получать дополнительные надбавки по результатам "
 "боёв. Действуют определённое время в Случайных и Ранговых боях, а также в "
-"турнирных играх и на Линии фронта."
+"турнирных играх, Стальном охотнике и на Линии фронта."
 
 msgid "prem/dashboard/header/personalReserves/emptySlot/body"
 msgstr "Нажмите, чтобы перейти к выбору и активации личных резервов."
@@ -8720,6 +8731,11 @@ msgstr ""
 
 msgid "quests/bonuses/token/battle_bonus_x5/header"
 msgstr "Задача на x5 к опыту за бой"
+
+msgid "quests/bonuses/token/battle_royale/body"
+msgstr ""
+"Выдаётся в рамках события «Стальной охотник». Необходима для выполнения "
+"боевых задач."
 
 msgid "quests/bonuses/token/body"
 msgstr ""
@@ -10321,68 +10337,6 @@ msgstr ""
 "если его машина попала в зону поражения вашего снаряда и противник при этом "
 "не имел оборудования и снаряжения, снижающего время оглушения."
 
-msgid "tank_params/desc/supply_aimingTime"
-msgstr "Время, за которое прицел уменьшается в 2,5 раза."
-
-msgid "tank_params/desc/supply_armor"
-msgstr "Толщина круговой брони объекта поддержки."
-
-msgid "tank_params/desc/supply_avgDamage"
-msgstr ""
-"Средний урон, наносимый базовым снарядом за один выстрел при пробитии брони."
-
-msgid "tank_params/desc/supply_avgPiercingPower"
-msgstr ""
-"Средняя толщина брони, пробиваемая базовым снарядом с учётом его "
-"нормализации."
-
-msgid "tank_params/desc/supply_barricadesDamage"
-msgstr ""
-"Наносит урон первой машине, попавшей в зону поражения. Урон / Количество "
-"зарядов"
-
-msgid "tank_params/desc/supply_bunkerClipFireRate"
-msgstr ""
-"Время между полной разрядкой орудий и полным заряжанием / Время между "
-"выстрелом и переходом к следующему заряженному орудию / Количество орудий."
-
-msgid "tank_params/desc/supply_circularVisionRadius"
-msgstr "Текущий обзор объекта поддержки."
-
-msgid "tank_params/desc/supply_flamethrowerClipFireRate"
-msgstr "Длительность огненной струи / Струй в магазине / Время перезарядки."
-
-msgid "tank_params/desc/supply_flamethrowerDamage"
-msgstr ""
-"Средний урон, наносимый огненной струёй, 5 раз в секунду. Огнемёт наносит "
-"повышенный урон модулям."
-
-msgid "tank_params/desc/supply_maxHealth"
-msgstr "Количество очков прочности объекта поддержки."
-
-msgid "tank_params/desc/supply_mortarClipFireRate"
-msgstr ""
-"Совершает залп из последовательных выстрелов.\n"
-"\n"
-"Время между полной разрядкой магазина и полным заряжанием / Время между выстрелом и переходом к следующему заряженному снаряду / Количество снарядов в магазине."
-
-msgid "tank_params/desc/supply_pillboxClipFireRate"
-msgstr ""
-"Ведёт огонь очередями. После начала стрельбы использует все снаряды в магазине без остановок.\n"
-"\n"
-"Время между полной разрядкой магазина и полным заряжанием / Время между выстрелом и переходом к следующему заряженному снаряду / Количество снарядов в магазине."
-
-msgid "tank_params/desc/supply_reloadTimeSecs"
-msgstr "Время, за которое орудие будет готово к очередному выстрелу."
-
-msgid "tank_params/desc/supply_shotDispersionAngle"
-msgstr ""
-"Показывает, на сколько метров снаряд может отклониться от точки прицеливания"
-" за каждые 100 метров расстояния до цели."
-
-msgid "tank_params/desc/supply_stunDuration"
-msgstr "Максимальное время оглушения / Минимальное время оглушения."
-
 msgid "tank_params/desc/switchOffTime"
 msgstr ""
 "Время перехода зависит от состояния двигателя. При повреждённом двигателе "
@@ -11193,9 +11147,6 @@ msgstr "Умение или навык экипажа"
 
 msgid "vehicleParams/speedLimits"
 msgstr "Макс. скорость / задний ход (км/ч)"
-
-msgid "vehicleParams/supply_turretArmor"
-msgstr "Толщина круговой брони объекта поддержки."
 
 msgid "vehicleParams/title/valueTemplate"
 msgstr "%(value)s"

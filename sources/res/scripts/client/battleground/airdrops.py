@@ -1,3 +1,4 @@
+from constants import AirdropType
 from helpers import dependency
 from skeletons.gui.battle_session import IBattleSessionProvider
 from arena_component_system.client_arena_component_system import ClientArenaComponent
@@ -11,8 +12,8 @@ class Airdrops(object):
         planeObj = PlaneLootAirdrop(dropID, position, serverTime)
         planeObj.start()
 
-    def scheduleBot(self, dropID, position, teamID, yawAxis, serverTime):
-        botObj = BotAirdrop(dropID, position, teamID, yawAxis, serverTime)
+    def scheduleBot(self, dropID, position, teamID, yawAxis, serverTime, airdropType=AirdropType.BOT):
+        botObj = BotAirdrop(dropID, position, teamID, yawAxis, serverTime, airdropType)
         botObj.start()
 
 

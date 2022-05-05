@@ -328,9 +328,6 @@ class Quest(ServerEventAbstract):
     def shouldBeShown(self):
         if events_helpers.isMapsTraining(self.getGroupID()):
             return self.isAvailable().isValid and self.lobbyContext.getServerSettings().isMapsTrainingEnabled()
-        if events_helpers.isRts(self.getID()):
-            isRtsEnabled = self.lobbyContext.getServerSettings().getRTSBattlesConfig().isEnabled
-            return not self.isHidden() and isRtsEnabled
         return True
 
     def getGroupType(self):
@@ -434,9 +431,6 @@ class Quest(ServerEventAbstract):
                 result.append(self._bonusDecorator(bonus))
 
         return sorted(result, cmp=compareBonuses, key=operator.methodcaller('getName'))
-
-    def getSortKey(self):
-        return
 
     def __getVehicleStyleBonuses(self, vehiclesData):
         stylesData = []

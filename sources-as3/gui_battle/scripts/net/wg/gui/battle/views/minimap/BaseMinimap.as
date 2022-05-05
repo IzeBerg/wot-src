@@ -1,6 +1,5 @@
 package net.wg.gui.battle.views.minimap
 {
-   import flash.events.MouseEvent;
    import flash.geom.Point;
    import flash.geom.Rectangle;
    import net.wg.gui.battle.views.minimap.events.MinimapEvent;
@@ -14,26 +13,6 @@ package net.wg.gui.battle.views.minimap
       public function BaseMinimap()
       {
          super();
-         mouseEnabled = false;
-      }
-      
-      public static function getParentMinimap(param1:Object) : BaseMinimap
-      {
-         var _loc2_:BaseMinimap = null;
-         var _loc3_:Object = param1;
-         while(_loc3_.parent != null)
-         {
-            _loc3_ = _loc3_.parent;
-            if(_loc3_ is BaseMinimap)
-            {
-               _loc2_ = BaseMinimap(_loc3_);
-               break;
-            }
-         }
-         if(_loc2_ == null)
-         {
-         }
-         return _loc2_;
       }
       
       public function as_setVisible(param1:Boolean) : void
@@ -107,10 +86,6 @@ package net.wg.gui.battle.views.minimap
       public function getMessageCoordinate() : Number
       {
          return this.currentHeight - this.currentTopLeftPoint.y;
-      }
-      
-      public function onEntryMouseClickEvent(param1:MouseEvent, param2:Number, param3:Number) : void
-      {
       }
       
       public function getMinmapHeightBySizeIndex(param1:int) : Number

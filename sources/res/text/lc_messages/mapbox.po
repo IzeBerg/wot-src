@@ -19,11 +19,11 @@ msgstr "К выбору"
 msgid "awardsView/subTitle"
 msgstr "ПРОВЕДЕНО БОЁВ: {number}"
 
-msgid "awardsView/subTitleFinal"
-msgstr "ПОЛУЧЕНА НАГРАДА"
-
 msgid "awardsView/title"
 msgstr "РАЗВЕДКА БОЕМ"
+
+msgid "buttonDisable/tooltip"
+msgstr "Недоступно"
 
 msgid "calendarDay/serverName"
 msgstr "%(server)s"
@@ -46,6 +46,15 @@ msgstr "Выход в бой невозможен"
 msgid "headerButtons/fightBtn/tooltip/disabled/text"
 msgstr ""
 "На этом сервере комендантский час. Попробуйте перейти на другой сервер."
+
+msgid "headerButtons/fightBtn/tooltip/mapboxVehLevel/body"
+msgstr "Выйти в бой можно только на %(levelSubStr)s"
+
+msgid "headerButtons/fightBtn/tooltip/mapboxVehLevel/header"
+msgstr "Неподходящий уровень техники"
+
+msgid "headerButtons/fightBtn/tooltip/mapboxVehLevel/levelSubStr"
+msgstr "технике %(levels)s уровня."
 
 msgid "intro/button"
 msgstr "Так точно!"
@@ -134,7 +143,7 @@ msgid "primeTimeView/status/allServersDisabled"
 msgstr "Комендантский час на всех серверах"
 
 msgid "primeTimeView/status/disableFirst"
-msgstr "Режим на сервере %(server)s недоступен"
+msgstr "Режим недоступен на сервере %(server)s"
 
 msgid "primeTimeView/status/primeIsAvailable"
 msgstr "Бои на сервере %(server)s будут доступны ещё %(time)s"
@@ -174,11 +183,23 @@ msgstr ""
 "Играйте на разрабатываемых картах на технике VIII–X уровней, принимайте "
 "участие в опросах и получайте награды."
 
+msgid "progression/info/restart"
+msgstr "Перезапуск прогресса с наградами произойдёт через %(leftTime)s"
+
 msgid "progression/info/title"
 msgstr "Боёв проведено: %(current) / %(total)"
 
 msgid "progression/infoButton"
 msgstr "О СОБЫТИИ"
+
+msgid "progression/map_01_karelia"
+msgstr "КАРЕЛИЯ"
+
+msgid "progression/map_02_malinovka"
+msgstr "МАЛИНОВКА"
+
+msgid "progression/map_05_prohorovka"
+msgstr "ПРОХОРОВКА"
 
 msgid "progression/map_117_canyon_ish"
 msgstr "КАНЬОН"
@@ -207,6 +228,15 @@ msgstr "МЕСТО СИЛЫ"
 msgid "progression/map_128_last_frontier_v"
 msgstr "ЗАСТАВА"
 
+msgid "progression/map_130_anykey_if"
+msgstr "ЭНИКЕЕВКА"
+
+msgid "progression/map_132_abruzzo"
+msgstr "АКВИЛА"
+
+msgid "progression/map_136_kassel"
+msgstr "КЛОСТЕРТАЛЬ"
+
 msgid "progression/map_14_siegfried_line"
 msgstr "В РАЗРАБОТКЕ № 1"
 
@@ -233,6 +263,18 @@ msgstr "Чтобы пройти опрос, выполните указанно�
 
 msgid "progression/takeButton"
 msgstr "Забрать"
+
+msgid "progression/timeLeft/days"
+msgstr "%(day)s д"
+
+msgid "progression/timeLeft/hours"
+msgstr "%(hour)s ч %(min)s мин"
+
+msgid "progression/timeLeft/lessMin"
+msgstr "1 мин"
+
+msgid "progression/timeLeft/min"
+msgstr "%(min)s мин"
 
 msgid "progression/title"
 msgstr "РАЗВЕДКА БОЕМ"
@@ -314,7 +356,7 @@ msgid "selector/startEvent"
 msgstr "Смотр карт начнётся %(day)s"
 
 msgid "selector/tooltip/body"
-msgstr "Смотр трёх карт продлится до %(day)s"
+msgstr "Смотр шести карт продлится до %(day)s"
 
 msgid "selector/tooltip/title"
 msgstr "Расписание"
@@ -335,7 +377,275 @@ msgid "selectorTooltip/timeTable/tomorrow"
 msgstr "Завтра"
 
 msgid "serverAlertMessage"
-msgstr "Режим на сервере %(serverName)s недоступен"
+msgstr "Режим недоступен на сервере %(serverName)s"
 
 msgid "serverAlertMessage/button"
 msgstr "Сменить сервер"
+
+msgid "survey/backBtn"
+msgstr "Назад"
+
+msgid "survey/nextBtn"
+msgstr "Далее"
+
+msgid "survey/question/1"
+msgstr "Понравилась ли карта с точки зрения ведения боя?"
+
+msgid "survey/question/10"
+msgstr "Сложно ли захватывать указанную базу?"
+
+msgid "survey/question/11"
+msgstr "Нравится ли вам тематика (сеттинг) карты?"
+
+msgid "survey/question/12"
+msgstr "Хотели бы вы увидеть эту карту в игре?"
+
+msgid "survey/question/13"
+msgstr "Нужны ли доработки для карты?"
+
+msgid "survey/question/14"
+msgstr "Укажите необходимые доработки"
+
+msgid "survey/question/2"
+msgstr "На какой технике вы играли на этой карте?"
+
+msgid "survey/question/3"
+msgstr "Для каких типов техники подходит карта?"
+
+msgid "survey/question/3_0"
+msgstr "Подходит ли карта для {value}?"
+
+msgid "survey/question/3_1"
+msgstr "Для каких типов техники подходит карта?"
+
+msgid "survey/question/4"
+msgstr "Как вам размер карты?"
+
+msgid "survey/question/5"
+msgstr "Сбалансированы ли позиции команд?"
+
+msgid "survey/question/6"
+msgstr "Укажите на мини-карте позиции с явным преимуществом"
+
+msgid "survey/question/7"
+msgstr "С какими высказываниями о карте вы согласны?"
+
+msgid "survey/question/8"
+msgstr "С какими высказываниями о карте вы согласны?"
+
+msgid "survey/question/9"
+msgstr "Сложно ли захватывать указанную базу?"
+
+msgid "survey/question/option/3_AT-SPG"
+msgstr "ПТ-САУ"
+
+msgid "survey/question/option/3_SPG"
+msgstr "САУ"
+
+msgid "survey/question/option/3_heavyTank"
+msgstr "ТТ"
+
+msgid "survey/question/option/3_lightTank"
+msgstr "ЛТ"
+
+msgid "survey/question/option/3_mediumTank"
+msgstr "СТ"
+
+msgid "survey/question/option/7_1"
+msgstr "На ней легко ориентироваться"
+
+msgid "survey/question/option/7_2"
+msgstr "Бои слишком затянуты"
+
+msgid "survey/question/option/7_3"
+msgstr "Бои однообразны, проходят по одной схеме"
+
+msgid "survey/question/option/7_4"
+msgstr "Обнаружение техники в начале боя происходит слишком быстро"
+
+msgid "survey/question/option/7_5"
+msgstr "Значительную часть карты нельзя использовать для боя"
+
+msgid "survey/question/option/8_1"
+msgstr "Можно применять разные тактики"
+
+msgid "survey/question/option/8_2"
+msgstr "Легко найти позиции для стрельбы"
+
+msgid "survey/question/option/8_3"
+msgstr "Достаточно кустов и деревьев, которые можно использовать в бою"
+
+msgid "survey/question/option/8_4"
+msgstr "Достаточно холмов и низин, которые можно использовать в бою"
+
+msgid "survey/question/option/8_5"
+msgstr "Достаточно укрытий от огня САУ"
+
+msgid "survey/readyBtn"
+msgstr "Так точно!"
+
+msgid "survey/required"
+msgstr "Ответьте на вопрос для продолжения."
+
+msgid "survey/response/10_1"
+msgstr "Слишком легко"
+
+msgid "survey/response/10_2"
+msgstr "В самый раз"
+
+msgid "survey/response/10_3"
+msgstr "Слишком сложно"
+
+msgid "survey/response/10_4"
+msgstr "Трудно сказать"
+
+msgid "survey/response/11_1"
+msgstr "Нравится"
+
+msgid "survey/response/11_2"
+msgstr "Не нравится"
+
+msgid "survey/response/11_3"
+msgstr "Трудно сказать"
+
+msgid "survey/response/12_1"
+msgstr "Да"
+
+msgid "survey/response/12_2"
+msgstr "Нет"
+
+msgid "survey/response/12_3"
+msgstr "Мне всё равно"
+
+msgid "survey/response/13_1"
+msgstr "Да"
+
+msgid "survey/response/13_2"
+msgstr "Нет"
+
+msgid "survey/response/13_3"
+msgstr "Трудно сказать"
+
+msgid "survey/response/1_1"
+msgstr "Определённо, да"
+
+msgid "survey/response/1_2"
+msgstr "Скорее да"
+
+msgid "survey/response/1_3"
+msgstr "Скорее нет"
+
+msgid "survey/response/1_4"
+msgstr "Определённо, нет"
+
+msgid "survey/response/1_5"
+msgstr "Трудно сказать"
+
+msgid "survey/response/2_AT-SPG"
+msgstr "ПТ-САУ"
+
+msgid "survey/response/2_SPG"
+msgstr "САУ"
+
+msgid "survey/response/2_heavyTank"
+msgstr "ТТ"
+
+msgid "survey/response/2_lightTank"
+msgstr "ЛТ"
+
+msgid "survey/response/2_mediumTank"
+msgstr "СТ"
+
+msgid "survey/response/2_unknown"
+msgstr "Не обратил (-а) внимания"
+
+msgid "survey/response/3_1"
+msgstr "Скорее подходит"
+
+msgid "survey/response/3_2"
+msgstr "Скорее не подходит"
+
+msgid "survey/response/3_3"
+msgstr "Трудно сказать"
+
+msgid "survey/response/4_1"
+msgstr "Слишком большая"
+
+msgid "survey/response/4_2"
+msgstr "В самый раз"
+
+msgid "survey/response/4_3"
+msgstr "Слишком маленькая"
+
+msgid "survey/response/4_4"
+msgstr "Трудно сказать"
+
+msgid "survey/response/5_1"
+msgstr "Да"
+
+msgid "survey/response/5_2"
+msgstr "Нет"
+
+msgid "survey/response/5_3"
+msgstr "Трудно сказать"
+
+msgid "survey/response/7_1"
+msgstr "Согласен (-на)"
+
+msgid "survey/response/7_2"
+msgstr "Не согласен (-на)"
+
+msgid "survey/response/7_3"
+msgstr "Трудно сказать"
+
+msgid "survey/response/8_1"
+msgstr "Согласен (-на)"
+
+msgid "survey/response/8_2"
+msgstr "Не согласен (-на)"
+
+msgid "survey/response/8_3"
+msgstr "Трудно сказать"
+
+msgid "survey/response/9_1"
+msgstr "Слишком легко"
+
+msgid "survey/response/9_2"
+msgstr "В самый раз"
+
+msgid "survey/response/9_3"
+msgstr "Слишком сложно"
+
+msgid "survey/response/9_4"
+msgstr "Трудно сказать"
+
+msgid "survey/subTitle"
+msgstr ""
+"Благодарим за участие в опросе! Он займёт около 2 минут. Предоставленная "
+"вами информация будет обрабатываться только в рамках этого опроса. После "
+"обработки мы удалим ваши данные в соответствии с нашей Политикой "
+"конфиденциальности."
+
+msgid "survey/template/final/title"
+msgstr "Благодарим за участие в опросе!"
+
+msgid "survey/template/mapInteractive/hint0"
+msgstr "ВЫБЕРИТЕ ПОЗИЦИЮ, ЩЁЛКНУВ ПО КАРТЕ"
+
+msgid "survey/template/mapInteractive/hint1"
+msgstr "МАКСИМУМ ТРИ ПОЗИЦИИ НА КАРТЕ"
+
+msgid "survey/template/mapInteractive/point/description"
+msgstr "Детальное описание проблемы (до %(maxLength)s символов)"
+
+msgid "survey/template/mapInteractive/point/title"
+msgstr "Позиция"
+
+msgid "survey/template/mapInteractive/point/tooltip"
+msgstr "Удалить позицию"
+
+msgid "survey/template/opened/description"
+msgstr "Детальное описание (до %(maxLength)s символов)"
+
+msgid "survey/title"
+msgstr "Оценка карты «{map}»"

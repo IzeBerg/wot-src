@@ -24,18 +24,13 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
          this._atlasManager = App.atlasMgr;
          super();
          MinimapEntryController.instance.registerScalableEntry(this);
-         mouseEnabled = mouseChildren = false;
-      }
-      
-      override protected function configUI() : void
-      {
-         App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeChangeHandler);
       }
       
       public function setPointNumber(param1:int) : void
       {
          this._pointNumber = param1;
          this.drawEntry();
+         App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeChangeHandler);
       }
       
       private function drawEntry() : void

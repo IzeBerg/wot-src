@@ -74,9 +74,9 @@ package net.wg.gui.battle.random.views.teamBasesPanel
       
       private var _colorSchemeMgr:IColorSchemeManager;
       
-      private var _exitTween:Tween = null;
+      private var _disposed:Boolean = false;
       
-      private var _isDisposed:Boolean = false;
+      private var _exitTween:Tween = null;
       
       public function TeamCaptureBar()
       {
@@ -85,13 +85,9 @@ package net.wg.gui.battle.random.views.teamBasesPanel
          super();
       }
       
-      public function isDisposed() : Boolean
-      {
-         return this._isDisposed;
-      }
-      
       public final function dispose() : void
       {
+         this._disposed = true;
          stop();
          this._scheduler.cancelTask(this.animationStepHandler);
          this.textField = null;
@@ -113,7 +109,6 @@ package net.wg.gui.battle.random.views.teamBasesPanel
          this._currentEaseArray = null;
          this._scheduler = null;
          this._colorSchemeMgr = null;
-         this._isDisposed = false;
       }
       
       public function setCaptured(param1:String) : void
@@ -276,6 +271,11 @@ package net.wg.gui.battle.random.views.teamBasesPanel
          this.bg.colorType = param1;
          this.progressBar.colorType = param1;
          this.progressBarReset.colorType = param1;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

@@ -1,8 +1,6 @@
-import typing
 from collections import namedtuple
-from enum import Enum
 import math, logging, BigWorld
-from Math import Vector2, Matrix, Vector3
+from Math import Vector2, Matrix
 from constants import IS_DEVELOPMENT, IS_CLIENT, IS_BOT
 from soft_exception import SoftException
 from constants import IS_EDITOR
@@ -10,7 +8,7 @@ from wrapped_reflection_framework import ReflectionMetaclass
 from items import _xml
 _logger = logging.getLogger(__name__)
 
-class ModelHitStatus(Enum):
+class ModelStatus:
     NORMAL = 0
     CRASHED = 1
 
@@ -23,48 +21,50 @@ class HitTesterManager(object):
     SERVER_MODEL_TAG = 'collisionModelServer'
 
     def __init__(self, dataSection=None):
-        self.__hitTesters = {ModelHitStatus.NORMAL: None, 
-           ModelHitStatus.CRASHED: None}
+        self.__hitTesters = {ModelStatus.NORMAL: None, 
+           ModelStatus.CRASHED: None}
+        self.__status = ModelStatus.NORMAL
         if dataSection:
             self.initHitTesters(dataSection)
         return
 
     @property
     def modelHitTester(self):
-        return self.__hitTesters[ModelHitStatus.NORMAL]
+        return self.__hitTesters[ModelStatus.NORMAL]
 
     @modelHitTester.setter
     def modelHitTester(self, hitTester):
-        self.__hitTesters[ModelHitStatus.NORMAL] = hitTester
+        self.__hitTesters[ModelStatus.NORMAL] = hitTester
 
     @property
     def crashedModelHitTester(self):
-        return self.__hitTesters[ModelHitStatus.CRASHED]
+        return self.__hitTesters[ModelStatus.CRASHED]
 
     @crashedModelHitTester.setter
     def crashedModelHitTester(self, hitTester):
-        self.__hitTesters[ModelHitStatus.CRASHED] = hitTester
+        self.__hitTesters[ModelStatus.CRASHED] = hitTester
 
-    def getHitTester(self, modelStatus):
-        requested = self.__hitTesters[modelStatus]
-        if requested is not None:
-            return requested
-        else:
-            return self.__hitTesters[ModelHitStatus.NORMAL]
+    @property
+    def activeHitTester(self):
+        return self.__hitTesters[self.__status]
 
     def initHitTesters(self, dataSection):
         if dataSection.has_key(self.CRASHED_MODEL_TAG):
-            self.__hitTesters[ModelHitStatus.CRASHED] = self.__createHitTester(dataSection, self.CRASHED_MODEL_TAG)
+            self.__hitTesters[ModelStatus.CRASHED] = self.__createHitTester(dataSection, self.CRASHED_MODEL_TAG)
         normalModelSection = dataSection
         if dataSection.has_key(self.NORMAL_MODEL_TAG):
             normalModelSection = _xml.getSubsection(None, dataSection, self.NORMAL_MODEL_TAG)
         modelHitTester = self.__createHitTester(normalModelSection)
-        self.__hitTesters[ModelHitStatus.NORMAL] = modelHitTester
+        self.__hitTesters[ModelStatus.NORMAL] = modelHitTester
         return
+
+    def setStatus(self, modelStatus):
+        if self.__hitTesters[modelStatus]:
+            self.__status = modelStatus
 
     def loadHitTesters(self):
         for _, hitTester in self.__hitTesters.iteritems():
-            if hitTester and not hitTester.isBspModelLoaded():
+            if hitTester:
                 hitTester.loadBspModel()
 
     def save(self, section):
@@ -82,8 +82,6 @@ class HitTesterManager(object):
         bspModelName = section.readString(modelTag)
         if not bspModelName:
             raise SoftException('<%s> is missing or wrong' % modelTag)
-        elif bspModelName.lower() == 'none':
-            return NoneHitTester()
         modelTagDown = modelTag + 'Down'
         bspModelNameDown = section.readString(modelTagDown)
         modelTagUp = modelTag + 'Up'
@@ -91,108 +89,12 @@ class HitTesterManager(object):
         return ModelHitTester(bspModelName, bspModelNameDown, bspModelNameUp)
 
 
-class IHitTester(object):
-    __slots__ = ('bbox', )
-
-    def __init__(self):
-        self.bbox = None
-        return
-
-    def loadBspModel(self):
-        raise NotImplementedError
-
-    def getBspModel(self):
-        raise NotImplementedError
-
-    def isBspModelLoaded(self):
-        raise NotImplementedError
-
-    def releaseBspModel(self):
-        raise NotImplementedError
-
-    def localAnyHitTest(self, start, stop, value=0):
-        raise NotImplementedError
-
-    def localHitTest(self, start, stop, value=0):
-        raise NotImplementedError
-
-    def localNearestHitTest(self, start, stop, value=0):
-        raise NotImplementedError
-
-    def localHitTestFull_debug(self, start, stop, value=0):
-        raise NotImplementedError
-
-    def worldHitTest(self, start, stop, worldMatrix, value=0):
-        raise NotImplementedError
-
-    def localSphericHitTest(self, center, radius, bOutsidePolygonsOnly=True, value=0):
-        raise NotImplementedError
-
-    def localCollidesWithTriangle(self, triangle, hitDir, value=0):
-        raise NotImplementedError
-
-    def getModel(self, value):
-        raise NotImplementedError
-
-
-class NoneHitTester(IHitTester):
-    __slots__ = ()
-
-    def __init__(self):
-        super(NoneHitTester, self).__init__()
-        self.bbox = (Vector3(-0.1, -0.1, -0.1), Vector3(0.1, 0.1, 0.1), 0.0)
-
-    @property
-    def bspModelName(self):
-        return
-
-    @bspModelName.setter
-    def bspModelName(self, name):
-        pass
-
-    def getBspModel(self):
-        return
-
-    def isBspModelLoaded(self):
-        return True
-
-    def loadBspModel(self):
-        pass
-
-    def releaseBspModel(self):
-        pass
-
-    def localAnyHitTest(self, start, stop, value=0):
-        return
-
-    def localHitTest(self, start, stop, value=0):
-        return
-
-    def localNearestHitTest(self, start, stop, value=0):
-        return
-
-    def localHitTestFull_debug(self, start, stop, value=0):
-        return
-
-    def worldHitTest(self, start, stop, worldMatrix, value=0):
-        return
-
-    def localSphericHitTest(self, center, radius, bOutsidePolygonsOnly=True, value=0):
-        return
-
-    def localCollidesWithTriangle(self, triangle, hitDir, value=0):
-        return
-
-    def getModel(self, value):
-        return
-
-
-class ModelHitTester(IHitTester):
+class ModelHitTester(object):
     __slots__ = ('__bspModel', '__bspModelName', '__bspModelDown', '__bspModelNameDown',
-                 '__bspModelUp', '__bspModelNameUp', 'bboxDown', 'bboxUp')
+                 '__bspModelUp', '__bspModelNameUp', 'bbox', 'bboxDown', 'bboxUp')
 
     def __init__(self, bspModelName=None, bspModelNameDown=None, bspModelNameUp=None):
-        super(ModelHitTester, self).__init__()
+        self.bbox = None
         self.__bspModel = None
         self.__bspModelName = bspModelName
         self.__bspModelDown = None
@@ -207,9 +109,8 @@ class ModelHitTester(IHitTester):
 
     @bspModelName.setter
     def bspModelName(self, name):
-        if name != self.__bspModelName:
-            self.releaseBspModel()
-            self.__bspModelName = name
+        self.releaseBspModel()
+        self.__bspModelName = name
 
     def getBspModel(self):
         return self.__bspModel
@@ -268,7 +169,7 @@ class ModelHitTester(IHitTester):
         return self.__getBspModel(value).collideSegmentNearest(start, stop)
 
     def localHitTestFull_debug(self, start, stop, value=0):
-        _logger.debug('localHitTestFull_debug %s %s %s', self.bspModelName, start, stop)
+        LOG_DEBUG('localHitTestFull_debug', self.bspModelName, start, stop)
         return self.__getBspModel(value).collideSegmentFull_debug(start, stop)
 
     def worldHitTest(self, start, stop, worldMatrix, value=0):
@@ -309,31 +210,37 @@ class ModelHitTester(IHitTester):
 class BoundingBoxManager(object):
 
     def __init__(self, normalBBox=None, crashedBBox=None):
-        self.__bboxes = {ModelHitStatus.NORMAL: normalBBox, 
-           ModelHitStatus.CRASHED: crashedBBox}
+        self.__status = ModelStatus.NORMAL
+        self.__bboxes = {ModelStatus.NORMAL: normalBBox, 
+           ModelStatus.CRASHED: crashedBBox}
+
+    def setStatus(self, modelStatus):
+        if self.__bboxes[modelStatus]:
+            self.__status = modelStatus
 
     @property
     def normalBBox(self):
-        return self.__bboxes[ModelHitStatus.NORMAL]
+        return self.__bboxes[ModelStatus.NORMAL]
 
     @normalBBox.setter
     def normalBBox(self, bbox):
-        self.__bboxes[ModelHitStatus.NORMAL] = bbox
+        self.__bboxes[ModelStatus.NORMAL] = bbox
 
     @property
     def crashedBBox(self):
-        return self.__bboxes[ModelHitStatus.CRASHED]
+        return self.__bboxes[ModelStatus.CRASHED]
 
     @crashedBBox.setter
     def crashedBBox(self, bbox):
-        self.__bboxes[ModelHitStatus.CRASHED] = bbox
+        self.__bboxes[ModelStatus.CRASHED] = bbox
 
-    def getBBox(self, modelStatus):
-        requested = self.__bboxes[modelStatus]
-        if requested is not None:
-            return requested
-        else:
-            return self.__bboxes[ModelHitStatus.NORMAL]
+    @property
+    def activeBBox(self):
+        return self.__bboxes[self.__status]
+
+    @activeBBox.setter
+    def activeBBox(self, bbox):
+        self.__bboxes[self.__status] = bbox
 
 
 def segmentMayHitVolume(boundingRadius, center, segmentStart, segmentEnd):

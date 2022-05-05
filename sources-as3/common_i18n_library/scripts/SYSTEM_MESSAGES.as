@@ -115,8 +115,6 @@ package
       
       public static const ARENA_START_ERRORS_JOIN_QUEUE_FAILURE:String = "#system_messages:arena_start_errors/join/QUEUE_FAILURE";
       
-      public static const ARENA_START_ERRORS_JOIN_INSUFFICIENT_FUNDS:String = "#system_messages:arena_start_errors/join/INSUFFICIENT_FUNDS";
-      
       public static const PREBATTLE_KICK_TYPE_SQUAD:String = "#system_messages:prebattle/kick/type/squad";
       
       public static const PREBATTLE_KICK_TYPE_UNKNOWN:String = "#system_messages:prebattle/kick/type/unknown";

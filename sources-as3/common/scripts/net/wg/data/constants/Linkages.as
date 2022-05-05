@@ -325,14 +325,6 @@ package net.wg.data.constants
       
       public static const SEPARATOR_BIG_ROTATED_CENTER:String = "RotatedBigSeparator_UI";
       
-      public static const RTS_TEAM_LEFT_MEMBER_RENDERER_UI:String = "RTSTeamLeftMemberRendererUI";
-      
-      public static const RTS_TEAM_RIGHT_MEMBER_RENDERER_UI:String = "RTSTeamRightMemberRendererUI";
-      
-      public static const RTS_TANKERS_TEAM_LEFT_MEMBER_RENDERER_UI:String = "RTSTankersTeamLeftMemberRendererUI";
-      
-      public static const RTS_TANKERS_TEAM_RIGHT_MEMBER_RENDERER_UI:String = "RTSTankersTeamRightMemberRendererUI";
-      
       public static const TEAM_LEFT_MEMBER_RENDERER:String = "TeamLeftMemberRendererUI";
       
       public static const TEAM_RIGHT_MEMBER_RENDERER:String = "TeamRightMemberRendererUI";
@@ -648,40 +640,6 @@ package net.wg.data.constants
       public static const BATTLE_ROYALE_WIDGET_UI:String = "BattleRoyaleHangarWidgetUI";
       
       public static const BATTLE_ROYALE_TOURNAMENT_WIDGET_UI:String = "BattleRoyaleTournamentWidgetUI";
-      
-      public static const SPAWN_MENU_ROOSTER_SUPPLY_RENDERER:String = "SpawnMenuRoosterSupplyRendererUI";
-      
-      public static const SPAWN_MENU_ROOSTER_VEHICLE_RENDERER:String = "SpawnMenuRoosterVehicleRendererUI";
-      
-      public static const SPAWN_MENU_ENEMY_ROOSTER_VEHICLE_RENDERER:String = "SpawnMenuEnemyRoosterVehicleRendererUI";
-      
-      public static const SPAWN_MENU_ENEMY_VEHICLE_RENDERER:String = "SpawnMenuVehicleRendererUI";
-      
-      public static const SPAWN_MENU_ENEMY_VEHICLE_ITEM_SEPARATOR:String = "SpawnMenuEnemyVehicleItemSeparatorUI";
-      
-      public static const SPAWN_MENU_MAP_BASE_POINT_ENTRY:String = "SpawnMenuMapBasePointEntryUI";
-      
-      public static const SPAWN_MENU_MAP_CONTROL_POINT_ENTRY:String = "SpawnMenuMapControlPointEntryUI";
-      
-      public static const SPAWN_MENU_MAP_SPAWN_BASE_POINT_ENTRY:String = "SpawnMenuMapSpawnBasePointEntryUI";
-      
-      public static const SPAWN_MENU_MAP_PLACE_POINT_ENTRY:String = "SpawnMenuMapPlacePointEntryUI";
-      
-      public static const SPAWN_MENU_MAP_SUPPLY_ENTRY:String = "SpawnMenuMapSupplyEntryUI";
-      
-      public static const SPAWN_MENU_MAP_VEHICLE_ENTRY:String = "SpawnMenuMapVehicleEntryUI";
-      
-      public static const SPAWN_MENU_DRAG_ITEM:String = "SpawnMenuDragItemUI";
-      
-      public static const SUPPLY_PANEL_ITEM:String = "SupplyPanelItemUI";
-      
-      public static const COMMANDER_HELP_ITEM:String = "CommanderHelpItemUI";
-      
-      public static const COMMANDER_BASE_HELP_ITEM:String = "BaseCommanderHelpItemUI";
-      
-      public static const COMMANDER_NOBG_HELP_ITEM:String = "NoBGCommanderHelpItemUI";
-      
-      public static const OBJECTIVES_PANEL_ITEM:String = "ObjectivesPanelItemUI";
       
       public static const DIP_LOADER_DAMAGED:String = "DipLoaderDamagedUI";
       
@@ -1066,12 +1024,6 @@ package net.wg.data.constants
       public static const RESEARCH_POST_PROGRESSION_ENTRY_POINT:String = "PostProgressionEntryPointUI";
       
       public static const LOBBY_MINIMAP:String = "LobbyMinimap";
-      
-      public static const BASE_COMMANDER_ORDER_RENDERER:String = "BaseCommanderHelpItemUI";
-      
-      public static const REGULAR_COMMANDER_ORDER_RENDERER:String = "CommanderHelpItemUI";
-      
-      public static const NO_BACKGROUND_COMMANDER_ORDER_RENDERER:String = "NoBGCommanderHelpItemUI";
        
       
       public function Linkages()

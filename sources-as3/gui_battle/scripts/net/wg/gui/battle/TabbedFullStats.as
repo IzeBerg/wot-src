@@ -179,14 +179,6 @@ package net.wg.gui.battle
          this.tabs.selectedIndex = param1;
       }
       
-      public function as_setTableVisibility(param1:Boolean) : void
-      {
-         this.tabs.visible = param1;
-         this.tabQuest.visible = param1;
-         title.visible = param1;
-         statsTable.visible = param1;
-      }
-      
       private function updateCurrentTab() : void
       {
          statsTable.visible = this.tabs.selectedIndex == 0;

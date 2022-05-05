@@ -55,11 +55,11 @@ class MissionVehicleSelector(MissionsVehicleSelectorMeta):
     def __init__(self):
         super(MissionVehicleSelector, self).__init__()
         self._carousel = None
-        self.__hideVehicleSelection = False
+        self.__isQuestForBattleRoyale = False
         return
 
-    def setCriteria(self, criteria, extraConditions, hideVehicleSelection=False):
-        self.__hideVehicleSelection = hideVehicleSelection
+    def setCriteria(self, criteria, extraConditions, isQuestForBattleRoyale=False):
+        self.__isQuestForBattleRoyale = isQuestForBattleRoyale
         self._carousel.setCriteria(criteria, extraConditions)
         self.__updateSelectedVehicle()
 
@@ -91,7 +91,7 @@ class MissionVehicleSelector(MissionsVehicleSelectorMeta):
     def __updateSelectedVehicle(self):
         vehicle = g_currentVehicle.item
         suitableVehicles = self._carousel.getSuitableVehicles()
-        if self.__hideVehicleSelection:
+        if self.__isQuestForBattleRoyale:
             selectedVeh = None
             status = ''
             title = ''

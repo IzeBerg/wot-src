@@ -137,8 +137,6 @@ package
       
       public static const PLAYER_MESSAGES_ALLY_HIT:String = "#ingame_gui:player_messages/ALLY_HIT";
       
-      public static const PLAYER_MESSAGES_SPAWN:String = "#ingame_gui:player_messages/SPAWN";
-      
       public static const PLAYER_MESSAGES_ALLY_BASE_CAPTURED_NOTIFICATION:String = "#ingame_gui:player_messages/ally_base_captured_notification";
       
       public static const PLAYER_MESSAGES_ENEMY_BASE_CAPTURED_NOTIFICATION:String = "#ingame_gui:player_messages/enemy_base_captured_notification";
@@ -849,12 +847,6 @@ package
       
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_FIRE:String = "#ingame_gui:postmortem_messages/DEATH_FROM_FIRE";
       
-      public static const POSTMORTEM_MESSAGES_DEATH_FROM_SUPPLY_SHOT:String = "#ingame_gui:postmortem_messages/DEATH_FROM_SUPPLY_SHOT";
-      
-      public static const PLAYER_MESSAGES_DEATH_FROM_SUPPLY_SHOT_ALLY_ENEMY:String = "#ingame_gui:player_messages/DEATH_FROM_SUPPLY_SHOT_ALLY_ENEMY";
-      
-      public static const PLAYER_MESSAGES_DEATH_FROM_SUPPLY_SHOT_ENEMY_ALLY:String = "#ingame_gui:player_messages/DEATH_FROM_SUPPLY_SHOT_ENEMY_ALLY";
-      
       public static const PLAYER_MESSAGES_DEATH_FROM_INACTIVE_CREW_AT_SHOT:String = "#ingame_gui:player_messages/DEATH_FROM_INACTIVE_CREW_AT_SHOT";
       
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_INACTIVE_CREW_AT_SHOT:String = "#ingame_gui:postmortem_messages/DEATH_FROM_INACTIVE_CREW_AT_SHOT";
@@ -1089,6 +1081,16 @@ package
       
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_KAMIKAZE:String = "#ingame_gui:postmortem_messages/DEATH_FROM_KAMIKAZE";
       
+      public static const POSTMORTEM_MESSAGES_DEATH_FROM_FIRE_CIRCLE:String = "#ingame_gui:postmortem_messages/DEATH_FROM_FIRE_CIRCLE";
+      
+      public static const POSTMORTEM_MESSAGES_DEATH_FROM_THUNDER_STRIKE:String = "#ingame_gui:postmortem_messages/DEATH_FROM_THUNDER_STRIKE";
+      
+      public static const POSTMORTEM_MESSAGES_DEATH_FROM_CORRODING_SHOT:String = "#ingame_gui:postmortem_messages/DEATH_FROM_CORRODING_SHOT";
+      
+      public static const POSTMORTEM_MESSAGES_DEATH_FROM_CLING_BRANDER:String = "#ingame_gui:postmortem_messages/DEATH_FROM_CLING_BRANDER";
+      
+      public static const POSTMORTEM_MESSAGES_DEATH_FROM_AIRSTRIKE:String = "#ingame_gui:postmortem_messages/DEATH_FROM_AIRSTRIKE";
+      
       public static const PLAYER_MESSAGES_DEATH_FROM_OVERTURN_SELF_SUICIDE:String = "#ingame_gui:player_messages/DEATH_FROM_OVERTURN_SELF_SUICIDE";
       
       public static const PLAYER_MESSAGES_DEATH_FROM_OVERTURN_SELF_ALLY:String = "#ingame_gui:player_messages/DEATH_FROM_OVERTURN_SELF_ALLY";
@@ -1174,6 +1176,22 @@ package
       public static const EFFICIENCYRIBBONS_RECEIVEDBYMINEFIELD:String = "#ingame_gui:efficiencyRibbons/receivedByMinefield";
       
       public static const EFFICIENCYRIBBONS_RECEIVEDBYSMOKE:String = "#ingame_gui:efficiencyRibbons/receivedBySmoke";
+      
+      public static const EFFICIENCYRIBBONS_DEALTDAMAGEBYCORRODINGSHOT:String = "#ingame_gui:efficiencyRibbons/dealtDamageByCorrodingShot";
+      
+      public static const EFFICIENCYRIBBONS_RECEIVEDBYCORRODINGSHOT:String = "#ingame_gui:efficiencyRibbons/receivedByCorrodingShot";
+      
+      public static const EFFICIENCYRIBBONS_DEALTDAMAGEBYFIRECIRCLE:String = "#ingame_gui:efficiencyRibbons/dealtDamageByFireCircle";
+      
+      public static const EFFICIENCYRIBBONS_RECEIVEDBYFIRECIRCLE:String = "#ingame_gui:efficiencyRibbons/receivedByFireCircle";
+      
+      public static const EFFICIENCYRIBBONS_DEALTDAMAGEBYCLINGBRANDER:String = "#ingame_gui:efficiencyRibbons/dealtDamageByClingBrander";
+      
+      public static const EFFICIENCYRIBBONS_RECEIVEDBYCLINGBRANDER:String = "#ingame_gui:efficiencyRibbons/receivedByClingBrander";
+      
+      public static const EFFICIENCYRIBBONS_DEALTDAMAGEBYTHUNDERSTRIKE:String = "#ingame_gui:efficiencyRibbons/dealtDamageByThunderStrike";
+      
+      public static const EFFICIENCYRIBBONS_RECEIVEDBYTHUNDERSTRIKE:String = "#ingame_gui:efficiencyRibbons/receivedByThunderStrike";
       
       public static const EFFICIENCYRIBBONS_RECEIVEDRAM:String = "#ingame_gui:efficiencyRibbons/receivedRam";
       

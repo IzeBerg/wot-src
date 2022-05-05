@@ -1,13 +1,5 @@
 package net.wg.infrastructure.base.meta.impl
 {
-   import net.wg.gui.battle.views.staticMarkers.commander.orders.RTSOrderIconAnimation;
-   import net.wg.gui.battle.views.staticMarkers.commander.orders.RTSOrderMarker;
-   import net.wg.gui.battle.views.staticMarkers.commander.orders.RTSOrderStates;
-   import net.wg.gui.battle.views.staticMarkers.commander.orders.RTSOrderVehicleName;
-   import net.wg.gui.battle.views.staticMarkers.commander.orders.RTSOrderVehicleNameAnimation;
-   import net.wg.gui.battle.views.staticMarkers.commander.teamBase.TeamBaseIcon;
-   import net.wg.gui.battle.views.staticMarkers.commander.teamBase.TeamBaseMarker;
-   import net.wg.gui.battle.views.staticMarkers.commander.teamBase.TeamBaseProgressCircle;
    import net.wg.gui.battle.views.staticMarkers.epic.ObjectiveIdReplyState;
    import net.wg.gui.battle.views.staticMarkers.epic.headquarter.HeadquarterActionMarker;
    import net.wg.gui.battle.views.staticMarkers.epic.headquarter.HeadquarterAnimation;
@@ -33,7 +25,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.vehicleMarkers.ActionIconStateMarker;
    import net.wg.gui.battle.views.vehicleMarkers.AnimateExplosion;
    import net.wg.gui.battle.views.vehicleMarkers.BranderVehicle2dMarker;
-   import net.wg.gui.battle.views.vehicleMarkers.CommanderSupplyMarker;
    import net.wg.gui.battle.views.vehicleMarkers.DamageLabel;
    import net.wg.gui.battle.views.vehicleMarkers.FlagContainer;
    import net.wg.gui.battle.views.vehicleMarkers.FortConsumablesMarker;
@@ -46,14 +37,10 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.vehicleMarkers.IVehicleMarkersManager;
    import net.wg.gui.battle.views.vehicleMarkers.StaticArtyMarker;
    import net.wg.gui.battle.views.vehicleMarkers.StaticObjectMarker;
-   import net.wg.gui.battle.views.vehicleMarkers.SupplyHealthBar;
-   import net.wg.gui.battle.views.vehicleMarkers.SupplyIconMarker;
    import net.wg.gui.battle.views.vehicleMarkers.TargetMarker;
    import net.wg.gui.battle.views.vehicleMarkers.VMAtlasItemName;
-   import net.wg.gui.battle.views.vehicleMarkers.VO.CommanderDataVO;
    import net.wg.gui.battle.views.vehicleMarkers.VO.CrossOffset;
    import net.wg.gui.battle.views.vehicleMarkers.VO.HPDisplayMode;
-   import net.wg.gui.battle.views.vehicleMarkers.VO.SupplyMarkerVO;
    import net.wg.gui.battle.views.vehicleMarkers.VO.VehicleMarkerFlags;
    import net.wg.gui.battle.views.vehicleMarkers.VO.VehicleMarkerPart;
    import net.wg.gui.battle.views.vehicleMarkers.VO.VehicleMarkerSettings;
@@ -65,14 +52,9 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.vehicleMarkers.VehicleMarkersLinkages;
    import net.wg.gui.battle.views.vehicleMarkers.VehicleMarkersManager;
    import net.wg.gui.battle.views.vehicleMarkers.VehicleStatusContainerMarker;
-   import net.wg.gui.battle.views.vehicleMarkers.events.RTSMarkerEvent;
    import net.wg.gui.battle.views.vehicleMarkers.events.StatusAnimationEvent;
    import net.wg.gui.battle.views.vehicleMarkers.events.TimelineEvent;
    import net.wg.gui.battle.views.vehicleMarkers.events.VehicleMarkersManagerEvent;
-   import net.wg.gui.battle.views.vehicleMarkers.rtsMarkers.IRTSSelectableMarker;
-   import net.wg.gui.battle.views.vehicleMarkers.rtsMarkers.RTSControllableVehicleMarker;
-   import net.wg.gui.battle.views.vehicleMarkers.rtsMarkers.RTSTankmanVehicleMarker;
-   import net.wg.gui.battle.views.vehicleMarkers.rtsMarkers.RTSVehicleMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.MarkerAssetContainer;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleAnimatedStatusBaseMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleBerserkerMarker;
@@ -80,26 +62,11 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleFLBasicMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleInspireMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleInspireTargetMarker;
+   import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleStatusIconMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleStunMarker;
    
    public class ClassManagerBattleMarkersMeta
    {
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_COMMANDER_ORDERS_RTSORDERICONANIMATION:Class = RTSOrderIconAnimation;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_COMMANDER_ORDERS_RTSORDERMARKER:Class = RTSOrderMarker;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_COMMANDER_ORDERS_RTSORDERSTATES:Class = RTSOrderStates;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_COMMANDER_ORDERS_RTSORDERVEHICLENAME:Class = RTSOrderVehicleName;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_COMMANDER_ORDERS_RTSORDERVEHICLENAMEANIMATION:Class = RTSOrderVehicleNameAnimation;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_COMMANDER_TEAMBASE_TEAMBASEICON:Class = TeamBaseIcon;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_COMMANDER_TEAMBASE_TEAMBASEMARKER:Class = TeamBaseMarker;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_COMMANDER_TEAMBASE_TEAMBASEPROGRESSCIRCLE:Class = TeamBaseProgressCircle;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EPIC_OBJECTIVEIDREPLYSTATE:Class = ObjectiveIdReplyState;
       
@@ -151,8 +118,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_BRANDERVEHICLE2DMARKER:Class = BranderVehicle2dMarker;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_COMMANDERSUPPLYMARKER:Class = CommanderSupplyMarker;
-      
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_DAMAGELABEL:Class = DamageLabel;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_FLAGCONTAINER:Class = FlagContainer;
@@ -177,10 +142,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATICOBJECTMARKER:Class = StaticObjectMarker;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_SUPPLYHEALTHBAR:Class = SupplyHealthBar;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_SUPPLYICONMARKER:Class = SupplyIconMarker;
-      
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_TARGETMARKER:Class = TargetMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VEHICLEACTIONMARKER:Class = VehicleActionMarker;
@@ -199,21 +160,11 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VMATLASITEMNAME:Class = VMAtlasItemName;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_EVENTS_RTSMARKEREVENT:Class = RTSMarkerEvent;
-      
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_EVENTS_STATUSANIMATIONEVENT:Class = StatusAnimationEvent;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_EVENTS_TIMELINEEVENT:Class = TimelineEvent;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_EVENTS_VEHICLEMARKERSMANAGEREVENT:Class = VehicleMarkersManagerEvent;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_RTSMARKERS_IRTSSELECTABLEMARKER:Class = IRTSSelectableMarker;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_RTSMARKERS_RTSCONTROLLABLEVEHICLEMARKER:Class = RTSControllableVehicleMarker;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_RTSMARKERS_RTSTANKMANVEHICLEMARKER:Class = RTSTankmanVehicleMarker;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_RTSMARKERS_RTSVEHICLEMARKER:Class = RTSVehicleMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_MARKERASSETCONTAINER:Class = MarkerAssetContainer;
       
@@ -229,15 +180,13 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_VEHICLEINSPIRETARGETMARKER:Class = VehicleInspireTargetMarker;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_VEHICLESTUNMARKER:Class = VehicleStunMarker;
+      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_VEHICLESTATUSICONMARKER:Class = VehicleStatusIconMarker;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VO_COMMANDERDATAVO:Class = CommanderDataVO;
+      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_VEHICLESTUNMARKER:Class = VehicleStunMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VO_CROSSOFFSET:Class = CrossOffset;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VO_HPDISPLAYMODE:Class = HPDisplayMode;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VO_SUPPLYMARKERVO:Class = SupplyMarkerVO;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VO_VEHICLEMARKERFLAGS:Class = VehicleMarkerFlags;
       

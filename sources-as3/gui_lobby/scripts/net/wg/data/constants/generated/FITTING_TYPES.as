@@ -11,8 +11,6 @@ package net.wg.data.constants.generated
       
       public static const VEHICLE:String = "vehicle";
       
-      public static const SUPPLY:String = "supply";
-      
       public static const MODULE:String = "module";
       
       public static const ORDER:String = "order";
@@ -74,6 +72,8 @@ package net.wg.data.constants.generated
       public static const GUN_TURRET_FITTING_ITEM_RENDERER:String = "GunTurretFittingItemRendererUI";
       
       public static const RESERVE_FITTING_ITEM_RENDERER:String = "ReserveFittingItemRendererUI";
+      
+      public static const RESERVE_PARAMS_ITEM_RENDERER:String = "ReserveParamsItemRendererUI";
       
       public static const ENGINE_FITTING_ITEM_RENDERER:String = "EngineFittingItemRendererUI";
       

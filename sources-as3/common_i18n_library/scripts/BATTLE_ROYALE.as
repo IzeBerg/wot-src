@@ -53,7 +53,15 @@ package
       
       public static const TIMERSPANEL_DAMAGINGSMOKE:String = "#battle_royale:timersPanel/damagingSmoke";
       
-      public static const BATTLEVEHMODULECONFIGURATOR_WEAKZONES:String = "#battle_royale:battleVehModuleConfigurator/weakZones";
+      public static const TIMERSPANEL_DAMAGINGCORRODINGSHOT:String = "#battle_royale:timersPanel/damagingCorrodingShot";
+      
+      public static const TIMERSPANEL_FIRECIRCLE:String = "#battle_royale:timersPanel/fireCircle";
+      
+      public static const TIMERSPANEL_THUNDERSTRIKE:String = "#battle_royale:timersPanel/thunderStrike";
+      
+      public static const TIMERSPANEL_SHOTPASSION:String = "#battle_royale:timersPanel/shotPassion";
+      
+      public static const TIMERSPANEL_HPRESTOREONDAMAGE:String = "#battle_royale:timersPanel/hpRestoreOnDamage";
       
       public static const FRAGPANEL_SQUADSCOUNT:String = "#battle_royale:fragPanel/squadsCount";
       
@@ -89,6 +97,8 @@ package
       
       public static const FULLSTATS_DESTROYED:String = "#battle_royale:fullStats/destroyed";
       
+      public static const FULLSTATS_ICONS_CORPSELOOT_DESCRIPTION:String = "#battle_royale:fullStats/icons/corpseLoot/description";
+      
       public static const FULLSTATS_ICONS_DEFAULTLOOT_DESCRIPTION:String = "#battle_royale:fullStats/icons/defaultLoot/description";
       
       public static const FULLSTATS_ICONS_EXTENDEDLOOT_DESCRIPTION:String = "#battle_royale:fullStats/icons/extendedLoot/description";
@@ -98,14 +108,6 @@ package
       public static const FULLSTATS_DEATHZONE_WARNING_DESCRIPTION:String = "#battle_royale:fullStats/deathZone/warning/description";
       
       public static const FULLSTATS_DEATHZONE_CLOSED_DESCRIPTION:String = "#battle_royale:fullStats/deathZone/closed/description";
-      
-      public static const TOOLTIPS_WEAKZONES_TITLE:String = "#battle_royale:tooltips/weakZones/title";
-      
-      public static const TOOLTIPS_WEAKZONES_DESCRIPTION:String = "#battle_royale:tooltips/weakZones/description";
-      
-      public static const TOOLTIPS_WEAKZONES_ENGINE:String = "#battle_royale:tooltips/weakZones/engine";
-      
-      public static const TOOLTIPS_WEAKZONES_AMMUNITION:String = "#battle_royale:tooltips/weakZones/ammunition";
       
       public static const EQUIPMENT_HEALPOINT_HEALING:String = "#battle_royale:equipment/healPoint/healing";
       
@@ -159,31 +161,11 @@ package
       
       public static const SELECTRESPAWN_BTNDESCRIPTION:String = "#battle_royale:selectRespawn/btnDescription";
       
-      public static const HANGARVEHICLEINFO_INFOBTN:String = "#battle_royale:hangarVehicleInfo/infoBtn";
-      
-      public static const HANGARVEHICLEINFO_MODULETREETAB:String = "#battle_royale:hangarVehicleInfo/moduleTreeTab";
-      
-      public static const HANGARVEHICLEINFO_WEAKZONESTAB:String = "#battle_royale:hangarVehicleInfo/weakZonesTab";
-      
-      public static const HANGARVEHICLEINFO_WEAKZONES_ENGINE:String = "#battle_royale:hangarVehicleInfo/weakZones/engine";
-      
-      public static const HANGARVEHICLEINFO_WEAKZONES_AMMUNITION:String = "#battle_royale:hangarVehicleInfo/weakZones/ammunition";
+      public static const HANGARVEHICLEINFO_TUTORIALTEXT:String = "#battle_royale:hangarVehicleInfo/tutorialText";
       
       public static const HANGARVEHICLEINFO_MODULETREETIP:String = "#battle_royale:hangarVehicleInfo/moduleTreeTip";
       
-      public static const HANGARVEHICLEINFO_WEAKZONESTIP:String = "#battle_royale:hangarVehicleInfo/weakZonesTip";
-      
       public static const HANGARVEHICLEINFO_CLOSEBTN:String = "#battle_royale:hangarVehicleInfo/closeBtn";
-      
-      public static const HANGARVEHICLEINFO_INTRODIALOG_TITLE:String = "#battle_royale:hangarVehicleInfo/introDialog/title";
-      
-      public static const HANGARVEHICLEINFO_INTRODIALOG_MESSAGE:String = "#battle_royale:hangarVehicleInfo/introDialog/message";
-      
-      public static const HANGARVEHICLEINFO_INTRODIALOG_SUBMIT:String = "#battle_royale:hangarVehicleInfo/introDialog/submit";
-      
-      public static const HANGARVEHICLEINFO_INTRODIALOG_TIPLEFT:String = "#battle_royale:hangarVehicleInfo/introDialog/tipLeft";
-      
-      public static const HANGARVEHICLEINFO_INTRODIALOG_TIPRIGHT:String = "#battle_royale:hangarVehicleInfo/introDialog/tipRight";
       
       public static const HANGARVEHICLEINFO_TOOLTIPS_BATTLEPROGRESSION_TITLE:String = "#battle_royale:hangarVehicleInfo/tooltips/battleProgression/title";
       
@@ -199,10 +181,6 @@ package
       
       public static const HANGARVEHICLEINFO_TOOLTIPS_BATTLEPROGRESSION_TUTORIALHIGHLIGHT:String = "#battle_royale:hangarVehicleInfo/tooltips/battleProgression/tutorialHighlight";
       
-      public static const HANGARVEHICLEINFO_TOOLTIPS_WEAKZONES_HEADER:String = "#battle_royale:hangarVehicleInfo/tooltips/weakZones/header";
-      
-      public static const HANGARVEHICLEINFO_TOOLTIPS_WEAKZONES_BODY:String = "#battle_royale:hangarVehicleInfo/tooltips/weakZones/body";
-      
       public static const HANGAR_CLOSEBTN:String = "#battle_royale:hangar/closeBtn";
       
       public static const TOOLTIPS_AWARDS_PATTERN:String = "#battle_royale:tooltips/awards/pattern";
@@ -215,7 +193,9 @@ package
       
       public static const PLAYER_MESSAGES_VEHICLE_UPGRADE:String = "#battle_royale:player_messages/VEHICLE_UPGRADE";
       
-      public static const PLAYER_MESSAGES_SPAWNED_BOT_DESTROYED:String = "#battle_royale:player_messages/SPAWNED_BOT_DESTROYED";
+      public static const PLAYER_MESSAGES_G00_BOMBER_SH_DESTROYED:String = "#battle_royale:player_messages/G00_Bomber_SH_DESTROYED";
+      
+      public static const PLAYER_MESSAGES_CH00_CLINGEBOT_SH_DESTROYED:String = "#battle_royale:player_messages/Ch00_ClingeBot_SH_DESTROYED";
       
       public static const PLAYER_MESSAGES_MINEFIELD_INSTALLED:String = "#battle_royale:player_messages/MINEFIELD_INSTALLED";
       
@@ -263,6 +243,10 @@ package
       
       public static const BATTLEROYALECAROUSEL_LOCKEDTOOLTIP_BODY:String = "#battle_royale:battleRoyaleCarousel/lockedToolTip/body";
       
+      public static const BATTLEROYALECAROUSEL_HINT:String = "#battle_royale:battleRoyaleCarousel/hint";
+      
+      public static const PROXYPANEL_LABEL:String = "#battle_royale:proxyPanel/label";
+      
       public static const BATTLERESULT_TITLE_VICTORY:String = "#battle_royale:battleResult/title/victory";
       
       public static const BATTLERESULT_TITLE_VEHICLEDESTROYED:String = "#battle_royale:battleResult/title/vehicleDestroyed";
@@ -272,8 +256,6 @@ package
       public static const BATTLERESULT_BUTTON_HANGAR:String = "#battle_royale:battleResult/button/hangar";
       
       public static const BATTLERESULT_PROGRESSSTAGE:String = "#battle_royale:battleResult/progressStage";
-      
-      public static const BATTLERESULT_PROGRESSQUESTS:String = "#battle_royale:battleResult/progressQuests";
       
       public static const BATTLERESULT_TAB_RESULT:String = "#battle_royale:battleResult/tab/result";
       
@@ -289,35 +271,27 @@ package
       
       public static const BATTLERESULT_BATTLEREWARD_TITLE:String = "#battle_royale:battleResult/battleReward/title";
       
-      public static const BATTLERESULT_BATTLEREWARD_XP_HEADER:String = "#battle_royale:battleResult/battleReward/xp/header";
+      public static const BATTLERESULT_PREMIUMREWARDS_TITLE:String = "#battle_royale:battleResult/premiumRewards/title";
       
-      public static const BATTLERESULT_BATTLEREWARD_XP_BODY:String = "#battle_royale:battleResult/battleReward/xp/body";
-      
-      public static const BATTLERESULT_BATTLEREWARD_CREDITS_HEADER:String = "#battle_royale:battleResult/battleReward/credits/header";
-      
-      public static const BATTLERESULT_BATTLEREWARD_CREDITS_BODY:String = "#battle_royale:battleResult/battleReward/credits/body";
-      
-      public static const BATTLERESULT_BATTLEREWARD_PROGRESSION_HEADER:String = "#battle_royale:battleResult/battleReward/progression/header";
-      
-      public static const BATTLERESULT_BATTLEREWARD_PROGRESSION_BODY:String = "#battle_royale:battleResult/battleReward/progression/body";
-      
-      public static const BATTLERESULT_BATTLEREWARD_CRYSTAL_HEADER:String = "#battle_royale:battleResult/battleReward/crystal/header";
-      
-      public static const BATTLERESULT_BATTLEREWARD_CRYSTAL_BODY:String = "#battle_royale:battleResult/battleReward/crystal/body";
-      
-      public static const BATTLERESULT_BATTLEREWARD_BATTLEPASSPOINTS_HEADER:String = "#battle_royale:battleResult/battleReward/battlePassPoints/header";
-      
-      public static const BATTLERESULT_BATTLEREWARD_BATTLEPASSPOINTS_BODY:String = "#battle_royale:battleResult/battleReward/battlePassPoints/body";
-      
-      public static const BATTLERESULT_BATTLEREWARD_BATTLEPASSPOINTS_BATTLEPOINTS:String = "#battle_royale:battleResult/battleReward/battlePassPoints/battlePoints";
-      
-      public static const BATTLERESULT_BATTLEREWARD_BATTLEPASSPOINTS_QUESTPOINTS:String = "#battle_royale:battleResult/battleReward/battlePassPoints/questPoints";
+      public static const BATTLERESULT_PREMIUMREWARDS_TOOLTIP:String = "#battle_royale:battleResult/premiumRewards/tooltip";
       
       public static const BATTLERESULT_BATTLEPASSWIDGET_TITLE:String = "#battle_royale:battleResult/battlePassWidget/title";
       
       public static const BATTLERESULT_BATTLEPASSWIDGET_SUBMIT:String = "#battle_royale:battleResult/battlePassWidget/submit";
       
       public static const BATTLERESULT_BATTLEPASSWIDGET_PROGRESSIONCOMPLETED:String = "#battle_royale:battleResult/battlePassWidget/progressionCompleted";
+      
+      public static const BATTLERESULT_BATTLEPASSWIDGET_CHAPTERNOTCHOSEN:String = "#battle_royale:battleResult/battlePassWidget/chapterNotChosen";
+      
+      public static const BATTLERESULT_BATTLEPASSWIDGET_TOOLTIPS_CHAPTERNOTCHOSEN:String = "#battle_royale:battleResult/battlePassWidget/tooltips/chapterNotChosen";
+      
+      public static const BATTLERESULT_BATTLEPASSWIDGET_TOOLTIPS_INPROGRESS:String = "#battle_royale:battleResult/battlePassWidget/tooltips/inProgress";
+      
+      public static const BATTLERESULT_BATTLEPASSWIDGET_TOOLTIPS_PROGRESSIONCOMPLETED:String = "#battle_royale:battleResult/battlePassWidget/tooltips/progressionCompleted";
+      
+      public static const BATTLERESULT_BATTLEQUESTSWIDGET_QUESTSCOMPLETE:String = "#battle_royale:battleResult/battleQuestsWidget/questsComplete";
+      
+      public static const BATTLERESULT_BATTLEQUESTSWIDGET_TITLE:String = "#battle_royale:battleResult/battleQuestsWidget/title";
       
       public static const BATTLERESULT_STATS_PLACE_TITLE:String = "#battle_royale:battleResult/stats/place/title";
       
@@ -365,6 +339,32 @@ package
       
       public static const LEVEL_UP_MAX_LEVEL_INFO_DESCRIPTION:String = "#battle_royale:level_up/max_level_info/description";
       
+      public static const REWARDCURRENCYTOOLTIP_XP_HEADER:String = "#battle_royale:rewardCurrencyTooltip/xp/header";
+      
+      public static const REWARDCURRENCYTOOLTIP_XP_BODY:String = "#battle_royale:rewardCurrencyTooltip/xp/body";
+      
+      public static const REWARDCURRENCYTOOLTIP_XP_PREMFACTOR:String = "#battle_royale:rewardCurrencyTooltip/xp/premFactor";
+      
+      public static const REWARDCURRENCYTOOLTIP_CREDITS_HEADER:String = "#battle_royale:rewardCurrencyTooltip/credits/header";
+      
+      public static const REWARDCURRENCYTOOLTIP_CREDITS_BODY:String = "#battle_royale:rewardCurrencyTooltip/credits/body";
+      
+      public static const REWARDCURRENCYTOOLTIP_CREDITS_PREMFACTOR:String = "#battle_royale:rewardCurrencyTooltip/credits/premFactor";
+      
+      public static const REWARDCURRENCYTOOLTIP_BRCOIN_HEADER:String = "#battle_royale:rewardCurrencyTooltip/brcoin/header";
+      
+      public static const REWARDCURRENCYTOOLTIP_BRCOIN_BODY:String = "#battle_royale:rewardCurrencyTooltip/brcoin/body";
+      
+      public static const REWARDCURRENCYTOOLTIP_BRCOIN_PREMFACTOR:String = "#battle_royale:rewardCurrencyTooltip/brcoin/premFactor";
+      
+      public static const REWARDCURRENCYTOOLTIP_CRYSTAL_HEADER:String = "#battle_royale:rewardCurrencyTooltip/crystal/header";
+      
+      public static const REWARDCURRENCYTOOLTIP_CRYSTAL_BODY:String = "#battle_royale:rewardCurrencyTooltip/crystal/body";
+      
+      public static const REWARDCURRENCYTOOLTIP_BATTLEPASSPOINTS_HEADER:String = "#battle_royale:rewardCurrencyTooltip/battlePassPoints/header";
+      
+      public static const REWARDCURRENCYTOOLTIP_BATTLEPASSPOINTS_BODY:String = "#battle_royale:rewardCurrencyTooltip/battlePassPoints/body";
+      
       public static const COMMANDERINFO_COMMONRANK:String = "#battle_royale:commanderInfo/commonRank";
       
       public static const COMMANDERINFO_FULLNAME_USSR:String = "#battle_royale:commanderInfo/fullName/ussr";
@@ -377,6 +377,12 @@ package
       
       public static const COMMANDERINFO_FULLNAME_UK:String = "#battle_royale:commanderInfo/fullName/uk";
       
+      public static const COMMANDERINFO_FULLNAME_CHINA:String = "#battle_royale:commanderInfo/fullName/china";
+      
+      public static const COMMANDERINFO_FULLNAME_POLAND:String = "#battle_royale:commanderInfo/fullName/poland";
+      
+      public static const COMMANDERINFO_FULLNAME_SWEDEN:String = "#battle_royale:commanderInfo/fullName/sweden";
+      
       public static const COMMANDERINFO_DESCRIPTION_USSR:String = "#battle_royale:commanderInfo/description/ussr";
       
       public static const COMMANDERINFO_DESCRIPTION_USA:String = "#battle_royale:commanderInfo/description/usa";
@@ -386,6 +392,12 @@ package
       public static const COMMANDERINFO_DESCRIPTION_FRANCE:String = "#battle_royale:commanderInfo/description/france";
       
       public static const COMMANDERINFO_DESCRIPTION_UK:String = "#battle_royale:commanderInfo/description/uk";
+      
+      public static const COMMANDERINFO_DESCRIPTION_CHINA:String = "#battle_royale:commanderInfo/description/china";
+      
+      public static const COMMANDERINFO_DESCRIPTION_POLAND:String = "#battle_royale:commanderInfo/description/poland";
+      
+      public static const COMMANDERINFO_DESCRIPTION_SWEDEN:String = "#battle_royale:commanderInfo/description/sweden";
       
       public static const COMMANDERTOOLTIP_VEHICLEDESCRIPTION:String = "#battle_royale:commanderTooltip/vehicleDescription";
       
@@ -411,19 +423,57 @@ package
       
       public static const VEHICLEFEATURES_SPEC_REVOLVER:String = "#battle_royale:vehicleFeatures/spec/revolver";
       
-      public static const VEHICLEDESCRIPTION_USSR:String = "#battle_royale:vehicleDescription/ussr";
-      
-      public static const VEHICLEDESCRIPTION_GERMANY:String = "#battle_royale:vehicleDescription/germany";
-      
-      public static const VEHICLEDESCRIPTION_USA:String = "#battle_royale:vehicleDescription/usa";
-      
-      public static const VEHICLEDESCRIPTION_FRANCE:String = "#battle_royale:vehicleDescription/france";
-      
-      public static const VEHICLEDESCRIPTION_UK:String = "#battle_royale:vehicleDescription/uk";
-      
       public static const BUTTON_MODULES:String = "#battle_royale:button/modules";
       
       public static const BUTTON_REPAIR:String = "#battle_royale:button/repair";
+      
+      public static const BUTTON_RENT:String = "#battle_royale:button/rent";
+      
+      public static const BUTTON_TESTDRIVE:String = "#battle_royale:button/testDrive";
+      
+      public static const VEHRENTBLOCK_INRENT:String = "#battle_royale:vehRentBlock/inRent";
+      
+      public static const VEHRENTBLOCK_INTESTDRIVE:String = "#battle_royale:vehRentBlock/inTestDrive";
+      
+      public static const VEHRENTBLOCK_INBATTLE:String = "#battle_royale:vehRentBlock/inBattle";
+      
+      public static const TOOLTIPS_RENTICON_TESTDRIVE_TITLE:String = "#battle_royale:tooltips/rentIcon/testDrive/title";
+      
+      public static const TOOLTIPS_RENTICON_TESTDRIVE_DESCRIPTION:String = "#battle_royale:tooltips/rentIcon/testDrive/description";
+      
+      public static const TOOLTIPS_RENTICON_TESTDRIVE_FOOTER:String = "#battle_royale:tooltips/rentIcon/testDrive/footer";
+      
+      public static const TOOLTIPS_RENTICON_TESTDRIVE_RENTTIME:String = "#battle_royale:tooltips/rentIcon/testDrive/rentTime";
+      
+      public static const TOOLTIPS_RENTICON_RENT_TITLE:String = "#battle_royale:tooltips/rentIcon/rent/title";
+      
+      public static const TOOLTIPS_RENTICON_RENT_DESCRIPTION:String = "#battle_royale:tooltips/rentIcon/rent/description";
+      
+      public static const TOOLTIPS_RENTICON_RENT_FOOTER:String = "#battle_royale:tooltips/rentIcon/rent/footer";
+      
+      public static const TOOLTIPS_BRCOIN_TITLE:String = "#battle_royale:tooltips/brCoin/title";
+      
+      public static const TOOLTIPS_BRCOIN_EARN_TITLE:String = "#battle_royale:tooltips/brCoin/earn/title";
+      
+      public static const TOOLTIPS_BRCOIN_EARN_DESCRIPTION:String = "#battle_royale:tooltips/brCoin/earn/description";
+      
+      public static const TOOLTIPS_BRCOIN_SPEND_TITLE:String = "#battle_royale:tooltips/brCoin/spend/title";
+      
+      public static const TOOLTIPS_BRCOIN_SPEND_DESCRIPTION:String = "#battle_royale:tooltips/brCoin/spend/description";
+      
+      public static const TOOLTIPS_TESTDRIVEINFO_TITLE:String = "#battle_royale:tooltips/testDriveInfo/title";
+      
+      public static const TOOLTIPS_TESTDRIVEINFO_LEFTLABEL:String = "#battle_royale:tooltips/testDriveInfo/leftLabel";
+      
+      public static const TOOLTIPS_TESTDRIVEINFO_RIGHTLABEL:String = "#battle_royale:tooltips/testDriveInfo/rightLabel";
+      
+      public static const TOOLTIPS_TESTDRIVEINFO_RENTFOR:String = "#battle_royale:tooltips/testDriveInfo/rentFor";
+      
+      public static const TOOLTIPS_TESTDRIVEINFO_FOOTER:String = "#battle_royale:tooltips/testDriveInfo/footer";
+      
+      public static const TOOLTIPS_VEHICLE_DESCRIPTION:String = "#battle_royale:tooltips/vehicle/description";
+      
+      public static const TOOLTIPS_VEHICLE_STATUS_NOTRENTED:String = "#battle_royale:tooltips/vehicle/status/notRented";
       
       public static const POSTMORTEMPANEL_FIRSTTIP_TITLE:String = "#battle_royale:postmortemPanel/firstTip/title";
       
@@ -469,6 +519,8 @@ package
       
       public static const PRIMETIME_STATUS_CYCLEFINISHEDONTHISSERVER:String = "#battle_royale:primeTime/status/cycleFinishedOnThisServer";
       
+      public static const PRIMETIME_TOOLTIP_ENDOFCYCLEONTHISSERVER:String = "#battle_royale:primeTime/tooltip/endOfCycleOnThisServer";
+      
       public static const QUESTSTOOLTIP_MISSION_INFO_TIMELEFT:String = "#battle_royale:questsTooltip/mission_info/timeLeft";
       
       public static const TOURNAMENT_TITLE:String = "#battle_royale:tournament/title";
@@ -510,6 +562,46 @@ package
       public static const PREBATTLE_MAPARZAGIR:String = "#battle_royale:preBattle/mapArzagir";
       
       public static const PREBATTLE_BUTTONTITLE:String = "#battle_royale:preBattle/buttonTitle";
+      
+      public static const STATUS_TIMELEFT_DAYS:String = "#battle_royale:status/timeLeft/days";
+      
+      public static const STATUS_TIMELEFT_HOURS:String = "#battle_royale:status/timeLeft/hours";
+      
+      public static const STATUS_TIMELEFT_MIN:String = "#battle_royale:status/timeLeft/min";
+      
+      public static const STATUS_TIMELEFT_LESSMIN:String = "#battle_royale:status/timeLeft/lessMin";
+      
+      public static const VEHICLERENTISOK:String = "#battle_royale:vehicleRentIsOk";
+      
+      public static const VEHICLETESTDRIVEISOK:String = "#battle_royale:vehicleTestDriveIsOk";
+      
+      public static const VEHICLERENTNOMONEY:String = "#battle_royale:vehicleRentNoMoney";
+      
+      public static const MODESELECTOR_CYCLENOTSTARTED:String = "#battle_royale:modeSelector/cycleNotStarted";
+      
+      public static const MODESELECTOR_CYCLEISCOMING:String = "#battle_royale:modeSelector/cycleIsComing";
+      
+      public static const INTRO_TITLE:String = "#battle_royale:intro/title";
+      
+      public static const INTRO_BUTTON:String = "#battle_royale:intro/button";
+      
+      public static const INTRO_ABOUTBUTTON:String = "#battle_royale:intro/aboutButton";
+      
+      public static const INTRO_SLIDE1_TITLE:String = "#battle_royale:intro/slide1/title";
+      
+      public static const INTRO_SLIDE1_TEXT:String = "#battle_royale:intro/slide1/text";
+      
+      public static const INTRO_SLIDE2_TITLE:String = "#battle_royale:intro/slide2/title";
+      
+      public static const INTRO_SLIDE2_TEXT:String = "#battle_royale:intro/slide2/text";
+      
+      public static const INTRO_SLIDE3_TITLE:String = "#battle_royale:intro/slide3/title";
+      
+      public static const INTRO_SLIDE3_TEXT:String = "#battle_royale:intro/slide3/text";
+      
+      public static const INTRO_SLIDE4_TITLE:String = "#battle_royale:intro/slide4/title";
+      
+      public static const INTRO_SLIDE4_TEXT:String = "#battle_royale:intro/slide4/text";
        
       
       public function BATTLE_ROYALE()

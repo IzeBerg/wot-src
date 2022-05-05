@@ -104,7 +104,14 @@ MEASURE_UNITS = {'aimingTime': MENU.TANK_PARAMS_S,
    'damageEnemiesByRamming': MENU.TANK_PARAMS_PERCENT, 
    'vehicleInvisibilityAfterShot': MENU.TANK_PARAMS_PERCENT, 
    CHASSIS_REPAIR_TIME: MENU.TANK_PARAMS_S, 
-   CHASSIS_REPAIR_TIME_YOH: MENU.TANK_PARAMS_YOH_S_S}
+   CHASSIS_REPAIR_TIME_YOH: MENU.TANK_PARAMS_YOH_S_S, 
+   'commonDelay': MENU.TANK_PARAMS_S, 
+   'duration': MENU.TANK_PARAMS_S, 
+   'inactivationDelay': MENU.TANK_PARAMS_S, 
+   'commonAreaRadius': MENU.TANK_PARAMS_M, 
+   'crewRolesFactor': MENU.TANK_PARAMS_PERCENT, 
+   'maxDamage': MENU.TANK_PARAMS_VAL, 
+   'increaseHealth': MENU.TANK_PARAMS_VAL}
 MEASURE_UNITS_NO_BRACKETS = {'weight': MENU.TANK_PARAMS_NO_BRACKETS_KG, 
    'cooldownSeconds': MENU.TANK_PARAMS_NO_BRACKETS_S, 
    'caliber': MENU.TANK_PARAMS_NO_BRACKETS_MM}
@@ -125,7 +132,10 @@ ITEMS_PARAMS_LIST = {ITEM_TYPES.vehicleRadio: ('radioDistance', 'weight'),
    ITEM_TYPES.vehicleTurret: ('armor', 'rotationSpeed', 'circularVisionRadius', 'weight'), 
    ITEM_TYPES.vehicle: VEHICLE_PARAMS, 
    ITEM_TYPES.equipment: {artefacts.RageArtillery: ('damage', 'piercingPower', 'caliber', 'shotsNumberRange', 'areaRadius', 'artDelayRange'), 
-                          artefacts.RageBomber: ('bombDamage', 'piercingPower', 'bombsNumberRange', 'areaSquare', 'flyDelayRange')}, 
+                          artefacts.RageBomber: ('bombDamage', 'piercingPower', 'bombsNumberRange', 'areaSquare', 'flyDelayRange'), 
+                          artefacts.AttackArtilleryFortEquipment: ('maxDamage', 'areaRadius', 'duration', 'commonDelay'), 
+                          artefacts.FortConsumableInspire: ('crewRolesFactor', 'commonAreaRadius', 'inactivationDelay', 'duration'), 
+                          artefacts.ConsumableInspire: ('crewRolesFactor', 'commonAreaRadius', 'inactivationDelay', 'duration')}, 
    ITEM_TYPES.shell: ('caliber', 'damage', 'avgPiercingPower', 'shotSpeed', 'explosionRadius', 'stunDurationList'), 
    ITEM_TYPES.optionalDevice: ('weight', ), 
    ITEM_TYPES.vehicleGun: (
@@ -240,6 +250,7 @@ _listFormat = {'rounder': lambda v: backport.getIntegralFormat(int(v)), 'separat
 _niceListFormat = {'rounder': backport.getNiceNumberFormat, 'separator': _SLASH}
 _integralFormat = {'rounder': backport.getIntegralFormat}
 _percentFormat = {'rounder': lambda v: '%d%%' % v}
+_plusPercentFormat = {'rounder': lambda v: '+%d%%' % v}
 
 def _autoReloadPreprocessor(reloadTimes, rowStates):
     times = []
@@ -364,7 +375,13 @@ FORMAT_SETTINGS = {'relativePower': _integralFormat,
    'vehicleRamDamageResistance': _integralFormat, 
    'damageEnemiesByRamming': _integralFormat, 
    'vehicleInvisibilityAfterShot': _integralFormat, 
-   CHASSIS_REPAIR_TIME: _niceListFormat}
+   CHASSIS_REPAIR_TIME: _niceListFormat, 
+   'commonDelay': _niceFormat, 
+   'duration': _niceFormat, 
+   'inactivationDelay': _niceFormat, 
+   'commonAreaRadius': _niceFormat, 
+   'crewRolesFactor': _plusPercentFormat, 
+   'maxDamage': _niceFormat}
 
 def _deltaWrapper(fn):
 
@@ -394,7 +411,7 @@ DELTA_PARAMS_SETTING = _getDeltaSettings()
 _SMART_ROUND_PARAMS = (
  'damage', 'piercingPower', 'bombDamage', 'shellsCount', 'shellReloadingTime',
  'reloadMagazineTime', 'reloadTime', 'dispertionRadius', 'aimingTime', 'weight',
- DUAL_GUN_RATE_TIME, DUAL_GUN_CHARGE_TIME)
+ DUAL_GUN_RATE_TIME, DUAL_GUN_CHARGE_TIME, 'crewRolesFactor')
 _STATES_INDEX_IN_COLOR_MAP = {PARAM_STATE.WORSE: 0, PARAM_STATE.NORMAL: 1, PARAM_STATE.BETTER: 2}
 
 def colorize(paramStr, state, colorScheme):

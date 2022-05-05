@@ -1,6 +1,6 @@
 import VSE
 from context import VScriptContext
-from misc import PlanNameAndParams, preloadPlanXml
+from misc import preloadPlanXml
 from typing import Iterable, Any
 from debug_utils import LOG_ERROR
 from plan_tags import PlanTags
@@ -117,8 +117,8 @@ class MultiPlanProvider(object):
     def load(self, planNames, autoStart=False):
         self.reset()
         for entry in planNames:
-            if isinstance(entry, PlanNameAndParams):
-                self._loadPlan(entry.name, dict(entry.params))
+            if isinstance(entry, dict):
+                self._loadPlan(entry['name'], dict(entry['params']))
             else:
                 self._loadPlan(entry)
 
@@ -148,12 +148,17 @@ class MultiPlanProvider(object):
 class CallableProviderType:
     ARENA = 'ARENA'
     HANGAR = 'HANGAR'
+    DEATH_ZONES = 'DEATH_ZONES'
+    LOOT = 'LOOT'
 
 
 if IS_DEVELOPMENT:
 
     class CallablePlanProvider(MultiPlanProvider):
-        providers = {CallableProviderType.ARENA: set(), CallableProviderType.HANGAR: set()}
+        providers = {CallableProviderType.ARENA: set(), 
+           CallableProviderType.HANGAR: set(), 
+           CallableProviderType.DEATH_ZONES: set(), 
+           CallableProviderType.LOOT: set()}
         plansOnLoad = dict()
 
         def __init__(self, aspect, name, arenaBonusType=0):

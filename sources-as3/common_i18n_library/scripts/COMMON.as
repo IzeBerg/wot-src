@@ -21,6 +21,8 @@ package
       
       public static const CLANTAG:String = "#common:clanTag";
       
+      public static const MULTIPLIER:String = "#common:multiplier";
+      
       public static const INPUT_PLACEHOLDER_EMAIL:String = "#common:input/placeholder/email";
       
       public static const INPUT_PLACEHOLDER_SEARCH:String = "#common:input/placeholder/search";

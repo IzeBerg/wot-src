@@ -763,7 +763,7 @@ class EpicMissionsController(IViewComponentsController):
             updateList = inBattleReserves['slotActions'][vehClass][newRank]
             if updateList:
                 firstSlot = updateList[0]
-                firstUnlocked = next((i for i, x in enumerate(updateData) if firstSlot in x), False)
+                firstUnlocked = next((i for i, x in enumerate(updateData) if firstSlot in x), 0) == newRank
                 return (
-                 bool(firstUnlocked), self.__orderBattleAbilities[firstSlot])
+                 firstUnlocked, self.__orderBattleAbilities[firstSlot])
             return (None, None)

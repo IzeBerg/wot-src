@@ -18,10 +18,6 @@ package net.wg.data.constants.generated
       public static const STATE_IDLE:String = "idle";
       
       public static const STATE_ATTACK:String = "attack";
-      
-      public static const CURSOR_ENTRY_BASE_DEFEND:int = 0;
-      
-      public static const CURSOR_ENTRY_BASE_ATTACK:int = 1;
        
       
       public function BATTLE_MINIMAP_CONSTS()

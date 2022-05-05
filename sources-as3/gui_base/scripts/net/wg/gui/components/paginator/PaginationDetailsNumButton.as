@@ -1,6 +1,7 @@
 package net.wg.gui.components.paginator
 {
    import flash.display.MovieClip;
+   import flash.display.Sprite;
    import flash.events.MouseEvent;
    import flash.text.TextFormat;
    import flash.text.TextFormatAlign;
@@ -55,7 +56,9 @@ package net.wg.gui.components.paginator
       
       public var bg:MovieClip;
       
-      public var counterMc:MovieClip;
+      public var counterMc:Sprite;
+      
+      public var hit:Sprite;
       
       private var _tooltipMgr:ITooltipMgr;
       
@@ -154,6 +157,7 @@ package net.wg.gui.components.paginator
          enabled = true;
          toggle = true;
          allowDeselect = false;
+         hitArea = this.hit;
       }
       
       override protected function onDispose() : void
@@ -170,6 +174,7 @@ package net.wg.gui.components.paginator
          this._vo = null;
          this.bg = null;
          this.counterMc = null;
+         this.hit = null;
          super.onDispose();
       }
       

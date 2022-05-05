@@ -1,4 +1,4 @@
-import types, weakref, BigWorld, ResMgr, Settings, i18n, constants
+import types, BigWorld, ResMgr, Settings, i18n, constants
 from debug_utils import LOG_CURRENT_EXCEPTION
 from soft_exception import SoftException
 VERSION_FILE_PATH = '../version.xml'
@@ -207,7 +207,15 @@ class ClanQuestButtonHandler(object):
         return
 
 
-def weakProxy(obj):
-    if type(obj).__name__ != 'weakproxy':
-        return weakref.proxy(obj)
-    return obj
+def unicodeToStr(data):
+    if isinstance(data, unicode):
+        return data.encode('utf-8')
+    if isinstance(data, list):
+        return [ unicodeToStr(el) for el in data ]
+    if isinstance(data, dict):
+        res = {}
+        for k, v in data.iteritems():
+            res[unicodeToStr(k)] = unicodeToStr(v)
+
+        return res
+    return data

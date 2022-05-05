@@ -33,11 +33,11 @@ package net.wg.gui.bootcamp.introVideoPage
    public class BCIntroVideoPage extends BCIntroVideoPageMeta implements IBCIntroVideoPageMeta
    {
       
-      protected static const STAGE_RESIZED:String = "stageResized";
-      
       private static const BTN_PADDING:Number = 50;
       
       private static const INTRO_INFO_CHANGED:String = "infoChanged";
+      
+      private static const STAGE_RESIZED:String = "stageResized";
       
       private static const SMALL_SCREEN_WIDTH:int = 1920;
       
@@ -371,23 +371,10 @@ package net.wg.gui.bootcamp.introVideoPage
          this._tweens.push(_loc1_);
       }
       
-      protected function updatePageLayout() : void
-      {
-      }
-      
       protected function continueToBattle() : void
       {
          App.stage.removeEventListener(MouseEvent.CLICK,this.onStageClickHandler);
          goToBattleS();
-      }
-      
-      protected function setCurrentPage(param1:Number) : void
-      {
-         if(this.introData && param1 >= 0 && param1 < this.introData.lessonPagesBigData.length)
-         {
-            this._picIndex = param1;
-            this.stepperBar.selectItem(this._picIndex);
-         }
       }
       
       private function prepareSkip() : void
@@ -577,7 +564,6 @@ package net.wg.gui.bootcamp.introVideoPage
             this.backgroundContainer.removeChildAt(0);
          }
          this.backgroundContainer.addChild(this._tutorialPageList[this._picIndex]);
-         this.updatePageLayout();
          this.stepperBar.selectItem(this._picIndex);
       }
       
@@ -647,16 +633,6 @@ package net.wg.gui.bootcamp.introVideoPage
                this.videoPlayer.isLoop = true;
             }
          }
-      }
-      
-      protected function get bgHeight() : Number
-      {
-         return !!this._useBigPictures ? Number(BACK_HEIGHT_SMALL) : Number(BACK_HEIGHT_BIG);
-      }
-      
-      protected function get currentPage() : TutorialPageContainer
-      {
-         return this._tutorialPageList[this._picIndex];
       }
       
       protected function set imageGoRight(param1:Boolean) : void

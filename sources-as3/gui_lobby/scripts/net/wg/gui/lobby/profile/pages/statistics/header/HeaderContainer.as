@@ -13,11 +13,15 @@ package net.wg.gui.lobby.profile.pages.statistics.header
       
       private static const GAP:int = -7;
       
-      private static const GROUP_COUNT:int = 4;
+      private static const GROUP_OFFSET1:int = 220;
       
-      private static const GROUP_OFFSET1:int = 133;
+      private static const GROUP_OFFSET2:int = 177;
       
-      private static const GROUP_OFFSET2:int = 220;
+      private static const GROUP_OFFSET_DEFAULT:int = 133;
+      
+      private static const OFFSET1_GROUP_COUNT:int = 4;
+      
+      private static const OFFSET2_GROUP_COUNT:int = 5;
        
       
       public var icon:BattleTypeIcon = null;
@@ -72,7 +76,17 @@ package net.wg.gui.lobby.profile.pages.statistics.header
             _loc3_++;
          }
          this.group.dataProvider = this._itemsData;
-         this.group.x = _loc2_ == GROUP_COUNT ? Number(GROUP_OFFSET2) : Number(GROUP_OFFSET1);
+         switch(_loc2_)
+         {
+            case OFFSET1_GROUP_COUNT:
+               this.group.x = GROUP_OFFSET1;
+               break;
+            case OFFSET2_GROUP_COUNT:
+               this.group.x = GROUP_OFFSET2;
+               break;
+            default:
+               this.group.x = GROUP_OFFSET_DEFAULT;
+         }
          App.toolTipMgr.hide();
       }
       

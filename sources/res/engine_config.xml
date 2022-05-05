@@ -591,9 +591,6 @@
 			</SFX_soundbanks_loadonce>
 			<SFX_soundbanks_hangar>
 				<bank>
-					<name>r4_hangar.bnk</name>
-				</bank>
-				<bank>
 					<name>fort_area.bnk</name>
 				</bank>
 				<bank>
@@ -927,6 +924,13 @@
 		<file>
 			python.log
 			<enabled>true</enabled>
+			<severity>DEBUG</severity>
+			<severity>INFO</severity>
+			<severity>NOTICE</severity>
+			<severity>WARNING</severity>
+			<severity>ERROR</severity>
+			<severity>CRITICAL</severity>
+			<severity>HACK</severity>
 			<source>SCRIPT</source>
 			<source>UI</source>
 			<openMode>a</openMode>
@@ -939,6 +943,12 @@
 		<file>
 			ui.log
 			<enabled>true</enabled>
+			<severity>TRACE</severity>
+			<severity>DEBUG</severity>
+			<severity>INFO</severity>
+			<severity>WARNING</severity>
+			<severity>ERROR</severity>
+			<severity>CRITICAL</severity>
 			<source>UI</source>
 			<openMode>a</openMode>
 			<maxSizeKB>2048</maxSizeKB>

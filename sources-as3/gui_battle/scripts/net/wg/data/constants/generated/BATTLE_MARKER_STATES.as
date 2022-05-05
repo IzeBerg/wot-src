@@ -22,6 +22,14 @@ package net.wg.data.constants.generated
       public static const STEALTH_STATE:int = 8;
       
       public static const FL_REGENERATION_KIT_STATE:int = 9;
+      
+      public static const FIRE_CIRCLE_STATE:int = 10;
+      
+      public static const THUNDER_STRIKE_STATE:int = 11;
+      
+      public static const SHOT_PASSION_STATE:int = 12;
+      
+      public static const ADAPTATION_HEALTH_RESTORE_STATE:int = 13;
        
       
       public function BATTLE_MARKER_STATES()

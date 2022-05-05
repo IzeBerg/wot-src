@@ -87,7 +87,7 @@ package net.wg.gui.battle.battleRoyale.views.components
       {
          this.headerBG.width = param1;
          this.headerBG.x = -param1 >> 1;
-         this._isSmallScreenSize = param2 <= BattleRoyalePage.SCREEN_SMALL_HEIGHT || param1 <= BattleRoyalePage.SCREEN_SMALL_WIDTH;
+         this._isSmallScreenSize = BattleRoyalePage.isSmallScreenSize(param1,param2);
          if(this._isSmallScreenSize)
          {
             this.battleIcon.source = RES_ICONS.maps_icons_battletypes_64x64_all_png(this._battleType);

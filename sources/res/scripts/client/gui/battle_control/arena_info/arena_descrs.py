@@ -1,6 +1,5 @@
-import weakref, ArenaType, BattleReplay
+import weakref, BattleReplay
 from constants import IS_DEVELOPMENT
-from gui.Scaleform.locale.RTS_BATTLES import RTS_BATTLES
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.Scaleform import getNecessaryArenaFrameName
@@ -298,43 +297,6 @@ class MapboxArenaDescription(ArenaWithLabelDescription):
         return not replayCtrl.isPlaying or replayCtrl.isBattleSimulation
 
 
-class RTSBattlesDescription(ArenaWithLabelDescription):
-    __slots__ = ('_isCommander', )
-
-    def __init__(self, visitor):
-        super(RTSBattlesDescription, self).__init__(visitor)
-        self._isCommander = False
-
-    def setPersonalData(self, vo):
-        super(RTSBattlesDescription, self).setPersonalData(vo)
-        self._isCommander = vo.isCommander()
-
-    def getWinString(self, isInBattle=True):
-        arenaType = ArenaType.g_cache[self._visitor.type.getID()].gameplayName
-        subType = 'commander' if self._isCommander else 'tankman'
-        return backport.text(R.strings.arenas.type.dyn(arenaType).description.dyn(subType)())
-
-    def getTeamName(self, team):
-        isAlly = self._team == team
-        if isAlly and self._isCommander:
-            return RTS_BATTLES.TEAM_COMMANDER
-        return super(RTSBattlesDescription, self).getTeamName(team)
-
-
-class RTS1x1BattlesDescription(ArenaWithLabelDescription):
-
-    def getWinString(self, isInBattle=True):
-        arenaType = ArenaType.g_cache[self._visitor.type.getID()].gameplayName
-        subType = 'commander'
-        return backport.text(R.strings.arenas.type.dyn(arenaType).description.dyn(subType)())
-
-    def getTeamName(self, team):
-        isAlly = self._team == team
-        if isAlly:
-            return RTS_BATTLES.TEAM_COMMANDER
-        return super(RTS1x1BattlesDescription, self).getTeamName(team)
-
-
 def createDescription(arenaVisitor):
     guiVisitor = arenaVisitor.gui
     if guiVisitor.isRandomBattle() or guiVisitor.isTrainingBattle():
@@ -349,10 +311,6 @@ def createDescription(arenaVisitor):
         description = BattleRoyaleDescription(arenaVisitor)
     elif guiVisitor.isMapbox():
         description = MapboxArenaDescription(arenaVisitor)
-    elif guiVisitor.isAnyRTSBattle():
-        description = RTSBattlesDescription(arenaVisitor)
-    elif guiVisitor.isRTS1x1Battle():
-        description = RTS1x1BattlesDescription(arenaVisitor)
     elif guiVisitor.hasLabel():
         description = ArenaWithLabelDescription(arenaVisitor)
     else:

@@ -41,16 +41,6 @@ class Tokens(object):
         self.__account._doCmdInt2(AccountCommands.CMD_LOOTBOX_OPEN, boxID, count, proxy)
         return
 
-    def getInfoLootBox(self, boxIDs, fullInfo, callback):
-        if callback is not None:
-            proxy = lambda requestID, resultID, errorStr, ext={}: callback(resultID, errorStr, ext)
-        else:
-            proxy = None
-        arr = [1 if fullInfo else 0]
-        arr.extend(boxIDs)
-        self.__account._doCmdIntArr(AccountCommands.CMD_LOOTBOX_GETINFO, arr, proxy)
-        return
-
     def __onGetCacheResponse(self, callback, resultID):
         if resultID < 0:
             if callback is not None:
@@ -61,12 +51,7 @@ class Tokens(object):
         return
 
     def getToken(self, tokenID):
-        cache = self.__cache
-        if cache and 'tokens' in cache:
-            return cache['tokens'].get(tokenID)
+        if self.__cache and 'tokens' in self.__cache:
+            return self.__cache['tokens'].get(tokenID, None)
         else:
             return
-
-    def configureToken(self, tokenID, tokenAmount, expireAfterSecs=0):
-        self.__account._doCmdInt2Str(AccountCommands.CMD_CONFIGURE_TOKEN, tokenAmount, expireAfterSecs, tokenID, None)
-        return

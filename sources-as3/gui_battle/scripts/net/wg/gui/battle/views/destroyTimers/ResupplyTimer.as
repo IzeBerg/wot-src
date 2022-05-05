@@ -272,7 +272,7 @@ package net.wg.gui.battle.views.destroyTimers
       
       public function updateData(param1:StatusNotificationVO) : void
       {
-         this.setProgressValue(param1.additionalInfo);
+         this.description.descriptionTF.text = param1.additionalInfo + PERCENT_TEXT;
          updateRadialTimer(param1.totalTime,param1.currentTime);
          this.setState(param1.additionalState);
       }

@@ -4731,6 +4731,43 @@
 			</devices>
 		</damage>
 	</_150mm_Exp_APDS_SH>
+	<arcade_bomber_battle_royale_shell>
+		<id>327</id>
+		<userString>#germany_vehicles:arcade_bomber_battle_royale_shell</userString>
+		<icon>he_spg_stun</icon>
+		<price>1170</price>
+		<notInShop>true</notInShop>
+		<kind>HIGH_EXPLOSIVE</kind>
+		<caliber>100</caliber>
+		<explosionRadius>
+			4.0
+			<!--BW_String-->
+		</explosionRadius>
+		<hasStun>true</hasStun>
+		<stunDuration>26</stunDuration>
+		<guaranteedStunDuration>
+			0.5
+			<!--BW_String-->
+		</guaranteedStunDuration>
+		<damageDurationCoeff>
+			0.75
+			<!--BW_String-->
+		</damageDurationCoeff>
+		<isTracer>true</isTracer>
+		<effects>epicAirbombStrike</effects>
+		<damage>
+			<armor>100</armor>
+			<devices>45</devices>
+		</damage>
+		<explosionDamageFactor>
+			1.0
+			<!--BW_String-->
+		</explosionDamageFactor>
+		<explosionEdgeDamageFactor>
+			1.0
+			<!--BW_String-->
+		</explosionEdgeDamageFactor>
+	</arcade_bomber_battle_royale_shell>
 	<mine_shell>
 		<id>328</id>
 		<userString>#germany_vehicles:bomber_shell</userString>

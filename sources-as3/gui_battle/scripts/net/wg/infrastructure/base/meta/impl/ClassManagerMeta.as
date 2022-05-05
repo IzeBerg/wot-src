@@ -31,6 +31,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.data.constants.generated.BATTLE_CONTEXT_MENU_HANDLER_TYPE;
    import net.wg.data.constants.generated.BATTLE_DEVICES_REPAIR_MODES;
    import net.wg.data.constants.generated.BATTLE_ITEM_STATES;
+   import net.wg.data.constants.generated.BATTLE_MARKERS_CONSTS;
    import net.wg.data.constants.generated.BATTLE_MARKER_STATES;
    import net.wg.data.constants.generated.BATTLE_MESSAGES_CONSTS;
    import net.wg.data.constants.generated.BATTLE_MINIMAP_CONSTS;
@@ -53,8 +54,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.data.constants.generated.PREBATTLE_TIMER;
    import net.wg.data.constants.generated.QUEST_PROGRESS_BATTLE;
    import net.wg.data.constants.generated.RADIAL_MENU_CONSTS;
-   import net.wg.data.constants.generated.RTS_SPAWN_MENU_ENTRY_TYPES;
-   import net.wg.data.constants.generated.RTS_SUPPLY_TYPE;
    import net.wg.data.constants.generated.SIEGE_MODE_CONSTS;
    import net.wg.gui.battle.StatsBase;
    import net.wg.gui.battle.TabbedFullStats;
@@ -72,12 +71,16 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.battleRoyale.views.BattleRoyaleTeamPanelListItem;
    import net.wg.gui.battle.battleRoyale.views.components.BRZoneDamageIconContent;
    import net.wg.gui.battle.battleRoyale.views.components.BattleRoyaleConsumableButton;
+   import net.wg.gui.battle.battleRoyale.views.components.BattleRoyaleCounterTimer;
+   import net.wg.gui.battle.battleRoyale.views.components.BattleRoyaleCounterTimerAnimation;
+   import net.wg.gui.battle.battleRoyale.views.components.BattleRoyaleCounterTimerContainer;
    import net.wg.gui.battle.battleRoyale.views.components.BattleRoyaleIconContent;
    import net.wg.gui.battle.battleRoyale.views.components.BattleRoyaleTimer;
    import net.wg.gui.battle.battleRoyale.views.components.BattleRoyaleTimerContainer;
+   import net.wg.gui.battle.battleRoyale.views.components.BattleRoyaleTimerCounterContainer;
+   import net.wg.gui.battle.battleRoyale.views.components.CorrodingShotIndicator;
    import net.wg.gui.battle.battleRoyale.views.components.DamageScreen;
    import net.wg.gui.battle.battleRoyale.views.components.EventViewHeader;
-   import net.wg.gui.battle.battleRoyale.views.components.VehicleWeakZonesCmp;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.BattleRoyaleFullStats;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.DescriptionWithIconRenderer;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.DescriptionWithIconRendererSmall;
@@ -90,8 +93,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehiclesCounter.data.BattleRoyaleNationsVehiclesCounterVO;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehiclesCounter.data.BattleRoyaleNationsVehiclesVO;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehiclesCounter.data.BattleRoyalePlatoonVO;
-   import net.wg.gui.battle.battleRoyale.views.components.tooltips.inblocks.blocks.BattleRoyaleWeakZonesBlock;
-   import net.wg.gui.battle.battleRoyale.views.components.tooltips.inblocks.data.BattleRoyaleWeakZonesBlockVO;
    import net.wg.gui.battle.battleRoyale.views.configurator.BattleVehicleConfigurator;
    import net.wg.gui.battle.battleRoyale.views.configurator.ChoiceInfoPanel;
    import net.wg.gui.battle.battleRoyale.views.configurator.ConfiguratorRenderer;
@@ -136,131 +137,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.battleloading.vo.VehicleDataVO;
    import net.wg.gui.battle.battleloading.vo.VehicleInfoVO;
    import net.wg.gui.battle.battleloading.vo.VisualTipInfoVO;
-   import net.wg.gui.battle.commander.VO.daapi.DAAPICommanderDataVO;
-   import net.wg.gui.battle.commander.VO.daapi.DAAPICommanderInfoVO;
-   import net.wg.gui.battle.commander.VO.daapi.DAAPIHelpVO;
-   import net.wg.gui.battle.commander.VO.daapi.DAAPISuppliesDataVO;
-   import net.wg.gui.battle.commander.VO.daapi.DAAPISupplyInfoVO;
-   import net.wg.gui.battle.commander.VO.daapi.DAAPIVehicleCommanderDataVO;
-   import net.wg.gui.battle.commander.views.BattleLoading.BattleLoading;
-   import net.wg.gui.battle.commander.views.BattleLoading.BattleTipPage;
-   import net.wg.gui.battle.commander.views.CommanderBattlePage;
-   import net.wg.gui.battle.commander.views.commanderHelp.ButtonKeyContainer;
-   import net.wg.gui.battle.commander.views.commanderHelp.CommanderHelp;
-   import net.wg.gui.battle.commander.views.commanderHelp.CommanderHelpItem;
-   import net.wg.gui.battle.commander.views.common.BaseIcon;
-   import net.wg.gui.battle.commander.views.common.Clips;
-   import net.wg.gui.battle.commander.views.common.EventIcon;
-   import net.wg.gui.battle.commander.views.common.GroupIcon;
-   import net.wg.gui.battle.commander.views.common.HealthBar;
-   import net.wg.gui.battle.commander.views.common.HoverIcon;
-   import net.wg.gui.battle.commander.views.common.MannerIcon;
-   import net.wg.gui.battle.commander.views.common.OrderIcon;
-   import net.wg.gui.battle.commander.views.common.Reloading;
-   import net.wg.gui.battle.commander.views.common.ReloadingData;
-   import net.wg.gui.battle.commander.views.common.VO.DAAPIPlayerPanelInfoVO;
-   import net.wg.gui.battle.commander.views.common.VehicleTypeIcon;
-   import net.wg.gui.battle.commander.views.fullStats.RTSFullStats;
-   import net.wg.gui.battle.commander.views.fullStats.RTSFullStatsTable;
-   import net.wg.gui.battle.commander.views.fullStats.interfaces.IRTSFullStatsItem;
-   import net.wg.gui.battle.commander.views.fullStats.interfaces.IRTSFullStatsItemSupply;
-   import net.wg.gui.battle.commander.views.fullStats.interfaces.IRTSFullStatsItemVehicle;
-   import net.wg.gui.battle.commander.views.fullStats.interfaces.IRTSFullStatsList;
-   import net.wg.gui.battle.commander.views.fullStats.interfaces.IRTSFullStatsListSupply;
-   import net.wg.gui.battle.commander.views.fullStats.interfaces.IRTSFullStatsListVehicles;
-   import net.wg.gui.battle.commander.views.fullStats.list.base.AbstractRTSFullStatsItem;
-   import net.wg.gui.battle.commander.views.fullStats.list.base.AbstractRTSFullStatsList;
-   import net.wg.gui.battle.commander.views.fullStats.list.supply.AbstractRTSFullStatsItemSupply;
-   import net.wg.gui.battle.commander.views.fullStats.list.supply.AbstractRTSFullStatsListSupply;
-   import net.wg.gui.battle.commander.views.fullStats.list.supply.RTSFullStatsItemSupplyLeft;
-   import net.wg.gui.battle.commander.views.fullStats.list.supply.RTSFullStatsItemSupplyRight;
-   import net.wg.gui.battle.commander.views.fullStats.list.supply.RTSFullStatsListSupplyLeft;
-   import net.wg.gui.battle.commander.views.fullStats.list.supply.RTSFullStatsListSupplyRight;
-   import net.wg.gui.battle.commander.views.fullStats.list.vehicles.AbstractRTSFullStatsItemVehicle;
-   import net.wg.gui.battle.commander.views.fullStats.list.vehicles.AbstractRTSFullStatsListVehicles;
-   import net.wg.gui.battle.commander.views.fullStats.list.vehicles.RTSFullStatsItemVehicleLeft;
-   import net.wg.gui.battle.commander.views.fullStats.list.vehicles.RTSFullStatsItemVehicleRight;
-   import net.wg.gui.battle.commander.views.fullStats.list.vehicles.RTSFullStatsListVehiclesLeft;
-   import net.wg.gui.battle.commander.views.fullStats.list.vehicles.RTSFullStatsListVehiclesRight;
-   import net.wg.gui.battle.commander.views.playersPanel.RTSPlayersPanel;
-   import net.wg.gui.battle.commander.views.playersPanel.interfaces.IRTSPlayersPanelList;
-   import net.wg.gui.battle.commander.views.playersPanel.interfaces.IRTSPlayersPanelListItem;
-   import net.wg.gui.battle.commander.views.playersPanel.interfaces.IRTSPlayersPanelListItemHolder;
-   import net.wg.gui.battle.commander.views.playersPanel.list.RTSPlayersPanelList;
-   import net.wg.gui.battle.commander.views.playersPanel.list.RTSPlayersPanelListItem;
-   import net.wg.gui.battle.commander.views.playersPanel.list.RTSPlayersPanelListItemHolder;
-   import net.wg.gui.battle.commander.views.playersPanel.list.RTSPlayersPanelListItemLeft;
-   import net.wg.gui.battle.commander.views.playersPanel.list.RTSPlayersPanelListItemRight;
-   import net.wg.gui.battle.commander.views.playersPanel.list.RTSPlayersPanelListLeft;
-   import net.wg.gui.battle.commander.views.playersPanel.list.RTSPlayersPanelListRight;
-   import net.wg.gui.battle.commander.views.spawnMenu.SizeSettings;
-   import net.wg.gui.battle.commander.views.spawnMenu.SpawnMenu;
-   import net.wg.gui.battle.commander.views.spawnMenu.StageSizeSettings;
-   import net.wg.gui.battle.commander.views.spawnMenu.VO.BaseRosterVO;
-   import net.wg.gui.battle.commander.views.spawnMenu.VO.EnemyVehicleItemVO;
-   import net.wg.gui.battle.commander.views.spawnMenu.VO.RosterSupplyVO;
-   import net.wg.gui.battle.commander.views.spawnMenu.VO.RosterVehicleVO;
-   import net.wg.gui.battle.commander.views.spawnMenu.VO.SpawnMenuVO;
-   import net.wg.gui.battle.commander.views.spawnMenu.containers.Footer;
-   import net.wg.gui.battle.commander.views.spawnMenu.containers.Header;
-   import net.wg.gui.battle.commander.views.spawnMenu.containers.Map;
-   import net.wg.gui.battle.commander.views.spawnMenu.containers.MapButtons;
-   import net.wg.gui.battle.commander.views.spawnMenu.containers.RosterContainer;
-   import net.wg.gui.battle.commander.views.spawnMenu.containers.SelectableRosterContainer;
-   import net.wg.gui.battle.commander.views.spawnMenu.events.EntryEvent;
-   import net.wg.gui.battle.commander.views.spawnMenu.events.SpawnMenuEvent;
-   import net.wg.gui.battle.commander.views.spawnMenu.items.DragItem;
-   import net.wg.gui.battle.commander.views.spawnMenu.items.SelectableItem;
-   import net.wg.gui.battle.commander.views.spawnMenu.items.StagedItem;
-   import net.wg.gui.battle.commander.views.spawnMenu.items.components.AllyVehicleItemIcon;
-   import net.wg.gui.battle.commander.views.spawnMenu.items.components.AllyVehicleNationIcon;
-   import net.wg.gui.battle.commander.views.spawnMenu.items.components.EnemyVehicleSeparator;
-   import net.wg.gui.battle.commander.views.spawnMenu.items.components.VehicleItemBG;
-   import net.wg.gui.battle.commander.views.spawnMenu.items.components.VehicleTypeProxy;
-   import net.wg.gui.battle.commander.views.spawnMenu.map.VO.BaseEntryVO;
-   import net.wg.gui.battle.commander.views.spawnMenu.map.VO.BasePointEntryVO;
-   import net.wg.gui.battle.commander.views.spawnMenu.map.VO.ControlPointEntryVO;
-   import net.wg.gui.battle.commander.views.spawnMenu.map.VO.MapVO;
-   import net.wg.gui.battle.commander.views.spawnMenu.map.VO.PlacePointEntryVO;
-   import net.wg.gui.battle.commander.views.spawnMenu.map.VO.VehicleEntryVO;
-   import net.wg.gui.battle.commander.views.spawnMenu.map.entries.BaseEntry;
-   import net.wg.gui.battle.commander.views.spawnMenu.map.entries.BasePointEntry;
-   import net.wg.gui.battle.commander.views.spawnMenu.map.entries.ControlPointEntry;
-   import net.wg.gui.battle.commander.views.spawnMenu.map.entries.PlacePointEntry;
-   import net.wg.gui.battle.commander.views.spawnMenu.map.entries.SpawnBasePointEntry;
-   import net.wg.gui.battle.commander.views.spawnMenu.map.entries.SupplyEntry;
-   import net.wg.gui.battle.commander.views.spawnMenu.map.entries.VehicleEntry;
-   import net.wg.gui.battle.commander.views.spawnMenu.map.entries.components.ControlPoint;
-   import net.wg.gui.battle.commander.views.spawnMenu.map.entries.components.VehicleType;
-   import net.wg.gui.battle.commander.views.spawnMenu.map.entries.components.VisionRadius;
-   import net.wg.gui.battle.commander.views.spawnMenu.map.entries.components.VisionRadiusCircle;
-   import net.wg.gui.battle.commander.views.spawnMenu.map.entries.components.VisionRadiusCone;
-   import net.wg.gui.battle.commander.views.spawnMenu.renderers.BaseRosterRenderer;
-   import net.wg.gui.battle.commander.views.spawnMenu.renderers.EnemyVehicleRenderer;
-   import net.wg.gui.battle.commander.views.spawnMenu.renderers.RosterSupplyRenderer;
-   import net.wg.gui.battle.commander.views.spawnMenu.renderers.RosterVehicleRenderer;
-   import net.wg.gui.battle.commander.views.supplyPanel.SupplyPanel;
-   import net.wg.gui.battle.commander.views.supplyPanel.SupplyPanelItem;
-   import net.wg.gui.battle.commander.views.vehicleSelection.VehicleSelection;
-   import net.wg.gui.battle.commander.views.vehicleSelection.events.RTSVehicleSelectionEvent;
-   import net.wg.gui.battle.commander.views.vehiclesPanel.VehicleDamagedModules;
-   import net.wg.gui.battle.commander.views.vehiclesPanel.VehiclesPanel;
-   import net.wg.gui.battle.commander.views.vehiclesPanel.VehiclesPanelItem;
-   import net.wg.gui.battle.commander.views.vehiclesPanel.VehiclesPanelItemBG;
-   import net.wg.gui.battle.commanderBootcamp.views.BCCommanderBattlePage;
-   import net.wg.gui.battle.commanderBootcamp.views.BCCommanderSpawnMenu;
-   import net.wg.gui.battle.commanderBootcamp.views.spawnMenu.tutorial.ITutorialHintAnimation;
-   import net.wg.gui.battle.commanderBootcamp.views.spawnMenu.tutorial.ITutorialHintArrowAnimation;
-   import net.wg.gui.battle.commanderBootcamp.views.spawnMenu.tutorial.ITutorialHintTextAnimation;
-   import net.wg.gui.battle.commanderBootcamp.views.spawnMenu.tutorial.TutorialHint;
-   import net.wg.gui.battle.commanderBootcamp.views.spawnMenu.tutorial.TutorialHintAnimation;
-   import net.wg.gui.battle.commanderBootcamp.views.spawnMenu.tutorial.TutorialHintArrowAnimation;
-   import net.wg.gui.battle.commanderBootcamp.views.spawnMenu.tutorial.TutorialHintEvent;
-   import net.wg.gui.battle.commanderBootcamp.views.spawnMenu.tutorial.TutorialHintText;
-   import net.wg.gui.battle.commanderBootcamp.views.spawnMenu.tutorial.TutorialHintTextAnimation;
-   import net.wg.gui.battle.commanderBootcamp.views.spawnMenu.tutorial.TutorialHintTextAnimationMc;
-   import net.wg.gui.battle.commanderBootcamp.views.spawnMenu.tutorial.constants.Directions;
-   import net.wg.gui.battle.commanderBootcamp.views.spawnMenu.tutorial.vo.TutorialHintVO;
    import net.wg.gui.battle.components.BaseProgressCircle;
    import net.wg.gui.battle.components.BattleAtlasSprite;
    import net.wg.gui.battle.components.BattleDAAPIComponent;
@@ -458,7 +334,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.random.views.stats.components.playersPanel.events.PlayersPanelEvent;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.events.PlayersPanelItemEvent;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.events.PlayersPanelSwitchEvent;
-   import net.wg.gui.battle.random.views.stats.components.playersPanel.interfaces.ICommanderPlayersPanelList;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.interfaces.IEpicPlayersPanelList;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.interfaces.IPlayersPanelList;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.interfaces.IPlayersPanelListItemHolder;
@@ -752,6 +627,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.minimap.components.entries.fallout.repair.AllyRepairMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.fallout.repair.EnemyRepairMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.ArtilleryMinimapEntry;
+   import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.ArtilleryYellowMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.BomberMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.SmokeMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.interfaces.IHighlightableMinimapEntry;
@@ -760,7 +636,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.minimap.components.entries.personal.AnimationMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.personal.ArcadeCameraMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.personal.DeadPointMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.personal.FrustumMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.personal.PingFlashMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.personal.SimpleAttentionToFlashMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.personal.StrategicCameraMinimapEntry;
@@ -770,13 +645,9 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.minimap.components.entries.personal.ViewRangeSectorMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.teambase.AllyTeamBaseMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.teambase.AllyTeamSpawnMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.teambase.CommanderAllyTeamBaseMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.teambase.CommanderControlPointMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.teambase.CommanderEnemyTeamBaseMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.teambase.ControlPointMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.teambase.EnemyTeamBaseMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.teambase.EnemyTeamSpawnMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.vehicle.CommanderVehicleMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.vehicle.MarkerTopAnimation;
    import net.wg.gui.battle.views.minimap.components.entries.vehicle.VehicleAnimationMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.vehicle.VehicleMinimapEntry;
@@ -867,14 +738,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.siegeModePanel.TurboSiegeModeAnimation;
    import net.wg.gui.battle.views.siegeModePanel.YohChassisModeAnimation;
    import net.wg.gui.battle.views.sixthSense.SixthSense;
-   import net.wg.gui.battle.views.staticMarkers.commander.orders.RTSOrderIconAnimation;
-   import net.wg.gui.battle.views.staticMarkers.commander.orders.RTSOrderMarker;
-   import net.wg.gui.battle.views.staticMarkers.commander.orders.RTSOrderStates;
-   import net.wg.gui.battle.views.staticMarkers.commander.orders.RTSOrderVehicleName;
-   import net.wg.gui.battle.views.staticMarkers.commander.orders.RTSOrderVehicleNameAnimation;
-   import net.wg.gui.battle.views.staticMarkers.commander.teamBase.TeamBaseIcon;
-   import net.wg.gui.battle.views.staticMarkers.commander.teamBase.TeamBaseMarker;
-   import net.wg.gui.battle.views.staticMarkers.commander.teamBase.TeamBaseProgressCircle;
    import net.wg.gui.battle.views.staticMarkers.epic.ObjectiveIdReplyState;
    import net.wg.gui.battle.views.staticMarkers.epic.headquarter.HeadquarterActionMarker;
    import net.wg.gui.battle.views.staticMarkers.epic.headquarter.HeadquarterAnimation;
@@ -928,7 +791,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.vehicleMarkers.ActionIconStateMarker;
    import net.wg.gui.battle.views.vehicleMarkers.AnimateExplosion;
    import net.wg.gui.battle.views.vehicleMarkers.BranderVehicle2dMarker;
-   import net.wg.gui.battle.views.vehicleMarkers.CommanderSupplyMarker;
    import net.wg.gui.battle.views.vehicleMarkers.DamageLabel;
    import net.wg.gui.battle.views.vehicleMarkers.FlagContainer;
    import net.wg.gui.battle.views.vehicleMarkers.FortConsumablesMarker;
@@ -941,14 +803,10 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.vehicleMarkers.IVehicleMarkersManager;
    import net.wg.gui.battle.views.vehicleMarkers.StaticArtyMarker;
    import net.wg.gui.battle.views.vehicleMarkers.StaticObjectMarker;
-   import net.wg.gui.battle.views.vehicleMarkers.SupplyHealthBar;
-   import net.wg.gui.battle.views.vehicleMarkers.SupplyIconMarker;
    import net.wg.gui.battle.views.vehicleMarkers.TargetMarker;
    import net.wg.gui.battle.views.vehicleMarkers.VMAtlasItemName;
-   import net.wg.gui.battle.views.vehicleMarkers.VO.CommanderDataVO;
    import net.wg.gui.battle.views.vehicleMarkers.VO.CrossOffset;
    import net.wg.gui.battle.views.vehicleMarkers.VO.HPDisplayMode;
-   import net.wg.gui.battle.views.vehicleMarkers.VO.SupplyMarkerVO;
    import net.wg.gui.battle.views.vehicleMarkers.VO.VehicleMarkerFlags;
    import net.wg.gui.battle.views.vehicleMarkers.VO.VehicleMarkerPart;
    import net.wg.gui.battle.views.vehicleMarkers.VO.VehicleMarkerSettings;
@@ -960,14 +818,9 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.vehicleMarkers.VehicleMarkersLinkages;
    import net.wg.gui.battle.views.vehicleMarkers.VehicleMarkersManager;
    import net.wg.gui.battle.views.vehicleMarkers.VehicleStatusContainerMarker;
-   import net.wg.gui.battle.views.vehicleMarkers.events.RTSMarkerEvent;
    import net.wg.gui.battle.views.vehicleMarkers.events.StatusAnimationEvent;
    import net.wg.gui.battle.views.vehicleMarkers.events.TimelineEvent;
    import net.wg.gui.battle.views.vehicleMarkers.events.VehicleMarkersManagerEvent;
-   import net.wg.gui.battle.views.vehicleMarkers.rtsMarkers.IRTSSelectableMarker;
-   import net.wg.gui.battle.views.vehicleMarkers.rtsMarkers.RTSControllableVehicleMarker;
-   import net.wg.gui.battle.views.vehicleMarkers.rtsMarkers.RTSTankmanVehicleMarker;
-   import net.wg.gui.battle.views.vehicleMarkers.rtsMarkers.RTSVehicleMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.MarkerAssetContainer;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleAnimatedStatusBaseMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleBerserkerMarker;
@@ -975,6 +828,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleFLBasicMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleInspireMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleInspireTargetMarker;
+   import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleStatusIconMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleStunMarker;
    import net.wg.gui.battle.views.vehicleMessages.VehicleMessage;
    import net.wg.gui.battle.views.vehicleMessages.VehicleMessages;
@@ -1025,8 +879,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.BaseBattleDAAPIComponent;
    import net.wg.infrastructure.base.meta.IBCBattlePageMeta;
    import net.wg.infrastructure.base.meta.IBCBattleTopHintMeta;
-   import net.wg.infrastructure.base.meta.IBCCommanderBattlePageMeta;
-   import net.wg.infrastructure.base.meta.IBCCommanderSpawnMenuMeta;
    import net.wg.infrastructure.base.meta.IBCFragCorrelationBarMeta;
    import net.wg.infrastructure.base.meta.IBCIntroFadeOutMeta;
    import net.wg.infrastructure.base.meta.IBCPrebattleHintsMeta;
@@ -1057,9 +909,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.meta.IBattleUpgradePanelMeta;
    import net.wg.infrastructure.base.meta.IBattleVehicleConfiguratorMeta;
    import net.wg.infrastructure.base.meta.ICalloutPanelMeta;
-   import net.wg.infrastructure.base.meta.ICommanderBattlePageMeta;
-   import net.wg.infrastructure.base.meta.ICommanderHelpMeta;
    import net.wg.infrastructure.base.meta.IConsumablesPanelMeta;
+   import net.wg.infrastructure.base.meta.ICorrodingShotIndicatorMeta;
    import net.wg.infrastructure.base.meta.IDamageInfoPanelMeta;
    import net.wg.infrastructure.base.meta.IDamagePanelMeta;
    import net.wg.infrastructure.base.meta.IDebugPanelMeta;
@@ -1108,8 +959,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.meta.IPrebattleTimerMeta;
    import net.wg.infrastructure.base.meta.IProgressTimersPanelMeta;
    import net.wg.infrastructure.base.meta.IQuestProgressTopViewMeta;
-   import net.wg.infrastructure.base.meta.IRTSBattleStatisticDataControllerMeta;
-   import net.wg.infrastructure.base.meta.IRTSFullStatsMeta;
    import net.wg.infrastructure.base.meta.IRadarButtonMeta;
    import net.wg.infrastructure.base.meta.IRadialMenuMeta;
    import net.wg.infrastructure.base.meta.IRecoveryPanelMeta;
@@ -1117,24 +966,18 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.meta.IRoleDescriptionMeta;
    import net.wg.infrastructure.base.meta.ISiegeModeIndicatorMeta;
    import net.wg.infrastructure.base.meta.ISixthSenseMeta;
-   import net.wg.infrastructure.base.meta.ISpawnMenuMeta;
    import net.wg.infrastructure.base.meta.IStatsBaseMeta;
    import net.wg.infrastructure.base.meta.IStatusNotificationsPanelMeta;
    import net.wg.infrastructure.base.meta.ISuperPlatoonPanelMeta;
-   import net.wg.infrastructure.base.meta.ISupplyPanelMeta;
    import net.wg.infrastructure.base.meta.ITabbedFullStatsMeta;
    import net.wg.infrastructure.base.meta.ITeamBasesPanelMeta;
    import net.wg.infrastructure.base.meta.ITimersPanelMeta;
    import net.wg.infrastructure.base.meta.ITutorialLoadingMeta;
    import net.wg.infrastructure.base.meta.IVehicleMarkersManagerMeta;
-   import net.wg.infrastructure.base.meta.IVehicleSelectionMeta;
-   import net.wg.infrastructure.base.meta.IVehiclesPanelMeta;
    import net.wg.infrastructure.helpers.statisticsDataController.BattleStatisticDataController;
    import net.wg.infrastructure.helpers.statisticsDataController.EpicBattleStatisticDataController;
-   import net.wg.infrastructure.helpers.statisticsDataController.RTSBattleStatisticDataController;
    import net.wg.infrastructure.helpers.statisticsDataController.intarfaces.IBattleComponentDataController;
    import net.wg.infrastructure.helpers.statisticsDataController.intarfaces.IEpicBattleStatisticDataController;
-   import net.wg.infrastructure.helpers.statisticsDataController.intarfaces.IRTSBattleStatisticDataController;
    
    public class ClassManagerMeta
    {
@@ -1166,6 +1009,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_DATA_CONSTANTS_GENERATED_BATTLE_DEVICES_REPAIR_MODES:Class = BATTLE_DEVICES_REPAIR_MODES;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_BATTLE_ITEM_STATES:Class = BATTLE_ITEM_STATES;
+      
+      public static const NET_WG_DATA_CONSTANTS_GENERATED_BATTLE_MARKERS_CONSTS:Class = BATTLE_MARKERS_CONSTS;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_BATTLE_MARKER_STATES:Class = BATTLE_MARKER_STATES;
       
@@ -1210,10 +1055,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_DATA_CONSTANTS_GENERATED_QUEST_PROGRESS_BATTLE:Class = QUEST_PROGRESS_BATTLE;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_RADIAL_MENU_CONSTS:Class = RADIAL_MENU_CONSTS;
-      
-      public static const NET_WG_DATA_CONSTANTS_GENERATED_RTS_SPAWN_MENU_ENTRY_TYPES:Class = RTS_SPAWN_MENU_ENTRY_TYPES;
-      
-      public static const NET_WG_DATA_CONSTANTS_GENERATED_RTS_SUPPLY_TYPE:Class = RTS_SUPPLY_TYPE;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_SIEGE_MODE_CONSTS:Class = SIEGE_MODE_CONSTS;
       
@@ -1339,19 +1180,27 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_BATTLEROYALECONSUMABLEBUTTON:Class = BattleRoyaleConsumableButton;
       
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_BATTLEROYALECOUNTERTIMER:Class = BattleRoyaleCounterTimer;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_BATTLEROYALECOUNTERTIMERANIMATION:Class = BattleRoyaleCounterTimerAnimation;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_BATTLEROYALECOUNTERTIMERCONTAINER:Class = BattleRoyaleCounterTimerContainer;
+      
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_BATTLEROYALEICONCONTENT:Class = BattleRoyaleIconContent;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_BATTLEROYALETIMER:Class = BattleRoyaleTimer;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_BATTLEROYALETIMERCONTAINER:Class = BattleRoyaleTimerContainer;
       
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_BATTLEROYALETIMERCOUNTERCONTAINER:Class = BattleRoyaleTimerCounterContainer;
+      
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_BRZONEDAMAGEICONCONTENT:Class = BRZoneDamageIconContent;
+      
+      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_CORRODINGSHOTINDICATOR:Class = CorrodingShotIndicator;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_DAMAGESCREEN:Class = DamageScreen;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_EVENTVIEWHEADER:Class = EventViewHeader;
-      
-      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_VEHICLEWEAKZONESCMP:Class = VehicleWeakZonesCmp;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_FULLSTATS_BATTLEROYALEFULLSTATS:Class = BattleRoyaleFullStats;
       
@@ -1376,10 +1225,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_FULLSTATS_NATIONSVEHICLESCOUNTER_DATA_BATTLEROYALENATIONSVEHICLESVO:Class = BattleRoyaleNationsVehiclesVO;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_FULLSTATS_NATIONSVEHICLESCOUNTER_DATA_BATTLEROYALEPLATOONVO:Class = BattleRoyalePlatoonVO;
-      
-      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_TOOLTIPS_INBLOCKS_BLOCKS_BATTLEROYALEWEAKZONESBLOCK:Class = BattleRoyaleWeakZonesBlock;
-      
-      public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_COMPONENTS_TOOLTIPS_INBLOCKS_DATA_BATTLEROYALEWEAKZONESBLOCKVO:Class = BattleRoyaleWeakZonesBlockVO;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_CONFIGURATOR_BATTLEVEHICLECONFIGURATOR:Class = BattleVehicleConfigurator;
       
@@ -1410,256 +1255,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_PLAYERSTATS_BATTLEROYALEPLAYERSTATS:Class = BattleRoyalePlayerStats;
       
       public static const NET_WG_GUI_BATTLE_BATTLEROYALE_VIEWS_PLAYERSTATS_BATTLEROYALEPLAYERSTATVO:Class = BattleRoyalePlayerStatVO;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_COMMANDERBATTLEPAGE:Class = CommanderBattlePage;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_BATTLELOADING_BATTLELOADING:Class = BattleLoading;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_BATTLELOADING_BATTLETIPPAGE:Class = BattleTipPage;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_COMMANDERHELP_BUTTONKEYCONTAINER:Class = ButtonKeyContainer;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_COMMANDERHELP_COMMANDERHELP:Class = CommanderHelp;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_COMMANDERHELP_COMMANDERHELPITEM:Class = CommanderHelpItem;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_COMMON_BASEICON:Class = BaseIcon;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_COMMON_CLIPS:Class = Clips;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_COMMON_EVENTICON:Class = EventIcon;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_COMMON_GROUPICON:Class = GroupIcon;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_COMMON_HEALTHBAR:Class = HealthBar;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_COMMON_HOVERICON:Class = HoverIcon;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_COMMON_MANNERICON:Class = MannerIcon;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_COMMON_ORDERICON:Class = OrderIcon;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_COMMON_RELOADING:Class = Reloading;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_COMMON_RELOADINGDATA:Class = ReloadingData;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_COMMON_VEHICLETYPEICON:Class = VehicleTypeIcon;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_COMMON_VO_DAAPIPLAYERPANELINFOVO:Class = DAAPIPlayerPanelInfoVO;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_RTSFULLSTATS:Class = RTSFullStats;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_RTSFULLSTATSTABLE:Class = RTSFullStatsTable;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_INTERFACES_IRTSFULLSTATSITEM:Class = IRTSFullStatsItem;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_INTERFACES_IRTSFULLSTATSITEMSUPPLY:Class = IRTSFullStatsItemSupply;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_INTERFACES_IRTSFULLSTATSITEMVEHICLE:Class = IRTSFullStatsItemVehicle;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_INTERFACES_IRTSFULLSTATSLIST:Class = IRTSFullStatsList;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_INTERFACES_IRTSFULLSTATSLISTSUPPLY:Class = IRTSFullStatsListSupply;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_INTERFACES_IRTSFULLSTATSLISTVEHICLES:Class = IRTSFullStatsListVehicles;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_LIST_BASE_ABSTRACTRTSFULLSTATSITEM:Class = AbstractRTSFullStatsItem;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_LIST_BASE_ABSTRACTRTSFULLSTATSLIST:Class = AbstractRTSFullStatsList;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_LIST_SUPPLY_ABSTRACTRTSFULLSTATSITEMSUPPLY:Class = AbstractRTSFullStatsItemSupply;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_LIST_SUPPLY_ABSTRACTRTSFULLSTATSLISTSUPPLY:Class = AbstractRTSFullStatsListSupply;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_LIST_SUPPLY_RTSFULLSTATSITEMSUPPLYLEFT:Class = RTSFullStatsItemSupplyLeft;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_LIST_SUPPLY_RTSFULLSTATSITEMSUPPLYRIGHT:Class = RTSFullStatsItemSupplyRight;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_LIST_SUPPLY_RTSFULLSTATSLISTSUPPLYLEFT:Class = RTSFullStatsListSupplyLeft;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_LIST_SUPPLY_RTSFULLSTATSLISTSUPPLYRIGHT:Class = RTSFullStatsListSupplyRight;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_LIST_VEHICLES_ABSTRACTRTSFULLSTATSITEMVEHICLE:Class = AbstractRTSFullStatsItemVehicle;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_LIST_VEHICLES_ABSTRACTRTSFULLSTATSLISTVEHICLES:Class = AbstractRTSFullStatsListVehicles;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_LIST_VEHICLES_RTSFULLSTATSITEMVEHICLELEFT:Class = RTSFullStatsItemVehicleLeft;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_LIST_VEHICLES_RTSFULLSTATSITEMVEHICLERIGHT:Class = RTSFullStatsItemVehicleRight;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_LIST_VEHICLES_RTSFULLSTATSLISTVEHICLESLEFT:Class = RTSFullStatsListVehiclesLeft;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_FULLSTATS_LIST_VEHICLES_RTSFULLSTATSLISTVEHICLESRIGHT:Class = RTSFullStatsListVehiclesRight;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_PLAYERSPANEL_RTSPLAYERSPANEL:Class = RTSPlayersPanel;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_PLAYERSPANEL_INTERFACES_IRTSPLAYERSPANELLIST:Class = IRTSPlayersPanelList;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_PLAYERSPANEL_INTERFACES_IRTSPLAYERSPANELLISTITEM:Class = IRTSPlayersPanelListItem;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_PLAYERSPANEL_INTERFACES_IRTSPLAYERSPANELLISTITEMHOLDER:Class = IRTSPlayersPanelListItemHolder;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_PLAYERSPANEL_LIST_RTSPLAYERSPANELLIST:Class = RTSPlayersPanelList;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_PLAYERSPANEL_LIST_RTSPLAYERSPANELLISTITEM:Class = RTSPlayersPanelListItem;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_PLAYERSPANEL_LIST_RTSPLAYERSPANELLISTITEMHOLDER:Class = RTSPlayersPanelListItemHolder;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_PLAYERSPANEL_LIST_RTSPLAYERSPANELLISTITEMLEFT:Class = RTSPlayersPanelListItemLeft;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_PLAYERSPANEL_LIST_RTSPLAYERSPANELLISTITEMRIGHT:Class = RTSPlayersPanelListItemRight;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_PLAYERSPANEL_LIST_RTSPLAYERSPANELLISTLEFT:Class = RTSPlayersPanelListLeft;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_PLAYERSPANEL_LIST_RTSPLAYERSPANELLISTRIGHT:Class = RTSPlayersPanelListRight;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_SIZESETTINGS:Class = SizeSettings;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_SPAWNMENU:Class = SpawnMenu;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_STAGESIZESETTINGS:Class = StageSizeSettings;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_CONTAINERS_FOOTER:Class = Footer;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_CONTAINERS_HEADER:Class = Header;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_CONTAINERS_MAP:Class = Map;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_CONTAINERS_MAPBUTTONS:Class = MapButtons;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_CONTAINERS_ROSTERCONTAINER:Class = RosterContainer;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_CONTAINERS_SELECTABLEROSTERCONTAINER:Class = SelectableRosterContainer;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_EVENTS_ENTRYEVENT:Class = EntryEvent;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_EVENTS_SPAWNMENUEVENT:Class = SpawnMenuEvent;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_ITEMS_DRAGITEM:Class = DragItem;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_ITEMS_SELECTABLEITEM:Class = SelectableItem;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_ITEMS_STAGEDITEM:Class = StagedItem;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_ITEMS_COMPONENTS_ALLYVEHICLEITEMICON:Class = AllyVehicleItemIcon;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_ITEMS_COMPONENTS_ALLYVEHICLENATIONICON:Class = AllyVehicleNationIcon;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_ITEMS_COMPONENTS_ENEMYVEHICLESEPARATOR:Class = EnemyVehicleSeparator;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_ITEMS_COMPONENTS_VEHICLEITEMBG:Class = VehicleItemBG;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_ITEMS_COMPONENTS_VEHICLETYPEPROXY:Class = VehicleTypeProxy;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_MAP_ENTRIES_BASEENTRY:Class = BaseEntry;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_MAP_ENTRIES_BASEPOINTENTRY:Class = BasePointEntry;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_MAP_ENTRIES_CONTROLPOINTENTRY:Class = ControlPointEntry;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_MAP_ENTRIES_PLACEPOINTENTRY:Class = PlacePointEntry;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_MAP_ENTRIES_SPAWNBASEPOINTENTRY:Class = SpawnBasePointEntry;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_MAP_ENTRIES_SUPPLYENTRY:Class = SupplyEntry;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_MAP_ENTRIES_VEHICLEENTRY:Class = VehicleEntry;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_MAP_ENTRIES_COMPONENTS_CONTROLPOINT:Class = ControlPoint;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_MAP_ENTRIES_COMPONENTS_VEHICLETYPE:Class = VehicleType;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_MAP_ENTRIES_COMPONENTS_VISIONRADIUS:Class = VisionRadius;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_MAP_ENTRIES_COMPONENTS_VISIONRADIUSCIRCLE:Class = VisionRadiusCircle;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_MAP_ENTRIES_COMPONENTS_VISIONRADIUSCONE:Class = VisionRadiusCone;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_MAP_VO_BASEENTRYVO:Class = BaseEntryVO;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_MAP_VO_BASEPOINTENTRYVO:Class = BasePointEntryVO;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_MAP_VO_CONTROLPOINTENTRYVO:Class = ControlPointEntryVO;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_MAP_VO_MAPVO:Class = MapVO;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_MAP_VO_PLACEPOINTENTRYVO:Class = PlacePointEntryVO;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_MAP_VO_VEHICLEENTRYVO:Class = VehicleEntryVO;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_RENDERERS_BASEROSTERRENDERER:Class = BaseRosterRenderer;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_RENDERERS_ENEMYVEHICLERENDERER:Class = EnemyVehicleRenderer;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_RENDERERS_ROSTERSUPPLYRENDERER:Class = RosterSupplyRenderer;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_RENDERERS_ROSTERVEHICLERENDERER:Class = RosterVehicleRenderer;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_VO_BASEROSTERVO:Class = BaseRosterVO;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_VO_ENEMYVEHICLEITEMVO:Class = EnemyVehicleItemVO;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_VO_ROSTERSUPPLYVO:Class = RosterSupplyVO;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_VO_ROSTERVEHICLEVO:Class = RosterVehicleVO;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SPAWNMENU_VO_SPAWNMENUVO:Class = SpawnMenuVO;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SUPPLYPANEL_SUPPLYPANEL:Class = SupplyPanel;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_SUPPLYPANEL_SUPPLYPANELITEM:Class = SupplyPanelItem;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_VEHICLESELECTION_VEHICLESELECTION:Class = VehicleSelection;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_VEHICLESELECTION_EVENTS_RTSVEHICLESELECTIONEVENT:Class = RTSVehicleSelectionEvent;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_VEHICLESPANEL_VEHICLEDAMAGEDMODULES:Class = VehicleDamagedModules;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_VEHICLESPANEL_VEHICLESPANEL:Class = VehiclesPanel;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_VEHICLESPANEL_VEHICLESPANELITEM:Class = VehiclesPanelItem;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VIEWS_VEHICLESPANEL_VEHICLESPANELITEMBG:Class = VehiclesPanelItemBG;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VO_DAAPI_DAAPICOMMANDERDATAVO:Class = DAAPICommanderDataVO;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VO_DAAPI_DAAPICOMMANDERINFOVO:Class = DAAPICommanderInfoVO;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VO_DAAPI_DAAPIHELPVO:Class = DAAPIHelpVO;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VO_DAAPI_DAAPISUPPLIESDATAVO:Class = DAAPISuppliesDataVO;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VO_DAAPI_DAAPISUPPLYINFOVO:Class = DAAPISupplyInfoVO;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDER_VO_DAAPI_DAAPIVEHICLECOMMANDERDATAVO:Class = DAAPIVehicleCommanderDataVO;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDERBOOTCAMP_VIEWS_BCCOMMANDERBATTLEPAGE:Class = BCCommanderBattlePage;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDERBOOTCAMP_VIEWS_BCCOMMANDERSPAWNMENU:Class = BCCommanderSpawnMenu;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDERBOOTCAMP_VIEWS_SPAWNMENU_TUTORIAL_ITUTORIALHINTANIMATION:Class = ITutorialHintAnimation;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDERBOOTCAMP_VIEWS_SPAWNMENU_TUTORIAL_ITUTORIALHINTARROWANIMATION:Class = ITutorialHintArrowAnimation;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDERBOOTCAMP_VIEWS_SPAWNMENU_TUTORIAL_ITUTORIALHINTTEXTANIMATION:Class = ITutorialHintTextAnimation;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDERBOOTCAMP_VIEWS_SPAWNMENU_TUTORIAL_TUTORIALHINT:Class = TutorialHint;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDERBOOTCAMP_VIEWS_SPAWNMENU_TUTORIAL_TUTORIALHINTANIMATION:Class = TutorialHintAnimation;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDERBOOTCAMP_VIEWS_SPAWNMENU_TUTORIAL_TUTORIALHINTARROWANIMATION:Class = TutorialHintArrowAnimation;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDERBOOTCAMP_VIEWS_SPAWNMENU_TUTORIAL_TUTORIALHINTEVENT:Class = TutorialHintEvent;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDERBOOTCAMP_VIEWS_SPAWNMENU_TUTORIAL_TUTORIALHINTTEXT:Class = TutorialHintText;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDERBOOTCAMP_VIEWS_SPAWNMENU_TUTORIAL_TUTORIALHINTTEXTANIMATION:Class = TutorialHintTextAnimation;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDERBOOTCAMP_VIEWS_SPAWNMENU_TUTORIAL_TUTORIALHINTTEXTANIMATIONMC:Class = TutorialHintTextAnimationMc;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDERBOOTCAMP_VIEWS_SPAWNMENU_TUTORIAL_CONSTANTS_DIRECTIONS:Class = Directions;
-      
-      public static const NET_WG_GUI_BATTLE_COMMANDERBOOTCAMP_VIEWS_SPAWNMENU_TUTORIAL_VO_TUTORIALHINTVO:Class = TutorialHintVO;
       
       public static const NET_WG_GUI_BATTLE_COMPONENTS_BASEPROGRESSCIRCLE:Class = BaseProgressCircle;
       
@@ -2052,8 +1647,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_RANDOM_VIEWS_STATS_COMPONENTS_PLAYERSPANEL_EVENTS_PLAYERSPANELITEMEVENT:Class = PlayersPanelItemEvent;
       
       public static const NET_WG_GUI_BATTLE_RANDOM_VIEWS_STATS_COMPONENTS_PLAYERSPANEL_EVENTS_PLAYERSPANELSWITCHEVENT:Class = PlayersPanelSwitchEvent;
-      
-      public static const NET_WG_GUI_BATTLE_RANDOM_VIEWS_STATS_COMPONENTS_PLAYERSPANEL_INTERFACES_ICOMMANDERPLAYERSPANELLIST:Class = ICommanderPlayersPanelList;
       
       public static const NET_WG_GUI_BATTLE_RANDOM_VIEWS_STATS_COMPONENTS_PLAYERSPANEL_INTERFACES_IEPICPLAYERSPANELLIST:Class = IEpicPlayersPanelList;
       
@@ -2643,6 +2236,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FORTCONSUMABLES_ARTILLERYMINIMAPENTRY:Class = ArtilleryMinimapEntry;
       
+      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FORTCONSUMABLES_ARTILLERYYELLOWMINIMAPENTRY:Class = ArtilleryYellowMinimapEntry;
+      
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FORTCONSUMABLES_BOMBERMINIMAPENTRY:Class = BomberMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FORTCONSUMABLES_SMOKEMINIMAPENTRY:Class = SmokeMinimapEntry;
@@ -2658,8 +2253,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_PERSONAL_ARCADECAMERAMINIMAPENTRY:Class = ArcadeCameraMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_PERSONAL_DEADPOINTMINIMAPENTRY:Class = DeadPointMinimapEntry;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_PERSONAL_FRUSTUMMINIMAPENTRY:Class = FrustumMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_PERSONAL_PINGFLASHMINIMAPENTRY:Class = PingFlashMinimapEntry;
       
@@ -2679,19 +2272,11 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_TEAMBASE_ALLYTEAMSPAWNMINIMAPENTRY:Class = AllyTeamSpawnMinimapEntry;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_TEAMBASE_COMMANDERALLYTEAMBASEMINIMAPENTRY:Class = CommanderAllyTeamBaseMinimapEntry;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_TEAMBASE_COMMANDERCONTROLPOINTMINIMAPENTRY:Class = CommanderControlPointMinimapEntry;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_TEAMBASE_COMMANDERENEMYTEAMBASEMINIMAPENTRY:Class = CommanderEnemyTeamBaseMinimapEntry;
-      
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_TEAMBASE_CONTROLPOINTMINIMAPENTRY:Class = ControlPointMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_TEAMBASE_ENEMYTEAMBASEMINIMAPENTRY:Class = EnemyTeamBaseMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_TEAMBASE_ENEMYTEAMSPAWNMINIMAPENTRY:Class = EnemyTeamSpawnMinimapEntry;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_VEHICLE_COMMANDERVEHICLEMINIMAPENTRY:Class = CommanderVehicleMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_VEHICLE_MARKERTOPANIMATION:Class = MarkerTopAnimation;
       
@@ -2873,22 +2458,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_SIXTHSENSE_SIXTHSENSE:Class = SixthSense;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_COMMANDER_ORDERS_RTSORDERICONANIMATION:Class = RTSOrderIconAnimation;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_COMMANDER_ORDERS_RTSORDERMARKER:Class = RTSOrderMarker;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_COMMANDER_ORDERS_RTSORDERSTATES:Class = RTSOrderStates;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_COMMANDER_ORDERS_RTSORDERVEHICLENAME:Class = RTSOrderVehicleName;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_COMMANDER_ORDERS_RTSORDERVEHICLENAMEANIMATION:Class = RTSOrderVehicleNameAnimation;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_COMMANDER_TEAMBASE_TEAMBASEICON:Class = TeamBaseIcon;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_COMMANDER_TEAMBASE_TEAMBASEMARKER:Class = TeamBaseMarker;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_COMMANDER_TEAMBASE_TEAMBASEPROGRESSCIRCLE:Class = TeamBaseProgressCircle;
-      
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EPIC_OBJECTIVEIDREPLYSTATE:Class = ObjectiveIdReplyState;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EPIC_HEADQUARTER_HEADQUARTERACTIONMARKER:Class = HeadquarterActionMarker;
@@ -2995,8 +2564,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_BRANDERVEHICLE2DMARKER:Class = BranderVehicle2dMarker;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_COMMANDERSUPPLYMARKER:Class = CommanderSupplyMarker;
-      
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_DAMAGELABEL:Class = DamageLabel;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_FLAGCONTAINER:Class = FlagContainer;
@@ -3021,10 +2588,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATICOBJECTMARKER:Class = StaticObjectMarker;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_SUPPLYHEALTHBAR:Class = SupplyHealthBar;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_SUPPLYICONMARKER:Class = SupplyIconMarker;
-      
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_TARGETMARKER:Class = TargetMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VEHICLEACTIONMARKER:Class = VehicleActionMarker;
@@ -3043,21 +2606,11 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VMATLASITEMNAME:Class = VMAtlasItemName;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_EVENTS_RTSMARKEREVENT:Class = RTSMarkerEvent;
-      
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_EVENTS_STATUSANIMATIONEVENT:Class = StatusAnimationEvent;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_EVENTS_TIMELINEEVENT:Class = TimelineEvent;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_EVENTS_VEHICLEMARKERSMANAGEREVENT:Class = VehicleMarkersManagerEvent;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_RTSMARKERS_IRTSSELECTABLEMARKER:Class = IRTSSelectableMarker;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_RTSMARKERS_RTSCONTROLLABLEVEHICLEMARKER:Class = RTSControllableVehicleMarker;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_RTSMARKERS_RTSTANKMANVEHICLEMARKER:Class = RTSTankmanVehicleMarker;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_RTSMARKERS_RTSVEHICLEMARKER:Class = RTSVehicleMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_MARKERASSETCONTAINER:Class = MarkerAssetContainer;
       
@@ -3073,15 +2626,13 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_VEHICLEINSPIRETARGETMARKER:Class = VehicleInspireTargetMarker;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_VEHICLESTUNMARKER:Class = VehicleStunMarker;
+      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_VEHICLESTATUSICONMARKER:Class = VehicleStatusIconMarker;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VO_COMMANDERDATAVO:Class = CommanderDataVO;
+      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_VEHICLESTUNMARKER:Class = VehicleStunMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VO_CROSSOFFSET:Class = CrossOffset;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VO_HPDISPLAYMODE:Class = HPDisplayMode;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VO_SUPPLYMARKERVO:Class = SupplyMarkerVO;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_VO_VEHICLEMARKERFLAGS:Class = VehicleMarkerFlags;
       
@@ -3239,10 +2790,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IBCBATTLETOPHINTMETA:Class = IBCBattleTopHintMeta;
       
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBCCOMMANDERBATTLEPAGEMETA:Class = IBCCommanderBattlePageMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IBCCOMMANDERSPAWNMENUMETA:Class = IBCCommanderSpawnMenuMeta;
-      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IBCFRAGCORRELATIONBARMETA:Class = IBCFragCorrelationBarMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IBCINTROFADEOUTMETA:Class = IBCIntroFadeOutMeta;
@@ -3253,11 +2800,9 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ICALLOUTPANELMETA:Class = ICalloutPanelMeta;
       
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ICOMMANDERBATTLEPAGEMETA:Class = ICommanderBattlePageMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ICOMMANDERHELPMETA:Class = ICommanderHelpMeta;
-      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ICONSUMABLESPANELMETA:Class = IConsumablesPanelMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_ICORRODINGSHOTINDICATORMETA:Class = ICorrodingShotIndicatorMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IDAMAGEINFOPANELMETA:Class = IDamageInfoPanelMeta;
       
@@ -3365,23 +2910,15 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IROLEDESCRIPTIONMETA:Class = IRoleDescriptionMeta;
       
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IRTSBATTLESTATISTICDATACONTROLLERMETA:Class = IRTSBattleStatisticDataControllerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IRTSFULLSTATSMETA:Class = IRTSFullStatsMeta;
-      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ISIEGEMODEINDICATORMETA:Class = ISiegeModeIndicatorMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ISIXTHSENSEMETA:Class = ISixthSenseMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ISPAWNMENUMETA:Class = ISpawnMenuMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ISTATSBASEMETA:Class = IStatsBaseMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ISTATUSNOTIFICATIONSPANELMETA:Class = IStatusNotificationsPanelMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ISUPERPLATOONPANELMETA:Class = ISuperPlatoonPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_ISUPPLYPANELMETA:Class = ISupplyPanelMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ITABBEDFULLSTATSMETA:Class = ITabbedFullStatsMeta;
       
@@ -3392,10 +2929,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ITUTORIALLOADINGMETA:Class = ITutorialLoadingMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IVEHICLEMARKERSMANAGERMETA:Class = IVehicleMarkersManagerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IVEHICLESELECTIONMETA:Class = IVehicleSelectionMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IVEHICLESPANELMETA:Class = IVehiclesPanelMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BASEBATTLEDAAPICOMPONENTMETA:Class = BaseBattleDAAPIComponentMeta;
       
@@ -3451,10 +2984,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BCBATTLETOPHINTMETA:Class = BCBattleTopHintMeta;
       
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BCCOMMANDERBATTLEPAGEMETA:Class = BCCommanderBattlePageMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BCCOMMANDERSPAWNMENUMETA:Class = BCCommanderSpawnMenuMeta;
-      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BCFRAGCORRELATIONBARMETA:Class = BCFragCorrelationBarMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BCINTROFADEOUTMETA:Class = BCIntroFadeOutMeta;
@@ -3465,11 +2994,9 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_CALLOUTPANELMETA:Class = CalloutPanelMeta;
       
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_COMMANDERBATTLEPAGEMETA:Class = CommanderBattlePageMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_COMMANDERHELPMETA:Class = CommanderHelpMeta;
-      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_CONSUMABLESPANELMETA:Class = ConsumablesPanelMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_CORRODINGSHOTINDICATORMETA:Class = CorrodingShotIndicatorMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_DAMAGEINFOPANELMETA:Class = DamageInfoPanelMeta;
       
@@ -3577,23 +3104,15 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_ROLEDESCRIPTIONMETA:Class = RoleDescriptionMeta;
       
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_RTSBATTLESTATISTICDATACONTROLLERMETA:Class = RTSBattleStatisticDataControllerMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_RTSFULLSTATSMETA:Class = RTSFullStatsMeta;
-      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_SIEGEMODEINDICATORMETA:Class = SiegeModeIndicatorMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_SIXTHSENSEMETA:Class = SixthSenseMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_SPAWNMENUMETA:Class = SpawnMenuMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_STATSBASEMETA:Class = StatsBaseMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_STATUSNOTIFICATIONSPANELMETA:Class = StatusNotificationsPanelMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_SUPERPLATOONPANELMETA:Class = SuperPlatoonPanelMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_SUPPLYPANELMETA:Class = SupplyPanelMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_TABBEDFULLSTATSMETA:Class = TabbedFullStatsMeta;
       
@@ -3605,21 +3124,13 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_VEHICLEMARKERSMANAGERMETA:Class = VehicleMarkersManagerMeta;
       
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_VEHICLESELECTIONMETA:Class = VehicleSelectionMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_VEHICLESPANELMETA:Class = VehiclesPanelMeta;
-      
       public static const NET_WG_INFRASTRUCTURE_HELPERS_STATISTICSDATACONTROLLER_BATTLESTATISTICDATACONTROLLER:Class = BattleStatisticDataController;
       
       public static const NET_WG_INFRASTRUCTURE_HELPERS_STATISTICSDATACONTROLLER_EPICBATTLESTATISTICDATACONTROLLER:Class = EpicBattleStatisticDataController;
       
-      public static const NET_WG_INFRASTRUCTURE_HELPERS_STATISTICSDATACONTROLLER_RTSBATTLESTATISTICDATACONTROLLER:Class = RTSBattleStatisticDataController;
-      
       public static const NET_WG_INFRASTRUCTURE_HELPERS_STATISTICSDATACONTROLLER_INTARFACES_IBATTLECOMPONENTDATACONTROLLER:Class = IBattleComponentDataController;
       
       public static const NET_WG_INFRASTRUCTURE_HELPERS_STATISTICSDATACONTROLLER_INTARFACES_IEPICBATTLESTATISTICDATACONTROLLER:Class = IEpicBattleStatisticDataController;
-      
-      public static const NET_WG_INFRASTRUCTURE_HELPERS_STATISTICSDATACONTROLLER_INTARFACES_IRTSBATTLESTATISTICDATACONTROLLER:Class = IRTSBattleStatisticDataController;
        
       
       public function ClassManagerMeta()

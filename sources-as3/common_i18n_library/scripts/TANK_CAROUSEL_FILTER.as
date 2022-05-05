@@ -45,8 +45,6 @@ package
       
       public static const POPOVER_CHECKBOX_BATTLEROYALE:String = "#tank_carousel_filter:popover/checkbox/battleRoyale";
       
-      public static const POPOVER_CHECKBOX_RTSBATTLES:String = "#tank_carousel_filter:popover/checkbox/rtsBattles";
-      
       public static const POPOVER_CHECKBOX_UNLOCK_AVAILABLE:String = "#tank_carousel_filter:popover/checkbox/unlock_available";
       
       public static const POPOVER_COUNTER:String = "#tank_carousel_filter:popover/counter";

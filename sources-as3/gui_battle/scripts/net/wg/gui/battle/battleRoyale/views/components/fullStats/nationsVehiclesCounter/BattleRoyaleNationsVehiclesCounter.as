@@ -15,7 +15,7 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
       
       private var renderers:Vector.<BattleRoyaleNationsVehiclesRenderer> = null;
       
-      private var _renderersByNation:Object = null;
+      private var _renderersByType:Object = null;
       
       private var _lastRenderer:BattleRoyaleNationsVehiclesRenderer = null;
       
@@ -27,16 +27,16 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
       {
          super();
          this.renderers = new Vector.<BattleRoyaleNationsVehiclesRenderer>(0);
-         this._renderersByNation = {};
+         this._renderersByType = {};
       }
       
       public final function dispose() : void
       {
          this._disposed = true;
-         this.cleanUpNationsVehiclesRenderers();
+         this.cleanUpVehiclesRenderers();
          this.renderers = null;
-         App.utils.data.cleanupDynamicObject(this._renderersByNation);
-         this._renderersByNation = null;
+         App.utils.data.cleanupDynamicObject(this._renderersByType);
+         this._renderersByType = null;
          this._lastRenderer.removeEventListener(Event.RESIZE,this.onLastRendererResizeHandler);
          this._lastRenderer = null;
          this._data = null;
@@ -49,15 +49,15 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
          {
             _loc2_ = this._data;
             this._data = param1;
-            if(!_loc2_ || _loc2_.nationsVehicles.length < this._data.nationsVehicles.length)
+            if(!_loc2_ || _loc2_.vehicles.length < this._data.vehicles.length)
             {
-               this.createNationsVehiclesRenderers();
+               this.createVehiclesRenderers();
             }
-            this.updateNationsVehiclesRenderers();
+            this.updateVehiclesRenderers();
          }
       }
       
-      private function cleanUpNationsVehiclesRenderers() : void
+      private function cleanUpVehiclesRenderers() : void
       {
          var _loc1_:BattleRoyaleNationsVehiclesRenderer = null;
          for each(_loc1_ in this.renderers)
@@ -74,9 +74,9 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
          }
       }
       
-      private function createNationsVehiclesRenderers() : void
+      private function createVehiclesRenderers() : void
       {
-         var _loc1_:Vector.<BattleRoyaleNationsVehiclesVO> = this._data.nationsVehicles;
+         var _loc1_:Vector.<BattleRoyaleNationsVehiclesVO> = this._data.vehicles;
          var _loc2_:uint = _loc1_.length;
          if(_loc2_ <= this.renderers.length)
          {
@@ -90,14 +90,14 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
          while(_loc7_ < _loc2_)
          {
             _loc3_ = _loc1_[_loc7_];
-            _loc6_ = !Boolean(this._renderersByNation[_loc3_.nation]);
+            _loc6_ = !Boolean(this._renderersByType[_loc3_.classType]);
             if(_loc6_)
             {
                _loc4_ = new _loc5_();
-               _loc4_.nation = _loc3_.nation;
+               _loc4_.classType = _loc3_.classType;
                addChild(_loc4_);
                this.renderers.push(_loc4_);
-               this._renderersByNation[_loc3_.nation] = _loc4_;
+               this._renderersByType[_loc3_.classType] = _loc4_;
             }
             _loc6_ = true;
             _loc7_++;
@@ -118,14 +118,14 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
          }
       }
       
-      private function updateNationsVehiclesRenderers() : void
+      private function updateVehiclesRenderers() : void
       {
          var _loc3_:BattleRoyaleNationsVehiclesVO = null;
-         var _loc1_:Vector.<BattleRoyaleNationsVehiclesVO> = this._data.nationsVehicles;
+         var _loc1_:Vector.<BattleRoyaleNationsVehiclesVO> = this._data.vehicles;
          var _loc2_:BattleRoyaleNationsVehiclesRenderer = null;
          for each(_loc3_ in _loc1_)
          {
-            _loc2_ = this._renderersByNation[_loc3_.nation];
+            _loc2_ = this._renderersByType[_loc3_.classType];
             if(_loc2_)
             {
                _loc2_.vehiclesCount = _loc3_.platoonsAlive;

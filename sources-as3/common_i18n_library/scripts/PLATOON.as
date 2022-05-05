@@ -65,9 +65,13 @@ package
       
       public static const BUTTONS_CREATEPLATOON_DESCRIPTION:String = "#platoon:buttons/createPlatoon/description";
       
-      public static const BUTTONS_INVITE_CAPTION:String = "#platoon:buttons/invite/caption";
+      public static const BUTTONS_INVITE_PLAYERS_CAPTION:String = "#platoon:buttons/invite/players/caption";
       
-      public static const BUTTONS_INVITE_DESCRIPTION:String = "#platoon:buttons/invite/description";
+      public static const BUTTONS_INVITE_PLAYERS_DESCRIPTION:String = "#platoon:buttons/invite/players/description";
+      
+      public static const BUTTONS_INVITE_PLAYER_CAPTION:String = "#platoon:buttons/invite/player/caption";
+      
+      public static const BUTTONS_INVITE_PLAYER_DESCRIPTION:String = "#platoon:buttons/invite/player/description";
       
       public static const BUTTONS_CANCELSEARCH_CAPTION:String = "#platoon:buttons/cancelSearch/caption";
       
@@ -130,10 +134,6 @@ package
       public static const MEMBERS_HEADER_TOOLTIP_STANDARD_HEADER:String = "#platoon:members/header/tooltip/standard/header";
       
       public static const MEMBERS_HEADER_TOOLTIP_STANDARD_BODY:String = "#platoon:members/header/tooltip/standard/body";
-      
-      public static const MEMBERS_HEADER_TOOLTIP_BATTLEROYALE_HEADER:String = "#platoon:members/header/tooltip/battleRoyale/header";
-      
-      public static const MEMBERS_HEADER_TOOLTIP_BATTLEROYALE_BODY:String = "#platoon:members/header/tooltip/battleRoyale/body";
       
       public static const MEMBERS_HEADER_TOOLTIP_EVENT_HEADER:String = "#platoon:members/header/tooltip/event/header";
       

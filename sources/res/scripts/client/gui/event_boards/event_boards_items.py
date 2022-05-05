@@ -33,7 +33,6 @@ class EVENT_TYPE(CONST_CONTAINER):
     NATION = 'nation'
     LEVEL = 'level'
     CLASS = 'class'
-    ROLE = 'role'
 
 
 class EVENT_STATE(CONST_CONTAINER):
@@ -106,9 +105,10 @@ class EventBoardsSettings(object):
 
 class EventsSettings(object):
     EXPECTED_FIELDS = [
-     'battle_type', 'end_date', 'event_id', 'is_squad_allowed', 'leaderboard_view_size', 'limits',
-     'manual', 'method', 'name', 'objective_parameter', 'participants_freeze_deadline',
-     'prime_times', 'publish_date', 'rewarding_date', 'rewards_by_rank', 'start_date', 'type']
+     'battle_type', 'cardinality', 'end_date', 'event_id', 'is_squad_allowed',
+     'leaderboard_view_size', 'limits', 'manual', 'method', 'name', 'objective_parameter',
+     'participants_freeze_deadline', 'prime_times', 'publish_date',
+     'rewarding_date', 'rewards_by_rank', 'start_date', 'type', 'distance']
     EXPECTED_FIELDS_PRIME_TIMES = ['server', 'start_time', 'end_time']
     EXPECTED_FIELDS_LIMITS = ['win_rate_min', 'win_rate_max', 'registration_date_max', 'is_registration_needed',
      'battles_count_min', 'nations', 'vehicles', 'vehicles_levels', 'vehicles_classes']
@@ -116,7 +116,6 @@ class EventsSettings(object):
     EXPECTED_FIELDS_REWARDS_CATEGORIES_CATEGORY = ['rank_min', 'rank_max', 'reward_category_number']
     EXPECTED_FIELDS_REWARDS_BY_RANK = ['leaderboard_id', 'reward_groups']
     EXPECTED_FIELDS_REWARDS_BY_RANK_GROUP = ['reward_category_number', 'rank_min', 'rank_max', 'rewards']
-    EXPECTED_FIELDS_METHOD = ['name']
 
     def __init__(self):
         self.__events = []
@@ -203,8 +202,6 @@ class EventsSettings(object):
                 if not isDataSchemaValid(self.EXPECTED_FIELDS_PRIME_TIMES, primeTimeItem):
                     return False
 
-            if not isDataSchemaValid(self.EXPECTED_FIELDS_METHOD, item['method']):
-                return False
             if not isDataSchemaValid(self.EXPECTED_FIELDS_LIMITS, item['limits']):
                 return False
             for rewardsByRank in item['rewards_by_rank']:
@@ -224,8 +221,7 @@ class EventSettings(object):
        EVENT_TYPE.LEVEL: (
                         'vehicles_levels', 'level', range(1, 11)), 
        EVENT_TYPE.CLASS: (
-                        'vehicles_classes', 'class', VEHICLE_TYPES_ORDER), 
-       EVENT_TYPE.ROLE: ('roles', 'role', None)}
+                        'vehicles_classes', 'class', VEHICLE_TYPES_ORDER)}
     EVENT_DAYS_LEFT_TO_START = 5
     EVENT_FINISHED_DURATION = 5 * time_utils.ONE_DAY
     EVENT_STARTED_DURATION_PERCENTAGE = 0.1
@@ -236,12 +232,13 @@ class EventSettings(object):
         self.__name = None
         self.__type = None
         self.__objectiveParameter = None
-        self.__method = Method()
+        self.__method = None
         self.__publishDate = None
         self.__startDate = None
         self.__participantsFreezeDeadline = None
         self.__endDate = None
         self.__rewardingDate = None
+        self.__cardinality = None
         self.__distance = None
         self.__manual = None
         self.__battleType = None
@@ -275,13 +272,14 @@ class EventSettings(object):
         self.__name = rawData['name']
         self.__type = rawData['type']
         self.__objectiveParameter = rawData['objective_parameter']
-        self.__method.setData(rawData['method'])
+        self.__method = rawData['method']
         self.__publishDate = rawData['publish_date']
         self.__startDate = rawData['start_date']
         self.__participantsFreezeDeadline = rawData['participants_freeze_deadline']
         self.__endDate = rawData['end_date']
         self.__rewardingDate = rawData['rewarding_date']
-        self.__distance = rawData.get('distance', None)
+        self.__cardinality = rawData['cardinality']
+        self.__distance = rawData['distance']
         self.__manual = rawData['manual']
         self.__battleType = rawData['battle_type']
         self.__isSquadAllowed = rawData['is_squad_allowed']
@@ -293,7 +291,6 @@ class EventSettings(object):
         self.__keyArtSmall = rawData.get('key_art_small')
         self.__promoBonuses = rawData.get('promo_bonuses')
         self.__makeLeaderboards(rawData['limits'])
-        return
 
     def getLeaderboards(self):
         if self.__type in self.__mapping:
@@ -322,7 +319,7 @@ class EventSettings(object):
         return self.__objectiveParameter
 
     def getMethod(self):
-        return self.__method.getName()
+        return self.__method
 
     def getPublishDate(self):
         return self.__publishDate
@@ -401,7 +398,7 @@ class EventSettings(object):
         return self.__rewardingDate
 
     def getCardinality(self):
-        return self.__method.getCardinality()
+        return self.__cardinality
 
     def getDistance(self):
         return self.__distance
@@ -539,25 +536,6 @@ class PrimeTime(object):
 
     def timeToActive(self):
         return event_boards_timer.isPeripheryActiveAtCurrentMoment(self)[1]
-
-
-class Method(object):
-
-    def __init__(self):
-        self.__cardinality = None
-        self.__name = None
-        return
-
-    def setData(self, data):
-        self.__cardinality = data.get('cardinality', None)
-        self.__name = data['name']
-        return
-
-    def getCardinality(self):
-        return self.__cardinality
-
-    def getName(self):
-        return self.__name
 
 
 class Limits(object):

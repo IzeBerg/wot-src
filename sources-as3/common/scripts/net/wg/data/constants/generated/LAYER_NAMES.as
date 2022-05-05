@@ -27,6 +27,8 @@ package net.wg.data.constants.generated
       
       public static const SERVICE_LAYOUT:String = "serviceLayout";
       
+      public static const HIDDEN_SERVICE_LAYOUT:String = "hiddenServiceLayout";
+      
       public static const OVERLAY:String = "overlay";
       
       public static const TOOL_TIPS:String = "toolTips";
@@ -35,7 +37,7 @@ package net.wg.data.constants.generated
       
       public static const CURSOR:String = "cursor";
       
-      public static const LAYER_ORDER:Array = [UNDEFINED,ROOT,MARKER,VIEWS,SUBVIEW,TOP_SUB_VIEW,WINDOWS,FULLSCREEN_WINDOWS,SYSTEM_MESSAGES,DIALOGS,OVERLAY,IME,SERVICE_LAYOUT,TOOL_TIPS,CURSOR,WAITING];
+      public static const LAYER_ORDER:Array = [UNDEFINED,ROOT,HIDDEN_SERVICE_LAYOUT,MARKER,VIEWS,SUBVIEW,TOP_SUB_VIEW,WINDOWS,FULLSCREEN_WINDOWS,SYSTEM_MESSAGES,DIALOGS,OVERLAY,IME,SERVICE_LAYOUT,TOOL_TIPS,CURSOR,WAITING];
       
       public static const FOCUS_ORDER:Array = [WAITING,SERVICE_LAYOUT,OVERLAY,DIALOGS,FULLSCREEN_WINDOWS,WINDOWS,TOP_SUB_VIEW,SUBVIEW,VIEWS,MARKER];
        

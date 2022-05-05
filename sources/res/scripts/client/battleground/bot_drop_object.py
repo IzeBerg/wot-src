@@ -1,13 +1,14 @@
 import logging
 from functools import partial
 import AnimationSequence, BigWorld, Math, CGF
+from constants import AirdropType
 from helpers import dependency
 import BattleReplay
 from ReplayEvents import g_replayEvents
-from battleground import getKamikazeEquipmentDescr
 from battleground.components import SequenceComponent
 from battleground.iself_assembler import ISelfAssembler
 from helpers.CallbackDelayer import CallbackDelayer
+from items import vehicles
 from skeletons.dynamic_objects_cache import IBattleDynamicObjectsCache
 from skeletons.gui.battle_session import IBattleSessionProvider
 from cgf_obsolete_script.script_game_object import ScriptGameObject
@@ -21,8 +22,9 @@ class BotAirdrop(ScriptGameObject, CallbackDelayer, ISelfAssembler):
     END_ANIMATION_TIME_CORRECTING = 0.18
     __slots__ = ('owner', '__deliveryPosition', '__markerArea', '__deliveryEffect',
                  '__teamID', '__yawAxis', '__plannedAnimDuration', '__deliveryTime')
+    TYPE_TO_EQUIPMENT = {AirdropType.BOT: 'spawn_kamikaze', AirdropType.BOT_CLING: 'clingBrander'}
 
-    def __init__(self, dropID, deliveryPosition, teamID, yawAxis, deliveryTime):
+    def __init__(self, dropID, deliveryPosition, teamID, yawAxis, deliveryTime, airdropType):
         self.__spaceID = BigWorld.player().spaceID
         ScriptGameObject.__init__(self, self.__spaceID)
         CallbackDelayer.__init__(self)
@@ -33,11 +35,12 @@ class BotAirdrop(ScriptGameObject, CallbackDelayer, ISelfAssembler):
         self.__teamID = teamID
         self.__yawAxis = yawAxis
         self.__plannedAnimDuration = 0.0
+        self.__airdropType = airdropType
         return
 
     def start(self, *args, **kwargs):
         config = self.__dynamicObjectsCache.getConfig(BigWorld.player().arenaGuiType)
-        equipmentDescr = getKamikazeEquipmentDescr()
+        equipmentDescr = self.__getEquipmentDescr()
         self.__markerArea = self.__createMarkerArea(config, equipmentDescr)
         deliveryAnimationStartDelay = equipmentDescr.clientVisuals.deliveringAnimationStartDelay
         self.__plannedAnimDuration = equipmentDescr.delay - deliveryAnimationStartDelay
@@ -97,7 +100,10 @@ class BotAirdrop(ScriptGameObject, CallbackDelayer, ISelfAssembler):
         return
 
     def __createDeliveryEffect(self, config):
-        effect = self.__getEffect(config.getBotDeliveryEffect())
+        if self.__airdropType == AirdropType.BOT_CLING:
+            effect = self.__getEffect(config.getBotClingDeliveryEffect())
+        else:
+            effect = self.__getEffect(config.getBotDeliveryEffect())
         if effect is not None:
             effectPath = effect.path
             BigWorld.loadResourceListBG((
@@ -130,3 +136,7 @@ class BotAirdrop(ScriptGameObject, CallbackDelayer, ISelfAssembler):
             self.__deliveryEffect.destroy()
         self.__deliveryEffect = None
         return
+
+    def __getEquipmentDescr(self):
+        name = BotAirdrop.TYPE_TO_EQUIPMENT[self.__airdropType]
+        return vehicles.g_cache.equipments()[vehicles.g_cache.equipmentIDs()[name]]

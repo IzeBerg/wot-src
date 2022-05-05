@@ -119,7 +119,7 @@ package
       
       public static const COMMON_BATTLEEFFICIENCY_TITLE:String = "#battle_results:common/battleEfficiency/title";
       
-      public static const COMMON_BATTLEEFFICIENCYWITHOUTRESERVES_TITLE:String = "#battle_results:common/battleEfficiencyWithoutReserves/title";
+      public static const COMMON_BATTLEEFFICIENCYWITHOUTOREDERS_TITLE:String = "#battle_results:common/battleEfficiencyWithoutOreders/title";
       
       public static const COMMON_BATTLEEFFICIENCY_ALLIES:String = "#battle_results:common/battleEfficiency/allies";
       
@@ -294,12 +294,6 @@ package
       public static const COMMON_VEHICLESTATE_DEAD6:String = "#battle_results:common/vehicleState/dead6";
       
       public static const COMMON_VEHICLESTATE_DEAD7:String = "#battle_results:common/vehicleState/dead7";
-      
-      public static const COMMON_VEHICLESTATE_DEAD21:String = "#battle_results:common/vehicleState/dead21";
-      
-      public static const COMMON_VEHICLESTATE_DEAD22:String = "#battle_results:common/vehicleState/dead22";
-      
-      public static const COMMON_SUPPLYSTATE:String = "#battle_results:common/supplyState";
       
       public static const COMMON_VEHICLESTATE_PREMATURELEAVE:String = "#battle_results:common/vehicleState/prematureLeave";
       
@@ -483,10 +477,6 @@ package
       
       public static const TEAM_STATS_LABELS_HITS:String = "#battle_results:team/stats/labels_hits";
       
-      public static const TEAM_STATS_LABELS_HITSBYTANKS:String = "#battle_results:team/stats/labels_hitsByTanks";
-      
-      public static const TEAM_STATS_LABELS_HITSBYSUPPLIES:String = "#battle_results:team/stats/labels_hitsBySupplies";
-      
       public static const TEAM_STATS_LABELS_EXPLOSIONHITS:String = "#battle_results:team/stats/labels_explosionHits";
       
       public static const TEAM_STATS_LABELS_DAMAGEDEALT:String = "#battle_results:team/stats/labels_damageDealt";
@@ -496,6 +486,8 @@ package
       public static const TEAM_STATS_LABELS_DESTRUCTIBLESDAMAGEDEALT:String = "#battle_results:team/stats/labels_destructiblesDamageDealt";
       
       public static const TEAM_STATS_LABELS_EQUIPMENTDAMAGEDEALT:String = "#battle_results:team/stats/labels_equipmentDamageDealt";
+      
+      public static const TEAM_STATS_LABELS_ARTILLERYFORTEQUIPDAMAGEDEALT:String = "#battle_results:team/stats/labels_artilleryFortEquipDamageDealt";
       
       public static const TEAM_STATS_LABELS_DAMAGEDEALTRATIO:String = "#battle_results:team/stats/labels_damageDealtRatio";
       
@@ -520,50 +512,6 @@ package
       public static const TEAM_STATS_LABELS_DAMAGEASSISTED:String = "#battle_results:team/stats/labels_damageAssisted";
       
       public static const TEAM_STATS_LABELS_DAMAGEASSISTEDSTUN:String = "#battle_results:team/stats/labels_damageAssistedStun";
-      
-      public static const TEAM_STATS_LABELS_TANKMANDAMAGETOSUPPLIES:String = "#battle_results:team/stats/labels_tankmanDamageToSupplies";
-      
-      public static const TEAM_STATS_LABELS_SUPPLYDAMAGETOTANKMAN:String = "#battle_results:team/stats/labels_supplyDamageToTankman";
-      
-      public static const TEAM_STATS_LABELS_COMMANDERSUPPLYDAMAGE:String = "#battle_results:team/stats/labels_commanderSupplyDamage";
-      
-      public static const TEAM_STATS_LABELS_DAMAGETOCOMMANDERSUPPLIES:String = "#battle_results:team/stats/labels_damageToCommanderSupplies";
-      
-      public static const TEAM_STATS_LABELS_SPOTTEDENEMIESBYWATCHTOWERS:String = "#battle_results:team/stats/labels_spottedEnemiesByWatchtowers";
-      
-      public static const TEAM_STATS_LABELS_DAMAGEDBYWATCHTOWERS:String = "#battle_results:team/stats/labels_damagedByWatchtowers";
-      
-      public static const TEAM_STATS_LABELS_TOTALDAMAGEDBYBARRICADES:String = "#battle_results:team/stats/labels_totalDamagedByBarricades";
-      
-      public static const TEAM_STATS_LABELS_KILLEDTANKSBYBARRICADES:String = "#battle_results:team/stats/labels_killedTanksByBarricades";
-      
-      public static const TEAM_STATS_LABELS_SHOTSBYSUPPLIES:String = "#battle_results:team/stats/labels_shotsBySupplies";
-      
-      public static const TEAM_STATS_LABELS_DAMAGEDEALTBYSUPPLIES:String = "#battle_results:team/stats/labels_damageDealtBySupplies";
-      
-      public static const TEAM_STATS_LABELS_SNIPERDAMAGEDEALTBYSUPPLIES:String = "#battle_results:team/stats/labels_sniperDamageDealtBySupplies";
-      
-      public static const TEAM_STATS_LABELS_DIRECTHITSRECEIVEDBYSUPPLIES:String = "#battle_results:team/stats/labels_directHitsReceivedBySupplies";
-      
-      public static const TEAM_STATS_LABELS_PIERCINGSRECEIVEDBYSUPPLIES:String = "#battle_results:team/stats/labels_piercingsReceivedBySupplies";
-      
-      public static const TEAM_STATS_LABELS_NODAMAGEDIRECTHITSRECEIVEDBYSUPPLIES:String = "#battle_results:team/stats/labels_noDamageDirectHitsReceivedBySupplies";
-      
-      public static const TEAM_STATS_LABELS_SPOTTEDTANKSBYSUPPLIES:String = "#battle_results:team/stats/labels_spottedTanksBySupplies";
-      
-      public static const TEAM_STATS_LABELS_DAMAGEDKILLEDTANKSBYSUPPLIES:String = "#battle_results:team/stats/labels_damagedKilledTanksBySupplies";
-      
-      public static const TEAM_STATS_LABELS_SPOTTEDSUPPLIES:String = "#battle_results:team/stats/labels_spottedSupplies";
-      
-      public static const TEAM_STATS_LABELS_DAMAGEDKILLEDSUPPLIES:String = "#battle_results:team/stats/labels_damagedKilledSupplies";
-      
-      public static const TEAM_STATS_LABELS_SHOTSBYTANKSSUPPLIES:String = "#battle_results:team/stats/labels_shotsByTanksSupplies";
-      
-      public static const TEAM_STATS_LABELS_DAMAGEDEALTBYTANKSSUPPLIES:String = "#battle_results:team/stats/labels_damageDealtByTanksSupplies";
-      
-      public static const TEAM_STATS_LABELS_DAMAGEBLOCKEDBYTANKSSUPPLIES:String = "#battle_results:team/stats/labels_damageBlockedByTanksSupplies";
-      
-      public static const TEAM_STATS_LABELS_SPOTTEDSTRATEGISTITEMS:String = "#battle_results:team/stats/labels_spottedStrategistItems";
       
       public static const TEAM_STATS_LABELS_STUNNUM:String = "#battle_results:team/stats/labels_stunNum";
       
@@ -632,8 +580,6 @@ package
       public static const DETAILS_RESOURCE:String = "#battle_results:details/resource";
       
       public static const DETAILS_CRYSTAL:String = "#battle_results:details/crystal";
-      
-      public static const DETAILS_SPECIALCURRENCY:String = "#battle_results:details/specialCurrency";
       
       public static const DETAILS_TIME_LBL_ARENACREATETIMEONLYSTR:String = "#battle_results:details/time/lbl_arenaCreateTimeOnlyStr";
       
@@ -726,16 +672,6 @@ package
       public static const DETAILS_CALCULATIONS_CRYSTAL_TOTAL:String = "#battle_results:details/calculations/crystal/total";
       
       public static const DETAILS_CALCULATIONS_CRYSTAL_EVENTS:String = "#battle_results:details/calculations/crystal/events";
-      
-      public static const DETAILS_CALCULATIONS_CRYSTAL_RTSEVENT:String = "#battle_results:details/calculations/crystal/rtsEvent";
-      
-      public static const DETAILS_CALCULATIONS_RTSTOKEN1X7:String = "#battle_results:details/calculations/rtsToken1x7";
-      
-      public static const DETAILS_CALCULATIONS_RTSTOKEN1X1:String = "#battle_results:details/calculations/rtsToken1x1";
-      
-      public static const DETAILS_CALCULATIONS_RTSEVENTPOINTS:String = "#battle_results:details/calculations/rtsEventPoints";
-      
-      public static const DETAILS_CALCULATIONS_RTSLEADERBOARDPOINTS:String = "#battle_results:details/calculations/rtsLeaderboardPoints";
       
       public static const TANKSELECTOR_NEXT:String = "#battle_results:tankSelector/next";
       

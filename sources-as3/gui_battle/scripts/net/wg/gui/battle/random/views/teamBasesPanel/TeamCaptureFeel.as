@@ -27,7 +27,7 @@ package net.wg.gui.battle.random.views.teamBasesPanel
       
       private var _fillTarget:Sprite = null;
       
-      private var _isDisposed:Boolean = false;
+      private var _disposed:Boolean = false;
       
       public function TeamCaptureFeel()
       {
@@ -37,19 +37,14 @@ package net.wg.gui.battle.random.views.teamBasesPanel
          this.updateFeel();
       }
       
-      public function isDisposed() : Boolean
-      {
-         return this._isDisposed;
-      }
-      
       public final function dispose() : void
       {
+         this._disposed = true;
          this.onDispose();
       }
       
       public function onDispose() : void
       {
-         this._isDisposed = true;
          this._colorType = null;
          this.clearGraphic();
          this._fillTarget = null;
@@ -117,6 +112,11 @@ package net.wg.gui.battle.random.views.teamBasesPanel
          }
          this._colorType = param1;
          this.updateFeel();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
    }
 }

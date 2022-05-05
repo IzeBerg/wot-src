@@ -19,9 +19,10 @@
 		<RT10_26P>17</RT10_26P>
 		<R_123P>18</R_123P>
 		<R_123_1>19</R_123_1>
-		<radio_Supply_RTS>23400</radio_Supply_RTS>
-		<radio_Pl208_Pillbox_SPM_4_RTS>2</radio_Pl208_Pillbox_SPM_4_RTS>
 		<Development_Radio>65000</Development_Radio>
+		<N2_C_SH>20</N2_C_SH>
+		<R_113_P_SH>21</R_113_P_SH>
+		<R_123P_SH>22</R_123P_SH>
 	</ids>
 	<shared>
 		<N2>
@@ -265,21 +266,6 @@
 				<!--BW_String-->
 			</repairCost>
 		</_9RM_O>
-		<radio_Supply_RTS>
-			<userString>#poland_vehicles:radio_Supply_RTS</userString>
-			<tags/>
-			<level>10</level>
-			<price>52000</price>
-			<notInShop>true</notInShop>
-			<weight>1</weight>
-			<distance>2000</distance>
-			<maxHealth>1000</maxHealth>
-			<maxRegenHealth>75</maxRegenHealth>
-			<repairCost>
-				3.5
-				<!--BW_String-->
-			</repairCost>
-		</radio_Supply_RTS>
 		<Development_Radio>
 			<userString>Development Radio</userString>
 			<tags/>
@@ -292,20 +278,47 @@
 			<maxRegenHealth>75</maxRegenHealth>
 			<repairCost>0</repairCost>
 		</Development_Radio>
-		<radio_Pl208_Pillbox_SPM_4_RTS>
-			<userString>#poland_vehicles:radio_Pl208_Pillbox_SPM_4_RTS</userString>
+		<N2_C_SH>
+			<userString>#poland_vehicles:N2_C_SH</userString>
 			<tags/>
-			<level>10</level>
-			<price>52000</price>
+			<level>1</level>
+			<price>0</price>
 			<notInShop>true</notInShop>
-			<weight>1</weight>
+			<weight>100</weight>
 			<distance>2000</distance>
-			<maxHealth>1000</maxHealth>
-			<maxRegenHealth>75</maxRegenHealth>
-			<repairCost>
-				3.5
-				<!--BW_String-->
-			</repairCost>
-		</radio_Pl208_Pillbox_SPM_4_RTS>
+			<maxHealth>100</maxHealth>
+			<maxRegenHealth>60</maxRegenHealth>
+			<repairCost>0</repairCost>
+			<radarRadius>410</radarRadius>
+			<radarCooldown>30</radarCooldown>
+		</N2_C_SH>
+		<R_113_P_SH>
+			<userString>#poland_vehicles:R_113_P_SH</userString>
+			<tags/>
+			<level>2</level>
+			<price>0</price>
+			<notInShop>true</notInShop>
+			<weight>100</weight>
+			<distance>2000</distance>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>150</maxRegenHealth>
+			<repairCost>0</repairCost>
+			<radarRadius>340</radarRadius>
+			<radarCooldown>20</radarCooldown>
+		</R_113_P_SH>
+		<R_123P_SH>
+			<userString>#poland_vehicles:R_123P_SH</userString>
+			<tags/>
+			<level>2</level>
+			<price>0</price>
+			<notInShop>true</notInShop>
+			<weight>100</weight>
+			<distance>2000</distance>
+			<maxHealth>200</maxHealth>
+			<maxRegenHealth>150</maxRegenHealth>
+			<repairCost>0</repairCost>
+			<radarRadius>510</radarRadius>
+			<radarCooldown>35</radarCooldown>
+		</R_123P_SH>
 	</shared>
 </root>

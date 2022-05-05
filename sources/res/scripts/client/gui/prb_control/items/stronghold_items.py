@@ -1,31 +1,41 @@
 from collections import namedtuple
-import itertools
+import logging, itertools, typing
+from UnitBase import UNIT_ROLE
 from debug_utils import LOG_ERROR
 from helpers.time_utils import ONE_MINUTE, ONE_HOUR
+_logger = logging.getLogger(__name__)
 BYTTLETYPE_SORTIE = 'SORTIE'
-AIRSTRIKE = 'AIRSTRIKE'
+INSPIRATION = 'INSPIRATION'
 ARTILLERY_STRIKE = 'ARTILLERY_STRIKE'
 REQUISITION = 'REQUISITION'
 HIGH_CAPACITY_TRANSPORT = 'HIGH_CAPACITY_TRANSPORT'
 SUPPORT_TYPE = 'SUPPORT'
+BOOST_TYPE = 'BOOST'
 REQUISITION_TYPE = 'REQUISITION'
 HEAVYTRUCKS_TYPE = 'HEAVYTRUCKS'
+ARTILLERY_COMMANDER = 'artillery_commander'
+INSPIRE_COMMANDER = 'inspiring_commander'
 RESERVE_STRONGHOLD_ORDER = (
+ BOOST_TYPE,
  SUPPORT_TYPE,
  HEAVYTRUCKS_TYPE,
  REQUISITION_TYPE)
 RESERVE_SORTIE_ORDER = (
+ BOOST_TYPE,
  SUPPORT_TYPE,
  HEAVYTRUCKS_TYPE)
 SUPPORT_ORDER = (
- AIRSTRIKE,
- ARTILLERY_STRIKE)
-RESERVE_ITEMS = {SUPPORT_TYPE: (
-                AIRSTRIKE, ARTILLERY_STRIKE), 
+ ARTILLERY_STRIKE,)
+RESERVE_ITEMS = {BOOST_TYPE: (
+              INSPIRATION,), 
+   SUPPORT_TYPE: (
+                ARTILLERY_STRIKE,), 
    REQUISITION_TYPE: (
                     REQUISITION,), 
    HEAVYTRUCKS_TYPE: (
                     HIGH_CAPACITY_TRANSPORT,)}
+UNIT_ROLE_BY_RESERVE_TYPE = {BOOST_TYPE: UNIT_ROLE.CAN_USE_BOOST_EQUIPMENTS, 
+   SUPPORT_TYPE: UNIT_ROLE.CAN_USE_EXTRA_EQUIPMENTS}
 _OldStrongholdDataScheme = (
  'type', 'min_level', 'max_level', 'min_players_count', 'max_players_count',
  'industrial_resource_multiplier', 'max_legionaries_count', 'public', 'battle_duration',
@@ -416,6 +426,8 @@ class StrongholdData(object):
     class StrongholdDataReserve(object):
 
         class StrongholdReserveItem(object):
+            __slots__ = ('__id', '__type', '__level', '__bonus_percent', '__description',
+                         '__title', '__production_elapsed', '__intCD')
 
             def __init__(self, data):
                 self.__id = data['id']
@@ -425,9 +437,14 @@ class StrongholdData(object):
                 self.__description = data['description']
                 self.__title = data['title']
                 self.__production_elapsed = data['production_elapsed']
+                self.__intCD = data.get('intCD')
 
             def getId(self):
                 return self.__id
+
+            @property
+            def intCD(self):
+                return self.__intCD
 
             def getType(self):
                 return self.__type
@@ -452,7 +469,10 @@ class StrongholdData(object):
             def getProductionElapsed(self):
                 return self.__production_elapsed
 
-            def isRequsition(self):
+            def isUsingInBattle(self):
+                return self.intCD is not None
+
+            def isRequisition(self):
                 return self.getGroupType() == REQUISITION
 
             def __eq__(self, other):
@@ -506,7 +526,10 @@ class StrongholdData(object):
         def getUniqueReservesByGroupType(self, groupType):
             reserves = []
             for rType in RESERVE_ITEMS[groupType]:
-                reserves.extend(self.__available_reserves[rType])
+                if rType in self.__available_reserves:
+                    reserves.extend(self.__available_reserves[rType])
+                else:
+                    _logger.warning('%s not in available reserves. Check wgsh settings.', rType)
 
             unique = []
             for reserve in self.__selected_reserves:

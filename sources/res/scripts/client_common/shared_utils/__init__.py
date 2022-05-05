@@ -1,4 +1,4 @@
-import collections, inspect, time, itertools, logging, types, weakref
+import collections, time, itertools, logging, types, weakref
 from functools import partial, wraps
 import typing, BigWorld
 from adisp import async
@@ -106,24 +106,6 @@ def allEqual(sequence, accessor=None):
     if accessor:
         return all(accessor(first_) == accessor(rest) for rest in iterable)
     return all(first_ == rest for rest in iterable)
-
-
-def unwrap(obj):
-    if isinstance(obj, type):
-        return obj
-    closure = obj.func_closure
-    if closure:
-        for cell in closure:
-            contents = cell.cell_contents
-            if contents is obj:
-                continue
-            isDecorator = inspect.isfunction(contents) or inspect.ismethod(contents) or inspect.isclass(contents)
-            if isDecorator:
-                unwrapped = unwrap(contents)
-                if unwrapped:
-                    return unwrapped
-
-    return obj
 
 
 class CONST_CONTAINER(object):

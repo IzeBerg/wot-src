@@ -74,14 +74,6 @@ class IItemsRequester(requesters.IRequester):
     def giftSystem(self):
         raise NotImplementedError
 
-    @property
-    def rtsStatistics(self):
-        raise NotImplementedError
-
-    @property
-    def aiRosters(self):
-        raise NotImplementedError
-
     def requestUserDossier(self, databaseID, callback):
         raise NotImplementedError
 
@@ -164,6 +156,9 @@ class IItemsRequester(requesters.IRequester):
         raise NotImplementedError
 
     def getDogTag(self, databaseID=None):
+        raise NotImplementedError
+
+    def getBattleRoyaleStats(self, arenaType, databaseID=None, vehicleIntCD=None):
         raise NotImplementedError
 
     def getVehPostProgression(self, vehIntCD, vehType=None):

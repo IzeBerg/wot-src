@@ -9,7 +9,7 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
       private static const _PLATOONS:String = "platoons";
        
       
-      public var nation:String = "";
+      public var classType:String = "";
       
       private var _platoons:DataProvider = null;
       

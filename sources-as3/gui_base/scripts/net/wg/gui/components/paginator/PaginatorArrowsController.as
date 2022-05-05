@@ -41,7 +41,7 @@ package net.wg.gui.components.paginator
       private static const MIN_WIDTH:uint = 1200;
        
       
-      public var allowPageChange:Boolean = true;
+      private var _allowPageChange:Boolean = true;
       
       private var _hideDisabledArrows:Boolean = false;
       
@@ -126,7 +126,7 @@ package net.wg.gui.components.paginator
       
       public function setPageIndex(param1:int) : void
       {
-         if(this._currentMissionIndex == param1)
+         if(this._currentMissionIndex == param1 || !this._allowPageChange)
          {
             return;
          }
@@ -396,7 +396,7 @@ package net.wg.gui.components.paginator
       private function onArrowRollOver(param1:ISoundButtonEx) : void
       {
          var _loc2_:int = 0;
-         if(this.allowPageChange)
+         if(this._allowPageChange)
          {
             if(param1.enabled)
             {
@@ -432,7 +432,7 @@ package net.wg.gui.components.paginator
       
       private function onArrowRightBtnClickHandler(param1:ButtonEvent) : void
       {
-         if(this.allowPageChange && this._arrowRightBtn.enabled)
+         if(this._allowPageChange && this._arrowRightBtn.enabled)
          {
             this.onArrowClick(ISoundButtonEx(param1.target));
             this.arrowRightBtnClickHandler();
@@ -441,7 +441,7 @@ package net.wg.gui.components.paginator
       
       private function onArrowLeftBtnClickHandler(param1:ButtonEvent) : void
       {
-         if(this.allowPageChange && this._arrowLeftBtn.enabled)
+         if(this._allowPageChange && this._arrowLeftBtn.enabled)
          {
             this.onArrowClick(ISoundButtonEx(param1.target));
             this.arrowLeftBtnClickHandler();
@@ -461,14 +461,21 @@ package net.wg.gui.components.paginator
       
       private function onButtonGroupChangeHandler(param1:Event) : void
       {
-         if(this.allowPageChange)
+         if(this._allowPageChange)
          {
             this.setPageIndex(PaginationDetailsNumButton(this._buttonGroup.selectedButton).pageIndex);
             this.onMissionHasChanged();
          }
-         else
+      }
+      
+      public function set allowPageChange(param1:Boolean) : void
+      {
+         if(param1 != this._allowPageChange)
          {
-            this.setPageIndex(this._currentMissionIndex);
+            this._allowPageChange = param1;
+            this._pageButtons.mouseEnabled = this._pageButtons.mouseChildren = param1;
+            this._arrowRightBtn.mouseEnabled = this._arrowRightBtn.mouseChildren = param1;
+            this._arrowLeftBtn.mouseEnabled = this._arrowLeftBtn.mouseChildren = param1;
          }
       }
       

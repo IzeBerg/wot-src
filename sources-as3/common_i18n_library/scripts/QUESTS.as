@@ -151,8 +151,6 @@ package
       
       public static const BONUSES_ITEM_TANKMEN_WITH_SKILLS:String = "#quests:bonuses/item/tankmen/with_skills";
       
-      public static const BONUSES_RTSCOLLECTION:String = "#quests:bonuses/rtsCollection";
-      
       public static const BONUSES_NOTAVAILABLE:String = "#quests:bonuses/notAvailable";
       
       public static const QUESTS_TITLE:String = "#quests:quests/title";
@@ -1473,14 +1471,6 @@ package
       
       public static const DETAILS_CONDITIONS_CUMULATIVE_XP_OTHER:String = "#quests:details/conditions/cumulative/xp/other";
       
-      public static const DETAILS_CONDITIONS_CUMULATIVE_RTSTANKEREVENTPOINTS:String = "#quests:details/conditions/cumulative/rtsTankerEventPoints";
-      
-      public static const DETAILS_CONDITIONS_CUMULATIVE_RTSSTRATEGISTEVENTPOINTS:String = "#quests:details/conditions/cumulative/rtsStrategistEventPoints";
-      
-      public static const DETAILS_CONDITIONS_RTSSTRATEGISTWIN:String = "#quests:details/conditions/rtsStrategistWin";
-      
-      public static const DETAILS_CONDITIONS_RTSTANKERTOP5:String = "#quests:details/conditions/rtsTankerTop5";
-      
       public static const DETAILS_DOSSIER_SNIPERSERIES:String = "#quests:details/dossier/sniperSeries";
       
       public static const DETAILS_DOSSIER_MAXSNIPERSERIES:String = "#quests:details/dossier/maxSniperSeries";
@@ -2107,9 +2097,9 @@ package
       
       public static const MISSIONS_TAB_BATTLE_PASS_HEADER:String = "#quests:missions/tab/battle_pass/header";
       
-      public static const MISSIONS_TAB_MAPBOX_BODY:String = "#quests:missions/tab/mapbox/body";
-      
       public static const MISSIONS_TAB_MAPBOX_HEADER:String = "#quests:missions/tab/mapbox/header";
+      
+      public static const MISSIONS_TAB_MAPBOX_BODY:String = "#quests:missions/tab/mapbox/body";
       
       public static const MISSIONS_TAB_LABEL_CURRENTVEHICLE:String = "#quests:missions/tab/label/currentVehicle";
       
@@ -2375,6 +2365,8 @@ package
       
       public static const TOKEN_DEFAULT_TANKREWARDS:String = "#quests:token/default/tankrewards";
       
+      public static const TOKEN_DEFAULT_BATTLE_ROYALE:String = "#quests:token/default/battle_royale";
+      
       public static const BONUSNAME_CREDITS:String = "#quests:bonusName/credits";
       
       public static const BONUSNAME_GOLD:String = "#quests:bonusName/gold";
@@ -2514,6 +2506,8 @@ package
       public static const BONUSNAME_BATTLEPASSPOINTS:String = "#quests:bonusName/battlePassPoints";
       
       public static const BONUSNAME_BATTLEPASSPOINTS_PREVIEW:String = "#quests:bonusName/battlePassPoints/preview";
+      
+      public static const BONUSNAME_BRCOIN:String = "#quests:bonusName/brcoin";
       
       public static const ACTION_AUTO_CALENDAR:String = "#quests:action/auto/calendar";
       

@@ -268,6 +268,9 @@ class CamouflageXmlReader(BaseCustomizationItemXmlReader):
             target.editorData.glossMetallicSettingsType = 0
             if target.glossMetallicSettings['glossMetallicMap'] != '':
                 target.editorData.glossMetallicSettingsType = 1
+            editorOnlySection = c11n.getEditorOnlySection(section)
+            if editorOnlySection is not None:
+                target.editorData.paletteIndex = editorOnlySection.readInt('paletteIndex', 0)
         if section.has_key('palettes'):
             palettes = []
             spalettes = section['palettes']
@@ -280,6 +283,8 @@ class CamouflageXmlReader(BaseCustomizationItemXmlReader):
 
                 palettes.append(res)
                 target.palettes = tuple(palettes)
+
+        return
 
     def _readClientOnlyFromXml(self, target, xmlCtx, section, cache=None):
         super(CamouflageXmlReader, self)._readClientOnlyFromXml(target, xmlCtx, section)
@@ -804,6 +809,8 @@ def _readDefault(cache, xmlCtx, section, sectionName):
         cache.defaultColors[nations.INDICES[nation]] = tuple(colors)
         itemId = ix.readInt(xmlCtx, iSection, 'insignia_id')
         cache.defaultInsignias[nations.INDICES[nation]] = itemId
+        itemId = ix.readInt(xmlCtx, iSection, 'emblem_id')
+        cache.defaultPlayerEmblems[nations.INDICES[nation]] = itemId
         if iSection.has_key('top_vehicle'):
             topVehicle = ix.readString(xmlCtx, iSection, 'top_vehicle')
             cache.topVehiclesByNation[nation] = topVehicle

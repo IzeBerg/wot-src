@@ -53,20 +53,6 @@ package net.wg.data.constants.generated
       
       public static const WHITE_ICON_SPG_16X16:String = "whiteIconSPG16x16";
       
-      public static const WHITE_ICON_GUN_16X16:String = "whiteIconGun16x16";
-      
-      public static const WHITE_ICON_PILLBOX_16X16:String = "whiteIconPillbox16x16";
-      
-      public static const WHITE_ICON_TOWER_16X16:String = "whiteIconTower16x16";
-      
-      public static const WHITE_ICON_ATGUN_16X16:String = "whiteIconATgun16x16";
-      
-      public static const WHITE_ICON_BARRICADES_16X16:String = "whiteIconBarricades16x16";
-      
-      public static const WHITE_ICON_FLAMER_16X16:String = "whiteIconFlamer16x16";
-      
-      public static const WHITE_ICON_MORTAR_16X16:String = "whiteIconMortar16x16";
-      
       public static const DAMAGELOG_AIRSTRIKE_16X16:String = "damageLog_airstrike_16x16";
       
       public static const DAMAGELOG_ARTILLERY_16X16:String = "damageLog_artillery_16x16";
@@ -83,9 +69,23 @@ package net.wg.data.constants.generated
       
       public static const DAMAGELOG_DMG_BY_SMOKE_16X16:String = "damageLog_by_smoke_16x16";
       
-      public static const DAMAGELOG_SUPPLY_DAMAGE_16X16:String = "damageLog_supply_damage_16x16";
+      public static const DAMAGELOG_CORRODING_SHOT_ENEMY_16X16:String = "damageLog_corroding_shot_enemy_16x16";
       
-      public static const DAMAGELOG_SUM:String = "sum";
+      public static const DAMAGELOG_CORRODING_SHOT_16X16:String = "damageLog_corroding_shot_16x16";
+      
+      public static const DAMAGELOG_FIRE_CIRCLE_ENEMY_16X16:String = "damageLog_fire_circle_enemy_16x16";
+      
+      public static const DAMAGELOG_FIRE_CIRCLE_16X16:String = "damageLog_fire_circle_16x16";
+      
+      public static const DAMAGELOG_CLING_BRANDER_ENEMY_16X16:String = "damageLog_cling_brander_enemy_16x16";
+      
+      public static const DAMAGELOG_CLING_BRANDER_16X16:String = "damageLog_cling_brander_16x16";
+      
+      public static const DAMAGELOG_THUNDER_STRIKE_ENEMY_16X16:String = "damageLog_thunder_strike_enemy_16x16";
+      
+      public static const DAMAGELOG_THUNDER_STRIKE_16X16:String = "damageLog_thunder_strike_16x16";
+      
+      public static const DAMAGELOG_FORT_ARTILLERY_16X16:String = "damageLog_fort_artillery_16x16";
        
       
       public function BATTLEDAMAGELOG_IMAGES()

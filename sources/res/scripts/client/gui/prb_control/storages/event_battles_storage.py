@@ -1,6 +1,4 @@
-from gui.prb_control.storages.local_storage import SessionStorage
+from gui.prb_control.storages.local_storage import SessionStorage, ARENA_GUI_TYPE
 
 class EventBattlesStorage(SessionStorage):
-
-    def _determineSelection(self, arenaVisitor):
-        return arenaVisitor.gui.isEventBattle()
+    _GUI_TYPE = ARENA_GUI_TYPE.EVENT_BATTLES

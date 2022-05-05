@@ -21,6 +21,7 @@ package net.wg.gui.battle.battleRoyale
    import net.wg.gui.battle.battleRoyale.views.BattleRoyalePostmortemPanel;
    import net.wg.gui.battle.battleRoyale.views.BattleRoyaleScoreBar;
    import net.wg.gui.battle.battleRoyale.views.BattleRoyaleTeamPanel;
+   import net.wg.gui.battle.battleRoyale.views.components.CorrodingShotIndicator;
    import net.wg.gui.battle.battleRoyale.views.components.DamageScreen;
    import net.wg.gui.battle.battleRoyale.views.components.fullStats.BattleRoyaleFullStats;
    import net.wg.gui.battle.battleRoyale.views.playerStats.BattleRoyalePlayerStats;
@@ -58,9 +59,9 @@ package net.wg.gui.battle.battleRoyale
    public class BattleRoyalePage extends BattleRoyalePageMeta implements IBattleRoyalePageMeta
    {
       
-      public static const SCREEN_SMALL_WIDTH:Number = 1480;
+      private static const SCREEN_SMALL_WIDTH:Number = 1480;
       
-      public static const SCREEN_SMALL_HEIGHT:Number = 900;
+      private static const SCREEN_SMALL_HEIGHT:Number = 900;
       
       private static const BATTLE_DAMAGE_LOG_X_POSITION:int = 229;
       
@@ -155,6 +156,8 @@ package net.wg.gui.battle.battleRoyale
       
       public var playersPanel:BattleRoyalePlayersPanel = null;
       
+      public var corrodingShotIndicator:CorrodingShotIndicator = null;
+      
       private var _selectRespawn:UnboundContainer = null;
       
       private var _minimap:EpicMinimap = null;
@@ -169,6 +172,11 @@ package net.wg.gui.battle.battleRoyale
       {
          this._atlasHolder = {};
          super();
+      }
+      
+      public static function isSmallScreenSize(param1:Number, param2:Number) : Boolean
+      {
+         return param1 <= SCREEN_SMALL_WIDTH || param2 <= SCREEN_SMALL_HEIGHT;
       }
       
       override public function updateStage(param1:Number, param2:Number) : void
@@ -290,6 +298,7 @@ package net.wg.gui.battle.battleRoyale
          registerComponent(this.fullStats,BATTLE_VIEW_ALIASES.FULL_STATS);
          registerComponent(this.playerStats,BATTLE_VIEW_ALIASES.BR_PLAYER_STATS_IN_BATTLE);
          registerComponent(this.playersPanel,BATTLE_VIEW_ALIASES.PLAYERS_PANEL);
+         registerComponent(this.corrodingShotIndicator,BATTLE_VIEW_ALIASES.CORRODING_SHOT_INDICATOR);
          setChildIndex(postmortemTips,getChildIndex(this.consumablesPanel) - 1);
          this._minimap.mapShortcutLabel.visible = false;
       }
@@ -327,6 +336,7 @@ package net.wg.gui.battle.battleRoyale
          this._selectRespawn = null;
          this.playerStats = null;
          this.playersPanel = null;
+         this.corrodingShotIndicator = null;
          this.hintPanel.removeEventListener(Event.RESIZE,this.onHintPanelResizeHandler);
          this.hintPanel = null;
          this.fullStats.removeEventListener(Event.OPEN,this.onFullStatsOpenHandler);
@@ -345,7 +355,7 @@ package net.wg.gui.battle.battleRoyale
          var _loc6_:int = 0;
          if(this._minimap.isTabMode)
          {
-            _loc5_ = _height < SCREEN_SMALL_HEIGHT || _width < SCREEN_SMALL_WIDTH;
+            _loc5_ = isSmallScreenSize(_width,_height);
             return int(!!_loc5_ ? int(EpicMinimap.TAB_MODE_502_IDX) : int(EpicMinimap.TAB_MODE_700_IDX));
          }
          var _loc2_:Number = App.appHeight >> 1;
@@ -371,7 +381,7 @@ package net.wg.gui.battle.battleRoyale
          var _loc4_:Point = null;
          if(this._minimap.isTabMode)
          {
-            _loc1_ = _height < SCREEN_SMALL_HEIGHT || _width < SCREEN_SMALL_WIDTH;
+            _loc1_ = isSmallScreenSize(_width,_height);
             _loc2_ = !!_loc1_ ? Number(MINIMAP_TAB_MODE_SMALL_OFFSET_Y) : Number(MINIMAP_TAB_MODE_BIG_OFFSET_Y);
             _loc3_ = this._minimap.getMinimapRectBySizeIndex(this._minimap.currentSizeIndex);
             this._minimap.x = (_width >> 1) - _loc3_.width;
@@ -462,7 +472,8 @@ package net.wg.gui.battle.battleRoyale
       
       private function updateBattleMessengerPosition() : void
       {
-         var _loc1_:int = this.teamPanel.y + this.teamPanel.height;
+         var _loc1_:int = 0;
+         _loc1_ = this.teamPanel.y + this.teamPanel.height;
          if(this._respawnVisible)
          {
             this.battleMessenger.x = damagePanel.x + MESSENGER_RESPAWN_X_OFFSET;

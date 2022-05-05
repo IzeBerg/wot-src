@@ -316,7 +316,8 @@ class ShowMapboxSurveyAvailableMessage(_ProxyDataItem):
         return WGNC_DATA_PROXY_TYPE.MAPBOX_SURVEY_AVAILABLE_NOTIFICATION
 
     def show(self, _):
-        self.__systemMessages.proto.serviceChannel.pushClientMessage({'map': self.__mapName}, SCH_CLIENT_MSG_TYPE.MAPBOX_SURVEY_AVAILABLE)
+        self.__systemMessages.proto.serviceChannel.pushClientMessage({'map': self.__mapName, 
+           'msgType': SCH_CLIENT_MSG_TYPE.MAPBOX_SURVEY_AVAILABLE}, SCH_CLIENT_MSG_TYPE.MAPBOX_SURVEY_AVAILABLE)
 
 
 class ShowMapboxEventStartedMessage(_ProxyDataItem):
@@ -350,7 +351,9 @@ class ShowMapboxRewardReceivedMessage(_ProxyDataItem):
 
     def show(self, _):
         self.__systemMessages.proto.serviceChannel.pushClientMessage({'rewards': self.__rewardData['rewards'], 
-           'battles': self.__rewardData['battles'], 'msgType': SCH_CLIENT_MSG_TYPE.MAPBOX_PROGRESSION_REWARD}, SCH_CLIENT_MSG_TYPE.MAPBOX_PROGRESSION_REWARD)
+           'battles': self.__rewardData['battles'], 
+           'isFinal': self.__rewardData['isFinal'], 
+           'msgType': SCH_CLIENT_MSG_TYPE.MAPBOX_PROGRESSION_REWARD}, SCH_CLIENT_MSG_TYPE.MAPBOX_PROGRESSION_REWARD)
 
 
 class ProxyDataHolder(object):

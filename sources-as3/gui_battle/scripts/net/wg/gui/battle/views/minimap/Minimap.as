@@ -24,8 +24,6 @@ package net.wg.gui.battle.views.minimap
       private static const ANIM_FADE_OUT:String = "fadeOut";
        
       
-      public var mouseBlockMC:Sprite = null;
-      
       public var mapHit:Sprite = null;
       
       public var fakePixel:MovieClip = null;
@@ -65,7 +63,6 @@ package net.wg.gui.battle.views.minimap
       public function Minimap()
       {
          super();
-         mouseEnabled = false;
          this._foregrounds = new <Sprite>[this.foreground0,this.foreground1,this.foreground2,this.foreground3,this.foreground4,this.foreground5];
          this.foreground0.imageName = BATTLEATLAS.MINIMAP_B1;
          this.foreground1.imageName = BATTLEATLAS.MINIMAP_B2;
@@ -75,13 +72,11 @@ package net.wg.gui.battle.views.minimap
          this.foreground5.imageName = BATTLEATLAS.MINIMAP_B6;
          this.foreground0.visible = this.foreground1.visible = this.foreground2.visible = this.foreground3.visible = this.foreground4.visible = this.foreground5.visible = false;
          this._currForeground = this.foreground0;
-         this.updateCursorBlock();
          this.entriesContainer.mask = this.entriesContainerMask;
          this._clickAreaSpr = new Sprite();
          addChildAt(this._clickAreaSpr,getChildIndex(this.mapHit));
          this.mapHit.visible = false;
          this._clickAreaSpr.hitArea = this.mapHit;
-         this.mouseBlockMC.hitArea = this.mouseBlockMC;
          removeChild(this.fakePixel);
          this.fakePixel = null;
          this.updateIntenalHintPanelData(false,false);
@@ -201,8 +196,6 @@ package net.wg.gui.battle.views.minimap
          this._clickAreaSpr.addEventListener(MouseEvent.CLICK,this.onMouseClickHandler);
          this._clickAreaSpr.addEventListener(MouseEvent.MOUSE_OVER,this.onMouseOverHandler);
          this._clickAreaSpr.addEventListener(MouseEvent.MOUSE_OUT,this.onMouseOutHandler);
-         this.mouseBlockMC.addEventListener(MouseEvent.MOUSE_OVER,this.onMouseOverHandler);
-         this.mouseBlockMC.addEventListener(MouseEvent.MOUSE_OUT,this.onMouseOutHandler);
       }
       
       override protected function onDispose() : void
@@ -239,7 +232,6 @@ package net.wg.gui.battle.views.minimap
          this._currForeground = this._foregrounds[this._currentSizeIndex];
          this._currForeground.visible = true;
          this.updateContainersSize();
-         this.updateCursorBlock();
       }
       
       private function updateContainersSize() : void
@@ -316,41 +308,20 @@ package net.wg.gui.battle.views.minimap
          }
       }
       
-      override public function onEntryMouseClickEvent(param1:MouseEvent, param2:Number, param3:Number) : void
-      {
-         onMinimapClickedS(this.mapHit.mouseX,this.mapHit.mouseY,MouseEventEx(param1).buttonIdx,this._currentSizeIndex);
-      }
-      
       private function onMouseOverHandler(param1:MouseEvent) : void
       {
-         if(param1 is MouseEventEx && param1.target == this._clickAreaSpr || param1.target == this.mouseBlockMC)
+         if(param1 is MouseEventEx && param1.target == this._clickAreaSpr && this._bIsHintPanelEnabled)
          {
-            if(this._bIsHintPanelEnabled)
-            {
-               this.minimapHint.gotoAndPlay(ANIM_FADE_OUT);
-            }
-            handleMouseOverUIMinimap(true);
+            this.minimapHint.gotoAndPlay(ANIM_FADE_OUT);
          }
       }
       
       private function onMouseOutHandler(param1:MouseEvent) : void
       {
-         if(param1 is MouseEventEx && param1.target == this._clickAreaSpr || param1.target == this.mouseBlockMC)
+         if(param1 is MouseEventEx && param1.target == this._clickAreaSpr && this._bIsHintPanelEnabled)
          {
-            if(this._bIsHintPanelEnabled)
-            {
-               this.minimapHint.gotoAndPlay(ANIM_FADE_IN);
-            }
-            handleMouseOverUIMinimap(false);
+            this.minimapHint.gotoAndPlay(ANIM_FADE_IN);
          }
-      }
-      
-      private function updateCursorBlock() : void
-      {
-         this.mouseBlockMC.x = this._currForeground.x;
-         this.mouseBlockMC.y = this._currForeground.y;
-         this.mouseBlockMC.width = this._currForeground.width;
-         this.mouseBlockMC.height = this._currForeground.height;
       }
    }
 }

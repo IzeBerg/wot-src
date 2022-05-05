@@ -35,6 +35,8 @@ package
       
       public static const MAPS_ICONS_MAPBOX_BG:String = "../maps/icons/mapbox/bg.png";
       
+      public static const MAPS_ICONS_MAPBOX_SURVEY_BG:String = "../maps/icons/mapbox/survey/bg.png";
+      
       public static const MAPS_ICONS_MAPSTRAINING_BG:String = "../maps/icons/mapsTraining/bg.png";
       
       public static const MAPS_ICONS_MAPSTRAINING_MINIMAP_BG:String = "../maps/icons/mapsTraining/minimap/bg.png";

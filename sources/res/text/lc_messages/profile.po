@@ -19,6 +19,12 @@ msgstr "Наличие:"
 msgid "profile/dropdown/labels/all"
 msgstr "Случайный, Ротный"
 
+msgid "profile/dropdown/labels/battleRoyaleSolo"
+msgstr "Стальной охотник, одиночный"
+
+msgid "profile/dropdown/labels/battleRoyaleSquad"
+msgstr "Стальной охотник, взвод"
+
 msgid "profile/dropdown/labels/clan"
 msgstr "Глобальная карта"
 
@@ -191,6 +197,65 @@ msgstr ""
 
 msgid "profile/params/tooltip/battlesCount/header"
 msgstr "Бои"
+
+msgid "profile/params/tooltip/brAverageLevel/body"
+msgstr ""
+"Отношение суммы значений всех достигнутых уровней к количеству проведённых "
+"боёв."
+
+msgid "profile/params/tooltip/brAverageLevel/header"
+msgstr "Средний уровень"
+
+msgid "profile/params/tooltip/brAverageRank/body"
+msgstr ""
+"Отношение суммы всех значений позиций в послебоевой статистике к количеству "
+"проведённых боёв."
+
+msgid "profile/params/tooltip/brAverageRank/header"
+msgstr "Средняя позиция"
+
+msgid "profile/params/tooltip/brAvgDamage/body"
+msgstr ""
+"Отношение общего количества нанесённого урона к количеству проведённых боёв."
+
+msgid "profile/params/tooltip/brAvgDamage/header"
+msgstr "Нанесённый урон"
+
+msgid "profile/params/tooltip/brBattlesCount/body"
+msgstr "Общее количество проведённых боёв."
+
+msgid "profile/params/tooltip/brBattlesCount/header"
+msgstr "Бои"
+
+msgid "profile/params/tooltip/brMaxDamage/body"
+msgstr ""
+"Максимальный урон, нанесённый технике противника за бой.\n"
+"Рекорд установлен на %(value_0)s."
+
+msgid "profile/params/tooltip/brMaxDamage/header"
+msgstr "Максимальный урон за бой"
+
+msgid "profile/params/tooltip/brMaxExp/body"
+msgstr ""
+"Максимальный опыт, заработанный за бой, с учётом премиум аккаунта.\n"
+"Рекорд установлен на %(value_0)s."
+
+msgid "profile/params/tooltip/brMaxExp/header"
+msgstr "Максимальный опыт за бой"
+
+msgid "profile/params/tooltip/brMaxFrags/body"
+msgstr ""
+"Максимальное количество машин противника, лично уничтоженных за бой.\n"
+"Рекорд установлен на %(value_0)s."
+
+msgid "profile/params/tooltip/brMaxFrags/header"
+msgstr "Максимум уничтожено за бой"
+
+msgid "profile/params/tooltip/brWins/body"
+msgstr "Общее количество побед."
+
+msgid "profile/params/tooltip/brWins/header"
+msgstr "Победы"
 
 msgid "profile/params/tooltip/capturePoints/body"
 msgstr "Количество заработанных очков захвата базы противника"
@@ -1043,6 +1108,12 @@ msgstr "Рекордные показатели"
 msgid "section/statistics/bodyParams/label/resource"
 msgstr "Промресурс"
 
+msgid "section/statistics/chart/class/tooltip/body"
+msgstr "Количество боёв на этом классе техники"
+
+msgid "section/statistics/chart/class/tooltip/header"
+msgstr "Класс техники: %(value)s"
+
 msgid "section/statistics/chart/level/tooltip/body"
 msgstr "Количество боёв на технике этого уровня"
 
@@ -1067,17 +1138,29 @@ msgstr "Количество боёв на технике этой нации"
 msgid "section/statistics/chart/nation/tooltip/header"
 msgstr "Teхника нации: %(value)s"
 
+msgid "section/statistics/chart/place/tooltip/body"
+msgstr "Количество боёв с данным занятым местом"
+
+msgid "section/statistics/chart/place/tooltip/header"
+msgstr "Занятое место: %(value)s"
+
 msgid "section/statistics/chart/type/tooltip/body"
 msgstr "Количество боёв на этом типе техники"
 
 msgid "section/statistics/chart/type/tooltip/header"
 msgstr "Тип техники: %(value)s"
 
+msgid "section/statistics/charts/byClassLabel"
+msgstr "По классу"
+
 msgid "section/statistics/charts/byLevelLabel"
 msgstr "По уровню"
 
 msgid "section/statistics/charts/byNationLabel"
 msgstr "По нации"
+
+msgid "section/statistics/charts/byPlaceLabel"
+msgstr "По занятым местам"
 
 msgid "section/statistics/charts/byTypeLabel"
 msgstr "По типу"
@@ -1123,6 +1206,12 @@ msgstr "Количество оглушений"
 
 msgid "section/statistics/headerText/all"
 msgstr "Случайные и Ротные"
+
+msgid "section/statistics/headerText/battleRoyaleSolo"
+msgstr "Стальной охотник"
+
+msgid "section/statistics/headerText/battleRoyaleSquad"
+msgstr "Стальной охотник"
 
 msgid "section/statistics/headerText/clan"
 msgstr "Глобальная карта"
@@ -1295,6 +1384,12 @@ msgstr "Ближайшие награды"
 msgid "section/summary/labels/significantAwards"
 msgstr "Значимые награды"
 
+msgid "section/summary/scores/averageLevel"
+msgstr "Средний уровень"
+
+msgid "section/summary/scores/averageRank"
+msgstr "Средняя позиция"
+
 msgid "section/summary/scores/avgDamage"
 msgstr "Средний урон за бой"
 
@@ -1303,6 +1398,9 @@ msgstr "Средний опыт за бой"
 
 msgid "section/summary/scores/coolSigns"
 msgstr "Знаки классности «Мастер»"
+
+msgid "section/summary/scores/damageDealt"
+msgstr "Нанесённый урон"
 
 msgid "section/summary/scores/hits"
 msgstr "Попадания"
@@ -1354,6 +1452,14 @@ msgstr "Есть в Ангаре"
 msgid "section/technique/emptyScreenLabel/battleType/all"
 msgstr "В Ангаре нет техники, принимавшей участие в Случайных и Ротных боях"
 
+msgid "section/technique/emptyScreenLabel/battleType/battleRoyaleSolo"
+msgstr ""
+"В Ангаре нет техники, принимавшей участие в событии «Стальной охотник»."
+
+msgid "section/technique/emptyScreenLabel/battleType/battleRoyaleSquad"
+msgstr ""
+"В Ангаре нет техники, принимавшей участие в событии «Стальной охотник»."
+
 msgid "section/technique/emptyScreenLabel/battleType/epicRandom"
 msgstr "В Ангаре нет техники, принимавшей участие в Генеральном сражении"
 
@@ -1382,6 +1488,18 @@ msgstr "В Ангаре нет техники, принимавшей участ
 msgid "section/technique/emptyScreenLabel/battleType/team"
 msgstr "В Ангаре нет техники, принимавшей участие в Командных боях"
 
+msgid "section/technique/sort/tooltip/avgDamage/body"
+msgstr "Сортировать по среднему урону за бой."
+
+msgid "section/technique/sort/tooltip/avgDamage/header"
+msgstr "Средний урон"
+
+msgid "section/technique/sort/tooltip/avgFrags/body"
+msgstr "Сортировать по количеству уничтоженной техники противника за бой."
+
+msgid "section/technique/sort/tooltip/avgFrags/header"
+msgstr "Уничтожено машин противника"
+
 msgid "section/technique/sort/tooltip/avgexp/body"
 msgstr "Сортировать по среднему опыту за бой"
 
@@ -1393,6 +1511,12 @@ msgstr "Сортировать по количеству боёв"
 
 msgid "section/technique/sort/tooltip/battlesCount/header"
 msgstr "Бои"
+
+msgid "section/technique/sort/tooltip/class/body"
+msgstr "Сортировать по классу техники"
+
+msgid "section/technique/sort/tooltip/class/header"
+msgstr "Класс"
 
 msgid "section/technique/sort/tooltip/lvl/body"
 msgstr "Сортировать по уровню техники"

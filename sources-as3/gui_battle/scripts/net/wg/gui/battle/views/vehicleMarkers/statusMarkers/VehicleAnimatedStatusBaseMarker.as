@@ -15,6 +15,8 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       
       protected static const STATE_HIDDEN:String = "hidden";
       
+      protected static const LABEL_SOURCE:String = "_source";
+      
       protected static const HIDDEN_STATE_STOP_FRAME:int = 52;
       
       protected static const HIDE_STATE_STOP_FRAME:int = 41;
@@ -29,6 +31,8 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       private var _statusID:int = -1;
       
       private var _disposed:Boolean = false;
+      
+      private var _isSourceVehicle:Boolean = false;
       
       public function VehicleAnimatedStatusBaseMarker()
       {
@@ -119,6 +123,8 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
          this.oneShotAnimation = param3;
          visible = true;
          gotoAndPlay(!!param4 ? STATE_SHOW : STATE_BASE);
+         this._isSourceVehicle = param2;
+         this.updateSourceVehicle();
       }
       
       public function updateEffectTimer(param1:int, param2:Boolean, param3:Boolean = false) : void
@@ -152,6 +158,10 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       {
       }
       
+      protected function updateSourceVehicle() : void
+      {
+      }
+      
       protected function onHiddenStateShowed() : void
       {
          visible = false;
@@ -174,6 +184,11 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       public function isDisposed() : Boolean
       {
          return this._disposed;
+      }
+      
+      public function get arrowColorFrame() : String
+      {
+         return !!this._isSourceVehicle ? this.color + LABEL_SOURCE : this.color;
       }
    }
 }

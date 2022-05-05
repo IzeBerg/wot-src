@@ -12,6 +12,7 @@ package net.wg.app.impl
    import net.wg.gui.battle.epicRandom.VO.daapi.EpicRandomDAAPIVehicleInfoVO;
    import net.wg.gui.battle.ranked.VO.daapi.RankedDAAPIVehicleInfoVO;
    import net.wg.gui.components.containers.CursorManagedContainer;
+   import net.wg.gui.components.containers.HiddenServiceManagedContainer;
    import net.wg.gui.components.containers.MainViewContainer;
    import net.wg.gui.components.containers.ManagedContainer;
    import net.wg.gui.components.containers.SimpleManagedContainer;
@@ -110,6 +111,8 @@ package net.wg.app.impl
       
       private var _serviceLayout:ManagedContainer;
       
+      private var _hiddenServiceLayout:HiddenServiceManagedContainer;
+      
       private var _overlay:ManagedContainer;
       
       public function BattleApp()
@@ -159,6 +162,7 @@ package net.wg.app.impl
       override protected function createContainers() : void
       {
          this._serviceLayout = new ManagedContainer(LAYER_NAMES.SERVICE_LAYOUT);
+         this._hiddenServiceLayout = new HiddenServiceManagedContainer(LAYER_NAMES.HIDDEN_SERVICE_LAYOUT);
          this._views = new MainViewContainer(LAYER_NAMES.VIEWS);
          this._windows = new ManagedContainer(LAYER_NAMES.WINDOWS);
          this._fullscreenWindows = new ManagedContainer(LAYER_NAMES.FULLSCREEN_WINDOWS);
@@ -198,7 +202,7 @@ package net.wg.app.impl
          if(!containers)
          {
             _loc1_ = DisplayObject(utils.IME.getContainer());
-            containers = new <DisplayObject>[this._views,this._windows,this._fullscreenWindows,this._systemMessages,this._dialogs,this._overlay,_loc1_,this._serviceLayout,this._toolTips,this._cursorCtnr];
+            containers = new <DisplayObject>[this._hiddenServiceLayout,this._views,this._windows,this._fullscreenWindows,this._systemMessages,this._dialogs,this._overlay,_loc1_,this._serviceLayout,this._toolTips,this._cursorCtnr];
          }
          return containers;
       }

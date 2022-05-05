@@ -1,7 +1,6 @@
 package net.wg.gui.battle.views.vehicleMarkers
 {
    import flash.display.MovieClip;
-   import flash.events.Event;
    import flash.geom.Point;
    import flash.utils.getDefinitionByName;
    import net.wg.data.constants.Values;
@@ -13,44 +12,21 @@ package net.wg.gui.battle.views.vehicleMarkers
    public class VehicleActionMarker extends BaseActionMarker implements IDisposable
    {
       
-      private static const ACTION_ICON_STATE:String = "actionIconState";
-      
       private static const BASE_HEIGHT:int = 20;
       
       private static const HIDE_DURATION:int = 1000;
       
       private static const ACTION_RENDERER_MAP:Object = {
          "reloading_gun":VehicleMarkersLinkages.ACTION_RELOADING,
-         "reloading_gunSPG":VehicleMarkersLinkages.ACTION_RELOADING,
          "help_me":VehicleMarkersLinkages.ACTION_HELP_ME,
-         "help_meSPG":VehicleMarkersLinkages.ACTION_HELP_ME,
-         "help_me_ex":VehicleMarkersLinkages.ACTION_HELP_ME_EX,
-         "help_me_exSPG":VehicleMarkersLinkages.ACTION_HELP_ME_EX,
-         "follow_me":VehicleMarkersLinkages.ACTION_FOLLOW_ME,
-         "follow_meSPG":VehicleMarkersLinkages.ACTION_FOLLOW_ME,
          "attackSender":VehicleMarkersLinkages.ACTION_ATTACK_SENDER,
-         "attackSenderSPG":VehicleMarkersLinkages.ACTION_ATTACK_SENDER,
-         "negative":VehicleMarkersLinkages.ACTION_NEGATIVE,
-         "negativeSPG":VehicleMarkersLinkages.ACTION_NEGATIVE,
          "positive":VehicleMarkersLinkages.ACTION_POSITIVE,
-         "positiveSPG":VehicleMarkersLinkages.ACTION_POSITIVE,
-         "stop":VehicleMarkersLinkages.ACTION_STOP,
-         "stopSPG":VehicleMarkersLinkages.ACTION_STOP,
          "thanks":VehicleMarkersLinkages.ACTION_THANKS,
+         "help_me_ex":VehicleMarkersLinkages.ACTION_HELP_ME_EX,
          "turn_back":VehicleMarkersLinkages.ACTION_TURN_BACK,
-         "turn_backSPG":VehicleMarkersLinkages.ACTION_TURN_BACK,
          "supportingAlly":VehicleMarkersLinkages.ACTION_SUPPORTING_ALLY,
          "supportingYou":VehicleMarkersLinkages.ACTION_SUPPORTING_YOU,
          "attack":VehicleMarkersLinkages.ACTION_ATTACK,
-         "attackOrder":VehicleMarkersLinkages.ACTION_ATTACK_ORDER,
-         "attackOrderBerserk":VehicleMarkersLinkages.ACTION_ATTACK_BERSERK_ORDER,
-         "attackSPG":VehicleMarkersLinkages.ACTION_ATTACK_SPG,
-         "allySos":VehicleMarkersLinkages.ACTION_ALLY_SOS_EX,
-         "orderConfirm":VehicleMarkersLinkages.ACTION_ORDER_CONFIRM,
-         "link":VehicleMarkersLinkages.ACTION_LINK,
-         "smart":VehicleMarkersLinkages.ACTION_SMART,
-         "hold":VehicleMarkersLinkages.ACTION_HOLD,
-         "scout":VehicleMarkersLinkages.ACTION_SCOUT,
          "attackAlternative":VehicleMarkersLinkages.ACTION_ATTACK_ALTERNATIVE,
          "supportingAllyAlternative":VehicleMarkersLinkages.ACTION_SUPPORTING_ALLY_ALTERNATIVE,
          "goingToAlternative":VehicleMarkersLinkages.ACTION_GOING_TO,
@@ -61,17 +37,10 @@ package net.wg.gui.battle.views.vehicleMarkers
          "attackObjectiveAlternative":VehicleMarkersLinkages.ACTION_ATTACKING_OBJECTIVE,
          "defendObjectiveAlternative":VehicleMarkersLinkages.ACTION_DEFENDING_OBJECTIVE,
          "attackingObjectiveAlternative":VehicleMarkersLinkages.ACTION_ATTACKING_OBJECTIVE,
-         "defendingObjectiveAlternative":VehicleMarkersLinkages.ACTION_DEFENDING_OBJECTIVE,
-         "NoCondition":VehicleMarkersLinkages.ACTION_NO_CONDITION,
-         "OnFireCondition":VehicleMarkersLinkages.ACTION_ON_FIRE,
-         "DrowningCondition":VehicleMarkersLinkages.ACTION_DROWNING,
-         "OverturnedCondition":VehicleMarkersLinkages.ACTION_OVERTURNED,
-         "NoMoveCondition":VehicleMarkersLinkages.ACTION_NO_MOVING,
-         "NoShotCondition":VehicleMarkersLinkages.ACTION_NO_SHOOTING,
-         "OnSOSCondition":VehicleMarkersLinkages.ACTION_HELP_ME_EX,
-         "OnSpottedCondition":VehicleMarkersLinkages.ACTION_ALLY_OBSERVED_EX,
-         "OnDeadCondition":VehicleMarkersLinkages.ACTION_ALLY_DEAD_EX
+         "defendingObjectiveAlternative":VehicleMarkersLinkages.ACTION_DEFENDING_OBJECTIVE
       };
+      
+      private static const ACTION_ICON_STATE:String = "actionIconState";
        
       
       private var _isVisible:Boolean = false;
@@ -89,8 +58,6 @@ package net.wg.gui.battle.views.vehicleMarkers
       private var _count:int = 0;
       
       private var _lastState:int = -1;
-      
-      private var _currentActionName:String = "";
       
       public const ARROW_POSITION:Point = new Point(0,0);
       
@@ -133,11 +100,10 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       public function showAction(param1:String, param2:Boolean = false) : void
       {
-         if(param1 == Values.EMPTY_STR || this._currentActionName == param1)
+         if(param1 == Values.EMPTY_STR)
          {
             return;
          }
-         this._currentActionName = param1;
          var _loc3_:String = ACTION_RENDERER_MAP[param1];
          if(_loc3_ != Values.EMPTY_STR)
          {
@@ -159,17 +125,11 @@ package net.wg.gui.battle.views.vehicleMarkers
             if(param1)
             {
                this._hideTween = new Tween(HIDE_DURATION,this._currentRenderer,{"alpha":0});
-               this._hideTween.onComplete = this.onAnimationComplete;
             }
             else
             {
-               if(this._hideTween)
-               {
-                  this._hideTween.onComplete = null;
-               }
                this._currentRenderer.alpha = 0;
             }
-            this._currentActionName = Values.EMPTY_STR;
             this._isVisible = false;
          }
       }
@@ -233,11 +193,6 @@ package net.wg.gui.battle.views.vehicleMarkers
          {
          }
          return renderer;
-      }
-      
-      private function onAnimationComplete() : void
-      {
-         dispatchEvent(new Event(Event.COMPLETE));
       }
       
       override protected function get getReplyPosition() : Point

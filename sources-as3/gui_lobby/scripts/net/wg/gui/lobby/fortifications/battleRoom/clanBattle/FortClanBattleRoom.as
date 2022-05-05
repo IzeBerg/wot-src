@@ -155,6 +155,8 @@ package net.wg.gui.lobby.fortifications.battleRoom.clanBattle
       
       public var reserve3:ReserveSlot = null;
       
+      public var reserve4:ReserveSlot = null;
+      
       private var _model:FortClanBattleRoomVO = null;
       
       private var _isCommander:Boolean = false;
@@ -174,7 +176,7 @@ package net.wg.gui.lobby.fortifications.battleRoom.clanBattle
       public function FortClanBattleRoom()
       {
          super();
-         this._reserveSlots = new <ReserveSlot>[this.reserve1,this.reserve2,this.reserve3];
+         this._reserveSlots = new <ReserveSlot>[this.reserve1,this.reserve2,this.reserve3,this.reserve4];
          alpha = 0;
       }
       
@@ -225,7 +227,7 @@ package net.wg.gui.lobby.fortifications.battleRoom.clanBattle
          this.minimapGrid.visible = param1.isBattleType;
          this.minimapGrid.back.visible = this.minimapGrid.dices.visible = !param1.isMapEnabled;
          this.minimap.visible = param1.isBattleType;
-         this.reserve3.visible = param1.isBattleType;
+         this.reserve4.visible = param1.isBattleType;
          if(!param1.isBattleType)
          {
             this.waitForDirections.visible = false;
@@ -462,6 +464,8 @@ package net.wg.gui.lobby.fortifications.battleRoom.clanBattle
          this.reserve2 = null;
          this.reserve3.dispose();
          this.reserve3 = null;
+         this.reserve4.dispose();
+         this.reserve4 = null;
          if(this.btnConfigure)
          {
             this.btnConfigure.removeEventListener(ButtonEvent.CLICK,this.onBtnConfigureClickHandler);

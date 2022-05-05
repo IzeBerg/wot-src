@@ -61,6 +61,16 @@ package net.wg.data.constants.generated
       
       public static const STEALTH_RADAR_INACTIVE:String = "stealthRadarInactive";
       
+      public static const CORRODING_SHOT:String = "corrodingShot";
+      
+      public static const FIRE_CIRCLE:String = "fireCircle";
+      
+      public static const THUNDER_STRIKE:String = "thunderStrike";
+      
+      public static const SHOT_PASSION:String = "shotPassion";
+      
+      public static const HP_RESTORE_ON_DAMAGE:String = "hpRestoreOnDamage";
+      
       public static const WARNING_VIEW:String = "warningView";
       
       public static const CRITICAL_VIEW:String = "criticalView";

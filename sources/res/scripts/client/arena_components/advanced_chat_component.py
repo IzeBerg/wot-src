@@ -333,7 +333,7 @@ class AdvancedChatComponent(ClientArenaComponent):
             self.__removeActualTargetIfDestroyed(commands, playerVehID, baseId, MarkerType.BASE_MARKER_TYPE)
         return
 
-    def __onArenaVehicleKilled(self, targetID, attackerID, equipmentID, reason):
+    def __onArenaVehicleKilled(self, targetID, attackerID, equipmentID, reason, numVehiclesAffected):
         if self.__markerInFocus is None or not self.sessionProvider.shared.chatCommands:
             return
         playerVehID = avatar_getter.getPlayerVehicleID()

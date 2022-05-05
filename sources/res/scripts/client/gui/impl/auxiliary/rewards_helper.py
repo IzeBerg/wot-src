@@ -2,7 +2,7 @@ import logging, types, itertools
 from collections import namedtuple
 from blueprints.BlueprintTypes import BlueprintTypes
 from frameworks.wulf import ViewFlags
-from gui.battle_royale.constants import ROYALE_POSTBATTLE_REWARDS_COUNT
+from battle_royale.gui.constants import ROYALE_POSTBATTLE_REWARDS_COUNT
 from gui.Scaleform.genConsts.STORE_CONSTANTS import STORE_CONSTANTS
 from gui.Scaleform.genConsts.PROGRESSIVEREWARD_CONSTANTS import PROGRESSIVEREWARD_CONSTANTS as prConst
 from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS

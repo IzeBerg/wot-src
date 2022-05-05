@@ -102,7 +102,7 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
                     damageIndex = DAMAGE_INFO_INDICES['DEVICE_CRITICAL']
                 if DAMAGE_INFO_CODES[damageIndex].startswith('DEVICE_DESTROYED'):
                     damageIndex = DAMAGE_INFO_INDICES['DEVICE_DESTROYED']
-            avatar.showVehicleDamageInfo(self.entity.id, damageIndex, damage.extraIndex, damage.entityID, damage.equipmentID, self.__isAttachingToVehicle)
+            avatar.showVehicleDamageInfo(self.entity.id, damageIndex, damage.extraIndex, damage.entityID, damage.equipmentID)
 
     @noexcept
     def update_vehicleOptionalDeviceStatusList(self, deviceList):
@@ -198,7 +198,7 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
         avatar = self._avatar()
         if not avatar:
             return
-        avatar.updateTargetVehicleID(self.entity.id, targetVehicleID.targetID)
+        avatar.updateTargetVehicleID(targetVehicleID.targetID)
 
     @noexcept
     def update_targetingInfo(self, data):
@@ -226,22 +226,14 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
         avatar = self._avatar()
         if not avatar:
             return
-        avatar.battleEventsSummary(self.entity.id, data)
 
-    @noexcept
-    def update_deathZonesStatus(self, data):
-        avatar = self._avatar()
-        if not avatar:
-            return
-        avatar.updateDeathZonesStatus(self.entity.id, data)
-
-    def onBattleEvents(self, vehicleID, battleEvents):
+    def onBattleEvents(self, battleEvents):
         avatar = self._avatar()
         if not avatar:
             return
         if _DO_LOG:
-            self._doLog(('onBattleEvents {}, {}').format(vehicleID, battleEvents))
-        avatar.onBattleEvents(vehicleID, battleEvents)
+            self._doLog(('onBattleEvents {}').format(battleEvents))
+        avatar.onBattleEvents(battleEvents)
 
     def onObservedByEnemy(self):
         avatar = self._avatar()
@@ -357,7 +349,6 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
         self.set_dualGunStatus()
         self.set_burnoutWarning()
         self.set_burnoutUnavailable()
-        self.set_drownLevel()
         self.set_isOtherVehicleDamagedDevicesVisible()
         self.set_overturnLevel()
         self.set_smokeInfo()
@@ -366,8 +357,6 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
         self.set_vehicleHealthInfo()
         self.set_welcomeToSector()
         self.set_siegeStateStatus()
-        if self.entity.isOnFire():
-            self.entity.fire.triggerFireUIandSound()
 
     def __getattr__(self, item):
         if _DO_LOG:

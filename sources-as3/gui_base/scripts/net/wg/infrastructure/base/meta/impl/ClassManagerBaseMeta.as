@@ -148,11 +148,9 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.battleRoyale.IConfiguratorRenderer;
    import net.wg.gui.components.battleRoyale.ModuleConfiguratorEvent;
    import net.wg.gui.components.battleRoyale.VehModuleConfiguratorCmp;
-   import net.wg.gui.components.battleRoyale.VehicleWeakZonesBase;
    import net.wg.gui.components.battleRoyale.data.ArrowDrawCommand;
    import net.wg.gui.components.battleRoyale.data.ConfiguratorColumnVO;
    import net.wg.gui.components.battleRoyale.data.ConfiguratorModuleVO;
-   import net.wg.gui.components.battleRoyale.data.IVehicleWeakZonesVO;
    import net.wg.gui.components.carousels.CarouselEnvironment;
    import net.wg.gui.components.carousels.ExtendedHorizontalScroller;
    import net.wg.gui.components.carousels.ExtendedHorizontalScrollerViewPort;
@@ -251,6 +249,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.containers.Group;
    import net.wg.gui.components.containers.GroupEx;
    import net.wg.gui.components.containers.GroupLayout;
+   import net.wg.gui.components.containers.HiddenServiceManagedContainer;
    import net.wg.gui.components.containers.HorizontalGroupLayout;
    import net.wg.gui.components.containers.IGroupEx;
    import net.wg.gui.components.containers.MainViewContainer;
@@ -1207,8 +1206,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_BATTLEROYALE_MODULECONFIGURATOREVENT:Class = ModuleConfiguratorEvent;
       
-      public static const NET_WG_GUI_COMPONENTS_BATTLEROYALE_VEHICLEWEAKZONESBASE:Class = VehicleWeakZonesBase;
-      
       public static const NET_WG_GUI_COMPONENTS_BATTLEROYALE_VEHMODULECONFIGURATORCMP:Class = VehModuleConfiguratorCmp;
       
       public static const NET_WG_GUI_COMPONENTS_BATTLEROYALE_DATA_ARROWDRAWCOMMAND:Class = ArrowDrawCommand;
@@ -1216,8 +1213,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_BATTLEROYALE_DATA_CONFIGURATORCOLUMNVO:Class = ConfiguratorColumnVO;
       
       public static const NET_WG_GUI_COMPONENTS_BATTLEROYALE_DATA_CONFIGURATORMODULEVO:Class = ConfiguratorModuleVO;
-      
-      public static const NET_WG_GUI_COMPONENTS_BATTLEROYALE_DATA_IVEHICLEWEAKZONESVO:Class = IVehicleWeakZonesVO;
       
       public static const NET_WG_GUI_COMPONENTS_CAROUSELS_CAROUSELENVIRONMENT:Class = CarouselEnvironment;
       
@@ -1414,6 +1409,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_CONTAINERS_GROUPEX:Class = GroupEx;
       
       public static const NET_WG_GUI_COMPONENTS_CONTAINERS_GROUPLAYOUT:Class = GroupLayout;
+      
+      public static const NET_WG_GUI_COMPONENTS_CONTAINERS_HIDDENSERVICEMANAGEDCONTAINER:Class = HiddenServiceManagedContainer;
       
       public static const NET_WG_GUI_COMPONENTS_CONTAINERS_HORIZONTALGROUPLAYOUT:Class = HorizontalGroupLayout;
       

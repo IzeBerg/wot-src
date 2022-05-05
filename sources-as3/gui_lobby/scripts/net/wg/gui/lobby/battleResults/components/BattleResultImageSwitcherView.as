@@ -1,6 +1,5 @@
 package net.wg.gui.lobby.battleResults.components
 {
-   import flash.display.DisplayObject;
    import net.wg.data.constants.Errors;
    import net.wg.data.constants.ImageCacheTypes;
    import net.wg.infrastructure.base.UIComponentEx;
@@ -8,26 +7,17 @@ package net.wg.gui.lobby.battleResults.components
    
    public class BattleResultImageSwitcherView extends UIComponentEx
    {
-      
-      private static const STATUS_WIN:String = "win";
-      
-      private static const COMMANDER_X:int = 685;
-      
-      private static const COMMANDER_Y:int = 0;
        
       
       public var vehicleIcon:IImage = null;
       
       public var areaIcon:IImage = null;
       
-      private var _defaultChildIndex:int = 0;
-      
       public function BattleResultImageSwitcherView()
       {
          super();
          this.vehicleIcon.cacheType = ImageCacheTypes.NOT_USE_CACHE;
          this.areaIcon.cacheType = ImageCacheTypes.NOT_USE_CACHE;
-         this._defaultChildIndex = getChildIndex(DisplayObject(this.vehicleIcon));
       }
       
       override protected function onDispose() : void
@@ -39,24 +29,10 @@ package net.wg.gui.lobby.battleResults.components
          super.onDispose();
       }
       
-      public function setCommanderIcon(param1:String) : void
-      {
-         this.vehicleIcon.source = param1 == STATUS_WIN ? RES_ICONS.MAPS_ICONS_RTSBATTLES_POSTBATTLE_STRATEGIST_WIN : RES_ICONS.MAPS_ICONS_RTSBATTLES_POSTBATTLE_STRATEGIST;
-         this.vehicleIcon.x = COMMANDER_X;
-         this.vehicleIcon.y = COMMANDER_Y;
-         var _loc2_:DisplayObject = DisplayObject(this.vehicleIcon);
-         if(numChildren - 1 != getChildIndex(_loc2_))
-         {
-            setChildIndex(_loc2_,numChildren - 1);
-         }
-      }
-      
       public function setVehicleIcon(param1:Boolean, param2:String, param3:int) : void
       {
          var _loc4_:VehicleIconPreset = null;
-         var _loc5_:DisplayObject = null;
-         this.vehicleIcon.visible = param1;
-         if(param1)
+         if(this.vehicleIcon.visible = param1)
          {
             _loc4_ = VehicleIconPreset.getPreset(param3);
             App.utils.asserter.assertNotNull(_loc4_,"Icon preset for level: " + param3 + Errors.WASNT_FOUND);
@@ -64,11 +40,6 @@ package net.wg.gui.lobby.battleResults.components
             this.vehicleIcon.scaleX = this.vehicleIcon.scaleY = _loc4_.scale;
             this.vehicleIcon.x = _loc4_.offset.x;
             this.vehicleIcon.y = _loc4_.offset.y;
-            _loc5_ = DisplayObject(this.vehicleIcon);
-            if(this._defaultChildIndex != getChildIndex(_loc5_))
-            {
-               setChildIndex(_loc5_,this._defaultChildIndex);
-            }
          }
       }
    }

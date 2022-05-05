@@ -44,7 +44,7 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
       
       private static const LABEL_SQUADMAN:String = "squadman";
       
-      protected static const ATLAS_NAME_DELIMITER:String = "_";
+      private static const ATLAS_NAME_DELIMITER:String = "_";
       
       private static const HP_OFFSET_X:int = 8;
       
@@ -132,7 +132,6 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
          this._vehicleAnimations = {};
          this._hpTypeMap = {};
          super();
-         mouseEnabled = mouseChildren = false;
          this._vehicleAnimations[VehicleMinimapEntryConst.ALLY_GREEN_ANIMATION] = this.allyGreenAnimation;
          this._vehicleAnimations[VehicleMinimapEntryConst.ENEMY_RED_ANIMATION] = this.enemyRedAnimation;
          this._vehicleAnimations[VehicleMinimapEntryConst.ENEMY_PURPLE_ANIMATION] = this.enemyPurpleAnimation;
@@ -167,7 +166,7 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
                this._currentTextField.htmlText = this._vehicleName;
                this._currentTextField.autoSize = TextFieldAutoSize.LEFT;
                _loc1_ = this._currentTextField.getTextFormat();
-               _loc1_.color = App.colorSchemeMgr.getRGB(this.getTextColorSchema());
+               _loc1_.color = App.colorSchemeMgr.getRGB(VehicleMinimapEntryConst.TEXT_COLOR_SCHEME_PREFIX + this._guiLabel + VehicleMinimapEntryConst.TEXT_COLOR_SCHEME_POSTFIX);
                this._currentTextField.setTextFormat(_loc1_);
                this._currentTextField.height = this._currentTextField.textHeight;
                this._currentTextField.visible = true;
@@ -203,7 +202,14 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
                this._currVehicleAnimation.stop();
                this._currVehicleAnimation.visible = false;
             }
-            this._atlasItemName = this.getAtlasItemName();
+            if(this._isInAoI)
+            {
+               this._atlasItemName = this._classTagName + ATLAS_NAME_DELIMITER + this._guiLabel + ATLAS_NAME_DELIMITER + this._deadState + this._aliasColor;
+            }
+            else
+            {
+               this._atlasItemName = VehicleMinimapEntryConst.LAST_LIT_ICON_NAME + ATLAS_NAME_DELIMITER + this._guiLabel + ATLAS_NAME_DELIMITER + this._deadState + this._aliasColor;
+            }
             if(this._deadState == VehicleMinimapEntryConst.DEAD)
             {
                if(this._isDeadPermanent)
@@ -269,35 +275,6 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
                this.hpCircle.updateProgress(Math.max(0,this._percentHP * 0.01));
             }
          }
-      }
-      
-      public function getClassTagName() : String
-      {
-         return this._classTagName;
-      }
-      
-      public function getDeadState() : String
-      {
-         return this._deadState;
-      }
-      
-      protected function getAtlasItemName() : String
-      {
-         var _loc1_:String = null;
-         if(this._isInAoI)
-         {
-            _loc1_ = this._classTagName + ATLAS_NAME_DELIMITER + this._guiLabel + ATLAS_NAME_DELIMITER + this._deadState + this._aliasColor;
-         }
-         else
-         {
-            _loc1_ = VehicleMinimapEntryConst.LAST_LIT_ICON_NAME + ATLAS_NAME_DELIMITER + this._guiLabel + ATLAS_NAME_DELIMITER + this._deadState + this._aliasColor;
-         }
-         return _loc1_;
-      }
-      
-      protected function getTextColorSchema() : String
-      {
-         return VehicleMinimapEntryConst.TEXT_COLOR_SCHEME_PREFIX + this._guiLabel + VehicleMinimapEntryConst.TEXT_COLOR_SCHEME_POSTFIX;
       }
       
       override protected function onDispose() : void

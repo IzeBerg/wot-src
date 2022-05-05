@@ -6,13 +6,9 @@ package net.wg.gui.battle.battleRoyale.views.configurator.data
    {
        
       
-      public var nationIcon:String = "";
+      public var vehTypeIcon:String = "";
       
       public var vehName:String = "";
-      
-      public var weakPointsText:String = "";
-      
-      public var alertIcon:String = "";
       
       public function BattleVehicleConfiguratorVO(param1:Object = null)
       {

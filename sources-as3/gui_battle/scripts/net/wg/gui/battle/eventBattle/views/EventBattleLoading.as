@@ -13,11 +13,6 @@ package net.wg.gui.battle.eventBattle.views
          super();
       }
       
-      override public function as_loaded() : void
-      {
-         loadingProgress.gotoAndStop(loadingProgress.totalFrames);
-      }
-      
       override protected function configUI() : void
       {
          super.configUI();
@@ -31,6 +26,11 @@ package net.wg.gui.battle.eventBattle.views
          btnLeft.removeEventListener(ButtonEvent.CLICK,this.onButtonsClickHandler);
          btnRight.removeEventListener(ButtonEvent.CLICK,this.onButtonsClickHandler);
          super.onDispose();
+      }
+      
+      override public function as_loaded() : void
+      {
+         loadingProgress.gotoAndStop(loadingProgress.totalFrames);
       }
       
       override protected function onStageClickHandler(param1:MouseEvent) : void

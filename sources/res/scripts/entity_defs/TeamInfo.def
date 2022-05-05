@@ -9,7 +9,12 @@
 		</teamID>
 	</Properties>
 	<TempProperties/>
-	<ClientMethods/>
+	<ClientMethods>
+		<onCombatEquipmentUsed>
+			<Arg>OBJECT_ID</Arg>
+			<Arg>OBJECT_ID</Arg>
+		</onCombatEquipmentUsed>
+	</ClientMethods>
 	<CellMethods/>
 	<BaseMethods/>
 	<shouldBackup>false</shouldBackup>

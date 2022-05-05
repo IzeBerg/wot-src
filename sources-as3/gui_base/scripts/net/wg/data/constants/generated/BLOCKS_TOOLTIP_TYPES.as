@@ -111,7 +111,7 @@ package net.wg.data.constants.generated
       
       public static const TOOLTIP_EPIC_PROGRESS_BLOCK_LINKAGE:String = "EpicProgressBlockUI";
       
-      public static const BATTLE_ROYALE_WEAK_ZONES_UI:String = "BattleRoyaleWeakZonesBlockUI";
+      public static const TOOLTIP_QUEST_REWARD_ITEM_BLOCK_LINKAGE:String = "QuestRewardItemBlockUI";
       
       public static const ALIGN_LEFT:String = "left";
       

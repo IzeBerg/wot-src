@@ -5,10 +5,10 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
    public class BattleRoyaleNationsVehiclesCounterVO extends DAAPIDataClass
    {
       
-      private static const NATIONS_VEHICLES:String = "nationsVehicles";
+      private static const VEHICLES_FIELD:String = "vehicles";
        
       
-      private var _nationsVehicles:Vector.<BattleRoyaleNationsVehiclesVO> = null;
+      private var _vehicles:Vector.<BattleRoyaleNationsVehiclesVO> = null;
       
       public function BattleRoyaleNationsVehiclesCounterVO(param1:Object = null)
       {
@@ -19,22 +19,22 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
       {
          var _loc3_:Array = null;
          var _loc4_:Object = null;
-         if(param1 == NATIONS_VEHICLES)
+         if(param1 == VEHICLES_FIELD)
          {
-            if(this._nationsVehicles && this._nationsVehicles.length > 0)
+            if(this._vehicles && this._vehicles.length > 0)
             {
-               this._nationsVehicles.splice(0,this._nationsVehicles.length);
+               this._vehicles.splice(0,this._vehicles.length);
             }
             else
             {
-               this._nationsVehicles = new Vector.<BattleRoyaleNationsVehiclesVO>();
+               this._vehicles = new Vector.<BattleRoyaleNationsVehiclesVO>();
             }
             _loc3_ = param2 as Array;
             if(_loc3_ != null)
             {
                for each(_loc4_ in _loc3_)
                {
-                  this._nationsVehicles.push(new BattleRoyaleNationsVehiclesVO(_loc4_));
+                  this._vehicles.push(new BattleRoyaleNationsVehiclesVO(_loc4_));
                }
             }
             else
@@ -48,17 +48,17 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
       
       override protected function onDispose() : void
       {
-         if(this._nationsVehicles)
+         if(this._vehicles)
          {
-            this._nationsVehicles.splice(0,this._nationsVehicles.length);
-            this._nationsVehicles = null;
+            this._vehicles.splice(0,this._vehicles.length);
+            this._vehicles = null;
          }
          super.onDispose();
       }
       
-      public function get nationsVehicles() : Vector.<BattleRoyaleNationsVehiclesVO>
+      public function get vehicles() : Vector.<BattleRoyaleNationsVehiclesVO>
       {
-         return this._nationsVehicles;
+         return this._vehicles;
       }
    }
 }

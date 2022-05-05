@@ -57,10 +57,7 @@
 			</invisibilityBonus>
 		</trophyUpgradedAdditionalInvisibilityDevice>
 	</optDevsOverrides>
-	<repairCost>
-		13.33333365
-		<!--BW_String-->
-	</repairCost>
+	<repairCost>6.666667</repairCost>
 	<crewXpFactor>
 		1.0
 		<!--BW_String-->
@@ -312,6 +309,13 @@
 							<!--BW_String-->
 						</vehicleDamageFactor>
 					</armor_24>
+					<armor_25>
+						5
+						<vehicleDamageFactor>
+							0.0
+							<!--BW_String-->
+						</vehicleDamageFactor>
+					</armor_25>
 				</armor>
 				<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
 				<weight>36300</weight>
@@ -392,7 +396,7 @@
 					<!--BW_String-->
 				</vehicleDamageFactor>
 			</armor_2>
-			<armor_3>70</armor_3>
+			<armor_3>50</armor_3>
 			<armor_4>20</armor_4>
 			<armor_5>80</armor_5>
 			<armor_6>60</armor_6>
@@ -446,7 +450,7 @@
 		</armor>
 		<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
 		<weight>18800</weight>
-		<maxHealth>1000</maxHealth>
+		<maxHealth>900</maxHealth>
 		<ammoBayHealth>
 			<maxHealth>103</maxHealth>
 			<maxRegenHealth>65</maxRegenHealth>
@@ -5265,6 +5269,8 @@
 					</vehicleDamageFactor>
 				</armor_14>
 				<armor_15>20</armor_15>
+				<armor_16>20</armor_16>
+				<armor_17>60</armor_17>
 				<surveyingDevice>
 					0
 					<chanceToHitByProjectile>
@@ -5451,6 +5457,7 @@
 							<applyTo>4096</applyTo>
 						</slot>
 					</customizationSlots>
+					<edgeByVisualModel>false</edgeByVisualModel>
 					<camouflage>
 						<tiling>
 							0.7 0.7 0.000000 0.000000
@@ -5613,6 +5620,7 @@
 							<applyTo>4096</applyTo>
 						</slot>
 					</customizationSlots>
+					<edgeByVisualModel>false</edgeByVisualModel>
 					<camouflage>
 						<tiling>
 							1.4 0.6 0.000000 0.000000
@@ -5774,6 +5782,7 @@
 							<applyTo>4096</applyTo>
 						</slot>
 					</customizationSlots>
+					<edgeByVisualModel>false</edgeByVisualModel>
 					<camouflage>
 						<tiling>
 							1.3 1.3 0.08 0.46
@@ -6103,6 +6112,7 @@
 							<applyTo>4096</applyTo>
 						</slot>
 					</customizationSlots>
+					<edgeByVisualModel>false</edgeByVisualModel>
 					<camouflage>
 						<tiling>
 							1.4 0.6 0.000000 0.000000
@@ -6268,6 +6278,7 @@
 							<applyTo>4096</applyTo>
 						</slot>
 					</customizationSlots>
+					<edgeByVisualModel>false</edgeByVisualModel>
 					<camouflage>
 						<tiling>
 							1.3 1.3 0.08 0.46
@@ -6437,6 +6448,7 @@
 							<applyTo>4096</applyTo>
 						</slot>
 					</customizationSlots>
+					<edgeByVisualModel>false</edgeByVisualModel>
 					<camouflage>
 						<tiling>
 							0.8 0.4 0.000000 0.000000
@@ -6603,6 +6615,7 @@
 							<applyTo>4096</applyTo>
 						</slot>
 					</customizationSlots>
+					<edgeByVisualModel>false</edgeByVisualModel>
 					<camouflage>
 						<tiling>
 							0.895 0.55 0.000000 0.000000
@@ -6626,7 +6639,7 @@
 			</gunPosition>
 			<showEmblemsOnGun>false</showEmblemsOnGun>
 			<physicsShape>
-				1.001 -0.059 1.023 -0.009 0.948 -0.141 0.883 0.498 0.319 0.500 0.291 0.500 0.164 0.551 0.000
+				1.067 -0.356 1.037 -0.009 1.022 -0.155 0.883 0.390 0.319 0.500 0.291 0.500 0.164 0.551 0.000
 				<!--BW_String-->
 			</physicsShape>
 			<wwturretRotatorSoundManual>tur_mech_trav</wwturretRotatorSoundManual>
@@ -6941,6 +6954,7 @@
 							<applyTo>4096</applyTo>
 						</slot>
 					</customizationSlots>
+					<edgeByVisualModel>false</edgeByVisualModel>
 					<camouflage>
 						<tiling>
 							1.4 0.6 0.000000 0.000000
@@ -7120,6 +7134,7 @@
 							<applyTo>4096</applyTo>
 						</slot>
 					</customizationSlots>
+					<edgeByVisualModel>false</edgeByVisualModel>
 					<camouflage>
 						<tiling>
 							1.3 1.3 0.08 0.46
@@ -7300,6 +7315,7 @@
 							<applyTo>4096</applyTo>
 						</slot>
 					</customizationSlots>
+					<edgeByVisualModel>false</edgeByVisualModel>
 					<camouflage>
 						<tiling>
 							0.895 0.55 0.000000 0.000000
@@ -7479,6 +7495,7 @@
 							<applyTo>4096</applyTo>
 						</slot>
 					</customizationSlots>
+					<edgeByVisualModel>false</edgeByVisualModel>
 					<camouflage>
 						<tiling>
 							0.8 0.8 0.000000 0.000000

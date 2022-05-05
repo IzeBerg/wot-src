@@ -1,7 +1,8 @@
 from typing import *
 from functools import wraps, partial
 from soft_exception import SoftException
-from constants import SEASON_TYPE_BY_NAME, RentType, IS_BASEAPP, IS_EDITOR
+import constants
+from constants import SEASON_TYPE_BY_NAME, RentType
 from debug_utils import LOG_ERROR
 import type_traits, collections
 if TYPE_CHECKING:
@@ -67,7 +68,7 @@ def raiseWrongXml(xmlContext, subsectionName, msg):
         xmlContext = xmlContext[0]
 
     text = "error in '" + fileName + "': " + msg
-    if IS_EDITOR:
+    if constants.IS_EDITOR:
         LOG_ERROR(text)
     else:
         raise SoftException(text)
@@ -490,6 +491,16 @@ def readRentSeasonCycles(xmlCtx, section, subsectionName, defaultPrice, defaultC
     else:
         raiseWrongXml(xmlCtx, packageName, ('<{}><{}> missing!').format(subsectionName, subsectionName))
     return cyclesRentPrices
+
+
+def readIconWithDefaultParams(xmlCtx, section, subsectionName, defaultValue=0):
+    iconDatalength = 3
+    strings = getSubsection(xmlCtx, section, subsectionName).asString.split()
+    while len(strings) < iconDatalength:
+        strings.append(defaultValue)
+
+    return (
+     strings[0], int(strings[1]), int(strings[2]))
 
 
 def readIcon(xmlCtx, section, subsectionName):

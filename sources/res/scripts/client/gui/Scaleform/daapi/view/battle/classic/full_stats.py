@@ -38,7 +38,7 @@ class FullStatsComponent(TabbedFullStatsMeta, IFullStatsComponent):
 
     @property
     def hasTabs(self):
-        return True
+        return self.sessionProvider.shared.questProgress.areQuestsEnabledForArena()
 
     def setActiveTabIndex(self, index):
         if index is not None:
@@ -46,9 +46,6 @@ class FullStatsComponent(TabbedFullStatsMeta, IFullStatsComponent):
         else:
             self.as_resetActiveTabS()
         return
-
-    def setTableVisibility(self, isVisible):
-        self.as_setTableVisibilityS(isVisible)
 
     def onProgressTrackingClick(self, isSelected):
         self.__isProgressTrackingEnabled = isSelected
@@ -77,14 +74,15 @@ class FullStatsComponent(TabbedFullStatsMeta, IFullStatsComponent):
             if qProgressCtrl.isInited():
                 self.__setNoQuestsDescription()
                 self.__setQuestTrackingData()
+            tabs = []
+            if qProgressCtrl.areQuestsEnabledForArena():
+                tabs = [{'label': backport.text(R.strings.ingame_gui.statistics.tab.line_up.header())}]
+                if self.lobbyContext.getServerSettings().isPersonalMissionsEnabled():
+                    tabs.append({'label': backport.text(R.strings.ingame_gui.statistics.tab.quests.header())})
+            self.as_updateTabsS(tabs)
         if BattleReplay.g_replayCtrl.isPlaying:
             g_replayEvents.onTimeWarpStart += self.__onReplayTimeWarpStart
             g_replayEvents.onTimeWarpFinish += self.__onReplayTimeWarpFinished
-        tabs = [
-         {'label': backport.text(R.strings.ingame_gui.statistics.tab.line_up.header())}]
-        if self.lobbyContext.getServerSettings().isPersonalMissionsEnabled():
-            tabs.append({'label': backport.text(R.strings.ingame_gui.statistics.tab.quests.header())})
-        self.as_updateTabsS(tabs)
         return
 
     def _dispose(self):

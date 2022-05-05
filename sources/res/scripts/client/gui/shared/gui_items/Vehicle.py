@@ -11,7 +11,6 @@ from PerksParametersController import PerksParametersController
 from collector_vehicle import CollectorVehicleConsts
 from constants import WIN_XP_FACTOR_MODE, RentType
 from gui import GUI_SETTINGS
-from RTSShared import RTSSupply
 from gui import makeHtmlString
 from gui.Scaleform.genConsts.STORE_CONSTANTS import STORE_CONSTANTS
 from gui.Scaleform.locale.ITEM_TYPES import ITEM_TYPES
@@ -19,6 +18,7 @@ from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.Scaleform.locale.RES_SHOP_EXT import RES_SHOP_EXT
 from gui.impl import backport
 from gui.impl.gen import R
+from gui.impl.gen_utils import INVALID_RES_ID
 from gui.prb_control import prb_getters, prbDispatcherProperty
 from gui.prb_control.settings import PREBATTLE_SETTING_NAME
 from gui.shared.economics import calcRentPackages, getActionPrc, calcVehicleRestorePrice
@@ -143,9 +143,7 @@ class VEHICLE_TAGS(CONST_CONTAINER):
     PREMIUM = 'premium'
     PREMIUM_IGR = 'premiumIGR'
     CANNOT_BE_SOLD = 'cannot_be_sold'
-    COMMANDER = 'commander'
     SECRET = 'secret'
-    SUPPLY = 'supply'
     SPECIAL = 'special'
     OBSERVER = 'observer'
     DISABLED_IN_ROAMING = 'disabledInRoaming'
@@ -212,6 +210,7 @@ class Vehicle(FittingItem):
         LOCKED = 'locked'
         CREW_NOT_FULL = 'crewNotFull'
         AMMO_NOT_FULL = 'ammoNotFull'
+        AMMO_NOT_FULL_EVENTS = 'ammoNotFullEvents'
         SERVER_RESTRICTION = 'serverRestriction'
         RENTAL_IS_OVER = 'rentalIsOver'
         IGR_RENTAL_IS_OVER = 'igrRentalIsOver'
@@ -258,6 +257,7 @@ class Vehicle(FittingItem):
         INFO = 'info'
         WARNING = 'warning'
         ATTENTION = 'attention'
+        RENTED = 'rented'
         RENTABLE = 'rentableBlub'
         ROLE = 'role'
 
@@ -593,6 +593,25 @@ class Vehicle(FittingItem):
             result.append(cls.itemsFactory.createOptionalDevice(optDevDescr.compactDescr, proxy) if optDevDescr is not None else None)
 
         return result
+
+    @property
+    def icon(self):
+        unicName = getIconResourceName(self.name)
+        resID = R.images.gui.maps.icons.dyn(self.itemTypeName).dyn(unicName)()
+        if resID == INVALID_RES_ID:
+            return super(Vehicle, self).icon
+        return backport.image(resID)
+
+    def getExtraIconInfo(self, _=None):
+        return
+
+    @property
+    def iconSmall(self):
+        unicName = getIconResourceName(self.name)
+        resID = R.images.gui.maps.icons.dyn(self.itemTypeName).small.dyn(unicName)()
+        if resID == INVALID_RES_ID:
+            return super(Vehicle, self).iconSmall
+        return backport.image(resID)
 
     @property
     def iconContour(self):
@@ -1186,6 +1205,7 @@ class Vehicle(FittingItem):
          Vehicle.VEHICLE_STATE.IGR_RENTAL_IS_OVER,
          Vehicle.VEHICLE_STATE.TOO_HEAVY,
          Vehicle.VEHICLE_STATE.AMMO_NOT_FULL,
+         Vehicle.VEHICLE_STATE.AMMO_NOT_FULL_EVENTS,
          Vehicle.VEHICLE_STATE.UNSUITABLE_TO_QUEUE,
          Vehicle.VEHICLE_STATE.DEAL_IS_OVER,
          Vehicle.VEHICLE_STATE.UNSUITABLE_TO_UNIT,
@@ -1220,20 +1240,12 @@ class Vehicle(FittingItem):
         return checkForTags(self.tags, CollectorVehicleConsts.COLLECTOR_VEHICLES_TAG)
 
     @property
-    def isSupply(self):
-        return checkForTags(self.tags, VEHICLE_TAGS.SUPPLY)
-
-    @property
     def isExcludedFromSandbox(self):
         return checkForTags(self.tags, VEHICLE_TAGS.EXCLUDED_FROM_SANDBOX)
 
     @property
     def isObserver(self):
         return checkForTags(self.tags, VEHICLE_TAGS.OBSERVER)
-
-    @property
-    def isCommander(self):
-        return checkForTags(self.tags, VEHICLE_TAGS.COMMANDER)
 
     @property
     def isEvent(self):
@@ -1262,18 +1274,6 @@ class Vehicle(FittingItem):
     @property
     def isProgressionDecalsOnly(self):
         return checkForTags(self.tags, VEHICLE_TAGS.PROGRESSION_DECALS_ONLY)
-
-    @property
-    def isCrewSkillLocked(self):
-        return checkForTags(self.tags, VEHICLE_TAGS.CREW_SKILLS_LOCKED)
-
-    @property
-    def isShellsLocked(self):
-        return checkForTags(self.tags, VEHICLE_TAGS.SHELLS_LOCKED)
-
-    @property
-    def isDeviceLocked(self):
-        return checkForTags(self.tags, VEHICLE_TAGS.DEVICE_LOCKED)
 
     @property
     def isDisabledInPremIGR(self):
@@ -1983,23 +1983,16 @@ def getLevelIconPath(vehLevel):
 
 
 def getIconPath(vehicleName):
-    return '../maps/icons/vehicle/%s' % getItemIconName(vehicleName)
-
-
-def getSizedIconPath(vehicleName, size):
-    return '../maps/icons/vehicle/%s/%s' % (size, getItemIconName(vehicleName))
-
-
-def getNationName(vehicleName):
-    return vehicleName.split(':')[0]
+    unicName = getIconResourceName(vehicleName)
+    resID = R.images.gui.maps.icons.vehicle.dyn(unicName)()
+    if resID != -1:
+        return backport.image(resID)
+    else:
+        return
 
 
 def getNationLessName(vehicleName):
     return vehicleName.split(':')[1]
-
-
-def getNationLessIconName(vehicleName):
-    return getNationLessName(vehicleName).replace('-', '_')
 
 
 def getIconShopPath(vehicleName, size=STORE_CONSTANTS.ICON_SIZE_MEDIUM):
@@ -2009,16 +2002,6 @@ def getIconShopPath(vehicleName, size=STORE_CONSTANTS.ICON_SIZE_MEDIUM):
         return func_utils.makeFlashPath(path)
     else:
         return '../maps/shop/vehicles/%s/empty_tank.png' % size
-
-
-def getIconShopResource(vehicleName, size=STORE_CONSTANTS.ICON_SIZE_MEDIUM):
-    name = getNationLessName(vehicleName)
-    name = name.replace('-', '_')
-    size = 'c_%s' % size
-    image = R.images.gui.maps.shop.vehicles.dyn(size).dyn(name)
-    if image.isValid():
-        return image()
-    return R.images.gui.maps.shop.vehicles.dyn(size).dyn('empty_tank')()
 
 
 def getIconResource(vehicleName):
@@ -2035,11 +2018,19 @@ def getIconResourceName(vehicleName):
 
 
 def getContourIconPath(vehicleName):
-    return '../maps/icons/vehicle/contour/%s' % getItemIconName(vehicleName)
+    unicName = getIconResourceName(vehicleName)
+    resID = R.images.gui.maps.icons.vehicle.small.dyn(unicName)()
+    if resID == INVALID_RES_ID:
+        resID = R.images.gui.maps.icons.vehicle.small.noImage()
+    return backport.image(resID)
 
 
 def getSmallIconPath(vehicleName):
-    return '../maps/icons/vehicle/small/%s' % getItemIconName(vehicleName)
+    unicName = getIconResourceName(vehicleName)
+    resID = R.images.gui.maps.icons.vehicle.small.dyn(unicName)()
+    if resID == INVALID_RES_ID:
+        resID = R.images.gui.maps.icons.vehicle.small.noImage()
+    return backport.image(resID)
 
 
 def getUniqueIconPath(vehicleName, withLightning=False):
@@ -2123,15 +2114,11 @@ def getOrderByVehicleClass(className=None):
 
 
 def getVehicleClassTag(tags):
-    supplyTags = RTSSupply.SUPPLY_TAG_LIST & tags
-    if supplyTags:
-        return list(supplyTags).pop()
-    else:
-        subSet = vehicles.VEHICLE_CLASS_TAGS & tags
-        result = None
-        if subSet:
-            result = list(subSet).pop()
-        return result
+    subSet = vehicles.VEHICLE_CLASS_TAGS & tags
+    result = None
+    if subSet:
+        result = list(subSet).pop()
+    return result
 
 
 def getCrewCount(vehs):
