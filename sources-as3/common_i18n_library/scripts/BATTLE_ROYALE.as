@@ -539,7 +539,7 @@ package
       
       public static const TOURNAMENT_NOTIFICATION_NO_PLACES:String = "#battle_royale:tournament/notification/NO_PLACES";
       
-      public static const SEASON_202103_NAME:String = "#battle_royale:season/202103/name";
+      public static const SEASON_202206_NAME:String = "#battle_royale:season/202206/name";
       
       public static const PREBATTLE_TITLE:String = "#battle_royale:preBattle/title";
       

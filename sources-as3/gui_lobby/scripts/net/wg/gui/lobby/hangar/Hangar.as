@@ -335,6 +335,11 @@ package net.wg.gui.lobby.hangar
          this.switchModePanel.removeEventListener(ComponentEvent.SHOW,this.onSwitchModePanelShowHandler);
          this.switchModePanel.removeEventListener(ComponentEvent.HIDE,this.onSwitchModePanelHideHandler);
          this.carousel.removeEventListener(Event.RESIZE,this.onCarouselResizeHandler);
+         if(this._hangarViewSwitchAnimator)
+         {
+            this._hangarViewSwitchAnimator.dispose();
+            this._hangarViewSwitchAnimator = null;
+         }
          super.onBeforeDispose();
       }
       
@@ -385,11 +390,6 @@ package net.wg.gui.lobby.hangar
          this._appStage = null;
          this.carouselContainer.dispose();
          this.carouselContainer = null;
-         if(this._hangarViewSwitchAnimator)
-         {
-            this._hangarViewSwitchAnimator.dispose();
-            this._hangarViewSwitchAnimator = null;
-         }
          this._eventsEntryContainer.removeEventListener(Event.RESIZE,this.onEventsEntryContainerResizeHandler);
          removeChild(this._eventsEntryContainer);
          this._eventsEntryContainer = null;

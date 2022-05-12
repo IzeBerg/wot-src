@@ -1889,6 +1889,9 @@ class IMapboxController(IGameController, ISeasonProvider):
     def isMapboxMode(self):
         raise NotImplementedError
 
+    def isMapboxPrbActive(self):
+        raise NotImplementedError
+
     def selectMapboxBattle(self):
         raise NotImplementedError
 

@@ -107,6 +107,7 @@ class SetMutedSounds(Block, SoundMeta):
                 avatar.muteSounds(self._soundNames.getValue())
             else:
                 avatar.muteSounds(())
+        self._out.call()
 
 
 class PlayCombatMusic(Block, SoundMeta):

@@ -1197,6 +1197,8 @@ package net.wg.data.constants.generated
       
       public static const UK_GB11_CAERNARVON_IGR:String = "uk-GB11_Caernarvon_IGR";
       
+      public static const UK_GB110_FV4201_CHIEFTAIN_PROTOTYPE:String = "uk-GB110_FV4201_Chieftain_Prototype";
+      
       public static const UK_GB111_CHARLEMAGNE:String = "uk-GB111_Charlemagne";
       
       public static const UK_GB112_CALIBAN:String = "uk-GB112_Caliban";
@@ -1484,6 +1486,8 @@ package net.wg.data.constants.generated
       public static const USA_A143_M_V_Y:String = "usa-A143_M_V_Y";
       
       public static const USA_A144_M_VI_Y:String = "usa-A144_M_VI_Y";
+      
+      public static const USA_A145_TS_54:String = "usa-A145_TS_54";
       
       public static const USA_A147_M_II_Y:String = "usa-A147_M_II_Y";
       

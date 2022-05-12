@@ -8059,6 +8059,8 @@ package
       
       public static const MAPS_ICONS_LIBRARY_BPCOINICON_1:String = "../maps/icons/library/BPCoinIcon-1.png";
       
+      public static const MAPS_ICONS_LIBRARY_BRCOINICON_1:String = "../maps/icons/library/BrcoinIcon-1.png";
+      
       public static const MAPS_ICONS_LIBRARY_BR_NOTIFICATION_BACKGROUND_1:String = "../maps/icons/library/br_notification_background-1.png";
       
       public static const MAPS_ICONS_LIBRARY_BUTTON_LINK:String = "../maps/icons/library/button_link.png";

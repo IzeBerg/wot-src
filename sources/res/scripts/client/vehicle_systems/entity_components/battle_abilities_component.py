@@ -84,10 +84,10 @@ class BattleAbilitiesComponent(VehicleComponent):
     def set_debuff(self, prev=None):
         if not self.isStarted or self.debuff == prev:
             return
-        isInfluenceZone = self.debuff
+        equipmentID = self.debuff
         equipmentComp = self._getEquipmentComp()
         if equipmentComp is not None:
-            equipmentComp.updateDebuff(self.id, isInfluenceZone)
+            equipmentComp.updateDebuff(self.id, equipmentID)
         return
 
     def _removeInspire(self):

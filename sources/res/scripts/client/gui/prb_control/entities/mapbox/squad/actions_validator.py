@@ -21,7 +21,7 @@ class _MapboxStateValidator(UnitStateValidator):
         mapboxCtrl = dependency.instance(IMapboxController)
         status, _, _ = mapboxCtrl.getPrimeTimeStatus()
         if status != PrimeTimeStatus.AVAILABLE:
-            return ValidationResult(False, UNIT_RESTRICTION.UNIT_INACTIVE_PERIPHERY_UNDEF)
+            return ValidationResult(False, UNIT_RESTRICTION.CURFEW)
         return super(_MapboxStateValidator, self)._validate()
 
 
