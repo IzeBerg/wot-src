@@ -140,10 +140,9 @@ package net.wg.gui.battle.commander.views.vehiclesPanel
       
       private function recalculateIconsPositions() : void
       {
-         var _loc1_:int = 0;
          var _loc3_:String = null;
          var _loc4_:UILoaderAlt = null;
-         _loc1_ = 0;
+         var _loc1_:int = 0;
          var _loc2_:Array = this._moduleIcons.keySet().toArray();
          if(!this._isBig)
          {

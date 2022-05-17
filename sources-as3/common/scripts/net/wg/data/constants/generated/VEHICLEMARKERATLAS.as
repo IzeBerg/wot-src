@@ -1269,6 +1269,8 @@ package net.wg.data.constants.generated
       
       public static const UK_GB113_MATILDA_LVT:String = "uk-GB113_Matilda_LVT";
       
+      public static const UK_GB115_GONSALO:String = "uk-GB115_Gonsalo";
+      
       public static const UK_GB12_CONQUEROR:String = "uk-GB12_Conqueror";
       
       public static const UK_GB12_CONQUEROR_FL:String = "uk-GB12_Conqueror_FL";

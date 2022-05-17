@@ -344,13 +344,12 @@ package net.wg.gui.battle.views.minimap
       
       private function updateContainersSize(param1:int) : void
       {
-         var _loc5_:Number = NaN;
          this.entriesContainer.scaleX = this.entriesContainer.scaleY = MINIMAP_SCALE[param1];
          var _loc2_:Number = MINIMAP_SCALE[param1];
          var _loc3_:Number = _loc2_ * MMAP_BASE_SIZE;
          this.mapScaleIndex = param1;
          var _loc4_:Number = _loc3_ + FRAME_WIDTH_MULTIPLIER * FRAME_IMG_OFFSET;
-         _loc5_ = _loc2_ * FRAME_WIDTH_MULTIPLIER;
+         var _loc5_:Number = _loc2_ * FRAME_WIDTH_MULTIPLIER;
          this.fgFrame.width = this.fgFrame.height = _loc4_;
          this.bgFrame.width = this.bgFrame.height = _loc4_ + _loc5_ * FRAME_WIDTH_MULTIPLIER;
          this.fgFrame.x = this.fgFrame.y = -FRAME_IMG_OFFSET;

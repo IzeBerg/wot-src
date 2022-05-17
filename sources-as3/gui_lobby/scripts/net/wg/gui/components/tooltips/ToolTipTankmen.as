@@ -75,7 +75,6 @@ package net.wg.gui.components.tooltips
       override protected function redraw() : void
       {
          var _loc2_:ToolTipBlockResultVO = null;
-         var _loc5_:ILocale = null;
          var _loc6_:String = null;
          var _loc7_:TextFormat = null;
          var _loc8_:ToolTipBlockVO = null;
@@ -103,7 +102,7 @@ package net.wg.gui.components.tooltips
          _loc1_.y = topPosition;
          separators.push(_loc1_);
          topPosition += Utils.instance.MARGIN_AFTER_SEPARATE;
-         _loc5_ = App.utils.locale;
+         var _loc5_:ILocale = App.utils.locale;
          if(this.dataVO.vehicleContour != "")
          {
             topPosition -= Utils.instance.MARGIN_AFTER_SEPARATE;

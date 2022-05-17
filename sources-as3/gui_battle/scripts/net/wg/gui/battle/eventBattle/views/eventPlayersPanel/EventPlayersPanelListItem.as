@@ -128,6 +128,7 @@ package net.wg.gui.battle.eventBattle.views.eventPlayersPanel
       
       public function setData(param1:DAAPIPlayerPanelInfoVO) : void
       {
+         var _loc3_:Boolean = false;
          this.namePlayer.setColor(!!param1.isSquad ? int(NAME_COLOR_SQUAD) : int(NAME_COLOR_GREY));
          this.namePlayer.setValue(param1.name);
          var _loc2_:String = param1.typeVehicle;
@@ -155,7 +156,7 @@ package net.wg.gui.battle.eventBattle.views.eventPlayersPanel
             this.namePlayer.x = this.badgeIcon.x;
             this.badgeIcon.visible = false;
          }
-         var _loc3_:Boolean = StringUtils.isNotEmpty(param1.suffixBadgeIcon);
+         _loc3_ = StringUtils.isNotEmpty(param1.suffixBadgeIcon);
          this.testerIcon.visible = this.testerBG.visible = _loc3_;
          if(_loc3_)
          {

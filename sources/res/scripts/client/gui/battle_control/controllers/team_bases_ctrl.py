@@ -1,5 +1,5 @@
 from collections import defaultdict
-import BattleReplay, BigWorld, SoundGroups
+import BattleReplay, BigWorld, SoundGroups, constants
 from helpers import dependency
 from skeletons.gui.battle_session import IBattleSessionProvider
 from constants import TEAMS_IN_ARENA
@@ -151,7 +151,7 @@ class BattleTeamsBasesController(ITeamsBasesController, ViewComponentsController
         isEnemyBase = arenaDP.isEnemyTeam(baseTeam)
         self.__points[clientID] = (
          points, timeLeft, invadersCnt, capturingStopped)
-        capturingStartBlocked = points == 0 and capturingStopped and invadersCnt > 0
+        capturingStartBlocked = points == 0 and capturingStopped and invadersCnt > 0 and BigWorld.player().arenaBonusType in constants.ARENA_BONUS_TYPE.RTS_RANGE
         if self._teamBaseLeft(points, invadersCnt) and not capturingStartBlocked:
             if clientID in self.__clientIDs:
                 if not invadersCnt:
