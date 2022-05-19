@@ -74,7 +74,8 @@ def getDefaultBonusPackersMap():
        Currency.GOLD: simpleBonusPacker, 
        Currency.BPCOIN: simpleBonusPacker, 
        constants.PREMIUM_ENTITLEMENTS.BASIC: simpleBonusPacker, 
-       constants.PREMIUM_ENTITLEMENTS.PLUS: simpleBonusPacker}
+       constants.PREMIUM_ENTITLEMENTS.PLUS: simpleBonusPacker, 
+       'dragonBoatPoints': simpleBonusPacker}
 
 
 def getLocalizedBonusName(name):

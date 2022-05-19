@@ -1294,6 +1294,10 @@ class SYSTEM_MESSAGES(object):
     TELECOMMERGERESULTS_BODY_PROGRESSDECALESCOMPENS = '#system_messages:telecomMergeResults/body/progressDecalesCompens'
     TELECOMMERGERESULTS_BODY_WISHMSG = '#system_messages:telecomMergeResults/body/wishMsg'
     SSR_UNAVAILABLE = '#system_messages:ssr/unavailable'
+    DRAGONBOAT_PAUSED = '#system_messages:dragonBoat/paused'
+    DRAGONBOAT_RESTORED = '#system_messages:dragonBoat/restored'
+    DRAGONBOAT_STAGEAWARD_HEADER = '#system_messages:dragonBoat/stageAward/header'
+    DRAGONBOAT_FINALAWARD_HEADER = '#system_messages:dragonBoat/finalAward/header'
     UNIT_NOTIFICATION_DIVISIONTYPE_ENUM = (
      UNIT_NOTIFICATION_DIVISIONTYPE_MIDDLE,
      UNIT_NOTIFICATION_DIVISIONTYPE_CHAMPION,
@@ -2717,7 +2721,11 @@ class SYSTEM_MESSAGES(object):
      TELECOMMERGERESULTS_BODY_CONJUNCTION,
      TELECOMMERGERESULTS_BODY_PROGRESSDECALESCOMPENS,
      TELECOMMERGERESULTS_BODY_WISHMSG,
-     SSR_UNAVAILABLE)
+     SSR_UNAVAILABLE,
+     DRAGONBOAT_PAUSED,
+     DRAGONBOAT_RESTORED,
+     DRAGONBOAT_STAGEAWARD_HEADER,
+     DRAGONBOAT_FINALAWARD_HEADER)
 
     @classmethod
     def unit_notification_divisiontype(cls, key0):

@@ -1205,6 +1205,8 @@ package net.wg.data.constants.generated
       
       public static const UK_GB113_MATILDA_LVT:String = "uk-GB113_Matilda_LVT";
       
+      public static const UK_GB115_GONSALO:String = "uk-GB115_Gonsalo";
+      
       public static const UK_GB12_CONQUEROR:String = "uk-GB12_Conqueror";
       
       public static const UK_GB12_CONQUEROR_FL:String = "uk-GB12_Conqueror_FL";
@@ -1859,6 +1861,8 @@ package net.wg.data.constants.generated
       
       public static const USSR_R188_OBJECT_259_A:String = "ussr-R188_Object_259A";
       
+      public static const USSR_R188_OBJECT_259_A_CN:String = "ussr-R188_Object_259A_CN";
+      
       public static const USSR_R19_IS_3:String = "ussr-R19_IS-3";
       
       public static const USSR_R19_IS_3_IGR:String = "ussr-R19_IS-3_IGR";
@@ -2040,6 +2044,8 @@ package net.wg.data.constants.generated
       public static const USSR_R98_T44_85_M:String = "ussr-R98_T44_85M";
       
       public static const USSR_R99_T44_122:String = "ussr-R99_T44_122";
+      
+      public static const USSR_R99_T44_122_CN:String = "ussr-R99_T44_122_CN";
       
       public static const VEHICLE_LEVEL_1:String = "vehicleLevel_1";
       

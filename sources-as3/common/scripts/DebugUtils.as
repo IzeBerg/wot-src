@@ -5,16 +5,22 @@ package
       
       private static const CPP_DO_LOG_METHOD_NAME:String = "WG.doLog";
       
-      private static const SEVERITY_DEBUG:Number = 0;
+      private static const SEVERITY_TRACE:Number = 65536;
       
-      private static const SEVERITY_WARNING:Number = 131072;
+      private static const SEVERITY_DEBUG:Number = 131072;
       
-      private static const SEVERITY_ERROR:Number = 196608;
+      private static const SEVERITY_WARNING:Number = 196608;
+      
+      private static const SEVERITY_ERROR:Number = 262144;
        
       
       public function DebugUtils()
       {
          super();
+      }
+      
+      public static function LOG_TRACE(... rest) : void
+      {
       }
       
       public static function LOG_DEBUG(... rest) : void

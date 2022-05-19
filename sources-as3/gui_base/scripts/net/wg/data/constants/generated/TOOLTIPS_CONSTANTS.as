@@ -441,6 +441,8 @@ package net.wg.data.constants.generated
       
       public static const BPCOIN_INFO:String = "bpcoinInfo";
       
+      public static const DRAGON_BOAT_POINTS_INFO:String = "dragonBoatPointsInfo";
+      
       public static const FREEXP_INFO:String = "freeXPInfo";
       
       public static const HEADER_BUTTON_INFO:String = "Info";
@@ -818,6 +820,8 @@ package net.wg.data.constants.generated
       public static const ACCOUNT_COMPLETION_SET:Array = [ACCOUNT_COMPLETION,DEMO_ACCOUNT_RENAME_PROCESSING];
       
       public static const REFERRAL_PROGRAM_SET:Array = [REFERRAL_AWARDS];
+      
+      public static const DRAGON_BOAT_POINTS_SET:Array = [DRAGON_BOAT_POINTS_INFO];
        
       
       public function TOOLTIPS_CONSTANTS()

@@ -2588,6 +2588,14 @@ package
       public static const TELECOMMERGERESULTS_BODY_WISHMSG:String = "#system_messages:telecomMergeResults/body/wishMsg";
       
       public static const SSR_UNAVAILABLE:String = "#system_messages:ssr/unavailable";
+      
+      public static const DRAGONBOAT_PAUSED:String = "#system_messages:dragonBoat/paused";
+      
+      public static const DRAGONBOAT_RESTORED:String = "#system_messages:dragonBoat/restored";
+      
+      public static const DRAGONBOAT_STAGEAWARD_HEADER:String = "#system_messages:dragonBoat/stageAward/header";
+      
+      public static const DRAGONBOAT_FINALAWARD_HEADER:String = "#system_messages:dragonBoat/finalAward/header";
        
       
       public function SYSTEM_MESSAGES()

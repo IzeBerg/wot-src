@@ -897,6 +897,8 @@ package
       
       public static const MAPS_ICONS_BATTLEPASS_EXTRA_INTRO_TANK:String = "../maps/icons/battlePass/extra_intro/tank.png";
       
+      public static const MAPS_ICONS_BATTLEPASS_EXTRA_INTRO_TANK_BIG:String = "../maps/icons/battlePass/extra_intro/tank_big.png";
+      
       public static const MAPS_ICONS_BATTLEPASS_HOW_TO_EARN_POINTS_GODRAYS_157X157:String = "../maps/icons/battlePass/how_to_earn_points/godrays_157x157.png";
       
       public static const MAPS_ICONS_BATTLEPASS_HOW_TO_EARN_POINTS_GODRAYS_210X210:String = "../maps/icons/battlePass/how_to_earn_points/godrays_210x210.png";
@@ -1007,6 +1009,8 @@ package
       
       public static const MAPS_ICONS_BATTLEPASS_LOGO_FLAG_CHAPTER_74:String = "../maps/icons/battlePass/logo/flag_chapter_74.png";
       
+      public static const MAPS_ICONS_BATTLEPASS_LOGO_FLAG_CHAPTER_74_MICRO:String = "../maps/icons/battlePass/logo/flag_chapter_74_micro.png";
+      
       public static const MAPS_ICONS_BATTLEPASS_LOGO_FLAG_CHAPTER_74_SMALL:String = "../maps/icons/battlePass/logo/flag_chapter_74_small.png";
       
       public static const MAPS_ICONS_BATTLEPASS_LOGO_FLAG_CHAPTER_74_TINY:String = "../maps/icons/battlePass/logo/flag_chapter_74_tiny.png";
@@ -1074,6 +1078,10 @@ package
       public static const MAPS_ICONS_BATTLEPASS_LOGO_ICON_LOGO_CHAPTER_74_BIG_BP:String = "../maps/icons/battlePass/logo/icon_logo_chapter_74_big_BP.png";
       
       public static const MAPS_ICONS_BATTLEPASS_LOGO_ICON_LOGO_CHAPTER_74_BP:String = "../maps/icons/battlePass/logo/icon_logo_chapter_74_BP.png";
+      
+      public static const MAPS_ICONS_BATTLEPASS_LOGO_ICON_LOGO_CHAPTER_74_MICRO:String = "../maps/icons/battlePass/logo/icon_logo_chapter_74_micro.png";
+      
+      public static const MAPS_ICONS_BATTLEPASS_LOGO_ICON_LOGO_CHAPTER_74_MICRO_BP:String = "../maps/icons/battlePass/logo/icon_logo_chapter_74_micro_BP.png";
       
       public static const MAPS_ICONS_BATTLEPASS_LOGO_ICON_LOGO_CHAPTER_74_SMALL:String = "../maps/icons/battlePass/logo/icon_logo_chapter_74_small.png";
       
@@ -1290,8 +1298,6 @@ package
       public static const MAPS_ICONS_BATTLEPASS_PROGRESSION_CREWS_SMALL_BP_COMMANDER_6_2:String = "../maps/icons/battlePass/progression/crews/Small_bp_commander_6_2.png";
       
       public static const MAPS_ICONS_BATTLEPASS_PROGRESSION_CREWS_SMALL_BP_COMMANDER_6_3:String = "../maps/icons/battlePass/progression/crews/Small_bp_commander_6_3.png";
-      
-      public static const MAPS_ICONS_BATTLEPASS_PROGRESSION_EXTRA_EXTRA_WIDGET_BG:String = "../maps/icons/battlePass/progression/extra/extra_widget_bg.png";
       
       public static const MAPS_ICONS_BATTLEPASS_PROGRESSION_EXTRA_TANKEXTRALARGE:String = "../maps/icons/battlePass/progression/extra/tankExtraLarge.png";
       
@@ -2324,6 +2330,14 @@ package
       public static const MAPS_ICONS_BATTLEPASS_REWARDS_TUTORIAL:String = "../maps/icons/battlePass/rewards/tutorial.png";
       
       public static const MAPS_ICONS_BATTLEPASS_REWARDS_VEHICLE:String = "../maps/icons/battlePass/rewards/vehicle.png";
+      
+      public static const MAPS_ICONS_BATTLEPASS_REWARDS_VEHICLE_60529:String = "../maps/icons/battlePass/rewards/vehicle_60529.png";
+      
+      public static const MAPS_ICONS_BATTLEPASS_REWARDS_VEHICLE_60529_EXTRASMALL:String = "../maps/icons/battlePass/rewards/vehicle_60529_extraSmall.png";
+      
+      public static const MAPS_ICONS_BATTLEPASS_REWARDS_VEHICLE_60529_MEDIUM:String = "../maps/icons/battlePass/rewards/vehicle_60529_medium.png";
+      
+      public static const MAPS_ICONS_BATTLEPASS_REWARDS_VEHICLE_60529_SMALL:String = "../maps/icons/battlePass/rewards/vehicle_60529_small.png";
       
       public static const MAPS_ICONS_BATTLEPASS_REWARDS_VEHICLE_65329:String = "../maps/icons/battlePass/rewards/vehicle_65329.png";
       
@@ -7577,6 +7591,240 @@ package
       
       public static const MAPS_ICONS_DOGTAGS_SMALL_FLAMES_FLAME_079:String = "../maps/icons/dogtags/small/flames/flame_079.png";
       
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_BG_NOT_STARTED:String = "../maps/icons/dragonBoats/entryPointWidget/bg_not_started.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_BG_NOT_STARTED_SMALL:String = "../maps/icons/dragonBoats/entryPointWidget/bg_not_started_small.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_BG_STARTED:String = "../maps/icons/dragonBoats/entryPointWidget/bg_started.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_BG_STARTED_SMALL:String = "../maps/icons/dragonBoats/entryPointWidget/bg_started_small.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_ICON_END:String = "../maps/icons/dragonBoats/entryPointWidget/icon_end.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_ICON_END_SMALL:String = "../maps/icons/dragonBoats/entryPointWidget/icon_end_small.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_ICON_NOT_STARTED:String = "../maps/icons/dragonBoats/entryPointWidget/icon_not_started.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_ICON_NOT_STARTED_SMALL:String = "../maps/icons/dragonBoats/entryPointWidget/icon_not_started_small.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_ICON_STARTED_TEAM1:String = "../maps/icons/dragonBoats/entryPointWidget/icon_started_team1.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_ICON_STARTED_TEAM1_SMALL:String = "../maps/icons/dragonBoats/entryPointWidget/icon_started_team1_small.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_ICON_STARTED_TEAM2:String = "../maps/icons/dragonBoats/entryPointWidget/icon_started_team2.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_ICON_STARTED_TEAM2_SMALL:String = "../maps/icons/dragonBoats/entryPointWidget/icon_started_team2_small.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_ICON_STARTED_TEAM3:String = "../maps/icons/dragonBoats/entryPointWidget/icon_started_team3.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_ICON_STARTED_TEAM3_SMALL:String = "../maps/icons/dragonBoats/entryPointWidget/icon_started_team3_small.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_ICON_STARTED_TEAM4:String = "../maps/icons/dragonBoats/entryPointWidget/icon_started_team4.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_ICON_STARTED_TEAM4_SMALL:String = "../maps/icons/dragonBoats/entryPointWidget/icon_started_team4_small.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_ICON_STARTED_TEAM5:String = "../maps/icons/dragonBoats/entryPointWidget/icon_started_team5.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_ICON_STARTED_TEAM5_SMALL:String = "../maps/icons/dragonBoats/entryPointWidget/icon_started_team5_small.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_ASSIST:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/assist.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_ASSIST_RADIO:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/assist_radio.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_ASSIST_STUN:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/assist_stun.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_ASSIST_STUN_MULTY:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/assist_stun_multy.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_ASSIST_STUN_TIME:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/assist_stun_time.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_ASSIST_TRACK:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/assist_track.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_AWARD:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/award.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_BARREL_MARK:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/barrel_mark.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_BASE_CAPTURE:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/base_capture.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_BASE_DEF:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/base_def.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_BATTLES:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/battles.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_CREDITS:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/credits.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_DAMAGE:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/damage.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_DAMAGE_BLOCK:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/damage_block.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_DISCOVER:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/discover.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_EXPERIENCE:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/experience.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_FIRE:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/fire.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_FOLDER:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/folder.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_GET_DAMAGE:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/get_damage.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_GET_HIT:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/get_hit.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_HIT:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/hit.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_HURT_1SHOT:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/hurt_1shot.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_HURT_VEHICLES:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/hurt_vehicles.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_IMPROVE:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/improve.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_KILL_1SHOT:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/kill_1shot.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_KILL_VEHICLES:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/kill_vehicles.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_MAIN_REPEAT:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/main_repeat.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_MASTER:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/master.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_METERS:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/meters.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_MODULE_CRIT:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/module_crit.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_PREPARATION:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/preparation.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_RAM:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/ram.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_RANK_UP:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/rank_up.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_SAVE_HP:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/save_hp.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_SEC_ALIVE:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/sec_alive.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_SURVIVE:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/survive.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_TIMES_GET_DAMAGE:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/times_get_damage.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_TOP:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/top.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_ENTRYPOINTWIDGET_TASKICONS_WIN:String = "../maps/icons/dragonBoats/entryPointWidget/taskIcons/win.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_BG_EXTRASMALL:String = "../maps/icons/dragonBoats/finishScreen/bg_extraSmall.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_BG_LARGE:String = "../maps/icons/dragonBoats/finishScreen/bg_large.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_BG_MEDIUM:String = "../maps/icons/dragonBoats/finishScreen/bg_medium.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_BG_SMALL:String = "../maps/icons/dragonBoats/finishScreen/bg_small.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_HEADER_LOGO:String = "../maps/icons/dragonBoats/finishScreen/header_logo.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAM1_EXTRASMALL:String = "../maps/icons/dragonBoats/finishScreen/team1_extraSmall.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAM1_LARGE:String = "../maps/icons/dragonBoats/finishScreen/team1_large.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAM1_MEDIUM:String = "../maps/icons/dragonBoats/finishScreen/team1_medium.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAM2_EXTRASMALL:String = "../maps/icons/dragonBoats/finishScreen/team2_extraSmall.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAM2_LARGE:String = "../maps/icons/dragonBoats/finishScreen/team2_large.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAM2_MEDIUM:String = "../maps/icons/dragonBoats/finishScreen/team2_medium.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAM3_EXTRASMALL:String = "../maps/icons/dragonBoats/finishScreen/team3_extraSmall.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAM3_LARGE:String = "../maps/icons/dragonBoats/finishScreen/team3_large.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAM3_MEDIUM:String = "../maps/icons/dragonBoats/finishScreen/team3_medium.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAM4_EXTRASMALL:String = "../maps/icons/dragonBoats/finishScreen/team4_extraSmall.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAM4_LARGE:String = "../maps/icons/dragonBoats/finishScreen/team4_large.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAM4_MEDIUM:String = "../maps/icons/dragonBoats/finishScreen/team4_medium.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAM5_EXTRASMALL:String = "../maps/icons/dragonBoats/finishScreen/team5_extraSmall.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAM5_LARGE:String = "../maps/icons/dragonBoats/finishScreen/team5_large.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAM5_MEDIUM:String = "../maps/icons/dragonBoats/finishScreen/team5_medium.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAMGLOW1_EXTRASMALL:String = "../maps/icons/dragonBoats/finishScreen/teamGlow1_extraSmall.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAMGLOW1_LARGE:String = "../maps/icons/dragonBoats/finishScreen/teamGlow1_large.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAMGLOW1_MEDIUM:String = "../maps/icons/dragonBoats/finishScreen/teamGlow1_medium.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAMGLOW2_EXTRASMALL:String = "../maps/icons/dragonBoats/finishScreen/teamGlow2_extraSmall.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAMGLOW2_LARGE:String = "../maps/icons/dragonBoats/finishScreen/teamGlow2_large.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAMGLOW2_MEDIUM:String = "../maps/icons/dragonBoats/finishScreen/teamGlow2_medium.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAMGLOW3_EXTRASMALL:String = "../maps/icons/dragonBoats/finishScreen/teamGlow3_extraSmall.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAMGLOW3_LARGE:String = "../maps/icons/dragonBoats/finishScreen/teamGlow3_large.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAMGLOW3_MEDIUM:String = "../maps/icons/dragonBoats/finishScreen/teamGlow3_medium.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAMGLOW4_EXTRASMALL:String = "../maps/icons/dragonBoats/finishScreen/teamGlow4_extraSmall.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAMGLOW4_LARGE:String = "../maps/icons/dragonBoats/finishScreen/teamGlow4_large.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAMGLOW4_MEDIUM:String = "../maps/icons/dragonBoats/finishScreen/teamGlow4_medium.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAMGLOW5_EXTRASMALL:String = "../maps/icons/dragonBoats/finishScreen/teamGlow5_extraSmall.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAMGLOW5_LARGE:String = "../maps/icons/dragonBoats/finishScreen/teamGlow5_large.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_FINISHSCREEN_TEAMGLOW5_MEDIUM:String = "../maps/icons/dragonBoats/finishScreen/teamGlow5_medium.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_INTROSCREEN_ARROW_LARGE:String = "../maps/icons/dragonBoats/introScreen/arrow_large.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_INTROSCREEN_ARROW_SMALL:String = "../maps/icons/dragonBoats/introScreen/arrow_small.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_INTROSCREEN_BG_EXTRASMALL:String = "../maps/icons/dragonBoats/introScreen/bg_extraSmall.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_INTROSCREEN_BG_LARGE:String = "../maps/icons/dragonBoats/introScreen/bg_large.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_INTROSCREEN_BG_MEDIUM:String = "../maps/icons/dragonBoats/introScreen/bg_medium.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_INTROSCREEN_BG_SMALL:String = "../maps/icons/dragonBoats/introScreen/bg_small.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_INTROSCREEN_ILLUSTRATION_01_EXTRASMALL:String = "../maps/icons/dragonBoats/introScreen/illustration_01_extraSmall.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_INTROSCREEN_ILLUSTRATION_01_LARGE:String = "../maps/icons/dragonBoats/introScreen/illustration_01_large.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_INTROSCREEN_ILLUSTRATION_01_MEDIUM:String = "../maps/icons/dragonBoats/introScreen/illustration_01_medium.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_INTROSCREEN_ILLUSTRATION_02_EXTRASMALL:String = "../maps/icons/dragonBoats/introScreen/illustration_02_extraSmall.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_INTROSCREEN_ILLUSTRATION_02_LARGE:String = "../maps/icons/dragonBoats/introScreen/illustration_02_large.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_INTROSCREEN_ILLUSTRATION_02_MEDIUM:String = "../maps/icons/dragonBoats/introScreen/illustration_02_medium.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_INTROSCREEN_ILLUSTRATION_03_EXTRASMALL:String = "../maps/icons/dragonBoats/introScreen/illustration_03_extraSmall.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_INTROSCREEN_ILLUSTRATION_03_LARGE:String = "../maps/icons/dragonBoats/introScreen/illustration_03_large.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_INTROSCREEN_ILLUSTRATION_03_MEDIUM:String = "../maps/icons/dragonBoats/introScreen/illustration_03_medium.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_REWARDS_BG:String = "../maps/icons/dragonBoats/rewards/bg.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_REWARDS_HEADER_LOGO:String = "../maps/icons/dragonBoats/rewards/header_logo.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_REWARDS_LIGHT_BP:String = "../maps/icons/dragonBoats/rewards/light_bp.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_REWARDS_LINES:String = "../maps/icons/dragonBoats/rewards/lines.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_REWARDS_RIBBON:String = "../maps/icons/dragonBoats/rewards/ribbon.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_REWARDS_RIBBON_MEDIUM:String = "../maps/icons/dragonBoats/rewards/ribbon_medium.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_REWARDS_RIBBON_SMALL:String = "../maps/icons/dragonBoats/rewards/ribbon_small.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_REWARDS_VEHICLE_LARGE:String = "../maps/icons/dragonBoats/rewards/vehicle_large.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_REWARDS_VEHICLE_MEDIUM:String = "../maps/icons/dragonBoats/rewards/vehicle_medium.png";
+      
+      public static const MAPS_ICONS_DRAGONBOATS_REWARDS_VEHICLE_SMALL:String = "../maps/icons/dragonBoats/rewards/vehicle_small.png";
+      
       public static const MAPS_ICONS_EMOJI_SMILEY_HAPPY:String = "../maps/icons/emoji/smiley_happy.png";
       
       public static const MAPS_ICONS_EMOJI_SMILEY_HMM:String = "../maps/icons/emoji/smiley_hmm.png";
@@ -8180,6 +8428,8 @@ package
       public static const MAPS_ICONS_LIBRARY_DOT:String = "../maps/icons/library/dot.png";
       
       public static const MAPS_ICONS_LIBRARY_DOUBLECHECKMARK:String = "../maps/icons/library/doubleCheckmark.png";
+      
+      public static const MAPS_ICONS_LIBRARY_DRAGONBOATPOINTSICON_1:String = "../maps/icons/library/dragonBoatPointsIcon-1.png";
       
       public static const MAPS_ICONS_LIBRARY_ELITEXPICON_2:String = "../maps/icons/library/EliteXpIcon-2.png";
       
@@ -14557,6 +14807,8 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_BIG_DELUXE_GIFT:String = "../maps/icons/quests/bonuses/big/deluxe_gift.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_BIG_DRAGONBOATPOINTS:String = "../maps/icons/quests/bonuses/big/dragonBoatPoints.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_BIG_DRIVER_SMOOTHDRIVING:String = "../maps/icons/quests/bonuses/big/driver_smoothDriving.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_BIG_DRIVER_VIRTUOSO:String = "../maps/icons/quests/bonuses/big/driver_virtuoso.png";
@@ -15218,6 +15470,8 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_DEFAULT:String = "../maps/icons/quests/bonuses/small/default.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_DELUXE_GIFT:String = "../maps/icons/quests/bonuses/small/deluxe_gift.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_DRAGONBOATPOINTS:String = "../maps/icons/quests/bonuses/small/dragonBoatPoints.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_SMALL_DRIVER_SMOOTHDRIVING:String = "../maps/icons/quests/bonuses/small/driver_smoothDriving.png";
       

@@ -25,11 +25,6 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
       
       override public function setData(param1:Object) : void
       {
-         if(this._platoonData && this._platoonData.isDead)
-         {
-            alpha = DESTROYED_ALPHA;
-            return;
-         }
          this.cleanUpData();
          this._platoonData = new BattleRoyalePlatoonVO(param1);
          this.icon.imageName = !!this._platoonData.isEnemy ? ENEMY : ALLY;

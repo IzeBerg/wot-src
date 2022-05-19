@@ -69,7 +69,7 @@ package net.wg.gui.battle.battleRoyale.views.components
          super.onDispose();
       }
       
-      public function setData(param1:String, param2:int = 0) : void
+      public function setData(param1:String, param2:int) : void
       {
          if(param1 != this._counterText)
          {

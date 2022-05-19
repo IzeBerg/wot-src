@@ -2785,6 +2785,38 @@ package
       
       public static const CAMOUFLAGE_CN_LIVE_STREAM_PLATFORM_DESCRIPTION:String = "#vehicle_customization:camouflage/cn_live_stream_platform/description";
       
+      public static const CAMOUFLAGE_YANDEX_JUNE_2022_LABEL:String = "#vehicle_customization:camouflage/yandex_june_2022/label";
+      
+      public static const CAMOUFLAGE_YANDEX_JUNE_2022_DESCRIPTION:String = "#vehicle_customization:camouflage/yandex_june_2022/description";
+      
+      public static const CAMOUFLAGE_CN_DRAGON_BOAT_FESTIVAL_GOLD_LABEL:String = "#vehicle_customization:camouflage/cn_dragon_boat_festival_gold/label";
+      
+      public static const CAMOUFLAGE_CN_DRAGON_BOAT_FESTIVAL_GOLD_DESCRIPTION:String = "#vehicle_customization:camouflage/cn_dragon_boat_festival_gold/description";
+      
+      public static const CAMOUFLAGE_CN_DRAGON_BOAT_FESTIVAL_RED_LABEL:String = "#vehicle_customization:camouflage/cn_dragon_boat_festival_red/label";
+      
+      public static const CAMOUFLAGE_CN_DRAGON_BOAT_FESTIVAL_RED_DESCRIPTION:String = "#vehicle_customization:camouflage/cn_dragon_boat_festival_red/description";
+      
+      public static const CAMOUFLAGE_CN_DRAGON_BOAT_FESTIVAL_BLUE_LABEL:String = "#vehicle_customization:camouflage/cn_dragon_boat_festival_blue/label";
+      
+      public static const CAMOUFLAGE_CN_DRAGON_BOAT_FESTIVAL_BLUE_DESCRIPTION:String = "#vehicle_customization:camouflage/cn_dragon_boat_festival_blue/description";
+      
+      public static const CAMOUFLAGE_CN_DRAGON_BOAT_FESTIVAL_PURPLE_LABEL:String = "#vehicle_customization:camouflage/cn_dragon_boat_festival_purple/label";
+      
+      public static const CAMOUFLAGE_CN_DRAGON_BOAT_FESTIVAL_PURPLE_DESCRIPTION:String = "#vehicle_customization:camouflage/cn_dragon_boat_festival_purple/description";
+      
+      public static const CAMOUFLAGE_CN_DRAGON_BOAT_FESTIVAL_GREEN_LABEL:String = "#vehicle_customization:camouflage/cn_dragon_boat_festival_green/label";
+      
+      public static const CAMOUFLAGE_CN_DRAGON_BOAT_FESTIVAL_GREEN_DESCRIPTION:String = "#vehicle_customization:camouflage/cn_dragon_boat_festival_green/description";
+      
+      public static const CAMOUFLAGE_CN_DRAGON_BOAT_FESTIVAL_EMERALD_LABEL:String = "#vehicle_customization:camouflage/cn_dragon_boat_festival_emerald/label";
+      
+      public static const CAMOUFLAGE_CN_DRAGON_BOAT_FESTIVAL_EMERALD_DESCRIPTION:String = "#vehicle_customization:camouflage/cn_dragon_boat_festival_emerald/description";
+      
+      public static const CAMOUFLAGE_CN_DRAGON_BOAT_FESTIVAL_SOARING_LABEL:String = "#vehicle_customization:camouflage/cn_dragon_boat_festival_soaring/label";
+      
+      public static const CAMOUFLAGE_CN_DRAGON_BOAT_FESTIVAL_SOARING_DESCRIPTION:String = "#vehicle_customization:camouflage/cn_dragon_boat_festival_soaring/description";
+      
       public static const EMBLEM:String = "#vehicle_customization:emblem";
       
       public static const EMBLEM_CLAN_CONTENT:String = "#vehicle_customization:emblem/clan_content";
@@ -6245,6 +6277,16 @@ package
       
       public static const INSCRIPTION_SPECIAL_SPECIAL_602:String = "#vehicle_customization:inscription/special/special_602";
       
+      public static const INSCRIPTION_SPECIAL_SPECIAL_607:String = "#vehicle_customization:inscription/special/special_607";
+      
+      public static const INSCRIPTION_SPECIAL_SPECIAL_608:String = "#vehicle_customization:inscription/special/special_608";
+      
+      public static const INSCRIPTION_SPECIAL_SPECIAL_609:String = "#vehicle_customization:inscription/special/special_609";
+      
+      public static const INSCRIPTION_SPECIAL_SPECIAL_610:String = "#vehicle_customization:inscription/special/special_610";
+      
+      public static const INSCRIPTION_SPECIAL_SPECIAL_611:String = "#vehicle_customization:inscription/special/special_611";
+      
       public static const ITEM_EMBLEM1:String = "#vehicle_customization:item/emblem1";
       
       public static const ITEM_EMBLEM2:String = "#vehicle_customization:item/emblem2";
@@ -7686,6 +7728,12 @@ package
       public static const REPAINT_CN_LIVE_STREAM_PLATFORM:String = "#vehicle_customization:repaint/cn_live_stream_platform";
       
       public static const REPAINT_CN_LIVE_STREAM_PLATFORM_GUN:String = "#vehicle_customization:repaint/cn_live_stream_platform_gun";
+      
+      public static const REPAINT_YANDEX_JUNE_2022:String = "#vehicle_customization:repaint/yandex_june_2022";
+      
+      public static const REPAINT_CN_DRAGON_BOAT_FESTIVAL_EMERALD:String = "#vehicle_customization:repaint/cn_dragon_boat_festival_emerald";
+      
+      public static const REPAINT_CN_DRAGON_BOAT_FESTIVAL_SOARING:String = "#vehicle_customization:repaint/cn_dragon_boat_festival_soaring";
       
       public static const MODIFICATIONS_AGE_EFFECT_01:String = "#vehicle_customization:modifications/age_effect_01";
       
@@ -10013,6 +10061,10 @@ package
       
       public static const SPECIAL_STYLE_POPULAR_AND_NEW_VH_DESC_LONG:String = "#vehicle_customization:special_style/popular_and_new_vh_desc/long";
       
+      public static const SPECIAL_STYLE_A40_T95_SC_3DST:String = "#vehicle_customization:special_style/A40_T95_SC_3DSt";
+      
+      public static const SPECIAL_STYLE_A40_T95_SC_3DST_DESC_LONG:String = "#vehicle_customization:special_style/A40_T95_SC_3DSt_desc/long";
+      
       public static const SPECIAL_STYLE_LUNAR_MARATHON_2022:String = "#vehicle_customization:special_style/lunar_marathon_2022";
       
       public static const SPECIAL_STYLE_LUNAR_MARATHON_2022_DESC:String = "#vehicle_customization:special_style/lunar_marathon_2022_desc";
@@ -10061,6 +10113,10 @@ package
       
       public static const SPECIAL_STYLE_MAPBOX_2022_DESC:String = "#vehicle_customization:special_style/mapbox_2022_desc";
       
+      public static const SPECIAL_STYLE_CZ20_SHPTK_TVP_100_MM_3DST_22MM:String = "#vehicle_customization:special_style/Cz20_ShPTK_TVP_100_mm_3DSt_22MM";
+      
+      public static const SPECIAL_STYLE_CZ20_SHPTK_TVP_100_MM_3DST_22MM_DESC_LONG:String = "#vehicle_customization:special_style/Cz20_ShPTK_TVP_100_mm_3DSt_22MM_desc/long";
+      
       public static const SPECIAL_STYLE_G55_E75_3DST_NEX:String = "#vehicle_customization:special_style/G55_E75_3DSt_NEx";
       
       public static const SPECIAL_STYLE_G55_E75_3DST_NEX_DESC_LONG:String = "#vehicle_customization:special_style/G55_E75_3DSt_NEx_desc/long";
@@ -10074,6 +10130,40 @@ package
       public static const SPECIAL_STYLE_CN_LIVE_STREAM_PLATFORM_DESC:String = "#vehicle_customization:special_style/cn_live_stream_platform_desc";
       
       public static const SPECIAL_STYLE_CN_LIVE_STREAM_PLATFORM_DESC_LONG:String = "#vehicle_customization:special_style/cn_live_stream_platform_desc/long";
+      
+      public static const SPECIAL_STYLE_YANDEX_JUNE_2022:String = "#vehicle_customization:special_style/yandex_june_2022";
+      
+      public static const SPECIAL_STYLE_YANDEX_JUNE_2022_DESC:String = "#vehicle_customization:special_style/yandex_june_2022_desc";
+      
+      public static const SPECIAL_STYLE_YANDEX_JUNE_2022_DESC_LONG:String = "#vehicle_customization:special_style/yandex_june_2022_desc/long";
+      
+      public static const SPECIAL_STYLE_CN_DRAGON_BOAT_FESTIVAL_GOLD:String = "#vehicle_customization:special_style/cn_dragon_boat_festival_gold";
+      
+      public static const SPECIAL_STYLE_CN_DRAGON_BOAT_FESTIVAL_GOLD_DESC:String = "#vehicle_customization:special_style/cn_dragon_boat_festival_gold_desc";
+      
+      public static const SPECIAL_STYLE_CN_DRAGON_BOAT_FESTIVAL_RED:String = "#vehicle_customization:special_style/cn_dragon_boat_festival_red";
+      
+      public static const SPECIAL_STYLE_CN_DRAGON_BOAT_FESTIVAL_RED_DESC:String = "#vehicle_customization:special_style/cn_dragon_boat_festival_red_desc";
+      
+      public static const SPECIAL_STYLE_CN_DRAGON_BOAT_FESTIVAL_BLUE:String = "#vehicle_customization:special_style/cn_dragon_boat_festival_blue";
+      
+      public static const SPECIAL_STYLE_CN_DRAGON_BOAT_FESTIVAL_BLUE_DESC:String = "#vehicle_customization:special_style/cn_dragon_boat_festival_blue_desc";
+      
+      public static const SPECIAL_STYLE_CN_DRAGON_BOAT_FESTIVAL_PURPLE:String = "#vehicle_customization:special_style/cn_dragon_boat_festival_purple";
+      
+      public static const SPECIAL_STYLE_CN_DRAGON_BOAT_FESTIVAL_PURPLE_DESC:String = "#vehicle_customization:special_style/cn_dragon_boat_festival_purple_desc";
+      
+      public static const SPECIAL_STYLE_CN_DRAGON_BOAT_FESTIVAL_GREEN:String = "#vehicle_customization:special_style/cn_dragon_boat_festival_green";
+      
+      public static const SPECIAL_STYLE_CN_DRAGON_BOAT_FESTIVAL_GREEN_DESC:String = "#vehicle_customization:special_style/cn_dragon_boat_festival_green_desc";
+      
+      public static const SPECIAL_STYLE_CN_DRAGON_BOAT_FESTIVAL_EMERALD:String = "#vehicle_customization:special_style/cn_dragon_boat_festival_emerald";
+      
+      public static const SPECIAL_STYLE_CN_DRAGON_BOAT_FESTIVAL_EMERALD_DESC:String = "#vehicle_customization:special_style/cn_dragon_boat_festival_emerald_desc";
+      
+      public static const SPECIAL_STYLE_CN_DRAGON_BOAT_FESTIVAL_SOARING:String = "#vehicle_customization:special_style/cn_dragon_boat_festival_soaring";
+      
+      public static const SPECIAL_STYLE_CN_DRAGON_BOAT_FESTIVAL_SOARING_DESC:String = "#vehicle_customization:special_style/cn_dragon_boat_festival_soaring_desc";
       
       public static const CUSTOMIZATION_POPOVER_STYLE_SUMMER:String = "#vehicle_customization:customization/popover/style/summer";
       
@@ -12008,6 +12098,26 @@ package
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_377:String = "#vehicle_customization:projection_decals/special/projection_decal_377";
       
       public static const PROJECTION_DECALS_ANIMALS_PROJECTION_DECAL_57:String = "#vehicle_customization:projection_decals/animals/projection_decal_57";
+      
+      public static const PROJECTION_DECALS_COOL_PROJECTION_DECAL_65:String = "#vehicle_customization:projection_decals/cool/projection_decal_65";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_379:String = "#vehicle_customization:projection_decals/special/projection_decal_379";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_381:String = "#vehicle_customization:projection_decals/special/projection_decal_381";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_382:String = "#vehicle_customization:projection_decals/special/projection_decal_382";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_383:String = "#vehicle_customization:projection_decals/special/projection_decal_383";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_384:String = "#vehicle_customization:projection_decals/special/projection_decal_384";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_385:String = "#vehicle_customization:projection_decals/special/projection_decal_385";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_390:String = "#vehicle_customization:projection_decals/special/projection_decal_390";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_391:String = "#vehicle_customization:projection_decals/special/projection_decal_391";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_392:String = "#vehicle_customization:projection_decals/special/projection_decal_392";
       
       public static const PROPERTYSHEET_KEYBOARD_HINT:String = "#vehicle_customization:propertySheet/keyboard/hint";
       

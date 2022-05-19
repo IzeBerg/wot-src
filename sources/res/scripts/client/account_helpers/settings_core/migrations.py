@@ -805,6 +805,17 @@ def _migrateTo90(core, data, initialized):
        'battleRoyale': True}
 
 
+def _migrateTo91(core, data, initialized):
+    from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS
+    from account_helpers.settings_core.settings_constants import DragonBoatStorageKeys
+    data[SETTINGS_SECTIONS.DRAGON_BOAT_STORAGE][DragonBoatStorageKeys.TEAM_1] = False
+    data[SETTINGS_SECTIONS.DRAGON_BOAT_STORAGE][DragonBoatStorageKeys.TEAM_2] = False
+    data[SETTINGS_SECTIONS.DRAGON_BOAT_STORAGE][DragonBoatStorageKeys.TEAM_3] = False
+    data[SETTINGS_SECTIONS.DRAGON_BOAT_STORAGE][DragonBoatStorageKeys.TEAM_4] = False
+    data[SETTINGS_SECTIONS.DRAGON_BOAT_STORAGE][DragonBoatStorageKeys.TEAM_5] = False
+    data[SETTINGS_SECTIONS.DRAGON_BOAT_STORAGE][DragonBoatStorageKeys.DBOAT_FINAL_REWARD_OBTAINED] = False
+
+
 _versions = (
  (
   1, _initializeDefaultSettings, True, False),
@@ -983,7 +994,9 @@ _versions = (
  (
   89, _migrateTo89, False, False),
  (
-  90, _migrateTo90, False, False))
+  90, _migrateTo90, False, False),
+ (
+  91, _migrateTo91, False, False))
 
 @async
 @process

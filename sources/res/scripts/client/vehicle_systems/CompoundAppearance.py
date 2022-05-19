@@ -1,3 +1,4 @@
+from functools import partial
 import logging, math
 from math import tan
 import typing, BigWorld, Math, constants, items.vehicles, BattleReplay, SoundGroups
@@ -85,6 +86,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         self.gunMatrix = Math.WGAdaptiveMatrixProvider()
         self.__originalFilter = None
         self.__terrainCircle = None
+        self.__showCircleDelayed = None
         self.onModelChanged = Event()
         self.__activated = False
         self.__dirtUpdateTime = 0.0
@@ -184,6 +186,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
             self._vehicle.filter = self.__originalFilter
             self.filter.reset()
             self.__originalFilter = None
+            self.__showCircleDelayed = None
             if self.__terrainCircle.isAttached():
                 self.__terrainCircle.detach()
             if stopEffects:
@@ -287,6 +290,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         self.siegeEffects = None
         self.partsGameObjects = None
         self._destroySystems()
+        self._loadingQueue = []
         return
 
     def destroy(self):
@@ -298,6 +302,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         if self.tracks is not None:
             self.tracks.reset()
         super(CompoundAppearance, self).destroy()
+        self.__showCircleDelayed = None
         if self.__terrainCircle is not None:
             self.__terrainCircle.destroy()
             self.__terrainCircle = None
@@ -343,6 +348,9 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
             LOG_ERROR('showTerrainCircle: radius or terrainCircleSetting is not set. You need to set both or none of them.')
             return
         else:
+            if self.__terrainCircle is None:
+                self.__showCircleDelayed = partial(self.showTerrainCircle, radius, terrainCircleSettings)
+                return
             if radius is not None:
                 self.__terrainCircle.configure(radius, terrainCircleSettings)
             if not self.__terrainCircle.isAttached():
@@ -352,6 +360,8 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
 
     def hideTerrainCircle(self):
         self.__terrainCircle.setVisible(False)
+        self.__showCircleDelayed = None
+        return
 
     def updateTurretVisibility(self):
         self.__requestModelsRefresh()
@@ -681,6 +691,9 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
             return
         else:
             self.__terrainCircle = TerrainCircleComponent()
+            if self.__showCircleDelayed is not None:
+                self.__showCircleDelayed()
+                self.__showCircleDelayed = None
             return
 
     def __attachTerrainCircle(self):

@@ -20,12 +20,6 @@ package net.wg.gui.battle.battleRoyale.views.components
          super();
       }
       
-      protected function onDispose() : void
-      {
-         this.counterContainer.dispose();
-         this.counterContainer = null;
-      }
-      
       public final function dispose() : void
       {
          if(this._baseDisposed)
@@ -41,7 +35,7 @@ package net.wg.gui.battle.battleRoyale.views.components
          return this._baseDisposed;
       }
       
-      public function setData(param1:String, param2:int = 0) : void
+      public function setData(param1:String, param2:int) : void
       {
          this.counterContainer.setData(param1,param2);
          if(this._counterValue && param1 && param1 != this._counterValue)
@@ -49,6 +43,12 @@ package net.wg.gui.battle.battleRoyale.views.components
             this.gotoAndPlay(ANIM_UPDATE_FRAME_LABEL);
          }
          this._counterValue = param1;
+      }
+      
+      protected function onDispose() : void
+      {
+         this.counterContainer.dispose();
+         this.counterContainer = null;
       }
       
       public function set isSmall(param1:Boolean) : void
