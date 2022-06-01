@@ -376,12 +376,6 @@ package
       public static const KEY_LCDKB_MENU:String = "#readable_key_names:KEY_LCDKB_MENU";
       
       public static const KEY_IME_CHAR:String = "#readable_key_names:KEY_IME_CHAR";
-      
-      public static const KEY_SHIFT:String = "#readable_key_names:KEY_SHIFT";
-      
-      public static const KEY_ALT:String = "#readable_key_names:KEY_ALT";
-      
-      public static const KEY_CTRL:String = "#readable_key_names:KEY_CTRL";
        
       
       public function READABLE_KEY_NAMES()

@@ -10,6 +10,7 @@ package net.wg.gui.components.controls.universalBtn
    import flash.text.TextFormat;
    import flash.text.TextFormatAlign;
    import flash.utils.Dictionary;
+   import net.wg.data.constants.Fonts;
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.Values;
    import net.wg.gui.components.controls.BitmapFill;
@@ -96,8 +97,6 @@ package net.wg.gui.components.controls.universalBtn
       
       private var _alertIndicatorVisible:Boolean;
       
-      private var _currentFont:String = "$TitleFont";
-      
       public function UniversalBtn()
       {
          super();
@@ -122,7 +121,7 @@ package net.wg.gui.components.controls.universalBtn
          textField.name = TEXT_FIELD_DISPLAY_NAME;
          textField.selectable = false;
          this._tFormat = textField.defaultTextFormat;
-         this._tFormat.font = this._currentFont;
+         this._tFormat.font = Fonts.TITLE_FONT;
          this._tFormat.align = TextFormatAlign.CENTER;
          textField.defaultTextFormat = this._tFormat;
          this.addChildAt(textField,TEXT_FIELD_LAYOUT_INDEX);
@@ -233,10 +232,7 @@ package net.wg.gui.components.controls.universalBtn
       public function setStyle(param1:String, param2:IUniversalBtnStyledDisplayObjects, param3:uint, param4:uint, param5:Dictionary, param6:String, param7:DropShadowFilter) : void
       {
          textField.filters = null;
-         if(param7 != null)
-         {
-            textField.filters = new Array(param7);
-         }
+         textField.filters = new Array(param7);
          this._styleInitComplete = false;
          this.clearStyledDisplayObjects();
          var _loc8_:int = this.getChildIndex(disableMc);
@@ -456,11 +452,6 @@ package net.wg.gui.components.controls.universalBtn
          this.image.alpha = _loc1_;
       }
       
-      private function onIconChangeHandler(param1:Event) : void
-      {
-         invalidate(InvalidationType.LAYOUT);
-      }
-      
       override public function set selected(param1:Boolean) : void
       {
          if(selected != param1)
@@ -567,14 +558,9 @@ package net.wg.gui.components.controls.universalBtn
          return this._styleID;
       }
       
-      public function set currentFont(param1:String) : void
+      private function onIconChangeHandler(param1:Event) : void
       {
-         if(this._currentFont != param1)
-         {
-            this._currentFont = param1;
-            this._tFormat.font = param1;
-            textField.defaultTextFormat = this._tFormat;
-         }
+         invalidate(InvalidationType.LAYOUT);
       }
    }
 }

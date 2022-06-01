@@ -37,7 +37,6 @@ class EdgeDetectColorController(object):
         out['friend'] = section.readVector4(cName + 'friend', common.get('friend', Math.Vector4(0, 1, 0, 0.5)))
         out['flag'] = section.readVector4(cName + 'flag', common.get('flag', Math.Vector4(1, 1, 1, 1)))
         out['hangar'] = section.readVector4(cName + 'hangar', common.get('hangar', Math.Vector4(1, 1, 0, 1)))
-        out['rtsFocus'] = section.readVector4(cName + 'rtsFocus', Math.Vector4(0.66, 0.78, 0.52, 1))
         self.__readOverlayColors(out, common, cType, 'overlaySolidColors', _OVERLAY_SOLID_KEYS, section)
         self.__readOverlayColors(out, common, cType, 'overlayPatternColors', _OVERLAY_PATTERN_KEYS, section)
 
@@ -65,7 +64,7 @@ class EdgeDetectColorController(object):
         colors = self.__colors[cType]
         colorsSet = (
          colors['hangar'] if isHangar else colors['self'],
-         colors['enemy'], colors['friend'], colors['flag'], colors['rtsFocus'])
+         colors['enemy'], colors['friend'], colors['flag'])
         i = 0
         for c in colorsSet:
             BigWorld.wgSetEdgeDetectEdgeColor(i, c)

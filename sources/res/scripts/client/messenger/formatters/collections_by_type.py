@@ -18,7 +18,9 @@ _TOKEN_QUEST_SUB_FORMATTERS = (
  token_quest_subformatters.SeniorityAwardsFormatter(),
  token_quest_subformatters.PersonalMissionsTokenQuestsFormatter(),
  token_quest_subformatters.BattlePassDefaultAwardsFormatter(),
- token_quest_subformatters.WotPlusDirectivesFormatter())
+ token_quest_subformatters.WotPlusDirectivesFormatter(),
+ token_quest_subformatters.DragonBoatStageQuestFormatter(),
+ token_quest_subformatters.DragonBoatFinalQuestFormatter())
 _PERSONAL_MISSIONS_SUB_FORMATTERS = (
  token_quest_subformatters.PersonalMissionsFormatter(),)
 SERVER_FORMATTERS = {_SM_TYPE.serverReboot.index(): _sc.ServerRebootFormatter(), 
@@ -98,8 +100,7 @@ SERVER_FORMATTERS = {_SM_TYPE.serverReboot.index(): _sc.ServerRebootFormatter(),
    _SM_TYPE.wotPlusRentEnd.index(): _wotPlusFormatters.RentEnd(), 
    _SM_TYPE.wotPlusNoRentSelected.index(): _wotPlusFormatters.SimpleFormatter('WotPlusRentNoRentSelectedMessage'), 
    _SM_TYPE.giftSystemMessage.index(): GiftSystemMessagesProxy(), 
-   _SM_TYPE.telecomMergeResults.index(): _sc.TelecomMergeResultsFormatter(), 
-   _SM_TYPE.rtsTokens.index(): _sc.RtsTokensFormatter()}
+   _SM_TYPE.telecomMergeResults.index(): _sc.TelecomMergeResultsFormatter()}
 CLIENT_FORMATTERS = {SCH_CLIENT_MSG_TYPE.SYS_MSG_TYPE: _sc.ClientSysMessageFormatter(), 
    SCH_CLIENT_MSG_TYPE.PREMIUM_ACCOUNT_EXPIRY_MSG: _sc.PremiumAccountExpiryFormatter(), 
    SCH_CLIENT_MSG_TYPE.AOGAS_NOTIFY_TYPE: _sc.AOGASNotifyFormatter(), 

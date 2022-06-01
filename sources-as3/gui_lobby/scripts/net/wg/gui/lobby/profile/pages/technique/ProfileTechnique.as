@@ -24,6 +24,10 @@ package net.wg.gui.lobby.profile.pages.technique
       private static const MIN_HEIGHT:int = 525;
       
       private static const MAX_HEIGHT:int = 740;
+      
+      private static const DEFAULT_TECHNIQUE_RENDERER_LINKAGE:String = "TechniqueRenderer_UI";
+      
+      private static const BATTLEROYALE_TECHNIQUE_RENDERER_LINKAGE:String = "BattleRoyaleTechniqueRendererUI";
        
       
       public var listComponent:TechniqueListComponent = null;
@@ -42,6 +46,14 @@ package net.wg.gui.lobby.profile.pages.technique
       override public function as_responseDossier(param1:String, param2:Object, param3:String, param4:String) : void
       {
          super.as_responseDossier(param1,param2,param3,param4);
+         if(param1 == PROFILE_DROPDOWN_KEYS.BATTLE_ROYALE_SOLO || param1 == PROFILE_DROPDOWN_KEYS.BATTLE_ROYALE_SQUAD)
+         {
+            this.listComponent.techniqueList.itemRendererName = BATTLEROYALE_TECHNIQUE_RENDERER_LINKAGE;
+         }
+         else
+         {
+            this.listComponent.techniqueList.itemRendererName = DEFAULT_TECHNIQUE_RENDERER_LINKAGE;
+         }
          this.emptyScreen.text = param4;
       }
       

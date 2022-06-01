@@ -1,7 +1,8 @@
 from UnitBase import UNIT_FLAGS, UNIT_ROLE
-from gui.shared.utils.decorators import ReprInjector
-from gui.prb_control.entities.base.unit.permissions import UnitPermissions
 from constants import CLAN_MEMBER_FLAGS
+from gui.prb_control.entities.base.unit.permissions import UnitPermissions
+from gui.prb_control.items.stronghold_items import UNIT_ROLE_BY_RESERVE_TYPE
+from gui.shared.utils.decorators import ReprInjector
 
 @ReprInjector.simple(('_clanRoles', 'clanRoles'), ('_isLegionary', 'isLegionary'), ('_strongholdManageReservesRoles',
                                                                                     'strongholdManageReservesRoles'), ('_strongholdStealLeadershipRoles',
@@ -80,8 +81,10 @@ class StrongholdPermissions(UnitPermissions):
     def canChangeExtraEquipmentRole(self):
         return self.isCommander(self._roles) and not self._isLegionary and self.isNotFreezed()
 
-    def isEquipmentCommander(self):
-        return self._roles & UNIT_ROLE.CAN_USE_EXTRA_EQUIPMENTS > 0
+    def isEquipmentCommander(self, equipmentType):
+        if equipmentType not in UNIT_ROLE_BY_RESERVE_TYPE:
+            return False
+        return self._roles & UNIT_ROLE_BY_RESERVE_TYPE[equipmentType] > 0
 
     def canCreateSquad(self):
         return False

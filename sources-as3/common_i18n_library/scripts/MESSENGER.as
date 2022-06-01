@@ -275,8 +275,6 @@ package
       
       public static const DIALOGS_SIMPLESQUAD_EPICBATTLE_VEHICLERESTRICTION:String = "#messenger:dialogs/simpleSquad/epicBattle/VehicleRestriction";
       
-      public static const DIALOGS_SIMPLESQUAD_BATTLEROYALE_VEHICLERESTRICTION:String = "#messenger:dialogs/simpleSquad/battleRoyale/VehicleRestriction";
-      
       public static const DIALOGS_EVENTSQUAD_VEHICLE:String = "#messenger:dialogs/eventSquad/vehicle";
       
       public static const DIALOGS_BSCHANNEL_CONTEXT_KICKPLAYER:String = "#messenger:dialogs/bsChannel/context/kickPlayer";
@@ -589,6 +587,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_BPCOIN:String = "#messenger:serviceChannelMessages/battleResults/bpcoin";
       
+      public static const SERVICECHANNELMESSAGES_BATTLERESULTS_DBPOINTS:String = "#messenger:serviceChannelMessages/battleResults/DBPoints";
+      
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_DOUBLEXPFACTOR:String = "#messenger:serviceChannelMessages/battleResults/doubleXpFactor";
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_PENALTYFORDAMAGEALLIES:String = "#messenger:serviceChannelMessages/battleResults/penaltyForDamageAllies";
@@ -730,6 +730,8 @@ package
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_BATTLEPASS:String = "#messenger:serviceChannelMessages/battleResults/battlePass";
       
       public static const SERVICECHANNELMESSAGES_BRBATTLERESULTS_BATTLEPASS:String = "#messenger:serviceChannelMessages/BRbattleResults/battlePass";
+      
+      public static const SERVICECHANNELMESSAGES_BRBATTLERESULTS_BATTLEROYALEBRCOIN:String = "#messenger:serviceChannelMessages/BRbattleResults/battleRoyaleBrCoin";
       
       public static const SERVICECHANNELMESSAGES_BATTLETUTORIAL_RESULTS_FINISHED:String = "#messenger:serviceChannelMessages/battleTutorial/results/finished";
       
@@ -1999,8 +2001,6 @@ package
       
       public static const SERVICECHANNELMESSAGES_MAPBOX_PROGRESSIONFINALREWARDRECEIVED:String = "#messenger:serviceChannelMessages/mapbox/progressionFinalRewardReceived";
       
-      public static const SERVICECHANNELMESSAGES_MAPBOX_SURVEYREQUEST:String = "#messenger:serviceChannelMessages/mapbox/surveyRequest";
-      
       public static const SERVICECHANNELMESSAGES_MAPBOX_CREWBOOKREQUESTERROR:String = "#messenger:serviceChannelMessages/mapbox/crewbookRequestError";
       
       public static const SERVICECHANNELMESSAGES_SELECTABLECREWBOOK_GUIDE:String = "#messenger:serviceChannelMessages/selectableCrewbook/guide";
@@ -2089,13 +2089,9 @@ package
       
       public static const PLATFORMCURRENCYMSG_DEBITED_BPBIT:String = "#messenger:platformCurrencyMsg/debited/bpbit";
       
-      public static const SERVICECHANNELMESSAGES_RTS_PASSACCURED:String = "#messenger:serviceChannelMessages/RTS/passAccured";
+      public static const PLATFORMCURRENCYMSG_RECEIVED_BRCOIN:String = "#messenger:platformCurrencyMsg/received/brcoin";
       
-      public static const SERVICECHANNELMESSAGES_RTS_RTS1X7CURRENCYDEBITED:String = "#messenger:serviceChannelMessages/RTS/rts1x7CurrencyDebited";
-      
-      public static const SERVICECHANNELMESSAGES_RTS_RTS1X1CURRENCYDEBITED:String = "#messenger:serviceChannelMessages/RTS/rts1x1CurrencyDebited";
-      
-      public static const SERVICECHANNELMESSAGES_RTS_RTS1X7PASSDEBITED:String = "#messenger:serviceChannelMessages/RTS/rts1x7PassDebited";
+      public static const PLATFORMCURRENCYMSG_DEBITED_BRCOIN:String = "#messenger:platformCurrencyMsg/debited/brcoin";
       
       public static const DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_ENUM:Array = [DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_OFFLINE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_NOTREADY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_READY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_INBATTLE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_AFK];
        

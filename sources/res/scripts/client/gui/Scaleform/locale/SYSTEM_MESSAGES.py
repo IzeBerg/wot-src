@@ -57,7 +57,6 @@ class SYSTEM_MESSAGES(object):
     ARENA_START_ERRORS_JOIN_EVENT_DISABLED = '#system_messages:arena_start_errors/join/EVENT_DISABLED'
     ARENA_START_ERRORS_JOIN_QUEUE_FULL = '#system_messages:arena_start_errors/join/QUEUE_FULL'
     ARENA_START_ERRORS_JOIN_QUEUE_FAILURE = '#system_messages:arena_start_errors/join/QUEUE_FAILURE'
-    ARENA_START_ERRORS_JOIN_INSUFFICIENT_FUNDS = '#system_messages:arena_start_errors/join/INSUFFICIENT_FUNDS'
     PREBATTLE_KICK_TYPE_SQUAD = '#system_messages:prebattle/kick/type/squad'
     PREBATTLE_KICK_TYPE_UNKNOWN = '#system_messages:prebattle/kick/type/unknown'
     PREBATTLE_KICK_REASON_ARENA_CREATION_FAILURE = '#system_messages:prebattle/kick/reason/ARENA_CREATION_FAILURE'
@@ -1189,8 +1188,10 @@ class SYSTEM_MESSAGES(object):
     DAILY_QUESTS_REROLL_UNKNOWN_ERROR = '#system_messages:daily_quests/reroll/unknown_error'
     BATTLEPASS_BUY_SERVER_ERROR = '#system_messages:battlePass_buy/server_error'
     BATTLEPASSLEVELS_BUY_SERVER_ERROR = '#system_messages:battlePassLevels_buy/server_error'
-    BATTLEPASS_SWITCH_STARTED_TITLE = '#system_messages:battlePass/switch_started/title'
-    BATTLEPASS_SWITCH_STARTED_BODY = '#system_messages:battlePass/switch_started/body'
+    BATTLEPASS_SWITCH_STARTED_STYLE_TITLE = '#system_messages:battlePass/switch_started/style/title'
+    BATTLEPASS_SWITCH_STARTED_STYLE_BODY = '#system_messages:battlePass/switch_started/style/body'
+    BATTLEPASS_SWITCH_STARTED_TANKMAN_TITLE = '#system_messages:battlePass/switch_started/tankman/title'
+    BATTLEPASS_SWITCH_STARTED_TANKMAN_BODY = '#system_messages:battlePass/switch_started/tankman/body'
     BATTLEPASS_SWITCH_PAUSE_BODY = '#system_messages:battlePass/switch_pause/body'
     BATTLEPASS_SWITCH_DISABLE_TITLE = '#system_messages:battlePass/switch_disable/title'
     BATTLEPASS_SWITCH_DISABLE_BODY = '#system_messages:battlePass/switch_disable/body'
@@ -1295,6 +1296,10 @@ class SYSTEM_MESSAGES(object):
     TELECOMMERGERESULTS_BODY_PROGRESSDECALESCOMPENS = '#system_messages:telecomMergeResults/body/progressDecalesCompens'
     TELECOMMERGERESULTS_BODY_WISHMSG = '#system_messages:telecomMergeResults/body/wishMsg'
     SSR_UNAVAILABLE = '#system_messages:ssr/unavailable'
+    DRAGONBOAT_PAUSED = '#system_messages:dragonBoat/paused'
+    DRAGONBOAT_RESTORED = '#system_messages:dragonBoat/restored'
+    DRAGONBOAT_STAGEAWARD_HEADER = '#system_messages:dragonBoat/stageAward/header'
+    DRAGONBOAT_FINALAWARD_HEADER = '#system_messages:dragonBoat/finalAward/header'
     UNIT_NOTIFICATION_DIVISIONTYPE_ENUM = (
      UNIT_NOTIFICATION_DIVISIONTYPE_MIDDLE,
      UNIT_NOTIFICATION_DIVISIONTYPE_CHAMPION,
@@ -1482,7 +1487,6 @@ class SYSTEM_MESSAGES(object):
      ARENA_START_ERRORS_JOIN_EVENT_DISABLED,
      ARENA_START_ERRORS_JOIN_QUEUE_FULL,
      ARENA_START_ERRORS_JOIN_QUEUE_FAILURE,
-     ARENA_START_ERRORS_JOIN_INSUFFICIENT_FUNDS,
      PREBATTLE_KICK_TYPE_SQUAD,
      PREBATTLE_KICK_TYPE_UNKNOWN,
      PREBATTLE_KICK_REASON_ARENA_CREATION_FAILURE,
@@ -2614,8 +2618,10 @@ class SYSTEM_MESSAGES(object):
      DAILY_QUESTS_REROLL_UNKNOWN_ERROR,
      BATTLEPASS_BUY_SERVER_ERROR,
      BATTLEPASSLEVELS_BUY_SERVER_ERROR,
-     BATTLEPASS_SWITCH_STARTED_TITLE,
-     BATTLEPASS_SWITCH_STARTED_BODY,
+     BATTLEPASS_SWITCH_STARTED_STYLE_TITLE,
+     BATTLEPASS_SWITCH_STARTED_STYLE_BODY,
+     BATTLEPASS_SWITCH_STARTED_TANKMAN_TITLE,
+     BATTLEPASS_SWITCH_STARTED_TANKMAN_BODY,
      BATTLEPASS_SWITCH_PAUSE_BODY,
      BATTLEPASS_SWITCH_DISABLE_TITLE,
      BATTLEPASS_SWITCH_DISABLE_BODY,
@@ -2719,7 +2725,11 @@ class SYSTEM_MESSAGES(object):
      TELECOMMERGERESULTS_BODY_CONJUNCTION,
      TELECOMMERGERESULTS_BODY_PROGRESSDECALESCOMPENS,
      TELECOMMERGERESULTS_BODY_WISHMSG,
-     SSR_UNAVAILABLE)
+     SSR_UNAVAILABLE,
+     DRAGONBOAT_PAUSED,
+     DRAGONBOAT_RESTORED,
+     DRAGONBOAT_STAGEAWARD_HEADER,
+     DRAGONBOAT_FINALAWARD_HEADER)
 
     @classmethod
     def unit_notification_divisiontype(cls, key0):

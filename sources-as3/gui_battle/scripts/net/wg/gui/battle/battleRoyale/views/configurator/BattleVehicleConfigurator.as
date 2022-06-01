@@ -4,14 +4,12 @@ package net.wg.gui.battle.battleRoyale.views.configurator
    import flash.display.MovieClip;
    import flash.display.Sprite;
    import flash.events.Event;
-   import flash.events.MouseEvent;
    import flash.events.TimerEvent;
    import flash.geom.Rectangle;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
    import flash.utils.Timer;
    import net.wg.data.constants.generated.BATTLE_VIEW_ALIASES;
-   import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
    import net.wg.gui.battle.battleRoyale.views.configurator.data.BattleVehicleConfiguratorVO;
    import net.wg.gui.battle.battleRoyale.views.configurator.data.ChoiceInfoPanelVO;
    import net.wg.gui.battle.battleRoyale.views.configurator.data.ModuleInfoVO;
@@ -21,7 +19,6 @@ package net.wg.gui.battle.battleRoyale.views.configurator
    import net.wg.gui.components.controls.Image;
    import net.wg.infrastructure.base.meta.IBattleVehicleConfiguratorMeta;
    import net.wg.infrastructure.base.meta.impl.BattleVehicleConfiguratorMeta;
-   import net.wg.infrastructure.managers.ITooltipMgr;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.motion.Tween;
    
@@ -31,8 +28,6 @@ package net.wg.gui.battle.battleRoyale.views.configurator
       private static const SHOW_PANEL_DELAY:int = 400;
       
       private static const ANIM_ALPHA_DURATION:int = 200;
-      
-      private static const WEAK_DESCR_OFFSET:int = -33;
       
       private static const VEHICLE_CONFIGURATOR_HEIGHT:int = 412;
       
@@ -48,7 +43,7 @@ package net.wg.gui.battle.battleRoyale.views.configurator
       
       private static const LEVEL_BOTTOM_OFFSET:int = -56 + LEVEL_PANEL_HEIGHT;
       
-      private static const NATION_ICON_RIGHT_MARGIN:int = 3;
+      private static const VEHTYPE_ICON_RIGHT_MARGIN:int = -24;
       
       private static const TF_BORDER_SIZE:uint = 2;
       
@@ -59,11 +54,7 @@ package net.wg.gui.battle.battleRoyale.views.configurator
       
       public var vehNameTf:TextField = null;
       
-      public var nationIcon:Image = null;
-      
-      public var weakPointsTF:TextField = null;
-      
-      public var alertIcon:Image = null;
+      public var vehTypeIcon:Image = null;
       
       public var choiceInfoPanel:ChoiceInfoPanel = null;
       
@@ -81,15 +72,9 @@ package net.wg.gui.battle.battleRoyale.views.configurator
       
       private var _headerContainer:Sprite;
       
-      private var _weakDescrCanBeVisible:Boolean = true;
-      
       private var _offsetDependsOnScreenHeight:int = 0;
       
       private var _moduleInfoPanelItem:ModuleInfo = null;
-      
-      private var _weakDescrContainer:Sprite;
-      
-      private var _tooltipMgr:ITooltipMgr = null;
       
       private var _panelTween:Tween = null;
       
@@ -100,7 +85,6 @@ package net.wg.gui.battle.battleRoyale.views.configurator
       public function BattleVehicleConfigurator()
       {
          this._headerContainer = new Sprite();
-         this._weakDescrContainer = new Sprite();
          this._delayTimer = new Timer(SHOW_PANEL_DELAY,1);
          super();
       }
@@ -118,13 +102,11 @@ package net.wg.gui.battle.battleRoyale.views.configurator
       override protected function configUI() : void
       {
          super.configUI();
-         this.nationIcon.addEventListener(Event.CHANGE,this.onNationIconChangeHandler,false,0,true);
+         this.vehTypeIcon.addEventListener(Event.CHANGE,this.onVehTypeIconChangeHandler,false,0,true);
          this.vehModulesConfigurator.addEventListener(ModuleConfiguratorEvent.MODULE_OVER,this.onRendererModuleOverHandler);
          this.vehModulesConfigurator.addEventListener(ModuleConfiguratorEvent.MODULE_OUT,this.onRendererModuleOutHandler);
          this.vehModulesConfigurator.addEventListener(Event.RESIZE,this.onModulesConfiguratorResizeHandler,false,0,true);
          this.vehModulesConfigurator.addEventListener(Event.CHANGE,this.onModulesConfiguratorChangeHandler,false,0,true);
-         this._weakDescrContainer.addEventListener(MouseEvent.ROLL_OVER,this.onWeakDescrContainerRollOverHandler);
-         this._weakDescrContainer.addEventListener(MouseEvent.ROLL_OUT,this.onWeakDescrContainerRollOutHandler);
          this.choiceInfoPanel.addEventListener(ModuleConfiguratorEvent.MODULE_OVER,this.onChoicePanelModuleOverHandler);
          this.choiceInfoPanel.addEventListener(ModuleConfiguratorEvent.MODULE_OUT,this.onChoicePanelModuleOutHandler);
          this.choiceInfoPanel.addEventListener(ModuleConfiguratorEvent.MODULE_CLICK,this.onChoicePanelModuleClickHandler);
@@ -134,24 +116,18 @@ package net.wg.gui.battle.battleRoyale.views.configurator
       override protected function setData(param1:BattleVehicleConfiguratorVO) : void
       {
          this.vehNameTf.text = param1.vehName;
-         this.nationIcon.source = param1.nationIcon;
-         this.weakPointsTF.text = param1.weakPointsText;
-         this.alertIcon.source = param1.alertIcon;
+         this.vehTypeIcon.source = param1.vehTypeIcon;
          invalidateSize();
       }
       
       override protected function initialize() : void
       {
          super.initialize();
-         this._tooltipMgr = App.toolTipMgr;
          this.levelPanel.setProgressBarWidth(PROGRESS_BAR_WIDTH);
-         this.vehNameTf.autoSize = this.weakPointsTF.autoSize = TextFieldAutoSize.LEFT;
-         this._headerContainer.addChild(this.nationIcon);
+         this.vehNameTf.autoSize = TextFieldAutoSize.LEFT;
+         this._headerContainer.addChild(this.vehTypeIcon);
          this._headerContainer.addChild(this.vehNameTf);
          addChild(this._headerContainer);
-         this._weakDescrContainer.addChild(this.weakPointsTF);
-         this._weakDescrContainer.addChild(this.alertIcon);
-         addChild(this._weakDescrContainer);
          this.choiceInfoPanel.initSettings(true);
          this.choiceInfoPanel.visible = this.moduleInfoPanel.visible = false;
          this._moduleInfoPanelItem = this.moduleInfoPanel.module;
@@ -168,14 +144,7 @@ package net.wg.gui.battle.battleRoyale.views.configurator
          this._delayTimer.removeEventListener(TimerEvent.TIMER,this.onDelayTimerHandler);
          this._delayTimer.stop();
          this._delayTimer = null;
-         this.weakPointsTF = null;
-         this.alertIcon.dispose();
-         this.alertIcon = null;
-         this._weakDescrContainer.removeEventListener(MouseEvent.ROLL_OVER,this.onWeakDescrContainerRollOverHandler);
-         this._weakDescrContainer.removeEventListener(MouseEvent.ROLL_OUT,this.onWeakDescrContainerRollOutHandler);
-         this._weakDescrContainer = null;
          this._moduleInfoPanelItem = null;
-         this._tooltipMgr = null;
          this.choiceInfoPanel.removeEventListener(ModuleConfiguratorEvent.MODULE_OVER,this.onChoicePanelModuleOverHandler);
          this.choiceInfoPanel.removeEventListener(ModuleConfiguratorEvent.MODULE_OUT,this.onChoicePanelModuleOutHandler);
          this.choiceInfoPanel.removeEventListener(ModuleConfiguratorEvent.MODULE_CLICK,this.onChoicePanelModuleClickHandler);
@@ -187,9 +156,9 @@ package net.wg.gui.battle.battleRoyale.views.configurator
          this._headerContainer = null;
          this.levelPanel = null;
          this.vehNameTf = null;
-         this.nationIcon.removeEventListener(Event.CHANGE,this.onNationIconChangeHandler);
-         this.nationIcon.dispose();
-         this.nationIcon = null;
+         this.vehTypeIcon.removeEventListener(Event.CHANGE,this.onVehTypeIconChangeHandler);
+         this.vehTypeIcon.dispose();
+         this.vehTypeIcon = null;
          this.vehModulesConfigurator.removeEventListener(ModuleConfiguratorEvent.MODULE_OVER,this.onRendererModuleOverHandler);
          this.vehModulesConfigurator.removeEventListener(ModuleConfiguratorEvent.MODULE_OUT,this.onRendererModuleOutHandler);
          this.vehModulesConfigurator.removeEventListener(Event.RESIZE,this.onModulesConfiguratorResizeHandler);
@@ -262,20 +231,16 @@ package net.wg.gui.battle.battleRoyale.views.configurator
             _loc2_ = width >> 1;
             _loc3_ = this.vehModulesConfigurator.getBounds(this.vehModulesConfigurator);
             this._offsetDependsOnScreenHeight = (height - MIN_SCREEN_HEIGHT) / _loc1_;
-            this.vehNameTf.x = this.nationIcon.width + NATION_ICON_RIGHT_MARGIN | 0;
-            this.nationIcon.y = (this.vehNameTf.textHeight - this.nationIcon.height >> 1) + TF_BORDER_SIZE;
+            this.vehNameTf.x = this.vehTypeIcon.width + VEHTYPE_ICON_RIGHT_MARGIN | 0;
+            this.vehTypeIcon.y = (this.vehNameTf.textHeight - this.vehTypeIcon.height >> 1) + TF_BORDER_SIZE;
             this._headerContainer.x = width - this._headerContainer.width >> 1;
             this._headerContainer.y = HEADER_OFFSET_Y + this._offsetDependsOnScreenHeight;
             this.separator.x = this.choiceInfoPanel.x = this.moduleInfoPanel.x = this.levelPanel.x = _loc2_;
             this.levelPanel.y = this._headerContainer.y + this._headerContainer.height + HEADER_OFFSET_Y | 0;
             this.vehModulesConfigurator.x = (width - _loc3_.width >> 1) - _loc3_.x;
             this.vehModulesConfigurator.y = this.levelPanel.y + LEVEL_BOTTOM_OFFSET + this._offsetDependsOnScreenHeight;
-            this._weakDescrContainer.x = width - this._weakDescrContainer.width >> 1;
-            this._weakDescrContainer.y = height - this._weakDescrContainer.height + WEAK_DESCR_OFFSET | 0;
             this.separator.y = this.vehModulesConfigurator.y + VEHICLE_CONFIGURATOR_HEIGHT;
             this.choiceInfoPanel.y = this.moduleInfoPanel.y = this.separator.y + SEPARATOR_OFFSET_Y;
-            this.checkBottomPanelIntersection();
-            this.updateWeakDescrVisible();
             this.substrate.x = width - this.substrate.width >> 1;
             this.substrate.y = this.separator.y - this.substrate.height | 0;
          }
@@ -311,22 +276,6 @@ package net.wg.gui.battle.battleRoyale.views.configurator
             this._separatorTween.dispose();
             this._separatorTween = null;
          }
-      }
-      
-      private function checkBottomPanelIntersection() : void
-      {
-         var _loc1_:Rectangle = this.choiceInfoPanel.getBounds(this);
-         this._weakDescrCanBeVisible = _loc1_.y + _loc1_.height < this._weakDescrContainer.y;
-         if(this._weakDescrCanBeVisible)
-         {
-            _loc1_ = this.moduleInfoPanel.getBounds(this);
-            this._weakDescrCanBeVisible = _loc1_.y + _loc1_.height < this._weakDescrContainer.y;
-         }
-      }
-      
-      private function updateWeakDescrVisible() : void
-      {
-         this._weakDescrContainer.visible = this._weakDescrCanBeVisible || !this.moduleInfoPanel.visible && !this.choiceInfoPanel.visible;
       }
       
       private function showModuleInfo() : void
@@ -419,7 +368,7 @@ package net.wg.gui.battle.battleRoyale.views.configurator
          invalidateState();
       }
       
-      private function onNationIconChangeHandler(param1:Event) : void
+      private function onVehTypeIconChangeHandler(param1:Event) : void
       {
          invalidateSize();
       }
@@ -440,7 +389,6 @@ package net.wg.gui.battle.battleRoyale.views.configurator
             {
                this.choiceInfoPanel.makeOverStateModule(this._curOverModuleIntCD);
             }
-            this.updateWeakDescrVisible();
             param1.stopPropagation();
          }
       }
@@ -454,7 +402,6 @@ package net.wg.gui.battle.battleRoyale.views.configurator
             this.choiceInfoPanel.makeOutStateModule();
          }
          this._curOverModuleIntCD = 0;
-         this.updateWeakDescrVisible();
          param1.stopPropagation();
       }
       
@@ -471,16 +418,6 @@ package net.wg.gui.battle.battleRoyale.views.configurator
       private function onChoicePanelModuleClickHandler(param1:ModuleConfiguratorEvent) : void
       {
          this.vehModulesConfigurator.selectItem(param1.moduleIntCD);
-      }
-      
-      private function onWeakDescrContainerRollOutHandler(param1:MouseEvent) : void
-      {
-         this._tooltipMgr.hide();
-      }
-      
-      private function onWeakDescrContainerRollOverHandler(param1:MouseEvent) : void
-      {
-         this._tooltipMgr.showSpecial(TOOLTIPS_CONSTANTS.BATTLE_ROYALE_WEAK_ZONES,null);
       }
    }
 }

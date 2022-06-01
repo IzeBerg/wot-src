@@ -277,6 +277,9 @@ class CombatEquipmentManager(object):
         return area
 
     def onSmoke(self, smokeInfo):
+        attachedVehicle = BigWorld.player().getVehicleAttached()
+        if not attachedVehicle or not attachedVehicle.isAlive():
+            return
         ctrl = self.guiSessionProvider.shared.vehicleState
         self.__lastSmokeInfo = smokeInfo
         if ctrl is not None:

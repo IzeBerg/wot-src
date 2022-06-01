@@ -26,7 +26,12 @@ _ADDITIONAL_USER_SETTINGS = (
  BATTLE_EVENTS.VEHICLE_INFO, BATTLE_EVENTS.EVENT_NAME, BATTLE_EVENTS.SHOW_IN_BATTLE,
  GRAPHICS.RENDER_PIPELINE, GRAPHICS.COLOR_BLIND)
 _BATTLE_EVENTS_SETTINGS_TO_BATTLE_EFFICIENCY_TYPES = {BATTLE_EVENTS.ENEMY_HP_DAMAGE: (
-                                 _BET.DAMAGE, _BET.SPAWNED_BOT_DMG, _BET.DAMAGE_BY_MINEFIELD), 
+                                 _BET.DAMAGE,
+                                 _BET.SPAWNED_BOT_DMG,
+                                 _BET.DAMAGE_BY_MINEFIELD,
+                                 _BET.DEALT_DMG_BY_CORRODING_SHOT,
+                                 _BET.DEALT_DMG_BY_FIRE_CIRCLE,
+                                 _BET.DEALT_DMG_BY_CLING_BRANDER), 
    BATTLE_EVENTS.BLOCKED_DAMAGE: (
                                 _BET.ARMOR,), 
    BATTLE_EVENTS.ENEMY_RAM_ATTACK: (
@@ -36,7 +41,7 @@ _BATTLE_EVENTS_SETTINGS_TO_BATTLE_EFFICIENCY_TYPES = {BATTLE_EVENTS.ENEMY_HP_DAM
    BATTLE_EVENTS.ENEMY_WORLD_COLLISION: (
                                        _BET.WORLD_COLLISION,), 
    BATTLE_EVENTS.ENEMY_KILL: (
-                            _BET.DESTRUCTION, _BET.SUPPLY_DESTRUCTION), 
+                            _BET.DESTRUCTION,), 
    BATTLE_EVENTS.ENEMY_DETECTION: (
                                  _BET.DETECTION,), 
    BATTLE_EVENTS.ENEMY_TRACK_DAMAGE: (
@@ -50,9 +55,17 @@ _BATTLE_EVENTS_SETTINGS_TO_BATTLE_EFFICIENCY_TYPES = {BATTLE_EVENTS.ENEMY_HP_DAM
    BATTLE_EVENTS.BASE_CAPTURE_DROP: (
                                    _BET.DEFENCE,), 
    BATTLE_EVENTS.RECEIVED_DAMAGE: (
-                                 _BET.RECEIVED_DAMAGE, _BET.RECEIVED_BURN, _BET.RECEIVED_RAM, _BET.RECEIVED_WORLD_COLLISION,
-                                 _BET.BERSERKER, _BET.RECEIVED_DMG_BY_SPAWNED_BOT,
-                                 _BET.RECEIVED_BY_MINEFIELD, _BET.RECEIVED_BY_SMOKE), 
+                                 _BET.RECEIVED_DAMAGE,
+                                 _BET.RECEIVED_BURN,
+                                 _BET.RECEIVED_RAM,
+                                 _BET.RECEIVED_WORLD_COLLISION,
+                                 _BET.BERSERKER,
+                                 _BET.RECEIVED_DMG_BY_SPAWNED_BOT,
+                                 _BET.RECEIVED_BY_MINEFIELD,
+                                 _BET.RECEIVED_BY_SMOKE,
+                                 _BET.RECEIVED_BY_CORRODING_SHOT,
+                                 _BET.RECEIVED_BY_FIRE_CIRCLE,
+                                 _BET.RECEIVED_BY_CLING_BRANDER), 
    BATTLE_EVENTS.RECEIVED_CRITS: (
                                 _BET.RECEIVED_CRITS,), 
    BATTLE_EVENTS.ENEMIES_STUN: (
@@ -178,7 +191,14 @@ _RIBBONS_FMTS = {_BET.CAPTURE: _baseRibbonFormatter,
    _BET.DAMAGE_BY_MINEFIELD: _singleVehRibbonFormatter, 
    _BET.RECEIVED_BY_MINEFIELD: _singleVehRibbonFormatter, 
    _BET.RECEIVED_BY_SMOKE: _singleVehRibbonFormatter, 
-   _BET.SUPPLY_DESTRUCTION: _killRibbonFormatter}
+   _BET.DEALT_DMG_BY_CORRODING_SHOT: _singleVehRibbonFormatter, 
+   _BET.RECEIVED_BY_CORRODING_SHOT: _singleVehRibbonFormatter, 
+   _BET.DEALT_DMG_BY_FIRE_CIRCLE: _singleVehRibbonFormatter, 
+   _BET.RECEIVED_BY_FIRE_CIRCLE: _singleVehRibbonFormatter, 
+   _BET.DEALT_DMG_BY_CLING_BRANDER: _singleVehRibbonFormatter, 
+   _BET.RECEIVED_BY_CLING_BRANDER: _singleVehRibbonFormatter, 
+   _BET.DEALT_DMG_BY_THUNDER_STRIKE: _singleVehRibbonFormatter, 
+   _BET.RECEIVED_BY_THUNDER_STRIKE: _singleVehRibbonFormatter}
 
 class BattleRibbonsPanel(RibbonsPanelMeta):
     sessionProvider = dependency.descriptor(IBattleSessionProvider)
@@ -419,6 +439,27 @@ class BattleRibbonsPanel(RibbonsPanelMeta):
           _BET.RECEIVED_BY_SMOKE,
           backport.text(R.strings.ingame_gui.efficiencyRibbons.receivedBySmoke())],
          [
-          _BET.SUPPLY_DESTRUCTION,
-          backport.text(R.strings.ingame_gui.efficiencyRibbons.kill())]], self.__isExtendedAnim, self.__enabled, self.__isWithRibbonName, self.__isWithVehName, [
+          _BET.DEALT_DMG_BY_CORRODING_SHOT,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.dealtDamageByCorrodingShot())],
+         [
+          _BET.RECEIVED_BY_CORRODING_SHOT,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.receivedByCorrodingShot())],
+         [
+          _BET.DEALT_DMG_BY_FIRE_CIRCLE,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.dealtDamageByFireCircle())],
+         [
+          _BET.RECEIVED_BY_FIRE_CIRCLE,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.receivedByFireCircle())],
+         [
+          _BET.DEALT_DMG_BY_CLING_BRANDER,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.dealtDamageByClingBrander())],
+         [
+          _BET.RECEIVED_BY_CLING_BRANDER,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.receivedByClingBrander())],
+         [
+          _BET.DEALT_DMG_BY_THUNDER_STRIKE,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.dealtDamageByThunderStrike())],
+         [
+          _BET.RECEIVED_BY_THUNDER_STRIKE,
+          backport.text(R.strings.ingame_gui.efficiencyRibbons.receivedByThunderStrike())]], self.__isExtendedAnim, self.__enabled, self.__isWithRibbonName, self.__isWithVehName, [
          backport.text(R.strings.ingame_gui.efficiencyRibbons.bonusRibbon())])

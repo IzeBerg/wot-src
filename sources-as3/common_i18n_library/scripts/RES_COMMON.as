@@ -31,9 +31,13 @@ package
       
       public static const MAPS_ICONS_DEMOUNTKIT_BG:String = "../maps/icons/demountKit/bg.png";
       
+      public static const MAPS_ICONS_DRAGONBOATS_REWARDS_BG:String = "../maps/icons/dragonBoats/rewards/bg.png";
+      
       public static const MAPS_ICONS_EPICBATTLES_SKILLS_INTRO_BG:String = "../maps/icons/epicBattles/skills/intro/bg.png";
       
       public static const MAPS_ICONS_MAPBOX_BG:String = "../maps/icons/mapbox/bg.png";
+      
+      public static const MAPS_ICONS_MAPBOX_SURVEY_BG:String = "../maps/icons/mapbox/survey/bg.png";
       
       public static const MAPS_ICONS_MAPSTRAINING_BG:String = "../maps/icons/mapsTraining/bg.png";
       

@@ -1,22 +1,18 @@
-import copy, logging, typing
+import copy, logging
 from collections import namedtuple
 from functools import partial
 from operator import itemgetter
-from itertools import chain
-import BigWorld
+import typing, BigWorld
 from adisp import process
+from battle_pass_common import BATTLE_PASS_OFFER_TOKEN_PREFIX, BATTLE_PASS_Q_CHAIN_BONUS_NAME, BATTLE_PASS_Q_CHAIN_TOKEN_PREFIX, BATTLE_PASS_SELECT_BONUS_NAME, BATTLE_PASS_STYLE_PROGRESS_BONUS_NAME, BATTLE_PASS_TOKEN_3D_STYLE, BATTLE_PASS_TOKEN_PREFIX
 from blueprints.BlueprintTypes import BlueprintTypes
 from blueprints.FragmentTypes import getFragmentType
-from constants import EVENT_TYPE as _ET, DOSSIER_TYPE, LOOTBOX_TOKEN_PREFIX, PREMIUM_ENTITLEMENTS, CURRENCY_TOKEN_PREFIX, RESOURCE_TOKEN_PREFIX, RentType
-from debug_utils import LOG_ERROR, LOG_CURRENT_EXCEPTION, LOG_CODEPOINT_WARNING
+from constants import CURRENCY_TOKEN_PREFIX, DOSSIER_TYPE, EVENT_TYPE as _ET, LOOTBOX_TOKEN_PREFIX, PREMIUM_ENTITLEMENTS, RESOURCE_TOKEN_PREFIX, RentType
+from debug_utils import LOG_CURRENT_EXCEPTION, LOG_ERROR
 from dossiers2.custom.records import RECORD_DB_IDS
 from dossiers2.ui.achievements import ACHIEVEMENT_BLOCK, BADGES_BLOCK
 from frameworks.wulf import WindowLayer
 from gui import makeHtmlString
-from gui.app_loader.decorators import sf_lobby
-from gui.game_control.links import URLMacros
-from gui.impl import backport
-from gui.impl.gen import R
 from gui.Scaleform.genConsts.BOOSTER_CONSTANTS import BOOSTER_CONSTANTS
 from gui.Scaleform.genConsts.TEXT_ALIGN import TEXT_ALIGN
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
@@ -25,44 +21,42 @@ from gui.Scaleform.locale.QUESTS import QUESTS
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
 from gui.Scaleform.locale.VEHICLE_CUSTOMIZATION import VEHICLE_CUSTOMIZATION
-from gui.Scaleform.settings import getBadgeIconPath, BADGES_ICONS, ICONS_SIZES
+from gui.Scaleform.settings import BADGES_ICONS, ICONS_SIZES, getBadgeIconPath
+from gui.app_loader.decorators import sf_lobby
+from gui.game_control.dragon_boat_controller import DBOAT_POINTS
+from gui.game_control.links import URLMacros
+from gui.impl import backport
+from gui.impl.gen import R
 from gui.selectable_reward.constants import FEATURE_TO_PREFIX, SELECTABLE_BONUS_NAME
-from gui.server_events.awards_formatters import AWARDS_SIZES
+from gui.server_events.awards_formatters import AWARDS_SIZES, BATTLE_BONUS_X5_TOKEN
 from gui.server_events.formatters import parseComplexToken
 from gui.server_events.recruit_helper import getRecruitInfo
 from gui.shared.formatters import text_styles
-from gui.shared.gui_items.crew_skin import localizedFullName
 from gui.shared.gui_items import GUI_ITEM_TYPE, GUI_ITEM_TYPE_INDICES
-from gui.shared.gui_items.Tankman import getRoleUserName, calculateRoleLevel, Tankman
+from gui.shared.gui_items.Tankman import Tankman, calculateRoleLevel, getRoleUserName
+from gui.shared.gui_items.crew_book import orderCmp
+from gui.shared.gui_items.crew_skin import localizedFullName
 from gui.shared.gui_items.customization import CustomizationTooltipContext
 from gui.shared.gui_items.dossier.factories import getAchievementFactory
-from gui.shared.gui_items.crew_book import orderCmp
 from gui.shared.money import Currency, Money
 from gui.shared.utils.functions import makeTooltip, stripColorTagDescrTags
-from gui.shared.utils.requesters.blueprints_requester import getFragmentNationID, getVehicleCDForNational
-from gui.shared.utils.requesters.blueprints_requester import getVehicleCDForIntelligence
-from gui.shared.utils.requesters.blueprints_requester import makeNationalCD, makeIntelligenceCD
-from helpers import dependency
-from helpers import getLocalizedData, i18n
-from helpers import time_utils
+from gui.shared.utils.requesters.blueprints_requester import getFragmentNationID, getVehicleCDForIntelligence, getVehicleCDForNational, makeIntelligenceCD, makeNationalCD
+from helpers import dependency, getLocalizedData, i18n, time_utils
 from helpers.i18n import makeString as _ms
-from items import vehicles, tankmen
+from items import tankmen, vehicles
 from items.components import c11n_components as cc
 from items.components.crew_skins_constants import NO_CREW_SKIN_ID
 from items.tankmen import RECRUIT_TMAN_TOKEN_PREFIX
 from nations import NAMES
-from personal_missions import PM_BRANCH, PM_BRANCH_TO_FREE_TOKEN_NAME
 from optional_bonuses import BONUS_MERGERS
-from shared_utils import makeTupleByDict, CONST_CONTAINER, first
+from personal_missions import PM_BRANCH, PM_BRANCH_TO_FREE_TOKEN_NAME
+from shared_utils import CONST_CONTAINER, first, makeTupleByDict
 from skeletons.gui.customization import ICustomizationService
-from skeletons.gui.game_control import IRTSBattlesController
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.offers import IOffersDataProvider
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
-from gui.server_events.awards_formatters import BATTLE_BONUS_X5_TOKEN
-from battle_pass_common import BATTLE_PASS_OFFER_TOKEN_PREFIX, BATTLE_PASS_TOKEN_3D_STYLE, BATTLE_PASS_TOKEN_PREFIX, BATTLE_PASS_SELECT_BONUS_NAME, BATTLE_PASS_STYLE_PROGRESS_BONUS_NAME
-from web.web_client_api.common import ItemPackEntry, ItemPackTypeGroup, getItemPackByGroupAndName, ItemPackType
+from web.web_client_api.common import ItemPackEntry, ItemPackType, ItemPackTypeGroup, getItemPackByGroupAndName
 DEFAULT_CREW_LVL = 50
 _CUSTOMIZATIONS_SCALE = 44.0 / 128
 _ZERO_COMPENSATION_MONEY = Money(credits=0, gold=0)
@@ -185,10 +179,6 @@ class SimpleBonus(object):
     def getLightViewModelData(self):
         return (
          self.getName(),)
-
-    def isReceived(self):
-        LOG_CODEPOINT_WARNING('SimpleBonus::isReceived')
-        return False
 
     def _format(self, styleSubset):
         formattedValue = self.formatValue()
@@ -339,6 +329,49 @@ class BpcoinBonus(IntegralBonus):
 
     def getIconLabel(self):
         return text_styles.bpcoin(self.getValue())
+
+
+class CurrenciesBonus(IntegralBonus):
+
+    def __init__(self, *args, **kwargs):
+        super(CurrenciesBonus, self).__init__(*args, **kwargs)
+        self._code = self._value.keys()[0]
+        self._value = self._value[self._code]['count']
+
+    def getList(self):
+        return [
+         {'value': self.formatValue(), 
+            'itemSource': self.getIconBySize(AWARDS_SIZES.SMALL), 
+            'tooltip': self.getTooltip()}]
+
+    def getCode(self):
+        return self._code
+
+    def getTooltip(self):
+        return _getItemTooltip(self._code)
+
+    def hasIconFormat(self):
+        return True
+
+    def getIconLabel(self):
+        return text_styles.hightlight(self.getValue())
+
+    def getIconBySize(self, size):
+        iconName = RES_ICONS.getBonusIcon(size, self._code)
+        if iconName is None:
+            return super(CurrenciesBonus, self).getIconBySize(size)
+        else:
+            return iconName
+
+    def getWrappedEpicBonusList(self):
+        awardItem = R.strings.tooltips.awardItem.dyn(self._code)
+        return [
+         {'id': 0, 
+            'type': ('custom/{}').format(self._code), 
+            'value': self.getValue(), 
+            'icon': {AWARDS_SIZES.SMALL: self.getIconBySize(AWARDS_SIZES.SMALL), AWARDS_SIZES.BIG: self.getIconBySize(AWARDS_SIZES.BIG)}, 
+            'name': backport.text(awardItem.header()) if awardItem else '', 
+            'description': backport.text(awardItem.body()) if awardItem else ''}]
 
 
 class FreeXpBonus(IntegralBonus):
@@ -526,32 +559,6 @@ class BattleTokensBonus(TokensBonus):
         return []
 
 
-class RTSCurrencyToken(TokensBonus):
-    _TOKEN_TO_RES = {'rts:currency': 'rts1x7currency', 
-       'rts_1x1:currency': 'rts1x1currency'}
-
-    def __init__(self, name, value, isCompensation=False, ctx=None):
-        super(RTSCurrencyToken, self).__init__(name, value, isCompensation, ctx)
-        self._name = 'rtsCurrencyToken'
-
-    def isShowInGUI(self):
-        return True
-
-    def formatValue(self):
-        result = []
-        for tokenID, data in self._value.iteritems():
-            if tokenID not in self._TOKEN_TO_RES:
-                continue
-            name = backport.text(getattr(R.strings.rts_battles.currency, self._TOKEN_TO_RES[tokenID]).name())
-            count = data.get('count', 0)
-            result.append(i18n.makeString('#quests:bonuses/items/name', name=name, count=count))
-
-        if result:
-            return (', ').join(result)
-        else:
-            return
-
-
 class BattlePassTokensBonus(TokensBonus):
 
     def __init__(self, name, value, isCompensation=False, ctx=None):
@@ -577,6 +584,33 @@ class BattlePassSelectTokensBonus(TokensBonus):
 
     def updateContext(self, ctx):
         self._ctx.update(ctx)
+
+
+class BattlePassQuestChainTokensBonus(TokensBonus):
+
+    def __init__(self, value, isCompensation=False, ctx=None):
+        super(BattlePassQuestChainTokensBonus, self).__init__(BATTLE_PASS_Q_CHAIN_BONUS_NAME, value, isCompensation, ctx)
+
+    @property
+    def tokenID(self):
+        return first(self._value.keys())
+
+    @property
+    def chapterID(self):
+        return int(self.__getTokenIDPart(2))
+
+    @property
+    def level(self):
+        return int(self.__getTokenIDPart(3))
+
+    def getType(self):
+        return self.__getTokenIDPart(1)
+
+    def isShowInGUI(self):
+        return True
+
+    def __getTokenIDPart(self, index):
+        return self.tokenID.split(':')[index]
 
 
 class BattlePassStyleProgressTokenBonus(TokensBonus):
@@ -621,7 +655,6 @@ class LootBoxTokensBonus(TokensBonus):
 
 
 class TmanTemplateTokensBonus(TokensBonus):
-    TANKMAN_RECEIVED_TOKEN_PREFIX = 'got_'
 
     def __init__(self, value, isCompensation=False, ctx=None):
         super(TokensBonus, self).__init__('tmanToken', value, isCompensation, ctx)
@@ -646,13 +679,6 @@ class TmanTemplateTokensBonus(TokensBonus):
                'description': recruitInfo.getDescription()})
 
         return result
-
-    def isReceived(self):
-        result = []
-        for tID in self.getTokens().iterkeys():
-            result.append(self.itemsCache.items.tokens.getTokenCount(self.TANKMAN_RECEIVED_TOKEN_PREFIX + tID) > 0)
-
-        return all(result)
 
 
 class X5BattleTokensBonus(TokensBonus):
@@ -694,6 +720,39 @@ class SelectableBonus(TokensBonus):
     def getLightViewModelData(self):
         return (
          self.getType(),)
+
+
+class DragonBoatPointsBonus(TokensBonus):
+
+    def isShowInGUI(self):
+        return True
+
+    def formatValue(self):
+        if self._value:
+            for _, d in self._value.iteritems():
+                return d.get('count', 0)
+
+        return
+
+    def getValue(self):
+        return self.formatValue()
+
+    def getIconBySize(self, size):
+        bonusImg = R.images.gui.maps.icons.quests.bonuses.dyn(size).dyn('dragonBoatPoints')
+        if bonusImg:
+            return backport.image(bonusImg())
+        else:
+            return
+
+    def getWrappedEpicBonusList(self):
+        awardItem = R.strings.tooltips.awardItem.dyn(self._name)
+        return [
+         {'id': 0, 
+            'type': ('custom/{}').format(self.getName()), 
+            'value': self.formatValue(), 
+            'icon': {AWARDS_SIZES.SMALL: self.getIconBySize(AWARDS_SIZES.SMALL), AWARDS_SIZES.BIG: self.getIconBySize(AWARDS_SIZES.BIG)}, 
+            'name': backport.text(awardItem.header()) if awardItem else '', 
+            'description': backport.text(awardItem.body()) if awardItem else ''}]
 
 
 class EntitlementBonus(SimpleBonus):
@@ -792,7 +851,6 @@ def createBonusFromTokens(result, prefix, bonusId, value):
 
 def tokensFactory(name, value, isCompensation=False, ctx=None):
     result = []
-    rtsTokens = dependency.instance(IRTSBattlesController).getAvailableCurrencies()
     for tID, tValue in value.iteritems():
         if tID.startswith(LOOTBOX_TOKEN_PREFIX):
             result.append(LootBoxTokensBonus({tID: tValue}, isCompensation, ctx))
@@ -806,14 +864,16 @@ def tokensFactory(name, value, isCompensation=False, ctx=None):
             result.append(BattlePassSelectTokensBonus({tID: tValue}, isCompensation, ctx))
         elif _isSelectableBonusID(tID):
             result.append(SelectableBonus({tID: tValue}, isCompensation, ctx))
+        elif tID.startswith(BATTLE_PASS_Q_CHAIN_TOKEN_PREFIX):
+            result.append(BattlePassQuestChainTokensBonus({tID: tValue}, isCompensation, ctx))
         elif tID.startswith(BATTLE_PASS_TOKEN_PREFIX):
             result.append(BattlePassTokensBonus(name, {tID: tValue}, isCompensation, ctx))
         elif tID.startswith(CURRENCY_TOKEN_PREFIX):
             createBonusFromTokens(result, CURRENCY_TOKEN_PREFIX, tID, tValue)
         elif tID.startswith(RESOURCE_TOKEN_PREFIX):
             result.append(ResourceBonus(name, {tID: tValue}, RESOURCE_TOKEN_PREFIX, isCompensation, ctx))
-        elif tID in rtsTokens:
-            result.append(RTSCurrencyToken(name, {tID: tValue}, isCompensation, ctx))
+        elif tID.startswith(DBOAT_POINTS):
+            result.append(DragonBoatPointsBonus('dragonBoatPoints', {tID: tValue}, isCompensation, ctx))
         else:
             result.append(BattleTokensBonus(name, {tID: tValue}, isCompensation, ctx))
 
@@ -1123,6 +1183,12 @@ class VehiclesBonus(SimpleBonus):
                'type': ('vehicle/{}').format(item.type), 
                'value': 1, 
                'icon': icons})
+            tmanRoleLevel = self.getTmanRoleLevel(vehInfo)
+            if tmanRoleLevel is not None:
+                result.append({'id': item.intCD, 
+                   'type': ('crew/{}').format(tmanRoleLevel), 
+                   'value': 1, 
+                   'icon': self.__getIconsForCrew()})
 
         return result
 
@@ -1288,6 +1354,14 @@ class VehiclesBonus(SimpleBonus):
            'specialArgs': [
                          vehicle.intCD, tmanRoleLevel, rentExpiryTime]}
 
+    @staticmethod
+    def __getIconsForCrew():
+        icon = {}
+        for size in AWARDS_SIZES.ALL():
+            icon[size] = backport.image(R.images.gui.maps.icons.quests.bonuses.dyn(size).tankmen())
+
+        return icon
+
 
 class BadgesGroupBonus(SimpleBonus):
 
@@ -1349,7 +1423,7 @@ class DossierBonus(SimpleBonus):
         return (', ').join(self.formattedList())
 
     def formattedList(self):
-        return [ item.getUserName() for item in chain(self.getAchievements(), self.getBadges()) ]
+        return [ achievement.getUserName() for achievement in self.getAchievements() ]
 
     def getWrappedEpicBonusList(self):
         result = []
@@ -1635,14 +1709,6 @@ class CustomizationsBonus(SimpleBonus):
         elif itemType in _CUSTOMIZATION_BONUSES:
             typeStr = ('').join([typeStr, '/all'])
         return typeStr
-
-    def isReceived(self):
-        result = []
-        for customizationItem in self._value:
-            c11nItem = self.getC11nItem(customizationItem)
-            result.append(bool(c11nItem.fullCount()))
-
-        return all(result)
 
     def __getCommonAwardsVOs(self, item, data, iconSize='small', align=TEXT_ALIGN.RIGHT, withCounts=False):
         c11nItem = self.getC11nItem(item)
@@ -2085,10 +2151,7 @@ class CrewBooksBonus(SimpleBonus):
     def formattedList(self):
         result = []
         for item, count in self.getItems():
-            if item.getNation():
-                result.append(makeHtmlString('html_templates:lobby/quests/bonuses', 'crewBook', {'type': item.getBookType(), 'nation': item.getNation(), 'value': count, 'name': item.userName}))
-            else:
-                result.append(makeHtmlString('html_templates:lobby/quests/bonuses', 'crewBookText', {'type': item.getBookType(), 'nation': item.getNation(), 'value': count, 'name': item.userName}))
+            result.append(makeHtmlString('html_templates:lobby/quests/bonuses', 'crewBook', {'type': item.getBookType(), 'nation': item.getNation(), 'value': count, 'name': item.userName}))
 
         return result
 
@@ -2289,7 +2352,8 @@ _BONUSES = {Currency.CREDITS: CreditsBonus,
    'battlePassPoints': BattlePassPointsBonus, 
    'dogTagComponents': DogTagComponentBonus, 
    'selectableCrewbook': UniversalCrewbook, 
-   'randomCrewbook': UniversalCrewbook}
+   'randomCrewbook': UniversalCrewbook, 
+   'currencies': CurrenciesBonus}
 HIDDEN_BONUSES = (
  MetaBonus,)
 _BONUSES_PRIORITY = (

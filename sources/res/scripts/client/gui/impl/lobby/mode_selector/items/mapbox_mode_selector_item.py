@@ -3,6 +3,7 @@ from gui.battle_pass.battle_pass_helpers import getFormattedTimeLeft
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.mode_selector.mode_selector_card_types import ModeSelectorCardTypes
+from gui.impl.lobby.mode_selector.items import setBattlePassState
 from gui.impl.lobby.mode_selector.items.base_item import ModeSelectorLegacyItem
 from gui.impl.lobby.mode_selector.items.items_constants import ModeSelectorRewardID
 from gui.shared.event_dispatcher import showMapboxIntro
@@ -53,10 +54,15 @@ class MapboxModeSelectorItem(ModeSelectorLegacyItem):
     def __fillViewModel(self):
         with self.viewModel.transaction() as (vm):
             vm.setTimeLeft(self.__getSeasonTimeLeft())
-            nextSeason = self.__mapboxCtrl.getNextSeason()
-            if not self.__mapboxCtrl.isActive() and nextSeason is not None:
-                vm.setStatusNotActive(backport.text(R.strings.mapbox.selector.startEvent(), day=self.__getDate(nextSeason.getStartDate())))
-        return
+            vm.setStatusNotActive(self.__getNotActiveStatus())
+            setBattlePassState(self.viewModel)
+
+    def __getNotActiveStatus(self):
+        nextSeason = self.__mapboxCtrl.getNextSeason()
+        if not self._isDisabled() and not self.__mapboxCtrl.isActive() and nextSeason is not None:
+            return backport.text(R.strings.mapbox.selector.startEvent(), day=self.__getDate(nextSeason.getStartDate()))
+        else:
+            return ''
 
     def __getCurrentSeasonDate(self):
         currentSeason = self.__mapboxCtrl.getCurrentSeason()

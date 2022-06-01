@@ -1,4 +1,6 @@
-
+import typing
+if typing.TYPE_CHECKING:
+    from gui.clans.clan_account_profile import MyClanAccountProfile
 
 class IWebController(object):
 

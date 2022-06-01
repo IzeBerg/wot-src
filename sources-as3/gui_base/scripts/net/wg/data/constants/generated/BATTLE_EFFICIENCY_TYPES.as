@@ -75,7 +75,21 @@ package net.wg.data.constants.generated
       
       public static const RECEIVED_BY_SMOKE:String = "receivedBySmoke";
       
-      public static const SUPPLY_DESTRUCTION:String = "playerDestroyedSupply";
+      public static const DEALT_DMG_BY_CORRODING_SHOT:String = "dealtDamageByCorrodingShot";
+      
+      public static const RECEIVED_BY_CORRODING_SHOT:String = "receivedByCorrodingShot";
+      
+      public static const DEALT_DMG_BY_FIRE_CIRCLE:String = "dealtDamageByFireCircle";
+      
+      public static const RECEIVED_BY_FIRE_CIRCLE:String = "receivedByFireCircle";
+      
+      public static const DEALT_DMG_BY_CLING_BRANDER:String = "dealtDamageByClingBrander";
+      
+      public static const RECEIVED_BY_CLING_BRANDER:String = "receivedByClingBrander";
+      
+      public static const DEALT_DMG_BY_THUNDER_STRIKE:String = "dealtDamageByThunderStrike";
+      
+      public static const RECEIVED_BY_THUNDER_STRIKE:String = "receivedByThunderStrike";
        
       
       public function BATTLE_EFFICIENCY_TYPES()

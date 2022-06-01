@@ -115,8 +115,6 @@ package
       
       public static const ARENA_START_ERRORS_JOIN_QUEUE_FAILURE:String = "#system_messages:arena_start_errors/join/QUEUE_FAILURE";
       
-      public static const ARENA_START_ERRORS_JOIN_INSUFFICIENT_FUNDS:String = "#system_messages:arena_start_errors/join/INSUFFICIENT_FUNDS";
-      
       public static const PREBATTLE_KICK_TYPE_SQUAD:String = "#system_messages:prebattle/kick/type/squad";
       
       public static const PREBATTLE_KICK_TYPE_UNKNOWN:String = "#system_messages:prebattle/kick/type/unknown";
@@ -2379,9 +2377,13 @@ package
       
       public static const BATTLEPASSLEVELS_BUY_SERVER_ERROR:String = "#system_messages:battlePassLevels_buy/server_error";
       
-      public static const BATTLEPASS_SWITCH_STARTED_TITLE:String = "#system_messages:battlePass/switch_started/title";
+      public static const BATTLEPASS_SWITCH_STARTED_STYLE_TITLE:String = "#system_messages:battlePass/switch_started/style/title";
       
-      public static const BATTLEPASS_SWITCH_STARTED_BODY:String = "#system_messages:battlePass/switch_started/body";
+      public static const BATTLEPASS_SWITCH_STARTED_STYLE_BODY:String = "#system_messages:battlePass/switch_started/style/body";
+      
+      public static const BATTLEPASS_SWITCH_STARTED_TANKMAN_TITLE:String = "#system_messages:battlePass/switch_started/tankman/title";
+      
+      public static const BATTLEPASS_SWITCH_STARTED_TANKMAN_BODY:String = "#system_messages:battlePass/switch_started/tankman/body";
       
       public static const BATTLEPASS_SWITCH_PAUSE_BODY:String = "#system_messages:battlePass/switch_pause/body";
       
@@ -2590,6 +2592,14 @@ package
       public static const TELECOMMERGERESULTS_BODY_WISHMSG:String = "#system_messages:telecomMergeResults/body/wishMsg";
       
       public static const SSR_UNAVAILABLE:String = "#system_messages:ssr/unavailable";
+      
+      public static const DRAGONBOAT_PAUSED:String = "#system_messages:dragonBoat/paused";
+      
+      public static const DRAGONBOAT_RESTORED:String = "#system_messages:dragonBoat/restored";
+      
+      public static const DRAGONBOAT_STAGEAWARD_HEADER:String = "#system_messages:dragonBoat/stageAward/header";
+      
+      public static const DRAGONBOAT_FINALAWARD_HEADER:String = "#system_messages:dragonBoat/finalAward/header";
        
       
       public function SYSTEM_MESSAGES()

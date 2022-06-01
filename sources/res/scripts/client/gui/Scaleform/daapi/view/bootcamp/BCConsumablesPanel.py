@@ -1,8 +1,9 @@
 from bootcamp.Bootcamp import g_bootcamp
 from gui.Scaleform.daapi.view.battle.shared.consumables_panel import ConsumablesPanel
 from gui.Scaleform.genConsts.CONSUMABLES_PANEL_SETTINGS import CONSUMABLES_PANEL_SETTINGS
-EQUIPMENT_ICON_PATH_BIG = '../maps/icons/artefact/big/%s.png'
-EQUIPMENT_ICON_PATH_DEFAULT = '../maps/icons/artefact/%s.png'
+from gui.impl.gen import R
+R_EQUIPMENT_ICON_PATH_BIG = R.images.gui.maps.icons.artefact.big
+R_EQUIPMENT_ICON_PATH_DEFAULT = R.images.gui.maps.icons.artefact
 
 class BCConsumablesPanel(ConsumablesPanel):
 
@@ -23,8 +24,8 @@ class BCConsumablesPanel(ConsumablesPanel):
 
     def _getEquipmentIconPath(self):
         if self.__isBigIcons:
-            return EQUIPMENT_ICON_PATH_BIG
-        return EQUIPMENT_ICON_PATH_DEFAULT
+            return R_EQUIPMENT_ICON_PATH_BIG
+        return R_EQUIPMENT_ICON_PATH_DEFAULT
 
     def _addShellSlot(self, idx, intCD, descriptor, quantity, gunSettings):
         self._cds[idx] = intCD

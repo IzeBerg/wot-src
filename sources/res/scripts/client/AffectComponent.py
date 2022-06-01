@@ -1,14 +1,17 @@
 import logging, BigWorld, CGF, GenericComponents
 from skeletons.gui.battle_session import IBattleSessionProvider
-from gui.battle_control.controllers.vehicles_count_ctrl import IVehicleCountListener
-from gui.battle_control.controllers.sound_ctrls.br_battle_sounds import BREvents
+from battle_royale.gui.battle_control.controllers.vehicles_count_ctrl import IVehicleCountListener
+from battle_royale.gui.battle_control.controllers.br_battle_sounds import BREvents
 from helpers import dependency
 from skeletons.dynamic_objects_cache import IBattleDynamicObjectsCache
 _logger = logging.getLogger(__name__)
 _HEAL_OVER_TIME_ZONE_ = 0
 _DAMAGE_OVER_TIME_ZONE_ = 1
-_ZONE_ACTIVATE_EVENT_ = {_HEAL_OVER_TIME_ZONE_: BREvents.REPAIR_POINT_ENTER, _DAMAGE_OVER_TIME_ZONE_: BREvents.TRAP_POINT_ENTER}
-_ZONE_DEACTIVATE_EVENT_ = {_HEAL_OVER_TIME_ZONE_: BREvents.REPAIR_POINT_EXIT, _DAMAGE_OVER_TIME_ZONE_: BREvents.TRAP_POINT_EXIT}
+_FIRE_CIRCLE_ZONE_ = 2
+_ZONE_ACTIVATE_EVENT_ = {_HEAL_OVER_TIME_ZONE_: BREvents.REPAIR_POINT_ENTER, _DAMAGE_OVER_TIME_ZONE_: BREvents.TRAP_POINT_ENTER, 
+   _FIRE_CIRCLE_ZONE_: BREvents.BR_FIRE_CIRCLE_ENTERED}
+_ZONE_DEACTIVATE_EVENT_ = {_HEAL_OVER_TIME_ZONE_: BREvents.REPAIR_POINT_EXIT, _DAMAGE_OVER_TIME_ZONE_: BREvents.TRAP_POINT_EXIT, 
+   _FIRE_CIRCLE_ZONE_: BREvents.BR_FIRE_CIRCLE_LEFT}
 
 class AffectComponent(IVehicleCountListener):
     __guiSessionProvider = dependency.descriptor(IBattleSessionProvider)
@@ -47,7 +50,7 @@ class AffectComponent(IVehicleCountListener):
         if self.__vehicleEffectConfig is not None:
             self.__particle = gameObject = CGF.GameObject(self.__gameObject.spaceID)
             gameObject.createComponent(GenericComponents.HierarchyComponent, self.__gameObject)
-            gameObject.createComponent(GenericComponents.ParticleComponent, self.__vehicleEffectConfig.path, self.__vehicleEffectConfig.rate, True)
+            gameObject.createComponent(GenericComponents.ParticleComponent, self.__vehicleEffectConfig.path, True, self.__vehicleEffectConfig.rate)
             gameObject.createComponent(GenericComponents.TransformComponent, self.__vehicleEffectConfig.offset)
             gameObject.activate()
         return
@@ -87,6 +90,12 @@ class TrapAffectComponent(AffectComponent):
 
     def __init__(self, gameObject, isPlayerVehicle, spaceID):
         super(TrapAffectComponent, self).__init__(gameObject, _DAMAGE_OVER_TIME_ZONE_, isPlayerVehicle, spaceID, True)
+
+
+class FireCircleAffectComponent(AffectComponent):
+
+    def __init__(self, gameObject, isPlayerVehicle, spaceID):
+        super(FireCircleAffectComponent, self).__init__(gameObject, _FIRE_CIRCLE_ZONE_, isPlayerVehicle, spaceID, True)
 
 
 class RepairAffectComponent(AffectComponent):

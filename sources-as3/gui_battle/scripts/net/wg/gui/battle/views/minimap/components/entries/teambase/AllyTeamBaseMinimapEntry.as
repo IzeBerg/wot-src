@@ -21,8 +21,6 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
          this._atlasManager = App.atlasMgr;
          super();
          MinimapEntryController.instance.registerScalableEntry(this);
-         mouseEnabled = mouseChildren = false;
-         this.atlasPlaceholder.mouseEnabled = this.atlasPlaceholder.mouseChildren = false;
       }
       
       override protected function SetAtlasPlaceholderVisible(param1:Boolean) : void

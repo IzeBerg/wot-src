@@ -11,8 +11,6 @@ package net.wg.data.constants.generated
       
       public static const EPIC_TRAINING:String = "epicTraining";
       
-      public static const RTS_TRAINING:String = "rtsTraining";
-      
       public static const TEAM:String = "team";
       
       public static const TUTORIAL:String = "tutorial";

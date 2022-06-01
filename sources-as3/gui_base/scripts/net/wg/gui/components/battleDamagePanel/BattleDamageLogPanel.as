@@ -33,8 +33,6 @@ package net.wg.gui.components.battleDamagePanel
       private static const SETTINGS_TOP_Y_POS:Number = -273;
        
       
-      public var sumIcon:Sprite = null;
-      
       public var summaryDamageBlock:DefaultSummaryImages = null;
       
       public var summaryDefenceBlock:DefaultSummaryImages = null;
@@ -42,8 +40,6 @@ package net.wg.gui.components.battleDamagePanel
       public var summarySupportBlock:DefaultSummaryImages = null;
       
       public var summaryStunBlock:DefaultSummaryImages = null;
-      
-      public var summarySupplyDamageBlock:DefaultSummaryImages = null;
       
       public var damageValTF:TextField = null;
       
@@ -53,8 +49,6 @@ package net.wg.gui.components.battleDamagePanel
       
       public var stunValTF:TextField = null;
       
-      public var supplyDamageValTF:TextField = null;
-      
       public var damageAnimation:SummaryAnimation = null;
       
       public var defenceAnimation:SummaryAnimation = null;
@@ -63,15 +57,11 @@ package net.wg.gui.components.battleDamagePanel
       
       public var stunAnimation:SummaryAnimation = null;
       
-      public var supplyDamageAnimation:SummaryAnimation = null;
-      
       private var _damageLogDetailsTopController:DamageLogDetailsController = null;
       
       private var _damageLogDetailsBottomController:DamageLogDetailsController = null;
       
       private var _additionalRowsCount:int = 3;
-      
-      private var _hasExtraSuppliesRow:Boolean = false;
       
       private var _detailActionRowsCount:int = 0;
       
@@ -113,8 +103,6 @@ package net.wg.gui.components.battleDamagePanel
          this.defenceValTF.visible = false;
          this.supportValTF.visible = false;
          this.stunValTF.visible = false;
-         this.supplyDamageValTF.visible = false;
-         mouseEnabled = mouseChildren = false;
       }
       
       override protected function onDispose() : void
@@ -131,16 +119,12 @@ package net.wg.gui.components.battleDamagePanel
          this.summaryDefenceBlock = null;
          this.summarySupportBlock.dispose();
          this.summarySupportBlock = null;
-         this.sumIcon = null;
          this.summaryStunBlock.dispose();
          this.summaryStunBlock = null;
-         this.summarySupplyDamageBlock.dispose();
-         this.summarySupplyDamageBlock = null;
          this.damageValTF = null;
          this.defenceValTF = null;
          this.supportValTF = null;
          this.stunValTF = null;
-         this.supplyDamageValTF = null;
          this.damageAnimation.dispose();
          this.damageAnimation = null;
          this.defenceAnimation.dispose();
@@ -149,8 +133,6 @@ package net.wg.gui.components.battleDamagePanel
          this.supportAnimation = null;
          this.stunAnimation.dispose();
          this.stunAnimation = null;
-         this.supplyDamageAnimation.dispose();
-         this.supplyDamageAnimation = null;
          super.onDispose();
       }
       
@@ -191,9 +173,9 @@ package net.wg.gui.components.battleDamagePanel
          this.setSettingsDamageLogComponent(param1,param2);
       }
       
-      public function as_summaryStats(param1:String, param2:String, param3:String, param4:String, param5:String, param6:Boolean) : void
+      public function as_summaryStats(param1:String, param2:String, param3:String, param4:String) : void
       {
-         this.setSummaryStats(param1,param2,param3,param4,param5,param6);
+         this.setSummaryStats(param1,param2,param3,param4);
       }
       
       public function as_updateSummaryAssistValue(param1:String) : void
@@ -216,11 +198,6 @@ package net.wg.gui.components.battleDamagePanel
          updateSummaryCounter(this.stunAnimation,this.stunValTF,param1);
       }
       
-      public function as_updateSummarySupplyDamageValue(param1:String) : void
-      {
-         updateSummaryCounter(this.supplyDamageAnimation,this.supplyDamageValTF,param1);
-      }
-      
       public function init(param1:String) : void
       {
          this._atlasName = param1;
@@ -228,7 +205,7 @@ package net.wg.gui.components.battleDamagePanel
          this._damageLogDetailsTopController = new DamageLogDetailsController(this._detailsTopContainer,true,this._atlasName);
          addChild(this._detailsBottomContainer);
          this._damageLogDetailsBottomController = new DamageLogDetailsController(this._detailsBottomContainer,false,this._atlasName);
-         this.summaryDamageBlock.visible = this.summaryDefenceBlock.visible = this.summarySupportBlock.visible = this.summaryStunBlock.visible = this.sumIcon.visible = false;
+         this.summaryDamageBlock.visible = this.summaryDefenceBlock.visible = this.summarySupportBlock.visible = this.summaryStunBlock.visible = false;
       }
       
       public function isCompVisible() : Boolean
@@ -255,7 +232,7 @@ package net.wg.gui.components.battleDamagePanel
          this._damageLogDetailsBottomController.setColorBlind(param2);
       }
       
-      public function setSummaryStats(param1:String, param2:String, param3:String, param4:String, param5:String = "", param6:Boolean = false) : void
+      public function setSummaryStats(param1:String, param2:String, param3:String, param4:String) : void
       {
          if(!this._isInited)
          {
@@ -263,24 +240,18 @@ package net.wg.gui.components.battleDamagePanel
             this.summaryDefenceBlock.init(this._atlasName);
             this.summarySupportBlock.init(this._atlasName);
             this.summaryStunBlock.init(this._atlasName);
-            this.summarySupplyDamageBlock.init(this._atlasName);
             this.summaryDamageBlock.loadImages(BATTLEDAMAGELOG_IMAGES.DAMAGELOG_DAMAGE_TOTAL,BATTLEDAMAGELOG_IMAGES.DAMAGELOG_DAMAGE_16X16);
             this.summaryDefenceBlock.loadImages(BATTLEDAMAGELOG_IMAGES.DAMAGELOG_DAMAGE_TOTAL,BATTLEDAMAGELOG_IMAGES.DAMAGELOG_REFLECT_16X16);
             this.summarySupportBlock.loadImages(BATTLEDAMAGELOG_IMAGES.DAMAGELOG_DAMAGE_TOTAL,BATTLEDAMAGELOG_IMAGES.DAMAGELOG_ASSIST_16X16);
             this.summaryStunBlock.loadImages(BATTLEDAMAGELOG_IMAGES.DAMAGELOG_DAMAGE_TOTAL,BATTLEDAMAGELOG_IMAGES.DAMAGELOG_STUN_16X16);
-            this.summarySupplyDamageBlock.loadImages(BATTLEDAMAGELOG_IMAGES.DAMAGELOG_DAMAGE_TOTAL,BATTLEDAMAGELOG_IMAGES.DAMAGELOG_SUPPLY_DAMAGE_16X16);
-            App.atlasMgr.drawGraphics(this._atlasName,BATTLEDAMAGELOG_IMAGES.DAMAGELOG_SUM,this.sumIcon.graphics);
             this._isInited = true;
          }
-         this.sumIcon.visible = param6;
          this._currentPositionTF = 0;
          this._additionalRowsCount = 0;
-         this._hasExtraSuppliesRow = param4 !== null && param5 !== null;
          this.initializeSummaryElements(param1,this.damageValTF,this.summaryDamageBlock,this.damageAnimation);
          this.initializeSummaryElements(param2,this.defenceValTF,this.summaryDefenceBlock,this.defenceAnimation);
          this.initializeSummaryElements(param3,this.supportValTF,this.summarySupportBlock,this.supportAnimation);
          this.initializeSummaryElements(param4,this.stunValTF,this.summaryStunBlock,this.stunAnimation);
-         this.initializeSummaryElements(param5,this.supplyDamageValTF,this.summarySupplyDamageBlock,this.supplyDamageAnimation);
          this.updateContainersPosition();
       }
       
@@ -296,8 +267,7 @@ package net.wg.gui.components.battleDamagePanel
       
       public function updateContainersPosition() : void
       {
-         var _loc1_:int = Boolean(this._additionalRowsCount) ? int(this._additionalRowsCount - 1) : int(this._additionalRowsCount);
-         this._damageLogDetailsBottomController.setDetailsCount(this._detailActionRowsCount + _loc1_);
+         this._damageLogDetailsBottomController.setDetailsCount(this._detailActionRowsCount + this._additionalRowsCount);
          if(this._atlasName == ATLAS_CONSTANTS.BATTLE_ATLAS)
          {
             this._detailsTopContainer.x = this._topContainerXPos;
@@ -307,8 +277,7 @@ package net.wg.gui.components.battleDamagePanel
             this._detailsTopContainer.x = SETTINGS_TOP_X_POS;
             this._detailsTopContainer.y = SETTINGS_TOP_Y_POS;
          }
-         var _loc2_:int = !!this._hasExtraSuppliesRow ? int(BattleDamageLogConstants.RENDER_STEP_SIZE) : int(0);
-         this._detailsBottomContainer.y = BOTTOM_DETAILS_POS_Y - _loc1_ * BattleDamageLogConstants.RENDER_STEP_SIZE + _loc2_;
+         this._detailsBottomContainer.y = BOTTOM_DETAILS_POS_Y - this._additionalRowsCount * BattleDamageLogConstants.RENDER_STEP_SIZE;
       }
       
       public function updateSize(param1:Number, param2:Number) : void

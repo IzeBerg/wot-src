@@ -311,10 +311,6 @@
 		<alias_color>green</alias_color>
 		<rgba>221 255 153 255</rgba>
 	</vm_stun_ally_schema>
-	<vm_text_rts_selected_name_schema>
-		<alias_color>green</alias_color>
-		<rgba>221 255 153 255</rgba>
-	</vm_text_rts_selected_name_schema>
 	<vm_stun_squadman_schema>
 		<alias_color>green</alias_color>
 		<rgba>221 255 153 255</rgba>
@@ -696,27 +692,6 @@
 			<schemeGroup>vm_ally_schema</schemeGroup>
 		</color_blind>
 	</vm_ally>
-	<vm_ally_hover>
-		<alias_color>green</alias_color>
-		<rgba>140 255 0 255</rgba>
-		<transform>
-			<mult>
-				0.76 1 0.2 1
-				<!--BW_String-->
-			</mult>
-			<offset>0 25 0 0</offset>
-		</transform>
-	</vm_ally_hover>
-	<vm_ally_selected>
-		<schemeGroup>whiteColor</schemeGroup>
-		<transform>
-			<mult>
-				0.76 1 0.2 1
-				<!--BW_String-->
-			</mult>
-			<offset>0 25 0 0</offset>
-		</transform>
-	</vm_ally_selected>
 	<vm_dead_ally>
 		<schemeGroup>allySchema</schemeGroup>
 		<default>
@@ -1486,31 +1461,6 @@
 			</transform>
 		</color_blind>
 	</vm_enemy>
-	<vm_enemy_hover>
-		<schemeGroup>enemySchema</schemeGroup>
-		<default>
-			<alias_color>red</alias_color>
-			<rgba>255 94 88 255</rgba>
-			<transform>
-				<mult>
-					1 .14 0 1
-					<!--BW_String-->
-				</mult>
-				<offset>25 0 0 0</offset>
-			</transform>
-		</default>
-		<color_blind>
-			<alias_color>purple</alias_color>
-			<rgba>158 150 253 255</rgba>
-			<transform>
-				<mult>
-					0.75 0.85 1 1
-					<!--BW_String-->
-				</mult>
-				<offset>0 0 100 0</offset>
-			</transform>
-		</color_blind>
-	</vm_enemy_hover>
 	<vm_text_enemy_name_lit_schema>
 		<default>
 			<schemeGroup>redTextLitVehicleNameColor</schemeGroup>

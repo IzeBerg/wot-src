@@ -11,7 +11,7 @@ from gui.impl.lobby.reward_window import GiveAwayRewardWindow, PiggyBankRewardWi
 from gui.impl.pub.notification_commands import WindowNotificationCommand
 from gui.prb_control.dispatcher import g_prbLoader
 from gui.server_events import anniversary_helper, awards, events_helpers, recruit_helper
-from gui.server_events.events_helpers import getLootboxesFromBonuses
+from gui.server_events.events_helpers import getLootboxesFromBonuses, isDragonBoatQuest
 from gui.shared import EVENT_BUS_SCOPE, event_dispatcher as shared_events, events, g_eventBus
 from gui.shared.event_dispatcher import showProgressiveItemsView, hideWebBrowserOverlay
 from gui.shared.events import PersonalMissionsEvent
@@ -150,9 +150,8 @@ def showMissionsMapboxProgression():
     showMissions(tab=QUESTS_ALIASES.MAPBOX_VIEW_PY_ALIAS)
 
 
-def showRTSQuests():
-    from gui.impl.gen.view_models.views.lobby.rts.meta_tab_model import Tabs
-    shared_events.showRTSMetaRootWindow(tabId=Tabs.QUESTS.value)
+def showMissionsDragonBoat():
+    showMissions(tab=QUESTS_ALIASES.MISSIONS_DRAGON_BOAT_VIEW_PY_ALIAS)
 
 
 def showMissionsBattlePass(layoutID=None, chapterID=0):
@@ -164,6 +163,11 @@ def showMissionsBattlePass(layoutID=None, chapterID=0):
     if guiLoader.windowsManager.findWindows(__battleQueueViewPredicate):
         return
     _showMissions(tab=QUESTS_ALIASES.BATTLE_PASS_MISSIONS_VIEW_PY_ALIAS, layoutID=layoutID, chapterID=chapterID)
+
+
+def showDragonBoatTab(url=None):
+    _showMissions(**{'tab': QUESTS_ALIASES.MISSIONS_DRAGON_BOAT_VIEW_PY_ALIAS, 
+       'url': url})
 
 
 def showMissions(tab=None, missionID=None, groupID=None, marathonPrefix=None, anchor=None, showDetails=True, subTab=None):
@@ -228,6 +232,8 @@ def showMission(eventID, eventType=None):
             prefix = events_helpers.getMarathonPrefix(eventID)
             if prefix is not None:
                 return showMissionsMarathon(marathonPrefix=prefix)
+            if isDragonBoatQuest(eventID):
+                return showMissionsDragonBoat()
         if eventType is not None and eventType == constants.EVENT_TYPE.PERSONAL_MISSION:
             showPersonalMission(eventID)
         elif quest is not None:
@@ -246,10 +252,6 @@ def showMission(eventID, eventType=None):
                 showDailyQuests(subTab=DailyTabs.QUESTS)
             elif events_helpers.isPremium(quest.getID()):
                 showDailyQuests(subTab=DailyTabs.PREMIUM_MISSIONS)
-            elif events_helpers.isRTSStrategistQuest(quest.getID()):
-                showRTSQuests()
-            elif events_helpers.isRTSTankerQuest(quest.getID()):
-                showRTSQuests()
             else:
                 showMissionsCategories(missionID=quest.getID(), groupID=quest.getGroupID(), anchor=quest.getGroupID())
         return

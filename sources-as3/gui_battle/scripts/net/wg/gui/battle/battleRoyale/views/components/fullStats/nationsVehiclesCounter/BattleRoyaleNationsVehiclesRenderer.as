@@ -34,12 +34,12 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
       
       private static const MAX_COLUMNS:uint = 10;
       
-      private static const NATION_INV:String = "nationInv";
+      private static const ICON_INV:String = "iconInv";
       
       private static const VEHICLES_COUNT_INV:String = "vehiclesCountInv";
        
       
-      public var nationIcon:MovieClip = null;
+      public var icon:MovieClip = null;
       
       public var vehiclesCountTF:TextField = null;
       
@@ -47,7 +47,7 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
       
       public var separator:MovieClip = null;
       
-      private var _nation:String = "";
+      private var _classType:String = "";
       
       private var _vehiclesCount:String = "";
       
@@ -82,8 +82,8 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
       
       override protected function onDispose() : void
       {
-         this.nationIcon.stop();
-         this.nationIcon = null;
+         this.icon.stop();
+         this.icon = null;
          this.vehiclesCountTF = null;
          this.tileList.dispose();
          this.tileList = null;
@@ -95,9 +95,9 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
       override protected function draw() : void
       {
          super.draw();
-         if(isInvalid(NATION_INV))
+         if(isInvalid(ICON_INV))
          {
-            this.nationIcon.gotoAndStop(this._nation);
+            this.icon.gotoAndStop(this._classType);
          }
          if(isInvalid(VEHICLES_COUNT_INV))
          {
@@ -138,7 +138,7 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
          }
          this.vehiclesCountTF.defaultTextFormat = this._textFormat;
          this.vehiclesCountTF.setTextFormat(this._textFormat);
-         this.nationIcon.y = (this.separator.y - this.nationIcon.height >> 1) + ICON_OFFSET;
+         this.icon.y = (this.separator.y - this.icon.height >> 1) + ICON_OFFSET;
          this.vehiclesCountTF.y = (this.separator.y - this.vehiclesCountTF.textHeight >> 1) + TEXT_OFFSET;
       }
       
@@ -167,12 +167,12 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
          }
       }
       
-      public function set nation(param1:String) : void
+      public function set classType(param1:String) : void
       {
-         if(this._nation != param1)
+         if(this._classType != param1)
          {
-            this._nation = param1;
-            invalidate(NATION_INV);
+            this._classType = param1;
+            invalidate(ICON_INV);
          }
       }
       

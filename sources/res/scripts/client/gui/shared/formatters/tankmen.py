@@ -17,7 +17,7 @@ def getItemPricesViewModel(statsMoney, *itemPrices, **kwargs):
     for itemPrice in itemPrices:
         priceModels = []
         if itemPrice.isDefined():
-            for currency in Currency.ALL:
+            for currency in statsMoney.currencies:
                 currencyValue = itemPrice.price.get(currency)
                 if currencyValue is not None:
                     actionPriceModel = ActionPriceModel()
@@ -45,4 +45,7 @@ def getItemPricesViewModel(statsMoney, *itemPrices, **kwargs):
         if priceModels:
             result.append(priceModels)
 
+    diff = len(itemPrices) - len(result)
+    if diff > 0:
+        result.extend([None] * diff)
     return result

@@ -9,6 +9,8 @@ package net.wg.data.constants.generated
       
       public static const BATTLE_ROYALE_DESTROY_TIMER_UI:String = "BattleRoyaleDestroyTimerUI";
       
+      public static const BATTLE_ROYALE_COUNTER_TIMER_UI:String = "BattleRoyaleCounterTimerUI";
+      
       public static const BATTLE_ROYALE_TIMER_UI:String = "BattleRoyaleTimerUI";
       
       public static const RESUPPLY_TIMER_UI:String = "ResupplyTimerUI";
@@ -70,6 +72,16 @@ package net.wg.data.constants.generated
       public static const STEALTH_INACTIVE_ICON:String = "secondaryTimerStealthInactiveIconUI";
       
       public static const ENEMY_SMOKE_ICON:String = "enemySmokeIconUI";
+      
+      public static const CORRODING_SHOT_ICON:String = "corrodingShotIconUI";
+      
+      public static const FIRE_CIRCLE_ICON:String = "fireCircleIconUI";
+      
+      public static const THUNDER_STRIKE_ICON:String = "thunderStrikeIconUI";
+      
+      public static const SHOT_PASSION_ICON:String = "shotPassionIconUI";
+      
+      public static const HP_RESTORE_ON_DAMAGE_ICON:String = "hpRestoreOnDamageIconUI";
        
       
       public function BATTLE_NOTIFICATIONS_TIMER_LINKAGES()

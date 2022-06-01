@@ -183,10 +183,6 @@ def bonusLocalText(text):
     return _formatText('bonusLocalText', text)
 
 
-def bonusLocalTextGold(text):
-    return _formatText('bonusLocalTextGold', text)
-
-
 def bonusLocalInfoTipText(text):
     return _formatText('bonusLocalInfoTipText', text)
 
@@ -277,6 +273,10 @@ def eventCoin(text):
 
 def bpcoin(text):
     return _formatText('bpcoinText', text)
+
+
+def brcoin(text):
+    return _formatText('creditsText', text)
 
 
 def defRes(text):
@@ -450,6 +450,10 @@ def concatStylesToMultiLine(*styles):
 
 def concatStylesWithSpace(*styles):
     return (' ').join(map(_processStyle, styles))
+
+
+def concatStylesWithNBSP(*styles):
+    return ('&nbsp;').join(map(_processStyle, styles))
 
 
 class _StylesBuilder(object):

@@ -1,6 +1,6 @@
 from battle_results_constants import BATTLE_RESULT_ENTRY_TYPE as ENTRY_TYPE
 from constants import FLAG_ACTION
-from DictPackers import DictPacker, SimpleDictPacker, DeltaPacker, ValueReplayPacker, roundToInt
+from DictPackers import DictPacker, MergeDictPacker, SimpleDictPacker, DeltaPacker, ValueReplayPacker, roundToInt
 from items.vehicles import VEHICLE_DEVICE_TYPE_NAMES, VEHICLE_TANKMAN_TYPE_NAMES
 from items.badges_common import BadgesCommon
 BATTLE_RESULTS = [
@@ -44,6 +44,8 @@ BATTLE_RESULTS = [
   'damageDealt', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_ALL),
  (
   'sniperDamageDealt', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_ALL),
+ (
+  'artilleryFortEquipDamageDealt', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_ALL),
  (
   'equipmentDamageDealt', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_ALL),
  (
@@ -706,4 +708,6 @@ BATTLE_RESULTS = [
  (
   'initialVehicleAmmo', list, [], None, 'skip', ENTRY_TYPE.SERVER),
  (
-  'replayURL', str, '', None, 'skip', ENTRY_TYPE.ACCOUNT_SELF)]
+  'replayURL', str, '', None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+ (
+  'currencies', dict, {}, MergeDictPacker(), 'joinByEachPacker', ENTRY_TYPE.VEHICLE_SELF)]

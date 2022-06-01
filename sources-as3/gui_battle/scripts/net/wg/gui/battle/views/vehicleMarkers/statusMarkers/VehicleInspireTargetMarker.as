@@ -24,8 +24,13 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       
       override protected function updateColorSettings(param1:uint) : void
       {
+         this.arrowContainer.updateColorSettings(arrowColorFrame);
          this.glowContainer.updateColorSettings(color);
-         this.arrowContainer.updateColorSettings(color);
+      }
+      
+      override protected function updateSourceVehicle() : void
+      {
+         this.arrowContainer.updateColorSettings(arrowColorFrame);
       }
    }
 }

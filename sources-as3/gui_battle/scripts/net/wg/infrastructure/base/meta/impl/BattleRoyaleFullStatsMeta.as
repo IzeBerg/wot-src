@@ -45,11 +45,11 @@ package net.wg.infrastructure.base.meta.impl
          }
       }
       
-      public final function as_updateNationsVehiclesCounter(param1:Object) : void
+      public final function as_updateVehiclesCounter(param1:Object) : void
       {
          var _loc2_:BattleRoyaleNationsVehiclesCounterVO = this._battleRoyaleNationsVehiclesCounterVO;
          this._battleRoyaleNationsVehiclesCounterVO = new BattleRoyaleNationsVehiclesCounterVO(param1);
-         this.updateNationsVehiclesCounter(this._battleRoyaleNationsVehiclesCounterVO);
+         this.updateVehiclesCounter(this._battleRoyaleNationsVehiclesCounterVO);
          if(_loc2_)
          {
             _loc2_.dispose();
@@ -63,9 +63,9 @@ package net.wg.infrastructure.base.meta.impl
          throw new AbstractException(_loc2_);
       }
       
-      protected function updateNationsVehiclesCounter(param1:BattleRoyaleNationsVehiclesCounterVO) : void
+      protected function updateVehiclesCounter(param1:BattleRoyaleNationsVehiclesCounterVO) : void
       {
-         var _loc2_:String = "as_updateNationsVehiclesCounter" + Errors.ABSTRACT_INVOKE;
+         var _loc2_:String = "as_updateVehiclesCounter" + Errors.ABSTRACT_INVOKE;
          DebugUtils.LOG_ERROR(_loc2_);
          throw new AbstractException(_loc2_);
       }

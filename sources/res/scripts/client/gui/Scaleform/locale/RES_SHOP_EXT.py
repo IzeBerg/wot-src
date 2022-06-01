@@ -1,6 +1,137 @@
 
 
 class RES_SHOP_EXT(object):
+    ARTEFACTS = frozenset(('gui/maps/shop/artefacts/180x135/additionalInvisibilityDevice.png',
+                           'gui/maps/shop/artefacts/180x135/aimingStabilizer.png',
+                           'gui/maps/shop/artefacts/180x135/antifragmentationLining.png',
+                           'gui/maps/shop/artefacts/180x135/autoExtinguishers.png',
+                           'gui/maps/shop/artefacts/180x135/battleBoosterReplace_overlay.png',
+                           'gui/maps/shop/artefacts/180x135/battleBooster_overlay.png',
+                           'gui/maps/shop/artefacts/180x135/builtInEquipment_overlay.png',
+                           'gui/maps/shop/artefacts/180x135/camouflage.png', 'gui/maps/shop/artefacts/180x135/camouflageNet.png',
+                           'gui/maps/shop/artefacts/180x135/chocolate.png', 'gui/maps/shop/artefacts/180x135/coatedOptics.png',
+                           'gui/maps/shop/artefacts/180x135/cocacola.png', 'gui/maps/shop/artefacts/180x135/commandersView.png',
+                           'gui/maps/shop/artefacts/180x135/commander_sixthSense.png',
+                           'gui/maps/shop/artefacts/180x135/driver_smoothDriving.png',
+                           'gui/maps/shop/artefacts/180x135/driver_virtuoso.png',
+                           'gui/maps/shop/artefacts/180x135/enhancedAimDrives.png',
+                           'gui/maps/shop/artefacts/180x135/equipmentPlus_overlay.png',
+                           'gui/maps/shop/artefacts/180x135/equipmentTrophyBasic_overlay.png',
+                           'gui/maps/shop/artefacts/180x135/equipmentTrophyUpgraded_overlay.png',
+                           'gui/maps/shop/artefacts/180x135/extraHealthReserve.png',
+                           'gui/maps/shop/artefacts/180x135/fireFighting.png', 'gui/maps/shop/artefacts/180x135/gasoline100.png',
+                           'gui/maps/shop/artefacts/180x135/gasoline105.png', 'gui/maps/shop/artefacts/180x135/grousers.png',
+                           'gui/maps/shop/artefacts/180x135/gunner_rancorous.png',
+                           'gui/maps/shop/artefacts/180x135/gunner_smoothTurret.png',
+                           'gui/maps/shop/artefacts/180x135/handExtinguishers.png',
+                           'gui/maps/shop/artefacts/180x135/hotCoffee.png', 'gui/maps/shop/artefacts/180x135/improvedConfiguration.png',
+                           'gui/maps/shop/artefacts/180x135/improvedRadioCommunication.png',
+                           'gui/maps/shop/artefacts/180x135/improvedRotationMechanism.png',
+                           'gui/maps/shop/artefacts/180x135/improvedSights.png',
+                           'gui/maps/shop/artefacts/180x135/improvedVentilation.png',
+                           'gui/maps/shop/artefacts/180x135/largeMedkit.png', 'gui/maps/shop/artefacts/180x135/largeRepairkit.png',
+                           'gui/maps/shop/artefacts/180x135/lendLeaseOil.png', 'gui/maps/shop/artefacts/180x135/loader_pedant.png',
+                           'gui/maps/shop/artefacts/180x135/naturalCover.png', 'gui/maps/shop/artefacts/180x135/qualityOil.png',
+                           'gui/maps/shop/artefacts/180x135/radioman_lastEffort.png',
+                           'gui/maps/shop/artefacts/180x135/rammer.png', 'gui/maps/shop/artefacts/180x135/ration.png',
+                           'gui/maps/shop/artefacts/180x135/ration_china.png', 'gui/maps/shop/artefacts/180x135/ration_czech.png',
+                           'gui/maps/shop/artefacts/180x135/ration_italy.png', 'gui/maps/shop/artefacts/180x135/ration_japan.png',
+                           'gui/maps/shop/artefacts/180x135/ration_poland.png', 'gui/maps/shop/artefacts/180x135/ration_sweden.png',
+                           'gui/maps/shop/artefacts/180x135/ration_uk.png', 'gui/maps/shop/artefacts/180x135/removedRpmLimiter.png',
+                           'gui/maps/shop/artefacts/180x135/smallMedkit.png', 'gui/maps/shop/artefacts/180x135/smallRepairkit.png',
+                           'gui/maps/shop/artefacts/180x135/stereoscope.png', 'gui/maps/shop/artefacts/180x135/turbocharger.png',
+                           'gui/maps/shop/artefacts/360x270/additionalInvisibilityDevice.png',
+                           'gui/maps/shop/artefacts/360x270/aimingStabilizer.png',
+                           'gui/maps/shop/artefacts/360x270/antifragmentationLining.png',
+                           'gui/maps/shop/artefacts/360x270/autoExtinguishers.png',
+                           'gui/maps/shop/artefacts/360x270/camouflage.png', 'gui/maps/shop/artefacts/360x270/camouflageNet.png',
+                           'gui/maps/shop/artefacts/360x270/chocolate.png', 'gui/maps/shop/artefacts/360x270/coatedOptics.png',
+                           'gui/maps/shop/artefacts/360x270/cocacola.png', 'gui/maps/shop/artefacts/360x270/commandersView.png',
+                           'gui/maps/shop/artefacts/360x270/commander_sixthSense.png',
+                           'gui/maps/shop/artefacts/360x270/driver_smoothDriving.png',
+                           'gui/maps/shop/artefacts/360x270/driver_virtuoso.png',
+                           'gui/maps/shop/artefacts/360x270/enhancedAimDrives.png',
+                           'gui/maps/shop/artefacts/360x270/extraHealthReserve.png',
+                           'gui/maps/shop/artefacts/360x270/fireFighting.png', 'gui/maps/shop/artefacts/360x270/gasoline100.png',
+                           'gui/maps/shop/artefacts/360x270/gasoline105.png', 'gui/maps/shop/artefacts/360x270/grousers.png',
+                           'gui/maps/shop/artefacts/360x270/gunner_rancorous.png',
+                           'gui/maps/shop/artefacts/360x270/gunner_smoothTurret.png',
+                           'gui/maps/shop/artefacts/360x270/handExtinguishers.png',
+                           'gui/maps/shop/artefacts/360x270/hotCoffee.png', 'gui/maps/shop/artefacts/360x270/improvedConfiguration.png',
+                           'gui/maps/shop/artefacts/360x270/improvedRadioCommunication.png',
+                           'gui/maps/shop/artefacts/360x270/improvedRotationMechanism.png',
+                           'gui/maps/shop/artefacts/360x270/improvedSights.png',
+                           'gui/maps/shop/artefacts/360x270/improvedVentilation.png',
+                           'gui/maps/shop/artefacts/360x270/largeMedkit.png', 'gui/maps/shop/artefacts/360x270/largeRepairkit.png',
+                           'gui/maps/shop/artefacts/360x270/lendLeaseOil.png', 'gui/maps/shop/artefacts/360x270/loader_pedant.png',
+                           'gui/maps/shop/artefacts/360x270/naturalCover.png', 'gui/maps/shop/artefacts/360x270/qualityOil.png',
+                           'gui/maps/shop/artefacts/360x270/radioman_lastEffort.png',
+                           'gui/maps/shop/artefacts/360x270/rammer.png', 'gui/maps/shop/artefacts/360x270/ration.png',
+                           'gui/maps/shop/artefacts/360x270/ration_china.png', 'gui/maps/shop/artefacts/360x270/ration_czech.png',
+                           'gui/maps/shop/artefacts/360x270/ration_italy.png', 'gui/maps/shop/artefacts/360x270/ration_japan.png',
+                           'gui/maps/shop/artefacts/360x270/ration_poland.png', 'gui/maps/shop/artefacts/360x270/ration_sweden.png',
+                           'gui/maps/shop/artefacts/360x270/ration_uk.png', 'gui/maps/shop/artefacts/360x270/removedRpmLimiter.png',
+                           'gui/maps/shop/artefacts/360x270/smallMedkit.png', 'gui/maps/shop/artefacts/360x270/smallRepairkit.png',
+                           'gui/maps/shop/artefacts/360x270/stereoscope.png', 'gui/maps/shop/artefacts/360x270/turbocharger.png',
+                           'gui/maps/shop/artefacts/600x450/additionalInvisibilityDevice.png',
+                           'gui/maps/shop/artefacts/600x450/aimingStabilizer.png',
+                           'gui/maps/shop/artefacts/600x450/antifragmentationLining.png',
+                           'gui/maps/shop/artefacts/600x450/autoExtinguishers.png',
+                           'gui/maps/shop/artefacts/600x450/camouflage.png', 'gui/maps/shop/artefacts/600x450/camouflageNet.png',
+                           'gui/maps/shop/artefacts/600x450/chocolate.png', 'gui/maps/shop/artefacts/600x450/coatedOptics.png',
+                           'gui/maps/shop/artefacts/600x450/cocacola.png', 'gui/maps/shop/artefacts/600x450/commandersView.png',
+                           'gui/maps/shop/artefacts/600x450/commander_sixthSense.png',
+                           'gui/maps/shop/artefacts/600x450/driver_smoothDriving.png',
+                           'gui/maps/shop/artefacts/600x450/driver_virtuoso.png',
+                           'gui/maps/shop/artefacts/600x450/enhancedAimDrives.png',
+                           'gui/maps/shop/artefacts/600x450/extraHealthReserve.png',
+                           'gui/maps/shop/artefacts/600x450/fireFighting.png', 'gui/maps/shop/artefacts/600x450/gasoline100.png',
+                           'gui/maps/shop/artefacts/600x450/gasoline105.png', 'gui/maps/shop/artefacts/600x450/grousers.png',
+                           'gui/maps/shop/artefacts/600x450/gunner_rancorous.png',
+                           'gui/maps/shop/artefacts/600x450/gunner_smoothTurret.png',
+                           'gui/maps/shop/artefacts/600x450/handExtinguishers.png',
+                           'gui/maps/shop/artefacts/600x450/hotCoffee.png', 'gui/maps/shop/artefacts/600x450/improvedConfiguration.png',
+                           'gui/maps/shop/artefacts/600x450/improvedRadioCommunication.png',
+                           'gui/maps/shop/artefacts/600x450/improvedRotationMechanism.png',
+                           'gui/maps/shop/artefacts/600x450/improvedSights.png',
+                           'gui/maps/shop/artefacts/600x450/improvedVentilation.png',
+                           'gui/maps/shop/artefacts/600x450/largeMedkit.png', 'gui/maps/shop/artefacts/600x450/largeRepairkit.png',
+                           'gui/maps/shop/artefacts/600x450/lendLeaseOil.png', 'gui/maps/shop/artefacts/600x450/loader_pedant.png',
+                           'gui/maps/shop/artefacts/600x450/naturalCover.png', 'gui/maps/shop/artefacts/600x450/qualityOil.png',
+                           'gui/maps/shop/artefacts/600x450/radioman_lastEffort.png',
+                           'gui/maps/shop/artefacts/600x450/rammer.png', 'gui/maps/shop/artefacts/600x450/ration.png',
+                           'gui/maps/shop/artefacts/600x450/ration_china.png', 'gui/maps/shop/artefacts/600x450/ration_czech.png',
+                           'gui/maps/shop/artefacts/600x450/ration_italy.png', 'gui/maps/shop/artefacts/600x450/ration_japan.png',
+                           'gui/maps/shop/artefacts/600x450/ration_poland.png', 'gui/maps/shop/artefacts/600x450/ration_sweden.png',
+                           'gui/maps/shop/artefacts/600x450/ration_uk.png', 'gui/maps/shop/artefacts/600x450/removedRpmLimiter.png',
+                           'gui/maps/shop/artefacts/600x450/smallMedkit.png', 'gui/maps/shop/artefacts/600x450/smallRepairkit.png',
+                           'gui/maps/shop/artefacts/600x450/stereoscope.png', 'gui/maps/shop/artefacts/600x450/turbocharger.png'))
+    BOOSTERS = frozenset(('gui/maps/shop/boosters/180x135/booster_credits.png', 'gui/maps/shop/boosters/180x135/booster_crew_xp.png',
+                          'gui/maps/shop/boosters/180x135/booster_fl_xp.png', 'gui/maps/shop/boosters/180x135/booster_free_xp.png',
+                          'gui/maps/shop/boosters/180x135/booster_xp.png', 'gui/maps/shop/boosters/360x270/booster_credits.png',
+                          'gui/maps/shop/boosters/360x270/booster_crew_xp.png', 'gui/maps/shop/boosters/360x270/booster_fl_xp.png',
+                          'gui/maps/shop/boosters/360x270/booster_free_xp.png', 'gui/maps/shop/boosters/360x270/booster_xp.png',
+                          'gui/maps/shop/boosters/600x450/booster_credits.png', 'gui/maps/shop/boosters/600x450/booster_crew_xp.png',
+                          'gui/maps/shop/boosters/600x450/booster_fl_xp.png', 'gui/maps/shop/boosters/600x450/booster_free_xp.png',
+                          'gui/maps/shop/boosters/600x450/booster_xp.png'))
+    CURRENCY = frozenset(('gui/maps/shop/currency/180x135/bon.png', 'gui/maps/shop/currency/180x135/credits.png',
+                          'gui/maps/shop/currency/180x135/freeXP.png', 'gui/maps/shop/currency/180x135/gold.png'))
+    CUSTOMIZATION = frozenset(('gui/maps/shop/customization/180x135/camo.png', 'gui/maps/shop/customization/180x135/style.png',
+                               'gui/maps/shop/customization/styles/180x135/348.png',
+                               'gui/maps/shop/customization/styles/180x135/349.png',
+                               'gui/maps/shop/customization/styles/360x270/348.png',
+                               'gui/maps/shop/customization/styles/360x270/349.png',
+                               'gui/maps/shop/customization/styles/600x450/348.png',
+                               'gui/maps/shop/customization/styles/600x450/349.png'))
+    MODULES = frozenset(('gui/maps/shop/modules/180x135/vehicleChassis.png', 'gui/maps/shop/modules/180x135/vehicleEngine.png',
+                         'gui/maps/shop/modules/180x135/vehicleGun.png', 'gui/maps/shop/modules/180x135/vehicleRadio.png',
+                         'gui/maps/shop/modules/180x135/vehicleTurret.png', 'gui/maps/shop/modules/180x135/vehicleWheeledChassis.png',
+                         'gui/maps/shop/modules/360x270/vehicleChassis.png', 'gui/maps/shop/modules/360x270/vehicleEngine.png',
+                         'gui/maps/shop/modules/360x270/vehicleGun.png', 'gui/maps/shop/modules/360x270/vehicleRadio.png',
+                         'gui/maps/shop/modules/360x270/vehicleTurret.png', 'gui/maps/shop/modules/360x270/vehicleWheeledChassis.png',
+                         'gui/maps/shop/modules/600x450/vehicleChassis.png', 'gui/maps/shop/modules/600x450/vehicleEngine.png',
+                         'gui/maps/shop/modules/600x450/vehicleGun.png', 'gui/maps/shop/modules/600x450/vehicleRadio.png',
+                         'gui/maps/shop/modules/600x450/vehicleTurret.png', 'gui/maps/shop/modules/600x450/vehicleWheeledChassis.png'))
     PREMIUM = frozenset(('gui/maps/shop/premium/180x135/premium-icon-1.png', 'gui/maps/shop/premium/180x135/premium-icon-14.png',
                          'gui/maps/shop/premium/180x135/premium-icon-180.png', 'gui/maps/shop/premium/180x135/premium-icon-2.png',
                          'gui/maps/shop/premium/180x135/premium-icon-3.png', 'gui/maps/shop/premium/180x135/premium-icon-30.png',
@@ -52,7 +183,8 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/180x135/A13_T34_hvy_FL.png', 'gui/maps/shop/vehicles/180x135/A140_ASTRON_REX_105mm.png',
                           'gui/maps/shop/vehicles/180x135/A141_M_IV_Y.png', 'gui/maps/shop/vehicles/180x135/A142_Pawlack_Tank.png',
                           'gui/maps/shop/vehicles/180x135/A143_M_V_Y.png', 'gui/maps/shop/vehicles/180x135/A144_M_VI_Y.png',
-                          'gui/maps/shop/vehicles/180x135/A147_M_II_Y.png', 'gui/maps/shop/vehicles/180x135/A148_Convertible_Medium_Tank_T3.png',
+                          'gui/maps/shop/vehicles/180x135/A145_TS_54.png', 'gui/maps/shop/vehicles/180x135/A147_M_II_Y.png',
+                          'gui/maps/shop/vehicles/180x135/A148_Convertible_Medium_Tank_T3.png',
                           'gui/maps/shop/vehicles/180x135/A149_AMBT.png', 'gui/maps/shop/vehicles/180x135/A14_T30.png',
                           'gui/maps/shop/vehicles/180x135/A14_T30_FL.png', 'gui/maps/shop/vehicles/180x135/A16_M7_Priest.png',
                           'gui/maps/shop/vehicles/180x135/A17_M37.png', 'gui/maps/shop/vehicles/180x135/A18_M41.png',
@@ -106,7 +238,8 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/180x135/Ch21_T34.png', 'gui/maps/shop/vehicles/180x135/Ch22_113.png',
                           'gui/maps/shop/vehicles/180x135/Ch22_113P.png', 'gui/maps/shop/vehicles/180x135/Ch22_113_Beijing_Opera.png',
                           'gui/maps/shop/vehicles/180x135/Ch23_112.png', 'gui/maps/shop/vehicles/180x135/Ch23_112_FL.png',
-                          'gui/maps/shop/vehicles/180x135/Ch24_Type64.png', 'gui/maps/shop/vehicles/180x135/Ch25_121_mod_1971B.png',
+                          'gui/maps/shop/vehicles/180x135/Ch24_Type64.png', 'gui/maps/shop/vehicles/180x135/Ch24_Type64_SH.png',
+                          'gui/maps/shop/vehicles/180x135/Ch25_121_mod_1971B.png',
                           'gui/maps/shop/vehicles/180x135/Ch26_59_Patton.png', 'gui/maps/shop/vehicles/180x135/Ch28_WZ_132A.png',
                           'gui/maps/shop/vehicles/180x135/Ch29_Type_62C_prot.png',
                           'gui/maps/shop/vehicles/180x135/Ch30_T-26G_FT.png', 'gui/maps/shop/vehicles/180x135/Ch31_M3G_FT.png',
@@ -189,7 +322,6 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/180x135/F88_AMX_13_105.png', 'gui/maps/shop/vehicles/180x135/F89_Canon_dassaut_de_105.png',
                           'gui/maps/shop/vehicles/180x135/F97_ELC_EVEN_90.png', 'gui/maps/shop/vehicles/180x135/F97_ELC_EVEN_90_FL.png',
                           'gui/maps/shop/vehicles/180x135/G02_Hummel.png', 'gui/maps/shop/vehicles/180x135/G03_PzV_Panther.png',
-                          'gui/maps/shop/vehicles/180x135/G03_PzV_Panther_Event.png',
                           'gui/maps/shop/vehicles/180x135/G04_PzVI_Tiger_I.png',
                           'gui/maps/shop/vehicles/180x135/G04_PzVI_Tiger_IA.png',
                           'gui/maps/shop/vehicles/180x135/G04_PzVI_Tiger_I_MapsTraining_Player_HT_2.png',
@@ -296,6 +428,7 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/180x135/GB107_Cavalier_SH.png',
                           'gui/maps/shop/vehicles/180x135/GB108_A46.png', 'gui/maps/shop/vehicles/180x135/GB109_GSOR_1008.png',
                           'gui/maps/shop/vehicles/180x135/GB10_Black_Prince.png',
+                          'gui/maps/shop/vehicles/180x135/GB110_FV4201_Chieftain_Prototype.png',
                           'gui/maps/shop/vehicles/180x135/GB111_Charlemagne.png',
                           'gui/maps/shop/vehicles/180x135/GB112_Caliban.png', 'gui/maps/shop/vehicles/180x135/GB113_Matilda_LVT.png',
                           'gui/maps/shop/vehicles/180x135/GB115_Gonsalo.png', 'gui/maps/shop/vehicles/180x135/GB11_Caernarvon.png',
@@ -383,12 +516,13 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/180x135/Pl13_53TP_Markowskiego.png',
                           'gui/maps/shop/vehicles/180x135/Pl14_4TP.png', 'gui/maps/shop/vehicles/180x135/Pl15_60TP_Lewandowskiego.png',
                           'gui/maps/shop/vehicles/180x135/Pl16_T34_85_Rudy.png',
-                          'gui/maps/shop/vehicles/180x135/Pl17_DS_PZlnz.png', 'gui/maps/shop/vehicles/180x135/Pl18_BUGI.png',
-                          'gui/maps/shop/vehicles/180x135/Pl19_CS_52_LIS.png', 'gui/maps/shop/vehicles/180x135/Pl20_CS_44.png',
-                          'gui/maps/shop/vehicles/180x135/Pl21_CS_63.png', 'gui/maps/shop/vehicles/180x135/Pl22_CS_59.png',
-                          'gui/maps/shop/vehicles/180x135/Pl23_CS_53.png', 'gui/maps/shop/vehicles/180x135/R01_IS.png',
-                          'gui/maps/shop/vehicles/180x135/R02_SU-85.png', 'gui/maps/shop/vehicles/180x135/R03_BT-7.png',
-                          'gui/maps/shop/vehicles/180x135/R04_T-34.png', 'gui/maps/shop/vehicles/180x135/R04_T-34_MapsTraining_Player_MT_1.png',
+                          'gui/maps/shop/vehicles/180x135/Pl17_DS_PZlnz.png', 'gui/maps/shop/vehicles/180x135/Pl17_DS_PZlnz_SH.png',
+                          'gui/maps/shop/vehicles/180x135/Pl18_BUGI.png', 'gui/maps/shop/vehicles/180x135/Pl19_CS_52_LIS.png',
+                          'gui/maps/shop/vehicles/180x135/Pl20_CS_44.png', 'gui/maps/shop/vehicles/180x135/Pl21_CS_63.png',
+                          'gui/maps/shop/vehicles/180x135/Pl22_CS_59.png', 'gui/maps/shop/vehicles/180x135/Pl23_CS_53.png',
+                          'gui/maps/shop/vehicles/180x135/R01_IS.png', 'gui/maps/shop/vehicles/180x135/R02_SU-85.png',
+                          'gui/maps/shop/vehicles/180x135/R03_BT-7.png', 'gui/maps/shop/vehicles/180x135/R04_T-34.png',
+                          'gui/maps/shop/vehicles/180x135/R04_T-34_MapsTraining_Player_MT_1.png',
                           'gui/maps/shop/vehicles/180x135/R06_T-28.png', 'gui/maps/shop/vehicles/180x135/R07_T-34-85.png',
                           'gui/maps/shop/vehicles/180x135/R08_BT-2.png', 'gui/maps/shop/vehicles/180x135/R09_T-26.png',
                           'gui/maps/shop/vehicles/180x135/R100_SU122A.png', 'gui/maps/shop/vehicles/180x135/R101_MT25.png',
@@ -443,6 +577,7 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/180x135/R183_K_91_PT.png', 'gui/maps/shop/vehicles/180x135/R185_T_34_L_11_1941.png',
                           'gui/maps/shop/vehicles/180x135/R186_KV_1_Screened.png',
                           'gui/maps/shop/vehicles/180x135/R187_Object_590.png', 'gui/maps/shop/vehicles/180x135/R188_Object_259A.png',
+                          'gui/maps/shop/vehicles/180x135/R188_Object_259A_CN.png',
                           'gui/maps/shop/vehicles/180x135/R18_SU-152.png', 'gui/maps/shop/vehicles/180x135/R192_K_2.png',
                           'gui/maps/shop/vehicles/180x135/R193_M4A2_T_34.png', 'gui/maps/shop/vehicles/180x135/R195_T34M_54.png',
                           'gui/maps/shop/vehicles/180x135/R19_IS-3.png', 'gui/maps/shop/vehicles/180x135/R20_T-44.png',
@@ -485,17 +620,17 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/180x135/R96_Object_430.png', 'gui/maps/shop/vehicles/180x135/R96_Object_430B.png',
                           'gui/maps/shop/vehicles/180x135/R97_Object_140.png', 'gui/maps/shop/vehicles/180x135/R97_Object_140_cl.png',
                           'gui/maps/shop/vehicles/180x135/R98_T44_85.png', 'gui/maps/shop/vehicles/180x135/R98_T44_85M.png',
-                          'gui/maps/shop/vehicles/180x135/R99_T44_122.png', 'gui/maps/shop/vehicles/180x135/S01_Strv_74_A2.png',
-                          'gui/maps/shop/vehicles/180x135/S02_Strv_M42.png', 'gui/maps/shop/vehicles/180x135/S03_Strv_M38.png',
-                          'gui/maps/shop/vehicles/180x135/S04_Lago_I.png', 'gui/maps/shop/vehicles/180x135/S05_Strv_M21_29.png',
-                          'gui/maps/shop/vehicles/180x135/S06_Ikv_90_Typ_B_Bofors.png',
+                          'gui/maps/shop/vehicles/180x135/R99_T44_122.png', 'gui/maps/shop/vehicles/180x135/R99_T44_122_CN.png',
+                          'gui/maps/shop/vehicles/180x135/S01_Strv_74_A2.png', 'gui/maps/shop/vehicles/180x135/S02_Strv_M42.png',
+                          'gui/maps/shop/vehicles/180x135/S03_Strv_M38.png', 'gui/maps/shop/vehicles/180x135/S04_Lago_I.png',
+                          'gui/maps/shop/vehicles/180x135/S05_Strv_M21_29.png', 'gui/maps/shop/vehicles/180x135/S06_Ikv_90_Typ_B_Bofors.png',
                           'gui/maps/shop/vehicles/180x135/S07_Strv_74.png', 'gui/maps/shop/vehicles/180x135/S08_Ikv_65_Alt_2.png',
                           'gui/maps/shop/vehicles/180x135/S09_L_120_TD.png', 'gui/maps/shop/vehicles/180x135/S10_Strv_103_0_Series.png',
                           'gui/maps/shop/vehicles/180x135/S10_Strv_103_0_Series_FL.png',
                           'gui/maps/shop/vehicles/180x135/S11_Strv_103B.png', 'gui/maps/shop/vehicles/180x135/S12_Strv_M40.png',
                           'gui/maps/shop/vehicles/180x135/S13_Leo.png', 'gui/maps/shop/vehicles/180x135/S14_Ikv_103.png',
-                          'gui/maps/shop/vehicles/180x135/S15_L_60.png', 'gui/maps/shop/vehicles/180x135/S16_Kranvagn.png',
-                          'gui/maps/shop/vehicles/180x135/S16_Kranvagn_bob.png',
+                          'gui/maps/shop/vehicles/180x135/S14_Ikv_103_SH.png', 'gui/maps/shop/vehicles/180x135/S15_L_60.png',
+                          'gui/maps/shop/vehicles/180x135/S16_Kranvagn.png', 'gui/maps/shop/vehicles/180x135/S16_Kranvagn_bob.png',
                           'gui/maps/shop/vehicles/180x135/S17_EMIL_1952_E2.png',
                           'gui/maps/shop/vehicles/180x135/S18_EMIL_1951_E1.png',
                           'gui/maps/shop/vehicles/180x135/S19_Sav_M43.png', 'gui/maps/shop/vehicles/180x135/S20_Ikv_72.png',
@@ -537,7 +672,8 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/360x270/A13_T34_hvy_FL.png', 'gui/maps/shop/vehicles/360x270/A140_ASTRON_REX_105mm.png',
                           'gui/maps/shop/vehicles/360x270/A141_M_IV_Y.png', 'gui/maps/shop/vehicles/360x270/A142_Pawlack_Tank.png',
                           'gui/maps/shop/vehicles/360x270/A143_M_V_Y.png', 'gui/maps/shop/vehicles/360x270/A144_M_VI_Y.png',
-                          'gui/maps/shop/vehicles/360x270/A147_M_II_Y.png', 'gui/maps/shop/vehicles/360x270/A148_Convertible_Medium_Tank_T3.png',
+                          'gui/maps/shop/vehicles/360x270/A145_TS_54.png', 'gui/maps/shop/vehicles/360x270/A147_M_II_Y.png',
+                          'gui/maps/shop/vehicles/360x270/A148_Convertible_Medium_Tank_T3.png',
                           'gui/maps/shop/vehicles/360x270/A149_AMBT.png', 'gui/maps/shop/vehicles/360x270/A14_T30.png',
                           'gui/maps/shop/vehicles/360x270/A14_T30_FL.png', 'gui/maps/shop/vehicles/360x270/A16_M7_Priest.png',
                           'gui/maps/shop/vehicles/360x270/A17_M37.png', 'gui/maps/shop/vehicles/360x270/A18_M41.png',
@@ -591,7 +727,8 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/360x270/Ch21_T34.png', 'gui/maps/shop/vehicles/360x270/Ch22_113.png',
                           'gui/maps/shop/vehicles/360x270/Ch22_113P.png', 'gui/maps/shop/vehicles/360x270/Ch22_113_Beijing_Opera.png',
                           'gui/maps/shop/vehicles/360x270/Ch23_112.png', 'gui/maps/shop/vehicles/360x270/Ch23_112_FL.png',
-                          'gui/maps/shop/vehicles/360x270/Ch24_Type64.png', 'gui/maps/shop/vehicles/360x270/Ch25_121_mod_1971B.png',
+                          'gui/maps/shop/vehicles/360x270/Ch24_Type64.png', 'gui/maps/shop/vehicles/360x270/Ch24_Type64_SH.png',
+                          'gui/maps/shop/vehicles/360x270/Ch25_121_mod_1971B.png',
                           'gui/maps/shop/vehicles/360x270/Ch26_59_Patton.png', 'gui/maps/shop/vehicles/360x270/Ch28_WZ_132A.png',
                           'gui/maps/shop/vehicles/360x270/Ch29_Type_62C_prot.png',
                           'gui/maps/shop/vehicles/360x270/Ch30_T-26G_FT.png', 'gui/maps/shop/vehicles/360x270/Ch31_M3G_FT.png',
@@ -674,7 +811,6 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/360x270/F88_AMX_13_105.png', 'gui/maps/shop/vehicles/360x270/F89_Canon_dassaut_de_105.png',
                           'gui/maps/shop/vehicles/360x270/F97_ELC_EVEN_90.png', 'gui/maps/shop/vehicles/360x270/F97_ELC_EVEN_90_FL.png',
                           'gui/maps/shop/vehicles/360x270/G02_Hummel.png', 'gui/maps/shop/vehicles/360x270/G03_PzV_Panther.png',
-                          'gui/maps/shop/vehicles/360x270/G03_PzV_Panther_Event.png',
                           'gui/maps/shop/vehicles/360x270/G04_PzVI_Tiger_I.png',
                           'gui/maps/shop/vehicles/360x270/G04_PzVI_Tiger_IA.png',
                           'gui/maps/shop/vehicles/360x270/G04_PzVI_Tiger_I_MapsTraining_Player_HT_2.png',
@@ -781,6 +917,7 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/360x270/GB107_Cavalier_SH.png',
                           'gui/maps/shop/vehicles/360x270/GB108_A46.png', 'gui/maps/shop/vehicles/360x270/GB109_GSOR_1008.png',
                           'gui/maps/shop/vehicles/360x270/GB10_Black_Prince.png',
+                          'gui/maps/shop/vehicles/360x270/GB110_FV4201_Chieftain_Prototype.png',
                           'gui/maps/shop/vehicles/360x270/GB111_Charlemagne.png',
                           'gui/maps/shop/vehicles/360x270/GB112_Caliban.png', 'gui/maps/shop/vehicles/360x270/GB113_Matilda_LVT.png',
                           'gui/maps/shop/vehicles/360x270/GB115_Gonsalo.png', 'gui/maps/shop/vehicles/360x270/GB11_Caernarvon.png',
@@ -868,12 +1005,13 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/360x270/Pl13_53TP_Markowskiego.png',
                           'gui/maps/shop/vehicles/360x270/Pl14_4TP.png', 'gui/maps/shop/vehicles/360x270/Pl15_60TP_Lewandowskiego.png',
                           'gui/maps/shop/vehicles/360x270/Pl16_T34_85_Rudy.png',
-                          'gui/maps/shop/vehicles/360x270/Pl17_DS_PZlnz.png', 'gui/maps/shop/vehicles/360x270/Pl18_BUGI.png',
-                          'gui/maps/shop/vehicles/360x270/Pl19_CS_52_LIS.png', 'gui/maps/shop/vehicles/360x270/Pl20_CS_44.png',
-                          'gui/maps/shop/vehicles/360x270/Pl21_CS_63.png', 'gui/maps/shop/vehicles/360x270/Pl22_CS_59.png',
-                          'gui/maps/shop/vehicles/360x270/Pl23_CS_53.png', 'gui/maps/shop/vehicles/360x270/R01_IS.png',
-                          'gui/maps/shop/vehicles/360x270/R02_SU-85.png', 'gui/maps/shop/vehicles/360x270/R03_BT-7.png',
-                          'gui/maps/shop/vehicles/360x270/R04_T-34.png', 'gui/maps/shop/vehicles/360x270/R04_T-34_MapsTraining_Player_MT_1.png',
+                          'gui/maps/shop/vehicles/360x270/Pl17_DS_PZlnz.png', 'gui/maps/shop/vehicles/360x270/Pl17_DS_PZlnz_SH.png',
+                          'gui/maps/shop/vehicles/360x270/Pl18_BUGI.png', 'gui/maps/shop/vehicles/360x270/Pl19_CS_52_LIS.png',
+                          'gui/maps/shop/vehicles/360x270/Pl20_CS_44.png', 'gui/maps/shop/vehicles/360x270/Pl21_CS_63.png',
+                          'gui/maps/shop/vehicles/360x270/Pl22_CS_59.png', 'gui/maps/shop/vehicles/360x270/Pl23_CS_53.png',
+                          'gui/maps/shop/vehicles/360x270/R01_IS.png', 'gui/maps/shop/vehicles/360x270/R02_SU-85.png',
+                          'gui/maps/shop/vehicles/360x270/R03_BT-7.png', 'gui/maps/shop/vehicles/360x270/R04_T-34.png',
+                          'gui/maps/shop/vehicles/360x270/R04_T-34_MapsTraining_Player_MT_1.png',
                           'gui/maps/shop/vehicles/360x270/R06_T-28.png', 'gui/maps/shop/vehicles/360x270/R07_T-34-85.png',
                           'gui/maps/shop/vehicles/360x270/R08_BT-2.png', 'gui/maps/shop/vehicles/360x270/R09_T-26.png',
                           'gui/maps/shop/vehicles/360x270/R100_SU122A.png', 'gui/maps/shop/vehicles/360x270/R101_MT25.png',
@@ -928,6 +1066,7 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/360x270/R183_K_91_PT.png', 'gui/maps/shop/vehicles/360x270/R185_T_34_L_11_1941.png',
                           'gui/maps/shop/vehicles/360x270/R186_KV_1_Screened.png',
                           'gui/maps/shop/vehicles/360x270/R187_Object_590.png', 'gui/maps/shop/vehicles/360x270/R188_Object_259A.png',
+                          'gui/maps/shop/vehicles/360x270/R188_Object_259A_CN.png',
                           'gui/maps/shop/vehicles/360x270/R18_SU-152.png', 'gui/maps/shop/vehicles/360x270/R192_K_2.png',
                           'gui/maps/shop/vehicles/360x270/R193_M4A2_T_34.png', 'gui/maps/shop/vehicles/360x270/R195_T34M_54.png',
                           'gui/maps/shop/vehicles/360x270/R19_IS-3.png', 'gui/maps/shop/vehicles/360x270/R20_T-44.png',
@@ -970,17 +1109,17 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/360x270/R96_Object_430.png', 'gui/maps/shop/vehicles/360x270/R96_Object_430B.png',
                           'gui/maps/shop/vehicles/360x270/R97_Object_140.png', 'gui/maps/shop/vehicles/360x270/R97_Object_140_cl.png',
                           'gui/maps/shop/vehicles/360x270/R98_T44_85.png', 'gui/maps/shop/vehicles/360x270/R98_T44_85M.png',
-                          'gui/maps/shop/vehicles/360x270/R99_T44_122.png', 'gui/maps/shop/vehicles/360x270/S01_Strv_74_A2.png',
-                          'gui/maps/shop/vehicles/360x270/S02_Strv_M42.png', 'gui/maps/shop/vehicles/360x270/S03_Strv_M38.png',
-                          'gui/maps/shop/vehicles/360x270/S04_Lago_I.png', 'gui/maps/shop/vehicles/360x270/S05_Strv_M21_29.png',
-                          'gui/maps/shop/vehicles/360x270/S06_Ikv_90_Typ_B_Bofors.png',
+                          'gui/maps/shop/vehicles/360x270/R99_T44_122.png', 'gui/maps/shop/vehicles/360x270/R99_T44_122_CN.png',
+                          'gui/maps/shop/vehicles/360x270/S01_Strv_74_A2.png', 'gui/maps/shop/vehicles/360x270/S02_Strv_M42.png',
+                          'gui/maps/shop/vehicles/360x270/S03_Strv_M38.png', 'gui/maps/shop/vehicles/360x270/S04_Lago_I.png',
+                          'gui/maps/shop/vehicles/360x270/S05_Strv_M21_29.png', 'gui/maps/shop/vehicles/360x270/S06_Ikv_90_Typ_B_Bofors.png',
                           'gui/maps/shop/vehicles/360x270/S07_Strv_74.png', 'gui/maps/shop/vehicles/360x270/S08_Ikv_65_Alt_2.png',
                           'gui/maps/shop/vehicles/360x270/S09_L_120_TD.png', 'gui/maps/shop/vehicles/360x270/S10_Strv_103_0_Series.png',
                           'gui/maps/shop/vehicles/360x270/S10_Strv_103_0_Series_FL.png',
                           'gui/maps/shop/vehicles/360x270/S11_Strv_103B.png', 'gui/maps/shop/vehicles/360x270/S12_Strv_M40.png',
                           'gui/maps/shop/vehicles/360x270/S13_Leo.png', 'gui/maps/shop/vehicles/360x270/S14_Ikv_103.png',
-                          'gui/maps/shop/vehicles/360x270/S15_L_60.png', 'gui/maps/shop/vehicles/360x270/S16_Kranvagn.png',
-                          'gui/maps/shop/vehicles/360x270/S16_Kranvagn_bob.png',
+                          'gui/maps/shop/vehicles/360x270/S14_Ikv_103_SH.png', 'gui/maps/shop/vehicles/360x270/S15_L_60.png',
+                          'gui/maps/shop/vehicles/360x270/S16_Kranvagn.png', 'gui/maps/shop/vehicles/360x270/S16_Kranvagn_bob.png',
                           'gui/maps/shop/vehicles/360x270/S17_EMIL_1952_E2.png',
                           'gui/maps/shop/vehicles/360x270/S18_EMIL_1951_E1.png',
                           'gui/maps/shop/vehicles/360x270/S19_Sav_M43.png', 'gui/maps/shop/vehicles/360x270/S20_Ikv_72.png',
@@ -1022,7 +1161,8 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/600x450/A13_T34_hvy_FL.png', 'gui/maps/shop/vehicles/600x450/A140_ASTRON_REX_105mm.png',
                           'gui/maps/shop/vehicles/600x450/A141_M_IV_Y.png', 'gui/maps/shop/vehicles/600x450/A142_Pawlack_Tank.png',
                           'gui/maps/shop/vehicles/600x450/A143_M_V_Y.png', 'gui/maps/shop/vehicles/600x450/A144_M_VI_Y.png',
-                          'gui/maps/shop/vehicles/600x450/A147_M_II_Y.png', 'gui/maps/shop/vehicles/600x450/A148_Convertible_Medium_Tank_T3.png',
+                          'gui/maps/shop/vehicles/600x450/A145_TS_54.png', 'gui/maps/shop/vehicles/600x450/A147_M_II_Y.png',
+                          'gui/maps/shop/vehicles/600x450/A148_Convertible_Medium_Tank_T3.png',
                           'gui/maps/shop/vehicles/600x450/A149_AMBT.png', 'gui/maps/shop/vehicles/600x450/A14_T30.png',
                           'gui/maps/shop/vehicles/600x450/A14_T30_FL.png', 'gui/maps/shop/vehicles/600x450/A16_M7_Priest.png',
                           'gui/maps/shop/vehicles/600x450/A17_M37.png', 'gui/maps/shop/vehicles/600x450/A18_M41.png',
@@ -1076,7 +1216,8 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/600x450/Ch21_T34.png', 'gui/maps/shop/vehicles/600x450/Ch22_113.png',
                           'gui/maps/shop/vehicles/600x450/Ch22_113P.png', 'gui/maps/shop/vehicles/600x450/Ch22_113_Beijing_Opera.png',
                           'gui/maps/shop/vehicles/600x450/Ch23_112.png', 'gui/maps/shop/vehicles/600x450/Ch23_112_FL.png',
-                          'gui/maps/shop/vehicles/600x450/Ch24_Type64.png', 'gui/maps/shop/vehicles/600x450/Ch25_121_mod_1971B.png',
+                          'gui/maps/shop/vehicles/600x450/Ch24_Type64.png', 'gui/maps/shop/vehicles/600x450/Ch24_Type64_SH.png',
+                          'gui/maps/shop/vehicles/600x450/Ch25_121_mod_1971B.png',
                           'gui/maps/shop/vehicles/600x450/Ch26_59_Patton.png', 'gui/maps/shop/vehicles/600x450/Ch28_WZ_132A.png',
                           'gui/maps/shop/vehicles/600x450/Ch29_Type_62C_prot.png',
                           'gui/maps/shop/vehicles/600x450/Ch30_T-26G_FT.png', 'gui/maps/shop/vehicles/600x450/Ch31_M3G_FT.png',
@@ -1265,6 +1406,7 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/600x450/GB107_Cavalier_SH.png',
                           'gui/maps/shop/vehicles/600x450/GB108_A46.png', 'gui/maps/shop/vehicles/600x450/GB109_GSOR_1008.png',
                           'gui/maps/shop/vehicles/600x450/GB10_Black_Prince.png',
+                          'gui/maps/shop/vehicles/600x450/GB110_FV4201_Chieftain_Prototype.png',
                           'gui/maps/shop/vehicles/600x450/GB111_Charlemagne.png',
                           'gui/maps/shop/vehicles/600x450/GB112_Caliban.png', 'gui/maps/shop/vehicles/600x450/GB113_Matilda_LVT.png',
                           'gui/maps/shop/vehicles/600x450/GB115_Gonsalo.png', 'gui/maps/shop/vehicles/600x450/GB11_Caernarvon.png',
@@ -1352,12 +1494,13 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/600x450/Pl13_53TP_Markowskiego.png',
                           'gui/maps/shop/vehicles/600x450/Pl14_4TP.png', 'gui/maps/shop/vehicles/600x450/Pl15_60TP_Lewandowskiego.png',
                           'gui/maps/shop/vehicles/600x450/Pl16_T34_85_Rudy.png',
-                          'gui/maps/shop/vehicles/600x450/Pl17_DS_PZlnz.png', 'gui/maps/shop/vehicles/600x450/Pl18_BUGI.png',
-                          'gui/maps/shop/vehicles/600x450/Pl19_CS_52_LIS.png', 'gui/maps/shop/vehicles/600x450/Pl20_CS_44.png',
-                          'gui/maps/shop/vehicles/600x450/Pl21_CS_63.png', 'gui/maps/shop/vehicles/600x450/Pl22_CS_59.png',
-                          'gui/maps/shop/vehicles/600x450/Pl23_CS_53.png', 'gui/maps/shop/vehicles/600x450/R01_IS.png',
-                          'gui/maps/shop/vehicles/600x450/R02_SU-85.png', 'gui/maps/shop/vehicles/600x450/R03_BT-7.png',
-                          'gui/maps/shop/vehicles/600x450/R04_T-34.png', 'gui/maps/shop/vehicles/600x450/R04_T-34_MapsTraining_Player_MT_1.png',
+                          'gui/maps/shop/vehicles/600x450/Pl17_DS_PZlnz.png', 'gui/maps/shop/vehicles/600x450/Pl17_DS_PZlnz_SH.png',
+                          'gui/maps/shop/vehicles/600x450/Pl18_BUGI.png', 'gui/maps/shop/vehicles/600x450/Pl19_CS_52_LIS.png',
+                          'gui/maps/shop/vehicles/600x450/Pl20_CS_44.png', 'gui/maps/shop/vehicles/600x450/Pl21_CS_63.png',
+                          'gui/maps/shop/vehicles/600x450/Pl22_CS_59.png', 'gui/maps/shop/vehicles/600x450/Pl23_CS_53.png',
+                          'gui/maps/shop/vehicles/600x450/R01_IS.png', 'gui/maps/shop/vehicles/600x450/R02_SU-85.png',
+                          'gui/maps/shop/vehicles/600x450/R03_BT-7.png', 'gui/maps/shop/vehicles/600x450/R04_T-34.png',
+                          'gui/maps/shop/vehicles/600x450/R04_T-34_MapsTraining_Player_MT_1.png',
                           'gui/maps/shop/vehicles/600x450/R06_T-28.png', 'gui/maps/shop/vehicles/600x450/R07_T-34-85.png',
                           'gui/maps/shop/vehicles/600x450/R08_BT-2.png', 'gui/maps/shop/vehicles/600x450/R09_T-26.png',
                           'gui/maps/shop/vehicles/600x450/R100_SU122A.png', 'gui/maps/shop/vehicles/600x450/R101_MT25.png',
@@ -1412,6 +1555,7 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/600x450/R183_K_91_PT.png', 'gui/maps/shop/vehicles/600x450/R185_T_34_L_11_1941.png',
                           'gui/maps/shop/vehicles/600x450/R186_KV_1_Screened.png',
                           'gui/maps/shop/vehicles/600x450/R187_Object_590.png', 'gui/maps/shop/vehicles/600x450/R188_Object_259A.png',
+                          'gui/maps/shop/vehicles/600x450/R188_Object_259A_CN.png',
                           'gui/maps/shop/vehicles/600x450/R18_SU-152.png', 'gui/maps/shop/vehicles/600x450/R192_K_2.png',
                           'gui/maps/shop/vehicles/600x450/R193_M4A2_T_34.png', 'gui/maps/shop/vehicles/600x450/R195_T34M_54.png',
                           'gui/maps/shop/vehicles/600x450/R19_IS-3.png', 'gui/maps/shop/vehicles/600x450/R20_T-44.png',
@@ -1454,17 +1598,17 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/600x450/R96_Object_430.png', 'gui/maps/shop/vehicles/600x450/R96_Object_430B.png',
                           'gui/maps/shop/vehicles/600x450/R97_Object_140.png', 'gui/maps/shop/vehicles/600x450/R97_Object_140_cl.png',
                           'gui/maps/shop/vehicles/600x450/R98_T44_85.png', 'gui/maps/shop/vehicles/600x450/R98_T44_85M.png',
-                          'gui/maps/shop/vehicles/600x450/R99_T44_122.png', 'gui/maps/shop/vehicles/600x450/S01_Strv_74_A2.png',
-                          'gui/maps/shop/vehicles/600x450/S02_Strv_M42.png', 'gui/maps/shop/vehicles/600x450/S03_Strv_M38.png',
-                          'gui/maps/shop/vehicles/600x450/S04_Lago_I.png', 'gui/maps/shop/vehicles/600x450/S05_Strv_M21_29.png',
-                          'gui/maps/shop/vehicles/600x450/S06_Ikv_90_Typ_B_Bofors.png',
+                          'gui/maps/shop/vehicles/600x450/R99_T44_122.png', 'gui/maps/shop/vehicles/600x450/R99_T44_122_CN.png',
+                          'gui/maps/shop/vehicles/600x450/S01_Strv_74_A2.png', 'gui/maps/shop/vehicles/600x450/S02_Strv_M42.png',
+                          'gui/maps/shop/vehicles/600x450/S03_Strv_M38.png', 'gui/maps/shop/vehicles/600x450/S04_Lago_I.png',
+                          'gui/maps/shop/vehicles/600x450/S05_Strv_M21_29.png', 'gui/maps/shop/vehicles/600x450/S06_Ikv_90_Typ_B_Bofors.png',
                           'gui/maps/shop/vehicles/600x450/S07_Strv_74.png', 'gui/maps/shop/vehicles/600x450/S08_Ikv_65_Alt_2.png',
                           'gui/maps/shop/vehicles/600x450/S09_L_120_TD.png', 'gui/maps/shop/vehicles/600x450/S10_Strv_103_0_Series.png',
                           'gui/maps/shop/vehicles/600x450/S10_Strv_103_0_Series_FL.png',
                           'gui/maps/shop/vehicles/600x450/S11_Strv_103B.png', 'gui/maps/shop/vehicles/600x450/S12_Strv_M40.png',
                           'gui/maps/shop/vehicles/600x450/S13_Leo.png', 'gui/maps/shop/vehicles/600x450/S14_Ikv_103.png',
-                          'gui/maps/shop/vehicles/600x450/S15_L_60.png', 'gui/maps/shop/vehicles/600x450/S16_Kranvagn.png',
-                          'gui/maps/shop/vehicles/600x450/S16_Kranvagn_bob.png',
+                          'gui/maps/shop/vehicles/600x450/S14_Ikv_103_SH.png', 'gui/maps/shop/vehicles/600x450/S15_L_60.png',
+                          'gui/maps/shop/vehicles/600x450/S16_Kranvagn.png', 'gui/maps/shop/vehicles/600x450/S16_Kranvagn_bob.png',
                           'gui/maps/shop/vehicles/600x450/S17_EMIL_1952_E2.png',
                           'gui/maps/shop/vehicles/600x450/S18_EMIL_1951_E1.png',
                           'gui/maps/shop/vehicles/600x450/S19_Sav_M43.png', 'gui/maps/shop/vehicles/600x450/S20_Ikv_72.png',
@@ -1475,137 +1619,46 @@ class RES_SHOP_EXT(object):
                           'gui/maps/shop/vehicles/600x450/S27_UDES_16.png', 'gui/maps/shop/vehicles/600x450/S28_UDES_15_16.png',
                           'gui/maps/shop/vehicles/600x450/S29_UDES_14_5.png', 'gui/maps/shop/vehicles/600x450/S30_UDES_03_Alt_3.png',
                           'gui/maps/shop/vehicles/600x450/S31_Strv_K.png', 'gui/maps/shop/vehicles/600x450/S32_Bofors_Tornvagn.png'))
-    MODULES = frozenset(('gui/maps/shop/modules/180x135/vehicleChassis.png', 'gui/maps/shop/modules/180x135/vehicleEngine.png',
-                         'gui/maps/shop/modules/180x135/vehicleGun.png', 'gui/maps/shop/modules/180x135/vehicleRadio.png',
-                         'gui/maps/shop/modules/180x135/vehicleTurret.png', 'gui/maps/shop/modules/180x135/vehicleWheeledChassis.png',
-                         'gui/maps/shop/modules/360x270/vehicleChassis.png', 'gui/maps/shop/modules/360x270/vehicleEngine.png',
-                         'gui/maps/shop/modules/360x270/vehicleGun.png', 'gui/maps/shop/modules/360x270/vehicleRadio.png',
-                         'gui/maps/shop/modules/360x270/vehicleTurret.png', 'gui/maps/shop/modules/360x270/vehicleWheeledChassis.png',
-                         'gui/maps/shop/modules/600x450/vehicleChassis.png', 'gui/maps/shop/modules/600x450/vehicleEngine.png',
-                         'gui/maps/shop/modules/600x450/vehicleGun.png', 'gui/maps/shop/modules/600x450/vehicleRadio.png',
-                         'gui/maps/shop/modules/600x450/vehicleTurret.png', 'gui/maps/shop/modules/600x450/vehicleWheeledChassis.png'))
-    CURRENCY = frozenset(('gui/maps/shop/currency/180x135/bon.png', 'gui/maps/shop/currency/180x135/credits.png',
-                          'gui/maps/shop/currency/180x135/freeXP.png', 'gui/maps/shop/currency/180x135/gold.png'))
-    BOOSTERS = frozenset(('gui/maps/shop/boosters/180x135/booster_credits.png', 'gui/maps/shop/boosters/180x135/booster_crew_xp.png',
-                          'gui/maps/shop/boosters/180x135/booster_fl_xp.png', 'gui/maps/shop/boosters/180x135/booster_free_xp.png',
-                          'gui/maps/shop/boosters/180x135/booster_xp.png', 'gui/maps/shop/boosters/360x270/booster_credits.png',
-                          'gui/maps/shop/boosters/360x270/booster_crew_xp.png', 'gui/maps/shop/boosters/360x270/booster_fl_xp.png',
-                          'gui/maps/shop/boosters/360x270/booster_free_xp.png', 'gui/maps/shop/boosters/360x270/booster_xp.png',
-                          'gui/maps/shop/boosters/600x450/booster_credits.png', 'gui/maps/shop/boosters/600x450/booster_crew_xp.png',
-                          'gui/maps/shop/boosters/600x450/booster_fl_xp.png', 'gui/maps/shop/boosters/600x450/booster_free_xp.png',
-                          'gui/maps/shop/boosters/600x450/booster_xp.png'))
-    CUSTOMIZATION = frozenset(('gui/maps/shop/customization/180x135/camo.png', 'gui/maps/shop/customization/180x135/style.png',
-                               'gui/maps/shop/customization/styles/180x135/348.png',
-                               'gui/maps/shop/customization/styles/180x135/349.png',
-                               'gui/maps/shop/customization/styles/360x270/348.png',
-                               'gui/maps/shop/customization/styles/360x270/349.png',
-                               'gui/maps/shop/customization/styles/600x450/348.png',
-                               'gui/maps/shop/customization/styles/600x450/349.png'))
-    ARTEFACTS = frozenset(('gui/maps/shop/artefacts/180x135/additionalInvisibilityDevice.png',
-                           'gui/maps/shop/artefacts/180x135/aimingStabilizer.png',
-                           'gui/maps/shop/artefacts/180x135/antifragmentationLining.png',
-                           'gui/maps/shop/artefacts/180x135/autoExtinguishers.png',
-                           'gui/maps/shop/artefacts/180x135/battleBoosterReplace_overlay.png',
-                           'gui/maps/shop/artefacts/180x135/battleBooster_overlay.png',
-                           'gui/maps/shop/artefacts/180x135/builtInEquipment_overlay.png',
-                           'gui/maps/shop/artefacts/180x135/camouflage.png', 'gui/maps/shop/artefacts/180x135/camouflageNet.png',
-                           'gui/maps/shop/artefacts/180x135/chocolate.png', 'gui/maps/shop/artefacts/180x135/coatedOptics.png',
-                           'gui/maps/shop/artefacts/180x135/cocacola.png', 'gui/maps/shop/artefacts/180x135/commandersView.png',
-                           'gui/maps/shop/artefacts/180x135/commander_sixthSense.png',
-                           'gui/maps/shop/artefacts/180x135/driver_smoothDriving.png',
-                           'gui/maps/shop/artefacts/180x135/driver_virtuoso.png',
-                           'gui/maps/shop/artefacts/180x135/enhancedAimDrives.png',
-                           'gui/maps/shop/artefacts/180x135/equipmentPlus_overlay.png',
-                           'gui/maps/shop/artefacts/180x135/equipmentTrophyBasic_overlay.png',
-                           'gui/maps/shop/artefacts/180x135/equipmentTrophyUpgraded_overlay.png',
-                           'gui/maps/shop/artefacts/180x135/extraHealthReserve.png',
-                           'gui/maps/shop/artefacts/180x135/fireFighting.png', 'gui/maps/shop/artefacts/180x135/gasoline100.png',
-                           'gui/maps/shop/artefacts/180x135/gasoline105.png', 'gui/maps/shop/artefacts/180x135/grousers.png',
-                           'gui/maps/shop/artefacts/180x135/gunner_rancorous.png',
-                           'gui/maps/shop/artefacts/180x135/gunner_smoothTurret.png',
-                           'gui/maps/shop/artefacts/180x135/handExtinguishers.png',
-                           'gui/maps/shop/artefacts/180x135/hotCoffee.png', 'gui/maps/shop/artefacts/180x135/improvedConfiguration.png',
-                           'gui/maps/shop/artefacts/180x135/improvedRadioCommunication.png',
-                           'gui/maps/shop/artefacts/180x135/improvedRotationMechanism.png',
-                           'gui/maps/shop/artefacts/180x135/improvedSights.png',
-                           'gui/maps/shop/artefacts/180x135/improvedVentilation.png',
-                           'gui/maps/shop/artefacts/180x135/largeMedkit.png', 'gui/maps/shop/artefacts/180x135/largeRepairkit.png',
-                           'gui/maps/shop/artefacts/180x135/lendLeaseOil.png', 'gui/maps/shop/artefacts/180x135/loader_pedant.png',
-                           'gui/maps/shop/artefacts/180x135/naturalCover.png', 'gui/maps/shop/artefacts/180x135/qualityOil.png',
-                           'gui/maps/shop/artefacts/180x135/radioman_lastEffort.png',
-                           'gui/maps/shop/artefacts/180x135/rammer.png', 'gui/maps/shop/artefacts/180x135/ration.png',
-                           'gui/maps/shop/artefacts/180x135/ration_china.png', 'gui/maps/shop/artefacts/180x135/ration_czech.png',
-                           'gui/maps/shop/artefacts/180x135/ration_italy.png', 'gui/maps/shop/artefacts/180x135/ration_japan.png',
-                           'gui/maps/shop/artefacts/180x135/ration_poland.png', 'gui/maps/shop/artefacts/180x135/ration_sweden.png',
-                           'gui/maps/shop/artefacts/180x135/ration_uk.png', 'gui/maps/shop/artefacts/180x135/removedRpmLimiter.png',
-                           'gui/maps/shop/artefacts/180x135/smallMedkit.png', 'gui/maps/shop/artefacts/180x135/smallRepairkit.png',
-                           'gui/maps/shop/artefacts/180x135/stereoscope.png', 'gui/maps/shop/artefacts/180x135/turbocharger.png',
-                           'gui/maps/shop/artefacts/360x270/additionalInvisibilityDevice.png',
-                           'gui/maps/shop/artefacts/360x270/aimingStabilizer.png',
-                           'gui/maps/shop/artefacts/360x270/antifragmentationLining.png',
-                           'gui/maps/shop/artefacts/360x270/autoExtinguishers.png',
-                           'gui/maps/shop/artefacts/360x270/camouflage.png', 'gui/maps/shop/artefacts/360x270/camouflageNet.png',
-                           'gui/maps/shop/artefacts/360x270/chocolate.png', 'gui/maps/shop/artefacts/360x270/coatedOptics.png',
-                           'gui/maps/shop/artefacts/360x270/cocacola.png', 'gui/maps/shop/artefacts/360x270/commandersView.png',
-                           'gui/maps/shop/artefacts/360x270/commander_sixthSense.png',
-                           'gui/maps/shop/artefacts/360x270/driver_smoothDriving.png',
-                           'gui/maps/shop/artefacts/360x270/driver_virtuoso.png',
-                           'gui/maps/shop/artefacts/360x270/enhancedAimDrives.png',
-                           'gui/maps/shop/artefacts/360x270/extraHealthReserve.png',
-                           'gui/maps/shop/artefacts/360x270/fireFighting.png', 'gui/maps/shop/artefacts/360x270/gasoline100.png',
-                           'gui/maps/shop/artefacts/360x270/gasoline105.png', 'gui/maps/shop/artefacts/360x270/grousers.png',
-                           'gui/maps/shop/artefacts/360x270/gunner_rancorous.png',
-                           'gui/maps/shop/artefacts/360x270/gunner_smoothTurret.png',
-                           'gui/maps/shop/artefacts/360x270/handExtinguishers.png',
-                           'gui/maps/shop/artefacts/360x270/hotCoffee.png', 'gui/maps/shop/artefacts/360x270/improvedConfiguration.png',
-                           'gui/maps/shop/artefacts/360x270/improvedRadioCommunication.png',
-                           'gui/maps/shop/artefacts/360x270/improvedRotationMechanism.png',
-                           'gui/maps/shop/artefacts/360x270/improvedSights.png',
-                           'gui/maps/shop/artefacts/360x270/improvedVentilation.png',
-                           'gui/maps/shop/artefacts/360x270/largeMedkit.png', 'gui/maps/shop/artefacts/360x270/largeRepairkit.png',
-                           'gui/maps/shop/artefacts/360x270/lendLeaseOil.png', 'gui/maps/shop/artefacts/360x270/loader_pedant.png',
-                           'gui/maps/shop/artefacts/360x270/naturalCover.png', 'gui/maps/shop/artefacts/360x270/qualityOil.png',
-                           'gui/maps/shop/artefacts/360x270/radioman_lastEffort.png',
-                           'gui/maps/shop/artefacts/360x270/rammer.png', 'gui/maps/shop/artefacts/360x270/ration.png',
-                           'gui/maps/shop/artefacts/360x270/ration_china.png', 'gui/maps/shop/artefacts/360x270/ration_czech.png',
-                           'gui/maps/shop/artefacts/360x270/ration_italy.png', 'gui/maps/shop/artefacts/360x270/ration_japan.png',
-                           'gui/maps/shop/artefacts/360x270/ration_poland.png', 'gui/maps/shop/artefacts/360x270/ration_sweden.png',
-                           'gui/maps/shop/artefacts/360x270/ration_uk.png', 'gui/maps/shop/artefacts/360x270/removedRpmLimiter.png',
-                           'gui/maps/shop/artefacts/360x270/smallMedkit.png', 'gui/maps/shop/artefacts/360x270/smallRepairkit.png',
-                           'gui/maps/shop/artefacts/360x270/stereoscope.png', 'gui/maps/shop/artefacts/360x270/turbocharger.png',
-                           'gui/maps/shop/artefacts/600x450/additionalInvisibilityDevice.png',
-                           'gui/maps/shop/artefacts/600x450/aimingStabilizer.png',
-                           'gui/maps/shop/artefacts/600x450/antifragmentationLining.png',
-                           'gui/maps/shop/artefacts/600x450/autoExtinguishers.png',
-                           'gui/maps/shop/artefacts/600x450/camouflage.png', 'gui/maps/shop/artefacts/600x450/camouflageNet.png',
-                           'gui/maps/shop/artefacts/600x450/chocolate.png', 'gui/maps/shop/artefacts/600x450/coatedOptics.png',
-                           'gui/maps/shop/artefacts/600x450/cocacola.png', 'gui/maps/shop/artefacts/600x450/commandersView.png',
-                           'gui/maps/shop/artefacts/600x450/commander_sixthSense.png',
-                           'gui/maps/shop/artefacts/600x450/driver_smoothDriving.png',
-                           'gui/maps/shop/artefacts/600x450/driver_virtuoso.png',
-                           'gui/maps/shop/artefacts/600x450/enhancedAimDrives.png',
-                           'gui/maps/shop/artefacts/600x450/extraHealthReserve.png',
-                           'gui/maps/shop/artefacts/600x450/fireFighting.png', 'gui/maps/shop/artefacts/600x450/gasoline100.png',
-                           'gui/maps/shop/artefacts/600x450/gasoline105.png', 'gui/maps/shop/artefacts/600x450/grousers.png',
-                           'gui/maps/shop/artefacts/600x450/gunner_rancorous.png',
-                           'gui/maps/shop/artefacts/600x450/gunner_smoothTurret.png',
-                           'gui/maps/shop/artefacts/600x450/handExtinguishers.png',
-                           'gui/maps/shop/artefacts/600x450/hotCoffee.png', 'gui/maps/shop/artefacts/600x450/improvedConfiguration.png',
-                           'gui/maps/shop/artefacts/600x450/improvedRadioCommunication.png',
-                           'gui/maps/shop/artefacts/600x450/improvedRotationMechanism.png',
-                           'gui/maps/shop/artefacts/600x450/improvedSights.png',
-                           'gui/maps/shop/artefacts/600x450/improvedVentilation.png',
-                           'gui/maps/shop/artefacts/600x450/largeMedkit.png', 'gui/maps/shop/artefacts/600x450/largeRepairkit.png',
-                           'gui/maps/shop/artefacts/600x450/lendLeaseOil.png', 'gui/maps/shop/artefacts/600x450/loader_pedant.png',
-                           'gui/maps/shop/artefacts/600x450/naturalCover.png', 'gui/maps/shop/artefacts/600x450/qualityOil.png',
-                           'gui/maps/shop/artefacts/600x450/radioman_lastEffort.png',
-                           'gui/maps/shop/artefacts/600x450/rammer.png', 'gui/maps/shop/artefacts/600x450/ration.png',
-                           'gui/maps/shop/artefacts/600x450/ration_china.png', 'gui/maps/shop/artefacts/600x450/ration_czech.png',
-                           'gui/maps/shop/artefacts/600x450/ration_italy.png', 'gui/maps/shop/artefacts/600x450/ration_japan.png',
-                           'gui/maps/shop/artefacts/600x450/ration_poland.png', 'gui/maps/shop/artefacts/600x450/ration_sweden.png',
-                           'gui/maps/shop/artefacts/600x450/ration_uk.png', 'gui/maps/shop/artefacts/600x450/removedRpmLimiter.png',
-                           'gui/maps/shop/artefacts/600x450/smallMedkit.png', 'gui/maps/shop/artefacts/600x450/smallRepairkit.png',
-                           'gui/maps/shop/artefacts/600x450/stereoscope.png', 'gui/maps/shop/artefacts/600x450/turbocharger.png'))
+
+    @classmethod
+    def getArtefactIcon(cls, size, name):
+        path = ('gui/maps/shop/artefacts/{}/{}.png').format(size, name)
+        if path in cls.ARTEFACTS:
+            return path
+        else:
+            return
+
+    @classmethod
+    def getBoosterIcon(cls, size, name):
+        path = ('gui/maps/shop/boosters/{}/{}.png').format(size, name)
+        if path in cls.BOOSTERS:
+            return path
+        else:
+            return
+
+    @classmethod
+    def getCurrencIcon(cls, size, name):
+        path = ('gui/maps/shop/currency/{}/{}.png').format(size, name)
+        if path in cls.CURRENCY:
+            return path
+        else:
+            return
+
+    @classmethod
+    def getCustomizatioIcon(cls, size, name):
+        path = ('gui/maps/shop/customization/{}/{}.png').format(size, name)
+        if path in cls.CUSTOMIZATION:
+            return path
+        else:
+            return
+
+    @classmethod
+    def getModuleIcon(cls, size, name):
+        path = ('gui/maps/shop/modules/{}/{}.png').format(size, name)
+        if path in cls.MODULES:
+            return path
+        else:
+            return
 
     @classmethod
     def getPremiuIcon(cls, size, name):
@@ -1627,46 +1680,6 @@ class RES_SHOP_EXT(object):
     def getVehicleIcon(cls, size, name):
         path = ('gui/maps/shop/vehicles/{}/{}.png').format(size, name)
         if path in cls.VEHICLES:
-            return path
-        else:
-            return
-
-    @classmethod
-    def getModuleIcon(cls, size, name):
-        path = ('gui/maps/shop/modules/{}/{}.png').format(size, name)
-        if path in cls.MODULES:
-            return path
-        else:
-            return
-
-    @classmethod
-    def getCurrencIcon(cls, size, name):
-        path = ('gui/maps/shop/currency/{}/{}.png').format(size, name)
-        if path in cls.CURRENCY:
-            return path
-        else:
-            return
-
-    @classmethod
-    def getBoosterIcon(cls, size, name):
-        path = ('gui/maps/shop/boosters/{}/{}.png').format(size, name)
-        if path in cls.BOOSTERS:
-            return path
-        else:
-            return
-
-    @classmethod
-    def getCustomizatioIcon(cls, size, name):
-        path = ('gui/maps/shop/customization/{}/{}.png').format(size, name)
-        if path in cls.CUSTOMIZATION:
-            return path
-        else:
-            return
-
-    @classmethod
-    def getArtefactIcon(cls, size, name):
-        path = ('gui/maps/shop/artefacts/{}/{}.png').format(size, name)
-        if path in cls.ARTEFACTS:
             return path
         else:
             return

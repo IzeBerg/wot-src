@@ -143,13 +143,13 @@ package
       
       public static const INVITES_NOTE_CHANGE_AND_LEAVE_PREBATTLE_EPIC_TRAINING:String = "#invites:invites/note/change_and_leave/PREBATTLE_EPIC_TRAINING";
       
-      public static const INVITES_NOTE_LEAVE_QUEUE_MAPS_TRAINING:String = "#invites:invites/note/leave/QUEUE_MAPS_TRAINING";
-      
-      public static const INVITES_NOTE_CHANGE_AND_LEAVE_QUEUE_MAPS_TRAINING:String = "#invites:invites/note/change_and_leave/QUEUE_MAPS_TRAINING";
-      
       public static const INVITES_NOTE_LEAVE_PREBATTLE_RTS_TRAINING:String = "#invites:invites/note/leave/PREBATTLE_RTS_TRAINING";
       
       public static const INVITES_NOTE_CHANGE_AND_LEAVE_PREBATTLE_RTS_TRAINING:String = "#invites:invites/note/change_and_leave/PREBATTLE_RTS_TRAINING";
+      
+      public static const INVITES_NOTE_LEAVE_QUEUE_MAPS_TRAINING:String = "#invites:invites/note/leave/QUEUE_MAPS_TRAINING";
+      
+      public static const INVITES_NOTE_CHANGE_AND_LEAVE_QUEUE_MAPS_TRAINING:String = "#invites:invites/note/change_and_leave/QUEUE_MAPS_TRAINING";
       
       public static const INVITES_NOTE_LEAVE_PREBATTLE_UNIT:String = "#invites:invites/note/leave/PREBATTLE_UNIT";
       

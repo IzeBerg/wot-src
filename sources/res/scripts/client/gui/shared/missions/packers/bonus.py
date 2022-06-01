@@ -74,7 +74,8 @@ def getDefaultBonusPackersMap():
        Currency.GOLD: simpleBonusPacker, 
        Currency.BPCOIN: simpleBonusPacker, 
        constants.PREMIUM_ENTITLEMENTS.BASIC: simpleBonusPacker, 
-       constants.PREMIUM_ENTITLEMENTS.PLUS: simpleBonusPacker}
+       constants.PREMIUM_ENTITLEMENTS.PLUS: simpleBonusPacker, 
+       'dragonBoatPoints': simpleBonusPacker}
 
 
 def getLocalizedBonusName(name):
@@ -841,26 +842,17 @@ def getDefaultBonusPacker():
 
 def packBonusModelAndTooltipData(bonuses, packer, model, tooltipData=None):
     bonusIndexTotal = 0
-    if tooltipData is not None:
-        bonusIndexTotal = len(tooltipData)
+    bonusTooltipList = []
     for bonus in bonuses:
         if bonus.isShowInGUI():
             bonusList = packer.pack(bonus)
-            bonusTooltipList = []
-            bonusContentIdList = []
             if bonusList and tooltipData is not None:
                 bonusTooltipList = packer.getToolTip(bonus)
-                bonusContentIdList = packer.getContentId(bonus)
             for bonusIndex, item in enumerate(bonusList):
                 item.setIndex(bonusIndexTotal)
                 model.addViewModel(item)
                 if tooltipData is not None:
-                    tooltipIdx = str(bonusIndexTotal)
-                    item.setTooltipId(tooltipIdx)
-                    if bonusTooltipList:
-                        tooltipData[bonusIndexTotal] = bonusTooltipList[bonusIndex]
-                    if bonusContentIdList:
-                        item.setTooltipContentId(str(bonusContentIdList[bonusIndex]))
+                    tooltipData[bonusIndexTotal] = bonusTooltipList[bonusIndex]
                 bonusIndexTotal += 1
 
     return

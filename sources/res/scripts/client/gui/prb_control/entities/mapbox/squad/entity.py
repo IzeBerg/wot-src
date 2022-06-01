@@ -14,6 +14,7 @@ from gui.prb_control.entities.mapbox.squad.action_handler import MapboxSquadActi
 from gui.prb_control.entities.mapbox.scheduler import MapboxScheduler
 from gui.shared.gui_items.Vehicle import VEHICLE_CLASS_NAME
 from helpers import dependency
+from skeletons.gui.game_control import IMapboxController
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.lobby_context import ILobbyContext
 
@@ -32,12 +33,14 @@ class MapboxSquadEntryPoint(SquadEntryPoint):
 class MapboxSquadEntity(SquadEntity):
     __eventsCache = dependency.descriptor(IEventsCache)
     __lobbyContext = dependency.descriptor(ILobbyContext)
+    __mapboxCtrl = dependency.descriptor(IMapboxController)
 
     def __init__(self):
         self._isBalancedSquad = False
         self._isUseSPGValidateRule = True
         self.__watcher = None
         self.__restrictedSPGDataProvider = RestrictedSPGDataProvider()
+        self.storage = prequeue_storage_getter(QUEUE_TYPE.MAPBOX)()
         super(MapboxSquadEntity, self).__init__(FUNCTIONAL_FLAG.MAPBOX, PREBATTLE_TYPE.MAPBOX)
         return
 
@@ -90,9 +93,11 @@ class MapboxSquadEntity(SquadEntity):
     def getCurrentSPGCount(self):
         return self.__restrictedSPGDataProvider.getCurrentVheiclesOfClassCount()
 
-    @prequeue_storage_getter(QUEUE_TYPE.MAPBOX)
-    def storage(self):
-        return
+    def getConfirmDialogMeta(self, ctx):
+        if not self.__mapboxCtrl.isActive():
+            return None
+        else:
+            return super(MapboxSquadEntity, self).getConfirmDialogMeta(ctx)
 
     def unit_onUnitVehiclesChanged(self, dbID, vehicles):
         super(MapboxSquadEntity, self).unit_onUnitVehiclesChanged(dbID, vehicles)
@@ -118,6 +123,9 @@ class MapboxSquadEntity(SquadEntity):
     def _createActionsValidator(self):
         return MapboxSquadActionsValidator(self)
 
+    def _createScheduler(self):
+        return MapboxScheduler(self)
+
     def _vehicleStateCondition(self, v):
         if self._isUseSPGValidateRule and v.type == VEHICLE_CLASS_NAME.SPG:
             return self.__restrictedSPGDataProvider.isVehcleOfClassAvailable()
@@ -127,9 +135,6 @@ class MapboxSquadEntity(SquadEntity):
         self.invalidateVehicleStates()
         self._switchActionsValidator()
         self.unit_onUnitRosterChanged()
-        if self.__watcher is not None:
-            self.__watcher.updateValidLevels(self.__lobbyContext.getServerSettings().mapbox.levels)
-        return
 
     def _onInventoryVehiclesUpdated(self, diff):
         self.invalidateVehicleStates()
@@ -138,6 +143,3 @@ class MapboxSquadEntity(SquadEntity):
         self.invalidateVehicleStates()
         if accoundDbID != account_helpers.getAccountDatabaseID():
             self.unit_onUnitRosterChanged()
-
-    def _createScheduler(self):
-        return MapboxScheduler(self)

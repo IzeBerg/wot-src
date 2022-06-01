@@ -223,6 +223,13 @@
 			<undamaged>vehicles/american/A40_T95/normal/lod0/Hull.model</undamaged>
 			<destroyed>vehicles/american/A40_T95/crash/lod0/Hull.model</destroyed>
 			<exploded>vehicles/american/A40_T95/crash/lod0/Hull.model</exploded>
+			<sets>
+				<A40_T95_SC_3DSt>
+					<undamaged>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/normal/lod0/Hull.model</undamaged>
+					<destroyed>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/crash/lod0/Hull.model</destroyed>
+					<exploded>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/crash/lod0/Hull.model</exploded>
+				</A40_T95_SC_3DSt>
+			</sets>
 		</models>
 		<swinging>
 			<lodDist>FAR</lodDist>
@@ -3338,8 +3345,29 @@
 				<hiddenForUser>true</hiddenForUser>
 				<showOn>4112</showOn>
 				<clipAngle>0.390615</clipAngle>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15133</slotId>
+				<compatibleModels>A40_T95_SC_3DSt</compatibleModels>
+				<tags>formfactor_rect1x2 direction_left_to_right</tags>
+				<position>
+					-1.73 1.671 -0.904
+					<!--BW_String-->
+				</position>
+				<rotation>
+					2.616 1.569 0.000
+					<!--BW_String-->
+				</rotation>
+				<scale>
+					2.832 0.523 2.832
+					<!--BW_String-->
+				</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>4112</showOn>
+				<clipAngle>0.390615</clipAngle>
 				<anchorShift>
-					1.16768
+					0.07
 					<!--BW_String-->
 				</anchorShift>
 			</slot>
@@ -3405,6 +3433,13 @@
 				<undamaged>vehicles/american/A40_T95/normal/lod0/Chassis.model</undamaged>
 				<destroyed>vehicles/american/A40_T95/crash/lod0/Chassis.model</destroyed>
 				<exploded>vehicles/american/A40_T95/crash/lod0/Chassis.model</exploded>
+				<sets>
+					<A40_T95_SC_3DSt>
+						<undamaged>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/crash/lod0/Chassis.model</exploded>
+					</A40_T95_SC_3DSt>
+				</sets>
 			</models>
 			<traces>
 				<lodDist>FAR</lodDist>
@@ -6894,6 +6929,13 @@
 				<undamaged>vehicles/american/A40_T95/normal/lod0/Chassis.model</undamaged>
 				<destroyed>vehicles/american/A40_T95/crash/lod0/Chassis.model</destroyed>
 				<exploded>vehicles/american/A40_T95/crash/lod0/Chassis.model</exploded>
+				<sets>
+					<A40_T95_SC_3DSt>
+						<undamaged>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/crash/lod0/Chassis.model</exploded>
+					</A40_T95_SC_3DSt>
+				</sets>
 			</models>
 			<traces>
 				<lodDist>FAR</lodDist>
@@ -10447,6 +10489,13 @@
 						<undamaged>vehicles/american/A40_T95/normal/lod0/Gun_01.model</undamaged>
 						<destroyed>vehicles/american/A40_T95/crash/lod0/Gun_01.model</destroyed>
 						<exploded>vehicles/american/A40_T95/crash/lod0/Gun_01.model</exploded>
+						<sets>
+							<A40_T95_SC_3DSt>
+								<undamaged>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/normal/lod0/Gun_01.model</undamaged>
+								<destroyed>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/crash/lod0/Gun_01.model</destroyed>
+								<exploded>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/crash/lod0/Gun_01.model</exploded>
+							</A40_T95_SC_3DSt>
+						</sets>
 					</models>
 					<hitTester>
 						<collisionModelServer>vehicles/american/A40_T95/collision/Gun_01.model</collisionModelServer>
@@ -10595,6 +10644,13 @@
 						<undamaged>vehicles/american/A40_T95/normal/lod0/Gun_02.model</undamaged>
 						<destroyed>vehicles/american/A40_T95/crash/lod0/Gun_02.model</destroyed>
 						<exploded>vehicles/american/A40_T95/crash/lod0/Gun_02.model</exploded>
+						<sets>
+							<A40_T95_SC_3DSt>
+								<undamaged>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/normal/lod0/Gun_02.model</undamaged>
+								<destroyed>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/crash/lod0/Gun_02.model</destroyed>
+								<exploded>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/crash/lod0/Gun_02.model</exploded>
+							</A40_T95_SC_3DSt>
+						</sets>
 					</models>
 					<hitTester>
 						<collisionModelServer>vehicles/american/A40_T95/collision/Gun_02.model</collisionModelServer>
@@ -10733,6 +10789,13 @@
 						<undamaged>vehicles/american/A40_T95/normal/lod0/Gun_03.model</undamaged>
 						<destroyed>vehicles/american/A40_T95/crash/lod0/Gun_03.model</destroyed>
 						<exploded>vehicles/american/A40_T95/crash/lod0/Gun_03.model</exploded>
+						<sets>
+							<A40_T95_SC_3DSt>
+								<undamaged>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/normal/lod0/Gun_03.model</undamaged>
+								<destroyed>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/crash/lod0/Gun_03.model</destroyed>
+								<exploded>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/crash/lod0/Gun_03.model</exploded>
+							</A40_T95_SC_3DSt>
+						</sets>
 					</models>
 					<hitTester>
 						<collisionModelServer>vehicles/american/A40_T95/collision/Gun_03.model</collisionModelServer>
@@ -10822,6 +10885,13 @@
 				<undamaged>vehicles/american/A40_T95/normal/lod0/Turret_01.model</undamaged>
 				<destroyed>vehicles/american/A40_T95/crash/lod0/Turret_01.model</destroyed>
 				<exploded>vehicles/american/A40_T95/crash/lod0/Turret_01.model</exploded>
+				<sets>
+					<A40_T95_SC_3DSt>
+						<undamaged>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/normal/lod0/Turret_01.model</undamaged>
+						<destroyed>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/crash/lod0/Turret_01.model</destroyed>
+						<exploded>vehicles/american/A40_T95/_skins/A40_T95_SC_3DSt/crash/lod0/Turret_01.model</exploded>
+					</A40_T95_SC_3DSt>
+				</sets>
 			</models>
 			<hitTester>
 				<collisionModelServer>vehicles/american/A40_T95/collision/Turret_01.model</collisionModelServer>

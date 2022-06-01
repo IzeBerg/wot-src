@@ -240,7 +240,7 @@ msgid "client/errors/commandInCooldown/suspendedText"
 msgstr "Сообщение заморожено на %s c."
 
 msgid "client/information/addToFriends/message"
-msgstr "Пользователь %s добавлен в группу «Друзья»."
+msgstr "Запрос на добавление в группу «Друзья» игрока %s сохранён."
 
 msgid "client/information/addToIgnored/message"
 msgstr ""
@@ -254,7 +254,7 @@ msgid "client/information/emptySearchResult/message"
 msgstr "Поиск не дал результатов."
 
 msgid "client/information/removeFromFriends/message"
-msgstr "Пользователь %s удалён из группы «Друзья»."
+msgstr "Запрос на удаление из группы «Друзья» игрока %s сохранён."
 
 msgid "client/information/removeFromIgnored/message"
 msgstr ""
@@ -863,9 +863,6 @@ msgstr "Найти контакты"
 msgid "dialogs/serviceChannel/title"
 msgstr "Служебный канал"
 
-msgid "dialogs/simpleSquad/battleRoyale/VehicleRestriction"
-msgstr "Выберите специальную машину"
-
 msgid "dialogs/simpleSquad/epicBattle/VehicleRestriction"
 msgstr "Выберите машину VIII уровня"
 
@@ -1238,11 +1235,17 @@ msgstr "Добавлен компонент"
 msgid "platformCurrencyMsg/debited/bpbit"
 msgstr "Списано очков Боевого пропуска"
 
+msgid "platformCurrencyMsg/debited/brcoin"
+msgstr "Списано стальных печатей"
+
 msgid "platformCurrencyMsg/debited/sacoin"
 msgstr "Списано жетонов за выслугу лет"
 
 msgid "platformCurrencyMsg/received/bpbit"
 msgstr "Начислено очков Боевого пропуска"
+
+msgid "platformCurrencyMsg/received/brcoin"
+msgstr "Начислено стальных печатей"
 
 msgid "platformCurrencyMsg/received/sacoin"
 msgstr "Добавлено жетонов за выслугу лет"
@@ -1489,6 +1492,9 @@ msgstr ""
 msgid "serviceChannelMessages/BRbattleResults/battlePass"
 msgstr "Получено очков Боевого пропуска: %(pointsDiff)s"
 
+msgid "serviceChannelMessages/BRbattleResults/battleRoyaleBrCoin"
+msgstr "Получено стальных печатей: %(value)s"
+
 msgid "serviceChannelMessages/BRbattleResults/ended"
 msgstr "Машина уничтожена"
 
@@ -1500,20 +1506,6 @@ msgstr "Получено очков"
 
 msgid "serviceChannelMessages/BRbattleResults/victory"
 msgstr "Победа"
-
-msgid "serviceChannelMessages/RTS/passAccured"
-msgstr "Вы провели бой за Стратега, не потратив рапорта."
-
-msgid "serviceChannelMessages/RTS/rts1x1CurrencyDebited"
-msgstr "Списано приказов для игры за Стратега 1х1: %(count)s"
-
-msgid "serviceChannelMessages/RTS/rts1x7CurrencyDebited"
-msgstr "Списано рапортов для игры за Стратега 1х7: %(count)s"
-
-msgid "serviceChannelMessages/RTS/rts1x7PassDebited"
-msgstr ""
-"Сейчас вы можете сразиться за Стратега бесплатно В дальнейшем для этого "
-"понадобятся рапорты и приказы, которые можно получить, играя за Танкистов."
 
 msgid "serviceChannelMessages/achievementReceived/message"
 msgstr "Достижения"
@@ -1756,6 +1748,9 @@ msgstr "Начислена награда"
 
 msgid "serviceChannelMessages/battlePassReward/tman"
 msgstr "Член экипажа:"
+
+msgid "serviceChannelMessages/battleResults/DBPoints"
+msgstr "Получено очков Фестиваля драконьих лодок"
 
 msgid "serviceChannelMessages/battleResults/achieves"
 msgstr "Достижения в бою"
@@ -2736,8 +2731,8 @@ msgstr "Произошла ошибка при выборе наград. Пож
 
 msgid "serviceChannelMessages/mapbox/eventEnded/text"
 msgstr ""
-"Событие «Разведка боем» завершено. Награды, которые вы не забрали во время "
-"события, начислены на ваш аккаунт:"
+"Событие «Разведка боем» завершено. Благодарим за ваш вклад в разработку "
+"новых карт."
 
 msgid "serviceChannelMessages/mapbox/eventEndedNoRewards"
 msgstr ""
@@ -2747,9 +2742,9 @@ msgstr ""
 
 msgid "serviceChannelMessages/mapbox/eventStarted"
 msgstr ""
-"Событие «Разведка боем» началось.\n"
+"Событие «Разведка боем» началось\n"
 "\n"
-"Играйте на разрабатываемых картах, выбирайте лучшую и получайте награды!"
+"Играйте на разрабатываемых картах на технике VIII–X уровней, делитесь своим мнением в опросах и получайте награды!"
 
 msgid "serviceChannelMessages/mapbox/progressionFinalRewardReceived"
 msgstr "Финальная награда:"
@@ -2768,9 +2763,6 @@ msgstr "Доступен опрос"
 
 msgid "serviceChannelMessages/mapbox/surveyAvailable/singleMap"
 msgstr "Вы можете пройти опрос о карте %(mapName)s в режиме «Разведка боем»."
-
-msgid "serviceChannelMessages/mapbox/surveyRequest"
-msgstr "Не забудьте поделиться своими впечатлениями в опросах."
 
 msgid "serviceChannelMessages/multiplier"
 msgstr " (x%(count)s)"

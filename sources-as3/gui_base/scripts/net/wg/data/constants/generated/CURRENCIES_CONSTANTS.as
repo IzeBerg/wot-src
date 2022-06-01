@@ -17,6 +17,8 @@ package net.wg.data.constants.generated
       
       public static const FREE_XP:String = "freeXP";
       
+      public static const BRCOIN:String = "brcoin";
+      
       public static const ERROR:String = "error";
       
       public static const SINGAPORE_ALTERNATIVE_CURRENCIES_SET:Array = [GOLD,CREDITS];

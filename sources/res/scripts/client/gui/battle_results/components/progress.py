@@ -4,7 +4,7 @@ import typing, BigWorld, personal_missions
 from battle_pass_common import BattlePassConsts
 from constants import EVENT_TYPE
 from dog_tags_common.components_config import componentConfigAdapter as cca
-from gui.Scaleform.daapi.view.common.battle_royale.br_helpers import currentHangarIsSteelHunter
+from gui.Scaleform.daapi.view.common.battle_royale.br_helpers import currentHangarIsBattleRoyale
 from gui.Scaleform.daapi.view.lobby.customization.progression_helpers import getC11nProgressionLinkBtnParams, getProgressionPostBattleInfo, parseEventID
 from gui.Scaleform.daapi.view.lobby.server_events.awards_formatters import BattlePassTextBonusesPacker
 from gui.Scaleform.daapi.view.lobby.server_events.events_helpers import getEventPostBattleInfo
@@ -32,6 +32,7 @@ from gui.shared.money import Currency
 from helpers import dependency
 from helpers.i18n import makeString as _ms
 from items.components.crew_skins_constants import NO_CREW_SKIN_ID
+from skeletons.gui.game_control import IBattlePassController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
@@ -252,6 +253,7 @@ PMComplete = namedtuple('PMComplete', [
  'isAddComplete'])
 
 class BattlePassProgressBlock(base.StatsBlock):
+    __battlePassController = dependency.descriptor(IBattlePassController)
 
     def setRecord(self, result, reusable):
         if reusable.battlePassProgress.hasProgress:
@@ -287,17 +289,18 @@ class BattlePassProgressBlock(base.StatsBlock):
     @classmethod
     def __makeProgressQuestInfo(cls, progress, isExtraBlock):
         isFreePoints = progress.pointsAux and not progress.isLevelMax or progress.isLevelMax and isExtraBlock
+        chapterID = progress.chapterID
         return {'status': cls.__getMissionState(progress.isDone and not isExtraBlock), 
            'questID': BattlePassConsts.FAKE_QUEST_ID, 
            'rendererType': QUESTS_ALIASES.RENDERER_TYPE_QUEST, 
            'eventType': EVENT_TYPE.BATTLE_QUEST, 
            'maxProgrVal': progress.pointsMax, 
            'tooltip': TOOLTIPS.QUESTS_RENDERER_LABEL, 
-           'description': backport.text(_POST_BATTLE_RES.title.free() if isFreePoints else _POST_BATTLE_RES.title(), level=(isExtraBlock or progress).level if 1 else progress.level + 1, chapter=backport.text(R.strings.battle_pass.chapter.fullName.num(progress.chapterID)())), 
+           'description': backport.text(_POST_BATTLE_RES.title.free() if isFreePoints else _POST_BATTLE_RES.title(), level=(isExtraBlock or progress).level if 1 else progress.level + 1, chapter=cls.__getChapterName(chapterID)), 
            'currentProgrVal': progress.pointsNew, 
            'tasksCount': -1, 
            'progrBarType': cls.__getProgressBarType(not progress.isDone), 
-           'linkTooltip': TOOLTIPS.QUESTS_LINKBTN_BATTLEPASS if progress.chapterID else TOOLTIPS.QUESTS_LINKBTN_BATTLEPASS_SELECT}
+           'linkTooltip': TOOLTIPS.QUESTS_LINKBTN_BATTLEPASS if chapterID else TOOLTIPS.QUESTS_LINKBTN_BATTLEPASS_SELECT}
 
     @classmethod
     def __makeProgressList(cls, progress, isExtraBlock):
@@ -310,6 +313,12 @@ class BattlePassProgressBlock(base.StatsBlock):
                 'currentProgrVal': progress.pointsNew, 
                 'progrBarType': cls.__getProgressBarType(not progress.pointsAux)}]
         return []
+
+    @classmethod
+    def __getChapterName(cls, chapterID):
+        if chapterID:
+            return backport.text(R.strings.battle_pass.chapter.dyn(cls.__battlePassController.getRewardType(chapterID).value).fullName.num(chapterID)())
+        return ''
 
     @staticmethod
     def __getMissionState(isDone):
@@ -492,7 +501,7 @@ class ProgressiveCustomizationVO(base.DirectStatsItem):
             _, vehicleIntCD = parseEventID(questID)
             vehicle = self._itemsCache.items.getItemByCD(vehicleIntCD)
             linkBtnEnabled, linkBtnTooltip = getC11nProgressionLinkBtnParams(vehicle)
-            if currentHangarIsSteelHunter():
+            if currentHangarIsBattleRoyale():
                 linkBtnEnabled = False
             self._value['linkBtnEnabled'] = linkBtnEnabled
             self._value['linkBtnTooltip'] = backport.text(linkBtnTooltip)

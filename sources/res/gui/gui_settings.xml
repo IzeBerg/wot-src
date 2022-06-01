@@ -610,7 +610,7 @@
 		</value>
 	</setting>
 	<setting>
-		<name>miniclient</name>
+		<name>baseUrls</name>
 		<type>dict</type>
 		<value>
 			<item>
@@ -1088,22 +1088,22 @@
 		<type>dict</type>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/7BPContentPage/
+				/$LANGUAGE_CODE/promocontent/8BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/7BPContentPage#bp7extrachapter/
+				/$LANGUAGE_CODE/promocontent/8BPContentPage#bp7extrachapter/
 				<name>extraInfoPage</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/7BPIntroVideo/
+				/$LANGUAGE_CODE/promocontent/8BPIntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/7BPExtraChapter/
+				/$LANGUAGE_CODE/promocontent/8BPExtraChapter/
 				<name>extraIntroVideo</name>
 				<type>url</type>
 			</item>
@@ -1117,15 +1117,29 @@
 					</item>
 					<item>
 						<type>int</type>
-						<value>1</value>
-					</item>
-					<item>
-						<type>int</type>
 						<value>3</value>
 					</item>
 					<item>
 						<type>int</type>
+						<value>1</value>
+					</item>
+					<item>
+						<type>int</type>
 						<value>4</value>
+					</item>
+				</value>
+			</item>
+			<item>
+				<name>introSlides</name>
+				<type>list</type>
+				<value>
+					<item>
+						<type>string</type>
+						<value>tanks</value>
+					</item>
+					<item>
+						<type>string</type>
+						<value>new_rewards</value>
 					</item>
 				</value>
 			</item>
@@ -1575,6 +1589,54 @@
 		</value>
 	</setting>
 	<setting>
+		<name>infoPageBattleRoyaleQueue</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://steelhunter.worldoftanks.com/$LANGUAGE_CODE/?fullscreenMode=true
+				<name>NA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://steelhunter.worldoftanks.eu/$LANGUAGE_CODE/?fullscreenMode=true
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://steelhunter.worldoftanks.asia/$LANGUAGE_CODE/?fullscreenMode=true
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://steelhunter.wotgame.cn/$LANGUAGE_CODE/?fullscreenMode=true
+				<name>CN</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://steelhunter-ct.worldoftanks.ru/$LANGUAGE_CODE/?fullscreenMode=true
+				<name>CT</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://steelhunter.worldoftanks.ru/$LANGUAGE_CODE/?fullscreenMode=true
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>battleRoyaleVideo</name>
+		<type>dict</type>
+		<value>
+			<item>
+				{webBridgeRootURL}/$LANGUAGE_CODE/promocontent/SH2022IntroVideo/
+				<name>introVideo</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
 		<name>spgHitDirectionDelta</name>
 		<type>float</type>
 		<value>
@@ -1784,75 +1846,17 @@
 		</value>
 	</setting>
 	<setting>
-		<name>rtsIntroVideoURL</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
+		<name>dragonBoat</name>
+		<type>dict</type>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022Video/
-				<name>NA</name>
+				$PARAMS(registration/)
+				<name>registration</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022Video/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022Video/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022Video/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022Video/
-				<name>CT</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022Video/
-				<name>default</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>rtsInfoPageURL</name>
-		<type>macros</type>
-		<macros>AUTH_REALM</macros>
-		<value>
-			<item>
-				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022/
-				<name>NA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022/
-				<name>EU</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022/
-				<name>ASIA</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022/
-				<name>CN</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022/
-				<name>CT</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/ArtOfStrategy2022/
-				<name>default</name>
+				$PARAMS(rewards/)
+				<name>rewards</name>
 				<type>url</type>
 			</item>
 		</value>

@@ -10,6 +10,6 @@ class BattleRoyaleFullStatsMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_updateScore(alive, destroyed, squads)
 
-    def as_updateNationsVehiclesCounterS(self, data):
+    def as_updateVehiclesCounterS(self, data):
         if self._isDAAPIInited():
-            return self.flashObject.as_updateNationsVehiclesCounter(data)
+            return self.flashObject.as_updateVehiclesCounter(data)

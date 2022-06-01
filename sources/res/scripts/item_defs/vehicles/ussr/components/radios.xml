@@ -34,6 +34,7 @@
 		<_10RT_26E>34</_10RT_26E>
 		<_10RK_W>35</_10RK_W>
 		<_71_TK_1SH>36</_71_TK_1SH>
+		<_9RU_CN>40</_9RU_CN>
 		<Radio_01_KV>200</Radio_01_KV>
 		<Radio_T-50-2>201</Radio_T-50-2>
 		<Observer>202</Observer>
@@ -43,6 +44,7 @@
 		<R123_fallout>208</R123_fallout>
 		<R113_FL>210</R113_FL>
 		<R113M_cl>214</R113M_cl>
+		<_10RK-26_CN>215</_10RK-26_CN>
 		<_10RK_IGR>60001</_10RK_IGR>
 		<_12RT_IGR>60002</_12RT_IGR>
 		<R113_IGR>60003</R113_IGR>
@@ -56,14 +58,12 @@
 		<_9R_O_bootcamp>64002</_9R_O_bootcamp>
 		<_71-TK-3_bootcamp>64003</_71-TK-3_bootcamp>
 		<_9R_bootcamp>64004</_9R_bootcamp>
-		<Commander>64005</Commander>
 		<Development_Radio>65000</Development_Radio>
 		<_9RM_MapsTraining_Dummy_LT_1>12</_9RM_MapsTraining_Dummy_LT_1>
 		<_12LL_MapsTraining_Dummy_SPG_1>33</_12LL_MapsTraining_Dummy_SPG_1>
 		<_9RM_MapsTraining_Player_MT_1>37</_9RM_MapsTraining_Player_MT_1>
 		<_9RM_MapsTraining_Player_MT_2>38</_9RM_MapsTraining_Player_MT_2>
 		<_10RK_MapsTraining_Dummy_HT_2>39</_10RK_MapsTraining_Dummy_HT_2>
-		<radio_Supply_RTS>64010</radio_Supply_RTS>
 	</ids>
 	<shared>
 		<Alarm_flags_bot>
@@ -415,6 +415,21 @@
 				<!--BW_String-->
 			</repairCost>
 		</_10RK-26>
+		<_10RK-26_CN>
+			<userString>#ussr_vehicles:_10RK-26_CN</userString>
+			<tags/>
+			<level>10</level>
+			<notInShop>true</notInShop>
+			<price>51600</price>
+			<weight>160</weight>
+			<distance>720</distance>
+			<maxHealth>250</maxHealth>
+			<maxRegenHealth>75</maxRegenHealth>
+			<repairCost>
+				3.5
+				<!--BW_String-->
+			</repairCost>
+		</_10RK-26_CN>
 		<_10RK-26_fallout>
 			<userString>#ussr_vehicles:_10RK-26_fallout</userString>
 			<tags/>
@@ -607,6 +622,18 @@
 			<maxRegenHealth>84</maxRegenHealth>
 			<repairCost>3</repairCost>
 		</_9RU>
+		<_9RU_CN>
+			<userString>#ussr_vehicles:_9RU_CN</userString>
+			<tags/>
+			<level>8</level>
+			<notInShop>true</notInShop>
+			<price>25000</price>
+			<weight>30</weight>
+			<distance>600</distance>
+			<maxHealth>140</maxHealth>
+			<maxRegenHealth>84</maxRegenHealth>
+			<repairCost>3</repairCost>
+		</_9RU_CN>
 		<N19_Marka_II>
 			<userString>#ussr_vehicles:N19_Marka_II</userString>
 			<tags/>
@@ -661,18 +688,6 @@
 			<maxRegenHealth>75</maxRegenHealth>
 			<repairCost>0</repairCost>
 		</Observer>
-		<Commander>
-			<userString>#ussr_vehicles:Alarm_flags</userString>
-			<tags/>
-			<level>1</level>
-			<price>0</price>
-			<notInShop>true</notInShop>
-			<weight>1</weight>
-			<distance>90</distance>
-			<maxHealth>90</maxHealth>
-			<maxRegenHealth>75</maxRegenHealth>
-			<repairCost>0</repairCost>
-		</Commander>
 		<Tip_9>
 			<userString>#ussr_vehicles:Tip_9</userString>
 			<tags/>
@@ -786,8 +801,8 @@
 			<notInShop>true</notInShop>
 			<weight>100</weight>
 			<distance>2000</distance>
-			<maxHealth>110</maxHealth>
-			<maxRegenHealth>55</maxRegenHealth>
+			<maxHealth>100</maxHealth>
+			<maxRegenHealth>60</maxRegenHealth>
 			<repairCost>0</repairCost>
 			<radarRadius>350</radarRadius>
 			<radarCooldown>30</radarCooldown>
@@ -803,7 +818,7 @@
 			<maxHealth>200</maxHealth>
 			<maxRegenHealth>150</maxRegenHealth>
 			<repairCost>0</repairCost>
-			<radarRadius>370</radarRadius>
+			<radarRadius>250</radarRadius>
 			<radarCooldown>20</radarCooldown>
 		</_12RT_SH>
 		<R113_SH>
@@ -818,7 +833,7 @@
 			<maxRegenHealth>150</maxRegenHealth>
 			<repairCost>0</repairCost>
 			<radarRadius>450</radarRadius>
-			<radarCooldown>45</radarCooldown>
+			<radarCooldown>30</radarCooldown>
 		</R113_SH>
 		<_9RM_MapsTraining_Dummy_LT_1>
 			<userString>#ussr_vehicles:_9RM</userString>
@@ -894,20 +909,5 @@
 			</repairCost>
 			<notInShop>True</notInShop>
 		</_10RK_MapsTraining_Dummy_HT_2>
-		<radio_Supply_RTS>
-			<userString>#ussr_vehicles:radio_Supply_RTS</userString>
-			<tags/>
-			<level>10</level>
-			<price>52000</price>
-			<notInShop>true</notInShop>
-			<weight>1</weight>
-			<distance>730</distance>
-			<maxHealth>250</maxHealth>
-			<maxRegenHealth>75</maxRegenHealth>
-			<repairCost>
-				3.5
-				<!--BW_String-->
-			</repairCost>
-		</radio_Supply_RTS>
 	</shared>
 </root>

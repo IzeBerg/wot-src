@@ -1,4 +1,4 @@
-import cPickle, zlib, typing
+import cPickle, zlib
 from collections import namedtuple, defaultdict
 import ArenaType, BigWorld, CGF, Event, Math, arena_component_system.client_arena_component_assembler as assembler
 from PlayerEvents import g_playerEvents
@@ -8,10 +8,6 @@ from helpers.bots import preprocessBotName
 from items import vehicles
 from visual_script.misc import ASPECT
 from visual_script.multi_plan_provider import makeMultiPlanProvider, CallableProviderType
-from RTSShared import createVehicleCommanderDataFromTuple
-if typing.TYPE_CHECKING:
-    from typing import Dict
-    from RTSShared import AnyVehicleCommanderData, OwnVehicleCommanderData
 TeamBaseProvider = namedtuple('TeamBaseProvider', ('points', 'invadersCnt', 'capturingStopped'))
 
 class ClientArena(object):
@@ -38,16 +34,10 @@ class ClientArena(object):
        ARENA_UPDATE.VEHICLE_RECOVERED: '_ClientArena__onVehicleRecovered', 
        ARENA_UPDATE.FOG_OF_WAR: '_ClientArena__onFogOfWar', 
        ARENA_UPDATE.RADAR_INFO_RECEIVED: '_ClientArena__onRadarInfoReceived', 
-       ARENA_UPDATE.VEHICLE_DESCR: '_ClientArena__onVehicleDescrUpdate', 
-       ARENA_UPDATE.BASES_LIST: '_ClientArena__onBasesReceived', 
-       ARENA_UPDATE.COMMANDER_DATA_VEHICLE: '_ClientArena__onCommanderDataVehicle', 
-       ARENA_UPDATE.COMMANDER_DATA_LIST: '_ClientArena__onCommanderDataList', 
-       ARENA_UPDATE.GOD_MODE_CHANGED: '_ClientArena__onGodModeChanged'}
+       ARENA_UPDATE.VEHICLE_DESCR: '_ClientArena__onVehicleDescrUpdate'}
     DEFAULT_ARENA_WORLD_ID = -1
 
     def __init__(self, arenaUniqueID, arenaTypeID, arenaBonusType, arenaGuiType, arenaExtraData, spaceID):
-        self.__commanderData = {}
-        self.__otherCommanderData = {}
         self.__vehicles = {}
         self.__vehicleIndexToId = {}
         self.__positions = {}
@@ -74,7 +64,6 @@ class ClientArena(object):
         self.onVehicleKilled = Event.Event(em)
         self.onVehicleHealthChanged = Event.Event(em)
         self.onVehicleRecovered = Event.Event(em)
-        self.onVehicleGodModeChanged = Event.Event(em)
         self.onAvatarReady = Event.Event(em)
         self.onTeamBasePointsUpdate = Event.Event(em)
         self.onTeamBasePointsUpdateAlt = Event.Event(em)
@@ -90,9 +79,6 @@ class ClientArena(object):
         self.onChatCommandTargetUpdate = Event.Event(em)
         self.onChatCommandTriggered = Event.Event(em)
         self.onRadarInfoReceived = Event.Event(em)
-        self.onBasesReceived = Event.Event(em)
-        self.onCommanderDataList = Event.Event(em)
-        self.onCommanderDataVehicle = Event.Event(em)
         self.arenaUniqueID = arenaUniqueID
         self._vsePlans = makeMultiPlanProvider(ASPECT.CLIENT, CallableProviderType.ARENA, arenaBonusType)
         self.arenaType = ArenaType.g_cache.get(arenaTypeID, None)
@@ -122,9 +108,6 @@ class ClientArena(object):
     teamBasesData = property(lambda self: self.__teamBasesData)
     arenaInfo = property(lambda self: self.__arenaInfo)
     teamInfo = property(lambda self: self.__teamInfo)
-    bases = property(lambda self: self.__bases)
-    commanderData = property(lambda self: self.__commanderData)
-    otherCommanderData = property(lambda self: self.__otherCommanderData)
 
     def destroy(self):
         self.__eventManager.clear()
@@ -208,37 +191,6 @@ class ClientArena(object):
     def unregisterTeamInfo(self, teamInfo):
         self.__teamInfo = None
         return
-
-    def __onCommanderDataList(self, argsStr):
-        commanderDataUpdate = cPickle.loads(argsStr)
-        self.__commanderData.clear()
-        self.__otherCommanderData.clear()
-        for vID, commanderData in commanderDataUpdate.iteritems():
-            commanderData = createVehicleCommanderDataFromTuple(commanderData)
-            self.__getCommanderDataContainer(commanderData)[vID] = commanderData
-
-        self.onCommanderDataList()
-        return True
-
-    def __onGodModeChanged(self, argsStr):
-        vehID, isActive = cPickle.loads(argsStr)
-        vehInfo = self.__vehicles.get(vehID, None)
-        if vehInfo is not None:
-            vehInfo['isGodModeActive'] = isActive
-            self.onVehicleGodModeChanged(vehID)
-        return
-
-    def __onCommanderDataVehicle(self, argsStr):
-        vID, commanderData = cPickle.loads(argsStr)
-        commanderData = createVehicleCommanderDataFromTuple(commanderData)
-        self.__getCommanderDataContainer(commanderData)[vID] = commanderData
-        self.onCommanderDataVehicle(vID)
-        return True
-
-    def __getCommanderDataContainer(self, commanderData):
-        if commanderData.isOwn:
-            return self.__commanderData
-        return self.__otherCommanderData
 
     def __setupBBColliders(self):
         if BigWorld.wg_getSpaceBounds().length == 0.0:
@@ -326,11 +278,11 @@ class ClientArena(object):
         self.onVehicleStatisticsUpdate(vehicleID)
 
     def __onVehicleKilled(self, argStr):
-        victimID, killerID, equipmentID, reason = cPickle.loads(argStr)
+        victimID, killerID, equipmentID, reason, numVehiclesAffected = cPickle.loads(argStr)
         vehInfo = self.__vehicles.get(victimID, None)
         if vehInfo is not None:
             vehInfo['isAlive'] = False
-            self.onVehicleKilled(victimID, killerID, equipmentID, reason)
+            self.onVehicleKilled(victimID, killerID, equipmentID, reason, numVehiclesAffected)
         return
 
     def __onAvatarReady(self, argStr):
@@ -343,6 +295,9 @@ class ClientArena(object):
             self._vsePlans.load(self.arenaType.visualScript[ASPECT.CLIENT])
             self._vsePlans.start()
         return
+
+    def loadVsePlans(self):
+        self._vsePlans.load(self.arenaType.visualScript[ASPECT.CLIENT], autoStart=True)
 
     def __onBasePointsUpdate(self, argStr):
         team, baseID, points, timeLeft, invadersCnt, capturingStopped = cPickle.loads(argStr)
@@ -394,6 +349,7 @@ class ClientArena(object):
     def __onInteractiveStats(self, argStr):
         stats = cPickle.loads(zlib.decompress(argStr))
         self.onInteractiveStats(stats)
+        LOG_DEBUG_DEV('[RESPAWN] onInteractiveStats', stats)
 
     def __rebuildIndexToId(self):
         vehs = self.__vehicles
@@ -402,11 +358,6 @@ class ClientArena(object):
     def __vehicleInfoAsDict(self, info):
         extVehicleTypeData = {'vehPostProgression': info[25], 
            'customRoleSlotTypeId': info[26]}
-        try:
-            isGodModeActive = info[27]
-        except IndexError:
-            isGodModeActive = False
-
         infoAsDict = {'vehicleType': self.__getVehicleType(info[1], extVehicleTypeData), 
            'name': info[2], 
            'team': info[3], 
@@ -432,8 +383,7 @@ class ClientArena(object):
            'overriddenBadge': info[23], 
            'maxHealth': info[24], 
            'vehPostProgression': info[25], 
-           'customRoleSlotTypeId': info[26], 
-           'isGodModeActive': isGodModeActive}
+           'customRoleSlotTypeId': info[26]}
         return (
          info[0], infoAsDict)
 

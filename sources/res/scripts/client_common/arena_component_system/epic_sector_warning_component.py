@@ -214,6 +214,8 @@ class EpicSectorWarningComponent(ClientArenaComponent, CallbackDelayer):
             edge.start, edge.end = self.__calcEdgeLine(groupId, neighbourGrpId)
             if edge.state is None:
                 edge.state = SECTOR_EDGE_STATE.NONE
+            elif self.__sectorComponent.currentPlayerSectorId is not None:
+                continue
             else:
                 self.__showEdgeState(newEdgeId, edge, edge.state, forceUpdate=True)
 

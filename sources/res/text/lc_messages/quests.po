@@ -1041,6 +1041,9 @@ msgstr "Фрагменты чертежей техники:"
 msgid "bonusName/bpcoin"
 msgstr "Жетоны"
 
+msgid "bonusName/brcoin"
+msgstr "Стальные печати"
+
 msgid "bonusName/camouflage"
 msgstr "Камуфляж"
 
@@ -1158,6 +1161,9 @@ msgstr "Коэффициент боевого опыта"
 msgid "bonusName/decal"
 msgstr "Декаль"
 
+msgid "bonusName/dragonBoatPoints"
+msgstr "Очки Фестиваля Драконьих лодок"
+
 msgid "bonusName/emblem"
 msgstr "Эмблемa"
 
@@ -1273,6 +1279,9 @@ msgstr "Медаль: %(name)s"
 msgid "bonuses/dossier/badge"
 msgstr "Нашивка: %(name)s"
 
+msgid "bonuses/dragonBoatPoints/description"
+msgstr "очков Фестиваля Дроконьих лодок: %(value)s"
+
 msgid "bonuses/eventCoin/description"
 msgstr "%(value)s юбилейных монет"
 
@@ -1336,9 +1345,6 @@ msgstr "Награда недоступна"
 
 msgid "bonuses/premium_plus/description"
 msgstr "Дней Танкового премиум аккаунта: %(value)s"
-
-msgid "bonuses/rtsCollection"
-msgstr "Случайный элемент коллекции"
 
 msgid "bonuses/tankmen/description"
 msgstr "%(value)s"
@@ -2003,12 +2009,6 @@ msgstr "Полученный потенциальный урон"
 
 msgid "details/conditions/cumulative/rankChange"
 msgstr "Получить звание"
-
-msgid "details/conditions/cumulative/rtsStrategistEventPoints"
-msgstr "Заработать %(value)d очков события, играя за Стратега 1х7 или 1х1."
-
-msgid "details/conditions/cumulative/rtsTankerEventPoints"
-msgstr "Заработать %(value)d очков события, играя за Танкистов."
 
 msgid "details/conditions/cumulative/shots"
 msgstr "Выстрелы"
@@ -2693,13 +2693,6 @@ msgstr "Среднее значение для команды по параме�
 
 msgid "details/conditions/results/team7x7/simple"
 msgstr "Параметр для команды: %(param)s"
-
-msgid "details/conditions/rtsStrategistWin"
-msgstr "Победить в бою, играя за Стратега 1х7 или 1х1."
-
-msgid "details/conditions/rtsTankerTop5"
-msgstr ""
-"Победить в бою и попасть в топ-%(value)d по опыту, играя за Танкистов."
 
 msgid "details/conditions/survive"
 msgstr "Выжить в бою"
@@ -4336,6 +4329,12 @@ msgstr "Часть боевой задачи"
 msgid "details/tasks/subTask"
 msgstr "Боевая задача"
 
+msgid "dragonBoat/postBattle/daily"
+msgstr "Ежедневная задача Фестиваля драконьих лодок"
+
+msgid "dragonBoat/postBattle/weekly"
+msgstr "Недельная задача Фестиваля драконьих лодок"
+
 msgid "general/countdown/text/timer_hrs"
 msgstr "Замена доступна через %H ч %M мин"
 
@@ -4760,6 +4759,13 @@ msgstr "Случайные условия, которые обновляются
 msgid "missions/tab/daily/header"
 msgstr "Ежедневные задачи"
 
+msgid "missions/tab/dragon_boat_marathon/body"
+msgstr ""
+"Выбирайте свою команду и внесите свой вклад в получение главного приза!"
+
+msgid "missions/tab/dragon_boat_marathon/header"
+msgstr "Парад драконьих лодок"
+
 msgid "missions/tab/eventBoards/body"
 msgstr "Нажмите, чтобы перейти к соревнованиям."
 
@@ -4789,6 +4795,9 @@ msgstr "Для %(vehName)s"
 
 msgid "missions/tab/label/daily"
 msgstr "Ежедневные"
+
+msgid "missions/tab/label/dragon_boat_marathon"
+msgstr "Парад драконьих лодок"
 
 msgid "missions/tab/label/eventBoards"
 msgstr "Соревнования"
@@ -5333,6 +5342,9 @@ msgstr "«Снайпер»"
 
 msgid "token/default/at-spg"
 msgstr "«ПТ-САУ»"
+
+msgid "token/default/battle_royale"
+msgstr "«Стальной охотник»"
 
 msgid "token/default/box"
 msgstr "«Ящик»"

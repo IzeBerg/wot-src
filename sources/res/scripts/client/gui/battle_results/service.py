@@ -193,7 +193,7 @@ class BattleResultsService(IBattleResultsService):
             return
         else:
             statisticsResult = getEmptyClientPB20UXStats()
-            vehTypeCompDescr, vData = first(reusableInfo.personal.getVehicleCDsIterator(result))
+            vehTypeCompDescr, vData = first(reusableInfo.personal.getVehicleCDsIterator(result['personal']))
             statisticsResult['vehTypeCompDescr'] = vehTypeCompDescr
             if reusableInfo.isPostBattlePremiumPlus:
                 statisticsResult['premiumType'] = PREMIUM_TYPE.PLUS

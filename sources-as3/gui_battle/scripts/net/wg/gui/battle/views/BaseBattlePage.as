@@ -55,10 +55,6 @@ package net.wg.gui.battle.views
       private static const CALLOUT_CENTER_SCREEN_OFFSET_X:int = 136;
       
       private static const AMMUNITION_PANEL_Y_SHIFT:int = 498;
-      
-      private static const RESPAWN_RIGHT_PADDING:int = 250;
-      
-      private static const RESPAWN_AUTO_TIMER_EMPTY_DATA:String = "";
        
       
       public var battleLoading:BaseBattleLoading = null;
@@ -98,8 +94,6 @@ package net.wg.gui.battle.views
       private var _messagesContainer:Sprite = null;
       
       private var _componentsStorage:Object;
-      
-      protected var lastMinimapSize:int = -1;
       
       public function BaseBattlePage()
       {
@@ -141,7 +135,6 @@ package net.wg.gui.battle.views
          var _loc7_:int = _loc4_ + (_loc6_ - this.ribbonsPanel.freeHeightForRenderers >> 1) + _loc5_;
          this.ribbonsPanel.y = _loc7_;
          this.updateMinimapPosition();
-         this.lastMinimapSize = this.minimap.currentSizeIndex;
          if(this.postmortemTips)
          {
             this.updatePostmortemTipsPosition();
@@ -182,16 +175,6 @@ package net.wg.gui.battle.views
          {
             this.piercingDebugPanel.visible = !this.piercingDebugPanel.visible;
          }
-      }
-      
-      protected function updateMinimap(param1:Number, param2:Number) : void
-      {
-         this.minimap.updateSizeIndex(true);
-         var _loc3_:int = -1;
-         this.minimap.x = param1 - this.minimap.currentWidth;
-         this.minimap.y = param2 - this.minimap.currentHeight;
-         _loc3_ = this.lastMinimapSize;
-         this.minimap.setAllowedSizeIndex(_loc3_);
       }
       
       override protected function initialize() : void

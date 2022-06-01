@@ -1,14 +1,12 @@
 import BigWorld
 from CurrentVehicle import g_currentVehicle
-from PlayerEvents import g_playerEvents
 from constants import QUEUE_TYPE
 from debug_utils import LOG_DEBUG
 from gui import SystemMessages
 from gui.Scaleform.locale.SYSTEM_MESSAGES import SYSTEM_MESSAGES
-from gui.prb_control import prb_getters
 from gui.prb_control.ctrl_events import g_prbCtrlEvents
 from gui.prb_control.entities.base import vehicleAmmoCheck
-from gui.prb_control.entities.base.pre_queue.entity import PreQueueSubscriber, PreQueueEntryPoint, PreQueueEntity
+from gui.prb_control.entities.base.pre_queue.entity import PreQueueEntryPoint, PreQueueEntity, PreQueueSubscriber
 from gui.prb_control.entities.epic.pre_queue.actions_validator import EpicActionsValidator
 from gui.prb_control.entities.epic.pre_queue.ctx import EpicQueueCtx
 from gui.prb_control.entities.epic.pre_queue.vehicles_watcher import EpicVehiclesWatcher
@@ -24,25 +22,6 @@ from helpers import dependency, i18n
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.connection_mgr import IConnectionManager
 from skeletons.gui.game_control import IEpicBattleMetaGameController
-
-class EpicSubscriber(PreQueueSubscriber):
-
-    def subscribe(self, entity):
-        g_playerEvents.onEnqueuedEpic += entity.onEnqueued
-        g_playerEvents.onDequeuedEpic += entity.onDequeued
-        g_playerEvents.onEnqueuedEpicFailure += entity.onEnqueueError
-        g_playerEvents.onKickedFromEpicQueue += entity.onKickedFromQueue
-        g_playerEvents.onKickedFromArena += entity.onKickedFromArena
-        g_playerEvents.onArenaJoinFailure += entity.onArenaJoinFailure
-
-    def unsubscribe(self, entity):
-        g_playerEvents.onEnqueuedEpic -= entity.onEnqueued
-        g_playerEvents.onDequeuedEpic -= entity.onDequeued
-        g_playerEvents.onEnqueuedEpicFailure -= entity.onEnqueueError
-        g_playerEvents.onKickedFromEpicQueue -= entity.onKickedFromQueue
-        g_playerEvents.onKickedFromArena -= entity.onKickedFromArena
-        g_playerEvents.onArenaJoinFailure -= entity.onArenaJoinFailure
-
 
 class EpicEntryPoint(PreQueueEntryPoint):
     __epicController = dependency.descriptor(IEpicBattleMetaGameController)
@@ -69,8 +48,9 @@ class EpicEntity(PreQueueEntity):
     __epicController = dependency.descriptor(IEpicBattleMetaGameController)
 
     def __init__(self):
-        super(EpicEntity, self).__init__(FUNCTIONAL_FLAG.EPIC, QUEUE_TYPE.EPIC, EpicSubscriber())
+        super(EpicEntity, self).__init__(FUNCTIONAL_FLAG.EPIC, QUEUE_TYPE.EPIC, PreQueueSubscriber())
         self.__watcher = None
+        self.storage = prequeue_storage_getter(QUEUE_TYPE.EPIC)()
         return
 
     def init(self, ctx=None):
@@ -79,10 +59,6 @@ class EpicEntity(PreQueueEntity):
         self.__watcher.start()
         result = super(EpicEntity, self).init(ctx)
         return result
-
-    @prequeue_storage_getter(QUEUE_TYPE.EPIC)
-    def storage(self):
-        return
 
     def fini(self, ctx=None, woEvents=False):
         if not woEvents:
@@ -96,9 +72,6 @@ class EpicEntity(PreQueueEntity):
     def leave(self, ctx, callback=None):
         self.storage.suspend()
         super(EpicEntity, self).leave(ctx, callback)
-
-    def isInQueue(self):
-        return prb_getters.isInEpicQueue()
 
     def getQueueType(self):
         return QUEUE_TYPE.EPIC

@@ -16,7 +16,6 @@ package net.wg.gui.battle.views.minimap
       public function MinimapHint()
       {
          super();
-         mouseEnabled = mouseChildren = false;
       }
       
       public function setLeftMinimapHintIconType(param1:uint) : void

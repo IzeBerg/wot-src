@@ -158,6 +158,8 @@
 		<General_Motors_6046_ussr>237</General_Motors_6046_ussr>
 		<V_12BN>238</V_12BN>
 		<V_2_34A>240</V_2_34A>
+		<KCH_30_A_CN>242</KCH_30_A_CN>
+		<V-2IS_R1_CN>243</V-2IS_R1_CN>
 		<V-5_IGR>60001</V-5_IGR>
 		<V-2IS_IGR>60002</V-2IS_IGR>
 		<V-54-6_IGR>60003</V-54-6_IGR>
@@ -178,8 +180,6 @@
 		<V-2-34_bootcamp>64005</V-2-34_bootcamp>
 		<V-4_bootcamp>64006</V-4_bootcamp>
 		<GAZ-203_bootcamp>64007</GAZ-203_bootcamp>
-		<Engine_Supply_RTS>24800</Engine_Supply_RTS>
-		<Commander>64008</Commander>
 		<Development_Engine>65000</Development_Engine>
 		<GMC_MapsTraining_Dummy_LT_1>25</GMC_MapsTraining_Dummy_LT_1>
 		<T-26F_MapsTraining_Dummy_SPG_1>26</T-26F_MapsTraining_Dummy_SPG_1>
@@ -2338,25 +2338,6 @@
 			<rpm_min>200</rpm_min>
 			<rpm_max>2600</rpm_max>
 		</M_40_1200_A>
-		<Engine_Supply_RTS>
-			<userString>#ussr_vehicles:ArmoredTurret_Engine_RTS</userString>
-			<tags>diesel</tags>
-			<level>9</level>
-			<price>87500</price>
-			<notInShop>true</notInShop>
-			<wwsoundPC>eng_Hetzer_pc</wwsoundPC>
-			<power>10</power>
-			<weight>1</weight>
-			<maxHealth>360</maxHealth>
-			<maxRegenHealth>180</maxRegenHealth>
-			<repairCost>10</repairCost>
-			<fireStartingChance>
-				0.001
-				<!--BW_String-->
-			</fireStartingChance>
-			<rpm_min>395</rpm_min>
-			<rpm_max>1908</rpm_max>
-		</Engine_Supply_RTS>
 		<V-2SNx2>
 			<userString>#ussr_vehicles:V-2SNx2</userString>
 			<tags>diesel</tags>
@@ -2870,6 +2851,26 @@
 			<rpm_min>381</rpm_min>
 			<rpm_max>2056</rpm_max>
 		</V-2IS_R1>
+		<V-2IS_R1_CN>
+			<userString>#ussr_vehicles:V-2IS_R_CN</userString>
+			<tags>diesel</tags>
+			<level>6</level>
+			<price>29000</price>
+			<notInShop>true</notInShop>
+			<wwsoundPC>eng_v55_pc</wwsoundPC>
+			<wwsoundNPC>eng_v55_npc</wwsoundNPC>
+			<power>450</power>
+			<weight>750</weight>
+			<maxHealth>190</maxHealth>
+			<maxRegenHealth>95</maxRegenHealth>
+			<repairCost>7</repairCost>
+			<fireStartingChance>
+				0.15
+				<!--BW_String-->
+			</fireStartingChance>
+			<rpm_min>381</rpm_min>
+			<rpm_max>2056</rpm_max>
+		</V-2IS_R1_CN>
 		<V-2IS_R1_SP>
 			<userString>#ussr_vehicles:V-2IS_R</userString>
 			<tags>diesel</tags>
@@ -3263,6 +3264,26 @@
 			<rpm_min>280</rpm_min>
 			<rpm_max>2360</rpm_max>
 		</KCH_30_A>
+		<KCH_30_A_CN>
+			<userString>#ussr_vehicles:KCH_30_A_CN</userString>
+			<tags>diesel</tags>
+			<level>9</level>
+			<price>88000</price>
+			<notInShop>true</notInShop>
+			<wwsoundPC>eng_v55_pc</wwsoundPC>
+			<wwsoundNPC>eng_v55_npc</wwsoundNPC>
+			<power>900</power>
+			<weight>2000</weight>
+			<maxHealth>360</maxHealth>
+			<maxRegenHealth>180</maxRegenHealth>
+			<repairCost>10</repairCost>
+			<fireStartingChance>
+				0.15
+				<!--BW_String-->
+			</fireStartingChance>
+			<rpm_min>280</rpm_min>
+			<rpm_max>2360</rpm_max>
+		</KCH_30_A_CN>
 		<DM_45>
 			<userString>#ussr_vehicles:DM_45</userString>
 			<tags>diesel</tags>
@@ -3483,26 +3504,6 @@
 			<rpm_min>445</rpm_min>
 			<rpm_max>2172</rpm_max>
 		</Observer>
-		<Commander>
-			<userString>#ussr_vehicles:MS-1</userString>
-			<tags>gasoline</tags>
-			<level>1</level>
-			<price>0</price>
-			<notInShop>true</notInShop>
-			<wwsoundPC>eng_gaz_aa_pc</wwsoundPC>
-			<wwsoundNPC>eng_gaz_aa_npc</wwsoundNPC>
-			<power>43</power>
-			<weight>266</weight>
-			<maxHealth>25</maxHealth>
-			<maxRegenHealth>17</maxRegenHealth>
-			<repairCost>1</repairCost>
-			<fireStartingChance>
-				0.2
-				<!--BW_String-->
-			</fireStartingChance>
-			<rpm_min>445</rpm_min>
-			<rpm_max>2172</rpm_max>
-		</Commander>
 		<V-5_IGR>
 			<userString>#igr_vehicles:V-5_IGR</userString>
 			<tags>diesel</tags>

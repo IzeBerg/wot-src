@@ -1,9 +1,3 @@
-import typing
-
-class IActionsPerMinute(object):
-
-    def recordAction(self, keyInfo=None):
-        raise NotImplementedError
 
 
 class IStatisticsCollector(object):
@@ -43,8 +37,4 @@ class IStatisticsCollector(object):
         raise NotImplementedError
 
     def noteLastArenaData(self, arenaTypeID, arenaUniqueID, arenaTeam):
-        raise NotImplementedError
-
-    @property
-    def apm(self):
         raise NotImplementedError

@@ -46,24 +46,28 @@ package net.wg.gui.lobby.battleResults.controller
          super(param1);
       }
       
-      override public function onHeaderClick(param1:InteractiveSortingButton, param2:SortableHeaderButtonBar, param3:Boolean) : void
+      override public function dispose() : void
       {
-         var _loc8_:SortableHeaderButtonBar = null;
-         var _loc9_:int = 0;
-         var _loc10_:InteractiveSortingButton = null;
-         super.onHeaderClick(param1,param2,param3);
-         var _loc4_:ColumnCollection = getColumns(param3);
-         var _loc5_:ColumnCollection = getColumns(!param3);
-         var _loc6_:String = _loc4_.getByIndex(param2.selectedIndex).columnId;
-         var _loc7_:ColumnData = _loc5_.getById(_loc6_);
-         if(_loc7_ != null)
-         {
-            _loc8_ = param2 == this._header1 ? this._header2 : this._header1;
-            _loc9_ = _loc8_.selectedIndex = _loc7_.index;
-            _loc10_ = InteractiveSortingButton(_loc8_.getButtonAt(_loc9_));
-            _loc10_.sortDirection = param1.sortDirection;
-            super.onHeaderClick(_loc10_,_loc8_,!param3);
-         }
+         this._teamResourceTotal = null;
+         this._teamInfluenceTotal = null;
+         this._ownTitle = null;
+         this._enemyTitle = null;
+         this._header1 = null;
+         this._team1List = null;
+         this._header2 = null;
+         this._team2List = null;
+         this._csAlly = null;
+         this._csEnemy = null;
+         super.dispose();
+      }
+      
+      override public function onHeaderClick(param1:InteractiveSortingButton, param2:SortableHeaderButtonBar) : void
+      {
+         var _loc3_:SortableHeaderButtonBar = param2 == this._header1 ? this._header2 : this._header1;
+         _loc3_.selectedIndex = param2.selectedIndex;
+         var _loc4_:InteractiveSortingButton = InteractiveSortingButton(_loc3_.getButtonAt(param2.selectedIndex));
+         _loc4_.sortDirection = param1.sortDirection;
+         super.onHeaderClick(param1,param2);
       }
       
       override public function update(param1:BattleResultsVO) : void
@@ -77,21 +81,6 @@ package net.wg.gui.lobby.battleResults.controller
          }
       }
       
-      override protected function onDispose() : void
-      {
-         this._teamResourceTotal = null;
-         this._teamInfluenceTotal = null;
-         this._ownTitle = null;
-         this._enemyTitle = null;
-         this._header1 = null;
-         this._team1List = null;
-         this._header2 = null;
-         this._team2List = null;
-         this._csAlly = null;
-         this._csEnemy = null;
-         super.onDispose();
-      }
-      
       override protected function setupLists(param1:BattleResultsVO) : void
       {
          this.setupTitles(param1,this._ownTitle,this._enemyTitle);
@@ -102,16 +91,17 @@ package net.wg.gui.lobby.battleResults.controller
       
       override protected function setupTeamListHeaders(param1:ColumnCollection, param2:int, param3:String) : void
       {
-         var _loc4_:SortableHeaderButtonBar = !!param1.isLeft ? this._header1 : this._header2;
-         if(_loc4_.dataProvider != null)
+         if(this._header1.dataProvider != null)
          {
-            _loc4_.dataProvider.cleanUp();
+            this._header1.dataProvider.cleanUp();
          }
-         _loc4_.dataProvider = new DataProvider(param1.getHeaderData());
-         _loc4_.selectedIndex = param2;
-         _loc4_.validateNow();
-         var _loc5_:InteractiveSortingButton = InteractiveSortingButton(_loc4_.getButtonAt(param2));
-         _loc5_.sortDirection = param3;
+         this._header1.dataProvider = this._header2.dataProvider = new DataProvider(param1.getHeaderData());
+         this._header1.selectedIndex = this._header2.selectedIndex = param2;
+         this._header1.validateNow();
+         this._header2.validateNow();
+         var _loc4_:InteractiveSortingButton = InteractiveSortingButton(this._header1.getButtonAt(param2));
+         var _loc5_:InteractiveSortingButton = InteractiveSortingButton(this._header2.getButtonAt(param2));
+         _loc4_.sortDirection = _loc5_.sortDirection = param3;
       }
       
       override protected function getColumnIds(param1:CommonStatsVO) : Vector.<String>
@@ -132,8 +122,8 @@ package net.wg.gui.lobby.battleResults.controller
       
       override protected function sortLists(param1:ColumnData, param2:Number) : void
       {
-         var _loc3_:TeamStatsList = !!param1.isLeft ? this._team1List : this._team2List;
-         this.sortList(_loc3_,param1,param2);
+         this.sortList(this._team1List,param1,param2);
+         this.sortList(this._team2List,param1,param2);
       }
       
       public function handleListIndexChange(param1:ScrollingListEx, param2:TeamMemberStatsViewBase, param3:TeamMemberStatsViewBase, param4:BattleResultsVO) : void
@@ -231,7 +221,7 @@ package net.wg.gui.lobby.battleResults.controller
             _loc4_ = TeamMemberItemVO(_loc5_).playerId;
          }
          var _loc6_:DataProvider = DataProvider(param1.dataProvider);
-         this.sortDP(_loc6_,param2,param3);
+         _loc6_.sortOn(param2.sortingKeys,param3);
          param1.invalidateData();
          if(_loc4_ >= 0)
          {
@@ -241,11 +231,6 @@ package net.wg.gui.lobby.battleResults.controller
          {
             param1.selectedIndex = -1;
          }
-      }
-      
-      protected function sortDP(param1:DataProvider, param2:ColumnData, param3:Number) : void
-      {
-         param1.sortOn(param2.sortingKeys,param3);
       }
       
       protected function get teamResourceTotal() : TextField

@@ -12,7 +12,7 @@ from adisp import process
 from battle_pass_common import BattlePassRewardReason, get3DStyleProgressToken
 from chat_shared import SYS_MESSAGE_TYPE
 from collector_vehicle import CollectorVehicleConsts
-from constants import DOSSIER_TYPE, EVENT_TYPE, INVOICE_ASSET, PREMIUM_TYPE, FAIRPLAY_VIOLATIONS_ALIASES
+from constants import DOSSIER_TYPE, EVENT_TYPE, INVOICE_ASSET, PREMIUM_TYPE
 from dossiers2.custom.records import DB_ID_TO_RECORD
 from dossiers2.ui.achievements import BADGES_BLOCK
 from dossiers2.ui.layouts import PERSONAL_MISSIONS_GROUP
@@ -47,10 +47,10 @@ from gui.ranked_battles.constants import YEAR_AWARD_SELECTABLE_OPT_DEVICE_PREFIX
 from gui.server_events import awards, events_dispatcher as quests_events, recruit_helper
 from gui.server_events.bonuses import getServiceBonuses
 from gui.server_events.events_dispatcher import showCurrencyReserveAwardWindow, showLootboxesAward, showMissionsBattlePass, showPiggyBankRewardWindow, showSubscriptionAwardWindow
-from gui.server_events.events_helpers import isACEmailConfirmationQuest, isDailyQuest, isRtsProgressionQuest
+from gui.server_events.events_helpers import isACEmailConfirmationQuest, isDailyQuest
 from gui.server_events.finders import CHAMPION_BADGES_BY_BRANCH, CHAMPION_BADGE_AT_OPERATION_ID, PM_FINAL_TOKEN_QUEST_IDS_BY_OPERATION_ID, getBranchByOperationId
 from gui.shared import EVENT_BUS_SCOPE, events, g_eventBus
-from gui.shared.event_dispatcher import showBadgeInvoiceAwardWindow, showBattlePassAwardsWindow, showBattlePassVehicleAwardWindow, showDedicationRewardWindow, showEliteWindow, showMultiAwardWindow, showProgressionRequiredStyleUnlockedWindow, showProgressiveItemsRewardWindow, showProgressiveRewardAwardWindow, showRankedSeasonCompleteView, showRankedSelectableReward, showRankedYearAwardWindow, showRankedYearLBAwardWindow, showSeniorityRewardAwardWindow, showRTSRewardsWindow
+from gui.shared.event_dispatcher import showBadgeInvoiceAwardWindow, showBattlePassAwardsWindow, showBattlePassVehicleAwardWindow, showDedicationRewardWindow, showEliteWindow, showMultiAwardWindow, showProgressionRequiredStyleUnlockedWindow, showProgressiveItemsRewardWindow, showProgressiveRewardAwardWindow, showRankedSeasonCompleteView, showRankedSelectableReward, showRankedYearAwardWindow, showRankedYearLBAwardWindow, showSeniorityRewardAwardWindow
 from gui.shared.events import PersonalMissionsEvent
 from gui.shared.gui_items.dossier.factories import getAchievementFactory
 from gui.shared.utils import isPopupsWindowsOpenDisabled
@@ -72,12 +72,11 @@ from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.impl import IGuiLoader, INotificationWindowController
 from skeletons.gui.linkedset import ILinkedSetController
 from skeletons.gui.lobby_context import ILobbyContext
+from skeletons.gui.platform.catalog_service_controller import IPurchaseCache
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.utils import IHangarSpace
 from skeletons.gui.sounds import ISoundsController
-from skeletons.gui.platform.catalog_service_controller import IPurchaseCache
-from skeletons.gui.game_control import IRTSProgressionController
 if typing.TYPE_CHECKING:
     from gui.platform.catalog_service.controller import _PurchaseDescriptor
 _logger = logging.getLogger(__name__)
@@ -125,14 +124,6 @@ def _showACEmailConfirmedRewardScreen(quest, context):
     else:
         _logger.warning('Empty mission [%s] awards.', quest.getID())
     return
-
-
-@dependency.replace_none_kwargs(progressionCtrl=IRTSProgressionController)
-def _showRtsProgressionRewardScreen(quest, context, progressionCtrl=None):
-    if progressionCtrl.hasCurrentProgressRewards():
-        showRTSRewardsWindow()
-    else:
-        _logger.warning('No rewards for the current RTS progression stage after completing the %s quest.', quest.getID())
 
 
 def _getBlueprintActualBonus(data, quest):
@@ -392,15 +383,10 @@ class PunishWindowHandler(ServiceChannelHandler):
             if fairplayViolations[1] != 0:
                 penaltyType = 'penalty'
                 violation = fairplayViolations[1]
-            else:
-                if fairplayViolations[0] != 0:
-                    penaltyType = 'warning'
-                    violation = fairplayViolations[0]
-                violationName = getFairPlayViolationName(violation)
-                if violationName == 'rts_afk':
-                    return
-            if violationName in FAIRPLAY_VIOLATIONS_ALIASES:
-                violationName = FAIRPLAY_VIOLATIONS_ALIASES[violationName]
+            elif fairplayViolations[0] != 0:
+                penaltyType = 'warning'
+                violation = fairplayViolations[0]
+            violationName = getFairPlayViolationName(violation)
             msgID = 'punishmentWindow/reason/%s' % violationName
             showDialog(I18PunishmentDialogMeta('punishmentWindow', None, {'penaltyType': penaltyType, 
                'arenaName': i18n.makeString(arenaType.name), 
@@ -486,8 +472,6 @@ class TokenQuestsWindowHandler(ServiceChannelHandler):
                 _showDailyQuestEpicRewardScreen(quest, context)
             elif isACEmailConfirmationQuest(quest.getID()):
                 _showACEmailConfirmedRewardScreen(quest, context)
-            elif isRtsProgressionQuest(quest.getID()):
-                _showRtsProgressionRewardScreen(quest, context)
             else:
                 self._showWindow(quest, context)
 
@@ -840,8 +824,6 @@ class BattleQuestsAutoWindowHandler(MultiTypeServiceChannelHandler):
         for quest, context in values:
             if isDailyQuest(str(quest.getID())):
                 _showDailyQuestEpicRewardScreen(quest, context)
-            elif isRtsProgressionQuest(str(quest.getID())):
-                _showRtsProgressionRewardScreen(quest, context)
             else:
                 self._showWindow(quest, context)
 
@@ -1563,14 +1545,10 @@ class BattlePassBuyEmptyHandler(ServiceChannelHandler):
             return
 
     def __onAwardShown(self, chapterID):
-        if chapterID is None:
+        if self.__battlePassController.isDisabled() or chapterID is None:
             return
-        else:
-            if chapterID:
-                showMissionsBattlePass(R.views.lobby.battle_pass.BattlePassProgressionsView(), chapterID)
-            else:
-                showMissionsBattlePass()
-            return
+        showMissionsBattlePass(R.views.lobby.battle_pass.BattlePassProgressionsView() if chapterID else None, chapterID)
+        return
 
 
 class BattlePassCapHandler(ServiceChannelHandler):
@@ -1686,7 +1664,7 @@ class MapboxProgressionRewardHandler(AwardHandler):
 
     def _needToShowAward(self, args):
         _, __, settings = args
-        return settings.messageType == SCH_CLIENT_MSG_TYPE.MAPBOX_PROGRESSION_REWARD
+        return settings.messageSubtype == SCH_CLIENT_MSG_TYPE.MAPBOX_PROGRESSION_REWARD
 
     @async.async
     def _showAward(self, ctx):

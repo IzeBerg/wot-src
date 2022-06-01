@@ -18,7 +18,8 @@ _COMMON_VO_META = base.DictMeta({'arenaStr': '',
    'clanAbbrev': '', 
    'playerVehicles': [], 'playerPlace': 0, 
    'isSquadMode': False, 
-   'vehicleStatus': {}, 'arenaBonusType': 0})
+   'vehicleStatus': {}, 'arenaBonusType': 0, 
+   'hasPremium': False})
 _PERSONAL_PLAYER_NAME_VO_META = base.PropertyMeta((
  ('userName', '', 'userName'),
  ('clanAbbrev', '', 'clanAbbrev')))
@@ -38,17 +39,25 @@ BR_COMMON_STATS_BLOCK.addNextComponent(battle_royale.BattleRoyalePlayerPlaceBloc
 BR_COMMON_STATS_BLOCK.addNextComponent(battle_royale.BattleRoyaleIsSquadModeBlock('isSquadMode'))
 BR_COMMON_STATS_BLOCK.addNextComponent(battle_royale.BattleRoyaleVehicleStatusBlock(_VEHICLE_STATUS_BLOCK_VO_META, 'vehicleStatus', _RECORD.PERSONAL))
 BR_COMMON_STATS_BLOCK.addNextComponent(battle_royale.BattleRoyaleVehiclesBlock(base.ListMeta(), 'playerVehicles', _RECORD.PERSONAL))
-_PERSONAL_VO_META = base.DictMeta({'financialBalance': {}, 'stats': [], 'rewards': {}, 'battlePass': {}})
+BR_COMMON_STATS_BLOCK.addNextComponent(battle_royale.BattleRoyaleIsPremiumBlock('hasPremium'))
+_PERSONAL_VO_META = base.DictMeta({'financialBalance': {}, 'financialBalancePrem': {}, 'stats': [], 'rewards': {}, 'battlePass': {}})
 _PERSONAL_VEHICLE_VO_META = base.PropertyMeta((
- ('nationName', '', 'nationName'),
  ('vehicleName', '', 'vehicleName'),
+ ('vehicleType', '', 'vehicleType'),
  ('isObserver', '', 'isObserver')))
 _PERSONAL_VEHICLE_VO_META.bind(battle_royale.BattleRoyalePersonalVehicleBlock)
 _FINANCIAL_BLOCK_VO_META = base.PropertyMeta((
  ('credits', 0, 'credits'),
  ('xp', 0, 'xp'),
- ('crystal', 0, 'crystal')))
+ ('crystal', 0, 'crystal'),
+ ('brcoin', 0, 'brcoin')))
 _FINANCIAL_BLOCK_VO_META.bind(battle_royale.BattleRoyaleFinancialBlock)
+_FINANCIAL_PREM_BLOCK_VO_META = base.PropertyMeta((
+ ('credits', 0, 'credits'),
+ ('xp', 0, 'xp'),
+ ('crystal', 0, 'crystal'),
+ ('brcoin', 0, 'brcoin')))
+_FINANCIAL_PREM_BLOCK_VO_META.bind(battle_royale.BattleRoyaleFinancialPremBlock)
 _STAT_ITEM_VO_META = base.PropertyMeta((
  ('type', '', 'type'),
  ('value', 0, 'value'),
@@ -61,7 +70,12 @@ _BATTLE_PASS_VO_META = base.PropertyMeta((
  ('maxPoints', 0, 'maxPoints'),
  ('earnedPoints', 0, 'earnedPoints'),
  ('currentLevelPoints', 0, 'currentLevelPoints'),
- ('isDone', 0, 'isDone')))
+ ('isDone', 0, 'isDone'),
+ ('hasBattlePass', 0, 'hasBattlePass'),
+ ('battlePassComplete', 0, 'battlePassComplete'),
+ ('chapterID', 0, 'chapterID'),
+ ('pointsTotal', 0, 'pointsTotal'),
+ ('basePointsDiff', 0, 'basePointsDiff')))
 _BATTLE_PASS_VO_META.bind(battle_royale.BattlePassBlock)
 _REWARDS_VO_META = base.PropertyMeta((
  (
@@ -74,6 +88,7 @@ _REWARDS_VO_META = base.PropertyMeta((
 _REWARDS_VO_META.bind(battle_royale.BattleRoyaleRewardsBlock)
 BR_PERSONAL_STATS_BLOCK = base.StatsBlock(_PERSONAL_VO_META, 'personal')
 BR_PERSONAL_STATS_BLOCK.addNextComponent(battle_royale.BattleRoyaleFinancialBlock(_FINANCIAL_BLOCK_VO_META, 'financialBalance'))
+BR_PERSONAL_STATS_BLOCK.addNextComponent(battle_royale.BattleRoyaleFinancialPremBlock(_FINANCIAL_PREM_BLOCK_VO_META, 'financialBalancePrem'))
 BR_PERSONAL_STATS_BLOCK.addNextComponent(battle_royale.BattleRoyaleStatsBlock(base.ListMeta(), 'stats'))
 BR_PERSONAL_STATS_BLOCK.addNextComponent(battle_royale.BattleRoyaleRewardsBlock(_REWARDS_VO_META, 'rewards'))
 BR_PERSONAL_STATS_BLOCK.addNextComponent(battle_royale.BattlePassBlock(_BATTLE_PASS_VO_META, 'battlePass', _RECORD.PERSONAL))
@@ -88,9 +103,10 @@ TEAM_ITEM_VO_META = base.PropertyMeta((
  ('hiddenName', '', 'hiddenName'),
  ('clanAbbrev', '', 'clanAbbrev'),
  ('vehicleName', '', 'vehicleName'),
- ('nationName', '', 'nationName'),
+ ('vehicleType', '', 'vehicleType'),
  ('achievedLevel', 0, 'achievedLevel'),
  ('damage', 0, 'damage'),
- ('kills', 0, 'kills')))
+ ('kills', 0, 'kills'),
+ ('databaseID', 0, 'databaseID')))
 TEAM_ITEM_VO_META.bind(battle_royale.BattleRoyalePlayerBlock)
 BR_TEAM_STATS_BLOCK = battle_royale.BattleRoyaleTeamStatsBlock(base.ListMeta(), 'leaderboard', _RECORD.VEHICLES)

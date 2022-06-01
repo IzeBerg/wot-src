@@ -47,9 +47,7 @@ _BATTLE_EVENT_TO_PLAYER_FEEDBACK_EVENT = {_BET.KILL: _FET.PLAYER_KILLED_ENEMY,
    _BET.SMOKE_ASSIST: _FET.SMOKE_ASSIST, 
    _BET.INSPIRE_ASSIST: _FET.INSPIRE_ASSIST, 
    _BET.MULTI_STUN: _FET.PLAYER_STUN_ENEMIES, 
-   _BET.EQUIPMENT_TIMER_EXPIRED: _FET.EQUIPMENT_TIMER_EXPIRED, 
-   _BET.SUPPLY_DAMAGE: _FET.PLAYER_DAMAGED_SUPPLY_ENEMY, 
-   _BET.SUPPLY_DESTROYED: _FET.PLAYER_DESTROYED_SUPPLY_ENEMY}
+   _BET.EQUIPMENT_TIMER_EXPIRED: _FET.EQUIPMENT_TIMER_EXPIRED}
 _PLAYER_FEEDBACK_EXTRA_DATA_CONVERTERS = {_FET.PLAYER_DAMAGED_HP_ENEMY: _unpackDamage, 
    _FET.PLAYER_ASSIST_TO_KILL_ENEMY: _unpackDamage, 
    _FET.PLAYER_CAPTURED_BASE: _unpackInteger, 
@@ -67,8 +65,7 @@ _PLAYER_FEEDBACK_EXTRA_DATA_CONVERTERS = {_FET.PLAYER_DAMAGED_HP_ENEMY: _unpackD
    _FET.SMOKE_ASSIST: _unpackDamage, 
    _FET.INSPIRE_ASSIST: _unpackDamage, 
    _FET.PLAYER_SPOTTED_ENEMY: _unpackVisibility, 
-   _FET.PLAYER_STUN_ENEMIES: _unpackMultiStun, 
-   _FET.PLAYER_DAMAGED_SUPPLY_ENEMY: _unpackDamage}
+   _FET.PLAYER_STUN_ENEMIES: _unpackMultiStun}
 
 def _getShellType(shellTypeID):
     if shellTypeID == NONE_SHELL_TYPE:
@@ -97,6 +94,9 @@ class _DamageExtra(object):
 
     def getAttackReasonID(self):
         return self.__attackReasonID
+
+    def getSecondaryAttackReasonID(self):
+        return self.__secondaryAttackReasonID
 
     def getShellType(self):
         return self.__shellType
@@ -141,6 +141,11 @@ class _DamageExtra(object):
             return self.isAttackReason(ATTACK_REASON.ARTILLERY_EQ)
         return self.isSecondaryAttackReason(ATTACK_REASON.ARTILLERY_EQ)
 
+    def isFortArtilleryEq(self, primary=True):
+        if primary:
+            return self.isAttackReason(ATTACK_REASON.FORT_ARTILLERY_EQ)
+        return self.isSecondaryAttackReason(ATTACK_REASON.FORT_ARTILLERY_EQ)
+
     def isBomberEq(self, primary=True):
         if primary:
             return self.isAttackReason(ATTACK_REASON.BOMBER_EQ)
@@ -161,6 +166,21 @@ class _DamageExtra(object):
             return self.isAttackReason(ATTACK_REASON.SMOKE)
         return self.isSecondaryAttackReason(ATTACK_REASON.SMOKE)
 
+    def isCorrodingShot(self, primary=True):
+        if primary:
+            return self.isAttackReason(ATTACK_REASON.CORRODING_SHOT)
+        return self.isSecondaryAttackReason(ATTACK_REASON.CORRODING_SHOT)
+
+    def isFireCircle(self, primary=True):
+        if primary:
+            return self.isAttackReason(ATTACK_REASON.FIRE_CIRCLE)
+        return self.isSecondaryAttackReason(ATTACK_REASON.FIRE_CIRCLE)
+
+    def isThunderStrike(self, primary=True):
+        if primary:
+            return self.isAttackReason(ATTACK_REASON.THUNDER_STRIKE)
+        return self.isSecondaryAttackReason(ATTACK_REASON.THUNDER_STRIKE)
+
     def isAttackReason(self, attackReason):
         return ATTACK_REASONS[self.__attackReasonID] == attackReason
 
@@ -177,8 +197,16 @@ class _DamageExtra(object):
 
     def isSpawnedBotRam(self, primary=True):
         if primary:
-            return self.isAttackReason(ATTACK_REASON.SPAWNED_BOT_RAM)
-        return self.isSecondaryAttackReason(ATTACK_REASON.SPAWNED_BOT_RAM)
+            return self.isAttackReason(ATTACK_REASON.BRANDER_RAM)
+        return self.isSecondaryAttackReason(ATTACK_REASON.BRANDER_RAM)
+
+    def isClingBrander(self):
+        isShot = self.isAttackReason(ATTACK_REASON.SHOT)
+        isClingBrander = self.isSecondaryAttackReason(ATTACK_REASON.CLING_BRANDER)
+        return isShot and isClingBrander
+
+    def isClingBranderRam(self):
+        return self.isAttackReason(ATTACK_REASON.CLING_BRANDER_RAM)
 
 
 class _VisibilityExtra(object):
@@ -250,6 +278,15 @@ class _CritsExtra(object):
     def isDamagingSmoke(self):
         return self.isAttackReason(ATTACK_REASON.SMOKE)
 
+    def isCorrodingShot(self):
+        return self.isAttackReason(ATTACK_REASON.CORRODING_SHOT)
+
+    def isFireCircle(self):
+        return self.isAttackReason(ATTACK_REASON.FIRE_CIRCLE)
+
+    def isThunderStrike(self):
+        return self.isAttackReason(ATTACK_REASON.THUNDER_STRIKE)
+
     def isRam(self):
         return self.isAttackReason(ATTACK_REASON.RAM)
 
@@ -272,6 +309,11 @@ class _CritsExtra(object):
             return self.isAttackReason(ATTACK_REASON.ARTILLERY_EQ)
         return self.isSecondaryAttackReason(ATTACK_REASON.ARTILLERY_EQ)
 
+    def isFortArtilleryEq(self, primary=True):
+        if primary:
+            return self.isAttackReason(ATTACK_REASON.FORT_ARTILLERY_EQ)
+        return self.isSecondaryAttackReason(ATTACK_REASON.FORT_ARTILLERY_EQ)
+
     def isBomberEq(self, primary=True):
         if primary:
             return self.isAttackReason(ATTACK_REASON.BOMBER_EQ)
@@ -287,6 +329,14 @@ class _CritsExtra(object):
 
     def isAttackReason(self, attackReason):
         return ATTACK_REASONS[self.__attackReasonID] == attackReason
+
+    def isClingBrander(self):
+        isShot = self.isAttackReason(ATTACK_REASON.SHOT)
+        isClingBrander = self.isSecondaryAttackReason(ATTACK_REASON.CLING_BRANDER)
+        return isShot and isClingBrander
+
+    def isClingBranderRam(self):
+        return self.isAttackReason(ATTACK_REASON.CLING_BRANDER_RAM)
 
 
 class _FeedbackEvent(object):
@@ -305,7 +355,8 @@ class _FeedbackEvent(object):
 
 
 class PlayerFeedbackEvent(_FeedbackEvent):
-    __slots__ = ('__battleEventType', '__targetID', '__count', '__extra', '__role')
+    __slots__ = ('__battleEventType', '__targetID', '__count', '__extra', '__attackReasonID',
+                 '__isBurst', '__role')
 
     def __init__(self, feedbackEventType, eventType, targetID, count, role, extra):
         super(PlayerFeedbackEvent, self).__init__(feedbackEventType)
@@ -350,20 +401,19 @@ class PlayerFeedbackEvent(_FeedbackEvent):
 
 class BattleSummaryFeedbackEvent(_FeedbackEvent):
     __slots__ = ('__damage', '__trackAssistDamage', '__radioAssistDamage', '__blockedDamage',
-                 '__stunAssist', '__damageSupply')
+                 '__stunAssist')
 
-    def __init__(self, damage, trackAssist, radioAssist, tankings, stunAssist, damageSupply):
+    def __init__(self, damage, trackAssist, radioAssist, tankings, stunAssist):
         super(BattleSummaryFeedbackEvent, self).__init__(_FET.DAMAGE_LOG_SUMMARY)
         self.__damage = damage
         self.__trackAssistDamage = trackAssist
         self.__radioAssistDamage = radioAssist
         self.__blockedDamage = tankings
         self.__stunAssist = stunAssist
-        self.__damageSupply = damageSupply
 
     @staticmethod
     def fromDict(summaryData, additionalData=None):
-        return BattleSummaryFeedbackEvent(damage=summaryData['damage'], trackAssist=summaryData['trackAssist'], radioAssist=summaryData['radioAssist'], tankings=summaryData['tankings'], stunAssist=summaryData['stunAssist'], damageSupply=summaryData['damageSupply'])
+        return BattleSummaryFeedbackEvent(damage=summaryData['damage'], trackAssist=summaryData['trackAssist'], radioAssist=summaryData['radioAssist'], tankings=summaryData['tankings'], stunAssist=summaryData['stunAssist'])
 
     def getTotalDamage(self):
         return self.__damage
@@ -376,9 +426,6 @@ class BattleSummaryFeedbackEvent(_FeedbackEvent):
 
     def getTotalStunDamage(self):
         return self.__stunAssist
-
-    def getTotalDamageSupply(self):
-        return self.__damageSupply
 
 
 class PostmortemSummaryEvent(_FeedbackEvent):

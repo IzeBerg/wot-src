@@ -12,6 +12,7 @@ from skeletons.connection_mgr import IConnectionManager
 from skeletons.gameplay import IGameplayLogic
 from async import async, await
 from gui.impl.dialogs import dialogs
+from system_events import g_systemEvents
 loadingScreenClass = GameLoading
 __import__('__main__').GameLoading = loadingScreenClass
 try:
@@ -26,7 +27,6 @@ class ServiceLocator(object):
 
 g_replayCtrl = None
 g_onBeforeSendEvent = None
-RECURSION_LIMIT = 1100
 
 def autoFlushPythonLog():
     BigWorld.flushPythonLog()
@@ -38,6 +38,10 @@ def init(scriptConfig, engineConfig, userPreferences, loadingScreenGUI=None):
     global g_replayCtrl
     try:
         log.config.setupFromXML()
+        import extension_rules
+        extension_rules.init()
+        import arena_bonus_type_caps
+        arena_bonus_type_caps.init()
         if constants.IS_DEVELOPMENT:
             autoFlushPythonLog()
             from development_features import initDevBonusTypes
@@ -75,7 +79,8 @@ def init(scriptConfig, engineConfig, userPreferences, loadingScreenGUI=None):
         import motivation_quests
         motivation_quests.init()
         BigWorld.worldDrawEnabled(False)
-        dependency.configure(services_config.getClientServicesConfig)
+        manager = dependency.configure(services_config.getClientServicesConfig)
+        g_systemEvents.onDependencyConfigReady(manager)
         SoundGroups.g_instance.startListeningGUISpaceChanges()
         gui_personality.init(loadingScreenGUI=loadingScreenGUI)
         EdgeDetectColorController.g_instance.create()
@@ -96,7 +101,6 @@ def init(scriptConfig, engineConfig, userPreferences, loadingScreenGUI=None):
         if constants.HAS_DEV_RESOURCES:
             import development
             development.init()
-        sys.setrecursionlimit(RECURSION_LIMIT)
     except Exception:
         LOG_CURRENT_EXCEPTION()
         BigWorld.quit()
@@ -432,8 +436,7 @@ _PYTHON_MACROS = {'p': 'BigWorld.player()',
    'setHero': 'from HeroTank import debugReloadHero; debugReloadHero', 
    'switchNation': 'import Account; Account.g_accountRepository.inventory.switchNation()', 
    'plugins': 'from gui.Scaleform.daapi.view.battle.shared.markers2d.plugins import Ping3DPositionPlugin', 
-   'setPlatoonTanks': 'from gui.development.dev_platoon_tank_models import debugSetPlatoonTanks; debugSetPlatoonTanks', 
-   'loadFormation': 'from gui.battle_control.controllers.commander.commands.vehicle_formation import g_formationMgr,RTS_VEHICLE_FORMATION_CFG; g_formationMgr.load(RTS_VEHICLE_FORMATION_CFG)'}
+   'setPlatoonTanks': 'from gui.development.dev_platoon_tank_models import debugSetPlatoonTanks; debugSetPlatoonTanks'}
 
 def expandMacros(line):
     import re

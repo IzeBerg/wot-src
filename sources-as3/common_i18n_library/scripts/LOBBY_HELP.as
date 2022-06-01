@@ -25,15 +25,7 @@ package
       
       public static const CHANNELCAROUSEL_CHANNELS:String = "#lobby_help:channelCarousel/channels";
       
-      public static const HANGAR_AMMUNITIONPANEL_OPTDEVICES:String = "#lobby_help:hangar/ammunitionPanel/optDevices";
-      
-      public static const HANGAR_AMMUNITIONPANEL_SHELLS:String = "#lobby_help:hangar/ammunitionPanel/shells";
-      
-      public static const HANGAR_AMMUNITIONPANEL_CONSUMABLES:String = "#lobby_help:hangar/ammunitionPanel/consumables";
-      
-      public static const HANGAR_AMMUNITIONPANEL_BATTLEBOOSTERS:String = "#lobby_help:hangar/ammunitionPanel/battleBoosters";
-      
-      public static const HANGAR_AMMUNITIONPANEL_BATTLEABILITIES:String = "#lobby_help:hangar/ammunitionPanel/battleAbilities";
+      public static const HANGAR_AMMUNITIONPANEL_MAIN:String = "#lobby_help:hangar/ammunitionPanel/main";
       
       public static const HANGAR_CREW:String = "#lobby_help:hangar/crew";
       
@@ -55,7 +47,7 @@ package
       
       public static const HANGAR_SESSIONSTATS:String = "#lobby_help:hangar/sessionStats";
       
-      public static const HANGAR_AMMUNITIONPANEL_ENUM:Array = [HANGAR_AMMUNITIONPANEL_OPTDEVICES,HANGAR_AMMUNITIONPANEL_SHELLS,HANGAR_AMMUNITIONPANEL_CONSUMABLES,HANGAR_AMMUNITIONPANEL_BATTLEBOOSTERS,HANGAR_AMMUNITIONPANEL_BATTLEABILITIES];
+      public static const HANGAR_AMMUNITIONPANEL_ENUM:Array = [HANGAR_AMMUNITIONPANEL_MAIN];
        
       
       public function LOBBY_HELP()

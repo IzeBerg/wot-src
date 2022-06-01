@@ -14,7 +14,7 @@ package net.wg.gui.battle.battleRoyale.views.playersPanel
       
       public var vehicleLevel:String = "";
       
-      public var nationIcon:String = "";
+      public var vehicleTypeIcon:String = "";
       
       public var teamIndex:int = -1;
       

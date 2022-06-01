@@ -117,8 +117,9 @@ package net.wg.gui.components.tooltips.helpers
       
       public function addHeader(param1:String, param2:Number, param3:Number, param4:String) : TextField
       {
+         var _loc6_:TextFormat = null;
          var _loc5_:TextField = App.textMgr.createTextField();
-         var _loc6_:TextFormat = new TextFormat();
+         _loc6_ = new TextFormat();
          _loc6_.leading = -3;
          _loc6_.align = TextFormatAlign.LEFT;
          _loc5_.name = param1;

@@ -1,36 +1,20 @@
+import PlayerEvents
+from gui.shared.system_factory import collectBattleControllerRepo
 from gui.battle_control.controllers.repositories import BattleSessionSetup
 from gui.battle_control.controllers.repositories import SharedControllersLocator
 from gui.battle_control.controllers.repositories import DynamicControllersLocator
 from gui.battle_control.controllers.repositories import ClassicControllersRepository
-from gui.battle_control.controllers.repositories import EpicControllersRepository
-from gui.battle_control.controllers.repositories import EventControllerRepository
 from gui.battle_control.controllers.repositories import SharedControllersRepository
-from gui.battle_control.controllers.repositories import BattleRoyaleControllersRepository
-from gui.battle_control.controllers.repositories import MapsTrainingControllerRepository, RTSControllersRepository
-from gui.battle_control.controllers.repositories import RTS1x1ControllersRepository
+from gui.battle_control.controllers.repositories import _ControllersRepository
 __all__ = ('createShared', 'createDynamic', 'BattleSessionSetup', 'SharedControllersLocator',
-           'DynamicControllersLocator')
+           'DynamicControllersLocator', '_ControllersRepository')
 
 def createShared(setup):
     return SharedControllersLocator(SharedControllersRepository.create(setup))
 
 
 def createDynamic(setup):
-    guiVisitor = setup.arenaVisitor.gui
-    if guiVisitor.isInEpicRange():
-        repository = EpicControllersRepository.create(setup)
-    elif guiVisitor.isBattleRoyale():
-        repository = BattleRoyaleControllersRepository.create(setup)
-    elif guiVisitor.isEventBattle():
-        repository = EventControllerRepository.create(setup)
-    elif guiVisitor.isMapsTraining():
-        repository = MapsTrainingControllerRepository.create(setup)
-    elif guiVisitor.isAnyRTSBattle():
-        repository = RTSControllersRepository.create(setup)
-    elif guiVisitor.isRTS1x1Battle():
-        repository = RTS1x1ControllersRepository.create(setup)
-    elif not guiVisitor.isTutorialBattle():
+    repository, inited = collectBattleControllerRepo(setup.arenaVisitor.gui.guiType, setup)
+    if not inited:
         repository = ClassicControllersRepository.create(setup)
-    else:
-        repository = None
     return DynamicControllersLocator(repository=repository)

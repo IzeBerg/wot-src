@@ -25,7 +25,15 @@ package net.wg.data.constants.generated
       
       public static const DAMAGE_LOG_BY_SPAWNED_BOT_16X16:String = "damageLog_by_spawned_bot_16x16";
       
+      public static const DAMAGE_LOG_CLING_BRANDER_16X16:String = "damageLog_cling_brander_16x16";
+      
+      public static const DAMAGE_LOG_CLING_BRANDER_ENEMY_16X16:String = "damageLog_cling_brander_enemy_16x16";
+      
       public static const DAMAGE_LOG_COORDINATE_16X16:String = "damageLog_coordinate_16x16";
+      
+      public static const DAMAGE_LOG_CORRODING_SHOT_16X16:String = "damageLog_corroding_shot_16x16";
+      
+      public static const DAMAGE_LOG_CORRODING_SHOT_ENEMY_16X16:String = "damageLog_corroding_shot_enemy_16x16";
       
       public static const DAMAGE_LOG_CRITICAL_16X16:String = "damageLog_critical_16x16";
       
@@ -53,9 +61,15 @@ package net.wg.data.constants.generated
       
       public static const DAMAGE_LOG_FIRE_16X16:String = "damageLog_fire_16x16";
       
+      public static const DAMAGE_LOG_FIRE_CIRCLE_16X16:String = "damageLog_fire_circle_16x16";
+      
+      public static const DAMAGE_LOG_FIRE_CIRCLE_ENEMY_16X16:String = "damageLog_fire_circle_enemy_16x16";
+      
       public static const DAMAGE_LOG_FIRE_ENEMY_16X16:String = "damageLog_fire_enemy_16x16";
       
       public static const DAMAGE_LOG_FIRE_ENEMY_16X16_BLIND:String = "damageLog_fire_enemy_16x16Blind";
+      
+      public static const DAMAGE_LOG_FORT_ARTILLERY_16X16:String = "damageLog_fort_artillery_16x16";
       
       public static const DAMAGE_LOG_HEAVY_16X16:String = "damageLog_heavy_16x16";
       
@@ -81,7 +95,9 @@ package net.wg.data.constants.generated
       
       public static const DAMAGE_LOG_STUN_16X16:String = "damageLog_stun_16x16";
       
-      public static const DAMAGE_LOG_SUPPLY_DAMAGE_16X16:String = "damageLog_supply_damage_16x16";
+      public static const DAMAGE_LOG_THUNDER_STRIKE_16X16:String = "damageLog_thunder_strike_16x16";
+      
+      public static const DAMAGE_LOG_THUNDER_STRIKE_ENEMY_16X16:String = "damageLog_thunder_strike_enemy_16x16";
       
       public static const EMPTY_SHELL_BG:String = "emptyShellBg";
       
@@ -197,8 +213,6 @@ package net.wg.data.constants.generated
       
       public static const RIBBONS_STUN:String = "ribbonsStun";
       
-      public static const SUM:String = "sum";
-      
       public static const TURRET_ARMOR:String = "turret_armor";
       
       public static const TURRET_HEALTH:String = "turret_health";
@@ -215,15 +229,7 @@ package net.wg.data.constants.generated
       
       public static const WHITE_EDGE:String = "whiteEdge";
       
-      public static const WHITE_ICON_A_TGUN16X16:String = "whiteIconATgun16x16";
-      
       public static const WHITE_ICON_AT_SPG16X16:String = "whiteIconAt-SPG16x16";
-      
-      public static const WHITE_ICON_BARRICADES16X16:String = "whiteIconBarricades16x16";
-      
-      public static const WHITE_ICON_FLAMER16X16:String = "whiteIconFlamer16x16";
-      
-      public static const WHITE_ICON_GUN16X16:String = "whiteIconGun16x16";
       
       public static const WHITE_ICON_HEAVY_TANK16X16:String = "whiteIconHeavyTank16x16";
       
@@ -231,13 +237,7 @@ package net.wg.data.constants.generated
       
       public static const WHITE_ICON_MEDIUM_TANK16X16:String = "whiteIconMediumTank16x16";
       
-      public static const WHITE_ICON_MORTAR16X16:String = "whiteIconMortar16x16";
-      
-      public static const WHITE_ICON_PILLBOX16X16:String = "whiteIconPillbox16x16";
-      
       public static const WHITE_ICON_SPG16X16:String = "whiteIconSPG16x16";
-      
-      public static const WHITE_ICON_TOWER16X16:String = "whiteIconTower16x16";
        
       
       public function COMMONBATTLELOBBY()

@@ -9,6 +9,10 @@ package
       
       public static const SECTION_STATISTICS_CHART_LEVEL_TOOLTIP:String = "#profile:section/statistics/chart/level/tooltip";
       
+      public static const SECTION_STATISTICS_CHART_PLACE_TOOLTIP:String = "#profile:section/statistics/chart/place/tooltip";
+      
+      public static const SECTION_STATISTICS_CHART_CLASS_TOOLTIP:String = "#profile:section/statistics/chart/class/tooltip";
+      
       public static const PROFILE_PARAMS_TOOLTIP_BATTLESCOUNT:String = "#profile:profile/params/tooltip/battlesCount";
       
       public static const PROFILE_PARAMS_TOOLTIP_WINS:String = "#profile:profile/params/tooltip/wins";
@@ -23,9 +27,31 @@ package
       
       public static const PROFILE_PARAMS_TOOLTIP_AVGDAMAGE:String = "#profile:profile/params/tooltip/avgDamage";
       
+      public static const PROFILE_PARAMS_TOOLTIP_BRAVGDAMAGE:String = "#profile:profile/params/tooltip/brAvgDamage";
+      
       public static const SECTION_TECHNIQUE_SORT_TOOLTIP_NATION:String = "#profile:section/technique/sort/tooltip/nation";
       
       public static const PROFILE_PARAMS_TOOLTIP_HITS:String = "#profile:profile/params/tooltip/hits";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRBATTLESCOUNT:String = "#profile:profile/params/tooltip/brBattlesCount";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRWINS:String = "#profile:profile/params/tooltip/brWins";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRAVERAGELEVEL:String = "#profile:profile/params/tooltip/brAverageLevel";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRAVERAGERANK:String = "#profile:profile/params/tooltip/brAverageRank";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRMAXEXP:String = "#profile:profile/params/tooltip/brMaxExp";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRMAXDAMAGE:String = "#profile:profile/params/tooltip/brMaxDamage";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRMAXFRAGS:String = "#profile:profile/params/tooltip/brMaxFrags";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_MAXEXP_VEHICLE:String = "#profile:profile/params/tooltip/maxExp/vehicle";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_MAXDESTROYED_VEHICLE:String = "#profile:profile/params/tooltip/maxDestroyed/vehicle";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_MAXDAMAGE_VEHICLE:String = "#profile:profile/params/tooltip/maxDamage/vehicle";
       
       public static const TOOLTIP_DROPDOWN_BATTLETYPE:String = "#profile:tooltip/dropdown/battleType";
       
@@ -100,6 +126,12 @@ package
       public static const SECTION_SUMMARY_SCORES_HITS:String = "#profile:section/summary/scores/hits";
       
       public static const SECTION_SUMMARY_SCORES_PERSONALSCORE:String = "#profile:section/summary/scores/personalScore";
+      
+      public static const SECTION_SUMMARY_SCORES_AVERAGERANK:String = "#profile:section/summary/scores/averageRank";
+      
+      public static const SECTION_SUMMARY_SCORES_AVERAGELEVEL:String = "#profile:section/summary/scores/averageLevel";
+      
+      public static const SECTION_SUMMARY_SCORES_DAMAGEDEALT:String = "#profile:section/summary/scores/damageDealt";
       
       public static const SECTION_SUMMARY_LABELS_SIGNIFICANTAWARDS:String = "#profile:section/summary/labels/significantAwards";
       
@@ -187,11 +219,19 @@ package
       
       public static const SECTION_STATISTICS_HEADERTEXT_RANKED_10X10:String = "#profile:section/statistics/headerText/ranked_10x10";
       
+      public static const SECTION_STATISTICS_HEADERTEXT_BATTLEROYALESOLO:String = "#profile:section/statistics/headerText/battleRoyaleSolo";
+      
+      public static const SECTION_STATISTICS_HEADERTEXT_BATTLEROYALESQUAD:String = "#profile:section/statistics/headerText/battleRoyaleSquad";
+      
       public static const SECTION_STATISTICS_CHARTS_BYTYPELABEL:String = "#profile:section/statistics/charts/byTypeLabel";
       
       public static const SECTION_STATISTICS_CHARTS_BYNATIONLABEL:String = "#profile:section/statistics/charts/byNationLabel";
       
       public static const SECTION_STATISTICS_CHARTS_BYLEVELLABEL:String = "#profile:section/statistics/charts/byLevelLabel";
+      
+      public static const SECTION_STATISTICS_CHARTS_BYPLACELABEL:String = "#profile:section/statistics/charts/byPlaceLabel";
+      
+      public static const SECTION_STATISTICS_CHARTS_BYCLASSLABEL:String = "#profile:section/statistics/charts/byClassLabel";
       
       public static const SECTION_STATISTICS_LABELS_BATTLESONTECH:String = "#profile:section/statistics/labels/battlesOnTech";
       
@@ -317,6 +357,10 @@ package
       
       public static const SECTION_STATISTICS_CHART_LEVEL_TOOLTIP_BODY:String = "#profile:section/statistics/chart/level/tooltip/body";
       
+      public static const SECTION_STATISTICS_CHART_PLACE_TOOLTIP_HEADER:String = "#profile:section/statistics/chart/place/tooltip/header";
+      
+      public static const SECTION_STATISTICS_CHART_PLACE_TOOLTIP_BODY:String = "#profile:section/statistics/chart/place/tooltip/body";
+      
       public static const SECTION_STATISTICS_CHART_LEVELDISABLED7X7_TOOLTIP_HEADER:String = "#profile:section/statistics/chart/levelDisabled7x7/tooltip/header";
       
       public static const SECTION_STATISTICS_CHART_LEVELDISABLED7X7_TOOLTIP_BODY:String = "#profile:section/statistics/chart/levelDisabled7x7/tooltip/body";
@@ -324,6 +368,10 @@ package
       public static const SECTION_STATISTICS_CHART_LEVELDISABLEDFALLOUT_TOOLTIP_HEADER:String = "#profile:section/statistics/chart/levelDisabledFallout/tooltip/header";
       
       public static const SECTION_STATISTICS_CHART_LEVELDISABLEDFALLOUT_TOOLTIP_BODY:String = "#profile:section/statistics/chart/levelDisabledFallout/tooltip/body";
+      
+      public static const SECTION_STATISTICS_CHART_CLASS_TOOLTIP_HEADER:String = "#profile:section/statistics/chart/class/tooltip/header";
+      
+      public static const SECTION_STATISTICS_CHART_CLASS_TOOLTIP_BODY:String = "#profile:section/statistics/chart/class/tooltip/body";
       
       public static const SECTION_STATISTICS_BODYBAR_LABEL_DETAILED:String = "#profile:section/statistics/bodyBar/label/detailed";
       
@@ -372,6 +420,10 @@ package
       public static const SECTION_TECHNIQUE_EMPTYSCREENLABEL_BATTLETYPE_FORTBATTLES:String = "#profile:section/technique/emptyScreenLabel/battleType/fortBattles";
       
       public static const SECTION_TECHNIQUE_EMPTYSCREENLABEL_BATTLETYPE_EPICRANDOM:String = "#profile:section/technique/emptyScreenLabel/battleType/epicRandom";
+      
+      public static const SECTION_TECHNIQUE_EMPTYSCREENLABEL_BATTLETYPE_BATTLEROYALESOLO:String = "#profile:section/technique/emptyScreenLabel/battleType/battleRoyaleSolo";
+      
+      public static const SECTION_TECHNIQUE_EMPTYSCREENLABEL_BATTLETYPE_BATTLEROYALESQUAD:String = "#profile:section/technique/emptyScreenLabel/battleType/battleRoyaleSquad";
       
       public static const SECTION_TECHNIQUE_TITLE:String = "#profile:section/technique/title";
       
@@ -519,9 +571,21 @@ package
       
       public static const SECTION_TECHNIQUE_SORT_TOOLTIP_AVGEXP_BODY:String = "#profile:section/technique/sort/tooltip/avgexp/body";
       
+      public static const SECTION_TECHNIQUE_SORT_TOOLTIP_AVGDAMAGE_HEADER:String = "#profile:section/technique/sort/tooltip/avgDamage/header";
+      
+      public static const SECTION_TECHNIQUE_SORT_TOOLTIP_AVGDAMAGE_BODY:String = "#profile:section/technique/sort/tooltip/avgDamage/body";
+      
+      public static const SECTION_TECHNIQUE_SORT_TOOLTIP_AVGFRAGS_HEADER:String = "#profile:section/technique/sort/tooltip/avgFrags/header";
+      
+      public static const SECTION_TECHNIQUE_SORT_TOOLTIP_AVGFRAGS_BODY:String = "#profile:section/technique/sort/tooltip/avgFrags/body";
+      
       public static const SECTION_TECHNIQUE_SORT_TOOLTIP_MARKSOFMASTERY_HEADER:String = "#profile:section/technique/sort/tooltip/marksofmastery/header";
       
       public static const SECTION_TECHNIQUE_SORT_TOOLTIP_MARKSOFMASTERY_BODY:String = "#profile:section/technique/sort/tooltip/marksofmastery/body";
+      
+      public static const SECTION_TECHNIQUE_SORT_TOOLTIP_CLASS_HEADER:String = "#profile:section/technique/sort/tooltip/class/header";
+      
+      public static const SECTION_TECHNIQUE_SORT_TOOLTIP_CLASS_BODY:String = "#profile:section/technique/sort/tooltip/class/body";
       
       public static const SECTION_FORMATIONS_TITLE:String = "#profile:section/formations/title";
       
@@ -644,6 +708,10 @@ package
       public static const PROFILE_DROPDOWN_LABELS_RANKED:String = "#profile:profile/dropdown/labels/ranked";
       
       public static const PROFILE_DROPDOWN_LABELS_RANKED_10X10:String = "#profile:profile/dropdown/labels/ranked_10x10";
+      
+      public static const PROFILE_DROPDOWN_LABELS_BATTLEROYALESOLO:String = "#profile:profile/dropdown/labels/battleRoyaleSolo";
+      
+      public static const PROFILE_DROPDOWN_LABELS_BATTLEROYALESQUAD:String = "#profile:profile/dropdown/labels/battleRoyaleSquad";
       
       public static const PROFILE_SEASONSDROPDOWN_ALL:String = "#profile:profile/seasonsdropdown/all";
       
@@ -970,6 +1038,38 @@ package
       public static const PROFILE_PARAMS_TOOLTIP_CLAN_SUMMARYDAMAGECOEFFICIENT_HEADER:String = "#profile:profile/params/tooltip/clan/summaryDamageCoefficient/header";
       
       public static const PROFILE_PARAMS_TOOLTIP_CLAN_SUMMARYDAMAGECOEFFICIENT_BODY:String = "#profile:profile/params/tooltip/clan/summaryDamageCoefficient/body";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRBATTLESCOUNT_HEADER:String = "#profile:profile/params/tooltip/brBattlesCount/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRBATTLESCOUNT_BODY:String = "#profile:profile/params/tooltip/brBattlesCount/body";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRWINS_HEADER:String = "#profile:profile/params/tooltip/brWins/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRWINS_BODY:String = "#profile:profile/params/tooltip/brWins/body";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRAVERAGERANK_HEADER:String = "#profile:profile/params/tooltip/brAverageRank/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRAVERAGERANK_BODY:String = "#profile:profile/params/tooltip/brAverageRank/body";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRAVERAGELEVEL_HEADER:String = "#profile:profile/params/tooltip/brAverageLevel/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRAVERAGELEVEL_BODY:String = "#profile:profile/params/tooltip/brAverageLevel/body";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRMAXEXP_HEADER:String = "#profile:profile/params/tooltip/brMaxExp/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRMAXEXP_BODY:String = "#profile:profile/params/tooltip/brMaxExp/body";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRMAXDAMAGE_HEADER:String = "#profile:profile/params/tooltip/brMaxDamage/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRMAXDAMAGE_BODY:String = "#profile:profile/params/tooltip/brMaxDamage/body";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRMAXFRAGS_HEADER:String = "#profile:profile/params/tooltip/brMaxFrags/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRMAXFRAGS_BODY:String = "#profile:profile/params/tooltip/brMaxFrags/body";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRAVGDAMAGE_HEADER:String = "#profile:profile/params/tooltip/brAvgDamage/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_BRAVGDAMAGE_BODY:String = "#profile:profile/params/tooltip/brAvgDamage/body";
        
       
       public function PROFILE()

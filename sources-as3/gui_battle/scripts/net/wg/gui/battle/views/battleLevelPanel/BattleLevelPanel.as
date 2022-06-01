@@ -171,6 +171,11 @@ package net.wg.gui.battle.views.battleLevelPanel
             this.midTF.reset();
             this.rightTF.reset();
             this.leftTF.reset();
+            if(this._soundOnEventInProgress)
+            {
+               onPlaySoundS(BR_LEVEL_PROGRESSION_OFF);
+               this._soundOnEventInProgress = false;
+            }
          }
       }
       

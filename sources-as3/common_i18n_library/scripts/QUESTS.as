@@ -23,6 +23,8 @@ package
       
       public static const MISSIONS_TAB_MAY21_MARATHON:String = "#quests:missions/tab/may21_marathon";
       
+      public static const MISSIONS_TAB_DRAGON_BOAT_MARATHON:String = "#quests:missions/tab/dragon_boat_marathon";
+      
       public static const MISSIONS_FILTERCOUNTER_CLOSEBUTTON:String = "#quests:missions/filterCounter/closeButton";
       
       public static const MISSIONS_FILTER_FILTERBUTTON:String = "#quests:missions/filter/filterButton";
@@ -133,6 +135,8 @@ package
       
       public static const BONUSES_EVENTCOIN_DESCRIPTION:String = "#quests:bonuses/eventCoin/description";
       
+      public static const BONUSES_DRAGONBOATPOINTS_DESCRIPTION:String = "#quests:bonuses/dragonBoatPoints/description";
+      
       public static const BONUSES_BPCOIN_DESCRIPTION:String = "#quests:bonuses/bpcoin/description";
       
       public static const BONUSES_FREEXP_DESCRIPTION:String = "#quests:bonuses/freeXP/description";
@@ -150,8 +154,6 @@ package
       public static const BONUSES_ITEM_TANKMEN_NO_SKILLS:String = "#quests:bonuses/item/tankmen/no_skills";
       
       public static const BONUSES_ITEM_TANKMEN_WITH_SKILLS:String = "#quests:bonuses/item/tankmen/with_skills";
-      
-      public static const BONUSES_RTSCOLLECTION:String = "#quests:bonuses/rtsCollection";
       
       public static const BONUSES_NOTAVAILABLE:String = "#quests:bonuses/notAvailable";
       
@@ -1473,14 +1475,6 @@ package
       
       public static const DETAILS_CONDITIONS_CUMULATIVE_XP_OTHER:String = "#quests:details/conditions/cumulative/xp/other";
       
-      public static const DETAILS_CONDITIONS_CUMULATIVE_RTSTANKEREVENTPOINTS:String = "#quests:details/conditions/cumulative/rtsTankerEventPoints";
-      
-      public static const DETAILS_CONDITIONS_CUMULATIVE_RTSSTRATEGISTEVENTPOINTS:String = "#quests:details/conditions/cumulative/rtsStrategistEventPoints";
-      
-      public static const DETAILS_CONDITIONS_RTSSTRATEGISTWIN:String = "#quests:details/conditions/rtsStrategistWin";
-      
-      public static const DETAILS_CONDITIONS_RTSTANKERTOP5:String = "#quests:details/conditions/rtsTankerTop5";
-      
       public static const DETAILS_DOSSIER_SNIPERSERIES:String = "#quests:details/dossier/sniperSeries";
       
       public static const DETAILS_DOSSIER_MAXSNIPERSERIES:String = "#quests:details/dossier/maxSniperSeries";
@@ -2107,9 +2101,9 @@ package
       
       public static const MISSIONS_TAB_BATTLE_PASS_HEADER:String = "#quests:missions/tab/battle_pass/header";
       
-      public static const MISSIONS_TAB_MAPBOX_BODY:String = "#quests:missions/tab/mapbox/body";
-      
       public static const MISSIONS_TAB_MAPBOX_HEADER:String = "#quests:missions/tab/mapbox/header";
+      
+      public static const MISSIONS_TAB_MAPBOX_BODY:String = "#quests:missions/tab/mapbox/body";
       
       public static const MISSIONS_TAB_LABEL_CURRENTVEHICLE:String = "#quests:missions/tab/label/currentVehicle";
       
@@ -2375,6 +2369,8 @@ package
       
       public static const TOKEN_DEFAULT_TANKREWARDS:String = "#quests:token/default/tankrewards";
       
+      public static const TOKEN_DEFAULT_BATTLE_ROYALE:String = "#quests:token/default/battle_royale";
+      
       public static const BONUSNAME_CREDITS:String = "#quests:bonusName/credits";
       
       public static const BONUSNAME_GOLD:String = "#quests:bonusName/gold";
@@ -2514,6 +2510,10 @@ package
       public static const BONUSNAME_BATTLEPASSPOINTS:String = "#quests:bonusName/battlePassPoints";
       
       public static const BONUSNAME_BATTLEPASSPOINTS_PREVIEW:String = "#quests:bonusName/battlePassPoints/preview";
+      
+      public static const BONUSNAME_BRCOIN:String = "#quests:bonusName/brcoin";
+      
+      public static const BONUSNAME_DRAGONBOATPOINTS:String = "#quests:bonusName/dragonBoatPoints";
       
       public static const ACTION_AUTO_CALENDAR:String = "#quests:action/auto/calendar";
       
@@ -3356,6 +3356,16 @@ package
       public static const DAILYQUESTS_CONDITION_DESTROYVEH_PLURAL_ACCUM:String = "#quests:dailyQuests/condition/destroyVeh_plural_accum";
       
       public static const DETAILS_CONDITIONS_CUMULATIVE_DAMAGEDHP:String = "#quests:details/conditions/cumulative/damagedHp";
+      
+      public static const MISSIONS_TAB_LABEL_DRAGON_BOAT_MARATHON:String = "#quests:missions/tab/label/dragon_boat_marathon";
+      
+      public static const MISSIONS_TAB_DRAGON_BOAT_MARATHON_HEADER:String = "#quests:missions/tab/dragon_boat_marathon/header";
+      
+      public static const MISSIONS_TAB_DRAGON_BOAT_MARATHON_BODY:String = "#quests:missions/tab/dragon_boat_marathon/body";
+      
+      public static const DRAGONBOAT_POSTBATTLE_DAILY:String = "#quests:dragonBoat/postBattle/daily";
+      
+      public static const DRAGONBOAT_POSTBATTLE_WEEKLY:String = "#quests:dragonBoat/postBattle/weekly";
       
       public static const BATTLECONDITION_STATE_ENUM:Array = [BATTLECONDITION_STATE_COMPLETED,BATTLECONDITION_STATE_COMPLETED_PERFECTLY,BATTLECONDITION_STATE_IN_PROGRESS,BATTLECONDITION_STATE_FAILED];
       

@@ -1,4 +1,4 @@
-import logging
+import logging, math
 from collections import namedtuple
 import BigWorld
 from Math import Vector2
@@ -20,6 +20,7 @@ def readTerrainCircleSettings(xmlSection, xmlCtx, xmlTag):
 
 
 class TerrainCircleComponent(CallbackDelayer):
+    CUT_OFF_ANGLE = math.radians(60)
 
     def __init__(self):
         super(TerrainCircleComponent, self).__init__()
@@ -45,6 +46,7 @@ class TerrainCircleComponent(CallbackDelayer):
             self.__update()
         if terrainCircleSettings.cutOffYDistance > 0.0:
             visual.doYCutOff(True)
+            visual.setCutOffAngle(self.CUT_OFF_ANGLE)
         return
 
     def destroy(self):

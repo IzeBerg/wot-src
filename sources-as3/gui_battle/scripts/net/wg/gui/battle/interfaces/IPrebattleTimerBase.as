@@ -9,12 +9,6 @@ package net.wg.gui.battle.interfaces
       
       function updateStage(param1:Number, param2:Number) : void;
       
-      function showBackground() : void;
-      
-      function showDescription() : void;
-      
       function hideBackground() : void;
-      
-      function hideDescription() : void;
    }
 }

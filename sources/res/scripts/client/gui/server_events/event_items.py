@@ -12,7 +12,7 @@ from gui.impl.gen import R
 from gui.ranked_battles.ranked_helpers import getQualificationBattlesCountFromID, isQualificationQuestID
 from gui.server_events import events_helpers, finders
 from gui.server_events.bonuses import compareBonuses, getBonuses
-from gui.server_events.events_helpers import isDailyQuest, isPremium
+from gui.server_events.events_helpers import isDailyQuest, isPremium, isDragonBoatQuest
 from gui.server_events.formatters import getLinkedActionID
 from gui.server_events.modifiers import compareModifiers, getModifierObj
 from gui.server_events.parsers import AccountRequirements, BonusConditions, PostBattleConditions, PreBattleConditions, TokenQuestAccountRequirements, VehicleRequirements
@@ -328,9 +328,6 @@ class Quest(ServerEventAbstract):
     def shouldBeShown(self):
         if events_helpers.isMapsTraining(self.getGroupID()):
             return self.isAvailable().isValid and self.lobbyContext.getServerSettings().isMapsTrainingEnabled()
-        if events_helpers.isRts(self.getID()):
-            isRtsEnabled = self.lobbyContext.getServerSettings().getRTSBattlesConfig().isEnabled
-            return not self.isHidden() and isRtsEnabled
         return True
 
     def getGroupType(self):
@@ -434,9 +431,6 @@ class Quest(ServerEventAbstract):
                 result.append(self._bonusDecorator(bonus))
 
         return sorted(result, cmp=compareBonuses, key=operator.methodcaller('getName'))
-
-    def getSortKey(self):
-        return
 
     def __getVehicleStyleBonuses(self, vehiclesData):
         stylesData = []
@@ -548,6 +542,20 @@ class DailyEpicTokenQuest(TokenQuest):
 
     def getUserName(self):
         return backport.text(R.strings.quests.dailyQuests.postBattle.genericTitle_epic())
+
+
+class DragonBoatQuest(Quest):
+
+    def getUserNameForPostBattle(self):
+        if 'daily' in self.getID():
+            return backport.text(R.strings.quests.dragonBoat.postBattle.daily())
+        if 'weekly' in self.getID():
+            return backport.text(R.strings.quests.dragonBoat.postBattle.weekly())
+        return super(DragonBoatQuest, self).getUserName()
+
+
+class DragonBoatTokenQuest(TokenQuest):
+    pass
 
 
 class PersonalQuest(Quest):
@@ -1356,6 +1364,8 @@ def createQuest(questType, qID, data, progress=None, expiryTime=None):
             tokenClass = LinkedSetTokenQuest
         elif isDailyQuest(qID):
             tokenClass = DailyEpicTokenQuest
+        elif isDragonBoatQuest(qID):
+            tokenClass = DragonBoatTokenQuest
         else:
             tokenClass = TokenQuest
         return tokenClass(qID, data, progress)
@@ -1366,6 +1376,8 @@ def createQuest(questType, qID, data, progress=None, expiryTime=None):
         questClass = PremiumQuest
     elif isDailyQuest(qID):
         questClass = DailyQuest
+    elif isDragonBoatQuest(qID):
+        questClass = DragonBoatQuest
     return questClass(qID, data, progress)
 
 

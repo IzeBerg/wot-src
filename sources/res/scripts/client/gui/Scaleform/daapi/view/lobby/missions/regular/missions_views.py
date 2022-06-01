@@ -24,7 +24,6 @@ from gui.Scaleform.locale.QUESTS import QUESTS
 from gui.Scaleform.genConsts.QUESTS_ALIASES import QUESTS_ALIASES
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.event_boards.settings import expandGroup, isGroupMinimized
-from gui.impl.gen.view_models.views.lobby.rts.meta_tab_model import Tabs
 from gui.server_events import settings, caches
 from gui.server_events.event_items import DEFAULTS_GROUPS
 from gui.server_events.events_dispatcher import hideMissionDetails
@@ -33,11 +32,11 @@ from gui.server_events.events_helpers import isMarathon, isDailyQuest, isPremium
 from gui.shared import actions
 from gui.shared import events, g_eventBus
 from gui.shared.event_bus import EVENT_BUS_SCOPE
-from gui.shared.event_dispatcher import showTankPremiumAboutPage, showRTSMetaRootWindow
+from gui.shared.event_dispatcher import showTankPremiumAboutPage
 from gui.shared.formatters import text_styles, icons
 from helpers import dependency
 from helpers.i18n import makeString as _ms
-from skeletons.gui.game_control import IReloginController, IMarathonEventsController, IBrowserController, IRTSBattlesController
+from skeletons.gui.game_control import IReloginController, IMarathonEventsController, IBrowserController, IDragonBoatController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from gui import makeHtmlString
@@ -57,9 +56,6 @@ class _GroupedMissionsView(MissionsGroupedViewMeta):
                     blockData['isCollapsed'] = settings.isGroupMinimized(gID)
 
         return
-
-    def onGotoRtsQuestsClick(self):
-        pass
 
 
 class MissionsGroupedView(_GroupedMissionsView):
@@ -196,6 +192,119 @@ class MissionsMarathonView(MissionsMarathonViewMeta):
         if browser:
             if self.__viewActive:
                 browser.skipEscape = not self._marathonEvent.isNeedHandlingEscape
+                browser.useSpecialKeys = False
+            else:
+                browser.skipEscape = False
+                browser.useSpecialKeys = True
+
+
+class MissionsDragonBoatView(MissionsMarathonViewMeta):
+    _browserCtrl = dependency.descriptor(IBrowserController)
+    _dragonBoatCtrl = dependency.descriptor(IDragonBoatController)
+    eventsCache = dependency.descriptor(IEventsCache)
+
+    def __init__(self):
+        super(MissionsDragonBoatView, self).__init__()
+        self.__browserID = None
+        self._width = 0
+        self._height = 0
+        self._builder = None
+        self.__loadBrowserCallbackID = None
+        self.__browserView = None
+        self.__ctx = None
+        return
+
+    def closeView(self):
+        self.fireEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_HANGAR)), scope=EVENT_BUS_SCOPE.LOBBY)
+
+    def getSuitableEvents(self):
+        return []
+
+    @process
+    def reload(self):
+        browser = self._browserCtrl.getBrowser(self.__browserID)
+        if browser is not None and self.__browserView:
+            url = yield self._dragonBoatCtrl.getUrl()
+            if url:
+                self.__browserView.showLoading(True)
+                browser.navigate(url)
+        else:
+            yield lambda callback: callback(True)
+        return
+
+    def setActive(self, value):
+        self.reload()
+
+    def setBuilder(self, builder, filterData, eventID):
+        self._builder = builder
+        self._onEventsUpdate()
+
+    def viewSize(self, width, height):
+        self._width = width
+        self._height = height
+
+    def markVisited(self):
+        pass
+
+    def setCtx(self, ctx):
+        self.__ctx = ctx
+
+    @process
+    def _onRegisterFlashComponent(self, viewPy, alias):
+        if alias == VIEW_ALIAS.BROWSER:
+            if self.__browserID is None:
+                urlName = self.__ctx.get('url') if self.__ctx else None
+                url = yield self._dragonBoatCtrl.getUrl(urlName)
+                browserID = yield self._browserCtrl.load(url=url, useBrowserWindow=False, browserID=self.__browserID, browserSize=(
+                 self._width, self._height))
+                self.__browserID = browserID
+                viewPy.init(browserID, self._dragonBoatCtrl.createWebHandlers(), alias=alias)
+                self.__browserView = viewPy
+                self.__browserView.showContentUnderLoading = False
+                self.__updateBrowserProperties()
+            else:
+                LOG_ERROR('Attampt to initialize browser 2nd time!')
+        return
+
+    @async
+    def _onEventsUpdate(self, *args):
+        yield await(self.eventsCache.prefetcher.demand())
+        if self._builder:
+            self.__updateEvents()
+
+    def _populate(self):
+        super(MissionsDragonBoatView, self)._populate()
+        Waiting.hide('loadPage')
+        self.__loadBrowserCallbackID = BigWorld.callback(0.01, self.__loadBrowser)
+        g_eventBus.addListener(events.MissionsEvent.ON_TAB_CHANGED, self.__updateBrowserProperties, EVENT_BUS_SCOPE.LOBBY)
+
+    def _dispose(self):
+        g_eventBus.removeListener(events.MissionsEvent.ON_TAB_CHANGED, self.__updateBrowserProperties, EVENT_BUS_SCOPE.LOBBY)
+        self.__cancelLoadBrowserCallback()
+        self.__browserView = None
+        super(MissionsDragonBoatView, self)._dispose()
+        return
+
+    def __cancelLoadBrowserCallback(self):
+        if self.__loadBrowserCallbackID is not None:
+            BigWorld.cancelCallback(self.__loadBrowserCallbackID)
+            self.__loadBrowserCallbackID = None
+        return
+
+    def __loadBrowser(self):
+        self.__loadBrowserCallbackID = None
+        self.as_loadBrowserS()
+        return
+
+    def __updateEvents(self):
+        self._builder.invalidateBlocks()
+
+    def __updateBrowserProperties(self, *args):
+        self.__viewActive = caches.getNavInfo().getMissionsTab() == QUESTS_ALIASES.MISSIONS_DRAGON_BOAT_VIEW_PY_ALIAS
+        browser = self._browserCtrl.getBrowser(self.__browserID)
+        if browser:
+            if self.__viewActive:
+                browser.skipEscape = not self._dragonBoatCtrl.isNeedHandlingEscape
                 browser.useSpecialKeys = False
             else:
                 browser.skipEscape = False
@@ -345,7 +454,6 @@ class MissionsEventBoardsView(MissionsEventBoardsViewMeta):
 class MissionsCategoriesView(_GroupedMissionsView):
     QUESTS_COUNT_LINKEDSET_BLOCK = 1
     _lobbyContext = dependency.descriptor(ILobbyContext)
-    _rtsController = dependency.descriptor(IRTSBattlesController)
     __showDQInMissionsTab = False
 
     @classmethod
@@ -379,9 +487,6 @@ class MissionsCategoriesView(_GroupedMissionsView):
 
     def onClickButtonDetails(self):
         showTankPremiumAboutPage()
-
-    def onGotoRtsQuestsClick(self):
-        showRTSMetaRootWindow(Tabs.QUESTS.value)
 
     def _populate(self):
         super(MissionsCategoriesView, self)._populate()
@@ -420,13 +525,6 @@ class MissionsCategoriesView(_GroupedMissionsView):
         if self.__showDQInMissionsTab:
             return self.getViewQuestFilterIncludingDailyQuests()
         return self.getViewQuestFilter()
-
-    def _shouldAppendRTSBanner(self):
-        return self._rtsController.isEnabled() and self._rtsController.getCurrentCycleInfo()[1]
-
-    def _appendBanner(self, quests):
-        if self._shouldAppendRTSBanner():
-            quests.append({'blockId': QUESTS_ALIASES.MISSIONS_RTS_BANNER_VIEW_ALIAS})
 
     def __onServerSettingsChange(self, diff):
         if PremiumConfigs.PREM_QUESTS not in diff:

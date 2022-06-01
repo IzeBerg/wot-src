@@ -289,6 +289,10 @@
 						<!--BW_String-->
 					</transitionDurationOut>
 					<transitionEasingOut>3</transitionEasingOut>
+					<minLODBiasForTanks>
+						1.6
+						<!--BW_String-->
+					</minLODBiasForTanks>
 					<settingsKey>preCommanderCam</settingsKey>
 				</state>
 				<state>
@@ -666,6 +670,10 @@
 						<!--BW_String-->
 					</transitionDurationOut>
 					<transitionEasingOut>3</transitionEasingOut>
+					<minLODBiasForTanks>
+						1.6
+						<!--BW_String-->
+					</minLODBiasForTanks>
 					<settingsKey>preCommanderCam</settingsKey>
 				</state>
 				<state>
@@ -2008,59 +2016,4 @@
 			</transitionSettings>
 		</camera>
 	</epicVideoMode>
-	<tankCommanderMode>
-		<camera>
-			<horizontal_speed_low>150</horizontal_speed_low>
-			<horizontal_speed_height>520</horizontal_speed_height>
-			<horizontal_acceleration_speed_low>180</horizontal_acceleration_speed_low>
-			<horizontal_acceleration_speed_height>700</horizontal_acceleration_speed_height>
-			<horizontal_deacceleration_speed_low>350</horizontal_deacceleration_speed_low>
-			<horizontal_deacceleration_speed_height>1550</horizontal_deacceleration_speed_height>
-			<min_camera_height>5</min_camera_height>
-			<max_camera_height>100</max_camera_height>
-			<max_collision_evade_limit>150</max_collision_evade_limit>
-			<tank_commander_mode_enter_animation>true</tank_commander_mode_enter_animation>
-			<top_down_mode_height>400</top_down_mode_height>
-			<rotation_mouse_angle_speed>
-				0.0018
-				<!--BW_String-->
-			</rotation_mouse_angle_speed>
-			<rotation_half_life>
-				0.055
-				<!--BW_String-->
-			</rotation_half_life>
-			<scroll_sensitivity>40</scroll_sensitivity>
-			<scroll_stop_time>
-				0.25
-				<!--BW_String-->
-			</scroll_stop_time>
-			<max_camera_pitch>5</max_camera_pitch>
-			<min_camera_pitch>-65</min_camera_pitch>
-			<max_mouse_camera_pitch>5</max_mouse_camera_pitch>
-			<min_mouse_camera_pitch>-65</min_mouse_camera_pitch>
-			<edge_pen_screen_coef>
-				0.997
-				<!--BW_String-->
-			</edge_pen_screen_coef>
-			<disable_enge_pen_on_gui_elements>false</disable_enge_pen_on_gui_elements>
-			<max_angle_to_center_behind_space>500</max_angle_to_center_behind_space>
-			<move_to_center_pause>
-				3.0
-				<!--BW_String-->
-			</move_to_center_pause>
-			<move_up_offset>40</move_up_offset>
-			<move_up_height>100</move_up_height>
-			<move_up_pitch>-35</move_up_pitch>
-			<stop_vehicle_control_offset>60</stop_vehicle_control_offset>
-			<stop_vehicle_control_height>45</stop_vehicle_control_height>
-			<stop_vehicle_control_pitch>-25</stop_vehicle_control_pitch>
-			<focus_on_point_pitch>-25</focus_on_point_pitch>
-			<focus_on_point_offset>110</focus_on_point_offset>
-			<focus_on_point_height>60</focus_on_point_height>
-			<fly_time>
-				0.65
-				<!--BW_String-->
-			</fly_time>
-		</camera>
-	</tankCommanderMode>
 </root>

@@ -336,26 +336,6 @@ package net.wg.gui.battle.random.views.fragCorrelationBar.components
          }
       }
       
-      public function getMarkersTotalWidth() : int
-      {
-         var _loc1_:int = 0;
-         if(this._vehicleMarkers.length > 0)
-         {
-            _loc1_ = this._vehicleMarkers[0].width + (this._vehicleMarkers[0].width - Math.abs(this._markerShift)) * (this._vehicleMarkers.length - 1);
-         }
-         return _loc1_;
-      }
-      
-      public function getMarkersStart() : int
-      {
-         var _loc1_:int = 0;
-         if(this._vehicleMarkers.length > 0)
-         {
-            _loc1_ = this._vehicleMarkers[0].x > 0 ? int(this._vehicleMarkers[0].x) : int(Math.abs(this._vehicleMarkers[0].x) - this._vehicleMarkers[0].width);
-         }
-         return _loc1_;
-      }
-      
       protected function getMarkerLinkage() : String
       {
          return Linkages.FC_MARKER_ITEM;

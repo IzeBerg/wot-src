@@ -157,8 +157,8 @@ class RentalInfoProvider(_RentalInfoProvider):
 
     def _getSeasonExpiryTime(self):
         activeSeasonRent = self.getActiveSeasonRent()
-        lastFutureCycleRent = self._getLastFutureCycleRentInfo()
         if activeSeasonRent:
+            lastFutureCycleRent = self._getLastFutureCycleRentInfo()
             if lastFutureCycleRent:
                 return lastFutureCycleRent.expiryTime
             return activeSeasonRent.expiryTime
@@ -271,10 +271,6 @@ class FittingItem(GUIItem):
 
     @property
     def isCollectible(self):
-        return False
-
-    @property
-    def isSupply(self):
         return False
 
     @property

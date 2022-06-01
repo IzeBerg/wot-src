@@ -13,6 +13,3 @@ class IPrbPermissions(object):
 
     def canCreateSquad(self):
         return False
-
-    def canAppeal(self):
-        return True

@@ -50,34 +50,18 @@ package net.wg.infrastructure.base.meta
       
       function as_setNotificationEnabled(param1:Boolean) : void;
       
+      function as_setEventEntryPointVisible(param1:Boolean) : void;
+      
       function as_createDQWidget() : void;
       
       function as_destroyDQWidget() : void;
       
       function as_showSwitchToAmmunition() : void;
       
-      function as_showSwitchToRTSRoster() : void;
-      
-      function as_showSwitchFromRTSRoster() : void;
-      
       function as_toggleBattleRoyale(param1:Boolean) : void;
       
       function as_toggleCnSubscription(param1:Boolean) : void;
       
       function as_setDQWidgetLayout(param1:int) : void;
-      
-      function as_setCarouselRows(param1:int) : void;
-      
-      function as_createRtsWarningWidget() : void;
-      
-      function as_destroyRtsWarningWidget() : void;
-      
-      function as_createRtsBannerWidget() : void;
-      
-      function as_destroyRtsBannerWidget() : void;
-      
-      function as_setRtsBannerWidgetVisible(param1:Boolean) : void;
-      
-      function as_setRtsCarouselVisible(param1:Boolean) : void;
    }
 }

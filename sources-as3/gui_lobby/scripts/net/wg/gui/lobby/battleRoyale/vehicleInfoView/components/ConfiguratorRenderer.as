@@ -5,11 +5,14 @@ package net.wg.gui.lobby.battleRoyale.vehicleInfoView.components
    import flash.display.Sprite;
    import flash.events.MouseEvent;
    import flash.geom.Rectangle;
+   import net.wg.data.constants.SoundManagerStates;
+   import net.wg.data.constants.SoundTypes;
    import net.wg.data.constants.generated.ATLAS_CONSTANTS;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
    import net.wg.gui.components.battleRoyale.IConfiguratorRenderer;
    import net.wg.gui.components.battleRoyale.data.ConfiguratorModuleVO;
    import net.wg.infrastructure.managers.IAtlasManager;
+   import net.wg.infrastructure.managers.ISoundManager;
    import net.wg.infrastructure.managers.ITooltipMgr;
    import net.wg.utils.IScheduler;
    
@@ -37,6 +40,8 @@ package net.wg.gui.lobby.battleRoyale.vehicleInfoView.components
       
       private var _scheduler:IScheduler;
       
+      private var _soundMgr:ISoundManager;
+      
       private var _atlasMgr:IAtlasManager;
       
       private var _tooltipEnabled:Boolean = true;
@@ -47,11 +52,25 @@ package net.wg.gui.lobby.battleRoyale.vehicleInfoView.components
       {
          this._tooltipMgr = App.toolTipMgr;
          this._scheduler = App.utils.scheduler;
+         this._soundMgr = App.soundMgr;
          this._atlasMgr = App.atlasMgr;
          super();
          this.mouseChildren = false;
          this.addEventListener(MouseEvent.ROLL_OVER,this.onRollOverHandler,false,0,true);
          this.addEventListener(MouseEvent.ROLL_OUT,this.onRollOutHandler,false,0,true);
+      }
+      
+      protected function onDispose() : void
+      {
+         this._atlasMgr.forgetAtlas(ATLAS_CONSTANTS.COMMON_BATTLE_LOBBY,this.updateIcon);
+         this._scheduler.cancelTask(this.validateState);
+         this.removeEventListener(MouseEvent.ROLL_OVER,this.onRollOverHandler);
+         this.removeEventListener(MouseEvent.ROLL_OUT,this.onRollOutHandler);
+         this._tooltipMgr = null;
+         this._scheduler = null;
+         this._soundMgr = null;
+         this._atlasMgr = null;
+         this.icon = null;
       }
       
       public final function dispose() : void
@@ -62,6 +81,11 @@ package net.wg.gui.lobby.battleRoyale.vehicleInfoView.components
          }
          this.onDispose();
          this._baseDisposed = true;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._baseDisposed;
       }
       
       public function getNodeBounds(param1:DisplayObject) : Rectangle
@@ -89,29 +113,6 @@ package net.wg.gui.lobby.battleRoyale.vehicleInfoView.components
       {
          this._columnIdx = param1;
          this._moduleIdx = param2;
-      }
-      
-      protected function onDispose() : void
-      {
-         this._atlasMgr.forgetAtlas(ATLAS_CONSTANTS.COMMON_BATTLE_LOBBY,this.updateIcon);
-         this._scheduler.cancelTask(this.validateState);
-         this.removeEventListener(MouseEvent.ROLL_OVER,this.onRollOverHandler);
-         this.removeEventListener(MouseEvent.ROLL_OUT,this.onRollOutHandler);
-         this._tooltipMgr = null;
-         this._scheduler = null;
-         this._atlasMgr = null;
-         this.icon = null;
-      }
-      
-      private function updateIcon() : void
-      {
-         this._atlasMgr.drawGraphics(ATLAS_CONSTANTS.COMMON_BATTLE_LOBBY,this._icon,this.icon.graphics);
-      }
-      
-      private function validateState(param1:Boolean) : void
-      {
-         this._active = param1;
-         this.gotoAndStop(!!this._active ? ACTIVE_FRAME_LABEL : DISABLED_FRAME_LABEL);
       }
       
       public function get moduleIntCD() : uint
@@ -142,6 +143,17 @@ package net.wg.gui.lobby.battleRoyale.vehicleInfoView.components
          }
       }
       
+      private function updateIcon() : void
+      {
+         this._atlasMgr.drawGraphics(ATLAS_CONSTANTS.COMMON_BATTLE_LOBBY,this._icon,this.icon.graphics);
+      }
+      
+      private function validateState(param1:Boolean) : void
+      {
+         this._active = param1;
+         this.gotoAndStop(!!this._active ? ACTIVE_FRAME_LABEL : DISABLED_FRAME_LABEL);
+      }
+      
       private function set active(param1:Boolean) : void
       {
          this._scheduler.cancelTask(this.validateState);
@@ -156,6 +168,7 @@ package net.wg.gui.lobby.battleRoyale.vehicleInfoView.components
       {
          if(this._tooltipEnabled)
          {
+            this._soundMgr.playControlsSnd(SoundManagerStates.SND_OVER,SoundTypes.NORMAL_BTN,null);
             this._tooltipMgr.showSpecial(TOOLTIPS_CONSTANTS.BATTLE_ROYALE_MODULES_HANGAR,null,this._moduleIntCD);
          }
       }
@@ -166,11 +179,6 @@ package net.wg.gui.lobby.battleRoyale.vehicleInfoView.components
          {
             this._tooltipMgr.hide();
          }
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._baseDisposed;
       }
    }
 }

@@ -17,7 +17,7 @@ from gui.impl import backport
 from gui.impl.gen import R
 from gui.server_events import conditions, formatters, settings as quest_settings
 from gui.server_events.bonuses import VehiclesBonus
-from gui.server_events.events_helpers import EventInfoModel, MISSIONS_STATES, QuestInfoModel, getLocalizedMissionNameForLinkedSetQuest, getLocalizedQuestDescForLinkedSetQuest, getLocalizedQuestNameForLinkedSetQuest, isDailyQuest, isLinkedSet, isRts
+from gui.server_events.events_helpers import EventInfoModel, MISSIONS_STATES, QuestInfoModel, getLocalizedMissionNameForLinkedSetQuest, getLocalizedQuestDescForLinkedSetQuest, getLocalizedQuestNameForLinkedSetQuest, isDailyQuest, isLinkedSet, isDragonBoatQuest
 from gui.server_events.personal_progress.formatters import PostBattleConditionsFormatter
 from gui.shared.formatters import icons, text_styles
 from helpers import dependency, i18n, int2roman, time_utils
@@ -43,11 +43,12 @@ class BattlePassProgress(object):
     def __init__(self, arenaBonusType, *args, **kwargs):
         self.__arenaBonusType = arenaBonusType
         self.__chapterID = kwargs.get('bpChapter', 0)
-        self.__basePoints = kwargs.get('basePointsDiff', 0)
+        self.__basePointsDiff = self.__basePoints = kwargs.get('basePointsDiff', 0)
         self.__pointsAux = kwargs.get('bpNonChapterPointsDiff', 0)
         self.__pointsTotal = kwargs.get('sumPoints', 0)
         self.__hasBattlePass = kwargs.get('hasBattlePass', False)
         self.__questsProgress = kwargs.get('questsProgress', {})
+        self.__battlePassComplete = kwargs.get('battlePassComplete', False)
         self.__prevLevel = 0
         self.__currLevel = 0
         self.__pointsNew = 0
@@ -58,6 +59,10 @@ class BattlePassProgress(object):
     @property
     def chapterID(self):
         return self.__chapterID
+
+    @property
+    def basePointsDiff(self):
+        return self.__basePointsDiff
 
     @property
     def isApplied(self):
@@ -80,8 +85,20 @@ class BattlePassProgress(object):
         return self.__chapterID > 0 and self.__currLevel == self.__battlePassController.getMaxLevelInChapter(self.__chapterID)
 
     @property
+    def hasBattlePass(self):
+        return self.__hasBattlePass
+
+    @property
+    def battlePassComplete(self):
+        return self.__battlePassComplete
+
+    @property
     def level(self):
         return self.__prevLevel + 1
+
+    @property
+    def currentLevel(self):
+        return self.__currLevel
 
     @property
     def pointsAdd(self):
@@ -102,6 +119,10 @@ class BattlePassProgress(object):
     @property
     def pointsQst(self):
         return self.__pointsQst
+
+    @property
+    def pointsTotal(self):
+        return self.__pointsTotal
 
     @property
     def awards(self):
@@ -136,7 +157,8 @@ class BattlePassProgress(object):
 
 class _EventInfo(EventInfoModel):
 
-    def getInfo(self, svrEvents, pCur=None, pPrev=None, noProgressInfo=False):
+    def getInfo(self, svrEvents, pCur=None, pPrev=None, noProgressInfo=False, isCompleted=False, pbattle=False):
+        isDBQuest = isDragonBoatQuest(str(self.event.getID()))
         if noProgressInfo:
             status = MISSIONS_STATES.NONE
             bonusCount = self.NO_BONUS_COUNT
@@ -146,6 +168,14 @@ class _EventInfo(EventInfoModel):
             status, _ = self._getStatus(pCur)
             qProgCur, qProgTot, qProgbarType, tooltip = self._getProgressValues(svrEvents, pCur, pPrev)
         isAvailable, _ = self.event.isAvailable()
+        if isDBQuest:
+            bonusCount = self.NO_BONUS_COUNT
+            if isCompleted:
+                status = MISSIONS_STATES.COMPLETED
+                qProgCur, qProgTot, qProgbarType, tooltip = (0, 0, formatters.PROGRESS_BAR_TYPE.NONE, None)
+        getUserName = self.event.getUserName
+        if pbattle and isDBQuest:
+            getUserName = self.event.getUserNameForPostBattle
         return {'questID': str(self.event.getID()), 
            'eventType': self.event.getType(), 
            'IGR': self.event.isIGR(), 
@@ -158,22 +188,22 @@ class _EventInfo(EventInfoModel):
            'rendererType': QUESTS_ALIASES.RENDERER_TYPE_QUEST, 
            'timerDescription': self.getTimerMsg(), 
            'status': status, 
-           'description': self.event.getUserName(), 
+           'description': getUserName(), 
            'tooltip': TOOLTIPS.QUESTS_RENDERER_LABEL, 
            'isSelectable': True, 
            'isNew': quest_settings.isNewCommonEvent(self.event), 
            'isAvailable': isAvailable, 
-           'linkTooltip': TOOLTIPS.QUESTS_LINKBTN_TASK}
+           'linkTooltip': (isDBQuest or TOOLTIPS).QUESTS_LINKBTN_TASK if 1 else TOOLTIPS.QUESTS_LINKBTN_DRAGONBOAT}
 
     def getPostBattleInfo(self, svrEvents, pCur, pPrev, isProgressReset, isCompleted, progressData):
         index = 0
         progresses = []
-        questID = str(self.event.getID())
+        isQuestDailyQuest = isDailyQuest(str(self.event.getID()))
         if not isProgressReset and not isCompleted:
             for cond in self.event.bonusCond.getConditions().items:
                 if isinstance(cond, conditions._Cumulativable):
                     for _, (curProg, totalProg, diff, _) in cond.getProgressPerGroup(pCur, pPrev).iteritems():
-                        if not isDailyQuest(questID) and not isRts(questID):
+                        if not isQuestDailyQuest:
                             label = cond.getUserString()
                         else:
                             label = cond.getCustomDescription()
@@ -196,12 +226,15 @@ class _EventInfo(EventInfoModel):
         _, awards = ('', None)
         if not isProgressReset and isCompleted:
             awards = self._getBonuses(svrEvents)
-        return {'title': self.event.getUserName(), 
+        getUserName = self.event.getUserName
+        if isDragonBoatQuest(str(self.event.getID())):
+            getUserName = self.event.getUserNameForPostBattle
+        return {'title': getUserName(), 
            'descr': self.event.getDescription(), 
            'awards': awards, 
            'progressList': progresses, 
            'alertMsg': alertMsg, 
-           'questInfo': self.getInfo(svrEvents, pCur, pPrev), 
+           'questInfo': self.getInfo(svrEvents, pCur=pCur, pPrev=pPrev, isCompleted=isCompleted, pbattle=True), 
            'personalInfo': [], 'questType': self.event.getType()}
 
     @classmethod
@@ -228,10 +261,11 @@ class _QuestInfo(_EventInfo, QuestInfoModel):
     itemsCache = dependency.descriptor(IItemsCache)
 
     def _getStatus(self, pCur=None):
+        isDBQuest = isDragonBoatQuest(str(self.event.getID()))
         if self.event.isCompleted(progress=pCur):
-            if self.event.bonusCond.isDaily():
+            if self.event.bonusCond.isDaily() and not isDBQuest:
                 msg = self._getCompleteDailyStatus(self._getCompleteKey())
-            elif self.event.bonusCond.isWeekly():
+            elif self.event.bonusCond.isWeekly() and not isDBQuest:
                 msg = self._getCompleteWeeklyStatus(self._getCompleteWeeklyKey())
             else:
                 msg = backport.text(R.strings.quests.details.status.completed())
@@ -258,7 +292,7 @@ class _QuestInfo(_EventInfo, QuestInfoModel):
                 msg = i18n.makeString(QUESTS.DETAILS_HEADER_COMPLETION_UNLIMITED)
             else:
                 groupBy = bonus.getGroupByValue()
-                if bonus.isDaily():
+                if bonus.isDaily() and not isDBQuest:
                     key = QUESTS.DETAILS_HEADER_COMPLETION_DAILY
                     if groupBy is not None:
                         key = '#quests:details/header/completion/daily/groupBy%s' % groupBy.capitalize()
@@ -398,7 +432,7 @@ class _MotiveQuestInfo(_QuestInfo):
 
 class _LinkedSetQuestInfo(_QuestInfo):
 
-    def getInfo(self, svrEvents, pCur=None, pPrev=None, noProgressInfo=False):
+    def getInfo(self, svrEvents, pCur=None, pPrev=None, noProgressInfo=False, isCompleted=False, pbattle=False):
         res = super(_LinkedSetQuestInfo, self).getInfo(svrEvents, pCur, pPrev, noProgressInfo)
         missionName = getLocalizedMissionNameForLinkedSetQuest(self.event)
         questName = getLocalizedQuestNameForLinkedSetQuest(self.event)

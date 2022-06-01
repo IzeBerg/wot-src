@@ -27,13 +27,23 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       
       override protected function updateColorSettings(param1:uint) : void
       {
-         var _loc2_:MarkerAssetContainer = arrowMc as MarkerAssetContainer;
-         if(_loc2_)
-         {
-            _loc2_.updateColorSettings(color);
-         }
+         this.updateArrowContainer();
          this.glowContainer.updateColorSettings(color);
          TextField(counterMc.labelTf).textColor = param1;
+      }
+      
+      override protected function updateSourceVehicle() : void
+      {
+         this.updateArrowContainer();
+      }
+      
+      private function updateArrowContainer() : void
+      {
+         var _loc1_:MarkerAssetContainer = arrowMc as MarkerAssetContainer;
+         if(_loc1_)
+         {
+            _loc1_.updateColorSettings(arrowColorFrame);
+         }
       }
    }
 }

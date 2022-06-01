@@ -1,4 +1,4 @@
-import ResMgr
+from extension_utils import ResMgr
 from items import _xml, common_extras
 from constants import IS_CLIENT, IS_CELLAPP, ITEM_DEFS_PATH
 g_cache = None

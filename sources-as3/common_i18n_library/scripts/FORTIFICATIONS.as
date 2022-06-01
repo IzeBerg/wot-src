@@ -151,23 +151,23 @@ package
       
       public static const STRONGHOLDTABLE_TECH:String = "#fortifications:strongholdtable/tech";
       
-      public static const STRONGHOLDRESERVE_TOOLTIP_WITHPERMITION:String = "#fortifications:strongholdreserve/tooltip/withPermition";
+      public static const RESERVES_TOOLTIP_WITHPERMISSION:String = "#fortifications:reserves/tooltip/withPermission";
       
-      public static const STRONGHOLDRESERVE_TOOLTIP_WITHOUTPERMITION:String = "#fortifications:strongholdreserve/tooltip/withoutPermition";
+      public static const RESERVES_TOOLTIP_WITHOUTPERMISSION:String = "#fortifications:reserves/tooltip/withoutPermission";
       
-      public static const STRONGHOLDRESERVE_TOOLTIP_EMPTY:String = "#fortifications:strongholdreserve/tooltip/empty";
+      public static const RESERVES_TOOLTIP_EMPTY:String = "#fortifications:reserves/tooltip/empty";
       
-      public static const STRONGHOLDRESERVE_TOOLTIP_DISABLEDREQUISITION:String = "#fortifications:strongholdreserve/tooltip/disabledRequisition";
+      public static const RESERVES_TOOLTIP_DISABLEDREQUISITION:String = "#fortifications:reserves/tooltip/disabledRequisition";
       
-      public static const STRONGHOLDRESERVE_TOOLTIP_DISABLEDINBATTLE:String = "#fortifications:strongholdreserve/tooltip/disabledInBattle";
+      public static const RESERVES_TOOLTIP_DISABLEDINBATTLE:String = "#fortifications:reserves/tooltip/disabledInBattle";
       
-      public static const STRONGHOLDRESERVE_TOOLTIP_LEVEL:String = "#fortifications:strongholdreserve/tooltip/level";
+      public static const RESERVES_TOOLTIP_LEVEL:String = "#fortifications:reserves/tooltip/level";
       
-      public static const STRONGHOLDRESERVE_TOOLTIP_INSTORAGE:String = "#fortifications:strongholdreserve/tooltip/inStorage";
+      public static const RESERVES_TOOLTIP_INSTORAGE:String = "#fortifications:reserves/tooltip/inStorage";
       
-      public static const STRONGHOLDRESERVE_TOOLTIP_READYTOSELECT:String = "#fortifications:strongholdreserve/tooltip/readyToSelect";
+      public static const RESERVES_TOOLTIP_READYTOSELECT:String = "#fortifications:reserves/tooltip/readyToSelect";
       
-      public static const STRONGHOLDRESERVE_TOOLTIP_SELECTED:String = "#fortifications:strongholdreserve/tooltip/selected";
+      public static const RESERVES_TOOLTIP_SELECTED:String = "#fortifications:reserves/tooltip/selected";
       
       public static const STRONGHOLDRESERVE_TOOLTIP_CONDITION:String = "#fortifications:strongholdreserve/tooltip/condition";
       
@@ -178,6 +178,14 @@ package
       public static const STRONGHOLDRESERVE_TOOLTIP_HEAVYTRUCKSACTIVATION:String = "#fortifications:strongholdreserve/tooltip/heavytrucksActivation";
       
       public static const STRONGHOLDRESERVE_TOOLTIP_REQUISITIONACTIVATION:String = "#fortifications:strongholdreserve/tooltip/requisitionActivation";
+      
+      public static const RESERVES_TOOLTIP_MAINAPPLYEFFECT:String = "#fortifications:reserves/tooltip/mainApplyEffect";
+      
+      public static const RESERVES_TOOLTIP_ADDITIONALAPPLYEFFECT:String = "#fortifications:reserves/tooltip/additionalApplyEffect";
+      
+      public static const RESERVES_TOOLTIP_APPLYDESCRIPTION_ARTILLERYSUPPORT:String = "#fortifications:reserves/tooltip/applyDescription/artillerySupport";
+      
+      public static const RESERVES_TOOLTIP_APPLYDESCRIPTION_INSPIRE:String = "#fortifications:reserves/tooltip/applyDescription/inspire";
       
       public static const STRONGHOLDTITLE_SORTIE:String = "#fortifications:strongholdtitle/sortie";
       
@@ -194,6 +202,8 @@ package
       public static const STRONGHOLDRESERVE_HEAVYTRUCKS:String = "#fortifications:strongholdreserve/heavyTrucks";
       
       public static const STRONGHOLDRESERVE_SUPPORT:String = "#fortifications:strongholdreserve/support";
+      
+      public static const STRONGHOLDRESERVE_BOOST:String = "#fortifications:strongholdreserve/boost";
       
       public static const STRONGHOLDDIRECTION_A:String = "#fortifications:strongholddirection/A";
       
@@ -244,6 +254,10 @@ package
       public static const FORTVEHPOPOVER_BTNSAVE:String = "#fortifications:fortVehPopover/btnSave";
       
       public static const TOOLTIP_VEHICLETYPES_BODY:String = "#fortifications:tooltip/vehicleTypes/body";
+      
+      public static const INSPIRE_INSPIRING:String = "#fortifications:inspire/inspiring";
+      
+      public static const INSPIRE_INSPIRED:String = "#fortifications:inspire/inspired";
        
       
       public function FORTIFICATIONS()

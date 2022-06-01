@@ -2,7 +2,7 @@ import locale, logging, time, weakref
 from collections import namedtuple, defaultdict, OrderedDict
 from CurrentVehicle import g_currentVehicle
 from Event import EventManager, Event
-from constants import EVENT_TYPE, PREMIUM_TYPE, ARENA_BONUS_TYPE
+from constants import EVENT_TYPE, PREMIUM_TYPE
 from gui.Scaleform.daapi.settings import BUTTON_LINKAGES
 from gui.Scaleform.daapi.view.lobby.event_boards.event_helpers import EventInfo, EventHeader
 from gui.Scaleform.daapi.view.lobby.event_boards.formaters import formatErrorTextWithIcon
@@ -241,6 +241,15 @@ class MarathonsDumbBuilder(GroupedEventsBlocksBuilder):
         return {}
 
 
+class DragonBoatDumbBuilder(GroupedEventsBlocksBuilder):
+
+    def _createGroupedEventsBlock(self, group):
+        return []
+
+    def _getEventsGroups(self):
+        return {}
+
+
 class QuestsGroupsBuilder(GroupedEventsBlocksBuilder):
     linkedSet = dependency.descriptor(ILinkedSetController)
     lobbyContext = dependency.descriptor(ILobbyContext)
@@ -310,9 +319,8 @@ class ElenGroupsBuilder(_EventsBlockBuilder):
             return
         else:
             for event in events:
-                if event.getBattleType() not in ARENA_BONUS_TYPE.RTS_RANGE:
-                    isChosen = self._currentEventID == event.getEventID()
-                    cachedGroups[event.getEventID()] = _ElenBlockInfo(event, self._myEventsTop, self._playerData, isChosen)
+                isChosen = self._currentEventID == event.getEventID()
+                cachedGroups[event.getEventID()] = _ElenBlockInfo(event, self._myEventsTop, self._playerData, isChosen)
 
             return
 

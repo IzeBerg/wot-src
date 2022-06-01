@@ -32,7 +32,7 @@ package net.wg.gui.battle.battleRoyale.views.playersPanel
       
       public var vehicleLevelTF:TextField;
       
-      public var nationIcon:Image;
+      public var vehicleTypeIcon:Image;
       
       public var vehicleNameTF:TextField;
       
@@ -62,8 +62,8 @@ package net.wg.gui.battle.battleRoyale.views.playersPanel
          this.hover = null;
          this.fragsCountTF = null;
          this.vehicleNameTF = null;
-         this.nationIcon.dispose();
-         this.nationIcon = null;
+         this.vehicleTypeIcon.dispose();
+         this.vehicleTypeIcon = null;
          this.vehicleLevelTF = null;
          this.playerNameTF = null;
          this.teamColorBlock = null;
@@ -104,7 +104,7 @@ package net.wg.gui.battle.battleRoyale.views.playersPanel
             }
             this.playerNameTF.text = _loc1_;
             this.vehicleLevelTF.text = this._data.vehicleLevel;
-            this.nationIcon.source = this._data.nationIcon;
+            this.vehicleTypeIcon.source = this._data.vehicleTypeIcon;
             this.vehicleNameTF.text = this._data.vehicleName;
             this.fragsCountTF.text = this._data.fragsCount;
             alpha = !!this._data.isAlive ? Number(ALIVE_ALPHA) : Number(DEAD_ALPHA);

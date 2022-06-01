@@ -23,8 +23,6 @@ package net.wg.gui.lobby.battleResults.data
       
       private static const PROGRESSIVE_REWARD:String = "progressiveReward";
       
-      private static const ENEMY_COMMANDER:String = "enemyCommander";
-      
       private static const MANDATORY_FIELDS:Array = [COMMON,PERSONAL,TEXT_DATA,TEAM1,TEAM2,TAB_INFO];
       
       private static const ARRAY_FIELDS:Array = [TEAM1,TEAM2,TAB_INFO];
@@ -67,8 +65,6 @@ package net.wg.gui.lobby.battleResults.data
       public var team2:DataProvider;
       
       public var tabInfo:DataProvider;
-      
-      public var enemyCommander:TeamMemberItemVO = null;
       
       public function BattleResultsVO(param1:Object)
       {
@@ -126,9 +122,6 @@ package net.wg.gui.lobby.battleResults.data
                return false;
             case PROGRESSIVE_REWARD:
                this.progressiveReward = new ProgressiveRewardVO(param2);
-               return false;
-            case ENEMY_COMMANDER:
-               this.enemyCommander = new TeamMemberItemVO(param2);
                return false;
             default:
                return super.onDataWrite(param1,param2);
@@ -196,11 +189,6 @@ package net.wg.gui.lobby.battleResults.data
          {
             this.progressiveReward.dispose();
             this.progressiveReward = null;
-         }
-         if(this.enemyCommander)
-         {
-            this.enemyCommander.dispose();
-            this.enemyCommander = null;
          }
          this.common.dispose();
          this.common = null;

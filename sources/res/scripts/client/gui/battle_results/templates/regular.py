@@ -1,6 +1,5 @@
 from constants import ARENA_GUI_TYPE, MIN_VEHICLE_LEVEL
 from gui.Scaleform.genConsts.BATTLE_EFFICIENCY_TYPES import BATTLE_EFFICIENCY_TYPES
-from gui.Scaleform.genConsts.FITTING_TYPES import FITTING_TYPES
 from gui.Scaleform.locale.BATTLE_RESULTS import BATTLE_RESULTS
 from gui.Scaleform.locale.INGAME_GUI import INGAME_GUI
 from gui.Scaleform.locale.MENU import MENU
@@ -61,7 +60,6 @@ _COMMON_VO_META = base.DictMeta({'iconType': 'tank',
    'arenaCreateTimeStr': '', 
    'arenaStr': '', 
    'arenaIcon': '', 
-   'arenaType': ARENA_GUI_TYPE.UNKNOWN, 
    'duration': '', 
    'bonusType': 0, 
    'clans': [], 'resultShortStr': '', 
@@ -149,26 +147,20 @@ REGULAR_COMMON_STATS_BLOCK.addComponent(11, _TIME_STATS_BLOCK.clone())
 REGULAR_COMMON_STATS_BLOCK.addComponent(12, shared.ClientIndexItem('clientArenaIdx'))
 REGULAR_COMMON_STATS_BLOCK.addComponent(13, common.TeamsUiVisibility('uiVisibility'))
 REGULAR_COMMON_STATS_BLOCK.addComponent(14, common.EligibleForCrystalRewards('eligibleForCrystalRewards'))
-REGULAR_COMMON_STATS_BLOCK.addComponent(15, base.StatsItem('arenaType', _RECORD.COMMON, 'guiType'))
 _PERSONAL_VO_META = base.DictMeta({'isPremium': False, 
    'isLegionnaire': False, 
    'creditsStr': '0', 
    'xpStr': '0', 
    'fortResourceTotal': '', 
-   'efficiencyTitle': '', 
-   'efficiencyHeader': {}, 'supplyEfficiencyHeader': {}, 'details': [], 'creditsData': [], 'xpData': [], 'resValues': [], 'resPremValues': [], 'resourceData': [], 'statValues': [], 'achievementsLeft': [], 'achievementsRight': [], 'showNoIncomeAlert': False, 
+   'efficiencyHeader': {}, 'details': [], 'creditsData': [], 'xpData': [], 'resValues': [], 'resPremValues': [], 'resourceData': [], 'statValues': [], 'achievementsLeft': [], 'achievementsRight': [], 'showNoIncomeAlert': False, 
    'noIncomeAlert': None, 
    'isStunDataEnabled': False, 
    'crystalStr': '0', 
-   'crystalData': [], 'specialCurrencyData': [], 'playerRank': 0, 
+   'crystalData': [], 'playerRank': 0, 
    'isTeamKiller': False, 
    'isPremiumPlus': False, 
    'dynamicPremiumState': '', 
-   'premiumInfo': {}, 'premiumBonus': {}, 'premiumEarnings': {}, 'replayURL': '', 
-   'rts1x7CurrencyStr': '0', 
-   'rts1x7CurrencyDetails': [], 'rts1x1CurrencyStr': '0', 
-   'rts1x1CurrencyDetails': [], 'isCommander': False, 
-   'canBeFaded': True})
+   'premiumInfo': {}, 'premiumBonus': {}, 'premiumEarnings': {}, 'replayURL': ''})
 _PREMIUM_BLOCK_VO_META = base.PropertyMeta((
  ('creditsPremiumBonusStr', '', 'creditsPremiumBonusStr'),
  ('xpPremiumBonusStr', '', 'xpPremiumBonusStr'),
@@ -317,15 +309,15 @@ _PREMIUM_EARNINGS_BLOCK.addComponent(4, details.PremiumCreditsBlock(base.ListMet
 _PREMIUM_EARNINGS_BLOCK.addComponent(5, details.BaseCreditsBlock(base.ListMeta(), 'creditsNoPremValues'))
 _PREMIUM_EARNINGS_BLOCK.addComponent(6, details.XPTitleTooltipBlock(base.ListMeta(), 'xpTitleTooltips'))
 REGULAR_PERSONAL_STATS_BLOCK = base.StatsBlock(_PERSONAL_VO_META, 'personal')
-REGULAR_PERSONAL_STATS_BLOCK.addComponent(0, personal.TotalEfficiencyDetailsHeader(_TOTAL_EFFICIENCY_HEADER_META, 'efficiencyHeader'))
-REGULAR_PERSONAL_STATS_BLOCK.addComponent(1, personal.TotalEfficiencyDetailsBlock(base.ListMeta(), 'details'))
+REGULAR_PERSONAL_STATS_BLOCK.addComponent(0, personal.TotalEfficiencyDetailsHeader(_TOTAL_EFFICIENCY_HEADER_META, 'efficiencyHeader', _RECORD.PERSONAL))
+REGULAR_PERSONAL_STATS_BLOCK.addComponent(1, personal.TotalEfficiencyDetailsBlock(base.ListMeta(), 'details', _RECORD.PERSONAL))
 REGULAR_PERSONAL_STATS_BLOCK.addComponent(2, _PERSONAL_ACHIEVEMENTS_BLOCK)
 REGULAR_PERSONAL_STATS_BLOCK.addComponent(3, personal.PremiumAccountFlag('isPremium'))
 REGULAR_PERSONAL_STATS_BLOCK.addComponent(4, details.GainCreditsInBattleItem('creditsStr'))
 REGULAR_PERSONAL_STATS_BLOCK.addComponent(5, details.GainXPInBattleItem('xpStr'))
 REGULAR_PERSONAL_STATS_BLOCK.addComponent(6, details.TotalMoneyDetailsBlock(base.ListMeta(), 'creditsData', _RECORD.PERSONAL))
 REGULAR_PERSONAL_STATS_BLOCK.addComponent(7, details.TotalXPDetailsBlock(base.ListMeta(), 'xpData', _RECORD.PERSONAL))
-REGULAR_PERSONAL_STATS_BLOCK.addComponent(8, vehicles.PersonalVehiclesRegularStatsBlock(base.ListMeta(), 'statValues'))
+REGULAR_PERSONAL_STATS_BLOCK.addComponent(8, vehicles.PersonalVehiclesRegularStatsBlock(base.ListMeta(), 'statValues', _RECORD.PERSONAL))
 REGULAR_PERSONAL_STATS_BLOCK.addComponent(9, personal.StunDataFlag('isStunDataEnabled'))
 REGULAR_PERSONAL_STATS_BLOCK.addComponent(10, details.GainCrystalInBattleItem('crystalStr'))
 REGULAR_PERSONAL_STATS_BLOCK.addComponent(11, details.TotalCrystalDetailsBlock(base.ListMeta(), 'crystalData', _RECORD.PERSONAL))
@@ -394,8 +386,6 @@ TEAM_ITEM_VO_META = base.PropertyMeta((
   'isPrematureLeave', False, 'isPrematureLeave'),
  ('vehicleCD', 0, 'intCD'),
  (
-  'vehicleType', FITTING_TYPES.VEHICLE, 'vehicleType'),
- (
   'vehicleFullName', i18n.makeString(INGAME_GUI.PLAYERS_PANEL_UNKNOWN_VEHICLE), 'vehicleName'),
  ('tankIcon', '../maps/icons/vehicle/small/noImage.png', 'vehicleIcon'),
  (
@@ -410,7 +400,6 @@ TEAM_ITEM_VO_META = base.PropertyMeta((
  ('tkills', 0, 'tkills'),
  ('realKills', 0, 'realKills'),
  ('xp', 0, 'xp'),
- ('rtsPoints', 0, 'rtsPoints'),
  ('damageDealt', 0, 'damageDealt'),
  ('playerId', 0, 'playerID'),
  (
@@ -440,7 +429,7 @@ TEAMS_VO_META = base.DictMeta({'team1': [], 'team2': []})
 REGULAR_TEAMS_STATS_BLOCK = vehicles.TwoTeamsStatsBlock(TEAMS_VO_META.clone(), '', _RECORD.VEHICLES)
 REGULAR_TEAMS_STATS_BLOCK.addNextComponent(vehicles.RegularTeamStatsBlock(meta=base.ListMeta(), field='team1'))
 REGULAR_TEAMS_STATS_BLOCK.addNextComponent(vehicles.RegularTeamStatsBlock(meta=base.ListMeta(), field='team2'))
-VEHICLE_PROGRESS_STATS_BLOCK = progress.VehicleProgressBlock(base.ListMeta(), 'unlocks')
+VEHICLE_PROGRESS_STATS_BLOCK = progress.VehicleProgressBlock(base.ListMeta(), 'unlocks', _RECORD.PERSONAL)
 BATTLE_PASS_PROGRESS_STATS_BLOCK = progress.BattlePassProgressBlock(base.ListMeta(), 'battlePass', _RECORD.PERSONAL)
 QUESTS_PROGRESS_STATS_BLOCK = progress.QuestsProgressBlock(base.ListMeta(), 'quests', _RECORD.PERSONAL)
 DOG_TAGS_PROGRESS_STATS_BLOCK = progress.DogTagsProgressBlock(base.ListMeta(), 'dog_tags', _RECORD.PERSONAL)

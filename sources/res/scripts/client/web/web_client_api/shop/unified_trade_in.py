@@ -67,11 +67,10 @@ class UnifiedTradeInWebApiMixin(object):
         fmtBuy = self._getBuyVehicleFormatter()
         vehiclesToBuy = [ fmtBuy.format(vehicle) for vehicle in self._tradeIn.getVehiclesToBuy(True).itervalues()
                         ]
-        if vehiclesToBuy:
-            vehiclesToSell = [ fmtSell.format(vehicle) for vehicle in self._tradeIn.getVehiclesToSell(True).itervalues() ]
-        else:
-            vehiclesToSell = list()
-        return {'expirationDate': self._tradeIn.getExpirationTime(), 'selectedVehicleToSell': fmtSell.format(self._tradeIn.getSelectedVehicleToSell()), 
+        vehiclesToSell = [ fmtSell.format(vehicle) for vehicle in self._tradeIn.getVehiclesToSell(True).itervalues()
+                         ]
+        return {'expirationDate': self._tradeIn.getExpirationTime(), 
+           'selectedVehicleToSell': fmtSell.format(self._tradeIn.getSelectedVehicleToSell()), 
            'selectedVehicleToBuy': fmtBuy.format(self._tradeIn.getSelectedVehicleToBuy()), 
            'vehiclesToSell': vehiclesToSell, 
            'vehiclesToBuy': vehiclesToBuy}

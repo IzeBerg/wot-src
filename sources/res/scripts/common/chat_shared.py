@@ -1547,8 +1547,7 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'wotPlusNoRentSelected',
  'giftSystemMessage',
  'telecomMergeResults',
- 'battlePassUseNonChapterPoints',
- 'rtsTokens'])
+ 'battlePassUseNonChapterPoints'])
 SYS_MESSAGE_IMPORTANCE = Enumeration('systemMessageImportance', [
  'normal',
  'high'])

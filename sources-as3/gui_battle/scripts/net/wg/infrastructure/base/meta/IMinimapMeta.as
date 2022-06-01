@@ -10,10 +10,6 @@ package net.wg.infrastructure.base.meta
       
       function applyNewSizeS(param1:Number) : void;
       
-      function handleMouseOverUIMinimapS(param1:Number) : void;
-      
-      function onHoverEntryS(param1:Number) : void;
-      
       function as_setSize(param1:int) : void;
       
       function as_setVisible(param1:Boolean) : void;

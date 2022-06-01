@@ -5,11 +5,12 @@ import BigWorld, Event, SoundGroups
 from AvatarInputHandler.AimingSystems import getShotTargetInfo
 from aih_constants import CTRL_MODE_NAME
 from constants import VEHICLE_SETTING, EQUIPMENT_STAGES, ARENA_BONUS_TYPE
+from gui.shared.system_factory import collectEquipmentItem
 from gui.Scaleform.genConsts.ANIMATION_TYPES import ANIMATION_TYPES
+from gui.Scaleform.genConsts.BATTLE_MARKERS_CONSTS import BATTLE_MARKERS_CONSTS
 from gui.battle_control import avatar_getter, vehicle_getter
 from gui.battle_control.battle_constants import makeExtraName, VEHICLE_COMPLEX_ITEMS, BATTLE_CTRL_ID
 from gui.battle_control.controllers.interfaces import IBattleController
-from gui.battle_control.controllers.sound_ctrls.br_battle_sounds import BREvents
 from gui.shared.utils.MethodsRules import MethodsRules
 from gui.shared.utils.decorators import ReprInjector
 from gui.sounds.epic_sound_constants import EPIC_SOUND
@@ -229,6 +230,9 @@ class _EquipmentItem(object):
     def getMarker(self):
         return self._descriptor.name.split('_')[0]
 
+    def getMarkerColor(self):
+        return BATTLE_MARKERS_CONSTS.COLOR_GREEN
+
     def getEquipmentID(self):
         _, innationID = self._descriptor.id
         return innationID
@@ -242,6 +246,9 @@ class _EquipmentItem(object):
                 EquipmentSound.playSound(self._descriptor.compactDescr)
         if self.becomeReady:
             EquipmentSound.playReady(self)
+
+    def canDeactivate(self):
+        return True
 
 
 class _RefillEquipmentItem(object):
@@ -476,7 +483,7 @@ class _OrderItem(_TriggerItem):
 
     def updateMapCase(self, stage=None):
         if not BigWorld.player().isObserver() or BigWorld.player().isObserverFPV:
-            if self._stage == stage:
+            if self._stage == stage or self._stage == EQUIPMENT_STAGES.NOT_RUNNING:
                 return
             if stage is None:
                 stage = self._stage
@@ -508,7 +515,19 @@ class _OrderItem(_TriggerItem):
 class _ArtilleryItem(_OrderItem):
 
     def getMarker(self):
+        return 'artillery_yellow'
+
+    def getMarkerColor(self):
+        return BATTLE_MARKERS_CONSTS.COLOR_YELLOW
+
+
+class _EpicArtilleryItem(_OrderItem):
+
+    def getMarker(self):
         return 'artillery'
+
+    def getMarkerColor(self):
+        return BATTLE_MARKERS_CONSTS.COLOR_GREEN
 
 
 class _ArcadeArtileryItem(_ArtilleryItem):
@@ -517,18 +536,11 @@ class _ArcadeArtileryItem(_ArtilleryItem):
         from AvatarInputHandler.MapCaseMode import ArcadeMapCaseControlMode
         return ArcadeMapCaseControlMode
 
+    def getMarker(self):
+        return 'artillery'
 
-class _ArcadeKamikazeSpawner(_ArtilleryItem):
-
-    def getAimingControlMode(self):
-        from AvatarInputHandler.MapCaseMode import ArcadeMapCaseControlMode
-        return ArcadeMapCaseControlMode
-
-    def _getErrorMsg(self):
-        if self._quantity:
-            return InCooldownError(self._descriptor.userString)
-        else:
-            return
+    def getMarkerColor(self):
+        return BATTLE_MARKERS_CONSTS.COLOR_GREEN
 
 
 class _BomberItem(_OrderItem):
@@ -561,20 +573,6 @@ class _ArcadeMineFieldItem(_OrderItem):
     def getAimingControlMode(self):
         from AvatarInputHandler.MapCaseMode import ArcadeMapCaseControlMode
         return ArcadeMapCaseControlMode
-
-
-class _ArcadeMineFieldBattleRoyaleItem(_ArcadeMineFieldItem):
-
-    def update(self, quantity, stage, timeRemaining, totalTime):
-        if stage == EQUIPMENT_STAGES.PREPARING and self._stage != stage:
-            BREvents.playSound(BREvents.MINEFIELD_ACTIVATION)
-        super(_ArcadeMineFieldBattleRoyaleItem, self).update(quantity, stage, timeRemaining, totalTime)
-
-    def _getErrorMsg(self):
-        if self._quantity:
-            return InCooldownError(self._descriptor.userString)
-        else:
-            return
 
 
 class _ArcadeMineFieldEpicBattleItem(_OrderItem):
@@ -796,24 +794,6 @@ class _RegenerationKitItem(_EquipmentItem):
         return super(_RegenerationKitItem, self).getAnimationType()
 
 
-class _GameplayConsumableItem(_TriggerItem):
-
-    def getTags(self):
-        return ('trappoint', )
-
-    def getEntitiesIterator(self, avatar=None):
-        return []
-
-
-class _RepairPointItem(_TriggerItem):
-
-    def getTags(self):
-        return ('repairpoint', )
-
-    def getEntitiesIterator(self, avatar=None):
-        return []
-
-
 def _isBattleRoyaleBattle():
     if BigWorld.player() is not None:
         return BigWorld.player().arena.bonusType in ARENA_BONUS_TYPE.BATTLE_ROYALE_RANGE
@@ -826,12 +806,12 @@ def _triggerItemFactory(descriptor, quantity, stage, timeRemaining, totalTime, t
         return _ArcadeArtileryItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('arcade_bomber'):
         return _ArcadeBomberItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
-    if descriptor.name.startswith('arcade_minefield_battle_royale'):
-        return _ArcadeMineFieldBattleRoyaleItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('arcade_minefield_epic_battle'):
         return _ArcadeMineFieldEpicBattleItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('arcade_minefield'):
         return _ArcadeMineFieldItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
+    if descriptor.name.startswith('artillery_epic'):
+        return _EpicArtilleryItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('artillery'):
         return _ArtilleryItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('bomber'):
@@ -846,12 +826,6 @@ def _triggerItemFactory(descriptor, quantity, stage, timeRemaining, totalTime, t
         return _ReconItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('afterburning'):
         return _AfterburningItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
-    if descriptor.name.endswith('trappoint'):
-        return _GameplayConsumableItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
-    if descriptor.name.endswith('repairpoint'):
-        return _RepairPointItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
-    if descriptor.name.startswith('spawn'):
-        return _ArcadeKamikazeSpawner(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('stealth_radar'):
         return _StealthRadarItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('fl_regenerationKit'):
@@ -938,7 +912,14 @@ class EquipmentsController(MethodsRules, IBattleController):
         return
 
     @classmethod
+    def _findExtendItem(cls, isReplay, name, *args):
+        return collectEquipmentItem(name, isReplay, args)
+
+    @classmethod
     def createItem(cls, descriptor, quantity, stage, timeRemaining, totalTime):
+        item = cls._findExtendItem(False, descriptor.name, descriptor, quantity, stage, timeRemaining, totalTime)
+        if item:
+            return item
         tags, clazz = _getInitialTagsAndClass(descriptor, _EQUIPMENT_TAG_TO_ITEM)
         if tags:
             item = clazz(descriptor, quantity, stage, timeRemaining, totalTime, tags)
@@ -961,7 +942,7 @@ class EquipmentsController(MethodsRules, IBattleController):
             self.onEquipmentsCleared()
 
     def cancel(self):
-        item = findFirst(lambda item: item.getStage() == EQUIPMENT_STAGES.PREPARING, self._equipments.itervalues())
+        item = findFirst(lambda item: item.getStage() == EQUIPMENT_STAGES.PREPARING and item.canDeactivate(), self._equipments.itervalues())
         if item is not None:
             item.deactivate()
             return True
@@ -1020,6 +1001,7 @@ class EquipmentsController(MethodsRules, IBattleController):
                 item = self.createItem(descriptor, quantity, stage, timeRemaining, totalTime)
                 self._equipments[intCD] = item
                 self._order.append(intCD)
+                item.updateMapCase()
                 self.onEquipmentAdded(intCD, item)
         if item:
             item.setServerPrevStage(None)
@@ -1197,6 +1179,15 @@ class _ReplayOrderItem(_ReplayItem):
 class _ReplayArtilleryItem(_ReplayOrderItem):
 
     def getMarker(self):
+        return 'artillery_yellow'
+
+    def getMarkerColor(self):
+        return BATTLE_MARKERS_CONSTS.COLOR_YELLOW
+
+
+class _ReplayArcadeArtilleryItem(_ReplayOrderItem):
+
+    def getMarker(self):
         return 'artillery'
 
 
@@ -1361,30 +1352,30 @@ class _ReplayAfterburningItem(_ReplayItem):
         self.__playingSoundObj.play()
 
 
-class _ReplayLargeRepairKitSteelHunterItem(_ReplayItem):
+class _ReplayLargeRepairKitBattleRoyaleItem(_ReplayItem):
     __slots__ = ('__totalCooldownTime', )
 
     def __init__(self, descriptor, quantity, stage, timeRemaining, totalTime, tags=None):
         self.__totalCooldownTime = descriptor.cooldownSeconds
-        super(_ReplayLargeRepairKitSteelHunterItem, self).__init__(descriptor, quantity, stage, timeRemaining, totalTime, tags)
+        super(_ReplayLargeRepairKitBattleRoyaleItem, self).__init__(descriptor, quantity, stage, timeRemaining, totalTime, tags)
 
     def update(self, quantity, stage, timeRemaining, totalTime):
-        super(_ReplayLargeRepairKitSteelHunterItem, self).update(quantity, stage, timeRemaining, totalTime)
+        super(_ReplayLargeRepairKitBattleRoyaleItem, self).update(quantity, stage, timeRemaining, totalTime)
         if stage == EQUIPMENT_STAGES.COOLDOWN:
             totalTime = self.__totalCooldownTime
         self._totalTime = totalTime
 
 
-class _ReplayRegenerationKitSteelHunterItem(_ReplayItem):
+class _ReplayRegenerationKitBattleRoyaleItem(_ReplayItem):
     __slots__ = ('__totalCooldownTime', '__healTime')
 
     def __init__(self, descriptor, quantity, stage, timeRemaining, totalTime, tags=None):
         self.__totalCooldownTime = descriptor.cooldownSeconds
         self.__healTime = descriptor.healTime
-        super(_ReplayRegenerationKitSteelHunterItem, self).__init__(descriptor, quantity, stage, timeRemaining, totalTime, tags)
+        super(_ReplayRegenerationKitBattleRoyaleItem, self).__init__(descriptor, quantity, stage, timeRemaining, totalTime, tags)
 
     def update(self, quantity, stage, timeRemaining, totalTime):
-        super(_ReplayRegenerationKitSteelHunterItem, self).update(quantity, stage, timeRemaining, totalTime)
+        super(_ReplayRegenerationKitBattleRoyaleItem, self).update(quantity, stage, timeRemaining, totalTime)
         if stage == EQUIPMENT_STAGES.COOLDOWN:
             totalTime = self.__totalCooldownTime
             self._animationType = ANIMATION_TYPES.MOVE_ORANGE_BAR_UP | ANIMATION_TYPES.SHOW_COUNTER_ORANGE | ANIMATION_TYPES.FILL_PARTIALLY
@@ -1396,7 +1387,9 @@ class _ReplayRegenerationKitSteelHunterItem(_ReplayItem):
 
 def _replayTriggerItemFactory(descriptor, quantity, stage, timeRemaining, totalTime, tags=None):
     if descriptor.name.startswith('arcade_artillery'):
-        return _ReplayArtilleryItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
+        return _ReplayArcadeArtilleryItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
+    if descriptor.name.startswith('artillery_epic'):
+        return _ReplayArcadeArtilleryItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('arcade_bomber'):
         return _ReplayBomberItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('arcade_minefield'):
@@ -1414,9 +1407,9 @@ def _replayTriggerItemFactory(descriptor, quantity, stage, timeRemaining, totalT
     if descriptor.name.endswith('afterburning'):
         return _ReplayAfterburningItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('large_repairkit_battle_royale'):
-        return _ReplayLargeRepairKitSteelHunterItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
+        return _ReplayLargeRepairKitBattleRoyaleItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('regenerationKit'):
-        return _ReplayRegenerationKitSteelHunterItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
+        return _ReplayRegenerationKitBattleRoyaleItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     if descriptor.name.startswith('spawn_kamikaze'):
         return _ReplayOrderItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
     return _ReplayItem(descriptor, quantity, stage, timeRemaining, totalTime, tags)
@@ -1487,6 +1480,9 @@ class EquipmentsReplayPlayer(EquipmentsController):
 
     @classmethod
     def createItem(cls, descriptor, quantity, stage, timeRemaining, totalTime):
+        item = cls._findExtendItem(True, descriptor.name, descriptor, quantity, stage, timeRemaining, totalTime)
+        if item:
+            return item
         tags, clazz = _getInitialTagsAndClass(descriptor, _REPLAY_EQUIPMENT_TAG_TO_ITEM)
         if tags:
             item = clazz(descriptor, quantity, stage, timeRemaining, totalTime, tags)

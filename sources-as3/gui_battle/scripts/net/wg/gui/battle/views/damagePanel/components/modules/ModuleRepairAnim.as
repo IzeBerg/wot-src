@@ -180,7 +180,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
       
       public function setRepairSeconds(param1:int, param2:int, param3:int = 0) : void
       {
-         this.setRepairing(state != BATTLE_ITEM_STATES.NORMAL);
+         this.setRepairing(true);
          param2 /= this._playbackSpeed;
          var _loc4_:int = param1 * (param2 / (PERCENTS_100 - param1));
          var _loc5_:int = getTimer();

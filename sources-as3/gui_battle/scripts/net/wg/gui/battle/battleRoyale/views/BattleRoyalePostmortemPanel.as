@@ -48,6 +48,11 @@ package net.wg.gui.battle.battleRoyale.views
          setPlayerInfo(param1);
       }
       
+      public function as_setSpectatorPanelVisible(param1:Boolean) : void
+      {
+         this.firstTipTitle.visible = this.secondTipTitle.visible = this.firstTipBody.visible = this.secondTipBody.visible = this.mouseIcon.visible = this.escIcon.visible = this.bg.visible = param1;
+      }
+      
       override public function set visible(param1:Boolean) : void
       {
          super.visible = param1;

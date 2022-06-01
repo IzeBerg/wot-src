@@ -647,6 +647,18 @@ msgstr "Урон выстрелом"
 msgid "efficiencyRibbons/damageByMinefield"
 msgstr "Урон минами"
 
+msgid "efficiencyRibbons/dealtDamageByClingBrander"
+msgstr "Урон Боевого робота"
+
+msgid "efficiencyRibbons/dealtDamageByCorrodingShot"
+msgstr "Урон Кислотным снарядом"
+
+msgid "efficiencyRibbons/dealtDamageByFireCircle"
+msgstr "Урон огнём"
+
+msgid "efficiencyRibbons/dealtDamageByThunderStrike"
+msgstr "Урон Электроразрядом"
+
 msgid "efficiencyRibbons/deathZone"
 msgstr "Урон зоной"
 
@@ -677,11 +689,23 @@ msgstr "Таран"
 msgid "efficiencyRibbons/receivedBurn"
 msgstr "Урон пожаром"
 
+msgid "efficiencyRibbons/receivedByClingBrander"
+msgstr "Урон от Боевого робота"
+
+msgid "efficiencyRibbons/receivedByCorrodingShot"
+msgstr "Урон от кислоты"
+
+msgid "efficiencyRibbons/receivedByFireCircle"
+msgstr "Урон от огня"
+
 msgid "efficiencyRibbons/receivedByMinefield"
 msgstr "Урон минами"
 
 msgid "efficiencyRibbons/receivedBySmoke"
 msgstr "Урон корродирующим облаком"
+
+msgid "efficiencyRibbons/receivedByThunderStrike"
+msgstr "Урон от Электроразряда"
 
 msgid "efficiencyRibbons/receivedCrits"
 msgstr "Критическое повреждение"
@@ -1283,12 +1307,6 @@ msgstr "%(target)s уничтожен залпом артбатареи."
 msgid "player_messages/DEATH_FROM_SHOT_SELF_ENEMY_BOMBER"
 msgstr "%(target)s уничтожен бомбометанием."
 
-msgid "player_messages/DEATH_FROM_SUPPLY_SHOT_ALLY_ENEMY"
-msgstr "%(attacker)s уничтожил %(target)s."
-
-msgid "player_messages/DEATH_FROM_SUPPLY_SHOT_ENEMY_ALLY"
-msgstr "%(attacker)s уничтожил %(target)s."
-
 msgid "player_messages/DEATH_FROM_WORLD_COLLISION_ALLY_ALLY"
 msgstr "Союзник %(attacker)s разбил союзника %(target)s."
 
@@ -1371,9 +1389,6 @@ msgstr "Пожар потушен."
 
 msgid "player_messages/OPT_DEVICE_USED"
 msgstr "%(message)s"
-
-msgid "player_messages/SPAWN"
-msgstr "Прибыло подкрепление %(entity)s!"
 
 msgid "player_messages/TANKMAN_HIT_AT_SHOT"
 msgstr "[%(device)s] ранен выстрелом %(entity)s."
@@ -1526,8 +1541,17 @@ msgstr "Режим Наблюдателя"
 msgid "postmortem/tips/observerMode/text"
 msgstr "Переключайтесь между машинами союзников."
 
+msgid "postmortem_messages/DEATH_FROM_AIRSTRIKE"
+msgstr "Машина уничтожена Авиаударом."
+
 msgid "postmortem_messages/DEATH_FROM_ARTILLERY_PROTECTION_UNKNOWN"
 msgstr "Машина уничтожена огнём артбатареи."
+
+msgid "postmortem_messages/DEATH_FROM_CLING_BRANDER"
+msgstr "Машина уничтожена Боевым роботом."
+
+msgid "postmortem_messages/DEATH_FROM_CORRODING_SHOT"
+msgstr "Машина уничтожена Кислотным снарядом."
 
 msgid "postmortem_messages/DEATH_FROM_DEATH_ZONE_ALLY_SELF"
 msgstr "Машина уничтожена в запретной зоне союзником"
@@ -1556,6 +1580,9 @@ msgstr "Машина затоплена"
 msgid "postmortem_messages/DEATH_FROM_FIRE"
 msgstr "Пожар был вызван игроком"
 
+msgid "postmortem_messages/DEATH_FROM_FIRE_CIRCLE"
+msgstr "Машина уничтожена Огненным кольцом."
+
 msgid "postmortem_messages/DEATH_FROM_INACTIVE_CREW_AT_SHOT"
 msgstr "Экипаж уничтожен выстрелом игрока"
 
@@ -1572,10 +1599,10 @@ msgid ""
 msgstr "Экипаж уничтожен в результате сильного удара"
 
 msgid "postmortem_messages/DEATH_FROM_KAMIKAZE"
-msgstr "Машина уничтожена брандером"
+msgstr "Машина уничтожена Брандером."
 
 msgid "postmortem_messages/DEATH_FROM_MINE_EXPLOSION"
-msgstr "Машина уничтожена минами"
+msgstr "Машина уничтожена Минным полем."
 
 msgid "postmortem_messages/DEATH_FROM_OVERTURN_ALLY_SELF"
 msgstr "Машина перевёрнута союзником"
@@ -1610,8 +1637,8 @@ msgstr "Машина уничтожена залпом артбатареи"
 msgid "postmortem_messages/DEATH_FROM_SHOT_BOMBER"
 msgstr "Машина уничтожена бомбометанием"
 
-msgid "postmortem_messages/DEATH_FROM_SUPPLY_SHOT"
-msgstr "Машина уничтожена объектом поддержки игрока"
+msgid "postmortem_messages/DEATH_FROM_THUNDER_STRIKE"
+msgstr "Машина уничтожена Электрическим разрядом."
 
 msgid "postmortem_messages/DEATH_FROM_WORLD_COLLISION_ALLY_SELF"
 msgstr "Машина разбита союзником"

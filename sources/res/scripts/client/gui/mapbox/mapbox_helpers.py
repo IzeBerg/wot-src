@@ -3,6 +3,7 @@ from gui.impl import backport
 from gui.impl.gen import R
 from gui.server_events.bonuses import getServiceBonuses
 from helpers import dependency
+from helpers.time_utils import getTimestampFromISO
 from skeletons.gui.game_control import IMapboxController
 if typing.TYPE_CHECKING:
     from frameworks.wulf import Array, ViewEvent
@@ -65,6 +66,12 @@ def formatMapboxRewards(reward):
         result.append({'name': name, 'value': value})
 
     return result
+
+
+def convertTimeFromISO(timeStr):
+    if timeStr:
+        return getTimestampFromISO(timeStr)
+    return 0
 
 
 def _adaptMapboxDossierFormat(dossierValue):

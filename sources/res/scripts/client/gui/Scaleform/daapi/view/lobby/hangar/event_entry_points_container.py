@@ -3,9 +3,9 @@ from operator import attrgetter
 from itertools import chain
 from constants import QUEUE_TYPE
 from gui.Scaleform.daapi.view.meta.EventEntryPointsContainerMeta import EventEntryPointsContainerMeta
+from gui.impl.lobby.dragon_boat.dragon_boat_entry_point import isDragonBoatEntryPointAvailable
 from gui.impl.lobby.mapbox.mapbox_entry_point_view import isMapboxEntryPointAvailable
 from gui.impl.lobby.ranked.ranked_entry_point import isRankedEntryPointAvailable
-from gui.impl.lobby.rts.entry_banner_view import isRTSEntryBannerAvailable
 from gui.Scaleform.genConsts.HANGAR_ALIASES import HANGAR_ALIASES
 from gui.Scaleform.genConsts.RANKEDBATTLES_ALIASES import RANKEDBATTLES_ALIASES
 from gui.prb_control.entities.listener import IGlobalListener
@@ -26,7 +26,7 @@ _ENTRY_POINT_ENABLED_VALIDATOR = {HANGAR_ALIASES.CRAFT_MACHINE_ENTRY_POINT: getC
    RANKEDBATTLES_ALIASES.ENTRY_POINT: isRankedEntryPointAvailable, 
    HANGAR_ALIASES.MAPBOX_ENTRY_POINT: isMapboxEntryPointAvailable, 
    HANGAR_ALIASES.MARATHON_ENTRY_POINT: isMarathonEntryPointAvailable, 
-   HANGAR_ALIASES.RTS_ENTRY_BANNER: isRTSEntryBannerAvailable}
+   HANGAR_ALIASES.EVENT_ENTRANCE_POINT: isDragonBoatEntryPointAvailable}
 _logger = logging.getLogger(__name__)
 
 class _EntryPointData(object):
@@ -174,7 +174,7 @@ class EventEntryPointsContainer(EventEntryPointsContainerMeta, Notifiable, IGlob
             self.clearNotification()
             self.addNotificator(SimpleNotifier(self.__getCooldownForUpdate, self.__onUpdateNotify))
             self.startNotification()
-            self.__updateEntries()
+        self.__updateEntries()
 
     def __onUpdateNotify(self):
         self.__handleNotifications(self.__notificationsCtrl.getEventsNotifications())

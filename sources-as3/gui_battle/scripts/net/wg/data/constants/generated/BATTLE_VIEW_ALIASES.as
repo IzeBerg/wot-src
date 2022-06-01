@@ -57,20 +57,6 @@ package net.wg.data.constants.generated
       
       public static const PLAYERS_PANEL:String = "playersPanel";
       
-      public static const COMMANDER_SPAWN_MENU:String = "commanderSpawnMenu";
-      
-      public static const COMMANDER_SUPPLY_PANEL:String = "commanderSupplyPanel";
-      
-      public static const COMMANDER_VEHICLE_SELECTION:String = "commanderVehicleSelection";
-      
-      public static const COMMANDER_HELP:String = "commanderHelp";
-      
-      public static const COMMANDER_VEHICLES_PANEL:String = "commanderVehiclesPanel";
-      
-      public static const RTS_HIT_DIRECTION:String = "rtsHitDirection";
-      
-      public static const TICKER:String = "battleTicker";
-      
       public static const REPAIR_POINT_TIMER:String = "repairPointTimer";
       
       public static const FLAG_NOTIFICATION:String = "flagNotification";
@@ -150,6 +136,8 @@ package net.wg.data.constants.generated
       public static const CALLOUT_PANEL:String = "calloutPanel";
       
       public static const BATTLE_NOTIFIER:String = "battleNotifier";
+      
+      public static const CORRODING_SHOT_INDICATOR:String = "corrodingShotIndicator";
       
       public static const EVENT_POSTMORTEM_PANEL:String = "eventPostmortemPanel";
       

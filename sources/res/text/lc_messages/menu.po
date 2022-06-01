@@ -680,6 +680,12 @@ msgstr "Члены экипажей: %(curValue)s из %(total)s"
 msgid "battleAbility/title"
 msgstr "Боевые резервы"
 
+msgid "battleRoyale/contextMenu/takeRent"
+msgstr "Арендовать на %(days)s дней"
+
+msgid "battleRoyale/contextMenu/takeTestDrive"
+msgstr "Взять бесплатно на %(days)s день тест-драйва"
+
 msgid "blueprints/conversionView/btnCancel"
 msgstr "Отменить"
 
@@ -749,17 +755,8 @@ msgstr "«Разведка боем»"
 msgid "bonusType/38"
 msgstr "«Топография»"
 
-msgid "bonusType/39"
-msgstr "Искусство стратегии"
-
 msgid "bonusType/4"
 msgstr "Специальный бой"
-
-msgid "bonusType/40"
-msgstr "Искусство стратегии"
-
-msgid "bonusType/41"
-msgstr "Искусство стратегии"
 
 msgid "bonusType/5"
 msgstr "Специальный бой"
@@ -1171,8 +1168,11 @@ msgstr "Исключить из взвода"
 msgid "contextMenu/forbiddenNick"
 msgstr "Запрещённый ник/клан"
 
-msgid "contextMenu/giveEquipmentCommander"
-msgstr "Назначить наводчиком"
+msgid "contextMenu/giveArtilleryEquipmentCommander"
+msgstr "Передать Артобстрел"
+
+msgid "contextMenu/giveInspireEquipmentCommander"
+msgstr "Передать Воодушевление"
 
 msgid "contextMenu/giveLeadership"
 msgstr "Передать командование"
@@ -1292,8 +1292,11 @@ msgstr "Предпросмотр машины"
 msgid "contextMenu/showVehicleStatistics"
 msgstr "К статистике"
 
-msgid "contextMenu/takeEquipmentCommander"
-msgstr "Забрать полномочия наводчика"
+msgid "contextMenu/takeArtilleryEquipmentCommander"
+msgstr "Забрать Артобстрел"
+
+msgid "contextMenu/takeInspireEquipmentCommander"
+msgstr "Забрать Воодушевление"
 
 msgid "contextMenu/takeLeadership"
 msgstr "Забрать командование"
@@ -2787,7 +2790,7 @@ msgid "headerButtons/battle/types/battleRoyaleSquad"
 msgstr "Взвод охотников"
 
 msgid "headerButtons/battle/types/battleRoyaleSquad/description"
-msgstr "Создать взвод из 3 бойцов"
+msgstr "Создать взвод из 2 игроков"
 
 msgid "headerButtons/battle/types/battleTeaching"
 msgstr "Учебный бой"
@@ -3036,9 +3039,6 @@ msgstr "!"
 msgid "headerButtons/doLabel/premium"
 msgstr "Продлить"
 
-msgid "headerButtons/fightBtn/tooltip/aiRosterNotSet/body"
-msgstr "Отряд не сформирован."
-
 msgid "headerButtons/fightBtn/tooltip/battleRoyaleDisabled/body"
 msgstr "На текущем сервере комендантский час."
 
@@ -3147,46 +3147,6 @@ msgstr "На %(forbiddenType)s нельзя участвовать в Ранго
 
 msgid "headerButtons/fightBtn/tooltip/rankedVehType/header"
 msgstr "Неподходящая машина"
-
-msgid "headerButtons/fightBtn/tooltip/rtsNoBattles/body"
-msgstr "На этом сервере комендантский час."
-
-msgid "headerButtons/fightBtn/tooltip/rtsNoBattles/header"
-msgstr "Выход в бой недоступен"
-
-msgid "headerButtons/fightBtn/tooltip/rtsNoCurrency1x1/body"
-msgstr ""
-"Недостаточно приказов для выхода в бой за Стратега 1х1.\n"
-"Приказы можно заработать, играя за Танкистов."
-
-msgid "headerButtons/fightBtn/tooltip/rtsNoCurrency1x7/body"
-msgstr ""
-"Недостаточно рапортов для выхода в бой за Стратега 1х7.\n"
-"Рапорты можно заработать, играя за Танкистов."
-
-msgid "headerButtons/fightBtn/tooltip/rtsNoVehicleWithLevel/body"
-msgstr "Нет подходящей техники."
-
-msgid "headerButtons/fightBtn/tooltip/rtsNotAvailable/body"
-msgstr "Режим прекращения огня, бои недоступны."
-
-msgid "headerButtons/fightBtn/tooltip/rtsNotSet/body"
-msgstr "Режим недоступен на выбранном сервере."
-
-msgid "headerButtons/fightBtn/tooltip/rtsNotSet/header"
-msgstr "Выход в бой недоступен"
-
-msgid "headerButtons/fightBtn/tooltip/rtsSubmodeNotAvailable/body"
-msgstr "Бои недоступны. Пожалуйста, попробуйте позже."
-
-msgid "headerButtons/fightBtn/tooltip/rtsSubmodeNotEligible/body"
-msgstr "Необходимо провести один Случайный бой на технике X уровня."
-
-msgid "headerButtons/fightBtn/tooltip/rtsUnsuitableVehicleLevel/body"
-msgstr "Выбрана неподходящая техника."
-
-msgid "headerButtons/fightBtn/tooltip/rtsVehicleNotReady/body"
-msgstr "Машина не готова к бою"
 
 msgid "headerButtons/fightBtn/tooltip/sandbox/invalid/header"
 msgstr "Выход в бой недоступен"
@@ -4301,8 +4261,17 @@ msgstr "Время ремонта ходовой"
 msgid "moduleInfo/params/circularVisionRadius"
 msgstr "Обзор"
 
+msgid "moduleInfo/params/commonAreaRadius"
+msgstr "Радиус действия"
+
+msgid "moduleInfo/params/commonDelay"
+msgstr "Время развёртывания"
+
 msgid "moduleInfo/params/cooldownSeconds"
 msgstr "Время подготовки"
+
+msgid "moduleInfo/params/crewRolesFactor"
+msgstr "К основной специальности и умениям экипажа"
 
 msgid "moduleInfo/params/damage"
 msgstr "Урон"
@@ -4312,6 +4281,9 @@ msgstr "Разброс на 100 м"
 
 msgid "moduleInfo/params/drivingControl"
 msgstr "К управляемости на скорости "
+
+msgid "moduleInfo/params/duration"
+msgstr "Продолжительность"
 
 msgid "moduleInfo/params/enginePower"
 msgstr "Мощность двигателя"
@@ -4340,8 +4312,14 @@ msgstr "Бронирование корпуса "
 msgid "moduleInfo/params/hullWeight"
 msgstr "Масса корпуса "
 
+msgid "moduleInfo/params/inactivationDelay"
+msgstr "Остаточный эффект"
+
 msgid "moduleInfo/params/level_lbl"
 msgstr "Боевой резерв %(level)s уровня"
+
+msgid "moduleInfo/params/maxDamage"
+msgstr "Максимальный урон"
 
 msgid "moduleInfo/params/maxHealth"
 msgstr "Прочность "
@@ -4408,6 +4386,9 @@ msgstr "Время перезарядки между выстрелами"
 
 msgid "moduleInfo/params/shellsCount"
 msgstr "Снарядов в магазине"
+
+msgid "moduleInfo/params/short/crewRolesFactor"
+msgstr "К специальности экипажа"
 
 msgid "moduleInfo/params/shotSpeed"
 msgstr "Скорость полёта"
@@ -6096,6 +6077,9 @@ msgstr "(выстр)"
 msgid "tank_params/hullArmor"
 msgstr "Бронирование корпуса"
 
+msgid "tank_params/increaseHealth"
+msgstr "Увеличение прочности"
+
 msgid "tank_params/invisibilityMovingFactor"
 msgstr "В движении (%)"
 
@@ -6212,54 +6196,6 @@ msgstr "Максимальное время оглушения"
 
 msgid "tank_params/stunMinDuration"
 msgstr "Минимальное время оглушения"
-
-msgid "tank_params/supply_aimingTime"
-msgstr "Время сведения"
-
-msgid "tank_params/supply_armor"
-msgstr "Бронирование"
-
-msgid "tank_params/supply_avgDamage"
-msgstr "Средний урон"
-
-msgid "tank_params/supply_avgPiercingPower"
-msgstr "Средняя бронепробиваемость"
-
-msgid "tank_params/supply_barricadesDamage"
-msgstr "Урон"
-
-msgid "tank_params/supply_bunkerClipFireRate"
-msgstr "Перезарядка"
-
-msgid "tank_params/supply_circularVisionRadius"
-msgstr "Обзор"
-
-msgid "tank_params/supply_flamethrowerClipFireRate"
-msgstr "Перезарядка"
-
-msgid "tank_params/supply_flamethrowerDamage"
-msgstr "Средний урон"
-
-msgid "tank_params/supply_maxHealth"
-msgstr "Прочность"
-
-msgid "tank_params/supply_mortarClipFireRate"
-msgstr "Перезарядка"
-
-msgid "tank_params/supply_pillboxClipFireRate"
-msgstr "Перезарядка"
-
-msgid "tank_params/supply_reloadTimeSecs"
-msgstr "Заряжание орудия"
-
-msgid "tank_params/supply_shotDispersionAngle"
-msgstr "Разброс на 100 м"
-
-msgid "tank_params/supply_stunDuration"
-msgstr "Время оглушения"
-
-msgid "tank_params/supply_turretArmor"
-msgstr "Бронирование"
 
 msgid "tank_params/switchOffTime"
 msgstr "Время перехода в походный режим "

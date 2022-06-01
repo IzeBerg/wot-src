@@ -7,6 +7,8 @@ package net.wg.gui.battle.views.minimap.components.entries.constants
       
       public static const ARTILLERY_ATLAS_ITEM_NAME:String = "ArtilleryEntry";
       
+      public static const ARTILLERY_YELLOW_ATLAS_ITEM_NAME:String = "ArtilleryYellowEntry";
+      
       public static const BOMBER_ATLAS_ITEM_NAME:String = "BomberEntry";
       
       public static const SMOKE_ATLAS_ITEM_NAME:String = "SmokeEntry";

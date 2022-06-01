@@ -37,6 +37,8 @@ package
       
       public static const HEADER_BACKBTN_DESCRLABEL_BLUEPRINTSEXCHANGE:String = "#vehicle_preview:header/backBtn/descrLabel/blueprintsExchange";
       
+      public static const HEADER_BACKBTN_DESCRLABEL_REWARDS:String = "#vehicle_preview:header/backBtn/descrLabel/rewards";
+      
       public static const HEADER_TITLE:String = "#vehicle_preview:header/title";
       
       public static const HEADER_CLOSEBTN_LABEL:String = "#vehicle_preview:header/closeBtn/label";

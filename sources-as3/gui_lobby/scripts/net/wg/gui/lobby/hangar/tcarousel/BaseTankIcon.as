@@ -83,8 +83,6 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       public var crystalsGlowBlend:Sprite = null;
       
-      public var rtsRosterIcon:Sprite = null;
-      
       protected var isWotPlusSlot:Boolean = false;
       
       private var _visibleVehicleInfo:Boolean = true;
@@ -155,7 +153,6 @@ package net.wg.gui.lobby.hangar.tcarousel
          this.extraGlow = null;
          this.crystalsGlowBlend = null;
          this.crystalsIcon = null;
-         this.rtsRosterIcon = null;
          super.onDispose();
       }
       
@@ -239,7 +236,6 @@ package net.wg.gui.lobby.hangar.tcarousel
          this.crystalsGlowBlend.visible = _loc2_;
          this.extraGlow.visible = _loc2_ || param1.isWotPlusSlot;
          this.extraGlow.gotoAndStop(!!param1.isWotPlusSlot ? TankCarouselItemRenderer.LABEL_WOT_PLUS : TankCarouselItemRenderer.LABEL_CRYSTAL);
-         this.rtsRosterIcon.visible = param1.rtsRosterIndex > 0;
          this._infoImgOffset = !!this.infoImg.visible ? int(INFO_IMG_OFFSET_H) : int(0);
          this.isWotPlusSlot = param1.isWotPlusSlot;
          this._isBuySlot = param1.buySlot;

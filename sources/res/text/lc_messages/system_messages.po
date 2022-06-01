@@ -51,9 +51,6 @@ msgstr ""
 "В настоящий момент данное событие недоступно. Следите за новостями на "
 "портале игры."
 
-msgid "arena_start_errors/join/INSUFFICIENT_FUNDS"
-msgstr "Невозможно выйти в бой: недостаточно Рапортов / Приказов."
-
 msgid "arena_start_errors/join/NOT_FOUND"
 msgstr "Ошибка присоединения. Приглашение устарело."
 
@@ -528,13 +525,21 @@ msgstr ""
 msgid "battlePass/switch_pause/body"
 msgstr "Боевой пропуск временно недоступен. Идут технические работы."
 
-msgid "battlePass/switch_started/body"
+msgid "battlePass/switch_started/style/body"
 msgstr ""
-"Бойцы! Время в очередной раз отправиться в погоню за уникальной наградой "
+"Бойцы! Время в очередной раз отправляться в погоню за уникальной наградой "
 "Боевого пропуска: прогрессионными стилями, жетонами, эксклюзивными "
 "персонажами и многим другим!"
 
-msgid "battlePass/switch_started/title"
+msgid "battlePass/switch_started/style/title"
+msgstr "Боевой пропуск, сезон %(seasonNum)d"
+
+msgid "battlePass/switch_started/tankman/body"
+msgstr ""
+"Бойцы! Время в очередной раз отправляться в погоню за уникальной наградой "
+"Боевого пропуска: жетонами, эксклюзивными персонажами и многим другим!"
+
+msgid "battlePass/switch_started/tankman/title"
 msgstr "Боевой пропуск, сезон %(seasonNum)d"
 
 msgid "battlePassLevels_buy/server_error"
@@ -1418,6 +1423,18 @@ msgstr "Жетоны снова доступны."
 
 msgid "dossiers_unavailable"
 msgstr "Учётная запись не готова (DOSSIERS_UNAVAILABLE)"
+
+msgid "dragonBoat/finalAward/header"
+msgstr "Получены награды за успешное прохождение Фестиваля драконьих лодок:"
+
+msgid "dragonBoat/paused"
+msgstr "Фестиваль драконьих лодок временно приостановлен."
+
+msgid "dragonBoat/restored"
+msgstr "Фестиваль драконьих лодок возобновлён."
+
+msgid "dragonBoat/stageAward/header"
+msgstr "Получены награды:"
 
 msgid "drop_tankman_skill/invalid_vehicle"
 msgstr "Ошибка сброса умений. Неправильная машина."

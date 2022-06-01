@@ -54,6 +54,8 @@ package net.wg.gui.rally.vo
       
       public var role:uint;
       
+      public var roleIcon:String = "";
+      
       public function RallySlotVO(param1:Object)
       {
          super(param1);

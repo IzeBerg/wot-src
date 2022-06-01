@@ -4,6 +4,7 @@ import typing
 from BWUtil import AsyncReturn
 import adisp
 from CurrentVehicle import HeroTankPreviewAppearance
+from async import async, await
 from constants import GameSeasonType, RentType
 from debug_utils import LOG_WARNING
 from frameworks.wulf import ViewFlags, Window, WindowFlags, WindowLayer, WindowStatus
@@ -24,7 +25,6 @@ from gui.Scaleform.genConsts.EPICBATTLES_ALIASES import EPICBATTLES_ALIASES
 from gui.Scaleform.genConsts.MAPBOX_ALIASES import MAPBOX_ALIASES
 from gui.Scaleform.genConsts.PERSONAL_MISSIONS_ALIASES import PERSONAL_MISSIONS_ALIASES
 from gui.Scaleform.genConsts.RANKEDBATTLES_ALIASES import RANKEDBATTLES_ALIASES
-from gui.Scaleform.genConsts.RTSBATTLES_ALIASES import RTSBATTLES_ALIASES
 from gui.Scaleform.genConsts.STORAGE_CONSTANTS import STORAGE_CONSTANTS
 from gui.game_control.links import URLMacros
 from gui.impl import backport
@@ -63,7 +63,6 @@ from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
 from soft_exception import SoftException
 from uilogging.veh_post_progression.loggers import VehPostProgressionEntryPointLogger
-from async import async, await
 if typing.TYPE_CHECKING:
     from typing import Callable, Dict, Generator, Iterable, List, Union
     from gui.marathon.marathon_event import MarathonEvent
@@ -111,15 +110,6 @@ def showRankedBattleIntro():
     g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(RANKEDBATTLES_ALIASES.RANKED_BATTLES_INTRO_ALIAS)), scope=EVENT_BUS_SCOPE.LOBBY)
 
 
-def showRtsPrimeTimeWindow():
-    g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(RTSBATTLES_ALIASES.RTS_BATTLES_PRIME_TIME), ctx={}), EVENT_BUS_SCOPE.LOBBY)
-
-
-def showRtsIntroPage():
-    from gui.impl.lobby.rts.intro_view import IntroView
-    g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(R.views.lobby.rts.IntroView(), IntroView, ScopeTemplates.LOBBY_SUB_SCOPE)), scope=EVENT_BUS_SCOPE.LOBBY)
-
-
 def showEpicBattlesPrimeTimeWindow():
     g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(EPICBATTLES_ALIASES.EPIC_BATTLES_PRIME_TIME_ALIAS), ctx={}), EVENT_BUS_SCOPE.LOBBY)
 
@@ -136,7 +126,8 @@ def showBattleRoyalePrimeTimeWindow():
     g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(BATTLEROYALE_ALIASES.BATTLE_ROYALE_PRIME_TIME), ctx={}), EVENT_BUS_SCOPE.LOBBY)
 
 
-def showBattleRoyaleResultsView(ctx):
+@dependency.replace_none_kwargs(notificationsMgr=INotificationWindowController)
+def showBattleRoyaleResultsView(ctx, notificationsMgr=None):
     from gui.impl.lobby.battle_royale.battle_result_view import BrBattleResultsViewInLobby
     uiLoader = dependency.instance(IGuiLoader)
     contentResId = R.views.lobby.battle_royale.BattleResultView()
@@ -145,12 +136,14 @@ def showBattleRoyaleResultsView(ctx):
         if battleResultView.arenaUniqueID == ctx.get('arenaUniqueID', -1):
             return
         battleResultView.destroyWindow()
-    g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(contentResId, BrBattleResultsViewInLobby, ScopeTemplates.LOBBY_SUB_SCOPE), ctx=ctx), scope=EVENT_BUS_SCOPE.LOBBY)
+    view = BrBattleResultsViewInLobby(ctx=ctx)
+    window = LobbyNotificationWindow(WindowFlags.WINDOW_FULLSCREEN, content=view, layer=view.layer)
+    notificationsMgr.append(WindowNotificationCommand(window))
     return
 
 
-def showHangarVehicleConfigurator(isFirstEnter=False):
-    g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(BATTLEROYALE_ALIASES.HANGAR_VEH_INFO_VIEW), ctx={'isFirstEnter': isFirstEnter}), scope=EVENT_BUS_SCOPE.LOBBY)
+def showHangarVehicleConfigurator():
+    g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(BATTLEROYALE_ALIASES.HANGAR_VEH_INFO_VIEW), ctx={}), scope=EVENT_BUS_SCOPE.LOBBY)
 
 
 def showVehicleInfo(vehTypeCompDescr):
@@ -358,8 +351,8 @@ def showTechTree(vehTypeCompDescr=None, itemsCache=None):
     g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_TECHTREE), ctx={'nation': nation}), scope=EVENT_BUS_SCOPE.LOBBY)
 
 
-def showVehicleStats(vehTypeCompDescr):
-    g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_PROFILE), ctx={'itemCD': vehTypeCompDescr}), scope=EVENT_BUS_SCOPE.LOBBY)
+def showVehicleStats(vehTypeCompDescr, eventOwner=None):
+    g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_PROFILE), ctx={'itemCD': vehTypeCompDescr, 'eventOwner': eventOwner}), scope=EVENT_BUS_SCOPE.LOBBY)
 
 
 def showHangar():
@@ -474,15 +467,16 @@ def showMarathonVehiclePreview(vehTypeCompDescr, itemsPack=None, title='', marat
     return
 
 
-def showConfigurableVehiclePreview(vehTypeCompDescr, previewAlias, previewBackCb, hiddenBlocks, itemPack):
+def showConfigurableVehiclePreview(vehTypeCompDescr, previewAlias, previewBackCb, hiddenBlocks, itemPack, style=None):
     g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.CONFIGURABLE_VEHICLE_PREVIEW), ctx={'itemCD': vehTypeCompDescr, 
        'previewAlias': previewAlias, 
        'previewBackCb': previewBackCb, 
        'hiddenBlocks': hiddenBlocks, 
-       'itemsPack': itemPack}), scope=EVENT_BUS_SCOPE.LOBBY)
+       'itemsPack': itemPack, 
+       'style': style}), scope=EVENT_BUS_SCOPE.LOBBY)
 
 
-def showVehiclePreview(vehTypeCompDescr, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, vehStrCD=None, previewBackCb=None, itemsPack=None, offers=None, price=MONEY_UNDEFINED, oldPrice=None, title='', description=None, endTime=None, buyParams=None, vehParams=None, **kwargs):
+def showVehiclePreview(vehTypeCompDescr, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, vehStrCD=None, previewBackCb=None, itemsPack=None, offers=None, price=MONEY_UNDEFINED, oldPrice=None, title='', description=None, endTime=None, buyParams=None, vehParams=None, style=None, **kwargs):
     heroTankController = dependency.instance(IHeroTankController)
     heroTankCD = heroTankController.getCurrentTankCD()
     isHeroTank = heroTankCD and heroTankCD == vehTypeCompDescr
@@ -514,7 +508,8 @@ def showVehiclePreview(vehTypeCompDescr, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, v
            'description': description, 
            'endTime': endTime, 
            'buyParams': buyParams, 
-           'vehParams': vehParams})
+           'vehParams': vehParams, 
+           'style': style})
         g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(viewAlias), ctx=kwargs), EVENT_BUS_SCOPE.LOBBY)
     return
 
@@ -529,6 +524,17 @@ def showVehiclePreviewWithoutBottomPanel(vehCD, backCallback=None, **kwargs):
                       OptionalBlocks.CLOSE_BUTTON, OptionalBlocks.BUYING_PANEL), 
        'previewAlias': VIEW_ALIAS.CONFIGURABLE_VEHICLE_PREVIEW, 
        'itemsPack': kwargs.get('itemsPack')}), EVENT_BUS_SCOPE.LOBBY)
+
+
+def showVehiclePreviewWithStyleWithoutBottomPanel(vehCD, **kwargs):
+    from gui.Scaleform.daapi.view.lobby.vehicle_preview.configurable_vehicle_preview import OptionalBlocks
+    g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.CONFIGURABLE_VEHICLE_PREVIEW), ctx={'itemCD': vehCD, 
+       'previewBackCb': kwargs.get('backCallback'), 
+       'previewAlias': kwargs.get('previewAlias'), 
+       'style': kwargs.get('style'), 
+       'hiddenBlocks': (
+                      OptionalBlocks.CLOSE_BUTTON, OptionalBlocks.BUYING_PANEL), 
+       'heroInteractive': False}), EVENT_BUS_SCOPE.LOBBY)
 
 
 def goToHeroTankOnScene(vehTypeCompDescr, previewAlias=VIEW_ALIAS.LOBBY_HANGAR, previewBackCb=None, previousBackAlias=None, hangarVehicleCD=None):
@@ -610,9 +616,11 @@ def showPersonalMissionsQuestAwardScreen(quest, ctx, proxyEvent, notificationMgr
     notificationMgr.append(WindowNotificationCommand(window))
 
 
-def showProfileWindow(databaseID, userName):
+def showProfileWindow(databaseID, userName, selectedAlias=None, eventOwner=None):
     alias = VIEW_ALIAS.PROFILE_WINDOW
-    g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(alias, getViewName(alias, databaseID)), ctx={'userName': userName, 'databaseID': databaseID}), EVENT_BUS_SCOPE.LOBBY)
+    g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(alias, getViewName(alias, databaseID)), ctx={'userName': userName, 'databaseID': databaseID, 
+       'selectedAlias': selectedAlias, 
+       'eventOwner': eventOwner}), EVENT_BUS_SCOPE.LOBBY)
 
 
 def showClanProfileWindow(clanDbID, clanAbbrev):
@@ -646,6 +654,7 @@ def selectVehicleInHangar(itemCD, loadHangar=True):
     veh = itemsCache.items.getItemByCD(int(itemCD))
     if not veh.isInInventory:
         raise SoftException(('Vehicle (itemCD={}) must be in inventory.').format(itemCD))
+    g_eventBus.handleEvent(events.HangarVehicleEvent(events.HangarVehicleEvent.SELECT_VEHICLE_IN_HANGAR, ctx={'vehicleInvID': veh.invID}), scope=EVENT_BUS_SCOPE.LOBBY)
     g_currentVehicle.selectVehicle(veh.invID)
     if loadHangar:
         showHangar()
@@ -865,14 +874,6 @@ def showDedicationRewardWindow(bonuses, data, closeCallback=None):
     from gui.impl.lobby.dedication.dedication_reward_view import DedicationRewardWindow
     window = DedicationRewardWindow(bonuses, data, closeCallback)
     window.load()
-
-
-def isViewLoaded(layoutID):
-    uiLoader = dependency.instance(IGuiLoader)
-    if not uiLoader or not uiLoader.windowsManager:
-        return False
-    view = uiLoader.windowsManager.getViewByLayoutID(layoutID)
-    return view is not None
 
 
 def showStylePreview(vehCD, style, descr='', backCallback=None, backBtnDescrLabel='', *args, **kwargs):
@@ -1218,9 +1219,9 @@ def showCompareAmmunitionSelectorView(**kwargs):
 
 
 @async
-def showNeedRepairDialog(vehicle, startState=None, parent=None):
+def showNeedRepairDialog(vehicle, repairClazz, startState=None, parent=None):
     from gui.impl.dialogs import dialogs
-    result = yield await(dialogs.showSingleDialog(layoutID=R.views.lobby.tanksetup.dialogs.NeedRepair(), wrappedViewClass=NeedRepair, vehicle=vehicle, startState=startState, parent=parent))
+    result = yield await(dialogs.showSingleDialog(layoutID=R.views.lobby.tanksetup.dialogs.NeedRepair(), wrappedViewClass=NeedRepair, vehicle=vehicle, startState=startState, parent=parent, repairClazz=repairClazz))
     raise AsyncReturn(result)
 
 
@@ -1344,9 +1345,14 @@ def showMapboxPrimeTimeWindow():
 
 
 def showMapboxIntro(closeCallback=None):
-    from gui.impl.lobby.mapbox.map_box_intro import MapBoxIntroWindow
-    if not MapBoxIntroWindow.getInstances():
-        window = MapBoxIntroWindow(closeCallback)
+    from gui.impl.lobby.mapbox.map_box_intro import MapBoxIntro
+    g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(R.views.lobby.mapbox.MapBoxIntro(), MapBoxIntro, ScopeTemplates.LOBBY_SUB_SCOPE), closeCallback=closeCallback), scope=EVENT_BUS_SCOPE.LOBBY)
+
+
+def showMapboxSurvey(mapName, closeCallback=None):
+    from gui.impl.lobby.mapbox.mapbox_survey_view import MapBoxSurveyWindow
+    if not MapBoxSurveyWindow.getInstances():
+        window = MapBoxSurveyWindow(mapName, closeCallback)
         window.load()
 
 
@@ -1467,22 +1473,6 @@ def showBuyModuleDialog(newModule, installedModule, currency, mountDisabledReaso
         callback((False, {}))
     else:
         callback(result.result)
-
-
-@async
-def showRTSRosterSaveDialog():
-    from gui.impl.dialogs import dialogs
-    from gui.impl.pub.dialog_window import DialogButtons
-    from gui.impl.dialogs.gf_builders import ChooseOrCancelDialogBuilder
-    stringRoot = R.strings.rts_battles.strategist.saveDialog
-    builder = ChooseOrCancelDialogBuilder()
-    builder.setTitle(stringRoot.title())
-    builder.setPrimaryButtonLabel(stringRoot.accept())
-    builder.setSecondaryButtonLabel(stringRoot.cancel())
-    result = yield await(dialogs.show(builder.build()))
-    wasCanceled = result.result == DialogButtons.CANCEL
-    shouldSave = result.result == ChooseOrCancelDialogBuilder.PRIMARY
-    raise AsyncReturn((shouldSave, wasCanceled))
 
 
 def showMapsTrainingPage(ctx):
@@ -1647,31 +1637,27 @@ def showRankedSelectableReward(rewards=None):
     window.load()
 
 
-def showRTSMetaRootWindow(tabId=None):
-    layoutID = R.views.lobby.rts.MetaRootView()
-    if isViewLoaded(layoutID):
-        return
-    from gui.impl.lobby.rts.meta_root_view import MetaRootView
-    g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(layoutID=layoutID, viewClass=MetaRootView, scope=ScopeTemplates.LOBBY_SUB_SCOPE), tabId=tabId), scope=EVENT_BUS_SCOPE.LOBBY)
-
-
-def showRTSRewardsWindow():
-    from gui.impl.lobby.rts.rewards_view import RewardsViewWindow
-    guiLoader = dependency.instance(IGuiLoader)
-    view = guiLoader.windowsManager.getViewByLayoutID(R.views.lobby.rts.RewardsView())
-    if view is not None:
-        return
-    else:
-        window = RewardsViewWindow()
+def showDragonBoatIntroWindow(parent=None, closeCallback=None):
+    from gui.impl.lobby.dragon_boat.dragon_boat_intro_view import DragonBoatIntroWindow
+    from account_helpers.AccountSettings import AccountSettings, DBOAT_INTRO_SCREEN_SHOWN
+    AccountSettings.setSettings(DBOAT_INTRO_SCREEN_SHOWN, True)
+    if not DragonBoatIntroWindow.getInstances():
+        window = DragonBoatIntroWindow(parent=parent if parent is not None else getParentWindow(), closeCallback=closeCallback)
         window.load()
-        return
+    return
 
 
-def showRTSBootcampResult(arenaUniqueID):
-    from gui.rts_battles.rts_helpers import onShowRTSBootcampResult
-    onShowRTSBootcampResult(arenaUniqueID)
+def showDragonBoatFinalRewardWindow(parent=None, closeCallback=None):
+    from gui.impl.lobby.dragon_boat.dragon_boat_award_view import DragonBoatFinalRewardWindow
+    if not DragonBoatFinalRewardWindow.getInstances():
+        window = DragonBoatFinalRewardWindow(parent=parent if parent is not None else getParentWindow(), closeCallback=closeCallback)
+        window.load()
+    return
 
 
-def showRTSBootcampResultDeserted():
-    from gui.impl.lobby.rts.tutorial.rts_tutorial_helpers import showDefeatDialog
-    showDefeatDialog()
+def showDragonBoatFinishTeamdWindow(team=1, parent=None, closeCallback=None):
+    from gui.impl.lobby.dragon_boat.dragon_boat_team_finish_view import DragonBoatTeamFinishWindow
+    if not DragonBoatTeamFinishWindow.getInstances():
+        window = DragonBoatTeamFinishWindow(team=team, parent=parent if parent is not None else getParentWindow(), closeCallback=closeCallback)
+        window.load()
+    return

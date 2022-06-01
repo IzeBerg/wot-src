@@ -235,7 +235,7 @@
 			<Flags>ALL_CLIENTS</Flags>
 		</masterVehID>
 		<needsCount>
-			<Type>UINT8</Type>
+			<Type>BOOL</Type>
 			<Flags>CELL_PRIVATE</Flags>
 		</needsCount>
 		<arenaTypeID>
@@ -306,7 +306,7 @@
 			<Flags>ALL_CLIENTS</Flags>
 		</healOverTime>
 		<debuff>
-			<Type>BOOL</Type>
+			<Type>INT32</Type>
 			<Flags>ALL_CLIENTS</Flags>
 		</debuff>
 		<isSpeedCapturing>
@@ -353,7 +353,6 @@
 		<_harm/>
 		<_inspireController/>
 		<_healPointController/>
-		<_watchTowerVisibility/>
 		<_entityExtraUserData/>
 		<_extras/>
 		<attrs/>
@@ -481,21 +480,10 @@
 		<setAvatar>
 			<Arg>MAILBOX</Arg>
 		</setAvatar>
-		<uncontrolFromAI>
-			<Arg>MAILBOX</Arg>
-		</uncontrolFromAI>
-		<getBackToAI/>
-		<onAimAtVehicle>
-			<Exposed/>
-			<Arg>OBJECT_ID</Arg>
-		</onAimAtVehicle>
 		<registerObserver>
 			<Arg>MAILBOX</Arg>
 			<Arg>BOOL</Arg>
 		</registerObserver>
-		<onCommanderReady>
-			<Arg>MAILBOX</Arg>
-		</onCommanderReady>
 		<onClientConnected>
 			<Arg>BOOL</Arg>
 		</onClientConnected>
@@ -530,6 +518,14 @@
 			<Arg>OBJECT_ID</Arg>
 		</onConcealedFromEnemy>
 		<onStopObservationByEnemy/>
+		<updateVehicleAmmo>
+			<Arg>INT32</Arg>
+			<Arg>UINT16</Arg>
+			<Arg>UINT8</Arg>
+			<Arg>UINT8</Arg>
+			<Arg>INT16</Arg>
+			<Arg>INT16</Arg>
+		</updateVehicleAmmo>
 		<onFlagAction>
 			<Arg>UINT8</Arg>
 			<Arg>PYTHON</Arg>
@@ -582,9 +578,6 @@
 		<grantWinPoints>
 			<Arg>UINT16</Arg>
 		</grantWinPoints>
-		<activateGasAttack>
-			<Arg>FLOAT32</Arg>
-		</activateGasAttack>
 		<pauseMechanics>
 			<Arg>UINT64</Arg>
 		</pauseMechanics>
@@ -607,9 +600,6 @@
 		<requestVisibilityLists>
 			<Arg>MAILBOX</Arg>
 		</requestVisibilityLists>
-		<updateActiveDeathZones>
-			<Arg>PYTHON</Arg>
-		</updateActiveDeathZones>
 		<switchSetup>
 			<Exposed/>
 			<Arg>UINT8</Arg>

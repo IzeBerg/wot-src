@@ -2,21 +2,24 @@ from collections import namedtuple
 from functools import partial
 import logging, BigWorld
 from aih_constants import CTRL_MODE_NAME
+from battle_royale.gui.constants import BattleRoyaleEquipments
 from client_arena_component_system import ClientArenaComponent
-from constants import ARENA_SYNC_OBJECTS
+from constants import ARENA_SYNC_OBJECTS, ARENA_GUI_TYPE
 from debug_utils import LOG_ERROR_DEV
-from dyn_objects_cache import CommonForBattleRoyaleAndEpicBattleDynObjects, BattleRoyaleDynObjects
 from gui.battle_control import avatar_getter
 from gui.battle_control.battle_constants import VEHICLE_VIEW_STATE, FEEDBACK_EVENT_ID
 from gui.battle_control.matrix_factory import makeVehicleEntityMP
 from helpers import dependency
 from helpers.CallbackDelayer import CallbackDelayer
+from items import vehicles
 from shared_utils import CONST_CONTAINER
 from skeletons.dynamic_objects_cache import IBattleDynamicObjectsCache
 from skeletons.gui.battle_session import IBattleSessionProvider
 from smoke_screen import SmokeScreen
-from AffectComponent import RepairAffectComponent, TrapAffectComponent
+from AffectComponent import RepairAffectComponent, TrapAffectComponent, FireCircleAffectComponent
 _logger = logging.getLogger(__name__)
+_EQUIPMENT_AFFECT_COMPONENTS = {BattleRoyaleEquipments.FIRE_CIRCLE: FireCircleAffectComponent, 
+   BattleRoyaleEquipments.TRAP_POINT: TrapAffectComponent}
 
 class EffectData(object):
 
@@ -115,7 +118,7 @@ class InspireArgsAdapter(InspireArgs):
 
 class HealPointArgsAdapter(HealPointArgs):
 
-    def __new__(cls, isSourceVehicle, isInactivation, endTime, duration, _, senderKey, __):
+    def __new__(cls, isSourceVehicle, isInactivation, endTime, duration, _, senderKey, *__):
         return super(HealPointArgsAdapter, cls).__new__(cls, isSourceVehicle, isInactivation, endTime, duration, senderKey)
 
 
@@ -160,10 +163,12 @@ class ArenaEquipmentComponent(ClientArenaComponent, CallbackDelayer):
         self.addSyncDataCallback(ARENA_SYNC_OBJECTS.SMOKE, '', self.__onSmokeScreenUpdated)
         dynamicObjects = self.__dynamicObjectsCache.getConfig(BigWorld.player().arenaGuiType)
         if dynamicObjects is not None:
-            if isinstance(dynamicObjects, CommonForBattleRoyaleAndEpicBattleDynObjects):
-                self.__inspiringEffect = Effect('inspire', InspireArgsAdapter, VEHICLE_VIEW_STATE.INSPIRE, FEEDBACK_EVENT_ID.VEHICLE_INSPIRE, dynamicObjects.getInspiringEffect())
+            arenaGuiType = BigWorld.player().arenaGuiType
+            self.__inspiringEffect = Effect('inspire', InspireArgsAdapter, VEHICLE_VIEW_STATE.INSPIRE, FEEDBACK_EVENT_ID.VEHICLE_INSPIRE, dynamicObjects.getInspiringEffect())
+            if arenaGuiType in (
+             ARENA_GUI_TYPE.BATTLE_ROYALE, ARENA_GUI_TYPE.EPIC_BATTLE, ARENA_GUI_TYPE.EPIC_TRAINING):
                 self.__healingEffect = Effect('healPoint', HealPointArgsAdapter, VEHICLE_VIEW_STATE.HEALING, FEEDBACK_EVENT_ID.VEHICLE_HEAL_POINT, dynamicObjects.getHealPointEffect())
-            if isinstance(dynamicObjects, BattleRoyaleDynObjects):
+            if arenaGuiType == ARENA_GUI_TYPE.BATTLE_ROYALE:
                 self.__repairPointEffect = Effect('repairPoint', HealPointArgsAdapter, VEHICLE_VIEW_STATE.REPAIR_POINT, FEEDBACK_EVENT_ID.VEHICLE_REPAIR_POINT, dynamicObjects.getRepairPointEffect())
         self.__subscribe()
         return
@@ -267,7 +272,7 @@ class ArenaEquipmentComponent(ClientArenaComponent, CallbackDelayer):
                     vehicle.onDebuffEffectApplied(True)
         return
 
-    def _updateEffectSource(self, vehicleID, startTime, endTime, inactivationDelay, effectSourceRadius, effect):
+    def _updateEffectSource(self, vehicleID, startTime, endTime, inactivationDelay, effectSourceRadius, effect, equipmentID=None):
         providingVehicleData = effect.providingVehicles.get(vehicleID, None)
         if startTime is None:
             if providingVehicleData is not None:
@@ -278,7 +283,7 @@ class ArenaEquipmentComponent(ClientArenaComponent, CallbackDelayer):
         if exposedVehicleData is not None:
             exposedVehicleData.cancelCallback()
         if providingVehicleData is None:
-            effect.providingVehicles[vehicleID] = providingVehicleData = EffectData(vehicleID=vehicleID, startTime=startTime, endTime=endTime, visualSettings=effect.visualSettings, inactivationStartTime=endTime, inactivationEndTime=endTime + inactivationDelay if endTime is not None else None, radius=effectSourceRadius)
+            effect.providingVehicles[vehicleID] = providingVehicleData = EffectData(vehicleID=vehicleID, startTime=startTime, endTime=endTime, visualSettings=effect.visualSettings, inactivationStartTime=endTime, inactivationEndTime=endTime + inactivationDelay if endTime is not None else None, radius=effectSourceRadius, equipmentID=equipmentID)
         else:
             providingVehicleData.startTime = startTime
             providingVehicleData.endTime = endTime
@@ -309,11 +314,16 @@ class ArenaEquipmentComponent(ClientArenaComponent, CallbackDelayer):
         self.__updateExposedToEffect(vehicleID, senderKey, startTime, endTime, inactivationStartTime, inactivationEndTime, True, None, self.__repairPointEffect, isInfluenceZone, False)
         return
 
-    def updateDebuff(self, vehicleID, isInfluenceZone):
-        self.__checkAffectComponent(vehicleID, TrapAffectComponent, isInfluenceZone)
+    def updateDebuff(self, vehicleID, equipmentID):
+        if equipmentID > -1 and vehicles.g_cache.equipments()[equipmentID].name in _EQUIPMENT_AFFECT_COMPONENTS:
+            affectComponent = _EQUIPMENT_AFFECT_COMPONENTS[vehicles.g_cache.equipments()[equipmentID].name]
+            self.__checkAffectComponent(vehicleID, affectComponent, True)
+        else:
+            for affectComponent in _EQUIPMENT_AFFECT_COMPONENTS.values():
+                self.__checkAffectComponent(vehicleID, affectComponent, False)
 
-    def updateInspiringSource(self, vehicleID, startTime, endTime, inactivationDelay, inspireSourceRadius):
-        self._updateEffectSource(vehicleID, startTime, endTime, inactivationDelay, inspireSourceRadius, self.__inspiringEffect)
+    def updateInspiringSource(self, vehicleID, startTime, endTime, inactivationDelay, inspireSourceRadius, equipmentID):
+        self._updateEffectSource(vehicleID, startTime, endTime, inactivationDelay, inspireSourceRadius, self.__inspiringEffect, equipmentID)
 
     def updateHealingSource(self, vehicleID, startTime, endTime, inactivationDelay, healingSourceRadius):
         self._updateEffectSource(vehicleID, startTime, endTime, inactivationDelay, healingSourceRadius, self.__healingEffect)

@@ -6,7 +6,7 @@
 		<userString>#artefacts:deluxImprovedConfiguration/name</userString>
 		<shortDescriptionSpecial>#artefacts:deluxImprovedConfiguration/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:deluxImprovedConfiguration/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/improvedConfiguration.png 0 0</icon>
+		<icon>improvedConfiguration</icon>
 		<groupName>improvedConfiguration</groupName>
 		<price>
 			3000
@@ -113,7 +113,7 @@
 		<id>44</id>
 		<userString>#artefacts:deluxImprovedVentilation/name</userString>
 		<longDescriptionSpecial>#artefacts:deluxImprovedVentilation/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/improvedVentilation.png 0 0</icon>
+		<icon>improvedVentilation</icon>
 		<groupName>improvedVentilation</groupName>
 		<price>
 			5000
@@ -159,7 +159,7 @@
 		<id>45</id>
 		<userString>#artefacts:deluxRammer/name</userString>
 		<longDescriptionSpecial>#artefacts:deluxRammer/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/rammer.png 0 0</icon>
+		<icon>rammer</icon>
 		<groupName>tankRammer</groupName>
 		<price>
 			5000
@@ -205,7 +205,7 @@
 		<id>46</id>
 		<userString>#artefacts:deluxCoatedOptics/name</userString>
 		<longDescriptionSpecial>#artefacts:deluxCoatedOptics/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/coatedOptics.png 0 0</icon>
+		<icon>coatedOptics</icon>
 		<groupName>coatedOptics</groupName>
 		<price>
 			4000
@@ -243,7 +243,7 @@
 		<id>47</id>
 		<userString>#artefacts:deluxAimingStabilizer/name</userString>
 		<longDescriptionSpecial>#artefacts:deluxAimingStabilizer/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/aimingStabilizer.png 0 0</icon>
+		<icon>aimingStabilizer.png</icon>
 		<groupName>aimingStabilizer</groupName>
 		<price>
 			5000
@@ -289,7 +289,7 @@
 		<id>48</id>
 		<userString>#artefacts:deluxEnhancedAimDrives/name</userString>
 		<longDescriptionSpecial>#artefacts:deluxEnhancedAimDrives/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/enhancedAimDrives.png 0 0</icon>
+		<icon>enhancedAimDrives</icon>
 		<groupName>enhancedAimDrives</groupName>
 		<price>
 			5000
@@ -328,7 +328,7 @@
 		<id>111</id>
 		<userString>#artefacts:deluxeTurbocharger/name</userString>
 		<longDescriptionSpecial>#artefacts:deluxeTurbocharger/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/turbocharger.png 0 0</icon>
+		<icon>turbocharger</icon>
 		<price>
 			5000
 			<crystal/>
@@ -396,7 +396,7 @@
 		<id>112</id>
 		<userString>#artefacts:deluxeExtraHealthReserve/name</userString>
 		<longDescriptionSpecial>#artefacts:deluxeExtraHealthReserve/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/extraHealthReserve.png 0 0</icon>
+		<icon>extraHealthReserve</icon>
 		<price>
 			5000
 			<crystal/>
@@ -492,12 +492,101 @@
 			</mul>
 		</kpi>
 	</deluxeExtraHealthReserve>
+	<deluxeImprovedRotationMechanism>
+		<id>117</id>
+		<userString>#artefacts:deluxeImprovedRotationMechanism/name</userString>
+		<shortDescriptionSpecial>#artefacts:deluxeImprovedRotationMechanism/short_special</shortDescriptionSpecial>
+		<longDescriptionSpecial>#artefacts:deluxeImprovedRotationMechanism/long_special</longDescriptionSpecial>
+		<icon>improvedRotationMechanism</icon>
+		<price>
+			5000
+			<crystal/>
+		</price>
+		<tags>rotationMechanism deluxe</tags>
+		<notInShop>true</notInShop>
+		<incompatibleTags>
+			<installed>rotationMechanism</installed>
+		</incompatibleTags>
+		<vehicleFilter>
+			<include>
+				<vehicle>
+					<minLevel>5</minLevel>
+					<maxLevel>10</maxLevel>
+				</vehicle>
+			</include>
+		</vehicleFilter>
+		<script>
+			RotationMechanisms
+			<weight>200</weight>
+			<trackRotateSpeedFactor>
+				1.175 1.175
+				<!--BW_String-->
+			</trackRotateSpeedFactor>
+			<wheelRotateSpeedFactor>
+				1.175 1.175
+				<!--BW_String-->
+			</wheelRotateSpeedFactor>
+			<wheelCenterRotationFwdSpeed>
+				1.175 1.175
+				<!--BW_String-->
+			</wheelCenterRotationFwdSpeed>
+			<trackMoveSpeedFactor>
+				1.175 1.175
+				<!--BW_String-->
+			</trackMoveSpeedFactor>
+			<wheelMoveSpeedFactor>
+				1.175 1.175
+				<!--BW_String-->
+			</wheelMoveSpeedFactor>
+			<factors>
+				<factor>
+					<attribute>miscAttrs/turretRotationSpeed</attribute>
+					<type>mul</type>
+					<valueByLevel>
+						1.175 1.175
+						<!--BW_String-->
+					</valueByLevel>
+				</factor>
+				<factor>
+					<attribute>miscAttrs/additiveShotDispersionFactor</attribute>
+					<type>mul</type>
+					<valueByLevel>
+						0.825 0.825
+						<!--BW_String-->
+					</valueByLevel>
+				</factor>
+			</factors>
+		</script>
+		<kpi>
+			<mul>
+				<name>vehicleTurretOrCuttingRotationSpeed</name>
+				<value>
+					1.175
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>vehicleAllGroundRotationSpeed</name>
+				<value>
+					1.175
+					<!--BW_String-->
+				</value>
+			</mul>
+			<mul>
+				<name>vehicleGunShotDispersion</name>
+				<value>
+					0.825
+					<!--BW_String-->
+				</value>
+			</mul>
+		</kpi>
+	</deluxeImprovedRotationMechanism>
 	<trophyBasicAimDrives>
 		<id>50</id>
 		<userString>#artefacts:trophyBasicAimDrives/name</userString>
 		<shortDescriptionSpecial>#artefacts:trophyBasicAimDrives/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:enhancedAimDrives/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/enhancedAimDrives.png 0 0</icon>
+		<icon>enhancedAimDrives</icon>
 		<groupName>enhancedAimDrives</groupName>
 		<price>100000</price>
 		<notInShop>true</notInShop>
@@ -539,7 +628,7 @@
 		<userString>#artefacts:trophyBasicAimDrives/name</userString>
 		<shortDescriptionSpecial>#artefacts:trophyBasicAimDrives/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:deluxEnhancedAimDrives/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/enhancedAimDrives.png 0 0</icon>
+		<icon>enhancedAimDrives</icon>
 		<groupName>enhancedAimDrives</groupName>
 		<price>100000</price>
 		<notInShop>true</notInShop>
@@ -577,7 +666,7 @@
 		<userString>#artefacts:trophyBasicTankRammer/name</userString>
 		<shortDescriptionSpecial>#artefacts:trophyBasicTankRammer/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:rammer/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/rammer.png 0 0</icon>
+		<icon>rammer</icon>
 		<groupName>tankRammer</groupName>
 		<price>100000</price>
 		<notInShop>true</notInShop>
@@ -626,7 +715,7 @@
 		<userString>#artefacts:trophyBasicTankRammer/name</userString>
 		<shortDescriptionSpecial>#artefacts:trophyBasicTankRammer/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:deluxRammer/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/rammer.png 0 0</icon>
+		<icon>rammer</icon>
 		<groupName>tankRammer</groupName>
 		<price>100000</price>
 		<removable>false</removable>
@@ -671,7 +760,7 @@
 		<userString>#artefacts:trophyBasicImprovedVentilation/name</userString>
 		<shortDescriptionSpecial>#artefacts:trophyBasicImprovedVentilation/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:deluxImprovedVentilation/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/improvedVentilation.png 0 0</icon>
+		<icon>improvedVentilation</icon>
 		<groupName>improvedVentilation</groupName>
 		<price>100000</price>
 		<removable>false</removable>
@@ -720,7 +809,7 @@
 		<userString>#artefacts:trophyUpgradedImprovedVentilation/name</userString>
 		<shortDescriptionSpecial>#artefacts:trophyBasicImprovedVentilation/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:deluxImprovedVentilation/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/improvedVentilation.png 0 0</icon>
+		<icon>improvedVentilation</icon>
 		<groupName>improvedVentilation</groupName>
 		<price>100000</price>
 		<removable>false</removable>
@@ -765,7 +854,7 @@
 		<userString>#artefacts:trophyBasicAimingStabilizer/name</userString>
 		<shortDescriptionSpecial>#artefacts:trophyBasicAimingStabilizer/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:deluxAimingStabilizer/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/aimingStabilizer.png 0 0</icon>
+		<icon>aimingStabilizer</icon>
 		<groupName>aimingStabilizer</groupName>
 		<price>100000</price>
 		<notInShop>true</notInShop>
@@ -814,7 +903,7 @@
 		<userString>#artefacts:trophyUpgradedAimingStabilizer/name</userString>
 		<shortDescriptionSpecial>#artefacts:trophyBasicAimingStabilizer/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:deluxAimingStabilizer/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/aimingStabilizer.png 0 0</icon>
+		<icon>aimingStabilizer</icon>
 		<groupName>aimingStabilizer</groupName>
 		<price>100000</price>
 		<notInShop>true</notInShop>
@@ -859,7 +948,7 @@
 		<userString>#artefacts:trophyBasicCoatedOptics/name</userString>
 		<shortDescriptionSpecial>#artefacts:trophyBasicCoatedOptics/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:deluxCoatedOptics/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/coatedOptics.png 0 0</icon>
+		<icon>coatedOptics</icon>
 		<groupName>coatedOptics</groupName>
 		<price>100000</price>
 		<notInShop>true</notInShop>
@@ -900,7 +989,7 @@
 		<userString>#artefacts:trophyUpgradedCoatedOptics/name</userString>
 		<shortDescriptionSpecial>#artefacts:trophyBasicCoatedOptics/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:deluxCoatedOptics/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/coatedOptics.png 0 0</icon>
+		<icon>coatedOptics</icon>
 		<groupName>coatedOptics</groupName>
 		<price>100000</price>
 		<notInShop>true</notInShop>
@@ -937,7 +1026,7 @@
 		<userString>#artefacts:trophyBasicImprovedConfiguration/name</userString>
 		<shortDescriptionSpecial>#artefacts:improvedConfiguration/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:improvedConfiguration/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/improvedConfiguration.png 0 0</icon>
+		<icon>improvedConfiguration</icon>
 		<groupName>improvedConfiguration</groupName>
 		<price>100000</price>
 		<notInShop>true</notInShop>
@@ -1048,7 +1137,7 @@
 		<userString>#artefacts:trophyUpgradedImprovedConfiguration/name</userString>
 		<shortDescriptionSpecial>#artefacts:improvedConfiguration/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:improvedConfiguration/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/improvedConfiguration.png 0 0</icon>
+		<icon>improvedConfiguration</icon>
 		<groupName>improvedConfiguration</groupName>
 		<price>100000</price>
 		<notInShop>true</notInShop>
@@ -1155,7 +1244,7 @@
 		<userString>#artefacts:trophyBasicImprovedRotationMechanism/name</userString>
 		<shortDescriptionSpecial>#artefacts:improvedRotationMechanism/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:improvedRotationMechanism/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/improvedRotationMechanism.png 0 0</icon>
+		<icon>improvedRotationMechanism</icon>
 		<price>100000</price>
 		<notInShop>true</notInShop>
 		<removable>false</removable>
@@ -1246,7 +1335,7 @@
 		<userString>#artefacts:trophyUpgradedImprovedRotationMechanism/name</userString>
 		<shortDescriptionSpecial>#artefacts:improvedRotationMechanism/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:improvedRotationMechanism/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/improvedRotationMechanism.png 0 0</icon>
+		<icon>improvedRotationMechanism</icon>
 		<price>100000</price>
 		<notInShop>true</notInShop>
 		<removable>false</removable>
@@ -1333,7 +1422,7 @@
 		<userString>#artefacts:trophyBasicImprovedSights/name</userString>
 		<shortDescriptionSpecial>#artefacts:trophyBasicImprovedSights/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:trophyBasicImprovedSights/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/improvedSights.png 0 0</icon>
+		<icon>improvedSights</icon>
 		<groupName>improvedSights</groupName>
 		<price>100000</price>
 		<notInShop>true</notInShop>
@@ -1384,7 +1473,7 @@
 		<userString>#artefacts:trophyUpgradedImprovedSights/name</userString>
 		<shortDescriptionSpecial>#artefacts:trophyBasicImprovedSights/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:trophyBasicImprovedSights/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/improvedSights.png 0 0</icon>
+		<icon>improvedSights</icon>
 		<groupName>improvedSights</groupName>
 		<price>100000</price>
 		<notInShop>true</notInShop>
@@ -1431,7 +1520,7 @@
 		<userString>#artefacts:trophyBasicAdditionalInvisibilityDevice/name</userString>
 		<shortDescriptionSpecial>#artefacts:trophyBasicAdditionalInvisibilityDevice/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:trophyBasicAdditionalInvisibilityDevice/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/additionalInvisibilityDevice.png 0 0</icon>
+		<icon>additionalInvisibilityDevice</icon>
 		<groupName>additInvisibilityDevice</groupName>
 		<price>100000</price>
 		<notInShop>true</notInShop>
@@ -1489,7 +1578,7 @@
 		<userString>#artefacts:trophyUpgradedAdditionalInvisibilityDevice/name</userString>
 		<shortDescriptionSpecial>#artefacts:trophyBasicAdditionalInvisibilityDevice/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:trophyBasicAdditionalInvisibilityDevice/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/additionalInvisibilityDevice.png 0 0</icon>
+		<icon>additionalInvisibilityDevice</icon>
 		<groupName>additInvisibilityDevice</groupName>
 		<price>100000</price>
 		<notInShop>true</notInShop>
@@ -1673,7 +1762,7 @@
 		<userString>#artefacts:improvedConfiguration_tier2/name</userString>
 		<shortDescriptionSpecial>#artefacts:improvedConfiguration/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:improvedConfiguration/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/improvedConfiguration.png 0 0</icon>
+		<icon>improvedConfiguration</icon>
 		<price>200000</price>
 		<removable>false</removable>
 		<tags>improvedConfiguration armor</tags>
@@ -1795,7 +1884,7 @@
 		<userString>#artefacts:improvedConfiguration_tier1/name</userString>
 		<shortDescriptionSpecial>#artefacts:improvedConfiguration/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:improvedConfiguration/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/improvedConfiguration.png 0 0</icon>
+		<icon>improvedConfiguration</icon>
 		<price>600000</price>
 		<removable>false</removable>
 		<tags>improvedConfiguration armor</tags>
@@ -1917,7 +2006,7 @@
 		<userString>#artefacts:antifragmentationLining_tier4/name</userString>
 		<shortDescriptionSpecial>#artefacts:antifragmentationLining/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:antifragmentationLining/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/antifragmentationLining.png 0 0</icon>
+		<icon>antifragmentationLining</icon>
 		<price>50000</price>
 		<removable>false</removable>
 		<tags>antifragmentationLining armor</tags>
@@ -2022,7 +2111,7 @@
 		<userString>#artefacts:antifragmentationLining_tier3/name</userString>
 		<shortDescriptionSpecial>#artefacts:antifragmentationLining/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:antifragmentationLining/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/antifragmentationLining.png 0 0</icon>
+		<icon>antifragmentationLining</icon>
 		<price>200000</price>
 		<categories>survivability</categories>
 		<removable>false</removable>
@@ -2127,7 +2216,7 @@
 		<userString>#artefacts:antifragmentationLining_tier2/name</userString>
 		<shortDescriptionSpecial>#artefacts:antifragmentationLining/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:antifragmentationLining/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/antifragmentationLining.png 0 0</icon>
+		<icon>antifragmentationLining</icon>
 		<price>500000</price>
 		<categories>survivability</categories>
 		<removable>false</removable>
@@ -2232,7 +2321,7 @@
 		<userString>#artefacts:antifragmentationLining_tier1/name</userString>
 		<shortDescriptionSpecial>#artefacts:antifragmentationLining/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:antifragmentationLining/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/antifragmentationLining.png 0 0</icon>
+		<icon>antifragmentationLining</icon>
 		<price>750000</price>
 		<categories>survivability</categories>
 		<removable>false</removable>
@@ -2337,7 +2426,7 @@
 		<userString>#artefacts:stereoscope_tier3/name</userString>
 		<shortDescriptionSpecial>#artefacts:stereoscope/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:stereoscope/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/stereoscope.png 0 0</icon>
+		<icon>stereoscope</icon>
 		<price>50000</price>
 		<removable>false</removable>
 		<tags>stereoscope reconnaissance</tags>
@@ -2389,7 +2478,7 @@
 		<userString>#artefacts:stereoscope_tier2/name</userString>
 		<shortDescriptionSpecial>#artefacts:stereoscope/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:stereoscope/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/stereoscope.png 0 0</icon>
+		<icon>stereoscope</icon>
 		<price>200000</price>
 		<removable>false</removable>
 		<tags>stereoscope reconnaissance</tags>
@@ -2441,7 +2530,7 @@
 		<userString>#artefacts:stereoscope_tier1/name</userString>
 		<shortDescriptionSpecial>#artefacts:stereoscope/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:stereoscope/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/stereoscope.png 0 0</icon>
+		<icon>stereoscope</icon>
 		<price>600000</price>
 		<removable>false</removable>
 		<tags>stereoscope reconnaissance</tags>
@@ -2492,7 +2581,7 @@
 		<id>70</id>
 		<userString>#artefacts:coatedOptics_tier3/name</userString>
 		<longDescriptionSpecial>#artefacts:coatedOptics/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/coatedOptics.png 0 0</icon>
+		<icon>coatedOptics</icon>
 		<price>50000</price>
 		<removable>false</removable>
 		<tags>coatedOptics reconnaissance</tags>
@@ -2539,7 +2628,7 @@
 		<id>71</id>
 		<userString>#artefacts:coatedOptics_tier2/name</userString>
 		<longDescriptionSpecial>#artefacts:coatedOptics/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/coatedOptics.png 0 0</icon>
+		<icon>coatedOptics</icon>
 		<price>200000</price>
 		<removable>false</removable>
 		<tags>coatedOptics reconnaissance</tags>
@@ -2586,7 +2675,7 @@
 		<id>72</id>
 		<userString>#artefacts:coatedOptics_tier1/name</userString>
 		<longDescriptionSpecial>#artefacts:coatedOptics/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/coatedOptics.png 0 0</icon>
+		<icon>coatedOptics</icon>
 		<price>600000</price>
 		<removable>false</removable>
 		<tags>coatedOptics reconnaissance</tags>
@@ -2634,7 +2723,7 @@
 		<userString>#artefacts:camouflageNet_tier3/name</userString>
 		<shortDescriptionSpecial>#artefacts:camouflageNet/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:camouflageNet/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/camouflageNet.png 0 0</icon>
+		<icon>camouflageNet</icon>
 		<price>50000</price>
 		<removable>false</removable>
 		<tags>camouflageNet camouflage</tags>
@@ -2711,7 +2800,7 @@
 		<userString>#artefacts:camouflageNet_tier2/name</userString>
 		<shortDescriptionSpecial>#artefacts:camouflageNet/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:camouflageNet/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/camouflageNet.png 0 0</icon>
+		<icon>camouflageNet</icon>
 		<price>100000</price>
 		<removable>false</removable>
 		<tags>camouflageNet camouflage</tags>
@@ -2787,7 +2876,7 @@
 		<id>75</id>
 		<userString>#artefacts:improvedVentilation_tier3/name</userString>
 		<longDescriptionSpecial>#artefacts:improvedVentilation/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/improvedVentilation.png 0 0</icon>
+		<icon>improvedVentilation</icon>
 		<price>50000</price>
 		<removable>false</removable>
 		<categories>firepower mobility stealth survivability</categories>
@@ -2834,7 +2923,7 @@
 		<id>76</id>
 		<userString>#artefacts:improvedVentilation_tier2/name</userString>
 		<longDescriptionSpecial>#artefacts:improvedVentilation/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/improvedVentilation.png 0 0</icon>
+		<icon>improvedVentilation</icon>
 		<price>200000</price>
 		<removable>false</removable>
 		<categories>firepower mobility stealth survivability</categories>
@@ -2881,7 +2970,7 @@
 		<id>77</id>
 		<userString>#artefacts:improvedVentilation_tier1/name</userString>
 		<longDescriptionSpecial>#artefacts:improvedVentilation/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/improvedVentilation.png 0 0</icon>
+		<icon>improvedVentilation</icon>
 		<price>600000</price>
 		<removable>false</removable>
 		<categories>firepower mobility stealth survivability</categories>
@@ -2929,7 +3018,7 @@
 		<userString>#artefacts:grousers_tier3/name</userString>
 		<shortDescriptionSpecial>#artefacts:grousers/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:grousers/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/grousers.png 0 0</icon>
+		<icon>grousers</icon>
 		<price>50000</price>
 		<removable>false</removable>
 		<tags>grousers mobility</tags>
@@ -2993,7 +3082,7 @@
 		<userString>#artefacts:grousers_tier2/name</userString>
 		<shortDescriptionSpecial>#artefacts:grousers/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:grousers/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/grousers.png 0 0</icon>
+		<icon>grousers</icon>
 		<price>250000</price>
 		<removable>false</removable>
 		<tags>grousers mobility</tags>
@@ -3057,7 +3146,7 @@
 		<userString>#artefacts:grousers_tier1/name</userString>
 		<shortDescriptionSpecial>#artefacts:grousers/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:grousers/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/grousers.png 0 0</icon>
+		<icon>grousers</icon>
 		<price>500000</price>
 		<removable>false</removable>
 		<tags>grousers mobility</tags>
@@ -3120,7 +3209,7 @@
 		<id>81</id>
 		<userString>#artefacts:tankRammer_tier2/name</userString>
 		<longDescriptionSpecial>#artefacts:rammer/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/rammer.png 0 0</icon>
+		<icon>rammer</icon>
 		<price>300000</price>
 		<removable>false</removable>
 		<tags>rammer firepower</tags>
@@ -3167,7 +3256,7 @@
 		<id>82</id>
 		<userString>#artefacts:tankRammer_tier1/name</userString>
 		<longDescriptionSpecial>#artefacts:rammer/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/rammer.png 0 0</icon>
+		<icon>rammer</icon>
 		<price>600000</price>
 		<removable>false</removable>
 		<tags>rammer firepower</tags>
@@ -3214,7 +3303,7 @@
 		<id>83</id>
 		<userString>#artefacts:enhancedAimDrives_tier3/name</userString>
 		<longDescriptionSpecial>#artefacts:enhancedAimDrives/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/enhancedAimDrives.png 0 0</icon>
+		<icon>enhancedAimDrives</icon>
 		<price>50000</price>
 		<removable>false</removable>
 		<tags>enhancedAimDrives firepower</tags>
@@ -3262,7 +3351,7 @@
 		<id>84</id>
 		<userString>#artefacts:enhancedAimDrives_tier2/name</userString>
 		<longDescriptionSpecial>#artefacts:enhancedAimDrives/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/enhancedAimDrives.png 0 0</icon>
+		<icon>enhancedAimDrives</icon>
 		<price>200000</price>
 		<removable>false</removable>
 		<tags>enhancedAimDrives firepower</tags>
@@ -3310,7 +3399,7 @@
 		<id>85</id>
 		<userString>#artefacts:enhancedAimDrives_tier1/name</userString>
 		<longDescriptionSpecial>#artefacts:enhancedAimDrives/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/enhancedAimDrives.png 0 0</icon>
+		<icon>enhancedAimDrives</icon>
 		<price>600000</price>
 		<removable>false</removable>
 		<tags>enhancedAimDrives firepower</tags>
@@ -3358,7 +3447,7 @@
 		<id>86</id>
 		<userString>#artefacts:aimingStabilizer_tier2/name</userString>
 		<longDescriptionSpecial>#artefacts:aimingStabilizer/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/aimingStabilizer.png 0 0</icon>
+		<icon>aimingStabilizer</icon>
 		<price>200000</price>
 		<removable>false</removable>
 		<vehicleFilter>
@@ -3405,7 +3494,7 @@
 		<id>87</id>
 		<userString>#artefacts:aimingStabilizer_tier1/name</userString>
 		<longDescriptionSpecial>#artefacts:aimingStabilizer/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/aimingStabilizer.png 0 0</icon>
+		<icon>aimingStabilizer</icon>
 		<price>600000</price>
 		<removable>false</removable>
 		<vehicleFilter>
@@ -3453,7 +3542,7 @@
 		<userString>#artefacts:additionalInvisibilityDevice_tier3/name</userString>
 		<shortDescriptionSpecial>#artefacts:additionalInvisibilityDevice/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:additionalInvisibilityDevice/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/additionalInvisibilityDevice.png 0 0</icon>
+		<icon>additionalInvisibilityDevice</icon>
 		<price>50000</price>
 		<tags>additInvisibilityDevice</tags>
 		<categories>stealth</categories>
@@ -3525,7 +3614,7 @@
 		<userString>#artefacts:additionalInvisibilityDevice_tier2/name</userString>
 		<shortDescriptionSpecial>#artefacts:additionalInvisibilityDevice/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:additionalInvisibilityDevice/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/additionalInvisibilityDevice.png 0 0</icon>
+		<icon>additionalInvisibilityDevice</icon>
 		<price>200000</price>
 		<tags>additInvisibilityDevice</tags>
 		<categories>stealth</categories>
@@ -3597,7 +3686,7 @@
 		<userString>#artefacts:additionalInvisibilityDevice_tier1/name</userString>
 		<shortDescriptionSpecial>#artefacts:additionalInvisibilityDevice/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:additionalInvisibilityDevice/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/additionalInvisibilityDevice.png 0 0</icon>
+		<icon>additionalInvisibilityDevice</icon>
 		<price>600000</price>
 		<tags>additInvisibilityDevice</tags>
 		<categories>stealth</categories>
@@ -3669,7 +3758,7 @@
 		<userString>#artefacts:extraHealthReserve_tier3/name</userString>
 		<shortDescriptionSpecial>#artefacts:extraHealthReserve/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:extraHealthReserve/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/extraHealthReserve.png 0 0</icon>
+		<icon>extraHealthReserve</icon>
 		<price>40000</price>
 		<tags>healthReserve</tags>
 		<categories>survivability</categories>
@@ -3787,7 +3876,7 @@
 		<userString>#artefacts:extraHealthReserve_tier2/name</userString>
 		<shortDescriptionSpecial>#artefacts:extraHealthReserve/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:extraHealthReserve/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/extraHealthReserve.png 0 0</icon>
+		<icon>extraHealthReserve</icon>
 		<price>200000</price>
 		<tags>healthReserve</tags>
 		<categories>survivability</categories>
@@ -3905,7 +3994,7 @@
 		<userString>#artefacts:extraHealthReserve_tier1/name</userString>
 		<shortDescriptionSpecial>#artefacts:extraHealthReserve/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:extraHealthReserve/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/extraHealthReserve.png 0 0</icon>
+		<icon>extraHealthReserve</icon>
 		<price>600000</price>
 		<tags>healthReserve</tags>
 		<categories>survivability</categories>
@@ -4023,7 +4112,7 @@
 		<userString>#artefacts:improvedRadioCommunication/name</userString>
 		<shortDescriptionSpecial>#artefacts:improvedRadioCommunication/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:improvedRadioCommunication/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/improvedRadioCommunication.png 0 0</icon>
+		<icon>improvedRadioCommunication</icon>
 		<price>600000</price>
 		<tags/>
 		<categories>stealth</categories>
@@ -4088,7 +4177,7 @@
 		<userString>#artefacts:improvedRotationMechanism_tier2/name</userString>
 		<shortDescriptionSpecial>#artefacts:improvedRotationMechanism/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:improvedRotationMechanism/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/improvedRotationMechanism.png 0 0</icon>
+		<icon>improvedRotationMechanism</icon>
 		<price>200000</price>
 		<tags>rotationMechanism</tags>
 		<categories>firepower mobility</categories>
@@ -4186,7 +4275,7 @@
 		<userString>#artefacts:improvedRotationMechanism_tier1/name</userString>
 		<shortDescriptionSpecial>#artefacts:improvedRotationMechanism/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:improvedRotationMechanism/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/improvedRotationMechanism.png 0 0</icon>
+		<icon>improvedRotationMechanism</icon>
 		<price>600000</price>
 		<tags>rotationMechanism</tags>
 		<categories>firepower mobility</categories>
@@ -4284,7 +4373,7 @@
 		<userString>#artefacts:turbocharger_tier3/name</userString>
 		<shortDescriptionSpecial>#artefacts:turbocharger/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:turbocharger/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/turbocharger.png 0 0</icon>
+		<icon>turbocharger</icon>
 		<price>50000</price>
 		<tags>turbocharger</tags>
 		<categories>mobility</categories>
@@ -4357,7 +4446,7 @@
 		<userString>#artefacts:turbocharger_tier2/name</userString>
 		<shortDescriptionSpecial>#artefacts:turbocharger/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:turbocharger/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/turbocharger.png 0 0</icon>
+		<icon>turbocharger</icon>
 		<price>200000</price>
 		<tags>turbocharger</tags>
 		<categories>mobility</categories>
@@ -4430,7 +4519,7 @@
 		<userString>#artefacts:turbocharger_tier1/name</userString>
 		<shortDescriptionSpecial>#artefacts:turbocharger/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:turbocharger/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/turbocharger.png 0 0</icon>
+		<icon>turbocharger</icon>
 		<price>600000</price>
 		<tags>turbocharger</tags>
 		<categories>mobility</categories>
@@ -4503,7 +4592,7 @@
 		<userString>#artefacts:commandersView/name</userString>
 		<shortDescriptionSpecial>#artefacts:commandersView/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:commandersView/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/commandersView.png 0 0</icon>
+		<icon>commandersView</icon>
 		<price>600000</price>
 		<tags/>
 		<categories>stealth</categories>
@@ -4568,7 +4657,7 @@
 		<userString>#artefacts:improvedSights_tier2/name</userString>
 		<shortDescriptionSpecial>#artefacts:improvedSights/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:improvedSights/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/improvedSights.png 0 0</icon>
+		<icon>improvedSights</icon>
 		<price>200000</price>
 		<tags>improvedSights</tags>
 		<categories>firepower</categories>
@@ -4617,7 +4706,7 @@
 		<userString>#artefacts:improvedSights_tier1/name</userString>
 		<shortDescriptionSpecial>#artefacts:improvedSights/short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#artefacts:improvedSights/long_special</longDescriptionSpecial>
-		<icon>../maps/icons/artefact/improvedSights.png 0 0</icon>
+		<icon>improvedSights</icon>
 		<price>600000</price>
 		<tags>improvedSights</tags>
 		<categories>firepower</categories>

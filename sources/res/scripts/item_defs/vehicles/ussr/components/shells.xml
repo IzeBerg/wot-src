@@ -2771,6 +2771,20 @@
 			<devices>165</devices>
 		</damage>
 	</_122mm_3BM145>
+	<_122mm_3BM145_CN>
+		<id>306</id>
+		<userString>#ussr_vehicles:_122mm_3BM145_CN</userString>
+		<icon>ap_cr</icon>
+		<price>1180</price>
+		<kind>ARMOR_PIERCING_CR</kind>
+		<caliber>122</caliber>
+		<isTracer>true</isTracer>
+		<effects>largeAPCR</effects>
+		<damage>
+			<armor>390</armor>
+			<devices>165</devices>
+		</damage>
+	</_122mm_3BM145_CN>
 	<_122mm_UBR-471PBM>
 		<id>129</id>
 		<userString>#ussr_vehicles:_122mm_UBR-471PBM</userString>
@@ -2852,6 +2866,25 @@
 			<!--BW_String-->
 		</piercingPowerLossFactorByDistance>
 	</_122mm_3VBK61>
+	<_122mm_3VBK61_CN>
+		<id>305</id>
+		<userString>#ussr_vehicles:_122mm_3VBK61_CN</userString>
+		<icon>hc_premium</icon>
+		<price>5200</price>
+		<improved>true</improved>
+		<kind>HOLLOW_CHARGE</kind>
+		<caliber>122</caliber>
+		<isTracer>true</isTracer>
+		<effects>largeHollowCharge</effects>
+		<damage>
+			<armor>390</armor>
+			<devices>165</devices>
+		</damage>
+		<piercingPowerLossFactorByDistance>
+			0.05
+			<!--BW_String-->
+		</piercingPowerLossFactorByDistance>
+	</_122mm_3VBK61_CN>
 	<_122mm_UBP-471BM>
 		<id>130</id>
 		<userString>#ussr_vehicles:_122mm_UBP-471BM</userString>
@@ -2901,6 +2934,36 @@
 			</damage>
 		</armorSpalls>
 	</_122mm_UOF-471>
+	<_122mm_UOF-471_CN>
+		<id>307</id>
+		<userString>#ussr_vehicles:_122mm_UOF-471_CN</userString>
+		<icon>he_modern</icon>
+		<price>608</price>
+		<kind>HIGH_EXPLOSIVE</kind>
+		<mechanics>MODERN</mechanics>
+		<caliber>122</caliber>
+		<explosionRadius>
+			2.49
+			<!--BW_String-->
+		</explosionRadius>
+		<isTracer>true</isTracer>
+		<effects>largeHighExplosive</effects>
+		<damage>
+			<armor>530</armor>
+			<devices>165</devices>
+		</damage>
+		<armorSpalls>
+			<impactRadius>
+				2.49
+				<!--BW_String-->
+			</impactRadius>
+			<coneAngle>90</coneAngle>
+			<damage>
+				<armor>265</armor>
+				<devices>85</devices>
+			</damage>
+		</armorSpalls>
+	</_122mm_UOF-471_CN>
 	<_122mm_UOF_471M>
 		<id>199</id>
 		<userString>#ussr_vehicles:_122mm_UOF_471M</userString>
@@ -4905,8 +4968,8 @@
 		<isTracer>true</isTracer>
 		<effects>BRlargeHollowCharge</effects>
 		<damage>
-			<armor>410</armor>
-			<devices>41</devices>
+			<armor>400</armor>
+			<devices>40</devices>
 		</damage>
 		<piercingPowerLossFactorByDistance>
 			0.05
@@ -4926,7 +4989,7 @@
 		<effects>BRlargeAPCR</effects>
 		<damage>
 			<armor>290</armor>
-			<devices>41</devices>
+			<devices>40</devices>
 		</damage>
 	</_122mm_VBR472B_SH>
 	<_122mm_BR_471PM_SH>
