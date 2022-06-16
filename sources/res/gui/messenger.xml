@@ -949,6 +949,13 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 &lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/currencyUpdate/date):&lt;/font&gt; &lt;font color=&apos;#8C8C7E&apos;&gt;%(at)s&lt;/font&gt;%(desc)s
 %(op)s</message>
 		</purchaseInvoiceReceived>
+		<resourceWellInvoiceReceived>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/invoice)&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/currencyUpdate/date):&lt;/font&gt; &lt;font color=&apos;#8C8C7E&apos;&gt;%(at)s&lt;/font&gt;&lt;/br&gt;
+%(text)s</message>
+		</resourceWellInvoiceReceived>
 		<durationOfPremiumAccountExpires>
 			<type>yellow</type>
 			<icon>WarningIcon</icon>
@@ -2576,6 +2583,52 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<icon>WarningIcon</icon>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#system_messages:telecomMergeResults/title)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 		</telecomMergeResultsMessage>
+		<ResourceWellOperationMessage>
+			<type>grey</type>
+			<icon>resourceWellIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(resources)s&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color=&apos;#C9C9B6&apos;&gt;%(additionalText)s&lt;/font&gt;</message>
+		</ResourceWellOperationMessage>
+		<ResourceWellRewardReceivedMessage>
+			<type>grey</type>
+			<icon>resourceWellIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font face=&quot;$FieldFont&quot; size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#C9C9B6&apos;&gt;%(additionalText)s&lt;/font&gt;</message>
+		</ResourceWellRewardReceivedMessage>
+		<ResourceWellStartSysMessage>
+			<type>grey</type>
+			<priority>high</priority>
+			<icon>resourceWellIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/resourceWell/start/button)</label>
+					<action>openResourceWellProgressionStartWindow</action>
+				</button>
+			</buttonsLayout>
+		</ResourceWellStartSysMessage>
+		<ResourceWellEndSysMessage>
+			<type>grey</type>
+			<priority>high</priority>
+			<icon>resourceWellIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</ResourceWellEndSysMessage>
+		<ResourceWellNoVehiclesWithReturnMessage>
+			<type>grey</type>
+			<icon>resourceWellIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/resourceWell/noSerialVehicles/button)</label>
+					<action>openResourceWellProgressionNoVehiclesWindow</action>
+				</button>
+			</buttonsLayout>
+		</ResourceWellNoVehiclesWithReturnMessage>
+		<ResourceWellNoVehiclesMessage>
+			<type>grey</type>
+			<icon>resourceWellIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</ResourceWellNoVehiclesMessage>
 		<dragonBoatStageReward>
 			<priority>low</priority>
 			<type>blue</type>

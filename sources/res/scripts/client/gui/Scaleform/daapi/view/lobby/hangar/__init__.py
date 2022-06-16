@@ -68,6 +68,7 @@ def getViewSettings():
     from gui.Scaleform.daapi.view.lobby.hangar.craftmachine_entry_point import CraftMachineEntryPoint
     from gui.Scaleform.daapi.view.lobby.hangar.mapbox_entry_point import MapBoxEntryPoint
     from gui.Scaleform.daapi.view.lobby.hangar.marathon_entry_point import MarathonEntryPoint
+    from gui.impl.lobby.resource_well.entry_point import ResourceWellEntryPointComponent
     from gui.impl.lobby.dragon_boat.dragon_boat_entry_point import DragonBoatEntrancePointInjectWidget
     return (
      ConditionalViewSettings(VIEW_ALIAS.LOBBY_HANGAR, BootcampComponentOverride(Hangar, BCHangar), 'hangar.swf', WindowLayer.SUB_VIEW, None, VIEW_ALIAS.LOBBY_HANGAR, ScopeTemplates.LOBBY_SUB_SCOPE),
@@ -109,6 +110,7 @@ def getViewSettings():
      ComponentSettings(HANGAR_ALIASES.CRAFT_MACHINE_ENTRY_POINT, CraftMachineEntryPoint, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(HANGAR_ALIASES.MAPBOX_ENTRY_POINT, MapBoxEntryPoint, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(HANGAR_ALIASES.MARATHON_ENTRY_POINT, MarathonEntryPoint, ScopeTemplates.DEFAULT_SCOPE),
+     ComponentSettings(HANGAR_ALIASES.RESOURCE_WELL_ENTRY_POINT, ResourceWellEntryPointComponent, ScopeTemplates.DEFAULT_SCOPE),
      ComponentSettings(HANGAR_ALIASES.EVENT_ENTRANCE_POINT, DragonBoatEntrancePointInjectWidget, ScopeTemplates.DEFAULT_SCOPE))
 
 

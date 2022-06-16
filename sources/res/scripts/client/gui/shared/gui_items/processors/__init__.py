@@ -46,6 +46,7 @@ class Processor(object):
         self.plugins = []
         self.addPlugins(plugins or [])
         self.requestCtx = {}
+        self.responseCtx = {}
 
     def getPluginsByType(self, pluginType):
         return [ plugin for plugin in self.plugins if plugin.type == pluginType ]
@@ -105,6 +106,7 @@ class Processor(object):
                 pres = yield plugin.confirm()
             else:
                 pres = plugin.confirm()
+            self.responseCtx.update(pres.ctx)
             if not pres.success:
                 callback(makeError())
                 return

@@ -213,6 +213,11 @@ class InventoryRequester(AbstractSyncDataRequester, IInventoryRequester):
             return self.__getCrewSkinsData(dataIdx)
         return self.__getItemsData(itemTypeIdx, dataIdx)
 
+    def getC11nSerialNumber(self, itemCD):
+        _, itemType, itemID = parseIntCompactDescr(itemCD)
+        path = (GUI_ITEM_TYPE.CUSTOMIZATION, CustomizationInvData.SERIAL_NUMBERS, itemType, itemID, 'serial_number')
+        return self.getCacheValueByPath(path)
+
     def getFreeSlots(self, vehiclesSlots):
 
         def checker(vehData):

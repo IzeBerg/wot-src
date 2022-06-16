@@ -83,7 +83,7 @@ REGIONS_BY_SLOT_TYPE = {container.getAreaID():{slotType:slot.getRegions() for sl
 
 class Outfit(HasStrCD):
     __slots__ = ('_id', '_styleDescr', '_containers', '_vehicleCD', '__itemsCounter',
-                 '__styleProgressionLevel')
+                 '__styleProgressionLevel', '__styleSerialNumber')
 
     def __init__(self, strCompactDescr=None, component=None, vehicleCD='', vehicleType=None):
         super(Outfit, self).__init__(strCompactDescr)
@@ -98,6 +98,7 @@ class Outfit(HasStrCD):
                 component = CustomizationOutfit()
             self._id = component.styleId
             self.__styleProgressionLevel = component.styleProgressionLevel
+            self.__styleSerialNumber = component.serial_number
             self._styleDescr = None
             if self._id:
                 intCD = makeIntCompactDescrByID('customizationItem', CustomizationType.STYLE, self._id)
@@ -148,6 +149,7 @@ class Outfit(HasStrCD):
 
         component.styleId = self._id
         component.styleProgressionLevel = self.__styleProgressionLevel
+        component.serial_number = self.__styleSerialNumber
         return component
 
     def copy(self):
@@ -184,6 +186,7 @@ class Outfit(HasStrCD):
         self._validateVehicle(other)
         result = self.copy()
         self.__styleProgressionLevel = other.progressionLevel
+        self.__styleSerialNumber = other.serialNumber
         for areaID in self._containers.iterkeys():
             acont = self.getContainer(areaID)
             bcont = other.getContainer(areaID)
@@ -262,6 +265,13 @@ class Outfit(HasStrCD):
 
     def setProgressionLevel(self, value):
         self.__styleProgressionLevel = value
+
+    @property
+    def serialNumber(self):
+        return self.__styleSerialNumber
+
+    def setSerialNumber(self, value):
+        self.__styleSerialNumber = value
 
     def containers(self):
         for container in self._containers.itervalues():

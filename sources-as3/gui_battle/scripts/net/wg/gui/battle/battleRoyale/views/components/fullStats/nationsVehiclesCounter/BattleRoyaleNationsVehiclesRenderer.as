@@ -112,8 +112,9 @@ package net.wg.gui.battle.battleRoyale.views.components.fullStats.nationsVehicle
       
       private function layout() : void
       {
+         var _loc2_:int = 0;
          var _loc1_:uint = Math.ceil(this.tileList.dataProvider.length / MAX_COLUMNS);
-         var _loc2_:int = this._tileListRowHeight * _loc1_ | 0;
+         _loc2_ = this._tileListRowHeight * _loc1_ | 0;
          if(_loc1_ > 1)
          {
             this.tileList.y = TILE_LIST_Y_BIG;

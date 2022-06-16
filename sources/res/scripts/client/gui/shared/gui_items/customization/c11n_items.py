@@ -935,7 +935,8 @@ class Attachment(Customization):
 
 
 class Style(Customization):
-    __slots__ = ('_changableTypes', '_service', '_itemsCache', '__outfits', '__dependenciesByIntCD')
+    __slots__ = ('_changableTypes', '_service', '_itemsCache', '__outfits', '__dependenciesByIntCD',
+                 '__serialNumber')
     _service = dependency.descriptor(ICustomizationService)
     _itemsCache = dependency.descriptor(IItemsCache)
 
@@ -945,6 +946,9 @@ class Style(Customization):
         self._changableTypes = None
         self.__outfits = {}
         self.__dependenciesByIntCD = None
+        self.__serialNumber = None
+        if proxy is not None and proxy.isSynced() and self.isWithSerialNumber:
+            self.__serialNumber = proxy.inventory.getC11nSerialNumber(intCompactDescr)
         return
 
     @property
@@ -972,6 +976,10 @@ class Style(Customization):
     @property
     def isProgression(self):
         return ItemTags.STYLE_PROGRESSION in self.tags
+
+    @property
+    def isWithSerialNumber(self):
+        return ItemTags.STYLE_SERIAL_NUMBER in self.tags
 
     @property
     def is3D(self):
@@ -1012,6 +1020,10 @@ class Style(Customization):
     @property
     def maxProgressionLevel(self):
         return len(self.descriptor.styleProgressions)
+
+    @property
+    def serialNumber(self):
+        return self.__serialNumber
 
     def getDescription(self):
         return self.longDescriptionSpecial or self.fullDescription or self.shortDescriptionSpecial or self.shortDescription
@@ -1143,6 +1155,8 @@ class Style(Customization):
                     styledOutfitComponent = parseCompDescr(styleOutfitData)
                     outfitLvl = styledOutfitComponent.styleProgressionLevel
                     component.styleProgressionLevel = outfitLvl if outfitLvl else 1
+        if self.isWithSerialNumber and self.serialNumber is not None:
+            component.serial_number = self.serialNumber
         if diff is not None:
             diffComponent = parseCompDescr(diff)
             if component.styleId != diffComponent.styleId:

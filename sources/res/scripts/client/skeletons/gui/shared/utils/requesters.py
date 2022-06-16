@@ -95,6 +95,9 @@ class IInventoryRequester(IRequester):
     def getItems(self, itemTypeIdx, dataIdx=None):
         raise NotImplementedError
 
+    def getC11nSerialNumber(self, itemCD):
+        raise NotImplementedError
+
     def getFreeSlots(self, vehiclesSlots):
         raise NotImplementedError
 
@@ -1128,4 +1131,16 @@ class IGiftSystemRequester(IRequester):
 
     @property
     def isHistoryReady(self):
+        raise NotImplementedError
+
+
+class IResourceWellRequester(IRequester):
+
+    def getCurrentPoints(self):
+        raise NotImplementedError
+
+    def getBalance(self):
+        raise NotImplementedError
+
+    def getReward(self):
         raise NotImplementedError

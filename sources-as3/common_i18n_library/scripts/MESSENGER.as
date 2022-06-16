@@ -2093,6 +2093,66 @@ package
       
       public static const PLATFORMCURRENCYMSG_DEBITED_BRCOIN:String = "#messenger:platformCurrencyMsg/debited/brcoin";
       
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_PUT_TITLE:String = "#messenger:serviceChannelMessages/resourceWell/put/title";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_PUT_TEXT:String = "#messenger:serviceChannelMessages/resourceWell/put/text";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_TAKE_TITLE:String = "#messenger:serviceChannelMessages/resourceWell/take/title";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_TAKE_TEXT:String = "#messenger:serviceChannelMessages/resourceWell/take/text";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_BLUEPRINTS:String = "#messenger:serviceChannelMessages/resourceWell/blueprints";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_BLUEPRINTCOUNT:String = "#messenger:serviceChannelMessages/resourceWell/blueprintCount";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_INTELLIGENCE:String = "#messenger:serviceChannelMessages/resourceWell/intelligence";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_BREAKLINE:String = "#messenger:serviceChannelMessages/resourceWell/breakLine";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_GOLD:String = "#messenger:serviceChannelMessages/resourceWell/gold";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_CREDITS:String = "#messenger:serviceChannelMessages/resourceWell/credits";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_CRYSTAL:String = "#messenger:serviceChannelMessages/resourceWell/crystal";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_FREEXP:String = "#messenger:serviceChannelMessages/resourceWell/freeXP";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_PROGRESS:String = "#messenger:serviceChannelMessages/resourceWell/progress";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_TOPREWARD_TITLE:String = "#messenger:serviceChannelMessages/resourceWell/topReward/title";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_TOPREWARD_TEXT:String = "#messenger:serviceChannelMessages/resourceWell/topReward/text";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_TOPREWARD_ADDITIONALTEXT:String = "#messenger:serviceChannelMessages/resourceWell/topReward/additionalText";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_REGULARREWARD_TITLE:String = "#messenger:serviceChannelMessages/resourceWell/regularReward/title";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_REGULARREWARD_TEXT:String = "#messenger:serviceChannelMessages/resourceWell/regularReward/text";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_START_BUTTON:String = "#messenger:serviceChannelMessages/resourceWell/start/button";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_START_TITLE:String = "#messenger:serviceChannelMessages/resourceWell/start/title";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_START_TEXT:String = "#messenger:serviceChannelMessages/resourceWell/start/text";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_END_TITLE:String = "#messenger:serviceChannelMessages/resourceWell/end/title";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_END_TEXT:String = "#messenger:serviceChannelMessages/resourceWell/end/text";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_PAUSE_TEXT:String = "#messenger:serviceChannelMessages/resourceWell/pause/text";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_ENABLED_TEXT:String = "#messenger:serviceChannelMessages/resourceWell/enabled/text";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_NOVEHICLES_TITLE:String = "#messenger:serviceChannelMessages/resourceWell/noVehicles/title";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_NOVEHICLES_TEXT:String = "#messenger:serviceChannelMessages/resourceWell/noVehicles/text";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_NOSERIALVEHICLES_TEXT:String = "#messenger:serviceChannelMessages/resourceWell/noSerialVehicles/text";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_NOSERIALVEHICLES_BUTTON:String = "#messenger:serviceChannelMessages/resourceWell/noSerialVehicles/button";
+      
+      public static const SERVICECHANNELMESSAGES_RESOURCEWELL_NOVEHICLESWITHRETURN_TEXT:String = "#messenger:serviceChannelMessages/resourceWell/noVehiclesWithReturn/text";
+      
       public static const DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_ENUM:Array = [DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_OFFLINE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_NOTREADY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_READY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_INBATTLE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_AFK];
        
       

@@ -33,6 +33,7 @@ def getViewSettings():
     from gui.impl.lobby.mapbox.map_box_info_overlay import MapBoxInfoOverlay
     from gui.impl.lobby.battle_pass.battle_pass_browser_view import BattlePassBrowserView
     from gui.impl.lobby.blueprints.blueprints_exchange_view import BlueprintsExchangeView
+    from gui.impl.lobby.resource_well.resource_well_browser_view import ResourceWellBrowserView, ResourceWellVideoView
     from gui.Scaleform.daapi.view.lobby.SandboxQueueDialog import SandboxQueueDialog
     from gui.Scaleform.daapi.view.battle_results_window import BattleResultsWindow
     from gui.Scaleform.daapi.view.dialogs.CheckBoxDialog import CheckBoxDialog
@@ -93,6 +94,7 @@ def getViewSettings():
     from gui.Scaleform.daapi.view.bootcamp.bootcamp_progress_component import BootcampProgressComponent
     from gui.Scaleform.daapi.view.lobby.vehicle_preview.wot_plus_vehicle_preview import WotPlusVehiclePreview
     from gui.Scaleform.daapi.view.lobby.telecom_rentals.telecom_rentals_browser_pages import VehicleTelecomRentalView
+    from gui.Scaleform.daapi.view.lobby.vehicle_preview.resource_well_preview import ResourceWellVehiclePreview
     return (
      ViewSettings(VIEW_ALIAS.LOBBY, LobbyView, 'lobbyPage.swf', WindowLayer.VIEW, None, ScopeTemplates.DEFAULT_SCOPE, False, (
       ContainerSettings(WindowLayer.SUB_VIEW, containers.DefaultContainer),
@@ -111,6 +113,8 @@ def getViewSettings():
      ViewSettings(VIEW_ALIAS.TRADE_IN_VEHICLE_PREVIEW, TradeInVehiclePreview, 'vehiclePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.TRADE_IN_VEHICLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.MARATHON_VEHICLE_PREVIEW, MarathonVehiclePreview, 'vehiclePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.MARATHON_VEHICLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.OFFER_GIFT_VEHICLE_PREVIEW, OfferGiftVehiclePreview, 'vehiclePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.OFFER_GIFT_VEHICLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
+     ViewSettings(VIEW_ALIAS.RESOURCE_WELL_VEHICLE_PREVIEW, ResourceWellVehiclePreview, 'vehiclePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.RESOURCE_WELL_VEHICLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
+     ViewSettings(VIEW_ALIAS.RESOURCE_WELL_HERO_VEHICLE_PREVIEW, ResourceWellVehiclePreview, 'vehiclePreview.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.RESOURCE_WELL_HERO_VEHICLE_PREVIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.IMAGE_VIEW, ImageView, 'imageView.swf', WindowLayer.FULLSCREEN_WINDOW, VIEW_ALIAS.IMAGE_VIEW, ScopeTemplates.LOBBY_TOP_SUB_SCOPE, True),
      ViewSettings(VIEW_ALIAS.VEHICLE_COMPARE, VehicleCompareView, 'vehicleCompareView.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.VEHICLE_COMPARE, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.VEHICLE_COMPARE_MAIN_CONFIGURATOR, VehicleCompareConfiguratorMain, 'vehicleCompareConfiguratorMain.swf', WindowLayer.SUB_VIEW, VIEW_ALIAS.VEHICLE_COMPARE_MAIN_CONFIGURATOR, ScopeTemplates.LOBBY_SUB_SCOPE),
@@ -122,6 +126,8 @@ def getViewSettings():
      ViewSettings(VIEW_ALIAS.VEHICLE_RENTAL_VIEW, VehicleRentalView, 'browserScreen.swf', WindowLayer.TOP_SUB_VIEW, VIEW_ALIAS.VEHICLE_RENTAL_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.TELECOM_RENTAL_VIEW, VehicleTelecomRentalView, 'browserScreen.swf', WindowLayer.TOP_SUB_VIEW, VIEW_ALIAS.TELECOM_RENTAL_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      ViewSettings(VIEW_ALIAS.BLUEPRINTS_EXCHANGE_VIEW, BlueprintsExchangeView, 'browserScreen.swf', WindowLayer.TOP_SUB_VIEW, VIEW_ALIAS.BLUEPRINTS_EXCHANGE_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
+     ViewSettings(VIEW_ALIAS.RESOURCE_WELL_BROWSER_VIEW, ResourceWellBrowserView, 'browserScreen.swf', WindowLayer.TOP_SUB_VIEW, VIEW_ALIAS.RESOURCE_WELL_BROWSER_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
+     ViewSettings(VIEW_ALIAS.RESOURCE_WELL_VIDEO_VIEW, ResourceWellVideoView, 'browserScreen.swf', WindowLayer.FULLSCREEN_WINDOW, VIEW_ALIAS.RESOURCE_WELL_VIDEO_VIEW, ScopeTemplates.LOBBY_SUB_SCOPE),
      GroupedViewSettings(VIEW_ALIAS.CHECK_BOX_DIALOG, CheckBoxDialog, 'confirmDialog.swf', WindowLayer.TOP_WINDOW, 'confirmDialog', None, ScopeTemplates.DYNAMIC_SCOPE, isModal=True, canDrag=False),
      GroupedViewSettings(VIEW_ALIAS.CONFIRM_MODULE_DIALOG, ConfirmModuleDialog, 'confirmModuleWindow.swf', WindowLayer.TOP_WINDOW, 'confirmModuleDialog', None, ScopeTemplates.DEFAULT_SCOPE, isModal=True, canDrag=False),
      GroupedViewSettings(VIEW_ALIAS.USE_FREEW_AWARD_SHEET_DIALOG, UseAwardSheetWindow, 'useAwardSheetWindow.swf', WindowLayer.TOP_WINDOW, 'useAwardSheetWindow', None, ScopeTemplates.DEFAULT_SCOPE, isModal=True, canDrag=False),
@@ -247,6 +253,10 @@ class LobbyPackageBusinessHandler(PackageBusinessHandler):
          (
           VIEW_ALIAS.MARATHON_VEHICLE_PREVIEW, self.loadViewByCtxEvent),
          (
+          VIEW_ALIAS.RESOURCE_WELL_VEHICLE_PREVIEW, self.loadViewByCtxEvent),
+         (
+          VIEW_ALIAS.RESOURCE_WELL_HERO_VEHICLE_PREVIEW, self.loadViewByCtxEvent),
+         (
           VIEW_ALIAS.VEHICLE_COMPARE, self.loadViewByCtxEvent),
          (
           VIEW_ALIAS.VEHICLE_COMPARE_MAIN_CONFIGURATOR, self.loadViewByCtxEvent),
@@ -295,7 +305,11 @@ class LobbyPackageBusinessHandler(PackageBusinessHandler):
          (
           VIEW_ALIAS.UNBOUND_INJECT_WINDOW, self.loadViewByCtxEvent),
          (
-          VIEW_ALIAS.BATTLE_PASS_BADGES_DEMO, self.loadViewByCtxEvent))
+          VIEW_ALIAS.BATTLE_PASS_BADGES_DEMO, self.loadViewByCtxEvent),
+         (
+          VIEW_ALIAS.RESOURCE_WELL_BROWSER_VIEW, self.loadViewByCtxEvent),
+         (
+          VIEW_ALIAS.RESOURCE_WELL_VIDEO_VIEW, self.loadViewByCtxEvent))
         super(LobbyPackageBusinessHandler, self).__init__(listeners, app_settings.APP_NAME_SPACE.SF_LOBBY, EVENT_BUS_SCOPE.LOBBY)
 
     def __moduleWindowHandler(self, event):

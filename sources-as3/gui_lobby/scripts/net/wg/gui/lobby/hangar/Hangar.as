@@ -257,7 +257,7 @@ package net.wg.gui.lobby.hangar
          addChildAt(this._eventsEntryContainer,getChildIndex(this.carouselContainer) + 1);
          this._header = App.instance.utils.classFactory.getComponent(Linkages.HANGAR_HEADER,HangarHeader);
          this._header.name = HANGAR_ALIASES.HEADER;
-         addChildAt(this._header,getChildIndex(this.params as DisplayObject) - 1);
+         addChildAt(this._header,getChildIndex(this.vehResearchPanel as DisplayObject) + 1);
          this.closeBtn.visible = false;
       }
       

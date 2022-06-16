@@ -773,3 +773,8 @@ class ModeSelectorPopoverEvent(HasCtxEvent):
 
 class GunMarkerEvent(HasCtxEvent):
     UPDATE_PIERCING_DATA = 'onPiercingDataUpdated'
+
+
+class ResourceWellLoadingViewEvent(HasCtxEvent):
+    LOAD = 'load'
+    DESTROY = 'destroy'

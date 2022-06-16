@@ -2330,6 +2330,8 @@ RECORDS = (
  (
   'singleAchievements', 'december21', 'p', 'B', 1),
  (
+  'singleAchievements', 'june22', 'p', 'B', 1),
+ (
   'singleAchievements', 'hw2019Medal', 'p', 'B', 1),
  (
   'singleAchievements', 'hw2019Medal1', 'p', 'B', 1),
@@ -2759,6 +2761,10 @@ RECORDS = (
   'singleAchievements', 'oowCBTParticipant', 'p', 'B', 1),
  (
   'achievements', 'mapboxUniversal', 'p', 'H', 60001),
+ (
+  'achievements', 'wclTournamentParticipant', 'p', 'H', 60001),
+ (
+  'achievements', 'wclParticipant', 'p', 'H', 60001),
  (
   'singleAchievements', 'BattlePassCommonPr_8', 'p', 'B', 1),
  (
@@ -4146,9 +4152,12 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('achievements', 'oowCompetetiveWin'): 1652, 
    ('singleAchievements', 'oowCBTParticipant'): 1653, 
    ('achievements', 'mapboxUniversal'): 1654, 
-   ('singleAchievements', 'BattlePassCommonPr_8'): 1655, 
-   ('singleAchievements', 'BattlePassCommonPr_8ru'): 1656, 
-   ('singleAchievements', 'BattlePassCommonPr_8quest'): 1657}
+   ('singleAchievements', 'june22'): 1655, 
+   ('achievements', 'wclTournamentParticipant'): 1656, 
+   ('achievements', 'wclParticipant'): 1657, 
+   ('singleAchievements', 'BattlePassCommonPr_8'): 1658, 
+   ('singleAchievements', 'BattlePassCommonPr_8ru'): 1659, 
+   ('singleAchievements', 'BattlePassCommonPr_8quest'): 1660}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 

@@ -81,6 +81,7 @@ class ItemTags(object):
     PROGRESSION_REWIND_ENABLED = 'progression_rewind_enabled'
     ONLY_VERTICAL_MIRROR = 'onlyVerticalMirror'
     HIDE_IF_INCOMPATIBLE = 'hideIfIncompatible'
+    STYLE_SERIAL_NUMBER = 'styleSerialNumber'
 
 
 class ProjectionDecalType(object):

@@ -2593,6 +2593,10 @@ package
       
       public static const SSR_UNAVAILABLE:String = "#system_messages:ssr/unavailable";
       
+      public static const RESOURCEWELL_RESOURCESLOADINGERROR:String = "#system_messages:resourceWell/resourcesLoadingError";
+      
+      public static const RESOURCEWELL_RESOURCESRETURNERROR:String = "#system_messages:resourceWell/resourcesReturnError";
+      
       public static const DRAGONBOAT_PAUSED:String = "#system_messages:dragonBoat/paused";
       
       public static const DRAGONBOAT_RESTORED:String = "#system_messages:dragonBoat/restored";

@@ -735,6 +735,14 @@ package net.wg.data.constants.generated
       
       public static const ADDITIONAL_REWARDS:String = "AdditionalRewards";
       
+      public static const RESOURCE_WELL_GOLD:String = "ResourceWellGold";
+      
+      public static const RESOURCE_WELL_CREDITS:String = "ResourceWellCredits";
+      
+      public static const RESOURCE_WELL_CRYSTAL:String = "ResourceWellCrystal";
+      
+      public static const RESOURCE_WELL_FREE_XP:String = "ResourceWellFreeXP";
+      
       public static const EPIC_RANK_UNLOCK_INFO:String = "epicRankUnlockTooltip";
       
       public static const ACHIEVEMENTS_SET:Array = [BATTLE_STATS_ACHIEVS,BATTLE_STATS_MARKS_ON_GUN_ACHIEVEMENT,ACHIEVEMENT,MARKS_ON_GUN_ACHIEVEMENT,GLOBAL_RATING,MARK_OF_MASTERY,ACHIEVEMENT_ATTR,SHOP_ACHIEVEMENT,SHOP_BADGE,REFERRAL_BADGE];
@@ -820,6 +828,8 @@ package net.wg.data.constants.generated
       public static const ACCOUNT_COMPLETION_SET:Array = [ACCOUNT_COMPLETION,DEMO_ACCOUNT_RENAME_PROCESSING];
       
       public static const REFERRAL_PROGRAM_SET:Array = [REFERRAL_AWARDS];
+      
+      public static const RESOURCE_WELL_SET:Array = [RESOURCE_WELL_GOLD,RESOURCE_WELL_CREDITS,RESOURCE_WELL_CRYSTAL,RESOURCE_WELL_FREE_XP];
       
       public static const DRAGON_BOAT_POINTS_SET:Array = [DRAGON_BOAT_POINTS_INFO];
        

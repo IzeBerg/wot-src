@@ -49,6 +49,8 @@ package
       
       public static const MAPS_ICONS_RANKEDBATTLES_AWARDS_BG:String = "../maps/icons/rankedBattles/awards/bg.png";
       
+      public static const MAPS_ICONS_RESOURCEWELL_INTRO_BG:String = "../maps/icons/resourceWell/intro/bg.png";
+      
       public static const MAPS_ICONS_SENIORITYAWARDS_NOTIFICATION_BG:String = "../maps/icons/seniorityAwards/notification/bg.png";
       
       public static const MAPS_ICONS_SUBSCRIPTION_AWARD_VIEW_BG:String = "../maps/icons/subscription/award_view/bg.png";

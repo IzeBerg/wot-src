@@ -1296,6 +1296,8 @@ class SYSTEM_MESSAGES(object):
     TELECOMMERGERESULTS_BODY_PROGRESSDECALESCOMPENS = '#system_messages:telecomMergeResults/body/progressDecalesCompens'
     TELECOMMERGERESULTS_BODY_WISHMSG = '#system_messages:telecomMergeResults/body/wishMsg'
     SSR_UNAVAILABLE = '#system_messages:ssr/unavailable'
+    RESOURCEWELL_RESOURCESLOADINGERROR = '#system_messages:resourceWell/resourcesLoadingError'
+    RESOURCEWELL_RESOURCESRETURNERROR = '#system_messages:resourceWell/resourcesReturnError'
     DRAGONBOAT_PAUSED = '#system_messages:dragonBoat/paused'
     DRAGONBOAT_RESTORED = '#system_messages:dragonBoat/restored'
     DRAGONBOAT_STAGEAWARD_HEADER = '#system_messages:dragonBoat/stageAward/header'
@@ -2726,6 +2728,8 @@ class SYSTEM_MESSAGES(object):
      TELECOMMERGERESULTS_BODY_PROGRESSDECALESCOMPENS,
      TELECOMMERGERESULTS_BODY_WISHMSG,
      SSR_UNAVAILABLE,
+     RESOURCEWELL_RESOURCESLOADINGERROR,
+     RESOURCEWELL_RESOURCESRETURNERROR,
      DRAGONBOAT_PAUSED,
      DRAGONBOAT_RESTORED,
      DRAGONBOAT_STAGEAWARD_HEADER,

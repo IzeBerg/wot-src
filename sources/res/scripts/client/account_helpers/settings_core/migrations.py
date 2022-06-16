@@ -660,7 +660,8 @@ def _migrateTo78(core, data, initialized):
 
 
 def _migrateTo79(core, data, initialized):
-    data['guiStartBehavior']['birthdayCalendarIntroShowed'] = False
+    from account_helpers.settings_core.ServerSettingsManager import GUI_START_BEHAVIOR
+    data[GUI_START_BEHAVIOR]['birthdayCalendarIntroShowed'] = False
 
 
 def _migrateTo80(core, data, initialized):
@@ -806,6 +807,11 @@ def _migrateTo90(core, data, initialized):
 
 
 def _migrateTo91(core, data, initialized):
+    from account_helpers.settings_core.ServerSettingsManager import GUI_START_BEHAVIOR
+    data[GUI_START_BEHAVIOR][GuiSettingsBehavior.RESOURCE_WELL_INTRO_SHOWN] = False
+
+
+def _migrateTo92(core, data, initialized):
     from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS
     from account_helpers.settings_core.settings_constants import DragonBoatStorageKeys
     data[SETTINGS_SECTIONS.DRAGON_BOAT_STORAGE][DragonBoatStorageKeys.TEAM_1] = False
@@ -996,7 +1002,9 @@ _versions = (
  (
   90, _migrateTo90, False, False),
  (
-  91, _migrateTo91, False, False))
+  91, _migrateTo91, False, False),
+ (
+  92, _migrateTo92, False, False))
 
 @async
 @process

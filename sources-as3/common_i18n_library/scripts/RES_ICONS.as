@@ -2305,6 +2305,30 @@ package
       
       public static const MAPS_ICONS_BATTLEPASS_REWARDS_PROJECTIONDECAL_185468_SMALL:String = "../maps/icons/battlePass/rewards/projectionDecal_185468_small.png";
       
+      public static const MAPS_ICONS_BATTLEPASS_REWARDS_PROJECTIONDECAL_188796:String = "../maps/icons/battlePass/rewards/projectionDecal_188796.png";
+      
+      public static const MAPS_ICONS_BATTLEPASS_REWARDS_PROJECTIONDECAL_188796_EXTRASMALL:String = "../maps/icons/battlePass/rewards/projectionDecal_188796_extraSmall.png";
+      
+      public static const MAPS_ICONS_BATTLEPASS_REWARDS_PROJECTIONDECAL_188796_MEDIUM:String = "../maps/icons/battlePass/rewards/projectionDecal_188796_medium.png";
+      
+      public static const MAPS_ICONS_BATTLEPASS_REWARDS_PROJECTIONDECAL_188796_SMALL:String = "../maps/icons/battlePass/rewards/projectionDecal_188796_small.png";
+      
+      public static const MAPS_ICONS_BATTLEPASS_REWARDS_PROJECTIONDECAL_189052:String = "../maps/icons/battlePass/rewards/projectionDecal_189052.png";
+      
+      public static const MAPS_ICONS_BATTLEPASS_REWARDS_PROJECTIONDECAL_189052_EXTRASMALL:String = "../maps/icons/battlePass/rewards/projectionDecal_189052_extraSmall.png";
+      
+      public static const MAPS_ICONS_BATTLEPASS_REWARDS_PROJECTIONDECAL_189052_MEDIUM:String = "../maps/icons/battlePass/rewards/projectionDecal_189052_medium.png";
+      
+      public static const MAPS_ICONS_BATTLEPASS_REWARDS_PROJECTIONDECAL_189052_SMALL:String = "../maps/icons/battlePass/rewards/projectionDecal_189052_small.png";
+      
+      public static const MAPS_ICONS_BATTLEPASS_REWARDS_PROJECTIONDECAL_189308:String = "../maps/icons/battlePass/rewards/projectionDecal_189308.png";
+      
+      public static const MAPS_ICONS_BATTLEPASS_REWARDS_PROJECTIONDECAL_189308_EXTRASMALL:String = "../maps/icons/battlePass/rewards/projectionDecal_189308_extraSmall.png";
+      
+      public static const MAPS_ICONS_BATTLEPASS_REWARDS_PROJECTIONDECAL_189308_MEDIUM:String = "../maps/icons/battlePass/rewards/projectionDecal_189308_medium.png";
+      
+      public static const MAPS_ICONS_BATTLEPASS_REWARDS_PROJECTIONDECAL_189308_SMALL:String = "../maps/icons/battlePass/rewards/projectionDecal_189308_small.png";
+      
       public static const MAPS_ICONS_BATTLEPASS_REWARDS_RAMMER:String = "../maps/icons/battlePass/rewards/rammer.png";
       
       public static const MAPS_ICONS_BATTLEPASS_REWARDS_RAMMER_EXTRASMALL:String = "../maps/icons/battlePass/rewards/rammer_extraSmall.png";
@@ -5398,6 +5422,10 @@ package
       public static const MAPS_ICONS_CUSTOMIZATION_PROGRESSION_REWIND:String = "../maps/icons/customization/progression_rewind.png";
       
       public static const MAPS_ICONS_CUSTOMIZATION_PROGRESSION_REWIND_SMALL:String = "../maps/icons/customization/progression_rewind_small.png";
+      
+      public static const MAPS_ICONS_CUSTOMIZATION_SERIAL_NUMBER:String = "../maps/icons/customization/serial_number.png";
+      
+      public static const MAPS_ICONS_CUSTOMIZATION_SERIAL_NUMBER_SMALL:String = "../maps/icons/customization/serial_number_small.png";
       
       public static const MAPS_ICONS_CUSTOMIZATION_STAR:String = "../maps/icons/customization/star.png";
       
@@ -9297,6 +9325,8 @@ package
       
       public static const MAPS_ICONS_LIBRARY_RESERVEACTIVATED_1:String = "../maps/icons/library/ReserveActivated-1.png";
       
+      public static const MAPS_ICONS_LIBRARY_RESOURCEWELLICON_1:String = "../maps/icons/library/resourceWellIcon-1.png";
+      
       public static const MAPS_ICONS_LIBRARY_REWARDLIST:String = "../maps/icons/library/rewardlist.png";
       
       public static const MAPS_ICONS_LIBRARY_REWARDPOINTS_1:String = "../maps/icons/library/rewardPoints-1.png";
@@ -9441,6 +9471,10 @@ package
       
       public static const MAPS_ICONS_LIBRARY_BADGES_110X110_BADGE_120:String = "../maps/icons/library/badges/110x110/badge_120.png";
       
+      public static const MAPS_ICONS_LIBRARY_BADGES_110X110_BADGE_121:String = "../maps/icons/library/badges/110x110/badge_121.png";
+      
+      public static const MAPS_ICONS_LIBRARY_BADGES_110X110_BADGE_122:String = "../maps/icons/library/badges/110x110/badge_122.png";
+      
       public static const MAPS_ICONS_LIBRARY_BADGES_110X110_BADGE_13:String = "../maps/icons/library/badges/110x110/badge_13.png";
       
       public static const MAPS_ICONS_LIBRARY_BADGES_110X110_BADGE_14:String = "../maps/icons/library/badges/110x110/badge_14.png";
@@ -9552,6 +9586,10 @@ package
       public static const MAPS_ICONS_LIBRARY_BADGES_220X220_BADGE_12:String = "../maps/icons/library/badges/220x220/badge_12.png";
       
       public static const MAPS_ICONS_LIBRARY_BADGES_220X220_BADGE_120:String = "../maps/icons/library/badges/220x220/badge_120.png";
+      
+      public static const MAPS_ICONS_LIBRARY_BADGES_220X220_BADGE_121:String = "../maps/icons/library/badges/220x220/badge_121.png";
+      
+      public static const MAPS_ICONS_LIBRARY_BADGES_220X220_BADGE_122:String = "../maps/icons/library/badges/220x220/badge_122.png";
       
       public static const MAPS_ICONS_LIBRARY_BADGES_220X220_BADGE_13:String = "../maps/icons/library/badges/220x220/badge_13.png";
       
@@ -9710,6 +9748,10 @@ package
       public static const MAPS_ICONS_LIBRARY_BADGES_24X24_BADGE_12:String = "../maps/icons/library/badges/24x24/badge_12.png";
       
       public static const MAPS_ICONS_LIBRARY_BADGES_24X24_BADGE_120:String = "../maps/icons/library/badges/24x24/badge_120.png";
+      
+      public static const MAPS_ICONS_LIBRARY_BADGES_24X24_BADGE_121:String = "../maps/icons/library/badges/24x24/badge_121.png";
+      
+      public static const MAPS_ICONS_LIBRARY_BADGES_24X24_BADGE_122:String = "../maps/icons/library/badges/24x24/badge_122.png";
       
       public static const MAPS_ICONS_LIBRARY_BADGES_24X24_BADGE_13:String = "../maps/icons/library/badges/24x24/badge_13.png";
       
@@ -9969,6 +10011,10 @@ package
       
       public static const MAPS_ICONS_LIBRARY_BADGES_48X48_BADGE_120:String = "../maps/icons/library/badges/48x48/badge_120.png";
       
+      public static const MAPS_ICONS_LIBRARY_BADGES_48X48_BADGE_121:String = "../maps/icons/library/badges/48x48/badge_121.png";
+      
+      public static const MAPS_ICONS_LIBRARY_BADGES_48X48_BADGE_122:String = "../maps/icons/library/badges/48x48/badge_122.png";
+      
       public static const MAPS_ICONS_LIBRARY_BADGES_48X48_BADGE_13:String = "../maps/icons/library/badges/48x48/badge_13.png";
       
       public static const MAPS_ICONS_LIBRARY_BADGES_48X48_BADGE_14:String = "../maps/icons/library/badges/48x48/badge_14.png";
@@ -10220,6 +10266,10 @@ package
       public static const MAPS_ICONS_LIBRARY_BADGES_80X80_BADGE_12:String = "../maps/icons/library/badges/80x80/badge_12.png";
       
       public static const MAPS_ICONS_LIBRARY_BADGES_80X80_BADGE_120:String = "../maps/icons/library/badges/80x80/badge_120.png";
+      
+      public static const MAPS_ICONS_LIBRARY_BADGES_80X80_BADGE_121:String = "../maps/icons/library/badges/80x80/badge_121.png";
+      
+      public static const MAPS_ICONS_LIBRARY_BADGES_80X80_BADGE_122:String = "../maps/icons/library/badges/80x80/badge_122.png";
       
       public static const MAPS_ICONS_LIBRARY_BADGES_80X80_BADGE_13:String = "../maps/icons/library/badges/80x80/badge_13.png";
       
@@ -14433,6 +14483,10 @@ package
       
       public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_110X110_BADGE_120:String = "../maps/icons/quests/bonuses/badges/110x110/badge_120.png";
       
+      public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_110X110_BADGE_121:String = "../maps/icons/quests/bonuses/badges/110x110/badge_121.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_110X110_BADGE_122:String = "../maps/icons/quests/bonuses/badges/110x110/badge_122.png";
+      
       public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_110X110_BADGE_13:String = "../maps/icons/quests/bonuses/badges/110x110/badge_13.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_110X110_BADGE_14:String = "../maps/icons/quests/bonuses/badges/110x110/badge_14.png";
@@ -14530,6 +14584,10 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_220X220_BADGE_12:String = "../maps/icons/quests/bonuses/badges/220x220/badge_12.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_220X220_BADGE_120:String = "../maps/icons/quests/bonuses/badges/220x220/badge_120.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_220X220_BADGE_121:String = "../maps/icons/quests/bonuses/badges/220x220/badge_121.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_220X220_BADGE_122:String = "../maps/icons/quests/bonuses/badges/220x220/badge_122.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_220X220_BADGE_13:String = "../maps/icons/quests/bonuses/badges/220x220/badge_13.png";
       
@@ -14648,6 +14706,10 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_24X24_BADGE_12:String = "../maps/icons/quests/bonuses/badges/24x24/badge_12.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_24X24_BADGE_120:String = "../maps/icons/quests/bonuses/badges/24x24/badge_120.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_24X24_BADGE_121:String = "../maps/icons/quests/bonuses/badges/24x24/badge_121.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_24X24_BADGE_122:String = "../maps/icons/quests/bonuses/badges/24x24/badge_122.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_24X24_BADGE_13:String = "../maps/icons/quests/bonuses/badges/24x24/badge_13.png";
       
@@ -14840,6 +14902,10 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_48X48_BADGE_12:String = "../maps/icons/quests/bonuses/badges/48x48/badge_12.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_48X48_BADGE_120:String = "../maps/icons/quests/bonuses/badges/48x48/badge_120.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_48X48_BADGE_121:String = "../maps/icons/quests/bonuses/badges/48x48/badge_121.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_48X48_BADGE_122:String = "../maps/icons/quests/bonuses/badges/48x48/badge_122.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_48X48_BADGE_13:String = "../maps/icons/quests/bonuses/badges/48x48/badge_13.png";
       
@@ -15044,6 +15110,10 @@ package
       public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_80X80_BADGE_12:String = "../maps/icons/quests/bonuses/badges/80x80/badge_12.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_80X80_BADGE_120:String = "../maps/icons/quests/bonuses/badges/80x80/badge_120.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_80X80_BADGE_121:String = "../maps/icons/quests/bonuses/badges/80x80/badge_121.png";
+      
+      public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_80X80_BADGE_122:String = "../maps/icons/quests/bonuses/badges/80x80/badge_122.png";
       
       public static const MAPS_ICONS_QUESTS_BONUSES_BADGES_80X80_BADGE_13:String = "../maps/icons/quests/bonuses/badges/80x80/badge_13.png";
       
@@ -17666,6 +17736,274 @@ package
       public static const MAPS_ICONS_RESERVETYPES_REQUISITIONGLOW:String = "../maps/icons/reserveTypes/requisitionGlow.png";
       
       public static const MAPS_ICONS_RESERVETYPES_REQUISITIONPLUS:String = "../maps/icons/reserveTypes/requisitionPlus.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_ALERTICON:String = "../maps/icons/resourceWell/alertIcon.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_COUNTER_BG:String = "../maps/icons/resourceWell/counter_bg.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_COUNTER_GLOW:String = "../maps/icons/resourceWell/counter_glow.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_ICON_INFO:String = "../maps/icons/resourceWell/icon_info.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_LOCK:String = "../maps/icons/resourceWell/lock.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_LOCK_SMALL:String = "../maps/icons/resourceWell/lock_small.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_SHADOW_VEHICLE_INFO:String = "../maps/icons/resourceWell/shadow_vehicle_info.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_AWARD_AWARDBG:String = "../maps/icons/resourceWell/award/awardBG.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_AWARD_AWARDTANK:String = "../maps/icons/resourceWell/award/awardTank.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_AWARD_AWARDTANKSTYLE:String = "../maps/icons/resourceWell/award/awardTankStyle.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_AWARD_BG_M:String = "../maps/icons/resourceWell/award/bg_m.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_AWARD_BG_S:String = "../maps/icons/resourceWell/award/bg_s.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_AWARD_LINES:String = "../maps/icons/resourceWell/award/lines.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_AWARD_MUZZLE_M:String = "../maps/icons/resourceWell/award/muzzle_m.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_AWARD_MUZZLE_S:String = "../maps/icons/resourceWell/award/muzzle_s.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_AWARD_NUMBER_SHADOW:String = "../maps/icons/resourceWell/award/number_shadow.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_AWARD_RIBBON_WITH_BP:String = "../maps/icons/resourceWell/award/ribbon_with_bp.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_AWARD_RIBBON_WITH_BP_MEDIUM:String = "../maps/icons/resourceWell/award/ribbon_with_bp_medium.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_AWARD_RIBBON_WITH_BP_SMALL:String = "../maps/icons/resourceWell/award/ribbon_with_bp_small.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_AWARD_TEXTURE:String = "../maps/icons/resourceWell/award/texture.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_BACKGROUNDS_ADDITIONALBG:String = "../maps/icons/resourceWell/backgrounds/additionalBg.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_BACKGROUNDS_DISABLE_WITHOUT_STYLE:String = "../maps/icons/resourceWell/backgrounds/disable_without_style.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_BACKGROUNDS_DISABLE_WITHOUT_STYLE_SMALL:String = "../maps/icons/resourceWell/backgrounds/disable_without_style_small.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_BACKGROUNDS_MAINBG:String = "../maps/icons/resourceWell/backgrounds/mainBg.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_BACKGROUNDS_MAINBG_BLUR:String = "../maps/icons/resourceWell/backgrounds/mainBg_blur.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_CONFIRM_ALERTORANGE:String = "../maps/icons/resourceWell/confirm/alertOrange.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_CONFIRM_CHINA:String = "../maps/icons/resourceWell/confirm/china.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_CONFIRM_CREDITS:String = "../maps/icons/resourceWell/confirm/credits.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_CONFIRM_CRYSTAL:String = "../maps/icons/resourceWell/confirm/crystal.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_CONFIRM_CZECH:String = "../maps/icons/resourceWell/confirm/czech.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_CONFIRM_FRANCE:String = "../maps/icons/resourceWell/confirm/france.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_CONFIRM_FREEXP:String = "../maps/icons/resourceWell/confirm/freeXP.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_CONFIRM_GERMANY:String = "../maps/icons/resourceWell/confirm/germany.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_CONFIRM_GOLD:String = "../maps/icons/resourceWell/confirm/gold.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_CONFIRM_ICONALERT:String = "../maps/icons/resourceWell/confirm/iconAlert.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_CONFIRM_INTELLIGENCE:String = "../maps/icons/resourceWell/confirm/intelligence.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_CONFIRM_ITALY:String = "../maps/icons/resourceWell/confirm/italy.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_CONFIRM_JAPAN:String = "../maps/icons/resourceWell/confirm/japan.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_CONFIRM_POLAND:String = "../maps/icons/resourceWell/confirm/poland.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_CONFIRM_SWEDEN:String = "../maps/icons/resourceWell/confirm/sweden.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_CONFIRM_UK:String = "../maps/icons/resourceWell/confirm/uk.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_CONFIRM_USA:String = "../maps/icons/resourceWell/confirm/usa.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_CONFIRM_USSR:String = "../maps/icons/resourceWell/confirm/ussr.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_ENTRYPOINT_EVENT_GR_ICO:String = "../maps/icons/resourceWell/entryPoint/event_gr_ico.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_ENTRYPOINT_EVENT_ICO:String = "../maps/icons/resourceWell/entryPoint/event_ico.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_ENTRYPOINT_FLAG_ACTIVE:String = "../maps/icons/resourceWell/entryPoint/flag_active.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_ENTRYPOINT_FLAG_ACTIVE_HOVER:String = "../maps/icons/resourceWell/entryPoint/flag_active_hover.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_ENTRYPOINT_FLAG_DONE:String = "../maps/icons/resourceWell/entryPoint/flag_done.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_ENTRYPOINT_FLAG_DONE_HOVER:String = "../maps/icons/resourceWell/entryPoint/flag_done_hover.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_ENTRYPOINT_FLAG_ERROR:String = "../maps/icons/resourceWell/entryPoint/flag_error.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_ENTRYPOINT_FLAG_ERROR_HOVER:String = "../maps/icons/resourceWell/entryPoint/flag_error_hover.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_FOOTER_FOOTER_LIPBIG:String = "../maps/icons/resourceWell/footer/footer_lipBig.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_FOOTER_FOOTER_LIPBIG_SMALL:String = "../maps/icons/resourceWell/footer/footer_lipBig_small.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_FOOTER_FOOTER_LITE_LINE:String = "../maps/icons/resourceWell/footer/footer_lite_line.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_FOOTER_FOOTER_LITE_LINE_SMALL:String = "../maps/icons/resourceWell/footer/footer_lite_line_small.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_FOOTER_FOOTER_SHADOW_BG:String = "../maps/icons/resourceWell/footer/footer_shadow_bg.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_FOOTER_FOOTER_SHADOW_BG_SMALL:String = "../maps/icons/resourceWell/footer/footer_shadow_bg_small.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_FOOTER_PROGRESSBAR_BG:String = "../maps/icons/resourceWell/footer/progressbar_bg.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_FOOTER_PROGRESSBAR_BG_SMALL:String = "../maps/icons/resourceWell/footer/progressbar_bg_small.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_ICONS_ALERT_ICO:String = "../maps/icons/resourceWell/icons/alert_ico.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_ICONS_DONE_ICO:String = "../maps/icons/resourceWell/icons/done_ico.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_ICONS_TIME_ICO:String = "../maps/icons/resourceWell/icons/time_ico.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_INTRO_BG:String = "../maps/icons/resourceWell/intro/bg.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_INTRO_COMMON_ILLUSTR:String = "../maps/icons/resourceWell/intro/common_illustr.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_INTRO_VIDEO_BUTTON_BG:String = "../maps/icons/resourceWell/intro/video_button_bg.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_INTRO_YOUTUBE_BUTTON:String = "../maps/icons/resourceWell/intro/youtube_button.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_BG_BLUR:String = "../maps/icons/resourceWell/resourcesLoading/bg_blur.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_BG_SHADOWS:String = "../maps/icons/resourceWell/resourcesLoading/bg_shadows.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_CATEGORYGLOW:String = "../maps/icons/resourceWell/resourcesLoading/categoryGlow.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_CATEGORYGLOWACTIVE:String = "../maps/icons/resourceWell/resourcesLoading/categoryGlowActive.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_CATEGORY_BLUEPRINTS:String = "../maps/icons/resourceWell/resourcesLoading/category_blueprints.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_CATEGORY_BLUEPRINTS_SMALL:String = "../maps/icons/resourceWell/resourcesLoading/category_blueprints_small.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_CATEGORY_CURRENCY:String = "../maps/icons/resourceWell/resourcesLoading/category_currency.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_CATEGORY_CURRENCY_SMALL:String = "../maps/icons/resourceWell/resourcesLoading/category_currency_small.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_COUNTER_BG:String = "../maps/icons/resourceWell/resourcesLoading/counter_bg.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_EXP:String = "../maps/icons/resourceWell/resourcesLoading/exp.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_GLOW:String = "../maps/icons/resourceWell/resourcesLoading/glow.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_ICON_INFO:String = "../maps/icons/resourceWell/resourcesLoading/icon_info.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_ICON_LOADED:String = "../maps/icons/resourceWell/resourcesLoading/icon_loaded.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_ICON_MAX:String = "../maps/icons/resourceWell/resourcesLoading/icon_max.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_INHANGAR:String = "../maps/icons/resourceWell/resourcesLoading/inhangar.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_PATTERN_DISABLE:String = "../maps/icons/resourceWell/resourcesLoading/pattern_disable.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_ICONS_CREDITS:String = "../maps/icons/resourceWell/resourcesLoading/icons/credits.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_ICONS_CRYSTAL:String = "../maps/icons/resourceWell/resourcesLoading/icons/crystal.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_ICONS_FREEXP:String = "../maps/icons/resourceWell/resourcesLoading/icons/freeXP.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_ICONS_GOLD:String = "../maps/icons/resourceWell/resourcesLoading/icons/gold.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_RESOURCES_CHINA:String = "../maps/icons/resourceWell/resourcesLoading/resources/china.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_RESOURCES_CREDITS:String = "../maps/icons/resourceWell/resourcesLoading/resources/credits.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_RESOURCES_CRYSTAL:String = "../maps/icons/resourceWell/resourcesLoading/resources/crystal.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_RESOURCES_CZECH:String = "../maps/icons/resourceWell/resourcesLoading/resources/czech.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_RESOURCES_FRANCE:String = "../maps/icons/resourceWell/resourcesLoading/resources/france.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_RESOURCES_FREEXP:String = "../maps/icons/resourceWell/resourcesLoading/resources/freeXP.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_RESOURCES_GERMANY:String = "../maps/icons/resourceWell/resourcesLoading/resources/germany.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_RESOURCES_GOLD:String = "../maps/icons/resourceWell/resourcesLoading/resources/gold.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_RESOURCES_INTELLIGENCE:String = "../maps/icons/resourceWell/resourcesLoading/resources/intelligence.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_RESOURCES_ITALY:String = "../maps/icons/resourceWell/resourcesLoading/resources/italy.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_RESOURCES_JAPAN:String = "../maps/icons/resourceWell/resourcesLoading/resources/japan.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_RESOURCES_POLAND:String = "../maps/icons/resourceWell/resourcesLoading/resources/poland.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_RESOURCES_SWEDEN:String = "../maps/icons/resourceWell/resourcesLoading/resources/sweden.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_RESOURCES_UK:String = "../maps/icons/resourceWell/resourcesLoading/resources/uk.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_RESOURCES_USA:String = "../maps/icons/resourceWell/resourcesLoading/resources/usa.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_RESOURCESLOADING_RESOURCES_USSR:String = "../maps/icons/resourceWell/resourcesLoading/resources/ussr.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TANKSBG_LEFTSHINE:String = "../maps/icons/resourceWell/tanksBg/leftShine.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TANKSBG_RIGHTSHINE:String = "../maps/icons/resourceWell/tanksBg/rightShine.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TANKSBG_STYLE_ACTIVE:String = "../maps/icons/resourceWell/tanksBg/style__active.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TANKSBG_STYLE_NOACTIVE:String = "../maps/icons/resourceWell/tanksBg/style__noactive.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TANKSBG_WITHOUTSTYLE_ACTIVE:String = "../maps/icons/resourceWell/tanksBg/withoutStyle__active.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TANKSBG_WITHOUTSTYLE_NOACTIVE:String = "../maps/icons/resourceWell/tanksBg/withoutStyle__noactive.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TIMER_SHINE_TIMER:String = "../maps/icons/resourceWell/timer/shine_timer.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TIMER_SHINE_TIMER_SMALL:String = "../maps/icons/resourceWell/timer/shine_timer_small.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TOOLTIPS_DIVIDER:String = "../maps/icons/resourceWell/tooltips/divider.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TOOLTIPS_DIVIDER_SMALL:String = "../maps/icons/resourceWell/tooltips/divider_small.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TOOLTIPS_UNIQUE_STYLE:String = "../maps/icons/resourceWell/tooltips/unique_style.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TOOLTIPS_WHITE_BG:String = "../maps/icons/resourceWell/tooltips/white_bg.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TOOLTIPS_ENTRYPOINT_ALERTICON:String = "../maps/icons/resourceWell/tooltips/entryPoint/alertIcon.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TOOLTIPS_ENTRYPOINT_CHECK:String = "../maps/icons/resourceWell/tooltips/entryPoint/check.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TOOLTIPS_ENTRYPOINT_FOOTERGREENLIGHT:String = "../maps/icons/resourceWell/tooltips/entryPoint/footerGreenLight.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TOOLTIPS_ENTRYPOINT_TIME_ICON:String = "../maps/icons/resourceWell/tooltips/entryPoint/time_icon.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TOOLTIPS_ENTRYPOINT_STATES_FORBIDDEN:String = "../maps/icons/resourceWell/tooltips/entryPoint/states/forbidden.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TOOLTIPS_ENTRYPOINT_STATES_NOREWARDS:String = "../maps/icons/resourceWell/tooltips/entryPoint/states/noRewards.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TOOLTIPS_ENTRYPOINT_STATES_NOTSTARTED:String = "../maps/icons/resourceWell/tooltips/entryPoint/states/notStarted.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TOOLTIPS_ENTRYPOINT_STATES_PAUSED:String = "../maps/icons/resourceWell/tooltips/entryPoint/states/paused.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TOOLTIPS_ENTRYPOINT_STATES_REGULARREWARDAVAILABLE:String = "../maps/icons/resourceWell/tooltips/entryPoint/states/regularRewardAvailable.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TOOLTIPS_ENTRYPOINT_STATES_REGULARREWARDRECEIVED:String = "../maps/icons/resourceWell/tooltips/entryPoint/states/regularRewardReceived.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TOOLTIPS_ENTRYPOINT_STATES_TOPREWARDAVAILABLE:String = "../maps/icons/resourceWell/tooltips/entryPoint/states/topRewardAvailable.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_TOOLTIPS_ENTRYPOINT_STATES_TOPREWARDRECEIVED:String = "../maps/icons/resourceWell/tooltips/entryPoint/states/topRewardReceived.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_OBJECT_780_232X174:String = "../maps/icons/resourceWell/vehicles/Object_780_232x174.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_OBJECT_780_232X174_3D:String = "../maps/icons/resourceWell/vehicles/Object_780_232x174_3d.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_OBJECT_780_296X222:String = "../maps/icons/resourceWell/vehicles/Object_780_296x222.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_OBJECT_780_296X222_3D:String = "../maps/icons/resourceWell/vehicles/Object_780_296x222_3d.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_OBJECT_780_400X300:String = "../maps/icons/resourceWell/vehicles/Object_780_400x300.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_OBJECT_780_400X300_3D:String = "../maps/icons/resourceWell/vehicles/Object_780_400x300_3d.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_OBJECT_780_600X450:String = "../maps/icons/resourceWell/vehicles/Object_780_600x450.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_VEHICLES_OBJECT_780_600X450_3D:String = "../maps/icons/resourceWell/vehicles/Object_780_600x450_3d.png";
       
       public static const MAPS_ICONS_ROLEEXP_ACTIONS_128X128_BLOCKANDTAKEDAMAGE:String = "../maps/icons/roleExp/actions/128x128/blockAndTakeDamage.png";
       

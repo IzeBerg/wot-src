@@ -2,11 +2,12 @@ import BigWorld, math_utils, VehicleStickers
 
 class DestructibleStickers(object):
 
-    def __init__(self, model, nodeToAttach):
+    def __init__(self, spaceID, model, nodeToAttach):
         self.__model = model
-        self.__stickerModel = BigWorld.WGStickerModel()
+        self.__stickerModel = BigWorld.WGStickerModel(spaceID)
         self.__stickerModel.setLODDistance(1000.0)
         self.__stickerModel.setupSuperModel(model, math_utils.createIdentityMatrix())
+        self.__nodeToAttach = nodeToAttach
         nodeToAttach.attach(self.__stickerModel)
         self.__damageStickers = {}
 
@@ -14,8 +15,8 @@ class DestructibleStickers(object):
         if self.__model is None:
             return
         else:
-            if self.__stickerModel.attached:
-                self.__model.detach(self.__stickerModel)
+            if self.__stickerModel.attached and self.__nodeToAttach is not None:
+                self.__nodeToAttach.detach(self.__stickerModel)
             self.__stickerModel.clear()
             self.__damageStickers.clear()
             return

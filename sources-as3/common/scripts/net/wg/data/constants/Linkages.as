@@ -1024,6 +1024,8 @@ package net.wg.data.constants
       public static const RESEARCH_POST_PROGRESSION_ENTRY_POINT:String = "PostProgressionEntryPointUI";
       
       public static const LOBBY_MINIMAP:String = "LobbyMinimap";
+      
+      public static const RESOURCE_WELL_ENTRY_POINT:String = "ResourceWellEntryPointUI";
        
       
       public function Linkages()

@@ -229,6 +229,8 @@ package
       
       public static const DOWNLOAD_GIFTSYSTEM:String = "#waiting:download/giftSystem";
       
+      public static const DOWNLOAD_RESOURCEWELL:String = "#waiting:download/resourceWell";
+      
       public static const UPDATINGSKILLWINDOW:String = "#waiting:updatingSkillWindow";
       
       public static const PREBATTLE_CREATE:String = "#waiting:prebattle/create";
@@ -338,6 +340,10 @@ package
       public static const SWITCHCHAPTER:String = "#waiting:switchChapter";
       
       public static const BATTLEROYALE_HANGARLOADING:String = "#waiting:battleRoyale/hangarLoading";
+      
+      public static const GETRESOURCESBACK:String = "#waiting:getResourcesBack";
+      
+      public static const PUTRESOURCES:String = "#waiting:putResources";
        
       
       public function WAITING()
