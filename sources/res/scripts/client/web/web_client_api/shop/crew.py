@@ -129,11 +129,11 @@ class _ShopRecruit(_ShopTankman):
 
     @property
     def iconRank(self):
-        return ''
+        return _EMPTY_STR
 
     @property
     def iconRole(self):
-        return ''
+        return _EMPTY_STR
 
     def __getNewbieStr(self):
         return backport.text(self.__R_CREW.tankwoman() if self.isFemale else self.__R_CREW.tankman())

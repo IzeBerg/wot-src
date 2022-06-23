@@ -31,8 +31,6 @@ package
       
       public static const MAPS_ICONS_DEMOUNTKIT_BG:String = "../maps/icons/demountKit/bg.png";
       
-      public static const MAPS_ICONS_DRAGONBOATS_REWARDS_BG:String = "../maps/icons/dragonBoats/rewards/bg.png";
-      
       public static const MAPS_ICONS_EPICBATTLES_SKILLS_INTRO_BG:String = "../maps/icons/epicBattles/skills/intro/bg.png";
       
       public static const MAPS_ICONS_MAPBOX_BG:String = "../maps/icons/mapbox/bg.png";
@@ -48,6 +46,8 @@ package
       public static const MAPS_ICONS_PREMACC_DASHBOARD_HEADER_BADGESLOT_BG:String = "../maps/icons/premacc/dashboard/header/badgeSlot/bg.png";
       
       public static const MAPS_ICONS_RANKEDBATTLES_AWARDS_BG:String = "../maps/icons/rankedBattles/awards/bg.png";
+      
+      public static const MAPS_ICONS_RESOURCEWELL_INTRO_BG:String = "../maps/icons/resourceWell/intro/bg.png";
       
       public static const MAPS_ICONS_SENIORITYAWARDS_NOTIFICATION_BG:String = "../maps/icons/seniorityAwards/notification/bg.png";
       

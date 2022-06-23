@@ -373,6 +373,10 @@ class StyleItem(BaseCustomizationItem):
         return ItemTags.STYLE_PROGRESSION in self.tags
 
     @property
+    def isWithSerialNumber(self):
+        return ItemTags.STYLE_SERIAL_NUMBER in self.tags
+
+    @property
     def isProgressionRewindEnabled(self):
         return ItemTags.PROGRESSION_REWIND_ENABLED in self.tags
 
@@ -712,7 +716,7 @@ class CustomizationCache(object):
 
         return [ s for s in self.__victimStyles.get(hunting, []) if s.matchVehicleType(vehType) ]
 
-    def validateOutfit(self, vehDescr, outfit, progressionStorage, tokens=None, season=SeasonType.ALL):
+    def validateOutfit(self, vehDescr, outfit, progressionStorage, serialNumbersStorage, tokens=None, season=SeasonType.ALL):
         usedStyle = None
         try:
             vehType = vehDescr.type
@@ -725,6 +729,8 @@ class CustomizationCache(object):
             if usedStyle.isProgressive():
                 if usedStyle.progression.defaultLvl > outfit.styleProgressionLevel > len(usedStyle.progression.levels):
                     raise SoftException(('Progression style {} level out of limits').format(styleID))
+                if usedStyle.isWithSerialNumber:
+                    _validateSerialNumber(outfit, usedStyle, serialNumbersStorage)
             projectionDecalsCount = len(outfit.projection_decals)
             if usedStyle is not None:
                 baseOutfit = usedStyle.outfits.get(season)
@@ -814,6 +820,13 @@ class CustomizationCache(object):
 
         return
 
+    def adjustSerialNumber(self, outfit, serialNumberStorage, style):
+        try:
+            if outfit.styleId != 0:
+                _adjustSerialNumber(outfit, style, serialNumberStorage)
+        except SoftException:
+            LOG_CURRENT_EXCEPTION()
+
 
 class EditingStyleReason(object):
 
@@ -840,6 +853,16 @@ def _adjustProgression(component, vehTypeCD, item, progressionStorage, attr, for
         if level is None:
             raise SoftException(('missing progression for item: {} at vehicle: {}').format(item.id, vehTypeCD))
         setattr(component, attr, level)
+        return
+
+
+def _adjustSerialNumber(component, style, serialNumbersStorage, force=False):
+    if style is None:
+        raise SoftException(('Missing customization item for component: {}').format(component))
+    if not style.isWithSerialNumber:
+        return
+    else:
+        component.serial_number = serialNumbersStorage.get(style.itemType, {}).get(style.id, {}).get('serial_number')
         return
 
 
@@ -871,6 +894,13 @@ def _validateProgression(component, item, progressionStorage, vehType):
     if not 0 <= level <= achievedLevel:
         raise SoftException(('wrong progression level: {}, achievedLevel: {} for component: {} at vehicle: {}, ').format(level, achievedLevel, component.id, vehTypeCD))
     return
+
+
+def _validateSerialNumber(component, item, serialNumberStorage):
+    installedSerialNumber = component.serial_number
+    storedSerialNumber = serialNumberStorage.get(item.itemType, {}).get(item.id, {}).get('serial_number', '')
+    if installedSerialNumber and installedSerialNumber != storedSerialNumber:
+        raise SoftException(('wrong serial number for component: {}').format(component.id))
 
 
 def _validateApplyTo(component, item):

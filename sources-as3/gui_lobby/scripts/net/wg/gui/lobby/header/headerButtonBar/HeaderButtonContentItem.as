@@ -220,6 +220,10 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       public function set data(param1:Object) : void
       {
+         if(_baseDisposed)
+         {
+            return;
+         }
          this._data = param1;
          this.updateVisibility();
          this.updateFonts();

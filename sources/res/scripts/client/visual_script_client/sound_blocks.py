@@ -22,7 +22,7 @@ class SoundMeta(Meta):
 
     @classmethod
     def blockAspects(cls):
-        return [ASPECT.CLIENT]
+        return [ASPECT.CLIENT, ASPECT.HANGAR]
 
 
 class PlaySound(Block, SoundMeta):
@@ -109,6 +109,10 @@ class SetMutedSounds(Block, SoundMeta):
                 avatar.muteSounds(())
         self._out.call()
 
+    @classmethod
+    def blockAspects(cls):
+        return [ASPECT.CLIENT]
+
 
 class PlayCombatMusic(Block, SoundMeta):
 
@@ -151,6 +155,10 @@ class PlayCombatMusic(Block, SoundMeta):
         errorVScript(self, "Can't play combat music")
         return
 
+    @classmethod
+    def blockAspects(cls):
+        return [ASPECT.CLIENT]
+
 
 class SetMusicSkipArenaChanges(Block, SoundMeta):
 
@@ -163,6 +171,10 @@ class SetMusicSkipArenaChanges(Block, SoundMeta):
     def _execute(self):
         MusicControllerWWISE.g_musicController.skipArenaChanges = self._skip.getValue()
         self._out.call()
+
+    @classmethod
+    def blockAspects(cls):
+        return [ASPECT.CLIENT]
 
 
 class SetSoundRTPC(Block, SoundMeta):

@@ -40,6 +40,7 @@ package net.wg.gui.bootcamp
          this.battleTopHint.updateStage(param1,param2);
          this.secondaryHint.y = ribbonsPanel.y - SEC_HINT_OFFSET_Y;
          this.secondaryHint.x = param1 >> 1;
+         playerMessageListPositionUpdate();
       }
       
       override protected function getRibbonsCenterOffset(param1:Number) : int

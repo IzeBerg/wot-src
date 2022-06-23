@@ -242,6 +242,60 @@ package
       public static const PIERCINGDEBUGPANEL_VEHPART_SCREEN:String = "#development:piercingDebugPanel/vehPart/screen";
       
       public static const PIERCINGDEBUGPANEL_RICOCHET:String = "#development:piercingDebugPanel/ricochet";
+      
+      public static const DAY:String = "#development:day";
+      
+      public static const PREMIUM_BUYING_SUCCESS:String = "#development:premium/buying/success";
+      
+      public static const GFVIEWER_CONTENT_CREATEBLOCKTITLE:String = "#development:gfViewer/content/createBlockTitle";
+      
+      public static const GFVIEWER_CONTENT_LISTBLOCKTITLE:String = "#development:gfViewer/content/listBlockTitle";
+      
+      public static const GFVIEWER_CONTENT_TRANSACTIONTITLE:String = "#development:gfViewer/content/transactionTitle";
+      
+      public static const GFVIEWER_CONTENT_EDITORTITLE:String = "#development:gfViewer/content/editorTitle";
+      
+      public static const GFVIEWER_CONTENT_INVALIDMODELMESSAGE:String = "#development:gfViewer/content/invalidModelMessage";
+      
+      public static const GFVIEWER_CONTENT_INVALIDVIEWMESSAGE:String = "#development:gfViewer/content/invalidViewMessage";
+      
+      public static const GFVIEWER_CONTENT_PRESETLABEL:String = "#development:gfViewer/content/presetLabel";
+      
+      public static const GFVIEWER_CONTENT_VIEWLABEL:String = "#development:gfViewer/content/viewLabel";
+      
+      public static const GFVIEWER_CONTENT_MODELLABEL:String = "#development:gfViewer/content/modelLabel";
+      
+      public static const GFVIEWER_CONTENT_PRESETDESCRIPTION:String = "#development:gfViewer/content/presetDescription";
+      
+      public static const GFVIEWER_CONTENT_TRANSACTIONDESCRIPTION:String = "#development:gfViewer/content/transactionDescription";
+      
+      public static const GFVIEWER_CONTENT_CHAINDESCRIPTION:String = "#development:gfViewer/content/chainDescription";
+      
+      public static const GFVIEWER_CONTROLS_ADD:String = "#development:gfViewer/controls/add";
+      
+      public static const GFVIEWER_CONTROLS_ADDEMPTY:String = "#development:gfViewer/controls/addEmpty";
+      
+      public static const GFVIEWER_CONTROLS_ADDBASE:String = "#development:gfViewer/controls/addBase";
+      
+      public static const GFVIEWER_CONTROLS_ADDTRANSACTION:String = "#development:gfViewer/controls/addTransaction";
+      
+      public static const GFVIEWER_CONTROLS_BACK:String = "#development:gfViewer/controls/back";
+      
+      public static const GFVIEWER_CONTROLS_CANCEL:String = "#development:gfViewer/controls/cancel";
+      
+      public static const GFVIEWER_CONTROLS_CHANGE:String = "#development:gfViewer/controls/change";
+      
+      public static const GFVIEWER_CONTROLS_CREATE:String = "#development:gfViewer/controls/create";
+      
+      public static const GFVIEWER_CONTROLS_CREATECHAIN:String = "#development:gfViewer/controls/createChain";
+      
+      public static const GFVIEWER_CONTROLS_LOAD:String = "#development:gfViewer/controls/load";
+      
+      public static const GFVIEWER_CONTROLS_REMOVE:String = "#development:gfViewer/controls/remove";
+      
+      public static const GFVIEWER_CONTROLS_SAVE:String = "#development:gfViewer/controls/save";
+      
+      public static const GFVIEWER_CONTROLS_SAVEASNEW:String = "#development:gfViewer/controls/saveAsNew";
        
       
       public function DEVELOPMENT()

@@ -10,5 +10,7 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
       function getBtn() : SoundButtonEx;
       
       function getTotalHeight() : Number;
+      
+      function getOffsetY() : int;
    }
 }

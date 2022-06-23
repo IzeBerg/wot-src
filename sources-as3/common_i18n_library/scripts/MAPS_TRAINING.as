@@ -7,6 +7,8 @@ package
       
       public static const MAPSELECTION_SUBTITLE:String = "#maps_training:mapSelection/subtitle";
       
+      public static const MAPSELECTION_CLOSEBTN:String = "#maps_training:mapSelection/closeBtn";
+      
       public static const MAPSELECTION_FILTERS_TIP1:String = "#maps_training:mapSelection/filters/tip1";
       
       public static const MAPSELECTION_FILTERS_TIP2:String = "#maps_training:mapSelection/filters/tip2";

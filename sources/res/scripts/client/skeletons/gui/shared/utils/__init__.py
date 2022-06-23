@@ -74,6 +74,14 @@ class IItemsRequester(requesters.IRequester):
     def giftSystem(self):
         raise NotImplementedError
 
+    @property
+    def gameRestrictions(self):
+        raise NotImplementedError
+
+    @property
+    def resourceWell(self):
+        raise NotImplementedError
+
     def requestUserDossier(self, databaseID, callback):
         raise NotImplementedError
 

@@ -1089,7 +1089,7 @@ package
       
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_CLING_BRANDER:String = "#ingame_gui:postmortem_messages/DEATH_FROM_CLING_BRANDER";
       
-      public static const POSTMORTEM_MESSAGES_DEATH_FROM_AIRSTRIKE:String = "#ingame_gui:postmortem_messages/DEATH_FROM_AIRSTRIKE";
+      public static const POSTMORTEM_MESSAGES_DEATH_FROM_SHOT_ARCADE_BOMBER_BATTLE_ROYALE:String = "#ingame_gui:postmortem_messages/DEATH_FROM_SHOT_ARCADE_BOMBER_BATTLE_ROYALE";
       
       public static const PLAYER_MESSAGES_DEATH_FROM_OVERTURN_SELF_SUICIDE:String = "#ingame_gui:player_messages/DEATH_FROM_OVERTURN_SELF_SUICIDE";
       
@@ -1664,6 +1664,14 @@ package
       public static const REWARDWINDOW_TWITCH29_DESCTEXT:String = "#ingame_gui:rewardWindow/twitch29/descText";
       
       public static const REWARDWINDOW_TWITCH29_BTNLABEL:String = "#ingame_gui:rewardWindow/twitch29/btnLabel";
+      
+      public static const REWARDWINDOW_TWITCH30_HEADERTEXT:String = "#ingame_gui:rewardWindow/twitch30/headerText";
+      
+      public static const REWARDWINDOW_TWITCH30_SUBHEADERTEXT:String = "#ingame_gui:rewardWindow/twitch30/subHeaderText";
+      
+      public static const REWARDWINDOW_TWITCH30_DESCTEXT:String = "#ingame_gui:rewardWindow/twitch30/descText";
+      
+      public static const REWARDWINDOW_TWITCH30_BTNLABEL:String = "#ingame_gui:rewardWindow/twitch30/btnLabel";
       
       public static const REWARDWINDOW_LOOTBOX_WINHEADERTEXT:String = "#ingame_gui:rewardWindow/lootbox/winHeaderText";
       

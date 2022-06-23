@@ -126,6 +126,10 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
     def maxHealth(self):
         return self.publicInfo.maxHealth
 
+    @property
+    def battleModifiers(self):
+        return self.guiSessionProvider.arenaVisitor.getArenaModifiers()
+
     def getBounds(self, partIdx):
         if self.appearance is not None:
             return self.appearance.getBounds(partIdx)

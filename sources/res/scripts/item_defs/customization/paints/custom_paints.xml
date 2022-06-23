@@ -2109,6 +2109,21 @@
 			</metallic>
 			<userString>#vehicle_customization:repaint/gamescom_2021</userString>
 		</paint>
+		<paint>
+			<id>327</id>
+			<texture>gui/maps/vehicles/repaints/custom_color_28.png</texture>
+			<color>58 55 71 255</color>
+			<gloss>
+				0.4
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.23
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/gamescom_2022</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
 		<usages>
 			<item>
 				<componentType>ALL</componentType>
@@ -3107,6 +3122,20 @@
 				<!--BW_String-->
 			</metallic>
 			<userString>#vehicle_customization:repaint/northern_warriors</userString>
+		</paint>
+		<paint>
+			<id>328</id>
+			<texture>gui/maps/vehicles/repaints/primer_marmot_01.png</texture>
+			<color>56 24 28 255</color>
+			<gloss>
+				0.6
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.3
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/eastern_warriors</userString>
 		</paint>
 		<usages>
 			<item>
@@ -4362,33 +4391,6 @@
 		</paint>
 	</itemGroup>
 	<itemGroup>
-		<name>Yandex June 2022</name>
-		<userString>#vehicle_customization:repaint/color_group_03</userString>
-		<season>ALL</season>
-		<historical>1</historical>
-		<priceGroup>paints 20g notInShop</priceGroup>
-		<vehicleFilter>
-			<exclude>
-				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
-			</exclude>
-		</vehicleFilter>
-		<paint>
-			<id>315</id>
-			<texture>gui/maps/vehicles/repaints/germany_color_03.png</texture>
-			<color>71 56 37 255</color>
-			<gloss>
-				0.509
-				<!--BW_String-->
-			</gloss>
-			<metallic>
-				0.25
-				<!--BW_String-->
-			</metallic>
-			<userString>#vehicle_customization:repaint/yandex_june_2022</userString>
-			<tags>hiddenInUI</tags>
-		</paint>
-	</itemGroup>
-	<itemGroup>
 		<name>CN Dragon Boat Festival</name>
 		<userString>#vehicle_customization:repaint/color_group_03</userString>
 		<season>ALL</season>
@@ -4429,5 +4431,283 @@
 			<userString>#vehicle_customization:repaint/cn_dragon_boat_festival_soaring</userString>
 			<tags>hiddenInUI</tags>
 		</paint>
+	</itemGroup>
+	<itemGroup>
+		<name>Yandex June 2022</name>
+		<userString>#vehicle_customization:repaint/color_group_03</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>paints 20g notInShop</priceGroup>
+		<vehicleFilter>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+		</vehicleFilter>
+		<paint>
+			<id>315</id>
+			<texture>gui/maps/vehicles/repaints/germany_color_03.png</texture>
+			<color>71 56 37 255</color>
+			<gloss>
+				0.509
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.25
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/yandex_june_2022</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
+	</itemGroup>
+	<itemGroup>
+		<name>Battle Pass 2022 DG</name>
+		<userString>#vehicle_customization:repaint/color_group_04</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>paints 20g notInShop</priceGroup>
+		<vehicleFilter>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+			<include>
+				<nations>ussr</nations>
+			</include>
+		</vehicleFilter>
+		<paint>
+			<id>316</id>
+			<texture>gui/maps/vehicles/repaints/japan_color_03.png</texture>
+			<color>39 45 23 255</color>
+			<gloss>
+				0.509
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.23
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/bp8_dg</userString>
+		</paint>
+		<usages>
+			<item>
+				<componentType>ALL</componentType>
+				<cost>1</cost>
+			</item>
+		</usages>
+	</itemGroup>
+	<itemGroup>
+		<name>Battle Pass 2022 UM</name>
+		<userString>#vehicle_customization:repaint/color_group_04</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>paints 20g notInShop</priceGroup>
+		<vehicleFilter>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+			<include>
+				<nations>germany</nations>
+			</include>
+		</vehicleFilter>
+		<paint>
+			<id>317</id>
+			<texture>gui/maps/vehicles/repaints/custom_color_23.png</texture>
+			<color>17 17 20 255</color>
+			<gloss>
+				0.63
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.235
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/bp8_um</userString>
+		</paint>
+		<usages>
+			<item>
+				<componentType>ALL</componentType>
+				<cost>1</cost>
+			</item>
+		</usages>
+	</itemGroup>
+	<itemGroup>
+		<name>Battle Pass 2022 O</name>
+		<userString>#vehicle_customization:repaint/color_group_04</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>paints 20g notInShop</priceGroup>
+		<vehicleFilter>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+			<include>
+				<nations>japan</nations>
+			</include>
+		</vehicleFilter>
+		<paint>
+			<id>318</id>
+			<texture>gui/maps/vehicles/repaints/france_color_05.png</texture>
+			<color>73 57 55 255</color>
+			<gloss>
+				0.509
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.095
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/bp8_o</userString>
+		</paint>
+		<usages>
+			<item>
+				<componentType>ALL</componentType>
+				<cost>1</cost>
+			</item>
+		</usages>
+	</itemGroup>
+	<itemGroup>
+		<name>Battle Pass 2022 BS</name>
+		<userString>#vehicle_customization:repaint/color_group_04</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>paints 20g notInShop</priceGroup>
+		<vehicleFilter>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+			<include>
+				<nations>france</nations>
+			</include>
+		</vehicleFilter>
+		<paint>
+			<id>319</id>
+			<texture>gui/maps/vehicles/repaints/custom_color_27.png</texture>
+			<color>20 20 20 255</color>
+			<gloss>
+				0.509
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.23
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/bp8_bs</userString>
+		</paint>
+		<usages>
+			<item>
+				<componentType>ALL</componentType>
+				<cost>1</cost>
+			</item>
+		</usages>
+	</itemGroup>
+	<itemGroup>
+		<name>CN WCL</name>
+		<userString>#vehicle_customization:repaint/color_group_03</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>paints 20g notInShop</priceGroup>
+		<vehicleFilter>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+		</vehicleFilter>
+		<paint>
+			<id>321</id>
+			<texture>gui/maps/vehicles/repaints/custom_color_23.png</texture>
+			<color>4 4 20 255</color>
+			<gloss>
+				0.509
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.23
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/cn_wcl_part</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
+		<paint>
+			<id>322</id>
+			<texture>gui/maps/vehicles/repaints/germany_base_color.png</texture>
+			<color>51 51 51 255</color>
+			<gloss>
+				0.6
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.38
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/cn_wcl_online</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
+		<paint>
+			<id>323</id>
+			<texture>gui/maps/vehicles/repaints/custom_color_10.png</texture>
+			<color>184 184 184 255</color>
+			<gloss>
+				0.509
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.23
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/cn_wcl_other</userString>
+			<tags>hiddenInUI</tags>
+		</paint>
+		<usages>
+			<item>
+				<componentType>ALL</componentType>
+				<cost>1</cost>
+			</item>
+		</usages>
+	</itemGroup>
+	<itemGroup>
+		<name>Oakwood</name>
+		<userString>#vehicle_customization:repaint/color_group_03</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>paints 20g notInShop</priceGroup>
+		<vehicleFilter>
+			<exclude>
+				<vehicles>china:Ch01_Type59_Gold germany:G114_Rheinmetall_Skorpian germany:G119_Panzer58_BF usa:A13_T34_hvy_BF ussr:R61_Object252_BF</vehicles>
+			</exclude>
+		</vehicleFilter>
+		<paint>
+			<id>325</id>
+			<texture>gui/maps/vehicles/repaints/czech_color_03.png</texture>
+			<color>209 187 155 255</color>
+			<gloss>
+				0.525
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.3
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/oakwood</userString>
+			<tags>hiddenInUI styleOnly</tags>
+		</paint>
+		<paint>
+			<id>326</id>
+			<texture>gui/maps/vehicles/repaints/custom_color_38.png</texture>
+			<color>79 49 40 255</color>
+			<gloss>
+				0.63
+				<!--BW_String-->
+			</gloss>
+			<metallic>
+				0.235
+				<!--BW_String-->
+			</metallic>
+			<userString>#vehicle_customization:repaint/oakwood</userString>
+			<tags>hiddenInUI styleOnly</tags>
+		</paint>
+		<usages>
+			<item>
+				<componentType>ALL</componentType>
+				<cost>1</cost>
+			</item>
+		</usages>
 	</itemGroup>
 </root>

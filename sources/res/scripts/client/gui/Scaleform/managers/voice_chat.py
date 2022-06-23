@@ -1,4 +1,5 @@
 from frameworks.wulf import WindowLayer
+from VOIP import getVOIPManager
 from messenger.proto.events import g_messengerEvents
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.shared.utils import getPlayerDatabaseID
@@ -30,6 +31,9 @@ class BaseVoiceChatManager(VoiceChatManagerMeta):
 
     def isVOIPEnabled(self):
         return self.bwProto.voipController.isVOIPEnabled()
+
+    def isVOIPAvailable(self):
+        return getVOIPManager().isChannelAvailable()
 
     def _populate(self):
         super(BaseVoiceChatManager, self)._populate()

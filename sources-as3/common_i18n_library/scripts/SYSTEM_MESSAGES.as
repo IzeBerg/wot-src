@@ -555,6 +555,14 @@ package
       
       public static const GAMESESSIONCONTROL_KOREA_NOTE:String = "#system_messages:gameSessionControl/korea/note";
       
+      public static const GAMESESSIONCONTROL_PARENTCONTROL_KICKTIME:String = "#system_messages:gameSessionControl/parentControl/kickTime";
+      
+      public static const GAMESESSIONCONTROL_PARENTCONTROL_SETTINGSCHANGED:String = "#system_messages:gameSessionControl/parentControl/settingsChanged";
+      
+      public static const GAMESESSIONCONTROL_PARENTCONTROL_TIMELIMIT:String = "#system_messages:gameSessionControl/parentControl/timeLimit";
+      
+      public static const GAMESESSIONCONTROL_PARENTCONTROL_NOTIMELIMIT:String = "#system_messages:gameSessionControl/parentControl/noTimeLimit";
+      
       public static const VIDEO_ERROR:String = "#system_messages:video/error";
       
       public static const SECURITYMESSAGE_POOR_PASS:String = "#system_messages:securityMessage/poor_pass";
@@ -2241,7 +2249,23 @@ package
       
       public static const RANKED_NOTIFICATION_YEARLB_NEGATIVE_BODY:String = "#system_messages:ranked/notification/yearLB/negative/body";
       
+      public static const EPICBATTLES_REWARDCHOICE_ERROR:String = "#system_messages:epicBattles/rewardChoice/error";
+      
       public static const EPICBATTLES_NOTIFICATION_NOTAVAILABLE:String = "#system_messages:epicBattles/notification/notAvailable";
+      
+      public static const EPICBATTLES_SEASONEND_TITLE:String = "#system_messages:epicBattles/seasonEnd/title";
+      
+      public static const EPICBATTLES_SEASONEND_TEXT:String = "#system_messages:epicBattles/seasonEnd/text";
+      
+      public static const EPICBATTLES_SEASONEND_REWARDS_CREWBOOK:String = "#system_messages:epicBattles/seasonEnd/rewards/crewBook";
+      
+      public static const EPICBATTLES_SEASONEND_REWARDS_EQUIPMENT:String = "#system_messages:epicBattles/seasonEnd/rewards/equipment";
+      
+      public static const EPICBATTLES_LEVELUP_TITLE:String = "#system_messages:epicBattles/levelUp/title";
+      
+      public static const EPICBATTLES_LEVELUP_BODY_LEVELCONGRATS:String = "#system_messages:epicBattles/levelUp/body/levelCongrats";
+      
+      public static const EPICBATTLES_LEVELUP_AWARDS:String = "#system_messages:epicBattles/levelUp/awards";
       
       public static const LOOTBOXES_OPEN_SERVER_ERROR:String = "#system_messages:lootboxes/open/server_error";
       
@@ -2377,9 +2401,13 @@ package
       
       public static const BATTLEPASSLEVELS_BUY_SERVER_ERROR:String = "#system_messages:battlePassLevels_buy/server_error";
       
-      public static const BATTLEPASS_SWITCH_STARTED_TITLE:String = "#system_messages:battlePass/switch_started/title";
+      public static const BATTLEPASS_SWITCH_STARTED_STYLE_TITLE:String = "#system_messages:battlePass/switch_started/style/title";
       
-      public static const BATTLEPASS_SWITCH_STARTED_BODY:String = "#system_messages:battlePass/switch_started/body";
+      public static const BATTLEPASS_SWITCH_STARTED_STYLE_BODY:String = "#system_messages:battlePass/switch_started/style/body";
+      
+      public static const BATTLEPASS_SWITCH_STARTED_TANKMAN_TITLE:String = "#system_messages:battlePass/switch_started/tankman/title";
+      
+      public static const BATTLEPASS_SWITCH_STARTED_TANKMAN_BODY:String = "#system_messages:battlePass/switch_started/tankman/body";
       
       public static const BATTLEPASS_SWITCH_PAUSE_BODY:String = "#system_messages:battlePass/switch_pause/body";
       
@@ -2589,13 +2617,27 @@ package
       
       public static const SSR_UNAVAILABLE:String = "#system_messages:ssr/unavailable";
       
-      public static const DRAGONBOAT_PAUSED:String = "#system_messages:dragonBoat/paused";
+      public static const PARENTCONTROL_TITLE:String = "#system_messages:parentControl/title";
       
-      public static const DRAGONBOAT_RESTORED:String = "#system_messages:dragonBoat/restored";
+      public static const PARENTCONTROL_MAINTEXT:String = "#system_messages:parentControl/mainText";
       
-      public static const DRAGONBOAT_STAGEAWARD_HEADER:String = "#system_messages:dragonBoat/stageAward/header";
+      public static const PARENTCONTROL_LINKTEXT:String = "#system_messages:parentControl/linkText";
       
-      public static const DRAGONBOAT_FINALAWARD_HEADER:String = "#system_messages:dragonBoat/finalAward/header";
+      public static const RESOURCEWELL_RESOURCESLOADINGERROR:String = "#system_messages:resourceWell/resourcesLoadingError";
+      
+      public static const RESOURCEWELL_RESOURCESRETURNERROR:String = "#system_messages:resourceWell/resourcesReturnError";
+      
+      public static const FUNRANDOM_NOTIFICATION_PRIMETIME_TITLE:String = "#system_messages:funRandom/notification/primeTime/title";
+      
+      public static const FUNRANDOM_NOTIFICATION_PRIMETIME:String = "#system_messages:funRandom/notification/primeTime";
+      
+      public static const FUNRANDOM_NOTIFICATION_AVAILABLE_TITLE:String = "#system_messages:funRandom/notification/available/title";
+      
+      public static const FUNRANDOM_NOTIFICATION_AVAILABLE:String = "#system_messages:funRandom/notification/available";
+      
+      public static const FUNRANDOM_NOTIFICATION_NOTSET_TITLE:String = "#system_messages:funRandom/notification/notSet/title";
+      
+      public static const FUNRANDOM_NOTIFICATION_NOTSET:String = "#system_messages:funRandom/notification/notSet";
        
       
       public function SYSTEM_MESSAGES()

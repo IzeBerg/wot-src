@@ -9,6 +9,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid "#PluralForms"
+msgstr ""
+"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && "
+"(n%100<10 || n%100>=20) ? 1 : 2);"
 
 msgid "additionalRewards/credits"
 msgstr "%(value)d кредитов"
@@ -91,6 +97,12 @@ msgstr "Тип техники"
 msgid "bots/title"
 msgstr "Добавление ботов"
 
+msgid "day"
+msgid_plural "days"
+msgstr[0] "%d день"
+msgstr[1] "%d дня"
+msgstr[2] "%d дней"
+
 msgid "dialogTemplates/button/accept"
 msgstr "Подтвердить"
 
@@ -171,6 +183,81 @@ msgstr "goto"
 
 msgid "editor/search"
 msgstr "search"
+
+msgid "gfViewer/content/chainDescription"
+msgstr "Chains:"
+
+msgid "gfViewer/content/createBlockTitle"
+msgstr "New preset:"
+
+msgid "gfViewer/content/editorTitle"
+msgstr "Transaction content:"
+
+msgid "gfViewer/content/invalidModelMessage"
+msgstr "Model is invalid"
+
+msgid "gfViewer/content/invalidViewMessage"
+msgstr "View is invalid"
+
+msgid "gfViewer/content/listBlockTitle"
+msgstr "Presets:"
+
+msgid "gfViewer/content/modelLabel"
+msgstr "Model:"
+
+msgid "gfViewer/content/presetDescription"
+msgstr "Preset:"
+
+msgid "gfViewer/content/presetLabel"
+msgstr "Preset Name:"
+
+msgid "gfViewer/content/transactionDescription"
+msgstr "Transactions:"
+
+msgid "gfViewer/content/transactionTitle"
+msgstr "Transaction name:"
+
+msgid "gfViewer/content/viewLabel"
+msgstr "View (R class):"
+
+msgid "gfViewer/controls/add"
+msgstr "Add"
+
+msgid "gfViewer/controls/addBase"
+msgstr "Add base"
+
+msgid "gfViewer/controls/addEmpty"
+msgstr "Add empty"
+
+msgid "gfViewer/controls/addTransaction"
+msgstr "Add transaction"
+
+msgid "gfViewer/controls/back"
+msgstr "Back"
+
+msgid "gfViewer/controls/cancel"
+msgstr "Cancel"
+
+msgid "gfViewer/controls/change"
+msgstr "Change"
+
+msgid "gfViewer/controls/create"
+msgstr "Create"
+
+msgid "gfViewer/controls/createChain"
+msgstr "Create chain"
+
+msgid "gfViewer/controls/load"
+msgstr "Load"
+
+msgid "gfViewer/controls/remove"
+msgstr "Remove"
+
+msgid "gfViewer/controls/save"
+msgstr "Save"
+
+msgid "gfViewer/controls/saveAsNew"
+msgstr "Save as new"
 
 msgid "messenger/contacts/addGroup/body"
 msgstr "Нажмите, чтобы создать группу в списке контактов."
@@ -255,6 +342,12 @@ msgstr "гусеница"
 
 msgid "piercingDebugPanel/vehPart/wheels"
 msgstr "колесо"
+
+msgid "premium/buying/success"
+msgid_plural "plural/premium/buying/success"
+msgstr[0] "Премиум аккаунт куплен на %(period)s день. Потрачено %(money)s."
+msgstr[1] "Премиум аккаунт куплен на %(period)s дня. Потрачено %(money)s."
+msgstr[2] "Премиум аккаунт куплен на %(period)s дней. Потрачено %(money)s."
 
 msgid "wulf/buttons/buy"
 msgstr "Buy"

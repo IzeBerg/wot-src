@@ -43,6 +43,8 @@ package
       
       public static const INVITES_PREBATTLE_ALREADYJOINED_MAPBOX:String = "#invites:invites/prebattle/alreadyJoined/MAPBOX";
       
+      public static const INVITES_PREBATTLE_ALREADYJOINED_FUN_RANDOM:String = "#invites:invites/prebattle/alreadyJoined/FUN_RANDOM";
+      
       public static const INVITES_TEXT_CREATORNAME:String = "#invites:invites/text/creatorName";
       
       public static const INVITES_TEXT_SQUAD:String = "#invites:invites/text/SQUAD";
@@ -72,6 +74,8 @@ package
       public static const INVITES_TEXT_STRONGHOLD:String = "#invites:invites/text/STRONGHOLD";
       
       public static const INVITES_TEXT_MAPBOX:String = "#invites:invites/text/MAPBOX";
+      
+      public static const INVITES_TEXT_FUN_RANDOM:String = "#invites:invites/text/FUN_RANDOM";
       
       public static const INVITES_TEXT_FORT_OFFENCE:String = "#invites:invites/text/fort/offence";
       
@@ -223,7 +227,17 @@ package
       
       public static const INVITES_NOTE_CHANGE_AND_LEAVE_QUEUE_MAPBOX:String = "#invites:invites/note/change_and_leave/QUEUE_MAPBOX";
       
+      public static const INVITES_NOTE_LEAVE_PREBATTLE_FUN_RANDOM:String = "#invites:invites/note/leave/PREBATTLE_FUN_RANDOM";
+      
+      public static const INVITES_NOTE_CHANGE_AND_LEAVE_PREBATTLE_FUN_RANDOM:String = "#invites:invites/note/change_and_leave/PREBATTLE_FUN_RANDOM";
+      
+      public static const INVITES_NOTE_LEAVE_QUEUE_FUN_RANDOM:String = "#invites:invites/note/leave/QUEUE_FUN_RANDOM";
+      
+      public static const INVITES_NOTE_CHANGE_AND_LEAVE_QUEUE_FUN_RANDOM:String = "#invites:invites/note/change_and_leave/QUEUE_FUN_RANDOM";
+      
       public static const INVITES_WARNING_ANONYMIZED:String = "#invites:invites/warning/anonymized";
+      
+      public static const INVITES_TOOLTIP_FUNRANDOM_NOVEHICLES:String = "#invites:invites/tooltip/funRandom/noVehicles";
       
       public static const GUI_TITLES_RECEIVEDINVITES:String = "#invites:gui/titles/receivedInvites";
       

@@ -19,9 +19,9 @@ package net.wg.gui.bootcamp.introVideoPage.containers
       
       private static const TXREWARDS_POS_Y:int = 32;
       
-      private static const REWARDS_POS_Y_SMALL:int = 69;
+      private static const REWARDS_POS_Y_SMALL:int = 70;
       
-      private static const REWARDS_POS_Y:int = 87;
+      private static const REWARDS_POS_Y:int = 88;
       
       private static const BG_HEIGHT_SMALL:int = 222;
       
@@ -75,7 +75,7 @@ package net.wg.gui.bootcamp.introVideoPage.containers
       {
          this.txtRewards.y = !!param1 ? Number(TXREWARDS_POS_Y_SMALL) : Number(TXREWARDS_POS_Y);
          this.rewards.y = !!param1 ? Number(REWARDS_POS_Y_SMALL) : Number(REWARDS_POS_Y);
-         height = this.background.height = !!param1 ? Number(BG_HEIGHT_SMALL) : Number(BG_HEIGHT);
+         this.background.height = !!param1 ? Number(BG_HEIGHT_SMALL) : Number(BG_HEIGHT);
       }
    }
 }

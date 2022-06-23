@@ -1,4 +1,4 @@
-import imghdr, logging
+import imghdr, logging, weakref
 from collections import namedtuple
 import math, BigWorld, math_utils, items
 from debug_utils import LOG_ERROR, LOG_WARNING
@@ -82,7 +82,7 @@ class Insignia(object):
 
 class ModelStickers(object):
 
-    def __init__(self, componentIdx, stickerPacks, vDesc, emblemSlots):
+    def __init__(self, spaceID, componentIdx, stickerPacks, vDesc, emblemSlots):
         self.__componentIdx = componentIdx
         self.__stickerPacks = stickerPacks
         for slot in emblemSlots:
@@ -95,7 +95,7 @@ class ModelStickers(object):
         self.__toPartRootMatrix = math_utils.createIdentityMatrix()
         self.__parentNode = None
         self.__isDamaged = False
-        self.__stickerModel = BigWorld.WGStickerModel()
+        self.__stickerModel = BigWorld.WGStickerModel(spaceID)
         self.__stickerModel.setLODDistance(vDesc.type.emblemsLodDist)
         return
 
@@ -433,7 +433,7 @@ class ClanStickerPack(StickerPack):
                 LOG_ERROR('Failed to attach stickers to the vehicle - server returned incorrect url format: %s' % clanEmblems['url_template'])
                 return
 
-            clanCallback = stricted_loading.makeCallbackWeak(self.__onClanEmblemLoaded, componentIdx=componentIdx, stickerModel=stickerModel, isDamaged=isDamaged)
+            clanCallback = stricted_loading.makeCallbackWeak(self.__onClanEmblemLoaded, componentIdx=componentIdx, stickerModel=weakref.proxy(stickerModel), isDamaged=isDamaged)
             fileCache.get(url, clanCallback)
             return
 
@@ -480,15 +480,20 @@ class InsigniaStickerPack(StickerPack):
         params = self._data[componentIdx]
         slotIdx = len(params)
         if componentIdx in Insignia.Indexes.ALL:
-            container = self._outfit.getContainer(TankPartIndexes.GUN)
-            slot = container.slotFor(GUI_ITEM_TYPE.INSIGNIA)
-            intCD = slot.getItemCD(slotIdx)
-            if intCD:
-                item = getItemByCompactDescr(intCD)
-                stickerParam = self._convertToInsignia(item)
-                self._useCustomInsignia = True
+            if IS_EDITOR:
+                defaultParams = _TextureParams('', '', False)
+                item = items.vehicles.g_cache.customization20().insignias.get(componentSlot.edResourceId)
+                stickerParam = defaultParams if item is None else self._convertToInsignia(item)
             else:
-                stickerParam = self._getDefaultParams()
+                container = self._outfit.getContainer(TankPartIndexes.GUN)
+                slot = container.slotFor(GUI_ITEM_TYPE.INSIGNIA)
+                intCD = slot.getItemCD(slotIdx)
+                if intCD:
+                    item = getItemByCompactDescr(intCD)
+                    stickerParam = self._convertToInsignia(item)
+                    self._useCustomInsignia = True
+                else:
+                    stickerParam = self._getDefaultParams()
         else:
             container = self._outfit.getContainer(componentIdx)
             slot = container.slotFor(GUI_ITEM_TYPE.INSIGNIA)
@@ -625,9 +630,8 @@ class VehicleStickers(object):
             componentStickers.stickers.setAlpha(alpha)
 
     show = property(lambda self: self.__show, __setShow)
-    __INSIGNIA_NODE_NAME = 'G'
 
-    def __init__(self, vehicleDesc, insigniaRank=0, outfit=None):
+    def __init__(self, spaceID, vehicleDesc, insigniaRank=0, outfit=None):
         self.__defaultAlpha = vehicleDesc.type.emblemsAlpha
         self.__show = True
         self.__animateGunInsignia = vehicleDesc.gun.animateEmblemSlots
@@ -657,7 +661,7 @@ class VehicleStickers(object):
                 componentIdx = Insignia.Indexes.DUAL_RIGHT
             else:
                 componentIdx = TankPartNames.getIdx(componentName)
-            modelStickers = ModelStickers(componentIdx, self.__stickerPacks, vehicleDesc, emblemSlots)
+            modelStickers = ModelStickers(spaceID, componentIdx, self.__stickerPacks, vehicleDesc, emblemSlots)
             self.__stickers[componentName] = ComponentStickers(modelStickers, {}, 1.0)
 
         return
@@ -741,7 +745,7 @@ class VehicleStickers(object):
          (
           TankPartNames.GUN if showEmblemsOnGun else TankPartNames.TURRET, vehicleDesc.turret.emblemSlots),
          (
-          TankPartNames.TURRET if showEmblemsOnGun else TankPartNames.GUN, []))
+          TankPartNames.TURRET if showEmblemsOnGun else TankPartNames.GUN, [ slot for slot in vehicleDesc.gun.emblemSlots if slot.type != 'insigniaOnGun' ]))
         gunSlots = cls._createGunSlots(vehicleDesc, outfit)
         if gunSlots:
             componentSlots += gunSlots

@@ -758,6 +758,9 @@ msgstr "«Топография»"
 msgid "bonusType/4"
 msgstr "Специальный бой"
 
+msgid "bonusType/42"
+msgstr "«Название-заглушка»"
+
 msgid "bonusType/5"
 msgstr "Специальный бой"
 
@@ -1134,6 +1137,9 @@ msgstr "Создать заметку"
 
 msgid "contextMenu/createEventSquad"
 msgstr "Создать ивентный взвод"
+
+msgid "contextMenu/createFunRandomSquad"
+msgstr "Название-заглушка взвод"
 
 msgid "contextMenu/createMapboxSquad"
 msgstr "Разведка боем: создать взвод"
@@ -2836,6 +2842,12 @@ msgstr "Укрепрайон: сражения"
 msgid "headerButtons/battle/types/fortLeave"
 msgstr "Укрепрайон: сражения"
 
+msgid "headerButtons/battle/types/funRandom"
+msgstr "Название-заглушка"
+
+msgid "headerButtons/battle/types/funRandomSquad"
+msgstr "Название-заглушка взвод"
+
 msgid "headerButtons/battle/types/historicalBattles"
 msgstr "Исторический бой"
 
@@ -3040,7 +3052,7 @@ msgid "headerButtons/doLabel/premium"
 msgstr "Продлить"
 
 msgid "headerButtons/fightBtn/tooltip/battleRoyaleDisabled/body"
-msgstr "На текущем сервере комендантский час."
+msgstr "На этом сервере режим прекращения огня."
 
 msgid "headerButtons/fightBtn/tooltip/battleRoyaleDisabled/header"
 msgstr "Выход в бой недоступен"
@@ -3114,6 +3126,26 @@ msgstr "Выберите машину %(level)s уровня."
 
 msgid "headerButtons/fightBtn/tooltip/falloutVehMin/header"
 msgstr "Выход в бой недоступен"
+
+msgid "headerButtons/fightBtn/tooltip/funRandomDisabled/body"
+msgstr ""
+"На этом сервере идёт режим прекращения огня. Попробуйте перейти на другой "
+"сервер."
+
+msgid "headerButtons/fightBtn/tooltip/funRandomDisabled/header"
+msgstr "Выход в бой невозможен"
+
+msgid "headerButtons/fightBtn/tooltip/funRandomNotSet/body"
+msgstr "На выбранном сервере режим недоступен."
+
+msgid "headerButtons/fightBtn/tooltip/funRandomNotSet/header"
+msgstr "Выход в бой невозможен"
+
+msgid "headerButtons/fightBtn/tooltip/funRandomVehLimits/body"
+msgstr "Выберите другую машину."
+
+msgid "headerButtons/fightBtn/tooltip/funRandomVehLimits/header"
+msgstr "Машина не подходит для режима"
 
 msgid "headerButtons/fightBtn/tooltip/rankedDisabled/body"
 msgstr "На этом сервере комендантский час."
@@ -3610,6 +3642,9 @@ msgstr "Искусство стратегии"
 msgid "loading/battleTypes/28"
 msgstr "Основы стратегии"
 
+msgid "loading/battleTypes/29"
+msgstr "Название-заглушка: ПОДРЕЖИМ-1"
+
 msgid "loading/battleTypes/4"
 msgstr "Боевое обучение"
 
@@ -3690,6 +3725,9 @@ msgid "loading/battleTypes/desc/26"
 msgstr " "
 
 msgid "loading/battleTypes/desc/28"
+msgstr " "
+
+msgid "loading/battleTypes/desc/29"
 msgstr " "
 
 msgid "loading/battleTypes/desc/4"
@@ -4795,7 +4833,7 @@ msgid "price/spent"
 msgstr "Потрачено %s"
 
 msgid "primeTime/server"
-msgstr "Доступные для игры серверы: %(server)s."
+msgstr "Доступный для игры сервер: %(server)s."
 
 msgid "primeTime/servers"
 msgstr "Доступные для входа серверы:"
@@ -5669,6 +5707,9 @@ msgstr "До сброса"
 msgid "skillDropWindow/cancelBtn"
 msgstr "Отменить"
 
+msgid "skillDropWindow/direction"
+msgstr "Бланки переподготовки"
+
 msgid "skillDropWindow/freeDropLabel"
 msgstr ""
 "Навыки и умения, уровень владения которыми составляет %(percent)s, вы можете"
@@ -5677,8 +5718,14 @@ msgstr ""
 msgid "skillDropWindow/freeDropPercent"
 msgstr "до 1%"
 
+msgid "skillDropWindow/inStorage"
+msgstr "На Складе:"
+
 msgid "skillDropWindow/multiplier"
-msgstr "Процент сохранения"
+msgstr "Обучение"
+
+msgid "skillDropWindow/notAvailable"
+msgstr "Нет в наличии"
 
 msgid "skillDropWindow/study/academy"
 msgstr "Максимальный"
@@ -5690,7 +5737,13 @@ msgid "skillDropWindow/study/scool"
 msgstr "Высокий"
 
 msgid "skillDropWindow/title"
-msgstr "Сброс умений и навыков"
+msgstr "Сброс навыков и умений"
+
+msgid "skillDropWindow/tooltip/visibleDisabled"
+msgstr "Временно недоступно по техническим причинам."
+
+msgid "skillDropWindow/training"
+msgstr "Обучение"
 
 msgid "specPrebetles/listTitle"
 msgstr "Список командных комнат"
@@ -6463,6 +6516,9 @@ msgstr "Обучить до уровня:"
 
 msgid "tankmanTrainingWindow/academy"
 msgstr "Танковая академия"
+
+msgid "tankmanTrainingWindow/blank"
+msgstr "Переподготовка"
 
 msgid "tankmanTrainingWindow/closeBtn"
 msgstr "Отменить"

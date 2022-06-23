@@ -604,7 +604,7 @@
 		</value>
 	</setting>
 	<setting>
-		<name>miniclient</name>
+		<name>baseUrls</name>
 		<type>dict</type>
 		<value>
 			<item>
@@ -1172,22 +1172,22 @@
 		<type>dict</type>
 		<value>
 			<item>
-				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/7BPContentPage/
+				/$LANGUAGE_CODE/promocontent/8BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/7BPContentPage#bp7extrachapter/
+				/$LANGUAGE_CODE/promocontent/8BPContentPage#bp7extrachapter/
 				<name>extraInfoPage</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/7BPIntroVideo/
+				/$LANGUAGE_CODE/promocontent/8BPIntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/7BPExtraChapter/
+				/$LANGUAGE_CODE/promocontent/8BPExtraChapter/
 				<name>extraIntroVideo</name>
 				<type>url</type>
 			</item>
@@ -1195,10 +1195,6 @@
 				<name>chaptersOrder</name>
 				<type>list</type>
 				<value>
-					<item>
-						<type>int</type>
-						<value>2</value>
-					</item>
 					<item>
 						<type>int</type>
 						<value>1</value>
@@ -1209,7 +1205,25 @@
 					</item>
 					<item>
 						<type>int</type>
+						<value>2</value>
+					</item>
+					<item>
+						<type>int</type>
 						<value>4</value>
+					</item>
+				</value>
+			</item>
+			<item>
+				<name>introSlides</name>
+				<type>list</type>
+				<value>
+					<item>
+						<type>string</type>
+						<value>styles</value>
+					</item>
+					<item>
+						<type>string</type>
+						<value>tanks</value>
 					</item>
 				</value>
 			</item>
@@ -1918,17 +1932,54 @@
 		</value>
 	</setting>
 	<setting>
-		<name>dragonBoat</name>
-		<type>dict</type>
+		<name>parentControlHelpURL</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				$PARAMS(registration/)
-				<name>registration</name>
+				https://worldoftanks.eu/en/content/guide/age-protection-update/
+				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				$PARAMS(rewards/)
-				<name>rewards</name>
+				https://worldoftanks.eu/en/content/guide/age-protection-update/
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://worldoftanks.com/en/content/guide/general/
+				<name>NA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://worldoftanks.asia/en/content/guide/general/
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://wotgame.cn/zh-cn/content/guide/
+				<name>CN</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://worldoftanks.ru/ru/content/guide/general/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>resourceWell</name>
+		<type>dict</type>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/ResourceWellIntroVideo/
+				<name>introVideoUrl</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/ResourceWellContentPage/
+				<name>infoPage</name>
 				<type>url</type>
 			</item>
 		</value>

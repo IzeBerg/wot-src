@@ -14,6 +14,10 @@ class AwardsVehicleForChooseTooltipViewModel(ViewModel):
     def setVehiclesList(self, value):
         self._setArray(0, value)
 
+    @staticmethod
+    def getVehiclesListType():
+        return VehicleInfoModel
+
     def _initialize(self):
         super(AwardsVehicleForChooseTooltipViewModel, self)._initialize()
         self._addArrayProperty('vehiclesList', Array())

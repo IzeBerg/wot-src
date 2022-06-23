@@ -15,16 +15,24 @@ class RewardReason(Enum):
 class BattlePassAwardsViewModel(CommonViewModel):
     __slots__ = ('onBuyClick', )
 
-    def __init__(self, properties=14, commands=2):
+    def __init__(self, properties=15, commands=2):
         super(BattlePassAwardsViewModel, self).__init__(properties=properties, commands=commands)
 
     @property
     def mainRewards(self):
         return self._getViewModel(4)
 
+    @staticmethod
+    def getMainRewardsType():
+        return RewardItemModel
+
     @property
     def additionalRewards(self):
         return self._getViewModel(5)
+
+    @staticmethod
+    def getAdditionalRewardsType():
+        return RewardItemModel
 
     def getChapterID(self):
         return self._getNumber(6)
@@ -68,11 +76,21 @@ class BattlePassAwardsViewModel(CommonViewModel):
     def setWideRewardsIDs(self, value):
         self._setArray(12, value)
 
+    @staticmethod
+    def getWideRewardsIDsType():
+        return int
+
     def getIsExtra(self):
         return self._getBool(13)
 
     def setIsExtra(self, value):
         self._setBool(13, value)
+
+    def getFinalReward(self):
+        return self._getString(14)
+
+    def setFinalReward(self, value):
+        self._setString(14, value)
 
     def _initialize(self):
         super(BattlePassAwardsViewModel, self)._initialize()
@@ -86,4 +104,5 @@ class BattlePassAwardsViewModel(CommonViewModel):
         self._addBoolProperty('seasonStopped', False)
         self._addArrayProperty('wideRewardsIDs', Array())
         self._addBoolProperty('isExtra', False)
+        self._addStringProperty('finalReward', '')
         self.onBuyClick = self._addCommand('onBuyClick')

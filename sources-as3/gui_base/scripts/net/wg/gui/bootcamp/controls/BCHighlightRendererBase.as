@@ -29,6 +29,10 @@ package net.wg.gui.bootcamp.controls
          throw new AbstractException("setProperties" + Errors.ABSTRACT_INVOKE);
       }
       
+      public function setPosition(param1:Number, param2:Number) : void
+      {
+      }
+      
       protected function onDispose() : void
       {
       }

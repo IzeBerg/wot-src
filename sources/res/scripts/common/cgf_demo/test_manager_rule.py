@@ -3,6 +3,7 @@ from cgf_demo.demo_category import DEMO_CATEGORY
 from cgf_demo.test_bridge import TestBridgeManager
 from cgf_demo.test_movers import TestAxisRotatorManager
 from cgf_demo.test_triggers import TestTriggersManager, TestComponentCreationManager
+from cgf_demo.test_edge_drawer import TestEdgeDrawerComponentManager
 import logging
 _logger = logging.getLogger(__name__)
 
@@ -31,4 +32,9 @@ class TestMapArenaManagerRule(Rule):
     @registerManager(TestComponentCreationManager)
     def registerTestComponentCreationManager(self):
         _logger.debug('TestComponentCreationManager Registrator')
+        return
+
+    @registerManager(TestEdgeDrawerComponentManager)
+    def registerEdgeDrawerComponentManager(self):
+        _logger.debug('TestEdgeDrawerComponentManager Registrator')
         return

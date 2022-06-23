@@ -1,4 +1,6 @@
 import copy, typing
+from helpers import dependency
+from constants import SwitchState
 from account_helpers import AccountSettings
 from adisp import process
 from gui import DialogsInterface
@@ -16,6 +18,7 @@ from gui.shared.gui_items import GUI_ITEM_TYPE
 from gui.shared.utils.functions import makeTooltip
 from gui.shared.utils.requesters.ItemsRequester import REQ_CRITERIA
 from items import UNDEFINED_ITEM_CD
+from skeletons.gui.lobby_context import ILobbyContext
 if typing.TYPE_CHECKING:
     from typing import Dict, Union, Callable
 
@@ -169,6 +172,7 @@ class FiltrableInventoryCategoryByTypeTabView(ItemsWithTypeFilterTabViewMeta):
 
 
 class FiltrableRegularCategoryByTypeTabView(FiltrableInventoryCategoryByTypeTabView):
+    _lobbyContext = dependency.descriptor(ILobbyContext)
 
     def _getItemList(self):
         criteria = self._getRequestCriteria(self._invVehicles)
@@ -176,6 +180,10 @@ class FiltrableRegularCategoryByTypeTabView(FiltrableInventoryCategoryByTypeTabV
         for itemType in self._getItemTypeIDs():
             if itemType == GUI_ITEM_TYPE.DEMOUNT_KIT:
                 items.update(self._goodiesCache.getDemountKits(REQ_CRITERIA.DEMOUNT_KIT.IN_ACCOUNT | REQ_CRITERIA.DEMOUNT_KIT.IS_ENABLED))
+            elif itemType == GUI_ITEM_TYPE.RECERTIFICATION_FORM:
+                if SwitchState.DISABLED.value == self._lobbyContext.getServerSettings().recertificationFormState():
+                    continue
+                items.update(self._goodiesCache.getRecertificationForms(REQ_CRITERIA.RECERTIFICATION_FORM.IN_ACCOUNT | REQ_CRITERIA.RECERTIFICATION_FORM.IS_ENABLED))
             else:
                 items.update(self._itemsCache.items.getItems(itemType, criteria, nationID=None))
 

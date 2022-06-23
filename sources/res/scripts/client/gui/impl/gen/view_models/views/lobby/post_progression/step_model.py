@@ -25,6 +25,10 @@ class StepModel(BaseStepModel):
     def restrictions(self):
         return self._getViewModel(2)
 
+    @staticmethod
+    def getRestrictionsType():
+        return RestrictionsModel
+
     def getIsDisabled(self):
         return self._getBool(3)
 

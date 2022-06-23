@@ -1,8 +1,11 @@
 import typing
 from gui.impl import backport
 from gui.impl.gen import R
-from gui.impl.lobby.battle_pass.tooltips.battle_pass_upgrade_style_tooltip_view import BattlePassUpgradeStyleTooltipView
 from gui.impl.lobby.battle_pass.tooltips.battle_pass_coin_tooltip_view import BattlePassCoinTooltipView
+from gui.impl.lobby.battle_pass.tooltips.battle_pass_lock_icon_tooltip_view import BattlePassLockIconTooltipView
+from gui.impl.lobby.battle_pass.tooltips.battle_pass_points_view import BattlePassPointsTooltip
+from gui.impl.lobby.battle_pass.tooltips.battle_pass_quests_chain_tooltip_view import BattlePassQuestsChainTooltipView
+from gui.impl.lobby.battle_pass.tooltips.battle_pass_upgrade_style_tooltip_view import BattlePassUpgradeStyleTooltipView
 if typing.TYPE_CHECKING:
     from gui.impl.backport import TooltipData
 
@@ -33,14 +36,22 @@ def createTooltipContentDecorator():
     def decorator(func):
 
         def wrapper(self, event, contentID):
+            tooltipData = self.getTooltipData(event)
             if contentID == R.views.lobby.battle_pass.tooltips.BattlePassUpgradeStyleTooltipView():
-                tooltipData = self.getTooltipData(event)
                 if tooltipData is None:
                     return
                 return BattlePassUpgradeStyleTooltipView(*tooltipData.specialArgs)
             else:
+                if contentID == R.views.lobby.battle_pass.tooltips.BattlePassQuestsChainTooltipView():
+                    if tooltipData is None:
+                        return
+                    return BattlePassQuestsChainTooltipView(*tooltipData.specialArgs)
                 if contentID == R.views.lobby.battle_pass.tooltips.BattlePassCoinTooltipView():
                     return BattlePassCoinTooltipView()
+                if contentID == R.views.lobby.battle_pass.tooltips.BattlePassPointsView():
+                    return BattlePassPointsTooltip()
+                if contentID == R.views.lobby.battle_pass.tooltips.BattlePassLockIconTooltipView():
+                    return BattlePassLockIconTooltipView()
                 return func(self, event, contentID)
 
         return wrapper

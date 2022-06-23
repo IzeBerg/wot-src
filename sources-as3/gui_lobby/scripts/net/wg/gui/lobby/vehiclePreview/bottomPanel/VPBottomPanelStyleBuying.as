@@ -41,14 +41,9 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
          return HEIGHT;
       }
       
-      override public function set y(param1:Number) : void
+      public function getOffsetY() : int
       {
-         super.y = param1 + OFFSET_Y;
-      }
-      
-      override public function get y() : Number
-      {
-         return super.y - OFFSET_Y;
+         return OFFSET_Y;
       }
    }
 }

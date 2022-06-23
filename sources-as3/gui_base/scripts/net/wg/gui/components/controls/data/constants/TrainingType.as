@@ -8,6 +8,8 @@ package net.wg.gui.components.controls.data.constants
       public static const SCHOOL:String = "scool";
       
       public static const ACADEMY:String = "academy";
+      
+      public static const BLANK:String = "blank";
        
       
       public function TrainingType()

@@ -60,6 +60,10 @@ package net.wg.gui.bootcamp
       
       private var _viewsCache:Dictionary;
       
+      private var _w:Number = 0;
+      
+      private var _h:Number = 0;
+      
       private var _currentComponentSearching:String;
       
       private var _iterationTime:int = 0;
@@ -124,6 +128,8 @@ package net.wg.gui.bootcamp
       override public function updateStage(param1:Number, param2:Number) : void
       {
          var _loc3_:* = null;
+         this._w = param1;
+         this._h = param2;
          for(_loc3_ in this._foundComponents)
          {
             this.updateComponentPosition(this._foundComponents[_loc3_],_loc3_);
@@ -423,6 +429,7 @@ package net.wg.gui.bootcamp
          _loc6_.x = _loc5_.x >> 0;
          _loc6_.y = _loc5_.y >> 0;
          _loc6_.setProperties(_loc5_.width,_loc5_.height,!_loc3_.hideBorder);
+         _loc6_.setPosition(this._w,this._h);
          if(_loc4_ && _loc6_.parent == null)
          {
             _loc4_.addChild(_loc6_);

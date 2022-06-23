@@ -38,6 +38,9 @@ class BattlePassViewsHolderComponent(InjectComponentAdaptor, MissionsBattlePassV
         self.__isIntroVideoShown = False
         self.__isIntroVideoIsShowing = False
 
+    def finalize(self):
+        self._dispose()
+
     @nextTick
     def updateState(self, *args, **kwargs):
         self.__setDummyVisible(self.__battlePassController.isPaused())
@@ -47,7 +50,8 @@ class BattlePassViewsHolderComponent(InjectComponentAdaptor, MissionsBattlePassV
             layoutID = self.__getActualViewImplLayoutID(chapterID)
         if not self.__needReload(layoutID):
             return
-        self.__showIntroVideoIfNeeded()
+        if self.__battlePassController.isActive():
+            self.__showIntroVideoIfNeeded()
         self._destroyInjected()
         self._createInjectView(layoutID, chapterID)
 

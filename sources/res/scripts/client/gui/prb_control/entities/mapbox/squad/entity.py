@@ -128,8 +128,9 @@ class MapboxSquadEntity(SquadEntity):
 
     def _vehicleStateCondition(self, v):
         if self._isUseSPGValidateRule and v.type == VEHICLE_CLASS_NAME.SPG:
-            return self.__restrictedSPGDataProvider.isVehcleOfClassAvailable()
-        return super(MapboxSquadEntity, self)._vehicleStateCondition(v)
+            return (self.__restrictedSPGDataProvider.isVehcleOfClassAvailable(), None)
+        else:
+            return super(MapboxSquadEntity, self)._vehicleStateCondition(v)
 
     def _onServerSettingChanged(self, *args, **kwargs):
         self.invalidateVehicleStates()

@@ -4180,7 +4180,7 @@
 		<tags>artillery</tags>
 	</artillery_shell_epic_level1>
 	<artillery_shell_epic_level2>
-		<id>257</id>
+		<id>258</id>
 		<userString>#germany_vehicles:artillery_shell</userString>
 		<icon>he_spg</icon>
 		<price>1170</price>
@@ -4201,48 +4201,6 @@
 		<tags>artillery</tags>
 	</artillery_shell_epic_level2>
 	<artillery_shell_epic_level3>
-		<id>258</id>
-		<userString>#germany_vehicles:artillery_shell</userString>
-		<icon>he_spg</icon>
-		<price>1170</price>
-		<notInShop>true</notInShop>
-		<kind>HIGH_EXPLOSIVE</kind>
-		<caliber>150</caliber>
-		<explosionRadius>
-			5.0
-			<!--BW_String-->
-		</explosionRadius>
-		<isTracer>true</isTracer>
-		<isForceTracer>true</isForceTracer>
-		<effects>epicArtilleryStrike</effects>
-		<damage>
-			<armor>300</armor>
-			<devices>80</devices>
-		</damage>
-		<tags>artillery</tags>
-	</artillery_shell_epic_level3>
-	<artillery_shell_epic_level4>
-		<id>259</id>
-		<userString>#germany_vehicles:artillery_shell</userString>
-		<icon>he_spg</icon>
-		<price>1170</price>
-		<notInShop>true</notInShop>
-		<kind>HIGH_EXPLOSIVE</kind>
-		<caliber>150</caliber>
-		<explosionRadius>
-			5.0
-			<!--BW_String-->
-		</explosionRadius>
-		<isTracer>true</isTracer>
-		<isForceTracer>true</isForceTracer>
-		<effects>epicArtilleryStrike</effects>
-		<damage>
-			<armor>300</armor>
-			<devices>80</devices>
-		</damage>
-		<tags>artillery</tags>
-	</artillery_shell_epic_level4>
-	<artillery_shell_epic_level5>
 		<id>260</id>
 		<userString>#germany_vehicles:artillery_shell</userString>
 		<icon>he_spg</icon>
@@ -4262,7 +4220,7 @@
 			<devices>80</devices>
 		</damage>
 		<tags>artillery</tags>
-	</artillery_shell_epic_level5>
+	</artillery_shell_epic_level3>
 	<bomber_shell_epic_level1>
 		<id>261</id>
 		<userString>#germany_vehicles:bomber_shell_epic_level1</userString>
@@ -4302,41 +4260,6 @@
 		<tags>bomber</tags>
 	</bomber_shell_epic_level1>
 	<bomber_shell_epic_level2>
-		<id>262</id>
-		<userString>#germany_vehicles:bomber_shell</userString>
-		<icon>he_spg_stun</icon>
-		<price>1170</price>
-		<notInShop>true</notInShop>
-		<kind>HIGH_EXPLOSIVE</kind>
-		<caliber>100</caliber>
-		<explosionRadius>5</explosionRadius>
-		<hasStun>true</hasStun>
-		<stunDuration>20</stunDuration>
-		<guaranteedStunDuration>
-			0.5
-			<!--BW_String-->
-		</guaranteedStunDuration>
-		<damageDurationCoeff>
-			0.75
-			<!--BW_String-->
-		</damageDurationCoeff>
-		<isTracer>true</isTracer>
-		<effects>epicAirbombStrike</effects>
-		<damage>
-			<armor>140</armor>
-			<devices>150</devices>
-		</damage>
-		<explosionDamageFactor>
-			1.0
-			<!--BW_String-->
-		</explosionDamageFactor>
-		<explosionEdgeDamageFactor>
-			1.0
-			<!--BW_String-->
-		</explosionEdgeDamageFactor>
-		<tags>bomber</tags>
-	</bomber_shell_epic_level2>
-	<bomber_shell_epic_level3>
 		<id>263</id>
 		<userString>#germany_vehicles:bomber_shell</userString>
 		<icon>he_spg_stun</icon>
@@ -4373,46 +4296,8 @@
 			<!--BW_String-->
 		</explosionEdgeDamageFactor>
 		<tags>bomber</tags>
-	</bomber_shell_epic_level3>
-	<bomber_shell_epic_level4>
-		<id>264</id>
-		<userString>#germany_vehicles:bomber_shell</userString>
-		<icon>he_spg_stun</icon>
-		<price>1170</price>
-		<notInShop>true</notInShop>
-		<kind>HIGH_EXPLOSIVE</kind>
-		<caliber>100</caliber>
-		<explosionRadius>
-			1.5
-			<!--BW_String-->
-		</explosionRadius>
-		<hasStun>true</hasStun>
-		<stunDuration>24</stunDuration>
-		<guaranteedStunDuration>
-			0.5
-			<!--BW_String-->
-		</guaranteedStunDuration>
-		<damageDurationCoeff>
-			0.75
-			<!--BW_String-->
-		</damageDurationCoeff>
-		<isTracer>true</isTracer>
-		<effects>epicAirbombStrike</effects>
-		<damage>
-			<armor>150</armor>
-			<devices>150</devices>
-		</damage>
-		<explosionDamageFactor>
-			1.0
-			<!--BW_String-->
-		</explosionDamageFactor>
-		<explosionEdgeDamageFactor>
-			1.0
-			<!--BW_String-->
-		</explosionEdgeDamageFactor>
-		<tags>bomber</tags>
-	</bomber_shell_epic_level4>
-	<bomber_shell_epic_level5>
+	</bomber_shell_epic_level2>
+	<bomber_shell_epic_level3>
 		<id>265</id>
 		<userString>#germany_vehicles:bomber_shell</userString>
 		<icon>he_spg_stun</icon>
@@ -4449,7 +4334,7 @@
 			<!--BW_String-->
 		</explosionEdgeDamageFactor>
 		<tags>bomber</tags>
-	</bomber_shell_epic_level5>
+	</bomber_shell_epic_level3>
 	<Development_Shell>
 		<id>65000</id>
 		<userString>Development_Shell</userString>
@@ -5117,7 +5002,10 @@
 		<notInShop>true</notInShop>
 		<kind>HIGH_EXPLOSIVE</kind>
 		<caliber>100</caliber>
-		<explosionRadius>6</explosionRadius>
+		<explosionRadius>
+			6.0
+			<!--BW_String-->
+		</explosionRadius>
 		<hasStun>true</hasStun>
 		<stunDuration>10</stunDuration>
 		<guaranteedStunDuration>
@@ -5152,7 +5040,10 @@
 		<notInShop>true</notInShop>
 		<kind>HIGH_EXPLOSIVE</kind>
 		<caliber>100</caliber>
-		<explosionRadius>6</explosionRadius>
+		<explosionRadius>
+			6.0
+			<!--BW_String-->
+		</explosionRadius>
 		<hasStun>true</hasStun>
 		<stunDuration>10</stunDuration>
 		<guaranteedStunDuration>
@@ -5187,7 +5078,10 @@
 		<notInShop>true</notInShop>
 		<kind>HIGH_EXPLOSIVE</kind>
 		<caliber>100</caliber>
-		<explosionRadius>6</explosionRadius>
+		<explosionRadius>
+			6.0
+			<!--BW_String-->
+		</explosionRadius>
 		<hasStun>true</hasStun>
 		<stunDuration>10</stunDuration>
 		<guaranteedStunDuration>
@@ -5222,7 +5116,10 @@
 		<notInShop>true</notInShop>
 		<kind>HIGH_EXPLOSIVE</kind>
 		<caliber>100</caliber>
-		<explosionRadius>6</explosionRadius>
+		<explosionRadius>
+			6.0
+			<!--BW_String-->
+		</explosionRadius>
 		<hasStun>true</hasStun>
 		<stunDuration>10</stunDuration>
 		<guaranteedStunDuration>
@@ -5257,7 +5154,10 @@
 		<notInShop>true</notInShop>
 		<kind>HIGH_EXPLOSIVE</kind>
 		<caliber>100</caliber>
-		<explosionRadius>6</explosionRadius>
+		<explosionRadius>
+			6.0
+			<!--BW_String-->
+		</explosionRadius>
 		<hasStun>true</hasStun>
 		<stunDuration>10</stunDuration>
 		<guaranteedStunDuration>
@@ -5292,7 +5192,10 @@
 		<notInShop>true</notInShop>
 		<kind>HIGH_EXPLOSIVE</kind>
 		<caliber>100</caliber>
-		<explosionRadius>6</explosionRadius>
+		<explosionRadius>
+			6.0
+			<!--BW_String-->
+		</explosionRadius>
 		<hasStun>true</hasStun>
 		<stunDuration>10</stunDuration>
 		<guaranteedStunDuration>

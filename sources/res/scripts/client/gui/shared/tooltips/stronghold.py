@@ -1,4 +1,4 @@
-import typing
+import logging, typing
 from gui.Scaleform.daapi.view.lobby.rally.vo_converters import getReserveNameVO
 from gui.Scaleform.genConsts.BLOCKS_TOOLTIP_TYPES import BLOCKS_TOOLTIP_TYPES
 from gui.impl import backport
@@ -10,6 +10,7 @@ from gui.shared.tooltips.common import BlocksTooltipData
 from helpers import int2roman
 if typing.TYPE_CHECKING:
     from gui.prb_control.items.stronghold_items import StrongholdData
+_logger = logging.getLogger(__name__)
 
 class StrongholdTooltipData(BlocksTooltipData):
 
@@ -42,6 +43,9 @@ class ReserveTooltipData(StrongholdTooltipData):
         reserveCount = reserves.getReserveCount(reserve.getType(), reserve.getLevel())
         if selected:
             reserveCount -= 1
+        if reserve.intCD is None:
+            _logger.error('%s intCD is None! Check wgsh version on staging.', reserveName)
+            return tooltipBlocks
         item = self.context.buildItem(reserve.intCD)
         tooltipBlocks.append(self.__getHeaderBlock(item, reserveName, reserveLevel, reserveCount, isPlayerLegionary))
         tooltipBlocks.append(formatters.packBuildUpBlockData(self.__getMainParamsBlock(reserveName, item), padding=formatters.packPadding(left=10, right=10, top=-4, bottom=-2), linkage=BLOCKS_TOOLTIP_TYPES.TOOLTIP_BUILDUP_BLOCK_WHITE_BG_LINKAGE, gap=-2, blockWidth=450))

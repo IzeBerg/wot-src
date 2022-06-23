@@ -854,6 +854,11 @@ msgid "advanced/ration"
 msgstr ""
 "Усиливает навыки и умения экипажа, что улучшает все характеристики машины."
 
+msgid "advanced/recertificationForm/description"
+msgstr ""
+"Расходуемый предмет, который позволяет сбросить все навыки и умения у любого"
+" выбранного члена экипажа."
+
 msgid "advanced/relativeArmor"
 msgstr "Комплекс параметров, отвечающих за выживаемость вашей машины в бою."
 
@@ -1299,14 +1304,6 @@ msgstr ""
 msgid "awardItem/crystal/header"
 msgstr "Боны"
 
-msgid "awardItem/dragonBoatPoints/body"
-msgstr ""
-"Сражайтесь в боях события и выполняйте специальные боевые задачи, чтобы "
-"заработать очки для своей команды."
-
-msgid "awardItem/dragonBoatPoints/header"
-msgstr "Очки Фестиваля Драконьих лодок"
-
 msgid "awardItem/eventCoin/body"
 msgstr ""
 "Начисляются за выполнение юбилейных задач во время активной фазы и периода "
@@ -1676,6 +1673,9 @@ msgstr ""
 "По завершении этого этапа вы сможете выбрать и забрать себе одну единицу "
 "штатного оборудования, нажав кнопку «Забрать награду»."
 
+msgid "battlePassOffer/footer/recertification_gift"
+msgstr "Даёт бесплатный сброс навыков"
+
 msgid "battlePassOffer/footer/trophy_gift"
 msgstr ""
 "По завершении этого этапа вы сможете выбрать и забрать себе одну единицу "
@@ -1698,6 +1698,9 @@ msgstr "Оборудование на выбор"
 
 msgid "battlePassOffer/title/new_device_mi_gift"
 msgstr "Оборудование на выбор"
+
+msgid "battlePassOffer/title/recertification_gift"
+msgstr "Бланк переподготовки"
 
 msgid "battlePassOffer/title/trophy_gift"
 msgstr "Трофейное оборудование на выбор"
@@ -4621,6 +4624,23 @@ msgstr ""
 msgid "epicBattleWidget/info/prestige"
 msgstr "Доблесть %(prestige)s"
 
+msgid "epicBattlesOffer/allNations"
+msgstr "Доступен выбор для всех наций, представленных в игре."
+
+msgid "epicBattlesOffer/crewBookInfo"
+msgstr ""
+"Применяется ко всему экипажу. Изучение даёт %(exp)s опыта каждому члену "
+"экипажа."
+
+msgid "epicBattlesOffer/point"
+msgstr "• %(item)s"
+
+msgid "epicBattlesOffer/title/battleBooster_gift"
+msgstr "Инструкции к оборудованию на выбор"
+
+msgid "epicBattlesOffer/title/brochure_gift"
+msgstr "Учебная брошюра на выбор"
+
 msgid "epicBattlesWidget/famePoints"
 msgstr "Фронтовой опыт"
 
@@ -4754,7 +4774,7 @@ msgstr ""
 "Данное ограничение призвано создать равные и комфортные условия для всех кланов, принимающих участие в режиме «Укрепрайон: сражения»."
 
 msgid "fortWrongTime/lockTime/header"
-msgstr "Комендантский час"
+msgstr "Режим прекращения огня"
 
 msgid "fortification/battleRoomLegionaries/body"
 msgstr ""
@@ -5259,6 +5279,15 @@ msgstr ""
 
 msgid "hangar/header/personalMissions/operation_disabled/header"
 msgstr "Операция недоступна"
+
+msgid "hangar/header/personalMissions/unavailable/body"
+msgstr "Личные боевые задачи недоступны в режиме %(modeName)s."
+
+msgid "hangar/header/personalMissions/unavailable/header"
+msgstr "Доступных задач нет"
+
+msgid "hangar/header/personalMissions/unavailable/mode/fun_random"
+msgstr "«Название-заглушка»"
 
 msgid "hangar/header/personalMissions2/completedLockedNext/body"
 msgstr ""
@@ -6558,6 +6587,12 @@ msgstr "Боёв в квалификации %(current)s / %(max)s"
 msgid "mode_selector/unavailable/bootcamp"
 msgstr "Недоступно на Учебном полигоне."
 
+msgid "mode_selector/unavailable/notVehicles/level"
+msgstr "%(levels)s уровня"
+
+msgid "mode_selector/unavailable/notVehicles/text"
+msgstr "Для участия в боях режима нужна как минимум одна машина %(vehicles)s."
+
 msgid "mode_selector/unavailable/techProblems"
 msgstr "Временно недоступно по техническим причинам."
 
@@ -7742,6 +7777,122 @@ msgstr "?empty?"
 msgid "notrecruitedtankman/tankmen_bp7_4/label"
 msgstr "Боевой пропуск, седьмой сезон"
 
+msgid "notrecruitedtankman/tankmen_bp8_1/desc"
+msgstr ""
+"Компетентный, надёжный и трезвомыслящий офицер, командир 2-й боевой роты "
+"Ультрамаринов, лейтенант. На протяжении десятилетий руководил "
+"подразделениями «Импульсоров» на полях сражений, применяя на практике учения"
+" Кодекса Астартес. Эти годы отточили его тактические навыки, и он умело "
+"прорывает оборону противника с чрезвычайной эффективностью."
+
+msgid "notrecruitedtankman/tankmen_bp8_1/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp8_1/label"
+msgstr "Боевой пропуск, восьмой сезон"
+
+msgid "notrecruitedtankman/tankmen_bp8_2/desc"
+msgstr ""
+"Чемпион одного из элитных подразделений Гвардии Смерти, известного как "
+"поксмонгеры. Безжалостный воин, однако с разрешения Нургла предпочитает "
+"неспешно наслаждаться благословениями даров Великого Отца. При первой же "
+"возможности старается нарушить планы бывших братьев. Им движет чистая злоба,"
+" и он с огромным удовольствием выполнит свою миссию против Ультрамаринов. В "
+"погоне за победой он, как известно, использует самые... невообразимые "
+"средства."
+
+msgid "notrecruitedtankman/tankmen_bp8_2/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp8_2/label"
+msgstr "Боевой пропуск, восьмой сезон"
+
+msgid "notrecruitedtankman/tankmen_bp8_3/desc"
+msgstr ""
+"Безбашенный мекбой, который всегда преследует только две цели: больше "
+"скорости и больше «дакки», игнорируя всё остальное, что не подпадает под эти"
+" два понятия. Прекрасно знает вражескую технику, рассматривая её не как "
+"угрозу, но скорее как объект возможного разграбления, ведь так можно "
+"получить ещё больше скорости и ещё больше «дакки»!"
+
+msgid "notrecruitedtankman/tankmen_bp8_3/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp8_3/label"
+msgstr "Боевой пропуск, восьмой сезон"
+
+msgid "notrecruitedtankman/tankmen_bp8_4/desc"
+msgstr ""
+"По собственному мнению — один из фаворитов Нургла. Хотя, возможно, ставит "
+"себя слишком высоко. Не стесняется никаких средств, включая грубую силу, "
+"чтобы доказать свою преданность Великому Отцу, если посчитает, что эти "
+"методы помогут ему добиться благосклонности. Исключительная амбициозность и "
+"фанатичное желание выслужиться могли бы считаться негативными качествами, но"
+" пока исправно приносят свои плоды."
+
+msgid "notrecruitedtankman/tankmen_bp8_4/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp8_4/label"
+msgstr "Боевой пропуск, восьмой сезон"
+
+msgid "notrecruitedtankman/tankmen_bp8_5/desc"
+msgstr ""
+"Сестра-настоятельница, обладающая выдающимся мастерством. С юных лет всецело"
+" посвящала себя благочестивым обязанностям, так как нашла своё призвание в "
+"сражениях во имя Императора, ещё будучи ученицей Схолы Прогениум. "
+"Относительно недавно варп-шторм помешал ей прибыть на последнее поле битвы, "
+"из-за чего она винит себя, что не смогла исполнить волю Императора. Считает "
+"это величайшим позором, поэтому с особой фанатичностью ищет искупления в "
+"любом бою, где участвует её Орден, а значит — и её болтер с танком."
+
+msgid "notrecruitedtankman/tankmen_bp8_5/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp8_5/label"
+msgstr "Боевой пропуск, восьмой сезон"
+
+msgid "notrecruitedtankman/tankmen_bp8_6/desc"
+msgstr ""
+"По счастливому стечению обстоятельств получила под своё начало танк, на "
+"постройку которого собирали деньги в колхозе, где председатель — её отец. "
+"Теперь считает делом чести в полной мере освоить машину и реализовать её "
+"потенциал, чтобы труд сотен людей не пропал даром."
+
+msgid "notrecruitedtankman/tankmen_bp8_6/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp8_6/label"
+msgstr "Боевой пропуск, восьмой сезон"
+
+msgid "notrecruitedtankman/tankmen_bp8_7/desc"
+msgstr ""
+"«Мадемуазель Лёд» — хладнокровная, расчётливая, практически "
+"безэмоциональная. Никогда не принимает решений впопыхах, с математической "
+"точностью прорабатывает все возможные исходы и последствия. Могла бы стать "
+"отличным штабным офицером, но считает, что из тыла не видно всей картины "
+"боя."
+
+msgid "notrecruitedtankman/tankmen_bp8_7/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp8_7/label"
+msgstr "Боевой пропуск, восьмой сезон"
+
+msgid "notrecruitedtankman/tankmen_bp8_8/desc"
+msgstr ""
+"Журналистка лондонского издания, которой для качественного и объективного "
+"материала необходимо лично присутствовать в центре событий и прочувствовать "
+"на себе всё происходящее. Каким-то чудом пробилась в командиры танка, где "
+"теперь пишет о своих ощущениях и эмоциях. Через много лет такой подход "
+"назовут «гонзо-журналистикой»."
+
+msgid "notrecruitedtankman/tankmen_bp8_8/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp8_8/label"
+msgstr "Боевой пропуск, восьмой сезон"
+
 msgid "notrecruitedtankman/tankwoman/desc"
 msgstr ""
 "Выдавалась в награду за определённые игровые события. Девушка-танкист "
@@ -8850,11 +9001,8 @@ msgstr "В настоящий момент подробная информаци
 msgid "quests/linkBtn/customizationProgression/enabled"
 msgstr "Нажмите, чтобы перейти к подробной информации."
 
-msgid "quests/linkBtn/dragonBoat"
-msgstr "К прогрессии Фестиваля драконьих лодок"
-
 msgid "quests/linkBtn/epic"
-msgstr "К прогрессии Боевого пропуска"
+msgstr "К выбору глав Боевого пропуска"
 
 msgid "quests/linkBtn/task"
 msgstr "Перейти к данной боевой задаче"
@@ -9908,6 +10056,7 @@ msgstr "Низкое качество"
 msgid "squadBonus/complex/body"
 msgstr ""
 "Получайте дополнительные %(bonus)s к боевому опыту по итогам каждого боя, играя во взводе с другими игроками.\n"
+"\n"
 "Бонус доступен только для постоянных формирований и не доступен при создании динамического взвода."
 
 msgid "squadBonus/complex/header"
@@ -10047,8 +10196,8 @@ msgstr "Личные резервы"
 msgid "storage/mainMenu/storage/body"
 msgstr ""
 "Содержит оборудование, снаряжение, предбоевые инструкции, демонтажные "
-"наборы, модули и снаряды, не установленные на имеющуюся технику, а также "
-"учебные материалы для экипажа."
+"наборы, бланки переподготовки, модули и снаряды, не установленные на "
+"имеющуюся технику, а также учебные материалы для экипажа."
 
 msgid "storage/mainMenu/storage/header"
 msgstr "Запасы"

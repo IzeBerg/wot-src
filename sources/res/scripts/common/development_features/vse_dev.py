@@ -1,7 +1,7 @@
 import fnmatch, logging, os
 from functools import wraps
 import VSE
-from visual_script.general import Assert
+from visual_script.qa_blocks import Assert
 logger = logging.getLogger(__name__)
 base_executors = {}
 planObj = None

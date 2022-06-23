@@ -1,7 +1,7 @@
-from constants import IS_EDITOR
+from constants import IS_UE_EDITOR
 from collections import namedtuple
 from contextlib import contextmanager
-if IS_EDITOR:
+if IS_UE_EDITOR:
     from reflection_framework import ReflectionMetaclass
     from reflection_framework import reflectedNamedTuple
     from reflection_framework import notifyPropertiesReset

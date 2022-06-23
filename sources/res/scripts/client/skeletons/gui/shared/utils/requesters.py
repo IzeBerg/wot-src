@@ -95,6 +95,9 @@ class IInventoryRequester(IRequester):
     def getItems(self, itemTypeIdx, dataIdx=None):
         raise NotImplementedError
 
+    def getC11nSerialNumber(self, itemCD):
+        raise NotImplementedError
+
     def getFreeSlots(self, vehiclesSlots):
         raise NotImplementedError
 
@@ -601,6 +604,10 @@ class IShopCommonStats(object):
 
     @property
     def demountKits(self):
+        raise NotImplementedError
+
+    @property
+    def recertificationForms(self):
         raise NotImplementedError
 
     def getPremiumPacketCost(self, days):
@@ -1128,4 +1135,34 @@ class IGiftSystemRequester(IRequester):
 
     @property
     def isHistoryReady(self):
+        raise NotImplementedError
+
+
+class IGameRestrictionsRequester(IRequester):
+
+    @property
+    def session(self):
+        raise NotImplementedError
+
+    @property
+    def hasSessionLimit(self):
+        raise NotImplementedError
+
+    def getKickAt(self):
+        raise NotImplementedError
+
+    @property
+    def settings(self):
+        raise NotImplementedError
+
+
+class IResourceWellRequester(IRequester):
+
+    def getCurrentPoints(self):
+        raise NotImplementedError
+
+    def getBalance(self):
+        raise NotImplementedError
+
+    def getReward(self):
         raise NotImplementedError

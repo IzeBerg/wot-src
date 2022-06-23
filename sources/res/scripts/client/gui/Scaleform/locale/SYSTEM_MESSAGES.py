@@ -277,6 +277,10 @@ class SYSTEM_MESSAGES(object):
     GAMESESSIONCONTROL_KOREA_MIDNIGHTNOTIFICATION = '#system_messages:gameSessionControl/korea/midnightNotification'
     GAMESESSIONCONTROL_KOREA_PLAYTIMENOTIFICATION = '#system_messages:gameSessionControl/korea/playTimeNotification'
     GAMESESSIONCONTROL_KOREA_NOTE = '#system_messages:gameSessionControl/korea/note'
+    GAMESESSIONCONTROL_PARENTCONTROL_KICKTIME = '#system_messages:gameSessionControl/parentControl/kickTime'
+    GAMESESSIONCONTROL_PARENTCONTROL_SETTINGSCHANGED = '#system_messages:gameSessionControl/parentControl/settingsChanged'
+    GAMESESSIONCONTROL_PARENTCONTROL_TIMELIMIT = '#system_messages:gameSessionControl/parentControl/timeLimit'
+    GAMESESSIONCONTROL_PARENTCONTROL_NOTIMELIMIT = '#system_messages:gameSessionControl/parentControl/noTimeLimit'
     VIDEO_ERROR = '#system_messages:video/error'
     SECURITYMESSAGE_POOR_PASS = '#system_messages:securityMessage/poor_pass'
     SECURITYMESSAGE_NO_QUESTION = '#system_messages:securityMessage/no_question'
@@ -1120,7 +1124,15 @@ class SYSTEM_MESSAGES(object):
     RANKED_NOTIFICATION_YEARLB_POSITIVE_BODY = '#system_messages:ranked/notification/yearLB/positive/body'
     RANKED_NOTIFICATION_YEARLB_NEGATIVE_TITLE = '#system_messages:ranked/notification/yearLB/negative/title'
     RANKED_NOTIFICATION_YEARLB_NEGATIVE_BODY = '#system_messages:ranked/notification/yearLB/negative/body'
+    EPICBATTLES_REWARDCHOICE_ERROR = '#system_messages:epicBattles/rewardChoice/error'
     EPICBATTLES_NOTIFICATION_NOTAVAILABLE = '#system_messages:epicBattles/notification/notAvailable'
+    EPICBATTLES_SEASONEND_TITLE = '#system_messages:epicBattles/seasonEnd/title'
+    EPICBATTLES_SEASONEND_TEXT = '#system_messages:epicBattles/seasonEnd/text'
+    EPICBATTLES_SEASONEND_REWARDS_CREWBOOK = '#system_messages:epicBattles/seasonEnd/rewards/crewBook'
+    EPICBATTLES_SEASONEND_REWARDS_EQUIPMENT = '#system_messages:epicBattles/seasonEnd/rewards/equipment'
+    EPICBATTLES_LEVELUP_TITLE = '#system_messages:epicBattles/levelUp/title'
+    EPICBATTLES_LEVELUP_BODY_LEVELCONGRATS = '#system_messages:epicBattles/levelUp/body/levelCongrats'
+    EPICBATTLES_LEVELUP_AWARDS = '#system_messages:epicBattles/levelUp/awards'
     LOOTBOXES_OPEN_SERVER_ERROR = '#system_messages:lootboxes/open/server_error'
     LOOTBOXES_OPEN_SERVER_ERROR_DISABLED = '#system_messages:lootboxes/open/server_error/DISABLED'
     LOOTBOXES_OPEN_SERVER_ERROR_COOLDOWN = '#system_messages:lootboxes/open/server_error/COOLDOWN'
@@ -1188,8 +1200,10 @@ class SYSTEM_MESSAGES(object):
     DAILY_QUESTS_REROLL_UNKNOWN_ERROR = '#system_messages:daily_quests/reroll/unknown_error'
     BATTLEPASS_BUY_SERVER_ERROR = '#system_messages:battlePass_buy/server_error'
     BATTLEPASSLEVELS_BUY_SERVER_ERROR = '#system_messages:battlePassLevels_buy/server_error'
-    BATTLEPASS_SWITCH_STARTED_TITLE = '#system_messages:battlePass/switch_started/title'
-    BATTLEPASS_SWITCH_STARTED_BODY = '#system_messages:battlePass/switch_started/body'
+    BATTLEPASS_SWITCH_STARTED_STYLE_TITLE = '#system_messages:battlePass/switch_started/style/title'
+    BATTLEPASS_SWITCH_STARTED_STYLE_BODY = '#system_messages:battlePass/switch_started/style/body'
+    BATTLEPASS_SWITCH_STARTED_TANKMAN_TITLE = '#system_messages:battlePass/switch_started/tankman/title'
+    BATTLEPASS_SWITCH_STARTED_TANKMAN_BODY = '#system_messages:battlePass/switch_started/tankman/body'
     BATTLEPASS_SWITCH_PAUSE_BODY = '#system_messages:battlePass/switch_pause/body'
     BATTLEPASS_SWITCH_DISABLE_TITLE = '#system_messages:battlePass/switch_disable/title'
     BATTLEPASS_SWITCH_DISABLE_BODY = '#system_messages:battlePass/switch_disable/body'
@@ -1294,10 +1308,17 @@ class SYSTEM_MESSAGES(object):
     TELECOMMERGERESULTS_BODY_PROGRESSDECALESCOMPENS = '#system_messages:telecomMergeResults/body/progressDecalesCompens'
     TELECOMMERGERESULTS_BODY_WISHMSG = '#system_messages:telecomMergeResults/body/wishMsg'
     SSR_UNAVAILABLE = '#system_messages:ssr/unavailable'
-    DRAGONBOAT_PAUSED = '#system_messages:dragonBoat/paused'
-    DRAGONBOAT_RESTORED = '#system_messages:dragonBoat/restored'
-    DRAGONBOAT_STAGEAWARD_HEADER = '#system_messages:dragonBoat/stageAward/header'
-    DRAGONBOAT_FINALAWARD_HEADER = '#system_messages:dragonBoat/finalAward/header'
+    PARENTCONTROL_TITLE = '#system_messages:parentControl/title'
+    PARENTCONTROL_MAINTEXT = '#system_messages:parentControl/mainText'
+    PARENTCONTROL_LINKTEXT = '#system_messages:parentControl/linkText'
+    RESOURCEWELL_RESOURCESLOADINGERROR = '#system_messages:resourceWell/resourcesLoadingError'
+    RESOURCEWELL_RESOURCESRETURNERROR = '#system_messages:resourceWell/resourcesReturnError'
+    FUNRANDOM_NOTIFICATION_PRIMETIME_TITLE = '#system_messages:funRandom/notification/primeTime/title'
+    FUNRANDOM_NOTIFICATION_PRIMETIME = '#system_messages:funRandom/notification/primeTime'
+    FUNRANDOM_NOTIFICATION_AVAILABLE_TITLE = '#system_messages:funRandom/notification/available/title'
+    FUNRANDOM_NOTIFICATION_AVAILABLE = '#system_messages:funRandom/notification/available'
+    FUNRANDOM_NOTIFICATION_NOTSET_TITLE = '#system_messages:funRandom/notification/notSet/title'
+    FUNRANDOM_NOTIFICATION_NOTSET = '#system_messages:funRandom/notification/notSet'
     UNIT_NOTIFICATION_DIVISIONTYPE_ENUM = (
      UNIT_NOTIFICATION_DIVISIONTYPE_MIDDLE,
      UNIT_NOTIFICATION_DIVISIONTYPE_CHAMPION,
@@ -1705,6 +1726,10 @@ class SYSTEM_MESSAGES(object):
      GAMESESSIONCONTROL_KOREA_MIDNIGHTNOTIFICATION,
      GAMESESSIONCONTROL_KOREA_PLAYTIMENOTIFICATION,
      GAMESESSIONCONTROL_KOREA_NOTE,
+     GAMESESSIONCONTROL_PARENTCONTROL_KICKTIME,
+     GAMESESSIONCONTROL_PARENTCONTROL_SETTINGSCHANGED,
+     GAMESESSIONCONTROL_PARENTCONTROL_TIMELIMIT,
+     GAMESESSIONCONTROL_PARENTCONTROL_NOTIMELIMIT,
      VIDEO_ERROR,
      SECURITYMESSAGE_POOR_PASS,
      SECURITYMESSAGE_NO_QUESTION,
@@ -2548,7 +2573,15 @@ class SYSTEM_MESSAGES(object):
      RANKED_NOTIFICATION_YEARLB_POSITIVE_BODY,
      RANKED_NOTIFICATION_YEARLB_NEGATIVE_TITLE,
      RANKED_NOTIFICATION_YEARLB_NEGATIVE_BODY,
+     EPICBATTLES_REWARDCHOICE_ERROR,
      EPICBATTLES_NOTIFICATION_NOTAVAILABLE,
+     EPICBATTLES_SEASONEND_TITLE,
+     EPICBATTLES_SEASONEND_TEXT,
+     EPICBATTLES_SEASONEND_REWARDS_CREWBOOK,
+     EPICBATTLES_SEASONEND_REWARDS_EQUIPMENT,
+     EPICBATTLES_LEVELUP_TITLE,
+     EPICBATTLES_LEVELUP_BODY_LEVELCONGRATS,
+     EPICBATTLES_LEVELUP_AWARDS,
      LOOTBOXES_OPEN_SERVER_ERROR,
      LOOTBOXES_OPEN_SERVER_ERROR_DISABLED,
      LOOTBOXES_OPEN_SERVER_ERROR_COOLDOWN,
@@ -2616,8 +2649,10 @@ class SYSTEM_MESSAGES(object):
      DAILY_QUESTS_REROLL_UNKNOWN_ERROR,
      BATTLEPASS_BUY_SERVER_ERROR,
      BATTLEPASSLEVELS_BUY_SERVER_ERROR,
-     BATTLEPASS_SWITCH_STARTED_TITLE,
-     BATTLEPASS_SWITCH_STARTED_BODY,
+     BATTLEPASS_SWITCH_STARTED_STYLE_TITLE,
+     BATTLEPASS_SWITCH_STARTED_STYLE_BODY,
+     BATTLEPASS_SWITCH_STARTED_TANKMAN_TITLE,
+     BATTLEPASS_SWITCH_STARTED_TANKMAN_BODY,
      BATTLEPASS_SWITCH_PAUSE_BODY,
      BATTLEPASS_SWITCH_DISABLE_TITLE,
      BATTLEPASS_SWITCH_DISABLE_BODY,
@@ -2722,10 +2757,17 @@ class SYSTEM_MESSAGES(object):
      TELECOMMERGERESULTS_BODY_PROGRESSDECALESCOMPENS,
      TELECOMMERGERESULTS_BODY_WISHMSG,
      SSR_UNAVAILABLE,
-     DRAGONBOAT_PAUSED,
-     DRAGONBOAT_RESTORED,
-     DRAGONBOAT_STAGEAWARD_HEADER,
-     DRAGONBOAT_FINALAWARD_HEADER)
+     PARENTCONTROL_TITLE,
+     PARENTCONTROL_MAINTEXT,
+     PARENTCONTROL_LINKTEXT,
+     RESOURCEWELL_RESOURCESLOADINGERROR,
+     RESOURCEWELL_RESOURCESRETURNERROR,
+     FUNRANDOM_NOTIFICATION_PRIMETIME_TITLE,
+     FUNRANDOM_NOTIFICATION_PRIMETIME,
+     FUNRANDOM_NOTIFICATION_AVAILABLE_TITLE,
+     FUNRANDOM_NOTIFICATION_AVAILABLE,
+     FUNRANDOM_NOTIFICATION_NOTSET_TITLE,
+     FUNRANDOM_NOTIFICATION_NOTSET)
 
     @classmethod
     def unit_notification_divisiontype(cls, key0):

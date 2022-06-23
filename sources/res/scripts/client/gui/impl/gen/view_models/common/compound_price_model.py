@@ -14,6 +14,10 @@ class CompoundPriceModel(ViewModel):
     def setPrices(self, value):
         self._setArray(0, value)
 
+    @staticmethod
+    def getPricesType():
+        return PriceModel
+
     def _initialize(self):
         super(CompoundPriceModel, self)._initialize()
         self._addArrayProperty('prices', Array())

@@ -832,13 +832,16 @@ class RageEquipmentConfigReader(object):
 
 
 class SharedCooldownConsumableConfigReader(object):
-    _SHARED_COOLDOWN_CONSUMABLE_SLOTS = ('cooldownTimeRespawnFactor', 'cooldownTime',
+    _SHARED_COOLDOWN_CONSUMABLE_SLOTS = ('cooldownTimeRespawnFactor', 'reserveUnlockFactor',
+                                         'startCooldownTimeFactor', 'cooldownTime',
                                          'cooldownFactors', 'sharedCooldownTime',
                                          'consumeAmmo', 'disableAllyDamage', 'setUnavailableAfterAmmoLeft')
 
     def initSharedCooldownConsumableSlots(self):
         self.cooldownTime = component_constants.ZERO_FLOAT
         self.cooldownTimeRespawnFactor = component_constants.ZERO_FLOAT
+        self.reserveUnlockFactor = component_constants.ZERO_FLOAT
+        self.startCooldownTimeFactor = component_constants.ZERO_FLOAT
         self.cooldownFactors = component_constants.EMPTY_DICT
         self.consumeAmmo = False
         self.disableAllyDamage = False
@@ -846,6 +849,8 @@ class SharedCooldownConsumableConfigReader(object):
 
     def readSharedCooldownConsumableConfig(self, xmlCtx, section):
         self.cooldownTimeRespawnFactor = _xml.readNonNegativeFloat(xmlCtx, section, 'cooldownTimeRespawnFactor', 1.0)
+        self.reserveUnlockFactor = _xml.readNonNegativeFloat(xmlCtx, section, 'reserveUnlockFactor', -1.0)
+        self.startCooldownTimeFactor = _xml.readNonNegativeFloat(xmlCtx, section, 'startCooldownTimeFactor', 1.0)
         self.cooldownTime = _xml.readNonNegativeFloat(xmlCtx, section, 'cooldownTime')
         self.cooldownFactors = self._readCooldownFactors(xmlCtx, section, 'cooldownFactors')
         self.sharedCooldownTime = _xml.readNonNegativeFloat(xmlCtx, section, 'sharedCooldownTime')
@@ -1694,10 +1699,10 @@ class FortConsumableInspire(ConsumableInspire):
 
 class AreaOfEffectEquipment(Equipment, TooltipConfigReader, SharedCooldownConsumableConfigReader, ArcadeEquipmentConfigReader):
     __slots__ = ('delay', 'duration', 'lifetime', 'shotsNumber', 'areaRadius', 'areaLength',
-                 'areaWidth', 'areaVisual', 'areaColor', 'areaShow', 'noOwner', 'attackerType',
-                 'shotSoundPreDelay', 'wwsoundShot', 'wwsoundEquipmentUsed', 'shotEffect',
-                 'effects', 'actionsConfig', 'explodeDestructible', 'areaUsedPrefab',
-                 'areaAccurateCollision') + TooltipConfigReader._SHARED_TOOLTIPS_CONSUMABLE_SLOTS + SharedCooldownConsumableConfigReader._SHARED_COOLDOWN_CONSUMABLE_SLOTS + ArcadeEquipmentConfigReader._SHARED_ARCADE_SLOTS
+                 'areaWidth', 'areaVisual', 'areaColor', 'areaColorBlind', 'areaShow',
+                 'noOwner', 'attackerType', 'shotSoundPreDelay', 'wwsoundShot', 'wwsoundEquipmentUsed',
+                 'shotEffect', 'effects', 'actionsConfig', 'explodeDestructible',
+                 'areaUsedPrefab', 'areaAccurateCollision') + TooltipConfigReader._SHARED_TOOLTIPS_CONSUMABLE_SLOTS + SharedCooldownConsumableConfigReader._SHARED_COOLDOWN_CONSUMABLE_SLOTS + ArcadeEquipmentConfigReader._SHARED_ARCADE_SLOTS
 
     def _readConfig(self, xmlCtx, section):
         super(AreaOfEffectEquipment, self)._readConfig(xmlCtx, section)
@@ -1712,7 +1717,8 @@ class AreaOfEffectEquipment(Equipment, TooltipConfigReader, SharedCooldownConsum
         self.areaLength = section.readFloat('areaLength', self.areaRadius * 2)
         self.areaWidth = section.readFloat('areaWidth', self.areaRadius * 2)
         self.areaVisual = section.readString('areaVisual') or None
-        self.areaColor = section.readInt('areaColor') or None
+        self.areaColor = _xml.readIntOrNone(xmlCtx, section, 'areaColor')
+        self.areaColorBlind = _xml.readIntOrNone(xmlCtx, section, 'areaColorBlind')
         self.areaShow = section.readString('areaShow').lower() or None
         self.areaAccurateCollision = section.readBool('areaAccurateCollision', True)
         self.areaUsedPrefab = section.readString('areaUsedPrefab') or None
@@ -1770,10 +1776,12 @@ class AttackBomberEquipment(AreaOfEffectEquipment):
 
 
 class AttackArtilleryFortEquipment(AreaOfEffectEquipment):
-    __slots__ = ('maxDamage', )
+    __slots__ = ('maxDamage', 'enemyAreaColor', 'enemyAreaColorBlind')
 
     def _readConfig(self, xmlCtx, section):
         super(AttackArtilleryFortEquipment, self)._readConfig(xmlCtx, section)
+        self.enemyAreaColor = _xml.readIntOrNone(xmlCtx, section, 'enemyAreaColor')
+        self.enemyAreaColorBlind = _xml.readIntOrNone(xmlCtx, section, 'enemyAreaColorBlind')
         if IS_CLIENT:
             damagePerShot = sum([ self._readDamageVehicleAction(action) for action in section['actions'].values() ])
             self.maxDamage = damagePerShot * self.shotsNumber

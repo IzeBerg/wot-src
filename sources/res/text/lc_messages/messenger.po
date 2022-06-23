@@ -96,6 +96,11 @@ msgstr ""
 "Достигнут недельный лимит игрового времени. Сессия будет завершена через "
 "%(timeLeft)s мин."
 
+msgid "chat/parentControlMessage/timeLimit"
+msgstr ""
+"Достигнут лимит игрового времени. Сессия будет завершена через %(timeLeft)s "
+"мин."
+
 msgid "chat/personalMessage/warningBody"
 msgstr ""
 "Сообщения от незнакомых игроков могут содержать вредоносные ссылки. Не "
@@ -1749,9 +1754,6 @@ msgstr "Начислена награда"
 msgid "serviceChannelMessages/battlePassReward/tman"
 msgstr "Член экипажа:"
 
-msgid "serviceChannelMessages/battleResults/DBPoints"
-msgstr "Получено очков Фестиваля драконьих лодок"
-
 msgid "serviceChannelMessages/battleResults/achieves"
 msgstr "Достижения в бою"
 
@@ -2254,6 +2256,24 @@ msgstr "Все экспериментальные модули списаны"
 msgid "serviceChannelMessages/enhancements/wipedOnVehicles"
 msgstr "Демонтированы экспериментальные модули со следующих машин"
 
+msgid "serviceChannelMessages/epicReward/battleBooster_gift"
+msgstr "• Инструкции к оборудованию на выбор"
+
+msgid "serviceChannelMessages/epicReward/battlePassPoints"
+msgstr "• Очки Боевого пропуска"
+
+msgid "serviceChannelMessages/epicReward/brochure_gift"
+msgstr "• Универсальное пособие"
+
+msgid "serviceChannelMessages/epicReward/crystal"
+msgstr "• Боны"
+
+msgid "serviceChannelMessages/epicReward/epicAbilityPoints"
+msgstr "• Очки боевых резервов"
+
+msgid "serviceChannelMessages/epicReward/recertificationForm_gift"
+msgstr "• Бланки переподготовки"
+
 msgid "serviceChannelMessages/eventCoinReceivedAsGift"
 msgstr "От администрации получено юбилейных монет: %(eventCoin)s."
 
@@ -2514,9 +2534,6 @@ msgstr "Начислено бон"
 msgid "serviceChannelMessages/invoiceReceived/crystalDebited"
 msgstr "Списано бон"
 
-msgid "serviceChannelMessages/invoiceReceived/demountKits"
-msgstr "Снаряжение"
-
 msgid "serviceChannelMessages/invoiceReceived/discounts"
 msgstr "Персональные скидки"
 
@@ -2537,6 +2554,9 @@ msgstr "Начислены"
 
 msgid "serviceChannelMessages/invoiceReceived/entitlementsDebited"
 msgstr "Списаны"
+
+msgid "serviceChannelMessages/invoiceReceived/equipment"
+msgstr "Снаряжение"
 
 msgid "serviceChannelMessages/invoiceReceived/eventCoinAccrued"
 msgstr "Начислено юбилейных монет"
@@ -2959,6 +2979,104 @@ msgstr "Начислено золота за неиспользованное в
 
 msgid "serviceChannelMessages/rentalsExpired"
 msgstr "Срок действия аренды %(vehicleName)s истёк."
+
+msgid "serviceChannelMessages/resourceWell/blueprintCount"
+msgstr " x%(count)s"
+
+msgid "serviceChannelMessages/resourceWell/blueprints"
+msgstr "Фрагментов чертежей: "
+
+msgid "serviceChannelMessages/resourceWell/breakLine"
+msgstr "<br/>"
+
+msgid "serviceChannelMessages/resourceWell/credits"
+msgstr "Кредитов: %(count)s"
+
+msgid "serviceChannelMessages/resourceWell/crystal"
+msgstr "Бон: %(count)s"
+
+msgid "serviceChannelMessages/resourceWell/enabled/text"
+msgstr "Конструкторское бюро снова открыто!"
+
+msgid "serviceChannelMessages/resourceWell/end/text"
+msgstr ""
+"Приступаем к работе над следующим проектом. Мы сообщим, когда появятся "
+"наработки. До встречи!"
+
+msgid "serviceChannelMessages/resourceWell/end/title"
+msgstr "Конструкторское бюро закрывается"
+
+msgid "serviceChannelMessages/resourceWell/freeXP"
+msgstr "Свободного опыта: %(count)s"
+
+msgid "serviceChannelMessages/resourceWell/gold"
+msgstr "Золота: %(count)s"
+
+msgid "serviceChannelMessages/resourceWell/intelligence"
+msgstr "универсальных"
+
+msgid "serviceChannelMessages/resourceWell/noSerialVehicles/button"
+msgstr "Вложить ресурсы"
+
+msgid "serviceChannelMessages/resourceWell/noSerialVehicles/text"
+msgstr ""
+"Отгрузка танков с номерами завершена. Приступаем к сборке %(vehicle)s в "
+"стандартной комплектации. Поторопитесь, количество машин ограничено."
+
+msgid "serviceChannelMessages/resourceWell/noVehicles/text"
+msgstr "Сборка машин завершена, все экземпляры доставлены своим владельцам."
+
+msgid "serviceChannelMessages/resourceWell/noVehicles/title"
+msgstr "Отчёт Конструкторского бюро"
+
+msgid "serviceChannelMessages/resourceWell/noVehiclesWithReturn/text"
+msgstr ""
+"Сборка машин завершена, все экземпляры доставлены своим владельцам. "
+"Вложенные ресурсы скоро будут возвращены на ваш аккаунт."
+
+msgid "serviceChannelMessages/resourceWell/pause/text"
+msgstr "Конструкторское бюро временно недоступно. Идут технические работы."
+
+msgid "serviceChannelMessages/resourceWell/progress"
+msgstr "Текущий прогресс: %(progress)d"
+
+msgid "serviceChannelMessages/resourceWell/put/text"
+msgstr "Вложены ресурсы в проект Конструкторского бюро:"
+
+msgid "serviceChannelMessages/resourceWell/put/title"
+msgstr "Ресурсы вложены"
+
+msgid "serviceChannelMessages/resourceWell/regularReward/text"
+msgstr "От Конструкторского бюро получена машина %(vehicle)s."
+
+msgid "serviceChannelMessages/resourceWell/regularReward/title"
+msgstr "%(vehicle)s получен!"
+
+msgid "serviceChannelMessages/resourceWell/start/button"
+msgstr "Подробнее"
+
+msgid "serviceChannelMessages/resourceWell/start/text"
+msgstr ""
+"Командир, у вас есть возможность стать обладателем %(vehicle)s с номерным "
+"3D-стилем. Количество экземпляров ограничено!"
+
+msgid "serviceChannelMessages/resourceWell/start/title"
+msgstr "Конструкторское бюро открывается"
+
+msgid "serviceChannelMessages/resourceWell/take/text"
+msgstr "Ресурсы возвращены Конструкторским бюро:"
+
+msgid "serviceChannelMessages/resourceWell/take/title"
+msgstr "Возврат ресурсов"
+
+msgid "serviceChannelMessages/resourceWell/topReward/additionalText"
+msgstr "Номер стиля: %(serialNumber)s"
+
+msgid "serviceChannelMessages/resourceWell/topReward/text"
+msgstr "От Конструкторского бюро получен уникальный экземпляр %(vehicle)s."
+
+msgid "serviceChannelMessages/resourceWell/topReward/title"
+msgstr "%(vehicle)s получен!"
 
 msgid "serviceChannelMessages/selectableCrewbook/brochure"
 msgstr "Учебная брошюра на выбор"

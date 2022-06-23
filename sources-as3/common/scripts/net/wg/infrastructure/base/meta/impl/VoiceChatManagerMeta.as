@@ -15,6 +15,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public var isVOIPEnabled:Function;
       
+      public var isVOIPAvailable:Function;
+      
       public function VoiceChatManagerMeta()
       {
          super();
@@ -42,6 +44,12 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.isVOIPEnabled,"isVOIPEnabled" + Errors.CANT_NULL);
          return this.isVOIPEnabled();
+      }
+      
+      public function isVOIPAvailableS() : Boolean
+      {
+         App.utils.asserter.assertNotNull(this.isVOIPAvailable,"isVOIPAvailable" + Errors.CANT_NULL);
+         return this.isVOIPAvailable();
       }
    }
 }

@@ -897,11 +897,14 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.managers.pool.Pool;
    import net.wg.infrastructure.managers.pool.PoolManager;
    import net.wg.infrastructure.uilogger.LogLevels;
+   import net.wg.infrastructure.uilogger.MetricsUILogger;
    import net.wg.infrastructure.uilogger.UILogger;
    import net.wg.infrastructure.uilogger.bootcamp.BOOTCAMP_LOGGER_CONSTANTS;
    import net.wg.infrastructure.uilogger.bootcamp.LoadingPageLogger;
    import net.wg.infrastructure.uilogger.bootcamp.TooltipLogger;
    import net.wg.infrastructure.uilogger.bootcamp.events.TooltipLogEvent;
+   import net.wg.infrastructure.uilogger.epic_battle.EPIC_BATTLE_LOGGER_CONSTANTS;
+   import net.wg.infrastructure.uilogger.epic_battle.SkillDropPageLogger;
    import net.wg.infrastructure.uilogger.manual.MANUAL_LOGGER_CONSTANTS;
    import net.wg.infrastructure.uilogger.manual.ManualPageLogger;
    import net.wg.infrastructure.uilogger.veh_post_progression.Constants;
@@ -2764,6 +2767,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_UILOGGER_LOGLEVELS:Class = LogLevels;
       
+      public static const NET_WG_INFRASTRUCTURE_UILOGGER_METRICSUILOGGER:Class = MetricsUILogger;
+      
       public static const NET_WG_INFRASTRUCTURE_UILOGGER_UILOGGER:Class = UILogger;
       
       public static const NET_WG_INFRASTRUCTURE_UILOGGER_BOOTCAMP_BOOTCAMP_LOGGER_CONSTANTS:Class = BOOTCAMP_LOGGER_CONSTANTS;
@@ -2773,6 +2778,10 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_UILOGGER_BOOTCAMP_TOOLTIPLOGGER:Class = TooltipLogger;
       
       public static const NET_WG_INFRASTRUCTURE_UILOGGER_BOOTCAMP_EVENTS_TOOLTIPLOGEVENT:Class = TooltipLogEvent;
+      
+      public static const NET_WG_INFRASTRUCTURE_UILOGGER_EPIC_BATTLE_EPIC_BATTLE_LOGGER_CONSTANTS:Class = EPIC_BATTLE_LOGGER_CONSTANTS;
+      
+      public static const NET_WG_INFRASTRUCTURE_UILOGGER_EPIC_BATTLE_SKILLDROPPAGELOGGER:Class = SkillDropPageLogger;
       
       public static const NET_WG_INFRASTRUCTURE_UILOGGER_MANUAL_MANUALPAGELOGGER:Class = ManualPageLogger;
       

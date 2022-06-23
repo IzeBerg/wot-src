@@ -92,7 +92,6 @@ package net.wg.gui.bootcamp.introVideoPage.containers
       {
          this.rewards.y = !!param1 ? Number(REWARDS_SMALL_PADDING) : Number(REWARDS_PADDING);
          this.rewards.setIsSmall(param1);
-         height = this.rewards.y + this.rewards.height;
       }
       
       public function setReferralVisibility(param1:Boolean = false) : void

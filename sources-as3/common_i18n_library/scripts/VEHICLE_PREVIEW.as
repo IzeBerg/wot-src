@@ -37,7 +37,7 @@ package
       
       public static const HEADER_BACKBTN_DESCRLABEL_BLUEPRINTSEXCHANGE:String = "#vehicle_preview:header/backBtn/descrLabel/blueprintsExchange";
       
-      public static const HEADER_BACKBTN_DESCRLABEL_REWARDS:String = "#vehicle_preview:header/backBtn/descrLabel/rewards";
+      public static const HEADER_BACKBTN_DESCRLABEL_RESOURCEWELL:String = "#vehicle_preview:header/backBtn/descrLabel/resourceWell";
       
       public static const HEADER_TITLE:String = "#vehicle_preview:header/title";
       
@@ -222,6 +222,16 @@ package
       public static const TOPPANEL_TAB_VEHICLE:String = "#vehicle_preview:topPanel/tab/vehicle";
       
       public static const TOPPANEL_TAB_STYLE:String = "#vehicle_preview:topPanel/tab/style";
+      
+      public static const TOPPANEL_TAB_BASEVEHICLE_VEHICLE:String = "#vehicle_preview:topPanel/tab/baseVehicle/vehicle";
+      
+      public static const TOPPANEL_TAB_PERSONALNUMBERVEHICLE_STYLE:String = "#vehicle_preview:topPanel/tab/personalNumberVehicle/style";
+      
+      public static const BUYINGPANEL_STYLE_DESCRIPTION_TITLE:String = "#vehicle_preview:buyingPanel/style/description/title";
+      
+      public static const BUYINGPANEL_STYLE_DESCRIPTION_TEXT:String = "#vehicle_preview:buyingPanel/style/description/text";
+      
+      public static const BUYINGPANEL_STYLE_DESCRIPTION_BUTTON_TEXT:String = "#vehicle_preview:buyingPanel/style/description/button/text";
        
       
       public function VEHICLE_PREVIEW()

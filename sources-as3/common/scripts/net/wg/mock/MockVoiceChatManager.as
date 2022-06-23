@@ -35,6 +35,11 @@ package net.wg.mock
          return false;
       }
       
+      public function isVOIPAvailableS() : Boolean
+      {
+         return false;
+      }
+      
       public function isVivoxS() : Boolean
       {
          return false;

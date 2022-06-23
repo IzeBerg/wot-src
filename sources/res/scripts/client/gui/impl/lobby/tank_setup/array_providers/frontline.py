@@ -11,9 +11,9 @@ from skeletons.gui.game_control import IEpicBattleMetaGameController
 class BattleAbilityMixin(WeakMixin, Tapped):
 
     @classmethod
-    def fromBattleAbility(cls, item, tags, isActivated):
+    def fromBattleAbility(cls, item, tags, isActivated, price):
         if isinstance(item, BattleAbility):
-            return BattleAbilityMixin(item).tap(subTags=tags, isActivated=isActivated)
+            return BattleAbilityMixin(item).tap(subTags=tags, isActivated=isActivated, price=price)
 
     @property
     def tags(self):
@@ -75,17 +75,14 @@ class BattleAbilityProvider(VehicleBaseArrayProvider):
         return REQ_CRITERIA.CUSTOM(lambda item: item.innationID in self.__getEpicSkills().keys())
 
     def _getItemSortKey(self, item, ctx):
-        return (
-         'default' not in item.tags,
-         'regenerationKit' in item.name,
-         item.userName)
+        return item.price
 
     def __getAbilities(self):
         items = self._itemsCache.items.getItems(self._getItemTypeID(), self._getCriteria()).values()
         epicSkills = self.__getEpicSkills()
         result = []
         for item in items:
-            result.append(BattleAbilityMixin.fromBattleAbility(item, epicSkills[item.innationID].tags, epicSkills[item.innationID].isActivated))
+            result.append(BattleAbilityMixin.fromBattleAbility(item, epicSkills[item.innationID].tags, epicSkills[item.innationID].isActivated, epicSkills[item.innationID].price))
 
         return result
 

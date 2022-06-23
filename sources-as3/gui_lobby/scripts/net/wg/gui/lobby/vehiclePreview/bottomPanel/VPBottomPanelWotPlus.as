@@ -65,6 +65,11 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
          return this.rentBtn.height;
       }
       
+      public function getOffsetY() : int
+      {
+         return 0;
+      }
+      
       private function onRentBtnClickHandler(param1:ButtonEvent) : void
       {
          onRentClickS();

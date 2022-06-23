@@ -346,7 +346,7 @@ package net.wg.infrastructure.managers.impl
          if(_loc2_)
          {
             _loc3_ = _loc2_.parent as TextInput;
-            if(_loc2_.type == TextFieldType.INPUT && _loc3_ && _loc3_.enabled && _loc3_.editable && this.hasExclusiveHandlers())
+            if(_loc2_.type == TextFieldType.INPUT && _loc3_ && _loc3_.enabled && _loc3_.editable && this.hasExclusiveHandlers() && App.voiceChatMgr.isVOIPAvailableS())
             {
                FocusManager.setFocus(null);
                param1.preventDefault();

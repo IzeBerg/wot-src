@@ -2,6 +2,7 @@ import logging, typing
 from functools import partial
 import BigWorld
 from gui.marathon.marathon_event import MarathonEvent
+from gui.resource_well.resource_well_helpers import isResourceWellRewardVehicle
 from shared_utils import nextTick
 from CurrentVehicle import g_currentVehicle
 from HeroTank import HeroTank
@@ -45,7 +46,7 @@ from helpers.CallbackDelayer import CallbackDelayer
 from helpers.statistics import HANGAR_LOADING_STATE
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.connection_mgr import IConnectionManager
-from skeletons.gui.game_control import IRankedBattlesController, IEpicBattleMetaGameController, IPromoController, IIGRController, IBattlePassController, IBattleRoyaleController, IBootcampController, IMapboxController, IMarathonEventsController, IDragonBoatController
+from skeletons.gui.game_control import IRankedBattlesController, IEpicBattleMetaGameController, IPromoController, IIGRController, IFunRandomController, IBattlePassController, IBattleRoyaleController, IBootcampController, IMapboxController, IMarathonEventsController
 from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.offers import IOffersBannerController
@@ -54,7 +55,7 @@ from skeletons.gui.shared.utils import IHangarSpace
 from skeletons.helpers.statistics import IStatisticsCollector
 from tutorial.control.context import GLOBAL_FLAG
 from account_helpers import AccountSettings
-from account_helpers.AccountSettings import NATION_CHANGE_VIEWED, DBOAT_WIDGET_SHOW
+from account_helpers.AccountSettings import NATION_CHANGE_VIEWED
 from gui.impl.gen import R
 from gui.impl import backport
 from PlayerEvents import g_playerEvents
@@ -83,7 +84,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
     battlePassController = dependency.descriptor(IBattlePassController)
     battleRoyaleController = dependency.descriptor(IBattleRoyaleController)
     bootcampController = dependency.descriptor(IBootcampController)
-    dragonBoatController = dependency.descriptor(IDragonBoatController)
     itemsCache = dependency.descriptor(IItemsCache)
     igrCtrl = dependency.descriptor(IIGRController)
     lobbyContext = dependency.descriptor(ILobbyContext)
@@ -96,6 +96,7 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
     _offersBannerController = dependency.descriptor(IOffersBannerController)
     __mapboxCtrl = dependency.descriptor(IMapboxController)
     __marathonCtrl = dependency.descriptor(IMarathonEventsController)
+    __funRandomController = dependency.descriptor(IFunRandomController)
     _COMMON_SOUND_SPACE = __SOUND_SETTINGS
 
     def __init__(self, _=None):
@@ -156,13 +157,12 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.rankedController.onUpdated += self.onRankedUpdate
         self.rankedController.onGameModeStatusTick += self.__updateAlertMessage
         self.__mapboxCtrl.onPrimeTimeStatusUpdated += self.__updateAlertMessage
+        self.__funRandomController.onGameModeStatusUpdated += self.__updateAlertMessage
         self.battleRoyaleController.onUpdated += self.__updateBattleRoyaleComponents
         self.epicController.onUpdated += self.__onEpicBattleUpdated
         self.epicController.onPrimeTimeStatusUpdated += self.__onEpicBattleUpdated
         self.epicController.onGameModeStatusTick += self.__updateAlertMessage
         self._promoController.onNewTeaserReceived += self.__onTeaserReceived
-        self.dragonBoatController.onSettingsChanged += self.__updateDragonBoatWidget
-        self.dragonBoatController.onWidgetStateChanged += self.__updateDragonBoatWidget
         self.hangarSpace.setVehicleSelectable(True)
         g_prbCtrlEvents.onVehicleClientStateChanged += self.__onVehicleClientStateChanged
         g_playerEvents.onPrebattleInvitationAccepted += self.__onPrebattleInvitationAccepted
@@ -204,15 +204,14 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.hangarSpace.onSpaceCreate -= self.__onSpaceCreate
         self.igrCtrl.onIgrTypeChanged -= self.__onIgrTypeChanged
         self.rankedController.onUpdated -= self.onRankedUpdate
-        self.__mapboxCtrl.onPrimeTimeStatusUpdated -= self.__updateAlertMessage
         self.rankedController.onGameModeStatusTick -= self.__updateAlertMessage
+        self.__mapboxCtrl.onPrimeTimeStatusUpdated -= self.__updateAlertMessage
+        self.__funRandomController.onGameModeStatusUpdated -= self.__updateAlertMessage
         self.battleRoyaleController.onUpdated -= self.__updateBattleRoyaleComponents
         self.epicController.onUpdated -= self.__onEpicBattleUpdated
         self.epicController.onPrimeTimeStatusUpdated -= self.__onEpicBattleUpdated
         self.epicController.onGameModeStatusTick -= self.__updateAlertMessage
         self._promoController.onNewTeaserReceived -= self.__onTeaserReceived
-        self.dragonBoatController.onSettingsChanged -= self.__updateDragonBoatWidget
-        self.dragonBoatController.onWidgetStateChanged -= self.__updateDragonBoatWidget
         if self.__teaser is not None:
             self.__teaser.stop()
             self.__teaser = None
@@ -271,6 +270,8 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
                 newCarouselAlias = HANGAR_ALIASES.ROYALE_TANK_CAROUSEL
             elif self.__mapboxCtrl.isMapboxMode():
                 newCarouselAlias = HANGAR_ALIASES.MAPBOX_TANK_CAROUSEL
+            elif self.__funRandomController.isFunRandomPrbActive():
+                newCarouselAlias = HANGAR_ALIASES.FUN_RANDOM_TANK_CAROUSEL
             elif self.battlePassController.isVisible() and self.battlePassController.isValidBattleType(self.prbDispatcher.getEntity()):
                 newCarouselAlias = HANGAR_ALIASES.BATTLEPASS_TANK_CAROUSEL
         if prevCarouselAlias != newCarouselAlias or force:
@@ -316,19 +317,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
             self.epicWidget.update()
         return
 
-    def __updateDragonBoatWidget(self):
-        if self.dragonBoatWidget is not None:
-            showInHangar = not self.bootcampController.isInBootcamp() and self.__isRandomBattleSelected()
-            visible = self.dragonBoatController.isAvailable() and AccountSettings.getSettings(DBOAT_WIDGET_SHOW)
-            self.as_setEventEntryPointVisibleS(showInHangar and visible)
-        return
-
-    def __isRandomBattleSelected(self):
-        if self.prbDispatcher is not None:
-            return self.prbDispatcher.getFunctionalState().isQueueSelected(QUEUE_TYPE.RANDOMS)
-        else:
-            return False
-
     def __updateCrew(self):
         if self.crewPanel is not None:
             self.crewPanel.updateTankmen()
@@ -338,6 +326,9 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         if self.prbDispatcher is not None:
             if self.rankedController.isRankedPrbActive():
                 self.__updateAlertBlock(*self.rankedController.getAlertBlock())
+                return
+            if self.__funRandomController.isFunRandomPrbActive():
+                self.__updateAlertBlock(*self.__funRandomController.getAlertBlock())
                 return
             if self.__mapboxCtrl.isMapboxPrbActive():
                 self.__updateMapboxAlertMsg()
@@ -379,12 +370,15 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
                 descriptor = entity.typeDescriptor
                 if descriptor:
                     marathons = self.__marathonCtrl.getMarathons()
-                    activeMarathon = next((marathon for marathon in marathons if marathon.vehicleID == descriptor.type.compactDescr), None)
+                    vehicleCD = descriptor.type.compactDescr
+                    activeMarathon = next((marathon for marathon in marathons if marathon.vehicleID == vehicleCD), None)
                     if activeMarathon:
                         title = backport.text(R.strings.marathon.vehiclePreview.buyingPanel.title())
-                        shared_events.showMarathonVehiclePreview(descriptor.type.compactDescr, activeMarathon.remainingPackedRewards, title, activeMarathon.prefix, True)
+                        shared_events.showMarathonVehiclePreview(vehicleCD, activeMarathon.remainingPackedRewards, title, activeMarathon.prefix, True)
+                    elif isResourceWellRewardVehicle(vehicleCD=vehicleCD):
+                        shared_events.showResourceWellHeroPreview(vehicleCD)
                     else:
-                        shared_events.showHeroTankPreview(descriptor.type.compactDescr)
+                        shared_events.showHeroTankPreview(vehicleCD)
         self.__checkVehicleCameraState()
         self.__updateState()
         return
@@ -446,10 +440,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
     @property
     def epicWidget(self):
         return self.getComponent(HANGAR_ALIASES.EPIC_WIDGET)
-
-    @property
-    def dragonBoatWidget(self):
-        return self.getComponent(HANGAR_ALIASES.EVENT_ENTRANCE_POINT)
 
     def onCacheResync(self, reason, diff):
         if diff is not None and GUI_ITEM_TYPE.CREW_BOOKS in diff:
@@ -515,7 +505,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__updateBattleRoyaleComponents()
         self._updateCnSubscriptionMode()
         self._updateBattleRoyaleMode()
-        self.__updateDragonBoatWidget()
         Waiting.hide('updateVehicle')
 
     def __onCurrentVehicleChanged(self):
@@ -530,7 +519,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.as_setNotificationEnabledS(crewBooksViewedCache().haveNewCrewBooks())
         self._updateCnSubscriptionMode()
         self._updateBattleRoyaleMode()
-        self.__updateDragonBoatWidget()
         Waiting.hide('updateVehicle')
 
     def __onSpaceRefresh(self):
@@ -614,7 +602,6 @@ class Hangar(LobbySelectableView, HangarMeta, IGlobalListener):
         self.__updateHeaderEpicWidget()
         self.__switchCarousels()
         self.__updateBattleRoyaleComponents()
-        self.__updateDragonBoatWidget()
 
     def __isSpecialMode(self):
         return self.prbDispatcher is not None and self.prbDispatcher.getFunctionalState().isInUnit() or self.prbDispatcher.getFunctionalState().isInPreQueue(QUEUE_TYPE.RANKED) or self.prbDispatcher.getFunctionalState().isInPreQueue(QUEUE_TYPE.EPIC)

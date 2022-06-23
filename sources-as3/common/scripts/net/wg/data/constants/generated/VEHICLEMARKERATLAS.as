@@ -149,6 +149,8 @@ package net.wg.data.constants.generated
       
       public static const CHINA_CH46_113_140:String = "china-Ch46_113_140";
       
+      public static const CHINA_CH53_T_26_CHINA:String = "china-Ch53_T_26_China";
+      
       public static const CZECH_CZ01_SKODA_T40:String = "czech-Cz01_Skoda_T40";
       
       public static const CZECH_CZ02_TVP_T50:String = "czech-Cz02_TVP_T50";
@@ -539,6 +541,8 @@ package net.wg.data.constants.generated
       
       public static const GERMANY_G16_PZ_VIB_TIGER_II_F:String = "germany-G16_PzVIB_Tiger_II_F";
       
+      public static const GERMANY_G16_PZ_VIB_TIGER_II_FL:String = "germany-G16_PzVIB_Tiger_II_FL";
+      
       public static const GERMANY_G16_PZ_VIB_TIGER_II_IGR:String = "germany-G16_PzVIB_Tiger_II_IGR";
       
       public static const GERMANY_G16_PZ_VIB_TIGER_II_TRAINING:String = "germany-G16_PzVIB_Tiger_II_training";
@@ -834,6 +838,8 @@ package net.wg.data.constants.generated
       public static const ITALY_IT19_PROGETTO_C50_MOD_66:String = "italy-It19_Progetto_C50_mod_66";
       
       public static const ITALY_IT20_CARRO_COMBATTIMENTO_45T:String = "italy-It20_Carro_Combattimento_45t";
+      
+      public static const ITALY_IT30_CC_MOD_64_PREM:String = "italy-It30_CC_mod_64_Prem";
       
       public static const JAPAN_J01_NC27:String = "japan-J01_NC27";
       
@@ -1146,6 +1152,8 @@ package net.wg.data.constants.generated
       public static const SWEDEN_S31_STRV_K:String = "sweden-S31_Strv_K";
       
       public static const SWEDEN_S32_BOFORS_TORNVAGN:String = "sweden-S32_Bofors_Tornvagn";
+      
+      public static const SWEDEN_S34_LAGO_M38:String = "sweden-S34_Lago_M38";
       
       public static const UK_GB01_MEDIUM_MARK_I:String = "uk-GB01_Medium_Mark_I";
       
@@ -1640,6 +1648,8 @@ package net.wg.data.constants.generated
       public static const USA_A95_T95_E6:String = "usa-A95_T95_E6";
       
       public static const USA_A97_M41_BULLDOG:String = "usa-A97_M41_Bulldog";
+      
+      public static const USA_A97_M41_BULLDOG_FL:String = "usa-A97_M41_Bulldog_FL";
       
       public static const USA_A99_T92_LT:String = "usa-A99_T92_LT";
       

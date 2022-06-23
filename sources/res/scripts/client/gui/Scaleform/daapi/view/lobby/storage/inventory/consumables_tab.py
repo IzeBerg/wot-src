@@ -10,6 +10,7 @@ class _ConsumableFilterBit(CONST_CONTAINER):
     CONSUMABLES = 1
     BATTLE_BOOSTERS = 2
     DEMOUNT_KITS = 4
+    RECERTIFICATION_FORMS = 8
 
 
 _TYPE_FILTER_ITEMS = [
@@ -21,7 +22,7 @@ _TYPE_FILTER_ITEMS = [
     'selected': False, 
     'tooltip': R.strings.storage.inventory.filterType.instructions, 
     'icon': R.images.gui.maps.icons.storage.filters.icon_button_instructions},
- {'filterValue': _ConsumableFilterBit.DEMOUNT_KITS, 
+ {'filterValue': _ConsumableFilterBit.DEMOUNT_KITS | _ConsumableFilterBit.RECERTIFICATION_FORMS, 
     'selected': False, 
     'tooltip': R.strings.storage.inventory.filterType.other, 
     'icon': R.images.gui.maps.icons.storage.filters.icon_button_other}]
@@ -30,7 +31,9 @@ _TYPE_ID_BIT_TO_TYPE_ID_MAP = {_ConsumableFilterBit.CONSUMABLES: (
    _ConsumableFilterBit.BATTLE_BOOSTERS: (
                                         GUI_ITEM_TYPE.BATTLE_BOOSTER,), 
    _ConsumableFilterBit.DEMOUNT_KITS: (
-                                     GUI_ITEM_TYPE.DEMOUNT_KIT,)}
+                                     GUI_ITEM_TYPE.DEMOUNT_KIT,), 
+   _ConsumableFilterBit.RECERTIFICATION_FORMS: (
+                                              GUI_ITEM_TYPE.RECERTIFICATION_FORM,)}
 
 class ConsumablesTabView(FiltrableRegularCategoryByTypeTabView):
     filterItems = _TYPE_FILTER_ITEMS
@@ -40,7 +43,10 @@ class ConsumablesTabView(FiltrableRegularCategoryByTypeTabView):
 
     def _getItemTypeID(self):
         return (
-         GUI_ITEM_TYPE.EQUIPMENT, GUI_ITEM_TYPE.BATTLE_BOOSTER, GUI_ITEM_TYPE.DEMOUNT_KIT)
+         GUI_ITEM_TYPE.EQUIPMENT,
+         GUI_ITEM_TYPE.BATTLE_BOOSTER,
+         GUI_ITEM_TYPE.DEMOUNT_KIT,
+         GUI_ITEM_TYPE.RECERTIFICATION_FORM)
 
     def _getClientSectionKey(self):
         return 'storage_consumables_tab'

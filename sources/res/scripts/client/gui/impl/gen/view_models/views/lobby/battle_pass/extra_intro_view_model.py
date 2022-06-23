@@ -11,6 +11,10 @@ class ExtraIntroViewModel(ViewModel):
     def vehicleInfo(self):
         return self._getViewModel(0)
 
+    @staticmethod
+    def getVehicleInfoType():
+        return VehicleInfoModel
+
     def getStyleName(self):
         return self._getString(1)
 

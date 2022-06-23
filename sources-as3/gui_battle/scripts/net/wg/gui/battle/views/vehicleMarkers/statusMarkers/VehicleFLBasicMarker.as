@@ -32,6 +32,7 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       
       override protected function updateColorSettings(param1:uint) : void
       {
+         this.iconMc.gotoAndStop(color);
          this.glowContainer.updateColorSettings(color);
       }
    }

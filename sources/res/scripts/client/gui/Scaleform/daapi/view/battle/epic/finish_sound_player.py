@@ -1,4 +1,5 @@
 from functools import partial
+from typing import Set
 import BigWorld
 from PlayerEvents import g_playerEvents
 from gui.Scaleform.daapi.view.battle.shared.finish_sound_player import FinishSoundPlayer
@@ -24,6 +25,9 @@ class EpicFinishSoundPlayer(FinishSoundPlayer, IViewComponentsCtrlListener):
         self.__timeIsOver = False
         g_playerEvents.onRoundFinished += self.__onEpicRoundFinished
         return
+
+    def updateDeadVehicles(self, aliveAllies, deadAllies, aliveEnemies, deadEnemies):
+        pass
 
     def detachedFromCtrl(self, ctrlID):
         g_playerEvents.onRoundFinished -= self.__onEpicRoundFinished

@@ -9,6 +9,8 @@ package net.wg.gui.lobby.hangar.quests
    import flash.geom.Rectangle;
    import flash.utils.Dictionary;
    import net.wg.data.Aliases;
+   import net.wg.data.constants.Errors;
+   import net.wg.data.constants.Values;
    import net.wg.gui.lobby.hangar.data.HeaderQuestGroupVO;
    import net.wg.gui.lobby.hangar.interfaces.IHeaderQuestsContainer;
    import net.wg.gui.lobby.hangar.interfaces.IQuestInformerButton;
@@ -33,7 +35,29 @@ package net.wg.gui.lobby.hangar.quests
       
       private static const QUESTS_GROUP_OFFSET:int = 34;
       
+      private static const LEFT_SIDE_GROUP_X_OFFSET_SMALL:int = -3;
+      
+      private static const LEFT_SIDE_GROUP_X_OFFSET:int = -1;
+      
       private static const RIGHT_SIDE_GROUP_X_OFFSET:int = -11;
+      
+      public static const DEFAULT_FLAGS_OFFSET_Y:int = Values.ZERO;
+      
+      private static const SECONDARY_OFFSET_LEFT_X:int = 17;
+      
+      private static const SECONDARY_OFFSET_LEFT_X_SMALL:int = 15;
+      
+      private static const SECONDARY_OFFSET_RIGHT_X:int = 16;
+      
+      private static const SECONDARY_OFFSET_RIGHT_X_SMALL:int = 14;
+      
+      private static const SECONDARY_MARGIN_LEFT:int = 27;
+      
+      private static const SECONDARY_MARGIN_RIGHT:int = 18;
+      
+      private static const SECONDARY_MARGIN_LEFT_SMALL:int = 23;
+      
+      private static const SECONDARY_MARGIN_RIGHT_SMALL:int = 14;
       
       public static var ENTRY_POINT_RESIZE:String = "entryPointResize";
        
@@ -65,6 +89,14 @@ package net.wg.gui.lobby.hangar.quests
       private var _scheduler:IScheduler = null;
       
       private var _entryPoint:IHeaderFlagsEntryPoint = null;
+      
+      private var _flagsOffsetY:Number = 0;
+      
+      private var _isSmall:Boolean = false;
+      
+      private var _secondaryEntryPointLeft:IHeaderSecondaryEntryPoint = null;
+      
+      private var _secondaryEntryPointRight:IHeaderSecondaryEntryPoint = null;
       
       public function HeaderQuestsFlags()
       {
@@ -145,13 +177,17 @@ package net.wg.gui.lobby.hangar.quests
          this.questsHitArea = null;
          this._questsGroupsData = null;
          this.clearEntryPoint();
+         if(this._secondaryEntryPointLeft)
+         {
+            removeChild(DisplayObject(this._secondaryEntryPointLeft));
+            this._secondaryEntryPointLeft = null;
+         }
+         if(this._secondaryEntryPointRight)
+         {
+            removeChild(DisplayObject(this._secondaryEntryPointRight));
+            this._secondaryEntryPointRight = null;
+         }
          super.onDispose();
-      }
-      
-      public function set offsetRightSideX(param1:Number) : void
-      {
-         this._offsetRightSideX = param1;
-         invalidateSize();
       }
       
       public function getEntryPoint() : IHeaderFlagsEntryPoint
@@ -162,6 +198,15 @@ package net.wg.gui.lobby.hangar.quests
       public function getHitRect() : Rectangle
       {
          return new Rectangle(this.questsHitArea.x,this.questsHitArea.y,this.questsHitArea.width,this.questsHitArea.height);
+      }
+      
+      public function set isSmall(param1:Boolean) : void
+      {
+         if(param1 != this._isSmall)
+         {
+            this._isSmall = param1;
+            invalidateSize();
+         }
       }
       
       public function getQuestBtnByType(param1:String) : IQuestInformerButton
@@ -217,6 +262,49 @@ package net.wg.gui.lobby.hangar.quests
          }
          this._entryPoint = param1;
          invalidateSize();
+      }
+      
+      public function getSecondaryEntryPoint(param1:Boolean) : IHeaderSecondaryEntryPoint
+      {
+         return !!param1 ? this._secondaryEntryPointRight : this._secondaryEntryPointLeft;
+      }
+      
+      public function addSecondaryEntryPoint(param1:IHeaderSecondaryEntryPoint, param2:Boolean) : void
+      {
+         this.removeSecondaryEntryPoint(param2);
+         App.utils.asserter.assertNotNull(param1,"secondary entry point" + Errors.CANT_NULL);
+         if(param1)
+         {
+            addChild(DisplayObject(param1));
+            if(param2)
+            {
+               this._secondaryEntryPointRight = param1;
+            }
+            else
+            {
+               this._secondaryEntryPointLeft = param1;
+            }
+            invalidateSize();
+         }
+      }
+      
+      public function removeSecondaryEntryPoint(param1:Boolean) : void
+      {
+         if(param1)
+         {
+            if(this._secondaryEntryPointRight)
+            {
+               removeChild(DisplayObject(this._secondaryEntryPointRight));
+               this._secondaryEntryPointRight = null;
+               invalidateSize();
+            }
+         }
+         else if(this._secondaryEntryPointLeft)
+         {
+            removeChild(DisplayObject(this._secondaryEntryPointLeft));
+            this._secondaryEntryPointLeft = null;
+            invalidateSize();
+         }
       }
       
       private function clearEntryPoint() : void
@@ -314,7 +402,7 @@ package net.wg.gui.lobby.hangar.quests
                this._questsGroupsContainers.push(_loc2_);
                _loc4_++;
             }
-            this.questsHitArea.visible = true;
+            this.questsHitArea.visible = _loc1_ > 1;
          }
       }
       
@@ -322,7 +410,21 @@ package net.wg.gui.lobby.hangar.quests
       {
          var _loc2_:IHeaderQuestsContainer = null;
          var _loc3_:HeaderQuestGroupVO = null;
+         var _loc7_:int = 0;
+         var _loc8_:int = 0;
          var _loc1_:int = this._questsGroupsData.length;
+         if(this._secondaryEntryPointLeft)
+         {
+            _loc7_ = !!this._isSmall ? int(SECONDARY_OFFSET_LEFT_X_SMALL) : int(SECONDARY_OFFSET_LEFT_X);
+            this._secondaryEntryPointLeft.x = -((this.entryPointWidth >> 1) + this._secondaryEntryPointLeft.width + this.entryPointMarginLeft + _loc7_) | 0;
+            this._secondaryEntryPointLeft.y = this.entryPointMarginTop | 0;
+         }
+         if(this._secondaryEntryPointRight)
+         {
+            _loc8_ = !!this._isSmall ? int(SECONDARY_OFFSET_RIGHT_X_SMALL) : int(SECONDARY_OFFSET_RIGHT_X);
+            this._secondaryEntryPointRight.x = (this.entryPointWidth >> 1) + this.entryPointMarginRight + _loc8_;
+            this._secondaryEntryPointRight.y = this.entryPointMarginTop;
+         }
          var _loc4_:int = this.getInitialRightSideX();
          var _loc5_:int = -1;
          var _loc6_:int = 0;
@@ -344,7 +446,7 @@ package net.wg.gui.lobby.hangar.quests
                _loc2_.x = _loc5_;
                _loc5_ -= _loc2_.cmptWidth;
             }
-            _loc2_.y = this.entryPointMarginTop;
+            _loc2_.y = this.entryPointMarginTop + this.flagsOffsetY;
             _loc6_++;
          }
       }
@@ -390,6 +492,7 @@ package net.wg.gui.lobby.hangar.quests
             _loc1_ += _loc3_.cmptWidth;
          }
          this.questsHitArea.x = _loc2_;
+         this.questsHitArea.y = this.flagsOffsetY;
          this.questsHitArea.width = _loc1_;
       }
       
@@ -550,17 +653,51 @@ package net.wg.gui.lobby.hangar.quests
       
       private function getInitialRightSideX() : int
       {
-         return (this.entryPointWidth >> 1) + this.entryPointMarginRight + QUESTS_GROUP_OFFSET + RIGHT_SIDE_GROUP_X_OFFSET + this._offsetRightSideX;
+         var _loc2_:int = 0;
+         if(this._secondaryEntryPointRight)
+         {
+            _loc2_ = !!this._isSmall ? int(SECONDARY_MARGIN_RIGHT_SMALL) : int(SECONDARY_MARGIN_RIGHT);
+            return this._secondaryEntryPointRight.x + this._secondaryEntryPointRight.width + _loc2_ | 0;
+         }
+         var _loc1_:int = QUESTS_GROUP_OFFSET + RIGHT_SIDE_GROUP_X_OFFSET + this._offsetRightSideX;
+         return (this.entryPointWidth >> 1) + this.entryPointMarginRight + _loc1_;
       }
       
       private function getInitialLeftSideX(param1:int) : int
       {
-         return -((this.entryPointWidth >> 1) + (param1 >> 1) + this.entryPointMarginLeft + QUESTS_GROUP_OFFSET);
+         var _loc3_:int = 0;
+         if(this._secondaryEntryPointLeft)
+         {
+            _loc3_ = !!this._isSmall ? int(SECONDARY_MARGIN_LEFT_SMALL) : int(SECONDARY_MARGIN_LEFT);
+            return this._secondaryEntryPointLeft.x - (param1 >> 1) - _loc3_ | 0;
+         }
+         var _loc2_:int = QUESTS_GROUP_OFFSET + (!!this._isSmall ? LEFT_SIDE_GROUP_X_OFFSET_SMALL : LEFT_SIDE_GROUP_X_OFFSET);
+         return -((this.entryPointWidth >> 1) + (param1 >> 1) + this.entryPointMarginLeft + _loc2_);
       }
       
       private function onMoveContainerCompleted() : void
       {
          this._isMoveContainerInProgress = false;
+      }
+      
+      public function set offsetRightSideX(param1:Number) : void
+      {
+         this._offsetRightSideX = param1;
+         invalidateSize();
+      }
+      
+      public function get flagsOffsetY() : Number
+      {
+         return this._flagsOffsetY;
+      }
+      
+      public function set flagsOffsetY(param1:Number) : void
+      {
+         if(this._flagsOffsetY != param1)
+         {
+            this._flagsOffsetY = param1;
+            invalidateSize();
+         }
       }
       
       private function get entryPointWidth() : int

@@ -1547,7 +1547,16 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'wotPlusNoRentSelected',
  'giftSystemMessage',
  'telecomMergeResults',
- 'battlePassUseNonChapterPoints'])
+ 'battlePassUseNonChapterPoints',
+ 'epicSeasonEnd',
+ 'epicLevelUp',
+ 'recertificationResetUsed',
+ 'recertificationReset',
+ 'recertificationAvailability',
+ 'recertificationFinancial',
+ 'resourceWellOperation',
+ 'resourceWellReward',
+ 'resourceWellNoVehicles'])
 SYS_MESSAGE_IMPORTANCE = Enumeration('systemMessageImportance', [
  'normal',
  'high'])
