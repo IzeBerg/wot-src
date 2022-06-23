@@ -12433,6 +12433,8 @@ package
       
       public static const PROJECTION_DECALS_SPECIAL_GONSALO_HAND_07:String = "#vehicle_customization:projection_decals/special/gonsalo_hand_07";
       
+      public static const PROJECTION_DECALS_COOL_PROJECTION_DECAL_66:String = "#vehicle_customization:projection_decals/cool/projection_decal_66";
+      
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_402:String = "#vehicle_customization:projection_decals/special/projection_decal_402";
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_405:String = "#vehicle_customization:projection_decals/special/projection_decal_405";
