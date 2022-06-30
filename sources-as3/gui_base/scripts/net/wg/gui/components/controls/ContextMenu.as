@@ -277,7 +277,10 @@ package net.wg.gui.components.controls
             _loc2_.removeEventListener(ButtonEvent.CLICK,this.onItemClickHandler);
             this._counterManager.removeCounter(_loc2_);
             removeChild(_loc2_);
-            _loc2_.dispose();
+            if(!_loc2_.isDisposed())
+            {
+               _loc2_.dispose();
+            }
             _loc3_++;
          }
          this._contextMenuItems.splice(0,_loc1_);
@@ -287,7 +290,10 @@ package net.wg.gui.components.controls
          {
             _loc4_ = this._separators[_loc3_];
             removeChild(_loc4_);
-            _loc4_.dispose();
+            if(!_loc4_.isDisposed())
+            {
+               _loc4_.dispose();
+            }
             _loc3_++;
          }
          this._separators.splice(0,_loc1_);

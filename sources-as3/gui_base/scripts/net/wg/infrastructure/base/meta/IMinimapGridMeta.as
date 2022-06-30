@@ -11,5 +11,7 @@ package net.wg.infrastructure.base.meta
       function as_clickEnabled(param1:Boolean) : void;
       
       function as_addPoint(param1:Number, param2:Number) : void;
+      
+      function as_clearPoints() : void;
    }
 }

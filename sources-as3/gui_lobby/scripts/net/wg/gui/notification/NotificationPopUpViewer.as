@@ -50,7 +50,11 @@ package net.wg.gui.notification
       
       private var _padding:Point = null;
       
+      private var _externalPadding:Point = null;
+      
       private var _containerMgr:IContainerManager = null;
+      
+      private var _countOverlayViews:int = 0;
       
       public function NotificationPopUpViewer(param1:Class)
       {
@@ -71,6 +75,7 @@ package net.wg.gui.notification
          this._smContainer.addEventListener(MouseEvent.MOUSE_OUT,this.onSMContainerMouseOutHandler);
          this._smContainer.addEventListener(NotificationLayoutEvent.UPDATE_LAYOUT,this.onSmContainerUpdateLayoutHandler);
          this._containerMgr.addEventListener(ContainerManagerEvent.VIEW_ADDED,this.onContainerMgrViewLoadingHandler);
+         this._containerMgr.addEventListener(ContainerManagerEvent.VIEW_REMOVED,this.onContainerMgrViewLoadingHandler);
       }
       
       override protected function draw() : void
@@ -195,10 +200,12 @@ package net.wg.gui.notification
          this._smContainer.removeEventListener(NotificationLayoutEvent.UPDATE_LAYOUT,this.onSmContainerUpdateLayoutHandler);
          this._smContainer = null;
          this._containerMgr.removeEventListener(ContainerManagerEvent.VIEW_ADDED,this.onContainerMgrViewLoadingHandler);
+         this._containerMgr.removeEventListener(ContainerManagerEvent.VIEW_REMOVED,this.onContainerMgrViewLoadingHandler);
          this._containerMgr = null;
          this._animationManager.dispose();
          this._animationManager = null;
          this._padding = null;
+         this._externalPadding = null;
          this._stageDimensions = null;
          this._popupClass = null;
          this.clearPendingList();
@@ -432,15 +439,35 @@ package net.wg.gui.notification
       
       private function onSmContainerUpdateLayoutHandler(param1:NotificationLayoutEvent) : void
       {
+         this._externalPadding = param1.padding;
          this.setPadding(param1.padding);
       }
       
       private function onContainerMgrViewLoadingHandler(param1:ContainerManagerEvent) : void
       {
-         var _loc2_:String = LAYER_NAMES.LAYER_ORDER[param1.layer];
-         if(_loc2_ == LAYER_NAMES.SUBVIEW || _loc2_ == LAYER_NAMES.FULLSCREEN_WINDOWS)
+         var _loc2_:String = null;
+         var _loc3_:Boolean = false;
+         _loc2_ = LAYER_NAMES.LAYER_ORDER[param1.layer];
+         _loc3_ = _loc2_ == LAYER_NAMES.FULLSCREEN_WINDOWS;
+         var _loc4_:Boolean = _loc2_ == LAYER_NAMES.SUBVIEW || _loc3_;
+         if(_loc4_)
          {
-            this.setPadding(DEFAULT_PADDING);
+            if(param1.type == ContainerManagerEvent.VIEW_ADDED)
+            {
+               this.setPadding(DEFAULT_PADDING);
+               if(_loc3_)
+               {
+                  this._countOverlayViews += 1;
+               }
+            }
+            else if(param1.type == ContainerManagerEvent.VIEW_REMOVED && _loc3_)
+            {
+               this._countOverlayViews -= 1;
+               if(this._countOverlayViews == 0 && this._externalPadding)
+               {
+                  this.setPadding(this._externalPadding);
+               }
+            }
          }
       }
    }

@@ -4,11 +4,11 @@ package
    import flash.system.Security;
    
    [ExcludeClass]
-   public class _3f302c7768aedc3c7707c561a6c4cc5e7e48817294c4250b0f55a1da7fee6146_flash_display_Sprite extends Sprite
+   public class _8b4a4d4c6012c05acc9ac761cfda1b3664371ef6be8bf7ce7589731c9bdbad8b_flash_display_Sprite extends Sprite
    {
        
       
-      public function _3f302c7768aedc3c7707c561a6c4cc5e7e48817294c4250b0f55a1da7fee6146_flash_display_Sprite()
+      public function _8b4a4d4c6012c05acc9ac761cfda1b3664371ef6be8bf7ce7589731c9bdbad8b_flash_display_Sprite()
       {
          super();
       }

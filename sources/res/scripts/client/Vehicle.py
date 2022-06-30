@@ -688,6 +688,10 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         else:
             self.__cachedStunInfo = StunInfo(0.0, 0.0, 0.0, 0.0)
 
+    def getStunInfo(self):
+        self.__updateCachedStunInfo(self.stunInfo)
+        return self.__cachedStunInfo
+
     def updateStunInfo(self):
         attachedVehicle = BigWorld.player().getVehicleAttached()
         if attachedVehicle is None:

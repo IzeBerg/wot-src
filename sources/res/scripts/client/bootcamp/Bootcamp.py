@@ -224,7 +224,7 @@ class Bootcamp(EventSystemEntity):
            BOOTCAMP.TOOLTIP_PROGRESSION_DESCRIPTION_GOLD,
            RES_ICONS.MAPS_ICONS_BOOTCAMP_REWARDS_TOOLTIPS_BCGOLD], 6),
           self._getProgressBarIcon(bootcampIcons.bcPremium_universal_48() if iconSize == ICON_SIZE.SMALL else bootcampIcons.bcPremium_universal_80(), [
-           BOOTCAMP.TOOLTIP_PROGRESSION_LABEL_AWARD,
+           BOOTCAMP.TOOLTIP_PROGRESSION_LABEL_PREMIUM,
            BOOTCAMP.TOOLTIP_PROGRESSION_DESCRIPTION_PREMIUM,
            RES_ICONS.MAPS_ICONS_BOOTCAMP_REWARDS_TOOLTIPS_BCPREMIUMPLUS], 6),
           self._getProgressBarIcon(bootcampIcons.bcBootcampMedal_48() if iconSize == ICON_SIZE.SMALL else bootcampIcons.bcBootcampMedal_80(), [

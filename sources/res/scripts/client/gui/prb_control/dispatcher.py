@@ -96,6 +96,11 @@ class _PreBattleDispatcher(ListenersCollection):
             if callback is not None:
                 callback(False)
             return
+        if prb_getters.isParentControlActivated():
+            g_eventDispatcher.showParentControlNotification()
+            if callback is not None:
+                callback(False)
+            return
         entry = self.__factories.createEntry(ctx)
         if entry is None:
             LOG_ERROR('Entry not found', ctx)

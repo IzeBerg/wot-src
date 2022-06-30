@@ -1,4 +1,3 @@
-import typing
 from debug_utils import LOG_ERROR
 from gui.prb_control.ctrl_events import g_prbCtrlEvents
 from gui.prb_control.entities.base.squad.actions_handler import SquadActionsHandler
@@ -90,13 +89,11 @@ class SquadEntity(UnitEntity):
         return SquadActionsValidator(self)
 
     def _vehicleStateCondition(self, v):
-        return (
-         True, None)
+        return True
 
     def _updateVehicleState(self, vehicle, state):
-        isValid, stateOverride = self._vehicleStateCondition(vehicle)
-        state = state if stateOverride is None else stateOverride
-        invalid, stateSet = not isValid, vehicle.getCustomState() == state
+        invalid = not self._vehicleStateCondition(vehicle)
+        stateSet = vehicle.getCustomState() == state
         if invalid and not stateSet:
             vehicle.setCustomState(state)
         elif not invalid and stateSet:
