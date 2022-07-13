@@ -20,6 +20,10 @@ class ResourcesTabModel(ViewModel):
     def setResources(self, value):
         self._setArray(1, value)
 
+    @staticmethod
+    def getResourcesType():
+        return ResourceModel
+
     def _initialize(self):
         super(ResourcesTabModel, self)._initialize()
         self._addStringProperty('type', '')

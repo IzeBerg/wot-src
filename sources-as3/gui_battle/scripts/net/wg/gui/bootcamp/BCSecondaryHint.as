@@ -29,6 +29,14 @@ package net.wg.gui.bootcamp
       private static const CENTER_OFFSET:int = -30;
       
       private static const SINGLE_LINE_HEIGHT:int = 22;
+      
+      private static const BACKGROUND_HEIGHT:int = 38;
+      
+      private static const BACKGROUND_HEIGHT_MAX:int = 68;
+      
+      private static const BACKGROUND_X_OFFSET:int = -20;
+      
+      private static const BACKGROUND_Y_MAX:int = -5;
        
       
       public var iconsAnim:AnimationSet = null;
@@ -98,16 +106,21 @@ package net.wg.gui.bootcamp
       
       public function as_showHint(param1:String) : void
       {
+         var _loc2_:int = 0;
          this.textsAnim.visible = true;
          this.iconsAnim.visible = true;
          this.iconsAnim.gotoAndPlay(RibbonCtrl.SHOW_ANIM);
          this.iconsAnim.glowAnim.gotoAndPlay(1);
          this.textsAnim.gotoAndPlay(RibbonCtrl.SHOW_ANIM);
          this._textField.text = param1.toUpperCase();
-         var _loc2_:int = SINGLE_LINE_HEIGHT - this._textField.textHeight;
+         _loc2_ = SINGLE_LINE_HEIGHT - this._textField.textHeight;
          this.iconsAnim.y = _loc2_;
          this.textsAnim.y = _loc2_;
          this.iconsAnim.x = this.textsAnim.x = CENTER_OFFSET - (this._textField.textWidth >> 1);
+         var _loc3_:Boolean = this._textField.textHeight < SINGLE_LINE_HEIGHT;
+         this._background.height = !!_loc3_ ? Number(BACKGROUND_HEIGHT) : Number(BACKGROUND_HEIGHT_MAX);
+         this._background.x = BACKGROUND_X_OFFSET;
+         this._background.y = !!_loc3_ ? Number(0) : Number(BACKGROUND_Y_MAX);
       }
       
       private function onLifetimeCooldown() : void

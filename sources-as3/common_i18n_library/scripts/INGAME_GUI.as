@@ -1089,7 +1089,7 @@ package
       
       public static const POSTMORTEM_MESSAGES_DEATH_FROM_CLING_BRANDER:String = "#ingame_gui:postmortem_messages/DEATH_FROM_CLING_BRANDER";
       
-      public static const POSTMORTEM_MESSAGES_DEATH_FROM_AIRSTRIKE:String = "#ingame_gui:postmortem_messages/DEATH_FROM_AIRSTRIKE";
+      public static const POSTMORTEM_MESSAGES_DEATH_FROM_SHOT_ARCADE_BOMBER_BATTLE_ROYALE:String = "#ingame_gui:postmortem_messages/DEATH_FROM_SHOT_ARCADE_BOMBER_BATTLE_ROYALE";
       
       public static const PLAYER_MESSAGES_DEATH_FROM_OVERTURN_SELF_SUICIDE:String = "#ingame_gui:player_messages/DEATH_FROM_OVERTURN_SELF_SUICIDE";
       

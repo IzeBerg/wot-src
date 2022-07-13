@@ -369,7 +369,7 @@ class BattleRoyaleRewardsBlock(base.StatsBlock):
 class BattlePassBlock(base.StatsBlock):
     __slots__ = ('currentLevel', 'maxPoints', 'earnedPoints', 'currentLevelPoints',
                  'isDone', 'hasBattlePass', 'battlePassComplete', 'chapterID', 'pointsTotal',
-                 'basePointsDiff')
+                 'basePointsDiff', 'pointsAux')
 
     def __init__(self, meta=None, field='', *path):
         super(BattlePassBlock, self).__init__(meta, field, *path)
@@ -383,6 +383,7 @@ class BattlePassBlock(base.StatsBlock):
         self.chapterID = 0
         self.pointsTotal = 0
         self.basePointsDiff = 0
+        self.pointsAux = 0
 
     def setRecord(self, result, reusable):
         hasProgress = reusable.battlePassProgress.hasProgress
@@ -398,6 +399,7 @@ class BattlePassBlock(base.StatsBlock):
             self.chapterID = reusable.battlePassProgress.chapterID
             self.pointsTotal = reusable.battlePassProgress.pointsTotal
             self.basePointsDiff = reusable.battlePassProgress.basePointsDiff
+            self.pointsAux = reusable.battlePassProgress.pointsAux
 
 
 class BattleRoyalePlayerBlock(base.StatsBlock):

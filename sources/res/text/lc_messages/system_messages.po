@@ -1424,18 +1424,6 @@ msgstr "Жетоны снова доступны."
 msgid "dossiers_unavailable"
 msgstr "Учётная запись не готова (DOSSIERS_UNAVAILABLE)"
 
-msgid "dragonBoat/finalAward/header"
-msgstr "Получены награды за успешное прохождение Фестиваля драконьих лодок:"
-
-msgid "dragonBoat/paused"
-msgstr "Фестиваль драконьих лодок временно приостановлен."
-
-msgid "dragonBoat/restored"
-msgstr "Фестиваль драконьих лодок возобновлён."
-
-msgid "dragonBoat/stageAward/header"
-msgstr "Получены награды:"
-
 msgid "drop_tankman_skill/invalid_vehicle"
 msgstr "Ошибка сброса умений. Неправильная машина."
 
@@ -1443,7 +1431,7 @@ msgid "drop_tankman_skill/server_error"
 msgstr "Не удалось сбросить умения. Попробуйте позже."
 
 msgid "drop_tankman_skill/success"
-msgstr "Все умения и навыки успешно сброшены. Потрачено %(money)s"
+msgstr "Все навыки и умения успешно сброшены. Потрачено %(money)s"
 
 msgid "drop_tankman_skill/vehicle_locked"
 msgstr "Ошибка сброса умений. Машина заблокирована."
@@ -1457,8 +1445,36 @@ msgstr "Динамическое разрешение уменьшено до %(
 msgid "drr_scale/step_up"
 msgstr "Динамическое разрешение увеличено до %(scale)d%%."
 
+msgid "epicBattles/levelUp/awards"
+msgstr "Получена награда:"
+
+msgid "epicBattles/levelUp/body/levelCongrats"
+msgstr ""
+"Вы достигли <font color='#E9E2BF'>%(tier)s</font> уровня прогрессии Линии "
+"фронта."
+
+msgid "epicBattles/levelUp/title"
+msgstr "Поздравляем!"
+
 msgid "epicBattles/notification/notAvailable"
 msgstr "«Линия фронта» недоступна. Следите за новостями на портале игры."
+
+msgid "epicBattles/rewardChoice/error"
+msgstr "Произошла ошибка при выборе наград. Пожалуйста, попробуйте ещё раз."
+
+msgid "epicBattles/seasonEnd/rewards/crewBook"
+msgstr "Получено %(name)s"
+
+msgid "epicBattles/seasonEnd/rewards/equipment"
+msgstr "Получены предбоевые инструкции к оборудованию: %(name)s"
+
+msgid "epicBattles/seasonEnd/text"
+msgstr ""
+"Сезон Линии фронта завершился.<br>Все награды, которые вы не выбрали во "
+"время сезона, начислены вам по умолчанию:"
+
+msgid "epicBattles/seasonEnd/title"
+msgstr "Линия фронта"
 
 msgid "equip_tankman/FORBIDDEN"
 msgstr ""
@@ -1950,6 +1966,24 @@ msgstr "Не удалось обучить члена экипажа. Попро
 msgid "free_xp_to_tman_skill/success"
 msgstr "Член экипажа успешно обучен. Потрачено свободного опыта: %(freeXP)s."
 
+msgid "funRandom/notification/available"
+msgstr "Бои события «Аркада» снова доступны."
+
+msgid "funRandom/notification/available/title"
+msgstr "Режим прекращения огня"
+
+msgid "funRandom/notification/notSet"
+msgstr "Бои события «Аркада» недоступны на выбранном сервере."
+
+msgid "funRandom/notification/notSet/title"
+msgstr "Режим прекращения огня"
+
+msgid "funRandom/notification/primeTime"
+msgstr "Бои события «Аркада» недоступны до окончания режима прекращения огня."
+
+msgid "funRandom/notification/primeTime/title"
+msgstr "Режим прекращения огня"
+
 msgid "gameSessionControl/korea/midnightNotification"
 msgstr ""
 "Для предотвращения возникновения игровой зависимости у несовершеннолетних "
@@ -1973,6 +2007,20 @@ msgstr "Время игры: %(sessionTime)s"
 
 msgid "gameSessionControl/korea/timeTillMidnight"
 msgstr "До полуночи осталось: %(timeLeft)s"
+
+msgid "gameSessionControl/parentControl/kickTime"
+msgstr ""
+"Ваше игровое время заканчивается. Выйти в новый бой невозможно. В "
+"%(kickTime)s вы будете отключены от сервера."
+
+msgid "gameSessionControl/parentControl/noTimeLimit"
+msgstr "С вашего аккаунта снят лимит игрового времени"
+
+msgid "gameSessionControl/parentControl/settingsChanged"
+msgstr "Настройки родительского контроля изменены."
+
+msgid "gameSessionControl/parentControl/timeLimit"
+msgstr "В %(timeLimit)s вы будете отключены от сервера."
 
 msgid "graficsOptionsFail"
 msgstr ""
@@ -2167,7 +2215,8 @@ msgid "lootboxes/open/server_error/DISABLED"
 msgstr "Операция временно недоступна. Попробуйте позже."
 
 msgid "mapbox/notification/primeTime"
-msgstr "Режим «Разведка боем» недоступен до окончания комендантского часа."
+msgstr ""
+"Режим «Разведка боем» недоступен до окончания режима прекращения огня."
 
 msgid "maps_black_list/select/server_error"
 msgstr "Ошибка сервера"
@@ -2451,6 +2500,15 @@ msgstr "Ошибка при настройке оборудования. Пов�
 
 msgid "optionalDevices_remove/error_too_heavy"
 msgstr "Недостаточно грузоподъёмности: попробуйте облегчить машину."
+
+msgid "parentControl/linkText"
+msgstr "Указать дату"
+
+msgid "parentControl/mainText"
+msgstr "Пожалуйста, укажите дату своего рождения."
+
+msgid "parentControl/title"
+msgstr "Подтверждение возраста"
 
 msgid "periphery/errors/isNotAvailable"
 msgstr "Переход недоступен: невозможно определить сервер."

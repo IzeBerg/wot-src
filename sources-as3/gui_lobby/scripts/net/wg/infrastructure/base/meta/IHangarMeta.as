@@ -50,8 +50,6 @@ package net.wg.infrastructure.base.meta
       
       function as_setNotificationEnabled(param1:Boolean) : void;
       
-      function as_setEventEntryPointVisible(param1:Boolean) : void;
-      
       function as_createDQWidget() : void;
       
       function as_destroyDQWidget() : void;

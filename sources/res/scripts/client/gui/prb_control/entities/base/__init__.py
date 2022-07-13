@@ -31,3 +31,10 @@ def lobbyHeaderNavigationPossibleCheck(func):
         return
 
     return wrapper
+
+
+@process
+def checkVehicleAmmoFull(vehicle, callback):
+    res = yield functions.checkAmmoLevel((vehicle,))
+    if res:
+        callback()

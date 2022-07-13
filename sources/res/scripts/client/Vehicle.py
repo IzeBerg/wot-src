@@ -126,6 +126,10 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
     def maxHealth(self):
         return self.publicInfo.maxHealth
 
+    @property
+    def battleModifiers(self):
+        return self.guiSessionProvider.arenaVisitor.getArenaModifiers()
+
     def getBounds(self, partIdx):
         if self.appearance is not None:
             return self.appearance.getBounds(partIdx)
@@ -683,6 +687,10 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
             self.__cachedStunInfo = StunInfo(startTime, endTime, duration, totalTime)
         else:
             self.__cachedStunInfo = StunInfo(0.0, 0.0, 0.0, 0.0)
+
+    def getStunInfo(self):
+        self.__updateCachedStunInfo(self.stunInfo)
+        return self.__cachedStunInfo
 
     def updateStunInfo(self):
         attachedVehicle = BigWorld.player().getVehicleAttached()

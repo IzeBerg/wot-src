@@ -1,3 +1,4 @@
+from battle_modifiers.battle_modifier_constants import EXT_DATA_MODIFIERS_KEY
 from gui.battle_control.controllers.respawn_ctrl import IRespawnView
 from gui.battle_control.controllers.epic_respawn_ctrl import IEpicRespawnView
 from gui.veh_post_progression.helpers import getInstalledShells, updateInvInstalled, setFeatures, setDisabledSwitches
@@ -66,8 +67,9 @@ class RespawnAmmunitionPanelInject(InjectComponentAdaptor, IRespawnView):
         vehState = VehicleState()
         setFeatures(vehState, vehicleInfo.vehPostProgression)
         setDisabledSwitches(vehState, vehicleInfo.disabledSwitchGroupIDs)
-        extData = {EXT_DATA_SLOT_KEY: vehicleInfo.customRoleSlotTypeId, 
-           EXT_DATA_PROGRESSION_KEY: vehState}
+        extData = {EXT_DATA_PROGRESSION_KEY: vehState, 
+           EXT_DATA_SLOT_KEY: vehicleInfo.customRoleSlotTypeId, 
+           EXT_DATA_MODIFIERS_KEY: self.__sessionProvider.arenaVisitor.getArenaModifiers()}
         vehicle = self._vehicle = Vehicle(strCompactDescr=vehicleInfo.strCD, extData=extData.copy(), invData=invData)
         vehicle.installPostProgressionItem(self.__itemsFactory.createVehPostProgression(vehicle.compactDescr, extData[EXT_DATA_PROGRESSION_KEY], vehicle.typeDescr))
 

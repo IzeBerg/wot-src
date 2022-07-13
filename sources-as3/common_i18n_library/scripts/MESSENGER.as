@@ -587,8 +587,6 @@ package
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_BPCOIN:String = "#messenger:serviceChannelMessages/battleResults/bpcoin";
       
-      public static const SERVICECHANNELMESSAGES_BATTLERESULTS_DBPOINTS:String = "#messenger:serviceChannelMessages/battleResults/DBPoints";
-      
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_DOUBLEXPFACTOR:String = "#messenger:serviceChannelMessages/battleResults/doubleXpFactor";
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_PENALTYFORDAMAGEALLIES:String = "#messenger:serviceChannelMessages/battleResults/penaltyForDamageAllies";
@@ -911,7 +909,7 @@ package
       
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_DISCOUNTS:String = "#messenger:serviceChannelMessages/invoiceReceived/discounts";
       
-      public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_DEMOUNTKITS:String = "#messenger:serviceChannelMessages/invoiceReceived/demountKits";
+      public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_EQUIPMENT:String = "#messenger:serviceChannelMessages/invoiceReceived/equipment";
       
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_PIECES:String = "#messenger:serviceChannelMessages/invoiceReceived/pieces";
       
@@ -1871,9 +1869,23 @@ package
       
       public static const CHAT_KOREAMESSAGE_CURFEW:String = "#messenger:chat/koreaMessage/curfew";
       
+      public static const CHAT_PARENTCONTROLMESSAGE_TIMELIMIT:String = "#messenger:chat/parentControlMessage/timeLimit";
+      
       public static const SERVICECHANNELMESSAGES_VEHICLECOLLECTOR_UNLOCKLEVEL_HEADER:String = "#messenger:serviceChannelMessages/vehicleCollector/unlockLevel/header";
       
       public static const SERVICECHANNELMESSAGES_VEHICLECOLLECTOR_UNLOCKLEVEL_TEXT:String = "#messenger:serviceChannelMessages/vehicleCollector/unlockLevel/text";
+      
+      public static const SERVICECHANNELMESSAGES_EPICREWARD_CRYSTAL:String = "#messenger:serviceChannelMessages/epicReward/crystal";
+      
+      public static const SERVICECHANNELMESSAGES_EPICREWARD_BROCHURE_GIFT:String = "#messenger:serviceChannelMessages/epicReward/brochure_gift";
+      
+      public static const SERVICECHANNELMESSAGES_EPICREWARD_BATTLEBOOSTER_GIFT:String = "#messenger:serviceChannelMessages/epicReward/battleBooster_gift";
+      
+      public static const SERVICECHANNELMESSAGES_EPICREWARD_BATTLEPASSPOINTS:String = "#messenger:serviceChannelMessages/epicReward/battlePassPoints";
+      
+      public static const SERVICECHANNELMESSAGES_EPICREWARD_EPICABILITYPOINTS:String = "#messenger:serviceChannelMessages/epicReward/epicAbilityPoints";
+      
+      public static const SERVICECHANNELMESSAGES_EPICREWARD_RECERTIFICATIONFORM_GIFT:String = "#messenger:serviceChannelMessages/epicReward/recertificationForm_gift";
       
       public static const SERVICECHANNELMESSAGES_BATTLEPASSREWARD_HEADER_DEFAULT:String = "#messenger:serviceChannelMessages/battlePassReward/header/default";
       

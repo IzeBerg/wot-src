@@ -1,8 +1,8 @@
-from gui.goodies.demount_kit import DemountKitNovelty
+from gui.goodies.storage_novelty import StorageNovelty
 from gui.goodies.goodies_cache import GoodiesCache
-from skeletons.gui.demount_kit import IDemountKitNovelty
+from skeletons.gui.storage_novelty import IStorageNovelty
 from skeletons.gui.goodies import IGoodiesCache
-__all__ = ('getGoodiesCacheConfig', 'getDemountKitNoveltyConfig')
+__all__ = ('getGoodiesCacheConfig', 'getStorageNoveltyConfig')
 
 def getGoodiesCacheConfig(manager):
     cache = GoodiesCache()
@@ -10,11 +10,11 @@ def getGoodiesCacheConfig(manager):
     manager.addInstance(IGoodiesCache, cache, finalizer='fini')
 
 
-def getDemountKitNoveltyConfig(manager):
+def getStorageNoveltyConfig(manager):
 
     def _create():
-        instance = DemountKitNovelty()
+        instance = StorageNovelty()
         instance.init()
         return instance
 
-    manager.addRuntime(IDemountKitNovelty, _create, finalizer='fini')
+    manager.addRuntime(IStorageNovelty, _create, finalizer='fini')

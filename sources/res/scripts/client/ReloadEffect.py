@@ -220,7 +220,7 @@ class SimpleReload(_GunReload):
         CallbackDelayer.destroy(self)
         return
 
-    def start(self, shellReloadTime, alert, shellCount, reloadShellCount, shellID, reloadStart):
+    def start(self, shellReloadTime, alert, shellCount, reloadShellCount, shellID, reloadStart, clipCapacity):
         if gEffectsDisabled():
             return
         else:
@@ -278,7 +278,7 @@ class BarrelReload(SimpleReload):
         self.stop()
         SimpleReload.__del__(self)
 
-    def start(self, shellReloadTime, alert, shellCount, reloadShellCount, shellID, reloadStart):
+    def start(self, shellReloadTime, alert, shellCount, reloadShellCount, shellID, reloadStart, clipCapacity):
         if gEffectsDisabled():
             return
         else:
@@ -300,7 +300,7 @@ class BarrelReload(SimpleReload):
                     if BARREL_DEBUG_ENABLED:
                         LOG_DEBUG(('!!! Play Ammo Low  = {0} {1}').format(currentTime, self._desc.ammoLow))
             else:
-                if shellCount == 1 and reloadShellCount > 2:
+                if shellCount == 1 and clipCapacity > 2:
                     if BARREL_DEBUG_ENABLED:
                         LOG_DEBUG(('!!! Play Alert  = {0} {1}').format(currentTime, self._desc.lastShellAlert))
                     playByName(self._desc.lastShellAlert)
@@ -458,7 +458,7 @@ class AutoReload(_GunReload):
         CallbackDelayer.destroy(self)
         return
 
-    def start(self, shellReloadTime, alert, shellCount, reloadShellCount, shellID, reloadStart):
+    def start(self, shellReloadTime, alert, shellCount, reloadShellCount, shellID, reloadStart, clipCapacity):
         if gEffectsDisabled():
             return
         else:
@@ -678,6 +678,7 @@ class ReloadEffectStrategy(object):
         shellCounts = ammoCtrl.getShells(currentShellCD)
         shellsQuantityLeft = ammoCtrl.getShellsQuantityLeft()
         isIntuition = ammoCtrl.getIntuitionReloadInProcess()
+        reloadShellCount = clipCapacity
         if isIntuition and self.__intuitionReloadEffect is not None:
             relloadEffect = self.__intuitionReloadEffect
         else:
@@ -689,13 +690,13 @@ class ReloadEffectStrategy(object):
             ammoLow = False
             if clipCapacity > shellCounts[0]:
                 ammoLow = True
-                clipCapacity = shellCounts[0]
+                reloadShellCount = shellCounts[0]
             if self.getGunReloadType() == ReloadEffectsType.DUALGUN_RELOAD:
                 if shellsQuantityLeft == 1:
                     ammoLow = True
                 relloadEffect.start(timeLeft, ammoLow, directTrigger)
             else:
-                relloadEffect.start(timeLeft, ammoLow, shellCounts[1], clipCapacity, currentShellCD, reloadFromStart)
+                relloadEffect.start(timeLeft, ammoLow, shellCounts[1], reloadShellCount, currentShellCD, reloadFromStart, clipCapacity)
         return
 
 

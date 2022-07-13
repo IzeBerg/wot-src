@@ -626,6 +626,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.minimap.components.entries.fallout.flag.FlagMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.fallout.repair.AllyRepairMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.fallout.repair.EnemyRepairMinimapEntry;
+   import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.AOEArtilleryMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.ArtilleryMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.ArtilleryYellowMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.BomberMinimapEntry;
@@ -2233,6 +2234,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FALLOUT_REPAIR_ALLYREPAIRMINIMAPENTRY:Class = AllyRepairMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FALLOUT_REPAIR_ENEMYREPAIRMINIMAPENTRY:Class = EnemyRepairMinimapEntry;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FORTCONSUMABLES_AOEARTILLERYMINIMAPENTRY:Class = AOEArtilleryMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FORTCONSUMABLES_ARTILLERYMINIMAPENTRY:Class = ArtilleryMinimapEntry;
       

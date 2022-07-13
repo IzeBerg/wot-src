@@ -31,6 +31,8 @@ package net.wg.data.constants.generated
       
       public static const CAROUSEL_VEHICLE:String = "carouselVehicle";
       
+      public static const FUN_RANDOM_CAROUSEL_VEHICLE:String = "funRandomCarouselVehicle";
+      
       public static const INVENTORY_VEHICLE:String = "inventoryVehicle";
       
       public static const TECHTREE_VEHICLE:String = "techtreeVehicle";
@@ -441,8 +443,6 @@ package net.wg.data.constants.generated
       
       public static const BPCOIN_INFO:String = "bpcoinInfo";
       
-      public static const DRAGON_BOAT_POINTS_INFO:String = "dragonBoatPointsInfo";
-      
       public static const FREEXP_INFO:String = "freeXPInfo";
       
       public static const HEADER_BUTTON_INFO:String = "Info";
@@ -489,6 +489,10 @@ package net.wg.data.constants.generated
       
       public static const EPIC_BATTLE_WIDGET_INFO:String = "epicBattleWidgetInfo";
       
+      public static const EPIC_BATTLE_RECERTIFICATION_FORM_TOOLTIP:String = "EpicBattleRecertificationFormTooltip";
+      
+      public static const EPIC_BATTLE_INSTRUCTION_TOOLTIP:String = "EpicBattleInstructionTooltip";
+      
       public static const EPIC_QUESTS_PREVIEW:String = "epicQuestsPreview";
       
       public static const EPIC_BATTLE_COMPLETED_QUESTS_INFO:String = "EpicBattleCompletedQuestsTooltipData";
@@ -530,6 +534,10 @@ package net.wg.data.constants.generated
       public static const MAPBOX_PROGRESSION_PREVIEW:String = "mapboxProgressionPreview";
       
       public static const MAPBOX_CALENDAR:String = "mapboxCalendar";
+      
+      public static const FUN_RANDOM_CALENDAR_DAY:String = "funRandomCalendarDay";
+      
+      public static const FUN_RANDOM_QUESTS_PREVIEW:String = "funRandomQuestsPreview";
       
       public static const BLOCKS_DEFAULT_UI:String = "ToolTipInblocksDefaultUI";
       
@@ -761,7 +769,7 @@ package net.wg.data.constants.generated
       
       public static const ELEN_SET:Array = [EVENT_QUESTS_PREVIEW,EVENT_BOARDS_BADGE,EVENT_BOARDS_BADGES_GROUP];
       
-      public static const EPIC_BATTLE_SET:Array = [EPIC_SKILL_INFO,EPIC_SKILL_SLOT_INFO,EPIC_SKILL_SLOT_SETUP_INFO,EPIC_QUESTS_PREVIEW,EPIC_BATTLE_COMPLETED_QUESTS_INFO,EPIC_BATTLE_SELECTOR_INFO,EPIC_BATTLE_CALENDAR_INFO,EPIC_BATTLE_WIDGET_INFO];
+      public static const EPIC_BATTLE_SET:Array = [EPIC_SKILL_INFO,EPIC_SKILL_SLOT_INFO,EPIC_SKILL_SLOT_SETUP_INFO,EPIC_QUESTS_PREVIEW,EPIC_BATTLE_COMPLETED_QUESTS_INFO,EPIC_BATTLE_SELECTOR_INFO,EPIC_BATTLE_CALENDAR_INFO,EPIC_BATTLE_WIDGET_INFO,EPIC_BATTLE_RECERTIFICATION_FORM_TOOLTIP,EPIC_BATTLE_INSTRUCTION_TOOLTIP];
       
       public static const EPIC_IN_BATTE_SET:Array = [EPIC_RANK_UNLOCK_INFO];
       
@@ -781,7 +789,7 @@ package net.wg.data.constants.generated
       
       public static const VEH_CMP_SET:Array = [VEH_CMP_CUSTOMIZATION,VEH_CMP_SKILLS];
       
-      public static const VEHICLES_SET:Array = [CAROUSEL_VEHICLE,INVENTORY_VEHICLE,TECHTREE_VEHICLE,SHOP_VEHICLE,AWARD_VEHICLE,EXTENDED_AWARD_VEHICLE,SENIORITY_AWARD_VEHICLE,TRADE_IN,TRADE_IN_PRICE,HISTORICAL_VEHICLE,VEHICLE_SIMPLE_PARAMETERS,BASE_VEHICLE_PARAMETERS,VEHICLE_CMP_PARAMETERS,VEHICLE_AVG_PARAMETERS,VEHICLE_ADVANCED_PARAMETERS,VEHICLE_PREVIEW_SIMPLE_PARAMETERS,VEHICLE_PREVIEW_AVG_PARAMETERS,VEHICLE_PREVIEW_ADVANCED_PARAMETERS,DEFAULT_CREW_MEMBER,VEHICLE_PREVIEW_CREW_MEMBER,TECHTREE_VEHICLE_ANNOUNCEMENT,TECHTREE_VEHICLE_STATUS,VEHICLE_TANK_SETUP_PARAMETERS,VEHICLE_POST_PROGRESSION_PARAMETERS,VEHICLE_ROLES];
+      public static const VEHICLES_SET:Array = [CAROUSEL_VEHICLE,FUN_RANDOM_CAROUSEL_VEHICLE,INVENTORY_VEHICLE,TECHTREE_VEHICLE,SHOP_VEHICLE,AWARD_VEHICLE,EXTENDED_AWARD_VEHICLE,SENIORITY_AWARD_VEHICLE,TRADE_IN,TRADE_IN_PRICE,HISTORICAL_VEHICLE,VEHICLE_SIMPLE_PARAMETERS,BASE_VEHICLE_PARAMETERS,VEHICLE_CMP_PARAMETERS,VEHICLE_AVG_PARAMETERS,VEHICLE_ADVANCED_PARAMETERS,VEHICLE_PREVIEW_SIMPLE_PARAMETERS,VEHICLE_PREVIEW_AVG_PARAMETERS,VEHICLE_PREVIEW_ADVANCED_PARAMETERS,DEFAULT_CREW_MEMBER,VEHICLE_PREVIEW_CREW_MEMBER,TECHTREE_VEHICLE_ANNOUNCEMENT,TECHTREE_VEHICLE_STATUS,VEHICLE_TANK_SETUP_PARAMETERS,VEHICLE_POST_PROGRESSION_PARAMETERS,VEHICLE_ROLES];
       
       public static const BLUEPRINTS_SET:Array = [BLUEPRINT_INFO,BLUEPRINT_FRAGMENT_INFO,BLUEPRINT_EMPTY_SLOT_INFO,BLUEPRINT_CONVERT_INFO,BLUEPRINT_RANDOM_INFO,BLUEPRINT_RANDOM_NATIONAL_INFO];
       
@@ -827,11 +835,11 @@ package net.wg.data.constants.generated
       
       public static const ACCOUNT_COMPLETION_SET:Array = [ACCOUNT_COMPLETION,DEMO_ACCOUNT_RENAME_PROCESSING];
       
+      public static const FUN_RANDOM_LOBBY_SET:Array = [FUN_RANDOM_CALENDAR_DAY,FUN_RANDOM_QUESTS_PREVIEW];
+      
       public static const REFERRAL_PROGRAM_SET:Array = [REFERRAL_AWARDS];
       
       public static const RESOURCE_WELL_SET:Array = [RESOURCE_WELL_GOLD,RESOURCE_WELL_CREDITS,RESOURCE_WELL_CRYSTAL,RESOURCE_WELL_FREE_XP];
-      
-      public static const DRAGON_BOAT_POINTS_SET:Array = [DRAGON_BOAT_POINTS_INFO];
        
       
       public function TOOLTIPS_CONSTANTS()

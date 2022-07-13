@@ -279,7 +279,7 @@ class BattlePassBuyView(ViewImpl):
     def __update(self):
         ctrl = self.__battlePass
         if ctrl.isPaused():
-            showMissionsBattlePass(R.views.lobby.battle_pass.ChapterChoiceView())
+            showMissionsBattlePass()
             self.destroyWindow()
             return
         if not (ctrl.isEnabled() and ctrl.isActive()):

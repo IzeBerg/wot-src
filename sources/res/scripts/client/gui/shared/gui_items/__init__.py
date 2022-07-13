@@ -14,10 +14,10 @@ CLAN_LOCK = 1
 GUI_ITEM_TYPE_NAMES = tuple(ITEM_TYPE_NAMES) + tuple(['reserved'] * (16 - len(ITEM_TYPE_NAMES)))
 GUI_ITEM_TYPE_NAMES += ('dossierAccount', 'dossierVehicle', 'dossierTankman', 'achievement',
                         'tankmanSkill', 'battleBooster', 'badge', 'battleAbility',
-                        'lootBox', 'demountKit', 'vehPostProgression', 'paint', 'camouflage',
-                        'modification', 'outfit', 'style', 'decal', 'emblem', 'inscription',
-                        'projectionDecal', 'insignia', 'personalNumber', 'sequence',
-                        'attachment')
+                        'lootBox', 'demountKit', 'vehPostProgression', 'recertificationForm',
+                        'paint', 'camouflage', 'modification', 'outfit', 'style',
+                        'decal', 'emblem', 'inscription', 'projectionDecal', 'insignia',
+                        'personalNumber', 'sequence', 'attachment')
 GUI_ITEM_TYPE_INDICES = dict((n, idx) for idx, n in enumerate(GUI_ITEM_TYPE_NAMES))
 
 class GUI_ITEM_TYPE(CONST_CONTAINER):
@@ -50,6 +50,7 @@ class GUI_ITEM_TYPE(CONST_CONTAINER):
     SEQUENCE = GUI_ITEM_TYPE_INDICES['sequence']
     ATTACHMENT = GUI_ITEM_TYPE_INDICES['attachment']
     DEMOUNT_KIT = GUI_ITEM_TYPE_INDICES['demountKit']
+    RECERTIFICATION_FORM = GUI_ITEM_TYPE_INDICES['recertificationForm']
     COMMON = tuple(ITEM_TYPE_INDICES.keys())
     BATTLE_BOOSTER = GUI_ITEM_TYPE_INDICES['battleBooster']
     ARTEFACTS = (

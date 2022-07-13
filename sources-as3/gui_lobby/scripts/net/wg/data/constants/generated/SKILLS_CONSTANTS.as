@@ -14,6 +14,12 @@ package net.wg.data.constants.generated
       public static const TYPE_CURRENT_SKILL:String = "current_skill";
       
       public static const TYPE_CURRENT_NEW_SKILL:String = "current_new_skill";
+      
+      public static const RECERTIFICATION_USABLE:String = "usable";
+      
+      public static const RECERTIFICATION_HIDDEN:String = "hidden";
+      
+      public static const RECERTIFICATION_VISIBLE_DISABLED:String = "visible_disabled";
        
       
       public function SKILLS_CONSTANTS()

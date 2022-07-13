@@ -854,6 +854,11 @@ msgid "advanced/ration"
 msgstr ""
 "Усиливает навыки и умения экипажа, что улучшает все характеристики машины."
 
+msgid "advanced/recertificationForm/description"
+msgstr ""
+"Расходуемый предмет, который позволяет сбросить все навыки и умения у любого"
+" выбранного члена экипажа."
+
 msgid "advanced/relativeArmor"
 msgstr "Комплекс параметров, отвечающих за выживаемость вашей машины в бою."
 
@@ -1299,14 +1304,6 @@ msgstr ""
 msgid "awardItem/crystal/header"
 msgstr "Боны"
 
-msgid "awardItem/dragonBoatPoints/body"
-msgstr ""
-"Сражайтесь в боях события и выполняйте специальные боевые задачи, чтобы "
-"заработать очки для своей команды."
-
-msgid "awardItem/dragonBoatPoints/header"
-msgstr "Очки Фестиваля Драконьих лодок"
-
 msgid "awardItem/eventCoin/body"
 msgstr ""
 "Начисляются за выполнение юбилейных задач во время активной фазы и периода "
@@ -1676,6 +1673,9 @@ msgstr ""
 "По завершении этого этапа вы сможете выбрать и забрать себе одну единицу "
 "штатного оборудования, нажав кнопку «Забрать награду»."
 
+msgid "battlePassOffer/footer/recertification_gift"
+msgstr "Даёт бесплатный сброс навыков"
+
 msgid "battlePassOffer/footer/trophy_gift"
 msgstr ""
 "По завершении этого этапа вы сможете выбрать и забрать себе одну единицу "
@@ -1698,6 +1698,9 @@ msgstr "Оборудование на выбор"
 
 msgid "battlePassOffer/title/new_device_mi_gift"
 msgstr "Оборудование на выбор"
+
+msgid "battlePassOffer/title/recertification_gift"
+msgstr "Бланк переподготовки"
 
 msgid "battlePassOffer/title/trophy_gift"
 msgstr "Трофейное оборудование на выбор"
@@ -4621,6 +4624,23 @@ msgstr ""
 msgid "epicBattleWidget/info/prestige"
 msgstr "Доблесть %(prestige)s"
 
+msgid "epicBattlesOffer/allNations"
+msgstr "Доступен выбор для всех наций, представленных в игре."
+
+msgid "epicBattlesOffer/crewBookInfo"
+msgstr ""
+"Применяется ко всему экипажу. Изучение даёт %(exp)s опыта каждому члену "
+"экипажа."
+
+msgid "epicBattlesOffer/point"
+msgstr "• %(item)s"
+
+msgid "epicBattlesOffer/title/battleBooster_gift"
+msgstr "Инструкции к оборудованию на выбор"
+
+msgid "epicBattlesOffer/title/brochure_gift"
+msgstr "Учебная брошюра на выбор"
+
 msgid "epicBattlesWidget/famePoints"
 msgstr "Фронтовой опыт"
 
@@ -4754,7 +4774,7 @@ msgstr ""
 "Данное ограничение призвано создать равные и комфортные условия для всех кланов, принимающих участие в режиме «Укрепрайон: сражения»."
 
 msgid "fortWrongTime/lockTime/header"
-msgstr "Комендантский час"
+msgstr "Режим прекращения огня"
 
 msgid "fortification/battleRoomLegionaries/body"
 msgstr ""
@@ -5259,6 +5279,15 @@ msgstr ""
 
 msgid "hangar/header/personalMissions/operation_disabled/header"
 msgstr "Операция недоступна"
+
+msgid "hangar/header/personalMissions/unavailable/body"
+msgstr "Личные боевые задачи недоступны в режиме %(modeName)s."
+
+msgid "hangar/header/personalMissions/unavailable/header"
+msgstr "Доступных задач нет"
+
+msgid "hangar/header/personalMissions/unavailable/mode/fun_random"
+msgstr "«Аркада»"
 
 msgid "hangar/header/personalMissions2/completedLockedNext/body"
 msgstr ""
@@ -6557,6 +6586,12 @@ msgstr "Боёв в квалификации %(current)s / %(max)s"
 
 msgid "mode_selector/unavailable/bootcamp"
 msgstr "Недоступно на Учебном полигоне."
+
+msgid "mode_selector/unavailable/notVehicles/level"
+msgstr "%(levels)s уровня"
+
+msgid "mode_selector/unavailable/notVehicles/text"
+msgstr "Для участия в боях режима нужна как минимум одна машина %(vehicles)s."
 
 msgid "mode_selector/unavailable/techProblems"
 msgstr "Временно недоступно по техническим причинам."
@@ -8966,11 +9001,8 @@ msgstr "В настоящий момент подробная информаци
 msgid "quests/linkBtn/customizationProgression/enabled"
 msgstr "Нажмите, чтобы перейти к подробной информации."
 
-msgid "quests/linkBtn/dragonBoat"
-msgstr "К прогрессии Фестиваля драконьих лодок"
-
 msgid "quests/linkBtn/epic"
-msgstr "К прогрессии Боевого пропуска"
+msgstr "К выбору глав Боевого пропуска"
 
 msgid "quests/linkBtn/task"
 msgstr "Перейти к данной боевой задаче"
@@ -10024,6 +10056,7 @@ msgstr "Низкое качество"
 msgid "squadBonus/complex/body"
 msgstr ""
 "Получайте дополнительные %(bonus)s к боевому опыту по итогам каждого боя, играя во взводе с другими игроками.\n"
+"\n"
 "Бонус доступен только для постоянных формирований и не доступен при создании динамического взвода."
 
 msgid "squadBonus/complex/header"
@@ -10163,8 +10196,8 @@ msgstr "Личные резервы"
 msgid "storage/mainMenu/storage/body"
 msgstr ""
 "Содержит оборудование, снаряжение, предбоевые инструкции, демонтажные "
-"наборы, модули и снаряды, не установленные на имеющуюся технику, а также "
-"учебные материалы для экипажа."
+"наборы, бланки переподготовки, модули и снаряды, не установленные на "
+"имеющуюся технику, а также учебные материалы для экипажа."
 
 msgid "storage/mainMenu/storage/header"
 msgstr "Запасы"

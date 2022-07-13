@@ -14,6 +14,8 @@ package net.wg.infrastructure.base.meta
       
       function isVOIPEnabledS() : Boolean;
       
+      function isVOIPAvailableS() : Boolean;
+      
       function as_onPlayerSpeak(param1:Number, param2:Boolean, param3:Boolean) : void;
    }
 }

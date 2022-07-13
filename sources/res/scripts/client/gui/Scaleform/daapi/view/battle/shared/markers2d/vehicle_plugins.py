@@ -18,7 +18,6 @@ from gui.battle_control.battle_constants import FEEDBACK_EVENT_ID as _EVENT_ID, 
 from gui.battle_control.battle_constants import MARKER_HIT_STATE, PLAYER_GUI_PROPS, MARKER_CRITICAL_HIT_STATES
 from gui.battle_control.battle_constants import VEHICLE_VIEW_STATE
 from gui.battle_control.controllers.feedback_adaptor import EntityInFocusData
-from battle_royale.gui.constants import BattleRoyaleEquipments
 from gui.impl import backport
 from gui.impl.gen import R
 from helpers import dependency
@@ -31,7 +30,6 @@ _STATUS_EFFECTS_PRIORITY = (
  BATTLE_MARKER_STATES.REPAIRING_STATE,
  BATTLE_MARKER_STATES.ENGINEER_STATE,
  BATTLE_MARKER_STATES.HEALING_STATE,
- BATTLE_MARKER_STATES.BERSERKER_STATE,
  BATTLE_MARKER_STATES.INSPIRING_STATE,
  BATTLE_MARKER_STATES.DEBUFF_STATE,
  BATTLE_MARKER_STATES.STUN_STATE,
@@ -88,8 +86,7 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
             ctrl.onRemoveCommandReceived += self.__onRemoveCommandReceived
         vStateCtrl = self.sessionProvider.shared.vehicleState
         if vStateCtrl is not None:
-            vStateCtrl.onVehicleStateUpdated += self.__onVehicleStateUpdated
-            vStateCtrl.onEquipmentComponentUpdated.subscribe(self.__onEquipmentComponentUpdated, BattleRoyaleEquipments.BERSERKER)
+            vStateCtrl.onVehicleStateUpdated += self._onVehicleStateUpdated
         arena = avatar_getter.getArena()
         if arena is not None:
             arena.onChatCommandTargetUpdate += self._onChatCommandTargetUpdate
@@ -124,8 +121,7 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
             ctrl.onRemoveCommandReceived -= self.__onRemoveCommandReceived
         vStateCtrl = self.sessionProvider.shared.vehicleState
         if vStateCtrl is not None:
-            vStateCtrl.onVehicleStateUpdated -= self.__onVehicleStateUpdated
-            vStateCtrl.onEquipmentComponentUpdated.unsubscribe(self.__onEquipmentComponentUpdated)
+            vStateCtrl.onVehicleStateUpdated -= self._onVehicleStateUpdated
         arena = avatar_getter.getArena()
         if arena is not None:
             arena.onChatCommandTargetUpdate -= self._onChatCommandTargetUpdate
@@ -262,7 +258,7 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
         elif eventID == _EVENT_ID.VEHICLE_HEALTH:
             self.__updateVehicleHealth(vehicleID, handle, *value)
         elif eventID == _EVENT_ID.VEHICLE_STUN:
-            self.__updateStunMarker(vehicleID, handle, value)
+            self._updateStunMarker(vehicleID, handle, value)
         elif eventID == _EVENT_ID.VEHICLE_DEBUFF:
             self.__updateDebuffMarker(vehicleID, handle, value)
         elif eventID == _EVENT_ID.VEHICLE_INSPIRE:
@@ -270,7 +266,7 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
         elif eventID == _EVENT_ID.VEHICLE_HEAL_POINT:
             self.__updateHealingMarker(vehicleID, handle, value.get('duration', 0))
         elif eventID == _EVENT_ID.VEHICLE_REPAIR_POINT:
-            self.__updateRepairingMarker(vehicleID, handle, value.get('duration', 0))
+            self._updateRepairingMarker(vehicleID, handle, value.get('duration', 0))
         elif eventID == _EVENT_ID.VEHICLE_PASSIVE_ENGINEERING:
             self.__updatePassiveEngineeringMarker(vehicleID, handle, *value)
         elif eventID == _EVENT_ID.VEHICLE_FRONTLINE_STEALTH_RADAR_ACTIVE:
@@ -290,7 +286,8 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
         return self._markers[targetID]
 
     def _updateStatusEffectTimer(self, handle, statusID, leftTime, animated):
-        self._invokeMarker(handle, 'updateStatusEffectTimer', statusID, leftTime, animated)
+        if self.__canUpdateStatus(handle):
+            self._invokeMarker(handle, 'updateStatusEffectTimer', statusID, leftTime, animated)
 
     def _onReplyFeedbackReceived(self, targetID, replierID, markerType, oldReplyCount, newReplyCount):
         marker = self._getMarkerFromTargetID(targetID, markerType)
@@ -320,18 +317,8 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
             isSourceVehicle = False
         if isShown:
             self._invokeMarker(handle, 'showStatusMarker', statusID, self._getMarkerStatusPriority(statusID), isSourceVehicle, duration, currentlyActiveStatusID, self._getMarkerStatusPriority(currentlyActiveStatusID), animated)
-        else:
+        elif self.__canUpdateStatus(handle):
             self._invokeMarker(handle, 'hideStatusMarker', statusID, currentlyActiveStatusID, animated)
-
-    def __onEquipmentComponentUpdated(self, _, vehicleID, equipmentInfo):
-        if vehicleID not in self._markers:
-            return
-        handle = self._markers[vehicleID].getMarkerID()
-        if BigWorld.player().getObservedVehicleID() == vehicleID:
-            duration = 0
-        else:
-            duration = equipmentInfo.endTime - BigWorld.serverTime()
-        self._updateMarkerTimer(vehicleID, handle, duration, BATTLE_MARKER_STATES.BERSERKER_STATE, showCountdown=False)
 
     def _updateInspireMarker(self, vehicleID, handle, isSourceVehicle, isInactivation, endTime, duration, primary=True, animated=True, equipmentID=None):
         vehicle = BigWorld.entities.get(vehicleID)
@@ -363,6 +350,9 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
             self._markerTimers[handle][statusID] = timer
             timer.show(True)
 
+    def __canUpdateStatus(self, handle):
+        return any(marker.getMarkerID() == handle for marker in self._markers.itervalues())
+
     def __checkInspireMarker(self, marker):
         vehicle = marker.getVehicleEntity()
         if vehicle is not None and vehicle.isStarted and vehicle.inspired is not None:
@@ -385,7 +375,7 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
         self._updateMarkerTimer(vehicleID, handle, duration, BATTLE_MARKER_STATES.HEALING_STATE)
         return
 
-    def __updateRepairingMarker(self, vehicleID, handle, duration):
+    def _updateRepairingMarker(self, vehicleID, handle, duration):
         vehicle = BigWorld.entities.get(vehicleID)
         if vehicle is None or not vehicle.isAlive():
             return
@@ -553,7 +543,7 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
             self.__makeMarkerSticky(newTargetID, True, isOneShot)
         return
 
-    def __onVehicleStateUpdated(self, state, value):
+    def _onVehicleStateUpdated(self, state, value):
         if state in (VEHICLE_VIEW_STATE.DESTROYED, VEHICLE_VIEW_STATE.CREW_DEACTIVATED):
             for marker in self._markers.values():
                 if marker.getIsPlayerTeam() or marker.getIsActionMarkerActive():
@@ -669,7 +659,7 @@ class VehicleMarkerPlugin(MarkerPlugin, ChatCommunicationComponent, IArenaVehicl
             _, callbackID = self.__callbackIDs.popitem()
             BigWorld.cancelCallback(callbackID)
 
-    def __updateStunMarker(self, vehicleID, handle, value):
+    def _updateStunMarker(self, vehicleID, handle, value):
         self._updateMarkerTimer(vehicleID, handle, value.duration, BATTLE_MARKER_STATES.STUN_STATE, True)
 
     def __updateDebuffMarker(self, vehicleID, handle, value):

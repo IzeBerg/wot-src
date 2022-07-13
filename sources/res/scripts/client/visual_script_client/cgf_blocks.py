@@ -22,7 +22,7 @@ class CGFMeta(Meta):
 
     @classmethod
     def blockAspects(cls):
-        return [ASPECT.CLIENT]
+        return [ASPECT.CLIENT, ASPECT.HANGAR]
 
 
 class GetVehicleAppearanceGameObject(Block, CGFMeta):

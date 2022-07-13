@@ -99,8 +99,8 @@ class EntryPoint(ViewImpl):
         return EventState.ACTIVE
 
     def __getProgress(self):
-        currentPoints = self.__resourceWell.getCurrentPoints()
         maxPoints = self.__resourceWell.getMaxPoints()
+        currentPoints = (self.__resourceWell.isCompleted() or self.__resourceWell.getCurrentPoints)() if 1 else maxPoints
         return _FULL_PROGRESS / (maxPoints or _FULL_PROGRESS) * currentPoints
 
     def __setLastState(self):

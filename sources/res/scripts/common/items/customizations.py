@@ -133,12 +133,13 @@ class SerializableComponent(object):
     def __eq(self, o, ignoreFlags):
         if self.__class__ != o.__class__:
             return False
+        typedArray = FieldTypes.TYPED_ARRAY
         for fname, ftype in self.fields.iteritems():
             if ftype.flags & ignoreFlags:
                 continue
             v1 = getattr(self, fname)
             v2 = getattr(o, fname)
-            if ftype.type & FieldTypes.TYPED_ARRAY:
+            if ftype.type & typedArray:
                 v1 = set(v1)
                 v2 = set(v2)
             if v1 != v2:
@@ -154,13 +155,12 @@ class SerializableComponent(object):
 
     def __hash__(self):
         result = 17
+        deprecated = FieldFlags.DEPRECATED
         for name, ftype in self.fields.iteritems():
-            if ftype.flags & FieldFlags.DEPRECATED:
+            if ftype.flags & deprecated:
                 continue
             v1 = getattr(self, name)
-            if isinstance(v1, list):
-                v1 = tuple(v1)
-            if isinstance(v1, Math.Vector2) or isinstance(v1, Math.Vector3) or isinstance(v1, Math.Vector4):
+            if isinstance(v1, list) or isinstance(v1, Math.Vector2) or isinstance(v1, Math.Vector3) or isinstance(v1, Math.Vector4):
                 v1 = tuple(v1)
             result = (result * 31 + hash(v1)) % 18446744073709551616
 
@@ -214,6 +214,8 @@ class ComponentBinSerializer(object):
         hasValue = 0
         offset = 1
         result = ['\x00']
+        serialize = self.__serialize
+        encode = varint.encode
         for fieldName, fieldInfo in obj.fields.iteritems():
             if fieldInfo.flags & FieldFlags.DEPRECATED:
                 offset <<= 1
@@ -225,14 +227,15 @@ class ComponentBinSerializer(object):
             value = getattr(obj, fieldName)
             if value != fieldInfo.default:
                 hasValue |= offset
-                result.append(self.__serialize(value, fieldInfo.type))
+                result.append(serialize(value, fieldInfo.type))
             offset <<= 1
 
-        result[0] = varint.encode(hasValue)
+        result[0] = encode(hasValue)
         return ('').join(result)
 
     def __serializeArray(self, value, itemType):
-        result = [ self.__serialize(item, itemType) for item in value ]
+        serialize = self.__serialize
+        result = [ serialize(item, itemType) for item in value ]
         return varint.encode(len(value)) + ('').join(result)
 
     def __serializeString(self, value):
@@ -292,7 +295,8 @@ class ComponentBinDeserializer(object):
             obj = None
         fields = cls.fields
         io = self.__stream
-        valueMap = varint.decode_stream(io)
+        decode_stream = varint.decode_stream
+        valueMap = decode_stream(io)
         offset = 1
         for k, t in fields.iteritems():
             if t.flags & FieldFlags.NON_BIN:
@@ -303,13 +307,13 @@ class ComponentBinDeserializer(object):
             if valueMap & offset:
                 ftype = t.type
                 if ftype == FieldTypes.VARINT:
-                    value = varint.decode_stream(io)
+                    value = decode_stream(io)
                 elif ftype == FieldTypes.STRING:
                     value = self.__decodeString()
                 elif ftype == FieldTypes.APPLY_AREA_ENUM:
-                    value = varint.decode_stream(io)
+                    value = decode_stream(io)
                 elif ftype == FieldTypes.OPTIONS_ENUM:
-                    value = varint.decode_stream(io)
+                    value = decode_stream(io)
                 elif ftype & FieldTypes.TYPED_ARRAY:
                     value = self.__decodeArray(ftype ^ FieldTypes.TYPED_ARRAY, k, path, next, wanted)
                 elif ftype >= FieldTypes.CUSTOM_TYPE_OFFSET:
@@ -327,15 +331,17 @@ class ComponentBinDeserializer(object):
 
     def __decodeArray(self, itemType, k, path, next, wanted):
         io = self.__stream
-        n = varint.decode_stream(io)
+        decode_stream = varint.decode_stream
+        n = decode_stream(io)
         if itemType == FieldTypes.VARINT:
-            array = [ varint.decode_stream(io) for _ in xrange(n) ]
+            array = [ decode_stream(io) for _ in xrange(n) ]
             if path and path[1] is None and path[0] == k and wanted in array:
                 raise FoundItemException()
             return array
         if itemType >= FieldTypes.CUSTOM_TYPE_OFFSET:
             customType = itemType / FieldTypes.CUSTOM_TYPE_OFFSET
-            return [ self.__decodeCustomType(customType, next, wanted) for _ in xrange(n) ]
+            decodeCustomType = self.__decodeCustomType
+            return [ decodeCustomType(customType, next, wanted) for _ in xrange(n) ]
         else:
             raise SerializationException('Unsupported item type')
             return
@@ -358,17 +364,17 @@ class ComponentXmlDeserializer(object):
 
     def __decodeCustomType--- This code section failed: ---
 
- L. 450         0  LOAD_FAST             0  'self'
+ L. 458         0  LOAD_FAST             0  'self'
                 3  LOAD_ATTR             0  'customTypes'
                 6  LOAD_FAST             1  'customType'
                 9  BINARY_SUBSCR    
                10  STORE_FAST            4  'cls'
 
- L. 451        13  LOAD_FAST             4  'cls'
+ L. 459        13  LOAD_FAST             4  'cls'
                16  CALL_FUNCTION_0       0  None
                19  STORE_FAST            5  'instance'
 
- L. 452        22  SETUP_LOOP          619  'to 644'
+ L. 460        22  SETUP_LOOP          619  'to 644'
                25  LOAD_FAST             4  'cls'
                28  LOAD_ATTR             1  'fields'
                31  LOAD_ATTR             2  'iteritems'
@@ -379,24 +385,24 @@ class ComponentXmlDeserializer(object):
                44  STORE_FAST            6  'fname'
                47  STORE_FAST            7  'finfo'
 
- L. 453        50  LOAD_FAST             7  'finfo'
+ L. 461        50  LOAD_FAST             7  'finfo'
                53  LOAD_ATTR             3  'flags'
                56  LOAD_GLOBAL           4  'FieldFlags'
                59  LOAD_ATTR             5  'NON_XML'
                62  BINARY_AND       
                63  POP_JUMP_IF_FALSE    72  'to 72'
 
- L. 454        66  CONTINUE             38  'to 38'
+ L. 462        66  CONTINUE             38  'to 38'
                69  JUMP_FORWARD          0  'to 72'
              72_0  COME_FROM            69  '69'
 
- L. 456        72  LOAD_FAST             3  'section'
+ L. 464        72  LOAD_FAST             3  'section'
                75  LOAD_ATTR             6  'has_key'
                78  LOAD_FAST             6  'fname'
                81  CALL_FUNCTION_1       1  None
                84  POP_JUMP_IF_TRUE    175  'to 175'
 
- L. 457        87  LOAD_GLOBAL           7  'IS_EDITOR'
+ L. 465        87  LOAD_GLOBAL           7  'IS_EDITOR'
                90  POP_JUMP_IF_FALSE    38  'to 38'
                93  LOAD_FAST             7  'finfo'
                96  LOAD_ATTR             3  'flags'
@@ -406,74 +412,74 @@ class ComponentXmlDeserializer(object):
             106_0  COME_FROM            90  '90'
               106  POP_JUMP_IF_FALSE    38  'to 38'
 
- L. 458       109  LOAD_GLOBAL           9  'getEditorOnlySection'
+ L. 466       109  LOAD_GLOBAL           9  'getEditorOnlySection'
               112  LOAD_FAST             3  'section'
               115  CALL_FUNCTION_1       1  None
               118  STORE_FAST            8  'editorOnlySection'
 
- L. 459       121  LOAD_FAST             8  'editorOnlySection'
+ L. 467       121  LOAD_FAST             8  'editorOnlySection'
               124  LOAD_CONST               None
               127  COMPARE_OP            9  is-not
               130  POP_JUMP_IF_FALSE    38  'to 38'
 
- L. 460       133  LOAD_FAST             8  'editorOnlySection'
+ L. 468       133  LOAD_FAST             8  'editorOnlySection'
               136  LOAD_ATTR             6  'has_key'
               139  LOAD_FAST             6  'fname'
               142  CALL_FUNCTION_1       1  None
             145_0  COME_FROM           130  '130'
               145  POP_JUMP_IF_FALSE    38  'to 38'
 
- L. 461       148  LOAD_FAST             8  'editorOnlySection'
+ L. 469       148  LOAD_FAST             8  'editorOnlySection'
               151  STORE_FAST            3  'section'
               154  JUMP_ABSOLUTE       166  'to 166'
 
- L. 463       157  CONTINUE             38  'to 38'
+ L. 471       157  CONTINUE             38  'to 38'
               160  JUMP_ABSOLUTE       172  'to 172'
 
- L. 465       163  CONTINUE             38  'to 38'
+ L. 473       163  CONTINUE             38  'to 38'
               166  JUMP_ABSOLUTE       175  'to 175'
 
- L. 467       169  CONTINUE             38  'to 38'
+ L. 475       169  CONTINUE             38  'to 38'
               172  JUMP_FORWARD          0  'to 175'
             175_0  COME_FROM           172  '172'
 
- L. 469       175  LOAD_FAST             7  'finfo'
+ L. 477       175  LOAD_FAST             7  'finfo'
               178  LOAD_ATTR            11  'type'
               181  STORE_FAST            9  'ftype'
 
- L. 470       184  LOAD_FAST             9  'ftype'
+ L. 478       184  LOAD_FAST             9  'ftype'
               187  LOAD_GLOBAL          12  'FieldTypes'
               190  LOAD_ATTR            13  'VARINT'
               193  COMPARE_OP            2  ==
               196  POP_JUMP_IF_FALSE   217  'to 217'
 
- L. 471       199  LOAD_FAST             3  'section'
+ L. 479       199  LOAD_FAST             3  'section'
               202  LOAD_ATTR            14  'readInt'
               205  LOAD_FAST             6  'fname'
               208  CALL_FUNCTION_1       1  None
               211  STORE_FAST           10  'value'
               214  JUMP_FORWARD        335  'to 552'
 
- L. 472       217  LOAD_FAST             9  'ftype'
+ L. 480       217  LOAD_FAST             9  'ftype'
               220  LOAD_GLOBAL          12  'FieldTypes'
               223  LOAD_ATTR            15  'FLOAT'
               226  COMPARE_OP            2  ==
               229  POP_JUMP_IF_FALSE   250  'to 250'
 
- L. 473       232  LOAD_FAST             3  'section'
+ L. 481       232  LOAD_FAST             3  'section'
               235  LOAD_ATTR            16  'readFloat'
               238  LOAD_FAST             6  'fname'
               241  CALL_FUNCTION_1       1  None
               244  STORE_FAST           10  'value'
               247  JUMP_FORWARD        302  'to 552'
 
- L. 474       250  LOAD_FAST             9  'ftype'
+ L. 482       250  LOAD_FAST             9  'ftype'
               253  LOAD_GLOBAL          12  'FieldTypes'
               256  LOAD_ATTR            17  'APPLY_AREA_ENUM'
               259  COMPARE_OP            2  ==
               262  POP_JUMP_IF_FALSE   295  'to 295'
 
- L. 475       265  LOAD_FAST             0  'self'
+ L. 483       265  LOAD_FAST             0  'self'
               268  LOAD_ATTR            18  '__decodeEnum'
               271  LOAD_FAST             3  'section'
               274  LOAD_ATTR            19  'readString'
@@ -484,13 +490,13 @@ class ComponentXmlDeserializer(object):
               289  STORE_FAST           10  'value'
               292  JUMP_FORWARD        257  'to 552'
 
- L. 476       295  LOAD_FAST             9  'ftype'
+ L. 484       295  LOAD_FAST             9  'ftype'
               298  LOAD_GLOBAL          12  'FieldTypes'
               301  LOAD_ATTR            21  'TAGS'
               304  COMPARE_OP            2  ==
               307  POP_JUMP_IF_FALSE   340  'to 340'
 
- L. 477       310  LOAD_GLOBAL          22  'tuple'
+ L. 485       310  LOAD_GLOBAL          22  'tuple'
               313  LOAD_FAST             3  'section'
               316  LOAD_ATTR            19  'readString'
               319  LOAD_FAST             6  'fname'
@@ -501,26 +507,26 @@ class ComponentXmlDeserializer(object):
               334  STORE_FAST           10  'value'
               337  JUMP_FORWARD        212  'to 552'
 
- L. 478       340  LOAD_FAST             9  'ftype'
+ L. 486       340  LOAD_FAST             9  'ftype'
               343  LOAD_GLOBAL          12  'FieldTypes'
               346  LOAD_ATTR            24  'STRING'
               349  COMPARE_OP            2  ==
               352  POP_JUMP_IF_FALSE   373  'to 373'
 
- L. 479       355  LOAD_FAST             3  'section'
+ L. 487       355  LOAD_FAST             3  'section'
               358  LOAD_ATTR            19  'readString'
               361  LOAD_FAST             6  'fname'
               364  CALL_FUNCTION_1       1  None
               367  STORE_FAST           10  'value'
               370  JUMP_FORWARD        179  'to 552'
 
- L. 480       373  LOAD_FAST             9  'ftype'
+ L. 488       373  LOAD_FAST             9  'ftype'
               376  LOAD_GLOBAL          12  'FieldTypes'
               379  LOAD_ATTR            25  'OPTIONS_ENUM'
               382  COMPARE_OP            2  ==
               385  POP_JUMP_IF_FALSE   418  'to 418'
 
- L. 481       388  LOAD_FAST             0  'self'
+ L. 489       388  LOAD_FAST             0  'self'
               391  LOAD_ATTR            18  '__decodeEnum'
               394  LOAD_FAST             3  'section'
               397  LOAD_ATTR            19  'readString'
@@ -531,19 +537,19 @@ class ComponentXmlDeserializer(object):
               412  STORE_FAST           10  'value'
               415  JUMP_FORWARD        134  'to 552'
 
- L. 482       418  LOAD_FAST             9  'ftype'
+ L. 490       418  LOAD_FAST             9  'ftype'
               421  LOAD_GLOBAL          12  'FieldTypes'
               424  LOAD_ATTR            27  'TYPED_ARRAY'
               427  BINARY_AND       
               428  POP_JUMP_IF_FALSE   478  'to 478'
 
- L. 483       431  LOAD_FAST             9  'ftype'
+ L. 491       431  LOAD_FAST             9  'ftype'
               434  LOAD_GLOBAL          12  'FieldTypes'
               437  LOAD_ATTR            27  'TYPED_ARRAY'
               440  BINARY_XOR       
               441  STORE_FAST           11  'itemType'
 
- L. 484       444  LOAD_FAST             0  'self'
+ L. 492       444  LOAD_FAST             0  'self'
               447  LOAD_ATTR            28  '__decodeArray'
               450  LOAD_FAST            11  'itemType'
               453  LOAD_FAST             2  'ctx'
@@ -556,19 +562,19 @@ class ComponentXmlDeserializer(object):
               472  STORE_FAST           10  'value'
               475  JUMP_FORWARD         74  'to 552'
 
- L. 485       478  LOAD_FAST             9  'ftype'
+ L. 493       478  LOAD_FAST             9  'ftype'
               481  LOAD_GLOBAL          12  'FieldTypes'
               484  LOAD_ATTR            29  'CUSTOM_TYPE_OFFSET'
               487  COMPARE_OP            5  >=
               490  POP_JUMP_IF_FALSE   540  'to 540'
 
- L. 486       493  LOAD_FAST             9  'ftype'
+ L. 494       493  LOAD_FAST             9  'ftype'
               496  LOAD_GLOBAL          12  'FieldTypes'
               499  LOAD_ATTR            29  'CUSTOM_TYPE_OFFSET'
               502  BINARY_DIVIDE    
               503  STORE_FAST            9  'ftype'
 
- L. 487       506  LOAD_FAST             0  'self'
+ L. 495       506  LOAD_FAST             0  'self'
               509  LOAD_ATTR            30  '__decodeCustomType'
               512  LOAD_FAST             9  'ftype'
               515  LOAD_FAST             2  'ctx'
@@ -581,7 +587,7 @@ class ComponentXmlDeserializer(object):
               534  STORE_FAST           10  'value'
               537  JUMP_FORWARD         12  'to 552'
 
- L. 489       540  LOAD_GLOBAL          31  'SerializationException'
+ L. 497       540  LOAD_GLOBAL          31  'SerializationException'
               543  LOAD_CONST               'Unsupported item type'
               546  CALL_FUNCTION_1       1  None
               549  RAISE_VARARGS_1       1  None
@@ -594,7 +600,7 @@ class ComponentXmlDeserializer(object):
             552_6  COME_FROM           247  '247'
             552_7  COME_FROM           214  '214'
 
- L. 490       552  LOAD_FAST             7  'finfo'
+ L. 498       552  LOAD_FAST             7  'finfo'
               555  LOAD_ATTR             3  'flags'
               558  LOAD_GLOBAL           4  'FieldFlags'
               561  LOAD_ATTR            32  'DEPRECATED'
@@ -608,7 +614,7 @@ class ComponentXmlDeserializer(object):
             581_0  COME_FROM           566  '566'
               581  POP_JUMP_IF_FALSE   603  'to 603'
 
- L. 491       584  LOAD_GLOBAL          34  'setattr'
+ L. 499       584  LOAD_GLOBAL          34  'setattr'
               587  LOAD_FAST             5  'instance'
               590  LOAD_FAST             6  'fname'
               593  LOAD_FAST            10  'value'
@@ -617,7 +623,7 @@ class ComponentXmlDeserializer(object):
               600  JUMP_FORWARD          0  'to 603'
             603_0  COME_FROM           600  '600'
 
- L. 493       603  LOAD_GLOBAL           7  'IS_EDITOR'
+ L. 501       603  LOAD_GLOBAL           7  'IS_EDITOR'
               606  POP_JUMP_IF_FALSE    38  'to 38'
               609  LOAD_FAST             7  'finfo'
               612  LOAD_ATTR             3  'flags'
@@ -627,7 +633,7 @@ class ComponentXmlDeserializer(object):
             622_0  COME_FROM           606  '606'
               622  POP_JUMP_IF_FALSE    38  'to 38'
 
- L. 494       625  LOAD_FAST             3  'section'
+ L. 502       625  LOAD_FAST             3  'section'
               628  LOAD_ATTR            35  'parentSection'
               631  CALL_FUNCTION_0       0  None
               634  STORE_FAST            3  'section'
@@ -636,7 +642,7 @@ class ComponentXmlDeserializer(object):
               643  POP_BLOCK        
             644_0  COME_FROM            22  '22'
 
- L. 495       644  LOAD_FAST             5  'instance'
+ L. 503       644  LOAD_FAST             5  'instance'
               647  RETURN_VALUE     
 
 Parse error at or near `JUMP_ABSOLUTE' instruction at offset 166
@@ -952,10 +958,12 @@ class CustomizationOutfit(SerializableComponent):
     def makeCompDescr(self):
         if not self:
             return ''
+        applyAreaBitmaskToDict = CustomizationOutfit.applyAreaBitmaskToDict
+        shrinkAreaBitmask = CustomizationOutfit.shrinkAreaBitmask
         for typeId in CustomizationType.APPLIED_TO_TYPES:
             componentsAttrName = ('{}s').format(lower(CustomizationTypeNames[typeId]))
-            components = CustomizationOutfit.applyAreaBitmaskToDict(getattr(self, componentsAttrName))
-            setattr(self, componentsAttrName, CustomizationOutfit.shrinkAreaBitmask(components))
+            components = applyAreaBitmaskToDict(getattr(self, componentsAttrName))
+            setattr(self, componentsAttrName, shrinkAreaBitmask(components))
 
         return makeCompDescr(self)
 
@@ -972,7 +980,11 @@ class CustomizationOutfit(SerializableComponent):
                 if c.appliedTo & i:
                     cpy = c.copy()
                     cpy.appliedTo = 0
-                    res.setdefault(i, []).append(cpy)
+                    if i not in res:
+                        res[i] = [
+                         cpy]
+                    else:
+                        res[i].append(cpy)
                 i *= 2
 
         return res
@@ -984,7 +996,11 @@ class CustomizationOutfit(SerializableComponent):
             cpy = c.copy()
             slotId = cpy.slotId
             cpy.slotId = 0
-            res.setdefault(slotId, []).append(cpy)
+            if slotId not in res:
+                res[slotId] = [
+                 cpy]
+            else:
+                res[slotId].append(cpy)
 
         return res
 
@@ -993,12 +1009,17 @@ class CustomizationOutfit(SerializableComponent):
         grouped = {}
         for at, lst in components.iteritems():
             for i in lst:
-                grouped.setdefault(i, []).append(at)
+                if i not in grouped:
+                    grouped[i] = [
+                     at]
+                else:
+                    grouped[i].append(at)
 
         res = []
+        orOp = int.__or__
         for item, group in grouped.iteritems():
             curItem = item.copy()
-            curItem.appliedTo = reduce(int.__or__, group, 0)
+            curItem.appliedTo = reduce(orOp, group, 0)
             res.append(curItem)
 
         return res
@@ -1132,17 +1153,21 @@ class CustomizationOutfit(SerializableComponent):
         toMove = NamedVector()
         projectionDecals = self.projection_decals
         differPartNames = _getDifferVehiclePartNames(vehDescr, oldVehDescr)
+        getVehicleProjectionDecalSlotParams = cn.getVehicleProjectionDecalSlotParams
         if differPartNames:
             newProjectionDecals = []
             for projectionDecal in projectionDecals:
-                if not cn.getVehicleProjectionDecalSlotParams(oldVehDescr, projectionDecal.slotId, differPartNames):
+                if not getVehicleProjectionDecalSlotParams(oldVehDescr, projectionDecal.slotId, differPartNames):
                     newProjectionDecals.append(projectionDecal)
                     continue
                 toMove[(CustomizationType.PROJECTION_DECAL, projectionDecal.id)] += 1
 
             if toMove:
                 self.projection_decals = newProjectionDecals
-        for regionValue, vehiclePart in ((ApplyArea.HULL_REGIONS_VALUE, vehDescr.hull), (ApplyArea.CHASSIS_REGIONS_VALUE, vehDescr.chassis),
+        dismountComponents = self.dismountComponents
+        for regionValue, vehiclePart in ((ApplyArea.HULL_REGIONS_VALUE, vehDescr.hull),
+         (
+          ApplyArea.CHASSIS_REGIONS_VALUE, vehDescr.chassis),
          (
           ApplyArea.TURRET_REGIONS_VALUE, vehDescr.turret),
          (
@@ -1159,7 +1184,7 @@ class CustomizationOutfit(SerializableComponent):
                     dismountArea = appliedTo & ~(area & appliedTo)
                     if not dismountArea:
                         continue
-                    toMove += self.dismountComponents(dismountArea, (componentType,))
+                    toMove += dismountComponents(dismountArea, (componentType,))
 
         return dict(toMove)
 
@@ -1400,37 +1425,43 @@ def parseBattleOutfit(outfit, cache, arenaKind):
 class OutfitLogEntry(object):
 
     def __init__(self, outfit):
+        applyAreaBitmaskToDict = CustomizationOutfit.applyAreaBitmaskToDict
+        getPaintCd = self.__getPaintCd
+        getCamouflageCd = self.__getCamouflageCd
+        getDecalCd = self.__getDecalCd
+        getPersonalNumberData = self.__getPersonalNumberData
         self.style_cd = cn.StyleItem.makeIntDescr(outfit.styleId) if outfit.styleId else 0
         self.modification_cd = cn.ModificationItem.makeIntDescr(outfit.modifications[0]) if outfit.modifications else 0
-        self._paints = CustomizationOutfit.applyAreaBitmaskToDict(outfit.paints)
-        self._decals = CustomizationOutfit.applyAreaBitmaskToDict(outfit.decals)
+        self._paints = applyAreaBitmaskToDict(outfit.paints)
+        self._decals = applyAreaBitmaskToDict(outfit.decals)
         self._projection_decals = outfit.projection_decals
-        self._camouflages = CustomizationOutfit.applyAreaBitmaskToDict(outfit.camouflages)
-        self._personal_numbers = CustomizationOutfit.applyAreaBitmaskToDict(outfit.personal_numbers)
-        self.chassis_paint_cd = self.__getPaintCd(ApplyArea.CHASSIS)
-        self.hull_paint_cd = self.__getPaintCd(ApplyArea.HULL)
-        self.turret_paint_cd = self.__getPaintCd(ApplyArea.TURRET)
-        self.gun_paint_cd0 = self.__getPaintCd(ApplyArea.GUN)
-        self.gun_paint_cd1 = self.__getPaintCd(ApplyArea.GUN_1)
-        self.hull_camouflage_cd = self.__getCamouflageCd(ApplyArea.HULL)
-        self.turret_camouflage_cd = self.__getCamouflageCd(ApplyArea.TURRET)
-        self.gun_camouflage_cd = self.__getCamouflageCd(ApplyArea.GUN)
-        self.hull_decal_cd0, self.hull_decal_progression_level0 = self.__getDecalCd(ApplyArea.HULL)
-        self.hull_decal_cd1, self.hull_decal_progression_level1 = self.__getDecalCd(ApplyArea.HULL_1)
-        self.hull_decal_cd2, self.hull_decal_progression_level2 = self.__getDecalCd(ApplyArea.HULL_2)
-        self.hull_decal_cd3, self.hull_decal_progression_level3 = self.__getDecalCd(ApplyArea.HULL_3)
-        self.turret_decal_cd0, self.turret_decal_progression_level0 = self.__getDecalCd(ApplyArea.TURRET)
-        self.turret_decal_cd1, self.turret_decal_progression_level1 = self.__getDecalCd(ApplyArea.TURRET_1)
-        self.turret_decal_cd2, self.turret_decal_progression_level2 = self.__getDecalCd(ApplyArea.TURRET_2)
-        self.turret_decal_cd3, self.turret_decal_progression_level3 = self.__getDecalCd(ApplyArea.TURRET_3)
-        self.hull_personal_number0 = self.__getPersonalNumberData(ApplyArea.HULL_2)
-        self.hull_personal_number1 = self.__getPersonalNumberData(ApplyArea.HULL_3)
-        self.turret_personal_number0 = self.__getPersonalNumberData(ApplyArea.TURRET_2)
-        self.turret_personal_number1 = self.__getPersonalNumberData(ApplyArea.TURRET_3)
-        self.gun_personal_number0 = self.__getPersonalNumberData(ApplyArea.GUN_2)
-        self.gun_personal_number1 = self.__getPersonalNumberData(ApplyArea.GUN_3)
+        self._camouflages = applyAreaBitmaskToDict(outfit.camouflages)
+        self._personal_numbers = applyAreaBitmaskToDict(outfit.personal_numbers)
+        self.chassis_paint_cd = getPaintCd(ApplyArea.CHASSIS)
+        self.hull_paint_cd = getPaintCd(ApplyArea.HULL)
+        self.turret_paint_cd = getPaintCd(ApplyArea.TURRET)
+        self.gun_paint_cd0 = getPaintCd(ApplyArea.GUN)
+        self.gun_paint_cd1 = getPaintCd(ApplyArea.GUN_1)
+        self.hull_camouflage_cd = getCamouflageCd(ApplyArea.HULL)
+        self.turret_camouflage_cd = getCamouflageCd(ApplyArea.TURRET)
+        self.gun_camouflage_cd = getCamouflageCd(ApplyArea.GUN)
+        self.hull_decal_cd0, self.hull_decal_progression_level0 = getDecalCd(ApplyArea.HULL)
+        self.hull_decal_cd1, self.hull_decal_progression_level1 = getDecalCd(ApplyArea.HULL_1)
+        self.hull_decal_cd2, self.hull_decal_progression_level2 = getDecalCd(ApplyArea.HULL_2)
+        self.hull_decal_cd3, self.hull_decal_progression_level3 = getDecalCd(ApplyArea.HULL_3)
+        self.turret_decal_cd0, self.turret_decal_progression_level0 = getDecalCd(ApplyArea.TURRET)
+        self.turret_decal_cd1, self.turret_decal_progression_level1 = getDecalCd(ApplyArea.TURRET_1)
+        self.turret_decal_cd2, self.turret_decal_progression_level2 = getDecalCd(ApplyArea.TURRET_2)
+        self.turret_decal_cd3, self.turret_decal_progression_level3 = getDecalCd(ApplyArea.TURRET_3)
+        self.hull_personal_number0 = getPersonalNumberData(ApplyArea.HULL_2)
+        self.hull_personal_number1 = getPersonalNumberData(ApplyArea.HULL_3)
+        self.turret_personal_number0 = getPersonalNumberData(ApplyArea.TURRET_2)
+        self.turret_personal_number1 = getPersonalNumberData(ApplyArea.TURRET_3)
+        self.gun_personal_number0 = getPersonalNumberData(ApplyArea.GUN_2)
+        self.gun_personal_number1 = getPersonalNumberData(ApplyArea.GUN_3)
+        getProjectionDecalData = self.__getProjectionDecalData
         for number in xrange(0, MAX_USERS_PROJECTION_DECALS):
-            setattr(self, ('projection_decal{0}').format(number), self.__getProjectionDecalData(number))
+            setattr(self, ('projection_decal{}').format(number), getProjectionDecalData(number))
 
         self.style_progression_level = outfit.styleProgressionLevel
         self.serial_number = outfit.serial_number
@@ -1527,8 +1558,14 @@ class NamedVector(defaultdict):
 
 
 def makeLogOutfitValues(outfitDescr):
-    outfit = parseOutfitDescr(outfitDescr)
-    return OutfitLogEntry(outfit).toDict()
+    return OutfitLogEntry(parseOutfitDescr(outfitDescr)).toDict()
+
+
+def getHullCamouflageCd(outfitDescr):
+    i = CustomizationOutfit.applyAreaBitmaskToDict(parseOutfitDescr(outfitDescr).camouflages).get(ApplyArea.HULL)
+    if not i:
+        return 0
+    return cn.CamouflageItem.makeIntDescr(i[0].id)
 
 
 def getVehicleOutfit(outfits, vehTypeDescr, outfitType):

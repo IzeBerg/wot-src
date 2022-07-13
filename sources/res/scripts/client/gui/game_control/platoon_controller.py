@@ -3,6 +3,7 @@ from collections import namedtuple
 from enum import Enum
 from typing import TYPE_CHECKING
 import BigWorld, Event, SoundGroups, VOIP
+from CurrentVehicle import g_currentVehicle
 from UnitBase import UNIT_ROLE, UnitAssemblerSearchFlags, extendTiersFilter
 from constants import EPlatoonButtonState, MIN_VEHICLE_LEVEL, MAX_VEHICLE_LEVEL
 from PlatoonTank import PlatoonTank, PlatoonTankInfo
@@ -29,6 +30,7 @@ from gui.prb_control.entities.listener import IGlobalListener
 from gui.prb_control.formatters import messages
 from gui.shared import g_eventBus, EVENT_BUS_SCOPE, events
 from gui.shared.items_cache import CACHE_SYNC_REASON
+from gui.shared.utils import functions
 from helpers import dependency
 from helpers.CallbackDelayer import CallbackDelayer
 from helpers.statistics import HARDWARE_SCORE_PARAMS
@@ -57,14 +59,16 @@ _QUEUE_TYPE_TO_PREBATTLE_ACTION_NAME = {QUEUE_TYPE.EVENT_BATTLES: PREBATTLE_ACTI
    QUEUE_TYPE.RANDOMS: PREBATTLE_ACTION_NAME.SQUAD, 
    QUEUE_TYPE.EPIC: PREBATTLE_ACTION_NAME.SQUAD, 
    QUEUE_TYPE.BATTLE_ROYALE: PREBATTLE_ACTION_NAME.BATTLE_ROYALE_SQUAD, 
-   QUEUE_TYPE.MAPBOX: PREBATTLE_ACTION_NAME.MAPBOX_SQUAD}
+   QUEUE_TYPE.MAPBOX: PREBATTLE_ACTION_NAME.MAPBOX_SQUAD, 
+   QUEUE_TYPE.FUN_RANDOM: PREBATTLE_ACTION_NAME.FUN_RANDOM_SQUAD}
 _QUEUE_TYPE_TO_PREBATTLE_TYPE = {QUEUE_TYPE.EVENT_BATTLES: PREBATTLE_TYPE.EVENT, 
    QUEUE_TYPE.RANDOMS: PREBATTLE_TYPE.SQUAD, 
    QUEUE_TYPE.EPIC: PREBATTLE_TYPE.EPIC, 
    QUEUE_TYPE.BATTLE_ROYALE: PREBATTLE_TYPE.BATTLE_ROYALE, 
    QUEUE_TYPE.BATTLE_ROYALE_TOURNAMENT: PREBATTLE_TYPE.BATTLE_ROYALE_TOURNAMENT, 
    QUEUE_TYPE.MAPBOX: PREBATTLE_TYPE.MAPBOX, 
-   QUEUE_TYPE.MAPS_TRAINING: PREBATTLE_TYPE.MAPS_TRAINING}
+   QUEUE_TYPE.MAPS_TRAINING: PREBATTLE_TYPE.MAPS_TRAINING, 
+   QUEUE_TYPE.FUN_RANDOM: PREBATTLE_TYPE.FUN_RANDOM}
 _RANDOM_VEHICLE_CRITERIA = ~(REQ_CRITERIA.VEHICLE.EPIC_BATTLE ^ REQ_CRITERIA.VEHICLE.BATTLE_ROYALE ^ REQ_CRITERIA.VEHICLE.EVENT_BATTLE ^ REQ_CRITERIA.VEHICLE.MAPS_TRAINING)
 _PREBATTLE_TYPE_TO_VEH_CRITERIA = {PREBATTLE_TYPE.SQUAD: _RANDOM_VEHICLE_CRITERIA, 
    PREBATTLE_TYPE.EPIC: ~(REQ_CRITERIA.VEHICLE.BATTLE_ROYALE ^ REQ_CRITERIA.VEHICLE.EVENT_BATTLE), 
@@ -317,8 +321,11 @@ class PlatoonController(IPlatoonController, IGlobalListener, CallbackDelayer):
     @process
     def togglePlayerReadyAction(self, callback):
         changeStatePossible = True
-        if not self.prbEntity.getPlayerInfo().isReady:
+        notReady = not self.prbEntity.getPlayerInfo().isReady
+        if notReady:
             changeStatePossible = yield self.__lobbyContext.isHeaderNavigationPossible()
+        if changeStatePossible and notReady:
+            changeStatePossible = yield functions.checkAmmoLevel((g_currentVehicle.item,))
         if changeStatePossible:
             self.prbEntity.togglePlayerReadyAction(True)
         callback(changeStatePossible)
@@ -727,7 +734,7 @@ class PlatoonController(IPlatoonController, IGlobalListener, CallbackDelayer):
             if view.getParentWindow().isHidden():
                 view.getParentWindow().show()
             return
-        self.__destroy(hideOnly=False, allowPreload=False)
+        self.__destroy(hideOnly=False)
         layout = self.__ePlatoonLayouts.get(ePlatoonLayout)
         if layout is None:
             _logger.error('Layout %s is missing.', ePlatoonLayout)
@@ -748,8 +755,7 @@ class PlatoonController(IPlatoonController, IGlobalListener, CallbackDelayer):
                     g_eventDispatcher.loadHangar()
             return
 
-    def __destroy(self, hideOnly, allowPreload=True):
-        canPreloadWelcomeLayout = False
+    def __destroy(self, hideOnly):
         for ePlatoonLayout in self.__ePlatoonLayouts:
             view = self.__getView(ePlatoonLayout)
             if view:
@@ -757,19 +763,11 @@ class PlatoonController(IPlatoonController, IGlobalListener, CallbackDelayer):
                     if not view.getParentWindow().isHidden():
                         view.getParentWindow().hide()
                 else:
-                    canPreloadWelcomeLayout = ePlatoonLayout != _EPlatoonLayout.WELCOME
                     if ePlatoonLayout == _EPlatoonLayout.MEMBER and self.__isPlatoonVisualizationEnabled:
                         self.onPlatoonTankVisualizationChanged(False)
                     view.getParentWindow().destroy()
 
-        if allowPreload and canPreloadWelcomeLayout:
-            self.__preloadLayout(_EPlatoonLayout.WELCOME)
         self.__closeSendInviteView()
-
-    def __preloadLayout(self, ePlatoonLayout):
-        layout = self.__ePlatoonLayouts.get(ePlatoonLayout)
-        window = layout.windowClass()
-        window.preload()
 
     def __getPlatoonStateForSquadVO(self):
         if isinstance(self.prbEntity, UnitEntity):
@@ -954,7 +952,7 @@ class PlatoonController(IPlatoonController, IGlobalListener, CallbackDelayer):
             return
         else:
             self.__isPlatoonVisualizationEnabled = displayPlatoonMembers
-            isInPlatoon = self.prbDispatcher.getFunctionalState().isInUnit()
+            isInPlatoon = self.isInPlatoon()
             self.onPlatoonTankVisualizationChanged(self.__isPlatoonVisualizationEnabled and isInPlatoon)
             self.__updatePlatoonTankInfo()
             return

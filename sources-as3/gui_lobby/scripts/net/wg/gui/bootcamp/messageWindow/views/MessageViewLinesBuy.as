@@ -7,6 +7,7 @@ package net.wg.gui.bootcamp.messageWindow.views
    import net.wg.gui.bootcamp.messageWindow.controls.MessageCostContainer;
    import net.wg.gui.bootcamp.messageWindow.events.MessageViewEvent;
    import net.wg.gui.components.controls.universalBtn.UniversalBtn;
+   import net.wg.gui.interfaces.ISoundButtonEx;
    import net.wg.utils.IUtils;
    import scaleform.clik.events.ButtonEvent;
    
@@ -18,7 +19,15 @@ package net.wg.gui.bootcamp.messageWindow.views
       private static const SEPARATOR_Y:int = 215;
       
       private static const UNLOCK_ANIMATION:String = "unlock";
+      
+      private static const BTN_CLOSE_WIDTH:int = 78;
+      
+      private static const BTN_CLOSE_OFFSETX:int = 31;
+      
+      private static const BTN_CLOSE_OFFSETY:int = 30;
        
+      
+      public var btnClose:ISoundButtonEx = null;
       
       public var btnExecute:UniversalBtn = null;
       
@@ -48,11 +57,23 @@ package net.wg.gui.bootcamp.messageWindow.views
          super.configUI();
          this._utils = App.utils;
          animContainerTitle.gotoAndPlay(IN_STATE);
+         this.btnClose.label = VEH_COMPARE.HEADER_CLOSEBTN_LABEL;
+         this.btnClose.addEventListener(ButtonEvent.CLICK,this.onBtnCloseClickHandler);
+      }
+      
+      override public function setSize(param1:Number, param2:Number) : void
+      {
+         super.setSize(param1,param2);
+         this.btnClose.x = (param1 >> 1) - BTN_CLOSE_WIDTH - BTN_CLOSE_OFFSETX;
+         this.btnClose.y = -(param2 >> 1) + BTN_CLOSE_OFFSETY;
       }
       
       override protected function onDispose() : void
       {
          addFrameScript(totalFrames - OUT_FRAME,null);
+         this.btnClose.removeEventListener(ButtonEvent.CLICK,this.onBtnCloseClickHandler);
+         this.btnClose.dispose();
+         this.btnClose = null;
          this.btnExecute.removeEventListener(ButtonEvent.CLICK,this.onBtnExecuteClickHandler);
          this.btnExecute.dispose();
          this.btnExecute = null;
@@ -132,6 +153,11 @@ package net.wg.gui.bootcamp.messageWindow.views
          this.btnExecute.enabled = false;
          this.btnCancel.enabled = false;
          this.btnExecute.removeEventListener(ButtonEvent.CLICK,this.onBtnExecuteClickHandler);
+      }
+      
+      private function onBtnCloseClickHandler(param1:ButtonEvent) : void
+      {
+         setOutState();
       }
       
       private function onBtnCancelClickHandler(param1:Event) : void

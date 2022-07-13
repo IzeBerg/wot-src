@@ -12,3 +12,7 @@ class MinimapGridMeta(BaseDAAPIComponent):
     def as_addPointS(self, x, y):
         if self._isDAAPIInited():
             return self.flashObject.as_addPoint(x, y)
+
+    def as_clearPointsS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_clearPoints()

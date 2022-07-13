@@ -606,6 +606,10 @@ class IShopCommonStats(object):
     def demountKits(self):
         raise NotImplementedError
 
+    @property
+    def recertificationForms(self):
+        raise NotImplementedError
+
     def getPremiumPacketCost(self, days):
         raise NotImplementedError
 
@@ -1131,6 +1135,24 @@ class IGiftSystemRequester(IRequester):
 
     @property
     def isHistoryReady(self):
+        raise NotImplementedError
+
+
+class IGameRestrictionsRequester(IRequester):
+
+    @property
+    def session(self):
+        raise NotImplementedError
+
+    @property
+    def hasSessionLimit(self):
+        raise NotImplementedError
+
+    def getKickAt(self):
+        raise NotImplementedError
+
+    @property
+    def settings(self):
         raise NotImplementedError
 
 

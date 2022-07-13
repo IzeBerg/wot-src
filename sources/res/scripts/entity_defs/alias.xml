@@ -1970,6 +1970,9 @@
 			<dailyPlayLimit>
 				<Type>INT32</Type>
 			</dailyPlayLimit>
+			<sessionLimit>
+				<Type>INT32</Type>
+			</sessionLimit>
 		</Properties>
 	</PLAY_LIMITS>
 	<MARKER_DATA>
@@ -2006,6 +2009,9 @@
 		FIXED_DICT
 		<AllowNone>true</AllowNone>
 		<Properties>
+			<vehicleID>
+				<Type>OBJECT_ID</Type>
+			</vehicleID>
 			<positionData>
 				<Type>POSITION_DATA</Type>
 			</positionData>
@@ -2032,9 +2038,12 @@
 	<TIME_WITH_REASON>
 		FIXED_DICT
 		<Properties>
-			<time>
+			<endTime>
 				<Type>INT32</Type>
-			</time>
+			</endTime>
+			<totalTime>
+				<Type>INT32</Type>
+			</totalTime>
 			<reason>
 				<Type>UINT8</Type>
 			</reason>

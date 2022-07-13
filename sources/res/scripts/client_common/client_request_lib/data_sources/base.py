@@ -8,7 +8,7 @@ class BaseDataAccessor(object):
         pass
 
     @abstractmethod
-    def login(self, callback, account_id, token):
+    def login(self, callback, account_id, token, jwt):
         pass
 
     @abstractmethod

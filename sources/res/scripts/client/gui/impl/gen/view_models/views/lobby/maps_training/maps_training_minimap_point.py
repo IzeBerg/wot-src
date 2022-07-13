@@ -29,6 +29,10 @@ class MapsTrainingMinimapPoint(ViewModel):
     def setTextKeys(self, value):
         self._setArray(2, value)
 
+    @staticmethod
+    def getTextKeysType():
+        return str
+
     def getType(self):
         return self._getString(3)
 

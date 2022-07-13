@@ -2,15 +2,16 @@ from abc import ABCMeta, abstractmethod
 import typing, Event
 from frameworks.wulf import WindowLayer
 from gui import GUI_SETTINGS
-from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
+from gui.battle_pass.battle_pass_helpers import getFormattedTimeLeft
 from gui.impl import backport
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.mode_selector.mode_selector_card_types import ModeSelectorCardTypes
 from gui.impl.gen.view_models.views.lobby.mode_selector.mode_selector_normal_card_model import ModeSelectorNormalCardModel
 from gui.impl.gen.view_models.views.lobby.mode_selector.mode_selector_reward_model import ModeSelectorRewardModel
 from gui.impl.lobby.mode_selector.items.items_constants import CustomModeName, COLUMN_SETTINGS, DEFAULT_PRIORITY, DEFAULT_COLUMN, ModeSelectorRewardID
+from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.shared.event_dispatcher import showBrowserOverlayView
-from helpers import dependency, i18n
+from helpers import dependency, i18n, time_utils
 from skeletons.gui.game_control import IBootcampController, IUISpamController
 from soft_exception import SoftException
 if typing.TYPE_CHECKING:
@@ -21,8 +22,10 @@ if typing.TYPE_CHECKING:
 _rMode = R.strings.mode_selector.mode
 _INFO_PAGE_KEY_TEMPLATE = 'infoPage%s'
 
-def getInfoPageKey(modeName):
-    return _INFO_PAGE_KEY_TEMPLATE % (modeName[0].upper() + modeName[1:])
+def formatSeasonLeftTime(currentSeason):
+    if currentSeason:
+        return getFormattedTimeLeft(max(0, currentSeason.getEndDate() - time_utils.getServerUTCTime()))
+    return ''
 
 
 class ModeSelectorItem(object):
@@ -101,21 +104,27 @@ class ModeSelectorItem(object):
             return
 
     def handleInfoPageClick(self):
-        url = self._urlProcessing(GUI_SETTINGS.lookup(getInfoPageKey(self.modeName)))
+        url = self._urlProcessing(GUI_SETTINGS.lookup(self.__getInfoPageKey()))
         showBrowserOverlayView(url, VIEW_ALIAS.WEB_VIEW_TRANSPARENT, hiddenLayers=(
          WindowLayer.MARKER, WindowLayer.VIEW, WindowLayer.WINDOW))
 
     def _onInitializing(self):
-        isInBootcamp = self._bootcamp.isInBootcamp()
-        isNewbie = self._uiSpamController.shouldBeHidden('ModeSelectorWidgetsBtnHint')
         self.viewModel.setIsDisabled(self._isDisabled())
-        self.viewModel.setIsNew(self._getIsNew() and not isInBootcamp and not isNewbie)
+        self.viewModel.setIsNew(self._isNewLabelVisible())
         self.viewModel.setIsInfoIconVisible(self._isInfoIconVisible())
         self.viewModel.setModeName(self.modeName)
         self.viewModel.setType(self._CARD_VISUAL_TYPE)
 
     def _isInfoIconVisible(self):
-        return GUI_SETTINGS.lookup(getInfoPageKey(self.modeName)) is not None
+        return GUI_SETTINGS.lookup(self.__getInfoPageKey()) is not None
+
+    def _isNewLabelVisible(self):
+        isInBootcamp = self._bootcamp.isInBootcamp()
+        isNewbie = self._uiSpamController.shouldBeHidden('ModeSelectorWidgetsBtnHint')
+        return self._getIsNew() and not isInBootcamp and not isNewbie
+
+    def _isDisabled(self):
+        return self._getIsDisabled() or self._bootcamp.isInBootcamp()
 
     def _onDisposing(self):
         pass
@@ -129,29 +138,26 @@ class ModeSelectorItem(object):
     def _getIsNew(self):
         return False
 
+    def _getModeNameForInfoPage(self):
+        return self.modeName[0].upper() + self.modeName[1:]
+
     def _getPositionByModeName(self):
         return COLUMN_SETTINGS.get(self.modeName, (DEFAULT_COLUMN, DEFAULT_PRIORITY))
 
     def _urlProcessing(self, url):
         return url
 
-    def _isDisabled(self):
-        return self._getIsDisabled() or self._bootcamp.isInBootcamp()
+    def __getInfoPageKey(self):
+        return _INFO_PAGE_KEY_TEMPLATE % self._getModeNameForInfoPage()
 
 
 class ModeSelectorNormalCardItem(ModeSelectorItem):
+    __slots__ = ('onCardChange', )
     _VIEW_MODEL = ModeSelectorNormalCardModel
 
     def __init__(self):
         super(ModeSelectorNormalCardItem, self).__init__()
         self.onCardChange = Event.Event()
-
-    @property
-    def hasExtendedCalendarTooltip(self):
-        return False
-
-    def getExtendedCalendarTooltip(self, parentWindow):
-        return []
 
     @property
     def modeName(self):
@@ -164,6 +170,16 @@ class ModeSelectorNormalCardItem(ModeSelectorItem):
     @property
     def viewModel(self):
         return super(ModeSelectorNormalCardItem, self).viewModel
+
+    @property
+    def hasExtendedCalendarTooltip(self):
+        return False
+
+    def getExtendedCalendarTooltip(self, parentWindow):
+        return []
+
+    def _isNeedToHideCard(self):
+        return False
 
     def _onInitializing(self):
         super(ModeSelectorNormalCardItem, self)._onInitializing()
@@ -193,6 +209,12 @@ class ModeSelectorNormalCardItem(ModeSelectorItem):
             item.setVehicleLevel(params.get('level', ''))
             item.setVehicleType(params.get('type', ''))
         self.viewModel.getRewardList().addViewModel(item)
+        return
+
+    def _onDisposing(self):
+        self.onCardChange.clear()
+        self.onCardChange = None
+        super(ModeSelectorNormalCardItem, self)._onDisposing()
         return
 
 

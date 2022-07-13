@@ -3,7 +3,7 @@ from PlayerEvents import g_playerEvents
 from gui import DialogsInterface
 from gui import SystemMessages
 from gui.impl.gen import R
-from gui.prb_control.entities.base import vehicleAmmoCheck
+from gui.prb_control.entities.base import checkVehicleAmmoFull
 from gui.prb_control.entities.base.ctx import SendInvitesCtx
 from gui.prb_control.entities.base.unit.actions_handler import AbstractActionsHandler
 from gui.prb_control.events_dispatcher import g_eventDispatcher
@@ -15,7 +15,7 @@ class SquadActionsHandler(AbstractActionsHandler):
 
     def __init__(self, entity):
         super(SquadActionsHandler, self).__init__(entity)
-        g_playerEvents.onKickedFromQueue += self.__onKickedFromQueue
+        g_playerEvents.onKickedFromQueue += self._onKickedFromQueue
 
     @storage_getter('users')
     def usersStorage(self):
@@ -62,11 +62,10 @@ class SquadActionsHandler(AbstractActionsHandler):
         prbType = self._entity.getEntityType()
         g_eventDispatcher.removeUnitFromCarousel(prbType)
 
-    @vehicleAmmoCheck
     def execute(self):
-        if self._entity.isCommander():
-            func = self._entity
-            fullData = func.getUnitFullData(unitMgrID=func.getID())
+        func = self._entity
+        fullData = func.getUnitFullData(unitMgrID=func.getID())
+        if func.isCommander():
             notReadyCount = 0
             for slot in fullData.slotsIterator:
                 slotPlayer = slot.player
@@ -86,6 +85,8 @@ class SquadActionsHandler(AbstractActionsHandler):
                 showPlatoonResourceDialog(R.strings.dialogs.squadHaveNotReadyPlayer, self._confirmCallback)
                 return
             self._setCreatorReady()
+        elif not fullData.playerInfo.isReady:
+            checkVehicleAmmoFull(g_currentVehicle.item, self._checkVehicleAmmoCallback)
         else:
             self._entity.togglePlayerReadyAction(True)
 
@@ -93,7 +94,7 @@ class SquadActionsHandler(AbstractActionsHandler):
         self._sendBattleQueueRequest(action=0)
 
     def clear(self):
-        g_playerEvents.onKickedFromQueue -= self.__onKickedFromQueue
+        g_playerEvents.onKickedFromQueue -= self._onKickedFromQueue
         super(SquadActionsHandler, self).clear()
 
     def processInvites(self, accountsToInvite):
@@ -130,5 +131,10 @@ class SquadActionsHandler(AbstractActionsHandler):
 
         return
 
-    def __onKickedFromQueue(self, _):
+    def _checkVehicleAmmoCallback(self):
+        if self._entity is not None:
+            self._entity.togglePlayerReadyAction(True)
+        return
+
+    def _onKickedFromQueue(self, _):
         SystemMessages.pushI18nMessage('#system_messages:arena_start_errors/prb/kick/timeout', type=SystemMessages.SM_TYPE.Warning)

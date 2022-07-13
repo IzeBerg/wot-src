@@ -136,8 +136,6 @@ class BattlePassProgressionsView(ViewImpl):
          (
           self.__battlePass.onOffersUpdated, self.__onOffersUpdated),
          (
-          self.__battlePass.onSeasonStateChanged, self.__updateProgressData),
-         (
           self.__battlePass.onSelectTokenUpdated, self.__onSelectTokenUpdated),
          (
           self.__battlePass.onChapterChanged, self.__onChapterChanged),

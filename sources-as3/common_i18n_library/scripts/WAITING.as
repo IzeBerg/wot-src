@@ -229,6 +229,8 @@ package
       
       public static const DOWNLOAD_GIFTSYSTEM:String = "#waiting:download/giftSystem";
       
+      public static const DOWNLOAD_GAMERESTRICTIONS:String = "#waiting:download/gameRestrictions";
+      
       public static const DOWNLOAD_RESOURCEWELL:String = "#waiting:download/resourceWell";
       
       public static const UPDATINGSKILLWINDOW:String = "#waiting:updatingSkillWindow";

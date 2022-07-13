@@ -5,6 +5,8 @@ package net.wg.gui.bootcamp.controls
    
    public class BCAppearEquipmentHint extends BCHighlightRendererBase
    {
+      
+      private static const OFFSET_Y:int = 77;
        
       
       public var hint:TipHintAnimation = null;
@@ -18,7 +20,12 @@ package net.wg.gui.bootcamp.controls
       
       override public function setProperties(param1:Number, param2:Number, param3:Boolean) : void
       {
-         this.hint.x = param1 >> 1;
+      }
+      
+      override public function setPosition(param1:Number, param2:Number) : void
+      {
+         this.x = param1 >> 1 | 0;
+         this.y = param2 - OFFSET_Y;
       }
       
       override protected function onDispose() : void

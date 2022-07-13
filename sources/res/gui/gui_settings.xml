@@ -1846,6 +1846,43 @@
 		</value>
 	</setting>
 	<setting>
+		<name>parentControlHelpURL</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://worldoftanks.eu/en/content/guide/age-protection-update/
+				<name>CT</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://worldoftanks.eu/en/content/guide/age-protection-update/
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://worldoftanks.com/en/content/guide/general/
+				<name>NA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://worldoftanks.asia/en/content/guide/general/
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://wotgame.cn/zh-cn/content/guide/
+				<name>CN</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://worldoftanks.ru/ru/content/guide/general/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
 		<name>resourceWell</name>
 		<type>dict</type>
 		<value>
@@ -1857,22 +1894,6 @@
 			<item>
 				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/ResourceWellContentPage/
 				<name>infoPage</name>
-				<type>url</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>dragonBoat</name>
-		<type>dict</type>
-		<value>
-			<item>
-				$PARAMS(registration/)
-				<name>registration</name>
-				<type>url</type>
-			</item>
-			<item>
-				$PARAMS(rewards/)
-				<name>rewards</name>
 				<type>url</type>
 			</item>
 		</value>

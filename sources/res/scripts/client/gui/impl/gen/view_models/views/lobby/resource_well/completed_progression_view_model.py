@@ -11,6 +11,10 @@ class CompletedProgressionViewModel(ViewModel):
     def vehicleInfo(self):
         return self._getViewModel(0)
 
+    @staticmethod
+    def getVehicleInfoType():
+        return VehicleInfoModel
+
     def getIsTop(self):
         return self._getBool(1)
 

@@ -11,6 +11,10 @@ class PremDashboardDogTagsCardModel(ViewModel):
     def Counter(self):
         return self._getViewModel(0)
 
+    @staticmethod
+    def getCounterType():
+        return CounterModel
+
     def getIsAvailable(self):
         return self._getBool(1)
 

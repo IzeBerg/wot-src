@@ -361,7 +361,7 @@ package net.wg.gui.lobby.storage.categories.cards
             if(this.inInventoryCountTF)
             {
                this.inInventoryCountTF.visible = this.inInventoryIcon.visible = this._data.count > 0;
-               this.inInventoryCountTF.text = this._data.count.toString();
+               this.inInventoryCountTF.text = App.utils.locale.integer(this._data.count);
                if(this._resetViewOnDataChange)
                {
                   this.inInventoryCountTF.alpha = 1;

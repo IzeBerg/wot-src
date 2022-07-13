@@ -398,13 +398,6 @@ class MissionsEventsSoundEnv(SoundEnv):
          SoundFilters.HANGAR_PLACE_TASKS_EVENTS,))
 
 
-class DragonBoatSoundEnv(SoundEnv):
-
-    def __init__(self, soundCtrl):
-        super(DragonBoatSoundEnv, self).__init__(soundCtrl, 'dragonBoat', filters=(
-         SoundFilters.HANGAR_PLACE_TASKS_DRAGON_BOAT,))
-
-
 class GuiAmbientsCtrl(object):
     _spaces = {GuiGlobalSpaceID.LOGIN: LoginSpaceEnv, 
        GuiGlobalSpaceID.LOBBY: LobbySpaceEnv, 

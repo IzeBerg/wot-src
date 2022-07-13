@@ -54,7 +54,6 @@ package net.wg.gui.components.tooltips
       
       override protected function redraw() : void
       {
-         var _loc6_:Number = NaN;
          var _loc9_:ToolTipBlockVO = null;
          var _loc10_:String = null;
          var _loc11_:String = null;
@@ -66,7 +65,7 @@ package net.wg.gui.components.tooltips
          var _loc3_:uint = 0;
          var _loc4_:uint = 0;
          var _loc5_:Number = 300;
-         _loc6_ = bgShadowMargin.left + contentMargin.left;
+         var _loc6_:Number = bgShadowMargin.left + contentMargin.left;
          var _loc7_:ILocale = App.utils.locale;
          App.utils.asserter.assertNotNull(_loc7_,"App.utils.locale is Null");
          var _loc8_:PrivateQuestsVO = new PrivateQuestsVO(_data);

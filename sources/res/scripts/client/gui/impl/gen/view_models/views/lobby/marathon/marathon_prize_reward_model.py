@@ -14,6 +14,10 @@ class MarathonPrizeRewardModel(ViewModel):
     def vehicle(self):
         return self._getViewModel(0)
 
+    @staticmethod
+    def getVehicleType():
+        return MarathonPrizeVehicleModel
+
     def getTitle(self):
         return self._getResource(1)
 
@@ -62,11 +66,19 @@ class MarathonPrizeRewardModel(ViewModel):
     def setRewards(self, value):
         self._setArray(8, value)
 
+    @staticmethod
+    def getRewardsType():
+        return BonusModel
+
     def getRestRewards(self):
         return self._getArray(9)
 
     def setRestRewards(self, value):
         self._setArray(9, value)
+
+    @staticmethod
+    def getRestRewardsType():
+        return BonusModel
 
     def getRestRewardsCount(self):
         return self._getNumber(10)

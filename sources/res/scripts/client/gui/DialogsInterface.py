@@ -37,7 +37,8 @@ def showBCConfirmationDialog(meta, callback):
                      'isBuy': meta.getIsBuy(), 
                      'isTraining': meta.getIsTraining(), 
                      'message': meta.getMessage()}], 
-       'voiceovers': [], 'callback': _DialogCallbackWrapper(callback)}
+       'voiceovers': [], 'callback': _DialogCallbackWrapper(callback), 
+       'submitID': ''}
     g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.BOOTCAMP_MESSAGE_WINDOW), ctx=effectData), EVENT_BUS_SCOPE.LOBBY)
 
 

@@ -39,10 +39,7 @@ package net.wg.gui.components.minimap
       {
          this.hitMc.removeEventListener(MouseEvent.CLICK,this.onMouseClickHandler);
          this.hitMc = null;
-         while(this.icons.numChildren)
-         {
-            this.icons.removeChildAt(0).removeEventListener(CLICK_FINISHED,this.onClickFinishedHandler);
-         }
+         this.clearPoints();
          this.icons = null;
          this.dices = null;
          this.back = null;
@@ -64,6 +61,19 @@ package net.wg.gui.components.minimap
          });
          _loc3_.addEventListener(CLICK_FINISHED,this.onClickFinishedHandler);
          this.icons.addChild(_loc3_);
+      }
+      
+      public function as_clearPoints() : void
+      {
+         this.clearPoints();
+      }
+      
+      private function clearPoints() : void
+      {
+         while(this.icons.numChildren)
+         {
+            this.icons.removeChildAt(0).removeEventListener(CLICK_FINISHED,this.onClickFinishedHandler);
+         }
       }
       
       private function onClickFinishedHandler(param1:Event) : void

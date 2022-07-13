@@ -1548,6 +1548,12 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'giftSystemMessage',
  'telecomMergeResults',
  'battlePassUseNonChapterPoints',
+ 'epicSeasonEnd',
+ 'epicLevelUp',
+ 'recertificationResetUsed',
+ 'recertificationReset',
+ 'recertificationAvailability',
+ 'recertificationFinancial',
  'resourceWellOperation',
  'resourceWellReward',
  'resourceWellNoVehicles'])

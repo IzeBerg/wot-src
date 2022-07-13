@@ -126,6 +126,7 @@ class NationChangeScreen(ViewImpl):
         tankSlotVM.setVehicleIntCD(vehicle.intCD)
         self.__setCrewViewModelData(tankSlotVM, vehicle)
         tankSetups = tankSlotVM.getSetups()
+        tankSetups.clear()
         if not vehicle.postProgressionAvailability().result:
             setupsIndexes = [
              (vehicle.battleBoosters.setupLayouts.layoutIndex,
@@ -157,6 +158,7 @@ class NationChangeScreen(ViewImpl):
 
     def __setCrewViewModelData(self, tankSlotVM, guiVh):
         crewListVM = tankSlotVM.getCrewList()
+        crewListVM.clear()
         roles = guiVh.descriptor.type.crewRoles
         crew = sortCrew(guiVh.crew, roles)
         skillsConfig = getSkillsConfig()
@@ -194,6 +196,7 @@ class NationChangeScreen(ViewImpl):
         return
 
     def __setEquipmentViewModelData(self, slotVM, guiVh, layoutIdx):
+        slotVM.clear()
         setup = guiVh.consumables.setupLayouts.setupByIndex(layoutIdx)
         installedEquipment = setup.getItems() if setup is not None else ()
         hasEquipment = False
@@ -209,6 +212,7 @@ class NationChangeScreen(ViewImpl):
         return hasEquipment
 
     def __setDevicesViewModelData(self, slotVM, guiVh, layoutIdx):
+        slotVM.clear()
         setup = guiVh.optDevices.setupLayouts.setupByIndex(layoutIdx)
         installedOptDevices = setup.getItems() if setup is not None else ()
         hasDevices = False
@@ -226,6 +230,7 @@ class NationChangeScreen(ViewImpl):
         return hasDevices
 
     def __setShellsViewModelData(self, slotVM, guiVh, layoutIdx):
+        slotVM.clear()
         setup = guiVh.shells.setupLayouts.setupByIndex(layoutIdx)
         installedShells = setup.getItems() if setup is not None else ()
         hasShells = False

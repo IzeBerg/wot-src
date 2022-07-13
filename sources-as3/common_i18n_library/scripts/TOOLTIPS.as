@@ -861,6 +861,16 @@ package
       
       public static const EPICBATTLESWIDGET_FAMEPOINTSTOLEVEL:String = "#tooltips:epicBattlesWidget/famePointsToLevel";
       
+      public static const EPICBATTLESOFFER_TITLE_BATTLEBOOSTER_GIFT:String = "#tooltips:epicBattlesOffer/title/battleBooster_gift";
+      
+      public static const EPICBATTLESOFFER_TITLE_BROCHURE_GIFT:String = "#tooltips:epicBattlesOffer/title/brochure_gift";
+      
+      public static const EPICBATTLESOFFER_POINT:String = "#tooltips:epicBattlesOffer/point";
+      
+      public static const EPICBATTLESOFFER_ALLNATIONS:String = "#tooltips:epicBattlesOffer/allNations";
+      
+      public static const EPICBATTLESOFFER_CREWBOOKINFO:String = "#tooltips:epicBattlesOffer/crewBookInfo";
+      
       public static const BATTLEBORDERMAPMODEBUTTONBAR_INFO_HEADER:String = "#tooltips:battleBorderMapModeButtonBar/info/header";
       
       public static const BATTLEBORDERMAPMODEBUTTONBAR_INFO_BODY:String = "#tooltips:battleBorderMapModeButtonBar/info/body";
@@ -2377,8 +2387,6 @@ package
       
       public static const QUESTS_LINKBTN_EPIC:String = "#tooltips:quests/linkBtn/epic";
       
-      public static const QUESTS_LINKBTN_DRAGONBOAT:String = "#tooltips:quests/linkBtn/dragonBoat";
-      
       public static const QUESTS_LINKBTN_CUSTOMIZATIONPROGRESSION_ENABLED:String = "#tooltips:quests/linkBtn/customizationProgression/enabled";
       
       public static const QUESTS_LINKBTN_CUSTOMIZATIONPROGRESSION_DISABLED:String = "#tooltips:quests/linkBtn/customizationProgression/disabled";
@@ -3877,10 +3885,6 @@ package
       
       public static const AWARDITEM_BRCOIN_BODY:String = "#tooltips:awardItem/brcoin/body";
       
-      public static const AWARDITEM_DRAGONBOATPOINTS_HEADER:String = "#tooltips:awardItem/dragonBoatPoints/header";
-      
-      public static const AWARDITEM_DRAGONBOATPOINTS_BODY:String = "#tooltips:awardItem/dragonBoatPoints/body";
-      
       public static const RANKEDBATTLEVIEW_SCOREPOINT_SHORT_HEADER:String = "#tooltips:rankedBattleView/scorePoint/short/header";
       
       public static const RANKEDBATTLEVIEW_SCOREPOINT_HEADER:String = "#tooltips:rankedBattleView/scorePoint/header";
@@ -4559,6 +4563,12 @@ package
       
       public static const HANGAR_HEADER_PERSONALMISSIONS_DISABLEDALL_BODY:String = "#tooltips:hangar/header/personalMissions/disabledAll/body";
       
+      public static const HANGAR_HEADER_PERSONALMISSIONS_UNAVAILABLE_HEADER:String = "#tooltips:hangar/header/personalMissions/unavailable/header";
+      
+      public static const HANGAR_HEADER_PERSONALMISSIONS_UNAVAILABLE_BODY:String = "#tooltips:hangar/header/personalMissions/unavailable/body";
+      
+      public static const HANGAR_HEADER_PERSONALMISSIONS_UNAVAILABLE_MODE_FUN_RANDOM:String = "#tooltips:hangar/header/personalMissions/unavailable/mode/fun_random";
+      
       public static const HANGAR_HEADER_PERSONALMISSIONS_COMPLETEDLOCKEDNEXT_HEADER:String = "#tooltips:hangar/header/personalMissions/completedLockedNext/header";
       
       public static const HANGAR_HEADER_PERSONALMISSIONS_COMPLETEDLOCKEDNEXT_BODY:String = "#tooltips:hangar/header/personalMissions/completedLockedNext/body";
@@ -4892,6 +4902,8 @@ package
       public static const ADVANCED_HEADER_SHELLTYPE_ARMOR_PIERCING_CR:String = "#tooltips:advanced/header/shellType/ARMOR_PIERCING_CR";
       
       public static const ADVANCED_DEMOUNTKIT_COMMON:String = "#tooltips:advanced/demountKit/common";
+      
+      public static const ADVANCED_RECERTIFICATIONFORM_DESCRIPTION:String = "#tooltips:advanced/recertificationForm/description";
       
       public static const CREW_ROLECHANGEFORBID_HEADER:String = "#tooltips:crew/roleChangeForbid/header";
       
@@ -6299,6 +6311,10 @@ package
       
       public static const BATTLEPASSOFFER_FOOTER_GUIDE_GIFT:String = "#tooltips:battlePassOffer/footer/guide_gift";
       
+      public static const BATTLEPASSOFFER_TITLE_RECERTIFICATION_GIFT:String = "#tooltips:battlePassOffer/title/recertification_gift";
+      
+      public static const BATTLEPASSOFFER_FOOTER_RECERTIFICATION_GIFT:String = "#tooltips:battlePassOffer/footer/recertification_gift";
+      
       public static const BATTLE_ROYALE_AWARDS_NO_VEHICLE_AVAILABLE_HEADER:String = "#tooltips:battle_royale/awards/no_vehicle_available/header";
       
       public static const BATTLE_ROYALE_AWARDS_NO_VEHICLE_AVAILABLE_DESCRIPTION:String = "#tooltips:battle_royale/awards/no_vehicle_available/description";
@@ -6628,6 +6644,10 @@ package
       public static const MODE_SELECTOR_UNAVAILABLE_TECHPROBLEMS:String = "#tooltips:mode_selector/unavailable/techProblems";
       
       public static const MODE_SELECTOR_UNAVAILABLE_BOOTCAMP:String = "#tooltips:mode_selector/unavailable/bootcamp";
+      
+      public static const MODE_SELECTOR_UNAVAILABLE_NOTVEHICLES_TEXT:String = "#tooltips:mode_selector/unavailable/notVehicles/text";
+      
+      public static const MODE_SELECTOR_UNAVAILABLE_NOTVEHICLES_LEVEL:String = "#tooltips:mode_selector/unavailable/notVehicles/level";
       
       public static const MODE_SELECTOR_POPOVER_BODY:String = "#tooltips:mode_selector/popover/body";
       

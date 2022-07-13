@@ -95,6 +95,7 @@ _PERSONAL_VEHICLE_VO_META = base.PropertyMeta((
  (
   'tankLevel', MIN_VEHICLE_LEVEL, 'vehicleLevel'),
  ('killerID', 0, 'killerID'),
+ ('deathReason', -1, 'deathReason'),
  ('vehicleStateStr', '', 'vehicleState'),
  ('vehicleStatePrefixStr', '', 'vehicleStatePrefix'),
  ('vehicleStateSuffixStr', '', 'vehicleStateSuffix'),

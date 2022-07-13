@@ -48,10 +48,9 @@ class BerserkerEffectComponent(AvatarRelatedComponent):
         _TransformationParser().parse()
         return
 
-    def __onEquipmentComponentUpdated(self, _, vehicleID, berserkerInfo):
-        duration = berserkerInfo.endTime - BigWorld.serverTime()
-        if duration > 0:
-            self.__addEffect(vehicleID, berserkerInfo.endTime)
+    def __onEquipmentComponentUpdated(self, _, vehicleID, data):
+        if data['duration'] > 0:
+            self.__addEffect(vehicleID, data['duration'] + BigWorld.serverTime())
 
     def __addEffect(self, vehicleId, endTime):
         self.__loadingEffects[vehicleId] = _BerserkerEffectObject(vehicleId, endTime, self.__destroyEffect)

@@ -33,6 +33,10 @@ class BaseIntroViewModel(ViewModel):
     def setSlides(self, value):
         self._setArray(3, value)
 
+    @staticmethod
+    def getSlidesType():
+        return IntroSlideModel
+
     def _initialize(self):
         super(BaseIntroViewModel, self)._initialize()
         self._addResourceProperty('title', R.invalid())

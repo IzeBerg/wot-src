@@ -423,6 +423,8 @@ package
       
       public static const EPIC_BATTLES_AFTER_BATTLE_MAX_LEVEL_INFO_DESCRIPTION:String = "#epic_battle:epic_battles_after_battle/max_level_info/description";
       
+      public static const EPIC_BATTLES_AFTER_BATTLE_CHOOSEREWARDS:String = "#epic_battle:epic_battles_after_battle/chooseRewards";
+      
       public static const SELECTORTOOLTIP_EPICBATTLE_HEADER:String = "#epic_battle:selectorTooltip/epicBattle/header";
       
       public static const SELECTORTOOLTIP_EPICBATTLE_BODY:String = "#epic_battle:selectorTooltip/epicBattle/body";
@@ -563,6 +565,10 @@ package
       
       public static const SEASON_202108_NAME:String = "#epic_battle:season/202108/name";
       
+      public static const REWARDSELECTION_TITLE:String = "#epic_battle:rewardSelection/title";
+      
+      public static const REWARDSELECTION_SUBTITLE:String = "#epic_battle:rewardSelection/subTitle";
+      
       public static const EPICBATTLEITEM_SUPPLYPOINTS_HEADER:String = "#epic_battle:epicBattleItem/supplyPoints/header";
       
       public static const EPICBATTLEITEM_SUPPLYPOINTS_DESCRIPTION:String = "#epic_battle:epicBattleItem/supplyPoints/description";
@@ -584,6 +590,18 @@ package
       public static const INTRO_CARD_TYPES_TITLE:String = "#epic_battle:intro/card/types/title";
       
       public static const INTRO_CARD_TYPES_DESC:String = "#epic_battle:intro/card/types/desc";
+      
+      public static const AWARDS_TITLE:String = "#epic_battle:awards/title";
+      
+      public static const AWARDS_SUBTITLE2:String = "#epic_battle:awards/subTitle2";
+      
+      public static const AWARDS_SUBTITLE1:String = "#epic_battle:awards/subTitle1";
+      
+      public static const AWARDS_ACCEPTBUTTON:String = "#epic_battle:awards/acceptButton";
+      
+      public static const AWARDS_ADDITIONALREWARDS_SUBTEXT:String = "#epic_battle:awards/additionalRewards/subText";
+      
+      public static const AWARDS_MULTIPLIER:String = "#epic_battle:awards/multiplier";
       
       public static const TOOLTIPS_TIMETOSTART:String = "#epic_battle:tooltips/timeToStart";
       
@@ -622,6 +640,8 @@ package
       public static const TOOLTIPS_SLOTSETUPINFO_UPGRADE_TITLE:String = "#epic_battle:tooltips/slotSetupInfo/upgrade/title";
       
       public static const TOOLTIPS_SLOTSETUPINFO_UPGRADE_DESC:String = "#epic_battle:tooltips/slotSetupInfo/upgrade/desc";
+      
+      public static const TOOLTIPS_CHOOSEREWARDS_DESC:String = "#epic_battle:tooltips/chooseRewards/desc";
        
       
       public function EPIC_BATTLE()

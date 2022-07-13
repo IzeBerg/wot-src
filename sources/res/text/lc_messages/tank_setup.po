@@ -13,6 +13,9 @@ msgstr ""
 msgid "abilities/actions/toReserves"
 msgstr "Управление резервами"
 
+msgid "abilities/applyToType"
+msgstr "Применить к %(icon) %(vehicle)"
+
 msgid "abilities/noSelected/subTitle"
 msgstr "Выберите их на экране распределения боевых резервов."
 
@@ -125,6 +128,12 @@ msgstr "Автопополнение"
 
 msgid "dealPanel/button/apply"
 msgstr "Применить"
+
+msgid "dealPanel/button/applyType"
+msgstr "Применить к типу"
+
+msgid "dealPanel/button/applyVehicle"
+msgstr "Применить к машине"
 
 msgid "dealPanel/button/cancel"
 msgstr "Отменить"
@@ -246,6 +255,9 @@ msgstr "Купить и установить {type} %(name)?"
 msgid "dialogs/confirm/title/item/setup"
 msgstr "Установить {type} %(name)?"
 
+msgid "dialogs/confirm/title/itemForAllVehiclesByType/setup/"
+msgstr "Установить {type} %(name) для всех %(vehicle)?"
+
 msgid "dialogs/confirm/title/items/modification"
 msgstr "Провести {type}?"
 
@@ -254,6 +266,24 @@ msgstr "Купить и установить {type}?"
 
 msgid "dialogs/confirm/title/items/setup"
 msgstr "Установить {type}?"
+
+msgid "dialogs/confirm/title/itemsForAllVehiclesByType/setup/"
+msgstr "Установить {type} для всех %(vehicle)?"
+
+msgid "dialogs/confirm/vehicleType/AT-SPG"
+msgstr "ПТ-САУ"
+
+msgid "dialogs/confirm/vehicleType/SPG"
+msgstr "САУ"
+
+msgid "dialogs/confirm/vehicleType/heavyTank"
+msgstr "тяжёлых танков"
+
+msgid "dialogs/confirm/vehicleType/lightTank"
+msgstr "лёгких танков"
+
+msgid "dialogs/confirm/vehicleType/mediumTank"
+msgstr "средних танков"
 
 msgid "dialogs/confirm/warning"
 msgstr ""
@@ -398,6 +428,11 @@ msgstr "%(icon)s %(title)s: %(descr)s"
 
 msgid "filters/shown"
 msgstr "Показано: "
+
+msgid "hints/ammunition/reserves/applyToTypeCheckbox"
+msgstr ""
+"НОВАЯ\n"
+"ВОЗМОЖНОСТЬ"
 
 msgid "hints/ammunition/reserves/control"
 msgstr ""
@@ -1378,6 +1413,21 @@ msgstr "Пополнять автоматически"
 
 msgid "tooltip/autoRenewal/header/repair"
 msgstr "Ремонтировать автоматически"
+
+msgid "tooltips/abilities/actions/checkbox/AT-SPG"
+msgstr "Изменения будут применены ко всем ПТ-САУ."
+
+msgid "tooltips/abilities/actions/checkbox/SPG"
+msgstr "Изменения будут применены ко всем САУ."
+
+msgid "tooltips/abilities/actions/checkbox/heavyTank"
+msgstr "Изменения будут применены ко всем тяжёлым танкам."
+
+msgid "tooltips/abilities/actions/checkbox/lightTank"
+msgstr "Изменения будут применены ко всем лёгким танкам."
+
+msgid "tooltips/abilities/actions/checkbox/mediumTank"
+msgstr "Изменения будут применены ко всем средним танкам."
 
 msgid "tooltips/action/description/add_one"
 msgstr "Нажмите, чтобы докупить предметы в этом слоте."

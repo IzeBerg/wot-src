@@ -77,6 +77,7 @@ package net.wg.infrastructure.uilogger
          var _loc5_:* = null;
          var _loc4_:int = 0;
          param3 = param3 || {};
+         this.checkDefaultParams(param3);
          for(_loc5_ in param3)
          {
             _loc4_++;
@@ -141,6 +142,10 @@ package net.wg.infrastructure.uilogger
          {
             DebugUtils.LOG_DEBUG(this._logPrefix + "Action " + param1 + " isn\'t started");
          }
+      }
+      
+      protected function checkDefaultParams(param1:Object) : void
+      {
       }
       
       public function isDisposed() : Boolean

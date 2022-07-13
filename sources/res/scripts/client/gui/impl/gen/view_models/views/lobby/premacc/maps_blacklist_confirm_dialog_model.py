@@ -11,6 +11,10 @@ class MapsBlacklistConfirmDialogModel(ViewModel):
     def selectedMaps(self):
         return self._getViewModel(0)
 
+    @staticmethod
+    def getSelectedMapsType():
+        return ListModel
+
     def getMapId(self):
         return self._getString(1)
 
