@@ -6,11 +6,10 @@ package lesta.unbound2.type_system
       
       public var value:Number = 0.0;
       
-      public var units:int;
+      public var units:int = 0;
       
       public function UbNumber()
       {
-         this.units = UbUnits.NONE;
          super();
       }
    }

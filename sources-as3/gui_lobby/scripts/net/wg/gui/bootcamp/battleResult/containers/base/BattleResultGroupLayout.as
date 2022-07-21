@@ -20,9 +20,8 @@ package net.wg.gui.bootcamp.battleResult.containers.base
       override public function invokeLayout() : Object
       {
          var _loc1_:DisplayObject = null;
-         var _loc3_:int = 0;
          var _loc2_:int = _target.numChildren;
-         _loc3_ = gap;
+         var _loc3_:int = gap;
          var _loc4_:int = this.startPos();
          var _loc5_:int = 0;
          while(_loc5_ < _loc2_)

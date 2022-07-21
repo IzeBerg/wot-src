@@ -1,37 +1,7 @@
-package net.wg.gui.battle.views.minimap.components.entries.vehicle
-{
-   import flash.display.MovieClip;
-   import net.wg.infrastructure.interfaces.entity.IDisposable;
-   
-   public class MarkerTopAnimation extends MovieClip implements IDisposable
-   {
-       
-      
-      public var anim:MovieClip = null;
-      
-      private var _isDisposed:Boolean = false;
-      
-      public function MarkerTopAnimation()
-      {
-         super();
-      }
-      
-      public function playAnim(param1:String) : void
-      {
-         gotoAndStop(param1);
-         this.anim.play();
-      }
-      
-      public final function dispose() : void
-      {
-         App.utils.asserter.assert(!this._isDisposed,"MarkerTopAnimation is already disposed!");
-         this._isDisposed = true;
-         this.anim = null;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._isDisposed;
-      }
-   }
-}
+/*
+ * Decompilation error
+ * Code may be obfuscated
+ * Tip: You can try enabling "Automatic deobfuscation" in Settings
+ * Error type: ExecutionException (java.lang.OutOfMemoryError: unable to create native thread: possibly out of memory or process/resource limits reached)
+ */
+throw new flash.errors.IllegalOperationError("Not decompiled due to error");
