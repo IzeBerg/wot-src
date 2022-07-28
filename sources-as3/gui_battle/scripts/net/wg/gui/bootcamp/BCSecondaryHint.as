@@ -106,13 +106,14 @@ package net.wg.gui.bootcamp
       
       public function as_showHint(param1:String) : void
       {
+         var _loc2_:int = 0;
          this.textsAnim.visible = true;
          this.iconsAnim.visible = true;
          this.iconsAnim.gotoAndPlay(RibbonCtrl.SHOW_ANIM);
          this.iconsAnim.glowAnim.gotoAndPlay(1);
          this.textsAnim.gotoAndPlay(RibbonCtrl.SHOW_ANIM);
          this._textField.text = param1.toUpperCase();
-         var _loc2_:int = SINGLE_LINE_HEIGHT - this._textField.textHeight;
+         _loc2_ = SINGLE_LINE_HEIGHT - this._textField.textHeight;
          this.iconsAnim.y = _loc2_;
          this.textsAnim.y = _loc2_;
          this.iconsAnim.x = this.textsAnim.x = CENTER_OFFSET - (this._textField.textWidth >> 1);

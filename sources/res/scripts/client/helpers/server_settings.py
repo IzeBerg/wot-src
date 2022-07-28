@@ -892,7 +892,8 @@ class FunRandomConfig(namedtuple('_FunRandomConfig', (
 
     @classmethod
     def __repackEventConfigs(cls, data, allowedFields):
-        eventData = first(data.get('events', {}).itervalues(), {})
+        events = data.get('events', {}).itervalues()
+        eventData = first(sorted(events, key=lambda event: not event.get('isEnabled', False)), {})
         data.update((k, eventData[k]) for k in allowedFields & eventData.viewkeys())
 
 

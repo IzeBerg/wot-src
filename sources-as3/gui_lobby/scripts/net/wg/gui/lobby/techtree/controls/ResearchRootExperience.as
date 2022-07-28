@@ -105,10 +105,9 @@ package net.wg.gui.lobby.techtree.controls
       
       override protected function updateLayout() : void
       {
-         var _loc1_:Number = NaN;
          App.utils.commons.updateTextFieldSize(vehXPField,true,false);
          App.utils.commons.updateTextFieldSize(this.totalXPField,true,false);
-         _loc1_ = Math.max(vehXPField.width,!!this._freeXPIsAvailable ? Number(this.totalXPField.width) : Number(this.haveNotFreeXp.width));
+         var _loc1_:Number = Math.max(vehXPField.width,!!this._freeXPIsAvailable ? Number(this.totalXPField.width) : Number(this.haveNotFreeXp.width));
          vehXPField.x = _loc1_ - vehXPField.width | 0;
          this.totalXPField.x = _loc1_ - this.totalXPField.width | 0;
          this.vehXPIcon.x = this.vehXPInTotalIcon.x = _loc1_ + FIELD_OFFSET | 0;
