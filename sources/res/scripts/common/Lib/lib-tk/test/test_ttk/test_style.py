@@ -1,12 +1,13 @@
-import unittest, Tkinter, ttk
+import unittest, Tkinter as tkinter, ttk
 from test.test_support import requires, run_unittest
-import support
+from test_ttk.support import AbstractTkTest
 requires('gui')
 
-class StyleTest(unittest.TestCase):
+class StyleTest(AbstractTkTest, unittest.TestCase):
 
     def setUp(self):
-        self.style = ttk.Style()
+        super(StyleTest, self).setUp()
+        self.style = ttk.Style(self.root)
 
     def test_configure(self):
         style = self.style
@@ -17,7 +18,7 @@ class StyleTest(unittest.TestCase):
     def test_map(self):
         style = self.style
         style.map('TButton', background=[('active', 'background', 'blue')])
-        self.assertEqual(style.map('TButton', 'background'), [('active', 'background', 'blue')] if style.tk.wantobjects() else [
+        self.assertEqual(style.map('TButton', 'background'), [('active', 'background', 'blue')] if self.wantobjects else [
          ('active background', 'blue')])
         self.assertIsInstance(style.map('TButton'), dict)
 
@@ -32,7 +33,7 @@ class StyleTest(unittest.TestCase):
 
     def test_layout(self):
         style = self.style
-        self.assertRaises(Tkinter.TclError, style.layout, 'NotALayout')
+        self.assertRaises(tkinter.TclError, style.layout, 'NotALayout')
         tv_style = style.layout('Treeview')
         style.layout('Treeview', '')
         self.assertEqual(style.layout('Treeview'), [
@@ -41,12 +42,12 @@ class StyleTest(unittest.TestCase):
         style.layout('Treeview', tv_style)
         self.assertEqual(style.layout('Treeview'), tv_style)
         self.assertIsInstance(style.layout('TButton'), list)
-        self.assertRaises(Tkinter.TclError, style.layout, 'Treeview', [
+        self.assertRaises(tkinter.TclError, style.layout, 'Treeview', [
          (
           'name', {'option': 'inexistent'})])
 
     def test_theme_use(self):
-        self.assertRaises(Tkinter.TclError, self.style.theme_use, 'nonexistingname')
+        self.assertRaises(tkinter.TclError, self.style.theme_use, 'nonexistingname')
         curr_theme = self.style.theme_use()
         new_theme = None
         for theme in self.style.theme_names():

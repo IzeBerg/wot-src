@@ -1,5 +1,11 @@
+"""Weak reference support for Python.
+
+This module is an implementation of PEP 205:
+
+http://www.python.org/dev/peps/pep-0205/
+"""
 import UserDict
-from _weakref import getweakrefcount, getweakrefs, ref, proxy, CallableProxyType, ProxyType, ReferenceType
+from _weakref import getweakrefcount, getweakrefs, ref, proxy, CallableProxyType, ProxyType, ReferenceType, _remove_dead_weakref
 from _weakrefset import WeakSet, _IterationGuard
 from exceptions import ReferenceError
 ProxyTypes = (
@@ -10,16 +16,27 @@ __all__ = [
  'CallableProxyType', 'ProxyTypes', 'WeakValueDictionary', 'WeakSet']
 
 class WeakValueDictionary(UserDict.UserDict):
+    """Mapping class that references values weakly.
 
-    def __init__(self, *args, **kw):
+    Entries in the dictionary will be discarded when no strong
+    reference to the value exists anymore
+    """
 
-        def remove(wr, selfref=ref(self)):
+    def __init__(*args, **kw):
+        if not args:
+            raise TypeError("descriptor '__init__' of 'WeakValueDictionary' object needs an argument")
+        self = args[0]
+        args = args[1:]
+        if len(args) > 1:
+            raise TypeError('expected at most 1 arguments, got %d' % len(args))
+
+        def remove(wr, selfref=ref(self), _atomic_removal=_remove_dead_weakref):
             self = selfref()
             if self is not None:
                 if self._iterating:
                     self._pending_removals.append(wr.key)
                 else:
-                    del self.data[wr.key]
+                    _atomic_removal(self.data, wr.key)
             return
 
         self._remove = remove
@@ -31,9 +48,12 @@ class WeakValueDictionary(UserDict.UserDict):
         l = self._pending_removals
         d = self.data
         while l:
-            del d[l.pop()]
+            key = l.pop()
+            _remove_dead_weakref(d, key)
 
     def __getitem__(self, key):
+        if self._pending_removals:
+            self._commit_removals()
         o = self.data[key]()
         if o is None:
             raise KeyError, key
@@ -47,6 +67,8 @@ class WeakValueDictionary(UserDict.UserDict):
         del self.data[key]
 
     def __contains__(self, key):
+        if self._pending_removals:
+            self._commit_removals()
         try:
             o = self.data[key]()
         except KeyError:
@@ -55,6 +77,8 @@ class WeakValueDictionary(UserDict.UserDict):
         return o is not None
 
     def has_key(self, key):
+        if self._pending_removals:
+            self._commit_removals()
         try:
             o = self.data[key]()
         except KeyError:
@@ -76,6 +100,8 @@ class WeakValueDictionary(UserDict.UserDict):
         self.data.clear()
 
     def copy(self):
+        if self._pending_removals:
+            self._commit_removals()
         new = WeakValueDictionary()
         for key, wr in self.data.items():
             o = wr()
@@ -88,6 +114,8 @@ class WeakValueDictionary(UserDict.UserDict):
 
     def __deepcopy__(self, memo):
         from copy import deepcopy
+        if self._pending_removals:
+            self._commit_removals()
         new = self.__class__()
         for key, wr in self.data.items():
             o = wr()
@@ -97,6 +125,8 @@ class WeakValueDictionary(UserDict.UserDict):
         return new
 
     def get(self, key, default=None):
+        if self._pending_removals:
+            self._commit_removals()
         try:
             wr = self.data[key]
         except KeyError:
@@ -110,6 +140,8 @@ class WeakValueDictionary(UserDict.UserDict):
             return
 
     def items(self):
+        if self._pending_removals:
+            self._commit_removals()
         L = []
         for key, wr in self.data.items():
             o = wr()
@@ -119,6 +151,8 @@ class WeakValueDictionary(UserDict.UserDict):
         return L
 
     def iteritems(self):
+        if self._pending_removals:
+            self._commit_removals()
         with _IterationGuard(self):
             for wr in self.data.itervalues():
                 value = wr()
@@ -129,6 +163,8 @@ class WeakValueDictionary(UserDict.UserDict):
         return
 
     def iterkeys(self):
+        if self._pending_removals:
+            self._commit_removals()
         with _IterationGuard(self):
             for k in self.data.iterkeys():
                 yield k
@@ -136,11 +172,24 @@ class WeakValueDictionary(UserDict.UserDict):
     __iter__ = iterkeys
 
     def itervaluerefs(self):
+        """Return an iterator that yields the weak references to the values.
+
+        The references are not guaranteed to be 'live' at the time
+        they are used, so the result of calling the references needs
+        to be checked before being used.  This can be used to avoid
+        creating references that will cause the garbage collector to
+        keep the values around longer than needed.
+
+        """
+        if self._pending_removals:
+            self._commit_removals()
         with _IterationGuard(self):
             for wr in self.data.itervalues():
                 yield wr
 
     def itervalues(self):
+        if self._pending_removals:
+            self._commit_removals()
         with _IterationGuard(self):
             for wr in self.data.itervalues():
                 obj = wr()
@@ -166,28 +215,39 @@ class WeakValueDictionary(UserDict.UserDict):
         try:
             o = self.data.pop(key)()
         except KeyError:
-            if args:
-                return args[0]
-            raise
+            o = None
 
         if o is None:
+            if args:
+                return args[0]
             raise KeyError, key
         else:
             return o
         return
 
     def setdefault(self, key, default=None):
+        if self._pending_removals:
+            self._commit_removals()
         try:
-            wr = self.data[key]
+            o = self.data[key]()
         except KeyError:
-            if self._pending_removals:
-                self._commit_removals()
+            o = None
+
+        if o is None:
             self.data[key] = KeyedRef(default, self._remove, key)
             return default
+        else:
+            return o
+            return
 
-        return wr()
-
-    def update(self, dict=None, **kwargs):
+    def update(*args, **kwargs):
+        if not args:
+            raise TypeError("descriptor 'update' of 'WeakValueDictionary' object needs an argument")
+        self = args[0]
+        args = args[1:]
+        if len(args) > 1:
+            raise TypeError('expected at most 1 arguments, got %d' % len(args))
+        dict = args[0] if args else None
         if self._pending_removals:
             self._commit_removals()
         d = self.data
@@ -202,9 +262,22 @@ class WeakValueDictionary(UserDict.UserDict):
         return
 
     def valuerefs(self):
+        """Return a list of weak references to the values.
+
+        The references are not guaranteed to be 'live' at the time
+        they are used, so the result of calling the references needs
+        to be checked before being used.  This can be used to avoid
+        creating references that will cause the garbage collector to
+        keep the values around longer than needed.
+
+        """
+        if self._pending_removals:
+            self._commit_removals()
         return self.data.values()
 
     def values(self):
+        if self._pending_removals:
+            self._commit_removals()
         L = []
         for wr in self.data.values():
             o = wr()
@@ -215,6 +288,14 @@ class WeakValueDictionary(UserDict.UserDict):
 
 
 class KeyedRef(ref):
+    """Specialized reference that includes a key corresponding to the value.
+
+    This is used in the WeakValueDictionary to avoid having to create
+    a function object for each key stored in the mapping.  A shared
+    callback object can use the 'key' attribute of a KeyedRef instead
+    of getting a reference to the key from an enclosing scope.
+
+    """
     __slots__ = ('key', )
 
     def __new__(type, ob, callback, key):
@@ -227,6 +308,15 @@ class KeyedRef(ref):
 
 
 class WeakKeyDictionary(UserDict.UserDict):
+    """ Mapping class that references keys weakly.
+
+    Entries in the dictionary will be discarded when there is no
+    longer a strong reference to the key. This can be used to
+    associate additional data with an object owned by other parts of
+    an application without adding attributes to those objects. This
+    can be especially useful with objects that override attribute
+    accesses.
+    """
 
     def __init__(self, dict=None):
         self.data = {}
@@ -328,6 +418,15 @@ class WeakKeyDictionary(UserDict.UserDict):
         return
 
     def iterkeyrefs(self):
+        """Return an iterator that yields the weak references to the keys.
+
+        The references are not guaranteed to be 'live' at the time
+        they are used, so the result of calling the references needs
+        to be checked before being used.  This can be used to avoid
+        creating references that will cause the garbage collector to
+        keep the keys around longer than needed.
+
+        """
         with _IterationGuard(self):
             for wr in self.data.iterkeys():
                 yield wr
@@ -349,6 +448,15 @@ class WeakKeyDictionary(UserDict.UserDict):
                 yield value
 
     def keyrefs(self):
+        """Return a list of weak references to the keys.
+
+        The references are not guaranteed to be 'live' at the time
+        they are used, so the result of calling the references needs
+        to be checked before being used.  This can be used to avoid
+        creating references that will cause the garbage collector to
+        keep the keys around longer than needed.
+
+        """
         return self.data.keys()
 
     def keys(self):

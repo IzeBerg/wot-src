@@ -3,7 +3,7 @@ from functools import partial
 import AccountCommands, BigWorld
 from constants import QUEUE_TYPE
 from async import async, await
-from account_helpers.AccountSettings import CURRENT_VEHICLE, AccountSettings
+from account_helpers.AccountSettings import AccountSettings, BOOTCAMP_VEHICLE
 from account_helpers import isLongDisconnectedFromCenter
 from frameworks.wulf import WindowLayer
 from gui.Scaleform.framework.managers.containers import POP_UP_CRITERIA
@@ -147,8 +147,8 @@ class BootcampController(IBootcampController):
             return [self.nationData['vehicle_first'], self.nationData['vehicle_second']]
         return []
 
-    def isEnableDamageIcon(self):
-        return g_bootcamp.isEnableDamageIcon()
+    def isEnableCriticalDamageIcon(self):
+        return g_bootcamp.isEnableCriticalDamageIcon()
 
     def getCheckpoint(self):
         return g_bootcamp.getCheckpoint()
@@ -190,7 +190,7 @@ class BootcampController(IBootcampController):
         BigWorld.player().startBootcampCmd()
 
     def __doStopBootcamp(self):
-        BigWorld.player().base.requestBootcampQuit(AccountSettings.getFavorites(CURRENT_VEHICLE))
+        BigWorld.player().base.requestBootcampQuit(AccountSettings.getFavorites(BOOTCAMP_VEHICLE))
 
     def __onBootcampBecomePlayer(self):
         self.__inBootcampAccount = True

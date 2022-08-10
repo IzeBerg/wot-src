@@ -18,7 +18,6 @@ package net.wg.gui.lobby.vehPostProgression
    import net.wg.gui.lobby.vehPostProgression.events.DemountAllBtnEvent;
    import net.wg.infrastructure.base.meta.IVehiclePostProgressionViewBaseMeta;
    import net.wg.infrastructure.base.meta.impl.VehiclePostProgressionViewBaseMeta;
-   import net.wg.infrastructure.uilogger.veh_post_progression.LogDemountAllBtn;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.events.InputEvent;
    import scaleform.clik.motion.Tween;
@@ -75,8 +74,6 @@ package net.wg.gui.lobby.vehPostProgression
       
       protected var _vehicleBlock:VehicleBlock;
       
-      protected var _loggerDemountAllBtn:LogDemountAllBtn;
-      
       protected var _vo:VehPostProgressionViewVO = null;
       
       private var _injectComponent:VehPostProgressionViewAdaptor;
@@ -86,7 +83,6 @@ package net.wg.gui.lobby.vehPostProgression
       public function VehPostProgressionViewBase()
       {
          this._vehicleBlock = new VehicleBlock();
-         this._loggerDemountAllBtn = new LogDemountAllBtn();
          this._injectComponent = new VehPostProgressionViewAdaptor();
          super();
          addChild(this.vehParamsPanel);
@@ -119,8 +115,6 @@ package net.wg.gui.lobby.vehPostProgression
          this.nationFlags = null;
          this._injectComponent = null;
          this._vo = null;
-         this._loggerDemountAllBtn.dispose();
-         this._loggerDemountAllBtn = null;
          this._tweenShow.dispose();
          this._tweenShow = null;
          super.onDispose();
@@ -212,11 +206,8 @@ package net.wg.gui.lobby.vehPostProgression
       
       private function updateComponentsLayout() : void
       {
-         var _loc1_:SizeSetting = null;
-         var _loc4_:int = 0;
-         var _loc5_:int = 0;
          var _loc9_:int = 0;
-         _loc1_ = SizeSettings.extraExtraSmall;
+         var _loc1_:SizeSetting = SizeSettings.extraExtraSmall;
          var _loc2_:int = height + VIEW_Y;
          if(width >= SizeSettings.extraLarge.breakPointX && _loc2_ >= SizeSettings.extraLarge.breakPointY)
          {
@@ -243,8 +234,8 @@ package net.wg.gui.lobby.vehPostProgression
          this.title.y = _loc3_ > TITLE_MIN_Y_VALUE ? Number(_loc3_) : Number(TITLE_MIN_Y_VALUE);
          this.title.isSmallSized = _loc3_ < TITLE_SIZE_Y_FACTOR;
          this._vehicleBlock.size = _loc1_.sizePrefix;
-         _loc4_ = _loc1_.injectCmpWidth;
-         _loc5_ = _loc1_.injectCmpHeight;
+         var _loc4_:int = _loc1_.injectCmpWidth;
+         var _loc5_:int = _loc1_.injectCmpHeight;
          var _loc6_:Boolean = width < SizeSettings.extraSmall.breakPointX;
          this.vehParamsPanel.height = height;
          this.vehParamsPanel.allowHide = _loc6_;
@@ -311,7 +302,6 @@ package net.wg.gui.lobby.vehPostProgression
       
       private function onDemountAllClickHandler(param1:DemountAllBtnEvent) : void
       {
-         this._loggerDemountAllBtn.clickOnDemountAll(this.vehParamsPanel.allowHide);
          demountAllPairsS();
       }
       

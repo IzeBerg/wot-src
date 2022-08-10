@@ -6,15 +6,13 @@ package net.wg.infrastructure.base
    import flash.events.Event;
    import flash.events.IOErrorEvent;
    import flash.events.KeyboardEvent;
-   import flash.filters.BitmapFilterQuality;
-   import flash.filters.BlurFilter;
    import flash.net.URLRequest;
    import flash.system.ApplicationDomain;
    import flash.system.LoaderContext;
    import flash.ui.Keyboard;
    import net.wg.data.constants.LobbyMetrics;
    import net.wg.gui.interfaces.ISoundButtonEx;
-   import net.wg.utils.IScheduler;
+   import net.wg.utils.BlurHelper;
    import scaleform.clik.constants.InputValue;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.events.ButtonEvent;
@@ -30,11 +28,7 @@ package net.wg.infrastructure.base
       
       protected static const CLOSE_BTN_BORDER_OFFSET:int = 20;
       
-      private static const BLUR_XY:int = 20;
-      
-      private static const ANIM_STEP_TIME:int = 20;
-      
-      private static const ANIM_NUM_CYCLES:int = 20;
+      private static const BLUR_ANIM_REPEAT_COUNT:int = 20;
       
       private static const BG_HOLDER_NAME:String = "bgHolder";
        
@@ -61,16 +55,11 @@ package net.wg.infrastructure.base
       
       private var _bgPaddingLayout:Padding;
       
-      private var _blurAnimCount:int = 0;
-      
-      private var _blurStep:Number = 1.0;
-      
-      private var _scheduler:IScheduler;
+      private var _blurHelper:BlurHelper;
       
       public function AbstractScreen()
       {
          this._bgPaddingLayout = new Padding(LobbyMetrics.LOBBY_MESSENGER_HEIGHT - App.utils.viewRestrictions.verticalOffset,0,0,0);
-         this._scheduler = App.utils.scheduler;
          super();
       }
       
@@ -122,8 +111,11 @@ package net.wg.infrastructure.base
       
       override protected function onDispose() : void
       {
-         this.cancelScheduled();
-         this._scheduler = null;
+         if(this._blurHelper)
+         {
+            this._blurHelper.dispose();
+            this._blurHelper = null;
+         }
          App.utils.data.cleanupDynamicObject(this._cachedBg);
          this._cachedBg = null;
          this.clearLoader();
@@ -231,42 +223,33 @@ package net.wg.infrastructure.base
       
       protected function blurElements(param1:Vector.<DisplayObject>, param2:Boolean) : void
       {
-         var _loc3_:DisplayObject = null;
-         if(!param2)
+         if(this._blurHelper == null)
          {
-            for each(_loc3_ in param1)
-            {
-               App.utils.commons.setBlur(_loc3_,BLUR_XY,BLUR_XY,BitmapFilterQuality.MEDIUM);
-            }
+            this._blurHelper = new BlurHelper(BLUR_ANIM_REPEAT_COUNT);
          }
-         else
-         {
-            this._blurAnimCount = 0;
-            this.cancelScheduled();
-            this._scheduler.scheduleRepeatableTask(this.animateBlur,ANIM_STEP_TIME,ANIM_NUM_CYCLES,param1);
-         }
+         this._blurHelper.blurElements(param1,param2);
       }
       
       protected function unblurElements(param1:Vector.<DisplayObject>, param2:Boolean) : void
       {
-         var _loc3_:DisplayObject = null;
-         if(!param2)
+         if(this._blurHelper == null)
          {
-            for each(_loc3_ in param1)
-            {
-               _loc3_.filters = [];
-            }
+            this._blurHelper = new BlurHelper(BLUR_ANIM_REPEAT_COUNT);
          }
-         else
-         {
-            this._blurAnimCount = BLUR_XY;
-            this.cancelScheduled();
-            this._scheduler.scheduleRepeatableTask(this.animateUnblur,ANIM_STEP_TIME,ANIM_NUM_CYCLES,param1);
-         }
+         this._blurHelper.unblurElements(param1,param2);
       }
       
       protected function onBgChanged(param1:Boolean) : void
       {
+      }
+      
+      protected function updateBgHolder(param1:DisplayObject) : void
+      {
+         this.clearBackground();
+         this.bgHolder.scaleX = this.bgHolder.scaleY = 1;
+         this.bgHolder.addChild(param1);
+         this.layoutBackground();
+         this.onBgReady();
       }
       
       private function onBgReady() : void
@@ -303,43 +286,6 @@ package net.wg.infrastructure.base
          {
             this.bgHolder.removeChildAt(0);
          }
-      }
-      
-      private function animateBlur(param1:Vector.<DisplayObject>) : void
-      {
-         var _loc3_:DisplayObject = null;
-         this._blurAnimCount += this._blurStep;
-         var _loc2_:BlurFilter = new BlurFilter(this._blurAnimCount,this._blurAnimCount,BitmapFilterQuality.MEDIUM);
-         for each(_loc3_ in param1)
-         {
-            _loc3_.filters = [_loc2_];
-         }
-      }
-      
-      private function animateUnblur(param1:Vector.<DisplayObject>) : void
-      {
-         var _loc3_:DisplayObject = null;
-         this._blurAnimCount -= this._blurStep;
-         var _loc2_:BlurFilter = new BlurFilter(this._blurAnimCount,this._blurAnimCount,BitmapFilterQuality.MEDIUM);
-         for each(_loc3_ in param1)
-         {
-            _loc3_.filters = [_loc2_];
-         }
-      }
-      
-      private function cancelScheduled() : void
-      {
-         this._scheduler.cancelTask(this.animateBlur);
-         this._scheduler.cancelTask(this.animateUnblur);
-      }
-      
-      protected function updateBgHolder(param1:DisplayObject) : void
-      {
-         this.clearBackground();
-         this.bgHolder.scaleX = this.bgHolder.scaleY = 1;
-         this.bgHolder.addChild(param1);
-         this.layoutBackground();
-         this.onBgReady();
       }
       
       public function get bgPaddingLayout() : Padding

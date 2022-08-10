@@ -29,10 +29,11 @@ package net.wg.gui.components.questProgress.components.headerProgress
       
       override protected function onDataUpdate(param1:IHeaderProgressData, param2:int) : void
       {
+         var _loc3_:int = 0;
          super.onDataUpdate(param1,param2);
          this.conditionIcon.source = param1.conditionIcon;
          App.utils.commons.updateTextFieldSize(headerTf,true,false);
-         var _loc3_:int = valueTitleTf.width + headerTf.width + SEPARATOR_GAP + HEADER_TF_GAP + CONDITION_ICON_WIDTH + CONDITION_ICON_GAP;
+         _loc3_ = valueTitleTf.width + headerTf.width + SEPARATOR_GAP + HEADER_TF_GAP + CONDITION_ICON_WIDTH + CONDITION_ICON_GAP;
          if(_loc3_ < param2)
          {
             this.conditionIcon.x = (param2 - _loc3_ >> 1) + CONDITION_ICON_START_X;

@@ -509,6 +509,9 @@ class Equipment(Artefact):
         if 'builtin' not in self.tags:
             inventoryCallback(self.compactDescr)
 
+    def doesDependOnOptionalDevice(self):
+        return False
+
 
 class ExtraHealthReserve(StaticOptionalDevice):
     __slots__ = ('chassisMaxLoadFactor', )
@@ -1293,6 +1296,9 @@ class DynamicEquipment(Equipment):
                 return levelID
 
         return
+
+    def doesDependOnOptionalDevice(self):
+        return True
 
     def getLevelParamsForDevice(self, optionalDevice):
         for levelFilter, levelParams in self._config:

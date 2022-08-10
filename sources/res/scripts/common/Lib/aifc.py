@@ -129,6 +129,7 @@ def _write_float(f, x):
 from chunk import Chunk
 
 class Aifc_read():
+    _file = None
 
     def initfp(self, file):
         self._version = 0
@@ -148,6 +149,7 @@ class Aifc_read():
         else:
             raise Error, 'not an AIFF or AIFF-C file'
         self._comm_chunk_read = 0
+        self._ssnd_chunk = None
         while 1:
             self._ssnd_seek_needed = 1
             try:
@@ -187,9 +189,16 @@ class Aifc_read():
         return
 
     def __init__(self, f):
-        if type(f) == type(''):
+        if isinstance(f, basestring):
             f = __builtin__.open(f, 'rb')
-        self.initfp(f)
+            try:
+                self.initfp(f)
+            except:
+                f.close()
+                raise
+
+        else:
+            self.initfp(f)
 
     def getfp(self):
         return self._file
@@ -199,10 +208,14 @@ class Aifc_read():
         self._soundpos = 0
 
     def close(self):
-        if self._decomp:
-            self._decomp.CloseDecompressor()
-            self._decomp = None
-        self._file.close()
+        decomp = self._decomp
+        try:
+            if decomp:
+                self._decomp = None
+                decomp.CloseDecompressor()
+        finally:
+            self._file.close()
+
         return
 
     def tell(self):
@@ -362,9 +375,10 @@ class Aifc_read():
 
 
 class Aifc_write():
+    _file = None
 
     def __init__(self, f):
-        if type(f) == type(''):
+        if isinstance(f, basestring):
             filename = f
             f = __builtin__.open(f, 'wb')
         else:

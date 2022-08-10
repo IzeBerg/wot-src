@@ -53,7 +53,9 @@ menudefs = [
   'shell',
   [
    ('_View Last Restart', '<<view-restart>>'),
-   ('_Restart Shell', '<<restart-shell>>')]),
+   ('_Restart Shell', '<<restart-shell>>'),
+   None,
+   ('_Interrupt Execution', '<<interrupt-execution>>')]),
  (
   'debug',
   [
@@ -64,7 +66,7 @@ menudefs = [
  (
   'options',
   [
-   ('_Configure IDLE...', '<<open-config-dialog>>'),
+   ('Configure _IDLE', '<<open-config-dialog>>'),
    None]),
  (
   'help',

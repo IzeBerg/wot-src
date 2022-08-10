@@ -4,7 +4,7 @@ del warnpy3k
 import re
 __all__ = [
  'fix', 'sci', 'NotANumber']
-decoder = re.compile('^([-+]?)0*(\\d*)((?:\\.\\d*)?)(([eE][-+]?\\d+)?)$')
+decoder = re.compile('^([-+]?)(\\d*)((?:\\.\\d*)?)(([eE][-+]?\\d+)?)$')
 try:
 
     class NotANumber(ValueError):
@@ -19,6 +19,7 @@ def extract(s):
     if res is None:
         raise NotANumber, s
     sign, intpart, fraction, exppart = res.group(1, 2, 3, 4)
+    intpart = intpart.lstrip('0')
     if sign == '+':
         sign = ''
     if fraction:

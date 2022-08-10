@@ -3,6 +3,10 @@ from bwdebug import NOTICE_MSG
 DEFAULT_ENCODING = 'utf-8'
 
 class _Helper(object):
+    """Define the built-in 'help'.
+    This is a wrapper around pydoc.help (with a twist).
+
+    """
 
     def __repr__(self):
         return 'Type help() for interactive help, or help(object) for help about object.'
@@ -16,6 +20,9 @@ def set_helper():
 
 
 def set_default_encoding():
+    """Set up the default encoding, roughly copied from site.py
+    import encodings
+    """
     if hasattr(sys, 'setdefaultencoding'):
         sys.setdefaultencoding(DEFAULT_ENCODING)
         del sys.setdefaultencoding
@@ -24,6 +31,16 @@ def set_default_encoding():
 
 
 def resMgrListDir(path, fnpat=None):
+    """ResMgr stacked virtual file system directory listing. This is the
+    union of the set of all files that exist in the matching path at
+    each level of the stack.
+
+    Optional shell style (not regex) file name filter pattern may be
+    provided.
+
+    If the path does NOT exist in any layer of the stacked vfs return
+    None.
+    """
     dir = ResMgr.openSection(path)
     if dir is None:
         return
@@ -34,10 +51,20 @@ def resMgrListDir(path, fnpat=None):
 
 
 def resMgrDirExists(path):
+    """Predicate returns true if a data section (treated as a virtual dir)
+    exists for the given path.
+    """
     return ResMgr.openSection(path) != None
 
 
 def getsitepackages():
+    """Returns a list containing all global site-packages directories
+    (and possibly site-python).
+
+    For each directory present in the global ``PREFIXES``, this function
+    will find its `site-packages` subdirectory depending on the system
+    environment, and will return a list of full paths.
+    """
     sitepackages = []
     seen = set()
     for prefix in sys.path:
@@ -50,10 +77,15 @@ def getsitepackages():
 
 
 def _init_pathinfo():
+    """Return a set containing all existing directory entries from sys.path"""
     return set(sys.path)
 
 
 def addpackage(sitedir, name, known_paths):
+    """Process a .pth file within the site-packages directory:
+       For each line in the file, either combine it with sitedir to a path
+       and add that to known_paths, or execute it if it starts with 'import '.
+    """
     if known_paths is None:
         _init_pathinfo()
         reset = 1
@@ -102,6 +134,8 @@ def addpackage(sitedir, name, known_paths):
 
 
 def addsitedir(sitedir, known_paths=None):
+    """Add 'sitedir' argument to sys.path if missing and handle .pth files in
+    'sitedir'"""
     if known_paths is None:
         known_paths = _init_pathinfo()
         reset = 1
@@ -121,6 +155,7 @@ def addsitedir(sitedir, known_paths=None):
 
 
 def addsitepackages(known_paths):
+    """Add site-packages (and possibly site-python) to sys.path"""
     for sitedir in getsitepackages():
         if resMgrDirExists(sitedir):
             addsitedir(sitedir, known_paths)
@@ -136,21 +171,29 @@ def setup_paths():
 
 @BWUtil.if_only_component('base', 'service', 'cell', 'database')
 def set_twisted_reactor():
+    """
+    Override Twisted's default reactor, selectreactor, with ours.
+    This ensures the only reactor installed is BWTwistedReactor.
+    """
     import BWTwistedReactor, twisted.internet.selectreactor
     twisted.internet.selectreactor = BWTwistedReactor
 
 
 @BWUtil.if_only_not_component('process_defs')
 def set_builtin_open_patch():
+    """Ensure 'open' goes through ResMgr"""
     BWUtil.monkeyPatchOpen(full_replace=BigWorld.component in ('client', 'bot'))
 
 
 @BWUtil.if_only_component('client', 'bot')
 def revert_builtin_open_patch():
+    """Client uses that patch only for setuping site-packages
+    paths. Then 'open' function should work as expected: from the
+    current working dir"""
     BWUtil.revertPatchedOpen()
 
 
-@BWUtil.if_only_not_component('process_defs', 'client')
+@BWUtil.if_only_not_component('process_defs')
 def set_threading_bootstrap():
     import threading
     orig_bootstrap = threading.Thread._Thread__bootstrap

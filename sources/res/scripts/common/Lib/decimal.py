@@ -7,7 +7,7 @@ __all__ = [
  'ROUND_FLOOR', 'ROUND_UP', 'ROUND_HALF_DOWN', 'ROUND_05UP',
  'setcontext', 'getcontext', 'localcontext']
 __version__ = '1.70'
-import copy as _copy, math as _math, numbers as _numbers
+import math as _math, numbers as _numbers
 try:
     from collections import namedtuple as _namedtuple
     DecimalTuple = _namedtuple('DecimalTuple', 'sign digits exponent')
@@ -1119,7 +1119,7 @@ class Decimal(object):
             if modulo.adjusted() >= context.prec:
                 return context._raise_error(InvalidOperation, 'insufficient precision: pow() 3rd argument must not have more than precision digits')
             if not other and not self:
-                return context._raise_error(InvalidOperation, 'at least one of pow() 1st argument and 2nd argument must be nonzero ;0**0 is not defined')
+                return context._raise_error(InvalidOperation, 'at least one of pow() 1st argument and 2nd argument must be nonzero; 0**0 is not defined')
             if other._iseven():
                 sign = 0
             else:
@@ -2219,6 +2219,8 @@ class Decimal(object):
         if self._is_special:
             sign = _format_sign(self._sign, spec)
             body = str(self.copy_abs())
+            if spec['type'] == '%':
+                body += '%'
             return _format_align(sign, body, spec)
         else:
             if spec['type'] is None:
@@ -2963,7 +2965,11 @@ def _parse_format_specifier(format_spec, _localeconv=None):
         format_dict['grouping'] = [
          3, 0]
         format_dict['decimal_point'] = '.'
-    format_dict['unicode'] = isinstance(format_spec, unicode)
+    try:
+        format_dict['unicode'] = isinstance(format_spec, unicode)
+    except NameError:
+        format_dict['unicode'] = False
+
     return format_dict
 
 

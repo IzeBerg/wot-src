@@ -8,8 +8,8 @@ class CustomizationItemsPopoverMeta(SmartPopOverView):
     def removeAll(self):
         self._printOverrideError('removeAll')
 
-    def showNonHistoricAndFantastical(self, showNonHistoric, showFantastic):
-        self._printOverrideError('showNonHistoricAndFantastical')
+    def onFilterChanged(self, showHistoric, showNonHistoric, showFantastic):
+        self._printOverrideError('onFilterChanged')
 
     def as_setHeaderDataS(self, data):
         if self._isDAAPIInited():

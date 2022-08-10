@@ -323,14 +323,14 @@ class PostProgressionBaseComponentView(ViewImpl):
         mainSelectedIdx = -1
         for step in postProgression.iterOrderedSteps():
             if step.action.isMultiAction():
-                multiStep = multiSteps[multiStepsIdx] or MultiStepModel()
+                multiStep = MultiStepModel() if multiStepsIdx >= len(multiSteps) else multiSteps[multiStepsIdx]
                 with multiStep.transaction() as (model):
                     self._fillMultiStepModel(model, step, multiSelection.get(step.stepID))
                 if multiStepsIdx >= len(multiSteps):
                     multiSteps.addViewModel(multiStep)
                 multiStepsIdx += 1
             else:
-                singleStep = mainSteps[mainStepsIdx] or SingleStepModel()
+                singleStep = SingleStepModel() if mainStepsIdx >= len(mainSteps) else mainSteps[mainStepsIdx]
                 with singleStep.transaction() as (model):
                     self._fillSingleStepModel(model, step)
                 if mainStepsIdx >= len(mainSteps):
@@ -344,7 +344,7 @@ class PostProgressionBaseComponentView(ViewImpl):
 
     def __fillModificationsArray(self, modsArray, modifications):
         for idx, modification in enumerate(modifications):
-            modificationModel = modsArray[idx] or ModificationModel()
+            modificationModel = ModificationModel() if idx >= len(modsArray) else modsArray[idx]
             with modificationModel.transaction() as (model):
                 self._fillModification(model, modification)
             if idx >= len(modsArray):

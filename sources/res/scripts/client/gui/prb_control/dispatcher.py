@@ -1,4 +1,4 @@
-import logging, time, types
+import typing, logging, time, types
 from CurrentVehicle import g_currentVehicle, g_currentPreviewVehicle
 from PlayerEvents import g_playerEvents
 from adisp import async, process
@@ -773,6 +773,7 @@ class _PrbControlLoader(IPrbControlLoader):
     def createBattleDispatcher(self):
         if self.__prbDispatcher is None:
             self.__prbDispatcher = _PreBattleDispatcher()
+            g_playerEvents.onPrbDispatcherCreated()
         if self.__isEnabled:
             self.__doStart()
         return

@@ -318,7 +318,7 @@ class BattleTeamsBasesController(ITeamsBasesController, ViewComponentsController
 
         self.__callbackIDs.clear()
 
-    def __onRoundFinished(self, winningTeam, reason):
+    def __onRoundFinished(self, *args):
         self.removeTeamsBases()
 
 

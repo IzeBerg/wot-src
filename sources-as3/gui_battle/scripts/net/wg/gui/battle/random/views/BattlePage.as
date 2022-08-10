@@ -303,6 +303,10 @@ package net.wg.gui.battle.random.views
          {
             this.playerMessageListPositionUpdate();
          }
+         if(param1 == BATTLE_VIEW_ALIASES.CONSUMABLES_PANEL && param2 && prebattleAmmunitionPanelShown)
+         {
+            this.updateConsumablePanel(false);
+         }
       }
       
       override protected function getFullStatsTabQuestProgress() : IQuestProgressView
@@ -383,11 +387,9 @@ package net.wg.gui.battle.random.views
       
       private function updateDamageLogPosition() : void
       {
-         var _loc1_:Number = NaN;
-         if(this._playersPanelState > PLAYERS_PANEL_STATE.HIDDEN || this._playersPanelHasInvite)
+         if(this._playersPanelHasInvite || this._playersPanelState > PLAYERS_PANEL_STATE.HIDDEN)
          {
-            _loc1_ = this.playersPanel.listLeft.getRenderersVisibleWidth() + BattleDamageLogPanel.PLAYERS_PANEL_OFFSET;
-            this.battleDamageLogPanel.updateTopContainerPosition(_loc1_);
+            this.battleDamageLogPanel.updateTopContainerPosition(this.playersPanel.listLeft.getRenderersVisibleWidth() + BattleDamageLogPanel.PLAYERS_PANEL_OFFSET);
          }
          else
          {

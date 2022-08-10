@@ -8,9 +8,9 @@ package net.wg.infrastructure.base.meta
       
       function registerOptimizationAreaS(param1:Number, param2:Number, param3:Number, param4:Number) : Number;
       
-      function unregisterOptimizationAreaS(param1:Number) : void;
+      function unregisterOptimizationAreaS(param1:int) : void;
       
-      function updateOptimizationAreaS(param1:Number, param2:Number, param3:Number, param4:Number, param5:Number) : void;
+      function updateOptimizationAreaS(param1:int, param2:Number, param3:Number, param4:Number, param5:Number) : void;
       
       function isOptimizationAvailableS(param1:String) : Boolean;
       

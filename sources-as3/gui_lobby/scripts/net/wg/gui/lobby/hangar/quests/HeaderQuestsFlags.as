@@ -10,7 +10,6 @@ package net.wg.gui.lobby.hangar.quests
    import flash.utils.Dictionary;
    import net.wg.data.Aliases;
    import net.wg.data.constants.Errors;
-   import net.wg.data.constants.Values;
    import net.wg.gui.lobby.hangar.data.HeaderQuestGroupVO;
    import net.wg.gui.lobby.hangar.interfaces.IHeaderQuestsContainer;
    import net.wg.gui.lobby.hangar.interfaces.IQuestInformerButton;
@@ -40,8 +39,6 @@ package net.wg.gui.lobby.hangar.quests
       private static const LEFT_SIDE_GROUP_X_OFFSET:int = -1;
       
       private static const RIGHT_SIDE_GROUP_X_OFFSET:int = -11;
-      
-      public static const DEFAULT_FLAGS_OFFSET_Y:int = Values.ZERO;
       
       private static const SECONDARY_OFFSET_LEFT_X:int = 17;
       
@@ -89,8 +86,6 @@ package net.wg.gui.lobby.hangar.quests
       private var _scheduler:IScheduler = null;
       
       private var _entryPoint:IHeaderFlagsEntryPoint = null;
-      
-      private var _flagsOffsetY:Number = 0;
       
       private var _isSmall:Boolean = false;
       
@@ -188,6 +183,12 @@ package net.wg.gui.lobby.hangar.quests
             this._secondaryEntryPointRight = null;
          }
          super.onDispose();
+      }
+      
+      public function set offsetRightSideX(param1:Number) : void
+      {
+         this._offsetRightSideX = param1;
+         invalidateSize();
       }
       
       public function getEntryPoint() : IHeaderFlagsEntryPoint
@@ -446,7 +447,7 @@ package net.wg.gui.lobby.hangar.quests
                _loc2_.x = _loc5_;
                _loc5_ -= _loc2_.cmptWidth;
             }
-            _loc2_.y = this.entryPointMarginTop + this.flagsOffsetY;
+            _loc2_.y = this.entryPointMarginTop;
             _loc6_++;
          }
       }
@@ -492,7 +493,6 @@ package net.wg.gui.lobby.hangar.quests
             _loc1_ += _loc3_.cmptWidth;
          }
          this.questsHitArea.x = _loc2_;
-         this.questsHitArea.y = this.flagsOffsetY;
          this.questsHitArea.width = _loc1_;
       }
       
@@ -678,26 +678,6 @@ package net.wg.gui.lobby.hangar.quests
       private function onMoveContainerCompleted() : void
       {
          this._isMoveContainerInProgress = false;
-      }
-      
-      public function set offsetRightSideX(param1:Number) : void
-      {
-         this._offsetRightSideX = param1;
-         invalidateSize();
-      }
-      
-      public function get flagsOffsetY() : Number
-      {
-         return this._flagsOffsetY;
-      }
-      
-      public function set flagsOffsetY(param1:Number) : void
-      {
-         if(this._flagsOffsetY != param1)
-         {
-            this._flagsOffsetY = param1;
-            invalidateSize();
-         }
       }
       
       private function get entryPointWidth() : int

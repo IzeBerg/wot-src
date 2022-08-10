@@ -1,6 +1,6 @@
 import json
 from collections import defaultdict
-import BigWorld, constants
+import BigWorld, WWISE, constants
 from PlayerEvents import g_playerEvents
 from adisp import process
 from async import async, await
@@ -158,6 +158,7 @@ class LoginView(LoginPageMeta):
         g_playerEvents.onAccountShowGUI += self._clearLoginView
         g_playerEvents.onEntityCheckOutEnqueued += self._onEntityCheckoutEnqueued
         g_playerEvents.onAccountBecomeNonPlayer += self._onAccountBecomeNonPlayer
+        g_playerEvents.onBootcampStartChoice += self.__onBootcampStartChoice
         self.as_setVersionS(getFullClientVersion())
         self.as_setCopyrightS(backport.text(R.strings.menu.copy()), backport.text(R.strings.menu.legal()))
         self.sessionProvider.getCtx().lastArenaUniqueID = None
@@ -183,6 +184,7 @@ class LoginView(LoginPageMeta):
         g_playerEvents.onAccountShowGUI -= self._clearLoginView
         g_playerEvents.onEntityCheckOutEnqueued -= self._onEntityCheckoutEnqueued
         g_playerEvents.onAccountBecomeNonPlayer -= self._onAccountBecomeNonPlayer
+        g_playerEvents.onBootcampStartChoice -= self.__onBootcampStartChoice
         if self._entityEnqueueCancelCallback:
             g_eventBus.removeListener(ViewEventType.LOAD_VIEW, self._onEntityCheckoutCanceled, EVENT_BUS_SCOPE.LOBBY)
         self._serversDP.fini()
@@ -271,6 +273,7 @@ class LoginView(LoginPageMeta):
 
     def _onLoginRejected(self, loginStatus, responseData):
         Waiting.hide('login')
+        loginStatus = str(loginStatus)
         if not self._loginMode.skipRejectionError(loginStatus):
             if loginStatus == LOGIN_STATUS.LOGIN_REJECTED_BAN:
                 self.__loginRejectedBan(responseData)
@@ -385,3 +388,6 @@ class LoginView(LoginPageMeta):
 
     def __getServerText(self, key, serverName):
         return makeHtmlString('html_templates:login/server-state', key, {'message': backport.text(R.strings.waiting.message.server.dyn(key)(), server=serverName)})
+
+    def __onBootcampStartChoice(self):
+        WWISE.WW_eventGlobal('loginscreen_mute')

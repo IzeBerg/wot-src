@@ -43,7 +43,7 @@ class HyperParser:
     def set_index(self, index):
         indexinrawtext = len(self.rawtext) - len(self.text.get(index, self.stopatindex))
         if indexinrawtext < 0:
-            raise ValueError('The index given is before the analyzed statement')
+            raise ValueError('Index %s precedes the analyzed statement' % index)
         self.indexinrawtext = indexinrawtext
         self.indexbracket = 0
         while self.indexbracket < len(self.bracketing) - 1 and self.bracketing[(self.indexbracket + 1)][0] < self.indexinrawtext:
@@ -81,8 +81,7 @@ class HyperParser:
                 return None
             afterindex = self.stopatindex
         else:
-            afterindex = self.text.index('%s-%dc' % (
-             self.stopatindex,
+            afterindex = self.text.index('%s-%dc' % (self.stopatindex,
              len(self.rawtext) - (self.bracketing[after][0] - 1)))
         return (beforeindex, afterindex)
 
@@ -154,3 +153,8 @@ class HyperParser:
                 break
 
         return rawtext[last_identifier_pos:self.indexinrawtext]
+
+
+if __name__ == '__main__':
+    import unittest
+    unittest.main('idlelib.idle_test.test_hyperparser', verbosity=2)

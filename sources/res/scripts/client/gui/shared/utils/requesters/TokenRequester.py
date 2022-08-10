@@ -57,7 +57,7 @@ class TokenRequester(object):
         self.__callback = None
         repository = _getAccountRepository()
         if repository:
-            repository.onTokenReceived -= self.__onTokenReceived
+            repository.onTokenReceived -= self._onTokenReceived
         self.__lastResponse = None
         self.__requestID = 0
         self.__clearTimeoutCb()
@@ -98,7 +98,7 @@ class TokenRequester(object):
             self.__loadTimeout(self.__requestID, self.__tokenType, max(timeout, 0.0))
         repository = _getAccountRepository()
         if repository and self.canAllowRequest():
-            repository.onTokenReceived += self.__onTokenReceived
+            repository.onTokenReceived += self._onTokenReceived
             requester(self.__requestID, self.__tokenType)
         elif self.__callback:
             self.__callback(None)
@@ -107,12 +107,12 @@ class TokenRequester(object):
     def _getRequester(self):
         return getattr(BigWorld.player(), 'requestToken', None)
 
-    def __onTokenReceived(self, requestID, tokenType, data):
+    def _onTokenReceived(self, requestID, tokenType, data):
         if self.__requestID != requestID or tokenType != self.__tokenType:
             return
         repository = _getAccountRepository()
         if repository:
-            repository.onTokenReceived -= self.__onTokenReceived
+            repository.onTokenReceived -= self._onTokenReceived
         try:
             self.__lastResponse = self.__wrapper(**cPickle.loads(data))
         except TypeError:
@@ -138,4 +138,4 @@ class TokenRequester(object):
 
     def __onTimeout(self, requestID, tokenType):
         self.__clearTimeoutCb()
-        self.__onTokenReceived(requestID, tokenType, cPickle.dumps({'error': 'TIMEOUT'}, -1))
+        self._onTokenReceived(requestID, tokenType, cPickle.dumps({'error': 'TIMEOUT'}, -1))

@@ -1,5 +1,8 @@
 import struct
+from typing import Callable, Tuple
 from DossierDescr import DossierDescr
+from dossiers2.common.DossierBlockBuilders import TYPE_BLOCK_BUILDER
+from dossiers2.custom.updaters import DossierVersionUpdaterBase
 
 class DossierBuilder(object):
 

@@ -7,6 +7,7 @@ package net.wg.gui.battle.views.consumablesPanel
    import net.wg.gui.battle.components.BattleUIComponent;
    import net.wg.gui.battle.components.buttons.interfaces.IClickButtonHandler;
    import net.wg.gui.battle.views.consumablesPanel.interfaces.IEntityStateButton;
+   import net.wg.utils.IClassFactory;
    
    public class EntitiesStatePopup extends BattleUIComponent
    {
@@ -24,10 +25,33 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private var _clickButtonHandler:IClickButtonHandler = null;
       
+      private var _classFactory:IClassFactory;
+      
       public function EntitiesStatePopup()
       {
          this._renderers = new Vector.<EntityStateButton>();
+         this._classFactory = App.utils.classFactory;
          super();
+      }
+      
+      override protected function onDispose() : void
+      {
+         var _loc1_:EntityStateButton = null;
+         for each(_loc1_ in this._renderers)
+         {
+            _loc1_.dispose();
+         }
+         this._renderers.splice(0,this._renderers.length);
+         this._renderers = null;
+         this._data = null;
+         this._clickButtonHandler = null;
+         this._classFactory = null;
+         super.onDispose();
+      }
+      
+      public function addClickHandler(param1:IClickButtonHandler) : void
+      {
+         this._clickButtonHandler = param1;
       }
       
       public function createPopup(param1:Array) : void
@@ -37,7 +61,7 @@ package net.wg.gui.battle.views.consumablesPanel
          var _loc4_:uint = 0;
          while(_loc4_ < _loc3_)
          {
-            _loc2_ = App.utils.classFactory.getComponent(Linkages.ENTITY_BUTTON,EntityStateButton);
+            _loc2_ = this._classFactory.getComponent(Linkages.ENTITY_BUTTON,EntityStateButton);
             addChild(_loc2_);
             _loc2_.x = _loc4_ * ENTITY_X + ENTITY_PADDING_X;
             _loc2_.y = ENTITY_PADDING_Y;
@@ -45,27 +69,6 @@ package net.wg.gui.battle.views.consumablesPanel
             _loc4_++;
          }
          this.setData(param1);
-      }
-      
-      public function updateData(param1:String, param2:String) : void
-      {
-         var _loc3_:Boolean = false;
-         var _loc4_:Number = this._data.length;
-         var _loc5_:uint = 0;
-         while(_loc5_ < _loc4_)
-         {
-            if(this._data[_loc5_].entityName == param1)
-            {
-               this._data[_loc5_].entityState = param2;
-               _loc3_ = true;
-               break;
-            }
-            _loc5_++;
-         }
-         if(_loc3_)
-         {
-            this.setData(this._data);
-         }
       }
       
       public function setData(param1:Array) : void
@@ -99,23 +102,25 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      public function addClickHandler(param1:IClickButtonHandler) : void
+      public function updateData(param1:String, param2:String) : void
       {
-         this._clickButtonHandler = param1;
-      }
-      
-      override protected function onDispose() : void
-      {
-         var _loc1_:EntityStateButton = null;
-         for each(_loc1_ in this._renderers)
+         var _loc3_:Boolean = false;
+         var _loc4_:int = this._data.length;
+         var _loc5_:uint = 0;
+         while(_loc5_ < _loc4_)
          {
-            _loc1_.dispose();
+            if(this._data[_loc5_].entityName == param1)
+            {
+               this._data[_loc5_].entityState = param2;
+               _loc3_ = true;
+               break;
+            }
+            _loc5_++;
          }
-         this._renderers.splice(0,this._renderers.length);
-         this._renderers = null;
-         this._data = null;
-         this._clickButtonHandler = null;
-         super.onDispose();
+         if(_loc3_)
+         {
+            this.setData(this._data);
+         }
       }
    }
 }

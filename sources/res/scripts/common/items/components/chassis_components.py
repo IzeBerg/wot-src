@@ -5,8 +5,9 @@ from items.components import component_constants
 from items.components import path_builder
 from items.components import shared_components
 __all__ = ('Wheel', 'WheelGroup', 'TrackPair', 'TrackNode', 'TrackBasicVisualParams',
-           'GroundNode', 'GroundNodeGroup', 'Traces', 'LeveredSuspensionConfig',
-           'SuspensionLever', 'SplineSegmentModelSet')
+           'TrackPairParams', 'TrackPairDebris', 'TrackDebrisParams', 'GroundNode',
+           'GroundNodeGroup', 'Traces', 'LeveredSuspensionConfig', 'SuspensionLever',
+           'SplineSegmentModelSet')
 Wheel = reflectedNamedTuple('Wheel', ('index', 'isLeft', 'radius', 'nodeName', 'isLeading',
                                       'leadingSyncAngle', 'hitTesterManager', 'materials',
                                       'position'))
@@ -28,7 +29,6 @@ TrackPairDebris = reflectedNamedTuple('TrackPairDebris', ('left', 'right'))
 TrackDebrisParams = reflectedNamedTuple('TrackDebrisParams', ('destructionEffect',
                                                               'physicalParams', 'destructionEffectData',
                                                               'nodesRemap'))
-PhysicalTrackDebrisParams = reflectedNamedTuple('PhysicalTrackDebrisParams', ('hingeJointStiffness', ))
 TrackSplineParams = reflectedNamedTuple('TrackSplineParams', ('thickness', 'maxAmplitude',
                                                               'maxOffset', 'gravity'))
 GroundNode = namedtuple('GroundNode', ('nodeName', 'affectedWheelName', 'isLeft', 'minOffset',

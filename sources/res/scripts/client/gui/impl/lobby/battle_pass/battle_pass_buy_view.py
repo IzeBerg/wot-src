@@ -219,7 +219,6 @@ class BattlePassBuyView(ViewImpl):
         with self.viewModel.rewards.transaction() as (tx):
             tx.nowRewards.clearItems()
             tx.futureRewards.clearItems()
-            tx.setFinalReward(self.__battlePass.getRewardType(chapterID).value)
             tx.setFromLevel(fromLevel)
             tx.setToLevel(toLevel)
             tx.setChapterID(chapterID)
@@ -265,7 +264,6 @@ class BattlePassBuyView(ViewImpl):
             item.setChapterState(_CHAPTER_STATES.get(package.getChapterState()))
             item.setCurrentLevel(package.getCurrentLevel() + 1)
             item.setExpireTime(self.__battlePass.getChapterRemainingTime(package.getChapterID()))
-            item.setFinalReward(self.__battlePass.getRewardType(packageID).value)
             model.packages.addViewModel(item)
 
         model.packages.invalidate()

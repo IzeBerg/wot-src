@@ -234,7 +234,6 @@ package net.wg.gui.lobby.training
       override protected function onPopulate() : void
       {
          var _loc1_:Boolean = false;
-         var _loc2_:Boolean = false;
          super.onPopulate();
          if(canAssignToTeamS(1) || canAssignToTeamS(2) || canChangePlayerTeamS())
          {
@@ -247,7 +246,7 @@ package net.wg.gui.lobby.training
          registerFlashComponentS(this.minimap,Aliases.LOBBY_MINIMAP);
          this.setTeamsInfo();
          _loc1_ = this._voiceChatMgr.getYY();
-         _loc2_ = this._voiceChatMgr.isVOIPEnabledS();
+         var _loc2_:Boolean = this._voiceChatMgr.isVOIPEnabledS();
          this.arenaVoipSettings.visible = _loc2_ || _loc1_;
          this.arenaVOIPLabel.text = _loc2_ || _loc1_ ? MENU.TRAINING_INFO_VOICECHAT : Values.EMPTY_STR;
       }

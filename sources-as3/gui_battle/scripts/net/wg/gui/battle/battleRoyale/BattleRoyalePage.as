@@ -110,6 +110,8 @@ package net.wg.gui.battle.battleRoyale
       private static const PLAYER_STATS_MIN_HEIGHT_Y:int = 155;
       
       private static const PLAYER_STATS_Y:int = 175;
+      
+      private static const MESSANGER_SWAP_AREA_MIN_HEIGHT:int = 220;
        
       
       public var fragPanel:BattleRoyaleScoreBar = null;
@@ -181,9 +183,8 @@ package net.wg.gui.battle.battleRoyale
       
       override public function updateStage(param1:Number, param2:Number) : void
       {
-         var _loc3_:Number = NaN;
          super.updateStage(param1,param2);
-         _loc3_ = param1 >> 1;
+         var _loc3_:Number = param1 >> 1;
          this.teamBasesPanelUI.x = _loc3_;
          this.sixthSense.x = _loc3_;
          this.sixthSense.y = param2 >> 2;
@@ -472,14 +473,13 @@ package net.wg.gui.battle.battleRoyale
       
       private function updateBattleMessengerPosition() : void
       {
-         var _loc1_:int = 0;
-         _loc1_ = this.teamPanel.y + this.teamPanel.height;
+         var _loc1_:int = this.teamPanel.y + this.teamPanel.height;
          if(this._respawnVisible)
          {
             this.battleMessenger.x = damagePanel.x + MESSENGER_RESPAWN_X_OFFSET;
             this.battleMessenger.y = _originalHeight - this.battleMessenger.height - MESSENGER_RESPAWN_Y_OFFSET;
             this.battleMessenger.isSmallState = true;
-            this.battleMessenger.updateSwapAreaHeight(_originalHeight - _loc1_ + MESSANGER_SWAP_AREA_TOP_OFFSET);
+            this.battleMessenger.updateSwapAreaHeight(MESSANGER_SWAP_AREA_MIN_HEIGHT);
          }
          else
          {

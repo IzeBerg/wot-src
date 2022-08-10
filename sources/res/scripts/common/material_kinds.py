@@ -94,4 +94,13 @@ def getWaterMatKind():
     return EFFECT_MATERIAL_IDS_BY_NAMES['water'][0]
 
 
+if IS_EDITOR:
+
+    def isArmorMaterial(matKind):
+        name = NAMES_BY_IDS.get(matKind)
+        if 'armor_' in name:
+            return True
+        return False
+
+
 _init()

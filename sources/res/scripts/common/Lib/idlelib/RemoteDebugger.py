@@ -1,5 +1,4 @@
 import types
-from idlelib import rpc
 from idlelib import Debugger
 debugging = 0
 idb_adap_oid = 'idb_adapter'
@@ -67,7 +66,7 @@ class IdbAdapter:
         else:
             tb = tracebacktable[tbid]
         stack, i = self.idb.get_stack(frame, tb)
-        stack = [ (wrap_frame(frame), k) for frame, k in stack ]
+        stack = [ (wrap_frame(frame2), k) for frame2, k in stack ]
         return (
          stack, i)
 

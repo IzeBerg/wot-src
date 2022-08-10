@@ -29,8 +29,6 @@ package net.wg.gui.components.carousels.filters
       
       private static const IS_FRONTLINE_FIELD:String = "isFrontline";
       
-      private static const IS_FUN_RANDOM_FIELD:String = "isFunRandom";
-      
       private static const HOT_FILTER_TILE_WIDTH:uint = 58;
       
       private static const HOT_FILTER_TILE_HEIGHT:uint = 22;
@@ -191,7 +189,6 @@ package net.wg.gui.components.carousels.filters
       {
          this._popoverData[IS_RANKED_FIELD] = this._initVO.isRanked;
          this._popoverData[IS_FRONTLINE_FIELD] = this._initVO.isFrontline;
-         this._popoverData[IS_FUN_RANDOM_FIELD] = this._initVO.isFunRandom;
          this.popoverMgr.show(this,this._initVO.popoverAlias,this._popoverData);
       }
       

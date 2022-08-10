@@ -33,6 +33,10 @@ class BrowserMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_loadBitmap(url)
 
+    def as_resizeS(self, width, height):
+        if self._isDAAPIInited():
+            return self.flashObject.as_resize(width, height)
+
     def as_loadingStartS(self, showContentUnderWaiting):
         if self._isDAAPIInited():
             return self.flashObject.as_loadingStart(showContentUnderWaiting)
@@ -52,7 +56,3 @@ class BrowserMeta(BaseDAAPIComponent):
     def as_changeTitleS(self, title):
         if self._isDAAPIInited():
             return self.flashObject.as_changeTitle(title)
-
-    def as_showContextMenuS(self, type, context):
-        if self._isDAAPIInited():
-            return self.flashObject.as_showContextMenu(type, context)

@@ -293,6 +293,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.interfaces.ITabbedFullStatsTableController;
    import net.wg.gui.battle.mapsTraining.views.MapsTrainingBattleLoading;
    import net.wg.gui.battle.mapsTraining.views.MapsTrainingBattlePage;
+   import net.wg.gui.battle.mapsTraining.views.consumablesPanel.MapsTrainingBattleShellButton;
    import net.wg.gui.battle.mapsTraining.views.data.MapsTrainingBattleLoadingVO;
    import net.wg.gui.battle.mapsTraining.views.goals.MapsTrainingGoals;
    import net.wg.gui.battle.mapsTraining.views.goals.data.MapsTrainingGoalVO;
@@ -1568,6 +1569,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_MAPSTRAININGBATTLELOADING:Class = MapsTrainingBattleLoading;
       
       public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_MAPSTRAININGBATTLEPAGE:Class = MapsTrainingBattlePage;
+      
+      public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_CONSUMABLESPANEL_MAPSTRAININGBATTLESHELLBUTTON:Class = MapsTrainingBattleShellButton;
       
       public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_DATA_MAPSTRAININGBATTLELOADINGVO:Class = MapsTrainingBattleLoadingVO;
       

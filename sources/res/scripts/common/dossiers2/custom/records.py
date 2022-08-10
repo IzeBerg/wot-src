@@ -2332,6 +2332,32 @@ RECORDS = (
  (
   'singleAchievements', 'june22', 'p', 'B', 1),
  (
+  'singleAchievements', 'july22', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_1', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_2', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_3', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_4', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_5', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_6', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_7', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_8', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_9', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_10', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_11', 'p', 'B', 1),
+ (
+  'singleAchievements', 'prime_gaming_reserved_12', 'p', 'B', 1),
+ (
   'singleAchievements', 'hw2019Medal', 'p', 'B', 1),
  (
   'singleAchievements', 'hw2019Medal1', 'p', 'B', 1),
@@ -2770,7 +2796,9 @@ RECORDS = (
  (
   'singleAchievements', 'BattlePassCommonPr_8ru', 'p', 'B', 1),
  (
-  'singleAchievements', 'BattlePassCommonPr_8quest', 'p', 'B', 1))
+  'singleAchievements', 'BattlePassCommonPr_8quest', 'p', 'B', 1),
+ (
+  'singleAchievements', 'BattlePassCommonPr_9', 'p', 'B', 1))
 RECORD_INDICES = dict((rec[:2], idx) for idx, rec in enumerate(RECORDS))
 RECORD_DB_IDS = {('total', 'creationTime'): 68, 
    ('total', 'lastBattleTime'): 7, 
@@ -4157,7 +4185,21 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('achievements', 'wclParticipant'): 1657, 
    ('singleAchievements', 'BattlePassCommonPr_8'): 1658, 
    ('singleAchievements', 'BattlePassCommonPr_8ru'): 1659, 
-   ('singleAchievements', 'BattlePassCommonPr_8quest'): 1660}
+   ('singleAchievements', 'BattlePassCommonPr_8quest'): 1660, 
+   ('singleAchievements', 'july22'): 1661, 
+   ('singleAchievements', 'BattlePassCommonPr_9'): 1662, 
+   ('singleAchievements', 'prime_gaming_reserved_1'): 1663, 
+   ('singleAchievements', 'prime_gaming_reserved_2'): 1664, 
+   ('singleAchievements', 'prime_gaming_reserved_3'): 1665, 
+   ('singleAchievements', 'prime_gaming_reserved_4'): 1666, 
+   ('singleAchievements', 'prime_gaming_reserved_5'): 1667, 
+   ('singleAchievements', 'prime_gaming_reserved_6'): 1668, 
+   ('singleAchievements', 'prime_gaming_reserved_7'): 1669, 
+   ('singleAchievements', 'prime_gaming_reserved_8'): 1670, 
+   ('singleAchievements', 'prime_gaming_reserved_9'): 1671, 
+   ('singleAchievements', 'prime_gaming_reserved_10'): 1672, 
+   ('singleAchievements', 'prime_gaming_reserved_11'): 1673, 
+   ('singleAchievements', 'prime_gaming_reserved_12'): 1674}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 

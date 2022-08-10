@@ -1,6 +1,6 @@
 import math, sys
 from collections import defaultdict, namedtuple
-import typing, BigWorld, motivation_quests, nations
+import typing, BigWorld, motivation_quests, customization_quests, nations
 from Event import Event, EventManager
 from PlayerEvents import g_playerEvents
 from adisp import async, process
@@ -9,7 +9,7 @@ from debug_utils import LOG_DEBUG
 from dossiers2.ui.achievements import ACHIEVEMENT_BLOCK
 from gui.server_events import caches as quests_caches
 from gui.server_events.event_items import MotiveQuest, Quest, ServerEventAbstract, createAction, createQuest
-from gui.server_events.events_helpers import getEventsData, getRerollTimeout, isBattleRoyale, isDailyEpic, isLinkedSet, isMapsTraining, isMarathon, isPremium, isRankedDaily, isRankedPlatform
+from gui.server_events.events_helpers import getEventsData, getRerollTimeout, isBattleRoyale, isDailyEpic, isBattleMattersQuestID, isMapsTraining, isMarathon, isPremium, isRankedDaily, isRankedPlatform
 from gui.server_events.formatters import getLinkedActionID
 from gui.server_events.modifiers import ACTION_MODIFIER_TYPE, ACTION_SECTION_TYPE, clearModifiersCache
 from gui.server_events.personal_missions_cache import PersonalMissionsCache
@@ -23,7 +23,7 @@ from personal_missions import PERSONAL_MISSIONS_XML_PATH
 from quest_cache_helpers import readQuestsFromFile
 from shared_utils import first
 from skeletons.gui.game_control import IBattleRoyaleController, IEpicBattleMetaGameController, IRankedBattlesController
-from skeletons.gui.linkedset import ILinkedSetController
+from skeletons.gui.battle_matters import IBattleMattersController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared.utils import IRaresCache
@@ -69,7 +69,7 @@ class EventsCache(IEventsCache):
      EVENT_TYPE.PERSONAL_MISSION)
     lobbyContext = dependency.descriptor(ILobbyContext)
     rareAchievesCache = dependency.descriptor(IRaresCache)
-    linkedSet = dependency.descriptor(ILinkedSetController)
+    battle_matters = dependency.descriptor(IBattleMattersController)
     rankedController = dependency.descriptor(IRankedBattlesController)
     __epicController = dependency.descriptor(IEpicBattleMetaGameController)
     __battleRoyaleController = dependency.descriptor(IBattleRoyaleController)
@@ -231,9 +231,10 @@ class EventsCache(IEventsCache):
     def getActiveQuests(self, filterFunc=None):
         filterFunc = filterFunc or (lambda a: True)
         isPremiumQuestsEnable = self.lobbyContext.getServerSettings().getPremQuestsConfig().get('enabled', False)
+        isBattleMattersEnabled = self.battle_matters.isEnabled()
 
         def userFilterFunc(q):
-            if isLinkedSet(q.getGroupID()) and not self.linkedSet.isLinkedSetEnabled():
+            if not isBattleMattersEnabled and isBattleMattersQuestID(q.getID()):
                 return False
             if not isPremiumQuestsEnable and isPremium(q.getGroupID()):
                 return False
@@ -254,7 +255,7 @@ class EventsCache(IEventsCache):
                 return False
             if q.getType() == EVENT_TYPE.TOKEN_QUEST and isMarathon(qID):
                 return False
-            if isLinkedSet(qGroup) or isPremium(qGroup) and not qIsValid:
+            if isBattleMattersQuestID(qID) or isPremium(qGroup) and not qIsValid:
                 return False
             if not isEpicBattleEnabled and isDailyEpic(qGroup):
                 return False
@@ -275,14 +276,6 @@ class EventsCache(IEventsCache):
 
         def userFilterFunc(q):
             return q.getType() == EVENT_TYPE.MOTIVE_QUEST and filterFunc(q)
-
-        return self.getQuests(userFilterFunc)
-
-    def getLinkedSetQuests(self, filterFunc=None):
-        filterFunc = filterFunc or (lambda a: True)
-
-        def userFilterFunc(q):
-            return isLinkedSet(q.getGroupID()) and filterFunc(q)
 
         return self.getQuests(userFilterFunc)
 
@@ -809,6 +802,12 @@ class EventsCache(IEventsCache):
             yield (
              questDescr.questID,
              self._makeQuest(questDescr.questID, questDescr.questData, maker=_motiveQuestMaker))
+
+        c11nQuests = customization_quests.g_cust_cache.values()
+        for questDescr in c11nQuests:
+            yield (
+             questDescr.questID,
+             self._makeQuest(questDescr.questID, questDescr.questClientData))
 
     def __loadInvalidateCallback(self, duration):
         LOG_DEBUG('load quest window invalidation callback (secs)', duration)

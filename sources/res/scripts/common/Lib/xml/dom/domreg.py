@@ -1,4 +1,5 @@
 from xml.dom.minicompat import *
+import sys
 well_known_implementations = {'minidom': 'xml.dom.minidom', 
    '4DOM': 'xml.dom.DOMImplementation'}
 registered = {}
@@ -25,7 +26,7 @@ def getDOMImplementation(name=None, features=()):
     else:
         if name:
             return registered[name]()
-        if 'PYTHON_DOM' in os.environ:
+        if not sys.flags.ignore_environment and 'PYTHON_DOM' in os.environ:
             return getDOMImplementation(name=os.environ['PYTHON_DOM'])
         if isinstance(features, StringTypes):
             features = _parse_feature_string(features)

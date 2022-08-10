@@ -6,9 +6,9 @@ package net.wg.gui.bootcamp.introVideoPage.containers
    import net.wg.gui.components.containers.GroupEx;
    import net.wg.gui.components.containers.HorizontalGroupLayout;
    import net.wg.infrastructure.base.UIComponentEx;
-   import net.wg.infrastructure.uilogger.UILogger;
-   import net.wg.infrastructure.uilogger.bootcamp.BOOTCAMP_LOGGER_CONSTANTS;
-   import net.wg.infrastructure.uilogger.bootcamp.TooltipLogger;
+   import net.wg.infrastructure.uilogging.deprecated.base.DeprecatedLogger;
+   import net.wg.infrastructure.uilogging.deprecated.bootcamp.BOOTCAMP_LOGGER_CONSTANTS;
+   import net.wg.infrastructure.uilogging.deprecated.bootcamp.TooltipLogger;
    
    public class IntroRewardsContainer extends UIComponentEx
    {
@@ -36,7 +36,7 @@ package net.wg.gui.bootcamp.introVideoPage.containers
       
       public var background:Sprite = null;
       
-      private var _logger:UILogger = null;
+      private var _logger:DeprecatedLogger = null;
       
       public function IntroRewardsContainer()
       {

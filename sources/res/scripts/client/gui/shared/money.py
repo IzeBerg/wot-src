@@ -9,6 +9,7 @@ class Currency(CONST_CONTAINER):
     EVENT_COIN = 'eventCoin'
     BPCOIN = 'bpcoin'
     BRCOIN = 'brcoin'
+    FREE_XP = 'freeXP'
     ALL = (
      CREDITS, GOLD, CRYSTAL, EVENT_COIN, BPCOIN)
     BY_WEIGHT = (

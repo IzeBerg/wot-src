@@ -183,6 +183,8 @@ package net.wg.data.constants.generated
       
       public static const CZECH_CZ17_VZ_55:String = "czech-Cz17_Vz_55";
       
+      public static const CZECH_CZ17_VZ_55_CN:String = "czech-Cz17_Vz_55_CN";
+      
       public static const CZECH_CZ18_TNH_105_1000:String = "czech-Cz18_TNH_105_1000";
       
       public static const CZECH_CZ19_VZ_44_1:String = "czech-Cz19_Vz_44_1";
@@ -839,7 +841,19 @@ package net.wg.data.constants.generated
       
       public static const ITALY_IT20_CARRO_COMBATTIMENTO_45T:String = "italy-It20_Carro_Combattimento_45t";
       
+      public static const ITALY_IT23_CC_3:String = "italy-It23_CC_3";
+      
+      public static const ITALY_IT24_CONTROCARRO_1_MK2:String = "italy-It24_Controcarro_1_Mk2";
+      
+      public static const ITALY_IT26_CC_56:String = "italy-It26_CC_56";
+      
+      public static const ITALY_IT27_M43_DA_105_25_BASSOTO:String = "italy-It27_M43_da_105_25_Bassoto";
+      
+      public static const ITALY_IT28_SEMOVENTE_M41_DA_75_18:String = "italy-It28_Semovente_M41_Da_75_18";
+      
       public static const ITALY_IT30_CC_MOD_64_PREM:String = "italy-It30_CC_mod_64_Prem";
+      
+      public static const ITALY_IT31_CC_67_B:String = "italy-it31_cc_67_b";
       
       public static const JAPAN_J01_NC27:String = "japan-J01_NC27";
       
@@ -1727,6 +1741,8 @@ package net.wg.data.constants.generated
       
       public static const USSR_R115_IS_3_AUTO:String = "ussr-R115_IS-3_auto";
       
+      public static const USSR_R115_IS_3_AUTO_S:String = "ussr-R115_IS-3_auto_S";
+      
       public static const USSR_R115_IS_3_AUTO_TEST:String = "ussr-R115_IS-3_auto_test";
       
       public static const USSR_R116_ISU122_C_BERLIN:String = "ussr-R116_ISU122C_Berlin";
@@ -1884,6 +1900,8 @@ package net.wg.data.constants.generated
       public static const USSR_R193_M4_A2_T_34:String = "ussr-R193_M4A2_T_34";
       
       public static const USSR_R195_T34_M_54:String = "ussr-R195_T34M_54";
+      
+      public static const USSR_R197_KV_1_S_MZ:String = "ussr-R197_KV_1S_MZ";
       
       public static const USSR_R20_T_44:String = "ussr-R20_T-44";
       

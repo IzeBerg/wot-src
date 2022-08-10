@@ -25,7 +25,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private var _lockColorTransform:Boolean = false;
       
-      private var _consumablesVO:ConsumablesVO = null;
+      private var _consumablesVO:ConsumablesVO;
       
       private var _intCD:int = -1;
       
@@ -35,10 +35,10 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function BattleOptionalDeviceButton()
       {
+         this._consumablesVO = new ConsumablesVO();
          super();
          isAllowedToShowToolTipOnDisabledState = true;
          hideToolTipOnClickActions = false;
-         this._consumablesVO = new ConsumablesVO();
          enabled = false;
          state = InteractiveStates.UP;
       }
@@ -245,14 +245,14 @@ package net.wg.gui.battle.views.consumablesPanel
       public function flushColorTransform() : void
       {
          this._lockColorTransform = this._isEmpty;
-         if(!this._lockColorTransform)
+         if(this._lockColorTransform)
          {
-            this.setColorTransform(this._delayColorTransform);
-            this._delayColorTransform = null;
+            this.clearColorTransform();
          }
          else
          {
-            this.clearColorTransform();
+            this.setColorTransform(this._delayColorTransform);
+            this._delayColorTransform = null;
          }
       }
       

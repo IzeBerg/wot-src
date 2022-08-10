@@ -121,12 +121,13 @@ class Telnet():
         self.debuglevel = debuglevel
 
     def close(self):
-        if self.sock:
-            self.sock.close()
+        sock = self.sock
         self.sock = 0
         self.eof = 1
         self.iacseq = ''
         self.sb = 0
+        if sock:
+            sock.close()
 
     def get_socket(self):
         return self.sock
@@ -162,7 +163,7 @@ class Telnet():
                 try:
                     ready = poller.poll(None if timeout is None else 1000 * call_timeout)
                 except select.error as e:
-                    if e.errno == errno.EINTR:
+                    if e[0] == errno.EINTR:
                         if timeout is not None:
                             elapsed = time() - time_start
                             call_timeout = timeout - elapsed
@@ -447,7 +448,7 @@ class Telnet():
                 try:
                     ready = poller.poll(None if timeout is None else 1000 * call_timeout)
                 except select.error as e:
-                    if e.errno == errno.EINTR:
+                    if e[0] == errno.EINTR:
                         if timeout is not None:
                             elapsed = time() - time_start
                             call_timeout = timeout - elapsed

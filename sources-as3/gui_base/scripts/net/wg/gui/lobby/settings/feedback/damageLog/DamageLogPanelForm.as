@@ -76,12 +76,12 @@ package net.wg.gui.lobby.settings.feedback.damageLog
       
       public var damageLogPanelComponent:BattleDamageLogPanel;
       
-      private var _colorMgr:IColorSchemeManager = null;
+      private var _colorMgr:IColorSchemeManager;
       
       public function DamageLogPanelForm()
       {
-         super();
          this._colorMgr = App.colorSchemeMgr;
+         super();
          this.damageLogPanelComponent.init(ATLAS_CONSTANTS.COMMON_BATTLE_LOBBY);
          this.damageLogPanelComponent.setSettingsDamageLogComponent(true,false);
          this.damageLogPanelComponent.setDetailActionCount(BattleDamageLogConstants.SETTINGS_POOL_COUNT);
@@ -91,81 +91,75 @@ package net.wg.gui.lobby.settings.feedback.damageLog
       
       override public function updateContent(param1:Object) : void
       {
-         var _loc10_:String = null;
-         var _loc11_:String = null;
-         var _loc12_:String = null;
-         var _loc13_:String = null;
-         var _loc14_:Vector.<MessageRenderModel> = null;
+         var _loc4_:String = null;
+         var _loc5_:String = null;
+         var _loc6_:String = null;
+         var _loc7_:String = null;
+         var _loc8_:Vector.<MessageRenderModel> = null;
          super.updateContent(param1);
-         var _loc2_:Boolean = param1[DAMAGE_LOG_TOTAL_DAMAGE_ID];
-         var _loc3_:Boolean = param1[DAMAGE_LOG_ASSIST_DAMAGE_ID];
-         var _loc4_:Boolean = param1[DAMAGE_LOG_BLOCKED_DAMAGE_ID];
-         var _loc5_:Boolean = param1[DAMAGE_LOG_ASSIST_STUN_ID];
-         var _loc6_:int = param1[DAMAGE_LOG_SHOW_DETAILS_ID];
-         var _loc7_:int = param1[DAMAGE_LOG_EVENT_TYPE_ID];
-         var _loc8_:int = param1[DAMAGE_LOG_POSITION_ID];
-         var _loc9_:Boolean = _loc6_ != DETAILS_LOG_DOESNT_SHOW;
-         if(_loc2_)
+         var _loc2_:int = param1[DAMAGE_LOG_EVENT_TYPE_ID];
+         var _loc3_:Boolean = param1[DAMAGE_LOG_SHOW_DETAILS_ID] != DETAILS_LOG_DOESNT_SHOW;
+         if(param1[DAMAGE_LOG_TOTAL_DAMAGE_ID])
          {
-            _loc10_ = SETTINGS.FEEDBACK_TAB_DAMAGELOGPANEL_SUMMARYDAMAGE;
+            _loc4_ = SETTINGS.FEEDBACK_TAB_DAMAGELOGPANEL_SUMMARYDAMAGE;
          }
-         if(_loc4_)
+         if(param1[DAMAGE_LOG_BLOCKED_DAMAGE_ID])
          {
-            _loc11_ = SETTINGS.FEEDBACK_TAB_DAMAGELOGPANEL_SUMMARYBLOCK;
+            _loc5_ = SETTINGS.FEEDBACK_TAB_DAMAGELOGPANEL_SUMMARYBLOCK;
          }
-         if(_loc3_)
+         if(param1[DAMAGE_LOG_ASSIST_DAMAGE_ID])
          {
-            _loc12_ = SETTINGS.FEEDBACK_TAB_DAMAGELOGPANEL_SUMMARYASSIST;
+            _loc6_ = SETTINGS.FEEDBACK_TAB_DAMAGELOGPANEL_SUMMARYASSIST;
          }
-         if(_loc5_)
+         if(param1[DAMAGE_LOG_ASSIST_STUN_ID])
          {
-            _loc13_ = SETTINGS.FEEDBACK_TAB_DAMAGELOGPANEL_SUMMARYASSISTSTUN;
+            _loc7_ = SETTINGS.FEEDBACK_TAB_DAMAGELOGPANEL_SUMMARYASSISTSTUN;
          }
-         this.damageLogPanelComponent.setSummaryStats(_loc10_,_loc11_,_loc12_,_loc13_);
-         var _loc15_:Boolean = true;
-         var _loc16_:Boolean = false;
-         var _loc17_:Boolean = _loc7_ == DETAILS_LOG_POSITIVE_EVENTS_IDX;
-         if(_loc8_ == DETAILS_LOG_BOTTOM_POSITION_IDX)
+         this.damageLogPanelComponent.setSummaryStats(_loc4_,_loc5_,_loc6_,_loc7_);
+         var _loc9_:Boolean = true;
+         var _loc10_:Boolean = false;
+         var _loc11_:Boolean = _loc2_ == DETAILS_LOG_POSITIVE_EVENTS_IDX;
+         if(param1[DAMAGE_LOG_POSITION_ID] == DETAILS_LOG_BOTTOM_POSITION_IDX)
          {
-            if(_loc7_ == DETAILS_LOG_ALL_EVENTS_IDX)
+            if(_loc2_ == DETAILS_LOG_ALL_EVENTS_IDX)
             {
-               _loc14_ = SettingsDamageLogData.getTotal();
+               _loc8_ = SettingsDamageLogData.getTotal();
             }
-            else if(_loc17_)
+            else if(_loc11_)
             {
-               _loc14_ = SettingsDamageLogData.getPositive();
-               _loc15_ = false;
+               _loc8_ = SettingsDamageLogData.getPositive();
+               _loc9_ = false;
             }
             else
             {
-               _loc14_ = SettingsDamageLogData.getNegative();
+               _loc8_ = SettingsDamageLogData.getNegative();
             }
-            this.damageLogPanelComponent.settingsDetailStatsBottom(_loc9_,_loc17_,_loc14_);
-            this.damageLogPanelComponent.settingsDetailStatsTop(_loc9_,SettingsDamageLogData.getEmpty());
+            this.damageLogPanelComponent.settingsDetailStatsBottom(_loc3_,_loc11_,_loc8_);
+            this.damageLogPanelComponent.settingsDetailStatsTop(_loc3_,SettingsDamageLogData.getEmpty());
          }
          else
          {
-            if(_loc17_ || _loc7_ == DETAILS_LOG_ALL_EVENTS_IDX)
+            if(_loc11_ || _loc2_ == DETAILS_LOG_ALL_EVENTS_IDX)
             {
-               this.damageLogPanelComponent.settingsDetailStatsBottom(_loc9_,true,SettingsDamageLogData.getPositive());
+               this.damageLogPanelComponent.settingsDetailStatsBottom(_loc3_,true,SettingsDamageLogData.getPositive());
             }
-            if(_loc17_)
+            if(_loc11_)
             {
-               this.damageLogPanelComponent.settingsDetailStatsTop(_loc9_,SettingsDamageLogData.getEmpty());
-               _loc15_ = false;
+               this.damageLogPanelComponent.settingsDetailStatsTop(_loc3_,SettingsDamageLogData.getEmpty());
+               _loc9_ = false;
             }
-            if(_loc7_ == DETAILS_LOG_NEGATIVE_EVENTS_IDX || _loc7_ == DETAILS_LOG_ALL_EVENTS_IDX)
+            if(_loc2_ == DETAILS_LOG_NEGATIVE_EVENTS_IDX || _loc2_ == DETAILS_LOG_ALL_EVENTS_IDX)
             {
-               _loc16_ = true;
-               this.damageLogPanelComponent.settingsDetailStatsTop(_loc9_,SettingsDamageLogData.getNegative());
-               if(_loc7_ == DETAILS_LOG_NEGATIVE_EVENTS_IDX)
+               _loc10_ = true;
+               this.damageLogPanelComponent.settingsDetailStatsTop(_loc3_,SettingsDamageLogData.getNegative());
+               if(_loc2_ == DETAILS_LOG_NEGATIVE_EVENTS_IDX)
                {
-                  this.damageLogPanelComponent.settingsDetailStatsBottom(_loc9_,true,SettingsDamageLogData.getEmpty());
+                  this.damageLogPanelComponent.settingsDetailStatsBottom(_loc3_,true,SettingsDamageLogData.getEmpty());
                }
             }
          }
-         this.damageLogEventsPositionButtonBar.enabled = _loc15_;
-         this.screenSizeAlert.visible = _loc16_ && _loc9_;
+         this.damageLogEventsPositionButtonBar.enabled = _loc9_;
+         this.screenSizeAlert.visible = _loc10_ && _loc3_;
       }
       
       override protected function getContainerId() : String

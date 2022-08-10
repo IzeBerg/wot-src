@@ -1,5 +1,5 @@
 import unittest, sys
-from .support import LoggingResult, TestEquality
+from unittest.test.support import LoggingResult, TestEquality
 
 class Test(object):
 

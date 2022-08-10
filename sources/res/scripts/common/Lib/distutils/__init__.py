@@ -1,2 +1,2 @@
-__revision__ = '$Id$'
-__version__ = '2.7.7'
+import sys
+__version__ = sys.version[:sys.version.index(' ')]

@@ -1,5 +1,11 @@
 import os, sys, time, base64, difflib, unittest, warnings, textwrap
 from cStringIO import StringIO
+from random import choice
+try:
+    from threading import Thread
+except ImportError:
+    from dummy_threading import Thread
+
 import email
 from email.Charset import Charset
 from email.Header import Header, decode_header, make_header
@@ -18,7 +24,7 @@ from email import Encoders
 from email import Iterators
 from email import base64MIME
 from email import quopriMIME
-from test.test_support import findfile, run_unittest
+from test.test_support import findfile, run_unittest, start_threads
 from email.test import __file__ as landmark
 NL = '\n'
 EMPTYSTRING = ''
@@ -483,12 +489,12 @@ class TestMessageAPI(TestEmailBase):
         msg.set_charset('us-ascii')
         self.assertEqual('us-ascii', msg.get_content_charset())
 
-    def test_embeded_header_via_Header_rejected(self):
+    def test_embedded_header_via_Header_rejected(self):
         msg = Message()
         msg['Dummy'] = Header('dummy\nX-Injected-Header: test')
         self.assertRaises(Errors.HeaderParseError, msg.as_string)
 
-    def test_embeded_header_via_string_rejected(self):
+    def test_embedded_header_via_string_rejected(self):
         msg = Message()
         msg['Dummy'] = 'dummy\nX-Injected-Header: test'
         self.assertRaises(Errors.HeaderParseError, msg.as_string)
@@ -1156,9 +1162,9 @@ class TestRFC2047(unittest.TestCase):
             self.assertEqual(dh, [(a, 'iso-8859-1')])
 
     def test_rfc2047_Q_invalid_digits(self):
-        s = '=?iso-8659-1?Q?andr=e9=zz?='
+        s = '=?iso-8859-1?Q?andr=e9=zz?='
         self.assertEqual(decode_header(s), [
-         (b'andr\xe9=zz', 'iso-8659-1')])
+         (b'andr\xe9=zz', 'iso-8859-1')])
 
 
 class TestMIMEMessage(TestEmailBase):
@@ -1661,6 +1667,11 @@ class TestMiscellaneous(TestEmailBase):
         self.assertEqual(Utils.parseaddr('<>'), ('', ''))
         self.assertEqual(Utils.formataddr(Utils.parseaddr('<>')), '')
 
+    def test_parseaddr_multiple_domains(self):
+        self.assertEqual(Utils.parseaddr('a@b@c'), ('', ''))
+        self.assertEqual(Utils.parseaddr('a@b.c@c'), ('', ''))
+        self.assertEqual(Utils.parseaddr('a@172.17.0.1@c'), ('', ''))
+
     def test_noquote_dump(self):
         self.assertEqual(Utils.formataddr(('A Silly Person', 'person@dom.ain')), 'A Silly Person <person@dom.ain>')
 
@@ -1746,6 +1757,25 @@ class TestMiscellaneous(TestEmailBase):
         eq = self.assertEqual
         addrs = Utils.getaddresses(['User ((nested comment)) <foo@bar.com>'])
         eq(addrs[0][1], 'foo@bar.com')
+
+    def test_make_msgid_collisions(self):
+
+        class MsgidsThread(Thread):
+
+            def run(self):
+                self.msgids = []
+                append = self.msgids.append
+                make_msgid = Utils.make_msgid
+                clock = time.time
+                tfin = clock() + 3.0
+                while clock() < tfin:
+                    append(make_msgid())
+
+        threads = [ MsgidsThread() for i in range(5) ]
+        with start_threads(threads):
+            pass
+        all_ids = sum([ t.msgids for t in threads ], [])
+        self.assertEqual(len(set(all_ids)), len(all_ids))
 
     def test_utils_quote_unquote(self):
         eq = self.assertEqual
@@ -1859,10 +1889,7 @@ class TestIterators(TestEmailBase):
             bsf.push(il)
             nt += n
             n1 = 0
-            while True:
-                ol = bsf.readline()
-                if ol == NeedMoreData:
-                    break
+            for ol in iter(bsf.readline, NeedMoreData):
                 om.append(ol)
                 n1 += 1
 
@@ -1870,6 +1897,56 @@ class TestIterators(TestEmailBase):
 
         self.assertEqual(len(om), nt)
         self.assertEqual(('').join([ il for il, n in imt ]), ('').join(om))
+
+    def test_push_random(self):
+        from email.feedparser import BufferedSubFile, NeedMoreData
+        n = 10000
+        chunksize = 5
+        chars = 'abcd \t\r\n'
+        s = ('').join(choice(chars) for i in range(n)) + '\n'
+        target = s.splitlines(True)
+        bsf = BufferedSubFile()
+        lines = []
+        for i in range(0, len(s), chunksize):
+            chunk = s[i:i + chunksize]
+            bsf.push(chunk)
+            lines.extend(iter(bsf.readline, NeedMoreData))
+
+        self.assertEqual(lines, target)
+
+
+class TestFeedParsers(TestEmailBase):
+
+    def parse(self, chunks):
+        from email.feedparser import FeedParser
+        feedparser = FeedParser()
+        for chunk in chunks:
+            feedparser.feed(chunk)
+
+        return feedparser.close()
+
+    def test_newlines(self):
+        m = self.parse(['a:\nb:\rc:\r\nd:\n'])
+        self.assertEqual(m.keys(), ['a', 'b', 'c', 'd'])
+        m = self.parse(['a:\nb:\rc:\r\nd:'])
+        self.assertEqual(m.keys(), ['a', 'b', 'c', 'd'])
+        m = self.parse(['a:\rb', 'c:\n'])
+        self.assertEqual(m.keys(), ['a', 'bc'])
+        m = self.parse(['a:\r', 'b:\n'])
+        self.assertEqual(m.keys(), ['a', 'b'])
+        m = self.parse(['a:\r', '\nb:\n'])
+        self.assertEqual(m.keys(), ['a', 'b'])
+
+    def test_long_lines(self):
+        M, N = (1000, 20000)
+        m = self.parse(['a:b\n\n'] + ['x' * M] * N)
+        self.assertEqual(m.items(), [('a', 'b')])
+        self.assertEqual(m.get_payload(), 'x' * M * N)
+        m = self.parse(['a:b\r\r'] + ['x' * M] * N)
+        self.assertEqual(m.items(), [('a', 'b')])
+        self.assertEqual(m.get_payload(), 'x' * M * N)
+        m = self.parse(['a:\r', 'b: '] + ['x' * M] * N)
+        self.assertEqual(m.items(), [('a', ''), ('b', 'x' * M * N)])
 
 
 class TestParsers(TestEmailBase):

@@ -80,7 +80,7 @@
 		<armor>
 			<armor_1>220</armor_1>
 			<armor_2>125</armor_2>
-			<armor_3>60</armor_3>
+			<armor_3>85</armor_3>
 			<armor_4>40</armor_4>
 			<armor_5>40</armor_5>
 			<armor_6>60</armor_6>
@@ -88,11 +88,11 @@
 			<armor_8>0</armor_8>
 			<armor_9>240</armor_9>
 			<armor_11>100</armor_11>
-			<armor_12>60</armor_12>
+			<armor_12>85</armor_12>
 		</armor>
 		<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
 		<weight>43670</weight>
-		<maxHealth>1760</maxHealth>
+		<maxHealth>1920</maxHealth>
 		<ammoBayHealth>
 			<maxHealth>260</maxHealth>
 			<maxRegenHealth>180</maxRegenHealth>
@@ -1534,14 +1534,14 @@
 			</terrainResistance>
 			<brakeForce>80000</brakeForce>
 			<rotationIsAroundCenter>false</rotationIsAroundCenter>
-			<rotationSpeed>32</rotationSpeed>
+			<rotationSpeed>28</rotationSpeed>
 			<shotDispersionFactors>
 				<vehicleMovement>
-					0.18
+					0.12
 					<!--BW_String-->
 				</vehicleMovement>
 				<vehicleRotation>
-					0.18
+					0.12
 					<!--BW_String-->
 				</vehicleRotation>
 			</shotDispersionFactors>
@@ -1578,12 +1578,189 @@
 			</traces>
 			<tracks>
 				<lodDist>MEDIUM_TRACK</lodDist>
-				<leftMaterial>track_mat_L_skinned</leftMaterial>
-				<rightMaterial>track_mat_R_skinned</rightMaterial>
-				<textureScale>
-					-1.55
-					<!--BW_String-->
-				</textureScale>
+				<trackPair>
+					<trackPairIdx>0</trackPairIdx>
+					<leftMaterial>track_mat_L_skinned</leftMaterial>
+					<rightMaterial>track_mat_R_skinned</rightMaterial>
+					<textureScale>
+						-1.55
+						<!--BW_String-->
+					</textureScale>
+					<trackDebris>
+						<isLeft>true</isLeft>
+						<destructionEffect/>
+						<physicalParams>
+							<renderModelOffset>-0.035195</renderModelOffset>
+							<lengthwiseSpringLength>0.141234</lengthwiseSpringLength>
+							<widthwiseSpringLength>0.688286</widthwiseSpringLength>
+							<hingeJointStiffness>1998.090942</hingeJointStiffness>
+							<torsionStiffnessStep>8</torsionStiffnessStep>
+							<wheelGroups>
+								<wheelGroup>
+									<wheelName>WD_L1</wheelName>
+									<groupRadius>0.408667</groupRadius>
+									<groupInnerOffset>
+										0.47033
+										<!--BW_String-->
+									</groupInnerOffset>
+									<groupOuterOffset>
+										-0.37033
+										<!--BW_String-->
+									</groupOuterOffset>
+								</wheelGroup>
+								<wheelGroup>
+									<wheelName>W_L8</wheelName>
+									<wheelName>W_L7</wheelName>
+									<wheelName>W_L6</wheelName>
+									<wheelName>W_L5</wheelName>
+									<wheelName>W_L4</wheelName>
+									<wheelName>W_L3</wheelName>
+									<wheelName>W_L2</wheelName>
+									<wheelName>W_L1</wheelName>
+									<wheelName>W_L0</wheelName>
+									<groupRadius>0.424464</groupRadius>
+									<groupInnerOffset>
+										0.47033
+										<!--BW_String-->
+									</groupInnerOffset>
+									<groupOuterOffset>
+										-0.37033
+										<!--BW_String-->
+									</groupOuterOffset>
+								</wheelGroup>
+								<wheelGroup>
+									<wheelName>WD_L0</wheelName>
+									<groupRadius>
+										0.34865
+										<!--BW_String-->
+									</groupRadius>
+									<groupInnerOffset>
+										0.47033
+										<!--BW_String-->
+									</groupInnerOffset>
+									<groupOuterOffset>
+										-0.37033
+										<!--BW_String-->
+									</groupOuterOffset>
+								</wheelGroup>
+							</wheelGroups>
+							<hullCollider>
+								<boxCollider>
+									<row0>1.917792 0.000000 0.000000</row0>
+									<row1>0.000000 1.393866 0.000000</row1>
+									<row2>0.000000 0.000000 7.255983</row2>
+									<row3>0.000000 1.209674 -0.158856</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.435000 0.000000 0.000000</row0>
+									<row1>0.000000 0.506401 0.000000</row1>
+									<row2>0.000000 0.000000 7.088345</row2>
+									<row3>0.000000 1.493394 -0.353780</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.435000 0.000001 0.000000</row0>
+									<row1>-0.000000 0.425571 0.174654</row1>
+									<row2>0.000000 -0.237534 0.578789</row2>
+									<row3>0.000000 1.422557 3.362048</row3>
+								</boxCollider>
+							</hullCollider>
+						</physicalParams>
+					</trackDebris>
+					<trackDebris>
+						<isLeft>false</isLeft>
+						<destructionEffect/>
+						<physicalParams>
+							<renderModelOffset>-0.035174</renderModelOffset>
+							<lengthwiseSpringLength>0.141327</lengthwiseSpringLength>
+							<widthwiseSpringLength>0.688218</widthwiseSpringLength>
+							<hingeJointStiffness>1997.798828</hingeJointStiffness>
+							<torsionStiffnessStep>8</torsionStiffnessStep>
+							<wheelGroups>
+								<wheelGroup>
+									<wheelName>WD_R1</wheelName>
+									<groupRadius>
+										0.4097
+										<!--BW_String-->
+									</groupRadius>
+									<groupInnerOffset>
+										-0.47033
+										<!--BW_String-->
+									</groupInnerOffset>
+									<groupOuterOffset>
+										0.37033
+										<!--BW_String-->
+									</groupOuterOffset>
+								</wheelGroup>
+								<wheelGroup>
+									<wheelName>W_R8</wheelName>
+									<wheelName>W_R6</wheelName>
+									<wheelName>W_R2</wheelName>
+									<wheelName>W_R1</wheelName>
+									<wheelName>W_R0</wheelName>
+									<groupRadius>
+										0.42416
+										<!--BW_String-->
+									</groupRadius>
+									<groupInnerOffset>
+										-0.47033
+										<!--BW_String-->
+									</groupInnerOffset>
+									<groupOuterOffset>
+										0.37033
+										<!--BW_String-->
+									</groupOuterOffset>
+								</wheelGroup>
+								<wheelGroup>
+									<wheelName>W_R7</wheelName>
+									<wheelName>W_R5</wheelName>
+									<wheelName>W_R4</wheelName>
+									<wheelName>W_R3</wheelName>
+									<groupRadius>0.422153</groupRadius>
+									<groupInnerOffset>
+										-0.47033
+										<!--BW_String-->
+									</groupInnerOffset>
+									<groupOuterOffset>
+										0.37033
+										<!--BW_String-->
+									</groupOuterOffset>
+								</wheelGroup>
+								<wheelGroup>
+									<wheelName>WD_R0</wheelName>
+									<groupRadius>0.351119</groupRadius>
+									<groupInnerOffset>
+										-0.47033
+										<!--BW_String-->
+									</groupInnerOffset>
+									<groupOuterOffset>
+										0.37033
+										<!--BW_String-->
+									</groupOuterOffset>
+								</wheelGroup>
+							</wheelGroups>
+							<hullCollider>
+								<boxCollider>
+									<row0>1.917792 0.000000 0.000000</row0>
+									<row1>0.000000 1.393866 0.000000</row1>
+									<row2>0.000000 0.000000 7.255983</row2>
+									<row3>-0.000000 1.209674 -0.158856</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.435000 0.000000 0.000000</row0>
+									<row1>0.000000 0.506401 0.000000</row1>
+									<row2>0.000000 0.000000 7.088345</row2>
+									<row3>-0.000000 1.493394 -0.353780</row3>
+								</boxCollider>
+								<boxCollider>
+									<row0>3.435000 -0.000001 -0.000000</row0>
+									<row1>0.000000 0.425571 0.174654</row1>
+									<row2>-0.000000 -0.237534 0.578789</row2>
+									<row3>-0.000000 1.422557 3.362048</row3>
+								</boxCollider>
+							</hullCollider>
+						</physicalParams>
+					</trackDebris>
+				</trackPair>
 			</tracks>
 			<wheels>
 				<lodDist>MEDIUM</lodDist>
@@ -3255,7 +3432,7 @@
 			</armor>
 			<primaryArmor>armor_1 armor_3 armor_4</primaryArmor>
 			<weight>18500</weight>
-			<maxHealth>440</maxHealth>
+			<maxHealth>480</maxHealth>
 			<rotationSpeed>32</rotationSpeed>
 			<turretRotatorHealth>
 				<maxHealth>160</maxHealth>
@@ -3368,10 +3545,7 @@
 						0.14
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
-					<reloadTime>
-						10.9
-						<!--BW_String-->
-					</reloadTime>
+					<reloadTime>10</reloadTime>
 					<aimingTime>
 						1.8
 						<!--BW_String-->
@@ -3571,7 +3745,7 @@
 						<!--BW_String-->
 					</invisibilityFactorAtShot>
 					<reloadTime>
-						15.8
+						13.4
 						<!--BW_String-->
 					</reloadTime>
 					<aimingTime>
@@ -3593,7 +3767,7 @@
 						</whileGunDamaged>
 					</shotDispersionFactors>
 					<shotDispersionRadius>
-						0.35
+						0.33
 						<!--BW_String-->
 					</shotDispersionRadius>
 					<models>

@@ -469,7 +469,7 @@ BATTLE_RESULTS = [
  (
   'watchedBattleToTheEnd', bool, False, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
-  'vseBattleResults', list, [], None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+  'vseBattleResults', dict, {}, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
   'squadBonusInfo', None, None, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (

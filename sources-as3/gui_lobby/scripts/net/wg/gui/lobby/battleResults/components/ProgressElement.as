@@ -1,7 +1,10 @@
 package net.wg.gui.lobby.battleResults.components
 {
    import flash.display.MovieClip;
+   import flash.display.Sprite;
    import flash.events.MouseEvent;
+   import flash.text.TextField;
+   import flash.text.TextFormat;
    import net.wg.data.VO.ProgressElementVO;
    import net.wg.gui.components.controls.TextFieldShort;
    import net.wg.gui.lobby.components.ProgressIndicator;
@@ -12,15 +15,31 @@ package net.wg.gui.lobby.battleResults.components
    
    public class ProgressElement extends UIComponentEx implements ISubtaskComponent
    {
+      
+      private static const PROGRESS_INDICATOR_OFFSET_Y:int = 14;
+      
+      private static const LABEL_OFFSET_Y:int = -2;
+      
+      private static const HIT_MC_BOTTOM_MARGIN:int = 3;
+      
+      private static const STATE_RIGHT:int = 39;
+      
+      private static const STATUS_TEXT_SIZE:int = 12;
        
       
-      public var progressTF:TextFieldShort;
+      public var titleTF:TextFieldShort = null;
       
-      public var progressDiff:MovieClip;
+      public var progressTF:TextFieldShort = null;
       
-      public var progressIndicator:ProgressIndicator;
+      public var progressDiff:MovieClip = null;
       
-      public var data:ProgressElementVO = null;
+      public var progressIndicator:ProgressIndicator = null;
+      
+      public var hitMC:Sprite = null;
+      
+      public var questStatus:PersonalQuestState = null;
+      
+      private var _data:ProgressElementVO = null;
       
       private var _showProgressDiffTooltip:Boolean = false;
       
@@ -36,6 +55,8 @@ package net.wg.gui.lobby.battleResults.components
          this.progressDiff.addEventListener(MouseEvent.ROLL_OUT,this.onProgressDiffRollOutHandler);
          this.progressDiff.addEventListener(MouseEvent.ROLL_OVER,this.onProgressDiffRollOverHandler);
          this.progressTF.buttonMode = false;
+         this.titleTF.buttonMode = false;
+         this.progressIndicator.visible = false;
       }
       
       override protected function onDispose() : void
@@ -45,36 +66,71 @@ package net.wg.gui.lobby.battleResults.components
          this.progressDiff.removeEventListener(MouseEvent.ROLL_OVER,this.onProgressDiffRollOverHandler);
          this.progressTF.dispose();
          this.progressTF = null;
+         this.questStatus.dispose();
+         this.questStatus = null;
+         this.titleTF.dispose();
+         this.titleTF = null;
          this.progressDiff = null;
+         this.hitMC = null;
          this.progressIndicator.dispose();
          this.progressIndicator = null;
-         if(this.data)
+         if(this._data)
          {
-            this.data.dispose();
-            this.data = null;
+            this._data.dispose();
+            this._data = null;
          }
          super.onDispose();
       }
       
       override protected function draw() : void
       {
+         var _loc1_:Boolean = false;
+         var _loc2_:TextField = null;
+         var _loc3_:TextFormat = null;
+         var _loc4_:int = 0;
          super.draw();
          if(isInvalid(InvalidationType.DATA))
          {
-            if(this.data != null)
+            if(this._data != null)
             {
                this.visible = true;
-               this.progressTF.label = this.data.description;
-               this.progressDiff.textField.text = this.data.progressDiff;
-               this._showProgressDiffTooltip = Boolean(this.data.progressDiff);
-               this.checkProgressIndicator();
-               setSize(this.width,this.height);
+               this.titleTF.label = this._data.title;
+               this.progressTF.label = this._data.description;
+               _loc1_ = this._data.questState && this._data.questState.statusState;
+               if(_loc1_)
+               {
+                  this.questStatus.update(this._data.questState);
+                  this.questStatus.validateNow();
+                  _loc2_ = this.questStatus.textField;
+                  _loc3_ = _loc2_.getTextFormat();
+                  _loc3_.size = STATUS_TEXT_SIZE;
+                  _loc2_.setTextFormat(_loc3_);
+               }
+               else
+               {
+                  this.progressDiff.textField.text = this._data.progressDiff;
+                  this._showProgressDiffTooltip = Boolean(this._data.progressDiff);
+                  this.checkProgressIndicator();
+               }
+               this.progressDiff.visible = !_loc1_;
+               this.questStatus.visible = _loc1_;
+               invalidateSize();
             }
             else
             {
                this.visible = false;
                setSize(this.width,0);
             }
+         }
+         if(isInvalid(InvalidationType.SIZE))
+         {
+            _loc4_ = this.titleTF.label.length > 0 ? int(this.titleTF.height + LABEL_OFFSET_Y) : int(0);
+            this.progressDiff.y = this.progressTF.y = _loc4_;
+            this.progressIndicator.y = _loc4_ + PROGRESS_INDICATOR_OFFSET_Y;
+            this.questStatus.x = width - this.questStatus.width - STATE_RIGHT | 0;
+            this.questStatus.y = this.progressDiff.y;
+            this.hitMC.height = this.progressIndicator.y + this.progressIndicator.height + HIT_MC_BOTTOM_MARGIN;
+            setSize(this.width,this.hitMC.height);
          }
       }
       
@@ -84,17 +140,17 @@ package net.wg.gui.lobby.battleResults.components
       
       public function setData(param1:Object) : void
       {
-         this.data = new ProgressElementVO(param1);
+         this._data = new ProgressElementVO(param1);
          invalidateData();
       }
       
       private function checkProgressIndicator() : void
       {
-         if(StringUtils.isNotEmpty(this.data.progrBarType))
+         if(StringUtils.isNotEmpty(this._data.progrBarType))
          {
             this.progressIndicator.visible = true;
-            this.progressIndicator.setValues(this.data.progrBarType,this.data.currentProgrVal,this.data.maxProgrVal);
-            this.progressIndicator.setTooltip(this.data.progrTooltip);
+            this.progressIndicator.setValues(this._data.progrBarType,this._data.currentProgrVal,this._data.maxProgrVal);
+            this.progressIndicator.setTooltip(this._data.progrTooltip);
             this.progressIndicator.validateNow();
          }
          else
@@ -112,7 +168,7 @@ package net.wg.gui.lobby.battleResults.components
       {
          if(this._showProgressDiffTooltip)
          {
-            App.toolTipMgr.show(this.data.progressDiffTooltip);
+            App.toolTipMgr.show(this._data.progressDiffTooltip);
          }
       }
       

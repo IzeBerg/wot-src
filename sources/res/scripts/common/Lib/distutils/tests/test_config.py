@@ -42,7 +42,7 @@ class PyPIRCCommandTestCase(support.TempdirManager, support.LoggingSilencer, sup
         config = config.items()
         config.sort()
         waited = [('password', 'secret'), ('realm', 'pypi'),
-         ('repository', 'https://pypi.python.org/pypi'),
+         ('repository', 'https://upload.pypi.org/legacy/'),
          ('server', 'server1'), ('username', 'me')]
         self.assertEqual(config, waited)
         self.write_file(self.rc, PYPIRC_OLD)
@@ -50,7 +50,7 @@ class PyPIRCCommandTestCase(support.TempdirManager, support.LoggingSilencer, sup
         config = config.items()
         config.sort()
         waited = [('password', 'secret'), ('realm', 'pypi'),
-         ('repository', 'https://pypi.python.org/pypi'),
+         ('repository', 'https://upload.pypi.org/legacy/'),
          ('server', 'server-login'), ('username', 'tarek')]
         self.assertEqual(config, waited)
 

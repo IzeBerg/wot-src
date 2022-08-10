@@ -9,6 +9,7 @@ __all__ = [
 SMTP_PORT = 25
 SMTP_SSL_PORT = 465
 CRLF = '\r\n'
+_MAXLINE = 8192
 OLDSTYLE_AUTH = re.compile('auth=(.*)', re.I)
 
 class SMTPException(Exception):
@@ -99,10 +100,14 @@ else:
         def __init__(self, sslobj):
             self.sslobj = sslobj
 
-        def readline(self):
+        def readline(self, size=-1):
+            if size < 0:
+                size = None
             str = ''
             chr = None
             while chr != '\n':
+                if size is not None and len(str) >= size:
+                    break
                 chr = self.sslobj.read(1)
                 if not chr:
                     break
@@ -131,6 +136,7 @@ class SMTP():
         if host:
             code, msg = self.connect(host, port)
             if code != 220:
+                self.close()
                 raise SMTPConnectError(code, msg)
         if local_hostname is not None:
             self.local_hostname = local_hostname
@@ -203,7 +209,7 @@ class SMTP():
             self.file = self.sock.makefile('rb')
         while 1:
             try:
-                line = self.file.readline()
+                line = self.file.readline(_MAXLINE + 1)
             except socket.error as e:
                 self.close()
                 raise SMTPServerDisconnected('Connection unexpectedly closed: ' + str(e))
@@ -213,6 +219,8 @@ class SMTP():
                 raise SMTPServerDisconnected('Connection unexpectedly closed')
             if self.debuglevel > 0:
                 print >> stderr, 'reply:', repr(line)
+            if len(line) > _MAXLINE:
+                raise SMTPResponseException(500, 'Line too long.')
             resp.append(line[4:].strip())
             code = line[:3]
             try:
@@ -393,6 +401,8 @@ class SMTP():
             self.ehlo_resp = None
             self.esmtp_features = {}
             self.does_esmtp = 0
+        else:
+            raise SMTPResponseException(resp, reply)
         return (
          resp, reply)
 
@@ -429,16 +439,24 @@ class SMTP():
         return senderrs
 
     def close(self):
-        if self.file:
-            self.file.close()
-        self.file = None
-        if self.sock:
-            self.sock.close()
-        self.sock = None
+        try:
+            file = self.file
+            self.file = None
+            if file:
+                file.close()
+        finally:
+            sock = self.sock
+            self.sock = None
+            if sock:
+                sock.close()
+
         return
 
     def quit(self):
         res = self.docmd('quit')
+        self.ehlo_resp = self.helo_resp = None
+        self.esmtp_features = {}
+        self.does_esmtp = False
         self.close()
         return res
 

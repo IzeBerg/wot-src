@@ -134,6 +134,5 @@ class SquadEntity(UnitEntity):
             app = self.__appLoader.getApp()
             parent = app.containerManager.getViewByKey(ViewKey(VIEW_ALIAS.LOBBY))
             result = yield await(showDynamicButtonInfoDialogBuilder(res, None, '', parent))
-            if result:
-                callback(result)
+            callback(result)
         return

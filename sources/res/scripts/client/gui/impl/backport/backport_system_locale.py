@@ -1,11 +1,11 @@
 from frameworks import wulf
 
 def getIntegralFormat(value):
-    return wulf.getNumberFormat(value, wulf.NumberFormatType.INTEGRAL)
+    return wulf.getNumberFormat(int(value), wulf.NumberFormatType.INTEGRAL)
 
 
 def getGoldFormat(value):
-    return wulf.getNumberFormat(value, wulf.NumberFormatType.GOLD)
+    return wulf.getNumberFormat(int(value), wulf.NumberFormatType.GOLD)
 
 
 def getFractionalFormat(value):

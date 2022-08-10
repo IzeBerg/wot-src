@@ -36,10 +36,6 @@ class MapboxSlot(BaseUnitRosterSlot):
     DEFAULT_LEVELS = (8, 10)
 
 
-class FunRandomSlot(BaseUnitRosterSlot):
-    DEFAULT_LEVELS = (8, 10)
-
-
 class SquadRoster(BaseUnitRoster):
     MAX_SLOTS = 3
     MAX_EMPTY_SLOTS = 2
@@ -108,12 +104,4 @@ class MapBoxRoster(BaseUnitRoster):
     MAX_EMPTY_SLOTS = 2
     SLOT_TYPE = MapboxSlot
     DEFAULT_SLOT_PACK = MapboxSlot().pack()
-    LIMITS_TYPE = BaseUnitRosterLimits
-
-
-class FunRandomRoster(BaseUnitRoster):
-    MAX_SLOTS = 3
-    MAX_EMPTY_SLOTS = 2
-    SLOT_TYPE = FunRandomSlot
-    DEFAULT_SLOT_PACK = FunRandomSlot().pack()
     LIMITS_TYPE = BaseUnitRosterLimits

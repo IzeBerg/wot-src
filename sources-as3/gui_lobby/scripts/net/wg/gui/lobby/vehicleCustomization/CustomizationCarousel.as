@@ -84,6 +84,8 @@ package net.wg.gui.lobby.vehicleCustomization
       
       private var _layoutController:CustomizationCarouselLayoutController = null;
       
+      private var _layoutRenderer:CustomizationCarouselLayoutRenderer = null;
+      
       private var _bookmarkBackings:Vector.<MovieClip>;
       
       private var _dataProvider:ListDAAPIDataProvider = null;
@@ -116,6 +118,7 @@ package net.wg.gui.lobby.vehicleCustomization
          scrollList.showRendererOnlyIfDataExists = true;
          this.lblMessage.autoSize = TextFieldAutoSize.LEFT;
          this._layoutController = new CustomizationCarouselLayoutController(scrollList);
+         this._layoutRenderer = new CustomizationCarouselLayoutRenderer(scrollList,this._layoutController);
          scrollList.setLayoutController(this._layoutController);
          scrollList.setScrollbar(this.scrollBar);
          this.scrollBar.setBookmarkStartOffset(BOOKMARK_START_OFFSET);
@@ -130,6 +133,8 @@ package net.wg.gui.lobby.vehicleCustomization
          this.carouselFilters.removeEventListener(RendererEvent.ITEM_CLICK,this.onCarouselFiltersItemClickHandler);
          this._bookmarkBackings.splice(0,this._bookmarkBackings.length);
          this._bookmarkBackings = null;
+         this._layoutRenderer.dispose();
+         this._layoutRenderer = null;
          this.scrollBar.dispose();
          this.scrollBar = null;
          this.carouselFilters.dispose();
@@ -154,11 +159,9 @@ package net.wg.gui.lobby.vehicleCustomization
       
       override protected function updateLayout(param1:int, param2:int = 0) : void
       {
-         var _loc3_:int = 0;
-         var _loc4_:int = 0;
          var _loc6_:Rectangle = null;
-         _loc3_ = param2 + OFFSET_ARROW + EXTRA_OFFSET;
-         _loc4_ = param1 - _loc3_ - OFFSET_ARROW;
+         var _loc3_:int = param2 + OFFSET_ARROW + EXTRA_OFFSET;
+         var _loc4_:int = param1 - _loc3_ - OFFSET_ARROW;
          var _loc5_:int = _loc4_ + leftArrowOffset - rightArrowOffset;
          this.lblMessage.x = (_loc4_ - this.lblMessage.textWidth >> 1) + _loc3_;
          super.updateLayout(_loc4_,(_loc4_ - _loc5_ >> 1) + _loc3_);
@@ -231,7 +234,6 @@ package net.wg.gui.lobby.vehicleCustomization
             {
                HorizontalScroller(scrollList).removeUnmanagedChild(_loc6_);
                _loc6_.visible = false;
-               _loc6_ = null;
             }
             this._bookmarkBackings.splice(0,this._bookmarkBackings.length);
             _loc11_ = null;
@@ -271,7 +273,13 @@ package net.wg.gui.lobby.vehicleCustomization
             this.lblMessage.visible = _loc5_ == 0;
             scrollList.visible = true;
             this.carouselFilters.updateHotFilterSelectedFromData = false;
+            this._layoutRenderer.render();
          }
+      }
+      
+      public function clearSelected() : void
+      {
+         selectedIndex = Values.DEFAULT_INT;
       }
       
       public function getDataProvider() : Object
@@ -318,11 +326,6 @@ package net.wg.gui.lobby.vehicleCustomization
          }
          selectedIndex = -1;
          return _loc3_;
-      }
-      
-      public function clearSelected() : void
-      {
-         selectedIndex = Values.DEFAULT_INT;
       }
       
       public function setCarouselFiltersData(param1:TankCarouselFilterSelectedVO) : void
@@ -386,11 +389,6 @@ package net.wg.gui.lobby.vehicleCustomization
          this.lblMessage.htmlText = param1;
       }
       
-      public function handleLeftClick(param1:MouseEvent) : Boolean
-      {
-         return DisplayObject(param1.target) is CarouselItemRenderer;
-      }
-      
       private function addBookmarkItem(param1:Rectangle, param2:CustomizationCarouselBookmarkVO, param3:Boolean) : void
       {
          var _loc4_:Class = App.instance.utils.classFactory.getClass(BOOK_MARK_BACK_MOVIE);
@@ -415,6 +413,11 @@ package net.wg.gui.lobby.vehicleCustomization
       private function updatePopoverData() : void
       {
          dispatchEvent(new CustomizationEvent(CustomizationEvent.REFRESH_FILTER_DATA,false));
+      }
+      
+      public function handleLeftClick(param1:MouseEvent) : Boolean
+      {
+         return DisplayObject(param1.target) is CarouselItemRenderer;
       }
       
       private function onCarouselFiltersItemClickHandler(param1:RendererEvent) : void

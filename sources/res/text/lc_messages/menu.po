@@ -758,9 +758,6 @@ msgstr "«Топография»"
 msgid "bonusType/4"
 msgstr "Специальный бой"
 
-msgid "bonusType/42"
-msgstr "«Название-заглушка»"
-
 msgid "bonusType/5"
 msgstr "Специальный бой"
 
@@ -1137,9 +1134,6 @@ msgstr "Создать заметку"
 
 msgid "contextMenu/createEventSquad"
 msgstr "Создать ивентный взвод"
-
-msgid "contextMenu/createFunRandomSquad"
-msgstr "Название-заглушка взвод"
 
 msgid "contextMenu/createMapboxSquad"
 msgstr "Разведка боем: создать взвод"
@@ -2842,12 +2836,6 @@ msgstr "Укрепрайон: сражения"
 msgid "headerButtons/battle/types/fortLeave"
 msgstr "Укрепрайон: сражения"
 
-msgid "headerButtons/battle/types/funRandom"
-msgstr "Название-заглушка"
-
-msgid "headerButtons/battle/types/funRandomSquad"
-msgstr "Название-заглушка взвод"
-
 msgid "headerButtons/battle/types/historicalBattles"
 msgstr "Исторический бой"
 
@@ -3057,6 +3045,12 @@ msgstr "На этом сервере режим прекращения огня.
 msgid "headerButtons/fightBtn/tooltip/battleRoyaleDisabled/header"
 msgstr "Выход в бой недоступен"
 
+msgid "headerButtons/fightBtn/tooltip/crewNotFull/body"
+msgstr "Отсутствуют: <b>%(crewList)s</b>."
+
+msgid "headerButtons/fightBtn/tooltip/crewNotFull/header"
+msgstr "Неполный экипаж"
+
 msgid "headerButtons/fightBtn/tooltip/epicBattleOnly/body"
 msgstr "Выбранная машина подходит только для режима «Линия фронта»."
 
@@ -3127,24 +3121,22 @@ msgstr "Выберите машину %(level)s уровня."
 msgid "headerButtons/fightBtn/tooltip/falloutVehMin/header"
 msgstr "Выход в бой недоступен"
 
-msgid "headerButtons/fightBtn/tooltip/funRandomDisabled/body"
-msgstr ""
-"На этом сервере идёт режим прекращения огня. Попробуйте перейти на другой "
-"сервер."
-
-msgid "headerButtons/fightBtn/tooltip/funRandomDisabled/header"
-msgstr "Выход в бой невозможен"
-
-msgid "headerButtons/fightBtn/tooltip/funRandomNotSet/body"
-msgstr "На выбранном сервере режим недоступен."
-
-msgid "headerButtons/fightBtn/tooltip/funRandomNotSet/header"
-msgstr "Выход в бой невозможен"
-
-msgid "headerButtons/fightBtn/tooltip/funRandomVehLimits/body"
+msgid "headerButtons/fightBtn/tooltip/inPremiumIgrOnly/body"
 msgstr "Выберите другую машину."
 
-msgid "headerButtons/fightBtn/tooltip/funRandomVehLimits/header"
+msgid "headerButtons/fightBtn/tooltip/inPremiumIgrOnly/header"
+msgstr "Машина только в %(icon)s"
+
+msgid "headerButtons/fightBtn/tooltip/noVehicle/body"
+msgstr "Купите подходящую по требованиям машину."
+
+msgid "headerButtons/fightBtn/tooltip/noVehicle/header"
+msgstr "Техника в Ангаре отсутствует"
+
+msgid "headerButtons/fightBtn/tooltip/notSupported/body"
+msgstr "Смените режим или выберите подходящую по требованиям машину."
+
+msgid "headerButtons/fightBtn/tooltip/notSupported/header"
 msgstr "Машина не подходит для режима"
 
 msgid "headerButtons/fightBtn/tooltip/rankedDisabled/body"
@@ -3180,6 +3172,12 @@ msgstr "На %(forbiddenType)s нельзя участвовать в Ранго
 msgid "headerButtons/fightBtn/tooltip/rankedVehType/header"
 msgstr "Неподходящая машина"
 
+msgid "headerButtons/fightBtn/tooltip/rentalIsOver/body"
+msgstr "Выберите другую машину."
+
+msgid "headerButtons/fightBtn/tooltip/rentalIsOver/header"
+msgstr "Аренда техники завершена"
+
 msgid "headerButtons/fightBtn/tooltip/sandbox/invalid/header"
 msgstr "Выход в бой недоступен"
 
@@ -3194,6 +3192,12 @@ msgstr ""
 
 msgid "headerButtons/fightBtn/tooltip/unsutableToBattleRoyale/header"
 msgstr "Неподходящая машина"
+
+msgid "headerButtons/fightBtn/tooltip/vehicleIsBroken/body"
+msgstr "Отремонтируйте машину."
+
+msgid "headerButtons/fightBtn/tooltip/vehicleIsBroken/header"
+msgstr "Машина повреждена"
 
 msgid "headerButtons/hangar"
 msgstr "Ангар"
@@ -3642,9 +3646,6 @@ msgstr "Искусство стратегии"
 msgid "loading/battleTypes/28"
 msgstr "Основы стратегии"
 
-msgid "loading/battleTypes/29"
-msgstr "Название-заглушка: ПОДРЕЖИМ-1"
-
 msgid "loading/battleTypes/4"
 msgstr "Боевое обучение"
 
@@ -3725,9 +3726,6 @@ msgid "loading/battleTypes/desc/26"
 msgstr " "
 
 msgid "loading/battleTypes/desc/28"
-msgstr " "
-
-msgid "loading/battleTypes/desc/29"
 msgstr " "
 
 msgid "loading/battleTypes/desc/4"
@@ -4318,7 +4316,7 @@ msgid "moduleInfo/params/dispertionRadius"
 msgstr "Разброс на 100 м"
 
 msgid "moduleInfo/params/drivingControl"
-msgstr "К управляемости на скорости "
+msgstr "К управляемости на скорости"
 
 msgid "moduleInfo/params/duration"
 msgstr "Продолжительность"
@@ -4339,16 +4337,16 @@ msgid "moduleInfo/params/flyDelayRange"
 msgstr "Время полёта"
 
 msgid "moduleInfo/params/forwardMaxSpeed"
-msgstr "Максимальная скорость "
+msgstr "Максимальная скорость"
 
 msgid "moduleInfo/params/hullAndChassisWeight"
-msgstr "Масса "
+msgstr "Масса"
 
 msgid "moduleInfo/params/hullArmor"
-msgstr "Бронирование корпуса "
+msgstr "Бронирование корпуса"
 
 msgid "moduleInfo/params/hullWeight"
-msgstr "Масса корпуса "
+msgstr "Масса корпуса"
 
 msgid "moduleInfo/params/inactivationDelay"
 msgstr "Остаточный эффект"
@@ -4360,10 +4358,10 @@ msgid "moduleInfo/params/maxDamage"
 msgstr "Максимальный урон"
 
 msgid "moduleInfo/params/maxHealth"
-msgstr "Прочность "
+msgstr "Прочность"
 
 msgid "moduleInfo/params/maxHullHealth"
-msgstr "Прочность "
+msgstr "Прочность"
 
 msgid "moduleInfo/params/maxLoad"
 msgstr "Максимальная нагрузка"
@@ -4396,10 +4394,10 @@ msgid "moduleInfo/params/piercingPower"
 msgstr "Бронепробиваемость"
 
 msgid "moduleInfo/params/radarCooldown"
-msgstr "Время подготовки радара "
+msgstr "Время подготовки радара"
 
 msgid "moduleInfo/params/radarRadius"
-msgstr "Радиус обнаружения "
+msgstr "Радиус обнаружения"
 
 msgid "moduleInfo/params/radioDistance"
 msgstr "Дальность связи"
@@ -4833,7 +4831,7 @@ msgid "price/spent"
 msgstr "Потрачено %s"
 
 msgid "primeTime/server"
-msgstr "Доступный для игры сервер: %(server)s."
+msgstr "Доступные для игры серверы: %(server)s."
 
 msgid "primeTime/servers"
 msgstr "Доступные для входа серверы:"
@@ -7165,6 +7163,9 @@ msgstr "Продать"
 
 msgid "vehiclesCarousel/contextMenu/vehicleUncheck"
 msgstr "Снять отметку «основной»"
+
+msgid "viewHeader/backBtn/descrLabel/battleMatters"
+msgstr "К ТАНКОВОЙ АКАДЕМИИ"
 
 msgid "viewHeader/backBtn/descrLabel/hangar"
 msgstr "В АНГАР"

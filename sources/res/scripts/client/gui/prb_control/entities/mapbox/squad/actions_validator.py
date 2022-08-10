@@ -1,7 +1,7 @@
 from gui.prb_control.entities.base.actions_validator import ActionsValidatorComposite
 from gui.prb_control.entities.base.squad.actions_validator import SquadActionsValidator, SquadVehiclesValidator
 from gui.prb_control.entities.base.unit.actions_validator import CommanderValidator
-from gui.prb_control.entities.random.squad.actions_validator import BalancedSquadVehiclesValidator, SPGForbiddenSquadVehiclesValidator
+from gui.prb_control.entities.random.squad.actions_validator import BalancedSquadVehiclesValidator, SPGForbiddenSquadVehiclesValidator, ScoutForbiddenSquadVehiclesValidator
 from gui.prb_control.items import ValidationResult
 from gui.prb_control.settings import UNIT_RESTRICTION
 from gui.prb_control.entities.base.unit.actions_validator import UnitStateValidator
@@ -40,7 +40,8 @@ class MapboxSquadActionsValidator(SquadActionsValidator):
         return ActionsValidatorComposite(entity, validators=[
          BalancedSquadVehiclesValidator(entity),
          _MapboxVehicleValidator(entity),
-         SPGForbiddenSquadVehiclesValidator(entity)])
+         SPGForbiddenSquadVehiclesValidator(entity),
+         ScoutForbiddenSquadVehiclesValidator(entity)])
 
     def _createStateValidator(self, entity):
         return _MapboxStateValidator(entity)

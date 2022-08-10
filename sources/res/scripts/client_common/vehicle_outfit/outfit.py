@@ -155,6 +155,8 @@ class Outfit(HasStrCD):
     def copy(self):
         return Outfit(component=self.pack(), vehicleCD=self.vehicleCD)
 
+    __copy__ = copy
+
     def diff(self, other):
         self._validateVehicle(other)
         result = Outfit(vehicleCD=self.vehicleCD)

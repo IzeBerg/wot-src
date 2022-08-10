@@ -1,7 +1,7 @@
 package net.wg.infrastructure.base.meta.impl
 {
    import net.wg.data.constants.Errors;
-   import net.wg.gui.lobby.linkedSet.data.LinkedSetDetailsContainerVO;
+   import net.wg.gui.lobby.battleMatters.data.LinkedSetDetailsContainerVO;
    import net.wg.infrastructure.base.AbstractView;
    import net.wg.infrastructure.exceptions.AbstractException;
    

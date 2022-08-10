@@ -71,7 +71,7 @@ package net.wg.gui.components.battleDamagePanel.components
       
       private var _shellTypeBG:ShellTypeBG = null;
       
-      private var _atlasMgr:IAtlasManager = null;
+      private var _atlasMgr:IAtlasManager;
       
       private var _atlasName:String = "";
       
@@ -83,8 +83,8 @@ package net.wg.gui.components.battleDamagePanel.components
       
       public function DamageLogRenderer()
       {
-         super();
          this._atlasMgr = App.atlasMgr;
+         super();
       }
       
       private static function getShellTfColorByType(param1:String) : uint

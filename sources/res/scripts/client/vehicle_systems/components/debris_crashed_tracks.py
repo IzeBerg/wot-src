@@ -1,5 +1,7 @@
 import logging, random, CGF, Vehicular
 from cgf_script.managers_registrator import autoregister, onAddedQuery, onRemovedQuery
+from items.components.component_constants import MAIN_TRACK_PAIR_IDX
+from items.vehicle_items import CHASSIS_ITEM_TYPE
 from vehicle_systems import tankStructure
 import math_utils
 from vehicle_systems.tankStructure import TankSoundObjectsIndexes
@@ -10,11 +12,13 @@ if not IS_CGF_DUMP:
 _logger = logging.getLogger(__name__)
 
 class TrackCrashWithDebrisComponent(object):
+    MAX_DEBRIS_COUNT = (14, 10, 4)
     isLeft = property(lambda self: self.__isLeft)
     pairIndex = property(lambda self: self.__pairIndex)
     vehicleDescriptor = property(lambda self: self.__vehicleDescriptor)
     wheelsGameObject = property(lambda self: self.__wheelsGameObject)
     boundEffects = property(lambda self: self.__boundEffects)
+    vehicleFilter = property(lambda self: self.__vehicleFilter)
     repaired = property(lambda self: self.__repaired)
     debrisGameObject = property(lambda self: self.__debrisGameObject)
     trackPairDesc = property(lambda self: self.vehicleDescriptor.chassis.tracks.trackPairs[self.pairIndex])
@@ -26,12 +30,20 @@ class TrackCrashWithDebrisComponent(object):
         return self.trackPairDesc.tracksDebris.right
 
     @property
-    def isTopPriority(self):
-        return self.__isTopPriority
+    def hitPoint(self):
+        return self.__hitPoint
 
-    @isTopPriority.setter
-    def isTopPriority(self, value):
-        self.__isTopPriority = value
+    @hitPoint.setter
+    def hitPoint(self, value):
+        self.__hitPoint = value
+
+    @property
+    def shouldCreateDebris(self):
+        return self.__shouldCreateDebris
+
+    @shouldCreateDebris.setter
+    def shouldCreateDebris(self, value):
+        self.__shouldCreateDebris = value
 
     @property
     def isPlayer(self):
@@ -41,25 +53,18 @@ class TrackCrashWithDebrisComponent(object):
     def isPlayer(self, value):
         self.__isPlayer = value
 
-    @property
-    def isFlying(self):
-        return self.__isSideFlying
-
-    @isFlying.setter
-    def isFlying(self, value):
-        self.__isSideFlying = value
-
-    def __init__(self, isLeft, pairIndex, vehicleDescriptor, wheelsGameObject, boundEffects):
+    def __init__(self, isLeft, pairIndex, vehicleDescriptor, wheelsGameObject, boundEffects, vehicleFilter):
         self.__isLeft = isLeft
         self.__pairIndex = pairIndex
         self.__vehicleDescriptor = vehicleDescriptor
         self.__wheelsGameObject = wheelsGameObject
         self.__boundEffects = boundEffects
+        self.__vehicleFilter = vehicleFilter
+        self.__hitPoint = None
         self.__debrisGameObject = None
         self.__repaired = False
-        self.__isTopPriority = False
+        self.__shouldCreateDebris = False
         self.__isPlayer = False
-        self.__isFlying = False
         return
 
     def createDebrisGameObject(self, spaceID):
@@ -98,7 +103,9 @@ class DebrisCrashedTracksManager(CGF.ComponentManager):
             return amountOfBrokenTracks
         else:
             animator = debris.wheelsGameObject.findComponentByType(Vehicular.GeneralWheelsAnimator)
-            if animator is not None:
+            chassisType = debris.vehicleDescriptor.chassis.chassisType
+            isYohMechanics = chassisType == CHASSIS_ITEM_TYPE.TRACK_WITHIN_TRACK and debris.pairIndex != MAIN_TRACK_PAIR_IDX
+            if animator is not None and isYohMechanics:
                 for wheelIdx in track.connectedWheels:
                     if isVisible:
                         animator.relinkTrack(wheelIdx, track.trackThickness)
@@ -126,18 +133,23 @@ class DebrisCrashedTracksManager(CGF.ComponentManager):
             return amountOfBrokenTracks
 
     def __generateDestructionEffect(self, debris):
-        debrisDesc = debris.debrisDesc
-        effectData = debrisDesc.destructionEffectData
-        if effectData is not None:
-            keyPoints, effects, _ = random.choice(effectData)
-            debris.boundEffects.addNewToNode(tankStructure.TankPartNames.CHASSIS, math_utils.createIdentityMatrix(), effects, keyPoints, isPlayerVehicle=debris.isPlayer)
-        return
-
-    def __remapNodes(self, debris):
-        go = debris.wheelsGameObject
-        if IS_EDITOR and not go.isValid():
+        if debris.trackPairDesc.tracksDebris is None:
             return
         else:
+            debrisDesc = debris.debrisDesc
+            effectData = debrisDesc.destructionEffectData
+            if effectData is not None:
+                keyPoints, effects, _ = random.choice(effectData)
+                debris.boundEffects.addNewToNode(tankStructure.TankPartNames.CHASSIS, math_utils.createIdentityMatrix(), effects, keyPoints, isPlayerVehicle=debris.isPlayer)
+            return
+
+    def __remapNodes(self, debris):
+        if debris.trackPairDesc.tracksDebris is None:
+            return
+        else:
+            go = debris.wheelsGameObject
+            if IS_EDITOR and not go.isValid():
+                return
             debrisDesc = debris.debrisDesc
             nodes = {}
             existingRemap = go.findComponentByType(NodeRemapperComponent)
@@ -181,13 +193,16 @@ class DebrisCrashedTracksManager(CGF.ComponentManager):
             return
 
     def __createDebris(self, track, debrisComponent):
-        if debrisComponent.debrisDesc.physicalParams is None:
+        if not debrisComponent.shouldCreateDebris:
             return
         else:
-            if debrisComponent.isFlying:
+            if debrisComponent.trackPairDesc.tracksDebris is None or debrisComponent.debrisDesc.physicalParams is None or not debrisComponent.wheelsGameObject.isValid():
                 return
+            vehicleTracks = debrisComponent.wheelsGameObject.findComponentByType(Vehicular.VehicleTracks)
+            trackGO = vehicleTracks.getTrackGameObject(debrisComponent.isLeft, debrisComponent.pairIndex)
             go = debrisComponent.createDebrisGameObject(self.spaceID)
-            track.createDebris(go, debrisComponent.isTopPriority, debrisComponent.debrisDesc.physicalParams.hingeJointStiffness)
+            go.createComponent(GenericComponents.HierarchyComponent, trackGO)
+            track.createDebris(go, debrisComponent.hitPoint, debrisComponent.vehicleFilter, debrisComponent.debrisDesc.physicalParams, debrisComponent.isPlayer)
             go.activate()
             return
 

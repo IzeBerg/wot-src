@@ -1,3 +1,7 @@
+"""Define names for all type symbols known in the standard interpreter.
+
+Types that are part of optional modules (e.g. array) are not listed.
+"""
 import sys
 NoneType = type(None)
 TypeType = type
@@ -73,3 +77,4 @@ del _f
 del _g
 del _C
 del _x
+__all__ = list(n for n in globals() if n[:1] != '_')

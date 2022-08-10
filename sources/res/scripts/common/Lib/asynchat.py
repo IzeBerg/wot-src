@@ -1,7 +1,10 @@
-import socket, asyncore
+import asyncore, errno, socket
 from collections import deque
 from sys import py3kwarning
 from warnings import filterwarnings, catch_warnings
+_BLOCKING_IO_ERRORS = (
+ errno.EAGAIN, errno.EALREADY, errno.EINPROGRESS,
+ errno.EWOULDBLOCK)
 
 class async_chat(asyncore.dispatcher):
     ac_in_buffer_size = 4096
@@ -37,6 +40,8 @@ class async_chat(asyncore.dispatcher):
         try:
             data = self.recv(self.ac_in_buffer_size)
         except socket.error as why:
+            if why.args[0] in _BLOCKING_IO_ERRORS:
+                return
             self.handle_error()
             return
 
@@ -47,7 +52,7 @@ class async_chat(asyncore.dispatcher):
             if not terminator:
                 self.collect_incoming_data(self.ac_in_buffer)
                 self.ac_in_buffer = ''
-            elif isinstance(terminator, int) or isinstance(terminator, long):
+            elif isinstance(terminator, (int, long)):
                 n = terminator
                 if lb < n:
                     self.collect_incoming_data(self.ac_in_buffer)

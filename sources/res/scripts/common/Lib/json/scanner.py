@@ -1,3 +1,5 @@
+"""JSON token scanner
+"""
 import re
 try:
     from _json import make_scanner as c_make_scanner

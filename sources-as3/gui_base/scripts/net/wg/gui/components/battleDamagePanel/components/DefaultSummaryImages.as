@@ -16,14 +16,14 @@ package net.wg.gui.components.battleDamagePanel.components
       
       private var _atlasName:String = "";
       
-      private var _atlasMgr:IAtlasManager = null;
+      private var _atlasMgr:IAtlasManager;
       
       private var _disposed:Boolean = false;
       
       public function DefaultSummaryImages()
       {
-         super();
          this._atlasMgr = App.atlasMgr;
+         super();
          this._bg = new Sprite();
          this._bg.name = "bg";
          this.addChild(this._bg);
@@ -45,6 +45,11 @@ package net.wg.gui.components.battleDamagePanel.components
          this._atlasName = param1;
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function loadImages(param1:String, param2:String) : void
       {
          this._atlasMgr.drawGraphics(this._atlasName,param1,this._bg.graphics);
@@ -52,11 +57,6 @@ package net.wg.gui.components.battleDamagePanel.components
          this._bg.x = 0;
          this._img.x = IMG_X_POSITION;
          this._img.y = this._bg.height - this._img.height >> 1;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

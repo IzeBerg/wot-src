@@ -113,6 +113,10 @@ package net.wg.data.constants.generated
       
       public static const TOOLTIP_QUEST_REWARD_ITEM_BLOCK_LINKAGE:String = "QuestRewardItemBlockUI";
       
+      public static const TOOLTIP_QUEST_PROGRESS_BLOCK_LINKAGE:String = "QuestProgressBlockUI";
+      
+      public static const TOOLTIP_QUEST_OR_CONDITION_BLOCK_LINKAGE:String = "QuestOrConditionBlockUI";
+      
       public static const ALIGN_LEFT:String = "left";
       
       public static const ALIGN_RIGHT:String = "right";

@@ -1172,22 +1172,22 @@
 		<type>dict</type>
 		<value>
 			<item>
-				/$LANGUAGE_CODE/promocontent/8BPContentPage/
+				/$LANGUAGE_CODE/promocontent/9BPContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/8BPContentPage#bp7extrachapter/
+				/$LANGUAGE_CODE/promocontent/9BPContentPage#bp9extrachapter/
 				<name>extraInfoPage</name>
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/8BPIntroVideo/
+				/$LANGUAGE_CODE/promocontent/9BPIntroVideo/
 				<name>introVideo</name>
 				<type>url</type>
 			</item>
 			<item>
-				/$LANGUAGE_CODE/promocontent/8BPExtraChapter/
+				/$LANGUAGE_CODE/promocontent/9BPExtraChapter/
 				<name>extraIntroVideo</name>
 				<type>url</type>
 			</item>
@@ -1201,11 +1201,11 @@
 					</item>
 					<item>
 						<type>int</type>
-						<value>3</value>
+						<value>2</value>
 					</item>
 					<item>
 						<type>int</type>
-						<value>2</value>
+						<value>3</value>
 					</item>
 					<item>
 						<type>int</type>
@@ -1217,10 +1217,6 @@
 				<name>introSlides</name>
 				<type>list</type>
 				<value>
-					<item>
-						<type>string</type>
-						<value>styles</value>
-					</item>
 					<item>
 						<type>string</type>
 						<value>tanks</value>
@@ -1353,38 +1349,6 @@
 				Utilizes Vivox, © 2018 Vivox, Inc. All rights reserved. See www.vivox.com for details.\n
 				<name>default</name>
 				<type>string</type>
-			</item>
-		</value>
-	</setting>
-	<setting>
-		<name>uiLogging</name>
-		<type>macros</type>
-		<macros>MACROS_DICT</macros>
-		<value>
-			<item>
-				<name>clientLog</name>
-				<type>bool</type>
-				<value>False</value>
-			</item>
-			<item>
-				<name>logsQueueLimit</name>
-				<type>int</type>
-				<value>250</value>
-			</item>
-			<item>
-				<name>settingsTtl</name>
-				<type>int</type>
-				<value>60</value>
-			</item>
-			<item>
-				https://api-wotuilog-ct.wargaming.net/api/features/
-				<name>settingsUrl</name>
-				<type>url</type>
-			</item>
-			<item>
-				https://wotuilog-ct.wargaming.net/ui/log/
-				<name>logUrl</name>
-				<type>url</type>
 			</item>
 		</value>
 	</setting>

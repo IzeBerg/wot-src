@@ -1,3 +1,4 @@
+from stats_params import BATTLE_ROYALE_STATS_ENABLED
 from account_helpers import AccountSettings
 from account_helpers.AccountSettings import PROFILE_TECHNIQUE_MEMBER
 from dossiers2.ui.achievements import ACHIEVEMENT_BLOCK, MARK_ON_GUN_RECORD
@@ -72,9 +73,12 @@ class ProfileTechnique(ProfileTechniqueMeta):
     def _getInitData(self, accountDossier=None, isFallout=False):
         dropDownProvider = [
          self._dataProviderEntryAutoTranslate(PROFILE_DROPDOWN_KEYS.ALL),
-         self._dataProviderEntryAutoTranslate(PROFILE_DROPDOWN_KEYS.EPIC_RANDOM),
-         self._dataProviderEntryAutoTranslate(PROFILE_DROPDOWN_KEYS.BATTLE_ROYALE_SOLO),
-         self._dataProviderEntryAutoTranslate(PROFILE_DROPDOWN_KEYS.BATTLE_ROYALE_SQUAD),
+         self._dataProviderEntryAutoTranslate(PROFILE_DROPDOWN_KEYS.EPIC_RANDOM)]
+        if BATTLE_ROYALE_STATS_ENABLED:
+            dropDownProvider += [
+             self._dataProviderEntryAutoTranslate(PROFILE_DROPDOWN_KEYS.BATTLE_ROYALE_SOLO),
+             self._dataProviderEntryAutoTranslate(PROFILE_DROPDOWN_KEYS.BATTLE_ROYALE_SQUAD)]
+        dropDownProvider += [
          self._dataProviderEntryAutoTranslate(PROFILE_DROPDOWN_KEYS.RANKED),
          self._dataProviderEntryAutoTranslate(PROFILE_DROPDOWN_KEYS.RANKED_10X10)]
         self._dataProviderEntryAutoTranslate(PROFILE_DROPDOWN_KEYS.FALLOUT)

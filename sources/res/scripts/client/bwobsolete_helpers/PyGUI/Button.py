@@ -80,7 +80,7 @@ class ButtonVisualState(VisualState):
             if self.iconMaterialFX != '':
                 componentScript.buttonIcon.materialFX = self.iconMaterialFX
             else:
-                componentScript.buttonIcon.materialFX = 'BLEND'
+                componentScript.buttonIcon.materialFX = GUI.Simple.eMaterialFX.BLEND
         return
 
 
@@ -218,11 +218,11 @@ class Button(PyGUIBase, VisualStateComponent):
     @staticmethod
     def create(texture, text='', **kwargs):
         c = GUI.Window(texture)
-        c.materialFX = 'BLEND'
-        c.widthMode = 'CLIP'
-        c.heightMode = 'CLIP'
-        c.horizontalPositionMode = 'CLIP'
-        c.verticalPositionMode = 'CLIP'
+        c.materialFX = GUI.Simple.eMaterialFX.BLEND
+        c.widthMode = GUI.Simple.eSizeMode.CLIP
+        c.heightMode = GUI.Simple.eSizeMode.CLIP
+        c.horizontalPositionMode = GUI.Simple.ePositionMode.CLIP
+        c.verticalPositionMode = GUI.Simple.ePositionMode.CLIP
         label = GUI.Text(text)
         c.addChild(label, 'label')
         b = Button(c, **kwargs)

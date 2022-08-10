@@ -22,9 +22,6 @@ from messenger_common_chat2 import MESSENGER_ACTION_IDS as _ACTIONS
 from messenger_common_chat2 import MESSENGER_LIMITS as _LIMITS
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.battle_session import IBattleSessionProvider
-from uilogging.deprecated.decorators import loggerTarget, loggerEntry, simpleLog
-from uilogging.deprecated.ibc.constants import IBC_LOG_KEYS
-from uilogging.deprecated.ibc.loggers import IBCLogger
 _ActionsCollection = namedtuple('_ActionsCollection', 'initID deInitID onBroadcastID broadcastID')
 _logger = logging.getLogger(__name__)
 
@@ -374,7 +371,6 @@ class UnitChatHandler(_EntityChatHandler):
 _MUTE_CHAT_COMMAND_AND_SENDER_DURATION = 15
 _EPIC_MINIMAP_ZOOM_MODE_SCALE = 500
 
-@loggerTarget(logKey=IBC_LOG_KEYS.IBC_CALLOUT_PANEL, loggerCls=IBCLogger)
 class BattleChatCommandHandler(bw2_provider.ResponseDictHandler, IBattleCommandFactory):
     __sessionProvider = dependency.descriptor(IBattleSessionProvider)
     __settingsCore = dependency.descriptor(ISettingsCore)
@@ -400,7 +396,6 @@ class BattleChatCommandHandler(bw2_provider.ResponseDictHandler, IBattleCommandF
         super(BattleChatCommandHandler, self).clear()
         return
 
-    @loggerEntry
     def switch(self, scope):
         self.__targetIDs = []
         if scope != MESSENGER_SCOPE.BATTLE:
@@ -417,7 +412,6 @@ class BattleChatCommandHandler(bw2_provider.ResponseDictHandler, IBattleCommandF
     def goToReplay(self):
         self.__startAntispamHandler()
 
-    @simpleLog(argsIndex=0, preProcessAction=lambda x: x.getCommand().name, resetTime=False)
     def send(self, decorator):
         command = decorator.getCommand()
         if command:

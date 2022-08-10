@@ -1,5 +1,5 @@
 from cStringIO import StringIO
-import os, sys, unittest
+import os, sys, unittest, unittest.test
 
 class Test_TestProgram(unittest.TestCase):
 

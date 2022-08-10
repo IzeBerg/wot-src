@@ -1,7 +1,7 @@
 __author__ = 'Guido van Rossum <guido@python.org>'
 __all__ = [
  'Driver', 'load_grammar']
-import codecs, os, logging, StringIO, sys
+import codecs, os, logging, pkgutil, StringIO, sys
 from . import grammar, parse, token, tokenize, pgen
 
 class Driver(object):
@@ -76,14 +76,17 @@ class Driver(object):
         return self.parse_tokens(tokens, debug)
 
 
+def _generate_pickle_name(gt):
+    head, tail = os.path.splitext(gt)
+    if tail == '.txt':
+        tail = ''
+    return head + tail + ('.').join(map(str, sys.version_info)) + '.pickle'
+
+
 def load_grammar(gt='Grammar.txt', gp=None, save=True, force=False, logger=None):
     if logger is None:
         logger = logging.getLogger()
-    if gp is None:
-        head, tail = os.path.splitext(gt)
-        if tail == '.txt':
-            tail = ''
-        gp = head + tail + ('.').join(map(str, sys.version_info)) + '.pickle'
+    gp = _generate_pickle_name(gt) if gp is None else gp
     if force or not _newer(gp, gt):
         logger.info('Generating grammar tables from %s', gt)
         g = pgen.generate_grammar(gt)
@@ -92,7 +95,7 @@ def load_grammar(gt='Grammar.txt', gp=None, save=True, force=False, logger=None)
             try:
                 g.dump(gp)
             except IOError as e:
-                logger.info('Writing failed:' + str(e))
+                logger.info('Writing failed: %s', e)
 
     else:
         g = grammar.Grammar()
@@ -106,6 +109,16 @@ def _newer(a, b):
     if not os.path.exists(b):
         return True
     return os.path.getmtime(a) >= os.path.getmtime(b)
+
+
+def load_packaged_grammar(package, grammar_source):
+    if os.path.isfile(grammar_source):
+        return load_grammar(grammar_source)
+    pickled_name = _generate_pickle_name(os.path.basename(grammar_source))
+    data = pkgutil.get_data(package, pickled_name)
+    g = grammar.Grammar()
+    g.loads(data)
+    return g
 
 
 def main(*args):

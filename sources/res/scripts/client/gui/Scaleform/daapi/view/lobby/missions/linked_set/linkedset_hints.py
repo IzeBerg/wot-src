@@ -1,6 +1,4 @@
 from gui.Scaleform.daapi.view.meta.LinkedSetHintsViewMeta import LinkedSetHintsViewMeta
-from gui.impl import backport
-from gui.impl.gen import R
 from gui.sounds.ambients import BattleResultsEnv
 from gui.Scaleform.daapi.view.lobby.missions.missions_helper import getLinkedSetBonuses
 from gui.server_events.bonuses import mergeBonuses
@@ -39,7 +37,7 @@ class LinkedSetHintsView(LinkedSetHintsViewMeta):
         return
 
     def _getViewCtxFromMessage(self, message):
-        return {'icon': backport.image(R.images.gui.maps.icons.linkedSet.icons.dyn(message.get('icon', ''))()), 'title': message.get('title', ''), 'description': message.get('description', ''), 
+        return {'icon': '', 'title': message.get('title', ''), 'description': message.get('description', ''), 
            'buttonLabel': message.get('buttonLabel', ''), 
            'back': message.get('back', 'red'), 
            'awards': self._getAwards(message.get('bonuses', []))}

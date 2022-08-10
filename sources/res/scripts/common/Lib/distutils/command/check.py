@@ -89,9 +89,9 @@ class check(Command):
         return
 
     def _check_rst_data(self, data):
-        source_path = StringIO()
+        source_path = self.distribution.script_name or 'setup.py'
         parser = Parser()
-        settings = frontend.OptionParser().get_default_values()
+        settings = frontend.OptionParser(components=(Parser,)).get_default_values()
         settings.tab_width = 4
         settings.pep_references = None
         settings.rfc_references = None
@@ -100,8 +100,8 @@ class check(Command):
         document.note_source(source_path, -1)
         try:
             parser.parse(data, document)
-        except AttributeError:
-            reporter.messages.append((-1, 'Could not finish the parsing.',
-             '', {}))
+        except AttributeError as e:
+            reporter.messages.append((
+             -1, 'Could not finish the parsing: %s.' % e, '', {}))
 
         return reporter.messages

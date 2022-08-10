@@ -3,10 +3,10 @@ __all__ = [
 import sys, os, threading, collections, time, atexit, weakref
 from Queue import Empty, Full
 import _multiprocessing
-from multiprocessing import Pipe
-from multiprocessing.synchronize import Lock, BoundedSemaphore, Semaphore, Condition
-from multiprocessing.util import debug, info, Finalize, register_after_fork
-from multiprocessing.forking import assert_spawning
+from . import Pipe
+from .synchronize import Lock, BoundedSemaphore, Semaphore, Condition
+from .util import debug, info, Finalize, register_after_fork, is_exiting
+from .forking import assert_spawning
 
 class Queue(object):
 
@@ -82,7 +82,7 @@ class Queue(object):
             try:
                 if block:
                     timeout = deadline - time.time()
-                    if timeout < 0 or not self._poll(timeout):
+                    if not self._poll(timeout):
                         raise Empty
                 elif not self._poll():
                     raise Empty
@@ -111,9 +111,15 @@ class Queue(object):
 
     def close(self):
         self._closed = True
-        self._reader.close()
-        if self._close:
-            self._close()
+        try:
+            self._reader.close()
+        finally:
+            close = self._close
+            if close:
+                self._close = None
+                close()
+
+        return
 
     def join_thread(self):
         debug('Queue.join_thread()')
@@ -168,7 +174,6 @@ class Queue(object):
     @staticmethod
     def _feed(buffer, notempty, send, writelock, close):
         debug('starting thread to feed data to pipe')
-        from .util import is_exiting
         nacquire = notempty.acquire
         nrelease = notempty.release
         nwait = notempty.wait
@@ -179,8 +184,8 @@ class Queue(object):
             wrelease = writelock.release
         else:
             wacquire = None
-        try:
-            while 1:
+        while 1:
+            try:
                 nacquire()
                 try:
                     if not buffer:
@@ -207,15 +212,12 @@ class Queue(object):
                 except IndexError:
                     pass
 
-        except Exception as e:
-            try:
+            except Exception as e:
                 if is_exiting():
                     info('error in queue thread: %s', e)
-                else:
-                    import traceback
-                    traceback.print_exc()
-            except Exception:
-                pass
+                    return
+                import traceback
+                traceback.print_exc()
 
         return
 

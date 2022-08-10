@@ -38,7 +38,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public var criticalFrame:Sprite = null;
       
-      private var _consumablesVO:ConsumablesVO = null;
+      private var _consumablesVO:ConsumablesVO;
       
       private var _atlasManager:IAtlasManager;
       
@@ -50,9 +50,9 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function EntityStateButton()
       {
+         this._consumablesVO = new ConsumablesVO();
          this._atlasManager = App.atlasMgr;
          super();
-         this._consumablesVO = new ConsumablesVO();
          this.unVisibleAll();
          this.bindKeyFieldNormal.visible = true;
          state = InteractiveStates.UP;
@@ -61,9 +61,45 @@ package net.wg.gui.battle.views.consumablesPanel
          TextFieldEx.setNoTranslate(this.bindKeyFieldDisabled,true);
       }
       
-      public function get consumablesVO() : ConsumablesVO
+      override protected function draw() : void
       {
-         return this._consumablesVO;
+         var _loc1_:String = null;
+         super.draw();
+         if(isInvalid(KEY_VALIDATION))
+         {
+            if(this._bindSfKeyCode == KeyProps.KEY_NONE)
+            {
+               _loc1_ = App.utils.locale.makeString(READABLE_KEY_NAMES.KEY_NONE_ALT);
+            }
+            else
+            {
+               _loc1_ = App.utils.commons.keyToString(this._bindSfKeyCode).keyName;
+            }
+            this.bindKeyFieldNormal.text = _loc1_;
+            this.bindKeyFieldCritical.text = _loc1_;
+            this.bindKeyFieldDisabled.text = _loc1_;
+         }
+      }
+      
+      override protected function configUI() : void
+      {
+         super.configUI();
+         if(this._entityState)
+         {
+            state = InteractiveStates.UP;
+         }
+      }
+      
+      override protected function onDispose() : void
+      {
+         this.icons = null;
+         this.bindKeyFieldNormal = null;
+         this.bindKeyFieldCritical = null;
+         this.bindKeyFieldDisabled = null;
+         this.criticalFrame = null;
+         this._consumablesVO = null;
+         this._atlasManager = null;
+         super.onDispose();
       }
       
       private function unVisibleAll() : void
@@ -72,6 +108,38 @@ package net.wg.gui.battle.views.consumablesPanel
          this.bindKeyFieldCritical.visible = false;
          this.bindKeyFieldDisabled.visible = false;
          this.criticalFrame.visible = false;
+      }
+      
+      private function showIcon(param1:Sprite, param2:String) : void
+      {
+         var _loc4_:String = null;
+         if(param2 == null)
+         {
+            return;
+         }
+         var _loc3_:String = this._entityState == BATTLE_ITEM_STATES.NORMAL ? Values.EMPTY_STR : ENTITY_STATE_POSTFIX;
+         if(param2 == RolesState.LOADER + FIRST_MAN_POSTFIX || param2 == RolesState.LOADER + SECOND_MAN_POSTFIX)
+         {
+            _loc4_ = RolesState.LOADER + _loc3_;
+         }
+         else if(param2 == RolesState.GUNNER + FIRST_MAN_POSTFIX || param2 == RolesState.GUNNER + SECOND_MAN_POSTFIX)
+         {
+            _loc4_ = RolesState.GUNNER + _loc3_;
+         }
+         else if(param2 == RolesState.RADIOMAN + FIRST_MAN_POSTFIX || param2 == RolesState.RADIOMAN + SECOND_MAN_POSTFIX)
+         {
+            _loc4_ = RolesState.RADIOMAN + _loc3_;
+         }
+         else
+         {
+            _loc4_ = param2 + _loc3_;
+         }
+         this._atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,_loc4_,param1.graphics);
+      }
+      
+      public function get consumablesVO() : ConsumablesVO
+      {
+         return this._consumablesVO;
       }
       
       public function set entityName(param1:String) : void
@@ -128,74 +196,6 @@ package net.wg.gui.battle.views.consumablesPanel
          }
          this._bindSfKeyCode = param1;
          invalidate(KEY_VALIDATION);
-      }
-      
-      private function showIcon(param1:Sprite, param2:String) : void
-      {
-         var _loc4_:String = null;
-         if(param2 == null)
-         {
-            return;
-         }
-         var _loc3_:String = this._entityState == BATTLE_ITEM_STATES.NORMAL ? Values.EMPTY_STR : ENTITY_STATE_POSTFIX;
-         if(param2 == RolesState.LOADER + FIRST_MAN_POSTFIX || param2 == RolesState.LOADER + SECOND_MAN_POSTFIX)
-         {
-            _loc4_ = RolesState.LOADER + _loc3_;
-         }
-         else if(param2 == RolesState.GUNNER + FIRST_MAN_POSTFIX || param2 == RolesState.GUNNER + SECOND_MAN_POSTFIX)
-         {
-            _loc4_ = RolesState.GUNNER + _loc3_;
-         }
-         else if(param2 == RolesState.RADIOMAN + FIRST_MAN_POSTFIX || param2 == RolesState.RADIOMAN + SECOND_MAN_POSTFIX)
-         {
-            _loc4_ = RolesState.RADIOMAN + _loc3_;
-         }
-         else
-         {
-            _loc4_ = param2 + _loc3_;
-         }
-         this._atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,_loc4_,param1.graphics);
-      }
-      
-      override protected function draw() : void
-      {
-         var _loc1_:String = null;
-         super.draw();
-         if(isInvalid(KEY_VALIDATION))
-         {
-            if(this._bindSfKeyCode == KeyProps.KEY_NONE)
-            {
-               _loc1_ = App.utils.locale.makeString(READABLE_KEY_NAMES.KEY_NONE_ALT);
-            }
-            else
-            {
-               _loc1_ = App.utils.commons.keyToString(this._bindSfKeyCode).keyName;
-            }
-            this.bindKeyFieldNormal.text = _loc1_;
-            this.bindKeyFieldCritical.text = _loc1_;
-            this.bindKeyFieldDisabled.text = _loc1_;
-         }
-      }
-      
-      override protected function configUI() : void
-      {
-         if(this._entityState)
-         {
-            state = InteractiveStates.UP;
-         }
-         super.configUI();
-      }
-      
-      override protected function onDispose() : void
-      {
-         this.icons = null;
-         this.bindKeyFieldNormal = null;
-         this.bindKeyFieldCritical = null;
-         this.bindKeyFieldDisabled = null;
-         this.criticalFrame = null;
-         this._consumablesVO = null;
-         this._atlasManager = null;
-         super.onDispose();
       }
    }
 }

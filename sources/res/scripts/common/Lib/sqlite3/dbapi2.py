@@ -1,4 +1,4 @@
-import datetime, time
+import collections, datetime, time
 from _sqlite3 import *
 paramstyle = 'qmark'
 threadsafety = 1
@@ -22,6 +22,7 @@ def TimestampFromTicks(ticks):
 version_info = tuple([ int(x) for x in version.split('.') ])
 sqlite_version_info = tuple([ int(x) for x in sqlite_version.split('.') ])
 Binary = buffer
+collections.Sequence.register(Row)
 
 def register_adapters_and_converters():
 

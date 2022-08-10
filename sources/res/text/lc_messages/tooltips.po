@@ -5280,15 +5280,6 @@ msgstr ""
 msgid "hangar/header/personalMissions/operation_disabled/header"
 msgstr "Операция недоступна"
 
-msgid "hangar/header/personalMissions/unavailable/body"
-msgstr "Личные боевые задачи недоступны в режиме %(modeName)s."
-
-msgid "hangar/header/personalMissions/unavailable/header"
-msgstr "Доступных задач нет"
-
-msgid "hangar/header/personalMissions/unavailable/mode/fun_random"
-msgstr "«Название-заглушка»"
-
 msgid "hangar/header/personalMissions2/completedLockedNext/body"
 msgstr ""
 "Выполните задачи для других типов техники, чтобы открыть следующую операцию."
@@ -5841,7 +5832,7 @@ msgid "header/buttons/crystal/descriptionTitle"
 msgstr "Как получить:"
 
 msgid "header/buttons/crystal/descriptionVehicle"
-msgstr "технике с активным заработком бон"
+msgstr "технике с возможностью заработка бон"
 
 msgid "header/buttons/crystal/header"
 msgstr "Боны"
@@ -6587,12 +6578,6 @@ msgstr "Боёв в квалификации %(current)s / %(max)s"
 msgid "mode_selector/unavailable/bootcamp"
 msgstr "Недоступно на Учебном полигоне."
 
-msgid "mode_selector/unavailable/notVehicles/level"
-msgstr "%(levels)s уровня"
-
-msgid "mode_selector/unavailable/notVehicles/text"
-msgstr "Для участия в боях режима нужна как минимум одна машина %(vehicles)s."
-
 msgid "mode_selector/unavailable/techProblems"
 msgstr "Временно недоступно по техническим причинам."
 
@@ -7176,6 +7161,16 @@ msgstr ""
 
 msgid "notrecruitedtankman/commander_omelia/label"
 msgstr "Уникальный член экипажа"
+
+msgid "notrecruitedtankman/commander_patricia/desc"
+msgstr ""
+"Благодаря благочестивому сердцу и тактическому мышлению палатина Патриция "
+"Лазериан является выдающимся бойцом даже среди Адепта Сороритас. Основной её"
+" принцип — «Ваша подготовка поможет нанести удар, но лишь вера сделает его "
+"решающим»."
+
+msgid "notrecruitedtankman/commander_patricia/label"
+msgstr "Уникальный командир"
 
 msgid "notrecruitedtankman/commander_patrick/desc"
 msgstr ""
@@ -7892,6 +7887,47 @@ msgstr "?empty?"
 
 msgid "notrecruitedtankman/tankmen_bp8_8/label"
 msgstr "Боевой пропуск, восьмой сезон"
+
+msgid "notrecruitedtankman/tankmen_bp9_1/desc"
+msgstr ""
+"Нет счёта ранениям, что умудрился пережить этот настоящий боевой офицер за "
+"всё время службы. Как он не сломался до сих пор и остался в строю — великая "
+"загадка. Даже в документах он уже давно не проходит под настоящей фамилией "
+"Манчини, взяв себе псевдоним, соответствующий необъяснимой удаче."
+
+msgid "notrecruitedtankman/tankmen_bp9_1/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp9_1/label"
+msgstr "Боевой пропуск, девятый сезон"
+
+msgid "notrecruitedtankman/tankmen_bp9_2/desc"
+msgstr ""
+"Уникальный в своей противоречивости офицер: прекрасно обучен, настоящий "
+"профессионал своего дела, с одной стороны, и человек, который всем сердцем "
+"ненавидит всё, что связано с воинской службой и войной — с другой. Наверняка"
+" сказывается история семьи, о которой он особо не распространяется. Но и "
+"вопросов ему не задают, все всё понимают."
+
+msgid "notrecruitedtankman/tankmen_bp9_2/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp9_2/label"
+msgstr "Боевой пропуск, девятый сезон"
+
+msgid "notrecruitedtankman/tankmen_bp9_3/desc"
+msgstr ""
+"Бывшая актриса, одной из работ которой была роль командира танка в средней "
+"руки фильме. Однако, будучи весьма целеустремлённой, прошла такую серьёзную "
+"подготовку, что после съёмок бросила шаткую карьеру звезды кино и посвятила "
+"себя военной службе. И пользы больше, и отец, служивший в «Нормандия — "
+"Неман», будет рад."
+
+msgid "notrecruitedtankman/tankmen_bp9_3/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen_bp9_3/label"
+msgstr "Боевой пропуск, девятый сезон"
 
 msgid "notrecruitedtankman/tankwoman/desc"
 msgstr ""
@@ -10056,8 +10092,7 @@ msgstr "Низкое качество"
 msgid "squadBonus/complex/body"
 msgstr ""
 "Получайте дополнительные %(bonus)s к боевому опыту по итогам каждого боя, играя во взводе с другими игроками.\n"
-"\n"
-"Бонус доступен только для постоянных формирований и не доступен при создании динамического взвода."
+"Бонус доступен только для постоянных формирований и недоступен при создании динамического взвода."
 
 msgid "squadBonus/complex/header"
 msgstr "Бонус за игру взводом"

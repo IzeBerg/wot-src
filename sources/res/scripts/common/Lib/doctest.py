@@ -89,7 +89,7 @@ def _load_testfile(filename, package, module_relative):
                 file_contents = package.__loader__.get_data(filename)
                 return (
                  file_contents.replace(os.linesep, '\n'), filename)
-    with open(filename) as (f):
+    with open(filename, 'U') as (f):
         return (
          f.read(), filename)
 
@@ -822,7 +822,6 @@ class OutputChecker():
                 engine = difflib.Differ(charjunk=difflib.IS_CHARACTER_JUNK)
                 diff = list(engine.compare(want_lines, got_lines))
                 kind = 'ndiff with -expected +actual'
-            diff = [ line.rstrip() + '\n' for line in diff ]
             return 'Differences (%s):\n' % kind + _indent(('').join(diff))
         else:
             if want and got:

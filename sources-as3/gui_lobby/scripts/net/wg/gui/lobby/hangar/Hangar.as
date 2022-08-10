@@ -319,6 +319,9 @@ package net.wg.gui.lobby.hangar
       
       override protected function onBeforeDispose() : void
       {
+         App.tutorialMgr.removeListenersFromCustomTutorialComponent(this);
+         this._eventsEntryContainer.removeEventListener(Event.RESIZE,this.onEventsEntryContainerResizeHandler);
+         this.closeBtn.removeEventListener(ButtonEvent.CLICK,this.onCloseBtnClickHandler);
          this.ammunitionPanelInject.removeEventListener(Event.RESIZE,this.onAmmunitionPanelInjectResizeHandler);
          this.ammunitionPanelInject.removeEventListener(AmmunitionPanelInjectEvents.HELP_LAYOUT_CHANGED,this.onAmmunitionPanelInjectHelpLayoutChangedHandler);
          this._gameInputMgr.clearKeyHandler(Keyboard.ESCAPE,KeyboardEvent.KEY_DOWN,this.handleEscapeHandler);
@@ -345,7 +348,6 @@ package net.wg.gui.lobby.hangar
       
       override protected function onDispose() : void
       {
-         App.tutorialMgr.removeListenersFromCustomTutorialComponent(this);
          App.utils.counterManager.removeCounter(this.crewOperationBtn);
          this.removeBattleRoyaleContainer();
          this.crewOperationBtn.dispose();
@@ -356,7 +358,6 @@ package net.wg.gui.lobby.hangar
          this.crewBG = null;
          this.teaser.dispose();
          this.teaser = null;
-         this.closeBtn.removeEventListener(ButtonEvent.CLICK,this.onCloseBtnClickHandler);
          this.closeBtn.dispose();
          this.closeBtn = null;
          if(this._tweenTeaser)
@@ -390,7 +391,6 @@ package net.wg.gui.lobby.hangar
          this._appStage = null;
          this.carouselContainer.dispose();
          this.carouselContainer = null;
-         this._eventsEntryContainer.removeEventListener(Event.RESIZE,this.onEventsEntryContainerResizeHandler);
          removeChild(this._eventsEntryContainer);
          this._eventsEntryContainer = null;
          this._currentWidgetLayout = 99;

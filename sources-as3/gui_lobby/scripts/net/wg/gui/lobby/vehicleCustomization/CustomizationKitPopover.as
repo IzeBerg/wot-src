@@ -95,7 +95,7 @@ package net.wg.gui.lobby.vehicleCustomization
          this.clearBtn.mouseEnabledOnDisabled = true;
          this.clearBtn.soundType = SoundTypes.CUSTOMIZATION_DEFAULT;
          this.clearBtn.iconSource = RES_ICONS.MAPS_ICONS_LIBRARY_ASSET_1;
-         this.clearBtn.label = VEHICLE_CUSTOMIZATION.CUSTOMIZATION_KITPOPOVER_BUTTONTEXT_REMOVESTYLEKIT;
+         this.clearBtn.label = VEHICLE_CUSTOMIZATION.CUSTOMIZATION_CLEARBUTTON_LABEL_REMOVEALL;
          this.clearBtn.addEventListener(ButtonEvent.CLICK,this.onClearBtnClickHandler);
          this.autoProlongationCheckbox.label = VEHICLE_CUSTOMIZATION.CUSTOMIZATION_KITPOPOVER_AUTOPROLONGATIONLABEL;
          this.autoProlongationCheckbox.addEventListener(MouseEvent.CLICK,this.onAutoProlongationCheckboxClickHandler);

@@ -473,7 +473,7 @@ class TestCase(object):
 
                 if item1 != item2:
                     differing += '\nFirst differing element %d:\n%s\n%s\n' % (
-                     i, item1, item2)
+                     i, safe_repr(item1), safe_repr(item2))
                     break
             else:
                 if len1 == len2 and seq_type is None and type(seq1) != type(seq2):
@@ -484,7 +484,7 @@ class TestCase(object):
                  seq_type_name, len1 - len2)
                 try:
                     differing += 'First extra element %d:\n%s\n' % (
-                     len2, seq1[len2])
+                     len2, safe_repr(seq1[len2]))
                 except (TypeError, IndexError, NotImplementedError):
                     differing += 'Unable to index element %d of first %s\n' % (
                      len2, seq_type_name)
@@ -494,7 +494,7 @@ class TestCase(object):
                  seq_type_name, len2 - len1)
                 try:
                     differing += 'First extra element %d:\n%s\n' % (
-                     len1, seq2[len1])
+                     len1, safe_repr(seq2[len1]))
                 except (TypeError, IndexError, NotImplementedError):
                     differing += 'Unable to index element %d of second %s\n' % (
                      len1, seq_type_name)

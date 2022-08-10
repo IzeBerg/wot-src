@@ -41,6 +41,8 @@ class BaseServer:
         try:
             while not self.__shutdown_request:
                 r, w, e = _eintr_retry(select.select, [self], [], [], poll_interval)
+                if self.__shutdown_request:
+                    break
                 if self in r:
                     self._handle_request_noblock()
 
@@ -78,6 +80,9 @@ class BaseServer:
             except:
                 self.handle_error(request, client_address)
                 self.shutdown_request(request)
+
+        else:
+            self.shutdown_request(request)
 
     def handle_timeout(self):
         pass
@@ -120,8 +125,12 @@ class TCPServer(BaseServer):
         BaseServer.__init__(self, server_address, RequestHandlerClass)
         self.socket = socket.socket(self.address_family, self.socket_type)
         if bind_and_activate:
-            self.server_bind()
-            self.server_activate()
+            try:
+                self.server_bind()
+                self.server_activate()
+            except:
+                self.server_close()
+                raise
 
     def server_bind(self):
         if self.allow_reuse_address:
@@ -183,27 +192,21 @@ class ForkingMixIn:
         else:
             while len(self.active_children) >= self.max_children:
                 try:
-                    pid, status = os.waitpid(0, 0)
-                except os.error:
-                    pid = None
+                    pid, _ = os.waitpid(-1, 0)
+                    self.active_children.discard(pid)
+                except OSError as e:
+                    if e.errno == errno.ECHILD:
+                        self.active_children.clear()
+                    elif e.errno != errno.EINTR:
+                        break
 
-                if pid not in self.active_children:
-                    continue
-                self.active_children.remove(pid)
-
-            for child in self.active_children:
+            for pid in self.active_children.copy():
                 try:
-                    pid, status = os.waitpid(child, os.WNOHANG)
-                except os.error:
-                    pid = None
-
-                if not pid:
-                    continue
-                try:
-                    self.active_children.remove(pid)
-                except ValueError as e:
-                    raise ValueError('%s. x=%d and list=%r' % (e.message, pid,
-                     self.active_children))
+                    pid, _ = os.waitpid(pid, os.WNOHANG)
+                    self.active_children.discard(pid)
+                except OSError as e:
+                    if e.errno == errno.ECHILD:
+                        self.active_children.discard(pid)
 
             return
 
@@ -215,8 +218,8 @@ class ForkingMixIn:
         pid = os.fork()
         if pid:
             if self.active_children is None:
-                self.active_children = []
-            self.active_children.append(pid)
+                self.active_children = set()
+            self.active_children.add(pid)
             self.close_request(request)
             return
         else:

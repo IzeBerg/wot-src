@@ -39,7 +39,7 @@ package net.wg.gui.bootcamp.nationsWindow.containers
       
       public var scrollCarousel:ScrollCarousel = null;
       
-      private var _selectedNation:int = 0;
+      private var _selectedNation:int = -1;
       
       private var _nationButtons:Vector.<NationButton>;
       

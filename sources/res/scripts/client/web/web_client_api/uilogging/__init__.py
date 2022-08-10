@@ -1,6 +1,6 @@
 from helpers import dependency
 from skeletons.ui_logging import IUILoggingCore
-from uilogging.core.core_constants import LogLevels
+from uilogging.constants import LogLevels
 from web.web_client_api import w2c, w2capi, W2CSchema, Field
 
 class _UILoggingLogSchema(W2CSchema):

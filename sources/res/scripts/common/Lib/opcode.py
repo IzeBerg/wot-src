@@ -1,3 +1,7 @@
+"""
+opcode module - potentially shared between dis and other modules which
+operate on bytecodes (e.g. peephole optimizers).
+"""
 __all__ = [
  'cmp_op', 'hasconst', 'hasname', 'hasjrel', 'hasjabs',
  'haslocal', 'hascompare', 'hasfree', 'opname', 'opmap',

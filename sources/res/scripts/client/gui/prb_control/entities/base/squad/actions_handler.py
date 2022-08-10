@@ -15,7 +15,7 @@ class SquadActionsHandler(AbstractActionsHandler):
 
     def __init__(self, entity):
         super(SquadActionsHandler, self).__init__(entity)
-        g_playerEvents.onKickedFromQueue += self._onKickedFromQueue
+        g_playerEvents.onKickedFromQueue += self.__onKickedFromQueue
 
     @storage_getter('users')
     def usersStorage(self):
@@ -94,7 +94,7 @@ class SquadActionsHandler(AbstractActionsHandler):
         self._sendBattleQueueRequest(action=0)
 
     def clear(self):
-        g_playerEvents.onKickedFromQueue -= self._onKickedFromQueue
+        g_playerEvents.onKickedFromQueue -= self.__onKickedFromQueue
         super(SquadActionsHandler, self).clear()
 
     def processInvites(self, accountsToInvite):
@@ -136,5 +136,5 @@ class SquadActionsHandler(AbstractActionsHandler):
             self._entity.togglePlayerReadyAction(True)
         return
 
-    def _onKickedFromQueue(self, _):
+    def __onKickedFromQueue(self, _):
         SystemMessages.pushI18nMessage('#system_messages:arena_start_errors/prb/kick/timeout', type=SystemMessages.SM_TYPE.Warning)

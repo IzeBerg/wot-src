@@ -1,6 +1,6 @@
 from __future__ import with_statement
 __author__ = 'Guido van Rossum <guido@python.org>'
-import os, sys, logging, operator, collections, StringIO
+import os, pkgutil, sys, logging, operator, collections, StringIO
 from itertools import chain
 from .pgen2 import driver, tokenize, token
 from .fixer_util import find_root
@@ -10,13 +10,12 @@ from . import btm_matcher as bm
 
 def get_all_fix_names(fixer_pkg, remove_prefix=True):
     pkg = __import__(fixer_pkg, [], [], ['*'])
-    fixer_dir = os.path.dirname(pkg.__file__)
     fix_names = []
-    for name in sorted(os.listdir(fixer_dir)):
-        if name.startswith('fix_') and name.endswith('.py'):
+    for finder, name, ispkg in pkgutil.iter_modules(pkg.__path__):
+        if name.startswith('fix_'):
             if remove_prefix:
                 name = name[4:]
-            fix_names.append(name[:-3])
+            fix_names.append(name)
 
     return fix_names
 
@@ -203,7 +202,7 @@ class RefactoringTool(object):
 
             fixer = fix_class(self.options, self.fixer_log)
             if fixer.explicit and self.explicit is not True and fix_mod_path not in self.explicit:
-                self.log_message('Skipping implicit fixer: %s', fix_name)
+                self.log_message('Skipping optional fixer: %s', fix_name)
                 continue
             self.log_debug('Adding transformation: %s', fix_name)
             if fixer.order == 'pre':

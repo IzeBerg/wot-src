@@ -1,4 +1,6 @@
-import logging, typing
+import logging
+from functools import partial
+import typing
 from CurrentVehicle import g_currentPreviewVehicle
 from constants import RentType
 from gui.Scaleform.daapi.view.lobby.vehicle_preview.items_kit_helper import getDataOneVehicle, addBuiltInEquipment
@@ -12,7 +14,6 @@ from gui.shared import event_dispatcher, formatters
 from helpers import dependency
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.offers import IOffersDataProvider
-from skeletons.gui.shared import IItemsCache
 from web.web_client_api.common import ItemPackEntry, ItemPackType, ItemPackTypeGroup
 from gui.impl import backport
 from gui.impl.gen import R
@@ -25,7 +26,6 @@ CREW_LVL_BY_TYPE = {ItemPackType.CREW_50: '50%',
 class OfferGiftVehiclePreview(VehiclePreview):
     __offersProvider = dependency.descriptor(IOffersDataProvider)
     __lobbyContext = dependency.descriptor(ILobbyContext)
-    __itemsCache = dependency.descriptor(IItemsCache)
 
     def __init__(self, ctx):
         if any(key not in ctx for key in ['offerID', 'giftID', 'confirmCallback']):
@@ -33,11 +33,13 @@ class OfferGiftVehiclePreview(VehiclePreview):
         self._offer = self.__offersProvider.getOffer(ctx['offerID'])
         self._gift = self._offer.getGift(ctx['giftID'])
         self._vehicle = self._gift.bonus.displayedItem
+        self._customCallbacks = ctx.get('customCallbacks', {})
         ctx['itemCD'] = self._vehicle.intCD
+        ctx['previewBackCb'] = self._customCallbacks.get('previewBackCb', partial(event_dispatcher.showOfferGiftsWindow, self._offer.id))
         super(OfferGiftVehiclePreview, self).__init__(ctx)
         self._confirmCallback = ctx.get('confirmCallback')
         self.__itemsPack = self._generateItemsPack()
-        addBuiltInEquipment(self.__itemsPack, self.__itemsCache, self._vehicleCD)
+        addBuiltInEquipment(self.__itemsPack, self._itemsCache, self._vehicleCD)
 
     def setBottomPanel(self):
         self.as_setBottomPanelS(VEHPREVIEW_CONSTANTS.BOTTOM_PANEL_OFFER_GIFT_LINKAGE)
@@ -99,11 +101,8 @@ class OfferGiftVehiclePreview(VehiclePreview):
         return {'title': formatters.text_styles.superPromoTitle(self._getPreviewDescription()), 
            'buyButtonLabel': backport.text(self._getButtonLabel())}
 
-    def _processBackClick(self, ctx=None):
-        event_dispatcher.showOfferGiftsWindow(self._offer.id)
-
     def _getBackBtnLabel(self):
-        return VEHICLE_PREVIEW.HEADER_BACKBTN_DESCRLABEL_REFERRALPROGRAM
+        return self._backBtnLabel or VEHICLE_PREVIEW.HEADER_BACKBTN_DESCRLABEL_REFERRALPROGRAM
 
     def _populate(self):
         super(OfferGiftVehiclePreview, self)._populate()
@@ -130,7 +129,7 @@ class OfferGiftVehiclePreview(VehiclePreview):
             if self.__offersProvider.getAvailableOffers(onlyVisible=True):
                 event_dispatcher.showStorage(defaultSection=STORAGE_CONSTANTS.OFFERS)
             else:
-                event_dispatcher.showHangar()
+                self._customCallbacks.get('offerEndedCb', event_dispatcher.showHangar)()
         return
 
     @classmethod

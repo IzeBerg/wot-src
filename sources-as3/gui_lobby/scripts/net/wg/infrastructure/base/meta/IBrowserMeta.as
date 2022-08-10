@@ -26,6 +26,8 @@ package net.wg.infrastructure.base.meta
       
       function as_loadBitmap(param1:String) : void;
       
+      function as_resize(param1:int, param2:int) : void;
+      
       function as_loadingStart(param1:Boolean) : void;
       
       function as_loadingStop() : void;
@@ -35,7 +37,5 @@ package net.wg.infrastructure.base.meta
       function as_hideServiceView() : void;
       
       function as_changeTitle(param1:String) : void;
-      
-      function as_showContextMenu(param1:String, param2:Object) : void;
    }
 }

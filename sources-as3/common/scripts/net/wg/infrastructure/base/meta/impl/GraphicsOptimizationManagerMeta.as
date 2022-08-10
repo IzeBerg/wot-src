@@ -30,13 +30,13 @@ package net.wg.infrastructure.base.meta.impl
          return this.registerOptimizationArea(param1,param2,param3,param4);
       }
       
-      public function unregisterOptimizationAreaS(param1:Number) : void
+      public function unregisterOptimizationAreaS(param1:int) : void
       {
          App.utils.asserter.assertNotNull(this.unregisterOptimizationArea,"unregisterOptimizationArea" + Errors.CANT_NULL);
          this.unregisterOptimizationArea(param1);
       }
       
-      public function updateOptimizationAreaS(param1:Number, param2:Number, param3:Number, param4:Number, param5:Number) : void
+      public function updateOptimizationAreaS(param1:int, param2:Number, param3:Number, param4:Number, param5:Number) : void
       {
          App.utils.asserter.assertNotNull(this.updateOptimizationArea,"updateOptimizationArea" + Errors.CANT_NULL);
          this.updateOptimizationArea(param1,param2,param3,param4,param5);

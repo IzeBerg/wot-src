@@ -70,6 +70,23 @@ package net.wg.gui.battle.views.consumablesPanel
          super.onDispose();
       }
       
+      public function hideGlow(param1:Boolean = true) : void
+      {
+         if(param1)
+         {
+            gotoAndPlay(SHOW_GLOW_HIDE_STATE);
+         }
+         else
+         {
+            gotoAndPlay(SHOW_GLOW_HIDE_NO_HOT_KEY_STATE);
+         }
+      }
+      
+      public function setBindKeyText(param1:String) : void
+      {
+         this._textField.text = param1;
+      }
+      
       public function showGlow(param1:int, param2:Boolean = true) : void
       {
          switch(param1)
@@ -98,23 +115,6 @@ package net.wg.gui.battle.views.consumablesPanel
                this._textField.textColor = NORMAL_TEXT_COLOR;
                gotoAndPlay(SHOW_GLOW_HIDE_STATE);
          }
-      }
-      
-      public function hideGlow(param1:Boolean = true) : void
-      {
-         if(param1)
-         {
-            gotoAndPlay(SHOW_GLOW_HIDE_STATE);
-         }
-         else
-         {
-            gotoAndPlay(SHOW_GLOW_HIDE_NO_HOT_KEY_STATE);
-         }
-      }
-      
-      public function setBindKeyText(param1:String) : void
-      {
-         this._textField.text = param1;
       }
       
       private function goIdle() : void

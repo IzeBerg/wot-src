@@ -19,6 +19,7 @@ from gui.wgcg.settings import WebRequestDataType
 from gui.wgcg.external_battle_handlers import BaseExternalBattleUnitRequestHandlers
 from gui.wgcg.craftmachine.handlers import CraftmachineRequestHandlers
 from gui.wgcg.gift_system.handlers import GiftSystemRequestHandlers
+from gui.wgcg.uilogging.handlers import UILoggingRequestHandlers
 
 class WgcgRequestResponse(Response):
 
@@ -103,6 +104,7 @@ class WgcgRequestsController(RequestsController):
         self.__handlers.update(CraftmachineRequestHandlers(requester).get())
         self.__handlers.update(MapboxRequestHandlers(requester).get())
         self.__handlers.update(GiftSystemRequestHandlers(requester).get())
+        self.__handlers.update(UILoggingRequestHandlers(requester).get())
 
     def fini(self):
         super(WgcgRequestsController, self).fini()

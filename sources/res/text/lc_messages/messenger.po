@@ -1243,6 +1243,9 @@ msgstr "Списано очков Боевого пропуска"
 msgid "platformCurrencyMsg/debited/brcoin"
 msgstr "Списано стальных печатей"
 
+msgid "platformCurrencyMsg/debited/freeXP"
+msgstr "Списано свободного опыта"
+
 msgid "platformCurrencyMsg/debited/sacoin"
 msgstr "Списано жетонов за выслугу лет"
 
@@ -1251,6 +1254,9 @@ msgstr "Начислено очков Боевого пропуска"
 
 msgid "platformCurrencyMsg/received/brcoin"
 msgstr "Начислено стальных печатей"
+
+msgid "platformCurrencyMsg/received/freeXP"
+msgstr "Получено свободного опыта"
 
 msgid "platformCurrencyMsg/received/sacoin"
 msgstr "Добавлено жетонов за выслугу лет"
@@ -1641,6 +1647,54 @@ msgstr "Ремонт %s выполнен успешно. Потрачено "
 
 msgid "serviceChannelMessages/badgeAchievement"
 msgstr "Добавлено нашивок"
+
+msgid "serviceChannelMessages/battleMatters/awards/body"
+msgstr "Задача «%(questName)s» выполнена."
+
+msgid "serviceChannelMessages/battleMatters/awards/done/body"
+msgstr "Вся цепочка задач Танковой академии выполнена."
+
+msgid "serviceChannelMessages/battleMatters/awards/footer"
+msgstr "Жетон можно обменять на любую исследуемую машину VI уровня."
+
+msgid "serviceChannelMessages/battleMatters/awards/footer/button"
+msgstr "К выбору машины"
+
+msgid "serviceChannelMessages/battleMatters/awards/header"
+msgstr "Поздравляем!"
+
+msgid "serviceChannelMessages/battleMatters/awards/medium/body"
+msgstr "Выполнено задач Танковой академии: %(count)s"
+
+msgid "serviceChannelMessages/battleMatters/awards/received"
+msgstr "Получена награда:"
+
+msgid "serviceChannelMessages/battleMatters/awards/tokenAward/body"
+msgstr "Использован жетон академии."
+
+msgid "serviceChannelMessages/battleMatters/awards/tokenAward/body/crew"
+msgstr "%(vehName)s (экипаж 100%)"
+
+msgid ""
+"serviceChannelMessages/battleMatters/awards/tokenAward/body/rewardReceived"
+msgstr "Получена награда:"
+
+msgid "serviceChannelMessages/battleMatters/awards/tokenAward/body/slot"
+msgstr "Слотов в Ангаре: %(count)s"
+
+msgid "serviceChannelMessages/battleMatters/awards/tokenAward/body/vehicle"
+msgstr "Техника в аренду: %(vehName)s"
+
+msgid "serviceChannelMessages/battleMatters/paused"
+msgstr ""
+"Выполнение задач Танковой академии временно недоступно. Прогресс выполненных"
+" задач будет сохранён."
+
+msgid "serviceChannelMessages/battleMatters/started"
+msgstr "Задачи Танковой академии снова доступны для выполнения."
+
+msgid "serviceChannelMessages/battleMatters/token"
+msgstr "Жетон академии"
 
 msgid "serviceChannelMessages/battlePass/badges/header/remove"
 msgstr "Списана нашивка"
@@ -2178,7 +2232,7 @@ msgstr "Списано бон"
 msgid "serviceChannelMessages/currencyUpdate/debited/eventCoin"
 msgstr "Списано юбилейных монет"
 
-msgid "serviceChannelMessages/currencyUpdate/debited/freeXp"
+msgid "serviceChannelMessages/currencyUpdate/debited/freeXP"
 msgstr "Списано свободного опыта"
 
 msgid "serviceChannelMessages/currencyUpdate/debited/gold"
@@ -2199,7 +2253,7 @@ msgstr "Получено бон"
 msgid "serviceChannelMessages/currencyUpdate/received/eventCoin"
 msgstr "Получено юбилейных монет"
 
-msgid "serviceChannelMessages/currencyUpdate/received/freeXp"
+msgid "serviceChannelMessages/currencyUpdate/received/freeXP"
 msgstr "Получено свободного опыта"
 
 msgid "serviceChannelMessages/currencyUpdate/received/gold"
@@ -2903,6 +2957,39 @@ msgstr "От администрации получен Общий премиум
 
 msgid "serviceChannelMessages/priorityMessageTitle"
 msgstr "Внимание!"
+
+msgid "serviceChannelMessages/progression2d/button"
+msgstr "Подробнее"
+
+msgid "serviceChannelMessages/progression2d/camouflage"
+msgstr "Камуфляж"
+
+msgid "serviceChannelMessages/progression2d/decal"
+msgstr "Декаль"
+
+msgid "serviceChannelMessages/progression2d/emblem"
+msgstr "Эмблема"
+
+msgid "serviceChannelMessages/progression2d/inscription"
+msgstr "Надпись"
+
+msgid "serviceChannelMessages/progression2d/item"
+msgstr "%(typeName)s «%(name)s» %(level)s уровня"
+
+msgid "serviceChannelMessages/progression2d/itemCount"
+msgstr "И ещё: %(count)s"
+
+msgid "serviceChannelMessages/progression2d/paint"
+msgstr "Краска"
+
+msgid "serviceChannelMessages/progression2d/projectionDecal"
+msgstr "Декаль"
+
+msgid "serviceChannelMessages/progression2d/received"
+msgstr "Получено:"
+
+msgid "serviceChannelMessages/progression2d/title"
+msgstr "Стиль «%(name)s»"
 
 msgid "serviceChannelMessages/progressiveReward/header"
 msgstr "Поздравляем!"

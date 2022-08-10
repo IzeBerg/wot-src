@@ -257,7 +257,10 @@ class AddrlistClass():
         aslist.append('@')
         self.pos += 1
         self.gotonext()
-        return EMPTYSTRING.join(aslist) + self.getdomain()
+        domain = self.getdomain()
+        if not domain:
+            return EMPTYSTRING
+        return EMPTYSTRING.join(aslist) + domain
 
     def getdomain(self):
         sdlist = []
@@ -271,10 +274,13 @@ class AddrlistClass():
             elif self.field[self.pos] == '.':
                 self.pos += 1
                 sdlist.append('.')
-            elif self.field[self.pos] in self.atomends:
-                break
             else:
-                sdlist.append(self.getatom())
+                if self.field[self.pos] == '@':
+                    return EMPTYSTRING
+                if self.field[self.pos] in self.atomends:
+                    break
+                else:
+                    sdlist.append(self.getatom())
 
         return EMPTYSTRING.join(sdlist)
 

@@ -12,13 +12,13 @@ package net.wg.gui.battle.mapsTraining.views.prebattleTimer
       
       private static const INVALID_SIDE_TF:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 1;
       
-      private static const SIDE_FONT:int = 22;
+      private static const SIDE_FONT:int = 24;
       
       private static const SIDE_FONT_SMALL:int = 18;
       
       private static const TITLE_FONT:int = 36;
       
-      private static const TITLE_FONT_SMALL:int = 22;
+      private static const TITLE_FONT_SMALL:int = 24;
       
       private static const TITLE_SMALL_OFFSET:int = -47;
       

@@ -116,11 +116,17 @@ msgstr "Летняя карта"
 msgid "buyWindow/title/winter"
 msgstr "Зимняя карта"
 
-msgid "buypopover/btn"
+msgid "buypopover/btnClearAll"
 msgstr "Отменить"
+
+msgid "buypopover/btnClearLocked"
+msgstr "Снять недоступные"
 
 msgid "buypopover/fromStorage"
 msgstr "Со Склада"
+
+msgid "buypopover/locked"
+msgstr "Недоступные"
 
 msgid "buypopover/price"
 msgstr "К оплате"
@@ -1099,6 +1105,12 @@ msgstr ""
 msgid "camouflage/Tiger217_winter/label"
 msgstr "Белый"
 
+msgid "camouflage/Tree_Frog/description"
+msgstr "?empty?"
+
+msgid "camouflage/Tree_Frog/label"
+msgstr "Квакша"
+
 msgid "camouflage/WGFest2018/description"
 msgstr "Всесезонный камуфляж для стиля «WG Fest 2018»"
 
@@ -1860,6 +1872,18 @@ msgstr "?empty?"
 msgid "camouflage/bp8_um/label"
 msgstr "Сын Макрагга"
 
+msgid "camouflage/bp9_1/description"
+msgstr "?empty?"
+
+msgid "camouflage/bp9_1/label"
+msgstr "Полигонная мишень (ББ)"
+
+msgid "camouflage/bp9_2/label"
+msgstr "Полигонная мишень (КС)"
+
+msgid "camouflage/bp9_3/label"
+msgstr "Полигонная мишень (ОФ)"
+
 msgid "camouflage/br_award_15/description"
 msgstr ""
 "Всесезонный камуфляж, выдаваемый за достижение 15-й степени в режиме "
@@ -2297,6 +2321,12 @@ msgstr "?empty?"
 
 msgid "camouflage/cn_lunar_ny_2022/label"
 msgstr "Золотой тигр"
+
+msgid "camouflage/cn_mid_autumn_festival_2022/description"
+msgstr "?empty?"
+
+msgid "camouflage/cn_mid_autumn_festival_2022/label"
+msgstr "Безмятежность Луны"
 
 msgid "camouflage/cn_national_day/description"
 msgstr "?empty?"
@@ -4188,6 +4218,12 @@ msgstr "?empty?"
 msgid "camouflage/songkran/label"
 msgstr "Сонгкран"
 
+msgid "camouflage/southern_warriors/description"
+msgstr "?empty?"
+
+msgid "camouflage/southern_warriors/label"
+msgstr "Воин Юга"
+
 msgid "camouflage/spartacus/description"
 msgstr "?empty?"
 
@@ -5293,6 +5329,12 @@ msgstr "?empty?"
 msgid "camouflage/yandex/label"
 msgstr "Снегопад"
 
+msgid "camouflage/yandex_august_2022/description"
+msgstr "?empty?"
+
+msgid "camouflage/yandex_august_2022/label"
+msgstr "Рыбалка"
+
 msgid "camouflage/yandex_june_2022/description"
 msgstr "?empty?"
 
@@ -5567,6 +5609,12 @@ msgstr "летний"
 
 msgid "customization/camouflage/winter"
 msgstr "зимний"
+
+msgid "customization/clearButton/label/remove"
+msgstr "Снять"
+
+msgid "customization/clearButton/label/removeAll"
+msgstr "Снять всё"
 
 msgid "customization/customizationTrigger/tooltip/editableStyle"
 msgstr "Редактирование стиля %(styleName)s"
@@ -5852,32 +5900,17 @@ msgstr "На машине нет элементов внешнего вида д
 msgid "customization/itemsPopover/btn/style/disabled"
 msgstr "На машине нет элементов внешнего вида."
 
-msgid "customization/itemsPopover/clear/fantasticalMessage"
-msgstr "На машине нет вымышленных элементов внешнего вида."
-
-msgid "customization/itemsPopover/clear/message"
+msgid "customization/itemsPopover/message/clear"
 msgstr "На машине нет элементов внешнего вида."
 
-msgid "customization/itemsPopover/clear/nonHistoricFantasticalMessage"
-msgstr "На машине нет неисторичных и вымышленных элементов внешнего вида."
-
-msgid "customization/itemsPopover/clear/nonHistoricMessage"
-msgstr "На машине нет неисторичных элементов внешнего вида."
-
-msgid "customization/itemsPopover/fantasticalCheckBox/items"
-msgstr "Вымышленные элементы на машине"
-
-msgid "customization/itemsPopover/historicCheckBox/items"
-msgstr "Неисторичные элементы на машине"
+msgid "customization/itemsPopover/message/clearFiltered"
+msgstr "На машине нет выбранных элементов внешнего вида."
 
 msgid "customization/itemsPopover/title/items"
 msgstr "Внешний вид на %(mapType)s карте"
 
 msgid "customization/kitPopover/autoProlongationLabel"
 msgstr "Продлевать аренду"
-
-msgid "customization/kitPopover/buttonText/removeStyleKit"
-msgstr "Снять стиль"
 
 msgid "customization/kitPopover/title/items"
 msgstr "Внешний вид машины"
@@ -5900,6 +5933,11 @@ msgstr "Количество ограничено: доступно ещё %(ava
 msgid "customization/limited/special/rules/title"
 msgstr "Особые условия"
 
+msgid "customization/lockedItemsApply"
+msgstr ""
+"Чтобы разблокировать кнопку, необходимо снять недоступные элементы внешнего "
+"вида."
+
 msgid "customization/mapType/all"
 msgstr "Все"
 
@@ -5912,14 +5950,8 @@ msgstr "Летняя"
 msgid "customization/mapType/winter"
 msgstr "Зимняя"
 
-msgid "customization/nonHistoric/buttonClearText"
-msgstr "Показать всё"
-
 msgid "customization/nonHistoric/buttonText/defaultView"
 msgstr "Вид по умолчанию"
-
-msgid "customization/nonHistoric/buttonText/removeFromAll"
-msgstr "Снять всё"
 
 msgid "customization/nonHistoric/tableHeader/applied"
 msgstr "Количество"
@@ -5965,6 +5997,45 @@ msgstr "Летняя"
 
 msgid "customization/popover/style/winter"
 msgstr "Зимняя"
+
+msgid "customization/popoverFilter/fantastic/tooltip/body"
+msgstr ""
+"Включить/отключить отображение установленных на машине вымышленных "
+"элементов, которые являются художественным вымыслом и с большой вероятностью"
+" не могут быть реализованы в реальной жизни."
+
+msgid "customization/popoverFilter/fantastic/tooltip/header"
+msgstr "Вымышленные элементы"
+
+msgid "customization/popoverFilter/historic/tooltip/body"
+msgstr ""
+"Включить/отключить отображение установленных на машине историчных элементов "
+"внешнего вида."
+
+msgid "customization/popoverFilter/historic/tooltip/header"
+msgstr "Историчные элементы"
+
+msgid "customization/popoverFilter/nonHistoric/tooltip/body"
+msgstr ""
+"Включить/отключить отображение установленных на машине неисторичных "
+"элементов внешнего вида."
+
+msgid "customization/popoverFilter/nonHistoric/tooltip/header"
+msgstr "Неисторичные элементы"
+
+msgid "customization/popoverFilter/progressiveLocked/tooltip/body"
+msgstr ""
+"Включить/отключить отображение установленных на машине недоступных элементов"
+" внешнего вида."
+
+msgid "customization/popoverFilter/progressiveLocked/tooltip/header"
+msgstr "Недоступные элементы на машине"
+
+msgid "customization/postBattle/title"
+msgstr "Стиль «%(value)s»"
+
+msgid "customization/progressiveKitPopover/title"
+msgstr "Стиль «%(value)s»"
 
 msgid "customization/propertySheet/disabled/camouflage"
 msgstr "Изменение цвета для данного камуфляжа недоступно."
@@ -6098,6 +6169,9 @@ msgstr "Историчный/неисторичный"
 msgid "customization/tooltip/characteristics/historicity/nonHistorical"
 msgstr "Неисторичный"
 
+msgid "customization/tooltip/characteristics/level/progression/text"
+msgstr "%(value)s уровень прогрессии"
+
 msgid "customization/tooltip/characteristics/level/projectionDecal/text"
 msgstr "%(value)s уровень этапной декали"
 
@@ -6116,8 +6190,14 @@ msgstr "Для летней карты"
 msgid "customization/tooltip/characteristics/map/winter"
 msgstr "Для зимней карты"
 
+msgid "customization/tooltip/characteristics/opened"
+msgstr "Открытых элементов"
+
 msgid "customization/tooltip/characteristics/progressionRewind"
 msgstr "Настраиваемый"
+
+msgid "customization/tooltip/characteristics/questProgression"
+msgstr "Прогрессионный"
 
 msgid "customization/tooltip/characteristics/rentable"
 msgstr "Арендный"
@@ -6240,6 +6320,45 @@ msgstr "НАНЕСЕНО МАКСИМАЛЬНОЕ КОЛИЧЕСТВО ДЕКА�
 msgid "customization/tooltip/potentialProjDecalPlace/toltip/text"
 msgstr "Ячейка недоступна: снимите уже нанесённую декаль из другой ячейки."
 
+msgid "customization/tooltip/quests/or"
+msgstr "или"
+
+msgid "customization/tooltip/quests/progress"
+msgstr "Выполнено"
+
+msgid "customization/tooltip/quests/progressBig"
+msgstr "Выполнено: "
+
+msgid "customization/tooltip/quests/status/completed"
+msgstr "Уровень %(level)s достигнут"
+
+msgid "customization/tooltip/quests/status/inProgress"
+msgstr "Выполняется"
+
+msgid "customization/tooltip/quests/status/insufficientLevel"
+msgstr "Достигните предыдущего уровня"
+
+msgid "customization/tooltip/quests/status/timeLeft/days"
+msgstr "Осталось: %(day)s д"
+
+msgid "customization/tooltip/quests/status/timeLeft/hours"
+msgstr "Осталось: %(hour)s ч"
+
+msgid "customization/tooltip/quests/status/timeLeft/lessMin"
+msgstr "Осталось: менее минуты"
+
+msgid "customization/tooltip/quests/status/timeLeft/min"
+msgstr "Осталось: %(min)s мин"
+
+msgid "customization/tooltip/quests/status/timedOut"
+msgstr "Время на выполнение задачи истекло — элемент не открыт."
+
+msgid "customization/tooltip/quests/status/unavailable"
+msgstr "Недоступно"
+
+msgid "customization/tooltip/quests/title"
+msgstr "Условия получения элемента"
+
 msgid "customization/tooltip/slot/camouflage"
 msgstr "камуфляжа"
 
@@ -6282,6 +6401,9 @@ msgstr ""
 
 msgid "customization/unsuitable"
 msgstr "Не подходит"
+
+msgid "customizationHeader/aboutProgressiveStyles"
+msgstr "О ПРОГРЕССИОННОМ СТИЛЕ"
 
 msgid "customizationHeader/back"
 msgstr "НАЗАД"
@@ -8799,6 +8921,9 @@ msgstr "Воин Севера"
 
 msgid "emblem/special/sticker_703_east"
 msgstr "Воин Востока"
+
+msgid "emblem/special/sticker_703_south"
+msgstr "Воин Юга"
 
 msgid "emblem/special/sticker_704"
 msgstr "Метка Ультрамаринов"
@@ -13086,6 +13211,38 @@ msgstr ""
 "2018». Возвращает в Ангар ту самую атмосферу праздника. Имеет определённые "
 "национальные ограничения."
 
+msgid "onboardingView/block_0/body"
+msgstr ""
+"Прогрессионные 2D-стили включают в себя улучшаемые элементы внешнего вида. "
+"По мере выполнения определённых условий, вам будут открываться новые уровни "
+"элементов."
+
+msgid "onboardingView/block_0/header"
+msgstr "Что это такое"
+
+msgid "onboardingView/block_1/body"
+msgstr ""
+"Вы можете отслеживать свой уровень прогрессии по каждому элементу внешнего "
+"вида."
+
+msgid "onboardingView/block_1/header"
+msgstr "О прогрессии"
+
+msgid "onboardingView/btnAccept"
+msgstr "Так точно!"
+
+msgid "onboardingView/btnGoto"
+msgstr "Перейти"
+
+msgid "onboardingView/btnSkip"
+msgstr "Пропустить"
+
+msgid "onboardingView/gotoStyle"
+msgstr "Перейти к прогрессионному стилю?"
+
+msgid "onboardingView/title"
+msgstr "ПРОГРЕССИОННЫЕ СТИЛИ"
+
 msgid "personal_number/fonts/font_01"
 msgstr "Трафаретный острый"
 
@@ -13137,9 +13294,6 @@ msgstr "Тактические номера"
 msgid "personal_number/special"
 msgstr "Особые"
 
-msgid "popover/editableStyle/editedItems"
-msgstr "— добавленные элементы внешнего вида"
-
 msgid "popover/style/remove"
 msgstr "Снять стиль"
 
@@ -13169,9 +13323,7 @@ msgid "progression/item/hover"
 msgstr "Перейти к нанесению"
 
 msgid "progression/requiredStyleUnlocked/main"
-msgstr ""
-"Этапные декали можно интегрировать в большинство готовых стилей для "
-"{vehicle}"
+msgstr "Этапные декали можно нанести на большинство готовых стилей."
 
 msgid "progression/requiredStyleUnlocked/okBtnLabel"
 msgstr "Так точно!"
@@ -13283,6 +13435,9 @@ msgstr "Так точно!"
 
 msgid "projection_decals/animals"
 msgstr "Животные"
+
+msgid "projection_decals/animals/Red-Eyed_Tree_Frog"
+msgstr "Красноглазая квакша"
 
 msgid "projection_decals/animals/projection_decal_01"
 msgstr "Фенрир"
@@ -13674,6 +13829,9 @@ msgstr "Не уйдёшь"
 
 msgid "projection_decals/cool/projection_decal_66"
 msgstr "Пламенный мотор"
+
+msgid "projection_decals/cool/projection_decal_68"
+msgstr "Долгожданный трофей"
 
 msgid "projection_decals/damage"
 msgstr "Повреждения"
@@ -14295,6 +14453,15 @@ msgstr "Лоретта"
 
 msgid "projection_decals/pin_up/projection_decal_58"
 msgstr "Эмили"
+
+msgid "projection_decals/pin_up/projection_decal_59"
+msgstr "Беатрис"
+
+msgid "projection_decals/pin_up/projection_decal_60"
+msgstr "Доминика"
+
+msgid "projection_decals/pin_up/projection_decal_61"
+msgstr "Роселла"
 
 msgid "projection_decals/progression"
 msgstr "Этапные"
@@ -15848,14 +16015,81 @@ msgstr "Логотип турнира WCL"
 msgid "projection_decals/special/projection_decal_41"
 msgstr "Корейский кот"
 
+msgid "projection_decals/special/projection_decal_413"
+msgstr "Созерцание Луны"
+
+msgid "projection_decals/special/projection_decal_414"
+msgstr "Лунное облако"
+
+msgid "projection_decals/special/projection_decal_415"
+msgstr "Лунный пряник"
+
+msgid "projection_decals/special/projection_decal_416"
+msgstr "Благословение Нефритового кролика"
+
+msgid "projection_decals/special/projection_decal_417"
+msgstr "Богиня Луны"
+
 msgid "projection_decals/special/projection_decal_42"
 msgstr "Команда LeBwa"
+
+msgid "projection_decals/special/projection_decal_426"
+msgstr "Бесконечное бдение"
+
+msgid "projection_decals/special/projection_decal_427"
+msgstr "Да здравствует праведность"
 
 msgid "projection_decals/special/projection_decal_43"
 msgstr "Команда Yusha"
 
+msgid "projection_decals/special/projection_decal_437"
+msgstr "Epic Win события «Железный век»"
+
+msgid "projection_decals/special/projection_decal_437/description"
+msgstr ""
+"Награда бойцу клана, одержавшего максимальную серию побед в событии на "
+"Глобальной карте «Железный век»."
+
+msgid "projection_decals/special/projection_decal_438"
+msgstr "Победитель события «Железный век»"
+
+msgid "projection_decals/special/projection_decal_438/description"
+msgstr ""
+"Награда бойцу клана, занявшего первое место в событии на Глобальной карте "
+"«Железный век»."
+
+msgid "projection_decals/special/projection_decal_439"
+msgstr "Топ-10 события «Железный век»"
+
+msgid "projection_decals/special/projection_decal_439/description"
+msgstr ""
+"Награда бойцу клана, попавшего в 10 лучших кланов в событии на Глобальной "
+"карте «Железный век»."
+
 msgid "projection_decals/special/projection_decal_44"
 msgstr "Команда Amway921"
+
+msgid "projection_decals/special/projection_decal_440"
+msgstr "Топ-100 события «Железный век»"
+
+msgid "projection_decals/special/projection_decal_440/description"
+msgstr ""
+"Награда бойцу клана, попавшего в 100 лучших кланов в событии на Глобальной "
+"карте «Железный век»."
+
+msgid "projection_decals/special/projection_decal_441"
+msgstr "Участник события «Железный век»"
+
+msgid "projection_decals/special/projection_decal_441/description"
+msgstr "Награда участнику события на Глобальной карте «Железный век»."
+
+msgid "projection_decals/special/projection_decal_442"
+msgstr "Герой события «Железный век»"
+
+msgid "projection_decals/special/projection_decal_442/description"
+msgstr ""
+"За попадание в число игроков, состоящих в 10% лучших кланов события "
+"«Железный век» на Глобальной карте."
 
 msgid "projection_decals/special/projection_decal_45"
 msgstr "Команда KorbenDaIlas"
@@ -16578,6 +16812,15 @@ msgstr "Больше «дакки»!"
 msgid "repaint/bp8_um"
 msgstr "Сын Макрагга"
 
+msgid "repaint/bp9_1"
+msgstr "Полигонная мишень (ББ)"
+
+msgid "repaint/bp9_2"
+msgstr "Полигонная мишень (КС)"
+
+msgid "repaint/bp9_3"
+msgstr "Полигонная мишень (ОФ)"
+
 msgid "repaint/br_award_15_1"
 msgstr "Охотник-любитель, Mk. I"
 
@@ -16673,6 +16916,9 @@ msgstr "Талисман трансляции"
 
 msgid "repaint/cn_lunar_ny_2022"
 msgstr "Золотой тигр"
+
+msgid "repaint/cn_mid_autumn_festival_2022"
+msgstr "Безмятежность Луны"
 
 msgid "repaint/cn_national_day"
 msgstr "День КНР"
@@ -17159,6 +17405,9 @@ msgstr "Меч Онуриса"
 
 msgid "repaint/sh2020_award_4"
 msgstr "Меч Деваны"
+
+msgid "repaint/southern_warriors"
+msgstr "Воин Юга"
 
 msgid "repaint/spartacus"
 msgstr "\"Черепаха\""
@@ -17789,6 +18038,15 @@ msgstr ""
 "и немного анатомических ухищрений. А теперь представим, что можно вытворить,"
 " когда у тебя под рукой 30 тонн брони и 90 мм калибра."
 
+msgid "special_style/A143_M_V_Y_NL_3DSt"
+msgstr "Рыба-меч"
+
+msgid "special_style/A143_M_V_Y_NL_3DSt_desc/long"
+msgstr ""
+"«Я расскажу вам про них. Это рядовой Эрнандес, наш радист. А это — лейтенант Смит, командир экипажа. Эрнандес молод и горяч, постоянно в поисках своего места в этом мире. Смит же давно состоялся как личность, как военный, определился и с целями, и с моралью. У Эрнандеса нет друзей и близких, только несколько книг из дома и ключи от старого мотоцикла. А Смит начал строить своё ранчо где-то под Бейкерсфилдом, куда переедет вся его большая семья. Для Эрнандеса главный приоритет — свобода и открытые дороги к любым целям. Для Смита — его работа. Его экипаж. Рядовой Эрнандес и лейтенант Смит — два совершенно разных человека. Единственное, что их роднило — одинаковый рост.\n"
+"\n"
+"Но, увы, рад этому разве что наш плотник...»"
+
 msgid "special_style/A40_T95_SC_3DSt"
 msgstr "Клаудбрейк"
 
@@ -17909,6 +18167,15 @@ msgstr ""
 "все эти новомодные игрушки, уж поверьте. Никакие микросхемы не заменят душу."
 " А у нашего танка она есть, я уверен. Знай только фильтры меняй по "
 "регламенту, система вентиляции тут всё-таки не самая сильная сторона»."
+
+msgid "special_style/Ch25_121_mod_1971B_SE_3DSt"
+msgstr "Крайт"
+
+msgid "special_style/Ch25_121_mod_1971B_SE_3DSt_desc/long"
+msgstr ""
+"«Столько звёзд. И у каждой ведь есть название, кто-то когда-то обнаружил, занёс в специальный атлас, исследования всякие. Созвездия опять же. Вот \"Южный крест\", это точно он. Это единственное, что я разобрал. Кто же знал, что тут, в глуши, так остро будет не хватать знаний по астрономии — было бы чем себя занять в ожидании приказа. Ну невыносимо же. Опять пересчитывать гайки крепления оборудования? Сто четырнадцать их, за день вряд ли что-то изменилось. Завидую мехводу — он сын столяра, вон как ловко кораблики из коры вырезает, как фабричные изделия получаются. Занят человек. Времени не замечает.\n"
+"\n"
+"Лежишь такой на броне, смотришь в ночь. Как же не хватает карты звёздного неба...»"
 
 msgid "special_style/Ch43_WZ_122_2_3Dst"
 msgstr "Гвоздь программы"
@@ -18483,6 +18750,14 @@ msgid "special_style/Thanksgiving_desc"
 msgstr ""
 "Стиль, посвящённый Дню благодарения — американскому празднику, отмечаемому "
 "на исходе осени в благодарность за богатый урожай и изобилие плодов."
+
+msgid "special_style/Tree_Frog"
+msgstr "Квакша"
+
+msgid "special_style/Tree_Frog_desc"
+msgstr ""
+"Всесезонный стиль, вдохновлённый красивой древесной лягушкой семейства "
+"Phyllomedusidae, обитающей в дождевых тропических лесах."
 
 msgid "special_style/WGFest2018"
 msgstr "WG Fest 2018"
@@ -19405,6 +19680,20 @@ msgstr ""
 "«Адептус Астартес» вселенной Warhammer 40 000. Выдаётся в награду на "
 "определённом этапе восьмого сезона Боевого пропуска."
 
+msgid "special_style/bp9_1"
+msgstr "Полигонная мишень (ББ)"
+
+msgid "special_style/bp9_1_desc"
+msgstr ""
+"Всесезонный стиль, выдаваемый за определённые успехи в рамках девятого "
+"сезона Боевого пропуска."
+
+msgid "special_style/bp9_2"
+msgstr "Полигонная мишень (КС)"
+
+msgid "special_style/bp9_3"
+msgstr "Полигонная мишень (ОФ)"
+
 msgid "special_style/br_award_15"
 msgstr "Охотник-любитель"
 
@@ -19715,6 +20004,22 @@ msgstr ""
 "то, что за угасанием идёт цветение — такая же правда, но лишённая мрачной "
 "окраски. В этом и есть мудрость тигра: не меняя порядок вещей, уметь "
 "посмотреть на них под другим углом."
+
+msgid "special_style/cn_mid_autumn_festival_2022"
+msgstr "Безмятежность Луны"
+
+msgid "special_style/cn_mid_autumn_festival_2022_desc/long"
+msgstr ""
+"15-го числа 8-го месяца лунного календаря во многих странах Азии широко "
+"отмечается Праздник середины осени. Он берёт своё начало в легенде о Чанъэ, "
+"прекрасной женщине, которая выпила эликсир бессмертия и вознеслась в Лунный "
+"дворец, невольно расставшись со своей семьёй навсегда. В качестве подношения"
+" Чанъэ, которая была обречена на жизнь в одиночестве в Лунном дворце, её "
+"родные стали оставлять в саду шарики из рисовой муки и тарелки со свежими "
+"фруктами. Эта традиция широко распространилась, превратившись в обычай "
+"поклоняться луне и есть лунные пряники во время Праздника середины осени. В "
+"мифах, древних книгах и на фресках Чанъэ стала символом этого праздника, "
+"который также считается днём воссоединения с семьёй."
 
 msgid "special_style/cn_national_day"
 msgstr "День КНР"
@@ -21432,6 +21737,22 @@ msgstr ""
 "праздник отмечается 13–15 апреля, его главными особенностями являются "
 "обливание водой и выказывание уважения буддийским священнослужителям."
 
+msgid "special_style/southern_warriors"
+msgstr "Воин Юга"
+
+msgid "special_style/southern_warriors_desc/long"
+msgstr ""
+"«У песков нет дома. Они там, куда их направит ветер. У ветра нет дома — он "
+"нигде, и он везде. Гонит вперёд пески и идёт вслед за ними. Он поднимает из "
+"земли тысячелетние скалы и отправляет под толщу песка тысячелетние города. "
+"Он могуч и всесилен, и нет на этом свете того, кто смог бы его подчинить. "
+"Пришедший на нашу землю поймёт, что ветер — это мы и есть. И вслед за "
+"тысячелетними городами будет пришедший укрыт песком забвения, что мы "
+"нанесли. И смоет песок память о тех, кто пришёл сюда не с миром. Мы — и есть"
+" ветер. Но у нас есть дом. Наш дом, где не рады чужим мечам. Мы их не звали,"
+" но пусть они знают, что здесь, под этими бесконечными песчаными дюнами, "
+"места хватит всем...»"
+
 msgid "special_style/spartacus"
 msgstr "\"Черепаха\""
 
@@ -21681,7 +22002,7 @@ msgstr "Всесезонный стиль, посвящённый всем на�
 msgid "special_style/twitch_june_2022"
 msgstr "Ретроволны"
 
-msgid "special_style/twitch_june_2022_desc"
+msgid "special_style/twitch_june_2022_desc/long"
 msgstr ""
 "Солнце уже давно скрылось за горизонтом, близится полночь. От тёплого "
 "мерцания городских огней тебя охватывает приятное чувство тревоги. Решение "
@@ -21897,6 +22218,14 @@ msgstr ""
 
 msgid "special_style/yandex"
 msgstr "Снегопад"
+
+msgid "special_style/yandex_august_2022"
+msgstr "Рыбалка"
+
+msgid "special_style/yandex_august_2022_desc"
+msgstr ""
+"Всесезонный стиль, созданный в сотрудничестве с Yandex в рамках специальной "
+"акции."
 
 msgid "special_style/yandex_desc"
 msgstr ""

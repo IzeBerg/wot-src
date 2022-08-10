@@ -77,6 +77,12 @@ package net.wg.gui.lobby.settings
       
       public var EFFECTS_QUALITYStepSlider:SettingsStepSlider = null;
       
+      public var TRACK_PHYSICS_QUALITYLabel:LabelControl = null;
+      
+      public var TRACK_PHYSICS_QUALITYValue:LabelControl = null;
+      
+      public var TRACK_PHYSICS_QUALITYStepSlider:SettingsStepSlider = null;
+      
       public var POST_PROCESSING_QUALITYLabel:LabelControl = null;
       
       public var POST_PROCESSING_QUALITYValue:LabelControl = null;
@@ -183,6 +189,9 @@ package net.wg.gui.lobby.settings
          this.EFFECTS_QUALITYLabel.dispose();
          this.EFFECTS_QUALITYValue.dispose();
          this.EFFECTS_QUALITYStepSlider.dispose();
+         this.TRACK_PHYSICS_QUALITYLabel.dispose();
+         this.TRACK_PHYSICS_QUALITYValue.dispose();
+         this.TRACK_PHYSICS_QUALITYStepSlider.dispose();
          this.POST_PROCESSING_QUALITYLabel.dispose();
          this.POST_PROCESSING_QUALITYValue.dispose();
          this.POST_PROCESSING_QUALITYStepSlider.dispose();
@@ -237,6 +246,9 @@ package net.wg.gui.lobby.settings
          this.EFFECTS_QUALITYLabel = null;
          this.EFFECTS_QUALITYValue = null;
          this.EFFECTS_QUALITYStepSlider = null;
+         this.TRACK_PHYSICS_QUALITYLabel = null;
+         this.TRACK_PHYSICS_QUALITYValue = null;
+         this.TRACK_PHYSICS_QUALITYStepSlider = null;
          this.POST_PROCESSING_QUALITYLabel = null;
          this.POST_PROCESSING_QUALITYValue = null;
          this.POST_PROCESSING_QUALITYStepSlider = null;
@@ -291,6 +303,7 @@ package net.wg.gui.lobby.settings
          this.CUSTOM_AA_MODELabel.text = Values.EMPTY_STR;
          this.MSAA_QUALITYLabel.text = Values.EMPTY_STR;
          this.EFFECTS_QUALITYLabel.text = Values.EMPTY_STR;
+         this.TRACK_PHYSICS_QUALITYLabel.text = Values.EMPTY_STR;
          this.POST_PROCESSING_QUALITYLabel.text = Values.EMPTY_STR;
          this.MOTION_BLUR_QUALITYLabel.text = Values.EMPTY_STR;
          this.FAR_PLANELabel.text = Values.EMPTY_STR;

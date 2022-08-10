@@ -29,6 +29,9 @@ class CustomizationBottomPanelMeta(BaseDAAPIComponent):
     def returnToStyledMode(self):
         self._printOverrideError('returnToStyledMode')
 
+    def onItemIsNewAnimationShown(self, intCD):
+        self._printOverrideError('onItemIsNewAnimationShown')
+
     def as_showBillS(self):
         if self._isDAAPIInited():
             return self.flashObject.as_showBill()

@@ -1,8 +1,7 @@
 import os, sys, errno
 from pprint import pprint
-import unittest
+import string, unittest
 from test_all import db, test_support, verbose, get_new_environment_path, get_new_database_path
-letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 class SimpleRecnoTestCase(unittest.TestCase):
     if sys.version_info < (2, 7) or sys.version_info >= (3, 0) and sys.version_info < (3,
@@ -12,7 +11,7 @@ class SimpleRecnoTestCase(unittest.TestCase):
             return self.assertEqual(type(obj), datatype, msg=msg)
 
         def assertGreaterEqual(self, a, b, msg=None):
-            return self.assertTrue(a >= b, msg=msg)
+            return self.assertGreaterEqual(a, b, msg=msg)
 
     def setUp(self):
         self.filename = get_new_database_path()
@@ -29,7 +28,7 @@ class SimpleRecnoTestCase(unittest.TestCase):
         get_returns_none = d.set_get_returns_none(2)
         d.set_get_returns_none(get_returns_none)
         d.open(self.filename, db.DB_RECNO, db.DB_CREATE)
-        for x in letters:
+        for x in string.ascii_letters:
             recno = d.append(x * 60)
             self.assertIsInstance(recno, int)
             self.assertGreaterEqual(recno, 1)
@@ -222,7 +221,7 @@ class SimpleRecnoTestCase(unittest.TestCase):
         d.set_re_pad('-')
         d.set_re_pad(45)
         d.open(self.filename, db.DB_RECNO, db.DB_CREATE)
-        for x in letters:
+        for x in string.ascii_letters:
             d.append(x * 35)
 
         d.append('.' * 40)

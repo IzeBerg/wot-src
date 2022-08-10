@@ -15,6 +15,7 @@ package net.wg.gui.battle.views.consumablesPanel
    import net.wg.gui.battle.views.consumablesPanel.interfaces.IConsumablesButton;
    import net.wg.gui.battle.views.consumablesPanel.interfaces.IConsumablesPanel;
    import net.wg.infrastructure.base.meta.impl.ConsumablesPanelMeta;
+   import net.wg.utils.IClassFactory;
    import net.wg.utils.IStageSizeDependComponent;
    import net.wg.utils.StageSizeBoundaries;
    import scaleform.clik.motion.Tween;
@@ -92,17 +93,20 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private var _equipmentButtonLinkage:String = "";
       
-      private var _basePanelWidth:Number = 0;
+      private var _basePanelWidth:int = 0;
       
       private var _shellButtonLinkage:String = "";
       
       private var _tween:Tween = null;
+      
+      private var _classFactory:IClassFactory;
       
       public function ConsumablesPanel()
       {
          this._renderers = new <IConsumablesButton>[null,null,null,null,null,null,null,null,null,null,null,null];
          this._settings = new Vector.<ConsumablesPanelSettings>();
          this._customIndexGap = new Vector.<uint>(0);
+         this._classFactory = App.utils.classFactory;
          super();
          App.stageSizeMgr.register(this);
          var _loc1_:int = getItemWidthPadding(App.appWidth);
@@ -151,6 +155,7 @@ package net.wg.gui.battle.views.consumablesPanel
          this._settings = null;
          this._customIndexGap.splice(0,this._customIndexGap.length);
          this._customIndexGap = null;
+         this._classFactory = null;
          this.clearTween();
          super.onDispose();
       }
@@ -190,6 +195,61 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
+      override protected function reset(param1:Array) : void
+      {
+         var _loc3_:IConsumablesButton = null;
+         var _loc4_:int = 0;
+         var _loc5_:IConsumablesButton = null;
+         var _loc6_:int = 0;
+         this._shellCurrentIdx = -1;
+         this._shellNextIdx = -1;
+         this.collapsePopup();
+         var _loc2_:int = Boolean(param1) ? int(param1.length) : int(0);
+         if(_loc2_ == 0)
+         {
+            for each(_loc3_ in this._renderers)
+            {
+               if(_loc3_ != null)
+               {
+                  removeChild(DisplayObject(_loc3_));
+                  _loc3_.dispose();
+               }
+            }
+            this._renderers.splice(0,this._renderers.length);
+            this._renderers = new <IConsumablesButton>[null,null,null,null,null,null,null,null,null,null,null,null];
+         }
+         else
+         {
+            _loc4_ = 0;
+            _loc6_ = 0;
+            while(_loc6_ < _loc2_)
+            {
+               _loc4_ = param1[_loc6_];
+               _loc5_ = this.getRendererBySlotIdx(_loc4_);
+               if(_loc5_ != null)
+               {
+                  removeChild(DisplayObject(_loc5_));
+                  _loc5_.dispose();
+                  this._renderers[_loc4_] = null;
+               }
+               _loc6_++;
+            }
+         }
+      }
+      
+      override protected function updateVisibility() : void
+      {
+         super.updateVisibility();
+         if(visible)
+         {
+            onPanelShownS();
+         }
+         else
+         {
+            onPanelHiddenS();
+         }
+      }
+      
       public function as_addEquipmentSlot(param1:int, param2:Number, param3:Number, param4:int, param5:Number, param6:Number, param7:String, param8:String, param9:int) : void
       {
          var _loc10_:IConsumablesButton = null;
@@ -216,30 +276,12 @@ package net.wg.gui.battle.views.consumablesPanel
          invalidate(INVALIDATE_DRAW_LAYOUT);
       }
       
-      public function as_updateLockedInformation(param1:int, param2:int, param3:String) : void
-      {
-         var _loc4_:IConsumablesButton = this.getRendererBySlotIdx(param1);
-         if(_loc4_)
-         {
-            _loc4_.updateLockedInformation(param2,param3);
-         }
-      }
-      
-      public function as_updateLevelInformation(param1:int, param2:int) : void
-      {
-         var _loc3_:IConsumablesButton = this.getRendererBySlotIdx(param1);
-         if(_loc3_)
-         {
-            _loc3_.updateLevelInformation(param2);
-         }
-      }
-      
       public function as_addOptionalDeviceSlot(param1:int, param2:Number, param3:String, param4:String, param5:Boolean, param6:int, param7:Boolean) : void
       {
          var _loc8_:BattleOptionalDeviceButton = null;
          if(this._renderers[param1] == null)
          {
-            _loc8_ = App.utils.classFactory.getComponent(Linkages.OPTIONAL_DEVICE_BUTTON,BattleOptionalDeviceButton);
+            _loc8_ = this._classFactory.getComponent(Linkages.OPTIONAL_DEVICE_BUTTON,BattleOptionalDeviceButton);
             this._renderers[param1] = _loc8_;
             addChild(_loc8_);
          }
@@ -303,49 +345,6 @@ package net.wg.gui.battle.views.consumablesPanel
       public function as_isVisible() : Boolean
       {
          return visible;
-      }
-      
-      override protected function reset(param1:Array) : void
-      {
-         var _loc3_:IConsumablesButton = null;
-         var _loc4_:int = 0;
-         var _loc5_:IConsumablesButton = null;
-         var _loc6_:int = 0;
-         this._shellCurrentIdx = -1;
-         this._shellNextIdx = -1;
-         this.collapsePopup();
-         var _loc2_:int = Boolean(param1) ? int(param1.length) : int(0);
-         if(_loc2_ == 0)
-         {
-            for each(_loc3_ in this._renderers)
-            {
-               if(_loc3_ != null)
-               {
-                  removeChild(DisplayObject(_loc3_));
-                  _loc3_.dispose();
-               }
-            }
-            this._renderers.splice(0,this._renderers.length);
-            this._renderers = new <IConsumablesButton>[null,null,null,null,null,null,null,null,null,null,null,null];
-         }
-         else
-         {
-            _loc4_ = 0;
-            _loc5_ = null;
-            _loc6_ = 0;
-            while(_loc6_ < _loc2_)
-            {
-               _loc4_ = param1[_loc6_];
-               _loc5_ = this.getRendererBySlotIdx(_loc4_);
-               if(_loc5_ != null)
-               {
-                  removeChild(DisplayObject(_loc5_));
-                  _loc5_.dispose();
-                  this._renderers[_loc4_] = null;
-               }
-               _loc6_++;
-            }
-         }
       }
       
       public function as_setCoolDownPosAsPercent(param1:int, param2:Number) : void
@@ -529,18 +528,6 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      public function as_switchToPosmortem() : void
-      {
-         var _loc1_:IConsumablesButton = this.getRendererBySlotIdx(this._shellCurrentIdx);
-         if(_loc1_)
-         {
-            _loc1_.setCoolDownTime(0,0,0);
-         }
-         this._shellCurrentIdx = -1;
-         this._shellNextIdx = -1;
-         this.collapsePopup();
-      }
-      
       public function as_updateEntityState(param1:String, param2:String) : int
       {
          var _loc3_:int = -1;
@@ -550,6 +537,24 @@ package net.wg.gui.battle.views.consumablesPanel
             _loc3_ = this._expandedIdx;
          }
          return _loc3_;
+      }
+      
+      public function as_updateLevelInformation(param1:int, param2:int) : void
+      {
+         var _loc3_:IConsumablesButton = this.getRendererBySlotIdx(param1);
+         if(_loc3_)
+         {
+            _loc3_.updateLevelInformation(param2);
+         }
+      }
+      
+      public function as_updateLockedInformation(param1:int, param2:int, param3:String) : void
+      {
+         var _loc4_:IConsumablesButton = this.getRendererBySlotIdx(param1);
+         if(_loc4_)
+         {
+            _loc4_.updateLockedInformation(param2,param3);
+         }
       }
       
       public function getRendererBySlotIdx(param1:int) : IConsumablesButton
@@ -621,19 +626,6 @@ package net.wg.gui.battle.views.consumablesPanel
          onPanelShownS();
       }
       
-      override protected function updateVisibility() : void
-      {
-         super.updateVisibility();
-         if(visible)
-         {
-            onPanelShownS();
-         }
-         else
-         {
-            onPanelHiddenS();
-         }
-      }
-      
       public function updateStage(param1:Number, param2:Number) : void
       {
          this._stageWidth = param1;
@@ -643,12 +635,12 @@ package net.wg.gui.battle.views.consumablesPanel
       
       protected function createEquipmentButton() : IConsumablesButton
       {
-         return App.utils.classFactory.getComponent(this._equipmentButtonLinkage,IConsumablesButton);
+         return this._classFactory.getComponent(this._equipmentButtonLinkage,IConsumablesButton);
       }
       
       protected function createShellButton() : IBattleShellButton
       {
-         return App.utils.classFactory.getComponent(this._shellButtonLinkage,IBattleShellButton);
+         return this._classFactory.getComponent(this._shellButtonLinkage,IBattleShellButton);
       }
       
       protected function drawLayout() : void
@@ -697,7 +689,6 @@ package net.wg.gui.battle.views.consumablesPanel
       {
          if(this._tween)
          {
-            this._tween.paused = true;
             this._tween.dispose();
             this._tween = null;
          }
@@ -719,16 +710,16 @@ package net.wg.gui.battle.views.consumablesPanel
       private function expandPopup(param1:int, param2:Array) : void
       {
          this._expandedIdx = param1;
-         if(!this._popUp)
+         if(this._popUp)
          {
-            this._popUp = App.utils.classFactory.getComponent(Linkages.ENTITIES_POPUP,EntitiesStatePopup);
-            addChild(this._popUp);
-            this._popUp.addClickHandler(this);
-            this._popUp.createPopup(param2);
+            this._popUp.setData(param2);
          }
          else
          {
-            this._popUp.setData(param2);
+            this._popUp = this._classFactory.getComponent(Linkages.ENTITIES_POPUP,EntitiesStatePopup);
+            addChild(this._popUp);
+            this._popUp.addClickHandler(this);
+            this._popUp.createPopup(param2);
          }
          this._popUp.visible = true;
          this._popUp.x = this._basePanelWidth - this._popUp.width >> 1;
@@ -812,12 +803,9 @@ package net.wg.gui.battle.views.consumablesPanel
          {
             return;
          }
-         if(this._isExpand)
+         if(this._isExpand && !(param1.target is EntityStateButton))
          {
-            if(!(param1.target is EntityStateButton))
-            {
-               this.collapsePopup();
-            }
+            this.collapsePopup();
          }
       }
    }
@@ -864,14 +852,14 @@ class ConsumablesPanelSettings implements IDisposable
       this.onDispose();
    }
    
+   public function isDisposed() : Boolean
+   {
+      return this._disposed;
+   }
+   
    protected function onDispose() : void
    {
       this.customIndexGap.splice(0,this.customIndexGap.length);
       this.customIndexGap = null;
-   }
-   
-   public function isDisposed() : Boolean
-   {
-      return this._disposed;
    }
 }

@@ -1,4 +1,4 @@
-import os, re, sys, unittest
+import os, re, sys, unittest, unittest.test
 
 class TestDiscovery(unittest.TestCase):
 
