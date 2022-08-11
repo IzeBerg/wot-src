@@ -22,6 +22,7 @@ from renewable_subscription_common.settings_constants import GOLD_RESERVE_GAINS_
 from shared_utils import makeTupleByDict, updateDict, first, findFirst
 from telecom_rentals_common import TELECOM_RENTALS_CONFIG
 from trade_in_common.constants_types import CONFIG_NAME as TRADE_IN_CONFIG_NAME
+from wot_anniversary_common import WOT_ANNIVERSARY_CONFIG_NAME
 if typing.TYPE_CHECKING:
     from typing import Callable, Dict, List, Sequence
 _logger = logging.getLogger(__name__)
@@ -897,6 +898,64 @@ class FunRandomConfig(namedtuple('_FunRandomConfig', (
         data.update((k, eventData[k]) for k in allowedFields & eventData.viewkeys())
 
 
+CN_LOOT_BOXES_EVENT_CONFIG = 'cn_loot_boxes_event_config'
+
+class _CNLootBoxesEventConfig(object):
+    __slots__ = ('__isEnabled', '__startDateInUTC', '__finishDateInUTC', '__lootBoxBuyDayLimit',
+                 '__externalShopUrl')
+
+    def __init__(self, **kwargs):
+        super(_CNLootBoxesEventConfig, self).__init__()
+        self.__isEnabled = kwargs.get('enabled', False)
+        self.__startDateInUTC = kwargs.get('startDateInUTC', 0)
+        self.__finishDateInUTC = kwargs.get('finishDateInUTC', 0)
+        self.__lootBoxBuyDayLimit = kwargs.get('lootBoxBuyDayLimit', 0)
+        self.__externalShopUrl = kwargs.get('externalShopUrl', '')
+
+    @property
+    def isEnabled(self):
+        return self.__isEnabled
+
+    @property
+    def lootBoxBuyDayLimit(self):
+        return self.__lootBoxBuyDayLimit
+
+    @property
+    def externalShopUrl(self):
+        return self.__externalShopUrl
+
+    def getEventActiveTime(self):
+        return (
+         self.__startDateInUTC, self.__finishDateInUTC)
+
+
+class _WotAnniversaryConfig(namedtuple('_WotAnniversaryConfig', (
+ 'isEnabled',
+ 'isActive',
+ 'startTime',
+ 'endTime',
+ 'bigQuestPeriod',
+ 'anniversaryUrls'))):
+    __slots__ = ()
+
+    def __new__(cls, **kwargs):
+        defaults = dict(isEnabled=False, isActive=False, startTime=0, endTime=0, bigQuestPeriod=0, anniversaryUrls={})
+        defaults.update(kwargs)
+        return super(_WotAnniversaryConfig, cls).__new__(cls, **defaults)
+
+    def asDict(self):
+        return self._asdict()
+
+    def replace(self, data):
+        allowedFields = self._fields
+        dataToUpdate = dict((k, v) for k, v in data.iteritems() if k in allowedFields)
+        return self._replace(**dataToUpdate)
+
+    @classmethod
+    def defaults(cls):
+        return cls()
+
+
 class ServerSettings(object):
 
     def __init__(self, serverSettings):
@@ -933,6 +992,8 @@ class ServerSettings(object):
         self.__giftSystemConfig = GiftSystemConfig()
         self.__resourceWellConfig = ResourceWellConfig()
         self.__funRandomConfig = FunRandomConfig()
+        self.__cnLootBoxesEventConfig = _CNLootBoxesEventConfig()
+        self.__wotAnniversaryConfig = _WotAnniversaryConfig()
         self.set(serverSettings)
 
     def set(self, serverSettings):
@@ -1010,6 +1071,7 @@ class ServerSettings(object):
         if _crystalRewardsConfig.CONFIG_NAME in self.__serverSettings:
             self.__crystalRewardsConfig = makeTupleByDict(_crystalRewardsConfig, self.__serverSettings[_crystalRewardsConfig.CONFIG_NAME])
         self.__updateReactiveCommunicationConfig(self.__serverSettings)
+        self.__updateCNLootBoxesEventConfig(self.__serverSettings)
         if BonusCapsConst.CONFIG_NAME in self.__serverSettings:
             BONUS_CAPS.OVERRIDE_BONUS_CAPS = self.__serverSettings[BonusCapsConst.CONFIG_NAME]
         else:
@@ -1037,6 +1099,8 @@ class ServerSettings(object):
             self.__resourceWellConfig = makeTupleByDict(ResourceWellConfig, self.__serverSettings[Configs.RESOURCE_WELL.value])
         if Configs.FUN_RANDOM_CONFIG.value in self.__serverSettings:
             self.__funRandomConfig = makeTupleByDict(FunRandomConfig, self.__serverSettings[Configs.FUN_RANDOM_CONFIG.value])
+        if WOT_ANNIVERSARY_CONFIG_NAME in self.__serverSettings:
+            self.__wotAnniversaryConfig = makeTupleByDict(_WotAnniversaryConfig, self.__serverSettings[WOT_ANNIVERSARY_CONFIG_NAME])
         self.onServerSettingsChange(serverSettings)
 
     def update(self, serverSettingsDiff):
@@ -1109,6 +1173,8 @@ class ServerSettings(object):
             self.__updateVehiclePostProgressionConfig(serverSettingsDiff)
         if Configs.GIFTS_CONFIG.value in serverSettingsDiff:
             self.__updateGiftSystemConfig(serverSettingsDiff)
+        if WOT_ANNIVERSARY_CONFIG_NAME in serverSettingsDiff:
+            self.__updateWotAnniversaryConfig(serverSettingsDiff)
         if TRADE_IN_CONFIG_NAME in serverSettingsDiff:
             self.__serverSettings[TRADE_IN_CONFIG_NAME] = serverSettingsDiff[TRADE_IN_CONFIG_NAME]
         if Configs.RESOURCE_WELL.value in serverSettingsDiff:
@@ -1117,6 +1183,7 @@ class ServerSettings(object):
             self.__updateFunRandomConfig(serverSettingsDiff)
         self.__updateBlueprintsConvertSaleConfig(serverSettingsDiff)
         self.__updateReactiveCommunicationConfig(serverSettingsDiff)
+        self.__updateCNLootBoxesEventConfig(serverSettingsDiff)
         self.onServerSettingsChange(serverSettingsDiff)
 
     def clear(self):
@@ -1236,6 +1303,10 @@ class ServerSettings(object):
     @property
     def funRandomConfig(self):
         return self.__funRandomConfig
+
+    @property
+    def wotAnniversaryConfig(self):
+        return self.__wotAnniversaryConfig
 
     def isEpicBattleEnabled(self):
         return self.epicBattles.isEnabled
@@ -1550,6 +1621,9 @@ class ServerSettings(object):
     def getTradeInConfig(self):
         return self.__getGlobalSetting(TRADE_IN_CONFIG_NAME, {})
 
+    def getCNLootBoxesEventConfig(self):
+        return self.__cnLootBoxesEventConfig
+
     def __getGlobalSetting(self, settingsName, default=None):
         return self.__serverSettings.get(settingsName, default)
 
@@ -1637,8 +1711,23 @@ class ServerSettings(object):
     def __updateResourceWellConfig(self, diff):
         self.__resourceWellConfig = self.__resourceWellConfig.replace(diff[Configs.RESOURCE_WELL.value])
 
+    def __updateWotAnniversaryConfig(self, serverSettingsDiff):
+        self.__wotAnniversaryConfig = self.__wotAnniversaryConfig.replace(serverSettingsDiff[WOT_ANNIVERSARY_CONFIG_NAME])
+
     def __updateFunRandomConfig(self, serverSettingsDiff):
         self.__funRandomConfig = self.__funRandomConfig.replace(serverSettingsDiff[Configs.FUN_RANDOM_CONFIG.value])
+
+    def __updateCNLootBoxesEventConfig(self, settings):
+        if CN_LOOT_BOXES_EVENT_CONFIG in settings:
+            config = settings[CN_LOOT_BOXES_EVENT_CONFIG]
+            if config is None:
+                self.__cnLootBoxesEventConfig = _CNLootBoxesEventConfig()
+            elif isinstance(config, dict):
+                self.__cnLootBoxesEventConfig = _CNLootBoxesEventConfig(**config)
+            else:
+                _logger.error('Unexpected format of subscriptions service config: %r', config)
+                self.__cnLootBoxesEventConfig = _CNLootBoxesEventConfig()
+        return
 
 
 def serverSettingsChangeListener(*configKeys):

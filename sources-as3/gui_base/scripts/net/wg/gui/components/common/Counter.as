@@ -48,7 +48,8 @@ package net.wg.gui.components.common
       
       override protected function applyPosition() : void
       {
-         var _loc1_:Rectangle = this.target.getBounds(this.target.parent);
+         var _loc1_:Rectangle = null;
+         _loc1_ = this.target.getBounds(this.target.parent);
          x = _loc1_.x + _loc1_.width | 0;
          if(this.counterView.label)
          {

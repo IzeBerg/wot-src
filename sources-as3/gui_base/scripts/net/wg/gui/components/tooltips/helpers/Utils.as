@@ -117,9 +117,8 @@ package net.wg.gui.components.tooltips.helpers
       
       public function addHeader(param1:String, param2:Number, param3:Number, param4:String) : TextField
       {
-         var _loc6_:TextFormat = null;
          var _loc5_:TextField = App.textMgr.createTextField();
-         _loc6_ = new TextFormat();
+         var _loc6_:TextFormat = new TextFormat();
          _loc6_.leading = -3;
          _loc6_.align = TextFormatAlign.LEFT;
          _loc5_.name = param1;
@@ -141,11 +140,8 @@ package net.wg.gui.components.tooltips.helpers
       
       public function createBlock(param1:ToolTipBlockVO, param2:Number) : ToolTipBlockResultVO
       {
-         var _loc9_:Number = NaN;
-         var _loc10_:TextField = null;
          var _loc16_:IconText = null;
          var _loc17_:ToolTipBlockRightListItemVO = null;
-         var _loc18_:Boolean = false;
          var _loc21_:TextField = null;
          var _loc22_:Number = NaN;
          var _loc23_:Number = NaN;
@@ -167,8 +163,8 @@ package net.wg.gui.components.tooltips.helpers
             param1.contener.addChild(_loc21_);
             param1.startYPos += _loc21_.textHeight + this.MARGIN_AFTER_SUBHEADER ^ 0;
          }
-         _loc9_ = param1.startYPos;
-         _loc10_ = App.textMgr.createTextField();
+         var _loc9_:Number = param1.startYPos;
+         var _loc10_:TextField = App.textMgr.createTextField();
          _loc10_.name = param1.childrenNamePrefix + LEFT_TEXTFIELD_PREFIX;
          _loc10_.x = param2;
          _loc10_.y = _loc9_;
@@ -202,7 +198,7 @@ package net.wg.gui.components.tooltips.helpers
          var _loc13_:Vector.<ToolTipBlockRightListItemVO> = param1.rightTextList;
          var _loc14_:uint = _loc13_.length;
          var _loc15_:Number = param1.leftTextLineHight != 0 ? Number(param1.leftTextLineHight) : Number(_loc10_.getLineMetrics(0).height);
-         _loc18_ = false;
+         var _loc18_:Boolean = false;
          _loc4_ = 0;
          while(_loc4_ < _loc14_)
          {

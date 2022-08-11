@@ -1319,6 +1319,12 @@ class SYSTEM_MESSAGES(object):
     FUNRANDOM_NOTIFICATION_AVAILABLE = '#system_messages:funRandom/notification/available'
     FUNRANDOM_NOTIFICATION_NOTSET_TITLE = '#system_messages:funRandom/notification/notSet/title'
     FUNRANDOM_NOTIFICATION_NOTSET = '#system_messages:funRandom/notification/notSet'
+    WOTANNIVERSARY_SWITCH_PAUSE_BODY = '#system_messages:wotAnniversary/switch_pause/body'
+    WOTANNIVERSARY_SWITCH_ENABLED_BODY = '#system_messages:wotAnniversary/switch_enabled/body'
+    WOTANNIVERSARY_SWITCH_DISABLE_BODY = '#system_messages:wotAnniversary/switch_disable/body'
+    WOTANNIVERSARY_EVENTWILLENDSOON_HEADER = '#system_messages:wotAnniversary/eventWillEndSoon/header'
+    WOTANNIVERSARY_EVENTWILLENDSOON_BODY = '#system_messages:wotAnniversary/eventWillEndSoon/body'
+    WOTANNIVERSARY_AWARD_HEADER = '#system_messages:wotAnniversary/award/header'
     UNIT_NOTIFICATION_DIVISIONTYPE_ENUM = (
      UNIT_NOTIFICATION_DIVISIONTYPE_MIDDLE,
      UNIT_NOTIFICATION_DIVISIONTYPE_CHAMPION,
@@ -2767,7 +2773,13 @@ class SYSTEM_MESSAGES(object):
      FUNRANDOM_NOTIFICATION_AVAILABLE_TITLE,
      FUNRANDOM_NOTIFICATION_AVAILABLE,
      FUNRANDOM_NOTIFICATION_NOTSET_TITLE,
-     FUNRANDOM_NOTIFICATION_NOTSET)
+     FUNRANDOM_NOTIFICATION_NOTSET,
+     WOTANNIVERSARY_SWITCH_PAUSE_BODY,
+     WOTANNIVERSARY_SWITCH_ENABLED_BODY,
+     WOTANNIVERSARY_SWITCH_DISABLE_BODY,
+     WOTANNIVERSARY_EVENTWILLENDSOON_HEADER,
+     WOTANNIVERSARY_EVENTWILLENDSOON_BODY,
+     WOTANNIVERSARY_AWARD_HEADER)
 
     @classmethod
     def unit_notification_divisiontype(cls, key0):

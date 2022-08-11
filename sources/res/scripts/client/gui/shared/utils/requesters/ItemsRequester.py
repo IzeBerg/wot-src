@@ -1,7 +1,7 @@
 import operator
 from abc import ABCMeta, abstractmethod
 from collections import defaultdict, namedtuple
-import typing, BigWorld, constants, dossiers2, nations, async as future_async
+import typing, BigWorld, async as future_async, constants, dossiers2, nations
 from account_shared import LayoutIterator
 from adisp import async, process
 from battle_pass_common import BATTLE_PASS_PDATA_KEY

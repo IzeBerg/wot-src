@@ -870,6 +870,13 @@ def _migrateTo93(core, data, initialized):
        'role_SPG': False}
 
 
+def _migrateTo94(core, data, initialized):
+    from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS
+    from account_helpers.settings_core.settings_constants import WotAnniversaryStorageKeys
+    data[SETTINGS_SECTIONS.WOT_ANNIVERSARY_STORAGE][WotAnniversaryStorageKeys.WOT_ANNIVERSARY_INTRO_SHOWED] = False
+    data[SETTINGS_SECTIONS.WOT_ANNIVERSARY_STORAGE][WotAnniversaryStorageKeys.WOT_ANNIVERSARY_WELCOME_SHOWED] = False
+
+
 _versions = (
  (
   1, _initializeDefaultSettings, True, False),
@@ -1054,7 +1061,9 @@ _versions = (
  (
   92, _migrateTo92, False, False),
  (
-  93, _migrateTo93, False, False))
+  93, _migrateTo93, False, False),
+ (
+  94, _migrateTo94, False, False))
 
 @async
 @process
