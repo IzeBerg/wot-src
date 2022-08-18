@@ -52,6 +52,7 @@ class BattlePassProgress(object):
         self.__hasBattlePass = kwargs.get('hasBattlePass', False)
         self.__questsProgress = kwargs.get('questsProgress', {})
         self.__battlePassComplete = kwargs.get('battlePassComplete', False)
+        self.__availablePoints = kwargs.get('availablePoints', 0)
         self.__prevLevel = 0
         self.__currLevel = 0
         self.__pointsNew = 0
@@ -94,6 +95,10 @@ class BattlePassProgress(object):
     @property
     def battlePassComplete(self):
         return self.__battlePassComplete
+
+    @property
+    def availablePoints(self):
+        return self.__availablePoints
 
     @property
     def level(self):

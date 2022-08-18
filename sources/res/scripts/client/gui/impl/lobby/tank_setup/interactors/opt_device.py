@@ -39,6 +39,21 @@ class OptDeviceInteractor(BaseOptDeviceInteractor):
         vehicle.optDevices.dynSlotType = self.getItem().optDevices.dynSlotType
         return vehicle
 
+    def getChangedList(self):
+        setOfPrevLayout = set(item.intCD for item in self.getInstalledLayout() if item is not None)
+        currentItems = []
+        vehicle = self.getItem()
+        for slotID, item in enumerate(self.getCurrentLayout()):
+            if item and item.intCD not in setOfPrevLayout:
+                if self.__canInstall(item, vehicle):
+                    currentItems.append(item)
+                else:
+                    self.setItemInCurrentLayout(slotID, None)
+                    self.onSlotAction(actionType=BaseSetupModel.REVERT_SLOT_ACTION, slotID=slotID)
+                    self.itemUpdated()
+
+        return currentItems
+
     def setItemInCurrentLayout(self, slotID, item):
         self.getCurrentLayout()[slotID] = item
         if item is not None:
@@ -169,3 +184,47 @@ class OptDeviceInteractor(BaseOptDeviceInteractor):
         result = yield await(showTankSetupExitConfirmDialog(items=changedList, vehicle=self.getItem(), fromSection=self.getName(), startState=(changedList or BuyAndExchangeStateEnum).BUY_NOT_REQUIRED if 1 else None))
         raise AsyncReturn(result)
         return
+
+    def __canInstall--- This code section failed: ---
+
+ L. 237         0  LOAD_FAST             1  'item'
+                3  LOAD_ATTR             0  'isHidden'
+                6  POP_JUMP_IF_FALSE    81  'to 81'
+                9  LOAD_FAST             1  'item'
+               12  LOAD_ATTR             1  'isRegular'
+               15  UNARY_NOT        
+             16_0  COME_FROM             6  '6'
+               16  POP_JUMP_IF_FALSE    81  'to 81'
+
+ L. 238        19  LOAD_FAST             1  'item'
+               22  LOAD_ATTR             2  'isInInventory'
+               25  STORE_FAST            3  'isInInventory'
+
+ L. 240        28  LOAD_FAST             2  'vehicle'
+               31  LOAD_ATTR             3  'isPostProgressionExists'
+               34  POP_JUMP_IF_FALSE    77  'to 77'
+               37  LOAD_FAST             3  'isInInventory'
+               40  JUMP_IF_TRUE_OR_POP    80  'to 80'
+               43  LOAD_FAST             0  'self'
+               46  LOAD_ATTR             4  'getSetupLayout'
+               49  CALL_FUNCTION_0       0  None
+               52  LOAD_ATTR             5  'getIntCDs'
+               55  CALL_FUNCTION_0       0  None
+               58  LOAD_ATTR             6  'count'
+               61  LOAD_FAST             1  'item'
+               64  LOAD_ATTR             7  'intCD'
+               67  CALL_FUNCTION_1       1  None
+               70  LOAD_CONST               0
+               73  COMPARE_OP            4  >
+               76  RETURN_END_IF    
+             77_0  COME_FROM            40  '40'
+             77_1  COME_FROM            34  '34'
+               77  LOAD_FAST             3  'isInInventory'
+               80  RETURN_VALUE     
+             81_0  COME_FROM            16  '16'
+
+ L. 241        81  LOAD_GLOBAL           8  'True'
+               84  RETURN_VALUE     
+               -1  RETURN_LAST      
+
+Parse error at or near `RETURN_END_IF' instruction at offset 76# Decompile failed :(

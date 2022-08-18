@@ -19,7 +19,7 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
       
       public var tf:TextField = null;
       
-      private var _iconContainer:Bitmap = null;
+      private var _iconContainer:Bitmap;
       
       private var _colorSchMgr:IColorSchemeManager;
       
@@ -33,10 +33,10 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
       
       public function BRMarker()
       {
+         this._iconContainer = new Bitmap();
          this._colorSchMgr = App.colorSchemeMgr;
          this._atlasMgr = App.atlasMgr;
          super();
-         this._iconContainer = new Bitmap();
          this.addChild(this._iconContainer);
          this._iconContainer.smoothing = true;
       }
@@ -61,6 +61,11 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
       
       public function highlight() : void
       {
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
       
       public function show(param1:String, param2:String = "", param3:String = "", param4:String = "", param5:String = "") : void
@@ -109,11 +114,6 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
       private function get colorSchemeName() : String
       {
          return "vm_" + this._entryName;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

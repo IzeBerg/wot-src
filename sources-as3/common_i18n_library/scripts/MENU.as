@@ -201,6 +201,8 @@ package
       
       public static const LOGIN_STATUS_VERSIONMISMATCH:String = "#menu:login/status/versionMismatch";
       
+      public static const LOGIN_STATUS_ACCESSFORBIDDENTOPERIPHERY:String = "#menu:login/status/accessForbiddenToPeriphery";
+      
       public static const LOGIN_STATUS_CENTERRESTART:String = "#menu:login/status/centerRestart";
       
       public static const LOGIN_STATUS_CLIENT_SERVER_VERSIONS_ARE_DIFFERENT:String = "#menu:login/status/CLIENT_SERVER_VERSIONS_ARE_DIFFERENT";

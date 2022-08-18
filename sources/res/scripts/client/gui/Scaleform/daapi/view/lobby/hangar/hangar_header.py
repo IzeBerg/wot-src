@@ -283,6 +283,7 @@ class HangarHeader(HangarHeaderMeta, IGlobalListener, IEventBoardsListener):
         self.__mapboxCtrl.addProgressionListener(self.update)
         self.__resourceWell.onEventUpdated += self.update
         self.__battleMattersController.onStateChanged += self.__onBattleMattersStateChanged
+        self.__battleMattersController.onFinish += self.__onBattleMattersStateChanged
         self.__updateBattleMattersEntryPoint()
         g_clientUpdateManager.addCallbacks({'inventory.1': self.update, 
            'stats.tutorialsCompleted': self.update})
@@ -306,6 +307,7 @@ class HangarHeader(HangarHeaderMeta, IGlobalListener, IEventBoardsListener):
         self.__rankedController.onGameModeStatusUpdated -= self.update
         self.__resourceWell.onEventUpdated -= self.update
         self.__battleMattersController.onStateChanged -= self.__onBattleMattersStateChanged
+        self.__battleMattersController.onFinish -= self.__onBattleMattersStateChanged
         self._currentVehicle = None
         self.__screenWidth = None
         if self._eventsController:

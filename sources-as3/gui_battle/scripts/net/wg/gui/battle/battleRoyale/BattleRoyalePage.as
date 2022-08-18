@@ -573,12 +573,10 @@ package net.wg.gui.battle.battleRoyale
       
       private function onConsumablesPanelUpdatePositionHandler(param1:ConsumablesPanelEvent) : void
       {
-         if(isPostMortem)
+         if(!isPostMortem)
          {
-            this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
-            return;
+            this.updateBattleDamageLogPanelPosition();
          }
-         this.updateBattleDamageLogPanelPosition();
          minimap.updateSizeIndex(false);
       }
       

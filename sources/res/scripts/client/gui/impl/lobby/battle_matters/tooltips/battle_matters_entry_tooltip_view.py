@@ -6,6 +6,7 @@ from gui.shared.missions.packers.bonus import getDefaultBonusPacker
 from helpers import dependency
 from skeletons.gui.battle_matters import IBattleMattersController
 from skeletons.gui.shared import IItemsCache
+from gui.impl.lobby.battle_matters.battle_matters_bonus_packer import BattleMattersEntitlementsBonusUIPacker
 
 class BattleMattersEntryTooltipView(ViewImpl):
     __slots__ = ()
@@ -40,7 +41,7 @@ class BattleMattersEntryTooltipView(ViewImpl):
                 tx.setCurrentProgress(currentProgress)
                 tx.setMaxProgress(maxProgress)
                 rewards = currentQuest.getBonuses()
-                packer = getDefaultBonusPacker()
+                packer = self.__getBonusBacker()
                 rewardsVMs = tx.getRewards()
                 rewardsVMs.clear()
                 for reward in rewards:
@@ -50,3 +51,9 @@ class BattleMattersEntryTooltipView(ViewImpl):
 
                 rewardsVMs.invalidate()
         return
+
+    @staticmethod
+    def __getBonusBacker():
+        packer = getDefaultBonusPacker()
+        packer.getPackers().update({'entitlements': BattleMattersEntitlementsBonusUIPacker()})
+        return packer

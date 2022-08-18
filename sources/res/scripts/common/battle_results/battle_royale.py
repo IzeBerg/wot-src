@@ -24,6 +24,8 @@ BATTLE_RESULTS = [
  (
   'battlePassComplete', bool, False, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL),
  (
+  'availablePoints', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL),
+ (
   'currencies', dict, {},
   MergeDictPacker((
    'brcoin', dict, {},

@@ -5,6 +5,7 @@ if typing.TYPE_CHECKING:
 
 class IBattleMattersController(object):
     onStateChanged = None
+    onFinish = None
 
     @staticmethod
     def isBattleMattersQuest(quest):

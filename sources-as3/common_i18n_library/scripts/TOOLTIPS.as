@@ -1387,6 +1387,8 @@ package
       
       public static const SERVER_NOTRECOMENDED:String = "#tooltips:server/notRecomended";
       
+      public static const SERVER_NOTACCESS:String = "#tooltips:server/notAccess";
+      
       public static const HEADER_MENU_PLAYERSONSERVER:String = "#tooltips:header/menu/playersOnServer";
       
       public static const HEADER_ACCOUNT_HEADER:String = "#tooltips:header/account/header";

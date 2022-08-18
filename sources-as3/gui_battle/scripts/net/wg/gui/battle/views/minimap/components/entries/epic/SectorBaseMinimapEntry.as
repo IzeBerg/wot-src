@@ -55,35 +55,8 @@ package net.wg.gui.battle.views.minimap.components.entries.epic
          this.highlightLetter.stop();
          this.highlightLetter.dispose();
          this.highlightLetter = null;
-         App.colorSchemeMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeChangeHandler);
+         App.colorSchemeMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeMgrSchemasUpdatedHandler);
          super.onDispose();
-      }
-      
-      public function setCapturePoints(param1:Number) : void
-      {
-         this.progressAnimation.updateProgress(param1);
-      }
-      
-      public function setIdentifier(param1:int) : void
-      {
-         this.setBaseLetter(param1);
-         App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeChangeHandler);
-      }
-      
-      public function setOwningTeam(param1:Boolean) : void
-      {
-         this._atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,BATTLEATLAS.EPIC_BASE_CAP_MINIMAP_ENTRY_BACKGROUND,this.atlasPlaceholder.graphics,EpicMinimapEntryConst.EMPTY_DOUBLE_STR,true);
-         this.progressAnimation.setOwner(param1);
-      }
-      
-      private function setBaseLetter(param1:int) : void
-      {
-         if(param1 < 1 || param1 > BASE_ID_MAX)
-         {
-            DebugUtils.LOG_WARNING(INDEX_WARNING_TEXT);
-         }
-         this._id = param1;
-         this.baseLetter.gotoAndStop(param1);
       }
       
       override protected function setAttackState(param1:Boolean) : void
@@ -114,17 +87,44 @@ package net.wg.gui.battle.views.minimap.components.entries.epic
          this.highlightLetter.setActiveState(ActionMarkerStates.NEUTRAL,this._id);
       }
       
-      private function onColorSchemeChangeHandler(param1:ColorSchemeEvent) : void
+      public function setCapturePoints(param1:Number) : void
       {
-         storeFrameAnimations();
-         this.checkForColorBlindMode();
-         setState(getCurrentState(),false);
+         this.progressAnimation.updateProgress(param1);
+      }
+      
+      public function setIdentifier(param1:int) : void
+      {
+         this.setBaseLetter(param1);
+         App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeMgrSchemasUpdatedHandler);
+      }
+      
+      public function setOwningTeam(param1:Boolean) : void
+      {
+         this._atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,BATTLEATLAS.EPIC_BASE_CAP_MINIMAP_ENTRY_BACKGROUND,this.atlasPlaceholder.graphics,EpicMinimapEntryConst.EMPTY_DOUBLE_STR,true);
+         this.progressAnimation.setOwner(param1);
+      }
+      
+      private function setBaseLetter(param1:int) : void
+      {
+         if(param1 < 1 || param1 > BASE_ID_MAX)
+         {
+            DebugUtils.LOG_WARNING(INDEX_WARNING_TEXT);
+         }
+         this._id = param1;
+         this.baseLetter.gotoAndStop(param1);
       }
       
       private function checkForColorBlindMode() : void
       {
          gotoAndStop(!!App.colorSchemeMgr.getIsColorBlindS() ? COLOR_BLIND_FRAME : NORMAL_COLOR_FRAME);
          this.progressAnimation.setColorBlindMode(App.colorSchemeMgr.getIsColorBlindS());
+      }
+      
+      private function onColorSchemeMgrSchemasUpdatedHandler(param1:ColorSchemeEvent) : void
+      {
+         storeFrameAnimations();
+         this.checkForColorBlindMode();
+         setState(getCurrentState(),false);
       }
    }
 }

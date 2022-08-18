@@ -44,18 +44,18 @@ package net.wg.gui.components.common.serverStats
       {
          super();
          this._dataProvider = new ListDAAPIDataProvider(ServerVO);
-         this._dataProvider.addEventListener(Event.CHANGE,this.onDataProviderChangeHandler);
          this.regionDD.checkItemDisabledFunction = checkItemDisabledFunction;
       }
       
       private static function checkItemDisabledFunction(param1:ServerVO) : Boolean
       {
-         return param1.csisStatus == ServerCsisState.NOT_AVAILABLE;
+         return param1.csisStatus == ServerCsisState.NOT_AVAILABLE || !param1.haveAccess;
       }
       
       override protected function configUI() : void
       {
          super.configUI();
+         this._dataProvider.addEventListener(Event.CHANGE,this.onDataProviderChangeHandler);
          this.serverInfo.visible = App.globalVarsMgr.isShowServerStatsS();
          this.serverInfo.focusable = false;
          this.regionDD.dataProvider = this._dataProvider;
@@ -88,13 +88,18 @@ package net.wg.gui.components.common.serverStats
          this.regionDD.addEventListener(DropdownMenuEvent.CLOSE_DROP_DOWN,this.onRegionCloseDropDownHandler);
       }
       
-      override protected function onDispose() : void
+      override protected function onBeforeDispose() : void
       {
          this.regionDD.removeEventListener(DropdownMenuEvent.SHOW_DROP_DOWN,this.onRegionShowDropDownHandler);
          this.regionDD.removeEventListener(DropdownMenuEvent.CLOSE_DROP_DOWN,this.onRegionCloseDropDownHandler);
          this.regionDD.removeEventListener(ListEvent.INDEX_CHANGE,this.onRegionIndexChangeHandler);
-         this.regionDD.checkItemDisabledFunction = null;
          this._dataProvider.removeEventListener(Event.CHANGE,this.onDataProviderChangeHandler);
+         super.onBeforeDispose();
+      }
+      
+      override protected function onDispose() : void
+      {
+         this.regionDD.checkItemDisabledFunction = null;
          this.serverInfo.dispose();
          this.serverInfo = null;
          this._dataProvider.cleanUp();

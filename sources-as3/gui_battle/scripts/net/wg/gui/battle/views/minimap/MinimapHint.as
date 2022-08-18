@@ -18,16 +18,6 @@ package net.wg.gui.battle.views.minimap
          super();
       }
       
-      public function setLeftMinimapHintIconType(param1:uint) : void
-      {
-         this.iconInfoLeft.setIconType(param1);
-      }
-      
-      public function setRightMinimapHintIconType(param1:uint) : void
-      {
-         this.iconInfoRight.setIconType(param1);
-      }
-      
       public final function dispose() : void
       {
          this._disposed = true;
@@ -40,6 +30,16 @@ package net.wg.gui.battle.views.minimap
       public function isDisposed() : Boolean
       {
          return this._disposed;
+      }
+      
+      public function setLeftMinimapHintIconType(param1:uint) : void
+      {
+         this.iconInfoLeft.setIconType(param1);
+      }
+      
+      public function setRightMinimapHintIconType(param1:uint) : void
+      {
+         this.iconInfoRight.setIconType(param1);
       }
    }
 }

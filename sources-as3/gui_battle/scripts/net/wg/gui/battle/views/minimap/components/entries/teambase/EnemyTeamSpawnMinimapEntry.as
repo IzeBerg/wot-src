@@ -13,9 +13,9 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
    {
        
       
-      private var _pointNumber:int = -1;
-      
       public var atlasPlaceholder:Sprite = null;
+      
+      private var _pointNumber:int = -1;
       
       private var _atlasManager:IAtlasManager;
       
@@ -26,11 +26,20 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
          MinimapEntryController.instance.registerScalableEntry(this);
       }
       
+      override protected function onDispose() : void
+      {
+         MinimapEntryController.instance.unregisterScalableEntry(this);
+         this.atlasPlaceholder = null;
+         this._atlasManager = null;
+         App.colorSchemeMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeMgrSchemasUpdatedHandler);
+         super.onDispose();
+      }
+      
       public function setPointNumber(param1:int) : void
       {
          this._pointNumber = param1;
          this.drawEntry();
-         App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeChangeHandler);
+         App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeMgrSchemasUpdatedHandler);
       }
       
       private function drawEntry() : void
@@ -38,18 +47,9 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
          this._atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,TeamBaseMinimapEntryConst.ENEMY_TEAM_SPAWN_ATLAS_ITEM_NAME + "_" + App.colorSchemeMgr.getScheme(MinimapColorConst.TEAM_SPAWN_BASE_RED).aliasColor + "_" + this._pointNumber,this.atlasPlaceholder.graphics,"",true);
       }
       
-      private function onColorSchemeChangeHandler(param1:ColorSchemeEvent) : void
+      private function onColorSchemeMgrSchemasUpdatedHandler(param1:ColorSchemeEvent) : void
       {
          this.drawEntry();
-      }
-      
-      override protected function onDispose() : void
-      {
-         MinimapEntryController.instance.unregisterScalableEntry(this);
-         this.atlasPlaceholder = null;
-         this._atlasManager = null;
-         App.colorSchemeMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeChangeHandler);
-         super.onDispose();
       }
    }
 }

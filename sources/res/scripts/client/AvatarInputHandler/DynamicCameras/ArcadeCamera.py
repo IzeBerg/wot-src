@@ -184,11 +184,13 @@ class ArcadeCamera(CameraWithSettings, CallbackDelayer, TimeDeltaMeter):
     def _getConfigsKey():
         return ArcadeCamera.__name__
 
-    def cloneState(self, distance=None):
-        currentState = self.__zoomStateSwitcher.getCurrentState()
-        currentDistance = distance if distance else self.getCameraDistance()
-        if currentState is not None:
-            currentState = currentState.settingsKey
+    def cloneState(self, **kwargs):
+        currentDistance = kwargs.get('distance', self.getCameraDistance())
+        currentState = kwargs.get('state')
+        if not currentState:
+            currentState = self.__zoomStateSwitcher.getCurrentState()
+            if currentState is not None:
+                currentState = currentState.settingsKey
         return ArcadeCameraState(currentDistance, currentState)
 
     def create(self, onChangeControlMode=None, postmortemMode=False, smartPointCalculator=True):

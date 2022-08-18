@@ -685,6 +685,7 @@ class TOOLTIPS(object):
     HEADER_MENU_SERVER = '#tooltips:header/menu/server'
     HEADER_MENU_SERVER_CURRENT = '#tooltips:header/menu/server/current'
     SERVER_NOTRECOMENDED = '#tooltips:server/notRecomended'
+    SERVER_NOTACCESS = '#tooltips:server/notAccess'
     HEADER_MENU_PLAYERSONSERVER = '#tooltips:header/menu/playersOnServer'
     HEADER_ACCOUNT_HEADER = '#tooltips:header/account/header'
     HEADER_ACCOUNT_BODY = '#tooltips:header/account/body'

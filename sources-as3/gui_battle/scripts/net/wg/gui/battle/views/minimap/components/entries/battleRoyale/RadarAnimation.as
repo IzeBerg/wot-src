@@ -1,9 +1,11 @@
 package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
 {
    import flash.display.Graphics;
+   import flash.display.MovieClip;
    import flash.display.Sprite;
+   import net.wg.infrastructure.interfaces.entity.IDisposable;
    
-   public class RadarAnimation extends AnimatedItemWithFinishCallback
+   public class RadarAnimation extends MovieClip implements IDisposable
    {
       
       private static const LINE_COLOR:uint = 11075328;
@@ -25,6 +27,8 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
       
       private var _radius:int = 0;
       
+      private var _disposed:Boolean = false;
+      
       public function RadarAnimation()
       {
          super();
@@ -40,18 +44,23 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
          _loc3_.endFill();
       }
       
-      override public function dispose() : void
+      override public function play() : void
       {
-         super.dispose();
+         super.play();
+         gotoAndPlay(1);
+      }
+      
+      public final function dispose() : void
+      {
+         this._disposed = true;
          this.circle0 = null;
          this.circle1 = null;
          this.circle2 = null;
       }
       
-      override public function play() : void
+      public function isDisposed() : Boolean
       {
-         super.play();
-         gotoAndPlay(1);
+         return this._disposed;
       }
       
       public function updateRadarRadius(param1:int) : void

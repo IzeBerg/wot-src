@@ -1051,6 +1051,7 @@ class MESSENGER(object):
     SERVICECHANNELMESSAGES_BATTLEMATTERS_PAUSED = '#messenger:serviceChannelMessages/battleMatters/paused'
     SERVICECHANNELMESSAGES_BATTLEMATTERS_TOKEN = '#messenger:serviceChannelMessages/battleMatters/token'
     SERVICECHANNELMESSAGES_BATTLEMATTERS_AWARDS_HEADER = '#messenger:serviceChannelMessages/battleMatters/awards/header'
+    SERVICECHANNELMESSAGES_BATTLEMATTERS_AWARDS_QUESTIDX = '#messenger:serviceChannelMessages/battleMatters/awards/questIdx'
     SERVICECHANNELMESSAGES_BATTLEMATTERS_AWARDS_BODY = '#messenger:serviceChannelMessages/battleMatters/awards/body'
     SERVICECHANNELMESSAGES_BATTLEMATTERS_AWARDS_FOOTER = '#messenger:serviceChannelMessages/battleMatters/awards/footer'
     SERVICECHANNELMESSAGES_BATTLEMATTERS_AWARDS_FOOTER_BUTTON = '#messenger:serviceChannelMessages/battleMatters/awards/footer/button'

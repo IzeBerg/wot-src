@@ -1809,7 +1809,7 @@ package net.wg.data.constants.generated
       
       public static const ITALY_IT30_CC_MOD_64_PREM:String = "italy-It30_CC_mod_64_Prem";
       
-      public static const ITALY_IT31_CC_67_B:String = "italy-it31_cc_67_b";
+      public static const ITALY_IT31_CC_67_B:String = "italy-It31_CC_67_B";
       
       public static const JAPAN_J01_NC27:String = "japan-J01_NC27";
       

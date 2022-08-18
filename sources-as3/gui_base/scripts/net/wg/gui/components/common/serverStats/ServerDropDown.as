@@ -35,6 +35,8 @@ package net.wg.gui.components.common.serverStats
       
       private static const ALLERT_OFFSET_X:int = 4;
       
+      private static const BLOCK_OFFSET_X:int = 6;
+      
       private static const HIT_AREA_WIDTH_OFFSET:int = -5;
        
       
@@ -43,6 +45,8 @@ package net.wg.gui.components.common.serverStats
       public var waiting:InviteIndicator;
       
       public var alertIcon:Sprite;
+      
+      public var blockIcon:Sprite;
       
       public var background:MovieClip;
       
@@ -54,6 +58,8 @@ package net.wg.gui.components.common.serverStats
       
       public function ServerDropDown()
       {
+         this._commons = App.utils.commons;
+         this._tooltipMgr = App.toolTipMgr;
          super();
          var _loc1_:Number = width;
          var _loc2_:Number = height;
@@ -61,8 +67,6 @@ package net.wg.gui.components.common.serverStats
          preventAutosizing = true;
          width = _loc1_;
          height = _loc2_;
-         this._commons = App.utils.commons;
-         this._tooltipMgr = App.toolTipMgr;
       }
       
       override protected function configUI() : void
@@ -92,6 +96,7 @@ package net.wg.gui.components.common.serverStats
          this.background = null;
          this.pingTF = null;
          this.alertIcon = null;
+         this.blockIcon = null;
          this._serverData = null;
          this._commons = null;
          this._tooltipMgr = null;
@@ -126,6 +131,7 @@ package net.wg.gui.components.common.serverStats
       {
          super.populateText(param1);
          this._serverData = ServerVO(param1);
+         var _loc2_:Boolean = this._serverData.haveAccess;
          if(this._serverData)
          {
             textField.visible = true;
@@ -137,12 +143,12 @@ package net.wg.gui.components.common.serverStats
             else if(this._serverData.pingState == ServerPingState.UNDEFINED)
             {
                this.pingTF.visible = false;
-               this.waiting.visible = true;
+               this.waiting.visible = _loc2_;
             }
             else
             {
                this.pingTF.htmlText = this._serverData.pingValue;
-               this.pingTF.visible = true;
+               this.pingTF.visible = _loc2_;
                this.waiting.visible = false;
             }
             this.pingTF.alpha = !!this._serverData.enabled ? Number(ENABLED_PING_ALPHA) : Number(DISABLED_PING_ALPHA);
@@ -154,34 +160,36 @@ package net.wg.gui.components.common.serverStats
             textField.visible = false;
          }
          this.alertIcon.visible = this.showCsisIndicator();
+         this.blockIcon.visible = !_loc2_;
          this.updateLayout();
       }
       
       private function showCsisIndicator() : Boolean
       {
-         return this._serverData != null && this._serverData.csisStatus == ServerCsisState.NOT_RECOMMENDED;
+         return this._serverData.haveAccess && this._serverData != null && this._serverData.csisStatus == ServerCsisState.NOT_RECOMMENDED;
       }
       
       private function updateLayout() : void
       {
-         var _loc2_:int = 0;
+         var _loc1_:int = 0;
          this.pingTF.x = width - this.pingTF.width - PING_RIGHT | 0;
-         var _loc1_:Boolean = this.showCsisIndicator();
-         if(_loc1_)
+         if(this.showCsisIndicator())
          {
-            _loc2_ = LABEL_RIGHT_WITH_ALERT;
+            _loc1_ = LABEL_RIGHT_WITH_ALERT;
          }
          else if(this.waiting.visible)
          {
-            _loc2_ = LABEL_RIGHT_WITH_PING;
+            _loc1_ = LABEL_RIGHT_WITH_PING;
          }
          else
          {
-            _loc2_ = LABEL_RIGHT;
+            _loc1_ = LABEL_RIGHT;
          }
          this.waiting.x = width - (this.waiting.width >> 1) - PING_RIGHT - WAITING_OFFSET;
-         textField.width = width - textField.x - _loc2_ | 0;
-         this.alertIcon.x = textField.x + textField.textWidth + ALLERT_OFFSET_X | 0;
+         textField.width = width - textField.x - _loc1_ | 0;
+         var _loc2_:int = textField.x + textField.textWidth;
+         this.alertIcon.x = _loc2_ + ALLERT_OFFSET_X;
+         this.blockIcon.x = _loc2_ + BLOCK_OFFSET_X;
          this.background.width = width;
          hitMc.width = width + HIT_AREA_WIDTH_OFFSET;
       }

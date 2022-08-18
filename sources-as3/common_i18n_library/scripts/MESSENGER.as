@@ -2101,6 +2101,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_BATTLEMATTERS_AWARDS_HEADER:String = "#messenger:serviceChannelMessages/battleMatters/awards/header";
       
+      public static const SERVICECHANNELMESSAGES_BATTLEMATTERS_AWARDS_QUESTIDX:String = "#messenger:serviceChannelMessages/battleMatters/awards/questIdx";
+      
       public static const SERVICECHANNELMESSAGES_BATTLEMATTERS_AWARDS_BODY:String = "#messenger:serviceChannelMessages/battleMatters/awards/body";
       
       public static const SERVICECHANNELMESSAGES_BATTLEMATTERS_AWARDS_FOOTER:String = "#messenger:serviceChannelMessages/battleMatters/awards/footer";

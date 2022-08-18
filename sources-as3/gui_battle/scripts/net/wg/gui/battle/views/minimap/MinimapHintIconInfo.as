@@ -23,14 +23,14 @@ package net.wg.gui.battle.views.minimap
          this.icons = null;
       }
       
-      public function setIconType(param1:uint) : void
-      {
-         this.icons.setIconType(param1);
-      }
-      
       public function isDisposed() : Boolean
       {
          return this._disposed;
+      }
+      
+      public function setIconType(param1:uint) : void
+      {
+         this.icons.setIconType(param1);
       }
    }
 }

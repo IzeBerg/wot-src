@@ -56,12 +56,13 @@ package net.wg.gui.battle.views.minimap
       
       private var _updateSizeIndexForce:Boolean = false;
       
-      private var _clickAreaSpr:Sprite = null;
+      private var _clickAreaSpr:Sprite;
       
       private var _bIsHintPanelEnabled:Boolean = false;
       
       public function Minimap()
       {
+         this._clickAreaSpr = new Sprite();
          super();
          this._foregrounds = new <Sprite>[this.foreground0,this.foreground1,this.foreground2,this.foreground3,this.foreground4,this.foreground5];
          this.foreground0.imageName = BATTLEATLAS.MINIMAP_B1;
@@ -73,7 +74,6 @@ package net.wg.gui.battle.views.minimap
          this.foreground0.visible = this.foreground1.visible = this.foreground2.visible = this.foreground3.visible = this.foreground4.visible = this.foreground5.visible = false;
          this._currForeground = this.foreground0;
          this.entriesContainer.mask = this.entriesContainerMask;
-         this._clickAreaSpr = new Sprite();
          addChildAt(this._clickAreaSpr,getChildIndex(this.mapHit));
          this.mapHit.visible = false;
          this._clickAreaSpr.hitArea = this.mapHit;
@@ -83,12 +83,17 @@ package net.wg.gui.battle.views.minimap
          this.minimapHint.gotoAndStop(ANIM_FADE_IN);
       }
       
-      public function onButtonClick(param1:Object) : void
+      override public function as_disableHintPanel() : void
       {
-         var _loc2_:* = param1.name;
-         switch(false ? 0 : 0)
-         {
-         }
+         this._bIsHintPanelEnabled = false;
+         this.minimapHint.gotoAndPlay(ANIM_FADE_OUT);
+      }
+      
+      override public function as_enableHintPanelWithData(param1:Boolean, param2:Boolean) : void
+      {
+         this.updateIntenalHintPanelData(param1,param2);
+         this._bIsHintPanelEnabled = true;
+         this.minimapHint.gotoAndPlay(ANIM_FADE_IN);
       }
       
       override public function as_setAlpha(param1:Number) : void
@@ -103,38 +108,25 @@ package net.wg.gui.battle.views.minimap
       
       override public function as_setSize(param1:int) : void
       {
-         if(!initialized)
-         {
-            this._currentSizeIndex = param1;
-         }
-         else
+         if(initialized)
          {
             this.checkNewSize(param1);
          }
-      }
-      
-      override public function as_enableHintPanelWithData(param1:Boolean, param2:Boolean) : void
-      {
-         this.updateIntenalHintPanelData(param1,param2);
-         this._bIsHintPanelEnabled = true;
-         this.minimapHint.gotoAndPlay(ANIM_FADE_IN);
-      }
-      
-      override public function as_disableHintPanel() : void
-      {
-         this._bIsHintPanelEnabled = false;
-         this.minimapHint.gotoAndPlay(ANIM_FADE_OUT);
-      }
-      
-      override public function as_updateHintPanelData(param1:Boolean, param2:Boolean) : void
-      {
-         this.updateIntenalHintPanelData(param1,param2);
+         else
+         {
+            this._currentSizeIndex = param1;
+         }
       }
       
       override public function as_setVisible(param1:Boolean) : void
       {
          this.visible = param1;
          dispatchEvent(new MinimapEvent(MinimapEvent.VISIBILITY_CHANGED));
+      }
+      
+      override public function as_updateHintPanelData(param1:Boolean, param2:Boolean) : void
+      {
+         this.updateIntenalHintPanelData(param1,param2);
       }
       
       override public function getMessageCoordinate() : Number
@@ -145,11 +137,12 @@ package net.wg.gui.battle.views.minimap
       override public function getMinimapRectBySizeIndex(param1:int) : Rectangle
       {
          var _loc2_:int = this._currentSizeIndex;
-         if(param1 >= 0 && param1 < MinimapSizeConst.MAP_SIZE.length)
+         var _loc3_:Vector.<Rectangle> = MinimapSizeConst.MAP_SIZE;
+         if(param1 >= 0 && param1 < _loc3_.length)
          {
             _loc2_ = param1;
          }
-         return new Rectangle(0,0,initedWidth - MinimapSizeConst.MAP_SIZE[_loc2_].x,initedHeight - MinimapSizeConst.MAP_SIZE[_loc2_].y);
+         return new Rectangle(0,0,initedWidth - _loc3_[_loc2_].x,initedHeight - _loc3_[_loc2_].y);
       }
       
       override public function getRectangles() : Vector.<Rectangle>
@@ -168,7 +161,7 @@ package net.wg.gui.battle.views.minimap
       
       override public function setAllowedSizeIndex(param1:Number) : void
       {
-         if((this._currentSizeIndex != param1 || this._updateSizeIndexForce) && initialized)
+         if(initialized && (this._currentSizeIndex != param1 || this._updateSizeIndexForce))
          {
             this._currentSizeIndex = param1;
             dispatchEvent(new MinimapEvent(MinimapEvent.SIZE_CHANGED));
@@ -214,6 +207,8 @@ package net.wg.gui.battle.views.minimap
             this._foregrounds = null;
          }
          this._clickAreaSpr.removeEventListener(MouseEvent.CLICK,this.onMouseClickHandler);
+         this._clickAreaSpr.removeEventListener(MouseEvent.MOUSE_OVER,this.onMouseOverHandler);
+         this._clickAreaSpr.removeEventListener(MouseEvent.MOUSE_OUT,this.onMouseOutHandler);
          this._clickAreaSpr = null;
          this.entriesContainer.dispose();
          this.entriesContainer = null;

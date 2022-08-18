@@ -35,6 +35,7 @@ class AwardView(ViewImpl):
         return super(AwardView, self).createToolTipContent(event, contentID)
 
     def _onLoading(self, serialNumber, *args, **kwargs):
+        super(AwardView, self)._onLoading(*args, **kwargs)
         with self.viewModel.transaction() as (model):
             fillVehicleInfo(model.vehicleInfo, self.__vehicle)
             model.setPersonalNumber(serialNumber if serialNumber is not None else '')

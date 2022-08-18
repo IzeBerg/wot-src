@@ -32,7 +32,11 @@ _ATTACK_REASON_CODE = {_AR_INDICES['shot']: 'DEATH_FROM_SHOT',
    _AR_INDICES['bomber_eq']: 'DEATH_FROM_SHOT', 
    _AR_INDICES['minefield_eq']: 'DEATH_FROM_SHOT', 
    _AR_INDICES['spawned_bot_explosion']: 'DEATH_FROM_SHOT', 
-   _AR_INDICES['fort_artillery_eq']: 'DEATH_FROM_SHOT'}
+   _AR_INDICES['fort_artillery_eq']: 'DEATH_FROM_SHOT', 
+   _AR_INDICES['thunderStrike']: 'DEATH_FROM_SHOT', 
+   _AR_INDICES['corrodingShot']: 'DEATH_FROM_SHOT', 
+   _AR_INDICES['fireCircle']: 'DEATH_FROM_SHOT', 
+   _AR_INDICES['clingBrander']: 'DEATH_FROM_SHOT'}
 _PLAYER_KILL_ENEMY_SOUND = 'enemy_killed_by_player'
 _PLAYER_KILL_ALLY_SOUND = 'ally_killed_by_player'
 _ALLY_KILLED_SOUND = 'ally_killed_by_enemy'
@@ -105,7 +109,7 @@ class BattleMessagesController(IBattleController):
                     return
                 if targetID == avatar.inputHandler.ctrl.curVehicleID:
                     return
-            code, postfix, sound, soundExt = self.__getKillInfo(avatar, targetID, attackerID, equipmentID, reason)
+            code, postfix, sound, soundExt = self.__getKillInfo(avatar, targetID, attackerID, reason)
             if sound is not None:
                 avatar.soundNotifications.play(sound)
             if soundExt is not None:
@@ -166,7 +170,7 @@ class BattleMessagesController(IBattleController):
             postfix = '%s_%s' % (entity.upper(), target.upper())
         return (code, postfix)
 
-    def __getKillInfo(self, avatar, targetID, attackerID, equipmentID, reason):
+    def __getKillInfo(self, avatar, targetID, attackerID, reason):
         attacker = self.__getEntityString(avatar, attackerID, reason)
         target = _ENTITY_TYPE.SUICIDE
         if targetID != attackerID:
@@ -321,6 +325,7 @@ class BattleRoyaleBattleMessagesController(BattleMessagesController):
     def showVehicleKilledMessage(self, avatar, targetID, attackerID, equipmentID, reason):
         if _isVehicleSpawnedBot(targetID):
             return
+        equipmentID = 0
         super(BattleRoyaleBattleMessagesController, self).showVehicleKilledMessage(avatar, targetID, attackerID, equipmentID, reason)
 
 
@@ -340,6 +345,7 @@ class BattleRoyaleBattleMessagesPlayer(BattleMessagesPlayer):
             return
         if _isVehicleSpawnedBot(targetID):
             return
+        equipmentID = 0
         super(BattleRoyaleBattleMessagesPlayer, self).showVehicleKilledMessage(avatar, targetID, attackerID, equipmentID, reason)
 
 

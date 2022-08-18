@@ -1143,8 +1143,6 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         if autoAimVehID:
             self.onLockTarget(AimSound.TARGET_LOST, not lossReasonFlags & TARGET_LOST_FLAGS.KILLED_BY_ME)
         TriggersManager.g_manager.deactivateTrigger(TRIGGER_TYPE.AUTO_AIM_AT_VEHICLE)
-        if BigWorld.player().vehicle.isWheeledTech:
-            gui_event_dispatcher.hideAutoAimMarker()
 
     def updateVehicleHealth(self, vehicleID, health, deathReasonID, isCrewActive, isRespawn):
         if vehicleID != self.playerVehicleID or not self.userSeesWorld():
@@ -1440,12 +1438,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             self.gunRotator.setShotPosition(vehicleID, shotPos, shotVec, dispersionAngle)
 
     def updateTargetVehicleID(self, targetID):
-        vehicle = BigWorld.entity(targetID)
-        if vehicle is not None:
-            gui_event_dispatcher.addAutoAimMarker(vehicle)
-        else:
-            gui_event_dispatcher.hideAutoAimMarker()
-        return
+        gui_event_dispatcher.changeTargetVehicle(targetID)
 
     def updateVehicleDestroyTimer(self, code, period, warnLvl=None):
         state = VEHICLE_VIEW_STATE.DESTROY_TIMER
@@ -1962,7 +1955,6 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                 self.__aimingInfo[1] = self.gunRotator.dispersionAngle / minShotDisp
                 self.onLockTarget(AimSound.TARGET_UNLOCKED, True)
                 TriggersManager.g_manager.deactivateTrigger(TRIGGER_TYPE.AUTO_AIM_AT_VEHICLE)
-                gui_event_dispatcher.hideAutoAimMarker()
         return
 
     def __gunDamagedSound(self):
