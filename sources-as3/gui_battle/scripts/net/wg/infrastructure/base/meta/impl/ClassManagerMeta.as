@@ -293,6 +293,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.interfaces.ITabbedFullStatsTableController;
    import net.wg.gui.battle.mapsTraining.views.MapsTrainingBattleLoading;
    import net.wg.gui.battle.mapsTraining.views.MapsTrainingBattlePage;
+   import net.wg.gui.battle.mapsTraining.views.consumablesPanel.MapsTrainingBattleShellButton;
    import net.wg.gui.battle.mapsTraining.views.data.MapsTrainingBattleLoadingVO;
    import net.wg.gui.battle.mapsTraining.views.goals.MapsTrainingGoals;
    import net.wg.gui.battle.mapsTraining.views.goals.data.MapsTrainingGoalVO;
@@ -598,7 +599,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.minimap.components.entries.arty.ArtyMarkerMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.background.BootcampTargetMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.background.TutorialTargetMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.battleRoyale.AnimatedItemWithFinishCallback;
    import net.wg.gui.battle.views.minimap.components.entries.battleRoyale.BRMarker;
    import net.wg.gui.battle.views.minimap.components.entries.battleRoyale.DeathZoneMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.battleRoyale.DiscoveredItemMarker;
@@ -620,12 +620,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.minimap.components.entries.epic.SectorBaseMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.epic.SectorMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.epic.SectorOverlayMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.fallout.absorptionFlag.AllyAbsorptionFlagMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.fallout.absorptionFlag.EnemyAbsorptionFlagMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.fallout.absorptionFlag.containers.AbsorptionFlagAnimContainer;
-   import net.wg.gui.battle.views.minimap.components.entries.fallout.flag.FlagMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.fallout.repair.AllyRepairMinimapEntry;
-   import net.wg.gui.battle.views.minimap.components.entries.fallout.repair.EnemyRepairMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.AOEArtilleryMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.ArtilleryMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.fortconsumables.ArtilleryYellowMinimapEntry;
@@ -1569,6 +1563,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_MAPSTRAININGBATTLEPAGE:Class = MapsTrainingBattlePage;
       
+      public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_CONSUMABLESPANEL_MAPSTRAININGBATTLESHELLBUTTON:Class = MapsTrainingBattleShellButton;
+      
       public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_DATA_MAPSTRAININGBATTLELOADINGVO:Class = MapsTrainingBattleLoadingVO;
       
       public static const NET_WG_GUI_BATTLE_MAPSTRAINING_VIEWS_GOALS_MAPSTRAININGGOALS:Class = MapsTrainingGoals;
@@ -2179,8 +2175,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_BACKGROUND_TUTORIALTARGETMINIMAPENTRY:Class = TutorialTargetMinimapEntry;
       
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_BATTLEROYALE_ANIMATEDITEMWITHFINISHCALLBACK:Class = AnimatedItemWithFinishCallback;
-      
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_BATTLEROYALE_BRMARKER:Class = BRMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_BATTLEROYALE_DEATHZONEMINIMAPENTRY:Class = DeathZoneMinimapEntry;
@@ -2222,18 +2216,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_EPIC_SECTORMINIMAPENTRY:Class = SectorMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_EPIC_SECTOROVERLAYMINIMAPENTRY:Class = SectorOverlayMinimapEntry;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FALLOUT_ABSORPTIONFLAG_ALLYABSORPTIONFLAGMINIMAPENTRY:Class = AllyAbsorptionFlagMinimapEntry;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FALLOUT_ABSORPTIONFLAG_ENEMYABSORPTIONFLAGMINIMAPENTRY:Class = EnemyAbsorptionFlagMinimapEntry;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FALLOUT_ABSORPTIONFLAG_CONTAINERS_ABSORPTIONFLAGANIMCONTAINER:Class = AbsorptionFlagAnimContainer;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FALLOUT_FLAG_FLAGMINIMAPENTRY:Class = FlagMinimapEntry;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FALLOUT_REPAIR_ALLYREPAIRMINIMAPENTRY:Class = AllyRepairMinimapEntry;
-      
-      public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FALLOUT_REPAIR_ENEMYREPAIRMINIMAPENTRY:Class = EnemyRepairMinimapEntry;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MINIMAP_COMPONENTS_ENTRIES_FORTCONSUMABLES_AOEARTILLERYMINIMAPENTRY:Class = AOEArtilleryMinimapEntry;
       

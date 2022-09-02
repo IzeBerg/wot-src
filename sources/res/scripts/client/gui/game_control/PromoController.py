@@ -1,4 +1,4 @@
-import logging
+import logging, typing
 from collections import namedtuple
 import BigWorld
 from Event import Event, EventManager
@@ -7,23 +7,27 @@ from adisp import process, async
 from frameworks.wulf import WindowLayer
 from gui import GUI_SETTINGS
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
-from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
+from gui.Scaleform.daapi.view.lobby.hangar.sound_constants import BROWSER_VIEW_SOUND_SPACES
+from gui.Scaleform.framework import ScopeTemplates
+from gui.Scaleform.framework.managers.loaders import GuiImplViewLoadParams, SFViewLoadParams
 from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
 from gui.app_loader import sf_lobby
 from gui.game_control import gc_constants
 from gui.game_control.links import URLMacros
+from gui.impl.lobby.common.browser_view import BrowserView, makeSettings
+from gui.impl.gen import R
 from gui.promo.promo_logger import PromoLogSourceType, PromoLogActions, PromoLogSubjectType
 from gui.shared import g_eventBus, events, EVENT_BUS_SCOPE
 from gui.shared.event_dispatcher import showBubbleTooltip
 from gui.shared.events import BrowserEvent
 from gui.shared.utils import isPopupsWindowsOpenDisabled
-from gui.shared.utils.functions import getUniqueViewName
 from gui.wgcg.promo_screens.contexts import PromoGetTeaserRequestCtx, PromoSendTeaserShownRequestCtx, PromoGetUnreadCountRequestCtx
 from helpers import i18n, isPlayerAccount, dependency
 from helpers.http import url_formatters
 from shared_utils import findFirst
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.game_control import IPromoController, IBrowserController, IEventsNotificationsController, IBootcampController
+from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared.promo import IPromoLogger
 from skeletons.gui.web import IWebController
@@ -37,6 +41,8 @@ from web.web_client_api.shop import ShopWebApi
 from web.web_client_api.social import SocialWebApi
 from web.web_client_api.vehicles import VehiclesWebApi
 from web.web_client_api.blueprints_convert_sale import BlueprintsConvertSaleWebApi
+if typing.TYPE_CHECKING:
+    from frameworks.wulf import View
 _PromoData = namedtuple('_PromoData', ['url', 'closeCallback', 'source'])
 _logger = logging.getLogger(__name__)
 
@@ -339,14 +345,29 @@ class PromoController(IPromoController):
                 self.__isInHangar = False
 
 
-def _showBrowserView(url, returnClb, soundSpaceID=None):
-    webHandlers = webApiCollection(PromoWebApi, VehiclesWebApi, RequestWebApi, RankedBattlesWebApi, BattlePassWebApi, ui_web_api.OpenWindowWebApi, ui_web_api.CloseWindowWebApi, ui_web_api.OpenTabWebApi, ui_web_api.NotificationWebApi, ui_web_api.ContextMenuWebApi, ui_web_api.UtilWebApi, sound_web_api.SoundWebApi, sound_web_api.HangarSoundWebApi, ShopWebApi, SocialWebApi, BlueprintsConvertSaleWebApi, PlatformWebApi)
-    ctx = {'url': url, 
-       'returnClb': returnClb, 
-       'webHandlers': webHandlers, 
-       'returnAlias': VIEW_ALIAS.LOBBY_HANGAR}
-    if soundSpaceID is not None:
-        ctx['soundSpaceID'] = soundSpaceID
-    alias = VIEW_ALIAS.BROWSER_VIEW
-    g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(alias, getUniqueViewName(alias)), ctx=ctx), EVENT_BUS_SCOPE.LOBBY)
-    return
+@dependency.replace_none_kwargs(guiLoader=IGuiLoader)
+def _showBrowserView(url, returnClb, soundSpaceID=None, guiLoader=None):
+    layoutID = R.views.lobby.common.BrowserView()
+
+    def _predicate(view):
+        if view.layoutID == layoutID:
+            view = typing.cast(BrowserView, view)
+            return view.url == url
+        return False
+
+    if guiLoader.windowsManager.findViews(_predicate):
+        _logger.debug('BrowserView with url %s is already opened', url)
+        return
+    else:
+        webHandlers = webApiCollection(PromoWebApi, VehiclesWebApi, RequestWebApi, RankedBattlesWebApi, BattlePassWebApi, ui_web_api.OpenWindowWebApi, ui_web_api.CloseWindowWebApi, ui_web_api.OpenTabWebApi, ui_web_api.NotificationWebApi, ui_web_api.ContextMenuWebApi, ui_web_api.UtilWebApi, sound_web_api.SoundWebApi, sound_web_api.HangarSoundWebApi, ShopWebApi, SocialWebApi, BlueprintsConvertSaleWebApi, PlatformWebApi)
+
+        def _returnCallback(*args, **kwargs):
+            if kwargs.pop('forceClosed', False):
+                g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_HANGAR)), EVENT_BUS_SCOPE.LOBBY)
+            if returnClb is not None:
+                returnClb(*args, **kwargs)
+            return
+
+        soundSettings = BROWSER_VIEW_SOUND_SPACES.get(soundSpaceID) if soundSpaceID is not None else None
+        g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(layoutID, BrowserView, ScopeTemplates.LOBBY_SUB_SCOPE), settings=makeSettings(url=url, webHandlers=webHandlers, returnClb=_returnCallback, soundSpaceSettings=soundSettings)))
+        return

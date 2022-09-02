@@ -12,13 +12,11 @@ from gui.shared.event_dispatcher import showBrowserOverlayView, showResourceWell
 from helpers import dependency
 from skeletons.gui.game_control import IResourceWellController
 from tutorial.control.game_vars import getVehicleByIntCD
-from uilogging.resource_well.loggers import ResourceWellIntroScreenLogger
 
 class IntroView(ViewImpl):
     __slots__ = ('__backCallback', )
     _COMMON_SOUND_SPACE = RESOURCE_WELL_SOUND_SPACE
     __resourceWell = dependency.descriptor(IResourceWellController)
-    __uiLogger = ResourceWellIntroScreenLogger()
 
     def __init__(self, layoutID, backCallback):
         settings = ViewSettings(R.views.lobby.resource_well.IntroView())
@@ -41,11 +39,6 @@ class IntroView(ViewImpl):
     def _onLoaded(self, *args, **kwargs):
         super(IntroView, self)._onLoaded(*args, **kwargs)
         self.__showVideo()
-        self.__uiLogger.onViewOpened()
-
-    def _finalize(self):
-        self.__uiLogger.onViewClosed()
-        super(IntroView, self)._finalize()
 
     def _getEvents(self):
         return (
@@ -62,7 +55,7 @@ class IntroView(ViewImpl):
         model.setRegularRewardVehiclesCount(self.__resourceWell.getRewardLimit(isTop=False))
 
     def __showVideo(self):
-        showBrowserOverlayView(GUI_SETTINGS.resourceWell.get('introVideoUrl'), VIEW_ALIAS.RESOURCE_WELL_VIDEO_VIEW)
+        showBrowserOverlayView(GUI_SETTINGS.resourceWell.get('introVideoUrl'), VIEW_ALIAS.WEB_VIEW_TRANSPARENT)
 
     def __onClose(self):
         self.destroyWindow()

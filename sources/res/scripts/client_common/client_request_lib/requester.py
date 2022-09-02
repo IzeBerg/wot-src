@@ -362,10 +362,10 @@ class GiftSystemAccessor(BaseAccessor):
         return self._data_source.post_gift_system_gift(callback, entitlementCode, receiverID, metaInfo)
 
 
-class AgateAccessor(BaseAccessor):
+class UILoggingAccessor(BaseAccessor):
 
-    def get_inventory_entitlements(self, callback, entitlement_codes):
-        return self._data_source.get_inventory_entitlements(callback, entitlement_codes)
+    def get_uilogging_session(self, callback):
+        return self._data_source.get_uilogging_session(callback)
 
 
 class Requester(object):
@@ -388,7 +388,7 @@ class Requester(object):
     craftmachine = RequestDescriptor(CrafmachineAccessor)
     mapbox = RequestDescriptor(MapboxAccessor)
     gifts = RequestDescriptor(GiftSystemAccessor)
-    agate = RequestDescriptor(AgateAccessor)
+    uilogging = RequestDescriptor(UILoggingAccessor)
 
     @classmethod
     def create_requester(cls, url_fetcher, config, client_lang=None, user_agent=None):

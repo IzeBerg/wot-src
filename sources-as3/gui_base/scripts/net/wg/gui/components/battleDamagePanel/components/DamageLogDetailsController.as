@@ -18,13 +18,13 @@ package net.wg.gui.components.battleDamagePanel.components
       
       private var _totalFilledData:int = 0;
       
-      private var _poolRenderers:Vector.<DamageLogRenderer> = null;
+      private var _poolRenderers:Vector.<DamageLogRenderer>;
       
       private var _lastYValue:int = 0;
       
-      private var _damageLogDetailsImages:Sprite = null;
+      private var _damageLogDetailsImages:Sprite;
       
-      private var _damageLogDetailsText:Sprite = null;
+      private var _damageLogDetailsText:Sprite;
       
       private var _visibilityRowsCount:int = 6;
       
@@ -48,18 +48,17 @@ package net.wg.gui.components.battleDamagePanel.components
       
       public function DamageLogDetailsController(param1:DisplayObjectContainer, param2:Boolean, param3:String)
       {
+         this._poolRenderers = new Vector.<DamageLogRenderer>();
+         this._damageLogDetailsImages = new Sprite();
+         this._damageLogDetailsText = new Sprite();
          super();
          this._atlasName = param3;
          this._isTop = param2;
          this._rendererClass = App.utils.classFactory.getClass(LOG_RENDERER_ALIAS);
-         this._damageLogDetailsImages = new Sprite();
-         this._damageLogDetailsText = new Sprite();
          param1.addChild(this._damageLogDetailsImages);
          param1.addChild(this._damageLogDetailsText);
-         this._damageLogDetailsText.mouseEnabled = false;
-         this._damageLogDetailsText.mouseChildren = false;
+         this._damageLogDetailsText.mouseChildren = this._damageLogDetailsText.mouseEnabled = false;
          param1.addEventListener(MouseEvent.MOUSE_WHEEL,this.onDmgLogDetailsImagesMouseWheelHandler);
-         this._poolRenderers = new Vector.<DamageLogRenderer>();
       }
       
       private static function changeRendererVisible(param1:DamageLogRenderer, param2:Boolean) : void
@@ -102,11 +101,16 @@ package net.wg.gui.components.battleDamagePanel.components
          {
             _loc1_.dispose();
          }
-         this._rendererClass = null;
          this._poolRenderers.splice(0,this._poolRenderers.length);
          this._poolRenderers = null;
+         this._rendererClass = null;
          this._damageLogDetailsImages = null;
          this._damageLogDetailsText = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
       
       public function isDownAltButton(param1:Boolean) : void
@@ -189,7 +193,7 @@ package net.wg.gui.components.battleDamagePanel.components
          {
             param1 = this._totalFilledData - this._scrollPosition;
          }
-         else if(this._totalFilledData > this._visibilityRowsCount && param1 < 0 && _loc2_ < this._visibilityRowsCount)
+         else if(param1 < 0 && this._totalFilledData > this._visibilityRowsCount && _loc2_ < this._visibilityRowsCount)
          {
             param1 = this._visibilityRowsCount - this._scrollPosition;
          }
@@ -281,11 +285,6 @@ package net.wg.gui.components.battleDamagePanel.components
             return;
          }
          this.scroll(param1.delta);
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

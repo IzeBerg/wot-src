@@ -49,7 +49,7 @@ package net.wg.gui.battle.epicRandom.views
       
       private static const MINIMAP_MARGIN_WIDTH:int = 0;
       
-      private static const MESSANGER_SWAP_AREA_TOP_OFFSET:Number = -27;
+      private static const MESSANGER_SWAP_AREA_TOP_OFFSET:int = -27;
       
       private static const QUEST_PROGRESS_TOP_SHIFT:int = 45;
       
@@ -334,11 +334,9 @@ package net.wg.gui.battle.epicRandom.views
       
       private function updateDamageLogPosition(param1:int) : void
       {
-         var _loc2_:Number = NaN;
          if(param1 != PLAYERS_PANEL_STATE.HIDDEN && param1 != PLAYERS_PANEL_STATE.EPIC_RANDOM_THREE_COLUMN_HIDDEN && param1 != PLAYERS_PANEL_STATE.NONE)
          {
-            _loc2_ = this.epicRandomPlayersPanel.listLeft.getRenderersVisibleWidth() + BattleDamageLogPanel.PLAYERS_PANEL_OFFSET;
-            this.battleDamageLogPanel.updateTopContainerPosition(_loc2_);
+            this.battleDamageLogPanel.updateTopContainerPosition(this.epicRandomPlayersPanel.listLeft.getRenderersVisibleWidth() + BattleDamageLogPanel.PLAYERS_PANEL_OFFSET);
          }
          else
          {

@@ -10,7 +10,10 @@ class TutorialProxyHolder(object):
 
     @property
     def _gui(self):
-        return self._tutorial.getGUIProxy()
+        if self._tutorial is not None:
+            return self._tutorial.getGUIProxy()
+        else:
+            return
 
     @property
     def _data(self):

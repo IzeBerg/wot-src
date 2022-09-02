@@ -196,6 +196,7 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
             _loc2_ = VehicleMinimapEntryConst.COLOR_SCHEME_PREFIX + this._deadState + this._guiLabel;
             _loc3_ = App.colorSchemeMgr.getScheme(_loc2_);
             this._aliasColor = _loc3_.aliasColor;
+            _loc4_ = Values.EMPTY_STR;
             if(this._currVehicleAnimation)
             {
                _loc4_ = this._currVehicleAnimation.currentFrameLabel;
@@ -457,14 +458,6 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
          if(this._currVehicleAnimation.currentFrameLabel != VehicleMinimapEntryConst.UNHIGHLIGHTED_FRAME)
          {
             this._currVehicleAnimation.gotoAndPlay(VehicleMinimapEntryConst.UNHIGHLIGHT_ANIMATION_FRAME);
-         }
-      }
-      
-      private function updateBearer() : void
-      {
-         if(this._isFlagBearer)
-         {
-            this.mcBearerAnimation.visible = false;
          }
       }
       

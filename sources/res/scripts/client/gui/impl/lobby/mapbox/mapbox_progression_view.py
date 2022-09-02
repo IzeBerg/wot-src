@@ -99,6 +99,7 @@ class MapboxProgressionView(ViewImpl):
         self.__mapboxController.addProgressionListener(self.__onProgressionDataUpdated)
         self.__mapboxController.onMapboxSurveyShown += self.__doRemoveBubble
         self.__mapboxController.onMapboxSurveyCompleted += self.__onSurveyCompleted
+        self.__mapboxController.onUpdated += self.__onSettingsUpdated
         g_prbCtrlEvents.onPreQueueJoined += self.__onPreQueueJoined
         self.viewModel.onClose += self.__onClose
 
@@ -108,6 +109,7 @@ class MapboxProgressionView(ViewImpl):
         self.__mapboxController.onMapboxSurveyCompleted -= self.__onSurveyCompleted
         self.__mapboxController.onMapboxSurveyShown -= self.__doRemoveBubble
         self.__mapboxController.removeProgressionListener(self.__onProgressionDataUpdated)
+        self.__mapboxController.onUpdated -= self.__onSettingsUpdated
         self.viewModel.onAnimationEnded -= self.__onAnimationEnded
         self.viewModel.onTakeReward -= self.__onTakeReward
         self.viewModel.onShowSurvey -= self.__onShowSurvey
@@ -194,6 +196,17 @@ class MapboxProgressionView(ViewImpl):
                              ])
             showMapboxRewardChoice(crewbook)
         return
+
+    def __onSettingsUpdated(self):
+        progressionData = self.__mapboxController.getProgressionData()
+        if progressionData is None:
+            self.viewModel.setIsError(True)
+            return
+        else:
+            with self.viewModel.transaction() as (model):
+                actualSeason = self.__mapboxController.getCurrentSeason() or self.__mapboxController.getNextSeason()
+                self.__fillMaps(model, progressionData, actualSeason)
+            return
 
     def __updateProgressionData(self, progression=None):
         progressionData = progression if progression is not None else self.__mapboxController.getProgressionData()

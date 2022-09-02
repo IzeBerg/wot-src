@@ -58,9 +58,6 @@ class IEventsCache(object):
     def getMotiveQuests(self, filterFunc=None):
         raise NotImplementedError
 
-    def getLinkedSetQuests(self, filterFunc=None):
-        raise NotImplementedError
-
     def getPremiumQuests(self, filterFunc=None):
         raise NotImplementedError
 

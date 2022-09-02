@@ -190,7 +190,7 @@ class HelpFormatter(object):
             usage = (' ').join([ s for s in [prog, action_usage] if s ])
             text_width = self._width - self._current_indent
             if len(prefix) + len(usage) > text_width:
-                part_regexp = '\\(.*?\\)+|\\[.*?\\]+|\\S+'
+                part_regexp = '\\(.*?\\)+(?=\\s|$)|\\[.*?\\]+(?=\\s|$)|\\S+'
                 opt_usage = format(optionals, groups)
                 pos_usage = format(positionals, groups)
                 opt_parts = _re.findall(part_regexp, opt_usage)
@@ -673,10 +673,14 @@ class _SubParsersAction(Action):
             msg = _('unknown parser %r (choices: %s)') % tup
             raise ArgumentError(self, msg)
 
-        namespace, arg_strings = parser.parse_known_args(arg_strings, namespace)
+        subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+        for key, value in vars(subnamespace).items():
+            setattr(namespace, key, value)
+
         if arg_strings:
             vars(namespace).setdefault(_UNRECOGNIZED_ARGS_ATTR, [])
             getattr(namespace, _UNRECOGNIZED_ARGS_ATTR).extend(arg_strings)
+        return
 
 
 class FileType(object):
@@ -714,9 +718,13 @@ class Namespace(_AttributeHolder):
     __hash__ = None
 
     def __eq__(self, other):
+        if not isinstance(other, Namespace):
+            return NotImplemented
         return vars(self) == vars(other)
 
     def __ne__(self, other):
+        if not isinstance(other, Namespace):
+            return NotImplemented
         return not self == other
 
     def __contains__(self, key):

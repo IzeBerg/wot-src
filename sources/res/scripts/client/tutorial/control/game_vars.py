@@ -136,9 +136,9 @@ def _getTankmanPrice(index, prices):
 
 
 @dependency.replace_none_kwargs(itemsCache=IItemsCache)
-def getTankmanCurrentPrice(index, itemsCache=None):
+def getTankmanCurrentPrice(index, itemsCache=None, vehLevel=1):
     if itemsCache is not None:
-        return _getTankmanPrice(index, itemsCache.items.shop.tankmanCostWithGoodyDiscount)
+        return _getTankmanPrice(index, itemsCache.items.shop.getTankmanCostWithGoodyDiscount(vehLevel))
     else:
         return MONEY_UNDEFINED
 

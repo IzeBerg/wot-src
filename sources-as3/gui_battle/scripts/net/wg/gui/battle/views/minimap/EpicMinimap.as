@@ -19,34 +19,32 @@ package net.wg.gui.battle.views.minimap
    public class EpicMinimap extends EpicMinimapMeta implements IEpicBattleStatisticDataController, IEpicMinimapMeta
    {
       
-      private static const MAP_OFFSET:Number = 0;
-      
-      private static const BORDER_OFFSET:int = 14;
+      private static const BORDER_OFFSET:int = -14;
       
       private static const TOPLEFT_OFFSET:Point = new Point(0,-60);
       
       private static const FRAME_WIDTH_MULTIPLIER:int = 2;
       
-      private static const FRAME_IMG_OFFSET:int = 24;
+      private static const FRAME_BORDER_WIDTH:int = 24;
       
       private static const MMAP_BASE_SIZE:int = 210;
       
       private static const SECTORS_FIELD:String = "sectors";
       
-      private static const MAX_ZOOM_MODE:Number = 2;
+      private static const MAX_ZOOM_MODE:uint = 2;
       
       private static const ZOOM_MODE_STEP:Number = 0.5;
       
       private static const MINIMAP_SCALE:Vector.<Number> = new <Number>[1,1.21,1.48,1.86,2.33,2.9,3.33];
       
-      private static const MINIMAP_SIZE:Vector.<Number> = new <Number>[216,260,320,400,502,624,700];
+      private static const MINIMAP_SIZE:Vector.<uint> = new <uint>[216,260,320,400,502,624,700];
       
       public static const TAB_MODE_502_IDX:int = MINIMAP_SIZE.indexOf(502);
       
       public static const TAB_MODE_700_IDX:int = MINIMAP_SIZE.indexOf(700);
        
       
-      public var mapHit:MovieClip = null;
+      public var mapHit:Sprite = null;
       
       public var mapShortcutLabel:MovieClip = null;
       
@@ -54,13 +52,13 @@ package net.wg.gui.battle.views.minimap
       
       public var entriesContainer:EpicMinimapEntriesContainer = null;
       
-      public var bgFrame:MovieClip = null;
+      public var bgFrame:Sprite = null;
       
-      public var fgFrame:MovieClip = null;
+      public var fgFrame:Sprite = null;
       
       public var background:UILoaderAlt = null;
       
-      private var _clickAreaSpr:Sprite = null;
+      private var _clickAreaSpr:Sprite;
       
       private var _updateSizeIndexForce:Boolean = false;
       
@@ -74,7 +72,7 @@ package net.wg.gui.battle.views.minimap
       
       private var _sectors:Vector.<MovieClip> = null;
       
-      private var _sectorState:Vector.<int> = null;
+      private var _sectorState:Vector.<int>;
       
       private var _isAttacker:Boolean = false;
       
@@ -88,14 +86,14 @@ package net.wg.gui.battle.views.minimap
       
       private var _isTabModeCustomAlpha:Boolean = false;
       
-      private var mapScaleIndex:int = 1;
+      private var _mapScaleIndex:int = 1;
       
       public function EpicMinimap()
       {
+         this._clickAreaSpr = new Sprite();
+         this._sectorState = new <int>[0,0,0,0,0,0,0];
          super();
          this.background = this.entriesContainer.background;
-         this._sectorState = new <int>[0,0,0,0,0,0,0];
-         this._clickAreaSpr = new Sprite();
          addChildAt(this._clickAreaSpr,getChildIndex(this.mapHit));
          this.mapHit.visible = true;
          this._clickAreaSpr.hitArea = this.mapHit;
@@ -130,14 +128,14 @@ package net.wg.gui.battle.views.minimap
          {
             return;
          }
-         if(!initialized)
-         {
-            this._currentSizeIndex = param1;
-         }
-         else
+         if(initialized)
          {
             this._updateSizeIndexForce = true;
             this.checkNewSize(param1);
+         }
+         else
+         {
+            this._currentSizeIndex = param1;
          }
       }
       
@@ -156,14 +154,14 @@ package net.wg.gui.battle.views.minimap
          return new Rectangle(0,0,MINIMAP_SIZE[_loc2_],MINIMAP_SIZE[_loc2_]);
       }
       
-      override public function getMinmapHeightBySizeIndex(param1:int) : Number
+      override public function getMinmapHeightBySizeIndex(param1:int) : int
       {
          return MINIMAP_SIZE[param1];
       }
       
       override public function getRectangles() : Vector.<Rectangle>
       {
-         if(!visible || this._isTabMode)
+         if(this._isTabMode || !visible)
          {
             return null;
          }
@@ -262,8 +260,7 @@ package net.wg.gui.battle.views.minimap
       
       public function restoreZoomMode() : void
       {
-         var _loc1_:int = (this._zoomMode - MAX_ZOOM_MODE) / ZOOM_MODE_STEP;
-         onZoomModeChangedS(_loc1_);
+         onZoomModeChangedS((this._zoomMode - MAX_ZOOM_MODE) / ZOOM_MODE_STEP);
       }
       
       public function setEpicVehiclesStats(param1:EpicVehiclesStatsVO) : void
@@ -316,7 +313,7 @@ package net.wg.gui.battle.views.minimap
       
       private function updateAlpha() : void
       {
-         this.alpha = this._isTabMode && this._isTabModeCustomAlpha ? Number(this._tabModeCustomAlpha) : Number(this._settingsAlpha);
+         alpha = this._isTabMode && this._isTabModeCustomAlpha ? Number(this._tabModeCustomAlpha) : Number(this._settingsAlpha);
       }
       
       private function updateSectorOverview() : void
@@ -347,16 +344,16 @@ package net.wg.gui.battle.views.minimap
          this.entriesContainer.scaleX = this.entriesContainer.scaleY = MINIMAP_SCALE[param1];
          var _loc2_:Number = MINIMAP_SCALE[param1];
          var _loc3_:Number = _loc2_ * MMAP_BASE_SIZE;
-         this.mapScaleIndex = param1;
-         var _loc4_:Number = _loc3_ + FRAME_WIDTH_MULTIPLIER * FRAME_IMG_OFFSET;
+         this._mapScaleIndex = param1;
+         var _loc4_:Number = _loc3_ + FRAME_WIDTH_MULTIPLIER * FRAME_BORDER_WIDTH;
          var _loc5_:Number = _loc2_ * FRAME_WIDTH_MULTIPLIER;
          this.fgFrame.width = this.fgFrame.height = _loc4_;
          this.bgFrame.width = this.bgFrame.height = _loc4_ + _loc5_ * FRAME_WIDTH_MULTIPLIER;
-         this.fgFrame.x = this.fgFrame.y = -FRAME_IMG_OFFSET;
+         this.fgFrame.x = this.fgFrame.y = -FRAME_BORDER_WIDTH;
          this.bgFrame.x = this.bgFrame.y = this.fgFrame.x - _loc5_;
          this.mapHit.scaleX = this.mapHit.scaleY = _loc2_;
-         this.mapShortcutLabel.x = -BORDER_OFFSET - _loc5_;
-         this.mapZoomMode.y = -FRAME_IMG_OFFSET - _loc5_;
+         this.mapShortcutLabel.x = BORDER_OFFSET - _loc5_;
+         this.mapZoomMode.y = -FRAME_BORDER_WIDTH - _loc5_;
       }
       
       private function checkNewSize(param1:int) : void
@@ -428,11 +425,11 @@ package net.wg.gui.battle.views.minimap
       {
          if(param1 is MouseEventEx && param1.target == this._clickAreaSpr)
          {
-            if(this.mapHit.mouseX < MAP_OFFSET || this.mapHit.mouseY < MAP_OFFSET || this.mapHit.mouseX > MAP_OFFSET + this.background.width || this.mapHit.mouseY > MAP_OFFSET + this.background.height)
+            if(this.mapHit.mouseX < 0 || this.mapHit.mouseY < 0 || this.mapHit.mouseX > this.background.width || this.mapHit.mouseY > this.background.height)
             {
                return;
             }
-            onMinimapClickedS(this.mapHit.mouseX,this.mapHit.mouseY,MouseEventEx(param1).buttonIdx,this.mapScaleIndex);
+            onMinimapClickedS(this.mapHit.mouseX,this.mapHit.mouseY,MouseEventEx(param1).buttonIdx,this._mapScaleIndex);
          }
       }
       

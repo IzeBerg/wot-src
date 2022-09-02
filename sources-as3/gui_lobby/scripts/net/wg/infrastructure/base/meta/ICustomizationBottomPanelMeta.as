@@ -24,6 +24,8 @@ package net.wg.infrastructure.base.meta
       
       function returnToStyledModeS() : void;
       
+      function onItemIsNewAnimationShownS(param1:int) : void;
+      
       function as_showBill() : void;
       
       function as_hideBill() : void;

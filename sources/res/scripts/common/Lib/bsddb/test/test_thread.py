@@ -67,7 +67,7 @@ class ConcurrentDataStoreBase(BaseThreadedTestCase):
         readers_per_writer = self.readers // self.writers
         self.assertEqual(self.records, self.writers * records_per_writer)
         self.assertEqual(self.readers, self.writers * readers_per_writer)
-        self.assertTrue(records_per_writer % readers_per_writer == 0)
+        self.assertEqual(records_per_writer % readers_per_writer, 0)
         readers = []
         for x in xrange(self.readers):
             rt = Thread(target=self.readerThread, args=(
@@ -182,7 +182,7 @@ class SimpleThreadedBase(BaseThreadedTestCase):
         readers_per_writer = self.readers // self.writers
         self.assertEqual(self.records, self.writers * records_per_writer)
         self.assertEqual(self.readers, self.writers * readers_per_writer)
-        self.assertTrue(records_per_writer % readers_per_writer == 0)
+        self.assertEqual(records_per_writer % readers_per_writer, 0)
         readers = []
         for x in xrange(self.readers):
             rt = Thread(target=self.readerThread, args=(
@@ -288,7 +288,7 @@ class ThreadedTransactionsBase(BaseThreadedTestCase):
         readers_per_writer = self.readers // self.writers
         self.assertEqual(self.records, self.writers * records_per_writer)
         self.assertEqual(self.readers, self.writers * readers_per_writer)
-        self.assertTrue(records_per_writer % readers_per_writer == 0)
+        self.assertEqual(records_per_writer % readers_per_writer, 0)
         readers = []
         for x in xrange(self.readers):
             rt = Thread(target=self.readerThread, args=(

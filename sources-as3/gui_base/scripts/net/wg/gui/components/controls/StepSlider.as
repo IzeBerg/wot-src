@@ -40,12 +40,17 @@ package net.wg.gui.components.controls
          minimum = 0;
       }
       
+      private static function onThumbOut(param1:MouseEvent) : void
+      {
+         App.toolTipMgr.hide();
+      }
+      
       override protected function configUI() : void
       {
          super.configUI();
          addEventListener(SliderEvent.VALUE_CHANGE,this.onValueChanged);
          thumb.addEventListener(MouseEvent.ROLL_OVER,this.onThumbOver);
-         thumb.addEventListener(MouseEvent.ROLL_OUT,this.onThumbOut);
+         thumb.addEventListener(MouseEvent.ROLL_OUT,onThumbOut);
       }
       
       override protected function draw() : void
@@ -72,7 +77,7 @@ package net.wg.gui.components.controls
       {
          removeEventListener(SliderEvent.VALUE_CHANGE,this.onValueChanged);
          thumb.removeEventListener(MouseEvent.ROLL_OVER,this.onThumbOver);
-         thumb.removeEventListener(MouseEvent.ROLL_OUT,this.onThumbOut);
+         thumb.removeEventListener(MouseEvent.ROLL_OUT,onThumbOut);
          this.clearKeyPoints();
          this.keyPointsContainer = null;
          if(this.valueLabelControl)
@@ -137,14 +142,7 @@ package net.wg.gui.components.controls
       public function set dataProvider(param1:IDataProvider) : void
       {
          this._dataProvider = param1;
-         if(this._dataProvider)
-         {
-            maximum = this._dataProvider.length > 0 ? Number(this._dataProvider.length - 1) : Number(0);
-         }
-         else
-         {
-            maximum = 0;
-         }
+         maximum = this._dataProvider && this._dataProvider.length > 0 ? Number(this._dataProvider.length - 1) : Number(0);
          invalidateData();
       }
       
@@ -231,11 +229,6 @@ package net.wg.gui.components.controls
          var _loc2_:SliderKeyPoint = param1.currentTarget as SliderKeyPoint;
          App.utils.asserter.assertNotNull(_loc2_,"sliderKeyPoint" + Errors.CANT_NULL);
          value = _loc2_.index;
-      }
-      
-      private function onThumbOut(param1:MouseEvent) : void
-      {
-         App.toolTipMgr.hide();
       }
       
       private function onThumbOver(param1:MouseEvent) : void

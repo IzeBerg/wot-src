@@ -141,7 +141,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.battleDamagePanel.components.DamageLogRenderer;
    import net.wg.gui.components.battleDamagePanel.components.DefaultSummaryImages;
    import net.wg.gui.components.battleDamagePanel.components.ShellTypeBG;
-   import net.wg.gui.components.battleDamagePanel.components.SummaryAnimation;
    import net.wg.gui.components.battleDamagePanel.constants.BattleDamageLogConstants;
    import net.wg.gui.components.battleDamagePanel.models.MessageRenderModel;
    import net.wg.gui.components.battleRoyale.ColumnHeader;
@@ -305,6 +304,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.controls.Image;
    import net.wg.gui.components.controls.ImageComponent;
    import net.wg.gui.components.controls.ImageTextComponent;
+   import net.wg.gui.components.controls.InfoButtonText;
    import net.wg.gui.components.controls.InfoIcon;
    import net.wg.gui.components.controls.LabelControl;
    import net.wg.gui.components.controls.ListItemRedererImageText;
@@ -896,21 +896,17 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.managers.pool.ComponentsPool;
    import net.wg.infrastructure.managers.pool.Pool;
    import net.wg.infrastructure.managers.pool.PoolManager;
-   import net.wg.infrastructure.uilogger.LogLevels;
-   import net.wg.infrastructure.uilogger.MetricsUILogger;
-   import net.wg.infrastructure.uilogger.UILogger;
-   import net.wg.infrastructure.uilogger.bootcamp.BOOTCAMP_LOGGER_CONSTANTS;
-   import net.wg.infrastructure.uilogger.bootcamp.LoadingPageLogger;
-   import net.wg.infrastructure.uilogger.bootcamp.TooltipLogger;
-   import net.wg.infrastructure.uilogger.bootcamp.events.TooltipLogEvent;
-   import net.wg.infrastructure.uilogger.epic_battle.EPIC_BATTLE_LOGGER_CONSTANTS;
-   import net.wg.infrastructure.uilogger.epic_battle.SkillDropPageLogger;
-   import net.wg.infrastructure.uilogger.manual.MANUAL_LOGGER_CONSTANTS;
-   import net.wg.infrastructure.uilogger.manual.ManualPageLogger;
-   import net.wg.infrastructure.uilogger.veh_post_progression.Constants;
-   import net.wg.infrastructure.uilogger.veh_post_progression.LogDemountAllBtn;
-   import net.wg.infrastructure.uilogger.veh_post_progression.LogModificationTree;
-   import net.wg.infrastructure.uilogger.veh_post_progression.LogVehParams;
+   import net.wg.infrastructure.uilogging.LogLevels;
+   import net.wg.infrastructure.uilogging.base.BaseLogger;
+   import net.wg.infrastructure.uilogging.base.FlowLogger;
+   import net.wg.infrastructure.uilogging.base.MetricsLogger;
+   import net.wg.infrastructure.uilogging.deprecated.base.DeprecatedLogger;
+   import net.wg.infrastructure.uilogging.deprecated.bootcamp.BOOTCAMP_LOGGER_CONSTANTS;
+   import net.wg.infrastructure.uilogging.deprecated.bootcamp.LoadingPageLogger;
+   import net.wg.infrastructure.uilogging.deprecated.bootcamp.TooltipLogger;
+   import net.wg.infrastructure.uilogging.deprecated.bootcamp.events.TooltipLogEvent;
+   import net.wg.infrastructure.uilogging.epic_battle.EPIC_BATTLE_LOGGER_CONSTANTS;
+   import net.wg.infrastructure.uilogging.epic_battle.SkillDropPageLogger;
    
    public class ClassManagerBaseMeta
    {
@@ -1196,8 +1192,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_BATTLEDAMAGEPANEL_COMPONENTS_DEFAULTSUMMARYIMAGES:Class = DefaultSummaryImages;
       
       public static const NET_WG_GUI_COMPONENTS_BATTLEDAMAGEPANEL_COMPONENTS_SHELLTYPEBG:Class = ShellTypeBG;
-      
-      public static const NET_WG_GUI_COMPONENTS_BATTLEDAMAGEPANEL_COMPONENTS_SUMMARYANIMATION:Class = SummaryAnimation;
       
       public static const NET_WG_GUI_COMPONENTS_BATTLEDAMAGEPANEL_CONSTANTS_BATTLEDAMAGELOGCONSTANTS:Class = BattleDamageLogConstants;
       
@@ -1520,6 +1514,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_IMAGECOMPONENT:Class = ImageComponent;
       
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_IMAGETEXTCOMPONENT:Class = ImageTextComponent;
+      
+      public static const NET_WG_GUI_COMPONENTS_CONTROLS_INFOBUTTONTEXT:Class = InfoButtonText;
       
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_INFOICON:Class = InfoIcon;
       
@@ -2765,35 +2761,27 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_MANAGERS_POOL_POOLMANAGER:Class = PoolManager;
       
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_LOGLEVELS:Class = LogLevels;
+      public static const NET_WG_INFRASTRUCTURE_UILOGGING_LOGLEVELS:Class = LogLevels;
       
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_METRICSUILOGGER:Class = MetricsUILogger;
+      public static const NET_WG_INFRASTRUCTURE_UILOGGING_BASE_BASELOGGER:Class = BaseLogger;
       
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_UILOGGER:Class = UILogger;
+      public static const NET_WG_INFRASTRUCTURE_UILOGGING_BASE_FLOWLOGGER:Class = FlowLogger;
       
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_BOOTCAMP_BOOTCAMP_LOGGER_CONSTANTS:Class = BOOTCAMP_LOGGER_CONSTANTS;
+      public static const NET_WG_INFRASTRUCTURE_UILOGGING_BASE_METRICSLOGGER:Class = MetricsLogger;
       
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_BOOTCAMP_LOADINGPAGELOGGER:Class = LoadingPageLogger;
+      public static const NET_WG_INFRASTRUCTURE_UILOGGING_DEPRECATED_BASE_DEPRECATEDLOGGER:Class = DeprecatedLogger;
       
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_BOOTCAMP_TOOLTIPLOGGER:Class = TooltipLogger;
+      public static const NET_WG_INFRASTRUCTURE_UILOGGING_DEPRECATED_BOOTCAMP_BOOTCAMP_LOGGER_CONSTANTS:Class = BOOTCAMP_LOGGER_CONSTANTS;
       
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_BOOTCAMP_EVENTS_TOOLTIPLOGEVENT:Class = TooltipLogEvent;
+      public static const NET_WG_INFRASTRUCTURE_UILOGGING_DEPRECATED_BOOTCAMP_LOADINGPAGELOGGER:Class = LoadingPageLogger;
       
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_EPIC_BATTLE_EPIC_BATTLE_LOGGER_CONSTANTS:Class = EPIC_BATTLE_LOGGER_CONSTANTS;
+      public static const NET_WG_INFRASTRUCTURE_UILOGGING_DEPRECATED_BOOTCAMP_TOOLTIPLOGGER:Class = TooltipLogger;
       
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_EPIC_BATTLE_SKILLDROPPAGELOGGER:Class = SkillDropPageLogger;
+      public static const NET_WG_INFRASTRUCTURE_UILOGGING_DEPRECATED_BOOTCAMP_EVENTS_TOOLTIPLOGEVENT:Class = TooltipLogEvent;
       
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_MANUAL_MANUALPAGELOGGER:Class = ManualPageLogger;
+      public static const NET_WG_INFRASTRUCTURE_UILOGGING_EPIC_BATTLE_EPIC_BATTLE_LOGGER_CONSTANTS:Class = EPIC_BATTLE_LOGGER_CONSTANTS;
       
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_MANUAL_MANUAL_LOGGER_CONSTANTS:Class = MANUAL_LOGGER_CONSTANTS;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_VEH_POST_PROGRESSION_CONSTANTS:Class = Constants;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_VEH_POST_PROGRESSION_LOGDEMOUNTALLBTN:Class = LogDemountAllBtn;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_VEH_POST_PROGRESSION_LOGMODIFICATIONTREE:Class = LogModificationTree;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGER_VEH_POST_PROGRESSION_LOGVEHPARAMS:Class = LogVehParams;
+      public static const NET_WG_INFRASTRUCTURE_UILOGGING_EPIC_BATTLE_SKILLDROPPAGELOGGER:Class = SkillDropPageLogger;
        
       
       public function ClassManagerBaseMeta()

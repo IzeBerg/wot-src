@@ -5,8 +5,6 @@ from gui.impl.gen.view_models.common.bonus_model import BonusModel
 from gui.impl.gen.view_models.common.bonus_value_model import BonusValueModel
 from gui.impl.gen.view_models.views.lobby.post_progression.tooltip.post_progression_level_tooltip_view_model import PostProgressionLevelTooltipViewModel, ModificationType
 from gui.impl.pub import ViewImpl
-from uilogging.veh_post_progression.constants import LogGroups, ParentScreens
-from uilogging.veh_post_progression.loggers import VehPostProgressionModificationTooltipLogger
 if typing.TYPE_CHECKING:
     from frameworks.wulf import Array
     from gui.shared.gui_items.Vehicle import Vehicle
@@ -61,24 +59,12 @@ class BaseProgressionLevelTooltipView(ViewImpl):
 
 
 class CmpProgressionLevelTooltipView(BaseProgressionLevelTooltipView):
-    _uiLogger = VehPostProgressionModificationTooltipLogger(LogGroups.MODIFICATION_LEVEL)
     __slots__ = ()
-
-    def _onLoaded(self, *args, **kwargs):
-        super(CmpProgressionLevelTooltipView, self)._onLoaded(*args, **kwargs)
-        self._uiLogger.onTooltipOpened()
-
-    def _finalize(self):
-        self._uiLogger.onTooltipClosed(parentScreen=self._getParentScreen())
-        super(CmpProgressionLevelTooltipView, self)._finalize()
 
     def _getModificationType(self, postProgression, step):
         if any(postProgression.getStep(stepId).action.isMultiAction() for stepId in step.getNextStepIDs()):
             return ModificationType.PAIRMODIFICATION
         return ModificationType.FEATURE
-
-    def _getParentScreen(self):
-        return ParentScreens.COMPARE_MODIFICATIONS_TREE
 
 
 class CfgProgressionLevelTooltipView(CmpProgressionLevelTooltipView):
@@ -90,6 +76,3 @@ class CfgProgressionLevelTooltipView(CmpProgressionLevelTooltipView):
 
     def _getIsUnlocked(self, step):
         return step.isReceived()
-
-    def _getParentScreen(self):
-        return ParentScreens.MODIFICATIONS_TREE

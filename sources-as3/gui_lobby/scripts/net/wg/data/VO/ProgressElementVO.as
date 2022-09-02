@@ -1,9 +1,12 @@
 package net.wg.data.VO
 {
    import net.wg.data.daapi.base.DAAPIDataClass;
+   import net.wg.gui.lobby.questsWindow.data.StateVO;
    
    public class ProgressElementVO extends DAAPIDataClass
    {
+      
+      private static const QUEST_STATE_KEY:String = "questState";
        
       
       private var _linkage:String = "";
@@ -16,6 +19,8 @@ package net.wg.data.VO
       
       private var _currentProgrVal:Number = 0;
       
+      private var _title:String = "";
+      
       private var _description:String = "";
       
       private var _progressDiff:String = "";
@@ -26,9 +31,31 @@ package net.wg.data.VO
       
       private var _showDone:Boolean = false;
       
+      private var _questState:StateVO = null;
+      
       public function ProgressElementVO(param1:Object)
       {
          super(param1);
+      }
+      
+      override protected function onDataWrite(param1:String, param2:Object) : Boolean
+      {
+         if(param1 == QUEST_STATE_KEY)
+         {
+            this._questState = new StateVO(param2);
+            return false;
+         }
+         return super.onDataWrite(param1,param2);
+      }
+      
+      override protected function onDispose() : void
+      {
+         if(this._questState != null)
+         {
+            this._questState.dispose();
+            this._questState = null;
+         }
+         super.onDispose();
       }
       
       public function get progrTooltip() : Object
@@ -129,6 +156,21 @@ package net.wg.data.VO
       public function set progressDiffTooltip(param1:String) : void
       {
          this._progressDiffTooltip = param1;
+      }
+      
+      public function get title() : String
+      {
+         return this._title;
+      }
+      
+      public function set title(param1:String) : void
+      {
+         this._title = param1;
+      }
+      
+      public function get questState() : StateVO
+      {
+         return this._questState;
       }
    }
 }

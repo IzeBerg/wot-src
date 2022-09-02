@@ -8,7 +8,7 @@ __all__ = [
  'LabeledScale', 'OptionMenu',
  'tclobjs_to_py', 'setup_master']
 import Tkinter
-from Tkinter import _flatten, _join, _stringify
+from Tkinter import _flatten, _join, _stringify, _splitdict
 _REQUIRE_TILE = True if Tkinter.TkVersion < 8.5 else False
 
 def _load_tile(master):
@@ -142,16 +142,6 @@ def _script_from_settings(settings):
     return ('\n').join(script)
 
 
-def _dict_from_tcltuple(ttuple, cut_minus=True):
-    opt_start = 1 if cut_minus else 0
-    retdict = {}
-    it = iter(ttuple)
-    for opt, val in zip(it, it):
-        retdict[str(opt)[opt_start:]] = val
-
-    return tclobjs_to_py(retdict)
-
-
 def _list_from_statespec(stuple):
     nval = []
     for val in stuple:
@@ -168,7 +158,8 @@ def _list_from_statespec(stuple):
     return [ _flatten(spec) for spec in zip(it, it) ]
 
 
-def _list_from_layouttuple(ltuple):
+def _list_from_layouttuple(tk, ltuple):
+    ltuple = tk.splitlist(ltuple)
     res = []
     indx = 0
     while indx < len(ltuple):
@@ -183,22 +174,18 @@ def _list_from_layouttuple(ltuple):
             opt = opt[1:]
             indx += 2
             if opt == 'children':
-                if Tkinter._default_root and not Tkinter._default_root.wantobjects():
-                    val = Tkinter._default_root.splitlist(val)
-                val = _list_from_layouttuple(val)
+                val = _list_from_layouttuple(tk, val)
             opts[opt] = val
 
     return res
 
 
-def _val_or_dict(options, func, *args):
+def _val_or_dict(tk, options, *args):
     options = _format_optdict(options)
-    res = func(*(args + options))
+    res = tk.call(*(args + options))
     if len(options) % 2:
         return res
-    if Tkinter._default_root:
-        res = Tkinter._default_root.splitlist(res)
-    return _dict_from_tcltuple(res)
+    return _splitdict(tk, res, conv=_tclobj_to_py)
 
 
 def _convert_stringval(value):
@@ -220,16 +207,20 @@ def _to_number(x):
     return x
 
 
+def _tclobj_to_py(val):
+    if val and hasattr(val, '__len__') and not isinstance(val, basestring):
+        if getattr(val[0], 'typename', None) == 'StateSpec':
+            val = _list_from_statespec(val)
+        else:
+            val = map(_convert_stringval, val)
+    elif hasattr(val, 'typename'):
+        val = _convert_stringval(val)
+    return val
+
+
 def tclobjs_to_py(adict):
-    for opt, val in adict.iteritems():
-        if val and hasattr(val, '__len__') and not isinstance(val, basestring):
-            if getattr(val[0], 'typename', None) == 'StateSpec':
-                val = _list_from_statespec(val)
-            else:
-                val = map(_convert_stringval, val)
-        elif hasattr(val, 'typename'):
-            val = _convert_stringval(val)
-        adict[opt] = val
+    for opt, val in adict.items():
+        adict[opt] = _tclobj_to_py(val)
 
     return adict
 
@@ -256,13 +247,13 @@ class Style(object):
     def configure(self, style, query_opt=None, **kw):
         if query_opt is not None:
             kw[query_opt] = None
-        return _val_or_dict(kw, self.tk.call, self._name, 'configure', style)
+        return _val_or_dict(self.tk, kw, self._name, 'configure', style)
 
     def map(self, style, query_opt=None, **kw):
         if query_opt is not None:
             return _list_from_statespec(self.tk.splitlist(self.tk.call(self._name, 'map', style, '-%s' % query_opt)))
         else:
-            return _dict_from_tcltuple(self.tk.call(self._name, 'map', style, *_format_mapdict(kw)))
+            return _splitdict(self.tk, self.tk.call(self._name, 'map', style, *_format_mapdict(kw)), conv=_tclobj_to_py)
 
     def lookup(self, style, option, state=None, default=None):
         state = (' ').join(state) if state else ''
@@ -274,7 +265,7 @@ class Style(object):
             lspec = _format_layoutlist(layoutspec)[0]
         elif layoutspec is not None:
             lspec = 'null'
-        return _list_from_layouttuple(self.tk.splitlist(self.tk.call(self._name, 'layout', style, lspec)))
+        return _list_from_layouttuple(self.tk, self.tk.call(self._name, 'layout', style, lspec))
 
     def element_create(self, elementname, etype, *args, **kw):
         spec, opts = _format_elemcreate(etype, False, *args, **kw)
@@ -323,7 +314,7 @@ class Widget(Tkinter.Widget):
         ret = self.tk.getboolean(self.tk.call(self._w, 'instate', (' ').join(statespec)))
         if ret and callback:
             return callback(*args, **kw)
-        return bool(ret)
+        return ret
 
     def state(self, statespec=None):
         if statespec is not None:
@@ -361,7 +352,7 @@ class Entry(Widget, Tkinter.Entry):
         return self.tk.call(self._w, 'identify', x, y)
 
     def validate(self):
-        return bool(self.tk.getboolean(self.tk.call(self._w, 'validate')))
+        return self.tk.getboolean(self.tk.call(self._w, 'validate'))
 
 
 class Combobox(Entry):
@@ -434,7 +425,7 @@ class Notebook(Widget):
     def tab(self, tab_id, option=None, **kw):
         if option is not None:
             kw[option] = None
-        return _val_or_dict(kw, self.tk.call, self._w, 'tab', tab_id)
+        return _val_or_dict(self.tk, kw, self._w, 'tab', tab_id)
 
     def tabs(self):
         return self.tk.splitlist(self.tk.call(self._w, 'tabs') or ())
@@ -456,7 +447,7 @@ class Panedwindow(Widget, Tkinter.PanedWindow):
     def pane(self, pane, option=None, **kw):
         if option is not None:
             kw[option] = None
-        return _val_or_dict(kw, self.tk.call, self._w, 'pane', pane)
+        return _val_or_dict(self.tk, kw, self._w, 'pane', pane)
 
     def sashpos(self, index, newpos=None):
         return self.tk.getint(self.tk.call(self._w, 'sashpos', index, newpos))
@@ -539,7 +530,7 @@ class Treeview(Widget, Tkinter.XView, Tkinter.YView):
     def column(self, column, option=None, **kw):
         if option is not None:
             kw[option] = None
-        return _val_or_dict(kw, self.tk.call, self._w, 'column', column)
+        return _val_or_dict(self.tk, kw, self._w, 'column', column)
 
     def delete(self, *items):
         self.tk.call(self._w, 'delete', items)
@@ -548,7 +539,7 @@ class Treeview(Widget, Tkinter.XView, Tkinter.YView):
         self.tk.call(self._w, 'detach', items)
 
     def exists(self, item):
-        return bool(self.tk.getboolean(self.tk.call(self._w, 'exists', item)))
+        return self.tk.getboolean(self.tk.call(self._w, 'exists', item))
 
     def focus(self, item=None):
         return self.tk.call(self._w, 'focus', item)
@@ -559,7 +550,7 @@ class Treeview(Widget, Tkinter.XView, Tkinter.YView):
             kw['command'] = self.master.register(cmd, self._substitute)
         if option is not None:
             kw[option] = None
-        return _val_or_dict(kw, self.tk.call, self._w, 'heading', column)
+        return _val_or_dict(self.tk, kw, self._w, 'heading', column)
 
     def identify(self, component, x, y):
         return self.tk.call(self._w, 'identify', component, x, y)
@@ -581,7 +572,7 @@ class Treeview(Widget, Tkinter.XView, Tkinter.YView):
 
     def insert(self, parent, index, iid=None, **kw):
         opts = _format_optdict(kw)
-        if iid:
+        if iid is not None:
             res = self.tk.call(self._w, 'insert', parent, index, '-id', iid, *opts)
         else:
             res = self.tk.call(self._w, 'insert', parent, index, *opts)
@@ -590,7 +581,7 @@ class Treeview(Widget, Tkinter.XView, Tkinter.YView):
     def item(self, item, option=None, **kw):
         if option is not None:
             kw[option] = None
-        return _val_or_dict(kw, self.tk.call, self._w, 'item', item)
+        return _val_or_dict(self.tk, kw, self._w, 'item', item)
 
     def move(self, item, parent, index):
         self.tk.call(self._w, 'move', item, parent, index)
@@ -610,7 +601,10 @@ class Treeview(Widget, Tkinter.XView, Tkinter.YView):
         self.tk.call(self._w, 'see', item)
 
     def selection(self, selop=None, items=None):
-        return self.tk.call(self._w, 'selection', selop, items)
+        if isinstance(items, basestring):
+            items = (
+             items,)
+        return self.tk.splitlist(self.tk.call(self._w, 'selection', selop, items))
 
     def selection_set(self, items):
         self.selection('set', items)
@@ -627,7 +621,7 @@ class Treeview(Widget, Tkinter.XView, Tkinter.YView):
     def set(self, item, column=None, value=None):
         res = self.tk.call(self._w, 'set', item, column, value)
         if column is None and value is None:
-            return _dict_from_tcltuple(self.tk.splitlist(res), False)
+            return _splitdict(self.tk, res, cut_minus=False, conv=_tclobj_to_py)
         else:
             return res
             return
@@ -638,10 +632,14 @@ class Treeview(Widget, Tkinter.XView, Tkinter.YView):
     def tag_configure(self, tagname, option=None, **kw):
         if option is not None:
             kw[option] = None
-        return _val_or_dict(kw, self.tk.call, self._w, 'tag', 'configure', tagname)
+        return _val_or_dict(self.tk, kw, self._w, 'tag', 'configure', tagname)
 
     def tag_has(self, tagname, item=None):
-        return self.tk.getboolean(self.tk.call(self._w, 'tag', 'has', tagname, item))
+        if item is None:
+            return self.tk.splitlist(self.tk.call(self._w, 'tag', 'has', tagname))
+        else:
+            return self.tk.getboolean(self.tk.call(self._w, 'tag', 'has', tagname, item))
+            return
 
 
 class LabeledScale(Frame, object):
@@ -671,7 +669,11 @@ class LabeledScale(Frame, object):
             pass
         else:
             del self._variable
-            Frame.destroy(self)
+
+        Frame.destroy(self)
+        self.label = None
+        self.scale = None
+        return
 
     def _adjust(self, *args):
 
@@ -727,11 +729,15 @@ class OptionMenu(Menubutton):
         menu = self['menu']
         menu.delete(0, 'end')
         for val in values:
-            menu.add_radiobutton(label=val, command=Tkinter._setit(self._variable, val, self._callback))
+            menu.add_radiobutton(label=val, command=Tkinter._setit(self._variable, val, self._callback), variable=self._variable)
 
         if default:
             self._variable.set(default)
 
     def destroy(self):
-        del self._variable
+        try:
+            del self._variable
+        except AttributeError:
+            pass
+
         Menubutton.destroy(self)

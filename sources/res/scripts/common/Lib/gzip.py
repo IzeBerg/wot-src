@@ -30,9 +30,8 @@ class GzipFile(io.BufferedIOBase):
         if fileobj is None:
             fileobj = self.myfileobj = __builtin__.open(filename, mode or 'rb')
         if filename is None:
-            if hasattr(fileobj, 'name') and fileobj.name != '<fdopen>':
-                filename = fileobj.name
-            else:
+            filename = getattr(fileobj, 'name', '')
+            if not isinstance(filename, basestring) or filename == '<fdopen>':
                 filename = ''
         if mode is None:
             if hasattr(fileobj, 'mode'):
@@ -86,9 +85,15 @@ class GzipFile(io.BufferedIOBase):
     def _write_gzip_header(self):
         self.fileobj.write(b'\x1f\x8b')
         self.fileobj.write('\x08')
-        fname = os.path.basename(self.name)
-        if fname.endswith('.gz'):
-            fname = fname[:-3]
+        try:
+            fname = os.path.basename(self.name)
+            if not isinstance(fname, str):
+                fname = fname.encode('latin-1')
+            if fname.endswith('.gz'):
+                fname = fname[:-3]
+        except UnicodeEncodeError:
+            fname = ''
+
         flags = 0
         if fname:
             flags = FNAME
@@ -146,9 +151,9 @@ class GzipFile(io.BufferedIOBase):
         if isinstance(data, memoryview):
             data = data.tobytes()
         if len(data) > 0:
-            self.size = self.size + len(data)
-            self.crc = zlib.crc32(data, self.crc) & 4294967295
             self.fileobj.write(self.compress.compress(data))
+            self.size += len(data)
+            self.crc = zlib.crc32(data, self.crc) & 4294967295
             self.offset += len(data)
         return len(data)
 
@@ -248,19 +253,22 @@ class GzipFile(io.BufferedIOBase):
         return self.fileobj is None
 
     def close(self):
-        if self.fileobj is None:
+        fileobj = self.fileobj
+        if fileobj is None:
             return
         else:
-            if self.mode == WRITE:
-                self.fileobj.write(self.compress.flush())
-                write32u(self.fileobj, self.crc)
-                write32u(self.fileobj, self.size & 4294967295)
-                self.fileobj = None
-            elif self.mode == READ:
-                self.fileobj = None
-            if self.myfileobj:
-                self.myfileobj.close()
-                self.myfileobj = None
+            self.fileobj = None
+            try:
+                if self.mode == WRITE:
+                    fileobj.write(self.compress.flush())
+                    write32u(fileobj, self.crc)
+                    write32u(fileobj, self.size & 4294967295)
+            finally:
+                myfileobj = self.myfileobj
+                if myfileobj:
+                    self.myfileobj = None
+                    myfileobj.close()
+
             return
 
     def flush(self, zlib_mode=zlib.Z_SYNC_FLUSH):

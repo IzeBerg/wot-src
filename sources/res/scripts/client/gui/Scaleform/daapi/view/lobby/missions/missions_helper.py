@@ -21,7 +21,7 @@ from gui.server_events.bonuses import SimpleBonus
 from gui.server_events.cond_formatters.prebattle import MissionsPreBattleConditionsFormatter
 from gui.server_events.cond_formatters.requirements import AccountRequirementsFormatter, TQAccountRequirementsFormatter
 from gui.server_events.conditions import GROUP_TYPE
-from gui.server_events.events_constants import BATTLE_ROYALE_GROUPS_ID, EPIC_BATTLE_GROUPS_ID, FUN_RANDOM_GROUP_ID
+from gui.server_events.events_constants import BATTLE_ROYALE_GROUPS_ID, EPIC_BATTLE_GROUPS_ID
 from gui.server_events.events_helpers import MISSIONS_STATES, QuestInfoModel, AWARDS_PER_SINGLE_PAGE, isMarathon, AwardSheetPresenter, isPremium
 from gui.server_events.formatters import DECORATION_SIZES
 from gui.server_events.personal_progress import formatters
@@ -430,7 +430,7 @@ class _MissionInfo(QuestInfoModel):
         bonuses = self.event.getBonuses()
         substitutes = []
         for bonus in bonuses:
-            if bonus.getName() == 'customizations':
+            if bonus.getName() == 'customizations' and bonus.hasAnyCustomCompensations():
                 bonuses.remove(bonus)
                 substitutes.extend(bonus.compensation())
 
@@ -517,7 +517,7 @@ class _BattleRoyaleDailyMissionInfo(_EventDailyMissionInfo):
 
     def _getCompleteKey(self):
         if not self._controller.isDailyQuestsRefreshAvailable():
-            return backport.text(R.strings.battle_royale.questsTooltip.mission_info.timeLeft())
+            return R.strings.battle_royale.questsTooltip.mission_info.timeLeft()
         return super(_BattleRoyaleDailyMissionInfo, self)._getCompleteKey()
 
 
@@ -825,10 +825,6 @@ class _EpicBattleDetailedMissionInfo(_EventDailyDetailedMissionInfo, _EpicBattle
 
 
 class _BattleRoyaleDetailedMissionInfo(_EventDailyDetailedMissionInfo, _BattleRoyaleDailyMissionInfo):
-    pass
-
-
-class _FunRandomDetailedMissionInfo(_DetailedMissionInfo):
     pass
 
 
@@ -1366,8 +1362,6 @@ def getDetailedMissionData(event):
             return _BattleRoyaleDetailedMissionInfo(event)
         if isRankedQuestID(event.getID()):
             return _RankedDetailedMissionInfo(event)
-        if event.getGroupID() == FUN_RANDOM_GROUP_ID:
-            return _FunRandomDetailedMissionInfo(event)
         if event.getType() in constants.EVENT_TYPE.LIKE_BATTLE_QUESTS:
             return _DetailedMissionInfo(event)
         return

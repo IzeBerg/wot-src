@@ -112,7 +112,7 @@ package net.wg.gui.notification
                   _loc1_.addEventListener(ServiceMessageEvent.MESSAGE_AREA_CLICKED,this.onPopUpMessageAreaClickedHandler,false,0,true);
                   _loc1_.addEventListener(ServiceMessageEvent.MESSAGE_BUTTON_CLICKED,this.onPopUpMessageButtonClickedHandler,false,0,true);
                   _loc1_.addEventListener(ServiceMessageEvent.MESSAGE_LINK_CLICKED,this.onPopUpMessageLinkClickedHandler,false,0,true);
-                  _loc1_.addEventListener(ServiceMessagePopUp.HIDED,this.onPopUpHidedHandler,false,0,true);
+                  _loc1_.addEventListener(ServiceMessagePopUp.EVENT_HIDED,this.onPopUpHidedHandler,false,0,true);
                   _loc4_ += _loc2_;
                   this._displayingNowPopUps.splice(_loc7_,0,_loc1_);
                   _loc7_++;
@@ -307,12 +307,12 @@ package net.wg.gui.notification
          this._animationManager.unregister(param1);
       }
       
-      private function postponedPopupRemoving(param1:ServiceMessagePopUp, param2:Boolean, param3:Boolean = true) : void
+      private function postponedPopupRemoving(param1:uint, param2:Number, param3:Boolean, param4:Boolean = true) : void
       {
-         var _loc4_:int = this._displayingNowPopUps.indexOf(param1);
-         if(_loc4_ != -1)
+         var _loc5_:int = this.getPopUpDisplayingIndex(param1,param2);
+         if(_loc5_ != -1)
          {
-            this.removePopupAt(_loc4_,param2,param3);
+            this.removePopupAt(_loc5_,param3,param4);
          }
       }
       
@@ -323,7 +323,7 @@ package net.wg.gui.notification
          var _loc4_:ServiceMessagePopUp = this._displayingNowPopUps[param1];
          this._displayingNowPopUps.splice(param1,1);
          this._smContainer.removeChild(_loc4_);
-         _loc4_.removeEventListener(ServiceMessagePopUp.HIDED,this.onPopUpHidedHandler);
+         _loc4_.removeEventListener(ServiceMessagePopUp.EVENT_HIDED,this.onPopUpHidedHandler);
          _loc4_.removeEventListener(ServiceMessageEvent.MESSAGE_AREA_CLICKED,this.onPopUpMessageAreaClickedHandler);
          _loc4_.removeEventListener(ServiceMessageEvent.MESSAGE_BUTTON_CLICKED,this.onPopUpMessageButtonClickedHandler);
          _loc4_.removeEventListener(ServiceMessageEvent.MESSAGE_LINK_CLICKED,this.onPopUpMessageLinkClickedHandler);
@@ -412,10 +412,10 @@ package net.wg.gui.notification
          this.applyHiding(false);
       }
       
-      private function onPopUpMessageAreaClickedHandler(param1:Event) : void
+      private function onPopUpMessageAreaClickedHandler(param1:ServiceMessageEvent) : void
       {
          param1.stopImmediatePropagation();
-         App.utils.scheduler.scheduleTask(this.postponedPopupRemoving,DELAY,param1.target,false,true);
+         App.utils.scheduler.scheduleTask(this.postponedPopupRemoving,DELAY,param1.typeID,param1.entityID,false,true);
       }
       
       private function onPopUpMessageButtonClickedHandler(param1:ServiceMessageEvent) : void

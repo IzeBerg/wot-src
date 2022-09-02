@@ -27,11 +27,15 @@ package net.wg.gui.lobby.settings
    public class SettingsNewCountersForm extends UIComponentEx
    {
       
-      protected static const LINE_COUNTER_TYPES:Array = [SettingsConfigHelper.TYPE_BUTTON_BAR,SettingsConfigHelper.TYPE_CHECKBOX];
+      protected static const LINE_COUNTER_TYPES:Array = [SettingsConfigHelper.TYPE_BUTTON_BAR,SettingsConfigHelper.TYPE_CHECKBOX,SettingsConfigHelper.TYPE_STEP_SLIDER];
       
-      private static const COUNTER_CHECKBOX_OFFSET_X:Number = -12;
+      private static const COUNTER_CHECKBOX_OFFSET_X:Number = -14;
       
       private static const COUNTER_BUTTON_BAR_OFFSET_X:Number = -7;
+      
+      private static const COUNTER_STEP_SLIDER_OFFSET_X:Number = -15;
+      
+      private static const COUNTER_STEP_SLIDER_OFFSET_Y:Number = -13;
       
       private static const COUNTER_KEY_INPUT_OFFSET_X:Number = -37;
       
@@ -242,6 +246,10 @@ package net.wg.gui.lobby.settings
          if(param1 == SettingsConfigHelper.TYPE_KEYINPUT_ITEM)
          {
             return new CounterProps(COUNTER_KEY_INPUT_OFFSET_X,COUNTER_KEY_INPUT_OFFSET_Y,TextFormatAlign.LEFT,true,Linkages.COUNTER_LINE_KEY_UI);
+         }
+         if(param1 == SettingsConfigHelper.TYPE_STEP_SLIDER)
+         {
+            return new CounterProps(COUNTER_STEP_SLIDER_OFFSET_X,COUNTER_STEP_SLIDER_OFFSET_Y,TextFormatAlign.LEFT,true,Linkages.COUNTER_LINE_UI);
          }
          return new CounterProps(CounterProps.DEFAULT_OFFSET_X,NEW_COUNTER_TAB_OFFSET_Y);
       }

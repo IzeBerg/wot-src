@@ -37,7 +37,7 @@ package net.wg.data.constants.generated
       
       public static const ROSTER_SEPARATOR:String = "separatorMcUI";
       
-      public static const ROSTER_FLAGS:String = "SmallFlags";
+      public static const ROSTER_FLAGS:String = "NationFlags25x17_UI";
       
       public static const ROSTER_LEVELS:String = "TankLevels";
       

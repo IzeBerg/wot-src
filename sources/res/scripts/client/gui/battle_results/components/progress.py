@@ -5,9 +5,9 @@ from battle_pass_common import BattlePassConsts
 from constants import EVENT_TYPE
 from dog_tags_common.components_config import componentConfigAdapter as cca
 from gui.Scaleform.daapi.view.common.battle_royale.br_helpers import currentHangarIsBattleRoyale
-from gui.Scaleform.daapi.view.lobby.customization.progression_helpers import getC11nProgressionLinkBtnParams, getProgressionPostBattleInfo, parseEventID
+from gui.Scaleform.daapi.view.lobby.customization.progression_helpers import getC11nProgressionLinkBtnParams, getProgressionPostBattleInfo, parseEventID, getC11n2dProgressionLinkBtnParams
 from gui.Scaleform.daapi.view.lobby.server_events.awards_formatters import BattlePassTextBonusesPacker
-from gui.Scaleform.daapi.view.lobby.server_events.events_helpers import getEventPostBattleInfo
+from gui.Scaleform.daapi.view.lobby.server_events.events_helpers import getEventPostBattleInfo, get2dProgressionStylePostBattleInfo
 from gui.Scaleform.daapi.view.lobby.techtree.techtree_dp import g_techTreeDP
 from gui.Scaleform.genConsts.MISSIONS_STATES import MISSIONS_STATES
 from gui.Scaleform.genConsts.PROGRESSIVEREWARD_CONSTANTS import PROGRESSIVEREWARD_CONSTANTS as prConst
@@ -22,6 +22,7 @@ from gui.impl.auxiliary.rewards_helper import getProgressiveRewardVO
 from gui.impl.gen import R
 from gui.server_events import formatters
 from gui.server_events.awards_formatters import QuestsBonusComposer
+from gui.server_events.events_helpers import isC11nQuest, getDataByC11nQuest
 from gui.shared.formatters import getItemPricesVO, getItemUnlockPricesVO, text_styles
 from gui.shared.gui_items import GUI_ITEM_TYPE, Tankman, getVehicleComponentsByType
 from gui.shared.gui_items.Tankman import getCrewSkinIconSmall
@@ -253,7 +254,7 @@ PMComplete = namedtuple('PMComplete', [
  'isAddComplete'])
 
 class BattlePassProgressBlock(base.StatsBlock):
-    __battlePassController = dependency.descriptor(IBattlePassController)
+    __battlePass = dependency.descriptor(IBattlePassController)
 
     def setRecord(self, result, reusable):
         bpp = reusable.battlePassProgress
@@ -308,7 +309,7 @@ class BattlePassProgressBlock(base.StatsBlock):
            'currentProgrVal': progress.pointsNew, 
            'tasksCount': -1, 
            'progrBarType': cls.__getProgressBarType(not progress.isDone), 
-           'linkTooltip': TOOLTIPS.QUESTS_LINKBTN_BATTLEPASS if chapterID else TOOLTIPS.QUESTS_LINKBTN_BATTLEPASS_SELECT}
+           'linkTooltip': TOOLTIPS.QUESTS_LINKBTN_BATTLEPASS if chapterID and not cls.__battlePass.isChapterCompleted(chapterID) else TOOLTIPS.QUESTS_LINKBTN_BATTLEPASS_SELECT}
 
     @classmethod
     def __makeProgressList(cls, progress, level):
@@ -325,7 +326,7 @@ class BattlePassProgressBlock(base.StatsBlock):
     @classmethod
     def __getChapterName(cls, chapterID):
         if chapterID:
-            return backport.text(R.strings.battle_pass.chapter.dyn(cls.__battlePassController.getRewardType(chapterID).value).fullName.num(chapterID)())
+            return backport.text(R.strings.battle_pass.chapter.fullName.num(chapterID)())
         return ''
 
     @staticmethod
@@ -351,6 +352,7 @@ class QuestsProgressBlock(base.StatsBlock):
 
     def setRecord(self, result, reusable):
         commonQuests = []
+        c11nQuests = []
         personalMissions = {}
         allCommonQuests = self.eventsCache.getQuests()
         allCommonQuests.update(self.eventsCache.getHiddenQuests(lambda q: q.isShowedPostBattle()))
@@ -359,7 +361,11 @@ class QuestsProgressBlock(base.StatsBlock):
             for qID, qProgress in questsProgress.iteritems():
                 pGroupBy, pPrev, pCur = qProgress
                 isCompleted = isQuestCompleted(pGroupBy, pPrev, pCur)
-                if qID in allCommonQuests:
+                if isC11nQuest(qID):
+                    quest = allCommonQuests[qID]
+                    c11nQuests.append((
+                     quest, {pGroupBy: pCur}, {pGroupBy: pPrev}, isCompleted))
+                elif qID in allCommonQuests:
                     quest = allCommonQuests[qID]
                     isProgressReset = not isCompleted and quest.bonusCond.isInRow() and pCur.get('battlesCount', 0) == 0
                     if pPrev or max(pCur.itervalues()) != 0:
@@ -399,6 +405,19 @@ class QuestsProgressBlock(base.StatsBlock):
                 info = getProgressionPostBattleInfo(intCD, vehicleIntCD, progressionData)
                 if info is not None:
                     self.addComponent(self.getNextComponentIndex(), ProgressiveCustomizationVO('', info))
+
+        questsByStyle = {}
+        for e, pCur, pPrev, complete in c11nQuests:
+            styleID, _, __ = getDataByC11nQuest(e)
+            if styleID <= 0:
+                continue
+            quests = questsByStyle.setdefault(styleID, list())
+            quests.append((e, pCur, pPrev, complete))
+
+        for styleID, quests in questsByStyle.items():
+            info = get2dProgressionStylePostBattleInfo(styleID, quests)
+            if info is not None:
+                self.addComponent(self.getNextComponentIndex(), QuestProgressiveCustomizationVO('', info))
 
         for e, pCur, pPrev, reset, complete in sorted(commonQuests, cmp=self.__sortCommonQuestsFunc):
             info = getEventPostBattleInfo(e, allCommonQuests, pCur, pPrev, reset, complete)
@@ -509,6 +528,22 @@ class ProgressiveCustomizationVO(base.DirectStatsItem):
             _, vehicleIntCD = parseEventID(questID)
             vehicle = self._itemsCache.items.getItemByCD(vehicleIntCD)
             linkBtnEnabled, linkBtnTooltip = getC11nProgressionLinkBtnParams(vehicle)
+            if currentHangarIsBattleRoyale():
+                linkBtnEnabled = False
+            self._value['linkBtnEnabled'] = linkBtnEnabled
+            self._value['linkBtnTooltip'] = backport.text(linkBtnTooltip)
+        return self._value
+
+
+class QuestProgressiveCustomizationVO(base.DirectStatsItem):
+    _itemsCache = dependency.descriptor(IItemsCache)
+    __slots__ = ()
+
+    def getVO(self):
+        questInfo = self._value.get('questInfo', {})
+        questID = questInfo.get('questID', None)
+        if questInfo and questID is not None:
+            linkBtnEnabled, linkBtnTooltip = getC11n2dProgressionLinkBtnParams()
             if currentHangarIsBattleRoyale():
                 linkBtnEnabled = False
             self._value['linkBtnEnabled'] = linkBtnEnabled

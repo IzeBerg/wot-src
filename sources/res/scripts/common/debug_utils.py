@@ -236,9 +236,9 @@ def _doLog(category, msg, args=None, kwargs={}, frameDepth=2):
     if not logFunc:
         logFunc = BigWorld.logDebug
     if args:
-        output = (' ').join(map(str, [header, msg, args]))
+        output = (' ').join(map(unicode, [header, msg, args]))
     else:
-        output = (' ').join(map(str, [header, msg]))
+        output = (' ').join(map(unicode, [header, msg]))
     tags = kwargs.pop('tags', None)
     logFunc(category, _addTagsToMsg(tags, output), None)
     if kwargs.get('stack', False):

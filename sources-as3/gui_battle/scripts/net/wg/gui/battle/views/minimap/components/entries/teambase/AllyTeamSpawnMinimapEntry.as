@@ -23,17 +23,17 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
          MinimapEntryController.instance.registerScalableEntry(this);
       }
       
-      public function setPointNumber(param1:int) : void
-      {
-         this._atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,TeamBaseMinimapEntryConst.ALLY_TEAM_SPAWN_ATLAS_ITEM_NAME + "_" + MinimapColorConst.GREEN + "_" + param1,this.atlasPlaceholder.graphics,"",true);
-      }
-      
       override protected function onDispose() : void
       {
          MinimapEntryController.instance.unregisterScalableEntry(this);
          this.atlasPlaceholder = null;
          this._atlasManager = null;
          super.onDispose();
+      }
+      
+      public function setPointNumber(param1:int) : void
+      {
+         this._atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,TeamBaseMinimapEntryConst.ALLY_TEAM_SPAWN_ATLAS_ITEM_NAME + "_" + MinimapColorConst.GREEN + "_" + param1,this.atlasPlaceholder.graphics,"",true);
       }
    }
 }

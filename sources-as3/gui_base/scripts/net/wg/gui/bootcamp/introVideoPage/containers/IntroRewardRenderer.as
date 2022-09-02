@@ -7,7 +7,7 @@ package net.wg.gui.bootcamp.introVideoPage.containers
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.interfaces.entity.IUpdatable;
    import net.wg.infrastructure.managers.ITooltipMgr;
-   import net.wg.infrastructure.uilogger.bootcamp.events.TooltipLogEvent;
+   import net.wg.infrastructure.uilogging.deprecated.bootcamp.events.TooltipLogEvent;
    import scaleform.clik.constants.InvalidationType;
    
    public class IntroRewardRenderer extends UIComponentEx implements IUpdatable

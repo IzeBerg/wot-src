@@ -34,6 +34,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public var returnToStyledMode:Function;
       
+      public var onItemIsNewAnimationShown:Function;
+      
       private var _customizationBottomPanelInitVO:CustomizationBottomPanelInitVO;
       
       private var _customizationSwitcherVO:CustomizationSwitcherVO;
@@ -159,6 +161,12 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.returnToStyledMode,"returnToStyledMode" + Errors.CANT_NULL);
          this.returnToStyledMode();
+      }
+      
+      public function onItemIsNewAnimationShownS(param1:int) : void
+      {
+         App.utils.asserter.assertNotNull(this.onItemIsNewAnimationShown,"onItemIsNewAnimationShown" + Errors.CANT_NULL);
+         this.onItemIsNewAnimationShown(param1);
       }
       
       public final function as_setBottomPanelInitData(param1:Object) : void

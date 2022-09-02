@@ -811,7 +811,7 @@ class TokenBonusFormatter(SimpleBonusFormatter):
     def __getBattleBonusX5Images():
         images = {}
         for size in AWARDS_SIZES.ALL():
-            bonusBattleTaskRes = R.images.gui.maps.icons.quests.bonuses.dyn(size).dyn('bonus_battle_task')
+            bonusBattleTaskRes = R.images.gui.maps.icons.quests.bonuses.dyn(size).dyn('battle_bonus_x5')
             images[size] = backport.image(bonusBattleTaskRes()) if bonusBattleTaskRes else None
 
         return images
@@ -1396,9 +1396,9 @@ class InstructionEpicBattleBonusFormatter(SimpleBonusFormatter):
 
         giftsCount = 0
         for bonusOffer in bonusOffers:
-            gift = bonusOffer.getFirstGift()
-            if gift is not None:
-                giftsCount += gift.giftCount
+            if bonusOffer and hasattr(bonusOffer, 'getFirstGift'):
+                gift = bonusOffer.getFirstGift()
+                giftsCount += gift.giftCount if gift is not None else 0
 
         return giftsCount
 

@@ -169,6 +169,12 @@ package net.wg.gui.lobby.settings
       
       public var SNIPER_MODE_EFFECTS_QUALITYStepSlider:SettingsStepSlider = null;
       
+      public var TRACK_PHYSICS_QUALITYLabel:LabelControl = null;
+      
+      public var TRACK_PHYSICS_QUALITYValue:LabelControl = null;
+      
+      public var TRACK_PHYSICS_QUALITYStepSlider:SettingsStepSlider = null;
+      
       public var CUSTOM_AA_MODELabel:LabelControl = null;
       
       public var CUSTOM_AA_MODEValue:LabelControl = null;
@@ -295,6 +301,9 @@ package net.wg.gui.lobby.settings
          this.SNIPER_MODE_EFFECTS_QUALITYLabel = null;
          this.SNIPER_MODE_EFFECTS_QUALITYValue = null;
          this.SNIPER_MODE_EFFECTS_QUALITYStepSlider = null;
+         this.TRACK_PHYSICS_QUALITYLabel = null;
+         this.TRACK_PHYSICS_QUALITYValue = null;
+         this.TRACK_PHYSICS_QUALITYStepSlider = null;
          this.SNIPER_MODE_GRASS_ENABLEDCheckbox = null;
          this.HAVOK_ENABLEDCheckbox = null;
          this.VEHICLE_DUST_ENABLEDCheckbox = null;
@@ -379,6 +388,8 @@ package net.wg.gui.lobby.settings
          registerToolTip(this.OBJECT_LODValue,SettingsConfigHelper.OBJECT_LOD);
          registerToolTip(this.SNIPER_MODE_EFFECTS_QUALITYLabel,SettingsConfigHelper.SNIPER_MODE_EFFECTS_QUALITY);
          registerToolTip(this.SNIPER_MODE_EFFECTS_QUALITYValue,SettingsConfigHelper.SNIPER_MODE_EFFECTS_QUALITY);
+         registerToolTip(this.TRACK_PHYSICS_QUALITYLabel,SettingsConfigHelper.TRACK_PHYSICS_QUALITY);
+         registerToolTip(this.TRACK_PHYSICS_QUALITYValue,SettingsConfigHelper.TRACK_PHYSICS_QUALITY);
          registerToolTip(this.SNIPER_MODE_GRASS_ENABLEDCheckbox,SettingsConfigHelper.SNIPER_MODE_GRASS_ENABLED);
          registerToolTip(this.HAVOK_ENABLEDCheckbox,SettingsConfigHelper.HAVOK_ENABLED);
          registerToolTip(this.VEHICLE_DUST_ENABLEDCheckbox,SettingsConfigHelper.VEHICLE_DUST_ENABLED);
@@ -461,6 +472,9 @@ package net.wg.gui.lobby.settings
          this.SNIPER_MODE_EFFECTS_QUALITYLabel = _loc1_.SNIPER_MODE_EFFECTS_QUALITYLabel;
          this.SNIPER_MODE_EFFECTS_QUALITYValue = _loc1_.SNIPER_MODE_EFFECTS_QUALITYValue;
          this.SNIPER_MODE_EFFECTS_QUALITYStepSlider = _loc1_.SNIPER_MODE_EFFECTS_QUALITYStepSlider;
+         this.TRACK_PHYSICS_QUALITYLabel = _loc1_.TRACK_PHYSICS_QUALITYLabel;
+         this.TRACK_PHYSICS_QUALITYValue = _loc1_.TRACK_PHYSICS_QUALITYValue;
+         this.TRACK_PHYSICS_QUALITYStepSlider = _loc1_.TRACK_PHYSICS_QUALITYStepSlider;
          this.CUSTOM_AA_MODELabel = _loc1_.CUSTOM_AA_MODELabel;
          this.CUSTOM_AA_MODEValue = _loc1_.CUSTOM_AA_MODEValue;
          this.CUSTOM_AA_MODEStepSlider = _loc1_.CUSTOM_AA_MODEStepSlider;

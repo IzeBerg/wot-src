@@ -66,6 +66,7 @@ class CallbackDataNames(object):
     GUN_DAMAGE_SOUND = 'gunDamagedSound'
     SHOW_AUTO_AIM_MARKER = 'showAutoAimMarker'
     HIDE_AUTO_AIM_MARKER = 'hideAutoAimMarker'
+    ON_TARGET_VEHICLE_CHANGED = 'onTargetVehicleChanged'
     MT_CONFIG_CALLBACK = 'mapsTrainingConfigurationCallback'
 
 
@@ -1030,8 +1031,8 @@ class BattleReplay(object):
     def setFpsPingLag(self, fps, ping, isLaggingNow):
         if self.isPlaying:
             return
-        self.__replayCtrl.fps = fps
-        self.__replayCtrl.ping = ping
+        self.__replayCtrl.fps = int(fps)
+        self.__replayCtrl.ping = int(ping)
         self.__replayCtrl.isLaggingNow = isLaggingNow
 
     def onClientVersionDiffers(self):
@@ -1213,13 +1214,9 @@ class BattleReplay(object):
         self.__replayCtrl.onSetEquipmentID(value)
 
     def onSetEquipmentId(self, equipmentId):
-        mapCaseMode = BigWorld.player().inputHandler.ctrls.get('mapcase', None)
         if equipmentId != -1:
             self.__equipmentId = equipmentId
             BigWorld.player().inputHandler.showGunMarker(False)
-            mapCaseMode = BigWorld.player().inputHandler.ctrls.get('mapcase', None)
-            if mapCaseMode is not None:
-                mapCaseMode.activateEquipment(equipmentId)
         else:
             BigWorld.player().inputHandler.showGunMarker(True)
             self.__equipmentId = None

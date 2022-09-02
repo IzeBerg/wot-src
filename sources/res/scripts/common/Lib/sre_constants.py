@@ -1,3 +1,4 @@
+"""Internal support module for sre"""
 MAGIC = 20031017
 try:
     from _sre import MAXREPEAT

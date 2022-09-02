@@ -48,6 +48,8 @@ package net.wg.gui.battle.battleRoyale.views.configurator
       private static const TF_BORDER_SIZE:uint = 2;
       
       private static const SEPARATOR_ALPHA:Number = 0.5;
+      
+      private static const VEH_TYPE_ICON_OFFSET_X:Number = -15;
        
       
       public var vehModulesConfigurator:VehModuleConfiguratorCmp = null;
@@ -231,7 +233,8 @@ package net.wg.gui.battle.battleRoyale.views.configurator
             _loc2_ = width >> 1;
             _loc3_ = this.vehModulesConfigurator.getBounds(this.vehModulesConfigurator);
             this._offsetDependsOnScreenHeight = (height - MIN_SCREEN_HEIGHT) / _loc1_;
-            this.vehNameTf.x = this.vehTypeIcon.width + VEHTYPE_ICON_RIGHT_MARGIN | 0;
+            this.vehTypeIcon.x = VEH_TYPE_ICON_OFFSET_X;
+            this.vehNameTf.x = this.vehTypeIcon.x + this.vehTypeIcon.width + VEHTYPE_ICON_RIGHT_MARGIN | 0;
             this.vehTypeIcon.y = (this.vehNameTf.textHeight - this.vehTypeIcon.height >> 1) + TF_BORDER_SIZE;
             this._headerContainer.x = width - this._headerContainer.width >> 1;
             this._headerContainer.y = HEADER_OFFSET_Y + this._offsetDependsOnScreenHeight;

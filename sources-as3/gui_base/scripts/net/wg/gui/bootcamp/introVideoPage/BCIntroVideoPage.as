@@ -23,7 +23,7 @@ package net.wg.gui.bootcamp.introVideoPage
    import net.wg.gui.components.controls.SoundButtonEx;
    import net.wg.infrastructure.base.meta.IBCIntroVideoPageMeta;
    import net.wg.infrastructure.base.meta.impl.BCIntroVideoPageMeta;
-   import net.wg.infrastructure.uilogger.bootcamp.LoadingPageLogger;
+   import net.wg.infrastructure.uilogging.deprecated.bootcamp.LoadingPageLogger;
    import net.wg.utils.IScheduler;
    import net.wg.utils.StageSizeBoundaries;
    import org.idmedia.as3commons.util.StringUtils;

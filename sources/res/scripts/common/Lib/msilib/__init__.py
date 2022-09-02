@@ -1,5 +1,5 @@
 from _msi import *
-import os, string, re, sys
+import glob, os, re, string, sys
 AMD64 = 'AMD64' in sys.version
 Itanium = 'Itanium' in sys.version
 Win64 = AMD64 or Itanium
@@ -269,7 +269,7 @@ class Directory:
         if Win64:
             flags |= 256
         if keyfile:
-            keyid = self.cab.gen_id(self.absolute, keyfile)
+            keyid = self.cab.gen_id(keyfile)
             self.keyfiles[keyfile] = keyid
         else:
             keyid = None
@@ -319,8 +319,6 @@ class Directory:
                 pos += 1
                 if pos in (10, 100, 1000):
                     prefix = prefix[:-1]
-            else:
-                continue
 
         self.short_names.add(file)
         return file

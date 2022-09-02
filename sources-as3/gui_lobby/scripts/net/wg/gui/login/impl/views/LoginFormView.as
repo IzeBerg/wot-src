@@ -27,7 +27,7 @@ package net.wg.gui.login.impl.views
    public class LoginFormView extends UIComponentEx implements ILoginFormView
    {
       
-      private static const MAX_SERVER_ROW_COUNT:Number = 12;
+      private static const MAX_SERVER_ROW_COUNT:uint = 12;
       
       public static const INV_ALL_DATA:String = "inv_allData";
       
@@ -51,13 +51,18 @@ package net.wg.gui.login.impl.views
          super();
       }
       
+      private static function checkListItemDisabledFunction(param1:ServerVO) : Boolean
+      {
+         return param1.csisStatus == ServerCsisState.NOT_AVAILABLE || !param1.haveAccess;
+      }
+      
       override protected function configUI() : void
       {
          super.configUI();
          App.utils.styleSheetManager.setLinkStyle(this._message);
          this.submit.soundType = SoundTypes.RED_BTN;
          this.submit.addEventListener(ButtonEvent.CLICK,this.onSubmitClickHandler);
-         this._server.checkItemDisabledFunction = this.checkListItemDisabledFunction;
+         this._server.checkItemDisabledFunction = checkListItemDisabledFunction;
          this._server.addEventListener(DropdownMenuEvent.SHOW_DROP_DOWN,this.onServerShowDropDownHandler);
          this._server.addEventListener(DropdownMenuEvent.CLOSE_DROP_DOWN,this.onServerCloseDropDownHandler);
          this._server.addEventListener(ListEvent.INDEX_CHANGE,this.onServerIndexChangeHandler);
@@ -65,19 +70,24 @@ package net.wg.gui.login.impl.views
          this._message.addEventListener(MouseEvent.CLICK,this.onMessageClickHandler);
       }
       
-      override protected function onDispose() : void
+      override protected function onBeforeDispose() : void
       {
-         this._data = null;
-         this.submit.removeEventListener(ButtonEvent.CLICK,this.onSubmitClickHandler);
-         this.submit.dispose();
-         this.submit = null;
-         this._message.removeEventListener(TextEvent.LINK,this.onMessageLinkHandler);
-         this._message.removeEventListener(MouseEvent.CLICK,this.onMessageClickHandler);
-         this._message.styleSheet = null;
-         this._message = null;
          this._server.removeEventListener(DropdownMenuEvent.SHOW_DROP_DOWN,this.onServerShowDropDownHandler);
          this._server.removeEventListener(DropdownMenuEvent.CLOSE_DROP_DOWN,this.onServerCloseDropDownHandler);
          this._server.removeEventListener(ListEvent.INDEX_CHANGE,this.onServerIndexChangeHandler);
+         this._message.removeEventListener(TextEvent.LINK,this.onMessageLinkHandler);
+         this._message.removeEventListener(MouseEvent.CLICK,this.onMessageClickHandler);
+         this.submit.removeEventListener(ButtonEvent.CLICK,this.onSubmitClickHandler);
+         super.onBeforeDispose();
+      }
+      
+      override protected function onDispose() : void
+      {
+         this._data = null;
+         this.submit.dispose();
+         this.submit = null;
+         this._message.styleSheet = null;
+         this._message = null;
          this._server.dispose();
          this._server = null;
          super.onDispose();
@@ -86,11 +96,7 @@ package net.wg.gui.login.impl.views
       override protected function draw() : void
       {
          super.draw();
-         if(!this._data)
-         {
-            return;
-         }
-         if(isInvalid(INV_ALL_DATA))
+         if(this._data && isInvalid(INV_ALL_DATA))
          {
             this.redrawAll();
          }
@@ -165,7 +171,8 @@ package net.wg.gui.login.impl.views
       
       protected function getSelectedServerName() : String
       {
-         var _loc1_:Number = this.server.selectedIndex;
+         var _loc1_:int = 0;
+         _loc1_ = this.server.selectedIndex;
          var _loc2_:ServerVO = ServerVO(this.server.dataProvider.requestItemAt(_loc1_));
          if(_loc2_ != null)
          {
@@ -186,11 +193,6 @@ package net.wg.gui.login.impl.views
       protected function submitDispatch() : void
       {
          dispatchEvent(new LoginEvent(LoginEvent.SUBMIT,true,false));
-      }
-      
-      private function checkListItemDisabledFunction(param1:ServerVO) : Boolean
-      {
-         return param1.csisStatus == ServerCsisState.NOT_AVAILABLE;
       }
       
       private function dispatchServerEvent(param1:Boolean) : void

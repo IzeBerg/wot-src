@@ -1,4 +1,4 @@
-import logging, itertools
+import itertools
 from .patcomp import PatternCompiler
 from . import pygram
 from .fixer_util import does_tree_import
@@ -33,7 +33,6 @@ class BaseFix(object):
 
     def set_filename(self, filename):
         self.filename = filename
-        self.logger = logging.getLogger(filename)
 
     def match(self, node):
         results = {'node': node}

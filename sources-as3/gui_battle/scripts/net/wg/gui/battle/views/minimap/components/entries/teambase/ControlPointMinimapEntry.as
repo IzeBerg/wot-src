@@ -28,11 +28,6 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
          this.checkForColorBlindMode();
       }
       
-      private function checkForColorBlindMode() : void
-      {
-         gotoAndStop(!!App.colorSchemeMgr.getIsColorBlindS() ? COLOR_BLIND_FRAME : NORMAL_COLOR_FRAME);
-      }
-      
       override protected function SetAtlasPlaceholderVisible(param1:Boolean) : void
       {
          if(this.atlasPlaceholder == null)
@@ -42,25 +37,31 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
          this.atlasPlaceholder.visible = param1;
       }
       
-      public function setPointNumber(param1:int) : void
-      {
-         this._atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,TeamBaseMinimapEntryConst.CONTROL_POINT_ATLAS_ITEM_NAME + "_" + param1,this.atlasPlaceholder.graphics,"",true);
-         App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeChangeHandler);
-      }
-      
-      private function onColorSchemeChangeHandler(param1:ColorSchemeEvent) : void
-      {
-         storeFrameAnimations();
-         this.checkForColorBlindMode();
-         setState(getCurrentState(),false);
-      }
-      
       override protected function onDispose() : void
       {
+         App.colorSchemeMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeMgrSchemasUpdatedHandler);
          MinimapEntryController.instance.unregisterScalableEntry(this);
          this.atlasPlaceholder = null;
          this._atlasManager = null;
          super.onDispose();
+      }
+      
+      public function setPointNumber(param1:int) : void
+      {
+         this._atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,TeamBaseMinimapEntryConst.CONTROL_POINT_ATLAS_ITEM_NAME + "_" + param1,this.atlasPlaceholder.graphics,"",true);
+         App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeMgrSchemasUpdatedHandler);
+      }
+      
+      private function checkForColorBlindMode() : void
+      {
+         gotoAndStop(!!App.colorSchemeMgr.getIsColorBlindS() ? COLOR_BLIND_FRAME : NORMAL_COLOR_FRAME);
+      }
+      
+      private function onColorSchemeMgrSchemasUpdatedHandler(param1:ColorSchemeEvent) : void
+      {
+         storeFrameAnimations();
+         this.checkForColorBlindMode();
+         setState(getCurrentState(),false);
       }
    }
 }

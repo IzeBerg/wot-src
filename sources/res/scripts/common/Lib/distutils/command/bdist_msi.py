@@ -65,7 +65,7 @@ class bdist_msi(Command):
       'do not compile .py to .pyc on the target system'),
      (
       'no-target-optimize', 'o',
-      'do not compile .py to .pyo (optimized)on the target system'),
+      'do not compile .py to .pyo (optimized) on the target system'),
      (
       'dist-dir=', 'd',
       'directory to put final built distributions in'),
@@ -74,7 +74,7 @@ class bdist_msi(Command):
       'skip rebuilding everything (for testing/debugging)'),
      (
       'install-script=', None,
-      'basename of installation script to be run afterinstallation or before deinstallation'),
+      'basename of installation script to be run after installation or before deinstallation'),
      (
       'pre-install-script=', None,
       'Fully qualified filename of a script to be run before any files are installed.  This script need not be in the distribution')]

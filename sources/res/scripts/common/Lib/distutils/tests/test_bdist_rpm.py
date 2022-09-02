@@ -1,5 +1,10 @@
 import unittest, sys, os, tempfile, shutil
 from test.test_support import run_unittest
+try:
+    import zlib
+except ImportError:
+    zlib = None
+
 from distutils.core import Distribution
 from distutils.command.bdist_rpm import bdist_rpm
 from distutils.tests import support
@@ -8,7 +13,7 @@ from distutils import spawn
 from distutils.errors import DistutilsExecError
 SETUP_PY = "from distutils.core import setup\nimport foo\n\nsetup(name='foo', version='0.1', py_modules=['foo'],\n      url='xxx', author='xxx', author_email='xxx')\n\n"
 
-class BuildRpmTestCase(support.TempdirManager, support.LoggingSilencer, unittest.TestCase):
+class BuildRpmTestCase(support.TempdirManager, support.EnvironGuard, support.LoggingSilencer, unittest.TestCase):
 
     def setUp(self):
         super(BuildRpmTestCase, self).setUp()
@@ -22,10 +27,12 @@ class BuildRpmTestCase(support.TempdirManager, support.LoggingSilencer, unittest
         super(BuildRpmTestCase, self).tearDown()
 
     @unittest.skipUnless(sys.platform.startswith('linux'), 'spurious sdtout/stderr output under Mac OS X')
+    @unittest.skipUnless(zlib, 'requires zlib')
     @unittest.skipIf(find_executable('rpm') is None, 'the rpm command is not found')
     @unittest.skipIf(find_executable('rpmbuild') is None, 'the rpmbuild command is not found')
     def test_quiet(self):
         tmp_dir = self.mkdtemp()
+        os.environ['HOME'] = tmp_dir
         pkg_dir = os.path.join(tmp_dir, 'foo')
         os.mkdir(pkg_dir)
         self.write_file((pkg_dir, 'setup.py'), SETUP_PY)
@@ -51,10 +58,12 @@ class BuildRpmTestCase(support.TempdirManager, support.LoggingSilencer, unittest
         self.assertIn(('bdist_rpm', 'any', 'dist/foo-0.1-1.noarch.rpm'), dist.dist_files)
 
     @unittest.skipUnless(sys.platform.startswith('linux'), 'spurious sdtout/stderr output under Mac OS X')
+    @unittest.skipUnless(zlib, 'requires zlib')
     @unittest.skipIf(find_executable('rpm') is None, 'the rpm command is not found')
     @unittest.skipIf(find_executable('rpmbuild') is None, 'the rpmbuild command is not found')
     def test_no_optimize_flag(self):
         tmp_dir = self.mkdtemp()
+        os.environ['HOME'] = tmp_dir
         pkg_dir = os.path.join(tmp_dir, 'foo')
         os.mkdir(pkg_dir)
         self.write_file((pkg_dir, 'setup.py'), SETUP_PY)

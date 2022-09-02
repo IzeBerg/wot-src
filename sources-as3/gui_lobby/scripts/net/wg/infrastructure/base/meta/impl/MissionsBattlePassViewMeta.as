@@ -1,8 +1,8 @@
 package net.wg.infrastructure.base.meta.impl
 {
-   import net.wg.gui.lobby.missions.MissionsViewBase;
+   import net.wg.gui.lobby.missions.MissionsMultipleGFContainerView;
    
-   public class MissionsBattlePassViewMeta extends MissionsViewBase
+   public class MissionsBattlePassViewMeta extends MissionsMultipleGFContainerView
    {
        
       

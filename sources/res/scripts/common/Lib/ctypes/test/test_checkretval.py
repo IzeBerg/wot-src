@@ -1,5 +1,6 @@
 import unittest
 from ctypes import *
+from ctypes.test import need_symbol
 
 class CHECKED(c_int):
 
@@ -23,15 +24,10 @@ class Test(unittest.TestCase):
         self.assertEqual(42, dll._testfunc_p_p(42))
         return
 
-    try:
-        oledll
-    except NameError:
-        pass
-    else:
-
-        def test_oledll(self):
-            self.assertRaises(WindowsError, oledll.oleaut32.CreateTypeLib2, 0, None, None)
-            return
+    @need_symbol('oledll')
+    def test_oledll(self):
+        self.assertRaises(WindowsError, oledll.oleaut32.CreateTypeLib2, 0, None, None)
+        return
 
 
 if __name__ == '__main__':

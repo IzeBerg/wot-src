@@ -206,7 +206,7 @@ class shlex:
                     if self.debug >= 2:
                         print 'shlex: I see punctuation in word state'
                     self.state = ' '
-                    if self.token:
+                    if self.token or self.posix and quoted:
                         break
                     else:
                         continue
@@ -265,6 +265,5 @@ if __name__ == '__main__':
         tt = lexer.get_token()
         if tt:
             print 'Token: ' + repr(tt)
-    else:
-        break
-        continue
+        else:
+            break

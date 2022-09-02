@@ -15,15 +15,31 @@ package net.wg.gui.battle.views.minimap
          super();
       }
       
-      public function as_setVisible(param1:Boolean) : void
+      public function as_disableHintPanel() : void
       {
-         visible = param1;
-         dispatchEvent(new MinimapEvent(MinimapEvent.VISIBILITY_CHANGED));
+      }
+      
+      public function as_enableHintPanelWithData(param1:Boolean, param2:Boolean) : void
+      {
       }
       
       public function as_setAlpha(param1:Number) : void
       {
          this.alpha = param1;
+      }
+      
+      public function as_setBackground(param1:String) : void
+      {
+      }
+      
+      public function as_setSize(param1:int) : void
+      {
+      }
+      
+      public function as_setVisible(param1:Boolean) : void
+      {
+         visible = param1;
+         dispatchEvent(new MinimapEvent(MinimapEvent.VISIBILITY_CHANGED));
       }
       
       public function as_showVehiclesName(param1:Boolean) : void
@@ -38,23 +54,30 @@ package net.wg.gui.battle.views.minimap
          }
       }
       
-      public function as_setBackground(param1:String) : void
-      {
-      }
-      
-      public function as_setSize(param1:int) : void
-      {
-      }
-      
-      public function as_enableHintPanelWithData(param1:Boolean, param2:Boolean) : void
-      {
-      }
-      
-      public function as_disableHintPanel() : void
-      {
-      }
-      
       public function as_updateHintPanelData(param1:Boolean, param2:Boolean) : void
+      {
+      }
+      
+      public function getMessageCoordinate() : Number
+      {
+         return this.currentHeight - this.currentTopLeftPoint.y;
+      }
+      
+      public function getMinimapRectBySizeIndex(param1:int) : Rectangle
+      {
+         return new Rectangle();
+      }
+      
+      public function getMinmapHeightBySizeIndex(param1:int) : int
+      {
+         return 0;
+      }
+      
+      public function setAllowedSizeIndex(param1:Number) : void
+      {
+      }
+      
+      public function updateSizeIndex(param1:Boolean) : void
       {
       }
       
@@ -76,29 +99,6 @@ package net.wg.gui.battle.views.minimap
       public function get currentSizeIndex() : Number
       {
          return -1;
-      }
-      
-      public function getMinimapRectBySizeIndex(param1:int) : Rectangle
-      {
-         return new Rectangle();
-      }
-      
-      public function getMessageCoordinate() : Number
-      {
-         return this.currentHeight - this.currentTopLeftPoint.y;
-      }
-      
-      public function getMinmapHeightBySizeIndex(param1:int) : Number
-      {
-         return 0;
-      }
-      
-      public function setAllowedSizeIndex(param1:Number) : void
-      {
-      }
-      
-      public function updateSizeIndex(param1:Boolean) : void
-      {
       }
    }
 }

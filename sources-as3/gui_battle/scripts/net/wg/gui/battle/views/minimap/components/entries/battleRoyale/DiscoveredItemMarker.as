@@ -33,7 +33,7 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
          alpha = 0;
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
          this._disposed = true;
          this.clearTweens();
@@ -48,13 +48,17 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
          this._fadeOutTween.paused = false;
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function show(param1:String, param2:Number, param3:String = "") : void
       {
          this.updateIcon(param1,param3);
          this.clearTweens();
-         var _loc4_:int = DELAY_MAX_TIE_MS * Math.random();
          this._fadeInTween = new Tween(param2,this,{"alpha":1});
-         this._fadeInTween.delay = _loc4_;
+         this._fadeInTween.delay = DELAY_MAX_TIE_MS * Math.random();
          this._fadeInTween.paused = false;
       }
       
@@ -85,11 +89,6 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
             this._fadeOutTween.dispose();
             this._fadeOutTween = null;
          }
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

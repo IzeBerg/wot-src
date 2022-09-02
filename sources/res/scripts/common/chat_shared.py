@@ -1556,7 +1556,9 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'recertificationFinancial',
  'resourceWellOperation',
  'resourceWellReward',
- 'resourceWellNoVehicles'])
+ 'resourceWellNoVehicles',
+ 'customization2dProgressionChanged',
+ 'prbVehicleMaxScoutKick'])
 SYS_MESSAGE_IMPORTANCE = Enumeration('systemMessageImportance', [
  'normal',
  'high'])

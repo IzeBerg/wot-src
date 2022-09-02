@@ -1,7 +1,8 @@
 import unittest
 from ctypes import *
+from ctypes.test import need_symbol
 from struct import calcsize
-import _testcapi
+import _testcapi, _ctypes_test
 
 class SubclassesTest(unittest.TestCase):
 
@@ -140,7 +141,7 @@ class StructureTestCase(unittest.TestCase):
         self.assertEqual(alignment(XX), alignment(X))
         self.assertEqual(sizeof(XX), calcsize('3s 3s 0s'))
 
-    def test_emtpy(self):
+    def test_empty(self):
 
         class X(Structure):
             _fields_ = []
@@ -347,11 +348,8 @@ class StructureTestCase(unittest.TestCase):
         self.assertEqual(p.phone.number, '5678')
         self.assertEqual(p.age, 5)
 
+    @need_symbol('c_wchar')
     def test_structures_with_wchar(self):
-        try:
-            c_wchar
-        except NameError:
-            return
 
         class PersonW(Structure):
             _fields_ = [
@@ -420,6 +418,13 @@ class StructureTestCase(unittest.TestCase):
             return (
              detail.__class__, str(detail))
 
+    @unittest.skip('test disabled')
+    def test_subclass_creation(self):
+        meta = type(Structure)
+        cls, msg = self.get_except(meta, 'X', (Structure,), {})
+        self.assertEqual((cls, msg), (
+         AttributeError, "class must define a '_fields_' attribute"))
+
     def test_abstract_class(self):
 
         class X(Structure):
@@ -458,6 +463,31 @@ class StructureTestCase(unittest.TestCase):
         z = Z(1)
         self.assertEqual((z.a, z.b, z.c, z.d, z.e, z.f), (1, 0, 0, 0, 0, 0))
         self.assertRaises(TypeError, lambda : Z(1, 2, 3, 4, 5, 6, 7))
+
+    def test_pass_by_value(self):
+
+        class X(Structure):
+            _fields_ = [
+             (
+              'first', c_ulong),
+             (
+              'second', c_ulong),
+             (
+              'third', c_ulong)]
+
+        s = X()
+        s.first = 3735928559
+        s.second = 3405691582
+        s.third = 195894762
+        dll = CDLL(_ctypes_test.__file__)
+        func = dll._testfunc_large_struct_update_value
+        func.argtypes = (X,)
+        func.restype = None
+        func(s)
+        self.assertEqual(s.first, 3735928559)
+        self.assertEqual(s.second, 3405691582)
+        self.assertEqual(s.third, 195894762)
+        return
 
 
 class PointerMemberTestCase(unittest.TestCase):

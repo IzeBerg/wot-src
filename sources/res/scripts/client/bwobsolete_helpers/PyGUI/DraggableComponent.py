@@ -39,20 +39,20 @@ class DraggableComponent:
 
 
 def _horzAnchorOffset(component):
-    if component.horizontalAnchor == 'LEFT':
+    if component.horizontalAnchor == GUI.Simple.eHAnchor.LEFT:
         return 0
-    if component.horizontalAnchor == 'CENTER':
+    if component.horizontalAnchor == GUI.Simple.eHAnchor.CENTER:
         return -component.width / 2.0
-    if component.horizontalAnchor == 'RIGHT':
+    if component.horizontalAnchor == GUI.Simple.eHAnchor.RIGHT:
         return -component.width
 
 
 def _vertAnchorOffset(component):
-    if component.verticalAnchor == 'TOP':
+    if component.verticalAnchor == GUI.Simple.eVAnchor.RIGHT:
         return 0
-    if component.verticalAnchor == 'CENTER':
+    if component.verticalAnchor == GUI.Simple.eVAnchor.CENTER:
         return component.height / 2.0
-    if component.verticalAnchor == 'BOTTOM':
+    if component.verticalAnchor == GUI.Simple.eVAnchor.BOTTOM:
         return component.height
 
 
@@ -117,7 +117,7 @@ class ComponentDragManager:
             startPos = tuple(self.component.position)
             if self.horzDrag:
                 horzMode = self.component.horizontalPositionMode
-                self.component.horizontalPositionMode = 'LEGACY'
+                self.component.horizontalPositionMode = GUI.Simple.ePositionMode.LEGACY
                 self.component.position.x = cpos.x
                 x = cpos.x
                 self.component.horizontalPositionMode = horzMode
@@ -125,7 +125,7 @@ class ComponentDragManager:
                     self.restrictHorizontally()
             if self.vertDrag:
                 vertMode = self.component.verticalPositionMode
-                self.component.verticalPositionMode = 'LEGACY'
+                self.component.verticalPositionMode = GUI.Simple.ePositionMode.LEGACY
                 self.component.position.y = cpos.y
                 self.component.verticalPositionMode = vertMode
                 if self.restrictToParent:
@@ -143,8 +143,8 @@ class ComponentDragManager:
         else:
             horzMode = self.component.horizontalPositionMode
             widthMode = self.component.widthMode
-            self.component.horizontalPositionMode = 'CLIP'
-            self.component.widthMode = 'CLIP'
+            self.component.horizontalPositionMode = GUI.Simple.ePositionMode.CLIP
+            self.component.widthMode = GUI.Simple.eSizeMode.CLIP
             anchorOffsetX = _horzAnchorOffset(self.component)
             restricted = True
             if self.component.position.x < -1.0 - anchorOffsetX:
@@ -163,8 +163,8 @@ class ComponentDragManager:
         else:
             vertMode = self.component.verticalPositionMode
             heightMode = self.component.heightMode
-            self.component.verticalPositionMode = 'CLIP'
-            self.component.heightMode = 'CLIP'
+            self.component.verticalPositionMode = GUI.Simple.ePositionMode.CLIP
+            self.component.heightMode = GUI.Simple.eSizeMode.CLIP
             anchorOffsetY = _vertAnchorOffset(self.component)
             restricted = True
             if self.component.position.y < -1.0 + anchorOffsetY:

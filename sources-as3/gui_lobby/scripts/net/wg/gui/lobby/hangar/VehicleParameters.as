@@ -257,7 +257,6 @@ package net.wg.gui.lobby.hangar
       {
          if(this.rendererBG.visible)
          {
-            App.soundMgr.playControlsSnd(SoundManagerStates.SND_OVER,SoundTypes.ITEM_RDR,null);
             this.rendererBG.visible = false;
          }
       }

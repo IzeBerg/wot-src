@@ -57,11 +57,6 @@ package net.wg.gui.battle.views.minimap.components.entries.epic
          this.setHeadquarterIcon(this._statePrefix);
       }
       
-      private function hasColorBlindMode() : Boolean
-      {
-         return this.hqIdColorBlind != null && this.animationColorblind != null && this.replyColorBlind != null;
-      }
-      
       override protected function onDispose() : void
       {
          this.hqIconAtlasPlaceholder = null;
@@ -87,55 +82,6 @@ package net.wg.gui.battle.views.minimap.components.entries.epic
          this.hqLetter = null;
          App.colorSchemeMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemasUpdatedHandler);
          super.onDispose();
-      }
-      
-      public function setDead(param1:Boolean) : void
-      {
-         this._stateSuffix = !!param1 ? EpicMinimapEntryConst.SUFIX_DESTROYED : EMPTY_SUFFIX;
-         this.setHeadquarterIcon(this._statePrefix + this._stateSuffix);
-         if(param1)
-         {
-            gotoAndPlay(DESTROYED_FRAME);
-         }
-         else
-         {
-            gotoAndStop(DEFAULT_FRAME);
-         }
-      }
-      
-      public function setIdentifier(param1:int) : void
-      {
-         App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemasUpdatedHandler);
-         this.setHeadquarterLetter(param1);
-         this._id = param1;
-      }
-      
-      public function setOwningTeam(param1:Boolean) : void
-      {
-         this._isPlayerTeam = param1;
-         var _loc2_:String = !!param1 ? EpicMinimapEntryConst.SUFIX_ALLY : this.getEnemySuffix();
-         this._statePrefix = EpicMinimapEntryConst.HEADQUARTER_ATLAS_ITEM_NAME + _loc2_;
-         this.setHeadquarterIcon(this._statePrefix);
-         this.hqId.setActiveState(ActionMarkerStates.REPLIED_ME,this._id);
-         if(this.hasColorBlindMode())
-         {
-            this.hqIdColorBlind.setActiveState(ActionMarkerStates.REPLIED_ME,this._id);
-         }
-      }
-      
-      private function setHeadquarterIcon(param1:String) : void
-      {
-         this._atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,param1,this.hqIconAtlasPlaceholder.graphics,EpicMinimapEntryConst.EMPTY_DOUBLE_STR,true);
-      }
-      
-      private function setHeadquarterLetter(param1:int) : void
-      {
-         if(param1 < 1 || param1 > HQ_ID_MAX)
-         {
-            DebugUtils.LOG_WARNING(IDX_WARNING_TEXT,param1);
-            return;
-         }
-         this.hqLetter.gotoAndStop(param1);
       }
       
       override protected function setAttackState(param1:Boolean) : void
@@ -200,14 +146,58 @@ package net.wg.gui.battle.views.minimap.components.entries.epic
          }
       }
       
-      private function onColorSchemasUpdatedHandler(param1:ColorSchemeEvent) : void
+      public function setDead(param1:Boolean) : void
       {
-         storeFrameAnimations();
-         this.checkForColorBlindMode();
-         setState(getCurrentState(),false);
-         var _loc2_:String = !!this._isPlayerTeam ? EpicMinimapEntryConst.SUFIX_ALLY : this.getEnemySuffix();
-         this._statePrefix = EpicMinimapEntryConst.HEADQUARTER_ATLAS_ITEM_NAME + _loc2_;
+         this._stateSuffix = !!param1 ? EpicMinimapEntryConst.SUFIX_DESTROYED : EMPTY_SUFFIX;
          this.setHeadquarterIcon(this._statePrefix + this._stateSuffix);
+         if(param1)
+         {
+            gotoAndPlay(DESTROYED_FRAME);
+         }
+         else
+         {
+            gotoAndStop(DEFAULT_FRAME);
+         }
+      }
+      
+      public function setIdentifier(param1:int) : void
+      {
+         App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemasUpdatedHandler);
+         this.setHeadquarterLetter(param1);
+         this._id = param1;
+      }
+      
+      public function setOwningTeam(param1:Boolean) : void
+      {
+         this._isPlayerTeam = param1;
+         var _loc2_:String = !!param1 ? EpicMinimapEntryConst.SUFIX_ALLY : this.getEnemySuffix();
+         this._statePrefix = EpicMinimapEntryConst.HEADQUARTER_ATLAS_ITEM_NAME + _loc2_;
+         this.setHeadquarterIcon(this._statePrefix);
+         this.hqId.setActiveState(ActionMarkerStates.REPLIED_ME,this._id);
+         if(this.hasColorBlindMode())
+         {
+            this.hqIdColorBlind.setActiveState(ActionMarkerStates.REPLIED_ME,this._id);
+         }
+      }
+      
+      private function hasColorBlindMode() : Boolean
+      {
+         return this.hqIdColorBlind != null && this.animationColorblind != null && this.replyColorBlind != null;
+      }
+      
+      private function setHeadquarterIcon(param1:String) : void
+      {
+         this._atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,param1,this.hqIconAtlasPlaceholder.graphics,EpicMinimapEntryConst.EMPTY_DOUBLE_STR,true);
+      }
+      
+      private function setHeadquarterLetter(param1:int) : void
+      {
+         if(param1 < 1 || param1 > HQ_ID_MAX)
+         {
+            DebugUtils.LOG_WARNING(IDX_WARNING_TEXT,param1);
+            return;
+         }
+         this.hqLetter.gotoAndStop(param1);
       }
       
       private function checkForColorBlindMode() : void
@@ -228,6 +218,16 @@ package net.wg.gui.battle.views.minimap.components.entries.epic
       private function getEnemySuffix() : String
       {
          return !!this._isColorBlindMode ? EpicMinimapEntryConst.SUFIX_COLORBLIND : EpicMinimapEntryConst.SUFIX_ENEMY;
+      }
+      
+      private function onColorSchemasUpdatedHandler(param1:ColorSchemeEvent) : void
+      {
+         storeFrameAnimations();
+         this.checkForColorBlindMode();
+         setState(getCurrentState(),false);
+         var _loc2_:String = !!this._isPlayerTeam ? EpicMinimapEntryConst.SUFIX_ALLY : this.getEnemySuffix();
+         this._statePrefix = EpicMinimapEntryConst.HEADQUARTER_ATLAS_ITEM_NAME + _loc2_;
+         this.setHeadquarterIcon(this._statePrefix + this._stateSuffix);
       }
    }
 }

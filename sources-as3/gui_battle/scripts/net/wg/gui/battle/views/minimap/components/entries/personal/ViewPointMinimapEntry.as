@@ -12,7 +12,7 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
    public class ViewPointMinimapEntry extends BattleUIComponent implements IMinimapEntryWithNonScaleContent
    {
       
-      private static const YAW_CORRECTION_ANGLE:Number = 180;
+      private static const YAW_CORRECTION_ANGLE:uint = 180;
       
       private static const INVALID_YAW_LIMIT:int = InvalidationType.SYSTEM_FLAGS_BORDER << 1;
        
@@ -25,9 +25,9 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
       
       private var _atlasManager:IAtlasManager;
       
-      private var _leftYawLimit:Number = -1;
+      private var _leftYawLimit:int = -1;
       
-      private var _rightYawLimit:Number = -1;
+      private var _rightYawLimit:int = -1;
       
       private var _isLimitUpdated:Boolean = false;
       
@@ -50,7 +50,7 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
       override protected function draw() : void
       {
          super.draw();
-         if(isInvalid(INVALID_YAW_LIMIT) && this._isLimitUpdated)
+         if(this._isLimitUpdated && isInvalid(INVALID_YAW_LIMIT))
          {
             this.sectorLeft.rotation = this._leftYawLimit - YAW_CORRECTION_ANGLE;
             this.sectorLeft.visible = true;

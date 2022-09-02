@@ -16,12 +16,6 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
          super();
       }
       
-      public function playAnim(param1:String) : void
-      {
-         gotoAndStop(param1);
-         this.anim.play();
-      }
-      
       public final function dispose() : void
       {
          App.utils.asserter.assert(!this._isDisposed,"MarkerTopAnimation is already disposed!");
@@ -32,6 +26,12 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
       public function isDisposed() : Boolean
       {
          return this._isDisposed;
+      }
+      
+      public function playAnim(param1:String) : void
+      {
+         gotoAndStop(param1);
+         this.anim.play();
       }
    }
 }

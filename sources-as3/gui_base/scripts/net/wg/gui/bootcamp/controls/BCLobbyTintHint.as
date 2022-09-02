@@ -2,10 +2,9 @@ package net.wg.gui.bootcamp.controls
 {
    import fl.motion.easing.Linear;
    import fl.transitions.easing.Strong;
+   import flash.display.FrameLabel;
    import flash.display.MovieClip;
    import flash.events.Event;
-   import flash.utils.clearTimeout;
-   import flash.utils.setTimeout;
    import net.wg.gui.bootcamp.events.AppearEvent;
    import net.wg.utils.IScheduler;
    import scaleform.clik.motion.Tween;
@@ -17,9 +16,9 @@ package net.wg.gui.bootcamp.controls
       
       private static const DURATION_TIME_SCALE:int = 1000;
       
-      private static const DURATION_TIME_ALPHA:int = 500;
+      private static const FADE_OUT_TIME_ALPHA:int = 500;
       
-      private static const DURATION_TIME_ALPHA_SHORT:int = 100;
+      private static const FADE_OUT_TIME_ALPHA_SHORT:int = 100;
       
       private static const DURATION_TIME_STEP:int = 200;
       
@@ -31,11 +30,11 @@ package net.wg.gui.bootcamp.controls
       
       private static const DEF_COUNT_LINES:int = 3;
       
-      private static const FX_LINE:String = "fxLine";
-      
       private static const START_SCALE_LONG:Number = 1.25;
       
       private static const START_SCALE_SHORT:Number = 0.25;
+      
+      private static const COUNT_LINES_ERROR:String = "The number of lines must be greater" + " than the existing MovieClips in _linesMC";
        
       
       public var tint:MovieClip = null;
@@ -58,17 +57,15 @@ package net.wg.gui.bootcamp.controls
       
       private var _longScale:Number = 1.25;
       
+      private var _linesMC:Vector.<MovieClip>;
+      
       private var _lines:Number = 3;
       
-      private var _tweenArray:Array;
+      private var _fadeInTweens:Array;
       
-      private var _scaleTweenArray:Array;
-      
-      private var _timeoutArray:Array;
+      private var _fadeOutTweens:Array;
       
       private var _currentLoopStep:int = 0;
-      
-      private var _startedAnimations:int = 0;
       
       private var _isStarted:Boolean = false;
       
@@ -82,12 +79,13 @@ package net.wg.gui.bootcamp.controls
       
       public function BCLobbyTintHint()
       {
-         this._tweenArray = [];
-         this._scaleTweenArray = [];
-         this._timeoutArray = [];
+         this._fadeInTweens = [];
+         this._fadeOutTweens = [];
          this._scheduler = App.utils.scheduler;
          super();
          this.fxLine1.visible = this.fxLine2.visible = this.fxLine3.visible = this.fxLine4.visible = false;
+         this._linesMC = new <MovieClip>[this.fxLine1,this.fxLine2,this.fxLine3,this.fxLine4];
+         this.addVoidFrameScript(this.onLabelVoidFrameScript);
       }
       
       private static function setupBorder(param1:MovieClip, param2:Number, param3:Number, param4:Boolean, param5:Boolean) : void
@@ -137,142 +135,216 @@ package net.wg.gui.bootcamp.controls
          param1.y = 0;
       }
       
+      private static function removeTweens(param1:Array) : void
+      {
+         var _loc2_:int = param1.length;
+         var _loc3_:int = 0;
+         while(_loc3_ < _loc2_)
+         {
+            param1[_loc3_].dispose();
+            _loc3_++;
+         }
+         param1.splice(0,_loc2_);
+      }
+      
+      override public function setProperties(param1:Number, param2:Number, param3:Boolean) : void
+      {
+         if(this._lastWidth != param1 || this._lastHeight != param2)
+         {
+            this._lastWidth = param1;
+            this._lastHeight = param2;
+            setupBorder(this.border,param1,param2,true,!this._isFlag);
+            setupTint(this.tint.mc,param1,param2,!this._isFlag);
+            this.setupLines(param1,param2,!this._isFlag);
+            if(!this._isStarted)
+            {
+               gotoAndStop(1);
+               this.startItemAnimation();
+               this._isStarted = true;
+            }
+            if(!this._isFlag)
+            {
+               this.resizeTweens();
+            }
+         }
+      }
+      
+      override protected function onDispose() : void
+      {
+         this.addVoidFrameScript(null);
+         stop();
+         this.tint = null;
+         this.border = null;
+         this.fxLine1 = null;
+         this.fxLine2 = null;
+         this.fxLine3 = null;
+         this.fxLine4 = null;
+         this.disposeTweens();
+         this._fadeInTweens = null;
+         this._fadeOutTweens = null;
+         this._scheduler = null;
+         this._linesMC.splice(0,this._linesMC.length);
+         this._linesMC = null;
+         super.onDispose();
+      }
+      
+      private function runFadeInFxLine(param1:int) : void
+      {
+         var _loc2_:Tween = null;
+         if(!this._fadeInTweens[param1])
+         {
+            _loc2_ = this.createFadeInTween(param1);
+            if(_loc2_)
+            {
+               this._fadeInTweens[param1] = _loc2_;
+            }
+         }
+         else
+         {
+            _loc2_ = this._fadeInTweens[param1];
+            this.prepareFirstAnimation(MovieClip(_loc2_.target));
+         }
+         var _loc3_:Number = DURATION_TIME_STEP * param1;
+         _loc2_.position = -_loc3_;
+         _loc2_.paused = false;
+      }
+      
+      private function createFadeInTween(param1:int) : Tween
+      {
+         var _loc2_:MovieClip = this._linesMC[param1];
+         if(!_loc2_)
+         {
+            return null;
+         }
+         _loc2_.visible = true;
+         var _loc3_:Number = _loc2_.scaleX;
+         var _loc4_:Number = _loc2_.scaleY;
+         this.prepareFirstAnimation(_loc2_);
+         var _loc5_:Function = !!this._fastDisappear ? Linear.easeNone : Strong.easeOut;
+         return new Tween(this._tweenTime,_loc2_,{
+            "alpha":1,
+            "scaleX":_loc3_,
+            "scaleY":_loc4_
+         },{
+            "ease":_loc5_,
+            "onComplete":this.onFadeInComplete,
+            "data":param1
+         });
+      }
+      
+      private function onFadeInComplete(param1:Tween) : void
+      {
+         this.runFadeOutTween(int(param1.data),MovieClip(param1.target));
+      }
+      
+      private function runFadeOutTween(param1:int, param2:MovieClip) : void
+      {
+         var _loc3_:Tween = null;
+         if(!this._fadeOutTweens[param1])
+         {
+            _loc3_ = this.createFadeoutTween(param1,param2);
+            if(_loc3_)
+            {
+               this._fadeOutTweens[param1] = _loc3_;
+            }
+         }
+         else
+         {
+            _loc3_ = this._fadeOutTweens[param1];
+         }
+         _loc3_.paused = false;
+      }
+      
+      private function createFadeoutTween(param1:int, param2:MovieClip) : Tween
+      {
+         var _loc3_:int = !!this._fastDisappear ? int(FADE_OUT_TIME_ALPHA_SHORT) : int(FADE_OUT_TIME_ALPHA);
+         var _loc4_:Function = param1 == this._lines - 1 ? this.finishLastLineAnimation : null;
+         return new Tween(_loc3_,param2,{"alpha":0},{
+            "ease":Strong.easeIn,
+            "fastTransform":false,
+            "onComplete":_loc4_,
+            "data":param1
+         });
+      }
+      
+      private function finishLastLineAnimation(param1:Tween) : void
+      {
+         gotoAndPlay(LABEL_DISAPPEAR);
+      }
+      
+      private function addVoidFrameScript(param1:Function) : void
+      {
+         var _loc2_:FrameLabel = null;
+         var _loc3_:int = currentLabels.length;
+         var _loc4_:uint = 0;
+         while(_loc4_ < _loc3_)
+         {
+            _loc2_ = currentLabels[_loc4_];
+            if(_loc2_.name == LABEL_VOID)
+            {
+               addFrameScript(_loc2_.frame - 1,this.onLabelVoidFrameScript);
+               break;
+            }
+            _loc4_++;
+         }
+      }
+      
+      private function onLabelVoidFrameScript() : void
+      {
+         ++this._currentLoopStep;
+         this.startItemAnimation();
+      }
+      
+      private function prepareFirstAnimation(param1:MovieClip) : void
+      {
+         param1.scaleX = this.getStartScaleX(param1);
+         param1.scaleY = this.getStartScaleY(param1);
+         param1.alpha = 0;
+      }
+      
+      private function resizeTweens() : void
+      {
+         var _loc1_:Array = null;
+         var _loc2_:Tween = null;
+         var _loc3_:int = 0;
+         if(this._fadeInTweens && this._fadeOutTweens.length >= this._lines)
+         {
+            _loc1_ = this._fadeOutTweens;
+            this._fadeOutTweens = [];
+            _loc3_ = 0;
+            while(_loc3_ < this._lines)
+            {
+               _loc2_ = this.createFadeInTween(_loc3_);
+               _loc2_.position = Tween(_loc1_[_loc3_]).position;
+               _loc3_++;
+            }
+            removeTweens(_loc1_);
+         }
+      }
+      
       private function setupLines(param1:Number, param2:Number, param3:Boolean) : void
       {
-         var _loc5_:MovieClip = null;
-         var _loc4_:int = 1;
-         while(_loc4_ <= this._lines)
+         var _loc4_:MovieClip = null;
+         var _loc5_:int = 0;
+         while(_loc5_ < this._lines)
          {
-            _loc5_ = getChildByName(FX_LINE + String(_loc4_)) as MovieClip;
+            _loc4_ = this._linesMC[_loc5_];
             if(param3)
             {
-               _loc5_.width = param1;
-               _loc5_.height = param2;
+               _loc4_.width = param1;
+               _loc4_.height = param2;
             }
-            _loc5_.x = param1 / 2;
-            _loc5_.y = param2 / 2;
-            _loc4_++;
+            _loc4_.x = param1 / 2;
+            _loc4_.y = param2 / 2;
+            _loc5_++;
          }
       }
       
       private function disposeTweens() : void
       {
-         var _loc1_:Tween = null;
-         if(this._tweenArray)
-         {
-            while(this._tweenArray.length > 0)
-            {
-               _loc1_ = this._tweenArray.pop();
-               _loc1_.paused = true;
-               _loc1_.dispose();
-            }
-         }
-         if(this._scaleTweenArray)
-         {
-            while(this._scaleTweenArray.length > 0)
-            {
-               _loc1_ = this._scaleTweenArray.pop();
-               _loc1_.paused = true;
-               _loc1_.dispose();
-            }
-         }
-         while(this._timeoutArray.length)
-         {
-            clearTimeout(this._timeoutArray.pop());
-         }
-         this._scheduler.cancelTask(this.finishItemAnimation);
-         this._scheduler.cancelTask(this.animItemStart);
-      }
-      
-      private function finishItemAnimation() : void
-      {
-         if(--this._startedAnimations <= 0)
-         {
-            gotoAndPlay(LABEL_DISAPPEAR);
-            this.disposeTweens();
-         }
-      }
-      
-      private function animFxLineFinish(param1:Tween) : void
-      {
-         var _loc2_:Tween = new Tween(!!this._fastDisappear ? Number(DURATION_TIME_ALPHA_SHORT) : Number(DURATION_TIME_ALPHA),param1.target,{"alpha":0},{
-            "ease":Strong.easeIn,
-            "onComplete":this.finishItemAnimation,
-            "fastTransform":false
-         });
-         this._tweenArray.push(_loc2_);
-      }
-      
-      private function animFxLineStart(param1:MovieClip) : void
-      {
-         if(param1 == null)
-         {
-            return;
-         }
-         param1.visible = true;
-         var _loc2_:Number = this.getStartScaleX(param1);
-         var _loc3_:Number = param1.scaleX;
-         var _loc4_:Number = this.getStartScaleY(param1);
-         var _loc5_:Number = param1.scaleY;
-         param1.scaleX = _loc2_;
-         param1.scaleY = _loc4_;
-         param1.alpha = 0;
-         var _loc6_:Function = !!this._fastDisappear ? Linear.easeNone : Strong.easeOut;
-         var _loc7_:Tween = new Tween(this._tweenTime,param1,{
-            "scaleX":_loc3_,
-            "scaleY":_loc5_
-         },{"ease":_loc6_});
-         var _loc8_:Tween = new Tween(this._tweenTime,param1,{"alpha":1},{
-            "ease":_loc6_,
-            "onComplete":this.animFxLineFinish,
-            "fastTransform":false
-         });
-         this._scaleTweenArray.push(_loc7_);
-         this._tweenArray.push(_loc8_);
-      }
-      
-      private function resizeTweens() : void
-      {
-         var _loc3_:Tween = null;
-         var _loc4_:MovieClip = null;
-         var _loc5_:Number = NaN;
-         var _loc6_:Number = NaN;
-         var _loc7_:Number = NaN;
-         var _loc8_:Number = NaN;
-         var _loc9_:Number = NaN;
-         var _loc10_:Number = NaN;
-         var _loc11_:Number = NaN;
-         var _loc12_:Tween = null;
-         if(this._scaleTweenArray == null)
-         {
-            return;
-         }
-         var _loc1_:int = this._scaleTweenArray.length;
-         var _loc2_:int = 0;
-         while(_loc2_ < _loc1_)
-         {
-            _loc3_ = this._scaleTweenArray[_loc2_];
-            if(!_loc3_.paused)
-            {
-               _loc4_ = MovieClip(_loc3_.target);
-               _loc5_ = _loc3_.position;
-               _loc6_ = _loc5_ / this._tweenTime;
-               _loc7_ = this.getStartScaleX(_loc4_);
-               _loc8_ = _loc4_.scaleX;
-               _loc9_ = this.getStartScaleY(_loc4_);
-               _loc10_ = _loc4_.scaleY;
-               _loc3_.paused = true;
-               _loc4_.scaleX = _loc7_ + (_loc8_ - _loc7_) * _loc6_;
-               _loc4_.scaleY = _loc9_ + (_loc10_ - _loc9_) * _loc6_;
-               _loc11_ = this._tweenTime - _loc5_;
-               _loc12_ = new Tween(_loc11_,_loc4_,{
-                  "scaleX":_loc8_,
-                  "scaleY":_loc10_
-               },{"ease":Strong.easeOut});
-               this._scaleTweenArray.push(_loc12_);
-            }
-            _loc2_++;
-         }
+         removeTweens(this._fadeInTweens);
+         removeTweens(this._fadeOutTweens);
+         this._scheduler.cancelTask(this.finishLastLineAnimation);
       }
       
       private function getStartScaleX(param1:MovieClip) : Number
@@ -293,42 +365,27 @@ package net.wg.gui.bootcamp.controls
          return this._longScale * param1.scaleY;
       }
       
-      private function onEnterFrameHandler(param1:Event) : void
-      {
-         if(currentLabel == LABEL_VOID)
-         {
-            removeEventListener(Event.ENTER_FRAME,this.onEnterFrameHandler);
-            ++this._currentLoopStep;
-            this.startItemAnimation();
-         }
-      }
-      
       private function animItemStart(param1:Number) : void
       {
          var _loc2_:int = 0;
-         var _loc3_:MovieClip = null;
          gotoAndPlay(LABEL_APPEAR);
-         addEventListener(Event.ENTER_FRAME,this.onEnterFrameHandler);
-         this._startedAnimations = param1;
          if(param1 > 0)
          {
-            _loc2_ = 1;
-            while(_loc2_ <= param1)
+            _loc2_ = 0;
+            while(_loc2_ < param1)
             {
-               _loc3_ = getChildByName(FX_LINE + String(_loc2_)) as MovieClip;
-               this._timeoutArray.push(setTimeout(this.animFxLineStart,DURATION_TIME_STEP * (_loc2_ - 1),_loc3_));
+               this.runFadeInFxLine(_loc2_);
                _loc2_++;
             }
          }
          else
          {
-            this._scheduler.scheduleTask(this.finishItemAnimation,this._tweenTime);
+            this._scheduler.scheduleTask(this.finishLastLineAnimation,this._tweenTime);
          }
       }
       
       private function startItemAnimation() : void
       {
-         this._scheduler.cancelTask(this.animItemStart);
          if(this._currentLoopStep == 0 || this._isCycle)
          {
             this.animItemStart(this._lines);
@@ -352,7 +409,14 @@ package net.wg.gui.bootcamp.controls
       
       public function set lines(param1:Number) : void
       {
-         this._lines = param1;
+         if(param1 <= this._linesMC.length)
+         {
+            this._lines = param1;
+         }
+         else
+         {
+            DebugUtils.LOG_ERROR(COUNT_LINES_ERROR);
+         }
       }
       
       public function set tweenTime(param1:Number) : void
@@ -363,45 +427,6 @@ package net.wg.gui.bootcamp.controls
       public function set fastDisappear(param1:Boolean) : void
       {
          this._fastDisappear = param1;
-      }
-      
-      override public function setProperties(param1:Number, param2:Number, param3:Boolean) : void
-      {
-         if(this._lastWidth != param1 || this._lastHeight != param2)
-         {
-            this._lastWidth = param1;
-            this._lastHeight = param2;
-            if(!this._isStarted)
-            {
-               gotoAndStop(1);
-               this.startItemAnimation();
-               this._isStarted = true;
-            }
-            setupBorder(this.border,param1,param2,true,!this._isFlag);
-            setupTint(this.tint.mc,param1,param2,!this._isFlag);
-            this.setupLines(param1,param2,!this._isFlag);
-            if(!this._isFlag)
-            {
-               this.resizeTweens();
-            }
-         }
-      }
-      
-      override protected function onDispose() : void
-      {
-         removeEventListener(Event.ENTER_FRAME,this.onEnterFrameHandler);
-         this.tint = null;
-         this.border = null;
-         this.fxLine1 = null;
-         this.fxLine2 = null;
-         this.fxLine3 = null;
-         this.fxLine4 = null;
-         this.disposeTweens();
-         this._tweenArray = null;
-         this._scaleTweenArray = null;
-         this._timeoutArray = null;
-         this._scheduler = null;
-         super.onDispose();
       }
       
       protected function get size() : uint

@@ -606,7 +606,7 @@ class EventHeader(object):
         finished = event.isFinished()
         if not finished:
             icon = icons.makeImageTag(RES_ICONS.MAPS_ICONS_EVENTBOARDS_FLAGICONS_DATE_ICON)
-            timePeriod = ('{} {} {} - {} {} {}').format(str(sday), _ms(MENU.datetime_months(str(smonth))), event_boards_timer.getShortTimeString(event.getStartDate()), str(eday), _ms(MENU.datetime_months(str(emonth))), event_boards_timer.getShortTimeString(event.getEndDate()))
+            timePeriod = ('{} {} {} - {} {} {}').format(unicode(sday), _ms(MENU.datetime_months(str(smonth))), event_boards_timer.getShortTimeString(event.getStartDate()), unicode(eday), _ms(MENU.datetime_months(str(emonth))), event_boards_timer.getShortTimeString(event.getEndDate()))
             result = ('{} {}    ').format(icon, text_styles.vehicleStatusInfoText(timePeriod))
             startSoon = event.isStartSoon()
             if startSoon:

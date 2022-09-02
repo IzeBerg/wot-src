@@ -34,7 +34,7 @@ package net.wg.gui.battle.mapsTraining.views.goals
       
       private static const TITLE_FONT:int = 36;
       
-      private static const TITLE_FONT_SMALL:int = 22;
+      private static const TITLE_FONT_SMALL:int = 24;
       
       private static const TITLE_WIDTH:int = 800;
       

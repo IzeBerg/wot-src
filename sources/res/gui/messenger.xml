@@ -641,7 +641,6 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 		<tankmenFreeXpDebitedInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/tankmenFreeXpDebited): &lt;font color=&apos;#8C8C7E&apos;&gt;&lt;b&gt;%(tankmenFreeXp)s&lt;/b&gt;&lt;/font&gt;%(spec)s&lt;/font&gt;</tankmenFreeXpDebitedInvoiceReceived>
 		<awardListAccruedInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/freeAwardListsAccrued): &lt;font color=&apos;#8C8C7E&apos;&gt;&lt;b&gt;%(count)s&lt;/b&gt;&lt;/font&gt;&lt;/font&gt;</awardListAccruedInvoiceReceived>
 		<awardListDebitedInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/freeAwardListsDebited): &lt;font color=&apos;#8C8C7E&apos;&gt;&lt;b&gt;%(count)s&lt;/b&gt;&lt;/font&gt;&lt;/font&gt;</awardListDebitedInvoiceReceived>
-		<chinaLootBoxesInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#cn_loot_boxes:notification/lootBoxesReceived/invoice): &lt;font color=&apos;#8C8C7E&apos;&gt;&lt;b&gt;%(boxes)s&lt;/b&gt;&lt;/font&gt;&lt;/font&gt;</chinaLootBoxesInvoiceReceived>
 		<intelligenceBlueprintsAccruedInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/intelligenceBlueprintsAccrued): &lt;font color=&apos;#8C8C7E&apos;&gt;&lt;b&gt;%(amount)s&lt;/b&gt;&lt;/font&gt;&lt;/font&gt;</intelligenceBlueprintsAccruedInvoiceReceived>
 		<intelligenceBlueprintsDebitedInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/intelligenceBlueprintsDebited): &lt;font color=&apos;#8C8C7E&apos;&gt;&lt;b&gt;%(amount)s&lt;/b&gt;&lt;/font&gt;&lt;/font&gt;</intelligenceBlueprintsDebitedInvoiceReceived>
 		<vehicleBlueprintsAccruedInvoiceReceived>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/invoiceReceived/vehicleBlueprintsAccrued): &lt;font color=&apos;#8C8C7E&apos;&gt;&lt;b&gt;%(amount)s&lt;/b&gt;&lt;/font&gt;&lt;/font&gt;</vehicleBlueprintsAccruedInvoiceReceived>
@@ -1745,6 +1744,12 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<icon>MessageIcon</icon>
 			<message>&lt;font color=&quot;#8C8C7E&quot;&gt;_(#system_messages:squad/notValidMaxSpgDeleted)&lt;/font&gt;</message>
 		</prbVehicleMaxSpgKick>
+		<prbVehicleMaxScoutKick>
+			<priority>high</priority>
+			<type>grey</type>
+			<icon>MessageIcon</icon>
+			<message>&lt;font color=&quot;#8C8C7E&quot;&gt;_(#system_messages:squad/notValidMaxScoutDeleted)&lt;/font&gt;</message>
+		</prbVehicleMaxScoutKick>
 		<prbWrongEnqueueDataKick>
 			<priority>high</priority>
 			<type>grey</type>
@@ -2390,6 +2395,52 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<icon>InformationIcon</icon>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font face=&quot;$FieldFont&quot; size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;&lt;br/&gt;%(achieves)s</message>
 		</MapboxEndedMessage>
+		<BattleMattersPausedMessage>
+			<type>grey</type>
+			<priority>high</priority>
+			<icon>ErrorIcon</icon>
+			<message>&lt;font face=&quot;$FieldFont&quot; size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleMatters/paused)&lt;/font&gt;&lt;br/&gt;</message>
+		</BattleMattersPausedMessage>
+		<BattleMattersStartedMessage>
+			<type>grey</type>
+			<priority>medium</priority>
+			<icon>WarningIcon</icon>
+			<message>&lt;font face=&quot;$FieldFont&quot; size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleMatters/started)&lt;/font&gt;&lt;br/&gt;</message>
+		</BattleMattersStartedMessage>
+		<BattleMattersAwardsQuest>
+			<priority>low</priority>
+			<type>grey</type>
+			<icon>BattleMattersIcon</icon>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&apos;&gt;_(#messenger:serviceChannelMessages/battleMatters/awards/header)&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;%(body)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleMatters/awards/received)&lt;/font&gt;&lt;br/&gt;%(achieves)s</message>
+		</BattleMattersAwardsQuest>
+		<BattleMattersTokenQuest>
+			<priority>low</priority>
+			<type>grey</type>
+			<icon>BattleMattersIcon</icon>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&apos;&gt;_(#messenger:serviceChannelMessages/battleMatters/awards/header)&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;%(body)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleMatters/awards/received)&lt;/font&gt;&lt;br/&gt;%(achieves)s&lt;br/&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleMatters/awards/footer)&lt;/font&gt;&lt;br/&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/battleMatters/awards/footer/button)</label>
+					<action>openDelayedReward</action>
+					<width>120</width>
+				</button>
+			</buttonsLayout>
+		</BattleMattersTokenQuest>
+		<BattleMattersTokenAward>
+			<priority>low</priority>
+			<type>grey</type>
+			<icon>BattleMattersIcon</icon>
+			<bgIconSizeAuto>true</bgIconSizeAuto>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&apos;&gt;_(#messenger:serviceChannelMessages/battleMatters/awards/header)&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleMatters/awards/tokenAward/body)&lt;/font&gt;&lt;br/&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleMatters/awards/received)&lt;/font&gt;&lt;br/&gt;%(achieves)s</message>
+		</BattleMattersTokenAward>
 		<MapboxSurveyAvailableMessage>
 			<type>grey</type>
 			<priority>high</priority>
@@ -2680,64 +2731,24 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<icon>resourceWellIcon</icon>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
 		</ResourceWellNoVehiclesMessage>
-		<FunRandomStarted>
-			<type>grey</type>
+		<Customization2DProgressionMessage>
 			<priority>medium</priority>
-			<icon>InformationIcon</icon>
-			<message>&lt;font face=&quot;$FieldFont&quot; size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<type>lightGrey</type>
+			<linkage>ProgressiveStyleMessage</linkage>
+			<bgIcon>Progression2DStyleBG</bgIcon>
+			<message>&lt;P ALIGN=&quot;center&quot;&gt;&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#FEAB34&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&quot;#8C8C7E&quot;&gt;_(#messenger:serviceChannelMessages/progression2d/received)&lt;/font&gt;&lt;br/&gt;&lt;font color=&quot;#CBAC77&quot;&gt;%(itemsList)s&lt;/font&gt;&lt;/P&gt;</message>
 			<buttonsLayout>
 				<button>
 					<type>submit</type>
-					<label>_(#fun_random:message/startEvent/button)</label>
-					<action>selectFunRandomMode</action>
-					<width>120</width>
+					<label>_(#messenger:serviceChannelMessages/progression2d/button)</label>
+					<action>openCustomizationStylesSection</action>
 				</button>
 			</buttonsLayout>
-		</FunRandomStarted>
-		<ChinaLootBoxStartSysMessage>
+		</Customization2DProgressionMessage>
+		<IntegratedAuctionOperationSysMessage>
 			<type>grey</type>
-			<priority>medium</priority>
-			<icon>InformationIcon</icon>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
-			<buttonsLayout>
-				<button>
-					<type>submit</type>
-					<label>_(#cn_loot_boxes:notification/eventStart/button)</label>
-					<action>openCNLootBoxesExternalShop</action>
-				</button>
-			</buttonsLayout>
-		</ChinaLootBoxStartSysMessage>
-		<ChinaLootBoxFinishSysMessage>
-			<type>grey</type>
-			<priority>medium</priority>
-			<icon>InformationIcon</icon>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
-		</ChinaLootBoxFinishSysMessage>
-		<ChinaLootBoxEnabledSysMessage>
-			<type>grey</type>
-			<priority>high</priority>
-			<icon>InformationIcon</icon>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
-		</ChinaLootBoxEnabledSysMessage>
-		<ChinaLootBoxDisabledSysMessage>
-			<type>grey</type>
-			<priority>high</priority>
-			<icon>WarningIcon</icon>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(title)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
-		</ChinaLootBoxDisabledSysMessage>
-		<ChinaLootBoxesAutoOpenMessage>
-			<priority>high</priority>
-			<type>yellow</type>
-			<icon>WarningIcon</icon>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#cn_loot_boxes:notification/lootBoxesAutoOpen/title)&lt;/font&gt;&lt;br/&gt;
-&lt;font face=&quot;$FieldFont&quot; size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;_(#cn_loot_boxes:notification/lootBoxesAutoOpen/text)&lt;/font&gt;&lt;br/&gt;
-_(#cn_loot_boxes:notification/lootBoxesAutoOpen/boxes)&lt;br/&gt;%(rewards)s</message>
-		</ChinaLootBoxesAutoOpenMessage>
-		<wotAnniversaryAward>
-			<priority>medium</priority>
-			<type>blue</type>
-			<icon>InformationIcon</icon>
-			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#system_messages:wotAnniversary/award/header)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
-		</wotAnniversaryAward>
+			<icon>AuctionOperationIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;%(header)s&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</IntegratedAuctionOperationSysMessage>
 	</htmlTemplates>
 </root>

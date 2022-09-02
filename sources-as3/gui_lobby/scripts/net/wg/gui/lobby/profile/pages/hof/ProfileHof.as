@@ -21,15 +21,13 @@ package net.wg.gui.lobby.profile.pages.hof
       
       private static const ORIGINAL_BACKGROUND_ASPECT_RATIO:Number = 1.92;
       
-      private static const PADDING_BOTTOM:Number = 278;
+      private static const PADDING_BOTTOM:int = 278;
       
-      private static const PADDING_TOP:Number = 170;
+      private static const PADDING_TOP:int = 170;
       
       private static const BETABTN_LEFT_PADDING:int = 8;
       
       private static const BETABTN_TOP_PADDING:int = 14;
-      
-      private static const DOSSIER_DATA_INVALID:String = "ddInvalid";
       
       private static const INV_BACKGROUND_POSITION:String = "InvBackgroundPosition";
       
@@ -57,45 +55,16 @@ package net.wg.gui.lobby.profile.pages.hof
       public function ProfileHof()
       {
          super();
-         this.serviceView.visible = false;
       }
       
-      public function as_setStatus(param1:String) : void
+      private static function onBetaBtnRollOverHandler(param1:MouseEvent) : void
       {
-         this.footer.setStatusData(param1);
+         App.toolTipMgr.show(PROFILE.SECTION_HOF_BETATOOLTIP);
       }
       
-      public function as_setBackground(param1:String) : void
+      private static function onBetaBtnRollOutHandler(param1:MouseEvent) : void
       {
-         this.bgLoader.source = param1;
-      }
-      
-      public function as_showServiceView(param1:String, param2:String) : void
-      {
-         this.serviceView.setData(param1,param2);
-         this.serviceView.y = App.appHeight * 0.5 - PADDING_TOP;
-         this.serviceView.visible = true;
-         this.changeVisible(false);
-         this.statusWaiting.visible = false;
-      }
-      
-      public function as_hideServiceView() : void
-      {
-         this.serviceView.visible = false;
-         this.changeVisible(true);
-      }
-      
-      public function as_showWaiting(param1:String) : void
-      {
-         this.statusWaiting.visible = true;
-         this.statusWaiting.setInfo(param1);
-         this.footer.visible = false;
-      }
-      
-      public function as_hideWaiting() : void
-      {
-         this.statusWaiting.visible = false;
-         this.footer.visible = true;
+         App.toolTipMgr.hide();
       }
       
       override protected function setBtnCounters(param1:Vector.<CountersVo>) : void
@@ -110,9 +79,10 @@ package net.wg.gui.lobby.profile.pages.hof
          this.hofDescriptionTf.text = PROFILE.SECTION_HOF_MAINDESCRIPTION;
          this.centerGroup.addEventListener(ButtonEvent.CLICK,this.onCenterGroupButtonClickHandler);
          this.footer.addEventListener(ButtonEvent.CLICK,this.onChangeStatusClickHandler);
+         this.betaBtn.addEventListener(MouseEvent.ROLL_OVER,onBetaBtnRollOverHandler);
+         this.betaBtn.addEventListener(MouseEvent.ROLL_OUT,onBetaBtnRollOutHandler);
          this.betaBtn.label = PROFILE.SECTION_HOF_BETABTN;
-         this.betaBtn.addEventListener(MouseEvent.ROLL_OVER,this.onBetaBtnRollOverHandler);
-         this.betaBtn.addEventListener(MouseEvent.ROLL_OUT,this.onBetaBtnRollOutHandler);
+         this.betaBtn.buttonMode = false;
          this.bgLoader.addEventListener(UILoaderEvent.COMPLETE,this.onBgLoaderCompleteHandler);
          this.bgLoader.autoSize = false;
          currentData = {};
@@ -123,11 +93,10 @@ package net.wg.gui.lobby.profile.pages.hof
       
       override protected function draw() : void
       {
-         var _loc1_:Number = NaN;
-         var _loc2_:Number = NaN;
+         var _loc1_:int = 0;
+         var _loc2_:int = 0;
          var _loc3_:Boolean = false;
          super.draw();
-         this.betaBtn.buttonMode = false;
          if(isInvalid(INV_BACKGROUND_POSITION))
          {
             _loc1_ = App.appWidth;
@@ -151,14 +120,13 @@ package net.wg.gui.lobby.profile.pages.hof
       
       override protected function onDispose() : void
       {
-         super.onDispose();
          this.hofTitleTf = null;
          this.hofDescriptionTf = null;
          this.bgLoader.removeEventListener(UILoaderEvent.COMPLETE,this.onBgLoaderCompleteHandler);
          this.bgLoader.dispose();
          this.bgLoader = null;
-         this.betaBtn.removeEventListener(MouseEvent.ROLL_OVER,this.onBetaBtnRollOverHandler);
-         this.betaBtn.removeEventListener(MouseEvent.ROLL_OUT,this.onBetaBtnRollOutHandler);
+         this.betaBtn.removeEventListener(MouseEvent.ROLL_OVER,onBetaBtnRollOverHandler);
+         this.betaBtn.removeEventListener(MouseEvent.ROLL_OUT,onBetaBtnRollOutHandler);
          this.betaBtn.dispose();
          this.betaBtn = null;
          this.footer.removeEventListener(ButtonEvent.CLICK,this.onChangeStatusClickHandler);
@@ -171,45 +139,75 @@ package net.wg.gui.lobby.profile.pages.hof
          this.serviceView = null;
          this.statusWaiting.dispose();
          this.statusWaiting = null;
+         super.onDispose();
+      }
+      
+      public function as_hideServiceView() : void
+      {
+         this.serviceView.visible = false;
+         this.changeVisible(true);
+      }
+      
+      public function as_hideWaiting() : void
+      {
+         this.statusWaiting.visible = false;
+         this.footer.visible = true;
+      }
+      
+      public function as_setBackground(param1:String) : void
+      {
+         this.bgLoader.source = param1;
+      }
+      
+      public function as_setStatus(param1:String) : void
+      {
+         this.footer.setStatusData(param1);
+      }
+      
+      public function as_showServiceView(param1:String, param2:String) : void
+      {
+         this.serviceView.setData(param1,param2);
+         this.serviceView.y = (App.appHeight >> 1) - PADDING_TOP;
+         this.serviceView.visible = true;
+         this.changeVisible(false);
+         this.statusWaiting.visible = false;
+      }
+      
+      public function as_showWaiting(param1:String) : void
+      {
+         this.statusWaiting.visible = true;
+         this.statusWaiting.setInfo(param1);
+         this.footer.visible = false;
       }
       
       private function updateBgLoaderSize(param1:int, param2:int) : void
       {
          this.bgLoader.width = param1;
          this.bgLoader.height = param2;
-         this.bgLoader.x = (App.appWidth - this.bgLoader.width) * 0.5 - this.x;
+         this.bgLoader.x = (App.appWidth - this.bgLoader.width >> 1) - this.x;
          this.bgLoader.y = 0;
-      }
-      
-      private function onBgLoaderCompleteHandler(param1:Event) : void
-      {
-         invalidate(INV_BACKGROUND_POSITION);
-      }
-      
-      private function onBetaBtnRollOverHandler(param1:MouseEvent) : void
-      {
-         App.toolTipMgr.show(PROFILE.SECTION_HOF_BETATOOLTIP);
-      }
-      
-      private function onBetaBtnRollOutHandler(param1:MouseEvent) : void
-      {
-         App.toolTipMgr.hide();
       }
       
       private function repositionLayout() : void
       {
-         this.betaBtn.x = this.hofTitleTf.x + (this.hofTitleTf.width + this.hofTitleTf.textWidth) * 0.5 + BETABTN_LEFT_PADDING;
+         var _loc1_:Number = App.appHeight;
+         this.betaBtn.x = this.hofTitleTf.x + (this.hofTitleTf.width + this.hofTitleTf.textWidth >> 1) + BETABTN_LEFT_PADDING;
          this.betaBtn.y = this.hofTitleTf.y + BETABTN_TOP_PADDING;
-         this.footer.y = App.appHeight - PADDING_BOTTOM;
-         this.statusWaiting.y = App.appHeight - PADDING_BOTTOM;
-         this.centerGroup.y = App.appHeight - this.centerGroup.height - PADDING_TOP >> 1;
-         this.serviceView.y = App.appHeight * 0.5 - PADDING_TOP;
+         this.footer.y = _loc1_ - PADDING_BOTTOM;
+         this.statusWaiting.y = _loc1_ - PADDING_BOTTOM;
+         this.centerGroup.y = _loc1_ - this.centerGroup.height - PADDING_TOP >> 1;
+         this.serviceView.y = (_loc1_ >> 1) - PADDING_TOP;
          invalidate(INV_BACKGROUND_POSITION);
       }
       
       private function changeVisible(param1:Boolean) : void
       {
          this.footer.visible = this.centerGroup.visible = this.bgLoader.visible = this.betaBtn.visible = this.hofTitleTf.visible = this.hofDescriptionTf.visible = param1;
+      }
+      
+      private function onBgLoaderCompleteHandler(param1:Event) : void
+      {
+         invalidate(INV_BACKGROUND_POSITION);
       }
       
       private function onChangeStatusClickHandler(param1:ButtonEvent) : void

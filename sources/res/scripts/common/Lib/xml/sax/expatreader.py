@@ -32,6 +32,10 @@ else:
     del weakref
     del _weakref
 
+class _ClosedParser():
+    pass
+
+
 class ExpatLocator(xmlreader.Locator):
 
     def __init__(self, parser):
@@ -83,9 +87,13 @@ class ExpatParser(xmlreader.IncrementalParser, xmlreader.Locator):
     def parse(self, source):
         source = saxutils.prepare_input_source(source)
         self._source = source
-        self.reset()
-        self._cont_handler.setDocumentLocator(ExpatLocator(self))
-        xmlreader.IncrementalParser.parse(self, source)
+        try:
+            self.reset()
+            self._cont_handler.setDocumentLocator(ExpatLocator(self))
+            xmlreader.IncrementalParser.parse(self, source)
+        except:
+            self._close_source()
+            raise
 
     def prepareParser(self, source):
         if source.getSystemId() is not None:
@@ -177,15 +185,37 @@ class ExpatParser(xmlreader.IncrementalParser, xmlreader.Locator):
             exc = SAXParseException(expat.ErrorString(e.code), e, self)
             self._err_handler.fatalError(exc)
 
+    def _close_source(self):
+        source = self._source
+        try:
+            file = source.getCharacterStream()
+            if file is not None:
+                file.close()
+        finally:
+            file = source.getByteStream()
+            if file is not None:
+                file.close()
+
+        return
+
     def close(self):
-        if self._entity_stack:
+        if self._entity_stack or self._parser is None or isinstance(self._parser, _ClosedParser):
             return
-        else:
+        try:
             self.feed('', isFinal=1)
             self._cont_handler.endDocument()
             self._parsing = 0
             self._parser = None
-            return
+        finally:
+            self._parsing = 0
+            if self._parser is not None:
+                parser = _ClosedParser()
+                parser.ErrorColumnNumber = self._parser.ErrorColumnNumber
+                parser.ErrorLineNumber = self._parser.ErrorLineNumber
+                self._parser = parser
+            self._close_source()
+
+        return
 
     def _reset_cont_handler(self):
         self._parser.ProcessingInstructionHandler = self._cont_handler.processingInstruction

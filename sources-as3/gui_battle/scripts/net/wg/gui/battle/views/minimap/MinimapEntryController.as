@@ -14,9 +14,9 @@ package net.wg.gui.battle.views.minimap
       private static var _instance:MinimapEntryController = null;
        
       
-      private var _vehicleEntries:Vector.<IVehicleMinimapEntry> = null;
+      private var _vehicleEntries:Vector.<IVehicleMinimapEntry>;
       
-      private var _vehicleLabelsEntries:Vector.<IVehicleMinimapEntry> = null;
+      private var _vehicleLabelsEntries:Vector.<IVehicleMinimapEntry>;
       
       private var _isDisposed:Boolean = false;
       
@@ -26,29 +26,27 @@ package net.wg.gui.battle.views.minimap
       
       private var _isShowVehicleNamesTurnedOn:Boolean = false;
       
-      private var _scalableEntries:Vector.<DisplayObject> = null;
+      private var _scalableEntries:Vector.<DisplayObject>;
       
-      private var _scalableEntriesWithNonScaleContent:Vector.<IMinimapEntryWithNonScaleContent> = null;
+      private var _scalableEntriesWithNonScaleContent:Vector.<IMinimapEntryWithNonScaleContent>;
       
-      private var _nonScalableEntries:Vector.<DisplayObject> = null;
+      private var _nonScalableEntries:Vector.<DisplayObject>;
       
       private var _sizeIndex:int = 0;
       
-      public function MinimapEntryController(param1:PrivateClass)
+      public function MinimapEntryController()
       {
-         var _loc2_:IAssertable = null;
-         this._asserter = App.utils.asserter;
-         super();
-         if(_instance)
-         {
-            _loc2_ = App.utils.asserter;
-            _loc2_.assertNotNull(_instance,"MinimapEntryController singleton... use get instance()");
-         }
          this._vehicleEntries = new Vector.<IVehicleMinimapEntry>();
          this._vehicleLabelsEntries = new Vector.<IVehicleMinimapEntry>();
+         this._asserter = App.utils.asserter;
          this._scalableEntries = new Vector.<DisplayObject>();
          this._scalableEntriesWithNonScaleContent = new Vector.<IMinimapEntryWithNonScaleContent>();
          this._nonScalableEntries = new Vector.<DisplayObject>();
+         super();
+         if(_instance)
+         {
+            App.utils.asserter.assertNotNull(_instance,"MinimapEntryController singleton... use get instance()");
+         }
          _instance = this;
       }
       
@@ -56,12 +54,12 @@ package net.wg.gui.battle.views.minimap
       {
          if(_instance == null)
          {
-            _instance = new MinimapEntryController(new PrivateClass());
+            _instance = new MinimapEntryController();
          }
          return _instance;
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
          this.verifyIsDisposed();
          this._isDisposed = true;
@@ -79,22 +77,63 @@ package net.wg.gui.battle.views.minimap
          this._lastHighlightedEntry = null;
       }
       
+      public function hideVehiclesName() : void
+      {
+         var _loc1_:IVehicleMinimapEntry = null;
+         this._isShowVehicleNamesTurnedOn = false;
+         for each(_loc1_ in this._vehicleLabelsEntries)
+         {
+            _loc1_.hideVehicleName();
+         }
+      }
+      
+      public function highlight(param1:Number) : void
+      {
+         var _loc2_:IVehicleMinimapEntry = null;
+         for each(_loc2_ in this._vehicleEntries)
+         {
+            if(_loc2_.vehicleID == param1)
+            {
+               this._lastHighlightedEntry = _loc2_;
+               _loc2_.highlight();
+               return;
+            }
+         }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._isDisposed;
+      }
+      
+      public function registerNonScalableEntry(param1:DisplayObject) : void
+      {
+         this._nonScalableEntries.push(param1);
+         var _loc2_:Number = MinimapSizeConst.ENTRY_CONTR_SCALES[this._sizeIndex];
+         param1.scaleX = param1.scaleY = _loc2_;
+      }
+      
+      public function registerScalableEntry(param1:DisplayObject, param2:Boolean = false) : void
+      {
+         this._scalableEntries.push(param1);
+         var _loc3_:Number = MinimapSizeConst.ENTRY_SCALES[this._sizeIndex];
+         if(_loc3_ != param1.scaleX)
+         {
+            param1.scaleX = param1.scaleY = _loc3_;
+         }
+         if(param2)
+         {
+            this._scalableEntriesWithNonScaleContent.push(IMinimapEntryWithNonScaleContent(param1));
+            IMinimapEntryWithNonScaleContent(param1).setContentNormalizedScale(MinimapSizeConst.ENTRY_INTERNAL_CONTENT_CONTR_SCALES[this._sizeIndex]);
+         }
+      }
+      
       public function registerVehicleEntry(param1:IVehicleMinimapEntry) : void
       {
          this.verifyIsDisposed();
          if(this._vehicleEntries.indexOf(param1) == -1)
          {
             this._vehicleEntries.push(param1);
-         }
-      }
-      
-      public function unregisterVehicleLabelEntry(param1:IVehicleMinimapEntry) : void
-      {
-         this.verifyIsDisposed();
-         var _loc2_:int = this._vehicleLabelsEntries.indexOf(param1);
-         if(_loc2_ != -1)
-         {
-            this._vehicleLabelsEntries.splice(_loc2_,1);
          }
       }
       
@@ -115,27 +154,13 @@ package net.wg.gui.battle.views.minimap
          }
       }
       
-      public function unregisterVehicleEntry(param1:IVehicleMinimapEntry) : void
+      public function showVehiclesName() : void
       {
-         this.verifyIsDisposed();
-         var _loc2_:int = this._vehicleEntries.indexOf(param1);
-         if(_loc2_ != -1)
+         var _loc1_:IVehicleMinimapEntry = null;
+         this._isShowVehicleNamesTurnedOn = true;
+         for each(_loc1_ in this._vehicleLabelsEntries)
          {
-            this._vehicleEntries.splice(_loc2_,1);
-         }
-      }
-      
-      public function highlight(param1:Number) : void
-      {
-         var _loc2_:IVehicleMinimapEntry = null;
-         for each(_loc2_ in this._vehicleEntries)
-         {
-            if(_loc2_.vehicleID == param1)
-            {
-               this._lastHighlightedEntry = _loc2_;
-               _loc2_.highlight();
-               return;
-            }
+            _loc1_.showVehicleName();
          }
       }
       
@@ -148,38 +173,12 @@ package net.wg.gui.battle.views.minimap
          }
       }
       
-      public function showVehiclesName() : void
+      public function unregisterNonScalableEntry(param1:DisplayObject) : void
       {
-         var _loc1_:IVehicleMinimapEntry = null;
-         this._isShowVehicleNamesTurnedOn = true;
-         for each(_loc1_ in this._vehicleLabelsEntries)
+         var _loc2_:int = this._nonScalableEntries.indexOf(param1);
+         if(_loc2_ != -1)
          {
-            _loc1_.showVehicleName();
-         }
-      }
-      
-      public function hideVehiclesName() : void
-      {
-         var _loc1_:IVehicleMinimapEntry = null;
-         this._isShowVehicleNamesTurnedOn = false;
-         for each(_loc1_ in this._vehicleLabelsEntries)
-         {
-            _loc1_.hideVehicleName();
-         }
-      }
-      
-      public function registerScalableEntry(param1:DisplayObject, param2:Boolean = false) : void
-      {
-         this._scalableEntries.push(param1);
-         var _loc3_:Number = MinimapSizeConst.ENTRY_SCALES[this._sizeIndex];
-         if(_loc3_ != param1.scaleX)
-         {
-            param1.scaleX = param1.scaleY = _loc3_;
-         }
-         if(param2)
-         {
-            this._scalableEntriesWithNonScaleContent.push(IMinimapEntryWithNonScaleContent(param1));
-            IMinimapEntryWithNonScaleContent(param1).setContentNormalizedScale(MinimapSizeConst.ENTRY_INTERNAL_CONTENT_CONTR_SCALES[this._sizeIndex]);
+            this._nonScalableEntries.splice(_loc2_,1);
          }
       }
       
@@ -200,43 +199,48 @@ package net.wg.gui.battle.views.minimap
          }
       }
       
-      public function registerNonScalableEntry(param1:DisplayObject) : void
+      public function unregisterVehicleEntry(param1:IVehicleMinimapEntry) : void
       {
-         this._nonScalableEntries.push(param1);
-         var _loc2_:Number = MinimapSizeConst.ENTRY_CONTR_SCALES[this._sizeIndex];
-         param1.scaleX = param1.scaleY = _loc2_;
-      }
-      
-      public function unregisterNonScalableEntry(param1:DisplayObject) : void
-      {
-         var _loc2_:int = this._nonScalableEntries.indexOf(param1);
+         this.verifyIsDisposed();
+         var _loc2_:int = this._vehicleEntries.indexOf(param1);
          if(_loc2_ != -1)
          {
-            this._nonScalableEntries.splice(_loc2_,1);
+            this._vehicleEntries.splice(_loc2_,1);
+         }
+      }
+      
+      public function unregisterVehicleLabelEntry(param1:IVehicleMinimapEntry) : void
+      {
+         this.verifyIsDisposed();
+         var _loc2_:int = this._vehicleLabelsEntries.indexOf(param1);
+         if(_loc2_ != -1)
+         {
+            this._vehicleLabelsEntries.splice(_loc2_,1);
          }
       }
       
       public function updateScale(param1:int) : void
       {
+         var _loc4_:IMinimapEntryWithNonScaleContent = null;
          this._sizeIndex = param1;
          var _loc2_:DisplayObject = null;
-         var _loc3_:IMinimapEntryWithNonScaleContent = null;
-         var _loc4_:Number = MinimapSizeConst.ENTRY_SCALES[this._sizeIndex];
+         var _loc3_:Number = MinimapSizeConst.ENTRY_SCALES[this._sizeIndex];
          for each(_loc2_ in this._scalableEntries)
          {
-            if(_loc4_ != _loc2_.scaleX)
+            if(_loc3_ != _loc2_.scaleX)
             {
-               _loc2_.scaleX = _loc2_.scaleY = _loc4_;
+               _loc2_.scaleX = _loc2_.scaleY = _loc3_;
             }
          }
-         _loc4_ = MinimapSizeConst.ENTRY_CONTR_SCALES[this._sizeIndex];
+         _loc3_ = MinimapSizeConst.ENTRY_CONTR_SCALES[this._sizeIndex];
          for each(_loc2_ in this._nonScalableEntries)
          {
-            _loc2_.scaleX = _loc2_.scaleY = _loc4_;
+            _loc2_.scaleX = _loc2_.scaleY = _loc3_;
          }
-         for each(_loc3_ in this._scalableEntriesWithNonScaleContent)
+         _loc4_ = null;
+         for each(_loc4_ in this._scalableEntriesWithNonScaleContent)
          {
-            _loc3_.setContentNormalizedScale(MinimapSizeConst.ENTRY_INTERNAL_CONTENT_CONTR_SCALES[this._sizeIndex]);
+            _loc4_.setContentNormalizedScale(MinimapSizeConst.ENTRY_INTERNAL_CONTENT_CONTR_SCALES[this._sizeIndex]);
          }
       }
       
@@ -244,20 +248,5 @@ package net.wg.gui.battle.views.minimap
       {
          this._asserter.assert(!this._isDisposed,"MinimapEntryController " + Errors.ALREADY_DISPOSED);
       }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._isDisposed;
-      }
-   }
-}
-
-class PrivateClass
-{
-    
-   
-   function PrivateClass()
-   {
-      super();
    }
 }

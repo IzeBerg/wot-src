@@ -283,40 +283,35 @@ package net.wg.gui.battle.views.battleMessenger
       
       private function applyState() : void
       {
-         if(this._currentStateId == VISIBLE_MES)
+         switch(this._currentStateId)
          {
-            this.updateMessageElements(Values.DEFAULT_ALPHA,true);
-            this.backgroundAddListeners(true);
-         }
-         else if(this._currentStateId == VISIBLE_WHEEL_MES)
-         {
-            this.updateMessageElements(Values.DEFAULT_ALPHA,true);
-            this.backgroundAddListeners();
-         }
-         else if(this._currentStateId == RECOVERED_MES)
-         {
-            this.backgroundRemoveListeners();
-            this.updateMessageElements(this._recoveredLatestMessagesAlpha,true);
-         }
-         else if(this._currentStateId == HIDEHALF_MES)
-         {
-            this.updateMessageElements(this._lastMessageAlpha,true);
-            this.backgroundAddListeners();
-         }
-         else if(this._currentStateId == FADE_OUT_MES)
-         {
-            this.clearAnim();
-            this.onEndLifeHandler();
-         }
-         else if(this._currentStateId == HIDDEN_MES)
-         {
-            this.hideMes();
-         }
-         else if(this._currentStateId == FADE_IN_MES)
-         {
-            this.clearAnim();
-            this.updateMessageElements(0,true);
-            this._scheduler.scheduleRepeatableTask(this.fadeInAnimation,ANIM_SHOW_INTERVAL,ANIM_SHOW_STEPS);
+            case VISIBLE_MES:
+               this.updateMessageElements(Values.DEFAULT_ALPHA,true);
+               this.backgroundAddListeners(true);
+               break;
+            case VISIBLE_WHEEL_MES:
+               this.updateMessageElements(Values.DEFAULT_ALPHA,true);
+               this.backgroundAddListeners();
+               break;
+            case RECOVERED_MES:
+               this.backgroundRemoveListeners();
+               this.updateMessageElements(this._recoveredLatestMessagesAlpha,true);
+               break;
+            case HIDEHALF_MES:
+               this.updateMessageElements(this._lastMessageAlpha,true);
+               this.backgroundAddListeners();
+               break;
+            case FADE_OUT_MES:
+               this.clearAnim();
+               this.onEndLifeHandler();
+               break;
+            case HIDDEN_MES:
+               this.hideMes();
+               break;
+            case FADE_IN_MES:
+               this.clearAnim();
+               this.updateMessageElements(0,true);
+               this._scheduler.scheduleRepeatableTask(this.fadeInAnimation,ANIM_SHOW_INTERVAL,ANIM_SHOW_STEPS);
          }
       }
       
@@ -371,7 +366,10 @@ package net.wg.gui.battle.views.battleMessenger
       
       private function updateMessageElements(param1:Number, param2:Boolean) : void
       {
-         this.alpha = param1;
+         if(param2)
+         {
+            this.alpha = param1;
+         }
          this.background.visible = this.messageField.visible = param2;
       }
       

@@ -1,5 +1,5 @@
 from __future__ import print_function, unicode_literals
-import os, abc, codecs, warnings, errno
+import os, abc, codecs, sys, warnings, errno
 try:
     from thread import allocate_lock as Lock
 except ImportError:
@@ -57,39 +57,48 @@ def open(file, mode=b'r', buffering=-1, encoding=None, errors=None, newline=None
     if binary and newline is not None:
         raise ValueError(b"binary mode doesn't take a newline argument")
     raw = FileIO(file, (reading and b'r' or b'') + (writing and b'w' or b'') + (appending and b'a' or b'') + (updating and b'+' or b''), closefd)
-    line_buffering = False
-    if buffering == 1 or buffering < 0 and raw.isatty():
-        buffering = -1
-        line_buffering = True
-    if buffering < 0:
-        buffering = DEFAULT_BUFFER_SIZE
-        try:
-            bs = os.fstat(raw.fileno()).st_blksize
-        except (os.error, AttributeError):
-            pass
+    result = raw
+    try:
+        line_buffering = False
+        if buffering == 1 or buffering < 0 and raw.isatty():
+            buffering = -1
+            line_buffering = True
+        if buffering < 0:
+            buffering = DEFAULT_BUFFER_SIZE
+            try:
+                bs = os.fstat(raw.fileno()).st_blksize
+            except (os.error, AttributeError):
+                pass
+            else:
+                if bs > 1:
+                    buffering = bs
+        if buffering < 0:
+            raise ValueError(b'invalid buffering size')
+        if buffering == 0:
+            if binary:
+                return result
+            raise ValueError(b"can't have unbuffered text I/O")
+        if updating:
+            buffer = BufferedRandom(raw, buffering)
         else:
-            if bs > 1:
-                buffering = bs
-    if buffering < 0:
-        raise ValueError(b'invalid buffering size')
-    if buffering == 0:
-        if binary:
-            return raw
-        raise ValueError(b"can't have unbuffered text I/O")
-    if updating:
-        buffer = BufferedRandom(raw, buffering)
-    elif writing or appending:
-        buffer = BufferedWriter(raw, buffering)
-    elif reading:
-        buffer = BufferedReader(raw, buffering)
-    else:
-        raise ValueError(b'unknown mode: %r' % mode)
-    if binary:
-        return buffer
-    else:
+            if writing or appending:
+                buffer = BufferedWriter(raw, buffering)
+            elif reading:
+                buffer = BufferedReader(raw, buffering)
+            else:
+                raise ValueError(b'unknown mode: %r' % mode)
+            result = buffer
+            if binary:
+                return result
         text = TextIOWrapper(buffer, encoding, errors, newline, line_buffering)
+        result = text
         text.mode = mode
-        return text
+        return result
+    except:
+        result.close()
+        raise
+
+    return
 
 
 class DocDescriptor():
@@ -400,7 +409,7 @@ class _BufferedIOMixin(BufferedIOBase):
         clsname = self.__class__.__name__
         try:
             name = self.name
-        except AttributeError:
+        except Exception:
             return (b'<_pyio.{0}>').format(clsname)
 
         return (b'<_pyio.{0} name={1!r}>').format(clsname, name)
@@ -772,8 +781,10 @@ class BufferedRWPair(BufferedIOBase):
         return self.writer.flush()
 
     def close(self):
-        self.writer.close()
-        self.reader.close()
+        try:
+            self.writer.close()
+        finally:
+            self.reader.close()
 
     def isatty(self):
         return self.reader.isatty() or self.writer.isatty()
@@ -965,6 +976,9 @@ class TextIOWrapper(TextIOBase):
 
         if not isinstance(encoding, basestring):
             raise ValueError(b'invalid encoding: %r' % encoding)
+        if sys.py3kwarning and not codecs.lookup(encoding)._is_text_encoding:
+            msg = b'%r is not a text encoding; use codecs.open() to handle arbitrary codecs'
+            warnings.warnpy3k(msg % encoding, stacklevel=2)
         if errors is None:
             errors = b'strict'
         elif not isinstance(errors, basestring):
@@ -997,7 +1011,7 @@ class TextIOWrapper(TextIOBase):
     def __repr__(self):
         try:
             name = self.name
-        except AttributeError:
+        except Exception:
             return (b"<_pyio.TextIOWrapper encoding='{0}'>").format(self.encoding)
 
         return (b"<_pyio.TextIOWrapper name={0!r} encoding='{1}'>").format(name, self.encoding)
@@ -1070,6 +1084,7 @@ class TextIOWrapper(TextIOBase):
         self.buffer.write(b)
         if self._line_buffering and (haslf or b'\r' in s):
             self.flush()
+        self._set_decoded_chars(b'')
         self._snapshot = None
         if self._decoder:
             self._decoder.reset()

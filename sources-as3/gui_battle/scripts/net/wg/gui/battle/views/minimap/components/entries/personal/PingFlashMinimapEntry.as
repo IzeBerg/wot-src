@@ -34,14 +34,13 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
          super();
       }
       
-      protected function SetAtlasPlaceholderVisible(param1:Boolean) : void
+      override protected function onDispose() : void
       {
-      }
-      
-      protected function storeFrameAnimations() : void
-      {
-         this._currentAnimationFrame = this.animation.currentFrame;
-         this._currentReplyFrame = this.reply.currentFrame;
+         this.reply.stop();
+         this.animation.stop();
+         this.animation = null;
+         this.reply = null;
+         super.onDispose();
       }
       
       public function setState(param1:String, param2:Boolean = true) : void
@@ -67,6 +66,16 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
          this._currentState = param1;
       }
       
+      protected function SetAtlasPlaceholderVisible(param1:Boolean) : void
+      {
+      }
+      
+      protected function storeFrameAnimations() : void
+      {
+         this._currentAnimationFrame = this.animation.currentFrame;
+         this._currentReplyFrame = this.reply.currentFrame;
+      }
+      
       protected function getCurrentState() : String
       {
          return this._currentState;
@@ -80,15 +89,6 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
       protected function getCurrentReplyFrame() : int
       {
          return this._currentReplyFrame;
-      }
-      
-      override protected function onDispose() : void
-      {
-         this.reply.stop();
-         this.animation.stop();
-         this.animation = null;
-         this.reply = null;
-         super.onDispose();
       }
       
       protected function setAttackState(param1:Boolean) : void

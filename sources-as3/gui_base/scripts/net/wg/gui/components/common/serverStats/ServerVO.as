@@ -27,6 +27,8 @@ package net.wg.gui.components.common.serverStats
       
       public var enabled:Boolean = false;
       
+      public var haveAccess:Boolean = true;
+      
       public function ServerVO(param1:Object)
       {
          super(param1);

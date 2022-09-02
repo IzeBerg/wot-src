@@ -1822,6 +1822,11 @@
 							<name>customLinkage</name>
 							<value>BCLobbyAttentionHintUI</value>
 						</item>
+						<item>
+							<name>addToParent</name>
+							<type>bool</type>
+							<value>True</value>
+						</item>
 					</value>
 				</item>
 			</value>
@@ -5130,7 +5135,7 @@
 				</item>
 				<item>
 					<name>path</name>
-					<value>div[id=switch-equipment-group-1]</value>
+					<value>div[id=switch-equipment-group-2]</value>
 				</item>
 				<item>
 					<name>padding</name>
@@ -5170,7 +5175,7 @@
 				</item>
 				<item>
 					<name>path</name>
-					<value>div[id=switch-equipment-group-2]</value>
+					<value>div[id=switch-equipment-group-1]</value>
 				</item>
 				<item>
 					<name>padding</name>
@@ -5277,6 +5282,60 @@
 							<value>0</value>
 						</item>
 					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>BattleMattersEntryPoint</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>R.views.lobby.battle_matters.BattleMattersEntryPointView</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>div[id=battle-matters-entry-point]</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>CrewXPPanelInject</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>hangar</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>crewXPPanelInject</value>
 				</item>
 			</value>
 		</item>

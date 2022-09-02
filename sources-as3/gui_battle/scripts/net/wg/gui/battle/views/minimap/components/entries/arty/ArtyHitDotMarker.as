@@ -34,6 +34,21 @@ package net.wg.gui.battle.views.minimap.components.entries.arty
          MinimapEntryController.instance.registerNonScalableEntry(this.hitPointMC);
       }
       
+      public final function dispose() : void
+      {
+         if(this._baseDisposed)
+         {
+            return;
+         }
+         this.onDispose();
+         this._baseDisposed = true;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._baseDisposed;
+      }
+      
       public function show(param1:Number) : void
       {
          this.clearTweens();
@@ -43,16 +58,6 @@ package net.wg.gui.battle.views.minimap.components.entries.arty
             "fastTransform":false,
             "paused":false
          });
-      }
-      
-      public final function dispose() : void
-      {
-         if(this._baseDisposed)
-         {
-            return;
-         }
-         this.onDispose();
-         this._baseDisposed = true;
       }
       
       protected function onDispose() : void
@@ -70,11 +75,6 @@ package net.wg.gui.battle.views.minimap.components.entries.arty
             this._fadeOutTween.dispose();
             this._fadeOutTween = null;
          }
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._baseDisposed;
       }
    }
 }

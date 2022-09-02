@@ -125,6 +125,19 @@ package scaleform.clik.managers
          }
       }
       
+      public function checkAndCleanUpCurrentEvent(param1:Object) : void
+      {
+         var _loc2_:KeyboardEventEx = null;
+         if(this._currentEvent && param1)
+         {
+            _loc2_ = this._currentEvent as KeyboardEventEx;
+            if(_loc2_ && _loc2_.target == param1)
+            {
+               this.stopPropagationEvent();
+            }
+         }
+      }
+      
       protected function handleKeyDown(param1:KeyboardEvent) : void
       {
          var _loc2_:KeyboardEventEx = param1 as KeyboardEventEx;

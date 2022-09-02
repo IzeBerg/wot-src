@@ -1,9 +1,9 @@
 package net.wg.gui.battle.views.minimap
 {
-   import flash.display.MovieClip;
+   import flash.display.Sprite;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
    
-   public class MinimapIconCollection extends MovieClip implements IDisposable
+   public class MinimapIconCollection extends Sprite implements IDisposable
    {
       
       public static const ICON_ATTENTION:int = 0;
@@ -15,13 +15,13 @@ package net.wg.gui.battle.views.minimap
       public static const ICON_REPOSITION_VIEW:int = 3;
        
       
-      public var attention:MovieClip = null;
+      public var attention:Sprite = null;
       
-      public var SPG:MovieClip = null;
+      public var SPG:Sprite = null;
       
-      public var waypoint:MovieClip = null;
+      public var waypoint:Sprite = null;
       
-      public var repositionView:MovieClip = null;
+      public var repositionView:Sprite = null;
       
       private var _disposed:Boolean = false;
       
@@ -37,6 +37,11 @@ package net.wg.gui.battle.views.minimap
          this.SPG = null;
          this.waypoint = null;
          this.repositionView = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
       
       public function setIconType(param1:int) : void
@@ -59,11 +64,6 @@ package net.wg.gui.battle.views.minimap
             default:
                this.attention.visible = true;
          }
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

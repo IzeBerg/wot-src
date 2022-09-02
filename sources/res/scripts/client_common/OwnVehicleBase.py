@@ -32,7 +32,10 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
         self.__onDestroy()
 
     def __onDestroy(self):
+        if self.targetVehicleID:
+            self.update_targetVehicleID(None)
         self.__dict__.clear()
+        return
 
     @noexcept
     def update_vehicleAmmoList(self, ammoList):
@@ -193,12 +196,15 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
             return
         avatar.onSmoke(smokeInfo)
 
+    @noneAccepted
     @noexcept
     def update_targetVehicleID(self, targetVehicleID):
         avatar = self._avatar()
         if not avatar:
             return
-        avatar.updateTargetVehicleID(targetVehicleID.targetID)
+        else:
+            avatar.updateTargetVehicleID(targetVehicleID.targetID if targetVehicleID else None)
+            return
 
     @noexcept
     def update_targetingInfo(self, data):
@@ -354,6 +360,7 @@ class OwnVehicleBase(BigWorld.DynamicScriptComponent):
         self.set_burnoutUnavailable()
         self.set_isOtherVehicleDamagedDevicesVisible()
         self.set_overturnLevel()
+        self.set_drownLevel()
         self.set_smokeInfo()
         self.set_targetVehicleID()
         self.set_targetingInfo()

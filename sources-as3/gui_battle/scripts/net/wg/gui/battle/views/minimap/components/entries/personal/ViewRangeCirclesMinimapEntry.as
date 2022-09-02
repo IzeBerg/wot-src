@@ -10,9 +10,9 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
    public class ViewRangeCirclesMinimapEntry extends Sprite implements IDisposable
    {
       
-      private static var LINE_THICKNESS:Number = 1;
+      private static const LINE_THICKNESS:uint = 1;
       
-      private static var AREA_MAX_SIZE_REAL:Number = 210;
+      private static const AREA_MAX_SIZE_REAL:uint = 210;
        
       
       private var _minMC:Shape = null;
@@ -22,8 +22,6 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
       private var _maxMC:Shape = null;
       
       private var _drawMC:Shape = null;
-      
-      private var _mapSizeCoeff:Number = 0;
       
       private var _rangeCoeff:Number = 0;
       
@@ -36,6 +34,15 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
       public function ViewRangeCirclesMinimapEntry()
       {
          super();
+      }
+      
+      private static function drawCircle(param1:Shape, param2:Number, param3:Number, param4:Number) : void
+      {
+         var _loc5_:Graphics = param1.graphics;
+         _loc5_.clear();
+         _loc5_.lineStyle(LINE_THICKNESS,param3,param4,false,LineScaleMode.NONE);
+         _loc5_.drawCircle(0,0,param2);
+         _loc5_.endFill();
       }
       
       public function as_addDrawRange(param1:Number, param2:Number, param3:Number) : void
@@ -110,9 +117,9 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
       
       public function as_initArenaSize(param1:int, param2:int) : void
       {
-         this._mapSizeCoeff = AREA_MAX_SIZE_REAL / param1;
-         this._rangeCoeff = param1 * this._mapSizeCoeff * 0.5;
-         this._circleDiameterCoeff = this._mapSizeCoeff * 2;
+         var _loc3_:Number = AREA_MAX_SIZE_REAL / param1;
+         this._rangeCoeff = param1 * _loc3_ * 0.5;
+         this._circleDiameterCoeff = _loc3_ * 2;
       }
       
       public function as_removeAllCircles() : void
@@ -135,10 +142,15 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
          }
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
          this._disposed = true;
          this.as_removeAllCircles();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
       
       private function initializeCircle(param1:Number, param2:Number, param3:Number) : Shape
@@ -148,25 +160,11 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
          _loc4_.blendMode = BlendMode.ADD;
          _loc4_.x = 0;
          _loc4_.y = 0;
-         this.drawCircle(_loc4_,this._rangeCoeff,param1,param2);
+         drawCircle(_loc4_,this._rangeCoeff,param1,param2);
          var _loc5_:Number = param3 * this._circleDiameterCoeff;
          _loc4_.width = _loc5_;
          _loc4_.height = _loc5_;
          return _loc4_;
-      }
-      
-      private function drawCircle(param1:Shape, param2:Number, param3:Number, param4:Number) : void
-      {
-         var _loc5_:Graphics = param1.graphics;
-         _loc5_.clear();
-         _loc5_.lineStyle(LINE_THICKNESS,param3,param4,false,LineScaleMode.NONE);
-         _loc5_.drawCircle(0,0,param2);
-         _loc5_.endFill();
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

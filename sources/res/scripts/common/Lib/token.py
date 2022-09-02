@@ -1,3 +1,4 @@
+"""Token constants (from "token.h")."""
 ENDMARKER = 0
 NAME = 1
 NUMBER = 2

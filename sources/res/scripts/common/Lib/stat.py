@@ -1,3 +1,7 @@
+"""Constants/functions for interpreting results of os.stat() and os.lstat().
+
+Suggested usage: from stat import *
+"""
 ST_MODE = 0
 ST_INO = 1
 ST_DEV = 2

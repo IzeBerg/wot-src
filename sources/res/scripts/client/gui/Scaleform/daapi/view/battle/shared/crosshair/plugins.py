@@ -1271,11 +1271,12 @@ class SpeedometerWheeledTech(CrosshairPlugin):
             return
         else:
             if diff[GAME.ENABLE_SPEEDOMETER]:
-                vStateCtrl = self.sessionProvider.shared.vehicleState
-                if vStateCtrl is not None:
-                    vehicle = vStateCtrl.getControllingVehicle()
-                    if vehicle is not None and vehicle.isWheeledTech:
-                        self.__onVehicleControlling(vehicle)
+                if self.sessionProvider.shared.crosshair.getViewID() != CROSSHAIR_VIEW_ID.SNIPER:
+                    vStateCtrl = self.sessionProvider.shared.vehicleState
+                    if vStateCtrl is not None:
+                        vehicle = vStateCtrl.getControllingVehicle()
+                        if vehicle is not None and vehicle.isWheeledTech:
+                            self.__onVehicleControlling(vehicle)
             else:
                 self.parentObj.as_removeSpeedometerS()
             return

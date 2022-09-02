@@ -24,6 +24,21 @@ package net.wg.gui.battle.views.minimap.components.entries.fortconsumables
          super();
       }
       
+      override protected function configUI() : void
+      {
+         super.configUI();
+         this.drawEntry();
+         App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeMgrSchemasUpdatedHandler);
+      }
+      
+      override protected function onDispose() : void
+      {
+         App.colorSchemeMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeMgrSchemasUpdatedHandler);
+         this.atlasPlaceholder = null;
+         this._atlasManager = null;
+         super.onDispose();
+      }
+      
       public function setOwningTeam(param1:Boolean) : void
       {
          this._isPlayerTeam = param1;
@@ -31,21 +46,6 @@ package net.wg.gui.battle.views.minimap.components.entries.fortconsumables
          {
             this.drawEntry();
          }
-      }
-      
-      override protected function configUI() : void
-      {
-         super.configUI();
-         this.drawEntry();
-         App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeChangeHandler);
-      }
-      
-      override protected function onDispose() : void
-      {
-         App.colorSchemeMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeChangeHandler);
-         this.atlasPlaceholder = null;
-         this._atlasManager = null;
-         super.onDispose();
       }
       
       private function getAtlasItemName() : String
@@ -61,14 +61,14 @@ package net.wg.gui.battle.views.minimap.components.entries.fortconsumables
          return FortConsumablesMinimapEntryConst.AOE_ARTILLERY_ENEMY_ATLAS_ITEM_NAME;
       }
       
-      private function onColorSchemeChangeHandler(param1:ColorSchemeEvent) : void
-      {
-         this.drawEntry();
-      }
-      
       private function drawEntry() : void
       {
          this._atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,this.getAtlasItemName(),this.atlasPlaceholder.graphics,Values.EMPTY_STR,true);
+      }
+      
+      private function onColorSchemeMgrSchemasUpdatedHandler(param1:ColorSchemeEvent) : void
+      {
+         this.drawEntry();
       }
    }
 }

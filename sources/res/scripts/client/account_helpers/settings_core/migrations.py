@@ -871,10 +871,11 @@ def _migrateTo93(core, data, initialized):
 
 
 def _migrateTo94(core, data, initialized):
+    onceOnlyHintsData = data['onceOnlyHints2']
+    onceOnlyHintsData[OnceOnlyHints.BATTLE_MATTERS_FIGHT_BUTTON_HINT] = False
+    onceOnlyHintsData[OnceOnlyHints.BATTLE_MATTERS_ENTRY_POINT_BUTTON_HINT] = False
     from account_helpers.settings_core.ServerSettingsManager import SETTINGS_SECTIONS
-    from account_helpers.settings_core.settings_constants import WotAnniversaryStorageKeys
-    data[SETTINGS_SECTIONS.WOT_ANNIVERSARY_STORAGE][WotAnniversaryStorageKeys.WOT_ANNIVERSARY_INTRO_SHOWED] = False
-    data[SETTINGS_SECTIONS.WOT_ANNIVERSARY_STORAGE][WotAnniversaryStorageKeys.WOT_ANNIVERSARY_WELCOME_SHOWED] = False
+    data[SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS] = {'shown': 0}
 
 
 _versions = (

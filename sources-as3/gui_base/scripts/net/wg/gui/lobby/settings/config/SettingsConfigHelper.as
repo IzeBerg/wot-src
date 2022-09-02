@@ -197,6 +197,8 @@ package net.wg.gui.lobby.settings.config
       
       public static const SNIPER_MODE_EFFECTS_QUALITY:String = "SNIPER_MODE_EFFECTS_QUALITY";
       
+      public static const TRACK_PHYSICS_QUALITY:String = "TRACK_PHYSICS_QUALITY";
+      
       public static const SNIPER_MODE_GRASS_ENABLED:String = "SNIPER_MODE_GRASS_ENABLED";
       
       public static const VEHICLE_TRACES_ENABLED:String = "VEHICLE_TRACES_ENABLED";
@@ -630,9 +632,8 @@ package net.wg.gui.lobby.settings.config
       
       public function getScreenSizeDataIndexById(param1:String) : Number
       {
-         var _loc2_:Number = SIZES_ORDER_ID.length;
-         var _loc3_:Number = 0;
-         _loc3_ = 0;
+         var _loc2_:int = SIZES_ORDER_ID.length;
+         var _loc3_:int = 0;
          while(_loc3_ < _loc2_)
          {
             if(SIZES_ORDER_ID[_loc3_] == param1)

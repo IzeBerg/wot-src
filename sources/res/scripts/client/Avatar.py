@@ -66,7 +66,6 @@ from soft_exception import SoftException
 from streamIDs import RangeStreamIDCallbacks, STREAM_ID_CHAT_MAX, STREAM_ID_CHAT_MIN, STREAM_ID_AVATAR_BATTLE_RESULS
 from vehicle_systems.stricted_loading import makeCallbackWeak
 from messenger import MessengerEntry
-from battle_modifiers import vehicle_modifications
 import VOIP
 if TYPE_CHECKING:
     from items.vehicles import VehicleDescriptor
@@ -146,7 +145,6 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
     isWaitingForShot = property(lambda self: self.__isWaitingForShot)
     isInTutorial = property(lambda self: self.arena is not None and self.arena.guiType == constants.ARENA_GUI_TYPE.TUTORIAL)
     autoAimVehicle = property(lambda self: BigWorld.entities.get(self.__autoAimVehID, None))
-    fireInVehicle = property(lambda self: self.vehicle.isOnFire() if self.vehicle else False)
     deviceStates = property(lambda self: self.__deviceStates)
     vehicles = property(lambda self: self.__vehicles)
     consistentMatrices = property(lambda self: self.__consistentMatrices)
@@ -239,6 +237,13 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         self.__isVehicleMoving = False
         self.arena = None
         return
+
+    @property
+    def fireInVehicle(self):
+        playerVehicle = BigWorld.entities[self.playerVehicleID]
+        if playerVehicle:
+            return playerVehicle.isOnFire()
+        return False
 
     @proto_getter(PROTO_TYPE.BW_CHAT2)
     def bwProto(self):
@@ -446,7 +451,6 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
 
         try:
             vehicles.g_cache.clearPrereqs()
-            vehicle_modifications.g_cache.clear()
         except Exception:
             LOG_CURRENT_EXCEPTION()
 
@@ -845,10 +849,8 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                         vTypeDesc = vehicle.typeDescriptor
                         vehicleWithCustomMechanics = vTypeDesc.isWheeledVehicle or vTypeDesc.isTrackWithinTrack or vTypeDesc.isDualgunVehicle or vTypeDesc.hasTurboshaftEngine
                         isRanked = self.arenaBonusType == constants.ARENA_BONUS_TYPE.RANKED
-                        isFunRandom = self.arenaBonusType == constants.ARENA_BONUS_TYPE.FUN_RANDOM
-                        if isRanked or isFunRandom or vehicleWithCustomMechanics:
-                            ctx = {'isFunRandom': isFunRandom, 'vehName': vehicle.typeDescriptor.type.userString, 
-                               'roleType': vTypeDesc.role if isRanked else ROLE_TYPE.NOT_DEFINED, 
+                        if isRanked or vehicleWithCustomMechanics:
+                            ctx = {'vehName': vehicle.typeDescriptor.type.userString, 'roleType': vTypeDesc.role if isRanked else ROLE_TYPE.NOT_DEFINED, 
                                'isWheeled': vTypeDesc.isWheeledVehicle, 
                                'isTrackWithinTrack': vTypeDesc.isTrackWithinTrack, 
                                'isDualGun': vTypeDesc.isDualgunVehicle, 
@@ -1141,8 +1143,6 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         if autoAimVehID:
             self.onLockTarget(AimSound.TARGET_LOST, not lossReasonFlags & TARGET_LOST_FLAGS.KILLED_BY_ME)
         TriggersManager.g_manager.deactivateTrigger(TRIGGER_TYPE.AUTO_AIM_AT_VEHICLE)
-        if BigWorld.player().vehicle.isWheeledTech:
-            gui_event_dispatcher.hideAutoAimMarker()
 
     def updateVehicleHealth(self, vehicleID, health, deathReasonID, isCrewActive, isRespawn):
         if vehicleID != self.playerVehicleID or not self.userSeesWorld():
@@ -1438,12 +1438,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             self.gunRotator.setShotPosition(vehicleID, shotPos, shotVec, dispersionAngle)
 
     def updateTargetVehicleID(self, targetID):
-        vehicle = BigWorld.entity(targetID)
-        if vehicle is not None:
-            gui_event_dispatcher.addAutoAimMarker(vehicle)
-        else:
-            gui_event_dispatcher.hideAutoAimMarker()
-        return
+        gui_event_dispatcher.changeTargetVehicle(targetID)
 
     def updateVehicleDestroyTimer(self, code, period, warnLvl=None):
         state = VEHICLE_VIEW_STATE.DESTROY_TIMER
@@ -1709,9 +1704,9 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                 BigWorld.wg_havokExplosion(endPoint, physParams['splashStrength'], physParams['splashRadius'])
         return
 
-    def onRoundFinished(self, winnerTeam, reason):
-        LOG_DEBUG('onRoundFinished', winnerTeam, reason)
-        g_playerEvents.onRoundFinished(winnerTeam, reason)
+    def onRoundFinished(self, winnerTeam, reason, extraData):
+        LOG_DEBUG('onRoundFinished', winnerTeam, reason, extraData)
+        g_playerEvents.onRoundFinished(winnerTeam, reason, extraData)
 
     def onKickedFromArena(self, reasonCode):
         LOG_DEBUG('onKickedFromArena', reasonCode)
@@ -1960,7 +1955,6 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                 self.__aimingInfo[1] = self.gunRotator.dispersionAngle / minShotDisp
                 self.onLockTarget(AimSound.TARGET_UNLOCKED, True)
                 TriggersManager.g_manager.deactivateTrigger(TRIGGER_TYPE.AUTO_AIM_AT_VEHICLE)
-                gui_event_dispatcher.hideAutoAimMarker()
         return
 
     def __gunDamagedSound(self):
@@ -2552,20 +2546,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                 deviceName = extra.name[:-len('Health')]
                 if damageCode == 'DEVICE_REPAIRED_TO_CRITICAL':
                     deviceState = 'repaired'
-                    if 'functionalCanMove' in extra.sounds:
-                        tracksToCheck = [
-                         'leftTrack0', 'rightTrack0']
-                        if deviceName in tracksToCheck:
-                            tracksToCheck.remove(deviceName)
-                        canMove = True
-                        for trackName in tracksToCheck:
-                            if trackName in self.__deviceStates and self.__deviceStates[trackName] == 'destroyed':
-                                canMove = False
-                                break
-
-                        soundType = 'functionalCanMove' if canMove else 'functional'
-                    else:
-                        soundType = 'functional'
+                    soundType = self.__getSoundTypeForTracks(deviceName, extra)
                     TriggersManager.g_manager.fireTrigger(TRIGGER_TYPE.PLAYER_DEVICE_CRITICAL, deviceName=deviceName, isRepaired=True, isCriticalNow=True)
                 else:
                     deviceState = 'critical'
@@ -2591,7 +2572,10 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             elif damageCode in self.__damageInfoHealings:
                 deviceName = extra.name[:-len('Health')]
                 deviceState = 'normal'
-                soundType = 'fixed'
+                if deviceName in ('leftTrack0', 'rightTrack0'):
+                    soundType = self.__getSoundTypeForTracks(deviceName, extra)
+                else:
+                    soundType = 'fixed'
                 self.__deviceStates.pop(deviceName, None)
                 if damageCode == 'TANKMAN_RESTORED':
                     TriggersManager.g_manager.fireTrigger(TRIGGER_TYPE.PLAYER_TANKMAN_SHOOTED, tankmanName=deviceName, isHealed=True)
@@ -2617,6 +2601,23 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             if sound is not None and not isAttachingToVehicle:
                 self.playSoundIfNotMuted(sound, soundNotificationCheckFn)
         return
+
+    def __getSoundTypeForTracks(self, deviceName, extra):
+        if 'functionalCanMove' in extra.sounds:
+            tracksToCheck = [
+             'leftTrack0', 'rightTrack0']
+            if deviceName in tracksToCheck:
+                tracksToCheck.remove(deviceName)
+            canMove = True
+            for trackName in tracksToCheck:
+                if trackName in self.__deviceStates and self.__deviceStates[trackName] == 'destroyed':
+                    canMove = False
+                    break
+
+            if canMove:
+                return 'functionalCanMove'
+            return 'functional'
+        return 'functional'
 
     __damageInfoCriticals = (
      'DEVICE_CRITICAL', 'DEVICE_REPAIRED_TO_CRITICAL',
@@ -2963,8 +2964,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
     def __isPlayerInSquad(self):
         return self.arena is not None and self.arena.guiType in (constants.ARENA_GUI_TYPE.RANDOM,
          constants.ARENA_GUI_TYPE.EPIC_RANDOM,
-         constants.ARENA_GUI_TYPE.EPIC_BATTLE,
-         constants.ARENA_GUI_TYPE.FUN_RANDOM) and self.guiSessionProvider.getArenaDP().isSquadMan(vID=self.playerVehicleID)
+         constants.ARENA_GUI_TYPE.EPIC_BATTLE) and self.guiSessionProvider.getArenaDP().isSquadMan(vID=self.playerVehicleID)
 
     def __getAdditiveShotDispersionFactor(self, descriptor):
         if self.__aimingBooster is not None:

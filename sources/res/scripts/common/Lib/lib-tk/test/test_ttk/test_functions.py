@@ -1,5 +1,16 @@
 import sys, unittest, ttk
 
+class MockTkApp():
+
+    def splitlist(self, arg):
+        if isinstance(arg, tuple):
+            return arg
+        return arg.split(':')
+
+    def wantobjects(self):
+        return True
+
+
 class MockTclObj(object):
     typename = 'test'
 
@@ -175,16 +186,11 @@ class InternalFunctionsTest(unittest.TestCase):
         self.assertEqual(ttk._script_from_settings(image), 'ttk::style element create thing image {name {state1 state2} val} -opt {3 2m}')
         return
 
-    def test_dict_from_tcltuple(self):
-        fakettuple = ('-a', '{1 2 3}', '-something', 'foo')
-        self.assertEqual(ttk._dict_from_tcltuple(fakettuple, False), {'-a': '{1 2 3}', '-something': 'foo'})
-        self.assertEqual(ttk._dict_from_tcltuple(fakettuple), {'a': '{1 2 3}', 'something': 'foo'})
-        self.assertFalse(ttk._dict_from_tcltuple(('single', )))
-        sspec = MockStateSpec('a', 'b')
-        self.assertEqual(ttk._dict_from_tcltuple(('-a', (sspec, 'val'))), {'a': [('a', 'b', 'val')]})
-        self.assertEqual(ttk._dict_from_tcltuple((MockTclObj('-padding'),
-         [
-          MockTclObj('1'), 2, MockTclObj('3m')])), {'padding': [1, 2, '3m']})
+    def test_tclobj_to_py(self):
+        self.assertEqual(ttk._tclobj_to_py((MockStateSpec('a', 'b'), 'val')), [
+         ('a', 'b', 'val')])
+        self.assertEqual(ttk._tclobj_to_py([MockTclObj('1'), 2, MockTclObj('3m')]), [
+         1, 2, '3m'])
 
     def test_list_from_statespec(self):
 
@@ -202,15 +208,16 @@ class InternalFunctionsTest(unittest.TestCase):
         test_it(('a', 'b', 'c'), MockTclObj('val'), 'val', ('a', 'b', 'c'))
 
     def test_list_from_layouttuple(self):
-        self.assertFalse(ttk._list_from_layouttuple(()))
-        self.assertEqual(ttk._list_from_layouttuple(('name', )), [
+        tk = MockTkApp()
+        self.assertFalse(ttk._list_from_layouttuple(tk, ()))
+        self.assertEqual(ttk._list_from_layouttuple(tk, ('name', )), [
          (
           'name', {})])
         sample_ltuple = ('name', '-option', 'value')
-        self.assertEqual(ttk._list_from_layouttuple(sample_ltuple), [
+        self.assertEqual(ttk._list_from_layouttuple(tk, sample_ltuple), [
          (
           'name', {'option': 'value'})])
-        self.assertEqual(ttk._list_from_layouttuple((
+        self.assertEqual(ttk._list_from_layouttuple(tk, (
          'something', '-children', ())), [
          (
           'something', {'children': []})])
@@ -219,7 +226,7 @@ class InternalFunctionsTest(unittest.TestCase):
          (
           'otherone', '-children',
           ('child', ), '-otheropt', 'othervalue'))
-        self.assertEqual(ttk._list_from_layouttuple(ltuple), [
+        self.assertEqual(ttk._list_from_layouttuple(tk, ltuple), [
          (
           'name',
           {'option': 'niceone', 'children': [
@@ -228,29 +235,29 @@ class InternalFunctionsTest(unittest.TestCase):
                          {'otheropt': 'othervalue', 'children': [
                                        (
                                         'child', {})]})]})])
-        self.assertRaises(ValueError, ttk._list_from_layouttuple, ('name', 'no_minus'))
-        self.assertRaises(ValueError, ttk._list_from_layouttuple, ('name', 'no_minus',
-                                                                   'value'))
-        self.assertRaises(ValueError, ttk._list_from_layouttuple, ('something', '-children'))
-        import Tkinter
-        if not Tkinter._default_root or Tkinter._default_root.wantobjects():
-            self.assertRaises(ValueError, ttk._list_from_layouttuple, ('something',
-                                                                       '-children',
+        self.assertRaises(ValueError, ttk._list_from_layouttuple, tk, ('name', 'no_minus'))
+        self.assertRaises(ValueError, ttk._list_from_layouttuple, tk, ('name', 'no_minus',
                                                                        'value'))
+        self.assertRaises(ValueError, ttk._list_from_layouttuple, tk, ('something',
+                                                                       '-children'))
 
     def test_val_or_dict(self):
 
-        def func(opt, val=None):
-            if val is None:
-                return 'test val'
+        def func(res, opt=None, val=None):
+            if opt is None:
+                return res
             else:
+                if val is None:
+                    return 'test val'
                 return (
                  opt, val)
 
-        options = {'test': None}
-        self.assertEqual(ttk._val_or_dict(options, func), 'test val')
-        options = {'test': 3}
-        self.assertEqual(ttk._val_or_dict(options, func), options)
+        tk = MockTkApp()
+        tk.call = func
+        self.assertEqual(ttk._val_or_dict(tk, {}, '-test:3'), {'test': '3'})
+        self.assertEqual(ttk._val_or_dict(tk, {}, ('-test', 3)), {'test': 3})
+        self.assertEqual(ttk._val_or_dict(tk, {'test': None}, 'x:y'), 'test val')
+        self.assertEqual(ttk._val_or_dict(tk, {'test': 3}, 'x:y'), {'test': 3})
         return
 
     def test_convert_stringval(self):

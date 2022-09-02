@@ -40,10 +40,9 @@ package net.wg.infrastructure.managers.utils.impl
       public function dispose() : void
       {
          this._disposed = true;
+         InputDelegate.getInstance().removeEventListener(InputEvent.INPUT,this.handleInput);
          this._focusHandler.setFocus(null);
          this._focusHandler = null;
-         var _loc1_:InputDelegate = InputDelegate.getInstance();
-         _loc1_.removeEventListener(InputEvent.INPUT,this.handleInput);
       }
       
       public function getFocus(param1:uint) : InteractiveObject
@@ -72,6 +71,11 @@ package net.wg.infrastructure.managers.utils.impl
          this._focusHandler.input(param1);
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function setFocus(param1:InteractiveObject, param2:uint = 0, param3:Boolean = false) : void
       {
          this.assertIfParentHasNoModalFocus(param1);
@@ -93,8 +97,7 @@ package net.wg.infrastructure.managers.utils.impl
       
       private function init() : void
       {
-         var _loc1_:InputDelegate = InputDelegate.getInstance();
-         _loc1_.addEventListener(InputEvent.INPUT,this.handleInput,false,0,true);
+         InputDelegate.getInstance().addEventListener(InputEvent.INPUT,this.handleInput,false,0,true);
       }
       
       private function assertIfParentHasNoModalFocus(param1:InteractiveObject) : void
@@ -149,11 +152,6 @@ package net.wg.infrastructure.managers.utils.impl
                App.eventLogManager.logUIEventHandleInput(param1.details.value,_loc2_);
             }
          }
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

@@ -265,9 +265,9 @@ opcodes = [
  I(name='NONE', code='N', arg=None, stack_before=[], stack_after=[
   pynone], proto=0, doc='Push None on the stack.'),
  I(name='NEWTRUE', code=b'\x88', arg=None, stack_before=[], stack_after=[
-  pybool], proto=2, doc='True.\n\n      Push True onto the stack.'),
+  pybool], proto=2, doc='Push True onto the stack.'),
  I(name='NEWFALSE', code=b'\x89', arg=None, stack_before=[], stack_after=[
-  pybool], proto=2, doc='True.\n\n      Push False onto the stack.'),
+  pybool], proto=2, doc='Push False onto the stack.'),
  I(name='UNICODE', code='V', arg=unicodestringnl, stack_before=[], stack_after=[
   pyunicode], proto=0, doc='Push a Python Unicode string object.\n\n      The argument is a raw-unicode-escape encoding of a Unicode string,\n      and so may contain embedded escape sequences.  The argument extends\n      until the next newline character.\n      '),
  I(name='BINUNICODE', code='X', arg=unicodestring4, stack_before=[], stack_after=[

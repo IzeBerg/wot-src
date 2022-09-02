@@ -271,10 +271,9 @@ package net.wg.gui.components.common.markers
       
       public function updateMarkerSettings() : void
       {
-         var _loc3_:Boolean = false;
          var _loc1_:Boolean = this.getIsPartVisible(ICON);
          var _loc2_:Boolean = this.getIsPartVisible(LEVEL);
-         _loc3_ = this.getIsPartVisible(P_NAME_LBL);
+         var _loc3_:Boolean = this.getIsPartVisible(P_NAME_LBL);
          var _loc4_:Boolean = this.getIsPartVisible(V_NAME_LBL);
          var _loc5_:Boolean = this.getIsPartVisible(HEALTH_BAR);
          var _loc6_:Boolean = this.getIsPartVisible(HEALTH_LBL);

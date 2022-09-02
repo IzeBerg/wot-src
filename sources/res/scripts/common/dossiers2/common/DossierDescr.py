@@ -1,5 +1,7 @@
 import struct
 from array import array
+from typing import Dict, Iterable
+from dossiers2.common.DossierBlockBuilders import TYPE_BLOCK_BUILDER
 from dossiers2.custom.records import PLATFORM_ACHIEVEMENTS
 
 class DossierDescr(object):
@@ -10,7 +12,8 @@ class DossierDescr(object):
         self.__blocksOffset = struct.calcsize(headerFormat)
         self.__blocksLayout = [ builder.name for builder in blockBuilders ]
         self.__blocksIndexes = dict([ (name, idx) for idx, name in enumerate(self.__blocksLayout) ])
-        self.__blocksBuilders = dict([ (builder.name, builder) for builder in blockBuilders ])
+        self.__blocksBuilders = dict([ (builder.name, builder) for builder in blockBuilders
+                                     ])
         self.__blocks = {}
         self._dependentUpdates = 0
         self.__popUps = {}

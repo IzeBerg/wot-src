@@ -124,7 +124,8 @@ class PointerTestCase(unittest.TestCase):
 
 class DeletePointerTestCase(unittest.TestCase):
 
-    def X_test(self):
+    @unittest.skip('test disabled')
+    def test_X(self):
 
         class X(Structure):
             _fields_ = [

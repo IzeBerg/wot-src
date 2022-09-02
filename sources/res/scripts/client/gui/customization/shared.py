@@ -1,6 +1,5 @@
 from collections import namedtuple, Counter, defaultdict
 import logging, typing, Math
-from gui.Scaleform.daapi.view.dialogs.ExchangeDialogMeta import InfoItemBase
 from gui.Scaleform.genConsts.SEASONS_CONSTANTS import SEASONS_CONSTANTS
 from gui.customization.constants import CustomizationModes
 from gui.shared.gui_items import GUI_ITEM_TYPE, GUI_ITEM_TYPE_NAMES
@@ -140,27 +139,6 @@ class MoneyForPurchase(object):
 class AdditionalPurchaseGroups(object):
     STYLES_GROUP_ID = -1
     UNASSIGNED_GROUP_ID = -2
-
-
-class CartExchangeCreditsInfoItem(InfoItemBase):
-
-    @property
-    def itemTypeName(self):
-        return 'customization'
-
-    @property
-    def userName(self):
-        return 'Cart'
-
-    @property
-    def itemTypeID(self):
-        return GUI_ITEM_TYPE.CUSTOMIZATION
-
-    def getExtraIconInfo(self):
-        return
-
-    def getGUIEmblemID(self):
-        return 'notFound'
 
 
 class CustomizationTankPartNames(TankPartNames):
@@ -451,3 +429,37 @@ def __getAppliedToRegions(areaId, slotType, vehicleDescr):
     if areaId == TankPartIndexes.GUN:
         return tuple(C11N_GUN_APPLY_REGIONS[regionName] for regionName in regionNames)
     return tuple(range(len(regionNames)))
+
+
+class _QuestGroupWrapper(object):
+
+    def __init__(self, item):
+        self.item = item
+
+    def getGroupID(self):
+        groupID, _ = self.item.getQuestsProgressionInfo()
+        return groupID
+
+    def getGroupName(self):
+        groupID, _ = self.item.getQuestsProgressionInfo()
+        if not groupID:
+            return ''
+        return backport.text(R.strings.vehicle_customization.questProgress.dyn(groupID)())
+
+
+class _ClassicGroupWrapper(object):
+
+    def __init__(self, item):
+        self.item = item
+
+    def getGroupID(self):
+        return self.item.groupID
+
+    def getGroupName(self):
+        return self.item.groupUserName
+
+
+def getGroupHelper(item):
+    if not item.itemTypeID == GUI_ITEM_TYPE.STYLE and item.isQuestsProgression:
+        return _QuestGroupWrapper(item)
+    return _ClassicGroupWrapper(item)

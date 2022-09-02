@@ -50,7 +50,7 @@ def _formatQuestBonuses(quest):
     return entries
 
 
-def questAsDict(quest):
+def _questAsDict(quest):
     return {'id': quest.getID(), 
        'description': quest.getDescription(), 
        'name': quest.getUserName(), 
@@ -81,7 +81,7 @@ class QuestsWebApi(W2CSchema):
 
         else:
             filterFunc = None
-        data = {qID:questAsDict(quest) for qID, quest in self._eventsCache.getActiveQuests(filterFunc=filterFunc).iteritems()}
+        data = {qID:_questAsDict(quest) for qID, quest in self._eventsCache.getActiveQuests(filterFunc=filterFunc).iteritems()}
         return data
 
     @w2c(_QuestsSchema, 'get_quests_old')

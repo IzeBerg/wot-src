@@ -134,7 +134,6 @@ class BCIntroPage(BCIntroVideoPageMeta):
         super(BCIntroPage, self)._dispose()
 
     def _start(self):
-        WWISE.WW_eventGlobal('loginscreen_mute')
         listSmall = []
         listBig = []
         for pageId in self._tutorialPages:
@@ -163,7 +162,7 @@ class BCIntroPage(BCIntroVideoPageMeta):
                       BOOTCAMP.TOOLTIP_PROGRESSION_DESCRIPTION_VEHICLE,
                       RES_ICONS.MAPS_ICONS_BOOTCAMP_REWARDS_TOOLTIPS_BCVEHICLESHINE, 50]),
                      self._getReward(BOOTCAMP.WELLCOME_BOOTCAMP_REWARDS_PREMIUM, RES_ICONS.MAPS_ICONS_BOOTCAMP_REWARDS_PREM_BIG_176X102, [
-                      BOOTCAMP.TOOLTIP_PROGRESSION_LABEL_AWARD,
+                      BOOTCAMP.TOOLTIP_PROGRESSION_LABEL_PREMIUM,
                       BOOTCAMP.TOOLTIP_PROGRESSION_DESCRIPTION_PREMIUM,
                       RES_ICONS.MAPS_ICONS_BOOTCAMP_REWARDS_TOOLTIPS_BCPREMIUMPLUS, 50]),
                      self._getReward(BOOTCAMP.WELLCOME_BOOTCAMP_REWARDS_GOLD, RES_ICONS.MAPS_ICONS_BOOTCAMP_REWARDS_GOLD_BIG_176X102, [

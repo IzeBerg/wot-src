@@ -12,12 +12,10 @@ from gui.shared import g_eventBus, EVENT_BUS_SCOPE
 from gui.shared.events import GameEvent
 from helpers import dependency
 from skeletons.account_helpers.settings_core import ISettingsCore
-from uilogging.veh_post_progression.loggers import VehPostProgressionPrebattleSwitchPanelLogger
 
 class PrebattleAmmunitionPanelView(ViewImpl):
     __slots__ = ('onSwitchLayout', 'onViewLoaded', '__ammunitionPanel', '__vehicle',
                  '__eventManager')
-    __uiLogger = VehPostProgressionPrebattleSwitchPanelLogger()
     __settingsCore = dependency.descriptor(ISettingsCore)
 
     def __init__(self, vehicle, *args):
@@ -108,7 +106,6 @@ class PrebattleAmmunitionPanelView(ViewImpl):
         if self.viewModel.getIsDisabled() or hudGroupID is None or newLayoutIdx is None:
             return
         self.__changeSetup(int(hudGroupID), int(newLayoutIdx))
-        self.__uiLogger.logClick()
         return
 
     def __onChangeSetupByKey(self, event):
@@ -122,7 +119,6 @@ class PrebattleAmmunitionPanelView(ViewImpl):
         if self.viewModel.getIsDisabled() or hudGroupID is None:
             return
         self.__changeSetup(hudGroupID)
-        self.__uiLogger.logHotkey()
         return
 
     def __changeSetup(self, hudGroupID, newLayoutIdx=None):

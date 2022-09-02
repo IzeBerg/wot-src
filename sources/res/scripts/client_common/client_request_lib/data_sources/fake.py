@@ -73,6 +73,12 @@ def post_gift_system_gift(*_):
     return response_stub
 
 
+def get_uilogging_session(*_, **__):
+    return {'auth': {'token': 'uilogging_token_stub', 'expiration': time.time() + 86400}, 'logging': {'max_logs_count': 50, 
+                   'max_log_properties_count': 250, 
+                   'url': 'https://localhost:81/logging'}}
+
+
 class FakeDataAccessor(base.BaseDataAccessor):
     requests_before_logout = -1
 
@@ -620,11 +626,7 @@ class FakeDataAccessor(base.BaseDataAccessor):
         self._storage.get('post_gift_system_gift', {}).clear()
         return self._request_data('post_gift_system_gift', None)
 
-    @fake_method(example={'data': {'balance': [
-                          {'code': 'fake_code', 
-                             'amount': 0, 
-                             'expires_at': '1970-01-01T00:00:00Z'}], 
-                'balance_version': 0, 
-                'on_hold': {'granted': [], 'consumed': []}}})
-    def get_inventory_entitlements(self, entitlement_codes):
-        return self._request_data('inventory_entitlements', None)
+    @fake_method(example=get_uilogging_session)
+    def get_uilogging_session(self):
+        self._storage.get('uilogging_session', {}).clear()
+        return self._request_data('uilogging_session', None)

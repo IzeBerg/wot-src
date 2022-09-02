@@ -17,8 +17,7 @@ from helpers import dependency
 from skeletons.gui.game_control import IBattlePassController
 from skeletons.gui.shared import IItemsCache
 SUPPORTED_ARENA_BONUS_TYPES = [
- ARENA_BONUS_TYPE.REGULAR, ARENA_BONUS_TYPE.EPIC_BATTLE,
- ARENA_BONUS_TYPE.BATTLE_ROYALE_SOLO]
+ ARENA_BONUS_TYPE.REGULAR, ARENA_BONUS_TYPE.EPIC_BATTLE]
 _rBattlePass = R.strings.battle_pass
 _logger = logging.getLogger(__name__)
 
@@ -53,7 +52,6 @@ class BattlePassHowToEarnPointsView(ViewImpl):
 
             tx.setSyncInitiator((tx.getSyncInitiator() + 1) % 1000)
             tx.setChapterID(self.__chapterID)
-            tx.setFinalReward(self.__battlePass.getRewardType(self.__chapterID).value if self.__chapterID else '')
 
     def __createGameModel(self, gameType):
         viewModel = self.__createViewHeader(gameType)
@@ -226,6 +224,7 @@ class BattlePassHowToEarnPointsView(ViewImpl):
             item.setVehicleBonus(pointsDiff.bonus)
             item.setVehicleTop(pointsDiff.top)
             item.setTextResource(backport.text(pointsDiff.textID))
+            item.setIsElite(vehicle.isElite)
             gameModeCard.vehiclesList.addViewModel(item)
 
         viewModel.cards.addViewModel(gameModeCard)

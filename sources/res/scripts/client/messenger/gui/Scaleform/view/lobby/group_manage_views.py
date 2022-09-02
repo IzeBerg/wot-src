@@ -1,6 +1,7 @@
 from gui.Scaleform.locale.MESSENGER import MESSENGER
 from helpers import i18n
 from messenger.gui.Scaleform.meta.BaseManageContactViewMeta import BaseManageContactViewMeta
+from messenger import normalizeGroupId
 from messenger.m_constants import PROTO_TYPE
 from messenger.proto import proto_getter
 from messenger.proto.xmpp.xmpp_constants import CONTACT_LIMIT
@@ -53,7 +54,7 @@ class GroupManageView(BaseManageContactViewMeta):
 class GroupCreateView(GroupManageView):
 
     def onOk(self, data):
-        name = passCensor(data.currValue.strip()).encode('utf-8')
+        name = normalizeGroupId(passCensor(data.currValue.strip()))
         resultSuccess = self.proto.contacts.addGroup(name)
         if resultSuccess:
             self.as_closeViewS()
@@ -70,8 +71,9 @@ class GroupRenameView(GroupManageView):
         self.__isInited = False
 
     def onOk(self, data):
-        name = passCensor(data.currValue.strip()).encode('utf-8')
-        successResult = self.proto.contacts.renameGroup(data.defValue, name)
+        name = normalizeGroupId(passCensor(data.currValue.strip()))
+        prevName = normalizeGroupId(data.defValue)
+        successResult = self.proto.contacts.renameGroup(prevName, name)
         if successResult:
             self.as_closeViewS()
 

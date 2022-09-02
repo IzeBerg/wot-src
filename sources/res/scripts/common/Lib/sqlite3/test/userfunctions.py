@@ -1,4 +1,5 @@
 import unittest, sqlite3 as sqlite
+from test import test_support
 
 def func_returntext():
     return 'foo'
@@ -21,7 +22,8 @@ def func_returnnull():
 
 
 def func_returnblob():
-    return buffer('blob')
+    with test_support.check_py3k_warnings():
+        return buffer('blob')
 
 
 def func_returnlonglong():
@@ -222,8 +224,9 @@ class FunctionTests(unittest.TestCase):
         cur = self.con.cursor()
         cur.execute('select returnblob()')
         val = cur.fetchone()[0]
-        self.assertEqual(type(val), buffer)
-        self.assertEqual(val, buffer('blob'))
+        with test_support.check_py3k_warnings():
+            self.assertEqual(type(val), buffer)
+            self.assertEqual(val, buffer('blob'))
 
     def CheckFuncReturnLongLong(self):
         cur = self.con.cursor()
@@ -267,7 +270,8 @@ class FunctionTests(unittest.TestCase):
 
     def CheckParamBlob(self):
         cur = self.con.cursor()
-        cur.execute('select isblob(?)', (buffer('blob'),))
+        with test_support.check_py3k_warnings():
+            cur.execute('select isblob(?)', (buffer('blob'),))
         val = cur.fetchone()[0]
         self.assertEqual(val, 1)
 
@@ -284,8 +288,9 @@ class AggregateTests(unittest.TestCase):
         self.con = sqlite.connect(':memory:')
         cur = self.con.cursor()
         cur.execute('\n            create table test(\n                t text,\n                i integer,\n                f float,\n                n,\n                b blob\n                )\n            ')
-        cur.execute('insert into test(t, i, f, n, b) values (?, ?, ?, ?, ?)', (
-         'foo', 5, 3.14, None, buffer('blob')))
+        with test_support.check_py3k_warnings():
+            cur.execute('insert into test(t, i, f, n, b) values (?, ?, ?, ?, ?)', (
+             'foo', 5, 3.14, None, buffer('blob')))
         self.con.create_aggregate('nostep', 1, AggrNoStep)
         self.con.create_aggregate('nofinalize', 1, AggrNoFinalize)
         self.con.create_aggregate('excInit', 1, AggrExceptionInInit)
@@ -376,7 +381,8 @@ class AggregateTests(unittest.TestCase):
 
     def CheckAggrCheckParamBlob(self):
         cur = self.con.cursor()
-        cur.execute("select checkType('blob', ?)", (buffer('blob'),))
+        with test_support.check_py3k_warnings():
+            cur.execute("select checkType('blob', ?)", (buffer('blob'),))
         val = cur.fetchone()[0]
         self.assertEqual(val, 1)
 

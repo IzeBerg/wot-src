@@ -14,8 +14,8 @@ package net.wg.gui.lobby.tankman
    import net.wg.infrastructure.base.meta.ISkillDropMeta;
    import net.wg.infrastructure.base.meta.impl.SkillDropMeta;
    import net.wg.infrastructure.managers.ITooltipMgr;
-   import net.wg.infrastructure.uilogger.epic_battle.EPIC_BATTLE_LOGGER_CONSTANTS;
-   import net.wg.infrastructure.uilogger.epic_battle.SkillDropPageLogger;
+   import net.wg.infrastructure.uilogging.epic_battle.EPIC_BATTLE_LOGGER_CONSTANTS;
+   import net.wg.infrastructure.uilogging.epic_battle.SkillDropPageLogger;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.controls.ButtonGroup;
    import scaleform.clik.events.ButtonEvent;

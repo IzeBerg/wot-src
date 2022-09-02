@@ -28,17 +28,6 @@ package net.wg.gui.battle.views.minimap.containers
          super();
       }
       
-      protected function onDispose() : void
-      {
-         this.points = null;
-         this.icons = null;
-         this.equipments = null;
-         this.deadVehicles = null;
-         this.aliveVehicles = null;
-         this.personal = null;
-         this.flags = null;
-      }
-      
       public final function dispose() : void
       {
          this._disposed = true;
@@ -48,6 +37,17 @@ package net.wg.gui.battle.views.minimap.containers
       public function isDisposed() : Boolean
       {
          return this._disposed;
+      }
+      
+      protected function onDispose() : void
+      {
+         this.points = null;
+         this.icons = null;
+         this.equipments = null;
+         this.deadVehicles = null;
+         this.aliveVehicles = null;
+         this.personal = null;
+         this.flags = null;
       }
    }
 }

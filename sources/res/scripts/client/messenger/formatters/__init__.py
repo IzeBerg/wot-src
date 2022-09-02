@@ -3,7 +3,7 @@ from time import gmtime, time as getTime
 from collections import namedtuple
 from constants import NC_CONTEXT_ITEM_TYPE
 from gui.impl import backport
-from helpers import time_utils, i18n
+from helpers import time_utils
 from messenger import g_settings
 _logger = logging.getLogger(__name__)
 
@@ -128,7 +128,7 @@ class NCContextItemFormatter(object):
 
     @classmethod
     def getStringFormat(cls, value):
-        return i18n.encodeUtf8(value)
+        return unicode(value)
 
     @classmethod
     def _makeLocalTimeString(cls, value, formatter):

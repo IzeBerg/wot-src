@@ -17,7 +17,7 @@ class Template(object):
     def format(self, ctx=None, **kwargs):
         sourceKey = kwargs.get('sourceKey', 'text')
         if sourceKey in self.source:
-            text = self.source[sourceKey]
+            text = unicode(self.source[sourceKey])
         else:
             LOG_ERROR('Invalid source key', sourceKey)
             return ''
@@ -28,14 +28,19 @@ class Template(object):
         if ctx:
             try:
                 text = text % ctx
-            except (ValueError, TypeError, KeyError):
-                LOG_WARNING('Can not format template (source, ctx)', text, ctx)
+            except (ValueError, TypeError, KeyError, UnicodeDecodeError):
+                LOG_WARNING('Can not format template (source = %r, ctx = %r)', text, ctx)
                 LOG_CURRENT_EXCEPTION()
 
         return text
 
 
 class DummyTemplate(Template):
+
+    def __init__(self, source, ctx=None):
+        super(DummyTemplate, self).__init__(source, ctx)
+        if isinstance(self.source, bytes):
+            self.source = unicode(self.source)
 
     def __repr__(self):
         return ('DummyTemplate(source = {0:>s})').format(self.source)
@@ -101,8 +106,8 @@ class XMLCollection(Collection):
                 if key == 'context':
                     ctx = dict((item[0], item[1].asString) for item in source['context'].items())
                 else:
-                    srcDict[key] = html.translation(source.readString(key))
+                    srcDict[key] = html.translation(source.readWideString(key))
 
         else:
-            srcDict['text'] = html.translation(source.asString)
+            srcDict['text'] = html.translation(source.asWideString)
         return Template(srcDict, ctx)

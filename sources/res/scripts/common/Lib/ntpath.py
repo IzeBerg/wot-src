@@ -1,5 +1,11 @@
+"""Common pathname manipulations, WindowsNT/95 version.
+
+Instead of importing this module directly, import os and refer to this
+module as os.path.
+"""
 import os, sys, stat, genericpath, warnings
 from genericpath import *
+from genericpath import _unicode
 __all__ = [
  'normcase', 'isabs', 'join', 'splitdrive', 'split', 'splitext',
  'basename', 'dirname', 'commonprefix', 'getsize', 'getmtime',
@@ -22,15 +28,20 @@ else:
     devnull = 'nul'
 
     def normcase(s):
+        """Normalize case of pathname.
+
+    Makes all characters lowercase and all slashes into backslashes."""
         return s.replace('/', '\\').lower()
 
 
     def isabs(s):
+        """Test whether a path is absolute"""
         s = splitdrive(s)[1]
         return s != '' and s[:1] in '/\\'
 
 
     def join(path, *paths):
+        r"""Join two or more pathname components, inserting "\" as needed."""
         result_drive, result_path = splitdrive(path)
         for p in paths:
             p_drive, p_path = splitdrive(p)
@@ -49,17 +60,56 @@ else:
                 result_path = result_path + '\\'
             result_path = result_path + p_path
 
+        if result_path and result_path[0] not in '\\/' and result_drive and result_drive[-1:] != ':':
+            return result_drive + sep + result_path
         return result_drive + result_path
 
 
     def splitdrive(p):
-        if p[1:2] == ':':
-            return (p[0:2], p[2:])
+        """Split a pathname into drive/UNC sharepoint and relative path specifiers.
+    Returns a 2-tuple (drive_or_unc, path); either part may be empty.
+
+    If you assign
+        result = splitdrive(p)
+    It is always true that:
+        result[0] + result[1] == p
+
+    If the path contained a drive letter, drive_or_unc will contain everything
+    up to and including the colon.  e.g. splitdrive("c:/dir") returns ("c:", "/dir")
+
+    If the path contained a UNC path, the drive_or_unc will contain the host name
+    and share up to but not including the fourth directory separator character.
+    e.g. splitdrive("//host/computer/dir") returns ("//host/computer", "/dir")
+
+    Paths cannot contain both a drive letter and a UNC path.
+
+    """
+        if len(p) > 1:
+            normp = p.replace(altsep, sep)
+            if normp[0:2] == sep * 2 and normp[2:3] != sep:
+                index = normp.find(sep, 2)
+                if index == -1:
+                    return ('', p)
+                index2 = normp.find(sep, index + 1)
+                if index2 == index + 1:
+                    return ('', p)
+                if index2 == -1:
+                    index2 = len(p)
+                return (p[:index2], p[index2:])
+            if normp[1] == ':':
+                return (p[:2], p[2:])
         return (
          '', p)
 
 
     def splitunc(p):
+        """Split a pathname into UNC mount point and relative path specifiers.
+
+    Return a 2-tuple (unc, rest); either part may be empty.
+    If unc is not empty, it has the form '//host/mount' (or similar
+    using backslashes).  unc+rest is always the input path.
+    Paths containing drive letters never have a UNC part.
+    """
         if p[1:2] == ':':
             return ('', p)
         firstTwo = p[0:2]
@@ -79,6 +129,10 @@ else:
 
 
     def split(p):
+        """Split a pathname.
+
+    Return tuple (head, tail) where tail is everything after the final slash.
+    Either part may be empty."""
         d, p = splitdrive(p)
         i = len(p)
         while i and p[(i - 1)] not in '/\\':
@@ -100,20 +154,26 @@ else:
     splitext.__doc__ = genericpath._splitext.__doc__
 
     def basename(p):
+        """Returns the final component of a pathname"""
         return split(p)[1]
 
 
     def dirname(p):
+        """Returns the directory component of a pathname"""
         return split(p)[0]
 
 
     def islink(path):
+        """Test for symbolic link.
+    On WindowsNT/95 and OS/2 always returns false
+    """
         return False
 
 
     lexists = exists
 
     def ismount(path):
+        """Test whether a path is a mount point (defined as root of drive)"""
         unc, rest = splitunc(path)
         if unc:
             return rest in ('', '/', '\\')
@@ -122,6 +182,19 @@ else:
 
 
     def walk(top, func, arg):
+        """Directory tree walk with callback function.
+
+    For each directory in the directory tree rooted at top (including top
+    itself, but excluding '.' and '..'), call func(arg, dirname, fnames).
+    dirname is the name of the directory, and fnames a list of the names of
+    the files and subdirectories in dirname (excluding '.' and '..').  func
+    may modify the fnames list in-place (e.g. via del or slice assignment),
+    and walk will only recurse into the subdirectories whose names remain in
+    fnames; this can be used to implement a filter, or to impose a specific
+    order of visiting.  No semantics are defined for, or required of, arg,
+    beyond that arg is always passed to func.  It can be used, e.g., to pass
+    a filename pattern, or a mutable object designed to accumulate
+    statistics.  Passing None for arg is common."""
         warnings.warnpy3k('In 3.x, os.path.walk is removed in favor of os.walk.', stacklevel=2)
         try:
             names = os.listdir(top)
@@ -136,6 +209,9 @@ else:
 
 
     def expanduser(path):
+        """Expand ~ and ~user constructs.
+
+    If user or $HOME is unknown, do nothing."""
         if path[:1] != '~':
             return path
         i, n = 1, len(path)
@@ -161,11 +237,14 @@ else:
 
 
     def expandvars(path):
+        """Expand shell variables of the forms $var, ${var} and %var%.
+
+    Unknown variables are left unchanged."""
         if '$' not in path and '%' not in path:
             return path
         import string
         varchars = string.ascii_letters + string.digits + '_-'
-        if isinstance(path, unicode):
+        if isinstance(path, _unicode):
             encoding = sys.getfilesystemencoding()
 
             def getenv(var):
@@ -188,7 +267,7 @@ else:
                     index = path.index("'")
                     res = res + "'" + path[:index + 1]
                 except ValueError:
-                    res = res + path
+                    res = res + c + path
                     index = pathlen - 1
 
             elif c == '%':
@@ -253,7 +332,8 @@ else:
 
 
     def normpath(path):
-        backslash, dot = ('\\', '.') if isinstance(path, unicode) else ('\\', '.')
+        """Normalize path, eliminating double slashes, etc."""
+        backslash, dot = ('\\', '.') if isinstance(path, _unicode) else ('\\', '.')
         if path.startswith(('\\\\.\\', '\\\\?\\')):
             return path
         path = path.replace('/', '\\')
@@ -293,8 +373,9 @@ else:
     except ImportError:
 
         def abspath(path):
+            """Return the absolute version of a path."""
             if not isabs(path):
-                if isinstance(path, unicode):
+                if isinstance(path, _unicode):
                     cwd = os.getcwdu()
                 else:
                     cwd = os.getcwd()
@@ -305,13 +386,14 @@ else:
     else:
 
         def abspath(path):
+            """Return the absolute version of a path."""
             if path:
                 try:
                     path = _getfullpathname(path)
                 except WindowsError:
                     pass
 
-            elif isinstance(path, unicode):
+            elif isinstance(path, _unicode):
                 path = os.getcwdu()
             else:
                 path = os.getcwd()
@@ -332,6 +414,7 @@ else:
 
 
     def relpath(path, start=curdir):
+        """Return a relative version of a path"""
         if not path:
             raise ValueError('no path specified')
         start_is_unc, start_prefix, start_list = _abspath_split(start)

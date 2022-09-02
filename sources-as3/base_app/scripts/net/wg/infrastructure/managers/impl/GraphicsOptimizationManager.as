@@ -240,7 +240,7 @@ package net.wg.infrastructure.managers.impl
                   _loc3_[_loc9_].id = -1;
                   _loc3_[_loc9_].rect = _loc11_;
                }
-               else if(param2 || !_loc10_.equals(_loc11_))
+               else if((param2 || !_loc10_.equals(_loc11_)) && _loc11_ != null)
                {
                   updateOptimizationAreaS(_loc3_[_loc9_].id,_loc11_.x * _loc8_,_loc11_.y * _loc8_,_loc11_.width * _loc8_,_loc11_.height * _loc8_);
                   _loc3_[_loc9_].rect = _loc11_;

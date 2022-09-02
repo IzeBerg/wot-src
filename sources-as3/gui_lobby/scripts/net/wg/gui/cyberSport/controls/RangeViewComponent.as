@@ -4,8 +4,11 @@ package net.wg.gui.cyberSport.controls
    import flash.display.MovieClip;
    import flash.display.Sprite;
    import net.wg.data.constants.generated.CYBER_SPORT_ALIASES;
+   import net.wg.gui.components.advanced.NationFlags25x17;
+   import net.wg.gui.components.advanced.interfaces.IUILoaderBased;
    import net.wg.gui.rally.vo.SettingRosterVO;
    import net.wg.infrastructure.base.UIComponentEx;
+   import net.wg.utils.IClassFactory;
    
    public class RangeViewComponent extends UIComponentEx
    {
@@ -21,11 +24,14 @@ package net.wg.gui.cyberSport.controls
       
       private var _lastPadding:int = 0;
       
+      private var _classFactory:IClassFactory = null;
+      
       public function RangeViewComponent()
       {
          super();
          this.mouseChildren = false;
          this.mouseEnabled = false;
+         this._classFactory = App.utils.classFactory;
          this._container = new Sprite();
          this.addChild(this._container);
       }
@@ -35,6 +41,7 @@ package net.wg.gui.cyberSport.controls
          this.removeChild(this._container);
          this._container = null;
          this._model = null;
+         this._classFactory = null;
          super.onDispose();
       }
       
@@ -68,36 +75,43 @@ package net.wg.gui.cyberSport.controls
       
       private function initializeComponents() : void
       {
-         this.componentDecorator(this._model.nationIDRange,CYBER_SPORT_ALIASES.ROSTER_FLAGS,[this._model.vTypeRange,this._model.vLevelRange],0);
-         this.componentDecorator(this._model.vTypeRange,CYBER_SPORT_ALIASES.ROSTER_TYPES,[this._model.vLevelRange],-2);
-         if(this.checkArrayRosters(this._model.vLevelRange) && this._model.vLevelRange.length > 1)
+         var _loc4_:int = 0;
+         var _loc5_:int = 0;
+         var _loc1_:Array = this._model.vLevelRange;
+         var _loc2_:Array = this._model.vTypeRange;
+         this.componentDecorator(this._model.nationIDRange,CYBER_SPORT_ALIASES.ROSTER_FLAGS,[_loc2_,_loc1_],0);
+         this.componentDecorator(_loc2_,CYBER_SPORT_ALIASES.ROSTER_TYPES,[_loc1_],-2);
+         var _loc3_:Boolean = this.isArrayValuesExists(_loc1_);
+         if(_loc3_ && _loc1_.length > 1)
          {
-            if(this._model.vLevelRange[0] == this._model.vLevelRange[1])
+            _loc4_ = _loc1_[0];
+            _loc5_ = _loc1_[1];
+            if(_loc4_ == _loc5_)
             {
-               this.componentDecorator([this._model.vLevelRange[0]],CYBER_SPORT_ALIASES.ROSTER_LEVELS,null,0);
+               this.componentDecorator([_loc4_],CYBER_SPORT_ALIASES.ROSTER_LEVELS,null,0);
             }
             else
             {
-               this.componentDecorator([this._model.vLevelRange[0]],CYBER_SPORT_ALIASES.ROSTER_LEVELS,null,0);
+               this.componentDecorator([_loc4_],CYBER_SPORT_ALIASES.ROSTER_LEVELS,null,0);
                this.componentDecorator([],CYBER_SPORT_ALIASES.ROSTER_LEVEL_SEPARATOR,null,0);
-               this.componentDecorator([this._model.vLevelRange[1]],CYBER_SPORT_ALIASES.ROSTER_LEVELS,null,0);
+               this.componentDecorator([_loc5_],CYBER_SPORT_ALIASES.ROSTER_LEVELS,null,0);
             }
          }
-         else if(this.checkArrayRosters(this._model.vLevelRange))
+         else if(_loc3_)
          {
-            this.componentDecorator(this._model.vLevelRange,CYBER_SPORT_ALIASES.ROSTER_LEVELS,null,0);
+            this.componentDecorator(_loc1_,CYBER_SPORT_ALIASES.ROSTER_LEVELS,null,0);
          }
-         this._container.x = Math.round((this._width - this._container.width) / 2);
+         this._container.x = this._width - this._container.width >> 1;
       }
       
       private function componentDecorator(param1:Array = null, param2:String = null, param3:Array = null, param4:int = 0) : void
       {
-         if(!this.checkArrayRosters(param1) && param2 != CYBER_SPORT_ALIASES.ROSTER_LEVEL_SEPARATOR)
+         if(!this.isArrayValuesExists(param1) && param2 != CYBER_SPORT_ALIASES.ROSTER_LEVEL_SEPARATOR)
          {
             return;
          }
          this.classInitializator(param1,param2,param4);
-         if(!this.checkArrayRosters(param3))
+         if(!this.isArrayValuesExists(param3))
          {
             return;
          }
@@ -105,7 +119,7 @@ package net.wg.gui.cyberSport.controls
          var _loc6_:int = 0;
          while(_loc6_ < _loc5_)
          {
-            if(this.checkArrayRosters(param3[_loc6_]))
+            if(this.isArrayValuesExists(param3[_loc6_]))
             {
                this.createSeparator();
                break;
@@ -117,24 +131,40 @@ package net.wg.gui.cyberSport.controls
       private function classInitializator(param1:Array = null, param2:String = null, param3:int = 0) : void
       {
          var _loc4_:MovieClip = null;
-         var _loc5_:uint = 0;
-         var _loc6_:int = 0;
-         if(param1 && param1.length > 0)
+         var _loc5_:Class = null;
+         var _loc6_:uint = 0;
+         var _loc7_:int = 0;
+         if(this.isArrayValuesExists(param1))
          {
-            _loc5_ = param1.length;
-            _loc6_ = 0;
-            while(_loc6_ < _loc5_)
+            if(param2 == CYBER_SPORT_ALIASES.ROSTER_FLAGS)
             {
-               _loc4_ = this.classFactory(param2);
-               _loc4_.gotoAndStop(param1[_loc6_]);
+               _loc5_ = NationFlags25x17;
+            }
+            else
+            {
+               _loc5_ = MovieClip;
+            }
+            _loc6_ = param1.length;
+            _loc7_ = 0;
+            while(_loc7_ < _loc6_)
+            {
+               _loc4_ = this._classFactory.getComponent(param2,_loc5_);
+               if(_loc4_ is IUILoaderBased)
+               {
+                  IUILoaderBased(_loc4_).setSource(param1[_loc7_]);
+               }
+               else
+               {
+                  _loc4_.gotoAndStop(param1[_loc7_]);
+               }
                this._container.addChild(_loc4_);
                this.setComponentPosition(_loc4_,param3);
-               _loc6_++;
+               _loc7_++;
             }
          }
          else
          {
-            _loc4_ = this.classFactory(param2);
+            _loc4_ = this._classFactory.getComponent(param2,MovieClip);
             this._container.addChild(_loc4_);
             this.setComponentPosition(_loc4_,param3);
          }
@@ -146,7 +176,7 @@ package net.wg.gui.cyberSport.controls
          if(this._container.numChildren > 1)
          {
             _loc3_ = this._container.getChildAt(this._container.numChildren - 2);
-            param1.x = Math.round(_loc3_.x + _loc3_.width + param2 + this._lastPadding);
+            param1.x = _loc3_.x + _loc3_.width + param2 + this._lastPadding | 0;
          }
          else
          {
@@ -156,25 +186,20 @@ package net.wg.gui.cyberSport.controls
          {
             this._lastPadding = 0;
          }
-         param1.y = Math.round((this.height - param1.height) / 2);
+         param1.y = this.height - param1.height >> 1;
       }
       
-      private function checkArrayRosters(param1:Array) : Boolean
+      private function isArrayValuesExists(param1:Array) : Boolean
       {
          return param1 && param1.length > 0;
       }
       
       private function createSeparator() : void
       {
-         var _loc1_:MovieClip = this.classFactory(CYBER_SPORT_ALIASES.ROSTER_SEPARATOR);
+         var _loc1_:MovieClip = this._classFactory.getComponent(CYBER_SPORT_ALIASES.ROSTER_SEPARATOR,MovieClip);
          this._container.addChild(_loc1_);
          this.setComponentPosition(_loc1_,PADDING_SEPARATOR);
          this._lastPadding = PADDING_SEPARATOR;
-      }
-      
-      private function classFactory(param1:String) : *
-      {
-         return App.utils.classFactory.getComponent(param1,MovieClip);
       }
    }
 }

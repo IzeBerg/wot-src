@@ -21,6 +21,7 @@ package net.wg.infrastructure.base
    import scaleform.clik.core.UIComponent;
    import scaleform.clik.events.FocusHandlerEvent;
    import scaleform.clik.events.InputEvent;
+   import scaleform.clik.managers.InputDelegate;
    
    [Event(name="onAfterDispose",type="net.wg.infrastructure.events.LifeCycleEvent")]
    [Event(name="onBeforeDispose",type="net.wg.infrastructure.events.LifeCycleEvent")]
@@ -101,6 +102,7 @@ package net.wg.infrastructure.base
       
       override protected function onBeforeDispose() : void
       {
+         InputDelegate.getInstance().checkAndCleanUpCurrentEvent(this);
          this.setLastFocusedElement(null);
          removeEventListener(FocusHandlerEvent.FOCUS_IN,this.onFocusInHandler);
          var _loc1_:IUtils = App.utils;

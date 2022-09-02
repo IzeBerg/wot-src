@@ -21,7 +21,7 @@ package net.wg.gui.battle.views.consumablesPanel
    public class BattleEquipmentButton extends BattleToolTipButton implements IConsumablesButton, ICoolDownCompleteHandler
    {
       
-      protected static const KEY_VALIDATION:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 2;
+      private static const KEY_VALIDATION:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 2;
       
       private static const COOLDOWN_COUNTER_BG_RED:String = "red";
       
@@ -32,6 +32,8 @@ package net.wg.gui.battle.views.consumablesPanel
       private static const COOLDOWN_START_FRAME:int = 1;
       
       private static const COOLDOWN_END_FRAME:int = 49;
+      
+      private static const COOLDOWN_FRAME_COUNT:int = COOLDOWN_END_FRAME - COOLDOWN_START_FRAME;
       
       private static const DEFAULT_TIME_COEF:int = 1;
       
@@ -131,18 +133,6 @@ package net.wg.gui.battle.views.consumablesPanel
          this.consumableBackground.visible = false;
       }
       
-      protected function setBindKeyText() : void
-      {
-         if(this._bindSfKeyCode == KeyProps.KEY_NONE)
-         {
-            this.glow.setBindKeyText(App.utils.locale.makeString(READABLE_KEY_NAMES.KEY_NONE_ALT));
-         }
-         else
-         {
-            this.glow.setBindKeyText(App.utils.commons.keyToString(this._bindSfKeyCode).keyName);
-         }
-      }
-      
       override protected function draw() : void
       {
          super.draw();
@@ -234,16 +224,6 @@ package net.wg.gui.battle.views.consumablesPanel
       {
       }
       
-      public function set activated(param1:Boolean) : void
-      {
-         if(!param1)
-         {
-            return;
-         }
-         this.state = BATTLE_ITEM_STATES.RELOADED;
-         this.isActivated = true;
-      }
-      
       public function setColorTransform(param1:ColorTransform) : void
       {
          if(this._lockColorTransform)
@@ -330,7 +310,6 @@ package net.wg.gui.battle.views.consumablesPanel
             this._currentIntervalTime = param2 - param3;
             this._useBigTimer = (param4 & ANIMATION_TYPES.CENTER_COUNTER) > 0;
             this.cooldownTimerTf.visible = this.counterBg.visible = !this._useBigTimer;
-            _loc5_ = !!this._useBigTimer ? int(SMALL_INTERVAL_SIZE) : int(INTERVAL_SIZE);
             if(this._useBigTimer)
             {
                this.bigCooldownTimerTf.visible = true;
@@ -373,6 +352,7 @@ package net.wg.gui.battle.views.consumablesPanel
             this.intervalRun(this._useBigTimer);
             if(!this._isReplay)
             {
+               _loc5_ = !!this._useBigTimer ? int(SMALL_INTERVAL_SIZE) : int(INTERVAL_SIZE);
                this.startCooldownTimer(param1,this._currReloadingInPercent,this._curAnimReversed,this._isFillPartially);
                this.disableMouse();
                this._scheduler.scheduleRepeatableTask(this.intervalRun,_loc5_,param2,this._useBigTimer);
@@ -442,11 +422,31 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function showGlow(param1:int) : void
       {
-         if(!enabled || this._isReloading)
+         if(this._isReloading || !enabled)
          {
             return;
          }
          this.glow.showGlow(param1);
+      }
+      
+      public function updateLevelInformation(param1:int) : void
+      {
+      }
+      
+      public function updateLockedInformation(param1:int, param2:String) : void
+      {
+      }
+      
+      protected function setBindKeyText() : void
+      {
+         if(this._bindSfKeyCode == KeyProps.KEY_NONE)
+         {
+            this.glow.setBindKeyText(App.utils.locale.makeString(READABLE_KEY_NAMES.KEY_NONE_ALT));
+         }
+         else
+         {
+            this.glow.setBindKeyText(App.utils.commons.keyToString(this._bindSfKeyCode).keyName);
+         }
       }
       
       private function intervalRun(param1:Boolean) : void
@@ -454,7 +454,7 @@ package net.wg.gui.battle.views.consumablesPanel
          this._currentIntervalTime -= 1;
          if(param1)
          {
-            this.bigCooldownTimerTf.text = Number(this._currentIntervalTime / INTERVALS_RATIO).toFixed(this._currentIntervalTime < 100);
+            this.bigCooldownTimerTf.text = (this._currentIntervalTime / INTERVALS_RATIO).toFixed(this._currentIntervalTime < 100);
          }
          else
          {
@@ -485,13 +485,19 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private function endCooldownTimer() : void
       {
-         this._coolDownTimer.end();
-         this.cooldownMc.visible = false;
+         if(this._coolDownTimer)
+         {
+            this._coolDownTimer.end();
+         }
+         if(this.cooldownMc)
+         {
+            this.cooldownMc.visible = false;
+         }
       }
       
       private function startCooldownTimer(param1:Number, param2:Number, param3:Boolean, param4:Boolean = false) : void
       {
-         this._coolDownTimer.start(param1,this,Math.round((COOLDOWN_END_FRAME - COOLDOWN_START_FRAME) * param2),DEFAULT_TIME_COEF,param3,param4);
+         this._coolDownTimer.start(param1,this,Math.round(COOLDOWN_FRAME_COUNT * param2),DEFAULT_TIME_COEF,param3,param4);
       }
       
       private function clearCoolDownText() : void
@@ -506,6 +512,16 @@ package net.wg.gui.battle.views.consumablesPanel
          {
             super.state = param1;
          }
+      }
+      
+      public function set activated(param1:Boolean) : void
+      {
+         if(!param1)
+         {
+            return;
+         }
+         this.state = BATTLE_ITEM_STATES.RELOADED;
+         this.isActivated = true;
       }
       
       public function get consumablesVO() : ConsumablesVO
@@ -589,14 +605,6 @@ package net.wg.gui.battle.views.consumablesPanel
       protected function get cooldownTimer() : CoolDownTimer
       {
          return this._coolDownTimer;
-      }
-      
-      public function updateLockedInformation(param1:int, param2:String) : void
-      {
-      }
-      
-      public function updateLevelInformation(param1:int) : void
-      {
       }
    }
 }

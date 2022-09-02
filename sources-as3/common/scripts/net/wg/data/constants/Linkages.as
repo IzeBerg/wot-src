@@ -433,6 +433,8 @@ package net.wg.data.constants
       
       public static const TUTORIAL_HINT_UI:String = "TutorialHintUI";
       
+      public static const TUTORIAL_SIMPLE_HINT_UI:String = "LobbyHintUI";
+      
       public static const TUTORIAL_BOOTCAMP_HINT_UI:String = "BCLobbyHintUI";
       
       public static const PROFILE_SUMMARY_PAGE:String = "ProfileSummaryPage_UI";
@@ -1025,7 +1027,13 @@ package net.wg.data.constants
       
       public static const LOBBY_MINIMAP:String = "LobbyMinimap";
       
+      public static const VEHICLE_BUTTON_UI:String = "CSVehicleButtonUI";
+      
       public static const RESOURCE_WELL_ENTRY_POINT:String = "ResourceWellEntryPointUI";
+      
+      public static const BATTLE_MATTERS_ENTRY_POINT:String = "BattleMattersEntryPointUI";
+      
+      public static const BATTLE_MATTERS_ANIM_LOADER:String = "BattleMattersAnimLoaderUI";
        
       
       public function Linkages()

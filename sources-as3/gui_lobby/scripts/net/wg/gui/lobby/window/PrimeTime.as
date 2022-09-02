@@ -32,7 +32,7 @@ package net.wg.gui.lobby.window
       
       private static const STATUS_TF_OFFSET:int = 86;
       
-      private static const SERVERS_TF_OFFSET:int = 9;
+      private static const SERVERS_TF_OFFSET:int = 59;
       
       private static const SERVERS_DD_OFFSET:int = -3;
       
@@ -119,7 +119,6 @@ package net.wg.gui.lobby.window
             this.serversDD.visible = this._data.serverDDVisible;
             this.serversDD.enabled = this._data.serversDDEnabled;
             App.utils.commons.updateTextFieldSize(this.serversTf,true,false);
-            App.utils.commons.updateTextFieldSize(this.statusTf,false,true);
             invalidateSize();
          }
          if(isInvalid(InvalidationType.SIZE))
@@ -133,7 +132,7 @@ package net.wg.gui.lobby.window
             this.statusTf.width = width;
             _loc1_ = !!this.serversDD.visible ? int(this.serversDD.width + SERVERS_DD_GAP) : int(0);
             this.serversTf.x = width - this.serversTf.width - _loc1_ >> 1;
-            this.serversTf.y = this.statusTf.y + this.statusTf.height + SERVERS_TF_OFFSET;
+            this.serversTf.y = this.statusTf.y + SERVERS_TF_OFFSET;
             if(this.serversDD.visible)
             {
                this.serversDD.x = this.serversTf.x + this.serversTf.width + SERVERS_DD_GAP | 0;

@@ -1243,6 +1243,9 @@ msgstr "Списано очков Боевого пропуска"
 msgid "platformCurrencyMsg/debited/brcoin"
 msgstr "Списано стальных печатей"
 
+msgid "platformCurrencyMsg/debited/freeXP"
+msgstr "Списано свободного опыта"
+
 msgid "platformCurrencyMsg/debited/sacoin"
 msgstr "Списано жетонов за выслугу лет"
 
@@ -1251,6 +1254,9 @@ msgstr "Начислено очков Боевого пропуска"
 
 msgid "platformCurrencyMsg/received/brcoin"
 msgstr "Начислено стальных печатей"
+
+msgid "platformCurrencyMsg/received/freeXP"
+msgstr "Получено свободного опыта"
 
 msgid "platformCurrencyMsg/received/sacoin"
 msgstr "Добавлено жетонов за выслугу лет"
@@ -1642,6 +1648,57 @@ msgstr "Ремонт %s выполнен успешно. Потрачено "
 msgid "serviceChannelMessages/badgeAchievement"
 msgstr "Добавлено нашивок"
 
+msgid "serviceChannelMessages/battleMatters/awards/body"
+msgstr "Задача «%(questIdx)s %(questName)s» выполнена."
+
+msgid "serviceChannelMessages/battleMatters/awards/done/body"
+msgstr "Вся цепочка задач Танковой академии выполнена."
+
+msgid "serviceChannelMessages/battleMatters/awards/footer"
+msgstr "Жетон можно обменять на любую исследуемую машину VI уровня."
+
+msgid "serviceChannelMessages/battleMatters/awards/footer/button"
+msgstr "К выбору машины"
+
+msgid "serviceChannelMessages/battleMatters/awards/header"
+msgstr "Поздравляем!"
+
+msgid "serviceChannelMessages/battleMatters/awards/medium/body"
+msgstr "Выполнено задач Танковой академии: %(count)s"
+
+msgid "serviceChannelMessages/battleMatters/awards/questIdx"
+msgstr "%(questIdx)s."
+
+msgid "serviceChannelMessages/battleMatters/awards/received"
+msgstr "Получена награда:"
+
+msgid "serviceChannelMessages/battleMatters/awards/tokenAward/body"
+msgstr "Использован жетон академии."
+
+msgid "serviceChannelMessages/battleMatters/awards/tokenAward/body/crew"
+msgstr "%(vehName)s (экипаж 100%)"
+
+msgid ""
+"serviceChannelMessages/battleMatters/awards/tokenAward/body/rewardReceived"
+msgstr "Получена награда:"
+
+msgid "serviceChannelMessages/battleMatters/awards/tokenAward/body/slot"
+msgstr "Слотов в Ангаре: %(count)s"
+
+msgid "serviceChannelMessages/battleMatters/awards/tokenAward/body/vehicle"
+msgstr "Техника в аренду: %(vehName)s"
+
+msgid "serviceChannelMessages/battleMatters/paused"
+msgstr ""
+"Выполнение задач Танковой академии временно недоступно. Прогресс выполненных"
+" задач будет сохранён."
+
+msgid "serviceChannelMessages/battleMatters/started"
+msgstr "Задачи Танковой академии снова доступны для выполнения."
+
+msgid "serviceChannelMessages/battleMatters/token"
+msgstr "Жетон академии"
+
 msgid "serviceChannelMessages/battlePass/badges/header/remove"
 msgstr "Списана нашивка"
 
@@ -1773,7 +1830,7 @@ msgid "serviceChannelMessages/battleResults/actionsResultsCrystal"
 msgstr "%s бон"
 
 msgid "serviceChannelMessages/battleResults/actionsResultsEventCoin"
-msgstr "%s праздничных монет"
+msgstr "%s юбилейных монет"
 
 msgid "serviceChannelMessages/battleResults/actionsResultsFreeXP"
 msgstr "%s свободного опыта"
@@ -1827,7 +1884,7 @@ msgid "serviceChannelMessages/battleResults/epicAbilityPoints"
 msgstr "Очки боевых резервов"
 
 msgid "serviceChannelMessages/battleResults/eventCoin"
-msgstr "Получено праздничных монет"
+msgstr "Получено юбилейных монет"
 
 msgid "serviceChannelMessages/battleResults/experience"
 msgstr "Получено опыта"
@@ -1907,7 +1964,7 @@ msgid "serviceChannelMessages/battleResults/quests/entitlements/multiplier"
 msgstr " (%(count)s)"
 
 msgid "serviceChannelMessages/battleResults/quests/eventCoin"
-msgstr "Добавлены праздничные монеты"
+msgstr "Добавлены юбилейные монеты"
 
 msgid "serviceChannelMessages/battleResults/quests/freeXP"
 msgstr "Добавлено свободного опыта"
@@ -2176,9 +2233,9 @@ msgid "serviceChannelMessages/currencyUpdate/debited/crystal"
 msgstr "Списано бон"
 
 msgid "serviceChannelMessages/currencyUpdate/debited/eventCoin"
-msgstr "Списано праздничных монет"
+msgstr "Списано юбилейных монет"
 
-msgid "serviceChannelMessages/currencyUpdate/debited/freeXp"
+msgid "serviceChannelMessages/currencyUpdate/debited/freeXP"
 msgstr "Списано свободного опыта"
 
 msgid "serviceChannelMessages/currencyUpdate/debited/gold"
@@ -2186,6 +2243,9 @@ msgstr "Списано золота"
 
 msgid "serviceChannelMessages/currencyUpdate/financial_transaction"
 msgstr "Финансовая операция"
+
+msgid "serviceChannelMessages/currencyUpdate/integratedAuction"
+msgstr "Аукцион"
 
 msgid "serviceChannelMessages/currencyUpdate/received/bpcoin"
 msgstr "Получено жетонов"
@@ -2197,9 +2257,9 @@ msgid "serviceChannelMessages/currencyUpdate/received/crystal"
 msgstr "Получено бон"
 
 msgid "serviceChannelMessages/currencyUpdate/received/eventCoin"
-msgstr "Получено праздничных монет"
+msgstr "Получено юбилейных монет"
 
-msgid "serviceChannelMessages/currencyUpdate/received/freeXp"
+msgid "serviceChannelMessages/currencyUpdate/received/freeXP"
 msgstr "Получено свободного опыта"
 
 msgid "serviceChannelMessages/currencyUpdate/received/gold"
@@ -2275,7 +2335,7 @@ msgid "serviceChannelMessages/epicReward/recertificationForm_gift"
 msgstr "• Бланки переподготовки"
 
 msgid "serviceChannelMessages/eventCoinReceivedAsGift"
-msgstr "От администрации получено праздничных монет: %(eventCoin)s."
+msgstr "От администрации получено юбилейных монет: %(eventCoin)s."
 
 msgid "serviceChannelMessages/failedPersonalMission"
 msgstr "Прогресс сброшен"
@@ -2472,7 +2532,7 @@ msgid "serviceChannelMessages/invoiceReceived/compensation/emblem"
 msgstr "Эмблему"
 
 msgid "serviceChannelMessages/invoiceReceived/compensation/eventCoin"
-msgstr "праздничными монетами"
+msgstr "юбилейными монетами"
 
 msgid "serviceChannelMessages/invoiceReceived/compensation/gold"
 msgstr "золотом"
@@ -2559,10 +2619,10 @@ msgid "serviceChannelMessages/invoiceReceived/equipment"
 msgstr "Снаряжение"
 
 msgid "serviceChannelMessages/invoiceReceived/eventCoinAccrued"
-msgstr "Начислено праздничных монет"
+msgstr "Начислено юбилейных монет"
 
 msgid "serviceChannelMessages/invoiceReceived/eventCoinDebited"
-msgstr "Списано праздничных монет"
+msgstr "Списано юбилейных монет"
 
 msgid "serviceChannelMessages/invoiceReceived/freeAwardListsAccrued"
 msgstr "Начислено бланков приказа"
@@ -2904,6 +2964,39 @@ msgstr "От администрации получен Общий премиум
 msgid "serviceChannelMessages/priorityMessageTitle"
 msgstr "Внимание!"
 
+msgid "serviceChannelMessages/progression2d/button"
+msgstr "Подробнее"
+
+msgid "serviceChannelMessages/progression2d/camouflage"
+msgstr "Камуфляж"
+
+msgid "serviceChannelMessages/progression2d/decal"
+msgstr "Декаль"
+
+msgid "serviceChannelMessages/progression2d/emblem"
+msgstr "Эмблема"
+
+msgid "serviceChannelMessages/progression2d/inscription"
+msgstr "Надпись"
+
+msgid "serviceChannelMessages/progression2d/item"
+msgstr "%(typeName)s «%(name)s» %(level)s уровня"
+
+msgid "serviceChannelMessages/progression2d/itemCount"
+msgstr "И ещё: %(count)s"
+
+msgid "serviceChannelMessages/progression2d/paint"
+msgstr "Краска"
+
+msgid "serviceChannelMessages/progression2d/projectionDecal"
+msgstr "Декаль"
+
+msgid "serviceChannelMessages/progression2d/received"
+msgstr "Получено:"
+
+msgid "serviceChannelMessages/progression2d/title"
+msgstr "Стиль «%(name)s»"
+
 msgid "serviceChannelMessages/progressiveReward/header"
 msgstr "Поздравляем!"
 
@@ -3156,10 +3249,10 @@ msgid "serviceChannelMessages/sysMsg/converter/emblems"
 msgstr "Изменены эмблемы"
 
 msgid "serviceChannelMessages/sysMsg/converter/eventCoinReceived"
-msgstr "Начислено праздничных монет: %(eventCoin)s"
+msgstr "Начислено юбилейных монет: %(eventCoin)s"
 
 msgid "serviceChannelMessages/sysMsg/converter/eventCoinWithdrawn"
-msgstr "Списано праздничных монет: %(eventCoin)s"
+msgstr "Списано юбилейных монет: %(eventCoin)s"
 
 msgid "serviceChannelMessages/sysMsg/converter/freeXPReceived"
 msgstr "Начислено свободного опыта: %(freeXP)s"

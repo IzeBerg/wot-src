@@ -1,9 +1,8 @@
 from collections import namedtuple
 from itertools import chain
-import math, BigWorld, Vehicle
+import math, BigWorld
 from Math import Vector3, Matrix
 import math_utils
-from gui.battle_control import event_dispatcher as gui_event_dispatcher
 
 class MagneticAimSettings(object):
     MAGNETIC_ANGLE = 2.25
@@ -16,20 +15,10 @@ class MagneticAimSettings(object):
 
 _TargetVeh = namedtuple('TargetVehicle', ('vehicleRef', 'dotResult', 'distance'))
 
-def autoAimProcessor(target):
-    if target is not None and isinstance(target, Vehicle.Vehicle):
-        allyOrSelfVehicle = target.publicInfo['team'] == BigWorld.player().team or target.isPlayerVehicle
-        if allyOrSelfVehicle or not target.isStarted or not target.isAlive():
-            return
-        gui_event_dispatcher.addAutoAimMarker(vehicle=target)
-    return
-
-
 def magneticAimProcessor(previousSimpleTarget=None, previousMagneticTarget=None):
     if BigWorld.target() is None:
         target = magneticAimFindTarget()
         if target and target != previousSimpleTarget and target != previousMagneticTarget:
-            gui_event_dispatcher.addAutoAimMarker(vehicle=target)
             BigWorld.player().autoAim(target=target, magnetic=True)
             return target
     return previousSimpleTarget
@@ -38,7 +27,7 @@ def magneticAimProcessor(previousSimpleTarget=None, previousMagneticTarget=None)
 def magneticAimFindTarget():
     vehicleAttached = BigWorld.player().getVehicleAttached()
     aimCamera = BigWorld.player().inputHandler.ctrl.camera
-    aimCameraDirection = aimCamera.aimingSystem.matrix.applyToAxis(2)
+    aimCameraDirection = aimCamera.aimingSystem.matrixProvider.applyToAxis(2)
     if vehicleAttached is None or not vehicleAttached.isAlive():
         return
     minAngleVehicle = None
@@ -61,7 +50,7 @@ def magneticAimFindTarget():
         if minAngleVehicle is None or dotResult >= minAngleVehicle.dotResult:
             minAngleVehicle = veh
         if minAngleVehicle is not None and math_utils.almostZero(dotResult - minAngleVehicle.dotResult):
-            if targetDistance < minAngleVehicle.distance:
+            if targetDistance.length < minAngleVehicle.distance:
                 minAngleVehicle = veh
 
     pickedVehicle = None

@@ -14,6 +14,7 @@ from items.components.c11n_constants import SeasonType
 from items.components.crew_skins_constants import NO_CREW_SKIN_ID
 from constants import DOSSIER_TYPE, IS_DEVELOPMENT, SEASON_TYPE_BY_NAME, EVENT_TYPE, INVOICE_LIMITS
 from soft_exception import SoftException
+from customization_quests_common import validateCustomizationQuestToken
 if TYPE_CHECKING:
     from ResMgr import DataSection
 __all__ = [
@@ -463,6 +464,8 @@ def __readBonus_vehicle(bonus, _name, section, eventType, checkLimit):
     if section.has_key('ammo'):
         ammo = section['ammo'].asString
         extra['ammo'] = [ int(item) for item in ammo.split(' ') ]
+    if section.has_key('unlock'):
+        extra['unlock'] = True
     vehicleBonuses = bonus.setdefault('vehicles', {})
     vehKey = vehCompDescr if vehCompDescr else vehTypeCompDescr
     if vehKey in vehicleBonuses:
@@ -648,6 +651,9 @@ def __readBonus_tokens(bonus, _name, section, eventType, checkLimit):
     token['count'] = 1
     if section.has_key('count'):
         token['count'] = section['count'].asInt
+    res = validateCustomizationQuestToken(id, token)
+    if not res[0]:
+        raise SoftException(res[1])
     if checkLimit and token['count'] > INVOICE_LIMITS.TOKENS_MAX:
         raise SoftException('Invalid count of tankman token with id %s with amount %d when limit is %d.' % (
          id, token['count'], INVOICE_LIMITS.TOKENS_MAX))
@@ -694,7 +700,8 @@ def __readBonus_entitlement(bonus, _name, section, eventType, checkLimit):
         raise SoftException('Invalid count of entitlement id %s with amount %d when limit is %d.' % (
          id, entitlement['count'], INVOICE_LIMITS.ENTITLEMENTS_MAX))
     if section.has_key('expires'):
-        entitlement['expires'] = readUTC(section, 'expires')
+        entitlement['expires'] = expires = {}
+        __readBonus_expires(id, expires, section)
 
 
 def __readBonus_currency(bonus, _name, section, eventType, checkLimit):
@@ -786,6 +793,8 @@ def __readBonus_vehicleChoice(bonus, _name, section, eventType, checkLimit):
             if 1 <= int(level) <= 10:
                 extra.setdefault('levels', set()).add(int(level))
 
+    if section.has_key('crewLvl'):
+        extra['crewLvl'] = section['crewLvl'].asInt
     bonus['demandedVehicles'] = extra
 
 
@@ -834,8 +843,6 @@ def __readBonus_optionalData(config, bonusReaders, section, eventType):
         properties['compensation'] = section['compensation'].asBool
     if section.has_key('shouldCompensated'):
         properties['shouldCompensated'] = section['shouldCompensated'].asBool
-    if section.has_key('priority'):
-        properties['priority'] = section['priority'].asInt
     if IS_DEVELOPMENT:
         if section.has_key('name'):
             properties['name'] = section['name'].asString
@@ -861,7 +868,7 @@ def __readBonus_optional(config, bonusReaders, bonus, section, eventType):
     if config.get('useBonusProbability', False) and bonusProbability is None:
         raise SoftException("Missing bonusProbability attribute in 'optional'")
     properties = subBonus.get('properties', {})
-    for property in ('compensation', 'shouldCompensated', 'priority'):
+    for property in ('compensation', 'shouldCompensated'):
         if properties.get(property, None) is not None:
             raise SoftException(("Property '{}' not allowed for standalone 'optional'").format(property))
 
@@ -964,6 +971,15 @@ def __readBonus_battlePassPoints(bonus, _name, section, eventType, checkLimit):
     bonus['battlePassPoints'] = {'vehicles': {NON_VEH_CD: count}}
 
 
+def __readBonus_freePremiumCrew(bonus, _name, section, eventType, checkLimit):
+    vehLevel = section['vehLevel'].asInt
+    count = section.readInt('count', 1)
+    if 'freePremiumCrew' in bonus and vehLevel in bonus['freePremiumCrew']:
+        raise SoftException('Duplicate free premium crew vehLevel', vehLevel)
+    freePremiumCrewBonus = bonus.setdefault('freePremiumCrew', {})
+    freePremiumCrewBonus[vehLevel] = count
+
+
 def __readBonus_group(config, bonusReaders, bonus, section, eventType):
     limitIDs, subBonus = __readBonusSubSection(config, bonusReaders, section, eventType)
     bonus.setdefault('groups', []).append(subBonus)
@@ -1021,12 +1037,13 @@ __BONUS_READERS = {'meta': __readMetaSection,
    'vehicleChoice': __readBonus_vehicleChoice, 
    'blueprint': __readBonus_blueprint, 
    'blueprintAny': __readBonus_blueprintAny, 
-   'currency': __readBonus_currency}
+   'currency': __readBonus_currency, 
+   'freePremiumCrew': __readBonus_freePremiumCrew}
 __PROBABILITY_READERS = {'optional': __readBonus_optional, 
    'oneof': __readBonus_oneof, 
    'group': __readBonus_group}
 _RESERVED_NAMES = frozenset(['config', 'properties', 'limitID', 'probability', 'compensation', 'name',
- 'shouldCompensated', 'probabilityStageDependence', 'bonusProbability', 'priority'])
+ 'shouldCompensated', 'probabilityStageDependence', 'bonusProbability'])
 SUPPORTED_BONUSES = frozenset(__BONUS_READERS.iterkeys())
 __SORTED_BONUSES = sorted(SUPPORTED_BONUSES)
 SUPPORTED_BONUSES_IDS = dict((n, i) for i, n in enumerate(__SORTED_BONUSES))
@@ -1076,10 +1093,6 @@ def __readBonusConfig(section):
         elif name == 'useBonusProbability':
             config.setdefault('useBonusProbability', False)
             config['useBonusProbability'] = data.asBool
-        elif name == 'showBonusInfo':
-            config['showBonusInfo'] = data.asBool
-        elif name == 'showProbabilitiesInfo':
-            config['showProbabilitiesInfo'] = data.asBool
         else:
             raise SoftException(('Unknown config section: {}').format(name))
 

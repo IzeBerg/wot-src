@@ -255,6 +255,9 @@ _plusPercentFormat = {'rounder': lambda v: '+%d%%' % v}
 def _autoReloadPreprocessor(reloadTimes, rowStates):
     times = []
     states = []
+    if not hasattr(reloadTimes, '__iter__'):
+        return (
+         times, _SLASH, states if states else None)
     for idx, slotTime in enumerate(reloadTimes):
         if isinstance(slotTime, (float, int)) or slotTime is None:
             times.append(slotTime)
@@ -448,7 +451,7 @@ def simplifiedDeltaParameter(parameter, isSituational=False, isApproximately=Fal
 def _applyFormat(value, state, settings, doSmartRound, colorScheme):
     if doSmartRound:
         value = _cutDigits(value)
-    if isinstance(value, str):
+    if isinstance(value, (str, unicode)):
         paramStr = value
     elif value is None:
         paramStr = '--'

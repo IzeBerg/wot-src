@@ -3,7 +3,7 @@ import tkMessageBox, string, sys
 
 class GetKeysDialog(Toplevel):
 
-    def __init__(self, parent, title, action, currentKeySequences):
+    def __init__(self, parent, title, action, currentKeySequences, _htest=False):
         Toplevel.__init__(self, parent)
         self.configure(borderwidth=5)
         self.resizable(height=FALSE, width=FALSE)
@@ -31,7 +31,7 @@ class GetKeysDialog(Toplevel):
         self.update_idletasks()
         self.geometry('+%d+%d' % (
          parent.winfo_rootx() + (parent.winfo_width() / 2 - self.winfo_reqwidth() / 2),
-         parent.winfo_rooty() + (parent.winfo_height() / 2 - self.winfo_reqheight() / 2)))
+         parent.winfo_rooty() + ((_htest or parent.winfo_height() / 2) - self.winfo_reqheight() / 2 if 1 else 150)))
         self.deiconify()
         self.wait_window()
 
@@ -134,7 +134,7 @@ class GetKeysDialog(Toplevel):
         self.keyString.set('')
 
     def LoadFinalKeyList(self):
-        self.functionKeys = ('F1', 'F2', 'F2', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9',
+        self.functionKeys = ('F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9',
                              'F10', 'F11', 'F12')
         self.alphanumKeys = tuple(string.ascii_lowercase + string.digits)
         self.punctuationKeys = tuple('~!@#%^&*()_-+={}[]|;:,.<>/?')
@@ -166,10 +166,12 @@ class GetKeysDialog(Toplevel):
     def OK(self, event=None):
         if self.advanced or self.KeysOK():
             self.result = self.keyString.get()
+            self.grab_release()
             self.destroy()
 
     def Cancel(self, event=None):
         self.result = ''
+        self.grab_release()
         self.destroy()
 
     def KeysOK(self):
@@ -199,13 +201,5 @@ class GetKeysDialog(Toplevel):
 
 
 if __name__ == '__main__':
-    root = Tk()
-
-    def run():
-        keySeq = ''
-        dlg = GetKeysDialog(root, 'Get Keys', 'find-again', [])
-        print dlg.result
-
-
-    Button(root, text='Dialog', command=run).pack()
-    root.mainloop()
+    from idlelib.idle_test.htest import run
+    run(GetKeysDialog)

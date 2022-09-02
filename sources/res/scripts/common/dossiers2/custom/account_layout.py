@@ -309,7 +309,11 @@ _SINGLE_ACHIEVEMENTS_VALUES = [
  'hw2021Medal1', 'hw2021Medal2', 'november21', '11YearsOfService',
  'NY22_AtmsphrLevel', 'NY22_CelebChallenge', 'december21', 'BattlePassCommonPr_7',
  'oowCBTParticipant', 'june22', 'BattlePassCommonPr_8', 'BattlePassCommonPr_8ru',
- 'BattlePassCommonPr_8quest', 'july22']
+ 'BattlePassCommonPr_8quest', 'july22', 'august22', 'BattlePassCommonPr_9',
+ 'prime_gaming_reserved_1', 'prime_gaming_reserved_2', 'prime_gaming_reserved_3',
+ 'prime_gaming_reserved_4', 'prime_gaming_reserved_5', 'prime_gaming_reserved_6',
+ 'prime_gaming_reserved_7', 'prime_gaming_reserved_8', 'prime_gaming_reserved_9',
+ 'prime_gaming_reserved_10', 'prime_gaming_reserved_11', 'prime_gaming_reserved_12']
 _singleAchievementsPopUps = [
  'titleSniper', 'invincible', 'diehard', 'handOfDeath',
  'armorPiercer', 'battleCitizen', 'WFC2014', 'tacticalBreakthrough', 'aimer',
@@ -350,7 +354,12 @@ _singleAchievementsPopUps = [
  'BattlePassCommonPr_6', 'september21', 'october21', 'hw2021Medal1', 'hw2021Medal2',
  'november21', '11YearsOfService', 'NY22_AtmsphrLevel', 'NY22_CelebChallenge',
  'december21', 'BattlePassCommonPr_7', 'oowCBTParticipant', 'june22',
- 'BattlePassCommonPr_8', 'BattlePassCommonPr_8ru', 'BattlePassCommonPr_8quest', 'july22']
+ 'BattlePassCommonPr_8', 'BattlePassCommonPr_8ru', 'BattlePassCommonPr_8quest', 'july22',
+ 'august22', 'BattlePassCommonPr_9', 'prime_gaming_reserved_1', 'prime_gaming_reserved_2',
+ 'prime_gaming_reserved_3', 'prime_gaming_reserved_4', 'prime_gaming_reserved_5',
+ 'prime_gaming_reserved_6', 'prime_gaming_reserved_7', 'prime_gaming_reserved_8',
+ 'prime_gaming_reserved_9', 'prime_gaming_reserved_10', 'prime_gaming_reserved_11',
+ 'prime_gaming_reserved_12']
 _singleAchievementsBlockBuilder = BinarySetDossierBlockBuilder('singleAchievements', _SINGLE_ACHIEVEMENTS_VALUES, SINGLE_ACHIEVEMENTS_DEPENDENCIES, _singleAchievementsPopUps)
 FORT_ACHIEVEMENTS_BLOCK_LAYOUT = [
  'conqueror', 'fireAndSword', 'crusher', 'counterblow', 'kampfer', 'soldierOfFortune']

@@ -13,7 +13,7 @@ from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.lobby.event_boards.event_helpers import checkEventExist
 from gui.Scaleform.daapi.view.lobby.missions.missions_helper import HIDE_DONE, HIDE_UNAVAILABLE
 from gui.Scaleform.daapi.view.lobby.missions.regular import group_packers
-from gui.Scaleform.daapi.view.lobby.missions.regular.sound_constants import TASKS_SOUND_SPACE
+from gui.Scaleform.daapi.view.lobby.missions.regular.sound_constants import TASKS_SOUND_SPACE, SOUNDS
 from gui.Scaleform.daapi.view.meta.MissionsListViewBaseMeta import MissionsListViewBaseMeta
 from gui.Scaleform.daapi.view.meta.MissionsPageMeta import MissionsPageMeta
 from gui.Scaleform.framework.entities.DAAPIDataProvider import ListDAAPIDataProvider
@@ -28,21 +28,21 @@ from gui.impl.gen import R
 from gui.marathon.marathon_event_controller import getMarathons
 from gui.server_events import caches, settings
 from gui.server_events.events_dispatcher import hideMissionDetails, showMissionDetails
-from gui.server_events.events_helpers import isLinkedSet
+from gui.server_events.events_helpers import isBattleMattersQuestID
 from gui.shared import event_bus_handlers, events, g_eventBus
 from gui.shared.event_bus import EVENT_BUS_SCOPE
 from gui.shared.event_dispatcher import showHangar
 from gui.shared.events import MissionsEvent
 from gui.shared.formatters import text_styles
 from gui.shared.gui_items import GUI_ITEM_TYPE
-from gui.sounds.ambients import BattlePassSoundEnv, LobbySubViewEnv, MarathonPageSoundEnv, MissionsCategoriesSoundEnv, MissionsEventsSoundEnv, MissionsPremiumSoundEnv
+from gui.sounds.ambients import BattlePassSoundEnv, LobbySubViewEnv, MarathonPageSoundEnv, MissionsCategoriesSoundEnv, MissionsEventsSoundEnv, MissionsPremiumSoundEnv, BattleMattersSoundEnv
 from helpers import dependency
 from helpers.i18n import makeString as _ms
 from items import getTypeOfCompactDescr
 from skeletons.gui.app_loader import GuiGlobalSpaceID, IAppLoader
 from skeletons.gui.event_boards_controllers import IEventBoardController
-from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IGameSessionController, IMapboxController, IMarathonEventsController, IRankedBattlesController, IFunRandomController, IUISpamController
-from skeletons.gui.linkedset import ILinkedSetController
+from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IGameSessionController, IMapboxController, IMarathonEventsController, IRankedBattlesController, IUISpamController
+from skeletons.gui.battle_matters import IBattleMattersController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 if typing.TYPE_CHECKING:
@@ -52,6 +52,7 @@ TabData = namedtuple('TabData', ('alias', 'linkage', 'tooltip', 'tooltipDisabled
 TABS_DATA_ORDERED = [
  TabData(QUESTS_ALIASES.MISSIONS_EVENT_BOARDS_VIEW_PY_ALIAS, QUESTS_ALIASES.MISSIONS_EVENT_BOARDS_VIEW_LINKAGE, QUESTS.MISSIONS_TAB_EVENTBOARDS, QUESTS.MISSIONS_TAB_EVENTBOARDS_DISABLED, _ms(QUESTS.MISSIONS_TAB_LABEL_EVENTBOARDS), None),
  TabData(QUESTS_ALIASES.MISSIONS_GROUPED_VIEW_PY_ALIAS, QUESTS_ALIASES.MISSIONS_GROUPED_VIEW_LINKAGE, QUESTS.MISSIONS_TAB_MARATHONS, QUESTS.MISSIONS_TAB_MARATHONS, _ms(QUESTS.MISSIONS_TAB_LABEL_MARATHON), None),
+ TabData(QUESTS_ALIASES.BATTLE_MATTERS_VIEW_PY_ALIAS, QUESTS_ALIASES.BATTLE_MATTERS_VIEW_LINKAGE, QUESTS.MISSIONS_TAB_BATTLEMATTERS, QUESTS.MISSIONS_TAB_BATTLEMATTERS, backport.text(R.strings.battle_matters.battleMattersTab()), None),
  TabData(QUESTS_ALIASES.MAPBOX_VIEW_PY_ALIAS, QUESTS_ALIASES.MAPBOX_VIEW_LINKAGE, QUESTS.MISSIONS_TAB_MAPBOX, QUESTS.MISSIONS_TAB_MAPBOX, backport.text(R.strings.mapbox.mapboxTab()), None),
  TabData(QUESTS_ALIASES.BATTLE_PASS_MISSIONS_VIEW_PY_ALIAS, QUESTS_ALIASES.BATTLE_PASS_MISSIONS_VIEW_LINKAGE, QUESTS.MISSIONS_TAB_BATTLE_PASS, QUESTS.MISSIONS_TAB_BATTLE_PASS, _ms(BATTLE_PASS.BATTLEPASSTAB), None),
  TabData(QUESTS_ALIASES.MISSIONS_CATEGORIES_VIEW_PY_ALIAS, QUESTS_ALIASES.MISSIONS_CATEGORIES_VIEW_LINKAGE, QUESTS.MISSIONS_TAB_CATEGORIES, QUESTS.MISSIONS_TAB_CATEGORIES, _ms(QUESTS.MISSIONS_TAB_LABEL_CATEGORIES), None),
@@ -59,7 +60,8 @@ TABS_DATA_ORDERED = [
 MARATHONS_START_TAB_INDEX = 1
 NON_FLASH_TABS = (
  QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS, QUESTS_ALIASES.MISSIONS_PREMIUM_VIEW_PY_ALIAS,
- QUESTS_ALIASES.BATTLE_PASS_MISSIONS_VIEW_PY_ALIAS, QUESTS_ALIASES.MAPBOX_VIEW_PY_ALIAS)
+ QUESTS_ALIASES.BATTLE_PASS_MISSIONS_VIEW_PY_ALIAS, QUESTS_ALIASES.MAPBOX_VIEW_PY_ALIAS,
+ QUESTS_ALIASES.BATTLE_MATTERS_VIEW_PY_ALIAS)
 TABS_WITHOUT_COMMON_MUSIC = (
  QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS,)
 for marathonIndex, marathon in enumerate(getMarathons(), MARATHONS_START_TAB_INDEX):
@@ -77,7 +79,10 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
     __sound_env__ = LobbySubViewEnv
     __VOICED_TABS = {QUESTS_ALIASES.MAPBOX_VIEW_PY_ALIAS: (
                                            backport.sound(R.sounds.ev_mapbox_enter()),
-                                           backport.sound(R.sounds.ev_mapbox_exit()))}
+                                           backport.sound(R.sounds.ev_mapbox_exit())), 
+       QUESTS_ALIASES.BATTLE_MATTERS_VIEW_PY_ALIAS: (
+                                                   backport.sound(R.sounds.bm_enter()),
+                                                   backport.sound(R.sounds.bm_exit()))}
     eventsCache = dependency.descriptor(IEventsCache)
     lobbyContext = dependency.descriptor(ILobbyContext)
     eventsController = dependency.descriptor(IEventBoardController)
@@ -85,6 +90,7 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
     battlePass = dependency.descriptor(IBattlePassController)
     uiSpamController = dependency.descriptor(IUISpamController)
     __mapboxCtrl = dependency.descriptor(IMapboxController)
+    __battleMattersController = dependency.descriptor(IBattleMattersController)
 
     def __init__(self, ctx):
         super(MissionsPage, self).__init__(ctx)
@@ -168,6 +174,8 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
             return MissionsCategoriesSoundEnv
         if self.__currentTabAlias == QUESTS_ALIASES.MISSIONS_GROUPED_VIEW_PY_ALIAS:
             return MissionsEventsSoundEnv
+        if self.__currentTabAlias == QUESTS_ALIASES.BATTLE_MATTERS_VIEW_PY_ALIAS:
+            return BattleMattersSoundEnv
         return self.__sound_env__
 
     def _populate(self):
@@ -194,6 +202,8 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
         self.__updateHeader()
         self.__tryOpenMissionDetails()
         self.fireEvent(events.MissionsEvent(events.MissionsEvent.ON_ACTIVATE), EVENT_BUS_SCOPE.LOBBY)
+        if self.__currentTabAlias not in self.__VOICED_TABS:
+            self.soundManager.playSound(SOUNDS.ENTER)
         return
 
     def _invalidate(self, ctx=None):
@@ -238,6 +248,8 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
             viewPy.setDefaultTab(self.__subTab)
             self.__subTab = None
         if alias == QUESTS_ALIASES.BATTLE_PASS_MISSIONS_VIEW_PY_ALIAS:
+            viewPy.updateState(**self.__ctx)
+        if alias == QUESTS_ALIASES.BATTLE_MATTERS_VIEW_PY_ALIAS:
             viewPy.updateState(**self.__ctx)
         self.__fireTabChangedEvent()
         return
@@ -384,14 +396,16 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
             marathonEvent = self.marathonsCtrl.getMarathon(tabData.prefix)
             tab['prefix'] = tabData.prefix
             headerTab['prefix'] = tabData.prefix
-        if alias == QUESTS_ALIASES.MISSIONS_EVENT_BOARDS_VIEW_PY_ALIAS and not self.__elenHasEvents() or alias == QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS and not (marathonEvent and marathonEvent.isEnabled()) or alias == QUESTS_ALIASES.MISSIONS_GROUPED_VIEW_PY_ALIAS and (self.marathonsCtrl.doesShowAnyMissionsTab() or self.__mapboxCtrl.isEnabled() and self.__mapboxCtrl.getCurrentCycleID() is not None) or alias == QUESTS_ALIASES.BATTLE_PASS_MISSIONS_VIEW_PY_ALIAS and self.battlePass.isDisabled() or alias == QUESTS_ALIASES.MAPBOX_VIEW_PY_ALIAS and (not self.__mapboxCtrl.isEnabled() or self.__mapboxCtrl.getCurrentCycleID() is None):
-            if alias == self.__currentTabAlias and marathonEvent and marathonEvent.prefix == self.__marathonPrefix:
-                self.__currentTabAlias = QUESTS_ALIASES.MISSIONS_CATEGORIES_VIEW_PY_ALIAS
+        if (alias == QUESTS_ALIASES.MISSIONS_EVENT_BOARDS_VIEW_PY_ALIAS and not self.__elenHasEvents() or alias == QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS and not (marathonEvent and marathonEvent.isEnabled()) or alias == QUESTS_ALIASES.MISSIONS_GROUPED_VIEW_PY_ALIAS and (self.marathonsCtrl.doesShowAnyMissionsTab() or self.__mapboxCtrl.isEnabled() and self.__mapboxCtrl.getCurrentCycleID() is not None) or alias == QUESTS_ALIASES.BATTLE_PASS_MISSIONS_VIEW_PY_ALIAS and self.battlePass.isDisabled() or alias == QUESTS_ALIASES.MAPBOX_VIEW_PY_ALIAS and (not self.__mapboxCtrl.isEnabled() or self.__mapboxCtrl.getCurrentCycleID() is None) or alias == QUESTS_ALIASES.BATTLE_MATTERS_VIEW_PY_ALIAS and not self.__battleMattersTabIsEnabled()) and alias == self.__currentTabAlias and marathonEvent and marathonEvent.prefix == self.__marathonPrefix:
+            self.__currentTabAlias = QUESTS_ALIASES.MISSIONS_CATEGORIES_VIEW_PY_ALIAS
+        else:
             if self.__currentTabAlias == QUESTS_ALIASES.BATTLE_PASS_MISSIONS_VIEW_PY_ALIAS and self.battlePass.isDisabled():
                 if self.currentTab is not None:
                     self.currentTab.finalize()
                 self.__currentTabAlias = QUESTS_ALIASES.MISSIONS_CATEGORIES_VIEW_PY_ALIAS
                 showHangar()
+            elif self.__currentTabAlias == alias == QUESTS_ALIASES.BATTLE_MATTERS_VIEW_PY_ALIAS:
+                self.__currentTabAlias = QUESTS_ALIASES.MISSIONS_CATEGORIES_VIEW_PY_ALIAS
             return (None, None)
         if alias == self.__currentTabAlias:
             if alias == QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS and self.__marathonPrefix:
@@ -436,11 +450,16 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
             tab['value'] = newEventsCount
         return (headerTab, tab)
 
+    def __battleMattersTabIsEnabled(self):
+        bm = self.__battleMattersController
+        return bm.isEnabled() and (not bm.isFinished() or bm.hasDelayedRewards())
+
     @staticmethod
     def __getSuitableEvents(tab):
         if not tab:
             return []
-        return [ quest for quest in tab.getSuitableEvents() if not isLinkedSet(quest.getGroupID()) or quest.isAvailable().isValid ]
+        return [ quest for quest in tab.getSuitableEvents() if not isBattleMattersQuestID(quest.getGroupID()) or quest.isAvailable().isValid
+               ]
 
     def __elenHasEvents(self):
         return self.lobbyContext.getServerSettings().isElenEnabled() and self.eventsController.hasEvents()
@@ -464,7 +483,8 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
          QUESTS_ALIASES.MISSIONS_MARATHON_VIEW_PY_ALIAS,
          QUESTS_ALIASES.BATTLE_PASS_MISSIONS_VIEW_PY_ALIAS,
          QUESTS_ALIASES.MISSIONS_PREMIUM_VIEW_PY_ALIAS,
-         QUESTS_ALIASES.MAPBOX_VIEW_PY_ALIAS), self.__currentTabAlias not in NON_FLASH_TABS)
+         QUESTS_ALIASES.MAPBOX_VIEW_PY_ALIAS,
+         QUESTS_ALIASES.BATTLE_MATTERS_VIEW_PY_ALIAS), self.__currentTabAlias not in NON_FLASH_TABS)
 
 
 class MissionViewBase(MissionsListViewBaseMeta):
@@ -545,11 +565,10 @@ class MissionViewBase(MissionsListViewBaseMeta):
 class MissionView(MissionViewBase):
     __sound_env__ = LobbySubViewEnv
     eventsCache = dependency.descriptor(IEventsCache)
-    linkedSetController = dependency.descriptor(ILinkedSetController)
+    __battleMattersController = dependency.descriptor(IBattleMattersController)
     gameSession = dependency.descriptor(IGameSessionController)
     __rankedController = dependency.descriptor(IRankedBattlesController)
     __battleRoyaleController = dependency.descriptor(IBattleRoyaleController)
-    __funRandomController = dependency.descriptor(IFunRandomController)
 
     def __init__(self):
         super(MissionView, self).__init__()
@@ -579,23 +598,21 @@ class MissionView(MissionViewBase):
     def _populate(self):
         super(MissionView, self)._populate()
         self.eventsCache.onSyncCompleted += self._onEventsUpdate
-        self.linkedSetController.onStateChanged += self._onLinkedSetStateChanged
+        self.__battleMattersController.onStateChanged += self._onBattleMattersStateChanged
         self.gameSession.onPremiumTypeChanged += self.__onPremiumTypeChanged
         self.__rankedController.onUpdated += self._onEventsUpdate
         self.__rankedController.onGameModeStatusUpdated += self._onEventsUpdate
-        self.__funRandomController.onGameModeStatusUpdated += self._onEventsUpdate
         self.__battleRoyaleController.onSpaceUpdated += self._onEventsUpdate
         g_clientUpdateManager.addCallbacks({'inventory.1': self._onEventsUpdate, 
            'stats.unlocks': self.__onUnlocksUpdate})
 
     def _dispose(self):
         self.eventsCache.onSyncCompleted -= self._onEventsUpdate
-        self.linkedSetController.onStateChanged -= self._onLinkedSetStateChanged
+        self.__battleMattersController.onStateChanged -= self._onBattleMattersStateChanged
         self.gameSession.onPremiumTypeChanged -= self.__onPremiumTypeChanged
         self.__rankedController.onUpdated -= self._onEventsUpdate
         self.__rankedController.onGameModeStatusUpdated -= self._onEventsUpdate
         self.__battleRoyaleController.onSpaceUpdated -= self._onEventsUpdate
-        self.__funRandomController.onGameModeStatusUpdated -= self._onEventsUpdate
         g_clientUpdateManager.removeObjectCallbacks(self)
         super(MissionView, self)._dispose()
 
@@ -642,7 +659,7 @@ class MissionView(MissionViewBase):
         if self._builder:
             self.__updateEvents()
 
-    def _onLinkedSetStateChanged(self, *args):
+    def _onBattleMattersStateChanged(self, *args):
         self._onEventsUpdate()
 
     def __onUnlocksUpdate(self, unlocks):

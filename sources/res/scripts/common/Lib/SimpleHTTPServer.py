@@ -1,7 +1,7 @@
 __version__ = '0.6'
 __all__ = [
  'SimpleHTTPRequestHandler']
-import os, posixpath, BaseHTTPServer, urllib, cgi, sys, shutil, mimetypes
+import os, posixpath, BaseHTTPServer, urllib, urlparse, cgi, sys, shutil, mimetypes
 try:
     from cStringIO import StringIO
 except ImportError:
@@ -27,9 +27,13 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         path = self.translate_path(self.path)
         f = None
         if os.path.isdir(path):
-            if not self.path.endswith('/'):
+            parts = urlparse.urlsplit(self.path)
+            if not parts.path.endswith('/'):
                 self.send_response(301)
-                self.send_header('Location', self.path + '/')
+                new_parts = (parts[0], parts[1], parts[2] + '/',
+                 parts[3], parts[4])
+                new_url = urlparse.urlunsplit(new_parts)
+                self.send_header('Location', new_url)
                 self.end_headers()
                 return
             for index in ('index.html', 'index.htm'):
@@ -105,9 +109,7 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         words = filter(None, words)
         path = os.getcwd()
         for word in words:
-            drive, word = os.path.splitdrive(word)
-            head, word = os.path.split(word)
-            if word in (os.curdir, os.pardir):
+            if os.path.dirname(word) or word in (os.curdir, os.pardir):
                 continue
             path = os.path.join(path, word)
 

@@ -1,4 +1,4 @@
-import pickle
+import collections, pickle
 from . import token, tokenize
 
 class Grammar(object):
@@ -16,15 +16,18 @@ class Grammar(object):
         self.start = 256
 
     def dump(self, filename):
-        f = open(filename, 'wb')
-        pickle.dump(self.__dict__, f, 2)
-        f.close()
+        with open(filename, 'wb') as (f):
+            d = _make_deterministic(self.__dict__)
+            pickle.dump(d, f, 2)
 
     def load(self, filename):
         f = open(filename, 'rb')
         d = pickle.load(f)
         f.close()
         self.__dict__.update(d)
+
+    def loads(self, pkl):
+        self.__dict__.update(pickle.loads(pkl))
 
     def copy(self):
         new = self.__class__()
@@ -50,6 +53,16 @@ class Grammar(object):
         print 'labels'
         pprint(self.labels)
         print 'start', self.start
+
+
+def _make_deterministic(top):
+    if isinstance(top, dict):
+        return collections.OrderedDict(sorted((k, _make_deterministic(v)) for k, v in top.iteritems()))
+    if isinstance(top, list):
+        return [ _make_deterministic(e) for e in top ]
+    if isinstance(top, tuple):
+        return tuple(_make_deterministic(e) for e in top)
+    return top
 
 
 opmap_raw = '\n( LPAR\n) RPAR\n[ LSQB\n] RSQB\n: COLON\n, COMMA\n; SEMI\n+ PLUS\n- MINUS\n* STAR\n/ SLASH\n| VBAR\n& AMPER\n< LESS\n> GREATER\n= EQUAL\n. DOT\n% PERCENT\n` BACKQUOTE\n{ LBRACE\n} RBRACE\n@ AT\n@= ATEQUAL\n== EQEQUAL\n!= NOTEQUAL\n<> NOTEQUAL\n<= LESSEQUAL\n>= GREATEREQUAL\n~ TILDE\n^ CIRCUMFLEX\n<< LEFTSHIFT\n>> RIGHTSHIFT\n** DOUBLESTAR\n+= PLUSEQUAL\n-= MINEQUAL\n*= STAREQUAL\n/= SLASHEQUAL\n%= PERCENTEQUAL\n&= AMPEREQUAL\n|= VBAREQUAL\n^= CIRCUMFLEXEQUAL\n<<= LEFTSHIFTEQUAL\n>>= RIGHTSHIFTEQUAL\n**= DOUBLESTAREQUAL\n// DOUBLESLASH\n//= DOUBLESLASHEQUAL\n-> RARROW\n'

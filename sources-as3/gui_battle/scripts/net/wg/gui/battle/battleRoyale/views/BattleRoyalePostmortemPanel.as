@@ -4,9 +4,11 @@ package net.wg.gui.battle.battleRoyale.views
    import flash.display.BlendMode;
    import flash.display.MovieClip;
    import flash.text.TextField;
+   import net.wg.data.constants.generated.BATTLEATLAS;
    import net.wg.infrastructure.base.meta.IBattleRoyalePostmortemPanelMeta;
    import net.wg.infrastructure.base.meta.impl.BattleRoyalePostmortemPanelMeta;
    import scaleform.clik.motion.Tween;
+   import scaleform.gfx.TextFieldEx;
    
    public class BattleRoyalePostmortemPanel extends BattleRoyalePostmortemPanelMeta implements IBattleRoyalePostmortemPanelMeta
    {
@@ -78,10 +80,13 @@ package net.wg.gui.battle.battleRoyale.views
       override protected function configUI() : void
       {
          super.configUI();
+         deadReasonBG.imageName = BATTLEATLAS.POSTMORTEM_DEAD_REASON_BG;
          this.firstTipTitle.text = BATTLE_ROYALE.POSTMORTEMPANEL_FIRSTTIP_TITLE;
          this.secondTipTitle.text = BATTLE_ROYALE.POSTMORTEMPANEL_SECONDTIP_TITLE;
          this.firstTipBody.text = BATTLE_ROYALE.POSTMORTEMPANEL_FIRSTTIP_BODY;
          this.secondTipBody.text = BATTLE_ROYALE.POSTMORTEMPANEL_SECONDTIP_BODY;
+         TextFieldEx.setVerticalAutoSize(deadReasonTF,TextFieldEx.VALIGN_BOTTOM);
+         updatePlayerInfoPosition();
       }
       
       override protected function onDispose() : void

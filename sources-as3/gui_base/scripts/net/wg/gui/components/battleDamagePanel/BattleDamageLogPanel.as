@@ -1,12 +1,12 @@
 package net.wg.gui.components.battleDamagePanel
 {
+   import flash.display.MovieClip;
    import flash.display.Sprite;
    import flash.text.TextField;
    import net.wg.data.constants.generated.ATLAS_CONSTANTS;
    import net.wg.data.constants.generated.BATTLEDAMAGELOG_IMAGES;
    import net.wg.gui.components.battleDamagePanel.components.DamageLogDetailsController;
    import net.wg.gui.components.battleDamagePanel.components.DefaultSummaryImages;
-   import net.wg.gui.components.battleDamagePanel.components.SummaryAnimation;
    import net.wg.gui.components.battleDamagePanel.constants.BattleDamageLogConstants;
    import net.wg.gui.components.battleDamagePanel.models.MessageRenderModel;
    import net.wg.infrastructure.base.meta.IBattleDamageLogPanelMeta;
@@ -16,21 +16,21 @@ package net.wg.gui.components.battleDamagePanel
    public class BattleDamageLogPanel extends BattleDamageLogPanelMeta implements IBattleDamageLogPanelMeta, IDisplayableComponent
    {
       
-      private static const Y_POSITION_STEP_TF:int = 22;
+      private static const Y_POSITION_STEP_TF:uint = 22;
       
-      private static const ANIMATION_PADDING:Number = 10;
+      private static const ANIMATION_PADDING:uint = 10;
       
-      private static const TOP_DETAILS_OFFSET_Y:Number = 285;
+      private static const TOP_DETAILS_OFFSET_Y:uint = 285;
       
-      private static const BOTTOM_DETAILS_POS_Y:Number = 87;
+      private static const BOTTOM_DETAILS_POS_Y:uint = 87;
       
-      public static const SCREEN_BORDER_X_POS:Number = -229;
+      public static const SCREEN_BORDER_X_POS:int = -229;
       
-      public static const PLAYERS_PANEL_OFFSET:Number = -246;
+      public static const PLAYERS_PANEL_OFFSET:int = -246;
       
-      private static const SETTINGS_TOP_X_POS:Number = 49;
+      private static const SETTINGS_TOP_X_POS:uint = 49;
       
-      private static const SETTINGS_TOP_Y_POS:Number = -273;
+      private static const SETTINGS_TOP_Y_POS:int = -273;
        
       
       public var summaryDamageBlock:DefaultSummaryImages = null;
@@ -49,13 +49,13 @@ package net.wg.gui.components.battleDamagePanel
       
       public var stunValTF:TextField = null;
       
-      public var damageAnimation:SummaryAnimation = null;
+      public var damageAnimation:MovieClip = null;
       
-      public var defenceAnimation:SummaryAnimation = null;
+      public var defenceAnimation:MovieClip = null;
       
-      public var supportAnimation:SummaryAnimation = null;
+      public var supportAnimation:MovieClip = null;
       
-      public var stunAnimation:SummaryAnimation = null;
+      public var stunAnimation:MovieClip = null;
       
       private var _damageLogDetailsTopController:DamageLogDetailsController = null;
       
@@ -69,29 +69,30 @@ package net.wg.gui.components.battleDamagePanel
       
       private var _isInited:Boolean = false;
       
-      private var _detailsBottomContainer:Sprite = null;
+      private var _detailsBottomContainer:Sprite;
       
-      private var _detailsTopContainer:Sprite = null;
+      private var _detailsTopContainer:Sprite;
       
       private var _atlasName:String = "";
       
-      private var _topContainerXPos:Number = 0;
+      private var _topContainerXPos:int = 0;
       
       public function BattleDamageLogPanel()
       {
+         this._detailsBottomContainer = new Sprite();
+         this._detailsTopContainer = new Sprite();
          super();
          visible = false;
-         this._detailsTopContainer = new Sprite();
+         mouseChildren = mouseEnabled = false;
          this._detailsTopContainer.name = "detailsTopContainer";
-         this._detailsBottomContainer = new Sprite();
          this._detailsBottomContainer.name = "detailsBottomContainer";
       }
       
-      private static function updateSummaryCounter(param1:SummaryAnimation, param2:TextField, param3:String) : void
+      private static function updateSummaryCounter(param1:MovieClip, param2:TextField, param3:String) : void
       {
          if(param2.visible)
          {
-            param1.playAnimation();
+            param1.gotoAndPlay(0);
             param2.text = param3;
          }
       }
@@ -125,13 +126,9 @@ package net.wg.gui.components.battleDamagePanel
          this.defenceValTF = null;
          this.supportValTF = null;
          this.stunValTF = null;
-         this.damageAnimation.dispose();
          this.damageAnimation = null;
-         this.defenceAnimation.dispose();
          this.defenceAnimation = null;
-         this.supportAnimation.dispose();
          this.supportAnimation = null;
-         this.stunAnimation.dispose();
          this.stunAnimation = null;
          super.onDispose();
       }
@@ -277,15 +274,15 @@ package net.wg.gui.components.battleDamagePanel
             this._detailsTopContainer.x = SETTINGS_TOP_X_POS;
             this._detailsTopContainer.y = SETTINGS_TOP_Y_POS;
          }
-         this._detailsBottomContainer.y = BOTTOM_DETAILS_POS_Y - this._additionalRowsCount * BattleDamageLogConstants.RENDER_STEP_SIZE;
+         this._detailsBottomContainer.y = BOTTOM_DETAILS_POS_Y - this._additionalRowsCount * BattleDamageLogConstants.RENDER_STEP_SIZE >> 0;
       }
       
       public function updateSize(param1:Number, param2:Number) : void
       {
-         this._detailsTopContainer.y = -param2 + TOP_DETAILS_OFFSET_Y;
+         this._detailsTopContainer.y = -param2 + TOP_DETAILS_OFFSET_Y >> 0;
       }
       
-      public function updateTopContainerPosition(param1:Number) : void
+      public function updateTopContainerPosition(param1:int) : void
       {
          this._topContainerXPos = param1;
          this._detailsTopContainer.x = param1;
@@ -295,7 +292,7 @@ package net.wg.gui.components.battleDamagePanel
          }
       }
       
-      private function initializeSummaryElements(param1:String, param2:TextField, param3:DefaultSummaryImages, param4:SummaryAnimation) : void
+      private function initializeSummaryElements(param1:String, param2:TextField, param3:DefaultSummaryImages, param4:MovieClip) : void
       {
          var _loc5_:Boolean = param1 != null;
          param2.visible = _loc5_;
@@ -307,11 +304,12 @@ package net.wg.gui.components.battleDamagePanel
             return;
          }
          param2.text = param1;
-         param2.y = this._currentPositionTF;
+         var _loc6_:int = this._currentPositionTF;
+         param2.y = _loc6_;
          this._currentPositionTF += Y_POSITION_STEP_TF;
-         param3.y = param2.y + (param2.height - param3.height >> 1);
+         param3.y = _loc6_ + (param2.height - param3.height >> 1);
          param4.x = param2.x + ANIMATION_PADDING;
-         param4.y = param2.y + (param2.height >> 1);
+         param4.y = _loc6_ + (param2.height >> 1);
       }
    }
 }

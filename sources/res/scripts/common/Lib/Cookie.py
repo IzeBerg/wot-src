@@ -141,6 +141,8 @@ class Morsel(dict):
        'secure': 'secure', 
        'httponly': 'httponly', 
        'version': 'Version'}
+    _flags = {
+     'secure', 'httponly'}
 
     def __init__(self):
         self.key = self.value = self.coded_value = None
@@ -206,8 +208,9 @@ class Morsel(dict):
         return _semispacejoin(result)
 
 
-_LegalCharsPatt = "[\\w\\d!#%&'~_`><@,:/\\$\\*\\+\\-\\.\\^\\|\\)\\(\\?\\}\\{\\=]"
-_CookiePattern = re.compile('(?x)(?P<key>' + _LegalCharsPatt + '+?)\\s*=\\s*(?P<val>"(?:[^\\\\"]|\\\\.)*"|\\w{3},\\s[\\s\\w\\d-]{9,11}\\s[\\d:]{8}\\sGMT|' + _LegalCharsPatt + '*)\\s*;?')
+_LegalKeyChars = "\\w\\d!#%&'~_`><@,:/\\$\\*\\+\\-\\.\\^\\|\\)\\(\\?\\}\\{\\="
+_LegalValueChars = _LegalKeyChars + '\\[\\]'
+_CookiePattern = re.compile('(?x)\\s*(?P<key>[' + _LegalKeyChars + ']+?)(\\s*=\\s*(?P<val>"(?:[^\\\\"]|\\\\.)*"|\\w{3},\\s[\\s\\w\\d-]{9,11}\\s[\\d:]{8}\\sGMT|[' + _LegalValueChars + ']*))?\\s*(\\s+|;|$)')
 
 class BaseCookie(dict):
 
@@ -229,8 +232,11 @@ class BaseCookie(dict):
         dict.__setitem__(self, key, M)
 
     def __setitem__(self, key, value):
-        rval, cval = self.value_encode(value)
-        self.__set(key, rval, cval)
+        if isinstance(value, Morsel):
+            dict.__setitem__(self, key, value)
+        else:
+            rval, cval = self.value_encode(value)
+            self.__set(key, rval, cval)
 
     def output(self, attrs=None, header='Set-Cookie:', sep='\r\n'):
         result = []
@@ -273,7 +279,7 @@ class BaseCookie(dict):
         n = len(str)
         M = None
         while 0 <= i < n:
-            match = patt.search(str, i)
+            match = patt.match(str, i)
             if not match:
                 break
             K, V = match.group('key'), match.group('val')
@@ -283,8 +289,12 @@ class BaseCookie(dict):
                     M[K[1:]] = V
             elif K.lower() in Morsel._reserved:
                 if M:
-                    M[K] = _unquote(V)
-            else:
+                    if V is None:
+                        if K.lower() in Morsel._flags:
+                            M[K] = True
+                    else:
+                        M[K] = _unquote(V)
+            elif V is not None:
                 rval, cval = self.value_decode(V)
                 self.__set(K, rval, cval)
                 M = self[K]

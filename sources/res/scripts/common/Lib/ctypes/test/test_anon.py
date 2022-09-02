@@ -1,4 +1,5 @@
 import unittest
+from test.support import cpython_only
 from ctypes import *
 
 class AnonTest(unittest.TestCase):
@@ -35,6 +36,15 @@ class AnonTest(unittest.TestCase):
         self.assertRaises(AttributeError, lambda : type(Structure)('Name', (
          Structure,), {'_fields_': [], '_anonymous_': [
                          'x']}))
+
+    @cpython_only
+    def test_issue31490(self):
+        with self.assertRaises(AttributeError):
+
+            class Name(Structure):
+                _fields_ = []
+                _anonymous_ = ['x']
+                x = 42
 
     def test_nested(self):
 

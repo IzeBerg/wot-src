@@ -201,14 +201,13 @@ package net.wg.infrastructure.managers.impl
       
       override protected function setTriggers(param1:String, param2:Array) : void
       {
-         var _loc3_:Vector.<ITriggerWatcher> = this._compIdToWatchers[param1];
-         if(_loc3_ && _loc3_.length > 0)
-         {
-            this.cleanupTriggerWatchers(_loc3_);
-         }
          if(param2 && param2.length > 0)
          {
-            this._compIdToWatchers[param1] = this.createTriggerWatchers(param1,param2);
+            if(this._compIdToWatchers[param1] == null)
+            {
+               this._compIdToWatchers[param1] = new Vector.<ITriggerWatcher>();
+            }
+            this.updateWatchers(param1,param2);
          }
          else
          {
@@ -216,9 +215,74 @@ package net.wg.infrastructure.managers.impl
          }
       }
       
+      override protected function updateExternalComponent(param1:String, param2:String, param3:TutorialComponentData) : void
+      {
+         var _loc5_:ITutorialBuilder = null;
+         var _loc6_:Dictionary = null;
+         var _loc4_:TutorialComponentPathVO = this._idToVO[param1];
+         if(_loc4_ && _loc4_.foundComponent)
+         {
+            updateExternalHintComponent(_loc4_.foundComponent,param3.rect);
+            _loc6_ = this._buildersMap.getComponentBuildersDict(param2,param1);
+            for each(_loc5_ in _loc6_)
+            {
+               _loc5_.externalUpdate();
+            }
+         }
+      }
+      
+      override protected function externalComponentFound(param1:String, param2:String, param3:TutorialComponentData) : void
+      {
+         var _loc5_:IContainerWrapper = null;
+         var _loc6_:DisplayObject = null;
+         DebugUtils.LOG_DEBUG("as_externalComponentFound",param1,param2);
+         var _loc4_:TutorialComponentPathVO = this._idToVO[param1];
+         if(_loc4_ && !_loc4_.foundComponent)
+         {
+            _loc5_ = IContainerWrapper(this._idToView[param2]);
+            App.utils.asserter.assertNotNull(_loc5_,"view id " + param2 + Errors.WASNT_FOUND);
+            _loc6_ = _loc5_.getTutorialHintZone(getTutorialHintZoneName(param1));
+            updateExternalHintComponent(_loc6_,param3.rect);
+            _loc6_.addEventListener(LifeCycleEvent.ON_BEFORE_DISPOSE,this.onExternalComponentDisposedHandler);
+            _loc4_.foundComponent = _loc6_;
+            this._componentToVO[_loc6_] = _loc4_;
+         }
+      }
+      
+      override protected function showEffect(param1:String, param2:String, param3:String, param4:TutorialBuilderVO) : void
+      {
+         var _loc6_:TutorialComponentPathVO = null;
+         var _loc7_:DisplayObject = null;
+         var _loc5_:IView = this._idToView[param1];
+         App.utils.asserter.assertNotNull(_loc5_,"view id " + param1 + Errors.WASNT_FOUND);
+         if(StringUtils.isNotEmpty(param2))
+         {
+            _loc6_ = this._idToVO[param2];
+            if(_loc6_)
+            {
+               _loc7_ = _loc6_.foundComponent;
+               if(_loc7_)
+               {
+                  this.setupEffectBuilder(_loc5_,param3,param4,_loc7_);
+               }
+            }
+         }
+         else
+         {
+            this.setupEffectBuilder(_loc5_,param3,param4,null);
+         }
+      }
+      
       public function addListenersToCustomTutorialComponent(param1:ITutorialCustomComponent) : void
       {
          param1.addEventListener(TutorialEvent.VIEW_READY_FOR_TUTORIAL,this.onViewReadyForTutorialHandler);
+      }
+      
+      public function as_disposeExternalComponent(param1:String, param2:String) : void
+      {
+         DebugUtils.LOG_DEBUG("as_disposeExternalComponent",param1,param2);
+         var _loc3_:TutorialComponentPathVO = this._idToVO[param1];
+         this.unregisterExternalComponent(_loc3_);
       }
       
       public function as_getComponentGlobalBounds(param1:String, param2:String) : Object
@@ -608,57 +672,32 @@ package net.wg.infrastructure.managers.impl
          }
       }
       
-      override protected function updateExternalComponent(param1:String, param2:String, param3:TutorialComponentData) : void
+      private function updateWatchers(param1:String, param2:Array) : void
       {
-         var _loc5_:ITutorialBuilder = null;
-         var _loc6_:Dictionary = null;
-         var _loc4_:TutorialComponentPathVO = this._idToVO[param1];
-         if(_loc4_ && _loc4_.foundComponent)
+         var _loc6_:String = null;
+         var _loc7_:ITriggerWatcher = null;
+         var _loc3_:Vector.<ITriggerWatcher> = this._compIdToWatchers[param1];
+         var _loc4_:Array = param2.slice();
+         var _loc5_:Vector.<ITriggerWatcher> = new Vector.<ITriggerWatcher>(0);
+         for each(_loc7_ in _loc3_)
          {
-            updateExternalHintComponent(_loc4_.foundComponent,param3.rect);
-            _loc6_ = this._buildersMap.getComponentBuildersDict(param2,param1);
-            for each(_loc5_ in _loc6_)
+            _loc6_ = _loc7_.type;
+            if(param2.indexOf(_loc6_) >= 0)
             {
-               _loc5_.externalUpdate();
+               _loc4_.splice(_loc4_.indexOf(_loc6_),1);
+            }
+            else
+            {
+               _loc5_.push(_loc7_);
             }
          }
-      }
-      
-      public function as_disposeExternalComponent(param1:String, param2:String) : void
-      {
-         DebugUtils.LOG_DEBUG("as_disposeExternalComponent",param1,param2);
-         var _loc3_:TutorialComponentPathVO = this._idToVO[param1];
-         this.unregisterExternalComponent(_loc3_);
-      }
-      
-      override protected function externalComponentFound(param1:String, param2:String, param3:TutorialComponentData) : void
-      {
-         var _loc5_:IContainerWrapper = null;
-         var _loc6_:DisplayObject = null;
-         DebugUtils.LOG_DEBUG("as_externalComponentFound",param1,param2);
-         var _loc4_:TutorialComponentPathVO = this._idToVO[param1];
-         if(_loc4_ && !_loc4_.foundComponent)
+         _loc3_ = _loc3_.concat(this.createTriggerWatchers(param1,_loc4_));
+         this._compIdToWatchers[param1] = _loc3_;
+         for each(_loc7_ in _loc5_)
          {
-            _loc5_ = IContainerWrapper(this._idToView[param2]);
-            App.utils.asserter.assertNotNull(_loc5_,"view id " + param2 + Errors.WASNT_FOUND);
-            _loc6_ = _loc5_.getTutorialHintZone(getTutorialHintZoneName(param1));
-            updateExternalHintComponent(_loc6_,param3.rect);
-            _loc6_.addEventListener(LifeCycleEvent.ON_BEFORE_DISPOSE,this.onExternalComponentDisposedHandler);
-            _loc4_.foundComponent = _loc6_;
-            this._componentToVO[_loc6_] = _loc4_;
+            _loc3_.splice(_loc3_.indexOf(_loc7_),1);
          }
-      }
-      
-      private function onExternalComponentDisposedHandler(param1:LifeCycleEvent) : void
-      {
-         var _loc3_:TutorialComponentPathVO = null;
-         var _loc2_:DisplayObject = param1.target as DisplayObject;
-         if(_loc2_ != null)
-         {
-            _loc2_.removeEventListener(LifeCycleEvent.ON_BEFORE_DISPOSE,this.onExternalComponentDisposedHandler);
-            _loc3_ = this._componentToVO[_loc2_];
-            this.unregisterExternalComponent(_loc3_);
-         }
+         this.cleanupTriggerWatchers(_loc5_);
       }
       
       private function unregisterExternalComponent(param1:TutorialComponentPathVO) : void
@@ -682,30 +721,6 @@ package net.wg.infrastructure.managers.impl
             this._buildersMap.removeBuildersForComponent(param1.viewName,param1.id);
             delete this._componentToVO[param1.foundComponent];
             param1.foundComponent = null;
-         }
-      }
-      
-      override protected function showEffect(param1:String, param2:String, param3:String, param4:TutorialBuilderVO) : void
-      {
-         var _loc6_:TutorialComponentPathVO = null;
-         var _loc7_:DisplayObject = null;
-         var _loc5_:IView = this._idToView[param1];
-         App.utils.asserter.assertNotNull(_loc5_,"view id " + param1 + Errors.WASNT_FOUND);
-         if(StringUtils.isNotEmpty(param2))
-         {
-            _loc6_ = this._idToVO[param2];
-            if(_loc6_)
-            {
-               _loc7_ = _loc6_.foundComponent;
-               if(_loc7_)
-               {
-                  this.setupEffectBuilder(_loc5_,param3,param4,_loc7_);
-               }
-            }
-         }
-         else
-         {
-            this.setupEffectBuilder(_loc5_,param3,param4,null);
          }
       }
       
@@ -1069,11 +1084,6 @@ package net.wg.infrastructure.managers.impl
          }
       }
       
-      public function get isSystemEnabled() : Object
-      {
-         return this._isSystemEnabled;
-      }
-      
       private function clearCriteriaHash(param1:Function) : void
       {
          var _loc3_:* = null;
@@ -1090,6 +1100,23 @@ package net.wg.infrastructure.managers.impl
          {
             this._criteriaHash[_loc4_].dispose();
             delete this._criteriaHash[_loc4_];
+         }
+      }
+      
+      public function get isSystemEnabled() : Object
+      {
+         return this._isSystemEnabled;
+      }
+      
+      private function onExternalComponentDisposedHandler(param1:LifeCycleEvent) : void
+      {
+         var _loc3_:TutorialComponentPathVO = null;
+         var _loc2_:DisplayObject = param1.target as DisplayObject;
+         if(_loc2_ != null)
+         {
+            _loc2_.removeEventListener(LifeCycleEvent.ON_BEFORE_DISPOSE,this.onExternalComponentDisposedHandler);
+            _loc3_ = this._componentToVO[_loc2_];
+            this.unregisterExternalComponent(_loc3_);
          }
       }
       

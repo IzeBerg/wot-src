@@ -77,7 +77,11 @@ class PersonalMissionsOperationAwardsScreen(PersonalMissionsOperationAwardsScree
                 return {'vehicleSrc': vehIcon, 
                    'vehicleTypeIcon': vehicleTypeIcon, 
                    'vehicleName': vehicle.userName, 
-                   'vehicleLevel': vehicleLevel}
+                   'vehicleLevel': vehicleLevel, 
+                   'tooltip': {'isSpecial': True, 
+                               'specialAlias': TOOLTIPS_CONSTANTS.AWARD_VEHICLE, 
+                               'specialArgs': [
+                                             vehicle.intCD]}}
             return
 
     def __packBadges(self, badges):

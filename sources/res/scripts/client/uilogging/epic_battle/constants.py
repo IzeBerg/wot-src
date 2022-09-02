@@ -1,6 +1,5 @@
 from enum import Enum
 FEATURE = 'epic_battle'
-METRICS = 'metrics'
 
 class EpicBattleLogActions(Enum):
     OPEN = 'open'

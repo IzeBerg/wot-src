@@ -13,21 +13,23 @@ package net.wg.gui.components.battleDamagePanel.components
       private static const EMPTY_BG_POS_Y:uint = 7;
       
       private static const EMPTY_BG_WIDTH:uint = 14;
+      
+      private static const R_EDGE_ROTATION:uint = 180;
        
       
-      private var _leftEdge:Shape = null;
+      private var _leftEdge:Shape;
       
-      private var _rightEdge:Shape = null;
+      private var _rightEdge:Shape;
       
-      private var _center:Shape = null;
+      private var _center:Shape;
       
-      private var _emptyShellBG:Sprite = null;
+      private var _emptyShellBG:Sprite;
       
-      private var _compositeBGContainer:Sprite = null;
+      private var _compositeBGContainer:Sprite;
       
-      private var _atlasMgr:IAtlasManager = null;
+      private var _atlasMgr:IAtlasManager;
       
-      private var _edgeWidth:Number = 0;
+      private var _edgeWidth:int = 0;
       
       private var _currentState:String = "white";
       
@@ -35,20 +37,20 @@ package net.wg.gui.components.battleDamagePanel.components
       
       private var _atlasName:String = "";
       
-      private var _currentWidth:Number = 0;
+      private var _currentWidth:int = 0;
       
       private var _disposed:Boolean = false;
       
       public function ShellTypeBG(param1:String)
       {
-         super();
-         this._atlasMgr = App.atlasMgr;
-         this._atlasName = param1;
-         this._compositeBGContainer = new Sprite();
          this._leftEdge = new Shape();
          this._rightEdge = new Shape();
          this._center = new Shape();
          this._emptyShellBG = new Sprite();
+         this._compositeBGContainer = new Sprite();
+         this._atlasMgr = App.atlasMgr;
+         super();
+         this._atlasName = param1;
          this._compositeBGContainer.addChild(this._leftEdge);
          this._compositeBGContainer.addChild(this._rightEdge);
          this._compositeBGContainer.addChild(this._center);
@@ -57,13 +59,13 @@ package net.wg.gui.components.battleDamagePanel.components
          this._emptyShellBG.y = EMPTY_BG_POS_Y;
          this._compositeBGContainer.visible = !this._isEmpty;
          this._emptyShellBG.visible = this._isEmpty;
-         this._rightEdge.rotation = 180;
+         this._rightEdge.rotation = R_EDGE_ROTATION;
          this._atlasMgr.drawGraphics(this._atlasName,BATTLEATLAS.WHITE_EDGE,this._leftEdge.graphics);
          this._atlasMgr.drawGraphics(this._atlasName,BATTLEATLAS.WHITE_CENTER,this._center.graphics);
          this._atlasMgr.drawGraphics(this._atlasName,BATTLEATLAS.WHITE_EDGE,this._rightEdge.graphics);
          this._edgeWidth = this._leftEdge.width;
          this._center.x = this._edgeWidth;
-         this._rightEdge.y = this._rightEdge.height;
+         this._rightEdge.y = this._rightEdge.height >> 0;
       }
       
       public final function dispose() : void
@@ -84,9 +86,10 @@ package net.wg.gui.components.battleDamagePanel.components
       
       public function setData(param1:String) : void
       {
+         var _loc2_:Boolean = false;
          var _loc3_:String = null;
          var _loc4_:String = null;
-         var _loc2_:Boolean = param1 == DAMAGE_LOG_SHELL_BG_TYPES.EMPTY;
+         _loc2_ = param1 == DAMAGE_LOG_SHELL_BG_TYPES.EMPTY;
          if(_loc2_ != this._isEmpty)
          {
             this._isEmpty = _loc2_;
@@ -124,9 +127,9 @@ package net.wg.gui.components.battleDamagePanel.components
          }
       }
       
-      public function updateWidth(param1:Number) : void
+      public function updateWidth(param1:int) : void
       {
-         var _loc2_:Number = NaN;
+         var _loc2_:int = 0;
          if(this._currentWidth != param1)
          {
             this._currentWidth = param1;

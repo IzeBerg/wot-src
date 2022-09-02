@@ -7,6 +7,8 @@ package net.wg.gui.components.tooltips.inblocks.data
    {
       
       private static const BLOCKS_DATA_FIELD_NAME:String = "blocksData";
+      
+      private static const BLOCKS_DATA_ERROR:String = "!!! blocksData is invalid !!!";
        
       
       public var blocksData:Vector.<BlockDataItemVO>;
@@ -29,13 +31,32 @@ package net.wg.gui.components.tooltips.inblocks.data
       override protected function onDispose() : void
       {
          var _loc1_:IDisposable = null;
-         for each(_loc1_ in this.blocksData)
+         var _loc2_:Boolean = true;
+         if(this.blocksData)
          {
-            _loc1_.dispose();
+            for each(_loc1_ in this.blocksData)
+            {
+               if(_loc1_)
+               {
+                  _loc1_.dispose();
+               }
+               else
+               {
+                  _loc2_ = false;
+               }
+            }
+            this.blocksData.fixed = false;
+            this.blocksData.splice(0,this.blocksData.length);
+            this.blocksData = null;
          }
-         this.blocksData.fixed = false;
-         this.blocksData.splice(0,this.blocksData.length);
-         this.blocksData = null;
+         else
+         {
+            _loc2_ = false;
+         }
+         if(!_loc2_)
+         {
+            DebugUtils.LOG_ERROR(BLOCKS_DATA_ERROR);
+         }
          super.onDispose();
       }
    }

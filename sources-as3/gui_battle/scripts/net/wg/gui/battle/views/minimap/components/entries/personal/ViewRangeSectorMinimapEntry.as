@@ -32,6 +32,8 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
       
       private static function drawSector(param1:Graphics, param2:Number, param3:Number) : void
       {
+         var _loc5_:int = 0;
+         var _loc6_:Number = NaN;
          var _loc9_:int = 0;
          var _loc10_:int = 0;
          var _loc11_:Number = NaN;
@@ -45,15 +47,15 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
          {
             param3 = 360;
          }
-         var _loc4_:int = (180 - param3) / 2;
-         var _loc5_:int = Math.ceil(Math.abs(param3) / 45);
-         var _loc6_:Number = param3 / _loc5_;
-         var _loc7_:Number = -(_loc6_ / 180) * Math.PI;
-         var _loc8_:Number = -(_loc4_ / 180) * Math.PI;
+         var _loc4_:int = 180 - param3 >> 1;
+         _loc5_ = Math.ceil(Math.abs(param3) / 45);
+         _loc6_ = param3 / _loc5_;
+         var _loc7_:Number = -_loc6_ / 180 * Math.PI;
+         var _loc8_:Number = -_loc4_ / 180 * Math.PI;
          if(_loc5_ > 0)
          {
-            _loc9_ = Math.cos(_loc4_ / 180 * Math.PI) * param2;
-            _loc10_ = Math.sin(-_loc4_ / 180 * Math.PI) * param2;
+            _loc9_ = Math.cos(-_loc8_) * param2;
+            _loc10_ = Math.sin(_loc8_) * param2;
             param1.lineTo(_loc9_,_loc10_);
             _loc16_ = 0;
             while(_loc16_ < _loc5_)
@@ -112,6 +114,11 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
          this.as_delSector();
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       private function initializeSector(param1:Number, param2:Number) : Shape
       {
          var _loc3_:Shape = new Shape();
@@ -128,11 +135,6 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
          _loc3_.width = _loc5_;
          _loc3_.height = _loc5_;
          return _loc3_;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

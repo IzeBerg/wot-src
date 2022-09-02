@@ -30,3 +30,7 @@ class MissionsPageMeta(View):
     def as_setTabsCounterDataS(self, data):
         if self._isDAAPIInited():
             return self.flashObject.as_setTabsCounterData(data)
+
+    def as_showBattleMattersAnimationS(self, animPath, data):
+        if self._isDAAPIInited():
+            return self.flashObject.as_showBattleMattersAnimation(animPath, data)

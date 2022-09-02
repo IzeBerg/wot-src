@@ -83,6 +83,8 @@ package net.wg.gui.lobby.settings.vo.config
       
       public var SNIPER_MODE_EFFECTS_QUALITY:SettingsControlProp = null;
       
+      public var TRACK_PHYSICS_QUALITY:SettingsControlProp = null;
+      
       public var SNIPER_MODE_GRASS_ENABLED:SettingsControlProp = null;
       
       public var VEHICLE_DUST_ENABLED:SettingsControlProp = null;
@@ -148,6 +150,7 @@ package net.wg.gui.lobby.settings.vo.config
             "FAR_PLANE":createControl(ControlsFactory.TYPE_STEP_SLIDER).hasLabel(true).build(),
             "OBJECT_LOD":createControl(ControlsFactory.TYPE_STEP_SLIDER).hasLabel(true).build(),
             "SNIPER_MODE_EFFECTS_QUALITY":createControl(ControlsFactory.TYPE_STEP_SLIDER).hasLabel(true).build(),
+            "TRACK_PHYSICS_QUALITY":createControl(ControlsFactory.TYPE_STEP_SLIDER).hasLabel(true).build(),
             "SNIPER_MODE_GRASS_ENABLED":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "VEHICLE_DUST_ENABLED":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
             "HAVOK_ENABLED":createControl(ControlsFactory.TYPE_CHECKBOX).build(),
@@ -204,6 +207,7 @@ package net.wg.gui.lobby.settings.vo.config
          this.FAR_PLANE = null;
          this.OBJECT_LOD = null;
          this.SNIPER_MODE_EFFECTS_QUALITY = null;
+         this.TRACK_PHYSICS_QUALITY = null;
          this.SNIPER_MODE_GRASS_ENABLED = null;
          this.VEHICLE_DUST_ENABLED = null;
          this.HAVOK_ENABLED = null;

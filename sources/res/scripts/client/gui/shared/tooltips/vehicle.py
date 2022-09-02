@@ -138,7 +138,7 @@ class VehicleInfoTooltipData(BlocksTooltipData):
             headerBlockItems.append(formatters.packBuildUpBlockData(telecomBlock, padding=leftRightPadding))
         self.__createStatusBlock(vehicle, headerBlockItems, statsConfig, paramsConfig, valueWidth)
         items.append(formatters.packBuildUpBlockData(headerBlockItems, gap=-4, padding=formatters.packPadding(bottom=-8)))
-        if vehicle.isEarnCrystals and statsConfig.showEarnCrystals:
+        if vehicle.isEarnCrystals:
             crystalBlock, linkage = CrystalBlockConstructor(vehicle, statsConfig, leftPadding, rightPadding).construct()
             if crystalBlock:
                 items.append(formatters.packBuildUpBlockData(crystalBlock, linkage=linkage, padding=leftRightPadding))
@@ -535,6 +535,15 @@ class VehicleAdvancedParametersTooltipData(BaseVehicleAdvancedParametersTooltipD
             for bnsId, bnsType in sorted(self._extendedData.possibleBonuses, cmp=_bonusCmp):
                 if bnsType == constants.BonusTypes.PERK and not self._hasPerksBonuses:
                     continue
+                if bnsType == constants.BonusTypes.OPTIONAL_DEVICE:
+                    if not item.optDevices.layoutCapacity:
+                        continue
+                if bnsType == constants.BonusTypes.EQUIPMENT:
+                    if not item.consumables.layoutCapacity:
+                        continue
+                if bnsType == constants.BonusTypes.BATTLE_BOOSTER:
+                    if not item.battleBoosters.layoutCapacity:
+                        continue
                 formattedBnsId = _getBonusID(bnsType, bnsId)
                 isEnabled = (formattedBnsId, bnsType) in bonuses if bnsType in _CREW_TYPES else False
                 unmatchedDependency = inactiveBonuses.get((bnsId, bnsType), None)

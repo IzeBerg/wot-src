@@ -44,7 +44,7 @@ class DeltaPacker(object):
 class ValueReplayPacker:
 
     def pack(self, value):
-        if isinstance(value, str):
+        if isinstance(value, (str, unicode)):
             return value
         return value.pack()
 

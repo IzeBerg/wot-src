@@ -490,6 +490,8 @@ class PREBATTLE_TYPE:
      RTS, RTS_TRAINING)
     REMOVED = (
      COMPANY, CLUBS)
+    TRANSFER_PREBATTLES = (
+     TRAINING, TOURNAMENT, CLAN, EPIC_TRAINING, RTS_TRAINING, STRONGHOLD)
 
 
 PREBATTLE_TYPE_NAMES = dict([ (v, k) for k, v in PREBATTLE_TYPE.__dict__.iteritems() if not k.startswith('_') ])
@@ -773,8 +775,10 @@ class Configs(enum.Enum):
     MAPBOX_CONFIG = 'mapbox_config'
     GIFTS_CONFIG = 'gifts_config'
     RESOURCE_WELL = 'resource_well_config'
-    FUN_RANDOM_CONFIG = 'fun_random_config'
-    CRYSTAL_REWARDS_CONFIG = 'crystal_rewards_config'
+    CUSTOMIZATION_QUESTS = 'customizationQuests'
+    UI_LOGGING = 'ui_logging_config'
+    BATTLE_MATTERS_CONFIG = 'battle_matters_config'
+    PERIPHERY_ROUTING_CONFIG = 'periphery_routing_config'
 
 
 class RESTRICTION_TYPE:
@@ -1191,6 +1195,7 @@ class EVENT_TYPE:
      POTAPOV_QUEST, PERSONAL_MISSION, MOTIVE_QUEST)
     QUESTS_WITH_SHOP_BUTTON = (BATTLE_QUEST, TOKEN_QUEST, PERSONAL_QUEST)
     QUEST_WITHOUT_DYNAMIC_UPDATE = (POTAPOV_QUEST, NT_QUEST)
+    QUEST_USE_FOR_C11N_PROGRESS = (TOKEN_QUEST, BATTLE_QUEST)
 
 
 class QUEST_SOURCE:
@@ -1234,9 +1239,14 @@ ENDLESS_TOKEN_TIME_STRING = '28.01.2100 00:01'
 ENDLESS_TOKEN_TIME = int(calendar.timegm(time.strptime(ENDLESS_TOKEN_TIME_STRING, '%d.%m.%Y %H:%M')))
 LOOTBOX_TOKEN_PREFIX = 'lootBox:'
 TWITCH_TOKEN_PREFIX = 'token:twitch'
+CUSTOMIZATION_PROGRESS_PREFIX = 'cust_progress_'
 EMAIL_CONFIRMATION_QUEST_ID = 'email_confirmation'
 EMAIL_CONFIRMATION_TOKEN_NAME = 'acc_completion:email_confirm'
 DEMO_ACCOUNT_ATTR = 'isDemoAccount'
+HAS_PM1_COMPLETED_TOKEN = 'has_completed_pm1'
+HAS_PM2_COMPLETED_TOKEN = 'has_completed_pm2'
+LINKED_SET_UNFINISHED_TOKEN = 'linkedset_unfinished'
+FREE_PREMIUM_CREW_LOG_EXT_PREFIX = 'free_premium_crew:level:'
 
 def personalMissionFreeTokenName(branch):
     if branch <= 1:
@@ -1398,15 +1408,13 @@ class GameSeasonType(object):
     BATTLE_ROYALE = 3
     MAPBOX = 4
     EVENT_BATTLES = 5
-    FUN_RANDOM = 6
 
 
 SEASON_TYPE_BY_NAME = {'ranked': GameSeasonType.RANKED, 
    'epic': GameSeasonType.EPIC, 
    'battle_royale': GameSeasonType.BATTLE_ROYALE, 
    'mapbox': GameSeasonType.MAPBOX, 
-   'event_battles': GameSeasonType.EVENT_BATTLES, 
-   Configs.EPIC_CONFIG.value: GameSeasonType.FUN_RANDOM}
+   'event_battles': GameSeasonType.EVENT_BATTLES}
 SEASON_NAME_BY_TYPE = {val:key for key, val in SEASON_TYPE_BY_NAME.iteritems()}
 CHANNEL_SEARCH_RESULTS_LIMIT = 50
 USER_SEARCH_RESULTS_LIMIT = 50
@@ -1727,14 +1735,13 @@ class USER_SERVER_SETTINGS:
     DOG_TAGS = 68
     BATTLE_COMM = 69
     BATTLE_HUD = 71
-    LINKEDSET_QUESTS = 89
+    BATTLE_MATTERS_QUESTS = 89
     QUESTS_PROGRESS = 90
     SESSION_STATS = 96
     CONTOUR = 106
-    WOT_ANNIVERSARY = 109
     _ALL = (
-     HIDE_MARKS_ON_GUN, EULA_VERSION, GAME_EXTENDED, LINKEDSET_QUESTS, SESSION_STATS, DOG_TAGS,
-     GAME_EXTENDED_2, BATTLE_HUD, CONTOUR, WOT_ANNIVERSARY)
+     HIDE_MARKS_ON_GUN, EULA_VERSION, GAME_EXTENDED, BATTLE_MATTERS_QUESTS, SESSION_STATS, DOG_TAGS,
+     GAME_EXTENDED_2, BATTLE_HUD, CONTOUR)
 
     @classmethod
     def isBattleInvitesForbidden(cls, settings):
@@ -1830,7 +1837,7 @@ INT_USER_SETTINGS_KEYS = {USER_SERVER_SETTINGS.VERSION: 'Settings version',
    85: 'feedback border map', 
    86: 'ui storage, used for preserving first entry flags etc', 
    USER_SERVER_SETTINGS.HIDE_MARKS_ON_GUN: 'Hide marks on gun', 
-   USER_SERVER_SETTINGS.LINKEDSET_QUESTS: 'linkedset quests show reward info', 
+   USER_SERVER_SETTINGS.BATTLE_MATTERS_QUESTS: 'battle matters quests show reward info', 
    USER_SERVER_SETTINGS.QUESTS_PROGRESS: 'feedback quests progress', 
    91: 'Loot box last viewed count', 
    USER_SERVER_SETTINGS.SESSION_STATS: 'sessiong statistics settings', 
@@ -1842,10 +1849,7 @@ INT_USER_SETTINGS_KEYS = {USER_SERVER_SETTINGS.VERSION: 'Settings version',
    USER_SERVER_SETTINGS.GAME_EXTENDED_2: 'Game extended section settings 2', 
    103: 'Mapbox carousel filter 1', 
    104: 'Mapbox carousel filter 2', 
-   USER_SERVER_SETTINGS.CONTOUR: 'Contour settings', 
-   107: 'Fun Random carousel filter 1', 
-   108: 'Fun Random carousel filter 2', 
-   USER_SERVER_SETTINGS.WOT_ANNIVERSARY: 'wot anniversary settings'}
+   USER_SERVER_SETTINGS.CONTOUR: 'Contour settings'}
 
 class WG_GAMES:
     TANKS = 'wot'
@@ -2727,14 +2731,6 @@ class EPlatoonButtonState(enum.Enum):
     CREATE_STATE = 'CREATE'
 
 
-class HighExplosiveImpact(object):
-    BLAST_WAVE = 'blastWave'
-    SHELL_FRAGMENTS = 'shellFragments'
-    ARMOR_SPALLS = 'armorSpalls'
-    ALL = (
-     BLAST_WAVE, SHELL_FRAGMENTS, ARMOR_SPALLS)
-
-
 class DamageAbsorptionTypes(object):
     FRAGMENTS = 0
     BLAST = 1
@@ -2806,9 +2802,7 @@ BATTLE_MODE_VEHICLE_TAGS = {
  'epic_battles',
  'bob',
  'battle_royale',
- 'clanWarsBattles',
- 'fun_random'}
-BATTLE_MODE_VEH_TAGS_EXCEPT_FUN = BATTLE_MODE_VEHICLE_TAGS - {'fun_random'}
+ 'clanWarsBattles'}
 
 @enum.unique
 class EventPhase(enum.Enum):
@@ -2818,6 +2812,9 @@ class EventPhase(enum.Enum):
 
 
 class ACCOUNT_KICK_REASONS(object):
+    UNAVAILABLE_PERIPHERY = -4
+    VERSION_MISMATCH = -3
+    NO_CONNECTION = -2
     UNKNOWN = 0
     LOGIN_TO_OTHER_GAME = 1
     SESSION_TRACKER_KICK = 2
@@ -2866,6 +2863,5 @@ class BATTLE_MODE_LOCK_MASKS(object):
 
 
 RESOURCE_WELL_FORBIDDEN_TOKEN = 'rws{}_forbidden'
-VEHICLE_HEALTH_DECIMALS = 1
-GUARANTEED_RANDOMIZED_DAMAGE = 1.0
-GUARANTEED_RANDOMIZED_PIERCING_POWER = 1.0
+QUESTS_SUPPORTED_EXCLUDE_TAGS = {
+ 'collectorVehicle'}

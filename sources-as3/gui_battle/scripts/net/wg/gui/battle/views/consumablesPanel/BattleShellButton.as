@@ -73,7 +73,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private var _coolDownTimer:CoolDownTimer = null;
       
-      private var _consumablesVO:ConsumablesVO = null;
+      private var _consumablesVO:ConsumablesVO;
       
       private var _spgShotResult:int = -1;
       
@@ -83,11 +83,11 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function BattleShellButton()
       {
+         this._consumablesVO = new ConsumablesVO();
          this._colorSchemeMgr = App.colorSchemeMgr;
          super();
          this._coolDownTimer = new CoolDownTimer(this);
          this._coolDownTimer.setFrames(START_FRAME,END_FRAME);
-         this._consumablesVO = new ConsumablesVO();
          this._isColorBlindMode = this._colorSchemeMgr.getIsColorBlindS();
          this.spgShotResultIndicator.visible = false;
          isAllowedToShowToolTipOnDisabledState = true;
@@ -113,12 +113,9 @@ package net.wg.gui.battle.views.consumablesPanel
          {
             this.setBindKeyText();
          }
-         if(isInvalid(QUANTITY_VALIDATION))
+         if(this.quantityField && isInvalid(QUANTITY_VALIDATION))
          {
-            if(this.quantityField)
-            {
-               this.quantityField.text = this._quantity.toString();
-            }
+            this.quantityField.text = this._quantity.toString();
          }
          if(isInvalid(SELECTED_INDICATOR_VISIBILITY))
          {
@@ -173,14 +170,6 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      public function updateLockedInformation(param1:int, param2:String) : void
-      {
-      }
-      
-      public function updateLevelInformation(param1:int) : void
-      {
-      }
-      
       public function setCoolDownPosAsPercent(param1:Number) : void
       {
          if(param1 < 100)
@@ -229,7 +218,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function setCurrent(param1:Boolean, param2:Boolean = false) : void
       {
-         if(param1 != this._isCurrent || param2)
+         if(param2 || param1 != this._isCurrent)
          {
             this._isCurrent = param1;
             if(this.selectedIndicator)
@@ -253,7 +242,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function setEmpty(param1:Boolean, param2:Boolean = false) : void
       {
-         if(this._isEmpty == param1 && !param2)
+         if(!param2 && this._isEmpty == param1)
          {
             return;
          }
@@ -274,7 +263,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function setNext(param1:Boolean, param2:Boolean = false) : void
       {
-         if(param1 != this._isNext || param2)
+         if(param2 || param1 != this._isNext)
          {
             this._isNext = param1;
             if(this.nextIndicator && !this._isCurrent)
@@ -295,7 +284,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function setQuantity(param1:int, param2:Boolean = false) : void
       {
-         if(this._quantity == param1 && !param2)
+         if(!param2 && this._quantity == param1)
          {
             return;
          }
@@ -304,7 +293,7 @@ package net.wg.gui.battle.views.consumablesPanel
          {
             this.setEmpty(false,param2);
          }
-         if(this._quantity == 0)
+         else if(this._quantity == 0)
          {
             this.setEmpty(true,param2);
          }
@@ -332,6 +321,14 @@ package net.wg.gui.battle.views.consumablesPanel
       public function showGlow(param1:int) : void
       {
          this.glow.showGlow(param1);
+      }
+      
+      public function updateLevelInformation(param1:int) : void
+      {
+      }
+      
+      public function updateLockedInformation(param1:int, param2:String) : void
+      {
       }
       
       protected function setBindKeyText() : void

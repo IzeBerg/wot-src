@@ -15,11 +15,15 @@ package net.wg.gui.components.battleRoyale
       
       public static const SELECTED:int = 2;
       
+      public static const HIGHLIGHTED:int = 3;
+      
       private static const DISABLED_ICON_ALPHA:Number = 0.2;
       
       private static const DISABLED_TEXT_ALPHA:Number = 0.6;
       
       private static const ENABLED_ALPHA:Number = 1;
+      
+      private static const HIGHLIGHTED_ALPHA:Number = 1;
       
       private static const SELECTED_ALPHA:Number = 0.8;
       
@@ -64,7 +68,7 @@ package net.wg.gui.components.battleRoyale
       
       protected function updateEnabled() : void
       {
-         this.filters = null;
+         this.icon.filters = null;
          switch(this._status)
          {
             case SELECTED:
@@ -72,7 +76,10 @@ package net.wg.gui.components.battleRoyale
                break;
             case ENABLED:
                this.icon.alpha = this.label.alpha = ENABLED_ALPHA;
-               this.filters = [HEADER_SHADOW];
+               this.icon.filters = [HEADER_SHADOW];
+               break;
+            case HIGHLIGHTED:
+               this.icon.alpha = this.label.alpha = HIGHLIGHTED_ALPHA;
                break;
             default:
                this.icon.alpha = DISABLED_ICON_ALPHA;

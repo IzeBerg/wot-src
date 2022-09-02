@@ -24,25 +24,24 @@ def readQuestsFromFile(filePath, eventType):
     if nodes is None:
         LOG_WARNING(filePath, ('No quests of type {} were found in {}.').format(_getEventName(eventType), filePath))
         return
-    else:
-        for node in nodes:
-            info = node.info
-            questID = info.get('id', None)
-            if not questID:
-                raise SoftException(('questID is not set for a quest in {}, eventType: {}').format(filePath, _getEventName(eventType)))
-            if questID in questIDs:
-                raise SoftException(('duplicate questID: {} in {}, eventType: {}').format(questID, filePath, _getEventName(eventType)))
-            questIDs.add(questID)
-            questData = info.get('questClientData', None)
-            if questData is None:
-                LOG_WARNING(filePath, ('"questClientData" not set for {} in {}').format(questID, filePath))
-                continue
-            questName = questData.get('name', None)
-            if questName:
-                questName = makeI18nString(questName['key'])
-            questDescr = questData.get('description', None)
-            if questDescr:
-                questDescr = makeI18nString(questDescr['key'])
-            yield (questID, questName, questDescr, questData, node)
+    for node in nodes:
+        info = node.info
+        questID = info.get('id', None)
+        if not questID:
+            raise SoftException(('questID is not set for a quest in {}, eventType: {}').format(filePath, _getEventName(eventType)))
+        if questID in questIDs:
+            raise SoftException(('duplicate questID: {} in {}, eventType: {}').format(questID, filePath, _getEventName(eventType)))
+        questIDs.add(questID)
+        questData = info.get('questClientData', None)
+        if questData is None:
+            LOG_WARNING(filePath, ('"questClientData" not set for {} in {}').format(questID, filePath))
+            continue
+        questName = questData.get('name', None)
+        if questName:
+            questName = makeI18nString(questName.get('key', ''))
+        questDescr = questData.get('description', None)
+        if questDescr:
+            questDescr = makeI18nString(questDescr['key'])
+        yield (questID, questName, questDescr, questData, node)
 
-        return
+    return

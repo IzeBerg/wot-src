@@ -20,10 +20,10 @@ class Y(X):
       'str', c_char_p)]
 
 
-class PickleTest(unittest.TestCase):
+class PickleTest:
 
     def dumps(self, item):
-        return pickle.dumps(item)
+        return pickle.dumps(item, self.proto)
 
     def loads(self, item):
         return pickle.loads(item)
@@ -59,21 +59,14 @@ class PickleTest(unittest.TestCase):
             self.assertRaises(ValueError, lambda : self.dumps(item))
 
     def test_wchar(self):
-        pickle.dumps(c_char('x'))
-        pickle.dumps(c_wchar('x'))
+        self.dumps(c_char('x'))
+        self.dumps(c_wchar('x'))
 
 
-class PickleTest_1(PickleTest):
-
-    def dumps(self, item):
-        return pickle.dumps(item, 1)
-
-
-class PickleTest_2(PickleTest):
-
-    def dumps(self, item):
-        return pickle.dumps(item, 2)
-
+for proto in range(pickle.HIGHEST_PROTOCOL + 1):
+    name = 'PickleTest_%s' % proto
+    globals()[name] = type(name, (
+     PickleTest, unittest.TestCase), {'proto': proto})
 
 if __name__ == '__main__':
     unittest.main()

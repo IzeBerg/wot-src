@@ -1,4 +1,5 @@
 import unittest, sys, sqlite3 as sqlite
+from test import test_support
 try:
     import threading
 except ImportError:
@@ -611,7 +612,8 @@ class ConstructorTests(unittest.TestCase):
         ts = sqlite.TimestampFromTicks(42)
 
     def CheckBinary(self):
-        b = sqlite.Binary(chr(0) + "'")
+        with test_support.check_py3k_warnings():
+            b = sqlite.Binary(chr(0) + "'")
 
 
 class ExtensionTests(unittest.TestCase):

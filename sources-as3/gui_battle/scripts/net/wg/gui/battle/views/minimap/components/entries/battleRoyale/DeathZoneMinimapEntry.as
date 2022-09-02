@@ -181,7 +181,7 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
          while(_loc4_ < _loc2_)
          {
             _loc3_ = this._hideContainer.removeChildAt(0);
-            this._deathZonePool.push(DisplayObject(_loc3_));
+            this._deathZonePool.push(_loc3_);
             _loc4_++;
          }
       }

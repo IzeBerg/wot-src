@@ -49,7 +49,6 @@ MAPBOX_CAROUSEL_FILTER_2 = 'MAPBOX_CAROUSEL_FILTER_2'
 MAPBOX_CAROUSEL_FILTER_CLIENT_1 = 'MAPBOX_CAROUSEL_FILTER_CLIENT_1'
 FUN_RANDOM_CAROUSEL_FILTER_1 = 'FUN_RANDOM_CAROUSEL_FILTER_1'
 FUN_RANDOM_CAROUSEL_FILTER_2 = 'FUN_RANDOM_CAROUSEL_FILTER_2'
-FUN_RANDOM_CAROUSEL_FILTER_CLIENT_1 = 'FUN_RANDOM_CAROUSEL_FILTER_CLIENT_1'
 BARRACKS_FILTER = 'barracks_filter'
 ORDERS_FILTER = 'ORDERS_FILTER'
 CURRENT_VEHICLE = 'current'
@@ -88,6 +87,7 @@ BOOSTERS_FOR_CREDITS_SLOT_COUNTER = 'boostersForCreditsSlotCounter'
 SENIORITY_AWARDS_COUNTER = 'seniorityAwardsCounter'
 SENIORITY_AWARDS_WINDOW_SHOWN = 'seniorityAwardsWindowShown'
 DEMOUNT_KIT_SEEN = 'demountKitSeen'
+BATTLEMATTERS_SEEN = 'battleMattersSeen'
 RECERTIFICATION_FORM_SEEN = 'recertificationFormSeen'
 VIEWED_OFFERS = 'viewedOffers'
 OFFERS_DISABLED_MSG_SEEN = 'offersDisabledMsgSeen'
@@ -125,6 +125,8 @@ WHEELED_DEATH_DELAY_COUNT = 'wheeledDeathCounter'
 LAST_BATTLE_PASS_POINTS_SEEN = 'lastBattlePassPointsSeen'
 IS_BATTLE_PASS_EXTRA_STARTED = 'isBattlePassExtraStarted'
 CRYSTALS_INFO_SHOWN = 'crystalsInfoShown'
+IS_CUSTOMIZATION_INTRO_VIEWED = 'isCustomizationIntroViewed'
+CUSTOMIZATION_STYLE_ITEMS_VISITED = 'CustomizationStyleItemsVisited'
 ANONYMIZER = GAME.ANONYMIZER
 CUSTOMIZATION_SECTION = 'customization'
 CAROUSEL_ARROWS_HINT_SHOWN_FIELD = 'isCarouselsArrowsHintShown'
@@ -139,7 +141,6 @@ DYN_SQUAD_HINT_SECTION = 'dynSquadHint'
 RADAR_HINT_SECTION = 'radarHint'
 PRE_BATTLE_HINT_SECTION = 'preBattleHintSection'
 PRE_BATTLE_ROLE_HINT_SECTION = 'preBattleRoleHintSection'
-FUN_RANDOM_HINT_SECTION = 'funRandomHintSection'
 QUEST_PROGRESS_HINT_SECTION = 'questProgressHint'
 HELP_SCREEN_HINT_SECTION = 'helpScreenHint'
 IBC_HINT_SECTION = 'battleCommunicationHint'
@@ -170,8 +171,6 @@ SUBTITLES = 'subtitles'
 MODULES_ANIMATION_SHOWN = 'collectibleVehiclesAnimWasShown'
 NEW_SHOP_TABS = 'newShopTabs'
 IS_COLLECTIBLE_VEHICLES_VISITED = 'isCollectibleVehiclesVisited'
-LAST_SHOP_TAB_COUNTER = 'lastShopTabCounter'
-IS_WOT_ANNIVERSARY_SECTION_VISITED = 'isWotAnniversarySectionVisited'
 QUESTS = 'quests'
 QUEST_DELTAS = 'questDeltas'
 QUEST_DELTAS_COMPLETION = 'questCompletion'
@@ -193,18 +192,9 @@ RESOURCE_WELL_START_SHOWN = 'resourceWellStartShown'
 RESOURCE_WELL_END_SHOWN = 'resourceWellEndShown'
 MAPBOX_SURVEYS = 'mapbox_surveys'
 CLAN_NEWS_SEEN = 'clanNewsSeen'
-CN_LOOT_BOXES_INTRO_WAS_SHOWN = 'cnLootBoxesIntroWasShown'
-CN_LOOT_BOXES_FINISH_SHOWN = 'cnLootBoxesIntroFinishShown'
-CN_LOOT_BOXES_OPEN_ANIMATION_STATE = 'cnLootBoxesOpenAnimationState'
-CN_LOOT_BOXES_VIEWED_COUNT = 'cnLootBoxesViewedCount'
-WOT_ANNIVERSARY_SECTION = 'wotAnniversarySection'
-WOT_ANNIVERSARY_SEEN_DAILY_QUEST = 'wotAnniversarySeenDailyQuest'
-WOT_ANNIVERSARY_SEEN_WEEKLY_QUEST = 'wotAnniversarySeenWeeklyQuest'
-WOT_ANNIVERSARY_SEEN_EVENT_WILL_END_SOON_NOTIFICATION = 'wotAnniversarySeenEventWillEndSoonNotification'
 KNOWN_SELECTOR_BATTLES = 'knownSelectorBattles'
 MODE_SELECTOR_BATTLE_PASS_SHOWN = 'modeSelectorBattlePassShown'
 RANKED_LAST_CYCLE_ID = 'rankedLastCycleID'
-FUN_RANDOM_LAST_CYCLE_ID = 'funRandomLastCycleID'
 DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0, 
                  'shop_current': (
                                 -1, STORE_CONSTANTS.VEHICLE, False), 
@@ -570,8 +560,6 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                 'role_LT_universal': False, 
                                                 'role_LT_wheeled': False, 
                                                 'role_SPG': False}, 
-                 FUN_RANDOM_CAROUSEL_FILTER_CLIENT_1: {'searchNameVehicle': '', 
-                                                       'clanRented': False}, 
                  MISSION_SELECTOR_FILTER: {'inventory': False}, 
                  PM_SELECTOR_FILTER: {'inventory': False}, 
                  BARRACKS_FILTER: {'nation': -1, 'role': 'None', 'tankType': 'None', 'location': 3, 'nationID': None}, ORDERS_FILTER: {'isSelected': False}, GUI_START_BEHAVIOR: {'isFreeXPInfoDialogShowed': False, 'isRankedWelcomeViewShowed': False, 
@@ -781,7 +769,8 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                                                 'colorFilter': True}, 
                                                              'AdvancedGraphicSettings': {'HAVOK_ENABLED': True, 
                                                                                          'TERRAIN_TESSELLATION_ENABLED': True, 
-                                                                                         'SNIPER_MODE_TERRAIN_TESSELLATION_ENABLED': True}}, 
+                                                                                         'SNIPER_MODE_TERRAIN_TESSELLATION_ENABLED': True, 
+                                                                                         'TRACK_PHYSICS_QUALITY': True}}, 
                                          'FeedbackSettings': {'feedbackBattleBorderMap': {'battleBorderMapType': True, 
                                                                                           'battleBorderMapMode': True}, 
                                                               'feedbackQuestsProgress': {ScorePanelStorageKeys.SHOW_HP_VALUES: True, 
@@ -826,8 +815,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                                                           LAST_DISPLAY_DAY: 0, 
                                                                           NUM_BATTLES: 0}, 
                                             HELP_SCREEN_HINT_SECTION: {}, IBC_HINT_SECTION: {HINTS_LEFT: 10}}, 
-                  PRE_BATTLE_ROLE_HINT_SECTION: {}, FUN_RANDOM_HINT_SECTION: {HINTS_LEFT: 3}, 
-                  COMMANDER_CAM_HINT_SECTION: {HINTS_LEFT: 5}, 
+                  PRE_BATTLE_ROLE_HINT_SECTION: {}, COMMANDER_CAM_HINT_SECTION: {HINTS_LEFT: 5}, 
                   MINIMAP_IBC_HINT_SECTION: {HINTS_LEFT: 10}, 
                   WATCHED_PRE_BATTLE_TIPS_SECTION: {}, SIEGE_HINT_SECTION: {HINTS_LEFT: 3, 
                                        LAST_DISPLAY_DAY: 0, 
@@ -861,14 +849,9 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                        'visited_maps': [], 'stored_rewards': {}, 'lastCycleId': None}, 
                   MAPBOX_SURVEYS: {}, UNLOCK_VEHICLES_IN_BATTLE_HINTS: 5, 
                   MODE_SELECTOR_BATTLE_PASS_SHOWN: {}, RANKED_LAST_CYCLE_ID: None, 
-                  FUN_RANDOM_LAST_CYCLE_ID: None, 
                   SHOW_DEMO_ACC_REGISTRATION: False, 
-                  WOT_ANNIVERSARY_SECTION: {WOT_ANNIVERSARY_SEEN_DAILY_QUEST: ('', 0), 
-                                            WOT_ANNIVERSARY_SEEN_WEEKLY_QUEST: '', 
-                                            WOT_ANNIVERSARY_SEEN_EVENT_WILL_END_SOON_NOTIFICATION: False}, 
-                  CN_LOOT_BOXES_INTRO_WAS_SHOWN: False, 
-                  CN_LOOT_BOXES_VIEWED_COUNT: 0, 
-                  CN_LOOT_BOXES_OPEN_ANIMATION_STATE: True}, 
+                  IS_CUSTOMIZATION_INTRO_VIEWED: False, 
+                  CUSTOMIZATION_STYLE_ITEMS_VISITED: set()}, 
    KEY_COUNTERS: {NEW_HOF_COUNTER: {PROFILE_CONSTANTS.HOF_ACHIEVEMENTS_BUTTON: True, 
                                     PROFILE_CONSTANTS.HOF_VEHICLES_BUTTON: True, 
                                     PROFILE_CONSTANTS.HOF_VIEW_RATING_BUTTON: True}, 
@@ -882,8 +865,8 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   SENIORITY_AWARDS_COUNTER: 1, 
                   DEMOUNT_KIT_SEEN: False, 
                   RECERTIFICATION_FORM_SEEN: False, 
-                  NEW_SHOP_TABS: {IS_COLLECTIBLE_VEHICLES_VISITED: False, 
-                                  IS_WOT_ANNIVERSARY_SECTION_VISITED: True}, 
+                  BATTLEMATTERS_SEEN: False, 
+                  NEW_SHOP_TABS: {IS_COLLECTIBLE_VEHICLES_VISITED: False}, 
                   VPP_ENTRY_POINT_LAST_SEEN_STEP: {}}, 
    KEY_NOTIFICATIONS: {ELEN_NOTIFICATIONS: {MISSIONS_CONSTANTS.ELEN_EVENT_STARTED_NOTIFICATION: set(), 
                                             MISSIONS_CONSTANTS.ELEN_EVENT_FINISHED_NOTIFICATION: set(), 
@@ -895,8 +878,7 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                        BLUEPRINTS_CONVERT_SALE_STARTED_SEEN: False, 
                        CLAN_NEWS_SEEN: False, 
                        RESOURCE_WELL_START_SHOWN: False, 
-                       RESOURCE_WELL_END_SHOWN: False, 
-                       CN_LOOT_BOXES_FINISH_SHOWN: False}, 
+                       RESOURCE_WELL_END_SHOWN: False}, 
    KEY_SESSION_SETTINGS: {STORAGE_VEHICLES_CAROUSEL_FILTER_1: {'ussr': False, 
                                                                'germany': False, 
                                                                'usa': False, 

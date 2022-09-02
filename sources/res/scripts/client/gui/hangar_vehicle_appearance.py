@@ -437,6 +437,10 @@ class HangarVehicleAppearance(ScriptGameObject):
             return
         self.__clearModelAnimators()
         self.__modelAnimators = camouflages.getModelAnimators(outfit, self.__vDesc, self.__spaceId, resourceRefs, self.compoundModel)
+        for modelAnimator in self.__modelAnimators:
+            modelAnimator.animator.setEnabled(True)
+            modelAnimator.animator.start()
+
         if not self.__isVehicleDestroyed:
             self.__modelAnimators.extend(camouflages.getAttachmentsAnimators(self.__attachments, self.__spaceId, resourceRefs, self.compoundModel))
         from vehicle_systems import model_assembler
@@ -554,7 +558,9 @@ class HangarVehicleAppearance(ScriptGameObject):
         BigWorld.player().stats.get('clanDBID', callback)
 
     def __onClanDBIDRetrieved(self, _, clanID):
-        self.__vehicleStickers.setClanID(clanID)
+        if self.__vehicleStickers is not None:
+            self.__vehicleStickers.setClanID(clanID)
+        return
 
     def __setupModel(self, buildIdx):
         self.__assembleModel()

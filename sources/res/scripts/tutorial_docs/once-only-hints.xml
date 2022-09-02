@@ -683,6 +683,7 @@
 			</arrow>
 			<update-runtime>True</update-runtime>
 			<ignore-outside-click>True</ignore-outside-click>
+			<hide-immediately>True</hide-immediately>
 			<checked-ui-state>
 				<simple-state>
 					<state>visible</state>
@@ -1008,6 +1009,20 @@
 			<update-runtime>True</update-runtime>
 			<hide-immediately>True</hide-immediately>
 			<ignore-outside-click>True</ignore-outside-click>
+		</hint>
+		<hint>
+			BattleMattersEntryPointHint
+			<item-id>BattleMattersEntryPoint</item-id>
+			<ignore-outside-click>True</ignore-outside-click>
+			<hide-immediately>True</hide-immediately>
+			<text>_(#battle_matters:entryPoint/hint)</text>
+			<arrow>
+				<direction>B</direction>
+				<loop>True</loop>
+			</arrow>
+			<condition>
+				<global-active>_BattleMattersEntryPoint</global-active>
+			</condition>
 		</hint>
 	</hints>
 </root>

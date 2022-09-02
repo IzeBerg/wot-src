@@ -17,9 +17,9 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
       private static const NORMAL_COLOR_FRAME:int = 1;
        
       
-      private var _pointNumber:int = -1;
-      
       public var atlasPlaceholder:Sprite = null;
+      
+      private var _pointNumber:int = -1;
       
       private var _atlasManager:IAtlasManager;
       
@@ -29,13 +29,6 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
          super();
          MinimapEntryController.instance.registerScalableEntry(this);
          this.checkForColorBlindMode();
-      }
-      
-      public function setPointNumber(param1:int) : void
-      {
-         this._pointNumber = param1;
-         this.drawEntry();
-         App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeChangeHandler);
       }
       
       override protected function SetAtlasPlaceholderVisible(param1:Boolean) : void
@@ -52,8 +45,15 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
          MinimapEntryController.instance.unregisterScalableEntry(this);
          this.atlasPlaceholder = null;
          this._atlasManager = null;
-         App.colorSchemeMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeChangeHandler);
+         App.colorSchemeMgr.removeEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeMgrSchemasUpdatedHandler);
          super.onDispose();
+      }
+      
+      public function setPointNumber(param1:int) : void
+      {
+         this._pointNumber = param1;
+         this.drawEntry();
+         App.colorSchemeMgr.addEventListener(ColorSchemeEvent.SCHEMAS_UPDATED,this.onColorSchemeMgrSchemasUpdatedHandler);
       }
       
       private function drawEntry() : void
@@ -61,17 +61,17 @@ package net.wg.gui.battle.views.minimap.components.entries.teambase
          this._atlasManager.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,TeamBaseMinimapEntryConst.ENEMY_TEAM_BASE_ATLAS_ITEM_NAME + "_" + App.colorSchemeMgr.getScheme(MinimapColorConst.TEAM_POINT_BASE_RED).aliasColor + "_" + this._pointNumber,this.atlasPlaceholder.graphics,"",true);
       }
       
-      private function onColorSchemeChangeHandler(param1:ColorSchemeEvent) : void
+      private function checkForColorBlindMode() : void
+      {
+         gotoAndStop(!!App.colorSchemeMgr.getIsColorBlindS() ? COLOR_BLIND_FRAME : NORMAL_COLOR_FRAME);
+      }
+      
+      private function onColorSchemeMgrSchemasUpdatedHandler(param1:ColorSchemeEvent) : void
       {
          this.drawEntry();
          storeFrameAnimations();
          this.checkForColorBlindMode();
          setState(getCurrentState(),false);
-      }
-      
-      private function checkForColorBlindMode() : void
-      {
-         gotoAndStop(!!App.colorSchemeMgr.getIsColorBlindS() ? COLOR_BLIND_FRAME : NORMAL_COLOR_FRAME);
       }
    }
 }

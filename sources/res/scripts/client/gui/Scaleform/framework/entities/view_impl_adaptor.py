@@ -8,7 +8,7 @@ from gui.Scaleform.framework.settings import UIFrameworkImpl
 from soft_exception import SoftException
 
 class ViewImplAdaptor(DisposableEntity, ViewInterface):
-    __slots__ = ('__window', '__loadID', '__scope', '__key')
+    __slots__ = ('__window', '__loadID', '__scope', '__key', '__layer')
 
     def __init__(self):
         super(ViewImplAdaptor, self).__init__()
@@ -16,6 +16,7 @@ class ViewImplAdaptor(DisposableEntity, ViewInterface):
         self.__loadID = None
         self.__scope = ScopeTemplates.DEFAULT_SCOPE
         self.__key = None
+        self.__layer = None
         return
 
     def __repr__(self):
@@ -31,11 +32,7 @@ class ViewImplAdaptor(DisposableEntity, ViewInterface):
 
     @property
     def layer(self):
-        layer = self.view.layer
-        if not layer:
-            return None
-        else:
-            return layer
+        return self.__layer
 
     @property
     def viewScope(self):
@@ -92,11 +89,12 @@ class ViewImplAdaptor(DisposableEntity, ViewInterface):
             return self.__window.windowStatus == WindowStatus.LOADED
 
     def setView(self, view, parent=None):
+        self.__layer = view.layer
+        self.__key = ViewKey(view.layoutID, view.uniqueID)
         settings = WindowSettings()
         settings.content = view
         settings.parent = parent
-        settings.layer = view.layer
-        self.__key = ViewKey(view.layoutID, view.uniqueID)
+        settings.layer = self.__layer
         self.__window = Window(settings)
         self.__window.onStatusChanged += self.__onStatusChanged
 
@@ -126,7 +124,11 @@ class ViewImplAdaptor(DisposableEntity, ViewInterface):
         if state == WindowStatus.LOADED:
             self.create()
         elif state == WindowStatus.DESTROYED:
+            if self.__window is not None:
+                self.__window.onStatusChanged -= self.__onStatusChanged
+                self.__window = None
             self.destroy()
+        return
 
     def __startToLoad(self):
         self.__loadID = None

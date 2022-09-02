@@ -20,6 +20,14 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
          MinimapEntryController.instance.registerScalableEntry(this);
       }
       
+      override protected function onDispose() : void
+      {
+         this.mcTopAnimation = null;
+         this.mcBearer = null;
+         MinimapEntryController.instance.unregisterScalableEntry(this);
+         super.onDispose();
+      }
+      
       public function setAnimation(param1:String) : void
       {
          this.mcTopAnimation.gotoAndStop(1);
@@ -38,14 +46,6 @@ package net.wg.gui.battle.views.minimap.components.entries.personal
             this.mcBearer.visible = false;
             this.mcBearer.stop();
          }
-      }
-      
-      override protected function onDispose() : void
-      {
-         this.mcTopAnimation = null;
-         this.mcBearer = null;
-         MinimapEntryController.instance.unregisterScalableEntry(this);
-         super.onDispose();
       }
    }
 }

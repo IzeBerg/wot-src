@@ -7,7 +7,7 @@ from debug_utils import LOG_DEBUG, LOG_ERROR
 from gui import DialogsInterface, SystemMessages, makeHtmlString
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.lobby.customization.shared import CustomizationTabs
-from gui.Scaleform.daapi.view.lobby.store.browser.shop_helpers import getBattlePassPointsProductsUrl, getPlayerSeniorityAwardsUrl
+from gui.Scaleform.daapi.view.lobby.store.browser.shop_helpers import getPlayerSeniorityAwardsUrl, getBattlePassPointsProductsUrl
 from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
 from gui.Scaleform.genConsts.BARRACKS_CONSTANTS import BARRACKS_CONSTANTS
 from gui.Scaleform.genConsts.FORTIFICATION_ALIASES import FORTIFICATION_ALIASES
@@ -22,7 +22,7 @@ from gui.prb_control import prbDispatcherProperty, prbInvitesProperty
 from gui.ranked_battles import ranked_helpers
 from gui.server_events.events_dispatcher import showMissionsBattlePass, showMissionsMapboxProgression, showPersonalMission
 from gui.shared import EVENT_BUS_SCOPE, actions, event_dispatcher as shared_events, events, g_eventBus
-from gui.shared.event_dispatcher import hideWebBrowserOverlay, showBlueprintsSalePage, showEpicBattlesAfterBattleWindow, showProgressiveRewardWindow, showRankedYearAwardWindow, showResourceWellProgressionWindow, showShop, showSteamConfirmEmailOverlay
+from gui.shared.event_dispatcher import showBlueprintsSalePage, showProgressiveRewardWindow, showRankedYearAwardWindow, showShop, showSteamConfirmEmailOverlay, hideWebBrowserOverlay, showEpicBattlesAfterBattleWindow, showResourceWellProgressionWindow, showDelayedReward
 from gui.shared.notifications import NotificationPriorityLevel
 from gui.shared.utils import decorators
 from gui.wgcg.clan import contexts as clan_ctxs
@@ -35,13 +35,11 @@ from notification.tutorial_helper import TUTORIAL_GLOBAL_VAR, TutorialGlobalStor
 from predefined_hosts import g_preDefinedHosts
 from skeletons.gui.battle_results import IBattleResultsService
 from skeletons.gui.customization import ICustomizationService
-from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IBrowserController, ICNLootBoxesController, IFunRandomController, IMapboxController, IRankedBattlesController
+from skeletons.gui.game_control import IBattleRoyaleController, IBrowserController, IMapboxController, IRankedBattlesController, IBattlePassController
 from skeletons.gui.impl import INotificationWindowController
-from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.platform.wgnp_controllers import IWGNPSteamAccRequestController
 from skeletons.gui.web import IWebController
 from soft_exception import SoftException
-from uilogging.resource_well.loggers import ResourceWellEntryPointLogger
 from web.web_client_api import webApiCollection
 from web.web_client_api.sound import HangarSoundWebApi
 if typing.TYPE_CHECKING:
@@ -986,6 +984,20 @@ class _OpenMapboxSurvey(_NavigationDisabledActionHandler):
         return
 
 
+class _OpenDelayedReward(_NavigationDisabledActionHandler):
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.MESSAGE
+
+    @classmethod
+    def getActions(cls):
+        return ('openDelayedReward', )
+
+    def doAction(self, model, entityID, action):
+        showDelayedReward()
+
+
 class _OpenPsaShop(_NavigationDisabledActionHandler):
 
     @classmethod
@@ -1048,7 +1060,6 @@ class _OpenResourceWellProgressionStartWindow(_NavigationDisabledActionHandler):
         return ('openResourceWellProgressionStartWindow', )
 
     def doAction(self, model, entityID, action):
-        ResourceWellEntryPointLogger().logStartNotificationButtonClick()
         showResourceWellProgressionWindow()
 
 
@@ -1063,19 +1074,11 @@ class _OpenResourceWellProgressionNoVehiclesWindow(_NavigationDisabledActionHand
         return ('openResourceWellProgressionNoVehiclesWindow', )
 
     def doAction(self, model, entityID, action):
-        ResourceWellEntryPointLogger().logNoVehiclesNotificationButtonClick()
         showResourceWellProgressionWindow()
 
 
-class _SelectFunRandomMode(_NavigationDisabledActionHandler):
-    __funRandomCtrl = dependency.descriptor(IFunRandomController)
-    __lobbyContext = dependency.descriptor(ILobbyContext)
-
-    @process
-    def doAction(self, model, entityID, action):
-        navigationPossible = yield self.__lobbyContext.isHeaderNavigationPossible()
-        if navigationPossible:
-            self.__funRandomCtrl.selectFunRandomBattle()
+class _OpenCustomizationStylesSection(_NavigationDisabledActionHandler):
+    __customizationService = dependency.descriptor(ICustomizationService)
 
     @classmethod
     def getNotType(cls):
@@ -1083,23 +1086,18 @@ class _SelectFunRandomMode(_NavigationDisabledActionHandler):
 
     @classmethod
     def getActions(cls):
-        return ('selectFunRandomMode', )
-
-
-class _OpenCNLootBoxesExternalShopHandler(_NavigationDisabledActionHandler):
-    __cnLootBoxes = dependency.descriptor(ICNLootBoxesController)
-
-    @classmethod
-    def getNotType(cls):
-        return NOTIFICATION_TYPE.MESSAGE
-
-    @classmethod
-    def getActions(cls):
-        return ('openCNLootBoxesExternalShop', )
+        return ('openCustomizationStylesSection', )
 
     def doAction(self, model, entityID, action):
-        if self.__cnLootBoxes.isActive():
-            self.__cnLootBoxes.openExternalShopPage()
+        if self.__customizationService.getCtx() is None:
+            self.__customizationService.showCustomization(callback=self.__onCustomizationLoaded)
+        else:
+            self.__onCustomizationLoaded()
+        return
+
+    @classmethod
+    def __onCustomizationLoaded(cls):
+        cls.__customizationService.getCtx().changeMode(CustomizationModes.STYLED, CustomizationTabs.STYLES)
 
 
 _AVAILABLE_HANDLERS = (
@@ -1146,16 +1144,14 @@ _AVAILABLE_HANDLERS = (
  _OpenConfirmEmailHandler,
  _OpenMapboxProgression,
  _OpenMapboxSurvey,
+ _OpenDelayedReward,
  _OpenPsaShop,
  _OpenBattlePassPointsShop,
  _OpenChapterChoiceView,
  _OpenEpicBattlesAfterBattleWindow,
  _OpenResourceWellProgressionStartWindow,
  _OpenResourceWellProgressionNoVehiclesWindow,
- _OpenEpicBattlesAfterBattleWindow,
- _SelectFunRandomMode,
- _OpenMissingEventsHandler,
- _OpenCNLootBoxesExternalShopHandler)
+ _OpenCustomizationStylesSection)
 
 class NotificationsActionsHandlers(object):
     __slots__ = ('__single', '__multi')

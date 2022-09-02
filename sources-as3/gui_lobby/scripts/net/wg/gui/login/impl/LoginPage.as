@@ -950,6 +950,7 @@ package net.wg.gui.login.impl
                if(simpleForm)
                {
                   simpleForm.updateInputForm(event.focusTarget,isToken);
+                  doUpdateS();
                }
             }
             catch(e:Error)

@@ -5,7 +5,6 @@ package net.wg.gui.lobby.vehicleCustomization
    import flash.events.Event;
    import flash.events.MouseEvent;
    import flash.text.TextField;
-   import flash.text.TextFieldAutoSize;
    import net.wg.data.constants.Linkages;
    import net.wg.gui.components.controls.BlackButton;
    import net.wg.gui.components.controls.ScrollingListEx;
@@ -34,8 +33,6 @@ package net.wg.gui.lobby.vehicleCustomization
       
       public var titleTF:TextField;
       
-      public var messageTF:TextField;
-      
       public var clearTF:TextField;
       
       public var clearBtn:BlackButton;
@@ -54,8 +51,6 @@ package net.wg.gui.lobby.vehicleCustomization
       
       private var _title:String = "";
       
-      private var _helpMessage:String = "";
-      
       public function CustomizationEditedKitPopover()
       {
          this._tooltipMgr = App.toolTipMgr;
@@ -64,7 +59,8 @@ package net.wg.gui.lobby.vehicleCustomization
       
       override protected function initialize() : void
       {
-         var _loc1_:Sprite = new Sprite();
+         var _loc1_:Sprite = null;
+         _loc1_ = new Sprite();
          this.topShadow.hitArea = _loc1_;
          this.bottomShadow.hitArea = _loc1_;
          addChild(_loc1_);
@@ -76,11 +72,10 @@ package net.wg.gui.lobby.vehicleCustomization
          this.bottomShadow.mouseChildren = this.bottomShadow.mouseEnabled = false;
          this.topShadow.mouseChildren = this.topShadow.mouseEnabled = false;
          this.topShadow.width = this.bottomShadow.width = WIDTH;
-         this.messageTF.autoSize = TextFieldAutoSize.LEFT;
          this.clearBtn.mouseEnabledOnDisabled = true;
          this.clearBtn.mutedSoundTypes = [MouseEvent.MOUSE_DOWN];
          this.clearBtn.iconSource = RES_ICONS.MAPS_ICONS_LIBRARY_ASSET_1;
-         this.clearBtn.label = VEHICLE_CUSTOMIZATION.CUSTOMIZATION_KITPOPOVER_BUTTONTEXT_REMOVESTYLEKIT;
+         this.clearBtn.label = VEHICLE_CUSTOMIZATION.CUSTOMIZATION_CLEARBUTTON_LABEL_REMOVEALL;
          this.clearBtn.addEventListener(ButtonEvent.CLICK,this.onClearBtnClickHandler);
          this.defaultBtn.label = VEHICLE_CUSTOMIZATION.CUSTOMIZATION_NONHISTORIC_BUTTONTEXT_DEFAULTVIEW;
          this.defaultBtn.mouseEnabledOnDisabled = true;
@@ -121,7 +116,6 @@ package net.wg.gui.lobby.vehicleCustomization
          this.items = null;
          this.clearTF = null;
          this.titleTF = null;
-         this.messageTF = null;
          this.bottomShadow = null;
          this.topShadow = null;
          this._tooltipMgr = null;
@@ -135,7 +129,6 @@ package net.wg.gui.lobby.vehicleCustomization
          if(isInvalid(InvalidationType.DATA))
          {
             this.titleTF.htmlText = this._title;
-            this.messageTF.htmlText = this._helpMessage;
          }
          if(isInvalid(CLEAR_STATE_INVALID))
          {
@@ -189,15 +182,6 @@ package net.wg.gui.lobby.vehicleCustomization
          if(this._title != param1)
          {
             this._title = param1;
-            invalidateData();
-         }
-      }
-      
-      public function as_setHelpMessage(param1:String) : void
-      {
-         if(this._helpMessage != param1)
-         {
-            this._helpMessage = param1;
             invalidateData();
          }
       }

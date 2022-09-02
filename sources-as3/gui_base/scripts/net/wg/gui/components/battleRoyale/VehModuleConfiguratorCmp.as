@@ -604,7 +604,7 @@ package net.wg.gui.components.battleRoyale
          }
          else if(param2.availableForSelection)
          {
-            param1.status = ColumnHeader.ENABLED;
+            param1.status = !!param2.highlighted ? int(ColumnHeader.HIGHLIGHTED) : int(ColumnHeader.ENABLED);
          }
          else
          {

@@ -8,6 +8,9 @@ class ManualMainViewMeta(View):
     def closeView(self):
         self._printOverrideError('closeView')
 
+    def onBackButton(self):
+        self._printOverrideError('onBackButton')
+
     def as_setChaptersS(self, data):
         if self._isDAAPIInited():
             return self.flashObject.as_setChapters(data)
@@ -19,3 +22,7 @@ class ManualMainViewMeta(View):
     def as_showCloseBtnS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_showCloseBtn(value)
+
+    def as_showBackBtnS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_showBackBtn(value)

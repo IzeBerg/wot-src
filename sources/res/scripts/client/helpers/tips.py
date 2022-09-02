@@ -18,7 +18,6 @@ _RANDOM_TIPS_PATTERN = '^(tip\\d+)'
 _EPIC_BATTLE_TIPS_PATTERN = '^(epicTip\\d+)'
 _EPIC_RANDOM_TIPS_PATTERN = '^(epicRandom\\d+)'
 _RANKED_BATTLES_TIPS_PATTERN = '^(ranked\\d+)'
-_FUN_RANDOM_TIPS_PATTERN = '^(funRandom\\d+)'
 _BATTLE_ROYALE_TIPS_PATTERN = '^(battleRoyale\\d+$)'
 
 class _BattleLoadingTipPriority(object):
@@ -140,12 +139,6 @@ class _RankedTipsCriteria(_TipsCriteria):
         return _rankedTips
 
 
-class _FunRandomTipsCriteria(_TipsCriteria):
-
-    def _getTargetList(self):
-        return _funRandomTips
-
-
 class _EpicRandomTipsCriteria(_TipsCriteria):
 
     def _getTargetList(self):
@@ -190,8 +183,6 @@ def getTipsCriteria(arenaVisitor):
         return _EpicBattleTipsCriteria()
     if arenaVisitor.gui.isBattleRoyale():
         return BattleRoyaleTipsCriteria(arenaVisitor)
-    if arenaVisitor.gui.isFunRandom():
-        return _FunRandomTipsCriteria()
     return _RandomTipsCriteria()
 
 
@@ -467,7 +458,6 @@ _watchedTipsCache = None
 _tipsConfig = getPreBattleTipsConfig()
 _randomTips = _readTips(_RANDOM_TIPS_PATTERN)
 _rankedTips = _readTips(_RANKED_BATTLES_TIPS_PATTERN)
-_funRandomTips = _readTips(_FUN_RANDOM_TIPS_PATTERN)
 _epicBattleTips = _readTips(_EPIC_BATTLE_TIPS_PATTERN)
 _epicRandomTips = _readTips(_EPIC_RANDOM_TIPS_PATTERN)
 _battleRoyaleTips = _readTips(_BATTLE_ROYALE_TIPS_PATTERN)
