@@ -1,10 +1,10 @@
 import logging
 from collections import namedtuple
 from functools import partial
-import typing, async as future_async
+import typing, wg_async as future_async
 from account_helpers import isLongDisconnectedFromCenter
 from account_helpers.AccountSettings import AccountSettings
-from adisp import async, process
+from adisp import adisp_async, adisp_process
 from gui import DialogsInterface, makeHtmlString
 from gui.Scaleform.Waiting import Waiting
 from gui.Scaleform.daapi.view import dialogs
@@ -84,13 +84,13 @@ class AsyncValidator(ProcessorPlugin):
     def __init__(self, isEnabled=True):
         super(AsyncValidator, self).__init__(self.TYPE.VALIDATOR, True, isEnabled=isEnabled)
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def validate(self, callback):
         result = yield self._validate()
         callback(result)
 
-    @async
+    @adisp_async
     def _validate(self, callback):
         callback(makeSuccess())
 
@@ -100,13 +100,13 @@ class AsyncConfirmator(ProcessorPlugin):
     def __init__(self, isEnabled=True):
         super(AsyncConfirmator, self).__init__(self.TYPE.CONFIRMATOR, True, isEnabled=isEnabled)
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def confirm(self, callback):
         result = yield self._confirm()
         callback(result)
 
-    @async
+    @adisp_async
     def _confirm(self, callback):
         callback(makeSuccess())
 
@@ -116,14 +116,14 @@ class AwaitConfirmator(ProcessorPlugin):
     def __init__(self, isEnabled=True):
         super(AwaitConfirmator, self).__init__(self.TYPE.CONFIRMATOR, isAsync=True, isEnabled=isEnabled)
 
-    @async
-    @future_async.async
+    @adisp_async
+    @future_async.wg_async
     def confirm(self, callback):
         Waiting.suspend(lockerID=id(self))
-        yield future_async.await(self._confirm(callback))
+        yield future_async.wg_await(self._confirm(callback))
         Waiting.resume(lockerID=id(self))
 
-    @future_async.async
+    @future_async.wg_async
     def _confirm(self, callback):
         callback(makeSuccess())
 
@@ -446,7 +446,7 @@ class DialogAbstractConfirmator(AsyncConfirmator):
     def _gfMakeMeta(self):
         return
 
-    @async
+    @adisp_async
     def _showDialog(self, callback):
         callback(None)
         return
@@ -454,8 +454,8 @@ class DialogAbstractConfirmator(AsyncConfirmator):
     def _activeHandler(self):
         return self.activeHandler()
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def _confirm(self, callback):
         yield lambda callback: callback(None)
         if self._activeHandler():
@@ -556,8 +556,8 @@ class TankmanOperationConfirmator(I18nMessageAbstractConfirmator):
         self.__previousPrice, _ = restore_contoller.getTankmenRestoreInfo(tankman)
         return
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def _confirm(self, callback):
         if self._activeHandler():
             isOk = yield DialogsInterface.showDialog(meta=self._makeMeta())
@@ -779,8 +779,8 @@ class CheckBoxConfirmator(DialogAbstractConfirmator):
     def _activeHandler(self):
         return self._getSetting().get(self.settingFieldName)
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def _confirm(self, callback):
         yield lambda callback: callback(None)
         if self._activeHandler():
@@ -894,7 +894,23 @@ class TankmanAddSkillValidator(SyncValidator):
         from items.tankmen import MAX_SKILL_LEVEL
         if self.tankmanDscr.roleLevel != MAX_SKILL_LEVEL:
             return makeError()
+        if self.skillName in skills_constants.UNLEARNABLE_SKILLS:
+            return makeError()
         if self.tankmanDscr.skills and self.tankmanDscr.lastSkillLevel != MAX_SKILL_LEVEL:
+            return makeError()
+        return makeSuccess()
+
+
+class TankmanLearnFreeSkillValidator(SyncValidator):
+
+    def __init__(self, tankmanDscr, skillName):
+        super(TankmanLearnFreeSkillValidator, self).__init__()
+        self.tankmanDscr = tankmanDscr
+        self.skillName = skillName
+
+    def _validate(self):
+        success, _, _ = self.tankmanDscr.validateLearningFreeSkill(self.skillName)
+        if not success:
             return makeError()
         return makeSuccess()
 

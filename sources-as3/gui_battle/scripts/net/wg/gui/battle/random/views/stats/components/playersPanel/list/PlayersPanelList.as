@@ -3,10 +3,10 @@ package net.wg.gui.battle.random.views.stats.components.playersPanel.list
    import flash.events.Event;
    import net.wg.data.constants.generated.PLAYERS_PANEL_STATE;
    import net.wg.gui.battle.components.events.PlayersPanelListEvent;
+   import net.wg.gui.battle.components.stats.playersPanel.events.PlayersPanelItemEvent;
    import net.wg.gui.battle.components.stats.playersPanel.interfaces.IPlayersPanelListItem;
    import net.wg.gui.battle.components.stats.playersPanel.interfaces.IRandomPlayersPanelListItem;
    import net.wg.gui.battle.components.stats.playersPanel.list.BasePlayersPanelList;
-   import net.wg.gui.battle.random.views.stats.components.playersPanel.events.PlayersPanelItemEvent;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.interfaces.IPlayersPanelListItemHolder;
    
    public class PlayersPanelList extends BasePlayersPanelList

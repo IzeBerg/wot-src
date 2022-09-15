@@ -35,7 +35,7 @@ package net.wg.gui.battle.views.battleMessenger
       
       private static const MESSAGES_CONTAINER:String = "_messagesContainer";
       
-      private static const SWAP_AREA:String = "swapArea";
+      public static const BOTTOM_SIDE_WIDTH:int = 230;
       
       private static const MESSAGE_FIELD_AVAILABLE_WIDTH:int = 218;
       
@@ -43,13 +43,17 @@ package net.wg.gui.battle.views.battleMessenger
       
       private static const EMPTY_STR:String = "";
       
-      private static const BOTTOM_SIDE_Y_POSITION:Number = 48;
-      
-      private static const BOTTOM_SIDE_WIDTH:Number = 230;
+      private static const BOTTOM_SIDE_Y_POSITION:uint = 48;
       
       private static const MAX_MESSAGES_HEIGHT_KOEF:Number = 0.7;
       
       private static const SHOW_NEXT_MSG_DURATION:uint = 200;
+      
+      private static const NAME_SWAP_AREA:String = "swapArea";
+      
+      private static const NAME_MESSAGER_CONTAINER:String = "messagesContainer";
+      
+      private static const NAME_USER_INTERACTION_CMP:String = "userInteractionCmp";
        
       
       public var receiverField:TextField = null;
@@ -73,6 +77,8 @@ package net.wg.gui.battle.views.battleMessenger
       public var backgroundLayer:Sprite = null;
       
       public var swapArea:Sprite;
+      
+      private var _swapAreaHit:Sprite;
       
       private var _appStage:Stage;
       
@@ -136,8 +142,6 @@ package net.wg.gui.battle.views.battleMessenger
       
       private var _toxicPanelData:BattleMessengerToxicVO = null;
       
-      private var _defaultWidth:int = -1;
-      
       private var _isSmallState:Boolean = false;
       
       private var _maxMessagesInHistory:int = -1;
@@ -154,6 +158,10 @@ package net.wg.gui.battle.views.battleMessenger
       
       private var _wheelMessagesScroll:int = 0;
       
+      private var _messagesAvailableWidth:int = 360;
+      
+      private var _poolsCreated:Boolean = false;
+      
       public function BattleMessenger()
       {
          this.swapArea = new Sprite();
@@ -163,13 +171,12 @@ package net.wg.gui.battle.views.battleMessenger
          this._messages = new Vector.<BattleMessage>();
          this._battleSmileyMap = new BattleSmileyMap();
          super();
-         this._defaultWidth = this.hit.width;
-         this.swapArea.name = SWAP_AREA;
          this.swapArea.alpha = 0;
+         this.swapArea.name = NAME_SWAP_AREA;
          addChild(this.swapArea);
-         hitArea = this.swapArea;
          TextFieldEx.setNoTranslate(this.receiverField,true);
          TextFieldEx.setNoTranslate(this.messageInputField,true);
+         this._messagesContainer.name = NAME_MESSAGER_CONTAINER;
          addChild(this._messagesContainer);
          this._messagesContainer.name = MESSAGES_CONTAINER;
          this._messagesContainer.mouseEnabled = false;
@@ -224,6 +231,7 @@ package net.wg.gui.battle.views.battleMessenger
          this._greenMessagesPool = new BattleMessengerPool(this._maxMessagesInHistory,_loc2_,_loc3_,_loc4_,_loc5_,_loc6_,BATTLE_MESSAGES_CONSTS.GREEN_MESSAGE_RENDERER,this._battleSmileyMap,this.userInteraction);
          this._blackMessagesPool = new BattleMessengerPool(this._maxMessagesInHistory,_loc2_,_loc3_,_loc4_,_loc5_,_loc6_,BATTLE_MESSAGES_CONSTS.BLACK_MESSAGE_RENDERER,this._battleSmileyMap,this.userInteraction);
          this._selfMessagesPool = new BattleMessengerPool(this._maxMessagesInHistory,_loc2_,_loc3_,_loc4_,_loc5_,_loc6_,BATTLE_MESSAGES_CONSTS.SELF_MESSAGE_RENDERER,this._battleSmileyMap,this.userInteraction);
+         this._poolsCreated = true;
       }
       
       override protected function configUI() : void
@@ -244,6 +252,7 @@ package net.wg.gui.battle.views.battleMessenger
          this.receiverField.tabEnabled = false;
          tabEnabled = false;
          this.hit.buttonMode = true;
+         this.switchSwapArea(false);
       }
       
       override protected function onBeforeDispose() : void
@@ -278,13 +287,14 @@ package net.wg.gui.battle.views.battleMessenger
             this._userInteractionCmp.dispose();
             this._userInteractionCmp = null;
          }
+         this.swapArea.hitArea = null;
+         this._swapAreaHit = null;
          this.swapArea = null;
          this._battleSmileyMap.dispose();
          this._battleSmileyMap = null;
          for each(_loc1_ in this._messages)
          {
-            this.backgroundLayer.removeChild(_loc1_.background);
-            this._messagesContainer.removeChild(_loc1_.messageField);
+            this.removeMessageFromDisplayList(_loc1_);
          }
          this.backgroundLayer = null;
          this._messagesContainer = null;
@@ -351,6 +361,7 @@ package net.wg.gui.battle.views.battleMessenger
       {
          this._toxicPanelData = new BattleMessengerToxicVO();
          this._userInteractionCmp = new BattleMessengerActionContainer();
+         this._userInteractionCmp.name = NAME_USER_INTERACTION_CMP;
          this._userInteractionCmp.onClickButtonCallback = onToxicButtonClickedS;
          this._userInteractionCmp.onClosedCallback = onToxicPanelClosedS;
          this._userInteractionCmp.visible = false;
@@ -404,12 +415,10 @@ package net.wg.gui.battle.views.battleMessenger
             if(_loc2_.messageID == param1)
             {
                _loc2_.restoreMessage();
-               if(_loc2_.isOpenedToxicPanel)
-               {
-                  this._userInteractionCmp.syncBackground(_loc2_.background.width);
-               }
+               this.syncToxicBackground(_loc2_);
             }
          }
+         this.updateFullStack();
       }
       
       public function as_setActive(param1:Boolean) : void
@@ -420,7 +429,7 @@ package net.wg.gui.battle.views.battleMessenger
          {
             for each(_loc2_ in this._messages)
             {
-               _loc2_.setState(BattleMessage.HIDDEN_MES);
+               _loc2_.setState(BattleMessage.STATE_HIDDEN_MES);
             }
          }
       }
@@ -491,12 +500,10 @@ package net.wg.gui.battle.views.battleMessenger
             if(_loc3_.messageID == param1)
             {
                _loc3_.setBlockMessage(param2);
-               if(_loc3_.isOpenedToxicPanel)
-               {
-                  this._userInteractionCmp.syncBackground(_loc3_.background.width);
-               }
+               this.syncToxicBackground(_loc3_);
             }
          }
+         this.updateFullStack();
       }
       
       public function as_updateToxicPanel(param1:String, param2:Object) : void
@@ -544,10 +551,14 @@ package net.wg.gui.battle.views.battleMessenger
       
       public function setAvailableWidthForMessages(param1:int) : void
       {
-         var _loc2_:BattleMessage = null;
-         for each(_loc2_ in this._messages)
+         if(this._poolsCreated && param1 != this._messagesAvailableWidth)
          {
-            _loc2_.setAvailableWidth(param1);
+            this._messagesAvailableWidth = param1;
+            this._redMessagesPool.setAvailableWidth(this._messagesAvailableWidth);
+            this._greenMessagesPool.setAvailableWidth(this._messagesAvailableWidth);
+            this._blackMessagesPool.setAvailableWidth(this._messagesAvailableWidth);
+            this._selfMessagesPool.setAvailableWidth(this._messagesAvailableWidth);
+            this.updateFullStack();
          }
       }
       
@@ -559,9 +570,23 @@ package net.wg.gui.battle.views.battleMessenger
          this.swapArea.y = -param1 + BOTTOM_SIDE_Y_POSITION;
       }
       
+      private function removeMessageFromDisplayList(param1:BattleMessage) : void
+      {
+         this.backgroundLayer.removeChild(param1.background);
+         this._messagesContainer.removeChild(param1.messageField);
+      }
+      
+      private function syncToxicBackground(param1:BattleMessage) : void
+      {
+         if(param1.isOpenedToxicPanel)
+         {
+            this._userInteractionCmp.syncBackground(param1.width);
+         }
+      }
+      
       private function pushMessageWithToxicLogic(param1:BattleMessage) : void
       {
-         param1.setState(BattleMessage.HIDDEN_MES,true);
+         param1.setState(BattleMessage.STATE_HIDDEN_MES,true);
          this.updateHistoryButtons();
       }
       
@@ -569,6 +594,19 @@ package net.wg.gui.battle.views.battleMessenger
       {
          hitArea = !!param1 ? this.swapArea : null;
          this.swapArea.mouseEnabled = param1;
+         if(!param1)
+         {
+            this.swapArea.hitArea = null;
+         }
+         else if(!this.swapArea.hitArea)
+         {
+            App.utils.commons.addEmptyHitArea(this.swapArea);
+            this._swapAreaHit = this.swapArea.hitArea;
+         }
+         else
+         {
+            this.swapArea.hitArea = this._swapAreaHit;
+         }
       }
       
       private function userInteraction(param1:Boolean, param2:Function, param3:String = "", param4:int = 0, param5:int = 0, param6:int = 0) : Boolean
@@ -699,8 +737,7 @@ package net.wg.gui.battle.views.battleMessenger
       {
          this._messages.push(param1);
          param1.x = 0;
-         param1.y = this._nextMsgPosY;
-         this._nextMsgPosY += param1.height;
+         this.setNextMessagePosY(param1);
          this.backgroundLayer.addChild(param1.background);
          this._messagesContainer.addChild(param1.messageField);
          var _loc2_:uint = this._messages.length;
@@ -737,7 +774,7 @@ package net.wg.gui.battle.views.battleMessenger
       {
          if(this.userInteractsWithMessenger)
          {
-            this._messages[this._topMessageIndex + 1].setState(BattleMessage.VISIBLE_WHEEL_MES,true);
+            this._messages[this._topMessageIndex + 1].setState(BattleMessage.STATE_VISIBLE_WHEEL_MES,true);
          }
       }
       
@@ -759,7 +796,7 @@ package net.wg.gui.battle.views.battleMessenger
             }
             else
             {
-               param1.setState(BattleMessage.HIDDEN_MES,true);
+               param1.setState(BattleMessage.STATE_HIDDEN_MES,true);
                this.updateHistoryButtons();
             }
          }
@@ -777,7 +814,7 @@ package net.wg.gui.battle.views.battleMessenger
          var _loc1_:int = 0;
          if(this._isFocused || this._isActive || this._isCtrlButtonPressed)
          {
-            _loc1_ = !!this._isTopMessageVisible ? int(BattleMessage.VISIBLE_WHEEL_MES) : int(BattleMessage.HIDEHALF_MES);
+            _loc1_ = !!this._isTopMessageVisible ? int(BattleMessage.STATE_VISIBLE_WHEEL_MES) : int(BattleMessage.STATE_HIDEHALF_MES);
             this._messages[this._topMessageIndex].setState(_loc1_,true);
          }
       }
@@ -810,10 +847,14 @@ package net.wg.gui.battle.views.battleMessenger
       
       private function updateMessagesPosition() : void
       {
-         var _loc1_:BattleMessage = this._messages[this._bottomMessageIndex];
-         if(_loc1_)
+         var _loc1_:BattleMessage = null;
+         if(this._bottomMessageIndex < this._messages.length)
          {
-            this.backgroundLayer.y = this._messagesContainer.y = -(_loc1_.y + _loc1_.height);
+            _loc1_ = this._messages[this._bottomMessageIndex];
+            if(_loc1_)
+            {
+               this.backgroundLayer.y = this._messagesContainer.y = -(_loc1_.y + _loc1_.height);
+            }
          }
       }
       
@@ -839,7 +880,7 @@ package net.wg.gui.battle.views.battleMessenger
       private function showMessageByIndex(param1:int) : void
       {
          var _loc2_:BattleMessage = this._messages[param1];
-         var _loc3_:int = param1 == this._topMessageIndex && this._topMessageIndex != 0 ? int(BattleMessage.HIDEHALF_MES) : int(BattleMessage.VISIBLE_WHEEL_MES);
+         var _loc3_:int = param1 == this._topMessageIndex && this._topMessageIndex != 0 ? int(BattleMessage.STATE_HIDEHALF_MES) : int(BattleMessage.STATE_VISIBLE_WHEEL_MES);
          _loc2_.setState(_loc3_,true);
          if(!this.userInteractsWithMessenger)
          {
@@ -849,7 +890,7 @@ package net.wg.gui.battle.views.battleMessenger
       
       private function hideMessageByIndex(param1:int) : void
       {
-         this._messages[param1].setState(BattleMessage.HIDDEN_MES,true);
+         this._messages[param1].setState(BattleMessage.STATE_HIDDEN_MES,true);
       }
       
       private function showLastIndexMessages() : void
@@ -861,7 +902,7 @@ package net.wg.gui.battle.views.battleMessenger
             return;
          }
          var _loc2_:int = this._messages.length;
-         var _loc3_:int = this._isFocused || this._isCtrlButtonPressed ? int(BattleMessage.VISIBLE_MES) : int(BattleMessage.RECOVERED_MES);
+         var _loc3_:int = this._isFocused || this._isCtrlButtonPressed ? int(BattleMessage.STATE_VISIBLE_MES) : int(BattleMessage.STATE_RECOVERED_MES);
          this._bottomMessageIndex = _loc2_ - 1;
          this._calculatedMaxVisibleMessages = this._defaultMaxVisibleMessages;
          this._topMessageIndex = this._bottomMessageIndex - this._calculatedMaxVisibleMessages + 1;
@@ -883,7 +924,7 @@ package net.wg.gui.battle.views.battleMessenger
             _loc4_.clearAnim();
             if((this._isFocused || this._isCtrlButtonPressed) && _loc1_ == this._topMessageIndex && !this._isTopMessageVisible)
             {
-               this._messages[_loc1_].setState(BattleMessage.HIDEHALF_MES);
+               _loc4_.setState(BattleMessage.STATE_HIDEHALF_MES);
             }
             else
             {
@@ -964,8 +1005,7 @@ package net.wg.gui.battle.views.battleMessenger
          {
             _loc5_ = this._messages.shift();
             _loc5_.close();
-            this.backgroundLayer.removeChild(_loc5_.background);
-            this._messagesContainer.removeChild(_loc5_.messageField);
+            this.removeMessageFromDisplayList(_loc5_);
             _loc5_.dispose();
             this.updateFullStack();
          }
@@ -981,10 +1021,15 @@ package net.wg.gui.battle.views.battleMessenger
          this._nextMsgPosY = 0;
          for each(_loc1_ in this._messages)
          {
-            _loc1_.y = this._nextMsgPosY;
-            this._nextMsgPosY += _loc1_.height;
+            this.setNextMessagePosY(_loc1_);
          }
          this.updateMessagesPosition();
+      }
+      
+      private function setNextMessagePosY(param1:BattleMessage) : void
+      {
+         param1.y = this._nextMsgPosY;
+         this._nextMsgPosY += param1.height;
       }
       
       private function clearReceivers() : void
@@ -1125,10 +1170,10 @@ package net.wg.gui.battle.views.battleMessenger
       {
          var _loc2_:BattleMessage = this._messages[param1];
          var _loc3_:BattleMessage = this._messages[param1 + 1];
-         if(_loc3_.getState() == BattleMessage.FADE_OUT_MES)
+         if(_loc3_.getState() == BattleMessage.STATE_FADE_OUT_MES)
          {
             _loc2_.alpha = _loc3_.alpha;
-            _loc2_.setState(BattleMessage.FADE_OUT_MES,true);
+            _loc2_.setState(BattleMessage.STATE_FADE_OUT_MES,true);
          }
       }
       
@@ -1209,7 +1254,7 @@ package net.wg.gui.battle.views.battleMessenger
          {
             _loc4_ = Math.max(this._topMessageIndex + this._wheelMessagesScroll,0);
             _loc5_ = _loc4_ - this._topMessageIndex;
-            this._messages[this._topMessageIndex].setState(this._isFocused || this._isCtrlButtonPressed ? int(BattleMessage.VISIBLE_MES) : int(BattleMessage.RECOVERED_MES),true);
+            this._messages[this._topMessageIndex].setState(this._isFocused || this._isCtrlButtonPressed ? int(BattleMessage.STATE_VISIBLE_MES) : int(BattleMessage.STATE_RECOVERED_MES),true);
             _loc3_ = 0;
             while(_loc3_ > _loc5_)
             {
@@ -1235,10 +1280,12 @@ package net.wg.gui.battle.views.battleMessenger
       
       override public function set y(param1:Number) : void
       {
+         var _loc2_:BattleMessage = null;
          super.y = param1;
-         if(this._messages.length > 0)
+         if(this._bottomMessageIndex < this._messages.length)
          {
-            if(this._messages[this._bottomMessageIndex].getState() != BattleMessage.HIDDEN_MES)
+            _loc2_ = this._messages[this._bottomMessageIndex];
+            if(_loc2_.getState() != BattleMessage.STATE_HIDDEN_MES)
             {
                this.checkBigMessagesInSmallScreen(true);
             }

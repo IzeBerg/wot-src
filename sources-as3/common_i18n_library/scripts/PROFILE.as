@@ -1082,6 +1082,110 @@ package
       public static const PROFILE_PARAMS_TOOLTIP_BRAVGDAMAGE_HEADER:String = "#profile:profile/params/tooltip/brAvgDamage/header";
       
       public static const PROFILE_PARAMS_TOOLTIP_BRAVGDAMAGE_BODY:String = "#profile:profile/params/tooltip/brAvgDamage/body";
+      
+      public static const PROFILE_DROPDOWN_LABELS_COMP7:String = "#profile:profile/dropdown/labels/comp7";
+      
+      public static const SECTION_STATISTICS_HEADERTEXT_COMP7:String = "#profile:section/statistics/headerText/comp7";
+      
+      public static const SECTION_STATISTICS_SCORES_AVGPRESTIGEPOINTS:String = "#profile:section/statistics/scores/avgPrestigePoints";
+      
+      public static const SECTION_STATISTICS_DETAILED_AVGPRESTIGEPOINTS:String = "#profile:section/statistics/detailed/avgPrestigePoints";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_AVGPRESTIGEPOINTS_HEADER:String = "#profile:profile/params/tooltip/avgPrestigePoints/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_AVGPRESTIGEPOINTS_BODY:String = "#profile:profile/params/tooltip/avgPrestigePoints/body";
+      
+      public static const SECTION_STATISTICS_SCORES_MAXPRESTIGEPOINTS:String = "#profile:section/statistics/scores/maxPrestigePoints";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_MAXPRESTIGEPOINTS_HEADER:String = "#profile:profile/params/tooltip/maxPrestigePoints/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_MAXPRESTIGEPOINTS_BODY:String = "#profile:profile/params/tooltip/maxPrestigePoints/body";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_MAXPRESTIGEPOINTS_VEHICLE_HEADER:String = "#profile:profile/params/tooltip/maxPrestigePoints/vehicle/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_MAXPRESTIGEPOINTS_VEHICLE_BODY:String = "#profile:profile/params/tooltip/maxPrestigePoints/vehicle/body";
+      
+      public static const SECTION_STATISTICS_SCORES_POICAPTURED:String = "#profile:section/statistics/scores/poiCaptured";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_POICAPTURED_HEADER:String = "#profile:profile/params/tooltip/poiCaptured/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_POICAPTURED_BODY:String = "#profile:profile/params/tooltip/poiCaptured/body";
+      
+      public static const SECTION_STATISTICS_DETAILED_AVGPOICAPTURED:String = "#profile:section/statistics/detailed/avgPoiCaptured";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_AVGPOICAPTURED_HEADER:String = "#profile:profile/params/tooltip/avgPoiCaptured/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_AVGPOICAPTURED_BODY:String = "#profile:profile/params/tooltip/avgPoiCaptured/body";
+      
+      public static const SECTION_STATISTICS_DETAILED_AVGROLESKILLUSED:String = "#profile:section/statistics/detailed/avgRoleSkillUsed";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_AVGROLESKILLUSED_HEADER:String = "#profile:profile/params/tooltip/avgRoleSkillUsed/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_AVGROLESKILLUSED_BODY:String = "#profile:profile/params/tooltip/avgRoleSkillUsed/body";
+      
+      public static const SECTION_STATISTICS_DETAILED_AVGHEALTHREPAIRED:String = "#profile:section/statistics/detailed/avgHealthRepaired";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_AVGHEALTHREPAIR_HEADER:String = "#profile:profile/params/tooltip/avgHealthRepair/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_AVGHEALTHREPAIR_BODY:String = "#profile:profile/params/tooltip/avgHealthRepair/body";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_AVGASSISTEDDAMAGE_SHORTSELF_COMP7_HEADER:String = "#profile:profile/params/tooltip/avgAssistedDamage/shortSelf/comp7/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_AVGASSISTEDDAMAGE_SHORTSELF_COMP7_BODY:String = "#profile:profile/params/tooltip/avgAssistedDamage/shortSelf/comp7/body";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_AVGDESTROYEDVEHICLES_COMP7_HEADER:String = "#profile:profile/params/tooltip/avgDestroyedVehicles/comp7/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_AVGDESTROYEDVEHICLES_COMP7_BODY:String = "#profile:profile/params/tooltip/avgDestroyedVehicles/comp7/body";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_AVGDETECTEDENEMIES_COMP7_HEADER:String = "#profile:profile/params/tooltip/avgDetectedEnemies/comp7/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_AVGDETECTEDENEMIES_COMP7_BODY:String = "#profile:profile/params/tooltip/avgDetectedEnemies/comp7/body";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_AVGASSISTEDSTUNDAMAGE_COMP7_SHORTSELF_HEADER:String = "#profile:profile/params/tooltip/avgAssistedStunDamage/comp7/shortSelf/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_AVGASSISTEDSTUNDAMAGE_COMP7_SHORTOTHER_HEADER:String = "#profile:profile/params/tooltip/avgAssistedStunDamage/comp7/shortOther/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_AVGASSISTEDSTUNDAMAGE_COMP7_SHORTSELF_BODY:String = "#profile:profile/params/tooltip/avgAssistedStunDamage/comp7/shortSelf/body";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_AVGASSISTEDSTUNDAMAGE_COMP7_SHORTOTHER_BODY:String = "#profile:profile/params/tooltip/avgAssistedStunDamage/comp7/shortOther/body";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_AVGSTUNNUMBER_COMP7_HEADER:String = "#profile:profile/params/tooltip/avgStunNumber/comp7/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_AVGSTUNNUMBER_COMP7_BODY:String = "#profile:profile/params/tooltip/avgStunNumber/comp7/body";
+      
+      public static const SECTION_STATISTICS_SCORES_MAXWINSERIES:String = "#profile:section/statistics/scores/maxWinSeries";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_MAXWINSERIES_HEADER:String = "#profile:profile/params/tooltip/maxWinSeries/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_MAXWINSERIES_BODY:String = "#profile:profile/params/tooltip/maxWinSeries/body";
+      
+      public static const PROFILE_SECTION_STATISTICS_SCORES_MAXHEALTHREPAIR:String = "#profile:profile/section/statistics/scores/maxHealthRepair";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_MAXHEALTHREPAIR_VEHICLE_HEADER:String = "#profile:profile/params/tooltip/maxHealthRepair/vehicle/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_MAXHEALTHREPAIR_VEHICLE_BODY:String = "#profile:profile/params/tooltip/maxHealthRepair/vehicle/body";
+      
+      public static const SECTION_TECHNIQUE_EMPTYSCREENLABEL_BATTLETYPE_COMP7:String = "#profile:section/technique/emptyScreenLabel/battleType/comp7";
+      
+      public static const SECTION_TECHNIQUE_BUTTONBAR_PRESTIGEPOINTS:String = "#profile:section/technique/buttonBar/prestigePoints";
+      
+      public static const SECTION_TECHNIQUE_SORT_TOOLTIP_PRESTIGEPOINTS_HEADER:String = "#profile:section/technique/sort/tooltip/prestigePoints/header";
+      
+      public static const SECTION_TECHNIQUE_SORT_TOOLTIP_PRESTIGEPOINTS_BODY:String = "#profile:section/technique/sort/tooltip/prestigePoints/body";
+      
+      public static const SECTION_STATISTICS_SCORES_MAXEQUIPMENTDAMAGEDEALT:String = "#profile:section/statistics/scores/maxEquipmentDamageDealt";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_MAXEQUIPMENTDAMAGEDEALT_VEHICLE_HEADER:String = "#profile:profile/params/tooltip/maxEquipmentDamageDealt/vehicle/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_MAXEQUIPMENTDAMAGEDEALT_VEHICLE_BODY:String = "#profile:profile/params/tooltip/maxEquipmentDamageDealt/vehicle/body";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_MAXEQUIPMENTDAMAGEDEALT_HEADER:String = "#profile:profile/params/tooltip/maxEquipmentDamageDealt/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_MAXEQUIPMENTDAMAGEDEALT_BODY:String = "#profile:profile/params/tooltip/maxEquipmentDamageDealt/body";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_MAXHEALTHREPAIR_HEADER:String = "#profile:profile/params/tooltip/maxHealthRepair/header";
+      
+      public static const PROFILE_PARAMS_TOOLTIP_MAXHEALTHREPAIR_BODY:String = "#profile:profile/params/tooltip/maxHealthRepair/body";
        
       
       public function PROFILE()

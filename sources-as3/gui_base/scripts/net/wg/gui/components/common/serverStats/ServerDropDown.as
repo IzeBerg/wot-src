@@ -129,11 +129,12 @@ package net.wg.gui.components.common.serverStats
       
       override protected function populateText(param1:Object) : void
       {
+         var _loc2_:Boolean = false;
          super.populateText(param1);
          this._serverData = ServerVO(param1);
-         var _loc2_:Boolean = this._serverData.haveAccess;
          if(this._serverData)
          {
+            _loc2_ = this._serverData.haveAccess;
             textField.visible = true;
             if(this._serverData.pingState == ServerPingState.IGNORED)
             {
@@ -152,21 +153,22 @@ package net.wg.gui.components.common.serverStats
                this.waiting.visible = false;
             }
             this.pingTF.alpha = !!this._serverData.enabled ? Number(ENABLED_PING_ALPHA) : Number(DISABLED_PING_ALPHA);
+            this.blockIcon.visible = !_loc2_;
          }
          else
          {
             this.pingTF.visible = false;
             this.waiting.visible = false;
             textField.visible = false;
+            this.blockIcon.visible = false;
          }
          this.alertIcon.visible = this.showCsisIndicator();
-         this.blockIcon.visible = !_loc2_;
          this.updateLayout();
       }
       
       private function showCsisIndicator() : Boolean
       {
-         return this._serverData.haveAccess && this._serverData != null && this._serverData.csisStatus == ServerCsisState.NOT_RECOMMENDED;
+         return this._serverData != null && this._serverData.haveAccess && this._serverData.csisStatus == ServerCsisState.NOT_RECOMMENDED;
       }
       
       private function updateLayout() : void

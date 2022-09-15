@@ -1,5 +1,5 @@
 import BigWorld
-from adisp import async
+from adisp import adisp_async
 from gui.shared.utils.requesters.abstract import AbstractSyncDataRequester
 from skeletons.gui.shared.utils.requesters import IBattleRoyaleRequester
 
@@ -30,7 +30,7 @@ class BattleRoyaleRequester(AbstractSyncDataRequester, IBattleRoyaleRequester):
             return {}
         return self.getCacheValue('brBattleStats').get(arenaBonusType, {})
 
-    @async
+    @adisp_async
     def _requestCache(self, callback):
         BigWorld.player().battleRoyale.getCache(lambda resID, value: self._response(resID, value, callback))
 

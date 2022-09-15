@@ -10,8 +10,8 @@ package net.wg.gui.battle.components.stats.playersPanel.list
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.Values;
    import net.wg.gui.battle.components.events.PlayersPanelListEvent;
+   import net.wg.gui.battle.components.stats.playersPanel.events.PlayersPanelItemEvent;
    import net.wg.gui.battle.components.stats.playersPanel.interfaces.IPlayersPanelListItem;
-   import net.wg.gui.battle.random.views.stats.components.playersPanel.events.PlayersPanelItemEvent;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.interfaces.IPlayersPanelList;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.interfaces.IPlayersPanelListItemHolder;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.list.PlayersPanelDynamicSquad;
@@ -34,6 +34,8 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       protected var panelListItems:Vector.<IPlayersPanelListItem>;
       
+      protected var renderersContainer:Sprite;
+      
       private var _state:int;
       
       private var _items:Vector.<IPlayersPanelListItemHolder>;
@@ -47,8 +49,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       private var _isVehicleLevelVisible:Boolean = true;
       
       private var _isCursorVisible:Boolean = false;
-      
-      private var _renderersContainer:Sprite;
       
       private var _mapHolderByVehicleID:Dictionary;
       
@@ -77,17 +77,17 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       public function BasePlayersPanelList()
       {
          this.panelListItems = new Vector.<IPlayersPanelListItem>();
+         this.renderersContainer = new Sprite();
          this._items = new Vector.<IPlayersPanelListItemHolder>();
          this._itemsHealth = new Dictionary();
          this._currOrder = new Vector.<Number>();
-         this._renderersContainer = new Sprite();
          this._mapHolderByVehicleID = new Dictionary();
          this._commons = App.utils.commons;
          this._tooltipMgr = App.toolTipMgr;
          this._locale = App.utils.locale;
          this._classFactory = App.utils.classFactory;
          super();
-         addChild(this._renderersContainer);
+         addChild(this.renderersContainer);
          this.initDogTag();
       }
       
@@ -104,8 +104,13 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       public function getRenderersVisibleWidth() : uint
       {
-         var _loc1_:Rectangle = this._renderersContainer.getBounds(this);
+         var _loc1_:Rectangle = this.renderersContainer.getBounds(this);
          return _loc1_.x + _loc1_.width;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
       
       public function removeAllItems() : void
@@ -144,12 +149,12 @@ package net.wg.gui.battle.components.stats.playersPanel.list
             }
             this.panelListItems.splice(0,this.panelListItems.length);
          }
-         if(this._renderersContainer != null)
+         if(this.renderersContainer != null)
          {
-            _loc1_ = this._renderersContainer.numChildren;
+            _loc1_ = this.renderersContainer.numChildren;
             while(--_loc1_ >= 0)
             {
-               this._renderersContainer.removeChildAt(0);
+               this.renderersContainer.removeChildAt(0);
             }
          }
       }
@@ -439,7 +444,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this._items = null;
          this._currOrder = null;
          this.panelListItems = null;
-         this._renderersContainer = null;
+         this.renderersContainer = null;
          this._toolTipString = null;
          this._currentPlayerIsAnonymized = false;
          if(this._dogTag)
@@ -511,7 +516,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          {
             _loc2_.setOverrideExInfo(this._overrideExInfoValue);
          }
-         this._renderersContainer.addChild(DisplayObject(_loc2_));
+         this.renderersContainer.addChild(DisplayObject(_loc2_));
          this.panelListItems.push(_loc2_);
          var _loc4_:Class = this.getItemHolderClass();
          var _loc5_:IPlayersPanelListItemHolder = new _loc4_(_loc2_);
@@ -683,6 +688,11 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          throw new AbstractException(Errors.ABSTRACT_INVOKE);
       }
       
+      protected function get items() : Vector.<IPlayersPanelListItemHolder>
+      {
+         return this._items;
+      }
+      
       protected function get isRightAligned() : Boolean
       {
          throw new AbstractException(Errors.ABSTRACT_INVOKE);
@@ -750,11 +760,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          {
             dispatchEvent(new PlayersPanelListEvent(PlayersPanelListEvent.ITEM_SELECTED,_loc2_.vehicleID));
          }
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

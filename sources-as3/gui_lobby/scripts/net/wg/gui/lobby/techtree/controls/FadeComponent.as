@@ -66,6 +66,18 @@ package net.wg.gui.lobby.techtree.controls
          return false;
       }
       
+      protected function updateEnabledState(param1:Boolean) : void
+      {
+         if(param1)
+         {
+            gotoAndPlay(ENABLE_FRAME_LABEL);
+         }
+         else
+         {
+            gotoAndPlay(DISABLE_FRAME_LABEL);
+         }
+      }
+      
       override public function get enabled() : Boolean
       {
          return this._enabled;
@@ -81,18 +93,6 @@ package net.wg.gui.lobby.techtree.controls
          this._enabled = param1;
          invalidateState();
          dispatchEvent(new ComponentEvent(ComponentEvent.STATE_CHANGE));
-      }
-      
-      protected function updateEnabledState(param1:Boolean) : void
-      {
-         if(param1)
-         {
-            gotoAndPlay(ENABLE_FRAME_LABEL);
-         }
-         else
-         {
-            gotoAndPlay(DISABLE_FRAME_LABEL);
-         }
       }
    }
 }

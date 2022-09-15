@@ -1,4 +1,4 @@
-from adisp import process
+from adisp import adisp_process
 from debug_utils import LOG_ERROR
 from gui.prb_control import settings, prb_getters
 from gui.prb_control.entities.base.ctx import PrbCtrlRequestCtx
@@ -46,7 +46,7 @@ class StrongholdUnitRequestProcessor(IUnitRequestProcessor):
     def doRawRequest(self, methodName, *args, **kwargs):
         raise SoftException('NOT IMPLEMENTED FOR StrongholdUnitRequestProcessor')
 
-    @process
+    @adisp_process
     def _sendRequest(self, ctx, methodName, chain, callback, *args, **kwargs):
         if isinstance(ctx, PrbCtrlRequestCtx):
             requestType = ctx.getRequestType()

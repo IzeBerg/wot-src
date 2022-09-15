@@ -1,5 +1,5 @@
 from PlayerEvents import g_playerEvents
-from adisp import process
+from adisp import adisp_process
 from gui import DialogsInterface
 from gui.Scaleform.daapi.view.meta.ReceivedInviteWindowMeta import ReceivedInviteWindowMeta
 from gui.prb_control import prbPeripheriesHandlerProperty, prbAutoInvitesProperty
@@ -75,7 +75,7 @@ class AutoInviteWindow(_InviteWindow):
     def prbAutoInvites(self):
         return
 
-    @process
+    @adisp_process
     def acceptInvite(self):
         yield lambda callback: callback(None)
         prbID = self._inviteInfo.getID()

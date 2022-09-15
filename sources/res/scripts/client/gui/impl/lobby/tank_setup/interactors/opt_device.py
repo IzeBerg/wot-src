@@ -1,5 +1,5 @@
 import typing, adisp
-from async import async, await, await_callback
+from wg_async import wg_async, wg_await, await_callback
 from BWUtil import AsyncReturn
 from gui.impl.gen.view_models.views.lobby.tank_setup.sub_views.base_setup_model import BaseSetupModel
 from gui.impl.gen.view_models.views.lobby.tank_setup.tank_setup_constants import TankSetupConstants
@@ -62,7 +62,7 @@ class OptDeviceInteractor(BaseOptDeviceInteractor):
             self.getItem().descriptor.removeOptionalDevice(slotID)
         return
 
-    @adisp.process
+    @adisp.adisp_process
     def demountProcess(self, slotID, isDestroy=False, isFitting=False, everywhere=True, callback=None):
         action = ActionsFactory.getAction(ActionsFactory.REMOVE_OPT_DEVICE, self.getItem(), self.getInstalledLayout()[slotID], slotID, isDestroy, isFitting, everywhere)
         if action is not None:
@@ -72,7 +72,7 @@ class OptDeviceInteractor(BaseOptDeviceInteractor):
             callback(None)
         return
 
-    @async
+    @wg_async
     def changeSlotItem(self, slotID, itemIntCD):
         item = self._itemsCache.items.getItemByCD(int(itemIntCD)) if itemIntCD is not None else None
         canChange = True
@@ -103,7 +103,7 @@ class OptDeviceInteractor(BaseOptDeviceInteractor):
         self.itemUpdated()
         return
 
-    @async
+    @wg_async
     def demountItem(self, itemIntCD, isDestroy=False, everywhere=True):
         result = None
         item = self._itemsCache.items.getItemByCD(itemIntCD)
@@ -130,7 +130,7 @@ class OptDeviceInteractor(BaseOptDeviceInteractor):
         self.itemUpdated()
         return
 
-    @adisp.process
+    @adisp.adisp_process
     def confirm(self, callback, skipDialog=False):
         action = ActionsFactory.getAction(ActionsFactory.BUY_AND_INSTALL_OPT_DEVICES, self.getItem(), confirmOnlyExchange=True, skipConfirm=skipDialog)
         if action is not None:
@@ -140,7 +140,7 @@ class OptDeviceInteractor(BaseOptDeviceInteractor):
             callback(None)
         return
 
-    @adisp.process
+    @adisp.adisp_process
     def upgradeModule(self, itemIntCD, callback):
         optDevice = self._itemsCache.items.getItemByCD(int(itemIntCD))
         slotIdx = self.getInstalledLayout().index(optDevice)
@@ -178,10 +178,10 @@ class OptDeviceInteractor(BaseOptDeviceInteractor):
 
         return
 
-    @async
+    @wg_async
     def showExitConfirmDialog(self):
         changedList = self.getChangedList()
-        result = yield await(showTankSetupExitConfirmDialog(items=changedList, vehicle=self.getItem(), fromSection=self.getName(), startState=(changedList or BuyAndExchangeStateEnum).BUY_NOT_REQUIRED if 1 else None))
+        result = yield wg_await(showTankSetupExitConfirmDialog(items=changedList, vehicle=self.getItem(), fromSection=self.getName(), startState=(changedList or BuyAndExchangeStateEnum).BUY_NOT_REQUIRED if 1 else None))
         raise AsyncReturn(result)
         return
 

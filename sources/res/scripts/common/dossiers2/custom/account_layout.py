@@ -40,6 +40,7 @@ _rankedSeason2BlockBuilder = StaticSizeBlockBuilder('rankedSeason2', RANKED_BLOC
 _rankedSeason3BlockBuilder = StaticSizeBlockBuilder('rankedSeason3', RANKED_BLOCK_LAYOUT, {}, [])
 _rankedArchiveBlockBuilder = StaticSizeBlockBuilder('rankedArchive', RANKED_BLOCK_LAYOUT, {}, [])
 _ranked_10x10BlockBuilder = StaticSizeBlockBuilder('ranked_10x10', RANKED_BLOCK_LAYOUT, RANKED_STATS_DEPENDENCIES, [])
+_comp7Season1BlockBuilder = StaticSizeBlockBuilder('comp7Season1', COMP7_BLOCK_LAYOUT, {}, [])
 _max15x15BlockBuilder = StaticSizeBlockBuilder('max15x15', MAX_AND_BEST_VEHICLE_BLOCK_LAYOUT, {}, [])
 _max7x7BlockBuilder = StaticSizeBlockBuilder('max7x7', MAX_AND_BEST_VEHICLE_BLOCK_LAYOUT, {}, [])
 _maxRated7x7BlockBuilder = StaticSizeBlockBuilder('maxRated7x7', MAX_AND_BEST_VEHICLE_BLOCK_LAYOUT, {}, [])
@@ -60,6 +61,7 @@ _maxRankedSeason2BlockBuilder = StaticSizeBlockBuilder('maxRankedSeason2', MAX_A
 _maxRankedSeason3BlockBuilder = StaticSizeBlockBuilder('maxRankedSeason3', MAX_AND_BEST_VEHICLE_BLOCK_LAYOUT, {}, [])
 _maxRankedArchiveBlockBuilder = StaticSizeBlockBuilder('maxRankedArchive', MAX_AND_BEST_VEHICLE_BLOCK_LAYOUT, {}, [])
 _maxRanked_10x10BlockBuilder = StaticSizeBlockBuilder('maxRanked_10x10', MAX_AND_BEST_VEHICLE_BLOCK_LAYOUT, {}, [])
+_maxComp7Season1BlockBuilder = StaticSizeBlockBuilder('maxComp7Season1', MAX_COMP7_BLOCK_LAYOUT, {}, [])
 
 class VEHICLE_STATS:
     FRAGS = 'vehTypeFrags'
@@ -80,10 +82,12 @@ class VEHICLE_STATS:
     FALLOUT_CUT = 'falloutCut'
     MARK_OF_MASTERY_CUT = 'markOfMasteryCut'
     EPIC_BATTLE_CUT = 'epicBattleCut'
+    COMP7_CUT_SEASON_1 = 'comp7CutSeason1'
     ALL = (
      FRAGS, A15x15_CUT, A30x30_CUT, A7x7_CUT, HISTORICAL_CUT, FORT_SORTIES_CUT, FORT_BATTLES_CUT, RANKED_CUT,
      RANKED_CUT_SEASON_1, RANKED_CUT_SEASON_2, RANKED_CUT_SEASON_3, RANKED_CUT_ARCHIVE, RANKED_CUT_10X10,
-     RATED_7x7_CUT, GLOBAL_MAP_COMMON_CUT, FALLOUT_CUT, MARK_OF_MASTERY_CUT, EPIC_BATTLE_CUT)
+     RATED_7x7_CUT, GLOBAL_MAP_COMMON_CUT, FALLOUT_CUT, MARK_OF_MASTERY_CUT, EPIC_BATTLE_CUT,
+     COMP7_CUT_SEASON_1)
 
 
 _vehTypeFragsBlockBuilder = DictBlockBuilder(VEHICLE_STATS.FRAGS, 'I', 'H', VEH_TYPE_FRAGS_DEPENDENCIES)
@@ -104,6 +108,7 @@ _rankedCut10x10BlockBuilder = DictBlockBuilder(VEHICLE_STATS.RANKED_CUT_10X10, '
 _a30x30CutBlockBuilder = DictBlockBuilder(VEHICLE_STATS.A30x30_CUT, 'I', 'III', {})
 _markOfMasteryCut = DictBlockBuilder(VEHICLE_STATS.MARK_OF_MASTERY_CUT, 'I', 'B', {})
 _epicBattleCutBlockBuilder = DictBlockBuilder(VEHICLE_STATS.EPIC_BATTLE_CUT, 'I', 'III', {})
+_comp7CutSeason1BlockBuilder = _BattleCutBlockBuilder = DictBlockBuilder(VEHICLE_STATS.COMP7_CUT_SEASON_1, 'I', 'IIII', {})
 _ACHIEVEMENTS15X15_BLOCK_LAYOUT = [
  'fragsBeast', 'sniperSeries', 'maxSniperSeries', 'invincibleSeries',
  'maxInvincibleSeries', 'diehardSeries', 'maxDiehardSeries', 'killingSeries',
@@ -309,11 +314,12 @@ _SINGLE_ACHIEVEMENTS_VALUES = [
  'hw2021Medal1', 'hw2021Medal2', 'november21', '11YearsOfService',
  'NY22_AtmsphrLevel', 'NY22_CelebChallenge', 'december21', 'BattlePassCommonPr_7',
  'oowCBTParticipant', 'june22', 'BattlePassCommonPr_8', 'BattlePassCommonPr_8ru',
- 'BattlePassCommonPr_8quest', 'july22', 'BattlePassCommonPr_9',
+ 'BattlePassCommonPr_8quest', 'july22', 'august22', 'BattlePassCommonPr_9',
  'prime_gaming_reserved_1', 'prime_gaming_reserved_2', 'prime_gaming_reserved_3',
  'prime_gaming_reserved_4', 'prime_gaming_reserved_5', 'prime_gaming_reserved_6',
  'prime_gaming_reserved_7', 'prime_gaming_reserved_8', 'prime_gaming_reserved_9',
- 'prime_gaming_reserved_10', 'prime_gaming_reserved_11', 'prime_gaming_reserved_12']
+ 'prime_gaming_reserved_10', 'prime_gaming_reserved_11', 'prime_gaming_reserved_12',
+ 'comp7Season1']
 _singleAchievementsPopUps = [
  'titleSniper', 'invincible', 'diehard', 'handOfDeath',
  'armorPiercer', 'battleCitizen', 'WFC2014', 'tacticalBreakthrough', 'aimer',
@@ -355,11 +361,11 @@ _singleAchievementsPopUps = [
  'november21', '11YearsOfService', 'NY22_AtmsphrLevel', 'NY22_CelebChallenge',
  'december21', 'BattlePassCommonPr_7', 'oowCBTParticipant', 'june22',
  'BattlePassCommonPr_8', 'BattlePassCommonPr_8ru', 'BattlePassCommonPr_8quest', 'july22',
- 'BattlePassCommonPr_9', 'prime_gaming_reserved_1', 'prime_gaming_reserved_2',
+ 'august22', 'BattlePassCommonPr_9', 'prime_gaming_reserved_1', 'prime_gaming_reserved_2',
  'prime_gaming_reserved_3', 'prime_gaming_reserved_4', 'prime_gaming_reserved_5',
  'prime_gaming_reserved_6', 'prime_gaming_reserved_7', 'prime_gaming_reserved_8',
  'prime_gaming_reserved_9', 'prime_gaming_reserved_10', 'prime_gaming_reserved_11',
- 'prime_gaming_reserved_12']
+ 'prime_gaming_reserved_12', 'comp7Season1']
 _singleAchievementsBlockBuilder = BinarySetDossierBlockBuilder('singleAchievements', _SINGLE_ACHIEVEMENTS_VALUES, SINGLE_ACHIEVEMENTS_DEPENDENCIES, _singleAchievementsPopUps)
 FORT_ACHIEVEMENTS_BLOCK_LAYOUT = [
  'conqueror', 'fireAndSword', 'crusher', 'counterblow', 'kampfer', 'soldierOfFortune']
@@ -438,7 +444,8 @@ accountDossierLayout = (
  _rankedCutSeason3BlockBuilder, _rankedArchiveBlockBuilder, _maxRankedArchiveBlockBuilder,
  _rankedCutArchiveBlockBuilder, _epicBattleSeasonsBlockBuilder,
  _battleRoyaleSeasonsBlockBuilder, _ranked_10x10BlockBuilder, _maxRanked_10x10BlockBuilder,
- _rankedCut10x10BlockBuilder, _steamAchievementsBlockBuilder)
+ _rankedCut10x10BlockBuilder, _steamAchievementsBlockBuilder, _comp7Season1BlockBuilder,
+ _maxComp7Season1BlockBuilder, _comp7CutSeason1BlockBuilder)
 ACCOUNT_DOSSIER_BLOCKS = {b.name:b for b in accountDossierLayout}
 ACCOUNT_DOSSIER_STATIC_BLOCKS = frozenset(b.name for b in accountDossierLayout if type(b) == StaticSizeBlockBuilder)
 ACCOUNT_DOSSIER_BINARY_SET_BLOCKS = [ b.name for b in accountDossierLayout if type(b) == BinarySetDossierBlockBuilder ]

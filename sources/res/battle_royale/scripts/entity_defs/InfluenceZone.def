@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<Properties>
+		<equipmentID>
+			<Type>UINT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</equipmentID>
+		<team>
+			<Type>UINT8</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</team>
+		<zonesPosition>
+			<Type>
+				ARRAY
+				<of>VECTOR3</of>
+			</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</zonesPosition>
+		<dotCreatorId>
+			<Type>UINT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</dotCreatorId>
+		<dropOffset>
+			<Type>FLOAT</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</dropOffset>
+	</Properties>
+</root>

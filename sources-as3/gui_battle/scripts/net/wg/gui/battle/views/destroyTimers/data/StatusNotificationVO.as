@@ -20,9 +20,17 @@ package net.wg.gui.battle.views.destroyTimers.data
       
       public var currentTime:Number = 0;
       
+      public var iconName:String = "";
+      
+      public var iconSmallName:String = "";
+      
+      public var color:String = "";
+      
       public var additionalState:int = -1;
       
       public var additionalInfo:String = "";
+      
+      public var pulseVisible:Boolean = false;
       
       public function StatusNotificationVO(param1:Object = null)
       {

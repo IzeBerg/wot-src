@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<elements>
+		<POSITION/>
+		<NORMAL>
+			<type>UBYTE4</type>
+		</NORMAL>
+		<TEXCOORD>
+			<type>FLOAT2</type>
+		</TEXCOORD>
+		<BLENDINDICES>
+			<type>SC_UBYTE3_MULT3_III</type>
+		</BLENDINDICES>
+		<BLENDWEIGHT>
+			<type>UBYTE2</type>
+		</BLENDWEIGHT>
+		<TANGENT>
+			<type>UBYTE4</type>
+		</TANGENT>
+		<BINORMAL>
+			<type>UBYTE4</type>
+		</BINORMAL>
+	</elements>
+	<targets>
+		<target>
+			<name>D3D9</name>
+			<format>xyznuviiiwwtbpc</format>
+		</target>
+	</targets>
+</root>

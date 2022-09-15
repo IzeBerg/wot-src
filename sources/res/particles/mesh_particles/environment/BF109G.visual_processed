@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>GR11_BF109G_base</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>ropeller_plane</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>ropeller_plane</node>
+		<geometry>
+			<vertices>ropeller_plane.vertices</vertices>
+			<primitive>ropeller_plane.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>propeller_mat1</identifier>
+					<fx>shaders/std_effects/lightonly_alpha.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						diffuseMap
+						<Texture>particles/mesh_particles/tex/propeller_01.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.000000 1.633968</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>GR11_BF109G_base</node>
+		<geometry>
+			<vertices>GR11_BF109G_base1Shape.vertices</vertices>
+			<primitive>GR11_BF109G_base1Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>GR11_BF109G_mat</identifier>
+					<fx>shaders/std_effects/lightonly.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>particles/mesh_particles/tex/GR11_BF109G_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.477196 -2.341249</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-4.953139 -1.456456 -6.856552</min>
+		<max>4.953139 1.497135 2.174055</max>
+	</boundingBox>
+	<geometrySize>37544</geometrySize>
+	<minUVDensity>0.004627</minUVDensity>
+</root>

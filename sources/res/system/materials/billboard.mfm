@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<fx>shaders/std_effects/lightonly.fx</fx>
+	<property>
+		diffuseMap
+		<Texture>system/maps/aid_null.dds</Texture>
+	</property>
+	<property>
+		alphaTestEnable
+		<Bool>true</Bool>
+	</property>
+	<property>
+		alphaReference
+		<Int>208</Int>
+	</property>
+	<property>
+		doubleSided
+		<Bool>true</Bool>
+	</property>
+	<collisionFlags>0</collisionFlags>
+	<materialKind>0</materialKind>
+</root>

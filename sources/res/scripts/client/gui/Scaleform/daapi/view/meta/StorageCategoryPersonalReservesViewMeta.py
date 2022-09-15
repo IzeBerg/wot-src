@@ -14,13 +14,16 @@ class StorageCategoryPersonalReservesViewMeta(BaseCategoryView):
     def onFiltersChange(self, filters):
         self._printOverrideError('onFiltersChange')
 
+    def onInfoClicked(self):
+        self._printOverrideError('onInfoClicked')
+
     def as_initS(self, data):
         if self._isDAAPIInited():
             return self.flashObject.as_init(data)
 
-    def as_initFilterS(self, typeFiltersVO, durationFiltersVO):
+    def as_initFilterS(self, typeFiltersVO):
         if self._isDAAPIInited():
-            return self.flashObject.as_initFilter(typeFiltersVO, durationFiltersVO)
+            return self.flashObject.as_initFilter(typeFiltersVO)
 
     def as_resetFilterS(self, resetData):
         if self._isDAAPIInited():

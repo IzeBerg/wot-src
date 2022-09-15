@@ -8,6 +8,7 @@ package net.wg.gui.battle.epicRandom.views
    import net.wg.data.constants.generated.BATTLE_VIEW_ALIASES;
    import net.wg.data.constants.generated.DAMAGE_INFO_PANEL_CONSTS;
    import net.wg.data.constants.generated.PLAYERS_PANEL_STATE;
+   import net.wg.gui.battle.TabbedFullStats;
    import net.wg.gui.battle.components.TimersPanel;
    import net.wg.gui.battle.epicRandom.infrastructure.EpicRandomStatisticsDataController;
    import net.wg.gui.battle.epicRandom.views.stats.components.fullStats.EpicRandomFullStats;
@@ -177,6 +178,11 @@ package net.wg.gui.battle.epicRandom.views
          registerComponent(this.siegeModePanel,BATTLE_VIEW_ALIASES.SIEGE_MODE_INDICATOR);
          registerComponent(this.hintPanel,BATTLE_VIEW_ALIASES.HINT_PANEL);
          registerComponent(this.battleNotifier,BATTLE_VIEW_ALIASES.BATTLE_NOTIFIER);
+         var _loc1_:TabbedFullStats = this.fullStats as TabbedFullStats;
+         if(_loc1_.tabReserves)
+         {
+            registerComponent(_loc1_.tabReserves,BATTLE_VIEW_ALIASES.PERSONAL_RESERVES_TAB);
+         }
          super.onPopulate();
       }
       

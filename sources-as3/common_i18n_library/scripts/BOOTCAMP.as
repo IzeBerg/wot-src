@@ -11,6 +11,8 @@ package
       
       public static const WELLCOME_BOOTCAMP_REWARDS_TANKS:String = "#bootcamp:wellcome/bootcamp/rewards/tanks";
       
+      public static const WELLCOME_BOOTCAMP_REWARDS_SHORT_TANK:String = "#bootcamp:wellcome/bootcamp/rewards_short/tank";
+      
       public static const WELLCOME_BOOTCAMP_REWARDS_TOOLTIP_TANK:String = "#bootcamp:wellcome/bootcamp/rewards/tooltip/tank";
       
       public static const WELLCOME_BOOTCAMP_REWARDS_PREMIUM:String = "#bootcamp:wellcome/bootcamp/rewards/premium";
@@ -532,6 +534,8 @@ package
       public static const TOOLTIP_PROGRESSION_LABEL_LESSON_2:String = "#bootcamp:tooltip/progression/label/lesson_2";
       
       public static const TOOLTIP_PROGRESSION_DESCRIPTION_LESSON_2:String = "#bootcamp:tooltip/progression/description/lesson_2";
+      
+      public static const TOOLTIP_PROGRESSION_DESCRIPTION_LESSON_2_SHORT:String = "#bootcamp:tooltip/progression/description/lesson_2_short";
       
       public static const TOOLTIP_PROGRESSION_LABEL_LESSON_3:String = "#bootcamp:tooltip/progression/label/lesson_3";
       

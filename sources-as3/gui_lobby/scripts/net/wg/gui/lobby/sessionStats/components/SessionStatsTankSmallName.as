@@ -3,7 +3,7 @@ package net.wg.gui.lobby.sessionStats.components
    import flash.display.Sprite;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
-   import net.wg.gui.components.tooltips.helpers.TankTypeIco;
+   import net.wg.gui.components.icons.TankTypeIco;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
    
    public class SessionStatsTankSmallName extends Sprite implements IDisposable

@@ -146,6 +146,7 @@ package net.wg.gui.battle.views.epicDeploymentMap
          var _loc2_:Number = NaN;
          var _loc3_:Number = NaN;
          var _loc4_:Number = NaN;
+         var _loc5_:int = 0;
          var _loc6_:int = 0;
          var _loc1_:int = this._originalHeight * MAP_SCALE;
          if(this._inRespawnScreen)
@@ -161,7 +162,7 @@ package net.wg.gui.battle.views.epicDeploymentMap
          _loc4_ = _loc2_ * this._mapHeight;
          this.mapContainer.scaleX = _loc2_;
          this.mapContainer.scaleY = _loc2_;
-         var _loc5_:int = _loc3_ * MAP_BACKGROUND_SCALE;
+         _loc5_ = _loc3_ * MAP_BACKGROUND_SCALE;
          _loc6_ = _loc4_ * MAP_BACKGROUND_SCALE;
          this.bigBackground.x = -(_loc5_ * DeploymentMapConstants.BORDER_WIDTH_PERCENTAGE) >> 0;
          this.bigBackground.y = -(_loc6_ * DeploymentMapConstants.BORDER_WIDTH_PERCENTAGE) >> 0;

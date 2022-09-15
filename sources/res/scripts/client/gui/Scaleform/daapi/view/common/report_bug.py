@@ -1,5 +1,5 @@
 from account_helpers import getAccountDatabaseID
-from adisp import process
+from adisp import adisp_process
 from avatar_helpers import getAvatarDatabaseID
 from gui import GUI_SETTINGS, DialogsInterface
 from gui import makeHtmlString
@@ -43,7 +43,7 @@ def makeHyperLink(linkType, textId):
     return linkHtml
 
 
-@process
+@adisp_process
 def reportBugOpenConfirm(accountId):
     isOk = yield DialogsInterface.showI18nConfirmDialog('reportBug', focusedID=DIALOG_BUTTON_ID.SUBMIT)
     if isOk:

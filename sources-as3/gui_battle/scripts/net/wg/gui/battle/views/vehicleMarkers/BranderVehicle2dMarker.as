@@ -237,9 +237,9 @@ package net.wg.gui.battle.views.vehicleMarkers
       {
       }
       
-      public function hideStatusMarker(param1:int, param2:int, param3:Boolean = false) : void
+      public function hideStatusMarker(param1:int, param2:int, param3:Boolean = false, param4:Boolean = false) : void
       {
-         this.statusContainer.hideMarker(param1,param2,param3);
+         this.statusContainer.hideMarker(param1,param2,param3,param4);
          this.updateMarkerSettings();
       }
       
@@ -306,12 +306,12 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.updateMarkerSettings();
       }
       
-      public function setVehicleInfo(param1:String, param2:String, param3:String, param4:int, param5:String, param6:String, param7:String, param8:String, param9:int, param10:String, param11:Boolean, param12:int, param13:String) : void
+      public function setVehicleInfo(param1:String, param2:String, param3:String, param4:int, param5:String, param6:String, param7:String, param8:String, param9:int, param10:String, param11:Boolean, param12:int, param13:String, param14:String = "", param15:int = 0) : void
       {
-         var _loc14_:int = 0;
+         var _loc16_:int = 0;
          if(this._model)
          {
-            _loc14_ = this._model.currHealth;
+            _loc16_ = this._model.currHealth;
          }
          this._model = new VehicleMarkerVO();
          this._model.vClass = param1;
@@ -326,7 +326,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this._model.entityName = param10;
          this._model.hunt = param11;
          this._model.squadIndex = param12;
-         this._model.currHealth = _loc14_;
+         this._model.currHealth = _loc16_;
          this._model.locSecString = param13;
          this._maxHealthMult = MAX_HEALTH_PERCENT / this._model.maxHealth;
          this.statusContainer.setSecondString(this._model.locSecString);
@@ -470,10 +470,10 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private function updateMarkerSettings() : void
       {
-         var _loc3_:Boolean = false;
-         var _loc1_:Boolean = this.getIsPartVisible(HEALTH_BAR);
+         var _loc1_:Boolean = false;
+         _loc1_ = this.getIsPartVisible(HEALTH_BAR);
          var _loc2_:Boolean = this.getIsPartVisible(HEALTH_LBL);
-         _loc3_ = this.getIsPartVisible(DAMAGE_PANEL);
+         var _loc3_:Boolean = this.getIsPartVisible(DAMAGE_PANEL);
          if(_loc1_)
          {
             this.healthBar.currHealth = this._model.currHealth;

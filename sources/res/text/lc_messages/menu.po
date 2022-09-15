@@ -758,6 +758,12 @@ msgstr "«Топография»"
 msgid "bonusType/4"
 msgstr "Специальный бой"
 
+msgid "bonusType/42"
+msgstr "«Аркада»"
+
+msgid "bonusType/43"
+msgstr "Натиск"
+
 msgid "bonusType/5"
 msgstr "Специальный бой"
 
@@ -785,6 +791,9 @@ msgstr "%(effectValue)s на %(effectHours)s к фронтовому опыту 
 msgid "booster/bonus/booster_free_xp"
 msgstr "%(effectValue)s на %(effectHours)s к свободному опыту за бой"
 
+msgid "booster/bonus/booster_free_xp_and_crew_xp"
+msgstr "%(effectValue)s к свободному опыту и опыту экипажа на %(effectHours)s"
+
 msgid "booster/bonus/booster_xp"
 msgstr "%(effectValue)s на %(effectHours)s к опыту за бой"
 
@@ -800,6 +809,9 @@ msgstr "Бонус %(effectValue)s к фронтовому опыту за бо�
 msgid "booster/description/bonusValueTime/booster_free_xp"
 msgstr "Бонус %(effectValue)s к свободному опыту за бой на %(effectTime)s"
 
+msgid "booster/description/bonusValueTime/booster_free_xp_and_crew_xp"
+msgstr "%(effectValue)s к свободному опыту и опыту экипажа на %(effectTime)s"
+
 msgid "booster/description/bonusValueTime/booster_xp"
 msgstr "Бонус %(effectValue)s к опыту за бой на %(effectTime)s"
 
@@ -814,6 +826,9 @@ msgstr "%(effectValue)s к фронтовому опыту за бой"
 
 msgid "booster/description/booster_free_xp"
 msgstr "%(effectValue)s к свободному опыту за бой"
+
+msgid "booster/description/booster_free_xp_and_crew_xp"
+msgstr "%(effectValue)s к свободному опыту и опыту экипажа за бой"
 
 msgid "booster/description/booster_repair"
 msgstr "%(effectValue)s стоимости ремонта"
@@ -838,6 +853,9 @@ msgstr "к фронтовому опыту за бой"
 
 msgid "booster/influence/booster_free_xp"
 msgstr "к свободному опыту за бой"
+
+msgid "booster/influence/booster_free_xp_and_crew_xp"
+msgstr "к свободному опыту и опыту экипажа за бой"
 
 msgid "booster/influence/booster_xp"
 msgstr "к опыту за бой"
@@ -865,6 +883,9 @@ msgstr "Дополнительный фронтовой опыт за бой"
 
 msgid "booster/userName/booster_free_xp"
 msgstr "Дополнительный свободный опыт за бой"
+
+msgid "booster/userName/booster_free_xp_and_crew_xp"
+msgstr "Дополнительный свободный опыт и опыт экипажа за бой"
 
 msgid "booster/userName/booster_repair"
 msgstr "Скидка на ремонт техники"
@@ -1129,11 +1150,17 @@ msgstr "Копировать имя"
 msgid "contextMenu/createBattleRoyaleSquad"
 msgstr "Создать взвод охотников"
 
+msgid "contextMenu/createComp7Squad"
+msgstr "Создать взвод для Натиска"
+
 msgid "contextMenu/createContactNote"
 msgstr "Создать заметку"
 
 msgid "contextMenu/createEventSquad"
 msgstr "Создать ивентный взвод"
+
+msgid "contextMenu/createFunRandomSquad"
+msgstr "Аркадный взвод"
 
 msgid "contextMenu/createMapboxSquad"
 msgstr "Разведка боем: создать взвод"
@@ -2798,6 +2825,29 @@ msgstr "Учебный бой"
 msgid "headerButtons/battle/types/battleTutorial"
 msgstr "Боевое обучение"
 
+msgid "headerButtons/battle/types/comp7"
+msgstr "Натиск"
+
+msgid "headerButtons/battle/types/comp7/descr"
+msgstr "?empty?"
+
+msgid "headerButtons/battle/types/comp7/extra/endsIn"
+msgstr "До конца сезона: %(timeLeft)s"
+
+msgid "headerButtons/battle/types/comp7/extra/finished"
+msgstr ""
+"Следите за новостями на портале игры, чтобы не пропустить информацию о "
+"начале нового сезона."
+
+msgid "headerButtons/battle/types/comp7/extra/frozen"
+msgstr "Режим временно отключён по техническим причинам."
+
+msgid "headerButtons/battle/types/comp7/extra/startsAt"
+msgstr "С %(time)s"
+
+msgid "headerButtons/battle/types/comp7Squad"
+msgstr "Создать взвод Натиск"
+
 msgid "headerButtons/battle/types/epic"
 msgstr "Линия фронта"
 
@@ -2835,6 +2885,9 @@ msgstr "Укрепрайон: сражения"
 
 msgid "headerButtons/battle/types/fortLeave"
 msgstr "Укрепрайон: сражения"
+
+msgid "headerButtons/battle/types/funRandomSquad"
+msgstr "Аркадный взвод"
 
 msgid "headerButtons/battle/types/historicalBattles"
 msgstr "Исторический бой"
@@ -3045,17 +3098,42 @@ msgstr "На этом сервере режим прекращения огня.
 msgid "headerButtons/fightBtn/tooltip/battleRoyaleDisabled/header"
 msgstr "Выход в бой недоступен"
 
+msgid "headerButtons/fightBtn/tooltip/comp7BanIsSet/body"
+msgstr "Вы можете продолжать играть в других режимах."
+
+msgid "headerButtons/fightBtn/tooltip/comp7BanIsSet/header"
+msgstr "Вы временно заблокированы в режиме."
+
+msgid "headerButtons/fightBtn/tooltip/comp7BattleOnly/body"
+msgstr "Выбранная машина подходит только для режима «Натиск»."
+
+msgid "headerButtons/fightBtn/tooltip/comp7BattleOnly/header"
+msgstr "Выход в бой недоступен"
+
+msgid "headerButtons/fightBtn/tooltip/comp7Disabled/body"
+msgstr ""
+"На этом сервере режим прекращения огня. Попробуйте перейти на другой сервер."
+
+msgid "headerButtons/fightBtn/tooltip/comp7Disabled/header"
+msgstr "Выход в бой недоступен"
+
+msgid "headerButtons/fightBtn/tooltip/comp7NotSet/body"
+msgstr "Режим недоступен на выбранном сервере"
+
+msgid "headerButtons/fightBtn/tooltip/comp7NotSet/header"
+msgstr "Выход в бой недоступен"
+
+msgid "headerButtons/fightBtn/tooltip/comp7Offline/body"
+msgstr "Режим недоступен: ошибка базы данных."
+
+msgid "headerButtons/fightBtn/tooltip/comp7Offline/header"
+msgstr "Невозможно выйти в бой"
+
 msgid "headerButtons/fightBtn/tooltip/crewNotFull/body"
-msgstr "Отсутствуют: <b>%(crewList)s</b>."
+msgstr "Не на месте: <b>%(crewList)s</b>."
 
 msgid "headerButtons/fightBtn/tooltip/crewNotFull/header"
 msgstr "Неполный экипаж"
-
-msgid "headerButtons/fightBtn/tooltip/epicBattleOnly/body"
-msgstr "Выбранная машина подходит только для режима «Линия фронта»."
-
-msgid "headerButtons/fightBtn/tooltip/epicBattleOnly/header"
-msgstr "Выход в бой недоступен"
 
 msgid "headerButtons/fightBtn/tooltip/epicBattleSituationalVehicle/body"
 msgstr ""
@@ -3121,11 +3199,31 @@ msgstr "Выберите машину %(level)s уровня."
 msgid "headerButtons/fightBtn/tooltip/falloutVehMin/header"
 msgstr "Выход в бой недоступен"
 
+msgid "headerButtons/fightBtn/tooltip/funRandomDisabled/body"
+msgstr ""
+"На этом сервере идёт режим прекращения огня. Попробуйте перейти на другой "
+"сервер."
+
+msgid "headerButtons/fightBtn/tooltip/funRandomDisabled/header"
+msgstr "Выход в бой невозможен"
+
+msgid "headerButtons/fightBtn/tooltip/funRandomNotSet/body"
+msgstr "Режим недоступен на выбранном сервере."
+
+msgid "headerButtons/fightBtn/tooltip/funRandomNotSet/header"
+msgstr "Выход в бой невозможен"
+
+msgid "headerButtons/fightBtn/tooltip/funRandomVehLimits/body"
+msgstr "Выберите другую машину."
+
+msgid "headerButtons/fightBtn/tooltip/funRandomVehLimits/header"
+msgstr "Машина не подходит для режима"
+
 msgid "headerButtons/fightBtn/tooltip/inPremiumIgrOnly/body"
 msgstr "Выберите другую машину."
 
 msgid "headerButtons/fightBtn/tooltip/inPremiumIgrOnly/header"
-msgstr "Машина только в %(icon)s"
+msgstr "Машина только для %(icon)s"
 
 msgid "headerButtons/fightBtn/tooltip/noVehicle/body"
 msgstr "Купите подходящую по требованиям машину."
@@ -3646,6 +3744,12 @@ msgstr "Искусство стратегии"
 msgid "loading/battleTypes/28"
 msgstr "Основы стратегии"
 
+msgid "loading/battleTypes/29"
+msgstr "Аркада: РЕЛЬСОТРОН"
+
+msgid "loading/battleTypes/30"
+msgstr "Натиск"
+
 msgid "loading/battleTypes/4"
 msgstr "Боевое обучение"
 
@@ -3726,6 +3830,12 @@ msgid "loading/battleTypes/desc/26"
 msgstr " "
 
 msgid "loading/battleTypes/desc/28"
+msgstr " "
+
+msgid "loading/battleTypes/desc/29"
+msgstr " "
+
+msgid "loading/battleTypes/desc/30"
 msgstr " "
 
 msgid "loading/battleTypes/desc/4"
@@ -4410,6 +4520,9 @@ msgstr "Дальность связи"
 msgid "moduleInfo/params/rateTime"
 msgstr "Время между выстрелом и переходом к заряженному орудию"
 
+msgid "moduleInfo/params/reloadCooldownSeconds"
+msgstr "Время перезарядки"
+
 msgid "moduleInfo/params/reloadMagazineTime"
 msgstr "Время полной перезарядки"
 
@@ -4418,6 +4531,9 @@ msgstr "Скорострельность"
 
 msgid "moduleInfo/params/reloadTimeSecs"
 msgstr "Заряжание орудия"
+
+msgid "moduleInfo/params/rocketAccelerationEnginePower"
+msgstr "Мощность двигателя (с ускорит.)"
 
 msgid "moduleInfo/params/rotationSpeed"
 msgstr "Скорость поворота"
@@ -4457,6 +4573,9 @@ msgstr "Мощность двигателя (турбо)"
 
 msgid "moduleInfo/params/weight"
 msgstr "Масса"
+
+msgid "moduleInfo/rocketAccelerationEngine"
+msgstr "Реактивные ускорители, повышающие мобильность"
 
 msgid "moduleInfo/title"
 msgstr " "
@@ -4836,7 +4955,7 @@ msgid "price/spent"
 msgstr "Потрачено %s"
 
 msgid "primeTime/server"
-msgstr "Доступные для игры серверы: %(server)s."
+msgstr "Доступный для входа сервер: %(server)s."
 
 msgid "primeTime/servers"
 msgstr "Доступные для входа серверы:"
@@ -6193,6 +6312,9 @@ msgstr "Углы вертикальной наводки"
 msgid "tank_params/pt"
 msgstr "(л.с./т)"
 
+msgid "tank_params/qpt"
+msgstr "(кол-во/время)"
+
 msgid "tank_params/radarCooldown"
 msgstr "Время подготовки радара"
 
@@ -6222,6 +6344,15 @@ msgstr "Скорострельность орудия"
 
 msgid "tank_params/reloadTimeSecs"
 msgstr "Заряжание орудия"
+
+msgid "tank_params/rocketAccelerationEnginePower"
+msgstr "Мощность двигателя (с ускорителями)"
+
+msgid "tank_params/rocketAccelerationReuseAndDuration"
+msgstr "Реактивные ускорители"
+
+msgid "tank_params/rocketAccelerationSpeedLimits"
+msgstr "Макс. скорость / задний ход (с ускорит.)"
 
 msgid "tank_params/s"
 msgstr "(с)"
@@ -6340,6 +6471,9 @@ msgstr "Масса / предельная масса машины"
 msgid "tank_params/vpm"
 msgstr "(ед/мин)"
 
+msgid "tank_params/vps"
+msgstr "(ед./c)"
+
 msgid "tank_params/wheeledSpeedModeSpeed"
 msgstr "Макс. скорость / задний ход (скоростной)"
 
@@ -6378,6 +6512,9 @@ msgstr "Сменить"
 
 msgid "tankmanPersonalCase/closeBtn"
 msgstr "Закрыть"
+
+msgid "tankmanPersonalCase/commanderFeature"
+msgstr "Особенность командира:"
 
 msgid "tankmanPersonalCase/crew"
 msgstr "Экипаж:"
@@ -6459,6 +6596,9 @@ msgstr "Послужной список"
 
 msgid "tankmanPersonalCase/tabDocs"
 msgstr "Документы"
+
+msgid "tankmanPersonalCase/tabFreeSkills"
+msgstr "«Нулевые» навыки"
 
 msgid "tankmanPersonalCase/tabSkills"
 msgstr "Умения"
@@ -6982,6 +7122,15 @@ msgstr "Скорострельность орудия (выстр/мин)"
 
 msgid "vehicleInfo/params/reloadTimeSecs"
 msgstr "Заряжание орудия (с)"
+
+msgid "vehicleInfo/params/rocketAccelerationEnginePower"
+msgstr "Мощность двигателя (с ускорителями) (л.с.)"
+
+msgid "vehicleInfo/params/rocketAccelerationReuseAndDuration"
+msgstr "Реактивные ускорители (кол-во/время)"
+
+msgid "vehicleInfo/params/rocketAccelerationSpeedLimits"
+msgstr "Макс. скорость / задний ход (с ускорителями) (км/ч)"
 
 msgid "vehicleInfo/params/shotDispersionAngle"
 msgstr "Разброс на 100 м (м)"

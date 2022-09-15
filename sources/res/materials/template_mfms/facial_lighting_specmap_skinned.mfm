@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<fx>shaders/std_effects/facial_lighting_specmap_skinned.fx</fx>
+	<property>
+		bumpScale
+		<Float>0.200000</Float>
+	</property>
+	<property>
+		specularLightExtraModulation
+		<Float>1.000000</Float>
+	</property>
+	<property>
+		specularMap
+		<Texture>helpers\maps\aid_builder.dds</Texture>
+	</property>
+	<property>
+		normalMap
+		<Texture>helpers\maps\aid_builder_norms.dds</Texture>
+	</property>
+	<property>
+		diffuseMap
+		<Texture>helpers\maps\aid_builder.dds</Texture>
+	</property>
+	<materialKind>0</materialKind>
+</root>

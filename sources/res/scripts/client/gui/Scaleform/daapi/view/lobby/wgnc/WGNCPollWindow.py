@@ -1,4 +1,4 @@
-from adisp import process
+from adisp import adisp_process
 from gui import DialogsInterface
 from gui.shared import events, EVENT_BUS_SCOPE
 from gui.wgnc import g_wgncProvider
@@ -12,7 +12,7 @@ class WGNCPollWindow(WGNCPollWindowMeta):
         self.__notID = ctx['notID']
         self.__target = ctx['target']
 
-    @process
+    @adisp_process
     def onWindowClose(self):
         isOk = yield DialogsInterface.showI18nConfirmDialog('interviewQuit', focusedID=DIALOG_BUTTON_ID.SUBMIT)
         if isOk:

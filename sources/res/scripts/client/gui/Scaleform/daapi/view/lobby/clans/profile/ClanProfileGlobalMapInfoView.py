@@ -1,5 +1,5 @@
 import weakref
-from adisp import process
+from adisp import adisp_process
 from gui.impl import backport
 from helpers import time_utils
 from helpers.i18n import makeString as _ms
@@ -18,7 +18,7 @@ class ClanProfileGlobalMapInfoView(ClanProfileGlobalMapInfoViewMeta):
         self._proxy = None
         return
 
-    @process
+    @adisp_process
     def setProxy(self, proxy, clanDossier):
         self._proxy = weakref.proxy(proxy)
         self._clanDossier = clanDossier

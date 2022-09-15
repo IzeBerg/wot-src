@@ -14,5 +14,10 @@ package net.wg.gui.battle.views.consumablesPanel.events
       {
          super(param1,param2,param3);
       }
+      
+      override public function clone() : Event
+      {
+         return new ConsumablesPanelEvent(type,bubbles,cancelable);
+      }
    }
 }

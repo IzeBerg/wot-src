@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<Properties>
+		<upgradeReadinessTime>
+			<Type>TIME_WITH_REASON</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<DetailLevel>MY_VEHICLE</DetailLevel>
+		</upgradeReadinessTime>
+	</Properties>
+	<CellMethods>
+		<upgradeVehicle>
+			<Exposed/>
+			<Arg>INT32</Arg>
+		</upgradeVehicle>
+	</CellMethods>
+	<ClientMethods>
+		<onVehicleUpgraded>
+			<Arg>STRING</Arg>
+			<Arg>STRING</Arg>
+		</onVehicleUpgraded>
+	</ClientMethods>
+	<ofEntity>
+		<Vehicle/>
+	</ofEntity>
+	<DefaultKeyName>inBattleUpgrades</DefaultKeyName>
+</root>

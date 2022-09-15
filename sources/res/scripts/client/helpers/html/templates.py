@@ -1,8 +1,11 @@
 from types import DictType
+from typing import TYPE_CHECKING
 from collections import defaultdict
 import ResMgr
 from debug_utils import LOG_WARNING, LOG_ERROR, LOG_CURRENT_EXCEPTION
 from helpers import html
+if TYPE_CHECKING:
+    from typing import Optional, Dict
 
 class Template(object):
 

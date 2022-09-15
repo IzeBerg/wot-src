@@ -23,6 +23,8 @@ package
       
       public static const COMMON:Class = COMMON;
       
+      public static const COMP7:Class = COMP7;
+      
       public static const CONTROLS:Class = CONTROLS;
       
       public static const CREW_OPERATIONS:Class = CREW_OPERATIONS;
@@ -64,6 +66,8 @@ package
       public static const NATIONS:Class = NATIONS;
       
       public static const PERSONAL_MISSIONS:Class = PERSONAL_MISSIONS;
+      
+      public static const PERSONAL_RESERVES:Class = PERSONAL_RESERVES;
       
       public static const PLATOON:Class = PLATOON;
       

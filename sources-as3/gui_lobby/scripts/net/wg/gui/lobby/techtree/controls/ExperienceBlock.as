@@ -90,15 +90,6 @@ package net.wg.gui.lobby.techtree.controls
       {
       }
       
-      public function set freeXP(param1:Number) : void
-      {
-      }
-      
-      protected function get earnedXP() : Number
-      {
-         return this._earnedXP;
-      }
-      
       protected function updateData() : void
       {
          this.vehXPField.text = this._locale.integer(this._earnedXP);
@@ -109,6 +100,15 @@ package net.wg.gui.lobby.techtree.controls
          App.utils.commons.updateTextFieldSize(this.vehXPField,true,false);
          this.xpIcon.x = this.vehXPField.width + FIELD_OFFSET | 0;
          this.vehXPLabel.x = this.xpIcon.x + this.xpIcon.width + LABEL_OFFSET | 0;
+      }
+      
+      public function set freeXP(param1:Number) : void
+      {
+      }
+      
+      protected function get earnedXP() : Number
+      {
+         return this._earnedXP;
       }
    }
 }

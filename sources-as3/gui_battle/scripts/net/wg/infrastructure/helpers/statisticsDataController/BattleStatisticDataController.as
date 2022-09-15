@@ -27,7 +27,7 @@ package net.wg.infrastructure.helpers.statisticsDataController
    {
        
       
-      private var _componentControllers:Vector.<IBattleComponentDataController>;
+      protected var _componentControllers:Vector.<IBattleComponentDataController>;
       
       private var _questProgressViews:Vector.<IQuestProgressViewUpdatable>;
       

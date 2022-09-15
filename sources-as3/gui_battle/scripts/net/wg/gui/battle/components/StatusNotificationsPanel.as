@@ -3,12 +3,14 @@ package net.wg.gui.battle.components
    import flash.display.DisplayObject;
    import flash.display.Sprite;
    import flash.utils.Dictionary;
+   import net.wg.data.constants.Errors;
    import net.wg.data.constants.InvalidationType;
    import net.wg.data.constants.generated.BATTLE_NOTIFICATIONS_TIMER_TYPES;
    import net.wg.gui.battle.components.interfaces.IStatusNotification;
    import net.wg.gui.battle.components.interfaces.IStatusNotificationCallback;
    import net.wg.gui.battle.views.destroyTimers.ResupplyTimer;
    import net.wg.gui.battle.views.destroyTimers.SecondaryTimer;
+   import net.wg.gui.battle.views.destroyTimers.StatusNotificationTimer;
    import net.wg.gui.battle.views.destroyTimers.data.NotificationTimerSettingVO;
    import net.wg.gui.battle.views.destroyTimers.data.StatusNotificationVO;
    import net.wg.gui.battle.views.destroyTimers.data.StatusNotificationsPanelInitVO;
@@ -19,8 +21,6 @@ package net.wg.gui.battle.components
    {
       
       private static const INVALID_STATE:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 1;
-      
-      private static const TOP_OFFSET_Y:int = 114;
       
       private static const NOTIFICATION_TIMERS_OFFSET_X:uint = 25;
       
@@ -80,7 +80,7 @@ package net.wg.gui.battle.components
          if(isInvalid(INVALID_STATE))
          {
             x = this._stageWidth >> 1;
-            y = (this._stageHeight >> 1) + TOP_OFFSET_Y + this._additionalTopOffset;
+            y = (this._stageHeight >> 1) + this._additionalTopOffset * App.appScale | 0;
          }
       }
       
@@ -93,9 +93,9 @@ package net.wg.gui.battle.components
       
       override protected function onDispose() : void
       {
-         var _loc1_:FrameAnimationTimer = null;
-         var _loc2_:* = null;
-         var _loc3_:Vector.<IStatusNotificationCallback> = null;
+         var _loc1_:BattleUIComponent = null;
+         var _loc2_:Vector.<IStatusNotificationCallback> = null;
+         var _loc3_:* = null;
          for each(_loc1_ in this._notificationTimers)
          {
             _loc1_.stop();
@@ -105,13 +105,14 @@ package net.wg.gui.battle.components
          this.notificationsContainer = null;
          this._notificationTimers = null;
          this._data = null;
-         for(_loc2_ in this._callbacksByType)
+         _loc2_ = null;
+         for(_loc3_ in this._callbacksByType)
          {
-            _loc3_ = this._callbacksByType[_loc2_];
-            if(_loc3_)
+            _loc2_ = this._callbacksByType[_loc3_];
+            if(_loc2_)
             {
-               _loc3_.length = 0;
-               this._callbacksByType[_loc2_] = null;
+               _loc2_.length = 0;
+               this._callbacksByType[_loc3_] = null;
             }
          }
          this._callbacksByType = null;
@@ -179,6 +180,11 @@ package net.wg.gui.battle.components
          }
       }
       
+      public function notifyZoneDamage() : void
+      {
+         this.invokeStatusCallbacks(ZONE_DAMAGE_EVENT_TYPE);
+      }
+      
       public function updateStage(param1:int, param2:int) : void
       {
          this._stageWidth = param1;
@@ -218,8 +224,8 @@ package net.wg.gui.battle.components
          if(_loc2_.length == 1)
          {
             _loc7_ = _loc2_[0];
-            _loc7_.x = 0;
             _loc7_.fullSize();
+            _loc7_.tweenToX(0);
             return;
          }
          var _loc8_:Boolean = false;
@@ -239,7 +245,7 @@ package net.wg.gui.battle.components
                   }
                   _loc9_ = _loc8_;
                }
-               else if(!_loc7_ is SecondaryTimer && !_loc7_ is ResupplyTimer || _loc7_.typeId == BATTLE_NOTIFICATIONS_TIMER_TYPES.ORANGE_ZONE || _loc7_.typeId == BATTLE_NOTIFICATIONS_TIMER_TYPES.DAMAGING_ZONE)
+               else if(!_loc7_ is SecondaryTimer && !_loc7_ is ResupplyTimer || _loc7_.typeId == BATTLE_NOTIFICATIONS_TIMER_TYPES.ORANGE_ZONE || _loc7_.typeId == BATTLE_NOTIFICATIONS_TIMER_TYPES.DAMAGING_ZONE || _loc7_ is StatusNotificationTimer)
                {
                   _loc7_.fullSize();
                }
@@ -296,6 +302,7 @@ package net.wg.gui.battle.components
       private function showNotification(param1:StatusNotificationVO) : IStatusNotification
       {
          var _loc2_:IStatusNotification = this._notificationTimers[param1.typeID];
+         App.utils.asserter.assertNotNull(_loc2_,Errors.CANT_NULL + " typeID: " + param1.typeID);
          _loc2_.isActive = true;
          this.updateNotification(param1);
          _loc2_.showTimer(true);
@@ -321,11 +328,6 @@ package net.wg.gui.battle.components
          _loc2_.isActive = false;
          _loc2_.hideTimer();
          invalidate(INVALID_STATE);
-      }
-      
-      public function notifyZoneDamage() : void
-      {
-         this.invokeStatusCallbacks(ZONE_DAMAGE_EVENT_TYPE);
       }
       
       private function invokeStatusCallbacks(param1:String) : void

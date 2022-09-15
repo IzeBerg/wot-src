@@ -1,7 +1,6 @@
 package net.wg.gui.battle.mapsTraining.views.prebattleTimer
 {
    import net.wg.data.constants.InvalidationType;
-   import net.wg.data.constants.generated.PREBATTLE_TIMER;
    import net.wg.gui.battle.mapsTraining.views.goals.data.MapsTrainingGoalVO;
    import net.wg.gui.battle.mapsTraining.views.goals.hint.MapsTrainingGoal;
    import net.wg.infrastructure.base.meta.IMapsTrainingPrebattleTimerMeta;
@@ -44,6 +43,14 @@ package net.wg.gui.battle.mapsTraining.views.prebattleTimer
          super();
       }
       
+      override public function as_setMessage(param1:String) : void
+      {
+      }
+      
+      override public function as_setWinConditionText(param1:String) : void
+      {
+      }
+      
       override protected function configUI() : void
       {
          super.configUI();
@@ -51,14 +58,15 @@ package net.wg.gui.battle.mapsTraining.views.prebattleTimer
          this.mouseEnabled = false;
       }
       
-      override protected function doUpdateSize(param1:Boolean) : void
+      override protected function doUpdateSize(param1:String) : void
       {
          super.doUpdateSize(param1);
-         this.side.setSize(param1,!!param1 ? int(SIDE_FONT_SMALL) : int(SIDE_FONT));
-         this.title.setSize(param1,!!param1 ? int(TITLE_FONT_SMALL) : int(TITLE_FONT));
-         this.title.offset = !!param1 ? int(TITLE_SMALL_OFFSET) : int(0);
-         this.goals.offset = !!param1 ? int(GOALS_SMALL_OFFSET) : int(0);
-         this.goals.scale = !!param1 ? Number(GOALS_SMALL_SCALE) : Number(1);
+         var _loc2_:Boolean = param1 == SMALL_STATE;
+         this.side.setSize(_loc2_,!!_loc2_ ? int(SIDE_FONT_SMALL) : int(SIDE_FONT));
+         this.title.setSize(_loc2_,!!_loc2_ ? int(TITLE_FONT_SMALL) : int(TITLE_FONT));
+         this.title.offset = !!_loc2_ ? int(TITLE_SMALL_OFFSET) : int(0);
+         this.goals.offset = !!_loc2_ ? int(GOALS_SMALL_OFFSET) : int(0);
+         this.goals.scale = !!_loc2_ ? Number(GOALS_SMALL_SCALE) : Number(1);
       }
       
       override protected function draw() : void
@@ -107,15 +115,7 @@ package net.wg.gui.battle.mapsTraining.views.prebattleTimer
       
       private function updateSizeAfterText() : void
       {
-         this.doUpdateSize(App.appHeight <= PREBATTLE_TIMER.APP_MIN_HEIGHT_BREAKING);
-      }
-      
-      override public function as_setMessage(param1:String) : void
-      {
-      }
-      
-      override public function as_setWinConditionText(param1:String) : void
-      {
+         this.doUpdateSize(getState());
       }
    }
 }

@@ -40,6 +40,9 @@ msgstr "Техника"
 msgid "common/battleEfficiency/title"
 msgstr "Боевая эффективность"
 
+msgid "common/battleEfficiencyWithSkills/title"
+msgstr "Боевая эффективность с учётом применённых навыков"
+
 msgid "common/battleEfficiencyWithoutOreders/title"
 msgstr "Боевая эффективность без учёта использованных резервов"
 
@@ -52,8 +55,11 @@ msgstr "[%(clanAbbrev)s]"
 msgid "common/crewMember/description"
 msgstr "%(role)s, %(name)s"
 
+msgid "common/crewMember/newFreeSkill"
+msgstr "Доступен «нулевой» навык"
+
 msgid "common/crewMember/newSkill"
-msgstr "Новое умение"
+msgstr "Доступен новый навык"
 
 msgid "common/details/buyPremiumBtn"
 msgstr "Купить премиум"
@@ -399,6 +405,9 @@ msgstr "Уничтожен выстрелом"
 msgid "common/vehicleState/dead1"
 msgstr "Уничтожен пожаром"
 
+msgid "common/vehicleState/dead13"
+msgstr "Уничтожен навыком игрока"
+
 msgid "common/vehicleState/dead2"
 msgstr "Уничтожен тараном"
 
@@ -491,6 +500,9 @@ msgstr "Бонус за боевые задачи и события"
 
 msgid "details/calculations/fairPlayViolation/afk"
 msgstr "Штраф за бездействие в бою"
+
+msgid "details/calculations/fairPlayViolation/comp7_deserter"
+msgstr "Штраф за дезертирство"
 
 msgid "details/calculations/fairPlayViolation/deserter"
 msgstr "Штраф за дезертирство"
@@ -963,6 +975,9 @@ msgstr "Захваченные зоны / уничтоженные цели"
 msgid "team/stats/labels_capturePointsVal"
 msgstr "Очки захвата/защиты базы"
 
+msgid "team/stats/labels_capturedPointsOfInterest"
+msgstr "Захватов ключевых позиций"
+
 msgid "team/stats/labels_damageAssisted"
 msgstr "Урон, нанесённый с помощью данного игрока"
 
@@ -983,6 +998,9 @@ msgstr "Всего нанесено урона:"
 
 msgid "team/stats/labels_damageDealtByOrder"
 msgstr "\tВ т.ч. боевыми резервами"
+
+msgid "team/stats/labels_damageDealtBySkills"
+msgstr "\tс применением навыков"
 
 msgid "team/stats/labels_damageDealtRatio"
 msgstr "\tснято очков прочности с команды противника"
@@ -1020,6 +1038,9 @@ msgstr "Получено попаданий осколками"
 msgid "team/stats/labels_flags"
 msgstr "Доставлено флагов"
 
+msgid "team/stats/labels_healed"
+msgstr "Восстановлено очков прочности (себе/союзникам)"
+
 msgid "team/stats/labels_hits"
 msgstr "\tпрямых попаданий/пробитий"
 
@@ -1037,6 +1058,9 @@ msgstr "\tне нанёсших урон"
 
 msgid "team/stats/labels_piercingsReceived"
 msgstr "\tпробитий"
+
+msgid "team/stats/labels_roleSkillUsed"
+msgstr "Применений ролевого навыка"
 
 msgid "team/stats/labels_shots"
 msgstr "Произведено выстрелов"

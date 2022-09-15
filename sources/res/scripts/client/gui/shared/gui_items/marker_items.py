@@ -6,6 +6,7 @@ from gui.Scaleform.daapi.view.battle.shared.minimap.settings import CONTAINER_NA
 class MarkerItem(IntEnum):
     DEFAULT = 0
     DEATHZONE = 1
+    COMP7_RECON = 2
 
 
 class MarkerParamsFactory(object):
@@ -47,7 +48,10 @@ class MarkerParamsFactory(object):
                                                 'min-distance': 0.0, 
                                                 'max-distance': 0.0, 
                                                 'distance': 0.0, 
-                                                'distanceFieldColor': 'white'}]}}
+                                                'distanceFieldColor': 'white'}]}, 
+       MarkerItem.COMP7_RECON: {FLAG.MINIMAP_MARKER: [
+                                                    {'symbol': ENTRY_SYMBOL_NAME.COMP7_RECON, 
+                                                       'container': CONTAINER_NAME.EQUIPMENTS}]}}
 
     @classmethod
     def getMarkerParams(cls, matrix, markerStyle=MarkerItem.DEFAULT, bitMask=FLAG.NONE):

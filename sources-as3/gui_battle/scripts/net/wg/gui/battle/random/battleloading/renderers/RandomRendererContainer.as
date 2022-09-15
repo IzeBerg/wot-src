@@ -74,11 +74,11 @@ package net.wg.gui.battle.random.battleloading.renderers
       public function RandomRendererContainer()
       {
          super();
-         this.squadsAlly = new <BattleAtlasSprite>[this.squadAlly0,this.squadAlly1,this.squadAlly2,this.squadAlly3,this.squadAlly4,this.squadAlly5,this.squadAlly6,this.squadAlly7,this.squadAlly8,this.squadAlly9,this.squadAlly10,this.squadAlly11,this.squadAlly12,this.squadAlly13,this.squadAlly14];
-         this.squadsEnemy = new <BattleAtlasSprite>[this.squadEnemy0,this.squadEnemy1,this.squadEnemy2,this.squadEnemy3,this.squadEnemy4,this.squadEnemy5,this.squadEnemy6,this.squadEnemy7,this.squadEnemy8,this.squadEnemy9,this.squadEnemy10,this.squadEnemy11,this.squadEnemy12,this.squadEnemy13,this.squadEnemy14];
+         this.squadsAlly = this.getSquadsAlly();
+         this.squadsEnemy = this.getSquadsEnemy();
       }
       
-      override public function dispose() : void
+      override protected function onDispose() : void
       {
          this.squadsAlly.length = 0;
          this.squadsAlly = null;
@@ -114,7 +114,17 @@ package net.wg.gui.battle.random.battleloading.renderers
          this.squadEnemy12 = null;
          this.squadEnemy13 = null;
          this.squadEnemy14 = null;
-         super.dispose();
+         super.onDispose();
+      }
+      
+      protected function getSquadsAlly() : Vector.<BattleAtlasSprite>
+      {
+         return new <BattleAtlasSprite>[this.squadAlly0,this.squadAlly1,this.squadAlly2,this.squadAlly3,this.squadAlly4,this.squadAlly5,this.squadAlly6,this.squadAlly7,this.squadAlly8,this.squadAlly9,this.squadAlly10,this.squadAlly11,this.squadAlly12,this.squadAlly13,this.squadAlly14];
+      }
+      
+      protected function getSquadsEnemy() : Vector.<BattleAtlasSprite>
+      {
+         return new <BattleAtlasSprite>[this.squadEnemy0,this.squadEnemy1,this.squadEnemy2,this.squadEnemy3,this.squadEnemy4,this.squadEnemy5,this.squadEnemy6,this.squadEnemy7,this.squadEnemy8,this.squadEnemy9,this.squadEnemy10,this.squadEnemy11,this.squadEnemy12,this.squadEnemy13,this.squadEnemy14];
       }
    }
 }

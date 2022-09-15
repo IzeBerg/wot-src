@@ -683,11 +683,11 @@
 			<value>
 				<item>
 					<name>view</name>
-					<value>PremDashboardView</value>
+					<value>R.views.lobby.account_dashboard.AccountDashboard</value>
 				</item>
 				<item>
 					<name>path</name>
-					<value>dogTagCard</value>
+					<value>div[id=dashboard-dogtag-block]</value>
 				</item>
 			</value>
 		</item>
@@ -697,11 +697,11 @@
 			<value>
 				<item>
 					<name>view</name>
-					<value>PremDashboardView</value>
+					<value>R.views.lobby.account_dashboard.AccountDashboard</value>
 				</item>
 				<item>
 					<name>path</name>
-					<value>piggyBankCard</value>
+					<value>div[id=dashboard-reserve-block]</value>
 				</item>
 			</value>
 		</item>
@@ -850,6 +850,46 @@
 							<name>bottom</name>
 							<type>float</type>
 							<value>1</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>ReservesButton</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>lobby</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>header.headerButtonBar:HeaderButton_UI?id=personalReservesWidget</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>3</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>1</value>
+						</item>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>6</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>3</value>
 						</item>
 					</value>
 				</item>
@@ -2489,21 +2529,7 @@
 				</item>
 				<item>
 					<name>path</name>
-					<value>view:PersonalCaseSkills.modifiers:pc_SkillsItemRendererUI?%PersonalCaseSkillID%</value>
-				</item>
-			</value>
-		</item>
-		<item>
-			<name>SkillSlot</name>
-			<type>dict</type>
-			<value>
-				<item>
-					<name>view</name>
-					<value>personalCase</value>
-				</item>
-				<item>
-					<name>path</name>
-					<value>skills_mc:SkillsItemRendererUI?name=commander_sixthSense</value>
+					<value>view:PersonalCaseSkills.modifiers</value>
 				</item>
 			</value>
 		</item>
@@ -3479,11 +3505,11 @@
 			<value>
 				<item>
 					<name>view</name>
-					<value>PremDashboardView</value>
+					<value>R.views.lobby.account_dashboard.AccountDashboard</value>
 				</item>
 				<item>
 					<name>path</name>
-					<value>badgeSlot</value>
+					<value>div[id=dashboard-header-badge]</value>
 				</item>
 			</value>
 		</item>
@@ -5336,6 +5362,46 @@
 				<item>
 					<name>path</name>
 					<value>crewXPPanelInject</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>PersonalReservesGroup</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>R.views.lobby.personal_reserves.ReservesActivationView</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>div[class*=groupWrapper][id=block-xp]</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
 				</item>
 			</value>
 		</item>

@@ -1,6 +1,6 @@
+import sys, typing
 from importlib import import_module
 from types import ModuleType
-from typing import List
 from constants import IS_VS_EDITOR
 if IS_VS_EDITOR:
 
@@ -61,4 +61,14 @@ def dependencyImporter(*modules):
     return [ import_module(module) for module in modules ]
 
 
-__all__ = ('dependencyImporter', )
+def dependencyMocker(*modules):
+    if IS_VS_EDITOR:
+        for module in modules:
+            if isinstance(module, tuple):
+                path, mock = module
+            else:
+                path, mock = module, MockObject()
+            sys.modules[path] = mock
+
+
+__all__ = ('dependencyImporter', 'dependencyMocker')

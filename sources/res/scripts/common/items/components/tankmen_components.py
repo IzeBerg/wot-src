@@ -15,6 +15,7 @@ class SPECIAL_VOICE_TAG(object):
     DAY_OF_COSMONAUTICS_21 = 'gagarin21_specialVoice'
     MIHO = 'mihoSpecialVoice'
     YHA = 'yhaSpecialVoice'
+    QUICKY_BABY = 'quickyBabySpecialVoice'
     BATTLE_OF_BLOGGERS = ('ru1_LebwaSpecialVoice', 'ru2_YushaSpecialVoice', 'ru3_Amway921SpecialVoice',
                           'ru4_KorbenDallasSpecialVoice', 'eu1_MailandSpecialVoice',
                           'eu2_Skill4ltuSpecialVoice', 'eu3_DezgamezSpecialVoice',
@@ -32,8 +33,9 @@ class SPECIAL_VOICE_TAG(object):
     WHITE_TIGER_EVENT_2021 = ('letov_SpecialVoice', 'armand_SpecialVoice', 'elisa_SpecialVoice',
                               'krieger_SpecialVoice')
     SABATON_2021 = 'sabaton21_specialVoice'
+    G_I_JOE_2022 = ('baroness22SpecialVoice', 'coverGirl22SpecialVoice')
     ALL = (
-     BUFFON, SABATON, OFFSPRING, RACER, RACER_EN, CELEBRITY_2021, MIHO, YHA, CELEBRITY_2022, DAY_OF_COSMONAUTICS_21, SABATON_2021) + BATTLE_OF_BLOGGERS + BATTLE_OF_BLOGGERS_2021 + G_I_JOE_TWITCH_2021 + WHITE_TIGER_EVENT_2021
+     BUFFON, SABATON, OFFSPRING, RACER, RACER_EN, CELEBRITY_2021, MIHO, YHA, CELEBRITY_2022, DAY_OF_COSMONAUTICS_21, SABATON_2021, QUICKY_BABY) + BATTLE_OF_BLOGGERS + BATTLE_OF_BLOGGERS_2021 + G_I_JOE_TWITCH_2021 + WHITE_TIGER_EVENT_2021 + G_I_JOE_2022
 
 
 class SPECIAL_CREW_TAG(object):

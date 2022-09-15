@@ -31,12 +31,13 @@ package net.wg.gui.lobby.techtree.controls
       
       private var _flagScale:Number = 1;
       
-      private var _tooltipMgr:ITooltipMgr = null;
+      private var _tooltipMgr:ITooltipMgr;
       
       private var _isTooltipSpecial:Boolean = false;
       
       public function NationButton()
       {
+         this._tooltipMgr = App.toolTipMgr;
          super();
       }
       
@@ -44,7 +45,6 @@ package net.wg.gui.lobby.techtree.controls
       {
          super.preInitialize();
          soundType = SoundTypes.TAB;
-         this._tooltipMgr = App.toolTipMgr;
       }
       
       override protected function onDispose() : void
@@ -64,16 +64,13 @@ package net.wg.gui.lobby.techtree.controls
          {
             return;
          }
-         if(this.borderStates != null && isInvalid(InvalidationType.STATE))
+         if(this.borderStates != null && StringUtils.isNotEmpty(_newFrame) && isInvalid(InvalidationType.STATE))
          {
-            if(StringUtils.isNotEmpty(_newFrame))
+            App.utils.asserter.assert(_labelHash.hasOwnProperty(_newFrame),Errors.WASNT_FOUND);
+            this.borderStates.gotoAndPlay(_newFrame);
+            if(_baseDisposed)
             {
-               App.utils.asserter.assert(_labelHash.hasOwnProperty(_newFrame),Errors.WASNT_FOUND);
-               this.borderStates.gotoAndPlay(_newFrame);
-               if(_baseDisposed)
-               {
-                  return;
-               }
+               return;
             }
          }
          super.draw();
@@ -101,7 +98,7 @@ package net.wg.gui.lobby.techtree.controls
       
       override protected function showTooltip() : void
       {
-         if(!_selected && this._tooltipMgr != null && StringUtils.isNotEmpty(_tooltip))
+         if(!_selected && StringUtils.isNotEmpty(_tooltip))
          {
             if(this._isTooltipSpecial)
             {

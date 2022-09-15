@@ -1,4 +1,4 @@
-from adisp import process
+from adisp import adisp_process
 from gui import SystemMessages
 from gui.Scaleform.daapi.view.meta.ConfirmExchangeDialogMeta import ConfirmExchangeDialogMeta
 
@@ -24,7 +24,7 @@ class ConfirmExchangeDialog(ConfirmExchangeDialogMeta):
         self._callHandler(False)
         self.destroy()
 
-    @process
+    @adisp_process
     def exchange(self, goldValue):
         if self.__exchangeMutex:
             return

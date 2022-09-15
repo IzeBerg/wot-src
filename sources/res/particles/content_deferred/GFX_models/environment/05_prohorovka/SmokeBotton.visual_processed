@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>smoke</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Noise01.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>1 1 1 1</Vector4>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Distortion01.dds</Texture>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaAdditiveEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>
+							0.1 0.16 0.6 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>
+							-0.1 0.9 0.092 0.15
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>
+							1 0.125 0.125 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>
+							0.000000 1 1.5 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector4>
+							0.99 0.99 0.99 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						fadeMinDistance
+						<Float>
+							150.01
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						fadeMaxDistance
+						<Float>400</Float>
+					</property>
+				</material>
+				<groupOrigin>0.536843 1.746423 3.017489</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-2.326499 -0.124853 -1.080688</min>
+		<max>3.400184 3.617700 7.115667</max>
+	</boundingBox>
+	<geometrySize>5352</geometrySize>
+	<minUVDensity>0.060866</minUVDensity>
+</root>

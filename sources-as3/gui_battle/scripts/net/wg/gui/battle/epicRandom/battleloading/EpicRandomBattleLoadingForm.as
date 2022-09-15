@@ -87,7 +87,7 @@ package net.wg.gui.battle.epicRandom.battleloading
       
       override public function addVehiclesInfo(param1:Boolean, param2:Vector.<DAAPIVehicleInfoVO>, param3:Vector.<Number>) : void
       {
-         this._tableCtrl.addVehiclesInfo(param1,param2,param3);
+         this._tableCtrl.addVehiclesInfo(param2,param3,param1);
       }
       
       override public function getMapComponent() : MinimapPresentation
@@ -153,7 +153,7 @@ package net.wg.gui.battle.epicRandom.battleloading
       
       override public function setVehiclesData(param1:Boolean, param2:Array, param3:Vector.<Number>) : void
       {
-         this._tableCtrl.setVehiclesData(param1,param2,param3);
+         this._tableCtrl.setVehiclesData(param2,param3,param1);
       }
       
       override public function toString() : String
@@ -170,7 +170,7 @@ package net.wg.gui.battle.epicRandom.battleloading
       
       override public function updateVehiclesInfo(param1:Boolean, param2:Vector.<DAAPIVehicleInfoVO>, param3:Vector.<Number>) : void
       {
-         this._tableCtrl.updateVehiclesInfo(param1,param2,param3);
+         this._tableCtrl.updateVehiclesData(param2,param3,param1);
       }
       
       override protected function onDispose() : void

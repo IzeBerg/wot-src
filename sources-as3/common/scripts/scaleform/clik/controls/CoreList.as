@@ -586,7 +586,7 @@ package scaleform.clik.controls
       protected function disposeRenderer(param1:IListItemRenderer) : void
       {
          var _loc2_:IDisposable = param1 as IDisposable;
-         if(_loc2_)
+         if(_loc2_ && !_loc2_.isDisposed())
          {
             _loc2_.dispose();
          }

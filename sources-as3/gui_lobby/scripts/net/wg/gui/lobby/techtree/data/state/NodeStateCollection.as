@@ -108,6 +108,11 @@ package net.wg.gui.lobby.techtree.data.state
          return this.percolateStateProps(param2,_loc4_,param3);
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function isRedrawNTLines(param1:String) : Boolean
       {
          return param1 == NodeRendererState.NEXT2UNLOCK || param1 == NodeRendererState.BLUEPRINTS_NEXT2UNLOCK || NodeRendererState.NEXT4BUY || NodeRendererState.INVENTORY;
@@ -169,11 +174,6 @@ package net.wg.gui.lobby.techtree.data.state
             }
          }
          return this._defaultStateProps;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

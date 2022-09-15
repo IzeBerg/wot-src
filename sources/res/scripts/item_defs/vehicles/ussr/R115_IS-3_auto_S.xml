@@ -120,6 +120,13 @@
 			<undamaged>vehicles/russian/R115_IS-3_auto/normal/lod0/Hull.model</undamaged>
 			<destroyed>vehicles/russian/R115_IS-3_auto/crash/lod0/Hull.model</destroyed>
 			<exploded>vehicles/russian/R115_IS-3_auto/crash/lod0/Hull.model</exploded>
+			<sets>
+				<R115_IS-3_auto_OCN_3DSt>
+					<undamaged>vehicles/russian/R115_IS-3_auto/_skins/R115_IS-3_auto_OCN_3DSt/normal/lod0/Hull.model</undamaged>
+					<destroyed>vehicles/russian/R115_IS-3_auto/_skins/R115_IS-3_auto_OCN_3DSt/crash/lod0/Hull.model</destroyed>
+					<exploded>vehicles/russian/R115_IS-3_auto/_skins/R115_IS-3_auto_OCN_3DSt/crash/lod0/Hull.model</exploded>
+				</R115_IS-3_auto_OCN_3DSt>
+			</sets>
 		</models>
 		<swinging>
 			<lodDist>FAR</lodDist>
@@ -152,20 +159,14 @@
 			<slot>
 				<slotType>clan</slotType>
 				<slotId>10000</slotId>
-				<rayStart>
-					0.520941 0.500849 2.46402
-					<!--BW_String-->
-				</rayStart>
+				<rayStart>-0.248555 0.509618 2.585623</rayStart>
 				<rayEnd>
-					0.470749 0.334515 2.36495
+					-0.198273 0.34062 2.491217
 					<!--BW_String-->
 				</rayEnd>
-				<rayUp>
-					-0.624486 0.0568008 -0.778968
-					<!--BW_String-->
-				</rayUp>
+				<rayUp>0.585588 0.521093 -0.620926</rayUp>
 				<size>
-					0.24
+					0.22
 					<!--BW_String-->
 				</size>
 				<hideIfDamaged>false</hideIfDamaged>
@@ -1630,6 +1631,53 @@
 				<clipAngle>0.341477</clipAngle>
 				<anchorShift>-0.109996</anchorShift>
 			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15063</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>R115_IS-3_auto_OCN_3DSt</compatibleModels>
+				<position>
+					1.18079 1.06499 2.94106
+					<!--BW_String-->
+				</position>
+				<rotation>
+					0.507951 -0.000961997 3.13961
+					<!--BW_String-->
+				</rotation>
+				<scale>
+					0.7986 0.339272 0.798594
+					<!--BW_String-->
+				</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>
+					1.20103
+					<!--BW_String-->
+				</clipAngle>
+				<anchorShift>0.101999</anchorShift>
+			</slot>
+			<slot>
+				<slotType>projectionDecal</slotType>
+				<slotId>15064</slotId>
+				<tags>formfactor_square</tags>
+				<compatibleModels>R115_IS-3_auto_OCN_3DSt</compatibleModels>
+				<position>
+					-1.18078 1.06501 2.94106
+					<!--BW_String-->
+				</position>
+				<rotation>
+					0.507951 -0.000961997 3.13961
+					<!--BW_String-->
+				</rotation>
+				<scale>0.798599 0.339272 0.798594</scale>
+				<doubleSided>false</doubleSided>
+				<showOn>16</showOn>
+				<clipAngle>
+					1.20103
+					<!--BW_String-->
+				</clipAngle>
+				<anchorShift>0.101999</anchorShift>
+			</slot>
 		</customizationSlots>
 		<customization>
 			<customizableVehicleAreas>
@@ -1689,6 +1737,13 @@
 				<undamaged>vehicles/russian/R115_IS-3_auto/normal/lod0/Chassis.model</undamaged>
 				<destroyed>vehicles/russian/R115_IS-3_auto/crash/lod0/Chassis.model</destroyed>
 				<exploded>vehicles/russian/R115_IS-3_auto/crash/lod0/Chassis.model</exploded>
+				<sets>
+					<R115_IS-3_auto_OCN_3DSt>
+						<undamaged>vehicles/russian/R115_IS-3_auto/_skins/R115_IS-3_auto_OCN_3DSt/normal/lod0/Chassis.model</undamaged>
+						<destroyed>vehicles/russian/R115_IS-3_auto/_skins/R115_IS-3_auto_OCN_3DSt/crash/lod0/Chassis.model</destroyed>
+						<exploded>vehicles/russian/R115_IS-3_auto/_skins/R115_IS-3_auto_OCN_3DSt/crash/lod0/Chassis.model</exploded>
+					</R115_IS-3_auto_OCN_3DSt>
+				</sets>
 			</models>
 			<traces>
 				<lodDist>FAR</lodDist>
@@ -2804,6 +2859,12 @@
 						<model>vehicles/russian/R115_IS-3_auto/track/segment2.model</model>
 						<length>0.175267</length>
 					</secSegment>
+					<modelSets>
+						<R115_IS-3_auto_OCN_3DSt>
+							<mainSegmentModel>vehicles/russian/R115_IS-3_auto/_skins/R115_IS-3_auto_OCN_3DSt/track/segment1.model</mainSegmentModel>
+							<secSegmentModel>vehicles/russian/R115_IS-3_auto/_skins/R115_IS-3_auto_OCN_3DSt/track/segment2.model</secSegmentModel>
+						</R115_IS-3_auto_OCN_3DSt>
+					</modelSets>
 					<collisionHull>
 						<bottom>
 							<part>
@@ -3459,6 +3520,13 @@
 						<undamaged>vehicles/russian/R115_IS-3_auto/normal/lod0/Gun_01.model</undamaged>
 						<destroyed>vehicles/russian/R115_IS-3_auto/crash/lod0/Gun_01.model</destroyed>
 						<exploded>vehicles/russian/R115_IS-3_auto/crash/lod0/Gun_01.model</exploded>
+						<sets>
+							<R115_IS-3_auto_OCN_3DSt>
+								<undamaged>vehicles/russian/R115_IS-3_auto/_skins/R115_IS-3_auto_OCN_3DSt/normal/lod0/Gun_01.model</undamaged>
+								<destroyed>vehicles/russian/R115_IS-3_auto/_skins/R115_IS-3_auto_OCN_3DSt/crash/lod0/Gun_01.model</destroyed>
+								<exploded>vehicles/russian/R115_IS-3_auto/_skins/R115_IS-3_auto_OCN_3DSt/crash/lod0/Gun_01.model</exploded>
+							</R115_IS-3_auto_OCN_3DSt>
+						</sets>
 					</models>
 					<hitTester>
 						<collisionModelServer>vehicles/russian/R115_IS-3_auto/collision/Gun_01.model</collisionModelServer>
@@ -3569,6 +3637,13 @@
 				<undamaged>vehicles/russian/R115_IS-3_auto/normal/lod0/Turret_01.model</undamaged>
 				<destroyed>vehicles/russian/R115_IS-3_auto/crash/lod0/Turret_01.model</destroyed>
 				<exploded>vehicles/russian/R115_IS-3_auto/crash/lod0/Turret_01.model</exploded>
+				<sets>
+					<R115_IS-3_auto_OCN_3DSt>
+						<undamaged>vehicles/russian/R115_IS-3_auto/_skins/R115_IS-3_auto_OCN_3DSt/normal/lod0/Turret_01.model</undamaged>
+						<destroyed>vehicles/russian/R115_IS-3_auto/_skins/R115_IS-3_auto_OCN_3DSt/crash/lod0/Turret_01.model</destroyed>
+						<exploded>vehicles/russian/R115_IS-3_auto/_skins/R115_IS-3_auto_OCN_3DSt/crash/lod0/Turret_01.model</exploded>
+					</R115_IS-3_auto_OCN_3DSt>
+				</sets>
 			</models>
 			<hitTester>
 				<collisionModelServer>vehicles/russian/R115_IS-3_auto/collision/Turret_01.model</collisionModelServer>
@@ -4717,6 +4792,53 @@
 					</clipAngle>
 					<hiddenForUser>true</hiddenForUser>
 					<anchorShift>-0.048561</anchorShift>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35047</slotId>
+					<tags>formfactor_square</tags>
+					<compatibleModels>R115_IS-3_auto_OCN_3DSt</compatibleModels>
+					<position>
+						1.15896 1.87736 0.881004
+						<!--BW_String-->
+					</position>
+					<rotation>
+						1.00006 1.25053 -3.11671
+						<!--BW_String-->
+					</rotation>
+					<scale>0.438067 0.438067 0.438067</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>256</showOn>
+					<clipAngle>
+						1.06924
+						<!--BW_String-->
+					</clipAngle>
+					<anchorShift>
+						0.02537
+						<!--BW_String-->
+					</anchorShift>
+				</slot>
+				<slot>
+					<slotType>projectionDecal</slotType>
+					<slotId>35048</slotId>
+					<tags>formfactor_square</tags>
+					<compatibleModels>R115_IS-3_auto_OCN_3DSt</compatibleModels>
+					<position>
+						-1.21332 1.94574 0.138183
+						<!--BW_String-->
+					</position>
+					<rotation>
+						2.07105 1.32873 -0.0240593
+						<!--BW_String-->
+					</rotation>
+					<scale>0.280831 0.464408 0.280826</scale>
+					<doubleSided>false</doubleSided>
+					<showOn>256</showOn>
+					<clipAngle>
+						1.12667
+						<!--BW_String-->
+					</clipAngle>
+					<anchorShift>-0.028556</anchorShift>
 				</slot>
 			</customizationSlots>
 			<customization>

@@ -1,4 +1,4 @@
-from adisp import process
+from adisp import adisp_process
 from gui import DialogsInterface
 from gui.Scaleform.daapi.view.dialogs.ConfirmModuleMeta import SellModuleMeta
 from gui.Scaleform.daapi.view.lobby.shared.cm_handlers import option, CMLabel, ContextMenu
@@ -15,7 +15,7 @@ class ForSellCMHandler(ContextMenu, EventSystemEntity):
         shared_events.showStorageModuleInfo(self._id)
 
     @option(__sqGen.next(), CMLabel.SELL)
-    @process
+    @adisp_process
     def sell(self):
         yield DialogsInterface.showDialog(SellModuleMeta(self._id))
 

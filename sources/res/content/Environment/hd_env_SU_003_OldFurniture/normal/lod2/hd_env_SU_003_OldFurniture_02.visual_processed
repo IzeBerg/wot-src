@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>HP_module0</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.287164 0.000000</row3>
+			</transform>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>d_wood0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_SU_003_OldFurniture/hd_env_SU_003_OldFurniture_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>87</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_SU_003_OldFurniture/hd_env_SU_003_OldFurniture_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_SU_003_OldFurniture/hd_env_SU_003_OldFurniture_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.081429 0.183202 0.136897</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>n_wood0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_SU_003_OldFurniture/hd_env_SU_003_OldFurniture_AM.dds</Texture>
+					</property>
+					<collisionFlags>128</collisionFlags>
+					<materialKind>73</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_SU_003_OldFurniture/hd_env_SU_003_OldFurniture_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_SU_003_OldFurniture/hd_env_SU_003_OldFurniture_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.000172 0.339415 0.052773</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_wall_0</identifier>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<collisionFlags>131</collisionFlags>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<materialKind>73</materialKind>
+					<property>
+						selfIllumination
+						<Float>0.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.750000 0.014201</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.650181 -0.535587 -0.412460</min>
+		<max>0.813038 1.500000 0.686253</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>3322</geometrySize>
+	<minUVDensity>0.008045</minUVDensity>
+</root>

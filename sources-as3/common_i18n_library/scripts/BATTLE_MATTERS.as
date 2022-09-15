@@ -73,6 +73,10 @@ package
       
       public static const MAINSCREEN_BOOTCAMPBUTTON:String = "#battle_matters:mainScreen/bootcampButton";
       
+      public static const MAINSCREEN_BOOTCAMPBUTTONTOOLTIP_HEADER:String = "#battle_matters:mainScreen/bootcampButtonTooltip/header";
+      
+      public static const MAINSCREEN_BOOTCAMPBUTTONTOOLTIP_BODY:String = "#battle_matters:mainScreen/bootcampButtonTooltip/body";
+      
       public static const MAINSCREEN_PROGRESS:String = "#battle_matters:mainScreen/progress";
       
       public static const MAINSCREEN_TARGET:String = "#battle_matters:mainScreen/target";
@@ -94,6 +98,8 @@ package
       public static const MAINSCREEN_QUEST_UNAVAILABLEDESCRIPTION:String = "#battle_matters:mainScreen/quest/unavailableDescription";
       
       public static const ANIMATIONS_CREW_BOOKS:String = "#battle_matters:animations/crew_books";
+      
+      public static const ANIMATIONS_CREW_CLOSE:String = "#battle_matters:animations/crew_close";
       
       public static const ANIMATIONS_BLUEPRINTS:String = "#battle_matters:animations/blueprints";
       
@@ -135,9 +141,15 @@ package
       
       public static const VEHICLESELECTION_NOFILTEREDVEHICLES:String = "#battle_matters:vehicleSelection/noFilteredVehicles";
       
+      public static const VEHICLESELECTION_NOFILTEREDVEHICLESRESETBUTTON:String = "#battle_matters:vehicleSelection/noFilteredVehiclesResetButton";
+      
       public static const VEHICLESELECTION_FILTER_TOOLTIP_HEADER:String = "#battle_matters:vehicleSelection/filter/tooltip/header";
       
       public static const VEHICLESELECTION_FILTER_TOOLTIP_BODY:String = "#battle_matters:vehicleSelection/filter/tooltip/body";
+      
+      public static const VEHICLESELECTION_FILTER_TOOLTIP_RESET_HEADER:String = "#battle_matters:vehicleSelection/filter/tooltip/reset/header";
+      
+      public static const VEHICLESELECTION_FILTER_TOOLTIP_RESET_DESCRIPTION:String = "#battle_matters:vehicleSelection/filter/tooltip/reset/description";
       
       public static const VEHICLESELECTION_SEARCH_PLACEHOLDER:String = "#battle_matters:vehicleSelection/search/placeholder";
       

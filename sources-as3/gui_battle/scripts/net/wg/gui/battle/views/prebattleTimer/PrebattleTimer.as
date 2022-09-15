@@ -24,19 +24,6 @@ package net.wg.gui.battle.views.prebattleTimer
          super();
       }
       
-      public function as_showInfo() : void
-      {
-         if(!this._isInfoDisplayed && componentVisibility)
-         {
-            this._isInfoDisplayed = true;
-            if(this.infoContainer.showInfo() && this.infoContainer.isInfoHasAnimation)
-            {
-               onShowInfoS();
-               App.utils.scheduler.scheduleTask(this.onHideInfoHandler,HIDE_INFO_DELAY);
-            }
-         }
-      }
-      
       override protected function onDispose() : void
       {
          this.infoContainer.dispose();
@@ -44,7 +31,7 @@ package net.wg.gui.battle.views.prebattleTimer
          super.onDispose();
       }
       
-      override protected function doUpdateSize(param1:Boolean) : void
+      override protected function doUpdateSize(param1:String) : void
       {
          super.doUpdateSize(param1);
          this.infoContainer.updateStage(App.appWidth,App.appHeight);
@@ -96,6 +83,19 @@ package net.wg.gui.battle.views.prebattleTimer
       public function as_setInfoHint(param1:String) : void
       {
          this.infoContainer.setHint(param1);
+      }
+      
+      public function as_showInfo() : void
+      {
+         if(!this._isInfoDisplayed && componentVisibility)
+         {
+            this._isInfoDisplayed = true;
+            if(this.infoContainer.showInfo() && this.infoContainer.isInfoHasAnimation)
+            {
+               onShowInfoS();
+               App.utils.scheduler.scheduleTask(this.onHideInfoHandler,HIDE_INFO_DELAY);
+            }
+         }
       }
       
       private function onAllowHideInfo() : void

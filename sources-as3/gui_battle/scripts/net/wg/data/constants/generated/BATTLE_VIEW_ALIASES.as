@@ -41,6 +41,8 @@ package net.wg.data.constants.generated
       
       public static const TIMERS_PANEL:String = "timersPanel";
       
+      public static const POINT_OF_INTEREST_NOTIFICATIONS_PANEL:String = "pointsOfInterestNotificationPanel";
+      
       public static const STATUS_NOTIFICATIONS_PANEL:String = "statusNotificationsPanel";
       
       public static const DUAL_GUN_PANEL:String = "dualGunPanel";
@@ -74,6 +76,8 @@ package net.wg.data.constants.generated
       public static const HIT_DIRECTION:String = "hitDirection";
       
       public static const SIEGE_MODE_INDICATOR:String = "siegeModeIndicator";
+      
+      public static const ROCKET_ACCELERATOR_INDICATOR:String = "rocketAcceleratorIndicator";
       
       public static const BOOTCAMP_CONSUMABLES_PANEL:String = "bootcampConsumablesPanel";
       
@@ -139,6 +143,8 @@ package net.wg.data.constants.generated
       
       public static const CORRODING_SHOT_INDICATOR:String = "corrodingShotIndicator";
       
+      public static const PERSONAL_RESERVES_TAB:String = "personalReservesTab";
+      
       public static const EVENT_POSTMORTEM_PANEL:String = "eventPostmortemPanel";
       
       public static const BATTLE_VEHICLE_CONFIGURATOR:String = "battleVehicleConfigurator";
@@ -168,6 +174,10 @@ package net.wg.data.constants.generated
       public static const MAPS_TRAINING_GOALS:String = "mapsTrainingGoals";
       
       public static const PIERCING_DEBUG_PANEL:String = "piercingDebugPanel";
+      
+      public static const COMP7_TANK_CAROUSEL:String = "comp7BattleTankCarousel";
+      
+      public static const COMP7_TANK_CAROUSEL_FILTER_POPOVER:String = "comp7TankCarouselFilterPopover";
        
       
       public function BATTLE_VIEW_ALIASES()

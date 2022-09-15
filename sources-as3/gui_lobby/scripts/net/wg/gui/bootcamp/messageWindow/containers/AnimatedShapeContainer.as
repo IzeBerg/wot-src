@@ -47,5 +47,9 @@ package net.wg.gui.bootcamp.messageWindow.containers
       {
          return this._disposed;
       }
+      
+      public function set maxLinesNumber(param1:int) : void
+      {
+      }
    }
 }

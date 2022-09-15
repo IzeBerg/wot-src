@@ -1,5 +1,6 @@
 from gui.Scaleform.locale.MESSENGER import MESSENGER
 from messenger.gui.Scaleform.meta.GroupDeleteViewMeta import GroupDeleteViewMeta
+from messenger import normalizeGroupId
 from messenger.m_constants import PROTO_TYPE
 from messenger.proto import proto_getter
 
@@ -10,7 +11,7 @@ class GroupDeleteView(GroupDeleteViewMeta):
         return
 
     def onOk(self, data):
-        self.proto.contacts.removeGroup(data.groupName, data.deleteWithMembers)
+        self.proto.contacts.removeGroup(normalizeGroupId(data.groupName), data.deleteWithMembers)
         self.as_closeViewS()
 
     def _getInitDataObject(self):

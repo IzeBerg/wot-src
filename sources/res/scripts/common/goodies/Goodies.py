@@ -1,21 +1,25 @@
 import collections
-from typing import Union, Type
+from typing import TYPE_CHECKING
 from WeakMethod import WeakMethod
-from goodie_constants import GOODIE_STATE, MAX_ACTIVE_GOODIES, GOODIE_NOTIFICATION_TYPE
+from goodie_constants import GOODIE_STATE, MAX_ACTIVE_BOOSTERS, GOODIE_NOTIFICATION_TYPE
 from soft_exception import SoftException
 from GoodieResources import GoodieResource
 from GoodieTargets import GoodieTarget
+if TYPE_CHECKING:
+    from typing import Type, Dict, Optional, Callable
+    from goodies.Goodie import Goodie
+    from goodies.GoodieDefinition import GoodieDefinition
 
 class GoodieException(SoftException):
     pass
 
 
-class ActualGoodiesDict(collections.MutableMapping, dict):
+class _ActualGoodiesDict(collections.MutableMapping, dict):
 
     def __init__(self, definedGoodiesDict, resourceIndexDict):
         self._definedGoodiesDict = definedGoodiesDict
         self._resourceIndexDict = resourceIndexDict
-        super(ActualGoodiesDict, self).__init__()
+        super(_ActualGoodiesDict, self).__init__()
 
     def __getitem__(self, key):
         return dict.__getitem__(self, key)
@@ -48,7 +52,7 @@ class ActualGoodiesDict(collections.MutableMapping, dict):
     def __contains__(self, x):
         return dict.__contains__(self, x)
 
-    def getResource(self, goodieID):
+    def __getResource(self, goodieID):
         goodie = dict.__getitem__(self, goodieID)
         if goodie is None:
             return
@@ -59,7 +63,7 @@ class ActualGoodiesDict(collections.MutableMapping, dict):
             return (defined.resource, defined.value)
 
     def checkResource(self, goodieID):
-        resourceTuple = self.getResource(goodieID)
+        resourceTuple = self.__getResource(goodieID)
         if resourceTuple is None:
             return
         else:
@@ -70,8 +74,8 @@ class ActualGoodiesDict(collections.MutableMapping, dict):
             return
 
     def compareByResource(self, goodieID, anotherGoodieID):
-        resourceTuple = self.getResource(goodieID)
-        anotherResourceTuple = self.getResource(anotherGoodieID)
+        resourceTuple = self.__getResource(goodieID)
+        anotherResourceTuple = self.__getResource(anotherGoodieID)
         if resourceTuple is None or anotherResourceTuple is None:
             return False
         resource, value = resourceTuple
@@ -81,18 +85,15 @@ class ActualGoodiesDict(collections.MutableMapping, dict):
         else:
             if anotherValue > value:
                 return True
-            else:
-                return False
-
-            return
+            return False
 
 
 class Goodies(object):
 
     def __init__(self, definedGoodies, updateCallback=None, removeCallback=None):
         self.definedGoodies = definedGoodies
-        self.resourceIndex = {}
-        self.actualGoodies = ActualGoodiesDict(self.definedGoodies, self.resourceIndex)
+        self.__resourceIndex = {}
+        self.actualGoodies = _ActualGoodiesDict(self.definedGoodies, self.__resourceIndex)
         if updateCallback:
             self._updateCallback = WeakMethod(updateCallback)
         else:
@@ -169,10 +170,10 @@ class Goodies(object):
              resources}
         toUpdate = {}
         for resource in resources:
-            bestGoodieDef = self.getBestAvailableGoodie(target, resource, applyToZero)
+            bestGoodieDef, bestDeltaValue = self.__getBestAvailableGoodie(target, resource, applyToZero)
             if bestGoodieDef is not None:
                 if returnDeltas:
-                    toUpdate[bestGoodieDef.uid] = bestGoodieDef.apply_delta(resource, applyToZero)
+                    toUpdate[bestGoodieDef.uid] = bestDeltaValue
                 else:
                     toUpdate[bestGoodieDef.uid] = bestGoodieDef.apply(resources, applyToZero)
 
@@ -184,18 +185,19 @@ class Goodies(object):
     def actualIds(self):
         return set(self.actualGoodies.iterkeys())
 
-    def getBestAvailableGoodie(self, target, resource, applyToZero):
-        bestGoodieDef, bestDeltaValue = (None, 0)
+    def __getBestAvailableGoodie(self, target, resource, applyToZero):
+        bestGoodieDef, bestDelta = (None, None)
         for goodie in self.actualGoodies.itervalues():
             goodieDefinition = self.definedGoodies[goodie.uid]
             if goodieDefinition.isActivatable() and not goodie.isActive():
                 continue
             if issubclass(target.__class__, goodieDefinition.target.__class__) and target._targetID == goodieDefinition.target._targetID and goodieDefinition.resource == resource.__class__:
                 delta = goodieDefinition.apply_delta(resource, applyToZero)
-                if delta is not None and (bestGoodieDef is None or bestDeltaValue < delta.value):
-                    bestGoodieDef, bestDeltaValue = goodieDefinition, delta.value
+                if delta is not None and (bestGoodieDef is None or bestDelta.value < delta.value):
+                    bestGoodieDef, bestDelta = goodieDefinition, delta
 
-        return bestGoodieDef
+        return (
+         bestGoodieDef, bestDelta)
 
     def getFirstGoodie(self, target, resource):
         for goodie in self.actualGoodies.itervalues():
@@ -298,7 +300,7 @@ class Goodies(object):
                     self.remove(oldGoodieID)
                 else:
                     return
-            if self.activeGoodiesCount() >= MAX_ACTIVE_GOODIES:
+            if self.activeGoodiesCount() >= MAX_ACTIVE_BOOSTERS:
                 return
             goodie = defined.createGoodie(state=GOODIE_STATE.ACTIVE, counter=goodie.counter)
             self.actualGoodies[goodieID] = goodie
@@ -312,7 +314,7 @@ class Goodies(object):
             self.__updateCounter(defined, goodie.counter, GOODIE_STATE.INACTIVE, GOODIE_NOTIFICATION_TYPE.DISABLED)
 
     def activeIds(self):
-        return set(self.resourceIndex.itervalues())
+        return set(self.__resourceIndex.itervalues())
 
     def erase(self, goodieID):
         goodie = self.actualGoodies.get(goodieID, None)

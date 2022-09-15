@@ -48,11 +48,6 @@ package net.wg.gui.bootcamp
          return RIBBONS_CENTER_SCREEN_OFFSET_Y;
       }
       
-      override protected function get prebattleAmmunitionPanelAvailable() : Boolean
-      {
-         return false;
-      }
-      
       override protected function onPopulate() : void
       {
          super.onPopulate();
@@ -63,22 +58,18 @@ package net.wg.gui.bootcamp
       override protected function configUI() : void
       {
          super.configUI();
-         App.stage.addEventListener(AppearEvent.PREPARE,this.onStageAppearHintCreatedHandler);
-         minimap.addEventListener(LifeCycleEvent.ON_GRAPHICS_RECTANGLES_UPDATE,this.onGraphicsRectanglesUpdateHandler);
+         App.stage.addEventListener(AppearEvent.PREPARE,this.onStagePrepareHandler);
+         minimap.addEventListener(LifeCycleEvent.ON_GRAPHICS_RECTANGLES_UPDATE,this.onMinimapOnGraphicsRectanglesUpdateHandler);
       }
       
       override protected function onDispose() : void
       {
-         App.stage.removeEventListener(AppearEvent.PREPARE,this.onStageAppearHintCreatedHandler);
-         minimap.removeEventListener(LifeCycleEvent.ON_GRAPHICS_RECTANGLES_UPDATE,this.onGraphicsRectanglesUpdateHandler);
+         App.stage.removeEventListener(AppearEvent.PREPARE,this.onStagePrepareHandler);
+         minimap.removeEventListener(LifeCycleEvent.ON_GRAPHICS_RECTANGLES_UPDATE,this.onMinimapOnGraphicsRectanglesUpdateHandler);
          this.secondaryHint = null;
          this.battleTopHint = null;
+         this._appearMinimapHint = null;
          super.onDispose();
-      }
-      
-      override protected function get isQuestProgress() : Boolean
-      {
-         return false;
       }
       
       private function setMinimapHintsVisible() : void
@@ -89,29 +80,41 @@ package net.wg.gui.bootcamp
          }
       }
       
-      private function onStageAppearHintCreatedHandler(param1:AppearEvent) : void
+      override protected function get prebattleAmmunitionPanelAvailable() : Boolean
+      {
+         return false;
+      }
+      
+      override protected function get isQuestProgress() : Boolean
+      {
+         return false;
+      }
+      
+      override protected function onMinimapSizeChangedHandler(param1:MinimapEvent) : void
+      {
+         super.onMinimapSizeChangedHandler(param1);
+         this.setMinimapHintsVisible();
+      }
+      
+      private function onStagePrepareHandler(param1:AppearEvent) : void
       {
          this._appearMinimapHint = BCAppearMinimapHint(param1.target);
          this.setMinimapHintsVisible();
       }
       
-      override protected function onMiniMapChangeHandler(param1:MinimapEvent) : void
-      {
-         super.onMiniMapChangeHandler(param1);
-         this.setMinimapHintsVisible();
-      }
-      
-      private function onGraphicsRectanglesUpdateHandler(param1:Event) : void
+      private function onMinimapOnGraphicsRectanglesUpdateHandler(param1:Event) : void
       {
          var _loc2_:Vector.<Rectangle> = null;
+         var _loc3_:Rectangle = null;
          if(this._appearMinimapHint)
          {
             _loc2_ = minimap.getRectangles();
             if(_loc2_)
             {
-               this._appearMinimapHint.x = _loc2_[0].x - MINIMAP_HINT_OFFSET_POS;
-               this._appearMinimapHint.y = _loc2_[0].y - MINIMAP_HINT_OFFSET_POS;
-               this._appearMinimapHint.setProperties(_loc2_[0].width + MINIMAP_HINT_OFFSET_SIZE,_loc2_[0].height + MINIMAP_HINT_OFFSET_SIZE,true);
+               _loc3_ = _loc2_[0];
+               this._appearMinimapHint.x = _loc3_.x - MINIMAP_HINT_OFFSET_POS;
+               this._appearMinimapHint.y = _loc3_.y - MINIMAP_HINT_OFFSET_POS;
+               this._appearMinimapHint.setProperties(_loc3_.width + MINIMAP_HINT_OFFSET_SIZE,_loc3_.height + MINIMAP_HINT_OFFSET_SIZE,true);
             }
          }
       }

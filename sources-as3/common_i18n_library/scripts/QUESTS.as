@@ -1897,7 +1897,9 @@ package
       
       public static const DETAILS_DOSSIER_37_BATTLESCOUNT:String = "#quests:details/dossier/37/battlesCount";
       
-      public static const DETAILS_DOSSIER_38_BATTLESCOUNT:String = "#quests:details/dossier/38/battlesCount";
+      public static const DETAILS_DOSSIER_39_BATTLESCOUNT:String = "#quests:details/dossier/39/battlesCount";
+      
+      public static const DETAILS_DOSSIER_43_BATTLESCOUNT:String = "#quests:details/dossier/43/battlesCount";
       
       public static const DETAILS_MODIFIERS_TITLE_DISCOUNT:String = "#quests:details/modifiers/title/discount";
       

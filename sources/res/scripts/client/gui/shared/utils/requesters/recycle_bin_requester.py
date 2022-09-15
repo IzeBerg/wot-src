@@ -1,7 +1,7 @@
 from collections import namedtuple
 import BigWorld
 from ItemRestore import RESTORE_VEHICLE_TYPE
-from adisp import async
+from adisp import adisp_async
 from gui.shared.utils.requesters.abstract import AbstractSyncDataRequester
 from helpers import time_utils
 from skeletons.gui.shared.utils.requesters import IRecycleBinRequester
@@ -74,6 +74,6 @@ class RecycleBinRequester(AbstractSyncDataRequester, IRecycleBinRequester):
     def getTankman(self, invID, maxDuration):
         return self.getTankmen(maxDuration).get(invID)
 
-    @async
+    @adisp_async
     def _requestCache(self, callback):
         BigWorld.player().recycleBin.getCache(lambda resID, value: self._response(resID, value, callback))

@@ -14,9 +14,9 @@ package net.wg.gui.battle.battleRoyale.views.components
    import net.wg.gui.battle.components.CoolDownTimer;
    import net.wg.gui.battle.components.buttons.BattleToolTipButton;
    import net.wg.gui.battle.components.interfaces.ICoolDownCompleteHandler;
-   import net.wg.gui.battle.views.consumablesPanel.BattleEquipmentButtonGlow;
    import net.wg.gui.battle.views.consumablesPanel.VO.ConsumablesVO;
    import net.wg.gui.battle.views.consumablesPanel.constants.COLOR_STATES;
+   import net.wg.gui.battle.views.consumablesPanel.interfaces.IBattleEquipmentButtonGlow;
    import net.wg.gui.battle.views.consumablesPanel.interfaces.IConsumablesButton;
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.utils.IScheduler;
@@ -76,7 +76,7 @@ package net.wg.gui.battle.battleRoyale.views.components
       
       public var cooldownMc:MovieClip = null;
       
-      public var glow:BattleEquipmentButtonGlow = null;
+      public var glow:IBattleEquipmentButtonGlow = null;
       
       public var activatedIndicator:MovieClip = null;
       

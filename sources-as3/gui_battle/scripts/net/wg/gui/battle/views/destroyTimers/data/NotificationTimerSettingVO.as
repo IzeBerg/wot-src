@@ -12,6 +12,8 @@ package net.wg.gui.battle.views.destroyTimers.data
       
       public var iconName:String = "";
       
+      public var iconSmallName:String = "";
+      
       public var linkage:String = "";
       
       public var color:String = "";
@@ -28,7 +30,11 @@ package net.wg.gui.battle.views.destroyTimers.data
       
       public var isCanBeMainType:Boolean = false;
       
+      public var isReversedTimerDirection:Boolean = false;
+      
       public var iconOffsetY:int = -1;
+      
+      public var canBlink:Boolean = false;
       
       public function NotificationTimerSettingVO(param1:Object)
       {

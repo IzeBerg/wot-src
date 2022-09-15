@@ -18,6 +18,10 @@ package net.wg.data.constants.generated
       public static const STATE_IDLE:String = "idle";
       
       public static const STATE_ATTACK:String = "attack";
+      
+      public static const STATE_ACTIVE:String = "active";
+      
+      public static const STATE_NOT_ACTIVE:String = "notActive";
        
       
       public function BATTLE_MINIMAP_CONSTS()

@@ -1,4 +1,5 @@
-from battle_selector_item import SelectorItem
+from __future__ import absolute_import
+from gui.Scaleform.daapi.view.lobby.header.battle_selector_item import SelectorItem
 
 class SelectorExtraItem(SelectorItem):
 

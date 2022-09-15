@@ -1,4 +1,4 @@
-from adisp import async
+from adisp import adisp_async
 from messenger.m_constants import CLIENT_ERROR_ID
 from messenger.proto.entities import SharedUserEntity
 from messenger.proto.shared_errors import ClientError
@@ -120,6 +120,6 @@ class NicknameResolver(ClientEventsHandler):
 
 class AsyncNicknameResolver(NicknameResolver):
 
-    @async
+    @adisp_async
     def resolve(self, dbIDs, callback=None):
         super(AsyncNicknameResolver, self).resolve(dbIDs, callback)

@@ -1,5 +1,6 @@
 import typing, operator, time, BigWorld
-from constants import EVENT_TYPE, EMAIL_CONFIRMATION_QUEST_ID, CUSTOMIZATION_PROGRESS_PREFIX
+from constants import EVENT_TYPE, EMAIL_CONFIRMATION_QUEST_ID
+from customization_quests_common import deserializeToken, validateToken
 from gui import makeHtmlString
 from gui.Scaleform.genConsts.MISSIONS_STATES import MISSIONS_STATES
 from gui.Scaleform.locale.MENU import MENU
@@ -9,6 +10,7 @@ from gui.impl import backport
 from gui.impl.gen import R
 from gui.server_events import formatters
 from gui.server_events.personal_missions_navigation import PersonalMissionsNavigation
+from gui.shared.gui_items.customization import C11nStyleProgressData
 from helpers import time_utils, i18n, dependency, isPlayerAccount
 from shared_utils import CONST_CONTAINER, findFirst, first
 from skeletons.gui.customization import ICustomizationService
@@ -16,7 +18,7 @@ from skeletons.gui.game_control import IMarathonEventsController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
-from gui.server_events.events_constants import BATTLE_MATTERS_QUEST_ID, MARATHON_GROUP_PREFIX, PREMIUM_GROUP_PREFIX, DAILY_QUEST_ID_PREFIX, RANKED_DAILY_GROUP_ID, RANKED_PLATFORM_GROUP_ID, BATTLE_ROYALE_GROUPS_ID, EPIC_BATTLE_GROUPS_ID, MAPS_TRAINING_GROUPS_ID, MAPS_TRAINING_QUEST_PREFIX
+from gui.server_events.events_constants import BATTLE_MATTERS_QUEST_ID, MARATHON_GROUP_PREFIX, PREMIUM_GROUP_PREFIX, DAILY_QUEST_ID_PREFIX, RANKED_DAILY_GROUP_ID, RANKED_PLATFORM_GROUP_ID, BATTLE_ROYALE_GROUPS_ID, EPIC_BATTLE_GROUPS_ID, MAPS_TRAINING_GROUPS_ID, MAPS_TRAINING_QUEST_PREFIX, FUN_RANDOM_GROUP_ID
 from helpers.i18n import makeString as _ms
 from gui.Scaleform.locale.LINKEDSET import LINKEDSET
 from gui.server_events.conditions import getProgressFromQuestWithSingleAccumulative
@@ -313,6 +315,12 @@ def isBattleRoyale(eventID):
     return False
 
 
+def isFunRandomQuest(eventID):
+    if eventID:
+        return eventID.startswith(FUN_RANDOM_GROUP_ID)
+    return False
+
+
 def isRankedDaily(eventID):
     if eventID:
         return eventID.startswith(RANKED_DAILY_GROUP_ID)
@@ -349,17 +357,21 @@ def isC11nQuest(eventID, c11nService=None):
 
 def getDataByC11nQuest(quest):
     if not isC11nQuest(quest.getID()):
-        return (-1, -1, -1)
+        return C11nStyleProgressData()
     tokenBonuses = quest.getBonuses('tokens')
-    if tokenBonuses:
-        firstBonus = first(tokenBonuses)
-        token = first(firstBonus.getTokens().values())
-        tokenID = token.id
-        if tokenID.startswith(CUSTOMIZATION_PROGRESS_PREFIX):
-            ws = tokenID[len(CUSTOMIZATION_PROGRESS_PREFIX):].split('_')
-            return (
-             int(ws[0]), int(ws[1]), token.limit)
-    return (-1, -1, -1)
+    if not tokenBonuses:
+        return C11nStyleProgressData()
+    firstBonus = first(tokenBonuses)
+    token = first(firstBonus.getTokens().values())
+    return parseC11nProgressToken(token)
+
+
+def parseC11nProgressToken(token):
+    tokenID = token.id
+    if not validateToken(tokenID):
+        return C11nStyleProgressData()
+    styleID, branch = deserializeToken(tokenID)
+    return C11nStyleProgressData(styleID=styleID, branch=branch, level=token.limit)
 
 
 def getLocalizedMissionNameForLinkedSet(missionID):
@@ -522,6 +534,12 @@ def getRankedDailyGroup(eventsCache=None):
 def getRankedPlatformGroup(eventsCache=None):
     groups = eventsCache.getGroups()
     return findFirst(lambda g: isRankedPlatform(g.getID()), groups.values())
+
+
+@dependency.replace_none_kwargs(eventsCache=IEventsCache)
+def getFunRandomDailyGroup(eventsCache=None):
+    groups = eventsCache.getGroups()
+    return findFirst(lambda g: isFunRandomQuest(g.getID()), groups.values())
 
 
 @dependency.replace_none_kwargs(eventsCache=IEventsCache, lobbyContext=ILobbyContext)

@@ -204,6 +204,11 @@ package net.wg.gui.lobby.techtree.data.vo
          this.dataIsReady = true;
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function setVehCompareTreeNode(param1:Object) : void
       {
          this.clearVehCompareTreeNodeVO();
@@ -308,11 +313,6 @@ package net.wg.gui.lobby.techtree.data.vo
       public function get hasTechTreeEvent() : Boolean
       {
          return (this.state & NODE_STATE_FLAGS.HAS_TECH_TREE_EVENT) > 0;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

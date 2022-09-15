@@ -21,6 +21,14 @@ package net.wg.gui.battle.tutorial.views
          super();
       }
       
+      override public function updateStage(param1:Number, param2:Number) : void
+      {
+         this.battleTutorial.updateStage(param1,param2);
+         this.consumablesPanel.updateStage(param1,param2);
+         this.destroyTimersPanel.updateStage(param1,param2);
+         super.updateStage(param1,param2);
+      }
+      
       override protected function onPopulate() : void
       {
          registerComponent(this.battleTutorial,BATTLE_VIEW_ALIASES.BATTLE_TUTORIAL);
@@ -35,14 +43,6 @@ package net.wg.gui.battle.tutorial.views
          this.consumablesPanel = null;
          this.destroyTimersPanel = null;
          super.onDispose();
-      }
-      
-      override public function updateStage(param1:Number, param2:Number) : void
-      {
-         this.battleTutorial.updateStage(param1,param2);
-         this.consumablesPanel.updateStage(param1,param2);
-         this.destroyTimersPanel.updateStage(param1,param2);
-         super.updateStage(param1,param2);
       }
    }
 }

@@ -1,5 +1,5 @@
 import typing, GUI
-from async import async, await, AsyncEvent
+from wg_async import wg_async, wg_await, AsyncEvent
 from frameworks.wulf import WindowLayer
 from gui.Scaleform.lobby_entry import LobbyEntry
 from gui.hangar_cameras.hangar_camera_common import CameraRelatedEvents, CameraMovementStates
@@ -40,11 +40,11 @@ class OverlayController(IOverlayController):
         self._showEvent.set()
         self._showEvent.destroy()
 
-    @async
+    @wg_async
     def waitShow(self):
         if self._canShow():
             return
-        yield await(self._showEvent.wait())
+        yield wg_await(self._showEvent.wait())
 
     @property
     def isActive(self):

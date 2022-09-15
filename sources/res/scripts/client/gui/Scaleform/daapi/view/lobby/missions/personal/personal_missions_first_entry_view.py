@@ -1,4 +1,4 @@
-from adisp import process
+from adisp import adisp_process
 from gui import GUI_SETTINGS
 from gui.Scaleform.daapi import LobbySubView
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
@@ -90,7 +90,7 @@ class PersonalMissionFirstEntryView(LobbySubView, PersonalMissionFirstEntryViewM
            'notificationLabel': backport.text(item.warning()) if item and 'warning' in item.keys() else ''}
         self.as_setDetailedCardDataS(data)
 
-    @process
+    @adisp_process
     def __showVideo(self):
         url = yield self.__urlMacros.parse(self.__settings.get('url'))
         webHandlers = webApiCollection(ui_web_api.CloseViewWebApi, sound_web_api.SoundWebApi, sound_web_api.HangarSoundWebApi)

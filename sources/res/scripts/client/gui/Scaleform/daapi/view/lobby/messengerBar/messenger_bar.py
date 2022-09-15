@@ -1,5 +1,5 @@
 from account_helpers.settings_core.settings_constants import SESSION_STATS
-from adisp import process
+from adisp import adisp_process
 from constants import PREBATTLE_TYPE, IS_DEVELOPMENT
 from frameworks.wulf import WindowLayer
 from gui import makeHtmlString
@@ -198,7 +198,7 @@ class MessengerBar(MessengerBarMeta, IGlobalListener):
     def __updateSessionStatsHint(self, visible):
         self.as_setSessionStatsButtonSettingsUpdateS(visible, '!')
 
-    @process
+    @adisp_process
     def __updateSessionStatsBtn(self):
         dispatcher = self.prbDispatcher
         if dispatcher is not None:

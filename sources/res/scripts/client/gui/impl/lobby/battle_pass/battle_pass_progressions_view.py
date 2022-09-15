@@ -151,7 +151,7 @@ class BattlePassProgressionsView(ViewImpl):
          (
           events.MissionsEvent.ON_TAB_CHANGED, self.__onMissionsTabChanged, EVENT_BUS_SCOPE.LOBBY),
          (
-          events.BattlePassEvent.AWARD_VIEW_CLOSE, self.__onAwardViewClose),
+          events.BattlePassEvent.AWARD_VIEW_CLOSE, self.__onAwardViewClose, EVENT_BUS_SCOPE.LOBBY),
          (
           events.BattlePassEvent.ON_PURCHASE_LEVELS, self.__onPurchaseLevels, EVENT_BUS_SCOPE.LOBBY),
          (
@@ -163,7 +163,7 @@ class BattlePassProgressionsView(ViewImpl):
           'stats.bpcoin', self.__updateBalance),)
 
     def _onLoading(self, *args, **kwargs):
-        super(BattlePassProgressionsView, self)._onLoading()
+        super(BattlePassProgressionsView, self)._onLoading(*args, **kwargs)
         self.__notifier = Notifiable()
         self.__notifier.addNotificator(PeriodicNotifier(self.__battlePass.getSeasonTimeLeft, self.__updateTimer))
         self.__notifier.addNotificator(SimpleNotifier(self.__battlePass.getFinalOfferTimeLeft, self.__updateTimer))
@@ -463,7 +463,7 @@ class BattlePassProgressionsView(ViewImpl):
         for view in self.__gui.windowsManager.findViews(__isValidSubView):
             view.destroyWindow()
 
-    def __onAwardViewClose(self):
+    def __onAwardViewClose(self, *_):
         self.__setShowBuyAnimations()
 
     def __onBattlePassSettingsChange(self, *_):

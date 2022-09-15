@@ -1,6 +1,6 @@
 import logging, CGF, Event
 from GenericComponents import VSEComponent
-from adisp import process
+from adisp import adisp_process
 from cgf_script.component_meta_class import CGFComponent, CGFMetaTypes, ComponentProperty
 from cgf_script.managers_registrator import autoregister, onAddedQuery, onRemovedQuery
 from constants import MarathonConfig, IS_CLIENT
@@ -33,7 +33,7 @@ class OpenBrowserOnClickComponent(CGFComponent):
     def doAction(self):
         self.__openBrowser()
 
-    @process
+    @adisp_process
     def __openBrowser(self):
         getterFunc = URL_PROVIDERS[self.urlProvider]
         unparsedUrl = getterFunc()

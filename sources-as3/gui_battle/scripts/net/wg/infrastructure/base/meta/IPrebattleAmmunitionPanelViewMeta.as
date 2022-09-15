@@ -13,5 +13,7 @@ package net.wg.infrastructure.base.meta
       function as_hide(param1:Boolean) : void;
       
       function as_setIsInLoading(param1:Boolean) : void;
+      
+      function as_showShadows(param1:Boolean) : void;
    }
 }

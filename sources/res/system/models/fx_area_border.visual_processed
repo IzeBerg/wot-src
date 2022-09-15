@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>redLineShader</identifier>
+					<fx>shaders/std_effects/red_wall_alpha.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_redWallParams
+						<Vector4>
+							300 6 0.4 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_enableStripes
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_redWallParams2
+						<Vector4>2.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						texAddressMode
+						<Int>1</Int>
+					</property>
+					<property>
+						g_wallColor
+						<Vector4>
+							0.8 0.000000 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						g_enableDistanceFade
+						<Int>1</Int>
+					</property>
+				</material>
+				<groupOrigin>-0.000002 0.499999 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.499999 -0.000000 -0.499999</min>
+		<max>0.499995 0.999999 0.499999</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>432128</geometrySize>
+	<minUVDensity>10000.000000</minUVDensity>
+</root>

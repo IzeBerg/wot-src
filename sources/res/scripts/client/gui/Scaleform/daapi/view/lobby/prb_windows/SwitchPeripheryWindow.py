@@ -1,5 +1,5 @@
 import constants
-from adisp import process
+from adisp import adisp_process
 from debug_utils import LOG_DEBUG
 from gui import DialogsInterface
 from gui import GUI_SETTINGS
@@ -113,7 +113,7 @@ class SwitchPeripheryWindow(SwitchPeripheryWindowMeta, Notifiable):
         super(SwitchPeripheryWindow, self)._dispose()
         return
 
-    @process
+    @adisp_process
     def __relogin(self, peripheryID):
         if g_preDefinedHosts.isRoamingPeriphery(peripheryID):
             success = yield DialogsInterface.showI18nConfirmDialog('changeRoamingPeriphery')

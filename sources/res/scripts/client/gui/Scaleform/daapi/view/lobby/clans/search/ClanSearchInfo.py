@@ -1,5 +1,5 @@
 import weakref
-from adisp import process
+from adisp import adisp_process
 from gui import SystemMessages
 from gui.Scaleform.daapi.view.lobby.profile.ProfileUtils import HeaderItemsTypes, ProfileUtils
 from gui.Scaleform.daapi.view.meta.ClanSearchInfoMeta import ClanSearchInfoMeta
@@ -42,7 +42,7 @@ class ClanSearchInfo(ClanSearchInfoMeta, ClanListener, ClanEmblemsHelper):
     def onAccountClanProfileChanged(self, profile):
         self._updateSetaledState()
 
-    @process
+    @adisp_process
     def sendRequest(self):
         self.as_setWaitingVisibleS(True)
         context = CreateApplicationCtx([self.__selectedClan.getClanDbID()])

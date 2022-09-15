@@ -1,4 +1,4 @@
-from adisp import process
+from adisp import adisp_process
 from gui import SystemMessages
 from gui.Scaleform.daapi.view.meta.ClanProfileBaseViewMeta import ClanProfileBaseViewMeta
 from gui.Scaleform.locale.CLANS import CLANS
@@ -56,7 +56,7 @@ class ClanProfileBaseView(ClanProfileBaseViewMeta, ClanEmblemsHelper, ClanListen
         super(ClanProfileBaseView, self)._dispose()
         return
 
-    @process
+    @adisp_process
     def _sendApplication(self):
         self.as_showWaitingS(True)
         context = CreateApplicationCtx([self._clanDossier.getDbID()])

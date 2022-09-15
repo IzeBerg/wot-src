@@ -1,5 +1,5 @@
 import logging, BigWorld
-from adisp import process
+from adisp import adisp_process
 from gui.Scaleform.daapi.view.lobby.techtree import dumpers, nodes
 from gui.Scaleform.daapi.view.lobby.techtree.data import ResearchItemsData
 from gui.Scaleform.daapi.view.lobby.vehicle_compare import cmp_helpers
@@ -273,6 +273,6 @@ class VehicleModulesView(VehicleModulesViewMeta, VehicleCompareConfiguratorBaseV
         module = itemsCache.items.getItemByCD(moduleId)
         return module
 
-    @process
+    @adisp_process
     def _installModule(self, vehicle, module):
         yield getPreviewInstallerProcessor(vehicle, module).request()

@@ -4,6 +4,7 @@ package net.wg.gui.login.impl
    import flash.display.InteractiveObject;
    import flash.display.Sprite;
    import flash.events.Event;
+   import flash.events.MouseEvent;
    import flash.geom.Point;
    import flash.geom.Rectangle;
    import flash.text.TextField;
@@ -232,6 +233,7 @@ package net.wg.gui.login.impl
       override protected function configUI() : void
       {
          super.configUI();
+         addEventListener(MouseEvent.CLICK,this.onMouseClickHandler);
          this.videoPlayer.maxAttemptsCount = MAX_VIDEO_LOADING_ATTEMPTS;
          this.videoPlayer.isLoop = true;
          this.rssNewsFeed.addEventListener(RssItemEvent.ITEM_SIZE_INVALID,this.onRssNewsFeedItemSizeInvalidHandler);
@@ -267,6 +269,14 @@ package net.wg.gui.login.impl
          this.loginViewStack.addEventListener(LoginEvent.ON_SUBMIT_WITHOUT_TOKEN,this.onLoginViewStackOnSubmitWithoutTokenHandler);
          this.bgModeButton.focusable = false;
          this.soundButton.focusable = false;
+      }
+      
+      private function onMouseClickHandler(param1:MouseEvent) : void
+      {
+         if(!stage.focus)
+         {
+            App.utils.focusHandler.setFocus(this);
+         }
       }
       
       override protected function draw() : void
@@ -308,6 +318,7 @@ package net.wg.gui.login.impl
       
       override protected function onDispose() : void
       {
+         removeEventListener(MouseEvent.CLICK,this.onMouseClickHandler);
          this.removeTween();
          this.bgImage.removeEventListener(UILoaderEvent.COMPLETE,this.onBgImageCompleteHandler);
          this.bgImage.dispose();

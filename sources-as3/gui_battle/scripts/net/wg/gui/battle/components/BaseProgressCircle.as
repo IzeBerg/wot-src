@@ -32,6 +32,12 @@ package net.wg.gui.battle.components
          this.progressCircle.gotoAndStop(SEMI_LAST_FRAME);
       }
       
+      override protected function onDispose() : void
+      {
+         this.progressCircle = null;
+         super.onDispose();
+      }
+      
       public function updateProgress(param1:Number) : void
       {
          var _loc2_:int = param1 * SEMI_LAST_FRAME >> 0;
@@ -48,10 +54,14 @@ package net.wg.gui.battle.components
          return ALLY_STATE;
       }
       
-      override protected function onDispose() : void
+      public function set circleState(param1:String) : void
       {
-         this.progressCircle = null;
-         super.onDispose();
+         this.state = param1;
+      }
+      
+      public function set currentProgressFrame(param1:int) : void
+      {
+         this.curFrame = param1;
       }
    }
 }

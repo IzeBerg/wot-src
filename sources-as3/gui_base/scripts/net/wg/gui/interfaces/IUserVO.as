@@ -31,5 +31,7 @@ package net.wg.gui.interfaces
       function get badgeVisualVO() : BadgeVisualVO;
       
       function get isAnonymized() : Boolean;
+      
+      function get timeJoin() : int;
    }
 }

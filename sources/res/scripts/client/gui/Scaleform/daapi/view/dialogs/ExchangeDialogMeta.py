@@ -1,5 +1,5 @@
 import math, operator, Event
-from adisp import async, process
+from adisp import adisp_async, adisp_process
 from gui import DialogsInterface
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.Scaleform.daapi.view.dialogs import I18nConfirmDialogMeta
@@ -173,8 +173,8 @@ class _ExchangeDialogMeta(I18nConfirmDialogMeta):
         self.onCloseDialog.clear()
         self.__submitter.destroy()
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def submit(self, gold, valueToExchange, callback=None):
         submitter = self._getSubmitter()
         result = yield submitter.submit(gold, valueToExchange)
@@ -403,8 +403,8 @@ class _WebProductExchangeItem(_ExchangeItem):
 class _ExchangeCreditsSubmitter(_ExchangeSubmitterBase):
     itemsCache = dependency.descriptor(IItemsCache)
 
-    @async
-    @decorators.process('transferMoney')
+    @adisp_async
+    @decorators.adisp_process('transferMoney')
     def submit(self, gold, valueToExchange, callback=None):
         result = yield GoldToCreditsExchanger(gold).request()
         if callback is not None:
@@ -577,8 +577,8 @@ class _ExchangeXpSubmitter(_ExchangeSubmitterBase):
         self._xpCost = None
         return
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def submit(self, gold, xpToExchange, callback=None):
         isOk, result, xpExchanged = yield DialogsInterface.showDialog(ExchangeDetailedXPDialogMeta(xpToExchange))
         if xpExchanged < xpToExchange:

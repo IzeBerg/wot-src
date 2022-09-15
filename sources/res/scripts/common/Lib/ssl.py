@@ -243,6 +243,7 @@ class Purpose(_ASN1Object):
 
 Purpose.SERVER_AUTH = Purpose('1.3.6.1.5.5.7.3.1')
 Purpose.CLIENT_AUTH = Purpose('1.3.6.1.5.5.7.3.2')
+_certificates = {}
 
 class SSLContext(_SSLContext):
     """An SSLContext holds various SSL-related configuration options and
@@ -286,14 +287,17 @@ class SSLContext(_SSLContext):
 
     def _load_windows_store_certs(self, storename, purpose):
         certs = bytearray()
-        try:
-            for cert, encoding, trust in enum_certificates(storename):
-                if encoding == 'x509_asn':
-                    if trust is True or purpose.oid in trust:
-                        certs.extend(cert)
+        if _certificates.get(storename) is None:
+            try:
+                _certificates[storename] = enum_certificates(storename)
+            except OSError:
+                warnings.warn('unable to enumerate Windows certificate store')
+                _certificates[storename] = []
 
-        except OSError:
-            warnings.warn('unable to enumerate Windows certificate store')
+        for cert, encoding, trust in _certificates[storename]:
+            if encoding == 'x509_asn':
+                if trust is True or purpose.oid in trust:
+                    certs.extend(cert)
 
         if certs:
             self.load_verify_locations(cadata=certs)

@@ -28,6 +28,9 @@ msgstr "Стальной охотник, взвод"
 msgid "profile/dropdown/labels/clan"
 msgstr "Глобальная карта"
 
+msgid "profile/dropdown/labels/comp7"
+msgstr "Натиск"
+
 msgid "profile/dropdown/labels/epicRandom"
 msgstr "Генеральное сражение"
 
@@ -114,8 +117,34 @@ msgstr ""
 "• урон по вашим разведданным;\n"
 "• урон после вашего попадания, сбившего гусеницу и обездвижившего цель."
 
+msgid "profile/params/tooltip/avgAssistedDamage/shortSelf/comp7/body"
+msgstr ""
+"Учитываются:\n"
+"• урон по вашим разведданным (в т.ч. с помощью навыков);\n"
+"• урон после вашего попадания, сбившего гусеницу и обездвижившего цель (в т.ч. с помощью навыков);\n"
+"• урон, нанесённый союзниками с помощью ваших навыков."
+
+msgid "profile/params/tooltip/avgAssistedDamage/shortSelf/comp7/header"
+msgstr "Урон, нанесённый с вашей помощью"
+
 msgid "profile/params/tooltip/avgAssistedDamage/shortSelf/header"
 msgstr "Урон, нанесённый с вашей помощью"
+
+msgid "profile/params/tooltip/avgAssistedStunDamage/comp7/shortOther/body"
+msgstr ""
+"Отношение общего количества урона по оглушённому противнику (в т.ч. с "
+"помощью навыков) к количеству проведённых боёв"
+
+msgid "profile/params/tooltip/avgAssistedStunDamage/comp7/shortOther/header"
+msgstr "Урон по оглушённым игроком целям"
+
+msgid "profile/params/tooltip/avgAssistedStunDamage/comp7/shortSelf/body"
+msgstr ""
+"Отношение общего количества урона по оглушённому противнику (в т.ч. с "
+"помощью навыков) к количеству проведённых боёв"
+
+msgid "profile/params/tooltip/avgAssistedStunDamage/comp7/shortSelf/header"
+msgstr "Урон по оглушённым вами целям"
 
 msgid "profile/params/tooltip/avgAssistedStunDamage/shortOther/body"
 msgstr ""
@@ -145,6 +174,14 @@ msgstr ""
 "Отношение общего количества уничтоженных машин противника к количеству "
 "проведённых боёв"
 
+msgid "profile/params/tooltip/avgDestroyedVehicles/comp7/body"
+msgstr ""
+"Отношение общего количества уничтоженных (в т.ч. с помощью навыков) машин "
+"противника к количеству проведённых боёв"
+
+msgid "profile/params/tooltip/avgDestroyedVehicles/comp7/header"
+msgstr "Уничтожено машин противника"
+
 msgid "profile/params/tooltip/avgDestroyedVehicles/header"
 msgstr "Уничтожено машин противника"
 
@@ -152,6 +189,14 @@ msgid "profile/params/tooltip/avgDetectedEnemies/body"
 msgstr ""
 "Отношение общего количества обнаруженных машин противника к количеству "
 "проведённых боёв"
+
+msgid "profile/params/tooltip/avgDetectedEnemies/comp7/body"
+msgstr ""
+"Отношение общего количества обнаруженных машин противника (в т.ч. с помощью "
+"навыков) к количеству проведённых боёв"
+
+msgid "profile/params/tooltip/avgDetectedEnemies/comp7/header"
+msgstr "Обнаружено машин противника"
 
 msgid "profile/params/tooltip/avgDetectedEnemies/header"
 msgstr "Обнаружено машин противника"
@@ -179,6 +224,30 @@ msgstr ""
 msgid "profile/params/tooltip/avgExp/header"
 msgstr "Средний опыт за бой"
 
+msgid "profile/params/tooltip/avgHealthRepair/body"
+msgstr ""
+"Отношение общего количества восстановленных очков прочности к количеству "
+"проведённых боёв"
+
+msgid "profile/params/tooltip/avgHealthRepair/header"
+msgstr "Восстановленные очки прочности"
+
+msgid "profile/params/tooltip/avgPoiCaptured/body"
+msgstr ""
+"Отношение общего количества захваченных ключевых позиций к количеству "
+"проведённых боёв"
+
+msgid "profile/params/tooltip/avgPoiCaptured/header"
+msgstr "Захваченные ключевые позиции"
+
+msgid "profile/params/tooltip/avgPrestigePoints/body"
+msgstr ""
+"Отношение общего количества заработанных очков престижа к количеству "
+"проведённых боёв"
+
+msgid "profile/params/tooltip/avgPrestigePoints/header"
+msgstr "Очки престижа"
+
 msgid "profile/params/tooltip/avgReceivedDamage/body"
 msgstr ""
 "Отношение общего количества полученного урона к количеству проведённых боёв"
@@ -186,10 +255,26 @@ msgstr ""
 msgid "profile/params/tooltip/avgReceivedDamage/header"
 msgstr "Полученный урон"
 
+msgid "profile/params/tooltip/avgRoleSkillUsed/body"
+msgstr ""
+"Отношение общего количества применений ролевых навыков к количеству "
+"проведённых боёв"
+
+msgid "profile/params/tooltip/avgRoleSkillUsed/header"
+msgstr "Применённые ролевые навыки"
+
 msgid "profile/params/tooltip/avgStunNumber/body"
 msgstr ""
 "Отношение общего количества совершённых попаданий с оглушением экипажа "
 "противника к количеству проведённых боёв"
+
+msgid "profile/params/tooltip/avgStunNumber/comp7/body"
+msgstr ""
+"Отношение общего количества попаданий с оглушением членов экипажа противника"
+" (в т.ч. с помощью навыков) к количеству проведённых боёв"
+
+msgid "profile/params/tooltip/avgStunNumber/comp7/header"
+msgstr "Количество оглушений"
 
 msgid "profile/params/tooltip/avgStunNumber/header"
 msgstr "Количество оглушений"
@@ -604,6 +689,22 @@ msgstr "Максимальное количество машин противн�
 msgid "profile/params/tooltip/maxDestroyed/vehicle/header"
 msgstr "Максимум уничтожено за бой"
 
+msgid "profile/params/tooltip/maxEquipmentDamageDealt/body"
+msgstr ""
+"Максимальное количество урона, нанесённое как ролевыми, так и тактическими "
+"навыками в одном бою."
+
+msgid "profile/params/tooltip/maxEquipmentDamageDealt/header"
+msgstr "Максимальный урон навыками за бой"
+
+msgid "profile/params/tooltip/maxEquipmentDamageDealt/vehicle/body"
+msgstr ""
+"Засчитывается урон как от ролевых, так и от тактических навыков.\n"
+"Рекорд установлен на %(value_0)s"
+
+msgid "profile/params/tooltip/maxEquipmentDamageDealt/vehicle/header"
+msgstr "Максимальный урон навыками за бой"
+
 msgid "profile/params/tooltip/maxExp/body"
 msgstr "Рекорд установлен на %(value_0)s"
 
@@ -622,6 +723,34 @@ msgstr "В данном режиме боя максимальный опыт н
 msgid "profile/params/tooltip/maxExpDisabled/header"
 msgstr "Максимальный опыт за бой"
 
+msgid "profile/params/tooltip/maxHealthRepair/body"
+msgstr ""
+"Максимальное количество очков прочности, восстановленное своей машине и "
+"технике союзников за бой."
+
+msgid "profile/params/tooltip/maxHealthRepair/header"
+msgstr "Максимум восстановлено очков прочности за бой"
+
+msgid "profile/params/tooltip/maxHealthRepair/vehicle/body"
+msgstr ""
+"Максимальное количество очков прочности, восстановленное своей машине и технике союзников за бой.\n"
+"Рекорд установлен на %(value_0)s"
+
+msgid "profile/params/tooltip/maxHealthRepair/vehicle/header"
+msgstr "Максимум восстановлено очков прочности за бой"
+
+msgid "profile/params/tooltip/maxPrestigePoints/body"
+msgstr "Максимальное количество очков престижа, заработанное за бой."
+
+msgid "profile/params/tooltip/maxPrestigePoints/header"
+msgstr "Максимум очков престижа за бой"
+
+msgid "profile/params/tooltip/maxPrestigePoints/vehicle/body"
+msgstr "Рекорд установлен на %(value_0)s"
+
+msgid "profile/params/tooltip/maxPrestigePoints/vehicle/header"
+msgstr "Максимум очков престижа за бой"
+
 msgid "profile/params/tooltip/maxVictoryPoints/body"
 msgstr ""
 "Рекордный показатель заработанных очков победы за бой среди всех проведённых"
@@ -637,6 +766,20 @@ msgstr ""
 
 msgid "profile/params/tooltip/maxWinPoints/header"
 msgstr "Максимум очков победы за бой"
+
+msgid "profile/params/tooltip/maxWinSeries/body"
+msgstr ""
+"Максимальная серия побед в режиме в одиночку и во взводе/в составе взвода из"
+" 7 игроков."
+
+msgid "profile/params/tooltip/maxWinSeries/header"
+msgstr "Максимальная серия побед (соло и взвод/супервзвод)"
+
+msgid "profile/params/tooltip/poiCaptured/body"
+msgstr "Количество захваченных ключевых позиций"
+
+msgid "profile/params/tooltip/poiCaptured/header"
+msgstr "Захваченные ключевые позиции"
 
 msgid "profile/params/tooltip/ranked/avgFrags/body"
 msgstr "Среднее количество уничтоженной за бой техники противника"
@@ -734,6 +877,9 @@ msgstr "Текущий сезон"
 
 msgid "profile/seasonsdropdown/specific"
 msgstr "Сезон %(date1)s – %(date2)s"
+
+msgid "profile/section/statistics/scores/maxHealthRepair"
+msgstr "Максимум восстановлено очков прочности за бой"
 
 msgid "profile/summary/clan/btnLabel"
 msgstr "Профиль клана"
@@ -1194,8 +1340,20 @@ msgstr "Уничтожено машин противника"
 msgid "section/statistics/detailed/avgDetectedEnemies"
 msgstr "Обнаружено машин противника"
 
+msgid "section/statistics/detailed/avgHealthRepaired"
+msgstr "Восстановленные очки прочности"
+
+msgid "section/statistics/detailed/avgPoiCaptured"
+msgstr "Захваченные ключевые позиции"
+
+msgid "section/statistics/detailed/avgPrestigePoints"
+msgstr "Очки престижа"
+
 msgid "section/statistics/detailed/avgReceivedDamage"
 msgstr "Полученный урон"
+
+msgid "section/statistics/detailed/avgRoleSkillUsed"
+msgstr "Применённые ролевые навыки"
 
 msgid "section/statistics/detailed/damageCoefficient"
 msgstr "Коэффициент урона"
@@ -1232,6 +1390,9 @@ msgstr "Стальной охотник"
 
 msgid "section/statistics/headerText/clan"
 msgstr "Глобальная карта"
+
+msgid "section/statistics/headerText/comp7"
+msgstr "Натиск"
 
 msgid "section/statistics/headerText/epicRandom"
 msgstr "Генеральное сражение"
@@ -1283,6 +1444,9 @@ msgstr "Средний опыт за бой"
 
 msgid "section/statistics/scores/avgExperience/short"
 msgstr "Опыт"
+
+msgid "section/statistics/scores/avgPrestigePoints"
+msgstr "В среднем очков престижа за бой"
 
 msgid "section/statistics/scores/avgVictoryPoints"
 msgstr "Среднее количество очков победы"
@@ -1356,11 +1520,23 @@ msgstr "Разграбления"
 msgid "section/statistics/scores/maxDamage"
 msgstr "Максимальный урон за бой"
 
+msgid "section/statistics/scores/maxEquipmentDamageDealt"
+msgstr "Максимальный урон навыками за бой"
+
 msgid "section/statistics/scores/maxExperience"
 msgstr "Максимальный опыт за бой"
 
+msgid "section/statistics/scores/maxPrestigePoints"
+msgstr "Максимум очков престижа за бой"
+
 msgid "section/statistics/scores/maxVictoryPoints"
 msgstr "Максимум очков победы за бой"
+
+msgid "section/statistics/scores/maxWinSeries"
+msgstr "Максимальная серия побед (соло и взвод/супервзвод)"
+
+msgid "section/statistics/scores/poiCaptured"
+msgstr "Захваченные ключевые позиции"
 
 msgid "section/statistics/scores/ranked/avgFrags"
 msgstr "Среднее количество уничтоженной техники"
@@ -1451,6 +1627,9 @@ msgstr ""
 msgid "section/technique/buttonBar/classiness"
 msgstr "Классность"
 
+msgid "section/technique/buttonBar/prestigePoints"
+msgstr "В среднем очков престижа за бой"
+
 msgid "section/technique/buttonBar/totalBattles"
 msgstr "Бои"
 
@@ -1476,6 +1655,9 @@ msgstr ""
 msgid "section/technique/emptyScreenLabel/battleType/battleRoyaleSquad"
 msgstr ""
 "В Ангаре нет техники, принимавшей участие в событии «Стальной охотник»."
+
+msgid "section/technique/emptyScreenLabel/battleType/comp7"
+msgstr "Нет техники, принимавшей участие в боях режима «Натиск»."
 
 msgid "section/technique/emptyScreenLabel/battleType/epicRandom"
 msgstr "В Ангаре нет техники, принимавшей участие в Генеральном сражении"
@@ -1558,6 +1740,12 @@ msgstr "Сортировать по нации"
 
 msgid "section/technique/sort/tooltip/nation/header"
 msgstr "Нация"
+
+msgid "section/technique/sort/tooltip/prestigePoints/body"
+msgstr "Сортировать по среднему количеству очков престижа за бой"
+
+msgid "section/technique/sort/tooltip/prestigePoints/header"
+msgstr "Среднее количество очков престижа за бой"
 
 msgid "section/technique/sort/tooltip/technique/body"
 msgstr "Сортировать по типу техники"

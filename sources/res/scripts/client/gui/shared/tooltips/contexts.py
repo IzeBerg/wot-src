@@ -24,9 +24,10 @@ from gui.shared.tooltips import TOOLTIP_COMPONENT
 from gui.shared.utils.requesters.blueprints_requester import getFragmentNationID
 from helpers import dependency
 from helpers.i18n import makeString
+from items import vehicles
 from rent_common import RENT_TYPE_TO_DURATION
 from shared_utils import findFirst, first
-from skeletons.gui.game_control import IRankedBattlesController, IBattlePassController
+from skeletons.gui.game_control import IRankedBattlesController, IBattlePassController, IComp7Controller
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.offers import IOffersDataProvider
 from skeletons.gui.server_events import IEventsCache
@@ -48,7 +49,8 @@ class StatsConfiguration(object):
     __slots__ = ('vehicle', 'sellPrice', 'buyPrice', 'unlockPrice', 'inventoryCount',
                  'vehiclesCount', 'node', 'xp', 'dailyXP', 'minRentPrice', 'restorePrice',
                  'rentals', 'slotIdx', 'futureRentals', 'isAwardWindow', 'showBonus',
-                 'showRankedBonusBattle', 'showCompatibles', 'withSlots', 'isStaticInfoOnly')
+                 'showRankedBonusBattle', 'showCompatibles', 'withSlots', 'isStaticInfoOnly',
+                 'showEarnCrystals')
 
     def __init__(self):
         self.vehicle = None
@@ -71,6 +73,7 @@ class StatsConfiguration(object):
         self.showCompatibles = False
         self.withSlots = False
         self.isStaticInfoOnly = False
+        self.showEarnCrystals = True
         return
 
 
@@ -906,7 +909,7 @@ class PersonalCaseContext(ToolTipContext):
     def __init__(self, fieldsToExclude=None):
         super(PersonalCaseContext, self).__init__(TOOLTIP_COMPONENT.PERSONAL_CASE, fieldsToExclude)
 
-    def buildItem(self, skillID, tankmanID):
+    def buildItem(self, skillID, tankmanID, *args, **kwargs):
         tankman = self.itemsCache.items.getTankman(int(tankmanID))
         skill = findFirst(lambda x: x.name == skillID, tankman.skills)
         if skill is None:
@@ -1377,3 +1380,27 @@ class BattlePassGiftTokenContext(ToolTipContext):
 
     def getParams(self):
         return {'isOfferEnabled': self.__battlePassController.isOfferEnabled() and self.__hasOffer}
+
+
+class Comp7RoleSkillBattleContext(ToolTipContext):
+    __comp7Controller = dependency.descriptor(IComp7Controller)
+
+    def __init__(self):
+        super(Comp7RoleSkillBattleContext, self).__init__(TOOLTIP_COMPONENT.FULL_STATS)
+
+    def buildItem(self, roleName):
+        return self.__comp7Controller.getRoleEquipment(roleName)
+
+
+class Comp7RoleSkillLobbyContext(ToolTipContext):
+
+    def __init__(self):
+        super(Comp7RoleSkillLobbyContext, self).__init__(TOOLTIP_COMPONENT.HANGAR)
+
+    def buildItem(self, equipmentName):
+        cache = vehicles.g_cache
+        equipmentID = cache.equipmentIDs().get(equipmentName)
+        if equipmentID is not None:
+            return cache.equipments().get(equipmentID)
+        else:
+            return

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<fx>shaders/std_effects/subsurface_skinned.fx</fx>
+	<property>
+		subSurfaceBlendPower
+		<Float>1.000000</Float>
+	</property>
+	<property>
+		subSurfaceMap
+		<Texture>helpers\maps\aid_builder.dds</Texture>
+	</property>
+	<property>
+		specularMap
+		<Texture>helpers\maps\aid_builder.dds</Texture>
+	</property>
+	<property>
+		normalMap
+		<Texture>helpers\maps\aid_builder_norms.dds</Texture>
+	</property>
+	<property>
+		diffuseMap
+		<Texture>helpers\maps\aid_builder.dds</Texture>
+	</property>
+	<property>
+		rimStrength
+		<Float>0.200000</Float>
+	</property>
+	<property>
+		rimWidth
+		<Float>0.500000</Float>
+	</property>
+	<materialKind>0</materialKind>
+</root>

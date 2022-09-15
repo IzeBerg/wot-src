@@ -23,6 +23,10 @@ package net.wg.gui.battle.views.minimap
       {
       }
       
+      public function as_initPrebattleSize(param1:int) : void
+      {
+      }
+      
       public function as_setAlpha(param1:Number) : void
       {
          this.alpha = param1;
@@ -68,7 +72,7 @@ package net.wg.gui.battle.views.minimap
          return new Rectangle();
       }
       
-      public function getMinmapHeightBySizeIndex(param1:int) : int
+      public function getMinimapTotalWidthByIndex(param1:uint) : int
       {
          return 0;
       }

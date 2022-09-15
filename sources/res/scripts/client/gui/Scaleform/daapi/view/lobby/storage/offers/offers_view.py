@@ -1,6 +1,6 @@
 import ResMgr
 from account_helpers.offers.cache import CachePrefetchResult
-from adisp import process, async
+from adisp import adisp_process, adisp_async
 from gui.Scaleform.daapi.view.lobby.storage.storage_helpers import createStorageDefVO
 from gui.Scaleform.daapi.view.meta.StorageCategoryOffersViewMeta import StorageCategoryOffersViewMeta
 from gui.Scaleform.Waiting import Waiting
@@ -35,8 +35,8 @@ class StorageCategoryOffersView(StorageCategoryOffersViewMeta):
         if self.getActive():
             self._updateData()
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def _syncOffers(self, callback=None):
         result = CachePrefetchResult.SUCCESS
         currentIDs = {offerVO['id'] for offerVO in self._dataProvider.collection}
@@ -47,7 +47,7 @@ class StorageCategoryOffersView(StorageCategoryOffersViewMeta):
             Waiting.hide('loadContent')
         callback(result)
 
-    @process
+    @adisp_process
     def _updateData(self):
         result = yield self._syncOffers()
         if not self._offersProvider.getAvailableOffers(onlyVisible=True):

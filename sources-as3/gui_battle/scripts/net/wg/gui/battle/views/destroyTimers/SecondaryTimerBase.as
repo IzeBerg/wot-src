@@ -58,6 +58,7 @@ package net.wg.gui.battle.views.destroyTimers
          pauseHideTimer();
          pauseRadialTimer();
          this.hideTimer();
+         onHide();
       }
       
       public function setSettings(param1:NotificationTimerSettingVO) : void
@@ -84,8 +85,11 @@ package net.wg.gui.battle.views.destroyTimers
       
       public function tweenToX(param1:int) : void
       {
-         this.clearTweenX();
-         this._tweenX = new Tween(TWEEN_X_DURATION,this,{"x":param1});
+         if(x != param1)
+         {
+            this.clearTweenX();
+            this._tweenX = new Tween(TWEEN_X_DURATION,this,{"x":param1});
+         }
       }
       
       private function clearTweenX() : void

@@ -34,6 +34,17 @@ package net.wg.gui.lobby.techtree.controls
          super();
       }
       
+      override public function setData(param1:Number, param2:Boolean = false) : void
+      {
+         super.setData(param1,param2);
+         if(this._isElite == param2)
+         {
+            return;
+         }
+         this._isElite = param2;
+         invalidateState();
+      }
+      
       override public function updateWalletStatus() : void
       {
          this._freeXPIsAvailable = !this.haveNotFreeXp.updateStatus(App.utils.voMgr.walletStatusVO.freeXpStatus);
@@ -72,27 +83,6 @@ package net.wg.gui.lobby.techtree.controls
          App.utils.commons.updateTextFieldSize(this.totalXPLabel,true,false);
       }
       
-      override public function setData(param1:Number, param2:Boolean = false) : void
-      {
-         super.setData(param1,param2);
-         if(this._isElite == param2)
-         {
-            return;
-         }
-         this._isElite = param2;
-         invalidateState();
-      }
-      
-      override public function set freeXP(param1:Number) : void
-      {
-         if(param1 == this._freeXP)
-         {
-            return;
-         }
-         this._freeXP = param1;
-         invalidateData();
-      }
-      
       override protected function updateData() : void
       {
          super.updateData();
@@ -105,9 +95,10 @@ package net.wg.gui.lobby.techtree.controls
       
       override protected function updateLayout() : void
       {
+         var _loc1_:Number = NaN;
          App.utils.commons.updateTextFieldSize(vehXPField,true,false);
          App.utils.commons.updateTextFieldSize(this.totalXPField,true,false);
-         var _loc1_:Number = Math.max(vehXPField.width,!!this._freeXPIsAvailable ? Number(this.totalXPField.width) : Number(this.haveNotFreeXp.width));
+         _loc1_ = Math.max(vehXPField.width,!!this._freeXPIsAvailable ? Number(this.totalXPField.width) : Number(this.haveNotFreeXp.width));
          vehXPField.x = _loc1_ - vehXPField.width | 0;
          this.totalXPField.x = _loc1_ - this.totalXPField.width | 0;
          this.vehXPIcon.x = this.vehXPInTotalIcon.x = _loc1_ + FIELD_OFFSET | 0;
@@ -120,6 +111,16 @@ package net.wg.gui.lobby.techtree.controls
          var _loc1_:String = !!this._isElite ? XpTypeStrings.ELITE_XP_TYPE : XpTypeStrings.EARNED_XP_TYPE;
          this.vehXPIcon.type = _loc1_;
          this.vehXPInTotalIcon.type = this.vehXPIcon.type;
+      }
+      
+      override public function set freeXP(param1:Number) : void
+      {
+         if(param1 == this._freeXP)
+         {
+            return;
+         }
+         this._freeXP = param1;
+         invalidateData();
       }
    }
 }

@@ -10,7 +10,7 @@ from helpers import dependency, log
 from messenger import MessengerEntry
 from skeletons.connection_mgr import IConnectionManager
 from skeletons.gameplay import IGameplayLogic
-from async import async, await
+from wg_async import wg_async, wg_await
 from gui.impl.dialogs import dialogs
 from system_events import g_systemEvents
 loadingScreenClass = GameLoading
@@ -402,10 +402,10 @@ def getAuthRealm():
     return constants.AUTH_REALM
 
 
-@async
+@wg_async
 def requestQuit():
     BigWorld.WGWindowsNotifier.onBattleBeginning()
-    isOk = yield await(dialogs.quitGame())
+    isOk = yield wg_await(dialogs.quitGame())
     if isOk:
         BigWorld.quit()
 

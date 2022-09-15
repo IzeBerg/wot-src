@@ -192,3 +192,7 @@ class CrosshairPanelContainerMeta(DAAPISimpleContainerMeta):
     def as_isFadedS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_isFaded(value)
+
+    def as_blinkReloadTimeS(self, blinkType):
+        if self._isDAAPIInited():
+            return self.flashObject.as_blinkReloadTime(blinkType)

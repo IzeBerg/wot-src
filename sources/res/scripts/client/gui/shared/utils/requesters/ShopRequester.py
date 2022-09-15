@@ -1,8 +1,8 @@
-import weakref
+import typing, weakref
 from collections import namedtuple
 from abc import ABCMeta, abstractmethod
 import logging, BigWorld
-from adisp import async
+from adisp import adisp_async
 from constants import WIN_XP_FACTOR_MODE, ARENA_BONUS_TYPE
 from items import ItemsPrices
 from goodies.goodie_constants import GOODIE_VARIETY, GOODIE_TARGET_TYPE, GOODIE_RESOURCE_TYPE
@@ -350,7 +350,7 @@ class ShopRequester(AbstractSyncDataRequester, ShopCommonStats, IShopRequester):
         super(ShopRequester, self)._response(resID, invData, callback)
         return
 
-    @async
+    @adisp_async
     def _requestCache(self, callback):
         BigWorld.player().shop.getCache(lambda resID, value, rev: self._response(resID, value, callback))
 

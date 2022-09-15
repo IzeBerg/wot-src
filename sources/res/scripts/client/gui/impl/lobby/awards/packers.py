@@ -1,5 +1,5 @@
 import logging, typing
-from adisp import async, process
+from adisp import adisp_async, adisp_process
 from constants import RentType, OFFER_TOKEN_PREFIX
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from gui.battle_pass.battle_pass_bonuses_packers import TmanTemplateBonusPacker
@@ -84,8 +84,8 @@ class _MultiAwardTokenBonusUIPacker(BaseBonusUIPacker):
     def isAsync(self):
         return True
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def asyncPack(self, bonus, callback=None):
         yield lambda callback: callback(True)
         result = []
@@ -119,8 +119,8 @@ class _MultiAwardTokenBonusUIPacker(BaseBonusUIPacker):
 
         callback(result)
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def asyncGetToolTip(self, bonus, callback=None):
         yield lambda callback: callback(True)
         result = []

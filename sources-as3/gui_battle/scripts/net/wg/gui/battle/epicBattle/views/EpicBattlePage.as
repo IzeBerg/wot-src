@@ -318,7 +318,7 @@ package net.wg.gui.battle.epicBattle.views
          registerFlashComponentS(battleStatisticDataController,BATTLE_VIEW_ALIASES.BATTLE_STATISTIC_DATA_CONTROLLER);
       }
       
-      override protected function onDispose() : void
+      override protected function onBeforeDispose() : void
       {
          prebattleTimer.removeEventListener(PrebattleTimerEvent.START_HIDING,this.onPrebattleTimerStartHidingHandler);
          this.battleMessenger.removeEventListener(FocusRequestEvent.REQUEST_FOCUS,this.onBattleMessengerRequestFocusHandler);
@@ -328,6 +328,11 @@ package net.wg.gui.battle.epicBattle.views
          this.epicScorePanelUI.removeEventListener(EpicScorePanelEvent.STATE_CHANGED,this.onScorePanelStateChangedHandler);
          battleLoading.removeEventListener(EpicBattleLoadingEvent.VISIBILITY_CHANGED,this.onBattleLoadingVisibilityChangedHandler);
          this.hintPanel.removeEventListener(Event.RESIZE,this.onHintPanelResizeHandler);
+         super.onBeforeDispose();
+      }
+      
+      override protected function onDispose() : void
+      {
          this.hintPanel = null;
          this.sixthSense = null;
          this.debugPanel = null;
@@ -350,6 +355,7 @@ package net.wg.gui.battle.epicBattle.views
          this.superPlatoonPanel = null;
          this.epicInGameRank = null;
          this.siegeModePanel = null;
+         this.prebattleTimerBackground.dispose();
          this.prebattleTimerBackground = null;
          this.statusNotificationsPanel = null;
          super.onDispose();
@@ -369,10 +375,6 @@ package net.wg.gui.battle.epicBattle.views
             param1--;
          }
          return param1;
-      }
-      
-      override protected function updateBattleDamageLogPosInPostmortem() : void
-      {
       }
       
       override protected function initialize() : void
@@ -509,9 +511,9 @@ package net.wg.gui.battle.epicBattle.views
          return _originalHeight < StageSizeBoundaries.HEIGHT_900 ? int(MESSENGER_IN_RESPAWN_OFFSET_Y_SMALL) : int(MESSENGER_IN_RESPAWN_OFFSET_Y_BIG);
       }
       
-      override protected function onMiniMapChangeHandler(param1:MinimapEvent) : void
+      override protected function onMinimapSizeChangedHandler(param1:MinimapEvent) : void
       {
-         super.onMiniMapChangeHandler(param1);
+         super.onMinimapSizeChangedHandler(param1);
          super.updateStage(App.appWidth,App.appHeight);
       }
       

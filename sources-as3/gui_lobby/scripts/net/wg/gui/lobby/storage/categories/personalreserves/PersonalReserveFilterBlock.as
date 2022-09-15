@@ -1,10 +1,12 @@
 package net.wg.gui.lobby.storage.categories.personalreserves
 {
    import flash.events.Event;
+   import flash.events.MouseEvent;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
    import net.wg.data.constants.Linkages;
    import net.wg.gui.components.containers.HorizontalGroupLayout;
+   import net.wg.gui.components.controls.SoundButtonEx;
    import net.wg.gui.events.FiltersEvent;
    import net.wg.gui.lobby.components.ButtonFilters;
    import net.wg.gui.lobby.components.data.ButtonFiltersVO;
@@ -16,18 +18,16 @@ package net.wg.gui.lobby.storage.categories.personalreserves
       
       private static const FILTERS_BUTTON_GAP:int = 7;
       
-      private static const FILTERS_GROUP_GAP:int = 40;
-      
       private static const FILTER_NAME_GAP:int = 7;
+      
+      private static const FILTERS_BLOCK_GAP:int = 20;
       
       private static const INVALID_RESET:String = "invalidateResetData";
        
       
-      public var durationFilters:ButtonFilters = null;
+      public var buyButton:SoundButtonEx;
       
       public var typeFilters:ButtonFilters = null;
-      
-      public var qualityFilterName:TextField = null;
       
       public var typeFilterName:TextField = null;
       
@@ -35,7 +35,7 @@ package net.wg.gui.lobby.storage.categories.personalreserves
       
       private var _typeFiltersVO:ButtonFiltersVO;
       
-      private var _durationFiltersVO:ButtonFiltersVO;
+      private var _onBuyInStoreClicked:Function;
       
       public function PersonalReserveFilterBlock()
       {
@@ -45,53 +45,45 @@ package net.wg.gui.lobby.storage.categories.personalreserves
       override protected function configUI() : void
       {
          super.configUI();
-         this.setupFilter(this.durationFilters);
          this.setupFilter(this.typeFilters);
-         this.qualityFilterName.text = STORAGE.PERSONALRESERVES_DURATIONFILTER_LABEL;
-         this.qualityFilterName.autoSize = TextFieldAutoSize.LEFT;
          this.typeFilterName.text = STORAGE.PERSONALRESERVES_TYPEFILTER_LABEL;
          this.typeFilterName.autoSize = TextFieldAutoSize.LEFT;
+         this.buyButton.label = PERSONAL_RESERVES.DEPOT_BUYBUTTON;
+         this.buyButton.addEventListener(MouseEvent.CLICK,this.onBuyButtonClickedHandle);
       }
       
       override protected function onDispose() : void
       {
          this._typeFiltersVO = null;
-         this._durationFiltersVO = null;
-         this.qualityFilterName = null;
          this.typeFilterName = null;
-         this.clearFilter(this.durationFilters);
-         this.durationFilters = null;
          this.clearFilter(this.typeFilters);
          this.typeFilters = null;
+         this.buyButton.removeEventListener(MouseEvent.CLICK,this.onBuyButtonClickedHandle);
+         this.buyButton = null;
          super.onDispose();
       }
       
       override protected function draw() : void
       {
          super.draw();
-         if(this._typeFiltersVO || this._durationFiltersVO)
+         if(this._typeFiltersVO)
          {
             if(isInvalid(INVALID_RESET))
             {
-               this.durationFilters.removeEventListener(FiltersEvent.FILTERS_CHANGED,this.onFilterBlockFiltersChangedHandler);
                this.typeFilters.removeEventListener(FiltersEvent.FILTERS_CHANGED,this.onFilterBlockFiltersChangedHandler);
-               this.durationFilters.resetFilters(this._resetData);
                this.typeFilters.resetFilters(this._resetData);
-               this.durationFilters.addEventListener(FiltersEvent.FILTERS_CHANGED,this.onFilterBlockFiltersChangedHandler);
                this.typeFilters.addEventListener(FiltersEvent.FILTERS_CHANGED,this.onFilterBlockFiltersChangedHandler);
             }
             if(isInvalid(InvalidationType.DATA))
             {
-               this.durationFilters.setData(this._durationFiltersVO);
                this.typeFilters.setData(this._typeFiltersVO);
                invalidateSize();
             }
             if(isInvalid(InvalidationType.SIZE))
             {
-               this.typeFilters.x = width - this.typeFilters.width >> 0;
+               this.buyButton.x = width - this.buyButton.width;
+               this.typeFilters.x = this.buyButton.x - this.buyButton.width - FILTERS_BLOCK_GAP;
                this.typeFilterName.x = this.typeFilters.x - this.typeFilterName.width - FILTER_NAME_GAP >> 0;
-               this.durationFilters.x = this.typeFilterName.x - FILTERS_GROUP_GAP - this.durationFilters.width >> 0;
-               this.qualityFilterName.x = this.durationFilters.x - this.qualityFilterName.width - FILTER_NAME_GAP >> 0;
             }
          }
       }
@@ -102,10 +94,10 @@ package net.wg.gui.lobby.storage.categories.personalreserves
          invalidate(INVALID_RESET);
       }
       
-      public function setData(param1:ButtonFiltersVO, param2:ButtonFiltersVO) : void
+      public function setData(param1:ButtonFiltersVO, param2:Function) : void
       {
          this._typeFiltersVO = param1;
-         this._durationFiltersVO = param2;
+         this._onBuyInStoreClicked = param2;
          invalidateData();
       }
       
@@ -131,8 +123,12 @@ package net.wg.gui.lobby.storage.categories.personalreserves
       
       private function onFilterBlockFiltersChangedHandler(param1:FiltersEvent) : void
       {
-         var _loc2_:int = this.durationFilters.filtersValue | this.typeFilters.filtersValue;
-         dispatchEvent(new FiltersEvent(FiltersEvent.FILTERS_CHANGED,_loc2_));
+         dispatchEvent(new FiltersEvent(FiltersEvent.FILTERS_CHANGED,this.typeFilters.filtersValue));
+      }
+      
+      private function onBuyButtonClickedHandle(param1:MouseEvent) : void
+      {
+         this._onBuyInStoreClicked();
       }
    }
 }

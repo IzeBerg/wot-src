@@ -16,5 +16,7 @@ package net.wg.gui.bootcamp.interfaces
       function get contentHeight() : int;
       
       function get contentWidth() : int;
+      
+      function set maxLinesNumber(param1:int) : void;
    }
 }

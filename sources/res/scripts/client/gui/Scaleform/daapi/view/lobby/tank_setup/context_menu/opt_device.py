@@ -1,4 +1,4 @@
-from adisp import process, async
+from adisp import adisp_process, adisp_async
 from gui.Scaleform.daapi.view.lobby.shared.cm_handlers import option
 from gui.Scaleform.daapi.view.lobby.tank_setup.context_menu.base import TankSetupCMLabel
 from gui.Scaleform.daapi.view.lobby.tank_setup.context_menu.base_equipment import BaseEquipmentItemContextMenu, BaseEquipmentSlotContextMenu, BaseHangarEquipmentSlotContextMenu
@@ -106,7 +106,7 @@ class HangarOptDeviceSlotContextMenu(BaseHangarEquipmentSlotContextMenu):
         super(HangarOptDeviceSlotContextMenu, self)._initFlashValues(ctx)
         self._slotsCount = self._getVehicleItems().installed.getCapacity()
 
-    @process
+    @adisp_process
     def _demountProcess(self, isDestroy=False, everywhere=True):
         item = self._itemsCache.items.getItemByCD(self._intCD)
         action = ActionsFactory.getAction(ActionsFactory.REMOVE_OPT_DEVICE, self._getVehicle(), item, self._installedSlotId, isDestroy, forFitting=False, everywhere=everywhere)
@@ -125,8 +125,8 @@ class HangarOptDeviceSlotContextMenu(BaseHangarEquipmentSlotContextMenu):
         layout = copyVehicle.optDevices.layout
         self._makePutOnAction(TankSetupConstants.OPT_DEVICES, onId, copyVehicle, layout)
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def _doPutOnAction(self, vehicle, callback):
         action = ActionsFactory.getAction(ActionsFactory.BUY_AND_INSTALL_OPT_DEVICES, vehicle, confirmOnlyExchange=True)
         result = yield ActionsFactory.asyncDoAction(action)

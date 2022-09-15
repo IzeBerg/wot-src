@@ -390,5 +390,10 @@ package net.wg.gui.battle.windows
       {
          bootcampClickS();
       }
+      
+      public function as_setVisibility(param1:Boolean) : void
+      {
+         visible = param1;
+      }
    }
 }

@@ -3,7 +3,7 @@ package net.wg.gui.components.crosshairPanel
    import fl.motion.easing.Quartic;
    import flash.display.BlendMode;
    import flash.display.DisplayObject;
-   import flash.display.MovieClip;
+   import flash.display.DisplayObjectContainer;
    import flash.display.StageAlign;
    import flash.display.StageScaleMode;
    import flash.utils.clearInterval;
@@ -29,9 +29,15 @@ package net.wg.gui.components.crosshairPanel
       
       private static const SPEEDOMETER_X_OFFSET:int = 144;
       
-      private static const SPEEDOMETER_Y_OFFSET:int = 114;
+      private static const SPEEDOMETER_Y_OFFSET:int = 104;
       
       private static const MSEC_TO_SEC_FACTOR:uint = 1000;
+      
+      private static const DIVIDE_10:Number = 0.1;
+      
+      private static const DIVIDE_100:Number = 0.01;
+      
+      private static const VALUE_100:int = 100;
       
       private static const CROSSHAIRS_LINAKGES:Vector.<String> = new <String>[Linkages.CROSSHAIR_ARCADE_UI,Linkages.CROSSHAIR_SNIPER_UI,Linkages.CROSSHAIR_STRATEGIC_UI,Linkages.CROSSHAIR_POSTMORTEM_UI];
       
@@ -267,6 +273,14 @@ package net.wg.gui.components.crosshairPanel
          this.applyAutoloaderState();
       }
       
+      public function as_blinkReloadTime(param1:int) : void
+      {
+         if(this._currentCrosshair != null)
+         {
+            this._currentCrosshair.blinkReloadTime(param1);
+         }
+      }
+      
       public function as_cancelDualGunCharge() : void
       {
          if(this._gunMarkersContainer != null)
@@ -387,10 +401,6 @@ package net.wg.gui.components.crosshairPanel
             this._currentCrosshair.setAmmoStock(this._ammoQuantity,this._ammoQuantityInClip,this._isAmmoLow,this._ammoClipState,this._ammoClipReloaded);
          }
          this._ammoClipReloaded = false;
-      }
-      
-      public function as_setIsArmorScreen(param1:Boolean) : void
-      {
       }
       
       public function as_setAutoloaderPercent(param1:Number, param2:Number, param3:Boolean, param4:Boolean) : void
@@ -534,7 +544,7 @@ package net.wg.gui.components.crosshairPanel
          this._baseReloadingTimeInSec = param2;
          if(param1 == 0)
          {
-            this._currReloadingPercent = 100;
+            this._currReloadingPercent = VALUE_100;
             this._remainingTimeInSec = this._baseReloadingTimeInSec;
             if(param4)
             {
@@ -549,7 +559,7 @@ package net.wg.gui.components.crosshairPanel
                this._currReloadingState = CrosshairConsts.RELOADING_ENDED;
             }
          }
-         else if(param1 == -1)
+         else if(param1 == Values.DEFAULT_INT)
          {
             this._currReloadingPercent = 0;
             if(this._ammoQuantity == 0)
@@ -585,7 +595,7 @@ package net.wg.gui.components.crosshairPanel
       
       public function as_setReloadingAsPercent(param1:Number, param2:Boolean) : void
       {
-         if(param1 >= 100)
+         if(param1 >= VALUE_100)
          {
             this._currReloadingPercent = 1;
             this._remainingTimeInSec = this._baseReloadingTimeInSec;
@@ -601,7 +611,7 @@ package net.wg.gui.components.crosshairPanel
          else
          {
             this._currReloadingState = CrosshairConsts.RELOADING_PROGRESS;
-            this._currReloadingPercent = param1 / 100;
+            this._currReloadingPercent = param1 * DIVIDE_100;
          }
          this.applyData(true);
       }
@@ -856,8 +866,8 @@ package net.wg.gui.components.crosshairPanel
             {
                this._speedometer.parent.removeChild(this._speedometer);
             }
-            MovieClip(this._currentCrosshair).addChild(this._speedometer);
-            MovieClip(this._currentCrosshair).blendMode = BlendMode.LAYER;
+            DisplayObjectContainer(this._currentCrosshair).addChild(this._speedometer);
+            DisplayObject(this._currentCrosshair).blendMode = BlendMode.LAYER;
          }
       }
       
@@ -884,22 +894,23 @@ package net.wg.gui.components.crosshairPanel
          }
       }
       
+      private function clearTimer(param1:Number) : int
+      {
+         if(param1 != Values.DEFAULT_INT)
+         {
+            clearInterval(param1);
+         }
+         return Values.DEFAULT_INT;
+      }
+      
       private function clearAutoloaderReloadTimer() : void
       {
-         if(this._autoloaderTimer != -1)
-         {
-            clearInterval(this._autoloaderTimer);
-            this._autoloaderTimer = -1;
-         }
+         this._autoloaderTimer = this.clearTimer(this._autoloaderTimer);
       }
       
       private function clearAutoloaderAtimationTimer() : void
       {
-         if(this._autoloaderAnimationTimer != -1)
-         {
-            clearInterval(this._autoloaderAnimationTimer);
-            this._autoloaderAnimationTimer = -1;
-         }
+         this._autoloaderAnimationTimer = this.clearTimer(this._autoloaderAnimationTimer);
       }
       
       private function updateAutoloaderReloadingTimer() : void
@@ -975,7 +986,7 @@ package net.wg.gui.components.crosshairPanel
          var _loc1_:CrosshairSettingsVO = this._settings[this._settingId];
          if(_loc1_ && this._currentCrosshair != null)
          {
-            this._currentCrosshair.setNetType(this._netType != -1 ? Number(this._netType) : Number(_loc1_.netType));
+            this._currentCrosshair.setNetType(this._netType != Values.DEFAULT_INT ? Number(this._netType) : Number(_loc1_.netType));
             this._currentCrosshair.setComponentsAlpha(_loc1_.netAlphaValue,_loc1_.centerAlphaValue,_loc1_.reloaderAlphaValue,_loc1_.conditionAlphaValue,_loc1_.cassetteAlphaValue,_loc1_.reloaderTimerAlphaValue,_loc1_.zoomIndicatorAlphaValue);
             this._currentCrosshair.setCenterType(_loc1_.centerType);
             this._currentCrosshair.scaleWidgetEnabled = _loc1_.spgScaleWidgetEnabled;
@@ -996,7 +1007,7 @@ package net.wg.gui.components.crosshairPanel
          }
          else if(this._isReloadingTimeFieldShown)
          {
-            this._remainingTimeInSec = int(this._baseReloadingTimeInMsec * (1 - this._currReloadingPercent) * 0.1) * 0.01;
+            this._remainingTimeInSec = int(this._baseReloadingTimeInMsec * (1 - this._currReloadingPercent) * DIVIDE_10) * DIVIDE_100;
          }
          this.updateCurrentCrosshairReloadingParams();
       }
@@ -1017,11 +1028,7 @@ package net.wg.gui.components.crosshairPanel
       
       private function clearReloadingTimer() : void
       {
-         if(this._reloadingInterval != -1)
-         {
-            clearInterval(this._reloadingInterval);
-            this._reloadingInterval = -1;
-         }
+         this._reloadingInterval = this.clearTimer(this._reloadingInterval);
       }
       
       private function hideAll() : void

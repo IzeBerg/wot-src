@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>2.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Wave</name>
+		<type>model</type>
+		<resource>particles/Environment/Battle_Royal/Heal/Wave_final.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.800000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>0.200000 1.000000 0.200000</value>
+				<inTangent>4.636557 0.000000 4.769628</inTangent>
+				<outTangent>4.636557 0.000000 4.769628</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>2.771168 1.000000 2.771168</value>
+				<inTangent>0.037274 -0.000000 0.038891</inTangent>
+				<outTangent>0.037274 -0.000000 0.038891</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Wave_finish</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>0.505882 1.000000 0.200000 0.000000</value>
+				<inTangent>2.784319 0.000000 4.509800 6.000000</inTangent>
+				<outTangent>2.784319 0.000000 4.509800 6.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>0.784314 1.000000 0.650980 0.600000</value>
+				<inTangent>-0.040058 0.000000 -0.004115 -0.475159</inTangent>
+				<outTangent>-0.040058 0.000000 -0.004115 -0.475159</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.500000</startTime>
+				<value>0.505882 1.000000 0.200000 0.120000</value>
+				<inTangent>-0.104412 0.000000 -0.169118 -0.300000</inTangent>
+				<outTangent>-0.104412 0.000000 -0.169118 -0.300000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>0.505882 1.000000 0.200000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.240000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.240000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Border</name>
+		<type>model</type>
+		<resource>particles/Environment/Battle_Royal/Heal/Border.model</resource>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Border1</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>0.505882 1.000000 0.200000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.181527</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.181527</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.333333</startTime>
+				<value>0.505882 1.000000 0.200000 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 -0.047003</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.047003</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.900000</startTime>
+				<value>0.505882 1.000000 0.200000 0.500000</value>
+				<inTangent>0.000000 0.000000 0.000000 -0.668449</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.668449</outTangent>
+				<tangentMode>3</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.000000</startTime>
+				<value>0.505882 1.000000 0.200000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.113640</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.113640</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

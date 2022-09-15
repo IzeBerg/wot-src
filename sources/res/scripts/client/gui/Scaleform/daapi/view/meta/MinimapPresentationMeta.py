@@ -16,6 +16,10 @@ class MinimapPresentationMeta(MinimapEntityMeta):
         if self._isDAAPIInited():
             return self.flashObject.as_addPoint(x, y, type, color, id)
 
+    def as_addPoiS(self, x, y, type, id):
+        if self._isDAAPIInited():
+            return self.flashObject.as_addPoi(x, y, type, id)
+
     def as_clearS(self):
         if self._isDAAPIInited():
             return self.flashObject.as_clear()

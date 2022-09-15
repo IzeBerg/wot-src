@@ -29,6 +29,8 @@ package net.wg.gui.components.controls
       
       private var _iconContainerLabels:Object;
       
+      private var _showIcon:Boolean = true;
+      
       public function CloseButtonText()
       {
          super();
@@ -68,11 +70,12 @@ package net.wg.gui.components.controls
          }
          if(isInvalid(InvalidationType.SIZE))
          {
+            this.iconContainer.visible = this._showIcon;
             if(this.iconPosition == IconTextPosition.RIGHT)
             {
                this.iconContainer.x = !!this._visibleText ? Number(filtersMC.width - ICON_OFFSET ^ 0) : Number(0);
-               hitMc.x = !!this._visibleText ? Number(-HIT_MC_POS_X) : Number(0);
-               hitMc.width = this.iconContainer.x + this.iconContainer.width + (!!this._visibleText ? HIT_MC_POS_X : 0);
+               hitMc.x = !!this._visibleText ? (!!this._showIcon ? Number(-HIT_MC_POS_X) : Number(0)) : Number(0);
+               hitMc.width = (!!this._showIcon ? this.iconContainer.x + this.iconContainer.width : 0) + (!!this._visibleText ? HIT_MC_POS_X : 0);
                this.setSize(hitMc.width - HIT_MC_POS_X,hitMc.height);
             }
             else
@@ -80,10 +83,10 @@ package net.wg.gui.components.controls
                this.iconContainer.x = 0;
                if(this._visibleText)
                {
-                  filtersMC.x = this.iconContainer.width + ICON_OFFSET ^ 0;
+                  filtersMC.x = !!this._showIcon ? Number(this.iconContainer.width + ICON_OFFSET ^ 0) : Number(0);
                   this.shineMc.x = filtersMC.x;
                   hitMc.x = 0;
-                  hitMc.width = this.iconContainer.width + (filtersMC.width + filtersMC.x);
+                  hitMc.width = (!!this._showIcon ? this.iconContainer.width : 0) + (filtersMC.width + filtersMC.x);
                   this.setSize(hitMc.width - HIT_MC_POS_X,hitMc.height);
                }
             }
@@ -151,6 +154,16 @@ package net.wg.gui.components.controls
             return;
          }
          this._iconPosition = param1;
+         invalidateSize();
+      }
+      
+      public function set showIcon(param1:Boolean) : void
+      {
+         if(this._showIcon == param1)
+         {
+            return;
+         }
+         this._showIcon = param1;
          invalidateSize();
       }
    }

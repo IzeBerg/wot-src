@@ -1,5 +1,6 @@
 import typing
 from contextlib import contextmanager
+from typing import Union
 from ..py_object_binder import PyObjectEntity
 from ..py_object_wrappers import PyObjectArray
 T = typing.TypeVar('T')
@@ -20,6 +21,8 @@ class Array(PyObjectEntity, typing.Iterable[T]):
         return self.proxy.getSize()
 
     def __getitem__(self, index):
+        if isinstance(index, slice):
+            return (self.proxy.getValue(i) for i in xrange(index.start or 0, index.stop or len(self), index.step or 1))
         return self.proxy.getValue(index)
 
     def __iter__(self):
@@ -90,3 +93,59 @@ class Array(PyObjectEntity, typing.Iterable[T]):
     def transaction(self):
         yield self
         self.invalidate()
+
+
+def fillIntsArray(numbers, array):
+    array.clear()
+    for n in numbers:
+        array.addNumber(n)
+
+    array.invalidate()
+
+
+def fillFloatsArray(floats, array):
+    array.clear()
+    for f in floats:
+        array.addReal(f)
+
+    array.invalidate()
+
+
+def fillBoolsArray(bools, array):
+    array.clear()
+    for b in bools:
+        array.addBool(b)
+
+    array.invalidate()
+
+
+def fillStringsArray(strings, array):
+    array.clear()
+    for s in strings:
+        array.addString(s)
+
+    array.invalidate()
+
+
+def fillViewModelsArray(viewModels, array):
+    array.clear()
+    for vm in viewModels:
+        array.addViewModel(vm)
+
+    array.invalidate()
+
+
+def fillResourcesArray(resources, array):
+    array.clear()
+    for r in resources:
+        array.addResource(r)
+
+    array.invalidate()
+
+
+def fillArraysArray(arrays, array):
+    array.clear()
+    for a in arrays:
+        array.addArray(a)
+
+    array.invalidate()

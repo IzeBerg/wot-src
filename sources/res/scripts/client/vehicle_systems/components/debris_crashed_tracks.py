@@ -41,7 +41,11 @@ class TrackCrashWithDebrisComponent(object):
     def isPlayer(self):
         return self.__isPlayer
 
-    def __init__(self, isLeft, pairIndex, vehicleDescriptor, wheelsGameObject, boundEffects, vehicleFilter, isPlayerVehicle, shouldCreateDebris, hitPoint):
+    @property
+    def modelsSet(self):
+        return self.__modelsSet
+
+    def __init__(self, isLeft, pairIndex, vehicleDescriptor, wheelsGameObject, boundEffects, vehicleFilter, isPlayerVehicle, shouldCreateDebris, hitPoint, modelsSet='default'):
         self.__isLeft = isLeft
         self.__pairIndex = pairIndex
         self.__vehicleDescriptor = vehicleDescriptor
@@ -51,6 +55,7 @@ class TrackCrashWithDebrisComponent(object):
         self.__isPlayer = isPlayerVehicle
         self.__shouldCreateDebris = shouldCreateDebris
         self.__hitPoint = hitPoint
+        self.__modelsSet = modelsSet
         self.__debrisGameObject = None
         if shouldCreateDebris:
             TrackCrashWithDebrisComponent.CURRENT_DEBRIS_COUNT += 1
@@ -188,7 +193,7 @@ class DebrisCrashedTracksManager(CGF.ComponentManager):
             trackGO = vehicleTracks.getTrackGameObject(debrisComponent.isLeft, debrisComponent.pairIndex)
             go = debrisComponent.createDebrisGameObject(self.spaceID)
             go.createComponent(GenericComponents.HierarchyComponent, trackGO)
-            track.createDebris(go, debrisComponent.hitPoint, debrisComponent.vehicleFilter, debrisComponent.debrisDesc.physicalParams, debrisComponent.isPlayer)
+            track.createDebris(go, debrisComponent.hitPoint, debrisComponent.vehicleFilter, debrisComponent.debrisDesc.physicalParams, debrisComponent.modelsSet, debrisComponent.isPlayer)
             go.activate()
             return
 

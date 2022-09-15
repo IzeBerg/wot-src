@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<ofEntity>
+		<Account/>
+		<BootcampAccount/>
+	</ofEntity>
+	<ClientMethods>
+		<setTournamentToken>
+			<Arg>STRING</Arg>
+		</setTournamentToken>
+		<setParticipants>
+			<Arg>LIST_OF_TOURNAMEMT_PARTICIPANTS</Arg>
+			<VariableLengthHeaderSize>2</VariableLengthHeaderSize>
+		</setParticipants>
+	</ClientMethods>
+	<BaseMethods>
+		<setParticipants>
+			<Arg>PYTHON</Arg>
+		</setParticipants>
+		<onTournamentJoin>
+			<Arg>STRING</Arg>
+		</onTournamentJoin>
+		<onTournamentLeave/>
+	</BaseMethods>
+</root>

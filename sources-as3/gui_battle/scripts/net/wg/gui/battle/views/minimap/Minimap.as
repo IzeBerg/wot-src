@@ -5,6 +5,8 @@ package net.wg.gui.battle.views.minimap
    import flash.events.MouseEvent;
    import flash.geom.Point;
    import flash.geom.Rectangle;
+   import net.wg.data.constants.Errors;
+   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.BATTLEATLAS;
    import net.wg.gui.battle.components.BattleAtlasSprite;
    import net.wg.gui.battle.views.minimap.constants.MinimapSizeConst;
@@ -22,6 +24,8 @@ package net.wg.gui.battle.views.minimap
       private static const ANIM_FADE_IN:String = "fadeIn";
       
       private static const ANIM_FADE_OUT:String = "fadeOut";
+      
+      private static const NAME_CLICK_AREA:String = "clickAreaSpr";
        
       
       public var mapHit:Sprite = null;
@@ -74,6 +78,7 @@ package net.wg.gui.battle.views.minimap
          this.foreground0.visible = this.foreground1.visible = this.foreground2.visible = this.foreground3.visible = this.foreground4.visible = this.foreground5.visible = false;
          this._currForeground = this.foreground0;
          this.entriesContainer.mask = this.entriesContainerMask;
+         this._clickAreaSpr.name = NAME_CLICK_AREA;
          addChildAt(this._clickAreaSpr,getChildIndex(this.mapHit));
          this.mapHit.visible = false;
          this._clickAreaSpr.hitArea = this.mapHit;
@@ -94,6 +99,11 @@ package net.wg.gui.battle.views.minimap
          this.updateIntenalHintPanelData(param1,param2);
          this._bIsHintPanelEnabled = true;
          this.minimapHint.gotoAndPlay(ANIM_FADE_IN);
+      }
+      
+      override public function as_initPrebattleSize(param1:int) : void
+      {
+         dispatchEvent(new MinimapEvent(MinimapEvent.TRY_INIT_PREBATTLE_SIZE,false,false,param1));
       }
       
       override public function as_setAlpha(param1:Number) : void
@@ -145,6 +155,17 @@ package net.wg.gui.battle.views.minimap
          return new Rectangle(0,0,initedWidth - _loc3_[_loc2_].x,initedHeight - _loc3_[_loc2_].y);
       }
       
+      override public function getMinimapTotalWidthByIndex(param1:uint) : int
+      {
+         var _loc2_:Boolean = param1 >= this._foregrounds.length;
+         if(_loc2_)
+         {
+            App.utils.asserter.assert(_loc2_,Errors.WRONG_VALUE + Values.SPACE_STR + param1);
+            return 0;
+         }
+         return this._foregrounds[param1].width;
+      }
+      
       override public function getRectangles() : Vector.<Rectangle>
       {
          if(!visible)
@@ -193,6 +214,7 @@ package net.wg.gui.battle.views.minimap
       
       override protected function onDispose() : void
       {
+         this.fakePixel = null;
          this.foreground0 = null;
          this.foreground1 = null;
          this.foreground2 = null;
@@ -206,6 +228,8 @@ package net.wg.gui.battle.views.minimap
             this._foregrounds.splice(0,this._foregrounds.length);
             this._foregrounds = null;
          }
+         this._clickAreaSpr.removeEventListener(MouseEvent.MOUSE_OVER,this.onMouseOverHandler);
+         this._clickAreaSpr.removeEventListener(MouseEvent.MOUSE_OUT,this.onMouseOutHandler);
          this._clickAreaSpr.removeEventListener(MouseEvent.CLICK,this.onMouseClickHandler);
          this._clickAreaSpr.removeEventListener(MouseEvent.MOUSE_OVER,this.onMouseOverHandler);
          this._clickAreaSpr.removeEventListener(MouseEvent.MOUSE_OUT,this.onMouseOutHandler);

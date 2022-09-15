@@ -3,7 +3,7 @@ from collections import namedtuple
 import BigWorld
 from Event import Event, EventManager
 from account_helpers.settings_core.ServerSettingsManager import UI_STORAGE_KEYS
-from adisp import process, async
+from adisp import adisp_process, adisp_async
 from frameworks.wulf import WindowLayer
 from gui import GUI_SETTINGS
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
@@ -27,6 +27,7 @@ from helpers.http import url_formatters
 from shared_utils import findFirst
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.game_control import IPromoController, IBrowserController, IEventsNotificationsController, IBootcampController
+from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared.promo import IPromoLogger
 from skeletons.gui.web import IWebController
@@ -40,6 +41,8 @@ from web.web_client_api.shop import ShopWebApi
 from web.web_client_api.social import SocialWebApi
 from web.web_client_api.vehicles import VehiclesWebApi
 from web.web_client_api.blueprints_convert_sale import BlueprintsConvertSaleWebApi
+if typing.TYPE_CHECKING:
+    from frameworks.wulf import View
 _PromoData = namedtuple('_PromoData', ['url', 'closeCallback', 'source'])
 _logger = logging.getLogger(__name__)
 
@@ -123,7 +126,7 @@ class PromoController(IPromoController):
         loadingCallback = self.__logger.getLoggingFuture(action=PromoLogActions.OPEN_FROM_MENU, type=PromoLogSubjectType.INDEX, url=url)
         self.__showBrowserView(url, loadingCallback, soundSpaceID='field_post')
 
-    @process
+    @adisp_process
     def showLastTeaserPromo(self):
         rowUrl = self.__promoData.get('url', '')
         loadingCallback = self.__logger.getLoggingFuture(self.__promoData, action=PromoLogActions.OPEN_FROM_TEASER, type=PromoLogSubjectType.PROMO_SCREEN, url=rowUrl)
@@ -174,7 +177,7 @@ class PromoController(IPromoController):
             showBubbleTooltip(i18n.makeString(TOOLTIPS.HEADER_VERSIONINFOHINT))
             self.__settingsCore.serverSettings.saveInUIStorage({UI_STORAGE_KEYS.FIELD_POST_HINT_IS_SHOWN: True})
 
-    @process
+    @adisp_process
     def __updateWebBrgData(self):
         ctx = PromoGetTeaserRequestCtx()
         if self.__battlesFromLastTeaser == 0:
@@ -202,7 +205,7 @@ class PromoController(IPromoController):
         actionType = PromoLogActions.CLOSED_BY_USER if kwargs.get('byUser') else PromoLogActions.KILLED_BY_SYSTEM
         self.__logger.logAction(action=actionType, type=PromoLogSubjectType.PROMO_SCREEN_OR_INDEX, url=kwargs.get('url'))
 
-    @process
+    @adisp_process
     def __requestPromoCount(self):
         if not self.isActive():
             _logger.warning('Trying to request unread promos count when promo functionality is disabled')
@@ -233,7 +236,7 @@ class PromoController(IPromoController):
         else:
             _logger.warning('Impossible to show teaser, functionality is disabled')
 
-    @process
+    @adisp_process
     def __onTeaserShown(self, promoID):
         self.__isTeaserOpen = True
         self.onTeaserShown()
@@ -285,7 +288,7 @@ class PromoController(IPromoController):
         self.__externalCloseCallback = closeCallback
         self.__showBrowserView(url, loadingCallback)
 
-    @process
+    @adisp_process
     def __showBrowserView(self, url, loadingCallback=None, soundSpaceID=None):
         promoUrl = yield self.__urlMacros.parse(url)
         self.__registerLoadingCallback(promoUrl, loadingCallback)
@@ -323,8 +326,8 @@ class PromoController(IPromoController):
                 browser.onLoadEnd -= watcher
         return
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def __addAuthParams(self, url, callback):
         if not url or not self.__webController:
             callback(url)
@@ -342,15 +345,29 @@ class PromoController(IPromoController):
                 self.__isInHangar = False
 
 
-def _showBrowserView(url, returnClb, soundSpaceID=None):
-    webHandlers = webApiCollection(PromoWebApi, VehiclesWebApi, RequestWebApi, RankedBattlesWebApi, BattlePassWebApi, ui_web_api.OpenWindowWebApi, ui_web_api.CloseWindowWebApi, ui_web_api.OpenTabWebApi, ui_web_api.NotificationWebApi, ui_web_api.ContextMenuWebApi, ui_web_api.UtilWebApi, sound_web_api.SoundWebApi, sound_web_api.HangarSoundWebApi, ShopWebApi, SocialWebApi, BlueprintsConvertSaleWebApi, PlatformWebApi)
+@dependency.replace_none_kwargs(guiLoader=IGuiLoader)
+def _showBrowserView(url, returnClb, soundSpaceID=None, guiLoader=None):
+    layoutID = R.views.lobby.common.BrowserView()
 
-    def _returnCallback(*args, **kwargs):
-        g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_HANGAR)), EVENT_BUS_SCOPE.LOBBY)
-        if returnClb is not None:
-            returnClb(*args, **kwargs)
+    def _predicate(view):
+        if view.layoutID == layoutID:
+            view = typing.cast(BrowserView, view)
+            return view.url == url
+        return False
+
+    if guiLoader.windowsManager.findViews(_predicate):
+        _logger.debug('BrowserView with url %s is already opened', url)
         return
+    else:
+        webHandlers = webApiCollection(PromoWebApi, VehiclesWebApi, RequestWebApi, RankedBattlesWebApi, BattlePassWebApi, ui_web_api.OpenWindowWebApi, ui_web_api.CloseWindowWebApi, ui_web_api.OpenTabWebApi, ui_web_api.NotificationWebApi, ui_web_api.ContextMenuWebApi, ui_web_api.UtilWebApi, sound_web_api.SoundWebApi, sound_web_api.HangarSoundWebApi, ShopWebApi, SocialWebApi, BlueprintsConvertSaleWebApi, PlatformWebApi)
 
-    soundSettings = BROWSER_VIEW_SOUND_SPACES.get(soundSpaceID) if soundSpaceID is not None else None
-    g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(R.views.lobby.common.BrowserView(), BrowserView, ScopeTemplates.LOBBY_SUB_SCOPE), settings=makeSettings(url=url, webHandlers=webHandlers, returnClb=_returnCallback, soundSpaceSettings=soundSettings)))
-    return
+        def _returnCallback(*args, **kwargs):
+            if kwargs.pop('forceClosed', False):
+                g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_HANGAR)), EVENT_BUS_SCOPE.LOBBY)
+            if returnClb is not None:
+                returnClb(*args, **kwargs)
+            return
+
+        soundSettings = BROWSER_VIEW_SOUND_SPACES.get(soundSpaceID) if soundSpaceID is not None else None
+        g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(layoutID, BrowserView, ScopeTemplates.LOBBY_SUB_SCOPE), settings=makeSettings(url=url, webHandlers=webHandlers, returnClb=_returnCallback, soundSpaceSettings=soundSettings)))
+        return

@@ -2003,7 +2003,8 @@ class KeyboardSettings(SettingsContainer):
       (
        ('showHUD', 'CMD_TOGGLE_GUI'),
        ('showQuestProgress', 'CMD_QUEST_PROGRESS_SHOW'),
-       ('frontlineSelfDestruction', 'CMD_REQUEST_RECOVERY'))),
+       ('frontlineSelfDestruction', 'CMD_REQUEST_RECOVERY'),
+       ('showPersonalReserves', 'CMD_SHOW_PERSONAL_RESERVES'))),
      (
       'equipment',
       (

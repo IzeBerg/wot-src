@@ -4,6 +4,7 @@ package net.wg.infrastructure.managers.utils.impl
    import flash.utils.Timer;
    import flash.utils.getTimer;
    import net.wg.utils.IScheduler;
+   import net.wg.utils.scheduler.Task;
    
    public class Scheduler implements IScheduler
    {
@@ -196,56 +197,7 @@ package net.wg.infrastructure.managers.utils.impl
    }
 }
 
-import net.wg.infrastructure.interfaces.entity.ICallable;
-import net.wg.infrastructure.interfaces.entity.IDisposable;
-
-class Task implements ICallable, IDisposable
-{
-    
-   
-   private var _handler:Function = null;
-   
-   private var _args:Array = null;
-   
-   private var _disposed:Boolean = false;
-   
-   function Task(param1:Function, param2:Array)
-   {
-      super();
-      this._handler = param1;
-      this._args = param2;
-   }
-   
-   public function get handler() : Function
-   {
-      return this._handler;
-   }
-   
-   public function invoke() : void
-   {
-      if(this._args.length > 0)
-      {
-         this._handler.apply(null,this._args);
-      }
-      else
-      {
-         this._handler();
-      }
-   }
-   
-   public function dispose() : void
-   {
-      this._disposed = true;
-      this._handler = null;
-      this._args.splice(0,this._args.length);
-      this._args = null;
-   }
-   
-   public function isDisposed() : Boolean
-   {
-      return this._disposed;
-   }
-}
+import net.wg.utils.scheduler.Task;
 
 class TimedTask extends Task
 {
@@ -474,6 +426,7 @@ class InProcessTaskStack implements IDisposable
 import flash.display.Sprite;
 import flash.events.Event;
 import net.wg.infrastructure.interfaces.entity.IDisposable;
+import net.wg.utils.scheduler.Task;
 
 class NextFrameTasks implements IDisposable
 {

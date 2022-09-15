@@ -13,6 +13,8 @@ package
       
       public static const MAPS_PROMO_BG:String = "../maps/promo_bg.png";
       
+      public static const MAPS_ICONS_ACCOUNT_DASHBOARD_EXCLUDED_MAPS_BG:String = "../maps/icons/account_dashboard/excluded_maps/bg.png";
+      
       public static const MAPS_ICONS_BATTLEMATTERS_ENTRYPOINT_BG:String = "../maps/icons/battleMatters/entryPoint/bg.png";
       
       public static const MAPS_ICONS_BATTLEPASS_CHAPTER_CHOICE_BG:String = "../maps/icons/battlePass/chapter_choice/bg.png";
@@ -44,8 +46,6 @@ package
       public static const MAPS_ICONS_MAPSTRAINING_MINIMAP_BG:String = "../maps/icons/mapsTraining/minimap/bg.png";
       
       public static const MAPS_ICONS_MARATHON_REWARDWINDOW_BG:String = "../maps/icons/marathon/rewardWindow/bg.png";
-      
-      public static const MAPS_ICONS_PREMACC_DASHBOARD_HEADER_BADGESLOT_BG:String = "../maps/icons/premacc/dashboard/header/badgeSlot/bg.png";
       
       public static const MAPS_ICONS_RANKEDBATTLES_AWARDS_BG:String = "../maps/icons/rankedBattles/awards/bg.png";
       

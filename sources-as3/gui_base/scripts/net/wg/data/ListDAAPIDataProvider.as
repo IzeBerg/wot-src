@@ -73,12 +73,6 @@ package net.wg.data
          this.dispose();
       }
       
-      public final function dispose() : void
-      {
-         this._isDisposed = true;
-         this.onDispose();
-      }
-      
       public function as_populate() : void
       {
          this._dataUtils = App.utils.data;
@@ -87,6 +81,7 @@ package net.wg.data
          this._cachedRange = new Vector.<IDAAPIDataClass>();
          this._isDisposed = false;
          this._isDAAPIInited = true;
+         this._cacheSize = 0;
       }
       
       public function cleanUp() : void
@@ -113,6 +108,12 @@ package net.wg.data
          this._itemsToDestroy.splice(0,this._itemsToDestroy.length);
          this._startCachedIndex = -1;
          this._endCachedIndex = -1;
+      }
+      
+      public final function dispose() : void
+      {
+         this._isDisposed = true;
+         this.onDispose();
       }
       
       public function getDAAPIselectedIdx() : int
@@ -144,6 +145,11 @@ package net.wg.data
          this._isValid = false;
          this._length = param1;
          this._isLengthValid = true;
+         this.callInvalidateActions();
+      }
+      
+      protected function callInvalidateActions() : void
+      {
          dispatchEvent(new Event(Event.CHANGE));
       }
       
@@ -179,6 +185,11 @@ package net.wg.data
          param2.splice(0,param2.length);
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._isDisposed;
+      }
+      
       public function requestItemAt(param1:uint, param2:Function = null) : Object
       {
          var _loc3_:IDAAPIDataClass = null;
@@ -188,7 +199,7 @@ package net.wg.data
          }
          else if(this.hasIndexInCache(param1))
          {
-            _loc3_ = this.cacheGetItemAt(param1);
+            _loc3_ = this.getCachedItemAt(param1);
          }
          else if(this._isValid && this._startCachedIndex - 1 == param1)
          {
@@ -264,6 +275,11 @@ package net.wg.data
          return this._items;
       }
       
+      public function resetSelectedIndex(param1:int) : void
+      {
+         dispatchEvent(new ListDataProviderEvent(ListDataProviderEvent.RESET_SELECTED_INDEX,param1,null));
+      }
+      
       protected function onDispose() : void
       {
          this.cleanUp();
@@ -280,12 +296,7 @@ package net.wg.data
          this.getItemIndexHandler = null;
       }
       
-      public function resetSelectedIndex(param1:int) : void
-      {
-         dispatchEvent(new ListDataProviderEvent(ListDataProviderEvent.RESET_SELECTED_INDEX,param1,null));
-      }
-      
-      private function cacheGetItemAt(param1:uint) : IDAAPIDataClass
+      private function getCachedItemAt(param1:uint) : IDAAPIDataClass
       {
          return this._cachedRange[this.indexToCacheIndex(param1)];
       }
@@ -489,11 +500,6 @@ package net.wg.data
       public function set maxCacheSize(param1:int) : void
       {
          this._maxCacheSize = param1;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._isDisposed;
       }
       
       public function get isDAAPIInited() : Boolean

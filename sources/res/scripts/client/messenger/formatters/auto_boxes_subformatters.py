@@ -1,5 +1,5 @@
 import typing, BigWorld
-from adisp import async, process
+from adisp import adisp_async, adisp_process
 from dossiers2.ui.achievements import BADGES_BLOCK
 from gui.impl import backport
 from gui.impl.gen import R
@@ -60,8 +60,8 @@ class EventBoxesFormatter(AsyncAutoLootBoxSubFormatter):
     __MESSAGE_TEMPLATE = 'EventLootBoxesAutoOpenMessage'
     __R_LOOT_BOXES = R.strings.messenger.serviceChannelMessages.lootBoxesAutoOpen.event
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def format(self, message, callback):
         isSynced = yield self._waitForSyncItems()
         if isSynced:
@@ -95,8 +95,8 @@ class NYPostEventBoxesFormatter(AsyncAutoLootBoxSubFormatter):
     __REWARDS_TEMPLATE = 'LootBoxRewardsSysMessage'
     __REQUIERED_BOX_TYPES = {NewYearLootBoxes.COMMON, NewYearLootBoxes.PREMIUM, NewYearLootBoxes.SPECIAL}
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def format(self, message, callback):
         isSynced = yield self._waitForSyncItems()
         if isSynced:
@@ -135,8 +135,8 @@ class NYGiftSystemSurpriseFormatter(AsyncAutoLootBoxSubFormatter):
     __MESSAGE_TEMPLATE = 'NYSpecialLootBoxesAutoOpenMessage'
     __REQUIERED_BOX_TYPES = {NewYearLootBoxes.SPECIAL_AUTO}
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def format(self, message, callback):
         isSynced = yield self._waitForSyncItems()
         if isSynced:
@@ -164,8 +164,8 @@ class LunarNYEnvelopeAutoOpenFormatter(AsyncAutoLootBoxSubFormatter):
         super(LunarNYEnvelopeAutoOpenFormatter, self).__init__()
         self._achievesFormatter = QuestAchievesFormatter()
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def format(self, message, callback):
         isSynced = yield self._waitForSyncItems()
         if isSynced:

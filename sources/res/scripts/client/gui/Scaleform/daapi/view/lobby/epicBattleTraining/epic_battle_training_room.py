@@ -1,4 +1,4 @@
-from adisp import process
+from adisp import adisp_process
 from gui import SystemMessages
 from gui.Scaleform.daapi.view.lobby.trainings import formatters
 from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
@@ -45,7 +45,7 @@ class EpicBattleTrainingRoom(EpicBattleTrainingRoomMeta):
             self.as_setOtherS(self._makeAccountsData(rosters[PREBATTLE_ROSTER.UNASSIGNED], R.strings.epic_battle.epictraining.info.otherLabel()))
         super(EpicBattleTrainingRoom, self).onRostersChanged(entity, rosters, full)
 
-    @process
+    @adisp_process
     def onSwapTeamLane(self, fromTeam, fromLane, toTeam, toLane):
         if fromTeam == toTeam:
             result = yield self.prbDispatcher.sendPrbRequest(GroupSwapInTeamLegacyCtx(fromTeam, fromLane, toLane, waitingID='prebattle/swap'))
@@ -54,7 +54,7 @@ class EpicBattleTrainingRoom(EpicBattleTrainingRoomMeta):
         if not result:
             SystemMessages.pushMessage(backport.text(R.strings.system_messages.training.error.swapTeams()), type=SystemMessages.SM_TYPE.Error)
 
-    @process
+    @adisp_process
     def onChangeTeamLane(self, accID, team, lane):
         selectedLane = int(lane)
         roster = int(team)

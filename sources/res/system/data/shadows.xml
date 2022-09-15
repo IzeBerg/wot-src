@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<enabled>true</enabled>
+	<intensity>
+		0.9
+		<!--BW_String-->
+	</intensity>
+	<distance>
+		15.0
+		<!--BW_String-->
+	</distance>
+	<fadeStart>
+		13.0
+		<!--BW_String-->
+	</fadeStart>
+	<bufferSize>1024</bufferSize>
+	<maxCount>32</maxCount>
+	<modelCasters>shaders/std_effects/shadows/caster</modelCasters>
+	<modelReceivers>shaders/std_effects/shadows/receiver</modelReceivers>
+	<terrainReceiver>shaders/std_effects/shadows/receiver_terrain.fx</terrainReceiver>
+	<terrain2Receiver>shaders/terrain/terrain_shadow_receiver.fx</terrain2Receiver>
+</root>

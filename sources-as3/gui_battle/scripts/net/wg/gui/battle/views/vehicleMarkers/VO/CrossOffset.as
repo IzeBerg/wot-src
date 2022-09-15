@@ -60,5 +60,10 @@ package net.wg.gui.battle.views.vehicleMarkers.VO
       {
          return this._disposed;
       }
+      
+      public function appendOffset(param1:Object, param2:int) : void
+      {
+         this._offsetByObject[param1] = param2;
+      }
    }
 }

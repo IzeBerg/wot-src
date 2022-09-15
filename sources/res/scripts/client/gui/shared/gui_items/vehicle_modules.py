@@ -295,6 +295,9 @@ class VehicleEngine(VehicleModule):
     def hasTurboshaftEngine(self):
         return g_paramsCache.hasTurboshaftEngine(self.intCD)
 
+    def hasRocketAcceleration(self):
+        return g_paramsCache.hasRocketAcceleration(self.intCD)
+
     @property
     def icon(self):
         return RES_ICONS.MAPS_ICONS_MODULES_ENGINE
@@ -308,6 +311,8 @@ class VehicleEngine(VehicleModule):
         if self.hasTurboshaftEngine():
             return RES_ICONS.MAPS_ICONS_MODULES_TURBINEENGINEICON
         else:
+            if self.hasRocketAcceleration():
+                return RES_ICONS.MAPS_ICONS_MODULES_ROCKETACCELERATIONICON
             return
 
 

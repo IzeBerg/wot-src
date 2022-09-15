@@ -56,7 +56,7 @@ def preloadPlanXml(func):
 
 
 def errorVScript(owner, msg):
-    LOG_ERROR('[VScript] %s : %s', owner.__class__.__name__, msg)
+    LOG_ERROR('[VScript]', owner.__class__.__name__, msg)
     owner._writeLog('%s : %s' % (owner.__class__.__name__, msg))
 
 

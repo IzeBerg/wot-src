@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>WaterFall_09</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>WaterFall_09</node>
+		<geometry>
+			<vertices>WaterFall_09Shape.vertices</vertices>
+			<stream>WaterFall_09Shape.colour</stream>
+			<primitive>WaterFall_09Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>waterfall02</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/waterfall_parts_01.dds</Texture>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>
+							1 0.3 0.5 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaAdditiveEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>
+							1 2 -0.2 -0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>
+							0.6 -0.4 0.015 0.015
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Distortion01.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>
+							0.000000 -0.35 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector4>
+							0.765 0.765 0.765 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>
+							1 1 1 0.6
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						softFactor
+						<Float>
+							0.2
+							<!--BW_String-->
+						</Float>
+					</property>
+				</material>
+				<groupOrigin>0.000000 -3.096369 -0.699825</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-0.305270 -6.486996 -1.350649</min>
+		<max>0.305270 0.294257 -0.049002</max>
+	</boundingBox>
+	<geometrySize>6288</geometrySize>
+	<minUVDensity>0.037342</minUVDensity>
+</root>

@@ -23,11 +23,13 @@ if typing.TYPE_CHECKING:
     from gui.shared.gui_items.Vehicle import Vehicle
 TAG_NOT_FOR_SALE = 'notForSale'
 TAG_TRIGGER = 'trigger'
+TAG_BUILTIN_PERK_BOOSTER = 'builtinPerkBooster'
 TAG_CREW_BATTLE_BOOSTER = 'crewSkillBattleBooster'
 TAG_EQUEPMENT_BUILTIN = 'builtin'
 TAG_OPT_DEVICE_DELUXE = 'deluxe'
 TAG_OPT_DEVICE_TROPHY_BASIC = 'trophyBasic'
 TAG_OPT_DEVICE_TROPHY_UPGRADED = 'trophyUpgraded'
+TAG_OPT_DEVICE_HIDE_IF_NOT_IN_SHOP = 'hideIfNotInShop'
 TOKEN_OPT_DEVICE_SIMPLE = 'simple'
 TOKEN_OPT_DEVICE_DELUXE = 'deluxe'
 TOKEN_CREW_PERK_REPLACE = 'perk'
@@ -174,6 +176,12 @@ class Equipment(VehicleArtefact):
     def isCrewBooster(self):
         return False
 
+    def isHideIfNotInShop(self):
+        return False
+
+    def isBuiltinPerkBooster(self):
+        return False
+
     def isAffectsOnVehicle(self, vehicle, setupIdx=None):
         return False
 
@@ -203,6 +211,12 @@ class Equipment(VehicleArtefact):
             return SLOT_HIGHLIGHT_TYPES.BUILT_IN_EQUIPMENT
         return SLOT_HIGHLIGHT_TYPES.NO_HIGHLIGHT
 
+    def getBuiltinPerkBoosterDescription(self, formatter=None):
+        return ''
+
+    def getBuiltinPerkBoosterAction(self):
+        return ''
+
 
 class BattleBooster(Equipment):
     __slots__ = ()
@@ -226,6 +240,14 @@ class BattleBooster(Equipment):
 
     def isCrewBooster(self):
         return TAG_CREW_BATTLE_BOOSTER in self.tags
+
+    def isBuiltinPerkBooster(self):
+        return TAG_BUILTIN_PERK_BOOSTER in self.tags
+
+    def isHideIfNotInShop(self):
+        if self.isHidden:
+            return TAG_OPT_DEVICE_HIDE_IF_NOT_IN_SHOP in self.tags
+        return False
 
     def isAffectsOnVehicle(self, vehicle, setupIdx=None):
         if self.isCrewBooster():
@@ -316,6 +338,10 @@ class BattleBooster(Equipment):
         description = i18n.makeString(ARTEFACTS.CREWBATTLEBOOSTER_DESCR_COMMON)
         if formatter is None:
             formatted = description.format(action=action, skillOrPerk=skillOrPerk, name=skillName, colorTagOpen='', colorTagClose='')
+        elif self.isBuiltinPerkBooster():
+            action = i18n.makeString(ARTEFACTS.CREWBATTLEBOOSTER_DESCR_BOOST)
+            skillOrPerk = i18n.makeString(ARTEFACTS.CREWBATTLEBOOSTER_DESCR_COMMANDER_SPECIAL)
+            formatted = description.format(action=action, skillOrPerk=skillOrPerk, name=skillName, **formatter)
         else:
             formatted = description.format(action=action, skillOrPerk=skillOrPerk, name=skillName, **formatter)
         return formatted
@@ -356,12 +382,18 @@ class BattleBooster(Equipment):
         return MONEY_UNDEFINED
 
     def getHighlightType(self, vehicle=None):
-        if self.isCrewBooster():
+        if self.isCrewBooster() and not self.isBuiltinPerkBooster():
             skillLearnt = self.isAffectedSkillLearnt(vehicle)
             if skillLearnt:
                 return SLOT_HIGHLIGHT_TYPES.BATTLE_BOOSTER
             return SLOT_HIGHLIGHT_TYPES.BATTLE_BOOSTER_CREW_REPLACE
         return SLOT_HIGHLIGHT_TYPES.BATTLE_BOOSTER
+
+    def getBuiltinPerkBoosterAction(self):
+        return i18n.makeString(ARTEFACTS.getCrewActionForBattleBooster(self.name, TAG_BUILTIN_PERK_BOOSTER))
+
+    def getBuiltinPerkBoosterDescription(self, formatter=None):
+        return i18n.makeString(ARTEFACTS.getDescriptionForBattleBooster(self.name, TAG_BUILTIN_PERK_BOOSTER))
 
 
 class BattleAbility(Equipment):

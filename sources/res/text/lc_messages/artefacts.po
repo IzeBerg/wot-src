@@ -520,6 +520,163 @@ msgstr "Командирский обзорный прибор"
 msgid "commandersView/short_special"
 msgstr "Уменьшает незаметность противника в движении и за растительностью"
 
+msgid "comp7_aggressive_detection/descr/active"
+msgstr ""
+"В течение следующих {colorTagOpen}%(duration)d с{colorTagClose} обзор будет увеличен на {colorTagOpen}%(visionBuff_1).1f/%(visionBuff_2).1f/%(visionBuff_3).1f%%{colorTagClose}.\n"
+"\n"
+"Уничтожение техники противника по вашим разведданным обновляет время действия навыка."
+
+msgid "comp7_aggressive_detection/name"
+msgstr "Активная разведка"
+
+msgid "comp7_ally_support/descr/active"
+msgstr ""
+"На следующие {colorTagOpen}%(duration)d с{colorTagClose} за каждую машину союзников в радиусе {colorTagOpen}%(radius)d м{colorTagClose} экипаж получает бонус {colorTagOpen}%(crewBuff_1).1f/%(crewBuff_2).1f/%(crewBuff_3).1f%%{colorTagClose} к уровню владения основной специальностью, а также ко всем умениям.\n"
+"\n"
+"При расчёте бонуса от навыка ваша машина учитывается всегда."
+
+msgid "comp7_ally_support/name"
+msgstr "Один за всех"
+
+msgid "comp7_aoe_heal/descr/active"
+msgstr ""
+"Создаёт вокруг танка область радиусом {colorTagOpen}%(radius)d м{colorTagClose}, восстанавливающую вам и машинам союзников {colorTagOpen}%(heal_1)d/%(heal_2)d/%(heal_3)d{colorTagClose} очков прочности в течение {colorTagOpen}%(duration)d с{colorTagClose}.\n"
+"\n"
+"Количество очков прочности, восстанавливаемых навыком после первого применения в бою, уменьшено на {colorTagOpen}%(secondaryHealDebuff)d%%{colorTagClose}."
+
+msgid "comp7_aoe_heal/name"
+msgstr "Полевая ремзона"
+
+msgid "comp7_aoe_inspire/descr/active"
+msgstr ""
+"На следующие {colorTagOpen}%(duration)d с{colorTagClose} создаёт вокруг танка область радиусом {colorTagOpen}%(radius)d м{colorTagClose}, дающую вашему экипажу и экипажам союзников {colorTagOpen}%(crewBuff_1).0f/%(crewBuff_2).0f/%(crewBuff_3).0f%%{colorTagClose} бонус к уровню владения основной специальностью, а также ко всем умениям.\n"
+"\n"
+"Не действует на союзников, находящихся под действием своих ролевых навыков."
+
+msgid "comp7_aoe_inspire/name"
+msgstr "Воодушевление"
+
+msgid "comp7_berserk/descr/active"
+msgstr ""
+"На следующие {colorTagOpen}%(duration)d с{colorTagClose} время перезарядки орудия сокращается на {colorTagOpen}%(gunReloadTimeBuff_1).0f/%(gunReloadTimeBuff_2).0f/%(gunReloadTimeBuff_3).0f%%{colorTagClose}.\n"
+"\n"
+"Нанесение урона выстрелом с дистанции менее {colorTagOpen}%(damageDistance)d м{colorTagClose} или тараном обновляет время действия навыка."
+
+msgid "comp7_berserk/name"
+msgstr "Ярость"
+
+msgid "comp7_concentration/descr/active"
+msgstr ""
+"На следующие {colorTagOpen}%(duration)d с{colorTagClose} уменьшает разброс орудия при движении, поворотах ходовой, вращении башни и после выстрела на {colorTagOpen}%(shotDispersionFactorsBuff_1).0f/%(shotDispersionFactorsBuff_2).0f/%(shotDispersionFactorsBuff_3).0f%%{colorTagClose}.\n"
+"\n"
+"В течение действия навыка время перезарядки между выстрелами сокращается на {colorTagOpen}%(clipReloadTimeBoost_1).1f/%(clipReloadTimeBoost_2).1f/%(clipReloadTimeBoost_3).1f с{colorTagClose}."
+
+msgid "comp7_concentration/name"
+msgstr "Концентрация на цели"
+
+msgid "comp7_fast_recharge/descr/active"
+msgstr ""
+"Для магазина заряжания:\n"
+"\n"
+"Оставшееся время перезарядки вашего магазина будет уменьшено на {colorTagOpen}%(gunReloadTimeBuff_1).0f/%(gunReloadTimeBuff_2).0f/%(gunReloadTimeBuff_3).0f%%{colorTagClose}.\n"
+"\n"
+"Для системы дозарядки:\n"
+"\n"
+"Все потраченные вами снаряды в текущем цикле дозарядки будут заряжены на {colorTagOpen}%(gunReloadTimeBuff_1).0f/%(gunReloadTimeBuff_2).0f/%(gunReloadTimeBuff_3).0f%%{colorTagClose} быстрее.\n"
+"\n"
+"Навык можно активировать только во время перезарядки."
+
+msgid "comp7_fast_recharge/name"
+msgstr "Ловкие руки"
+
+msgid "comp7_hunter/descr/active"
+msgstr ""
+"Обнуляет количество повреждённых выстрелами машин противника.\n"
+"\n"
+"В течение следующих {colorTagOpen}%(duration)d с{colorTagClose} восстанавливает {colorTagOpen}%(heal_1)d/%(heal_2)d/%(heal_3)d{colorTagClose} очков прочности за каждую повреждённую выстрелами машину противника на момент активации."
+
+msgid "comp7_hunter/descr/passive"
+msgstr ""
+"Каждая повреждённая выстрелом машина противника сокращает время перезарядки "
+"орудия на {colorTagOpen}%(gunReloadTimeBuff)d%%{colorTagClose}."
+
+msgid "comp7_hunter/name"
+msgstr "Охотник за головами"
+
+msgid "comp7_juggernaut/descr/active"
+msgstr ""
+"На следующие {colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d с{colorTagClose} мощность двигателя повышается на {colorTagOpen}%(enginePowerBuff)d%%{colorTagClose}, скорость ремонта модулей увеличивается на {colorTagOpen}%(repairBuff)d%%{colorTagClose}, а время оглушения снижается на {colorTagOpen}%(stunDurationResist)d%%{colorTagClose}.\n"
+"\n"
+"Попадание снаряда противника в вашу машину в течение действия навыка сокращает оставшееся время перезарядки орудия на {colorTagOpen}%(gunReloadBoost)d с{colorTagClose}."
+
+msgid "comp7_juggernaut/name"
+msgstr "Напролом"
+
+msgid "comp7_march/descr/active"
+msgstr ""
+"На следующие {colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d "
+"с{colorTagClose} мощность двигателя повышается на "
+"{colorTagOpen}%(enginePowerBuff)d%%{colorTagClose}, максимальная скорость "
+"вперёд увеличивается на {colorTagOpen}%(fwdSpeedBoost)d{colorTagClose} км/ч,"
+" а показатель маскировки на "
+"{colorTagOpen}%(invisibilityFactor).0f%%{colorTagClose}."
+
+msgid "comp7_march/name"
+msgstr "Марш-бросок"
+
+msgid "comp7_recon/descr/active"
+msgstr ""
+"Через {colorTagOpen}%(delay)d с{colorTagClose} над выбранной вами областью "
+"пролетит самолёт-разведчик. Замеченная в радиусе "
+"{colorTagOpen}%(radius_1)d/%(radius_2)d/%(radius_3)d м{colorTagClose} "
+"техника противника будет оставаться обнаруженной в течение "
+"{colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d&nbsp;с{colorTagClose}."
+
+msgid "comp7_recon/name"
+msgstr "Самолёт-разведчик"
+
+msgid "comp7_redline/descr/active"
+msgstr ""
+"Через {colorTagOpen}%(delay)d с{colorTagClose} по выбранной вами области будет нанесён артудар.\n"
+"\n"
+"Поражённые цели в радиусе {colorTagOpen}%(radius_1)d/%(radius_2)d/%(radius_3)d м{colorTagClose} получают {colorTagOpen}%(damage_1)d/%(damage_2)d/%(damage_3)d{colorTagClose} ед. урона и оглушаются на {colorTagOpen}%(stunDuration_1)d/%(stunDuration_2)d/%(stunDuration_3)d с{colorTagClose}."
+
+msgid "comp7_redline/name"
+msgstr "Огневая поддержка"
+
+msgid "comp7_risky_attack/descr/active"
+msgstr ""
+"Ускорение\n"
+"\n"
+"На следующие {colorTagOpen}%(duration)d с{colorTagClose} мощность двигателя повышается на {colorTagOpen}%(enginePowerBuff)d%%{colorTagClose}, максимальная скорость увеличивается на {colorTagOpen}%(fwdSpeedBoost)d{colorTagClose} км/ч, а скорость заднего хода на {colorTagOpen}%(bkwSpeedBoost)d{colorTagClose} км/ч.\n"
+"\n"
+"Восстановление\n"
+"\n"
+"В течение следующих {colorTagOpen}%(healDuration)d с{colorTagClose} восстанавливает прочность машины в количестве {colorTagOpen}%(baseHeal)d{colorTagClose} ед. {colorTagOpen}+ %(extraHealFactor_1)d/%(extraHealFactor_2)d/%(extraHealFactor_3)d%%{colorTagClose} от очков, потерянных во время действия Ускорения."
+
+msgid "comp7_risky_attack/name"
+msgstr "Второе дыхание"
+
+msgid "comp7_sniper/descr/active"
+msgstr ""
+"На следующие {colorTagOpen}%(duration_1)d/%(duration_2)d/%(duration_3)d с{colorTagClose} параметр орудия «Разброс на 100 м» становится равен {colorTagOpen}%(dispersionFactor).2f м{colorTagClose}.\n"
+"\n"
+"Нанесение урона выстрелом с дистанции более {colorTagOpen}%(damageDistance)d м{colorTagClose} обновляет время действия навыка."
+
+msgid "comp7_sniper/name"
+msgstr "Точно в цель"
+
+msgid "comp7_sure_shot/descr/active"
+msgstr ""
+"На следующие {colorTagOpen}%(duration)d с{colorTagClose} уменьшает разброс орудия при движении, поворотах ходовой, вращении башни и после выстрела на {colorTagOpen}%(shotDispersionFactorsBuff_1).0f/%(shotDispersionFactorsBuff_2).0f/%(shotDispersionFactorsBuff_3).0f%%{colorTagClose}.\n"
+"\n"
+"Нанесение урона выстрелом в течение действия навыка сокращает время перезарядки на {colorTagOpen}%(gunReloadBuff_1).0f/%(gunReloadBuff_2).0f/%(gunReloadBuff_3).0f%%{colorTagClose} от процента, на который уменьшилась прочность машины противника.\n"
+"\n"
+"Уничтожение техники противника выстрелом сокращает время перезарядки на {colorTagOpen}%(gunReloadBuff_1).0f/%(gunReloadBuff_2).0f/%(gunReloadBuff_3).0f%%{colorTagClose}."
+
+msgid "comp7_sure_shot/name"
+msgstr "Верный выстрел"
+
 msgid "corrodingShot/descr"
 msgstr ""
 "При активации и нанесении урона машине противника на неё накладывается "
@@ -538,6 +695,9 @@ msgstr "Кислотный снаряд"
 
 msgid "crewBattleBooster/descr/boost"
 msgstr "Усиливает"
+
+msgid "crewBattleBooster/descr/commander_special"
+msgstr "Особенность командира"
 
 msgid "crewBattleBooster/descr/common"
 msgstr "{colorTagOpen}{action}{colorTagClose} {skillOrPerk} «{name}»"
@@ -765,6 +925,12 @@ msgstr "Усиленные торсионы (Класс 3 т)"
 
 msgid "enhancedTorsions5t/name"
 msgstr "Усиленные торсионы (Класс 5+ т)"
+
+msgid "exampleAbility/descr"
+msgstr "Тестовая абилка на Visual Script"
+
+msgid "exampleAbility/name"
+msgstr "Тестовая абилка"
 
 msgid "extraHealthReserve/additional_descr"
 msgstr "Полностью восстанавливает прочность ходовой после ремонта."
@@ -1427,6 +1593,24 @@ msgstr "Разложить снаряды"
 
 msgid "pedantBattleBooster/short_special"
 msgstr "Даёт навык «Бесконтактная боеукладка» или усиливает его"
+
+msgid "poi_artillery_aoe/descr"
+msgstr ""
+"Через {colorTagOpen}3 с{colorTagClose} по выбранной вами области будет "
+"нанесён Артиллерийский удар. Поражённые цели в радиусе 30 м получают "
+"{colorTagOpen}500{colorTagClose} ед. урона и оглушаются на {colorTagOpen}20 "
+"с{colorTagClose}."
+
+msgid "poi_artillery_aoe/name"
+msgstr "Артиллерийский удар"
+
+msgid "poi_radar/descr"
+msgstr ""
+"При активации вся техника противника будет оставаться обнаруженной в течение"
+" {colorTagOpen}%(duration)d с{colorTagClose}."
+
+msgid "poi_radar/name"
+msgstr "Запрос разведданных"
 
 msgid "qualityOil/always"
 msgstr "%(vehicleEnginePower)s к мощности двигателя. Расходуется за один бой."
@@ -2527,11 +2711,13 @@ msgstr "Нарастающий азарт"
 msgid "shotPassion/shortDescr"
 msgstr "Нарастающий азарт"
 
-msgid "sixthSenseBattleBooster/action/boost"
-msgstr "Уменьшает время срабатывания навыка «Шестое чувство» на 1 с"
+msgid "sixthSenseBattleBooster/action/builtinPerkBooster"
+msgstr "Уменьшает время срабатывания «Шестого чувства» на 1 с"
 
-msgid "sixthSenseBattleBooster/action/perk"
-msgstr "Даёт 100%-й навык «Шестое чувство»"
+msgid "sixthSenseBattleBooster/description/builtinPerkBooster"
+msgstr ""
+"Особенность командира «Шестое чувство» позволяет определять, обнаружена ли "
+"машина противником. Срабатывает через 3 секунды с момента обнаружения."
 
 msgid "sixthSenseBattleBooster/long_special"
 msgstr ""
@@ -2544,7 +2730,7 @@ msgid "sixthSenseBattleBooster/name"
 msgstr "Повышенное внимание"
 
 msgid "sixthSenseBattleBooster/short_special"
-msgstr "Даёт навык «Шестое чувство» или усиливает его"
+msgstr "Усиливает особенность командира «Шестое чувство»"
 
 msgid "smallMedkit/always"
 msgstr "?empty?"

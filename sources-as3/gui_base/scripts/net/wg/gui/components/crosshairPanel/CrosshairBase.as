@@ -15,14 +15,18 @@ package net.wg.gui.components.crosshairPanel
    public class CrosshairBase extends MovieClip implements ICrosshair
    {
       
+      private static const TYPE_PREFIX:String = "type";
+      
       private static const FRACTIONAL_FORMAT_CMD:String = "WG.getFractionalFormat";
       
-      protected static const TYPE_PREFIX:String = "type";
+      private static const TF_LEFT_MARGIN:int = 2;
        
       
       public var timerProgressTextField:TextField = null;
       
       public var timerCompleteTextField:TextField = null;
+      
+      public var reloadTimeBlink:MovieClip = null;
       
       public var quickReloadingTimerTextField:TextField = null;
       
@@ -96,6 +100,8 @@ package net.wg.gui.components.crosshairPanel
       
       private var _quickReloadingTimerVisible:Boolean = true;
       
+      private var _reloadTimeBlinkYPos:Array = null;
+      
       private var _disposed:Boolean = false;
       
       public function CrosshairBase()
@@ -103,11 +109,11 @@ package net.wg.gui.components.crosshairPanel
          super();
          this.cassetteMC.isUseFrameAnimation = this._isUseFrameAnimation;
          this.timerProgressTextField.visible = false;
-         this.timerCompleteTextField.visible = true;
+         this.reloadTimeBlink.visible = false;
          this.updateQuickReloadingTimer();
          this.ammoLowTextField.visible = false;
-         this.ammoNormalTextField.visible = true;
          addEventListener(CrosshairPanelEvent.SOUND,this.onCrosshairPanelSoundHandler);
+         this._reloadTimeBlinkYPos = this.getReloadTimeBlinkYPos();
       }
       
       public function autoloaderBoostUpdate(param1:BoostIndicatorStateParamsVO, param2:Number, param3:Boolean = false) : void
@@ -133,39 +139,32 @@ package net.wg.gui.components.crosshairPanel
          this.autoloaderComponent.autoloaderUpdate(param1,param2,param3,param4);
       }
       
+      public function blinkReloadTime(param1:int) : void
+      {
+         var _loc2_:Boolean = param1 > 0;
+         this.reloadTimeBlink.visible = _loc2_;
+         if(_loc2_)
+         {
+            this.arrangeReloadTimeBlink();
+            this.reloadTimeBlink.blink.gotoAndStop(param1);
+            this.reloadTimeBlink.gotoAndPlay(1);
+         }
+      }
+      
       public function clearDistance(param1:Boolean) : void
       {
          this.distance.clearDistance(param1);
       }
       
-      public function dispose() : void
+      public final function dispose() : void
       {
          this._disposed = true;
-         removeEventListener(CrosshairPanelEvent.SOUND,this.onCrosshairPanelSoundHandler);
-         this.timerProgressTextField = null;
-         this.timerCompleteTextField = null;
-         this._currentTimerTextField = null;
-         this.quickReloadingTimerTextField = null;
-         this.ammoLowTextField = null;
-         this.ammoNormalTextField = null;
-         this._currentAmmoTextField = null;
-         this.reloadingBar = null;
-         this.reloadingAnimationMC = null;
-         this.healthBarMC = null;
-         this.cassetteMC = null;
-         this.centerMC = null;
-         this.netMC = null;
-         this.netSeparator = null;
-         if(this.autoloaderComponent)
-         {
-            this.autoloaderComponent.dispose();
-            this.autoloaderComponent = null;
-         }
-         if(this.distance)
-         {
-            this.distance.dispose();
-            this.distance = null;
-         }
+         this.onDispose();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
       
       public function setAmmoStock(param1:Number, param2:Number, param3:Boolean, param4:String, param5:Boolean = false) : void
@@ -209,10 +208,7 @@ package net.wg.gui.components.crosshairPanel
          {
             this.cassetteMC.setClipsParam(param1,param2);
          }
-         if(this.autoloaderComponent)
-         {
-            this.autoloaderComponent.visible = this._isAutoloader;
-         }
+         this.autoloaderComponent.visible = this._isAutoloader;
          this.cassetteMC.visible = !this._isAutoloader;
       }
       
@@ -233,6 +229,10 @@ package net.wg.gui.components.crosshairPanel
       }
       
       public function setDistanceVisibility(param1:Boolean) : void
+      {
+      }
+      
+      public function setGunMarkersData(param1:Vector.<GunMarkerIndicatorVO>, param2:Boolean) : void
       {
       }
       
@@ -280,6 +280,16 @@ package net.wg.gui.components.crosshairPanel
             this.setReloadingBarFrame();
             this.updateAmmoCount();
             this.updateNetSeparatorVisibility();
+            this.updateQuickReloadingTimer();
+         }
+      }
+      
+      public function setQuickReloadingTime(param1:Boolean, param2:Number) : void
+      {
+         if(this._quickReloadingTimerActive != param1 || this._quickReloadingTime != param2)
+         {
+            this._quickReloadingTimerActive = param1;
+            this._quickReloadingTime = param2;
             this.updateQuickReloadingTimer();
          }
       }
@@ -417,54 +427,44 @@ package net.wg.gui.components.crosshairPanel
       {
       }
       
-      public function setQuickReloadingTime(param1:Boolean, param2:Number) : void
-      {
-         if(this._quickReloadingTimerActive != param1 || this._quickReloadingTime != param2)
-         {
-            this._quickReloadingTimerActive = param1;
-            this._quickReloadingTime = param2;
-            this.updateQuickReloadingTimer();
-         }
-      }
-      
-      private function updateQuickReloadingTimer() : void
-      {
-         var _loc1_:String = null;
-         if(this.quickReloadingTimerTextField)
-         {
-            if(this._quickReloadingTimerVisible && this._quickReloadingTimerActive && this._quickReloadingTime > 0)
-            {
-               _loc1_ = ExternalInterface.call.apply(this,[FRACTIONAL_FORMAT_CMD,this._quickReloadingTime]);
-               this.quickReloadingTimerTextField.text = _loc1_;
-               this.quickReloadingTimerTextField.visible = true;
-            }
-            else
-            {
-               this.quickReloadingTimerTextField.visible = false;
-            }
-         }
-      }
-      
-      public function get autoloaderBoostParams() : BoostIndicatorStateParamsVO
-      {
-         return this.autoloaderComponent.autoloaderBoostParams;
-      }
-      
-      public function set isUseFrameAnimation(param1:Boolean) : void
-      {
-         this._isUseFrameAnimation = param1;
-      }
-      
       public function updateScaleWidget(param1:Number) : void
       {
       }
       
-      public function set scaleWidgetEnabled(param1:Boolean) : void
+      protected function onDispose() : void
       {
+         removeEventListener(CrosshairPanelEvent.SOUND,this.onCrosshairPanelSoundHandler);
+         this.reloadTimeBlink = null;
+         this.timerProgressTextField = null;
+         this.timerCompleteTextField = null;
+         this._currentTimerTextField = null;
+         this.quickReloadingTimerTextField = null;
+         this.ammoLowTextField = null;
+         this.ammoNormalTextField = null;
+         this._currentAmmoTextField = null;
+         this.reloadingBar = null;
+         this.reloadingAnimationMC = null;
+         this.healthBarMC = null;
+         this.centerMC = null;
+         this.netMC = null;
+         this.netSeparator = null;
+         this.autoloaderComponent.dispose();
+         this.autoloaderComponent = null;
+         this.distance.dispose();
+         this.distance = null;
+         this.cassetteMC.dispose();
+         this.cassetteMC = null;
+         if(this._reloadTimeBlinkYPos)
+         {
+            this._reloadTimeBlinkYPos.length = 0;
+            this._reloadTimeBlinkYPos = null;
+         }
       }
       
-      public function setGunMarkersData(param1:Vector.<GunMarkerIndicatorVO>, param2:Boolean) : void
+      protected function arrangeReloadTimeBlink() : void
       {
+         this.reloadTimeBlink.x = this._currentTimerTextField.x + (this._currentTimerTextField.textWidth >> 1) + TF_LEFT_MARGIN;
+         this.reloadTimeBlink.y = this._reloadTimeBlinkYPos[this.netType];
       }
       
       protected function updateNetType() : void
@@ -488,6 +488,29 @@ package net.wg.gui.components.crosshairPanel
          else
          {
             this.reloadingAnimationMC.visible = false;
+         }
+      }
+      
+      protected function getReloadTimeBlinkYPos() : Array
+      {
+         return null;
+      }
+      
+      private function updateQuickReloadingTimer() : void
+      {
+         var _loc1_:String = null;
+         if(this.quickReloadingTimerTextField)
+         {
+            if(this._quickReloadingTimerVisible && this._quickReloadingTimerActive && this._quickReloadingTime > 0)
+            {
+               _loc1_ = ExternalInterface.call.apply(this,[FRACTIONAL_FORMAT_CMD,this._quickReloadingTime]);
+               this.quickReloadingTimerTextField.text = _loc1_;
+               this.quickReloadingTimerTextField.visible = true;
+            }
+            else
+            {
+               this.quickReloadingTimerTextField.visible = false;
+            }
          }
       }
       
@@ -614,17 +637,31 @@ package net.wg.gui.components.crosshairPanel
          this.ammoNormalTextField.alpha = this.netAlpha;
       }
       
+      public function get autoloaderBoostParams() : BoostIndicatorStateParamsVO
+      {
+         return this.autoloaderComponent.autoloaderBoostParams;
+      }
+      
+      public function set isUseFrameAnimation(param1:Boolean) : void
+      {
+         this._isUseFrameAnimation = param1;
+      }
+      
+      public function set scaleWidgetEnabled(param1:Boolean) : void
+      {
+      }
+      
+      public function get isAutoloader() : Boolean
+      {
+         return this._isAutoloader;
+      }
+      
       private function onCrosshairPanelSoundHandler(param1:CrosshairPanelEvent) : void
       {
          if(!visible)
          {
             param1.stopImmediatePropagation();
          }
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

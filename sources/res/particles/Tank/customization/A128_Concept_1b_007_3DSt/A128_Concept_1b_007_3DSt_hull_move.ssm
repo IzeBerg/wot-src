@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>Stop</name>
+			<type>trigger</type>
+		</param>
+		<param>
+			<name>Move</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>hull_idle</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/A128_Concept_1b_007_3DSt/A128_Concept_1b_007_3DSt_hull_idle.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>Hull_idle_fadeout</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Move</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-234.000000 -93.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Hull_idle_fadeout</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/A128_Concept_1b_007_3DSt/A128_Concept_1b_007_3DSt_hull_idle_fadeout.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Hull_move</to>
+			<blendDuration>1.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions/>
+		</transition>
+		<uiPosition>-51.000000 -237.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Hull_move</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/A128_Concept_1b_007_3DSt/A128_Concept_1b_007_3DSt_hull_move.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>Hull_idle_fadein</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Stop</name>
+				</condition>
+			</conditions>
+		</transition>
+		<transition>
+			<to>Hull_move</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Move</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-258.000000 -342.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Hull_idle_fadein</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/A128_Concept_1b_007_3DSt/A128_Concept_1b_007_3DSt_hull_idle_fadein.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>idle_sleep</to>
+			<blendDuration>1.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions/>
+		</transition>
+		<uiPosition>-454.000000 -241.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>idle_sleep</name>
+		<type>sleep</type>
+		<time>1.000000 1.000000</time>
+		<transition>
+			<to>hull_idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions/>
+		</transition>
+		<uiPosition>-413.000000 -172.000000 0.000000</uiPosition>
+	</node>
+</root>

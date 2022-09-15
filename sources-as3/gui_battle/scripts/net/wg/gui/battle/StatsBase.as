@@ -4,8 +4,12 @@ package net.wg.gui.battle
    import net.wg.data.VO.daapi.DAAPIArenaInfoVO;
    import net.wg.data.VO.daapi.DAAPIPlayerStatusVO;
    import net.wg.data.VO.daapi.DAAPIQuestStatusVO;
+   import net.wg.data.VO.daapi.DAAPIVehicleInfoVO;
+   import net.wg.data.VO.daapi.DAAPIVehicleStatusVO;
    import net.wg.data.VO.daapi.DAAPIVehicleUserTagsVO;
+   import net.wg.data.VO.daapi.DAAPIVehiclesDataVO;
    import net.wg.data.VO.daapi.DAAPIVehiclesInvitationStatusVO;
+   import net.wg.data.VO.daapi.DAAPIVehiclesStatsVO;
    import net.wg.data.VO.daapi.DAAPIVehiclesUserTagsVO;
    import net.wg.data.constants.Errors;
    import net.wg.data.constants.LobbyMetrics;
@@ -61,6 +65,7 @@ package net.wg.gui.battle
          this.header.setMinHeight(MIN_HEIGHT);
          this.tableCtrl = this.getTableCtrl();
          this.emptyStatusVO = new DAAPIQuestStatusVO({"status":Values.EMPTY_STR});
+         visible = false;
       }
       
       override public function setCompVisible(param1:Boolean) : void
@@ -100,6 +105,9 @@ package net.wg.gui.battle
       
       public function addVehiclesInfo(param1:IDAAPIDataClass) : void
       {
+         var _loc2_:DAAPIVehiclesDataVO = DAAPIVehiclesDataVO(param1);
+         this.tableCtrl.addVehiclesInfo(_loc2_.leftVehicleInfos,_loc2_.leftVehiclesIDs,false);
+         this.tableCtrl.addVehiclesInfo(_loc2_.rightVehicleInfos,_loc2_.rightVehiclesIDs,true);
       }
       
       public function as_setIsInteractive(param1:Boolean) : void
@@ -156,6 +164,20 @@ package net.wg.gui.battle
       
       public function setVehiclesData(param1:IDAAPIDataClass) : void
       {
+         var _loc4_:DAAPIVehicleInfoVO = null;
+         var _loc2_:DAAPIVehiclesDataVO = DAAPIVehiclesDataVO(param1);
+         var _loc3_:Array = [];
+         for each(_loc4_ in _loc2_.leftVehicleInfos)
+         {
+            _loc3_.push(_loc4_);
+         }
+         this.tableCtrl.setVehiclesData(_loc3_,_loc2_.leftVehiclesIDs,false);
+         _loc3_ = [];
+         for each(_loc4_ in _loc2_.rightVehicleInfos)
+         {
+            _loc3_.push(_loc4_);
+         }
+         this.tableCtrl.setVehiclesData(_loc3_,_loc2_.rightVehiclesIDs,true);
       }
       
       public function updateInvitationsStatuses(param1:IDAAPIDataClass) : void
@@ -200,6 +222,10 @@ package net.wg.gui.battle
          this.doUpdateSizeTable(param1,param2);
       }
       
+      public function updateTriggeredChatCommands(param1:IDAAPIDataClass) : void
+      {
+      }
+      
       public function updateUserTags(param1:IDAAPIDataClass) : void
       {
          var _loc2_:DAAPIVehicleUserTagsVO = DAAPIVehicleUserTagsVO(param1);
@@ -208,22 +234,31 @@ package net.wg.gui.battle
       
       public function updateVehicleStatus(param1:IDAAPIDataClass) : void
       {
+         var _loc2_:DAAPIVehicleStatusVO = DAAPIVehicleStatusVO(param1);
+         if(_loc2_.dogTag)
+         {
+            this.tableCtrl.setDogTagToShow(_loc2_.vehicleID,_loc2_.dogTag);
+         }
+         this.tableCtrl.setVehicleStatus(false,_loc2_.vehicleID,_loc2_.status,_loc2_.leftVehiclesIDs);
+         this.tableCtrl.setVehicleStatus(true,_loc2_.vehicleID,_loc2_.status,_loc2_.rightVehiclesIDs);
       }
       
       public function updateVehiclesData(param1:IDAAPIDataClass) : void
       {
+         var _loc2_:DAAPIVehiclesDataVO = DAAPIVehiclesDataVO(param1);
+         this.tableCtrl.updateVehiclesData(_loc2_.leftVehicleInfos,_loc2_.leftVehiclesIDs,false);
+         this.tableCtrl.updateVehiclesData(_loc2_.rightVehicleInfos,_loc2_.rightVehiclesIDs,true);
       }
       
       public function updateVehiclesStat(param1:IDAAPIDataClass) : void
       {
-      }
-      
-      public function updateTriggeredChatCommands(param1:IDAAPIDataClass) : void
-      {
+         this.updateFrags(param1);
       }
       
       protected function updateFrags(param1:IDAAPIDataClass) : void
       {
+         var _loc2_:DAAPIVehiclesStatsVO = DAAPIVehiclesStatsVO(param1);
+         this.tableCtrl.setVehiclesStats(_loc2_.leftFrags,_loc2_.rightFrags);
       }
       
       protected function doUpdateSizeTop(param1:Number, param2:Number) : void

@@ -372,6 +372,234 @@
 		</value>
 	</layout>
 	<layout>
+		<name>personalCaseWithFreeSkills</name>
+		<type>dict</type>
+		<value>
+			<item>
+				<name>padding</name>
+				<type>dict</type>
+				<value>
+					<item>
+						<name>left</name>
+						<type>int</type>
+						<value>1</value>
+					</item>
+					<item>
+						<name>right</name>
+						<type>int</type>
+						<value>0</value>
+					</item>
+					<item>
+						<name>top</name>
+						<type>int</type>
+						<value>1</value>
+					</item>
+					<item>
+						<name>bottom</name>
+						<type>int</type>
+						<value>-3</value>
+					</item>
+				</value>
+			</item>
+			<item>
+				<name>btnControllerVo</name>
+				<type>dict</type>
+				<value>
+					<item>
+						<name>btnTooltip</name>
+						<value>#tooltips:windowHelp</value>
+					</item>
+				</value>
+			</item>
+			<item>
+				<name>hints</name>
+				<type>list</type>
+				<value>
+					<item>
+						<name>hint</name>
+						<type>dict</type>
+						<value>
+							<item>
+								<name>iconSource</name>
+								<type>string</type>
+								<value>../maps/icons/library/tutorialInfoIcon.png</value>
+							</item>
+							<item>
+								<name>width</name>
+								<type>int</type>
+								<value>400</value>
+							</item>
+							<item>
+								<name>height</name>
+								<type>int</type>
+								<value>374</value>
+							</item>
+							<item>
+								<name>tooltipSpecial</name>
+								<value>hangarTutorialPersonalCaseSkills</value>
+							</item>
+							<item>
+								<name>hintText</name>
+								<value>#tutorial:hangarTutorial/personalCase/characteristics</value>
+							</item>
+							<item>
+								<name>padding</name>
+								<type>dict</type>
+								<value/>
+							</item>
+						</value>
+					</item>
+					<item>
+						<name>hint</name>
+						<type>dict</type>
+						<value>
+							<item>
+								<name>iconSource</name>
+								<type>string</type>
+								<value>../maps/icons/library/tutorialInfoIcon.png</value>
+							</item>
+							<item>
+								<name>width</name>
+								<type>int</type>
+								<value>400</value>
+							</item>
+							<item>
+								<name>height</name>
+								<type>int</type>
+								<value>108</value>
+							</item>
+							<item>
+								<name>tooltipSpecial</name>
+								<value>hangarTutorialPersonalCaseFreeSkills</value>
+							</item>
+							<item>
+								<name>hintText</name>
+								<value>#tutorial:hangarTutorial/personalCase/freeSkills</value>
+							</item>
+							<item>
+								<name>padding</name>
+								<type>dict</type>
+								<value>
+									<item>
+										<name>top</name>
+										<type>int</type>
+										<value>375</value>
+									</item>
+								</value>
+							</item>
+						</value>
+					</item>
+					<item>
+						<name>hint</name>
+						<type>dict</type>
+						<value>
+							<item>
+								<name>iconSource</name>
+								<type>string</type>
+								<value>../maps/icons/library/tutorialInfoIcon.png</value>
+							</item>
+							<item>
+								<name>width</name>
+								<type>int</type>
+								<value>400</value>
+							</item>
+							<item>
+								<name>height</name>
+								<type>int</type>
+								<value>108</value>
+							</item>
+							<item>
+								<name>tooltipSpecial</name>
+								<value>hangarTutorialPersonalCasePerks</value>
+							</item>
+							<item>
+								<name>hintText</name>
+								<value>#tutorial:hangarTutorial/personalCase/perks</value>
+							</item>
+							<item>
+								<name>padding</name>
+								<type>dict</type>
+								<value>
+									<item>
+										<name>top</name>
+										<type>int</type>
+										<value>484</value>
+									</item>
+								</value>
+							</item>
+						</value>
+					</item>
+					<item>
+						<name>hint</name>
+						<type>dict</type>
+						<value>
+							<item>
+								<name>width</name>
+								<type>int</type>
+								<value>400</value>
+							</item>
+							<item>
+								<name>height</name>
+								<type>int</type>
+								<value>31</value>
+							</item>
+							<item>
+								<name>hintText</name>
+								<value>#tutorial:hangarTutorial/personalCase/actionButtons</value>
+							</item>
+							<item>
+								<name>padding</name>
+								<type>dict</type>
+								<value>
+									<item>
+										<name>top</name>
+										<type>int</type>
+										<value>593</value>
+									</item>
+								</value>
+							</item>
+						</value>
+					</item>
+					<item>
+						<name>hint</name>
+						<type>dict</type>
+						<value>
+							<item>
+								<name>iconSource</name>
+								<type>string</type>
+								<value>../maps/icons/library/tutorialInfoIcon.png</value>
+							</item>
+							<item>
+								<name>tooltipSpecial</name>
+								<value>hangarTutorialPersonalCaseAdditional</value>
+							</item>
+							<item>
+								<name>hintText</name>
+								<value>#tutorial:hangarTutorial/personalCase/addActions</value>
+							</item>
+							<item>
+								<name>padding</name>
+								<type>dict</type>
+								<value>
+									<item>
+										<name>left</name>
+										<type>int</type>
+										<value>401</value>
+									</item>
+									<item>
+										<name>bottom</name>
+										<type>int</type>
+										<value>27</value>
+									</item>
+								</value>
+							</item>
+						</value>
+					</item>
+				</value>
+			</item>
+		</value>
+	</layout>
+	<layout>
 		<name>personalCase</name>
 		<type>dict</type>
 		<value>
@@ -427,12 +655,12 @@
 							<item>
 								<name>width</name>
 								<type>int</type>
-								<value>398</value>
+								<value>400</value>
 							</item>
 							<item>
 								<name>height</name>
 								<type>int</type>
-								<value>361</value>
+								<value>483</value>
 							</item>
 							<item>
 								<name>tooltipSpecial</name>
@@ -461,12 +689,12 @@
 							<item>
 								<name>width</name>
 								<type>int</type>
-								<value>398</value>
+								<value>400</value>
 							</item>
 							<item>
 								<name>height</name>
 								<type>int</type>
-								<value>105</value>
+								<value>108</value>
 							</item>
 							<item>
 								<name>tooltipSpecial</name>
@@ -483,7 +711,7 @@
 									<item>
 										<name>top</name>
 										<type>int</type>
-										<value>364</value>
+										<value>484</value>
 									</item>
 								</value>
 							</item>
@@ -496,7 +724,12 @@
 							<item>
 								<name>width</name>
 								<type>int</type>
-								<value>398</value>
+								<value>400</value>
+							</item>
+							<item>
+								<name>height</name>
+								<type>int</type>
+								<value>31</value>
 							</item>
 							<item>
 								<name>hintText</name>
@@ -509,7 +742,7 @@
 									<item>
 										<name>top</name>
 										<type>int</type>
-										<value>472</value>
+										<value>593</value>
 									</item>
 								</value>
 							</item>

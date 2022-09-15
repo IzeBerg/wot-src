@@ -1,4 +1,4 @@
-from adisp import process
+from adisp import adisp_process
 from debug_utils import LOG_DEBUG
 from gui.Scaleform.daapi.view.lobby.clans.invites.ClanInvitesViewWithTable import ClanInvitesAbstractDataProvider
 from gui.Scaleform.daapi.view.meta.ClanRequestsViewMeta import ClanRequestsViewMeta
@@ -112,7 +112,7 @@ class ClanRequestsView(ClanRequestsViewMeta):
     def _createSearchDP(self):
         return RequestDataProvider(self)
 
-    @process
+    @adisp_process
     def _onListUpdated(self, selectedID, isFullUpdate, isReqInCoolDown, result):
         yield lambda callback: callback(None)
         status, data = result

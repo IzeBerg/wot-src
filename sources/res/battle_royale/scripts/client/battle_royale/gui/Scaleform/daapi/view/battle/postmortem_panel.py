@@ -1,0 +1,14 @@
+from gui.Scaleform.daapi.view.battle.shared.postmortem_panel import PostmortemPanel, _ALLOWED_EQUIPMENT_DEATH_CODES
+from gui.Scaleform.daapi.view.meta.BattleRoyalePostmortemPanelMeta import BattleRoyalePostmortemPanelMeta
+from items import vehicles
+
+class BattleRoyalePostmortemPanel(PostmortemPanel, BattleRoyalePostmortemPanelMeta):
+
+    def _onShowVehicleMessageByCode(self, code, postfix, entityID, extra, equipmentID):
+        if equipmentID:
+            equipment = vehicles.g_cache.equipments().get(equipmentID)
+            if code not in _ALLOWED_EQUIPMENT_DEATH_CODES and equipment:
+                code = ('_').join((code, equipment.name.upper()))
+                self._prepareMessage(code, entityID, self._getDevice(extra))
+                return
+        super(BattleRoyalePostmortemPanel, self)._onShowVehicleMessageByCode(code, postfix, entityID, extra, equipmentID)

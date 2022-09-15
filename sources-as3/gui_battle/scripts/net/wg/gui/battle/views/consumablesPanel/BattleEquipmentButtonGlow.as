@@ -5,12 +5,12 @@ package net.wg.gui.battle.views.consumablesPanel
    import flash.text.TextField;
    import net.wg.data.constants.generated.CONSUMABLES_PANEL_SETTINGS;
    import net.wg.gui.battle.components.BattleUIComponent;
+   import net.wg.gui.battle.views.consumablesPanel.events.ConsumablesButtonEvent;
+   import net.wg.gui.battle.views.consumablesPanel.interfaces.IBattleEquipmentButtonGlow;
    import scaleform.gfx.TextFieldEx;
    
-   public class BattleEquipmentButtonGlow extends BattleUIComponent
+   public class BattleEquipmentButtonGlow extends BattleUIComponent implements IBattleEquipmentButtonGlow
    {
-      
-      public static const ON_IDLE_STATE:String = "onIdleStateEvent";
       
       private static const SHOW_GLOW_HIDE_STATE:String = "hide";
       
@@ -121,7 +121,7 @@ package net.wg.gui.battle.views.consumablesPanel
       {
          stop();
          this._textField.textColor = NORMAL_TEXT_COLOR;
-         dispatchEvent(new Event(BattleEquipmentButtonGlow.ON_IDLE_STATE));
+         dispatchEvent(new Event(ConsumablesButtonEvent.GLOW_ON_IDLE_STATE));
       }
    }
 }

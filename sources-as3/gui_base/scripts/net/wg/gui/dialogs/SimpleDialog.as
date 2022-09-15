@@ -308,8 +308,8 @@ package net.wg.gui.dialogs
                _loc5_ -= _loc4_.width;
                _loc2_[_loc6_].x = _loc5_;
                _loc5_ -= BTN_GAP;
-               _loc2_[_loc6_].y = param1;
             }
+            _loc2_[_loc6_].y = param1;
             _loc6_--;
          }
       }

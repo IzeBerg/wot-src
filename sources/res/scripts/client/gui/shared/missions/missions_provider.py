@@ -1,5 +1,5 @@
 import BigWorld
-from adisp import process
+from adisp import adisp_process
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui import DialogsInterface
 from gui.Scaleform.framework import g_entitiesFactories
@@ -49,7 +49,7 @@ class ClientMissionsProvider(IGlobalListener):
                 else:
                     g_eventBus.handleEvent(events.MissionsEvent(events.MissionsEvent.PAGE_INVALIDATE), scope=EVENT_BUS_SCOPE.LOBBY)
 
-    @process
+    @adisp_process
     def __showElenPopupDlg(self):
         yield DialogsInterface.showI18nInfoDialog('elenDisabled')
         g_eventBus.handleEvent(g_entitiesFactories.makeLoadEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_HANGAR)), scope=EVENT_BUS_SCOPE.LOBBY)
@@ -90,7 +90,7 @@ class ClientMissionsProvider(IGlobalListener):
         if ServicesLocator.lobbyContext.getServerSettings().isElenEnabled():
             ServicesLocator.eventsController.updateHangarFlag()
 
-    @process
+    @adisp_process
     def __requestEventboardsData(self):
         if ServicesLocator.lobbyContext.getServerSettings().isElenEnabled():
             yield ServicesLocator.eventsController.getEvents(onlySettings=True)

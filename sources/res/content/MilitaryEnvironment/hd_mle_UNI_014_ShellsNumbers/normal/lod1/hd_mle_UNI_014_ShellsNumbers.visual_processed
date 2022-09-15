@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>n_metal0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_014_ShellsNumbers/hd_mle_UNI_014_ShellsNumbers_AM.dds</Texture>
+					</property>
+					<collisionFlags>16</collisionFlags>
+					<materialKind>73</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_014_ShellsNumbers/hd_mle_UNI_014_ShellsNumbers_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/MilitaryEnvironment/hd_mle_UNI_014_ShellsNumbers/hd_mle_UNI_014_ShellsNumbers_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.043609 0.328180 -0.086892</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_wall_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>73</materialKind>
+				</material>
+				<groupOrigin>-0.033282 0.909257 -0.087350</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.975649 -0.005542 -0.830036</min>
+		<max>0.896601 1.818514 0.655337</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>15000</geometrySize>
+	<minUVDensity>0.003306</minUVDensity>
+</root>

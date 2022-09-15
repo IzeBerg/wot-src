@@ -6,9 +6,9 @@ package net.wg.data.VO.daapi
    public class DAAPIVehiclesStatsVO extends DAAPIDataClass
    {
       
-      private static const COND_LEFT_FIELD_NAME:String = "leftItems";
+      protected static const COND_LEFT_FIELD_NAME:String = "leftItems";
       
-      private static const COND_RIGHT_FIELD_NAME:String = "rightItems";
+      protected static const COND_RIGHT_FIELD_NAME:String = "rightItems";
       
       private static const TOTAL_STATS_FIELD_NAME:String = "totalStats";
        

@@ -1,6 +1,6 @@
 import logging
 from gui import SystemMessages
-from adisp import async, process
+from adisp import adisp_async, adisp_process
 from gui.battle_pass.battle_pass_constants import ChapterState
 from gui.shared.gui_items.processors.battle_pass import BuyBattlePass, BuyBattlePassLevels
 from gui.shared.utils import decorators
@@ -17,7 +17,7 @@ class BattlePassBuyer(object):
     __soundEventChecker = dependency.descriptor(ISoundEventChecker)
 
     @classmethod
-    @decorators.process('buyBattlePass')
+    @decorators.adisp_process('buyBattlePass')
     def buyBP(cls, seasonID, chapterID, onBuyCallback=None):
         spendMoneyGold = 0
         if chapterID not in cls.__battlePassController.getChapterIDs():
@@ -34,7 +34,7 @@ class BattlePassBuyer(object):
             onBuyCallback(result)
 
     @classmethod
-    @decorators.process('buyBattlePassLevels')
+    @decorators.adisp_process('buyBattlePassLevels')
     def buyLevels(cls, seasonID, chapterID, levels=0, onBuyCallback=None):
         if chapterID not in cls.__battlePassController.getChapterIDs():
             _logger.error('Invalid chapterID: %s!', chapterID)
@@ -56,8 +56,8 @@ class BattlePassBuyer(object):
             onBuyCallback(result)
 
     @classmethod
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def __buyBattlePass(cls, seasonID, chapterID, callback):
         result = yield BuyBattlePass(seasonID, chapterID).request()
         startLevel, _ = cls.__battlePassController.getChapterLevelInterval(chapterID)
@@ -71,8 +71,8 @@ class BattlePassBuyer(object):
             return
 
     @staticmethod
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def __buyBattlePassLevels(seasonID, chapterID, levels, callback):
         result = yield BuyBattlePassLevels(seasonID, chapterID, levels).request()
         if result.userMsg:

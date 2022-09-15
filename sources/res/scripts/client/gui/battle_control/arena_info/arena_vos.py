@@ -2,7 +2,7 @@ import operator
 from collections import defaultdict
 from enum import Enum
 import nations
-from constants import IGR_TYPE, FLAG_ACTION, ARENA_GUI_TYPE
+from constants import IGR_TYPE, FLAG_ACTION, ARENA_GUI_TYPE, ROLE_TYPE
 from debug_utils import LOG_ERROR
 from gui import makeHtmlString
 from gui.battle_control import avatar_getter, vehicle_getter
@@ -22,6 +22,8 @@ _DEFAULT_PLAYER_GROUP = 1
 _DEFAULT_PLAYER_RANK = 0
 _DEFAULT_PHYSICAL_SECTOR = 1
 _DEFAULT_HAS_RESPAWNS = True
+_DEFAULT_ROLE_SKILL_LEVEL = 0
+_DEFAULT_PLAYER_DIVISION = 0
 
 class EPIC_RANDOM_KEYS(object):
     PLAYER_GROUP = 'playerGroup'
@@ -80,10 +82,29 @@ class EPIC_BATTLE_KEYS(object):
         return []
 
 
+class Comp7Keys(Enum):
+    ROLE_SKILL_LEVEL = 'vehicleRoleSkillLevel'
+    RANK = 'rank'
+    VOIP_CONNECTED = 'voipConnected'
+
+    @staticmethod
+    def getKeys(static=True):
+        if static:
+            return [(Comp7Keys.ROLE_SKILL_LEVEL, _DEFAULT_ROLE_SKILL_LEVEL), (Comp7Keys.RANK, (_DEFAULT_PLAYER_RANK, _DEFAULT_PLAYER_DIVISION)), (Comp7Keys.VOIP_CONNECTED, False)]
+        return []
+
+    @staticmethod
+    def getSortingKeys(static=True):
+        if static:
+            return [Comp7Keys.RANK]
+        return []
+
+
 GAMEMODE_SPECIFIC_KEYS = {ARENA_GUI_TYPE.EPIC_RANDOM: EPIC_RANDOM_KEYS, ARENA_GUI_TYPE.EPIC_RANDOM_TRAINING: EPIC_RANDOM_KEYS, 
    ARENA_GUI_TYPE.EPIC_BATTLE: EPIC_BATTLE_KEYS, 
    ARENA_GUI_TYPE.EPIC_TRAINING: EPIC_BATTLE_KEYS, 
-   ARENA_GUI_TYPE.BATTLE_ROYALE: BattleRoyaleKeys}
+   ARENA_GUI_TYPE.BATTLE_ROYALE: BattleRoyaleKeys, 
+   ARENA_GUI_TYPE.COMP7: Comp7Keys}
 
 class GameModeDataVO(object):
     __slots__ = ('__internalData', '__sortingKeys')
@@ -96,6 +117,8 @@ class GameModeDataVO(object):
                 self.__internalData[key] = defaultValue
 
             self.__sortingKeys = keys.getSortingKeys(static)
+        else:
+            self.__sortingKeys = []
 
     def update(self, data):
         invalidate = _INVALIDATE_OP.NONE
@@ -108,11 +131,10 @@ class GameModeDataVO(object):
 
         return invalidate
 
-    def getValue(self, key):
+    def getValue(self, key, default=None):
         if key in self.__internalData:
             return self.__internalData[key]
-        else:
-            return
+        return default
 
 
 def isObserver(tags):
@@ -192,7 +214,7 @@ class VehicleTypeInfoVO(object):
     __slots__ = ('compactDescr', 'shortName', 'name', 'level', 'iconName', 'iconPath',
                  'isObserver', 'isPremiumIGR', 'isDualGunVehicle', 'guiName', 'shortNameWithPrefix',
                  'classTag', 'nationID', 'turretYawLimits', 'maxHealth', 'strCompactDescr',
-                 'isOnlyForBattleRoyaleBattles', 'tags', 'chassisType')
+                 'isOnlyForBattleRoyaleBattles', 'tags', 'chassisType', 'role')
 
     def __init__(self, vehicleType=None, maxHealth=None, **kwargs):
         super(VehicleTypeInfoVO, self).__init__()
@@ -246,6 +268,7 @@ class VehicleTypeInfoVO(object):
             vName = vehicleType.name
             self.iconName = settings.makeVehicleIconName(vName)
             self.iconPath = settings.makeContourIconSFPath(vName)
+            self.role = vehicleType.role
         else:
             vehicleName = i18n.makeString(settings.UNKNOWN_VEHICLE_NAME)
             self.tags = frozenset()
@@ -268,6 +291,7 @@ class VehicleTypeInfoVO(object):
             self.shortNameWithPrefix = vehicleName
             self.maxHealth = None
             self.isOnlyForBattleRoyaleBattles = False
+            self.role = ROLE_TYPE.NOT_DEFINED
         return
 
     def getClassName(self):
@@ -457,6 +481,9 @@ class VehicleArenaInfoVO(object):
         if self.vehicleID == avatar_getter.getPlayerVehicleID() and not self.isAlive():
             return avatar_getter.isBecomeObserverAfterDeath()
         return False
+
+    def isEnemy(self):
+        return self.team != avatar_getter.getPlayerTeam()
 
     def isSPG(self):
         return self.vehicleType.classTag == VEHICLE_CLASS_NAME.SPG

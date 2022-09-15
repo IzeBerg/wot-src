@@ -117,3 +117,15 @@ class ConsumablesPanelMeta(BaseDAAPIComponent):
     def as_setSPGShotResultS(self, shellIdx, shotResult):
         if self._isDAAPIInited():
             return self.flashObject.as_setSPGShotResult(shellIdx, shotResult)
+
+    def as_addRoleSkillSlotS(self, idx, keyCode, sfKeyCode, quantity, timeRemaining, reloadingTime, iconPath, tooltipText, animation):
+        if self._isDAAPIInited():
+            return self.flashObject.as_addRoleSkillSlot(idx, keyCode, sfKeyCode, quantity, timeRemaining, reloadingTime, iconPath, tooltipText, animation)
+
+    def as_setRoleSkillSlotProgressS(self, idx, level=0, progress=0):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setRoleSkillSlotProgress(idx, level, progress)
+
+    def as_setRoleSkillSlotCounterS(self, idx, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setRoleSkillSlotCounter(idx, value)

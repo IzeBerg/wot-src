@@ -104,7 +104,7 @@ package net.wg.gui.lobby.header.headerButtonBar
             _loc1_ = maxScreenPrc < MAX_SCREEN_PRC_BORDER;
             this.moneyIconText.xCorrect = !!_loc1_ ? Number(SHORT_ICON_PADDING) : Number(0);
             this.moneyIconText.icon = this._financeVo.icon;
-            this.moneyIconText.text = this._financeVo.money;
+            this.moneyIconText.text = !!_loc1_ ? this._financeVo.shortMoneyValue : this._financeVo.money;
             this.moneyIconText.textSize = useFontSize;
             this.moneyIconText.textFieldYOffset = screen == LobbyHeader.MAX_SCREEN ? Number(-1) : Number(0);
             this.moneyIconText.validateNow();

@@ -10,6 +10,8 @@ package net.wg.infrastructure.base.meta
       
       function resetFiltersS() : void;
       
+      function updateHotFiltersS() : void;
+      
       function as_getDataProvider() : Object;
       
       function as_setInitData(param1:Object) : void;
@@ -21,5 +23,9 @@ package net.wg.infrastructure.base.meta
       function as_hideCounter() : void;
       
       function as_blinkCounter() : void;
+      
+      function as_setCarouselFilter(param1:Object) : void;
+      
+      function as_initCarouselFilter(param1:Object) : void;
    }
 }

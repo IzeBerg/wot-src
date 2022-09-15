@@ -1,4 +1,4 @@
-from adisp import process
+from adisp import adisp_process
 from frameworks.wulf import ViewFlags, ViewSettings
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.framework import g_entitiesFactories
@@ -55,7 +55,7 @@ class BattleSessionView(ViewImpl):
     def __closeClickedHandler(self):
         self.destroyWindow()
 
-    @process
+    @adisp_process
     def __openUrl(self, name):
         url = yield self.__externalLinks.getURL(name)
         self.__externalLinks.open(url)

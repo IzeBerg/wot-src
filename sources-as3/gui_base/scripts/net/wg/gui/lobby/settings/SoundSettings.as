@@ -79,6 +79,8 @@ package net.wg.gui.lobby.settings
       
       private var _typeAcousticsSelected:Boolean = false;
       
+      private var _isAcousticsAlertVisible:Boolean = false;
+      
       public function SoundSettings()
       {
          this._toolTipMgr = App.toolTipMgr;
@@ -136,6 +138,7 @@ package net.wg.gui.lobby.settings
       
       override protected function setData(param1:SettingsDataVo) : void
       {
+         var _loc3_:Boolean = false;
          var _loc9_:String = null;
          var _loc11_:String = null;
          var _loc12_:String = null;
@@ -145,7 +148,7 @@ package net.wg.gui.lobby.settings
          this.controlsUnsubscribe();
          super.setData(param1);
          var _loc2_:SettingsControlProp = SettingsControlProp(param1.getByKey(SettingsConfigHelper.VOICE_CHAT_SUPPORTED));
-         var _loc3_:Boolean = _loc2_.current;
+         _loc3_ = _loc2_.current;
          var _loc4_:Array = [{"label":SETTINGS.SOUNDS_TABCOMMON}];
          var _loc5_:Boolean = App.voiceChatMgr.getYY();
          if(_loc3_ || _loc5_)
@@ -266,6 +269,7 @@ package net.wg.gui.lobby.settings
          if(param1)
          {
             this.applyNewSoundSpeakers(soundSpeakersDropDown.selectedIndex);
+            soundDeviceAlert.visible = this._isAcousticsAlertVisible = !param1;
          }
       }
       
@@ -275,6 +279,7 @@ package net.wg.gui.lobby.settings
          if(param1)
          {
             this.applyNewSoundSpeakers(soundSpeakersDropDown.selectedIndex);
+            soundDeviceAlert.visible = this._isAcousticsAlertVisible = true;
          }
          else
          {
@@ -441,7 +446,7 @@ package net.wg.gui.lobby.settings
          param1.enabled = param3;
          if(param2 == SettingsConfigHelper.SOUND_DEVICE)
          {
-            this.updateSoundSpeakersDependencies(param1.selectedIndex);
+            this.updateSoundSpeakersDependencies(param1.selectedIndex,true);
          }
       }
       
@@ -643,13 +648,24 @@ package net.wg.gui.lobby.settings
          dispatchEvent(new SettingViewEvent(SettingViewEvent.ON_CONTROL_CHANGED,viewId,null,SettingsConfigHelper.SOUND_SPEAKERS,param1));
       }
       
-      private function updateSoundSpeakersDependencies(param1:Number) : void
+      private function updateSoundSpeakersDependencies(param1:Number, param2:Boolean) : void
       {
-         var _loc2_:SettingsControlProp = SettingsControlProp(data[SettingsConfigHelper.SOUND_DEVICE]);
-         var _loc3_:String = _loc2_.options[param1][SettingsConfigHelper.SOUND_DEVICE_ID_FIELD];
-         this._typeAcousticsSelected = _loc3_ == ACOUSTICS.TYPE_ACOUSTICS;
+         var _loc3_:SettingsControlProp = SettingsControlProp(data[SettingsConfigHelper.SOUND_DEVICE]);
+         var _loc4_:String = _loc3_.options[param1][SettingsConfigHelper.SOUND_DEVICE_ID_FIELD];
+         this._typeAcousticsSelected = _loc4_ == ACOUSTICS.TYPE_ACOUSTICS;
          this.updateSoundSpeakersDropDown();
-         soundDeviceAlert.visible = _loc2_.options[param1][SettingsConfigHelper.SOUND_DEVICE_ALERT_FIELD];
+         if(this._typeAcousticsSelected)
+         {
+            if(param2)
+            {
+               this._isAcousticsAlertVisible = _loc3_.options[param1][SettingsConfigHelper.SOUND_DEVICE_ALERT_FIELD];
+            }
+            soundDeviceAlert.visible = this._isAcousticsAlertVisible;
+         }
+         else
+         {
+            soundDeviceAlert.visible = _loc3_.options[param1][SettingsConfigHelper.SOUND_DEVICE_ALERT_FIELD];
+         }
       }
       
       private function updateSoundSpeakersDropDown() : void
@@ -803,6 +819,7 @@ package net.wg.gui.lobby.settings
                dispatchEvent(new SettingViewEvent(SettingViewEvent.ON_AUTO_DETECT_ACOUSTIC,viewId));
                dispatchEvent(new SettingViewEvent(SettingViewEvent.ON_CONTROL_CHANGED,viewId,null,_loc3_,_loc2_.selectedIndex));
                _loc4_.changedVal = _loc2_.selectedIndex;
+               soundDeviceAlert.visible = this._isAcousticsAlertVisible = false;
             }
             else
             {
@@ -821,7 +838,7 @@ package net.wg.gui.lobby.settings
          var _loc3_:String = SettingsConfigHelper.instance.getControlIdByControlNameAndType(_loc2_.name,SettingsConfigHelper.TYPE_BUTTON_BAR);
          if(_loc3_ == SettingsConfigHelper.SOUND_DEVICE)
          {
-            this.updateSoundSpeakersDependencies(_loc2_.selectedIndex);
+            this.updateSoundSpeakersDependencies(_loc2_.selectedIndex,false);
          }
          dispatchEvent(new SettingViewEvent(SettingViewEvent.ON_CONTROL_CHANGED,viewId,null,_loc3_,_loc2_.selectedIndex));
       }

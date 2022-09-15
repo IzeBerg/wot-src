@@ -161,6 +161,15 @@ package net.wg.gui.battle.random.views.teamBasesPanel
          }
       }
       
+      protected function setBarYPosition(param1:uint, param2:int) : void
+      {
+         var _loc3_:TeamCaptureBar = this._captureBars[param1];
+         if(_loc3_ != null)
+         {
+            _loc3_.y = param2;
+         }
+      }
+      
       private function updateColors() : void
       {
          var _loc1_:uint = this._captureBars.length;
@@ -267,7 +276,7 @@ package net.wg.gui.battle.random.views.teamBasesPanel
             _loc3_ = 0;
             while(_loc3_ < _loc1_)
             {
-               this._captureBars[_loc3_].y = _loc2_;
+               this.setBarYPosition(_loc3_,_loc2_);
                _loc3_++;
                _loc2_ += RENDERER_HEIGHT;
             }

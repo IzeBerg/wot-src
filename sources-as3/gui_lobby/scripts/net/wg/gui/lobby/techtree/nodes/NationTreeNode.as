@@ -33,23 +33,23 @@ package net.wg.gui.lobby.techtree.nodes
       
       private static const LABEL_ANIM_START:String = "animStart";
       
-      private static const TRADE_POS_X:Number = 14;
+      private static const TRADE_POS_X:uint = 14;
       
-      private static const TRADE_POS_Y:Number = 33;
+      private static const TRADE_POS_Y:uint = 33;
       
-      private static const XP_FIELD_DEFAULT_OFFSET_X:int = 20;
+      private static const XP_FIELD_DEFAULT_OFFSET_X:uint = 20;
       
       private static const XP_FIELD_ACTION_OFFSET_X:int = 0;
       
-      private static const PROGRESS_BAR_RESEARCH_AVAILABLE_ALPHA:Number = 1;
+      private static const PROGRESS_BAR_RESEARCH_AVAILABLE_ALPHA:uint = 1;
       
       private static const PROGRESS_BAR_RESEARCH_UNAVAILABLE_ALPHA:Number = 0.7;
       
-      private static const BOTTOM_ARROW_OFFSET:Number = 6;
+      private static const BOTTOM_ARROW_OFFSET:uint = 6;
       
-      private static const BOTTOM_ARROW_OFFSET_ACTION:Number = 8;
+      private static const BOTTOM_ARROW_OFFSET_ACTION:uint = 8;
       
-      private static const IN_X_OFFSET:Number = -3;
+      private static const IN_X_OFFSET:int = -3;
       
       private static const BLUEPRINT_PLUS_COLOR_OFFSET:int = 50;
       
@@ -104,9 +104,10 @@ package net.wg.gui.lobby.techtree.nodes
          super();
       }
       
-      override public function getExtraState() : Object
+      override public function cleanUp() : void
       {
-         return {"isResearchGraph":container is ResearchItems};
+         super.cleanUp();
+         this.blueprintPlus.enabled = false;
       }
       
       override public function getColorIndex(param1:IRenderer = null) : uint
@@ -121,6 +122,11 @@ package net.wg.gui.lobby.techtree.nodes
             }
          }
          return super.getColorIndex(param1);
+      }
+      
+      override public function getExtraState() : Object
+      {
+         return {"isResearchGraph":container is ResearchItems};
       }
       
       override public function getIconPath() : String
@@ -190,47 +196,50 @@ package net.wg.gui.lobby.techtree.nodes
       
       override protected function validateData() : void
       {
-         var _loc4_:String = null;
+         var _loc1_:Boolean = false;
+         var _loc5_:String = null;
+         var _loc6_:Boolean = false;
          visible = !(this.isBlueprintMode && !canHaveBlueprint());
          if(!visible)
          {
             return;
          }
          super.validateData();
-         var _loc1_:String = this.getIconPath();
          this.vehicleImage.alpha = stateProps.cmpAlpha;
-         this.vehicleImage.source = _loc1_;
+         this.vehicleImage.source = this.getIconPath();
          this.typeAndLevel.setOwner(this);
          this.nameTF.text = getItemName();
-         var _loc2_:String = hasAction && (isLocked() || isNext2Unlock()) ? DISCOUNT_LABEL_BLUE : DISCOUNT_LABEL_RED;
-         var _loc3_:Boolean = hasAction || hasTechTreeEvent || hasTechTreeEventDiscountOnly;
+         _loc1_ = isLocked();
+         var _loc2_:Boolean = isNext2Unlock();
+         var _loc3_:String = hasAction && (_loc1_ || _loc2_) ? DISCOUNT_LABEL_BLUE : DISCOUNT_LABEL_RED;
+         var _loc4_:Boolean = hasAction || hasTechTreeEvent || hasTechTreeEventDiscountOnly;
          if(this.discountIcon)
          {
-            this.discountIcon.visible = _loc3_;
-            if(_loc3_)
+            this.discountIcon.visible = _loc4_;
+            if(_loc4_)
             {
-               App.utils.asserter.assertFrameExists(_loc2_,this.discountIcon);
-               this.discountIcon.gotoAndStop(_loc2_);
+               App.utils.asserter.assertFrameExists(_loc3_,this.discountIcon);
+               this.discountIcon.gotoAndStop(_loc3_);
             }
          }
          if(this.xpField)
          {
             this.xpField.visible = true;
             this.xpField.alpha = stateProps.cmpAlpha;
-            if(isLocked())
+            if(_loc1_)
             {
                this.xpField.setData(valueObject.unlockProps.xpCost,XpTypeStrings.COST_XP_TYPE);
             }
             else if(getEarnedXP() > 0 && !stateProps.visible)
             {
-               _loc4_ = !!isElite() ? XpTypeStrings.ELITE_XP_TYPE : XpTypeStrings.EARNED_XP_TYPE;
-               this.xpField.setData(getEarnedXP(),_loc4_);
+               _loc5_ = !!isElite() ? XpTypeStrings.ELITE_XP_TYPE : XpTypeStrings.EARNED_XP_TYPE;
+               this.xpField.setData(getEarnedXP(),_loc5_);
             }
             else
             {
                this.xpField.visible = false;
             }
-            this.xpField.x = _loc3_ && this.discountIcon ? Number(XP_FIELD_ACTION_OFFSET_X) : Number(XP_FIELD_DEFAULT_OFFSET_X);
+            this.xpField.x = _loc4_ && this.discountIcon ? Number(XP_FIELD_ACTION_OFFSET_X) : Number(XP_FIELD_DEFAULT_OFFSET_X);
          }
          if(isRestoreAvailable())
          {
@@ -247,13 +256,14 @@ package net.wg.gui.lobby.techtree.nodes
          this.button.setOwner(this);
          if(this.isBlueprintMode)
          {
-            this.blueprintBorder.enabled = isNext2Unlock();
+            this.blueprintBorder.enabled = _loc2_;
             this.blueprintProgressBar.scaleX = blueprintProgress;
-            this.blueprintProgressBar.alpha = !!isNext2Unlock() ? Number(PROGRESS_BAR_RESEARCH_AVAILABLE_ALPHA) : Number(PROGRESS_BAR_RESEARCH_UNAVAILABLE_ALPHA);
-            this.blueprintProgressBar.enabled = !isUnlocked();
+            this.blueprintProgressBar.alpha = !!_loc2_ ? Number(PROGRESS_BAR_RESEARCH_AVAILABLE_ALPHA) : Number(PROGRESS_BAR_RESEARCH_UNAVAILABLE_ALPHA);
+            _loc6_ = !isUnlocked();
+            this.blueprintProgressBar.enabled = _loc6_;
             this.blueprintCount.htmlText = blueprintLabel;
-            this.blueprintCount.visible = !isUnlocked();
-            this.blueprintPlus.enabled = blueprintCanConvert && !isUnlocked();
+            this.blueprintCount.visible = _loc6_;
+            this.blueprintPlus.enabled = blueprintCanConvert && _loc6_;
             this.blueprintPlus.buttonMode = true;
          }
          else
@@ -266,12 +276,6 @@ package net.wg.gui.lobby.techtree.nodes
          this.nameTF.width = !!valueObject.isNationChangeAvailable ? Number(NAME_TF_SHORT_WIDTH_FOR_NATION_CHANGE_ICON) : Number(NAME_TF_FULL_WIDTH);
          this.setTradeIcon();
          this.updateTechTreeEventBorder();
-      }
-      
-      override public function cleanUp() : void
-      {
-         super.cleanUp();
-         this.blueprintPlus.enabled = false;
       }
       
       override protected function draw() : void

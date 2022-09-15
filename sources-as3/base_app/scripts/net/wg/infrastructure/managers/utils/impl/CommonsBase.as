@@ -68,6 +68,8 @@ package net.wg.infrastructure.managers.utils.impl
       private static const FIELD_COMMAND:String = "command";
       
       private static const FIELD_TO_SHOW:String = "to_show";
+      
+      private static const EMPTY_HIT_AREA_NAME:String = "emptyHitArea";
        
       
       private var _textFieldUtils:TextFieldUtils = null;
@@ -506,6 +508,14 @@ package net.wg.infrastructure.managers.utils.impl
             return MouseEventEx(param1).buttonIdx == MouseEventEx.RIGHT_BUTTON;
          }
          return false;
+      }
+      
+      public function addEmptyHitArea(param1:Sprite) : void
+      {
+         var _loc2_:Sprite = new Sprite();
+         _loc2_.name = EMPTY_HIT_AREA_NAME;
+         param1.parent.addChild(_loc2_);
+         param1.hitArea = _loc2_;
       }
    }
 }

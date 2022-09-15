@@ -69,5 +69,10 @@ package net.wg.gui.bootcamp.containers
       {
          return this._disposed;
       }
+      
+      public function set maxLinesNumber(param1:int) : void
+      {
+         this.content.maxLinesNumber = param1;
+      }
    }
 }

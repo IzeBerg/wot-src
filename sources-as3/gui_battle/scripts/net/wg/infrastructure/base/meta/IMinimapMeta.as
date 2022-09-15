@@ -25,5 +25,7 @@ package net.wg.infrastructure.base.meta
       function as_disableHintPanel() : void;
       
       function as_updateHintPanelData(param1:Boolean, param2:Boolean) : void;
+      
+      function as_initPrebattleSize(param1:int) : void;
    }
 }

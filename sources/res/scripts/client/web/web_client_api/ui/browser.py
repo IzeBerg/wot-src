@@ -1,4 +1,4 @@
-from adisp import process
+from adisp import adisp_process
 from frameworks import wulf
 from frameworks.wulf import WindowLayer
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
@@ -58,7 +58,7 @@ class OpenBrowserWindowWebApiMixin(object):
     def _createHandlers(self):
         return []
 
-    @process
+    @adisp_process
     def __loadBrowser(self, url, title, width, height, isModal, showRefresh, showCreateWaiting):
         browserCtrl = dependency.instance(IBrowserController)
         browserId = yield browserCtrl.load(url=url, title=title, browserSize=(
@@ -114,7 +114,7 @@ class CloseBrowserViewWebApiMixin(object):
         browserAlias = ctx.get('browser_alias')
         browserView = ctx.get('browser_view')
         if browserView and isinstance(browserView, wulf.View):
-            _tryToCloseWulfView(browserView)
+            browserView.onCloseView()
         else:
             appLoader = dependency.instance(IAppLoader)
             app = appLoader.getApp()

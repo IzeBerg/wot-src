@@ -1,5 +1,5 @@
 import logging, BigWorld, BattleReplay, constants
-from adisp import process
+from adisp import adisp_process
 from constants import PremiumConfigs
 from gui import SystemMessages
 from gui import makeHtmlString
@@ -9,6 +9,7 @@ from gui.Scaleform.daapi.view.lobby.customization.progression_helpers import par
 from gui.Scaleform.daapi.view.lobby.customization.sound_constants import SOUNDS
 from gui.Scaleform.daapi.view.meta.BattleResultsMeta import BattleResultsMeta
 from gui.Scaleform.framework.entities.View import ViewKey
+from gui.Scaleform.genConsts.PERSONALCASECONST import PERSONALCASECONST
 from gui.battle_results import RequestEmblemContext, EMBLEM_TYPE
 from gui.battle_results.settings import PROGRESS_ACTION
 from gui.prb_control.dispatcher import g_prbLoader
@@ -56,7 +57,7 @@ class BattleResultsWindow(BattleResultsMeta):
     def onWindowClose(self):
         self.destroy()
 
-    @process
+    @adisp_process
     def showEventsWindow(self, eID, eventType):
         if self.__canNavigate():
             if eventType == constants.EVENT_TYPE.C11N_PROGRESSION or isC11nQuest(eID):
@@ -103,7 +104,9 @@ class BattleResultsWindow(BattleResultsMeta):
             event_dispatcher.showResearchView(itemID)
             self.onWindowClose()
         elif unlockType == PROGRESS_ACTION.NEW_SKILL_UNLOCK_TYPE:
-            event_dispatcher.showPersonalCase(itemID, 2, EVENT_BUS_SCOPE.LOBBY)
+            event_dispatcher.showPersonalCase(itemID, PERSONALCASECONST.SKILLS_TAB_ID, EVENT_BUS_SCOPE.LOBBY)
+        elif unlockType == PROGRESS_ACTION.NEW_FREE_SKILL_UNLOCK_TYPE:
+            event_dispatcher.showPersonalCase(itemID, PERSONALCASECONST.FREE_SKILLS_TAB_ID, EVENT_BUS_SCOPE.LOBBY)
 
     def showDogTagWindow(self, itemID):
         if self.__canNavigate():
@@ -149,7 +152,7 @@ class BattleResultsWindow(BattleResultsMeta):
         elif event.alias == VIEW_ALIAS.LOBBY_HANGAR:
             self.as_setIsInBattleQueueS(False)
 
-    @process
+    @adisp_process
     def __requestClanEmblem(self, textureID, clanDBID):
         emblemID = yield self.__battleResults.requestEmblem(RequestEmblemContext(EMBLEM_TYPE.CLAN, clanDBID, textureID))
         if not self.isDisposed():

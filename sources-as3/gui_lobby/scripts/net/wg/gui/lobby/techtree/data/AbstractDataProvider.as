@@ -77,11 +77,6 @@ package net.wg.gui.lobby.techtree.data
          return this.nodeData[param1];
       }
       
-      public function isPremiumItem(param1:Number) : Boolean
-      {
-         return false;
-      }
-      
       public function getItemByID(param1:Number) : NodeData
       {
          var _loc2_:Number = this.getIndexByID(param1);
@@ -111,6 +106,16 @@ package net.wg.gui.lobby.techtree.data
             this.parse(param2);
             this.dispatchEvent(new TechTreeEvent(TechTreeEvent.DATA_BUILD_COMPLETE));
          }
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
+      public function isPremiumItem(param1:Number) : Boolean
+      {
+         return false;
       }
       
       public function parse(param1:Object) : void
@@ -206,11 +211,6 @@ package net.wg.gui.lobby.techtree.data
       public function dispatchEvent(param1:Event) : Boolean
       {
          return this.dispatcher.dispatchEvent(param1);
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

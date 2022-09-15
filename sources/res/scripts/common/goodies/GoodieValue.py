@@ -1,5 +1,5 @@
 from soft_exception import SoftException
-from math import floor, ceil
+from math import floor
 
 class GoodieValue(object):
     __slots__ = [

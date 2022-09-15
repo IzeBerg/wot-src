@@ -1,4 +1,4 @@
-from adisp import async, process
+from adisp import adisp_async, adisp_process
 from gui.gift_system.requesters.base_requester import GiftSystemBaseRequester
 from gui.wgcg.gift_system.contexts import GiftSystemStateCtx
 from helpers import dependency
@@ -16,8 +16,8 @@ class GiftSystemWebStateRequester(GiftSystemBaseRequester):
             return _WGGG_AVAILABILITY
         return _WGCG_AVAILABILITY
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def _doExternalRequest(self, reqEventIds, callback):
         if not self.__webController.isAvailable():
             callback((False, {}))

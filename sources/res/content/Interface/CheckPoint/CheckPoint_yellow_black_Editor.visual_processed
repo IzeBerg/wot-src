@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/controlPoint/wg_controlPointRadius.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Interface/CheckPoint/circle_yellow_black.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>16</Int>
+					</property>
+				</material>
+				<groupOrigin>-0.000000 0.033487 0.000002</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>111</materialKind>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/env_111_04_RepairFlag/env_111_04_RepairFlag_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/env_111_04_RepairFlag/env_111_04_RepairFlag_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/env_111_04_RepairFlag/env_111_04_RepairFlag_GMM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						dynamicObject
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						g_useNormalPackDXT1
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_enableTransmission
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_useTintColor
+						<Bool>false</Bool>
+					</property>
+					<property>
+						g_vertexAnimationParams
+						<Vector4>0.100000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.000000 3.778732 1.057580</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-15.722016 -0.051625 -15.722016</min>
+		<max>15.722015 7.609089 15.722020</max>
+	</boundingBox>
+	<geometrySize>43148</geometrySize>
+	<minUVDensity>0.042520</minUVDensity>
+</root>

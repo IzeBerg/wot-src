@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<ClientMethods>
+		<onDamaged/>
+	</ClientMethods>
+	<Properties>
+		<state>
+			<Type>UINT8</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</state>
+		<damageTime>
+			<Type>FLOAT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</damageTime>
+		<timeToDamage>
+			<Type>FLOAT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</timeToDamage>
+	</Properties>
+	<DetailLevel>MY_VEHICLE</DetailLevel>
+	<DefaultKeyName>deathZoneEffect</DefaultKeyName>
+</root>

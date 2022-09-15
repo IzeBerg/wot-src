@@ -2,7 +2,7 @@ import weakref
 from functools import partial
 import BigWorld, Event
 from account_helpers.offers.cache import CachePrefetchResult
-from adisp import process
+from adisp import adisp_process
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.framework.entities.View import ViewKey
 from gui.app_loader.settings import APP_NAME_SPACE
@@ -55,7 +55,7 @@ class OffersBannerController(IOffersBannerController):
     def hideBanners(self, *args, **kwargs):
         self.onHideBanners()
 
-    @process
+    @adisp_process
     def _loadBanners(self, *args, **kwargs):
         if self.__sync or not self.isEnabled() or not self.__hasNotSeenOffers():
             return

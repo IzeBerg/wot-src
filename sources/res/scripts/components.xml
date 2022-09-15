@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<StaticComponents/>
+	<StaticComponents>
+		<PoiTeamInfoComponent/>
+		<ArenaInBattleVehicleSwitch/>
+		<AvatarInBattleVehicleSwitch/>
+		<VehicleInBattleSwitch/>
+		<TeamInfoInBattleVehicleSwitch/>
+	</StaticComponents>
 	<DynamicComponents>
 		<OwnVehicle/>
 		<InAoEZone/>
@@ -14,5 +20,23 @@
 		<MapsTrainingStorageComponent/>
 		<BattleHintsComponent/>
 		<Fire/>
+		<RocketAccelerationController/>
+		<RocketAcceleration/>
+		<VisualScriptEquipment/>
+		<VisualScriptCache/>
+		<VehicleCircle/>
+		<VehicleRadarDetection/>
+		<VehicleBuff/>
+		<GunReloadBoost/>
+		<NextClipsReloader/>
+		<EnemyVehiclesController/>
+		<VehicleSkillCounter/>
+		<Autodestroy/>
+		<Proximity/>
+		<Capturable/>
+		<CaptureControl/>
+		<PoiCaptureBlockerComponent/>
+		<PoiComponent/>
+		<PoiVehicleComponent/>
 	</DynamicComponents>
 </root>

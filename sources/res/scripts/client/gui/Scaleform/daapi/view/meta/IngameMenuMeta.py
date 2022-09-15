@@ -51,3 +51,7 @@ class IngameMenuMeta(AbstractWindowView):
     def as_showHelpButtonS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_showHelpButton(value)
+
+    def as_setVisibilityS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setVisibility(value)

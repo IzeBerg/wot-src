@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<fx>shaders/std_effects/shimmer.fx</fx>
+	<property>
+		alphaReference
+		<Int>0</Int>
+	</property>
+	<property>
+		alphaTestEnable
+		<Bool>false</Bool>
+	</property>
+	<property>
+		opacity
+		<Float>1.000000</Float>
+	</property>
+	<property>
+		doubleSided
+		<Bool>false</Bool>
+	</property>
+	<property>
+		diffuseMap
+		<Texture>helpers\maps\aid_builder.dds</Texture>
+	</property>
+	<materialKind>0</materialKind>
+</root>

@@ -1,12 +1,15 @@
 package net.wg.gui.battle.components
 {
+   import flash.display.Bitmap;
    import flash.display.MovieClip;
+   import flash.display.Sprite;
    import flash.text.TextField;
    import net.wg.data.constants.Errors;
    import net.wg.data.constants.InvalidationType;
    import net.wg.data.constants.Time;
    import net.wg.data.constants.Values;
    import net.wg.infrastructure.exceptions.AbstractException;
+   import net.wg.utils.IClassFactory;
    import net.wg.utils.IDateTime;
    import net.wg.utils.IScheduler;
    
@@ -15,10 +18,24 @@ package net.wg.gui.battle.components
       
       private static const HIDE_TIMER_STEPS:int = 101;
       
-      private static const HIDE_TIMER_INTERVAL:int = 30;
+      private static const DEFAULT_HIDE_TIMER_INTERVAL:int = 30;
+      
+      protected static const ICON_BTM_POSITION_VALIDATE:int = InvalidationType.SYSTEM_FLAGS_BORDER << 1;
        
       
+      protected var iconSpr:Sprite = null;
+      
+      protected var iconBitmap:Bitmap = null;
+      
+      protected var iconBitmapX:Number = 0;
+      
+      protected var iconBitmapY:Number = 0;
+      
+      protected var currentIconOffsetY:int = 0;
+      
       protected var lastStrTime:String = "";
+      
+      protected var currentIconName:String = "";
       
       private var _isActive:Boolean = false;
       
@@ -49,6 +66,12 @@ package net.wg.gui.battle.components
       private var _scheduler:IScheduler;
       
       private var _dateTime:IDateTime;
+      
+      private var _isReversedTimerDirection:Boolean = false;
+      
+      private var _hideTimerInterval:int = 30;
+      
+      private var _isMaxProgress:Boolean = false;
       
       public function FrameAnimationTimer()
       {
@@ -101,9 +124,26 @@ package net.wg.gui.battle.components
             this.recalculateTimeRelatedValues();
             this.recalculateIntervalTimer();
          }
+         if(param2 < 0)
+         {
+            param2 = 0;
+         }
+         if(this._currentTime > param2)
+         {
+            this.invokeCurrentTimeEnlargeUpdate();
+         }
          this._currentTime = param2;
          this.updateCurrentTime();
          this.runInterval();
+      }
+      
+      protected function setIsMaxProgress(param1:Boolean) : void
+      {
+         if(param1)
+         {
+            this.setProgressMcPosition(this.getProgressBarMc().totalFrames - 1);
+         }
+         this._isMaxProgress = param1;
       }
       
       protected function init(param1:Boolean = false, param2:Boolean = false) : void
@@ -175,6 +215,10 @@ package net.wg.gui.battle.components
       protected function invokeAdditionalActionOnIntervalUpdate() : void
       {
          throw new AbstractException(Errors.ABSTRACT_INVOKE);
+      }
+      
+      protected function invokeCurrentTimeEnlargeUpdate() : void
+      {
       }
       
       protected function resetAnimState() : void
@@ -249,6 +293,37 @@ package net.wg.gui.battle.components
                this._timerTextValues = new Vector.<String>(this._totalFrames + 1,true);
             }
          }
+         if(this._isReversedTimerDirection)
+         {
+            this._progressValues = this._progressValues.reverse();
+         }
+      }
+      
+      protected function onHide() : void
+      {
+         this._currentTime = Values.DEFAULT_INT;
+      }
+      
+      protected function updateIcon() : void
+      {
+         var _loc1_:IClassFactory = App.utils.classFactory;
+         var _loc2_:Class = _loc1_.getClass(this.currentIconName);
+         if(_loc2_)
+         {
+            if(this.iconBitmap)
+            {
+               if(this.iconSpr.contains(this.iconBitmap))
+               {
+                  this.iconSpr.removeChild(this.iconBitmap);
+               }
+               this.iconBitmap.bitmapData.dispose();
+            }
+            this.iconBitmap = new Bitmap(new _loc2_());
+            this.iconSpr.addChild(this.iconBitmap);
+            this.iconBitmapX = -this.iconBitmap.width >> 1;
+            this.iconBitmapY = (-this.iconBitmap.height >> 1) + this.currentIconOffsetY;
+            invalidate(ICON_BTM_POSITION_VALIDATE);
+         }
       }
       
       private function cleanTimerTextValues() : void
@@ -304,7 +379,8 @@ package net.wg.gui.battle.components
             this.pauseRadialTimer();
             this.resetAnimState();
             stop();
-            this._scheduler.scheduleRepeatableTask(this.onIntervalHideUpdateHandler,HIDE_TIMER_INTERVAL,HIDE_TIMER_STEPS);
+            this.onHide();
+            this._scheduler.scheduleRepeatableTask(this.onIntervalHideUpdateHandler,this._hideTimerInterval,HIDE_TIMER_STEPS);
          }
          else
          {
@@ -334,16 +410,40 @@ package net.wg.gui.battle.components
             {
                this._currentTimerIndex = this._timerTextValues.length - 1;
             }
-            this.setTimerTFText(this._timerTextValues[this._currentTimerIndex]);
+            if(this._totalTime != Values.DEFAULT_INT)
+            {
+               this.setTimerTFText(this._timerTextValues[this._currentTimerIndex]);
+            }
+            else
+            {
+               this.setTimerTFText(Values.EMPTY_STR);
+            }
          }
       }
       
       private function setProgressMcPosition(param1:int) : void
       {
-         if(this._lastFrameID != param1)
+         if(this._lastFrameID != param1 && !this._isMaxProgress)
          {
             this._lastFrameID = param1;
             this.getProgressBarMc().gotoAndStop(this._lastFrameID);
+         }
+      }
+      
+      public function set hideTimerInterval(param1:int) : void
+      {
+         this._hideTimerInterval = param1;
+      }
+      
+      public function set isReversedTimerDirection(param1:Boolean) : void
+      {
+         if(this._isReversedTimerDirection != param1)
+         {
+            this._isReversedTimerDirection = param1;
+            if(this._progressValues)
+            {
+               this._progressValues = this._progressValues.reverse();
+            }
          }
       }
       

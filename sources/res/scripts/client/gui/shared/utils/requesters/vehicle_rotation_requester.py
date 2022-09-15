@@ -1,5 +1,5 @@
 import BigWorld
-from adisp import async
+from adisp import adisp_async
 from gui.shared.utils.requesters.abstract import AbstractSyncDataRequester
 from skeletons.gui.shared.utils.requesters import IVehicleRotationRequester
 
@@ -35,6 +35,6 @@ class VehicleRotationRequester(AbstractSyncDataRequester, IVehicleRotationReques
     def _groupLocks(self):
         return self.getCacheValue('groupLocks', {'groupBattles': [], 'isGroupLocked': [], 'unlockedBy': {}})
 
-    @async
+    @adisp_async
     def _requestCache(self, callback):
         BigWorld.player().vehicleRotation.getCache(lambda resID, value: self._response(resID, value, callback))

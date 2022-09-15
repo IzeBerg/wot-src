@@ -4,6 +4,7 @@ package net.wg.gui.components.carousels.filters
    import flash.events.Event;
    import net.wg.data.VO.TankCarouselFilterInitVO;
    import net.wg.data.VO.TankCarouselFilterSelectedVO;
+   import net.wg.data.constants.Errors;
    import net.wg.gui.components.controls.ButtonIconNormal;
    import net.wg.gui.components.controls.SimpleTileList;
    import net.wg.gui.components.controls.ToggleRenderer;
@@ -28,6 +29,8 @@ package net.wg.gui.components.carousels.filters
       private static const IS_RANKED_FIELD:String = "isRanked";
       
       private static const IS_FRONTLINE_FIELD:String = "isFrontline";
+      
+      private static const IS_COMP7_FIELD:String = "isComp7";
       
       private static const HOT_FILTER_TILE_WIDTH:uint = 58;
       
@@ -66,8 +69,13 @@ package net.wg.gui.components.carousels.filters
          super.configUI();
          initSize();
          mouseEnabled = false;
-         this.listHotFilter.itemRenderer = App.utils.classFactory.getClass(LINKAGE_TOGGLE_RENDERER);
-         this.listHotFilter.tileWidth = HOT_FILTER_TILE_WIDTH;
+         var _loc1_:Class = App.utils.classFactory.getClass(this.getTileListRenderer());
+         if(!_loc1_)
+         {
+            App.utils.asserter.assertNotNull(_loc1_,Errors.CANT_NULL);
+         }
+         this.listHotFilter.itemRenderer = _loc1_;
+         this.listHotFilter.tileWidth = this.getTileWidth();
          this.listHotFilter.tileHeight = HOT_FILTER_TILE_HEIGHT;
          this.listHotFilter.verticalGap = this.getHorizontalGap();
          this.listHotFilter.directionMode = DirectionMode.HORIZONTAL;
@@ -189,7 +197,18 @@ package net.wg.gui.components.carousels.filters
       {
          this._popoverData[IS_RANKED_FIELD] = this._initVO.isRanked;
          this._popoverData[IS_FRONTLINE_FIELD] = this._initVO.isFrontline;
+         this._popoverData[IS_COMP7_FIELD] = this._initVO.isComp7;
          this.popoverMgr.show(this,this._initVO.popoverAlias,this._popoverData);
+      }
+      
+      protected function getTileWidth() : int
+      {
+         return HOT_FILTER_TILE_WIDTH;
+      }
+      
+      protected function getTileListRenderer() : String
+      {
+         return LINKAGE_TOGGLE_RENDERER;
       }
       
       private function getHorizontalGap() : int
@@ -199,7 +218,6 @@ package net.wg.gui.components.carousels.filters
       
       public function set updateHotFilterSelectedFromData(param1:Boolean) : void
       {
-         var _loc4_:uint = 0;
          if(this._updateHotFilterSelectedFromData == param1)
          {
             return;
@@ -207,6 +225,7 @@ package net.wg.gui.components.carousels.filters
          this._updateHotFilterSelectedFromData = param1;
          var _loc2_:int = this.listHotFilter.length;
          var _loc3_:ToggleRenderer = null;
+         var _loc4_:uint = 0;
          while(_loc4_ < _loc2_)
          {
             _loc3_ = this.listHotFilter.getRendererAt(_loc4_) as ToggleRenderer;

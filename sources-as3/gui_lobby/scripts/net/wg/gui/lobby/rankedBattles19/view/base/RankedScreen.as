@@ -120,7 +120,7 @@ package net.wg.gui.lobby.rankedBattles19.view.base
             }
             if(this._backgroundCenter)
             {
-               this.bgLoader.x = -this.bgLoader.width >> 1;
+               this.bgLoader.x = this.bgActualWidth - this.bgLoader.width >> 1;
             }
             if(this.changeBgPlacement)
             {

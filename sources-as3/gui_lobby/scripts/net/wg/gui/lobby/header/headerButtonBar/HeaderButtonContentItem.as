@@ -15,17 +15,13 @@ package net.wg.gui.lobby.header.headerButtonBar
    public class HeaderButtonContentItem extends UIComponentEx implements IHeaderButtonContentItem
    {
       
-      protected static const WIDE_SCREEN_PRC_BORDER:Number = 0.71;
+      protected static const WIDE_SCREEN_PRC_BORDER:Number = 0.65;
       
       private static const NARROW_FONT_SIZE:int = 13;
       
       private static const WIDTH_FONT_SIZE:int = 13;
       
       public static const TEXT_FIELD_MARGIN:int = 4;
-      
-      public static const ARROW_MARGIN:int = 10;
-      
-      public static const ICON_MARGIN:int = 5;
       
       private static const MSG_MUST_BE_OVERRIDDEN:String = "Method must be overridden!";
       

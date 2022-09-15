@@ -9,6 +9,7 @@ class PointsCardType(IntEnum):
     DAILY = 2
     BATTLE = 3
     EPIC_BATTLE_POINTS = 4
+    COMP7 = 5
 
 
 class GameModeCardModel(ViewModel):

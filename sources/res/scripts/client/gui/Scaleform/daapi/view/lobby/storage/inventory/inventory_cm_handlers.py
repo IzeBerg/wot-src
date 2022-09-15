@@ -1,4 +1,4 @@
-from adisp import process
+from adisp import adisp_process
 from gui import DialogsInterface, shop
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.dialogs.ConfirmModuleMeta import SellModuleMeta
@@ -25,7 +25,7 @@ class ModulesShellsCMHandler(ContextMenu):
         shared_events.showStorageModuleInfo(self._id)
 
     @option(__sqGen.next(), CMLabel.SELL)
-    @process
+    @adisp_process
     def sell(self):
         yield DialogsInterface.showDialog(SellModuleMeta(self._id))
 
@@ -60,7 +60,7 @@ class _ArmingCMHandler(ContextMenu):
         shared_events.showStorageModuleInfo(self._id)
 
     @option(_sqGen.next(), CMLabel.SELL)
-    @process
+    @adisp_process
     def sell(self):
         yield DialogsInterface.showDialog(SellModuleMeta(self._id))
 
@@ -167,7 +167,7 @@ class DemountKitsCMHandler(ContextMenu):
         shared_events.showGoodieInfo(self._id)
 
     @option(__sqGen.next(), CMLabel.SELL)
-    @process
+    @adisp_process
     def sell(self):
         raise NotImplementedError
 
@@ -190,7 +190,7 @@ class RecertificationFormsCMHandler(ContextMenu):
         shared_events.showGoodieInfo(self._id)
 
     @option(__sqGen.next(), CMLabel.SELL)
-    @process
+    @adisp_process
     def sell(self):
         raise NotImplementedError
 

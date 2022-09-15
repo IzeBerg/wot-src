@@ -4,6 +4,7 @@ package net.wg.gui.battle
    import net.wg.data.VO.daapi.DAAPIQuestStatusVO;
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.LobbyMetrics;
+   import net.wg.gui.battle.views.personalReservesTab.PersonalReservesTab;
    import net.wg.gui.battle.views.questProgress.data.QPProgressTrackingVO;
    import net.wg.gui.battle.views.questProgress.data.QPTrackingDataItemVO;
    import net.wg.gui.battle.views.questProgress.data.QuestProgressPerformVO;
@@ -35,6 +36,8 @@ package net.wg.gui.battle
       
       public var tabQuest:IQuestProgressViewOperationSelector = null;
       
+      public var tabReserves:PersonalReservesTab = null;
+      
       public var noQuestTitleTF:TextField = null;
       
       public var noQuestDescrTF:TextField = null;
@@ -50,6 +53,17 @@ package net.wg.gui.battle
       public function TabbedFullStats()
       {
          super();
+      }
+      
+      override public function updateStageSize(param1:Number, param2:Number) : void
+      {
+         super.updateStageSize(param1,param2);
+         if(this.tabReserves)
+         {
+            this.tabReserves.width = param1;
+            this.tabReserves.height = param2 - this.tabReserves.y;
+            this.tabReserves.x = -this.tabReserves.width / 2;
+         }
       }
       
       override public function getStatsProgressView() : IQuestProgressView
@@ -90,6 +104,10 @@ package net.wg.gui.battle
             this.tabQuest.removeEventListener(QuestProgressTabEvent.QUEST_SELECT,this.onProgressTrackingQuestSelectHandler);
             this.tabQuest.dispose();
             this.tabQuest = null;
+         }
+         if(this.tabReserves != null)
+         {
+            this.tabReserves = null;
          }
          this.tabs.removeEventListener(IndexEvent.INDEX_CHANGE,this.onTabsIndexChangeHandler);
          this.tabs.dispose();
@@ -141,6 +159,10 @@ package net.wg.gui.battle
          {
             this.tabQuest.y = statsTable.y;
          }
+         if(this.tabReserves != null)
+         {
+            this.tabReserves.y = this.tabs.y + 13;
+         }
          this.noQuestTitleTF.y = param2 - (this.noQuestTitleTF.height + this.noQuestTitleTF.height + NO_QUEST_TF_GAP) >> 1;
          this.noQuestDescrTF.y = this.noQuestTitleTF.y + this.noQuestTitleTF.height + NO_QUEST_TF_GAP | 0;
       }
@@ -162,9 +184,13 @@ package net.wg.gui.battle
          {
             super.setTitle();
          }
-         else
+         else if(this.tabQuest && this.tabQuest.visible)
          {
             title.setTitle(this._currentMissionName);
+         }
+         else if(this.tabReserves && this.tabReserves.visible)
+         {
+            title.setTitle(App.utils.locale.makeString(INGAME_GUI.STATISTICS_TAB_PERSONALRESERVES_HEADER_TITLE));
          }
       }
       
@@ -179,21 +205,27 @@ package net.wg.gui.battle
          this.tabs.selectedIndex = param1;
       }
       
-      private function updateCurrentTab() : void
+      protected function updateCurrentTab() : void
       {
+         var _loc3_:Boolean = false;
          statsTable.visible = this.tabs.selectedIndex == 0;
-         var _loc1_:Boolean = !statsTable.visible && this._hasQuestToPerform;
+         var _loc1_:Boolean = this.tabs.selectedIndex == 2;
+         if(this.tabReserves != null)
+         {
+            this.tabReserves.visible = _loc1_;
+         }
+         var _loc2_:Boolean = this.tabs.selectedIndex == 1 && this._hasQuestToPerform;
          if(this.tabQuest != null)
          {
-            this.tabQuest.visible = _loc1_;
+            this.tabQuest.visible = _loc2_;
          }
-         var _loc2_:Boolean = statsTable.visible || _loc1_;
-         title.visible = _loc2_;
-         if(_loc2_)
+         _loc3_ = statsTable.visible || _loc2_ || _loc1_;
+         title.visible = _loc3_ && !_loc1_;
+         if(_loc3_)
          {
             this.setTitle();
          }
-         this.noQuestTitleTF.visible = this.noQuestDescrTF.visible = !_loc2_;
+         this.noQuestTitleTF.visible = this.noQuestDescrTF.visible = !_loc3_;
       }
       
       override public function set visible(param1:Boolean) : void

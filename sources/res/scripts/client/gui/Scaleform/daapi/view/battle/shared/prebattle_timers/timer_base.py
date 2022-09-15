@@ -31,9 +31,6 @@ class PreBattleTimerBase(PrebattleTimerBaseMeta, IAbstractPeriodView, IArenaVehi
     def getControllerID(self):
         return BATTLE_CTRL_ID.GUI
 
-    def _isDisplayWinCondition(self):
-        return True
-
     def updateBattleCtx(self, battleCtx):
         self._battleTypeStr = battleCtx.getArenaDescriptionString(isInBattle=False)
         self.as_setMessageS(self._getMessage())
@@ -68,6 +65,9 @@ class PreBattleTimerBase(PrebattleTimerBaseMeta, IAbstractPeriodView, IArenaVehi
         else:
             msg = i18n.makeString(self._battleTypeStr)
         return msg
+
+    def _isDisplayWinCondition(self):
+        return True
 
     def _populate(self):
         super(PreBattleTimerBase, self)._populate()

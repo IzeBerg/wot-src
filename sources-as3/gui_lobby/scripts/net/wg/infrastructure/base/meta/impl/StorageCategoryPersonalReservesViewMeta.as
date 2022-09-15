@@ -18,11 +18,11 @@ package net.wg.infrastructure.base.meta.impl
       
       public var onFiltersChange:Function;
       
+      public var onInfoClicked:Function;
+      
       private var _storageCategoryPersonalReservesVO:StorageCategoryPersonalReservesVO;
       
       private var _buttonFiltersVO:ButtonFiltersVO;
-      
-      private var _buttonFiltersVO1:ButtonFiltersVO;
       
       public function StorageCategoryPersonalReservesViewMeta()
       {
@@ -40,11 +40,6 @@ package net.wg.infrastructure.base.meta.impl
          {
             this._buttonFiltersVO.dispose();
             this._buttonFiltersVO = null;
-         }
-         if(this._buttonFiltersVO1)
-         {
-            this._buttonFiltersVO1.dispose();
-            this._buttonFiltersVO1 = null;
          }
          super.onDispose();
       }
@@ -73,6 +68,12 @@ package net.wg.infrastructure.base.meta.impl
          this.onFiltersChange(param1);
       }
       
+      public function onInfoClickedS() : void
+      {
+         App.utils.asserter.assertNotNull(this.onInfoClicked,"onInfoClicked" + Errors.CANT_NULL);
+         this.onInfoClicked();
+      }
+      
       public final function as_init(param1:Object) : void
       {
          var _loc2_:StorageCategoryPersonalReservesVO = this._storageCategoryPersonalReservesVO;
@@ -84,20 +85,14 @@ package net.wg.infrastructure.base.meta.impl
          }
       }
       
-      public final function as_initFilter(param1:Object, param2:Object) : void
+      public final function as_initFilter(param1:Object) : void
       {
-         var _loc3_:ButtonFiltersVO = this._buttonFiltersVO;
+         var _loc2_:ButtonFiltersVO = this._buttonFiltersVO;
          this._buttonFiltersVO = new ButtonFiltersVO(param1);
-         var _loc4_:ButtonFiltersVO = this._buttonFiltersVO1;
-         this._buttonFiltersVO1 = new ButtonFiltersVO(param2);
-         this.initFilter(this._buttonFiltersVO,this._buttonFiltersVO1);
-         if(_loc3_)
+         this.initFilter(this._buttonFiltersVO);
+         if(_loc2_)
          {
-            _loc3_.dispose();
-         }
-         if(_loc4_)
-         {
-            _loc4_.dispose();
+            _loc2_.dispose();
          }
       }
       
@@ -108,11 +103,11 @@ package net.wg.infrastructure.base.meta.impl
          throw new AbstractException(_loc2_);
       }
       
-      protected function initFilter(param1:ButtonFiltersVO, param2:ButtonFiltersVO) : void
+      protected function initFilter(param1:ButtonFiltersVO) : void
       {
-         var _loc3_:String = "as_initFilter" + Errors.ABSTRACT_INVOKE;
-         DebugUtils.LOG_ERROR(_loc3_);
-         throw new AbstractException(_loc3_);
+         var _loc2_:String = "as_initFilter" + Errors.ABSTRACT_INVOKE;
+         DebugUtils.LOG_ERROR(_loc2_);
+         throw new AbstractException(_loc2_);
       }
    }
 }

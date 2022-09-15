@@ -142,7 +142,7 @@ class RoleChangeWindow(RoleChangeMeta):
 
         self.as_setRolesS(data)
 
-    @decorators.process('changingRole')
+    @decorators.adisp_process('changingRole')
     def changeRole(self, role, vehicleId):
         changeRoleCost = self.itemsCache.items.shop.changeRoleCost
         actualGold = self.itemsCache.items.stats.gold

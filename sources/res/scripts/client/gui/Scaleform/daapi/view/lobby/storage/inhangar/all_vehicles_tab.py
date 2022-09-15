@@ -1,4 +1,3 @@
-from CurrentVehicle import g_currentVehicle
 from PlayerEvents import g_playerEvents
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.common.vehicle_carousel.carousel_filter import CriteriesGroup
@@ -63,7 +62,7 @@ class AllVehiclesTabView(AllVehiclesTabViewMeta, StorageCarouselEnvironment):
         super(AllVehiclesTabView, self).clear()
 
     def _createDataProvider(self):
-        return StorageCarouselDataProvider(StorageCarouselFilter((_AllVehiclesTabCriteriesGroup(),)), self._itemsCache, g_currentVehicle)
+        return StorageCarouselDataProvider(StorageCarouselFilter((_AllVehiclesTabCriteriesGroup(),)), self._itemsCache)
 
     def __onViewLoaded(self, view, *args, **kwargs):
         if view.settings is not None and view.settings.alias == VIEW_ALIAS.STORAGE_VEHICLES_FILTER_POPOVER:

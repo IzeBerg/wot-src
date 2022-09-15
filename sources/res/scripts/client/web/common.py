@@ -16,6 +16,7 @@ def formatBalance(stats):
     actualMoney = stats.actualMoney.toDict()
     balanceData = {Currency.currencyExternalName(currency):actualMoney.get(currency, 0) for currency in Currency.ALL}
     balanceData.update(stats.dynamicCurrencies)
+    balanceData['free_xp'] = stats.freeXP
     return balanceData
 
 

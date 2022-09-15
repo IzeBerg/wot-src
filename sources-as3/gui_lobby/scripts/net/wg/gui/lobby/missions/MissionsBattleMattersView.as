@@ -11,5 +11,13 @@ package net.wg.gui.lobby.missions
       {
          super();
       }
+      
+      override protected function playFadeInTween() : void
+      {
+         alpha = 0;
+         var _loc1_:int = 0;
+         setFadeInTween(_loc1_);
+         _hasBeenShownBefore = true;
+      }
    }
 }

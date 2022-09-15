@@ -63,8 +63,6 @@ def getContextMenuHandlers():
      (
       CONTEXT_MENU_HANDLER_TYPE.STORAGE_VEHICLES_RENTED_ITEM, VehiclesRentedCMHandler),
      (
-      CONTEXT_MENU_HANDLER_TYPE.STORAGE_PERSONAL_RESERVE_ITEM, PersonalReservesCMHandler),
-     (
       CONTEXT_MENU_HANDLER_TYPE.STORAGE_CUSTOMZIZATION_ITEM, CustomizationCMHandler),
      (
       CONTEXT_MENU_HANDLER_TYPE.STORAGE_BLUEPRINTS_ITEM, BlueprintsCMHandler))

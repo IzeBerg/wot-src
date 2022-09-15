@@ -1,6 +1,6 @@
 import typing
 from account_helpers import isLongDisconnectedFromCenter
-from adisp import async, process
+from adisp import adisp_async, adisp_process
 from gui.gift_system.constants import GifterResponseState
 from gui.gift_system.hubs.subsystems import BaseHubSubsystem
 from gui.wgcg.gift_system.contexts import GiftSystemSendGiftCtx
@@ -17,8 +17,8 @@ class IGiftEventGifter(BaseHubSubsystem):
     def getRequestRestriction(self):
         raise NotImplementedError
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def sendGift(self, entitlementCode, receiverID, metaInfo, callback):
         raise NotImplementedError
 
@@ -53,8 +53,8 @@ class GiftEventBaseGifter(IGiftEventGifter):
                 return GifterResponseState.REQUEST_IN_PROGRESS
             return
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def sendGift(self, entitlementCode, receiverID, metaInfo, callback=None):
         requestCtx = GiftSystemSendGiftCtx(entitlementCode, receiverID, metaInfo)
         responseData = yield self.__doExternalRequest(requestCtx)
@@ -65,8 +65,8 @@ class GiftEventBaseGifter(IGiftEventGifter):
     def _isRequestsEnabled(self):
         return self._settings.isEnabled
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def __doExternalRequest(self, requestCtx, callback):
         clientRestriction = self.getRequestRestriction()
         if clientRestriction is not None:

@@ -183,14 +183,16 @@ package net.wg.gui.components.carousels
       
       protected function createRenderers(param1:int, param2:int) : void
       {
-         var _loc5_:int = 0;
-         var _loc3_:Array = Boolean(this._dataProvider) ? this._dataProvider.requestItemRange(param1,param1 + param2) : null;
          var _loc4_:int = 0;
-         while(_loc4_ < param2)
+         var _loc5_:Object = null;
+         var _loc3_:Array = Boolean(this._dataProvider) ? this._dataProvider.requestItemRange(param1,param1 + param2) : null;
+         var _loc6_:int = 0;
+         while(_loc6_ < param2)
          {
-            _loc5_ = param1 + _loc4_;
-            this.activeRenderers[_loc4_] = this.getRenderer(_loc3_ && _loc3_.length > _loc4_ ? _loc3_[_loc4_] : null,_loc5_,true);
-            _loc4_++;
+            _loc4_ = param1 + _loc6_;
+            _loc5_ = _loc3_ && _loc3_.length > _loc6_ ? _loc3_[_loc6_] : null;
+            this.activeRenderers[_loc6_] = this.getRenderer(_loc5_,_loc4_,true);
+            _loc6_++;
          }
       }
       

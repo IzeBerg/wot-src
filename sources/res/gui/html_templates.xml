@@ -514,6 +514,8 @@
 				<EPIC>_(#invites:invites/text/EPIC) %(sender)s</EPIC>
 				<BATTLE_ROYALE>_(#invites:invites/text/BATTLE_ROYALE) %(sender)s</BATTLE_ROYALE>
 				<MAPBOX>_(#invites:invites/text/MAPBOX) %(sender)s</MAPBOX>
+				<FUN_RANDOM>_(#invites:invites/text/FUN_RANDOM) %(sender)s</FUN_RANDOM>
+				<COMP7>_(#invites:invites/text/COMP7) %(sender)s</COMP7>
 			</inviteTitle>
 			<inviteTitleCreatorName>
 				<context>
@@ -1031,10 +1033,13 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<premiumIgrBig>&lt;img src=&apos;img://gui/maps/icons/library/premium_igr_big.png&apos; width=&apos;64&apos; height=&apos;28&apos; vspace=&apos;-7&apos; hspace=&apos;0&apos;/&gt;</premiumIgrBig>
 			<credits>&lt;img src=&apos;img://gui/maps/icons/library/CreditsIcon-2.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos;/&gt;</credits>
 			<creditsBig>&lt;img src=&apos;img://gui/maps/icons/library/CreditsIcon-1.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos;/&gt;</creditsBig>
+			<creditsExtraBig>&lt;img src=&apos;img://gui/maps/icons/library/CreditsIcon-3.png&apos; width=&apos;24&apos; height=&apos;24&apos; vspace=&apos;-6&apos;/&gt;</creditsExtraBig>
 			<gold>&lt;img src=&apos;img://gui/maps/icons/library/GoldIcon-2.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos;/&gt;</gold>
 			<goldBig>&lt;img src=&apos;img://gui/maps/icons/library/GoldIcon-1.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos;/&gt;</goldBig>
+			<goldExtraBig>&lt;img src=&apos;img://gui/maps/icons/library/GoldIcon-24.png&apos; width=&apos;24&apos; height=&apos;24&apos; vspace=&apos;-6&apos;/&gt;</goldExtraBig>
 			<crystal>&lt;img src=&apos;img://gui/maps/icons/library/CrystalIcon-2.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos;/&gt;</crystal>
 			<crystalBig>&lt;img src=&apos;img://gui/maps/icons/library/CrystalIcon-1.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos;/&gt;</crystalBig>
+			<crystalExtraBig>&lt;img src=&apos;img://gui/maps/icons/library/CrystalIcon-24.png&apos; width=&apos;24&apos; height=&apos;24&apos; vspace=&apos;-6&apos;/&gt;</crystalExtraBig>
 			<eventCoin>&lt;img src=&apos;img://gui/maps/icons/library/EventCoinIcon-2.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos;/&gt;</eventCoin>
 			<eventCoinBig>&lt;img src=&apos;img://gui/maps/icons/library/EventCoinIcon-1.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos;/&gt;</eventCoinBig>
 			<bpcoin>&lt;img src=&apos;img://gui/maps/icons/library/BpcoinIcon-1.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos;/&gt;</bpcoin>
@@ -1045,6 +1050,7 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<xpCostBig>&lt;img src=&apos;img://gui/maps/icons/library/XpCostIcon-1.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos;/&gt;</xpCostBig>
 			<xp>&lt;img src=&apos;img://gui/maps/icons/library/XpIcon-1.png&apos; width=&apos;16&apos; height=&apos;15&apos; vspace=&apos;-3&apos;/&gt;</xp>
 			<freeXP>&lt;img src=&apos;img://gui/maps/icons/library/FreeXpIcon-2.png&apos; width=&apos;18&apos; height=&apos;18&apos; vspace=&apos;-4&apos;/&gt;</freeXP>
+			<freeXPExtraBig>&lt;img src=&apos;img://gui/maps/icons/library/freeXPIconBig24x24.png&apos; width=&apos;24&apos; height=&apos;24&apos; vspace=&apos;-6&apos;/&gt;</freeXPExtraBig>
 			<arrowButton>&lt;img src=&apos;img://gui/maps/icons/buttons/icon_button_arrow.png&apos; width=&apos;20&apos; height=&apos;20&apos; vspace=&apos;%(vspace)d&apos;/&gt;</arrowButton>
 			<quest>&lt;img src=&apos;img://gui/maps/icons/library/quest_icon.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;0&apos; hspace=&apos;0&apos;/&gt;</quest>
 			<serverAlert>&lt;img src=&apos;img://gui/maps/icons/library/serverAlert.png&apos; width=&apos;16&apos; height=&apos;16&apos; vspace=&apos;-3&apos; hspace=&apos;0&apos;/&gt;</serverAlert>
@@ -1064,6 +1070,7 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<heroTitleTK>&lt;font face=&apos;$TitleFont&apos; size=&apos;56&apos; color=&apos;#09e2ff&apos;&gt;%(message)s&lt;/font&gt;</heroTitleTK>
 			<grandTitle>&lt;font face=&apos;$TitleFont&apos; size=&apos;36&apos; color=&apos;#F2F2F7&apos;&gt;%(message)s&lt;/font&gt;</grandTitle>
 			<grandTitleYellow>&lt;font face=&apos;$TitleFont&apos; size=&apos;36&apos; color=&apos;#f5eed5&apos;&gt;%(message)s&lt;/font&gt;</grandTitleYellow>
+			<grandTitleRed>&lt;font face=&apos;$TitleFont&apos; size=&apos;36&apos; color=&apos;#ff2717&apos;&gt;%(message)s&lt;/font&gt;</grandTitleRed>
 			<grandTitleTK>&lt;font face=&apos;$TitleFont&apos; size=&apos;36&apos; color=&apos;#09e2ff&apos;&gt;%(message)s&lt;/font&gt;</grandTitleTK>
 			<superPromoTitle>&lt;font face=&apos;$TitleFont&apos; size=&apos;28&apos; color=&apos;#F2F2F7&apos;&gt;%(message)s&lt;/font&gt;</superPromoTitle>
 			<superPromoTitleEm>&lt;font face=&apos;$TitleFont&apos; size=&apos;28&apos; color=&apos;#F5EED5&apos;&gt;%(message)s&lt;/font&gt;</superPromoTitleEm>
@@ -1124,7 +1131,12 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<bpcoinText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#C9C9B6&apos;&gt;%(message)s&lt;/font&gt;</bpcoinText>
 			<textEpic>&lt;font face=&apos;$TitleFont&apos; size=&apos;56&apos; color=&apos;#E9E2BF&apos;&gt;%(message)s&lt;/font&gt;</textEpic>
 			<demountKitText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#C9C9B6&apos;&gt;%(message)s&lt;/font&gt;</demountKitText>
+			<goldTitle>&lt;font face=&apos;$TitleFont&apos; size=&apos;15&apos; color=&apos;#FFC363&apos;&gt;%(message)s&lt;/font&gt;</goldTitle>
+			<creditsTitle>&lt;font face=&apos;$TitleFont&apos; size=&apos;15&apos; color=&apos;#CED9D9&apos;&gt;%(message)s&lt;/font&gt;</creditsTitle>
+			<crystalTitle>&lt;font face=&apos;$TitleFont&apos; size=&apos;15&apos; color=&apos;#C9C9B6&apos;&gt;%(message)s&lt;/font&gt;</crystalTitle>
+			<expTitle>&lt;font face=&apos;$TitleFont&apos; size=&apos;15&apos; color=&apos;#C9C9B6&apos;&gt;%(message)s&lt;/font&gt;</expTitle>
 			<statsText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#E9E2BF&apos;&gt;%(message)s&lt;/font&gt;</statsText>
+			<h15ParSecondary>&lt;font face=&apos;$TitleFont&apos; size=&apos;15&apos; color=&apos;#595950&apos;&gt;%(message)s&lt;/font&gt;</h15ParSecondary>
 			<playerOnline>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#C9C9B6&apos;&gt;%(message)s&lt;/font&gt;</playerOnline>
 			<playerOffline>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#505050&apos;&gt;%(message)s&lt;/font&gt;</playerOffline>
 			<counterText>&lt;font face=&apos;$FieldFont&apos; size=&apos;12&apos; color=&apos;#8C8C7C&apos;&gt;%(message)s&lt;/font&gt;</counterText>
@@ -1150,6 +1162,9 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 			<yellowText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#FEAB34&apos;&gt;%(message)s&lt;/font&gt;</yellowText>
 			<greenText>&lt;font face=&apos;$FieldFont&apos; size=&apos;14&apos; color=&apos;#7ab300&apos;&gt;%(message)s&lt;/font&gt;</greenText>
 			<discountText>&lt;font face=&apos;$FieldFont&apos; size=&apos;16&apos; color=&apos;#FEFEEC&apos;&gt;%(message)s&lt;/font&gt;</discountText>
+			<clockWithText>&lt;img src=&apos;img://gui/maps/icons/missions/daily/widgets/clock_icon_s.png&apos; width=&apos;24&apos; height=&apos;24&apos; vspace=&apos;-6&apos; hspace=&apos;0&apos;/&gt;&lt;font face=&apos;$TitleFont&apos; size=&apos;14&apos; color=&apos;#FFDD99&apos;&gt;%(text)s&lt;/font&gt;</clockWithText>
+			<poiCapturedBoldText>&lt;font size=&apos;18&apos; face=&apos;$TitleFont&apos;&gt;&lt;b&gt;%(message)s&lt;/b&gt;&lt;/font&gt;</poiCapturedBoldText>
+			<poiCapturedRegularText>&lt;font size=&apos;16&apos; face=&apos;$TitleFont&apos;&gt;%(message)s&lt;/font&gt;</poiCapturedRegularText>
 		</textStyle>
 		<profileStatistics>
 			<marksOfMasteryText>%(marksOfMastery)s&lt;font size=&apos;14&apos; color=&apos;#939188&apos;&gt;/%(totalVehicles)s&lt;/font&gt;</marksOfMasteryText>
@@ -1335,4 +1350,19 @@ _(#invites:invites/text/fort/defence) &lt;font color=&quot;#c9c9b6&quot;&gt;%(cl
 	<resourceWell>
 		<errorTitle>&lt;font face=&apos;$TitleFont&apos; size=&apos;15&apos; color=&apos;#E0E0E0&apos;&gt;%(message)s&lt;/font&gt;</errorTitle>
 	</resourceWell>
+	<common>
+		<image>&lt;img src=&quot;%(icon)s&quot; width=&quot;%(width)d&quot; height=&quot;%(height)d&quot; vspace=&quot;%(vspace)d&quot; hspace=&quot;%(hspace)d&quot;/&gt;</image>
+	</common>
+	<comp7>
+		<voiceChat>
+			<fullStatsStyle>&lt;font face=&apos;$FieldFont&apos; size=&apos;12&apos; color=&apos;#cbac77&apos;&gt;%(message)s&lt;/font&gt;</fullStatsStyle>
+			<playersPanelStyle>&lt;font face=&apos;$FieldFont&apos; size=&apos;12&apos; color=&apos;#ffdd99&apos;&gt;%(message)s&lt;/font&gt;</playersPanelStyle>
+		</voiceChat>
+		<tooltips>
+			<roleSkill>
+				<colorTagOpen>&lt;font color=&apos;#CBAC77&apos;&gt;</colorTagOpen>
+				<colorTagClose>&lt;/font&gt;</colorTagClose>
+			</roleSkill>
+		</tooltips>
+	</comp7>
 </root>

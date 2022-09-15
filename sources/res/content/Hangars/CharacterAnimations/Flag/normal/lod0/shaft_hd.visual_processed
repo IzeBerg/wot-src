@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>shaft_mat</identifier>
+					<fx>shaders/std_effects/PBS_flag.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/CharacterAnimations/Flag/normal/flag_fin_AM.dds</Texture>
+					</property>
+					<property>
+						g_opacityFactor
+						<Float>0.400000</Float>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/CharacterAnimations/Flag/normal/flag_fin_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/CharacterAnimations/Flag/normal/flag_fin_ANM.dds</Texture>
+					</property>
+					<property>
+						g_opacityFactorForward
+						<Float>0.200000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.000976 1.344974 -0.000481</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.024596 0.011591 -0.046826</min>
+		<max>0.026547 2.678357 0.045864</max>
+	</boundingBox>
+	<geometrySize>11880</geometrySize>
+	<minUVDensity>0.343312</minUVDensity>
+</root>

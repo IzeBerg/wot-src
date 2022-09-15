@@ -1,4 +1,4 @@
-from adisp import process
+from adisp import adisp_process
 from constants import PREBATTLE_TYPE
 from frameworks.wulf import WindowLayer
 from gui.Scaleform.daapi.view.lobby.trainings.trainings_list_base import TrainingsListBase
@@ -38,7 +38,7 @@ class Trainings(TrainingsListBase):
            'descr': backport.text(R.strings.menu.training.description()), 
            'battleTypeID': BATTLE_TYPES.TRAINING}
 
-    @process
+    @adisp_process
     def joinTrainingRequest(self, prbID):
         yield self.prbDispatcher.join(JoinTrainingCtx(prbID, waitingID='prebattle/join'))
 

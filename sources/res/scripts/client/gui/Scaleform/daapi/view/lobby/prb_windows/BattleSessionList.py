@@ -1,5 +1,5 @@
 import typing
-from adisp import process
+from adisp import adisp_process
 from constants import PREBATTLE_TYPE
 from gui.Scaleform.daapi.view.lobby.prb_windows.PrebattlesListWindow import PrebattlesListWindow
 from gui.Scaleform.daapi.view.meta.BattleSessionListMeta import BattleSessionListMeta
@@ -59,7 +59,7 @@ class BattleSessionList(PrebattlesListWindow, BattleSessionListMeta):
     def __hideWindow(self, _):
         self.destroy()
 
-    @process
+    @adisp_process
     def __requestToJoin(self, prbID, prbType):
         yield self.prbDispatcher.join(JoinBattleSessionCtx(prbID, prbType, 'prebattle/join'))
 

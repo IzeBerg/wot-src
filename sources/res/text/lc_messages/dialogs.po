@@ -298,6 +298,12 @@ msgstr ""
 msgid "accountCompletion/warningSomethingWentWrong"
 msgstr "Что-то пошло не так."
 
+msgid "addFreeSkillWindow/label"
+msgstr "«Нулевые» навыки"
+
+msgid "addFreeSkillWindow/submit"
+msgstr "Выбрать"
+
 msgid "addSkillWindow/cancel"
 msgstr "Отменить"
 
@@ -319,7 +325,7 @@ msgid "addSkillWindow/label/common"
 msgstr "общие"
 
 msgid "addSkillWindow/label/driver"
-msgstr "водителя"
+msgstr "механика-водителя"
 
 msgid "addSkillWindow/label/gunner"
 msgstr "наводчика"
@@ -854,6 +860,36 @@ msgstr "Закрыть"
 
 msgid "common/submit"
 msgstr "Продолжить"
+
+msgid "comp7/deserter/cancel"
+msgstr "Отменить"
+
+msgid "comp7/deserter/message"
+msgstr ""
+"Сражение ещё не завершено. Выходя из боя до его завершения, вы подставляете команду.\n"
+"К вам будет {brown_open}применено дисциплинарное взыскание.{brown_close}\n"
+"Вы уверены, что хотите покинуть бой?"
+
+msgid "comp7/deserter/msgTitle"
+msgstr "Вы потеряете очки рейтинга!"
+
+msgid "comp7/deserter/submit"
+msgstr "Бежать"
+
+msgid "comp7/deserter/title"
+msgstr "Бегство с поля боя"
+
+msgid "comp7/punishmentWindow/cancel"
+msgstr "Так точно!"
+
+msgid "comp7/punishmentWindow/message"
+msgstr "Время блокировки: %(banDuration)s."
+
+msgid "comp7/punishmentWindow/msgTitle"
+msgstr "К вам применено дисциплинарное взыскание"
+
+msgid "comp7/punishmentWindow/title"
+msgstr "Блокировка режима"
 
 msgid "confirmBattleBoosterBuyAndInstall/cancel"
 msgstr "Отменить"
@@ -1673,6 +1709,30 @@ msgstr "Подтвердить"
 msgid "fortificationFixedPlayers/title"
 msgstr "Закрепиться за строением"
 
+msgid "freeSkillsInfo/message"
+msgstr ""
+"«Нулевой» навык доступен члену экипажа по умолчанию. Он не требует затрат "
+"опыта экипажа и не может быть изменён игроком. «Нулевой» навык обеспечивает "
+"преимущество за счёт значительного уменьшения количества опыта, необходимого"
+" для дальнейшего обучения члена экипажа."
+
+msgid "freeSkillsInfo/submit"
+msgstr "Так точно!"
+
+msgid "freeSkillsInfo/title"
+msgstr "О «нулевых» навыках"
+
+msgid "freeSkillsLearning/message"
+msgstr ""
+"%(iconWarning) {orange_Open}После подтверждения сменить «нулевой» навык будет невозможно.{orange_Close}\n"
+"«Нулевой» навык не требует затрат опыта экипажа и не может быть изменён игроком. Он обеспечивает преимущество за счёт значительного уменьшения количества опыта, необходимого для дальнейшего обучения члена экипажа."
+
+msgid "freeSkillsLearning/title/learning"
+msgstr "Выбрать «%(skillName)s» в качестве «нулевого» навыка?"
+
+msgid "freeSkillsLearning/title/relearning"
+msgstr "Переизучить «%(skillName)s» в качестве «нулевого» навыка?"
+
 msgid "freeSlotConfirmation/cancel"
 msgstr "Отменить"
 
@@ -2432,63 +2492,54 @@ msgstr "Выйти"
 msgid "quit/title"
 msgstr "Выйти из игры?"
 
-msgid "quitBattle/cancel"
-msgstr "Нет"
-
-msgid "quitBattle/deserter/cancel"
+msgid "quitBattle/IGR/leaver/cancel"
 msgstr "Отменить"
 
-msgid "quitBattle/deserter/message"
-msgstr ""
-"Вы нужны команде! Выход из боя до уничтожения собственной машины "
-"расценивается как дезертирство и может повлечь применение дисциплинарного "
-"взыскания.%(additionalInfo)s"
-
-msgid "quitBattle/deserter/submit"
-msgstr "Бежать"
-
-msgid "quitBattle/deserter/title"
-msgstr "Бегство с поля боя"
-
-msgid "quitBattle/message"
-msgstr "Покинуть бой?"
-
-msgid "quitBattle/submit"
-msgstr "Да"
-
-msgid "quitBattle/title"
-msgstr "Выход из боя"
-
-msgid "quitBattleIGR/cancel"
-msgstr "Нет"
-
-msgid "quitBattleIGR/deserter/cancel"
-msgstr "Отменить"
-
-msgid "quitBattleIGR/deserter/message"
+msgid "quitBattle/IGR/leaver/descriptionAlive"
 msgstr ""
 "Вы нужны команде! Выход из боя до его окончания или до уничтожения "
 "собственной машины расценивается как дезертирство и может повлечь применение"
 " дисциплинарного взыскания, а также лишение всех бонусов от игры в IGR для "
-"этого боя.%(additionalInfo)s"
+"этого боя."
 
-msgid "quitBattleIGR/deserter/submit"
+msgid "quitBattle/IGR/leaver/submit"
 msgstr "Бежать"
 
-msgid "quitBattleIGR/deserter/title"
-msgstr "Бегство с поля боя"
+msgid "quitBattle/IGR/leaver/title"
+msgstr "Бежать с поля боя?"
 
-msgid "quitBattleIGR/message"
+msgid "quitBattle/cancel"
+msgstr "Отменить"
+
+msgid "quitBattle/leaver/cancel"
+msgstr "Отменить"
+
+msgid "quitBattle/leaver/descriptionAlive"
 msgstr ""
-"Warning! Your tank is still alive. If you leave the game now you won't get "
-"perks and won't be able to come back to this battle. Are you sure you want "
-"to quit?"
+"Вы нужны команде! Выход из боя до уничтожения собственной машины "
+"расценивается как дезертирство и может повлечь применение дисциплинарного "
+"взыскания."
 
-msgid "quitBattleIGR/submit"
-msgstr "Да"
+msgid "quitBattle/leaver/submit"
+msgstr "Бежать"
 
-msgid "quitBattleIGR/title"
-msgstr "Выход из боя"
+msgid "quitBattle/leaver/title"
+msgstr "Бежать с поля боя?"
+
+msgid "quitBattle/replay/cancel"
+msgstr "Отменить"
+
+msgid "quitBattle/replay/submit"
+msgstr "Прервать"
+
+msgid "quitBattle/replay/title"
+msgstr "Прервать просмотр боя?"
+
+msgid "quitBattle/submit"
+msgstr "Покинуть"
+
+msgid "quitBattle/title"
+msgstr "Покинуть бой?"
 
 msgid "quitPreBattle/cancel"
 msgstr "Нет"
@@ -2501,18 +2552,6 @@ msgstr "Да"
 
 msgid "quitPreBattle/title"
 msgstr "Выход из режима ожидания боя"
-
-msgid "quitReplay/cancel"
-msgstr "Нет"
-
-msgid "quitReplay/message"
-msgstr "Прервать просмотр боя?"
-
-msgid "quitReplay/submit"
-msgstr "Да"
-
-msgid "quitReplay/title"
-msgstr "Выход из просмотра боя"
 
 msgid "rally/autoSearch/cancel"
 msgstr "Нет"
@@ -2622,6 +2661,12 @@ msgstr "Да"
 
 msgid "rally/startBattle/title"
 msgstr "Поиск противника"
+
+msgid "recruitDialog/name/title"
+msgstr "Рекрутировать новобранца (%(name)s)?"
+
+msgid "recruitDialog/title"
+msgstr "Рекрутировать новобранца?"
 
 msgid "recruitWindow/cancel"
 msgstr "Отменить"

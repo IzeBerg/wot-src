@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>OpenCargo</name>
+			<type>trigger</type>
+		</param>
+		<param>
+			<name>CloseCargo</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>Idle</name>
+		<type>sequence</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_AN12/animation/hd_mle_UNI_AN12_Idle.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>CargoOpen</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>OpenCargo</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-192.000000 -95.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>CargoOpen</name>
+		<type>sequence</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_AN12/animation/hd_mle_UNI_AN12_OpenCargo.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>CargoClose</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+				<condition>
+					<type>trigger</type>
+					<name>CloseCargo</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>175.000000 -83.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>CargoClose</name>
+		<type>sequence</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_AN12/animation/hd_mle_UNI_AN12_CloseCargo.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-52.000000 10.000000 0.000000</uiPosition>
+	</node>
+</root>

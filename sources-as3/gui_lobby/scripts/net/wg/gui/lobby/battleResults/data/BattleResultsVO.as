@@ -60,6 +60,8 @@ package net.wg.gui.lobby.battleResults.data
       
       public var selectedIdxInGarageDropdown:int = 0;
       
+      public var efficiencyTitle:String = "";
+      
       public var team1:DataProvider;
       
       public var team2:DataProvider;

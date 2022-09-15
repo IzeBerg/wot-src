@@ -15,6 +15,7 @@ package net.wg.gui.battle.views.stats.fullStats
    import net.wg.gui.components.controls.VO.BadgeVisualVO;
    import net.wg.infrastructure.interfaces.IColorScheme;
    import net.wg.infrastructure.interfaces.IUserProps;
+   import org.idmedia.as3commons.util.StringUtils;
    import scaleform.gfx.TextFieldEx;
    
    public class StatsTableItemBase extends BattleUIComponentsHolder
@@ -22,7 +23,7 @@ package net.wg.gui.battle.views.stats.fullStats
       
       private static const FIELD_WIDTH_COMPENSATION:int = 2;
       
-      private static const RANKED_BADGE_OFFSET:int = 1;
+      private static const SUFFIXBADGE_WIDTH:uint = 24;
       
       private static const BADGE_ALPHA:int = 1;
       
@@ -127,7 +128,6 @@ package net.wg.gui.battle.views.stats.fullStats
       {
          this._badge = null;
          this._badgeVO = null;
-         this._testerIcon = null;
          this._playerNameTF = null;
          this._vehicleNameTF = null;
          this._vehicleTypeIcon = null;
@@ -145,26 +145,24 @@ package net.wg.gui.battle.views.stats.fullStats
          var _loc1_:int = 0;
          var _loc2_:String = null;
          var _loc3_:IColorScheme = null;
+         var _loc4_:Boolean = false;
          super.draw();
          if(isInvalid(FullStatsValidationType.BADGE))
          {
+            this._badge.visible = this._hasBadge;
             if(this._hasBadge)
             {
                this._badge.setData(this._badgeVO);
-            }
-            this._badge.visible = this._hasBadge;
-            _loc1_ = !!this._testerIcon.visible ? int(this._testerIcon.width + RANKED_BADGE_OFFSET) : int(0);
-            if(this._badge.visible)
-            {
+               _loc1_ = !!StringUtils.isNotEmpty(this._suffixBadgeType) ? int(SUFFIXBADGE_WIDTH) : int(0);
+               this._playerNameTF.width = this._defaultUsernameTFWidth - this._badge.width - _loc1_ | 0;
                if(this._isEnemy)
                {
-                  this._playerNameTF.x = this._badge.x - (this._defaultUsernameTFWidth - this._badge.width);
+                  this._playerNameTF.x = this._badge.x - this._playerNameTF.width | 0;
                }
                else
                {
-                  this._playerNameTF.x = this._badge.x + (this._badge.width + RANKED_BADGE_OFFSET);
+                  this._playerNameTF.x = this._badge.x + this._badge.width | 0;
                }
-               this._playerNameTF.width = this._defaultUsernameTFWidth - (this._badge.width + RANKED_BADGE_OFFSET) - _loc1_;
             }
             else
             {
@@ -196,20 +194,21 @@ package net.wg.gui.battle.views.stats.fullStats
          }
          if(isInvalid(FullStatsValidationType.SUFFIXBAGE))
          {
-            this._testerIcon.visible = this._backTester.visible = Boolean(this._suffixBadgeType);
-            if(this._testerIcon.visible && this._playerNameTF.visible)
+            _loc4_ = StringUtils.isNotEmpty(this._suffixBadgeType);
+            this._testerIcon.visible = this._backTester.visible = _loc4_;
+            if(_loc4_ && this._playerNameTF.visible)
             {
                this._testerIcon.imageName = this._suffixBadgeType;
                this._backTester.imageName = this._suffixBadgeStripType;
                if(this._isEnemy)
                {
-                  this._testerIcon.x = -FIELD_WIDTH_COMPENSATION + (this._playerNameTF.width - this._playerNameTF.textWidth + this._playerNameTF.x - this._testerIcon.width) >> 0;
-                  this._backTester.x = this._testerIcon.x + this._backTester.width + (this._testerIcon.width >> 1) >> 0;
+                  this._testerIcon.x = this._playerNameTF.width - this._playerNameTF.textWidth + this._playerNameTF.x - this._testerIcon.width - FIELD_WIDTH_COMPENSATION | 0;
+                  this._backTester.x = this._testerIcon.x + this._backTester.width + (this._testerIcon.width >> 1) | 0;
                }
                else
                {
-                  this._testerIcon.x = this._playerNameTF.x + this._playerNameTF.textWidth + RANKED_BADGE_OFFSET >> 0;
-                  this._backTester.x = -FIELD_WIDTH_COMPENSATION + ((this._testerIcon.width >> 1) + this._testerIcon.x - this._backTester.width) >> 0;
+                  this._testerIcon.x = this._playerNameTF.x + this._playerNameTF.textWidth + FIELD_WIDTH_COMPENSATION | 0;
+                  this._backTester.x = (this._testerIcon.width >> 1) + this._testerIcon.x - this._backTester.width | 0;
                }
             }
          }
@@ -362,15 +361,6 @@ package net.wg.gui.battle.views.stats.fullStats
          invalidate(FullStatsValidationType.IS_IGR);
       }
       
-      public function setShowDogTag(param1:Boolean) : void
-      {
-         if(this.dogTag == param1)
-         {
-            return;
-         }
-         this.dogTag = param1;
-      }
-      
       public function setIsOffline(param1:Boolean) : void
       {
          if(this.isOffline == param1)
@@ -415,6 +405,15 @@ package net.wg.gui.battle.views.stats.fullStats
       {
          this._userProps = param1;
          invalidate(FullStatsValidationType.USER_PROPS | FullStatsValidationType.COLORS);
+      }
+      
+      public function setShowDogTag(param1:Boolean) : void
+      {
+         if(this.dogTag == param1)
+         {
+            return;
+         }
+         this.dogTag = param1;
       }
       
       public function setSuffixBadge(param1:String) : void
@@ -468,6 +467,11 @@ package net.wg.gui.battle.views.stats.fullStats
          this._playerNameTF.textColor = param1;
          this._vehicleNameTF.textColor = param1;
          this._fragsTF.textColor = param1;
+      }
+      
+      public function get userProps() : IUserProps
+      {
+         return this._userProps;
       }
       
       protected function get numRows() : uint

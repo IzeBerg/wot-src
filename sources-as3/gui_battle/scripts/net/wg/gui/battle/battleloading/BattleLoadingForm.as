@@ -26,6 +26,8 @@ package net.wg.gui.battle.battleloading
    public class BattleLoadingForm extends BaseTipLoadingForm
    {
       
+      private static const RENDERERS_COUNT:uint = 15;
+      
       private static const MAP_SIZE:int = 360;
       
       private static const LOADING_BAR_MIN:int = 0;
@@ -34,9 +36,9 @@ package net.wg.gui.battle.battleloading
       
       private static const LOADING_BAR_DEF_VALUE:int = 0;
       
-      private static const RENDERER_CONTAIER_LEFT_OFFSET:int = -506;
+      private static const RENDERER_CONTAINER_LEFT_OFFSET:int = -506;
       
-      private static const RENDERER_CONTAIER_TOP_OFFSET:int = 112;
+      private static const RENDERER_CONTAINER_TOP_OFFSET:int = 112;
       
       private static const TANK_ICON_SHIFT:int = 187;
       
@@ -115,18 +117,30 @@ package net.wg.gui.battle.battleloading
          if(param1.showTableBackground)
          {
             this.leftSquad.x = this._leftSquadInitX;
-            this.leftTank.x = this._leftTankInitX;
-            this.rightTank.x = this._rightTankInitX;
             this.rightSquad.x = this._rightSquadInitX;
             this.formBackgroundTable.imageName = BATTLEATLAS.BATTLE_LOADING_FORM_BG_TABLE;
+            if(this.leftTank)
+            {
+               this.leftTank.x = this._leftTankInitX;
+            }
+            if(this.rightTank)
+            {
+               this.rightTank.x = this._rightTankInitX;
+            }
          }
          if(param1.showTipsBackground)
          {
             this.leftSquad.x = this._leftSquadInitX - SQUAD_ICON_SHIFT;
-            this.leftTank.x = this._leftTankInitX - TANK_ICON_SHIFT;
-            this.rightTank.x = this._rightTankInitX + TANK_ICON_SHIFT;
             this.rightSquad.x = this._rightSquadInitX + SQUAD_ICON_SHIFT;
             this.formBackgroundTable.imageName = BATTLEATLAS.BATTLE_LOADING_FORM_BG_TIPS;
+            if(this.leftTank)
+            {
+               this.leftTank.x = this._leftTankInitX - TANK_ICON_SHIFT;
+            }
+            if(this.rightTank)
+            {
+               this.rightTank.x = this._rightTankInitX + TANK_ICON_SHIFT;
+            }
          }
          this.team1Text.x = param1.leftTeamTitleLeft;
          this.team2Text.x = param1.rightTeamTitleLeft;
@@ -144,10 +158,10 @@ package net.wg.gui.battle.battleloading
          this._renderersContainer.name = RENDERERS_CONTAINER_NAME;
          this._renderersContainer.mouseEnabled = false;
          this._renderersContainer.mouseChildren = false;
-         this._renderersContainer.x = RENDERER_CONTAIER_LEFT_OFFSET;
-         this._renderersContainer.y = RENDERER_CONTAIER_TOP_OFFSET;
+         this._renderersContainer.x = RENDERER_CONTAINER_LEFT_OFFSET;
+         this._renderersContainer.y = RENDERER_CONTAINER_TOP_OFFSET;
          var _loc2_:Class = this.getRendererClass(param1);
-         var _loc3_:int = 15;
+         var _loc3_:int = this.getRenderersCount();
          var _loc4_:int = 0;
          while(_loc4_ < _loc3_)
          {
@@ -276,14 +290,20 @@ package net.wg.gui.battle.battleloading
          battleIcon.visible = false;
          this.formBackgroundTable.mouseChildren = this.formBackgroundTable.mouseEnabled = false;
          this.leftSquad.imageName = BATTLEATLAS.ICON_PLATOON;
-         this.leftTank.imageName = BATTLEATLAS.ICON_TANK;
-         this.rightTank.imageName = BATTLEATLAS.ICON_TANK;
-         App.utils.commons.flipHorizontal(this.rightTank);
          this.rightSquad.imageName = BATTLEATLAS.ICON_PLATOON;
          this._leftSquadInitX = this.leftSquad.x;
-         this._leftTankInitX = this.leftTank.x;
-         this._rightTankInitX = this.rightTank.x;
          this._rightSquadInitX = this.rightSquad.x;
+         if(this.leftTank)
+         {
+            this.leftTank.imageName = BATTLEATLAS.ICON_TANK;
+            this._leftTankInitX = this.leftTank.x;
+         }
+         if(this.rightTank)
+         {
+            this.rightTank.imageName = BATTLEATLAS.ICON_TANK;
+            App.utils.commons.flipHorizontal(this.rightTank);
+            this._rightTankInitX = this.rightTank.x;
+         }
          this.hideMap();
          this.map.size = MAP_SIZE;
          this._teamDP = new VehiclesDataProvider();
@@ -313,6 +333,11 @@ package net.wg.gui.battle.battleloading
          var _loc2_:IClassFactory = App.utils.classFactory;
          var _loc3_:String = param1.settingID == BattleLoadingHelper.SETTING_TEXT ? Linkages.BATTLE_LOADING_TABLE_RENDERERS : Linkages.BATTLE_LOADING_TIPS_RENDERERS;
          return _loc2_.getComponent(_loc3_,BaseRendererContainer);
+      }
+      
+      protected function getRenderersCount() : uint
+      {
+         return RENDERERS_COUNT;
       }
       
       private function hideMap() : void

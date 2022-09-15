@@ -1,6 +1,5 @@
 package net.wg.gui.battle.battleloading.renderers
 {
-   import flash.display.DisplayObject;
    import flash.display.Sprite;
    import flash.text.TextField;
    import net.wg.gui.battle.components.BattleAtlasSprite;
@@ -689,34 +688,47 @@ package net.wg.gui.battle.battleloading.renderers
       public function BaseRendererContainer()
       {
          super();
-         this.icoTestersEnemy = new <BattleAtlasSprite>[this.icoTesterEnemy0,this.icoTesterEnemy1,this.icoTesterEnemy2,this.icoTesterEnemy3,this.icoTesterEnemy4,this.icoTesterEnemy5,this.icoTesterEnemy6,this.icoTesterEnemy7,this.icoTesterEnemy8,this.icoTesterEnemy9,this.icoTesterEnemy10,this.icoTesterEnemy11,this.icoTesterEnemy12,this.icoTesterEnemy13,this.icoTesterEnemy14];
-         this.icoTestersAlly = new <BattleAtlasSprite>[this.icoTesterAlly0,this.icoTesterAlly1,this.icoTesterAlly2,this.icoTesterAlly3,this.icoTesterAlly4,this.icoTesterAlly5,this.icoTesterAlly6,this.icoTesterAlly7,this.icoTesterAlly8,this.icoTesterAlly9,this.icoTesterAlly10,this.icoTesterAlly11,this.icoTesterAlly12,this.icoTesterAlly13,this.icoTesterAlly14];
-         this.backTestersEnemy = new <BattleAtlasSprite>[this.testerBack_c2r1,this.testerBack_c2r2,this.testerBack_c2r3,this.testerBack_c2r4,this.testerBack_c2r5,this.testerBack_c2r6,this.testerBack_c2r7,this.testerBack_c2r8,this.testerBack_c2r9,this.testerBack_c2r10,this.testerBack_c2r11,this.testerBack_c2r12,this.testerBack_c2r13,this.testerBack_c2r14,this.testerBack_c2r15];
-         this.backTestersAlly = new <BattleAtlasSprite>[this.testerBack_c1r1,this.testerBack_c1r2,this.testerBack_c1r3,this.testerBack_c1r4,this.testerBack_c1r5,this.testerBack_c1r6,this.testerBack_c1r7,this.testerBack_c1r8,this.testerBack_c1r9,this.testerBack_c1r10,this.testerBack_c1r11,this.testerBack_c1r12,this.testerBack_c1r13,this.testerBack_c1r14,this.testerBack_c1r15];
-         this.textFieldsAlly = new <TextField>[this.textFieldAlly0,this.textFieldAlly1,this.textFieldAlly2,this.textFieldAlly3,this.textFieldAlly4,this.textFieldAlly5,this.textFieldAlly6,this.textFieldAlly7,this.textFieldAlly8,this.textFieldAlly9,this.textFieldAlly10,this.textFieldAlly11,this.textFieldAlly12,this.textFieldAlly13,this.textFieldAlly14];
-         this.vehicleFieldsAlly = new <TextField>[this.vehicleFieldAlly0,this.vehicleFieldAlly1,this.vehicleFieldAlly2,this.vehicleFieldAlly3,this.vehicleFieldAlly4,this.vehicleFieldAlly5,this.vehicleFieldAlly6,this.vehicleFieldAlly7,this.vehicleFieldAlly8,this.vehicleFieldAlly9,this.vehicleFieldAlly10,this.vehicleFieldAlly11,this.vehicleFieldAlly12,this.vehicleFieldAlly13,this.vehicleFieldAlly14];
-         this.playerActionMarkersAlly = new <PlayerActionMarker>[this.playerActionMarkerAlly0,this.playerActionMarkerAlly1,this.playerActionMarkerAlly2,this.playerActionMarkerAlly3,this.playerActionMarkerAlly4,this.playerActionMarkerAlly5,this.playerActionMarkerAlly6,this.playerActionMarkerAlly7,this.playerActionMarkerAlly8,this.playerActionMarkerAlly9,this.playerActionMarkerAlly10,this.playerActionMarkerAlly11,this.playerActionMarkerAlly12,this.playerActionMarkerAlly13,this.playerActionMarkerAlly14];
-         this.vehicleTypeIconsAlly = new <BattleAtlasSprite>[this.vehicleTypeIconAlly0,this.vehicleTypeIconAlly1,this.vehicleTypeIconAlly2,this.vehicleTypeIconAlly3,this.vehicleTypeIconAlly4,this.vehicleTypeIconAlly5,this.vehicleTypeIconAlly6,this.vehicleTypeIconAlly7,this.vehicleTypeIconAlly8,this.vehicleTypeIconAlly9,this.vehicleTypeIconAlly10,this.vehicleTypeIconAlly11,this.vehicleTypeIconAlly12,this.vehicleTypeIconAlly13,this.vehicleTypeIconAlly14];
-         this.vehicleLevelIconsAlly = new <BattleAtlasSprite>[this.vehicleLevelIconAlly0,this.vehicleLevelIconAlly1,this.vehicleLevelIconAlly2,this.vehicleLevelIconAlly3,this.vehicleLevelIconAlly4,this.vehicleLevelIconAlly5,this.vehicleLevelIconAlly6,this.vehicleLevelIconAlly7,this.vehicleLevelIconAlly8,this.vehicleLevelIconAlly9,this.vehicleLevelIconAlly10,this.vehicleLevelIconAlly11,this.vehicleLevelIconAlly12,this.vehicleLevelIconAlly13,this.vehicleLevelIconAlly14];
-         this.vehicleIconsAlly = new <BattleAtlasSprite>[this.vehicleIconAlly0,this.vehicleIconAlly1,this.vehicleIconAlly2,this.vehicleIconAlly3,this.vehicleIconAlly4,this.vehicleIconAlly5,this.vehicleIconAlly6,this.vehicleIconAlly7,this.vehicleIconAlly8,this.vehicleIconAlly9,this.vehicleIconAlly10,this.vehicleIconAlly11,this.vehicleIconAlly12,this.vehicleIconAlly13,this.vehicleIconAlly14];
-         this.icoIGRsAlly = new <BattleAtlasSprite>[this.icoIGRAlly0,this.icoIGRAlly1,this.icoIGRAlly2,this.icoIGRAlly3,this.icoIGRAlly4,this.icoIGRAlly5,this.icoIGRAlly6,this.icoIGRAlly7,this.icoIGRAlly8,this.icoIGRAlly9,this.icoIGRAlly10,this.icoIGRAlly11,this.icoIGRAlly12,this.icoIGRAlly13,this.icoIGRAlly14];
-         this.selfBgs = new <BattleAtlasSprite>[this.selfBgAlly0,this.selfBgAlly1,this.selfBgAlly2,this.selfBgAlly3,this.selfBgAlly4,this.selfBgAlly5,this.selfBgAlly6,this.selfBgAlly7,this.selfBgAlly8,this.selfBgAlly9,this.selfBgAlly10,this.selfBgAlly11,this.selfBgAlly12,this.selfBgAlly13,this.selfBgAlly14];
-         this.textFieldsEnemy = new <TextField>[this.textFieldEnemy0,this.textFieldEnemy1,this.textFieldEnemy2,this.textFieldEnemy3,this.textFieldEnemy4,this.textFieldEnemy5,this.textFieldEnemy6,this.textFieldEnemy7,this.textFieldEnemy8,this.textFieldEnemy9,this.textFieldEnemy10,this.textFieldEnemy11,this.textFieldEnemy12,this.textFieldEnemy13,this.textFieldEnemy14];
-         this.vehicleFieldsEnemy = new <TextField>[this.vehicleFieldEnemy0,this.vehicleFieldEnemy1,this.vehicleFieldEnemy2,this.vehicleFieldEnemy3,this.vehicleFieldEnemy4,this.vehicleFieldEnemy5,this.vehicleFieldEnemy6,this.vehicleFieldEnemy7,this.vehicleFieldEnemy8,this.vehicleFieldEnemy9,this.vehicleFieldEnemy10,this.vehicleFieldEnemy11,this.vehicleFieldEnemy12,this.vehicleFieldEnemy13,this.vehicleFieldEnemy14];
-         this.playerActionMarkersEnemy = new <PlayerActionMarker>[this.playerActionMarkerEnemy0,this.playerActionMarkerEnemy1,this.playerActionMarkerEnemy2,this.playerActionMarkerEnemy3,this.playerActionMarkerEnemy4,this.playerActionMarkerEnemy5,this.playerActionMarkerEnemy6,this.playerActionMarkerEnemy7,this.playerActionMarkerEnemy8,this.playerActionMarkerEnemy9,this.playerActionMarkerEnemy10,this.playerActionMarkerEnemy11,this.playerActionMarkerEnemy12,this.playerActionMarkerEnemy13,this.playerActionMarkerEnemy14];
-         this.vehicleTypeIconsEnemy = new <BattleAtlasSprite>[this.vehicleTypeIconEnemy0,this.vehicleTypeIconEnemy1,this.vehicleTypeIconEnemy2,this.vehicleTypeIconEnemy3,this.vehicleTypeIconEnemy4,this.vehicleTypeIconEnemy5,this.vehicleTypeIconEnemy6,this.vehicleTypeIconEnemy7,this.vehicleTypeIconEnemy8,this.vehicleTypeIconEnemy9,this.vehicleTypeIconEnemy10,this.vehicleTypeIconEnemy11,this.vehicleTypeIconEnemy12,this.vehicleTypeIconEnemy13,this.vehicleTypeIconEnemy14];
-         this.vehicleLevelIconsEnemy = new <BattleAtlasSprite>[this.vehicleLevelIconEnemy0,this.vehicleLevelIconEnemy1,this.vehicleLevelIconEnemy2,this.vehicleLevelIconEnemy3,this.vehicleLevelIconEnemy4,this.vehicleLevelIconEnemy5,this.vehicleLevelIconEnemy6,this.vehicleLevelIconEnemy7,this.vehicleLevelIconEnemy8,this.vehicleLevelIconEnemy9,this.vehicleLevelIconEnemy10,this.vehicleLevelIconEnemy11,this.vehicleLevelIconEnemy12,this.vehicleLevelIconEnemy13,this.vehicleLevelIconEnemy14];
-         this.vehicleIconsEnemy = new <BattleAtlasSprite>[this.vehicleIconEnemy0,this.vehicleIconEnemy1,this.vehicleIconEnemy2,this.vehicleIconEnemy3,this.vehicleIconEnemy4,this.vehicleIconEnemy5,this.vehicleIconEnemy6,this.vehicleIconEnemy7,this.vehicleIconEnemy8,this.vehicleIconEnemy9,this.vehicleIconEnemy10,this.vehicleIconEnemy11,this.vehicleIconEnemy12,this.vehicleIconEnemy13,this.vehicleIconEnemy14];
-         this.icoIGRsEnemy = new <BattleAtlasSprite>[this.icoIGREnemy0,this.icoIGREnemy1,this.icoIGREnemy2,this.icoIGREnemy3,this.icoIGREnemy4,this.icoIGREnemy5,this.icoIGREnemy6,this.icoIGREnemy7,this.icoIGREnemy8,this.icoIGREnemy9,this.icoIGREnemy10,this.icoIGREnemy11,this.icoIGREnemy12,this.icoIGREnemy13,this.icoIGREnemy14];
-         this.badgesAlly = new <BadgeComponent>[this.badgeAlly0,this.badgeAlly1,this.badgeAlly2,this.badgeAlly3,this.badgeAlly4,this.badgeAlly5,this.badgeAlly6,this.badgeAlly7,this.badgeAlly8,this.badgeAlly9,this.badgeAlly10,this.badgeAlly11,this.badgeAlly12,this.badgeAlly13,this.badgeAlly14];
-         this.badgesEnemy = new <BadgeComponent>[this.badgeEnemy0,this.badgeEnemy1,this.badgeEnemy2,this.badgeEnemy3,this.badgeEnemy4,this.badgeEnemy5,this.badgeEnemy6,this.badgeEnemy7,this.badgeEnemy8,this.badgeEnemy9,this.badgeEnemy10,this.badgeEnemy11,this.badgeEnemy12,this.badgeEnemy13,this.badgeEnemy14];
+         this.icoTestersEnemy = this.getIcoTestersEnemy();
+         this.icoTestersAlly = this.getIcoTestersAlly();
+         this.backTestersEnemy = this.getBackTestersEnemy();
+         this.backTestersAlly = this.getBackTestersAlly();
+         this.textFieldsAlly = this.getTextFieldsAlly();
+         this.vehicleFieldsAlly = this.getVehicleFieldsAlly();
+         this.playerActionMarkersAlly = this.getPlayerActionMarkersAlly();
+         this.vehicleTypeIconsAlly = this.getVehicleTypeIconsAlly();
+         this.vehicleLevelIconsAlly = this.getVehicleLevelIconsAlly();
+         this.vehicleIconsAlly = this.getVehicleIconsAlly();
+         this.icoIGRsAlly = this.getIcoIGRsAlly();
+         this.selfBgs = this.getSelfBgs();
+         this.textFieldsEnemy = this.getTextFieldsEnemy();
+         this.vehicleFieldsEnemy = this.getVehicleFieldsEnemy();
+         this.playerActionMarkersEnemy = this.getPlayerActionMarkersEnemy();
+         this.vehicleTypeIconsEnemy = this.getVehicleTypeIconsEnemy();
+         this.vehicleLevelIconsEnemy = this.getVehicleLevelIconsEnemy();
+         this.vehicleIconsEnemy = this.getVehicleIconsEnemy();
+         this.icoIGRsEnemy = this.getIcoIGRsEnemy();
+         this.badgesAlly = this.getBadgesAlly();
+         this.badgesEnemy = this.getBadgesEnemy();
       }
       
-      public function dispose() : void
+      public final function dispose() : void
+      {
+         if(this._disposed)
+         {
+            return;
+         }
+         this.onDispose();
+         this._disposed = true;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
+      protected function onDispose() : void
       {
          var _loc1_:IDisposable = null;
-         var _loc2_:DisplayObject = null;
-         this._disposed = true;
          for each(_loc1_ in this.playerActionMarkersAlly)
          {
             _loc1_.dispose();
@@ -724,14 +736,6 @@ package net.wg.gui.battle.battleloading.renderers
          for each(_loc1_ in this.playerActionMarkersEnemy)
          {
             _loc1_.dispose();
-         }
-         for each(_loc2_ in this.icoTestersAlly)
-         {
-            _loc2_ = null;
-         }
-         for each(_loc2_ in this.icoTestersEnemy)
-         {
-            _loc2_ = null;
          }
          for each(_loc1_ in this.badgesEnemy)
          {
@@ -741,26 +745,8 @@ package net.wg.gui.battle.battleloading.renderers
          {
             _loc1_.dispose();
          }
-         for each(_loc2_ in this.backTestersEnemy)
-         {
-            _loc2_ = null;
-         }
-         for each(_loc2_ in this.backTestersAlly)
-         {
-            _loc2_ = null;
-         }
          this.textFieldsAlly.length = 0;
          this.textFieldsEnemy.length = 0;
-         this.vehicleFieldsAlly.length = 0;
-         this.vehicleFieldsEnemy.length = 0;
-         this.vehicleTypeIconsAlly.length = 0;
-         this.vehicleTypeIconsEnemy.length = 0;
-         this.vehicleLevelIconsAlly.length = 0;
-         this.vehicleLevelIconsEnemy.length = 0;
-         this.vehicleIconsAlly.length = 0;
-         this.vehicleIconsEnemy.length = 0;
-         this.icoIGRsAlly.length = 0;
-         this.icoIGRsEnemy.length = 0;
          this.playerActionMarkersAlly.length = 0;
          this.playerActionMarkersEnemy.length = 0;
          this.badgesAlly.length = 0;
@@ -772,23 +758,125 @@ package net.wg.gui.battle.battleloading.renderers
          this.selfBgs.length = 0;
          this.textFieldsAlly = null;
          this.textFieldsEnemy = null;
-         this.vehicleFieldsAlly = null;
-         this.vehicleFieldsEnemy = null;
-         this.vehicleTypeIconsAlly = null;
-         this.vehicleTypeIconsEnemy = null;
-         this.vehicleLevelIconsAlly = null;
-         this.vehicleLevelIconsEnemy = null;
-         this.vehicleIconsAlly = null;
-         this.vehicleIconsEnemy = null;
-         this.icoIGRsAlly = null;
-         this.icoIGRsEnemy = null;
          this.playerActionMarkersAlly = null;
          this.playerActionMarkersEnemy = null;
          this.badgesAlly = null;
          this.badgesEnemy = null;
+         this.backTestersAlly = null;
+         this.backTestersEnemy = null;
          this.icoTestersAlly = null;
          this.icoTestersEnemy = null;
          this.selfBgs = null;
+         if(this.vehicleFieldsAlly)
+         {
+            this.vehicleFieldsAlly.length = 0;
+            this.vehicleFieldsAlly = null;
+         }
+         if(this.vehicleFieldsEnemy)
+         {
+            this.vehicleFieldsEnemy.length = 0;
+            this.vehicleFieldsEnemy = null;
+         }
+         if(this.vehicleTypeIconsAlly)
+         {
+            this.vehicleTypeIconsAlly.length = 0;
+            this.vehicleTypeIconsAlly = null;
+         }
+         if(this.vehicleTypeIconsEnemy)
+         {
+            this.vehicleTypeIconsEnemy.length = 0;
+            this.vehicleTypeIconsEnemy = null;
+         }
+         if(this.vehicleLevelIconsAlly)
+         {
+            this.vehicleLevelIconsAlly.length = 0;
+            this.vehicleLevelIconsAlly = null;
+         }
+         if(this.vehicleLevelIconsEnemy)
+         {
+            this.vehicleLevelIconsEnemy.length = 0;
+            this.vehicleLevelIconsEnemy = null;
+         }
+         if(this.vehicleIconsAlly)
+         {
+            this.vehicleIconsAlly.length = 0;
+            this.vehicleIconsAlly = null;
+         }
+         if(this.vehicleIconsEnemy)
+         {
+            this.vehicleIconsEnemy.length = 0;
+            this.vehicleIconsEnemy = null;
+         }
+         if(this.icoIGRsAlly)
+         {
+            this.icoIGRsAlly.length = 0;
+            this.icoIGRsAlly = null;
+         }
+         if(this.icoIGRsEnemy)
+         {
+            this.icoIGRsEnemy.length = 0;
+            this.icoIGRsEnemy = null;
+         }
+         this.testerBack_c1r1 = null;
+         this.testerBack_c1r2 = null;
+         this.testerBack_c1r3 = null;
+         this.testerBack_c1r4 = null;
+         this.testerBack_c1r5 = null;
+         this.testerBack_c1r6 = null;
+         this.testerBack_c1r7 = null;
+         this.testerBack_c1r8 = null;
+         this.testerBack_c1r9 = null;
+         this.testerBack_c1r10 = null;
+         this.testerBack_c1r11 = null;
+         this.testerBack_c1r12 = null;
+         this.testerBack_c1r13 = null;
+         this.testerBack_c1r14 = null;
+         this.testerBack_c1r15 = null;
+         this.testerBack_c2r1 = null;
+         this.testerBack_c2r2 = null;
+         this.testerBack_c2r3 = null;
+         this.testerBack_c2r4 = null;
+         this.testerBack_c2r5 = null;
+         this.testerBack_c2r6 = null;
+         this.testerBack_c2r7 = null;
+         this.testerBack_c2r8 = null;
+         this.testerBack_c2r9 = null;
+         this.testerBack_c2r10 = null;
+         this.testerBack_c2r11 = null;
+         this.testerBack_c2r12 = null;
+         this.testerBack_c2r13 = null;
+         this.testerBack_c2r14 = null;
+         this.testerBack_c2r15 = null;
+         this.icoTesterAlly0 = null;
+         this.icoTesterAlly1 = null;
+         this.icoTesterAlly2 = null;
+         this.icoTesterAlly3 = null;
+         this.icoTesterAlly4 = null;
+         this.icoTesterAlly5 = null;
+         this.icoTesterAlly6 = null;
+         this.icoTesterAlly7 = null;
+         this.icoTesterAlly8 = null;
+         this.icoTesterAlly9 = null;
+         this.icoTesterAlly10 = null;
+         this.icoTesterAlly11 = null;
+         this.icoTesterAlly12 = null;
+         this.icoTesterAlly13 = null;
+         this.icoTesterAlly14 = null;
+         this.icoTesterEnemy0 = null;
+         this.icoTesterEnemy1 = null;
+         this.icoTesterEnemy2 = null;
+         this.icoTesterEnemy3 = null;
+         this.icoTesterEnemy4 = null;
+         this.icoTesterEnemy5 = null;
+         this.icoTesterEnemy6 = null;
+         this.icoTesterEnemy7 = null;
+         this.icoTesterEnemy8 = null;
+         this.icoTesterEnemy9 = null;
+         this.icoTesterEnemy10 = null;
+         this.icoTesterEnemy11 = null;
+         this.icoTesterEnemy12 = null;
+         this.icoTesterEnemy13 = null;
+         this.icoTesterEnemy14 = null;
          this.textFieldAlly0 = null;
          this.textFieldAlly1 = null;
          this.textFieldAlly2 = null;
@@ -1046,9 +1134,109 @@ package net.wg.gui.battle.battleloading.renderers
          this.selfBgAlly14 = null;
       }
       
-      public function isDisposed() : Boolean
+      protected function getIcoTestersEnemy() : Vector.<BattleAtlasSprite>
       {
-         return this._disposed;
+         return new <BattleAtlasSprite>[this.icoTesterEnemy0,this.icoTesterEnemy1,this.icoTesterEnemy2,this.icoTesterEnemy3,this.icoTesterEnemy4,this.icoTesterEnemy5,this.icoTesterEnemy6,this.icoTesterEnemy7,this.icoTesterEnemy8,this.icoTesterEnemy9,this.icoTesterEnemy10,this.icoTesterEnemy11,this.icoTesterEnemy12,this.icoTesterEnemy13,this.icoTesterEnemy14];
+      }
+      
+      protected function getIcoTestersAlly() : Vector.<BattleAtlasSprite>
+      {
+         return new <BattleAtlasSprite>[this.icoTesterAlly0,this.icoTesterAlly1,this.icoTesterAlly2,this.icoTesterAlly3,this.icoTesterAlly4,this.icoTesterAlly5,this.icoTesterAlly6,this.icoTesterAlly7,this.icoTesterAlly8,this.icoTesterAlly9,this.icoTesterAlly10,this.icoTesterAlly11,this.icoTesterAlly12,this.icoTesterAlly13,this.icoTesterAlly14];
+      }
+      
+      protected function getBackTestersEnemy() : Vector.<BattleAtlasSprite>
+      {
+         return new <BattleAtlasSprite>[this.testerBack_c2r1,this.testerBack_c2r2,this.testerBack_c2r3,this.testerBack_c2r4,this.testerBack_c2r5,this.testerBack_c2r6,this.testerBack_c2r7,this.testerBack_c2r8,this.testerBack_c2r9,this.testerBack_c2r10,this.testerBack_c2r11,this.testerBack_c2r12,this.testerBack_c2r13,this.testerBack_c2r14,this.testerBack_c2r15];
+      }
+      
+      protected function getBackTestersAlly() : Vector.<BattleAtlasSprite>
+      {
+         return new <BattleAtlasSprite>[this.testerBack_c1r1,this.testerBack_c1r2,this.testerBack_c1r3,this.testerBack_c1r4,this.testerBack_c1r5,this.testerBack_c1r6,this.testerBack_c1r7,this.testerBack_c1r8,this.testerBack_c1r9,this.testerBack_c1r10,this.testerBack_c1r11,this.testerBack_c1r12,this.testerBack_c1r13,this.testerBack_c1r14,this.testerBack_c1r15];
+      }
+      
+      protected function getTextFieldsAlly() : Vector.<TextField>
+      {
+         return new <TextField>[this.textFieldAlly0,this.textFieldAlly1,this.textFieldAlly2,this.textFieldAlly3,this.textFieldAlly4,this.textFieldAlly5,this.textFieldAlly6,this.textFieldAlly7,this.textFieldAlly8,this.textFieldAlly9,this.textFieldAlly10,this.textFieldAlly11,this.textFieldAlly12,this.textFieldAlly13,this.textFieldAlly14];
+      }
+      
+      protected function getVehicleFieldsAlly() : Vector.<TextField>
+      {
+         return new <TextField>[this.vehicleFieldAlly0,this.vehicleFieldAlly1,this.vehicleFieldAlly2,this.vehicleFieldAlly3,this.vehicleFieldAlly4,this.vehicleFieldAlly5,this.vehicleFieldAlly6,this.vehicleFieldAlly7,this.vehicleFieldAlly8,this.vehicleFieldAlly9,this.vehicleFieldAlly10,this.vehicleFieldAlly11,this.vehicleFieldAlly12,this.vehicleFieldAlly13,this.vehicleFieldAlly14];
+      }
+      
+      protected function getPlayerActionMarkersAlly() : Vector.<PlayerActionMarker>
+      {
+         return new <PlayerActionMarker>[this.playerActionMarkerAlly0,this.playerActionMarkerAlly1,this.playerActionMarkerAlly2,this.playerActionMarkerAlly3,this.playerActionMarkerAlly4,this.playerActionMarkerAlly5,this.playerActionMarkerAlly6,this.playerActionMarkerAlly7,this.playerActionMarkerAlly8,this.playerActionMarkerAlly9,this.playerActionMarkerAlly10,this.playerActionMarkerAlly11,this.playerActionMarkerAlly12,this.playerActionMarkerAlly13,this.playerActionMarkerAlly14];
+      }
+      
+      protected function getVehicleTypeIconsAlly() : Vector.<BattleAtlasSprite>
+      {
+         return new <BattleAtlasSprite>[this.vehicleTypeIconAlly0,this.vehicleTypeIconAlly1,this.vehicleTypeIconAlly2,this.vehicleTypeIconAlly3,this.vehicleTypeIconAlly4,this.vehicleTypeIconAlly5,this.vehicleTypeIconAlly6,this.vehicleTypeIconAlly7,this.vehicleTypeIconAlly8,this.vehicleTypeIconAlly9,this.vehicleTypeIconAlly10,this.vehicleTypeIconAlly11,this.vehicleTypeIconAlly12,this.vehicleTypeIconAlly13,this.vehicleTypeIconAlly14];
+      }
+      
+      protected function getVehicleLevelIconsAlly() : Vector.<BattleAtlasSprite>
+      {
+         return new <BattleAtlasSprite>[this.vehicleLevelIconAlly0,this.vehicleLevelIconAlly1,this.vehicleLevelIconAlly2,this.vehicleLevelIconAlly3,this.vehicleLevelIconAlly4,this.vehicleLevelIconAlly5,this.vehicleLevelIconAlly6,this.vehicleLevelIconAlly7,this.vehicleLevelIconAlly8,this.vehicleLevelIconAlly9,this.vehicleLevelIconAlly10,this.vehicleLevelIconAlly11,this.vehicleLevelIconAlly12,this.vehicleLevelIconAlly13,this.vehicleLevelIconAlly14];
+      }
+      
+      protected function getVehicleIconsAlly() : Vector.<BattleAtlasSprite>
+      {
+         return new <BattleAtlasSprite>[this.vehicleIconAlly0,this.vehicleIconAlly1,this.vehicleIconAlly2,this.vehicleIconAlly3,this.vehicleIconAlly4,this.vehicleIconAlly5,this.vehicleIconAlly6,this.vehicleIconAlly7,this.vehicleIconAlly8,this.vehicleIconAlly9,this.vehicleIconAlly10,this.vehicleIconAlly11,this.vehicleIconAlly12,this.vehicleIconAlly13,this.vehicleIconAlly14];
+      }
+      
+      protected function getIcoIGRsAlly() : Vector.<BattleAtlasSprite>
+      {
+         return new <BattleAtlasSprite>[this.icoIGRAlly0,this.icoIGRAlly1,this.icoIGRAlly2,this.icoIGRAlly3,this.icoIGRAlly4,this.icoIGRAlly5,this.icoIGRAlly6,this.icoIGRAlly7,this.icoIGRAlly8,this.icoIGRAlly9,this.icoIGRAlly10,this.icoIGRAlly11,this.icoIGRAlly12,this.icoIGRAlly13,this.icoIGRAlly14];
+      }
+      
+      protected function getSelfBgs() : Vector.<BattleAtlasSprite>
+      {
+         return new <BattleAtlasSprite>[this.selfBgAlly0,this.selfBgAlly1,this.selfBgAlly2,this.selfBgAlly3,this.selfBgAlly4,this.selfBgAlly5,this.selfBgAlly6,this.selfBgAlly7,this.selfBgAlly8,this.selfBgAlly9,this.selfBgAlly10,this.selfBgAlly11,this.selfBgAlly12,this.selfBgAlly13,this.selfBgAlly14];
+      }
+      
+      protected function getTextFieldsEnemy() : Vector.<TextField>
+      {
+         return new <TextField>[this.textFieldEnemy0,this.textFieldEnemy1,this.textFieldEnemy2,this.textFieldEnemy3,this.textFieldEnemy4,this.textFieldEnemy5,this.textFieldEnemy6,this.textFieldEnemy7,this.textFieldEnemy8,this.textFieldEnemy9,this.textFieldEnemy10,this.textFieldEnemy11,this.textFieldEnemy12,this.textFieldEnemy13,this.textFieldEnemy14];
+      }
+      
+      protected function getVehicleFieldsEnemy() : Vector.<TextField>
+      {
+         return new <TextField>[this.vehicleFieldEnemy0,this.vehicleFieldEnemy1,this.vehicleFieldEnemy2,this.vehicleFieldEnemy3,this.vehicleFieldEnemy4,this.vehicleFieldEnemy5,this.vehicleFieldEnemy6,this.vehicleFieldEnemy7,this.vehicleFieldEnemy8,this.vehicleFieldEnemy9,this.vehicleFieldEnemy10,this.vehicleFieldEnemy11,this.vehicleFieldEnemy12,this.vehicleFieldEnemy13,this.vehicleFieldEnemy14];
+      }
+      
+      protected function getPlayerActionMarkersEnemy() : Vector.<PlayerActionMarker>
+      {
+         return new <PlayerActionMarker>[this.playerActionMarkerEnemy0,this.playerActionMarkerEnemy1,this.playerActionMarkerEnemy2,this.playerActionMarkerEnemy3,this.playerActionMarkerEnemy4,this.playerActionMarkerEnemy5,this.playerActionMarkerEnemy6,this.playerActionMarkerEnemy7,this.playerActionMarkerEnemy8,this.playerActionMarkerEnemy9,this.playerActionMarkerEnemy10,this.playerActionMarkerEnemy11,this.playerActionMarkerEnemy12,this.playerActionMarkerEnemy13,this.playerActionMarkerEnemy14];
+      }
+      
+      protected function getVehicleTypeIconsEnemy() : Vector.<BattleAtlasSprite>
+      {
+         return new <BattleAtlasSprite>[this.vehicleTypeIconEnemy0,this.vehicleTypeIconEnemy1,this.vehicleTypeIconEnemy2,this.vehicleTypeIconEnemy3,this.vehicleTypeIconEnemy4,this.vehicleTypeIconEnemy5,this.vehicleTypeIconEnemy6,this.vehicleTypeIconEnemy7,this.vehicleTypeIconEnemy8,this.vehicleTypeIconEnemy9,this.vehicleTypeIconEnemy10,this.vehicleTypeIconEnemy11,this.vehicleTypeIconEnemy12,this.vehicleTypeIconEnemy13,this.vehicleTypeIconEnemy14];
+      }
+      
+      protected function getVehicleLevelIconsEnemy() : Vector.<BattleAtlasSprite>
+      {
+         return new <BattleAtlasSprite>[this.vehicleLevelIconEnemy0,this.vehicleLevelIconEnemy1,this.vehicleLevelIconEnemy2,this.vehicleLevelIconEnemy3,this.vehicleLevelIconEnemy4,this.vehicleLevelIconEnemy5,this.vehicleLevelIconEnemy6,this.vehicleLevelIconEnemy7,this.vehicleLevelIconEnemy8,this.vehicleLevelIconEnemy9,this.vehicleLevelIconEnemy10,this.vehicleLevelIconEnemy11,this.vehicleLevelIconEnemy12,this.vehicleLevelIconEnemy13,this.vehicleLevelIconEnemy14];
+      }
+      
+      protected function getVehicleIconsEnemy() : Vector.<BattleAtlasSprite>
+      {
+         return new <BattleAtlasSprite>[this.vehicleIconEnemy0,this.vehicleIconEnemy1,this.vehicleIconEnemy2,this.vehicleIconEnemy3,this.vehicleIconEnemy4,this.vehicleIconEnemy5,this.vehicleIconEnemy6,this.vehicleIconEnemy7,this.vehicleIconEnemy8,this.vehicleIconEnemy9,this.vehicleIconEnemy10,this.vehicleIconEnemy11,this.vehicleIconEnemy12,this.vehicleIconEnemy13,this.vehicleIconEnemy14];
+      }
+      
+      protected function getIcoIGRsEnemy() : Vector.<BattleAtlasSprite>
+      {
+         return new <BattleAtlasSprite>[this.icoIGREnemy0,this.icoIGREnemy1,this.icoIGREnemy2,this.icoIGREnemy3,this.icoIGREnemy4,this.icoIGREnemy5,this.icoIGREnemy6,this.icoIGREnemy7,this.icoIGREnemy8,this.icoIGREnemy9,this.icoIGREnemy10,this.icoIGREnemy11,this.icoIGREnemy12,this.icoIGREnemy13,this.icoIGREnemy14];
+      }
+      
+      protected function getBadgesAlly() : Vector.<BadgeComponent>
+      {
+         return new <BadgeComponent>[this.badgeAlly0,this.badgeAlly1,this.badgeAlly2,this.badgeAlly3,this.badgeAlly4,this.badgeAlly5,this.badgeAlly6,this.badgeAlly7,this.badgeAlly8,this.badgeAlly9,this.badgeAlly10,this.badgeAlly11,this.badgeAlly12,this.badgeAlly13,this.badgeAlly14];
+      }
+      
+      protected function getBadgesEnemy() : Vector.<BadgeComponent>
+      {
+         return new <BadgeComponent>[this.badgeEnemy0,this.badgeEnemy1,this.badgeEnemy2,this.badgeEnemy3,this.badgeEnemy4,this.badgeEnemy5,this.badgeEnemy6,this.badgeEnemy7,this.badgeEnemy8,this.badgeEnemy9,this.badgeEnemy10,this.badgeEnemy11,this.badgeEnemy12,this.badgeEnemy13,this.badgeEnemy14];
       }
    }
 }

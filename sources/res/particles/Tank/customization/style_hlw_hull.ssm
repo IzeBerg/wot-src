@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>isDeferred</name>
+			<type>bool</type>
+		</param>
+	</params>
+	<node>
+		<name>Sleep Node</name>
+		<type>sleep</type>
+		<time>1.000000 1.000000</time>
+		<transition>
+			<to>hull_fwd</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>bool</type>
+					<name>isDeferred</name>
+					<checked>false</checked>
+				</condition>
+			</conditions>
+		</transition>
+		<transition>
+			<to>hull</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>bool</type>
+					<name>isDeferred</name>
+					<checked>true</checked>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-63.000000 -67.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>hull_fwd</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/style_hlw_headlight_hull_fwd.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>1</loop>
+		<uiPosition>-386.000000 111.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>hull</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/style_hlw_headlight_hull.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>1</loop>
+		<uiPosition>-10.000000 89.000000 0.000000</uiPosition>
+	</node>
+</root>

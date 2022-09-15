@@ -4,6 +4,7 @@ from account_helpers.AccountSettings import NATION_CHANGE_VIEWED, AccountSetting
 from frameworks.wulf import ViewSettings
 from frameworks.wulf import ViewStatus
 from gui import SystemMessages
+from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from gui.impl import backport
 from gui.impl.backport.backport_tooltip import TooltipData, BackportTooltipWindow
@@ -271,6 +272,7 @@ class NationChangeScreen(ViewImpl):
 
     def __addListeners(self):
         self.__lobbyContext.getServerSettings().onServerSettingsChange += self.__onServerSettingsChange
+        g_clientUpdateManager.addCallbacks({'inventory.1.compDescr': self.__onVehiclesInInventoryUpdate})
         self.viewModel.onCloseBtnClick += self.__onWindowClose
         self.viewModel.onSwitchBtnClick += self.__onSwitchBtnClick
         self.viewModel.onCancelBtnClick += self.__onCancelBtnClick
@@ -283,6 +285,7 @@ class NationChangeScreen(ViewImpl):
         self.viewModel.onCancelBtnClick -= self.__onCancelBtnClick
         self.viewModel.onHangarBtnClick -= self.__onHangarBtnClick
         self.viewModel.onDogClick -= self.__onDogClick
+        g_clientUpdateManager.removeCallback('inventory.1.compDescr', self.__onVehiclesInInventoryUpdate)
         self.__lobbyContext.getServerSettings().onServerSettingsChange -= self.__onServerSettingsChange
 
     @serverSettingsChangeListener('isNationChangeEnabled', SERVER_SETTINGS_KEY)
@@ -293,6 +296,11 @@ class NationChangeScreen(ViewImpl):
         with self.viewModel.transaction() as (vm):
             self.__updateTankSlot(vm.currentNation, self.__currentVehicle)
             self.__updateTankSlot(vm.targetNation, self.__targetVehicle)
+
+    def __onVehiclesInInventoryUpdate(self, diff):
+        if self.__currentVehicle.invID in diff and diff[self.__currentVehicle.invID] is None:
+            self.__onWindowClose()
+        return
 
     def __onWindowClose(self):
         if g_currentVehicle.item == self.__currentVehicle and not self.__itemsCache.items.getItemByCD(self.__currentVehicle.intCD).activeInNationGroup:
@@ -306,7 +314,7 @@ class NationChangeScreen(ViewImpl):
     def __onDogClick(self):
         SoundGroups.g_instance.playSound2D(self._DOG_SOUND)
 
-    @decorators.process('updating')
+    @decorators.adisp_process('updating')
     def __onSwitchBtnClick(self):
         processor = VehicleChangeNation(self.__currentVehicle, self.__targetVehicle)
         result = yield processor.request()

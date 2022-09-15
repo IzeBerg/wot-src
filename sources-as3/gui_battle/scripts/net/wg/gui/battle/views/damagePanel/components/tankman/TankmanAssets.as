@@ -25,7 +25,7 @@ package net.wg.gui.battle.views.damagePanel.components.tankman
       
       private static const STUN_ARROW_LINKAGE:String = "StunArrowUI";
       
-      private static const INSPIRE_ARROW_LINKAGE:String = "InspireArrowUI";
+      private static const BUFF_ARROW_LINKAGE:String = "BuffArrowUI";
       
       private static const X_STUN_OFFSET:int = 16;
       
@@ -33,7 +33,7 @@ package net.wg.gui.battle.views.damagePanel.components.tankman
       
       private static const STUN_STATUS_ID:int = 0;
       
-      private static const INSPIRE_STATUS_ID:int = 1;
+      private static const BUFF_STATUS_ID:int = 1;
        
       
       private var _critical:Bitmap;
@@ -42,7 +42,7 @@ package net.wg.gui.battle.views.damagePanel.components.tankman
       
       private var _stunIndicator:StunArrow;
       
-      private var _inspireIndicator:StatusArrow;
+      private var _buffIndicator:StatusArrow;
       
       private var _statusAnimationTimeoutID:int = -1;
       
@@ -70,7 +70,7 @@ package net.wg.gui.battle.views.damagePanel.components.tankman
          this._critical = new Bitmap(new _loc8_());
          this._tankmanHit = new DamagePanelItemClickArea(param1,this._critical.width,this._critical.height,TANKMAN_HIT_AREA_PADDING);
          this._stunIndicator = App.utils.classFactory.getComponent(STUN_ARROW_LINKAGE,StunArrow);
-         this._inspireIndicator = App.utils.classFactory.getComponent(INSPIRE_ARROW_LINKAGE,StatusArrow);
+         this._buffIndicator = App.utils.classFactory.getComponent(BUFF_ARROW_LINKAGE,StatusArrow);
          var _loc9_:int = (DamagePanel.PANEL_WIDTH - param5 * X_STEP >> 1) + X_OFFSET;
          var _loc10_:int = _loc9_ + X_STEP * param4;
          var _loc11_:int = Y_POS;
@@ -79,8 +79,8 @@ package net.wg.gui.battle.views.damagePanel.components.tankman
          this._tankmanHit.y = this._critical.y = this._normal.y = _loc11_;
          this._stunIndicator.x = this._tankmanHit.x + X_STUN_OFFSET;
          this._stunIndicator.y = this._tankmanHit.y + Y_STUN_OFFSET;
-         this._inspireIndicator.x = this._tankmanHit.x + X_STUN_OFFSET;
-         this._inspireIndicator.y = this._tankmanHit.y + Y_STUN_OFFSET;
+         this._buffIndicator.x = this._tankmanHit.x + X_STUN_OFFSET;
+         this._buffIndicator.y = this._tankmanHit.y + Y_STUN_OFFSET;
          this._tankmanHit.visible = false;
       }
       
@@ -89,8 +89,8 @@ package net.wg.gui.battle.views.damagePanel.components.tankman
          this.clearStunAnimationTimeout();
          this._stunIndicator.dispose();
          this._stunIndicator = null;
-         this._inspireIndicator.dispose();
-         this._inspireIndicator = null;
+         this._buffIndicator.dispose();
+         this._buffIndicator = null;
          this._tankmanHit.dispose();
          this._tankmanHit = null;
          this._critical.bitmapData.dispose();
@@ -102,7 +102,7 @@ package net.wg.gui.battle.views.damagePanel.components.tankman
       
       public function getDisplayItems() : Vector.<DisplayObject>
       {
-         return new <DisplayObject>[this._critical,this._normal,this._stunIndicator,this._inspireIndicator];
+         return new <DisplayObject>[this._critical,this._normal,this._stunIndicator,this._buffIndicator];
       }
       
       public function showDestroyed() : void
@@ -110,7 +110,7 @@ package net.wg.gui.battle.views.damagePanel.components.tankman
          this._critical.visible = true;
          this._normal.visible = false;
          this._stunIndicator.visible = false;
-         this._inspireIndicator.visible = false;
+         this._buffIndicator.visible = false;
       }
       
       public function get state() : String
@@ -168,13 +168,13 @@ package net.wg.gui.battle.views.damagePanel.components.tankman
          {
             if(this._isOtherStatusActive)
             {
-               this._inspireIndicator.hideStatus();
+               this._buffIndicator.hideStatus();
             }
             this._stunIndicator.showStun(param2);
          }
-         else if(param1 == INSPIRE_STATUS_ID && this._activeStatusID != STUN_STATUS_ID)
+         else if(param1 == BUFF_STATUS_ID && this._activeStatusID != STUN_STATUS_ID)
          {
-            this._inspireIndicator.showStatus(param2);
+            this._buffIndicator.showStatus(param2);
          }
       }
       
@@ -190,8 +190,8 @@ package net.wg.gui.battle.views.damagePanel.components.tankman
             this._stunIndicator.hideStun(param2);
             if(this._isOtherStatusActive)
             {
-               this._inspireIndicator.showStatus(false);
-               this._activeStatusID = INSPIRE_STATUS_ID;
+               this._buffIndicator.showStatus(false);
+               this._activeStatusID = BUFF_STATUS_ID;
             }
             else
             {
@@ -200,7 +200,7 @@ package net.wg.gui.battle.views.damagePanel.components.tankman
          }
          else
          {
-            this._inspireIndicator.hideStatus();
+            this._buffIndicator.hideStatus();
             this._activeStatusID = Values.DEFAULT_INT;
          }
          this._animInProgress = false;

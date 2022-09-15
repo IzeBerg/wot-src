@@ -22,6 +22,8 @@ package net.wg.data.constants
       public static const TWO_DOTS:String = "..";
       
       public static const THREE_DOTS:String = "...";
+      
+      public static const PLUS:String = "+";
        
       
       public function Values()

@@ -130,6 +130,10 @@ def getBuyRenewableSubscriptionUrl():
     return _getUrl('buyRenewableSubscription')
 
 
+def getIntegratedAuctionUrl():
+    return _getUrl('integratedAuction')
+
+
 def getClientControlledCloseCtx():
     return {'browserParams': makeBrowserParams(isCloseBtnVisible=True), 
        'forcedSkipEscape': True}

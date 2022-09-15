@@ -1,5 +1,5 @@
 import BigWorld, ResMgr
-from adisp import async
+from adisp import adisp_async
 from debug_utils import LOG_WARNING, LOG_ERROR
 from gui.shared.utils import mapTextureToTheMemory, getImageSize, removeTextureFromMemory
 
@@ -58,7 +58,7 @@ class ImagesFetchCoordinator(object):
         for url, imageID in self.__texturesCache.iteritems():
             LOG_ERROR(('Image "{}" was not removed from memory (id={}). Perhaps, forgot to call "fini"').format(url, imageID))
 
-    @async
+    @adisp_async
     def fetchImageByUrl(self, url, oneUse=True, callback=None):
         if self.__isDying:
             callback(None)

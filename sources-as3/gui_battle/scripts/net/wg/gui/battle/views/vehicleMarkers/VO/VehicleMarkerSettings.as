@@ -32,6 +32,14 @@ package net.wg.gui.battle.views.vehicleMarkers.VO
       
       public var markerAltPlayerName:Boolean = true;
       
+      public var markerBaseRoleSkillLevel:Boolean = false;
+      
+      public var markerBaseRoleName:Boolean = false;
+      
+      public var markerAltRoleSkillLevel:Boolean = false;
+      
+      public var markerAltRoleName:Boolean = false;
+      
       public function VehicleMarkerSettings()
       {
          super();

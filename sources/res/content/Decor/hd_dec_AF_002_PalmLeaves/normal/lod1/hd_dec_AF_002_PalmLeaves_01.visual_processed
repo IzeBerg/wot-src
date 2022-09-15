@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<property>
+						diffuseMap
+						<Texture>content/Decor/hd_dec_AF_002_PalmLeaves/hd_dec_AF_002_PalmLeaves_AM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>108</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/Decor/hd_dec_AF_002_PalmLeaves/hd_dec_AF_002_PalmLeaves_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Decor/hd_dec_AF_002_PalmLeaves/hd_dec_AF_002_PalmLeaves_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.087743 0.051873 0.501407</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.361687 -0.000000 0.000000</min>
+		<max>0.361687 0.098926 1.002815</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>1692</geometrySize>
+	<minUVDensity>1.025705</minUVDensity>
+</root>

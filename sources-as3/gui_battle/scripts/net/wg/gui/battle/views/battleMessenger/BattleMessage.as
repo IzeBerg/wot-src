@@ -37,19 +37,19 @@ package net.wg.gui.battle.views.battleMessenger
       
       public static const RED_TEXT_COLOR:int = 14753553;
       
-      public static const RECOVERED_MES:int = 0;
+      public static const STATE_RECOVERED_MES:int = 0;
       
-      public static const HIDEHALF_MES:int = 1;
+      public static const STATE_HIDEHALF_MES:int = 1;
       
-      public static const HIDDEN_MES:int = 2;
+      public static const STATE_HIDDEN_MES:int = 2;
       
-      public static const FADE_IN_MES:int = 3;
+      public static const STATE_FADE_IN_MES:int = 3;
       
-      public static const FADE_OUT_MES:int = 4;
+      public static const STATE_FADE_OUT_MES:int = 4;
       
-      public static const VISIBLE_MES:int = 5;
+      public static const STATE_VISIBLE_MES:int = 5;
       
-      public static const VISIBLE_WHEEL_MES:int = 6;
+      public static const STATE_VISIBLE_WHEEL_MES:int = 6;
       
       public static const TEXT_RIGHT_PADDING:int = 40;
       
@@ -65,8 +65,6 @@ package net.wg.gui.battle.views.battleMessenger
       
       public static const TEXT_OFFSET_X:int = 5;
       
-      public static const TEXT_OFFSET_Y:int = 2;
-      
       public static const RECT_X:int = 6;
       
       public static const RECT_Y:int = 9;
@@ -80,8 +78,6 @@ package net.wg.gui.battle.views.battleMessenger
       public static const PLAYER_RED_MESSAGE_LEFT_RENDERER:String = "PlayerRedMessageLeftRenderer";
       
       private static const INVALID_MESSAGE_VISIBILITY:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 1;
-      
-      private static const INVALID_MESSAGES_SIZE:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 4;
       
       private static const USER_INTERACTION_TIMER_BY_MILLISECONDS:int = 100;
       
@@ -140,7 +136,7 @@ package net.wg.gui.battle.views.battleMessenger
       
       private var _availableWidth:int = 360;
       
-      public function BattleMessage(param1:int, param2:int, param3:Number, param4:Number, param5:int, param6:Function, param7:Function = null)
+      public function BattleMessage(param1:int, param2:int, param3:Number, param4:Number, param5:int, param6:Function, param7:Function = null, param8:int = 360)
       {
          this.messageField = new TextField();
          this.background = new Sprite();
@@ -154,6 +150,7 @@ package net.wg.gui.battle.views.battleMessenger
          this._lastMessageAlpha = param3;
          this._recoveredLatestMessagesAlpha = param4;
          this._recoveredMessagesLifeTime = param5;
+         this.validateAndSetAvailableWidth(param8);
          this.fadeTime = param2;
          this._textFormat.font = Fonts.FIELD_FONT;
          this._textFormat.size = DEFAULT_TEXT_SIZE;
@@ -172,10 +169,6 @@ package net.wg.gui.battle.views.battleMessenger
          if(isInvalid(INVALID_MESSAGE_VISIBILITY))
          {
             this.applyState();
-         }
-         if(isInvalid(INVALID_MESSAGES_SIZE))
-         {
-            this.updateMessageSize();
          }
       }
       
@@ -217,27 +210,20 @@ package net.wg.gui.battle.views.battleMessenger
          this._isBlockedMessage = false;
          this.messageField.multiline = this.messageField.wordWrap = true;
          this.updateData(this._messageText);
-         this.messageField.y = this.background.y + DEFAULT_MESSAGE_Y_PADDING;
+         this.setMessageFieldY();
       }
       
       public function setAvailableWidth(param1:int) : void
       {
-         if(param1 > DEFAULT_TEXT_WIDTH)
-         {
-            this._availableWidth = DEFAULT_TEXT_WIDTH;
-         }
-         else
-         {
-            this._availableWidth = param1 < SMALL_TEXT_WIDTH ? int(SMALL_TEXT_WIDTH) : int(param1);
-         }
-         invalidate(INVALID_MESSAGES_SIZE);
+         this.validateAndSetAvailableWidth(param1);
+         this.updateMessageSize();
       }
       
       public function setBlockMessage(param1:String) : void
       {
          this._isBlockedMessage = true;
          this.messageField.multiline = this.messageField.wordWrap = false;
-         this.updateData(param1,true,false);
+         this.updateData(param1);
          this.setYPositionByCenter();
       }
       
@@ -274,10 +260,22 @@ package net.wg.gui.battle.views.battleMessenger
       
       public function show(param1:Boolean) : void
       {
-         this.setState(FADE_IN_MES,true);
+         this.setState(STATE_FADE_IN_MES,true);
          if(param1 && this._lifeTime > 0)
          {
             this.setWaitingAutoHideTime(this._lifeTime);
+         }
+      }
+      
+      private function validateAndSetAvailableWidth(param1:int) : void
+      {
+         if(param1 > DEFAULT_TEXT_WIDTH)
+         {
+            this._availableWidth = DEFAULT_TEXT_WIDTH;
+         }
+         else
+         {
+            this._availableWidth = param1 < SMALL_TEXT_WIDTH ? int(SMALL_TEXT_WIDTH) : int(param1);
          }
       }
       
@@ -285,83 +283,58 @@ package net.wg.gui.battle.views.battleMessenger
       {
          switch(this._currentStateId)
          {
-            case VISIBLE_MES:
+            case STATE_VISIBLE_MES:
                this.updateMessageElements(Values.DEFAULT_ALPHA,true);
                this.backgroundAddListeners(true);
                break;
-            case VISIBLE_WHEEL_MES:
+            case STATE_VISIBLE_WHEEL_MES:
                this.updateMessageElements(Values.DEFAULT_ALPHA,true);
                this.backgroundAddListeners();
                break;
-            case RECOVERED_MES:
+            case STATE_RECOVERED_MES:
                this.backgroundRemoveListeners();
                this.updateMessageElements(this._recoveredLatestMessagesAlpha,true);
                break;
-            case HIDEHALF_MES:
+            case STATE_HIDEHALF_MES:
                this.updateMessageElements(this._lastMessageAlpha,true);
                this.backgroundAddListeners();
                break;
-            case FADE_OUT_MES:
+            case STATE_FADE_OUT_MES:
                this.clearAnim();
                this.onEndLifeHandler();
                break;
-            case HIDDEN_MES:
-               this.hideMes();
+            case STATE_HIDDEN_MES:
+               this.clearAnim();
+               this.updateMessageElements(this._recoveredLatestMessagesAlpha,false);
                break;
-            case FADE_IN_MES:
+            case STATE_FADE_IN_MES:
                this.clearAnim();
                this.updateMessageElements(0,true);
                this._scheduler.scheduleRepeatableTask(this.fadeInAnimation,ANIM_SHOW_INTERVAL,ANIM_SHOW_STEPS);
          }
       }
       
-      private function hideMes() : void
-      {
-         this.clearAnim();
-         this.updateMessageElements(this._recoveredLatestMessagesAlpha,false);
-      }
-      
       private function updateMessageSize() : void
       {
          this.messageField.width = this._availableWidth;
          this.messageField.height = this.messageField.textHeight + TEXT_HEIGHT_OFFSET | 0;
-         App.utils.commons.updateTextFieldSize(this.messageField,true,false);
-         this.background.width = this.messageField.textWidth + TEXT_RIGHT_PADDING | 0;
+         this.background.width = this.getMessageFieldTextWidthWithPadding();
          if(this.isOpenedToxicPanel)
          {
             this.background.width += ADDITIONAL_TF_PADDING;
          }
-         this.background.height = this.getBackgroundHeight();
+         this.background.height = this.messageField.height + TEXT_BOTTOM_PADDING | 0;
       }
       
       private function setYPositionByCenter() : void
       {
-         this.messageField.y = this.background.y + (this.background.height - this.messageField.height >> 1);
+         this.messageField.y = this.background.y + (this.height - this.messageField.height >> 1);
       }
       
-      private function updateData(param1:String, param2:Boolean = true, param3:Boolean = true) : void
+      private function updateData(param1:String) : void
       {
-         this.messageField.width = this._availableWidth;
          this.messageField.htmlText = param1;
-         App.utils.commons.updateTextFieldSize(this.messageField,true,false);
-         this.messageField.height = Math.ceil(this.messageField.textHeight) + TEXT_HEIGHT_OFFSET | 0;
-         if(param2)
-         {
-            this.background.width = this.messageField.textWidth + TEXT_RIGHT_PADDING | 0;
-            if(this.isOpenedToxicPanel)
-            {
-               this.background.width += ADDITIONAL_TF_PADDING;
-            }
-         }
-         if(param3)
-         {
-            this.background.height = this.getBackgroundHeight();
-         }
-      }
-      
-      private function getBackgroundHeight() : Number
-      {
-         return this.messageField.height + TEXT_BOTTOM_PADDING | 0;
+         this.updateMessageSize();
       }
       
       private function updateMessageElements(param1:Number, param2:Boolean) : void
@@ -398,7 +371,7 @@ package net.wg.gui.battle.views.battleMessenger
             if(this._userInteractionCallback(true,this.mouseOut,this.messageID,this.y,this.width,this.height))
             {
                this.messageField.x = this._x + TEXT_OFFSET_X + ADDITIONAL_TF_PADDING;
-               this.background.width = this.messageField.textWidth + TEXT_RIGHT_PADDING + ADDITIONAL_TF_PADDING | 0;
+               this.background.width = this.getMessageFieldTextWidthWithPadding() + ADDITIONAL_TF_PADDING | 0;
             }
             this.backgroundRemoveListeners();
          }
@@ -409,11 +382,16 @@ package net.wg.gui.battle.views.battleMessenger
       {
          this.isOpenedToxicPanel = false;
          this.messageField.x = this._x + TEXT_OFFSET_X;
-         this.background.width = this.messageField.textWidth + TEXT_RIGHT_PADDING | 0;
-         if(this._currentStateId != RECOVERED_MES)
+         this.background.width = this.getMessageFieldTextWidthWithPadding();
+         if(this._currentStateId != STATE_RECOVERED_MES)
          {
             this.backgroundAddListeners();
          }
+      }
+      
+      private function getMessageFieldTextWidthWithPadding() : int
+      {
+         return this.messageField.textWidth + TEXT_RIGHT_PADDING;
       }
       
       private function updateTextFieldProperties(param1:String) : void
@@ -439,7 +417,7 @@ package net.wg.gui.battle.views.battleMessenger
          this.messageField.alpha = this.background.alpha;
          if(this.background.alpha >= 1)
          {
-            this.setState(VISIBLE_MES);
+            this.setState(STATE_VISIBLE_MES);
             this._scheduler.cancelTask(this.fadeInAnimation);
          }
       }
@@ -447,7 +425,7 @@ package net.wg.gui.battle.views.battleMessenger
       private function onEndLifeHandler() : void
       {
          var _loc1_:Number = NaN;
-         this._currentStateId = FADE_OUT_MES;
+         this._currentStateId = STATE_FADE_OUT_MES;
          this._isWaitingAutoHide = false;
          if(this._fadeTime > 0)
          {
@@ -459,7 +437,7 @@ package net.wg.gui.battle.views.battleMessenger
          else
          {
             this.clearAnim();
-            this.setState(HIDDEN_MES);
+            this.setState(STATE_HIDDEN_MES);
          }
       }
       
@@ -479,7 +457,7 @@ package net.wg.gui.battle.views.battleMessenger
          if(_loc2_ <= 0)
          {
             this.clearAnim();
-            this.setState(HIDDEN_MES);
+            this.setState(STATE_HIDDEN_MES);
          }
          else
          {
@@ -495,6 +473,11 @@ package net.wg.gui.battle.views.battleMessenger
          }
          this._isWaitingAutoHide = true;
          this._scheduler.scheduleTask(this.onEndLifeHandler,param1);
+      }
+      
+      private function setMessageFieldY() : void
+      {
+         this.messageField.y = this.background.y + DEFAULT_MESSAGE_Y_PADDING | 0;
       }
       
       public function get alpha() : Number
@@ -534,7 +517,7 @@ package net.wg.gui.battle.views.battleMessenger
             }
             else
             {
-               this.messageField.y = this._y + TEXT_OFFSET_Y;
+               this.setMessageFieldY();
             }
          }
       }

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>SU11_IL2_2_base</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>SU11_IL2_2_base_ropeller_plane</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>SU11_IL2_2_base_ropeller_plane</node>
+		<geometry>
+			<vertices>SU11_IL2_2_base_ropeller_plane.vertices</vertices>
+			<primitive>SU11_IL2_2_base_ropeller_plane.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>propeller_mat</identifier>
+					<fx>shaders/std_effects/lightonly_alpha.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						diffuseMap
+						<Texture>particles/mesh_particles/tex/propeller_01.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.000000 1.633968</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>SU11_IL2_2_base</node>
+		<geometry>
+			<vertices>SU11_IL2_2_base1Shape.vertices</vertices>
+			<primitive>SU11_IL2_2_base1Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>plane_mat_lod1</identifier>
+					<fx>shaders/std_effects/lightonly.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>particles/mesh_particles/tex/SU11_IL2_2_AM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.004128 0.646316 -3.488064</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-7.285693 -1.456456 -9.257218</min>
+		<max>7.277436 2.116760 2.281091</max>
+	</boundingBox>
+	<geometrySize>37166</geometrySize>
+	<minUVDensity>0.001935</minUVDensity>
+</root>

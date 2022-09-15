@@ -1,7 +1,7 @@
 import WWISE, BigWorld, BattleReplay, Windowing
 from PlayerEvents import g_playerEvents
 from bootcamp.Bootcamp import BOOTCAMP_SOUND, BOOTCAMP_UI_COMPONENTS
-from constants import WOT_GAMEPLAY
+from constants import WOT_GAMEPLAY, BootcampVersion
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.meta.BCIntroVideoPageMeta import BCIntroVideoPageMeta
 from gui.Scaleform.Waiting import Waiting
@@ -142,6 +142,7 @@ class BCIntroPage(BCIntroVideoPageMeta):
 
         pageCount = len(listSmall)
         label = BOOTCAMP.BTN_TUTORIAL_START if self._showSkipOption and self._lessonNumber == 0 else BOOTCAMP.BTN_CONTINUE_PREBATTLE
+        isShort = self.bootcampCtrl.version == BootcampVersion.SHORT
         self.as_setDataS({'isReferralEnabled': self._isReferralEnabled, 
            'isBootcampCloseEnabled': self._isReferralEnabled, 
            'referralDescription': BOOTCAMP.WELLCOME_BOOTCAMP_REFERRAL, 
@@ -157,7 +158,7 @@ class BCIntroPage(BCIntroVideoPageMeta):
            'selectButtonLabel': label, 
            'bufferTime': self._backgroundVideoBufferTime, 
            'rewards': [
-                     self._getReward(BOOTCAMP.WELLCOME_BOOTCAMP_REWARDS_TANKS, RES_ICONS.MAPS_ICONS_BOOTCAMP_REWARDS_VEHICLES_176X102, [
+                     self._getReward(BOOTCAMP.WELLCOME_BOOTCAMP_REWARDS_SHORT_TANK if isShort else BOOTCAMP.WELLCOME_BOOTCAMP_REWARDS_TANKS, RES_ICONS.MAPS_ICONS_BOOTCAMP_REWARDS_VEHICLE_176X102 if isShort else RES_ICONS.MAPS_ICONS_BOOTCAMP_REWARDS_VEHICLES_176X102, [
                       BOOTCAMP.WELLCOME_BOOTCAMP_REWARDS_TOOLTIP_TANK,
                       BOOTCAMP.TOOLTIP_PROGRESSION_DESCRIPTION_VEHICLE,
                       RES_ICONS.MAPS_ICONS_BOOTCAMP_REWARDS_TOOLTIPS_BCVEHICLESHINE, 50]),

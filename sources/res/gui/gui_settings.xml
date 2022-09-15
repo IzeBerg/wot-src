@@ -1128,6 +1128,11 @@
 				<name>psaProducts</name>
 				<type>url</type>
 			</item>
+			<item>
+				$PARAMS(/auction/auction)
+				<name>integratedAuction</name>
+				<type>url</type>
+			</item>
 		</value>
 	</setting>
 	<setting>
@@ -1818,6 +1823,43 @@
 		</value>
 	</setting>
 	<setting>
+		<name>infoPageComp7</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/Onslaught/
+				<name>NA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/Onslaught/
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/Onslaught/
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/Onslaught/
+				<name>CN</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/Onslaught/
+				<name>CT</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/Onslaught/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
 		<name>vehicleDisclaimerURLs</name>
 		<type>macros</type>
 		<macros>CURRENT_REALM</macros>
@@ -1944,6 +1986,33 @@
 			<item>
 				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/ResourceWellContentPage/
 				<name>infoPage</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>playerSubscriptionsURL</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.eu/promocontent/player-subscriptions/
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.com/promocontent/player-subscriptions/
+				<name>NA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.asia/promocontent/player-subscriptions/
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.ru/promocontent/player-subscriptions/
+				<name>default</name>
 				<type>url</type>
 			</item>
 		</value>

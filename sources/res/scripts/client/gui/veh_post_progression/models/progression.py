@@ -133,7 +133,8 @@ class PostProgressionItem(object):
 
     def getActiveModifications(self, vehicle, ignoreDisabled=False):
         if self.isExists() and (ignoreDisabled or not self.isDisabled(vehicle)):
-            return [ stepItem.action.getActiveID() for stepItem in self.iterUnorderedSteps() if stepItem.isReceived() and stepItem.action.getActiveID() is not None ]
+            return [ stepItem.action.getActiveID() for stepItem in self.iterUnorderedSteps() if stepItem.isReceived() and stepItem.action.getActiveID() is not None
+                   ]
         else:
             return []
 

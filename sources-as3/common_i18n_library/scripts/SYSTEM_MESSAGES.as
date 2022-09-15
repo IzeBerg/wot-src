@@ -403,6 +403,8 @@ package
       
       public static const CUSTOMIZATION_PROHIBITED:String = "#system_messages:customization/prohibited";
       
+      public static const CUSTOMIZATION_INVALIDVEHICLE:String = "#system_messages:customization/invalidVehicle";
+      
       public static const CUSTOMIZATION_PERSONAL_NUMBER_PROHIBITED:String = "#system_messages:customization/personal_number_prohibited";
       
       public static const CUSTOMIZATION_SERVER_ERROR:String = "#system_messages:customization/server_error";
@@ -780,6 +782,16 @@ package
       public static const ADD_TANKMAN_SKILL_VEHICLE_NEED_REPAIR:String = "#system_messages:add_tankman_skill/vehicle_need_repair";
       
       public static const ADD_TANKMAN_SKILL_VEHICLE_LOCKED:String = "#system_messages:add_tankman_skill/vehicle_locked";
+      
+      public static const LEARN_TANKMAN_FREE_SKILL_SUCCESS:String = "#system_messages:learn_tankman_free_skill/success";
+      
+      public static const LEARN_TANKMAN_FREE_SKILL_SERVER_ERROR:String = "#system_messages:learn_tankman_free_skill/server_error";
+      
+      public static const LEARN_TANKMAN_FREE_SKILL_INVALID_VEHICLE:String = "#system_messages:learn_tankman_free_skill/invalid_vehicle";
+      
+      public static const LEARN_TANKMAN_FREE_SKILL_VEHICLE_NEED_REPAIR:String = "#system_messages:learn_tankman_free_skill/vehicle_need_repair";
+      
+      public static const LEARN_TANKMAN_FREE_SKILL_VEHICLE_LOCKED:String = "#system_messages:learn_tankman_free_skill/vehicle_locked";
       
       public static const DROP_TANKMAN_SKILL_SUCCESS:String = "#system_messages:drop_tankman_skill/success";
       
@@ -1861,6 +1873,10 @@ package
       
       public static const UNIT_ERRORS_WRONG_VEHICLE:String = "#system_messages:unit/errors/WRONG_VEHICLE";
       
+      public static const UNIT_ERRORS_ACCOUNT_BANNED:String = "#system_messages:unit/errors/ACCOUNT_BANNED";
+      
+      public static const UNIT_ERRORS_NO_ARENA_VEHICLES:String = "#system_messages:unit/errors/NO_ARENA_VEHICLES";
+      
       public static const IGR_CUSTOMIZATION_BEGIN:String = "#system_messages:igr/customization/begin";
       
       public static const IGR_CUSTOMIZATION_END:String = "#system_messages:igr/customization/end";
@@ -2431,6 +2447,10 @@ package
       
       public static const BATTLEPASS_SWITCH_DISABLE_EPICBATTLE_BODY:String = "#system_messages:battlePass/switch_disable/epicBattle/body";
       
+      public static const BATTLEPASS_SWITCH_ENABLED_COMP7_BODY:String = "#system_messages:battlePass/switch_enabled/comp7/body";
+      
+      public static const BATTLEPASS_SWITCH_DISABLE_COMP7_BODY:String = "#system_messages:battlePass/switch_disable/comp7/body";
+      
       public static const UPGRADETROPHYDEVICE_SWITCH_ON_BODY:String = "#system_messages:upgradeTrophyDevice/switch_on/body";
       
       public static const UPGRADETROPHYDEVICE_SWITCH_OFF_BODY:String = "#system_messages:upgradeTrophyDevice/switch_off/body";
@@ -2458,6 +2478,8 @@ package
       public static const BATTLEPASS_GAMEMODEENABLED_BODY_27:String = "#system_messages:battlePass/gameModeEnabled/body/27";
       
       public static const BATTLEPASS_GAMEMODEENABLED_BODY_37:String = "#system_messages:battlePass/gameModeEnabled/body/37";
+      
+      public static const BATTLEPASS_GAMEMODEENABLED_BODY_43:String = "#system_messages:battlePass/gameModeEnabled/body/43";
       
       public static const BATTLEPASS_SEASONEND_TEXT:String = "#system_messages:battlePass/seasonEnd/text";
       
@@ -2522,6 +2544,14 @@ package
       public static const DOG_TAGS_SWITCH_ON_TITLE:String = "#system_messages:dog_tags/switch_on/title";
       
       public static const DOG_TAGS_SWITCH_ON_BODY:String = "#system_messages:dog_tags/switch_on/body";
+      
+      public static const PLAYER_SUBSCRIPTIONS_SWITCH_OFF_TITLE:String = "#system_messages:player_subscriptions/switch_off/title";
+      
+      public static const PLAYER_SUBSCRIPTIONS_SWITCH_OFF_BODY:String = "#system_messages:player_subscriptions/switch_off/body";
+      
+      public static const PLAYER_SUBSCRIPTIONS_SWITCH_ON_TITLE:String = "#system_messages:player_subscriptions/switch_on/title";
+      
+      public static const PLAYER_SUBSCRIPTIONS_SWITCH_ON_BODY:String = "#system_messages:player_subscriptions/switch_on/body";
       
       public static const VEHICLEPOSTPROGRESSION_RESEARCHSTEPS_TITLE:String = "#system_messages:vehiclePostProgression/researchSteps/title";
       

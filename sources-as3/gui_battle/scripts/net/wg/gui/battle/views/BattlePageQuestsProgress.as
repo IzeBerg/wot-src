@@ -32,11 +32,30 @@ package net.wg.gui.battle.views
          super();
       }
       
+      override public function as_setArtyShotIndicatorFlag(param1:Boolean) : void
+      {
+         if(param1 == this._isArtyShotIndVisible)
+         {
+            return;
+         }
+         this._isArtyShotIndVisible = param1;
+         if(this.isQuestProgress)
+         {
+            if(param1 && height < StageSizeBoundaries.HEIGHT_1080)
+            {
+               this.questProgressTopView.alpha = this.questProgressTopAnimContainer.alpha = FADED_QUESTS_PROGRESS_ALPHA;
+            }
+            else
+            {
+               this.questProgressTopView.alpha = this.questProgressTopAnimContainer.alpha = 1;
+            }
+         }
+      }
+      
       override public function updateStage(param1:Number, param2:Number) : void
       {
-         var _loc3_:int = 0;
          super.updateStage(param1,param2);
-         _loc3_ = param1 >> 1;
+         var _loc3_:int = param1 >> 1;
          if(this.isQuestProgress && battleStatisticDataController.hasQuestProgressActiveData)
          {
             this.questProgressTopView.x = _loc3_;
@@ -130,26 +149,6 @@ package net.wg.gui.battle.views
       override protected function get isQuestProgress() : Boolean
       {
          return true;
-      }
-      
-      override public function as_setArtyShotIndicatorFlag(param1:Boolean) : void
-      {
-         if(param1 == this._isArtyShotIndVisible)
-         {
-            return;
-         }
-         this._isArtyShotIndVisible = param1;
-         if(this.isQuestProgress)
-         {
-            if(param1 && height < StageSizeBoundaries.HEIGHT_1080)
-            {
-               this.questProgressTopView.alpha = this.questProgressTopAnimContainer.alpha = FADED_QUESTS_PROGRESS_ALPHA;
-            }
-            else
-            {
-               this.questProgressTopView.alpha = this.questProgressTopAnimContainer.alpha = 1;
-            }
-         }
       }
       
       private function onPrebattleTimerAllowToShowQpHandler(param1:PrebattleTimerEvent) : void

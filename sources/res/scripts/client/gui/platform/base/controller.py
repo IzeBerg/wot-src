@@ -1,4 +1,4 @@
-import typing, async
+import typing, wg_async
 from BWUtil import AsyncReturn
 from gui.platform.base import logger
 from gui.platform.base.requester import PlatformRequester
@@ -28,7 +28,7 @@ class PlatformRequestController(IPlatformRequestController):
         self.connectionMgr.onDisconnected -= self._stop
         self._logger.debug('Destroyed.')
 
-    @async.async
+    @wg_async.wg_async
     def _request(self, params, timeout=REQUEST_TIMEOUT, waitingID=None):
         if self._requester is None:
             self._logger.debug('Not started.')

@@ -72,5 +72,7 @@ package net.wg.utils
       function isLeftButton(param1:MouseEvent) : Boolean;
       
       function isRightButton(param1:MouseEvent) : Boolean;
+      
+      function addEmptyHitArea(param1:Sprite) : void;
    }
 }

@@ -840,6 +840,13 @@ class CommonTankAppearance(ScriptGameObject):
             self.shellAnimator.throwShell(self.typeDescriptor.shot.shell.animation)
         return
 
+    def getCurrentModelsSet(self):
+        has3DStyle = self.outfit is not None and self.outfit.modelsSet is not None and self.outfit.modelsSet != ''
+        if has3DStyle:
+            return self.outfit.modelsSet
+        else:
+            return 'default'
+
     def __shouldCreatePhysicalDestroyedTracks(self):
         quality = BigWorld.trackPhysicsQuality()
         if BigWorld.isForwardPipeline() or quality >= len(TrackCrashWithDebrisComponent.MAX_DEBRIS_COUNT):
@@ -876,9 +883,10 @@ class CommonTankAppearance(ScriptGameObject):
                     self.crashedTracksController.addCrashedTrack(isLeft, idx, isSideFlying)
 
             return
+        modelsSet = self.getCurrentModelsSet()
         for idx in indices:
             track = self.tracks.getTrackGameObject(isLeft, idx)
-            track.createComponent(TrackCrashWithDebrisComponent, isLeft, idx, self.typeDescriptor, self.gameObject, self.boundEffects, self.filter, self._vehicle.isPlayerVehicle, shouldCreateDebris, hitPoint)
+            track.createComponent(TrackCrashWithDebrisComponent, isLeft, idx, self.typeDescriptor, self.gameObject, self.boundEffects, self.filter, self._vehicle.isPlayerVehicle, shouldCreateDebris, hitPoint, modelsSet)
             if self.crashedTracksController is not None:
                 self.crashedTracksController.addDebrisCrashedTrack(isLeft, idx)
 

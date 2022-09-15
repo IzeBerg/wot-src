@@ -1,6 +1,6 @@
 import logging, string, typing, BigWorld
 from CurrentVehicle import g_currentVehicle
-from async import async, await
+from wg_async import wg_async, wg_await
 from constants import RENEWABLE_SUBSCRIPTION_CONFIG
 from frameworks.wulf import ViewFlags, ViewSettings, ViewEvent, View
 from gui import SystemMessages
@@ -100,7 +100,7 @@ class CrewHeaderView(ViewImpl):
         self._updateCrewValidationResults()
         self._updateModel()
 
-    @async
+    @wg_async
     def _onAccelerateCrewTrainingToggle(self):
         from gui.shared.event_dispatcher import showAccelerateCrewTrainingDialog
         vehicle = g_currentVehicle.item
@@ -116,10 +116,10 @@ class CrewHeaderView(ViewImpl):
             if wasActive:
                 toggleCallback()
             else:
-                yield await(showAccelerateCrewTrainingDialog(toggleCallback))
+                yield wg_await(showAccelerateCrewTrainingDialog(toggleCallback))
             return
 
-    @decorators.process('updateTankmen')
+    @decorators.adisp_process('updateTankmen')
     def _onAccelerateCrewTrainingConfirmed(self, vehicle, wasActive):
         nowActive = not wasActive
         self.viewModel.setIsAccelerateCrewTrainingActive(nowActive)
@@ -132,7 +132,7 @@ class CrewHeaderView(ViewImpl):
     def _onCrewOperationsClick(self):
         pass
 
-    @async
+    @wg_async
     def _onIdleCrewBonusToggle(self):
         wasActive = self.viewModel.getIsIdleCrewBonusActive()
         toBeActive = not wasActive
@@ -153,7 +153,7 @@ class CrewHeaderView(ViewImpl):
             toggleCallback()
         else:
             from gui.shared.event_dispatcher import showIdleCrewBonusDialog
-            yield await(showIdleCrewBonusDialog(dialogMessage, toggleCallback))
+            yield wg_await(showIdleCrewBonusDialog(dialogMessage, toggleCallback))
 
     def _buildConfirmationMessage(self):
         previousVehicleId = self._renewableSubInfo.getVehicleIDWithIdleXP()

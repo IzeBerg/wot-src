@@ -32,6 +32,8 @@ package net.wg.gui.battle.views.ammunitionPanel
       
       private var _isInLoading:Boolean = false;
       
+      private var _showShadows:Boolean = true;
+      
       private var _useAnim:Boolean = false;
       
       private var _originalY:int;
@@ -67,8 +69,8 @@ package net.wg.gui.battle.views.ammunitionPanel
          super.draw();
          if(isInvalid(InvalidationType.STATE))
          {
-            this.battleLoadingShadow.visible = this._isInLoading;
-            this.prebattleShadow.visible = !this._isInLoading;
+            this.battleLoadingShadow.visible = this._showShadows && this._isInLoading;
+            this.prebattleShadow.visible = this._showShadows && !this._isInLoading;
             dispatchEvent(new PrbAmmunitionPanelEvent(PrbAmmunitionPanelEvent.STATE_CHANGED));
          }
       }
@@ -95,6 +97,12 @@ package net.wg.gui.battle.views.ammunitionPanel
       public function as_setIsInLoading(param1:Boolean) : void
       {
          this._isInLoading = param1;
+         invalidateState();
+      }
+      
+      public function as_showShadows(param1:Boolean) : void
+      {
+         this._showShadows = param1;
          invalidateState();
       }
       

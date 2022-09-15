@@ -15,6 +15,8 @@ package net.wg.utils
       
       public static const WIDTH_2200:int = 2200;
       
+      public static const WIDTH_2560:int = 2560;
+      
       public static const HEIGHT_768:int = 768;
       
       public static const HEIGHT_800:int = 800;
@@ -26,6 +28,8 @@ package net.wg.utils
       public static const HEIGHT_1024:int = 1024;
       
       public static const HEIGHT_1080:int = 1080;
+      
+      public static const HEIGHT_1200:int = 1200;
        
       
       public function StageSizeBoundaries()

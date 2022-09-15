@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<property>
+		reflectionMap
+		<Texture>system\maps\ref_bwclouds.dds</Texture>
+	</property>
+	<property>
+		glowMap
+		<Texture>helpers\maps\aid_builder.dds</Texture>
+	</property>
+	<property>
+		normalMap
+		<Texture>helpers\maps\aid_builder_norms.dds</Texture>
+	</property>
+	<property>
+		diffuseMap
+		<Texture>helpers\maps\aid_builder.dds</Texture>
+	</property>
+	<property>
+		materialSpecular
+		<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+	</property>
+	<property>
+		glowFactor
+		<Float>0.000000</Float>
+	</property>
+	<property>
+		reflectionAmount
+		<Float>1.000000</Float>
+	</property>
+	<property>
+		fresnelConstant
+		<Float>0.500000</Float>
+	</property>
+	<property>
+		fresnelExp
+		<Float>5.000000</Float>
+	</property>
+	<materialKind>0</materialKind>
+	<fx>shaders/std_effects/normalmap_chrome_glow_skinned.fx</fx>
+</root>

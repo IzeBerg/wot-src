@@ -1,5 +1,5 @@
 import logging, typing
-from adisp import async, process
+from adisp import adisp_async, adisp_process
 from gui.impl.lobby.awards import SupportedTokenTypes
 from helpers import dependency
 from WebBrowser import getWebCache
@@ -24,8 +24,8 @@ class _IPrefetcher(object):
 class TokenDataPrefetcher(_IPrefetcher):
     __purchaseCache = dependency.descriptor(IPurchaseCache)
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def prefetch(self, bonus, callback):
         for tID in bonus.getTokens():
             iconSmallPath, iconBigPath = yield self.getImageData(tID)
@@ -40,8 +40,8 @@ class TokenDataPrefetcher(_IPrefetcher):
 
         callback(True)
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def getImageData(self, tID, callback=None):
         purchase = yield self.__purchaseCache.requestPurchaseByID(self._productID)
         tokenData = purchase.getTokenData(tID)

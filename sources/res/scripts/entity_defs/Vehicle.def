@@ -138,6 +138,10 @@
 			<Type>FLOAT32</Type>
 			<Flags>CELL_PUBLIC</Flags>
 		</rammingBonus>
+		<componentsData>
+			<Type>PYTHON</Type>
+			<Flags>CELL_PUBLIC</Flags>
+		</componentsData>
 		<ammo>
 			<Type>
 				ARRAY
@@ -266,7 +270,7 @@
 			<Flags>CELL_PRIVATE</Flags>
 		</accountDBID>
 		<historyLoggingFlags>
-			<Type>UINT32</Type>
+			<Type>UINT64</Type>
 			<Flags>CELL_PRIVATE</Flags>
 		</historyLoggingFlags>
 		<heatmapLoggingFlags>
@@ -609,6 +613,11 @@
 			<Arg>UINT8</Arg>
 			<Arg>UINT8</Arg>
 		</switchSetup>
+		<setEquipmentApplicationPoint>
+			<Arg>UINT16</Arg>
+			<Arg>VECTOR3</Arg>
+			<Arg>VECTOR2</Arg>
+		</setEquipmentApplicationPoint>
 	</CellMethods>
 	<BaseMethods>
 		<onCreateCellSuccess/>

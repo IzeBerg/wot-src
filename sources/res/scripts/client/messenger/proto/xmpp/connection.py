@@ -1,6 +1,6 @@
 import random, BigWorld
 from constants import TOKEN_TYPE
-from adisp import process
+from adisp import adisp_process
 from gui.shared.utils import backoff, getPlayerDatabaseID
 from gui.shared.utils.requesters import TokenRequester, TokenResponse
 from helpers import dependency
@@ -183,7 +183,7 @@ class ConnectionHandler(ClientEventsHandler):
         self.__doConnect()
         return
 
-    @process
+    @adisp_process
     def __doLogin(self):
         client = self.client()
         if not client.isConnecting():

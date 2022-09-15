@@ -1,5 +1,6 @@
 from CurrentVehicle import g_currentVehicle
-from async import async, await
+from gui.shared.event_dispatcher import showHangar
+from wg_async import wg_async, wg_await
 from frameworks.wulf import ViewFlags, ViewStatus, ViewSettings
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.Scaleform.framework import ScopeTemplates
@@ -175,11 +176,17 @@ class CrewBooksView(ViewImpl):
         return
 
     def __onInventoryUpdate(self, invDiff):
-        with self.viewModel.transaction() as (vm):
-            if GUI_ITEM_TYPE.TANKMAN in invDiff:
-                self.__updateTankmenListModelData(vm, invDiff[GUI_ITEM_TYPE.TANKMAN])
-            if GUI_ITEM_TYPE.CREW_BOOKS in invDiff:
-                self.__updateBooksViewModelData(vm)
+        vehsCompDescr = invDiff.get(GUI_ITEM_TYPE.VEHICLE, {}).get('compDescr', {})
+        if self.__vehicle.invID in vehsCompDescr and vehsCompDescr[self.__vehicle.invID] is None:
+            self.__onWindowClose()
+            return
+        else:
+            with self.viewModel.transaction() as (vm):
+                if GUI_ITEM_TYPE.TANKMAN in invDiff:
+                    self.__updateTankmenListModelData(vm, invDiff[GUI_ITEM_TYPE.TANKMAN])
+                if GUI_ITEM_TYPE.CREW_BOOKS in invDiff:
+                    self.__updateBooksViewModelData(vm)
+            return
 
     def __updateGuiItemList(self):
         criteria = REQ_CRITERIA.CREW_ITEM.IN_ACCOUNT ^ ~REQ_CRITERIA.CREW_ITEM.BOOK_RARITIES(CREW_BOOK_RARITY.UNIVERSAL)
@@ -208,9 +215,10 @@ class CrewBooksView(ViewImpl):
     def __updateTankmenListModelData(self, screenVM, diff):
         crewListVM = screenVM.crewBookTankmenList.getItems()
         self.__vehicle = g_currentVehicle.item
+        tankmenCompDescr = diff.get('compDescr', {})
         roles = self.__vehicle.descriptor.type.crewRoles
         crew = sortCrew(self.__vehicle.crew, roles)
-        crewDiff = [ (i, tankman) for i, (_, tankman) in enumerate(crew) if tankman is not None and tankman.invID in diff['compDescr']
+        crewDiff = [ (i, tankman) for i, (_, tankman) in enumerate(crew) if tankman is not None and tankman.invID in tankmenCompDescr
                    ]
         for slotIdx, tankman in crewDiff:
             tankmanVM = crewListVM[slotIdx]
@@ -239,23 +247,23 @@ class CrewBooksView(ViewImpl):
         g_clientUpdateManager.removeCallback('inventory', self.__onInventoryUpdate)
 
     def __onWindowClose(self):
-        event_dispatcher.selectVehicleInHangar(self.__vehicle.intCD)
+        showHangar()
         self.destroyWindow()
 
-    @async
+    @wg_async
     def __onBuyBtnClick(self, args):
         self.viewModel.setIsDialogOpen(True)
-        yield await(dialogs.buyCrewBook(parent=self, crewBookCD=int(args['compactDesc'])))
+        yield wg_await(dialogs.buyCrewBook(parent=self, crewBookCD=int(args['compactDesc'])))
         self.viewModel.setIsDialogOpen(False)
 
-    @async
+    @wg_async
     def __onBookUse(self):
         if self.__selectedTankmanVM is not None:
             tankmanInvId = self.__selectedTankmanVM.getInvID()
         else:
             tankmanInvId = 0
         self.viewModel.setIsDialogOpen(True)
-        yield await(dialogs.useCrewBook(parent=self, crewBookCD=self.__selectedBookGuiItem.intCD, vehicleIntCD=self.__vehicle.intCD, tankmanInvId=tankmanInvId))
+        yield wg_await(dialogs.useCrewBook(parent=self, crewBookCD=self.__selectedBookGuiItem.intCD, vehicleIntCD=self.__vehicle.intCD, tankmanInvId=tankmanInvId))
         self.viewModel.setIsDialogOpen(False)
         availableBookCount = sum(not book.getIsDisabled() for book in self.viewModel.getCrewBookItemList())
         if availableBookCount == 0 and self.viewStatus == ViewStatus.LOADED:
@@ -519,24 +527,26 @@ class CrewBooksLackView(ViewImpl):
         self.viewModel.onBuyBtnClick += self.__onBuyBtnClick
         self.viewModel.onHangarBtnClick += self.__onHangarBtnClick
         self.viewModel.onCloseBtnClick += self.__onWindowClose
+        g_clientUpdateManager.addCallbacks({'inventory.1.compDescr': self.__onVehiclesInInventoryUpdate})
 
     def __removeListeners(self):
+        g_clientUpdateManager.removeCallback('inventory.1.compDescr', self.__onVehiclesInInventoryUpdate)
         self.viewModel.onBuyBtnClick -= self.__onBuyBtnClick
         self.viewModel.onHangarBtnClick -= self.__onHangarBtnClick
         self.viewModel.onCloseBtnClick -= self.__onWindowClose
 
     def __onWindowClose(self):
-        event_dispatcher.selectVehicleInHangar(self.__vehicle.intCD)
+        showHangar()
         self.destroyWindow()
 
-    @async
+    @wg_async
     def __onBuyBtnClick(self):
         crewBookCD = next((crewBook.intCD for crewBook in self.__existBooks.itervalues() if crewBook.getBookType() == CREW_BOOK_RARITY.CREW_EPIC), None)
         if crewBookCD is None:
             return
         else:
             self.viewModel.setIsDialogOpen(True)
-            result = yield await(dialogs.buyCrewBook(parent=self, crewBookCD=int(crewBookCD)))
+            result = yield wg_await(dialogs.buyCrewBook(parent=self, crewBookCD=int(crewBookCD)))
             self.viewModel.setIsDialogOpen(False)
             if result is True:
                 g_eventBus.handleEvent(events.LoadGuiImplViewEvent(GuiImplViewLoadParams(R.views.lobby.crew_books.crew_books_view.CrewBooksView(), CrewBooksView, ScopeTemplates.LOBBY_SUB_SCOPE)), scope=EVENT_BUS_SCOPE.LOBBY)
@@ -587,3 +597,8 @@ class CrewBooksLackView(ViewImpl):
             if i == self.THIRD_SLOT:
                 itemModel.setHasArrow(False)
             noBookList.addViewModel(itemModel)
+
+    def __onVehiclesInInventoryUpdate(self, diff):
+        if self.__vehicle.invID in diff and diff[self.__vehicle.invID] is None:
+            self.__onWindowClose()
+        return

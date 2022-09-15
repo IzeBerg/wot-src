@@ -1,4 +1,4 @@
-import adisp, async
+import adisp, wg_async
 from gui.impl.pub.dialog_window import DialogButtons
 from gui.shared.event_dispatcher import showPreformattedDialog
 from shared_utils import first
@@ -26,10 +26,10 @@ class DialogsWebApiMixin(object):
     @w2c(_DialogSchema, 'confirm_dialog_overlay')
     def showDialog(self, cmd):
 
-        @adisp.async
-        @async.async
+        @adisp.adisp_async
+        @wg_async.wg_async
         def proxy(callback):
-            res = yield async.await(showPreformattedDialog(cmd.preset, cmd.title, cmd.message, cmd.buttons, cmd.focusedButton, cmd.btnDownSounds))
+            res = yield wg_async.wg_await(showPreformattedDialog(cmd.preset, cmd.title, cmd.message, cmd.buttons, cmd.focusedButton, cmd.btnDownSounds))
             callback(res)
 
         result = yield proxy()

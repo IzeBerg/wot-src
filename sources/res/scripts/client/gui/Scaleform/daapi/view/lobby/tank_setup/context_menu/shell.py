@@ -1,4 +1,4 @@
-from adisp import async, process
+from adisp import adisp_async, adisp_process
 from gui.Scaleform.daapi.view.lobby.shared.cm_handlers import CMLabel, option
 from gui.Scaleform.daapi.view.lobby.tank_setup.context_menu.base import TankSetupCMLabel, FIRST_SLOT, SECOND_SLOT, THIRD_SLOT, BaseTankSetupContextMenu
 from gui.Scaleform.daapi.view.lobby.tank_setup.context_menu.base_equipment import BaseHangarEquipmentSlotContextMenu
@@ -60,8 +60,8 @@ class HangarShellItemContextMenu(BaseHangarEquipmentSlotContextMenu):
             return False
         return super(HangarShellItemContextMenu, self)._isVisible(label)
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def _doPutOnAction(self, vehicle, callback):
         action = ActionsFactory.getAction(ActionsFactory.BUY_AND_INSTALL_SHELLS, vehicle, confirmOnlyExchange=True)
         result = yield ActionsFactory.asyncDoAction(action)

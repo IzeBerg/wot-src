@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>pCube5</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>pCube5</node>
+		<geometry>
+			<vertices>pCubeShape5.vertices</vertices>
+			<primitive>pCubeShape5.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd_0</identifier>
+					<fx>shaders/std_effects/lightonly.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						diffuseMap
+						<Texture>content/Interface/Arrow/Arrow.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-1.000000 0.000000 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-1.452332 -2.351336 -1.698949</min>
+		<max>-0.547668 2.351336 1.698949</max>
+	</boundingBox>
+	<geometrySize>6472</geometrySize>
+	<minUVDensity>0.029175</minUVDensity>
+</root>

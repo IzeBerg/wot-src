@@ -224,7 +224,7 @@ package net.wg.gui.battle.battleRoyale
          this.battleMessenger.addEventListener(MouseEvent.ROLL_OUT,this.onBattleMessengerRollOutHandler);
          this.battleMessenger.addEventListener(FocusRequestEvent.REQUEST_FOCUS,this.onBattleMessengerRequestFocusHandler);
          this.battleMessenger.addEventListener(BattleMessenger.REMOVE_FOCUS,this.onBattleMessengerRemoveFocusHandler);
-         this.upgradePanel.addEventListener(ComponentEvent.STATE_CHANGE,this.onUpgradePanelStateChange);
+         this.upgradePanel.addEventListener(ComponentEvent.STATE_CHANGE,this.onUpgradePanelStateChangeHandler);
          this._minimap.isTabModeCustomAlpha = true;
          this._minimap.tabModeCustomAlpha = Values.DEFAULT_ALPHA;
       }
@@ -304,18 +304,26 @@ package net.wg.gui.battle.battleRoyale
          this._minimap.mapShortcutLabel.visible = false;
       }
       
-      override protected function onDispose() : void
+      override protected function onBeforeDispose() : void
       {
          this.battleMessenger.removeEventListener(MouseEvent.ROLL_OVER,this.onBattleMessengerRollOverHandler);
          this.battleMessenger.removeEventListener(MouseEvent.ROLL_OUT,this.onBattleMessengerRollOutHandler);
          this.battleMessenger.removeEventListener(FocusRequestEvent.REQUEST_FOCUS,this.onBattleMessengerRequestFocusHandler);
          this.battleMessenger.removeEventListener(BattleMessenger.REMOVE_FOCUS,this.onBattleMessengerRemoveFocusHandler);
-         this.upgradePanel.removeEventListener(ComponentEvent.STATE_CHANGE,this.onUpgradePanelStateChange);
-         App.atlasMgr.unregisterAtlas(ATLAS_CONSTANTS.COMMON_BATTLE_LOBBY,this._atlasHolder);
-         this._atlasHolder = null;
+         this.upgradePanel.removeEventListener(ComponentEvent.STATE_CHANGE,this.onUpgradePanelStateChangeHandler);
          this._ubComponentsLoader.contentLoaderInfo.removeEventListener(Event.COMPLETE,this.onUbComponentsLoaderCompleteHandler);
          this._ubComponentsLoader.contentLoaderInfo.removeEventListener(IOErrorEvent.IO_ERROR,this.onUbComponentsLoaderIoErrorHandler);
          this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
+         this.hintPanel.removeEventListener(Event.RESIZE,this.onHintPanelResizeHandler);
+         this.fullStats.removeEventListener(Event.OPEN,this.onFullStatsOpenHandler);
+         this.fullStats.removeEventListener(Event.CLOSE,this.onFullStatsCloseHandler);
+         super.onBeforeDispose();
+      }
+      
+      override protected function onDispose() : void
+      {
+         App.atlasMgr.unregisterAtlas(ATLAS_CONSTANTS.COMMON_BATTLE_LOBBY,this._atlasHolder);
+         this._atlasHolder = null;
          this._ubComponentsLoader.unload();
          this._ubComponentsLoader = null;
          this.damageScreen.dispose();
@@ -338,10 +346,7 @@ package net.wg.gui.battle.battleRoyale
          this.playerStats = null;
          this.playersPanel = null;
          this.corrodingShotIndicator = null;
-         this.hintPanel.removeEventListener(Event.RESIZE,this.onHintPanelResizeHandler);
          this.hintPanel = null;
-         this.fullStats.removeEventListener(Event.OPEN,this.onFullStatsOpenHandler);
-         this.fullStats.removeEventListener(Event.CLOSE,this.onFullStatsCloseHandler);
          this.fullStats = null;
          this._minimap = null;
          this.radarButton = null;
@@ -532,7 +537,7 @@ package net.wg.gui.battle.battleRoyale
          this.battleMessenger.setAvailableWidthForMessages(_loc1_);
       }
       
-      override protected function onMiniMapChangeHandler(param1:MinimapEvent) : void
+      override protected function onMinimapSizeChangedHandler(param1:MinimapEvent) : void
       {
          this.updateMinimapPosition();
          if(!this._minimap.isTabMode)
@@ -612,7 +617,7 @@ package net.wg.gui.battle.battleRoyale
          this.swapElementsByMouseInteraction(this.teamPanel,this.battleMessenger);
       }
       
-      private function onUpgradePanelStateChange(param1:ComponentEvent) : void
+      private function onUpgradePanelStateChangeHandler(param1:ComponentEvent) : void
       {
          this.vehicleErrorMessageListPositionUpdate();
       }

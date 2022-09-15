@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<fx>shaders/std_effects/spintoface_add.fx</fx>
+	<property>
+		srcBlend
+		<Int>2</Int>
+	</property>
+	<property>
+		alphaReference
+		<Int>0</Int>
+	</property>
+	<property>
+		alphaTestEnable
+		<Bool>false</Bool>
+	</property>
+	<property>
+		doubleSided
+		<Bool>false</Bool>
+	</property>
+	<property>
+		diffuseMap
+		<Texture>helpers\maps\aid_builder.dds</Texture>
+	</property>
+	<materialKind>0</materialKind>
+</root>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<Properties>
+		<radarReadinessTime>
+			<Type>FLOAT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<DetailLevel>MY_VEHICLE</DetailLevel>
+		</radarReadinessTime>
+		<radarReady>
+			<Type>BOOL</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<DetailLevel>MY_VEHICLE</DetailLevel>
+		</radarReady>
+	</Properties>
+	<CellMethods>
+		<activateRadar>
+			<Exposed/>
+		</activateRadar>
+	</CellMethods>
+	<ofEntity>
+		<Vehicle/>
+	</ofEntity>
+	<DefaultKeyName>radar</DefaultKeyName>
+</root>

@@ -3,16 +3,24 @@ package net.wg.gui.battle.views.prebattleTimer
    import flash.display.FrameLabel;
    import net.wg.data.constants.InvalidationType;
    import net.wg.data.constants.Values;
-   import net.wg.data.constants.generated.PREBATTLE_TIMER;
    import net.wg.gui.battle.components.preBattleTimer.TimerAnim;
    import net.wg.gui.battle.interfaces.IPrebattleTimerBase;
    import net.wg.gui.components.controls.TextFieldContainer;
    import net.wg.gui.utils.FrameHelper;
    import net.wg.infrastructure.base.meta.IPrebattleTimerBaseMeta;
    import net.wg.infrastructure.base.meta.impl.PrebattleTimerBaseMeta;
+   import net.wg.utils.StageSizeBoundaries;
    
    public class PrebattleTimerBase extends PrebattleTimerBaseMeta implements IPrebattleTimerBase, IPrebattleTimerBaseMeta
    {
+      
+      protected static const SMALL_STATE:String = "smallState";
+      
+      protected static const LARGE_STATE:String = "largeState";
+      
+      protected static const TIMER_LARGE_SCALE:Number = 1;
+      
+      protected static const TIMER_SMALL_SCALE:Number = 0.75;
       
       protected static const INVALID_COMPONENT_VISIBILITY:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 1;
       
@@ -30,17 +38,9 @@ package net.wg.gui.battle.views.prebattleTimer
       
       private static const FRAME_LABEL_HIDE_COMPLETED:String = "hideCompleted";
       
-      private static const TIMER_LARGE_SCALE:Number = 1;
-      
-      private static const TIMER_SMALL_SCALE:Number = 0.75;
-      
       private static const TIMER_LARGE_Y:int = -14;
       
       private static const TIMER_SMALL_Y:int = 25;
-      
-      private static const SMALL_STATE:String = "smallState";
-      
-      private static const LARGE_STATE:String = "largeState";
        
       
       public var message:TextFieldContainer = null;
@@ -84,18 +84,26 @@ package net.wg.gui.battle.views.prebattleTimer
          super.configUI();
          this.message.noTranslateTextfield = true;
          this.win.noTranslateTextfield = true;
+         App.utils.commons.addEmptyHitArea(this.background);
+         App.utils.commons.addEmptyHitArea(this.timer);
+         App.utils.commons.addEmptyHitArea(this.message);
+         App.utils.commons.addEmptyHitArea(this.win);
       }
       
       override protected function onDispose() : void
       {
          this._frameHelper.dispose();
          this._frameHelper = null;
+         this.timer.hitArea = null;
          this.timer.dispose();
          this.timer = null;
+         this.message.hitArea = null;
          this.message.dispose();
          this.message = null;
+         this.win.hitArea = null;
          this.win.dispose();
          this.win = null;
+         this.background.hitArea = null;
          this.background.dispose();
          this.background = null;
          super.onDispose();
@@ -103,8 +111,7 @@ package net.wg.gui.battle.views.prebattleTimer
       
       override protected function draw() : void
       {
-         var _loc1_:Boolean = false;
-         var _loc2_:String = null;
+         var _loc1_:String = null;
          super.draw();
          if(isInvalid(INVALID_COMPONENT_VISIBILITY))
          {
@@ -135,11 +142,10 @@ package net.wg.gui.battle.views.prebattleTimer
          if(this._isNeedWinChangePosition && isInvalid(InvalidationType.SIZE))
          {
             this.win.y = this.message.y + this.message.height | 0;
-            _loc1_ = App.appHeight <= PREBATTLE_TIMER.APP_MIN_HEIGHT_BREAKING;
-            _loc2_ = !!_loc1_ ? SMALL_STATE : LARGE_STATE;
-            if(_loc2_ != this._currentState)
+            _loc1_ = this.getState();
+            if(_loc1_ != this._currentState)
             {
-               this._currentState = _loc2_;
+               this._currentState = _loc1_;
                this.doUpdateSize(_loc1_);
             }
          }
@@ -181,22 +187,23 @@ package net.wg.gui.battle.views.prebattleTimer
          }
       }
       
-      public function updateStage(param1:Number, param2:Number) : void
-      {
-         this.background.updateSize(param1,param2);
-         invalidateSize();
-      }
-      
       public function hideBackground() : void
       {
          this._isBackgroundHided = true;
          this.background.visible = false;
       }
       
-      protected function doUpdateSize(param1:Boolean) : void
+      public function updateStage(param1:Number, param2:Number) : void
       {
-         this.timer.scaleX = this.timer.scaleY = !!param1 ? Number(TIMER_SMALL_SCALE) : Number(TIMER_LARGE_SCALE);
-         this.timer.y = !!param1 ? Number(TIMER_SMALL_Y) : Number(TIMER_LARGE_Y);
+         this.background.updateSize(param1,param2);
+         invalidateSize();
+      }
+      
+      protected function doUpdateSize(param1:String) : void
+      {
+         var _loc2_:Boolean = param1 == SMALL_STATE;
+         this.timer.scaleX = this.timer.scaleY = !!_loc2_ ? Number(TIMER_SMALL_SCALE) : Number(TIMER_LARGE_SCALE);
+         this.timer.y = !!_loc2_ ? Number(TIMER_SMALL_Y) : Number(TIMER_LARGE_Y);
       }
       
       protected function doResetHideAnim() : void
@@ -258,6 +265,15 @@ package net.wg.gui.battle.views.prebattleTimer
          {
             param1.addScriptToFrame(param3,this.onHideCompleted);
          }
+      }
+      
+      protected function getState() : String
+      {
+         if(App.appHeight <= StageSizeBoundaries.HEIGHT_800)
+         {
+            return SMALL_STATE;
+         }
+         return LARGE_STATE;
       }
       
       private function onHideCompleted() : void

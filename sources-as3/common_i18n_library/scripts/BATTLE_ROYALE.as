@@ -31,38 +31,6 @@ package
       
       public static const UPGRADEPANEL_ALERT_4:String = "#battle_royale:upgradePanel/alert/4";
       
-      public static const LOOT_BASIC:String = "#battle_royale:loot/basic";
-      
-      public static const LOOT_ADVANCED:String = "#battle_royale:loot/advanced";
-      
-      public static const LOOT_AIRDROP:String = "#battle_royale:loot/airdrop";
-      
-      public static const LOOT_CORPSE:String = "#battle_royale:loot/corpse";
-      
-      public static const LOOT_MULTIPLE:String = "#battle_royale:loot/multiple";
-      
-      public static const TIMERSPANEL_LOOTPICKUP:String = "#battle_royale:timersPanel/lootPickup";
-      
-      public static const TIMERSPANEL_ORANGEZONE:String = "#battle_royale:timersPanel/orangeZone";
-      
-      public static const TIMERSPANEL_DEATHZONE:String = "#battle_royale:timersPanel/deathZone";
-      
-      public static const TIMERSPANEL_HALFOVERTURNED:String = "#battle_royale:timersPanel/halfOverturned";
-      
-      public static const TIMERSPANEL_INSPIRED:String = "#battle_royale:timersPanel/inspired";
-      
-      public static const TIMERSPANEL_DAMAGINGSMOKE:String = "#battle_royale:timersPanel/damagingSmoke";
-      
-      public static const TIMERSPANEL_DAMAGINGCORRODINGSHOT:String = "#battle_royale:timersPanel/damagingCorrodingShot";
-      
-      public static const TIMERSPANEL_FIRECIRCLE:String = "#battle_royale:timersPanel/fireCircle";
-      
-      public static const TIMERSPANEL_THUNDERSTRIKE:String = "#battle_royale:timersPanel/thunderStrike";
-      
-      public static const TIMERSPANEL_SHOTPASSION:String = "#battle_royale:timersPanel/shotPassion";
-      
-      public static const TIMERSPANEL_HPRESTOREONDAMAGE:String = "#battle_royale:timersPanel/hpRestoreOnDamage";
-      
       public static const FRAGPANEL_SQUADSCOUNT:String = "#battle_royale:fragPanel/squadsCount";
       
       public static const HANGARRESULTS_BTNS_SUMMARY:String = "#battle_royale:hangarResults/btns/summary";
@@ -108,14 +76,6 @@ package
       public static const FULLSTATS_DEATHZONE_WARNING_DESCRIPTION:String = "#battle_royale:fullStats/deathZone/warning/description";
       
       public static const FULLSTATS_DEATHZONE_CLOSED_DESCRIPTION:String = "#battle_royale:fullStats/deathZone/closed/description";
-      
-      public static const EQUIPMENT_HEALPOINT_HEALING:String = "#battle_royale:equipment/healPoint/healing";
-      
-      public static const EQUIPMENT_HEALPOINT_HEALED:String = "#battle_royale:equipment/healPoint/healed";
-      
-      public static const EQUIPMENT_BERSERK_ACTIVE:String = "#battle_royale:equipment/berserk/active";
-      
-      public static const EQUIPMENT_REPAIRPOINT:String = "#battle_royale:equipment/repairPoint";
       
       public static const TECHTREE_RADAR_COOLDOWN:String = "#battle_royale:techtree/radar_cooldown";
       
@@ -602,6 +562,46 @@ package
       public static const INTRO_SLIDE4_TITLE:String = "#battle_royale:intro/slide4/title";
       
       public static const INTRO_SLIDE4_TEXT:String = "#battle_royale:intro/slide4/text";
+      
+      public static const STATUSNOTIFICATIONTIMERS_HALFOVERTURNED:String = "#battle_royale:statusNotificationTimers/halfOverturned";
+      
+      public static const STATUSNOTIFICATIONTIMERS_DEATHZONE:String = "#battle_royale:statusNotificationTimers/deathZone";
+      
+      public static const STATUSNOTIFICATIONTIMERS_SMOKE_ALLY:String = "#battle_royale:statusNotificationTimers/smoke/ally";
+      
+      public static const STATUSNOTIFICATIONTIMERS_SMOKE_DAMAGING:String = "#battle_royale:statusNotificationTimers/smoke/damaging";
+      
+      public static const STATUSNOTIFICATIONTIMERS_HEALPOINT_HEALING:String = "#battle_royale:statusNotificationTimers/healPoint/healing";
+      
+      public static const STATUSNOTIFICATIONTIMERS_HEALPOINT_HEALED:String = "#battle_royale:statusNotificationTimers/healPoint/healed";
+      
+      public static const STATUSNOTIFICATIONTIMERS_REPAIRPOINT:String = "#battle_royale:statusNotificationTimers/repairPoint";
+      
+      public static const STATUSNOTIFICATIONTIMERS_INSPIRE_INSPIRED:String = "#battle_royale:statusNotificationTimers/inspire/inspired";
+      
+      public static const STATUSNOTIFICATIONTIMERS_BERSERK_ACTIVE:String = "#battle_royale:statusNotificationTimers/berserk/active";
+      
+      public static const STATUSNOTIFICATIONTIMERS_DAMAGINGCORRODINGSHOT:String = "#battle_royale:statusNotificationTimers/damagingCorrodingShot";
+      
+      public static const STATUSNOTIFICATIONTIMERS_FIRECIRCLE:String = "#battle_royale:statusNotificationTimers/fireCircle";
+      
+      public static const STATUSNOTIFICATIONTIMERS_THUNDERSTRIKE:String = "#battle_royale:statusNotificationTimers/thunderStrike";
+      
+      public static const STATUSNOTIFICATIONTIMERS_SHOTPASSION:String = "#battle_royale:statusNotificationTimers/shotPassion";
+      
+      public static const STATUSNOTIFICATIONTIMERS_HPRESTOREONDAMAGE:String = "#battle_royale:statusNotificationTimers/hpRestoreOnDamage";
+      
+      public static const STATUSNOTIFICATIONTIMERS_LOOT_PICKUP:String = "#battle_royale:statusNotificationTimers/loot/pickup";
+      
+      public static const STATUSNOTIFICATIONTIMERS_LOOT_ADVANCED:String = "#battle_royale:statusNotificationTimers/loot/advanced";
+      
+      public static const STATUSNOTIFICATIONTIMERS_LOOT_AIRDROP:String = "#battle_royale:statusNotificationTimers/loot/airdrop";
+      
+      public static const STATUSNOTIFICATIONTIMERS_LOOT_CORPSE:String = "#battle_royale:statusNotificationTimers/loot/corpse";
+      
+      public static const STATUSNOTIFICATIONTIMERS_LOOT_BASIC:String = "#battle_royale:statusNotificationTimers/loot/basic";
+      
+      public static const STATUSNOTIFICATIONTIMERS_LOOT_MULTIPLE:String = "#battle_royale:statusNotificationTimers/loot/multiple";
        
       
       public function BATTLE_ROYALE()

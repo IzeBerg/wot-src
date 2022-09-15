@@ -1,5 +1,5 @@
 from CurrentVehicle import g_currentVehicle
-from adisp import process
+from adisp import adisp_process
 from frameworks.wulf import WindowLayer
 from gui.Scaleform.daapi.view.meta.BasePrebattleRoomViewMeta import BasePrebattleRoomViewMeta
 from gui.Scaleform.framework.managers.containers import POP_UP_CRITERIA
@@ -48,7 +48,7 @@ class BasePrebattleRoomView(BasePrebattleRoomViewMeta, ILegacyListener):
     def bwProto(self):
         return
 
-    @process
+    @adisp_process
     def requestToReady(self, value):
         if value:
             waitingID = 'prebattle/player_ready'
@@ -223,6 +223,6 @@ class BasePrebattleRoomView(BasePrebattleRoomViewMeta, ILegacyListener):
         if alias == MESSENGER_VIEW_ALIAS.CHANNEL_COMPONENT:
             events_dispatcher.rqDeactivateChannel(self.__clientID)
 
-    @process
+    @adisp_process
     def _doLeave(self, isExit=True):
         yield self.prbDispatcher.doLeaveAction(LeavePrbAction(isExit))

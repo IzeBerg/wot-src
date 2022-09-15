@@ -419,8 +419,8 @@ msgstr "Переключиться на другие главы можно бу�
 
 msgid "chapterChoice/confirmation/description/switch"
 msgstr ""
-"У вас уже активирована глава «%(chName)s». При смене главы прогресс в "
-"текущей будет поставлен на паузу."
+"У вас уже активирована глава «%(chName)s». Смена главы поставит текущий "
+"прогресс на паузу."
 
 msgid "chapterChoice/confirmation/title/select"
 msgstr "Активировать главу «%(chName)s»?"
@@ -561,6 +561,12 @@ msgstr "Линия фронта"
 msgid "howToEarnPoints/battleTypeTitle/29"
 msgstr "Стальной охотник"
 
+msgid "howToEarnPoints/battleTypeTitle/43"
+msgstr "Натиск"
+
+msgid "howToEarnPoints/bonus"
+msgstr "+%(bonus)s"
+
 msgid "howToEarnPoints/card/battle/linkText"
 msgstr "Перейти к задачам"
 
@@ -570,6 +576,14 @@ msgstr ""
 "дополнительные очки."
 
 msgid "howToEarnPoints/card/battle/title"
+msgstr "Ежедневные задачи"
+
+msgid "howToEarnPoints/card/comp7/text"
+msgstr ""
+"Выполняйте боевые задачи в режиме «Натиск» и зарабатывайте дополнительные "
+"очки."
+
+msgid "howToEarnPoints/card/comp7/title"
 msgstr "Ежедневные задачи"
 
 msgid "howToEarnPoints/card/daily/linkText"
@@ -606,9 +620,9 @@ msgstr "Ключевая техника сезона"
 msgid "howToEarnPoints/description"
 msgstr ""
 "Очки Боевого пропуска нужны для вашего последовательного продвижения к "
-"наградам. Их можно заработать в режимах «Случайный бой» и «Линия фронта», за"
-" выполнение боевых и ежедневных задач, а также единоразово за достижение "
-"лимита очков на конкретной машине."
+"наградам. Их можно заработать в режимах «Случайный бой», «Линия фронта» и "
+"«Натиск», за выполнение боевых и ежедневных задач, а также единоразово за "
+"достижение лимита очков на конкретной машине."
 
 msgid "howToEarnPoints/lose/1"
 msgstr "Поражение/ничья"
@@ -617,6 +631,9 @@ msgid "howToEarnPoints/lose/22"
 msgstr "Поражение/ничья"
 
 msgid "howToEarnPoints/lose/27"
+msgstr "Поражение"
+
+msgid "howToEarnPoints/lose/43"
 msgstr "Поражение"
 
 msgid "howToEarnPoints/rangeLevels/29"
@@ -634,6 +651,9 @@ msgstr "Топ-%(level)d по опыту"
 msgid "howToEarnPoints/rating/29"
 msgstr "Топ-%(level)d по опыту"
 
+msgid "howToEarnPoints/rating/43"
+msgstr "Топ-%(level)d по очкам престижа"
+
 msgid "howToEarnPoints/singleLevel/29"
 msgstr "Место %(level)d"
 
@@ -644,16 +664,19 @@ msgid "howToEarnPoints/squad/29"
 msgstr "Игра взводом"
 
 msgid "howToEarnPoints/text/1"
-msgstr "Играйте на технике VI–X уровней"
+msgstr "Играйте на технике %(startLevel)s – %(endLevel)s уровня"
 
 msgid "howToEarnPoints/text/22"
-msgstr "Играйте на технике X уровня"
+msgstr "Играйте на технике %(level)s уровня"
 
 msgid "howToEarnPoints/text/27"
-msgstr "Играйте на технике VIII уровня"
+msgstr "Играйте на технике %(level)s уровня"
 
 msgid "howToEarnPoints/text/29"
 msgstr "Играйте на специальной технике режима"
+
+msgid "howToEarnPoints/text/43"
+msgstr "Играйте на технике %(level)s уровня"
 
 msgid "howToEarnPoints/title"
 msgstr "КАК ЗАРАБОТАТЬ ОЧКИ"
@@ -665,6 +688,9 @@ msgid "howToEarnPoints/win/22"
 msgstr "Победа"
 
 msgid "howToEarnPoints/win/27"
+msgstr "Победа"
+
+msgid "howToEarnPoints/win/43"
 msgstr "Победа"
 
 msgid "intro/aboutButton"
@@ -734,7 +760,10 @@ msgid "points/top"
 msgstr "%(vehicle): %(bonus) за %(top) по опыту."
 
 msgid "points/topCount"
-msgstr "топ-{top}"
+msgstr "топ-%(top)s"
+
+msgid "prestige/top"
+msgstr "%(vehicle): %(bonus) за попадание в %(top) по очкам престижа."
 
 msgid "progression/about"
 msgstr "О БОЕВОМ ПРОПУСКЕ"
@@ -943,6 +972,12 @@ msgstr ""
 
 msgid "progression/widget3dStyle/viewStyles"
 msgstr "Посмотреть все стили"
+
+msgid "reward/postBattle/comp7/progress"
+msgstr "Получено очков за попадание в топ по очкам престижа:"
+
+msgid "reward/postBattle/comp7/progress/tooltip"
+msgstr "Получено очков за попадание в топ по очкам престижа: %(points)d"
 
 msgid "reward/postBattle/progress"
 msgstr "Получено очков за попадание в топ по опыту:"
@@ -1153,6 +1188,9 @@ msgstr "Улучшенная награда"
 msgid "tooltips/inProgress/level"
 msgstr "Текущий этап"
 
+msgid "tooltips/inProgress/playGame/comp7"
+msgstr "Правила начисления очков в режиме «Натиск» на технике Х уровня."
+
 msgid "tooltips/inProgress/playGame/mapbox"
 msgstr ""
 "Правила начисления очков в режиме «Разведка боем» на технике VIII–Х уровня."
@@ -1266,6 +1304,18 @@ msgstr ""
 msgid "tooltips/postProgress/header"
 msgstr "Элитная часть прогрессии"
 
+msgid "tooltips/prestigePoints/lose"
+msgstr "Поражение/Ничья"
+
+msgid "tooltips/prestigePoints/loseWithoutDraw"
+msgstr "Поражение"
+
+msgid "tooltips/prestigePoints/topPlace"
+msgstr "Топ-{place} по очкам престижа"
+
+msgid "tooltips/prestigePoints/win"
+msgstr "Победа"
+
 msgid "tooltips/progression/freePoints/body"
 msgstr ""
 "Если у вас не выбрана никакая глава, то вы будете накапливать "
@@ -1340,6 +1390,11 @@ msgstr "Один из двух 3D-стилей"
 
 msgid "tooltips/vehiclePoints/award"
 msgstr "Награда за достижение лимита очков"
+
+msgid "tooltips/vehiclePoints/comp7"
+msgstr ""
+"Играйте в режиме «Натиск», зарабатывайте очки за результативные действия, "
+"продвигайтесь по этапам прогрессии Боевого пропуска и получайте награды."
 
 msgid "tooltips/vehiclePoints/continuePlaying"
 msgstr "Для дальнейшего продвижения по этапам играйте на других машинах."

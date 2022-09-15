@@ -1,5 +1,5 @@
 import typing, BigWorld
-from adisp import async
+from adisp import adisp_async
 from gui.shared.utils.requesters.abstract import AbstractSyncDataRequester
 from skeletons.gui.shared.utils.requesters import IAnonymizerRequester
 
@@ -13,6 +13,6 @@ class AnonymizerRequester(AbstractSyncDataRequester, IAnonymizerRequester):
     def contactsFeedback(self):
         return self.getCacheValue('contactsFeedback', list())
 
-    @async
+    @adisp_async
     def _requestCache(self, callback):
         BigWorld.player().anonymizer.getCache(lambda resID, value: self._response(resID, value, callback))

@@ -218,6 +218,13 @@ package net.wg.gui.battle.battleRoyale.views.components
          return this._statusCallback;
       }
       
+      public function updateData(param1:StatusNotificationVO) : void
+      {
+         this.setStaticText(param1.title,param1.description);
+         this.updateViewID(param1.viewSubType,false);
+         updateRadialTimer(param1.totalTime,param1.currentTime);
+      }
+      
       public function updateViewID(param1:String, param2:Boolean, param3:int = -1) : void
       {
       }
@@ -254,13 +261,6 @@ package net.wg.gui.battle.battleRoyale.views.components
       public function get isShowing() : Boolean
       {
          return this._isShowing;
-      }
-      
-      public function updateData(param1:StatusNotificationVO) : void
-      {
-         this.setStaticText(param1.title,param1.description);
-         this.updateViewID(param1.viewSubType,false);
-         updateRadialTimer(param1.totalTime,param1.currentTime);
       }
    }
 }

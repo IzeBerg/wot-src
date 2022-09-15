@@ -2094,6 +2094,9 @@ msgstr ""
 " \n"
 "Получены шевроны"
 
+msgid "serviceChannelMessages/battleResults/ratingPoints"
+msgstr "Очки рейтинга"
+
 msgid "serviceChannelMessages/battleResults/seniorityRewardBody"
 msgstr "Вы получили награду за выслугу лет"
 
@@ -2174,12 +2177,29 @@ msgstr "Конвертация чертежей отключена. Ведутс
 msgid "serviceChannelMessages/blueprintsConvertSale/restore"
 msgstr "Конвертация чертежей восстановлена"
 
+msgid "serviceChannelMessages/boosterAdditionalMessage"
+msgstr "Бонусы от незавершённых боёв не учитываются."
+
 msgid "serviceChannelMessages/boosterDisabled"
 msgstr "Личный резерв «%(boosterName)s» был отключён по техническим причинам."
 
 msgid "serviceChannelMessages/boosterExpired"
-msgstr ""
-"Время действия личного резерва «%(boosterName)s» закончилось. Резерв списан."
+msgstr "Время действия личного резерва «%(boosterName)s» истекло."
+
+msgid "serviceChannelMessages/boosterExpiredResourceName/booster_credits"
+msgstr "кредитам"
+
+msgid "serviceChannelMessages/boosterExpiredResourceName/booster_crew_xp"
+msgstr "опыту экипажа"
+
+msgid "serviceChannelMessages/boosterExpiredResourceName/booster_free_xp"
+msgstr "свободному опыту"
+
+msgid "serviceChannelMessages/boosterExpiredResourceName/booster_xp"
+msgstr "боевому опыту"
+
+msgid "serviceChannelMessages/boosterExpiredTotalTemplate/total"
+msgstr "Суммарный бонус к %(resourceName)s:"
 
 msgid "serviceChannelMessages/bootcamp/awards"
 msgstr "Получена награда:"
@@ -2244,6 +2264,9 @@ msgstr "Списано золота"
 msgid "serviceChannelMessages/currencyUpdate/financial_transaction"
 msgstr "Финансовая операция"
 
+msgid "serviceChannelMessages/currencyUpdate/integratedAuction"
+msgstr "Аукцион"
+
 msgid "serviceChannelMessages/currencyUpdate/received/bpcoin"
 msgstr "Получено жетонов"
 
@@ -2279,6 +2302,12 @@ msgid "serviceChannelMessages/demountKitEnabled"
 msgstr ""
 "Операции с демонтажными наборами возобновлены. Приносим извинения за "
 "причинённые неудобства."
+
+msgid "serviceChannelMessages/dogTags/bonus/background"
+msgstr "Разблокирован фон жетона: «%(name)s»"
+
+msgid "serviceChannelMessages/dogTags/bonus/engraving"
+msgstr "Разблокирована гравировка жетона «%(name)s»"
 
 msgid "serviceChannelMessages/dogTags/gradingMessage/levelUpToText"
 msgstr "достигнутый уровень"
@@ -2492,8 +2521,49 @@ msgid "serviceChannelMessages/fortificationStartUp"
 msgstr ""
 "На склад командного центра зачислено %(defResCount)s единиц промресурса."
 
+msgid "serviceChannelMessages/funRandom/startEvent/button"
+msgstr "К событию!"
+
 msgid "serviceChannelMessages/goldReceivedAsGift"
 msgstr "От администрации получено золота: %(gold)s."
+
+msgid "serviceChannelMessages/integratedAuction/belowCompetitiveRate/header"
+msgstr "Аукцион: конкурентная ставка превышает вашу"
+
+msgid "serviceChannelMessages/integratedAuction/belowCompetitiveRate/text"
+msgstr ""
+"Шанс выиграть в текущих торгах снижен: ваша ставка стала ниже конкурентной."
+
+msgid "serviceChannelMessages/integratedAuction/button"
+msgstr "К Аукциону"
+
+msgid "serviceChannelMessages/integratedAuction/lostRate/header"
+msgstr "Ставка проиграла. К возврату:"
+
+msgid "serviceChannelMessages/integratedAuction/lostRate/text"
+msgstr ""
+"Ставка, которую вы сделали, оказалась ниже ставок других игроков. Сумма "
+"ставки вернётся на ваш аккаунт в ближайшее время."
+
+msgid "serviceChannelMessages/integratedAuction/rateError/header"
+msgstr "Ошибка"
+
+msgid "serviceChannelMessages/integratedAuction/rateError/text"
+msgstr ""
+"Произошла ошибка при совершении ставки. Средства не были списаны. "
+"Пожалуйста, попробуйте ещё раз."
+
+msgid "serviceChannelMessages/integratedAuction/stageFinish/text"
+msgstr "Торги подходят к завершению."
+
+msgid "serviceChannelMessages/integratedAuction/stageFinish/title"
+msgstr "Успейте сделать ставку!"
+
+msgid "serviceChannelMessages/integratedAuction/stageStart/text"
+msgstr "Успейте сделать ставку. Количество товара ограничено."
+
+msgid "serviceChannelMessages/integratedAuction/stageStart/title"
+msgstr "Торги за новые лоты уже начались!"
 
 msgid "serviceChannelMessages/invoiceReceived/berthsAccrued"
 msgstr "Добавлены койки в Казарму"
@@ -2862,6 +2932,12 @@ msgstr "К наградам"
 msgid "serviceChannelMessages/payerSeniority/coins/header"
 msgstr "Заслуженная награда"
 
+msgid "serviceChannelMessages/personalReservesConverted"
+msgstr "Все ваши личные резервы конвертированы."
+
+msgid "serviceChannelMessages/personalReservesTitle"
+msgstr "Конвертация личных резервов"
+
 msgid "serviceChannelMessages/piggyBank/continueAfterSmashed"
 msgstr "Начался новый цикл накопления."
 
@@ -2977,10 +3053,13 @@ msgid "serviceChannelMessages/progression2d/inscription"
 msgstr "Надпись"
 
 msgid "serviceChannelMessages/progression2d/item"
-msgstr "%(typeName)s «%(name)s» %(level)s уровня"
+msgstr "%(typeName)s «%(name)s»%(level)s"
 
 msgid "serviceChannelMessages/progression2d/itemCount"
 msgstr "И ещё: %(count)s"
+
+msgid "serviceChannelMessages/progression2d/level"
+msgstr " %(level)s уровня"
 
 msgid "serviceChannelMessages/progression2d/paint"
 msgstr "Краска"
@@ -3416,6 +3495,9 @@ msgstr "Наладка оборудования"
 
 msgid "serviceChannelMessages/tankPremiumReceivedAsGift"
 msgstr "От администрации получен Танковый премиум аккаунт на %(days)d д."
+
+msgid "serviceChannelMessages/toReserves"
+msgstr "К резервам"
 
 msgid "serviceChannelMessages/vehCamouflageTimedOut"
 msgstr "Срок действия камуфляжа на %(vehicleName)s истёк."

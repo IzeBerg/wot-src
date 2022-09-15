@@ -162,6 +162,54 @@
 			</value>
 		</message>
 		<message>
+			<name>DEATH_FROM_SHOT_SELF_ENEMY_POI</name>
+			<type>list</type>
+			<value>
+				<item>_(#ingame_gui:player_messages/DEATH_FROM_SHOT_SELF_ENEMY_POI)</item>
+				<item>self</item>
+			</value>
+		</message>
+		<message>
+			<name>DEATH_FROM_SHOT_SELF_ENEMY_COMP7</name>
+			<type>list</type>
+			<value>
+				<item>_(#ingame_gui:player_messages/DEATH_FROM_SHOT_SELF_ENEMY_COMP7)</item>
+				<item>self</item>
+			</value>
+		</message>
+		<message>
+			<name>DEATH_FROM_SHOT_ALLY_ENEMY_POI</name>
+			<type>list</type>
+			<value>
+				<item>_(#ingame_gui:player_messages/DEATH_FROM_SHOT_ALLY_ENEMY_POI)</item>
+				<item>green</item>
+			</value>
+		</message>
+		<message>
+			<name>DEATH_FROM_SHOT_ALLY_ENEMY_COMP7</name>
+			<type>list</type>
+			<value>
+				<item>_(#ingame_gui:player_messages/DEATH_FROM_SHOT_ALLY_ENEMY_COMP7)</item>
+				<item>green</item>
+			</value>
+		</message>
+		<message>
+			<name>DEATH_FROM_SHOT_ENEMY_ALLY_POI</name>
+			<type>list</type>
+			<value>
+				<item>_(#ingame_gui:player_messages/DEATH_FROM_SHOT_ENEMY_ALLY_POI)</item>
+				<item>red,purple</item>
+			</value>
+		</message>
+		<message>
+			<name>DEATH_FROM_SHOT_ENEMY_ALLY_COMP7</name>
+			<type>list</type>
+			<value>
+				<item>_(#ingame_gui:player_messages/DEATH_FROM_SHOT_ENEMY_ALLY_COMP7)</item>
+				<item>red,purple</item>
+			</value>
+		</message>
+		<message>
 			<name>DEATH_FROM_DROWNING_SELF_SUICIDE</name>
 			<type>list</type>
 			<value>
@@ -1182,6 +1230,30 @@
 			<type>list</type>
 			<value>
 				<item>_(#battle_royale:player_messages/MINEFIELD_DESTROYED)</item>
+				<item>green</item>
+			</value>
+		</message>
+		<message>
+			<name>POI_EQUIPMENT_USED_BY_ALLY</name>
+			<type>list</type>
+			<value>
+				<item>_(#ingame_gui:player_messages/poi_equipment_used_by_ally)</item>
+				<item>green</item>
+			</value>
+		</message>
+		<message>
+			<name>POI_EQUIPMENT_USED_BY_ENEMY</name>
+			<type>list</type>
+			<value>
+				<item>_(#ingame_gui:player_messages/poi_equipment_used_by_enemy)</item>
+				<item>red,purple</item>
+			</value>
+		</message>
+		<message>
+			<name>COMBAT_COMP7_EQUIPMENT_READY</name>
+			<type>list</type>
+			<value>
+				<item>_(#comp7:player_messages/COMBAT_EQUIPMENT_READY)</item>
 				<item>green</item>
 			</value>
 		</message>

@@ -22,7 +22,7 @@ class BCConsumablesPanel(ConsumablesPanel):
             return CONSUMABLES_PANEL_SETTINGS.BIG_SETTINGS_ID
         return super(BCConsumablesPanel, self)._getPanelSettings()
 
-    def _getEquipmentIconPath(self):
+    def _getEquipmentIconPath(self, *_):
         if self.__isBigIcons:
             return R_EQUIPMENT_ICON_PATH_BIG
         return R_EQUIPMENT_ICON_PATH_DEFAULT

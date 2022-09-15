@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<chunkSize>100.000000</chunkSize>
+	<flora>spaces/hangar_v3/flora.xml</flora>
+	<bounds>
+		<minX>-3</minX>
+		<maxX>1</maxX>
+		<minY>-3</minY>
+		<maxY>1</maxY>
+	</bounds>
+	<farPlane>
+		<max>1800.000000</max>
+		<high>1200.000000</high>
+		<medium>1200.000000</medium>
+		<low>500.000000</low>
+	</farPlane>
+	<DecalsInfo>
+		<VisualDecals>true</VisualDecals>
+		<PBSDecals>true</PBSDecals>
+		<scene>
+			<anisotropy>4</anisotropy>
+			<type>
+				<name>GBufferDecals</name>
+				<atlas>
+					<width>4096</width>
+					<height>4096</height>
+					<format>DXT5</format>
+					<constrains>
+						<minWidth>64</minWidth>
+						<minHeight>64</minHeight>
+						<maxWidth>2048</maxWidth>
+						<maxHeight>2048</maxHeight>
+						<format>DXT5</format>
+					</constrains>
+				</atlas>
+				<atlas>
+					<width>4096</width>
+					<height>4096</height>
+					<format>DXT5</format>
+					<constrains>
+						<minWidth>64</minWidth>
+						<minHeight>64</minHeight>
+						<maxWidth>2048</maxWidth>
+						<maxHeight>2048</maxHeight>
+						<format>DXT5</format>
+					</constrains>
+				</atlas>
+				<atlas>
+					<width>4096</width>
+					<height>4096</height>
+					<format>DXT5</format>
+					<constrains>
+						<minWidth>64</minWidth>
+						<minHeight>64</minHeight>
+						<maxWidth>2048</maxWidth>
+						<maxHeight>2048</maxHeight>
+						<format>DXT5</format>
+					</constrains>
+				</atlas>
+			</type>
+			<type>
+				<name>OtherDecals</name>
+				<atlas>
+					<width>2048</width>
+					<height>2048</height>
+					<format>DXT1</format>
+					<constrains>
+						<minWidth>128</minWidth>
+						<minHeight>128</minHeight>
+						<maxWidth>512</maxWidth>
+						<maxHeight>512</maxHeight>
+						<format>DXT1</format>
+					</constrains>
+				</atlas>
+			</type>
+		</scene>
+		<road>
+			<type>
+				<name>GBufferDecals</name>
+				<atlas>
+					<width>2048</width>
+					<height>2048</height>
+					<format>DXT5</format>
+					<constrains>
+						<minWidth>64</minWidth>
+						<minHeight>64</minHeight>
+						<maxWidth>1024</maxWidth>
+						<maxHeight>1024</maxHeight>
+						<format>DXT5</format>
+					</constrains>
+				</atlas>
+				<atlas>
+					<width>2048</width>
+					<height>2048</height>
+					<format>DXT5</format>
+					<constrains>
+						<minWidth>64</minWidth>
+						<minHeight>64</minHeight>
+						<maxWidth>1024</maxWidth>
+						<maxHeight>1024</maxHeight>
+						<format>DXT5</format>
+					</constrains>
+				</atlas>
+				<atlas>
+					<width>2048</width>
+					<height>2048</height>
+					<format>DXT5</format>
+					<constrains>
+						<minWidth>64</minWidth>
+						<minHeight>64</minHeight>
+						<maxWidth>1024</maxWidth>
+						<maxHeight>1024</maxHeight>
+						<format>DXT5</format>
+					</constrains>
+				</atlas>
+			</type>
+		</road>
+	</DecalsInfo>
+	<shadowBaker>
+		<blurFilterExtent>27</blurFilterExtent>
+		<blurFilterFalloff>0.000100</blurFilterFalloff>
+	</shadowBaker>
+	<speedtree>
+		<lodFactor>
+			0.8
+			<!--BW_String-->
+		</lodFactor>
+	</speedtree>
+	<streaming>
+		<geometry>
+			<tanks>0</tanks>
+		</geometry>
+	</streaming>
+	<navmeshGenerator>navgen</navmeshGenerator>
+	<hangarSettings>
+		<customizationHangarSettings>
+			<v_start_pos>1.110000 206.300003 -0.852000</v_start_pos>
+			<v_start_angles>0.000000 0.000000 0.000000</v_start_angles>
+			<shadow_forward_y_offset>-0.020000</shadow_forward_y_offset>
+			<shadow_deferred_y_offset>0.000000</shadow_deferred_y_offset>
+			<havokSceneBounds>
+				<minHeight>-2</minHeight>
+				<maxHeight>3</maxHeight>
+			</havokSceneBounds>
+			<cam_start_dist>9.000000</cam_start_dist>
+			<cam_dist_constr>1.000000 9.000000</cam_dist_constr>
+			<cam_start_angles>210.000000 -16.000000</cam_start_angles>
+			<cam_pivot_pos>0.000000 1.000000 0.000000</cam_pivot_pos>
+			<cam_start_target_pos>1.110000 206.300003 -0.852000</cam_start_target_pos>
+			<cam_fluency>0.150000</cam_fluency>
+		</customizationHangarSettings>
+		<v_start_pos>
+			1.147     6.136    1.3910
+			<!--BW_String-->
+		</v_start_pos>
+		<v_start_angles>
+			-39.12 0.000000 0.000000
+			<!--BW_String-->
+		</v_start_angles>
+		<shadow_light_dir>-0.300000 -0.500000 0.700000</shadow_light_dir>
+		<vehicle_gun_pitch>0.000000</vehicle_gun_pitch>
+		<vehicle_turret_yaw>0.000000</vehicle_turret_yaw>
+		<shadow_forward_y_offset>-0.010000</shadow_forward_y_offset>
+		<shadow_deferred_y_offset>0.050000</shadow_deferred_y_offset>
+		<cam_yaw_constr>-180.000000 180.000000</cam_yaw_constr>
+		<cam_pitch_constr>-80.000000 0.000000</cam_pitch_constr>
+		<cam_pitch_constr_platoon>-80.000000 -30.000000</cam_pitch_constr_platoon>
+		<cam_sens>0.005000</cam_sens>
+		<cam_dist_sens>0.003000</cam_dist_sens>
+		<cam_fluency>0.100000</cam_fluency>
+		<cam_start_target_pos>0.500000 6.195000 1.700000</cam_start_target_pos>
+		<cam_pivot_pos>0.000000 1.000000 0.000000</cam_pivot_pos>
+		<cam_start_dist>10.000000</cam_start_dist>
+		<cam_start_dist_platoon>12.000000</cam_start_dist_platoon>
+		<cam_dist_constr>4.000000 12.000000</cam_dist_constr>
+		<cam_dist_constr_platoon>4.000000 18.000000</cam_dist_constr_platoon>
+		<cam_start_angles>162.000000 -6.000000</cam_start_angles>
+		<cam_start_angles_platoon>146.500000 -12.000000</cam_start_angles_platoon>
+		<cam_min_dist_vehicle_hull_length_k>0.600000</cam_min_dist_vehicle_hull_length_k>
+		<cam_capsule_scale>2.000000 2.000000 2.000000</cam_capsule_scale>
+		<cam_capsule_gun_scale>1.000000 1.000000 1.100000</cam_capsule_gun_scale>
+		<cam_idle_pitch_constr>-0.500000 -0.080000</cam_idle_pitch_constr>
+		<cam_idle_dist_constr>6.500000 10.000000</cam_idle_dist_constr>
+		<cam_idle_yaw_period>139.000000</cam_idle_yaw_period>
+		<cam_idle_pitch_period>67.000000</cam_idle_pitch_period>
+		<cam_idle_dist_period>89.000000</cam_idle_dist_period>
+		<cam_idle_easing_in_time>5.000000</cam_idle_easing_in_time>
+		<cam_parallax_distance>0.000000 0.000000</cam_parallax_distance>
+		<cam_parallax_angles>0.260000 0.150000</cam_parallax_angles>
+		<cam_parallax_smoothing>5.000000</cam_parallax_smoothing>
+		<emblems_alpha_undamaged>0.900000</emblems_alpha_undamaged>
+		<emblems_alpha_damaged>0.300000</emblems_alpha_damaged>
+		<preview_cam_start_dist>7.000000</preview_cam_start_dist>
+		<preview_cam_dist_constr>5.000000 11.000000</preview_cam_dist_constr>
+		<preview_cam_start_angles>100.000000 -25.000000</preview_cam_start_angles>
+		<preview_cam_pivot_pos>0.000000 1.000000 0.000000</preview_cam_pivot_pos>
+		<preview_cam_start_target_pos>1.000000 6.195000 1.000000</preview_cam_start_target_pos>
+	</hangarSettings>
+	<nearPlane>0.250000</nearPlane>
+	<enableClusteredShading>false</enableClusteredShading>
+</root>
