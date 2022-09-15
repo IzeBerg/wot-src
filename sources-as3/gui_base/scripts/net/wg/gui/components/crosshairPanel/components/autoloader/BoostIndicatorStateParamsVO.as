@@ -10,7 +10,7 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
       
       public var currentFrame:int = 1;
       
-      public var currentState:int = -2;
+      public var currentState:int;
       
       public var isRecharging:Boolean = false;
       
@@ -24,6 +24,7 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
       
       public function BoostIndicatorStateParamsVO()
       {
+         this.currentState = AUTOLOADERBOOSTVIEWSTATES.INVISIBLE;
          super();
       }
       

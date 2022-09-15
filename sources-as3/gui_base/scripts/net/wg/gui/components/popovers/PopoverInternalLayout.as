@@ -33,6 +33,7 @@ package net.wg.gui.components.popovers
       
       override public function invokeLayout() : Object
       {
+         var _loc1_:PopOver = null;
          var _loc2_:IUIComponentEx = null;
          var _loc3_:TextField = null;
          var _loc4_:int = 0;
@@ -40,7 +41,7 @@ package net.wg.gui.components.popovers
          var _loc6_:MovieClip = null;
          var _loc7_:int = 0;
          var _loc8_:int = 0;
-         var _loc1_:PopOver = PopOver(target);
+         _loc1_ = PopOver(target);
          if(_loc1_)
          {
             _loc2_ = _loc1_.wrapperContent;

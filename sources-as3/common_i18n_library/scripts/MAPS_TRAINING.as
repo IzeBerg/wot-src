@@ -1199,4 +1199,184 @@ package
       
       public static const C_90_MINSK_UPPERNAME:String = "#maps_training:90_minsk/upperName";
       
-      public static const C_95_LOST_CITY_CTF_UPPERNAME:String = "#maps_training:95_lost_city_ctf/
+      public static const C_95_LOST_CITY_CTF_UPPERNAME:String = "#maps_training:95_lost_city_ctf/upperName";
+      
+      public static const C_99_POLAND_UPPERNAME:String = "#maps_training:99_poland/upperName";
+      
+      public static const C_101_DDAY_UPPERNAME:String = "#maps_training:101_dday/upperName";
+      
+      public static const C_105_GERMANY_UPPERNAME:String = "#maps_training:105_germany/upperName";
+      
+      public static const C_112_EIFFEL_TOWER_CTF_UPPERNAME:String = "#maps_training:112_eiffel_tower_ctf/upperName";
+      
+      public static const C_114_CZECH_UPPERNAME:String = "#maps_training:114_czech/upperName";
+      
+      public static const C_115_SWEDEN_UPPERNAME:String = "#maps_training:115_sweden/upperName";
+      
+      public static const LOADINGSCREEN_1_TITLE:String = "#maps_training:loadingScreen/1/title";
+      
+      public static const LOADINGSCREEN_1_DESCRIPTION:String = "#maps_training:loadingScreen/1/description";
+      
+      public static const LOADINGSCREEN_2_TITLE:String = "#maps_training:loadingScreen/2/title";
+      
+      public static const LOADINGSCREEN_2_DESCRIPTION:String = "#maps_training:loadingScreen/2/description";
+      
+      public static const LOADINGSCREEN_3_TITLE:String = "#maps_training:loadingScreen/3/title";
+      
+      public static const LOADINGSCREEN_3_DESCRIPTION:String = "#maps_training:loadingScreen/3/description";
+      
+      public static const LOADINGSCREEN_4_TITLE:String = "#maps_training:loadingScreen/4/title";
+      
+      public static const LOADINGSCREEN_4_DESCRIPTION:String = "#maps_training:loadingScreen/4/description";
+      
+      public static const PREBATTLE_SCENARIO:String = "#maps_training:prebattle/scenario";
+      
+      public static const PREBATTLE_TARGETS:String = "#maps_training:prebattle/targets";
+      
+      public static const BATTLE_GOALS:String = "#maps_training:battle/goals";
+      
+      public static const RESULT_TITLE_WIN:String = "#maps_training:result/title/win";
+      
+      public static const RESULT_TITLE_LOSE:String = "#maps_training:result/title/lose";
+      
+      public static const RESULT_TITLE_PARTIAL:String = "#maps_training:result/title/partial";
+      
+      public static const RESULT_MAPNAME:String = "#maps_training:result/mapName";
+      
+      public static const RESULT_SCENARIO:String = "#maps_training:result/scenario";
+      
+      public static const RESULT_KILLS:String = "#maps_training:result/kills";
+      
+      public static const RESULT_TIME:String = "#maps_training:result/time";
+      
+      public static const RESULT_REWARDGOT:String = "#maps_training:result/rewardGot";
+      
+      public static const RESULT_ALLREWARDGOT:String = "#maps_training:result/allRewardGot";
+      
+      public static const RESULT_REWARDNOTGOT:String = "#maps_training:result/rewardNotGot";
+      
+      public static const RESULT_SUBMIT:String = "#maps_training:result/submit";
+      
+      public static const QUEUE_TIME:String = "#maps_training:queue/time";
+      
+      public static const QUEUE_DELAYTIME:String = "#maps_training:queue/delayTime";
+      
+      public static const QUEUE_LONGTIME:String = "#maps_training:queue/longTime";
+      
+      public static const QUEUE_QUITBUTTON:String = "#maps_training:queue/quitButton";
+      
+      public static const QUEUE_TITLETIPS:String = "#maps_training:queue/titleTips";
+      
+      public static const QUEUE_TIP_1:String = "#maps_training:queue/tip/1";
+      
+      public static const QUEUE_TIP_2:String = "#maps_training:queue/tip/2";
+      
+      public static const QUEUE_TIP_3:String = "#maps_training:queue/tip/3";
+      
+      public static const QUEUE_TIP_4:String = "#maps_training:queue/tip/4";
+      
+      public static const QUEUE_TIP_5:String = "#maps_training:queue/tip/5";
+      
+      public static const QUEUE_TIP_6:String = "#maps_training:queue/tip/6";
+      
+      public static const QUEUE_TIP_7:String = "#maps_training:queue/tip/7";
+      
+      public static const QUEUE_TIP_8:String = "#maps_training:queue/tip/8";
+      
+      public static const QUEUE_TIP_9:String = "#maps_training:queue/tip/9";
+      
+      public static const QUEUE_TIP_10:String = "#maps_training:queue/tip/10";
+      
+      public static const QUEUE_TIP_11:String = "#maps_training:queue/tip/11";
+      
+      public static const QUEUE_TIP_12:String = "#maps_training:queue/tip/12";
+      
+      public static const QUEUE_TIP_13:String = "#maps_training:queue/tip/13";
+      
+      public static const QUEUE_TIP_14:String = "#maps_training:queue/tip/14";
+      
+      public static const QUEUE_TIP_15:String = "#maps_training:queue/tip/15";
+      
+      public static const QUEUE_TIP_16:String = "#maps_training:queue/tip/16";
+      
+      public static const QUEUE_TIP_17:String = "#maps_training:queue/tip/17";
+      
+      public static const QUEUE_TIP_18:String = "#maps_training:queue/tip/18";
+      
+      public static const QUEUE_TIP_19:String = "#maps_training:queue/tip/19";
+      
+      public static const QUEUE_TIP_20:String = "#maps_training:queue/tip/20";
+      
+      public static const QUEUE_TIP_21:String = "#maps_training:queue/tip/21";
+      
+      public static const HINTS_MOVETOWAYPOINT:String = "#maps_training:hints/moveToWaypoint";
+      
+      public static const HINTS_FINDPLACEONSHOOTINGPOINT:String = "#maps_training:hints/findPlaceOnShootingPoint";
+      
+      public static const HINTS_KILLENEMIES:String = "#maps_training:hints/killEnemies";
+      
+      public static const HINTS_SHOOTINGPLACECOMPLETED:String = "#maps_training:hints/shootingPlaceCompleted";
+      
+      public static const HINTS_SHOOTINGPLACECOMPLETEDTEXT:String = "#maps_training:hints/shootingPlaceCompletedText";
+      
+      public static const HINTS_TWOMINUTESLEFT:String = "#maps_training:hints/twoMinutesLeft";
+      
+      public static const MAPSELECTION_TEXTBUTTON_INFO:String = "#maps_training:mapSelection/TextButton/info";
+      
+      public static const MAPSELECTION_MAPLISTEMPTY_TITLE:String = "#maps_training:mapSelection/MapListEmpty/title";
+      
+      public static const MAPSELECTION_MAPLISTEMPTY_TEXT:String = "#maps_training:mapSelection/MapListEmpty/text";
+      
+      public static const MAPSELECTION_GROUPTITLE_0:String = "#maps_training:mapSelection/groupTitle/0";
+      
+      public static const MAPSELECTION_GROUPTITLE_1:String = "#maps_training:mapSelection/groupTitle/1";
+      
+      public static const MAPSELECTION_GROUPTITLE_2:String = "#maps_training:mapSelection/groupTitle/2";
+      
+      public static const MAPSELECTION_STATUSTITLE_STATUS:String = "#maps_training:mapSelection/statusTitle/status";
+      
+      public static const MAPSELECTION_STATUSTITLE_TIPS_HEADER:String = "#maps_training:mapSelection/statusTitle/tips/header";
+      
+      public static const MAPSELECTION_STATUSTITLE_TIPS_BODY:String = "#maps_training:mapSelection/statusTitle/tips/body";
+      
+      public static const MAPSELECTION_MAPCARD_COMPLETED:String = "#maps_training:mapSelection/MapCard/completed";
+      
+      public static const FINALBATTLESCREEN_WIN:String = "#maps_training:finalBattleScreen/win";
+      
+      public static const FINALBATTLESCREEN_TIE:String = "#maps_training:finalBattleScreen/tie";
+      
+      public static const FINALBATTLESCREEN_LOSE:String = "#maps_training:finalBattleScreen/lose";
+      
+      public static const NOTIFICATION_TITLE_WIN:String = "#maps_training:notification/title/win";
+      
+      public static const NOTIFICATION_TITLE_LOSE:String = "#maps_training:notification/title/lose";
+      
+      public static const ARENA_START_ERRORS_PRB_KICK_TIMEOUT:String = "#maps_training:arena_start_errors/prb/kick/timeout";
+      
+      public static const HELPSCREEN_HINT_PRESS:String = "#maps_training:helpScreen/hint/press";
+      
+      public static const HELPSCREEN_HINT_DESCRIPTION:String = "#maps_training:helpScreen/hint/description";
+      
+      public static const MANUALPAGE_BUTTON:String = "#maps_training:manualPage/button";
+      
+      public static const BOTVEHICLETYPE_HEAVYTANK:String = "#maps_training:botVehicleType/heavyTank";
+      
+      public static const BOTVEHICLETYPE_MEDIUMTANK:String = "#maps_training:botVehicleType/mediumTank";
+      
+      public static const BOTVEHICLETYPE_LIGHTTANK:String = "#maps_training:botVehicleType/lightTank";
+      
+      public static const BOTVEHICLETYPE_AT_SPG:String = "#maps_training:botVehicleType/AT-SPG";
+      
+      public static const BOTVEHICLETYPE_SPG:String = "#maps_training:botVehicleType/SPG";
+      
+      public static const BOTVEHICLEDESCRIPTION:String = "#maps_training:botVehicleDescription";
+      
+      public static const BOTNAME:String = "#maps_training:botName";
+       
+      
+      public function MAPS_TRAINING()
+      {
+         super();
+      }
+   }
+}
