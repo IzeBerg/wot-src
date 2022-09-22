@@ -1,0 +1,1238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>141.900009</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomber_01</name>
+		<type>model</type>
+		<resource>content/Outland/hd_out_UNI_009_Tu2/normal/lod0/hd_out_UNI_009_Tu2_01.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>80.761223 -3.807770 10.634644</value>
+				<inTangent>2.901336 0.200959 -32.428581</inTangent>
+				<outTangent>2.153590 0.200952 -32.295506</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>100.000008</startTime>
+				<value>296.120239 16.287430 -3218.916260</value>
+				<inTangent>2.153590 0.200952 -32.295506</inTangent>
+				<outTangent>2.771225 0.170223 -34.046516</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>140.083344</startTime>
+				<value>407.200195 23.110535 -4583.614258</value>
+				<inTangent>2.771225 0.170223 -34.046516</inTangent>
+				<outTangent>3.241343 0.170223 -34.046513</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotation</name>
+			<type>quaternion</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.999391 0.000000 0.034899</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 176.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>140.200012</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>141.266678</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Effect_Trail_Bomber_Left_01</name>
+		<type>particle</type>
+		<resource>particles/Environment/scenarios/105_germany_smoke_trail_01.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>1.000000</startTime>
+				<duration>140.566681</duration>
+				<value>Bomber_01|HP_engineLeft</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.000000 0.000000 -30.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emmision</name>
+			<type>float</type>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.289750</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.166667</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>0.895522</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.283334</startTime>
+				<value>1.000000</value>
+				<inTangent>0.895522</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>137.950012</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>-1.428578</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>138.650009</startTime>
+				<value>0.000000</value>
+				<inTangent>-1.428578</inTangent>
+				<outTangent>-0.056680</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Effect_Trail_Bomber_Right_01</name>
+		<type>particle</type>
+		<resource>particles/Environment/scenarios/105_germany_smoke_trail_01.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>1.000000</startTime>
+				<duration>140.900009</duration>
+				<value>Bomber_01|HP_engineRight</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.000000 0.000000 -30.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emmision</name>
+			<type>float</type>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.289750</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.166667</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>0.895522</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.283334</startTime>
+				<value>1.000000</value>
+				<inTangent>0.895522</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>137.950012</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>-1.428578</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>138.650009</startTime>
+				<value>0.000000</value>
+				<inTangent>-1.428578</inTangent>
+				<outTangent>-0.056680</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomber_02</name>
+		<type>model</type>
+		<resource>content/Outland/hd_out_UNI_009_Tu2/normal/lod0/hd_out_UNI_009_Tu2_01.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>1.868959 0.162807 -32.172974</inTangent>
+				<outTangent>1.809463 0.162807 -32.172974</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>100.050003</startTime>
+				<value>181.036743 16.288818 -3218.906250</value>
+				<inTangent>1.809463 0.162807 -32.172974</inTangent>
+				<outTangent>1.667152 0.170418 -34.089153</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>140.083344</startTime>
+				<value>247.778412 23.111221 -4583.608887</value>
+				<inTangent>1.667152 0.170418 -34.089153</inTangent>
+				<outTangent>1.842513 0.170418 -34.089165</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotation</name>
+			<type>quaternion</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.999534 0.000000 0.030539</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 176.500000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>139.933334</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>140.983337</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomber_03</name>
+		<type>model</type>
+		<resource>content/Outland/hd_out_UNI_009_Tu2/normal/lod0/hd_out_UNI_009_Tu2_01.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-47.233833 4.258301 -8.599121</value>
+				<inTangent>0.116644 0.022606 -32.149868</inTangent>
+				<outTangent>1.460906 0.120202 -32.087311</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>100.050003</startTime>
+				<value>98.929810 16.284546 -3218.934570</value>
+				<inTangent>1.460906 0.120202 -32.087311</inTangent>
+				<outTangent>1.293142 0.170419 -34.089165</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>140.083344</startTime>
+				<value>150.698608 23.106995 -4583.637695</value>
+				<inTangent>1.293142 0.170419 -34.089165</inTangent>
+				<outTangent>-0.460833 0.170418 -34.089165</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotation</name>
+			<type>quaternion</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.999657 0.000000 0.026177</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 177.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>139.850006</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>140.833344</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Effect_Trail_Bomber_Left_03</name>
+		<type>particle</type>
+		<resource>particles/Environment/scenarios/105_germany_smoke_trail_01.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>1.000000</startTime>
+				<duration>140.566681</duration>
+				<value>Bomber_03|HP_engineLeft</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.000000 0.000000 -30.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emmision</name>
+			<type>float</type>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.289750</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.166667</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>0.895522</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.283334</startTime>
+				<value>1.000000</value>
+				<inTangent>0.895522</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>137.950012</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>-1.428578</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>138.650009</startTime>
+				<value>0.000000</value>
+				<inTangent>-1.428578</inTangent>
+				<outTangent>-0.056680</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Effect_Trail_Bomber_Right_03</name>
+		<type>particle</type>
+		<resource>particles/Environment/scenarios/105_germany_smoke_trail_01.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>1.000000</startTime>
+				<duration>140.900009</duration>
+				<value>Bomber_03|HP_engineRight</value>
+			</frame>
+		</track>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.000000 0.000000 -30.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emmision</name>
+			<type>float</type>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.289750</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.166667</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>0.895522</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.283334</startTime>
+				<value>1.000000</value>
+				<inTangent>0.895522</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>137.950012</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>-1.428578</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>138.650009</startTime>
+				<value>0.000000</value>
+				<inTangent>-1.428578</inTangent>
+				<outTangent>-0.056680</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomber_04</name>
+		<type>model</type>
+		<resource>content/Outland/hd_out_UNI_009_Tu2/normal/lod0/hd_out_UNI_009_Tu2_01.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-87.592804 -2.365097 -1.722534</value>
+				<inTangent>0.446155 0.186439 -32.155807</inTangent>
+				<outTangent>0.979424 0.186403 -32.156040</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>100.050003</startTime>
+				<value>10.398544 16.284546 -3218.934326</value>
+				<inTangent>0.979424 0.186403 -32.156040</inTangent>
+				<outTangent>1.024971 0.170436 -34.089024</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>140.083344</startTime>
+				<value>51.431541 23.107666 -4583.631836</value>
+				<inTangent>1.024971 0.170436 -34.089024</inTangent>
+				<outTangent>-0.048020 0.170418 -34.089153</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotation</name>
+			<type>quaternion</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.999848 0.000000 0.017452</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 178.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>140.000000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>140.983337</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomber_05</name>
+		<type>model</type>
+		<resource>content/Outland/hd_out_UNI_009_Tu2/normal/lod0/hd_out_UNI_009_Tu2_01.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-129.114212 6.800293 -8.065186</value>
+				<inTangent>0.859378 0.017495 -32.092506</inTangent>
+				<outTangent>0.771702 0.094781 -32.092739</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>100.050003</startTime>
+				<value>-51.905441 16.283142 -3218.943848</value>
+				<inTangent>0.771702 0.094781 -32.092739</inTangent>
+				<outTangent>0.869642 0.170453 -34.088932</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>140.083344</startTime>
+				<value>-17.090750 23.106934 -4583.637695</value>
+				<inTangent>0.869642 0.170453 -34.088932</inTangent>
+				<outTangent>1.058041 0.170418 -34.089203</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotation</name>
+			<type>quaternion</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.999848 0.000000 0.017452</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 178.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>140.066681</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>141.050003</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomber_06</name>
+		<type>model</type>
+		<resource>content/Outland/hd_out_UNI_009_Tu2/normal/lod0/hd_out_UNI_009_Tu2_01.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>42.101223 0.000000 12.080322</value>
+				<inTangent>2.306463 0.222243 -32.250538</inTangent>
+				<outTangent>2.178221 0.172511 -32.293636</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>100.050003</startTime>
+				<value>260.032257 17.259705 -3218.897949</value>
+				<inTangent>2.178221 0.172511 -32.293636</inTangent>
+				<outTangent>2.685311 0.146182 -34.089249</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>140.083344</startTime>
+				<value>367.534241 23.111862 -4583.604492</value>
+				<inTangent>2.685311 0.146182 -34.089249</inTangent>
+				<outTangent>2.685316 0.348280 -34.089249</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotation</name>
+			<type>quaternion</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.999391 0.000000 0.034899</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 176.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>140.000000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>141.050003</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_01</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>85.033348</startTime>
+				<value>263.794983 4.206909 -2744.066406</value>
+				<inTangent>0.001024 -0.230429 -28.266773</inTangent>
+				<outTangent>0.001024 -0.230429 -28.266773</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>92.350021</startTime>
+				<value>267.511688 -406.770966 -3068.618652</value>
+				<inTangent>0.001024 -65.410645 -28.266773</inTangent>
+				<outTangent>0.001024 -65.410645 -28.266773</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotation</name>
+			<type>quaternion</type>
+			<frame>
+				<startTime>85.033348</startTime>
+				<value>-0.000000 -0.707107 -0.000000 -0.707107</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.539802 1368.593994 0.539560 1368.594238</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>86.066681</startTime>
+				<value>0.500000 -0.500000 -0.500000 -0.500000</value>
+				<inTangent>967.536438 -967.947937 -967.208740 -968.275574</inTangent>
+				<outTangent>-582.728149 582.319397 583.056030 581.991455</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>87.783348</startTime>
+				<value>0.409677 0.222019 -0.677320 0.569306</value>
+				<inTangent>477.355682 258.561951 -789.179932 663.181458</inTangent>
+				<outTangent>-179.358307 -97.334442 296.567627 -249.417877</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>92.350021</startTime>
+				<value>0.158605 0.429421 -0.582408 0.671746</value>
+				<inTangent>69.500381 188.004974 -255.109116 294.190826</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>85.033348</startTime>
+				<value>0.000000 90.000000 0.000000</value>
+				<inTangent>-87.096817 0.000000 0.000000</inTangent>
+				<outTangent>-87.096817 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>86.066681</startTime>
+				<value>-90.000000 90.000000 0.000000</value>
+				<inTangent>-84.355637 18.027000 19.441359</inTangent>
+				<outTangent>-84.355637 18.027000 19.441359</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>87.783348</startTime>
+				<value>-230.104858 151.892715 66.748680</value>
+				<inTangent>-9.443645 23.638809 23.107248</inTangent>
+				<outTangent>-9.443645 23.638809 23.107248</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>92.350021</startTime>
+				<value>-225.502472 214.024841 112.772476</value>
+				<inTangent>1.007820 13.605555 10.078189</inTangent>
+				<outTangent>-0.000000 15.235483 19.044350</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>85.016678</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>85.033348</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>92.216682</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>92.350006</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_02</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>81.550003</startTime>
+				<value>217.831924 8.628571 -2621.656250</value>
+				<inTangent>0.000998 0.967034 -27.542036</inTangent>
+				<outTangent>0.000998 0.967034 -27.542036</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>89.150002</startTime>
+				<value>207.270859 -392.103027 -2933.829590</value>
+				<inTangent>0.000998 -70.680603 -27.542036</inTangent>
+				<outTangent>0.000998 -70.680603 -27.542036</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotation</name>
+			<type>quaternion</type>
+			<frame>
+				<startTime>81.566673</startTime>
+				<value>-0.500000 0.500000 0.500000 0.500000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>-0.001574 -0.001574 -0.001574 0.001585</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>84.066673</startTime>
+				<value>-0.503923 0.496046 0.496046 0.503923</value>
+				<inTangent>-0.000405 -0.000405 -0.000405 0.000405</inTangent>
+				<outTangent>-0.000399 -0.000399 -0.000399 0.000399</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>89.150002</startTime>
+				<value>-0.500000 0.500000 0.500000 0.500000</value>
+				<inTangent>0.000774 0.000774 0.000774 -0.000780</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>81.566673</startTime>
+				<value>-90.000000 90.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 -0.361081</inTangent>
+				<outTangent>0.000000 0.000000 -0.361081</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>84.066673</startTime>
+				<value>-90.000000 90.000000 -0.902703</value>
+				<inTangent>0.000000 0.000000 -0.091750</inTangent>
+				<outTangent>0.000000 0.000000 -0.091750</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>89.150002</startTime>
+				<value>-90.000000 90.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 0.177581</inTangent>
+				<outTangent>-0.000000 -0.000000 0.177581</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>81.566673</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>81.600006</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>89.066666</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>89.150002</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_03</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>82.516663</startTime>
+				<value>148.800980 7.236847 -2657.128418</value>
+				<inTangent>0.000979 -7.806948 -27.022383</inTangent>
+				<outTangent>0.000979 -7.806948 -27.022383</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>90.199997</startTime>
+				<value>162.222946 -447.123657 -3047.786133</value>
+				<inTangent>0.000979 -73.266594 -27.022383</inTangent>
+				<outTangent>0.000979 -73.266594 -27.022383</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotation</name>
+			<type>quaternion</type>
+			<frame>
+				<startTime>82.516678</startTime>
+				<value>-0.500000 0.500000 0.500000 0.500000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>90.250000</startTime>
+				<value>-0.500000 0.500000 0.500000 0.500000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>82.516678</startTime>
+				<value>-90.000000 90.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>90.250000</startTime>
+				<value>-90.000000 90.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>82.516678</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>82.583344</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>90.149994</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>90.233330</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_04</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>84.316673</startTime>
+				<value>72.131485 11.984375 -2720.619385</value>
+				<inTangent>0.001011 -22.058468 -27.899721</inTangent>
+				<outTangent>0.001011 -22.058468 -27.899721</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>91.500008</startTime>
+				<value>71.130981 -391.364075 -3042.734375</value>
+				<inTangent>0.001011 -71.929298 -27.899721</inTangent>
+				<outTangent>0.001011 -71.929298 -27.899721</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotation</name>
+			<type>quaternion</type>
+			<frame>
+				<startTime>84.316666</startTime>
+				<value>-0.500000 0.500000 0.500000 0.500000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>91.516678</startTime>
+				<value>-0.500000 0.500000 0.500000 0.500000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>84.316666</startTime>
+				<value>-90.000000 90.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>91.516678</startTime>
+				<value>-90.000000 90.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>84.316666</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>84.383331</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>91.416679</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>91.500015</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_05</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>85.533333</startTime>
+				<value>-65.234482 9.558685 -2748.441650</value>
+				<inTangent>0.001031 -4.249807 -28.454010</inTangent>
+				<outTangent>0.001031 -4.249807 -28.454010</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>93.183334</startTime>
+				<value>-56.411430 -370.973114 -3027.889648</value>
+				<inTangent>0.001031 -74.980392 -28.454010</inTangent>
+				<outTangent>0.001031 -74.980392 -28.454010</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotation</name>
+			<type>quaternion</type>
+			<frame>
+				<startTime>85.516670</startTime>
+				<value>-0.500000 0.500000 0.500000 0.500000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>-0.005689 -0.005689 -0.005685 0.005685</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>93.133331</startTime>
+				<value>-0.541338 0.454921 0.454921 0.541338</value>
+				<inTangent>-0.005165 -0.006155 -0.006151 0.005165</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>85.516670</startTime>
+				<value>-90.000000 90.000000 0.000000</value>
+				<inTangent>0.000000 -1.301746 0.000000</inTangent>
+				<outTangent>0.000000 -1.301746 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>93.133331</startTime>
+				<value>-90.000000 80.085045 0.000000</value>
+				<inTangent>-0.000000 -1.301746 -0.000000</inTangent>
+				<outTangent>-0.000000 -1.301746 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>85.516670</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>85.583336</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>93.049995</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>93.133331</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Bomb_06</name>
+		<type>model</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_830_FAB250/normal/lod0/hd_mle_UNI_830_FAB250_bigger.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>83.649994</startTime>
+				<value>-5.965679 8.265564 -2694.739258</value>
+				<inTangent>0.001045 -3.665709 -28.835894</inTangent>
+				<outTangent>0.001045 -3.665709 -28.835894</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>90.850006</startTime>
+				<value>-25.936541 -403.532471 -3020.471680</value>
+				<inTangent>0.001045 -88.191826 -28.835894</inTangent>
+				<outTangent>0.001045 -88.191826 -28.835894</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotation</name>
+			<type>quaternion</type>
+			<frame>
+				<startTime>83.650002</startTime>
+				<value>-0.500000 0.500000 0.500000 0.500000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>90.716675</startTime>
+				<value>-0.500000 0.500000 0.500000 0.500000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>83.650002</startTime>
+				<value>-90.000000 90.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>90.716675</startTime>
+				<value>-90.000000 90.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>83.650002</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>83.716667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>90.633347</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>90.716675</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

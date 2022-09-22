@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>Material #60</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/83_main_smoke_01.dds</Texture>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/vel_smoke.dds</Texture>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.305882 0.321569 0.333333 1.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.020000 0.012000 -0.030000 -0.110000</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>2.400000 0.300000 0.100000 0.000000</Vector4>
+					</property>
+					<property>
+						FreshnelColor
+						<Vector4>0.392157 0.372549 0.325490 1.000000</Vector4>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 1.100000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>16.938599 97.191322 -10.156254</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-205.935867 -0.013160 -41.877808</min>
+		<max>239.813065 194.395798 21.565300</max>
+	</boundingBox>
+	<geometrySize>4428</geometrySize>
+	<minUVDensity>0.000006</minUVDensity>
+</root>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>01_center_main</identifier>
+					<fx>shaders/environment/light_flare.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/headlamp_03.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						g_diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/headlamp_05.dds</Texture>
+					</property>
+					<property>
+						g_glowColor
+						<Vector4>1.000000 0.000000 0.258824 0.600000</Vector4>
+					</property>
+					<property>
+						g_outterConeAngle
+						<Float>70.000000</Float>
+					</property>
+					<property>
+						g_tintColor
+						<Vector4>1.000000 0.647059 0.803922 1.000000</Vector4>
+					</property>
+					<property>
+						g_emissionFactor
+						<Float>5.500000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.000430 0.000000 0.000000</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>02_halo_focus</identifier>
+					<fx>shaders/environment/light_flare.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/headlamp_halo_fwd.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						g_diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/headlamp_halo_violet_fwd.dds</Texture>
+					</property>
+					<property>
+						g_glowColor
+						<Vector4>0.858824 0.188235 0.000000 0.100000</Vector4>
+					</property>
+					<property>
+						g_outterConeAngle
+						<Float>2.000000</Float>
+					</property>
+					<property>
+						g_tintColor
+						<Vector4>0.925490 0.019608 0.941176 0.894118</Vector4>
+					</property>
+					<property>
+						g_emissionFactor
+						<Float>8.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.002538 0.000000 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.000000 -0.158517 -0.158517</min>
+		<max>0.002538 0.158517 0.158517</max>
+	</boundingBox>
+	<geometrySize>282</geometrySize>
+	<minUVDensity>9.949169</minUVDensity>
+</root>

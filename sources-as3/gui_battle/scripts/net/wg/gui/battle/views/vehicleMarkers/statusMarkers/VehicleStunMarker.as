@@ -27,7 +27,7 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
          super.showEffectTimer(param1,param2,param3,param4);
       }
       
-      override public function updateEffectTimer(param1:int, param2:Boolean, param3:Boolean = false) : void
+      override public function updateEffectTimer(param1:Number, param2:Boolean, param3:Boolean = false) : void
       {
          super.updateEffectTimer(param1,param2,param3);
          this.setEffectTimerText(param1);

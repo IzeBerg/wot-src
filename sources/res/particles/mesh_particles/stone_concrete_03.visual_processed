@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>Material #106</identifier>
+					<fx>shaders/wg_particles/pbs_mesh_particles.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						pbsMap
+						<Texture>particles/mesh_particles/tex/stone_gmm.dds</Texture>
+					</property>
+					<property>
+						g_meshParticlesZWriteEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_lighting_params
+						<Vector4>
+							1 0.000000 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/mesh_particles/tex/stone_am.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.065158 0.000000 0.072266</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.394413 -0.124351 -0.395138</min>
+		<max>0.264097 0.124351 0.539670</max>
+	</boundingBox>
+	<geometrySize>5322</geometrySize>
+	<minUVDensity>0.007551</minUVDensity>
+</root>

@@ -749,6 +749,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.settings.SoundSettingsBase;
    import net.wg.gui.lobby.settings.SoundSpecialForm;
    import net.wg.gui.lobby.settings.SoundVivoxForm;
+   import net.wg.gui.lobby.settings.components.EventSettingLabel;
    import net.wg.gui.lobby.settings.components.KeyInput;
    import net.wg.gui.lobby.settings.components.KeysItemRenderer;
    import net.wg.gui.lobby.settings.components.KeysScrollingList;
@@ -2408,6 +2409,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_SETTINGS_SOUNDSPECIALFORM:Class = SoundSpecialForm;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_SOUNDVIVOXFORM:Class = SoundVivoxForm;
+      
+      public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_EVENTSETTINGLABEL:Class = EventSettingLabel;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_KEYINPUT:Class = KeyInput;
       

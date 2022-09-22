@@ -953,6 +953,14 @@ msgstr ""
 "Модуль, влияющий на манёвренность машины и её грузоподъёмность. Ходовая "
 "колёсной техники не позволяет развернуться на месте."
 
+msgid "advanced/wt_largeMedkit"
+msgstr ""
+"При использовании мгновенно лечит всех раненых членов экипажа и снимает "
+"оглушение."
+
+msgid "advanced/wt_largeRepairkit"
+msgstr "При использовании мгновенно чинит все повреждённые модули."
+
 msgid "ammo/auto/body"
 msgstr ""
 "При необходимости боекомплект будет пополняться\n"
@@ -4696,7 +4704,7 @@ msgid "equipment/restriction"
 msgstr "Ограничение:"
 
 msgid "event/squad/disable/body"
-msgstr "Для высадки на тёмной стороне Луны выберите %(tankName)s"
+msgstr "Выберите машину Гончих"
 
 msgid "event/squad/disable/header"
 msgstr "Внимание!"
@@ -5422,8 +5430,21 @@ msgstr "Выберите карту, чтобы выйти в бой."
 msgid "hangar/startBtn/mapsTraining/notReady/header"
 msgstr "Недоступно"
 
+msgid "hangar/startBtn/noTicket/body"
+msgstr "Для выхода в бой на Blitzträger auf E 110 нужен ключ"
+
+msgid "hangar/startBtn/noTicket/header"
+msgstr "Выход в бой невозможен"
+
 msgid "hangar/startBtn/preview/body"
 msgstr "Чтобы выйти в бой, вернитесь в Ангар к выбору машины."
+
+msgid "hangar/startBtn/primeNotAvailable/body"
+msgstr ""
+"На этом сервере комендантский час. Попробуйте перейти на другой сервер."
+
+msgid "hangar/startBtn/primeNotAvailable/header"
+msgstr "Выход в бой невозможен"
 
 msgid "hangar/startBtn/squadNotReady/body"
 msgstr "Для выхода в бой выберите машину и подтвердите готовность."
@@ -8091,6 +8112,27 @@ msgstr ""
 msgid "notrecruitedtankman/wt2021_hunter_3/label"
 msgstr "Возвращение Ваффентрагера"
 
+msgid "notrecruitedtankman/wt22_boss_commander/desc"
+msgstr ""
+"Дочь Макса фон Кригера, талантливый инженер-робототехник, одна из первых, "
+"кто успешно интегрировал искусственный интеллект в систему управления "
+"тяжёлой техникой. Делает всё возможное, чтобы секреты отца и его передовые "
+"изобретения не попали в руки Альянса."
+
+msgid "notrecruitedtankman/wt22_boss_commander/label"
+msgstr "Ваффентрагер: Наследие"
+
+msgid "notrecruitedtankman/wt22_hunter_commander/desc"
+msgstr ""
+"Командир боевого крыла Альянса, лично знакомая с фон Кригером. Не считает "
+"своего старого партнёра по «Стальному охотнику» врагом человечества, как его"
+" подают некоторые управленцы из Альянса, однако стремится прекратить его "
+"опасные игры с электричеством, пока эксперименты семьи фон Кригеров не вышли"
+" из-под контроля."
+
+msgid "notrecruitedtankman/wt22_hunter_commander/label"
+msgstr "Ваффентрагер: Наследие"
+
 msgid "notrecruitedtankman/yandex_1/desc"
 msgstr ""
 "Яна — универсальный специалист танкового боя, одинаково хорошо справится с "
@@ -9883,6 +9925,13 @@ msgstr ""
 "Файлы выбранного голоса уведомлений\n"
 "повреждены или отсутствуют."
 
+msgid "setttingsDisabledNotification/body"
+msgstr ""
+"В этом игровом режиме часть настроек недоступна, выберите другой режим."
+
+msgid "setttingsDisabledNotification/header"
+msgstr "Недоступно"
+
 msgid "shell/basic"
 msgstr "Базовый"
 
@@ -10663,6 +10712,9 @@ msgstr ""
 "время перехода увеличивается. При выведенном из строя двигателе смена режима"
 " невозможна."
 
+msgid "tankman/skillsTitle"
+msgstr "Преимущества"
+
 msgid "tankman/status/inactiveSkills/header"
 msgstr "Неподходящие умения и навыки"
 
@@ -11066,6 +11118,9 @@ msgstr "Требуемый уровень"
 msgid "vehicle/action_prc"
 msgstr "Скидка %(actionPrc)s, прежняя стоимость: %(oldPrice)s"
 
+msgid "vehicle/afterEventEnd/title"
+msgstr "Все бои проведены, машина недоступна"
+
 msgid "vehicle/ammo"
 msgstr "В боекомплекте"
 
@@ -11157,6 +11212,15 @@ msgstr "Аренда от"
 msgid "vehicle/multiplied_xp"
 msgstr "Боевой опыт"
 
+msgid "vehicle/overview/desc"
+msgstr ""
+"Страшный сон любого противника. Никаких взводов: только вы и этот дикий "
+"зверь, и не спрашивайте, как Эрмелинде удалось спустить её с цепи. Машина "
+"доступна для участия только в Случайных боях с 26.09.2022 по 18.10.2022."
+
+msgid "vehicle/overview/title"
+msgstr "Общее:"
+
 msgid "vehicle/radioDistance"
 msgstr "<h1>Дальность связи</h1> <h2>(км)</h2>"
 
@@ -11167,10 +11231,10 @@ msgid "vehicle/rentAvailable"
 msgstr "Доступна аренда машины"
 
 msgid "vehicle/rentLeft/battles"
-msgstr "Осталось боёв до завершения аренды"
+msgstr "Доступные бои"
 
 msgid "vehicle/rentLeft/days"
-msgstr "Дней аренды осталось"
+msgstr "Машина доступна до %(date)s"
 
 msgid "vehicle/rentLeft/epic/base"
 msgstr "Аренда для Линии фронта"
@@ -11185,7 +11249,10 @@ msgid "vehicle/rentLeft/epic/minsLeft"
 msgstr "%(timeNum)s мин"
 
 msgid "vehicle/rentLeft/hours"
-msgstr "Часов аренды осталось"
+msgstr "Машина доступна до %(date)s"
+
+msgid "vehicle/rentLeft/noTimeLeft"
+msgstr "Все бои проведены, машина недоступна."
 
 msgid "vehicle/rentLeft/wins"
 msgstr "Осталось побед до завершения аренды"
@@ -11201,6 +11268,11 @@ msgstr "Аренда для Линии фронта"
 
 msgid "vehicle/rentLeftFuture/hours"
 msgstr "Часов аренды"
+
+msgid "vehicle/rentLeftFuture/obtainedBy"
+msgstr ""
+"Можно получить при прохождении прогрессии или из порталов Инженера в рамках "
+"события «Ваффентрагер: Наследие»."
 
 msgid "vehicle/rentLeftFuture/wins"
 msgstr "побед в аренду"

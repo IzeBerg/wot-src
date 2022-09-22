@@ -22,6 +22,8 @@ package net.wg.gui.battle.components
       
       private static const TOP_OFFSET_Y:int = 114;
       
+      private static const RIBBONS_TOP_OFFSET_Y:int = 80;
+      
       private static const NOTIFICATION_TIMERS_OFFSET_X:uint = 25;
       
       private static const MAX_TIMERS_COUNT_EXTRA_SMALL:uint = 2;
@@ -55,6 +57,8 @@ package net.wg.gui.battle.components
       
       private var _callbacksByType:Dictionary;
       
+      private var _ribbonsPanel:DisplayObject = null;
+      
       public function StatusNotificationsPanel()
       {
          this._callbacksByType = new Dictionary();
@@ -80,7 +84,14 @@ package net.wg.gui.battle.components
          if(isInvalid(INVALID_STATE))
          {
             x = this._stageWidth >> 1;
-            y = (this._stageHeight >> 1) + TOP_OFFSET_Y + this._additionalTopOffset;
+            if(this._ribbonsPanel)
+            {
+               y = this._ribbonsPanel.y - RIBBONS_TOP_OFFSET_Y | 0;
+            }
+            else
+            {
+               y = (this._stageHeight >> 1) + TOP_OFFSET_Y + this._additionalTopOffset;
+            }
          }
       }
       
@@ -115,6 +126,7 @@ package net.wg.gui.battle.components
             }
          }
          this._callbacksByType = null;
+         this._ribbonsPanel = null;
          super.onDispose();
       }
       
@@ -185,6 +197,11 @@ package net.wg.gui.battle.components
          this._stageHeight = param2;
          invalidate(INVALID_STATE);
          this.updtateNotificationsVisible();
+      }
+      
+      public function snapToRibbonsPanel(param1:DisplayObject) : void
+      {
+         this._ribbonsPanel = param1;
       }
       
       private function updateData(param1:Vector.<StatusNotificationVO>) : void

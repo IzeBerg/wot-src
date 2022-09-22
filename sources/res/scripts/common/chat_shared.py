@@ -1558,7 +1558,8 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'resourceWellReward',
  'resourceWellNoVehicles',
  'customization2dProgressionChanged',
- 'prbVehicleMaxScoutKick'])
+ 'prbVehicleMaxScoutKick',
+ 'wtEventTicketTokenWithdrawn'])
 SYS_MESSAGE_IMPORTANCE = Enumeration('systemMessageImportance', [
  'normal',
  'high'])

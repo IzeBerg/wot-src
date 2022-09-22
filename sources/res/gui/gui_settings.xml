@@ -1044,6 +1044,11 @@
 				<name>psaProducts</name>
 				<type>url</type>
 			</item>
+			<item>
+				$PARAMS(/white-tiger-overlay/wt2021_category)
+				<name>buyLootboxes</name>
+				<type>url</type>
+			</item>
 		</value>
 	</setting>
 	<setting>
@@ -1603,6 +1608,43 @@
 		</value>
 	</setting>
 	<setting>
+		<name>infoPageEvent</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/WhiteTiger2022/
+				<name>NA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/WhiteTiger2022/
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/WhiteTiger2022/
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/WhiteTiger2022/
+				<name>CN</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/WhiteTiger2022/
+				<name>CT</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/WhiteTiger2022/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
 		<name>spgHitDirectionDelta</name>
 		<type>float</type>
 		<value>
@@ -1859,6 +1901,22 @@
 			</item>
 			<item>
 				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/ResourceWellContentPage/
+				<name>infoPage</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>wtEvent</name>
+		<type>dict</type>
+		<value>
+			<item>
+				{webBridgeRootURL}/$LANGUAGE_CODE/promocontent/VideoWhiteTiger2022/
+				<name>introVideo</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/WhiteTiger2022/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>

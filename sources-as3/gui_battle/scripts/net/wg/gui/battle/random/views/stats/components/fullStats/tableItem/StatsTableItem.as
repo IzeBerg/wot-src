@@ -16,13 +16,13 @@ package net.wg.gui.battle.random.views.stats.components.fullStats.tableItem
    {
        
       
-      protected var _vehicleIcon:BattleAtlasSprite = null;
+      protected var vehicleIcon:BattleAtlasSprite = null;
+      
+      protected var playerStatus:PlayerStatusView = null;
       
       private var _vehicleLevelIcon:BattleAtlasSprite = null;
       
       private var _vehicleActionIcon:BattleAtlasSprite = null;
-      
-      private var _playerStatus:PlayerStatusView = null;
       
       private var _muteIcon:BattleAtlasSprite = null;
       
@@ -48,10 +48,10 @@ package net.wg.gui.battle.random.views.stats.components.fullStats.tableItem
       {
          super(param1,param2,param3);
          var _loc4_:int = param2 * numRows + param3;
-         this._vehicleIcon = param1.vehicleIconCollection[_loc4_];
+         this.vehicleIcon = param1.vehicleIconCollection[_loc4_];
          this._vehicleLevelIcon = param1.vehicleLevelCollection[_loc4_];
          this._vehicleActionIcon = param1.vehicleActionMarkerCollection[_loc4_];
-         this._playerStatus = param1.playerStatusCollection[_loc4_];
+         this.playerStatus = param1.playerStatusCollection[_loc4_];
          this._muteIcon = param1.muteCollection[_loc4_];
          this._disableCommunicationIcon = param1.disableCommunicationCollection[_loc4_];
          this._speakAnimation = param1.speakAnimationCollection[_loc4_];
@@ -118,23 +118,23 @@ package net.wg.gui.battle.random.views.stats.components.fullStats.tableItem
          {
             if(isOffline)
             {
-               this._playerStatus.showOffline();
+               this.playerStatus.showOffline();
             }
             else if(dogTag)
             {
-               this._playerStatus.showDogTag();
+               this.playerStatus.showDogTag();
             }
             else if(isDead)
             {
-               this._playerStatus.showKilled();
+               this.playerStatus.showKilled();
             }
             else if(this._inBattle)
             {
-               this._playerStatus.showInBattle();
+               this.playerStatus.showInBattle();
             }
             else
             {
-               this._playerStatus.hide();
+               this.playerStatus.hide();
             }
          }
          if(isInvalid(FullStatsValidationType.COLORS))
@@ -143,7 +143,7 @@ package net.wg.gui.battle.random.views.stats.components.fullStats.tableItem
             _loc2_ = App.colorSchemeMgr.getScheme(_loc1_);
             if(_loc2_ && _loc2_.colorTransform)
             {
-               this._vehicleIcon.transform.colorTransform = _loc2_.colorTransform;
+               this.vehicleIcon.transform.colorTransform = _loc2_.colorTransform;
             }
          }
          if(isInvalid(RandomFullStatsValidationType.VEHICLE_LEVEL))
@@ -162,12 +162,12 @@ package net.wg.gui.battle.random.views.stats.components.fullStats.tableItem
          {
             if(this._vehicleIconName)
             {
-               this._vehicleIcon.visible = true;
-               this._vehicleIcon.setImageNames(this._vehicleIconName,BATTLEATLAS.UNKNOWN);
+               this.vehicleIcon.visible = true;
+               this.vehicleIcon.setImageNames(this._vehicleIconName,BATTLEATLAS.UNKNOWN);
             }
             else
             {
-               this._vehicleIcon.visible = false;
+               this.vehicleIcon.visible = false;
             }
          }
          if(isInvalid(RandomFullStatsValidationType.VEHICLE_ACTION))
@@ -220,10 +220,10 @@ package net.wg.gui.battle.random.views.stats.components.fullStats.tableItem
       
       override protected function onDispose() : void
       {
-         this._vehicleIcon = null;
+         this.vehicleIcon = null;
          this._vehicleLevelIcon = null;
          this._vehicleActionIcon = null;
-         this._playerStatus = null;
+         this.playerStatus = null;
          this._disableCommunicationIcon = null;
          this._muteIcon = null;
          this._speakAnimation = null;

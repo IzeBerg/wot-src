@@ -60,3 +60,11 @@ class HangarHeaderMeta(BaseDAAPIComponent):
     def as_setBattleMattersEntryPointS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setBattleMattersEntryPoint(value)
+
+    def as_createEventWidgetS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_createEventWidget()
+
+    def as_removeEventWidgetS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_removeEventWidget()

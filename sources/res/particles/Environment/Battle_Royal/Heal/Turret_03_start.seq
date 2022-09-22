@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>3.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>glow_turret</name>
+		<type>model</type>
+		<resource>particles/Environment/Battle_Royal/Heal/S14_Ikv_103_SH/Turret_03.model</resource>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Wave</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.443137 1.000000 0.098039 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 21.000210</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.233333</startTime>
+				<value>0.443137 1.000000 0.098039 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.036653</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.036653</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.533333</startTime>
+				<value>0.443137 1.000000 0.098039 0.500000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.062702</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.062702</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>3.000000</startTime>
+				<value>0.443137 1.000000 0.098039 0.500000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.036255</outTangent>
+				<tangentMode>769</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Flash</name>
+		<type>model</type>
+		<resource>particles/Environment/Battle_Royal/Heal/S14_Ikv_103_SH/Turret_03_glow.model</resource>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 180.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Idle_glow1</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.505882 1.000000 0.200000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.087108</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.087108</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.333333</startTime>
+				<value>0.380392 1.000000 0.000000 0.900000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.119533</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.119533</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.166667</startTime>
+				<value>0.505882 1.000000 0.200000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.097114</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.097114</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

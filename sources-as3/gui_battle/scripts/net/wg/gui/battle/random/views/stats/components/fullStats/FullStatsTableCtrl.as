@@ -18,7 +18,7 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
    public class FullStatsTableCtrl extends StatsTableControllerBase implements ITabbedFullStatsTableController, ISquadHandler
    {
       
-      private static const RIGHT_COLUMN:int = 1;
+      protected static const RIGHT_COLUMN:int = 1;
       
       private static const SQUAD_BT_LEFT_X:int = -508;
       
@@ -253,7 +253,7 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
          return new DynamicSquadCtrl(this._table.squadStatusCollection[_loc3_],this._table.squadCollection[_loc3_],this._table.squadAcceptBt,this._table.squadAddBt,this._table.hitCollection[_loc3_],this._table.noSoundCollection[_loc3_]);
       }
       
-      private function initCommonItems() : void
+      protected function initCommonItems() : void
       {
          this._table.selfBgLeft.visible = false;
          this._table.selfBgLeft.imageName = BATTLEATLAS.FULL_STATS_SELF_BG;

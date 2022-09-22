@@ -2336,7 +2336,7 @@ RECORDS = (
  (
   'singleAchievements', 'august22', 'p', 'B', 1),
  (
-  'singleAchievements', 'prime_gaming_reserved_1', 'p', 'B', 1),
+  'singleAchievements', 'september22', 'p', 'B', 1),
  (
   'singleAchievements', 'prime_gaming_reserved_2', 'p', 'B', 1),
  (
@@ -2800,7 +2800,13 @@ RECORDS = (
  (
   'singleAchievements', 'BattlePassCommonPr_8quest', 'p', 'B', 1),
  (
-  'singleAchievements', 'BattlePassCommonPr_9', 'p', 'B', 1))
+  'singleAchievements', 'BattlePassCommonPr_9', 'p', 'B', 1),
+ (
+  'achievements', 'wt2022HunterWins', 'p', 'I', 4294967295),
+ (
+  'achievements', 'wt2022BossWins', 'p', 'I', 4294967295),
+ (
+  'achievements', 'wt2022SpecBossDefeat', 'p', 'I', 4294967295))
 RECORD_INDICES = dict((rec[:2], idx) for idx, rec in enumerate(RECORDS))
 RECORD_DB_IDS = {('total', 'creationTime'): 68, 
    ('total', 'lastBattleTime'): 7, 
@@ -4191,7 +4197,7 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('singleAchievements', 'july22'): 1661, 
    ('singleAchievements', 'august22'): 1662, 
    ('singleAchievements', 'BattlePassCommonPr_9'): 1663, 
-   ('singleAchievements', 'prime_gaming_reserved_1'): 1664, 
+   ('singleAchievements', 'september22'): 1664, 
    ('singleAchievements', 'prime_gaming_reserved_2'): 1665, 
    ('singleAchievements', 'prime_gaming_reserved_3'): 1666, 
    ('singleAchievements', 'prime_gaming_reserved_4'): 1667, 
@@ -4202,7 +4208,10 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('singleAchievements', 'prime_gaming_reserved_9'): 1672, 
    ('singleAchievements', 'prime_gaming_reserved_10'): 1673, 
    ('singleAchievements', 'prime_gaming_reserved_11'): 1674, 
-   ('singleAchievements', 'prime_gaming_reserved_12'): 1675}
+   ('singleAchievements', 'prime_gaming_reserved_12'): 1675, 
+   ('achievements', 'wt2022HunterWins'): 1676, 
+   ('achievements', 'wt2022BossWins'): 1677, 
+   ('achievements', 'wt2022SpecBossDefeat'): 1678}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 

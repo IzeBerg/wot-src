@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>rnd_transition</name>
+			<type>random_float</type>
+		</param>
+	</params>
+	<node>
+		<name>start</name>
+		<type>sequence</type>
+		<resource>particles/content_deferred/GFX_models/gameplay/br_kamikadze/br_kamikadze_glow_start.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+				<condition>
+					<type>random_float</type>
+					<name>rnd_transition</name>
+					<rangeStart>0.000000</rangeStart>
+					<rangeEnd>100.000000</rangeEnd>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-207.000000 84.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>idle</name>
+		<type>sequence</type>
+		<resource>particles/content_deferred/GFX_models/gameplay/br_kamikadze/br_kamikadze_glow_idle.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>0</loop>
+		<uiPosition>12.000000 -90.000000 0.000000</uiPosition>
+	</node>
+</root>

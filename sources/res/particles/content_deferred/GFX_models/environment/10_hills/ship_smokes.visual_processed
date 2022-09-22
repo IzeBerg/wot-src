@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>mleNW_001_TorpedoBoat_mleNW_f_root</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>-0.000000 -1.000000 -0.000000</row1>
+				<row2>-0.000000 -0.000000 -1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>02 - Default</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/hills_outland_ship_smokes.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>
+							0.01 0.02 0.2 0.2
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/vel_smoke__01.dds</Texture>
+					</property>
+					<property>
+						srcBlend
+						<Int>5</Int>
+					</property>
+					<property>
+						destBlend
+						<Int>6</Int>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector4>
+							0.204565 0.232702 0.27 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>
+							0.000000 0.000000 0.25 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+				</material>
+				<groupOrigin>112.091431 5.360887 29.942852</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>37.990860 -0.216669 -16.160337</min>
+		<max>186.192001 10.938442 76.046043</max>
+	</boundingBox>
+	<geometrySize>2688</geometrySize>
+	<minUVDensity>0.003472</minUVDensity>
+</root>

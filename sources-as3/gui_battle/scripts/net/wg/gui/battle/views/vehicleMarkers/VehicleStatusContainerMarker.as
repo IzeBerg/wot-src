@@ -7,6 +7,7 @@ package net.wg.gui.battle.views.vehicleMarkers
    import net.wg.gui.battle.views.vehicleMarkers.events.StatusAnimationEvent;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleAnimatedStatusBaseMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleBerserkerMarker;
+   import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleBombMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleEngineerEffectMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleFLBasicMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleInspireMarker;
@@ -46,6 +47,10 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       public var shotPassionMarker:VehicleStatusIconMarker = null;
       
+      public var captureBombMarker:VehicleBombMarker = null;
+      
+      public var installBombMarker:VehicleBombMarker = null;
+      
       private var _statusEffectMarkers:Dictionary = null;
       
       private var _activeEffectID:int = -1;
@@ -72,6 +77,8 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.setupMarker(BATTLE_MARKER_STATES.THUNDER_STRIKE_STATE,this.thunderStrikeMarker);
          this.setupMarker(BATTLE_MARKER_STATES.SHOT_PASSION_STATE,this.shotPassionMarker);
          this.setupMarker(BATTLE_MARKER_STATES.ADAPTATION_HEALTH_RESTORE_STATE,this.adaptationHealthRestoreMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.WT_BOMB_CAPTURING_STATE,this.captureBombMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.WT_BOMB_INSTALLING_STATE,this.installBombMarker);
       }
       
       override protected function configUI() : void
@@ -90,6 +97,8 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.thunderStrikeMarker.addEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.shotPassionMarker.addEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.adaptationHealthRestoreMarker.addEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
+         this.captureBombMarker.addEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
+         this.installBombMarker.addEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.stunMarker.setupFrameEvents();
          this.baseEngineerMarker.setupFrameEvents();
          this.inspireMarker.setupFrameEvents();
@@ -103,6 +112,8 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.thunderStrikeMarker.setupFrameEvents();
          this.shotPassionMarker.setupFrameEvents();
          this.adaptationHealthRestoreMarker.setupFrameEvents();
+         this.captureBombMarker.setupFrameEvents();
+         this.installBombMarker.setupFrameEvents();
       }
       
       override protected function onDispose() : void
@@ -121,6 +132,8 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.thunderStrikeMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.shotPassionMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.adaptationHealthRestoreMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
+         this.captureBombMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
+         this.installBombMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.baseEngineerMarker.dispose();
          this.baseEngineerMarker = null;
          this.inspireMarker.dispose();
@@ -147,6 +160,10 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.shotPassionMarker = null;
          this.adaptationHealthRestoreMarker.dispose();
          this.adaptationHealthRestoreMarker = null;
+         this.captureBombMarker.dispose();
+         this.captureBombMarker = null;
+         this.installBombMarker.dispose();
+         this.installBombMarker = null;
          for(_loc1_ in this._statusEffectMarkers)
          {
             delete this._statusEffectMarkers[_loc1_];
@@ -175,6 +192,8 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.thunderStrikeMarker.setEffectColor(param1,param2);
          this.shotPassionMarker.setEffectColor(param1,param2);
          this.adaptationHealthRestoreMarker.setEffectColor(param1,param2);
+         this.captureBombMarker.setEffectColor(param1,param2);
+         this.installBombMarker.setEffectColor(param1,param2);
       }
       
       public function setSecondString(param1:String) : void

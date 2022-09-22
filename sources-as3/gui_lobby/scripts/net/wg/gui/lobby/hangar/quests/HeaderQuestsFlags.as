@@ -308,6 +308,10 @@ package net.wg.gui.lobby.hangar.quests
          }
       }
       
+      public function updateStage(param1:Number, param2:Number) : void
+      {
+      }
+      
       private function clearEntryPoint() : void
       {
          if(this._entryPoint != null)

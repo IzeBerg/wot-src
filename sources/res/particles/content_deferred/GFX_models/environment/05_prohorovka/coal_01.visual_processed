@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<groupOrigin>0.195303 -0.006779 -0.343490</groupOrigin>
+				<material>
+					<identifier>02 - Default</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						softFactor
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/114_czech_vel_smoke_fire.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/114_czech_coal_01.dds</Texture>
+					</property>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						srcBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector4>
+							1 1 1 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>
+							0.3 0.3 0.1 0.1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>
+							3 0.000000 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+				</material>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.700000 -0.220690 -1.224500</min>
+		<max>0.924700 0.192510 2.362070</max>
+	</boundingBox>
+	<geometrySize>16322</geometrySize>
+	<minUVDensity>0.060989</minUVDensity>
+</root>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<FeatureName>server_side_replay</FeatureName>
+	<IsEnabled>true</IsEnabled>
+	<Components>
+		<StaticComponents>
+			<ServerReplayConnectionComponent/>
+			<ServerReplayArenaComponent/>
+		</StaticComponents>
+	</Components>
+	<Entities>
+		<ClientServerEntities>
+			<ReplayConnectionHandler/>
+		</ClientServerEntities>
+		<ServerOnlyEntities>
+			<RecorderEntity/>
+		</ServerOnlyEntities>
+	</Entities>
+</root>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<Properties>
+		<account>
+			<Type>MAILBOX</Type>
+			<Flags>BASE</Flags>
+		</account>
+	</Properties>
+	<TempProperties/>
+	<ClientMethods/>
+	<BaseMethods>
+		<stopReplay>
+			<Exposed/>
+		</stopReplay>
+		<kickSelf>
+			<Arg>STRING</Arg>
+			<Arg>BOOL</Arg>
+			<Arg>UINT32</Arg>
+		</kickSelf>
+	</BaseMethods>
+</root>

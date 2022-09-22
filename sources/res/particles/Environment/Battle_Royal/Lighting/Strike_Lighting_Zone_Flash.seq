@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>0.433333</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Border_flash</name>
+		<type>model</type>
+		<resource>particles/Environment/Battle_Royal/Lighting/Border_lighting_Flash.model</resource>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>fog1</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.356863 0.639216 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 -0.909259</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.909259</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>0.596078 0.772549 1.000000 0.900000</value>
+				<inTangent>0.000000 0.000000 0.000000 -0.119425</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -5.253778</outTangent>
+				<tangentMode>66307</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.433333</startTime>
+				<value>0.000000 0.439216 1.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -1.044263</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -1.044263</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

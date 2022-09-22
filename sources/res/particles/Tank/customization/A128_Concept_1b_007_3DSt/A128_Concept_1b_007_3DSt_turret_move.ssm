@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>Move</name>
+			<type>trigger</type>
+		</param>
+		<param>
+			<name>Stop</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>turret_idle</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/A128_Concept_1b_007_3DSt/A128_Concept_1b_007_3DSt_turret_idle.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>Turret_idle_fadeout</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Move</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-294.000000 -109.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Turret_idle_fadeout</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/A128_Concept_1b_007_3DSt/A128_Concept_1b_007_3DSt_turret_idle_fadeout.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Turret_move</to>
+			<blendDuration>1.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions/>
+		</transition>
+		<uiPosition>-26.000000 -242.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Turret_idle_fadein</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/A128_Concept_1b_007_3DSt/A128_Concept_1b_007_3DSt_turret_idle_fadein.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>idle_sleep</to>
+			<blendDuration>1.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions/>
+		</transition>
+		<uiPosition>-519.000000 -236.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Turret_move</name>
+		<type>sequence</type>
+		<resource>particles/Tank/customization/A128_Concept_1b_007_3DSt/A128_Concept_1b_007_3DSt_turret_move.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>Turret_idle_fadein</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Stop</name>
+				</condition>
+			</conditions>
+		</transition>
+		<transition>
+			<to>Turret_move</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Move</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-318.000000 -326.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>idle_sleep</name>
+		<type>sleep</type>
+		<time>1.000000 1.000000</time>
+		<transition>
+			<to>turret_idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions/>
+		</transition>
+		<uiPosition>-511.000000 -163.000000 0.000000</uiPosition>
+	</node>
+</root>

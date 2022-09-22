@@ -113,6 +113,10 @@ def getPlayerSeniorityAwardsUrl():
     return _getUrl('psaProducts')
 
 
+def getBuyLootboxesUrl():
+    return _getUrl('buyLootboxes')
+
+
 def getSplitPageUrl(params):
     url = _getUrl('splitUrl')
     return addParamsToUrlQuery(url, params, True)

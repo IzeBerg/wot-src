@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>root</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>Wing_L_01</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 -1.000000 0.000000</row1>
+					<row2>0.000000 -0.000000 -1.000000</row2>
+					<row3>-0.014000 0.011268 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>Wing_L_02</identifier>
+					<transform>
+						<row0>1.000000 -0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>-0.082726 -0.009482 -0.007029</row3>
+					</transform>
+					<node>
+						<identifier>Wing_L_02_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 -1.000000 -0.000000</row1>
+							<row2>0.000000 -0.000000 1.000000</row2>
+							<row3>0.096726 0.020750 0.007029</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>Wing_L_01_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 -1.000000 -0.000000</row1>
+						<row2>0.000000 -0.000000 1.000000</row2>
+						<row3>0.014000 0.011268 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>Wing_R_01</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.014000 0.011268 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>Wing_R_02</identifier>
+					<transform>
+						<row0>1.000000 -0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.082726 0.009482 0.007029</row3>
+					</transform>
+					<node>
+						<identifier>Wing_R_02_BlendBone</identifier>
+						<transform>
+							<row0>1.000000 0.000000 0.000000</row0>
+							<row1>0.000000 1.000000 0.000000</row1>
+							<row2>0.000000 0.000000 -1.000000</row2>
+							<row3>-0.096726 -0.020750 -0.007029</row3>
+						</transform>
+					</node>
+				</node>
+				<node>
+					<identifier>Wing_R_01_BlendBone</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 -1.000000</row2>
+						<row3>-0.014000 -0.011268 0.000000</row3>
+					</transform>
+				</node>
+			</node>
+			<node>
+				<identifier>root_BlendBone</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 -1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
+		<node>root_BlendBone</node>
+		<node>Wing_L_02_BlendBone</node>
+		<node>Wing_L_01_BlendBone</node>
+		<node>Wing_R_01_BlendBone</node>
+		<node>Wing_R_02_BlendBone</node>
+		<geometry>
+			<vertices>DoweShape1.vertices</vertices>
+			<primitive>DoweShape1.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>lambert2_skinned</identifier>
+					<fx>shaders/std_effects/lightonly_skinned.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/env_birds/dowe_light.dds</Texture>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaReference
+						<Int>128</Int>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.004397 0.035520</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.199292 -0.016100 -0.129055</min>
+		<max>0.199292 0.024894 0.058015</max>
+	</boundingBox>
+	<geometrySize>5512</geometrySize>
+	<minUVDensity>7.723358</minUVDensity>
+</root>

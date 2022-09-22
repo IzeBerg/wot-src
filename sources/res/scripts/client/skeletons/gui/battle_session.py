@@ -171,6 +171,14 @@ class IDynamicControllersLocator(object):
     def gameNotifications(self):
         raise NotImplementedError
 
+    @property
+    def playersPanel(self):
+        raise NotImplementedError
+
+    @property
+    def bossPanel(self):
+        raise NotImplementedError
+
 
 class ISquadInvitationsHandler(object):
     __slots__ = ()
@@ -655,7 +663,7 @@ class IBattleSessionProvider(object):
     def updateVehicleQuickShellChanger(self, isActive):
         raise NotImplementedError
 
-    def movingToRespawnBase(self):
+    def movingToRespawnBase(self, vehicle):
         raise NotImplementedError
 
     def invalidateVehicleState(self, state, value, vehicleID=0):

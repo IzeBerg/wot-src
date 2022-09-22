@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>Landed</name>
+			<type>trigger</type>
+		</param>
+	</params>
+	<node>
+		<name>Sleep</name>
+		<type>sleep</type>
+		<time>0.001000 0.001000</time>
+		<transition>
+			<to>DropOff</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-271.000000 -56.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>DropOff</name>
+		<type>sequence</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_Drop_Platform/animation/hd_mle_UNI_Drop_Platform_B_DropOff.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>Idle</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-271.000000 0.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Idle</name>
+		<type>sequence</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_Drop_Platform/animation/hd_mle_UNI_Drop_Platform_B_Idle.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>-1</loop>
+		<transition>
+			<to>Landing</to>
+			<blendDuration>0.600000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>trigger</type>
+					<name>Landed</name>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>4.000000 -3.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Landing</name>
+		<type>sequence</type>
+		<resource>content/MilitaryEnvironment/hd_mle_UNI_Drop_Platform/animation/hd_mle_UNI_Drop_Platform_B_Landing.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<uiPosition>305.000000 -2.000000 0.000000</uiPosition>
+	</node>
+</root>

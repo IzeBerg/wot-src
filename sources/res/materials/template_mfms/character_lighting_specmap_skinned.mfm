@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<property>
+		specularLightExtraModulation
+		<Float>1.000000</Float>
+	</property>
+	<property>
+		specularMap
+		<Texture>helpers\maps\aid_builder.dds</Texture>
+	</property>
+	<property>
+		normalMap
+		<Texture>helpers\maps\aid_builder_norms.dds</Texture>
+	</property>
+	<property>
+		diffuseMap
+		<Texture>helpers\maps\aid_builder.dds</Texture>
+	</property>
+	<materialKind>0</materialKind>
+	<fx>shaders/std_effects/normalmap_specmap_skinned.fx</fx>
+</root>

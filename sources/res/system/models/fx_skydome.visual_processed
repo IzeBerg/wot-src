@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>empty</identifier>
+					<mfm>materials/template_mfms/lightonly.mfm</mfm>
+				</material>
+				<groupOrigin>-0.029445 0.009135 -0.007905</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-3.462992 -3.475088 -3.432978</min>
+		<max>3.404102 3.493358 3.417169</max>
+	</boundingBox>
+	<geometrySize>17464</geometrySize>
+	<minUVDensity>0.550587</minUVDensity>
+</root>

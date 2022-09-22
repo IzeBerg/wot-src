@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>101</materialKind>
+					<fx>shaders/std_effects/glow.fx</fx>
+					<property>
+						alphaReference
+						<Int>32</Int>
+					</property>
+					<property>
+						selfIllumination
+						<Float>15</Float>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/env_19_39_BurntGrass/env_19_39_burnt_grass_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.003396 0.152911 -0.014263</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.295903 0.041059 -0.634294</min>
+		<max>1.289111 0.251962 0.605767</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>2800</geometrySize>
+	<minUVDensity>1.384491</minUVDensity>
+</root>

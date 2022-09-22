@@ -36,4 +36,4 @@ class DynamicScriptComponent(BigWorld.DynamicScriptComponent):
 
     def __onAvatarReady(self):
         g_playerEvents.onAvatarReady -= self.__onAvatarReady
-        self._onAvatarReady()
+        nextTick(self._onAvatarReady)()

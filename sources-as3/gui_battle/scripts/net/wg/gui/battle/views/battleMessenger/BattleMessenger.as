@@ -167,6 +167,7 @@ package net.wg.gui.battle.views.battleMessenger
          this.swapArea.name = SWAP_AREA;
          this.swapArea.alpha = 0;
          addChild(this.swapArea);
+         this.updateSwapAreaHeight(1);
          hitArea = this.swapArea;
          TextFieldEx.setNoTranslate(this.receiverField,true);
          TextFieldEx.setNoTranslate(this.messageInputField,true);
@@ -361,6 +362,10 @@ package net.wg.gui.battle.views.battleMessenger
       public function as_enterPressed(param1:int) : void
       {
          var _loc2_:String = null;
+         if(!this.visible)
+         {
+            return;
+         }
          if(this._isCtrlButtonPressed)
          {
             return;

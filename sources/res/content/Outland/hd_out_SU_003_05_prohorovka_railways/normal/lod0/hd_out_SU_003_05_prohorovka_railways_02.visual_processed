@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Outland/hd_out_SU_003_05_prohorovka_railways/hd_out_SU_003_05_prohorovka_railways_AM.dds</Texture>
+					</property>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Outland/hd_out_SU_003_05_prohorovka_railways/hd_out_SU_003_05_prohorovka_railways_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Outland/hd_out_SU_003_05_prohorovka_railways/hd_out_SU_003_05_prohorovka_railways_GMM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>164.135101 0.178062 683.823120</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-5.588414 -0.063105 76.785683</min>
+		<max>334.035645 0.419229 1291.590576</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>36540</geometrySize>
+	<minUVDensity>0.061285</minUVDensity>
+</root>

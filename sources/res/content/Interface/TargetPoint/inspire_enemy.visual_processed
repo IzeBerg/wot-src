@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s0_1</identifier>
+					<fx>shaders/controlPoint/wg_controlPointRadius.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Interface/TargetPoint/cross_04_grey.dds</Texture>
+					</property>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>108</materialKind>
+				</material>
+				<groupOrigin>0.000000 -0.050000 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-5.043541 -0.100000 -5.057724</min>
+		<max>5.043541 0.000000 5.057724</max>
+	</boundingBox>
+	<geometrySize>3318</geometrySize>
+	<minUVDensity>0.290810</minUVDensity>
+</root>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>Material #47</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/waterfall_parts_02.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						selfIllumLight
+						<Vector4>
+							1 1 1 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>
+							1 0.08 0.08 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>
+							0.000000 -0.8 0.000000 0.1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Distortion01.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>
+							0.000000 -0.8 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>
+							1 4 2 0.15
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>
+							0.870589 0.92549 0.984314 1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.057537 0.003472 2.553648</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-5.058316 -0.404993 -0.499984</min>
+		<max>5.173391 0.411937 5.607281</max>
+	</boundingBox>
+	<geometrySize>2004</geometrySize>
+	<minUVDensity>0.002410</minUVDensity>
+</root>

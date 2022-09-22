@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd_2_details</identifier>
+					<fx>shaders/std_effects/PBS_ext_detail.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_01_Vhouse_01-06_details_AM.dds</Texture>
+					</property>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						g_detailInfluences
+						<Vector4>0.700000 0.700000 0.700000 1.000000</Vector4>
+					</property>
+					<property>
+						g_detailRejectTiling
+						<Vector4>-0.000000 0.000000 10.000000 10.000000</Vector4>
+					</property>
+					<property>
+						g_detailMap
+						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_detalimap.dds</Texture>
+					</property>
+					<materialKind>111</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_01_Vhouse_01-06_details_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_01_Vhouse_01-06_details_ANM.dds</Texture>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.016295 5.387831 -0.375105</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd_1_roof</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas.fx</fx>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Buildings/bld_19_01_Vhouse/atlas_AM.dds</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Buildings/00_Atlases/bld_19_01_Vhouse_atlas_blend.png</Texture>
+					</property>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						g_dirtParams
+						<Vector4>0.100000 10.000000 3.000000 0.000000</Vector4>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_dirt_01_DM.dds</Texture>
+					</property>
+					<property>
+						g_fakeShadowsParams
+						<Vector4>0.250000 0.300000 1.000000 0.000000</Vector4>
+					</property>
+					<materialKind>111</materialKind>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Buildings/bld_19_01_Vhouse/atlas_MAO.dds</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Buildings/bld_19_01_Vhouse/atlas_GBMT.dds</Texture>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>9.000000 10.000000 3.000000 22.000000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.014276 6.106232 -0.189967</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd_0_wall</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas.fx</fx>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Buildings/bld_19_01_Vhouse/atlas_AM.dds</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Buildings/00_Atlases/bld_19_01_Vhouse_atlas_blend.png</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						dirtMap
+						<Texture>content/Buildings/bld_19_02_Monastery/bld_19_dirt_01_DM.dds</Texture>
+					</property>
+					<property>
+						g_fakeShadowsParams
+						<Vector4>0.250000 0.300000 1.000000 0.000000</Vector4>
+					</property>
+					<materialKind>111</materialKind>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Buildings/bld_19_01_Vhouse/atlas_MAO.dds</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Buildings/bld_19_01_Vhouse/atlas_GBMT.dds</Texture>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>13.000000 12.000000 4.000000 22.000000</Vector4>
+					</property>
+					<property>
+						g_tile2Tint
+						<Vector4>0.970000 0.930000 0.840000 1.000000</Vector4>
+					</property>
+					<property>
+						g_enableTerrainBlending
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.000007 5.204280 -0.126504</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-3.895939 4.099671 -1.629332</min>
+		<max>3.924490 6.508027 0.947343</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>14688</geometrySize>
+	<minUVDensity>0.002335</minUVDensity>
+</root>

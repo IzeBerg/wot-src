@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<property>
+		doubleSided
+		<Bool>false</Bool>
+	</property>
+	<property>
+		alphaReference
+		<Int>0</Int>
+	</property>
+	<property>
+		alphaTestEnable
+		<Bool>false</Bool>
+	</property>
+	<property>
+		diffuseMap
+		<Texture>helpers\maps\aid_builder.dds</Texture>
+	</property>
+	<property>
+		glowMap
+		<Texture>helpers\maps\aid_builder.dds</Texture>
+	</property>
+	<property>
+		glowFactor
+		<Float>1.000000</Float>
+	</property>
+	<materialKind>0</materialKind>
+	<fx>shaders/std_effects/lightonly_skinned_glow.fx</fx>
+</root>

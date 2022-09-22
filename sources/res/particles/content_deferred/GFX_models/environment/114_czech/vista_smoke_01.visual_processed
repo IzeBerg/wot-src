@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>FBXASC0481FBXASC032FBXASC045FBXASC032Default2</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/vista_smoke_01.dds</Texture>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector4>
+							0.52 0.52 0.52 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>
+							-0.1 0.06 0.04 0.02
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/vel_smoke__01.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>
+							0.000000 0.005 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>
+							1 0.15 0.5 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						softFactor
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>
+							1 1.25 1 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						alphaAdditiveEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						fadeMaxDistance
+						<Float>0.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>34.313038 76.613571 198.333801</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-59.233299 -1.295184 185.226379</min>
+		<max>127.859375 154.522324 211.441208</max>
+	</boundingBox>
+	<geometrySize>12668</geometrySize>
+	<minUVDensity>0.000039</minUVDensity>
+</root>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>Material #44</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/waterfall_parts_02.dds</Texture>
+					</property>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						selfIllumLight
+						<Vector4>
+							1 1 1 0.000000
+							<!--BW_String-->
+						</Vector4>
+						<Vector3>1.000000 1.000000 1.000000</Vector3>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>1.000000 0.100000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.000000 -0.400000 0.000000 0.100000</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Distortion01.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.000000 -0.200000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 4.000000 2.000000 0.150000</Vector4>
+					</property>
+					<property>
+						softFactor
+						<Float>5.000000</Float>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.909804 0.894118 0.874510 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.198669 -5.484592 -1.193613</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.798493 -10.980853 -2.612032</min>
+		<max>2.195831 0.011668 0.224806</max>
+	</boundingBox>
+	<primitivesName>particles/content_deferred/GFX_models/environment/33_fjord/waterfall_main_02</primitivesName>
+	<geometrySize>1092</geometrySize>
+	<minUVDensity>0.003549</minUVDensity>
+</root>

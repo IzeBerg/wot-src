@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						normalMap
+						<Texture>content/Decor/dec_002_Bricks/dec_002_Bricks_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Decor/dec_002_Bricks/dec_002_Bricks_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Decor/dec_002_Bricks/dec_002_Bricks_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.206774 -0.029387 -0.038168</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.949000 -0.176948 -1.602701</min>
+		<max>0.991025 0.120472 1.526366</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>37776</geometrySize>
+	<minUVDensity>0.475890</minUVDensity>
+</root>

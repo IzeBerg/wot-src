@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>60.000004</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>smokeAfter</name>
+		<type>particle</type>
+		<resource>particles/Environment/Battle_Royal/Fire_Ring/smoke_after.eff</resource>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>0.923996</inTangent>
+				<outTangent>0.923996</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.666667</startTime>
+				<value>1.539994</value>
+				<inTangent>-0.133530</inTangent>
+				<outTangent>-0.133530</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>20.000002</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.084000</inTangent>
+				<outTangent>-0.084000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>opacity</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000</value>
+				<inTangent>0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>10.033334</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>-0.100334</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>20.000002</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.100334</inTangent>
+				<outTangent>-0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Steam</name>
+		<type>model</type>
+		<resource>particles/Environment/Battle_Royal/Lighting/Steam_02.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Smoke</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.749020 0.749020 0.749020 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.090411</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.090411</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.433333</startTime>
+				<value>0.749020 0.749020 0.749020 0.220000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.045205</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.045205</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>40.300003</startTime>
+				<value>0.749020 0.749020 0.749020 0.220000</value>
+				<inTangent>0.000000 0.000000 0.000000 -0.005584</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.005584</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>60.000004</startTime>
+				<value>0.749020 0.749020 0.749020 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.011168</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.011168</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

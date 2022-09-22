@@ -1,0 +1,1101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>3.346146</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>explosion_sparks</name>
+		<type>model</type>
+		<resource>particles/Environment/Battle_Royal/Lighting/Sparks_lighting.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>0.342599 0.342599 0.342599</value>
+				<inTangent>6.911193 7.022030 7.541861</inTangent>
+				<outTangent>6.911193 7.022030 7.541861</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.400000</startTime>
+				<value>1.842598 1.842598 1.842598</value>
+				<inTangent>0.658772 0.403996 0.812912</inTangent>
+				<outTangent>0.658772 0.403996 0.812912</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>sp</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 1.000000 1.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 45.000450</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>1.000000 1.000000 1.000000 1.500000</value>
+				<inTangent>0.000000 0.000000 0.000000 20.454773</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -3.981839</outTangent>
+				<tangentMode>66307</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.400000</startTime>
+				<value>1.000000 1.000000 1.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.058995</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.058995</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>sp</identifier>
+			<property>diffuseUVSpeedAlphaOffset</property>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>-0.214676 0.000000 1.000000 0.000000</value>
+				<inTangent>-1.474689 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>-1.474689 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.400000</startTime>
+				<value>-0.400000 0.000000 1.000000 0.000000</value>
+				<inTangent>-0.042751 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.042751 -0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Light_Main</name>
+		<type>light</type>
+		<lightType>omnilight</lightType>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.000122 8.000000 -0.000244</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>outerRadius</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>85.000000</value>
+				<inTangent>0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>innerRadius</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000</value>
+				<inTangent>0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>multiplier</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>31.353523</value>
+				<inTangent>3765.777100</inTangent>
+				<outTangent>3765.777100</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>79577.468750</value>
+				<inTangent>2005.076172</inTangent>
+				<outTangent>2005.076172</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.266667</startTime>
+				<value>0.000000</value>
+				<inTangent>-1952.303955</inTangent>
+				<outTangent>-1952.303955</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>color</name>
+			<type>vector4</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.341176 0.603922 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>castShadow</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+		<track>
+			<name>lodShift</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>250.000000</value>
+				<inTangent>0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Central_Lighting_01</name>
+		<type>model</type>
+		<resource>particles/Environment/Battle_Royal/Lighting/Lightings/Lighting_Center_02.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Lighting_geo</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 1.000000 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 48.299999</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 48.299999</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>1.000000 1.000000 1.000000 1.610000</value>
+				<inTangent>0.000000 0.000000 0.000000 -7.629995</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -7.629995</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>1.000000 1.000000 1.000000 0.110000</value>
+				<inTangent>0.000000 0.000000 0.000000 -6.174986</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -6.174986</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.266667</startTime>
+				<value>1.000000 1.000000 1.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -1.100000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -1.100000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Central_lighting</name>
+		<type>particle</type>
+		<resource>particles/Environment/Battle_Royal/Lighting/lighting_Center_sparks.eff</resource>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000</value>
+				<inTangent>0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>-30.000298</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.100000</startTime>
+				<value>0.000000</value>
+				<inTangent>-30.000298</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.133333</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>-0.000000</outTangent>
+				<tangentMode>1</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Light_dynamic</name>
+		<type>light</type>
+		<lightType>omnilight</lightType>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>7.087738 1.406807 7.242020</value>
+				<inTangent>46.513912 -0.000038 47.395561</inTangent>
+				<outTangent>-0.001831 25.977055 -44.323772</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>-0.353088 2.705658 2.982300</value>
+				<inTangent>-0.001831 25.977055 -44.323772</inTangent>
+				<outTangent>94.558502 -67.599525 -0.003662</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>0.585754 2.657196 -3.656799</value>
+				<inTangent>94.558502 -67.599525 -0.003662</inTangent>
+				<outTangent>-0.002747 26.687536 -86.270020</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.100000</startTime>
+				<value>-5.180237 0.452343 1.883728</value>
+				<inTangent>34.125732 -13.057262 -10.686615</inTangent>
+				<outTangent>34.125732 -13.057262 -10.686615</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.133333</startTime>
+				<value>2.860779 1.786720 -4.369232</value>
+				<inTangent>-0.002747 26.687536 -86.270020</inTangent>
+				<outTangent>-203.671158 -0.000057 -72.948372</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>-1.476746 1.786720 4.223083</value>
+				<inTangent>-203.671158 -0.000057 -72.948372</inTangent>
+				<outTangent>49.883011 -19.503569 196.137268</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.200000</startTime>
+				<value>-4.384155 1.136600 -1.118469</value>
+				<inTangent>49.883011 -19.503569 196.137268</inTangent>
+				<outTangent>76.700851 -0.000057 59.300381</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.233333</startTime>
+				<value>2.603821 1.136600 -2.806366</value>
+				<inTangent>76.700851 -0.000057 59.300381</inTangent>
+				<outTangent>106.635689 -0.000086 -114.233200</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.266667</startTime>
+				<value>-7.256775 1.136597 -0.175201</value>
+				<inTangent>106.635689 -0.000086 -114.233200</inTangent>
+				<outTangent>-56.702019 29.199429 38.972816</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.300000</startTime>
+				<value>0.275818 2.596565 -6.938354</value>
+				<inTangent>-56.702019 29.199429 38.972816</inTangent>
+				<outTangent>-0.002747 20.709061 -100.508163</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.333333</startTime>
+				<value>2.201050 3.286869 7.389465</value>
+				<inTangent>-0.002747 20.709061 -100.508163</inTangent>
+				<outTangent>-135.701874 -68.638496 -0.003662</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.366667</startTime>
+				<value>0.268494 0.998924 -5.957245</value>
+				<inTangent>-135.701874 -68.638496 -0.003662</inTangent>
+				<outTangent>115.961258 20.705786 134.737366</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.400000</startTime>
+				<value>-2.406128 1.689114 -8.634552</value>
+				<inTangent>115.961258 20.705786 134.737366</inTangent>
+				<outTangent>52.592087 -20.134487 -62.345493</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.433333</startTime>
+				<value>7.119202 1.689114 3.325104</value>
+				<inTangent>34.155464 -15.100584 38.069885</inTangent>
+				<outTangent>34.155464 -15.100584 38.069885</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.466667</startTime>
+				<value>-0.129333 0.682388 -6.096863</value>
+				<inTangent>52.592087 -20.134487 -62.345493</inTangent>
+				<outTangent>-24.952662 -0.000038 -54.933392</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.500000</startTime>
+				<value>6.473816 0.682388 0.178314</value>
+				<inTangent>-24.952662 -0.000038 -54.933392</inTangent>
+				<outTangent>-95.281769 72.146835 28.740261</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.533333</startTime>
+				<value>-8.490479 0.682388 -1.297089</value>
+				<inTangent>-64.908142 54.108963 81.553291</inTangent>
+				<outTangent>-64.908142 54.108963 81.553291</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.566667</startTime>
+				<value>2.146973 4.289726 5.615356</value>
+				<inTangent>-95.281769 72.146835 28.740261</inTangent>
+				<outTangent>-0.001831 -43.479179 115.584824</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>7.140198 2.115768 0.213623</value>
+				<inTangent>-0.001831 -43.479179 115.584824</inTangent>
+				<outTangent>56.563164 -17.150839 64.643616</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.633333</startTime>
+				<value>-7.169067 2.115768 -2.316254</value>
+				<inTangent>0.251114 -12.862862 32.423542</inTangent>
+				<outTangent>0.251114 -12.862862 32.423542</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.666667</startTime>
+				<value>7.157349 1.258228 2.375305</value>
+				<inTangent>56.563164 -17.150839 64.643616</inTangent>
+				<outTangent>68.055794 14.911280 -210.815933</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.700000</startTime>
+				<value>6.280090 1.755272 -2.738159</value>
+				<inTangent>68.055794 14.911280 -210.815933</inTangent>
+				<outTangent>48.568314 -48.021317 -88.168114</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.733333</startTime>
+				<value>-5.380249 0.154560 -3.583282</value>
+				<inTangent>48.568314 -48.021317 -88.168114</inTangent>
+				<outTangent>-66.616875 66.907486 -13.461252</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>4.968567 3.499947 -3.257111</value>
+				<inTangent>-66.616875 66.907486 -13.461252</inTangent>
+				<outTangent>-0.002747 -24.991230 106.865944</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.800000</startTime>
+				<value>-3.865051 2.666908 2.683990</value>
+				<inTangent>-0.002747 -24.991230 106.865944</inTangent>
+				<outTangent>-0.001831 -22.452271 46.482590</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.833333</startTime>
+				<value>-4.505432 2.666908 -0.337006</value>
+				<inTangent>62.367260 -16.838884 -9.230556</inTangent>
+				<outTangent>62.367260 -16.838884 -9.230556</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.866667</startTime>
+				<value>0.292862 1.544295 2.068695</value>
+				<inTangent>-0.001831 -22.452271 46.482590</inTangent>
+				<outTangent>-60.178585 -0.000057 -86.016624</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>outerRadius</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>10.000000</value>
+				<inTangent>0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>innerRadius</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000</value>
+				<inTangent>0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>multiplier</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>-940.605652</inTangent>
+				<outTangent>47746.957031</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>1591.549316</value>
+				<inTangent>47746.957031</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.200000</startTime>
+				<value>1591.549316</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>-3183.098145</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.700000</startTime>
+				<value>0.000000</value>
+				<inTangent>-3183.098145</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>color</name>
+			<type>vector4</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.188235 0.545098 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.733333</startTime>
+				<value>0.188235 0.545098 1.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-3.764668 -2.117628 0.000000 0.000000</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.766667</startTime>
+				<value>0.000000 0.207843 1.000000 0.000000</value>
+				<inTangent>-3.764668 -2.117628 -0.000000 -0.000000</inTangent>
+				<outTangent>-3.764668 -2.117628 -0.000000 -0.000000</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>castShadow</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+		<track>
+			<name>lodShift</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>60.000000</value>
+				<inTangent>0.000000</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>L_Arcs_01_01</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.000001 -72.972656 -0.000026</value>
+				<inTangent>-0.000004 -364.863251 -0.000128</inTangent>
+				<outTangent>-0.000004 -364.863251 -0.000128</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.799407 0.838877 0.699989</value>
+				<inTangent>-3.373374 -0.000001 -0.000034</inTangent>
+				<outTangent>-3.373374 -0.000001 -0.000034</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<duration>0.400000</duration>
+				<value>particles/Environment/Battle_Royal/Lighting/Lightings/Lighting_arc_01.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>L_Arcs_01_02</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>4.755371 -0.000002 -1.528381</value>
+				<inTangent>13.748659 -0.000006 10.035095</inTangent>
+				<outTangent>13.748659 -0.000006 10.035095</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.000021 -25.834204 -0.000015</value>
+				<inTangent>-0.000094 -186.986053 -0.000052</inTangent>
+				<outTangent>-0.000094 -186.986053 -0.000052</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>0.300000</startTime>
+				<duration>0.300000</duration>
+				<value>particles/Environment/Battle_Royal/Lighting/Lightings/Lighting_arc_small_02.seq</value>
+				<speed>1.200000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>L_Arcs_02_01</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000003 120.000000 -0.000023</value>
+				<inTangent>0.000014 643.242188 0.000008</inTangent>
+				<outTangent>0.000014 643.242188 0.000008</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.799405 0.838877 0.494657</value>
+				<inTangent>-0.000005 -0.000000 -0.684440</inTangent>
+				<outTangent>-0.000005 -0.000000 -0.684440</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<duration>0.366667</duration>
+				<value>particles/Environment/Battle_Royal/Lighting/Lightings/Lighting_arc_02.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>L_Arcs_02_02</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-3.081116 0.000000 1.778900</value>
+				<inTangent>-10.270386 -0.000000 5.929667</inTangent>
+				<outTangent>-10.270386 -0.000000 5.929667</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000050 160.673691 -0.000031</value>
+				<inTangent>0.000156 135.578964 -0.000025</inTangent>
+				<outTangent>0.000156 135.578964 -0.000025</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.799404 0.711172 0.412171</value>
+				<inTangent>-0.000005 -0.425682 -0.274951</inTangent>
+				<outTangent>-0.000005 -0.425682 -0.274951</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>0.233333</startTime>
+				<duration>0.366667</duration>
+				<value>particles/Environment/Battle_Royal/Lighting/Lightings/Lighting_arc_small_01.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>L_Arcs_02_03</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-3.594238 0.000004 3.242493</value>
+				<inTangent>-1.399425 0.000010 3.991616</inTangent>
+				<outTangent>-1.399425 0.000010 3.991616</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000050 160.673691 -0.000031</value>
+				<inTangent>0.000156 135.578964 -0.000025</inTangent>
+				<outTangent>0.000156 135.578964 -0.000025</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.538936 0.479452 0.383956</value>
+				<inTangent>-0.520936 -0.463439 -0.371133</inTangent>
+				<outTangent>-0.520936 -0.463439 -0.371133</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>0.433333</startTime>
+				<duration>0.366667</duration>
+				<value>particles/Environment/Battle_Royal/Lighting/Lightings/Lighting_arc_small_02.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>L_Arcs_03_01</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.000103 -163.276062 0.000062</value>
+				<inTangent>-0.000385 -338.637756 0.000327</inTangent>
+				<outTangent>-0.000385 -338.637756 0.000327</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.611663 1.261001 1.140134</value>
+				<inTangent>3.045961 1.582965 1.650543</inTangent>
+				<outTangent>3.045961 1.582965 1.650543</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>0.166667</startTime>
+				<duration>0.366667</duration>
+				<value>particles/Environment/Battle_Royal/Lighting/Lightings/Lighting_arc_small_01.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>L_Arcs_03_02</name>
+		<type>model</type>
+		<resource>content/Environment/env_null_model/null_model.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.366821 -0.000009 3.968872</value>
+				<inTangent>5.125579 -0.000032 14.883269</inTangent>
+				<outTangent>5.125579 -0.000032 14.883269</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.000017 -225.922379 0.000114</value>
+				<inTangent>0.000323 -234.923676 0.000196</inTangent>
+				<outTangent>0.000323 -234.923676 0.000196</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.611663 1.261001 1.140134</value>
+				<inTangent>3.045961 1.582965 1.650543</inTangent>
+				<outTangent>3.045961 1.582965 1.650543</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>sequence</name>
+			<type>sequence</type>
+			<frame>
+				<startTime>0.233333</startTime>
+				<duration>0.366667</duration>
+				<value>particles/Environment/Battle_Royal/Lighting/Lightings/Lighting_arc_small_02.seq</value>
+				<speed>1.000000</speed>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Sound 0</name>
+		<type>sound</type>
+		<track>
+			<name>Sound</name>
+			<type>sound</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>3.346146</duration>
+				<sequenceSound>BR_perk_thunderstrike_lightining</sequenceSound>
+				<type>play_till_end</type>
+				<fade>0.000000</fade>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Wave</name>
+		<type>model</type>
+		<resource>particles/Environment/Battle_Royal/Lighting/damage_circle_02.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 0.100000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.133333</startTime>
+				<value>0.865695 0.865695 0.865695</value>
+				<inTangent>1.076030 0.000000 1.170973</inTangent>
+				<outTangent>1.076030 0.000000 1.170973</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>1.375826 0.865695 1.375826</value>
+				<inTangent>0.363341 -0.000000 0.425249</inTangent>
+				<outTangent>0.363341 -0.000000 0.425249</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>lighting3</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.133333</startTime>
+				<value>1.000000 1.000000 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 22.161301</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 22.161301</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>1.000000 1.000000 1.000000 0.738710</value>
+				<inTangent>0.000000 0.000000 0.000000 2.352408</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 2.352408</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.366667</startTime>
+				<value>1.000000 1.000000 1.000000 1.180429</value>
+				<inTangent>0.000000 0.000000 0.000000 1.507757</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -3.996775</outTangent>
+				<tangentMode>66307</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>1.000000 1.000000 1.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -1.170213</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -1.170213</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>lighting3</identifier>
+			<property>opacity_UV_Speed_Scale</property>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>1.000000 0.600000 0.200000 0.500000</value>
+				<inTangent>0.000000 -3.054034 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 -3.054034 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>1.500000 -0.500000 0.200000 0.500000</value>
+				<inTangent>-0.000000 -1.266143 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -1.266143 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>lighting3</identifier>
+			<property>diffuseUVSpeedAlphaOffset</property>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>0.840735 0.610405 4.000000 -1.000000</value>
+				<inTangent>-9.330696 -3.321976 0.000000 0.000000</inTangent>
+				<outTangent>-9.330696 -3.321976 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>-1.420000 -0.500002 4.000000 -1.000000</value>
+				<inTangent>-0.000000 -0.954292 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.954292 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>lighting3</identifier>
+			<property>distortion_UV_Speed_Amount</property>
+			<frame>
+				<startTime>0.166667</startTime>
+				<value>0.000000 0.000000 0.100000 0.300000</value>
+				<inTangent>1.577003 6.309018 0.000000 0.000000</inTangent>
+				<outTangent>1.577003 6.309018 0.000000 0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>0.493021 1.702896 0.100000 0.300000</value>
+				<inTangent>0.159014 0.524873 -0.000000 -0.000000</inTangent>
+				<outTangent>0.159014 0.524873 -0.000000 -0.000000</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Center</name>
+		<type>model</type>
+		<resource>particles/Environment/Battle_Royal/Lighting/Center_Energy.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 1.500000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>4.087235 4.087235 4.087235</value>
+				<inTangent>-17.468246 -16.210941 -16.210941</inTangent>
+				<outTangent>-17.468246 -16.210941 -16.210941</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.466667</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>-0.992960 -1.466796 -0.475996</inTangent>
+				<outTangent>-0.992960 -1.466796 -0.475996</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>GlowCenter</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 1.000000 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 44.999996</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 44.999996</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>1.000000 1.000000 1.000000 1.500000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.016801</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.016801</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.366667</startTime>
+				<value>1.000000 1.000000 1.000000 1.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 0.153160</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 0.153160</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.466667</startTime>
+				<value>1.000000 1.000000 1.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.042888</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.042888</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

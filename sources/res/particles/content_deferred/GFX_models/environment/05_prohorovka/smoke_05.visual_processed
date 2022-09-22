@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>07 - Default</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						selfIllumLight
+						<Vector4>
+							1 1 1 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>
+							8 0.000000 0.000000 0.5
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>
+							0.01 0.04 0.1 0.1
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/vel_smoke.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>
+							0.000000 0.012 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Smoke_04_tile.dds</Texture>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>
+							1 0.000000 0.85 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						alphaAdditiveEnable
+						<Bool>false</Bool>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>1 1 1 1</Vector4>
+					</property>
+				</material>
+				<groupOrigin>4.100574 16.120291 1.275796</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-8.621822 -1.079394 -7.825281</min>
+		<max>16.822971 33.319977 10.376873</max>
+	</boundingBox>
+	<geometrySize>2088</geometrySize>
+	<minUVDensity>0.001472</minUVDensity>
+</root>

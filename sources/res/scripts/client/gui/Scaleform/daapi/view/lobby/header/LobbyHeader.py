@@ -8,7 +8,6 @@ from account_helpers.AccountSettings import KNOWN_SELECTOR_BATTLES
 from account_helpers.AccountSettings import NEW_LOBBY_TAB_COUNTER, RECRUIT_NOTIFICATIONS, NEW_SHOP_TABS, LAST_SHOP_ACTION_COUNTER_MODIFICATION, OVERRIDEN_HEADER_COUNTER_ACTION_ALIASES
 from account_helpers.renewable_subscription import RenewableSubscription
 from adisp import process, async
-from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS as BONUS_CAPS
 from constants import PREMIUM_TYPE, EPlatoonButtonState
 from debug_utils import LOG_ERROR
 from frameworks.wulf import ViewFlags, WindowLayer
@@ -81,6 +80,7 @@ from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.utils import IHangarSpace
 from skeletons.gui.techtree_events import ITechTreeEventsListener
+from skeletons.prebattle_vehicle import IPrebattleVehicle
 from skeletons.tutorial import ITutorialLoader
 from PlayerEvents import g_playerEvents
 if typing.TYPE_CHECKING:
@@ -263,6 +263,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
     wgnpSteamAccCtrl = dependency.descriptor(IWGNPSteamAccRequestController)
     steamRegistrationCtrl = dependency.descriptor(ISteamCompletionController)
     wgnpDemoAccCtrl = dependency.descriptor(IWGNPDemoAccRequestController)
+    prebattleVehicle = dependency.descriptor(IPrebattleVehicle)
     __SELECTOR_TOOLTIP_TYPE = TOOLTIPS.HEADER_BATTLETYPE
 
     def __init__(self):
@@ -506,6 +507,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.lobbyContext.getServerSettings().onServerSettingsChange += self.__onServerSettingChanged
         g_currentVehicle.onChanged += self.__onVehicleChanged
         g_currentPreviewVehicle.onChanged += self.__onVehicleChanged
+        self.prebattleVehicle.onChanged += self.__onVehicleChanged
         self.hangarSpace.onSpaceCreate += self.__onHangarSpaceCreated
         self.hangarSpace.onSpaceDestroy += self.__onHangarSpaceDestroy
         self.eventsCache.onSyncCompleted += self.__onEventsCacheResync
@@ -600,6 +602,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.lobbyContext.getServerSettings().onServerSettingsChange -= self.__onServerSettingChanged
         g_currentVehicle.onChanged -= self.__onVehicleChanged
         g_currentPreviewVehicle.onChanged -= self.__onVehicleChanged
+        self.prebattleVehicle.onChanged -= self.__onVehicleChanged
         self.hangarSpace.onSpaceCreate -= self.__onHangarSpaceCreated
         self.hangarSpace.onSpaceDestroy -= self.__onHangarSpaceDestroy
         self.eventsCache.onSyncCompleted -= self.__onEventsCacheResync
@@ -1081,7 +1084,12 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
                         tooltip = PLATOON.HEADERBUTTON_TOOLTIPS_INMAPBOXSQUAD
                     else:
                         tooltip = PLATOON.HEADERBUTTON_TOOLTIPS_MAPBOXSQUAD
-                elif isInSquad or isEvent:
+                elif isEvent:
+                    if isInSquad:
+                        tooltip = PLATOON.HEADERBUTTON_TOOLTIPS_INEVENTSQUAD
+                    else:
+                        tooltip = PLATOON.HEADERBUTTON_TOOLTIPS_EVENTSQUAD
+                elif isInSquad:
                     tooltip = PLATOON.HEADERBUTTON_TOOLTIPS_INSQUAD
                 elif isRanked:
                     tooltip = PLATOON.HEADERBUTTON_TOOLTIPS_RANKEDSQUAD
@@ -1089,17 +1097,15 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
                     tooltip = PLATOON.HEADERBUTTON_TOOLTIPS_BATTLEROYALESQUAD if isRoyale else ''
                 else:
                     tooltip = PLATOON.HEADERBUTTON_TOOLTIPS_SQUAD
-                hasEventSquadCap = bool(BONUS_CAPS.checkAny(constants.ARENA_BONUS_TYPE.EVENT_BATTLES, BONUS_CAPS.SQUADS))
-                isEventSquadEnable = isEvent and hasEventSquadCap
                 hasSearchSupport = self.platoonCtrl.hasWelcomeWindow()
-                self.as_updateSquadS(isInSquad, tooltip, TOOLTIP_TYPES.COMPLEX, isEventSquadEnable, squadSelected.squadIcon if hasattr(squadSelected, 'squadIcon') else None, hasSearchSupport, extendedSquadInfoVo._asdict())
+                self.as_updateSquadS(isInSquad, tooltip, TOOLTIP_TYPES.COMPLEX, False, squadSelected.squadIcon if hasattr(squadSelected, 'squadIcon') else None, hasSearchSupport, extendedSquadInfoVo._asdict())
             self.__isFightBtnDisabled = self._checkFightButtonDisabled(canDo, selected.isLocked())
             tooltipData, isSpecial = '', False
             if self.__isFightBtnDisabled and not state.hasLockedState:
                 if isSandbox:
                     tooltipData = getSandboxTooltipData(result)
-                elif isEvent and state.isInUnit(constants.PREBATTLE_TYPE.EVENT):
-                    tooltipData = getEventTooltipData()
+                elif isEvent:
+                    tooltipData = getEventTooltipData(result)
                 elif g_currentVehicle.isTooHeavy():
                     tooltipData = makeTooltip(body=backport.text(R.strings.tooltips.hangar.startBtn.vehicleToHeavy.body()))
                 elif g_currentVehicle.isOnlyForEpicBattles() and (g_currentVehicle.isUnsuitableToQueue() or g_currentVehicle.isDisabledInRent()):
@@ -1412,6 +1418,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
          'isSandboxEnabled' in diff,
          'ranked_config' in diff,
          'epic_config' in diff,
+         'event_battles_config' in diff,
          battleRoyaleStateChanged,
          mapsTrainingStateChanged,
          eventBattlesStateChanged))

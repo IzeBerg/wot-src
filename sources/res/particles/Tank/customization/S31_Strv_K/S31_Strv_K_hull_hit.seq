@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>1.800000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>pattern_hull</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/S31_Strv_K/s31_pattern_hull.model</resource>
+		<castsShadow>false</castsShadow>
+		<persistent>false</persistent>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.000032 -1.025652 0.000095</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>tank_hull_01</identifier>
+			<property>lightMultipliers</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>10.000000 2.000000 2.000000 0.000000</value>
+				<inTangent>0.980769 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>-34.615379 -3.923077 -3.923077 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.433333</startTime>
+				<value>3.000000 0.300000 0.300000 0.000000</value>
+				<inTangent>-34.615379 -3.923077 -3.923077 -0.000000</inTangent>
+				<outTangent>-3.658537 0.073171 0.073171 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.800000</startTime>
+				<value>0.000000 0.400000 0.400000 0.000000</value>
+				<inTangent>-3.658537 0.073171 0.073171 -0.000000</inTangent>
+				<outTangent>-1.656717 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>edges_glow</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/S31_Strv_K/s31_edge_hull.model</resource>
+		<castsShadow>false</castsShadow>
+		<persistent>false</persistent>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.000006 -1.040120 0.000004</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>lightglow</identifier>
+			<property>lightMultipliers</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>8.000000 1.000000 1.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>-6.923076 -3.923077 -3.923077 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.433333</startTime>
+				<value>1.000000 0.300000 0.300000 0.000000</value>
+				<inTangent>-6.923076 -3.923077 -3.923077 -0.000000</inTangent>
+				<outTangent>-1.463415 -0.146341 -0.146341 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.800000</startTime>
+				<value>0.000000 0.100000 0.100000 0.000000</value>
+				<inTangent>-1.463415 -0.146341 -0.146341 -0.000000</inTangent>
+				<outTangent>0.394737 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

@@ -5,6 +5,8 @@ package
       
       public static const SQUAD:String = "#platoon:squad";
       
+      public static const EVENT_SQUAD:String = "#platoon:event_squad";
+      
       public static const HEADERBUTTON_SQUAD:String = "#platoon:headerButton/squad";
       
       public static const HEADERBUTTON_TOOLTIPS_SQUAD_HEADER:String = "#platoon:headerButton/tooltips/squad/header";
@@ -28,6 +30,10 @@ package
       public static const HEADERBUTTON_TOOLTIPS_EVENTSQUAD_HEADER:String = "#platoon:headerButton/tooltips/eventSquad/header";
       
       public static const HEADERBUTTON_TOOLTIPS_EVENTSQUAD_BODY:String = "#platoon:headerButton/tooltips/eventSquad/body";
+      
+      public static const HEADERBUTTON_TOOLTIPS_INEVENTSQUAD_HEADER:String = "#platoon:headerButton/tooltips/inEventSquad/header";
+      
+      public static const HEADERBUTTON_TOOLTIPS_INEVENTSQUAD_BODY:String = "#platoon:headerButton/tooltips/inEventSquad/body";
       
       public static const HEADERBUTTON_TOOLTIPS_DOMINATIONSQUAD_HEADER:String = "#platoon:headerButton/tooltips/dominationSquad/header";
       

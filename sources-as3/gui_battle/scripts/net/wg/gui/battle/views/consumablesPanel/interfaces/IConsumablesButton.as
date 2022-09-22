@@ -38,6 +38,8 @@ package net.wg.gui.battle.views.consumablesPanel.interfaces
       
       function set showConsumableBorder(param1:Boolean) : void;
       
+      function setStage(param1:int) : void;
+      
       function set isReplay(param1:Boolean) : void;
       
       function updateLockedInformation(param1:int, param2:String) : void;

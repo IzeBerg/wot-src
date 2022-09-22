@@ -44,7 +44,7 @@ def timeDataToUTC(timeData, default=None):
         else:
             return default
     except:
-        raise SoftException('Invalid format (%s). Format must be like %s, for example 23.01.2011 00:00.' % (
+        raise SoftException('Invalid format (%s). Format must be like %s , for example 23.01.2011 00:00.' % (
          timeData, "'%d.%m.%Y %H:%M'"))
 
     return timeData
@@ -56,6 +56,14 @@ def readUTC(section, field, default=None):
         return timeDataToUTC(timeData, default)
     except Exception as e:
         raise SoftException('Invalid field %s: %s' % (field, e))
+
+
+def isFloat(string):
+    try:
+        float(string)
+        return True
+    except ValueError:
+        return False
 
 
 def __readBonus_bool(bonus, name, section, eventType, checkLimit):
@@ -575,7 +583,11 @@ def __readBonus_seasonRent(outRent, section):
 def __readBonus_rent(bonus, _name, section):
     rent = {}
     if section.has_key('time'):
-        rent['time'] = section['time'].asFloat
+        timeValue = section.readFloat('time', None)
+        if timeValue is None:
+            rent['time'] = readUTC(section, 'time')
+        else:
+            rent['time'] = timeValue
     if section.has_key('battles'):
         rent['battles'] = section['battles'].asInt
     if section.has_key('wins'):
@@ -584,8 +596,11 @@ def __readBonus_rent(bonus, _name, section):
         credits = section['compensation'].readInt('credits', 0)
         gold = section['compensation'].readInt('gold', 0)
         rent['compensation'] = (credits, gold)
+    if section.has_key('hasEventRule'):
+        rent['hasEventRule'] = section['hasEventRule'].asBool
     __readBonus_seasonRent(rent, section)
     bonus['rent'] = rent
+    return
 
 
 def __readBonus_outfits(bonus, _name, section):
@@ -843,6 +858,16 @@ def __readBonus_optionalData(config, bonusReaders, section, eventType):
         properties['compensation'] = section['compensation'].asBool
     if section.has_key('shouldCompensated'):
         properties['shouldCompensated'] = section['shouldCompensated'].asBool
+    if section.has_key('userProbability'):
+        userProbability = section['userProbability'].asString.split()
+        if len(userProbability) != len(probabilitiesList):
+            raise SoftException('User probabilities must be the same length as probabilities')
+        for userProb in userProbability:
+            if userProb not in USER_PROBABILITIES:
+                if not isFloat(userProb) or not 0.0 <= float(userProb) <= 100.0:
+                    raise SoftException(('Invalid userProbability value: {}').format(userProb))
+
+        properties['userProbability'] = userProbability
     if IS_DEVELOPMENT:
         if section.has_key('name'):
             properties['name'] = section['name'].asString
@@ -1043,11 +1068,12 @@ __PROBABILITY_READERS = {'optional': __readBonus_optional,
    'oneof': __readBonus_oneof, 
    'group': __readBonus_group}
 _RESERVED_NAMES = frozenset(['config', 'properties', 'limitID', 'probability', 'compensation', 'name',
- 'shouldCompensated', 'probabilityStageDependence', 'bonusProbability'])
+ 'shouldCompensated', 'probabilityStageDependence', 'bonusProbability', 'userProbability'])
 SUPPORTED_BONUSES = frozenset(__BONUS_READERS.iterkeys())
 __SORTED_BONUSES = sorted(SUPPORTED_BONUSES)
 SUPPORTED_BONUSES_IDS = dict((n, i) for i, n in enumerate(__SORTED_BONUSES))
 SUPPORTED_BONUSES_NAMES = {i:n for i, n in enumerate(__SORTED_BONUSES)}
+USER_PROBABILITIES = frozenset(['high', 'medium', 'low'])
 
 def __readBonusLimit(section):
     properties = {}

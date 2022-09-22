@@ -10,6 +10,10 @@ package net.wg.gui.battle.eventBattle.views.battleHints.data
       
       public var iconSource:String = "";
       
+      public var backgroundColor:String = "";
+      
+      public var timer:int = 0;
+      
       public function HintInfoVO(param1:Object)
       {
          super(param1);

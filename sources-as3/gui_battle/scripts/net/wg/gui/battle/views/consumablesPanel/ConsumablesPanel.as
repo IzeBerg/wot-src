@@ -6,6 +6,7 @@ package net.wg.gui.battle.views.consumablesPanel
    import flash.geom.ColorTransform;
    import net.wg.data.constants.InvalidationType;
    import net.wg.data.constants.Linkages;
+   import net.wg.data.constants.generated.BATTLE_CONSUMABLES_PANEL_TAGS;
    import net.wg.data.constants.generated.CONSUMABLES_PANEL_SETTINGS;
    import net.wg.gui.battle.components.buttons.BattleButton;
    import net.wg.gui.battle.views.consumablesPanel.VO.ConsumablesVO;
@@ -250,29 +251,35 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      public function as_addEquipmentSlot(param1:int, param2:Number, param3:Number, param4:int, param5:Number, param6:Number, param7:String, param8:String, param9:int) : void
+      public function as_addEquipmentSlot(param1:int, param2:Number, param3:Number, param4:String, param5:int, param6:Number, param7:Number, param8:String, param9:String, param10:int, param11:int) : void
       {
-         var _loc10_:IConsumablesButton = null;
+         var _loc12_:IConsumablesButton = null;
+         if(param4 == null)
+         {
+            param4 = BATTLE_CONSUMABLES_PANEL_TAGS.WITHOUT_TAG;
+         }
          if(this._renderers[param1] == null)
          {
-            _loc10_ = this.createEquipmentButton();
-            this._renderers[param1] = _loc10_;
-            addChild(DisplayObject(_loc10_));
+            _loc12_ = this.createEquipmentButton();
+            this._renderers[param1] = _loc12_;
+            addChild(DisplayObject(_loc12_));
          }
          else
          {
-            _loc10_ = this.getRendererBySlotIdx(param1);
+            _loc12_ = this.getRendererBySlotIdx(param1);
          }
-         var _loc11_:ConsumablesVO = _loc10_.consumablesVO;
-         _loc11_.keyCode = param2;
-         _loc11_.idx = param1;
-         _loc10_.isReplay = this._isReplay;
-         _loc10_.icon = param7;
-         _loc10_.tooltipStr = param8;
-         _loc10_.key = param3;
-         _loc10_.addClickCallBack(this);
-         _loc10_.setCoolDownTime(param5,param6,param6 - param5,param9);
-         _loc10_.quantity = param4;
+         var _loc13_:ConsumablesVO = _loc12_.consumablesVO;
+         _loc13_.keyCode = param2;
+         _loc13_.idx = param1;
+         _loc13_.tag = param4;
+         _loc12_.isReplay = this._isReplay;
+         _loc12_.icon = param8;
+         _loc12_.tooltipStr = param9;
+         _loc12_.key = param3;
+         _loc12_.addClickCallBack(this);
+         _loc12_.setStage(param11);
+         _loc12_.setCoolDownTime(param6,param7,param7 - param6,param10);
+         _loc12_.quantity = param5;
          invalidate(INVALIDATE_DRAW_LAYOUT);
       }
       
@@ -433,13 +440,14 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      public function as_setItemTimeQuantityInSlot(param1:int, param2:int, param3:Number, param4:Number, param5:int) : void
+      public function as_setItemTimeQuantityInSlot(param1:int, param2:int, param3:Number, param4:Number, param5:int, param6:int) : void
       {
-         var _loc6_:IConsumablesButton = this.getRendererBySlotIdx(param1);
-         if(_loc6_)
+         var _loc7_:IConsumablesButton = this.getRendererBySlotIdx(param1);
+         if(_loc7_)
          {
-            _loc6_.quantity = param2;
-            _loc6_.setCoolDownTime(param3,param4,param4 - param3,param5);
+            _loc7_.setStage(param6);
+            _loc7_.quantity = param2;
+            _loc7_.setCoolDownTime(param3,param4,param4 - param3,param5);
          }
       }
       
@@ -793,6 +801,21 @@ package net.wg.gui.battle.views.consumablesPanel
       public function get panelWidth() : Number
       {
          return this.x + this._basePanelWidth;
+      }
+      
+      protected function get renderersLength() : int
+      {
+         return this._renderers.length;
+      }
+      
+      protected function get itemsPadding() : int
+      {
+         return this._itemsPadding;
+      }
+      
+      protected function set basePanelWidth(param1:Number) : void
+      {
+         this._basePanelWidth = param1;
       }
       
       private function onStageMouseDownHandler(param1:MouseEvent) : void

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>FBXASC0482FBXASC032FBXASC045FBXASC032Defausdsfhg</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<property>
+						TintlColor
+						<Vector4>0.823529 0.886275 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>-0.005200 -0.005100 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>-0.010000 0.001000 0.100000 0.100000</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>1.000000 0.151000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector4>0.741176 0.831373 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						FreshnelColor
+						<Vector4>0.807843 0.894118 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 0.000000 4.000000 1.000000</Vector4>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/clouds_1.dds</Texture>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/vel_smoke__01__01.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.008346 6.036159 -0.012345</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>FBXASC0482FBXASC032FBXASC045FBXASC032Default</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<property>
+						TintlColor
+						<Vector4>0.752941 0.862745 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.032000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>-0.050000 -0.001510 0.151000 0.123000</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>1.000000 0.015000 2.000000 0.000000</Vector4>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector4>1.000000 1.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 0.000000 2.000000 2.000000</Vector4>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/tornado_map.dds</Texture>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/vel_smoke__01__01.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.010248 2.151715 -0.012349</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>FBXASC0482FBXASC032FBXASC045FBXASC032Defausds</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<property>
+						TintlColor
+						<Vector4>0.647059 0.788235 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.005000 0.005000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.010000 -0.010000 0.050000 0.050000</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>1.000000 0.050000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector4>0.466667 0.564706 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						FreshnelColor
+						<Vector4>0.094118 0.305882 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 0.000000 2.000000 1.000000</Vector4>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/clouds_2.dds</Texture>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/vel_smoke__01__01.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.008346 6.116587 -0.012347</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				3
+				<material>
+					<identifier>FBXASC0482FBXASC032FBXASC045FBXASC032Defa</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<property>
+						TintlColor
+						<Vector4>0.776471 0.854902 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.010000 0.010000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.009500 0.001110 0.051000 0.095230</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>1.000000 0.050000 2.000000 0.000000</Vector4>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector4>1.000000 1.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 0.000000 1.250000 1.000000</Vector4>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/clouds_1.dds</Texture>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/vel_smoke__01__01.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 2.357353 0.182904</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-14.763703 -1.897773 -14.767701</min>
+		<max>14.747011 9.188334 14.743011</max>
+	</boundingBox>
+	<geometrySize>236244</geometrySize>
+	<minUVDensity>0.000337</minUVDensity>
+</root>

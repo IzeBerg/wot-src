@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<property>
+						TintlColor
+						<Vector4>0.439216 0.392157 0.368627 1.000000</Vector4>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.000000 0.000000 0.750000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.050000 0.050000 0.050000 0.050000</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>1.000000 0.150000 0.050000 0.000000</Vector4>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector4>0.254902 0.050980 0.176471 0.000000</Vector4>
+						<Vector3>0.254902 0.050980 0.176471</Vector3>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 1.000000 5.000000 1.000000</Vector4>
+					</property>
+					<property>
+						softFactor
+						<Float>3.000000</Float>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaAdditiveEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/smoke_background.dds</Texture>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/vel_smoke.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.005615 0.263595 0.004958</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.533910 -0.001321 -0.000216</min>
+		<max>0.522680 0.528511 0.010132</max>
+	</boundingBox>
+	<geometrySize>2852</geometrySize>
+	<minUVDensity>1.785997</minUVDensity>
+</root>

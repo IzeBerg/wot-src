@@ -2997,6 +2997,10 @@ package
       
       public static const CAMOUFLAGE_IT08_PROGETTO_M40_MOD_65_B9BS_3DST_DESCRIPTION:String = "#vehicle_customization:camouflage/It08_Progetto_M40_mod_65_B9BS_3DSt/description";
       
+      public static const CAMOUFLAGE_TWITCH_SEPTEMBER_2022_LABEL:String = "#vehicle_customization:camouflage/twitch_september_2022/label";
+      
+      public static const CAMOUFLAGE_TWITCH_SEPTEMBER_2022_DESCRIPTION:String = "#vehicle_customization:camouflage/twitch_september_2022/description";
+      
       public static const EMBLEM:String = "#vehicle_customization:emblem";
       
       public static const EMBLEM_CLAN_CONTENT:String = "#vehicle_customization:emblem/clan_content";
@@ -8041,6 +8045,8 @@ package
       
       public static const REPAINT_F88_AMX_13_105_B9BS_3DST:String = "#vehicle_customization:repaint/F88_AMX_13_105_B9BS_3DSt";
       
+      public static const REPAINT_TWITCH_SEPTEMBER_2022:String = "#vehicle_customization:repaint/twitch_september_2022";
+      
       public static const MODIFICATIONS_AGE_EFFECT_01:String = "#vehicle_customization:modifications/age_effect_01";
       
       public static const MODIFICATIONS_AGE_EFFECT_01_DESCRIPTION:String = "#vehicle_customization:modifications/age_effect_01/description";
@@ -10661,6 +10667,10 @@ package
       
       public static const MAIN_STYLE_F88_AMX_13_105_B9BS_3DST_DESC_LONG:String = "#vehicle_customization:main_style/F88_AMX_13_105_B9BS_3DSt_desc/long";
       
+      public static const SPECIAL_STYLE_TWITCH_SEPTEMBER_2022:String = "#vehicle_customization:special_style/twitch_september_2022";
+      
+      public static const SPECIAL_STYLE_TWITCH_SEPTEMBER_2022_DESC_LONG:String = "#vehicle_customization:special_style/twitch_september_2022_desc/long";
+      
       public static const CUSTOMIZATION_POPOVER_STYLE_SUMMER:String = "#vehicle_customization:customization/popover/style/summer";
       
       public static const CUSTOMIZATION_POPOVER_STYLE_DESERT:String = "#vehicle_customization:customization/popover/style/desert";
@@ -12785,6 +12795,72 @@ package
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_443:String = "#vehicle_customization:projection_decals/special/projection_decal_443";
       
+      public static const CAMOUFLAGE_MULTICOLOR_BRASS_LABEL:String = "#vehicle_customization:camouflage/Multicolor_Brass/label";
+      
+      public static const CAMOUFLAGE_MULTICOLOR_BRASS_DESCRIPTION:String = "#vehicle_customization:camouflage/Multicolor_Brass/description";
+      
+      public static const CAMOUFLAGE_MULTICOLOR_GRAPHITE_LABEL:String = "#vehicle_customization:camouflage/Multicolor_Graphite/label";
+      
+      public static const CAMOUFLAGE_MULTICOLOR_GRAPHITE_DESCRIPTION:String = "#vehicle_customization:camouflage/Multicolor_Graphite/description";
+      
+      public static const SPECIAL_STYLE_NETWORK_MELTDOWN:String = "#vehicle_customization:special_style/Network_Meltdown";
+      
+      public static const SPECIAL_STYLE_NETWORK_MELTDOWN_DESC:String = "#vehicle_customization:special_style/Network_Meltdown_desc";
+      
+      public static const CAMOUFLAGE_NETWORK_MELTDOWN_LABEL:String = "#vehicle_customization:camouflage/Network_Meltdown/label";
+      
+      public static const CAMOUFLAGE_NETWORK_MELTDOWN_DESCRIPTION:String = "#vehicle_customization:camouflage/Network_Meltdown/description";
+      
+      public static const REPAINT_NETWORK_MELTDOWN:String = "#vehicle_customization:repaint/Network_Meltdown";
+      
+      public static const SPECIAL_STYLE_LIGHTNING_HUNTER:String = "#vehicle_customization:special_style/Lightning_Hunter";
+      
+      public static const SPECIAL_STYLE_LIGHTNING_HUNTER_DESC:String = "#vehicle_customization:special_style/Lightning_Hunter_desc";
+      
+      public static const CAMOUFLAGE_LIGHTNING_HUNTER_LABEL:String = "#vehicle_customization:camouflage/Lightning_Hunter/label";
+      
+      public static const CAMOUFLAGE_LIGHTNING_HUNTER_DESCRIPTION:String = "#vehicle_customization:camouflage/Lightning_Hunter/description";
+      
+      public static const REPAINT_LIGHTNING_HUNTER:String = "#vehicle_customization:repaint/Lightning_Hunter";
+      
+      public static const SPECIAL_STYLE_BREADBOARD:String = "#vehicle_customization:special_style/Breadboard";
+      
+      public static const SPECIAL_STYLE_BREADBOARD_DESC:String = "#vehicle_customization:special_style/Breadboard_desc";
+      
+      public static const CAMOUFLAGE_BREADBOARD_LABEL:String = "#vehicle_customization:camouflage/Breadboard/label";
+      
+      public static const CAMOUFLAGE_BREADBOARD_DESCRIPTION:String = "#vehicle_customization:camouflage/Breadboard/description";
+      
+      public static const REPAINT_BREADBOARD:String = "#vehicle_customization:repaint/Breadboard";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_445:String = "#vehicle_customization:projection_decals/special/projection_decal_445";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_446:String = "#vehicle_customization:projection_decals/special/projection_decal_446";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_447:String = "#vehicle_customization:projection_decals/special/projection_decal_447";
+      
+      public static const EMBLEM_SPECIAL_STICKER_710:String = "#vehicle_customization:emblem/special/sticker_710";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_448:String = "#vehicle_customization:projection_decals/special/projection_decal_448";
+      
+      public static const INSCRIPTION_SPECIAL_SPECIAL_620:String = "#vehicle_customization:inscription/special/special_620";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_449:String = "#vehicle_customization:projection_decals/special/projection_decal_449";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_450:String = "#vehicle_customization:projection_decals/special/projection_decal_450";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_451:String = "#vehicle_customization:projection_decals/special/projection_decal_451";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_452:String = "#vehicle_customization:projection_decals/special/projection_decal_452";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_453:String = "#vehicle_customization:projection_decals/special/projection_decal_453";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_454:String = "#vehicle_customization:projection_decals/special/projection_decal_454";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_462:String = "#vehicle_customization:projection_decals/special/projection_decal_462";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_463:String = "#vehicle_customization:projection_decals/special/projection_decal_463";
+      
       public static const PROPERTYSHEET_KEYBOARD_HINT:String = "#vehicle_customization:propertySheet/keyboard/hint";
       
       public static const PROPERTYSHEET_INSCRIPTIONCONTROLLER_INVALID_INSCRIPTION:String = "#vehicle_customization:propertySheet/inscriptionController/invalid_inscription";
@@ -13026,6 +13102,10 @@ package
       public static const ONBOARDINGVIEW_BTNSKIP:String = "#vehicle_customization:onboardingView/btnSkip";
       
       public static const ONBOARDINGVIEW_BTNACCEPT:String = "#vehicle_customization:onboardingView/btnAccept";
+      
+      public static const CAMOUFLAGE_WAFFENTRAGER_E100_TLXXL_S_LABEL:String = "#vehicle_customization:camouflage/waffentrager_e100_tlxxl_s/label";
+      
+      public static const CAMOUFLAGE_WAFFENTRAGER_E100_TLXXL_S_DESCRIPTION:String = "#vehicle_customization:camouflage/waffentrager_e100_tlxxl_s/description";
        
       
       public function VEHICLE_CUSTOMIZATION()

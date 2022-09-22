@@ -168,6 +168,12 @@ package net.wg.data.constants.generated
       public static const MAPS_TRAINING_GOALS:String = "mapsTrainingGoals";
       
       public static const PIERCING_DEBUG_PANEL:String = "piercingDebugPanel";
+      
+      public static const EVENT_HUNTER_RESPAWN:String = "eventHunterRespawn";
+      
+      public static const EVENT_BOSS_TELEPORT:String = "eventBossTeleport";
+      
+      public static const EVENT_BOSS_WIDGET:String = "eventBossWidget";
        
       
       public function BATTLE_VIEW_ALIASES()

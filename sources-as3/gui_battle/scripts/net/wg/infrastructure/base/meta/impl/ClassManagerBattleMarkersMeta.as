@@ -14,6 +14,15 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.staticMarkers.epic.sectorbase.SectorBaseActions;
    import net.wg.gui.battle.views.staticMarkers.epic.sectorbase.SectorBaseIcon;
    import net.wg.gui.battle.views.staticMarkers.epic.sectorbase.SectorBaseMarker;
+   import net.wg.gui.battle.views.staticMarkers.eventBattle.BombActionMarker;
+   import net.wg.gui.battle.views.staticMarkers.eventBattle.BombActionMarkerTimer;
+   import net.wg.gui.battle.views.staticMarkers.eventBattle.BombContent;
+   import net.wg.gui.battle.views.staticMarkers.eventBattle.BombMarker;
+   import net.wg.gui.battle.views.staticMarkers.eventBattle.IndexedActionMarker;
+   import net.wg.gui.battle.views.staticMarkers.eventBattle.IndexedContent;
+   import net.wg.gui.battle.views.staticMarkers.eventBattle.IndexedMarker;
+   import net.wg.gui.battle.views.staticMarkers.eventBattle.ScaleAnimation;
+   import net.wg.gui.battle.views.staticMarkers.eventBattle.ScaleContainer;
    import net.wg.gui.battle.views.staticMarkers.flag.FlagIcon;
    import net.wg.gui.battle.views.staticMarkers.flag.FlagMarker;
    import net.wg.gui.battle.views.staticMarkers.flag.constant.FlagMarkerState;
@@ -26,6 +35,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.vehicleMarkers.AnimateExplosion;
    import net.wg.gui.battle.views.vehicleMarkers.BranderVehicle2dMarker;
    import net.wg.gui.battle.views.vehicleMarkers.DamageLabel;
+   import net.wg.gui.battle.views.vehicleMarkers.EventVehicleMarker;
    import net.wg.gui.battle.views.vehicleMarkers.FlagContainer;
    import net.wg.gui.battle.views.vehicleMarkers.FortConsumablesMarker;
    import net.wg.gui.battle.views.vehicleMarkers.HPFieldContainer;
@@ -58,6 +68,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.MarkerAssetContainer;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleAnimatedStatusBaseMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleBerserkerMarker;
+   import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleBombMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleEngineerEffectMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleFLBasicMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleInspireMarker;
@@ -96,6 +107,24 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EPIC_SECTORWAYPOINT_SECTORWAYPOINTMARKER:Class = SectorWaypointMarker;
       
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EVENTBATTLE_BOMBACTIONMARKER:Class = BombActionMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EVENTBATTLE_BOMBACTIONMARKERTIMER:Class = BombActionMarkerTimer;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EVENTBATTLE_BOMBCONTENT:Class = BombContent;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EVENTBATTLE_BOMBMARKER:Class = BombMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EVENTBATTLE_INDEXEDACTIONMARKER:Class = IndexedActionMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EVENTBATTLE_INDEXEDCONTENT:Class = IndexedContent;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EVENTBATTLE_INDEXEDMARKER:Class = IndexedMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EVENTBATTLE_SCALEANIMATION:Class = ScaleAnimation;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EVENTBATTLE_SCALECONTAINER:Class = ScaleContainer;
+      
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_FLAG_FLAGICON:Class = FlagIcon;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_FLAG_FLAGMARKER:Class = FlagMarker;
@@ -119,6 +148,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_BRANDERVEHICLE2DMARKER:Class = BranderVehicle2dMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_DAMAGELABEL:Class = DamageLabel;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_EVENTVEHICLEMARKER:Class = EventVehicleMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_FLAGCONTAINER:Class = FlagContainer;
       
@@ -171,6 +202,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_VEHICLEANIMATEDSTATUSBASEMARKER:Class = VehicleAnimatedStatusBaseMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_VEHICLEBERSERKERMARKER:Class = VehicleBerserkerMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_VEHICLEBOMBMARKER:Class = VehicleBombMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_VEHICLEENGINEEREFFECTMARKER:Class = VehicleEngineerEffectMarker;
       

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>Material #73</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/fire_glow.dds</Texture>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/vel_smoke.dds</Texture>
+					</property>
+					<property>
+						softFactor
+						<Float>3.000000</Float>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>0.992157 0.427451 0.231373 0.200000</Vector4>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.000000 0.000000 2.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.200000 0.200000 0.060000 0.040000</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>3.000000 1.000000 0.200000 0.000000</Vector4>
+					</property>
+					<property>
+						FreshnelColor
+						<Vector4>1.000000 0.807843 0.066667 1.000000</Vector4>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 1.000000 1.000000 2.000000</Vector4>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>0.000000 67.433617 1.242185</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-67.433632 -0.000010 -9.429758</min>
+		<max>67.433632 134.867249 11.914127</max>
+	</boundingBox>
+	<geometrySize>1080</geometrySize>
+	<minUVDensity>0.000050</minUVDensity>
+</root>

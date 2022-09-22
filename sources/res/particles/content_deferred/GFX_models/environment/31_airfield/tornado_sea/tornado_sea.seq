@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>1027.733276</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<enabledInEditor>true</enabledInEditor>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>tornado</name>
+		<type>model</type>
+		<enabledInEditor>true</enabledInEditor>
+		<resource>particles/content_deferred/GFX_models/environment/31_airfield/tornado_sea/tornado_sea_sequence.model</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-250.972351 0.000031 -62.044922</value>
+				<inTangent>-0.688055 -0.000000 -0.049400</inTangent>
+				<outTangent>0.492103 -0.000000 0.121657</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>510.000000</startTime>
+				<value>0.000000 0.000000 0.000000</value>
+				<inTangent>0.492103 -0.000000 0.121657</inTangent>
+				<outTangent>0.677777 0.000000 0.048662</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1027.733276</startTime>
+				<value>350.907776 0.000023 25.194092</value>
+				<inTangent>0.677777 0.000000 0.048662</inTangent>
+				<outTangent>0.677777 0.000000 0.048662</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Torenado_particles</name>
+		<type>particle</type>
+		<enabledInEditor>true</enabledInEditor>
+		<resource>particles/Environment/interior/31_airfield_sea_tornado_sequence.eff</resource>
+		<track>
+			<name>attach</name>
+			<type>attach</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<duration>1027.733276</duration>
+				<value>tornado|root</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>waterfall_10</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>waterfall_10</node>
+		<geometry>
+			<vertices>waterfall_10Shape.vertices</vertices>
+			<stream>waterfall_10Shape.colour</stream>
+			<primitive>waterfall_10Shape.indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>waterfall02</identifier>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						doubleSided
+						<Bool>false</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/waterfall_parts_01.dds</Texture>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector4>
+							1 1 1 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>
+							1 0.08 0.08 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>
+							0.25 -1.25 0.1 0.4
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/waterfall_IGR_dist.dds</Texture>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>
+							-0.1 -0.8 0.000000 0.000000
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>
+							1 2 -0.1 -0.9
+							<!--BW_String-->
+						</Vector4>
+					</property>
+					<property>
+						alphaAdditiveEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						enableLighting
+						<Bool>true</Bool>
+					</property>
+					<property>
+						softFactor
+						<Float>
+							0.2
+							<!--BW_String-->
+						</Float>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>1 1 1 1</Vector4>
+					</property>
+				</material>
+				<groupOrigin>-0.065984 -4.612551 -0.640458</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<constraints/>
+	<boundingBox>
+		<min>-0.485068 -9.578317 -1.389162</min>
+		<max>0.353101 0.353215 0.108245</max>
+	</boundingBox>
+	<geometrySize>6600</geometrySize>
+	<minUVDensity>0.056984</minUVDensity>
+</root>

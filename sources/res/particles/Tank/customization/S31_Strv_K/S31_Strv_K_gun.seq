@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>8.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>pattern_gun</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/S31_Strv_K/s31_pattern_gun.model</resource>
+		<castsShadow>false</castsShadow>
+		<persistent>false</persistent>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.067871 -1.873967 -1.609806</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>material property vector4</name>
+			<type>vector4</type>
+			<identifier>tank_hull_01</identifier>
+			<property>lightMultipliers</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.400000 0.400000 0.400000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>-0.434783 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>2.300000</startTime>
+				<value>0.500000 0.400000 0.400000 0.000000</value>
+				<inTangent>-0.434783 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>1.052632 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>4.200000</startTime>
+				<value>4.000000 0.400000 0.400000 0.000000</value>
+				<inTangent>1.052632 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-1.245283 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>5.966667</startTime>
+				<value>0.300000 0.400000 0.400000 0.000000</value>
+				<inTangent>-1.245283 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>0.590164 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>8.000000</startTime>
+				<value>1.400000 0.400000 0.400000 0.000000</value>
+				<inTangent>0.590164 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>-0.000000 -0.000000 -0.000000 -0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

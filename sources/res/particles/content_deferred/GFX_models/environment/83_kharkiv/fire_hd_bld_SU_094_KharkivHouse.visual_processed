@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>Fire</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/FireBig_02.dds</Texture>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/FireSmallVel_01.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						srcBlend
+						<Int>5</Int>
+					</property>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						texAddressMode
+						<Int>1</Int>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						enableLighting
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaAdditiveEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						fadeMinDistance
+						<Float>0.010000</Float>
+					</property>
+					<property>
+						fadeMaxDistance
+						<Float>1.000000</Float>
+					</property>
+					<property>
+						selfIllumLight
+						<Vector4>1.000000 1.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						TintlColor
+						<Vector4>1.000000 1.000000 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>-0.020000 0.550000 2.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.020000 0.350000 0.100000 0.100000</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>100.000000 0.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						FreshnelColor
+						<Vector4>1.000000 0.782358 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 1.200000 1.000000 0.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>39.328758 14.727479 4.298688</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>35.318577 8.358810 -0.137730</min>
+		<max>43.338940 21.096148 8.735106</max>
+	</boundingBox>
+	<geometrySize>53112</geometrySize>
+	<minUVDensity>0.002596</minUVDensity>
+</root>

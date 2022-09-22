@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_tiled_atlas_global.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>111</materialKind>
+					<property>
+						globalTex
+						<Texture>content/Hangars/hangar_v3/enviroment/hd_hv3_019_Stones_03_NM.dds</Texture>
+					</property>
+					<property>
+						g_atlasSizes
+						<Vector4>2.000000 2.000000 4.000000 1.000000</Vector4>
+					</property>
+					<property>
+						g_atlasIndexes
+						<Vector4>0.000000 1.000000 2.000000 2.000000</Vector4>
+					</property>
+					<property>
+						dirtMap
+						<Texture>content/Hangars/hangar_v3/enviroment/hd_hv3_019_Stones_dirt.dds</Texture>
+					</property>
+					<property>
+						atlasNormalGlossSpec
+						<Texture>content/Hangars/hangar_v3/enviroment/hd_hv3_019_Stones_Atlas_GBMT.dds</Texture>
+					</property>
+					<property>
+						atlasMetallicAO
+						<Texture>content/Hangars/hangar_v3/enviroment/hd_hv3_019_Stones_Atlas_MAO.dds</Texture>
+					</property>
+					<property>
+						atlasBlend
+						<Texture>content/Hangars/hangar_v3/enviroment/hd_hv3_019_Stones_Atlas_Blend.png</Texture>
+					</property>
+					<property>
+						atlasAlbedoHeight
+						<Texture>content/Hangars/hangar_v3/enviroment/hd_hv3_019_Stones_Atlas_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.742574 1.749477 -0.532698</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-7.598363 -0.087133 -6.680439</min>
+		<max>9.083510 3.586088 5.615042</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>92544</geometrySize>
+	<minUVDensity>0.027533</minUVDensity>
+</root>

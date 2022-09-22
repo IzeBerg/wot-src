@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<CellMethods>
+		<chooseSpawnPoint>
+			<Exposed/>
+			<Arg>STRING</Arg>
+		</chooseSpawnPoint>
+	</CellMethods>
+	<Properties>
+		<points>
+			<Type>
+				ARRAY
+				<of>UDO_INFO</of>
+			</Type>
+			<Flags>OWN_CLIENT</Flags>
+		</points>
+		<pointGuid>
+			<Type>STRING</Type>
+			<Flags>OWN_CLIENT</Flags>
+		</pointGuid>
+		<duration>
+			<Type>FLOAT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</duration>
+		<endTime>
+			<Type>FLOAT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</endTime>
+	</Properties>
+	<ofEntity>
+		<Avatar/>
+	</ofEntity>
+	<DefaultKeyName>respawnComponent</DefaultKeyName>
+</root>

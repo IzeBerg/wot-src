@@ -30,6 +30,8 @@ package net.wg.gui.battle.views.destroyTimers.data
       
       public var iconOffsetY:int = -1;
       
+      public var tipKeyCode:int = -1;
+      
       public function NotificationTimerSettingVO(param1:Object)
       {
          super(param1);

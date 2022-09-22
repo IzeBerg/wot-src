@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>isDeferred</name>
+			<type>bool</type>
+		</param>
+	</params>
+	<node>
+		<name>Sleep Node</name>
+		<type>sleep</type>
+		<time>0.100000 0.100000</time>
+		<transition>
+			<to>Head_light_fwd</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>bool</type>
+					<name>isDeferred</name>
+					<checked>false</checked>
+				</condition>
+			</conditions>
+		</transition>
+		<transition>
+			<to>Head_light_def</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>bool</type>
+					<name>isDeferred</name>
+					<checked>true</checked>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-102.000000 -72.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Head_light_fwd</name>
+		<type>sequence</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/HeadLight/F82_AMX_M4_Mle1949_Ter_Hull_HeadLight_fwd.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>1</loop>
+		<uiPosition>-330.000000 102.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>Head_light_def</name>
+		<type>sequence</type>
+		<resource>particles/content_deferred/GFX_models/tank_customization/HeadLight/F82_AMX_M4_Mle1949_Ter_Hull_HeadLight.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>1</loop>
+		<uiPosition>176.000000 104.000000 0.000000</uiPosition>
+	</node>
+</root>

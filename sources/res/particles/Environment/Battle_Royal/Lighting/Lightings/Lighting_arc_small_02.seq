@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>0.366667</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Ligthting_01</name>
+		<type>model</type>
+		<resource>particles/Environment/Battle_Royal/Lighting/Lightings/Lighting_arc_small_02.model</resource>
+		<castsShadow>false</castsShadow>
+		<track>
+			<name>material property color</name>
+			<type>vector4</type>
+			<identifier>Lighting</identifier>
+			<property>TintlColor</property>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000 1.000000 1.000000 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 42.900425</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>1.000000 1.000000 1.000000 1.430000</value>
+				<inTangent>0.000000 0.000000 0.000000 -0.306140</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.306140</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.100000</startTime>
+				<value>1.000000 1.000000 1.000756 0.941756</value>
+				<inTangent>0.000000 0.000000 0.020350 -1.369910</inTangent>
+				<outTangent>0.000000 0.000000 0.020350 -1.369910</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.266667</startTime>
+				<value>1.000000 1.000000 1.004267 0.478741</value>
+				<inTangent>0.000000 0.000000 -0.018900 -1.725795</inTangent>
+				<outTangent>0.000000 0.000000 -0.018900 -1.725795</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.366667</startTime>
+				<value>1.000000 1.000000 0.997760 0.000000</value>
+				<inTangent>-0.000000 -0.000000 -0.000000 -0.190632</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 -0.190632</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Flash_Sparks</name>
+		<type>particle</type>
+		<resource>particles/Environment/Battle_Royal/Lighting/lighting_arc_sparks.eff</resource>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>46.329597</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>1.544320</value>
+				<inTangent>46.329597</inTangent>
+				<outTangent>-3.051359</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>1.442608</value>
+				<inTangent>-3.051359</inTangent>
+				<outTangent>-43.278233</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.100000</startTime>
+				<value>0.000000</value>
+				<inTangent>-43.278233</inTangent>
+				<outTangent>-0.049200</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Flash_Sparks_02</name>
+		<type>particle</type>
+		<resource>particles/Environment/Battle_Royal/Lighting/lighting_arc_sparks.eff</resource>
+		<track>
+			<name>position</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>-0.000122 -0.000004 -4.224518</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>emission</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000</value>
+				<inTangent>-0.000000</inTangent>
+				<outTangent>46.134384</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.033333</startTime>
+				<value>1.537813</value>
+				<inTangent>46.134384</inTangent>
+				<outTangent>-1.363889</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.066667</startTime>
+				<value>1.492350</value>
+				<inTangent>-1.363889</inTangent>
+				<outTangent>-44.770493</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.100000</startTime>
+				<value>0.000000</value>
+				<inTangent>-44.770493</inTangent>
+				<outTangent>0.000000</outTangent>
+				<tangentMode>257</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

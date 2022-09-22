@@ -181,8 +181,6 @@ package
       
       public static const HANGARVEHICLEINFO_TOOLTIPS_BATTLEPROGRESSION_TUTORIALHIGHLIGHT:String = "#battle_royale:hangarVehicleInfo/tooltips/battleProgression/tutorialHighlight";
       
-      public static const HANGAR_CLOSEBTN:String = "#battle_royale:hangar/closeBtn";
-      
       public static const TOOLTIPS_AWARDS_PATTERN:String = "#battle_royale:tooltips/awards/pattern";
       
       public static const TOOLTIPS_AWARDS_BADGE:String = "#battle_royale:tooltips/awards/badge";

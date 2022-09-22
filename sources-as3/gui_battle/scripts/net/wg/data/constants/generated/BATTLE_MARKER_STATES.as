@@ -30,6 +30,10 @@ package net.wg.data.constants.generated
       public static const SHOT_PASSION_STATE:int = 12;
       
       public static const ADAPTATION_HEALTH_RESTORE_STATE:int = 13;
+      
+      public static const WT_BOMB_CAPTURING_STATE:int = 14;
+      
+      public static const WT_BOMB_INSTALLING_STATE:int = 15;
        
       
       public function BATTLE_MARKER_STATES()

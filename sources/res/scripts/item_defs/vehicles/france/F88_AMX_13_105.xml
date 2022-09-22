@@ -5189,29 +5189,29 @@
 						<slot>
 							<slotType>insigniaOnGun</slotType>
 							<slotId>49000</slotId>
-							<compatibleModels>F88_AMX_13_105_B9BS_3DSt</compatibleModels>
-							<position>
-								1.25485 1.7673 -0.450771
+							<rayStart>
+								0.000044 0.000218 3.13
 								<!--BW_String-->
-							</position>
-							<rotation>
-								1.56897 -1.56822 0.000358861
+							</rayStart>
+							<rayEnd>
+								0.000044 0.000218 3.63
 								<!--BW_String-->
-							</rotation>
-							<scale>
-								0.321641 0.0798246 0.321641
+							</rayEnd>
+							<rayUp>
+								0.1 0 0
 								<!--BW_String-->
-							</scale>
-							<doubleSided>false</doubleSided>
-							<showOn>4096</showOn>
-							<clipAngle>
-								1.21541
+							</rayUp>
+							<applyToFabric>true</applyToFabric>
+							<size>
+								0.5
 								<!--BW_String-->
-							</clipAngle>
-							<anchorShift>
-								0.04002
-								<!--BW_String-->
-							</anchorShift>
+							</size>
+							<hideIfDamaged>false</hideIfDamaged>
+							<isUVProportional>true</isUVProportional>
+						</slot>
+						<slot>
+							<slotType>insigniaOnGun</slotType>
+							<slotId>49001</slotId>
 							<rayStart>
 								0.000044 0.000218 4.09731
 								<!--BW_String-->
@@ -5225,6 +5225,7 @@
 								<!--BW_String-->
 							</rayUp>
 							<applyToFabric>true</applyToFabric>
+							<compatibleModels>F88_AMX_13_105_3Dst</compatibleModels>
 							<size>
 								0.5
 								<!--BW_String-->

@@ -10,6 +10,7 @@ package net.wg.gui.battle.views
    import net.wg.gui.battle.interfaces.IPrebattleTimerBase;
    import net.wg.gui.battle.views.ammunitionPanel.PrbAmmunitionPanelEvent;
    import net.wg.gui.battle.views.ammunitionPanel.PrebattleAmmunitionPanelView;
+   import net.wg.gui.battle.views.battleTimer.BaseBattleTimer;
    import net.wg.gui.battle.views.calloutPanel.CalloutPanel;
    import net.wg.gui.battle.views.damagePanel.DamagePanel;
    import net.wg.gui.battle.views.dualGunPanel.DualGunPanel;
@@ -27,7 +28,6 @@ package net.wg.gui.battle.views
    import net.wg.gui.lobby.settings.config.ControlsFactory;
    import net.wg.infrastructure.base.meta.IBattlePageMeta;
    import net.wg.infrastructure.base.meta.impl.BattlePageMeta;
-   import net.wg.infrastructure.base.meta.impl.BattleTimerMeta;
    import net.wg.infrastructure.events.LifeCycleEvent;
    import net.wg.infrastructure.helpers.statisticsDataController.BattleStatisticDataController;
    import net.wg.infrastructure.interfaces.IDAAPIModule;
@@ -67,7 +67,7 @@ package net.wg.gui.battle.views
       
       public var minimap:BaseMinimap = null;
       
-      public var battleTimer:BattleTimerMeta = null;
+      public var battleTimer:BaseBattleTimer = null;
       
       public var ribbonsPanel:RibbonsPanel = null;
       
@@ -122,6 +122,7 @@ package net.wg.gui.battle.views
          this.updatePrebattleTimerPosition(_loc3_);
          this.damagePanel.x = 0;
          this.damagePanel.y = param2 - this.damagePanel.initedHeight;
+         this.battleTimer.updateStage();
          this.battleTimer.x = param1 - this.battleTimer.initedWidth;
          this.battleTimer.y = 0;
          if(this.dualGunPanel)
@@ -147,7 +148,10 @@ package net.wg.gui.battle.views
          this.playerMessageListPositionUpdate();
          this.vehicleMessageList.updateStage();
          this.vehicleMessageListPositionUpdate();
-         this.battleLoading.updateStage(param1,param2);
+         if(this.battleLoading)
+         {
+            this.battleLoading.updateStage(param1,param2);
+         }
          this.gameMessagesPanel.x = _loc3_;
          this.calloutPanel.x = _loc3_ - CALLOUT_CENTER_SCREEN_OFFSET_X;
          this.calloutPanel.y = _loc4_ + CALLOUT_CENTER_SCREEN_OFFSET_Y;
@@ -202,7 +206,10 @@ package net.wg.gui.battle.views
       
       override protected function onPopulate() : void
       {
-         this.registerComponent(this.battleLoading,BATTLE_VIEW_ALIASES.BATTLE_LOADING);
+         if(this.battleLoading)
+         {
+            this.registerComponent(this.battleLoading,BATTLE_VIEW_ALIASES.BATTLE_LOADING);
+         }
          this.registerComponent(this.minimap,BATTLE_VIEW_ALIASES.MINIMAP);
          this.registerComponent(this.prebattleTimer,BATTLE_VIEW_ALIASES.PREBATTLE_TIMER);
          this.registerComponent(this.damagePanel,BATTLE_VIEW_ALIASES.DAMAGE_PANEL);
@@ -463,7 +470,7 @@ package net.wg.gui.battle.views
          return AMMUNITION_PANEL_Y_SHIFT;
       }
       
-      private function showComponent(param1:String, param2:Boolean) : void
+      protected function showComponent(param1:String, param2:Boolean) : void
       {
          var _loc3_:IDisplayableComponent = null;
          _loc3_ = this._componentsStorage[param1];

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<fx>shaders/std_effects/lightonly_chrome_add.fx</fx>
+	<property>
+		textureOperation
+		<Int>18</Int>
+	</property>
+	<property>
+		srcBlend
+		<Int>2</Int>
+	</property>
+	<property>
+		alphaReference
+		<Int>0</Int>
+	</property>
+	<property>
+		alphaTestEnable
+		<Bool>false</Bool>
+	</property>
+	<property>
+		reflectionAmount
+		<Float>1.000000</Float>
+	</property>
+	<property>
+		fresnelConstant
+		<Float>0.500000</Float>
+	</property>
+	<property>
+		fresnelExp
+		<Float>5.000000</Float>
+	</property>
+	<property>
+		selfIllumination
+		<Float>0.000000</Float>
+	</property>
+	<property>
+		vTransform
+		<Vector4>0.000000 1.000000 0.000000 0.000000</Vector4>
+	</property>
+	<property>
+		uTransform
+		<Vector4>1.000000 0.000000 0.000000 0.000000</Vector4>
+	</property>
+	<property>
+		otherMap
+		<Texture>system\maps\ref_bwclouds.dds</Texture>
+	</property>
+	<property>
+		diffuseMap
+		<Texture>helpers\maps\aid_builder.dds</Texture>
+	</property>
+	<materialKind>0</materialKind>
+</root>

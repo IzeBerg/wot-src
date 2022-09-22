@@ -22,6 +22,8 @@ package net.wg.gui.battle.views.minimap
       private static const ANIM_FADE_IN:String = "fadeIn";
       
       private static const ANIM_FADE_OUT:String = "fadeOut";
+      
+      private static const ANIM_SKIP_FADE_OUT:String = "skipFadeOut";
        
       
       public var mapHit:Sprite = null;
@@ -65,12 +67,7 @@ package net.wg.gui.battle.views.minimap
          this._clickAreaSpr = new Sprite();
          super();
          this._foregrounds = new <Sprite>[this.foreground0,this.foreground1,this.foreground2,this.foreground3,this.foreground4,this.foreground5];
-         this.foreground0.imageName = BATTLEATLAS.MINIMAP_B1;
-         this.foreground1.imageName = BATTLEATLAS.MINIMAP_B2;
-         this.foreground2.imageName = BATTLEATLAS.MINIMAP_B3;
-         this.foreground3.imageName = BATTLEATLAS.MINIMAP_B4;
-         this.foreground4.imageName = BATTLEATLAS.MINIMAP_B5;
-         this.foreground5.imageName = BATTLEATLAS.MINIMAP_B6;
+         this.setForeground();
          this.foreground0.visible = this.foreground1.visible = this.foreground2.visible = this.foreground3.visible = this.foreground4.visible = this.foreground5.visible = false;
          this._currForeground = this.foreground0;
          this.entriesContainer.mask = this.entriesContainerMask;
@@ -83,10 +80,35 @@ package net.wg.gui.battle.views.minimap
          this.minimapHint.gotoAndStop(ANIM_FADE_IN);
       }
       
-      override public function as_disableHintPanel() : void
+      override public function as_disableHintPanel(param1:Boolean) : void
       {
          this._bIsHintPanelEnabled = false;
+         if(param1)
+         {
+            this.minimapHint.gotoAndStop(ANIM_SKIP_FADE_OUT);
+            return;
+         }
          this.minimapHint.gotoAndPlay(ANIM_FADE_OUT);
+      }
+      
+      protected function setForeground() : void
+      {
+         this.foreground0.imageName = BATTLEATLAS.MINIMAP_B1;
+         this.foreground1.imageName = BATTLEATLAS.MINIMAP_B2;
+         this.foreground2.imageName = BATTLEATLAS.MINIMAP_B3;
+         this.foreground3.imageName = BATTLEATLAS.MINIMAP_B4;
+         this.foreground4.imageName = BATTLEATLAS.MINIMAP_B5;
+         this.foreground5.imageName = BATTLEATLAS.MINIMAP_B6;
+      }
+      
+      protected function get clickArea() : Sprite
+      {
+         return this._clickAreaSpr;
+      }
+      
+      protected function get currForeground() : Sprite
+      {
+         return this._currForeground;
       }
       
       override public function as_enableHintPanelWithData(param1:Boolean, param2:Boolean) : void
@@ -206,6 +228,8 @@ package net.wg.gui.battle.views.minimap
             this._foregrounds.splice(0,this._foregrounds.length);
             this._foregrounds = null;
          }
+         this._clickAreaSpr.removeEventListener(MouseEvent.MOUSE_OVER,this.onMouseOverHandler);
+         this._clickAreaSpr.removeEventListener(MouseEvent.MOUSE_OUT,this.onMouseOutHandler);
          this._clickAreaSpr.removeEventListener(MouseEvent.CLICK,this.onMouseClickHandler);
          this._clickAreaSpr.removeEventListener(MouseEvent.MOUSE_OVER,this.onMouseOverHandler);
          this._clickAreaSpr.removeEventListener(MouseEvent.MOUSE_OUT,this.onMouseOutHandler);
@@ -229,7 +253,7 @@ package net.wg.gui.battle.views.minimap
          this.updateContainersSize();
       }
       
-      private function updateContainersSize() : void
+      protected function updateContainersSize() : void
       {
          var _loc1_:Rectangle = MinimapSizeConst.MAP_SIZE[this._currentSizeIndex];
          this.background.width = _loc1_.width;
@@ -293,6 +317,11 @@ package net.wg.gui.battle.views.minimap
       override public function get currentSizeIndex() : Number
       {
          return this._currentSizeIndex;
+      }
+      
+      public function set currentSizeIndex(param1:Number) : void
+      {
+         this._currentSizeIndex = param1;
       }
       
       private function onMouseClickHandler(param1:MouseEvent) : void

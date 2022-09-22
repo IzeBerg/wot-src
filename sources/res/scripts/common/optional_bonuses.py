@@ -226,6 +226,18 @@ ITEM_INVENTORY_CHECKERS = {'vehicles': lambda account, key: account._inventory.g
    'customizations': lambda account, key: account._customizations20.getItems((key,), 0)[key] > 0, 
    'tokens': lambda account, key: account._quests.hasToken(key)}
 
+def getProbableBonuses(bonusType, value):
+    if bonusType == 'allof':
+        bonusData = value[0]
+        probability, bonuses = bonusData[0], bonusData[3]
+        return (probability, [bonuses] if bonuses is not None else [])
+    if bonusType == 'oneof':
+        return (
+         None, [ bonus for _, _, _, bonus in value[1] ])
+    return (
+     None, [])
+
+
 class BonusItemsCache(object):
 
     def __init__(self, account, cache=None):
@@ -279,7 +291,7 @@ class BonusItemsCache(object):
 
 class BonusNodeAcceptor(object):
 
-    def __init__(self, account, bonusConfig=None, counters=None, bonusCache=None, probabilityStage=0, logTracker=None, shouldResetUsedLimits=True):
+    def __init__(self, account, bonusConfig=None, counters=None, bonusCache=None, probabilityStage=0, logTracker=None, shouldResetUsedLimits=True, ignoredLimits=None):
         self.__account = account
         self.__limitsConfig = bonusConfig.get('limits', None) if bonusConfig else None
         self.__maxStage = bonusConfig.get('probabilityStageCount', 1) - 1 if bonusConfig else 0
@@ -298,6 +310,7 @@ class BonusNodeAcceptor(object):
         self.__logTracker = logTracker
         self.__usedLimits = set()
         self.__shouldResetUsedLimits = shouldResetUsedLimits
+        self.__ignoredLimits = ignoredLimits or set()
         self.__initCounters(counters or {})
         return
 
@@ -350,6 +363,8 @@ class BonusNodeAcceptor(object):
         else:
             limitID = bonusNode.get('properties', {}).get('limitID', None)
             if not limitID:
+                return False
+            if limitID in self.__ignoredLimits:
                 return False
             if self.__locals.get(limitID, 1) <= 0:
                 return True
@@ -424,7 +439,7 @@ class BonusNodeAcceptor(object):
         if bonusNode.get('properties', {}).get('probabilityStageDependence', False):
             self.__increaseProbabilityStage()
         limitID = bonusNode.get('properties', {}).get('limitID', None)
-        if limitID:
+        if limitID and limitID not in self.__ignoredLimits:
             limitConfig = self.__limitsConfig[limitID]
             if not limitConfig.get('countDuplicates', True) and self.isBonusExists(bonusNode):
                 return
@@ -453,6 +468,8 @@ class BonusNodeAcceptor(object):
             if self.__shouldResetUsedLimits:
                 self.__usedLimits = set()
             for limitID, limitConfig in self.__limitsConfig.iteritems():
+                if limitID in self.__ignoredLimits:
+                    continue
                 bonusLimit = limitConfig.get('bonusLimit', None)
                 if bonusLimit is not None:
                     locals[limitID] = bonusLimit
@@ -668,8 +685,9 @@ class StripVisitor(NodeVisitor):
         _, values = values
         for probability, bonusProbability, refGlobalID, bonusValue in values:
             stippedValue = {}
+            probability = bonusValue.get('properties', {}).get('userProbability', None)
             self._walkSubsection(stippedValue, bonusValue)
-            strippedValues.append(([-1], -1, None, stippedValue))
+            strippedValues.append((probability, -1, None, stippedValue))
 
         storage['oneof'] = (None, strippedValues)
         return
@@ -678,8 +696,9 @@ class StripVisitor(NodeVisitor):
         strippedValues = []
         for probability, bonusProbability, refGlobalID, bonusValue in values:
             stippedValue = {}
+            probability = bonusValue.get('properties', {}).get('userProbability', None)
             self._walkSubsection(stippedValue, bonusValue)
-            strippedValues.append(([-1], -1, None, stippedValue))
+            strippedValues.append((probability, -1, None, stippedValue))
 
         storage['allof'] = strippedValues
         return

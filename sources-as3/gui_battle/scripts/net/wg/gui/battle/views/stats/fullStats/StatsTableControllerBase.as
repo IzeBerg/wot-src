@@ -70,7 +70,7 @@ package net.wg.gui.battle.views.stats.fullStats
                }
                if(_loc5_.isSelected)
                {
-                  this.setSelectedItem(true,_loc4_);
+                  this.setSelectedItem(false,_loc4_);
                }
                this.onItemDataSet(_loc5_,false);
             }
@@ -294,27 +294,19 @@ package net.wg.gui.battle.views.stats.fullStats
       
       public function set isRenderingAvailable(param1:Boolean) : void
       {
-         var _loc2_:StatsTableItemHolderBase = null;
          if(this._isRenderingAvailable == param1)
          {
             return;
          }
          this._isRenderingAvailable = param1;
+         var _loc2_:StatsTableItemHolderBase = null;
          for each(_loc2_ in this._allyRenderers)
          {
             _loc2_.isRenderingAvailable = param1;
-            if(_loc2_.isSelected)
-            {
-               this.setSelectedItem(false,this._allyRenderers.indexOf(_loc2_));
-            }
          }
          for each(_loc2_ in this._enemyRenderers)
          {
             _loc2_.isRenderingAvailable = param1;
-            if(_loc2_.isSelected)
-            {
-               this.setSelectedItem(true,this._enemyRenderers.indexOf(_loc2_));
-            }
          }
       }
       

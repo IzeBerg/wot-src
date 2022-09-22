@@ -260,5 +260,9 @@ package net.wg.gui.battle.views.consumablesPanel
       {
          this.setColorTransform(COLOR_STATES.DARK_COLOR_TRANSFORM);
       }
+      
+      public function setStage(param1:int) : void
+      {
+      }
    }
 }

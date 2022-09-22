@@ -1,6 +1,8 @@
 package net.wg.gui.battle.views.destroyTimers
 {
    import flash.display.Bitmap;
+   import flash.display.BitmapData;
+   import flash.display.DisplayObject;
    import flash.display.MovieClip;
    import flash.display.Sprite;
    import flash.text.TextField;
@@ -17,6 +19,7 @@ package net.wg.gui.battle.views.destroyTimers
    import net.wg.gui.battle.views.destroyTimers.data.StatusNotificationVO;
    import net.wg.gui.battle.views.destroyTimers.events.DestroyTimerEvent;
    import net.wg.gui.components.controls.TextFieldContainer;
+   import net.wg.infrastructure.interfaces.entity.IDisposable;
    import net.wg.utils.IClassFactory;
    import net.wg.utils.IScheduler;
    import scaleform.clik.motion.Tween;
@@ -48,7 +51,7 @@ package net.wg.gui.battle.views.destroyTimers
       
       private static const NEGATIVE_DIRECTION:int = -1;
       
-      private static const ICON_BTM_POSITION_VALIDATE:int = InvalidationType.SYSTEM_FLAGS_BORDER << 1;
+      protected static const ICON_BTM_POSITION_VALIDATE:int = InvalidationType.SYSTEM_FLAGS_BORDER << 1;
       
       private static const ICON_SPR_POSITION_VALIDATE:int = InvalidationType.SYSTEM_FLAGS_BORDER << 2;
       
@@ -71,7 +74,7 @@ package net.wg.gui.battle.views.destroyTimers
       
       private var _timerViewTypeID:String = "";
       
-      private var _iconSpr:Sprite = null;
+      private var _iconContainer:Sprite = null;
       
       private var _iconBitmap:Bitmap = null;
       
@@ -103,6 +106,7 @@ package net.wg.gui.battle.views.destroyTimers
          stop();
          init(true,true);
          this._scheduler = App.utils.scheduler;
+         this._iconContainer = this.graphicsSpr.iconSpr;
       }
       
       override protected function invokeAdditionalActionOnIntervalUpdate() : void
@@ -115,6 +119,11 @@ package net.wg.gui.battle.views.destroyTimers
          return this.graphicsSpr.progressBar;
       }
       
+      protected function get iconContainer() : Sprite
+      {
+         return this._iconContainer;
+      }
+      
       override protected function getTimerTF() : TextField
       {
          return this.graphicsSpr.textField;
@@ -122,6 +131,7 @@ package net.wg.gui.battle.views.destroyTimers
       
       override protected function onDispose() : void
       {
+         var _loc1_:DisplayObject = null;
          this.clearTweenX();
          this.resetTimerStates();
          this._scheduler = null;
@@ -129,16 +139,30 @@ package net.wg.gui.battle.views.destroyTimers
          stop();
          this.graphicsSpr.dispose();
          this.graphicsSpr = null;
-         this.desc.dispose();
-         this.desc = null;
-         this._iconSpr.removeChild(this._iconBitmap);
-         this._iconSpr = null;
-         if(this._iconBitmap && this._iconBitmap.bitmapData)
+         if(this.desc)
          {
-            this._iconBitmap.bitmapData.dispose();
-            this._iconBitmap.bitmapData = null;
+            this.desc.dispose();
+            this.desc = null;
          }
-         this._iconBitmap = null;
+         if(this._iconBitmap)
+         {
+            if(this._iconBitmap.bitmapData)
+            {
+               this._iconBitmap.bitmapData.dispose();
+               this._iconBitmap.bitmapData = null;
+            }
+            this._iconContainer.removeChild(this._iconBitmap);
+            this._iconBitmap = null;
+         }
+         while(this._iconContainer.numChildren > 0)
+         {
+            _loc1_ = this._iconContainer.removeChildAt(0);
+            if(_loc1_ is IDisposable)
+            {
+               IDisposable(_loc1_).dispose();
+            }
+         }
+         this._iconContainer = null;
          super.onDispose();
       }
       
@@ -151,14 +175,14 @@ package net.wg.gui.battle.views.destroyTimers
             scaleY = this._yScale;
             alpha = this._alpha;
          }
-         if(isInvalid(ICON_BTM_POSITION_VALIDATE))
+         if(this._iconBitmap && isInvalid(ICON_BTM_POSITION_VALIDATE))
          {
             this._iconBitmap.x = this._iconBitmapX;
             this._iconBitmap.y = this._iconBitmapY;
          }
          if(isInvalid(ICON_SPR_POSITION_VALIDATE))
          {
-            this._iconSpr.y = this._iconSpriteY;
+            this._iconContainer.y = this._iconSpriteY;
          }
       }
       
@@ -229,20 +253,16 @@ package net.wg.gui.battle.views.destroyTimers
       
       public function setSettings(param1:NotificationTimerSettingVO) : void
       {
-         var _loc2_:IClassFactory = App.utils.classFactory;
-         var _loc3_:Class = _loc2_.getClass(param1.iconName);
-         this._iconBitmap = new Bitmap(new _loc3_());
-         this._iconSpr = this.graphicsSpr.iconSpr;
-         this._iconSpr.addChild(this._iconBitmap);
-         this._iconBitmapX = -this._iconBitmap.width >> 1;
-         this._iconBitmapY = (-this._iconBitmap.height >> 1) + param1.iconOffsetY;
          this._typeId = param1.typeId;
-         invalidate(ICON_BTM_POSITION_VALIDATE);
+         this.setIcon(param1);
       }
       
       public function setStaticText(param1:String, param2:String = "") : void
       {
-         this.desc.label = param2;
+         if(this.desc)
+         {
+            this.desc.label = param2;
+         }
       }
       
       public function setTimerFx(param1:ISecondaryTimerFX) : void
@@ -270,7 +290,7 @@ package net.wg.gui.battle.views.destroyTimers
             this._timerViewTypeID = param1;
             if(param1 == BATTLE_NOTIFICATIONS_TIMER_TYPES.CRITICAL_VIEW)
             {
-               if(this._iconSpr.y != ICON_CRITICAL_Y_POS)
+               if(this._iconContainer.y != ICON_CRITICAL_Y_POS)
                {
                   this._iconSpriteY = ICON_WARNING_Y_POS;
                   invalidate(ICON_SPR_POSITION_VALIDATE);
@@ -280,7 +300,7 @@ package net.wg.gui.battle.views.destroyTimers
             }
             else
             {
-               if(this._iconSpr.y != ICON_WARNING_Y_POS)
+               if(this._iconContainer.y != ICON_WARNING_Y_POS)
                {
                   this._iconSpriteY = ICON_CRITICAL_Y_POS;
                   invalidate(ICON_SPR_POSITION_VALIDATE);
@@ -312,7 +332,7 @@ package net.wg.gui.battle.views.destroyTimers
          {
             if(this._timerViewTypeID == BATTLE_NOTIFICATIONS_TIMER_TYPES.CRITICAL_VIEW)
             {
-               if(this._iconSpr.y != ICON_CRITICAL_Y_POS)
+               if(this._iconContainer.y != ICON_CRITICAL_Y_POS)
                {
                   this._iconSpriteY = ICON_WARNING_Y_POS;
                   invalidate(ICON_SPR_POSITION_VALIDATE);
@@ -320,11 +340,30 @@ package net.wg.gui.battle.views.destroyTimers
                   this.startMoveIconTimer();
                }
             }
-            if(this._timerViewTypeID == BATTLE_NOTIFICATIONS_TIMER_TYPES.WARNING_VIEW && this._iconSpr.y != ICON_WARNING_Y_POS)
+            if(this._timerViewTypeID == BATTLE_NOTIFICATIONS_TIMER_TYPES.WARNING_VIEW && this._iconContainer.y != ICON_WARNING_Y_POS)
             {
                this._iconSpriteY = ICON_WARNING_Y_POS;
                invalidate(ICON_SPR_POSITION_VALIDATE);
             }
+         }
+      }
+      
+      protected function setIcon(param1:NotificationTimerSettingVO) : void
+      {
+         var _loc2_:IClassFactory = App.utils.classFactory;
+         var _loc3_:Class = _loc2_.getClass(param1.iconName);
+         this.setBitmapIcon(new _loc3_() as BitmapData,param1.iconOffsetY);
+         invalidate(ICON_BTM_POSITION_VALIDATE);
+      }
+      
+      protected function setBitmapIcon(param1:BitmapData, param2:int = 0) : void
+      {
+         if(param1)
+         {
+            this._iconBitmap = new Bitmap(param1);
+            this._iconContainer.addChild(this._iconBitmap);
+            this._iconBitmapX = -this._iconBitmap.width >> 1;
+            this._iconBitmapY = (-this._iconBitmap.height >> 1) + param2;
          }
       }
       

@@ -246,30 +246,80 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.panelSwitch.PlayersPanelSwitch;
    import net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.panelSwitch.PlayersPanelSwitchButtonEx;
    import net.wg.gui.battle.epicRandom.views.stats.events.EpicRandomFullStatsListItemRendererEvent;
+   import net.wg.gui.battle.eventBattle.VO.DAAPIHunterVehicleInfoVO;
+   import net.wg.gui.battle.eventBattle.VO.DAAPIHunterVehiclesDataVO;
+   import net.wg.gui.battle.eventBattle.infrastructure.EventBattleStatisticDataController;
    import net.wg.gui.battle.eventBattle.views.EventBattleLoading;
    import net.wg.gui.battle.eventBattle.views.EventBattlePage;
    import net.wg.gui.battle.eventBattle.views.battleHints.EventBattleHint;
    import net.wg.gui.battle.eventBattle.views.battleHints.EventObjectives;
    import net.wg.gui.battle.eventBattle.views.battleHints.InfoContainer;
    import net.wg.gui.battle.eventBattle.views.battleHints.TextContainer;
+   import net.wg.gui.battle.eventBattle.views.battleHints.TimerContainer;
    import net.wg.gui.battle.eventBattle.views.battleHints.data.HintInfoVO;
+   import net.wg.gui.battle.eventBattle.views.battleTimer.AddTimeAnimation;
+   import net.wg.gui.battle.eventBattle.views.battleTimer.BattleTimerEvent;
+   import net.wg.gui.battle.eventBattle.views.battleTimer.EventBattleTimer;
+   import net.wg.gui.battle.eventBattle.views.battleTimer.EventTextFieldContainer;
+   import net.wg.gui.battle.eventBattle.views.bossWidget.EventBossVehicle;
+   import net.wg.gui.battle.eventBattle.views.bossWidget.EventBossVehicleDebuff;
+   import net.wg.gui.battle.eventBattle.views.bossWidget.EventBossVehicleShield;
+   import net.wg.gui.battle.eventBattle.views.bossWidget.EventBossWidget;
+   import net.wg.gui.battle.eventBattle.views.bossWidget.EventBossWidgetEvent;
+   import net.wg.gui.battle.eventBattle.views.bossWidget.EventBossWidgetMainProgressBar;
+   import net.wg.gui.battle.eventBattle.views.bossWidget.EventGenerators;
+   import net.wg.gui.battle.eventBattle.views.bossWidget.EventProgressBar;
+   import net.wg.gui.battle.eventBattle.views.bossWidget.VO.DAAPIEventBossWidgetVO;
    import net.wg.gui.battle.eventBattle.views.buffsPanel.BuffsPanel;
    import net.wg.gui.battle.eventBattle.views.buffsPanel.EventBuffButton;
+   import net.wg.gui.battle.eventBattle.views.consumablesPanel.EventBattleEquipmentActiveGlow;
    import net.wg.gui.battle.eventBattle.views.consumablesPanel.EventBattleEquipmentButton;
+   import net.wg.gui.battle.eventBattle.views.consumablesPanel.EventBattleEquipmentButtonGlow;
    import net.wg.gui.battle.eventBattle.views.consumablesPanel.EventBattleShellButton;
    import net.wg.gui.battle.eventBattle.views.consumablesPanel.EventConsumablesPanel;
-   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.EventHealthBar;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.EventBossBombList;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.EventBossBombListItem;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.EventBossBotList;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.EventBossBotListItem;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.EventBossPanelList;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.EventHunterPanelList;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.EventHunterPanelListItem;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.EventHunterPanelListItemHolder;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.EventHunterPanelListLeft;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.EventHunterPanelListRight;
    import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.EventPlayersInfo;
    import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.EventPlayersPanel;
-   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.EventPlayersPanelListItem;
-   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.VO.DAAPIPlayerPanelInfoVO;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.IHuntersEventPanelListItem;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.VO.DAAPIEventBossBotInfoVO;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.comps.EventBotHealthBar;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.comps.EventBotHealthBarLeft;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.comps.EventBotHealthBarRight;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.comps.EventBotListInfo;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.comps.EventHunterBombTimer;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.comps.EventHunterResurrectTimer;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.comps.EventTimerAnimHelper;
+   import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.comps.IEventTimerAnimation;
    import net.wg.gui.battle.eventBattle.views.eventPointCounter.EventPointCounter;
+   import net.wg.gui.battle.eventBattle.views.eventRespawnView.EventHunterRespawnHint;
+   import net.wg.gui.battle.eventBattle.views.eventRespawnView.EventHunterRespawnView;
+   import net.wg.gui.battle.eventBattle.views.eventStats.EventFullStatsTable;
+   import net.wg.gui.battle.eventBattle.views.eventStats.EventFullStatsTableCtrl;
    import net.wg.gui.battle.eventBattle.views.eventStats.EventStats;
-   import net.wg.gui.battle.eventBattle.views.eventStats.VO.EventStatsPlayerVO;
-   import net.wg.gui.battle.eventBattle.views.eventStats.renderers.StatsPlayerRenderer;
+   import net.wg.gui.battle.eventBattle.views.eventStats.EventStatsTableItem;
+   import net.wg.gui.battle.eventBattle.views.eventStats.EventStatsTableItemHolder;
+   import net.wg.gui.battle.eventBattle.views.eventTeleportView.EventBossTeleportView;
    import net.wg.gui.battle.eventBattle.views.eventTimer.EventTimer;
    import net.wg.gui.battle.eventBattle.views.eventTimer.TimerMovie;
+   import net.wg.gui.battle.eventBattle.views.minimap.EventDeploymentMapEntriesContainer;
+   import net.wg.gui.battle.eventBattle.views.minimap.EventMinimap;
+   import net.wg.gui.battle.eventBattle.views.minimap.EventMinimapSizeConst;
+   import net.wg.gui.battle.eventBattle.views.minimap.entries.EventBombMinimapEntry;
+   import net.wg.gui.battle.eventBattle.views.minimap.entries.EventCampMinimapEntry;
    import net.wg.gui.battle.eventBattle.views.minimap.entries.EventDeathZoneMinimapEntry;
+   import net.wg.gui.battle.eventBattle.views.minimap.entries.EventDeploymentPointMinimapEntry;
+   import net.wg.gui.battle.eventBattle.views.minimap.entries.EventGeneratorMinimapEntry;
+   import net.wg.gui.battle.eventBattle.views.minimap.entries.EventIndexedMinimapEntry;
+   import net.wg.gui.battle.eventBattle.views.prebattleTimer.EventPrebattleTimerBg;
    import net.wg.gui.battle.eventBattle.views.radialMenu.EventRadialButton;
    import net.wg.gui.battle.eventBattle.views.radialMenu.EventRadialMenu;
    import net.wg.gui.battle.eventBattle.views.radialMenu.components.ChatContainer;
@@ -279,6 +329,14 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.eventBattle.views.radialMenu.components.EventSectorHoveredWrapper;
    import net.wg.gui.battle.eventBattle.views.radialMenu.components.IconRotationContainer;
    import net.wg.gui.battle.eventBattle.views.radialMenu.components.RadialPaging;
+   import net.wg.gui.battle.eventBattle.views.shared.EventDeploymentMapView;
+   import net.wg.gui.battle.eventBattle.views.teamBasePanel.EventTeamBasesPanel;
+   import net.wg.gui.battle.eventBattle.views.teamBasePanel.EventTeamCaptureBar;
+   import net.wg.gui.battle.eventBattle.views.teamBasePanel.EventTeamCaptureProgress;
+   import net.wg.gui.battle.eventBattle.views.teamBasePanel.EventTeamCaptureProgressReset;
+   import net.wg.gui.battle.eventBattle.views.timersPanel.ITimerIconContent;
+   import net.wg.gui.battle.eventBattle.views.timersPanel.WtBombCarryIconContent;
+   import net.wg.gui.battle.eventBattle.views.timersPanel.WtTimer;
    import net.wg.gui.battle.eventInfoPanel.EventInfoPanel;
    import net.wg.gui.battle.eventInfoPanel.data.EventInfoPanelItemVO;
    import net.wg.gui.battle.eventInfoPanel.data.EventInfoPanelVO;
@@ -430,6 +488,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.battleTankCarousel.data.BattleVehicleCarouselVO;
    import net.wg.gui.battle.views.battleTankCarousel.renderers.BaseBattleTankIcon;
    import net.wg.gui.battle.views.battleTankCarousel.renderers.BattleTankCarouselItemRenderer;
+   import net.wg.gui.battle.views.battleTimer.BaseBattleTimer;
    import net.wg.gui.battle.views.battleTimer.BattleAnimationTimer;
    import net.wg.gui.battle.views.battleTimer.BattleTimer;
    import net.wg.gui.battle.views.battleTimer.EpicBattleTimer;
@@ -747,6 +806,15 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.staticMarkers.epic.sectorbase.SectorBaseActions;
    import net.wg.gui.battle.views.staticMarkers.epic.sectorbase.SectorBaseIcon;
    import net.wg.gui.battle.views.staticMarkers.epic.sectorbase.SectorBaseMarker;
+   import net.wg.gui.battle.views.staticMarkers.eventBattle.BombActionMarker;
+   import net.wg.gui.battle.views.staticMarkers.eventBattle.BombActionMarkerTimer;
+   import net.wg.gui.battle.views.staticMarkers.eventBattle.BombContent;
+   import net.wg.gui.battle.views.staticMarkers.eventBattle.BombMarker;
+   import net.wg.gui.battle.views.staticMarkers.eventBattle.IndexedActionMarker;
+   import net.wg.gui.battle.views.staticMarkers.eventBattle.IndexedContent;
+   import net.wg.gui.battle.views.staticMarkers.eventBattle.IndexedMarker;
+   import net.wg.gui.battle.views.staticMarkers.eventBattle.ScaleAnimation;
+   import net.wg.gui.battle.views.staticMarkers.eventBattle.ScaleContainer;
    import net.wg.gui.battle.views.staticMarkers.flag.FlagIcon;
    import net.wg.gui.battle.views.staticMarkers.flag.FlagMarker;
    import net.wg.gui.battle.views.staticMarkers.flag.constant.FlagMarkerState;
@@ -787,6 +855,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.vehicleMarkers.AnimateExplosion;
    import net.wg.gui.battle.views.vehicleMarkers.BranderVehicle2dMarker;
    import net.wg.gui.battle.views.vehicleMarkers.DamageLabel;
+   import net.wg.gui.battle.views.vehicleMarkers.EventVehicleMarker;
    import net.wg.gui.battle.views.vehicleMarkers.FlagContainer;
    import net.wg.gui.battle.views.vehicleMarkers.FortConsumablesMarker;
    import net.wg.gui.battle.views.vehicleMarkers.HPFieldContainer;
@@ -819,6 +888,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.MarkerAssetContainer;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleAnimatedStatusBaseMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleBerserkerMarker;
+   import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleBombMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleEngineerEffectMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleFLBasicMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleInspireMarker;
@@ -926,13 +996,16 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.meta.IEpicRespawnViewMeta;
    import net.wg.infrastructure.base.meta.IEpicScorePanelMeta;
    import net.wg.infrastructure.base.meta.IEpicSpectatorViewMeta;
+   import net.wg.infrastructure.base.meta.IEventBattleTimerMeta;
+   import net.wg.infrastructure.base.meta.IEventBossTeleportViewMeta;
+   import net.wg.infrastructure.base.meta.IEventBossWidgetMeta;
    import net.wg.infrastructure.base.meta.IEventBuffsPanelMeta;
    import net.wg.infrastructure.base.meta.IEventDestroyTimersPanelMeta;
+   import net.wg.infrastructure.base.meta.IEventHunterRespawnViewMeta;
    import net.wg.infrastructure.base.meta.IEventObjectivesMeta;
    import net.wg.infrastructure.base.meta.IEventPlayersPanelMeta;
    import net.wg.infrastructure.base.meta.IEventPointCounterMeta;
    import net.wg.infrastructure.base.meta.IEventRadialMenuMeta;
-   import net.wg.infrastructure.base.meta.IEventStatsMeta;
    import net.wg.infrastructure.base.meta.IEventTimerMeta;
    import net.wg.infrastructure.base.meta.IFMStatsMeta;
    import net.wg.infrastructure.base.meta.IFragCorrelationBarMeta;
@@ -1469,6 +1542,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_EPICRANDOM_VO_DAAPI_EPICRANDOMDAAPIVEHICLESDATAVO:Class = EpicRandomDAAPIVehiclesDataVO;
       
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_INFRASTRUCTURE_EVENTBATTLESTATISTICDATACONTROLLER:Class = EventBattleStatisticDataController;
+      
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTBATTLELOADING:Class = EventBattleLoading;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTBATTLEPAGE:Class = EventBattlePage;
@@ -1481,41 +1556,135 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BATTLEHINTS_TEXTCONTAINER:Class = TextContainer;
       
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BATTLEHINTS_TIMERCONTAINER:Class = TimerContainer;
+      
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BATTLEHINTS_DATA_HINTINFOVO:Class = HintInfoVO;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BATTLETIMER_ADDTIMEANIMATION:Class = AddTimeAnimation;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BATTLETIMER_BATTLETIMEREVENT:Class = BattleTimerEvent;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BATTLETIMER_EVENTBATTLETIMER:Class = EventBattleTimer;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BATTLETIMER_EVENTTEXTFIELDCONTAINER:Class = EventTextFieldContainer;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BOSSWIDGET_EVENTBOSSVEHICLE:Class = EventBossVehicle;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BOSSWIDGET_EVENTBOSSVEHICLEDEBUFF:Class = EventBossVehicleDebuff;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BOSSWIDGET_EVENTBOSSVEHICLESHIELD:Class = EventBossVehicleShield;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BOSSWIDGET_EVENTBOSSWIDGET:Class = EventBossWidget;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BOSSWIDGET_EVENTBOSSWIDGETEVENT:Class = EventBossWidgetEvent;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BOSSWIDGET_EVENTBOSSWIDGETMAINPROGRESSBAR:Class = EventBossWidgetMainProgressBar;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BOSSWIDGET_EVENTGENERATORS:Class = EventGenerators;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BOSSWIDGET_EVENTPROGRESSBAR:Class = EventProgressBar;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BOSSWIDGET_VO_DAAPIEVENTBOSSWIDGETVO:Class = DAAPIEventBossWidgetVO;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BUFFSPANEL_BUFFSPANEL:Class = BuffsPanel;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BUFFSPANEL_EVENTBUFFBUTTON:Class = EventBuffButton;
       
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_CONSUMABLESPANEL_EVENTBATTLEEQUIPMENTACTIVEGLOW:Class = EventBattleEquipmentActiveGlow;
+      
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_CONSUMABLESPANEL_EVENTBATTLEEQUIPMENTBUTTON:Class = EventBattleEquipmentButton;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_CONSUMABLESPANEL_EVENTBATTLEEQUIPMENTBUTTONGLOW:Class = EventBattleEquipmentButtonGlow;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_CONSUMABLESPANEL_EVENTBATTLESHELLBUTTON:Class = EventBattleShellButton;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_CONSUMABLESPANEL_EVENTCONSUMABLESPANEL:Class = EventConsumablesPanel;
       
-      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_EVENTHEALTHBAR:Class = EventHealthBar;
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_EVENTBOSSBOMBLIST:Class = EventBossBombList;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_EVENTBOSSBOMBLISTITEM:Class = EventBossBombListItem;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_EVENTBOSSBOTLIST:Class = EventBossBotList;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_EVENTBOSSBOTLISTITEM:Class = EventBossBotListItem;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_EVENTBOSSPANELLIST:Class = EventBossPanelList;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_EVENTHUNTERPANELLIST:Class = EventHunterPanelList;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_EVENTHUNTERPANELLISTITEM:Class = EventHunterPanelListItem;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_EVENTHUNTERPANELLISTITEMHOLDER:Class = EventHunterPanelListItemHolder;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_EVENTHUNTERPANELLISTLEFT:Class = EventHunterPanelListLeft;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_EVENTHUNTERPANELLISTRIGHT:Class = EventHunterPanelListRight;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_EVENTPLAYERSINFO:Class = EventPlayersInfo;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_EVENTPLAYERSPANEL:Class = EventPlayersPanel;
       
-      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_EVENTPLAYERSPANELLISTITEM:Class = EventPlayersPanelListItem;
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_IHUNTERSEVENTPANELLISTITEM:Class = IHuntersEventPanelListItem;
       
-      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_VO_DAAPIPLAYERPANELINFOVO:Class = DAAPIPlayerPanelInfoVO;
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_COMPS_EVENTBOTHEALTHBAR:Class = EventBotHealthBar;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_COMPS_EVENTBOTHEALTHBARLEFT:Class = EventBotHealthBarLeft;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_COMPS_EVENTBOTHEALTHBARRIGHT:Class = EventBotHealthBarRight;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_COMPS_EVENTBOTLISTINFO:Class = EventBotListInfo;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_COMPS_EVENTHUNTERBOMBTIMER:Class = EventHunterBombTimer;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_COMPS_EVENTHUNTERRESURRECTTIMER:Class = EventHunterResurrectTimer;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_COMPS_EVENTTIMERANIMHELPER:Class = EventTimerAnimHelper;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_COMPS_IEVENTTIMERANIMATION:Class = IEventTimerAnimation;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPLAYERSPANEL_VO_DAAPIEVENTBOSSBOTINFOVO:Class = DAAPIEventBossBotInfoVO;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPOINTCOUNTER_EVENTPOINTCOUNTER:Class = EventPointCounter;
       
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTRESPAWNVIEW_EVENTHUNTERRESPAWNHINT:Class = EventHunterRespawnHint;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTRESPAWNVIEW_EVENTHUNTERRESPAWNVIEW:Class = EventHunterRespawnView;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTSTATS_EVENTFULLSTATSTABLE:Class = EventFullStatsTable;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTSTATS_EVENTFULLSTATSTABLECTRL:Class = EventFullStatsTableCtrl;
+      
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTSTATS_EVENTSTATS:Class = EventStats;
       
-      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTSTATS_RENDERERS_STATSPLAYERRENDERER:Class = StatsPlayerRenderer;
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTSTATS_EVENTSTATSTABLEITEM:Class = EventStatsTableItem;
       
-      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTSTATS_VO_EVENTSTATSPLAYERVO:Class = EventStatsPlayerVO;
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTSTATS_EVENTSTATSTABLEITEMHOLDER:Class = EventStatsTableItemHolder;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTTELEPORTVIEW_EVENTBOSSTELEPORTVIEW:Class = EventBossTeleportView;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTTIMER_EVENTTIMER:Class = EventTimer;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTTIMER_TIMERMOVIE:Class = TimerMovie;
       
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_MINIMAP_EVENTDEPLOYMENTMAPENTRIESCONTAINER:Class = EventDeploymentMapEntriesContainer;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_MINIMAP_EVENTMINIMAP:Class = EventMinimap;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_MINIMAP_EVENTMINIMAPSIZECONST:Class = EventMinimapSizeConst;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_MINIMAP_ENTRIES_EVENTBOMBMINIMAPENTRY:Class = EventBombMinimapEntry;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_MINIMAP_ENTRIES_EVENTCAMPMINIMAPENTRY:Class = EventCampMinimapEntry;
+      
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_MINIMAP_ENTRIES_EVENTDEATHZONEMINIMAPENTRY:Class = EventDeathZoneMinimapEntry;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_MINIMAP_ENTRIES_EVENTDEPLOYMENTPOINTMINIMAPENTRY:Class = EventDeploymentPointMinimapEntry;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_MINIMAP_ENTRIES_EVENTGENERATORMINIMAPENTRY:Class = EventGeneratorMinimapEntry;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_MINIMAP_ENTRIES_EVENTINDEXEDMINIMAPENTRY:Class = EventIndexedMinimapEntry;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_PREBATTLETIMER_EVENTPREBATTLETIMERBG:Class = EventPrebattleTimerBg;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_RADIALMENU_EVENTRADIALBUTTON:Class = EventRadialButton;
       
@@ -1534,6 +1703,26 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_RADIALMENU_COMPONENTS_ICONROTATIONCONTAINER:Class = IconRotationContainer;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_RADIALMENU_COMPONENTS_RADIALPAGING:Class = RadialPaging;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_SHARED_EVENTDEPLOYMENTMAPVIEW:Class = EventDeploymentMapView;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_TEAMBASEPANEL_EVENTTEAMBASESPANEL:Class = EventTeamBasesPanel;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_TEAMBASEPANEL_EVENTTEAMCAPTUREBAR:Class = EventTeamCaptureBar;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_TEAMBASEPANEL_EVENTTEAMCAPTUREPROGRESS:Class = EventTeamCaptureProgress;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_TEAMBASEPANEL_EVENTTEAMCAPTUREPROGRESSRESET:Class = EventTeamCaptureProgressReset;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_TIMERSPANEL_ITIMERICONCONTENT:Class = ITimerIconContent;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_TIMERSPANEL_WTBOMBCARRYICONCONTENT:Class = WtBombCarryIconContent;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_TIMERSPANEL_WTTIMER:Class = WtTimer;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VO_DAAPIHUNTERVEHICLEINFOVO:Class = DAAPIHunterVehicleInfoVO;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VO_DAAPIHUNTERVEHICLESDATAVO:Class = DAAPIHunterVehiclesDataVO;
       
       public static const NET_WG_GUI_BATTLE_EVENTINFOPANEL_EVENTINFOPANEL:Class = EventInfoPanel;
       
@@ -1836,6 +2025,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_BATTLETANKCAROUSEL_RENDERERS_BASEBATTLETANKICON:Class = BaseBattleTankIcon;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_BATTLETANKCAROUSEL_RENDERERS_BATTLETANKCAROUSELITEMRENDERER:Class = BattleTankCarouselItemRenderer;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_BATTLETIMER_BASEBATTLETIMER:Class = BaseBattleTimer;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_BATTLETIMER_BATTLEANIMATIONTIMER:Class = BattleAnimationTimer;
       
@@ -2471,6 +2662,24 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EPIC_SECTORWAYPOINT_SECTORWAYPOINTMARKER:Class = SectorWaypointMarker;
       
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EVENTBATTLE_BOMBACTIONMARKER:Class = BombActionMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EVENTBATTLE_BOMBACTIONMARKERTIMER:Class = BombActionMarkerTimer;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EVENTBATTLE_BOMBCONTENT:Class = BombContent;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EVENTBATTLE_BOMBMARKER:Class = BombMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EVENTBATTLE_INDEXEDACTIONMARKER:Class = IndexedActionMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EVENTBATTLE_INDEXEDCONTENT:Class = IndexedContent;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EVENTBATTLE_INDEXEDMARKER:Class = IndexedMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EVENTBATTLE_SCALEANIMATION:Class = ScaleAnimation;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EVENTBATTLE_SCALECONTAINER:Class = ScaleContainer;
+      
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_FLAG_FLAGICON:Class = FlagIcon;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_FLAG_FLAGMARKER:Class = FlagMarker;
@@ -2551,6 +2760,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_DAMAGELABEL:Class = DamageLabel;
       
+      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_EVENTVEHICLEMARKER:Class = EventVehicleMarker;
+      
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_FLAGCONTAINER:Class = FlagContainer;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_FORTCONSUMABLESMARKER:Class = FortConsumablesMarker;
@@ -2602,6 +2813,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_VEHICLEANIMATEDSTATUSBASEMARKER:Class = VehicleAnimatedStatusBaseMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_VEHICLEBERSERKERMARKER:Class = VehicleBerserkerMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_VEHICLEBOMBMARKER:Class = VehicleBombMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_VEHICLEMARKERS_STATUSMARKERS_VEHICLEENGINEEREFFECTMARKER:Class = VehicleEngineerEffectMarker;
       
@@ -2829,9 +3042,17 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IEPICSPECTATORVIEWMETA:Class = IEpicSpectatorViewMeta;
       
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTBATTLETIMERMETA:Class = IEventBattleTimerMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTBOSSTELEPORTVIEWMETA:Class = IEventBossTeleportViewMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTBOSSWIDGETMETA:Class = IEventBossWidgetMeta;
+      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTBUFFSPANELMETA:Class = IEventBuffsPanelMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTDESTROYTIMERSPANELMETA:Class = IEventDestroyTimersPanelMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTHUNTERRESPAWNVIEWMETA:Class = IEventHunterRespawnViewMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTOBJECTIVESMETA:Class = IEventObjectivesMeta;
       
@@ -2840,8 +3061,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTPOINTCOUNTERMETA:Class = IEventPointCounterMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTRADIALMENUMETA:Class = IEventRadialMenuMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTSTATSMETA:Class = IEventStatsMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTTIMERMETA:Class = IEventTimerMeta;
       
@@ -3023,9 +3242,17 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EPICSPECTATORVIEWMETA:Class = EpicSpectatorViewMeta;
       
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTBATTLETIMERMETA:Class = EventBattleTimerMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTBOSSTELEPORTVIEWMETA:Class = EventBossTeleportViewMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTBOSSWIDGETMETA:Class = EventBossWidgetMeta;
+      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTBUFFSPANELMETA:Class = EventBuffsPanelMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTDESTROYTIMERSPANELMETA:Class = EventDestroyTimersPanelMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTHUNTERRESPAWNVIEWMETA:Class = EventHunterRespawnViewMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTOBJECTIVESMETA:Class = EventObjectivesMeta;
       
@@ -3034,8 +3261,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTPOINTCOUNTERMETA:Class = EventPointCounterMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTRADIALMENUMETA:Class = EventRadialMenuMeta;
-      
-      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTSTATSMETA:Class = EventStatsMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTTIMERMETA:Class = EventTimerMeta;
       

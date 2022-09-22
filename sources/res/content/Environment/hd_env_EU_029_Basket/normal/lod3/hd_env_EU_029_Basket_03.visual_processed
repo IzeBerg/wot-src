@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>hd_env_EU_029_Basket_03</identifier>
+			<transform>
+				<row0>1.000000 0.000000 0.000000</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.000000 0.000000 1.000000</row2>
+				<row3>0.000000 0.000000 0.000000</row3>
+			</transform>
+			<node>
+				<identifier>HP_module0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+			</node>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>d_wood0</identifier>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_EU_029_Basket/hd_env_EU_029_Basket_BAM.dds</Texture>
+					</property>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>87</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_EU_029_Basket/hd_env_EU_029_Basket_BGMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_EU_029_Basket/hd_env_EU_029_Basket_BANM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>197</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+				</material>
+				<groupOrigin>0.073107 0.176436 -0.043680</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>n_wood0</identifier>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_EU_029_Basket/hd_env_EU_029_Basket_AM.dds</Texture>
+					</property>
+					<collisionFlags>128</collisionFlags>
+					<materialKind>73</materialKind>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_EU_029_Basket/hd_env_EU_029_Basket_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_EU_029_Basket/hd_env_EU_029_Basket_ANM.dds</Texture>
+					</property>
+					<property>
+						alphaReference
+						<Int>0</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>false</Bool>
+					</property>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.097027 0.296184 -0.159825</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_wall_0</identifier>
+					<collisionFlags>131</collisionFlags>
+					<materialKind>73</materialKind>
+				</material>
+				<groupOrigin>-0.036091 0.880804 -0.257638</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.127533 -0.065525 -1.018348</min>
+		<max>1.033680 1.763262 0.930988</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>3972</geometrySize>
+	<minUVDensity>0.010358</minUVDensity>
+</root>

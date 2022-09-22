@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<params>
+		<param>
+			<name>tornado_sea</name>
+			<type>random_float</type>
+		</param>
+	</params>
+	<node>
+		<name>Sequence Node</name>
+		<type>sequence</type>
+		<resource>particles/eff_sequence/null_01s.seq</resource>
+		<isLoop>true</isLoop>
+		<loop>1</loop>
+		<transition>
+			<to>tornado_seq</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+				<condition>
+					<type>random_float</type>
+					<name>tornado_sea</name>
+					<rangeStart>0.000000</rangeStart>
+					<rangeEnd>33.000000</rangeEnd>
+				</condition>
+			</conditions>
+		</transition>
+		<transition>
+			<to>tornado_null</to>
+			<blendDuration>0.000000</blendDuration>
+			<allowRootMotion>false</allowRootMotion>
+			<conditions>
+				<condition>
+					<type>exit_time</type>
+					<exitOffset>1.000000</exitOffset>
+				</condition>
+				<condition>
+					<type>random_float</type>
+					<name>tornado_sea</name>
+					<rangeStart>0.000000</rangeStart>
+					<rangeEnd>66.000000</rangeEnd>
+				</condition>
+			</conditions>
+		</transition>
+		<uiPosition>-105.000000 217.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>tornado_seq</name>
+		<type>sequence</type>
+		<resource>particles/content_deferred/GFX_models/environment/31_airfield/tornado_sea/tornado_sea.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<uiPosition>-287.000000 19.000000 0.000000</uiPosition>
+	</node>
+	<node>
+		<name>tornado_null</name>
+		<type>sequence</type>
+		<resource>particles/content_deferred/GFX_models/environment/31_airfield/tornado_sea/tornado_sea_null.seq</resource>
+		<isLoop>false</isLoop>
+		<loop>1</loop>
+		<uiPosition>70.000000 35.000000 0.000000</uiPosition>
+	</node>
+</root>

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<duration>4.000000</duration>
+	<sequenceObject>
+		<name>Root</name>
+		<type>model</type>
+		<resource/>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>4.000000</startTime>
+				<value>true</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Explosion_stage1</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/83_kharkiv/explosion_01.model</resource>
+		<track>
+			<name>rotation</name>
+			<type>quaternion</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -0.793353 0.000000 0.608761</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -105.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.001000 0.001000 0.001000</value>
+				<inTangent>5.993988 5.993988 5.993988</inTangent>
+				<outTangent>5.993988 5.993988 5.993988</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.150000</startTime>
+				<value>1.000000 1.000000 1.000000</value>
+				<inTangent>4.196999 4.196999 4.196999</inTangent>
+				<outTangent>4.196999 4.196999 4.196999</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.250000</startTime>
+				<value>1.200000 1.200000 1.200000</value>
+				<inTangent>0.143536 0.133525 0.122573</inTangent>
+				<outTangent>0.143536 0.133525 0.122573</outTangent>
+				<tangentMode>771</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>false</value>
+			</frame>
+			<frame>
+				<startTime>0.016667</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>0.250000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>0.260000</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Explosion_stage2</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/83_kharkiv/explosion_02.model</resource>
+		<track>
+			<name>rotation</name>
+			<type>quaternion</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -0.793353 0.000000 0.608761</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -105.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.250000</startTime>
+				<value>1.200000 1.200000 1.200000</value>
+				<inTangent>0.400000 0.400000 0.400000</inTangent>
+				<outTangent>0.400000 0.400000 0.400000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>1.260000 1.260000 1.260000</value>
+				<inTangent>-0.300000 -0.300000 -0.300000</inTangent>
+				<outTangent>-0.300000 -0.300000 -0.300000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.250000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>0.610000</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>Explosion_stage3</name>
+		<type>model</type>
+		<resource>particles/content_deferred/GFX_models/environment/83_kharkiv/explosion_03.model</resource>
+		<track>
+			<name>rotation</name>
+			<type>quaternion</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -0.793353 0.000000 0.608761</value>
+				<inTangent>0.000000 0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>rotationEuler</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>0.000000 -105.000000 0.000000</value>
+				<inTangent>0.000000 0.000000 0.000000</inTangent>
+				<outTangent>0.000000 0.000000 0.000000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>scale</name>
+			<type>vector3</type>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>1.260000 1.260000 1.260000</value>
+				<inTangent>-0.100000 -0.100000 -0.100000</inTangent>
+				<outTangent>-0.100000 -0.100000 -0.100000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+			<frame>
+				<startTime>1.200000</startTime>
+				<value>1.200000 1.200000 1.200000</value>
+				<inTangent>-0.100000 -0.100000 -0.100000</inTangent>
+				<outTangent>-0.100000 -0.100000 -0.100000</outTangent>
+				<tangentMode>0</tangentMode>
+			</frame>
+		</track>
+		<track>
+			<name>visibility</name>
+			<type>bool</type>
+			<frame>
+				<startTime>0.600000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>1.000000</startTime>
+				<value>true</value>
+			</frame>
+			<frame>
+				<startTime>1.016667</startTime>
+				<value>false</value>
+			</frame>
+		</track>
+	</sequenceObject>
+	<sequenceObject>
+		<name>explosion_sparks</name>
+		<type>particle</type>
+		<resource>particles/Environment/scenarios/83_kharkiv_bomb_explosion.eff</resource>
+		<track>
+			<name>emmision</name>
+			<type>float</type>
+			<frame>
+				<startTime>0.000000</startTime>
+				<value>1.000000</value>
+				<inTangent>-0.386667</inTangent>
+				<outTangent>-0.386667</outTangent>
+				<tangentMode>514</tangentMode>
+			</frame>
+		</track>
+	</sequenceObject>
+	<events/>
+</root>

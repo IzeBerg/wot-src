@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<version>3</version>
+	<GameObjects>
+		<GameObject>
+			<name>AdaptationHealthRestoreAbility</name>
+			<UUID>54fc6b48-61ff-464c-aecf-3f51ca1e5628</UUID>
+			<flags>0</flags>
+		</GameObject>
+		<GameObject>
+			<name>Hull</name>
+			<UUID>b2255656-ee7c-30ec-b5fb-7dcbd1edce02</UUID>
+			<flags>0</flags>
+		</GameObject>
+		<GameObject>
+			<name>Gun</name>
+			<UUID>a4e89952-83d3-3cc0-8e22-315b03fed226</UUID>
+			<flags>0</flags>
+		</GameObject>
+		<GameObject>
+			<name>Turret</name>
+			<UUID>ecbe029b-8acb-3376-a635-883b2ead6c2c</UUID>
+			<flags>0</flags>
+		</GameObject>
+	</GameObjects>
+	<components>
+		<ComponentPool>
+			<type>Hierarchy</type>
+			<version>2</version>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>54fc6b48-61ff-464c-aecf-3f51ca1e5628</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>2</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>54fc6b48-61ff-464c-aecf-3f51ca1e5628</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>3</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Parent</name>
+						<link>54fc6b48-61ff-464c-aecf-3f51ca1e5628</link>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>Transform</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>0 0 0</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>2</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>
+							0 2.01329 0
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>3</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Position</name>
+						<value>
+							0 2.68505 0
+							<!--BW_String-->
+						</value>
+					</property>
+					<property>
+						<name>Scale</name>
+						<value>1 1 1</value>
+					</property>
+					<property>
+						<name>Rotation</name>
+						<value>-0 0 0</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>ComponentsVisibilityController</type>
+			<version>1</version>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Trigger Source</name>
+						<link>54fc6b48-61ff-464c-aecf-3f51ca1e5628</link>
+					</property>
+					<property>
+						<name>Visible in ARCADE MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in SNIPER MODE</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Visible in STRATEGIC MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in ARTY MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in POSTMORTEM MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in MAP_CASE MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in MAP_CASE_ARCADE MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in RESPAWN_DEATH MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in DEATH_FREE_CAM MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in DUAL_GUN MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in MAP_CASE_ARCADE_EPIC_MINEFIELD MODE</name>
+						<value>1</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>2</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Trigger Source</name>
+						<link>54fc6b48-61ff-464c-aecf-3f51ca1e5628</link>
+					</property>
+					<property>
+						<name>Visible in ARCADE MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in SNIPER MODE</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Visible in STRATEGIC MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in ARTY MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in POSTMORTEM MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in MAP_CASE MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in MAP_CASE_ARCADE MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in RESPAWN_DEATH MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in DEATH_FREE_CAM MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in DUAL_GUN MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in MAP_CASE_ARCADE_EPIC_MINEFIELD MODE</name>
+						<value>1</value>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>3</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Trigger Source</name>
+						<link>54fc6b48-61ff-464c-aecf-3f51ca1e5628</link>
+					</property>
+					<property>
+						<name>Visible in ARCADE MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in SNIPER MODE</name>
+						<value>0</value>
+					</property>
+					<property>
+						<name>Visible in STRATEGIC MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in ARTY MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in POSTMORTEM MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in MAP_CASE MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in MAP_CASE_ARCADE MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in RESPAWN_DEATH MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in DEATH_FREE_CAM MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in DUAL_GUN MODE</name>
+						<value>1</value>
+					</property>
+					<property>
+						<name>Visible in MAP_CASE_ARCADE_EPIC_MINEFIELD MODE</name>
+						<value>1</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>DynamicModel</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>2</flags>
+				<config>
+					<property>
+						<name>Model name</name>
+						<isAsset>true</isAsset>
+						<value>vehicles/sweden/S14_Ikv_103_SH/normal/lod0/Hull_01.model</value>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>NodeFollower</type>
+			<version>1</version>
+			<component>
+				<objectIndex>1</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>NodeName</name>
+						<value>hull</value>
+					</property>
+					<property>
+						<name>modelLink</name>
+						<link>54fc6b48-61ff-464c-aecf-3f51ca1e5628</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>2</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>NodeName</name>
+						<value>Gun</value>
+					</property>
+					<property>
+						<name>modelLink</name>
+						<link>54fc6b48-61ff-464c-aecf-3f51ca1e5628</link>
+					</property>
+				</config>
+			</component>
+			<component>
+				<objectIndex>3</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>NodeName</name>
+						<value>turret</value>
+					</property>
+					<property>
+						<name>modelLink</name>
+						<link>54fc6b48-61ff-464c-aecf-3f51ca1e5628</link>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+		<ComponentPool>
+			<type>HealthRestoreAbility</type>
+			<version>1</version>
+			<component>
+				<objectIndex>0</objectIndex>
+				<flags>3</flags>
+				<config>
+					<property>
+						<name>Post Effect Target</name>
+						<link>b2255656-ee7c-30ec-b5fb-7dcbd1edce02</link>
+					</property>
+					<property>
+						<name>Mapping</name>
+						<collection>
+							<item>
+								<object>
+									<property>
+										<name>Model Path</name>
+										<isAsset>true</isAsset>
+										<value>vehicles/sweden/S14_Ikv_103_SH/normal/lod0/Hull_01.model</value>
+									</property>
+									<property>
+										<name>Start Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Hull_01_start.seq</value>
+									</property>
+									<property>
+										<name>Cycle Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Hull_01_cycle.seq</value>
+									</property>
+									<property>
+										<name>End Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Hull_01_end.seq</value>
+									</property>
+									<property>
+										<name>Target Node</name>
+										<link>b2255656-ee7c-30ec-b5fb-7dcbd1edce02</link>
+									</property>
+								</object>
+							</item>
+							<item>
+								<object>
+									<property>
+										<name>Model Path</name>
+										<isAsset>true</isAsset>
+										<value>vehicles/sweden/S14_Ikv_103_SH/normal/lod0/Hull_02.model</value>
+									</property>
+									<property>
+										<name>Start Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Hull_02_start.seq</value>
+									</property>
+									<property>
+										<name>Cycle Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Hull_02_cycle.seq</value>
+									</property>
+									<property>
+										<name>End Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Hull_02_end.seq</value>
+									</property>
+									<property>
+										<name>Target Node</name>
+										<link>b2255656-ee7c-30ec-b5fb-7dcbd1edce02</link>
+									</property>
+								</object>
+							</item>
+							<item>
+								<object>
+									<property>
+										<name>Model Path</name>
+										<isAsset>true</isAsset>
+										<value>vehicles/sweden/S14_Ikv_103_SH/normal/lod0/Hull_03.model</value>
+									</property>
+									<property>
+										<name>Start Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Hull_03_start.seq</value>
+									</property>
+									<property>
+										<name>Cycle Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Hull_03_cycle.seq</value>
+									</property>
+									<property>
+										<name>End Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Hull_03_end.seq</value>
+									</property>
+									<property>
+										<name>Target Node</name>
+										<link>b2255656-ee7c-30ec-b5fb-7dcbd1edce02</link>
+									</property>
+								</object>
+							</item>
+							<item>
+								<object>
+									<property>
+										<name>Model Path</name>
+										<isAsset>true</isAsset>
+										<value>vehicles/sweden/S14_Ikv_103_SH/normal/lod0/Gun_04.model</value>
+									</property>
+									<property>
+										<name>Start Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Gun_02_start.seq</value>
+									</property>
+									<property>
+										<name>Cycle Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Gun_02_cycle.seq</value>
+									</property>
+									<property>
+										<name>End Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Gun_02_end.seq</value>
+									</property>
+									<property>
+										<name>Target Node</name>
+										<link>a4e89952-83d3-3cc0-8e22-315b03fed226</link>
+									</property>
+								</object>
+							</item>
+							<item>
+								<object>
+									<property>
+										<name>Model Path</name>
+										<isAsset>true</isAsset>
+										<value>vehicles/sweden/S14_Ikv_103_SH/normal/lod0/Gun_05.model</value>
+									</property>
+									<property>
+										<name>Start Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Gun_02_start.seq</value>
+									</property>
+									<property>
+										<name>Cycle Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Gun_02_cycle.seq</value>
+									</property>
+									<property>
+										<name>End Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Gun_02_end.seq</value>
+									</property>
+									<property>
+										<name>Target Node</name>
+										<link>a4e89952-83d3-3cc0-8e22-315b03fed226</link>
+									</property>
+								</object>
+							</item>
+							<item>
+								<object>
+									<property>
+										<name>Model Path</name>
+										<isAsset>true</isAsset>
+										<value>vehicles/sweden/S14_Ikv_103_SH/normal/lod0/Gun_06.model</value>
+									</property>
+									<property>
+										<name>Start Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Gun_02_start.seq</value>
+									</property>
+									<property>
+										<name>Cycle Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Gun_02_cycle.seq</value>
+									</property>
+									<property>
+										<name>End Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Gun_02_end.seq</value>
+									</property>
+									<property>
+										<name>Target Node</name>
+										<link>a4e89952-83d3-3cc0-8e22-315b03fed226</link>
+									</property>
+								</object>
+							</item>
+							<item>
+								<object>
+									<property>
+										<name>Model Path</name>
+										<isAsset>true</isAsset>
+										<value>vehicles/sweden/S14_Ikv_103_SH/normal/lod0/Gun_07.model</value>
+									</property>
+									<property>
+										<name>Start Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Gun_02_start.seq</value>
+									</property>
+									<property>
+										<name>Cycle Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Gun_02_cycle.seq</value>
+									</property>
+									<property>
+										<name>End Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Gun_02_end.seq</value>
+									</property>
+									<property>
+										<name>Target Node</name>
+										<link>a4e89952-83d3-3cc0-8e22-315b03fed226</link>
+									</property>
+								</object>
+							</item>
+							<item>
+								<object>
+									<property>
+										<name>Model Path</name>
+										<isAsset>true</isAsset>
+										<value>vehicles/sweden/S14_Ikv_103_SH/normal/lod0/Turret_01.model</value>
+									</property>
+									<property>
+										<name>Start Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Turret_01_start.seq</value>
+									</property>
+									<property>
+										<name>Cycle Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Turret_01_cycle.seq</value>
+									</property>
+									<property>
+										<name>End Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Turret_01_end.seq</value>
+									</property>
+									<property>
+										<name>Target Node</name>
+										<link>ecbe029b-8acb-3376-a635-883b2ead6c2c</link>
+									</property>
+								</object>
+							</item>
+							<item>
+								<object>
+									<property>
+										<name>Model Path</name>
+										<isAsset>true</isAsset>
+										<value>vehicles/sweden/S14_Ikv_103_SH/normal/lod0/Turret_02.model</value>
+									</property>
+									<property>
+										<name>Start Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Turret_02_start.seq</value>
+									</property>
+									<property>
+										<name>Cycle Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Turret_02_cycle.seq</value>
+									</property>
+									<property>
+										<name>End Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Turret_02_end.seq</value>
+									</property>
+									<property>
+										<name>Target Node</name>
+										<link>ecbe029b-8acb-3376-a635-883b2ead6c2c</link>
+									</property>
+								</object>
+							</item>
+							<item>
+								<object>
+									<property>
+										<name>Model Path</name>
+										<isAsset>true</isAsset>
+										<value>vehicles/sweden/S14_Ikv_103_SH/normal/lod0/Turret_03.model</value>
+									</property>
+									<property>
+										<name>Start Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Turret_03_start.seq</value>
+									</property>
+									<property>
+										<name>Cycle Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Turret_03_cycle.seq</value>
+									</property>
+									<property>
+										<name>End Effect</name>
+										<isAsset>true</isAsset>
+										<value>particles/Environment/Battle_Royal/Heal/Turret_03_end.seq</value>
+									</property>
+									<property>
+										<name>Target Node</name>
+										<link>ecbe029b-8acb-3376-a635-883b2ead6c2c</link>
+									</property>
+								</object>
+							</item>
+						</collection>
+					</property>
+				</config>
+			</component>
+		</ComponentPool>
+	</components>
+</root>

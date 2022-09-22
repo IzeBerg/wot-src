@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<FeatureName>event_platform</FeatureName>
+	<IsEnabled>True</IsEnabled>
+	<Personality>EventPlatformPersonality</Personality>
+	<Components>
+		<StaticComponents>
+			<KafkaLoggingComponent/>
+			<VehicleHealthBroadcastComponent/>
+			<VehicleVisionOverrideComponent/>
+		</StaticComponents>
+	</Components>
+</root>
