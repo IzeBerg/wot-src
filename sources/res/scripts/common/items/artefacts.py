@@ -1855,19 +1855,20 @@ class AttackArtilleryFortEquipment(AreaOfEffectEquipment):
         self.enemyAreaColor = _xml.readIntOrNone(xmlCtx, section, 'enemyAreaColor')
         self.enemyAreaColorBlind = _xml.readIntOrNone(xmlCtx, section, 'enemyAreaColorBlind')
         if IS_CLIENT:
-            damagePerShot = sum([ self._readDamageVehicleAction(action) for action in section['actions'].values() ])
+            damagePerShot = sum([ self.__readDamageVehicleAction(action) for action in section['actions'].values() ])
             self.maxDamage = damagePerShot * self.shotsNumber
         else:
             self.maxDamage = 0
 
-    def _readDamageVehicleAction(self, section):
+    @staticmethod
+    def __readDamageVehicleAction(section):
         if not section:
             return 0
         if section.readString('type') != 'DamageVehicle':
             return 0
         args = section['args']
-        if args.has_key('value'):
-            return args.readInt('value')
+        if args.has_key('damage'):
+            return args.readInt('damage')
         return 0
 
 

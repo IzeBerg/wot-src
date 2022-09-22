@@ -128,8 +128,11 @@ class CaptureBlockSN(_EpicLocalizationProvider, sn_items.TimerSN):
 
     def __init__(self, updateCallback):
         super(CaptureBlockSN, self).__init__(updateCallback)
-        self._subscribeOnVehControlling()
         self.__isBlocked = False
+
+    def start(self):
+        super(CaptureBlockSN, self).start()
+        self._subscribeOnVehControlling()
         ctrl = self._sessionProvider.dynamic.progressTimer
         if ctrl is not None:
             ctrl.onVehicleLeft += self.__onVehicleLeft
@@ -178,6 +181,9 @@ class ResupplyTimerSN(sn_items.TimerSN):
     def __init__(self, updateCallback):
         super(ResupplyTimerSN, self).__init__(updateCallback)
         self.__curPointIdx = -1
+
+    def start(self):
+        super(ResupplyTimerSN, self).start()
         ctrl = self._sessionProvider.dynamic.progressTimer
         if ctrl:
             ctrl.onTimerUpdated += self.__onTimerUpdated
@@ -296,8 +302,8 @@ class SectorAirstrikeSN(sn_items.DestroyMiscTimerSN):
 
 class _StealthBaseSN(_EpicLocalizationProvider, sn_items.BuffSN):
 
-    def __init__(self, updateCallback):
-        super(_StealthBaseSN, self).__init__(updateCallback)
+    def start(self):
+        super(_StealthBaseSN, self).start()
         self._subscribeOnVehControlling()
 
     def _updateTimeValues(self, value):

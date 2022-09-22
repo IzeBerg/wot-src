@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 from gui import makeHtmlString
 from gui.Scaleform.genConsts.BLOCKS_TOOLTIP_TYPES import BLOCKS_TOOLTIP_TYPES
-from gui.goodies.goodie_items import Booster
+from gui.goodies.goodie_items import Booster, ClanReservePresenter
 from gui.impl.backport import image, text
 from gui.impl.gen import R
 from gui.impl.common.personal_reserves.personal_reserves_shared_constants import PREMIUM_BOOSTER_IDS
@@ -10,18 +10,18 @@ from gui.impl.common.personal_reserves.personal_reserves_shared_model_utils impo
 from gui.server_events import events_helpers
 from gui.shared.formatters import text_styles as _ts
 from gui.shared.gui_items import GUI_ITEM_ECONOMY_CODE
-from gui.shared.money import Currency
 from gui.shared.tooltips import TOOLTIP_TYPE
 from gui.shared.tooltips import formatters
-from gui.shared.tooltips.common import BlocksTooltipData, makePriceBlock, CURRENCY_SETTINGS
+from gui.shared.tooltips.common import BlocksTooltipData
 from gui.shared.tooltips.contexts import BoosterStatsConfiguration, BoosterContext
 from helpers import dependency
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.shared import IItemsCache
 if TYPE_CHECKING:
-    from typing import Dict, List, Any, Optional
+    from typing import Dict, List, Optional
     from gui.shared.items_cache import ItemsCache
     from gui.goodies import GoodiesCache
+    from gui.goodies.goodie_items import BoostersType
 
 class BoosterTooltipData(BlocksTooltipData):
     itemsCache = dependency.descriptor(IItemsCache)
@@ -50,22 +50,22 @@ class BoosterTooltipData(BlocksTooltipData):
         priceInfo = self.__getPriceInfo(stats, booster)
         if priceInfo:
             priceStorageItems.append(priceInfo)
-        priceStorageItems.append(self.__getInDepot(booster))
-        items.append(formatters.packBuildUpBlockData(priceStorageItems, linkage=BLOCKS_TOOLTIP_TYPES.TOOLTIP_BUILDUP_BLOCK_WHITE_BG_LINKAGE, padding=formatters.packPadding(left=60, top=-10, bottom=-15)))
+        if isinstance(booster, Booster):
+            priceStorageItems.append(self.__getInDepot(booster))
+        if priceStorageItems:
+            items.append(formatters.packBuildUpBlockData(priceStorageItems, linkage=BLOCKS_TOOLTIP_TYPES.TOOLTIP_BUILDUP_BLOCK_WHITE_BG_LINKAGE, padding=formatters.packPadding(left=60, top=-10, bottom=-15)))
         if stats.quests:
             questsResult = self.__getBoosterQuestNames(boosterID)
             if questsResult:
                 items.append(self.__getAccessCondition(questsResult))
-        inventoryBlock = self.__getInventoryBlock(booster=booster, showPrice=stats.buyPrice and booster.buyPrices, showInventoryCount=stats.inventoryCount and booster.count)
-        if inventoryBlock:
-            items.append(formatters.packBuildUpBlockData(inventoryBlock))
-        items.append(self.__getReceiveBlock(booster))
-        items.extend(self.__getActivationInfo(stats, booster))
+        if booster.getIsAttainable():
+            items.append(self.__getReceiveBlock(booster))
+        items.extend(self.__getActivationInfo(booster))
         return items
 
     def __getHeader(self, booster):
         return formatters.packBuildUpBlockData([
-         formatters.packTitleDescBlock(title=_ts.highTitle(text(R.strings.tooltips.boostersWindow.booster.activateInfo.title.dyn(booster.boosterGuiType)())), desc=_ts.main(text(R.strings.tooltips.boostersWindow.booster.activateInfo.dyn('improvedReserve' if booster.boosterID in PREMIUM_BOOSTER_IDS else 'basicReserve')()))),
+         formatters.packTitleDescBlock(title=_ts.highTitle(text(R.strings.tooltips.boostersWindow.booster.activateInfo.title.dyn(booster.boosterGuiType)())), desc=_ts.main(text(R.strings.tooltips.boostersWindow.booster.activateInfo.dyn('improvedReserve' if booster.getIsPremium() else 'basicReserve')()))),
          formatters.packImageBlockData(img=booster.bigTooltipIcon, align=BLOCKS_TOOLTIP_TYPES.ALIGN_CENTER, width=180, height=135, padding=formatters.packPadding(top=-14, bottom=-14))])
 
     def __getInfoBlocks(self, booster, stats):
@@ -111,14 +111,21 @@ class BoosterTooltipData(BlocksTooltipData):
         return formatters.packMultipleText(' ', _ts.stats(getTotalBoostersByResourceAndPremium(booster, BoosterTooltipData.goodiesCache)), formatters.getImage(image(R.images.gui.maps.icons.personal_reserves.tooltips.in_hangar_icon()), width=30, height=24, vspace=-6), _ts.main(text(R.strings.tooltips.boostersWindow.booster.activateInfo.inDepot())))
 
     def __getReceiveBlock(self, booster):
+        if isinstance(booster, ClanReservePresenter):
+            receiveText = R.strings.tooltips.boostersWindow.booster.activateInfo.clanReserveReceiveInfo()
+        else:
+            receiveText = R.strings.tooltips.boostersWindow.booster.activateInfo.dyn('paidReceiveInfo' if booster.boosterID in PREMIUM_BOOSTER_IDS else 'nonPaidReceiveInfo')()
         return formatters.packBuildUpBlockData([
-         formatters.packTitleDescBlock(title=_ts.middleTitle(text(R.strings.tooltips.boostersWindow.booster.activateInfo.receive())), desc=_ts.main(text(R.strings.tooltips.boostersWindow.booster.activateInfo.dyn('paidReceiveInfo' if booster.boosterID in PREMIUM_BOOSTER_IDS else 'nonPaidReceiveInfo')())))], padding=formatters.packPadding(bottom=-16))
+         formatters.packTitleDescBlock(title=_ts.middleTitle(text(R.strings.tooltips.boostersWindow.booster.activateInfo.receive())), desc=_ts.main(text(receiveText)))], padding=formatters.packPadding(bottom=-16))
 
-    def __getActivationInfo(self, stats, booster):
-        if stats.activeState and booster.inCooldown:
-            return [
-             self.__getActiveState(booster.getUsageLeftTimeStr()),
-             self.__packGrayText(text(R.strings.tooltips.boostersWindow.booster.activateInfo.bonusTimeInfo()))]
+    def __getActivationInfo(self, booster):
+        result = []
+        if booster.inCooldown:
+            result.append(self.__getActiveState(booster.getUsageLeftTimeStr()))
+            if isinstance(booster, ClanReservePresenter):
+                return result
+            result.append(self.__packGrayText(text(R.strings.tooltips.boostersWindow.booster.activateInfo.bonusTimeInfo())))
+            return result
         return [
          formatters.packBuildUpBlockData([
           formatters.packTitleDescBlock(title=_ts.middleTitle(text(R.strings.tooltips.boostersWindow.booster.activateInfo.activation()))),
@@ -153,28 +160,3 @@ class BoosterTooltipData(BlocksTooltipData):
                         questsResult.add(q.getUserName())
 
         return questsResult
-
-    def __getInventoryBlock(self, booster, showPrice, showInventoryCount):
-        block = []
-        money = BoosterTooltipData.itemsCache.items.stats.money
-        if showPrice:
-            showDelimiter = False
-            leftPadding = 92
-            for itemPrice in booster.buyPrices:
-                currency = itemPrice.getCurrency()
-                value = itemPrice.price.getSignValue(currency)
-                defValue = itemPrice.defPrice.getSignValue(currency)
-                needValue = value - money.getSignValue(currency)
-                actionPercent = itemPrice.getActionPrc()
-                if currency == Currency.GOLD and actionPercent > 0:
-                    leftActionPadding = 101 + self.leftPadding
-                else:
-                    leftActionPadding = 81 + self.leftPadding
-                if showDelimiter:
-                    block.append(formatters.packTextBlockData(text=_ts.standard(text(R.strings.tooltips.vehicle.textDelimiter.dyn('or')())), padding=formatters.packPadding(left=leftActionPadding)))
-                block.append(makePriceBlock(value, CURRENCY_SETTINGS.getBuySetting(currency), needValue if needValue > 0 else None, defValue if defValue > 0 else None, actionPercent, leftPadding=leftPadding))
-                showDelimiter = True
-
-        if showInventoryCount:
-            block.append(formatters.packTitleDescParameterWithIconBlockData(title=_ts.main(text(R.strings.tooltips.vehicle.inventoryCount())), value=_ts.stats(booster.count), icon=image(R.images.gui.maps.icons.library.storage_icon()), padding=formatters.packPadding(left=104), titlePadding=formatters.packPadding(), iconPadding=formatters.packPadding(top=-2, left=-2)))
-        return block

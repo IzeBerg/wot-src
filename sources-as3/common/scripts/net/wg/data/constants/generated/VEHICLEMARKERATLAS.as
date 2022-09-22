@@ -1171,6 +1171,14 @@ package net.wg.data.constants.generated
       
       public static const SM_CONCENTRATION_WHITE:String = "sm_concentration_white";
       
+      public static const SM_CONFIRMED_GREEN:String = "sm_confirmed_green";
+      
+      public static const SM_CONFIRMED_PURPLE:String = "sm_confirmed_purple";
+      
+      public static const SM_CONFIRMED_RED:String = "sm_confirmed_red";
+      
+      public static const SM_CONFIRMED_WHITE:String = "sm_confirmed_white";
+      
       public static const SM_FAST_RECHARGE_GREEN:String = "sm_fastRecharge_green";
       
       public static const SM_FAST_RECHARGE_PURPLE:String = "sm_fastRecharge_purple";
@@ -1720,6 +1728,8 @@ package net.wg.data.constants.generated
       public static const USA_A149_AMBT:String = "usa-A149_AMBT";
       
       public static const USA_A15_T57:String = "usa-A15_T57";
+      
+      public static const USA_A152_M_PROJECT_2:String = "usa-A152_M_Project_2";
       
       public static const USA_A156_T54_2022:String = "usa-A156_T54_2022";
       

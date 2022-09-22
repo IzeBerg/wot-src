@@ -678,7 +678,7 @@ class LobbyHeader(LobbyHeaderMeta, ClanEmblemsHelper, IGlobalListener):
         self.removeListener(PlatoonDropdownEvent.NAME, self.__platoonDropdown)
         self.removeListener(FullscreenModeSelectorEvent.NAME, self.__onFullScreenModeSelector)
         self._removeWGNPListeners()
-        self.removeListener(events.Comp7Event.OPEN_META, self.__onComp7MetaOpened)
+        self.removeListener(events.Comp7Event.OPEN_META, self.__onComp7MetaOpened, scope=EVENT_BUS_SCOPE.LOBBY)
 
     def _addWGNPListeners(self):
         self.wgnpSteamAccCtrl.statusEvents.subscribe(StatusTypes.CONFIRMED, self.__onEmailConfirmed)

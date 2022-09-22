@@ -132,7 +132,7 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
          addFrameScript(HIDE_STATE_STOP_FRAME,this.evaluateOneShotAnimationFrameStates);
       }
       
-      public function showEffectTimer(param1:Number, param2:Boolean, param3:Boolean, param4:Boolean = true) : void
+      public function showEffectTimer(param1:Number, param2:Boolean, param3:Boolean, param4:Boolean = true, param5:Boolean = true) : void
       {
          this.oneShotAnimation = param3;
          visible = true;

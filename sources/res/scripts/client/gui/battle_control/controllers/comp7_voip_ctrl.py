@@ -76,6 +76,7 @@ class Comp7VOIPController(IComp7VOIPController):
             if not self.isTeamVoipEnabled:
                 _logger.error('Failed to toggle Comp7 team VOIP channel. Joining is not allowed.')
                 return
+            _logger.info('toggleChannelConnection')
             event_dispatcher.toggleVoipChannelEnabled()
             self.__cooldownCallback = BigWorld.callback(REQUEST_COOLDOWN.POST_PROGRESSION_CELL + 1.0, self.__clearCooldown)
             return

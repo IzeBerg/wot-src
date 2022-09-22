@@ -22,7 +22,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       function showExInfo() : void;
       
-      function showStatusMarker(param1:int, param2:int, param3:Boolean, param4:Number, param5:int, param6:int, param7:Boolean = true) : void;
+      function showStatusMarker(param1:int, param2:int, param3:Boolean, param4:Number, param5:int, param6:int, param7:Boolean = true, param8:Boolean = true) : void;
       
       function update() : void;
       

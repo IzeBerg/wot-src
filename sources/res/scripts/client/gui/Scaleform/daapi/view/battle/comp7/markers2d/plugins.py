@@ -28,7 +28,24 @@ class Comp7SettingsPlugin(SettingsPlugin):
                     (
                      'markerAltPlayerName', True),
                     (
-                     'markerAltAimMarker2D', False))}
+                     'markerAltAimMarker2D', False),
+                    ('markerAltRoleName', 1),
+                    (
+                     'markerBaseIcon', False),
+                    (
+                     'markerBaseLevel', False),
+                    (
+                     'markerBaseHpIndicator', False),
+                    (
+                     'markerBaseDamage', False),
+                    ('markerBaseHp', 3),
+                    (
+                     'markerBaseVehicleName', True),
+                    (
+                     'markerBasePlayerName', True),
+                    (
+                     'markerBaseAimMarker2D', False),
+                    ('markerBaseRoleName', 1))}
     __ADDITIONAL_SETTINGS = {name:(('markerAltRoleName', 1), ('markerAltRoleSkillLevel', 1)) for name in MARKERS.ALL()}
 
     def __init__(self, parentObj):
@@ -242,6 +259,9 @@ class Comp7VehicleMarkerPlugin(VehicleMarkerPlugin):
     def __updateRedLineMarker(self, vehicleID, handle, state):
         self.__updateAbilityMarker(vehicleID, state, handle, BATTLE_MARKER_STATES.COMP7_ARTYLLERY_SUPPORT_STATE)
 
+    def __updateConfirmedMarker(self, vehicleID, handle, isShown):
+        self._updateStatusMarkerState(vehicleID=vehicleID, isShown=isShown, handle=handle, statusID=BATTLE_MARKER_STATES.CONFIRMED_STATE, duration=0, animated=True, isSourceVehicle=False, blinkAnim=False)
+
     def __updateAbilityMarker(self, vehicleID, state, handle, stateID, showCountdown=False):
         vehicle = BigWorld.entities.get(vehicleID)
         if vehicle is None or not vehicle.isAlive():
@@ -270,8 +290,7 @@ class Comp7VehicleMarkerPlugin(VehicleMarkerPlugin):
         for vehicleID, status in statuses.iteritems():
             marker = self._markers.get(vehicleID)
             if marker is not None:
-                value = 'positive' if status else ''
-                self._invokeMarker(self._markers[vehicleID].getMarkerID(), 'changeObjectiveActionMarker', value)
+                self.__updateConfirmedMarker(vehicleID, marker.getMarkerID(), status)
 
         return
 

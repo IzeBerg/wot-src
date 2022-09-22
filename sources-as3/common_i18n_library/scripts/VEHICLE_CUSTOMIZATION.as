@@ -3039,6 +3039,10 @@ package
       
       public static const CAMOUFLAGE_QUICKY_BABY_DESCRIPTION:String = "#vehicle_customization:camouflage/quicky_baby/description";
       
+      public static const CAMOUFLAGE_TWITCH_SEPTEMBER_2022_LABEL:String = "#vehicle_customization:camouflage/twitch_september_2022/label";
+      
+      public static const CAMOUFLAGE_TWITCH_SEPTEMBER_2022_DESCRIPTION:String = "#vehicle_customization:camouflage/twitch_september_2022/description";
+      
       public static const EMBLEM:String = "#vehicle_customization:emblem";
       
       public static const EMBLEM_CLAN_CONTENT:String = "#vehicle_customization:emblem/clan_content";
@@ -8243,6 +8247,8 @@ package
       
       public static const REPAINT_FOOTBALL_EVENT_2022_2:String = "#vehicle_customization:repaint/football_event_2022_2";
       
+      public static const REPAINT_TWITCH_SEPTEMBER_2022:String = "#vehicle_customization:repaint/twitch_september_2022";
+      
       public static const MODIFICATIONS_AGE_EFFECT_01:String = "#vehicle_customization:modifications/age_effect_01";
       
       public static const MODIFICATIONS_AGE_EFFECT_01_DESCRIPTION:String = "#vehicle_customization:modifications/age_effect_01/description";
@@ -10921,6 +10927,10 @@ package
       
       public static const SPECIAL_STYLE_FW_2022_STYLE_GRADE7_DESC:String = "#vehicle_customization:special_style/fw_2022_style_grade7_desc";
       
+      public static const SPECIAL_STYLE_TWITCH_SEPTEMBER_2022:String = "#vehicle_customization:special_style/twitch_september_2022";
+      
+      public static const SPECIAL_STYLE_TWITCH_SEPTEMBER_2022_DESC_LONG:String = "#vehicle_customization:special_style/twitch_september_2022_desc/long";
+      
       public static const CUSTOMIZATION_POPOVER_STYLE_SUMMER:String = "#vehicle_customization:customization/popover/style/summer";
       
       public static const CUSTOMIZATION_POPOVER_STYLE_DESERT:String = "#vehicle_customization:customization/popover/style/desert";
@@ -13090,6 +13100,10 @@ package
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_454:String = "#vehicle_customization:projection_decals/special/projection_decal_454";
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_461:String = "#vehicle_customization:projection_decals/special/projection_decal_461";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_462:String = "#vehicle_customization:projection_decals/special/projection_decal_462";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_463:String = "#vehicle_customization:projection_decals/special/projection_decal_463";
       
       public static const PROPERTYSHEET_KEYBOARD_HINT:String = "#vehicle_customization:propertySheet/keyboard/hint";
       

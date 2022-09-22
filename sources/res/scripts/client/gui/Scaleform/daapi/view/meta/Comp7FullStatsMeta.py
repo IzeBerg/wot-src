@@ -1,6 +1,6 @@
-from gui.Scaleform.daapi.view.battle.classic.base_stats import StatsBase
+from gui.Scaleform.daapi.view.battle.shared.tabbed_full_stats import TabbedFullStatsComponent
 
-class Comp7FullStatsMeta(StatsBase):
+class Comp7FullStatsMeta(TabbedFullStatsComponent):
 
     def onVoiceChatControlClick(self):
         self._printOverrideError('onVoiceChatControlClick')

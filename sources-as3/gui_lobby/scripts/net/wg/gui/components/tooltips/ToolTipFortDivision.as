@@ -61,6 +61,7 @@ package net.wg.gui.components.tooltips
       override protected function redraw() : void
       {
          var _loc1_:Number = NaN;
+         var _loc3_:FortDivisionVO = null;
          var _loc4_:Number = NaN;
          var _loc6_:ToolTipBlockVO = null;
          var _loc7_:Number = NaN;
@@ -68,7 +69,7 @@ package net.wg.gui.components.tooltips
          _loc1_ = 320;
          var _loc2_:Separator = null;
          separators = new Vector.<Separator>();
-         var _loc3_:FortDivisionVO = new FortDivisionVO(_data);
+         _loc3_ = new FortDivisionVO(_data);
          contentMargin.bottom = 24;
          topPosition = bgShadowMargin.top + contentMargin.top;
          _loc4_ = bgShadowMargin.left + contentMargin.left;

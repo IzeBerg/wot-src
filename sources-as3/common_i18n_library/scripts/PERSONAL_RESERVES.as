@@ -65,7 +65,9 @@ package
       
       public static const ACTIVATION_TITLE:String = "#personal_reserves:activation/title";
       
-      public static const ACTIVATION_SUBTITLE:String = "#personal_reserves:activation/subTitle";
+      public static const ACTIVATION_SUBTITLE_MAIN:String = "#personal_reserves:activation/subTitle/main";
+      
+      public static const ACTIVATION_SUBTITLE_STORE:String = "#personal_reserves:activation/subTitle/store";
       
       public static const ACTIVATION_INFORMATIONBUTTON:String = "#personal_reserves:activation/informationButton";
       
@@ -95,6 +97,14 @@ package
       
       public static const ACTIVATION_FRONTLINEXPDESCRIPTION:String = "#personal_reserves:activation/frontLineXPDescription";
       
+      public static const ACTIVATION_TERMS_BOOSTER_XP:String = "#personal_reserves:activation/terms/booster_xp";
+      
+      public static const ACTIVATION_TERMS_BOOSTER_CREDITS:String = "#personal_reserves:activation/terms/booster_credits";
+      
+      public static const ACTIVATION_TERMS_BOOSTER_FREE_XP_AND_CREW_XP:String = "#personal_reserves:activation/terms/booster_free_xp_and_crew_xp";
+      
+      public static const ACTIVATION_TERMS_BOOSTER_FL_XP:String = "#personal_reserves:activation/terms/booster_fl_xp";
+      
       public static const ACTIVATION_CLANBOOSTERSTITLE:String = "#personal_reserves:activation/clanBoostersTitle";
       
       public static const ACTIVATION_CLANBOOSTERSDESCRIPTION:String = "#personal_reserves:activation/clanBoostersDescription";
@@ -122,6 +132,8 @@ package
       public static const BATTLEVIEW_TITLE:String = "#personal_reserves:battleView/title";
       
       public static const BATTLEVIEW_NOTICE:String = "#personal_reserves:battleView/notice";
+      
+      public static const DISABLEDRESERVETOOLTIP_TEXT:String = "#personal_reserves:disabledReserveTooltip/text";
       
       public static const NOPAIDRESERVETOOLTIP_TEXT:String = "#personal_reserves:noPaidReserveTooltip/text";
       

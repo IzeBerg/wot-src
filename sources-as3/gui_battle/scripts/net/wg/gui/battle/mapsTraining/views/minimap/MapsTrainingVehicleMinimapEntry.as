@@ -4,6 +4,7 @@ package net.wg.gui.battle.mapsTraining.views.minimap
    import net.wg.data.constants.generated.BATTLEATLAS;
    import net.wg.gui.battle.views.minimap.components.entries.vehicle.VehicleAnimationMinimapEntry;
    import net.wg.gui.battle.views.minimap.components.entries.vehicle.VehicleMinimapEntry;
+   import scaleform.clik.motion.Tween;
    
    public class MapsTrainingVehicleMinimapEntry extends VehicleMinimapEntry
    {
@@ -11,6 +12,8 @@ package net.wg.gui.battle.mapsTraining.views.minimap
       private static const STATE_SPOTTED:uint = 1;
       
       private static const STATE_TARGET:uint = 1 << 1;
+      
+      private static const TWEEN_DEATH_DURATION:int = 1000;
        
       
       public var eyeMc:VehicleAnimationMinimapEntry = null;
@@ -18,6 +21,10 @@ package net.wg.gui.battle.mapsTraining.views.minimap
       public var targetMc:MovieClip = null;
       
       private var _state:uint = 0;
+      
+      private var _isDead:Boolean;
+      
+      private var _isDeadDirty:Boolean;
       
       public function MapsTrainingVehicleMinimapEntry()
       {
@@ -51,13 +58,32 @@ package net.wg.gui.battle.mapsTraining.views.minimap
          invalidate(VehicleMinimapEntry.INVALID_MT_STATE);
       }
       
+      override public function setDead(param1:Boolean) : void
+      {
+         this._isDead = true;
+         this._isDeadDirty = true;
+         super.setDead(param1);
+      }
+      
       override protected function draw() : void
       {
          super.draw();
          if(isInvalid(VehicleMinimapEntry.INVALID_MT_STATE))
          {
-            updateMovieClip(this.eyeMc,(this._state & STATE_SPOTTED) > 0);
-            updateMovieClip(this.targetMc,(this._state & STATE_TARGET) > 0);
+            if(!this._isDead)
+            {
+               updateMovieClip(this.eyeMc,(this._state & STATE_SPOTTED) > 0);
+               updateMovieClip(this.targetMc,(this._state & STATE_TARGET) > 0);
+            }
+         }
+         if(this._isDeadDirty)
+         {
+            this._isDeadDirty = false;
+            if(this._isDead)
+            {
+               new Tween(TWEEN_DEATH_DURATION,this.eyeMc,{"alpha":0});
+               new Tween(TWEEN_DEATH_DURATION,this.targetMc,{"alpha":0});
+            }
          }
       }
       

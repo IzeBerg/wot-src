@@ -28,7 +28,6 @@ package net.wg.gui.battle.views.vehicleMarkers
          "supportingYou":VehicleMarkersLinkages.ACTION_SUPPORTING_YOU,
          "attack":VehicleMarkersLinkages.ACTION_ATTACK,
          "attackAlternative":VehicleMarkersLinkages.ACTION_ATTACK_ALTERNATIVE,
-         "positiveAlternative":VehicleMarkersLinkages.ACTION_POSITIVE,
          "supportingAllyAlternative":VehicleMarkersLinkages.ACTION_SUPPORTING_ALLY_ALTERNATIVE,
          "goingToAlternative":VehicleMarkersLinkages.ACTION_GOING_TO,
          "attackBaseAlternative":VehicleMarkersLinkages.ACTION_ATTACK_BASE,

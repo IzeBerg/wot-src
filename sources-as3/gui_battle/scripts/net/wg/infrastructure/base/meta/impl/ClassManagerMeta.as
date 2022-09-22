@@ -58,6 +58,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.data.constants.generated.RADIAL_MENU_CONSTS;
    import net.wg.data.constants.generated.ROCKET_ACCELERATOR_INDICATOR;
    import net.wg.data.constants.generated.SIEGE_MODE_CONSTS;
+   import net.wg.gui.battle.ClassicFullStats;
    import net.wg.gui.battle.StatsBase;
    import net.wg.gui.battle.TabbedFullStats;
    import net.wg.gui.battle.battleRoyale.BattleRoyalePage;
@@ -358,6 +359,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.interfaces.IFullStats;
    import net.wg.gui.battle.interfaces.IPrebattleTimerBase;
    import net.wg.gui.battle.interfaces.IQuestProgressStats;
+   import net.wg.gui.battle.interfaces.IReservesStats;
    import net.wg.gui.battle.interfaces.IStatsTableController;
    import net.wg.gui.battle.interfaces.ITabbedFullStatsTableController;
    import net.wg.gui.battle.mapsTraining.views.MapsTrainingBattleLoading;
@@ -993,6 +995,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.meta.IBattleUpgradePanelMeta;
    import net.wg.infrastructure.base.meta.IBattleVehicleConfiguratorMeta;
    import net.wg.infrastructure.base.meta.ICalloutPanelMeta;
+   import net.wg.infrastructure.base.meta.IClassicFullStatsMeta;
    import net.wg.infrastructure.base.meta.IComp7BattlePageMeta;
    import net.wg.infrastructure.base.meta.IComp7BattleStatisticDataControllerMeta;
    import net.wg.infrastructure.base.meta.IComp7BattleTankCarouselMeta;
@@ -1190,6 +1193,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_DATA_VO_DAAPI_DAAPIVEHICLESUSERTAGSVO:Class = DAAPIVehiclesUserTagsVO;
       
       public static const NET_WG_DATA_VO_DAAPI_DAAPIVEHICLEUSERTAGSVO:Class = DAAPIVehicleUserTagsVO;
+      
+      public static const NET_WG_GUI_BATTLE_CLASSICFULLSTATS:Class = ClassicFullStats;
       
       public static const NET_WG_GUI_BATTLE_STATSBASE:Class = StatsBase;
       
@@ -1790,6 +1795,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_INTERFACES_IPREBATTLETIMERBASE:Class = IPrebattleTimerBase;
       
       public static const NET_WG_GUI_BATTLE_INTERFACES_IQUESTPROGRESSSTATS:Class = IQuestProgressStats;
+      
+      public static const NET_WG_GUI_BATTLE_INTERFACES_IRESERVESSTATS:Class = IReservesStats;
       
       public static const NET_WG_GUI_BATTLE_INTERFACES_ISTATSTABLECONTROLLER:Class = IStatsTableController;
       
@@ -3061,6 +3068,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ICALLOUTPANELMETA:Class = ICalloutPanelMeta;
       
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_ICLASSICFULLSTATSMETA:Class = IClassicFullStatsMeta;
+      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ICOMP7BATTLEPAGEMETA:Class = IComp7BattlePageMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_ICOMP7BATTLESTATISTICDATACONTROLLERMETA:Class = IComp7BattleStatisticDataControllerMeta;
@@ -3272,6 +3281,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_BCSECONDARYHINTMETA:Class = BCSecondaryHintMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_CALLOUTPANELMETA:Class = CalloutPanelMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_CLASSICFULLSTATSMETA:Class = ClassicFullStatsMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_COMP7BATTLEPAGEMETA:Class = Comp7BattlePageMeta;
       

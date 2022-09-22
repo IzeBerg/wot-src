@@ -117,7 +117,7 @@ package net.wg.gui.battle.comp7
       override protected function initialize() : void
       {
          super.initialize();
-         minimap.addEventListener(MinimapEvent.TRY_INIT_PREBATTLE_SIZE,this.onMiniMapTryInitPrebattleSize);
+         minimap.addEventListener(MinimapEvent.TRY_INIT_PREBATTLE_SIZE,this.onMinimapTryInitPrebattleSizeHandler);
       }
       
       override protected function configUI() : void
@@ -143,7 +143,7 @@ package net.wg.gui.battle.comp7
          if(isInvalid(InvalidationType.LAYOUT))
          {
             battleTimer.visible = !this._isPrebattle;
-            this.helpButton.visible = this._isPrebattle && !battleLoading.visible;
+            this.helpButton.visible = !battleLoading.visible && this.carousel && this.carousel.visible;
             this.helpButton.x = _originalWidth - this.helpButton.hitMc.width - HELP_BUTTON_X_OFFSET | 0;
             this.helpButton.y = HELP_BUTTON_Y_OFFSET;
             this.updateMessengerWidth();
@@ -202,16 +202,16 @@ package net.wg.gui.battle.comp7
       override protected function onBeforeDispose() : void
       {
          this.helpButton.removeEventListener(MouseEvent.CLICK,this.onHelpButtonClickHandler);
+         this.carousel.removeEventListener(LifeCycleEvent.ON_BEFORE_DISPOSE,this.onCarouselOnBeforeDisposeHandler);
+         this.vehicleHitArea.hit.removeEventListener(MouseEvent.MOUSE_WHEEL,this.onHitAreaMouseWheelHandler);
+         this.vehicleHitArea.removeEventListener(MouseEvent.ROLL_OVER,this.onVehicleHitAreaRollOverHandler);
+         this.vehicleHitArea.removeEventListener(MouseEvent.ROLL_OUT,this.onVehicleHitAreaRollOutHandler);
+         minimap.removeEventListener(MinimapEvent.TRY_INIT_PREBATTLE_SIZE,this.onMinimapTryInitPrebattleSizeHandler);
          super.onBeforeDispose();
       }
       
       override protected function onDispose() : void
       {
-         this.carousel.removeEventListener(LifeCycleEvent.ON_BEFORE_DISPOSE,this.onCarouselOnBeforeDisposeHandler);
-         this.vehicleHitArea.hit.removeEventListener(MouseEvent.MOUSE_WHEEL,this.onHitAreaMouseWheelHandler);
-         this.vehicleHitArea.removeEventListener(MouseEvent.ROLL_OVER,this.onVehicleHitAreaRollOverHandler);
-         this.vehicleHitArea.removeEventListener(MouseEvent.ROLL_OUT,this.onVehicleHitAreaRollOutHandler);
-         minimap.removeEventListener(MinimapEvent.TRY_INIT_PREBATTLE_SIZE,this.onMiniMapTryInitPrebattleSize);
          this.vehicleHitArea.dispose();
          this.vehicleHitArea = null;
          this.pointsOfInterestNotificationPanel = null;
@@ -444,7 +444,7 @@ package net.wg.gui.battle.comp7
          notifyCursorOver3dSceneS(false);
       }
       
-      private function onMiniMapTryInitPrebattleSize(param1:MinimapEvent) : void
+      private function onMinimapTryInitPrebattleSizeHandler(param1:MinimapEvent) : void
       {
          minimap.setAllowedSizeIndex(this.getAllowedMinimapSizeIndex(getPrebattleSize(param1.sizeIndex)));
       }

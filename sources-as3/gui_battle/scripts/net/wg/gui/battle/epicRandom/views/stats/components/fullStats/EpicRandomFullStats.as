@@ -1,12 +1,12 @@
 package net.wg.gui.battle.epicRandom.views.stats.components.fullStats
 {
    import net.wg.data.VO.daapi.DAAPIVehicleStatusVO;
-   import net.wg.gui.battle.TabbedFullStats;
+   import net.wg.gui.battle.ClassicFullStats;
    import net.wg.gui.battle.interfaces.ITabbedFullStatsTableController;
    import net.wg.infrastructure.helpers.statisticsDataController.intarfaces.IBattleComponentDataController;
    import net.wg.infrastructure.interfaces.IDAAPIDataClass;
    
-   public class EpicRandomFullStats extends TabbedFullStats implements IBattleComponentDataController
+   public class EpicRandomFullStats extends ClassicFullStats implements IBattleComponentDataController
    {
        
       

@@ -8,7 +8,7 @@ msgid "activation/BuyAndActivateConfirm"
 msgstr "Купить и активировать"
 
 msgid "activation/activateBonus"
-msgstr "Активировать личный резерв: %(bonusDescription)s"
+msgstr "Активировать резерв: %(bonusDescription)s"
 
 msgid "activation/activateButton"
 msgstr "Активировать"
@@ -25,7 +25,7 @@ msgstr "БОНУС: +%(bonus)%"
 msgid "activation/buyAndActivateBoosterTitle"
 msgstr ""
 "Приобрести и активировать улучшенный личный резерв, который даёт "
-"%(boosterBonus)s %(boosterInfluence)s?"
+"%(boosterBonus)s к %(boosterTerm)s?"
 
 msgid "activation/buyGoldConfirm"
 msgstr "Докупить золото"
@@ -33,7 +33,7 @@ msgstr "Докупить золото"
 msgid "activation/buyGoldTitle"
 msgstr ""
 "Докупить золото, необходимое для приобретения улучшенного личного резерва, "
-"дающего %(boosterBonus)s %(boosterInfluence)s?"
+"который даёт %(boosterBonus)s к %(boosterTerm)s?"
 
 msgid "activation/buyGoldWarning"
 msgstr ""
@@ -82,24 +82,40 @@ msgstr "ВЫБЕРИТЕ БОНУС"
 msgid "activation/price"
 msgstr "Стоимость:"
 
-msgid "activation/subTitle"
+msgid "activation/subTitle/main"
 msgstr ""
 "Активируйте {whiteSpanish_Open}до трёх личных резервов{whiteSpanish_Close}, "
 "чтобы зарабатывать больше кредитов и опыта в бою. Вы можете приобрести "
-"больше личных резервов в Магазине."
+"больше личных резервов в %(store)s."
+
+msgid "activation/subTitle/store"
+msgstr "Магазине"
+
+msgid "activation/terms/booster_credits"
+msgstr "кредитам"
+
+msgid "activation/terms/booster_fl_xp"
+msgstr "фронтовому опыту"
+
+msgid "activation/terms/booster_free_xp_and_crew_xp"
+msgstr "комбинированному опыту"
+
+msgid "activation/terms/booster_xp"
+msgstr "боевому опыту"
 
 msgid "activation/title"
 msgstr "ЛИЧНЫЕ РЕЗЕРВЫ"
 
 msgid "activation/upgradeBoosterDescription"
 msgstr ""
-"Активированные стандартные личные резервы, дающие %(previousBoosterBonus)s "
-"%(previousBoosterInfluence)s, будут списаны."
+"{yellow_Open}Активированный стандартный личный резерв, который даёт "
+"%(previousBoosterBonus)s к %(previousBoosterTerm)s, будет "
+"списан.{yellow_Close}"
 
 msgid "activation/upgradeBoosterTitle"
 msgstr ""
-"Активировать улучшенный личный резерв, дающий %(boosterBonus)s "
-"%(boosterInfluence)s, вместо активированного стандартного личного резерва?"
+"Активировать улучшенный личный резерв, который даёт %(boosterBonus)s к "
+"%(boosterTerm)s, вместо активированного стандартного личного резерва?"
 
 msgid "battleView/notice"
 msgstr ""
@@ -160,6 +176,9 @@ msgstr "У вас нет личных резервов для конвертац
 msgid "depot/buyButton"
 msgstr "К покупке"
 
+msgid "disabledReserveTooltip/text"
+msgstr "Другой резерв этого типа уже активирован."
+
 msgid "finishedReserveTooltip/text"
 msgstr ""
 "Срок действия этого личного резерва истёк во время боя, однако вы получите "
@@ -198,12 +217,12 @@ msgstr ""
 msgid "intro/pages/description3"
 msgstr ""
 "Доступны для активации в течение определённого времени. По его истечении личные резервы будут списаны с вашего аккаунта.\n"
-"{orange_Open}Обычные резервы не могут быть активированы в течение этого периода.{orange_Close}"
+"{yellow_Open}Обычные резервы не могут быть активированы в течение этого периода.{yellow_Close}"
 
 msgid "intro/pages/description4"
 msgstr ""
 "Нажмите клавишу TAB или B, чтобы активировать личные резервы в бою.\n"
-"{orange_Open}Если срок действия личного резерва истечёт во время боя, вы получите бонус от этого резерва к ресурсам, заработанным в этом сражении.{orange_Close}"
+"{yellow_Open}Если срок действия личного резерва истечёт во время боя, вы получите бонус от этого резерва к ресурсам, заработанным в этом сражении.{yellow_Close}"
 
 msgid "intro/pages/description5"
 msgstr ""

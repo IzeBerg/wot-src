@@ -761,8 +761,4 @@ class Bootcamp(EventSystemEntity):
           BOOTCAMP.TOOLTIP_PROGRESSION_LABEL_LESSON_5, BOOTCAMP.TOOLTIP_PROGRESSION_DESCRIPTION_LESSON_5])]
 
 
-def important_function():
-    pass
-
-
 g_bootcamp = Bootcamp()

@@ -539,9 +539,9 @@ package net.wg.gui.battle.views.vehicleMarkers
          }
       }
       
-      public function showStatusMarker(param1:int, param2:int, param3:Boolean, param4:Number, param5:int, param6:int, param7:Boolean = true) : void
+      public function showStatusMarker(param1:int, param2:int, param3:Boolean, param4:Number, param5:int, param6:int, param7:Boolean = true, param8:Boolean = true) : void
       {
-         this.statusContainer.showMarker(param1,param2,param3,param4,param5,param6,param7);
+         this.statusContainer.showMarker(param1,param2,param3,param4,param5,param6,param7,param8);
          this.updateMarkerSettings();
       }
       
@@ -745,7 +745,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       protected function prepareCrossOffsets() : Array
       {
-         return [null,new CrossOffset(this.hpField,-3),new CrossOffset(this.playerNameField,-7,this.hpField,-3),new CrossOffset(this.vehicleNameField,-4,this.playerNameField,-4),new CrossOffset(this.levelIcon,-12,this.vehicleNameField,-3,this.playerNameField,-3),null,null,null,new CrossOffset(this.statusContainer,-25),new CrossOffset(this.actionMarker,-52)];
+         return [null,new CrossOffset(this.hpField,-3),new CrossOffset(this.playerNameField,-7,this.hpField,-3),new CrossOffset(this.vehicleNameField,-4,this.playerNameField,-4),new CrossOffset(this.levelIcon,-12,this.vehicleNameField,-3,this.playerNameField,-3),null,null,new CrossOffset(this.vehicleNameField,3),new CrossOffset(this.statusContainer,-25),new CrossOffset(this.actionMarker,-52)];
       }
       
       protected function getStartY() : int

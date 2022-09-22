@@ -94,8 +94,6 @@ class Comp7SquadActionsValidator(SquadActionsValidator):
         validators = [
          _Comp7VehiclesValidator(entity),
          _PrimeTimeValidator(entity)]
-        if not IS_DEVELOPMENT:
-            validators.append(_UnitSlotsValidator(entity))
         return ActionsValidatorComposite(entity, validators=validators)
 
     def _createSlotsValidator(self, entity):
@@ -103,6 +101,8 @@ class Comp7SquadActionsValidator(SquadActionsValidator):
         validators = [
          baseValidator,
          _Comp7SlotValidator(entity)]
+        if not IS_DEVELOPMENT:
+            validators.append(_UnitSlotsValidator(entity))
         return ActionsValidatorComposite(entity, validators=validators)
 
     def _createPlayerValidator(self, entity):

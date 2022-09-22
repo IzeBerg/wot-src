@@ -62,6 +62,8 @@ package net.wg.data.constants.generated
       public static const COMP7_AGGRESSIVE_DETECTION_STATE:int = 28;
       
       public static const COMP7_POINT_RECON_STATE:int = 29;
+      
+      public static const CONFIRMED_STATE:int = 30;
        
       
       public function BATTLE_MARKER_STATES()

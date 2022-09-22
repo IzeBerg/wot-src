@@ -77,7 +77,9 @@ class RankRewardsPage(PageSubModelPresenter):
          (
           self.__eventsCache.onSyncCompleted, self.__onEventsSyncCompleted),
          (
-          self.__comp7Controller.onComp7RanksConfigChanged, self.__onRanksConfigChanged))
+          self.__comp7Controller.onComp7RanksConfigChanged, self.__onRanksConfigChanged),
+         (
+          self.__comp7Controller.onRankUpdated, self.__onRankUpdated))
 
     def createToolTip(self, event):
         if event.contentID == R.views.common.tooltip_window.backport_tooltip_content.BackportTooltipContent():
@@ -173,6 +175,10 @@ class RankRewardsPage(PageSubModelPresenter):
     def __onRanksConfigChanged(self):
         with self.viewModel.transaction() as (tx):
             comp7_model_helpers.setElitePercentage(tx)
+            self.__setRanksData(tx)
+
+    def __onRankUpdated(self, *_, **__):
+        with self.viewModel.transaction() as (tx):
             self.__setRanksData(tx)
 
     @args2params(int, int)

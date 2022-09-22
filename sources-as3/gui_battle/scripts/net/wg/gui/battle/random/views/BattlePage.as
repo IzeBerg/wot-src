@@ -8,9 +8,9 @@ package net.wg.gui.battle.random.views
    import net.wg.data.constants.generated.BATTLE_VIEW_ALIASES;
    import net.wg.data.constants.generated.DAMAGE_INFO_PANEL_CONSTS;
    import net.wg.data.constants.generated.PLAYERS_PANEL_STATE;
-   import net.wg.gui.battle.TabbedFullStats;
    import net.wg.gui.battle.components.TimersPanel;
    import net.wg.gui.battle.interfaces.IFullStats;
+   import net.wg.gui.battle.interfaces.IReservesStats;
    import net.wg.gui.battle.random.views.fragCorrelationBar.FragCorrelationBar;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.PlayersPanel;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.events.PlayersPanelEvent;
@@ -35,6 +35,7 @@ package net.wg.gui.battle.random.views
    import net.wg.gui.components.hintPanel.HintPanel;
    import net.wg.infrastructure.events.FocusRequestEvent;
    import net.wg.infrastructure.helpers.statisticsDataController.BattleStatisticDataController;
+   import net.wg.infrastructure.interfaces.IDAAPIModule;
    
    public class BattlePage extends BattlePageQuestsProgress
    {
@@ -101,10 +102,6 @@ package net.wg.gui.battle.random.views
       public function BattlePage()
       {
          super();
-         this.battleDamageLogPanel.init(ATLAS_CONSTANTS.BATTLE_ATLAS);
-         this.playersPanel.addEventListener(Event.CHANGE,this.onPlayersPanelChangeHandler);
-         this.teamBasesPanelUI.addEventListener(Event.CHANGE,this.onTeamBasesPanelUIChangeHandler);
-         this.endWarningPanel.addEventListener(EndWarningPanelEvent.VISIBILITY_CHANGED,this.onEndWarningPanelVisibilityChangedHandler);
       }
       
       override public function updateStage(param1:Number, param2:Number) : void
@@ -141,6 +138,15 @@ package net.wg.gui.battle.random.views
          this.updateHintPanelPosition();
       }
       
+      override protected function initialize() : void
+      {
+         super.initialize();
+         this.battleDamageLogPanel.init(ATLAS_CONSTANTS.BATTLE_ATLAS);
+         this.playersPanel.addEventListener(Event.CHANGE,this.onPlayersPanelChangeHandler);
+         this.teamBasesPanelUI.addEventListener(Event.CHANGE,this.onTeamBasesPanelUIChangeHandler);
+         this.endWarningPanel.addEventListener(EndWarningPanelEvent.VISIBILITY_CHANGED,this.onEndWarningPanelVisibilityChangedHandler);
+      }
+      
       override protected function createStatisticsController() : BattleStatisticDataController
       {
          return new BattleStatisticDataController(this);
@@ -172,6 +178,7 @@ package net.wg.gui.battle.random.views
       
       override protected function onPopulate() : void
       {
+         var _loc2_:IDAAPIModule = null;
          registerComponent(this.teamBasesPanelUI,BATTLE_VIEW_ALIASES.TEAM_BASES_PANEL);
          registerComponent(this.sixthSense,BATTLE_VIEW_ALIASES.SIXTH_SENSE);
          registerComponent(this.damageInfoPanel,BATTLE_VIEW_ALIASES.DAMAGE_INFO_PANEL);
@@ -194,10 +201,14 @@ package net.wg.gui.battle.random.views
          {
             registerComponent(this.battleNotifier,BATTLE_VIEW_ALIASES.BATTLE_NOTIFIER);
          }
-         var _loc1_:TabbedFullStats = this.fullStats as TabbedFullStats;
-         if(_loc1_ && _loc1_.tabReserves)
+         var _loc1_:IReservesStats = this.fullStats as IReservesStats;
+         if(_loc1_)
          {
-            registerComponent(_loc1_.tabReserves,BATTLE_VIEW_ALIASES.PERSONAL_RESERVES_TAB);
+            _loc2_ = _loc1_.getReservesView();
+            if(_loc2_)
+            {
+               registerComponent(_loc2_,BATTLE_VIEW_ALIASES.PERSONAL_RESERVES_TAB);
+            }
          }
          super.onPopulate();
       }

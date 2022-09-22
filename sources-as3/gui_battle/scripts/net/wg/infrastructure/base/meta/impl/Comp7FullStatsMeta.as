@@ -1,11 +1,11 @@
 package net.wg.infrastructure.base.meta.impl
 {
    import net.wg.data.constants.Errors;
-   import net.wg.gui.battle.StatsBase;
+   import net.wg.gui.battle.TabbedFullStats;
    import net.wg.gui.battle.comp7.stats.components.data.VoiceChatActivationVO;
    import net.wg.infrastructure.exceptions.AbstractException;
    
-   public class Comp7FullStatsMeta extends StatsBase
+   public class Comp7FullStatsMeta extends TabbedFullStats
    {
        
       

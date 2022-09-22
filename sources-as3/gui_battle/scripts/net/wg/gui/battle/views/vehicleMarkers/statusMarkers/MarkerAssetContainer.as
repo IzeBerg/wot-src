@@ -20,6 +20,8 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       
       private var _vmManager:VehicleMarkersManager = null;
       
+      private var _animated:Boolean = true;
+      
       public function MarkerAssetContainer()
       {
          super();
@@ -52,7 +54,7 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
          if(this._iconName != param1)
          {
             this._iconName = param1;
-            this._atlasSrcMode = !StringUtils.isEmpty(this._iconName);
+            this._atlasSrcMode = StringUtils.isNotEmpty(this._iconName);
             if(this._atlasSrcMode)
             {
                if(this._vmManager.isAtlasInited)
@@ -67,6 +69,23 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
          }
       }
       
+      public function setAnimated(param1:Boolean) : void
+      {
+         if(this._animated == param1)
+         {
+            return;
+         }
+         this._animated = param1;
+         if(this._animated)
+         {
+            gotoAndPlay(1);
+         }
+         else
+         {
+            gotoAndStop(1);
+         }
+      }
+      
       public function updateColorSettings(param1:String) : void
       {
          if(!this._atlasSrcMode)
@@ -77,6 +96,7 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       
       protected function onDispose() : void
       {
+         stop();
          this.markerMc = null;
       }
       

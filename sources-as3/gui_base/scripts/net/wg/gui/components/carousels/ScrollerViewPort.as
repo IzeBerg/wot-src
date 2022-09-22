@@ -91,6 +91,10 @@ package net.wg.gui.components.carousels
       override protected function draw() : void
       {
          var _loc4_:IScrollerItemRenderer = null;
+         if(isDisposed())
+         {
+            return;
+         }
          super.draw();
          var _loc1_:Boolean = isInvalid(INVALIDATE_RENDERER);
          var _loc2_:Boolean = _loc1_ || isInvalid(InvalidationType.DATA);

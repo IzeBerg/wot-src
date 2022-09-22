@@ -98,8 +98,9 @@ package net.wg.gui.lobby.sessionStats.components
       
       private function applyCurrentNumber() : void
       {
+         var _loc1_:int = 0;
          var _loc4_:int = 0;
-         var _loc1_:int = this.numbers.length;
+         _loc1_ = this.numbers.length;
          var _loc2_:int = this.currentNumberV.length;
          var _loc3_:SessionStatsAnimatedNumber = null;
          _loc4_ = 0;

@@ -21,16 +21,21 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
          super();
       }
       
-      override public function showEffectTimer(param1:Number, param2:Boolean, param3:Boolean, param4:Boolean = true) : void
+      override public function showEffectTimer(param1:Number, param2:Boolean, param3:Boolean, param4:Boolean = true, param5:Boolean = true) : void
       {
          this.counterMc.visible = param2;
-         super.showEffectTimer(param1,param2,param3,param4);
+         super.showEffectTimer(param1,param2,param3,param4,param5);
       }
       
       override public function updateEffectTimer(param1:int, param2:Boolean, param3:Boolean = false) : void
       {
          super.updateEffectTimer(param1,param2,param3);
-         this.setEffectTimerText(param1);
+         if(!this._noTranslateEnabled)
+         {
+            this._noTranslateEnabled = true;
+            TextFieldEx.setNoTranslate(TextField(this.counterMc.labelTf),true);
+         }
+         this.counterMc.labelTf.text = param1 + this._secString;
       }
       
       override protected function onDispose() : void
@@ -49,16 +54,6 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       public function setSecondString(param1:String) : void
       {
          this._secString = param1;
-      }
-      
-      protected function setEffectTimerText(param1:Number) : void
-      {
-         if(!this._noTranslateEnabled)
-         {
-            this._noTranslateEnabled = true;
-            TextFieldEx.setNoTranslate(TextField(this.counterMc.labelTf),true);
-         }
-         this.counterMc.labelTf.text = (param1 ^ 0) + this._secString;
       }
    }
 }

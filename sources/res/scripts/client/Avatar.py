@@ -44,6 +44,7 @@ from gui.battle_control import BattleSessionSetup
 from gui.battle_control import event_dispatcher as gui_event_dispatcher
 from gui.battle_control.battle_constants import VEHICLE_VIEW_STATE, CANT_SHOOT_ERROR, DestroyTimerViewState, DeathZoneTimerViewState, TIMER_VIEW_STATE, ENTITY_IN_FOCUS_TYPE
 from gui.prb_control.formatters import messages
+from gui.Scaleform.genConsts.BATTLE_VIEW_ALIASES import BATTLE_VIEW_ALIASES
 from gui.sounds.epic_sound_constants import EPIC_SOUND
 from gui.wgnc import g_wgncProvider
 from gun_rotation_shared import decodeGunAngles
@@ -753,7 +754,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                         self.gunRotator.showServerMarker = not self.gunRotator.showServerMarker
                         return True
                     isGuiEnabled = self.isForcedGuiControlMode()
-                    if cmdMap.isFired(CommandMapping.CMD_TOGGLE_GUI, key) and isDown:
+                    if cmdMap.isFired(CommandMapping.CMD_TOGGLE_GUI, key) and isDown and self.__couldToggleGUIVisibility():
                         gui_event_dispatcher.toggleGUIVisibility()
                     if constants.HAS_DEV_RESOURCES and isDown:
                         if key == Keys.KEY_I and mods == 0:
@@ -912,6 +913,15 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                 return True
 
             return False
+
+    def __couldToggleGUIVisibility(self):
+        app = self.appLoader.getApp()
+        if app is None:
+            return False
+        else:
+            if self.arenaGuiType == constants.ARENA_GUI_TYPE.COMP7 and self.arena.period <= ARENA_PERIOD.PREBATTLE:
+                return not app.hasGuiControlModeConsumers(BATTLE_VIEW_ALIASES.COMP7_TANK_CAROUSEL_FILTER_POPOVER)
+            return not self.isForcedGuiControlMode()
 
     def set_playerVehicleID(self, *args):
         LOG_DEBUG('[INIT_STEPS] Avatar.set_playerVehicleID')

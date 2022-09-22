@@ -1,4 +1,5 @@
 from constants import PREBATTLE_TYPE, QUEUE_TYPE
+from gui.prb_control.items.unit_items import DynamicRosterSettings
 from gui.shared.utils.requesters import REQ_CRITERIA
 from gui.prb_control.entities.comp7.comp7_prb_helpers import Comp7IntroPresenter
 from gui.prb_control.entities.comp7.pre_queue.vehicles_watcher import Comp7VehiclesWatcher
@@ -89,6 +90,14 @@ class Comp7SquadEntity(SquadEntity):
     def _createActionsHandler(self):
         return Comp7SquadActionsHandler(self)
 
+    def _createRosterSettings(self):
+        _, unit = self.getUnit(safe=True)
+        return Comp7RosterSettings(unit)
+
+    def _buildStats(self, unitMgrID, unit):
+        self._rosterSettings.updateSettings(unit)
+        return super(Comp7SquadEntity, self)._buildStats(unitMgrID, unit)
+
     def __onVehicleClientStateChanged(self, intCDs):
         vehs = self.__itemsCache.items.getVehicles(REQ_CRITERIA.INVENTORY).itervalues()
         allIntCDs = set(vehicle.intCD for vehicle in vehs)
@@ -97,3 +106,14 @@ class Comp7SquadEntity(SquadEntity):
         if isReady and self.__validIntCDs != validIntCDs:
             self.togglePlayerReadyAction()
         self.__validIntCDs = validIntCDs
+
+
+class Comp7RosterSettings(DynamicRosterSettings):
+
+    def updateSettings(self, unit):
+        self._maxSlots = unit.getSquadSize()
+
+    def _extractSettings(self, unit):
+        settings = super(Comp7RosterSettings, self)._extractSettings(unit)
+        settings['maxSlots'] = unit.getSquadSize()
+        return settings

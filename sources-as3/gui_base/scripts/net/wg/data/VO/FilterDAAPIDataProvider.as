@@ -42,6 +42,10 @@ package net.wg.data.VO
       override public function requestItemAt(param1:uint, param2:Function = null) : Object
       {
          var _loc3_:Object = null;
+         if(isDisposed())
+         {
+            return null;
+         }
          if(this._isFilter)
          {
             _loc3_ = this._filteredItems[param1];

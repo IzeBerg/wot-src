@@ -1806,6 +1806,7 @@ class TOOLTIPS(object):
     BOOSTERSWINDOW_BOOSTER_ACTIVATEINFO_RECEIVE = '#tooltips:boostersWindow/booster/activateInfo/receive'
     BOOSTERSWINDOW_BOOSTER_ACTIVATEINFO_NONPAIDRECEIVEINFO = '#tooltips:boostersWindow/booster/activateInfo/nonPaidReceiveInfo'
     BOOSTERSWINDOW_BOOSTER_ACTIVATEINFO_PAIDRECEIVEINFO = '#tooltips:boostersWindow/booster/activateInfo/paidReceiveInfo'
+    BOOSTERSWINDOW_BOOSTER_ACTIVATEINFO_CLANRESERVERECEIVEINFO = '#tooltips:boostersWindow/booster/activateInfo/clanReserveReceiveInfo'
     BOOSTERSWINDOW_BOOSTER_ACTIVATEINFO_ACTIVATION = '#tooltips:boostersWindow/booster/activateInfo/activation'
     BOOSTERSWINDOW_BOOSTER_ACTIVATEINFO_ACTIVATIONINFO = '#tooltips:boostersWindow/booster/activateInfo/activationInfo'
     BOOSTERSWINDOW_BOOSTER_ACTIVATEINFO_BONUSTIMEINFO = '#tooltips:boostersWindow/booster/activateInfo/bonusTimeInfo'

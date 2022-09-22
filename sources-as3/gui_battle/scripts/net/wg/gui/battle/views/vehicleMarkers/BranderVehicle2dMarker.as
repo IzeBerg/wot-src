@@ -363,9 +363,9 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.updateMarkerSettings();
       }
       
-      public function showStatusMarker(param1:int, param2:int, param3:Boolean, param4:Number, param5:int, param6:int, param7:Boolean = true) : void
+      public function showStatusMarker(param1:int, param2:int, param3:Boolean, param4:Number, param5:int, param6:int, param7:Boolean = true, param8:Boolean = true) : void
       {
-         this.statusContainer.showMarker(param1,param2,param3,param4,param5,param6,param7);
+         this.statusContainer.showMarker(param1,param2,param3,param4,param5,param6,param7,param8);
          this.updateMarkerSettings();
       }
       

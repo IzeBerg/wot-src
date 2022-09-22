@@ -99,6 +99,8 @@ package net.wg.data
          _loc2_ = this._cachedRange.length;
          this._cachedRange.splice(0,_loc2_);
          this._cacheSize -= _loc2_;
+         this._startCachedIndex = -1;
+         this._endCachedIndex = -1;
          App.utils.asserter.assert(this._cacheSize == 0,"Some elements wasn\'t destroyed! _cacheSize = " + this._cacheSize);
          this._items.splice(0,this._items.length);
          for each(_loc1_ in this._itemsToDestroy)
@@ -106,8 +108,6 @@ package net.wg.data
             _loc1_.dispose();
          }
          this._itemsToDestroy.splice(0,this._itemsToDestroy.length);
-         this._startCachedIndex = -1;
-         this._endCachedIndex = -1;
       }
       
       public final function dispose() : void
@@ -193,13 +193,17 @@ package net.wg.data
       public function requestItemAt(param1:uint, param2:Function = null) : Object
       {
          var _loc3_:IDAAPIDataClass = null;
+         if(this._isDisposed)
+         {
+            return null;
+         }
          if(param1 == uint.MAX_VALUE)
          {
             _loc3_ = null;
          }
          else if(this.hasIndexInCache(param1))
          {
-            _loc3_ = this.getCachedItemAt(param1);
+            _loc3_ = this._cachedRange[this.indexToCacheIndex(param1)];
          }
          else if(this._isValid && this._startCachedIndex - 1 == param1)
          {
@@ -242,7 +246,6 @@ package net.wg.data
          var _loc7_:int = this._startCachedIndex - 1;
          if(!this._isValid || _loc7_ > param2 || param1 > _loc6_)
          {
-            this.cleanUp();
             this.initCache(param1,param2);
             this._isValid = true;
          }
@@ -296,13 +299,9 @@ package net.wg.data
          this.getItemIndexHandler = null;
       }
       
-      private function getCachedItemAt(param1:uint) : IDAAPIDataClass
-      {
-         return this._cachedRange[this.indexToCacheIndex(param1)];
-      }
-      
       private function initCache(param1:int, param2:int) : void
       {
+         this.cleanUp();
          var _loc3_:Array = this.requestItemRangeHandler(param1,param2);
          var _loc4_:int = _loc3_.length;
          this._cachedRange.length = _loc4_;

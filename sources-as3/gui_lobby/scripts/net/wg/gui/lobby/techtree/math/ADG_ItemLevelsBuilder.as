@@ -403,7 +403,7 @@ package net.wg.gui.lobby.techtree.math
          return _loc6_;
       }
       
-      private function addFakeNodes(param1:LevelItem, param2:Number, param3:Number, param4:Number) : Number
+      private function addFakeNodes(param1:LevelItem, param2:Number, param3:Number, param4:int) : Number
       {
          var _loc5_:int = 0;
          var _loc6_:int = 0;
@@ -626,8 +626,8 @@ package net.wg.gui.lobby.techtree.math
       {
          var _loc4_:LevelLine = null;
          var _loc5_:LevelLine = null;
-         var _loc6_:uint = 0;
-         var _loc7_:uint = 0;
+         var _loc6_:int = 0;
+         var _loc7_:int = 0;
          var _loc10_:int = 0;
          var _loc11_:uint = 0;
          var _loc12_:uint = 0;
@@ -876,7 +876,7 @@ package net.wg.gui.lobby.techtree.math
          var _loc9_:Array = null;
          var _loc3_:int = -1;
          var _loc4_:int = 0;
-         var _loc5_:int = Number.MAX_VALUE;
+         var _loc5_:int = int.MAX_VALUE;
          var _loc6_:int = 0;
          var _loc7_:int = this.maxLevelWidth * this.maxLevelWidth;
          var _loc8_:int = 0;

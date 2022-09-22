@@ -5,7 +5,6 @@ from gui.impl.gen.view_models.views.lobby.personal_reserves.reserves_entry_point
 from gui.impl.lobby.personal_reserves.personal_reserves_utils import getActiveBoosters, addToReserveArrayByCategory, getTotalReadyReserves, getTotalLimitedReserves
 from gui.impl.pub import ViewImpl
 from gui.goodies.goodies_constants import BoosterCategory
-from gui.shared.ClanCache import g_clanCache
 from helpers import dependency
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.web import IWebController
@@ -31,7 +30,7 @@ class PersonalReservesTooltipView(ViewImpl):
         with self.viewModel.transaction() as (model):
             reservesArray = model.getReserves()
             reservesArray.clear()
-            boosters = getActiveBoosters(cache=self._goodiesCache)
+            boosters = getActiveBoosters(goodiesCache=self._goodiesCache, webController=self._webCtrl)
             for category in BoosterCategory:
                 canAddEmpty = self._canAddEmptySection(category)
                 addToReserveArrayByCategory(reservesArray, boosters, category, self._goodiesCache, canAddEmpty)
@@ -40,7 +39,7 @@ class PersonalReservesTooltipView(ViewImpl):
             model.setIsDisabled(False)
             model.setTotalReserves(getTotalReadyReserves(cache=self._goodiesCache))
             model.setTotalLimitedReserves(getTotalLimitedReserves(cache=self._goodiesCache))
-            model.setIsClanMember(g_clanCache.isInClan)
+            model.setIsClanMember(self._getAccountProfile().isInClan())
 
     def _getAccountProfile(self):
         return self._webCtrl.getAccountProfile()

@@ -350,12 +350,12 @@ package net.wg.gui.lobby.techtree.math
       {
          var _loc2_:Array = null;
          var _loc3_:int = 0;
-         var _loc4_:int = 0;
+         var _loc4_:uint = 0;
          var _loc1_:int = 0;
          while(_loc1_ < this.n)
          {
             _loc2_ = this.C[_loc1_];
-            _loc3_ = Number.MAX_VALUE;
+            _loc3_ = int.MAX_VALUE;
             _loc4_ = 0;
             while(_loc4_ < this.n)
             {

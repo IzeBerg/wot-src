@@ -91,6 +91,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.setupMarker(BATTLE_MARKER_STATES.COMP7_MARCH_STATE,this.statusMarker);
          this.setupMarker(BATTLE_MARKER_STATES.COMP7_AGGRESSIVE_DETECTION_STATE,this.statusMarker);
          this.setupMarker(BATTLE_MARKER_STATES.COMP7_POINT_RECON_STATE,this.statusMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.CONFIRMED_STATE,this.statusMarker);
       }
       
       override protected function configUI() : void
@@ -252,49 +253,49 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.statusMarker.setSecondString(param1);
       }
       
-      public function showMarker(param1:int, param2:int, param3:Boolean, param4:Number, param5:int, param6:int, param7:Boolean = true) : void
+      public function showMarker(param1:int, param2:int, param3:Boolean, param4:Number, param5:int, param6:int, param7:Boolean = true, param8:Boolean = true) : void
       {
-         var _loc10_:VehicleAnimatedStatusBaseMarker = null;
          var _loc11_:VehicleAnimatedStatusBaseMarker = null;
+         var _loc12_:VehicleAnimatedStatusBaseMarker = null;
          if(param2 > param6)
          {
             return;
          }
-         var _loc8_:VehicleAnimatedStatusBaseMarker = this.getMarker(param1);
-         var _loc9_:Boolean = false;
+         var _loc9_:VehicleAnimatedStatusBaseMarker = this.getMarker(param1);
+         var _loc10_:Boolean = false;
          if(this._activeEffectID != -1 && this._activeEffectID != param1)
          {
-            _loc10_ = this.getMarker(this._activeEffectID);
-            if(_loc10_ != _loc8_)
+            _loc11_ = this.getMarker(this._activeEffectID);
+            if(_loc11_ != _loc9_)
             {
-               _loc10_.setVisibility(false);
+               _loc11_.setVisibility(false);
             }
             if(param1 != param5)
             {
                if(this._oneShotStatusID != -1 && param2 < this._oneShotStatusPriority)
                {
-                  _loc11_ = this.getMarker(this._oneShotStatusID);
-                  if(_loc11_)
+                  _loc12_ = this.getMarker(this._oneShotStatusID);
+                  if(_loc12_)
                   {
-                     _loc11_.resetMarkerStates();
+                     _loc12_.resetMarkerStates();
                   }
                }
-               if(_loc8_)
+               if(_loc9_)
                {
                   this._oneShotStatusID = param1;
                   this._oneShotStatusPriority = param2;
-                  _loc9_ = true;
+                  _loc10_ = true;
                }
             }
          }
-         if(_loc8_)
+         if(_loc9_)
          {
-            if(_loc8_.isAtlasSrcMode())
+            if(_loc9_.isAtlasSrcMode())
             {
-               _loc8_.setStatusID(param1);
-               _loc8_.updateAssets();
+               _loc9_.setStatusID(param1);
+               _loc9_.updateAssets();
             }
-            _loc8_.showEffectTimer(param4,param3,_loc9_,param7);
+            _loc9_.showEffectTimer(param4,param3,_loc10_,param7,param8);
          }
          this._activeEffectID = param5;
       }

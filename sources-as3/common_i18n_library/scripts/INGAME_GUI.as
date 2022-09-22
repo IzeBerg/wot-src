@@ -1715,6 +1715,22 @@ package
       
       public static const REWARDWINDOW_TWITCH32_BTNLABEL:String = "#ingame_gui:rewardWindow/twitch32/btnLabel";
       
+      public static const REWARDWINDOW_TWITCH33_HEADERTEXT:String = "#ingame_gui:rewardWindow/twitch33/headerText";
+      
+      public static const REWARDWINDOW_TWITCH33_SUBHEADERTEXT:String = "#ingame_gui:rewardWindow/twitch33/subHeaderText";
+      
+      public static const REWARDWINDOW_TWITCH33_DESCTEXT:String = "#ingame_gui:rewardWindow/twitch33/descText";
+      
+      public static const REWARDWINDOW_TWITCH33_BTNLABEL:String = "#ingame_gui:rewardWindow/twitch33/btnLabel";
+      
+      public static const REWARDWINDOW_TWITCH33_MAINREWARD_1:String = "#ingame_gui:rewardWindow/twitch33/mainReward_1";
+      
+      public static const REWARDWINDOW_TWITCH33_MAINREWARD_2:String = "#ingame_gui:rewardWindow/twitch33/mainReward_2";
+      
+      public static const REWARDWINDOW_TWITCH33_MAINREWARD_3:String = "#ingame_gui:rewardWindow/twitch33/mainReward_3";
+      
+      public static const REWARDWINDOW_TWITCH33_MAINREWARD_4:String = "#ingame_gui:rewardWindow/twitch33/mainReward_4";
+      
       public static const REWARDWINDOW_LOOTBOX_WINHEADERTEXT:String = "#ingame_gui:rewardWindow/lootbox/winHeaderText";
       
       public static const REWARDWINDOW_LOOTBOX_HEADERTEXT:String = "#ingame_gui:rewardWindow/lootbox/headerText";

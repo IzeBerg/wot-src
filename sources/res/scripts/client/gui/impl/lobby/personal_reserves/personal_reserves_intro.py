@@ -35,7 +35,8 @@ class PersonalReservesIntro(ViewImpl):
         settings.model = ReservesIntroViewModel()
         self.__callbackOnClose = ctx['callbackOnClose']
         super(PersonalReservesIntro, self).__init__(settings)
-        self.__viewLifecycleWatcher = ViewLifecycleWatcher()
+        self.__viewLifecycleWatcher = None
+        return
 
     @property
     def viewModel(self):
@@ -45,6 +46,7 @@ class PersonalReservesIntro(ViewImpl):
         super(PersonalReservesIntro, self)._initialize()
         self.viewModel.onClose += self.close
         self.viewModel.onConversionInfoClicked += self.onConversionInfoClicked
+        self.__viewLifecycleWatcher = ViewLifecycleWatcher()
         self.__viewLifecycleWatcher.start(self.__appLoader.getApp().containerManager, [_ConversionListener()])
 
     def _onLoaded(self, *args, **kwargs):

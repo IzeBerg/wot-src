@@ -3033,6 +3033,8 @@ package net.wg.data.constants.generated
       
       public static const USA_A15_T57:String = "usa-A15_T57";
       
+      public static const USA_A152_M_PROJECT_2:String = "usa-A152_M_Project_2";
+      
       public static const USA_A156_T54_2022:String = "usa-A156_T54_2022";
       
       public static const USA_A16_M7_PRIEST:String = "usa-A16_M7_Priest";

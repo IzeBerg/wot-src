@@ -1,9 +1,9 @@
 package net.wg.gui.battle.random.views.stats.components.fullStats
 {
-   import net.wg.gui.battle.TabbedFullStats;
+   import net.wg.gui.battle.ClassicFullStats;
    import net.wg.gui.battle.interfaces.ITabbedFullStatsTableController;
    
-   public class FullStats extends TabbedFullStats
+   public class FullStats extends ClassicFullStats
    {
        
       

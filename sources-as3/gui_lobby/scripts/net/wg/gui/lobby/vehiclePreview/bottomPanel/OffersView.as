@@ -37,7 +37,8 @@ package net.wg.gui.lobby.vehiclePreview.bottomPanel
       
       public function setData(param1:DataProvider) : void
       {
-         var _loc2_:int = -1;
+         var _loc2_:int = 0;
+         _loc2_ = -1;
          var _loc3_:int = param1.length;
          var _loc4_:int = 0;
          while(_loc4_ < _loc3_)

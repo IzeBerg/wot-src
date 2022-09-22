@@ -65,8 +65,9 @@ package net.wg.gui.lobby.personalMissions.components.chainsPanel
       
       override protected function setState(param1:String) : void
       {
+         var _loc3_:Boolean = false;
          var _loc2_:String = param1;
-         var _loc3_:Boolean = selected && (param1 == ComponentState.TOGGLE || param1 == ComponentState.SELECTING);
+         _loc3_ = selected && (param1 == ComponentState.TOGGLE || param1 == ComponentState.SELECTING);
          var _loc4_:Boolean = !selected && (param1 == ComponentState.TOGGLE || param1 == ComponentState.SELECTING);
          this.background.visible = !selected;
          if(_loc3_)

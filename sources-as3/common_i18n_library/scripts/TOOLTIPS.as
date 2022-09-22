@@ -3629,6 +3629,8 @@ package
       
       public static const BOOSTERSWINDOW_BOOSTER_ACTIVATEINFO_PAIDRECEIVEINFO:String = "#tooltips:boostersWindow/booster/activateInfo/paidReceiveInfo";
       
+      public static const BOOSTERSWINDOW_BOOSTER_ACTIVATEINFO_CLANRESERVERECEIVEINFO:String = "#tooltips:boostersWindow/booster/activateInfo/clanReserveReceiveInfo";
+      
       public static const BOOSTERSWINDOW_BOOSTER_ACTIVATEINFO_ACTIVATION:String = "#tooltips:boostersWindow/booster/activateInfo/activation";
       
       public static const BOOSTERSWINDOW_BOOSTER_ACTIVATEINFO_ACTIVATIONINFO:String = "#tooltips:boostersWindow/booster/activateInfo/activationInfo";

@@ -225,7 +225,8 @@ package net.wg.gui.lobby.vehicleCustomization.controls.propertiesSheet
       
       private function animationShow(param1:int) : void
       {
-         var _loc2_:MovieClip = this.btns[param1];
+         var _loc2_:MovieClip = null;
+         _loc2_ = this.btns[param1];
          _loc2_.x = _loc2_.y = _loc2_.alpha = 0;
          _loc2_.rotation = ANIMATION_ROTATION;
          this._tweens.push(new Tween(ANIMATION_DURATION,_loc2_,{

@@ -12,7 +12,7 @@ from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
 from gui.Scaleform.settings import ICONS_SIZES
 from gui.impl import backport
 from gui.impl.gen import R
-from gui.impl.common.personal_reserves.personal_reserves_shared_constants import PREMIUM_BOOSTER_IDS, MAX_ACTIVATED_BY_CATEGORY
+from gui.impl.common.personal_reserves.personal_reserves_shared_constants import PREMIUM_BOOSTER_IDS, MAX_ACTIVATED_BY_CATEGORY, UNATTAINABLE_BOOSTER_IDS
 from gui.shared.economics import getActionPrc
 from gui.shared.formatters import text_styles
 from gui.shared.gui_items import GUI_ITEM_ECONOMY_CODE, KPI, GUI_ITEM_TYPE, GUI_ITEM_TYPE_NAMES
@@ -309,6 +309,9 @@ class BoosterUICommon(_Goodie):
     def _getFullNameForResource(self):
         return ('{}{}').format(self.boosterGuiType, '_premium' if self.getIsPremium() else '')
 
+    def getIsAttainable(self):
+        return True
+
 
 class Booster(BoosterUICommon):
     __epicController = dependency.descriptor(IEpicBattleMetaGameController)
@@ -444,6 +447,9 @@ class Booster(BoosterUICommon):
     def getSellPrice(self, preferred=True):
         return self.sellPrices.itemPrice
 
+    def getIsAttainable(self):
+        return self.boosterID not in UNATTAINABLE_BOOSTER_IDS
+
     def mayPurchase(self, money):
         if getattr(BigWorld.player(), 'isLongDisconnectedFromCenter', False):
             return (False, GUI_ITEM_ECONOMY_CODE.CENTER_UNAVAILABLE)
@@ -535,6 +541,16 @@ class ClanReservePresenter(BoosterUICommon):
     @property
     def effectValue(self):
         return self.__factors.values()
+
+    @property
+    def state(self):
+        if self.__finishTime > BigWorld.serverTime():
+            return GOODIE_STATE.ACTIVE
+        return GOODIE_STATE.INACTIVE
+
+    @property
+    def inCooldown(self):
+        return self.state == GOODIE_STATE.ACTIVE
 
     @property
     def category(self):
@@ -705,3 +721,6 @@ class RecertificationForm(_Goodie):
     @property
     def inventoryCount(self):
         return self.count
+
+
+BoostersType = typing.TypeVar('BoostersType', bound=BoosterUICommon)

@@ -343,6 +343,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this.updatePlayerNameWidth();
          this.updateVehicleData();
          dispatchEvent(new PlayersPanelListEvent(PlayersPanelListEvent.ITEMS_COUNT_CHANGE,0));
+         this.setMouseListenersEnabled(this._isCursorVisible);
       }
       
       public function setVehicleLevelVisible(param1:Boolean) : void

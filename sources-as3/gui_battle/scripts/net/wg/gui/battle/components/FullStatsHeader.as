@@ -55,6 +55,8 @@ package net.wg.gui.battle.components
       
       private var _minHeight:uint;
       
+      private var _leftSideSmallYShift:int = 21;
+      
       public function FullStatsHeader()
       {
          super();
@@ -86,6 +88,11 @@ package net.wg.gui.battle.components
          this._minHeight = param1;
       }
       
+      public function setLeftSideSmallYShift(param1:int) : void
+      {
+         this._leftSideSmallYShift = param1;
+      }
+      
       public function update(param1:Object) : void
       {
          if(param1 != null && this._data != param1)
@@ -108,8 +115,8 @@ package net.wg.gui.battle.components
          if(param2 < this._minHeight)
          {
             this.mapTF.y -= TF_SMALL_Y_SHIFT;
-            this.battleTF.y -= TF_SMALL_Y_SHIFT;
-            this.winTF.y -= TF_SMALL_Y_SHIFT;
+            this.battleTF.y -= this._leftSideSmallYShift;
+            this.winTF.y -= this._leftSideSmallYShift;
             this.mapTF.x += TF_SMALL_X_SHIFT;
             this.battleTF.x -= TF_SMALL_X_SHIFT;
          }

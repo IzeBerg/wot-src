@@ -848,7 +848,7 @@ class Comp7MembersView(SquadMembersView):
 
     def _hasFreeSlot(self):
         if self.__unitMgr is not None and self.__unitMgr.unit is not None:
-            return len(self.__unitMgr.unit.getMembers()) < self.__unitMgr.unit.getSquadSize()
+            return len(self.__unitMgr.unit.getPlayers()) < self.__unitMgr.unit.getSquadSize()
         else:
             return False
 
@@ -869,14 +869,14 @@ class Comp7MembersView(SquadMembersView):
         with self.viewModel.transaction() as (model):
             self.__updateMemberCountDropdown(model)
             items = model.header.memberCountDropdown.getItems()
-            actualSqualSize = self.__unitMgr.unit.getSquadSize()
+            actualSquadSize = self.__unitMgr.unit.getSquadSize()
             selected = model.header.memberCountDropdown.getSelected()
             selected.clear()
-            selected.addString(str(actualSqualSize))
+            selected.addString(str(actualSquadSize))
             selected.invalidate()
-            squadMembers = len(self.__unitMgr.unit.getMembers())
+            playersCount = len(self.__unitMgr.unit.getPlayers())
             for item in items:
-                self.__updateDropdownItem(item, squadMembers)
+                self.__updateDropdownItem(item, playersCount)
 
     def __updateMemberCountDropdown(self, model):
         if not self._isCommander():
@@ -886,9 +886,9 @@ class Comp7MembersView(SquadMembersView):
             model.header.memberCountDropdown.setIsDisabled(False)
             model.header.memberCountDropdown.setTooltipText('')
 
-    def __updateDropdownItem(self, item, squadMembers):
+    def __updateDropdownItem(self, item, playersCount):
         itemNumber = int(item.getLabel())
-        if itemNumber < squadMembers:
+        if itemNumber < playersCount:
             item.setIsDisabled(True)
             item.meta.setTooltipText(self.__getDropDownItemTooltipText())
         else:

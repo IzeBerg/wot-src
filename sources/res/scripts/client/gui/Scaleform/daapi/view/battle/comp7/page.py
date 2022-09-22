@@ -144,12 +144,12 @@ class Comp7BattlePage(Comp7BattlePageMeta):
         BigWorld.player().setIsObserver()
         self.__updateComponentsVisibility()
 
-    def _toggleFullStats(self, isShown, permanent=None, tabIndex=None):
+    def _toggleFullStats(self, isShown, permanent=None, tabAlias=None):
         if self.__visibilityManager is not None:
             self.__visibilityManager.setFullStatsShown(isShown)
             if not isShown:
                 self._fsToggling.update(self.__visibilityManager.getVisible())
-        super(Comp7BattlePage, self)._toggleFullStats(isShown, permanent=permanent, tabIndex=tabIndex)
+        super(Comp7BattlePage, self)._toggleFullStats(isShown, permanent=permanent, tabAlias=tabAlias)
         return
 
     def _onAvatarCtrlModeChanged(self, ctrlMode):

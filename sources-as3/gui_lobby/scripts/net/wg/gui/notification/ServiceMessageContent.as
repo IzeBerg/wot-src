@@ -273,13 +273,12 @@ package net.wg.gui.notification
       
       private function addButton(param1:ButtonVO) : void
       {
-         var _loc3_:SoundButtonEx = null;
          var _loc2_:String = ButtonType.getLinkageByType(param1.type);
          if(_loc2_ == null)
          {
             return;
          }
-         _loc3_ = this._classFactory.getComponent(_loc2_,SoundButtonEx);
+         var _loc3_:SoundButtonEx = this._classFactory.getComponent(_loc2_,SoundButtonEx);
          this._buttonsGroup.addChild(_loc3_);
          _loc3_.name = param1.type;
          _loc3_.data = param1.action;

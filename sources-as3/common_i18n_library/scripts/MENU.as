@@ -1205,8 +1205,6 @@ package
       
       public static const TANK_PARAMS_VPM:String = "#menu:tank_params/vpm";
       
-      public static const TANK_PARAMS_VPS:String = "#menu:tank_params/vps";
-      
       public static const TANK_PARAMS_QPT:String = "#menu:tank_params/qpt";
       
       public static const TANK_PARAMS_M:String = "#menu:tank_params/m";

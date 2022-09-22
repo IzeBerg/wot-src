@@ -612,7 +612,6 @@ class MENU(object):
     TANK_PARAMS_MM = '#menu:tank_params/mm'
     TANK_PARAMS_VAL = '#menu:tank_params/val'
     TANK_PARAMS_VPM = '#menu:tank_params/vpm'
-    TANK_PARAMS_VPS = '#menu:tank_params/vps'
     TANK_PARAMS_QPT = '#menu:tank_params/qpt'
     TANK_PARAMS_M = '#menu:tank_params/m'
     TANK_PARAMS_H = '#menu:tank_params/h'
@@ -2727,7 +2726,6 @@ class MENU(object):
      TANK_PARAMS_MM,
      TANK_PARAMS_VAL,
      TANK_PARAMS_VPM,
-     TANK_PARAMS_VPS,
      TANK_PARAMS_QPT,
      TANK_PARAMS_M,
      TANK_PARAMS_H,
