@@ -276,32 +276,35 @@ class LootBoxesController(ILootBoxesController):
         currentCount = self.getLootBoxesCountByType(boxType)
         if currentCount == 0:
             _logger.error('Invalid lootBox count')
+            if callbackFailure:
+                callbackFailure()
             return
-        else:
-            boxItem = self.getLootBoxByTypeInInventory(boxType)
-            if boxItem is None:
-                _logger.error('Invalid lootBox item')
+        boxItem = self.getLootBoxByTypeInInventory(boxType)
+        if boxItem is None:
+            _logger.error('Invalid lootBox item')
+            if callbackFailure:
+                callbackFailure()
+            return
+        requestedCount = min(currentCount, count)
+        result = yield LootBoxOpenProcessor(boxItem, requestedCount).request()
+        if result is None:
+            raise SoftException('LootBoxOpenProcessor request return unknown result')
+        if result.success:
+            rewardsList = result.auxData.get('bonus', [])
+            if not rewardsList:
+                _logger.error('LootBox is opened, but no rewards has been received.')
                 return
-            requestedCount = min(currentCount, count)
-            result = yield LootBoxOpenProcessor(boxItem, requestedCount).request()
-            if result is None:
-                raise SoftException('LootBoxOpenProcessor request return unknown result')
-            if result.success:
-                rewardsList = result.auxData.get('bonus', [])
-                if not rewardsList:
-                    _logger.error('LootBox is opened, but no rewards has been received.')
-                    return
-                rewards = _preprocessAwards(rewardsList)
-                openedBoxes = len(rewardsList)
-                if openedBoxes == 1 and isSpecialVehicleReceived(rewards):
-                    showVehicleAwardWindow(rewards, parent=parentWindow)
-                if callbackUpdate is not None:
-                    callbackUpdate()
-            else:
-                SystemMessages.pushMessage(text=result.userMsg, type=result.sysMsgType)
-                if callbackFailure:
-                    callbackFailure()
-            return
+            rewards = _preprocessAwards(rewardsList)
+            openedBoxes = len(rewardsList)
+            if openedBoxes == 1 and isSpecialVehicleReceived(rewards):
+                showVehicleAwardWindow(rewards, parent=parentWindow)
+            if callbackUpdate is not None:
+                callbackUpdate()
+        else:
+            SystemMessages.pushMessage(text=result.userMsg, type=result.sysMsgType)
+            if callbackFailure:
+                callbackFailure()
+        return
 
     def getReRollAttemptsCount(self, boxType):
         lootBox = self.getLootBoxByTypeInInventory(boxType)
@@ -440,7 +443,8 @@ class LootBoxesController(ILootBoxesController):
         if stopToken is None:
             return False
         else:
-            return [ bonus for bonus in rewardsList if bonus.getValue() == stopToken ] != []
+            return [ bonus for bonus in rewardsList if bonus.getValue() == stopToken or isinstance(bonus.getValue(), dict) and stopToken in bonus.getValue()
+                   ] != []
 
 
 def _convertToBonuses(rewards):
