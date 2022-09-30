@@ -53,11 +53,13 @@ class PersonalReservesWidget(ViewImpl):
            'cache.activeOrders': self.__onClanInfoChanged})
         self._boosters.onBoosterChangeNotify += self.onBoosterChangeNotify
         self._boosters.onReserveTimerTick += self.__updateClanReserves
+        self._boosters.onGameModeStatusChange += self._update
         g_playerEvents.onClientUpdated += self.onClientUpdate
 
     def _finalize(self):
         self._boosters.onBoosterChangeNotify -= self.onBoosterChangeNotify
         self._boosters.onReserveTimerTick -= self.__updateClanReserves
+        self._boosters.onGameModeStatusChange -= self._update
         g_playerEvents.onClientUpdated -= self.onClientUpdate
         self.onUpdate.clear()
         g_clientUpdateManager.removeObjectCallbacks(self)
@@ -76,7 +78,7 @@ class PersonalReservesWidget(ViewImpl):
                 addToReserveArrayByCategory(reservesArray, activeBoosters, category, self._goodiesCache)
 
         reservesArray.invalidate()
-        model.setIsDisabled(False)
+        model.setIsDisabled(not self._boosters.isGameModeSupported())
         model.setTotalReserves(getTotalReadyReserves(cache=self._goodiesCache))
         model.setTotalLimitedReserves(getTotalLimitedReserves(cache=self._goodiesCache))
 

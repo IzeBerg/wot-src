@@ -339,6 +339,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.eventBattle.views.eventStats.renderers.StatsPlayerRenderer;
    import net.wg.gui.battle.eventBattle.views.eventTimer.EventTimer;
    import net.wg.gui.battle.eventBattle.views.eventTimer.TimerMovie;
+   import net.wg.gui.battle.eventBattle.views.introVideoPage.EventIntroLogoContainer;
    import net.wg.gui.battle.eventBattle.views.minimap.entries.EventDeathZoneMinimapEntry;
    import net.wg.gui.battle.eventBattle.views.radialMenu.EventRadialButton;
    import net.wg.gui.battle.eventBattle.views.radialMenu.EventRadialMenu;
@@ -949,6 +950,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.bootcamp.battleTopHint.containers.HintContainer;
    import net.wg.gui.bootcamp.battleTopHint.containers.HintInfoContainer;
    import net.wg.gui.bootcamp.battleTopHint.containers.HintPenetrationAnimation;
+   import net.wg.gui.bootcamp.introVideoPage.BCIntroLogoContainer;
    import net.wg.gui.bootcamp.prebattleHints.BCPrebattleHints;
    import net.wg.gui.bootcamp.prebattleHints.controls.CrosshairContainer;
    import net.wg.gui.components.controls.ReadOnlyScrollingList;
@@ -1755,6 +1757,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTTIMER_EVENTTIMER:Class = EventTimer;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTTIMER_TIMERMOVIE:Class = TimerMovie;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_INTROVIDEOPAGE_EVENTINTROLOGOCONTAINER:Class = EventIntroLogoContainer;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_MINIMAP_ENTRIES_EVENTDEATHZONEMINIMAPENTRY:Class = EventDeathZoneMinimapEntry;
       
@@ -2975,6 +2979,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BOOTCAMP_BATTLETOPHINT_CONTAINERS_HINTINFOCONTAINER:Class = HintInfoContainer;
       
       public static const NET_WG_GUI_BOOTCAMP_BATTLETOPHINT_CONTAINERS_HINTPENETRATIONANIMATION:Class = HintPenetrationAnimation;
+      
+      public static const NET_WG_GUI_BOOTCAMP_INTROVIDEOPAGE_BCINTROLOGOCONTAINER:Class = BCIntroLogoContainer;
       
       public static const NET_WG_GUI_BOOTCAMP_PREBATTLEHINTS_BCPREBATTLEHINTS:Class = BCPrebattleHints;
       

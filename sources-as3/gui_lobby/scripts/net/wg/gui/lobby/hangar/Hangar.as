@@ -4,6 +4,7 @@ package net.wg.gui.lobby.hangar
    import flash.display.DisplayObject;
    import flash.display.InteractiveObject;
    import flash.display.MovieClip;
+   import flash.display.Sprite;
    import flash.display.Stage;
    import flash.events.Event;
    import flash.events.KeyboardEvent;
@@ -58,6 +59,8 @@ package net.wg.gui.lobby.hangar
       private static const INVALIDATE_ENABLED_CREW:String = "InvalidateEnabledCrew";
       
       private static const INVALIDATE_AMMUNITION_PANEL_SIZE:String = "InvalidateAmmunitionPanelSize";
+      
+      private static const INVALIDATE_CHINA_LOOTBOXES_VISIBLE:String = "invalidateChinaLootboxesVisible";
       
       private static const ENTRY_CONT_POSITION_INVALID:String = "enrtyContPositionInvalid";
       
@@ -142,6 +145,12 @@ package net.wg.gui.lobby.hangar
       private static const AMMUNITION_PANEL_INJECT_OFFSET_RIGHT:int = 5;
       
       private static const WIDGETS_OFFSET_Y:int = 64;
+      
+      private static const CHINA_LOOTBOXES_ENTRY_POINT_X_OFFSET:int = -65;
+      
+      private static const CHINA_LOOTBOXES_ENTRY_POINT_Y_OFFSET:int = 127;
+      
+      private static const CHINA_LOOTBOXES_ENTRY_POINT_Y_OFFSET_ALT:int = 71;
        
       
       public var vehResearchPanel:ResearchPanel;
@@ -173,6 +182,8 @@ package net.wg.gui.lobby.hangar
       public var dqWidget:DailyQuestWidget;
       
       public var closeBtn:CloseButtonText;
+      
+      public var chinaLootboxesWidget:ChinaLootBoxesEntryPointWidget = null;
       
       public var crewXPPanelInject:CrewXPPanelInject;
       
@@ -230,7 +241,13 @@ package net.wg.gui.lobby.hangar
       
       private var _eventsEntryContainer:HangarEventEntriesContainer = null;
       
+      private var _chinaLootboxCont:Sprite = null;
+      
       private var _battleRoyaleComponents:HangarComponentsContainer = null;
+      
+      private var _chinaLootboxesVisible:Boolean = true;
+      
+      private var _isCarouselVisible:Boolean = true;
       
       public function Hangar()
       {
@@ -250,6 +267,9 @@ package net.wg.gui.lobby.hangar
          this._header = App.instance.utils.classFactory.getComponent(Linkages.HANGAR_HEADER,HangarHeader);
          this._header.name = HANGAR_ALIASES.HEADER;
          addChildAt(this._header,getChildIndex(this.vehResearchPanel as DisplayObject) + 1);
+         this._chinaLootboxCont = new Sprite();
+         addChild(this._chinaLootboxCont);
+         this._chinaLootboxCont.name = "chinaLootboxContainer";
          this.closeBtn.visible = false;
       }
       
@@ -380,6 +400,7 @@ package net.wg.gui.lobby.hangar
          this._header = null;
          this._alertMessageBlock = null;
          this.dqWidget = null;
+         this.chinaLootboxesWidget = null;
          this._widgetInitialized = false;
          this.crewXPPanelInject = null;
          App.utils.data.cleanupDynamicObject(this._widgetSizes);
@@ -396,6 +417,8 @@ package net.wg.gui.lobby.hangar
          this._currentWidgetLayout = 99;
          App.utils.data.cleanupDynamicObject(this._widgetSizes);
          this._widgetSizes = null;
+         removeChild(this._chinaLootboxCont);
+         this._chinaLootboxCont = null;
          super.onDispose();
       }
       
@@ -465,6 +488,36 @@ package net.wg.gui.lobby.hangar
             this.updateBRComponentsPos();
             _loc1_ = true;
             _loc3_ = true;
+         }
+         if(isInvalid(INVALIDATE_CHINA_LOOTBOXES_VISIBLE))
+         {
+            if(this._chinaLootboxesVisible)
+            {
+               if(!this.chinaLootboxesWidget)
+               {
+                  this.chinaLootboxesWidget = new ChinaLootBoxesEntryPointWidget();
+                  this._chinaLootboxCont.addChild(this.chinaLootboxesWidget);
+               }
+               if(!isFlashComponentRegisteredS(HANGAR_ALIASES.CHINA_LOOTBOXES_WIDGET))
+               {
+                  registerFlashComponentS(this.chinaLootboxesWidget,HANGAR_ALIASES.CHINA_LOOTBOXES_WIDGET);
+               }
+               this.chinaLootboxesWidget.visible = true;
+            }
+            else if(this.chinaLootboxesWidget)
+            {
+               if(isFlashComponentRegisteredS(HANGAR_ALIASES.CHINA_LOOTBOXES_WIDGET))
+               {
+                  unregisterFlashComponentS(HANGAR_ALIASES.CHINA_LOOTBOXES_WIDGET);
+               }
+               this._chinaLootboxCont.removeChild(this.chinaLootboxesWidget);
+               this.chinaLootboxesWidget = null;
+            }
+            if(this.carousel)
+            {
+               this.carousel.setRightMargin(!!this._chinaLootboxesVisible ? int(ChinaLootBoxesEntryPointWidget.WIDTH + CHINA_LOOTBOXES_ENTRY_POINT_X_OFFSET) : int(0));
+            }
+            this.updateChinaLootBoxWidgetPosition();
          }
          if(_loc1_)
          {
@@ -607,6 +660,10 @@ package net.wg.gui.lobby.hangar
          this._carouselAlias = param2;
          this._carousel = App.instance.utils.classFactory.getComponent(param1,TankCarousel);
          this.carousel.visible = false;
+         if(this._chinaLootboxesVisible)
+         {
+            this.carousel.setRightMargin(ChinaLootBoxesEntryPointWidget.WIDTH + CHINA_LOOTBOXES_ENTRY_POINT_X_OFFSET);
+         }
          this.carousel.addEventListener(Event.RESIZE,this.onCarouselResizeHandler);
          this.carousel.updateStage(_originalWidth,_originalHeight);
          this.carousel.name = CAROUSEL_NAME;
@@ -634,6 +691,15 @@ package net.wg.gui.lobby.hangar
       {
          this._crewEnabled = param1;
          invalidate(INVALIDATE_ENABLED_CREW);
+      }
+      
+      public function as_setChinaLootboxesVisible(param1:Boolean) : void
+      {
+         if(param1 != this._chinaLootboxesVisible)
+         {
+            this._chinaLootboxesVisible = param1;
+            invalidate(INVALIDATE_CHINA_LOOTBOXES_VISIBLE);
+         }
       }
       
       public function as_setNotificationEnabled(param1:Boolean) : void
@@ -843,7 +909,7 @@ package net.wg.gui.lobby.hangar
       {
          if(!this._hangarViewSwitchAnimator)
          {
-            this._hangarViewSwitchAnimator = new HangarAmunitionSwitchAnimator(this,Vector.<DisplayObject>([this.params,this.crew,this.dqWidget,this.teaser,this.crewBG,this.crewOperationBtn,this.crewXPPanelInject,this._alertMessageBlock,this.vehResearchPanel,this.vehResearchBG,this.tmenXpPanel,this.header,this.ammunitionPanel,this.bottomBg]),Vector.<DisplayObject>([this.carouselContainer]),this.ammunitionPanelInject,height);
+            this._hangarViewSwitchAnimator = new HangarAmunitionSwitchAnimator(this,Vector.<DisplayObject>([this.params,this.crew,this.dqWidget,this.teaser,this.crewBG,this.crewOperationBtn,this.crewXPPanelInject,this._alertMessageBlock,this.vehResearchPanel,this.vehResearchBG,this.tmenXpPanel,this.header,this.ammunitionPanel,this.bottomBg]),Vector.<DisplayObject>([this.carouselContainer,this._chinaLootboxCont]),this.ammunitionPanelInject,height);
          }
       }
       
@@ -1030,10 +1096,32 @@ package net.wg.gui.lobby.hangar
       private function updateCarouselPosition() : void
       {
          this._carousel.updateCarouselPosition(_height - this._carousel.getBottom() ^ 0);
+         this.updateChinaLootBoxWidgetPosition();
          this.updateAmmunitionPanelPosition();
          if(this._hangarViewSwitchAnimator)
          {
             this._hangarViewSwitchAnimator.updateStage(width,height);
+         }
+      }
+      
+      private function updateChinaLootBoxWidgetPosition() : void
+      {
+         var _loc1_:int = 0;
+         var _loc2_:int = 0;
+         if(this.chinaLootboxesWidget && this._carousel)
+         {
+            _loc1_ = this.carousel.x + this._carousel.rightArrow.x + this._carousel.rightArrow.width + CHINA_LOOTBOXES_ENTRY_POINT_X_OFFSET;
+            _loc2_ = this._carousel.y + this._carousel.leftArrow.y + (this._carousel.leftArrow.height >> 1);
+            if(this._isCarouselVisible)
+            {
+               _loc2_ -= CHINA_LOOTBOXES_ENTRY_POINT_Y_OFFSET;
+            }
+            else
+            {
+               _loc2_ -= this._carousel.rowCount > 1 && !this._carousel.smallDoubleCarouselEnable ? CHINA_LOOTBOXES_ENTRY_POINT_Y_OFFSET_ALT : CHINA_LOOTBOXES_ENTRY_POINT_Y_OFFSET;
+            }
+            this.chinaLootboxesWidget.x = _loc1_;
+            this.chinaLootboxesWidget.y = _loc2_;
          }
       }
       

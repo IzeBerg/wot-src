@@ -399,6 +399,9 @@ class IPointsOfInterestController(IBattleController):
     def getPoiEntity(poiID):
         raise NotImplementedError
 
+    def getVehicleCapturingPoiGO(self, poiName, entityGameObject, spaceID):
+        raise NotImplementedError
+
 
 class IComp7PrebattleSetupController(IArenaLoadController, IArenaPeriodController, ViewComponentsController):
     onVehiclesListUpdated = None

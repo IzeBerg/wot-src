@@ -29,7 +29,6 @@ class Comp7SettingsPlugin(SettingsPlugin):
                      'markerAltPlayerName', True),
                     (
                      'markerAltAimMarker2D', False),
-                    ('markerAltRoleName', 1),
                     (
                      'markerBaseIcon', False),
                     (
@@ -44,9 +43,9 @@ class Comp7SettingsPlugin(SettingsPlugin):
                     (
                      'markerBasePlayerName', True),
                     (
-                     'markerBaseAimMarker2D', False),
-                    ('markerBaseRoleName', 1))}
-    __ADDITIONAL_SETTINGS = {name:(('markerAltRoleName', 1), ('markerAltRoleSkillLevel', 1)) for name in MARKERS.ALL()}
+                     'markerBaseAimMarker2D', False))}
+    __ADDITIONAL_SETTINGS = {name:(('markerAltRoleName', True), ('markerAltRoleSkillLevel', True), ('markerBaseRoleName', False), ('markerBaseRoleSkillLevel', False)) for name in MARKERS.ALL()}
+    __ADDITIONAL_SETTINGS_BEFORE_BATTLE = {name:(('markerAltRoleName', True), ('markerAltRoleSkillLevel', False), ('markerBaseRoleName', True), ('markerBaseRoleSkillLevel', False)) for name in MARKERS.ALL()}
 
     def __init__(self, parentObj):
         super(Comp7SettingsPlugin, self).__init__(parentObj)
@@ -72,7 +71,9 @@ class Comp7SettingsPlugin(SettingsPlugin):
         return
 
     def __onArenaPeriodChange(self, period, *_, **__):
-        self._overrides = self.__BEFORE_BATTLE_OVERRIDES if period < ARENA_PERIOD.BATTLE else {}
+        isBeforeBattle = period < ARENA_PERIOD.BATTLE
+        self._overrides = self.__BEFORE_BATTLE_OVERRIDES if isBeforeBattle else {}
+        self._additionalSettings = self.__ADDITIONAL_SETTINGS_BEFORE_BATTLE if isBeforeBattle else self.__ADDITIONAL_SETTINGS
         self._setMarkerSettings(notify=True)
 
 

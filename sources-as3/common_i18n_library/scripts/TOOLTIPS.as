@@ -365,6 +365,12 @@ package
       
       public static const TEMPLATE_TIME_LESSTHENMINUTE:String = "#tooltips:template/time/lessThenMinute";
       
+      public static const VEHICLE_AFTEREVENTEND_TITLE:String = "#tooltips:vehicle/afterEventEnd/title";
+      
+      public static const VEHICLE_OVERVIEW_TITLE:String = "#tooltips:vehicle/overview/title";
+      
+      public static const VEHICLE_OVERVIEW_DESC:String = "#tooltips:vehicle/overview/desc";
+      
       public static const PREMIUM_DAYS_HEADER:String = "#tooltips:premium/days/header";
       
       public static const PREMIUMPLUS_DAYS_HEADER:String = "#tooltips:premiumPlus/days/header";
@@ -2341,6 +2347,8 @@ package
       
       public static const VEHICLE_RENTLEFTFUTURE_EPIC_BASE:String = "#tooltips:vehicle/rentLeftFuture/epic/base";
       
+      public static const VEHICLE_RENTLEFTFUTURE_OBTAINEDBY:String = "#tooltips:vehicle/rentLeftFuture/obtainedBy";
+      
       public static const VEHICLE_RENTAVAILABLE:String = "#tooltips:vehicle/rentAvailable";
       
       public static const VEHICLE_WOTPLUSRENTING:String = "#tooltips:vehicle/wotPlusRenting";
@@ -3622,6 +3630,10 @@ package
       public static const BOOSTERSWINDOW_BOOSTER_ACTIVATEINFO_TITLE_BOOSTER_FREE_XP_AND_CREW_XP:String = "#tooltips:boostersWindow/booster/activateInfo/title/booster_free_xp_and_crew_xp";
       
       public static const BOOSTERSWINDOW_BOOSTER_ACTIVATEINFO_TITLE_BOOSTER_FL_XP:String = "#tooltips:boostersWindow/booster/activateInfo/title/booster_fl_xp";
+      
+      public static const BOOSTERSWINDOW_BOOSTER_ACTIVATEINFO_TITLE_BOOSTER_FREE_XP:String = "#tooltips:boostersWindow/booster/activateInfo/title/booster_free_xp";
+      
+      public static const BOOSTERSWINDOW_BOOSTER_ACTIVATEINFO_TITLE_BOOSTER_CREW_XP:String = "#tooltips:boostersWindow/booster/activateInfo/title/booster_crew_xp";
       
       public static const BOOSTERSWINDOW_BOOSTER_ACTIVATEINFO_RECEIVE:String = "#tooltips:boostersWindow/booster/activateInfo/receive";
       
@@ -5867,6 +5879,12 @@ package
       
       public static const NOTRECRUITEDTANKMAN_TANKMAN_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankman/howToGetInfo";
       
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_LABEL:String = "#tooltips:notrecruitedtankman/tankmen/label";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_DESC:String = "#tooltips:notrecruitedtankman/tankmen/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_TANKMEN_HOWTOGETINFO:String = "#tooltips:notrecruitedtankman/tankmen/howToGetInfo";
+      
       public static const NOTRECRUITEDTANKMAN_TWITCH1_LABEL:String = "#tooltips:notrecruitedtankman/twitch1/label";
       
       public static const NOTRECRUITEDTANKMAN_TWITCH1_DESC:String = "#tooltips:notrecruitedtankman/twitch1/desc";
@@ -7022,6 +7040,18 @@ package
       public static const PERIODICREWARD_HEADER:String = "#tooltips:periodicReward/header";
       
       public static const PERIODICREWARD_COMP7_BODY:String = "#tooltips:periodicReward/comp7/body";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_REBRANDING_DESC:String = "#tooltips:notrecruitedtankman/commander_rebranding/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_REBRANDING_LABEL:String = "#tooltips:notrecruitedtankman/commander_rebranding/label";
+      
+      public static const NOTRECRUITEDTANKMAN_WT22_BOSS_COMMANDER_DESC:String = "#tooltips:notrecruitedtankman/wt22_boss_commander/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_WT22_BOSS_COMMANDER_LABEL:String = "#tooltips:notrecruitedtankman/wt22_boss_commander/label";
+      
+      public static const NOTRECRUITEDTANKMAN_WT22_HUNTER_COMMANDER_DESC:String = "#tooltips:notrecruitedtankman/wt22_hunter_commander/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_WT22_HUNTER_COMMANDER_LABEL:String = "#tooltips:notrecruitedtankman/wt22_hunter_commander/label";
       
       public static const ELEN_SUMMARY_RANK_ENUM:Array = [ELEN_SUMMARY_RANK_1,ELEN_SUMMARY_RANK_2,ELEN_SUMMARY_RANK_3,ELEN_SUMMARY_RANK_4,ELEN_SUMMARY_RANK_NORANK];
       

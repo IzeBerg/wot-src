@@ -1457,7 +1457,7 @@ class GoodiesBonusFormatter(SimpleBonusFormatter):
     def _getImages(cls, booster):
         result = {}
         for size in AWARDS_SIZES.ALL():
-            result[size] = RES_ICONS.getBonusIcon(size, booster.boosterGuiType)
+            result[size] = RES_ICONS.getBonusIcon(size, booster.getFullNameForResource())
 
         return result
 
@@ -1484,7 +1484,7 @@ class GoodiesEpicBonusFormatter(GoodiesBonusFormatter):
 
     @classmethod
     def _getImages(cls, booster):
-        return cls._getIcon(booster.boosterGuiType)
+        return cls._getIcon(booster.getFullNameForResource())
 
     @classmethod
     def _getDemountKitImages(cls, demountKit):

@@ -49,7 +49,7 @@ package net.wg.gui.gameloading
       
       public var background:UILoaderAlt;
       
-      public var wotLogo:BaseLogoView;
+      public var wotLogo:LoadingLogo;
       
       public var form:MovieClip;
       
@@ -125,7 +125,6 @@ package net.wg.gui.gameloading
             {
                this.ageRating.visible = this._locale == Locales.KOREA || this._locale == Locales.CHINA;
                this.ageRating.setLocale(this._locale);
-               this.wotLogo.setLocale(this._locale);
                this._bottomLogos.setLocale(this._locale);
             }
             if(this._locale == Locales.KOREA)

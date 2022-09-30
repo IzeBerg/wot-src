@@ -645,12 +645,12 @@ class _FightBtnMultiShowHint(_BMManualTriggeredHint, IGlobalListener):
 
     def __checkFightBtnIfAlreadyExist(self):
         prbDispatcher = self.prbDispatcher
-        if prbDispatcher:
+        result = False
+        if prbDispatcher is not None:
             items = battle_selector_items.getItems()
             selected = items.update(prbDispatcher.getFunctionalState())
-            return self.prbEntity.canPlayerDoAction().isValid and not selected.isLocked()
-        else:
-            return False
+            result = self.prbEntity.canPlayerDoAction().isValid and not selected.isLocked()
+        return result
 
 
 class _EntryPointHint(_BMManualTriggeredHint):

@@ -21,9 +21,6 @@ class TabbedFullStatsComponent(TabbedFullStatsMeta):
         super(TabbedFullStatsComponent, self).__init__()
         self.__tabsMap = {}
 
-    def onToggleVisibility(self, isVisible):
-        self._onToggleVisibility(isVisible)
-
     @property
     def hasTabs(self):
         return True
@@ -53,9 +50,6 @@ class TabbedFullStatsComponent(TabbedFullStatsMeta):
     def _destroy(self):
         self.__tabsMap = {}
         super(TabbedFullStatsComponent, self)._destroy()
-
-    def _onToggleVisibility(self, isVisible):
-        pass
 
     @staticmethod
     def _buildTabs(builder):
@@ -89,4 +83,4 @@ class _TabsBuilder(object):
         return self.__tabs
 
     def __isBoosterProcessingAvailable(self):
-        return self.__lobbyContext.getServerSettings().isReservesInBattleActivationEnabled() and ARENA_BONUS_TYPE_CAPS.checkAny(BigWorld.player().arena.bonusType, ARENA_BONUS_TYPE_CAPS.BOOSTERS)
+        return self.__lobbyContext.getServerSettings().personalReservesConfig.isReservesInBattleActivationEnabled and ARENA_BONUS_TYPE_CAPS.checkAny(BigWorld.player().arena.bonusType, ARENA_BONUS_TYPE_CAPS.BOOSTERS)

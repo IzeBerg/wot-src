@@ -169,10 +169,11 @@ class Comp7BattlePage(Comp7BattlePageMeta):
     def __updateComponentsVisibility(self, arenaPeriod=None):
         if arenaPeriod is None:
             arenaPeriod = self.sessionProvider.shared.arenaPeriod.getPeriod()
-        if arenaPeriod <= ARENA_PERIOD.PREBATTLE:
-            self.app.enterGuiControlMode(VIEW_ALIAS.COMP7_BATTLE_PAGE, enableAiming=False)
-        elif arenaPeriod == ARENA_PERIOD.BATTLE:
-            self.app.leaveGuiControlMode(VIEW_ALIAS.COMP7_BATTLE_PAGE)
+        if not self.sessionProvider.isReplayPlaying:
+            if arenaPeriod <= ARENA_PERIOD.PREBATTLE:
+                self.app.enterGuiControlMode(VIEW_ALIAS.COMP7_BATTLE_PAGE, enableAiming=False)
+            elif arenaPeriod == ARENA_PERIOD.BATTLE:
+                self.app.leaveGuiControlMode(VIEW_ALIAS.COMP7_BATTLE_PAGE)
         self.__visibilityManager.updatePeriod(arenaPeriod)
         vehStateCtrl = self.sessionProvider.shared.vehicleState
         if vehStateCtrl is not None:

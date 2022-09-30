@@ -113,7 +113,7 @@ class _BasePostmortemPanel(PostmortemPanelMeta):
         self.__deathInfo = {'text': msgText, 'colors': colors, 'killerVehicle': killerVehID, 'device': device}
         self._deathInfoReceived()
 
-    def _onShowVehicleMessageByCode(self, code, postfix, entityID, extra, equipmentID):
+    def _onShowVehicleMessageByCode(self, code, postfix, entityID, extra, equipmentID, ignoreMessages):
         device = self._getDevice(extra)
         if equipmentID:
             equipment = vehicles.g_cache.equipments().get(equipmentID)

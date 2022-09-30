@@ -350,7 +350,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.controls.ToggleRenderer;
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.components.controls.UILoaderCut;
-   import net.wg.gui.components.controls.UnitCommanderStats;
    import net.wg.gui.components.controls.UserNameField;
    import net.wg.gui.components.controls.UserNameFieldShadowColor;
    import net.wg.gui.components.controls.VO.ActionPriceVO;
@@ -696,6 +695,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.events.ViewStackContentEvent;
    import net.wg.gui.events.ViewStackEvent;
    import net.wg.gui.gameloading.GameLoading;
+   import net.wg.gui.gameloading.GameLoadingLogos;
+   import net.wg.gui.gameloading.LoadingLogo;
    import net.wg.gui.interfaces.IButtonIconLoader;
    import net.wg.gui.interfaces.IButtonIconTextTransparent;
    import net.wg.gui.interfaces.IContentSize;
@@ -824,8 +825,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.settings.vo.config.marker.MarkerDeadSettingsDataVo;
    import net.wg.gui.lobby.settings.vo.config.marker.MarkerEnemySettingsDataVo;
    import net.wg.gui.lobby.settings.vo.config.marker.MarkerSettingsDataVo;
-   import net.wg.gui.login.impl.components.LoginLogos;
-   import net.wg.gui.login.impl.ev.LoginLogosEvent;
    import net.wg.gui.popover.AcousticButton;
    import net.wg.gui.popover.AcousticPopover;
    import net.wg.gui.popover.data.AcousticItemData;
@@ -1618,8 +1617,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_UILOADERCUT:Class = UILoaderCut;
       
-      public static const NET_WG_GUI_COMPONENTS_CONTROLS_UNITCOMMANDERSTATS:Class = UnitCommanderStats;
-      
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_USERNAMEFIELD:Class = UserNameField;
       
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_USERNAMEFIELDSHADOWCOLOR:Class = UserNameFieldShadowColor;
@@ -2310,6 +2307,10 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_GAMELOADING_GAMELOADING:Class = GameLoading;
       
+      public static const NET_WG_GUI_GAMELOADING_GAMELOADINGLOGOS:Class = GameLoadingLogos;
+      
+      public static const NET_WG_GUI_GAMELOADING_LOADINGLOGO:Class = LoadingLogo;
+      
       public static const NET_WG_GUI_INTERFACES_IBUTTONICONLOADER:Class = IButtonIconLoader;
       
       public static const NET_WG_GUI_INTERFACES_IBUTTONICONTEXTTRANSPARENT:Class = IButtonIconTextTransparent;
@@ -2565,10 +2566,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_SETTINGS_VO_CONFIG_MARKER_MARKERENEMYSETTINGSDATAVO:Class = MarkerEnemySettingsDataVo;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_VO_CONFIG_MARKER_MARKERSETTINGSDATAVO:Class = MarkerSettingsDataVo;
-      
-      public static const NET_WG_GUI_LOGIN_IMPL_COMPONENTS_LOGINLOGOS:Class = LoginLogos;
-      
-      public static const NET_WG_GUI_LOGIN_IMPL_EV_LOGINLOGOSEVENT:Class = LoginLogosEvent;
       
       public static const NET_WG_GUI_POPOVER_ACOUSTICBUTTON:Class = AcousticButton;
       

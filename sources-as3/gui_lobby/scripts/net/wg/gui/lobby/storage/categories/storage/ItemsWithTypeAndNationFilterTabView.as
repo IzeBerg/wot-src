@@ -7,8 +7,6 @@ package net.wg.gui.lobby.storage.categories.storage
    
    public class ItemsWithTypeAndNationFilterTabView extends ItemsWithTypeAndNationFilterTabViewMeta
    {
-      
-      private static const NO_BOOKS_FRAME_NAME:String = "crewBooks";
        
       
       private var _currentFiltersBlock:StorageTypeAndNationFilterBlock;
@@ -28,7 +26,7 @@ package net.wg.gui.lobby.storage.categories.storage
       
       override protected function initNoItemsView() : void
       {
-         noItemsView.noItemsMc.gotoAndStop(NO_BOOKS_FRAME_NAME);
+         noItemsView.noItemsImage.source = RES_ICONS.MAPS_ICONS_STORAGE_NOITEMS_NO_BOOKS_STORE;
          noItemsView.setTexts(STORAGE.CREWBOOKS_NOITEMS_INFO);
       }
       

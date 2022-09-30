@@ -21,6 +21,9 @@ class FullStatsComponent(BattleRoyaleFullStatsMeta, IArenaVehiclesController, IV
     def hasTabs(self):
         return False
 
+    def onToggleVisibility(self, _):
+        pass
+
     def invalidateVehicleStatus(self, flags, vInfoVO, arenaDP):
         if not vInfoVO.isAlive() and vInfoVO.vehicleID in self.__vehicleTeams:
             del self.__vehicleTeams[vInfoVO.vehicleID]

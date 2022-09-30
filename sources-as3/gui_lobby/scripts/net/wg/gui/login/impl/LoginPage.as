@@ -11,6 +11,7 @@ package net.wg.gui.login.impl
    import flash.ui.Keyboard;
    import net.wg.data.Aliases;
    import net.wg.data.ListDAAPIDataProvider;
+   import net.wg.data.constants.Errors;
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.Locales;
    import net.wg.data.constants.Values;
@@ -22,6 +23,7 @@ package net.wg.gui.login.impl
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.components.interfaces.ISparksManager;
    import net.wg.gui.events.UILoaderEvent;
+   import net.wg.gui.gameloading.LoadingLogo;
    import net.wg.gui.interfaces.ISoundButtonEx;
    import net.wg.gui.login.IFormBaseVo;
    import net.wg.gui.login.ILoginFormView;
@@ -66,21 +68,21 @@ package net.wg.gui.login.impl
       
       private static const INV_CSIS_LISTENING:String = "invCsisListening";
       
-      private static const DELAY_ON_ESCAPE:Number = 50;
+      private static const DELAY_ON_ESCAPE:int = 50;
       
-      private static const DELAY_ENABLE_INPUTS:Number = 200;
+      private static const DELAY_ENABLE_INPUTS:int = 200;
       
-      private static const FREE_SPACE_FACTOR:Number = 0.6;
+      private static const WOT_LOGO_OFFSET_Y:int = 190;
       
-      private static const WOT_LOGO_OFFSET_Y:Number = 190;
+      private static const AGE_RATING_OFFSET_X:int = 30;
       
-      private static const AGE_RATING_OFFSET_X:Number = 30;
+      private static const AGE_RATING_OFFSET_Y:int = 80;
       
-      private static const AGE_RATING_OFFSET_Y:Number = 80;
+      private static const COPYRIGHT_OFFSET_Y:int = 104;
       
-      private static const COPYRIGHT_OFFSET_Y:Number = 44;
+      private static const COPYRIGHT_MIN_BOTTOM_MARGIN:int = 3;
       
-      private static const WARNING_OFFSET_Y:Number = 68;
+      private static const WARNING_OFFSET_Y:int = 68;
       
       private static const STAGE_RESIZED:String = "stageResized";
       
@@ -111,12 +113,6 @@ package net.wg.gui.login.impl
       private static const HEALTH_NOTICE_TEXT_ALPHA:Number = 0.6;
       
       private static const HEALTH_NOTICE_OFFSET:int = 25;
-      
-      private static const LOGO_OFFSET_Y_2k:int = -78;
-      
-      private static const LOGO_OFFSET_Y_4k:int = -54;
-      
-      private static const FREE_SPACE_BORDER_FACTOR:Number = 0.17;
        
       
       public var bgImage:UILoaderAlt = null;
@@ -133,7 +129,7 @@ package net.wg.gui.login.impl
       
       public var version:TextField = null;
       
-      public var wotLogo:BaseLogoView = null;
+      public var wotLogo:LoadingLogo = null;
       
       public var shadowVideo:Sprite = null;
       
@@ -177,7 +173,7 @@ package net.wg.gui.login.impl
       
       private var _isInFocus:Boolean = true;
       
-      private var _selectedServerIndex:Number = 0;
+      private var _selectedServerIndex:int = 0;
       
       private var _stageDimensions:Point;
       
@@ -239,14 +235,10 @@ package net.wg.gui.login.impl
          this.rssNewsFeed.addEventListener(RssItemEvent.ITEM_SIZE_INVALID,this.onRssNewsFeedItemSizeInvalidHandler);
          this.ageRating.visible = false;
          var _loc1_:String = App.globalVarsMgr.getLocaleOverrideS();
-         if(_loc1_)
+         if(_loc1_ == Locales.CHINA)
          {
-            this.wotLogo.setLocale(_loc1_);
-            if(_loc1_ == Locales.CHINA)
-            {
-               this.ageRating.visible = true;
-               this.ageRating.setLocale(_loc1_);
-            }
+            this.ageRating.visible = true;
+            this.ageRating.setLocale(_loc1_);
          }
          this.copyright.addEventListener(CopyrightEvent.TO_LEGAL,this.onCopyrightToLegalHandler);
          this.copyright.addEventListener(Event.CHANGE,this.onCopyrightChangeHandler);
@@ -269,14 +261,6 @@ package net.wg.gui.login.impl
          this.loginViewStack.addEventListener(LoginEvent.ON_SUBMIT_WITHOUT_TOKEN,this.onLoginViewStackOnSubmitWithoutTokenHandler);
          this.bgModeButton.focusable = false;
          this.soundButton.focusable = false;
-      }
-      
-      private function onMouseClickHandler(param1:MouseEvent) : void
-      {
-         if(!stage.focus)
-         {
-            App.utils.focusHandler.setFocus(this);
-         }
       }
       
       override protected function draw() : void
@@ -350,6 +334,7 @@ package net.wg.gui.login.impl
          this.copyright = null;
          this.copyrightSmall = null;
          this.loginWarning = null;
+         this.healthNotice = null;
          this.rssNewsFeed.removeEventListener(RssItemEvent.ITEM_SIZE_INVALID,this.onRssNewsFeedItemSizeInvalidHandler);
          this.rssNewsFeed = null;
          this.enableInputs(false);
@@ -561,8 +546,6 @@ package net.wg.gui.login.impl
          this._isWGC = false;
          this.shadowImage.visible = true;
          this.shadowVideo.visible = false;
-         this.copyrightSmall.visible = false;
-         this.copyright.visible = true;
          if(this.bgImage.source != param2)
          {
             this.bgImage.source = param2;
@@ -687,7 +670,8 @@ package net.wg.gui.login.impl
       private function updateCopyrightPos() : void
       {
          App.utils.commons.updateTextFieldSize(this.copyrightSmall,true,false);
-         this.copyrightSmall.y = this.copyright.y = App.appHeight - COPYRIGHT_OFFSET_Y;
+         this.copyrightSmall.y = App.appHeight - COPYRIGHT_OFFSET_Y;
+         this.copyright.y = App.appHeight - COPYRIGHT_MIN_BOTTOM_MARGIN - this.copyright.getHeight();
          this.copyright.x = this.loginViewStack.x - (this.copyright.getWidth() >> 1);
          this.copyrightSmall.x = this.loginViewStack.x - (this.copyrightSmall.width >> 1);
          if(this._isChinaForm)
@@ -800,6 +784,8 @@ package net.wg.gui.login.impl
          this._currentView = ILoginFormView(this.loginViewStack.currentView);
          this.invalidateForm();
          this._focusInited = false;
+         this.copyrightSmall.visible = false;
+         this.copyright.visible = true;
       }
       
       private function getSubmitData() : SubmitDataVo
@@ -880,6 +866,14 @@ package net.wg.gui.login.impl
          }
       }
       
+      private function onMouseClickHandler(param1:MouseEvent) : void
+      {
+         if(!stage.focus)
+         {
+            App.utils.focusHandler.setFocus(this);
+         }
+      }
+      
       private function onSoundButtonClickHandler(param1:ButtonEvent) : void
       {
          setMuteS(this.soundButton.selected);
@@ -912,7 +906,7 @@ package net.wg.gui.login.impl
       
       private function onVideoPlayerErrorHandler(param1:VideoPlayerStatusEvent) : void
       {
-         DebugUtils.LOG_ERROR("Video " + this.videoPlayer.source + " loading failed!");
+         DebugUtils.LOG_ERROR(this.videoPlayer.source + Errors.CANT_NULL);
          videoLoadingFailedS();
       }
       
@@ -961,7 +955,10 @@ package net.wg.gui.login.impl
                if(simpleForm)
                {
                   simpleForm.updateInputForm(event.focusTarget,isToken);
-                  doUpdateS();
+                  if(event.focusTarget == simpleForm.login)
+                  {
+                     onLoginNameUpdatedS();
+                  }
                }
             }
             catch(e:Error)
@@ -1067,6 +1064,8 @@ class LoginFormPositionHelper
    
    private static const SCREEN_HEIGHT:Vector.<int> = new <int>[LobbyMetrics.MIN_STAGE_HEIGHT,LobbyMetrics.STAGE_HEIGHT_1080,LobbyMetrics.STAGE_HEIGHT_1440,LobbyMetrics.STAGE_HEIGHT_2160];
    
+   private static const ERROR_INVALID_LOGINFORM_SETTINGS:String = "Invalid settings for loginForm! See LoginFormPositionHelper!";
+   
    {
       POSITION_BY_RESOLUTION[LobbyMetrics.MIN_STAGE_HEIGHT] = POS_Y_SCREEN_HEIGHT_768;
       POSITION_BY_RESOLUTION[LobbyMetrics.STAGE_HEIGHT_1080] = POS_Y_SCREEN_HEIGHT_1080;
@@ -1100,7 +1099,7 @@ class LoginFormPositionHelper
       }
       if(!POSITION_BY_RESOLUTION[SCREEN_HEIGHT[_loc2_]])
       {
-         DebugUtils.LOG_ERROR("Invalid settings for loginForm! See LoginFormPositionHelper!");
+         DebugUtils.LOG_ERROR(ERROR_INVALID_LOGINFORM_SETTINGS);
          return 0;
       }
       if(_loc2_ < SCREEN_HEIGHT.length - 1)

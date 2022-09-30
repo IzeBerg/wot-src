@@ -1,4 +1,4 @@
-from gui.Scaleform.framework.entities.BaseDAAPIComponent import BaseDAAPIComponent
+from gui.Scaleform.framework.entities.inject_component_adaptor import InjectComponentAdaptor
 
-class PersonalReservesTabMeta(BaseDAAPIComponent):
+class PersonalReservesTabMeta(InjectComponentAdaptor):
     pass

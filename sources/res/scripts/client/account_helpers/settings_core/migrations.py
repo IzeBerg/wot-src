@@ -938,6 +938,10 @@ def _migrateTo96(core, data, initialized):
     data['guiStartBehavior']['isComp7IntroShown'] = False
 
 
+def _migrateTo97(core, data, initialized):
+    pass
+
+
 _versions = (
  (
   1, _initializeDefaultSettings, True, False),
@@ -1128,7 +1132,9 @@ _versions = (
  (
   95, _migrateTo95, False, False),
  (
-  96, _migrateTo96, False, False))
+  96, _migrateTo96, False, False),
+ (
+  97, _migrateTo97, False, False))
 
 @adisp_async
 @adisp_process

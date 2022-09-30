@@ -377,10 +377,17 @@ class VehicleParams(_ParameterBase):
     def rocketAccelerationSpeedLimits(self):
         if self._itemDescr.hasRocketAcceleration:
             rocketFactors = getRocketAccelerationKpiFactors(self._itemDescr)
-            values = zip(self.speedLimits, (
+
+            def rounder(v, needRound):
+                if needRound:
+                    return int(round(v))
+                return int(v)
+
+            return [ rounder(value * coeff, needRound) for value, coeff, needRound in zip(self.speedLimits, (
              rocketFactors.getCoeff(KPI.Name.VEHICLE_FORWARD_MAX_SPEED),
-             rocketFactors.getCoeff(KPI.Name.VEHICLE_BACKWARD_MAX_SPEED)))
-            return [ int(round(value * coeff)) for value, coeff in values ]
+             rocketFactors.getCoeff(KPI.Name.VEHICLE_BACKWARD_MAX_SPEED)), (
+             True, False))
+                   ]
         else:
             return
 

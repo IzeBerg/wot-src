@@ -97,7 +97,6 @@ package net.wg.gui.lobby.profile.pages.technique
          var _loc5_:TechniqueListVehicleVO = null;
          var _loc6_:int = 0;
          var _loc7_:String = null;
-         var _loc8_:Boolean = false;
          if(_baseDisposed)
          {
             return;
@@ -128,12 +127,7 @@ package net.wg.gui.lobby.profile.pages.technique
                }
                this.masteryIcon.data = _loc5_;
                this.levelMC.gotoAndStop(_loc5_.level);
-               _loc8_ = _loc5_.prestigePoints > Values.DEFAULT_INT;
-               this.prestigePointsTF.visible = _loc8_;
-               if(_loc8_)
-               {
-                  this.prestigePointsTF.text = getString(_loc5_.prestigePoints);
-               }
+               this.prestigePointsTF.text = _loc5_.prestigePoints > Values.DEFAULT_INT ? getString(_loc5_.prestigePoints) : Values.EMPTY_STR;
             }
             _loc3_ = numChildren;
             _loc4_ = 0;

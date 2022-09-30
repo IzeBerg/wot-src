@@ -1,3 +1,4 @@
+import constants
 from CurrentVehicle import g_currentVehicle
 from gui import makeHtmlString
 from gui.impl import backport
@@ -26,7 +27,7 @@ from helpers.i18n import makeString as _ms
 from shared_utils import findFirst
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
-from skeletons.gui.game_control import IQuestsController, IRankedBattlesController, IBattleRoyaleController
+from skeletons.gui.game_control import IQuestsController, IRankedBattlesController, IBattleRoyaleController, IComp7Controller
 from battle_royale.gui.Scaleform.daapi.view.lobby.tooltips.battle_royale_tooltip_quest_helper import getQuestsDescriptionForHangarFlag, getQuestTooltipBlock
 _MAX_AWARDS_PER_TOOLTIP = 5
 _MAX_QUESTS_PER_TOOLTIP = 4
@@ -51,6 +52,7 @@ class QuestsPreviewTooltipData(BlocksTooltipData):
     _eventsCache = dependency.descriptor(IEventsCache)
     __battleRoyaleController = dependency.descriptor(IBattleRoyaleController)
     __itemsCache = dependency.descriptor(IItemsCache)
+    __comp7Controller = dependency.descriptor(IComp7Controller)
 
     def __init__(self, context):
         super(QuestsPreviewTooltipData, self).__init__(context, TOOLTIP_TYPE.QUESTS)
@@ -65,6 +67,8 @@ class QuestsPreviewTooltipData(BlocksTooltipData):
         items = super(QuestsPreviewTooltipData, self)._packBlocks()
         vehicle = g_currentVehicle.item
         quests = self._getQuests(vehicle)
+        if self.__comp7Controller.isComp7PrbActive():
+            quests = [ quest for quest in quests if quest.hasBonusType(constants.ARENA_BONUS_TYPE.COMP7) ]
         if quests:
             items.append(self._getHeader(len(quests), vehicle.shortUserName, R.strings.tooltips.hangar.header.quests.description.vehicle()))
             for quest in quests:

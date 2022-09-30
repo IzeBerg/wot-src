@@ -1,4 +1,4 @@
-import logging
+import logging, typing
 from collections import namedtuple
 import BigWorld
 from BWUtil import AsyncReturn
@@ -60,6 +60,8 @@ from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.utils import IHangarSpace
 from vehicle_outfit.outfit import Area
 from constants import NC_MESSAGE_PRIORITY
+if typing.TYPE_CHECKING:
+    from gui.Scaleform.daapi.view.lobby.customization.context.context import CustomizationContext
 _logger = logging.getLogger(__name__)
 
 class _ModalWindowsPopupHandler(IViewLifecycleHandler):
@@ -458,9 +460,15 @@ class MainView(LobbySubView, CustomizationMainViewMeta):
         return
 
     def __onCustomizationClearLocked(self):
+        if self.__ctx.modeId != CustomizationModes.EDITABLE_STYLE:
+            return
         filterMethod = REQ_CRITERIA.CUSTOM(lambda item: not item.isUnlockedByToken())
+        modifiedOutfits = self.__ctx.mode.getModifiedOutfits()
+        originalOutfits = self.__ctx.mode.getOriginalOutfits()
+        isStyleChanged = any(originalOutfits[season].id != modifiedOutfits[season].id for season in SeasonType.COMMON_SEASONS)
+        revertToPrevious = not isStyleChanged
         for season in SeasonType.COMMON_SEASONS:
-            self.__ctx.mode.removeItemsFromSeason(season, filterMethod=filterMethod, refresh=False, revertToPrevious=True)
+            self.__ctx.mode.removeItemsFromSeason(season, filterMethod=filterMethod, refresh=False, revertToPrevious=revertToPrevious)
             self.__ctx.refreshOutfit(season)
 
         self.__ctx.events.onItemsRemoved()
@@ -915,7 +923,8 @@ class MainView(LobbySubView, CustomizationMainViewMeta):
 
     def __onCacheResync(self, *_):
         if not g_currentVehicle.isPresent():
-            self.__onCloseWindow()
+            self.destroy()
+            self.__onCloseWindow(immediate=True)
             return
         self.__setHeaderInitData()
         self.__setSeasonData()

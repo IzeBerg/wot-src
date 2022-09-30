@@ -291,6 +291,7 @@ class MENU(object):
     TANKCAROUSEL_VEHICLESTATES_FALLOUT_REQUIRED = '#menu:tankCarousel/vehicleStates/fallout_required'
     TANKCAROUSEL_VEHICLESTATES_FALLOUT_BROKEN = '#menu:tankCarousel/vehicleStates/fallout_broken'
     TANKCAROUSEL_VEHICLESTATES_RENTALISOVER = '#menu:tankCarousel/vehicleStates/rentalIsOver'
+    TANKCAROUSEL_VEHICLESTATES_RENTALBATTLEISOVER = '#menu:tankCarousel/vehicleStates/rentalBattleIsOver'
     TANKCAROUSEL_VEHICLESTATES_RENTABLE = '#menu:tankCarousel/vehicleStates/rentable'
     TANKCAROUSEL_VEHICLESTATES_RENTABLE_EPIC = '#menu:tankCarousel/vehicleStates/rentable/epic'
     TANKCAROUSEL_VEHICLESTATES_RENTABLE_RANKED = '#menu:tankCarousel/vehicleStates/rentable/ranked'
@@ -358,6 +359,7 @@ class MENU(object):
     CURRENTVEHICLESTATUS_BATTLE = '#menu:currentVehicleStatus/battle'
     CURRENTVEHICLESTATUS_INPREBATTLE = '#menu:currentVehicleStatus/inPrebattle'
     CURRENTVEHICLESTATUS_RENTALISOVER = '#menu:currentVehicleStatus/rentalIsOver'
+    CURRENTVEHICLESTATUS_RENTALBATTLEISOVER = '#menu:currentVehicleStatus/rentalBattleIsOver'
     CURRENTVEHICLESTATUS_IGRRENTALISOVER = '#menu:currentVehicleStatus/igrRentalIsOver'
     CURRENTVEHICLESTATUS_ISRENTABLE = '#menu:currentVehicleStatus/isRentable'
     CURRENTVEHICLESTATUS_RENTABLE = '#menu:currentVehicleStatus/rentable'
@@ -2434,6 +2436,7 @@ class MENU(object):
      TANKCAROUSEL_VEHICLESTATES_FALLOUT_REQUIRED,
      TANKCAROUSEL_VEHICLESTATES_FALLOUT_BROKEN,
      TANKCAROUSEL_VEHICLESTATES_RENTALISOVER,
+     TANKCAROUSEL_VEHICLESTATES_RENTALBATTLEISOVER,
      TANKCAROUSEL_VEHICLESTATES_RENTABLE,
      TANKCAROUSEL_VEHICLESTATES_RENTABLE_EPIC,
      TANKCAROUSEL_VEHICLESTATES_RENTABLE_RANKED,

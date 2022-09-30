@@ -2,6 +2,8 @@ import weakref, typing
 from cache import cached_property
 from constants import BuffDisplayedState
 from gui.battle_control.battle_constants import FEEDBACK_EVENT_ID, VEHICLE_VIEW_STATE
+from gui.shared import g_eventBus, EVENT_BUS_SCOPE
+from gui.shared.events import MarkersManagerEvent
 from helpers import dependency
 from helpers.fixed_dict import getTimeInterval
 from script_component.DynamicScriptComponent import DynamicScriptComponent
@@ -97,6 +99,7 @@ class ViewStateUpdater(object):
         self._isActive = self._component.isActive
         if self._vehicleStateCtrl:
             self._vehicleStateCtrl.onVehicleControlling += self.onVehicleControlling
+        g_eventBus.addListener(MarkersManagerEvent.MARKERS_CREATED, self.invalidate, EVENT_BUS_SCOPE.BATTLE)
 
     @cached_property
     def _sessionProvider(self):
@@ -114,7 +117,7 @@ class ViewStateUpdater(object):
         if self._vehicleID == vehicle.id:
             self.invalidate()
 
-    def invalidate(self):
+    def invalidate(self, _=None):
         isActive = self._component.isActive
         if isActive or self._isActive:
             self._isActive = isActive
@@ -127,6 +130,7 @@ class ViewStateUpdater(object):
             self._invalidateState()
         if self._vehicleStateCtrl:
             self._vehicleStateCtrl.onVehicleControlling -= self.onVehicleControlling
+        g_eventBus.removeListener(MarkersManagerEvent.MARKERS_CREATED, self.invalidate, EVENT_BUS_SCOPE.BATTLE)
         return
 
     def _invalidateState(self):

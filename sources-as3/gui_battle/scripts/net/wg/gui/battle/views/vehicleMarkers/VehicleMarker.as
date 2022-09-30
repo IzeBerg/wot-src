@@ -449,14 +449,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          var _loc16_:int = 0;
          if(this.model)
          {
-            if(this.model.vIconSource == param2)
-            {
-               _loc16_ = this.model.currHealth;
-            }
-            else
-            {
-               this.healthBar.resetHitAnimation();
-            }
+            _loc16_ = this.model.currHealth;
          }
          this.model = new VehicleMarkerVO();
          this.model.vClass = param1;

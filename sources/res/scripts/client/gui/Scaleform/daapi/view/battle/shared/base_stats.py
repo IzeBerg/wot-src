@@ -16,6 +16,9 @@ class StatsBase(StatsBaseMeta):
     def addToSquad(self, sessionID):
         self.sessionProvider.invitations.send(sessionID)
 
+    def onToggleVisibility(self, isVisible):
+        self._onToggleVisibility(isVisible)
+
     def _populate(self):
         self.addListener(events.GameEvent.SHOW_CURSOR, self.__handleShowCursor, EVENT_BUS_SCOPE.GLOBAL)
         self.addListener(events.GameEvent.HIDE_CURSOR, self.__handleHideCursor, EVENT_BUS_SCOPE.GLOBAL)
@@ -27,6 +30,9 @@ class StatsBase(StatsBaseMeta):
         self.removeListener(events.GameEvent.HIDE_CURSOR, self.__handleHideCursor, EVENT_BUS_SCOPE.GLOBAL)
         super(StatsBase, self)._dispose()
         return
+
+    def _onToggleVisibility(self, isVisible):
+        pass
 
     def __handleShowCursor(self, _):
         self.as_setIsInteractiveS(True)

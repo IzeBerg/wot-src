@@ -153,7 +153,8 @@ _ACHIEVEMENTS15X15_BLOCK_LAYOUT = [
  'wtxHunterWins', 'wtxBossWins', 'wtxSpecBossDefeat',
  'whiteTiger2012', 'lunarNY2022Progression',
  'oowTankmanWins', 'oowStrategistWins', 'oowCompetetiveWin',
- 'mapboxUniversal', 'wclTournamentParticipant', 'wclParticipant']
+ 'mapboxUniversal', 'wclTournamentParticipant', 'wclParticipant',
+ 'wt2022HunterWins', 'wt2022BossWins', 'wt2022SpecBossDefeat']
 _achievements15x15PopUps = [
  'warrior', 'invader', 'sniper', 'defender', 'steelwall', 'supporter',
  'scout', 'medalKay', 'medalCarius', 'medalKnispel', 'medalPoppel', 'medalAbrams',
@@ -197,7 +198,8 @@ _achievements15x15PopUps = [
  'TenYearsCountdownStageMedal', 'wtHunterWins', 'wtBossWins', 'wtSpecBossDefeat',
  'wtxHunterWins', 'wtxBossWins', 'wtxSpecBossDefeat', 'lunarNY2022Progression',
  'oowTankmanWins', 'oowStrategistWins', 'oowCompetetiveWin', 'mapboxUniversal',
- 'wclTournamentParticipant', 'wclParticipant']
+ 'wclTournamentParticipant', 'wclParticipant',
+ 'wt2022HunterWins', 'wt2022BossWins', 'wt2022SpecBossDefeat']
 _achievements15x15BlockBuilder = StaticSizeBlockBuilder('achievements', _ACHIEVEMENTS15X15_BLOCK_LAYOUT, ACHIEVEMENT15X15_DEPENDENCIES, _achievements15x15PopUps)
 _STEAM_BLOCK_LAYOUT = [
  'steamBattleCredits', 'steamLittleSavingsMedal', 'steamMintedCoinMedal', 'steamKingMidasMedal',

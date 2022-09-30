@@ -3,6 +3,8 @@ from typing import TYPE_CHECKING
 from PlayerEvents import g_playerEvents
 from frameworks.wulf import ViewFlags, ViewSettings, Array, ViewEvent, Window, ViewModel
 from gui.ClientUpdateManager import g_clientUpdateManager
+from gui.Scaleform.daapi.view.lobby.header.LobbyHeader import LobbyHeader
+from gui.Scaleform.framework.entities.EventSystemEntity import EventSystemEntity
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from gui.game_control import BoostersController
 from gui.goodies.goodie_items import ClanReservePresenter
@@ -19,7 +21,9 @@ from gui.impl.gen.view_models.common.personal_reserves.reserves_activation_view_
 from gui.impl.gen.view_models.common.personal_reserves.reserves_group_model import ReservesGroupModel, GroupCategory
 from gui.impl.gui_decorators import args2params
 from gui.impl.pub import ViewImpl
+from gui.shared import EVENT_BUS_SCOPE
 from gui.shared.event_dispatcher import showPersonalReservesIntro, showBoostersActivation, showHangar
+from gui.shared.events import ViewEventType
 from gui.shared.money import Currency
 from helpers import dependency
 from skeletons.gui.game_control import IBoostersController, IEpicBattleMetaGameController
@@ -36,8 +40,9 @@ if TYPE_CHECKING:
     from gui.shared.items_cache import ItemsCache
     from gui.wgcg.web_controller import WebController
     from gui.impl.common.personal_reserves.personal_reserves_shared_model_utils import BoosterModelData
+    from gui.shared.events import LoadViewEvent
 
-class ReservesActivationView(ViewImpl):
+class ReservesActivationView(ViewImpl, EventSystemEntity):
     __slots__ = ('__destroyViewObject', )
     goodiesCache = dependency.descriptor(IGoodiesCache)
     boosters = dependency.descriptor(IBoostersController)
@@ -73,6 +78,7 @@ class ReservesActivationView(ViewImpl):
         g_clientUpdateManager.addCurrencyCallback(Currency.GOLD, self.__onCurrencyBalanceChanged)
         ReservesActivationView.boosters.onBoosterChangeNotify += self.onBoosterChangeNotify
         g_playerEvents.onClientUpdated += self.onItemsCacheChanged
+        self.addListener(ViewEventType.LOAD_VIEW, self.__handleViewLoad, scope=EVENT_BUS_SCOPE.LOBBY)
 
     def _onLoading(self):
         super(ReservesActivationView, self)._onLoading()
@@ -89,6 +95,7 @@ class ReservesActivationView(ViewImpl):
         ReservesActivationView.boosters.onBoosterChangeNotify -= self.onBoosterChangeNotify
         g_playerEvents.onClientUpdated -= self.onItemsCacheChanged
         self.__destroyViewObject.fini()
+        self.removeListener(ViewEventType.LOAD_VIEW, self.__handleViewLoad, scope=EVENT_BUS_SCOPE.LOBBY)
         super(ReservesActivationView, self)._finalize()
 
     def getClanBoostersByType(self):
@@ -187,3 +194,7 @@ class ReservesActivationView(ViewImpl):
     def __onEpicUpdate(self, diff, *_):
         if 'isEnabled' in diff:
             self.fillViewModel()
+
+    def __handleViewLoad(self, event):
+        if event.alias in LobbyHeader.TABS.ALL():
+            self.destroyWindow()

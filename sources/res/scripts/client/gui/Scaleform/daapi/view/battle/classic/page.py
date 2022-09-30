@@ -108,19 +108,17 @@ class ClassicPage(SharedPage):
         manager = self.app.containerManager
         if manager.isModalViewsIsExists():
             return
-        if not self._fullStatsAlias:
-            return
         else:
+            if not self._fullStatsAlias:
+                return
             fullStats = self.getComponent(self._fullStatsAlias)
             if fullStats is None:
                 return
-            if tabAlias is not None and not fullStats.hasTab(tabAlias):
+            doTabSwitch = fullStats.hasTabs and tabAlias is not None and fullStats.hasTab(tabAlias)
+            if not doTabSwitch and tabAlias not in (None, TabsAliases.STATS):
                 return
             ctrl = self.sessionProvider.shared.calloutCtrl
             if ctrl is not None and ctrl.isRadialMenuOpened():
-                return
-            hasTabs = fullStats.hasTabs
-            if not hasTabs and tabAlias != TabsAliases.STATS:
                 return
             if self.as_isComponentVisibleS(self._fullStatsAlias) != isShown:
                 if isShown:
@@ -128,7 +126,7 @@ class ClassicPage(SharedPage):
                         self._fsToggling.update(self.as_getComponentsVisibilityS())
                     if permanent is not None:
                         self._fsToggling.difference_update(permanent)
-                    if hasTabs and tabAlias is not None:
+                    if doTabSwitch:
                         fullStats.setActiveTab(tabAlias)
                     self._setComponentsVisibility(visible={
                      self._fullStatsAlias}, hidden=self._fsToggling)
@@ -136,9 +134,8 @@ class ClassicPage(SharedPage):
                 else:
                     self._setComponentsVisibility(visible=self._fsToggling, hidden={self._fullStatsAlias})
                     fullStats.onToggleVisibility(False)
-                    if hasTabs:
-                        if tabAlias is not None:
-                            fullStats.setActiveTab(None)
+                    if doTabSwitch:
+                        fullStats.setActiveTab(None)
                     self._fsToggling.clear()
                 if self._isInPostmortem:
                     self.as_setPostmortemTipsVisibleS(not isShown)

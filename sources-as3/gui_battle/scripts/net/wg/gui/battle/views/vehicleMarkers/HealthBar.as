@@ -106,11 +106,6 @@ package net.wg.gui.battle.views.vehicleMarkers
          return this.getXForHealth(Math.min(this._currHealth,this._maxHealth),true);
       }
       
-      public function resetHitAnimation() : void
-      {
-         this.isSplashRunning = false;
-      }
-      
       public function updateHealth(param1:int, param2:String) : void
       {
          if(this._maxHealth == 0)
@@ -136,7 +131,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          var _loc3_:int = 0;
          if(!isNaN(this._maxHealth) && this._maxHealth != 0)
          {
-            _loc4_ = HEALTH_BAR_WIDTH * Math.min(param1 * this._maxHealthMult,1);
+            _loc4_ = HEALTH_BAR_WIDTH * (param1 * this._maxHealthMult);
             _loc3_ = !!param2 ? int(_loc4_ >> 0) : int(Math.round(_loc4_));
          }
          return _loc3_ > 0 ? int(_loc3_) : int(0);

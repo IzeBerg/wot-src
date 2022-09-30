@@ -1,10 +1,11 @@
 package net.wg.gui.lobby.storage.categories
 {
-   import flash.display.MovieClip;
    import flash.events.Event;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
    import net.wg.gui.components.controls.SoundButtonEx;
+   import net.wg.gui.components.controls.UILoaderAlt;
+   import net.wg.gui.events.UILoaderEvent;
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.utils.IStageSizeDependComponent;
    import net.wg.utils.StageSizeBoundaries;
@@ -27,31 +28,20 @@ package net.wg.gui.lobby.storage.categories
       
       public var labelTF:TextField;
       
-      public var noItemsMc:MovieClip;
+      public var noItemsImage:UILoaderAlt;
+      
+      private var _stageSizeBondariesH:int = -1;
       
       public function NoItemsView()
       {
          super();
       }
       
-      public function setStateSizeBoundaries(param1:int, param2:int) : void
-      {
-         if(param2 >= StageSizeBoundaries.HEIGHT_900)
-         {
-            this.noItemsMc.scaleX = this.noItemsMc.scaleY = NORMAL_SCALE;
-         }
-         else
-         {
-            this.noItemsMc.scaleX = this.noItemsMc.scaleY = SMALL_SCALE;
-         }
-         this.noItemsMc.x = param1 - this.noItemsMc.width >> 1;
-         invalidateSize();
-      }
-      
       override protected function initialize() : void
       {
          super.initialize();
          App.stageSizeMgr.register(this);
+         this.noItemsImage.addEventListener(UILoaderEvent.COMPLETE,this.onNoItemsImageCompleteHandler);
       }
       
       override protected function configUI() : void
@@ -68,9 +58,17 @@ package net.wg.gui.lobby.storage.categories
          super.draw();
          if(isInvalid(InvalidationType.SIZE))
          {
-            this.noItemsMc.x = width - this.noItemsMc.width >> 1;
+            if(this._stageSizeBondariesH >= StageSizeBoundaries.HEIGHT_900)
+            {
+               this.noItemsImage.scaleX = this.noItemsImage.scaleY = NORMAL_SCALE;
+            }
+            else
+            {
+               this.noItemsImage.scaleX = this.noItemsImage.scaleY = SMALL_SCALE;
+            }
+            this.noItemsImage.x = width - this.noItemsImage.width >> 1;
             this.labelTF.width = width;
-            this.labelTF.y = this.noItemsMc.y + this.noItemsMc.height + LABEL_OFFSET;
+            this.labelTF.y = this.noItemsImage.y + this.noItemsImage.height + LABEL_OFFSET;
             this.navigateButton.validateNow();
             this.navigateButton.x = width - this.navigateButton.width >> 1;
             this.navigateButton.y = this.labelTF.y + this.labelTF.height + NAVIGATION_BUTTON_OFFSET | 0;
@@ -83,8 +81,16 @@ package net.wg.gui.lobby.storage.categories
          this.navigateButton.dispose();
          this.navigateButton = null;
          this.labelTF = null;
-         this.noItemsMc = null;
+         this.noItemsImage.removeEventListener(UILoaderEvent.COMPLETE,this.onNoItemsImageCompleteHandler);
+         this.noItemsImage.dispose();
+         this.noItemsImage = null;
          super.onDispose();
+      }
+      
+      public function setStateSizeBoundaries(param1:int, param2:int) : void
+      {
+         this._stageSizeBondariesH = param2;
+         invalidateSize();
       }
       
       public function setTexts(param1:String, param2:String = null) : void
@@ -99,6 +105,11 @@ package net.wg.gui.lobby.storage.categories
          {
             this.navigateButton.visible = false;
          }
+         invalidateSize();
+      }
+      
+      private function onNoItemsImageCompleteHandler(param1:UILoaderEvent) : void
+      {
          invalidateSize();
       }
       
