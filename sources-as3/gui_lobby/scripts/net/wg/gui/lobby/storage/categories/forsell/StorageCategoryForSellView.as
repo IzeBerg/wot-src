@@ -1,6 +1,5 @@
 package net.wg.gui.lobby.storage.categories.forsell
 {
-   import flash.events.Event;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
    import net.wg.data.ListDAAPIDataProvider;
@@ -53,7 +52,6 @@ package net.wg.gui.lobby.storage.categories.forsell
       
       override protected function onDispose() : void
       {
-         this.noItemsView.removeEventListener(Event.CLOSE,this.onNoItemViewCloseHandler);
          carousel.removeEventListener(CardEvent.DESELECT,this.onCardDeselectHandler);
          carousel.removeEventListener(CardEvent.SELECT,this.onCardSelectHandler);
          carousel.removeEventListener(CardEvent.SELL,this.onCardSellHandler);
@@ -68,6 +66,11 @@ package net.wg.gui.lobby.storage.categories.forsell
          super.onDispose();
       }
       
+      override protected function initNoItemsView() : void
+      {
+         this.noItemsView.setTexts(STORAGE.FORSELL_NOITEMS_TITLE,STORAGE.STORAGE_NOITEMS_NAVIGATIONBUTTON);
+      }
+      
       override protected function configUI() : void
       {
          super.configUI();
@@ -77,8 +80,6 @@ package net.wg.gui.lobby.storage.categories.forsell
          this.buyBlock.addEventListener(BuyBlockEvent.DESELECT_ALL,this.onBuyBlockDeselectAllHandler);
          this.buyBlock.addEventListener(BuyBlockEvent.SELECT_ALL,this.onBuyBlockSelectAllHandler);
          this.buyBlock.addEventListener(BuyBlockEvent.SELL,this.onBuyBlockSellHandler);
-         this.noItemsView.setTexts(STORAGE.FORSELL_NOITEMS_TITLE,STORAGE.STORAGE_NOITEMS_NAVIGATIONBUTTON);
-         this.noItemsView.addEventListener(Event.CLOSE,this.onNoItemViewCloseHandler);
          carousel.scrollList.itemRendererClassReference = Linkages.SELECTABLE_CARD_RENDERER;
          carousel.scrollList.paddingTop = CAROUSEL_TOP_OFFSET;
          carousel.scrollList.paddingBottom = CAROUSEL_BOTTOM_OFFSET;
@@ -89,17 +90,27 @@ package net.wg.gui.lobby.storage.categories.forsell
       
       override protected function draw() : void
       {
-         var _loc1_:int = 0;
          super.draw();
          if(isInvalid(InvalidationType.SIZE))
          {
             this.buyBlock.x = this.title.x = carousel.x;
             this.buyBlock.setSize(carousel.width,BUY_BLOCK_HEIGHT);
-            _loc1_ = this.title.y + this.title.height;
-            this.noItemsView.width = width;
-            this.noItemsView.validateNow();
-            this.noItemsView.y = _loc1_ + (height - _loc1_ - this.noItemsView.actualHeight >> 1);
          }
+      }
+      
+      override protected function getNoComponentsStartY() : int
+      {
+         return this.title.y + this.title.height;
+      }
+      
+      override protected function onNoItemsViewClose() : void
+      {
+         navigateToStoreS();
+      }
+      
+      override public function get noItemsComponent() : UIComponent
+      {
+         return this.noItemsView;
       }
       
       private function onBuyBlockDeselectAllHandler(param1:BuyBlockEvent) : void
@@ -133,16 +144,6 @@ package net.wg.gui.lobby.storage.categories.forsell
       {
          param1.stopImmediatePropagation();
          sellItemS(param1.data.id);
-      }
-      
-      private function onNoItemViewCloseHandler(param1:Event) : void
-      {
-         navigateToStoreS();
-      }
-      
-      override public function get noItemsComponent() : UIComponent
-      {
-         return this.noItemsView;
       }
    }
 }

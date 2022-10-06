@@ -3,6 +3,8 @@ package net.wg.gui.battle.views.vehicleMarkers.VO
    public class VehicleMarkerFlags
    {
       
+      public static const DAMAGE_NONE:String = "none";
+      
       public static const DAMAGE_SHOT:String = "shot";
       
       public static const DAMAGE_FIRE:String = "fire";

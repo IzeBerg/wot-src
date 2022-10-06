@@ -3043,6 +3043,10 @@ package
       
       public static const CAMOUFLAGE_TWITCH_SEPTEMBER_2022_DESCRIPTION:String = "#vehicle_customization:camouflage/twitch_september_2022/description";
       
+      public static const CAMOUFLAGE_REBRANDING_EVENT:String = "#vehicle_customization:camouflage/rebranding_event";
+      
+      public static const CAMOUFLAGE_REBRANDING_EVENT_DESCRIPTION:String = "#vehicle_customization:camouflage/rebranding_event/description";
+      
       public static const EMBLEM:String = "#vehicle_customization:emblem";
       
       public static const EMBLEM_CLAN_CONTENT:String = "#vehicle_customization:emblem/clan_content";
@@ -13438,6 +13442,14 @@ package
       public static const ONBOARDINGVIEW_BTNSKIP:String = "#vehicle_customization:onboardingView/btnSkip";
       
       public static const ONBOARDINGVIEW_BTNACCEPT:String = "#vehicle_customization:onboardingView/btnAccept";
+      
+      public static const SPECIAL_STYLE_REBRANDING_EVENT:String = "#vehicle_customization:special_style/rebranding_event";
+      
+      public static const SPECIAL_STYLE_REBRANDING_EVENT_DESC:String = "#vehicle_customization:special_style/rebranding_event_desc";
+      
+      public static const SPECIAL_STYLE_REBRANDING_EVENT_DESC_LONG:String = "#vehicle_customization:special_style/rebranding_event_desc/long";
+      
+      public static const PROJECTION_DECALS_SPECIAL_LST_CROSS_EVENT:String = "#vehicle_customization:projection_decals/special/lst_cross_event";
        
       
       public function VEHICLE_CUSTOMIZATION()

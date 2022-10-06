@@ -153,7 +153,7 @@ package net.wg.gui.lobby.vehicleCustomization
             _loc2_ = true;
             for each(_loc3_ in this.items.dataProvider)
             {
-               if(_loc3_.isRemovable)
+               if(!_loc3_.isTitle)
                {
                   _loc2_ = false;
                   break;

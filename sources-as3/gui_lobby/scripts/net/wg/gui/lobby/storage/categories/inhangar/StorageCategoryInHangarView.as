@@ -8,6 +8,7 @@ package net.wg.gui.lobby.storage.categories.inhangar
    import net.wg.gui.components.controls.tabs.OrangeTabMenu;
    import net.wg.gui.events.ViewStackEvent;
    import net.wg.gui.lobby.storage.categories.ICategory;
+   import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.base.meta.IStorageCategoryInHangarViewMeta;
    import net.wg.infrastructure.base.meta.impl.StorageCategoryInHangarViewMeta;
    import net.wg.infrastructure.interfaces.IDAAPIModule;
@@ -42,6 +43,7 @@ package net.wg.gui.lobby.storage.categories.inhangar
       
       override protected function onDispose() : void
       {
+         this.content.removeEventListener(ViewStackEvent.VIEW_CHANGED,this.onContentViewChangedHandler);
          this.content.removeEventListener(ViewStackEvent.NEED_UPDATE,this.onContentNeedUpdateHandler);
          this.content.dispose();
          this.content = null;
@@ -56,6 +58,7 @@ package net.wg.gui.lobby.storage.categories.inhangar
       {
          super.initialize();
          this.content.addEventListener(ViewStackEvent.NEED_UPDATE,this.onContentNeedUpdateHandler);
+         this.content.addEventListener(ViewStackEvent.VIEW_CHANGED,this.onContentViewChangedHandler);
       }
       
       override protected function configUI() : void
@@ -71,11 +74,18 @@ package net.wg.gui.lobby.storage.categories.inhangar
       {
          var _loc1_:ICategory = null;
          super.draw();
-         if(this.content.currentView && isInvalid(InvalidationType.SIZE))
+         if(this.content.currentView)
          {
-            _loc1_ = ICategory(this.content.currentView);
-            this.title.x = width - _loc1_.contentWidth >> 1;
-            this.tabButtonBar.x = this.title.x;
+            if(isInvalid(InvalidationType.SIZE))
+            {
+               _loc1_ = ICategory(this.content.currentView);
+               this.title.x = width - _loc1_.contentWidth >> 1;
+               this.tabButtonBar.x = this.title.x;
+            }
+            if(isInvalid(InvalidationType.LAYOUT))
+            {
+               UIComponentEx(this.content.currentView).invalidate(InvalidationType.LAYOUT);
+            }
          }
       }
       
@@ -124,6 +134,15 @@ package net.wg.gui.lobby.storage.categories.inhangar
             ICategory(param1.view).setHitArea(this._hitArea);
          }
          registerFlashComponentS(IDAAPIModule(param1.view),param1.viewId);
+      }
+      
+      private function onContentViewChangedHandler(param1:ViewStackEvent) : void
+      {
+         var _loc2_:UIComponentEx = param1.view as UIComponentEx;
+         if(_loc2_)
+         {
+            _loc2_.invalidateLayout();
+         }
       }
    }
 }

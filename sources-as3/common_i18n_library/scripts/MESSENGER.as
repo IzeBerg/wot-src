@@ -983,13 +983,13 @@ package
       
       public static const SERVICECHANNELMESSAGES_BOOSTEREXPIREDTOTALTEMPLATE_TOTAL:String = "#messenger:serviceChannelMessages/boosterExpiredTotalTemplate/total";
       
-      public static const SERVICECHANNELMESSAGES_BOOSTEREXPIREDRESOURCENAME_BOOSTER_XP:String = "#messenger:serviceChannelMessages/boosterExpiredResourceName/booster_xp";
+      public static const SERVICECHANNELMESSAGES_BOOSTEREXPIREDRESOURCENAME_XP:String = "#messenger:serviceChannelMessages/boosterExpiredResourceName/xp";
       
-      public static const SERVICECHANNELMESSAGES_BOOSTEREXPIREDRESOURCENAME_BOOSTER_FREE_XP:String = "#messenger:serviceChannelMessages/boosterExpiredResourceName/booster_free_xp";
+      public static const SERVICECHANNELMESSAGES_BOOSTEREXPIREDRESOURCENAME_FREEXP:String = "#messenger:serviceChannelMessages/boosterExpiredResourceName/freeXP";
       
-      public static const SERVICECHANNELMESSAGES_BOOSTEREXPIREDRESOURCENAME_BOOSTER_CREW_XP:String = "#messenger:serviceChannelMessages/boosterExpiredResourceName/booster_crew_xp";
+      public static const SERVICECHANNELMESSAGES_BOOSTEREXPIREDRESOURCENAME_TMENXP:String = "#messenger:serviceChannelMessages/boosterExpiredResourceName/tmenXP";
       
-      public static const SERVICECHANNELMESSAGES_BOOSTEREXPIREDRESOURCENAME_BOOSTER_CREDITS:String = "#messenger:serviceChannelMessages/boosterExpiredResourceName/booster_credits";
+      public static const SERVICECHANNELMESSAGES_BOOSTEREXPIREDRESOURCENAME_CREDITS:String = "#messenger:serviceChannelMessages/boosterExpiredResourceName/credits";
       
       public static const SERVICECHANNELMESSAGES_BOOSTERDISABLED:String = "#messenger:serviceChannelMessages/boosterDisabled";
       

@@ -56,7 +56,7 @@ package net.wg.gui.lobby.header.headerButtonBar
          _loc1_.x = 0;
          _loc1_.y = 1;
          _loc1_.width = actualWidth;
-         _loc1_.height = actualHeight - 1;
+         _loc1_.height = actualHeight - 2;
          _loc1_.extensibilityDirection = Directions.BOTTOM;
          _loc1_.message = LOBBY_HELP.HEADER_PERSONAL_RESERVES;
          _loc1_.id = this._helpLayoutId;

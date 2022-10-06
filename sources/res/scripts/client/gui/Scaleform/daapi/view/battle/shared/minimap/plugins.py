@@ -19,7 +19,7 @@ from gui.Scaleform.daapi.view.battle.shared.minimap import entries
 from gui.Scaleform.daapi.view.battle.shared.minimap import settings
 from gui.Scaleform.daapi.view.battle.shared.minimap.settings import ENTRY_SYMBOL_NAME, SettingsTypes
 from gui.battle_control import avatar_getter, minimap_utils, matrix_factory
-from gui.battle_control.arena_info.interfaces import IVehiclesAndPositionsController
+from gui.battle_control.arena_info.interfaces import IVehiclesAndPositionsController, IArenaVehiclesController
 from gui.battle_control.arena_info.settings import INVALIDATE_OP
 from gui.battle_control.battle_constants import FEEDBACK_EVENT_ID, VEHICLE_LOCATION, VEHICLE_VIEW_STATE
 from battle_royale.gui.battle_control.controllers.radar_ctrl import IRadarListener
@@ -52,7 +52,7 @@ _MINIMAP_MAX_SCALE_INDEX = 5
 _MINIMAP_LOCATION_MARKER_MIN_SCALE = 1.0
 _MINIMAP_LOCATION_MARKER_MAX_SCALE = 0.72
 
-class PersonalEntriesPlugin(common.SimplePlugin):
+class PersonalEntriesPlugin(common.SimplePlugin, IArenaVehiclesController):
     __slots__ = ('__isAlive', '__isObserver', '__playerVehicleID', '__viewPointID',
                  '__animationID', '__deadPointID', '__cameraID', '__cameraIDs', '__yawLimits',
                  '__circlesID', '__circlesVisibilityState', '__killerVehicleID',
@@ -83,6 +83,7 @@ class PersonalEntriesPlugin(common.SimplePlugin):
         yawLimits = vInfo.vehicleType.turretYawLimits
         if yawLimits is not None and vInfo.isSPG():
             self.__yawLimits = (math.degrees(yawLimits[0]), math.degrees(yawLimits[1]))
+        self.sessionProvider.addArenaCtrl(self)
         ctrl = self.sessionProvider.shared.vehicleState
         if ctrl is not None:
             ctrl.onPostMortemSwitched += self.__onPostMortemSwitched
@@ -100,6 +101,7 @@ class PersonalEntriesPlugin(common.SimplePlugin):
         return
 
     def stop(self):
+        self.sessionProvider.removeArenaCtrl(self)
         ctrl = self.sessionProvider.shared.vehicleState
         if ctrl is not None:
             ctrl.onPostMortemSwitched -= self.__onPostMortemSwitched
@@ -410,7 +412,7 @@ class PersonalEntriesPlugin(common.SimplePlugin):
                 self.__hideDirectionLine()
             self.__clearYawLimit()
             if showYawLimit:
-                vInfo = self._arenaDP.getVehicleInfo(self._ctrlVehicleID)
+                vInfo = self._arenaDP.getVehicleInfo(self._arenaDP.getAttachedVehicleID())
                 yawLimits = vInfo.vehicleType.turretYawLimits
                 if yawLimits is not None and vInfo.isSPG():
                     self.__yawLimits = (
@@ -438,6 +440,13 @@ class PersonalEntriesPlugin(common.SimplePlugin):
             elif self.__circlesID is not None:
                 self._setActive(self.__circlesID, False)
             return
+
+    def updateVehiclesInfo(self, updated, arenaDP):
+        attachedVehicleId = arenaDP.getAttachedVehicleID()
+        for flags, vInfo in updated:
+            if vInfo.vehicleID == attachedVehicleId and flags & INVALIDATE_OP.VEHICLE_INFO > 0:
+                self._invalidateMarkup(forceInvalidate=True)
+                break
 
     def _canShowViewRangeCircle(self):
         return self.settingsCore.getSetting(settings_constants.GAME.MINIMAP_VIEW_RANGE)

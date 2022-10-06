@@ -18,6 +18,8 @@ package net.wg.infrastructure.base.meta
       
       function as_onVehicleSelectionConfirmed() : void;
       
+      function as_onBattleStarted() : void;
+      
       function as_onPrebattleInputStateLocked(param1:Boolean) : void;
    }
 }

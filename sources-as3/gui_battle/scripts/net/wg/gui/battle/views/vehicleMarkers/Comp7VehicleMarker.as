@@ -1,8 +1,10 @@
 package net.wg.gui.battle.views.vehicleMarkers
 {
    import flash.display.MovieClip;
+   import flash.events.Event;
    import net.wg.data.constants.generated.BATTLE_MARKERS_CONSTS;
    import net.wg.gui.battle.views.vehicleMarkers.VO.CrossOffset;
+   import net.wg.gui.battle.views.vehicleMarkers.VO.VehicleMarkerFlags;
    import org.idmedia.as3commons.util.StringUtils;
    
    public class Comp7VehicleMarker extends VehicleMarker
@@ -65,6 +67,10 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private var _hasRole:Boolean = false;
       
+      private var _prevDamageValue:int = 0;
+      
+      private var _isRoleSkillDamage:Boolean = false;
+      
       public function Comp7VehicleMarker()
       {
          super();
@@ -73,6 +79,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       override protected function configUI() : void
       {
          super.configUI();
+         hitLabel.addEventListener(HealthBarAnimatedPart.HIDE,this.onHitLabelHideHandler);
          marker.vehicleTypeIcon.addChild(this.roleIcon);
          this.roleIcon.visible = false;
          this.roleSkillLevel.visible = false;
@@ -97,6 +104,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       override protected function onDispose() : void
       {
+         hitLabel.removeEventListener(HealthBarAnimatedPart.HIDE,this.onHitLabelHideHandler);
          this.roleIcon = null;
          this.roleSkillLevel = null;
          super.onDispose();
@@ -160,8 +168,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       override protected function updatePartsVisibility() : Vector.<Boolean>
       {
-         var _loc1_:Vector.<Boolean> = null;
-         _loc1_ = super.updatePartsVisibility();
+         var _loc1_:Vector.<Boolean> = super.updatePartsVisibility();
          var _loc2_:Boolean = this.getRoleSkillVisible();
          _loc1_.unshift(_loc2_);
          this.roleSkillLevel.visible = _loc2_;
@@ -177,6 +184,26 @@ package net.wg.gui.battle.views.vehicleMarkers
       override protected function getStartY() : int
       {
          return super.getStartY() + (!!this.getRoleSkillVisible() ? ROLE_SKILL_TO_MARKER_OFFSET_Y : 0);
+      }
+      
+      override protected function showHitLabelAnim(param1:int, param2:String) : void
+      {
+         if(!this._isRoleSkillDamage)
+         {
+            this._isRoleSkillDamage = damageType == VehicleMarkerFlags.DAMAGE_NONE;
+         }
+         var _loc3_:Boolean = this._isRoleSkillDamage && damageType != VehicleMarkerFlags.DAMAGE_NONE;
+         if(this._isRoleSkillDamage && _loc3_)
+         {
+            this._prevDamageValue += param1;
+            param1 = this._prevDamageValue;
+         }
+         else
+         {
+            this._prevDamageValue = 0;
+         }
+         hitLabel.damage(param1,param2,_loc3_);
+         hitLabel.playShowTween();
       }
       
       public function setIsPlayerLoaded(param1:Boolean) : void
@@ -273,6 +300,11 @@ package net.wg.gui.battle.views.vehicleMarkers
             return false;
          }
          return true;
+      }
+      
+      private function onHitLabelHideHandler(param1:Event) : void
+      {
+         this._isRoleSkillDamage = false;
       }
    }
 }

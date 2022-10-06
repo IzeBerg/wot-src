@@ -660,6 +660,9 @@ class IBoostersController(IGameController):
     def isGameModeSupported(self):
         raise NotImplementedError
 
+    def selectRandomBattle(self):
+        raise NotImplementedError
+
 
 class IScreenCastController(IGameController):
     pass

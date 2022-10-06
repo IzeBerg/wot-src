@@ -7,6 +7,8 @@ package net.wg.gui.bootcamp.introVideoPage
    import flash.events.MouseEvent;
    import flash.text.TextField;
    import flash.ui.Keyboard;
+   import flash.utils.getQualifiedClassName;
+   import flash.utils.getQualifiedSuperclassName;
    import net.wg.gui.bootcamp.containers.TutorialPageContainer;
    import net.wg.gui.bootcamp.data.BCTutorialPageVO;
    import net.wg.gui.bootcamp.introVideoPage.containers.IntroPageContainer;
@@ -211,7 +213,10 @@ package net.wg.gui.bootcamp.introVideoPage
          this.blackOverlay.mouseChildren = this.blackOverlay.mouseEnabled = false;
          this.waitingTF.text = BOOTCAMP.WELLCOME_BOOTCAMP_WAIT;
          this.selectGlow.visible = this.btnSelect.visible = this.btnStart.visible = this.btnSkip.visible = this.btnSkipVideo.visible = false;
-         this._logger = new LoadingPageLogger(this);
+         if(getQualifiedSuperclassName(this) == getQualifiedClassName(BCIntroVideoPage))
+         {
+            this._logger = new LoadingPageLogger(this);
+         }
       }
       
       override protected function draw() : void
@@ -594,7 +599,10 @@ package net.wg.gui.bootcamp.introVideoPage
       
       private function updateBackgroundRenderer() : void
       {
-         this._logger.startPageLog(this._picIndex);
+         if(this._logger)
+         {
+            this._logger.startPageLog(this._picIndex);
+         }
          if(this.backgroundContainer.numChildren > 0)
          {
             this.backgroundContainer.removeChildAt(0);
@@ -703,7 +711,10 @@ package net.wg.gui.bootcamp.introVideoPage
                {
                   this._imageGoRight = false;
                }
-               this._logger.stopPageLog();
+               if(this._logger)
+               {
+                  this._logger.stopPageLog();
+               }
                this.tweenFadeOut();
             }
          }

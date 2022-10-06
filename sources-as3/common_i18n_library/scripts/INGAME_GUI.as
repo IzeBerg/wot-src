@@ -1717,12 +1717,6 @@ package
       
       public static const REWARDWINDOW_TWITCH33_HEADERTEXT:String = "#ingame_gui:rewardWindow/twitch33/headerText";
       
-      public static const REWARDWINDOW_TWITCH33_SUBHEADERTEXT:String = "#ingame_gui:rewardWindow/twitch33/subHeaderText";
-      
-      public static const REWARDWINDOW_TWITCH33_DESCTEXT:String = "#ingame_gui:rewardWindow/twitch33/descText";
-      
-      public static const REWARDWINDOW_TWITCH33_BTNLABEL:String = "#ingame_gui:rewardWindow/twitch33/btnLabel";
-      
       public static const REWARDWINDOW_TWITCH33_MAINREWARD_1:String = "#ingame_gui:rewardWindow/twitch33/mainReward_1";
       
       public static const REWARDWINDOW_TWITCH33_MAINREWARD_2:String = "#ingame_gui:rewardWindow/twitch33/mainReward_2";

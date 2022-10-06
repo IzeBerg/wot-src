@@ -1,6 +1,5 @@
 package net.wg.gui.lobby.storage.categories.personalreserves
 {
-   import flash.events.Event;
    import flash.events.MouseEvent;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
@@ -62,18 +61,23 @@ package net.wg.gui.lobby.storage.categories.personalreserves
          this.filtersBlock.visible = !param1;
       }
       
-      override protected function onDispose() : void
+      override protected function onBeforeDispose() : void
       {
          this.filtersBlock.removeEventListener(FiltersEvent.FILTERS_CHANGED,this.onFiltersBlockFiltersChangedHandler);
          this.filtersBlock.removeEventListener(FiltersEvent.RESET_ALL_FILTERS,this.onFiltersBlockResetAllFiltersHandler);
+         carousel.removeEventListener(CardEvent.SELL,this.onCarouselSellHandler);
+         this.infoBtn.removeEventListener(MouseEvent.CLICK,this.onInfoButtonClickedHandler);
+         super.onBeforeDispose();
+      }
+      
+      override protected function onDispose() : void
+      {
          this.filtersBlock.dispose();
          this.filtersBlock = null;
-         this.noItemsView.removeEventListener(Event.CLOSE,this.onNavigateToShopButtonClickHandler);
          this.noItemsView.dispose();
          this.noItemsView = null;
-         carousel.removeEventListener(CardEvent.SELL,this.onCarouselSellHandler);
          this.title = null;
-         this.infoBtn.removeEventListener(MouseEvent.CLICK,this.onInfoButtonClickedHandler);
+         this.infoBtn = null;
          super.onDispose();
       }
       
@@ -96,9 +100,12 @@ package net.wg.gui.lobby.storage.categories.personalreserves
          carousel.addEventListener(CardEvent.SELL,this.onCarouselSellHandler);
          this.filtersBlock.addEventListener(FiltersEvent.FILTERS_CHANGED,this.onFiltersBlockFiltersChangedHandler);
          this.filtersBlock.addEventListener(FiltersEvent.RESET_ALL_FILTERS,this.onFiltersBlockResetAllFiltersHandler);
-         this.noItemsView.setTexts(STORAGE.PERSONALRESERVES_NOITEMS_TITLE,STORAGE.STORAGE_NOITEMS_NAVIGATIONBUTTON);
-         this.noItemsView.addEventListener(Event.CLOSE,this.onNavigateToShopButtonClickHandler);
          App.stageSizeMgr.register(this);
+      }
+      
+      override protected function initNoItemsView() : void
+      {
+         this.noItemsView.setTexts(STORAGE.PERSONALRESERVES_NOITEMS_TITLE,STORAGE.STORAGE_NOITEMS_NAVIGATIONBUTTON);
       }
       
       override protected function draw() : void
@@ -111,9 +118,6 @@ package net.wg.gui.lobby.storage.categories.personalreserves
             this.filtersBlock.width = carousel.width;
             carousel.y = this.filtersBlock.y + this.filtersBlock.height + CAROUSEL_Y_OFFSET | 0;
             this.title.x = carousel.x;
-            this.noItemsView.width = width;
-            this.noItemsView.validateNow();
-            this.noItemsView.y = height - this.noItemsView.actualHeight >> 1;
             this.infoBtn.x = this.title.x + this.title.width + INFO_BUTTON_X_OFFSET;
          }
       }
@@ -121,6 +125,11 @@ package net.wg.gui.lobby.storage.categories.personalreserves
       override protected function initFilter(param1:ButtonFiltersVO) : void
       {
          this.filtersBlock.setData(param1,navigateToStoreS);
+      }
+      
+      override protected function onNoItemsViewClose() : void
+      {
+         navigateToStoreS();
       }
       
       public function as_resetFilter(param1:int) : void
@@ -157,11 +166,6 @@ package net.wg.gui.lobby.storage.categories.personalreserves
       {
          param1.stopImmediatePropagation();
          activateReserveS(param1.data.id);
-      }
-      
-      private function onNavigateToShopButtonClickHandler(param1:Event) : void
-      {
-         navigateToStoreS();
       }
       
       private function onFiltersBlockResetAllFiltersHandler(param1:FiltersEvent) : void

@@ -30,10 +30,6 @@ package net.wg.gui.lobby.storage.categories.storage
          noItemsView.setTexts(STORAGE.CREWBOOKS_NOITEMS_INFO);
       }
       
-      override protected function disposeNoItemsView() : void
-      {
-      }
-      
       override protected function onDispose() : void
       {
          this._currentFiltersBlock.removeEventListener(FiltersEvent.NATION_FILTER_CHANGED,this.onNationIndexChangeHandler);

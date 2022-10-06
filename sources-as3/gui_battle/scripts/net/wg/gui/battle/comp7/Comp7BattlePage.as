@@ -28,6 +28,12 @@ package net.wg.gui.battle.comp7
    public class Comp7BattlePage extends Comp7BattlePageMeta implements IComp7BattlePageMeta, IDraggable
    {
       
+      private static const STATE_LOADING:int = 0;
+      
+      private static const STATE_PREBATTLE:int = 1;
+      
+      private static const STATE_BATTLE:int = 2;
+      
       private static const VEHICLE_STATUS_OFFSET_Y:int = 44;
       
       private static const MESSENGER_OFFSET:int = 0;
@@ -63,9 +69,9 @@ package net.wg.gui.battle.comp7
       
       public var vehicleHitArea:VehicleHitAreaComponent = null;
       
-      private var _isDragRegister:Boolean = false;
+      private var _state:int = 0;
       
-      private var _isPrebattle:Boolean = false;
+      private var _isDragRegister:Boolean = false;
       
       private var _isVehicleSelectConfirmed:Boolean = false;
       
@@ -124,17 +130,20 @@ package net.wg.gui.battle.comp7
       {
          super.configUI();
          this.helpButton.setLabel(HELP_LABEL);
+         this.helpButton.y = HELP_BUTTON_Y_OFFSET;
          this.vehicleHitArea.hit.addEventListener(MouseEvent.MOUSE_WHEEL,this.onHitAreaMouseWheelHandler);
          this.vehicleHitArea.addEventListener(MouseEvent.ROLL_OVER,this.onVehicleHitAreaRollOverHandler);
          this.vehicleHitArea.addEventListener(MouseEvent.ROLL_OUT,this.onVehicleHitAreaRollOutHandler);
          addChildAt(this.vehicleHitArea,getChildIndex(hitTestFix) + 1);
+         this.registerDraging();
       }
       
       override protected function draw() : void
       {
-         var _loc1_:int = 0;
+         var _loc1_:Boolean = false;
          var _loc2_:int = 0;
          var _loc3_:int = 0;
+         var _loc4_:int = 0;
          super.draw();
          if(_baseDisposed)
          {
@@ -142,25 +151,28 @@ package net.wg.gui.battle.comp7
          }
          if(isInvalid(InvalidationType.LAYOUT))
          {
-            battleTimer.visible = !this._isPrebattle;
-            this.helpButton.visible = !battleLoading.visible && this.carousel && this.carousel.visible;
-            this.helpButton.x = _originalWidth - this.helpButton.hitMc.width - HELP_BUTTON_X_OFFSET | 0;
-            this.helpButton.y = HELP_BUTTON_Y_OFFSET;
+            this.updateBattleTimerVisibility();
+            _loc1_ = this._state == STATE_PREBATTLE;
+            this.helpButton.visible = _loc1_;
+            if(_loc1_)
+            {
+               this.helpButton.x = _originalWidth - this.helpButton.hitMc.width - HELP_BUTTON_X_OFFSET | 0;
+            }
             this.updateMessengerWidth();
             this.updateBattleMessengerPosition();
             updateAmmunitionPanelY();
             this.updateVehicleStatusPosition();
             this.updateHintPanelPosition();
-            _loc1_ = 0;
+            _loc2_ = 0;
             if(_originalWidth > StageSizeBoundaries.WIDTH_1366)
             {
-               _loc1_ = PADDINGS_1600 * (_originalWidth - StageSizeBoundaries.WIDTH_1024) / (StageSizeBoundaries.WIDTH_1600 - StageSizeBoundaries.WIDTH_1024);
+               _loc2_ = PADDINGS_1600 * (_originalWidth - StageSizeBoundaries.WIDTH_1024) / (StageSizeBoundaries.WIDTH_1600 - StageSizeBoundaries.WIDTH_1024);
             }
-            _loc2_ = _originalWidth >> 1;
-            _loc3_ = this.getFreeSpace(_originalWidth,_loc1_);
-            this.carousel.updateStage(_loc3_,_originalHeight);
+            _loc3_ = _originalWidth >> 1;
+            _loc4_ = this.getFreeSpace(_originalWidth,_loc2_);
+            this.carousel.updateStage(_loc4_,_originalHeight);
             this.carousel.y = _originalHeight - this.carousel.getBottom() ^ 0;
-            this.carousel.x = _loc2_ - (_loc3_ >> 1) + MESSENGER_OFFSET;
+            this.carousel.x = _loc3_ - (_loc4_ >> 1) + MESSENGER_OFFSET;
             this.vehicleHitArea.width = _originalWidth;
             this.vehicleHitArea.height = _originalHeight;
          }
@@ -227,29 +239,28 @@ package net.wg.gui.battle.comp7
       override protected function onComponentVisibilityChanged(param1:String, param2:Boolean) : void
       {
          super.onComponentVisibilityChanged(param1,param2);
-         if(param1 == BATTLE_VIEW_ALIASES.DAMAGE_PANEL)
-         {
-            this._isPrebattle = !param2;
-            if(this._isPrebattle)
-            {
-               this.registerDraging();
-            }
-            else
-            {
-               this.unregisterDragging();
-            }
-            invalidateLayout();
-         }
-         else if(param1 == BATTLE_VIEW_ALIASES.FULL_STATS)
+         if(param1 == BATTLE_VIEW_ALIASES.FULL_STATS)
          {
             this.updateVehicleStatusPosition();
+         }
+         else if(param1 == BATTLE_VIEW_ALIASES.BATTLE_LOADING)
+         {
+            if(this._state == STATE_LOADING && !param2)
+            {
+               this._state = STATE_PREBATTLE;
+               invalidateLayout();
+            }
+         }
+         else if(param1 == BATTLE_VIEW_ALIASES.BATTLE_TIMER)
+         {
+            this.updateBattleTimerVisibility();
          }
       }
       
       override protected function updateBattleMessengerPosition() : void
       {
          battleMessenger.x = damagePanel.x;
-         var _loc1_:int = !!this._isPrebattle ? int(height) : int(damagePanel.y);
+         var _loc1_:int = this._state == STATE_PREBATTLE ? int(height) : int(damagePanel.y);
          battleMessenger.y = _loc1_ - battleMessenger.height + MESSENGER_Y_OFFSET;
       }
       
@@ -274,7 +285,7 @@ package net.wg.gui.battle.comp7
          var _loc3_:int = 0;
          var _loc4_:int = 0;
          var _loc5_:int = 0;
-         if(this._isPrebattle && !this._isPrebattleStateLocked)
+         if(this._state == STATE_PREBATTLE && !this._isPrebattleStateLocked)
          {
             _loc2_ = true;
             _loc3_ = MinimapSizeConst.MIN_SIZE_INDEX;
@@ -304,6 +315,13 @@ package net.wg.gui.battle.comp7
             return param1;
          }
          return super.getAllowedMinimapSizeIndex(param1);
+      }
+      
+      public function as_onBattleStarted() : void
+      {
+         this._state = STATE_BATTLE;
+         this.unregisterDragging();
+         invalidateLayout();
       }
       
       public function as_onPrebattleInputStateLocked(param1:Boolean) : void
@@ -372,7 +390,7 @@ package net.wg.gui.battle.comp7
       
       private function isBattleMessengerSmall() : Boolean
       {
-         return this._isPrebattle && _originalWidth <= StageSizeBoundaries.WIDTH_1600;
+         return this._state == STATE_PREBATTLE && _originalWidth <= StageSizeBoundaries.WIDTH_1600;
       }
       
       private function registerDraging() : void
@@ -406,6 +424,11 @@ package net.wg.gui.battle.comp7
             this.vehicleStatus.x = _originalWidth >> 1;
             this.vehicleStatus.y = prebattleAmmunitionPanel.y - this.vehicleStatus.height + VEHICLE_STATUS_OFFSET_Y | 0;
          }
+      }
+      
+      private function updateBattleTimerVisibility() : void
+      {
+         battleTimer.visible = this._state == STATE_BATTLE;
       }
       
       override protected function onMinimapSizeChangedHandler(param1:MinimapEvent) : void

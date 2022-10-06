@@ -1,6 +1,5 @@
 package net.wg.gui.lobby.storage.categories.storage
 {
-   import flash.events.Event;
    import net.wg.data.ListDAAPIDataProvider;
    import net.wg.data.constants.Linkages;
    import net.wg.gui.events.FiltersEvent;
@@ -53,7 +52,6 @@ package net.wg.gui.lobby.storage.categories.storage
       
       override protected function onDispose() : void
       {
-         this.disposeNoItemsView();
          this.noItemsView.dispose();
          this.noItemsView = null;
          this.filtersBlock.removeEventListener(FiltersEvent.FILTERS_CHANGED,this.onFiltersBlockFiltersChangedHandler);
@@ -73,15 +71,13 @@ package net.wg.gui.lobby.storage.categories.storage
          carousel.scrollList.paddingBottom = CAROUSEL_PADDING_BOTTOM;
          carousel.addEventListener(CardEvent.SELL,this.onCardSellHandler);
          carousel.addEventListener(CardEvent.UPGRADE,this.onCardUpgradeHandler);
-         this.initNoItemsView();
          this.filtersBlock.addEventListener(FiltersEvent.FILTERS_CHANGED,this.onFiltersBlockFiltersChangedHandler);
          this.filtersBlock.addEventListener(FiltersEvent.RESET_ALL_FILTERS,this.onFiltersBlockResetAllFiltersHandler);
       }
       
-      private function onCardUpgradeHandler(param1:CardEvent) : void
+      override protected function initNoItemsView() : void
       {
-         param1.stopImmediatePropagation();
-         upgradeItemS(param1.data.id);
+         this.noItemsView.setTexts(STORAGE.STORAGE_NOITEMS_TITLE,STORAGE.STORAGE_NOITEMS_NAVIGATIONBUTTON);
       }
       
       override protected function draw() : void
@@ -91,9 +87,6 @@ package net.wg.gui.lobby.storage.categories.storage
          {
             this.filtersBlock.x = carousel.x;
             this.filtersBlock.width = carousel.width;
-            this.noItemsView.width = width;
-            this.noItemsView.validateNow();
-            this.noItemsView.y = height - this.noItemsView.actualHeight >> 1;
          }
       }
       
@@ -102,10 +95,9 @@ package net.wg.gui.lobby.storage.categories.storage
          resetFilterS();
       }
       
-      protected function onCardSellHandler(param1:CardEvent) : void
+      override protected function onNoItemsViewClose() : void
       {
-         param1.stopImmediatePropagation();
-         sellItemS(param1.data.id);
+         navigateToStoreS();
       }
       
       public function as_resetFilter(param1:int) : void
@@ -121,20 +113,21 @@ package net.wg.gui.lobby.storage.categories.storage
          this.filtersBlock.updateCounter(param1,param2,param3);
       }
       
-      protected function initNoItemsView() : void
-      {
-         this.noItemsView.setTexts(STORAGE.STORAGE_NOITEMS_TITLE,STORAGE.STORAGE_NOITEMS_NAVIGATIONBUTTON);
-         this.noItemsView.addEventListener(Event.CLOSE,this.onNoItemViewCloseHandler);
-      }
-      
-      protected function disposeNoItemsView() : void
-      {
-         this.noItemsView.removeEventListener(Event.CLOSE,this.onNoItemViewCloseHandler);
-      }
-      
       override public function get noItemsComponent() : UIComponent
       {
          return this.noItemsView;
+      }
+      
+      protected function onCardSellHandler(param1:CardEvent) : void
+      {
+         param1.stopImmediatePropagation();
+         sellItemS(param1.data.id);
+      }
+      
+      private function onCardUpgradeHandler(param1:CardEvent) : void
+      {
+         param1.stopImmediatePropagation();
+         upgradeItemS(param1.data.id);
       }
       
       private function onFiltersBlockFiltersChangedHandler(param1:FiltersEvent) : void
@@ -145,11 +138,6 @@ package net.wg.gui.lobby.storage.categories.storage
       private function onFiltersBlockResetAllFiltersHandler(param1:FiltersEvent) : void
       {
          resetFilterS();
-      }
-      
-      private function onNoItemViewCloseHandler(param1:Event) : void
-      {
-         navigateToStoreS();
       }
    }
 }

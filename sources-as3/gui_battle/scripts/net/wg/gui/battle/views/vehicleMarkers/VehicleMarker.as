@@ -190,6 +190,8 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private var _lastPlayerName:String = "";
       
+      private var _damageType:String = "";
+      
       public function VehicleMarker()
       {
          this.offsets = [-2,-2,1,1,1,1,1,0,0,-66];
@@ -564,9 +566,10 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       public function updateHealth(param1:int, param2:int, param3:String) : void
       {
+         this._damageType = param3;
          if(param1 < 0)
          {
-            param3 = VehicleMarkerFlags.DAMAGE_EXPLOSION;
+            this._damageType = VehicleMarkerFlags.DAMAGE_EXPLOSION;
             param1 = 0;
          }
          var _loc4_:int = this.model.currHealth - param1;
@@ -582,12 +585,11 @@ package net.wg.gui.battle.views.vehicleMarkers
             {
                if(_loc4_ != Values.ZERO)
                {
-                  this.hitLabel.damage(_loc4_,_loc5_,param3 == VehicleMarkerFlags.DAMAGE_SHOT);
-                  this.hitLabel.playShowTween();
+                  this.showHitLabelAnim(_loc4_,_loc5_);
                }
-               if(VehicleMarkerFlags.checkAllowedDamages(param3))
+               if(VehicleMarkerFlags.checkAllowedDamages(this._damageType))
                {
-                  this.hitExplosion.setColorAndDamageType(_loc5_,param3);
+                  this.hitExplosion.setColorAndDamageType(_loc5_,this._damageType);
                   this.hitExplosion.playShowTween();
                   this._hitIconOffset = EXPLOSION_HORIZONTAL_OFFSET;
                }
@@ -758,6 +760,12 @@ package net.wg.gui.battle.views.vehicleMarkers
       protected function getHpBarOrLabelVisible() : Boolean
       {
          return this.getIsPartVisible(HEALTH_BAR) || this.getIsPartVisible(HEALTH_LBL);
+      }
+      
+      protected function showHitLabelAnim(param1:int, param2:String) : void
+      {
+         this.hitLabel.damage(param1,param2);
+         this.hitLabel.playShowTween();
       }
       
       private function layoutParts(param1:Vector.<Boolean>) : void
@@ -1101,6 +1109,11 @@ package net.wg.gui.battle.views.vehicleMarkers
       public function set entityType(param1:String) : void
       {
          this._entityType = param1;
+      }
+      
+      protected function get damageType() : String
+      {
+         return this._damageType;
       }
       
       private function get isObserver() : Boolean

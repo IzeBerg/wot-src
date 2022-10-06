@@ -1,6 +1,5 @@
 package net.wg.gui.lobby.storage.categories.customization
 {
-   import flash.events.Event;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
    import net.wg.data.ListDAAPIDataProvider;
@@ -40,7 +39,6 @@ package net.wg.gui.lobby.storage.categories.customization
       
       override protected function onDispose() : void
       {
-         noItemsView.removeEventListener(Event.CLOSE,this.onNoItemViewCloseHandler);
          carousel.removeEventListener(CardEvent.PREVIEW,this.onCardPreviewHandler);
          this.title = null;
          super.onDispose();
@@ -58,7 +56,6 @@ package net.wg.gui.lobby.storage.categories.customization
       override protected function initNoItemsView() : void
       {
          noItemsView.setTexts(STORAGE.CUSTOMIZATION_NOITEMS_TITLE,STORAGE.CUSTOMIZATION_NOITEMS_NAVIGATIONBUTTON);
-         noItemsView.addEventListener(Event.CLOSE,this.onNoItemViewCloseHandler);
       }
       
       private function onCardPreviewHandler(param1:CardEvent) : void
@@ -81,7 +78,7 @@ package net.wg.gui.lobby.storage.categories.customization
          }
       }
       
-      private function onNoItemViewCloseHandler(param1:Event) : void
+      override protected function onNoItemsViewClose() : void
       {
          navigateToCustomizationS();
       }

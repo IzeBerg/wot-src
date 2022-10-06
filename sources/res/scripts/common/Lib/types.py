@@ -1,7 +1,3 @@
-"""Define names for all type symbols known in the standard interpreter.
-
-Types that are part of optional modules (e.g. array) are not listed.
-"""
 import sys
 NoneType = type(None)
 TypeType = type
