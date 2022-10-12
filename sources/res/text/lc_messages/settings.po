@@ -11,952 +11,946 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "CUSTOM_AA_MODE"
-msgstr "Сглаживание"
+msgstr "Antialiasing"
 
 msgid "CUSTOM_AA_MODE/description"
 msgstr ""
-"Определяет степень дополнительной обработки тонких линий и контуров объектов на игровой сцене, минимизируя эффект «лесенки».\n"
+"Determines the degree of additional processing for thin lines and contours of game objects. Minimizes the aliasing effect.\n"
 "\n"
-"• Высоко — FXAA\n"
-"• Максимум — Temporal Supersampling Antialiasing (TSSAA)"
+"• High—FXAA\n"
+"• Maximum—Temporal Supersampling Antialiasing (TSSAA)"
 
 msgid "DRR_AUTOSCALER_ENABLED"
-msgstr "Динамическое изменение"
+msgstr "Dynamic Adjustment"
 
 msgid "DRR_AUTOSCALER_ENABLED/description"
 msgstr ""
-"Включить или отключить автоматическую регулировку разрешения 3D-рендера в зависимости от нагрузки на видеокарту.\n"
+"Enable or disable automatic adjustment of 3D render resolution depending on the video card load.\n"
 "\n"
-"Включение настройки помогает сохранить быстродействие игры, при этом в Ангаре разрешение рендера всегда остаётся неизменным."
+"Enabling this parameter can improve game performance. The render resolution in the Garage always remains the same."
 
 msgid "EFFECTS_QUALITY"
-msgstr "Качество доп. эффектов"
+msgstr "Extra Effects Quality"
 
 msgid "EFFECTS_QUALITY/description"
 msgstr ""
-"Определяет качество отображения искр от рикошетов, взрывов, дыма и прочих визуальных эффектов.\n"
+"Determines the display quality of sparks from ricochets, explosions, smoke, and other visual effects.\n"
 "\n"
-"Уменьшение значения параметра может повысить быстродействие игры."
+"Reducing the value of this parameter can improve game performance."
 
 msgid "FAR_PLANE"
-msgstr "Дальность прорисовки"
+msgstr "Draw Distance"
 
 msgid "FAR_PLANE/description"
 msgstr ""
-"Определяет дистанцию отображения деталей рельефа, зданий, машин противника и"
-" прочих игровых объектов."
+"Determines the display distance of relief features, buildings, enemy "
+"vehicles and other game objects."
 
 msgid "FLORA_QUALITY"
-msgstr "Количество травы"
+msgstr "Grass Density"
 
 msgid "FLORA_QUALITY/description"
-msgstr ""
-"Определяет количество травы, отображаемой в аркадном и снайперском прицелах."
+msgstr "Determines the density of grass displayed in Arcade and Sniper modes."
 
 msgid "HAVOK_ENABLED"
-msgstr "Улучшенная физика разрушений"
+msgstr "Enhanced Destruction Physics"
 
 msgid "HAVOK_ENABLED/OFF"
-msgstr "Выключено"
+msgstr "OFF"
 
 msgid "HAVOK_ENABLED/ON"
-msgstr "Включено"
+msgstr "ON"
 
 msgid "HAVOK_ENABLED/description"
 msgstr ""
-"Более детально и достоверно обрабатывает поведение разрушаемых объектов на картах.\n"
+"Enables a more detailed and realistic processing of object destruction on maps.\n"
 "\n"
-"Отключение параметра может повысить быстродействие игры."
+"Disabling this parameter can improve game performance."
 
 msgid "HAVOK_ENABLED/warning"
 msgstr ""
-"Настройка вступит в силу со следующего боя, если в текущем бою она была "
-"отключена."
+"The setting will be applied in the next battle, if it is disabled in the "
+"current battle."
 
 msgid "LANGUAGE_CODE"
-msgstr "ru"
+msgstr "en"
 
 msgid "LIGHTING_QUALITY"
-msgstr "Качество освещения"
+msgstr "Lighting Quality"
 
 msgid "LIGHTING_QUALITY/description"
 msgstr ""
-"Точность расчёта освещения, солнечных лучей и оптических эффектов.\n"
+"Accuracy of setting sun rays, lighting, and optical effects.\n"
 "\n"
-"Увеличение значения параметра существенно увеличивает нагрузку на видеокарту."
+"Increasing the value of this parameter considerably increases load on video card."
 
 msgid "MOTION_BLUR_QUALITY"
-msgstr "Качество «размытия» в движении"
+msgstr "Motion Blur Effect"
 
 msgid "MOTION_BLUR_QUALITY/description"
 msgstr ""
-"Определяет качество эффекта «размытия» изображения при движении машины и "
-"поворотах камеры."
+"Determines the quality of motion blur effect of an image when a vehicle "
+"moves and camera rotates."
 
 msgid "MSAA_QUALITY"
-msgstr "Сглаживание"
+msgstr "Antialiasing"
 
 msgid "MSAA_QUALITY/description"
 msgstr ""
-"Определяет степень дополнительной обработки тонких линий и контуров объектов на игровой сцене, минимизируя эффект «лесенки»:\n"
+"Determines the degree of additional processing for thin lines and contours of game objects. Minimizes aliasing effect.\n"
 "\n"
-"• низко — MSAA 2x;\n"
-"• средне — MSAA 4x;\n"
-"• высоко — MSAA 8x."
+"• Low—MSAA 2x\n"
+"• Medium—MSAA 4x\n"
+"• High—MSAA 8x"
 
 msgid "OBJECT_LOD"
-msgstr "Детализация объектов"
+msgstr "Object LOD"
 
 msgid "OBJECT_LOD/description"
-msgstr "Определяет количество отображаемых объектов и их качество."
+msgstr "Determines the number of displayed objects and their quality."
 
 msgid "POST_PROCESSING_QUALITY"
-msgstr "Постобработка"
+msgstr "Post Processing"
 
 msgid "POST_PROCESSING_QUALITY/description"
 msgstr ""
-"Определяет качество постэффектов: горячего воздуха и ударной волны, хроматической аберрации, виньетирования, эффекта зернистости плёнки и т.д.\n"
+"Determines the quality of post-processing visual effects: heat shimmer and shockwave effects, chromatic aberration, vignette, film grain, etc.\n"
 "\n"
-"Уменьшение значения параметра может повысить быстродействие игры."
+"Reducing the value of this parameter can improve game performance."
 
 msgid "RENDER_PIPELINE"
-msgstr "Графика"
+msgstr "Graphics"
 
 msgid "RENDER_PIPELINE/description"
 msgstr ""
-"Улучшенная: позволяет добиться максимального качества изображения.\n"
+"Improved: allows for maximum image quality.\n"
 "\n"
-"Стандартная: позволяет добиться максимального быстродействия, упрощая или отключая некоторые визуальные эффекты."
+"Standard: allows for maximum performance by simplifying or disabling some visual effects."
 
 msgid "RENDER_PIPELINE/label"
-msgstr "Графика:"
+msgstr "Graphics:"
 
 msgid "RENDER_PIPELINE/warning"
-msgstr "Изменение данного параметра вступит в силу после перезапуска игры."
+msgstr "Change of this parameter will be applied upon game restart."
 
 msgid "SEMITRANSPARENT_LEAVES_ENABLED"
-msgstr "Прозрачность листвы"
+msgstr "Foliage transparency"
 
 msgid "SEMITRANSPARENT_LEAVES_ENABLED/description"
 msgstr ""
-"Отображение листвы для ближайших деревьев и кустов.\n"
+"Determines how foliage for nearby trees and bushes is displayed.\n"
 "\n"
-"Отключение параметра полностью скрывает листву с ближайших деревьев и кустов и может повысить быстродействие игры."
+"Disabling this parameter displays the foliage of nearby trees and bushes as completely invisible, which can improve game performance."
 
 msgid "SHADER_VERSION_CAP"
-msgstr "Версия шейдеров"
+msgstr "Shader version"
 
 msgid "SHADOWS_QUALITY"
-msgstr "Качество теней"
+msgstr "Shadow Quality"
 
 msgid "SHADOWS_QUALITY/description"
 msgstr ""
-"Определяет качество обработки динамических теней на всю дистанцию прорисовки.\n"
+"Determines the quality of dynamic shadow processing over the entire draw distance.\n"
 "\n"
-"Уменьшение значения параметра может существенно повысить быстродействие игры."
+"Reducing the value of this parameter can considerably improve game performance."
 
 msgid "SMOKE_ENABLED"
-msgstr "Дым"
+msgstr "Smoke"
 
 msgid "SNIPER_MODE_EFFECTS_QUALITY"
-msgstr "Доп. эффекты в снайперском режиме"
+msgstr "Extra Effects in Sniper Mode"
 
 msgid "SNIPER_MODE_EFFECTS_QUALITY/description"
 msgstr ""
-"Определяет качество отображения искр от рикошетов, взрывов, дыма и прочих реалистичных эффектов в снайперском режиме.\n"
+"Determines the display quality of sparks from ricochets, explosions, smoke, and other realistic effects in Sniper mode.\n"
 "\n"
-"Уменьшение значения параметра может повысить быстродействие игры."
+"Reducing the value of this parameter can improve the game performance."
 
 msgid "SNIPER_MODE_GRASS_ENABLED"
-msgstr "Трава в снайперском режиме"
+msgstr "Grass in Sniper mode"
 
 msgid "SNIPER_MODE_GRASS_ENABLED/description"
 msgstr ""
-"Отображение травы в снайперском режиме.\n"
+"Displays grass in Sniper mode.\n"
 "\n"
-"Отключение параметра может повысить быстродействие игры."
+"Disabling this parameter can improve game performance."
 
 msgid "SNIPER_MODE_TERRAIN_TESSELLATION_ENABLED"
-msgstr "Тесселяция ландшафта в снайперском режиме"
+msgstr "Terrain tessellation in Sniper mode"
 
 msgid "SNIPER_MODE_TERRAIN_TESSELLATION_ENABLED/description"
 msgstr ""
-"В снайперском режиме увеличивает детализацию ландшафта в радиусе до 50 метров от вашей машины. Работает только при включённой настройке «Тесселяция ландшафта».\n"
+"Increases the quality of terrain within a radius of 50 meters from your vehicle in Sniper mode. Available only with the Terrain Tessellation option enabled.\n"
 "\n"
-"Отключение параметра может повысить быстродействие игры."
+"Disabling this parameter can improve game performance."
 
 msgid "SPEEDTREE_QUALITY"
-msgstr "Детализация растительности"
+msgstr "Vegetation Quality"
 
 msgid "SPEEDTREE_QUALITY/description"
-msgstr "Определяет качество прорисовки деревьев, кустов и травы."
+msgstr "Determines the draw quality of trees, bushes, and grass."
 
 msgid "TERRAIN_QUALITY"
-msgstr "Качество ландшафта"
+msgstr "Terrain Quality"
 
 msgid "TERRAIN_QUALITY/description"
 msgstr ""
-"Определяет качество прорисовки деталей рельефа карты.\n"
+"Determines the draw quality of map relief features.\n"
 "\n"
-"Используйте минимальное качество ландшафта только в случае низкой производительности вашего компьютера.\n"
+"Use the minimum landscape quality only in the case of low computer performance.\n"
 "\n"
-"Уменьшение значения параметра может привести к рассинхронизации отображения ландшафта между клиентом и сервером."
+"Reducing the value of this parameter can cause desynchronization of landscape display between client and server."
 
 msgid "TERRAIN_QUALITY/warning"
-msgstr "Применение указанного параметра может занять длительное время."
+msgstr "Applying the specified parameter may take some time."
 
 msgid "TERRAIN_TESSELLATION_ENABLED"
-msgstr "Тесселяция ландшафта"
+msgstr "Terrain Tessellation"
 
 msgid "TERRAIN_TESSELLATION_ENABLED/description"
 msgstr ""
-"Аппаратно ускоренный процесс добавления новых треугольников в полигональную сетку с целью повышения её детализации.\n"
+"A hardware-accelerated process of adding new triangles to the polygon mesh to increase the mesh details.\n"
 "\n"
-"Работает только при следующих настройках:\n"
-"• графика — улучшенная;\n"
-"• качество ландшафта — высокое, максимум или ультра;\n"
-"• наличие DirectX 11.\n"
+"This function will only work with:\n"
+"• Improved Graphics\n"
+"• High, Maximum, or Ultra Terrain Quality\n"
+"• DirectX 11 installed.\n"
 "\n"
-"Если у вас установлен DirectX старше 11-й версии, то изменение настройки недоступно.\n"
+"The settings changes are unavailable with versions older than DirectX 11.\n"
 "\n"
-"Отключение параметра может повысить быстродействие игры."
+"Disabling this parameter can improve game performance."
 
 msgid "TEXTURE_QUALITY"
-msgstr "Качество текстур"
+msgstr "Texture Quality"
 
 msgid "TEXTURE_QUALITY/description"
 msgstr ""
-"Детализация поверхностей игровых объектов, особенно при близком рассмотрении.\n"
+"Quality of surfaces of game objects, especially under close examination.\n"
 "\n"
-"Уменьшение значения параметра может повысить быстродействие игры."
+"Reducing the value of this parameter can improve game performance."
 
 msgid "TEXTURE_QUALITY/warning"
-msgstr "Применение указанного параметра может занять длительное время."
+msgstr "Applying the specified parameter may take some time."
 
 msgid "TRACK_PHYSICS_QUALITY"
-msgstr "Физика гусеничных лент"
+msgstr "Track Physics"
 
 msgid "TRACK_PHYSICS_QUALITY/description"
 msgstr ""
-"Определяет качество физической симуляции поведения гусеничных лент в исправном и разорванном состояниях, а также детализацию самой гусеницы.\n"
+"Determines the quality of physics simulations for broken and operational tracks, as well as the track details.\n"
 "\n"
-"Уменьшение значения / выключение параметра может повысить быстродействие игры."
+"Reducing or disabling this parameter can improve game performance."
 
 msgid "VEHICLE_DUST_ENABLED"
-msgstr "Эффекты из-под гусениц и колёс"
+msgstr "Enable track and wheel effects"
 
 msgid "VEHICLE_DUST_ENABLED/description"
 msgstr ""
-"Отображение грунта, снега и брызг воды, вылетающих из-под гусениц и колёс.\n"
+"Displays ground, snow, and water splashes behind the tracks and wheels.\n"
 "\n"
-"Отключение параметра может повысить быстродействие игры."
+"Disabling this parameter can improve game performance."
 
 msgid "VEHICLE_TRACES_ENABLED"
-msgstr "Следы гусениц и колёс"
+msgstr "Enable track and wheel traces"
 
 msgid "VEHICLE_TRACES_ENABLED/description"
 msgstr ""
-"Отображение следов гусениц и колёс на поверхности.\n"
+"Displays track and wheel traces on the ground.\n"
 "\n"
-"Недоступно при стандартных настройках графики и низком значении качества декалей."
+"Unavailable in the Standard graphics preset and with low decal quality."
 
 msgid "WATER_QUALITY"
-msgstr "Качество воды"
+msgstr "Water Quality"
 
 msgid "WATER_QUALITY/description"
-msgstr "Определяет качество прорисовки водных поверхностей."
+msgstr "Determines the draw quality of water surfaces."
 
 msgid "aim/cassette"
-msgstr "Кассеты"
+msgstr "Containers"
 
 msgid "aim/centralTag"
-msgstr "Центральный маркер"
+msgstr "Central Marker"
 
 msgid "aim/centralTag/type0"
-msgstr "A-образный I"
+msgstr "A-shaped I"
 
 msgid "aim/centralTag/type1"
-msgstr "A-образный II"
+msgstr "A-shaped II"
 
 msgid "aim/centralTag/type10"
-msgstr "O-образный I"
+msgstr "O-shaped I"
 
 msgid "aim/centralTag/type11"
-msgstr "O-образный II"
+msgstr "O-shaped II"
 
 msgid "aim/centralTag/type12"
-msgstr "A-образный IV"
+msgstr "A-shaped IV"
 
 msgid "aim/centralTag/type13"
-msgstr "A-образный V"
+msgstr "A-shaped V"
 
 msgid "aim/centralTag/type2"
-msgstr "A-образный III"
+msgstr "A-shaped III"
 
 msgid "aim/centralTag/type3"
-msgstr "V-образный"
+msgstr "V-shaped"
 
 msgid "aim/centralTag/type4"
-msgstr "Перекрестие I"
+msgstr "Crosshair I"
 
 msgid "aim/centralTag/type5"
-msgstr "Перекрестие II"
+msgstr "Crosshair II"
 
 msgid "aim/centralTag/type6"
-msgstr "T-образный"
+msgstr "T-shaped"
 
 msgid "aim/centralTag/type7"
-msgstr "I-образный"
+msgstr "I-shaped"
 
 msgid "aim/centralTag/type8"
-msgstr "Точка I"
+msgstr "Aimpoint I"
 
 msgid "aim/centralTag/type9"
-msgstr "Точка II"
+msgstr "Aimpoint II"
 
 msgid "aim/condition"
-msgstr "Состояние"
+msgstr "Condition"
 
 msgid "aim/gunTag"
-msgstr "Маркер орудия"
+msgstr "Gun Marker"
 
 msgid "aim/gunTag/type0"
-msgstr "A-образный I (c индикатором бронепробиваемости)"
+msgstr "A-shaped I (with armor penetration indicator)"
 
 msgid "aim/gunTag/type1"
-msgstr "A-образный II (c индикатором перезарядки)"
+msgstr "A-shaped II (with load indicator)"
 
 msgid "aim/gunTag/type10"
-msgstr "O-образный II (c индикатором перезарядки)"
+msgstr "O-shaped II (with load indicator)"
 
 msgid "aim/gunTag/type11"
-msgstr "O-образный III"
+msgstr "O-shaped III"
 
 msgid "aim/gunTag/type12"
-msgstr "A-образный IV (c индикатором бронепробиваемости)"
+msgstr "A-shaped IV (with armor penetration indicator)"
 
 msgid "aim/gunTag/type13"
-msgstr "A-образный V (c индикатором перезарядки)"
+msgstr "A-shaped V (with load indicator)"
 
 msgid "aim/gunTag/type14"
-msgstr "A-образный VI"
+msgstr "A-shaped VI"
 
 msgid "aim/gunTag/type2"
-msgstr "A-образный III"
+msgstr "A-shaped III"
 
 msgid "aim/gunTag/type3"
-msgstr "Перекрестие I (c индикатором бронепробиваемости)"
+msgstr "Crosshair I (with armor penetration indicator)"
 
 msgid "aim/gunTag/type4"
-msgstr "Перекрестие II (c индикатором перезарядки)"
+msgstr "Crosshair II (with load indicator)"
 
 msgid "aim/gunTag/type5"
-msgstr "Перекрестие III"
+msgstr "Crosshair III"
 
 msgid "aim/gunTag/type6"
-msgstr "Точка I (c индикатором бронепробиваемости)"
+msgstr "Aimpoint I (with armor penetration indicator)"
 
 msgid "aim/gunTag/type7"
-msgstr "Точка II (c индикатором перезарядки)"
+msgstr "Aimpoint II (with load indicator)"
 
 msgid "aim/gunTag/type8"
-msgstr "Точка III"
+msgstr "Aimpoint III"
 
 msgid "aim/gunTag/type9"
-msgstr "O-образный I (c индикатором бронепробиваемости)"
+msgstr "O-shaped I (with armor penetration indicator)"
 
 msgid "aim/mixing"
-msgstr "Сведение"
+msgstr "Aiming"
 
 msgid "aim/mixing/type0"
-msgstr "Круг I (c заполняющимся индикатором перезарядки) "
+msgstr "Circle I (with load indicator) "
 
 msgid "aim/mixing/type1"
-msgstr "Круг II (c переключающимся индикатором перезарядки)"
+msgstr "Circle II (with shifting load indicator)"
 
 msgid "aim/mixing/type2"
-msgstr "Круг III (без индикатора перезарядки)"
+msgstr "Circle III (without load indicator)"
 
 msgid "aim/mixing/type3"
-msgstr "Круг IV (сплошной)"
+msgstr "Circle IV (solid)"
 
 msgid "aim/mixing/type4"
-msgstr "Перекрестие (c переключающимся индикатором)"
+msgstr "Crosshair (with shifting load indicator)"
 
 msgid "aim/mixing/type5"
-msgstr "Перекрестие II"
+msgstr "Crosshair II"
 
 msgid "aim/mixing/type6"
-msgstr "Тестовый"
+msgstr "Test"
 
 msgid "aim/net"
-msgstr "Индикатор"
+msgstr "Indicator"
 
 msgid "aim/net/type0"
-msgstr "Диагональный"
+msgstr "Diagonal"
 
 msgid "aim/net/type1"
-msgstr "Горизонтальный"
+msgstr "Horizontal"
 
 msgid "aim/net/type2"
-msgstr "Радиальный"
+msgstr "Radial"
 
 msgid "aim/net/type3"
-msgstr "Пунктирный"
+msgstr "Dashed"
 
 msgid "aim/reloader"
-msgstr "Перезарядка"
+msgstr "Load"
 
 msgid "aim/reloaderTimer"
-msgstr "Таймер перезарядки"
+msgstr "Loading Timer"
 
 msgid "aim/spg/aimEntranceMode"
-msgstr "Переход в артиллерийский прицел"
+msgstr "Switching to Artillery Aim"
 
 msgid "aim/spg/aimEntranceMode/last"
-msgstr "Последний использованный"
+msgstr "Last used"
 
 msgid "aim/spg/aimEntranceMode/strategic"
-msgstr "Вид сверху"
+msgstr "Top view"
 
 msgid "aim/spg/aimEntranceMode/trajectory"
-msgstr "Вид от траектории"
+msgstr "Trajectory view"
 
 msgid "aim/spg/autoChangeAimMode"
-msgstr "Автоматическая смена режима прицеливания"
+msgstr "Automatic Aiming Mode Switch"
 
 msgid "aim/spg/autoChangeAimMode/tooltip/body"
 msgstr ""
-"При вращении колеса мыши после достижения определённой степени приближения "
-"прицел автоматически перейдёт в режим «сверху» или «от траектории»."
+"When scrolling the mouse wheel and reaching a certain zoom value, the "
+"reticle will switch to the \"top view\" or the \"trajectory view\"."
 
 msgid "aim/spg/autoChangeAimMode/tooltip/header"
-msgstr "Автоматическая смена режима прицеливания"
+msgstr "Automatic Aiming Mode Switch"
 
 msgid "aim/spg/scrollSmoothingEnabled"
-msgstr "Плавное приближение и отдаление камеры"
+msgstr "Smooth camera zoom"
 
 msgid "aim/spg/shotsResultIndicator"
-msgstr "Показывать индикаторы прострела"
+msgstr "Show firing line indicators"
 
 msgid "aim/spg/shotsResultIndicator/tooltip/body"
 msgstr ""
-"Включение или отключение индикаторов, показывающих, долетит ли выбранный "
-"снаряд до точки прицеливания. Индикаторы также отображают время полёта "
-"снаряда."
+"Show/hide the indicators that display whether the selected shell will reach "
+"the aiming point. They also show the shell flight time."
 
 msgid "aim/spg/shotsResultIndicator/tooltip/header"
-msgstr "Индикаторы прострела"
+msgstr "Firing Line Indicators"
 
 msgid "aim/spg/spgScaleWidget"
-msgstr "Показывать индикатор положения камеры"
+msgstr "Show camera position indicator"
 
 msgid "aim/spg/spgScaleWidget/tooltip/body"
 msgstr ""
-"Включение или отключение индикатора, отображающего уровень "
-"приближения/отдаления камеры в артиллерийском прицеле."
+"Show/hide the indicator that displays the zoom level of the artillery aiming"
+" camera."
 
 msgid "aim/spg/spgScaleWidget/tooltip/header"
-msgstr "Индикатор положения камеры"
+msgstr "Camera Position Indicator"
 
 msgid "aim/spg/spgStrategicCamMode"
-msgstr "Управление камерой"
+msgstr "Camera Controls"
 
 msgid "aim/spg/spgStrategicCamMode/alt"
-msgstr "Альтернативное"
+msgstr "Alternative"
 
 msgid "aim/spg/spgStrategicCamMode/base"
-msgstr "Стандартное"
+msgstr "Standard"
 
 msgid "aim/spg/spgStrategicCamMode/tooltip/body"
 msgstr ""
-"В стандартном режиме управления камера перемещается вверх, вниз, влево и "
-"вправо. В альтернативном режиме управления камера перемещается вперёд, назад"
-" и поворачивается вокруг места расположения САУ."
+"In standard camera controls mode, the camera moves up, down, left, and "
+"right. In alternative camera controls mode, the camera moves forward, "
+"backward, and around the SPG position."
 
 msgid "aim/spg/spgStrategicCamMode/tooltip/header"
-msgstr "Управление камерой"
+msgstr "Camera Controls"
 
 msgid "aim/x2"
 msgstr "x2"
 
 msgid "aim/zoomIndicator"
-msgstr "Индикатор зума"
+msgstr "Zoom Indicator"
 
 msgid "alternativeVoices/labels"
-msgstr "Голосовые уведомления в бою"
+msgstr "Voice Messages in Battle"
 
 msgid "alternativeVoices/labels/voiceBattle"
-msgstr "Голос уведомлений в бою"
+msgstr "Voice Messages in Battle"
 
 msgid "apply_button"
-msgstr "Применить"
+msgstr "Apply"
 
 msgid "autodetectButton"
-msgstr "Рекомендуемое"
+msgstr "Recommended"
 
 msgid "autodetectButton/description"
 msgstr ""
-"Определение оптимального качества графики для вашего компьютера.\n"
+"Determines optimum image quality for your computer.\n"
 "\n"
-"Может занять некоторое время."
+"This may take some time."
 
 msgid "battlecomm/showCalloutMessages"
-msgstr "Показывать личные команды"
+msgstr "Show personal commands"
 
 msgid "battlecomm/showCommInPlayerlist"
-msgstr "Показывать коммуникацию на панели команды"
+msgstr "Indicate communication on team panel"
 
 msgid "battlecomm/showLocationMarkers"
-msgstr "Показывать маркеры позиций на карте"
+msgstr "Show location markers on the map"
 
 msgid "battlecomm/showMarkers"
-msgstr "Показывать маркеры баз в Случайных боях"
+msgstr "Show base markers in Random Battles"
 
 msgid "battlecomm/showStickyMarkers"
-msgstr "Показывать закреплённые маркеры"
+msgstr "Show sticky markers"
 
 msgid "borderlessSize"
-msgstr "Оконный (без рамки)"
+msgstr "Windowed (borderless)"
 
 msgid "borderlessSize/description"
-msgstr "Оконный (без рамки)"
+msgstr "Windowed (borderless)"
 
 msgid "cancel_button"
-msgstr "Отменить"
+msgstr "Cancel"
 
 msgid "chat/censorshipMessages"
-msgstr "Включить цензуру сообщений"
+msgstr "Censor offensive words in chat messages"
 
 msgid "chat/chatContactsListOnly"
-msgstr "Принимать сообщения только из списка контактов"
+msgstr "Receive messages only from the Contact list"
 
 msgid "chat/disableBattleChat"
-msgstr "Отключить чат с союзниками"
+msgstr "Disable chat with allies"
 
 msgid "chat/enableStoreChannelsWindows"
-msgstr "Запоминать положение и размеры окон каналов"
+msgstr "Remember position of camera and channel windows"
 
 msgid "chat/enableStoreManagementWindows"
-msgstr "Запоминать положение и размеры прочих окон"
+msgstr "Remember position of camera and other windows"
 
 msgid "chat/invitesFromFriendsOnly"
-msgstr "Принимать приглашения в Ангаре только от друзей"
+msgstr "Accept invitations only from friends in the Garage"
 
 msgid "chat/receiveClanInvitesNotifications"
-msgstr "Получать клановые уведомления"
+msgstr "Receive clan notifications"
 
 msgid "chat/receiveFriendshipRequest"
-msgstr "Принимать запросы на добавление в «Друзья»"
+msgstr "Accept friend requests"
 
 msgid "chat/receiveInvitesInBattle"
-msgstr "Принимать приглашения во взвод в бою"
+msgstr "Accept invitations to Platoon in battle"
 
 msgid "chat/removeSpam"
-msgstr "Скрывать спам"
+msgstr "Hide spam"
 
 msgid "chat/showDateMessage"
-msgstr "Показывать дату сообщения"
+msgstr "Display date in messages"
 
 msgid "chat/showJoinLeaveMessages"
-msgstr "Показывать подключение/отключение игроков"
+msgstr "Notify when users connect/disconnect"
 
 msgid "chat/showTimeMessage"
-msgstr "Показывать время сообщения"
+msgstr "Display time in messages"
 
 msgid "colorCorrection"
-msgstr "Цветокоррекция"
+msgstr "Color Adjustment"
 
 msgid "colorCorrectionBtn/label"
-msgstr "Настроить"
+msgstr "Configure"
 
 msgid "colorSettings/tab/customSettings"
-msgstr "Пользовательские настройки"
+msgstr "Custom Settings"
 
 msgid "colorSettings/tab/customSettings/brightness"
-msgstr "Яркость"
+msgstr "Brightness"
 
 msgid "colorSettings/tab/customSettings/contrast"
-msgstr "Контрастность"
+msgstr "Contrast"
 
 msgid "colorSettings/tab/customSettings/saturation"
-msgstr "Насыщенность"
+msgstr "Saturation"
 
 msgid "colorSettings/tab/default"
-msgstr "По умолчанию"
+msgstr "Default"
 
 msgid "colorSettings/tab/filters"
-msgstr "Готовые фильтры"
+msgstr "Preset Filters"
 
 msgid "colorSettings/tab/filters/intensity"
-msgstr "Интенсивность фильтра"
+msgstr "Filter Intensity"
 
 msgid "colorSettings/view/after"
-msgstr "После"
+msgstr "After"
 
 msgid "colorSettings/view/before"
-msgstr "До"
+msgstr "Before"
 
 msgid "colorSettings/view/closeBtn"
-msgstr "ЗАКРЫТЬ"
+msgstr "CLOSE"
 
 msgid "colorSettings/view/description"
-msgstr "Выберите один из методов настройки изображения"
+msgstr "Select one of the image adjustment options"
 
 msgid "colorSettings/view/header"
-msgstr "Цветокоррекция"
+msgstr "Color Adjustment"
 
 msgid "colorSettings/view/resetBtn"
-msgstr "Сбросить"
+msgstr "Reset"
 
 msgid "colorSettings/view/subTitle"
-msgstr "Методы настройки"
+msgstr "Image Adjustment Options"
 
 msgid "cursor/ArcadeTitle"
-msgstr "Аркадный"
+msgstr "Arcade"
 
 msgid "cursor/ArtyTitle"
-msgstr "Артиллерийский"
+msgstr "Artillery"
 
 msgid "cursor/ContourTitle"
-msgstr "Обводка"
+msgstr "Outlining"
 
 msgid "cursor/ServerAim"
-msgstr "Использовать серверный прицел"
+msgstr "Enable server reticle"
 
 msgid "cursor/SnipperTitle"
-msgstr "Снайперский"
+msgstr "Sniper"
 
 msgid "cursor/contour/type0"
-msgstr "Стандартная"
+msgstr "Standard"
 
 msgid "cursor/contour/type0/tooltip"
 msgstr ""
-"При наведении прицела на машину обводится весь её контур, включая навесные "
-"неброневые элементы, с которыми не могут взаимодействовать снаряды."
+"When aiming at the enemy vehicle, its entire contour is outlined, including "
+"applied non-armor elements that shells cannot interact with."
 
 msgid "cursor/contour/type1"
-msgstr "Упрощённая"
+msgstr "Simplified"
 
 msgid "cursor/contour/type1/tooltip"
 msgstr ""
-"При наведении прицела на машину обводится часть её контура, включающая "
-"только броневые элементы, с которыми могут взаимодействовать снаряды."
+"When aiming at the enemy vehicle, part of its contour is outlined, including"
+" only armor elements that shells can interact with."
 
 msgid "cursor/contourImpenetrableZone"
-msgstr "Непростреливаемая зона"
+msgstr "Impenetrable area"
 
 msgid "cursor/contourImpenetrableZone/type0"
-msgstr "Нет"
+msgstr "None"
 
 msgid "cursor/contourImpenetrableZone/type1"
-msgstr "Заливка"
+msgstr "Fill"
 
 msgid "cursor/contourImpenetrableZone/type2"
-msgstr "Текстура"
+msgstr "Texture"
 
 msgid "cursor/contourLabel"
-msgstr "Тип обводки"
+msgstr "Outlining Type"
 
 msgid "cursor/contourPenetrableZone"
-msgstr "Простреливаемая зона"
+msgstr "Penetrable area"
 
 msgid "cursor/contourPenetrableZone/type0"
-msgstr "Нет"
+msgstr "None"
 
 msgid "cursor/contourPenetrableZone/type1"
-msgstr "Заливка"
+msgstr "Fill"
 
 msgid "cursor/contourPenetrableZone/type2"
-msgstr "Текстура"
+msgstr "Texture"
 
 msgid "cursor/overlapContour"
-msgstr "Отрисовка укрытий"
+msgstr "Obstacles rendering"
 
 msgid "cursor/overlapContour/tooltip/attention"
-msgstr "Включение отрисовки может снизить производительность."
+msgstr "Enabling rendering can reduce performance."
 
 msgid "cursor/overlapContour/tooltip/body"
 msgstr ""
-"Отображение препятствий для снаряда при наведении прицела на машину противника.\n"
+"Displaying shell obstacles when aiming at the enemy vehicle.\n"
 " "
 
 msgid "cursor/overlapContour/tooltip/header"
-msgstr "Отрисовка укрытий"
+msgstr "Obstacles Rendering"
 
 msgid "cursor/overlapContourLabel"
-msgstr "Отрисовка укрытий"
+msgstr "Obstacles Rendering"
 
 msgid "cursorTitle"
-msgstr "Прицел"
+msgstr "Reticle"
 
 msgid "defaultBtn"
-msgstr "По умолчанию"
+msgstr "Default"
 
 msgid "defaultNamePrefix"
-msgstr "Игрок"
+msgstr "Player"
 
 msgid "dynamicCamera"
-msgstr "Включить динамическую камеру"
+msgstr "Enable dynamic camera"
 
 msgid "dynamicFov"
-msgstr "Динамический FoV"
+msgstr "Dynamic FoV"
 
 msgid "dynamicFov/description"
 msgstr ""
-"Динамический FoV позволяет установить минимальный и максимальный угол обзора в аркадном прицеле.\n"
+"Dynamic FoV allows you to set the minimum and maximum view angle in Arcade aim.\n"
 "\n"
-"Максимальный угол используется при отдалении камеры от собственной машины.\n"
+"Maximum angle is used when the camera is zoomed away from the vehicle.\n"
 "\n"
-"Минимальный угол используется при приближении."
+"Minimum angle is used when zoomed in to the vehicle."
 
 msgid "dynamicRenderer"
-msgstr "Разрешение 3D рендера"
+msgstr "3D Render Resolution"
 
 msgid "dynamicRenderer/description"
 msgstr ""
-"Определяет качество и детальность отображения игровой сцены.\n"
+"Determines game scene quality and details.\n"
 "\n"
-"Используйте сочетание клавиш [RShift +] и [RShift -] для изменения разрешения 3D рендера в бою. Не влияет на интерфейс.\n"
+"3D render resolution in a battle can be changed by using [RShift +] and [RShift -]. Does not influence the interface.\n"
 "\n"
-"Уменьшение значения параметра может повысить быстродействие игры на компьютерах со слабой видеокартой."
+"Reducing this parameter can improve game performance for computers with a low-performance video card."
 
 msgid "edgeDetectAA"
 msgstr "Edge detect AA"
 
 msgid "feedBack"
-msgstr "Информирование в бою"
+msgstr "Battle Notifications"
 
 msgid "feedback/tab/battleBorderMap"
-msgstr "Граница карты"
+msgstr "Map Border"
 
 msgid "feedback/tab/battleEvents/checkbox/AssistStun"
-msgstr "Помощь оглушением"
+msgstr "Damage after your stun"
 
 msgid "feedback/tab/battleEvents/checkbox/BaseCapture"
-msgstr "Очки захвата базы"
+msgstr "Base capture points"
 
 msgid "feedback/tab/battleEvents/checkbox/BaseCaptureDrop"
-msgstr "Очки защиты базы"
+msgstr "Capture points reset"
 
 msgid "feedback/tab/battleEvents/checkbox/BlockedDamage"
-msgstr "Удар сдержан"
+msgstr "Damage Blocked"
 
 msgid "feedback/tab/battleEvents/checkbox/EnemyBurning"
-msgstr "Поджог противника"
+msgstr "Enemy vehicle set on fire"
 
 msgid "feedback/tab/battleEvents/checkbox/EnemyCriticalHit"
-msgstr "Критический урон"
+msgstr "Critical damage"
 
 msgid "feedback/tab/battleEvents/checkbox/EnemyDetection"
-msgstr "Обнаружение противника"
+msgstr "Spotting"
 
 msgid "feedback/tab/battleEvents/checkbox/EnemyDetectionDamage"
-msgstr "Урон по разведданным"
+msgstr "Damage upon your spotting"
 
 msgid "feedback/tab/battleEvents/checkbox/EnemyHpDamage"
-msgstr "Урон выстрелом"
+msgstr "Damage from a shot"
 
 msgid "feedback/tab/battleEvents/checkbox/EnemyKill"
-msgstr "Уничтожение противника"
+msgstr "Enemy vehicle destroyed"
 
 msgid "feedback/tab/battleEvents/checkbox/EnemyRamAttack"
-msgstr "Урон противнику тараном"
+msgstr "Damage from ramming"
 
 msgid "feedback/tab/battleEvents/checkbox/EnemyTrackDamage"
-msgstr "Сбитие гусеницы"
+msgstr "Track destroyed"
 
 msgid "feedback/tab/battleEvents/checkbox/EventName"
-msgstr "Название события"
+msgstr "Event name"
 
 msgid "feedback/tab/battleEvents/checkbox/ReceivedCrits"
-msgstr "Критическое повреждение"
+msgstr "Critical damage"
 
 msgid "feedback/tab/battleEvents/checkbox/ReceivedDamage"
-msgstr "Урон"
+msgstr "Damage"
 
 msgid "feedback/tab/battleEvents/checkbox/ShowInBattle"
-msgstr "Отображать в бою"
+msgstr "Show in battle"
 
 msgid "feedback/tab/battleEvents/checkbox/Stun"
-msgstr "Оглушение 2+ машин"
+msgstr "Stun of 2+ vehicles"
 
 msgid "feedback/tab/battleEvents/checkbox/VehicleInfo"
-msgstr "Информация о машине"
+msgstr "Vehicle info"
 
 msgid "feedback/tab/battleEvents/checkbox/WorldCollision"
-msgstr "Урон от падения"
+msgstr "Damage by wrecking"
 
 msgid "feedback/tab/battleEvents/info"
-msgstr "В бою отображаются 3 последних события"
+msgstr "The three most recent events are displayed in a battle"
 
 msgid "feedback/tab/battleEvents/label/Information"
-msgstr "Информирование"
+msgstr "Notifications"
 
 msgid "feedback/tab/battleEvents/label/VisibleEvents"
-msgstr "События"
+msgstr "Events"
 
 msgid "feedback/tab/battleEvents/label/negative"
-msgstr "Получение урона"
+msgstr "Damage received"
 
 msgid "feedback/tab/battleEvents/label/positive"
-msgstr "Боевая эффективность"
+msgstr "Battle Performance"
 
 msgid "feedback/tab/battleEvents/receivedDamage"
-msgstr "Получен урон"
+msgstr "Damage received"
 
 msgid "feedback/tab/borderMap/hideBorderWarning"
-msgstr "Скрытие границы карты может привести к дезориентации в бою."
+msgstr "Hiding the map border may result in disorientation in battle."
 
 msgid "feedback/tab/borderMap/showMode/alt"
-msgstr "По нажатию на Alt"
+msgstr "Upon pressing Alt"
 
 msgid "feedback/tab/borderMap/showMode/always"
-msgstr "Всегда подсвечена"
+msgstr "Always highlighted"
 
 msgid "feedback/tab/borderMap/showMode/alwaysHide"
-msgstr "Не подсвечивать"
+msgstr "Do not highlight"
 
 msgid "feedback/tab/borderMap/showMode/hide"
-msgstr "При приближении"
+msgstr "When approaching"
 
 msgid "feedback/tab/borderMap/showMode/label"
-msgstr "Дополнительная подсветка"
+msgstr "Additional highlighting"
 
 msgid "feedback/tab/borderMap/typeBorder/dotted"
-msgstr "Пунктир"
+msgstr "Dotted line"
 
 msgid "feedback/tab/borderMap/typeBorder/hide"
-msgstr "Не отображать"
+msgstr "Do not display"
 
 msgid "feedback/tab/borderMap/typeBorder/label"
-msgstr "Вид границы"
+msgstr "Border Type"
 
 msgid "feedback/tab/borderMap/typeBorder/wall"
-msgstr "Стена"
+msgstr "Wall"
 
 msgid "feedback/tab/damageIndicator"
-msgstr "Индикатор обстрела"
+msgstr "Fire Direction Indicator"
 
 msgid "feedback/tab/damageIndicator/indicator/allyLabel"
-msgstr "Дружественный огонь"
+msgstr "Friendly fire"
 
 msgid "feedback/tab/damageIndicator/indicator/blockDamageCountTF"
-msgstr ""
-"Количество\n"
-"урона"
+msgstr "Amount of damage"
 
 msgid "feedback/tab/damageIndicator/indicator/blockedLabel"
-msgstr "Удар по вашей машине сдержан"
+msgstr "Shot blocked"
 
 msgid "feedback/tab/damageIndicator/indicator/blockedValue"
 msgstr "400"
 
 msgid "feedback/tab/damageIndicator/indicator/critLabel"
 msgstr ""
-"Критическое попадание\n"
-"по вашей машине"
+"Critical hit\n"
+"on your vehicle"
 
 msgid "feedback/tab/damageIndicator/indicator/critValue"
 msgstr "x3"
 
 msgid "feedback/tab/damageIndicator/indicator/damageLabel"
-msgstr "Полученный урон"
+msgstr "Damage received"
 
 msgid "feedback/tab/damageIndicator/indicator/damageModule"
-msgstr ""
-"Повреждённый\n"
-"модуль"
+msgstr "Module damaged"
 
 msgid "feedback/tab/damageIndicator/indicator/damageValue"
 msgstr "400"
 
 msgid "feedback/tab/damageIndicator/items"
-msgstr "Информация"
+msgstr "Information"
 
 msgid "feedback/tab/damageIndicator/items/animation"
-msgstr "Анимация появления"
+msgstr "Display animation"
 
 msgid "feedback/tab/damageIndicator/items/damage"
-msgstr "Количество урона"
+msgstr "Amount of damage"
 
 msgid "feedback/tab/damageIndicator/items/dynamicIndicator"
-msgstr "Динамические индикаторы"
+msgstr "Dynamic indicators"
 
 msgid "feedback/tab/damageIndicator/items/tankName"
-msgstr "Информация о машине"
+msgstr "Vehicle info"
 
 msgid "feedback/tab/damageIndicator/presets"
-msgstr "Отображать в бою"
+msgstr "Display in battle"
 
 msgid "feedback/tab/damageIndicator/presets/all"
-msgstr "Полностью"
+msgstr "All"
 
 msgid "feedback/tab/damageIndicator/presets/showAllies"
-msgstr "Дружественный огонь"
+msgstr "Friendly fire"
 
 msgid "feedback/tab/damageIndicator/presets/showCrits"
-msgstr "Критические попадания"
+msgstr "Critical hits"
 
 msgid "feedback/tab/damageIndicator/presets/withoutCrit"
-msgstr "Без критических"
+msgstr "Except critical"
 
 msgid "feedback/tab/damageIndicator/type/extended"
-msgstr "Расширенный"
+msgstr "Advanced"
 
 msgid "feedback/tab/damageIndicator/type/standard"
-msgstr "Стандартный"
+msgstr "Standard"
 
 msgid "feedback/tab/damageIndicator/typeLabel"
-msgstr "Вид"
+msgstr "Type"
 
 msgid "feedback/tab/damageLogPanel"
-msgstr "История событий"
+msgstr "Log"
 
 msgid "feedback/tab/damageLogPanel/assistStun"
-msgstr "Нанесённый по вашему оглушению"
+msgstr "Caused upon your stun"
 
 msgid "feedback/tab/damageLogPanel/blockedDamage"
-msgstr "Заблокированный бронёй"
+msgstr "Blocked by armor"
 
 msgid "feedback/tab/damageLogPanel/damageAssist"
-msgstr "Нанесённый с вашей помощью"
+msgstr "Damage with your assistance"
 
 msgid "feedback/tab/damageLogPanel/damageDone"
-msgstr "Нанесённый лично"
+msgstr "Damage caused by you"
 
 msgid "feedback/tab/damageLogPanel/details/always"
-msgstr "Отображать всегда"
+msgstr "Display always"
 
 msgid "feedback/tab/damageLogPanel/details/byAlt"
-msgstr "По нажатию на Alt"
+msgstr "Press Alt to display"
 
 msgid "feedback/tab/damageLogPanel/details/hide"
-msgstr "Не показывать"
+msgstr "Do not display"
 
 msgid "feedback/tab/damageLogPanel/detailsLabel"
-msgstr "Детальный урон"
+msgstr "Detailed damage"
 
 msgid "feedback/tab/damageLogPanel/eventPositions/bottom"
-msgstr "Все события внизу"
+msgstr "All events at the bottom"
 
 msgid "feedback/tab/damageLogPanel/eventPositions/topBottom"
-msgstr "Получение урона сверху"
+msgstr "Received damage at the top"
 
 msgid "feedback/tab/damageLogPanel/eventPositionsLabel"
-msgstr "Расположение событий"
+msgstr "Position of events"
 
 msgid "feedback/tab/damageLogPanel/eventTypes/both"
-msgstr "Все события"
+msgstr "All events"
 
 msgid "feedback/tab/damageLogPanel/eventTypes/eventTypesLabel"
-msgstr "Тип события"
+msgstr "Event type"
 
 msgid "feedback/tab/damageLogPanel/eventTypes/negative"
-msgstr "Получение урона"
+msgstr "Damage received"
 
 msgid "feedback/tab/damageLogPanel/eventTypes/positive"
-msgstr "Боевая эффективность"
+msgstr "Battle Performance"
 
 msgid "feedback/tab/damageLogPanel/negative/value1"
 msgstr "490"
@@ -984,11 +978,11 @@ msgstr "103"
 
 msgid "feedback/tab/damageLogPanel/screenAlert"
 msgstr ""
-"Включение данной настройки не рекомендуется\n"
-"для низких разрешений экрана"
+"Enabling this setting is not recommended\n"
+"for displays with a low resolution"
 
 msgid "feedback/tab/damageLogPanel/summLabel"
-msgstr "Суммарный урон"
+msgstr "Summarized damage"
 
 msgid "feedback/tab/damageLogPanel/summaryAssist"
 msgstr "1200"
@@ -1016,54 +1010,50 @@ msgstr "750"
 
 msgid "feedback/tab/detailsInfoBlock"
 msgstr ""
-"Блок детального урона. Показывает полную информацию о вашей эффективности в "
-"бою."
+"A block for detailed damage information. Shows complete information about "
+"your effectiveness in battle."
 
 msgid "feedback/tab/eventsInfo"
-msgstr "События в бою"
+msgstr "Battle Events"
 
 msgid "feedback/tab/questsProgress"
-msgstr "Боевой отчёт и ЛБЗ"
+msgstr "Battle Report & Missions"
 
 msgid "feedback/tab/questsProgress/battleScoreLabel"
-msgstr "Панель счёта"
+msgstr "Battle Score"
 
 msgid "feedback/tab/questsProgress/conditionsLabel"
-msgstr "Подробности ЛБЗ"
+msgstr "Mission Details"
 
 msgid "feedback/tab/questsProgress/enableTierGrouping"
-msgstr ""
-"Группировать иконки\n"
-"техники по уровню"
+msgstr "Display vehicle icons by tier"
 
 msgid "feedback/tab/questsProgress/showHPBar"
-msgstr "Шкала прочности команд"
+msgstr "Display team HP bar"
 
 msgid "feedback/tab/questsProgress/showHPDifference"
-msgstr ""
-"Разница между\n"
-"очками прочности команд"
+msgstr "Display team HP difference"
 
 msgid "feedback/tab/questsProgress/showHPValues"
-msgstr "Очки прочности команд"
+msgstr "Display team HP number"
 
 msgid "feedback/tab/questsProgress/standardConditions/showAll"
-msgstr "Показывать всё"
+msgstr "Display all"
 
 msgid "feedback/tab/questsProgress/standardConditions/showProgress"
-msgstr "Только прогресс"
+msgstr "Display progress only"
 
 msgid "feedback/tab/questsProgress/type/alternative"
-msgstr "Альтернативный"
+msgstr "Alternative"
 
 msgid "feedback/tab/questsProgress/type/hidden"
-msgstr "Не отображать"
+msgstr "Do not display"
 
 msgid "feedback/tab/questsProgress/type/standard"
-msgstr "Стандартный"
+msgstr "Standard"
 
 msgid "feedback/tab/questsProgress/typeLabel"
-msgstr "Отображение ЛБЗ"
+msgstr "Display missions"
 
 msgid "feedback/tab/ribbons/armorValue"
 msgstr "750"
@@ -1102,300 +1092,300 @@ msgid "feedback/tab/ribbons/visibleItemsCount"
 msgstr "3"
 
 msgid "fov"
-msgstr "Угол обзора (FoV)"
+msgstr "Field of View (FoV)"
 
 msgid "fov/description"
 msgstr ""
-"Пределы видимости игровой камеры.\n"
+"Visibility range of the game camera.\n"
 "\n"
-"Привычный для человека угол обзора — около 95°. Чем угол меньше, тем ближе становятся объекты, но периферийный обзор при этом сокращается.\n"
+"95° is the normal FoV (field of view). The smaller the FoV, the closer objects appear, while peripheral view is reduced. \n"
 "\n"
-"Не влияет на быстродействие игры."
+"Does not influence game performance."
 
 msgid "game/anonymizer"
-msgstr "Скрывать имя в бою"
+msgstr "Anonymize your nickname in battle"
 
 msgid "game/battleLoadingInfo"
-msgstr "Подсказки на экране загрузки боя"
+msgstr "Tips on the Battle Loading Screen"
 
 msgid "game/battleLoadingInfo/minimap"
-msgstr "Мини-карта"
+msgstr "Minimap"
 
 msgid "game/battleLoadingInfo/textTip"
-msgstr "Только текст"
+msgstr "Text only"
 
 msgid "game/battleLoadingInfo/visualTip"
-msgstr "С иллюстрацией"
+msgstr "Illustrated tips"
 
 msgid "game/battleLoadingRankedInfo"
-msgstr "Подсказки на экране загрузки Рангового боя"
+msgstr "Tips on the Ranked Battle loading screen"
 
 msgid "game/battleLoadingRankedInfo/minimap"
-msgstr "Мини-карта"
+msgstr "Minimap"
 
 msgid "game/battleLoadingRankedInfo/textTip"
-msgstr "Только текст"
+msgstr "Text only"
 
 msgid "game/battleLoadingRankedInfo/visualTip"
-msgstr "С иллюстрацией"
+msgstr "Illustrated tips"
 
 msgid "game/battlePanelSettings"
-msgstr "Боевой интерфейс"
+msgstr "Battle Interface"
 
 msgid "game/c11nHistoricallyAccurate"
-msgstr "Скрывать неисторичные элементы"
+msgstr "Hide non-historical elements"
 
 msgid "game/carouselType"
-msgstr "Панель техники"
+msgstr "Vehicle panel"
 
 msgid "game/carouselType/double"
-msgstr "Двухуровневая"
+msgstr "Two-level"
 
 msgid "game/carouselType/single"
-msgstr "Одноуровневая"
+msgstr "One-level"
 
 msgid "game/carouselVehicle/checkbox/stats"
-msgstr "Отображать статистику по наведению на слот в Ангаре"
+msgstr "Display stats upon hovering over a slot in the Garage"
 
 msgid "game/commanderCamEnabled"
-msgstr "Включить тактический обзор"
+msgstr "Enable Tactical View"
 
 msgid "game/customizationDisplayType"
-msgstr "Отображение элементов внешнего вида в бою"
+msgstr "Display of customization elements in battle"
 
 msgid "game/customizationDisplayType/all"
-msgstr "Историчные, неисторичные и вымышленные"
+msgstr "Historical, non-historical, and fictional"
 
 msgid "game/customizationDisplayType/historical"
-msgstr "Историчные"
+msgstr "Historical"
 
 msgid "game/customizationDisplayType/notHistorical"
-msgstr "Историчные и неисторичные"
+msgstr "Historical and non-historical"
 
 msgid "game/displayPlatoonMembers"
-msgstr "Показывать технику совзводных в Ангаре"
+msgstr "Display vehicles of Platoon members in the Garage"
 
 msgid "game/doubleCarousel/label"
-msgstr "Двухуровневая панель техники"
+msgstr "Two-level vehicle panel"
 
 msgid "game/doubleCarouselType/adaptive"
-msgstr "Адаптируемая"
+msgstr "Adaptive"
 
 msgid "game/doubleCarouselType/small"
-msgstr "Минималистичная"
+msgstr "Minimalistic"
 
 msgid "game/dynamicCamera"
-msgstr "Включить динамическую камеру"
+msgstr "Enable dynamic camera"
 
 msgid "game/enableBattleNotifier"
-msgstr "Показывать результаты предыдущего боя в чате"
+msgstr "Show previous battle results in chat"
 
 msgid "game/enableDelayPostEffect"
-msgstr "Показать в посмертии машину, уничтожившую вас"
+msgstr "Show in Postmortem mode vehicle that destroyed your vehicle"
 
 msgid "game/enableMortalPostEffect"
-msgstr "Включить пост-эффект в посмертии"
+msgstr "Enable post-effect in Postmortem mode"
 
 msgid "game/enableOpticalSnpEffect"
-msgstr "Включить эффект оптики в снайперском режиме"
+msgstr "Enable optics effect in Sniper mode"
 
 msgid "game/enableRepairTimer"
-msgstr "Показывать время ремонта повреждённых модулей"
+msgstr "Show the repair time for damaged modules"
 
 msgid "game/enableSpeedometer"
-msgstr "Показывать спидометр колёсной техники"
+msgstr "Display the speedometer of wheeled vehicles"
 
 msgid "game/enableVoIP"
-msgstr "Голосовая связь"
+msgstr "Voice Chat"
 
 msgid "game/fieldset/headerBattleCommunication"
-msgstr "Коммуникация в бою"
+msgstr "Battle Communication"
 
 msgid "game/fieldset/headerChat"
-msgstr "Чат"
+msgstr "Chat"
 
 msgid "game/fieldset/headerGameplay"
-msgstr "Настройки Случайных боёв"
+msgstr "Random Battle Settings"
 
 msgid "game/fieldset/headerMinimap"
-msgstr "Мини-карта"
+msgstr "Minimap"
 
 msgid "game/fieldset/headerVehicleMarker"
-msgstr "Маркеры техники"
+msgstr "Vehicle Markers"
 
 msgid "game/hangarCamCheckbox"
-msgstr "Анимация Ангара при движении курсора мыши"
+msgstr "Garage camera animation when moving the mouse cursor"
 
 msgid "game/hangarCamDropdownTitle"
-msgstr "Вращение Ангара при бездействии через"
+msgstr "Garage camera rotation when idle for"
 
 msgid "game/hangarCamGroupTitle"
-msgstr "Анимация камеры в Ангаре"
+msgstr "Garage Camera Animation"
 
 msgid "game/hangarCamPeriod/never"
-msgstr "Никогда"
+msgstr "Never"
 
 msgid "game/hangarCamPeriod/type0"
-msgstr "30 секунд"
+msgstr "30 seconds"
 
 msgid "game/hangarCamPeriod/type1"
-msgstr "45 секунд"
+msgstr "45 seconds"
 
 msgid "game/hangarCamPeriod/type2"
-msgstr "60 секунд"
+msgstr "60 seconds"
 
 msgid "game/horStabilizationSnp"
-msgstr "Горизонтальная стабилизация в снайперском режиме"
+msgstr "Horizontal stabilization in Sniper mode"
 
 msgid "game/hullLockEnabled"
-msgstr "Отключить доворот корпуса в снайперском режиме"
+msgstr "Enable automatic hull lock in Sniper mode"
 
 msgid "game/increasedZoom/base"
-msgstr "Включить кратность приближения %(zooms)s"
+msgstr "Enable the %(zooms)s"
 
 msgid "game/increasedZoom/delimeter"
-msgstr " и "
+msgstr " and "
 
 msgid "game/increasedZoom/zoomStr"
 msgstr "x%(zoom)d"
 
 msgid "game/loginServerSelection"
-msgstr "Показывать выбор сервера при запуске игры"
+msgstr "Display server selection upon game launch"
 
 msgid "game/minimapDrawRange"
-msgstr "Показывать круг отображения техники"
+msgstr "Show the draw circle"
 
 msgid "game/minimapGroupTitle"
-msgstr "Мини-карта"
+msgstr "Minimap"
 
 msgid "game/minimapMaxViewRange"
-msgstr "Показывать максимальный круг обзора"
+msgstr "Show the maximum spotting range"
 
 msgid "game/minimapMinSpottingRange"
-msgstr "Показывать круг обнаружения (т. н. «рентген»)"
+msgstr "Show the proximity spotting circle"
 
 msgid "game/minimapViewRange"
-msgstr "Показывать круг обзора"
+msgstr "Show the view range circle"
 
 msgid "game/optimizeGraphics"
-msgstr "Оптимизировать отрисовку интерфейса"
+msgstr "Optimize interface rendering"
 
 msgid "game/playersPanelState/large"
-msgstr "Длинная"
+msgstr "Full Panel"
 
 msgid "game/playersPanelState/medium"
-msgstr "Средняя"
+msgstr "Medium"
 
 msgid "game/playersPanelState/none"
-msgstr "Не показывать список"
+msgstr "No Panel"
 
 msgid "game/playersPanelState/short"
-msgstr "Короткая"
+msgstr "Short Panel"
 
 msgid "game/ppShowLevels"
-msgstr "Показывать уровень техники"
+msgstr "Show vehicle tier"
 
 msgid "game/ppShowTypes"
-msgstr "Показывать тип техники"
+msgstr "Show vehicle type"
 
 msgid "game/ppStartStateLabel"
-msgstr "Вид"
+msgstr "Type"
 
 msgid "game/preCommanderCamEnabled"
-msgstr "Включить командирскую камеру"
+msgstr "Enable Commander Camera"
 
 msgid "game/replayEnabled"
-msgstr "Записывать бои"
+msgstr "Enable Battle Recording"
 
 msgid "game/replayEnabled/all"
-msgstr "Все"
+msgstr "All"
 
 msgid "game/replayEnabled/last"
-msgstr "Последний"
+msgstr "Last"
 
 msgid "game/replayEnabled/none"
-msgstr "Нет"
+msgstr "None"
 
 msgid "game/showArtyHitOnMap"
-msgstr "Показывать область обстрела САУ противника"
+msgstr "Display of the area SPGs will hit"
 
 msgid "game/showDamageIcon"
-msgstr "Показывать уведомления о причинах отсутствия урона"
+msgstr "Display notifications when not causing damage"
 
 msgid "game/showDogTag"
-msgstr "Показывать жетон"
+msgstr "Display Dog Tag"
 
 msgid "game/showDogTagToKiller"
-msgstr "Показывать ваш настоящий жетон"
+msgstr "Display your actual Dog Tag"
 
 msgid "game/showExInfoForDestroyVehicle"
-msgstr "Показывать подписи для уничтоженной техники"
+msgstr "Show destroyed vehicles' info"
 
 msgid "game/showLanguageBar"
-msgstr "Показывать панель выбора языка"
+msgstr "Show Language Panel"
 
 msgid "game/showMarksOnGun"
-msgstr "Отображать отличительные отметки"
+msgstr "Display Marks of Excellence"
 
 msgid "game/showSectorOnMap"
-msgstr "Показывать сектор обстрела САУ"
+msgstr "Display arc of fire for the SPG"
 
 msgid "game/showVectorOnMap"
-msgstr "Показывать луч направления камеры"
+msgstr "Display camera direction beam"
 
 msgid "game/showVehModelsOnMap"
-msgstr "Включить дополнительные возможности мини-карты"
+msgstr "Enable Expanded Minimap Features"
 
 msgid "game/showVehModelsOnMap/alt"
-msgstr "По нажатию на Alt"
+msgstr "Upon pressing Alt"
 
 msgid "game/showVehModelsOnMap/always"
-msgstr "Постоянно"
+msgstr "Always"
 
 msgid "game/showVehModelsOnMap/never"
-msgstr "Никогда"
+msgstr "Never"
 
 msgid "game/showVehicleHPinMinimap"
-msgstr "Показывать прочность машин на мини-карте"
+msgstr "Show vehicle HP on the minimap"
 
 msgid "game/showVehicleHPinMinimap/alt"
-msgstr "По нажатию на Alt"
+msgstr "Upon pressing Alt"
 
 msgid "game/showVehicleHPinMinimap/always"
-msgstr "Постоянно"
+msgstr "Always"
 
 msgid "game/showVehicleHPinMinimap/never"
-msgstr "Никогда"
+msgstr "Never"
 
 msgid "game/showVehicleHPinPlayersPanel"
-msgstr "Показывать прочность машин на панели команд"
+msgstr "Show vehicle HP in team panels"
 
 msgid "game/showVehicleHPinPlayersPanel/alt"
-msgstr "По нажатию на Alt"
+msgstr "Upon pressing Alt"
 
 msgid "game/showVehicleHPinPlayersPanel/always"
-msgstr "Постоянно"
+msgstr "Always"
 
 msgid "game/showVehicleHPinPlayersPanel/never"
-msgstr "Никогда"
+msgstr "Never"
 
 msgid "game/showVehicleIcon"
-msgstr "Показывать иконку техники"
+msgstr "Show vehicle icon"
 
 msgid "game/showVehicleLevel"
-msgstr "Показывать уровень техники"
+msgstr "Show vehicle tier"
 
 msgid "game/showVehiclesCounter"
-msgstr "Показывать маркеры техники на панели счёта"
+msgstr "Show vehicle markers on Battle Score Panel"
 
 msgid "game/showVictimsDogTag"
-msgstr "Показывать жетон уничтоженного вами игрока"
+msgstr "Display Dog Tags of enemies you destroy"
 
 msgid "game/sniperModeByShift"
-msgstr "Переключение в снайперский режим только по Shift"
+msgstr "Restrict toggling the Sniper mode to the Shift key"
 
 msgid "game/sniperZoom"
-msgstr "Кратность приближения в снайперском режиме"
+msgstr "Preferred Sniper Mode Zoom Level"
 
 msgid "game/sniperZoom/double"
 msgstr "x2"
@@ -1407,219 +1397,218 @@ msgid "game/sniperZoom/quadruple"
 msgstr "x4"
 
 msgid "game/sniperZoom/remember"
-msgstr "Последняя"
+msgstr "Last Used"
 
 msgid "game/switchEquipment"
-msgstr "Переключение комплектов на экране загрузки"
+msgstr "Configuration switching on loading screen"
 
 msgid "gameTitle"
-msgstr "Игра"
+msgstr "General"
 
 msgid "gameplay/assault"
-msgstr "Штурм (после исследования техники VI уровня)"
+msgstr "Assault (after researching Tier VI vehicles)"
 
 msgid "gameplay/ctf"
-msgstr "Стандартный бой"
+msgstr "Standard Battle"
 
 msgid "gameplay/domination"
-msgstr "Встречный бой (после исследования техники IV уровня)"
+msgstr "Encounter Battle (after researching Tier IV vehicles)"
 
 msgid "gameplay/epic_encounter"
-msgstr "Генеральное сражение (для определённых уровней)"
+msgstr "Grand Battle (for vehicles of certain tiers)"
 
 msgid "gameplay/epic_standard"
-msgstr "Генеральное сражение (для определённых уровней)"
+msgstr "Grand Battle (for vehicles of certain tiers)"
 
 msgid "gameplay/nations"
-msgstr "Противостояние"
+msgstr "Confrontation"
 
 msgid "gameplay/only10Mode"
-msgstr "Поиск боёв с техникой только X уровня"
+msgstr "Search battles with Tier X vehicles only"
 
 msgid "gamma"
-msgstr "Гамма"
+msgstr "Gamma"
 
 msgid "gammaBtn/label"
-msgstr "Настроить"
+msgstr "Configure"
 
 msgid "gammaWizard/apply"
-msgstr "Применить"
+msgstr "Apply"
 
 msgid "gammaWizard/cancel"
-msgstr "Отменить"
+msgstr "Cancel"
 
 msgid "gammaWizard/closeBtn"
-msgstr "ЗАКРЫТЬ"
+msgstr "CLOSE"
 
 msgid "gammaWizard/default"
-msgstr "По умолчанию"
+msgstr "Default"
 
 msgid "gammaWizard/description"
 msgstr ""
-"Перемещайте ползунок, пока фон и логотип не станут одной яркости. "
-"Прищурьтесь или отдалитесь от монитора, чтобы детали изображения стали едва "
-"заметны."
+"Move the slider until the background and logo reach the same brightness. "
+"Close your eyes partially or move away from your monitor, to make the image "
+"details hardly visible."
 
 msgid "gammaWizard/header"
-msgstr "Гамма"
+msgstr "Gamma"
 
 msgid "gammaWizard/title"
-msgstr "Настройка гаммы"
+msgstr "Gamma Settings"
 
 msgid "gammaWizard/tooltip/body"
 msgstr ""
-"Позволяет отрегулировать яркость в игре до оптимального\n"
-"значения. Эта функция нужна для\n"
-"компенсации влияния драйвера видеокарты и настроек\n"
-"дисплея на изображение."
+"Allows for the brightness to be adjusted to the optimal value. This option aims to\n"
+"compensate for the effects from video card drivers and display\n"
+"settings that affect the game's visual quality."
 
 msgid "gammaWizard/tooltip/header"
-msgstr "Гамма"
+msgstr "Gamma"
 
 msgid "graficTitle"
-msgstr "Графика"
+msgstr "Graphics"
 
 msgid "graphics/block/effects"
-msgstr "Эффекты"
+msgstr "Effects"
 
 msgid "graphics/block/greenery"
-msgstr "Растительность"
+msgstr "Vegetation"
 
 msgid "graphics/block/landscapeAndWater"
-msgstr "Ландшафт и вода"
+msgstr "Terrain and water"
 
 msgid "graphics/block/lightingAndShadows"
-msgstr "Освещение и постобработка"
+msgstr "Lighting and post processing"
 
 msgid "graphics/block/main"
-msgstr "Основные"
+msgstr "Main"
 
 msgid "graphics/tabAdvanced"
-msgstr "Расширенные"
+msgstr "Details"
 
 msgid "graphics/tabScreen"
-msgstr "Экран"
+msgstr "Screen"
 
 msgid "graphicsQuality"
-msgstr "Качество графики"
+msgstr "Graphics Quality"
 
 msgid "graphicsQuality/description"
 msgstr ""
-"Определяет общее качество изображения. Влияет на значения параметров вкладки «Расширенные».\n"
+"Determines the general quality of the image. Determines the parameters of the Details tab.\n"
 "\n"
-"Снижение качества графики:\n"
-"• увеличивает быстродействие игры;\n"
-"• может привести к рассинхронизации отображения ландшафта между клиентом и сервером.\n"
+"Reducing the graphics quality can:\n"
+"• Improve game performance\n"
+"• Cause desynchronization of the landscape's display between client and server.\n"
 "\n"
-"Используйте минимальное качество графики только в случае низкой производительности вашего компьютера."
+"Use the minimum graphics quality only in the case of low computer performance."
 
 msgid "graphicsQualityHDSD"
-msgstr "Типы клиентов игры"
+msgstr "Client Types"
 
 msgid "graphicsQualityHDSD/HD"
-msgstr "HD клиент"
+msgstr "HD Client"
 
 msgid "graphicsQualityHDSD/SD"
-msgstr "Установлен Стандартный клиент (SD)"
+msgstr "Standard (SD) Client installed"
 
 msgid "graphicsQualityHDSD/description"
 msgstr ""
-"Стандартный клиент — полная версия игры, за исключением текстур максимального разрешения.\n"
+"Standard Client—full game without maximum-quality textures.\n"
 "\n"
-"HD клиент — полная версия игры, включающая текстуры максимального разрешения. Занимает больше места на жёстком диске."
+"HD Client—full game including maximum-quality textures. Requires more hard drive space than the Standard Client."
 
 msgid "graphicsQualityHDSDHigh"
-msgstr "Типы клиентов игры"
+msgstr "Client Types"
 
 msgid "graphicsQualityHDSDHigh/description"
 msgstr ""
-"HD клиент — полная версия игры, включающая текстуры максимального разрешения. Занимает больше места на жёстком диске.\n"
+"HD Client—full game including maximum-quality textures. Requires more hard drive space than the Standard Client.\n"
 "\n"
-"Стандартный (SD) — полная версия игры, за исключением текстур максимального разрешения."
+"Standard Client (SD)—full game without maximum-quality textures."
 
 msgid "graphicsQualityHDSDHigh/warning"
 msgstr ""
-"Настройки качества графики «Максимум» (SD) и «Ультра» (SD) не обеспечивают "
-"максимального значения параметра «Качество текстур». Для достижения "
-"максимального качества графики переключитесь на HD клиент в лончере игры."
+"Maximum (SD) and Ultra (SD) graphics quality do not provide the maximum "
+"value of the Texture Quality parameter. To set the maximum graphics quality,"
+" switch to HD Client in the game launcher."
 
 msgid "graphicsSettingsOptions/ANISOTROPIC_16X"
-msgstr "Анизотропная 16х"
+msgstr "Anisotropic 16x"
 
 msgid "graphicsSettingsOptions/ANISOTROPIC_2X"
-msgstr "Анизотропная 2х"
+msgstr "Anisotropic 2x"
 
 msgid "graphicsSettingsOptions/ANISOTROPIC_4X"
-msgstr "Анизотропная 4х"
+msgstr "Anisotropic 4x"
 
 msgid "graphicsSettingsOptions/ANISOTROPIC_8X"
-msgstr "Анизотропная 8х"
+msgstr "Anisotropic 8x"
 
 msgid "graphicsSettingsOptions/BILINEAR"
-msgstr "Билинейная"
+msgstr "Bilinear"
 
 msgid "graphicsSettingsOptions/CUSTOM"
-msgstr "Пользовательское"
+msgstr "Custom"
 
 msgid "graphicsSettingsOptions/Colorization"
-msgstr "Плёнка 40-х гг."
+msgstr "1940s cine film"
 
 msgid "graphicsSettingsOptions/Contrasty"
-msgstr "Контрастный"
+msgstr "Contrast"
 
 msgid "graphicsSettingsOptions/DEFERRED"
-msgstr "Улучшенная"
+msgstr "Improved"
 
 msgid "graphicsSettingsOptions/FAR"
-msgstr "Далеко"
+msgstr "Far"
 
 msgid "graphicsSettingsOptions/FORWARD"
-msgstr "Стандартная"
+msgstr "Standard"
 
 msgid "graphicsSettingsOptions/HIGH"
-msgstr "Высоко"
+msgstr "High"
 
 msgid "graphicsSettingsOptions/LOW"
-msgstr "Низко"
+msgstr "Low"
 
 msgid "graphicsSettingsOptions/LOWEST"
-msgstr "Очень низко"
+msgstr "Very Low"
 
 msgid "graphicsSettingsOptions/MAX"
-msgstr "Максимум"
+msgstr "Maximum"
 
 msgid "graphicsSettingsOptions/MAX_SD"
-msgstr "Максимум (SD)"
+msgstr "Maximum (SD)"
 
 msgid "graphicsSettingsOptions/MEDIUM"
-msgstr "Средне"
+msgstr "Medium"
 
 msgid "graphicsSettingsOptions/MIN"
-msgstr "Минимум"
+msgstr "Minimum"
 
 msgid "graphicsSettingsOptions/Muted"
-msgstr "Приглушённый"
+msgstr "Muted"
 
 msgid "graphicsSettingsOptions/NEAR"
-msgstr "Близко"
+msgstr "Near"
 
 msgid "graphicsSettingsOptions/NONE"
-msgstr "Выключено"
+msgstr "OFF"
 
 msgid "graphicsSettingsOptions/OFF"
-msgstr "Выключено"
+msgstr "OFF"
 
 msgid "graphicsSettingsOptions/ON"
-msgstr "Включено"
+msgstr "ON"
 
 msgid "graphicsSettingsOptions/POINT"
-msgstr "Точечная"
+msgstr "Point"
 
 msgid "graphicsSettingsOptions/Photochromatic"
-msgstr "Фотохроматический"
+msgstr "Photochromatic"
 
 msgid "graphicsSettingsOptions/RANDOM"
-msgstr "Случайный"
+msgstr "Random"
 
 msgid "graphicsSettingsOptions/SHADER_MODEL_0"
 msgstr "0"
@@ -1634,864 +1623,858 @@ msgid "graphicsSettingsOptions/SHADER_MODEL_3"
 msgstr "3"
 
 msgid "graphicsSettingsOptions/STANDARD"
-msgstr "Стандарт"
+msgstr "Standard"
 
 msgid "graphicsSettingsOptions/Soft"
-msgstr "Насыщенный"
+msgstr "Deep"
 
 msgid "graphicsSettingsOptions/Soft Colors"
-msgstr "Мягкие цвета"
+msgstr "Soft colors"
 
 msgid "graphicsSettingsOptions/TRILINEAR"
-msgstr "Трилинейная"
+msgstr "Trilinear"
 
 msgid "graphicsSettingsOptions/ULTRA"
-msgstr "Ультра"
+msgstr "Ultra"
 
 msgid "graphicsSettingsOptions/ULTRA_SD"
-msgstr "Ультра (SD)"
+msgstr "Ultra (SD)"
 
 msgid "graphicsSettingsOptions/VERYHIGH"
-msgstr "Очень высоко"
+msgstr "Very High"
 
 msgid "graphicsSettingsOptions/VERY_HIGH"
-msgstr "Очень высоко"
+msgstr "Very High"
 
 msgid "igbHardwareAcceleration"
-msgstr "Аппаратное ускорение браузера"
+msgstr "Browser Hardware Acceleration"
 
 msgid "igbHardwareAcceleration/description"
 msgstr ""
-"При включении этой настройки для отрисовки веб-содержимого будет использоваться видеокарта вместо центрального процессора.\n"
+"When this setting is enabled, web content will be rendered using GPU instead of CPU.\n"
 "\n"
-"Отключите, если наблюдаются проблемы с отрисовкой содержимого некоторых окон.\n"
+"Disable it if you experience issues with rendering the contents of some windows.\n"
 "\n"
-"Изменение вступит в силу после перезапуска клиента игры."
+"The change will be applied upon game restart."
 
 msgid "interfaceScale"
-msgstr "Масштабирование интерфейса"
+msgstr "Interface Scaling"
 
 msgid "interfaceScale/attention"
 msgstr ""
-"Настройка работает в тестовом режиме\n"
-"и не влияет на быстродействие игры."
+"Feature is undergoing testing;\n"
+"it does not influence game performance."
 
 msgid "interfaceScale/body"
 msgstr ""
-"Автоматическое увеличение элементов интерфейса\n"
-"при увеличении экрана/окна игры."
+"Automatic scaling of interface elements\n"
+"when maximizing game screen/window."
 
 msgid "interfaceScale/description"
 msgstr ""
-"Автоматическое увеличение элементов интерфейса при увеличении экрана/окна "
-"игры."
+"Automatic scaling of interface elements when maximizing game screen/window."
 
 msgid "interfaceScale/header"
-msgstr "Масштабирование интерфейса"
+msgstr "Interface Scaling"
 
 msgid "interfaceScale/warning"
 msgstr ""
-"Настройка работает в тестовом режиме и не влияет на быстродействие игры."
+"Feature is undergoing testing; it does not influence game performance."
 
 msgid "interfaceScaleDisabled"
-msgstr "Масштабирование интерфейса"
+msgstr "Interface Scaling"
 
 msgid "interfaceScaleDisabled/attention"
-msgstr "Только для 4K мониторов."
+msgstr "Only available for 4K displays."
 
 msgid "interfaceScaleDisabled/body"
 msgstr ""
-"Автоматическое увеличение элементов интерфейса\n"
-"при увеличении экрана/окна игры."
+"Automatic scaling of interface elements\n"
+"when maximizing game screen/window."
 
 msgid "interfaceScaleDisabled/description"
 msgstr ""
-"Автоматическое увеличение элементов интерфейса при увеличении экрана/окна "
-"игры."
+"Automatic scaling of interface elements when maximizing game screen/window."
 
 msgid "interfaceScaleDisabled/header"
-msgstr "Масштабирование интерфейса"
+msgstr "Interface Scaling"
 
 msgid "interfaceScaleDisabled/warning"
-msgstr "Только для 4K мониторов."
+msgstr "Only available for 4K displays."
 
 msgid "isColorBlind"
-msgstr "Режим цветовой слепоты"
+msgstr "Colorblind mode"
 
 msgid "isColorBlind/description"
-msgstr "Адаптация цветовой палитры для людей с особенностями цветовосприятия."
+msgstr ""
+"Adaptation of the color palette for people with color vision deficiency."
 
 msgid "keyboard/backDraftInvert"
-msgstr "Инверсия при заднем ходе"
+msgstr "Reverse inversion"
 
 msgid "keyboard/keyboard"
-msgstr "Клавиатура"
+msgstr "Keyboard"
 
 msgid "keyboard/keysBlocks/command/affirmative"
-msgstr "Так точно!"
+msgstr "Affirmative!"
 
 msgid "keyboard/keysBlocks/command/alternate_mode"
-msgstr "Сменить режим прицела"
+msgstr "Switch Reticle Mode"
 
 msgid "keyboard/keysBlocks/command/auto_rotation"
-msgstr "Фиксация корпуса / смена режима"
+msgstr "Lock Hull / Switch Mode"
 
 msgid "keyboard/keysBlocks/command/backward"
-msgstr "Назад"
+msgstr "Back"
 
 msgid "keyboard/keysBlocks/command/backward_cruise"
-msgstr "Назад"
+msgstr "Back"
 
 msgid "keyboard/keysBlocks/command/block_tracks"
-msgstr "«Ручной тормоз»"
+msgstr "\"Handbrake\""
 
 msgid "keyboard/keysBlocks/command/camera_down"
-msgstr "Вниз"
+msgstr "Down"
 
 msgid "keyboard/keysBlocks/command/camera_left"
-msgstr "Влево"
+msgstr "Left"
 
 msgid "keyboard/keysBlocks/command/camera_right"
-msgstr "Вправо"
+msgstr "Right"
 
 msgid "keyboard/keysBlocks/command/camera_up"
-msgstr "Вверх"
+msgstr "Up"
 
 msgid "keyboard/keysBlocks/command/chargeFire"
-msgstr "Произвести залп"
+msgstr "Fire a Salvo"
 
 msgid "keyboard/keysBlocks/command/fallBack"
-msgstr "Отступай!"
+msgstr "Retreat!"
 
 msgid "keyboard/keysBlocks/command/fire"
-msgstr "Выстрелить"
+msgstr "Fire"
 
 msgid "keyboard/keysBlocks/command/forward"
-msgstr "Вперёд"
+msgstr "Forward"
 
 msgid "keyboard/keysBlocks/command/forward_cruise"
-msgstr "Вперёд"
+msgstr "Forward"
 
 msgid "keyboard/keysBlocks/command/frontlineSelfDestruction"
-msgstr "Самоуничтожение на Линии фронта"
+msgstr "Abandon Vehicle (in Frontline)"
 
 msgid "keyboard/keysBlocks/command/help"
-msgstr "Помогите!"
+msgstr "Help!"
 
 msgid "keyboard/keysBlocks/command/highlightLocation"
-msgstr "Отметить позицию"
+msgstr "Indicate position"
 
 msgid "keyboard/keysBlocks/command/highlightTarget"
-msgstr "Отметить как активную цель"
+msgstr "Indicate active target"
 
 msgid "keyboard/keysBlocks/command/item00"
-msgstr "Снаряжение 10"
+msgstr "Consumable 10"
 
 msgid "keyboard/keysBlocks/command/item01"
-msgstr "Снаряжение 1"
+msgstr "Consumable 1"
 
 msgid "keyboard/keysBlocks/command/item02"
-msgstr "Снаряжение 2"
+msgstr "Consumable 2"
 
 msgid "keyboard/keysBlocks/command/item03"
-msgstr "Снаряжение 3"
+msgstr "Consumable 3"
 
 msgid "keyboard/keysBlocks/command/item04"
-msgstr "Снаряжение 4"
+msgstr "Consumable 4"
 
 msgid "keyboard/keysBlocks/command/item05"
-msgstr "Снаряжение 5"
+msgstr "Consumable 5"
 
 msgid "keyboard/keysBlocks/command/item06"
-msgstr "Снаряжение 6"
+msgstr "Consumable 6"
 
 msgid "keyboard/keysBlocks/command/item07"
-msgstr "Снаряжение 7"
+msgstr "Consumable 7"
 
 msgid "keyboard/keysBlocks/command/item08"
-msgstr "Снаряжение 8"
+msgstr "Consumable 8"
 
 msgid "keyboard/keysBlocks/command/item09"
-msgstr "Снаряжение 9"
+msgstr "Consumable 9"
 
 msgid "keyboard/keysBlocks/command/left"
-msgstr "Влево"
+msgstr "Left"
 
 msgid "keyboard/keysBlocks/command/lock_target"
-msgstr "Автоприцел"
+msgstr "Auto-Aim"
 
 msgid "keyboard/keysBlocks/command/lock_target_off"
-msgstr "Отключить автоприцел"
+msgstr "Disable Auto-Aim"
 
 msgid "keyboard/keysBlocks/command/negative"
-msgstr "Никак нет!"
+msgstr "Negative!"
 
 msgid "keyboard/keysBlocks/command/pushToTalk"
-msgstr "Активация микрофона"
+msgstr "Push-to-Talk"
 
 msgid "keyboard/keysBlocks/command/reloadPartialClip"
-msgstr "Перезарядить кассету"
+msgstr "Reload Shell Container"
 
 msgid "keyboard/keysBlocks/command/reloading"
-msgstr "Перезарядка!"
+msgstr "Reloading!"
 
 msgid "keyboard/keysBlocks/command/right"
-msgstr "Вправо"
+msgstr "Right"
 
 msgid "keyboard/keysBlocks/command/showHUD"
-msgstr "Скрыть боевой интерфейс"
+msgstr "Hide Battle Interface"
 
 msgid "keyboard/keysBlocks/command/showPersonalReserves"
-msgstr "Активация личных резервов"
+msgstr "Personal Reserves Activation"
 
 msgid "keyboard/keysBlocks/command/showQuestProgress"
-msgstr "Прогресс ЛБЗ"
+msgstr "Progress of Personal Missions"
 
 msgid "keyboard/keysBlocks/command/showRadialMenu"
-msgstr "Меню приказов / Подтверждение команды"
+msgstr "Display Command Menu / Confirm command"
 
 msgid "keyboard/keysBlocks/command/sizeDown"
-msgstr "Уменьшить размер"
+msgstr "Zoom Out"
 
 msgid "keyboard/keysBlocks/command/sizeUp"
-msgstr "Увеличить размер"
+msgstr "Zoom In"
 
 msgid "keyboard/keysBlocks/command/stop_fire"
-msgstr "Остановка для выстрела"
+msgstr "Stop and Fire"
 
 msgid "keyboard/keysBlocks/command/thankYou"
-msgstr "Спасибо!"
+msgstr "Thank you!"
 
 msgid "keyboard/keysBlocks/command/trajectory_view"
-msgstr "Вид от траектории"
+msgstr "Trajectory View"
 
 msgid "keyboard/keysBlocks/command/useHorn"
-msgstr "Подать звуковой сигнал"
+msgstr "Set sound signal"
 
 msgid "keyboard/keysBlocks/command/visible"
-msgstr "Скрыть/Показать"
+msgstr "Hide/Show"
 
 msgid "keyboard/keysBlocks/command/voicechat_enable"
-msgstr "Вкл/откл голосовую связь в динамических взводах"
+msgstr "Enable/disable voice chat in Dynamic Platoons"
 
 msgid "keyboard/keysBlocks/group/camera"
-msgstr "Камера"
+msgstr "Camera"
 
 msgid "keyboard/keysBlocks/group/cruis_control"
-msgstr "Круиз-контроль"
+msgstr "Cruise Control"
 
 msgid "keyboard/keysBlocks/group/equipment"
-msgstr "Снаряжение"
+msgstr "Consumables"
 
 msgid "keyboard/keysBlocks/group/firing"
-msgstr "Стрельба"
+msgstr "Firing"
 
 msgid "keyboard/keysBlocks/group/minimap"
-msgstr "Мини-карта"
+msgstr "Minimap"
 
 msgid "keyboard/keysBlocks/group/movement"
-msgstr "Передвижение"
+msgstr "Move"
 
 msgid "keyboard/keysBlocks/group/shortcuts"
-msgstr "Сообщения"
+msgstr "Messages"
 
 msgid "keyboard/keysBlocks/group/team_communication"
-msgstr "Коммуникация с командой"
+msgstr "Team Communication"
 
 msgid "keyboard/keysBlocks/group/vehicle_other"
-msgstr "Другое"
+msgstr "Other"
 
 msgid "keyboard/keysBlocks/group/voicechat"
-msgstr "Голосовая связь"
+msgstr "Voice Chat"
 
 msgid "keyboard/mouse"
-msgstr "Мышь"
+msgstr "Mouse"
 
 msgid "keyboardTitle"
-msgstr "Управление"
+msgstr "Controls"
 
 msgid "marker/AllyTitle"
-msgstr "Союзники"
+msgstr "Our Team"
 
 msgid "marker/DeadTitle"
-msgstr "Уничтоженные"
+msgstr "Destroyed"
 
 msgid "marker/EnemyTitle"
-msgstr "Противник"
+msgstr "Enemy Team"
 
 msgid "marker/aimMarker2D"
-msgstr "Маркер автоприцела"
+msgstr "Auto-Aim Indicator"
 
 msgid "marker/alt"
-msgstr "Альтернативный"
+msgstr "Alternative"
 
 msgid "marker/base"
-msgstr "Обычный"
+msgstr "Default"
 
 msgid "marker/damage"
-msgstr "Полученный урон"
+msgstr "Damage received"
 
 msgid "marker/dead"
-msgstr "Маркер уничтоженной техники"
+msgstr "Destroyed vehicles marker"
 
 msgid "marker/hp"
-msgstr "Прочность техники"
+msgstr "Vehicle Health"
 
 msgid "marker/hp/type0"
-msgstr "Проценты %"
+msgstr "Percent %"
 
 msgid "marker/hp/type1"
-msgstr "HP осталось / всего"
+msgstr "HP left / total"
 
 msgid "marker/hp/type2"
-msgstr "HP осталось"
+msgstr "HP left"
 
 msgid "marker/hp/type3"
-msgstr "Не показывать"
+msgstr "Hide"
 
 msgid "marker/hpIndicator"
-msgstr "Индикатор прочности цели"
+msgstr "Health indicator"
 
 msgid "marker/icon"
-msgstr "Иконка техники"
+msgstr "Vehicle icon"
 
 msgid "marker/level"
-msgstr "Уровень техники"
+msgstr "Tier"
 
 msgid "marker/name"
-msgstr "Модель техники"
+msgstr "Vehicle model"
 
 msgid "marker/name/type2"
-msgstr "Не показывать"
+msgstr "Hide"
 
 msgid "marker/nickname"
-msgstr "Имя игрока"
+msgstr "Player's name"
 
 msgid "markerTitle"
-msgstr "Маркер"
+msgstr "Marker"
 
 msgid "minimap/labels/alpha"
-msgstr "Прозрачность мини-карты"
+msgstr "Minimap Transparency"
 
 msgid "minimap/labels/size"
-msgstr "Максимальный размер"
+msgstr "Maximum size"
 
 msgid "monitor"
-msgstr "Монитор"
+msgstr "Display"
 
 msgid "monitor/description"
-msgstr "Выбор основного монитора для игры."
+msgstr "Select the primary display for the game."
 
 msgid "mouse/sensitivity/art"
-msgstr "Артиллерийский прицел"
+msgstr "Artillery Aim"
 
 msgid "mouse/sensitivity/art2"
-msgstr "Вид от траектории"
+msgstr "Trajectory view"
 
 msgid "mouse/sensitivity/header"
-msgstr "Чувствительность"
+msgstr "Sensitivity"
 
 msgid "mouse/sensitivity/invertationHor"
-msgstr "Горизонтальная инверсия"
+msgstr "Horizontal inversion"
 
 msgid "mouse/sensitivity/invertationVert"
-msgstr "Вертикальная инверсия"
+msgstr "Vertical inversion"
 
 msgid "mouse/sensitivity/main"
-msgstr "Аркадный прицел"
+msgstr "Arcade Aim"
 
 msgid "mouse/sensitivity/sniper"
-msgstr "Снайперский прицел"
+msgstr "Sniper Aim"
 
 msgid "mouse/startDist"
-msgstr "Положение камеры"
+msgstr "Camera position"
 
 msgid "ok_button"
 msgstr "OK"
 
 msgid "otherSettings/fieldset/header"
-msgstr "Элементы звуковой картины"
+msgstr "Sound Environment Elements"
 
 msgid "otherSettings/labels/bulb"
-msgstr "Звук срабатывания «Шестого чувства»"
+msgstr "Sixth Sense Activation Sound"
 
 msgid "otherTitle"
-msgstr "Прочее"
+msgstr "Other"
 
 msgid "refreshRate"
-msgstr "Частота обновления монитора"
+msgstr "Display Refresh Rate"
 
 msgid "refreshRate/default"
-msgstr "По умолчанию"
+msgstr "Default"
 
 msgid "refreshRate/description"
 msgstr ""
-"Частота обновления изображения экрана в игре.\n"
+"Display refresh rate in the game.\n"
 "\n"
-"Несовпадение с частотой обновления монитора может привести к мерцанию.\n"
+"Mismatch with display refresh rate can cause a blinking screen effect.\n"
 "\n"
-"Не влияет на быстродействие игры."
+"Does not influence game performance."
 
 msgid "resolution"
-msgstr "Разрешение экрана"
+msgstr "Screen Resolution"
 
 msgid "resolution/description"
 msgstr ""
-"Количество точек по горизонтали и вертикали в полноэкранном режиме. Более высокое разрешение улучшает чёткость изображения. Несовпадение установленного разрешения в полноэкранном режиме с текущим разрешением монитора может исказить изображение.\n"
+"Horizontal and vertical screen resolution in a fullscreen mode. Higher resolution improves image quality. Mismatch of set resolution in a fullscreen mode with current display resolution can distort the image.\n"
 "\n"
-"Увеличение параметра увеличивает нагрузку на видеокарту и может понизить быстродействие игры.\n"
+"Increasing this parameter increases load on video card and can reduce game performance.\n"
 "\n"
-"Уменьшить нагрузку на видеокарту можно с помощью настройки разрешения 3D рендера."
+"Load on video card can be reduced by setting 3D render resolution."
 
 msgid "screenMode"
-msgstr "Режим игры"
+msgstr "Game Mode"
 
 msgid "screenMode/borderless"
-msgstr "Оконный (без рамки)"
+msgstr "Windowed (borderless)"
 
 msgid "screenMode/description"
 msgstr ""
-"Переключение между полноэкранным, оконным и оконным (без рамки) режимами "
-"экрана. В оконном режиме быстродействие игры снижается."
+"Switch between full-screen, windowed and windowed (borderless) game modes. "
+"The windowed game mode will reduce game performance."
 
 msgid "screenMode/fullscreen"
-msgstr "Полноэкранный"
+msgstr "Full-screen"
 
 msgid "screenMode/label"
-msgstr "Режим:"
+msgstr "Mode:"
 
 msgid "screenMode/windowed"
-msgstr "Оконный"
+msgstr "Windowed"
 
 msgid "smoothing/description"
 msgstr ""
-"Определяет степень дополнительной обработки тонких линий и контуров объектов"
-" на игровой сцене, минимизируя эффект «лесенки». Контуры объектов выглядят "
-"более естественно."
+"Determines degree of additional processing of thin lines and contours of "
+"game objects. Minimizes aliasing effect. Contours of objects look more "
+"natural."
 
 msgid "sound/artyBulbVoices/artillery_lightbulb"
-msgstr "Стандартный"
+msgstr "Standard"
 
 msgid "sound/artyBulbVoices/soundExploring"
-msgstr "Пользовательский"
+msgstr "User sound"
 
 msgid "sound/bulbVoices/lightbulb"
-msgstr "Вариант 1"
+msgstr "Variant 1"
 
 msgid "sound/bulbVoices/lightbulb_02"
-msgstr "Вариант 2"
+msgstr "Variant 2"
 
 msgid "sound/bulbVoices/sixthSense"
-msgstr "Пользовательский"
+msgstr "User sound"
 
 msgid "sound/dynamicRange/label"
-msgstr "Динамический диапазон"
+msgstr "Dynamic Range"
 
 msgid "sound/fieldset/header"
-msgstr "Громкость"
+msgstr "Volume"
 
 msgid "sound/players_notifications"
-msgstr "Уведомления от других игроков"
+msgstr "Notifications from other players"
 
 msgid "sound/presets/title"
-msgstr "Предустановки"
+msgstr "Presets"
 
 msgid "sound/soundModes/U01"
-msgstr "Пользовательский 1"
+msgstr "User 1"
 
 msgid "sound/soundModes/U02"
-msgstr "Пользовательский 2"
+msgstr "User 2"
 
 msgid "sound/soundModes/U03"
-msgstr "Пользовательский 3"
+msgstr "User 3"
 
 msgid "sound/soundModes/U04"
-msgstr "Пользовательский 4"
+msgstr "User 4"
 
 msgid "sound/soundModes/default"
-msgstr "Стандартные"
+msgstr "Standard"
 
 msgid "sound/soundModes/nationalDefault"
-msgstr "Командирские"
+msgstr "Commander"
 
 msgid "sound/special/field/set"
-msgstr "Громкость игрового события"
+msgstr "Game event volume"
 
 msgid "sound/vivox/buttons/capture_devices_refresh"
-msgstr "Обновить устройства"
+msgstr "Refresh Devices"
 
 msgid "sound/vivox/buttons/test_finish"
-msgstr "Закончить тест"
+msgstr "Finish Test"
 
 msgid "sound/vivox/buttons/test_start"
-msgstr "Начать тест"
+msgstr "Start Test"
 
 msgid "sound/vivox/fade_volume"
-msgstr "Громкость окружения во время разговора"
+msgstr "Ambience Level During Chat"
 
 msgid "sound/vivox/master_volume"
-msgstr "Громкость голоса игроков"
+msgstr "Voice Chat Volume"
 
 msgid "sound/vivox/mic_sensitivity"
-msgstr "Чувствительность микрофона"
+msgstr "Microphone Sensitivity"
 
 msgid "sound/vivox/vivox_test"
-msgstr "Тест голосовой связи"
+msgstr "Vivox Test"
 
 msgid "soundTitle"
-msgstr "Звук"
+msgstr "Sound"
 
 msgid "sounds/acousticType/acoustics20"
-msgstr "Тип 2.0/2.1"
+msgstr "2.0/2.1"
 
 msgid "sounds/acousticType/acoustics51"
-msgstr "Тип 5.1"
+msgstr "5.1"
 
 msgid "sounds/acousticType/acoustics71"
-msgstr "Тип 7.1"
+msgstr "7.1"
 
 msgid "sounds/acousticType/auto"
-msgstr "Автоопределение"
+msgstr "Autoselection"
 
 msgid "sounds/acousticType/popover/acoustics20"
-msgstr "акустика 2.0/2.1"
+msgstr "2.0/2.1 system"
 
 msgid "sounds/acousticType/popover/acoustics51"
-msgstr "акустика 5.1"
+msgstr "5.1 system"
 
 msgid "sounds/acousticType/popover/acoustics71"
-msgstr "акустика 7.1"
+msgstr "7.1 system"
 
 msgid "sounds/acousticType/popover/headphones"
-msgstr "наушники"
+msgstr "headphones"
 
 msgid "sounds/acousticType/popover/item/center"
-msgstr "Центральный"
+msgstr "Central"
 
 msgid "sounds/acousticType/popover/item/left"
-msgstr "Левый"
+msgstr "Left"
 
 msgid "sounds/acousticType/popover/item/leftBack"
-msgstr "Левый задний"
+msgstr "Left rear"
 
 msgid "sounds/acousticType/popover/item/leftFront"
-msgstr "Левый передний"
+msgstr "Left front"
 
 msgid "sounds/acousticType/popover/item/leftSide"
-msgstr "Левый боковой"
+msgstr "Left side"
 
 msgid "sounds/acousticType/popover/item/right"
-msgstr "Правый"
+msgstr "Right"
 
 msgid "sounds/acousticType/popover/item/rightBack"
-msgstr "Правый задний"
+msgstr "Right rear"
 
 msgid "sounds/acousticType/popover/item/rightFront"
-msgstr "Правый передний"
+msgstr "Right front"
 
 msgid "sounds/acousticType/popover/item/rightSide"
-msgstr "Правый боковой"
+msgstr "Right side"
 
 msgid "sounds/acousticType/popover/item/sub"
-msgstr "Сабвуфер"
+msgstr "Subwoofer"
 
 msgid "sounds/acousticType/popover/laptop"
-msgstr "ноутбук"
+msgstr "laptop"
 
 msgid "sounds/acousticType/popover/title"
-msgstr "Тест звучания:"
+msgstr "Sound test:"
 
 msgid "sounds/acousticType/testButton"
-msgstr "Тестировать"
+msgstr "Test sound"
 
 msgid "sounds/altVoice/NationalDefault/body"
 msgstr ""
-"Голосовые сообщения озвучиваются в соответствии с нацией танка и полом "
-"командира"
+"Voice messages depend on a vehicle's nation and the commander's gender"
 
 msgid "sounds/altVoice/NationalDefault/header"
-msgstr "Командирские"
+msgstr "Commander"
 
 msgid "sounds/altVoice/default/body"
-msgstr ""
-"Голосовые сообщения озвучиваются мужским голосом на языке клиента игры"
+msgstr "Male voice in the game client's language"
 
 msgid "sounds/altVoice/default/header"
-msgstr "Стандартная"
+msgstr "Standard"
 
 msgid "sounds/ambient"
-msgstr "Окружающая среда"
+msgstr "Ambience"
 
 msgid "sounds/arena"
-msgstr "Музыка в бою"
+msgstr "Music in Battle"
 
 msgid "sounds/artyBulbVoices"
-msgstr "«Звуковая разведка»"
+msgstr "Sound Detection"
 
 msgid "sounds/artyBulbVoices/description"
 msgstr ""
-"Выбор одного из вариантов озвучки срабатывания эффекта «Звуковая разведка». "
-"Чтобы использовать собственный звук в формате MP3, переименуйте файл в "
-"soundExploring и поместите его в папку res/audioww."
+"Select one of variants for the Sound Detection activation sound. To use your"
+" own sound, rename your .mp3 file to soundExploring and move it to the "
+"res/audioww folder."
 
 msgid "sounds/artyBulbVoices/label"
-msgstr "Звук срабатывания «Звуковой разведки»"
+msgstr "Sound Detection Activation Sound"
 
 msgid "sounds/bassBoost"
-msgstr "Усиление низких частот"
+msgstr "Low frequency enhancement"
 
 msgid "sounds/bassBoost/description"
 msgstr ""
-"Усиливает низкие частоты в игре, не увеличивая при этом общую громкость. "
-"Режим работает по-разному для выбранной звуковой системы (акустика, "
-"наушники, ноутбук)."
+"Enhances low frequencies in-game with the master volume remaining the same. "
+"The mode implementation may differ depending on the selected sound system "
+"(speakers, headphones, or laptop)."
 
 msgid "sounds/bulbVoices"
-msgstr "«Шестое чувство»"
+msgstr "Sixth Sense"
 
 msgid "sounds/bulbVoices/description"
 msgstr ""
-"Выбор одного из вариантов озвучки срабатывания эффекта навыка «Шестое "
-"чувство». Чтобы использовать собственный звук в формате mp3, переименуйте "
-"файл в sixthSense и поместите его в папку res/audioww."
+"Select one of variants for the Sixth Sense activation sound. To use your own"
+" sound, rename your .mp3 file to sixthSense and move it to the res/audioww "
+"folder."
 
 msgid "sounds/effects"
-msgstr "Эффекты"
+msgstr "Effects"
 
 msgid "sounds/gui"
-msgstr "Интерфейс"
+msgstr "Interface"
 
 msgid "sounds/hangar"
-msgstr "Музыка в Ангаре"
+msgstr "Music in Garage"
 
 msgid "sounds/masterVolume"
-msgstr "Общий уровень громкости"
+msgstr "Master Volume"
 
 msgid "sounds/masterVolumeToggle"
-msgstr "Включить звук"
+msgstr "Enable sound"
 
 msgid "sounds/masterVolumeToggle/description"
 msgstr ""
-"Выключение звуковой системы может повысить общее быстродействие игры. Для "
-"применения потребуется перезагрузка игрового клиента."
+"Disabling game sound effects may improve the overall game performance. You "
+"will have to restart the game client for the changes to apply."
 
 msgid "sounds/nightMode"
-msgstr "Ночной режим"
+msgstr "Night mode"
 
 msgid "sounds/nightMode/description"
 msgstr ""
-"Уменьшает разницу громкостей, приглушает резкие звуки и уменьшает количество"
-" низких частот в игре, обеспечивая комфортную тихую игру в ночное время."
+"Levels out volume differences, reduces sharp sounds, and minimizes low "
+"frequencies in game, providing a comfortable and soft sound environment for "
+"late night gaming."
 
 msgid "sounds/sixthSense/body"
-msgstr ""
-"Чтобы использовать собственное звуковое оповещение, поместите файл с "
-"названием sixthSense в формате mp3 в папку res/audioww."
+msgstr "Custom sound. Move the sixthSense.mp3 file to the res/audioww folder."
 
 msgid "sounds/sixthSense/header"
-msgstr "Пользовательские"
+msgstr "Custom"
 
 msgid "sounds/soundDevice/acoustics20"
-msgstr "Акустика 2.0/2.1"
+msgstr "2.0/2.1 System"
 
 msgid "sounds/soundDevice/acoustics20/body"
 msgstr ""
-"Адаптирует позиционирование звуков в игре для внешних парных широкополосных "
-"динамиков (2.0), либо парных высокочастотных динамиков + одного "
-"низкочастотного (2.1)."
+"Adjusts the in-game sound for external paired full-range speakers (2.0) or "
+"paired high frequency speakers + one low frequency speaker (2.1)."
 
 msgid "sounds/soundDevice/acoustics20/header"
-msgstr "Акустика 2.0/2.1"
+msgstr "2.0/2.1 System"
 
 msgid "sounds/soundDevice/acoustics51"
-msgstr "Акустика 5.1"
+msgstr "5.1 System"
 
 msgid "sounds/soundDevice/acoustics51/body"
 msgstr ""
-"Адаптирует позиционирование звуков в игре для внешних динамиков и сабвуфера "
-"в многоканальной системе 5.1."
+"Adjusts the positioning of in-game sound for the external speakers and "
+"subwoofer in the multichannel 5.1 system."
 
 msgid "sounds/soundDevice/acoustics51/header"
-msgstr "Акустика 5.1"
+msgstr "5.1 System"
 
 msgid "sounds/soundDevice/acoustics71"
-msgstr "Акустика 7.1"
+msgstr "7.1 System"
 
 msgid "sounds/soundDevice/acoustics71/body"
 msgstr ""
-"Адаптирует позиционирование звуков в игре для внешних динамиков и сабвуфера "
-"в многоканальной системе 7.1."
+"Adjusts the positioning of in-game sound for the external speakers and "
+"subwoofer in the multichannel 7.1 system."
 
 msgid "sounds/soundDevice/acoustics71/header"
-msgstr "Акустика 7.1"
+msgstr "7.1 System"
 
 msgid "sounds/soundDevice/auto"
-msgstr "Автоопределение"
+msgstr "Autoselection"
 
 msgid "sounds/soundDevice/auto/body"
 msgstr ""
-"Автоматически определять настройки аудиоконфигурации, выставленные в "
-"операционной системе."
+"Automatically determines the audio configuration settings, specified in the "
+"operating system."
 
 msgid "sounds/soundDevice/auto/header"
-msgstr "Автоопределение"
+msgstr "Autoselection"
 
 msgid "sounds/soundDevice/headphones"
-msgstr "Наушники"
+msgstr "Headphones"
 
 msgid "sounds/soundDevice/headphones/body"
-msgstr "Адаптирует позиционирование звука в игре для наушников любого класса."
+msgstr "Adjusts the in-game sound for headphones."
 
 msgid "sounds/soundDevice/headphones/header"
-msgstr "Наушники"
+msgstr "Headphones"
 
 msgid "sounds/soundDevice/laptop"
-msgstr "Ноутбук"
+msgstr "Laptop"
 
 msgid "sounds/soundDevice/laptop/body"
 msgstr ""
-"Использует принцип позиционирования предустановки Акустика 2.0/2.1, но при "
-"этом адаптирует звук для максимально качественного воспроизведения на "
-"маленьких динамиках ноутбука."
+"Uses the positioning principle of the 2.0/2.1 Sound System preset but "
+"adjusts the in-game sound for playback on small laptop speakers at the "
+"highest quality possible."
 
 msgid "sounds/soundDevice/laptop/header"
-msgstr "Ноутбук"
+msgstr "Laptop"
 
 msgid "sounds/soundQuality"
-msgstr "Низкое качество"
+msgstr "Low quality"
 
 msgid "sounds/soundQuality/description"
 msgstr ""
-"Снижение качества звука может повысить быстродействие игры на бюджетных "
-"компьютерах. Включение данного режима значительно снижает количество "
-"одновременно воспроизводимых звуков."
+"Reducing the sound quality may improve the overall game performance on low-"
+"end computers. Enabling this mode significantly reduces the number of sounds"
+" processed simultaneously."
 
 msgid "sounds/speakers/back/body"
-msgstr "Тестирование звука на правом/левом задних динамиках."
+msgstr "Sound test on right/left rear speakers."
 
 msgid "sounds/speakers/back/header"
-msgstr "Правый/левый задние динамики"
+msgstr "Right/left rear speakers"
 
 msgid "sounds/speakers/center/body"
-msgstr "Тестирование звука на центральном динамике."
+msgstr "Sound test on the central speaker."
 
 msgid "sounds/speakers/center/header"
-msgstr "Центральный динамик"
+msgstr "Central speaker"
 
 msgid "sounds/speakers/front/body"
-msgstr "Тестирование звука на правом/левом передних динамиках."
+msgstr "Sound test on right/left front speakers."
 
 msgid "sounds/speakers/front/header"
-msgstr "Правый/левый передние динамики"
+msgstr "Right/left front speakers"
 
 msgid "sounds/speakers/optionalsub/body"
 msgstr ""
-"В конфигурации 2.0/2.1 сабвуфер является опциональным устройством, "
-"подключенным «сквозным» способом. Его проверка отдельно от колонок "
-"невозможна."
+"In the 2.0/2.1 system, a subwoofer presents an optional device. It cannot be"
+" tested without speakers."
 
 msgid "sounds/speakers/optionalsub/header"
-msgstr "Опциональный сабвуфер"
+msgstr "Optional subwoofer"
 
 msgid "sounds/speakers/sidelong/body"
-msgstr "Тестирование звука на правом/левом боковых динамиках."
+msgstr "Sound test on right/left side speakers."
 
 msgid "sounds/speakers/sidelong/header"
-msgstr "Правый/левый боковые динамики"
+msgstr "Right/left side speakers"
 
 msgid "sounds/speakers/sides/body"
-msgstr "Тестирование звука на правом/левом динамиках."
+msgstr "Sound test on right/left speakers."
 
 msgid "sounds/speakers/sides/header"
-msgstr "Правый/левый динамики"
+msgstr "Right/left speakers"
 
 msgid "sounds/speakers/sub/body"
-msgstr "Тестирование звука на сабвуфере."
+msgstr "Sound test on the subwoofer."
 
 msgid "sounds/speakers/sub/header"
-msgstr "Сабвуфер"
+msgstr "Subwoofer"
 
 msgid "sounds/subtitles"
-msgstr "Субтитры"
+msgstr "Subtitles"
 
 msgid "sounds/tabCommon"
-msgstr "Общий уровень"
+msgstr "Master Sound"
 
 msgid "sounds/tabSpecial"
-msgstr "Игровое событие"
+msgstr "Game Event"
 
 msgid "sounds/tabVivox"
-msgstr "Голосовая связь"
+msgstr "Voice Chat"
 
 msgid "sounds/vehicles"
-msgstr "Техника"
+msgstr "Vehicles"
 
 msgid "sounds/voiceNotification"
-msgstr "Голосовые уведомления"
+msgstr "Voice Notifications"
 
 msgid "title"
-msgstr "Настройки"
+msgstr "Settings"
 
 msgid "tripleBuffered"
-msgstr "Тройная буферизация"
+msgstr "Triple buffering"
 
 msgid "tripleBuffered/description"
 msgstr ""
-"Смягчает резкие скачки изображения при смене кадров (только при включённой "
-"функции «Вертикальная синхронизация»)."
+"Decreases tearing on frame change (available only with vertical "
+"synchronization enabled)."
 
 msgid "unequip_button"
-msgstr "Снять"
+msgstr "Remove"
 
 msgid "vertSync"
-msgstr "Вертикальная синхронизация"
+msgstr "Vertical synchronization"
 
 msgid "vertSync/Off"
-msgstr "Выкл."
+msgstr "OFF"
 
 msgid "vertSync/On"
-msgstr "Вкл."
+msgstr "ON"
 
 msgid "vertSync/description"
 msgstr ""
-"Синхронизация смены кадров игры с частотой обновления монитора.\n"
+"Synchronization of frame rate with display refresh rate.\n"
 "\n"
-"Ограничение кадровой частоты — 60 кадров в секунду. Примените в случае дрожания или запаздывания изображения на нижней части экрана относительно верхней."
+"60 frames per second is the frame rate limit. This option may help correct a shaking image effect or image delay at the bottom of the screen relative to the top."
 
 msgid "voice_chat/PTT"
-msgstr "Активация микрофона"
+msgstr "Push-to-Talk"
 
 msgid "voice_chat/fieldset/header"
-msgstr "Громкость"
+msgstr "Volume"
 
 msgid "voice_chat/header/common"
-msgstr "Общие"
+msgstr "Common"
 
 msgid "voice_chat/header/microphone"
-msgstr "Микрофон"
+msgstr "Microphone"
 
 msgid "voice_chat/header/speakers"
-msgstr "Наушники"
+msgstr "Headphones"
 
 msgid "voice_chat/microphone"
-msgstr "Микрофон"
+msgstr "Microphone"
 
 msgid "voice_chat/microphone/fieldset/header"
-msgstr "Микрофон"
+msgstr "Microphone"
 
 msgid "voice_chat/microphoneEnabled"
-msgstr "Включить микрофон"
+msgstr "Enable microphone"
 
 msgid "voice_chat/voiceChatEnable"
-msgstr "Включить голосовую связь"
+msgstr "Enable voice chat"
 
 msgid "windowSize"
-msgstr "Размер окна"
+msgstr "Window Size"
 
 msgid "windowSize/description"
 msgstr ""
-"Количество точек по горизонтали и вертикали окна клиента игры. При переходе "
-"в полноэкранный режим настройка меняется на «Разрешение экрана»."
+"Horizontal and vertical screen resolution of the game client window. When "
+"switching to fullscreen mode, the setting changes to \"Screen Resolution\"."
 
 msgid "windowTitle"
-msgstr "Мир танков Client"
+msgstr "WoT Client"
