@@ -15,10 +15,10 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
          super();
       }
       
-      override public function showEffectTimer(param1:Number, param2:Boolean, param3:Boolean, param4:Boolean = true) : void
+      override public function showEffectTimer(param1:Number, param2:Boolean, param3:Boolean, param4:Boolean = true, param5:Boolean = true) : void
       {
          this.iconMc.gotoAndStop(color);
-         super.showEffectTimer(param1,param2,param3,param4);
+         super.showEffectTimer(param1,param2,param3,param4,param5);
       }
       
       override protected function onDispose() : void

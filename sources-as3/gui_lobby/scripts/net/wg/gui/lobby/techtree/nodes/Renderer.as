@@ -148,6 +148,10 @@ package net.wg.gui.lobby.techtree.nodes
          return this._dataInited && (this._valueObject.state & NODE_STATE_FLAGS.BLUEPRINT) > 0;
       }
       
+      public function cleanUp() : void
+      {
+      }
+      
       public function getActualWidth() : Number
       {
          return this.hit != null ? Number(this.hit.width) : Number(width);
@@ -217,6 +221,11 @@ package net.wg.gui.lobby.techtree.nodes
          return !!this._dataInited ? int(this._valueObject.level) : int(0);
       }
       
+      public function getNodeData() : NodeData
+      {
+         return null;
+      }
+      
       public function getOutX() : Number
       {
          return x + (this.hit != null ? this.hit.x + Math.round(this.hit.width) : Math.round(_width));
@@ -253,6 +262,11 @@ package net.wg.gui.lobby.techtree.nodes
          return this._stateProps.enough == 0 || (this._valueObject.state & this._stateProps.enough) > 0;
       }
       
+      public function isCollectible() : Boolean
+      {
+         return this._dataInited && (this._valueObject.state & NODE_STATE_FLAGS.COLLECTIBLE) > 0;
+      }
+      
       public function isElite() : Boolean
       {
          return this._dataInited && (this._valueObject.state & NODE_STATE_FLAGS.ELITE) > 0;
@@ -281,11 +295,6 @@ package net.wg.gui.lobby.techtree.nodes
       public function isPremium() : Boolean
       {
          return this._dataInited && (this._valueObject.state & NODE_STATE_FLAGS.PREMIUM) > 0;
-      }
-      
-      public function isCollectible() : Boolean
-      {
-         return this._dataInited && (this._valueObject.state & NODE_STATE_FLAGS.COLLECTIBLE) > 0;
       }
       
       public function isRentAvailable() : Boolean
@@ -363,7 +372,7 @@ package net.wg.gui.lobby.techtree.nodes
       
       public function showTooltip() : void
       {
-         if(this._tooltipID && this._valueObject && this._valueObject.dataIsReady && App.toolTipMgr != null)
+         if(this._tooltipID && this._valueObject && this._valueObject.dataIsReady)
          {
             App.toolTipMgr.showSpecial(this._tooltipID,null,this._valueObject,this._container != null ? this._container.rootRenderer.getID() : null);
          }
@@ -411,6 +420,25 @@ package net.wg.gui.lobby.techtree.nodes
          }
       }
       
+      protected function updateStateProps() : void
+      {
+         this._stateProps = NodeStateCollection.instance.getStateProps(this._entityType,!!this._dataInited ? uint(this._valueObject.state) : uint(0),this.getExtraState());
+         this._nodeState = this._stateProps.state;
+         statesSelected = Vector.<String>([STATE_PREFIX_SELECTED,this._nodeState + STATE_UNION]);
+         statesDefault = Vector.<String>([this._nodeState + STATE_UNION]);
+         setState(state);
+      }
+      
+      protected function rollOut() : void
+      {
+         App.toolTipMgr.hide();
+      }
+      
+      protected function rollOver() : void
+      {
+         this.showTooltip();
+      }
+      
       private function setMouseBehavior() : void
       {
          if(this._delegateToChildren)
@@ -423,15 +451,6 @@ package net.wg.gui.lobby.techtree.nodes
          {
             hitArea = this.hit;
          }
-      }
-      
-      protected function updateStateProps() : void
-      {
-         this._stateProps = NodeStateCollection.instance.getStateProps(this._entityType,!!this._dataInited ? uint(this._valueObject.state) : uint(0),this.getExtraState());
-         this._nodeState = this._stateProps.state;
-         statesSelected = Vector.<String>([STATE_PREFIX_SELECTED,this._nodeState + STATE_UNION]);
-         statesDefault = Vector.<String>([this._nodeState + STATE_UNION]);
-         setState(state);
       }
       
       public function get bottomArrowOffset() : Number
@@ -557,28 +576,9 @@ package net.wg.gui.lobby.techtree.nodes
          this.rollOut();
       }
       
-      protected function rollOut() : void
-      {
-         App.toolTipMgr.hide();
-      }
-      
       private function onNodeRollOverHandler(param1:MouseEvent) : void
       {
          this.rollOver();
-      }
-      
-      protected function rollOver() : void
-      {
-         this.showTooltip();
-      }
-      
-      public function cleanUp() : void
-      {
-      }
-      
-      public function getNodeData() : NodeData
-      {
-         return null;
       }
    }
 }

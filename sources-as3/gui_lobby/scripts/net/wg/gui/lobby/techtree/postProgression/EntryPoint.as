@@ -18,6 +18,7 @@ package net.wg.gui.lobby.techtree.postProgression
    import net.wg.gui.lobby.techtree.TechTreeEvent;
    import net.wg.gui.lobby.techtree.data.vo.ResearchPostProgressionDataVO;
    import net.wg.infrastructure.base.UIComponentEx;
+   import net.wg.infrastructure.managers.ISoundManager;
    import net.wg.infrastructure.managers.ITooltipMgr;
    import net.wg.infrastructure.managers.counter.CounterManager;
    import net.wg.infrastructure.managers.counter.CounterProps;
@@ -106,6 +107,8 @@ package net.wg.gui.lobby.techtree.postProgression
       
       private var _counterManager:ICounterManager;
       
+      private var _soundMgr:ISoundManager;
+      
       private var _x:int = 0;
       
       private var _y:int = 0;
@@ -117,10 +120,11 @@ package net.wg.gui.lobby.techtree.postProgression
          this._hitMc = new Sprite();
          this._tooltipMgr = App.toolTipMgr;
          this._scheduler = App.utils.scheduler;
+         this._counterManager = App.utils.counterManager;
+         this._soundMgr = App.soundMgr;
          super();
          name = POST_PROGRESSION_ENTRY;
          this._tooltipsContainer = this._tooltipMgr.getContainer();
-         this._counterManager = App.utils.counterManager;
          hitArea = this._hitMc;
          this.label.wordWrap = true;
          this.label.multiline = true;
@@ -128,7 +132,6 @@ package net.wg.gui.lobby.techtree.postProgression
          this._labelCont.mouseChildren = this._labelCont.mouseEnabled = false;
          this._labelCont.addChild(this.label);
          this._labelCont.alpha = 0;
-         this._lines = new Sprite();
          this._lines.x = OFFSET_TO_FIX_LINES_BLUR;
          this._lines.y = OFFSET_TO_FIX_LINES_BLUR;
          addChildAt(this._lines,0);
@@ -153,10 +156,7 @@ package net.wg.gui.lobby.techtree.postProgression
          this.content.dispose();
          this.content = null;
          this._labelCont.removeChild(this.label);
-         if(this._tooltipsContainer)
-         {
-            this._tooltipsContainer.removeChild(this._labelCont);
-         }
+         this._tooltipsContainer.removeChild(this._labelCont);
          this._labelCont = null;
          this._tooltipsContainer = null;
          this._counterManager.removeCounter(this.content);
@@ -164,6 +164,7 @@ package net.wg.gui.lobby.techtree.postProgression
          this.label = null;
          this._data = null;
          this._tooltipMgr = null;
+         this._soundMgr = null;
          this._scheduler.cancelTask(this.showTooltip);
          this._scheduler = null;
          this._lines = null;
@@ -176,10 +177,7 @@ package net.wg.gui.lobby.techtree.postProgression
          buttonMode = true;
          mouseEnabled = false;
          addChild(this._hitMc);
-         if(this._tooltipsContainer)
-         {
-            this._tooltipsContainer.addChild(this._labelCont);
-         }
+         this._tooltipsContainer.addChild(this._labelCont);
          this.content.addEventListener(MouseEvent.ROLL_OVER,this.onMouseEventRollOverHandler);
          this.content.addEventListener(MouseEvent.ROLL_OUT,this.onMouseEventRollOutHandler);
          this.content.addEventListener(ButtonEvent.CLICK,this.onButtonEventClickHandler);
@@ -259,7 +257,7 @@ package net.wg.gui.lobby.techtree.postProgression
       
       public function showUnlockAnimation() : void
       {
-         App.soundMgr.playControlsSnd(UNLOCK_STATE,SoundTypes.POST_PROGRESSION_MODULES,null);
+         this._soundMgr.playControlsSnd(UNLOCK_STATE,SoundTypes.POST_PROGRESSION_MODULES,null);
          this.content.showUnlockAnimation();
       }
       
@@ -350,11 +348,11 @@ package net.wg.gui.lobby.techtree.postProgression
          }
          if(this._data.state == POSTPROGRESSION_CONSTS.RESEARCH_STATE_LOCKED)
          {
-            App.soundMgr.playControlsSnd(SoundManagerStates.SND_OVER,SoundTypes.POST_PROGRESSION_MODULES,null);
+            this._soundMgr.playControlsSnd(SoundManagerStates.SND_OVER,SoundTypes.POST_PROGRESSION_MODULES,null);
          }
          else
          {
-            App.soundMgr.playControlsSnd(SoundManagerStates.SND_OVER,SoundTypes.NORMAL_BTN,null);
+            this._soundMgr.playControlsSnd(SoundManagerStates.SND_OVER,SoundTypes.NORMAL_BTN,null);
          }
       }
       
@@ -374,7 +372,7 @@ package net.wg.gui.lobby.techtree.postProgression
             this._labelCont.alpha = 0;
             this._scheduler.cancelTask(this.showTooltip);
             dispatchEvent(new TechTreeEvent(TechTreeEvent.GO_TO_POST_PROGRESSION));
-            App.soundMgr.playControlsSnd(SoundManagerStates.SND_PRESS,SoundTypes.OK_BTN,null);
+            this._soundMgr.playControlsSnd(SoundManagerStates.SND_PRESS,SoundTypes.OK_BTN,null);
          }
       }
    }

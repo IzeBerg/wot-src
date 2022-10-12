@@ -1,4 +1,6 @@
-
+import typing
+if typing.TYPE_CHECKING:
+    from gui.battle_control.arena_info.interfaces import IAppearanceCacheController, IPointsOfInterestController, IComp7PrebattleSetupController, IComp7VOIPController
 
 class ISharedControllersLocator(object):
     __slots__ = ()
@@ -172,11 +174,19 @@ class IDynamicControllersLocator(object):
         raise NotImplementedError
 
     @property
-    def playersPanel(self):
+    def appearanceCache(self):
         raise NotImplementedError
 
     @property
-    def bossPanel(self):
+    def pointsOfInterest(self):
+        raise NotImplementedError
+
+    @property
+    def comp7PrebattleSetup(self):
+        raise NotImplementedError
+
+    @property
+    def comp7VOIPController(self):
         raise NotImplementedError
 
 
@@ -222,6 +232,10 @@ class IClientArenaVisitor(object):
     def vehicles(self):
         raise NotImplementedError
 
+    @property
+    def modifiers(self):
+        raise NotImplementedError
+
     def getComponentSystem(self):
         raise NotImplementedError
 
@@ -258,7 +272,13 @@ class IClientArenaVisitor(object):
     def getTeamSpawnPointsIterator(self, team):
         raise NotImplementedError
 
+    def getVisibilityMinRadius(self):
+        raise NotImplementedError
+
     def getArenaSubscription(self):
+        raise NotImplementedError
+
+    def getRoundLength(self):
         raise NotImplementedError
 
     def isBattleEndWarningEnabled(self):
@@ -294,6 +314,9 @@ class IClientArenaVisitor(object):
     def getArenaExtraData(self):
         raise NotImplementedError
 
+    def getArenaModifiers(self):
+        raise NotImplementedError
+
     def getArenaVehicles(self):
         raise NotImplementedError
 
@@ -309,7 +332,13 @@ class IClientArenaVisitor(object):
     def hasDogTag(self):
         raise NotImplementedError
 
+    def hasDynSquads(self):
+        raise NotImplementedError
+
     def hasBattleNotifier(self):
+        raise NotImplementedError
+
+    def hasPointsOfInterest(self):
         raise NotImplementedError
 
 
@@ -663,7 +692,7 @@ class IBattleSessionProvider(object):
     def updateVehicleQuickShellChanger(self, isActive):
         raise NotImplementedError
 
-    def movingToRespawnBase(self, vehicle):
+    def movingToRespawnBase(self):
         raise NotImplementedError
 
     def invalidateVehicleState(self, state, value, vehicleID=0):

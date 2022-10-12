@@ -14,6 +14,8 @@ package net.wg.infrastructure.base.meta
       
       function as_addPoint(param1:Number, param2:Number, param3:String, param4:String, param5:String) : void;
       
+      function as_addPoi(param1:Number, param2:Number, param3:String, param4:String) : void;
+      
       function as_clear() : void;
    }
 }

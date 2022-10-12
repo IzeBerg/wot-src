@@ -2,11 +2,19 @@ package net.wg.gui.lobby.components
 {
    import flash.display.MovieClip;
    import flash.filters.BitmapFilter;
+   import net.wg.data.constants.generated.MINIMAPENTRIES_CONSTANTS;
    import net.wg.gui.components.minimap.interfaces.IMinimapEntry;
    import net.wg.infrastructure.base.UIComponentEx;
+   import org.idmedia.as3commons.util.StringUtils;
    
    public class MinimapEntry extends UIComponentEx implements IMinimapEntry
    {
+      
+      private static const TEAM_POINT_PREFIX:String = "teamPoint";
+      
+      private static const BACK_MARKER_PREFIX:String = "backMarker";
+      
+      private static const COLOR_SCHEME_PREFIX:String = "vm_";
        
       
       public var player:MovieClip;
@@ -19,6 +27,8 @@ package net.wg.gui.lobby.components
       
       public var backMarker:MovieClip;
       
+      public var poi:MovieClip;
+      
       public var m_type:String = "";
       
       private var _entryName:String = "";
@@ -26,16 +36,6 @@ package net.wg.gui.lobby.components
       private var _vehicleClass:String = "";
       
       private var _markLabel:String = "";
-      
-      private var _isDead:Boolean = false;
-      
-      private var _isDeadPermanent:Boolean = false;
-      
-      private var _isPostmortem:Boolean = false;
-      
-      private const TEAM_POINT_PREFIX:String = "teamPoint";
-      
-      private const BACK_MARKER_PREFIX:String = "backMarker";
       
       public function MinimapEntry()
       {
@@ -49,7 +49,17 @@ package net.wg.gui.lobby.components
          this.markMC = null;
          this.teamPoint = null;
          this.backMarker = null;
+         this.poi = null;
          super.onDispose();
+      }
+      
+      override protected function configUI() : void
+      {
+         super.configUI();
+         if(this.markMC)
+         {
+            this.markMC.stop();
+         }
       }
       
       override protected function draw() : void
@@ -71,7 +81,7 @@ package net.wg.gui.lobby.components
          if(this.isTeamPoint())
          {
             this.teamPoint.gotoAndStop(this._entryName);
-            _loc1_ = this.TEAM_POINT_PREFIX + this._entryName + this._vehicleClass;
+            _loc1_ = TEAM_POINT_PREFIX + this._entryName + this._vehicleClass;
             _loc2_ = App.colorSchemeMgr.getAliasColor(_loc1_);
             _loc3_ = App.colorSchemeMgr.getScheme(_loc1_).adjustOffset;
             this.teamPoint.pointType.gotoAndStop(_loc2_);
@@ -88,8 +98,13 @@ package net.wg.gui.lobby.components
          else if(this.isBackMarker())
          {
             this.backMarker.gotoAndStop(this._entryName);
-            _loc4_ = App.colorSchemeMgr.getAliasColor(this.BACK_MARKER_PREFIX + this._entryName + this._markLabel);
+            _loc4_ = App.colorSchemeMgr.getAliasColor(BACK_MARKER_PREFIX + this._entryName + this._markLabel);
             this.backMarker.marker.gotoAndStop(_loc4_);
+         }
+         else if(this.isPoi())
+         {
+            this.markMC.gotoAndStop(1);
+            this.poi.gotoAndStop(this._entryName);
          }
          else if(this.markMC != null)
          {
@@ -112,7 +127,7 @@ package net.wg.gui.lobby.components
       
       public function isTeamPoint() : Boolean
       {
-         return this.m_type == "points" && this.teamPoint != null;
+         return this.m_type == MINIMAPENTRIES_CONSTANTS.MARKER_TYPE_POINT && this.teamPoint != null;
       }
       
       public function update(param1:Object) : void
@@ -128,7 +143,12 @@ package net.wg.gui.lobby.components
       
       private function isBackMarker() : Boolean
       {
-         return this.m_type == "backgroundMarker" && this.backMarker != null;
+         return this.m_type == MINIMAPENTRIES_CONSTANTS.MARKER_TYPE_BACKGROUND_MARKER && this.backMarker != null;
+      }
+      
+      private function isPoi() : Boolean
+      {
+         return this.m_type == MINIMAPENTRIES_CONSTANTS.MARKER_TYPE_POI && this.poi != null;
       }
       
       private function updateType() : void
@@ -145,35 +165,17 @@ package net.wg.gui.lobby.components
          if(this.player != null)
          {
             _loc1_ = App.colorSchemeMgr.getAliasColor(this.colorSchemeName);
-            if(!this._isDead)
+            if(StringUtils.isNotEmpty(_loc1_))
             {
-               if(this._isPostmortem)
-               {
-                  this.player.gotoAndStop("postmortem");
-               }
-               else
-               {
-                  if(_loc1_ != null)
-                  {
-                     this.player.gotoAndStop(_loc1_);
-                  }
-                  this.player.litIcon.icon.gotoAndStop(this._vehicleClass);
-               }
+               this.player.gotoAndStop(_loc1_);
             }
-            else
-            {
-               _loc1_ = _loc1_ != null ? _loc1_ : "green";
-               this.player.gotoAndStop("dead");
-               this.player.icon.marker.gotoAndStop(this._vehicleClass + "-" + _loc1_);
-               this.player.icon.gotoAndPlay("show");
-               this.player.icon.isDeadPermanent = this._isDeadPermanent;
-            }
+            this.player.litIcon.icon.gotoAndStop(this._vehicleClass);
          }
       }
       
       public function get colorSchemeName() : String
       {
-         return "vm_" + (this._entryName != null ? this._entryName : this.m_type);
+         return COLOR_SCHEME_PREFIX + (this._entryName != null ? this._entryName : this.m_type);
       }
    }
 }

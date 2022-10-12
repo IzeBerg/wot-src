@@ -1,6 +1,6 @@
 import nations
 from account_helpers import getAccountDatabaseID
-from adisp import process
+from adisp import adisp_process
 from gui import DialogsInterface
 from gui.Scaleform.daapi.view.dialogs.ConfirmModuleMeta import SellModuleMeta
 from gui.Scaleform.daapi.view.lobby.storage.category_view import StorageDataProvider
@@ -208,7 +208,7 @@ class _SelectableDataProvider(StorageDataProvider):
 
 class StorageCategoryForSellView(StorageCategoryForSellViewMeta):
 
-    @process
+    @adisp_process
     def sellItem(self, itemId):
         yield DialogsInterface.showDialog(SellModuleMeta(int(itemId)))
 

@@ -30,6 +30,8 @@ package net.wg.gui.components.advanced.tutorial
       
       private var _tooltipComplex:String = "";
       
+      private var _tooltipArgs:Object = null;
+      
       private var _model:TutorialContextHintVO = null;
       
       private var _iconLoaded:Boolean = false;
@@ -86,6 +88,7 @@ package net.wg.gui.components.advanced.tutorial
             {
                this._tooltipSpecial = this._model.tooltipSpecial;
                this._tooltipComplex = this._model.tooltipComplex;
+               this._tooltipArgs = this._model.args;
                if(this._model.iconSource != Values.EMPTY_STR)
                {
                   this.hintIcon.source = this._model.iconSource;
@@ -149,7 +152,7 @@ package net.wg.gui.components.advanced.tutorial
       {
          if(this._tooltipSpecial != Values.EMPTY_STR)
          {
-            App.toolTipMgr.showSpecial(this._tooltipSpecial,null);
+            App.toolTipMgr.showSpecial(this._tooltipSpecial,null,this._tooltipArgs);
          }
          else if(this._tooltipComplex != Values.EMPTY_STR)
          {

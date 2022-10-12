@@ -49,7 +49,9 @@ package net.wg.gui.lobby.battleMatters
          "textEmblems":ITEM_TYPES.CUSTOMIZATION_PLURAL_EMBLEM,
          "textShop":_locale.makeString(MENU.HEADERBUTTONS_SHOP).toUpperCase(),
          "btnGoBuy":BATTLE_MATTERS.ANIMATIONS_SHOP,
-         "btnBuy":MENU.SHOP_TABLE_BUTTONBUY
+         "btnBuy":MENU.SHOP_TABLE_BUTTONBUY,
+         "tabCrewBooks":BATTLE_MATTERS.ANIMATIONS_CREW_BOOKS,
+         "btnCloseX":BATTLE_MATTERS.ANIMATIONS_CREW_CLOSE
       };
       
       private static const HEADER_BTN_OFFSET_X:int = 30;
@@ -132,6 +134,10 @@ package net.wg.gui.lobby.battleMatters
       public var btnGoBuy:MovieClip;
       
       public var btnBuy:MovieClip;
+      
+      public var tabCrewBooks:MovieClip;
+      
+      public var btnCloseX:MovieClip;
       
       public var headerBtn0:MovieClip;
       
@@ -226,6 +232,8 @@ package net.wg.gui.lobby.battleMatters
          this.textShop = null;
          this.btnGoBuy = null;
          this.btnBuy = null;
+         this.tabCrewBooks = null;
+         this.btnCloseX = null;
          this.headerBtn0 = null;
          this.headerBtn1 = null;
          this.headerBtn2 = null;

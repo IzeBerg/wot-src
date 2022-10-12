@@ -330,6 +330,11 @@ package net.wg.gui.components.carousels
          }
       }
       
+      public function scrollToLastItem() : void
+      {
+         this.startSlideByArrow(ARROW_RIGHT,false);
+      }
+      
       protected function getScopeWidth() : Number
       {
          var _loc1_:Number = 0;

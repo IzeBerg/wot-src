@@ -5,6 +5,8 @@ package net.wg.data.constants.generated
       
       public static const DESTROY_TIMER_UI:String = "destroyTimerUI";
       
+      public static const STATUS_NOTIFICATION_TIMER:String = "statusNotificationTimerUI";
+      
       public static const SECONDARY_TIMER_UI:String = "secondaryTimerUI";
       
       public static const BATTLE_ROYALE_DESTROY_TIMER_UI:String = "BattleRoyaleDestroyTimerUI";
@@ -17,7 +19,11 @@ package net.wg.data.constants.generated
       
       public static const RESUPPLY_TIMER_SMALL_UI:String = "ResupplyTimerSmallUI";
       
-      public static const WT_TIMER_UI:String = "WtTimerUI";
+      public static const POI_TIMER_UI:String = "poiTimerUI";
+      
+      public static const POI_MAIN_TIMER_UI:String = "poiMainTimerUI";
+      
+      public static const POI_SECONDARY_TIMER_UI:String = "poiSecondaryTimerUI";
       
       public static const FIRE_ICON:String = "destroyTimerFireUI";
       
@@ -48,8 +54,6 @@ package net.wg.data.constants.generated
       public static const GAS_DRAFT_ICON:String = "destroyTimerGazDraftUI";
       
       public static const STUN_ICON:String = "secondaryStunIconUI";
-      
-      public static const WT_STUN_ICON:String = "secondaryWTStunIconUI";
       
       public static const BLOCKED_ICON:String = "secondaryBlockedIconUI";
       
@@ -87,13 +91,51 @@ package net.wg.data.constants.generated
       
       public static const HP_RESTORE_ON_DAMAGE_ICON:String = "hpRestoreOnDamageIconUI";
       
-      public static const WT_BOMB_CAPTURE:String = "WtBombCaptureUI";
+      public static const POI_GREEN_ARTILLERY_ICON:String = "PoIGreenArtilleryIconUI";
       
-      public static const WT_BOMB_DEPLOY:String = "WtBombDeployUI";
+      public static const POI_GREEN_ARTILLERY_SMALL_ICON:String = "PoIGreenArtillerySmallIconUI";
       
-      public static const WT_BOMB_ABSORB:String = "WtBombAbsorbUI";
+      public static const POI_GREEN_RECON_ICON:String = "PoIGreenReconIconUI";
       
-      public static const WT_BOMB_CARRY:String = "WtBombCarryUI";
+      public static const POI_GREEN_RECON_SMALL_ICON:String = "PoIGreenReconSmallIconUI";
+      
+      public static const POI_ORANGE_ARTILLERY_ICON:String = "PoIOrangeArtilleryIconUI";
+      
+      public static const POI_ORANGE_ARTILLERY_SMALL_ICON:String = "PoIOrangeArtillerySmallIconUI";
+      
+      public static const POI_ORANGE_RECON_ICON:String = "PoIOrangeReconIconUI";
+      
+      public static const POI_ORANGE_RECON_SMALL_ICON:String = "PoIOrangeReconSmallIconUI";
+      
+      public static const POI_ORANGE_CROSS_ICON:String = "PoIOrangeCrossIconUI";
+      
+      public static const POI_ORANGE_CROSS_SMALL_ICON:String = "PoIOrangeCrossSmallIconUI";
+      
+      public static const COMP7_AOE_HEAL_ICON:String = "Comp7AoeHealIconUI";
+      
+      public static const COMP7_ALLY_SUPPORT_ICON:String = "Comp7AllySupportIconUI";
+      
+      public static const COMP7_RISKY_ATTACK_ICON:String = "Comp7RiskyAttackIconUI";
+      
+      public static const COMP7_RISKY_ATTACK_HEAL_ICON:String = "Comp7RiskyAttackHealIconUI";
+      
+      public static const COMP7_HUNTER_ICON:String = "Comp7HunterIconUI";
+      
+      public static const COMP7_CONCENTRATION_ICON:String = "Comp7ConcentrationIconUI";
+      
+      public static const COMP7_JUGGERNAUT_ICON:String = "Comp7JuggernautIconUI";
+      
+      public static const COMP7_BERSERK_ICON:String = "Comp7BerserkIconUI";
+      
+      public static const COMP7_SNIPER_ICON:String = "Comp7SniperIconUI";
+      
+      public static const COMP7_SURE_SHOT_ICON:String = "Comp7SureShotIconUI";
+      
+      public static const COMP7_AOE_INSPIRE_ICON:String = "Comp7AoeInspireIconUI";
+      
+      public static const COMP7_MARCH_ICON:String = "Comp7MarchIconUI";
+      
+      public static const COMP7_AGGRESSIVE_DETECTION_ICON:String = "Comp7AggressiveDetectionIconUI";
        
       
       public function BATTLE_NOTIFICATIONS_TIMER_LINKAGES()

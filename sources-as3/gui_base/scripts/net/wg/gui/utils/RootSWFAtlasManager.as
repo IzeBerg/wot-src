@@ -15,6 +15,10 @@ package net.wg.gui.utils
    {
       
       private static var _instance:RootSWFAtlasManager;
+      
+      private static const STR_IN:String = " in ";
+      
+      private static const MESSAGE_ATLAS_ALREADY_INITED:String = "Atlas already inited, atlasName: ";
        
       
       private var _itemsToDraw:Vector.<AtlasItemData> = null;
@@ -135,7 +139,7 @@ package net.wg.gui.utils
       {
          if(App.instance != null && this._atlasMap[param1])
          {
-            App.utils.asserter.assert(false,"Atlas already " + param1 + " inited");
+            App.utils.asserter.assert(false,MESSAGE_ATLAS_ALREADY_INITED + param1);
          }
          var _loc2_:IAtlas = this.getAtlas(param1);
          this._atlasMap[param1] = _loc2_;
@@ -147,6 +151,11 @@ package net.wg.gui.utils
       {
          var _loc2_:IAtlas = this.getAtlas(param1);
          return _loc2_.isAtlasInitialized;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
       
       private function getAtlas(param1:String) : IAtlas
@@ -180,11 +189,6 @@ package net.wg.gui.utils
          }
          IAtlas(param1.currentTarget).removeEventListener(AtlasEvent.ATLAS_INITIALIZED,this.onAtlasInitializedHandler);
          dispatchEvent(new AtlasEvent(AtlasEvent.ATLAS_INITIALIZED));
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

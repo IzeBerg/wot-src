@@ -20,7 +20,7 @@ else:
 
 __all__ = ('MaterialInfo', 'DEFAULT_MATERIAL_INFO', 'EmblemSlot', 'LodSettings', 'NodesAndGroups',
            'Camouflage', 'DEFAULT_CAMOUFLAGE', 'SwingingSettings', 'I18nComponent',
-           'DeviceHealth', 'ModelStatesPaths')
+           'DeviceHealth', 'ModelStatesPaths', 'RocketAccelerationParams')
 MaterialInfo = reflectedNamedTuple('MaterialInfo', ('kind', 'armor', 'extra', 'multipleExtra',
                                                     'vehicleDamageFactor', 'useArmorHomogenization',
                                                     'useHitAngle', 'useAntifragmentationLining',
@@ -284,3 +284,22 @@ class ModelStatesPaths(object):
         if path is None:
             raise SoftException(('State {} is not found').format(stateName))
         return path
+
+
+class RocketAccelerationParams(object):
+    ImpulseData = namedtuple('ImpulseData', ('magnitude', 'applyPoint', 'duration'))
+    __slots__ = ('deployTime', 'reloadTime', 'reuseCount', 'duration', 'impulse', 'modifiers',
+                 'kpi', 'effectsPrefab')
+
+    def __init__(self, deployTime, reloadTime, reuseCount, duration, impulse, modifiers, kpi, effectsPrefab):
+        self.deployTime = deployTime
+        self.reloadTime = reloadTime
+        self.reuseCount = reuseCount
+        self.duration = duration
+        self.impulse = impulse
+        self.modifiers = modifiers
+        self.kpi = kpi
+        self.effectsPrefab = effectsPrefab
+
+    def __repr__(self):
+        return ('deployTime={}, reloadTime={}, reuseCount={}, duration={}, impulse={}, modifiers={}').format(self.deployTime, self.reloadTime, self.reuseCount, self.duration, self.impulse, self.modifiers)

@@ -33,7 +33,7 @@ package net.wg.gui.lobby.vehicleCompare.nodes
       
       override public function parse(param1:Object) : void
       {
-         var _loc5_:Number = NaN;
+         var _loc5_:int = 0;
          var _loc6_:NodeData = null;
          var _loc7_:ResearchDisplayInfo = null;
          this.cleanUp();
@@ -42,7 +42,7 @@ package net.wg.gui.lobby.vehicleCompare.nodes
          var _loc2_:ILocale = App.utils.locale;
          var _loc3_:Array = param1 as Array;
          App.utils.asserter.assertNotNull(_loc3_,Errors.INVALID_TYPE + Array);
-         var _loc4_:Number = _loc3_.length;
+         var _loc4_:uint = _loc3_.length;
          _loc5_ = 0;
          while(_loc5_ < _loc4_)
          {
@@ -68,18 +68,18 @@ package net.wg.gui.lobby.vehicleCompare.nodes
          return _loc4_;
       }
       
-      public function getDepthOfPath(param1:Number) : Number
+      public function getDepthOfPath(param1:int) : Number
       {
          var _loc2_:Number = this._depthOfPaths[param1];
          return !!isNaN(_loc2_) ? Number(0) : Number(_loc2_);
       }
       
-      public function getTopLevelAt(param1:Number) : NodeData
+      public function getTopLevelAt(param1:int) : NodeData
       {
          return null;
       }
       
-      public function getTopLevelIndexByID(param1:Number) : Number
+      public function getTopLevelIndexByID(param1:int) : Number
       {
          return -1;
       }
@@ -95,8 +95,8 @@ package net.wg.gui.lobby.vehicleCompare.nodes
          var _loc11_:Number = NaN;
          var _loc12_:uint = 0;
          var _loc2_:Array = param1.matrix;
-         var _loc3_:Number = nodeData.length;
-         var _loc10_:Number = 0;
+         var _loc3_:uint = nodeData.length;
+         var _loc10_:int = 0;
          while(_loc10_ < _loc3_)
          {
             _loc7_ = nodeData[_loc10_];

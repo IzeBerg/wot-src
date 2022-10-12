@@ -32,11 +32,11 @@ package net.wg.gui.lobby.techtree.controls
       
       public var level:MovieClip;
       
-      private var _content:Sprite = null;
+      private var _content:Sprite;
       
       private var _levelNumber:int = 1;
       
-      private var _delimetersContainer:Sprite = null;
+      private var _delimetersContainer:Sprite;
       
       private var _showDelimeters:Boolean = true;
       
@@ -46,15 +46,24 @@ package net.wg.gui.lobby.techtree.controls
       
       public function LevelDelimiter()
       {
-         super();
-         this._delimetersContainer = new Sprite();
-         this._delimetersContainer.x = this.level.x + LEVEL_W;
          this._content = new Sprite();
+         this._delimetersContainer = new Sprite();
+         super();
+         this._delimetersContainer.x = this.level.x + LEVEL_W;
          this._content.name = CONTENT_NAME;
          this._content.addChild(this._delimetersContainer);
          this._content.addChild(this.level);
          this.level.alpha = DEFAULT_LEVEL_ALPHA;
          addChild(this._content);
+      }
+      
+      private static function clearTween(param1:Tween) : void
+      {
+         if(param1)
+         {
+            param1.paused = true;
+            param1.dispose();
+         }
       }
       
       override protected function configUI() : void
@@ -66,9 +75,9 @@ package net.wg.gui.lobby.techtree.controls
       
       override protected function onDispose() : void
       {
-         this.clearTween(this._showHighlightTween);
+         clearTween(this._showHighlightTween);
          this._showHighlightTween = null;
-         this.clearTween(this._hideHighlightTween);
+         clearTween(this._hideHighlightTween);
          this._hideHighlightTween = null;
          this.level = null;
          this._content = null;
@@ -102,7 +111,7 @@ package net.wg.gui.lobby.techtree.controls
          }
          if(this.level.alpha != DEFAULT_LEVEL_ALPHA)
          {
-            this.clearTween(this._hideHighlightTween);
+            clearTween(this._hideHighlightTween);
             this._hideHighlightTween = new Tween(HIDE_TWEEN_DUR,this.level,{"alpha":DEFAULT_LEVEL_ALPHA},{"ease":Linear.easeNone});
          }
       }
@@ -115,7 +124,7 @@ package net.wg.gui.lobby.techtree.controls
          }
          if(this.level.alpha != HIGHLIGHT_LEVEL_ALPHA)
          {
-            this.clearTween(this._showHighlightTween);
+            clearTween(this._showHighlightTween);
             this._showHighlightTween = new Tween(SHOW_TWEEN_DUR,this.level,{"alpha":HIGHLIGHT_LEVEL_ALPHA},{"ease":Linear.easeNone});
          }
       }
@@ -131,28 +140,16 @@ package net.wg.gui.lobby.techtree.controls
             _loc1_--;
             this._delimetersContainer.removeChildAt(_loc1_);
          }
-         if(_loc2_ >= _loc1_)
+         if(_loc2_ > _loc1_)
          {
-            if(_loc2_ > _loc1_)
+            _loc4_ = App.utils.classFactory.getClass(Linkages.NATION_TREE_LEVELS_DELIMETER);
+            while(_loc2_ > _loc1_)
             {
-               _loc4_ = App.utils.classFactory.getClass(Linkages.NATION_TREE_LEVELS_DELIMETER);
-               while(_loc2_ > _loc1_)
-               {
-                  _loc3_ = new _loc4_();
-                  _loc3_.x = _loc1_ * DELIMETER_W;
-                  this._delimetersContainer.addChild(_loc3_);
-                  _loc1_++;
-               }
+               _loc3_ = new _loc4_();
+               _loc3_.x = _loc1_ * DELIMETER_W;
+               this._delimetersContainer.addChild(_loc3_);
+               _loc1_++;
             }
-         }
-      }
-      
-      private function clearTween(param1:Tween) : void
-      {
-         if(param1)
-         {
-            param1.paused = true;
-            param1.dispose();
          }
       }
       

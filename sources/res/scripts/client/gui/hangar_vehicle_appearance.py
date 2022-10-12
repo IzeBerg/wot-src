@@ -111,7 +111,6 @@ class HangarVehicleAppearance(ScriptGameObject):
         return
 
     isVehicleDestroyed = property(lambda self: self.__isVehicleDestroyed)
-    typeDescriptor = property(lambda self: self.__vDesc if self.__vEntity is None else self.__vEntity.typeDescriptor)
 
     def __init__(self, spaceId, vEntity):
         ScriptGameObject.__init__(self, vEntity.spaceID, 'HangarVehicleAppearance')
@@ -449,8 +448,6 @@ class HangarVehicleAppearance(ScriptGameObject):
         for modelAnimator in self.__modelAnimators:
             modelAnimator.animator.start()
 
-        self._onOutfitReady()
-
     def __onSettingsChanged(self, diff):
         if 'showMarksOnGun' in diff:
             self.__showMarksOnGun = not diff['showMarksOnGun']
@@ -552,7 +549,7 @@ class HangarVehicleAppearance(ScriptGameObject):
         return
 
     def _getThisVehicleDossierInsigniaRank(self):
-        if self.__vDesc:
+        if self.__vDesc and self.__showMarksOnGun:
             vehicleDossier = self.itemsCache.items.getVehicleDossier(self.__vDesc.type.compactDescr)
             return vehicleDossier.getRandomStats().getAchievement(MARK_ON_GUN_RECORD).getValue()
         return 0
@@ -819,10 +816,7 @@ class HangarVehicleAppearance(ScriptGameObject):
     def __updateDecals(self, outfit):
         if self.__vehicleStickers is not None:
             self.__vehicleStickers.detach()
-        insigniaRank = 0
-        if self.__showMarksOnGun:
-            insigniaRank = self._getThisVehicleDossierInsigniaRank()
-        self.__vehicleStickers = VehicleStickers.VehicleStickers(self.__spaceId, self.__vDesc, insigniaRank, outfit)
+        self.__vehicleStickers = VehicleStickers.VehicleStickers(self.__spaceId, self.__vDesc, self._getThisVehicleDossierInsigniaRank(), outfit)
         self.__vehicleStickers.alpha = self.__currentEmblemsAlpha
         self.__vehicleStickers.attach(self.__vEntity.model, self.__isVehicleDestroyed, False)
         self._requestClanDBIDForStickers(self.__onClanDBIDRetrieved)
@@ -835,7 +829,7 @@ class HangarVehicleAppearance(ScriptGameObject):
     def __updateSequences(self, outfit):
         resources = camouflages.getModelAnimatorsPrereqs(outfit, self.__spaceId)
         resources.extend(camouflages.getAttachmentsAnimatorsPrereqs(self.__attachments, self.__spaceId))
-        if not resources and not self.__attachments:
+        if not resources:
             self.__clearModelAnimators()
             if not self.__isVehicleDestroyed:
                 from vehicle_systems import model_assembler
@@ -1057,6 +1051,3 @@ class HangarVehicleAppearance(ScriptGameObject):
             if progressionOutfit:
                 return progressionOutfit
         return outfit
-
-    def _onOutfitReady(self):
-        pass

@@ -14,9 +14,11 @@ package net.wg.infrastructure.base.meta
       
       function onFiltersChangeS(param1:int) : void;
       
+      function onInfoClickedS() : void;
+      
       function as_init(param1:Object) : void;
       
-      function as_initFilter(param1:Object, param2:Object) : void;
+      function as_initFilter(param1:Object) : void;
       
       function as_resetFilter(param1:int) : void;
       

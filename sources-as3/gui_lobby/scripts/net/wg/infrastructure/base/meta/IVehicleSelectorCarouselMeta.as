@@ -7,7 +7,5 @@ package net.wg.infrastructure.base.meta
        
       
       function setFilterS(param1:int, param2:Boolean) : void;
-      
-      function as_initCarouselFilter(param1:Object) : void;
    }
 }

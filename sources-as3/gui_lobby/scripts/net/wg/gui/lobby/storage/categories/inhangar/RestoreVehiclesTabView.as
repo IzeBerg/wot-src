@@ -7,7 +7,6 @@ package net.wg.gui.lobby.storage.categories.inhangar
    import net.wg.gui.lobby.storage.categories.cards.VehicleCardVO;
    import net.wg.infrastructure.base.meta.IRestoreVehiclesTabViewMeta;
    import net.wg.infrastructure.base.meta.impl.RestoreVehiclesTabViewMeta;
-   import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.core.UIComponent;
    import scaleform.clik.interfaces.IDataProvider;
    
@@ -46,29 +45,22 @@ package net.wg.gui.lobby.storage.categories.inhangar
          carousel.scrollList.paddingTop = CAROUSEL_PADDING_TOP;
          carousel.scrollList.paddingBottom = CAROUSEL_PADDING_BOTTOM;
          carousel.addEventListener(CardEvent.SELL,this.onCardSellHandler);
+      }
+      
+      override protected function initNoItemsView() : void
+      {
          this.noItemsView.setTexts(STORAGE.INHANGAR_NOITEMS_RESTORETAB_TITLE);
       }
       
-      override protected function draw() : void
+      override public function get noItemsComponent() : UIComponent
       {
-         super.draw();
-         if(isInvalid(InvalidationType.SIZE))
-         {
-            this.noItemsView.width = width;
-            this.noItemsView.validateNow();
-            this.noItemsView.y = height - this.noItemsView.actualHeight >> 1;
-         }
+         return this.noItemsView;
       }
       
       private function onCardSellHandler(param1:CardEvent) : void
       {
          param1.stopImmediatePropagation();
          restoreItemS(param1.data.id);
-      }
-      
-      override public function get noItemsComponent() : UIComponent
-      {
-         return this.noItemsView;
       }
    }
 }

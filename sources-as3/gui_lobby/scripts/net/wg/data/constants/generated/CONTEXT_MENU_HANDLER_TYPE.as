@@ -43,6 +43,8 @@ package net.wg.data.constants.generated
       
       public static const CUSTOM_USER:String = "customUser";
       
+      public static const COMP_LEADERBOARD_USER:String = "comp7LeaderboardUser";
+      
       public static const CUSTOMIZATION_ITEM:String = "customizationItem";
       
       public static const STRONGHOLD_USER:String = "strongholdUser";
@@ -62,8 +64,6 @@ package net.wg.data.constants.generated
       public static const STORAGE_VEHICLES_RESTORE_ITEM:String = "storageVehiclesRestoreItem";
       
       public static const STORAGE_VEHICLES_RENTED_ITEM:String = "storageVehiclesRentedItem";
-      
-      public static const STORAGE_PERSONAL_RESERVE_ITEM:String = "storagePersonalReserveItem";
       
       public static const STORAGE_CUSTOMZIZATION_ITEM:String = "storageCustomizationItem";
       

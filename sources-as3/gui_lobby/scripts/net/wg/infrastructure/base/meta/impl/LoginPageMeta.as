@@ -25,7 +25,7 @@ package net.wg.infrastructure.base.meta.impl
       
       public var onSetRememberPassword:Function;
       
-      public var doUpdate:Function;
+      public var onLoginNameUpdated:Function;
       
       public var isToken:Function;
       
@@ -134,10 +134,10 @@ package net.wg.infrastructure.base.meta.impl
          this.onSetRememberPassword(param1);
       }
       
-      public function doUpdateS() : void
+      public function onLoginNameUpdatedS() : void
       {
-         App.utils.asserter.assertNotNull(this.doUpdate,"doUpdate" + Errors.CANT_NULL);
-         this.doUpdate();
+         App.utils.asserter.assertNotNull(this.onLoginNameUpdated,"onLoginNameUpdated" + Errors.CANT_NULL);
+         this.onLoginNameUpdated();
       }
       
       public function isTokenS() : Boolean

@@ -54,9 +54,10 @@ package net.wg.gui.lobby.techtree.nodes
       
       override public function getExtraState() : Object
       {
+         var _loc1_:Boolean = container != null;
          return {
-            "isRootInInventory":(container != null ? container.rootRenderer.inInventory() : 0),
-            "isParentUnlocked":(container != null ? IResearchContainer(container).hasUnlockedParent(matrixPosition.row - 1,index) : false)
+            "isRootInInventory":(!!_loc1_ ? container.rootRenderer.inInventory() : 0),
+            "isParentUnlocked":(!!_loc1_ ? IResearchContainer(container).hasUnlockedParent(matrixPosition.row - 1,index) : false)
          };
       }
       
@@ -200,26 +201,6 @@ package net.wg.gui.lobby.techtree.nodes
          dispatchEvent(new TechTreeEvent(TechTreeEvent.ON_MODULE_HOVER,nodeState,_index,entityType));
       }
       
-      override protected function get mouseEnabledChildren() : Vector.<DisplayObject>
-      {
-         var _loc1_:Vector.<DisplayObject> = super.mouseEnabledChildren;
-         if(this.button)
-         {
-            _loc1_.push(this.button);
-         }
-         return _loc1_;
-      }
-      
-      public function get isBorderHighlighted() : Boolean
-      {
-         return this.lockedModuleHighlight.isHighlighted;
-      }
-      
-      public function set isBorderHighlighted(param1:Boolean) : void
-      {
-         this.lockedModuleHighlight.isHighlighted = param1;
-      }
-      
       public function isDashed() : Boolean
       {
          return valueObject && (valueObject.state & NODE_STATE_FLAGS.DASHED) > 0;
@@ -238,6 +219,26 @@ package net.wg.gui.lobby.techtree.nodes
                this.typeIcon.extraIconAlpha = nodeState == NodeRendererState.LOCKED ? Number(EXTRA_ICON_ALPHA_TRANSPARENT) : Number(EXTRA_ICON_ALPHA);
             }
          }
+      }
+      
+      override protected function get mouseEnabledChildren() : Vector.<DisplayObject>
+      {
+         var _loc1_:Vector.<DisplayObject> = super.mouseEnabledChildren;
+         if(this.button)
+         {
+            _loc1_.push(this.button);
+         }
+         return _loc1_;
+      }
+      
+      public function get isBorderHighlighted() : Boolean
+      {
+         return this.lockedModuleHighlight.isHighlighted;
+      }
+      
+      public function set isBorderHighlighted(param1:Boolean) : void
+      {
+         this.lockedModuleHighlight.isHighlighted = param1;
       }
       
       private function onHitClickHandler(param1:MouseEvent) : void

@@ -52,31 +52,41 @@ package net.wg.gui.lobby.storage.categories
       
       override protected function initialize() : void
       {
+         this.noItemsComponent.visible = false;
          super.initialize();
          this.cardsDP = this.getNewCardDP();
-         this.noItemsComponent.visible = false;
          if(this._hasNoFilterWarningView)
          {
             this.noFilterWarningView.visible = false;
          }
       }
       
-      override protected function onDispose() : void
+      override protected function onBeforeDispose() : void
       {
-         this._filterWarningVo = null;
-         this.cardsDP = null;
+         this.noItemsComponent.removeEventListener(Event.RESIZE,this.onNoItemsViewResizeHandler);
+         this.noItemsComponent.removeEventListener(Event.CLOSE,this.onNoItemsViewCloseHandler);
          this.scrollBar.removeEventListener(Event.SCROLL,this.onScrollHandler);
-         this.scrollBar.dispose();
-         this.scrollBar = null;
          this.carousel.scrollList.removeEventListener(Event.RESIZE,this.onScrollListResized);
          this.carousel.removeEventListener(CardEvent.PLAY_INFO_SOUND,this.onCarouselPlayInfoSoundHandler);
          this.carousel.removeEventListener(CardEvent.SHOW_CONTEXT_MENU,this.onShowCardContextMenuHandler);
          this.carousel.removeEventListener(Event.RESIZE,this.onCarouselResizeHandler);
+         if(this._hasNoFilterWarningView)
+         {
+            this.noFilterWarningView.removeEventListener(DummyEvent.CLICK,this.onNoFilterResultsClickHandler);
+         }
+         super.onBeforeDispose();
+      }
+      
+      override protected function onDispose() : void
+      {
+         this._filterWarningVo = null;
+         this.cardsDP = null;
+         this.scrollBar.dispose();
+         this.scrollBar = null;
          this.carousel.dispose();
          this.carousel = null;
          if(this._hasNoFilterWarningView)
          {
-            this.noFilterWarningView.removeEventListener(DummyEvent.CLICK,this.onNoFilterResultsClickHandler);
             this.noFilterWarningView.dispose();
             this.noFilterWarningView = null;
          }
@@ -86,6 +96,8 @@ package net.wg.gui.lobby.storage.categories
       override protected function configUI() : void
       {
          super.configUI();
+         this.noItemsComponent.addEventListener(Event.RESIZE,this.onNoItemsViewResizeHandler);
+         this.noItemsComponent.addEventListener(Event.CLOSE,this.onNoItemsViewCloseHandler);
          this.carousel.scrollList.setScrollbar(this.scrollBar);
          this.carousel.dataProvider = this.cardsDP;
          this.carousel.addEventListener(Event.RESIZE,this.onCarouselResizeHandler);
@@ -97,11 +109,17 @@ package net.wg.gui.lobby.storage.categories
          }
          this.scrollBar.addEventListener(Event.SCROLL,this.onScrollHandler);
          this.carousel.scrollList.addEventListener(Event.RESIZE,this.onScrollListResized);
+         this.initNoItemsView();
       }
       
       override protected function draw() : void
       {
+         var _loc1_:int = 0;
          super.draw();
+         if(!visible)
+         {
+            return;
+         }
          if(isInvalid(InvalidationType.SIZE))
          {
             this.carousel.height = height - this.carousel.y;
@@ -116,6 +134,14 @@ package net.wg.gui.lobby.storage.categories
                this.noFilterWarningView.width = this.carousel.width;
                this.noFilterWarningView.height = this.carousel.height;
             }
+         }
+         if(isInvalid(InvalidationType.LAYOUT) && this.isNoItemsViewLayoutReady())
+         {
+            _loc1_ = this.getNoComponentsStartY();
+            this.noItemsComponent.width = width;
+            this.noItemsComponent.validateNow();
+            this.noItemsComponent.y = _loc1_ + (height - _loc1_ - this.noItemsComponent.actualHeight >> 1);
+            this.updateNoItemsVisibility();
          }
          if(this._hasNoFilterWarningView && this._filterWarningVo && isInvalid(WARNING_DATA_INV))
          {
@@ -181,6 +207,29 @@ package net.wg.gui.lobby.storage.categories
       {
       }
       
+      protected function isNoItemsViewLayoutReady() : Boolean
+      {
+         return (this.noItemsComponent as NoItemsView).isLayoutReady();
+      }
+      
+      protected function updateNoItemsVisibility() : void
+      {
+         (this.noItemsComponent as NoItemsView).updateVisibility();
+      }
+      
+      protected function initNoItemsView() : void
+      {
+      }
+      
+      protected function getNoComponentsStartY() : int
+      {
+         return 0;
+      }
+      
+      protected function onNoItemsViewClose() : void
+      {
+      }
+      
       protected function getNewCardDP() : IDataProvider
       {
          return null;
@@ -216,7 +265,17 @@ package net.wg.gui.lobby.storage.categories
       
       public function get noItemsComponent() : UIComponent
       {
-         throw new AbstractException("BaseCategoryView.noItemsComponent" + Errors.ABSTRACT_INVOKE);
+         throw new AbstractException(Errors.ABSTRACT_INVOKE);
+      }
+      
+      private function onNoItemsViewResizeHandler(param1:Event) : void
+      {
+         invalidateLayout();
+      }
+      
+      private function onNoItemsViewCloseHandler(param1:Event) : void
+      {
+         this.onNoItemsViewClose();
       }
       
       private function onNoFilterResultsClickHandler(param1:DummyEvent) : void

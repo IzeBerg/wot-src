@@ -5,7 +5,6 @@ package net.wg.gui.battle.mapsTraining.views
    import net.wg.data.constants.generated.ATLAS_CONSTANTS;
    import net.wg.data.constants.generated.BATTLE_VIEW_ALIASES;
    import net.wg.data.constants.generated.DAMAGE_INFO_PANEL_CONSTS;
-   import net.wg.data.constants.generated.PREBATTLE_TIMER;
    import net.wg.gui.battle.components.TimersPanel;
    import net.wg.gui.battle.mapsTraining.views.goals.MapsTrainingGoals;
    import net.wg.gui.battle.views.BaseBattlePage;
@@ -22,6 +21,7 @@ package net.wg.gui.battle.mapsTraining.views
    import net.wg.gui.components.battleDamagePanel.constants.BattleDamageLogConstants;
    import net.wg.gui.components.hintPanel.HintPanel;
    import net.wg.infrastructure.events.FocusRequestEvent;
+   import net.wg.utils.StageSizeBoundaries;
    
    public class MapsTrainingBattlePage extends BaseBattlePage
    {
@@ -83,7 +83,7 @@ package net.wg.gui.battle.mapsTraining.views
       override protected function updatePrebattleTimerPosition(param1:int) : void
       {
          prebattleTimer.x = param1;
-         prebattleTimer.y = App.appHeight <= PREBATTLE_TIMER.APP_MIN_HEIGHT_BREAKING ? Number(PREBATTLE_TIMER_Y_SMALL) : Number(PREBATTLE_TIMER_Y);
+         prebattleTimer.y = App.appHeight <= StageSizeBoundaries.HEIGHT_800 ? Number(PREBATTLE_TIMER_Y_SMALL) : Number(PREBATTLE_TIMER_Y);
       }
       
       override public function updateStage(param1:Number, param2:Number) : void
@@ -134,15 +134,20 @@ package net.wg.gui.battle.mapsTraining.views
          super.onPopulate();
       }
       
-      override protected function onDispose() : void
+      override protected function onBeforeDispose() : void
       {
          this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.UPDATE_POSITION,this.onConsumablesPanelUpdatePositionHandler);
          this.consumablesPanel.removeEventListener(ConsumablesPanelEvent.SWITCH_POPUP,this.onConsumablesPanelSwitchPopupHandler);
          this.consumablesPanel = null;
          this.battleMessenger.removeEventListener(FocusRequestEvent.REQUEST_FOCUS,this.onBattleMessengerRequestFocusHandler);
          this.battleMessenger.removeEventListener(BattleMessenger.REMOVE_FOCUS,this.onBattleMessengerRemoveFocusHandler);
-         this.battleMessenger = null;
          this.hintPanel.removeEventListener(Event.RESIZE,this.onHintPanelResizeHandler);
+         super.onBeforeDispose();
+      }
+      
+      override protected function onDispose() : void
+      {
+         this.battleMessenger = null;
          this.hintPanel = null;
          this.debugPanel = null;
          this.battleDamageLogPanel = null;

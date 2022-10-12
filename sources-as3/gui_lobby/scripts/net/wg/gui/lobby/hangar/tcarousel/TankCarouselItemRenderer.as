@@ -5,12 +5,14 @@ package net.wg.gui.lobby.hangar.tcarousel
    import flash.events.Event;
    import flash.events.MouseEvent;
    import flash.geom.Point;
+   import net.wg.data.constants.Errors;
    import net.wg.data.constants.SoundManagerStatesLobby;
    import net.wg.data.constants.SoundTypes;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.CONTEXT_MENU_HANDLER_TYPE;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
    import net.wg.gui.components.carousels.controls.levelInfo.LevelInfoItem;
+   import net.wg.gui.components.carousels.data.ProgressionPointsVO;
    import net.wg.gui.components.carousels.data.VehicleCarouselVO;
    import net.wg.gui.components.carousels.events.TankItemEvent;
    import net.wg.gui.components.controls.SoundButtonEx;
@@ -25,11 +27,15 @@ package net.wg.gui.lobby.hangar.tcarousel
    public class TankCarouselItemRenderer extends SoundButtonEx implements IScrollerItemRenderer
    {
       
+      public static const LABEL_CRYSTAL:String = "crystal";
+      
+      public static const LABEL_WOT_PLUS:String = "wotPlus";
+      
       private static const RANKED_BONUS_NAME:String = "rankedBonus";
       
       private static const INFO_LEVEL_ITEM_NAME:String = "infoLevelContent";
       
-      private static const PROGRESSION_POINTS:String = "progressionPoints";
+      private static const PROGRESSION_POINTS_NAME:String = "progressionPoints";
       
       private static const CAROUSEL_RANKED_BONUS_LINKAGE:String = "CarouselRankedBonusUI";
       
@@ -41,9 +47,7 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       private static const LEVEL_INFO_OFFSET:int = -10;
       
-      public static const LABEL_CRYSTAL:String = "crystal";
-      
-      public static const LABEL_WOT_PLUS:String = "wotPlus";
+      private static const WARNING_PROGRESSION_POINTS:String = "BattlePass progressionPoints is empty! | _dataVO.isDisposed(), _dataVO.progressionPoints.isDisposed() |";
        
       
       public var content:BaseTankIcon = null;
@@ -187,7 +191,7 @@ package net.wg.gui.lobby.hangar.tcarousel
             _loc1_ = this._dataVO.getActionPriceVO();
             if(_loc1_)
             {
-               App.toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.ACTION_SLOT_PRICE,null,_loc1_.newPrices,_loc1_.oldPrices);
+               this._toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.ACTION_SLOT_PRICE,null,_loc1_.newPrices,_loc1_.oldPrices);
             }
             else
             {
@@ -204,14 +208,7 @@ package net.wg.gui.lobby.hangar.tcarousel
          }
          else
          {
-            if(this._dataVO.isWulfTooltip)
-            {
-               this._toolTipMgr.showWulfTooltip(this._dataVO.tooltip,this._dataVO.intCD);
-            }
-            else
-            {
-               this._toolTipMgr.showSpecial(this._dataVO.tooltip,null,this._dataVO.intCD);
-            }
+            this._toolTipMgr.showSpecial(this._dataVO.tooltip,null,this._dataVO.intCD);
             if(this._isInteractive)
             {
                this.content.handleRollOver(this._dataVO);
@@ -288,22 +285,28 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       private function updateProgressionPoints() : void
       {
-         if(this._hasProgression)
+         var _loc1_:ProgressionPointsVO = !!this._hasProgression ? this._dataVO.progressionPoints : null;
+         if(_loc1_)
          {
             if(!this._progressionPoints)
             {
                this._progressionPoints = App.utils.classFactory.getComponent(LINKAGE_CAROUSEL_PROGRESSION_POINTS,CarouselProgressionPoints);
-               this._progressionPoints.setData(this._dataVO.progressionPoints,this._dataVO.intCD);
-               this._progressionPoints.name = PROGRESSION_POINTS;
+               this._progressionPoints.name = PROGRESSION_POINTS_NAME;
                this._progressionPoints.x = this.border.width - this._progressionPoints.width >> 1;
                this._progressionPoints.y = PROGRESSION_POINTS_OFFSET;
+               this._progressionPoints.visible = false;
                addChild(this._progressionPoints);
             }
+            this._progressionPoints.setData(_loc1_,this._dataVO.intCD);
             this._progressionPoints.visible = this._progressionPoints.mouseEnabled = !this._hasRankedBonus;
-            this.border.visible = !this._dataVO.progressionPoints.isSpecialVehicle && !this.extraBorder.visible;
+            this.border.visible = !_loc1_.isSpecialVehicle && !this.extraBorder.visible;
          }
          else
          {
+            if(this._hasProgression)
+            {
+               DebugUtils.LOG_WARNING(WARNING_PROGRESSION_POINTS,Boolean(this._dataVO) ? this._dataVO.isDisposed() : Errors.WASNT_FOUND,Boolean(this._dataVO.progressionPoints) ? this._dataVO.progressionPoints.isDisposed() : Errors.WASNT_FOUND);
+            }
             this.clearProgressionPoints();
             this.border.visible = !this.extraBorder.visible;
          }

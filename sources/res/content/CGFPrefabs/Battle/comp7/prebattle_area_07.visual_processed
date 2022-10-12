@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>file1Material</identifier>
+					<fx>shaders/controlPoint/wg_controlPointRadius.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<property>
+						diffuseMap
+						<Texture>content/CGFPrefabs/Battle/comp7/prebattle_area_07.dds</Texture>
+					</property>
+					<property>
+						g_color
+						<Vector4>1.000000 0.643137 0.309804 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.000000 0.003395 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-2.650000 0.000000 -4.650000</min>
+		<max>2.650000 0.006790 4.650000</max>
+	</boundingBox>
+	<missingBspMaterial>
+		<material>
+			<identifier>s0_1_0_ncl1_1</identifier>
+		</material>
+	</missingBspMaterial>
+	<missingBspMaterial>
+		<material>
+			<identifier>s0_1_0_ncl1_1</identifier>
+		</material>
+	</missingBspMaterial>
+	<missingBspMaterial>
+		<material>
+			<identifier>s0_1_0_ncl1_1</identifier>
+		</material>
+	</missingBspMaterial>
+	<missingBspMaterial>
+		<material>
+			<identifier>s0_1_0_ncl1_1</identifier>
+		</material>
+	</missingBspMaterial>
+	<missingBspMaterial>
+		<material>
+			<identifier>s0_1_0_ncl1_1</identifier>
+		</material>
+	</missingBspMaterial>
+	<geometrySize>336</geometrySize>
+	<minUVDensity>0.020288</minUVDensity>
+</root>

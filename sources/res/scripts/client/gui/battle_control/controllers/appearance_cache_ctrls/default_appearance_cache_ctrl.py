@@ -1,5 +1,5 @@
 import logging, BigWorld
-from gui.battle_control.arena_info.interfaces import IArenaVehiclesController
+from gui.battle_control.arena_info.interfaces import IAppearanceCacheController
 from gui.battle_control.battle_constants import BATTLE_CTRL_ID
 from skeletons.vehicle_appearance_cache import IAppearanceCache
 from helpers import dependency
@@ -7,7 +7,7 @@ from soft_exception import SoftException
 from vehicle_systems.appearance_cache import VehicleAppearanceCacheInfo
 _logger = logging.getLogger(__name__)
 
-class DefaultAppearanceCacheController(IArenaVehiclesController):
+class DefaultAppearanceCacheController(IAppearanceCacheController):
     _appearanceCache = dependency.descriptor(IAppearanceCache)
 
     def __init__(self, setup):
@@ -47,6 +47,15 @@ class DefaultAppearanceCacheController(IArenaVehiclesController):
     def updateVehiclesInfo(self, updated, arenaDP):
         for _, vo in updated:
             self.addVehicleInfo(vo, arenaDP)
+
+    def getAppearance(self, vId, vInfo, callback=None, strCD=None):
+        return self._appearanceCache.getAppearance(vId, vInfo, callback, strCD)
+
+    def reloadAppearance(self, vId, vInfo, callback=None, strCD=None, oldStrCD=None):
+        oldAppearance = self._appearanceCache.removeAppearance(vId, oldStrCD)
+        if oldAppearance is not None:
+            oldAppearance.destroy()
+        return self._appearanceCache.getAppearance(vId, vInfo, callback, strCD)
 
     def _addListeners(self):
         if hasattr(self._arena.componentSystem, 'playerDataComponent'):
@@ -109,5 +118,5 @@ class DefaultAppearanceCacheController(IArenaVehiclesController):
             isAlive = vInfo['isAlive']
             outfitCD = vInfo['outfitCD']
             info = VehicleAppearanceCacheInfo(typeDescr=typeDescriptor, health=int(isAlive), isCrewActive=isAlive, isTurretDetached=False, outfitCD=outfitCD)
-            self._appearanceCache.getAppearance(vId, info)
+            self._appearanceCache.getAppearance(vId, info, strCD=typeDescriptor.makeCompactDescr())
         return

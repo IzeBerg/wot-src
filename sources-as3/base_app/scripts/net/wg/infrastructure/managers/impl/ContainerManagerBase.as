@@ -133,6 +133,7 @@ package net.wg.infrastructure.managers.impl
          var container:IManagedContainer = null;
          var currentView:IManagedContent = null;
          var childrenCount:int = 0;
+         var child:DisplayObject = null;
          var i:int = 0;
          var layer:int = param1;
          var windowName:String = param2;
@@ -144,11 +145,15 @@ package net.wg.infrastructure.managers.impl
             i = 0;
             while(i < childrenCount)
             {
-               currentView = IManagedContent(DisplayObjectContainer(container).getChildAt(i));
-               if(getViewName(currentView) == windowName)
+               child = DisplayObjectContainer(container).getChildAt(i);
+               if(child is IManagedContent)
                {
-                  container.setFocusedView(currentView);
-                  return;
+                  currentView = IManagedContent(child);
+                  if(getViewName(currentView) == windowName)
+                  {
+                     container.setFocusedView(currentView);
+                     return;
+                  }
                }
                i++;
             }

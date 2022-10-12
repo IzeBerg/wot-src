@@ -150,6 +150,12 @@ class ControlModePlugin(MarkerPlugin):
 
 
 class SettingsPlugin(MarkerPlugin):
+    __slots__ = ('_overrides', '_additionalSettings')
+
+    def __init__(self, parentObj):
+        super(SettingsPlugin, self).__init__(parentObj)
+        self._overrides = {}
+        self._additionalSettings = {}
 
     def start(self, *args):
         super(SettingsPlugin, self).init(*args)
@@ -167,7 +173,20 @@ class SettingsPlugin(MarkerPlugin):
 
     def _setMarkerSettings(self, notify=False):
         getter = self.settingsCore.getSetting
-        self._parentObj.setMarkerSettings(dict((name, getter(name)) for name in MARKERS.ALL()), notify=notify)
+        result = {}
+        for name in MARKERS.ALL():
+            stgs = getter(name)
+            for custOptName, custOptVal in self._overrides.get(name, tuple()):
+                if custOptName not in stgs:
+                    _logger.warning('Option "%s" is not in list of options', custOptName)
+                stgs[custOptName] = custOptVal
+
+            for custOptName, custOptVal in self._additionalSettings.get(name, tuple()):
+                stgs[custOptName] = custOptVal
+
+            result[name] = stgs
+
+        self._parentObj.setMarkerSettings(result, notify=notify)
 
     def __setColorsSchemes(self):
         colors = GuiColorsLoader.load()
@@ -926,11 +945,10 @@ class BaseAreaMarkerPlugin(MarkerPlugin):
         self.__markers = {}
         super(BaseAreaMarkerPlugin, self).stop()
 
-    def createMarker(self, uniqueID, symbol, matrixProvider, active):
+    def createMarker(self, uniqueID, matrixProvider, active):
         if uniqueID in self.__markers:
             return False
-        symbol = symbol or settings.MARKER_SYMBOL_NAME.STATIC_OBJECT_MARKER
-        markerID = self._createMarkerWithMatrix(symbol, matrixProvider, active)
+        markerID = self._createMarkerWithMatrix(settings.MARKER_SYMBOL_NAME.STATIC_OBJECT_MARKER, matrixProvider, active=active)
         self.__markers[uniqueID] = markerID
         return True
 
@@ -942,27 +960,15 @@ class BaseAreaMarkerPlugin(MarkerPlugin):
         else:
             return False
 
-    def setMarkerSticky(self, uniqueID, isSticky):
-        if uniqueID in self.__markers:
-            self._setMarkerSticky(self.__markers[uniqueID], isSticky)
-
-    def setMarkerRenderInfo(self, uniqueID, minScale, offset, innerOffset, cullDistance, boundsMinScale):
-        if uniqueID in self.__markers:
-            self._setMarkerRenderInfo(self.__markers[uniqueID], minScale, offset, innerOffset, cullDistance, boundsMinScale)
-
-    def setMarkerLocationOffset(self, uniqueID, minYOffset, maxYOffset, distanceForMinYOffset, maxBoost, boostStart):
-        if uniqueID in self.__markers:
-            self._setMarkerLocationOffset(self.__markers[uniqueID], minYOffset, maxYOffset, distanceForMinYOffset, maxBoost, boostStart)
-
-    def invokeMarker(self, uniqueID, name, *args):
-        if uniqueID in self.__markers:
-            self._invokeMarker(self.__markers[uniqueID], name, *args)
-
     def setupMarker(self, uniqueID, shape, minDistance, maxDistance, distance, distanceFieldColor):
-        self.invokeMarker(uniqueID, 'init', shape, minDistance, maxDistance, distance, backport.text(R.strings.ingame_gui.marker.meters()), distanceFieldColor)
+        if uniqueID not in self.__markers:
+            return
+        self._invokeMarker(self.__markers[uniqueID], 'init', shape, minDistance, maxDistance, distance, backport.text(R.strings.ingame_gui.marker.meters()), distanceFieldColor)
 
     def markerSetDistance(self, uniqueID, distance):
-        self.invokeMarker(uniqueID, 'setDistance', distance)
+        if uniqueID not in self.__markers:
+            return
+        self._invokeMarker(self.__markers[uniqueID], 'setDistance', distance)
 
     def setMarkerMatrix(self, uniqueID, matrix):
         markerID = self.__markers.pop(uniqueID, None)

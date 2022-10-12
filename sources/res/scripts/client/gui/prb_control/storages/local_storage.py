@@ -68,9 +68,6 @@ class RecentArenaStorage(LocalStorage):
     def queueType(self):
         return self._queueType
 
-    def clear(self):
-        self._queueType = QUEUE_TYPE.UNKNOWN
-
     def onAvatarBecomePlayer(self):
         arenaVisitor = createByAvatar()
         self._queueType = arenaVisitor.extra.queueType

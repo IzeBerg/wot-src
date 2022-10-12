@@ -276,17 +276,6 @@ def activateAvatarEquipment(equipmentID, avatar=None):
     return
 
 
-def activateVehicleEquipment(equipmentID, param, avatar=None):
-    if avatar is None:
-        avatar = BigWorld.player()
-    try:
-        avatar.cell.activateVehicleEquipment(equipmentID, param)
-    except AttributeError:
-        _logger.exception('Attribute "cell.activateVehicleEquipment" not found')
-
-    return
-
-
 def leaveArena(avatar=None):
     if avatar is None:
         avatar = BigWorld.player()
@@ -463,3 +452,33 @@ def isBecomeObserverAfterDeath(avatar=None):
         result = False
 
     return result
+
+
+def getInBattleVehicleSwitchComponent():
+    avatar = BigWorld.player()
+    try:
+        return avatar.AvatarInBattleVehicleSwitch
+    except AttributeError as error:
+        _logger.exception('Static component "AvatarInBattleVehicleSwitch" not found, exception %s', error.message)
+
+
+def getSpaceID():
+    avatar = BigWorld.player()
+    try:
+        spaceID = avatar.spaceID
+    except AttributeError:
+        _logger.debug('Avatar attribute "spaceID" not found')
+        spaceID = None
+
+    return spaceID
+
+
+def getPlayerVehicle():
+    avatar = BigWorld.player()
+    try:
+        vehicle = avatar.getVehicleAttached()
+    except AttributeError:
+        _logger.debug('Avatar attribute "getVehicleAttached" not found')
+        vehicle = None
+
+    return vehicle

@@ -2,7 +2,7 @@ import weakref
 from collections import namedtuple
 import BigWorld, Event, BattleReplay
 from PlayerEvents import g_playerEvents
-from adisp import async
+from adisp import adisp_async
 from debug_utils import LOG_DEBUG
 from gui import g_tankActiveCamouflage
 from gui.battle_control import arena_visitor
@@ -19,7 +19,6 @@ from gui.battle_control.requests import AvatarRequestsController
 from gui.battle_control.view_components import createComponentsBridge
 from items.components.c11n_constants import SeasonType
 from skeletons.gui.battle_session import IBattleSessionProvider
-from cgf_components import wt_helpers
 BattleExitResult = namedtuple('BattleExitResult', 'isDeserter playerInfo')
 
 class BattleSessionProvider(IBattleSessionProvider):
@@ -72,7 +71,7 @@ class BattleSessionProvider(IBattleSessionProvider):
     def getCtx(self):
         return self.__ctx
 
-    @async
+    @adisp_async
     def sendRequest(self, ctx, callback, allowDelay=None):
         self.__requestsCtrl.request(ctx, callback=callback, allowDelay=allowDelay)
 
@@ -182,8 +181,6 @@ class BattleSessionProvider(IBattleSessionProvider):
             vStats = self.__arenaDP.getVehicleStats()
             if self.__arenaVisitor.hasRespawns():
                 isDeserter = not vStats.stopRespawn
-            elif self.__arenaVisitor.hasVSERespawns():
-                isDeserter = wt_helpers.getPlayerLives() > 0 or wt_helpers.isBoss() and avatar_getter.isVehicleAlive()
             else:
                 isDeserter = avatar_getter.isVehicleAlive() and not avatar_getter.isVehicleOverturned()
             return BattleExitResult(isDeserter, vInfo.player)
@@ -263,17 +260,13 @@ class BattleSessionProvider(IBattleSessionProvider):
             ammoCtrl.updateVehicleQuickShellChanger(isActive)
         return
 
-    def movingToRespawnBase(self, vehicle):
+    def movingToRespawnBase(self):
         ctrl = self.__sharedRepo.ammo
         if ctrl is not None:
             ctrl.clear(False)
-            if vehicle:
-                ctrl.setGunSettings(vehicle.typeDescriptor.gun)
         ctrl = self.__sharedRepo.equipments
         if ctrl is not None:
             ctrl.clear(False)
-            if vehicle:
-                ctrl.notifyPlayerVehicleSet(vehicle.id)
         ctrl = self.__sharedRepo.optionalDevices
         if ctrl is not None:
             ctrl.clear(False)
@@ -339,7 +332,9 @@ class BattleSessionProvider(IBattleSessionProvider):
             ctrl.startVehicleVisual(vProxy, isImmediate)
         ctrl = self.__dynamicRepo.battleField
         if ctrl is not None:
-            ctrl.setVehicleVisible(vehicleID, vProxy.health)
+            vehSwitchCtrl = self.__dynamicRepo.comp7PrebattleSetup
+            vHealth = vehSwitchCtrl.getVehicleHealth(vProxy) if vehSwitchCtrl is not None else vProxy.health
+            ctrl.setVehicleVisible(vehicleID, vHealth)
         ctrl = self.__sharedRepo.vehicleState
         if ctrl is not None and BigWorld.player().observedVehicleID == vehicleID:
             ctrl.refreshObserverVehicleVisual()

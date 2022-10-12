@@ -9,14 +9,12 @@ def getSharedServices(manager):
     from gui.shared.utils.HangarSpace import HangarSpace
     from gui.shared.utils.hangar_space_reloader import HangarSpaceReloader
     from gui.shared.utils.RareAchievementsCache import RaresCache
-    from gui.shared.hangar_spaces_switcher import HangarSpacesSwitcher
     from skeletons.gui.turret_gun_angles import ITurretAndGunAngles
     from skeletons.gui.shared import IItemsCache
     from skeletons.gui.shared.gui_items import IGuiItemsFactory
     from skeletons.gui.shared.utils import IHangarSpace
     from skeletons.gui.shared.utils import IHangarSpaceReloader
     from skeletons.gui.shared.utils import IRaresCache
-    from skeletons.gui.shared.hangar_spaces_switcher import IHangarSpacesSwitcher
     cache = ItemsCache()
     cache.init()
     manager.addInstance(IItemsCache, cache, finalizer='fini')
@@ -27,7 +25,4 @@ def getSharedServices(manager):
     hangarSpaceReloader = HangarSpaceReloader()
     hangarSpaceReloader.init()
     manager.addInstance(IHangarSpaceReloader, hangarSpaceReloader, finalizer='destroy')
-    hangarSpacesSwitcher = HangarSpacesSwitcher()
-    hangarSpacesSwitcher.init()
-    manager.addInstance(IHangarSpacesSwitcher, hangarSpacesSwitcher, finalizer='destroy')
     manager.addInstance(IRaresCache, RaresCache())

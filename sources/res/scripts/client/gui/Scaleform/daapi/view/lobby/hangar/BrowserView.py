@@ -1,5 +1,5 @@
 import BigWorld
-from adisp import process
+from adisp import adisp_process
 from debug_utils import LOG_ERROR
 from gui.Scaleform.daapi import LobbySubView
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
@@ -122,7 +122,7 @@ class BrowserView(LobbySubView, BrowserScreenMeta):
             return ctx.get(name, default)
         return default
 
-    @process
+    @adisp_process
     def __loadBrowser(self):
         url = self.__getFromCtx('url')
         if url is not None:

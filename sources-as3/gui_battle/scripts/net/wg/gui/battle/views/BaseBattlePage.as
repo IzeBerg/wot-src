@@ -10,7 +10,6 @@ package net.wg.gui.battle.views
    import net.wg.gui.battle.interfaces.IPrebattleTimerBase;
    import net.wg.gui.battle.views.ammunitionPanel.PrbAmmunitionPanelEvent;
    import net.wg.gui.battle.views.ammunitionPanel.PrebattleAmmunitionPanelView;
-   import net.wg.gui.battle.views.battleTimer.BaseBattleTimer;
    import net.wg.gui.battle.views.calloutPanel.CalloutPanel;
    import net.wg.gui.battle.views.damagePanel.DamagePanel;
    import net.wg.gui.battle.views.dualGunPanel.DualGunPanel;
@@ -24,10 +23,12 @@ package net.wg.gui.battle.views
    import net.wg.gui.battle.views.postmortemPanel.BasePostmortemPanel;
    import net.wg.gui.battle.views.postmortemPanel.PostmortemPanel;
    import net.wg.gui.battle.views.ribbonsPanel.RibbonsPanel;
+   import net.wg.gui.battle.views.rocketAcceleratorPanel.RocketAcceleratorPanel;
    import net.wg.gui.battle.views.vehicleMessages.VehicleMessages;
    import net.wg.gui.lobby.settings.config.ControlsFactory;
    import net.wg.infrastructure.base.meta.IBattlePageMeta;
    import net.wg.infrastructure.base.meta.impl.BattlePageMeta;
+   import net.wg.infrastructure.base.meta.impl.BattleTimerMeta;
    import net.wg.infrastructure.events.LifeCycleEvent;
    import net.wg.infrastructure.helpers.statisticsDataController.BattleStatisticDataController;
    import net.wg.infrastructure.interfaces.IDAAPIModule;
@@ -55,6 +56,8 @@ package net.wg.gui.battle.views
       private static const CALLOUT_CENTER_SCREEN_OFFSET_X:int = 136;
       
       private static const AMMUNITION_PANEL_Y_SHIFT:int = 498;
+      
+      private static const HIT_TEST_FIX_NAME:String = "HitTest Fix";
        
       
       public var battleLoading:BaseBattleLoading = null;
@@ -65,9 +68,11 @@ package net.wg.gui.battle.views
       
       public var dualGunPanel:DualGunPanel = null;
       
+      public var rocketAcceleratorPanel:RocketAcceleratorPanel = null;
+      
       public var minimap:BaseMinimap = null;
       
-      public var battleTimer:BaseBattleTimer = null;
+      public var battleTimer:BattleTimerMeta = null;
       
       public var ribbonsPanel:RibbonsPanel = null;
       
@@ -91,17 +96,26 @@ package net.wg.gui.battle.views
       
       protected var isPostMortem:Boolean = false;
       
+      protected var hitTestFix:Sprite;
+      
       private var _messagesContainer:Sprite = null;
       
       private var _componentsStorage:Object;
       
       public function BaseBattlePage()
       {
+         this.hitTestFix = new Sprite();
          this._componentsStorage = {};
          super();
          this.battleStatisticDataController = this.createStatisticsController();
          this.initializeStatisticsController(this.battleStatisticDataController);
          this.initializeMessageLists();
+         this.hitTestFix.graphics.beginFill(16777215,0);
+         this.hitTestFix.graphics.drawRect(0,0,1,1);
+         this.hitTestFix.graphics.endFill();
+         this.hitTestFix.name = HIT_TEST_FIX_NAME;
+         this.hitTestFix.alpha = 0;
+         addChildAt(this.hitTestFix,0);
       }
       
       override public function unregisterComponent(param1:String) : void
@@ -122,12 +136,16 @@ package net.wg.gui.battle.views
          this.updatePrebattleTimerPosition(_loc3_);
          this.damagePanel.x = 0;
          this.damagePanel.y = param2 - this.damagePanel.initedHeight;
-         this.battleTimer.updateStage();
          this.battleTimer.x = param1 - this.battleTimer.initedWidth;
          this.battleTimer.y = 0;
          if(this.dualGunPanel)
          {
             this.dualGunPanel.updateStage(param1,param2);
+         }
+         if(this.hitTestFix)
+         {
+            this.hitTestFix.width = param1;
+            this.hitTestFix.height = param2;
          }
          this.ribbonsPanel.x = _loc3_ + this.ribbonsPanel.offsetX;
          var _loc5_:int = this.getRibbonsCenterOffset(param2);
@@ -148,10 +166,7 @@ package net.wg.gui.battle.views
          this.playerMessageListPositionUpdate();
          this.vehicleMessageList.updateStage();
          this.vehicleMessageListPositionUpdate();
-         if(this.battleLoading)
-         {
-            this.battleLoading.updateStage(param1,param2);
-         }
+         this.battleLoading.updateStage(param1,param2);
          this.gameMessagesPanel.x = _loc3_;
          this.calloutPanel.x = _loc3_ - CALLOUT_CENTER_SCREEN_OFFSET_X;
          this.calloutPanel.y = _loc4_ + CALLOUT_CENTER_SCREEN_OFFSET_Y;
@@ -163,21 +178,6 @@ package net.wg.gui.battle.views
          if(this.piercingDebugPanel)
          {
             this.piercingDebugPanel.updateStage(param1,param2);
-         }
-      }
-      
-      public function as_togglePiercingPanel() : void
-      {
-         if(this.piercingDebugPanel == null)
-         {
-            this.piercingDebugPanel = App.utils.classFactory.getComponent(Linkages.PIERCING_DEBUG_PANEL,PiercingDebugPanel);
-            addChild(this.piercingDebugPanel);
-            this.registerComponent(this.piercingDebugPanel,BATTLE_VIEW_ALIASES.PIERCING_DEBUG_PANEL);
-            this.piercingDebugPanel.updateStage(_originalWidth,_originalHeight);
-         }
-         else
-         {
-            this.piercingDebugPanel.visible = !this.piercingDebugPanel.visible;
          }
       }
       
@@ -198,18 +198,15 @@ package net.wg.gui.battle.views
       override protected function configUI() : void
       {
          this.updateStage(App.appWidth,App.appHeight);
-         this.minimap.addEventListener(MinimapEvent.TRY_SIZE_CHANGED,this.onMiniMapTrySizeChangeHandler);
-         this.minimap.addEventListener(MinimapEvent.SIZE_CHANGED,this.onMiniMapChangeHandler);
-         this.minimap.addEventListener(MinimapEvent.VISIBILITY_CHANGED,this.onMiniMapChangeHandler);
+         this.minimap.addEventListener(MinimapEvent.TRY_SIZE_CHANGED,this.onMinimapTrySizeChangedHandler);
+         this.minimap.addEventListener(MinimapEvent.SIZE_CHANGED,this.onMinimapSizeChangedHandler);
+         this.minimap.addEventListener(MinimapEvent.VISIBILITY_CHANGED,this.onMinimapSizeChangedHandler);
          super.configUI();
       }
       
       override protected function onPopulate() : void
       {
-         if(this.battleLoading)
-         {
-            this.registerComponent(this.battleLoading,BATTLE_VIEW_ALIASES.BATTLE_LOADING);
-         }
+         this.registerComponent(this.battleLoading,BATTLE_VIEW_ALIASES.BATTLE_LOADING);
          this.registerComponent(this.minimap,BATTLE_VIEW_ALIASES.MINIMAP);
          this.registerComponent(this.prebattleTimer,BATTLE_VIEW_ALIASES.PREBATTLE_TIMER);
          this.registerComponent(this.damagePanel,BATTLE_VIEW_ALIASES.DAMAGE_PANEL);
@@ -232,6 +229,14 @@ package net.wg.gui.battle.views
          {
             DebugUtils.LOG_WARNING("dualGunPanel component doesn\'t configured for this Battle Page");
          }
+         if(this.rocketAcceleratorPanel)
+         {
+            this.registerComponent(this.rocketAcceleratorPanel,BATTLE_VIEW_ALIASES.ROCKET_ACCELERATOR_INDICATOR);
+         }
+         else
+         {
+            DebugUtils.LOG_WARNING("rocketAcceleratorPanel component doesn\'t configured for this Battle Page");
+         }
          this.createPostmortemTipsComponent();
          this.postmortemTips.setCompVisible(false);
          this.updatePostmortemTipsPosition();
@@ -242,11 +247,8 @@ package net.wg.gui.battle.views
          super.onPopulate();
       }
       
-      override protected function onDispose() : void
+      override protected function onBeforeDispose() : void
       {
-         this.battleLoading = null;
-         this.damagePanel = null;
-         this.battleTimer = null;
          if(this.prebattleAmmunitionPanel)
          {
             this.prebattleAmmunitionPanel.removeEventListener(PrbAmmunitionPanelEvent.VIEW_HIDDEN,this.onPrebattleAmmunitionPanelViewHiddenHandler);
@@ -254,18 +256,27 @@ package net.wg.gui.battle.views
             this.prebattleAmmunitionPanel.removeEventListener(PrbAmmunitionPanelEvent.STATE_CHANGED,this.onPrebattleAmmunitionPanelStateChangedHandler);
             this.prebattleAmmunitionPanel = null;
          }
-         this.prebattleTimer = null;
          this.ribbonsPanel.removeEventListener(Event.CHANGE,this.onRibbonsPanelChangeHandler);
-         this.ribbonsPanel = null;
-         this.dualGunPanel = null;
-         this.calloutPanel = null;
          this.gameMessagesPanel.removeEventListener(GameMessagesPanelEvent.MESSAGES_STARTED_PLAYING,this.onMessagesStartedPlayingHandler);
          this.gameMessagesPanel.removeEventListener(GameMessagesPanelEvent.MESSAGES_ENDED_PLAYING,this.onMessagesEndedPlayingHandler);
          this.gameMessagesPanel.removeEventListener(GameMessagesPanelEvent.ALL_MESSAGES_ENDED_PLAYING,this.onAllMessagesEndedPlayingHandler);
+         this.minimap.removeEventListener(MinimapEvent.TRY_SIZE_CHANGED,this.onMinimapTrySizeChangedHandler);
+         this.minimap.removeEventListener(MinimapEvent.SIZE_CHANGED,this.onMinimapSizeChangedHandler);
+         this.minimap.removeEventListener(MinimapEvent.VISIBILITY_CHANGED,this.onMinimapSizeChangedHandler);
+         super.onBeforeDispose();
+      }
+      
+      override protected function onDispose() : void
+      {
+         this.battleLoading = null;
+         this.damagePanel = null;
+         this.battleTimer = null;
+         this.prebattleTimer = null;
+         this.ribbonsPanel = null;
+         this.dualGunPanel = null;
+         this.rocketAcceleratorPanel = null;
+         this.calloutPanel = null;
          this.gameMessagesPanel = null;
-         this.minimap.removeEventListener(MinimapEvent.TRY_SIZE_CHANGED,this.onMiniMapTrySizeChangeHandler);
-         this.minimap.removeEventListener(MinimapEvent.SIZE_CHANGED,this.onMiniMapChangeHandler);
-         this.minimap.removeEventListener(MinimapEvent.VISIBILITY_CHANGED,this.onMiniMapChangeHandler);
          this.minimap = null;
          MinimapEntryController.instance.dispose();
          ControlsFactory.instance.dispose();
@@ -281,6 +292,7 @@ package net.wg.gui.battle.views
          this.piercingDebugPanel = null;
          App.utils.data.cleanupDynamicObject(this._componentsStorage);
          this._componentsStorage = null;
+         this.hitTestFix = null;
          super.onDispose();
       }
       
@@ -347,6 +359,21 @@ package net.wg.gui.battle.views
       public function as_toggleCtrlPressFlag(param1:Boolean) : void
       {
          App.toolTipMgr.hide();
+      }
+      
+      public function as_togglePiercingPanel() : void
+      {
+         if(this.piercingDebugPanel == null)
+         {
+            this.piercingDebugPanel = App.utils.classFactory.getComponent(Linkages.PIERCING_DEBUG_PANEL,PiercingDebugPanel);
+            addChild(this.piercingDebugPanel);
+            this.registerComponent(this.piercingDebugPanel,BATTLE_VIEW_ALIASES.PIERCING_DEBUG_PANEL);
+            this.piercingDebugPanel.updateStage(_originalWidth,_originalHeight);
+         }
+         else
+         {
+            this.piercingDebugPanel.visible = !this.piercingDebugPanel.visible;
+         }
       }
       
       protected function updatePrebattleTimerPosition(param1:int) : void
@@ -470,7 +497,7 @@ package net.wg.gui.battle.views
          return AMMUNITION_PANEL_Y_SHIFT;
       }
       
-      protected function showComponent(param1:String, param2:Boolean) : void
+      private function showComponent(param1:String, param2:Boolean) : void
       {
          var _loc3_:IDisplayableComponent = null;
          _loc3_ = this._componentsStorage[param1];
@@ -491,12 +518,17 @@ package net.wg.gui.battle.views
          this.postmortemTips.updateElementsPosition();
       }
       
-      private function updateAmmunitionPanelY() : void
+      protected function updateAmmunitionPanelY() : void
       {
          if(this.prebattleAmmunitionPanel)
          {
-            this.prebattleAmmunitionPanel.setYPos(!!this.prebattleAmmunitionPanel.isInLoading ? int(this.battleLoading.getContentY() + this.getAmmunitionPanelYShift()) : int(_originalHeight - this.prebattleAmmunitionPanel.height));
+            this.prebattleAmmunitionPanel.setYPos(!!this.prebattleAmmunitionPanel.isInLoading ? int(this.battleLoading.getContentY() + this.getAmmunitionPanelYShift()) : int(_originalHeight - this.prebattleAmmunitionPanel.height + this.getLoadedPrebattleAmmoPanelYShift()));
          }
+      }
+      
+      protected function getLoadedPrebattleAmmoPanelYShift() : int
+      {
+         return 0;
       }
       
       protected function get prebattleAmmunitionPanelShown() : Boolean
@@ -514,7 +546,7 @@ package net.wg.gui.battle.views
          return false;
       }
       
-      protected function onMiniMapChangeHandler(param1:MinimapEvent) : void
+      protected function onMinimapSizeChangedHandler(param1:MinimapEvent) : void
       {
          if(this.postmortemTips)
          {
@@ -548,7 +580,7 @@ package net.wg.gui.battle.views
          this.ribbonsPanel.x = (_originalWidth >> 1) + this.ribbonsPanel.offsetX;
       }
       
-      private function onMiniMapTrySizeChangeHandler(param1:MinimapEvent) : void
+      private function onMinimapTrySizeChangedHandler(param1:MinimapEvent) : void
       {
          this.updateMinimapSizeIndex(param1.sizeIndex);
       }

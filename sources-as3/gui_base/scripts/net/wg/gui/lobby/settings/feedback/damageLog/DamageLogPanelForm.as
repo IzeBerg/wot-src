@@ -158,7 +158,7 @@ package net.wg.gui.lobby.settings.feedback.damageLog
                }
             }
          }
-         this.damageLogEventsPositionButtonBar.enabled = _loc9_ && !getControlPropsByKey(DAMAGE_LOG_POSITION_ID).readOnly;
+         this.damageLogEventsPositionButtonBar.enabled = _loc9_;
          this.screenSizeAlert.visible = _loc10_ && _loc3_;
       }
       

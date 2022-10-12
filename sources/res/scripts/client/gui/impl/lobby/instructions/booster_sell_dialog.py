@@ -5,7 +5,7 @@ from gui.impl.lobby.common.buy_sell_item_base_dialog import DialogBuySellItemBas
 from gui.impl.gen import R
 from frameworks.wulf import ViewSettings
 from gui.shared.gui_items.processors.module import ModuleSeller
-from adisp import process
+from adisp import adisp_process
 
 class BoosterSellWindowView(DialogBuySellItemBaseView):
 
@@ -31,7 +31,7 @@ class BoosterSellWindowView(DialogBuySellItemBaseView):
         model.setSpecialType(self._item.getOverlayType())
         super(BoosterSellWindowView, self)._setBaseParams(model)
 
-    @process
+    @adisp_process
     def _onAcceptClicked(self):
         result = yield ModuleSeller(self._item, min(self.viewModel.getItemCount(), MAX_ITEMS_FOR_OPERATION)).request()
         if result.userMsg:

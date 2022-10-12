@@ -146,5 +146,9 @@ package net.wg.mock.utils
       {
          return false;
       }
+      
+      public function addEmptyHitArea(param1:Sprite) : void
+      {
+      }
    }
 }

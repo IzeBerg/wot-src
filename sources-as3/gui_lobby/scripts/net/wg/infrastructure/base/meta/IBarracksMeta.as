@@ -20,7 +20,7 @@ package net.wg.infrastructure.base.meta
       
       function setTankmenFilterS() : void;
       
-      function openPersonalCaseS(param1:String, param2:uint) : void;
+      function openPersonalCaseS(param1:String, param2:String) : void;
       
       function onCountersVisitedS(param1:Array) : void;
       

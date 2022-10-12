@@ -21,7 +21,6 @@ from vehicle_systems import model_assembler
 from VehicleEffects import DamageFromShotDecoder
 from common_tank_appearance import CommonTankAppearance
 import CGF, GenericComponents
-from cgf_components import PlayerVehicleTag
 _ROOT_NODE_NAME = 'V'
 _GUN_RECOIL_NODE_NAME = 'G'
 _PERIODIC_TIME_ENGINE = 0.1
@@ -75,7 +74,6 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
     wheelsScroll = property(lambda self: self._vehicle.wheelsScrollSmoothed if self._vehicle is not None else None)
     burnoutLevel = property(lambda self: self._vehicle.burnoutLevel / 255.0 if self._vehicle is not None else 0.0)
     isConstructed = property(lambda self: self.__isConstructed)
-    vehicleHealth = property(lambda self: self._vehicle.health if self._vehicle else 0.0)
     highlighter = ComponentDescriptor()
     tutorialMatKindsController = ComponentDescriptor()
     compoundHolder = ComponentDescriptor()
@@ -108,12 +106,8 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
             self.crashedTracksController.setVehicle(vehicle)
         if self.frictionAudition is not None:
             self.frictionAudition.setVehicleMatrix(vehicle.matrix)
-        if self.highlighter is not None:
-            self.highlighter.setVehicle(vehicle)
-        if self.fashions is not None:
-            self.__applyVehicleOutfit()
-        if vehicle.isPlayerVehicle:
-            self.createComponent(PlayerVehicleTag)
+        self.highlighter.setVehicle(vehicle)
+        self.__applyVehicleOutfit()
         fstList = vehicle.wheelsScrollFilters if vehicle.wheelsScrollFilters else []
         scndList = vehicle.wheelsSteeringFilters if vehicle.wheelsSteeringFilters else []
         for retriever, floatFilter in zip(self.filterRetrievers, fstList + scndList):
@@ -790,18 +784,18 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         else:
             return 0
 
+    def __vehicleUpdated(self, vehicleId):
+        if self._vehicle is not None and self._vehicle.id == vehicleId and self.__engineStarted:
+            self.__setTurbochargerSound(self._vehicle.getOptionalDevices())
+        return
+
     def __setTurbochargerSound(self, optDevices):
         isEnabled = findFirst(lambda d: d is not None and d.groupName == 'turbocharger', optDevices) is not None
         if isEnabled == self.__turbochargerSoundPlaying:
             return
         else:
-            engineSoundObject = self.engineAudition.getSoundObject(TankSoundObjectsIndexes.ENGINE)
             if self.engineAudition is not None:
+                engineSoundObject = self.engineAudition.getSoundObject(TankSoundObjectsIndexes.ENGINE)
                 engineSoundObject.play('cons_turbine_start' if isEnabled else 'cons_turbine_stop')
                 self.__turbochargerSoundPlaying = isEnabled
             return
-
-    def __vehicleUpdated(self, vehicleId):
-        if self._vehicle is not None and self._vehicle.id == vehicleId and self.__engineStarted:
-            self.__setTurbochargerSound(self._vehicle.getOptionalDevices())
-        return

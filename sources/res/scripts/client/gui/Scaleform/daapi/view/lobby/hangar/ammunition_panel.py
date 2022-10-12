@@ -1,6 +1,5 @@
-from adisp import process
+from adisp import adisp_process
 from account_helpers.settings_core.settings_constants import OnceOnlyHints
-from constants import ROLE_TYPE
 from CurrentVehicle import g_currentVehicle
 from gui import makeHtmlString
 from gui.impl import backport
@@ -11,12 +10,11 @@ from gui.Scaleform.daapi.view.meta.AmmunitionPanelMeta import AmmunitionPanelMet
 from gui.impl.lobby.tank_setup.dialogs.need_repair import NeedRepair
 from gui.prb_control.entities.listener import IGlobalListener
 from gui.shared import event_dispatcher as shared_events
-from gui.shared.formatters.icons import getRoleIcon
-from gui.shared.formatters import text_styles
 from gui.shared.gui_items import GUI_ITEM_TYPE
 from gui.shared.gui_items.Vehicle import Vehicle
 from gui.shared.gui_items.items_actions import factory as ItemsActionsFactory
 from gui.shared.gui_items.items_actions.actions import VehicleRepairAction
+from gui.shared.gui_items.vehicle_helpers import getRoleMessage
 from helpers import dependency, int2roman
 from skeletons.account_helpers.settings_core import ISettingsCore
 from skeletons.gui.customization import ICustomizationService
@@ -41,7 +39,7 @@ class AmmunitionPanel(AmmunitionPanelMeta, IGlobalListener):
     def update(self):
         self._update()
 
-    @process
+    @adisp_process
     def showRepairDialog(self):
         if g_currentVehicle.isPresent():
             vehicle = g_currentVehicle.item
@@ -108,7 +106,7 @@ class AmmunitionPanel(AmmunitionPanelMeta, IGlobalListener):
                'vehicleLevel': ('{}').format(int2roman(vehicle.level)), 
                'vehicleName': ('{}').format(vehicle.shortUserName), 
                'roleId': vehicle.role, 
-               'roleMessage': self.__getRoleMessage(), 
+               'roleMessage': getRoleMessage(g_currentVehicle.item.role), 
                'vehicleCD': vehicle.intCD})
 
     def __inventoryUpdateCallBack(self, *args):
@@ -140,14 +138,3 @@ class AmmunitionPanel(AmmunitionPanelMeta, IGlobalListener):
         if g_currentVehicle.isPresent():
             stateWarning = vehicle.isBroken
         self.as_setWarningStateS(stateWarning)
-
-    @staticmethod
-    def __getRoleMessage():
-        msg = ''
-        hasRole = g_currentVehicle.item.role != ROLE_TYPE.NOT_DEFINED
-        if hasRole:
-            roleLabel = g_currentVehicle.item.roleLabel
-            msg = text_styles.concatStylesToSingleLine(getRoleIcon(roleLabel), ' ', backport.text(R.strings.menu.roleExp.roleName.dyn(roleLabel)(), groupName=backport.text(R.strings.menu.roleExp.roleGroupName.dyn(roleLabel)())))
-        if hasRole:
-            return makeHtmlString('html_templates:vehicleStatus', Vehicle.VEHICLE_STATE_LEVEL.ROLE, {'message': msg})
-        return ''

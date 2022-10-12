@@ -3,6 +3,7 @@ package net.wg.gui.lobby.techtree.helpers
    import flash.display.DisplayObjectContainer;
    import flash.display.MovieClip;
    import flash.geom.Point;
+   import net.wg.data.VO.PaddingVO;
    import net.wg.data.constants.Linkages;
    import net.wg.gui.components.advanced.events.TutorialHintEvent;
    import net.wg.gui.components.advanced.tutorial.TutorialHint;
@@ -82,6 +83,11 @@ package net.wg.gui.lobby.techtree.helpers
          this.clearAnimSequence();
          this._sequence = null;
          this._hintParent = null;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
       
       public function reset() : void
@@ -224,11 +230,12 @@ package net.wg.gui.lobby.techtree.helpers
          _loc1_ = this._hintParent.globalToLocal(_loc1_);
          var _loc2_:Number = Number(this._hintTarget.scaleX) || Number(1);
          var _loc3_:Number = Number(this._hintTarget.scaleY) || Number(1);
-         this._hint.x = _loc1_.x - TutorialHintBuilder.HINT_GLOW_OFFSET + this._hintModel.padding.left * _loc2_ | 0;
-         this._hint.y = _loc1_.y - TutorialHintBuilder.HINT_GLOW_OFFSET + this._hintModel.padding.top * _loc3_ | 0;
-         var _loc4_:int = this._hintTarget.width - (this._hintModel.padding.left + this._hintModel.padding.right) * _loc2_ | 0;
-         var _loc5_:int = this._hintTarget.height - (this._hintModel.padding.top + this._hintModel.padding.bottom) * _loc3_ | 0;
-         this._hint.setSize(_loc4_,_loc5_);
+         var _loc4_:PaddingVO = this._hintModel.padding;
+         this._hint.x = _loc1_.x - TutorialHintBuilder.HINT_GLOW_OFFSET + _loc4_.left * _loc2_ | 0;
+         this._hint.y = _loc1_.y - TutorialHintBuilder.HINT_GLOW_OFFSET + _loc4_.top * _loc3_ | 0;
+         var _loc5_:int = this._hintTarget.width - (_loc4_.left + _loc4_.right) * _loc2_ | 0;
+         var _loc6_:int = this._hintTarget.height - (_loc4_.top + _loc4_.bottom) * _loc3_ | 0;
+         this._hint.setSize(_loc5_,_loc6_);
       }
       
       private function onEndAnimation() : void
@@ -244,11 +251,6 @@ package net.wg.gui.lobby.techtree.helpers
          {
             _loc2_.startAnimation();
          }
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }
@@ -287,6 +289,11 @@ class AnimSequenceItem implements IDisposable
       this._animStartFunction = null;
    }
    
+   public function isDisposed() : Boolean
+   {
+      return this._disposed;
+   }
+   
    public function startAnimation() : void
    {
       if(!this._animated)
@@ -302,10 +309,5 @@ class AnimSequenceItem implements IDisposable
       {
          this._scheduler.cancelTask(this._animStartFunction);
       }
-   }
-   
-   public function isDisposed() : Boolean
-   {
-      return this._disposed;
    }
 }

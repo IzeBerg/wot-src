@@ -112,12 +112,9 @@ package net.wg.gui.lobby.techtree.controls
          {
             return;
          }
-         if(isInvalid(InvalidationType.STATE))
+         if(this.disableIndicator != null && isInvalid(InvalidationType.STATE))
          {
-            if(this.disableIndicator != null)
-            {
-               this.disableIndicator.visible = state == STATE_DISABLED;
-            }
+            this.disableIndicator.visible = state == STATE_DISABLED;
          }
       }
       
@@ -165,11 +162,11 @@ package net.wg.gui.lobby.techtree.controls
             {
                _loc3_ = _loc2_ == owner || owner.contains(_loc2_);
             }
-            if(!param1 && (owner.hitTestPoint(stage.mouseX,stage.mouseY,true) && _loc3_))
+            if(!param1 && _loc3_ && owner.hitTestPoint(stage.mouseX,stage.mouseY,true))
             {
                return;
             }
-            if(this.hitTestPoint(stage.mouseX,stage.mouseY,true) && _loc3_)
+            if(_loc3_ && this.hitTestPoint(stage.mouseX,stage.mouseY,true))
             {
                if(this._animTween != null)
                {
@@ -311,17 +308,17 @@ package net.wg.gui.lobby.techtree.controls
          {
             return;
          }
-         if(!this._imgSubstitution)
-         {
-            this._imgSubstitution = new ImageSubstitution(param1.subString,param1.source,param1.baseLineY,param1.width,param1.height);
-         }
-         else
+         if(this._imgSubstitution)
          {
             this._imgSubstitution.subString = param1.subString;
             this._imgSubstitution.source = param1.source;
             this._imgSubstitution.baseLineY = param1.baseLineY;
             this._imgSubstitution.width = param1.width;
             this._imgSubstitution.height = param1.height;
+         }
+         else
+         {
+            this._imgSubstitution = new ImageSubstitution(param1.subString,param1.source,param1.baseLineY,param1.width,param1.height);
          }
          invalidateData();
       }

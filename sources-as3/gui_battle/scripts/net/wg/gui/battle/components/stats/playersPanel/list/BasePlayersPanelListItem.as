@@ -3,7 +3,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
    import flash.display.Sprite;
    import flash.events.MouseEvent;
    import flash.text.TextField;
-   import flash.utils.Dictionary;
    import net.wg.data.constants.InvalidationType;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.BATTLEATLAS;
@@ -12,6 +11,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
    import net.wg.gui.battle.components.BattleUIComponent;
    import net.wg.gui.battle.components.stats.playersPanel.ChatCommandItemComponent;
    import net.wg.gui.battle.components.stats.playersPanel.SpottedIndicator;
+   import net.wg.gui.battle.components.stats.playersPanel.events.PlayersPanelItemEvent;
    import net.wg.gui.battle.components.stats.playersPanel.interfaces.IPlayersPanelListItem;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.constants.PlayersPanelInvalidationType;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.list.PlayersPanelDynamicSquad;
@@ -35,7 +35,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       protected static const BADGE_OFFSET:int = 5;
       
-      protected static const DOG_TAG_OFFSET:int = -5;
+      private static const DOG_TAG_OFFSET:int = -5;
       
       private static const ALT_TEXT_COLOR:uint = 16777215;
       
@@ -55,36 +55,12 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       
       private static const BADGE_ALPHA_NOT_ACTIVE:Number = 0.7;
       
-      private static const CHAT_COMMAND_HIGHLIGHT_OFFSET:int = 36;
+      private static const CHAT_COMMAND_RIGHT_ICON_OFFSET:int = -370;
       
-      private static const CHAT_COMMAND_OFFSET_FROM_VEHICLE_TF:int = 88;
+      private static const CHAT_COMMAND_LEFT_ICON_OFFSET:int = 79;
       
-      private static const CHAT_COMMAND_RIGHT_SIDE_OFFSET_FROM_HIT:int = -370;
-      
-      private static const CHAT_COMMAND_LEFT_STATE_OFFSETS:Dictionary = new Dictionary();
-      
-      private static const CHAT_COMMAND_RIGHT_STATE_OFFSETS:Dictionary = new Dictionary();
-      
-      {
-         CHAT_COMMAND_LEFT_STATE_OFFSETS[PLAYERS_PANEL_STATE.HIDDEN] = 0;
-         CHAT_COMMAND_LEFT_STATE_OFFSETS[PLAYERS_PANEL_STATE.SHORT] = 174;
-         CHAT_COMMAND_LEFT_STATE_OFFSETS[PLAYERS_PANEL_STATE.MEDIUM] = 219;
-         CHAT_COMMAND_LEFT_STATE_OFFSETS[PLAYERS_PANEL_STATE.LONG] = 244;
-         CHAT_COMMAND_LEFT_STATE_OFFSETS[PLAYERS_PANEL_STATE.FULL] = 324;
-         CHAT_COMMAND_LEFT_STATE_OFFSETS[PLAYERS_PANEL_STATE.SHORT_NO_BADGES] = 150;
-         CHAT_COMMAND_LEFT_STATE_OFFSETS[PLAYERS_PANEL_STATE.MEDIUM_NO_BADGES] = 195;
-         CHAT_COMMAND_LEFT_STATE_OFFSETS[PLAYERS_PANEL_STATE.LONG_NO_BADGES] = 220;
-         CHAT_COMMAND_LEFT_STATE_OFFSETS[PLAYERS_PANEL_STATE.FULL_NO_BADGES] = 300;
-         CHAT_COMMAND_RIGHT_STATE_OFFSETS[PLAYERS_PANEL_STATE.HIDDEN] = 0;
-         CHAT_COMMAND_RIGHT_STATE_OFFSETS[PLAYERS_PANEL_STATE.SHORT] = -107;
-         CHAT_COMMAND_RIGHT_STATE_OFFSETS[PLAYERS_PANEL_STATE.MEDIUM] = -158;
-         CHAT_COMMAND_RIGHT_STATE_OFFSETS[PLAYERS_PANEL_STATE.LONG] = -184;
-         CHAT_COMMAND_RIGHT_STATE_OFFSETS[PLAYERS_PANEL_STATE.FULL] = -309;
-         CHAT_COMMAND_RIGHT_STATE_OFFSETS[PLAYERS_PANEL_STATE.SHORT_NO_BADGES] = -500;
-         CHAT_COMMAND_RIGHT_STATE_OFFSETS[PLAYERS_PANEL_STATE.MEDIUM_NO_BADGES] = -400;
-         CHAT_COMMAND_RIGHT_STATE_OFFSETS[PLAYERS_PANEL_STATE.LONG_NO_BADGES] = -600;
-         CHAT_COMMAND_RIGHT_STATE_OFFSETS[PLAYERS_PANEL_STATE.FULL_NO_BADGES] = -450;
-      }
+      private static const CHAT_COMMAND_LEFT_OFFSET:int = 36;
+       
       
       public var dynamicSquad:PlayersPanelDynamicSquad;
       
@@ -275,7 +251,15 @@ package net.wg.gui.battle.components.stats.playersPanel.list
             this.disableCommunication.visible = false;
             this.disableCommunication.imageName = BATTLEATLAS.ICON_TOXIC_CHAT_OFF;
          }
-         this.setupBackgrounds();
+         this.bg.imageName = BATTLEATLAS.PLAYERS_PANEL_BG;
+         this.normAltBg.visible = false;
+         this.normAltBg.imageName = BATTLEATLAS.PLAYERS_PANEL_NORM_ALT_BG;
+         this.deadAltBg.visible = false;
+         this.deadAltBg.imageName = BATTLEATLAS.PLAYERS_PANEL_DEAD_ALT_BG;
+         this.selfBg.visible = false;
+         this.selfBg.imageName = BATTLEATLAS.PLAYERS_PANEL_SELF_BG;
+         this.deadBg.visible = false;
+         this.deadBg.imageName = BATTLEATLAS.PLAYERS_PANEL_DEAD_BG;
          this.selfBg.mouseEnabled = this.selfBg.mouseChildren = false;
          this.deadBg.mouseEnabled = this.deadBg.mouseChildren = false;
          this.bg.mouseEnabled = this.bg.mouseChildren = false;
@@ -330,11 +314,15 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          }
          if(isInvalid(PlayersPanelInvalidationType.SELECTED))
          {
-            this.updateSelfState();
+            this.selfBg.visible = this._isSelected;
          }
          if(isInvalid(PlayersPanelInvalidationType.ALIVE))
          {
-            this.updateBgState();
+            this.bg.visible = this._isAlive && !this._isHpBarsVisible;
+            this.deadBg.visible = !this._isAlive && !this._isHpBarsVisible;
+            this.normAltBg.visible = this._isAlive && this._isHpBarsVisible;
+            this.deadAltBg.visible = !this._isAlive && this._isHpBarsVisible;
+            this.playerNameFullTF.alpha = this.fragsTF.alpha = this.playerNameCutTF.alpha = this.vehicleTF.alpha = !!this.deadAltBg.visible ? Number(DEAD_ALT_TEXT_ALPHA) : Number(this._originalTFAlpha);
          }
          if(isInvalid(PlayersPanelInvalidationType.PLAYER_SCHEME))
          {
@@ -646,27 +634,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
       {
       }
       
-      protected function get isRightAligned() : Boolean
-      {
-         return this._isRightAligned;
-      }
-      
-      protected function get isAlive() : Boolean
-      {
-         return this._isAlive;
-      }
-      
-      protected function get isCurrentPlayer() : Boolean
-      {
-         return this._isCurrentPlayer;
-      }
-      
-      protected function get isOffline() : Boolean
-      {
-         return this._isOffline;
-      }
-      
-      protected function updatePositions() : void
+      private function updatePositions() : void
       {
          var _loc1_:int = 0;
          var _loc3_:int = 0;
@@ -786,7 +754,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
             {
                this.dogTag.x = this.fragsTF.x + this.fragsTF.width + DOG_TAG_OFFSET;
             }
-            this.chatCommandState.iconOffset(CHAT_COMMAND_RIGHT_SIDE_OFFSET_FROM_HIT);
+            this.chatCommandState.iconOffset(CHAT_COMMAND_RIGHT_ICON_OFFSET);
             this.chatCommandState.x = 0;
             this.updatePositionsRight();
          }
@@ -910,19 +878,9 @@ package net.wg.gui.battle.components.stats.playersPanel.list
                      this.fragsTF.x = _loc1_;
                   }
             }
-            _loc3_ = this.fragsTF.x - CHAT_COMMAND_HIGHLIGHT_OFFSET ^ 0;
-            if(this._state == PLAYERS_PANEL_STATE.FULL || this._state == PLAYERS_PANEL_STATE.FULL_NO_BADGES)
-            {
-               this.chatCommandState.iconOffset(this.vehicleTF.x - _loc3_ + this.vehicleTF.width + CHAT_COMMAND_OFFSET_FROM_VEHICLE_TF);
-            }
-            else
-            {
-               this.chatCommandState.iconOffset(CHAT_COMMAND_LEFT_STATE_OFFSETS[this._state]);
-            }
-            if(this.chatCommandState.x != _loc3_)
-            {
-               this.chatCommandState.x = _loc3_;
-            }
+            _loc3_ = this.fragsTF.x - CHAT_COMMAND_LEFT_OFFSET;
+            this.chatCommandState.iconOffset(this.vehicleIcon.x - _loc3_ + CHAT_COMMAND_LEFT_ICON_OFFSET);
+            this.chatCommandState.x = _loc3_;
             this.updatePositionsLeft();
          }
          var _loc2_:int = -x;
@@ -930,33 +888,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this.hit.width = !!this._isRightAligned ? Number(WIDTH + _loc2_) : Number(WIDTH - _loc2_);
          this.hpBarPlayersPanelListItem.setParentX(this.x);
          this.hpBarPlayersPanelListItem.setVehicleIconX(this.vehicleIcon.x);
-      }
-      
-      protected function setupBackgrounds() : void
-      {
-         this.bg.imageName = BATTLEATLAS.PLAYERS_PANEL_BG;
-         this.normAltBg.visible = false;
-         this.normAltBg.imageName = BATTLEATLAS.PLAYERS_PANEL_NORM_ALT_BG;
-         this.deadAltBg.visible = false;
-         this.deadAltBg.imageName = BATTLEATLAS.PLAYERS_PANEL_DEAD_ALT_BG;
-         this.selfBg.visible = false;
-         this.selfBg.imageName = BATTLEATLAS.PLAYERS_PANEL_SELF_BG;
-         this.deadBg.visible = false;
-         this.deadBg.imageName = BATTLEATLAS.PLAYERS_PANEL_DEAD_BG;
-      }
-      
-      protected function updateSelfState() : void
-      {
-         this.selfBg.visible = this._isSelected;
-      }
-      
-      protected function updateBgState() : void
-      {
-         this.bg.visible = this._isAlive && !this._isHpBarsVisible;
-         this.deadBg.visible = !this._isAlive && !this._isHpBarsVisible;
-         this.normAltBg.visible = this._isAlive && this._isHpBarsVisible;
-         this.deadAltBg.visible = !this._isAlive && this._isHpBarsVisible;
-         this.playerNameFullTF.alpha = this.fragsTF.alpha = this.playerNameCutTF.alpha = this.vehicleTF.alpha = !!this.deadAltBg.visible ? Number(DEAD_ALT_TEXT_ALPHA) : Number(this._originalTFAlpha);
       }
       
       private function applyState() : void
@@ -1036,7 +967,7 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          invalidate();
       }
       
-      protected function updateColors() : void
+      private function updateColors() : void
       {
          var _loc4_:uint = 0;
          var _loc1_:String = PlayerStatusSchemeName.getSchemeNameForVehicle(this._isCurrentPlayer,this.isSquadPersonal(),this._isTeamKiller,!this._isAlive,this._isOffline);
@@ -1088,16 +1019,27 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this._holderItemID = param1;
       }
       
+      public function get state() : int
+      {
+         return this._state;
+      }
+      
       protected function onMouseOver(param1:MouseEvent) : void
       {
+         var _loc2_:PlayersPanelItemEvent = new PlayersPanelItemEvent(PlayersPanelItemEvent.ON_ITEM_OVER,this,this.holderItemID,param1);
+         dispatchEvent(_loc2_);
       }
       
       protected function onMouseOut(param1:MouseEvent) : void
       {
+         var _loc2_:PlayersPanelItemEvent = new PlayersPanelItemEvent(PlayersPanelItemEvent.ON_ITEM_OUT,this,this.holderItemID,param1);
+         dispatchEvent(_loc2_);
       }
       
       protected function onMouseClick(param1:MouseEvent) : void
       {
+         var _loc2_:PlayersPanelItemEvent = new PlayersPanelItemEvent(PlayersPanelItemEvent.ON_ITEM_CLICK,this,this.holderItemID,param1);
+         dispatchEvent(_loc2_);
       }
       
       private function onMouseOverHandler(param1:MouseEvent) : void

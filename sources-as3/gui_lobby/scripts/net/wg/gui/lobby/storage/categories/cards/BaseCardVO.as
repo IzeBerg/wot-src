@@ -57,6 +57,8 @@ package net.wg.gui.lobby.storage.categories.cards
       
       public var extraParams:DataProvider = null;
       
+      public var customData:Object = null;
+      
       public function BaseCardVO(param1:Object)
       {
          super(param1);

@@ -22,6 +22,8 @@ package net.wg.gui.lobby.components.data
       
       public var buyCount:int = 0;
       
+      public var buyFreeCount:int = 0;
+      
       public var showBuyAnimation:Boolean = true;
       
       public var level:Number = -1;

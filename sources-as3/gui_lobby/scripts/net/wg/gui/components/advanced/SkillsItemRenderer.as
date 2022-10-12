@@ -6,6 +6,7 @@ package net.wg.gui.components.advanced
    import net.wg.data.constants.Errors;
    import net.wg.data.constants.SoundTypes;
    import net.wg.data.constants.Values;
+   import net.wg.data.constants.generated.PERSONALCASECONST;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
    import net.wg.gui.components.controls.SoundListItemRenderer;
    import net.wg.gui.components.controls.UILoaderAlt;
@@ -32,7 +33,13 @@ package net.wg.gui.components.advanced
       
       protected static const RANK_MC_FRAME_LABEL_DISABLED:String = "disabled";
       
-      protected static const MAX_LEVEL:int = 100;
+      private static const MAX_LEVEL:int = 100;
+      
+      private static const ALPHA_FULL:int = 1;
+      
+      private static const ALPHA_HALF:Number = 0.5;
+      
+      private static const ALPHA_ZERO:int = 0;
        
       
       public var loader:UILoaderAlt = null;
@@ -48,6 +55,8 @@ package net.wg.gui.components.advanced
       public var rankMc:RankElement = null;
       
       public var notActive:MovieClip = null;
+      
+      public var activeFrame:MovieClip = null;
       
       private var _model:CarouselTankmanSkillsModel = null;
       
@@ -69,11 +78,17 @@ package net.wg.gui.components.advanced
       
       private var _skillName:String = "";
       
-      private var _tankmanID:int = -1;
-      
       private var _rollIcon:String = "";
       
+      private var _tankmanID:int = -1;
+      
       private var _skillsCountForLearn:int = -1;
+      
+      private var _relatedTab:String = "";
+      
+      private var _selectedTab:String = "";
+      
+      private var _isFreeSkill:Boolean = false;
       
       private var _skillEnabled:Boolean = false;
       
@@ -96,6 +111,7 @@ package net.wg.gui.components.advanced
          this.loadingBar = null;
          this.bg = null;
          this.notActive = null;
+         this.activeFrame = null;
          this._titleLabel = null;
          this._model = null;
          this._tooltipMgr = null;
@@ -112,10 +128,13 @@ package net.wg.gui.components.advanced
       
       override protected function handleClick(param1:uint = 0) : void
       {
+         var _loc2_:PersonalCaseEvent = null;
          super.handleClick(param1);
          if(this._isNewSkill)
          {
-            dispatchEvent(new PersonalCaseEvent(PersonalCaseEvent.CHANGE_TAB_ON_TWO,true));
+            _loc2_ = new PersonalCaseEvent(PersonalCaseEvent.CHANGE_TAB,true);
+            _loc2_.relatedTabId = this._relatedTab;
+            dispatchEvent(_loc2_);
          }
       }
       
@@ -154,12 +173,16 @@ package net.wg.gui.components.advanced
          this._skillLevel = this._model.level;
          this._skillName = this._model.name;
          this._bgIcon = this._model.icon;
+         this._selectedTab = this._model.selectedTab;
+         this._isFreeSkill = this._model.isFreeSkill;
+         this._relatedTab = !!this._isFreeSkill ? PERSONALCASECONST.FREE_SKILLS_TAB_ID : PERSONALCASECONST.SKILLS_TAB_ID;
          this._isShowLoadingBar = !this._isNewSkill && this._skillLevel != MAX_LEVEL;
       }
       
       private function updateVisibility() : void
       {
          this.notActive.visible = this._isDisabled && !this._isNewSkill;
+         this.activeFrame.visible = this._selectedTab == this._relatedTab && this._isNewSkill;
          this.loadingBar.visible = this._titleLabel.visible = this._isShowLoadingBar;
       }
       
@@ -185,7 +208,8 @@ package net.wg.gui.components.advanced
          {
             this.levelMc.visible = false;
          }
-         this.levelMc.alpha = !!this.levelMc.visible ? Number(1) : Number(0);
+         this.levelMc.alpha = !!this.levelMc.visible ? Number(ALPHA_FULL) : Number(ALPHA_ZERO);
+         this.alpha = this._selectedTab == this._relatedTab ? Number(ALPHA_FULL) : Number(ALPHA_HALF);
       }
       
       private function bgUpdate() : void
@@ -243,11 +267,11 @@ package net.wg.gui.components.advanced
       {
          if(this._isNewSkill)
          {
-            this._tooltipMgr.showSpecial(TOOLTIPS_CONSTANTS.TANKMAN_NEW_SKILL,null,this._tankmanID);
+            this._tooltipMgr.show(!!this._isFreeSkill ? TOOLTIPS.BUYFREESKILL_HEADER : TOOLTIPS.BUYSKILL_HEADER);
          }
          else
          {
-            this._tooltipMgr.showSpecial(TOOLTIPS_CONSTANTS.TANKMAN_SKILL,null,this._skillName,this._tankmanID);
+            this._tooltipMgr.showSpecial(TOOLTIPS_CONSTANTS.TANKMAN_SKILL,null,this._skillName,this._tankmanID,this._isFreeSkill);
          }
       }
       

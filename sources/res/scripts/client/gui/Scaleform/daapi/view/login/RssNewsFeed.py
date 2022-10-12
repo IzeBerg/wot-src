@@ -1,5 +1,5 @@
 import logging, uuid, BigWorld, ResMgr
-from adisp import process, async
+from adisp import adisp_process, adisp_async
 from gui import GUI_SETTINGS
 from gui.Scaleform.daapi.view.meta.RssNewsFeedMeta import RssNewsFeedMeta
 from gui.game_control.links import URLMacros
@@ -52,7 +52,7 @@ class RssNewsFeed(RssNewsFeedMeta):
         super(RssNewsFeed, self)._dispose()
         return
 
-    @process
+    @adisp_process
     def __requestFeed(self):
         yield lambda callback: callback(True)
         if GUI_SETTINGS.loginRssFeed.show:
@@ -88,8 +88,8 @@ class RssNewsFeed(RssNewsFeedMeta):
         self.__clearCallback()
         self.__requestCbID = BigWorld.callback(self.UPDATE_INTERVAL, self.__updateCallback)
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def __getRssUrl(self, callback):
         url = yield self.__urlMacros.parse(str(GUI_SETTINGS.loginRssFeed.url))
         callback(url)

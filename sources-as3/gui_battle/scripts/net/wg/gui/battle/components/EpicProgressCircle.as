@@ -13,21 +13,7 @@ package net.wg.gui.battle.components
       public function EpicProgressCircle()
       {
          super();
-      }
-      
-      public function setOwner(param1:Boolean) : void
-      {
-         if(this._isPlayerTeam == param1 && this._isOwnerSet || this._capturingActive)
-         {
-            return;
-         }
-         this._isOwnerSet = true;
-         this._isPlayerTeam = param1;
-         this._capturingActive = false;
-         state = !!param1 ? ALLY_STATE : getCorrectState(ENEMY_STATE);
-         gotoAndStop(state);
-         curFrame = SEMI_LAST_FRAME;
-         progressCircle.gotoAndStop(SEMI_LAST_FRAME);
+         curFrame = this.defaultEmptyFrame;
       }
       
       override public function updateProgress(param1:Number) : void
@@ -35,7 +21,7 @@ package net.wg.gui.battle.components
          var _loc3_:int = 0;
          var _loc2_:int = curFrame;
          _loc3_ = param1 * SEMI_LAST_FRAME >> 0;
-         if(_loc2_ != _loc3_ && _loc2_ == SEMI_LAST_FRAME && _loc3_ > 0)
+         if(_loc2_ != _loc3_ && _loc2_ == this.defaultEmptyFrame && _loc3_ > 0)
          {
             this._capturingActive = true;
             state = this.getCapturingActiveState();
@@ -47,7 +33,7 @@ package net.wg.gui.battle.components
          {
             this._capturingActive = false;
             state = !!this._isPlayerTeam ? ALLY_STATE : getCorrectState(ENEMY_STATE);
-            curFrame = SEMI_LAST_FRAME;
+            curFrame = this.defaultEmptyFrame;
             gotoAndStop(state);
             progressCircle.gotoAndStop(SEMI_LAST_FRAME);
          }
@@ -65,14 +51,59 @@ package net.wg.gui.battle.components
          this.setOwner(this._isPlayerTeam);
       }
       
+      public function setOwner(param1:Boolean) : void
+      {
+         if(this._isPlayerTeam == param1 && this._isOwnerSet || this._capturingActive)
+         {
+            return;
+         }
+         this._isOwnerSet = true;
+         this._isPlayerTeam = param1;
+         this._capturingActive = false;
+         state = !!param1 ? ALLY_STATE : getCorrectState(ENEMY_STATE);
+         gotoAndStop(state);
+         curFrame = this.defaultEmptyFrame;
+         progressCircle.gotoAndStop(SEMI_LAST_FRAME);
+      }
+      
+      protected function getCapturingActiveState() : String
+      {
+         return !!this._isPlayerTeam ? getCorrectState(ENEMY_STATE) : ALLY_STATE;
+      }
+      
+      public function get isPlayerTeam() : Boolean
+      {
+         return this._isPlayerTeam;
+      }
+      
+      public function set isPlayerTeam(param1:Boolean) : void
+      {
+         this._isPlayerTeam = param1;
+      }
+      
+      public function get isOwnerSet() : Boolean
+      {
+         return this._isOwnerSet;
+      }
+      
+      public function set isOwnerSet(param1:Boolean) : void
+      {
+         this._isOwnerSet = param1;
+      }
+      
       public function get capturingActive() : Boolean
       {
          return this._capturingActive;
       }
       
-      private function getCapturingActiveState() : String
+      public function set capturingActive(param1:Boolean) : void
       {
-         return !!this._isPlayerTeam ? getCorrectState(ENEMY_STATE) : ALLY_STATE;
+         this._capturingActive = param1;
+      }
+      
+      protected function get defaultEmptyFrame() : int
+      {
+         return SEMI_LAST_FRAME;
       }
    }
 }

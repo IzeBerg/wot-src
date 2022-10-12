@@ -5,6 +5,8 @@ package net.wg.gui.battle.views.minimap
    import flash.events.MouseEvent;
    import flash.geom.Point;
    import flash.geom.Rectangle;
+   import net.wg.data.constants.Errors;
+   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.BATTLEATLAS;
    import net.wg.gui.battle.components.BattleAtlasSprite;
    import net.wg.gui.battle.views.minimap.constants.MinimapSizeConst;
@@ -23,7 +25,7 @@ package net.wg.gui.battle.views.minimap
       
       private static const ANIM_FADE_OUT:String = "fadeOut";
       
-      private static const ANIM_SKIP_FADE_OUT:String = "skipFadeOut";
+      private static const NAME_CLICK_AREA:String = "clickAreaSpr";
        
       
       public var mapHit:Sprite = null;
@@ -67,10 +69,16 @@ package net.wg.gui.battle.views.minimap
          this._clickAreaSpr = new Sprite();
          super();
          this._foregrounds = new <Sprite>[this.foreground0,this.foreground1,this.foreground2,this.foreground3,this.foreground4,this.foreground5];
-         this.setForeground();
+         this.foreground0.imageName = BATTLEATLAS.MINIMAP_B1;
+         this.foreground1.imageName = BATTLEATLAS.MINIMAP_B2;
+         this.foreground2.imageName = BATTLEATLAS.MINIMAP_B3;
+         this.foreground3.imageName = BATTLEATLAS.MINIMAP_B4;
+         this.foreground4.imageName = BATTLEATLAS.MINIMAP_B5;
+         this.foreground5.imageName = BATTLEATLAS.MINIMAP_B6;
          this.foreground0.visible = this.foreground1.visible = this.foreground2.visible = this.foreground3.visible = this.foreground4.visible = this.foreground5.visible = false;
          this._currForeground = this.foreground0;
          this.entriesContainer.mask = this.entriesContainerMask;
+         this._clickAreaSpr.name = NAME_CLICK_AREA;
          addChildAt(this._clickAreaSpr,getChildIndex(this.mapHit));
          this.mapHit.visible = false;
          this._clickAreaSpr.hitArea = this.mapHit;
@@ -80,35 +88,10 @@ package net.wg.gui.battle.views.minimap
          this.minimapHint.gotoAndStop(ANIM_FADE_IN);
       }
       
-      override public function as_disableHintPanel(param1:Boolean) : void
+      override public function as_disableHintPanel() : void
       {
          this._bIsHintPanelEnabled = false;
-         if(param1)
-         {
-            this.minimapHint.gotoAndStop(ANIM_SKIP_FADE_OUT);
-            return;
-         }
          this.minimapHint.gotoAndPlay(ANIM_FADE_OUT);
-      }
-      
-      protected function setForeground() : void
-      {
-         this.foreground0.imageName = BATTLEATLAS.MINIMAP_B1;
-         this.foreground1.imageName = BATTLEATLAS.MINIMAP_B2;
-         this.foreground2.imageName = BATTLEATLAS.MINIMAP_B3;
-         this.foreground3.imageName = BATTLEATLAS.MINIMAP_B4;
-         this.foreground4.imageName = BATTLEATLAS.MINIMAP_B5;
-         this.foreground5.imageName = BATTLEATLAS.MINIMAP_B6;
-      }
-      
-      protected function get clickArea() : Sprite
-      {
-         return this._clickAreaSpr;
-      }
-      
-      protected function get currForeground() : Sprite
-      {
-         return this._currForeground;
       }
       
       override public function as_enableHintPanelWithData(param1:Boolean, param2:Boolean) : void
@@ -116,6 +99,11 @@ package net.wg.gui.battle.views.minimap
          this.updateIntenalHintPanelData(param1,param2);
          this._bIsHintPanelEnabled = true;
          this.minimapHint.gotoAndPlay(ANIM_FADE_IN);
+      }
+      
+      override public function as_initPrebattleSize(param1:int) : void
+      {
+         dispatchEvent(new MinimapEvent(MinimapEvent.TRY_INIT_PREBATTLE_SIZE,false,false,param1));
       }
       
       override public function as_setAlpha(param1:Number) : void
@@ -167,6 +155,17 @@ package net.wg.gui.battle.views.minimap
          return new Rectangle(0,0,initedWidth - _loc3_[_loc2_].x,initedHeight - _loc3_[_loc2_].y);
       }
       
+      override public function getMinimapTotalWidthByIndex(param1:uint) : int
+      {
+         var _loc2_:Boolean = param1 >= this._foregrounds.length;
+         if(_loc2_)
+         {
+            App.utils.asserter.assert(_loc2_,Errors.WRONG_VALUE + Values.SPACE_STR + param1);
+            return 0;
+         }
+         return this._foregrounds[param1].width;
+      }
+      
       override public function getRectangles() : Vector.<Rectangle>
       {
          if(!visible)
@@ -215,6 +214,7 @@ package net.wg.gui.battle.views.minimap
       
       override protected function onDispose() : void
       {
+         this.fakePixel = null;
          this.foreground0 = null;
          this.foreground1 = null;
          this.foreground2 = null;
@@ -253,7 +253,7 @@ package net.wg.gui.battle.views.minimap
          this.updateContainersSize();
       }
       
-      protected function updateContainersSize() : void
+      private function updateContainersSize() : void
       {
          var _loc1_:Rectangle = MinimapSizeConst.MAP_SIZE[this._currentSizeIndex];
          this.background.width = _loc1_.width;
@@ -317,11 +317,6 @@ package net.wg.gui.battle.views.minimap
       override public function get currentSizeIndex() : Number
       {
          return this._currentSizeIndex;
-      }
-      
-      public function set currentSizeIndex(param1:Number) : void
-      {
-         this._currentSizeIndex = param1;
       }
       
       private function onMouseClickHandler(param1:MouseEvent) : void

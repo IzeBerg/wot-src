@@ -26,6 +26,9 @@ class LobbyHeaderMeta(BaseDAAPIComponent):
     def onPremShopClick(self):
         self._printOverrideError('onPremShopClick')
 
+    def onReservesClick(self):
+        self._printOverrideError('onReservesClick')
+
     def onCrystalClick(self):
         self._printOverrideError('onCrystalClick')
 
@@ -75,9 +78,9 @@ class LobbyHeaderMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_setGoldFishEnabled(isEnabled, playAnimation, tooltip, tooltipType)
 
-    def as_updateSquadS(self, isInSquad, tooltip, tooltipType, isEvent, icon, hasSearchSupport, data):
+    def as_updateSquadS(self, isInSquad, tooltip, tooltipType, isEvent, icon, hasPopover, data):
         if self._isDAAPIInited():
-            return self.flashObject.as_updateSquad(isInSquad, tooltip, tooltipType, isEvent, icon, hasSearchSupport, data)
+            return self.flashObject.as_updateSquad(isInSquad, tooltip, tooltipType, isEvent, icon, hasPopover, data)
 
     def as_nameResponseS(self, data):
         if self._isDAAPIInited():
@@ -86,10 +89,6 @@ class LobbyHeaderMeta(BaseDAAPIComponent):
     def as_setBadgeS(self, data, selected):
         if self._isDAAPIInited():
             return self.flashObject.as_setBadge(data, selected)
-
-    def as_setBoosterDataS(self, data):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setBoosterData(data)
 
     def as_setWotPlusDataS(self, data):
         if self._isDAAPIInited():

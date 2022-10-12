@@ -1,4 +1,4 @@
-import typing, async
+import typing, wg_async
 from BWUtil import AsyncReturn
 from gui.platform.base.controller import PlatformRequestController
 from gui.platform.base.settings import REQUEST_TIMEOUT
@@ -16,7 +16,7 @@ class WGNPRequestController(PlatformRequestController, IWGNPRequestController):
     def settings(self):
         return self.lobbyContext.getServerSettings().wgnp
 
-    @async.async
+    @wg_async.wg_async
     def _request(self, params, timeout=REQUEST_TIMEOUT, waitingID=None):
         if not self.settings.isEnabled():
             self._logger.debug('WGNP disabled.')

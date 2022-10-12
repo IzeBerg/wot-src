@@ -12,6 +12,7 @@ package net.wg.gui.battle.epicRandom.views
    import net.wg.gui.battle.epicRandom.infrastructure.EpicRandomStatisticsDataController;
    import net.wg.gui.battle.epicRandom.views.stats.components.fullStats.EpicRandomFullStats;
    import net.wg.gui.battle.epicRandom.views.stats.components.playersPanel.PlayersPanel;
+   import net.wg.gui.battle.interfaces.IReservesStats;
    import net.wg.gui.battle.random.views.fragCorrelationBar.FragCorrelationBar;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.events.PlayersPanelEvent;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.events.PlayersPanelSwitchEvent;
@@ -35,6 +36,7 @@ package net.wg.gui.battle.epicRandom.views
    import net.wg.gui.components.hintPanel.HintPanel;
    import net.wg.infrastructure.events.FocusRequestEvent;
    import net.wg.infrastructure.helpers.statisticsDataController.BattleStatisticDataController;
+   import net.wg.infrastructure.interfaces.IDAAPIModule;
    
    public class EpicRandomPage extends BattlePageQuestsProgress
    {
@@ -95,6 +97,10 @@ package net.wg.gui.battle.epicRandom.views
       public function EpicRandomPage()
       {
          super();
+      }
+      
+      override protected function initialize() : void
+      {
          this.battleDamageLogPanel.init(ATLAS_CONSTANTS.BATTLE_ATLAS);
          this.teamBasesPanelUI.addEventListener(Event.CHANGE,this.onTeamBasesPanelUIChangeHandler);
          this.epicRandomPlayersPanel.addEventListener(Event.CHANGE,this.onPlayersPanelChangeHandler);
@@ -103,9 +109,8 @@ package net.wg.gui.battle.epicRandom.views
       
       override public function updateStage(param1:Number, param2:Number) : void
       {
-         var _loc3_:Number = NaN;
          super.updateStage(param1,param2);
-         _loc3_ = param1 >> 1;
+         var _loc3_:int = param1 >> 1;
          this.teamBasesPanelUI.x = _loc3_;
          this.sixthSense.x = _loc3_;
          this.sixthSense.y = param2 >> 2;
@@ -162,6 +167,7 @@ package net.wg.gui.battle.epicRandom.views
       
       override protected function onPopulate() : void
       {
+         var _loc2_:IDAAPIModule = null;
          registerComponent(this.teamBasesPanelUI,BATTLE_VIEW_ALIASES.TEAM_BASES_PANEL);
          registerComponent(this.sixthSense,BATTLE_VIEW_ALIASES.SIXTH_SENSE);
          registerComponent(this.damageInfoPanel,BATTLE_VIEW_ALIASES.DAMAGE_INFO_PANEL);
@@ -178,6 +184,15 @@ package net.wg.gui.battle.epicRandom.views
          registerComponent(this.siegeModePanel,BATTLE_VIEW_ALIASES.SIEGE_MODE_INDICATOR);
          registerComponent(this.hintPanel,BATTLE_VIEW_ALIASES.HINT_PANEL);
          registerComponent(this.battleNotifier,BATTLE_VIEW_ALIASES.BATTLE_NOTIFIER);
+         var _loc1_:IReservesStats = this.fullStats as IReservesStats;
+         if(_loc1_)
+         {
+            _loc2_ = _loc1_.getReservesView();
+            if(_loc2_)
+            {
+               registerComponent(_loc2_,BATTLE_VIEW_ALIASES.PERSONAL_RESERVES_TAB);
+            }
+         }
          super.onPopulate();
       }
       

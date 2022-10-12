@@ -27,7 +27,7 @@ package net.wg.gui.battle.random.views.stats.components.playersPanel.constants
       
       public static const DOG_TAG_CHANGED:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 12;
       
-      public static const DAMAGE:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 13;
+      public static const VOICE_CHAT_STATUS_CHANGED:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 13;
       
       public static const HP_BAR_VISIBILITY:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 14;
        

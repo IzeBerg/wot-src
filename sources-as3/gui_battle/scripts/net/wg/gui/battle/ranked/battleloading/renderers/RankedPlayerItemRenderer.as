@@ -39,7 +39,7 @@ package net.wg.gui.battle.ranked.battleloading.renderers
          if(_loc1_ != null && (_loc1_.level > -1 || _loc1_.division > -1))
          {
             this._rankIcon.visible = true;
-            _loc2_ = !!_loc1_.isGroup ? BATTLEATLAS.getRanksGroupIcon : BATTLEATLAS.getRankIcon;
+            _loc2_ = !!_loc1_.isGroup ? BATTLEATLAS.getRBRanksGroupIcon : BATTLEATLAS.getRBRankIcon;
             this._rankIcon.imageName = _loc2_(_loc1_.division.toString(),_loc1_.level.toString());
          }
          else

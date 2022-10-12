@@ -710,4 +710,10 @@ BATTLE_RESULTS = [
  (
   'replayURL', str, '', None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
-  'currencies', dict, {}, MergeDictPacker(), 'joinByEachPacker', ENTRY_TYPE.VEHICLE_SELF)]
+  'currencies', dict, {}, MergeDictPacker(), 'joinByEachPacker', ENTRY_TYPE.VEHICLE_SELF),
+ (
+  'entityCaptured', dict, {}, None, 'any', ENTRY_TYPE.VEHICLE_ALL),
+ (
+  'poiCapturedByOwnTeam', int, 0, None, 'skip', ENTRY_TYPE.VEHICLE_ALL),
+ (
+  'isFirstBlood', bool, False, None, 'skip', ENTRY_TYPE.VEHICLE_ALL)]

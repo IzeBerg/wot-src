@@ -8,7 +8,6 @@ from gui.impl.wrappers.function_helpers import replaceNoneKwargsModel
 from gui.impl.gen.view_models.views.lobby.premacc.piggybank_model import PiggybankModel
 from frameworks.wulf import ViewFlags, ViewSettings
 from gui.shared.event_dispatcher import showTankPremiumAboutPage, showShop
-from gui.shared.utils.functions import toPercents
 from gui.shared.utils.scheduled_notifications import TimerNotifier
 from helpers import time_utils
 _logger = logging.getLogger(__name__)
@@ -63,7 +62,7 @@ class PiggyBankView(PiggyBankBaseView):
 
     @replaceNoneKwargsModel
     def _updatePercentDiscount(self, model=None):
-        percent = toPercents(self._config.get('multiplier', 0))
+        percent = self.__toPercents(self._config.get('multiplier', 0))
         model.setPercentDiscount(percent)
 
     @replaceNoneKwargsModel
@@ -104,3 +103,7 @@ class PiggyBankView(PiggyBankBaseView):
         self.viewModel.onPremAccProlong -= self.onPremAccProlong
         self.viewModel.onBackBtnClicked -= self.onBackBtnClicked
         self.viewModel.onGoToContentPage -= self.onGoToContentPage
+
+    @staticmethod
+    def __toPercents(value):
+        return int(value * 100)

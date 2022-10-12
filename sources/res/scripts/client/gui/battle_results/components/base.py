@@ -104,6 +104,9 @@ class VOMeta(object):
     def bind(self, clazz):
         setattr(clazz, '__vo_meta__', self.clone())
 
+    def addMeta(self, meta):
+        pass
+
     def getDefault(self, field):
         return
 
@@ -176,6 +179,9 @@ class DictMeta(VOMeta):
                 vo.update(value)
 
         return vo
+
+    def addMeta(self, meta):
+        self._meta.update(meta)
 
 
 class ListMeta(VOMeta):

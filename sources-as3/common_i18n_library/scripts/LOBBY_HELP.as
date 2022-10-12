@@ -17,6 +17,8 @@ package
       
       public static const HEADER_FINANCE_BLOCK:String = "#lobby_help:header/finance-block";
       
+      public static const HEADER_PERSONAL_RESERVES:String = "#lobby_help:header/personal-reserves";
+      
       public static const VEHICLE_COMPARE:String = "#lobby_help:vehicle/compare";
       
       public static const CHAT_SERVICE_CHANNEL:String = "#lobby_help:chat/service-channel";

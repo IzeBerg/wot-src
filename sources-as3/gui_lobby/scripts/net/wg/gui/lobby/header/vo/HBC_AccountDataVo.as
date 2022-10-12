@@ -17,10 +17,6 @@ package net.wg.gui.lobby.header.vo
       
       public var badgeVO:BadgeVisualVO = null;
       
-      public var hasActiveBooster:Boolean = false;
-      
-      public var hasAvailableBoosters:Boolean = false;
-      
       public var selectedBadge:Boolean = false;
       
       public var isWotPlusEnabled:Boolean = false;

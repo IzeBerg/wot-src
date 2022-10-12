@@ -195,6 +195,20 @@ package net.wg.gui.lobby.storage.categories.blueprints
          resetFilterS();
       }
       
+      override protected function isNoItemsViewLayoutReady() : Boolean
+      {
+         return true;
+      }
+      
+      override protected function updateNoItemsVisibility() : void
+      {
+      }
+      
+      public function as_updateCanConvert(param1:Boolean) : void
+      {
+         this.filtersBlock.updateCanConvert(param1);
+      }
+      
       public function as_updateCounter(param1:Boolean, param2:String, param3:Boolean) : void
       {
          this.filtersBlock.updateCounter(param1,param2,param3);
@@ -252,11 +266,6 @@ package net.wg.gui.lobby.storage.categories.blueprints
       private function onFiltersBlockFiltersChangedHandler(param1:FiltersEvent) : void
       {
          selectConvertibleS(Boolean(param1.filtersValue));
-      }
-      
-      public function as_updateCanConvert(param1:Boolean) : void
-      {
-         this.filtersBlock.updateCanConvert(param1);
       }
    }
 }

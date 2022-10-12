@@ -81,8 +81,9 @@ package net.wg.gui.lobby.battleResults.components
       
       public function TeamMemberStatsView()
       {
+         var _loc1_:Number = NaN;
          super();
-         var _loc1_:Number = scaleX;
+         _loc1_ = scaleX;
          var _loc2_:Number = scaleY;
          scaleX = 1;
          scaleY = 1;

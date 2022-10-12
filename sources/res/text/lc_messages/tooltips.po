@@ -175,7 +175,7 @@ msgstr "Награда за подтверждение почты"
 msgid "accountCompletionHangar/email/text"
 msgstr ""
 "На email %(email) отправлено письмо для активации аккаунта. Перейдите в свой"
-" почтовый ящик и в письме от Wargaming.net найдите код активации."
+" почтовый ящик и в письме от Lesta Games найдите код активации."
 
 msgid "accountCompletionHangar/email/title"
 msgstr "Ожидание подтверждения почты"
@@ -509,6 +509,9 @@ msgstr "Эффект «%(value)s»"
 
 msgid "additionalRewards/customizations/paint"
 msgstr "Краска «%(value)s»"
+
+msgid "additionalRewards/customizations/progressionStyle"
+msgstr "Прогрессионный стиль «%(value)s»"
 
 msgid "additionalRewards/customizations/projectionDecal"
 msgstr "Декаль «%(value)s»"
@@ -952,14 +955,6 @@ msgid "advanced/vehicleWheeledChassis"
 msgstr ""
 "Модуль, влияющий на манёвренность машины и её грузоподъёмность. Ходовая "
 "колёсной техники не позволяет развернуться на месте."
-
-msgid "advanced/wt_largeMedkit"
-msgstr ""
-"При использовании мгновенно лечит всех раненых членов экипажа и снимает "
-"оглушение."
-
-msgid "advanced/wt_largeRepairkit"
-msgstr "При использовании мгновенно чинит все повреждённые модули."
 
 msgid "ammo/auto/body"
 msgstr ""
@@ -2623,11 +2618,102 @@ msgstr "Действует ещё %(time)s."
 msgid "boostersPanel/openBoostersWindow/body"
 msgstr "Нажмите, чтобы перейти к выбору и активации личных резервов."
 
+msgid "boostersWindow/booster/activateInfo/activation"
+msgstr "Где активировать:"
+
+msgid "boostersWindow/booster/activateInfo/activationInfo"
+msgstr ""
+"Можно активировать в Ангаре или во время боя с помощью клавиши TAB или B. "
+"Бонус доступен в Случайных боях, турнирах, а также в режимах «Стальной "
+"охотник» и «Линия фронта»."
+
+msgid "boostersWindow/booster/activateInfo/basicReserve"
+msgstr "Стандартный личный резерв"
+
+msgid "boostersWindow/booster/activateInfo/bonus"
+msgstr "Бонус:"
+
+msgid "boostersWindow/booster/activateInfo/bonusTimeInfo"
+msgstr ""
+"Вы получите бонус, если начнёте бой до истечения срока действия личного "
+"резерва."
+
+msgid "boostersWindow/booster/activateInfo/bonusValueTime/booster_credits"
+msgstr "%(effectValue)s к кредитам за бой на %(effectTime)s"
+
+msgid "boostersWindow/booster/activateInfo/bonusValueTime/booster_crew_xp"
+msgstr "%(effectValue)s к опыту экипажа за бой на %(effectTime)s"
+
+msgid "boostersWindow/booster/activateInfo/bonusValueTime/booster_fl_xp"
+msgstr "%(effectValue)s к фронтовому опыту за бой на %(effectTime)s"
+
+msgid "boostersWindow/booster/activateInfo/bonusValueTime/booster_free_xp"
+msgstr "%(effectValue)s к свободному опыту за бой на %(effectTime)s"
+
+msgid ""
+"boostersWindow/booster/activateInfo/bonusValueTime/booster_free_xp_and_crew_xp"
+msgstr ""
+"%(effectValue)s к свободному опыту и опыту экипажа за бой на %(effectTime)s"
+
+msgid "boostersWindow/booster/activateInfo/bonusValueTime/booster_xp"
+msgstr "%(effectValue)s к боевому опыту за бой на %(effectTime)s"
+
+msgid "boostersWindow/booster/activateInfo/clanReserveReceiveInfo"
+msgstr ""
+"Клановые резервы подготавливаются в строениях Укрепрайона или могут быть "
+"получены во время Военных игр."
+
 msgid "boostersWindow/booster/activateInfo/description"
-msgstr "На Складе в категории «Личные резервы»."
+msgstr "На экране активации личных резервов."
+
+msgid "boostersWindow/booster/activateInfo/improvedReserve"
+msgstr "Улучшенный личный резерв"
+
+msgid "boostersWindow/booster/activateInfo/inDepot"
+msgstr "На Складе"
+
+msgid "boostersWindow/booster/activateInfo/nonPaidReceiveInfo"
+msgstr ""
+"Выполняйте задачи и участвуйте в игровых событиях, чтобы получить личные "
+"резервы."
+
+msgid "boostersWindow/booster/activateInfo/notActivated"
+msgstr "Не активирован"
+
+msgid "boostersWindow/booster/activateInfo/notEnough"
+msgstr "не хватает:"
+
+msgid "boostersWindow/booster/activateInfo/paidReceiveInfo"
+msgstr ""
+"Вы можете приобрести улучшенные личные резервы в Премиум и внутриигровом "
+"Магазине."
+
+msgid "boostersWindow/booster/activateInfo/purchase"
+msgstr "Купить"
+
+msgid "boostersWindow/booster/activateInfo/receive"
+msgstr "Способ получения"
 
 msgid "boostersWindow/booster/activateInfo/title"
 msgstr "Где активировать:"
+
+msgid "boostersWindow/booster/activateInfo/title/booster_credits"
+msgstr "Кредиты"
+
+msgid "boostersWindow/booster/activateInfo/title/booster_crew_xp"
+msgstr "Опыт экипажа"
+
+msgid "boostersWindow/booster/activateInfo/title/booster_fl_xp"
+msgstr "Фронтовой опыт"
+
+msgid "boostersWindow/booster/activateInfo/title/booster_free_xp"
+msgstr "Cвободный опыт"
+
+msgid "boostersWindow/booster/activateInfo/title/booster_free_xp_and_crew_xp"
+msgstr "Комбинированный опыт"
+
+msgid "boostersWindow/booster/activateInfo/title/booster_xp"
+msgstr "Боевой опыт"
 
 msgid "boostersWindow/booster/active/title"
 msgstr "Активирован"
@@ -2697,6 +2783,12 @@ msgstr "(малый)"
 
 msgid "boostersWindow/booster/shortDescriptionSpecial"
 msgstr "Получение надбавок по результатам боя"
+
+msgid "buyFreeSkill/header"
+msgstr "Доступные для изучения навыки"
+
+msgid "buyFreeSkill/infoButton"
+msgstr "Нажмите, чтобы узнать о «нулевых» навыках экипажа."
 
 msgid "buySkill/fully"
 msgstr "%(count)s (Полностью)"
@@ -4704,7 +4796,7 @@ msgid "equipment/restriction"
 msgstr "Ограничение:"
 
 msgid "event/squad/disable/body"
-msgstr "Выберите машину Гончих"
+msgstr "Для высадки на тёмной стороне Луны выберите %(tankName)s"
 
 msgid "event/squad/disable/header"
 msgstr "Внимание!"
@@ -5106,8 +5198,17 @@ msgstr "Слот для снаряжения"
 msgid "hangar/crew/assignedTo"
 msgstr "В составе экипажа"
 
+msgid "hangar/crew/commanderFeature"
+msgstr "Особенность командира:"
+
+msgid "hangar/crew/freeSkills"
+msgstr "«Нулевые» навыки:"
+
 msgid "hangar/crew/moreskills"
 msgstr "и ещё умений/навыков: %(skill_cnt)s"
+
+msgid "hangar/crew/new_free_skill_available/header"
+msgstr "Доступен новый «нулевой» навык"
 
 msgid "hangar/crew/new_skill_available/header"
 msgstr "Доступен новый навык/умение"
@@ -5132,7 +5233,7 @@ msgid "hangar/crew/rudy/dog/ussr/header"
 msgstr "Шарик"
 
 msgid "hangar/crew/specialty_skills"
-msgstr "Основная специальность, умения, навыки"
+msgstr "Навыки и умения:"
 
 msgid "hangar/elen/bottom/allperiphery/body"
 msgstr ""
@@ -5288,6 +5389,12 @@ msgstr ""
 msgid "hangar/header/personalMissions/operation_disabled/header"
 msgstr "Операция недоступна"
 
+msgid "hangar/header/personalMissions/unavailable/body"
+msgstr "Личные боевые задачи недоступны в режиме %(modeName)s."
+
+msgid "hangar/header/personalMissions/unavailable/header"
+msgstr "Доступных задач нет"
+
 msgid "hangar/header/personalMissions2/completedLockedNext/body"
 msgstr ""
 "Выполните задачи для других типов техники, чтобы открыть следующую операцию."
@@ -5430,21 +5537,8 @@ msgstr "Выберите карту, чтобы выйти в бой."
 msgid "hangar/startBtn/mapsTraining/notReady/header"
 msgstr "Недоступно"
 
-msgid "hangar/startBtn/noTicket/body"
-msgstr "Для выхода в бой на Blitzträger auf E 110 нужен ключ"
-
-msgid "hangar/startBtn/noTicket/header"
-msgstr "Выход в бой невозможен"
-
 msgid "hangar/startBtn/preview/body"
 msgstr "Чтобы выйти в бой, вернитесь в Ангар к выбору машины."
-
-msgid "hangar/startBtn/primeNotAvailable/body"
-msgstr ""
-"На этом сервере комендантский час. Попробуйте перейти на другой сервер."
-
-msgid "hangar/startBtn/primeNotAvailable/header"
-msgstr "Выход в бой невозможен"
 
 msgid "hangar/startBtn/squadNotReady/body"
 msgstr "Для выхода в бой выберите машину и подтвердите готовность."
@@ -5654,6 +5748,12 @@ msgstr "Тут можно изменить имя и портрет члена �
 msgid "hangarTutorial/personalCase/additional/documentsTitle"
 msgstr "Документы"
 
+msgid "hangarTutorial/personalCase/additional/freePerksDescription"
+msgstr "Тут расположен список «нулевых» навыков."
+
+msgid "hangarTutorial/personalCase/additional/freePerksTitle"
+msgstr "«Нулевые» навыки"
+
 msgid "hangarTutorial/personalCase/additional/perksDescription"
 msgstr ""
 "Тут расположен список ещё не изученных умений и навыков члена экипажа."
@@ -5676,6 +5776,19 @@ msgstr ""
 
 msgid "hangarTutorial/personalCase/additional/trainingTitle"
 msgstr "Обучение"
+
+msgid "hangarTutorial/personalCase/freeSkills/headerDescription"
+msgstr ""
+"Здесь отображаются «нулевые» навыки члена экипажа. Их невозможно изменить."
+
+msgid "hangarTutorial/personalCase/freeSkills/newPerkDescription"
+msgstr "Нажмите, чтобы выбрать «нулевой» навык для изучения."
+
+msgid "hangarTutorial/personalCase/freeSkills/newPerkTitle"
+msgstr "Изучить «нулевой» навык"
+
+msgid "hangarTutorial/personalCase/freeSkills/title"
+msgstr "«Нулевые» навыки"
 
 msgid "hangarTutorial/personalCase/perks/headerDescription"
 msgstr ""
@@ -6293,11 +6406,10 @@ msgid "login/bySocial/header"
 msgstr "Вход через социальную сеть"
 
 msgid "login/bySocial/wgni/body"
-msgstr ""
-"Будет открыт браузер по умолчанию и страница авторизации в Wargaming.net ID."
+msgstr "Будет открыт браузер по умолчанию и страница авторизации в Lesta ID."
 
 msgid "login/bySocial/wgni/header"
-msgstr "Вход через Wargaming.net ID"
+msgstr "Вход через Lesta ID"
 
 msgid "login/changeAccount/body"
 msgstr "Нажмите, чтобы сменить аккаунт или способ входа."
@@ -6351,7 +6463,7 @@ msgid "login/social/vkontakte"
 msgstr "ВКонтакте"
 
 msgid "login/social/wgni"
-msgstr "Wargaming.net"
+msgstr "Lesta Games"
 
 msgid "login/social/yahoo"
 msgstr "Yahoo!"
@@ -6598,6 +6710,12 @@ msgstr "Боёв в квалификации %(current)s / %(max)s"
 
 msgid "mode_selector/unavailable/bootcamp"
 msgstr "Недоступно на Учебном полигоне."
+
+msgid "mode_selector/unavailable/notVehicles/level"
+msgstr "%(levels)s уровня"
+
+msgid "mode_selector/unavailable/notVehicles/text"
+msgstr "Для участия в боях режима нужна как минимум одна машина %(vehicles)s."
 
 msgid "mode_selector/unavailable/techProblems"
 msgstr "Временно недоступно по техническим причинам."
@@ -7085,6 +7203,12 @@ msgstr ""
 msgid "notrecruitedtankman/ch_compensation/label"
 msgstr "Уникальный член экипажа"
 
+msgid "notrecruitedtankman/commander_baroness/desc"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/commander_baroness/label"
+msgstr "?empty?"
+
 msgid "notrecruitedtankman/commander_bingo/desc"
 msgstr ""
 "Ну вот, опять то же самое. Снова какой-то выскочка хочет стать засечкой на "
@@ -7152,6 +7276,12 @@ msgstr ""
 msgid "notrecruitedtankman/commander_cobra/label"
 msgstr "Уникальный член экипажа"
 
+msgid "notrecruitedtankman/commander_cover_girl/desc"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/commander_cover_girl/label"
+msgstr "?empty?"
+
 msgid "notrecruitedtankman/commander_duke/desc"
 msgstr ""
 "Дьюк — лидер команды G.I. Joe и настоящий лидер, готовый сражаться с любым "
@@ -7213,6 +7343,21 @@ msgstr ""
 msgid "notrecruitedtankman/commander_patrick/label"
 msgstr "Уникальный член экипажа"
 
+msgid "notrecruitedtankman/commander_quickybaby/desc"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/commander_quickybaby/label"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/commander_rebranding/desc"
+msgstr ""
+"Бравый командир, в совершенстве владеющий искусством ведения танкового боя. "
+"В свободное время изучает тактики противника или играет в шахматы. Способен "
+"сохранять самообладание даже в самых стрессовых ситуациях."
+
+msgid "notrecruitedtankman/commander_rebranding/label"
+msgstr "Уникальный член экипажа"
+
 msgid "notrecruitedtankman/commander_starlight/desc"
 msgstr ""
 "Её имя говорит само за себя. Безупречная, с чистейшими намерениями и в "
@@ -7256,6 +7401,9 @@ msgstr "Уникальный член экипажа"
 
 msgid "notrecruitedtankman/expireTitle"
 msgstr "Рекрутирование"
+
+msgid "notrecruitedtankman/freeSkillsTitle"
+msgstr "«Нулевые» навыки"
 
 msgid "notrecruitedtankman/howToGet"
 msgstr "Как получить:"
@@ -7429,9 +7577,9 @@ msgstr "Новогоднее наступление 2022"
 
 msgid "notrecruitedtankman/ny22men/desc"
 msgstr ""
-"Дорогие игроки! Да, это действительно Арнольд Шварценеггер, и мы прекрасно знаем, как давно вы просили добавить его в игру. Мы сами безумно рады, что нам удалось завязать с ним сотрудничество и порадовать вас такой неожиданной новостью. Арни много раз обещал вернуться — и вот он с нами. Надеемся, вы тепло его встретите и выберете для него свой самый лучший и любимый танк.\n"
+"Дорогие игроки! Да, это действительно Арнольд Шварценеггер, и мы прекрасно знаем, как давно вы просили добавить его в игру. Мы сами безумно рады, что нам удалось завязать с ним сотрудничество и порадовать вас такой неожиданной новостью. Арни много раз обещал вернуться — и вот он с нами. Надеемся, вы тепло его встретите и выберете для него свой самый лучший и любимый танк.\n"
 "\n"
-"Команда разработки World of Tanks"
+"Команда разработки Мира танков"
 
 msgid "notrecruitedtankman/ny22men/label"
 msgstr "Новогоднее наступление 2022"
@@ -7584,7 +7732,7 @@ msgid "notrecruitedtankman/race19_commanderC/label"
 msgstr "Уникальный командир"
 
 msgid "notrecruitedtankman/skillsTitle"
-msgstr "Изученные умения и навыки"
+msgstr "Навыки"
 
 msgid "notrecruitedtankman/tankman/desc"
 msgstr "?empty?"
@@ -7593,6 +7741,15 @@ msgid "notrecruitedtankman/tankman/howToGetInfo"
 msgstr "?empty?"
 
 msgid "notrecruitedtankman/tankman/label"
+msgstr "Уникальный член экипажа"
+
+msgid "notrecruitedtankman/tankmen/desc"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen/howToGetInfo"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/tankmen/label"
 msgstr "Уникальный член экипажа"
 
 msgid "notrecruitedtankman/tankmen_auc_1/desc"
@@ -8197,6 +8354,13 @@ msgstr "Поиск боёв с техникой только X уровня"
 msgid "parameter/categories"
 msgstr "Категория: "
 
+msgid "periodicReward/comp7/body"
+msgstr ""
+"Особая награда, которая выдаётся ежедневно игрокам из таблицы лидеров."
+
+msgid "periodicReward/header"
+msgstr "Ежедневная награда"
+
 msgid "personalMissions/awards/camouflage/alliance/body"
 msgstr ""
 "Набор из 3 камуфляжных схем (летняя, зимняя и пустынная).\n"
@@ -8718,31 +8882,6 @@ msgstr ""
 "Нажмите, чтобы выбрать нашивку, которая будет отображаться в бою рядом с "
 "вашим именем. Нашивки можно заработать в Ранговых боях, за выполнение личных"
 " боевых задач и за участие в игровых событиях."
-
-msgid "prem/dashboard/header/clanReserves/body"
-msgstr ""
-"При активации позволяют получать дополнительные надбавки по результатам "
-"боёв. Имеют несколько уровней качества, действуют определённое время в "
-"Случайных и Ранговых боях, а также в турнирных играх, Стальном охотнике и на"
-" Линии фронта."
-
-msgid "prem/dashboard/header/clanReserves/emptySlot/body"
-msgstr "Нажмите, чтобы перейти к выбору и активации клановых резервов."
-
-msgid "prem/dashboard/header/clanReserves/header"
-msgstr "Клановые резервы"
-
-msgid "prem/dashboard/header/personalReserves/body"
-msgstr ""
-"При активации позволяют получать дополнительные надбавки по результатам "
-"боёв. Действуют определённое время в Случайных и Ранговых боях, а также в "
-"турнирных играх, Стальном охотнике и на Линии фронта."
-
-msgid "prem/dashboard/header/personalReserves/emptySlot/body"
-msgstr "Нажмите, чтобы перейти к выбору и активации личных резервов."
-
-msgid "prem/dashboard/header/personalReserves/header"
-msgstr "Личные резервы"
 
 msgid "prem/piggyBank/ghostBtn/body"
 msgstr ""
@@ -9648,6 +9787,36 @@ msgstr ""
 msgid "roleExp/status/roleActions/title"
 msgstr "Получайте бонус к опыту, выполняя ролевые действия:"
 
+msgid "roleSkill/description/active"
+msgstr "При активации"
+
+msgid "roleSkill/description/passive"
+msgstr "Пассивный эффект"
+
+msgid "roleSkill/info"
+msgstr ""
+"Ролевой навык пассивно заряжается во время сражения. Для ускорения зарядки "
+"совершайте результативные действия в бою, захватывайте ключевые позиции / "
+"базу."
+
+msgid "seasonalBattleSelector/tillEnd"
+msgstr "До конца сезона:"
+
+msgid "seasonalBattleSelector/timeTable/empty"
+msgstr "—"
+
+msgid "seasonalBattleSelector/timeTable/interval"
+msgstr "%(start)s – %(end)s"
+
+msgid "seasonalBattleSelector/timeTable/title"
+msgstr "Расписание боёв"
+
+msgid "seasonalBattleSelector/timeTable/today"
+msgstr "Сегодня"
+
+msgid "seasonalBattleSelector/timeTable/tomorrow"
+msgstr "Завтра"
+
 msgid "selectableCrewbook/allNations"
 msgstr "Выбор доступен из всех наций, представленных в игре"
 
@@ -9925,13 +10094,6 @@ msgstr ""
 "Файлы выбранного голоса уведомлений\n"
 "повреждены или отсутствуют."
 
-msgid "setttingsDisabledNotification/body"
-msgstr ""
-"В этом игровом режиме часть настроек недоступна, выберите другой режим."
-
-msgid "setttingsDisabledNotification/header"
-msgstr "Недоступно"
-
 msgid "shell/basic"
 msgstr "Базовый"
 
@@ -10066,6 +10228,9 @@ msgstr ""
 msgid "skills/camouflage/header"
 msgstr "Маскировка"
 
+msgid "skills/commanderFeature"
+msgstr "Особенность командира"
+
 msgid "skills/commander_eagleEye/descr"
 msgstr ""
 "Увеличивает максимальную дальность обзора. При неисправных приборах "
@@ -10182,10 +10347,23 @@ msgstr ""
 msgid "soundQualityOn/header"
 msgstr "Низкое качество"
 
+msgid "squadBonus/comp7/description"
+msgstr "Играя взводом, вы можете получать дополнительные кредиты и опыт."
+
 msgid "squadBonus/complex/body"
 msgstr ""
 "Получайте дополнительные %(bonus)s к боевому опыту по итогам каждого боя, играя во взводе с другими игроками.\n"
+"\n"
 "Бонус доступен только для постоянных формирований и недоступен при создании динамического взвода."
+
+msgid "squadBonus/complex/bonusPercent"
+msgstr "%(value)s%%"
+
+msgid "squadBonus/complex/comp7/body"
+msgstr "Играя взводом, вы будете получать дополнительные кредиты и опыт."
+
+msgid "squadBonus/complex/comp7/header"
+msgstr "Бонусы за игру взводом"
 
 msgid "squadBonus/complex/header"
 msgstr "Бонус за игру взводом"
@@ -10244,17 +10422,11 @@ msgstr "Нажмите, чтобы сбросить фильтр"
 msgid "storage/filter/noResultsBtn/header"
 msgstr "Сбросить фильтр"
 
-msgid "storage/filter/personalReserves/btns/duration"
-msgstr "Время действия: %(durTime)s ч"
+msgid "storage/filter/personalReserves/btns/type/comboExp"
+msgstr "Дополнительный свободный опыт и опыт экипажа за бой"
 
 msgid "storage/filter/personalReserves/btns/type/credits"
 msgstr "Дополнительные кредиты за бой."
-
-msgid "storage/filter/personalReserves/btns/type/crewExp"
-msgstr "Дополнительный опыт экипажа за бой."
-
-msgid "storage/filter/personalReserves/btns/type/freeExp"
-msgstr "Дополнительный свободный опыт за бой."
 
 msgid "storage/filter/personalReserves/btns/type/vehicleExp"
 msgstr "Дополнительный опыт за бой."
@@ -10605,6 +10777,20 @@ msgstr ""
 "Время, за которое орудие (или оба орудия, если у машины спаренная орудийная "
 "установка) будет готово к очередному выстрелу."
 
+msgid "tank_params/desc/rocketAccelerationEnginePower"
+msgstr ""
+"Параметр отвечает за максимальную скорость, динамику разгона и скорость "
+"поворота корпуса машины."
+
+msgid "tank_params/desc/rocketAccelerationReuseAndDuration"
+msgstr ""
+"Реактивные ускорители, повышающие мощность двигателя и максимальную "
+"скорость. Активированные ускорители снижают показатели манёвренности, и их "
+"невозможно отключить во время работы."
+
+msgid "tank_params/desc/rocketAccelerationSpeedLimits"
+msgstr "Паспортная скорость машины при активированных реактивных ускорителях."
+
 msgid "tank_params/desc/shotDispersionAngle"
 msgstr ""
 "Показывает, на сколько метров снаряд может отклониться от точки прицеливания"
@@ -10712,17 +10898,15 @@ msgstr ""
 "время перехода увеличивается. При выведенном из строя двигателе смена режима"
 " невозможна."
 
-msgid "tankman/skillsTitle"
-msgstr "Преимущества"
-
 msgid "tankman/status/inactiveSkills/header"
 msgstr "Неподходящие умения и навыки"
 
 msgid "tankman/status/inactiveSkills/text"
 msgstr ""
-"Умения и навыки по специальности %(skills)s не могут быть использованы. "
-"Выбрать подходящие можно в Личном деле, предварительно полностью сбросив все"
-" изученные умения и навыки."
+"Навыки и умения следующих специальностей не могут быть использованы: "
+"%(skills)s. Выбрать подходящие навыки и умения можно в Личном деле, "
+"предварительно полностью сбросив все ранее изученные. «Нулевые» навыки не "
+"могут быть сброшены."
 
 msgid "tankman/status/inactiveSkillsRoleFormat"
 msgstr "«%s»"
@@ -10928,6 +11112,18 @@ msgstr "%(value)s мин"
 msgid "template/time/lessThenMinute"
 msgstr "менее минуты"
 
+msgid "tillTime/days"
+msgstr "%(day)s д"
+
+msgid "tillTime/hours"
+msgstr "%(hour)s ч"
+
+msgid "tillTime/lessMin"
+msgstr "менее минуты"
+
+msgid "tillTime/min"
+msgstr "%(min)s мин"
+
 msgid "trade/body"
 msgstr ""
 "Премиум машину можно обменять на другую премиум машину\n"
@@ -11081,11 +11277,11 @@ msgstr "Режим наблюдателя включён."
 msgid "turnOffCombatChat/body"
 msgstr ""
 "Данная функция работает только в режимах\n"
-"«Случайный бой», «Ранговый бой», «Линия фронта», при этом:\n"
+"«Случайный бой», «Ранговый бой», «Линия фронта», «Натиск», при этом:\n"
 "\n"
 "• чат взвода не выключается;\n"
-"• игрок видит спецкоманды;\n"
-"• игрок может отправлять спецкоманды;\n"
+"• игрок видит спец. команды;\n"
+"• игрок может отправлять спец. команды;\n"
 "• игрок может писать только в чат взвода."
 
 msgid "turnOffCombatChat/header"
@@ -11094,7 +11290,7 @@ msgstr "Отключить чат с союзниками"
 msgid "useFreeXP/body"
 msgstr ""
 "Может использоваться на исследование любой\n"
-"техники и модулей во всех проектах Wargaming.net."
+"техники и модулей во всех проектах Lesta Games."
 
 msgid "useFreeXP/header"
 msgstr "Свободный опыт"
@@ -11119,7 +11315,7 @@ msgid "vehicle/action_prc"
 msgstr "Скидка %(actionPrc)s, прежняя стоимость: %(oldPrice)s"
 
 msgid "vehicle/afterEventEnd/title"
-msgstr "Все бои проведены, машина недоступна"
+msgstr "Все бои проведены, машина недоступна."
 
 msgid "vehicle/ammo"
 msgstr "В боекомплекте"
@@ -11231,10 +11427,10 @@ msgid "vehicle/rentAvailable"
 msgstr "Доступна аренда машины"
 
 msgid "vehicle/rentLeft/battles"
-msgstr "Доступные бои"
+msgstr "Осталось боёв до завершения аренды"
 
 msgid "vehicle/rentLeft/days"
-msgstr "Машина доступна до %(date)s"
+msgstr "Дней аренды осталось"
 
 msgid "vehicle/rentLeft/epic/base"
 msgstr "Аренда для Линии фронта"
@@ -11249,10 +11445,7 @@ msgid "vehicle/rentLeft/epic/minsLeft"
 msgstr "%(timeNum)s мин"
 
 msgid "vehicle/rentLeft/hours"
-msgstr "Машина доступна до %(date)s"
-
-msgid "vehicle/rentLeft/noTimeLeft"
-msgstr "Все бои проведены, машина недоступна."
+msgstr "Часов аренды осталось"
 
 msgid "vehicle/rentLeft/wins"
 msgstr "Осталось побед до завершения аренды"
@@ -11326,22 +11519,13 @@ msgid "vehicle/xp"
 msgstr "Боевой опыт"
 
 msgid "vehicleCrystal/limitStatus/common/description"
-msgstr "%(max)s Недельный лимит заработка"
-
-msgid "vehicleCrystal/limitStatus/common/title"
-msgstr "Заработок бон:"
+msgstr "%(max)s Недельный лимит заработка бон"
 
 msgid "vehicleCrystal/limitStatus/limitReached/description"
-msgstr "%(timeLeft)s до сброса лимита"
-
-msgid "vehicleCrystal/limitStatus/limitReached/title"
-msgstr "Достигнут лимит бон"
+msgstr "%(timeLeft)s до сброса лимита заработка бон"
 
 msgid "vehicleCrystal/limitStatus/progress/description"
-msgstr "%(current)s / %(max)s"
-
-msgid "vehicleCrystal/limitStatus/progress/title"
-msgstr "Недельный лимит бон:"
+msgstr "%(current)s / %(max)s Недельный лимит заработка бон"
 
 msgid "vehicleIgr/days"
 msgstr "До завершения акции дней: %(days)s"

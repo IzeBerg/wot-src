@@ -1,6 +1,7 @@
 package net.wg.gui.battle.components.stats.playersPanel
 {
    import flash.display.MovieClip;
+   import net.wg.gui.battle.components.stats.playersPanel.events.ChatCommandItemEvent;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
    
    public class ChatCommandItemComponent extends MovieClip implements IDisposable
@@ -107,6 +108,11 @@ package net.wg.gui.battle.components.stats.playersPanel
          this._animationWidth = Math.abs(param1) * OFFSET_TO_ANIMATION_WIDTH_SCALE;
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function playCommandAnimation(param1:String) : void
       {
          if(!this.chatCommandAnimation.visible)
@@ -195,11 +201,9 @@ package net.wg.gui.battle.components.stats.playersPanel
          }
          this.activeChatCommand.gotoAndStop(COMMAND_NAME_TO_FRAME_STATE[_loc3_]);
          this.activeChatCommand.visible = _loc3_ != EMPTY_FRAME_STATE;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
+         var _loc4_:ChatCommandItemEvent = new ChatCommandItemEvent(ChatCommandItemEvent.ACTIVE_COMMAND_CHANGED);
+         _loc4_.isActiveCommandVisible = this.activeChatCommand.visible;
+         dispatchEvent(_loc4_);
       }
    }
 }

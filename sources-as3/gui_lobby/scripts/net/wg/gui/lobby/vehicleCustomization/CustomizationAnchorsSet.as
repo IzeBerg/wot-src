@@ -5,7 +5,7 @@ package net.wg.gui.lobby.vehicleCustomization
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.CUSTOMIZATION_ALIASES;
-   import net.wg.gui.lobby.vehicleCustomization.controls.magneticTool.IMagneticClickHandler;
+   import net.wg.gui.interfaces.IMagneticClickHandler;
    import net.wg.gui.lobby.vehicleCustomization.data.CustomizationAnchorInitVO;
    import net.wg.gui.lobby.vehicleCustomization.data.CustomizationAnchorPositionVO;
    import net.wg.gui.lobby.vehicleCustomization.data.CustomizationAnchorsStateVO;

@@ -1,6 +1,5 @@
 package net.wg.gui.lobby.storage.categories.inhangar
 {
-   import flash.events.Event;
    import net.wg.data.VO.FilterDAAPIDataProvider;
    import net.wg.data.constants.Linkages;
    import net.wg.gui.events.FiltersEvent;
@@ -35,6 +34,11 @@ package net.wg.gui.lobby.storage.categories.inhangar
          return true;
       }
       
+      override protected function initNoItemsView() : void
+      {
+         this.noItemsView.setTexts(STORAGE.INHANGAR_NOITEMS_ALLTAB_TITLE,STORAGE.STORAGE_NOITEMS_NAVIGATIONBUTTON);
+      }
+      
       override protected function doPartlyVisibility(param1:Boolean, param2:Boolean) : void
       {
          super.doPartlyVisibility(param1,param2);
@@ -48,7 +52,6 @@ package net.wg.gui.lobby.storage.categories.inhangar
       
       override protected function onDispose() : void
       {
-         this.noItemsView.removeEventListener(Event.CLOSE,this.onNoItemViewCloseHandler);
          carousel.removeEventListener(CardEvent.SELL,this.onCardSellHandler);
          this.filtersBlock.removeEventListener(FiltersEvent.SEARCH_VALUE_CHANGED,this.onFiltersBlockSearchValueChangedHandler);
          this.filtersBlock.removeEventListener(FiltersEvent.RESET_ALL_FILTERS,this.onFiltersBlockResetAllFiltersHandler);
@@ -66,8 +69,6 @@ package net.wg.gui.lobby.storage.categories.inhangar
          carousel.scrollList.paddingTop = CAROUSEL_TOP_OFFSET;
          carousel.scrollList.paddingBottom = CAROUSEL_BOTTOM_OFFSET;
          carousel.addEventListener(CardEvent.SELL,this.onCardSellHandler);
-         this.noItemsView.setTexts(STORAGE.INHANGAR_NOITEMS_ALLTAB_TITLE,STORAGE.STORAGE_NOITEMS_NAVIGATIONBUTTON);
-         this.noItemsView.addEventListener(Event.CLOSE,this.onNoItemViewCloseHandler);
          this.filtersBlock.addEventListener(FiltersEvent.SEARCH_VALUE_CHANGED,this.onFiltersBlockSearchValueChangedHandler);
          this.filtersBlock.addEventListener(FiltersEvent.RESET_ALL_FILTERS,this.onFiltersBlockResetAllFiltersHandler);
       }
@@ -80,15 +81,17 @@ package net.wg.gui.lobby.storage.categories.inhangar
             this.filtersBlock.x = carousel.x;
             this.filtersBlock.width = carousel.width;
             this.filtersBlock.validateNow();
-            this.noItemsView.width = width;
-            this.noItemsView.validateNow();
-            this.noItemsView.y = height - this.noItemsView.actualHeight >> 1;
          }
       }
       
       override protected function onDummyEvent(param1:String) : void
       {
          resetFilterS();
+      }
+      
+      override protected function onNoItemsViewClose() : void
+      {
+         navigateToStoreS();
       }
       
       public function as_updateCounter(param1:Boolean, param2:String, param3:Boolean) : void
@@ -101,15 +104,15 @@ package net.wg.gui.lobby.storage.categories.inhangar
          this.filtersBlock.updateSearch(param1,param2,param3,param4);
       }
       
+      override public function get noItemsComponent() : UIComponent
+      {
+         return this.noItemsView;
+      }
+      
       private function onCardSellHandler(param1:CardEvent) : void
       {
          param1.stopImmediatePropagation();
          sellItemS(param1.data.id);
-      }
-      
-      private function onNoItemViewCloseHandler(param1:Event) : void
-      {
-         navigateToStoreS();
       }
       
       private function onFiltersBlockSearchValueChangedHandler(param1:FiltersEvent) : void
@@ -120,11 +123,6 @@ package net.wg.gui.lobby.storage.categories.inhangar
       private function onFiltersBlockResetAllFiltersHandler(param1:FiltersEvent) : void
       {
          resetFilterS();
-      }
-      
-      override public function get noItemsComponent() : UIComponent
-      {
-         return this.noItemsView;
       }
    }
 }

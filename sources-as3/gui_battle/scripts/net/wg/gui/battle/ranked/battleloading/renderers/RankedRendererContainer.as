@@ -78,7 +78,7 @@ package net.wg.gui.battle.ranked.battleloading.renderers
          this.rankIconsEnemy = new <BattleAtlasSprite>[this.rankIconEnemy0,this.rankIconEnemy1,this.rankIconEnemy2,this.rankIconEnemy3,this.rankIconEnemy4,this.rankIconEnemy5,this.rankIconEnemy6,this.rankIconEnemy7,this.rankIconEnemy8,this.rankIconEnemy9,this.rankIconEnemy10,this.rankIconEnemy11,this.rankIconEnemy12,this.rankIconEnemy13,this.rankIconEnemy14];
       }
       
-      override public function dispose() : void
+      override protected function onDispose() : void
       {
          this.rankIconsAlly.length = 0;
          this.rankIconsEnemy.length = 0;
@@ -114,7 +114,7 @@ package net.wg.gui.battle.ranked.battleloading.renderers
          this.rankIconEnemy12 = null;
          this.rankIconEnemy13 = null;
          this.rankIconEnemy14 = null;
-         super.dispose();
+         super.onDispose();
       }
    }
 }

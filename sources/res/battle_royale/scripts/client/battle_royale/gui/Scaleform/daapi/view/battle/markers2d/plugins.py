@@ -136,7 +136,7 @@ class BattleRoyaleVehicleMarkerPlugin(VehicleMarkerPlugin):
         if vehicleID == BigWorld.player().getObservedVehicleID() and vehicleID in self._markers:
             self.__hideStunMarker(vehicleID, self._markers[vehicleID].getMarkerID())
 
-    def _updateStatusMarkerState(self, vehicleID, isShown, handle, statusID, duration, animated, isSourceVehicle):
+    def _updateStatusMarkerState(self, vehicleID, isShown, handle, statusID, duration, animated, isSourceVehicle, blinkAnim=True):
         extendedStatuses = self.__markersStatesExtended[vehicleID]
         if isShown and not self.__statusInActive(vehicleID, statusID):
             hasNeighbor = self.__hasNeighborInPrioritizes
@@ -156,7 +156,7 @@ class BattleRoyaleVehicleMarkerPlugin(VehicleMarkerPlugin):
         elif statusID == BATTLE_MARKER_STATES.DEBUFF_STATE:
             isSourceVehicle = False
         if isShown:
-            self._invokeMarker(handle, 'showStatusMarker', statusID, self._getMarkerStatusPriority(statusID), isSourceVehicle, duration, currentlyActiveStatusID, self._getMarkerStatusPriority(currentlyActiveStatusID), animated)
+            self._invokeMarker(handle, 'showStatusMarker', statusID, self._getMarkerStatusPriority(statusID), isSourceVehicle, duration, currentlyActiveStatusID, self._getMarkerStatusPriority(currentlyActiveStatusID), animated, blinkAnim)
         else:
             self._invokeMarker(handle, 'hideStatusMarker', statusID, currentlyActiveStatusID, animated)
 
@@ -233,19 +233,8 @@ class BattleRoyaleVehicleMarkerPlugin(VehicleMarkerPlugin):
 
 
 class BattleRoyaleSettingsPlugin(SettingsPlugin):
-    __CUSTOM = (
-     ('markerBaseLevel', 0), ('markerAltLevel', 0))
+    __OVERRIDES = {name:(('markerBaseLevel', 0), ('markerAltLevel', 0)) for name in MARKERS.ALL()}
 
-    def _setMarkerSettings(self, notify=False):
-        getter = self.settingsCore.getSetting
-        result = {}
-        for name in MARKERS.ALL():
-            stgs = getter(name)
-            for custOptName, custOptVal in self.__CUSTOM:
-                if custOptName not in stgs:
-                    _logger.warning('Option "%s" is not in list of options', custOptName)
-                stgs[custOptName] = custOptVal
-
-            result[name] = stgs
-
-        self._parentObj.setMarkerSettings(result, notify=notify)
+    def __init__(self, parentObj):
+        super(BattleRoyaleSettingsPlugin, self).__init__(parentObj)
+        self._overrides = self.__OVERRIDES

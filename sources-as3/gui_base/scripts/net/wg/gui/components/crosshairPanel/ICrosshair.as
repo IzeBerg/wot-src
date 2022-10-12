@@ -70,5 +70,7 @@ package net.wg.gui.components.crosshairPanel
       function updateScaleWidget(param1:Number) : void;
       
       function setGunMarkersData(param1:Vector.<GunMarkerIndicatorVO>, param2:Boolean) : void;
+      
+      function blinkReloadTime(param1:int) : void;
    }
 }

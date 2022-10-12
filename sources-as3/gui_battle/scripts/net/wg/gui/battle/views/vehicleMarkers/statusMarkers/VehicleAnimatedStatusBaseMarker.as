@@ -1,8 +1,10 @@
 package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
 {
    import flash.display.MovieClip;
+   import net.wg.gui.battle.views.vehicleMarkers.VehicleMarkersConstants;
    import net.wg.gui.battle.views.vehicleMarkers.events.StatusAnimationEvent;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
+   import org.idmedia.as3commons.util.StringUtils;
    
    public class VehicleAnimatedStatusBaseMarker extends MovieClip implements IDisposable
    {
@@ -27,6 +29,10 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       protected var oneShotAnimation:Boolean = false;
       
       protected var color:String = "";
+      
+      private var _altasIconAlias:String = "";
+      
+      private var _atlasSrcMode:Boolean;
       
       private var _statusID:int = -1;
       
@@ -68,12 +74,18 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
          }
       }
       
+      public function isAtlasSrcMode() : Boolean
+      {
+         return this._atlasSrcMode;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function isVisible() : Boolean
       {
-         if(currentFrameLabel == null)
-         {
-            return false;
-         }
          return visible || currentFrameLabel != STATE_HIDDEN;
       }
       
@@ -97,6 +109,8 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
       public function setStatusID(param1:int) : void
       {
          this._statusID = param1;
+         this._altasIconAlias = VehicleMarkersConstants.getStatusMarkerIconNameByStatusId(param1);
+         this._atlasSrcMode = !StringUtils.isEmpty(this._altasIconAlias);
       }
       
       public function setVisibility(param1:Boolean) : void
@@ -118,7 +132,7 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
          addFrameScript(HIDE_STATE_STOP_FRAME,this.evaluateOneShotAnimationFrameStates);
       }
       
-      public function showEffectTimer(param1:Number, param2:Boolean, param3:Boolean, param4:Boolean = true) : void
+      public function showEffectTimer(param1:Number, param2:Boolean, param3:Boolean, param4:Boolean = true, param5:Boolean = true) : void
       {
          this.oneShotAnimation = param3;
          visible = true;
@@ -127,7 +141,11 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
          this.updateSourceVehicle();
       }
       
-      public function updateEffectTimer(param1:Number, param2:Boolean, param3:Boolean = false) : void
+      public function updateAssets() : void
+      {
+      }
+      
+      public function updateEffectTimer(param1:int, param2:Boolean, param3:Boolean = false) : void
       {
          if(!param2)
          {
@@ -135,6 +153,10 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
          }
          if(!visible)
          {
+            if(this._atlasSrcMode)
+            {
+               this.updateAssets();
+            }
             visible = true;
             if(!param3)
             {
@@ -181,9 +203,9 @@ package net.wg.gui.battle.views.vehicleMarkers.statusMarkers
          }
       }
       
-      public function isDisposed() : Boolean
+      public function get altasIconAlias() : String
       {
-         return this._disposed;
+         return this._altasIconAlias;
       }
       
       public function get arrowColorFrame() : String

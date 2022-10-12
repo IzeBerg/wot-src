@@ -25,6 +25,33 @@
 					<row3>0.000000 0.000000 0.000000</row3>
 				</transform>
 			</node>
+			<node>
+				<identifier>lod2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>d0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>n0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
 		</node>
 	</node>
 	<renderSet>
@@ -93,17 +120,22 @@
 				</material>
 				<groupOrigin>0.000027 0.212788 -0.000783</groupOrigin>
 			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_wall_0</identifier>
+					<materialKind>73</materialKind>
+					<collisionFlags>131</collisionFlags>
+				</material>
+				<groupOrigin>0.000000 0.752540 0.000000</groupOrigin>
+			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-0.373835 -0.000315 -0.299652</min>
-		<max>0.466738 0.425890 0.447321</max>
+		<min>-0.373835 -0.002460 -0.299652</min>
+		<max>0.466738 1.507540 0.447321</max>
 	</boundingBox>
-	<missingBspMaterial>
-		<material>
-			<identifier>s_wall_0</identifier>
-		</material>
-	</missingBspMaterial>
-	<geometrySize>2284</geometrySize>
+	<customBsp>true</customBsp>
+	<geometrySize>2716</geometrySize>
 	<minUVDensity>0.018340</minUVDensity>
 </root>

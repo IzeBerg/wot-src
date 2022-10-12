@@ -1,5 +1,4 @@
 import logging, WWISE
-from constants import ARENA_GUI_TYPE
 from helpers import time_utils
 _logger = logging.getLogger(__name__)
 
@@ -12,6 +11,7 @@ class BattleResultsBonusConstants(object):
 class PiggyBankConstants(object):
     MAX_AMOUNT = 750000
     SMASH_MAX_DELAY = 300
+    OPEN_SOON_THRESHOLD_DEFAULT = 86400
     PIGGY_BANK_CREDITS = 'piggyBank.credits'
     PIGGY_BANK_GOLD = 'piggyBank.gold'
     PIGGY_BANK = 'piggyBank'
@@ -25,11 +25,7 @@ def validateAdditionalBonusMultiplier(multiplier):
     return int(multiplier)
 
 
-def isCorrectArenaGUIType(guiType):
-    return guiType in (ARENA_GUI_TYPE.RANDOM, ARENA_GUI_TYPE.EPIC_RANDOM)
-
-
-def getDeltaTimeHelper(config, data):
+def getOpenTimeHelper(config, data):
     if not config or not data:
         _logger.error('Incorrect config or data given')
         return 0
@@ -43,7 +39,11 @@ def getDeltaTimeHelper(config, data):
     else:
         openTime = cycleStartTime + ((lastSmashTimestamp - cycleStartTime) / cycleLength + 1) * cycleLength
     openTime += PiggyBankConstants.SMASH_MAX_DELAY
-    return time_utils.getTimeDeltaFromNow(time_utils.makeLocalServerTime(openTime))
+    return time_utils.makeLocalServerTime(openTime)
+
+
+def getDeltaTimeHelper(config, data):
+    return time_utils.getTimeDeltaFromNow(getOpenTimeHelper(config, data))
 
 
 class SoundViewMixin(object):

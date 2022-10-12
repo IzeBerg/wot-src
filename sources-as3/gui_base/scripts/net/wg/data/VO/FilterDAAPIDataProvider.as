@@ -31,12 +31,21 @@ package net.wg.data.VO
             this._isFilter = false;
          }
          super.invalidate(param1);
+      }
+      
+      override protected function callInvalidateActions() : void
+      {
          this.createCache();
+         super.callInvalidateActions();
       }
       
       override public function requestItemAt(param1:uint, param2:Function = null) : Object
       {
          var _loc3_:Object = null;
+         if(isDisposed())
+         {
+            return null;
+         }
          if(this._isFilter)
          {
             _loc3_ = this._filteredItems[param1];
@@ -66,21 +75,10 @@ package net.wg.data.VO
       
       override protected function onDispose() : void
       {
-         this._filteredItems = null;
          this._isFilter = false;
+         this._filteredItems.splice(0,this._filteredItems.length);
+         this._filteredItems = null;
          super.onDispose();
-      }
-      
-      public function as_clearFilter() : void
-      {
-         if(this._isFilter)
-         {
-            this._isFilter = false;
-            if(hasEventListener(Event.CHANGE))
-            {
-               dispatchEvent(new Event(Event.CHANGE));
-            }
-         }
       }
       
       public function as_setFilter(param1:Object) : void

@@ -1,12 +1,10 @@
 package net.wg.gui.battle.ranked.stats.components.playersPanel.list
 {
-   import flash.events.MouseEvent;
    import net.wg.data.constants.generated.BATTLEATLAS;
    import net.wg.gui.battle.components.BattleAtlasSprite;
    import net.wg.gui.battle.components.stats.playersPanel.interfaces.IRankedPlayersPanelListItem;
    import net.wg.gui.battle.components.stats.playersPanel.list.BasePlayersPanelListItem;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.constants.PlayersPanelInvalidationType;
-   import net.wg.gui.battle.random.views.stats.components.playersPanel.events.PlayersPanelItemEvent;
    
    public class PlayersPanelListItem extends BasePlayersPanelListItem implements IRankedPlayersPanelListItem
    {
@@ -40,12 +38,6 @@ package net.wg.gui.battle.ranked.stats.components.playersPanel.list
          return false;
       }
       
-      override protected function onDispose() : void
-      {
-         this.rankIcon = null;
-         super.onDispose();
-      }
-      
       override protected function draw() : void
       {
          var _loc1_:Function = null;
@@ -55,10 +47,16 @@ package net.wg.gui.battle.ranked.stats.components.playersPanel.list
             this.rankIcon.visible = this._level > -1 || this._division > -1;
             if(this.rankIcon.visible)
             {
-               _loc1_ = !!this._isGroup ? BATTLEATLAS.getRanksGroupIcon : BATTLEATLAS.getRankIcon;
+               _loc1_ = !!this._isGroup ? BATTLEATLAS.getRBRanksGroupIcon : BATTLEATLAS.getRBRankIcon;
                this.rankIcon.imageName = _loc1_(this._division.toString(),this._level.toString());
             }
          }
+      }
+      
+      override protected function onDispose() : void
+      {
+         this.rankIcon = null;
+         super.onDispose();
       }
       
       override protected function updateDogTag() : void
@@ -68,7 +66,6 @@ package net.wg.gui.battle.ranked.stats.components.playersPanel.list
       
       override protected function updatePositionsRight() : void
       {
-         super.updatePositionsRight();
          x = -(fragsTF.x + fragsTF.width + RANK_ICON_AREA_WIDTH + DOG_TAG_ICON_AREA_WIDTH ^ 0);
          this.rankIcon.x = fragsTF.x + fragsTF.width - RANK_ICON_OFFSET ^ 0;
          dogTag.x = this.rankIcon.x + RANK_ICON_AREA_WIDTH + DOG_TAG_OFFSET;
@@ -76,7 +73,6 @@ package net.wg.gui.battle.ranked.stats.components.playersPanel.list
       
       override protected function updatePositionsLeft() : void
       {
-         super.updatePositionsLeft();
          x = -(fragsTF.x - RANK_ICON_AREA_WIDTH - DOG_TAG_ICON_AREA_WIDTH ^ 0);
          this.rankIcon.x = fragsTF.x - RANK_ICON_AREA_WIDTH + RANK_ICON_OFFSET ^ 0;
       }
@@ -91,24 +87,6 @@ package net.wg.gui.battle.ranked.stats.components.playersPanel.list
          this._division = param1;
          this._isGroup = param3;
          invalidate(PlayersPanelInvalidationType.RANK_CHANGED);
-      }
-      
-      override protected function onMouseOver(param1:MouseEvent) : void
-      {
-         var _loc2_:PlayersPanelItemEvent = new PlayersPanelItemEvent(PlayersPanelItemEvent.ON_ITEM_OVER,null,holderItemID,param1);
-         dispatchEvent(_loc2_);
-      }
-      
-      override protected function onMouseOut(param1:MouseEvent) : void
-      {
-         var _loc2_:PlayersPanelItemEvent = new PlayersPanelItemEvent(PlayersPanelItemEvent.ON_ITEM_OUT,null,holderItemID,param1);
-         dispatchEvent(_loc2_);
-      }
-      
-      override protected function onMouseClick(param1:MouseEvent) : void
-      {
-         var _loc2_:PlayersPanelItemEvent = new PlayersPanelItemEvent(PlayersPanelItemEvent.ON_ITEM_CLICK,null,holderItemID,param1);
-         dispatchEvent(_loc2_);
       }
    }
 }

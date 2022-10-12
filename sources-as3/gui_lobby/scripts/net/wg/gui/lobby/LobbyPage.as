@@ -15,6 +15,7 @@ package net.wg.gui.lobby
    import net.wg.gui.components.common.waiting.Waiting;
    import net.wg.gui.components.containers.MainViewContainer;
    import net.wg.gui.components.containers.ManagedContainer;
+   import net.wg.gui.components.vehicleHitArea.VehicleHitAreaComponent;
    import net.wg.gui.events.LobbyEvent;
    import net.wg.gui.lobby.header.LobbyHeader;
    import net.wg.gui.lobby.header.headerButtonBar.HBC_Settings;
@@ -24,7 +25,6 @@ package net.wg.gui.lobby
    import net.wg.gui.lobby.messengerBar.MessengerBar;
    import net.wg.gui.lobby.post.TeaserEvent;
    import net.wg.gui.lobby.settings.config.ControlsFactory;
-   import net.wg.gui.lobby.vehicleHitArea.LobbyVehicleHitArea;
    import net.wg.gui.notification.NotificationPopUpViewer;
    import net.wg.gui.notification.ServiceMessagePopUp;
    import net.wg.infrastructure.base.meta.impl.LobbyPageMeta;
@@ -48,9 +48,11 @@ package net.wg.gui.lobby
       private static const SUB_VIEW_CONTAINER_ZINDEX:int = 3;
       
       private static const SUB_TOP_CONTAINER_ZINDEX:int = 4;
+      
+      private static const WARNING_EMPTY_HIT_AREA:String = "vehicleHitArea is null!";
        
       
-      public var vehicleHitArea:LobbyVehicleHitArea = null;
+      public var vehicleHitArea:VehicleHitAreaComponent = null;
       
       public var subTopContainer:IManagedContainer = null;
       
@@ -273,7 +275,7 @@ package net.wg.gui.lobby
       {
          if(this.vehicleHitArea == null)
          {
-            DebugUtils.LOG_WARNING("vehicleHitArea is null!");
+            DebugUtils.LOG_WARNING(WARNING_EMPTY_HIT_AREA);
             return this;
          }
          return this.vehicleHitArea.hit;

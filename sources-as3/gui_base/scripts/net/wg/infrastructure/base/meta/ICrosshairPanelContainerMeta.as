@@ -101,5 +101,7 @@ package net.wg.infrastructure.base.meta
       function as_setShellChangeTime(param1:Boolean, param2:Number) : void;
       
       function as_isFaded(param1:Boolean) : void;
+      
+      function as_blinkReloadTime(param1:int) : void;
    }
 }

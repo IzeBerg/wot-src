@@ -19,8 +19,7 @@ class PreloadableWindow(WindowImpl):
         self.__preload = True
         super(PreloadableWindow, self).load()
 
-    @property
-    def isPreloading(self):
+    def _isPreloading(self):
         return self.__preload
 
     def _onContentReady(self):

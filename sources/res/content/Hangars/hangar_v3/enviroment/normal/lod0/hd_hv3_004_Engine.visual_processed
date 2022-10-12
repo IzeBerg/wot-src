@@ -20,7 +20,7 @@
 				<material>
 					<identifier>s_nd0</identifier>
 					<fx>shaders/std_effects/PBS_ext.fx</fx>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>0</materialKind>
 					<property>
 						normalMap
@@ -37,10 +37,6 @@
 					<property>
 						g_enableAO
 						<Bool>true</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
 					</property>
 				</material>
 				<groupOrigin>0.241339 0.570041 0.030456</groupOrigin>

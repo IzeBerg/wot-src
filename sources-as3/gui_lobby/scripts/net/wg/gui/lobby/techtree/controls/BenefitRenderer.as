@@ -23,9 +23,11 @@ package net.wg.gui.lobby.techtree.controls
          super();
       }
       
-      public final function update(param1:Object) : void
+      override protected function onDispose() : void
       {
-         this.setData(param1);
+         this.icon = null;
+         this.labelTF = null;
+         super.onDispose();
       }
       
       public function setData(param1:Object) : void
@@ -36,11 +38,9 @@ package net.wg.gui.lobby.techtree.controls
          App.utils.commons.updateTextFieldSize(this.labelTF,false,true);
       }
       
-      override protected function onDispose() : void
+      public final function update(param1:Object) : void
       {
-         this.icon = null;
-         this.labelTF = null;
-         super.onDispose();
+         this.setData(param1);
       }
    }
 }

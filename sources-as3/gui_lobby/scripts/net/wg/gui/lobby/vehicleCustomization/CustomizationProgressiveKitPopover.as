@@ -11,6 +11,7 @@ package net.wg.gui.lobby.vehicleCustomization
    import net.wg.gui.components.controls.universalBtn.UniversalBtn;
    import net.wg.gui.components.popovers.PopOver;
    import net.wg.gui.components.popovers.PopOverConst;
+   import net.wg.gui.lobby.vehicleCustomization.data.CustomizationPopoverEditedItemRendererVO;
    import net.wg.gui.lobby.vehicleCustomization.data.CustomizationProgressiveKitPopoverListVO;
    import net.wg.gui.lobby.vehicleCustomization.events.CustomizationEvent;
    import net.wg.gui.lobby.vehicleCustomization.events.CustomizationIndicatorEvent;
@@ -139,6 +140,8 @@ package net.wg.gui.lobby.vehicleCustomization
       override protected function draw() : void
       {
          var _loc1_:Boolean = false;
+         var _loc2_:Boolean = false;
+         var _loc3_:CustomizationPopoverEditedItemRendererVO = null;
          super.draw();
          if(isInvalid(InvalidationType.DATA))
          {
@@ -147,7 +150,16 @@ package net.wg.gui.lobby.vehicleCustomization
          if(isInvalid(CLEAR_STATE_INVALID))
          {
             _loc1_ = StringUtils.isNotEmpty(this._clearMsg);
-            this.clearBtn.enabled = !_loc1_;
+            _loc2_ = true;
+            for each(_loc3_ in this.items.dataProvider)
+            {
+               if(!_loc3_.isTitle)
+               {
+                  _loc2_ = false;
+                  break;
+               }
+            }
+            this.clearBtn.enabled = !_loc1_ && !_loc2_;
             this.items.visible = !_loc1_;
             this.clearTF.visible = _loc1_;
             this.clearTF.htmlText = this._clearMsg;

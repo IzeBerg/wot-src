@@ -5,7 +5,7 @@ class PersonalCaseMeta(AbstractWindowView):
     def dismissTankman(self, inventoryID):
         self._printOverrideError('dismissTankman')
 
-    def unloadTankman(self, invengoryid, currentVehicleID):
+    def unloadTankman(self, inventoryid, currentVehicleID):
         self._printOverrideError('unloadTankman')
 
     def getCommonData(self):
@@ -20,19 +20,28 @@ class PersonalCaseMeta(AbstractWindowView):
     def retrainingTankman(self, inventoryID, tankmanCostTypeIndex):
         self._printOverrideError('retrainingTankman')
 
+    def getFreeSkillsData(self):
+        self._printOverrideError('getFreeSkillsData')
+
     def getSkillsData(self):
         self._printOverrideError('getSkillsData')
 
     def getDocumentsData(self):
         self._printOverrideError('getDocumentsData')
 
-    def addTankmanSkill(self, invengoryID, skillName):
+    def addTankmanSkill(self, inventoryID, skillName):
         self._printOverrideError('addTankmanSkill')
+
+    def addTankmanFreeSkill(self, inventoryID, skillName):
+        self._printOverrideError('addTankmanFreeSkill')
 
     def dropSkills(self):
         self._printOverrideError('dropSkills')
 
-    def changeTankmanPassport(self, invengoryID, firstNameID, firstNameGroup, lastNameID, lastNameGroup, iconID, iconGroup):
+    def showFreeSkillsInfo(self):
+        self._printOverrideError('showFreeSkillsInfo')
+
+    def changeTankmanPassport(self, inventoryID, firstNameID, firstNameGroup, lastNameID, lastNameGroup, iconID, iconGroup):
         self._printOverrideError('changeTankmanPassport')
 
     def changeRetrainVehicle(self, intCD):
@@ -62,6 +71,9 @@ class PersonalCaseMeta(AbstractWindowView):
     def playCrewSkinSound(self, crewSkinID):
         self._printOverrideError('playCrewSkinSound')
 
+    def updateOpenedTabID(self, tabID):
+        self._printOverrideError('updateOpenedTabID')
+
     def as_setCommonDataS(self, data):
         if self._isDAAPIInited():
             return self.flashObject.as_setCommonData(data)
@@ -73,6 +85,10 @@ class PersonalCaseMeta(AbstractWindowView):
     def as_setRetrainingDataS(self, data):
         if self._isDAAPIInited():
             return self.flashObject.as_setRetrainingData(data)
+
+    def as_setFreeSkillsDataS(self, data):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setFreeSkillsData(data)
 
     def as_setSkillsDataS(self, data):
         if self._isDAAPIInited():
@@ -93,3 +109,7 @@ class PersonalCaseMeta(AbstractWindowView):
     def as_setCrewSkinsDataS(self, data):
         if self._isDAAPIInited():
             return self.flashObject.as_setCrewSkinsData(data)
+
+    def as_openTabS(self, tabID):
+        if self._isDAAPIInited():
+            return self.flashObject.as_openTab(tabID)

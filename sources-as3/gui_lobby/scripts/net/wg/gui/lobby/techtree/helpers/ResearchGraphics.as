@@ -39,39 +39,46 @@ package net.wg.gui.lobby.techtree.helpers
          super();
       }
       
+      private static function onLockedOverlayRollOutHandler(param1:MouseEvent) : void
+      {
+         App.toolTipMgr.hide();
+      }
+      
       override public function buildRendererLines(param1:IRenderer, param2:Vector.<IRenderer>) : void
       {
          var _loc4_:Vector.<IRenderer> = null;
-         var _loc5_:String = null;
+         var _loc5_:uint = 0;
          var _loc6_:String = null;
-         var _loc7_:Sprite = null;
+         var _loc7_:String = null;
+         var _loc8_:Sprite = null;
          super.buildRendererLines(param1,param2);
          var _loc3_:Object = null;
          if(param1 == rootRenderer)
          {
             _loc4_ = IResearchContainer(container).getTopLevel();
-            if(_loc4_.length > 1)
+            _loc5_ = _loc4_.length;
+            if(_loc5_ > 1)
             {
                this.drawIngoingLine(_loc4_);
             }
-            if(param1.isLocked() && _loc4_.length > 0)
+            if(param1.isLocked() && _loc5_ > 0)
             {
                _loc3_ = {
                   "x":param1.getInX(),
                   "y":param1.getY()
                };
-               _loc5_ = LOCKED_THREE_LINES_COMP_NAME;
-               switch(_loc4_.length)
+               _loc6_ = LOCKED_THREE_LINES_COMP_NAME;
+               switch(_loc5_)
                {
                   case 1:
-                     _loc5_ = LOCKED_LINE_COMP_NAME;
+                     _loc6_ = LOCKED_LINE_COMP_NAME;
                      break;
                   case 2:
-                     _loc5_ = LOCKED_TWO_LINES_COMP_NAME;
+                     _loc6_ = LOCKED_TWO_LINES_COMP_NAME;
                }
-               this._lockedOverlay = App.utils.classFactory.getComponent(_loc5_,Sprite,_loc3_);
+               this._lockedOverlay = App.utils.classFactory.getComponent(_loc6_,Sprite,_loc3_);
                this._lockedOverlay.addEventListener(MouseEvent.ROLL_OVER,this.onLockedOverlayRollOverHandler,false,0,true);
-               this._lockedOverlay.addEventListener(MouseEvent.ROLL_OUT,this.onLockedOverlayRollOutHandler,false,0,true);
+               this._lockedOverlay.addEventListener(MouseEvent.ROLL_OUT,onLockedOverlayRollOutHandler,false,0,true);
                getLinesAndArrowsSprite(param1).addChild(this._lockedOverlay);
             }
          }
@@ -81,10 +88,10 @@ package net.wg.gui.lobby.techtree.helpers
                "x":param1.getOutX(),
                "y":param1.getY()
             };
-            _loc6_ = !!param1.isUnlocked() ? FADE_OUT_ARROW : FADE_OUT_ARROW_LOCKED;
-            _loc7_ = App.utils.classFactory.getComponent(_loc6_,Sprite,_loc3_);
-            _loc7_.y -= _loc7_.height >> 1;
-            getLinesAndArrowsSprite(param1).addChild(_loc7_);
+            _loc7_ = !!param1.isUnlocked() ? FADE_OUT_ARROW : FADE_OUT_ARROW_LOCKED;
+            _loc8_ = App.utils.classFactory.getComponent(_loc7_,Sprite,_loc3_);
+            _loc8_.y -= _loc8_.height >> 1;
+            getLinesAndArrowsSprite(param1).addChild(_loc8_);
          }
       }
       
@@ -134,7 +141,7 @@ package net.wg.gui.lobby.techtree.helpers
       private function clearLockedOverlayListeners() : void
       {
          this._lockedOverlay.removeEventListener(MouseEvent.ROLL_OVER,this.onLockedOverlayRollOverHandler);
-         this._lockedOverlay.removeEventListener(MouseEvent.ROLL_OUT,this.onLockedOverlayRollOutHandler);
+         this._lockedOverlay.removeEventListener(MouseEvent.ROLL_OUT,onLockedOverlayRollOutHandler);
       }
       
       private function drawIngoingLine(param1:Vector.<IRenderer>) : void
@@ -174,16 +181,13 @@ package net.wg.gui.lobby.techtree.helpers
          var _loc8_:Number = getArrowAlphaByThickness(_loc7_);
          if(_loc3_.y == _loc4_.y)
          {
-            if(!param2)
-            {
-               _loc4_.x = _loc3_.x + xRatio;
-            }
             if(param2)
             {
                drawLineAndArrow(param1,colorIdxs[_loc5_],_loc3_,_loc4_,_loc7_,_loc8_,false,true);
             }
             else
             {
+               _loc4_.x = _loc3_.x + xRatio;
                drawLine(param1,colorIdxs[_loc5_],_loc3_,_loc4_,_loc7_,_loc8_);
             }
          }
@@ -212,11 +216,6 @@ package net.wg.gui.lobby.techtree.helpers
                App.toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.TECHTREE_VEHICLE_STATUS,null,_loc2_,rootRenderer.getID());
             }
          }
-      }
-      
-      private function onLockedOverlayRollOutHandler(param1:MouseEvent) : void
-      {
-         App.toolTipMgr.hide();
       }
    }
 }

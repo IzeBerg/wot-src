@@ -1,4 +1,5 @@
 import typing
+from CurrentVehicle import g_currentVehicle
 from constants import SEASON_NAME_BY_TYPE
 from dossiers2.ui.achievements import MARK_ON_GUN_RECORD
 from gui import GUI_NATIONS_ORDER_INDEX, makeHtmlString
@@ -8,10 +9,9 @@ from gui.Scaleform.framework.entities.DAAPIDataProvider import SortableDAAPIData
 from gui.Scaleform.locale.MENU import MENU
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.impl import backport
-from gui.impl.gen import R
 from gui.shared.formatters import icons, text_styles
 from gui.shared.formatters.time_formatters import RentLeftFormatter
-from gui.shared.gui_items.Vehicle import Vehicle, VEHICLE_TYPES_ORDER_INDICES, getVehicleStateIcon, getVehicleStateAddIcon, getBattlesLeft, getSmallIconPath, getIconPath, VEHICLE_TAGS
+from gui.shared.gui_items.Vehicle import Vehicle, VEHICLE_TYPES_ORDER_INDICES, getVehicleStateIcon, getVehicleStateAddIcon, getBattlesLeft, getSmallIconPath, getIconPath
 from gui.shared.gui_items.dossier.achievements import isMarkOfMasteryAchieved
 from gui.shared.utils.requesters import REQ_CRITERIA
 from helpers.i18n import makeString as ms
@@ -82,33 +82,19 @@ def getVehicleDataVO(vehicle):
     smallHoverStatus, largeHoverStatus = smallStatus, largeStatus
     if vState == Vehicle.VEHICLE_STATE.RENTABLE:
         smallHoverStatus, largeHoverStatus = getStatusStrings(vState + '/hover', vStateLvl, substitute=rentInfoText, ctx={'icon': icons.premiumIgrSmall(), 'battlesLeft': getBattlesLeft(vehicle)})
-    isCritInfo = vStateLvl == Vehicle.VEHICLE_STATE_LEVEL.CRITICAL
     if vehicle.dailyXPFactor > 1:
         bonusImage = getButtonsAssetPath(('bonus_x{}').format(vehicle.dailyXPFactor))
     else:
         bonusImage = ''
-    icon = vehicle.icon
-    iconSmall = vehicle.iconSmall
     label = vehicle.shortUserName if vehicle.isPremiumIGR else vehicle.userName
     labelStyle = text_styles.premiumVehicleName if vehicle.isPremium else text_styles.vehicleName
     tankType = ('{}_elite').format(vehicle.type) if vehicle.isElite else vehicle.type
     current, maximum = vehicle.getCrystalsEarnedInfo()
     isCrystalsLimitReached = current == maximum
-    isEarnCrystals = vehicle.isEarnCrystals
     isWotPlusSlot = (vehicle.isWotPlusRent or vehicle.isTelecomRent) and not vehicle.rentExpiryState
     extraImage = RES_ICONS.MAPS_ICONS_LIBRARY_RENT_ICO_BIG if isWotPlusSlot else ''
-    if vehicle.isEvent and set(vehicle.tags).intersection(VEHICLE_TAGS.EVENT_VEHS):
-        isEarnCrystals = False
-        label = ('').join((
-         icons.makeImageTag(backport.image(R.images.gui.maps.icons.vehicleTypes.white.dyn(vehicle.eventType)()), 16, 16, -2, 0),
-         label))
-        if vState == Vehicle.VEHICLE_STATE.TICKETS_SHORTAGE:
-            isCritInfo = False
-            smallStatus, largeStatus = getStatusStrings(vState)
-            smallHoverStatus, largeHoverStatus = smallStatus, largeStatus
-        elif vehicle.isBoss and not vehicle.isSpecialBoss:
-            icon = icon.replace('.png', '_alt.png')
-    return {'id': vehicle.invID, 'intCD': vehicle.intCD, 
+    return {'id': vehicle.invID, 
+       'intCD': vehicle.intCD, 
        'infoText': largeStatus, 
        'infoHoverText': largeHoverStatus, 
        'smallInfoText': smallStatus, 
@@ -116,9 +102,9 @@ def getVehicleDataVO(vehicle):
        'clanLock': vehicle.clanLock, 
        'lockBackground': _isLockedBackground(vState, vStateLvl), 
        'unlockedInBattle': False, 
-       'icon': icon, 
+       'icon': vehicle.icon, 
        'iconAlt': getIconPath('noImage'), 
-       'iconSmall': iconSmall, 
+       'iconSmall': vehicle.iconSmall, 
        'iconSmallAlt': getSmallIconPath('noImage'), 
        'label': labelStyle(label), 
        'level': vehicle.level, 
@@ -132,16 +118,13 @@ def getVehicleDataVO(vehicle):
        'alpha': 1, 
        'infoImgSrc': getVehicleStateIcon(vState), 
        'additionalImgSrc': getVehicleStateAddIcon(vState), 
-       'isCritInfo': isCritInfo, 
+       'isCritInfo': vStateLvl == Vehicle.VEHICLE_STATE_LEVEL.CRITICAL, 
        'isRentPromotion': vehicle.isRentPromotion and not vehicle.isRented, 
        'isNationChangeAvailable': vehicle.hasNationGroup, 
-       'isEarnCrystals': isEarnCrystals, 
+       'isEarnCrystals': vehicle.isEarnCrystals, 
        'isCrystalsLimitReached': isCrystalsLimitReached, 
        'isUseRightBtn': True, 
-       'tooltip': TOOLTIPS_CONSTANTS.EVENT_CAROUSEL_VEHICLE if vehicle.isEvent else TOOLTIPS_CONSTANTS.CAROUSEL_VEHICLE, 
-       'isWulfTooltip': vehicle.isEvent, 
-       'isEventVehicle': vehicle.isEvent, 
-       'isEventVehicleSpecial': vehicle.isEvent and VEHICLE_TAGS.EVENT_SPECIAL_BOSS in vehicle.tags, 
+       'tooltip': TOOLTIPS_CONSTANTS.CAROUSEL_VEHICLE, 
        'isWotPlusSlot': isWotPlusSlot, 
        'extraImage': extraImage}
 
@@ -149,12 +132,12 @@ def getVehicleDataVO(vehicle):
 class CarouselDataProvider(SortableDAAPIDataProvider):
     _battleRoyaleController = dependency.descriptor(IBattleRoyaleController)
 
-    def __init__(self, carouselFilter, itemsCache, currentVehicle):
+    def __init__(self, carouselFilter, itemsCache):
         super(CarouselDataProvider, self).__init__()
         self._setBaseCriteria()
         self._filter = carouselFilter
         self._itemsCache = itemsCache
-        self._currentVehicle = currentVehicle
+        self._currentVehicleInvID = g_currentVehicle.invID
         self._vehicles = []
         self._vehicleItems = []
         self._filteredIndices = []
@@ -220,23 +203,27 @@ class CarouselDataProvider(SortableDAAPIDataProvider):
         vehicle = self._vehicles[realIdx]
         if vehicle.isInInventory:
             self._selectedIdx = filteredIdx
-            self._currentVehicle.selectVehicle(vehicle.invID)
+            self._currentVehicleInvID = vehicle.invID
+        return self._currentVehicleInvID
 
     def updateVehicles(self, vehiclesCDs=None, filterCriteria=None, forceUpdate=False):
-        isFullResync = vehiclesCDs is None and filterCriteria is None
-        filterCriteria = filterCriteria or REQ_CRITERIA.EMPTY
-        if vehiclesCDs:
-            filterCriteria |= REQ_CRITERIA.IN_CD_LIST(vehiclesCDs)
-        criteria = self._baseCriteria | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP
-        newVehiclesCollection = self._itemsCache.items.getVehicles(criteria | filterCriteria)
-        oldVehiclesCDs = [ vehicle.intCD for vehicle in self._vehicles ]
-        isVehicleRemoved = not set(vehiclesCDs or ()).issubset(newVehiclesCollection.viewkeys())
-        isVehicleAdded = not set(vehiclesCDs or ()).issubset(oldVehiclesCDs)
-        if isFullResync or isVehicleAdded or isVehicleRemoved:
-            self.buildList()
+        if self._itemsCache is None:
+            return
         else:
-            self._updateVehicleItems(newVehiclesCollection.values(), forceUpdate)
-        return
+            isFullResync = vehiclesCDs is None and filterCriteria is None
+            filterCriteria = filterCriteria or REQ_CRITERIA.EMPTY
+            if vehiclesCDs:
+                filterCriteria |= REQ_CRITERIA.IN_CD_LIST(vehiclesCDs)
+            criteria = self._baseCriteria | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP
+            newVehiclesCollection = self._itemsCache.items.getVehicles(criteria | filterCriteria)
+            oldVehiclesCDs = [ vehicle.intCD for vehicle in self._vehicles ]
+            isVehicleRemoved = not set(vehiclesCDs or ()).issubset(newVehiclesCollection.viewkeys())
+            isVehicleAdded = not set(vehiclesCDs or ()).issubset(oldVehiclesCDs)
+            if isFullResync or isVehicleAdded or isVehicleRemoved:
+                self.buildList()
+            else:
+                self._updateVehicleItems(newVehiclesCollection.values(), forceUpdate)
+            return
 
     def setShowStats(self, showVehicleStats):
         self._showVehicleStats = showVehicleStats
@@ -260,14 +247,13 @@ class CarouselDataProvider(SortableDAAPIDataProvider):
         prevSelectedIdx = self._selectedIdx
         self._filteredIndices = self._getFrontAdditionalItemsIndexes()
         self._selectedIdx = -1
-        currentVehicleInvID = self._currentVehicle.invID
         visibleVehiclesIntCDs = [ vehicle.intCD for vehicle in self._getCurrentVehicles() ]
         sortedVehicleIndices = self._getSortedIndices()
         for idx in sortedVehicleIndices:
             vehicle = self._vehicles[idx]
             if vehicle.intCD in visibleVehiclesIntCDs:
                 self._filteredIndices.append(idx)
-                if currentVehicleInvID == vehicle.invID:
+                if self._currentVehicleInvID == vehicle.invID:
                     self._selectedIdx = len(self._filteredIndices) - 1
 
         self._filteredIndices += self._getAdditionalItemsIndexes()
@@ -279,7 +265,9 @@ class CarouselDataProvider(SortableDAAPIDataProvider):
         self._baseCriteria = REQ_CRITERIA.INVENTORY
 
     def _filterByIndices(self):
-        self.flashObject.as_setFilter(self._filteredIndices)
+        if self.flashObject is not None:
+            self.flashObject.as_setFilter(self._filteredIndices)
+        return
 
     def _getSortedIndices(self):
         return self._getCachedSortedIndices(False)
@@ -292,7 +280,6 @@ class CarouselDataProvider(SortableDAAPIDataProvider):
     def _dispose(self):
         self._filter = None
         self._itemsCache = None
-        self._currentVehicle = None
         self._randomStats = None
         super(CarouselDataProvider, self)._dispose()
         return
@@ -382,8 +369,10 @@ class CarouselDataProvider(SortableDAAPIDataProvider):
 
         if updateVehicles:
             self.__resetSortedIndices()
-        self.flashObject.invalidateItems(updateIndices, updateVehicles)
+        if self.flashObject is not None:
+            self.flashObject.invalidateItems(updateIndices, updateVehicles)
         self.applyFilter(forceApply=forceUpdate)
+        return
 
     def _getCurrentVehicles(self):
         return self._getFilteredVehicles(self._filter.apply)

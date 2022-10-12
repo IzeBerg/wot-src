@@ -4,6 +4,7 @@ package net.wg.gui.lobby.tankman
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
    import net.wg.data.constants.Values;
+   import net.wg.data.constants.generated.PERSONALCASECONST;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
    import net.wg.data.managers.impl.TooltipProps;
    import net.wg.gui.components.advanced.DashLine;
@@ -180,7 +181,10 @@ package net.wg.gui.lobby.tankman
       
       private function dispatchPersonalCaseEvent() : void
       {
-         dispatchEvent(new PersonalCaseEvent(PersonalCaseEvent.CHANGE_TAB_ON_TWO,true));
+         var _loc1_:PersonalCaseEvent = new PersonalCaseEvent(PersonalCaseEvent.CHANGE_TAB,true);
+         _loc1_.relatedTabId = PERSONALCASECONST.SKILLS_TAB_ID;
+         _loc1_.scrollSkillsToLastItem = true;
+         dispatchEvent(_loc1_);
       }
       
       private function onMouseOverHandler(param1:MouseEvent) : void

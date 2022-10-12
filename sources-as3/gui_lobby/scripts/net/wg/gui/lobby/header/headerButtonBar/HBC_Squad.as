@@ -19,6 +19,10 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       private static const UPDATE_SQUAD_STATE_ID:uint = 1;
       
+      private static const RANDOM_SHIELD_ICON_PATTERN:String = "/squad.png";
+      
+      private static const NOT_RANDOM_SHIELD_ANIMATION_X:int = -4;
+      
       private static const DIMENSIONS:Object = {
          "searchingPadding":15,
          "platoonOrSquadPadding":10,
@@ -118,7 +122,7 @@ package net.wg.gui.lobby.header.headerButtonBar
                         this.mainIconContainer.x = this._containersDefPositionsX[0];
                      }
                      break;
-                  case PlatoonShieldIconContainer.STATES.SQUAD_EVENT:
+                  case PlatoonShieldIconContainer.STATES.squadEvent:
                      this.mainIconContainer.x = this.textField.x + this.textField.width + (this.mainIconContainer.width >> 1);
                }
             }
@@ -205,6 +209,14 @@ package net.wg.gui.lobby.header.headerButtonBar
       {
          var _loc2_:int = 0;
          this.mainIconContainer.setEventIcon(this._squadDataVo.icon);
+         if(this._squadDataVo.icon.indexOf(RANDOM_SHIELD_ICON_PATTERN) > -1)
+         {
+            this.mainIconContainer.shieldsIconAnimation.x = 0;
+         }
+         else
+         {
+            this.mainIconContainer.shieldsIconAnimation.x = NOT_RANDOM_SHIELD_ANIMATION_X;
+         }
          var _loc1_:Boolean = this._squadDataVo.squadExtendInfoVo.squadManStates.length && this._squadDataVo.squadExtendInfoVo.squadManStates.length <= NORMAL_SIZE_PLATOON;
          switch(this._squadDataVo.squadExtendInfoVo.platoonState)
          {
@@ -218,11 +230,11 @@ package net.wg.gui.lobby.header.headerButtonBar
                   this.mainIconContainer.updateIconContainer(this._squadDataVo.squadExtendInfoVo,PlatoonShieldIconContainer.PLAYERS.left);
                }
                this.textField.text = this._squadDataVo.buttonName;
-               this.arrow.visible = this._squadDataVo.hasSearchSupport;
+               this.arrow.visible = this._squadDataVo.hasPopover;
                break;
             case PlatoonShieldIconContainer.STATES.searching:
                this.textField.text = PLATOON.HEADERBUTTON_SEARCHING;
-               this.arrow.visible = this._squadDataVo.hasSearchSupport;
+               this.arrow.visible = this._squadDataVo.hasPopover;
                break;
             case PlatoonShieldIconContainer.STATES.inPlatoon:
                this.arrow.visible = false;

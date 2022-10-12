@@ -1,16 +1,18 @@
+import logging
 from collections import defaultdict
+import typing
 from enum import Enum
-import logging, typing
-from dog_tags_common.number_formatter import formatComponentValue, customRound
-from dog_tags_common.config.common import ComponentViewType, ComponentPurpose, NO_PROGRESS
-from gui.dog_tag_composer import DogTagComposerClient
-from gui.impl.gen.view_models.views.lobby.dog_tags.dt_grid_section import DtGridSection
-from gui.impl.gen.view_models.views.lobby.dog_tags.dt_component import DtComponent
 from dog_tags_common.components_config import componentConfigAdapter as componentConfig, SourceData, DictIterator
-from helpers import getLanguageCode
+from dog_tags_common.config.common import ComponentViewType, ComponentPurpose, NO_PROGRESS
+from dog_tags_common.number_formatter import formatComponentValue, customRound
+from gui.dog_tag_composer import DogTagComposerClient
+from gui.impl.gen.view_models.views.lobby.account_dashboard.dog_tags_model import DogTagsModel
+from gui.impl.gen.view_models.views.lobby.dog_tags.dt_component import DtComponent
+from gui.impl.gen.view_models.views.lobby.dog_tags.dt_grid_section import DtGridSection
 from helpers import dependency
-from skeletons.gui.lobby_context import ILobbyContext
+from helpers import getLanguageCode
 from skeletons.gui.game_control import IUISpamController
+from skeletons.gui.lobby_context import ILobbyContext
 if typing.TYPE_CHECKING:
     from typing import Dict, Iterable
     from account_helpers.dog_tags import DogTags
@@ -19,7 +21,6 @@ if typing.TYPE_CHECKING:
     from frameworks.wulf import Array
     from gui.impl.gen.view_models.views.lobby.dog_tags.dt_dog_tag import DtDogTag
     from gui.impl.gen.view_models.views.lobby.dog_tags.dog_tags_view_model import DogTagsViewModel
-    from gui.impl.gen.view_models.views.lobby.premacc.dashboard.prem_dashboard_dog_tags_card_model import PremDashboardDogTagsCardModel
 _logger = logging.getLogger(__name__)
 
 class TooltipPurposeGroup(Enum):
@@ -74,22 +75,22 @@ class DogTagComposerLobby(DogTagComposerClient):
         self._fillComponentModel(componentConfig.getComponentById(backgroundId), model.background)
         self._fillComponentModel(componentConfig.getComponentById(engravingId), model.engraving)
 
-    def fillDTCardModel(self, model):
+    def fillDTFeatureModel(self, model):
         displayableDT = self._dtHelper.getDisplayableDT()
         engraving = displayableDT.getComponentByType(ComponentViewType.ENGRAVING)
         background = displayableDT.getComponentByType(ComponentViewType.BACKGROUND)
         engravingImage = self.getComponentImage(engraving.compId, engraving.grade)
         bgImage = self.getComponentImage(background.compId)
-        model.setIsAvailable(self.serverSettings().isDogTagCustomizationScreenEnabled())
+        model.setIsEnabled(self.serverSettings().isDogTagCustomizationScreenEnabled())
         model.setEngraving(engravingImage)
         model.setBackground(bgImage)
         count = 0 if self.uiSpamController.shouldBeHidden(DOG_TAG_HINT) else len(self._dtHelper.getUnseenComps())
-        model.Counter.setValue(count)
+        model.setCounter(count)
         grades = engraving.componentDefinition.grades
         if engraving and grades and engraving.grade == len(grades) - 1:
-            model.setIsMaxLevel(True)
+            model.setIsHighlighted(True)
         else:
-            model.setIsMaxLevel(False)
+            model.setIsHighlighted(False)
         _logger.debug('Dashboard dogtag images - engraving: %s, background: %s', engravingImage, bgImage)
 
     def fillGrid(self, viewModel):

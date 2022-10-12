@@ -1,5 +1,5 @@
 import logging, adisp
-from async import async, await, AsyncEvent, AsyncReturn, AsyncScope, BrokenPromiseError
+from wg_async import wg_async, wg_await, AsyncEvent, AsyncReturn, AsyncScope, BrokenPromiseError
 from frameworks.wulf import Window, WindowStatus, WindowSettings, ViewSettings
 from gui import SystemMessages, DialogsInterface
 from gui.Scaleform.daapi.view.dialogs.ExchangeDialogMeta import ExchangeCreditsSingleItemModalMeta
@@ -14,7 +14,7 @@ from gui.shared.formatters.tankmen import getItemPricesViewModel
 from gui.shared.gui_items.Vehicle import getIconResourceName
 from gui.shared.gui_items.processors.module import ModuleBuyer
 from gui.shared.money import Currency
-from gui.shared.utils.decorators import process
+from gui.shared.utils.decorators import adisp_process
 from helpers.dependency import descriptor
 from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.shared import IItemsCache
@@ -43,10 +43,10 @@ class CrewBooksBuyDialog(Window):
     def viewModel(self):
         return self.content.getViewModel()
 
-    @async
+    @wg_async
     def wait(self):
         try:
-            yield await(self.__event.wait())
+            yield wg_await(self.__event.wait())
         except BrokenPromiseError:
             _logger.debug('%s has been destroyed without user decision', self)
 
@@ -106,7 +106,7 @@ class CrewBooksBuyDialog(Window):
         self.viewModel.setIsBuyEnable(priceVM.getIsEnough())
         listArray.invalidate()
 
-    @adisp.process
+    @adisp.adisp_process
     def __onBuyBtnClick(self):
         self.viewModel.setIsBuyEnable(False)
         mayPurchase = True
@@ -121,7 +121,7 @@ class CrewBooksBuyDialog(Window):
             return
         self.__updateVMsInActionPriceList()
 
-    @process('buyItem')
+    @adisp_process('buyItem')
     def __executeBuy(self, requiredCurrency):
         result = yield ModuleBuyer(self.__bookGuiItem, self.__bookCount, requiredCurrency).request()
         if result.userMsg:

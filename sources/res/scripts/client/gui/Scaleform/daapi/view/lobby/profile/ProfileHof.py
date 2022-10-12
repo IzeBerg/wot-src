@@ -1,6 +1,6 @@
 from functools import partial
 import BigWorld
-from adisp import process
+from adisp import adisp_process
 from debug_utils import LOG_WARNING, LOG_ERROR
 from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
 from gui.impl import backport
@@ -51,7 +51,7 @@ class ProfileHof(ProfileHofMeta):
         setHofButtonOld(PROFILE_CONSTANTS.HOF_VEHICLES_BUTTON)
         self.__openHofBrowserView(getHofVehiclesRatingUrl())
 
-    @process
+    @adisp_process
     def changeStatus(self):
         if self.__status == PROFILE_CONSTANTS.HOF_RESULTS_SHOW:
             success = yield DialogsInterface.showI18nConfirmDialog('hof/excludeRating')
@@ -106,7 +106,7 @@ class ProfileHof(ProfileHofMeta):
 
         self.__makeRequest(self._clansController.getClanDossier().requestHofUserInfo, PROFILE_CONSTANTS.HOF_RESULTS_SHOW, handleError)
 
-    @process
+    @adisp_process
     def __makeRequest(self, requestFunc, successStatus, errorCallback):
         if self.__retriesCount == 0:
             if not self.__isMaintenance:

@@ -42,6 +42,7 @@ package net.wg.gui.battle.battleRoyale.views.playerStats
       
       override protected function setData(param1:Vector.<BattleRoyalePlayerStatVO>) : void
       {
+         var _loc3_:BattleRoyalePlayerStatRenderer = null;
          var _loc5_:uint = 0;
          var _loc6_:Number = NaN;
          var _loc7_:Number = NaN;
@@ -62,7 +63,7 @@ package net.wg.gui.battle.battleRoyale.views.playerStats
             this.titleTf.alpha = 0;
             this._currentTween = new Tween(TITLE_TF_FADE_IN_DURATION,this.titleTf,{"alpha":TITLE_TF_FADE_IN_ALPHA},{"ease":Cubic.easeOut});
          }
-         var _loc3_:BattleRoyalePlayerStatRenderer = null;
+         _loc3_ = null;
          var _loc4_:int = _loc2_ - this._renderers.length;
          while(_loc4_ > 0)
          {

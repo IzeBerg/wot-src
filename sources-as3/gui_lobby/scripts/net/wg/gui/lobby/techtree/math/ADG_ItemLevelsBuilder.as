@@ -18,8 +18,6 @@ package net.wg.gui.lobby.techtree.math
       
       private var fixedPaths:Object;
       
-      private var levelByNode:Array;
-      
       private var parentLevelIdxs:Object;
       
       private var childrenLevelIdxs:Object;
@@ -67,9 +65,9 @@ package net.wg.gui.lobby.techtree.math
       
       private function createEmptyAdjacencyMatrix() : void
       {
-         var _loc2_:Number = NaN;
+         var _loc2_:int = 0;
          this.adjacencyMatrix = new Array(this.matrixDimension);
-         var _loc1_:Number = 0;
+         var _loc1_:int = 0;
          while(_loc1_ < this.matrixDimension)
          {
             this.adjacencyMatrix[_loc1_] = [];
@@ -85,9 +83,10 @@ package net.wg.gui.lobby.techtree.math
       
       private function normalizeLevels() : void
       {
-         var _loc1_:Number = NaN;
+         var _loc1_:int = 0;
+         var _loc2_:uint = this.levels.length;
          _loc1_ = 0;
-         while(_loc1_ < this.levels.length)
+         while(_loc1_ < _loc2_)
          {
             if(this.levels[_loc1_].length > this.maxLevelWidth)
             {
@@ -96,7 +95,7 @@ package net.wg.gui.lobby.techtree.math
             _loc1_++;
          }
          _loc1_ = 0;
-         while(_loc1_ < this.levels.length)
+         while(_loc1_ < _loc2_)
          {
             this.alignLevel(_loc1_);
             _loc1_++;
@@ -105,7 +104,7 @@ package net.wg.gui.lobby.techtree.math
       
       private function alignLevel(param1:Number) : void
       {
-         var _loc4_:Number = NaN;
+         var _loc4_:int = 0;
          var _loc2_:Array = this.levels[param1];
          var _loc3_:Number = this.maxLevelWidth - _loc2_.length;
          _loc4_ = 0;
@@ -114,8 +113,9 @@ package net.wg.gui.lobby.techtree.math
             _loc2_.push(null);
             _loc4_++;
          }
+         var _loc5_:uint = _loc2_.length;
          _loc4_ = 0;
-         while(_loc4_ < _loc2_.length)
+         while(_loc4_ < _loc5_)
          {
             if(_loc2_[_loc4_] != null)
             {
@@ -127,16 +127,16 @@ package net.wg.gui.lobby.techtree.math
       
       private function mapLevel(param1:Number, param2:Array) : void
       {
-         var _loc3_:Number = param2.length;
+         var _loc3_:uint = param2.length;
          var _loc4_:Array = this.levels[param1];
          if(_loc4_ == null)
          {
             return;
          }
          var _loc5_:Array = new Array(_loc3_);
-         var _loc6_:Number = 0;
-         var _loc7_:Number = 0;
-         var _loc8_:Number = 0;
+         var _loc6_:int = 0;
+         var _loc7_:int = 0;
+         var _loc8_:int = 0;
          while(_loc7_ < _loc3_)
          {
             if(param2[_loc7_] == 0)
@@ -176,16 +176,17 @@ package net.wg.gui.lobby.techtree.math
             return;
          }
          var _loc5_:Array = this.adjacencyMatrix[param2];
-         var _loc7_:Number = 0;
-         while(_loc7_ < _loc5_.length)
+         var _loc7_:uint = _loc5_.length;
+         var _loc8_:int = 0;
+         while(_loc8_ < _loc7_)
          {
-            _loc6_ = _loc5_[_loc7_];
+            _loc6_ = _loc5_[_loc8_];
             if(_loc6_ == 1 || _loc6_ == 2)
             {
-               this.removeLevelItem(param1,_loc7_);
-               this.addLevelItem(param1 + 1,_loc7_,_loc6_ == 2,true);
+               this.removeLevelItem(param1,_loc8_);
+               this.addLevelItem(param1 + 1,_loc8_,_loc6_ == 2,true);
             }
-            _loc7_++;
+            _loc8_++;
          }
       }
       
@@ -193,40 +194,43 @@ package net.wg.gui.lobby.techtree.math
       {
          var _loc3_:Array = this.levels[param1];
          var _loc4_:Array = [];
-         var _loc5_:Number = 0;
-         while(_loc5_ < _loc3_.length)
+         var _loc5_:uint = _loc3_.length;
+         var _loc6_:int = 0;
+         while(_loc6_ < _loc5_)
          {
-            if(_loc3_[_loc5_].index != param2)
+            if(_loc3_[_loc6_].index != param2)
             {
-               _loc4_.push(_loc3_[_loc5_]);
+               _loc4_.push(_loc3_[_loc6_]);
             }
-            _loc5_++;
+            _loc6_++;
          }
          this.levels[param1] = _loc4_;
       }
       
       private function zipLevel(param1:Number) : void
       {
-         var _loc4_:Number = NaN;
-         var _loc5_:Number = NaN;
+         var _loc4_:uint = 0;
+         var _loc5_:int = 0;
          var _loc6_:LevelItem = null;
          var _loc7_:LevelItem = null;
          var _loc8_:Array = null;
          var _loc9_:Array = null;
-         var _loc10_:Number = NaN;
+         var _loc10_:int = 0;
          var _loc12_:Array = null;
-         var _loc13_:Number = NaN;
+         var _loc13_:int = 0;
          var _loc14_:Boolean = false;
-         var _loc15_:Number = NaN;
-         var _loc16_:Number = NaN;
-         var _loc17_:Number = NaN;
+         var _loc15_:int = 0;
+         var _loc16_:uint = 0;
+         var _loc17_:uint = 0;
+         var _loc18_:int = 0;
+         var _loc19_:Number = NaN;
          if(param1 < 1)
          {
             return;
          }
          var _loc2_:Array = this.levels[param1 - 1];
-         var _loc3_:Number = _loc2_.length;
-         var _loc11_:Number = 0;
+         var _loc3_:uint = _loc2_.length;
+         var _loc11_:int = 0;
          while(_loc11_ < _loc3_)
          {
             _loc6_ = _loc2_[_loc11_];
@@ -251,16 +255,18 @@ package net.wg.gui.lobby.techtree.math
                   _loc12_ = this.levels[param1];
                   _loc13_ = -1;
                   _loc14_ = true;
-                  _loc15_ = _loc5_ == 2 ? Number(0) : Number(1);
+                  _loc15_ = _loc5_ == 2 ? int(0) : int(1);
+                  _loc16_ = _loc12_.length;
                   _loc10_ = 0;
-                  while(_loc10_ < _loc12_.length)
+                  while(_loc10_ < _loc16_)
                   {
                      _loc7_ = _loc12_[_loc10_];
-                     _loc16_ = 0;
-                     while(_loc16_ < _loc9_.length)
+                     _loc17_ = _loc9_.length;
+                     _loc18_ = 0;
+                     while(_loc18_ < _loc17_)
                      {
-                        _loc17_ = _loc9_[_loc16_];
-                        if(_loc7_.index == _loc17_ && _loc5_ > _loc15_)
+                        _loc19_ = _loc9_[_loc18_];
+                        if(_loc7_.index == _loc19_ && _loc5_ > _loc15_)
                         {
                            if(_loc14_)
                            {
@@ -275,7 +281,7 @@ package net.wg.gui.lobby.techtree.math
                            _loc5_--;
                            _loc14_ = _loc5_ % 2 > 0 && _loc15_ > 0;
                         }
-                        _loc16_++;
+                        _loc18_++;
                      }
                      _loc10_++;
                   }
@@ -287,26 +293,26 @@ package net.wg.gui.lobby.techtree.math
       
       private function buildLevelsCache() : void
       {
-         var _loc2_:Number = NaN;
-         var _loc3_:Number = NaN;
-         var _loc4_:Number = NaN;
+         var _loc2_:int = 0;
+         var _loc3_:int = 0;
+         var _loc4_:int = 0;
          var _loc5_:Array = null;
          var _loc6_:LevelItem = null;
-         var _loc7_:Array = null;
-         var _loc8_:Number = NaN;
-         var _loc9_:Array = null;
+         var _loc8_:Array = null;
+         var _loc9_:uint = 0;
          var _loc10_:Array = null;
-         var _loc11_:Number = NaN;
-         var _loc12_:Number = NaN;
+         var _loc11_:Array = null;
+         var _loc12_:int = 0;
+         var _loc13_:Number = NaN;
          this.parentLevelIdxs = {};
          this.childrenLevelIdxs = {};
-         var _loc1_:Number = this.levels.length;
-         this.levelByNode = new Array(_loc1_);
+         var _loc1_:uint = this.levels.length;
+         var _loc7_:Array = new Array(_loc1_);
          _loc3_ = 0;
          while(_loc3_ < _loc1_)
          {
             _loc5_ = this.levels[_loc3_];
-            this.levelByNode[_loc3_] = {};
+            _loc7_[_loc3_] = {};
             _loc2_ = _loc5_.length;
             _loc4_ = 0;
             while(_loc4_ < _loc2_)
@@ -314,7 +320,7 @@ package net.wg.gui.lobby.techtree.math
                _loc6_ = _loc5_[_loc4_];
                if(_loc6_ != null)
                {
-                  this.levelByNode[_loc3_][_loc6_.index] = _loc4_;
+                  _loc7_[_loc3_][_loc6_.index] = _loc4_;
                }
                _loc4_++;
             }
@@ -332,26 +338,26 @@ package net.wg.gui.lobby.techtree.math
                _loc6_ = _loc5_[_loc4_];
                if(_loc6_ != null)
                {
-                  _loc7_ = this.adjacencyMatrix[_loc6_.index];
-                  _loc8_ = _loc7_.length;
-                  _loc9_ = [];
+                  _loc8_ = this.adjacencyMatrix[_loc6_.index];
+                  _loc9_ = _loc8_.length;
                   _loc10_ = [];
-                  _loc11_ = 0;
-                  while(_loc11_ < _loc8_)
+                  _loc11_ = [];
+                  _loc12_ = 0;
+                  while(_loc12_ < _loc9_)
                   {
-                     _loc12_ = _loc7_[_loc11_];
-                     if(_loc12_ == 1 || _loc12_ == 2)
+                     _loc13_ = _loc8_[_loc12_];
+                     if(_loc13_ == 1 || _loc13_ == 2)
                      {
-                        _loc9_.push(this.levelByNode[_loc3_ + 1][_loc11_]);
+                        _loc10_.push(_loc7_[_loc3_ + 1][_loc12_]);
                      }
-                     if(_loc12_ == -1 || _loc12_ == -2)
+                     if(_loc13_ == -1 || _loc13_ == -2)
                      {
-                        _loc10_.push(this.levelByNode[_loc3_ - 1][_loc11_]);
+                        _loc11_.push(_loc7_[_loc3_ - 1][_loc12_]);
                      }
-                     _loc11_++;
+                     _loc12_++;
                   }
-                  this.parentLevelIdxs[_loc6_.index] = _loc10_;
-                  this.childrenLevelIdxs[_loc6_.index] = _loc9_;
+                  this.parentLevelIdxs[_loc6_.index] = _loc11_;
+                  this.childrenLevelIdxs[_loc6_.index] = _loc10_;
                }
                _loc4_++;
             }
@@ -369,8 +375,8 @@ package net.wg.gui.lobby.techtree.math
       
       private function addFakeNode(param1:LevelItem, param2:Number, param3:Number) : Number
       {
-         var _loc5_:Number = NaN;
-         var _loc4_:Number = param1.index;
+         var _loc5_:int = 0;
+         var _loc4_:uint = param1.index;
          this.adjacencyMatrix[param3][_loc4_] = 0;
          this.adjacencyMatrix[_loc4_][param3] = 0;
          _loc5_ = 0;
@@ -382,8 +388,9 @@ package net.wg.gui.lobby.techtree.math
          var _loc6_:Number = this.matrixDimension;
          ++this.matrixDimension;
          var _loc7_:Array = new Array(this.matrixDimension);
+         var _loc8_:uint = _loc7_.length;
          _loc5_ = 0;
-         while(_loc5_ < _loc7_.length)
+         while(_loc5_ < _loc8_)
          {
             _loc7_[_loc5_] = 0;
             _loc5_++;
@@ -396,11 +403,11 @@ package net.wg.gui.lobby.techtree.math
          return _loc6_;
       }
       
-      private function addFakeNodes(param1:LevelItem, param2:Number, param3:Number, param4:Number) : Number
+      private function addFakeNodes(param1:LevelItem, param2:Number, param3:Number, param4:int) : Number
       {
-         var _loc5_:Number = NaN;
-         var _loc6_:Number = NaN;
-         var _loc7_:Number = 0;
+         var _loc5_:int = 0;
+         var _loc6_:int = 0;
+         var _loc7_:int = 0;
          while(_loc7_ < param4)
          {
             _loc6_ = this.addFakeNode(param1,param2,param3);
@@ -417,14 +424,15 @@ package net.wg.gui.lobby.techtree.math
       private function hasFakeNode(param1:Number) : Boolean
       {
          var _loc2_:Array = this.levels[param1];
-         var _loc3_:Number = 0;
-         while(_loc3_ < _loc2_.length)
+         var _loc3_:uint = _loc2_.length;
+         var _loc4_:int = 0;
+         while(_loc4_ < _loc3_)
          {
-            if(_loc2_[_loc3_] != null && _loc2_[_loc3_].fake)
+            if(_loc2_[_loc4_] != null && _loc2_[_loc4_].fake)
             {
                return true;
             }
-            _loc3_++;
+            _loc4_++;
          }
          return false;
       }
@@ -446,8 +454,8 @@ package net.wg.gui.lobby.techtree.math
             }
             return;
          }
-         var _loc5_:Number = param3.length;
-         var _loc6_:Number = 0;
+         var _loc5_:uint = param3.length;
+         var _loc6_:int = 0;
          while(_loc6_ < _loc5_)
          {
             if(_loc6_ != param1)
@@ -463,12 +471,14 @@ package net.wg.gui.lobby.techtree.math
       
       private function distributionOfVerticesOnLevels() : void
       {
-         var _loc1_:Number = NaN;
+         var _loc1_:int = 0;
          var _loc3_:Number = NaN;
          var _loc6_:LevelItem = null;
-         var _loc7_:Number = NaN;
-         var _loc8_:Array = null;
-         var _loc9_:Number = NaN;
+         var _loc7_:uint = 0;
+         var _loc8_:Number = NaN;
+         var _loc9_:Array = null;
+         var _loc10_:uint = 0;
+         var _loc11_:int = 0;
          this.maxPaths = new Array(this.matrixDimension);
          this.widthPartitioning = 0;
          this.maxPaths[0] = 0;
@@ -481,7 +491,7 @@ package net.wg.gui.lobby.techtree.math
          var _loc2_:Number = 0;
          this.levels = new Array(this.widthPartitioning);
          this.addLevelItem(0,0,false,false);
-         var _loc4_:Number = this.maxPaths.length;
+         var _loc4_:uint = this.maxPaths.length;
          var _loc5_:Object = {};
          _loc1_ = 1;
          while(_loc1_ < _loc4_)
@@ -492,28 +502,30 @@ package net.wg.gui.lobby.techtree.math
             if(!isNaN(_loc2_) && _loc3_ < _loc2_)
             {
                _loc6_ = this.levels[_loc3_][this.levels[_loc3_].length - 1];
-               _loc7_ = _loc2_ - _loc3_;
-               _loc8_ = this.adjacencyMatrix[_loc1_];
-               _loc9_ = 0;
-               while(_loc9_ < _loc8_.length)
+               _loc7_ = _loc6_.index;
+               _loc8_ = _loc2_ - _loc3_;
+               _loc9_ = this.adjacencyMatrix[_loc1_];
+               _loc10_ = _loc9_.length;
+               _loc11_ = 0;
+               while(_loc11_ < _loc10_)
                {
-                  if(_loc8_[_loc9_] == -1)
+                  if(_loc9_[_loc11_] == -1)
                   {
-                     if(_loc5_[_loc9_] == null)
+                     if(_loc5_[_loc11_] == null)
                      {
-                        _loc5_[_loc9_] = this.addFakeNodes(_loc6_,_loc3_,_loc9_,_loc7_);
+                        _loc5_[_loc11_] = this.addFakeNodes(_loc6_,_loc3_,_loc11_,_loc8_);
                      }
                      else
                      {
-                        this.adjacencyMatrix[_loc6_.index][_loc5_[_loc9_]] = -2;
-                        this.adjacencyMatrix[_loc5_[_loc9_]][_loc6_.index] = 2;
-                        this.adjacencyMatrix[_loc6_.index][_loc9_] = 0;
-                        this.adjacencyMatrix[_loc9_][_loc6_.index] = 0;
-                        this.addLevelItem(_loc2_,_loc6_.index,false,true);
-                        this.removeLevelItem(_loc3_,_loc6_.index);
+                        this.adjacencyMatrix[_loc7_][_loc5_[_loc11_]] = -2;
+                        this.adjacencyMatrix[_loc5_[_loc11_]][_loc7_] = 2;
+                        this.adjacencyMatrix[_loc7_][_loc11_] = 0;
+                        this.adjacencyMatrix[_loc11_][_loc7_] = 0;
+                        this.addLevelItem(_loc2_,_loc7_,false,true);
+                        this.removeLevelItem(_loc3_,_loc7_);
                      }
                   }
-                  _loc9_++;
+                  _loc11_++;
                }
             }
             _loc1_++;
@@ -524,28 +536,28 @@ package net.wg.gui.lobby.techtree.math
       private function getLines(param1:Number, param2:Boolean) : Array
       {
          var _loc4_:LevelLine = null;
-         var _loc9_:Number = NaN;
+         var _loc9_:int = 0;
          var _loc10_:Array = null;
          var _loc11_:LevelItem = null;
          var _loc12_:LevelItem = null;
-         var _loc16_:Number = NaN;
-         var _loc17_:Number = NaN;
+         var _loc16_:int = 0;
+         var _loc17_:int = 0;
          var _loc3_:Array = [];
          if(param1 == 0)
          {
             return _loc3_;
          }
          var _loc5_:Array = this.levels[param1];
-         var _loc6_:Number = _loc5_.length;
+         var _loc6_:uint = _loc5_.length;
          var _loc7_:Array = this.levels[!!param2 ? param1 + 1 : param1 - 1];
          if(!_loc7_)
          {
             return _loc3_;
          }
          var _loc8_:Number = _loc7_.length;
-         var _loc13_:Number = !!param2 ? Number(1) : Number(-1);
-         var _loc14_:Number = !!param2 ? Number(2) : Number(-2);
-         var _loc15_:Number = 0;
+         var _loc13_:int = !!param2 ? int(1) : int(-1);
+         var _loc14_:int = !!param2 ? int(2) : int(-2);
+         var _loc15_:int = 0;
          while(_loc15_ < _loc6_)
          {
             _loc11_ = _loc5_[_loc15_];
@@ -583,28 +595,29 @@ package net.wg.gui.lobby.techtree.math
       {
          var _loc4_:LevelLine = null;
          var _loc5_:LevelLine = null;
-         var _loc6_:Number = NaN;
-         var _loc7_:Number = NaN;
-         var _loc9_:Number = NaN;
+         var _loc6_:uint = 0;
+         var _loc7_:uint = 0;
+         var _loc10_:Number = NaN;
          var _loc2_:Number = 0;
-         var _loc3_:Number = param1.length;
-         var _loc8_:Number = 0;
-         while(_loc8_ < _loc3_ - 1)
+         var _loc3_:uint = param1.length;
+         var _loc8_:int = _loc3_ - 1;
+         var _loc9_:int = 0;
+         while(_loc9_ < _loc8_)
          {
-            _loc4_ = param1[_loc8_];
-            _loc9_ = _loc8_ + 1;
-            while(_loc9_ < _loc3_)
+            _loc4_ = param1[_loc9_];
+            _loc10_ = _loc9_ + 1;
+            while(_loc10_ < _loc3_)
             {
-               _loc5_ = param1[_loc9_];
+               _loc5_ = param1[_loc10_];
                _loc6_ = _loc4_.start - _loc5_.start;
                _loc7_ = _loc4_.end - _loc5_.end;
-               if((_loc5_.start - _loc4_.start) * (_loc5_.end - _loc4_.end) < 0 && _loc6_ * _loc7_ < 0 || _loc4_.start != _loc4_.end && _loc6_ == _loc7_ && Math.abs(_loc4_.start - _loc5_.start) == 1)
+               if((_loc5_.start - _loc4_.start) * (_loc5_.end - _loc4_.end) < 0 && _loc6_ * _loc7_ < 0 || _loc4_.start != _loc4_.end && _loc6_ == _loc7_ && Math.abs(_loc6_) == 1)
                {
                   _loc2_ += this.maxLevelWidth + 1;
                }
-               _loc9_++;
+               _loc10_++;
             }
-            _loc8_++;
+            _loc9_++;
          }
          return _loc2_;
       }
@@ -613,28 +626,37 @@ package net.wg.gui.lobby.techtree.math
       {
          var _loc4_:LevelLine = null;
          var _loc5_:LevelLine = null;
-         var _loc6_:Number = NaN;
-         var _loc7_:Number = NaN;
-         var _loc9_:Number = NaN;
+         var _loc6_:int = 0;
+         var _loc7_:int = 0;
+         var _loc10_:int = 0;
+         var _loc11_:uint = 0;
+         var _loc12_:uint = 0;
+         var _loc13_:uint = 0;
+         var _loc14_:uint = 0;
          var _loc2_:Number = 0;
-         var _loc3_:Number = param1.length;
-         var _loc8_:Number = 0;
-         while(_loc8_ < _loc3_ - 1)
+         var _loc3_:uint = param1.length;
+         var _loc8_:int = _loc3_ - 1;
+         var _loc9_:int = 0;
+         while(_loc9_ < _loc8_)
          {
-            _loc4_ = param1[_loc8_];
-            _loc9_ = _loc8_ + 1;
-            while(_loc9_ < _loc3_)
+            _loc4_ = param1[_loc9_];
+            _loc10_ = _loc9_ + 1;
+            while(_loc10_ < _loc3_)
             {
-               _loc5_ = param1[_loc9_];
-               _loc6_ = _loc4_.start - _loc5_.start;
-               _loc7_ = _loc4_.end - _loc5_.end;
-               if((_loc5_.start - _loc4_.start) * (_loc5_.end - _loc4_.end) < 0 && _loc6_ * _loc7_ < 0 || _loc4_.start != _loc4_.end && _loc5_.start != _loc5_.end && (_loc4_.end >= _loc5_.start && _loc4_.start <= _loc5_.end || _loc5_.end <= _loc4_.start && _loc4_.end <= _loc5_.start) && _loc4_.start != _loc5_.start)
+               _loc5_ = param1[_loc10_];
+               _loc11_ = _loc4_.start;
+               _loc12_ = _loc5_.start;
+               _loc13_ = _loc4_.end;
+               _loc14_ = _loc5_.end;
+               _loc6_ = _loc11_ - _loc12_;
+               _loc7_ = _loc13_ - _loc14_;
+               if((_loc12_ - _loc11_) * (_loc14_ - _loc13_) < 0 && _loc6_ * _loc7_ < 0 || _loc11_ != _loc13_ && _loc12_ != _loc14_ && (_loc13_ >= _loc12_ && _loc11_ <= _loc14_ || _loc14_ <= _loc11_ && _loc13_ <= _loc12_) && _loc11_ != _loc12_)
                {
                   _loc2_ += this.maxLevelWidth + 1;
                }
-               _loc9_++;
+               _loc10_++;
             }
-            _loc8_++;
+            _loc9_++;
          }
          return _loc2_;
       }
@@ -643,28 +665,29 @@ package net.wg.gui.lobby.techtree.math
       {
          var _loc3_:LevelLine = null;
          var _loc2_:Number = this.getCrossingCostEx(param1);
-         var _loc4_:Number = 0;
-         while(_loc4_ < param1.length)
+         var _loc4_:uint = param1.length;
+         var _loc5_:int = 0;
+         while(_loc5_ < _loc4_)
          {
-            _loc3_ = param1[_loc4_];
+            _loc3_ = param1[_loc5_];
             if(_loc3_.start != _loc3_.end)
             {
                _loc2_ += Math.abs(_loc3_.start - _loc3_.end);
             }
-            _loc4_++;
+            _loc5_++;
          }
          return _loc2_;
       }
       
       private function findMaxChildCount(param1:Array) : Number
       {
-         var _loc4_:Number = NaN;
+         var _loc4_:int = 0;
          if(this.isCyclicReference || param1 == null)
          {
             return 0;
          }
          var _loc2_:Array = [];
-         var _loc3_:Number = 0;
+         var _loc3_:int = 0;
          _loc4_ = 0;
          while(_loc4_ < param1.length)
          {
@@ -675,8 +698,9 @@ package net.wg.gui.lobby.techtree.math
             }
             _loc4_++;
          }
+         var _loc5_:uint = _loc2_.length;
          _loc4_ = 0;
-         while(_loc4_ < _loc2_.length)
+         while(_loc4_ < _loc5_)
          {
             _loc3_ = Math.max(this.findMaxChildCount(this.adjacencyMatrix[_loc2_[_loc4_]]),_loc3_);
             _loc4_++;
@@ -686,12 +710,12 @@ package net.wg.gui.lobby.techtree.math
       
       private function breedNodesByNextRelations(param1:Number) : void
       {
-         var _loc4_:Number = NaN;
+         var _loc4_:int = 0;
          var _loc5_:LevelItem = null;
-         var _loc11_:Number = NaN;
+         var _loc11_:int = 0;
          var _loc2_:Array = this.levels[param1];
-         var _loc3_:Number = _loc2_.length;
-         var _loc6_:Number = 0;
+         var _loc3_:uint = _loc2_.length;
+         var _loc6_:int = 0;
          var _loc7_:Array = new Array(_loc3_);
          _loc4_ = 0;
          while(_loc4_ < _loc3_)
@@ -727,8 +751,8 @@ package net.wg.gui.lobby.techtree.math
             return;
          }
          var _loc8_:Boolean = false;
-         var _loc9_:Number = 0;
-         var _loc10_:Number = 0;
+         var _loc9_:int = 0;
+         var _loc10_:int = 0;
          _loc4_ = 0;
          while(_loc4_ < _loc3_)
          {
@@ -763,19 +787,19 @@ package net.wg.gui.lobby.techtree.math
       
       private function makeMinCrossing(param1:Number, param2:Boolean) : Number
       {
-         var i:Number = NaN;
+         var i:int = 0;
          var node:LevelItem = null;
          var other:LevelItem = null;
          var crossings:Array = null;
          var lines:Array = null;
-         var row:Number = NaN;
-         var column:Number = NaN;
+         var row:int = 0;
+         var column:int = 0;
          var position:MatrixPosition = null;
-         var x:Number = NaN;
+         var x:int = 0;
          var levelIdx:Number = param1;
          var next:Boolean = param2;
          var checkLevel:Array = this.levels[levelIdx];
-         var checkLevelLen:Number = checkLevel.length;
+         var checkLevelLen:uint = checkLevel.length;
          var holdDxs:Array = new Array(checkLevelLen);
          var matrix:Array = new Array(checkLevelLen);
          i = 0;
@@ -827,8 +851,9 @@ package net.wg.gui.lobby.techtree.math
          }));
          var newLevel:Array = new Array(checkLevelLen);
          var profit:Number = 0;
+         var length:uint = result.length;
          i = 0;
-         while(i < result.length)
+         while(i < length)
          {
             position = result[i];
             row = position.row;
@@ -849,12 +874,12 @@ package net.wg.gui.lobby.techtree.math
       private function findNodePositionInLevel(param1:Number, param2:Boolean) : Array
       {
          var _loc9_:Array = null;
-         var _loc3_:Number = -1;
-         var _loc4_:Number = 0;
-         var _loc5_:Number = Number.MAX_VALUE;
-         var _loc6_:Number = 0;
-         var _loc7_:Number = this.maxLevelWidth * this.maxLevelWidth;
-         var _loc8_:Number = 0;
+         var _loc3_:int = -1;
+         var _loc4_:int = 0;
+         var _loc5_:int = int.MAX_VALUE;
+         var _loc6_:int = 0;
+         var _loc7_:int = this.maxLevelWidth * this.maxLevelWidth;
+         var _loc8_:int = 0;
          while(_loc3_ != 0 && _loc6_ != 3 && _loc4_ != _loc3_ && _loc8_ < _loc7_)
          {
             _loc4_ = _loc3_;
@@ -863,7 +888,7 @@ package net.wg.gui.lobby.techtree.math
             _loc3_ *= this.getTotalCost(_loc9_);
             if(_loc3_ <= _loc5_)
             {
-               _loc6_ = _loc3_ == _loc5_ ? Number(_loc6_ + 1) : Number(0);
+               _loc6_ = _loc3_ == _loc5_ ? int(_loc6_ + 1) : int(0);
                _loc5_ = _loc3_;
             }
             _loc8_++;
@@ -874,25 +899,26 @@ package net.wg.gui.lobby.techtree.math
       private function determineNodesPositionsOnLevel() : void
       {
          var _loc1_:Array = null;
-         var _loc3_:Number = NaN;
+         var _loc4_:Number = NaN;
          this.breedNodesByNextRelations(1);
-         var _loc2_:Number = 2;
-         while(_loc2_ < this.levels.length)
+         var _loc2_:uint = this.levels.length;
+         var _loc3_:int = 2;
+         while(_loc3_ < _loc2_)
          {
-            _loc1_ = this.findNodePositionInLevel(_loc2_,false);
-            if(this.hasFakeNode(_loc2_))
+            _loc1_ = this.findNodePositionInLevel(_loc3_,false);
+            if(this.hasFakeNode(_loc3_))
             {
-               this.breedNodesByNextRelations(_loc2_);
+               this.breedNodesByNextRelations(_loc3_);
             }
             if(this.getCrossingCostEx(_loc1_) > 0)
             {
-               _loc3_ = this.makeMinCrossing(_loc2_ - 1,true);
-               if(_loc3_ != 0 && _loc2_ == this.levels.length - 1)
+               _loc4_ = this.makeMinCrossing(_loc3_ - 1,true);
+               if(_loc4_ != 0 && _loc3_ == _loc2_ - 1)
                {
-                  this.findNodePositionInLevel(_loc2_,false);
+                  this.findNodePositionInLevel(_loc3_,false);
                }
             }
-            _loc2_++;
+            _loc3_++;
          }
          this.buildLevelsCache();
       }
@@ -909,11 +935,11 @@ package net.wg.gui.lobby.techtree.math
       
       public function get levelDimension() : MatrixPosition
       {
-         var _loc3_:Number = NaN;
+         var _loc3_:int = 0;
          var _loc4_:Array = null;
-         var _loc1_:Number = this.levels.length;
-         var _loc2_:Number = 0;
-         var _loc5_:Number = 1;
+         var _loc1_:uint = this.levels.length;
+         var _loc2_:int = 0;
+         var _loc5_:int = 1;
          while(_loc5_ < _loc1_)
          {
             _loc4_ = this.levels[_loc5_];

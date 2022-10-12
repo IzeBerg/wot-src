@@ -14,6 +14,8 @@ package net.wg.data.VO.daapi
       
       public var winText:String = "";
       
+      public var winTextShort:String = "";
+      
       public function DAAPIArenaHeaderInfoVO(param1:Object)
       {
          super(param1);

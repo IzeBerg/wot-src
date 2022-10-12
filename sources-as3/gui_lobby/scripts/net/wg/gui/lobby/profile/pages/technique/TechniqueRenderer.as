@@ -4,6 +4,7 @@ package net.wg.gui.lobby.profile.pages.technique
    import flash.display.MovieClip;
    import flash.events.MouseEvent;
    import flash.text.TextField;
+   import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.CONTEXT_MENU_HANDLER_TYPE;
    import net.wg.gui.components.controls.SoundListItemRenderer;
    import net.wg.gui.lobby.profile.components.TechMasteryIcon;
@@ -38,6 +39,8 @@ package net.wg.gui.lobby.profile.pages.technique
       public var hit:MovieClip = null;
       
       public var tankIcon:IImage = null;
+      
+      public var prestigePointsTF:TextField = null;
       
       private var _compareModeAvailable:Boolean = false;
       
@@ -112,7 +115,7 @@ package net.wg.gui.lobby.profile.pages.technique
                this.battlesTF.text = getString(_loc5_.battlesCount);
                this.winsTF.text = _loc5_.winsEfficiencyStr;
                _loc6_ = _loc5_.avgExperience;
-               this.avgExpTF.text = _loc6_ == 0 ? "" : getString(_loc6_);
+               this.avgExpTF.text = _loc6_ == 0 ? Values.EMPTY_STR : getString(_loc6_);
                this.nationIcon.source = _loc5_.nationIconPath;
                this.typeIcon.source = _loc5_.typeIconPath;
                this.tankIcon.source = _loc5_.tankIconPath;
@@ -124,6 +127,7 @@ package net.wg.gui.lobby.profile.pages.technique
                }
                this.masteryIcon.data = _loc5_;
                this.levelMC.gotoAndStop(_loc5_.level);
+               this.prestigePointsTF.text = _loc5_.prestigePoints > Values.DEFAULT_INT ? getString(_loc5_.prestigePoints) : Values.EMPTY_STR;
             }
             _loc3_ = numChildren;
             _loc4_ = 0;
@@ -154,6 +158,7 @@ package net.wg.gui.lobby.profile.pages.technique
          this.battlesTF = null;
          this.winsTF = null;
          this.avgExpTF = null;
+         this.prestigePointsTF = null;
          this.levelMC = null;
          this.background = null;
          this.hit = null;

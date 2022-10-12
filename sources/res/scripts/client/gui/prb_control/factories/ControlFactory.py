@@ -30,7 +30,7 @@ class ControlFactory(object):
         if action.actionName in available:
             clazz = available[action.actionName]
             result = clazz()
-            result.setAccountsToInvite(action.accountsToInvite)
+            result.configure(action)
             return result
         else:
             return

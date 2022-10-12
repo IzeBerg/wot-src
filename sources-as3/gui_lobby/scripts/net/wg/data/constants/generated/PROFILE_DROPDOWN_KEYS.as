@@ -36,6 +36,8 @@ package net.wg.data.constants.generated
       public static const BATTLE_ROYALE_SOLO:String = "battleRoyaleSolo";
       
       public static const BATTLE_ROYALE_SQUAD:String = "battleRoyaleSquad";
+      
+      public static const COMP7:String = "comp7";
        
       
       public function PROFILE_DROPDOWN_KEYS()

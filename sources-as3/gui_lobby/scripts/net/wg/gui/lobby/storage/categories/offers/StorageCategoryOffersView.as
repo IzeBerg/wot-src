@@ -1,6 +1,5 @@
 package net.wg.gui.lobby.storage.categories.offers
 {
-   import flash.events.Event;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
    import net.wg.data.ListDAAPIDataProvider;
@@ -38,7 +37,6 @@ package net.wg.gui.lobby.storage.categories.offers
       
       override protected function onDispose() : void
       {
-         this.noItemsView.removeEventListener(Event.CLOSE,this.onNoItemViewCloseHandler);
          carousel.removeEventListener(CardEvent.SELL,this.onCardSellHandler);
          this.noItemsView.dispose();
          this.noItemsView = null;
@@ -52,26 +50,34 @@ package net.wg.gui.lobby.storage.categories.offers
          this.title.autoSize = TextFieldAutoSize.LEFT;
          this.title.text = STORAGE.OFFERS_SECTIONTITLE;
          this.title.mouseWheelEnabled = this.title.mouseEnabled = false;
-         this.noItemsView.setTexts(STORAGE.OFFERS_NOITEMS_TITLE,STORAGE.STORAGE_NOITEMS_NAVIGATIONBUTTON);
-         this.noItemsView.addEventListener(Event.CLOSE,this.onNoItemViewCloseHandler);
          carousel.scrollList.itemRendererClassReference = Linkages.OFFER_CARD_RENDERER;
          carousel.scrollList.paddingTop = CAROUSEL_TOP_OFFSET;
          carousel.scrollList.paddingBottom = CAROUSEL_BOTTOM_OFFSET;
          carousel.addEventListener(CardEvent.SELL,this.onCardSellHandler);
       }
       
+      override protected function initNoItemsView() : void
+      {
+         this.noItemsView.setTexts(STORAGE.OFFERS_NOITEMS_TITLE,STORAGE.STORAGE_NOITEMS_NAVIGATIONBUTTON);
+      }
+      
       override protected function draw() : void
       {
-         var _loc1_:int = 0;
          super.draw();
          if(isInvalid(InvalidationType.SIZE))
          {
             this.title.x = carousel.x;
-            _loc1_ = this.title.y + this.title.height;
-            this.noItemsView.width = width;
-            this.noItemsView.validateNow();
-            this.noItemsView.y = _loc1_ + (height - _loc1_ - this.noItemsView.actualHeight >> 1);
          }
+      }
+      
+      override protected function getNoComponentsStartY() : int
+      {
+         return this.title.y + this.title.height;
+      }
+      
+      override protected function onNoItemsViewClose() : void
+      {
+         navigateToStoreS();
       }
       
       override public function get noItemsComponent() : UIComponent
@@ -83,11 +89,6 @@ package net.wg.gui.lobby.storage.categories.offers
       {
          param1.stopImmediatePropagation();
          openOfferWindowS(param1.data.id);
-      }
-      
-      private function onNoItemViewCloseHandler(param1:Event) : void
-      {
-         navigateToStoreS();
       }
    }
 }

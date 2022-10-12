@@ -95,10 +95,7 @@ package net.wg.gui.lobby.techtree.controls
          {
             return;
          }
-         if(this._toolTipMgr)
-         {
-            this._toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.BLUEPRINT_INFO,null,this._vehicleCD);
-         }
+         this._toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.BLUEPRINT_INFO,null,this._vehicleCD);
       }
       
       public function generatedUnstoppableEvents() : Boolean
@@ -139,25 +136,19 @@ package net.wg.gui.lobby.techtree.controls
       
       private function onPlusRollOverHandler(param1:MouseEvent) : void
       {
-         if(this._toolTipMgr)
-         {
-            param1.stopImmediatePropagation();
-            this._toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.BLUEPRINT_CONVERT_INFO,null,this._vehicleCD);
-         }
+         param1.stopImmediatePropagation();
+         this._toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.BLUEPRINT_CONVERT_INFO,null,this._vehicleCD);
       }
       
       private function onPlusRollOutHandler(param1:MouseEvent) : void
       {
-         if(this._toolTipMgr)
+         if(hitTestPoint(param1.stageX,param1.stageY))
          {
-            if(hitTestPoint(param1.stageX,param1.stageY))
-            {
-               this._toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.BLUEPRINT_INFO,null,this._vehicleCD);
-            }
-            else
-            {
-               this._toolTipMgr.hide();
-            }
+            this._toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.BLUEPRINT_INFO,null,this._vehicleCD);
+         }
+         else
+         {
+            this._toolTipMgr.hide();
          }
       }
    }

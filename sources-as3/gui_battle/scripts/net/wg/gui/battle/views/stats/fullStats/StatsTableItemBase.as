@@ -15,6 +15,7 @@ package net.wg.gui.battle.views.stats.fullStats
    import net.wg.gui.components.controls.VO.BadgeVisualVO;
    import net.wg.infrastructure.interfaces.IColorScheme;
    import net.wg.infrastructure.interfaces.IUserProps;
+   import org.idmedia.as3commons.util.StringUtils;
    import scaleform.gfx.TextFieldEx;
    
    public class StatsTableItemBase extends BattleUIComponentsHolder
@@ -22,7 +23,7 @@ package net.wg.gui.battle.views.stats.fullStats
       
       private static const FIELD_WIDTH_COMPENSATION:int = 2;
       
-      private static const RANKED_BADGE_OFFSET:int = 1;
+      private static const SUFFIXBADGE_WIDTH:uint = 24;
       
       private static const BADGE_ALPHA:int = 1;
       
@@ -45,13 +46,13 @@ package net.wg.gui.battle.views.stats.fullStats
       
       protected var isTeamKiller:Boolean = false;
       
-      protected var vehicleTypeIcon:BattleAtlasSprite = null;
-      
       private var _playerNameTF:TextField = null;
       
       private var _fragsTF:TextField = null;
       
       private var _vehicleNameTF:TextField = null;
+      
+      private var _vehicleTypeIcon:BattleAtlasSprite = null;
       
       private var _icoIGR:BattleAtlasSprite = null;
       
@@ -99,7 +100,7 @@ package net.wg.gui.battle.views.stats.fullStats
          this._playerNameTF = param1.playerNameCollection[_loc4_];
          this._vehicleNameTF = param1.vehicleNameCollection[_loc4_];
          this._fragsTF = param1.fragsCollection[_loc4_];
-         this.vehicleTypeIcon = param1.vehicleTypeCollection[_loc4_];
+         this._vehicleTypeIcon = param1.vehicleTypeCollection[_loc4_];
          this.deadBg = param1.deadBgCollection[_loc4_];
          this._icoIGR = param1.icoIGRCollection[_loc4_];
          this._testerIcon = param1.icoTesterCollection[_loc4_];
@@ -113,7 +114,7 @@ package net.wg.gui.battle.views.stats.fullStats
          this._vehicleNameTF.autoSize = TextFieldAutoSize.LEFT;
          this._vehicleNameTF.visible = false;
          this._fragsTF.visible = false;
-         this.vehicleTypeIcon.visible = false;
+         this._vehicleTypeIcon.visible = false;
          this.deadBg.visible = false;
          this._icoIGR.visible = false;
          this._testerIcon.visible = false;
@@ -127,10 +128,9 @@ package net.wg.gui.battle.views.stats.fullStats
       {
          this._badge = null;
          this._badgeVO = null;
-         this._testerIcon = null;
          this._playerNameTF = null;
          this._vehicleNameTF = null;
-         this.vehicleTypeIcon = null;
+         this._vehicleTypeIcon = null;
          this._fragsTF = null;
          this.deadBg = null;
          this._userProps = null;
@@ -145,26 +145,24 @@ package net.wg.gui.battle.views.stats.fullStats
          var _loc1_:int = 0;
          var _loc2_:String = null;
          var _loc3_:IColorScheme = null;
+         var _loc4_:Boolean = false;
          super.draw();
          if(isInvalid(FullStatsValidationType.BADGE))
          {
+            this._badge.visible = this._hasBadge;
             if(this._hasBadge)
             {
                this._badge.setData(this._badgeVO);
-            }
-            this._badge.visible = this._hasBadge;
-            _loc1_ = !!this._testerIcon.visible ? int(this._testerIcon.width + RANKED_BADGE_OFFSET) : int(0);
-            if(this._badge.visible)
-            {
+               _loc1_ = !!StringUtils.isNotEmpty(this._suffixBadgeType) ? int(SUFFIXBADGE_WIDTH) : int(0);
+               this._playerNameTF.width = this._defaultUsernameTFWidth - this._badge.width - _loc1_ | 0;
                if(this._isEnemy)
                {
-                  this._playerNameTF.x = this._badge.x - (this._defaultUsernameTFWidth - this._badge.width);
+                  this._playerNameTF.x = this._badge.x - this._playerNameTF.width | 0;
                }
                else
                {
-                  this._playerNameTF.x = this._badge.x + (this._badge.width + RANKED_BADGE_OFFSET);
+                  this._playerNameTF.x = this._badge.x + this._badge.width | 0;
                }
-               this._playerNameTF.width = this._defaultUsernameTFWidth - (this._badge.width + RANKED_BADGE_OFFSET) - _loc1_;
             }
             else
             {
@@ -196,20 +194,21 @@ package net.wg.gui.battle.views.stats.fullStats
          }
          if(isInvalid(FullStatsValidationType.SUFFIXBAGE))
          {
-            this._testerIcon.visible = this._backTester.visible = Boolean(this._suffixBadgeType);
-            if(this._testerIcon.visible && this._playerNameTF.visible)
+            _loc4_ = StringUtils.isNotEmpty(this._suffixBadgeType);
+            this._testerIcon.visible = this._backTester.visible = _loc4_;
+            if(_loc4_ && this._playerNameTF.visible)
             {
                this._testerIcon.imageName = this._suffixBadgeType;
                this._backTester.imageName = this._suffixBadgeStripType;
                if(this._isEnemy)
                {
-                  this._testerIcon.x = -FIELD_WIDTH_COMPENSATION + (this._playerNameTF.width - this._playerNameTF.textWidth + this._playerNameTF.x - this._testerIcon.width) >> 0;
-                  this._backTester.x = this._testerIcon.x + this._backTester.width + (this._testerIcon.width >> 1) >> 0;
+                  this._testerIcon.x = this._playerNameTF.width - this._playerNameTF.textWidth + this._playerNameTF.x - this._testerIcon.width - FIELD_WIDTH_COMPENSATION | 0;
+                  this._backTester.x = this._testerIcon.x + this._backTester.width + (this._testerIcon.width >> 1) | 0;
                }
                else
                {
-                  this._testerIcon.x = this._playerNameTF.x + this._playerNameTF.textWidth + RANKED_BADGE_OFFSET >> 0;
-                  this._backTester.x = -FIELD_WIDTH_COMPENSATION + ((this._testerIcon.width >> 1) + this._testerIcon.x - this._backTester.width) >> 0;
+                  this._testerIcon.x = this._playerNameTF.x + this._playerNameTF.textWidth + FIELD_WIDTH_COMPENSATION | 0;
+                  this._backTester.x = (this._testerIcon.width >> 1) + this._testerIcon.x - this._backTester.width | 0;
                }
             }
          }
@@ -253,12 +252,12 @@ package net.wg.gui.battle.views.stats.fullStats
          {
             if(this._vehicleType)
             {
-               this.vehicleTypeIcon.visible = true;
-               this.vehicleTypeIcon.imageName = this._vehicleType;
+               this._vehicleTypeIcon.visible = true;
+               this._vehicleTypeIcon.imageName = this._vehicleType;
             }
             else
             {
-               this.vehicleTypeIcon.visible = false;
+               this._vehicleTypeIcon.visible = false;
             }
          }
          if(isInvalid(FullStatsValidationType.IS_IGR))
@@ -362,15 +361,6 @@ package net.wg.gui.battle.views.stats.fullStats
          invalidate(FullStatsValidationType.IS_IGR);
       }
       
-      public function setShowDogTag(param1:Boolean) : void
-      {
-         if(this.dogTag == param1)
-         {
-            return;
-         }
-         this.dogTag = param1;
-      }
-      
       public function setIsOffline(param1:Boolean) : void
       {
          if(this.isOffline == param1)
@@ -415,6 +405,15 @@ package net.wg.gui.battle.views.stats.fullStats
       {
          this._userProps = param1;
          invalidate(FullStatsValidationType.USER_PROPS | FullStatsValidationType.COLORS);
+      }
+      
+      public function setShowDogTag(param1:Boolean) : void
+      {
+         if(this.dogTag == param1)
+         {
+            return;
+         }
+         this.dogTag = param1;
       }
       
       public function setSuffixBadge(param1:String) : void
@@ -470,14 +469,14 @@ package net.wg.gui.battle.views.stats.fullStats
          this._fragsTF.textColor = param1;
       }
       
+      public function get userProps() : IUserProps
+      {
+         return this._userProps;
+      }
+      
       protected function get numRows() : uint
       {
          return NUM_ROWS;
-      }
-      
-      protected function get isEnemy() : Boolean
-      {
-         return this._isEnemy;
       }
    }
 }

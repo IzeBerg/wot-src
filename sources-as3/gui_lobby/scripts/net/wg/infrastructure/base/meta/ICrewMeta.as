@@ -14,7 +14,7 @@ package net.wg.infrastructure.base.meta
       
       function updateTankmenS() : void;
       
-      function openPersonalCaseS(param1:String, param2:uint) : void;
+      function openPersonalCaseS(param1:String, param2:String) : void;
       
       function onCrewDogMoreInfoClickS() : void;
       

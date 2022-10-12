@@ -31,7 +31,7 @@ package net.wg.gui.lobby.techtree.controls
       
       private function updateIcon() : void
       {
-         if(_labelHash[this._type] && this._type != currentFrameLabel)
+         if(this._type != currentFrameLabel && _labelHash[this._type])
          {
             gotoAndStop(this._type);
          }

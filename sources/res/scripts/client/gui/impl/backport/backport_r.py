@@ -1,4 +1,4 @@
-import logging
+import typing, logging
 from frameworks import wulf
 _logger = logging.getLogger(__name__)
 

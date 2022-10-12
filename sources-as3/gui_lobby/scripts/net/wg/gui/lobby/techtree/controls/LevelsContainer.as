@@ -56,6 +56,11 @@ package net.wg.gui.lobby.techtree.controls
          }
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function showLevelHighlight(param1:int) : void
       {
          if(param1 > 0 && param1 <= this._delimiters.length)
@@ -205,11 +210,6 @@ package net.wg.gui.lobby.techtree.controls
             App.utils.asserter.assert(this._uiid == param1,MSG_UNIQUE);
          }
          this._uiid = param1;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

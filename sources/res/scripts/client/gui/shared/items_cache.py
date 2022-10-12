@@ -1,5 +1,5 @@
 from Event import Event
-from adisp import async
+from adisp import adisp_async
 from debug_utils import LOG_DEBUG
 from PlayerEvents import g_playerEvents
 from gui.shared.utils.requesters import ItemsRequester
@@ -74,7 +74,7 @@ class ItemsCache(IItemsCache):
     def compatVehiclesCache(self):
         return self.__compatVehiclesCache
 
-    @async
+    @adisp_async
     def update(self, updateReason, diff=None, notify=True, callback=None):
         if diff is None or self.__syncFailed:
             self.__invalidateFullData(updateReason, notify, callback)

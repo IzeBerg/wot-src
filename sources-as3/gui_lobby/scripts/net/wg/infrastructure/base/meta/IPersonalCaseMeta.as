@@ -18,13 +18,19 @@ package net.wg.infrastructure.base.meta
       
       function retrainingTankmanS(param1:int, param2:int) : void;
       
+      function getFreeSkillsDataS() : void;
+      
       function getSkillsDataS() : void;
       
       function getDocumentsDataS() : void;
       
       function addTankmanSkillS(param1:int, param2:String) : void;
       
+      function addTankmanFreeSkillS(param1:int, param2:String) : void;
+      
       function dropSkillsS() : void;
+      
+      function showFreeSkillsInfoS() : void;
       
       function changeTankmanPassportS(param1:int, param2:int, param3:int, param4:int, param5:int, param6:int, param7:int) : void;
       
@@ -46,11 +52,15 @@ package net.wg.infrastructure.base.meta
       
       function playCrewSkinSoundS(param1:int) : void;
       
+      function updateOpenedTabIDS(param1:String) : void;
+      
       function as_setCommonData(param1:Object) : void;
       
       function as_setDossierData(param1:Object) : void;
       
       function as_setRetrainingData(param1:Object) : void;
+      
+      function as_setFreeSkillsData(param1:Array) : void;
       
       function as_setSkillsData(param1:Array) : void;
       
@@ -61,5 +71,7 @@ package net.wg.infrastructure.base.meta
       function as_setDocumentsIsChangeEnable(param1:Boolean, param2:String) : void;
       
       function as_setCrewSkinsData(param1:Object) : void;
+      
+      function as_openTab(param1:String) : void;
    }
 }

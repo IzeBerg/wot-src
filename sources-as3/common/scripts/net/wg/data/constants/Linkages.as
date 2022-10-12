@@ -243,8 +243,6 @@ package net.wg.data.constants
       
       public static const STUN_ICON:String = "secondaryStunIconUI";
       
-      public static const WT_STUN_ICON:String = "secondaryWTStunIconUI";
-      
       public static const BLOCKED_ICON:String = "secondaryBlockedIconUI";
       
       public static const SMOKE_ICON:String = "secondarySmokeIconUI";
@@ -301,6 +299,8 @@ package net.wg.data.constants
       
       public static const EPIC_BATTLE_CONSUMABLE_BUTTON:String = "EpicBattleConsumableButtonUI";
       
+      public static const COMP7_CONSUMABLE_BUTTON:String = "Comp7ConsumableButtonUI";
+      
       public static const EVENT_SHELL_BUTTON_BATTLE:String = "EventShellButtonBattleUI";
       
       public static const EVENT_EQUIPMENT_BUTTON:String = "EventEquipmentButtonUI";
@@ -334,6 +334,10 @@ package net.wg.data.constants
       public static const RANKED_TEAM_LEFT_MEMBER_RENDERER:String = "RankedTeamLeftMemberRendererUI";
       
       public static const RANKED_TEAM_RIGHT_MEMBER_RENDERER:String = "RankedTeamRightMemberRendererUI";
+      
+      public static const COMP7_TEAM_LEFT_MEMBER_RENDERER:String = "Comp7TeamLeftMemberRendererUI";
+      
+      public static const COMP7_TEAM_RIGHT_MEMBER_RENDERER:String = "Comp7TeamRightMemberRendererUI";
       
       public static const SCROLLBAR_TEAM_LEFT_MEMBER_RENDERER:String = "ScrollbarTeamLeftMemberRendererUI";
       
@@ -561,8 +565,6 @@ package net.wg.data.constants
       
       public static const CAPTURE_BAR_LINKAGE:String = "TeamCaptureBarUI";
       
-      public static const EVENT_CAPTURE_BAR_LINKAGE:String = "EventTeamCaptureBarUI";
-      
       public static const VEH_CMP_WINDOW_BG_UI:String = "WindowBgUI";
       
       public static const VEH_CMP_BUBBLE_UI:String = "VehCompareBubbleUI";
@@ -722,6 +724,8 @@ package net.wg.data.constants
       public static const HBC_PREM_SHOP_UI:String = "HBC_PremShop_UI";
       
       public static const HBC_SQUAD_UI:String = "HBC_Squad_UI";
+      
+      public static const HBC_PERSONAL_RESERVES_UI:String = "HBC_Personal_Reserves_UI";
       
       public static const HBC_BATTLE_SELECTOR_UI:String = "HBC_BattleSelector_UI";
       
@@ -925,7 +929,7 @@ package net.wg.data.constants
       
       public static const RENTAL_TERM_SLOT_BUTTON_UI:String = "RentalTermSlotButtonUI";
       
-      public static const TANK_TYPE_ICO_UI:String = "tankTypeIco";
+      public static const TANK_TYPE_ICO_UI:String = "TankTypeIcoUI";
       
       public static const GREEN_PLUS_ICON:String = "GreenPlusIcon";
       
@@ -1039,13 +1043,13 @@ package net.wg.data.constants
       
       public static const BATTLE_MATTERS_ANIM_LOADER:String = "BattleMattersAnimLoaderUI";
       
-      public static const WT_EVENT_ENTRY_POINT_ANIM_UI:String = "WTEventEntryPointAnimUI";
+      public static const PLAYERS_PANEL_POI_PROGRESS_BAR_UI:String = "PlayersPanelPoiProgressBarUI";
       
-      public static const WT_EVENT_ENTRY_POINT_STATIC_BG_UI:String = "WTEventEntryPointStaticUI";
+      public static const POI_PROGRESS_BAR_UI:String = "PoiProgressBarUI";
       
-      public static const WT_EVENT_ENTRY_TEXT_INFO_UI:String = "WTEventEntryTextInfoUI";
+      public static const COMP7_BATTLE_LOADING_TIPS_RENDERERS:String = "Comp7BattleTipRenderersUI";
       
-      public static const WT_ENERGY_SPAWN_ENTRY_UI:String = "WTEnergySpawnFlashEntry";
+      public static const BADGE_SUFFIX_ITEM:String = "SuffixItemUI";
        
       
       public function Linkages()

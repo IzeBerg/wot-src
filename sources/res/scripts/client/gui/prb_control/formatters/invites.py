@@ -7,6 +7,7 @@ from gui.impl.gen import R
 from gui.prb_control.formatters import getPrebattleFullDescription, getPrebattleStartTimeString
 from gui.prb_control import prbDispatcherProperty, prbAutoInvitesProperty, prbInvitesProperty
 from gui.prb_control.settings import PRB_INVITE_STATE
+from gui.shared.system_factory import collectPrbInviteHtmlFormatter, registerPrbInvitesHtmlFormatter
 from helpers import dependency
 from helpers.html import escape as htmlEscape
 from messenger.ext import passCensor
@@ -15,7 +16,6 @@ from skeletons.gui.lobby_context import ILobbyContext
 _logger = logging.getLogger(__name__)
 QUEUE_LEAVE_PREFIX = 'QUEUE_'
 PREBATTLE_LEAVE_PREFIX = 'PREBATTLE_'
-LEAVE_CURRENT_EVENT_PREFIX = 'SQUAD_'
 _R_INVITES = R.strings.invites.invites
 
 class _PrbInvitePart(CONST_CONTAINER):
@@ -97,10 +97,7 @@ def getLeaveOrChangeText(funcState, invitePrbType, peripheryID, lobbyContext=Non
     text = ''
     if funcState.doLeaveToAcceptInvite(invitePrbType):
         if funcState.isInLegacy() or funcState.isInUnit():
-            if funcState.entityTypeID == PREBATTLE_TYPE.EVENT and invitePrbType == PREBATTLE_TYPE.EVENT:
-                entityName = LEAVE_CURRENT_EVENT_PREFIX + getPrbName(funcState.entityTypeID)
-            else:
-                entityName = PREBATTLE_LEAVE_PREFIX + getPrbName(funcState.entityTypeID)
+            entityName = PREBATTLE_LEAVE_PREFIX + getPrbName(funcState.entityTypeID)
         elif funcState.isInPreQueue():
             entityName = QUEUE_LEAVE_PREFIX + getPreQueueName(funcState.entityTypeID)
         else:
@@ -140,6 +137,9 @@ class PrbInviteHtmlTextFormatter(InviteFormatter):
     def prbInvites(self):
         return
 
+    def canAcceptInvite(self, invite):
+        return self.prbInvites.canAcceptInvite(invite)
+
     def getIconName(self, invite):
         return ('{0:>s}InviteIcon').format(getPrbName(invite.type, True))
 
@@ -158,7 +158,7 @@ class PrbInviteHtmlTextFormatter(InviteFormatter):
         return _formatInvite(_PrbInvitePart.COMMENT, comment)
 
     def getNote(self, invite):
-        if self.prbInvites.canAcceptInvite(invite):
+        if self.canAcceptInvite(invite):
             note = getLeaveOrChangeText(self.prbDispatcher.getFunctionalState(), invite.type, invite.peripheryID) if self.prbDispatcher else ''
         else:
             note = getAcceptNotAllowedText(invite.type, invite.peripheryID, invite.isActive(), invite.alreadyJoined)
@@ -187,18 +187,15 @@ class PrbInviteHtmlTextFormatter(InviteFormatter):
             result.append(text)
         return ('').join(result)
 
+    def updateTooltips(self, invite, canAccept, message):
+        return message
+
 
 class PrbExternalBattleInviteHtmlTextFormatter(PrbInviteHtmlTextFormatter):
 
     def getComment(self, invite):
         comment = passCensor(invite.comment)
         return _formatInvite(_PrbInvitePart.COMMENT, htmlEscape(comment))
-
-
-def getPrbInviteHtmlFormatter(invite):
-    if invite.type in PREBATTLE_TYPE.EXTERNAL_PREBATTLES:
-        return PrbExternalBattleInviteHtmlTextFormatter()
-    return PrbInviteHtmlTextFormatter()
 
 
 class PrbInviteTitleFormatter(InviteFormatter):
@@ -265,3 +262,10 @@ class PrbAutoInviteInfo(_PrbInviteInfo):
            'isAcceptVisible': True, 
            'isDeclineVisible': False}
         return result
+
+
+registerPrbInvitesHtmlFormatter(PREBATTLE_TYPE.EXTERNAL_PREBATTLES, PrbExternalBattleInviteHtmlTextFormatter)
+
+def getPrbInviteHtmlFormatter(invite):
+    formatter = collectPrbInviteHtmlFormatter(invite.type)
+    return formatter or PrbInviteHtmlTextFormatter()

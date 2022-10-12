@@ -16,3 +16,7 @@ class PrebattleAmmunitionPanelViewMeta(InjectComponentAdaptor):
     def as_setIsInLoadingS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setIsInLoading(value)
+
+    def as_showShadowsS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_showShadows(value)

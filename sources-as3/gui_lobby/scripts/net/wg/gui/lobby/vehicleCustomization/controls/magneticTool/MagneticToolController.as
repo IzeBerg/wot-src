@@ -5,6 +5,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls.magneticTool
    import flash.events.MouseEvent;
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.Values;
+   import net.wg.gui.interfaces.IMagneticClickHandler;
    import net.wg.gui.lobby.vehicleCustomization.CustomizationMainView;
    import net.wg.gui.lobby.vehicleCustomization.controls.CarouselRendererAttachedBase;
    import net.wg.gui.lobby.vehicleCustomization.data.customizationPanel.CustomizationCarouselRendererVO;

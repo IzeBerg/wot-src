@@ -3,7 +3,7 @@ package net.wg.gui.lobby.vehicleCustomization
    import flash.display.Sprite;
    import flash.text.TextField;
    import net.wg.gui.components.controls.CloseButtonText;
-   import net.wg.gui.components.tooltips.helpers.TankTypeIco;
+   import net.wg.gui.components.icons.TankTypeIco;
    import net.wg.gui.interfaces.ISoundButtonEx;
    import net.wg.gui.lobby.vehicleCustomization.data.CustomizationHeaderVO;
    import net.wg.gui.lobby.vehicleCustomization.events.CustomizationEvent;

@@ -54,9 +54,9 @@ package net.wg.gui.lobby.techtree.sub
       
       protected var _dataProvider:IResearchDataProvider;
       
-      protected var _viewWidth:Number = 1280;
+      protected var _viewWidth:int = 1280;
       
-      protected var _viewHeight:Number = 800;
+      protected var _viewHeight:int = 800;
       
       private var _itemNodeClass:Class = null;
       
@@ -189,7 +189,7 @@ package net.wg.gui.lobby.techtree.sub
       {
          var _loc4_:IRenderer = null;
          var _loc3_:Array = this._levelsBuilder.getParentLevelIdxs(param2);
-         var _loc5_:int = _loc3_.length;
+         var _loc5_:uint = _loc3_.length;
          var _loc6_:int = 0;
          while(_loc6_ < _loc5_)
          {
@@ -319,10 +319,10 @@ package net.wg.gui.lobby.techtree.sub
          var _loc3_:NodeIndexFilter = null;
          var _loc4_:int = 0;
          var _loc5_:Vector.<IRenderer> = null;
-         var _loc7_:int = 0;
+         var _loc7_:uint = 0;
          var _loc8_:int = 0;
          this.rGraphics.clearLinesAndArrowsRenderers();
-         var _loc6_:int = this.renderers.length;
+         var _loc6_:uint = this.renderers.length;
          var _loc9_:int = 0;
          while(_loc9_ < _loc6_)
          {
@@ -379,7 +379,7 @@ package net.wg.gui.lobby.techtree.sub
          var _loc11_:Number = _loc4_ + this.xRatio;
          var _loc12_:Number = 0;
          var _loc14_:Number = this.rootRenderer.getOutX() + this.nextLevelOffset;
-         var _loc17_:int = this.renderers.length;
+         var _loc17_:uint = this.renderers.length;
          _loc15_ = 1;
          while(_loc15_ < _loc17_)
          {
@@ -429,7 +429,7 @@ package net.wg.gui.lobby.techtree.sub
          var _loc1_:Vector.<IRenderer> = null;
          var _loc2_:IRenderer = null;
          var _loc4_:int = 0;
-         var _loc6_:int = 0;
+         var _loc6_:uint = 0;
          if(this._onScene == null)
          {
             this._onScene = new RenderersOnScene();
@@ -439,7 +439,7 @@ package net.wg.gui.lobby.techtree.sub
             return;
          }
          this.rGraphics.clearLinesAndArrowsRenderers();
-         var _loc3_:int = this.renderers.length;
+         var _loc3_:uint = this.renderers.length;
          var _loc5_:int = 1;
          while(_loc5_ < _loc3_)
          {
@@ -463,9 +463,9 @@ package net.wg.gui.lobby.techtree.sub
       private function removeItemRenderers() : void
       {
          var _loc1_:Vector.<IRenderer> = null;
-         var _loc3_:int = 0;
+         var _loc3_:uint = 0;
          var _loc4_:int = 0;
-         var _loc2_:int = this._renderers.length;
+         var _loc2_:uint = this._renderers.length;
          var _loc5_:int = 0;
          while(_loc5_ < _loc2_)
          {
@@ -489,7 +489,7 @@ package net.wg.gui.lobby.techtree.sub
          var _loc3_:Object = null;
          var _loc4_:NodeData = null;
          var _loc6_:Array = null;
-         var _loc9_:Number = NaN;
+         var _loc9_:uint = 0;
          var _loc10_:int = 0;
          var _loc11_:int = 0;
          var _loc13_:uint = 0;
@@ -500,12 +500,12 @@ package net.wg.gui.lobby.techtree.sub
          var _loc18_:FakeNode = null;
          var _loc19_:IRenderer = null;
          var _loc20_:IRenderer = null;
-         var _loc21_:int = 0;
-         var _loc22_:int = 0;
+         var _loc21_:uint = 0;
+         var _loc22_:uint = 0;
          var _loc23_:FakeNode = null;
          var _loc5_:Array = this._levelsBuilder.nodesByLevel;
          var _loc7_:Vector.<FakeNode> = new Vector.<FakeNode>();
-         var _loc8_:int = _loc5_.length;
+         var _loc8_:uint = _loc5_.length;
          var _loc12_:Boolean = false;
          _loc10_ = 1;
          while(_loc10_ < _loc8_)
@@ -764,6 +764,11 @@ class RenderersOnScene implements IDisposable
       return _loc2_;
    }
    
+   public function isDisposed() : Boolean
+   {
+      return this._disposed;
+   }
+   
    protected function onDispose() : void
    {
       this._vehicles.splice(0,this._vehicles.length);
@@ -785,10 +790,5 @@ class RenderersOnScene implements IDisposable
          param1.removeItemRenderer(_loc3_);
          _loc5_++;
       }
-   }
-   
-   public function isDisposed() : Boolean
-   {
-      return this._disposed;
    }
 }

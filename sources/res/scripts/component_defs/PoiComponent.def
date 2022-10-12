@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<Properties>
+		<pointID>
+			<Type>UINT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</pointID>
+		<type>
+			<Type>UINT8</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</type>
+		<radius>
+			<Type>FLOAT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</radius>
+		<progress>
+			<Type>FLOAT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<Default>0</Default>
+		</progress>
+		<status>
+			<Type>STATUS_WITH_TIME_INTERVAL</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</status>
+		<invader>
+			<Type>UINT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<Default>0</Default>
+			<DetailLevel>MY_TEAM</DetailLevel>
+		</invader>
+	</Properties>
+	<ofEntity>
+		<Entity/>
+	</ofEntity>
+	<DefaultKeyName>PoiComponent</DefaultKeyName>
+</root>

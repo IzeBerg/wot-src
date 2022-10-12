@@ -25,6 +25,33 @@
 					<row3>0.000000 0.000000 0.000000</row3>
 				</transform>
 			</node>
+			<node>
+				<identifier>lod0</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>n0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>s_wall0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
 		</node>
 	</node>
 	<renderSet>
@@ -83,14 +110,6 @@
 						diffuseMap
 						<Texture>content/Environment/hd_env_EU_028_Flowerpot/hd_env_EU_028_Flowerpot_AM.dds</Texture>
 					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
 				</material>
 				<groupOrigin>-0.000499 0.326212 -0.000286</groupOrigin>
 			</primitiveGroup>
@@ -101,6 +120,6 @@
 		<max>0.536987 1.507540 0.854104</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<geometrySize>24624</geometrySize>
+	<geometrySize>24972</geometrySize>
 	<minUVDensity>0.038026</minUVDensity>
 </root>

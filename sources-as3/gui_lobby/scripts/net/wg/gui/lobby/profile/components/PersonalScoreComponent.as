@@ -4,6 +4,7 @@ package net.wg.gui.lobby.profile.components
    import flash.display.Sprite;
    import flash.events.MouseEvent;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
+   import net.wg.infrastructure.managers.ITooltipMgr;
    
    public class PersonalScoreComponent extends Sprite
    {
@@ -15,16 +16,14 @@ package net.wg.gui.lobby.profile.components
       
       public var tooltipHitArea:MovieClip;
       
+      private var _tooltipMgr:ITooltipMgr;
+      
       public function PersonalScoreComponent()
       {
+         this._tooltipMgr = App.toolTipMgr;
          super();
          this.tooltipHitArea.addEventListener(MouseEvent.ROLL_OVER,this.onTooltipHitAreaRollOverHandler,false,0,true);
          this.tooltipHitArea.addEventListener(MouseEvent.ROLL_OUT,this.onTooltipHitAreaRollOutHandler,false,0,true);
-      }
-      
-      private static function hideToolTip() : void
-      {
-         App.toolTipMgr.hide();
       }
       
       public final function dispose() : void
@@ -51,11 +50,7 @@ package net.wg.gui.lobby.profile.components
             this.tooltipHitArea.removeEventListener(MouseEvent.ROLL_OUT,this.onTooltipHitAreaRollOutHandler);
             this.tooltipHitArea = null;
          }
-      }
-      
-      protected function showToolTip() : void
-      {
-         App.toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.GLOBAL_RATING,null);
+         this._tooltipMgr = null;
       }
       
       private function layout() : void
@@ -78,12 +73,12 @@ package net.wg.gui.lobby.profile.components
       
       private function onTooltipHitAreaRollOutHandler(param1:MouseEvent) : void
       {
-         hideToolTip();
+         this._tooltipMgr.hide();
       }
       
       private function onTooltipHitAreaRollOverHandler(param1:MouseEvent) : void
       {
-         this.showToolTip();
+         this._tooltipMgr.showSpecial(TOOLTIPS_CONSTANTS.GLOBAL_RATING,null);
       }
    }
 }

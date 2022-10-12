@@ -8,16 +8,18 @@ package net.wg.gui.battle.views.consumablesPanel
    import net.wg.gui.battle.components.buttons.BattleToolTipButton;
    import net.wg.gui.battle.views.consumablesPanel.VO.ConsumablesVO;
    import net.wg.gui.battle.views.consumablesPanel.constants.COLOR_STATES;
-   import net.wg.gui.battle.views.consumablesPanel.interfaces.IConsumablesButton;
+   import net.wg.gui.battle.views.consumablesPanel.events.ConsumablesButtonEvent;
+   import net.wg.gui.battle.views.consumablesPanel.interfaces.IBattleEquipmentButtonGlow;
+   import net.wg.gui.battle.views.consumablesPanel.interfaces.IBattleOptionalDeviceButton;
    import net.wg.gui.components.controls.UILoaderAlt;
    
-   public class BattleOptionalDeviceButton extends BattleToolTipButton implements IConsumablesButton
+   public class BattleOptionalDeviceButton extends BattleToolTipButton implements IBattleOptionalDeviceButton
    {
        
       
       public var iconLoader:UILoaderAlt = null;
       
-      public var glow:BattleEquipmentButtonGlow = null;
+      public var glow:IBattleEquipmentButtonGlow = null;
       
       public var hit:MovieClip = null;
       
@@ -53,10 +55,11 @@ package net.wg.gui.battle.views.consumablesPanel
       {
          this.iconLoader.dispose();
          this.iconLoader = null;
-         this.glow.removeEventListener(BattleEquipmentButtonGlow.ON_IDLE_STATE,this.onGlowOnIdleStateHandler);
+         this.glow.removeEventListener(ConsumablesButtonEvent.GLOW_ON_IDLE_STATE,this.onGlowOnIdleStateHandler);
          this.glow.dispose();
          this.glow = null;
          this._consumablesVO = null;
+         this._delayColorTransform = null;
          this.hit = null;
          super.onDispose();
       }
@@ -64,6 +67,20 @@ package net.wg.gui.battle.views.consumablesPanel
       override protected function showSpecialTooltip() : void
       {
          App.toolTipMgr.showSpecial(_tooltipStr,null,this._intCD,state);
+      }
+      
+      public function flushColorTransform() : void
+      {
+         this._lockColorTransform = this._isEmpty;
+         if(this._lockColorTransform)
+         {
+            this.clearColorTransform();
+         }
+         else
+         {
+            this.setColorTransform(this._delayColorTransform);
+            this._delayColorTransform = null;
+         }
       }
       
       public function clearColorTransform() : void
@@ -82,7 +99,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function hideGlow() : void
       {
-         this.glow.removeEventListener(BattleEquipmentButtonGlow.ON_IDLE_STATE,this.onGlowOnIdleStateHandler);
+         this.glow.removeEventListener(ConsumablesButtonEvent.GLOW_ON_IDLE_STATE,this.onGlowOnIdleStateHandler);
          this.glow.hideGlow(false);
       }
       
@@ -144,7 +161,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function showGlow(param1:int) : void
       {
-         this.glow.addEventListener(BattleEquipmentButtonGlow.ON_IDLE_STATE,this.onGlowOnIdleStateHandler);
+         this.glow.addEventListener(ConsumablesButtonEvent.GLOW_ON_IDLE_STATE,this.onGlowOnIdleStateHandler);
          this.glow.showGlow(param1,false);
       }
       
@@ -236,33 +253,15 @@ package net.wg.gui.battle.views.consumablesPanel
          }
          if(this._isUsed)
          {
-            this.glow.removeEventListener(BattleEquipmentButtonGlow.ON_IDLE_STATE,this.onGlowOnIdleStateHandler);
+            this.glow.removeEventListener(ConsumablesButtonEvent.GLOW_ON_IDLE_STATE,this.onGlowOnIdleStateHandler);
             this.setDarkColorTransform();
             this._lockColorTransform = true;
-         }
-      }
-      
-      public function flushColorTransform() : void
-      {
-         this._lockColorTransform = this._isEmpty;
-         if(this._lockColorTransform)
-         {
-            this.clearColorTransform();
-         }
-         else
-         {
-            this.setColorTransform(this._delayColorTransform);
-            this._delayColorTransform = null;
          }
       }
       
       private function setDarkColorTransform() : void
       {
          this.setColorTransform(COLOR_STATES.DARK_COLOR_TRANSFORM);
-      }
-      
-      public function setStage(param1:int) : void
-      {
       }
    }
 }

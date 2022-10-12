@@ -1,5 +1,5 @@
 import BigWorld
-from adisp import process
+from adisp import adisp_process
 from debug_utils import LOG_CURRENT_EXCEPTION, LOG_ERROR, LOG_WARNING, LOG_DEBUG
 from gui.game_control.links import URLMacros
 from gui.promo.promo_logger import PromoLogSourceType
@@ -94,7 +94,7 @@ class OpenInternalBrowser(_OpenBrowser, WebHandlersContainer):
         predefinedHandlers = self.getWebHandler(self._webHandlerName) or []
         return predefinedHandlers + webApiCollection(HangarSoundWebApi)
 
-    @process
+    @adisp_process
     def _doInvoke(self, title):
         self._browserID = yield self.browserCtrl.load(self._url, browserID=self._browserID, title=title, browserSize=self._size, showActionBtn=self._showRefresh, handlers=self._getHandlers(), isSolidBorder=self._isSolidBorder)
         browser = self.browserCtrl.getBrowser(self._browserID)
@@ -132,7 +132,7 @@ class OpenRankedBrowser(OpenInternalBrowser):
 @ReprInjector.withParent()
 class OpenExternalBrowser(_OpenBrowser):
 
-    @process
+    @adisp_process
     def invoke(self, notID, actor=None):
         processedUrl = yield URLMacros().parse(self._url)
         try:

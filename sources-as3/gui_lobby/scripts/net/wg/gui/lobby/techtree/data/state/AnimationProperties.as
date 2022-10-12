@@ -38,6 +38,11 @@ package net.wg.gui.lobby.techtree.data.state
          }
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function setFrom(param1:MovieClip) : void
       {
          var _loc2_:* = null;
@@ -54,11 +59,6 @@ package net.wg.gui.lobby.techtree.data.state
          {
             param1[_loc2_] = this.to[_loc2_];
          }
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

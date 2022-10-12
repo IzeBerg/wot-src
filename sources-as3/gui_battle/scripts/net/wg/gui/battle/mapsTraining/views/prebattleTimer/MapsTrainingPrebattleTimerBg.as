@@ -1,7 +1,7 @@
 package net.wg.gui.battle.mapsTraining.views.prebattleTimer
 {
-   import net.wg.data.constants.generated.PREBATTLE_TIMER;
    import net.wg.gui.battle.views.prebattleTimer.PrebattleTimerBg;
+   import net.wg.utils.StageSizeBoundaries;
    
    public class MapsTrainingPrebattleTimerBg extends PrebattleTimerBg
    {
@@ -18,7 +18,7 @@ package net.wg.gui.battle.mapsTraining.views.prebattleTimer
       
       override public function updateSize(param1:int, param2:int) : void
       {
-         shadow.scaleX = shadow.scaleY = param2 <= PREBATTLE_TIMER.APP_MIN_HEIGHT_BREAKING ? Number(SCALE_SMALL) : Number(SCALE);
+         shadow.scaleX = shadow.scaleY = param2 <= StageSizeBoundaries.HEIGHT_800 ? Number(SCALE_SMALL) : Number(SCALE);
       }
    }
 }

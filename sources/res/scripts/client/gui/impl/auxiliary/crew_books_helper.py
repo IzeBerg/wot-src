@@ -3,7 +3,7 @@ import BigWorld
 from CurrentVehicle import g_currentVehicle
 from account_helpers import AccountSettings
 from account_helpers.AccountSettings import CREW_BOOKS_VIEWED
-from adisp import async
+from adisp import adisp_async
 from nations import INDICES, NONE_INDEX
 from frameworks.wulf.view.array import Array
 from gui.impl.gen import R
@@ -77,7 +77,7 @@ class _CrewBooksViewedCache(object):
 
         return False
 
-    @async
+    @adisp_async
     def onCrewBooksUpdated(self, diff, callback):
         inventory = diff.get('inventory', {})
         if GUI_ITEM_TYPE.CREW_BOOKS in inventory:
@@ -132,7 +132,7 @@ def gainedLevels(tankmanInvId, crewBookCD, itemsCache=None):
 
         def _newSkillsCount(descr):
             if tankman.role == tankman.ROLES.COMMANDER:
-                skillsList = list(skills_constants.ACTIVE_SKILLS)
+                skillsList = list(skills_constants.LEARNABLE_ACTIVE_SKILLS)
             else:
                 skillsList = list(tankman._NON_COMMANDER_SKILLS)
             i = 0

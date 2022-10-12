@@ -49,6 +49,8 @@ package net.wg.gui.lobby.techtree
       
       private static const PREMIUM_VIEW_NOMINAL_WIDTH:int = 1920;
       
+      private static const BREAK_POINT:int = 1366;
+      
       private static const TITLE_CENTER_Y_OFFSET:int = -230;
       
       private static const TITLE_MIN_Y_VALUE:int = 80;
@@ -257,7 +259,7 @@ package net.wg.gui.lobby.techtree
          }
          this.footerBg.width = _width;
          this.footerBg.y = _height;
-         this.backButton.x = App.appWidth >= 1366 ? Number(BACK_BTN_X) : Number(SMALL_SIZE_BACK_BTN_X);
+         this.backButton.x = App.appWidth >= BREAK_POINT ? Number(BACK_BTN_X) : Number(SMALL_SIZE_BACK_BTN_X);
       }
       
       private function onBackBtnClickHandler(param1:ButtonEvent) : void

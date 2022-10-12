@@ -81,45 +81,81 @@ package net.wg.gui.battle.battleloading.renderers
       
       public function BasePlayerItemRenderer(param1:BaseRendererContainer, param2:int, param3:Boolean)
       {
+         super();
          this._colorMgr = App.colorSchemeMgr;
          if(param3)
          {
-            this._vehicleField = param1.vehicleFieldsEnemy[param2];
             this._textField = param1.textFieldsEnemy[param2];
-            this._vehicleIcon = param1.vehicleIconsEnemy[param2];
-            this._vehicleTypeIcon = param1.vehicleTypeIconsEnemy[param2];
-            this._vehicleLevelIcon = param1.vehicleLevelIconsEnemy[param2];
             this._playerActionMarker = param1.playerActionMarkersEnemy[param2];
-            this._icoIGR = param1.icoIGRsEnemy[param2];
             this._icoTester = param1.icoTestersEnemy[param2];
             this._backTester = param1.backTestersEnemy[param2];
             this._badge = param1.badgesEnemy[param2];
+            if(param1.vehicleFieldsEnemy)
+            {
+               this._vehicleField = param1.vehicleFieldsEnemy[param2];
+            }
+            if(param1.vehicleIconsEnemy)
+            {
+               this._vehicleIcon = param1.vehicleIconsEnemy[param2];
+            }
+            if(param1.vehicleTypeIconsEnemy)
+            {
+               this._vehicleTypeIcon = param1.vehicleTypeIconsEnemy[param2];
+            }
+            if(param1.vehicleLevelIconsEnemy)
+            {
+               this._vehicleLevelIcon = param1.vehicleLevelIconsEnemy[param2];
+            }
+            if(param1.icoIGRsEnemy)
+            {
+               this._icoIGR = param1.icoIGRsEnemy[param2];
+            }
          }
          else
          {
-            this._vehicleField = param1.vehicleFieldsAlly[param2];
             this._textField = param1.textFieldsAlly[param2];
-            this._vehicleIcon = param1.vehicleIconsAlly[param2];
-            this._vehicleTypeIcon = param1.vehicleTypeIconsAlly[param2];
-            this._vehicleLevelIcon = param1.vehicleLevelIconsAlly[param2];
             this._playerActionMarker = param1.playerActionMarkersAlly[param2];
-            this._icoIGR = param1.icoIGRsAlly[param2];
             this._icoTester = param1.icoTestersAlly[param2];
             this._backTester = param1.backTestersAlly[param2];
             this.selfBg = param1.selfBgs[param2];
             this._badge = param1.badgesAlly[param2];
+            if(param1.vehicleFieldsAlly)
+            {
+               this._vehicleField = param1.vehicleFieldsAlly[param2];
+            }
+            if(param1.vehicleIconsAlly)
+            {
+               this._vehicleIcon = param1.vehicleIconsAlly[param2];
+            }
+            if(param1.vehicleTypeIconsAlly)
+            {
+               this._vehicleTypeIcon = param1.vehicleTypeIconsAlly[param2];
+            }
+            if(param1.vehicleLevelIconsAlly)
+            {
+               this._vehicleLevelIcon = param1.vehicleLevelIconsAlly[param2];
+            }
+            if(param1.icoIGRsAlly)
+            {
+               this._icoIGR = param1.icoIGRsAlly[param2];
+            }
          }
-         this._defaultVehicleFieldXPosition = this._vehicleField.x;
-         this._defaultVehicleFieldWidth = this._vehicleField.width;
          this._defaultUsernameTFXPosition = this._textField.x;
          this._defaultUsernameTFWidth = this._textField.width;
          this._isEnemy = param3;
-         this._vehicleField.autoSize = TextFieldAutoSize.LEFT;
-         this._vehicleLevelIcon.isCentralizeByX = true;
          this._backTester.visible = false;
-         super();
-         TextFieldEx.setNoTranslate(this._vehicleField,true);
          TextFieldEx.setNoTranslate(this._textField,true);
+         if(this._vehicleField)
+         {
+            this._defaultVehicleFieldXPosition = this._vehicleField.x;
+            this._defaultVehicleFieldWidth = this._vehicleField.width;
+            this._vehicleField.autoSize = TextFieldAutoSize.LEFT;
+            TextFieldEx.setNoTranslate(this._vehicleField,true);
+         }
+         if(this._vehicleLevelIcon)
+         {
+            this._vehicleLevelIcon.isCentralizeByX = true;
+         }
       }
       
       override protected function onDispose() : void
@@ -136,10 +172,7 @@ package net.wg.gui.battle.battleloading.renderers
          this._playerActionMarker = null;
          this._icoIGR = null;
          this._icoTester = null;
-         if(this.model)
-         {
-            this.model = null;
-         }
+         this.model = null;
          super.onDispose();
       }
       
@@ -152,31 +185,7 @@ package net.wg.gui.battle.battleloading.renderers
             this.setBadge();
             this._textField.visible = true;
             App.utils.commons.formatPlayerName(this._textField,App.utils.commons.getUserProps(this.model.playerName,this.model.clanAbbrev,this.model.region,Values.ZERO,this.model.userTags,this.model.playerFakeName),!this.model.isCurrentPlayer,this.model.isCurrentPlayer);
-            this._vehicleField.visible = true;
-            this._vehicleField.text = this.model.vehicleName;
-            this._icoIGR.visible = this.model.isIGR;
-            if(this._icoIGR.visible)
-            {
-               this._icoIGR.imageName = BATTLEATLAS.ICO_IGR;
-               if(this._isEnemy)
-               {
-                  this._icoIGR.x = this._defaultVehicleFieldXPosition;
-                  this._vehicleField.x = this._icoIGR.x + this._icoIGR.width + FIELD_WIDTH_COMPENSATION >> 0;
-               }
-               else
-               {
-                  this._icoIGR.x = this._defaultVehicleFieldXPosition + this._defaultVehicleFieldWidth - this._icoIGR.width >> 0;
-                  this._vehicleField.x = this._icoIGR.x - this._vehicleField.width - FIELD_WIDTH_COMPENSATION >> 0;
-               }
-            }
-            else if(this._isEnemy)
-            {
-               this._vehicleField.x = this._defaultVehicleFieldXPosition;
-            }
-            else
-            {
-               this._vehicleField.x = this._defaultVehicleFieldXPosition + this._defaultVehicleFieldWidth - this._vehicleField.width >> 0;
-            }
+            this.setVehicleField();
             this.setVehicleIcon();
             this.setVehicleType();
             this.setVehicleLevel();
@@ -186,20 +195,35 @@ package net.wg.gui.battle.battleloading.renderers
          }
          else
          {
-            if(this.selfBg != null)
+            if(this.selfBg)
             {
                this.selfBg.visible = false;
             }
-            this._icoIGR.visible = false;
             this._badge.visible = false;
             this._textField.visible = false;
-            this._vehicleField.visible = false;
-            this._vehicleIcon.visible = false;
-            this._vehicleTypeIcon.visible = false;
-            this._vehicleLevelIcon.visible = false;
-            if(this._playerActionMarker != null)
+            if(this._playerActionMarker)
             {
                this._playerActionMarker.action = DEF_PLAYER_ACTION;
+            }
+            if(this._vehicleField)
+            {
+               this._vehicleField.visible = false;
+            }
+            if(this._vehicleIcon)
+            {
+               this._vehicleIcon.visible = false;
+            }
+            if(this._vehicleTypeIcon)
+            {
+               this._vehicleTypeIcon.visible = false;
+            }
+            if(this._vehicleLevelIcon)
+            {
+               this._vehicleLevelIcon.visible = false;
+            }
+            if(this._icoIGR)
+            {
+               this._icoIGR.visible = false;
             }
          }
          super.draw();
@@ -230,8 +254,8 @@ package net.wg.gui.battle.battleloading.renderers
             }
             else
             {
-               this._icoTester.x = FIELD_WIDTH_COMPENSATION + (this._textField.x + this._textField.textWidth + RANKED_BADGE_OFFSET) >> 0;
-               this._backTester.x = -RANKED_BADGE_OFFSET + (this._icoTester.x - RANKED_BADGE_OFFSET + (this._icoTester.width >> 1) - this._backTester.width) >> 0;
+               this._icoTester.x = FIELD_WIDTH_COMPENSATION + RANKED_BADGE_OFFSET + this._textField.x + this._textField.textWidth >> 0;
+               this._backTester.x = -RANKED_BADGE_OFFSET + this._icoTester.x - RANKED_BADGE_OFFSET + (this._icoTester.width >> 1) - this._backTester.width >> 0;
             }
          }
       }
@@ -273,16 +297,54 @@ package net.wg.gui.battle.battleloading.renderers
       
       private function setPlayerActionMarkerState() : void
       {
-         if(this._playerActionMarker != null && this.model.vehicleAction)
+         if(this._playerActionMarker && this.model.vehicleAction)
          {
             this._playerActionMarker.action = this.model.vehicleAction;
             this._playerActionMarker.team = !!this._isEnemy ? ACTION_MARKER_ENEMY : ACTION_MARKER_MYTEAM;
          }
       }
       
+      private function setVehicleField() : void
+      {
+         if(!this._vehicleField)
+         {
+            return;
+         }
+         this._vehicleField.visible = true;
+         this._vehicleField.text = this.model.vehicleName;
+         var _loc1_:Boolean = false;
+         if(this._icoIGR)
+         {
+            _loc1_ = this.model.isIGR;
+            this._icoIGR.visible = _loc1_;
+         }
+         if(_loc1_)
+         {
+            this._icoIGR.imageName = BATTLEATLAS.ICO_IGR;
+            if(this._isEnemy)
+            {
+               this._icoIGR.x = this._defaultVehicleFieldXPosition;
+               this._vehicleField.x = this._icoIGR.x + this._icoIGR.width + FIELD_WIDTH_COMPENSATION >> 0;
+            }
+            else
+            {
+               this._icoIGR.x = this._defaultVehicleFieldXPosition + this._defaultVehicleFieldWidth - this._icoIGR.width >> 0;
+               this._vehicleField.x = this._icoIGR.x - this._vehicleField.width - FIELD_WIDTH_COMPENSATION >> 0;
+            }
+         }
+         else
+         {
+            this._vehicleField.x = this._defaultVehicleFieldXPosition;
+            if(!this._isEnemy)
+            {
+               this._vehicleField.x += this._defaultVehicleFieldWidth - this._vehicleField.width >> 0;
+            }
+         }
+      }
+      
       private function setVehicleLevel() : void
       {
-         if(this._vehicleLevelIcon != null)
+         if(this._vehicleLevelIcon)
          {
             this._vehicleLevelIcon.visible = this.model.vehicleLevel > 0;
             if(this._vehicleLevelIcon.visible)
@@ -295,7 +357,7 @@ package net.wg.gui.battle.battleloading.renderers
       private function setVehicleType() : void
       {
          var _loc1_:String = null;
-         if(this._vehicleTypeIcon != null)
+         if(this._vehicleTypeIcon)
          {
             _loc1_ = BattleLoadingHelper.instance.getVehicleTypeIconId(this.model);
             if(_loc1_)
@@ -312,7 +374,7 @@ package net.wg.gui.battle.battleloading.renderers
       
       private function setVehicleIcon() : void
       {
-         if(this._vehicleIcon != null)
+         if(this._vehicleIcon)
          {
             this._vehicleIcon.visible = true;
             this._vehicleIcon.setImageNames(this.model.vehicleIconName,BATTLEATLAS.UNKNOWN);
@@ -326,13 +388,13 @@ package net.wg.gui.battle.battleloading.renderers
          var _loc1_:Boolean = this.model.isAlive();
          var _loc2_:String = PlayerStatusSchemeName.getSchemeNameForVehicle(this.model.isCurrentPlayer,this.model.isSquadPersonal(),this.model.isTeamKiller(),!_loc1_,!this.model.isReady());
          var _loc3_:IColorScheme = this._colorMgr.getScheme(_loc2_);
-         if(_loc3_)
+         if(_loc3_ && this._vehicleIcon)
          {
             this._vehicleIcon.transform.colorTransform = _loc3_.colorTransform;
          }
          _loc2_ = PlayerStatusSchemeName.getSchemeForVehicleLevel(!_loc1_);
          _loc3_ = this._colorMgr.getScheme(_loc2_);
-         if(_loc3_)
+         if(_loc3_ && this._vehicleLevelIcon)
          {
             this._vehicleLevelIcon.transform.colorTransform = _loc3_.colorTransform;
          }
@@ -341,7 +403,10 @@ package net.wg.gui.battle.battleloading.renderers
          if(_loc3_)
          {
             this._textField.textColor = _loc3_.rgb;
-            this._vehicleField.textColor = _loc3_.rgb;
+            if(this._vehicleField)
+            {
+               this._vehicleField.textColor = _loc3_.rgb;
+            }
          }
          else
          {
@@ -353,7 +418,10 @@ package net.wg.gui.battle.battleloading.renderers
             }
             _loc5_ = !!_loc4_ ? Number(AVAILABLE_TEXT_COLOR) : Number(NOT_AVAILABLE_TEXT_COLOR);
             this._textField.textColor = _loc5_;
-            this._vehicleField.textColor = _loc5_;
+            if(this._vehicleField)
+            {
+               this._vehicleField.textColor = _loc5_;
+            }
          }
       }
    }

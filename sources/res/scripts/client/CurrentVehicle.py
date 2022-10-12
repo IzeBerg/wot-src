@@ -3,7 +3,7 @@ from constants import CustomizationInvData
 from gui.SystemMessages import pushMessagesFromResult
 from items.components.c11n_constants import SeasonType
 from Event import Event, EventManager
-from adisp import process
+from adisp import adisp_process
 from gui import g_tankActiveCamouflage
 from gui.shared.formatters.time_formatters import getTimeLeftStr
 from vehicle_outfit.outfit import Area
@@ -12,7 +12,7 @@ from gui.vehicle_view_states import createState4CurrentVehicle
 from helpers import dependency
 from items.vehicles import VehicleDescr
 from helpers import isPlayerAccount, i18n
-from account_helpers.AccountSettings import AccountSettings, BOOTCAMP_VEHICLE, CURRENT_VEHICLE, ROYALE_VEHICLE, EVENT_VEHICLE
+from account_helpers.AccountSettings import AccountSettings, BOOTCAMP_VEHICLE, CURRENT_VEHICLE, ROYALE_VEHICLE
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.shared.utils.requesters import REQ_CRITERIA
 from gui.shared.formatters import icons
@@ -27,7 +27,8 @@ from skeletons.gui.game_control import IIGRController, IRentalsController
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.gui_items import IGuiItemsFactory
 from skeletons.gui.shared.utils import IHangarSpace
-from skeletons.gui.game_control import IBattleRoyaleController, IBattleRoyaleTournamentController, IBootcampController, IEventBattlesController
+from skeletons.gui.game_control import IBattleRoyaleController, IBattleRoyaleTournamentController
+from skeletons.gui.game_control import IBootcampController
 _MODULES_NAMES = (
  'turret', 'chassis', 'engine', 'gun', 'radio')
 
@@ -136,7 +137,6 @@ class _CurrentVehicle(_CachedVehicle):
     battleRoyaleController = dependency.descriptor(IBattleRoyaleController)
     battleRoyaleTounamentController = dependency.descriptor(IBattleRoyaleTournamentController)
     bootcampController = dependency.descriptor(IBootcampController)
-    __gameEvent = dependency.descriptor(IEventBattlesController)
 
     def __init__(self):
         super(_CurrentVehicle, self).__init__()
@@ -177,8 +177,6 @@ class _CurrentVehicle(_CachedVehicle):
             self._updateVehicle()
 
     def onLocksUpdate(self, locksDiff):
-        if self.__gameEvent.isEventPrbActive():
-            return
         if self.__vehInvID in locksDiff:
             self.refreshModel()
             self._updateVehicle()
@@ -275,6 +273,9 @@ class _CurrentVehicle(_CachedVehicle):
     def isOnlyForEpicBattles(self):
         return self.isPresent() and self.item.isOnlyForEpicBattles
 
+    def isOnlyForComp7Battles(self):
+        return self.isPresent() and self.item.isOnlyForComp7Battles
+
     def isOnlyForRandomBattles(self):
         return self.isPresent() and self.item.isOnlyForRandomBattles
 
@@ -303,7 +304,10 @@ class _CurrentVehicle(_CachedVehicle):
         return self.isPresent() and self.item.isReadyToFight
 
     def isUnsuitableToQueue(self):
-        return self.isPresent() and self.item.isUnsuitableToQueue
+        if self.isPresent():
+            state, _ = self.item.getState()
+            return state == Vehicle.VEHICLE_STATE.UNSUITABLE_TO_QUEUE
+        return False
 
     def isAutoLoadFull(self):
         return not self.isPresent() or self.item.isAutoLoadFull()
@@ -324,11 +328,8 @@ class _CurrentVehicle(_CachedVehicle):
         vehicle = self.itemsCache.items.getVehicle(vehInvID)
         vehicle = vehicle if self.__isVehicleSuitable(vehicle) else None
         if vehicle is None:
-            criteria = REQ_CRITERIA.INVENTORY
-            criteria |= criteria | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP
-            criteria |= ~REQ_CRITERIA.VEHICLE.BATTLE_ROYALE
-            criteria |= ~REQ_CRITERIA.VEHICLE.EVENT
-            invVehs = self.itemsCache.items.getVehicles(criteria=criteria)
+            vehiclesCriteria = REQ_CRITERIA.INVENTORY | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP | ~REQ_CRITERIA.VEHICLE.BATTLE_ROYALE
+            invVehs = self.itemsCache.items.getVehicles(criteria=vehiclesCriteria)
 
             def notEvent(x, y):
                 if x.isOnlyForEventBattles and not y.isOnlyForEventBattles:
@@ -397,8 +398,6 @@ class _CurrentVehicle(_CachedVehicle):
             AccountSettings.setFavorites(ROYALE_VEHICLE, vehInvID)
         elif self.isInBootcamp():
             AccountSettings.setFavorites(BOOTCAMP_VEHICLE, vehInvID)
-        elif self.isEvent():
-            AccountSettings.setFavorites(EVENT_VEHICLE, vehInvID)
         else:
             AccountSettings.setFavorites(CURRENT_VEHICLE, vehInvID)
         self.refreshModel()
@@ -617,7 +616,7 @@ class _CurrentPreviewVehicle(_CachedVehicle):
 
         return False
 
-    @process
+    @adisp_process
     def installComponent(self, newId):
         newComponentItem = self.itemsCache.items.getItemByCD(newId)
         Waiting.show('applyModule', overlapsUI=False)

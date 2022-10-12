@@ -4,7 +4,6 @@ class ARTEFACTS(object):
     ANTIFRAGMENTATIONLINING_NAME = '#artefacts:antifragmentationLining/name'
     ANTIFRAGMENTATIONLINING_SHORT_SPECIAL = '#artefacts:antifragmentationLining/short_special'
     ANTIFRAGMENTATIONLINING_LONG_SPECIAL = '#artefacts:antifragmentationLining/long_special'
-    ANTIFRAGMENTATIONLINING_WT_NAME = '#artefacts:antifragmentationLining_wt/name'
     ANTIFRAGMENTATIONLINING_TIER1_NAME = '#artefacts:antifragmentationLining_tier1/name'
     ANTIFRAGMENTATIONLINING_TIER2_NAME = '#artefacts:antifragmentationLining_tier2/name'
     ANTIFRAGMENTATIONLINING_TIER3_NAME = '#artefacts:antifragmentationLining_tier3/name'
@@ -81,7 +80,6 @@ class ARTEFACTS(object):
     IMPROVEDCONFIGURATION_EFFECT_AMMOBAYFUELENGINERESTORATION = '#artefacts:improvedConfiguration/effect/ammoBayFuelEngineRestoration'
     IMPROVEDCONFIGURATION_SHORT_SPECIAL = '#artefacts:improvedConfiguration/short_special'
     IMPROVEDCONFIGURATION_LONG_SPECIAL = '#artefacts:improvedConfiguration/long_special'
-    EXTRAHEALTHRESERVE_WT_NAME = '#artefacts:extraHealthReserve_wt/name'
     EXTRAHEALTHRESERVE_NAME = '#artefacts:extraHealthReserve/name'
     EXTRAHEALTHRESERVE_TIER3_NAME = '#artefacts:extraHealthReserve_tier3/name'
     EXTRAHEALTHRESERVE_TIER2_NAME = '#artefacts:extraHealthReserve_tier2/name'
@@ -91,7 +89,6 @@ class ARTEFACTS(object):
     EXTRAHEALTHRESERVE_EFFECT_CHASSISRESTORATION = '#artefacts:extraHealthReserve/effect/chassisRestoration'
     EXTRAHEALTHRESERVE_ADDITIONAL_DESCR = '#artefacts:extraHealthReserve/additional_descr'
     IMPROVEDRADIOCOMMUNICATION_NAME = '#artefacts:improvedRadioCommunication/name'
-    IMPROVEDRADIOCOMMUNICATION_WT_NAME = '#artefacts:improvedRadioCommunication_wt/name'
     IMPROVEDRADIOCOMMUNICATION_SHORT_SPECIAL = '#artefacts:improvedRadioCommunication/short_special'
     IMPROVEDRADIOCOMMUNICATION_LONG_SPECIAL = '#artefacts:improvedRadioCommunication/long_special'
     IMPROVEDROTATIONMECHANISM_NAME = '#artefacts:improvedRotationMechanism/name'
@@ -387,6 +384,7 @@ class ARTEFACTS(object):
     CREWBATTLEBOOSTER_DESCR_BOOST = '#artefacts:crewBattleBooster/descr/boost'
     CREWBATTLEBOOSTER_DESCR_PERK = '#artefacts:crewBattleBooster/descr/perk'
     CREWBATTLEBOOSTER_DESCR_SKILL = '#artefacts:crewBattleBooster/descr/skill'
+    CREWBATTLEBOOSTER_DESCR_COMMANDER_SPECIAL = '#artefacts:crewBattleBooster/descr/commander_special'
     CAMOUFLAGEBATTLEBOOSTER_NAME = '#artefacts:camouflageBattleBooster/name'
     CAMOUFLAGEBATTLEBOOSTER_ACTION_PERK = '#artefacts:camouflageBattleBooster/action/perk'
     CAMOUFLAGEBATTLEBOOSTER_ACTION_BOOST = '#artefacts:camouflageBattleBooster/action/boost'
@@ -413,8 +411,8 @@ class ARTEFACTS(object):
     FIREFIGHTINGBATTLEBOOSTER_SHORT_SPECIAL = '#artefacts:fireFightingBattleBooster/short_special'
     FIREFIGHTINGBATTLEBOOSTER_LONG_SPECIAL = '#artefacts:fireFightingBattleBooster/long_special'
     SIXTHSENSEBATTLEBOOSTER_NAME = '#artefacts:sixthSenseBattleBooster/name'
-    SIXTHSENSEBATTLEBOOSTER_ACTION_PERK = '#artefacts:sixthSenseBattleBooster/action/perk'
-    SIXTHSENSEBATTLEBOOSTER_ACTION_BOOST = '#artefacts:sixthSenseBattleBooster/action/boost'
+    SIXTHSENSEBATTLEBOOSTER_ACTION_BUILTINPERKBOOSTER = '#artefacts:sixthSenseBattleBooster/action/builtinPerkBooster'
+    SIXTHSENSEBATTLEBOOSTER_DESCRIPTION_BUILTINPERKBOOSTER = '#artefacts:sixthSenseBattleBooster/description/builtinPerkBooster'
     SIXTHSENSEBATTLEBOOSTER_SHORT_SPECIAL = '#artefacts:sixthSenseBattleBooster/short_special'
     SIXTHSENSEBATTLEBOOSTER_LONG_SPECIAL = '#artefacts:sixthSenseBattleBooster/long_special'
     RANCOROUSBATTLEBOOSTER_NAME = '#artefacts:rancorousBattleBooster/name'
@@ -530,6 +528,8 @@ class ARTEFACTS(object):
     STEALTHRADAR_DESCR = '#artefacts:stealthRadar/descr'
     STEALTHRADAR_SHORT_DESCR = '#artefacts:stealthRadar/short_descr'
     STEALTHRADAR_LONG_DESCR = '#artefacts:stealthRadar/long_descr'
+    EXAMPLEABILITY_NAME = '#artefacts:exampleAbility/name'
+    EXAMPLEABILITY_DESCR = '#artefacts:exampleAbility/descr'
     ACTIONSTUB_NAME = '#artefacts:actionStub/name'
     SHELLS_CONSUMABLES_SWITCH_NAME = '#artefacts:shells_consumables_switch/name'
     OPT_DEV_BOOSTERS_SWITCH_NAME = '#artefacts:opt_dev_boosters_switch/name'
@@ -757,100 +757,41 @@ class ARTEFACTS(object):
     FORT_AOE_ARTILLERY_NAME = '#artefacts:fort_aoe_artillery/name'
     FORT_AOE_ARTILLERY_SHORTDESCR = '#artefacts:fort_aoe_artillery/shortDescr'
     FORT_AOE_ARTILLERY_LONGDESCR = '#artefacts:fort_aoe_artillery/longDescr'
-    BUILTINLARGEMEDKIT_WT_NAME = '#artefacts:builtinLargeMedkit_wt/name'
-    BUILTINLARGEMEDKIT_WT_DESCR = '#artefacts:builtinLargeMedkit_wt/descr'
-    BUILTINLARGEMEDKIT_WT_SHORT_SPECIAL = '#artefacts:builtinLargeMedkit_wt/short_special'
-    BUILTINLARGEMEDKIT_WT_LONG_SPECIAL = '#artefacts:builtinLargeMedkit_wt/long_special'
-    BUILTINLARGEMEDKIT_WT_STUNDISABLED_DESCR = '#artefacts:builtinLargeMedkit_wt/stunDisabled/descr'
-    BUILTINLARGEMEDKIT_WT_ONUSE = '#artefacts:builtinLargeMedkit_wt/onUse'
-    BUILTINLARGEMEDKIT_WT_ALWAYS = '#artefacts:builtinLargeMedkit_wt/always'
-    BUILTINLARGEMEDKIT_WT_RESTRICTION = '#artefacts:builtinLargeMedkit_wt/restriction'
-    BUILTINREPAIRKIT_WT_NAME = '#artefacts:builtinRepairkit_wt/name'
-    BUILTINREPAIRKIT_WT_DESCR = '#artefacts:builtinRepairkit_wt/descr'
-    BUILTINREPAIRKIT_WT_LONG_SPECIAL = '#artefacts:builtinRepairkit_wt/long_special'
-    BUILTINREPAIRKIT_WT_ONUSE = '#artefacts:builtinRepairkit_wt/onUse'
-    BUILTINREPAIRKIT_WT_ALWAYS = '#artefacts:builtinRepairkit_wt/always'
-    BUILTINREPAIRKIT_WT_RESTRICTION = '#artefacts:builtinRepairkit_wt/restriction'
-    BUILTINAFTERBURNING_WT_NAME = '#artefacts:builtinAfterburning_wt/name'
-    BUILTINAFTERBURNING_WT_DESCR = '#artefacts:builtinAfterburning_wt/descr'
-    BUILTINAFTERBURNING_WT_SHORT_SPECIAL = '#artefacts:builtinAfterburning_wt/short_special'
-    BUILTINAFTERBURNING_WT_LONG_SPECIAL = '#artefacts:builtinAfterburning_wt/long_special'
-    BUILTINAFTERBURNING_WT_ONUSE = '#artefacts:builtinAfterburning_wt/onUse'
-    BUILTINAFTERBURNING_WT_ALWAYS = '#artefacts:builtinAfterburning_wt/always'
-    BUILTINAFTERBURNING_WT_RESTRICTION = '#artefacts:builtinAfterburning_wt/restriction'
-    BUILTINAFTERBURNING_WT_FEATURES = '#artefacts:builtinAfterburning_wt/features'
-    BUILTININSTANTSTUNSHOOT_WT_NAME = '#artefacts:builtinInstantStunShoot_wt/name'
-    BUILTININSTANTSTUNSHOOT_WT_DESCR = '#artefacts:builtinInstantStunShoot_wt/descr'
-    BUILTININSTANTSTUNSHOOT_WT_SHORT_SPECIAL = '#artefacts:builtinInstantStunShoot_wt/short_special'
-    BUILTININSTANTSTUNSHOOT_WT_LONG_SPECIAL = '#artefacts:builtinInstantStunShoot_wt/long_special'
-    BUILTININSTANTSTUNSHOOT_WT_ONUSE = '#artefacts:builtinInstantStunShoot_wt/onUse'
-    BUILTININSTANTSTUNSHOOT_WT_ALWAYS = '#artefacts:builtinInstantStunShoot_wt/always'
-    BUILTININSTANTSTUNSHOOT_WT_RESTRICTION = '#artefacts:builtinInstantStunShoot_wt/restriction'
-    BUILTININSTANTSTUNSHOOT_WT_FEATURES = '#artefacts:builtinInstantStunShoot_wt/features'
-    BUILTINIMPULSE_WT_NAME = '#artefacts:builtinImpulse_wt/name'
-    BUILTINIMPULSE_WT_DESCR = '#artefacts:builtinImpulse_wt/descr'
-    BUILTINIMPULSE_WT_SHORT_SPECIAL = '#artefacts:builtinImpulse_wt/short_special'
-    BUILTINIMPULSE_WT_LONG_SPECIAL = '#artefacts:builtinImpulse_wt/long_special'
-    BUILTINIMPULSE_WT_ONUSE = '#artefacts:builtinImpulse_wt/onUse'
-    BUILTINIMPULSE_WT_ALWAYS = '#artefacts:builtinImpulse_wt/always'
-    BUILTINIMPULSE_WT_RESTRICTION = '#artefacts:builtinImpulse_wt/restriction'
-    BUILTINIMPULSE_WT_FEATURES = '#artefacts:builtinImpulse_wt/features'
-    BUILTINSHIELD_WT_NAME = '#artefacts:builtinShield_wt/name'
-    BUILTINSHIELD_WT_DESCR = '#artefacts:builtinShield_wt/descr'
-    BUILTINSHIELD_WT_SHORT_SPECIAL = '#artefacts:builtinShield_wt/short_special'
-    BUILTINSHIELD_WT_LONG_SPECIAL = '#artefacts:builtinShield_wt/long_special'
-    BUILTINSHIELD_WT_ONUSE = '#artefacts:builtinShield_wt/onUse'
-    BUILTINSHIELD_WT_ALWAYS = '#artefacts:builtinShield_wt/always'
-    BUILTINSHIELD_WT_RESTRICTION = '#artefacts:builtinShield_wt/restriction'
-    BUILTINSHIELD_WT_FEATURES = '#artefacts:builtinShield_wt/features'
-    BUILTINSTRONGHOLD_WT_NAME = '#artefacts:builtinStronghold_wt/name'
-    BUILTINSTRONGHOLD_WT_DESCR = '#artefacts:builtinStronghold_wt/descr'
-    BUILTINSTRONGHOLD_WT_SHORT_SPECIAL = '#artefacts:builtinStronghold_wt/short_special'
-    BUILTINSTRONGHOLD_WT_LONG_SPECIAL = '#artefacts:builtinStronghold_wt/long_special'
-    BUILTINSTRONGHOLD_WT_ONUSE = '#artefacts:builtinStronghold_wt/onUse'
-    BUILTINSTRONGHOLD_WT_ALWAYS = '#artefacts:builtinStronghold_wt/always'
-    BUILTINSTRONGHOLD_WT_RESTRICTION = '#artefacts:builtinStronghold_wt/restriction'
-    BUILTINSTRONGHOLD_WT_FEATURES = '#artefacts:builtinStronghold_wt/features'
-    BUILTINTELEPORT_WT_NAME = '#artefacts:builtinTeleport_wt/name'
-    BUILTINTELEPORT_WT_DESCR = '#artefacts:builtinTeleport_wt/descr'
-    BUILTINTELEPORT_WT_SHORT_SPECIAL = '#artefacts:builtinTeleport_wt/short_special'
-    BUILTINTELEPORT_WT_LONG_SPECIAL = '#artefacts:builtinTeleport_wt/long_special'
-    BUILTINTELEPORT_WT_ONUSE = '#artefacts:builtinTeleport_wt/onUse'
-    BUILTINTELEPORT_WT_ALWAYS = '#artefacts:builtinTeleport_wt/always'
-    BUILTINTELEPORT_WT_RESTRICTION = '#artefacts:builtinTeleport_wt/restriction'
-    BUILTINTELEPORT_WT_FEATURES = '#artefacts:builtinTeleport_wt/features'
-    BUILTINCHARGEDSHOT_WT_NAME = '#artefacts:builtinChargedShot_wt/name'
-    BUILTINCHARGEDSHOT_WT_DESCR = '#artefacts:builtinChargedShot_wt/descr'
-    BUILTINCHARGEDSHOT_WT_SHORT_SPECIAL = '#artefacts:builtinChargedShot_wt/short_special'
-    BUILTINCHARGEDSHOT_WT_LONG_SPECIAL = '#artefacts:builtinChargedShot_wt/long_special'
-    BUILTINCHARGEDSHOT_WT_ONUSE = '#artefacts:builtinChargedShot_wt/onUse'
-    BUILTINCHARGEDSHOT_WT_ALWAYS = '#artefacts:builtinChargedShot_wt/always'
-    BUILTINCHARGEDSHOT_WT_RESTRICTION = '#artefacts:builtinChargedShot_wt/restriction'
-    BUILTINCHARGEDSHOT_WT_FEATURES = '#artefacts:builtinChargedShot_wt/features'
-    BUILTINDROP_WT_NAME = '#artefacts:builtinDrop_wt/name'
-    BUILTINDROP_WT_DESCR = '#artefacts:builtinDrop_wt/descr'
-    BUILTINDROP_WT_SHORT_SPECIAL = '#artefacts:builtinDrop_wt/short_special'
-    BUILTINDROP_WT_LONG_SPECIAL = '#artefacts:builtinDrop_wt/long_special'
-    BUILTINDROP_WT_ONUSE = '#artefacts:builtinDrop_wt/onUse'
-    BUILTINDROP_WT_ALWAYS = '#artefacts:builtinDrop_wt/always'
-    BUILTINDROP_WT_RESTRICTION = '#artefacts:builtinDrop_wt/restriction'
-    BUILTINDROP_WT_FEATURES = '#artefacts:builtinDrop_wt/features'
-    BUILTINABSORB_WT_NAME = '#artefacts:builtinAbsorb_wt/name'
-    BUILTINABSORB_WT_DESCR = '#artefacts:builtinAbsorb_wt/descr'
-    BUILTINABSORB_WT_SHORT_SPECIAL = '#artefacts:builtinAbsorb_wt/short_special'
-    BUILTINABSORB_WT_LONG_SPECIAL = '#artefacts:builtinAbsorb_wt/long_special'
-    BUILTINABSORB_WT_ONUSE = '#artefacts:builtinAbsorb_wt/onUse'
-    BUILTINABSORB_WT_ALWAYS = '#artefacts:builtinAbsorb_wt/always'
-    BUILTINABSORB_WT_RESTRICTION = '#artefacts:builtinAbsorb_wt/restriction'
-    BUILTINABSORB_WT_FEATURES = '#artefacts:builtinAbsorb_wt/features'
-    BUILTINOVERLOAD_WT_NAME = '#artefacts:builtinOverload_wt/name'
-    BUILTINOVERLOAD_WT_DESCR = '#artefacts:builtinOverload_wt/descr'
-    BUILTINOVERLOAD_WT_SHORT_SPECIAL = '#artefacts:builtinOverload_wt/short_special'
-    BUILTINOVERLOAD_WT_LONG_SPECIAL = '#artefacts:builtinOverload_wt/long_special'
-    BUILTINOVERLOAD_WT_ONUSE = '#artefacts:builtinOverload_wt/onUse'
-    BUILTINOVERLOAD_WT_ALWAYS = '#artefacts:builtinOverload_wt/always'
-    BUILTINOVERLOAD_WT_RESTRICTION = '#artefacts:builtinOverload_wt/restriction'
-    BUILTINOVERLOAD_WT_FEATURES = '#artefacts:builtinOverload_wt/features'
+    COMP7_AOE_HEAL_NAME = '#artefacts:comp7_aoe_heal/name'
+    COMP7_AOE_HEAL_DESCR_ACTIVE = '#artefacts:comp7_aoe_heal/descr/active'
+    COMP7_ALLY_SUPPORT_NAME = '#artefacts:comp7_ally_support/name'
+    COMP7_ALLY_SUPPORT_DESCR_ACTIVE = '#artefacts:comp7_ally_support/descr/active'
+    COMP7_HUNTER_NAME = '#artefacts:comp7_hunter/name'
+    COMP7_HUNTER_DESCR_ACTIVE = '#artefacts:comp7_hunter/descr/active'
+    COMP7_HUNTER_DESCR_PASSIVE = '#artefacts:comp7_hunter/descr/passive'
+    COMP7_CONCENTRATION_NAME = '#artefacts:comp7_concentration/name'
+    COMP7_CONCENTRATION_DESCR_ACTIVE = '#artefacts:comp7_concentration/descr/active'
+    COMP7_BERSERK_NAME = '#artefacts:comp7_berserk/name'
+    COMP7_BERSERK_DESCR_ACTIVE = '#artefacts:comp7_berserk/descr/active'
+    COMP7_AOE_INSPIRE_NAME = '#artefacts:comp7_aoe_inspire/name'
+    COMP7_AOE_INSPIRE_DESCR_ACTIVE = '#artefacts:comp7_aoe_inspire/descr/active'
+    COMP7_REDLINE_NAME = '#artefacts:comp7_redline/name'
+    COMP7_REDLINE_DESCR_ACTIVE = '#artefacts:comp7_redline/descr/active'
+    COMP7_FAST_RECHARGE_NAME = '#artefacts:comp7_fast_recharge/name'
+    COMP7_FAST_RECHARGE_DESCR_ACTIVE = '#artefacts:comp7_fast_recharge/descr/active'
+    COMP7_JUGGERNAUT_NAME = '#artefacts:comp7_juggernaut/name'
+    COMP7_JUGGERNAUT_DESCR_ACTIVE = '#artefacts:comp7_juggernaut/descr/active'
+    COMP7_SURE_SHOT_NAME = '#artefacts:comp7_sure_shot/name'
+    COMP7_SURE_SHOT_DESCR_ACTIVE = '#artefacts:comp7_sure_shot/descr/active'
+    COMP7_SNIPER_NAME = '#artefacts:comp7_sniper/name'
+    COMP7_SNIPER_DESCR_ACTIVE = '#artefacts:comp7_sniper/descr/active'
+    COMP7_RISKY_ATTACK_NAME = '#artefacts:comp7_risky_attack/name'
+    COMP7_RISKY_ATTACK_DESCR_ACTIVE = '#artefacts:comp7_risky_attack/descr/active'
+    COMP7_RECON_NAME = '#artefacts:comp7_recon/name'
+    COMP7_RECON_DESCR_ACTIVE = '#artefacts:comp7_recon/descr/active'
+    COMP7_AGGRESSIVE_DETECTION_NAME = '#artefacts:comp7_aggressive_detection/name'
+    COMP7_AGGRESSIVE_DETECTION_DESCR_ACTIVE = '#artefacts:comp7_aggressive_detection/descr/active'
+    COMP7_MARCH_NAME = '#artefacts:comp7_march/name'
+    COMP7_MARCH_DESCR_ACTIVE = '#artefacts:comp7_march/descr/active'
+    POI_RADAR_NAME = '#artefacts:poi_radar/name'
+    POI_RADAR_DESCR = '#artefacts:poi_radar/descr'
+    POI_ARTILLERY_AOE_NAME = '#artefacts:poi_artillery_aoe/name'
+    POI_ARTILLERY_AOE_DESCR = '#artefacts:poi_artillery_aoe/descr'
     ALL_GAIN_ENUM = (
      IMPROVEDCONFIGURATIONBATTLEBOOSTER_GAIN_SIMPLE,
      IMPROVEDCONFIGURATIONBATTLEBOOSTER_GAIN_DELUXE,
@@ -881,14 +822,15 @@ class ARTEFACTS(object):
      SMOOTHDRIVINGBATTLEBOOSTER_ACTION_BOOST,
      FIREFIGHTINGBATTLEBOOSTER_ACTION_PERK,
      FIREFIGHTINGBATTLEBOOSTER_ACTION_BOOST,
-     SIXTHSENSEBATTLEBOOSTER_ACTION_PERK,
-     SIXTHSENSEBATTLEBOOSTER_ACTION_BOOST,
+     SIXTHSENSEBATTLEBOOSTER_ACTION_BUILTINPERKBOOSTER,
      RANCOROUSBATTLEBOOSTER_ACTION_PERK,
      RANCOROUSBATTLEBOOSTER_ACTION_BOOST,
      PEDANTBATTLEBOOSTER_ACTION_PERK,
      PEDANTBATTLEBOOSTER_ACTION_BOOST,
      LASTEFFORTBATTLEBOOSTER_ACTION_PERK,
      LASTEFFORTBATTLEBOOSTER_ACTION_BOOST)
+    ALL_DESCRIPTION_ENUM = (
+     SIXTHSENSEBATTLEBOOSTER_DESCRIPTION_BUILTINPERKBOOSTER,)
 
     @classmethod
     def getDeviceGainForBattleBooster(cls, boosterName, deviceType):
@@ -903,6 +845,15 @@ class ARTEFACTS(object):
     def getCrewActionForBattleBooster(cls, crewBoosterName, crewFactor):
         outcome = ('#artefacts:{}/action/{}').format(crewBoosterName, crewFactor)
         if outcome not in cls.ALL_ACTION_ENUM:
+            LOG_WARNING(('Localization key "{}" not found').format(outcome))
+            return None
+        else:
+            return outcome
+
+    @classmethod
+    def getDescriptionForBattleBooster(cls, crewBoosterName, crewFactor):
+        outcome = ('#artefacts:{}/description/{}').format(crewBoosterName, crewFactor)
+        if outcome not in cls.ALL_DESCRIPTION_ENUM:
             LOG_WARNING(('Localization key "{}" not found').format(outcome))
             return None
         else:

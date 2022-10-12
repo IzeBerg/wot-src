@@ -54,6 +54,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.data.constants.generated.DUAL_GUN_MARKER_STATE;
    import net.wg.data.constants.generated.EQUIPMENT_ITEM_TARGET;
    import net.wg.data.constants.generated.GUN_MARKER_VIEW_CONSTANTS;
+   import net.wg.data.constants.generated.MINIMAPENTRIES_CONSTANTS;
    import net.wg.data.constants.generated.MISSIONS_STATES;
    import net.wg.data.constants.generated.QUEST_PROGRESS_BASE;
    import net.wg.data.constants.generated.ROOT_SWF_CONSTANTS;
@@ -349,7 +350,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.controls.ToggleRenderer;
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.components.controls.UILoaderCut;
-   import net.wg.gui.components.controls.UnitCommanderStats;
    import net.wg.gui.components.controls.UserNameField;
    import net.wg.gui.components.controls.UserNameFieldShadowColor;
    import net.wg.gui.components.controls.VO.ActionPriceVO;
@@ -496,6 +496,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.icons.PlayerActionMarker;
    import net.wg.gui.components.icons.PlayerActionMarkerController;
    import net.wg.gui.components.icons.SquadIcon;
+   import net.wg.gui.components.icons.TankTypeIco;
    import net.wg.gui.components.interfaces.ICounterComponent;
    import net.wg.gui.components.interfaces.INewCounter;
    import net.wg.gui.components.interfaces.IPaginatorArrowsController;
@@ -625,7 +626,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.tooltips.VO.ToolTipBlockVO;
    import net.wg.gui.components.tooltips.VO.ToolTipStatusColorsVO;
    import net.wg.gui.components.tooltips.VO.UnitCommandVO;
-   import net.wg.gui.components.tooltips.helpers.TankTypeIco;
    import net.wg.gui.components.tooltips.helpers.Utils;
    import net.wg.gui.components.tooltips.inblocks.TooltipInBlocks;
    import net.wg.gui.components.tooltips.inblocks.TooltipInBlocksUtils;
@@ -662,6 +662,12 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.components.tooltips.layout.BaseTooltipLayout;
    import net.wg.gui.components.tooltips.layout.TooltipHorizontalLayout;
    import net.wg.gui.components.tooltips.layout.TooltipVerticalLayout;
+   import net.wg.gui.components.vehicleHitArea.VehicleHitArea;
+   import net.wg.gui.components.vehicleHitArea.VehicleHitAreaComponent;
+   import net.wg.gui.components.vehicleStatus.VehicleStatus;
+   import net.wg.gui.components.vehicleStatus.VehicleStatusMsg;
+   import net.wg.gui.components.vehicleStatus.data.VehicleStatusVO;
+   import net.wg.gui.components.vehicleStatus.events.VehicleStatusEvent;
    import net.wg.gui.components.windows.Window;
    import net.wg.gui.components.windows.WindowEvent;
    import net.wg.gui.data.Aliases;
@@ -689,12 +695,15 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.events.ViewStackContentEvent;
    import net.wg.gui.events.ViewStackEvent;
    import net.wg.gui.gameloading.GameLoading;
+   import net.wg.gui.gameloading.GameLoadingLogos;
+   import net.wg.gui.gameloading.LoadingLogo;
    import net.wg.gui.interfaces.IButtonIconLoader;
    import net.wg.gui.interfaces.IButtonIconTextTransparent;
    import net.wg.gui.interfaces.IContentSize;
    import net.wg.gui.interfaces.IGameLoading;
    import net.wg.gui.interfaces.IGroupedControl;
    import net.wg.gui.interfaces.IHighlighted;
+   import net.wg.gui.interfaces.IMagneticClickHandler;
    import net.wg.gui.interfaces.ISettingsBase;
    import net.wg.gui.interfaces.ISoundButton;
    import net.wg.gui.interfaces.ISoundButtonEx;
@@ -749,7 +758,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.settings.SoundSettingsBase;
    import net.wg.gui.lobby.settings.SoundSpecialForm;
    import net.wg.gui.lobby.settings.SoundVivoxForm;
-   import net.wg.gui.lobby.settings.components.EventSettingLabel;
    import net.wg.gui.lobby.settings.components.KeyInput;
    import net.wg.gui.lobby.settings.components.KeysItemRenderer;
    import net.wg.gui.lobby.settings.components.KeysScrollingList;
@@ -817,8 +825,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.settings.vo.config.marker.MarkerDeadSettingsDataVo;
    import net.wg.gui.lobby.settings.vo.config.marker.MarkerEnemySettingsDataVo;
    import net.wg.gui.lobby.settings.vo.config.marker.MarkerSettingsDataVo;
-   import net.wg.gui.login.impl.components.LoginLogos;
-   import net.wg.gui.login.impl.ev.LoginLogosEvent;
    import net.wg.gui.popover.AcousticButton;
    import net.wg.gui.popover.AcousticPopover;
    import net.wg.gui.popover.data.AcousticItemData;
@@ -897,7 +903,6 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.managers.pool.ComponentsPool;
    import net.wg.infrastructure.managers.pool.Pool;
    import net.wg.infrastructure.managers.pool.PoolManager;
-   import net.wg.infrastructure.uilogging.LogLevels;
    import net.wg.infrastructure.uilogging.base.BaseLogger;
    import net.wg.infrastructure.uilogging.base.FlowLogger;
    import net.wg.infrastructure.uilogging.base.MetricsLogger;
@@ -985,6 +990,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_DATA_CONSTANTS_GENERATED_EQUIPMENT_ITEM_TARGET:Class = EQUIPMENT_ITEM_TARGET;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_GUN_MARKER_VIEW_CONSTANTS:Class = GUN_MARKER_VIEW_CONSTANTS;
+      
+      public static const NET_WG_DATA_CONSTANTS_GENERATED_MINIMAPENTRIES_CONSTANTS:Class = MINIMAPENTRIES_CONSTANTS;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_MISSIONS_STATES:Class = MISSIONS_STATES;
       
@@ -1610,8 +1617,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_UILOADERCUT:Class = UILoaderCut;
       
-      public static const NET_WG_GUI_COMPONENTS_CONTROLS_UNITCOMMANDERSTATS:Class = UnitCommanderStats;
-      
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_USERNAMEFIELD:Class = UserNameField;
       
       public static const NET_WG_GUI_COMPONENTS_CONTROLS_USERNAMEFIELDSHADOWCOLOR:Class = UserNameFieldShadowColor;
@@ -1904,6 +1909,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_ICONS_SQUADICON:Class = SquadIcon;
       
+      public static const NET_WG_GUI_COMPONENTS_ICONS_TANKTYPEICO:Class = TankTypeIco;
+      
       public static const NET_WG_GUI_COMPONENTS_INTERFACES_ICOUNTERCOMPONENT:Class = ICounterComponent;
       
       public static const NET_WG_GUI_COMPONENTS_INTERFACES_INEWCOUNTER:Class = INewCounter;
@@ -2150,8 +2157,6 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_TOOLTIPS_TOOLTIPSPECIAL:Class = ToolTipSpecial;
       
-      public static const NET_WG_GUI_COMPONENTS_TOOLTIPS_HELPERS_TANKTYPEICO:Class = TankTypeIco;
-      
       public static const NET_WG_GUI_COMPONENTS_TOOLTIPS_HELPERS_UTILS:Class = Utils;
       
       public static const NET_WG_GUI_COMPONENTS_TOOLTIPS_INBLOCKS_TOOLTIPINBLOCKS:Class = TooltipInBlocks;
@@ -2236,6 +2241,18 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_COMPONENTS_TOOLTIPS_VO_UNITCOMMANDVO:Class = UnitCommandVO;
       
+      public static const NET_WG_GUI_COMPONENTS_VEHICLEHITAREA_VEHICLEHITAREA:Class = VehicleHitArea;
+      
+      public static const NET_WG_GUI_COMPONENTS_VEHICLEHITAREA_VEHICLEHITAREACOMPONENT:Class = VehicleHitAreaComponent;
+      
+      public static const NET_WG_GUI_COMPONENTS_VEHICLESTATUS_VEHICLESTATUS:Class = VehicleStatus;
+      
+      public static const NET_WG_GUI_COMPONENTS_VEHICLESTATUS_VEHICLESTATUSMSG:Class = VehicleStatusMsg;
+      
+      public static const NET_WG_GUI_COMPONENTS_VEHICLESTATUS_DATA_VEHICLESTATUSVO:Class = VehicleStatusVO;
+      
+      public static const NET_WG_GUI_COMPONENTS_VEHICLESTATUS_EVENTS_VEHICLESTATUSEVENT:Class = VehicleStatusEvent;
+      
       public static const NET_WG_GUI_COMPONENTS_WINDOWS_WINDOW:Class = Window;
       
       public static const NET_WG_GUI_COMPONENTS_WINDOWS_WINDOWEVENT:Class = WindowEvent;
@@ -2290,6 +2307,10 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_GAMELOADING_GAMELOADING:Class = GameLoading;
       
+      public static const NET_WG_GUI_GAMELOADING_GAMELOADINGLOGOS:Class = GameLoadingLogos;
+      
+      public static const NET_WG_GUI_GAMELOADING_LOADINGLOGO:Class = LoadingLogo;
+      
       public static const NET_WG_GUI_INTERFACES_IBUTTONICONLOADER:Class = IButtonIconLoader;
       
       public static const NET_WG_GUI_INTERFACES_IBUTTONICONTEXTTRANSPARENT:Class = IButtonIconTextTransparent;
@@ -2301,6 +2322,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_INTERFACES_IGROUPEDCONTROL:Class = IGroupedControl;
       
       public static const NET_WG_GUI_INTERFACES_IHIGHLIGHTED:Class = IHighlighted;
+      
+      public static const NET_WG_GUI_INTERFACES_IMAGNETICCLICKHANDLER:Class = IMagneticClickHandler;
       
       public static const NET_WG_GUI_INTERFACES_ISETTINGSBASE:Class = ISettingsBase;
       
@@ -2409,8 +2432,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_SETTINGS_SOUNDSPECIALFORM:Class = SoundSpecialForm;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_SOUNDVIVOXFORM:Class = SoundVivoxForm;
-      
-      public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_EVENTSETTINGLABEL:Class = EventSettingLabel;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_COMPONENTS_KEYINPUT:Class = KeyInput;
       
@@ -2545,10 +2566,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_LOBBY_SETTINGS_VO_CONFIG_MARKER_MARKERENEMYSETTINGSDATAVO:Class = MarkerEnemySettingsDataVo;
       
       public static const NET_WG_GUI_LOBBY_SETTINGS_VO_CONFIG_MARKER_MARKERSETTINGSDATAVO:Class = MarkerSettingsDataVo;
-      
-      public static const NET_WG_GUI_LOGIN_IMPL_COMPONENTS_LOGINLOGOS:Class = LoginLogos;
-      
-      public static const NET_WG_GUI_LOGIN_IMPL_EV_LOGINLOGOSEVENT:Class = LoginLogosEvent;
       
       public static const NET_WG_GUI_POPOVER_ACOUSTICBUTTON:Class = AcousticButton;
       
@@ -2763,8 +2780,6 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_MANAGERS_POOL_POOL:Class = Pool;
       
       public static const NET_WG_INFRASTRUCTURE_MANAGERS_POOL_POOLMANAGER:Class = PoolManager;
-      
-      public static const NET_WG_INFRASTRUCTURE_UILOGGING_LOGLEVELS:Class = LogLevels;
       
       public static const NET_WG_INFRASTRUCTURE_UILOGGING_BASE_BASELOGGER:Class = BaseLogger;
       

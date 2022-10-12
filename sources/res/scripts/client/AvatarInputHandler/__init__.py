@@ -2,9 +2,10 @@ import functools, logging, math
 from functools import partial
 import BigWorld, Keys, Math, ResMgr
 from AvatarInputHandler.AimingSystems import disableShotPointCache
+from AvatarInputHandler.vehicles_selection_mode import VehiclesSelectionControlMode
 from helpers.CallbackDelayer import CallbackDelayer
 import BattleReplay, CommandMapping, DynamicCameras.ArcadeCamera, DynamicCameras.ArtyCamera, DynamicCameras.DualGunCamera, DynamicCameras.SniperCamera, DynamicCameras.StrategicCamera, GenericComponents, MapCaseMode, RespawnDeathMode, aih_constants, cameras, constants, control_modes, epic_battle_death_mode
-from AvatarInputHandler import AimingSystems
+from AvatarInputHandler import AimingSystems, keys_handlers
 from AvatarInputHandler import aih_global_binding, gun_marker_ctrl
 from AvatarInputHandler import steel_hunter_control_modes
 from BigWorld import SniperAimingSystem
@@ -14,9 +15,9 @@ from AvatarInputHandler.commands.dualgun_control import DualGunController
 from AvatarInputHandler.commands.prebattle_setups_control import PrebattleSetupsControl
 from AvatarInputHandler.commands.radar_control import RadarControl
 from AvatarInputHandler.commands.siege_mode_control import SiegeModeControl
+from AvatarInputHandler.commands.rocket_acceleration_control import RocketAccelerationControl
 from AvatarInputHandler.commands.vehicle_upgrade_control import VehicleUpdateControl
 from AvatarInputHandler.commands.vehicle_upgrade_control import VehicleUpgradePanelControl
-from AvatarInputHandler.commands.bomb_drop_control import BombDropControl
 from AvatarInputHandler.remote_camera_sender import RemoteCameraSender
 from AvatarInputHandler.siege_mode_player_notifications import SiegeModeSoundNotifications, SiegeModeCameraShaker, TurboshaftModeSoundNotifications
 from Event import Event
@@ -49,6 +50,7 @@ _GUN_MARKER_FLAG = aih_constants.GUN_MARKER_FLAG
 _BINDING_ID = aih_global_binding.BINDING_ID
 _CTRL_MODES = aih_constants.CTRL_MODES
 _CTRLS_FIRST = _CTRL_MODE.DEFAULT
+_INITIAL_MODE_BY_BONUS_TYPE = {constants.ARENA_BONUS_TYPE.COMP7: _CTRL_MODE.VEHICLES_SELECTION}
 _CONTROL_MODE_SWITCH_COOLDOWN = 1.0
 _CTRLS_DESC_MAP = {_CTRL_MODE.ARCADE: (
                      control_modes.ArcadeControlMode, 'arcadeMode', _CTRL_TYPE.USUAL), 
@@ -77,7 +79,9 @@ _CTRLS_DESC_MAP = {_CTRL_MODE.ARCADE: (
    _CTRL_MODE.DEATH_FREE_CAM: (
                              epic_battle_death_mode.DeathFreeCamMode, 'epicVideoMode', _CTRL_TYPE.USUAL), 
    _CTRL_MODE.DUAL_GUN: (
-                       control_modes.DualGunControlMode, 'dualGunMode', _CTRL_TYPE.USUAL)}
+                       control_modes.DualGunControlMode, 'dualGunMode', _CTRL_TYPE.USUAL), 
+   _CTRL_MODE.VEHICLES_SELECTION: (
+                                 VehiclesSelectionControlMode, _CTRL_MODE.VEHICLES_SELECTION, _CTRL_TYPE.USUAL)}
 _OVERWRITE_CTRLS_DESC_MAP = {constants.ARENA_BONUS_TYPE.EPIC_BATTLE: {_CTRL_MODE.POSTMORTEM: (
                                                                   epic_battle_death_mode.DeathTankFollowMode, 'postMortemMode', _CTRL_TYPE.USUAL)}, 
    constants.ARENA_BONUS_TYPE.EPIC_BATTLE_TRAINING: {_CTRL_MODE.POSTMORTEM: (
@@ -203,6 +207,7 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
     dualGunControl = ComponentDescriptor()
     siegeModeSoundNotifications = ComponentDescriptor()
     steadyVehicleMatrixCalculator = ComponentDescriptor()
+    rocketAccelerationControl = ComponentDescriptor()
     DEFAULT_AIH_WORLD_ID = -1
 
     def __init__(self, spaceID):
@@ -268,6 +273,10 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
                     notifications = TurboshaftModeSoundNotifications()
                 self.siegeModeControl.onRequestFail += self.__onRequestFail
                 self.siegeModeControl.onSiegeStateChanged += SiegeModeCameraShaker.shake
+            if typeDescr.hasRocketAcceleration:
+                if not self.rocketAccelerationControl:
+                    self.rocketAccelerationControl = RocketAccelerationControl()
+                self.__commands.append(self.rocketAccelerationControl)
             if not (notifications and self.siegeModeSoundNotifications and notifications.getModeType() == self.siegeModeSoundNotifications.getModeType()):
                 modeChanged = False
                 if self.siegeModeSoundNotifications:
@@ -292,8 +301,6 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
                 self.__detachedCommands.append(VehicleUpgradePanelControl())
             if ARENA_BONUS_TYPE_CAPS.checkAny(player.arena.bonusType, ARENA_BONUS_TYPE_CAPS.SWITCH_SETUPS):
                 self.__persistentCommands.append(PrebattleSetupsControl())
-            if ARENA_BONUS_TYPE_CAPS.checkAny(player.arena.bonusType, ARENA_BONUS_TYPE_CAPS.WHITE_TIGER):
-                self.__commands.append(BombDropControl())
             vehicle.appearance.removeComponentByType(GenericComponents.ControlModeStatus)
             vehicle.appearance.createComponent(GenericComponents.ControlModeStatus, _CTRL_MODES.index(self.__ctrlModeName))
             return
@@ -328,10 +335,7 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
 
                 return player.handleKey(isDown, key, mods)
             if not self.__isStarted and isDown and mods == 0:
-                if CommandMapping.g_instance.isFiredList(xrange(CommandMapping.CMD_AMMO_CHOICE_1, CommandMapping.CMD_AMMO_CHOICE_3 + 1), key):
-                    ammoCtrl = self.guiSessionProvider.shared.ammo
-                    if ammoCtrl:
-                        ammoCtrl.handleAmmoChoice(key)
+                if keys_handlers.processAmmoSelection(key):
                     return True
             if not self.__isStarted or self.__isDetached:
                 return False
@@ -479,6 +483,7 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
         return self.__killerVehicleID
 
     def start(self):
+        self.__setInitialControlMode()
         g_guiResetters.add(self.__onRecreateDevice)
         self.steadyVehicleMatrixCalculator = SteadyVehicleMatrixCalculator()
         self.__identifyVehicleType()
@@ -655,8 +660,7 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
             if vehicle is not None and vehicle.appearance is not None:
                 vehicle.appearance.removeComponentByType(GenericComponents.ControlModeStatus)
                 vehicle.appearance.createComponent(GenericComponents.ControlModeStatus, _CTRL_MODES.index(eMode))
-            if eMode in aih_constants.MAP_CASE_MODES:
-                BigWorld.setEdgeDrawerRenderMode(1)
+            BigWorld.setEdgeDrawerRenderMode(1 if eMode in aih_constants.MAP_CASE_MODES else 0)
             return
 
     def onVehicleControlModeChanged(self, eMode):
@@ -926,6 +930,15 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
     def isAllowToSwitchPositionOrFPV(cls):
         player = BigWorld.player()
         return not player.positionControl.isSwitching and not player.isFPVModeSwitching
+
+    def __setInitialControlMode(self):
+        if BigWorld.player().arena.period < ARENA_PERIOD.BATTLE:
+            arenaBonusType = BigWorld.player().arenaBonusType
+            initialControlMode = _INITIAL_MODE_BY_BONUS_TYPE.get(arenaBonusType, _CTRLS_FIRST)
+        else:
+            initialControlMode = _CTRLS_FIRST
+        self.__curCtrl = self.__ctrls[initialControlMode]
+        self.__ctrlModeName = initialControlMode
 
 
 class _Targeting(object):

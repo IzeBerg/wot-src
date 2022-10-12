@@ -78,6 +78,11 @@ package net.wg.gui.lobby.techtree.data.vo
          return this._path != null ? Number(this._path.length) : Number(0);
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function isDrawVehicle() : Boolean
       {
          return this._renderer == VEHICLE_RENDERER;
@@ -101,11 +106,6 @@ package net.wg.gui.lobby.techtree.data.vo
       public function get level() : int
       {
          return this._level;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

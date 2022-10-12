@@ -7,6 +7,7 @@ package net.wg.gui.lobby.header.headerButtonBar
    import net.wg.gui.components.common.Counter;
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.events.UILoaderEvent;
+   import net.wg.gui.interfaces.IHeaderButtonResizableItem;
    import net.wg.gui.lobby.components.ArrowDown;
    import net.wg.gui.lobby.header.LobbyHeader;
    import net.wg.gui.lobby.header.vo.HBC_BattleTypeVo;
@@ -15,8 +16,12 @@ package net.wg.gui.lobby.header.headerButtonBar
    import net.wg.utils.ICounterProps;
    import scaleform.clik.constants.InvalidationType;
    
-   public class HBC_BattleSelector extends HeaderButtonContentItem
+   public class HBC_BattleSelector extends HeaderButtonContentItem implements IHeaderButtonResizableItem
    {
+      
+      private static const ARROW_MARGIN:int = 6;
+      
+      private static const ICON_MARGIN:int = 5;
       
       private static const MAX_TEXT_WIDTH_NARROW_SCREEN:int = 104;
       
@@ -24,7 +29,7 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       private static const MAX_TEXT_WIDTH_MAX_SCREEN:int = 500;
       
-      private static const WIDTH_FOR_TEXT:int = 150;
+      private static const WIDTH_FOR_TEXT:int = 15;
       
       private static const COUNTER_PROPS:ICounterProps = new CounterProps(10,-3,TextFormatAlign.LEFT,true,Linkages.COUNTER_UI,CounterProps.DEFAULT_TF_PADDING,false,Counter.EMPTY_STATE);
       
@@ -58,6 +63,16 @@ package net.wg.gui.lobby.header.headerButtonBar
          this.icon.addEventListener(UILoaderEvent.IOERROR,this.onIconLoadIoerrorHandler);
       }
       
+      public function getMinAvailableWidth() : Number
+      {
+         return this.getMinArrowPositionX() + this.arrow.width + leftPadding + rightPadding;
+      }
+      
+      public function getActualWidth() : Number
+      {
+         return bounds.width + leftPadding + rightPadding;
+      }
+      
       override public function onPopoverClose() : void
       {
          this.arrow.state = ArrowDown.STATE_NORMAL;
@@ -78,12 +93,13 @@ package net.wg.gui.lobby.header.headerButtonBar
       {
          var _loc2_:Boolean = false;
          var _loc3_:Number = NaN;
+         var _loc4_:Number = NaN;
          var _loc1_:Boolean = this.rankedBattlesBgAnim.visible;
          if(data)
          {
             this._counterManager.disposeCountersForContainer(NEW_COUNTER_CONTAINER_ID);
             this.icon.source = this._battleTypeVo.battleTypeIcon;
-            _loc2_ = availableWidth > WIDTH_FOR_TEXT || wideScreenPrc > WIDE_SCREEN_PRC_BORDER;
+            _loc2_ = availableWidth > this.icon.width + this.arrow.width + WIDTH_FOR_TEXT;
             this.textField.visible = _loc2_;
             if(_loc2_)
             {
@@ -113,7 +129,12 @@ package net.wg.gui.lobby.header.headerButtonBar
             }
             else
             {
-               this.arrow.x = this.icon.x + this.icon.width + (ARROW_MARGIN >> 1);
+               _loc4_ = this.getMinArrowPositionX();
+               if(availableWidth - this.arrow.width > _loc4_)
+               {
+                  _loc4_ = availableWidth - this.arrow.width;
+               }
+               this.arrow.x = _loc4_;
             }
             if(this._battleTypeVo.eventBgEnabled)
             {
@@ -190,6 +211,11 @@ package net.wg.gui.lobby.header.headerButtonBar
       {
          this._iconWidth = param1.target.width;
          invalidate(InvalidationType.DATA,InvalidationType.SIZE);
+      }
+      
+      private function getMinArrowPositionX() : Number
+      {
+         return this.icon.x + this.icon.width + (ARROW_MARGIN >> 1);
       }
    }
 }

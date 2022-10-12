@@ -140,7 +140,7 @@ package net.wg.gui.battle.views.minimap.components.entries.battleRoyale
                   this._atlasMgr.drawGraphics(ATLAS_CONSTANTS.BATTLE_ATLAS,BATTLEATLAS.DEATHZONE_CLOSED,_loc6_.graphics);
                   break;
                default:
-                  App.utils.asserter.assert(false,Errors.WRONG_VALUE + " state = " + _loc5_);
+                  App.utils.asserter.assert(false,Errors.WRONG_VALUE + " _state = " + _loc5_);
                   _loc8_ += PARAMS_NUM;
                   continue;
             }

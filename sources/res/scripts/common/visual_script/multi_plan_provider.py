@@ -62,6 +62,14 @@ class PlanHolder(object):
             return
         self.__inputParamCache[name] = value
 
+    def setOptionalInputParams(self, **kwargs):
+        if self.isLoaded:
+            for k, v in kwargs.iteritems():
+                self.plan.setOptionalInputParam(k, v)
+
+            return
+        self.__inputParamCache.update(kwargs)
+
 
 class MultiPlanProvider(object):
 
@@ -89,6 +97,7 @@ class MultiPlanProvider(object):
 
     def start(self):
         for holder in self._plans.itervalues():
+            holder.setOptionalInputParams(**holder.params)
             if holder.isLoaded:
                 holder.plan.start(holder.params)
             holder.autoStart = True
@@ -101,6 +110,7 @@ class MultiPlanProvider(object):
 
     def restart(self):
         for holder in self._plans.itervalues():
+            holder.setOptionalInputParams(**holder.params)
             if holder.isLoaded:
                 holder.plan.stop()
                 holder.plan.start(holder.params)
@@ -128,6 +138,10 @@ class MultiPlanProvider(object):
     def setOptionalInputParam(self, name, value):
         for holder in self._plans.itervalues():
             holder.setOptionalInputParam(name, value)
+
+    def setOptionalInputParams(self, **kwargs):
+        for holder in self._plans.itervalues():
+            holder.setOptionalInputParams(**kwargs)
 
     def setContext(self, context):
         for holder in self._plans.itervalues():
@@ -194,3 +208,31 @@ def makeMultiPlanProvider(aspect, name, arenaBonusType=0):
     if IS_DEVELOPMENT:
         return CallablePlanProvider(aspect, name, arenaBonusType)
     return MultiPlanProvider(aspect, arenaBonusType)
+
+
+class MultiPlanCache(object):
+
+    def __init__(self, aspect):
+        super(MultiPlanCache, self).__init__()
+        self._plansBucket = {}
+        self._aspect = aspect
+
+    def destroy(self):
+        for key, bucket in self._plansBucket.items():
+            for vsePlans in bucket:
+                vsePlans.stop()
+                vsePlans.destroy()
+
+        self._plansBucket.clear()
+
+    def getPlan(self, componentName, planNamesAndParams):
+        planNames = set((entry['name'] if isinstance(entry, dict) else entry) for entry in planNamesAndParams)
+        if componentName in self._plansBucket:
+            for vsePlans in self._plansBucket[componentName]:
+                if vsePlans.isLoaded() and all(not vsePlans.get(planName).isActive() for planName in planNames):
+                    return vsePlans
+
+        vsePlans = makeMultiPlanProvider(self._aspect, componentName)
+        vsePlans.load(planNamesAndParams)
+        self._plansBucket.setdefault(componentName, []).append(vsePlans)
+        return vsePlans

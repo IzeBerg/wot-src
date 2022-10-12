@@ -10,8 +10,7 @@ __all__ = ('ArgsEvent', 'ComponentEvent', 'LoadViewEvent', 'LoadGuiImplViewEvent
            'FightButtonEvent', 'CloseWindowEvent', 'BrowserEvent', 'HangarVehicleEvent',
            'HangarCustomizationEvent', 'GameEvent', 'BootcampEvent', 'ViewEventType',
            'OpenLinkEvent', 'ChannelManagementEvent', 'PreBattleChannelEvent', 'AmmunitionSetupViewEvent',
-           'HasCtxEvent', 'DogTagsEvent', 'FullscreenModeSelectorEvent', 'ModeSelectorPopoverEvent',
-           'HangarSimpleEvent')
+           'HasCtxEvent', 'DogTagsEvent', 'FullscreenModeSelectorEvent', 'ModeSelectorPopoverEvent')
 _logger = logging.getLogger(__name__)
 
 class HasCtxEvent(SharedEvent):
@@ -52,6 +51,7 @@ class GameEvent(HasCtxEvent):
     FULL_STATS = 'game/fullStats'
     EVENT_STATS = 'game/eventStats'
     FULL_STATS_QUEST_PROGRESS = 'game/fullStats/questProgress'
+    FULL_STATS_PERSONAL_RESERVES = 'game/fullStats/personalReserves'
     HIDE_VEHICLE_UPGRADE = 'game/battleRoyale/hideVehicleUpgrade'
     SHOW_CURSOR = 'game/showCursor'
     HIDE_CURSOR = 'game/hideCursor'
@@ -84,8 +84,9 @@ class GameEvent(HasCtxEvent):
     CHANGE_AMMUNITION_SETUP = 'game/changeAmmunitionSetup'
     TOGGLE_DEBUG_PIERCING_PANEL = 'game/toggleDebugPiercingPanel'
     ON_TARGET_VEHICLE_CHANGED = 'game/onTargetVehicleChanged'
-    SHOW_SPAWN_POINTS = 'game/showSpawnPoints'
-    HIDE_SPAWN_POINTS = 'game/hideSpawnPoints'
+    POINT_OF_INTEREST_ADDED = 'game/changeAmmunitionSetup'
+    POINT_OF_INTEREST_REMOVED = 'game/changeAmmunitionSetup'
+    PREBATTLE_INPUT_STATE_LOCKED = 'game/inputStateLocked'
 
 
 class GUICommonEvent(SharedEvent):
@@ -207,11 +208,11 @@ class ShowDialogEvent(SharedEvent):
     SHOW_CYBER_SPORT_DIALOG = 'showCyberSportDialog'
     SHOW_CONFIRM_ORDER_DIALOG = 'showConfirmOrderDialog'
     SHOW_PUNISHMENT_DIALOG = 'showPunishmentDialog'
+    SHOW_COMP7_PUNISHMENT_DIALOG = 'showComp7PunishmentDialog'
     SHOW_EXCHANGE_DIALOG = 'showExchangeDialog'
     SHOW_EXCHANGE_DIALOG_MODAL = 'showExchangeDialogModal'
     SHOW_DETAILED_EXCHANGE_XP_DIALOG = 'showDetailedExchangeXPDialog'
     SHOW_CHECK_BOX_DIALOG = 'showCheckBoxDialog'
-    SHOW_DESERTER_DLG = 'showDeserterDialog'
     SHOW_EXECUTION_CHOOSER_DIALOG = 'showExecutionChooserDialog'
     SHOW_USE_AWARD_SHEET_DIALOG = 'useAwardSheetDialog'
     SHOW_CONFIRM_C11N_BUY_DIALOG = 'showConfirmC11nBuyDialog'
@@ -650,14 +651,6 @@ class SeniorityAwardsEvent(HasCtxEvent):
     ON_ENTRY_VIEW_LOADED = 'seniorityAwards/onEntryViewLoaded'
 
 
-class WtEventPortalsEvent(HasCtxEvent):
-    ON_PORTAL_VIEW_CLOSED = 'wtEvent/onPortalViewClosed'
-    ON_PORTAL_AWARD_VIEW_CLOSED = 'wtEvent/onPortalAwardViewClosed'
-    ON_VEHICLE_AWARD_VIEW_CLOSED = 'wtEvent/onVehicleAwardViewClosed'
-    ON_ALL_PORTAL_VIEWS_CLOSED = 'wtEvent/onAllPortalViewClosed'
-    ON_BACK_TO_PORTAL = 'wtEvent/onBackToPortal'
-
-
 class ReferralProgramEvent(HasCtxEvent):
     REFERRAL_PROGRAM_ACTIVATED = 'referralProgramActivated'
     REFERRAL_PROGRAM_DEACTIVATED = 'referralProgrammDeactivated'
@@ -672,6 +665,10 @@ class AdventCalendarEvent(HasCtxEvent):
 
 class ProgressiveRewardEvent(HasCtxEvent):
     WIDGET_WAS_SHOWN = 'progressiveWidgetWasShown'
+
+
+class Comp7Event(SharedEvent):
+    OPEN_META = 'openMeta'
 
 
 class AirDropEvent(HasCtxEvent):
@@ -705,6 +702,7 @@ class BattlePassEvent(HasCtxEvent):
     AWARD_VIEW_CLOSE = 'onAwardViewClose'
     ON_PURCHASE_LEVELS = 'onPurchaseLevels'
     ON_PREVIEW_PROGRESSION_STYLE_CLOSE = 'onPreviewProgressionStyleClose'
+    VIDEO_SHOWN = 'videoShown'
 
 
 class ItemRemovalByDemountKitEvent(HasCtxEvent):
@@ -757,6 +755,11 @@ class AmmunitionSetupViewEvent(HasCtxEvent):
     CLOSE_VIEW = 'ammunitionSetupViewEvent/closeView'
 
 
+class AmmunitionPanelViewEvent(HasCtxEvent):
+    SECTION_SELECTED = 'ammunitionPanelViewEvent/sectionSelected'
+    CLOSE_VIEW = 'ammunitionPanelViewEvent/closeView'
+
+
 class RadialMenuEvent(SharedEvent):
     RADIAL_MENU_ACTION = 'radialMenuAction'
 
@@ -790,15 +793,11 @@ class ResourceWellLoadingViewEvent(HasCtxEvent):
     DESTROY = 'destroy'
 
 
-class HangarSimpleEvent(HasCtxEvent):
-    HANGAR_LOADED = 'HangarSimpleEvent/hangarLoaded'
-    HANGAR_UNLOADED = 'HangarSimpleEvent/hangarUnLoaded'
-    VEHICLE_PREVIEW_LOADED = 'HangarSimpleEvent/vehiclePreviewLoaded'
-    VEHICLE_PREVIEW_UNLOADED = 'HangarSimpleEvent/vehiclePreviewUnLoaded'
-    EVENT_PORTAL_SELECTED = 'HangarSimpleEvent/eventPortalSelected'
-    EVENT_VEHICLE_SELECTED = 'HangarSimpleEvent/eventVehicleSelected'
-    SHOW_CONFIRM_DIALOG = 'HangarSimpleEvent/showConfirmDialog'
-    CLOSE_CONFIRM_DIALOG = 'HangarSimpleEvent/closeConfirmDialog'
-    DISPATCHER_ENTITY_WAS_UPDATED = 'HangarSimpleEvent/DispatcherEntityWasUpdated'
-    PORTAL_MANAGER_ACTIVATED = 'HangarSimpleEvent/PortalManagerActivated'
-    UPDATE_CAROUSEL_VEHICLE_STATES = 'HangarSimpleEvent/UpdateCarouselVehicleStates'
+class PointOfInterestEvent(HasCtxEvent):
+    ADDED = 'poi/added'
+    REMOVED = 'poi/removed'
+
+
+class RoleSkillEvent(HasCtxEvent):
+    STATE_CHANGED = 'roleSkill/stateChanged'
+    COUNTER_CHANGED = 'roleSkill/counterChanged'

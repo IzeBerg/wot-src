@@ -25,6 +25,33 @@
 					<row3>0.000000 0.000000 0.000000</row3>
 				</transform>
 			</node>
+			<node>
+				<identifier>lod1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>d0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>n0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
 		</node>
 	</node>
 	<renderSet>
@@ -41,14 +68,6 @@
 						diffuseMap
 						<Texture>content/Environment/hd_env_EU_028_Flowerpot/hd_env_EU_028_Flowerpot_AM.dds</Texture>
 					</property>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
 					<collisionFlags>0</collisionFlags>
 					<fx>shaders/std_effects/PBS_ext.fx</fx>
 					<materialKind>87</materialKind>
@@ -59,10 +78,6 @@
 					<property>
 						normalMap
 						<Texture>content/Environment/hd_env_EU_028_Flowerpot/hd_env_EU_028_Flowerpot_ANM.dds</Texture>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
 					</property>
 					<property>
 						selfIllumination
@@ -79,14 +94,6 @@
 						diffuseMap
 						<Texture>content/Environment/hd_env_EU_028_Flowerpot/hd_env_EU_028_Flowerpot_AM.dds</Texture>
 					</property>
-					<property>
-						alphaReference
-						<Int>0</Int>
-					</property>
-					<property>
-						alphaTestEnable
-						<Bool>false</Bool>
-					</property>
 					<collisionFlags>128</collisionFlags>
 					<fx>shaders/std_effects/PBS_ext.fx</fx>
 					<materialKind>73</materialKind>
@@ -98,12 +105,8 @@
 						normalMap
 						<Texture>content/Environment/hd_env_EU_028_Flowerpot/hd_env_EU_028_Flowerpot_ANM.dds</Texture>
 					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
 				</material>
-				<groupOrigin>-0.000494 0.326212 0.000354</groupOrigin>
+				<groupOrigin>0.001996 0.326212 0.000354</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				2

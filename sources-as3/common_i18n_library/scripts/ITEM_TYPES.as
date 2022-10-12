@@ -111,6 +111,16 @@ package
       
       public static const TANKMAN_ROLES_LOADER:String = "#item_types:tankman/roles/loader";
       
+      public static const TANKMAN_ROLES_FEMALE_COMMANDER:String = "#item_types:tankman/roles/female/commander";
+      
+      public static const TANKMAN_ROLES_FEMALE_DRIVER:String = "#item_types:tankman/roles/female/driver";
+      
+      public static const TANKMAN_ROLES_FEMALE_RADIOMAN:String = "#item_types:tankman/roles/female/radioman";
+      
+      public static const TANKMAN_ROLES_FEMALE_GUNNER:String = "#item_types:tankman/roles/female/gunner";
+      
+      public static const TANKMAN_ROLES_FEMALE_LOADER:String = "#item_types:tankman/roles/female/loader";
+      
       public static const TANKMAN_SKILL_NOT_BE_USED:String = "#item_types:tankman/Skill_not_be_used";
       
       public static const TANKMAN_SKILLS_REPAIR:String = "#item_types:tankman/skills/repair";
@@ -132,8 +142,6 @@ package
       public static const TANKMAN_SKILLS_BROTHERHOOD:String = "#item_types:tankman/skills/brotherhood";
       
       public static const TANKMAN_SKILLS_BROTHERHOOD_DESCR:String = "#item_types:tankman/skills/brotherhood_descr";
-      
-      public static const TANKMAN_SKILLS_BROTHERHOOD_FEMALE_DESCR:String = "#item_types:tankman/skills/brotherhood_female_descr";
       
       public static const TANKMAN_SKILLS_BROTHERHOOD_SABATON:String = "#item_types:tankman/skills/brotherhood_sabaton";
       

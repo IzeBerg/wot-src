@@ -43,6 +43,13 @@ class ComponentsConfig(IComponentsConfig):
     def getViewsConfig(self):
         return self.__viewsConfig
 
+    def overrideViews(self, override):
+        newConfig = []
+        for componentID, component in self.__viewsConfig:
+            newConfig.append((componentID, override.get(componentID, component)))
+
+        self.__viewsConfig = tuple(newConfig)
+
     def __iadd__(self, other):
         return self.__doAdd(other)
 
@@ -94,11 +101,7 @@ class SharedPage(BattlePageMeta):
         if components is None:
             components = _SHARED_COMPONENTS_CONFIG
         else:
-            config = _SHARED_COMPONENTS_CONFIG.getConfig()
-            overridedViewAliases = tuple(alias for alias, _ in components.getViewsConfig())
-            viewConfig = tuple((alias, obj) for alias, obj in _SHARED_COMPONENTS_CONFIG.getViewsConfig() if alias not in overridedViewAliases)
-            sharedComponents = ComponentsConfig(config, viewConfig)
-            components += sharedComponents
+            components += _SHARED_COMPONENTS_CONFIG
         self.__componentsConfig = components
         return
 
@@ -129,6 +132,7 @@ class SharedPage(BattlePageMeta):
         self.addListener(events.GameEvent.RADIAL_MENU_CMD, self._handleRadialMenuCmd, scope=EVENT_BUS_SCOPE.BATTLE)
         self.addListener(events.GameEvent.FULL_STATS, self._handleToggleFullStats, scope=EVENT_BUS_SCOPE.BATTLE)
         self.addListener(events.GameEvent.FULL_STATS_QUEST_PROGRESS, self._handleToggleFullStatsQuestProgress, scope=EVENT_BUS_SCOPE.BATTLE)
+        self.addListener(events.GameEvent.FULL_STATS_PERSONAL_RESERVES, self._handleToggleFullStatsPersonalReserves, scope=EVENT_BUS_SCOPE.BATTLE)
         self.addListener(events.GameEvent.TOGGLE_GUI, self._handleGUIToggled, scope=EVENT_BUS_SCOPE.BATTLE)
         self.addListener(events.GameEvent.SHOW_CURSOR, self.__handleShowCursor, scope=EVENT_BUS_SCOPE.GLOBAL)
         self.addListener(events.GameEvent.HIDE_CURSOR, self.__handleHideCursor, scope=EVENT_BUS_SCOPE.GLOBAL)
@@ -153,6 +157,7 @@ class SharedPage(BattlePageMeta):
         self.removeListener(events.GameEvent.RADIAL_MENU_CMD, self._handleRadialMenuCmd, scope=EVENT_BUS_SCOPE.BATTLE)
         self.removeListener(events.GameEvent.FULL_STATS, self._handleToggleFullStats, scope=EVENT_BUS_SCOPE.BATTLE)
         self.removeListener(events.GameEvent.FULL_STATS_QUEST_PROGRESS, self._handleToggleFullStatsQuestProgress, scope=EVENT_BUS_SCOPE.BATTLE)
+        self.removeListener(events.GameEvent.FULL_STATS_PERSONAL_RESERVES, self._handleToggleFullStatsPersonalReserves, scope=EVENT_BUS_SCOPE.BATTLE)
         self.removeListener(events.GameEvent.TOGGLE_GUI, self._handleGUIToggled, scope=EVENT_BUS_SCOPE.BATTLE)
         self.removeListener(events.GameEvent.SHOW_CURSOR, self.__handleShowCursor, scope=EVENT_BUS_SCOPE.GLOBAL)
         self.removeListener(events.GameEvent.HIDE_CURSOR, self.__handleHideCursor, scope=EVENT_BUS_SCOPE.GLOBAL)
@@ -242,6 +247,9 @@ class SharedPage(BattlePageMeta):
         raise NotImplementedError
 
     def _handleToggleFullStatsQuestProgress(self, event):
+        raise NotImplementedError
+
+    def _handleToggleFullStatsPersonalReserves(self, event):
         raise NotImplementedError
 
     def _handleGUIToggled(self, event):

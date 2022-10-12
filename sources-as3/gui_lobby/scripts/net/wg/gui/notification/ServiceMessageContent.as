@@ -36,6 +36,8 @@ package net.wg.gui.notification
       private static const BMP_FILL_WIDTH:uint = 100;
       
       private static const BMP_FILL_HEIGHT:uint = 50;
+      
+      private static const WIDTH:int = 288;
        
       
       public var icon:Image;
@@ -57,6 +59,8 @@ package net.wg.gui.notification
       private var _timeComponent:NotificationTimeComponent = null;
       
       private var _classFactory:IClassFactory;
+      
+      private var _buttonPadding:int = 10;
       
       public function ServiceMessageContent()
       {
@@ -126,7 +130,7 @@ package net.wg.gui.notification
       
       override public function get width() : Number
       {
-         return Math.ceil(actualWidth);
+         return WIDTH;
       }
       
       override public function get height() : Number
@@ -287,6 +291,7 @@ package net.wg.gui.notification
          _loc3_.addEventListener(ButtonEvent.CLICK,this.onButtonClickHandler,false,0,true);
          _loc3_.mouseEnabledOnDisabled = true;
          _loc3_.focusable = false;
+         _loc3_.useHtmlText = true;
          _loc3_.validateNow();
       }
       

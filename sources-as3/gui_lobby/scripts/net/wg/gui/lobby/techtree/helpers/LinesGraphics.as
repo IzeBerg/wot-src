@@ -28,8 +28,6 @@ package net.wg.gui.lobby.techtree.helpers
       
       protected static const ARROW_COLOR:uint = 16777215;
       
-      private static const DEFAULT_ARROW_ALPHA:int = 1;
-      
       private static const ARROW_LABEL:String = "thickness";
       
       private static const LINES_PIXEL_PERFECT_HACK_COORD:Number = 0.25;
@@ -130,9 +128,9 @@ package net.wg.gui.lobby.techtree.helpers
          _loc12_.alphaMultiplier = param6;
          _loc11_.transform.colorTransform = _loc12_;
          this.getLinesAndArrowsSprite(param1).addChild(_loc11_);
-         var _loc13_:int = _loc11_.width;
-         param4.x -= (_loc13_ + param5 * 0.5) * Math.cos(_loc9_);
-         param4.y -= (_loc13_ + param5 * 0.5) * Math.sin(_loc9_);
+         var _loc13_:Number = _loc11_.width + param5 * 0.5;
+         param4.x -= _loc13_ * Math.cos(_loc9_);
+         param4.y -= _loc13_ * Math.sin(_loc9_);
          this.drawLine(param1,param2,param3,param4,param5,param6,param7,param8);
       }
       
@@ -140,6 +138,11 @@ package net.wg.gui.lobby.techtree.helpers
       {
          var _loc3_:Point = param2.subtract(param1);
          return Math.atan(_loc3_.y / _loc3_.x);
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
       
       public function removeRenderer(param1:IRenderer) : void
@@ -179,7 +182,7 @@ package net.wg.gui.lobby.techtree.helpers
       
       protected function getLineThickness(param1:IRenderer, param2:IRenderer) : uint
       {
-         if((param1.isNext2Unlock() || param1.isUnlocked()) && param2.isUnlocked())
+         if(param2.isUnlocked() && (param1.isNext2Unlock() || param1.isUnlocked()))
          {
             return UNLOCKED_LINE_THICKNESS;
          }
@@ -218,11 +221,6 @@ package net.wg.gui.lobby.techtree.helpers
             App.utils.asserter.assert(this._uiid == param1,MSG_UNIQUE);
          }
          this._uiid = param1;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

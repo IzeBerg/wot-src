@@ -22,7 +22,9 @@ package net.wg.gui.lobby.battleResults
    import net.wg.gui.lobby.battleResults.components.BattleResultsMedalsList;
    import net.wg.gui.lobby.battleResults.components.DetailsBlock;
    import net.wg.gui.lobby.battleResults.components.EfficiencyHeader;
+   import net.wg.gui.lobby.battleResults.components.PrestigePoints;
    import net.wg.gui.lobby.battleResults.components.TankStatsView;
+   import net.wg.gui.lobby.battleResults.components.TextFieldContainer;
    import net.wg.gui.lobby.battleResults.data.BattleResultsVO;
    import net.wg.gui.lobby.battleResults.data.CommonStatsVO;
    import net.wg.gui.lobby.battleResults.data.IconEfficiencyTooltipData;
@@ -30,6 +32,7 @@ package net.wg.gui.lobby.battleResults
    import net.wg.gui.lobby.battleResults.data.PersonalDataVO;
    import net.wg.gui.lobby.battleResults.event.BattleResultsViewEvent;
    import net.wg.gui.lobby.battleResults.event.ClanEmblemRequestEvent;
+   import net.wg.gui.lobby.battleResults.managers.IStatsUtilsManager;
    import net.wg.gui.lobby.battleResults.managers.impl.StatsUtilsManager;
    import net.wg.gui.lobby.battleResults.progressReport.ProgressReportLinkageSelector;
    import net.wg.gui.lobby.progressiveReward.ProgressiveReward;
@@ -82,6 +85,10 @@ package net.wg.gui.lobby.battleResults
       private static const HEADER_INVALID:String = "headerInvalid";
       
       private static const PROGRESS_BLOCK_V_DELTA:uint = 112;
+      
+      private static const PRESTIGE_POINTS_X_SHIFT:int = -90;
+      
+      private static const MEDALS_LIST_LEFT_X:int = 22;
        
       
       public var resultLbl:TextField;
@@ -148,6 +155,10 @@ package net.wg.gui.lobby.battleResults
       
       public var replayBtn:ISoundButtonEx = null;
       
+      public var prestigePoints:PrestigePoints = null;
+      
+      public var deserter:TextFieldContainer = null;
+      
       private var _progressReport:SubtasksList;
       
       private var _creditsCounterNumber:Number;
@@ -160,13 +171,18 @@ package net.wg.gui.lobby.battleResults
       
       private var _linkageSelector:ISubtaskListLinkageSelector;
       
+      private var _hasPrestigePoints:Boolean = false;
+      
       private var _data:BattleResultsVO;
       
       private var _startProgressBGPosition:Number;
       
+      private var _statsUtilsManager:IStatsUtilsManager;
+      
       public function CommonStats()
       {
          this._linkageSelector = new ProgressReportLinkageSelector();
+         this._statsUtilsManager = StatsUtilsManager.getInstance();
          super();
       }
       
@@ -181,7 +197,7 @@ package net.wg.gui.lobby.battleResults
          this.efficiencyList.removeEventListener(FinalStatisticEvent.EFFICIENCY_ICON_ROLL_OUT,onEfficiencyIconRollOutHandler);
          this.efficiencyList.removeEventListener(Event.SCROLL,this.onEfficiencyListScrollHandler);
          this.tankSlot.removeEventListener(ListEvent.INDEX_CHANGE,this.onDropDownIndexChangeHandler);
-         this.progressiveReward.removeEventListener(ProgressiveRewardEvent.LINK_BTN_CLICK,this.onProgressiveRewardLinkClickHandler);
+         this.progressiveReward.removeEventListener(ProgressiveRewardEvent.LINK_BTN_CLICK,this.onProgressiveRewardLinkBtnClickHandler);
          this.noIncomeAlert.dispose();
          this.tankSlot.dispose();
          this.efficiencyList.dispose();
@@ -235,7 +251,12 @@ package net.wg.gui.lobby.battleResults
          this.replayBtn.removeEventListener(ButtonEvent.CLICK,this.onReplayBtnClickHandler);
          this.replayBtn.dispose();
          this.replayBtn = null;
+         this.prestigePoints.dispose();
+         this.prestigePoints = null;
+         this.deserter.dispose();
+         this.deserter = null;
          this._data = null;
+         this._statsUtilsManager = null;
          super.onDispose();
       }
       
@@ -305,22 +326,39 @@ package net.wg.gui.lobby.battleResults
       
       public function update(param1:Object) : void
       {
+         var _loc2_:PersonalDataVO = null;
+         var _loc8_:String = null;
+         var _loc13_:String = null;
          this._data = BattleResultsVO(param1);
-         var _loc2_:PersonalDataVO = this._data.personal;
+         _loc2_ = this._data.personal;
          var _loc3_:CommonStatsVO = this._data.common;
          var _loc4_:Array = AwardExtractor.extract(this._data.quests);
          var _loc5_:Array = AwardExtractor.extract(this._data.battlePass);
          var _loc6_:Array = this._data.dog_tags;
          var _loc7_:Array = this._data.unlocks;
-         this._progressBlocksData = StatsUtilsManager.getInstance().mergeArrays(_loc7_,_loc5_);
+         if(_loc3_.comp7Rating)
+         {
+            this._progressBlocksData = this._statsUtilsManager.mergeArrays(_loc7_,[_loc3_.comp7Rating]);
+         }
+         else
+         {
+            this._progressBlocksData = _loc7_;
+         }
+         this._progressBlocksData = this._statsUtilsManager.mergeArrays(this._progressBlocksData,_loc5_);
          if(_loc3_.rank)
          {
             this._progressBlocksData.push(_loc3_.rank);
          }
-         this._progressBlocksData = StatsUtilsManager.getInstance().mergeArrays(this._progressBlocksData,_loc4_);
-         this._progressBlocksData = StatsUtilsManager.getInstance().mergeArrays(this._progressBlocksData,_loc6_);
+         this._progressBlocksData = this._statsUtilsManager.mergeArrays(this._progressBlocksData,_loc4_);
+         this._progressBlocksData = this._statsUtilsManager.mergeArrays(this._progressBlocksData,_loc6_);
+         this._hasPrestigePoints = _loc2_.prestigePoints && _loc2_.prestigePoints.isVisible;
+         this.prestigePoints.visible = this._hasPrestigePoints;
+         if(this._hasPrestigePoints)
+         {
+            this.prestigePoints.setData(_loc2_.prestigePoints);
+         }
          this.initCounters(_loc2_.creditsStr,_loc2_.xpStr);
-         this.efficiencyTitle.text = BATTLE_RESULTS.COMMON_BATTLEEFFICIENCYWITHOUTOREDERS_TITLE;
+         this.efficiencyTitle.text = this._data.efficiencyTitle;
          this.initResultText(_loc3_);
          this.tankSlot.imageSwitcher.gotoAndStop(_loc3_.resultShortStr);
          this.arenaNameLbl.htmlText = _loc3_.arenaStr;
@@ -328,7 +366,10 @@ package net.wg.gui.lobby.battleResults
          this.tankSlot.addEventListener(ListEvent.INDEX_CHANGE,this.onDropDownIndexChangeHandler);
          this.crystalCounter.visible = false;
          this.crystalIcon.visible = false;
-         if(this.replayBtn.visible = !StringUtils.isEmpty(_loc2_.replayURL))
+         _loc8_ = _loc2_.replayURL;
+         var _loc9_:Boolean = StringUtils.isNotEmpty(_loc8_);
+         this.replayBtn.visible = _loc9_;
+         if(_loc9_)
          {
             this.replayBtn.label = this._data.textData.replayButtonLabel;
          }
@@ -342,21 +383,22 @@ package net.wg.gui.lobby.battleResults
          }
          this.medalsListLeft.dataProvider = _loc2_.achievementsLeft;
          this.medalsListRight.dataProvider = _loc2_.achievementsRight;
+         this.medalsListLeft.x = !!this._hasPrestigePoints ? Number(0) : Number(MEDALS_LIST_LEFT_X);
          this.initEfficiencyList(_loc2_);
          this.initEfficiencyHeader(_loc2_);
-         var _loc8_:ProgressiveRewardVO = this._data.progressiveReward;
-         var _loc9_:Boolean = Boolean(_loc8_.isEnabled);
-         if(_loc9_)
+         var _loc10_:ProgressiveRewardVO = this._data.progressiveReward;
+         var _loc11_:Boolean = Boolean(_loc10_.isEnabled);
+         if(_loc11_)
          {
-            this.progressiveReward.setData(_loc8_);
-            this.progressiveReward.addEventListener(ProgressiveRewardEvent.LINK_BTN_CLICK,this.onProgressiveRewardLinkClickHandler);
+            this.progressiveReward.setData(_loc10_);
+            this.progressiveReward.addEventListener(ProgressiveRewardEvent.LINK_BTN_CLICK,this.onProgressiveRewardLinkBtnClickHandler);
          }
-         this.progressiveReward.visible = _loc9_;
-         this.progressiveRewardDelimiter.visible = _loc9_;
-         this.layoutProgressReport(_loc9_);
-         var _loc10_:Boolean = _loc2_.showNoIncomeAlert;
-         this.setNoIncomeVisible(_loc10_);
-         if(!_loc10_)
+         this.progressiveReward.visible = _loc11_;
+         this.progressiveRewardDelimiter.visible = _loc11_;
+         this.layoutProgressReport(_loc11_);
+         var _loc12_:Boolean = _loc2_.showNoIncomeAlert;
+         this.setNoIncomeVisible(_loc12_);
+         if(!_loc12_)
          {
             this.detailsMc.data = _loc2_;
             this.initProgressReport(0,_loc7_.length);
@@ -370,6 +412,13 @@ package net.wg.gui.lobby.battleResults
          if(this._data.common.playerVehicles.length > 1)
          {
             this.tankSlot.setVehicleIdxInGarageDropdown(this._data.selectedIdxInGarageDropdown);
+         }
+         _loc13_ = _loc2_.deserterStr;
+         var _loc14_:Boolean = StringUtils.isNotEmpty(_loc13_);
+         this.deserter.visible = _loc14_;
+         if(_loc14_)
+         {
+            this.deserter.text = _loc13_;
          }
          invalidateSize();
       }
@@ -528,30 +577,32 @@ package net.wg.gui.lobby.battleResults
       
       private function initCrystalCounter(param1:String) : void
       {
-         var _loc2_:ILocale = App.utils.locale;
-         var _loc3_:IFormattedInt = _loc2_.parseFormattedInteger(param1);
-         this.crystalCounter.init(_loc3_.value,param1,_loc3_.delimiter,this._crystalCounterNumber != _loc3_.value);
-         this.crystalCounter.x = (this.tankSlot.imageSwitcher.width + this.crystalCounter.metricsWidth >> 1) + COUNTER_LEFT_OFFSET ^ 0;
+         var _loc2_:int = !!this._hasPrestigePoints ? int(PRESTIGE_POINTS_X_SHIFT) : int(0);
+         var _loc3_:ILocale = App.utils.locale;
+         var _loc4_:IFormattedInt = _loc3_.parseFormattedInteger(param1);
+         this.crystalCounter.init(_loc4_.value,param1,_loc4_.delimiter,this._crystalCounterNumber != _loc4_.value);
+         this.crystalCounter.x = (this.tankSlot.imageSwitcher.width + this.crystalCounter.metricsWidth >> 1) + COUNTER_LEFT_OFFSET + _loc2_;
          if(this._crystalCounterNumber == -1)
          {
             this.alignControls(true);
          }
-         this._crystalCounterNumber = _loc3_.value;
+         this._crystalCounterNumber = _loc4_.value;
          this.crystalCounter.visible = true;
          this.crystalIcon.visible = true;
       }
       
       private function initCounters(param1:String, param2:String) : void
       {
-         var _loc3_:ILocale = App.utils.locale;
-         var _loc4_:IFormattedInt = _loc3_.parseFormattedInteger(param1);
-         this.creditsCounter.init(_loc4_.value,param1,_loc4_.delimiter,this._creditsCounterNumber != _loc4_.value);
-         this._creditsCounterNumber = _loc4_.value;
-         this.creditsIcon.x = this.creditsCounter.x = (this.tankSlot.imageSwitcher.width + this.creditsCounter.metricsWidth >> 1) + COUNTER_LEFT_OFFSET ^ 0;
-         var _loc5_:IFormattedInt = _loc3_.parseFormattedInteger(param2);
-         this.xpCounter.init(_loc5_.value,_loc3_.cutCharsBeforeNumber(param2),_loc5_.delimiter,this._xpCounterNumber != _loc5_.value);
-         this._xpCounterNumber = _loc5_.value;
-         this.xpIcon.x = this.xpCounter.x = (this.tankSlot.imageSwitcher.width + this.xpCounter.metricsWidth >> 1) + COUNTER_LEFT_OFFSET ^ 0;
+         var _loc3_:int = !!this._hasPrestigePoints ? int(PRESTIGE_POINTS_X_SHIFT) : int(0);
+         var _loc4_:ILocale = App.utils.locale;
+         var _loc5_:IFormattedInt = _loc4_.parseFormattedInteger(param1);
+         this.creditsCounter.init(_loc5_.value,param1,_loc5_.delimiter,this._creditsCounterNumber != _loc5_.value);
+         this._creditsCounterNumber = _loc5_.value;
+         this.creditsIcon.x = this.creditsCounter.x = (this.tankSlot.imageSwitcher.width + this.creditsCounter.metricsWidth >> 1) + COUNTER_LEFT_OFFSET + _loc3_;
+         var _loc6_:IFormattedInt = _loc4_.parseFormattedInteger(param2);
+         this.xpCounter.init(_loc6_.value,_loc4_.cutCharsBeforeNumber(param2),_loc6_.delimiter,this._xpCounterNumber != _loc6_.value);
+         this._xpCounterNumber = _loc6_.value;
+         this.xpIcon.x = this.xpCounter.x = (this.tankSlot.imageSwitcher.width + this.xpCounter.metricsWidth >> 1) + COUNTER_LEFT_OFFSET + _loc3_;
       }
       
       private function tryCleanEfficiencyListDataProvider() : void
@@ -567,7 +618,7 @@ package net.wg.gui.lobby.battleResults
          this.efficiencyHeader.visible = this._data != null && this._data.personal != null && this._data.personal.efficiencyHeader != null && this._data.personal.efficiencyHeader.hasEfficencyStats && this.efficiencyList.scrollPosition == 0;
       }
       
-      private function onProgressiveRewardLinkClickHandler(param1:ProgressiveRewardEvent) : void
+      private function onProgressiveRewardLinkBtnClickHandler(param1:ProgressiveRewardEvent) : void
       {
          dispatchEvent(new BattleResultsViewEvent(BattleResultsViewEvent.SHOW_PROGRESSIVE_REWARD_VIEW));
       }

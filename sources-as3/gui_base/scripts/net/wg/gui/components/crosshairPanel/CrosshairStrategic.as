@@ -18,18 +18,9 @@ package net.wg.gui.components.crosshairPanel
          super();
       }
       
-      override public function dispose() : void
+      override public function setGunMarkersData(param1:Vector.<GunMarkerIndicatorVO>, param2:Boolean) : void
       {
-         this.scaleWidget.dispose();
-         this.scaleWidget = null;
-         this.artyShotIndicatorsPanel.dispose();
-         this.artyShotIndicatorsPanel = null;
-         super.dispose();
-      }
-      
-      override public function set scaleWidgetEnabled(param1:Boolean) : void
-      {
-         this.scaleWidget.visible = param1;
+         this.artyShotIndicatorsPanel.setGunMarkersData(param1,param2);
       }
       
       override public function updateScaleWidget(param1:Number) : void
@@ -37,14 +28,23 @@ package net.wg.gui.components.crosshairPanel
          this.scaleWidget.updateData(param1);
       }
       
-      override public function setGunMarkersData(param1:Vector.<GunMarkerIndicatorVO>, param2:Boolean) : void
+      override protected function onDispose() : void
       {
-         this.artyShotIndicatorsPanel.setGunMarkersData(param1,param2);
+         this.scaleWidget.dispose();
+         this.scaleWidget = null;
+         this.artyShotIndicatorsPanel.dispose();
+         this.artyShotIndicatorsPanel = null;
+         super.onDispose();
       }
       
       public function setShotFlyTimesData(param1:Vector.<ShotFlyTimeVO>) : void
       {
          this.artyShotIndicatorsPanel.setShotFlyTimesData(param1);
+      }
+      
+      override public function set scaleWidgetEnabled(param1:Boolean) : void
+      {
+         this.scaleWidget.visible = param1;
       }
    }
 }

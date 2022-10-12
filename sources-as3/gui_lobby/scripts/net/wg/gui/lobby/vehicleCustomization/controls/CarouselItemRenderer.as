@@ -1153,7 +1153,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls
       private function onClickHandler(param1:MouseEvent) : void
       {
          var _loc2_:uint = this.getPressedButtonIndex(param1);
-         if(_loc2_ == MouseEventEx.LEFT_BUTTON && this._data.locked)
+         if(_loc2_ == MouseEventEx.LEFT_BUTTON && this._data.locked && !this._data.isLinked)
          {
             param1.stopImmediatePropagation();
          }

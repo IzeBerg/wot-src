@@ -86,14 +86,14 @@ package net.wg.gui.battle.ranked
          return false;
       }
       
-      private function onHideAnimationCompleteHandler(param1:Event) : void
-      {
-         this.removeRoleDescription();
-      }
-      
       override protected function get prebattleAmmunitionPanelAvailable() : Boolean
       {
          return true;
+      }
+      
+      private function onHideAnimationCompleteHandler(param1:Event) : void
+      {
+         this.removeRoleDescription();
       }
    }
 }

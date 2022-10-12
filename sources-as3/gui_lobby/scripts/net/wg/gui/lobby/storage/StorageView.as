@@ -15,6 +15,7 @@ package net.wg.gui.lobby.storage
    import net.wg.infrastructure.base.meta.IStorageViewMeta;
    import net.wg.infrastructure.base.meta.impl.StorageViewMeta;
    import net.wg.infrastructure.interfaces.IDAAPIModule;
+   import net.wg.infrastructure.interfaces.IUIComponentEx;
    import net.wg.infrastructure.managers.counter.CounterProps;
    import net.wg.utils.ICounterManager;
    import net.wg.utils.ICounterProps;
@@ -46,6 +47,8 @@ package net.wg.gui.lobby.storage
       public static const COUNTER_NORMAL_OFFSET_X:int = -12;
       
       public static const COUNTER_NORMAL_OFFSET_Y:int = 14;
+      
+      private static const WARNING_SIDEBAR_INDEX_NOT_FOUND:String = "SideBar sectionIdx: ";
        
       
       public var menu:SideBar;
@@ -90,9 +93,11 @@ package net.wg.gui.lobby.storage
          this._hitArea.name = HIT_AREA_NAME;
          addChildAt(this._hitArea,0);
          this.content.addEventListener(ViewStackEvent.NEED_UPDATE,this.onContentNeedUpdateHandler);
+         this.content.addEventListener(ViewStackEvent.VIEW_CHANGED,this.onContentViewChangedHandler);
          this.menu.addEventListener(Event.RESIZE,this.onMenuResizeHandler);
          this.noItemsView.setTexts(STORAGE.NOTAVAILABLE_TITLE,STORAGE.NOTAVAILABLE_NAVIGATIONBUTTON);
          this.noItemsView.addEventListener(Event.CLOSE,this.onNoItemViewCloseHandler);
+         this.noItemsView.addEventListener(Event.RESIZE,this.onNoItemsViewResizeEventHandler);
          App.stageSizeMgr.register(this);
       }
       
@@ -102,9 +107,11 @@ package net.wg.gui.lobby.storage
          this.menu.dispose();
          this.menu = null;
          this.content.removeEventListener(ViewStackEvent.NEED_UPDATE,this.onContentNeedUpdateHandler);
+         this.content.addEventListener(ViewStackEvent.VIEW_CHANGED,this.onContentViewChangedHandler);
          this.content.dispose();
          this.content = null;
          this.noItemsView.removeEventListener(Event.CLOSE,this.onNoItemViewCloseHandler);
+         this.noItemsView.removeEventListener(Event.RESIZE,this.onNoItemsViewResizeEventHandler);
          this.noItemsView.dispose();
          this.noItemsView = null;
          App.utils.data.cleanupDynamicObject(this._sidebarCounter);
@@ -112,6 +119,7 @@ package net.wg.gui.lobby.storage
          this._sideBarCounterProps = null;
          this._counterManager.disposeCountersForContainer(COUNTER_CONTAINER_ID);
          this._counterManager = null;
+         this._hitArea = null;
          this._utils = null;
          CardConfigs.getInstance().dispose();
          super.onDispose();
@@ -178,6 +186,12 @@ package net.wg.gui.lobby.storage
          this.menu.selectedIndex = param1;
       }
       
+      public function as_setButtonCounter(param1:int, param2:int) : void
+      {
+         this._sidebarCounter[param1] = param2;
+         invalidate(SIDE_BAR_COUNTER);
+      }
+      
       public function setStateSizeBoundaries(param1:int, param2:int) : void
       {
          this.updateCounters(true);
@@ -193,29 +207,6 @@ package net.wg.gui.lobby.storage
             this.menu.itemRendererName = Linkages.SIDE_BAR_NORMAL_RENDERER;
             this._sideBarCounterProps = new CounterProps(COUNTER_NORMAL_OFFSET_X,COUNTER_NORMAL_OFFSET_Y);
          }
-         invalidate(SIDE_BAR_COUNTER);
-      }
-      
-      private function onContentNeedUpdateHandler(param1:ViewStackEvent) : void
-      {
-         var _loc2_:ICategory = ICategory(param1.view);
-         _loc2_.setHitArea(this._hitArea);
-         registerFlashComponentS(IDAAPIModule(_loc2_),param1.viewId);
-      }
-      
-      private function onMenuResizeHandler(param1:Event) : void
-      {
-         invalidate(MENU_SIZE_FLAG);
-      }
-      
-      private function onNoItemViewCloseHandler(param1:Event) : void
-      {
-         navigateToHangarS();
-      }
-      
-      public function as_setButtonCounter(param1:int, param2:int) : void
-      {
-         this._sidebarCounter[param1] = param2;
          invalidate(SIDE_BAR_COUNTER);
       }
       
@@ -238,9 +229,45 @@ package net.wg.gui.lobby.storage
             }
             else
             {
-               DebugUtils.LOG_WARNING("SideBar sectionIdx: " + _loc4_ + Errors.WASNT_FOUND);
+               DebugUtils.LOG_WARNING(WARNING_SIDEBAR_INDEX_NOT_FOUND + _loc4_ + Errors.WASNT_FOUND);
             }
          }
+      }
+      
+      private function onNoItemsViewResizeHandler() : void
+      {
+         invalidateSize();
+      }
+      
+      private function onContentViewChangedHandler(param1:ViewStackEvent) : void
+      {
+         var _loc2_:IUIComponentEx = param1.view as IUIComponentEx;
+         if(_loc2_)
+         {
+            _loc2_.invalidate(InvalidationType.LAYOUT);
+         }
+      }
+      
+      private function onNoItemsViewResizeEventHandler(param1:Event) : void
+      {
+         invalidateSize();
+      }
+      
+      private function onContentNeedUpdateHandler(param1:ViewStackEvent) : void
+      {
+         var _loc2_:ICategory = ICategory(param1.view);
+         _loc2_.setHitArea(this._hitArea);
+         registerFlashComponentS(IDAAPIModule(_loc2_),param1.viewId);
+      }
+      
+      private function onMenuResizeHandler(param1:Event) : void
+      {
+         invalidate(MENU_SIZE_FLAG);
+      }
+      
+      private function onNoItemViewCloseHandler(param1:Event) : void
+      {
+         navigateToHangarS();
       }
    }
 }

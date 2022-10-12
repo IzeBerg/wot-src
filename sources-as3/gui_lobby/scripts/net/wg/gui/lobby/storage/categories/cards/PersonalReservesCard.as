@@ -5,6 +5,7 @@ package net.wg.gui.lobby.storage.categories.cards
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
    import net.wg.gui.components.controls.BitmapFill;
+   import net.wg.gui.components.controls.Image;
    import net.wg.infrastructure.managers.ITooltipMgr;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.motion.Tween;
@@ -26,6 +27,8 @@ package net.wg.gui.lobby.storage.categories.cards
       public var disabledTF:TextField;
       
       public var alertTF:TextField;
+      
+      public var cornerImage:Image;
       
       private var _toolTipMgr:ITooltipMgr;
       
@@ -49,8 +52,8 @@ package net.wg.gui.lobby.storage.categories.cards
       override protected function configUI() : void
       {
          super.configUI();
+         this.cornerImage.source = RES_ICONS.MAPS_ICONS_PERSONAL_RESERVES_LIMITED_LIGHT;
          this.activatedTF.mouseEnabled = this.activatedTF.mouseWheelEnabled = false;
-         this.activatedTF.text = STORAGE.PERSONALRESERVES_CARD_ACTIVATED;
          this.activatedTF.autoSize = TextFieldAutoSize.LEFT;
          this.disabledTF.mouseEnabled = this.disabledTF.mouseWheelEnabled = false;
          this.disabledTF.text = STORAGE.PERSONALRESERVES_CARD_NOTAVAILABLE;
@@ -73,7 +76,27 @@ package net.wg.gui.lobby.storage.categories.cards
             this.alertTF.htmlText = _data.additionalInfo;
             inInventoryCountTF.visible = inInventoryIcon.visible = _data.count > 0;
             inInventoryCountTF.text = _data.count.toString();
-            this.activatedTF.visible = _data.active;
+            if(_data.active)
+            {
+               this.activatedTF.htmlText = "";
+               this.activatedTF.text = STORAGE.PERSONALRESERVES_CARD_ACTIVATED;
+               this.activatedTF.visible = true;
+               this.cornerImage.visible = false;
+            }
+            else if(_data.customData && _data.customData.hasOwnProperty("expiryTime"))
+            {
+               this.activatedTF.text = "";
+               this.activatedTF.htmlText = _data.customData["expiryTime"];
+               this.activatedTF.visible = true;
+               this.cornerImage.visible = true;
+            }
+            else
+            {
+               this.activatedTF.htmlText = "";
+               this.activatedTF.text = "";
+               this.cornerImage.visible = false;
+               this.activatedTF.visible = false;
+            }
             this.disabledTF.visible = !_data.available;
             sellButton.visible = _data.enabled;
             if(_resetViewOnDataChange)

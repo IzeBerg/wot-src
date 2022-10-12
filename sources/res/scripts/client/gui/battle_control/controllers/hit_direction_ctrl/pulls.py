@@ -4,12 +4,14 @@ import BigWorld, SoundGroups
 from AtGunpoint import ARTY_HIT_PREDICTION_EPSILON_YAW
 from account_helpers.settings_core.settings_constants import DAMAGE_INDICATOR
 from gui import GUI_SETTINGS
+from gui.battle_control import avatar_getter
 from gui.battle_control.battle_constants import HIT_FLAGS, HIT_INDICATOR_MAX_ON_SCREEN
 from gui.battle_control.battle_constants import PREDICTION_INDICATOR_MAX_ON_SCREEN
 from gui.battle_control.controllers.hit_direction_ctrl.base import HitDirection
 from helpers import dependency
 from math_utils import almostZero
 from skeletons.account_helpers.settings_core import ISettingsCore
+from skeletons.gui.battle_session import IBattleSessionProvider
 _AGGREGATED_HIT_BITS = HIT_FLAGS.IS_BLOCKED | HIT_FLAGS.HP_DAMAGE | HIT_FLAGS.IS_CRITICAL
 
 class BaseHitPull(object):
@@ -158,6 +160,7 @@ class BaseHitPull(object):
 
 class HitDamagePull(BaseHitPull):
     settingsCore = dependency.descriptor(ISettingsCore)
+    __sessionProvider = dependency.descriptor(IBattleSessionProvider)
 
     def __init__(self):
         super(HitDamagePull, self).__init__()
@@ -177,9 +180,16 @@ class HitDamagePull(BaseHitPull):
         isCriticalNoDamage = hitData.isCritical() and hitData.getDamage() == 0
         if self.__damageIndicatorExtType and not self.__damageIndicatorCrits and isCriticalNoDamage:
             return False
-        if self.__damageIndicatorExtType and not self.__damageIndicatorAllies and hitData.isFriendlyFire():
-            return False
-        return True
+        else:
+            if self.__damageIndicatorExtType and not self.__damageIndicatorAllies and hitData.isFriendlyFire():
+                return False
+            vehStateCtrl = self.__sessionProvider.shared.vehicleState
+            if vehStateCtrl is not None:
+                if vehStateCtrl.isInPostmortem:
+                    return False
+                if vehStateCtrl.getControllingVehicleID() != avatar_getter.getPlayerVehicleID():
+                    return False
+            return True
 
     def _compareHits(self, hitData, newHitData):
         if newHitData.getAttackerID() == hitData.getAttackerID():

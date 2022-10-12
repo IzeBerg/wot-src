@@ -48,6 +48,14 @@ package net.wg.gui.lobby.techtree.controls
          super.onDispose();
       }
       
+      override protected function showTooltip() : void
+      {
+         if(StringUtils.isNotEmpty(this._nation))
+         {
+            App.toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.VEHICLE_COLLECTOR_INFO,null,this._nation);
+         }
+      }
+      
       private function updateLayout() : void
       {
          this.bgSmallMc.visible = this._isSmall;
@@ -69,22 +77,14 @@ package net.wg.gui.lobby.techtree.controls
          }
       }
       
-      public function set nation(param1:String) : void
-      {
-         this._nation = param1;
-      }
-      
       public function get nation() : String
       {
          return this._nation;
       }
       
-      override protected function showTooltip() : void
+      public function set nation(param1:String) : void
       {
-         if(App.toolTipMgr != null && StringUtils.isNotEmpty(this._nation))
-         {
-            App.toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.VEHICLE_COLLECTOR_INFO,null,this._nation);
-         }
+         this._nation = param1;
       }
    }
 }

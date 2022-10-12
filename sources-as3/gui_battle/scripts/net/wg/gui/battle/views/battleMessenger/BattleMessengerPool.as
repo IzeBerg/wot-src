@@ -28,10 +28,13 @@ package net.wg.gui.battle.views.battleMessenger
       
       private var _disposed:Boolean = false;
       
+      private var _messagesAvailableWidth:int;
+      
       public function BattleMessengerPool(param1:int, param2:int, param3:int, param4:Number, param5:Number, param6:int, param7:String, param8:BattleSmileyMap, param9:Function = null)
       {
          var _loc10_:BattleMessage = null;
          var _loc11_:int = 0;
+         this._messagesAvailableWidth = BattleMessage.DEFAULT_TEXT_WIDTH;
          super();
          this._lifeTime = param2;
          this._alphaSpeed = param3;
@@ -52,7 +55,7 @@ package net.wg.gui.battle.views.battleMessenger
             _loc11_ = 0;
             while(_loc11_ < param1)
             {
-               _loc10_ = new BattleMessage(this._lifeTime,this._alphaSpeed,this._lastMessageAlpha,this._recoveredLatestMessagesAlpha,this._recoveredMessagesLifeTime,this.deleteItem,param9);
+               _loc10_ = new BattleMessage(this._lifeTime,this._alphaSpeed,this._lastMessageAlpha,this._recoveredLatestMessagesAlpha,this._recoveredMessagesLifeTime,this.deleteItem,param9,this._messagesAvailableWidth);
                _loc10_.setRenderer(this._renderer);
                this._battleSmileyMap.mapText(_loc10_.messageField);
                this._items[_loc11_] = _loc10_;
@@ -66,7 +69,7 @@ package net.wg.gui.battle.views.battleMessenger
          var _loc2_:BattleMessage = null;
          if(this._isUnlimitedMessageStack)
          {
-            _loc2_ = new BattleMessage(this._lifeTime,this._alphaSpeed,this._lastMessageAlpha,this._recoveredLatestMessagesAlpha,this._recoveredMessagesLifeTime,this.deleteItem,param1);
+            _loc2_ = new BattleMessage(this._lifeTime,this._alphaSpeed,this._lastMessageAlpha,this._recoveredLatestMessagesAlpha,this._recoveredMessagesLifeTime,this.deleteItem,param1,this._messagesAvailableWidth);
             _loc2_.setRenderer(this._renderer);
             this._battleSmileyMap.mapText(_loc2_.messageField);
             this._items.push(_loc2_);
@@ -91,6 +94,16 @@ package net.wg.gui.battle.views.battleMessenger
          this._items[_loc4_] = param1;
          this._items[_loc2_] = _loc3_;
          return true;
+      }
+      
+      public function setAvailableWidth(param1:int) : void
+      {
+         var _loc2_:BattleMessage = null;
+         this._messagesAvailableWidth = param1;
+         for each(_loc2_ in this._items)
+         {
+            _loc2_.setAvailableWidth(this._messagesAvailableWidth);
+         }
       }
       
       public final function dispose() : void

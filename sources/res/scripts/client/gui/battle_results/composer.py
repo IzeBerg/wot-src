@@ -20,7 +20,7 @@ class IStatsComposer(object):
         raise NotImplementedError
 
     @staticmethod
-    def onShowResults(arenaUniqueID, isPostbattle20Enabled=False):
+    def onShowResults(arenaUniqueID):
         raise NotImplementedError
 
     @staticmethod
@@ -37,7 +37,7 @@ class StatsComposer(IStatsComposer):
         self._registerTabs(reusable)
         self._block.addNextComponent(text)
         self._block.addNextComponent(templates.VEHICLE_PROGRESS_STATS_BLOCK.clone())
-        self._block.addNextComponent(templates.BATTLE_PASS_PROGRESS_STATS_BLOCK.clone())
+        self._block.addNextComponent(self._getBattlePassBlock().clone())
         self._block.addNextComponent(templates.QUESTS_PROGRESS_STATS_BLOCK.clone())
         self._block.addNextComponent(templates.DOG_TAGS_PROGRESS_STATS_BLOCK.clone())
         self._block.addNextComponent(common)
@@ -70,8 +70,8 @@ class StatsComposer(IStatsComposer):
         return animation
 
     @staticmethod
-    def onShowResults(arenaUniqueID, isPostbattle20Enabled=False):
-        return event_dispatcher.showBattleResultsWindow(arenaUniqueID, isPostbattle20Enabled)
+    def onShowResults(arenaUniqueID):
+        return event_dispatcher.showBattleResultsWindow(arenaUniqueID)
 
     @staticmethod
     def onResultsPosted(arenaUniqueID):
@@ -82,6 +82,10 @@ class StatsComposer(IStatsComposer):
             self._block.addNextComponent(templates.MULTI_TEAM_TABS_BLOCK.clone())
         else:
             self._block.addNextComponent(templates.REGULAR_TABS_BLOCK.clone())
+
+    @staticmethod
+    def _getBattlePassBlock():
+        return templates.BATTLE_PASS_PROGRESS_STATS_BLOCK
 
 
 class RegularStatsComposer(StatsComposer):
@@ -180,7 +184,7 @@ class BattleRoyaleStatsComposer(IStatsComposer):
         pass
 
     @staticmethod
-    def onShowResults(arenaUniqueID, isPostbattle20Enabled=False):
+    def onShowResults(arenaUniqueID):
         return
 
     @staticmethod
@@ -208,7 +212,7 @@ class BootcampStatsComposer(IStatsComposer):
         return
 
     @staticmethod
-    def onShowResults(arenaUniqueID, isPostbattle20Enabled=False):
+    def onShowResults(arenaUniqueID):
         return event_dispatcher.showBattleResultsWindow(arenaUniqueID)
 
     @staticmethod
@@ -237,7 +241,7 @@ class MapsTrainingStatsComposer(IStatsComposer):
         pass
 
     @staticmethod
-    def onShowResults(arenaUniqueID, isPostbattle20Enabled=False):
+    def onShowResults(arenaUniqueID):
         MapsTrainingStatsComposer._fromNotifications.add(arenaUniqueID)
 
     @staticmethod
@@ -246,6 +250,18 @@ class MapsTrainingStatsComposer(IStatsComposer):
         event_dispatcher.showMapsTrainingResultsWindow(arenaUniqueID, isFromNotifications)
         if isFromNotifications:
             MapsTrainingStatsComposer._fromNotifications.remove(arenaUniqueID)
+
+
+class Comp7StatsComposer(StatsComposer):
+
+    def __init__(self, reusable):
+        super(Comp7StatsComposer, self).__init__(reusable, templates.COMP7_COMMON_STATS_BLOCK.clone(), templates.COMP7_PERSONAL_STATS_BLOCK.clone(), templates.COMP7_TEAMS_STATS_BLOCK.clone(), templates.REGULAR_TEXT_STATS_BLOCK.clone())
+        self._block.addNextComponent(templates.PROGRESSIVE_REWARD_VO.clone())
+        self._block.addNextComponent(templates.EFFICIENCY_TITLE_WITH_SKILLS_VO.clone())
+
+    @staticmethod
+    def _getBattlePassBlock():
+        return templates.COMP7_BATTLE_PASS_PROGRESS_STATS_BLOCK
 
 
 def createComposer(reusable):
@@ -270,6 +286,8 @@ def createComposer(reusable):
         composer = BattleRoyaleStatsComposer(reusable)
     elif bonusType == ARENA_BONUS_TYPE.MAPS_TRAINING:
         composer = MapsTrainingStatsComposer(reusable)
+    elif bonusType == ARENA_BONUS_TYPE.COMP7:
+        composer = Comp7StatsComposer(reusable)
     else:
         composer = RegularStatsComposer(reusable)
     return composer

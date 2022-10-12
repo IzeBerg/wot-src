@@ -146,6 +146,7 @@ package net.wg.gui.components.carousels
       private function onRolesContainerResizeHandler(param1:Event) : void
       {
          invalidateSize();
+         validateNow();
       }
    }
 }

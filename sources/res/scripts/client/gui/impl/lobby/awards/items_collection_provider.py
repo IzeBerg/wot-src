@@ -1,7 +1,7 @@
 import logging
 from copy import deepcopy
 import typing
-from adisp import async, process
+from adisp import adisp_async, adisp_process
 from gui.battle_pass.battle_pass_award import awardsFactory
 from gui.impl.lobby.awards.packers import getMultipleAwardsBonusPacker
 from gui.impl.lobby.awards.prefetch import PREFETCHERS
@@ -119,8 +119,8 @@ class _OrderHelper(object):
         return
 
 
-@async
-@process
+@adisp_async
+@adisp_process
 def packBonusModelAndTooltipData(bonuses, productCode, callback=None):
     bonusIndexTotal = 0
     tooltipData = {}
@@ -157,8 +157,8 @@ def packBonusModelAndTooltipData(bonuses, productCode, callback=None):
 class MultipleAwardRewardsMainPacker(object):
     __purchaseCache = dependency.descriptor(IPurchaseCache)
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def getWholeBonusesData(self, invoiceData, productCode, callback=None):
         yield lambda callback: callback(True)
         metaData = invoiceData.get('meta', {})

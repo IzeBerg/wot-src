@@ -1,7 +1,7 @@
 import collections, time, itertools, logging, types, weakref
 from functools import partial, wraps
 import typing, BigWorld
-from adisp import async
+from adisp import adisp_async
 if typing.TYPE_CHECKING:
     from typing import Callable, Dict, Iterable, List, Optional, Sequence, Tuple, Type, TypeVar, Union
     T = TypeVar('T')
@@ -275,7 +275,7 @@ def nextTick(func):
     return wrapper
 
 
-@async
+@adisp_async
 def awaitNextFrame(callback):
     BigWorld.callback(0.0, partial(callback, None))
     return

@@ -9,17 +9,18 @@ from gui import makeHtmlString
 from gui.Scaleform.locale.BOOTCAMP import BOOTCAMP
 from gui.battle_results.components import base
 from gui.battle_results.components.common import makeRegularFinishResultLabel
-from gui.battle_results.br_constants import PlayerTeamResult
+from gui.battle_results.settings import PLAYER_TEAM_RESULT
 from gui.impl import backport
 from gui.impl.gen import R
 from helpers import dependency
+from helpers.bots import preprocessBotName
 from shared_utils import first
 from skeletons.gui.game_control import IBootcampController
 _logger = logging.getLogger(__name__)
 _BG_FOLDER_PATH = '../maps/icons/bootcamp/battle_result/background/'
-_BG_IMAGE_FORMATS = {PlayerTeamResult.WIN: 'bcVictoryBg_{0}.png', 
-   PlayerTeamResult.DEFEAT: 'bcDefeat.png', 
-   PlayerTeamResult.DRAW: 'bcDraw.png'}
+_BG_IMAGE_FORMATS = {PLAYER_TEAM_RESULT.WIN: 'bcVictoryBg_{0}.png', 
+   PLAYER_TEAM_RESULT.DEFEAT: 'bcDefeat.png', 
+   PLAYER_TEAM_RESULT.DRAW: 'bcDraw.png'}
 _STAT_ICON_PATH = '../maps/icons/bootcamp/battle_result/{0}.png'
 _STAT_ICON_TOOLTIP_PATH = '../maps/icons/bootcamp/battle_result/tooltip/{0}.png'
 _PREMIUM_RESOURCES = {PREMIUM_ENTITLEMENTS.BASIC: {'icon': backport.image(R.images.gui.maps.icons.bootcamp.rewards.bcPremium()), 
@@ -34,14 +35,14 @@ _PREMIUM_RESOURCES = {PREMIUM_ENTITLEMENTS.BASIC: {'icon': backport.image(R.imag
 def isTechnicalWin(record, reusable):
     teamResult = reusable.getPersonalTeamResult()
     isBattleGoalCompleted = record['personal']['avatar']['vseBattleResults'].get('battleGoalCompleted', False)
-    return teamResult != PlayerTeamResult.WIN and isBattleGoalCompleted
+    return teamResult != PLAYER_TEAM_RESULT.WIN and isBattleGoalCompleted
 
 
 class BackgroundItem(base.StatsItem):
     __slots__ = ()
 
     def _convert(self, record, reusable):
-        teamResult = PlayerTeamResult.DRAW if isTechnicalWin(record, reusable) else reusable.getPersonalTeamResult()
+        teamResult = PLAYER_TEAM_RESULT.DRAW if isTechnicalWin(record, reusable) else reusable.getPersonalTeamResult()
         lessonNum = g_bootcamp.getLessonNum() - 1
         value = _BG_FOLDER_PATH + _BG_IMAGE_FORMATS[teamResult].format(lessonNum)
         return value
@@ -52,7 +53,7 @@ class RewardsBlock(base.StatsBlock):
 
     def setRecord(self, result, reusable):
         teamResult = reusable.getPersonalTeamResult()
-        if not isTechnicalWin(result, reusable) and teamResult != PlayerTeamResult.WIN:
+        if not isTechnicalWin(result, reusable) and teamResult != PLAYER_TEAM_RESULT.WIN:
             return
         bootcampController = dependency.instance(IBootcampController)
         lessonNum = g_bootcamp.getLessonNum()
@@ -61,9 +62,9 @@ class RewardsBlock(base.StatsBlock):
         goldPremuimExtras = []
         showPremium = lessonNum == lastLessonNum and bootcampController.needAwarding()
         if showPremium:
-            premiumType = g_bootcamp.getPremiumType(lessonNum)
+            premiumType = g_bootcamp.getPremiumType()
             if premiumType not in _PREMIUM_RESOURCES:
-                _logger.error('Premium type %s is not supported or it is not in the bonuses')
+                _logger.error('Premium type %s is not supported or it is not in the bonuses', premiumType)
             else:
                 goldPremuimExtras.append({'id': premiumType, 
                    'label': _PREMIUM_RESOURCES[premiumType]['label'], 
@@ -85,7 +86,7 @@ class HasUnlocksFlag(base.StatsItem):
 
     def _convert(self, record, reusable):
         teamResult = reusable.getPersonalTeamResult()
-        if teamResult != PlayerTeamResult.WIN:
+        if teamResult != PLAYER_TEAM_RESULT.WIN:
             return False
         bootcampController = dependency.instance(IBootcampController)
         lessonNum = g_bootcamp.getLessonNum()
@@ -102,7 +103,7 @@ class StatsBlock(base.StatsBlock):
     def setRecord(self, result, reusable):
         info = reusable.getPersonalVehiclesInfo(result['personal'])
         teamResult = reusable.getPersonalTeamResult()
-        if teamResult == PlayerTeamResult.WIN or isTechnicalWin(result, reusable):
+        if teamResult == PLAYER_TEAM_RESULT.WIN or isTechnicalWin(result, reusable):
             battleStats = g_bootcamp.getBattleStatsLessonWin()
         else:
             battleStats = g_bootcamp.getBattleStatsLessonDefeat()
@@ -144,7 +145,7 @@ class FinishReasonItem(base.StatsItem):
 
     def _convert(self, record, reusable):
         if isTechnicalWin(record, reusable):
-            return PlayerTeamResult.WIN
+            return PLAYER_TEAM_RESULT.WIN
         return reusable.getPersonalTeamResult()
 
 
@@ -152,8 +153,8 @@ class ShowRewardsFlag(base.StatsItem):
     __slots__ = ()
 
     def _convert(self, record, reusable):
-        credit = reusable.economics.getBaseCreditsRecords().getRecord('credits')
-        xp = reusable.economics.getBaseXPRecords().getRecord('xp')
+        credit = reusable.personal.getBaseCreditsRecords().getRecord('credits')
+        xp = reusable.personal.getBaseXPRecords().getRecord('xp')
         return credit != 0 or xp != 0
 
 
@@ -171,8 +172,7 @@ class PlayerResultItem(base.StatsItem):
         if killerID not in record['common']['bots']:
             return makeHtmlString('html_templates:bootcamp/player_status', 'dead', ctx=ctx)
         killerName = record['common']['bots'][killerID][1]
-        killerName = makeString('#bootcamp:' + killerName)
-        ctx['killer'] = killerName
+        ctx['killer'] = preprocessBotName(killerName)
         return makeHtmlString('html_templates:bootcamp/player_status', 'killed', ctx=ctx)
 
 
@@ -183,7 +183,7 @@ class VideoButtonsItem(base.StatsItem):
         player = BigWorld.player()
         teamResult = reusable.getPersonalTeamResult()
         buttons = g_bootcamp.getInterludeVideoButtons()
-        if player.spaFlags.getFlag(SPA_ATTRS.BOOTCAMP_VIDEO_DISABLED) or teamResult != PlayerTeamResult.WIN and not isTechnicalWin(record, reusable) or not buttons:
+        if player.spaFlags.getFlag(SPA_ATTRS.BOOTCAMP_VIDEO_DISABLED) or teamResult != PLAYER_TEAM_RESULT.WIN and not isTechnicalWin(record, reusable) or not buttons:
             return None
         return buttons
 
@@ -192,7 +192,7 @@ class CreditsBlock(base.StatsBlock):
     __slots__ = ()
 
     def setRecord(self, result, reusable):
-        intVal = reusable.economics.getBaseCreditsRecords().getRecord('credits')
+        intVal = reusable.personal.getBaseCreditsRecords().getRecord('credits')
         strVal = backport.getGoldFormat(intVal)
         self.addNextComponent(base.DirectStatsItem('value', intVal))
         self.addNextComponent(base.DirectStatsItem('str', strVal))
@@ -202,7 +202,7 @@ class XPBlock(base.StatsBlock):
     __slots__ = ()
 
     def setRecord(self, result, reusable):
-        intVal = reusable.economics.getBaseXPRecords().getRecord('xp')
+        intVal = reusable.personal.getBaseXPRecords().getRecord('xp')
         strVal = backport.getIntegralFormat(intVal)
         self.addNextComponent(base.DirectStatsItem('value', intVal))
         self.addNextComponent(base.DirectStatsItem('str', strVal))

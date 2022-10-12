@@ -205,7 +205,7 @@ package net.wg.gui.lobby.techtree.nodes
       override protected function draw() : void
       {
          super.draw();
-         if(isInvalid(InvalidationType.DATA) && this._nodeData && this._data)
+         if(this._nodeData && this._data && isInvalid(InvalidationType.DATA))
          {
             this.populateUI();
             invalidateLayout();
@@ -251,7 +251,7 @@ package net.wg.gui.lobby.techtree.nodes
          {
             _loc2_ = ColorIndex.UNLOCKED;
          }
-         else if(this.isNext2Unlock() && param1 && param1.isUnlocked())
+         else if(param1 && param1.isUnlocked() && this.isNext2Unlock())
          {
             _loc2_ = ColorIndex.UNLOCKED;
          }
@@ -447,6 +447,7 @@ package net.wg.gui.lobby.techtree.nodes
       
       private function populateUI() : void
       {
+         var _loc1_:String = null;
          this.vehicleButton.setData(this._data.vehicleButton);
          this.blueprintBar.visible = this.canHaveBlueprint();
          if(this.blueprintBar.visible)
@@ -463,7 +464,7 @@ package net.wg.gui.lobby.techtree.nodes
          }
          this.collectibleStatus.visible = this.isCollectible();
          this.price.visible = this._nodeState != NodeRendererState.ROOT_HANGAR && this._nodeState != NodeRendererState.ROOT_COLLECTIBLE;
-         if(this.price.visible && this._data && this._data.itemPrices)
+         if(this._data && this.price.visible && this._data.itemPrices)
          {
             this.price.setData(new ItemPriceVO(this._data.itemPrices[0]));
          }
@@ -475,7 +476,6 @@ package net.wg.gui.lobby.techtree.nodes
          {
             this.discountBanner.setData(this._data.discountStr,this.isLocked() || this.isNext2Unlock());
          }
-         var _loc1_:String = Values.EMPTY_STR;
          switch(this._nodeState)
          {
             case NodeRendererState.ROOT_BUY:
@@ -602,7 +602,7 @@ package net.wg.gui.lobby.techtree.nodes
       
       private function setupOrRemoveExtraBtn(param1:UniversalBtn, param2:Boolean) : UniversalBtn
       {
-         if(param1 == null && param2)
+         if(param2 && param1 == null)
          {
             param1 = this._classFactory.getComponent(Linkages.BUTTON_UNIVERSAL_HEAVY,UniversalBtn);
             this._universalBtnStyles.setStyle(param1,UniversalBtnStylesConst.STYLE_HEAVY_BLACK);
@@ -610,7 +610,7 @@ package net.wg.gui.lobby.techtree.nodes
             param1.addEventListener(ButtonEvent.CLICK,this.onExtraButtonClickHandler,false,0,true);
             this.addChild(param1);
          }
-         else if(param1 != null && !param2)
+         else if(!param2 && param1 != null)
          {
             param1.removeEventListener(ButtonEvent.CLICK,this.onExtraButtonClickHandler);
             this.removeChild(param1);
@@ -724,10 +724,6 @@ package net.wg.gui.lobby.techtree.nodes
       private function onButtonRollOverHandler(param1:MouseEvent) : void
       {
          var _loc2_:String = null;
-         if(!this._tooltipMgr)
-         {
-            return;
-         }
          if(this.isCollectible())
          {
             if(this.actionButton.enabled)
@@ -755,10 +751,7 @@ package net.wg.gui.lobby.techtree.nodes
       
       private function onButtonRollOutHandler(param1:MouseEvent) : void
       {
-         if(this._tooltipMgr)
-         {
-            this._tooltipMgr.hide();
-         }
+         this._tooltipMgr.hide();
       }
       
       private function onBlueprintBarClickHandler(param1:ButtonEvent) : void
@@ -809,16 +802,6 @@ package net.wg.gui.lobby.techtree.nodes
          {
             dispatchEvent(new TechTreeEvent(TechTreeEvent.GO_TO_CHANGE_NATION_VIEW));
          }
-      }
-      
-      private function onPostProgressionBtnRollOverHandler(param1:MouseEvent) : void
-      {
-         this._tooltipMgr.showWulfTooltip(TOOLTIPS_CONSTANTS.VEH_POST_PROGRESSION_ENTRY_POINT,this._data.vehicleButton.vehicleId);
-      }
-      
-      private function onPostProgressionBtnRollOutHandler(param1:MouseEvent) : void
-      {
-         this._tooltipMgr.hide();
       }
    }
 }

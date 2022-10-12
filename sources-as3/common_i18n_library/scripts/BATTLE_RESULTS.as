@@ -121,6 +121,8 @@ package
       
       public static const COMMON_BATTLEEFFICIENCYWITHOUTOREDERS_TITLE:String = "#battle_results:common/battleEfficiencyWithoutOreders/title";
       
+      public static const COMMON_BATTLEEFFICIENCYWITHSKILLS_TITLE:String = "#battle_results:common/battleEfficiencyWithSkills/title";
+      
       public static const COMMON_BATTLEEFFICIENCY_ALLIES:String = "#battle_results:common/battleEfficiency/allies";
       
       public static const COMMON_BATTLEEFFICIENCY_NONE:String = "#battle_results:common/battleEfficiency/none";
@@ -168,6 +170,8 @@ package
       public static const COMMON_RESEARCHPREDICTION:String = "#battle_results:common/researchPrediction";
       
       public static const COMMON_NEWSKILLPREDICTION:String = "#battle_results:common/newSkillPrediction";
+      
+      public static const COMMON_CREWMEMBER_NEWFREESKILL:String = "#battle_results:common/crewMember/newFreeSkill";
       
       public static const COMMON_CREWMEMBER_NEWSKILL:String = "#battle_results:common/crewMember/newSkill";
       
@@ -294,6 +298,8 @@ package
       public static const COMMON_VEHICLESTATE_DEAD6:String = "#battle_results:common/vehicleState/dead6";
       
       public static const COMMON_VEHICLESTATE_DEAD7:String = "#battle_results:common/vehicleState/dead7";
+      
+      public static const COMMON_VEHICLESTATE_DEAD13:String = "#battle_results:common/vehicleState/dead13";
       
       public static const COMMON_VEHICLESTATE_DEAD27:String = "#battle_results:common/vehicleState/dead27";
       
@@ -541,6 +547,14 @@ package
       
       public static const TEAM_STATS_MILEAGE:String = "#battle_results:team/stats/mileage";
       
+      public static const TEAM_STATS_LABELS_DAMAGEDEALTBYSKILLS:String = "#battle_results:team/stats/labels_damageDealtBySkills";
+      
+      public static const TEAM_STATS_LABELS_HEALED:String = "#battle_results:team/stats/labels_healed";
+      
+      public static const TEAM_STATS_LABELS_CAPTUREDPOINTSOFINTEREST:String = "#battle_results:team/stats/labels_capturedPointsOfInterest";
+      
+      public static const TEAM_STATS_LABELS_ROLESKILLUSED:String = "#battle_results:team/stats/labels_roleSkillUsed";
+      
       public static const TEAM_STATS_CLOSE:String = "#battle_results:team/stats/close";
       
       public static const TEAM_RANKHEADER_HEADER:String = "#battle_results:team/rankHeader/header";
@@ -616,6 +630,8 @@ package
       public static const DETAILS_CALCULATIONS_FAIRPLAYVIOLATION_DESERTER:String = "#battle_results:details/calculations/fairPlayViolation/deserter";
       
       public static const DETAILS_CALCULATIONS_FAIRPLAYVIOLATION_EPIC_DESERTER:String = "#battle_results:details/calculations/fairPlayViolation/epic_deserter";
+      
+      public static const DETAILS_CALCULATIONS_FAIRPLAYVIOLATION_COMP7_DESERTER:String = "#battle_results:details/calculations/fairPlayViolation/comp7_deserter";
       
       public static const DETAILS_CALCULATIONS_FAIRPLAYVIOLATION_AFK:String = "#battle_results:details/calculations/fairPlayViolation/afk";
       

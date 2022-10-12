@@ -177,6 +177,14 @@ package
       
       public static const DETAILSHELP_ENGINEMODE_ENGINEMODEPAGE2:String = "#ingame_help:detailsHelp/engineMode/engineModePage2";
       
+      public static const DETAILSHELP_ROCKETACCELERATION_PAGE1_TITLE:String = "#ingame_help:detailsHelp/rocketAcceleration/page1/title";
+      
+      public static const DETAILSHELP_ROCKETACCELERATION_PAGE1:String = "#ingame_help:detailsHelp/rocketAcceleration/page1";
+      
+      public static const DETAILSHELP_ROCKETACCELERATION_PAGE2_TITLE:String = "#ingame_help:detailsHelp/rocketAcceleration/page2/title";
+      
+      public static const DETAILSHELP_ROCKETACCELERATION_PAGE2:String = "#ingame_help:detailsHelp/rocketAcceleration/page2";
+      
       public static const DETAILSHELP_NOKEYSWARNING:String = "#ingame_help:detailsHelp/noKeysWarning";
       
       public static const DETAILSHELP_BATTLEROYALE_RADAR_TITLE:String = "#ingame_help:detailsHelp/battleRoyale/radar/title";
@@ -210,6 +218,12 @@ package
       public static const DETAILSHELP_ROLE_DESCRIPTION:String = "#ingame_help:detailsHelp/role/description";
       
       public static const ROLEDESCRIPTION_MSG:String = "#ingame_help:roleDescription/msg";
+      
+      public static const DETAILSHELP_FUNRANDOM_MODE1_TITLE:String = "#ingame_help:detailsHelp/funRandom/mode1/title";
+      
+      public static const DETAILSHELP_FUNRANDOM_MODE1_DESCRIPTION:String = "#ingame_help:detailsHelp/funRandom/mode1/description";
+      
+      public static const DETAILSHELP_FUNRANDOM_TITLE:String = "#ingame_help:detailsHelp/funRandom/title";
       
       public static const RADIALMENU_ATTENTION_TO_POSITION:String = "#ingame_help:radialMenu/attention_to_position";
       

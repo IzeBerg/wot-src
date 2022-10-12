@@ -339,7 +339,7 @@ package net.wg.gui.lobby.header.headerButtonBar
          {
             this._helpLayout.unregisterComponent(this);
          }
-         mouseEnabledOnDisabled = this._dataVo.id == HeaderButtonsHelper.ITEM_ID_PREM || this._dataVo.id == HeaderButtonsHelper.ITEM_ID_SQUAD || this._dataVo.id == HeaderButtonsHelper.ITEM_ID_WOT_PLUS;
+         mouseEnabledOnDisabled = this._dataVo.id == HeaderButtonsHelper.ITEM_ID_PREM || this._dataVo.id == HeaderButtonsHelper.ITEM_ID_WOT_PLUS || this._dataVo.id == HeaderButtonsHelper.ITEM_ID_SQUAD;
          invalidate(_loc2_);
       }
       
@@ -384,7 +384,7 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       private function get disableMcVisible() : Boolean
       {
-         return !this._dataVo.enabled && this._dataVo.id != HeaderButtonsHelper.ITEM_ID_SQUAD && this._dataVo.id != HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR;
+         return !this._dataVo.enabled && this._dataVo.id != HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR;
       }
       
       private function onContentHbcSizeUpdatedHandler(param1:HeaderEvents) : void

@@ -34,7 +34,9 @@ package net.wg.gui.battle.views.battleEndWarning
       override protected function onDispose() : void
       {
          addFrameScript(this._hideCompletedFrameScript,null);
+         this.background.hitArea = null;
          this.background = null;
+         this.timer.hitArea = null;
          this.timer.dispose();
          this.timer = null;
          super.onDispose();
@@ -46,6 +48,8 @@ package net.wg.gui.battle.views.battleEndWarning
          this.visible = false;
          this._hideCompletedFrameScript = totalFrames - 1;
          addFrameScript(this._hideCompletedFrameScript,this.onHideComplete);
+         App.utils.commons.addEmptyHitArea(this.background);
+         App.utils.commons.addEmptyHitArea(this.timer);
       }
       
       public function as_setState(param1:Boolean) : void

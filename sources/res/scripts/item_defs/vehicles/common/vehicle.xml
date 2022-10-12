@@ -222,55 +222,11 @@
 				</visionRadius>
 			</gameplayFactors>
 		</overturn>
-		<anti_overturn>
-			NoneExtra : AntiOverturn
-			<recoverDelay>
-				8.0
-				<!--BW_String-->
-			</recoverDelay>
-			<isOnboardShotAllowed>true</isOnboardShotAllowed>
-			<gameplayFactors>
-				<reloadTime>
-					2.0
-					<!--BW_String-->
-				</reloadTime>
-				<turretRotationSpeed>
-					0.5
-					<!--BW_String-->
-				</turretRotationSpeed>
-				<gunRotationSpeed>
-					0.5
-					<!--BW_String-->
-				</gunRotationSpeed>
-				<aimingTime>
-					2.0
-					<!--BW_String-->
-				</aimingTime>
-				<shotDispersion>
-					2.0
-					<!--BW_String-->
-				</shotDispersion>
-				<visionRadius>
-					0.5
-					<!--BW_String-->
-				</visionRadius>
-			</gameplayFactors>
-		</anti_overturn>
 		<drowning>NoneExtra : Drowning</drowning>
 		<burnout>NoneExtra : Burnout</burnout>
 		<afterburning>NoneExtra : Afterburning</afterburning>
-		<builtinAfterburning_wt>NoneExtra : VisualScriptEquipment</builtinAfterburning_wt>
-		<builtinImpulse_wt>NoneExtra : VisualScriptEquipment</builtinImpulse_wt>
-		<builtinLargeMedkit_wt>NoneExtra : Repairkit</builtinLargeMedkit_wt>
-		<builtinRepairkit_wt>NoneExtra : Repairkit</builtinRepairkit_wt>
-		<builtinInstantStunShoot_wt>NoneExtra : VisualScriptEquipment</builtinInstantStunShoot_wt>
-		<builtinShield_wt>NoneExtra : VisualScriptEquipment</builtinShield_wt>
-		<builtinStronghold_wt>NoneExtra : VisualScriptEquipment</builtinStronghold_wt>
-		<builtinChargedShot_wt>NoneExtra : VisualScriptEquipment</builtinChargedShot_wt>
-		<builtinDrop_wt>NoneExtra : VisualScriptEquipment</builtinDrop_wt>
-		<builtinTeleport_wt>NoneExtra : VisualScriptEquipment</builtinTeleport_wt>
-		<builtinOverload_wt>NoneExtra : VisualScriptEquipment</builtinOverload_wt>
-		<builtinAbsorb_wt>NoneExtra : VisualScriptEquipment</builtinAbsorb_wt>
+		<exampleAbility>NoneExtra : VisualScriptEquipmentExtra</exampleAbility>
+		<poi_radar>NoneExtra : VisualScriptEquipmentExtra</poi_radar>
 		<engineHealth>
 			DamageMarker : EngineHealth
 			<sounds>
@@ -451,7 +407,7 @@
 		</laserSight>
 		<large_repairkit_battle_royale>NoneExtra : RepairkitBattleRoyale</large_repairkit_battle_royale>
 		<overturn_battle_royale>
-			NoneExtra : AntiOverturn
+			NoneExtra : OverturnBattleRoyale
 			<isOnboardShotAllowed>true</isOnboardShotAllowed>
 			<gameplayFactors>
 				<reloadTime>
@@ -497,6 +453,21 @@
 		<thunderStrike>NoneExtra : ThunderStrike</thunderStrike>
 		<arcade_smoke_battle_royale>NoneExtra : Smoke</arcade_smoke_battle_royale>
 		<arcade_smoke_battle_royale_with_damage>NoneExtra : Smoke</arcade_smoke_battle_royale_with_damage>
+		<comp7_aoe_heal>NoneExtra : VisualScriptEquipmentExtra</comp7_aoe_heal>
+		<comp7_ally_support>NoneExtra : VisualScriptEquipmentExtra</comp7_ally_support>
+		<comp7_juggernaut>NoneExtra : VisualScriptEquipmentExtra</comp7_juggernaut>
+		<comp7_hunter>NoneExtra : VisualScriptEquipmentExtra</comp7_hunter>
+		<comp7_fast_recharge>NoneExtra : VisualScriptEquipmentExtra</comp7_fast_recharge>
+		<comp7_aoe_inspire>NoneExtra : VisualScriptEquipmentExtra</comp7_aoe_inspire>
+		<comp7_risky_attack>NoneExtra : VisualScriptEquipmentExtra</comp7_risky_attack>
+		<comp7_berserk>NoneExtra : VisualScriptEquipmentExtra</comp7_berserk>
+		<comp7_sniper>NoneExtra : VisualScriptEquipmentExtra</comp7_sniper>
+		<comp7_sure_shot>NoneExtra : VisualScriptEquipmentExtra</comp7_sure_shot>
+		<comp7_concentration>NoneExtra : VisualScriptEquipmentExtra</comp7_concentration>
+		<comp7_march>NoneExtra : VisualScriptEquipmentExtra</comp7_march>
+		<comp7_aggressive_detection>NoneExtra : VisualScriptEquipmentExtra</comp7_aggressive_detection>
+		<comp7_recon>NoneExtra : VisualScriptEquipmentExtra</comp7_recon>
+		<comp7_redline>NoneExtra : VisualScriptEquipmentExtra</comp7_redline>
 	</extras>
 	<deviceExtras>
 		<devices>

@@ -226,9 +226,6 @@ msgstr "Повышенный риск"
 msgid "deploymentMap/spgLimitReached"
 msgstr "Направление заблокировано — достигнут максимум по типам техники"
 
-msgid "destroy_timers/airstrike_txt"
-msgstr "Покиньте зону!"
-
 msgid "epicBattleItem/supplyPoints/body"
 msgstr ""
 "Накопив необходимое количество очков, вы сможете активировать боевые резервы"
@@ -294,12 +291,6 @@ msgstr "Атакующие ( %(lane1)s/%(lane2)s/%(lane3)s )"
 
 msgid "epictraining/info/team2LaneLabel"
 msgstr "Защищающиеся ( %(lane1)s/%(lane2)s/%(lane3)s )"
-
-msgid "equipment/healPoint/healed"
-msgstr "Восстановление прочности машины"
-
-msgid "equipment/healPoint/healing"
-msgstr "Восстановление прочности машины"
 
 msgid "game/all_enemies_defeated"
 msgstr "Вся техника противника уничтожена"
@@ -392,12 +383,6 @@ msgstr "Под атакой"
 
 msgid "in_game_rank/experience_text"
 msgstr "Опыт"
-
-msgid "inspire/inspired"
-msgstr "Воодушевление"
-
-msgid "inspire/inspiring"
-msgstr "Воодушевление"
 
 msgid "intro/card/categories/desc"
 msgstr ""
@@ -585,15 +570,6 @@ msgstr ""
 
 msgid "progress_timers/active"
 msgstr "Активна"
-
-msgid "progress_timers/base_capture"
-msgstr "Захват базы"
-
-msgid "progress_timers/blocked"
-msgstr "База оспаривается"
-
-msgid "progress_timers/captured"
-msgstr "Завершено"
 
 msgid "progress_timers/fully_equipped"
 msgstr "Машина снаряжена"
@@ -816,18 +792,6 @@ msgstr "Сегодня"
 msgid "selectorTooltip/epicBattle/timeTable/tomorrow"
 msgstr "Завтра"
 
-msgid "smoke/InAllySmoke"
-msgstr "В дымах: замаскирован"
-
-msgid "smoke/InEnemySmoke"
-msgstr "В дымах. Обзор и эффективность экипажа уменьшены."
-
-msgid "smoke/InEnemySmokePostEffect"
-msgstr "Остаточное явление. Обзор и эффективность экипажа уменьшены."
-
-msgid "smoke/In_smoke"
-msgstr "В дымах"
-
 msgid "spectator_mode/camera_controls_title"
 msgstr "Камера в режиме наблюдателя"
 
@@ -867,10 +831,40 @@ msgstr "минуту"
 msgid "status/timeLeft/min"
 msgstr "%(min)s мин"
 
-msgid "stealthRadar/active"
+msgid "statusNotificationTimers/captureBlock/blocked"
+msgstr "База оспаривается"
+
+msgid "statusNotificationTimers/deathZone"
+msgstr "Покиньте зону!"
+
+msgid "statusNotificationTimers/healPoint/healed"
+msgstr "Восстановление прочности машины"
+
+msgid "statusNotificationTimers/healPoint/healing"
+msgstr "Восстановление прочности машины"
+
+msgid "statusNotificationTimers/inspire/inspired"
+msgstr "Воодушевление"
+
+msgid "statusNotificationTimers/inspire/inspiring"
+msgstr "Воодушевление"
+
+msgid "statusNotificationTimers/repairPoint"
+msgstr "Зона обслуживания"
+
+msgid "statusNotificationTimers/smoke/ally"
+msgstr "В дымах: замаскирован"
+
+msgid "statusNotificationTimers/smoke/enemy"
+msgstr "В дымах. Обзор и эффективность экипажа уменьшены."
+
+msgid "statusNotificationTimers/smoke/enemyPostEffect"
+msgstr "Остаточное явление. Обзор и эффективность экипажа уменьшены."
+
+msgid "statusNotificationTimers/stealthRadar/active"
 msgstr "Режим дозора активирован"
 
-msgid "stealthRadar/inactive"
+msgid "statusNotificationTimers/stealthRadar/inactive"
 msgstr "Активируется через %(activationDelay)s с после остановки"
 
 msgid "super_platoon_panel/title"

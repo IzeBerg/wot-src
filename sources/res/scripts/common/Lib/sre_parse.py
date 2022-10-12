@@ -1,4 +1,3 @@
-"""Internal support module for sre"""
 import sys
 from sre_constants import *
 SPECIAL_CHARS = '.\\[{()*+?^$|'

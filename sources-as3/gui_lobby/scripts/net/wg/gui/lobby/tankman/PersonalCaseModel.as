@@ -36,6 +36,8 @@ package net.wg.gui.lobby.tankman
       
       public var changeRoleEnabled:Boolean = true;
       
+      public var hasCommanderFeature:Boolean = false;
+      
       public var nationID:int;
       
       public var currentVehicle:PersonalCaseCurrentVehicle = null;
@@ -50,6 +52,8 @@ package net.wg.gui.lobby.tankman
       
       public var skills:Array;
       
+      public var freeSkills:Array;
+      
       public var wg_freeXpToTankman:Boolean = false;
       
       public var enoughFreeXPForTeaching:Boolean;
@@ -60,7 +64,7 @@ package net.wg.gui.lobby.tankman
       
       public var modifiers:Array = null;
       
-      public var tabIndex:int;
+      public var tabID:String;
       
       public var isBootcamp:Boolean = false;
       
@@ -76,9 +80,10 @@ package net.wg.gui.lobby.tankman
          var _loc9_:PersonalCaseCurrentVehicle = null;
          this.nativeVehicle = new NativeVehicle();
          this.skills = [];
+         this.freeSkills = [];
          this.tabsData = [];
          super();
-         this.tabIndex = parseInt(param1.tabIndex);
+         this.tabID = param1.tabID;
          this.isBootcamp = Boolean(param1.isBootcamp);
          var _loc2_:Object = param1.nativeVehicle;
          this.nativeVehicle.intCD = _loc2_.intCD;
@@ -99,6 +104,7 @@ package net.wg.gui.lobby.tankman
          this.dismissEnabled = param1.dismissEnabled;
          this.unloadEnabled = param1.unloadEnabled;
          this.changeRoleEnabled = param1.changeRoleEnabled;
+         this.hasCommanderFeature = param1.hasCommanderFeature;
          this.tooltipChangeRole = param1.tooltipChangeRole;
          this.actionChangeRole = new ActionPriceVO(param1.actionChangeRole);
          this.nativeVehicle.userName = _loc4_.userName;
@@ -128,50 +134,53 @@ package net.wg.gui.lobby.tankman
          this.specializationLevel = _loc3_.roleLevel;
          this.skillsCountForLearn = _loc3_.newSkillsCount[0];
          this.lastNewSkillExp = _loc3_.newSkillsCount[1];
-         this.skills = this.parseCarouselTankmanSkills(_loc3_.skills,this.skillsCountForLearn,this.inventoryID);
+         this.skills = this.parseCarouselTankmanSkills(_loc3_.skills,this.skillsCountForLearn,this.inventoryID,false);
+         this.freeSkills = this.parseCarouselTankmanSkills(_loc3_.freeSkills,_loc3_.newFreeSkillsCount,this.inventoryID,true);
          this.roleType = _loc3_.roleName;
          this.role = _loc3_.roleUserName;
          this.modifiers = param1.modifiers;
          this.enoughFreeXPForTeaching = param1.enoughFreeXPForTeaching;
       }
       
-      private function parseCarouselTankmanSkills(param1:Array, param2:int, param3:int) : Array
+      private function parseCarouselTankmanSkills(param1:Array, param2:int, param3:int, param4:Boolean) : Array
       {
-         var _loc6_:CarouselTankmanSkillsModel = null;
-         var _loc7_:Object = null;
-         var _loc9_:CarouselTankmanSkillsModel = null;
-         var _loc4_:Array = [];
-         var _loc5_:int = param1.length;
-         var _loc8_:int = 0;
-         while(_loc8_ < _loc5_)
+         var _loc7_:CarouselTankmanSkillsModel = null;
+         var _loc8_:Object = null;
+         var _loc10_:CarouselTankmanSkillsModel = null;
+         var _loc5_:Array = [];
+         var _loc6_:int = param1.length;
+         var _loc9_:int = 0;
+         while(_loc9_ < _loc6_)
          {
-            _loc6_ = new CarouselTankmanSkillsModel();
-            _loc7_ = param1[_loc8_];
-            _loc6_.description = _loc7_.description;
-            _loc6_.icon = _loc7_.icon.big;
-            _loc6_.roleIcon = _loc7_.icon.role;
-            _loc6_.isActive = _loc7_.isActive;
-            _loc6_.isCommon = _loc7_.roleType == CarouselTankmanSkillsModel.ROLE_TYPE_COMMON;
-            _loc6_.isPerk = _loc7_.isPerk;
-            _loc6_.level = _loc7_.level;
-            _loc6_.userName = _loc7_.userName;
-            _loc6_.name = _loc7_.name;
-            _loc6_.tankmanID = param3;
-            _loc6_.enabled = _loc7_.isEnable;
-            _loc6_.isPermanent = _loc7_.isPermanent;
-            _loc4_.push(_loc6_);
-            _loc8_++;
+            _loc7_ = new CarouselTankmanSkillsModel();
+            _loc8_ = param1[_loc9_];
+            _loc7_.description = _loc8_.description;
+            _loc7_.icon = _loc8_.icon.big;
+            _loc7_.roleIcon = _loc8_.icon.role;
+            _loc7_.isActive = _loc8_.isActive;
+            _loc7_.isCommon = _loc8_.roleType == CarouselTankmanSkillsModel.ROLE_TYPE_COMMON;
+            _loc7_.isPerk = _loc8_.isPerk;
+            _loc7_.level = _loc8_.level;
+            _loc7_.userName = _loc8_.userName;
+            _loc7_.name = _loc8_.name;
+            _loc7_.tankmanID = param3;
+            _loc7_.enabled = _loc8_.isEnable;
+            _loc7_.isPermanent = _loc8_.isPermanent;
+            _loc7_.isFreeSkill = param4;
+            _loc5_.push(_loc7_);
+            _loc9_++;
          }
          if(param2 > 0)
          {
-            _loc9_ = new CarouselTankmanSkillsModel();
-            _loc9_.isNewSkill = true;
-            _loc9_.isBootcamp = this.isBootcamp;
-            _loc9_.skillsCountForLearn = param2;
-            _loc9_.tankmanID = param3;
-            _loc4_.push(_loc9_);
+            _loc10_ = new CarouselTankmanSkillsModel();
+            _loc10_.isNewSkill = true;
+            _loc10_.isBootcamp = this.isBootcamp;
+            _loc10_.skillsCountForLearn = param2;
+            _loc10_.tankmanID = param3;
+            _loc10_.isFreeSkill = param4;
+            _loc5_.push(_loc10_);
          }
-         return _loc4_;
+         return _loc5_;
       }
       
       public final function dispose() : void

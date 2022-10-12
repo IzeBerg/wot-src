@@ -1,5 +1,5 @@
 import copy
-from adisp import process
+from adisp import adisp_process
 from gui import DialogsInterface
 from gui import GUI_NATIONS_ORDER_INDICES
 from gui.Scaleform.daapi.view.dialogs.ConfirmModuleMeta import SellModuleMeta
@@ -214,7 +214,7 @@ class RegularInventoryCategoryTabView(InventoryCategoryView):
         super(RegularInventoryCategoryTabView, self)._dispose()
         self._itemsCache.onSyncCompleted -= self.__onCacheResync
 
-    @process
+    @adisp_process
     def _sellItems(self, itemId):
         yield DialogsInterface.showDialog(SellModuleMeta(int(itemId)))
 

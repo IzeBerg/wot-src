@@ -2,6 +2,7 @@ package net.wg.gui.components.containers
 {
    import flash.display.Bitmap;
    import flash.display.Sprite;
+   import flash.events.Event;
    import flash.text.TextField;
    import flash.text.TextFieldType;
    
@@ -17,6 +18,8 @@ package net.wg.gui.components.containers
       private static const IME_TF_NAME:String = "gfimeTF";
       
       private static const HIT_AREA_SPRITE:String = "hitAreaSprite";
+      
+      public static const UPDATE_STAGE_EVENT:String = "updateStage";
        
       
       public var inputFixTF:TextField = null;
@@ -42,7 +45,12 @@ package net.wg.gui.components.containers
       
       override public function setSize(param1:Number, param2:Number) : void
       {
-         super.setSize(param1,param2);
+         if(_width == param1 && _height == param2)
+         {
+            return;
+         }
+         _width = param1;
+         _height = param2;
          if(this.inputFixTF != null)
          {
             this.inputFixTF.width = param1;
@@ -58,6 +66,11 @@ package net.wg.gui.components.containers
             hitArea.width = param1;
             hitArea.height = param2;
          }
+      }
+      
+      override public function updateStage(param1:Number, param2:Number) : void
+      {
+         dispatchEvent(new Event(UPDATE_STAGE_EVENT));
       }
       
       override protected function onDispose() : void

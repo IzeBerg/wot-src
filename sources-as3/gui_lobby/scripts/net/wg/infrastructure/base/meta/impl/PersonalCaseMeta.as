@@ -24,13 +24,19 @@ package net.wg.infrastructure.base.meta.impl
       
       public var retrainingTankman:Function;
       
+      public var getFreeSkillsData:Function;
+      
       public var getSkillsData:Function;
       
       public var getDocumentsData:Function;
       
       public var addTankmanSkill:Function;
       
+      public var addTankmanFreeSkill:Function;
+      
       public var dropSkills:Function;
+      
+      public var showFreeSkillsInfo:Function;
       
       public var changeTankmanPassport:Function;
       
@@ -52,11 +58,15 @@ package net.wg.infrastructure.base.meta.impl
       
       public var playCrewSkinSound:Function;
       
+      public var updateOpenedTabID:Function;
+      
       private var _personalCaseModel:PersonalCaseModel;
       
       private var _personalCaseRetrainingModel:PersonalCaseRetrainingModel;
       
       private var _array:Array;
+      
+      private var _array1:Array;
       
       private var _personalCaseDocsModel:PersonalCaseDocsModel;
       
@@ -83,6 +93,11 @@ package net.wg.infrastructure.base.meta.impl
          {
             this._array.splice(0,this._array.length);
             this._array = null;
+         }
+         if(this._array1)
+         {
+            this._array1.splice(0,this._array1.length);
+            this._array1 = null;
          }
          if(this._personalCaseDocsModel)
          {
@@ -133,6 +148,12 @@ package net.wg.infrastructure.base.meta.impl
          this.retrainingTankman(param1,param2);
       }
       
+      public function getFreeSkillsDataS() : void
+      {
+         App.utils.asserter.assertNotNull(this.getFreeSkillsData,"getFreeSkillsData" + Errors.CANT_NULL);
+         this.getFreeSkillsData();
+      }
+      
       public function getSkillsDataS() : void
       {
          App.utils.asserter.assertNotNull(this.getSkillsData,"getSkillsData" + Errors.CANT_NULL);
@@ -151,10 +172,22 @@ package net.wg.infrastructure.base.meta.impl
          this.addTankmanSkill(param1,param2);
       }
       
+      public function addTankmanFreeSkillS(param1:int, param2:String) : void
+      {
+         App.utils.asserter.assertNotNull(this.addTankmanFreeSkill,"addTankmanFreeSkill" + Errors.CANT_NULL);
+         this.addTankmanFreeSkill(param1,param2);
+      }
+      
       public function dropSkillsS() : void
       {
          App.utils.asserter.assertNotNull(this.dropSkills,"dropSkills" + Errors.CANT_NULL);
          this.dropSkills();
+      }
+      
+      public function showFreeSkillsInfoS() : void
+      {
+         App.utils.asserter.assertNotNull(this.showFreeSkillsInfo,"showFreeSkillsInfo" + Errors.CANT_NULL);
+         this.showFreeSkillsInfo();
       }
       
       public function changeTankmanPassportS(param1:int, param2:int, param3:int, param4:int, param5:int, param6:int, param7:int) : void
@@ -217,6 +250,12 @@ package net.wg.infrastructure.base.meta.impl
          this.playCrewSkinSound(param1);
       }
       
+      public function updateOpenedTabIDS(param1:String) : void
+      {
+         App.utils.asserter.assertNotNull(this.updateOpenedTabID,"updateOpenedTabID" + Errors.CANT_NULL);
+         this.updateOpenedTabID(param1);
+      }
+      
       public final function as_setCommonData(param1:Object) : void
       {
          var _loc2_:PersonalCaseModel = this._personalCaseModel;
@@ -239,11 +278,22 @@ package net.wg.infrastructure.base.meta.impl
          }
       }
       
-      public final function as_setSkillsData(param1:Array) : void
+      public final function as_setFreeSkillsData(param1:Array) : void
       {
          var _loc2_:Array = this._array;
          this._array = param1;
-         this.setSkillsData(this._array);
+         this.setFreeSkillsData(this._array);
+         if(_loc2_)
+         {
+            _loc2_.splice(0,_loc2_.length);
+         }
+      }
+      
+      public final function as_setSkillsData(param1:Array) : void
+      {
+         var _loc2_:Array = this._array1;
+         this._array1 = param1;
+         this.setSkillsData(this._array1);
          if(_loc2_)
          {
             _loc2_.splice(0,_loc2_.length);
@@ -282,6 +332,13 @@ package net.wg.infrastructure.base.meta.impl
       protected function setRetrainingData(param1:PersonalCaseRetrainingModel) : void
       {
          var _loc2_:String = "as_setRetrainingData" + Errors.ABSTRACT_INVOKE;
+         DebugUtils.LOG_ERROR(_loc2_);
+         throw new AbstractException(_loc2_);
+      }
+      
+      protected function setFreeSkillsData(param1:Array) : void
+      {
+         var _loc2_:String = "as_setFreeSkillsData" + Errors.ABSTRACT_INVOKE;
          DebugUtils.LOG_ERROR(_loc2_);
          throw new AbstractException(_loc2_);
       }

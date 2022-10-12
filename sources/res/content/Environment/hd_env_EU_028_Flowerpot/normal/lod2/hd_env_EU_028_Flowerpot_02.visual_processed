@@ -25,6 +25,33 @@
 					<row3>0.000000 0.000000 0.000000</row3>
 				</transform>
 			</node>
+			<node>
+				<identifier>lod2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>d0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>n0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
 		</node>
 	</node>
 	<renderSet>
@@ -47,10 +74,6 @@
 					<property>
 						alphaTestEnable
 						<Bool>true</Bool>
-					</property>
-					<property>
-						doubleSided
-						<Bool>false</Bool>
 					</property>
 					<property>
 						diffuseMap
@@ -79,10 +102,6 @@
 						<Texture>content/Environment/hd_env_EU_028_Flowerpot/hd_env_EU_028_Flowerpot_ANM.dds</Texture>
 					</property>
 					<property>
-						doubleSided
-						<Bool>false</Bool>
-					</property>
-					<property>
 						diffuseMap
 						<Texture>content/Environment/hd_env_EU_028_Flowerpot/hd_env_EU_028_Flowerpot_AM.dds</Texture>
 					</property>
@@ -101,12 +120,22 @@
 				</material>
 				<groupOrigin>0.000133 0.326212 0.000354</groupOrigin>
 			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_wall_0</identifier>
+					<materialKind>73</materialKind>
+					<collisionFlags>131</collisionFlags>
+				</material>
+				<groupOrigin>0.000000 0.752540 0.000000</groupOrigin>
+			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
 		<min>-0.446721 -0.018536 -0.498276</min>
-		<max>0.508246 0.652739 0.490244</max>
+		<max>0.508246 1.507540 0.490244</max>
 	</boundingBox>
-	<geometrySize>1778</geometrySize>
-	<minUVDensity>0.010776</minUVDensity>
+	<customBsp>true</customBsp>
+	<geometrySize>2274</geometrySize>
+	<minUVDensity>0.012421</minUVDensity>
 </root>

@@ -18,3 +18,4 @@ class PROFILE_DROPDOWN_KEYS(object):
     EPIC_RANDOM = 'epicRandom'
     BATTLE_ROYALE_SOLO = 'battleRoyaleSolo'
     BATTLE_ROYALE_SQUAD = 'battleRoyaleSquad'
+    COMP7 = 'comp7'

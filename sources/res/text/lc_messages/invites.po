@@ -162,6 +162,11 @@ msgstr ""
 "Приняв приглашение, вы будете автоматически исключены из списка участников "
 "боя на глобальной карте и перемещены на сервер %(host)s."
 
+msgid "invites/note/change_and_leave/PREBATTLE_COMP7"
+msgstr ""
+"Приняв приглашение, вы будете автоматически исключены из состава "
+"формирования и перемещены на сервер %(host)s."
+
 msgid "invites/note/change_and_leave/PREBATTLE_EPIC"
 msgstr ""
 "Приняв приглашение, вы будете автоматически исключены из состава "
@@ -247,6 +252,11 @@ msgstr ""
 "Приняв приглашение, вы покинете режим «Большая охота» и будете перемещены на"
 " сервер %(host)s."
 
+msgid "invites/note/change_and_leave/QUEUE_COMP7"
+msgstr ""
+"Приняв приглашение, вы покинете режим «Натиск» и будете перемещены на сервер"
+" %(host)s."
+
 msgid "invites/note/change_and_leave/QUEUE_EPIC"
 msgstr ""
 "Приняв приглашение, вы покинете режим «Линия фронта» и будете перемещены на "
@@ -254,7 +264,7 @@ msgstr ""
 
 msgid "invites/note/change_and_leave/QUEUE_EVENT_BATTLES"
 msgstr ""
-"Приняв приглашение, вы покинете режим «Ваффентрагер: Наследие» и будете "
+"Приняв приглашение, вы покинете режим «+++Event battle+++» и будете "
 "перемещены на сервер %(host)s."
 
 msgid "invites/note/change_and_leave/QUEUE_MAPBOX"
@@ -297,6 +307,11 @@ msgstr ""
 "Приняв приглашение, вы будете автоматически исключены из списка участников "
 "боя на Глобальной карте."
 
+msgid "invites/note/leave/PREBATTLE_COMP7"
+msgstr ""
+"Приняв приглашение, вы будете автоматически исключены из состава "
+"формирования."
+
 msgid "invites/note/leave/PREBATTLE_EPIC"
 msgstr ""
 "Приняв приглашение, вы будете автоматически исключены из состава "
@@ -308,7 +323,9 @@ msgstr ""
 "командной тренировки режима «Линия фронта»."
 
 msgid "invites/note/leave/PREBATTLE_EVENT"
-msgstr "Приняв приглашение, вы покинете режим «Ваффентрагер: Наследие»."
+msgstr ""
+"Приняв приглашение, вы будете автоматически исключены из состава "
+"формирования."
 
 msgid "invites/note/leave/PREBATTLE_E_SPORT_COMMON"
 msgstr "Приняв приглашение, вы покинете режим «Командный бой»."
@@ -362,11 +379,14 @@ msgstr "Приняв приглашение, вы покинете режим «
 msgid "invites/note/leave/QUEUE_BATTLE_ROYALE_TOURNAMENT"
 msgstr "Приняв приглашение, вы покинете режим «Большая охота»."
 
+msgid "invites/note/leave/QUEUE_COMP7"
+msgstr "Приняв приглашение, вы покинете режим «Натиск»."
+
 msgid "invites/note/leave/QUEUE_EPIC"
 msgstr "Приняв приглашение, вы покинете режим «Линия фронта»."
 
 msgid "invites/note/leave/QUEUE_EVENT_BATTLES"
-msgstr "Приняв приглашение, вы покинете режим «Ваффентрагер: Наследие»."
+msgstr "Приняв приглашение, вы покинете режим «+++Event battle+++»."
 
 msgid "invites/note/leave/QUEUE_MAPBOX"
 msgstr "Приняв приглашение, вы покинете режим «Разведка боем»."
@@ -382,11 +402,6 @@ msgstr "Приняв приглашение, вы покинете режим «
 
 msgid "invites/note/leave/QUEUE_SANDBOX"
 msgstr "Приняв приглашение, вы покинете режим «Учебный бой»."
-
-msgid "invites/note/leave/SQUAD_EVENT"
-msgstr ""
-"Приняв приглашение, вы будете автоматически исключены из текущего состава "
-"взвода Гончих."
 
 msgid "invites/note/serverSelectionIsRemembered"
 msgstr "Настройки сервера сохранены."
@@ -451,6 +466,11 @@ msgstr ""
 "%(titleStartTag)sПриглашение войти в состав взвода Стальных "
 "охотников%(titleEndTag)s"
 
+msgid "invites/text/COMP7"
+msgstr ""
+"%(titleStartTag)sПриглашение войти в состав взвода режима "
+"«Натиск»%(titleEndTag)s"
+
 msgid "invites/text/EPIC"
 msgstr ""
 "%(titleStartTag)sПриглашение присоединиться ко взводу на Линию "
@@ -462,8 +482,7 @@ msgstr ""
 "«Линия фронта»%(titleEndTag)s"
 
 msgid "invites/text/EVENT"
-msgstr ""
-"%(titleStartTag)sПриглашение войти в состав взвода Гончих%(titleEndTag)s"
+msgstr "++%(titleStartTag)sПриглашение войти в состав взвода%(titleEndTag)s++"
 
 msgid "invites/text/FALLOUT"
 msgstr ""
@@ -478,6 +497,11 @@ msgstr "«Стальная охота»"
 
 msgid "invites/text/FORT_BATTLE"
 msgstr "%(titleStartTag)sПриглашение в битву%(titleEndTag)s"
+
+msgid "invites/text/FUN_RANDOM"
+msgstr ""
+"%(titleStartTag)sПриглашение войти в состав взвода для режима "
+"«Аркада»%(titleEndTag)s"
 
 msgid "invites/text/MAPBOX"
 msgstr ""
@@ -516,6 +540,11 @@ msgstr "Плацдарм"
 
 msgid "invites/text/fort/offence"
 msgstr "Нападение на"
+
+msgid "invites/tooltip/funRandom/noVehicles"
+msgstr ""
+"Для участия в боях режима «Аркада» нужна как минимум одна машина %(levels)s "
+"уровня."
 
 msgid "invites/warning/anonymized"
 msgstr ""

@@ -149,6 +149,7 @@ def getOutfitComponent(outfitCD, vehicleDescriptor=None, seasonType=None):
                 outfitComponent = baseOutfitComponent.applyDiff(outfitComponent)
             else:
                 outfitComponent = baseOutfitComponent
+            outfitComponent = styleDescr.addPartsToOutfit(seasonType, outfitComponent, vehicleDescriptor.makeCompactDescr() if vehicleDescriptor else '')
             if IS_EDITOR:
 
                 def setupAlternateItem(itemType, outfit, sourceOutfit, collectionName):
@@ -557,9 +558,6 @@ def getModelAnimators(outfit, vehicleDescr, spaceId, loadedAnimators, compoundMo
             continue
         fakeModel = newFakeModel()
         node = compoundModel.node(param.attachNode)
-        if node is None:
-            _logger.error('Failed to attach sequence: "%s", node "%s" not found', param.animatorName, param.attachNode)
-            continue
         node.attach(fakeModel, param.transform)
         animWrapper = AnimationSequence.ModelWrapperContainer(fakeModel, spaceId)
         animator = __prepareAnimator(loadedAnimators, param.animatorName, animWrapper, node)

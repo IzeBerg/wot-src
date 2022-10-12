@@ -5,8 +5,6 @@ package
       
       public static const SQUAD:String = "#platoon:squad";
       
-      public static const EVENT_SQUAD:String = "#platoon:event_squad";
-      
       public static const HEADERBUTTON_SQUAD:String = "#platoon:headerButton/squad";
       
       public static const HEADERBUTTON_TOOLTIPS_SQUAD_HEADER:String = "#platoon:headerButton/tooltips/squad/header";
@@ -31,10 +29,6 @@ package
       
       public static const HEADERBUTTON_TOOLTIPS_EVENTSQUAD_BODY:String = "#platoon:headerButton/tooltips/eventSquad/body";
       
-      public static const HEADERBUTTON_TOOLTIPS_INEVENTSQUAD_HEADER:String = "#platoon:headerButton/tooltips/inEventSquad/header";
-      
-      public static const HEADERBUTTON_TOOLTIPS_INEVENTSQUAD_BODY:String = "#platoon:headerButton/tooltips/inEventSquad/body";
-      
       public static const HEADERBUTTON_TOOLTIPS_DOMINATIONSQUAD_HEADER:String = "#platoon:headerButton/tooltips/dominationSquad/header";
       
       public static const HEADERBUTTON_TOOLTIPS_DOMINATIONSQUAD_BODY:String = "#platoon:headerButton/tooltips/dominationSquad/body";
@@ -47,6 +41,10 @@ package
       
       public static const HEADERBUTTON_TOOLTIPS_MAPBOXSQUAD_BODY:String = "#platoon:headerButton/tooltips/mapboxSquad/body";
       
+      public static const HEADERBUTTON_TOOLTIPS_COMP7SQUAD_HEADER:String = "#platoon:headerButton/tooltips/comp7Squad/header";
+      
+      public static const HEADERBUTTON_TOOLTIPS_COMP7SQUAD_BODY:String = "#platoon:headerButton/tooltips/comp7Squad/body";
+      
       public static const HEADERBUTTON_TOOLTIPS_INMAPBOXSQUAD_HEADER:String = "#platoon:headerButton/tooltips/inMapboxSquad/header";
       
       public static const HEADERBUTTON_TOOLTIPS_INMAPBOXSQUAD_BODY:String = "#platoon:headerButton/tooltips/inMapboxSquad/body";
@@ -54,6 +52,10 @@ package
       public static const HEADERBUTTON_TOOLTIPS_RANKEDSQUAD_HEADER:String = "#platoon:headerButton/tooltips/rankedSquad/header";
       
       public static const HEADERBUTTON_TOOLTIPS_RANKEDSQUAD_BODY:String = "#platoon:headerButton/tooltips/rankedSquad/body";
+      
+      public static const HEADERBUTTON_TOOLTIPS_FUNRANDOMSQUAD_HEADER:String = "#platoon:headerButton/tooltips/funRandomSquad/header";
+      
+      public static const HEADERBUTTON_TOOLTIPS_FUNRANDOMSQUAD_BODY:String = "#platoon:headerButton/tooltips/funRandomSquad/body";
       
       public static const BUTTONS_FINDPLAYERS_CAPTION:String = "#platoon:buttons/findPlayers/caption";
       
@@ -69,7 +71,21 @@ package
       
       public static const BUTTONS_CREATEPLATOON_CAPTION:String = "#platoon:buttons/createPlatoon/caption";
       
+      public static const BUTTONS_CREATESUPERPLATOON_CAPTION:String = "#platoon:buttons/createSuperPlatoon/caption";
+      
       public static const BUTTONS_CREATEPLATOON_DESCRIPTION:String = "#platoon:buttons/createPlatoon/description";
+      
+      public static const BUTTONS_CREATEPLATOON_COMP7_FORTWO_TEXT:String = "#platoon:buttons/createPlatoon/comp7/forTwo/text";
+      
+      public static const BUTTONS_CREATEPLATOON_COMP7_FORTWO_CAPTION:String = "#platoon:buttons/createPlatoon/comp7/forTwo/caption";
+      
+      public static const BUTTONS_CREATEPLATOON_COMP7_FORTWO_DESCRIPTION:String = "#platoon:buttons/createPlatoon/comp7/forTwo/description";
+      
+      public static const BUTTONS_CREATEPLATOON_COMP7_FORSEVEN_TEXT:String = "#platoon:buttons/createPlatoon/comp7/forSeven/text";
+      
+      public static const BUTTONS_CREATEPLATOON_COMP7_FORSEVEN_CAPTION:String = "#platoon:buttons/createPlatoon/comp7/forSeven/caption";
+      
+      public static const BUTTONS_CREATEPLATOON_COMP7_FORSEVEN_DESCRIPTION:String = "#platoon:buttons/createPlatoon/comp7/forSeven/description";
       
       public static const BUTTONS_INVITE_PLAYERS_CAPTION:String = "#platoon:buttons/invite/players/caption";
       
@@ -127,15 +143,17 @@ package
       
       public static const SEARCHING_ESTIMATED_MORETHAN:String = "#platoon:searching/estimated/moreThan";
       
-      public static const MEMBERS_HEADER_RANDOMBATTLE:String = "#platoon:members/header/randomBattle";
+      public static const MEMBERS_HEADER_SQUAD:String = "#platoon:members/header/squad";
       
       public static const MEMBERS_HEADER_EVENT:String = "#platoon:members/header/event";
       
       public static const MEMBERS_HEADER_EPIC:String = "#platoon:members/header/epic";
       
-      public static const MEMBERS_HEADER_BATTLEROYALE:String = "#platoon:members/header/battleRoyale";
+      public static const MEMBERS_HEADER_BATTLE_ROYAL:String = "#platoon:members/header/battle_royal";
       
       public static const MEMBERS_HEADER_MAPBOX:String = "#platoon:members/header/mapbox";
+      
+      public static const MEMBERS_HEADER_COMP7:String = "#platoon:members/header/comp7";
       
       public static const MEMBERS_HEADER_TOOLTIP_STANDARD_HEADER:String = "#platoon:members/header/tooltip/standard/header";
       
@@ -152,6 +170,14 @@ package
       public static const MEMBERS_HEADER_NOBONUSPLACEHOLDER_TOOLTIP_HEADER:String = "#platoon:members/header/noBonusPlaceholder/tooltip/header";
       
       public static const MEMBERS_HEADER_NOBONUSPLACEHOLDER_TOOLTIP_BODY:String = "#platoon:members/header/noBonusPlaceholder/tooltip/body";
+      
+      public static const MEMBERS_HEADER_TOOLTIP_COMP7_HEADER:String = "#platoon:members/header/tooltip/comp7/header";
+      
+      public static const MEMBERS_HEADER_TOOLTIP_COMP7_BODY:String = "#platoon:members/header/tooltip/comp7/body";
+      
+      public static const MEMBERS_HEADER_TOOLTIP_COMP7_DROPDOWN:String = "#platoon:members/header/tooltip/comp7/dropdown";
+      
+      public static const MEMBERS_HEADER_TOOLTIP_COMP7_DROPDOWN_ITEM:String = "#platoon:members/header/tooltip/comp7/dropdown/item";
       
       public static const MEMBERS_CARD_DISABLED:String = "#platoon:members/card/disabled";
       

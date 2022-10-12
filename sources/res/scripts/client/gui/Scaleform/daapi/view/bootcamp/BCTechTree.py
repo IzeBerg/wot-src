@@ -52,7 +52,7 @@ class BCTechTree(TechTree):
             data['nodes'] = dataNodes
         return data
 
-    def setupContextHints(self, hintID):
+    def setupContextHints(self, hintID, hintsArgs=None):
         pass
 
     def _populate(self):

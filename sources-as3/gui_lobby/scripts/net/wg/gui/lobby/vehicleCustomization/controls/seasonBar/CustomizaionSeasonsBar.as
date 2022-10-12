@@ -4,7 +4,7 @@ package net.wg.gui.lobby.vehicleCustomization.controls.seasonBar
    import flash.events.MouseEvent;
    import flash.ui.Keyboard;
    import net.wg.gui.components.advanced.ButtonBarEx;
-   import net.wg.gui.lobby.vehicleCustomization.controls.magneticTool.IMagneticClickHandler;
+   import net.wg.gui.interfaces.IMagneticClickHandler;
    import net.wg.gui.lobby.vehicleCustomization.controls.magneticTool.MagneticToolController;
    import scaleform.clik.events.InputEvent;
    

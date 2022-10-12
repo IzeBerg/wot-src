@@ -58,10 +58,10 @@ package net.wg.gui.battle.epicRandom.views.stats.components.fullStats
          this._squadHandler = param2;
       }
       
-      override public function addVehiclesInfo(param1:Boolean, param2:Vector.<DAAPIVehicleInfoVO>, param3:Vector.<Number>) : void
+      override public function addVehiclesInfo(param1:Vector.<DAAPIVehicleInfoVO>, param2:Vector.<Number>, param3:Boolean) : void
       {
          super.addVehiclesInfo(param1,param2,param3);
-         var _loc4_:ScrollingList = !!param1 ? this._table.team2PlayerList : this._table.team1PlayerList;
+         var _loc4_:ScrollingList = !!param3 ? this._table.team2PlayerList : this._table.team1PlayerList;
          _loc4_.invalidateData();
       }
       
@@ -143,6 +143,11 @@ package net.wg.gui.battle.epicRandom.views.stats.components.fullStats
                this._table.squadAddBt.visible = false;
             }
          }
+      }
+      
+      public function setDogTagToShow(param1:Number, param2:DogTagVO) : void
+      {
+         this._dogTagsToShow[param1] = param2;
       }
       
       public function setFrags(param1:Vector.<DAAPIVehicleStatsVO>, param2:Vector.<DAAPIVehicleStatsVO>) : void
@@ -232,6 +237,10 @@ package net.wg.gui.battle.epicRandom.views.stats.components.fullStats
             }
             enemyDP.invalidate();
          }
+      }
+      
+      public function setVehiclesStats(param1:Vector.<DAAPIVehicleStatsVO>, param2:Vector.<DAAPIVehicleStatsVO>) : void
+      {
       }
       
       public function updateColorBlind() : void
@@ -423,24 +432,6 @@ package net.wg.gui.battle.epicRandom.views.stats.components.fullStats
          }
       }
       
-      public function setDogTagToShow(param1:Number, param2:DogTagVO) : void
-      {
-         this._dogTagsToShow[param1] = param2;
-      }
-      
-      private function onItemRendererDataSync(param1:Event) : void
-      {
-         var _loc2_:EpicRandomFullStatsListItemRenderer = param1.currentTarget as EpicRandomFullStatsListItemRenderer;
-         if(_loc2_)
-         {
-            _loc2_.showDogTag(this._dogTagsToShow[_loc2_.vehicleID]);
-         }
-         if(_loc2_.hitTestPoint(App.stage.mouseX,App.stage.mouseY))
-         {
-            _loc2_.dispatchEvent(new MouseEvent(MouseEvent.ROLL_OVER));
-         }
-      }
-      
       override protected function updateEnemyDPItems(param1:ListDataProviderEvent) : void
       {
          var _loc5_:int = 0;
@@ -470,6 +461,19 @@ package net.wg.gui.battle.epicRandom.views.stats.components.fullStats
                   _loc7_.addEventListener(EpicRandomFullStatsListItemRendererEvent.ON_DATA_SYNC,this.onItemRendererDataSync,false,0,true);
                }
             }
+         }
+      }
+      
+      private function onItemRendererDataSync(param1:Event) : void
+      {
+         var _loc2_:EpicRandomFullStatsListItemRenderer = param1.currentTarget as EpicRandomFullStatsListItemRenderer;
+         if(_loc2_)
+         {
+            _loc2_.showDogTag(this._dogTagsToShow[_loc2_.vehicleID]);
+         }
+         if(_loc2_.hitTestPoint(App.stage.mouseX,App.stage.mouseY))
+         {
+            _loc2_.dispatchEvent(new MouseEvent(MouseEvent.ROLL_OVER));
          }
       }
    }

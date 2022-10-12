@@ -114,7 +114,7 @@ package net.wg.gui.battle.views.battleTankCarousel
       override protected function onDispose() : void
       {
          App.contextMenuMgr.hide();
-         App.utils.scheduler.cancelTask(goToSelectedItem);
+         App.utils.scheduler.cancelTask(this.scrollToIndex);
          this.vehicleFilters.removeEventListener(Event.RESIZE,this.onVehicleFiltersResizeHandler);
          this.vehicleFilters.removeEventListener(RendererEvent.ITEM_CLICK,this.onVehicleFiltersItemClickHandler);
          this.vehicleFilters.dispose();

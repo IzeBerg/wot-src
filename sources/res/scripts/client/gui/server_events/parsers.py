@@ -187,6 +187,8 @@ class VehicleRequirements(ConditionsParser):
             return conditions.InstalledModulesOnVehicle(uniqueName, data)
         if name == 'correspondedCamouflage':
             return conditions.CorrespondedCamouflage(uniqueName, data)
+        if name == 'customization':
+            return conditions.Customization(uniqueName, data)
 
 
 class PreBattleConditions(ConditionsParser):
@@ -243,6 +245,8 @@ class PostBattleConditions(ConditionsParser):
             return conditions.UnitResults(uniqueName, data, self.__preBattleCond)
         if name == 'multiStunEvent':
             return conditions.MultiStunEvent(uniqueName, data)
+        if name == 'isFirstBlood':
+            return conditions.FirstBlood(uniqueName, data)
 
 
 class BonusConditions(ConditionsParser):
@@ -323,6 +327,8 @@ class BonusConditions(ConditionsParser):
                     result.append(conditions.CumulativeResult('%s%d' % (uniqueName, idx), (element,) + description, self))
 
             return result
+        if name == 'cumulativeSum':
+            return conditions.CumulativeSum(uniqueName, data, self)
 
     def isGroupProgressCompleted(self, groupByKey):
         progress = {}

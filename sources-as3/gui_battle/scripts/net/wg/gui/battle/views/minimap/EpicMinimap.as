@@ -154,11 +154,6 @@ package net.wg.gui.battle.views.minimap
          return new Rectangle(0,0,MINIMAP_SIZE[_loc2_],MINIMAP_SIZE[_loc2_]);
       }
       
-      override public function getMinmapHeightBySizeIndex(param1:int) : int
-      {
-         return MINIMAP_SIZE[param1];
-      }
-      
       override public function getRectangles() : Vector.<Rectangle>
       {
          if(this._isTabMode || !visible)

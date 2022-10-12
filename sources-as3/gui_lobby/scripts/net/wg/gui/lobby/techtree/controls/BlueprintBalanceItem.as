@@ -23,26 +23,9 @@ package net.wg.gui.lobby.techtree.controls
          super();
       }
       
-      protected function onDispose() : void
-      {
-         this._disposed = true;
-         this._data = null;
-         this.titleTF = null;
-         this.icon.dispose();
-         this.icon = null;
-      }
-      
       public final function dispose() : void
       {
          this.onDispose();
-      }
-      
-      public function setData(param1:BlueprintBalanceItemVO) : void
-      {
-         this._data = param1;
-         this.titleTF.htmlText = this._data.title;
-         this.icon.source = this._data.iconPath;
-         App.utils.commons.updateTextFieldSize(this.titleTF,true,true);
       }
       
       public function getFragmentCD() : int
@@ -53,6 +36,23 @@ package net.wg.gui.lobby.techtree.controls
       public function isDisposed() : Boolean
       {
          return this._disposed;
+      }
+      
+      public function setData(param1:BlueprintBalanceItemVO) : void
+      {
+         this._data = param1;
+         this.titleTF.htmlText = this._data.title;
+         this.icon.source = this._data.iconPath;
+         App.utils.commons.updateTextFieldSize(this.titleTF,true,true);
+      }
+      
+      protected function onDispose() : void
+      {
+         this._disposed = true;
+         this._data = null;
+         this.titleTF = null;
+         this.icon.dispose();
+         this.icon = null;
       }
    }
 }

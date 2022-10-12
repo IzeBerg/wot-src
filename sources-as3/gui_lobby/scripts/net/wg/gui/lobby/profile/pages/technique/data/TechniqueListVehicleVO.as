@@ -48,6 +48,8 @@ package net.wg.gui.lobby.profile.pages.technique.data
       
       public var winsCount:int = -1;
       
+      public var prestigePoints:int = -1;
+      
       public function TechniqueListVehicleVO(param1:Object = null)
       {
          super(param1);

@@ -1,9 +1,9 @@
 import operator
 from abc import ABCMeta, abstractmethod
 from collections import defaultdict, namedtuple
-import typing, BigWorld, constants, dossiers2, nations, async as future_async
+import typing, BigWorld, constants, dossiers2, nations, wg_async as future_async
 from account_shared import LayoutIterator
-from adisp import async, process
+from adisp import adisp_async, adisp_process
 from battle_pass_common import BATTLE_PASS_PDATA_KEY
 from constants import CustomizationInvData, SkinInvData
 from debug_utils import LOG_DEBUG, LOG_WARNING
@@ -11,7 +11,7 @@ from goodies.goodie_constants import GOODIE_STATE
 from gui.shared.gui_items import GUI_ITEM_TYPE, GUI_ITEM_TYPE_NAMES, ItemsCollection, getVehicleSuitablesByType
 from gui.shared.gui_items.gui_item_economics import ITEM_PRICE_EMPTY
 from gui.shared.utils.requesters import vehicle_items_getter
-from helpers import dependency
+from helpers import dependency, isPlayerAvatar
 from items import getTypeOfCompactDescr, makeIntCompactDescrByID, tankmen, vehicles
 from items.components.c11n_constants import CustomizationDisplayType, SeasonType
 from items.components.crew_skins_constants import CrewSkinType
@@ -22,6 +22,7 @@ from skeletons.gui.shared import IItemsCache, IItemsRequester
 from skeletons.gui.shared.gui_items import IGuiItemsFactory
 if typing.TYPE_CHECKING:
     import skeletons.gui.shared.utils.requesters as requesters
+    from gui.shared.gui_items.Tankman import Tankman
     from gui.veh_post_progression.models.progression import PostProgressionItem
     from items.vehicles import VehicleType
 DO_LOG_BROKEN_SYNC = False
@@ -273,6 +274,7 @@ class REQ_CRITERIA(object):
         BATTLE_ROYALE = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForBattleRoyaleBattles))
         MAPS_TRAINING = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForMapsTrainingBattles))
         CLAN_WARS = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForClanWarsBattles))
+        COMP7 = RequestCriteria(PredicateCondition(lambda item: item.isOnlyForComp7Battles))
         HAS_XP_FACTOR = RequestCriteria(PredicateCondition(lambda item: item.dailyXPFactor != -1))
         IS_RESTORE_POSSIBLE = RequestCriteria(PredicateCondition(lambda item: item.isRestorePossible()))
         CAN_TRADE_IN = RequestCriteria(PredicateCondition(lambda item: item.canTradeIn))
@@ -285,8 +287,6 @@ class REQ_CRITERIA(object):
         NAME_VEHICLE_WITH_SHORT = staticmethod(lambda nameVehicle: RequestCriteria(PredicateCondition(lambda item: nameVehicle in item.searchableShortUserName or nameVehicle in item.searchableUserName)))
         DISCOUNT_RENT_OR_BUY = RequestCriteria(PredicateCondition(lambda item: (item.buyPrices.itemPrice.isActionPrice() or item.getRentPackageActionPrc() != 0) and not item.isRestoreAvailable()))
         HAS_TAGS = staticmethod(lambda tags: RequestCriteria(PredicateCondition(lambda item: item.tags.issuperset(tags))))
-        HAS_NO_TAGS = staticmethod(lambda tags: RequestCriteria(PredicateCondition(lambda item: not item.tags.intersection(tags))))
-        HAS_ANY_TAGS = staticmethod(lambda tags: RequestCriteria(PredicateCondition(lambda item: item.tags.intersection(tags))))
         FOR_ITEM = staticmethod(lambda style: RequestCriteria(PredicateCondition(style.mayInstall)))
 
     class TANKMAN(object):
@@ -307,9 +307,10 @@ class REQ_CRITERIA(object):
         ACTIVE = RequestCriteria(PredicateCondition(lambda item: item.finishTime is not None and item.state == GOODIE_STATE.ACTIVE))
         IS_READY_TO_ACTIVATE = RequestCriteria(PredicateCondition(lambda item: item.isReadyToActivate))
         BOOSTER_TYPES = staticmethod(lambda boosterTypes: RequestCriteria(PredicateCondition(lambda item: item.boosterType in boosterTypes)))
+        BOOSTER_CATEGORIES = staticmethod(lambda boosterCategories: RequestCriteria(PredicateCondition(lambda item: item.category in boosterCategories)))
         IN_BOOSTER_ID_LIST = staticmethod(lambda boostersList: RequestCriteria(PredicateCondition(lambda item: item.boosterID in boostersList)))
         QUALITY = staticmethod(lambda qualityValues: RequestCriteria(PredicateCondition(lambda item: item.quality in qualityValues)))
-        DURATION = staticmethod(lambda durationTimes: RequestCriteria(PredicateCondition(lambda item: item.effectTime in durationTimes)))
+        LIMITED = RequestCriteria(PredicateCondition(lambda item: item.expiryTime))
 
     class DEMOUNT_KIT(object):
         IS_ENABLED = RequestCriteria(PredicateCondition(lambda item: item.enabled))
@@ -402,7 +403,6 @@ class ItemsRequester(IItemsRequester):
         self.__brokenSyncAlreadyLoggedTypes = set()
         self.__fittingItemRequesters = {
          self.__inventory, self.__stats, self.__shop, self.__vehicleRotation, self.__recycleBin}
-        self.__ignoreFittingItemsSync = False
         self.__vehCustomStateCache = defaultdict(dict)
 
     @property
@@ -485,8 +485,8 @@ class ItemsRequester(IItemsRequester):
     def resourceWell(self):
         return self.__resourceWell
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def request(self, callback=None):
         from gui.Scaleform.Waiting import Waiting
         Waiting.show('download/inventory')
@@ -548,7 +548,7 @@ class ItemsRequester(IItemsRequester):
 
     def isSynced--- This code section failed: ---
 
- L. 919         0  LOAD_FAST             0  'self'
+ L. 915         0  LOAD_FAST             0  'self'
                 3  LOAD_ATTR             0  '__blueprints'
                 6  LOAD_CONST               None
                 9  COMPARE_OP            9  is-not
@@ -642,8 +642,8 @@ class ItemsRequester(IItemsRequester):
 
 Parse error at or near `None' instruction at offset -1
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def requestUserDossier(self, databaseID, callback):
         dr = self.__dossiers.getUserDossierRequester(databaseID)
         userAccDossier = yield dr.getAccountDossier()
@@ -662,8 +662,8 @@ Parse error at or near `None' instruction at offset -1
             del container[databaseID]
             self.__dossiers.closeUserDossier(databaseID)
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def requestUserVehicleDossier(self, databaseID, vehTypeCompDescr, callback):
         dr = self.__dossiers.getUserDossierRequester(databaseID)
         userVehDossier = yield dr.getVehicleDossier(vehTypeCompDescr)
@@ -698,7 +698,6 @@ Parse error at or near `None' instruction at offset -1
         self.__anonymizer.clear()
         self.__giftSystem.clear()
         self.__gameRestrictions.clear()
-        self.__ignoreFittingItemsSync = True
 
     def onDisconnected(self):
         self.__tokens.onDisconnected()
@@ -708,7 +707,6 @@ Parse error at or near `None' instruction at offset -1
 
     def invalidateCache(self, diff=None):
         invalidate = defaultdict(set)
-        self.__ignoreFittingItemsSync = False
         if diff is None:
             LOG_DEBUG('Gui items cache full invalidation')
             for itemTypeID, cache in self.__itemsCache.iteritems():
@@ -936,7 +934,7 @@ Parse error at or near `None' instruction at offset -1
 
         return result
 
-    @future_async.async
+    @future_async.wg_async
     def getItemsAsync(self, itemTypeID=None, criteria=REQ_CRITERIA.EMPTY, nationID=None, onlyWithPrices=True, callback=None):
         result = ItemsCollection()
         if not isinstance(itemTypeID, tuple):
@@ -961,7 +959,7 @@ Parse error at or near `None' instruction at offset -1
 
             return
 
-        yield future_async.await(future_async.distributeLoopOverTicks(asyncGetItems(), minPerTick=10, maxPerTick=100, logID='getItemsAsync', tickLength=0.0))
+        yield future_async.wg_await(future_async.distributeLoopOverTicks(asyncGetItems(), minPerTick=10, maxPerTick=100, logID='getItemsAsync', tickLength=0.0))
         callback(result)
 
     def getTankmen(self, criteria=REQ_CRITERIA.TANKMAN.ACTIVE):
@@ -1172,7 +1170,8 @@ Parse error at or near `None' instruction at offset -1
         if uid in container:
             return container[uid]
         else:
-            self.__checkFittingItemsSync(itemTypeIdx)
+            if not isPlayerAvatar():
+                self.__checkFittingItemsSync(itemTypeIdx)
             item = self.itemsFactory.createGuiItem(itemTypeIdx, *args, **kwargs)
             if item is not None:
                 container[uid] = item
@@ -1235,8 +1234,6 @@ Parse error at or near `None' instruction at offset -1
             return set()
 
     def __checkFittingItemsSync(self, itemTypeID):
-        if self.__ignoreFittingItemsSync:
-            return
         unsyncedList = [ r.__class__.__name__ for r in self.__fittingItemRequesters if not r.isSynced() ]
         if not unsyncedList or itemTypeID in self.__brokenSyncAlreadyLoggedTypes:
             return

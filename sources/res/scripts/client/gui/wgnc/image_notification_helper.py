@@ -1,5 +1,5 @@
 import logging
-from adisp import process, async
+from adisp import adisp_process, adisp_async
 from gui import SystemMessages
 from gui.impl import backport
 from gui.impl.gen import R
@@ -21,7 +21,7 @@ class WebImageHelper(object):
         self.__defLocalDirPath = defLocalDirPath
         return
 
-    @async
+    @adisp_async
     def getLocalPath(self, imageUrl, callback=lambda x: None):
         self.__imageUrl = imageUrl
         self.__callbackMethod = callback
@@ -66,14 +66,14 @@ class WebImageHelper(object):
         return
 
 
-@process
+@adisp_process
 def showPaymentMethodLinkNotification(method, imageUrl):
     helper = WebImageHelper()
     localPath = yield helper.getLocalPath(imageUrl)
     SystemMessages.pushMessage(text=backport.text(R.strings.messenger.serviceChannelMessages.sysMsg.titles.paymentMethodLink(), method=method), type=SystemMessages.SM_TYPE.PaymentMethodLinkWgnc, messageData={'imageBlock': _packImageBlock(localPath)})
 
 
-@process
+@adisp_process
 def showPaymentMethodUnlinkNotification(method, imageUrl):
     helper = WebImageHelper()
     localPath = yield helper.getLocalPath(imageUrl)

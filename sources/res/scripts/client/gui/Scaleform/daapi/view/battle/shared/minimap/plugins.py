@@ -19,7 +19,7 @@ from gui.Scaleform.daapi.view.battle.shared.minimap import entries
 from gui.Scaleform.daapi.view.battle.shared.minimap import settings
 from gui.Scaleform.daapi.view.battle.shared.minimap.settings import ENTRY_SYMBOL_NAME, SettingsTypes
 from gui.battle_control import avatar_getter, minimap_utils, matrix_factory
-from gui.battle_control.arena_info.interfaces import IVehiclesAndPositionsController
+from gui.battle_control.arena_info.interfaces import IVehiclesAndPositionsController, IArenaVehiclesController
 from gui.battle_control.arena_info.settings import INVALIDATE_OP
 from gui.battle_control.battle_constants import FEEDBACK_EVENT_ID, VEHICLE_LOCATION, VEHICLE_VIEW_STATE
 from battle_royale.gui.battle_control.controllers.radar_ctrl import IRadarListener
@@ -52,7 +52,7 @@ _MINIMAP_MAX_SCALE_INDEX = 5
 _MINIMAP_LOCATION_MARKER_MIN_SCALE = 1.0
 _MINIMAP_LOCATION_MARKER_MAX_SCALE = 0.72
 
-class PersonalEntriesPlugin(common.SimplePlugin):
+class PersonalEntriesPlugin(common.SimplePlugin, IArenaVehiclesController):
     __slots__ = ('__isAlive', '__isObserver', '__playerVehicleID', '__viewPointID',
                  '__animationID', '__deadPointID', '__cameraID', '__cameraIDs', '__yawLimits',
                  '__circlesID', '__circlesVisibilityState', '__killerVehicleID',
@@ -83,6 +83,7 @@ class PersonalEntriesPlugin(common.SimplePlugin):
         yawLimits = vInfo.vehicleType.turretYawLimits
         if yawLimits is not None and vInfo.isSPG():
             self.__yawLimits = (math.degrees(yawLimits[0]), math.degrees(yawLimits[1]))
+        self.sessionProvider.addArenaCtrl(self)
         ctrl = self.sessionProvider.shared.vehicleState
         if ctrl is not None:
             ctrl.onPostMortemSwitched += self.__onPostMortemSwitched
@@ -100,6 +101,7 @@ class PersonalEntriesPlugin(common.SimplePlugin):
         return
 
     def stop(self):
+        self.sessionProvider.removeArenaCtrl(self)
         ctrl = self.sessionProvider.shared.vehicleState
         if ctrl is not None:
             ctrl.onPostMortemSwitched -= self.__onPostMortemSwitched
@@ -410,7 +412,7 @@ class PersonalEntriesPlugin(common.SimplePlugin):
                 self.__hideDirectionLine()
             self.__clearYawLimit()
             if showYawLimit:
-                vInfo = self._arenaDP.getVehicleInfo(self._ctrlVehicleID)
+                vInfo = self._arenaDP.getVehicleInfo(self._arenaDP.getAttachedVehicleID())
                 yawLimits = vInfo.vehicleType.turretYawLimits
                 if yawLimits is not None and vInfo.isSPG():
                     self.__yawLimits = (
@@ -438,6 +440,13 @@ class PersonalEntriesPlugin(common.SimplePlugin):
             elif self.__circlesID is not None:
                 self._setActive(self.__circlesID, False)
             return
+
+    def updateVehiclesInfo(self, updated, arenaDP):
+        attachedVehicleId = arenaDP.getAttachedVehicleID()
+        for flags, vInfo in updated:
+            if vInfo.vehicleID == attachedVehicleId and flags & INVALIDATE_OP.VEHICLE_INFO > 0:
+                self._invalidateMarkup(forceInvalidate=True)
+                break
 
     def _canShowViewRangeCircle(self):
         return self.settingsCore.getSetting(settings_constants.GAME.MINIMAP_VIEW_RANGE)
@@ -482,8 +491,9 @@ class PersonalEntriesPlugin(common.SimplePlugin):
                 self._invoke(self.__animationID, 'setAnimation', marker)
 
     def _calcCircularVisionRadius(self):
+        visibilityMinRadius = self._arenaVisitor.getVisibilityMinRadius()
         vehAttrs = self.sessionProvider.shared.feedback.getVehicleAttrs()
-        return min(vehAttrs.get('circularVisionRadius', VISIBILITY.MIN_RADIUS), VISIBILITY.MAX_RADIUS)
+        return min(vehAttrs.get('circularVisionRadius', visibilityMinRadius), VISIBILITY.MAX_RADIUS)
 
     def _getViewRangeRadius(self):
         return self._calcCircularVisionRadius()
@@ -519,7 +529,7 @@ class PersonalEntriesPlugin(common.SimplePlugin):
         if self.__circlesVisibilityState & settings.CIRCLE_TYPE.MIN_SPOTTING_RANGE:
             return
         self.__circlesVisibilityState |= settings.CIRCLE_TYPE.MIN_SPOTTING_RANGE
-        self._invoke(self.__circlesID, settings.VIEW_RANGE_CIRCLES_AS3_DESCR.AS_ADD_MIN_SPOTTING_CIRCLE, settings.CIRCLE_STYLE.COLOR.MIN_SPOTTING_RANGE, settings.CIRCLE_STYLE.ALPHA, VISIBILITY.MIN_RADIUS)
+        self._invoke(self.__circlesID, settings.VIEW_RANGE_CIRCLES_AS3_DESCR.AS_ADD_MIN_SPOTTING_CIRCLE, settings.CIRCLE_STYLE.COLOR.MIN_SPOTTING_RANGE, settings.CIRCLE_STYLE.ALPHA, self._arenaVisitor.getVisibilityMinRadius())
 
     def __removeMinSpottingRangeCircle(self):
         self.__circlesVisibilityState &= ~settings.CIRCLE_TYPE.MIN_SPOTTING_RANGE
@@ -676,8 +686,6 @@ class ArenaVehiclesPlugin(common.EntriesPlugin, IVehiclesAndPositionsController)
                 model = self._entries[vehicleID]
             if model is not None:
                 self._setVehicleInfo(vehicleID, model, vInfo, getProps(vehicleID, vInfo.team), isSpotted=False)
-                if model.isActive():
-                    self._setInAoI(model, True)
                 self._notifyVehicleAdded(vehicleID)
 
         for vehicleID in set(self._entries).difference(handled):
@@ -924,12 +932,13 @@ class ArenaVehiclesPlugin(common.EntriesPlugin, IVehiclesAndPositionsController)
             if entry.wasSpotted() and entry.isAlive():
                 self.__setActive(entry, flag)
 
-    def __showMinimapHP(self, flag):
-        tmpShowVehicleHP = flag
-        if tmpShowVehicleHP == self.__canShowVehicleHp:
+    def __showMinimapHP(self, showHp):
+        if showHp == self.__canShowVehicleHp:
             return
-        self.__canShowVehicleHp = tmpShowVehicleHP
+        self.__canShowVehicleHp = showHp
         for key, entry in self._entries.iteritems():
+            if not entry.isActive():
+                continue
             self.__showVehicleHp(key, entry.getID())
 
     def __getSpottedAnimation(self, entry, isSpotted):
@@ -1027,9 +1036,6 @@ class ArenaVehiclesPlugin(common.EntriesPlugin, IVehiclesAndPositionsController)
     def __onTeamChanged(self, teamID):
         self.invalidateArenaInfo()
 
-    def hideMinimapHP(self):
-        self.__showMinimapHP(False)
-
     def __handleShowExtendedInfo(self, event):
         if self._parentObj.isModalViewShown():
             return
@@ -1084,7 +1090,7 @@ class EquipmentsPlugin(common.IntervalPlugin):
         if model is not None:
             if team is not None:
                 self._invoke(model.getID(), 'setOwningTeam', isAllyTeam)
-            self._setCallback(uniqueID, int(interval))
+            self._setCallback(uniqueID, interval)
         return
 
 
@@ -1257,10 +1263,6 @@ class MinimapPingPlugin(SimpleMinimapPingPlugin):
          Math.Vector2(0, 0), Math.Vector2(0, 0))
         AccountSettings.setSettings(MINIMAP_IBC_HINT_SECTION, self.__minimapSettings)
 
-    def hideHintPanel(self, instantHide=False):
-        self.__isHintPanelEnabled = False
-        self.parentObj.as_disableHintPanelS(instantHide)
-
     def __handleKeyDownEvent(self, event):
         if event.key not in (Keys.KEY_LCONTROL, Keys.KEY_RCONTROL):
             return
@@ -1275,9 +1277,10 @@ class MinimapPingPlugin(SimpleMinimapPingPlugin):
     def __handleKeyUpEvent(self, event):
         if event.key not in (Keys.KEY_LCONTROL, Keys.KEY_RCONTROL):
             return
-        if not self.__isHintPanelEnabled or self._parentObj.isModalViewShown():
+        if not self.__isHintPanelEnabled:
             return
-        self.hideHintPanel()
+        self.__isHintPanelEnabled = False
+        self.parentObj.as_disableHintPanelS()
 
     def updateControlMode(self, crtlMode, vehicleID):
         super(MinimapPingPlugin, self).updateControlMode(crtlMode, vehicleID)

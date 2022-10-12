@@ -6,6 +6,7 @@ from visual_script.dependency import dependencyImporter
 from visual_script.misc import errorVScript
 from visual_script.slot_types import SLOT_TYPE
 helpers, dependency = dependencyImporter('helpers', 'helpers.dependency')
+Math, = dependencyImporter('Math')
 
 class BattleHUDMeta(Meta):
 
@@ -98,7 +99,7 @@ class OnShowMessage(BattleHUDEventMeta, Block):
             self._key.setValue(key)
             self._onPlayerMessage.call()
 
-    def __onShowVehicleMessageByCode(self, code, postfix, entityID, extra, equipmentID):
+    def __onShowVehicleMessageByCode(self, code, postfix, entityID, extra, equipmentID, ignoreMessages):
         if self.active:
             self._key.setValue(code)
             self._onVehicleMessage.call()

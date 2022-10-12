@@ -22,6 +22,8 @@ package net.wg.infrastructure.base.meta
       
       function onPremShopClickS() : void;
       
+      function onReservesClickS() : void;
+      
       function onCrystalClickS() : void;
       
       function onPaymentS() : void;
@@ -55,8 +57,6 @@ package net.wg.infrastructure.base.meta
       function as_nameResponse(param1:Object) : void;
       
       function as_setBadge(param1:Object, param2:Boolean) : void;
-      
-      function as_setBoosterData(param1:Object) : void;
       
       function as_setWotPlusData(param1:Object) : void;
       

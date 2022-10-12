@@ -3,11 +3,11 @@ package net.wg.gui.battle.views.prebattleInfo
    import flash.display.FrameLabel;
    import flash.display.Sprite;
    import net.wg.data.constants.InvalidationType;
-   import net.wg.data.constants.generated.PREBATTLE_TIMER;
    import net.wg.gui.battle.components.BattleUIComponent;
    import net.wg.gui.battle.interfaces.IBattleInfo;
    import net.wg.gui.components.controls.TextFieldContainer;
    import net.wg.gui.utils.FrameHelper;
+   import net.wg.utils.StageSizeBoundaries;
    
    public class PrebattleInfoViewBase extends BattleUIComponent implements IBattleInfo
    {
@@ -51,6 +51,7 @@ package net.wg.gui.battle.views.prebattleInfo
       {
          super.configUI();
          this._stageHeight = App.appHeight;
+         App.utils.commons.addEmptyHitArea(this.bg);
       }
       
       override protected function draw() : void
@@ -65,7 +66,7 @@ package net.wg.gui.battle.views.prebattleInfo
             }
             if(isInvalid(InvalidationType.SIZE))
             {
-               this._isSmallState = this._stageHeight <= PREBATTLE_TIMER.APP_MIN_HEIGHT_BREAKING;
+               this._isSmallState = this.isSmallState();
                _loc1_ = !!this._isSmallState ? SMALL_STATE : LARGE_STATE;
                if(_loc1_ != this._currentState)
                {
@@ -78,6 +79,7 @@ package net.wg.gui.battle.views.prebattleInfo
       
       override protected function onDispose() : void
       {
+         this.bg.hitArea = null;
          this.bg = null;
          this.hintContainer.dispose();
          this.hintContainer = null;
@@ -156,6 +158,11 @@ package net.wg.gui.battle.views.prebattleInfo
       protected function onAnimationTimerHideComplete() : void
       {
          stop();
+      }
+      
+      protected function isSmallState() : Boolean
+      {
+         return this._stageHeight <= StageSizeBoundaries.HEIGHT_800;
       }
       
       private function initFramesScript() : void

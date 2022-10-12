@@ -16,6 +16,7 @@ package net.wg.gui.lobby.battleResults
    import net.wg.gui.lobby.battleResults.components.TeamMemberStatsViewBase;
    import net.wg.gui.lobby.battleResults.components.TeamStatsList;
    import net.wg.gui.lobby.battleResults.controller.ColumnConstants;
+   import net.wg.gui.lobby.battleResults.controller.Comp7TeamStatsController;
    import net.wg.gui.lobby.battleResults.controller.CybersportTeamStatsController;
    import net.wg.gui.lobby.battleResults.controller.DefaultTeamStatsController;
    import net.wg.gui.lobby.battleResults.controller.EpicTeamStatsController;
@@ -251,6 +252,9 @@ package net.wg.gui.lobby.battleResults
                break;
             case ArenaBonusTypes.EPIC_BATTLE:
                this._controller = new EpicTeamStatsController(this);
+               break;
+            case ArenaBonusTypes.COMP7:
+               this._controller = new Comp7TeamStatsController(this);
                break;
             default:
                if(this._enableScrollbars)

@@ -164,11 +164,7 @@ class VEHICLE_TAGS(CONST_CONTAINER):
     MAPS_TRAINING = 'maps_training'
     T34_DISCLAIMER = 't34_disclaimer'
     CLAN_WARS_BATTLES = 'clanWarsBattles'
-    EVENT_BOSS = 'event_boss'
-    EVENT_HUNTER = 'event_hunter'
-    EVENT_BOT = 'event_bot'
-    EVENT_SPECIAL_BOSS = 'special_event_boss'
-    EVENT_VEHS = frozenset((EVENT_BOSS, EVENT_HUNTER))
+    COMP7_BATTLES = 'comp7'
 
 
 DISCLAIMER_TAGS = frozenset((VEHICLE_TAGS.T34_DISCLAIMER,))
@@ -228,9 +224,8 @@ class Vehicle(FittingItem):
         UNSUITABLE_TO_QUEUE = 'unsuitableToQueue'
         UNSUITABLE_TO_UNIT = 'unsuitableToUnit'
         WILL_BE_UNLOCKED_IN_BATTLE = 'willBeUnlockedInBattle'
-        TICKETS_SHORTAGE = 'ticketsShortage'
-        CUSTOM = (UNSUITABLE_TO_QUEUE, UNSUITABLE_TO_UNIT, WILL_BE_UNLOCKED_IN_BATTLE, TICKETS_SHORTAGE)
-        UNSUITABLE = (UNSUITABLE_TO_QUEUE, UNSUITABLE_TO_UNIT, TICKETS_SHORTAGE)
+        CUSTOM = (UNSUITABLE_TO_QUEUE, UNSUITABLE_TO_UNIT, WILL_BE_UNLOCKED_IN_BATTLE)
+        UNSUITABLE = (UNSUITABLE_TO_QUEUE, UNSUITABLE_TO_UNIT)
         DEAL_IS_OVER = 'dealIsOver'
         ROTATION_GROUP_UNLOCKED = 'rotationGroupUnlocked'
         ROTATION_GROUP_LOCKED = 'rotationGroupLocked'
@@ -1010,10 +1005,6 @@ class Vehicle(FittingItem):
         return set(vehicles.VEHICLE_CLASS_TAGS & self.tags).pop()
 
     @property
-    def eventType(self):
-        return set(VEHICLE_TAGS.EVENT_VEHS & self.tags).pop()
-
-    @property
     def typeUserName(self):
         return getTypeUserName(self.type, self.isElite)
 
@@ -1238,8 +1229,7 @@ class Vehicle(FittingItem):
          Vehicle.VEHICLE_STATE.UNSUITABLE_TO_QUEUE,
          Vehicle.VEHICLE_STATE.DEAL_IS_OVER,
          Vehicle.VEHICLE_STATE.UNSUITABLE_TO_UNIT,
-         Vehicle.VEHICLE_STATE.ROTATION_GROUP_LOCKED,
-         Vehicle.VEHICLE_STATE.TICKETS_SHORTAGE):
+         Vehicle.VEHICLE_STATE.ROTATION_GROUP_LOCKED):
             return Vehicle.VEHICLE_STATE_LEVEL.CRITICAL
         if state in (Vehicle.VEHICLE_STATE.UNDAMAGED, Vehicle.VEHICLE_STATE.ROTATION_GROUP_UNLOCKED):
             return Vehicle.VEHICLE_STATE_LEVEL.INFO
@@ -1280,18 +1270,6 @@ class Vehicle(FittingItem):
     @property
     def isEvent(self):
         return self.isOnlyForEventBattles
-
-    @property
-    def isBoss(self):
-        return checkForTags(self.tags, VEHICLE_TAGS.EVENT_BOSS)
-
-    @property
-    def isSpecialBoss(self):
-        return checkForTags(self.tags, VEHICLE_TAGS.EVENT_SPECIAL_BOSS)
-
-    @property
-    def isHunterOrBoss(self):
-        return checkForTags(self.tags, VEHICLE_TAGS.EVENT_VEHS)
 
     @property
     def isDisabledInRoaming(self):
@@ -1460,6 +1438,10 @@ class Vehicle(FittingItem):
         return checkForTags(self.tags, VEHICLE_TAGS.CLAN_WARS_BATTLES)
 
     @property
+    def isOnlyForComp7Battles(self):
+        return checkForTags(self.tags, VEHICLE_TAGS.COMP7_BATTLES)
+
+    @property
     def isTelecom(self):
         return checkForTags(self.tags, VEHICLE_TAGS.TELECOM)
 
@@ -1512,11 +1494,6 @@ class Vehicle(FittingItem):
         if result:
             result = not self.isBroken and self.isCrewFull and not self.isTooHeavy and not self.isDisabledInPremIGR and not self.isInBattle and not self.isRotationGroupLocked and not self.isDisabled
         return result
-
-    @property
-    def isUnsuitableToQueue(self):
-        state, _ = self.getState()
-        return state == self.VEHICLE_STATE.UNSUITABLE_TO_QUEUE
 
     @property
     def isReadyToFight(self):
@@ -1984,13 +1961,16 @@ class Vehicle(FittingItem):
             component.decals.extend(emblems)
         diff = proxy.inventory.getOutfitData(self.intCD, season)
         if diff is None:
+            component = style.addPartsToOutfit(season, component, self._descriptor.makeCompactDescr())
             return component.copy()
         else:
             diffComponent = customizations.parseC11sComponentDescr(diff)
             if component.styleId != diffComponent.styleId:
                 _logger.error('Merging outfits of different styles is not allowed. ID1: %s ID2: %s', component.styleId, diffComponent.styleId)
                 return component.copy()
-            return component.applyDiff(diffComponent)
+            component = component.applyDiff(diffComponent)
+            component = style.addPartsToOutfit(season, component, self._descriptor.makeCompactDescr())
+            return component.copy()
 
     def __getEmptyOutfitComponent(self):
         if self.descriptor.type.hasCustomDefaultCamouflage:
@@ -2114,10 +2094,6 @@ def getShortUserName(vehicleType, textPrefix=False):
     return _getActualName(vehicleType.shortUserString, vehicleType.tags, textPrefix)
 
 
-def getSimpleShortUserName(vehicleType):
-    return vehicleType.descriptor.type.shortUserString
-
-
 def _getActualName(name, tags, textPrefix=False):
     if checkForTags(tags, VEHICLE_TAGS.PREMIUM_IGR):
         if textPrefix:
@@ -2214,11 +2190,3 @@ def getBattlesLeft(vehicle):
     if vehicle.isInfiniteRotationGroup:
         return i18n.makeString('#menu:infinitySymbol')
     return str(vehicle.rotationBattlesLeft)
-
-
-def getCommander(vehicle):
-    for _, tman in vehicle.crew:
-        if tman.role == Tankman.ROLES.COMMANDER:
-            return tman
-
-    return

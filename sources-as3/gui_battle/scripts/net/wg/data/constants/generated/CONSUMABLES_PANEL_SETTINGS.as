@@ -22,6 +22,10 @@ package net.wg.data.constants.generated
       public static const GLOW_ID_GREEN_UNLOCK:int = 3;
       
       public static const GLOW_ID_GREEN_UPGRADE:int = 4;
+      
+      public static const GLOW_ID_ORANGE_SPECIAL:int = 5;
+      
+      public static const GLOW_ID_ORANGE_UPGRADE:int = 6;
        
       
       public function CONSUMABLES_PANEL_SETTINGS()

@@ -1,5 +1,6 @@
+from typing import TYPE_CHECKING
 import BigWorld
-from adisp import process
+from adisp import adisp_process
 from debug_utils import LOG_ERROR
 from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
 from helpers import dependency
@@ -12,6 +13,8 @@ from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.lobby.strongholds.web_handlers import createStrongholdsWebHandlers
 from gui.Scaleform.daapi.view.lobby.strongholds.sound_constants import STRONGHOLD_SOUND_SPACE, STRONGHOLD_ADS_SOUND_SPACE
 from skeletons.gui.game_control import IBrowserController
+if TYPE_CHECKING:
+    from typing import Optional, Dict
 
 class StrongholdView(LobbySubView, StrongholdViewMeta):
     __background_alpha__ = 1.0
@@ -23,7 +26,7 @@ class StrongholdView(LobbySubView, StrongholdViewMeta):
         self.__browser = None
         self.__hasFocus = False
         self.__browserId = 0
-        self.__url = ctx.get('url', getStrongholdUrl())
+        self.__url = ctx.get('url', getStrongholdUrl()) if ctx is not None else getStrongholdUrl()
         return
 
     def onEscapePress(self):
@@ -47,7 +50,7 @@ class StrongholdView(LobbySubView, StrongholdViewMeta):
             viewPy.onError -= self.__onError
         super(StrongholdView, self)._onUnregisterFlashComponent(viewPy, alias)
 
-    @process
+    @adisp_process
     def __loadBrowser(self, width, height):
         if self.__url:
             self.__browserId = yield self.browserCtrl.load(url=self.__url, useBrowserWindow=False, browserSize=(

@@ -31,9 +31,39 @@ package net.wg.data.constants.generated
       
       public static const ADAPTATION_HEALTH_RESTORE_STATE:int = 13;
       
-      public static const WT_BOMB_CAPTURING_STATE:int = 14;
+      public static const COMP7_RISKY_ATTACK_STATE:int = 14;
       
-      public static const WT_BOMB_INSTALLING_STATE:int = 15;
+      public static const COMP7_SNIPER_STATE:int = 15;
+      
+      public static const COMP7_ALLY_SUPPORT_STATE:int = 16;
+      
+      public static const COMP7_AOE_HEAL_STATE:int = 17;
+      
+      public static const COMP7_HUNTER_STATE:int = 18;
+      
+      public static const COMP7_CONCENTRATION_STATE:int = 19;
+      
+      public static const COMP7_JUGGERNAUT_STATE:int = 20;
+      
+      public static const COMP7_RISKY_ATTACK_HEAL_STATE:int = 21;
+      
+      public static const COMP7_BERSERK_STATE:int = 22;
+      
+      public static const COMP7_FAST_RECHARGE_STATE:int = 23;
+      
+      public static const COMP7_SURE_SHOT_STATE:int = 24;
+      
+      public static const COMP7_AOE_INSPIRE_STATE:int = 25;
+      
+      public static const COMP7_ARTYLLERY_SUPPORT_STATE:int = 26;
+      
+      public static const COMP7_MARCH_STATE:int = 27;
+      
+      public static const COMP7_AGGRESSIVE_DETECTION_STATE:int = 28;
+      
+      public static const COMP7_POINT_RECON_STATE:int = 29;
+      
+      public static const CONFIRMED_STATE:int = 30;
        
       
       public function BATTLE_MARKER_STATES()

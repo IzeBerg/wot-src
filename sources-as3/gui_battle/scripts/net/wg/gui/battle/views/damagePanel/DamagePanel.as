@@ -298,6 +298,7 @@ package net.wg.gui.battle.views.damagePanel
                this.vehicleTF.text = this._vehicleName;
                this._vehicleNameIsInvalid = false;
             }
+            this.background.imageName = !!this._hasWheel ? BATTLEATLAS.DAMAGE_PANEL_BG_WHEELED : BATTLEATLAS.DAMAGE_PANEL_BG;
          }
          if(isInvalid(INVALID_CRUISE_STATE))
          {
@@ -305,11 +306,11 @@ package net.wg.gui.battle.views.damagePanel
             this._cruiseVector[this._cruiseNewStateId].visible = true;
             this._cruiseCurrentStateId = this._cruiseNewStateId;
          }
-         this.background.imageName = !!this._hasWheel ? BATTLEATLAS.DAMAGE_PANEL_BG_WHEELED : BATTLEATLAS.DAMAGE_PANEL_BG;
       }
       
       override protected function setup(param1:String, param2:int, param3:String, param4:Array, param5:Array, param6:Boolean, param7:Boolean, param8:Boolean, param9:Boolean) : void
       {
+         this._hasWheel = param7;
          this.updateHealth(param1,param2);
          if(this._tankmenCtrl != null)
          {
@@ -323,10 +324,10 @@ package net.wg.gui.battle.views.damagePanel
             this._lockChassis.visible = !param8;
          }
          this.tankIndicator.isVehicleWithTurret = param6;
-         this.tankIndicator.isVehicleWithWheel = param7;
+         this.tankIndicator.isVehicleWithWheel = this._hasWheel;
          this.tankIndicator.hasYoh = param9;
-         this._hasWheel = param7;
-         this._modulesCtrl.setChassis(param7,param9);
+         this.speedModeIndicator.visible = this._hasWheel;
+         this._modulesCtrl.setChassis(this._hasWheel,param9);
          this._modulesCtrl.hasTurretRotator = param6;
          this.changeDisplayListForCtrl(this._modulesCtrl,true);
          this.toggleClickableAreas(this._modulesCtrl.getItems(),true);
@@ -709,6 +710,7 @@ package net.wg.gui.battle.views.damagePanel
             return;
          }
          super.visible = param1;
+         mouseChildren = mouseEnabled = param1;
          dispatchEvent(new LifeCycleEvent(LifeCycleEvent.ON_GRAPHICS_RECTANGLES_UPDATE));
       }
       

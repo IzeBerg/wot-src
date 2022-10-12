@@ -36,8 +36,8 @@ package net.wg.gui.lobby.techtree.nodes
       override public function isNext2Unlock() : Boolean
       {
          var _loc1_:IRenderer = null;
-         var _loc2_:Number = this._parents.length;
-         var _loc3_:Number = 0;
+         var _loc2_:uint = this._parents.length;
+         var _loc3_:int = 0;
          while(_loc3_ < _loc2_)
          {
             _loc1_ = this._parents[_loc3_];
@@ -53,8 +53,8 @@ package net.wg.gui.lobby.techtree.nodes
       override public function isUnlocked() : Boolean
       {
          var _loc1_:IRenderer = null;
-         var _loc2_:Number = this._parents.length;
-         var _loc3_:Number = 0;
+         var _loc2_:uint = this._parents.length;
+         var _loc3_:int = 0;
          while(_loc3_ < _loc2_)
          {
             _loc1_ = this._parents[_loc3_];
@@ -92,8 +92,8 @@ package net.wg.gui.lobby.techtree.nodes
       {
          this.clearChildren();
          this._children = param1;
-         var _loc2_:Number = this._children.length;
-         var _loc3_:Number = 0;
+         var _loc2_:uint = this._children.length;
+         var _loc3_:int = 0;
          while(_loc3_ < _loc2_)
          {
             this._children[_loc3_].addEventListener(TechTreeEvent.STATE_CHANGED,this.handleStateChanged,false,0,true);
@@ -105,8 +105,8 @@ package net.wg.gui.lobby.techtree.nodes
       {
          this.clearParents();
          this._parents = param1;
-         var _loc2_:Number = this._parents.length;
-         var _loc3_:Number = 0;
+         var _loc2_:uint = this._parents.length;
+         var _loc3_:int = 0;
          while(_loc3_ < _loc2_)
          {
             this._parents[_loc3_].addEventListener(TechTreeEvent.STATE_CHANGED,this.handleStateChanged,false,0,true);

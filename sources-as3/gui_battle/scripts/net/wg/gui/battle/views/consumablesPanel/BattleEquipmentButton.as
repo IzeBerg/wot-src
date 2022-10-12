@@ -14,6 +14,7 @@ package net.wg.gui.battle.views.consumablesPanel
    import net.wg.gui.battle.components.interfaces.ICoolDownCompleteHandler;
    import net.wg.gui.battle.views.consumablesPanel.VO.ConsumablesVO;
    import net.wg.gui.battle.views.consumablesPanel.constants.COLOR_STATES;
+   import net.wg.gui.battle.views.consumablesPanel.interfaces.IBattleEquipmentButtonGlow;
    import net.wg.gui.battle.views.consumablesPanel.interfaces.IConsumablesButton;
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.utils.IScheduler;
@@ -21,11 +22,11 @@ package net.wg.gui.battle.views.consumablesPanel
    public class BattleEquipmentButton extends BattleToolTipButton implements IConsumablesButton, ICoolDownCompleteHandler
    {
       
-      protected static const KEY_VALIDATION:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 2;
+      private static const KEY_VALIDATION:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 2;
       
       private static const COOLDOWN_COUNTER_BG_RED:String = "red";
       
-      protected static const COOLDOWN_COUNTER_BG_GREEN:String = "green";
+      private static const COOLDOWN_COUNTER_BG_GREEN:String = "green";
       
       private static const COOLDOWN_COUNTER_BG_HIDE:String = "hide";
       
@@ -58,7 +59,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public var consumableBackground:MovieClip = null;
       
-      public var glow:BattleEquipmentButtonGlow = null;
+      public var glow:IBattleEquipmentButtonGlow = null;
       
       public var cooldownTimerTf:TextField = null;
       
@@ -270,6 +271,7 @@ package net.wg.gui.battle.views.consumablesPanel
          this._scheduler.cancelTask(this.onIntervalEnd);
          if(param1 > 0)
          {
+            this.updateStateBeforeCooldown();
             this._firstShow = false;
             this._isReloading = true;
             this.setColorTransform(COLOR_STATES.DARK_COLOR_TRANSFORM);
@@ -280,26 +282,24 @@ package net.wg.gui.battle.views.consumablesPanel
             if((param4 & ANIMATION_TYPES.MOVE_GREEN_BAR_DOWN) > 0)
             {
                this.cooldownMc.transform.colorTransform = COLOR_STATES.GREEN_COOLDOWN_COLOR_TRANSFORM;
-               this.currReloadingInPercent = param1 / param2;
+               this._currReloadingInPercent = param1 / param2;
                this._curAnimReversed = true;
-               this.intervalRun(false);
-               this._scheduler.scheduleRepeatableTask(this.intervalRun,INTERVAL_SIZE,param2);
             }
             else if((param4 & ANIMATION_TYPES.MOVE_GREEN_BAR_UP) > 0)
             {
                this.cooldownMc.transform.colorTransform = COLOR_STATES.GREEN_COOLDOWN_COLOR_TRANSFORM;
-               this.currReloadingInPercent = param3 / param2;
+               this._currReloadingInPercent = param3 / param2;
             }
             else if((param4 & ANIMATION_TYPES.MOVE_ORANGE_BAR_DOWN) > 0)
             {
                this.cooldownMc.transform.colorTransform = COLOR_STATES.ORANGE_COOLDOWN_COLOR_TRANSFORM;
-               this.currReloadingInPercent = param1 / param2;
+               this._currReloadingInPercent = param1 / param2;
                this._curAnimReversed = true;
             }
             else if((param4 & ANIMATION_TYPES.MOVE_ORANGE_BAR_UP) > 0)
             {
                this.cooldownMc.transform.colorTransform = COLOR_STATES.ORANGE_COOLDOWN_COLOR_TRANSFORM;
-               this.currReloadingInPercent = param3 / param2;
+               this._currReloadingInPercent = param3 / param2;
             }
             this._isFillPartially = false;
             if((param4 & ANIMATION_TYPES.FILL_PARTIALLY) > 0)
@@ -449,13 +449,18 @@ package net.wg.gui.battle.views.consumablesPanel
          }
       }
       
-      public function setStage(param1:int) : void
+      protected function updateStateBeforeCooldown() : void
       {
       }
       
-      private function set currReloadingInPercent(param1:Number) : void
+      protected function enableMouse() : void
       {
-         this._currReloadingInPercent = Math.min(Math.max(0,param1),1);
+         mouseEnabled = mouseChildren = true;
+      }
+      
+      protected function disableMouse() : void
+      {
+         mouseEnabled = mouseChildren = false;
       }
       
       private function intervalRun(param1:Boolean) : void
@@ -482,16 +487,6 @@ package net.wg.gui.battle.views.consumablesPanel
          this.clearCoolDownText();
       }
       
-      private function enableMouse() : void
-      {
-         mouseEnabled = mouseChildren = true;
-      }
-      
-      private function disableMouse() : void
-      {
-         mouseEnabled = mouseChildren = false;
-      }
-      
       private function endCooldownTimer() : void
       {
          if(this._coolDownTimer)
@@ -509,7 +504,7 @@ package net.wg.gui.battle.views.consumablesPanel
          this._coolDownTimer.start(param1,this,Math.round(COOLDOWN_FRAME_COUNT * param2),DEFAULT_TIME_COEF,param3,param4);
       }
       
-      protected function clearCoolDownText() : void
+      private function clearCoolDownText() : void
       {
          this.cooldownTimerTf.text = Values.EMPTY_STR;
          this.counterBg.gotoAndStop(COOLDOWN_COUNTER_BG_HIDE);
@@ -575,6 +570,10 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function set empty(param1:Boolean) : void
       {
+         if(this._isEmpty == param1)
+         {
+            return;
+         }
          this._isEmpty = param1;
          enabled = !param1;
          if(param1)
@@ -609,6 +608,11 @@ package net.wg.gui.battle.views.consumablesPanel
       public function set isReplay(param1:Boolean) : void
       {
          this._isReplay = param1;
+      }
+      
+      protected function get isReloading() : Boolean
+      {
+         return this._isReloading;
       }
       
       protected function get cooldownTimer() : CoolDownTimer

@@ -1,5 +1,5 @@
 import logging, typing
-from adisp import process
+from adisp import adisp_process
 from constants import RentType
 from frameworks.wulf import ViewSettings, ViewStatus, ViewFlags
 from gui.Scaleform.genConsts.STORAGE_CONSTANTS import STORAGE_CONSTANTS
@@ -90,7 +90,7 @@ class MultipleAwardsView(ViewImpl):
         else:
             return self.__tooltipItems.get(tooltipId)
 
-    @process
+    @adisp_process
     def _onLoading(self, rewards, tooltips, productCode, *args, **kwargs):
         super(MultipleAwardsView, self)._onLoading(*args, **kwargs)
         self.__tooltipItems = tooltips

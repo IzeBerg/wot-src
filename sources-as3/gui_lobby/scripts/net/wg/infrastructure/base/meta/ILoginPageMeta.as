@@ -18,7 +18,7 @@ package net.wg.infrastructure.base.meta
       
       function onSetRememberPasswordS(param1:Boolean) : void;
       
-      function doUpdateS() : void;
+      function onLoginNameUpdatedS() : void;
       
       function isTokenS() : Boolean;
       

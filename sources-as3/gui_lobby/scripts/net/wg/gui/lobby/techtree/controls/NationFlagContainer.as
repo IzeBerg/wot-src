@@ -23,17 +23,17 @@ package net.wg.gui.lobby.techtree.controls
          this.nationFlags = null;
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function setNation(param1:String) : void
       {
          if(this.nationFlags.currentFrameLabel != param1)
          {
             this.nationFlags.gotoAndStop(param1);
          }
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

@@ -89,6 +89,9 @@ class SimplePlugin(IPlugin):
     def _isInRespawnDeath(self):
         return self._ctrlMode == CTRL_MODE_NAME.RESPAWN_DEATH
 
+    def _isVehicleSelection(self):
+        return self._ctrlMode == CTRL_MODE_NAME.VEHICLES_SELECTION
+
 
 class EntriesPlugin(SimplePlugin):
     __slots__ = ('_entries', '_clazz')
@@ -126,14 +129,10 @@ class EntriesPlugin(SimplePlugin):
         return True
 
     def _setMatrixEx(self, uniqueID, matrix):
-        model = self._entries.get(uniqueID)
+        model = self._entries.get(uniqueID, None)
         if model:
             self._setMatrix(model.getID(), matrix)
-
-    def _invokeEx(self, uniqueID, name, *args):
-        model = self._entries.get(uniqueID)
-        if model:
-            self._invoke(model.getID(), name, *args)
+        return
 
 
 class IntervalPlugin(EntriesPlugin):
@@ -208,9 +207,6 @@ class BaseAreaMarkerEntriesPlugin(EntriesPlugin):
 
     def setMatrix(self, uniqueID, matrix):
         self._setMatrixEx(uniqueID, matrix)
-
-    def invoke(self, uniqueID, name, *args):
-        self._invokeEx(uniqueID, name, *args)
 
     def update(self, *args, **kwargs):
         super(BaseAreaMarkerEntriesPlugin, self).update()

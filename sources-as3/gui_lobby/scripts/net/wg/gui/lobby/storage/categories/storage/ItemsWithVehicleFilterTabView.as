@@ -51,9 +51,5 @@ package net.wg.gui.lobby.storage.categories.storage
       {
          noItemsView.setTexts(STORAGE.STORAGE_NOITEMS_TITLESHORT);
       }
-      
-      override protected function disposeNoItemsView() : void
-      {
-      }
    }
 }

@@ -100,7 +100,6 @@ package net.wg.gui.lobby.settings.feedback.damageIndicator
          var _loc4_:Boolean = param1[DAMAGE_INDICATOR_ALLIES_CONTROL_ID] == WITH_CRITS_ID;
          var _loc5_:Boolean = param1[WITH_TANK_INFO_CONTROL_ID];
          var _loc6_:Boolean = param1[WITH_VALUE_CONTROL_ID];
-         _loc2_ = _loc2_ && !getControlPropsByKey(DAMAGE_INDICATOR_TYPE_CONTROL_ID).readOnly;
          this.setEnableExtendedParams(_loc2_);
          this.damageIndicatorContainer.updateSettings(!_loc2_,_loc6_,_loc3_,_loc4_);
          this.damageIndicator.hideAll();
@@ -207,7 +206,7 @@ package net.wg.gui.lobby.settings.feedback.damageIndicator
          if(param1 == this.damageIndicatorTypeButtonBar)
          {
             _loc2_ = param1.dataProvider[param1.selectedIndex].data == EXTENDED_SETTINGS_ID;
-            this.setEnableExtendedParams(_loc2_ && !getControlPropsByKey(DAMAGE_INDICATOR_TYPE_CONTROL_ID).readOnly);
+            this.setEnableExtendedParams(_loc2_);
          }
       }
       

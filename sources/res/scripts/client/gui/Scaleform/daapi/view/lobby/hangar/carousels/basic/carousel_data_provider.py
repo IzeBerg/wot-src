@@ -34,8 +34,8 @@ class _SUPPLY_ITEMS(object):
 class HangarCarouselDataProvider(CarouselDataProvider):
     _lobbyContext = dependency.descriptor(ILobbyContext)
 
-    def __init__(self, carouselFilter, itemsCache, currentVehicle):
-        super(HangarCarouselDataProvider, self).__init__(carouselFilter, itemsCache, currentVehicle)
+    def __init__(self, carouselFilter, itemsCache):
+        super(HangarCarouselDataProvider, self).__init__(carouselFilter, itemsCache)
         self._serverSettings = self._lobbyContext.getServerSettings()
         self._setBaseCriteria()
         self._frontSupplyItems = []
@@ -127,7 +127,6 @@ class HangarCarouselDataProvider(CarouselDataProvider):
     def _setBaseCriteria(self):
         self._baseCriteria = REQ_CRITERIA.INVENTORY
         self._baseCriteria |= ~REQ_CRITERIA.VEHICLE.BATTLE_ROYALE
-        self._baseCriteria |= ~REQ_CRITERIA.VEHICLE.EVENT_BATTLE
 
     def _buildTelecomRentalVehicleItems(self):
         self._telecomRentalsVehicles = []
@@ -275,9 +274,9 @@ class BCCarouselDataProvider(CarouselDataProvider):
         pass
 
     def selectVehicle(self, idx):
-        realIdx = self._filteredIndices[idx]
         self._selectedIdx = idx
-        self._currentVehicle.selectVehicle(self._vehicles[realIdx].invID)
+        realIdx = self._filteredIndices[idx]
+        return self._vehicles[realIdx].invID
 
     def _buildVehicle(self, vehicle):
         vehicle.dailyXPFactor = 1

@@ -21,8 +21,6 @@ package net.wg.gui.battle.epicBattle.views.components
       private static const LOCKED_TF_ALPHA:Number = 0.5;
       
       private static const DEFAULT_LVL_X:int = 52;
-      
-      private static const HIT_AREA_NAME:String = "emptyHitArea";
        
       
       public var ranksMc:MovieClip = null;
@@ -49,10 +47,7 @@ package net.wg.gui.battle.epicBattle.views.components
          super.configUI();
          this.ranksHitArea.mouseEnabled = false;
          this.ranksMc.hitArea = this.ranksHitArea;
-         var _loc1_:Sprite = new Sprite();
-         _loc1_.name = HIT_AREA_NAME;
-         addChild(_loc1_);
-         glow.hitArea = _loc1_;
+         App.utils.commons.addEmptyHitArea(Sprite(glow));
       }
       
       override public function showGlow(param1:int) : void

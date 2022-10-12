@@ -36,7 +36,7 @@ package net.wg.gui.lobby.components
       
       override public function toString() : String
       {
-         return "[Scaleform RoleItemRenderer " + name + "]";
+         return "[Scaleform SmallSkillItemRenderer " + name + "]";
       }
       
       override protected function configUI() : void

@@ -1,10 +1,12 @@
 package net.wg.gui.lobby.battlequeue
 {
+   import flash.display.Sprite;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
    import net.wg.data.constants.AlignType;
    import net.wg.gui.components.controls.ImageComponent;
    import net.wg.infrastructure.base.UIComponentEx;
+   import net.wg.utils.IUtils;
    import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.core.UIComponent;
@@ -15,6 +17,10 @@ package net.wg.gui.lobby.battlequeue
    {
       
       private static const INVALIDATE_COUNT:String = "invalidateCount";
+      
+      private static const WARNING_HIGHLIHGHT:String = "Item renderer highlight is null. There is no error, but you can highlight renderers if you want";
+      
+      private static const HIGHLIGHT_COLOR:uint = 16768409;
        
       
       public var tankType:ImageComponent;
@@ -23,6 +29,8 @@ package net.wg.gui.lobby.battlequeue
       
       public var countField:TextField;
       
+      public var highlight:Sprite;
+      
       private var _index:uint = 0;
       
       private var _selectable:Boolean = false;
@@ -30,6 +38,12 @@ package net.wg.gui.lobby.battlequeue
       private var _selected:Boolean = false;
       
       private var _data:BattleQueueItemVO;
+      
+      private var _utils:IUtils;
+      
+      private var _countDefaultColor:uint;
+      
+      private var _textDefaultColor:uint;
       
       public function BattleQueueItemRenderer()
       {
@@ -44,17 +58,34 @@ package net.wg.gui.lobby.battlequeue
       override protected function configUI() : void
       {
          super.configUI();
+         this._utils = App.utils;
+         this._countDefaultColor = this.countField.textColor;
+         this._textDefaultColor = this.textField.textColor;
          this.tankType.tooltipEnabled = false;
          this.tankType.horizontalAlign = AlignType.CENTER;
          this.tankType.verticalAlign = AlignType.CENTER;
          this.textField.autoSize = TextFieldAutoSize.LEFT;
+         this.highlight.mouseChildren = this.highlight.mouseEnabled = this.highlight.tabEnabled = false;
+         this._utils.commons.addEmptyHitArea(this.highlight);
       }
       
       override protected function draw() : void
       {
+         var _loc1_:Boolean = false;
          super.draw();
          if(isInvalid(InvalidationType.DATA) && this._data)
          {
+            if(this.highlight)
+            {
+               _loc1_ = this._data.highlight;
+               this.highlight.visible = _loc1_;
+               this.countField.textColor = !!_loc1_ ? uint(HIGHLIGHT_COLOR) : uint(this._countDefaultColor);
+               this.textField.textColor = !!_loc1_ ? uint(HIGHLIGHT_COLOR) : uint(this._textDefaultColor);
+            }
+            else
+            {
+               this._utils.asserter.assertNotNull(this.highlight,WARNING_HIGHLIHGHT);
+            }
             if(this.textField && this._data.type != null)
             {
                this.textField.text = this._data.type;
@@ -84,6 +115,8 @@ package net.wg.gui.lobby.battlequeue
          this._data = null;
          this.textField = null;
          this.countField = null;
+         this.highlight = null;
+         this._utils = null;
          super.onDispose();
       }
       

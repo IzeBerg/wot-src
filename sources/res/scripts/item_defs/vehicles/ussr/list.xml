@@ -832,17 +832,19 @@
 		<tags>heavyTank role_HT_break HD sinai improvedVentilation_class2_user tankRammer_class2_user extraHealthReserve_class2_user antifragmentationLining_medium_user</tags>
 		<level>7</level>
 	</R175_IS_2_screen>
-	<R155_Object_277_bob>
+	<R90_IS_4M_7x7>
 		<id>123</id>
-		<userString>#ussr_vehicles:R155_Object_277_bob</userString>
-		<description>#ussr_vehicles:R155_Object_277_descr</description>
-		<shortUserString>#ussr_vehicles:R155_Object_277_bob_short</shortUserString>
-		<price>6100000</price>
+		<userString>#ussr_vehicles:IS-4_7x7</userString>
+		<description>#ussr_vehicles:IS-4_descr</description>
+		<price>
+			100
+			<gold/>
+		</price>
 		<notInShop>true</notInShop>
 		<cannotBeBought>true</cannotBeBought>
-		<tags>heavyTank role_HT_break private HD secret bob cannot_be_sold improvedVentilation_class1_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_heavy_user</tags>
+		<tags>heavyTank role_HT_assault HD sinai heavyTank1 improvedVentilation_class1_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_heavy_user private secret cannot_be_sold comp7 earn_crystals special</tags>
 		<level>10</level>
-	</R155_Object_277_bob>
+	</R90_IS_4M_7x7>
 	<R177_ISU_152K_BL10>
 		<id>124</id>
 		<userString>#ussr_vehicles:R177_ISU_152K_BL10</userString>
@@ -1006,6 +1008,21 @@
 		<tags>heavyTank role_HT_assault HD sinai improvedVentilation_class1_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_heavy_user</tags>
 		<level>8</level>
 	</R192_K_2>
+	<R191_Object_283>
+		<id>136</id>
+		<userString>#ussr_vehicles:R191_Object_283</userString>
+		<description>#ussr_vehicles:R191_Object_283_descr</description>
+		<shortUserString>#ussr_vehicles:R191_Object_283_short</shortUserString>
+		<shortDescriptionSpecial>#ussr_vehicles:R191_Object_283_short_special</shortDescriptionSpecial>
+		<longDescriptionSpecial>#ussr_vehicles:R191_Object_283_long_special</longDescriptionSpecial>
+		<price>
+			100
+			<gold/>
+		</price>
+		<notInShop>true</notInShop>
+		<tags>mediumTank role_MT_assault mediumTank1 HD improvedVentilation_class2_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user secret testTank</tags>
+		<level>9</level>
+	</R191_Object_283>
 	<R195_T34M_54>
 		<id>137</id>
 		<userString>#ussr_vehicles:R195_T34M_54</userString>
@@ -2301,15 +2318,4 @@
 		<tags>observer private secret lightTank improvedVentilation_class1_user unrecoverable</tags>
 		<level>1</level>
 	</Observer>
-	<R97_Object_140_hound_TLXXL>
-		<id>248</id>
-		<userString>#ussr_vehicles:R97_Object_140_hound_TLXXL</userString>
-		<description>#ussr_vehicles:R97_Object_140_hound_TLXXL_descr</description>
-		<shortUserString>#ussr_vehicles:R97_Object_140_hound_TLXXL_short</shortUserString>
-		<shortDescriptionSpecial>#ussr_vehicles:R97_Object_140_hound_TLXXL_short_special</shortDescriptionSpecial>
-		<price>6100000</price>
-		<notInShop>true</notInShop>
-		<tags>mediumTank role_MT_universal event_hunter event_battles special secret HD lockCrew lockCrewSkills lockOutfit lockShells lockDevices cannot_be_sold unrecoverable earn_crystals builtinRepairkit_wt_user builtinLargeMedkit_wt_user builtinAfterburning_wt_user builtinChargedShot_wt_user builtinDrop_wt_user builtinOverload_wt_user</tags>
-		<level>10</level>
-	</R97_Object_140_hound_TLXXL>
 </root>

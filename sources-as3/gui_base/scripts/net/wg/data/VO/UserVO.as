@@ -12,6 +12,8 @@ package net.wg.data.VO
       private static const BADGE_FIELD_NAME:String = "badgeVisualVO";
        
       
+      public var extraData:Object = null;
+      
       private var _accID:Number = 0;
       
       private var _dbID:Number = 0;
@@ -35,6 +37,8 @@ package net.wg.data.VO
       private var _userProps:IUserProps = null;
       
       private var _isTeamKiller:Boolean = false;
+      
+      private var _timeJoin:int = 0;
       
       public function UserVO(param1:Object)
       {
@@ -239,6 +243,16 @@ package net.wg.data.VO
       public function get isAnonymized() : Boolean
       {
          return this._userProps != null && (this._userProps.isAnonymized || this._fakeName && this._fakeName != this._userName);
+      }
+      
+      public function get timeJoin() : int
+      {
+         return this._timeJoin;
+      }
+      
+      public function set timeJoin(param1:int) : void
+      {
+         this._timeJoin = param1;
       }
    }
 }

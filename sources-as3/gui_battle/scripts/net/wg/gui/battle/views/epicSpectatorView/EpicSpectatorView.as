@@ -123,10 +123,6 @@ package net.wg.gui.battle.views.epicSpectatorView
          }
       }
       
-      public function as_preloadComponents(param1:Array) : void
-      {
-      }
-      
       public function as_setFollowInfoText(param1:String) : void
       {
          this.followLabel.mouseFollowHint.textField.text = param1;
@@ -136,10 +132,6 @@ package net.wg.gui.battle.views.epicSpectatorView
       public function as_setPlayerInfo(param1:String) : void
       {
          setPlayerInfo(param1);
-      }
-      
-      public function as_setSpectatorPanelVisible(param1:Boolean) : void
-      {
       }
       
       public function as_setTimer(param1:String) : void
@@ -152,12 +144,17 @@ package net.wg.gui.battle.views.epicSpectatorView
          showDeadReason();
       }
       
-      public function as_showKillerDogTag(param1:Object) : void
+      public function updateStage(param1:int, param2:int) : void
       {
-      }
-      
-      public function as_showVictimDogTag(param1:Object) : void
-      {
+         this.damagePanelOverlay.x = 0;
+         this.damagePanelOverlay.y = param2;
+         this.postmortemPanelOverlay.x = (param1 >> 1) - LEFT_POSTMORTEM_PANE_OVERLAY_OFFSET;
+         this.postmortemPanelOverlay.y = param2;
+         this.followLabel.x = param1 >> 1;
+         this.followLabel.y = param2 * FOLLOW_LABEL_HEIGHT_POSITION_RATIO >> 0;
+         this._stageHeight = param2;
+         this._stageWidth = param1;
+         this.updatePlayerInfoPosition();
       }
       
       public function onDogTagKillerInPlaySoundS() : void
@@ -172,17 +169,16 @@ package net.wg.gui.battle.views.epicSpectatorView
       {
       }
       
-      public function updateStage(param1:int, param2:int) : void
+      public function as_showKillerDogTag(param1:Object) : void
       {
-         this.damagePanelOverlay.x = 0;
-         this.damagePanelOverlay.y = param2;
-         this.postmortemPanelOverlay.x = (param1 >> 1) - LEFT_POSTMORTEM_PANE_OVERLAY_OFFSET;
-         this.postmortemPanelOverlay.y = param2;
-         this.followLabel.x = param1 >> 1;
-         this.followLabel.y = param2 * FOLLOW_LABEL_HEIGHT_POSITION_RATIO >> 0;
-         this._stageHeight = param2;
-         this._stageWidth = param1;
-         this.updatePlayerInfoPosition();
+      }
+      
+      public function as_showVictimDogTag(param1:Object) : void
+      {
+      }
+      
+      public function as_preloadComponents(param1:Array) : void
+      {
       }
    }
 }

@@ -64,7 +64,7 @@ package net.wg.infrastructure.base.meta.impl
          this.updateTankmen();
       }
       
-      public function openPersonalCaseS(param1:String, param2:uint) : void
+      public function openPersonalCaseS(param1:String, param2:String) : void
       {
          App.utils.asserter.assertNotNull(this.openPersonalCase,"openPersonalCase" + Errors.CANT_NULL);
          this.openPersonalCase(param1,param2);

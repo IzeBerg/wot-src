@@ -8,11 +8,13 @@ package net.wg.gui.events
       
       public static const APPLY_RETRAINING:String = "applyRetraining";
       
+      public static const TRAINING_FREE_SKILL:String = "trainingFreeSkill";
+      
       public static const TRAINING_SKILL:String = "trainingSkill";
       
       public static const CHANGE_PASSPORT:String = "changePassport";
       
-      public static const CHANGE_TAB_ON_TWO:String = "changeTabToTwo";
+      public static const CHANGE_TAB:String = "changeTabToSkills";
       
       public static const GET_TANKMAN_ID:String = "getTankmanID";
       
@@ -31,6 +33,14 @@ package net.wg.gui.events
       public static const CHANGE_CREW_SKIN_HISTORICALLY_ACCURATE:String = "changeHistoricallyAccurate";
       
       public static const PLAY_CREW_SKIN_SOUND:String = "playCrewSkinSound";
+      
+      public static const TEACH_SKILL:String = "teachSkill";
+      
+      public static const DROP_SKILL:String = "dropSkill";
+      
+      public static const INFO_BTN_CLICK:String = "infoBtnClick";
+      
+      public static const SKILLS_LIST_INITED:String = "skillsListInited";
        
       
       public var tankmanIdDelegate:Function;
@@ -54,6 +64,10 @@ package net.wg.gui.events
       public var selectedCrewSkinPosY:Number;
       
       public var historicallyAccurate:Boolean;
+      
+      public var scrollSkillsToLastItem:Boolean = false;
+      
+      public var relatedTabId:String;
       
       public function PersonalCaseEvent(param1:String, param2:Boolean = false, param3:Boolean = false)
       {

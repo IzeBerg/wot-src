@@ -24,9 +24,9 @@ package net.wg.gui.events
       
       public var menuEnabled:Boolean;
       
-      public var selectedTab:uint = 0;
+      public var selectedTab:String;
       
-      public function CrewEvent(param1:String, param2:Object = null, param3:Boolean = false, param4:uint = 0)
+      public function CrewEvent(param1:String, param2:Object = null, param3:Boolean = false, param4:String = "stats")
       {
          super(param1,true,true);
          this.initProp = param2;

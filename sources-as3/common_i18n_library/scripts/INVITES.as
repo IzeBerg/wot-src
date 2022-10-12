@@ -73,6 +73,10 @@ package
       
       public static const INVITES_TEXT_MAPBOX:String = "#invites:invites/text/MAPBOX";
       
+      public static const INVITES_TEXT_FUN_RANDOM:String = "#invites:invites/text/FUN_RANDOM";
+      
+      public static const INVITES_TEXT_COMP7:String = "#invites:invites/text/COMP7";
+      
       public static const INVITES_TEXT_FORT_OFFENCE:String = "#invites:invites/text/fort/offence";
       
       public static const INVITES_TEXT_FORT_DEFENCE:String = "#invites:invites/text/fort/defence";
@@ -120,8 +124,6 @@ package
       public static const INVITES_NOTE_LEAVE_QUEUE_EVENT_BATTLES:String = "#invites:invites/note/leave/QUEUE_EVENT_BATTLES";
       
       public static const INVITES_NOTE_CHANGE_AND_LEAVE_PREBATTLE_EVENT:String = "#invites:invites/note/change_and_leave/PREBATTLE_EVENT";
-      
-      public static const INVITES_NOTE_LEAVE_SQUAD_EVENT:String = "#invites:invites/note/leave/SQUAD_EVENT";
       
       public static const INVITES_NOTE_LEAVE_PREBATTLE_EVENT:String = "#invites:invites/note/leave/PREBATTLE_EVENT";
       
@@ -225,7 +227,17 @@ package
       
       public static const INVITES_NOTE_CHANGE_AND_LEAVE_QUEUE_MAPBOX:String = "#invites:invites/note/change_and_leave/QUEUE_MAPBOX";
       
+      public static const INVITES_NOTE_LEAVE_QUEUE_COMP7:String = "#invites:invites/note/leave/QUEUE_COMP7";
+      
+      public static const INVITES_NOTE_CHANGE_AND_LEAVE_QUEUE_COMP7:String = "#invites:invites/note/change_and_leave/QUEUE_COMP7";
+      
+      public static const INVITES_NOTE_LEAVE_PREBATTLE_COMP7:String = "#invites:invites/note/leave/PREBATTLE_COMP7";
+      
+      public static const INVITES_NOTE_CHANGE_AND_LEAVE_PREBATTLE_COMP7:String = "#invites:invites/note/change_and_leave/PREBATTLE_COMP7";
+      
       public static const INVITES_WARNING_ANONYMIZED:String = "#invites:invites/warning/anonymized";
+      
+      public static const INVITES_TOOLTIP_FUNRANDOM_NOVEHICLES:String = "#invites:invites/tooltip/funRandom/noVehicles";
       
       public static const GUI_TITLES_RECEIVEDINVITES:String = "#invites:gui/titles/receivedInvites";
       

@@ -1,17 +1,21 @@
 package net.wg.gui.lobby.hangar.crew
 {
    import flash.display.MovieClip;
+   import flash.display.Sprite;
    import flash.events.MouseEvent;
    import flash.geom.Point;
    import flash.text.TextField;
    import net.wg.data.constants.ComponentState;
    import net.wg.data.constants.generated.TOOLTIPS_CONSTANTS;
    import net.wg.gui.components.controls.SoundListItemRenderer;
+   import net.wg.gui.components.controls.TileList;
    import net.wg.gui.events.CrewEvent;
    import net.wg.gui.lobby.components.SmallSkillsList;
+   import net.wg.gui.lobby.components.data.RoleVO;
    import scaleform.clik.constants.InputValue;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.constants.NavigationCode;
+   import scaleform.clik.data.DataProvider;
    import scaleform.clik.data.ListData;
    import scaleform.clik.events.InputEvent;
    import scaleform.clik.ui.InputDetails;
@@ -23,6 +27,10 @@ package net.wg.gui.lobby.hangar.crew
       
       private static const TANKMEN_RANKS_SMALL:String = "../maps/icons/tankmen/ranks/small/";
       
+      private static const TANKMEN_ROLES_SMALL:String = "../maps/icons/tankmen/roles/small/";
+      
+      private static const IMAGE_EXTENSION:String = ".png";
+      
       private static const SOUND_TYPE:String = "rendererRecruit";
       
       private static const RECRUIT_PREFIX:String = "recruit_";
@@ -32,13 +40,17 @@ package net.wg.gui.lobby.hangar.crew
       
       public var icon:TankmenIcons = null;
       
-      public var iconRole:TankmenIcons = null;
-      
       public var iconRank:TankmenIcons = null;
       
       public var skills:SmallSkillsList = null;
       
+      public var roles:TileList = null;
+      
+      public var sixthSenseIcon:Sprite = null;
+      
       public var bg:MovieClip = null;
+      
+      public var focusIndicatorUI:MovieClip = null;
       
       public var levelSpecializationMain:TextField = null;
       
@@ -49,8 +61,6 @@ package net.wg.gui.lobby.hangar.crew
       public var role:TextField = null;
       
       public var vehicleType:TextField = null;
-      
-      public var focusIndicatorUI:MovieClip = null;
       
       private var _recruit:Boolean = false;
       
@@ -73,7 +83,6 @@ package net.wg.gui.lobby.hangar.crew
       
       override public function setData(param1:Object) : void
       {
-         var _loc2_:Boolean = false;
          if(this._recruitData == param1)
          {
             return;
@@ -81,8 +90,8 @@ package net.wg.gui.lobby.hangar.crew
          this._recruitData = TankmanVO(param1);
          this.recruit = this._recruitData.recruit;
          this.personalCase = this._recruitData.personalCase;
-         _loc2_ = !this._recruitData.personalCase && !this._recruitData.recruit;
-         this.icon.visible = this.iconRank.visible = this.iconRole.visible = _loc2_;
+         var _loc2_:Boolean = !this._recruitData.personalCase && !this._recruitData.recruit;
+         this.icon.visible = this.iconRank.visible = _loc2_;
          if(_loc2_)
          {
             if(this._recruitData.iconFile != this.icon.imageLoader.source && this._recruitData.iconFile)
@@ -95,21 +104,33 @@ package net.wg.gui.lobby.hangar.crew
                this.iconRank.imageLoader.visible = true;
                this.iconRank.imageLoader.source = TANKMEN_RANKS_SMALL + this._recruitData.rankIconFile;
             }
-            if(this._recruitData.roleIconFile != this.iconRole.imageLoader.source && this._recruitData.roleIconFile)
-            {
-               this.iconRole.imageLoader.visible = true;
-               this.iconRole.imageLoader.source = this._recruitData.roleIconFile;
-            }
          }
+         this.sixthSenseIcon.visible = this._recruitData.hasCommanderFeature && _loc2_;
+         var _loc3_:Array = [];
+         var _loc4_:int = this._recruitData.roles.length;
+         var _loc5_:int = 0;
+         while(_loc5_ < _loc4_)
+         {
+            _loc3_.push(new RoleVO({
+               "index":_loc5_,
+               "icon":TANKMEN_ROLES_SMALL + this._recruitData.roles[_loc5_] + IMAGE_EXTENSION
+            }));
+            _loc5_++;
+         }
+         if(this.roles.dataProvider != null)
+         {
+            this.roles.dataProvider.cleanUp();
+         }
+         this.roles.dataProvider = new DataProvider(_loc3_);
          if(this.skills != null)
          {
             this.skills.updateSkills(this._recruitData);
          }
          this._textObj = new TankmanTextCreator(this._recruitData,this._recruitData.currentRole);
          setState(ComponentState.UP);
-         var _loc3_:Point = new Point(mouseX,mouseY);
-         _loc3_ = this.localToGlobal(_loc3_);
-         if(this.hitTestPoint(_loc3_.x,_loc3_.y,true))
+         var _loc6_:Point = new Point(mouseX,mouseY);
+         _loc6_ = this.localToGlobal(_loc6_);
+         if(this.hitTestPoint(_loc6_.x,_loc6_.y,true))
          {
             this.checkToolTipData(this._recruitData);
          }
@@ -146,12 +167,13 @@ package net.wg.gui.lobby.hangar.crew
          removeEventListener(MouseEvent.MOUSE_DOWN,this.onMouseDownHandler);
          this.icon.dispose();
          this.icon = null;
-         this.iconRole.dispose();
-         this.iconRole = null;
          this.iconRank.dispose();
          this.iconRank = null;
          this.skills.dispose();
          this.skills = null;
+         this.roles.dispose();
+         this.roles = null;
+         this.sixthSenseIcon = null;
          this.bg = null;
          this.levelSpecializationMain = null;
          this.nameTF = null;
@@ -169,17 +191,17 @@ package net.wg.gui.lobby.hangar.crew
       {
          var _loc1_:Point = null;
          super.draw();
-         this.skills.visible = true;
+         this.skills.visible = this.roles.visible = true;
          if(this._recruit)
          {
             this.role.text = MENU.tankmanrecruitrenderer(this._recruitData.roleType);
             this.rank.text = MENU.TANKMANRECRUITRENDERER_DESCR;
-            this.skills.visible = false;
+            this.skills.visible = this.roles.visible = false;
          }
          if(this._personalCase)
          {
             this.role.text = MENU.TANKMANRECRUITRENDERER_PERSONALCASE;
-            this.skills.visible = false;
+            this.skills.visible = this.roles.visible = false;
          }
          if(this.nameTF && this.rank && this.role && this.levelSpecializationMain)
          {

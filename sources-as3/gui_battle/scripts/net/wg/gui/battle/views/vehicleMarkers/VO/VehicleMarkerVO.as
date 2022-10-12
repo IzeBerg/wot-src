@@ -34,6 +34,12 @@ package net.wg.gui.battle.views.vehicleMarkers.VO
       
       public var locSecString:String = "";
       
+      public var roleName:String = "";
+      
+      public var roleSkillLevel:int = 0;
+      
+      public var isPlayerLoaded:Boolean = true;
+      
       public function VehicleMarkerVO()
       {
          super();

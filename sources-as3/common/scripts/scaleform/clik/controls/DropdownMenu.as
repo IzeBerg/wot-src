@@ -1,6 +1,7 @@
 package scaleform.clik.controls
 {
    import flash.display.DisplayObject;
+   import flash.display.DisplayObjectContainer;
    import flash.display.MovieClip;
    import flash.events.Event;
    import flash.events.MouseEvent;
@@ -467,10 +468,15 @@ package scaleform.clik.controls
       
       protected function hideDropdown() : void
       {
+         var _loc1_:DisplayObjectContainer = null;
          if(this._dropdownRef)
          {
             this._dropdownRef.removeEventListener(TutorialEvent.VIEW_READY_FOR_TUTORIAL,this.dropdownRefReadyForTutorialHandler);
-            this._dropdownRef.parent.removeChild(this._dropdownRef);
+            _loc1_ = this._dropdownRef.parent;
+            if(_loc1_)
+            {
+               _loc1_.removeChild(this._dropdownRef);
+            }
             this._dropdownRef = null;
          }
       }

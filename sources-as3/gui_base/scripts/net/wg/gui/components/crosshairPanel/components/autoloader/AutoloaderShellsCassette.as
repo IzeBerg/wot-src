@@ -1,6 +1,7 @@
 package net.wg.gui.components.crosshairPanel.components.autoloader
 {
    import flash.display.MovieClip;
+   import flash.geom.Rectangle;
    import net.wg.infrastructure.base.SimpleContainer;
    
    public class AutoloaderShellsCassette extends SimpleContainer
@@ -61,7 +62,7 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
       
       public var timerMc:MovieClip = null;
       
-      private var timer:AutoloaderTimer = null;
+      private var _timer:AutoloaderTimer = null;
       
       private var _totalAmmo:int = -1;
       
@@ -89,7 +90,7 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
       {
          super();
          this._shells = new <MovieClip>[this.shell_1,this.shell_2,this.shell_3,this.shell_4,this.shell_5,this.shell_6,this.shell_7,this.shell_8];
-         this.timer = this.timerMc.getChildByName(TIMER_COMPONENT_NAME) as AutoloaderTimer;
+         this._timer = this.timerMc.getChildByName(TIMER_COMPONENT_NAME) as AutoloaderTimer;
          this.backgroundCritical.visible = this._isCritical;
       }
       
@@ -111,8 +112,8 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
          this._lastLoadedShell = null;
          this._shells.splice(0,this._shells.length);
          this._shells = null;
-         this.timer.dispose();
-         this.timer = null;
+         this._timer.dispose();
+         this._timer = null;
          super.onDispose();
       }
       
@@ -121,7 +122,7 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
          super.draw();
          if(isInvalid(TIMER_STATE_INVALID))
          {
-            this.timer.updateTimerColor(this._isTimerRed,this._isCritical,this._isAutoloadInProgress);
+            this._timer.updateTimerColor(this._isTimerRed,this._isCritical,this._isAutoloadInProgress);
             this.updateStatusMC();
          }
       }
@@ -145,7 +146,12 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
          {
             this.setTimerRed(param4);
          }
-         this.timer.updateTimer(param2,param3);
+         this._timer.updateTimer(param2,param3);
+      }
+      
+      public function getTimerRect() : Rectangle
+      {
+         return new Rectangle(this._timer.x,this._timer.y,this._timer.width,this._timer.height);
       }
       
       public function reloadingPercent(param1:Number) : void

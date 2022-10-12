@@ -11,11 +11,12 @@ package net.wg.gui.lobby.hangar.crew
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.SoundManagerStates;
    import net.wg.data.constants.generated.CONTEXT_MENU_HANDLER_TYPE;
+   import net.wg.data.constants.generated.PERSONALCASECONST;
    import net.wg.gui.components.controls.TileList;
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.events.CrewEvent;
    import net.wg.gui.lobby.components.SmallSkillsList;
-   import net.wg.gui.lobby.components.data.SkillsVO;
+   import net.wg.gui.lobby.components.data.RoleVO;
    import net.wg.gui.lobby.hangar.CrewDropDownEvent;
    import net.wg.infrastructure.events.TutorialEvent;
    import net.wg.infrastructure.interfaces.ITutorialCustomComponent;
@@ -64,8 +65,6 @@ package net.wg.gui.lobby.hangar.crew
       
       private static const EMPTY_LABEL:String = "empty";
       
-      private static const SELECTED_TAB_INDEX:int = 2;
-      
       private static const SPACE_DELIMITER:String = " ";
       
       private static const EMPTY_STR:String = "";
@@ -83,9 +82,9 @@ package net.wg.gui.lobby.hangar.crew
       
       public var iconExtra:UILoaderAlt = null;
       
-      public var iconRole:TankmenIcons = null;
-      
       public var iconRank:TankmenIcons = null;
+      
+      public var sixthSenseIcon:Sprite = null;
       
       public var bg:Sprite = null;
       
@@ -318,10 +317,9 @@ package net.wg.gui.lobby.hangar.crew
          this.icon = null;
          this.iconExtra.dispose();
          this.iconExtra = null;
-         this.iconRole.dispose();
-         this.iconRole = null;
          this.iconRank.dispose();
          this.iconRank = null;
+         this.sixthSenseIcon = null;
          this.bg = null;
          this.roles.dispose();
          this.roles = null;
@@ -374,7 +372,7 @@ package net.wg.gui.lobby.hangar.crew
          return true;
       }
       
-      public function openPersonalCase(param1:uint = 0) : void
+      public function openPersonalCase(param1:String = "stats") : void
       {
          dispatchEvent(new CrewEvent(CrewEvent.OPEN_PERSONAL_CASE,this.data,false,param1));
       }
@@ -412,20 +410,18 @@ package net.wg.gui.lobby.hangar.crew
          {
             this.iconRank.imageLoader.visible = false;
          }
-         if(_loc5_.roleIconFile != this.iconRole.imageLoader.source && _loc5_.roleIconFile)
-         {
-            this.iconRole.imageLoader.visible = true;
-            this.iconRole.imageLoader.source = _loc5_.roleIconFile;
-         }
          var _loc6_:TankmanTextCreator = new TankmanTextCreator(_loc5_,_loc2_);
          this.role.label = _loc6_.roleHtml;
          this.levelSpecializationMain.label = _loc6_.levelSpecializationMainHtml;
          var _loc7_:Array = [];
-         var _loc8_:int = _loc2_.roles.length;
+         var _loc8_:int = _loc2_.tankman.roles.length;
          var _loc9_:int = 0;
          while(_loc9_ < _loc8_)
          {
-            _loc7_.push(new SkillsVO({"icon":TANKMEN_ROLES_SMALL + _loc2_.roles[_loc9_] + IMAGE_EXTENSION}));
+            _loc7_.push(new RoleVO({
+               "index":_loc9_,
+               "icon":TANKMEN_ROLES_SMALL + _loc2_.tankman.roles[_loc9_] + IMAGE_EXTENSION
+            }));
             _loc9_++;
          }
          if(this.roles.dataProvider != null)
@@ -434,6 +430,7 @@ package net.wg.gui.lobby.hangar.crew
          }
          this.roles.dataProvider = new DataProvider(_loc7_);
          this.speed_xp_bg.visible = _loc5_.isLessMastered;
+         this.sixthSenseIcon.visible = _loc5_.hasCommanderFeature;
          if(isNaN(_loc2_.tankmanID))
          {
             if(App.globalVarsMgr.isKoreaS())
@@ -553,8 +550,9 @@ package net.wg.gui.lobby.hangar.crew
          var _loc5_:DataProvider = null;
          var _loc6_:int = 0;
          var _loc7_:int = 0;
-         var _loc8_:DisplayObject = null;
-         var _loc9_:Number = NaN;
+         var _loc8_:String = null;
+         var _loc9_:DisplayObject = null;
+         var _loc10_:Number = NaN;
          var _loc2_:ICommons = App.utils.commons;
          var _loc3_:TankmanRoleVO = TankmanRoleVO(this.data);
          if(_loc2_.isLeftButton(param1))
@@ -569,9 +567,10 @@ package net.wg.gui.lobby.hangar.crew
                {
                   if(_loc5_[_loc7_].buy)
                   {
-                     _loc8_ = DisplayObject(_loc4_.getRendererAt(_loc7_));
-                     _loc9_ = _loc8_.width;
-                     if(_loc8_.mouseX > 0 && _loc8_.mouseX < _loc9_ && (_loc8_.mouseY > 0 && _loc8_.mouseY < _loc9_))
+                     _loc8_ = _loc5_[_loc7_].buyFreeCount > 0 ? PERSONALCASECONST.FREE_SKILLS_TAB_ID : PERSONALCASECONST.SKILLS_TAB_ID;
+                     _loc9_ = DisplayObject(_loc4_.getRendererAt(_loc7_));
+                     _loc10_ = _loc9_.width;
+                     if(_loc9_.mouseX > 0 && _loc9_.mouseX < _loc10_ && (_loc9_.mouseY > 0 && _loc9_.mouseY < _loc10_))
                      {
                         if(selected)
                         {
@@ -579,7 +578,7 @@ package net.wg.gui.lobby.hangar.crew
                         }
                         if(_loc3_.tankmanID > 0)
                         {
-                           this.openPersonalCase(SELECTED_TAB_INDEX);
+                           this.openPersonalCase(_loc8_);
                            setState(ComponentState.OUT);
                            return;
                         }

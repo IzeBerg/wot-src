@@ -11,6 +11,7 @@ from gui.shared.utils.functions import getArenaShortName
 from gui.Scaleform.daapi.view.lobby.cyberSport import PLAYER_GUI_STATUS, SLOT_LABEL
 from gui.Scaleform.genConsts.FORTIFICATION_ALIASES import FORTIFICATION_ALIASES as FORT_ALIAS
 from gui.Scaleform.locale.FORTIFICATIONS import FORTIFICATIONS
+from gui.Scaleform.locale.MESSENGER import MESSENGER
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.Scaleform.locale.PLATOON import PLATOON
 from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
@@ -201,7 +202,9 @@ def makePlayerVO(pInfo, user, colorGetter, isPlayerSpeaking=False, isIncludeAcco
        'isOffline': pInfo.isOffline(), 
        'igrType': pInfo.igrType, 
        'isRatingAvailable': True, 
-       'badgeVisualVO': badgeVO}
+       'badgeVisualVO': badgeVO, 
+       'timeJoin': pInfo.getTimeJoin(), 
+       'extraData': pInfo.getExtraData()}
     if isIncludeAccountWTR:
         playerVO['accountWTR'] = backport.getIntegralFormat(pInfo.accountWTR) if pInfo.accountWTR else '-'
     return playerVO
@@ -354,24 +357,17 @@ def _getSlotsData(unitMgrID, fullData, levelsRange=None, checkForVehicles=True, 
            'roleIcon': _ROLE_ICONS.get(role & equipmentCommanderRoles, '')}
         if withPrem:
             slot['hasPremiumAccount'] = player and player.hasPremium
-        if unit.isSquad():
+        if unit.isSquad() or unit.getPrebattleType() == PREBATTLE_TYPE.FUN_RANDOM:
             eventsCache = dependency.instance(IEventsCache)
             if eventsCache.isBalancedSquadEnabled():
-                isVisibleAdtMsg = player and player.isCurrentPlayer() and not isPlayerCreator and not vehicle and unit and bool(unit.getVehicles())
-                if isVisibleAdtMsg:
-                    rangeString = toRomanRangeString(levelsRange, 1)
-                    additionMsg = i18n.makeString(PLATOON.MEMBERS_CARD_SELECTVEHICLE, level=rangeString)
-                else:
-                    additionMsg = ''
-                slot.update({'isVisibleAdtMsg': isVisibleAdtMsg, 
-                   'additionalMsg': additionMsg})
+                slot.update(_getBalancedSquadInfo(isPlayerCreator, levelsRange, player, unit, vehicle))
             elif eventsCache.isSquadXpFactorsEnabled():
                 slot.update(_getXPFactorSlotInfo(unit, eventsCache, slotInfo))
         if unit.isEvent():
-            isVisibleAdtMsg = player and player.isCurrentPlayer() and vehicle is not None
+            isVisibleAdtMsg = player and player.isCurrentPlayer() and not vehicle
             additionMsg = ''
             if isVisibleAdtMsg:
-                additionMsg = backport.text(R.strings.event.simpleSquad.selectRestriction())
+                additionMsg = i18n.makeString(MESSENGER.DIALOGS_EVENTSQUAD_VEHICLE, vehName='')
             slot.update({'isVisibleAdtMsg': isVisibleAdtMsg, 
                'additionalMsg': additionMsg})
         elif unit.getPrebattleType() == PREBATTLE_TYPE.EPIC and squadPremBonusEnabled:
@@ -380,6 +376,17 @@ def _getSlotsData(unitMgrID, fullData, levelsRange=None, checkForVehicles=True, 
         playerCount += 1
 
     return slots
+
+
+def _getBalancedSquadInfo(isPlayerCreator, levelsRange, player, unit, vehicle):
+    isVisibleAdtMsg = player and player.isCurrentPlayer() and not isPlayerCreator and not vehicle and unit and bool(unit.getVehicles())
+    if isVisibleAdtMsg:
+        rangeString = toRomanRangeString(levelsRange, 1)
+        additionMsg = i18n.makeString(PLATOON.MEMBERS_CARD_SELECTVEHICLE, level=rangeString)
+    else:
+        additionMsg = ''
+    return {'isVisibleAdtMsg': isVisibleAdtMsg, 
+       'additionalMsg': additionMsg}
 
 
 def _updateEpicBattleSlotInfo(player, vehicle):

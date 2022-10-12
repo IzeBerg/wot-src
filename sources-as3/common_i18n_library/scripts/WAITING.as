@@ -125,7 +125,7 @@ package
       
       public static const APPLYMODULE:String = "#waiting:applyModule";
       
-      public static const SINHRONIZE:String = "#waiting:sinhronize";
+      public static const SYNCHRONIZE:String = "#waiting:synchronize";
       
       public static const CHANGINGROLE:String = "#waiting:changingRole";
       

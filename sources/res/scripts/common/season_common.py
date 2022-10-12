@@ -242,5 +242,5 @@ def getSeasonNumber(config, seasonID):
     if not seasons:
         return
     else:
-        seasonData = seasons.get(seasonID, None)
+        seasonData = seasons.get(seasonID, {})
         return seasonData.get('number', None)

@@ -1,7 +1,10 @@
+from typing import TYPE_CHECKING
 import constants
-from skeletons.festivity_factory import IFestivityFactory
-from shared_utils import CONST_CONTAINER
 from gui.shared.system_factory import collectGameControllers
+from shared_utils import CONST_CONTAINER
+from skeletons.festivity_factory import IFestivityFactory
+if TYPE_CHECKING:
+    from helpers.dependency import DependencyManager
 
 class CalendarInvokeOrigin(CONST_CONTAINER):
     ACTION = 'action'
@@ -62,6 +65,7 @@ def getGameControllersConfig(manager):
     from gui.game_control.mapbox_controller import MapboxController
     from gui.game_control.overlay import OverlayController as _OverlayController
     from gui.game_control.account_completion import SteamCompletionController as _SteamCompletionController, DemoAccCompletionController as _DemoAccCompletionController
+    from gui.game_control.comp7_controller import Comp7Controller as _Comp7Ctrl
     from gui.game_control.veh_post_progression_controller import VehiclePostProgressionController
     from gui.game_control.wot_plus_controller import WotPlusNotificationController
     from gui.game_control.telecom_rentals_controller import TelecomRentalsNotificationController
@@ -70,19 +74,19 @@ def getGameControllersConfig(manager):
     from gui.game_control.seniority_awards_controller import SeniorityAwardsController as _SeniorityAwardsController
     from gui.game_control.rts_battles_controller import RTSBattlesController
     from gui.game_control.resource_well_controller import ResourceWellController
-    from gui.game_control.loot_boxes_controller import LootBoxesController
-    from event_settings.event_settings_controller import EventSettingsController
+    from gui.game_control.extension_stubs.fun_random_controller import FunRandomController
+    from gui.game_control.hangar_switch_controller import HangarSpaceSwitchController
+    from gui.game_control.cn_lootbox_controller import CNLootBoxesController
     from gui.entitlements.entitlements_controller import EntitlementsController
-    from gui.wt_event.wt_event_notifications import WTEventNotifications
-    from skeletons.gui.wt_event import IWTEventNotifications
     tracker = GameStateTracker()
     tracker.init()
     manager.addInstance(_interface.IGameStateTracker, tracker, finalizer='fini')
 
-    def _config(interface, controller):
+    def _config(interface, controller, replace=False):
         tracker.addController(controller)
         controller.init()
-        manager.addInstance(interface, controller, finalizer='fini')
+        method = manager.replaceInstance if replace else manager.addInstance
+        method(interface, controller, finalizer='fini')
 
     _config(_interface.IFestivityController, manager.getService(IFestivityFactory).getController())
     _config(_interface.IReloginController, _Relogin())
@@ -107,6 +111,7 @@ def getGameControllersConfig(manager):
     _config(_interface.IVehicleComparisonBasket, _VehComparison())
     _config(_interface.ITradeInController, _TradeIn())
     _config(_interface.IQuestsController, _Quests())
+    _config(_interface.IHangarSpaceSwitchController, HangarSpaceSwitchController())
     _config(_interface.IBootcampController, _Bootcamp())
     _config(_interface.IRankedBattlesController, _Ranked())
     _config(_interface.IEpicModeController, _Epic())
@@ -126,7 +131,8 @@ def getGameControllersConfig(manager):
         _config(_interface.IChinaController, _NoChina())
     _config(_interface.IMapboxController, MapboxController())
     _config(_interface.IEventBattlesController, EventBattlesController())
-    _config(_interface.ILootBoxesController, LootBoxesController())
+    _config(_interface.IFunRandomController, FunRandomController())
+    _config(_interface.IComp7Controller, _Comp7Ctrl())
     _config(_interface.ISeasonsController, _Seasons())
     _config(_interface.IBadgesController, _Badges())
     _config(_interface.IAnonymizerController, _Anonymizer())
@@ -146,7 +152,6 @@ def getGameControllersConfig(manager):
     _config(_interface.ISeniorityAwardsController, _SeniorityAwardsController())
     _config(_interface.IRTSBattlesController, RTSBattlesController())
     _config(_interface.IResourceWellController, ResourceWellController())
-    _config(_interface.IEventSettingsController, EventSettingsController())
+    _config(_interface.ICNLootBoxesController, CNLootBoxesController())
     _config(_interface.IEntitlementsController, EntitlementsController())
-    _config(IWTEventNotifications, WTEventNotifications())
     collectGameControllers(_config)

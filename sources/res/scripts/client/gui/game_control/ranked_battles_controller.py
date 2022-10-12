@@ -3,7 +3,7 @@ from collections import defaultdict
 import typing, BigWorld, Event, season_common
 from account_helpers import AccountSettings
 from account_helpers.AccountSettings import RANKED_LAST_CYCLE_ID, RANKED_WEB_INFO, RANKED_WEB_INFO_UPDATE
-from adisp import process
+from adisp import adisp_process
 from constants import ARENA_BONUS_TYPE, EVENT_TYPE
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
@@ -30,6 +30,7 @@ from gui.server_events.awards_formatters import AWARDS_SIZES
 from gui.server_events.event_items import RankedQuest
 from gui.server_events.events_helpers import EventInfoModel
 from gui.shared import EVENT_BUS_SCOPE, event_dispatcher, events, g_eventBus
+from gui.shared.formatters.ranges import toRomanRangeString
 from gui.shared.gui_items.Vehicle import Vehicle
 from gui.shared.money import Currency
 from gui.shared.utils.SelectorBattleTypesUtils import setBattleTypeAsUnknown
@@ -734,10 +735,12 @@ class RankedBattlesController(IRankedBattlesController, Notifiable, SeasonProvid
 
     def _getAlertBlockData(self):
         if not self.hasSuitableVehicles():
-            return self._ALERT_DATA_CLASS.constructForVehicle(self.getSuitableVehicleLevels(), self.vehicleIsAvailableForBuy(), self.vehicleIsAvailableForRestore())
+            minLvl, maxLvl = self.getSuitableVehicleLevels()
+            levelsStr = toRomanRangeString(range(minLvl, maxLvl + 1))
+            return self._ALERT_DATA_CLASS.constructForVehicle(levelsStr=levelsStr, vehicleIsAvailableForBuy=self.vehicleIsAvailableForBuy(), vehicleIsAvailableForRestore=self.vehicleIsAvailableForRestore())
         return super(RankedBattlesController, self)._getAlertBlockData()
 
-    @process
+    @adisp_process
     def __switchForcedToRankedPrb(self):
         result = yield g_prbLoader.getDispatcher().doSelectAction(PrbAction(PREBATTLE_ACTION_NAME.RANKED))
         if not result:
@@ -770,7 +773,7 @@ class RankedBattlesController(IRankedBattlesController, Notifiable, SeasonProvid
         if arenaBonusType == ARENA_BONUS_TYPE.RANKED and arenaUniqueID not in self.__arenaBattleResultsWasShown:
             self.updateClientValues()
             rankInfo = reusableInfo.personal.getRankInfo()
-            questsProgress = reusableInfo.progress.getQuestsProgress()
+            questsProgress = reusableInfo.personal.getQuestsProgress()
             rankedResultsVO = composer.getResultsTeamsVO()
             event_dispatcher.showRankedBattleResultsWindow(rankedResultsVO, rankInfo, questsProgress, resultsWindow)
             self.__arenaBattleResultsWasShown.add(reusableInfo.arenaUniqueID)

@@ -1,6 +1,6 @@
 from collections import defaultdict
 import typing
-from adisp import process
+from adisp import adisp_process
 from debug_utils import LOG_WARNING, LOG_DEBUG, LOG_ERROR
 from gui.Scaleform.daapi import LobbySubView
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
@@ -660,8 +660,9 @@ class VehicleCompareConfiguratorMain(LobbySubView, VehicleCompareConfiguratorMai
             self.__notifyViews('onShellsUpdated', selectedIndex=slotIndex)
 
     def selectCamouflage(self, select):
-        cmp_helpers.applyCamouflage(self.__vehicle, select)
-        self.__notifyViews('onCamouflageUpdated')
+        if not self.__vehicle.descriptor.type.hasCustomDefaultCamouflage:
+            cmp_helpers.applyCamouflage(self.__vehicle, select)
+            self.__notifyViews('onCamouflageUpdated')
 
     def resetToDefault(self):
         self.__vehicle, self.__crewSkillsManager = self.getInitialVehicleData()
@@ -786,7 +787,7 @@ class VehicleCompareConfiguratorMain(LobbySubView, VehicleCompareConfiguratorMai
         resID = R.views.lobby.tanksetup.VehicleCompareAmmunitionSetup()
         return self.uiLoader.windowsManager.getViewByLayoutID(resID) is None
 
-    @process
+    @adisp_process
     def __launchOptDeviceRemoving(self, slotIndex):
         installedDevice = self.__vehicle.optDevices.installed[slotIndex]
         if installedDevice is not None:

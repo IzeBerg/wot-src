@@ -1,4 +1,4 @@
-from script_component.DynamicScriptComponent import DynamicScriptComponent
+from view_state_component import ViewStateComponent
 
-class VehicleBuff(DynamicScriptComponent):
+class VehicleBuff(ViewStateComponent):
     pass

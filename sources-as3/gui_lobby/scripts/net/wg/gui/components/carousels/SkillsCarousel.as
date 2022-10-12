@@ -1,5 +1,6 @@
 package net.wg.gui.components.carousels
 {
+   import net.wg.gui.events.PersonalCaseEvent;
    import scaleform.clik.controls.Button;
    import scaleform.clik.interfaces.IListItemRenderer;
    
@@ -17,6 +18,15 @@ package net.wg.gui.components.carousels
          super.configUI();
          rightArrow.soundEnabled = true;
          leftArrow.soundEnabled = true;
+      }
+      
+      override protected function draw() : void
+      {
+         super.draw();
+         if(isInvalid(INIT_CAROUSEL) && dataProvider != null && dataProvider.length > 0)
+         {
+            dispatchEvent(new PersonalCaseEvent(PersonalCaseEvent.SKILLS_LIST_INITED,true));
+         }
       }
       
       override protected function updateContainerPosition() : void

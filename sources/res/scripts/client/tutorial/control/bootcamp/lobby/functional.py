@@ -1,7 +1,7 @@
 from functools import partial
 import BigWorld, VSE
 from visual_script import ASPECT
-from async import await, async
+from wg_async import wg_await, wg_async
 from gui.platform.base.statuses.constants import StatusTypes
 from gui.shared.event_dispatcher import showDemoAccRenamingOverlay
 from skeletons.connection_mgr import IConnectionManager
@@ -290,13 +290,13 @@ class FunctionalShowDemoAccRenameOverlay(FunctionalEffect):
     def isStillRunning(self):
         return self.__running
 
-    @async
+    @wg_async
     def triggerEffect(self):
         self._gui.release()
         if not self._demoAccController.isDemoAccount:
             return
         self.__running = True
-        status = yield await(self._wgnpDemoAccCtrl.getNicknameStatus(self._WAITING_ID))
+        status = yield wg_await(self._wgnpDemoAccCtrl.getNicknameStatus(self._WAITING_ID))
         if status.typeIs(StatusTypes.ADD_NEEDED):
             if self._hangarSpace.spaceInited:
                 self._showRenameOverlay()

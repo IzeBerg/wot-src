@@ -86,7 +86,7 @@ package net.wg.gui.battle.battleloading
          var _loc2_:DAAPIArenaInfoVO = DAAPIArenaInfoVO(param1);
          this.form.updateMapName(_loc2_.mapName);
          this.form.setBattleTypeName(_loc2_.battleTypeLocaleStr);
-         this.form.updateWinText(_loc2_.winText);
+         this.updateWinText(_loc2_);
          this.form.updateTeamsHeaders(_loc2_.allyTeamName,_loc2_.enemyTeamName);
          this.form.setBattleTypeFrameName(_loc2_.battleTypeFrameLabel);
       }
@@ -211,6 +211,11 @@ package net.wg.gui.battle.battleloading
       protected function updateFormY() : void
       {
          this.form.y = (this._stageHeight - FORM_VISIBLE_AREA_HEIGHT >> 1) + this._formYShift;
+      }
+      
+      protected function updateWinText(param1:DAAPIArenaInfoVO) : void
+      {
+         this.form.updateWinText(param1.winText);
       }
       
       private function removeMapIconListeners() : void

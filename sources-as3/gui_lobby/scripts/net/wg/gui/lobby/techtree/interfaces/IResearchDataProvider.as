@@ -10,11 +10,11 @@ package net.wg.gui.lobby.techtree.interfaces
       
       function populate(param1:ADG_ItemLevelsBuilder) : void;
       
-      function getDepthOfPath(param1:Number) : Number;
+      function getDepthOfPath(param1:int) : Number;
       
-      function getTopLevelAt(param1:Number) : NodeData;
+      function getTopLevelAt(param1:int) : NodeData;
       
-      function getTopLevelIndexByID(param1:Number) : Number;
+      function getTopLevelIndexByID(param1:int) : Number;
       
       function setTopLevelState(param1:Number, param2:Number, param3:Number) : Boolean;
       

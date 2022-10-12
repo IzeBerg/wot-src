@@ -1,6 +1,6 @@
 import BigWorld, WWISE
 from CurrentVehicle import g_currentVehicle
-from adisp import process
+from adisp import adisp_process
 from frameworks.wulf import ViewSettings
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
@@ -24,7 +24,6 @@ from helpers import dependency, int2roman
 from items.components.c11n_constants import SeasonType, UNBOUND_VEH_KEY
 from skeletons.gui.customization import ICustomizationService
 from skeletons.gui.shared import IItemsCache
-from skeletons.gui.game_control import IEventBattlesController
 from soft_exception import SoftException
 from gui.impl.lobby.progressive_reward.progressive_award_sounds import ProgressiveRewardSoundEvents
 
@@ -32,7 +31,6 @@ class ProgressiveItemsUpgradeView(ViewImpl):
     __slots__ = ('__item', '__vehicle', '__level', '__itemsInNeedToUpgrade')
     __c11nService = dependency.descriptor(ICustomizationService)
     __itemsCache = dependency.descriptor(IItemsCache)
-    __gameEventCtrl = dependency.descriptor(IEventBattlesController)
 
     def __init__(self, *args, **kwargs):
         settings = ViewSettings(R.views.lobby.customization.progressive_items_reward.ProgressiveItemsUpgradeView())
@@ -144,10 +142,7 @@ class ProgressiveItemsUpgradeView(ViewImpl):
     @replaceNoneKwargsModel
     def __updateButtons(self, lock=False, model=None):
         okEnabled = True
-        isEventHangar = self.__gameEventCtrl.isEventPrbActive()
-        isBRHangar = currentHangarIsBattleRoyale()
-        vehCustomizationEbabled = self.__vehicle.isCustomizationEnabled()
-        c11nEnabled = not lock and vehCustomizationEbabled and not isEventHangar and not isBRHangar
+        c11nEnabled = not lock and self.__vehicle.isCustomizationEnabled() and not currentHangarIsBattleRoyale()
         if self.__itemsInNeedToUpgrade:
             okEnabled = c11nEnabled
             if okEnabled:
@@ -190,7 +185,7 @@ class ProgressiveItemsUpgradeView(ViewImpl):
         if self.__itemsInNeedToUpgrade:
             self.__upgradeItems()
 
-    @process
+    @adisp_process
     def __upgradeItems(self):
         self.__resetItemNovelty()
         vehicle = self.__vehicle

@@ -56,6 +56,11 @@ package net.wg.gui.lobby.techtree.data.vo
          }
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function toString() : String
       {
          return "[NationDisplaySettings: nodeRendererName = " + this._nodeRendererName + ", isLevelDisplayed = " + this._isLevelDisplayed + " ]";
@@ -69,11 +74,6 @@ package net.wg.gui.lobby.techtree.data.vo
       public function get isLevelDisplayed() : Boolean
       {
          return this._isLevelDisplayed;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

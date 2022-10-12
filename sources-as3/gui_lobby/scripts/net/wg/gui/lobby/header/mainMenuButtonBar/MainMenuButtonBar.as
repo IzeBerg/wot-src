@@ -109,11 +109,10 @@ package net.wg.gui.lobby.header.mainMenuButtonBar
       
       override protected function populateRendererData(param1:Button, param2:uint) : void
       {
-         var _loc3_:HangarMenuTabItemVO = null;
          param1.label = itemToLabel(_dataProvider.requestItemAt(param2));
          param1.data = _dataProvider.requestItemAt(param2);
          param1.selected = param2 == selectedIndex;
-         _loc3_ = HangarMenuTabItemVO(_dataProvider[param2]);
+         var _loc3_:HangarMenuTabItemVO = HangarMenuTabItemVO(_dataProvider[param2]);
          param1.enabled = _loc3_.enabled && enabled;
          var _loc4_:MainMenuButton = MainMenuButton(param1);
          if(_loc3_.icon)
@@ -230,8 +229,8 @@ package net.wg.gui.lobby.header.mainMenuButtonBar
       {
          var _loc1_:Button = null;
          var _loc2_:int = 0;
-         var _loc3_:int = 0;
          var _loc4_:int = 0;
+         var _loc3_:int = this.paddingRight + spacing;
          var _loc5_:Number = this.paddingLeft;
          var _loc6_:int = _renderers.length;
          var _loc7_:int = 0;
@@ -239,7 +238,7 @@ package net.wg.gui.lobby.header.mainMenuButtonBar
          {
             _loc1_ = _renderers[_loc7_];
             _loc4_ = _loc1_.width + spacing;
-            if(_loc3_ + _loc4_ + this.paddingRight > MAX_WIDTH)
+            if(_loc3_ + _loc4_ > MAX_WIDTH)
             {
                this.disposeRenderer(_loc1_);
                if(_loc2_ == 0)
@@ -264,7 +263,7 @@ package net.wg.gui.lobby.header.mainMenuButtonBar
                _loc5_ += 0;
                break;
             case TextFieldAutoSize.CENTER:
-               _loc5_ += -(_loc3_ >> 1) - this.paddingRight;
+               _loc5_ += -(_loc3_ >> 1);
                break;
             case TextFieldAutoSize.RIGHT:
                _loc5_ += -_loc3_;

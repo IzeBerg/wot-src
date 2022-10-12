@@ -587,6 +587,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_BPCOIN:String = "#messenger:serviceChannelMessages/battleResults/bpcoin";
       
+      public static const SERVICECHANNELMESSAGES_BATTLERESULTS_RATINGPOINTS:String = "#messenger:serviceChannelMessages/battleResults/ratingPoints";
+      
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_DOUBLEXPFACTOR:String = "#messenger:serviceChannelMessages/battleResults/doubleXpFactor";
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_PENALTYFORDAMAGEALLIES:String = "#messenger:serviceChannelMessages/battleResults/penaltyForDamageAllies";
@@ -955,10 +957,6 @@ package
       
       public static const SERVICECHANNELMESSAGES_OFFERTOKENBONUS_TITLE:String = "#messenger:serviceChannelMessages/offerTokenBonus/title";
       
-      public static const SERVICECHANNELMESSAGES_EVENT_LOOTBOXES:String = "#messenger:serviceChannelMessages/event/lootboxes";
-      
-      public static const SERVICECHANNELMESSAGES_EVENT_TICKETS:String = "#messenger:serviceChannelMessages/event/tickets";
-      
       public static const SERVICECHANNELMESSAGES_DURATIONOFPREMIUMACCOUNTEXPIRES:String = "#messenger:serviceChannelMessages/durationOfPremiumAccountExpires";
       
       public static const SERVICECHANNELMESSAGES_PREMIUMBOUGHT:String = "#messenger:serviceChannelMessages/premiumBought";
@@ -978,6 +976,20 @@ package
       public static const SERVICECHANNELMESSAGES_PREMIUMPLUSEXPIRED:String = "#messenger:serviceChannelMessages/premiumPlusExpired";
       
       public static const SERVICECHANNELMESSAGES_BOOSTEREXPIRED:String = "#messenger:serviceChannelMessages/boosterExpired";
+      
+      public static const SERVICECHANNELMESSAGES_BOOSTERADDITIONALMESSAGE:String = "#messenger:serviceChannelMessages/boosterAdditionalMessage";
+      
+      public static const SERVICECHANNELMESSAGES_TORESERVES:String = "#messenger:serviceChannelMessages/toReserves";
+      
+      public static const SERVICECHANNELMESSAGES_BOOSTEREXPIREDTOTALTEMPLATE_TOTAL:String = "#messenger:serviceChannelMessages/boosterExpiredTotalTemplate/total";
+      
+      public static const SERVICECHANNELMESSAGES_BOOSTEREXPIREDRESOURCENAME_XP:String = "#messenger:serviceChannelMessages/boosterExpiredResourceName/xp";
+      
+      public static const SERVICECHANNELMESSAGES_BOOSTEREXPIREDRESOURCENAME_FREEXP:String = "#messenger:serviceChannelMessages/boosterExpiredResourceName/freeXP";
+      
+      public static const SERVICECHANNELMESSAGES_BOOSTEREXPIREDRESOURCENAME_TMENXP:String = "#messenger:serviceChannelMessages/boosterExpiredResourceName/tmenXP";
+      
+      public static const SERVICECHANNELMESSAGES_BOOSTEREXPIREDRESOURCENAME_CREDITS:String = "#messenger:serviceChannelMessages/boosterExpiredResourceName/credits";
       
       public static const SERVICECHANNELMESSAGES_BOOSTERDISABLED:String = "#messenger:serviceChannelMessages/boosterDisabled";
       
@@ -1969,6 +1981,10 @@ package
       
       public static const SERVICECHANNELMESSAGES_DOGTAGS_VIEWTYPE_BACKGROUND:String = "#messenger:serviceChannelMessages/dogTags/viewType/background";
       
+      public static const SERVICECHANNELMESSAGES_DOGTAGS_BONUS_ENGRAVING:String = "#messenger:serviceChannelMessages/dogTags/bonus/engraving";
+      
+      public static const SERVICECHANNELMESSAGES_DOGTAGS_BONUS_BACKGROUND:String = "#messenger:serviceChannelMessages/dogTags/bonus/background";
+      
       public static const SERVICECHANNELMESSAGES_DEDICATIONREWARD_HEADER:String = "#messenger:serviceChannelMessages/dedicationReward/header";
       
       public static const SERVICECHANNELMESSAGES_DEDICATIONREWARD_TEXT:String = "#messenger:serviceChannelMessages/dedicationReward/text";
@@ -2221,6 +2237,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_PROGRESSION2D_ITEM:String = "#messenger:serviceChannelMessages/progression2d/item";
       
+      public static const SERVICECHANNELMESSAGES_PROGRESSION2D_LEVEL:String = "#messenger:serviceChannelMessages/progression2d/level";
+      
       public static const SERVICECHANNELMESSAGES_PROGRESSION2D_RECEIVED:String = "#messenger:serviceChannelMessages/progression2d/received";
       
       public static const SERVICECHANNELMESSAGES_PROGRESSION2D_ITEMCOUNT:String = "#messenger:serviceChannelMessages/progression2d/itemCount";
@@ -2228,6 +2246,34 @@ package
       public static const SERVICECHANNELMESSAGES_PROGRESSION2D_TITLE:String = "#messenger:serviceChannelMessages/progression2d/title";
       
       public static const SERVICECHANNELMESSAGES_PROGRESSION2D_BUTTON:String = "#messenger:serviceChannelMessages/progression2d/button";
+      
+      public static const SERVICECHANNELMESSAGES_FUNRANDOM_STARTEVENT_BUTTON:String = "#messenger:serviceChannelMessages/funRandom/startEvent/button";
+      
+      public static const SERVICECHANNELMESSAGES_INTEGRATEDAUCTION_BUTTON:String = "#messenger:serviceChannelMessages/integratedAuction/button";
+      
+      public static const SERVICECHANNELMESSAGES_INTEGRATEDAUCTION_STAGESTART_TITLE:String = "#messenger:serviceChannelMessages/integratedAuction/stageStart/title";
+      
+      public static const SERVICECHANNELMESSAGES_INTEGRATEDAUCTION_STAGESTART_TEXT:String = "#messenger:serviceChannelMessages/integratedAuction/stageStart/text";
+      
+      public static const SERVICECHANNELMESSAGES_INTEGRATEDAUCTION_STAGEFINISH_TITLE:String = "#messenger:serviceChannelMessages/integratedAuction/stageFinish/title";
+      
+      public static const SERVICECHANNELMESSAGES_INTEGRATEDAUCTION_STAGEFINISH_TEXT:String = "#messenger:serviceChannelMessages/integratedAuction/stageFinish/text";
+      
+      public static const SERVICECHANNELMESSAGES_INTEGRATEDAUCTION_RATEERROR_HEADER:String = "#messenger:serviceChannelMessages/integratedAuction/rateError/header";
+      
+      public static const SERVICECHANNELMESSAGES_INTEGRATEDAUCTION_RATEERROR_TEXT:String = "#messenger:serviceChannelMessages/integratedAuction/rateError/text";
+      
+      public static const SERVICECHANNELMESSAGES_INTEGRATEDAUCTION_BELOWCOMPETITIVERATE_HEADER:String = "#messenger:serviceChannelMessages/integratedAuction/belowCompetitiveRate/header";
+      
+      public static const SERVICECHANNELMESSAGES_INTEGRATEDAUCTION_BELOWCOMPETITIVERATE_TEXT:String = "#messenger:serviceChannelMessages/integratedAuction/belowCompetitiveRate/text";
+      
+      public static const SERVICECHANNELMESSAGES_INTEGRATEDAUCTION_LOSTRATE_HEADER:String = "#messenger:serviceChannelMessages/integratedAuction/lostRate/header";
+      
+      public static const SERVICECHANNELMESSAGES_INTEGRATEDAUCTION_LOSTRATE_TEXT:String = "#messenger:serviceChannelMessages/integratedAuction/lostRate/text";
+      
+      public static const SERVICECHANNELMESSAGES_PERSONALRESERVESTITLE:String = "#messenger:serviceChannelMessages/personalReservesTitle";
+      
+      public static const SERVICECHANNELMESSAGES_PERSONALRESERVESCONVERTED:String = "#messenger:serviceChannelMessages/personalReservesConverted";
       
       public static const DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_ENUM:Array = [DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_OFFLINE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_NOTREADY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_READY,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_INBATTLE,DIALOGS_SQUADCHANNEL_TOOLTIPS_STATUS_AFK];
        

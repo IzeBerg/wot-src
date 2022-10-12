@@ -796,7 +796,7 @@
 			<userString>#vehicle_customization:inscription/special/special_199</userString>
 			<vehicleFilter>
 				<include>
-					<nations>china czech germany italy japan poland ussr</nations>
+					<nations>ussr poland czech china germany italy japan</nations>
 				</include>
 			</vehicleFilter>
 			<mirror>false</mirror>
@@ -807,7 +807,7 @@
 			<userString>#vehicle_customization:inscription/special/special_198</userString>
 			<vehicleFilter>
 				<include>
-					<nations>france sweden uk usa</nations>
+					<nations>france uk usa sweden</nations>
 				</include>
 			</vehicleFilter>
 			<mirror>false</mirror>
@@ -2507,14 +2507,12 @@
 		<decal>
 			<id>338</id>
 			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_399.dds</texture>
-			<maxNumber>3</maxNumber>
 			<userString>#vehicle_customization:inscription/special/special_399</userString>
 			<mirror>false</mirror>
 		</decal>
 		<decal>
 			<id>342</id>
 			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_400.dds</texture>
-			<maxNumber>3</maxNumber>
 			<userString>#vehicle_customization:inscription/special/special_400</userString>
 			<mirror>false</mirror>
 		</decal>
@@ -2527,7 +2525,6 @@
 		<decal>
 			<id>344</id>
 			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_402.dds</texture>
-			<maxNumber>3</maxNumber>
 			<userString>#vehicle_customization:inscription/special/special_402</userString>
 			<mirror>false</mirror>
 		</decal>
@@ -2611,6 +2608,18 @@
 			<id>408</id>
 			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_451.dds</texture>
 			<userString>#vehicle_customization:inscription/special/special_451</userString>
+			<mirror>false</mirror>
+		</decal>
+		<decal>
+			<id>906</id>
+			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_629.dds</texture>
+			<userString>#vehicle_customization:inscription/special/special_629</userString>
+			<mirror>false</mirror>
+		</decal>
+		<decal>
+			<id>907</id>
+			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_630.dds</texture>
+			<userString>#vehicle_customization:inscription/special/special_630</userString>
 			<mirror>false</mirror>
 		</decal>
 		<name>GI Joe</name>
@@ -3434,6 +3443,96 @@
 		<type>INSCRIPTION</type>
 	</itemGroup>
 	<itemGroup>
+		<userString>#vehicle_customization:inscription/special</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>inscriptions 50g notInShop</priceGroup>
+		<decal>
+			<id>920</id>
+			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_631.dds</texture>
+			<userString>#vehicle_customization:inscription/special/special_631</userString>
+			<mirror>false</mirror>
+		</decal>
+		<name>quicky baby</name>
+		<type>INSCRIPTION</type>
+	</itemGroup>
+	<itemGroup>
+		<userString>#vehicle_customization:inscription/special</userString>
+		<season>ALL</season>
+		<historical>1</historical>
+		<priceGroup>inscriptions 50g notInShop</priceGroup>
+		<vehicleFilter>
+			<include>
+				<levels>10</levels>
+			</include>
+		</vehicleFilter>
+		<decal>
+			<id>881</id>
+			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_620.dds</texture>
+			<userString>#vehicle_customization:inscription/special/special_620</userString>
+			<mirror>false</mirror>
+			<tags>styleOnly</tags>
+		</decal>
+		<decal>
+			<id>882</id>
+			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_621.dds</texture>
+			<userString>#vehicle_customization:inscription/special/special_621</userString>
+			<mirror>false</mirror>
+			<tags>styleOnly</tags>
+		</decal>
+		<decal>
+			<id>883</id>
+			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_622.dds</texture>
+			<userString>#vehicle_customization:inscription/special/special_622</userString>
+			<mirror>false</mirror>
+			<tags>styleOnly</tags>
+		</decal>
+		<decal>
+			<id>884</id>
+			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_623.dds</texture>
+			<userString>#vehicle_customization:inscription/special/special_623</userString>
+			<mirror>false</mirror>
+			<tags>styleOnly</tags>
+		</decal>
+		<decal>
+			<id>885</id>
+			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_624.dds</texture>
+			<userString>#vehicle_customization:inscription/special/special_624</userString>
+			<mirror>false</mirror>
+			<tags>styleOnly</tags>
+		</decal>
+		<decal>
+			<id>886</id>
+			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_625.dds</texture>
+			<userString>#vehicle_customization:inscription/special/special_625</userString>
+			<mirror>false</mirror>
+			<tags>styleOnly</tags>
+		</decal>
+		<decal>
+			<id>887</id>
+			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_626.dds</texture>
+			<userString>#vehicle_customization:inscription/special/special_626</userString>
+			<mirror>false</mirror>
+			<tags>styleOnly</tags>
+		</decal>
+		<decal>
+			<id>888</id>
+			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_627.dds</texture>
+			<userString>#vehicle_customization:inscription/special/special_627</userString>
+			<mirror>false</mirror>
+			<tags>styleOnly</tags>
+		</decal>
+		<decal>
+			<id>889</id>
+			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_628.dds</texture>
+			<userString>#vehicle_customization:inscription/special/special_628</userString>
+			<mirror>false</mirror>
+			<tags>styleOnly</tags>
+		</decal>
+		<name>FW 2022</name>
+		<type>INSCRIPTION</type>
+	</itemGroup>
+	<itemGroup>
 		<name>White Tiger 2022 Inscriptions</name>
 		<season>ALL</season>
 		<historical>1</historical>
@@ -3441,8 +3540,8 @@
 		<type>INSCRIPTION</type>
 		<decal>
 			<id>15949</id>
-			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_620.dds</texture>
-			<userString>#vehicle_customization:inscription/special/special_620</userString>
+			<texture>gui/maps/vehicles/decals/inscriptions/special/inscription_634.dds</texture>
+			<userString>#vehicle_customization:inscription/special/special_634</userString>
 			<mirror>false</mirror>
 		</decal>
 		<userString>#vehicle_customization:inscription/special</userString>

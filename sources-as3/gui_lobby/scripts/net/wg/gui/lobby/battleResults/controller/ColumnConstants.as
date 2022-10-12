@@ -29,6 +29,8 @@ package net.wg.gui.lobby.battleResults.controller
       
       public static const COLUMN_ID_TEAM_SCORE:String = "teamScore";
       
+      public static const PRESTIGE_POINTS:String = "prestigePoints";
+      
       public static const MEDAL:String = "medal";
       
       public static const KEY_PREBATTLE_ID:String = "prebattleID";
@@ -92,6 +94,8 @@ package net.wg.gui.lobby.battleResults.controller
       public static const WIDE_COLUMN_WIDTH:int = 60;
       
       public static const SCROLLBAR_WIDTH:int = 13;
+      
+      public static const PRESTIGE_POINTS_COLUMN_WIDTH:int = 61;
        
       
       public function ColumnConstants()

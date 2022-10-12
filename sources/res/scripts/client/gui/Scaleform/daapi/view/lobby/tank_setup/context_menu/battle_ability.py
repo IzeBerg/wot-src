@@ -1,4 +1,4 @@
-from adisp import process, async
+from adisp import adisp_process, adisp_async
 from gui.Scaleform.daapi.view.lobby.shared.cm_handlers import option, CMLabel
 from gui.Scaleform.daapi.view.lobby.tank_setup.context_menu.base import TankSetupCMLabel
 from gui.Scaleform.daapi.view.lobby.tank_setup.context_menu.base_equipment import BaseEquipmentItemContextMenu, BaseEquipmentSlotContextMenu, BaseHangarEquipmentSlotContextMenu
@@ -55,7 +55,7 @@ class HangarBattleAbilitySlotContextMenu(BaseHangarEquipmentSlotContextMenu):
     _sqGen = SequenceIDGenerator(BaseHangarEquipmentSlotContextMenu._sqGen.currSequenceID)
 
     @option(_sqGen.next(), TankSetupCMLabel.TAKE_OFF)
-    @process
+    @adisp_process
     def takeOff(self):
         copyVehicle = self._getCopyVehicle()
         copyVehicle.battleAbilities.layout[self._installedSlotId] = None
@@ -85,8 +85,8 @@ class HangarBattleAbilitySlotContextMenu(BaseHangarEquipmentSlotContextMenu):
             return False
         return super(HangarBattleAbilitySlotContextMenu, self)._isVisible(label)
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def _doPutOnAction(self, vehicle, callback):
         action = ActionsFactory.getAction(ActionsFactory.INSTALL_BATTLE_ABILITIES, vehicle)
         result = yield ActionsFactory.asyncDoAction(action)

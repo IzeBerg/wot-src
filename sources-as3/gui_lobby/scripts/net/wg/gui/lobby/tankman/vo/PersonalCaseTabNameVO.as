@@ -6,11 +6,13 @@ package net.wg.gui.lobby.tankman.vo
    {
        
       
-      public var index:uint = 1.0;
+      public var id:String = "";
       
       public var label:String = "";
       
       public var linkage:String = "";
+      
+      public var tooltip:String = "";
       
       public function PersonalCaseTabNameVO(param1:Object)
       {

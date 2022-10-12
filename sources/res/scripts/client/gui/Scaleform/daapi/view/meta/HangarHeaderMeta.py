@@ -49,6 +49,14 @@ class HangarHeaderMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_removeEpicWidget()
 
+    def as_createFunRandomWidgetS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_createFunRandomWidget()
+
+    def as_removeFunRandomWidgetS(self):
+        if self._isDAAPIInited():
+            return self.flashObject.as_removeFunRandomWidget()
+
     def as_setSecondaryEntryPointVisibleS(self, value):
         if self._isDAAPIInited():
             return self.flashObject.as_setSecondaryEntryPointVisible(value)
@@ -61,10 +69,10 @@ class HangarHeaderMeta(BaseDAAPIComponent):
         if self._isDAAPIInited():
             return self.flashObject.as_setBattleMattersEntryPoint(value)
 
-    def as_createEventWidgetS(self):
+    def as_createComp7S(self):
         if self._isDAAPIInited():
-            return self.flashObject.as_createEventWidget()
+            return self.flashObject.as_createComp7()
 
-    def as_removeEventWidgetS(self):
+    def as_removeComp7S(self):
         if self._isDAAPIInited():
-            return self.flashObject.as_removeEventWidget()
+            return self.flashObject.as_removeComp7()

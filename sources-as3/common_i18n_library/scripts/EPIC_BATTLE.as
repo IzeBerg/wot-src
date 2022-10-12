@@ -93,12 +93,6 @@ package
       
       public static const CHAT_SHORTCUTS_ATTENTION_TO_OBJECTIVE_DEF:String = "#epic_battle:chat_shortcuts/attention_to_objective_def";
       
-      public static const PROGRESS_TIMERS_BASE_CAPTURE:String = "#epic_battle:progress_timers/base_capture";
-      
-      public static const PROGRESS_TIMERS_CAPTURED:String = "#epic_battle:progress_timers/captured";
-      
-      public static const PROGRESS_TIMERS_BLOCKED:String = "#epic_battle:progress_timers/blocked";
-      
       public static const PROGRESS_TIMERS_RESUPPLY:String = "#epic_battle:progress_timers/resupply";
       
       public static const PROGRESS_TIMERS_ACTIVE:String = "#epic_battle:progress_timers/active";
@@ -106,8 +100,6 @@ package
       public static const PROGRESS_TIMERS_UNAVAILABLE:String = "#epic_battle:progress_timers/unavailable";
       
       public static const PROGRESS_TIMERS_FULLY_EQUIPPED:String = "#epic_battle:progress_timers/fully_equipped";
-      
-      public static const DESTROY_TIMERS_AIRSTRIKE_TXT:String = "#epic_battle:destroy_timers/airstrike_txt";
       
       public static const RESPAWN_AUTO_TIMER_TXT:String = "#epic_battle:respawn/auto_timer_txt";
       
@@ -273,14 +265,6 @@ package
       
       public static const METAABILITYSCREEN_HOW_TO_ACTIVATE:String = "#epic_battle:metaAbilityScreen/how_to_activate";
       
-      public static const SMOKE_IN_SMOKE:String = "#epic_battle:smoke/In_smoke";
-      
-      public static const SMOKE_INALLYSMOKE:String = "#epic_battle:smoke/InAllySmoke";
-      
-      public static const SMOKE_INENEMYSMOKE:String = "#epic_battle:smoke/InEnemySmoke";
-      
-      public static const SMOKE_INENEMYSMOKEPOSTEFFECT:String = "#epic_battle:smoke/InEnemySmokePostEffect";
-      
       public static const ABILITYINFO_PARAMS_COMMON_COOLDOWNTIME:String = "#epic_battle:abilityInfo/params/common/cooldownTime";
       
       public static const ABILITYINFO_PARAMS_COMMON_DELAY:String = "#epic_battle:abilityInfo/params/common/delay";
@@ -361,10 +345,6 @@ package
       
       public static const ABILITYINFO_PARAMS_ARCADE_MINEFIELD_EPIC_BATTLE_BOMBSNUMBER:String = "#epic_battle:abilityInfo/params/arcade_minefield_epic_battle/bombsNumber";
       
-      public static const EQUIPMENT_HEALPOINT_HEALING:String = "#epic_battle:equipment/healPoint/healing";
-      
-      public static const EQUIPMENT_HEALPOINT_HEALED:String = "#epic_battle:equipment/healPoint/healed";
-      
       public static const ABILITYINFO_UNITS_METER:String = "#epic_battle:abilityInfo/units/meter";
       
       public static const ABILITYINFO_UNITS_SECONDS:String = "#epic_battle:abilityInfo/units/seconds";
@@ -377,19 +357,11 @@ package
       
       public static const ABILITYINFO_MANAGE_ABILITIES_DESC:String = "#epic_battle:abilityInfo/manage_abilities_desc";
       
-      public static const INSPIRE_INSPIRING:String = "#epic_battle:inspire/inspiring";
-      
-      public static const INSPIRE_INSPIRED:String = "#epic_battle:inspire/inspired";
-      
       public static const SCOREPANEL_STAGE1:String = "#epic_battle:scorePanel/stage1";
       
       public static const SCOREPANEL_STAGE2:String = "#epic_battle:scorePanel/stage2";
       
       public static const SCOREPANEL_STAGE3:String = "#epic_battle:scorePanel/stage3";
-      
-      public static const STEALTHRADAR_ACTIVE:String = "#epic_battle:stealthRadar/active";
-      
-      public static const STEALTHRADAR_INACTIVE:String = "#epic_battle:stealthRadar/inactive";
       
       public static const REINFORCEMENTSPANEL_INTEXT:String = "#epic_battle:reinforcementsPanel/inText";
       
@@ -642,6 +614,30 @@ package
       public static const TOOLTIPS_SLOTSETUPINFO_UPGRADE_DESC:String = "#epic_battle:tooltips/slotSetupInfo/upgrade/desc";
       
       public static const TOOLTIPS_CHOOSEREWARDS_DESC:String = "#epic_battle:tooltips/chooseRewards/desc";
+      
+      public static const STATUSNOTIFICATIONTIMERS_DEATHZONE:String = "#epic_battle:statusNotificationTimers/deathZone";
+      
+      public static const STATUSNOTIFICATIONTIMERS_SMOKE_ALLY:String = "#epic_battle:statusNotificationTimers/smoke/ally";
+      
+      public static const STATUSNOTIFICATIONTIMERS_SMOKE_ENEMY:String = "#epic_battle:statusNotificationTimers/smoke/enemy";
+      
+      public static const STATUSNOTIFICATIONTIMERS_SMOKE_ENEMYPOSTEFFECT:String = "#epic_battle:statusNotificationTimers/smoke/enemyPostEffect";
+      
+      public static const STATUSNOTIFICATIONTIMERS_HEALPOINT_HEALING:String = "#epic_battle:statusNotificationTimers/healPoint/healing";
+      
+      public static const STATUSNOTIFICATIONTIMERS_HEALPOINT_HEALED:String = "#epic_battle:statusNotificationTimers/healPoint/healed";
+      
+      public static const STATUSNOTIFICATIONTIMERS_REPAIRPOINT:String = "#epic_battle:statusNotificationTimers/repairPoint";
+      
+      public static const STATUSNOTIFICATIONTIMERS_INSPIRE_INSPIRED:String = "#epic_battle:statusNotificationTimers/inspire/inspired";
+      
+      public static const STATUSNOTIFICATIONTIMERS_INSPIRE_INSPIRING:String = "#epic_battle:statusNotificationTimers/inspire/inspiring";
+      
+      public static const STATUSNOTIFICATIONTIMERS_CAPTUREBLOCK_BLOCKED:String = "#epic_battle:statusNotificationTimers/captureBlock/blocked";
+      
+      public static const STATUSNOTIFICATIONTIMERS_STEALTHRADAR_ACTIVE:String = "#epic_battle:statusNotificationTimers/stealthRadar/active";
+      
+      public static const STATUSNOTIFICATIONTIMERS_STEALTHRADAR_INACTIVE:String = "#epic_battle:statusNotificationTimers/stealthRadar/inactive";
        
       
       public function EPIC_BATTLE()

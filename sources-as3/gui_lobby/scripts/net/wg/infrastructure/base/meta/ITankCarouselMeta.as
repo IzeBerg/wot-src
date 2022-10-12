@@ -16,15 +16,9 @@ package net.wg.infrastructure.base.meta
       
       function selectWotPlusVehicleS(param1:int) : void;
       
-      function setFilterS(param1:int) : void;
-      
-      function updateHotFiltersS() : void;
-      
       function getCarouselAliasS() : String;
       
-      function as_setCarouselFilter(param1:Object) : void;
-      
-      function as_initCarouselFilter(param1:Object) : void;
+      function setFilterS(param1:int) : void;
       
       function as_rowCount(param1:int) : void;
       

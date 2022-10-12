@@ -14,9 +14,9 @@ _EPIC_STATUS_EFFECTS_PRIORITY = (
 
 class EpicVehicleMarkerPlugin(VehicleMarkerPlugin):
 
-    def _getMarkerStatusPriority(self, statusID):
+    def _getMarkerStatusPriority(self, markerState):
         try:
-            return _EPIC_STATUS_EFFECTS_PRIORITY.index(statusID)
+            return _EPIC_STATUS_EFFECTS_PRIORITY.index(markerState.statusID)
         except ValueError:
             return -1
 

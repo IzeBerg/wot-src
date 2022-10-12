@@ -81,6 +81,8 @@ package net.wg.gui.components.carousels.data
       
       public var toggleSwitchCarouselSelected:Boolean = false;
       
+      public var additionalInfo:String = "";
+      
       private var _nations:DataProvider = null;
       
       private var _vehicleTypes:DataProvider = null;

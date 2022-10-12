@@ -1,4 +1,4 @@
-import itertools, weakref
+import copy, itertools, weakref
 from collections import namedtuple
 from UnitBase import UNIT_ROLE, UNIT_FLAGS, ROSTER_TYPE_TO_CLASS, ROSTER_TYPE
 from account_helpers import getAccountDatabaseID
@@ -91,6 +91,12 @@ class PlayerUnitInfo(object):
 
     def isCurrentPlayer(self):
         return self.dbID == getAccountDatabaseID()
+
+    def getTimeJoin(self):
+        return self.timeJoin
+
+    def getExtraData(self):
+        return copy.deepcopy(self.extraData)
 
     def getVehiclesCDs(self):
         requestCriteria = REQ_CRITERIA.INVENTORY | REQ_CRITERIA.VEHICLE.ACTIVE_IN_NATION_GROUP

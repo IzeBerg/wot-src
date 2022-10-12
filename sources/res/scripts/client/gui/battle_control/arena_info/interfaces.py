@@ -3,8 +3,12 @@ from gui.battle_control.arena_info.settings import ARENA_LISTENER_SCOPE as _SCOP
 from gui.battle_control.controllers.interfaces import IBattleController
 from gui.battle_control.view_components import ViewComponentsController
 if typing.TYPE_CHECKING:
+    from EmptyEntity import EmptyEntity
     from items.vehicles import VehicleDescr
     from gui.shared.gui_items.Vehicle import Vehicle
+    from vehicle_systems.appearance_cache import VehicleAppearanceCacheInfo
+    from vehicle_systems.CompoundAppearance import CompoundAppearance
+    from points_of_interest.components import PoiStateComponent
 
 class IArenaController(IBattleController):
     __slots__ = ('__weakref__', )
@@ -304,7 +308,7 @@ class IRadarController(object):
 
 class ISpawnController(object):
 
-    def showSpawnPoints(self, points, pointGuid=None):
+    def showSpawnPoints(self, points):
         raise NotImplementedError
 
 
@@ -374,16 +378,102 @@ class IPrebattleSetupsController(IArenaPeriodController, IArenaLoadController, V
         raise NotImplementedError
 
 
-class IPlayersPanelController(IArenaVehiclesController, ViewComponentsController):
+class IAppearanceCacheController(IArenaVehiclesController):
 
-    def show(self, params):
+    def getAppearance(self, vId, vInfo, callback=None, strCD=None):
         raise NotImplementedError
 
-    def hide(self, params):
+    def reloadAppearance(self, vId, vInfo, callback=None, strCD=None, oldStrCD=None):
         raise NotImplementedError
 
-    def processReplay(self, params):
+
+class IPointsOfInterestController(IBattleController):
+    onPoiEquipmentUsed = None
+    onPoiCaptured = None
+
+    @staticmethod
+    def getPoiState(poiID):
         raise NotImplementedError
 
-    def updateStressTimer(self, timerID):
+    @staticmethod
+    def getPoiEntity(poiID):
+        raise NotImplementedError
+
+    def getVehicleCapturingPoiGO(self, poiName, entityGameObject, spaceID):
+        raise NotImplementedError
+
+
+class IComp7PrebattleSetupController(IArenaLoadController, IArenaPeriodController, ViewComponentsController):
+    onVehiclesListUpdated = None
+    onVehicleChanged = None
+    onBattleStarted = None
+    onSelectionConfirmed = None
+    onTeammateSelectionStatuses = None
+
+    def getCtrlScope(self):
+        return _SCOPE.PERIOD | _SCOPE.LOAD
+
+    def confirmVehicleSelection(self):
+        raise NotImplementedError
+
+    def isSelectionConfirmed(self):
+        raise NotImplementedError
+
+    def chooseVehicle(self, newCD):
+        raise NotImplementedError
+
+    def setAvailableVehicles(self, vehiclesList):
+        raise NotImplementedError
+
+    @staticmethod
+    def getVehiclesList():
+        raise NotImplementedError
+
+    def updateVehicleInfo(self, vehiclesList):
+        raise NotImplementedError
+
+    @staticmethod
+    def getCurrentVehicleInfo():
+        raise NotImplementedError
+
+    def updateSpawnPoints(self, spawnPointsList):
+        raise NotImplementedError
+
+    def updateConfirmationStatuses(self, newStatuses):
+        raise NotImplementedError
+
+    def getCurrentGUIVehicle(self):
+        raise NotImplementedError
+
+    def switchPrebattleSetup(self, groupID, layoutIdx):
+        raise NotImplementedError
+
+    def isVehicleStateIndicatorAllowed(self):
+        raise NotImplementedError
+
+
+class IComp7VOIPController(IArenaLoadController):
+    __slots__ = ()
+
+    @property
+    def isVoipSupported(self):
+        raise NotImplementedError
+
+    @property
+    def isVoipEnabled(self):
+        raise NotImplementedError
+
+    @property
+    def isTeamChannelAvailable(self):
+        raise NotImplementedError
+
+    @property
+    def isJoined(self):
+        raise NotImplementedError
+
+    @property
+    def isTeamVoipEnabled(self):
+        raise NotImplementedError
+
+    def toggleChannelConnection(self):
         raise NotImplementedError

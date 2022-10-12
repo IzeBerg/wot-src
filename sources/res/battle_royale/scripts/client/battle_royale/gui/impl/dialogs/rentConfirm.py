@@ -1,5 +1,4 @@
 from time import time
-from battle_royale.gui.impl.dialogs.sub_views.content.text_with_warning import TextWithWarning
 from battle_royale.gui.impl.dialogs.sub_views.top_right.br_money_balance import BRMoneyBalance
 from gui.impl import backport
 from gui.impl.gen import R
@@ -9,6 +8,7 @@ from gui.impl.gen.view_models.views.battle_royale.equipment_panel_cmp_rent_state
 from skeletons.gui.game_control import IBattleRoyaleRentVehiclesController, IBattleRoyaleController
 from skeletons.gui.shared import IItemsCache
 from gui.impl.dialogs.dialog_template_button import ConfirmButton, CancelButton
+from gui.impl.dialogs.sub_views.content.text_warning_content import TextWithWarning
 from gui.shared.gui_items.Vehicle import getUserName
 from items import vehicles
 from gui.impl.dialogs.sub_views.title.simple_text_title import SimpleTextTitle

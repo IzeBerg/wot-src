@@ -3,7 +3,7 @@ package net.wg.gui.lobby.sessionStats.components
    import flash.display.Sprite;
    import flash.text.TextField;
    import flash.text.TextFieldAutoSize;
-   import net.wg.gui.components.tooltips.helpers.TankTypeIco;
+   import net.wg.gui.components.icons.TankTypeIco;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
    
    public class SessionStatsTankSmallName extends Sprite implements IDisposable
@@ -45,7 +45,6 @@ package net.wg.gui.lobby.sessionStats.components
       
       public function validateSize() : void
       {
-         var _loc3_:int = 0;
          this.tankIcon.validateNow();
          var _loc1_:int = LEFT_TF_OFFSET;
          var _loc2_:int = RIGHT_TF_OFFSET;
@@ -54,7 +53,7 @@ package net.wg.gui.lobby.sessionStats.components
             _loc1_ += TF_ELITE_EXTRA_OFFSET;
             _loc2_ += TF_ELITE_EXTRA_OFFSET;
          }
-         _loc3_ = LAYOUT_START_X;
+         var _loc3_:int = LAYOUT_START_X;
          this.tankTier.x = _loc3_;
          _loc3_ += this.tankTier.width + _loc1_;
          this.tankIcon.x = _loc3_;

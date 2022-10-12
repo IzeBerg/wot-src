@@ -1,8 +1,8 @@
-import logging
+import logging, typing
 from gui.Scaleform.locale.SYSTEM_MESSAGES import SYSTEM_MESSAGES
 from helpers import dependency
 from helpers import i18n
-from adisp import process, async
+from adisp import adisp_process, adisp_async
 from gui.SystemMessages import SM_TYPE, ResultMsg
 from gui.shared.utils import code2str
 from gui.shared.gui_items.processors import plugins as proc_plugs
@@ -75,8 +75,8 @@ class Processor(object):
         _logger.warning('Server fail response: code=%r, error=%r, ctx=%r', code, errStr, ctx)
         return callback(self._errorHandler(code, errStr=errStr, ctx=ctx))
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def __validate(self, callback):
         yield lambda callback: callback(True)
         validators = self.getPluginsByType(proc_plugs.ProcessorPlugin.TYPE.VALIDATOR)
@@ -94,8 +94,8 @@ class Processor(object):
 
         callback(makeSuccess())
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def __confirm(self, callback):
         yield lambda callback: callback(True)
         confirmators = self.getPluginsByType(proc_plugs.ProcessorPlugin.TYPE.CONFIRMATOR)
@@ -117,8 +117,8 @@ class Processor(object):
     def _request(self, callback):
         callback(makeSuccess())
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def request(self, callback=None):
         res = yield self.__confirm()
         if not res.success:

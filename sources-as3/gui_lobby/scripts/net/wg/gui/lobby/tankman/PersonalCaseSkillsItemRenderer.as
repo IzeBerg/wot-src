@@ -16,6 +16,10 @@ package net.wg.gui.lobby.tankman
       
       public static const SKILL_DOUBLE_CLICK:String = "skillDoubleClick";
       
+      private static const UPDATE_DATA:String = "updateData";
+      
+      private static const HEADER_PREFIX:String = "header_";
+      
       private static const OVER_LABEL:String = "over";
       
       private static const DISABLED_LABEL:String = "disabled";
@@ -36,10 +40,6 @@ package net.wg.gui.lobby.tankman
       private var _isHeader:Boolean = false;
       
       private var _mouseOver:Boolean = false;
-      
-      private const UPDATE_DATA:String = "updateData";
-      
-      private const HEADER_PREFIX:String = "header_";
       
       public function PersonalCaseSkillsItemRenderer()
       {
@@ -114,7 +114,7 @@ package net.wg.gui.lobby.tankman
       override protected function draw() : void
       {
          super.draw();
-         if(_data != null && isInvalid(this.UPDATE_DATA))
+         if(_data != null && isInvalid(UPDATE_DATA))
          {
             this.updateData();
          }
@@ -124,7 +124,7 @@ package net.wg.gui.lobby.tankman
       {
          if(this._isHeader)
          {
-            return Vector.<String>([this.HEADER_PREFIX,Values.EMPTY_STR]);
+            return Vector.<String>([HEADER_PREFIX,Values.EMPTY_STR]);
          }
          return super.getStatePrefixes();
       }
@@ -142,7 +142,7 @@ package net.wg.gui.lobby.tankman
       {
          if(!this._isHeader)
          {
-            App.toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.TANKMAN_SKILL,null,data.title,data.tankmanID);
+            App.toolTipMgr.showSpecial(TOOLTIPS_CONSTANTS.TANKMAN_SKILL,null,data.title,data.tankmanID,data.isFreeSkill);
          }
          else
          {
@@ -205,7 +205,7 @@ package net.wg.gui.lobby.tankman
          {
             this.icon.visible = false;
          }
-         invalidate(this.UPDATE_DATA);
+         invalidate(UPDATE_DATA);
       }
       
       public function onSelect(param1:ButtonEvent) : void

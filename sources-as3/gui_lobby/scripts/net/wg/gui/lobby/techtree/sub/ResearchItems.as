@@ -379,7 +379,7 @@ package net.wg.gui.lobby.techtree.sub
          var _loc4_:Number = NaN;
          var _loc5_:Array = null;
          var _loc6_:IRenderer = null;
-         var _loc3_:int = param1.length;
+         var _loc3_:uint = param1.length;
          var _loc7_:int = 0;
          while(_loc7_ < _loc3_)
          {
@@ -412,8 +412,8 @@ package net.wg.gui.lobby.techtree.sub
          var _loc7_:IRenderer = null;
          var _loc8_:int = 0;
          var _loc9_:int = 0;
-         var _loc4_:int = param2.length;
-         var _loc10_:int = 0;
+         var _loc4_:uint = param2.length;
+         var _loc10_:uint = 0;
          while(_loc10_ < _loc4_)
          {
             _loc5_ = param2[_loc10_];
@@ -484,8 +484,8 @@ package net.wg.gui.lobby.techtree.sub
          var _loc4_:IRenderer = null;
          var _loc5_:int = 0;
          var _loc6_:int = 0;
-         var _loc2_:int = param1.length;
-         var _loc7_:int = 0;
+         var _loc2_:uint = param1.length;
+         var _loc7_:uint = 0;
          while(_loc7_ < _loc2_)
          {
             _loc3_ = param1[_loc7_];
@@ -547,13 +547,13 @@ package net.wg.gui.lobby.techtree.sub
          var _loc2_:IRenderer = null;
          var _loc3_:MatrixPosition = null;
          var _loc4_:NodeData = null;
-         var _loc1_:int = _dataProvider.topLength;
+         var _loc1_:uint = _dataProvider.topLength;
          var _loc5_:Boolean = false;
          while(this._topRenderers.length > _loc1_)
          {
             this.removeItemRenderer(this._topRenderers.pop());
          }
-         var _loc6_:int = 0;
+         var _loc6_:uint = 0;
          while(_loc6_ < _loc1_)
          {
             if(_loc6_ < this._topRenderers.length)

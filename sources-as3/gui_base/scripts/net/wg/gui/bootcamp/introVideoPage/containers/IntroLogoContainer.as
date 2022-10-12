@@ -4,7 +4,6 @@ package net.wg.gui.bootcamp.introVideoPage.containers
    import flash.display.Sprite;
    import flash.text.TextField;
    import net.wg.gui.bootcamp.introVideoPage.data.BCIntroVideoVO;
-   import net.wg.gui.components.common.BaseLogoView;
    import net.wg.infrastructure.base.UIComponentEx;
    import scaleform.clik.motion.Tween;
    
@@ -22,8 +21,6 @@ package net.wg.gui.bootcamp.introVideoPage.containers
       
       public var dashline:Sprite = null;
       
-      public var wotLogo:BaseLogoView = null;
-      
       public var txtDescription:TextField = null;
       
       public var txtReferral:TextField = null;
@@ -37,32 +34,18 @@ package net.wg.gui.bootcamp.introVideoPage.containers
          super();
       }
       
-      override protected function configUI() : void
-      {
-         super.configUI();
-         var _loc1_:String = App.globalVarsMgr.getLocaleOverrideS();
-         if(_loc1_)
-         {
-            this.wotLogo.setLocale(_loc1_);
-         }
-      }
-      
       override protected function onDispose() : void
       {
          this.txtDescription = null;
          this.txtReferral = null;
          this.dashline = null;
-         this.wotLogo.dispose();
-         this.wotLogo = null;
-         if(this.rewards)
-         {
-            this.rewards.dispose();
-            this.rewards = null;
-         }
+         this.rewards.dispose();
+         this.rewards = null;
          if(this._tween)
          {
             this._tween.onComplete = null;
             this._tween.onChange = null;
+            this._tween.paused = true;
             this._tween.dispose();
             this._tween = null;
          }

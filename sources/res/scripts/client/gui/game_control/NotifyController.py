@@ -1,7 +1,7 @@
 import base64, cPickle
 from collections import namedtuple
 import BigWorld, Settings
-from adisp import async, process
+from adisp import adisp_async, adisp_process
 from debug_utils import LOG_DEBUG, LOG_ERROR
 from frameworks.wulf import WindowLayer
 from gui.Scaleform.framework.managers.containers import POP_UP_CRITERIA
@@ -65,7 +65,7 @@ class NotifyController(INotifyController):
     def _stopPlayingTimeListening(self):
         g_eventBus.removeListener(events.GameEvent.PLAYING_TIME_ON_ARENA, self.__handlePlayingTimeOnArena, scope=EVENT_BUS_SCOPE.BATTLE)
 
-    @process
+    @adisp_process
     def __handleUiUpdated(self, _):
         self._stopUIListening()
         yield lambda callback: callback(True)
@@ -104,7 +104,7 @@ class NotifyController(INotifyController):
         if playingTime >= self.MIN_BATTLE_LENGHT:
             self.__settings = self.__settings._replace(lastBattleAvgFps=avgBattleFps)
 
-    @async
+    @adisp_async
     def __showI18nDialog(self, key, callback, ctx=None):
         from gui import DialogsInterface
         return DialogsInterface.showI18nConfirmDialog(key, callback, ctx)

@@ -1,5 +1,5 @@
 import logging
-from adisp import process
+from adisp import adisp_process
 from constants import EnhancementsConfig as config
 from constants import MAX_VEHICLE_LEVEL
 from helpers import dependency
@@ -48,7 +48,7 @@ class CraftmachineController(ICraftmachineController):
             self.__enabled = clansDiff[config.ENABLED]
             self.__updateModulesInfo()
 
-    @process
+    @adisp_process
     def __updateModulesInfo(self):
         if not (self.__enabled and self.__enabledSync):
             return

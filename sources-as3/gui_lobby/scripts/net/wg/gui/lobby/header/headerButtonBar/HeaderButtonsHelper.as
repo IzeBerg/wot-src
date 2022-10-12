@@ -8,6 +8,7 @@ package net.wg.gui.lobby.header.headerButtonBar
    import net.wg.gui.lobby.header.vo.HBC_AccountDataVo;
    import net.wg.gui.lobby.header.vo.HBC_BattleTypeVo;
    import net.wg.gui.lobby.header.vo.HBC_FinanceVo;
+   import net.wg.gui.lobby.header.vo.HBC_PersonalReservesVO;
    import net.wg.gui.lobby.header.vo.HBC_PremDataVo;
    import net.wg.gui.lobby.header.vo.HBC_PremShopVO;
    import net.wg.gui.lobby.header.vo.HBC_SettingsVo;
@@ -36,9 +37,11 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       public static const ITEM_ID_BATTLE_SELECTOR:String = "battleSelector";
       
+      public static const ITEM_ID_PERSONAL_RESERVES_WIDGET:String = "personalReservesWidget";
+      
       private static const BOTTOM_HELP_DIR:String = "B";
       
-      private static const BUTTONS_ORDER:Vector.<String> = new <String>[ITEM_ID_SETTINGS,ITEM_ID_ACCOUNT,ITEM_ID_WOT_PLUS,ITEM_ID_PREM,ITEM_ID_PREMSHOP,ITEM_ID_SQUAD,ITEM_ID_BATTLE_SELECTOR,CURRENCIES_CONSTANTS.CRYSTAL,CURRENCIES_CONSTANTS.GOLD,CURRENCIES_CONSTANTS.CREDITS,CURRENCIES_CONSTANTS.FREE_XP];
+      private static const BUTTONS_ORDER:Vector.<String> = new <String>[ITEM_ID_SETTINGS,ITEM_ID_ACCOUNT,ITEM_ID_WOT_PLUS,ITEM_ID_PREM,ITEM_ID_PREMSHOP,ITEM_ID_SQUAD,ITEM_ID_BATTLE_SELECTOR,ITEM_ID_PERSONAL_RESERVES_WIDGET,CURRENCIES_CONSTANTS.CRYSTAL,CURRENCIES_CONSTANTS.GOLD,CURRENCIES_CONSTANTS.CREDITS,CURRENCIES_CONSTANTS.FREE_XP];
        
       
       private var _settingsData:HeaderButtonVo;
@@ -63,6 +66,8 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       private var _freeXPData:HeaderButtonVo;
       
+      private var _personalReservesWidgetData:HeaderButtonVo;
+      
       private var _btnsMap:Object = null;
       
       private var _btnsDataProvider:DataProvider = null;
@@ -78,7 +83,7 @@ package net.wg.gui.lobby.header.headerButtonBar
             "linkage":Linkages.HBC_SETTINGS_UI,
             "direction":TextFieldAutoSize.LEFT,
             "align":TextFieldAutoSize.LEFT,
-            "isUseFreeSize":false,
+            "resizePriority":0,
             "data":new HBC_SettingsVo(),
             "helpText":LOBBY_HELP.HEADER_SETTINGS_BUTTON,
             "helpDirection":BOTTOM_HELP_DIR,
@@ -87,10 +92,9 @@ package net.wg.gui.lobby.header.headerButtonBar
          this._accountData = new HeaderButtonVo({
             "id":ITEM_ID_ACCOUNT,
             "linkage":Linkages.HBC_ACCOUNT_UI,
-            "upperLinkage":Linkages.HBC_ACCOUNT_UPPER_UI,
             "direction":TextFieldAutoSize.LEFT,
             "align":TextFieldAutoSize.LEFT,
-            "isUseFreeSize":true,
+            "resizePriority":1,
             "data":new HBC_AccountDataVo(),
             "helpText":LOBBY_HELP.HEADER_ACCOUNT_BUTTON,
             "helpDirection":BOTTOM_HELP_DIR,
@@ -101,7 +105,7 @@ package net.wg.gui.lobby.header.headerButtonBar
             "linkage":Linkages.HBC_WOT_PLUS_UI,
             "direction":TextFieldAutoSize.LEFT,
             "align":TextFieldAutoSize.LEFT,
-            "isUseFreeSize":false,
+            "resizePriority":0,
             "data":new HBC_WotPlusDataVO(),
             "helpText":LOBBY_HELP.HEADER_WOT_PLUS_BUTTON,
             "helpDirection":BOTTOM_HELP_DIR,
@@ -112,7 +116,7 @@ package net.wg.gui.lobby.header.headerButtonBar
             "linkage":Linkages.HBC_PREM_UI,
             "direction":TextFieldAutoSize.LEFT,
             "align":TextFieldAutoSize.LEFT,
-            "isUseFreeSize":false,
+            "resizePriority":0,
             "data":new HBC_PremDataVo(),
             "helpText":LOBBY_HELP.HEADER_PREMIUM_BUTTON,
             "helpDirection":BOTTOM_HELP_DIR,
@@ -123,7 +127,7 @@ package net.wg.gui.lobby.header.headerButtonBar
             "linkage":Linkages.HBC_PREM_SHOP_UI,
             "direction":TextFieldAutoSize.LEFT,
             "align":TextFieldAutoSize.LEFT,
-            "isUseFreeSize":false,
+            "resizePriority":0,
             "data":new HBC_PremShopVO(),
             "helpText":Values.EMPTY_STR,
             "helpDirection":BOTTOM_HELP_DIR,
@@ -134,7 +138,7 @@ package net.wg.gui.lobby.header.headerButtonBar
             "linkage":Linkages.HBC_SQUAD_UI,
             "direction":TextFieldAutoSize.LEFT,
             "align":TextFieldAutoSize.RIGHT,
-            "isUseFreeSize":false,
+            "resizePriority":0,
             "data":new HBC_SquadDataVo(),
             "helpText":LOBBY_HELP.HEADER_SQUAD_BUTTON,
             "helpDirection":BOTTOM_HELP_DIR,
@@ -145,7 +149,7 @@ package net.wg.gui.lobby.header.headerButtonBar
             "linkage":Linkages.HBC_BATTLE_SELECTOR_UI,
             "direction":TextFieldAutoSize.RIGHT,
             "align":TextFieldAutoSize.LEFT,
-            "isUseFreeSize":true,
+            "resizePriority":2,
             "data":new HBC_BattleTypeVo(),
             "helpText":LOBBY_HELP.HEADER_BATTLETYPE_BUTTON,
             "helpDirection":BOTTOM_HELP_DIR,
@@ -156,7 +160,7 @@ package net.wg.gui.lobby.header.headerButtonBar
             "linkage":Linkages.HBC_FINANCE_UI,
             "direction":TextFieldAutoSize.RIGHT,
             "align":TextFieldAutoSize.RIGHT,
-            "isUseFreeSize":false,
+            "resizePriority":0,
             "data":new HBC_FinanceVo(),
             "helpText":Values.EMPTY_STR,
             "helpDirection":BOTTOM_HELP_DIR,
@@ -167,7 +171,7 @@ package net.wg.gui.lobby.header.headerButtonBar
             "linkage":Linkages.HBC_FINANCE_UI,
             "direction":TextFieldAutoSize.RIGHT,
             "align":TextFieldAutoSize.RIGHT,
-            "isUseFreeSize":false,
+            "resizePriority":0,
             "data":new HBC_FinanceVo(),
             "helpText":Values.EMPTY_STR,
             "helpDirection":BOTTOM_HELP_DIR,
@@ -178,7 +182,7 @@ package net.wg.gui.lobby.header.headerButtonBar
             "linkage":Linkages.HBC_FINANCE_UI,
             "direction":TextFieldAutoSize.RIGHT,
             "align":TextFieldAutoSize.RIGHT,
-            "isUseFreeSize":false,
+            "resizePriority":0,
             "data":new HBC_FinanceVo(),
             "helpText":Values.EMPTY_STR,
             "helpDirection":BOTTOM_HELP_DIR,
@@ -189,8 +193,19 @@ package net.wg.gui.lobby.header.headerButtonBar
             "linkage":Linkages.HBC_FINANCE_UI,
             "direction":TextFieldAutoSize.RIGHT,
             "align":TextFieldAutoSize.RIGHT,
-            "isUseFreeSize":false,
+            "resizePriority":0,
             "data":new HBC_FinanceVo(),
+            "helpText":Values.EMPTY_STR,
+            "helpDirection":BOTTOM_HELP_DIR,
+            "enabled":true
+         });
+         this._personalReservesWidgetData = new HeaderButtonVo({
+            "id":ITEM_ID_PERSONAL_RESERVES_WIDGET,
+            "linkage":Linkages.HBC_PERSONAL_RESERVES_UI,
+            "direction":TextFieldAutoSize.RIGHT,
+            "align":TextFieldAutoSize.RIGHT,
+            "resizePriority":1,
+            "data":new HBC_PersonalReservesVO(),
             "helpText":Values.EMPTY_STR,
             "helpDirection":BOTTOM_HELP_DIR,
             "enabled":true
@@ -205,6 +220,7 @@ package net.wg.gui.lobby.header.headerButtonBar
          this._btnsMap[this._premShopData.id] = this._premShopData;
          this._btnsMap[this._squadData.id] = this._squadData;
          this._btnsMap[this._battleSelectorData.id] = this._battleSelectorData;
+         this._btnsMap[this._personalReservesWidgetData.id] = this._personalReservesWidgetData;
          this._btnsMap[this._crystalData.id] = this._crystalData;
          this._btnsMap[this._goldData.id] = this._goldData;
          this._btnsMap[this._creditsData.id] = this._creditsData;
@@ -255,6 +271,8 @@ package net.wg.gui.lobby.header.headerButtonBar
          this._crystalData = null;
          this._freeXPData.dispose();
          this._freeXPData = null;
+         this._personalReservesWidgetData.dispose();
+         this._personalReservesWidgetData = null;
          App.utils.data.cleanupDynamicObject(this._btnsMap);
          this._btnsMap = null;
          this._btnsDataProvider.cleanUp();

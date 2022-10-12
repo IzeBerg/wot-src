@@ -16,7 +16,7 @@ from gui.shared.items_parameters.params_helper import SimplifiedBarVO
 from gui.shared.money import MONEY_UNDEFINED, Currency
 from gui.shared.tooltips import getComplexStatusWULF, getUnlockPrice, TOOLTIP_TYPE, formatters
 from gui.shared.tooltips.common import BlocksTooltipData, makePriceBlock, CURRENCY_SETTINGS, makeRemovalPriceBlock
-from gui.shared.utils import GUN_CLIP, SHELLS_COUNT_PROP_NAME, SHELL_RELOADING_TIME_PROP_NAME, RELOAD_MAGAZINE_TIME_PROP_NAME, AIMING_TIME_PROP_NAME, RELOAD_TIME_PROP_NAME, GUN_AUTO_RELOAD, AUTO_RELOAD_PROP_NAME, RELOAD_TIME_SECS_PROP_NAME, DUAL_GUN_RATE_TIME, DUAL_GUN_CHARGE_TIME, GUN_DUAL_GUN, GUN_CAN_BE_CLIP, GUN_CAN_BE_AUTO_RELOAD, GUN_CAN_BE_DUAL_GUN, TURBOSHAFT_ENGINE_POWER
+from gui.shared.utils import GUN_CLIP, SHELLS_COUNT_PROP_NAME, SHELL_RELOADING_TIME_PROP_NAME, RELOAD_MAGAZINE_TIME_PROP_NAME, AIMING_TIME_PROP_NAME, RELOAD_TIME_PROP_NAME, GUN_AUTO_RELOAD, AUTO_RELOAD_PROP_NAME, RELOAD_TIME_SECS_PROP_NAME, DUAL_GUN_RATE_TIME, DUAL_GUN_CHARGE_TIME, GUN_DUAL_GUN, GUN_CAN_BE_CLIP, GUN_CAN_BE_AUTO_RELOAD, GUN_CAN_BE_DUAL_GUN, TURBOSHAFT_ENGINE_POWER, ROCKET_ACCELERATION_ENGINE_POWER
 from gui.shared.utils.requesters import REQ_CRITERIA
 from helpers import dependency
 from helpers.i18n import makeString as _ms
@@ -175,7 +175,9 @@ class ModuleTooltipBlockConstructor(object):
     DUAL_GUN_MODULE_PARAM = 'dualGun'
     WEIGHT_MODULE_PARAM = 'weight'
     TURBOSHAFT_ENGINE_MODULE_PARAM = 'turboshaftEngine'
+    ROCKET_ACCELERATION_ENGINE_MODULE_PARAM = 'rocketAcceleration'
     COOLDOWN_SECONDS = 'cooldownSeconds'
+    RELOAD_COOLDOWN_SECONDS = 'reloadCooldownSeconds'
     CALIBER = 'caliber'
     MODULE_PARAMS = {GUI_ITEM_TYPE.CHASSIS: ('maxLoad', 'rotationSpeed', 'maxSteeringLockAngle', 'vehicleChassisRepairSpeed', 'chassisRepairTime'), 
        GUI_ITEM_TYPE.TURRET: ('armor', 'rotationSpeed', 'circularVisionRadius'), 
@@ -200,7 +202,9 @@ class ModuleTooltipBlockConstructor(object):
                              DUAL_GUN_RATE_TIME, DUAL_GUN_CHARGE_TIME,
                              'dispertionRadius', AIMING_TIME_PROP_NAME), 
        TURBOSHAFT_ENGINE_MODULE_PARAM: (
-                                      'enginePower', TURBOSHAFT_ENGINE_POWER, 'fireStartingChance')}
+                                      'enginePower', TURBOSHAFT_ENGINE_POWER, 'fireStartingChance'), 
+       ROCKET_ACCELERATION_ENGINE_MODULE_PARAM: (
+                                               'enginePower', ROCKET_ACCELERATION_ENGINE_POWER, 'fireStartingChance')}
     itemsCache = dependency.descriptor(IItemsCache)
 
     def __init__(self, module, configuration, leftPadding=_DEFAULT_PADDING, rightPadding=_DEFAULT_PADDING):
@@ -239,7 +243,7 @@ class HeaderBlockConstructor(ModuleTooltipBlockConstructor):
                     paramName = ModuleTooltipBlockConstructor.COOLDOWN_SECONDS
                     paramValue = params_formatters.formatParameter(paramName, cooldownSeconds)
                     descParts.append(params_formatters.formatParamNameColonValueUnits(paramName=paramName, paramValue=paramValue))
-                if module.isBuiltIn and not module.isBuiltInInfoHidden:
+                if module.isBuiltIn:
                     descParts.append(text_styles.main(backport.text(R.strings.tooltips.equipment.builtIn())))
                 descList.append(text_styles.concatStylesToMultiLine(*descParts))
         block.append(formatters.packTitleDescBlock(title=text_styles.highTitle(title), desc=('\n').join(descList), gap=-3, padding=formatters.packPadding(top=-6)))
@@ -268,7 +272,7 @@ class HeaderBlockConstructor(ModuleTooltipBlockConstructor):
         bottomOffset = -60
         if self.module.itemTypeID == GUI_ITEM_TYPE.OPTIONALDEVICE and self.module.isDeluxe:
             overlayPath = backport.image(R.images.gui.maps.shop.artefacts.c_180x135.equipmentPlus_overlay())
-        elif self.module.itemTypeID is GUI_ITEM_TYPE.EQUIPMENT and self.module.isBuiltIn and not self.module.isBuiltInInfoHidden:
+        elif self.module.itemTypeID is GUI_ITEM_TYPE.EQUIPMENT and self.module.isBuiltIn:
             padding = formatters.packPadding(top=SLOT_HIGHLIGHT_TYPES.TOOLTIP_BUILD_IN_180_X_135_OVERLAY_PADDING_TOP, left=SLOT_HIGHLIGHT_TYPES.TOOLTIP_BUILD_IN_180_X_135_OVERLAY_PADDING_LEFT)
             overlayPath = backport.image(R.images.gui.maps.icons.quests.bonuses.small.builtInEquipment_overlay())
             bottomOffset = 0
@@ -490,6 +494,9 @@ class CommonStatsBlockConstructor(ModuleTooltipBlockConstructor):
                 if vehicle is not None and vehicle.descriptor.hasTurboshaftEngine:
                     highlightPossible = serverSettings.checkTurboshaftHighlights(increase=True)
                     paramsKeyName = self.TURBOSHAFT_ENGINE_MODULE_PARAM
+                if vehicle is not None and vehicle.descriptor.hasRocketAcceleration:
+                    highlightPossible = serverSettings.checkRocketAccelerationHighlights(increase=True)
+                    paramsKeyName = self.ROCKET_ACCELERATION_ENGINE_MODULE_PARAM
             paramsList = self.MODULE_PARAMS.get(paramsKeyName, [])
             if vehicle is not None:
                 if module.itemTypeID == GUI_ITEM_TYPE.OPTIONALDEVICE:
@@ -505,7 +512,8 @@ class CommonStatsBlockConstructor(ModuleTooltipBlockConstructor):
                         if fmtValue is not None:
                             block.append(formatters.packTextParameterBlockData(name=params_formatters.formatModuleParamName(paramName, vDescr), value=fmtValue, valueWidth=self._valueWidth, gap=19, highlight=highlightPossible and paramName in (
                              AUTO_RELOAD_PROP_NAME, RELOAD_TIME_SECS_PROP_NAME,
-                             DUAL_GUN_CHARGE_TIME, DUAL_GUN_RATE_TIME, TURBOSHAFT_ENGINE_POWER)))
+                             DUAL_GUN_CHARGE_TIME, DUAL_GUN_RATE_TIME, TURBOSHAFT_ENGINE_POWER,
+                             ROCKET_ACCELERATION_ENGINE_POWER)))
 
             else:
                 formattedModuleParameters = params_formatters.getFormattedParamsList(module.descriptor, moduleParams)
@@ -545,6 +553,8 @@ class CommonStatsBlockConstructor(ModuleTooltipBlockConstructor):
                 elif module.itemTypeID == GUI_ITEM_TYPE.ENGINE:
                     if module.hasTurboshaftEngine():
                         title = R.strings.menu.moduleInfo.turboshaftEngine()
+                    elif module.hasRocketAcceleration():
+                        title = R.strings.menu.moduleInfo.rocketAccelerationEngine()
                 if title:
                     block.insert(0, formatters.packImageTextBlockData(title=text_styles.neutral(backport.text(title)), desc='', img=extraInfo, imgPadding=formatters.packPadding(top=3, right=20), padding=formatters.packPadding(left=90, bottom=11), ignoreImageSize=True))
         return block

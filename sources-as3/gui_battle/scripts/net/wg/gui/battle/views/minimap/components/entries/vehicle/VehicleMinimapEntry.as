@@ -443,8 +443,11 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
       
       public function showVehicleHp(param1:Boolean) : void
       {
-         this._showVehicleHp = param1;
-         invalidate(INVALID_HP);
+         if(this._showVehicleHp != param1)
+         {
+            this._showVehicleHp = param1;
+            invalidate(INVALID_HP);
+         }
       }
       
       public function showVehicleName() : void

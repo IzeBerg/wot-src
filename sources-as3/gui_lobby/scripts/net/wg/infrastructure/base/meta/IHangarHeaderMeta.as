@@ -30,14 +30,18 @@ package net.wg.infrastructure.base.meta
       
       function as_removeEpicWidget() : void;
       
+      function as_createFunRandomWidget() : void;
+      
+      function as_removeFunRandomWidget() : void;
+      
       function as_setSecondaryEntryPointVisible(param1:Boolean) : void;
       
       function as_setResourceWellEntryPoint(param1:Boolean) : void;
       
       function as_setBattleMattersEntryPoint(param1:Boolean) : void;
       
-      function as_createEventWidget() : void;
+      function as_createComp7() : void;
       
-      function as_removeEventWidget() : void;
+      function as_removeComp7() : void;
    }
 }

@@ -86,14 +86,14 @@ package net.wg.gui.lobby.techtree.data.vo
          }
       }
       
-      public function toString() : String
-      {
-         return "[ExtraInformation: type = " + this.type + ", title = " + this.title + " benefitsHead = " + this.benefitsHead + " benefitsList = " + this.benefitsList + " isPremiumIgr = " + this.isPremiumIgr + "]";
-      }
-      
       public function isDisposed() : Boolean
       {
          return this._disposed;
+      }
+      
+      public function toString() : String
+      {
+         return "[ExtraInformation: type = " + this.type + ", title = " + this.title + " benefitsHead = " + this.benefitsHead + " benefitsList = " + this.benefitsList + " isPremiumIgr = " + this.isPremiumIgr + "]";
       }
    }
 }

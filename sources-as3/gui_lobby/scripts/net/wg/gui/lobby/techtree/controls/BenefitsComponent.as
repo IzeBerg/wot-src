@@ -43,12 +43,6 @@ package net.wg.gui.lobby.techtree.controls
          this._premiumGroup.layout = this._tiledLayout;
       }
       
-      public function setData(param1:IDataProvider) : void
-      {
-         this._premiumGroup.dataProvider = param1;
-         this._rendersCount = param1.length;
-      }
-      
       override protected function onDispose() : void
       {
          this.removeChild(this._premiumGroup);
@@ -57,6 +51,22 @@ package net.wg.gui.lobby.techtree.controls
          this._tiledLayout.dispose();
          this._tiledLayout = null;
          super.onDispose();
+      }
+      
+      public function setData(param1:IDataProvider) : void
+      {
+         this._premiumGroup.dataProvider = param1;
+         this._rendersCount = param1.length;
+      }
+      
+      override public function get height() : Number
+      {
+         return this._premiumGroup.height;
+      }
+      
+      override public function get width() : Number
+      {
+         return this._premiumGroup.width;
       }
       
       public function get compact() : Boolean
@@ -71,16 +81,6 @@ package net.wg.gui.lobby.techtree.controls
             this._isCompact = param1 && this._rendersCount >= MINIMAL_RENDERS_TO_COMPACT;
             this._tiledLayout.columns = !!this._isCompact ? uint(COMPACT_COLUMN) : uint(COLUMN);
          }
-      }
-      
-      override public function get height() : Number
-      {
-         return this._premiumGroup.height;
-      }
-      
-      override public function get width() : Number
-      {
-         return this._premiumGroup.width;
       }
    }
 }

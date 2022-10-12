@@ -11,9 +11,9 @@ from gui.shared.gui_items.Tankman import isSkillLearnt
 from gui.shared.items_parameters import calcGunParams, calcShellParams, getShotsPerMinute, getGunDescriptors, isAutoReloadGun, isDualGun
 from gui.shared.items_parameters import functions, getShellDescriptors, getOptionalDeviceWeight, NO_DATA
 from gui.shared.items_parameters.comparator import rateParameterState, PARAM_STATE
-from gui.shared.items_parameters.functions import getBasicShell
+from gui.shared.items_parameters.functions import getBasicShell, getRocketAccelerationKpiFactors
 from gui.shared.items_parameters.params_cache import g_paramsCache
-from gui.shared.utils import DAMAGE_PROP_NAME, PIERCING_POWER_PROP_NAME, AIMING_TIME_PROP_NAME, STUN_DURATION_PROP_NAME, GUARANTEED_STUN_DURATION_PROP_NAME, AUTO_RELOAD_PROP_NAME, GUN_AUTO_RELOAD, GUN_CAN_BE_AUTO_RELOAD, MAX_STEERING_LOCK_ANGLE, WHEELED_SWITCH_OFF_TIME, WHEELED_SWITCH_ON_TIME, WHEELED_SWITCH_TIME, WHEELED_SPEED_MODE_SPEED, GUN_DUAL_GUN, GUN_CAN_BE_DUAL_GUN, RELOAD_TIME_SECS_PROP_NAME, DUAL_GUN_CHARGE_TIME, DUAL_GUN_RATE_TIME, TURBOSHAFT_ENGINE_POWER, TURBOSHAFT_SPEED_MODE_SPEED, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR, TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_SWITCH_TIME, TURBOSHAFT_SWITCH_ON_TIME, TURBOSHAFT_SWITCH_OFF_TIME, CHASSIS_REPAIR_TIME
+from gui.shared.utils import DAMAGE_PROP_NAME, PIERCING_POWER_PROP_NAME, AIMING_TIME_PROP_NAME, STUN_DURATION_PROP_NAME, GUARANTEED_STUN_DURATION_PROP_NAME, AUTO_RELOAD_PROP_NAME, GUN_AUTO_RELOAD, GUN_CAN_BE_AUTO_RELOAD, MAX_STEERING_LOCK_ANGLE, WHEELED_SWITCH_OFF_TIME, WHEELED_SWITCH_ON_TIME, WHEELED_SWITCH_TIME, WHEELED_SPEED_MODE_SPEED, GUN_DUAL_GUN, GUN_CAN_BE_DUAL_GUN, RELOAD_TIME_SECS_PROP_NAME, DUAL_GUN_CHARGE_TIME, DUAL_GUN_RATE_TIME, TURBOSHAFT_ENGINE_POWER, TURBOSHAFT_SPEED_MODE_SPEED, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR, TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_SWITCH_TIME, TURBOSHAFT_SWITCH_ON_TIME, TURBOSHAFT_SWITCH_OFF_TIME, CHASSIS_REPAIR_TIME, ROCKET_ACCELERATION_ENGINE_POWER, ROCKET_ACCELERATION_SPEED_LIMITS, ROCKET_ACCELERATION_REUSE_AND_DURATION
 from gui.shared.utils import DISPERSION_RADIUS_PROP_NAME, SHELLS_PROP_NAME, GUN_NORMAL, SHELLS_COUNT_PROP_NAME
 from gui.shared.utils import GUN_CAN_BE_CLIP, RELOAD_TIME_PROP_NAME
 from gui.shared.utils import RELOAD_MAGAZINE_TIME_PROP_NAME, SHELL_RELOADING_TIME_PROP_NAME, GUN_CLIP
@@ -139,6 +139,13 @@ def _turboshaftEnginePower(vehicleDescr, engineName):
         return
 
 
+def _rocketAccelerationEnginePower(vehicleDescr, value):
+    if vehicleDescr.hasRocketAcceleration:
+        return value * getRocketAccelerationKpiFactors(vehicleDescr).getCoeff(KPI.Name.VEHICLE_ENGINE_POWER)
+    else:
+        return
+
+
 class _ParameterBase(object):
 
     def __init__(self, itemDescr, vehicleDescr=None):
@@ -207,6 +214,10 @@ class EngineParams(WeightedParam):
     def turboshaftEnginePower(self):
         power = _turboshaftEnginePower(self._vehicleDescr, self._itemDescr.name)
         return power and int(round(power / component_constants.HP_TO_WATTS))
+
+    @property
+    def rocketAccelerationEnginePower(self):
+        return _rocketAccelerationEnginePower(self._vehicleDescr, self.enginePower)
 
     @property
     def fireStartingChance(self):
@@ -332,6 +343,8 @@ class VehicleParams(_ParameterBase):
         powerPerTon = round(self.enginePower / self.vehicleWeight.current, 2)
         if self._itemDescr.hasTurboshaftEngine:
             return (powerPerTon, round(self.turboshaftEnginePower / self.vehicleWeight.current, 2))
+        if self._itemDescr.hasRocketAcceleration:
+            return (powerPerTon, round(self.rocketAccelerationEnginePower / self.vehicleWeight.current, 2))
         return (
          powerPerTon,)
 
@@ -353,6 +366,37 @@ class VehicleParams(_ParameterBase):
         if self.__hasTurboshaftSwitchMode():
             return self.__speedLimits(self._itemDescr.siegeVehicleDescr.physics['speedLimits'], ('forwardMaxSpeedKMHTerm',
                                                                                                  'backwardMaxSpeedKMHTerm'))
+        else:
+            return
+
+    @property
+    def rocketAccelerationEnginePower(self):
+        return _rocketAccelerationEnginePower(self._itemDescr, self.enginePower)
+
+    @property
+    def rocketAccelerationSpeedLimits(self):
+        if self._itemDescr.hasRocketAcceleration:
+            rocketFactors = getRocketAccelerationKpiFactors(self._itemDescr)
+
+            def rounder(v, needRound):
+                if needRound:
+                    return int(round(v))
+                return int(v)
+
+            return [ rounder(value * coeff, needRound) for value, coeff, needRound in zip(self.speedLimits, (
+             rocketFactors.getCoeff(KPI.Name.VEHICLE_FORWARD_MAX_SPEED),
+             rocketFactors.getCoeff(KPI.Name.VEHICLE_BACKWARD_MAX_SPEED)), (
+             True, False))
+                   ]
+        else:
+            return
+
+    @property
+    def rocketAccelerationReuseAndDuration(self):
+        if self._itemDescr.hasRocketAcceleration:
+            rocketParams = self._itemDescr.type.rocketAccelerationParams
+            return (
+             rocketParams.reuseCount, rocketParams.duration)
         else:
             return
 
@@ -717,7 +761,8 @@ class VehicleParams(_ParameterBase):
          WHEELED_SPEED_MODE_SPEED, 'wheelRiseSpeed', TURBOSHAFT_ENGINE_POWER,
          TURBOSHAFT_SPEED_MODE_SPEED, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR,
          TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_SWITCH_TIME, TURBOSHAFT_SWITCH_ON_TIME,
-         TURBOSHAFT_SWITCH_OFF_TIME, CHASSIS_REPAIR_TIME)
+         TURBOSHAFT_SWITCH_OFF_TIME, CHASSIS_REPAIR_TIME, ROCKET_ACCELERATION_ENGINE_POWER,
+         ROCKET_ACCELERATION_SPEED_LIMITS, ROCKET_ACCELERATION_REUSE_AND_DURATION)
         stunConditionParams = ('stunMaxDuration', 'stunMinDuration')
         result = _ParamsDictProxy(self, preload, conditions=(
          (

@@ -36,6 +36,8 @@ package net.wg.gui.lobby.battleResults.data
       private static const PREMIUM_BONUS:String = "premiumBonus";
       
       private static const PREMIUM_EARNINGS:String = "premiumEarnings";
+      
+      private static const PRESTIGE_POINTS:String = "prestigePoints";
        
       
       public var achievementsLeft:DataProvider;
@@ -101,6 +103,10 @@ package net.wg.gui.lobby.battleResults.data
       public var dynamicPremiumState:int = -1;
       
       public var replayURL:String = "";
+      
+      public var prestigePoints:PrestigePointsVO = null;
+      
+      public var deserterStr:String = "";
       
       private var _asserter:IAssertable;
       
@@ -218,6 +224,9 @@ package net.wg.gui.lobby.battleResults.data
             case PREMIUM_EARNINGS:
                this.premiumEarnings = new PremiumEarningsVO(param2);
                return false;
+            case PRESTIGE_POINTS:
+               this.prestigePoints = new PrestigePointsVO(param2);
+               return false;
             default:
                return super.onDataWrite(param1,param2);
          }
@@ -313,6 +322,16 @@ package net.wg.gui.lobby.battleResults.data
          {
             this.premiumBonus.dispose();
             this.premiumBonus = null;
+         }
+         if(this.premiumEarnings != null)
+         {
+            this.premiumEarnings.dispose();
+            this.premiumEarnings = null;
+         }
+         if(this.prestigePoints != null)
+         {
+            this.prestigePoints.dispose();
+            this.prestigePoints = null;
          }
          this._asserter = null;
          super.onDispose();

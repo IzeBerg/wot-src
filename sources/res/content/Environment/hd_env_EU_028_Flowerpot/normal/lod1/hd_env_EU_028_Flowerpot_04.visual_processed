@@ -25,6 +25,33 @@
 					<row3>0.000000 0.000000 0.000000</row3>
 				</transform>
 			</node>
+			<node>
+				<identifier>lod1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>d0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>n0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
 		</node>
 	</node>
 	<renderSet>
@@ -75,7 +102,7 @@
 						<Texture>content/Environment/hd_env_EU_028_Flowerpot/hd_env_EU_028_Flowerpot_ANM.dds</Texture>
 					</property>
 				</material>
-				<groupOrigin>-0.000589 0.158885 -0.000438</groupOrigin>
+				<groupOrigin>-0.000589 0.156250 -0.000438</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				2
@@ -93,6 +120,6 @@
 		<max>0.411941 1.507540 0.184443</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<geometrySize>6456</geometrySize>
+	<geometrySize>5972</geometrySize>
 	<minUVDensity>0.101198</minUVDensity>
 </root>

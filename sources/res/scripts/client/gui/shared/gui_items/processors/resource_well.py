@@ -1,6 +1,6 @@
 from functools import partial
 import BigWorld
-from adisp import async, process
+from adisp import adisp_async, adisp_process
 from gui import SystemMessages
 from gui.Scaleform.Waiting import Waiting
 from gui.SystemMessages import SM_TYPE
@@ -27,8 +27,8 @@ class ResourceWellLoadingConfirmator(MessageConfirmator):
     def _gfMakeMeta(self):
         return partial(showResourcesLoadingConfirm, self.__resources, self.__isReturnOperation)
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def _confirm(self, callback):
         yield lambda callback: callback(None)
         if self._activeHandler():
@@ -110,8 +110,8 @@ class ResourceWellNoTopVehiclesConfirmator(MessageConfirmator):
     def _gfMakeMeta(self):
         return showResourceWellNoSerialVehiclesConfirm
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def _confirm(self, callback):
         yield lambda callback: callback(None)
         if self._activeHandler():

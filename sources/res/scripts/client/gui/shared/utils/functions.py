@@ -1,5 +1,5 @@
-import random, re, typing, ArenaType, async as future_async
-from adisp import async
+import random, re, typing, ArenaType, wg_async as future_async
+from adisp import adisp_async
 from gui import GUI_SETTINGS, SystemMessages
 from gui.Scaleform.locale.SYSTEM_MESSAGES import SYSTEM_MESSAGES
 from gui.impl import backport
@@ -88,8 +88,8 @@ def makeTooltip(header=None, body=None, note=None, attention=None):
     return res_str
 
 
-@async
-@future_async.async
+@adisp_async
+@future_async.wg_async
 def checkAmmoLevel(vehicles, callback):
     showAmmoWarning = False
     ammoWarningMessage = 'lowAmmoAutoLoad'
@@ -111,7 +111,7 @@ def checkAmmoLevel(vehicles, callback):
             builder.setMessagesAndButtons(R.strings.dialogs.dyn(msg), R.strings.dialogs.dyn(ammoWarningMessage))
             builder.setIcon(R.images.gui.maps.icons.tanksetup.warning.ammunition())
             builder.setPreset(DialogPresets.TROPHY_DEVICE_UPGRADE)
-            success = yield future_async.await(dialogs.showSimple(builder.buildInLobby()))
+            success = yield future_async.wg_await(dialogs.showSimple(builder.buildInLobby()))
             callback(success)
         else:
             callback(True)
@@ -161,7 +161,7 @@ def getArenaSubTypeName(arenaTypeID):
     return ArenaType.g_cache[arenaTypeID].gameplayName
 
 
-def getArenaGeomentryName(arenaTypeID):
+def getArenaGeometryName(arenaTypeID):
     return ArenaType.g_cache[arenaTypeID].geometryName
 
 
@@ -278,5 +278,6 @@ def getImageResourceFromPath(path):
     return resource
 
 
-def toPercents(value):
-    return int(value * 100)
+def capitalizeText(text):
+    t = text.decode()
+    return t[0].upper() + t[1:]

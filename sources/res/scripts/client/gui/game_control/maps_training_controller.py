@@ -74,7 +74,7 @@ class MapsTrainingController(IMapsTrainingController, IGlobalListener):
     def showMapsTrainingQueue(self):
         event_dispatcher.showMapsTrainingQueue()
 
-    @adisp.process
+    @adisp.adisp_process
     def selectMapsTrainingMode(self):
         dispatcher = self.prbDispatcher
         if dispatcher is None:
@@ -85,7 +85,7 @@ class MapsTrainingController(IMapsTrainingController, IGlobalListener):
                 self.showMapsTrainingPage()
             return
 
-    @adisp.process
+    @adisp.adisp_process
     def selectRandomMode(self):
         dispatcher = self.prbDispatcher
         if dispatcher is None:
@@ -249,7 +249,7 @@ class MapsTrainingController(IMapsTrainingController, IGlobalListener):
         self.__configIsOld = True
         if isPlayerAccount():
             cooldownDelta = BigWorld.time() - self.__lastRequestTime
-            if not self.__lastRequestTime or cooldownDelta < REQUEST_COOLDOWN.MAPS_TRAINING_INITIAL_CONFIGURATION:
+            if not self.__lastRequestTime or cooldownDelta > REQUEST_COOLDOWN.MAPS_TRAINING_INITIAL_CONFIGURATION:
                 self.requestInitialDataFromServer()
             else:
                 self.__configIsOld = False

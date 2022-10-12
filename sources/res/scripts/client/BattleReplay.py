@@ -9,7 +9,7 @@ from gui.SystemMessages import pushI18nMessage, SM_TYPE
 from helpers import EffectsList, isPlayerAvatar, isPlayerAccount, getFullClientVersion
 from PlayerEvents import g_playerEvents
 from ReplayEvents import g_replayEvents
-from constants import IS_DEVELOPMENT, ARENA_PERIOD
+from constants import ARENA_PERIOD, Configs
 from helpers import dependency
 from gui.app_loader import settings
 from post_progression_common import SERVER_SETTINGS_KEY
@@ -20,7 +20,7 @@ from skeletons.gui.app_loader import IAppLoader
 from skeletons.gui.battle_session import IBattleSessionProvider
 from skeletons.gui.lobby_context import ILobbyContext
 from soft_exception import SoftException
-from constants import ARENA_BONUS_TYPE
+from constants import ARENA_BONUS_TYPE, ARENA_GUI_TYPE
 _logger = logging.getLogger(__name__)
 g_replayCtrl = None
 REPLAY_FILE_EXTENSION = '.wotreplay'
@@ -37,6 +37,7 @@ _POSTMORTEM_CTRL_MODES = (
 _FORWARD_INPUT_CTRL_MODES = (
  CTRL_MODE_NAME.POSTMORTEM, CTRL_MODE_NAME.VIDEO, CTRL_MODE_NAME.CAT,
  CTRL_MODE_NAME.DEATH_FREE_CAM)
+_ARENA_GUI_TYPE_TO_MODE_TAG = {ARENA_GUI_TYPE.COMP7: 'Onslaught'}
 _IGNORED_SWITCHING_CTRL_MODES = (
  CTRL_MODE_NAME.SNIPER,
  CTRL_MODE_NAME.ARCADE,
@@ -46,10 +47,6 @@ _IGNORED_SWITCHING_CTRL_MODES = (
  CTRL_MODE_NAME.MAP_CASE,
  CTRL_MODE_NAME.MAP_CASE_ARCADE,
  CTRL_MODE_NAME.MAP_CASE_ARCADE_EPIC_MINEFIELD)
-if not IS_DEVELOPMENT:
-    _BONUS_TYPES_WITHOUT_REPlAY = constants.ARENA_BONUS_TYPE.EVENT_BATTLES_RANGE
-else:
-    _BONUS_TYPES_WITHOUT_REPlAY = ()
 
 class CallbackDataNames(object):
     APPLY_ZOOM = 'applyZoom'
@@ -271,7 +268,6 @@ class BattleReplay(object):
     def subscribe(self):
         g_playerEvents.onBattleResultsReceived += self.__onBattleResultsReceived
         g_playerEvents.onAccountBecomePlayer += self.__onAccountBecomePlayer
-        g_playerEvents.onAvatarBecomePlayer += self.__onAvatarBecomePlayer
         g_playerEvents.onArenaPeriodChange += self.__onArenaPeriodChange
         g_playerEvents.onBootcampAccountMigrationComplete += self.__onBootcampAccountMigrationComplete
         g_playerEvents.onAvatarObserverVehicleChanged += self.__onAvatarObserverVehicleChanged
@@ -280,7 +276,6 @@ class BattleReplay(object):
     def unsubscribe(self):
         g_playerEvents.onBattleResultsReceived -= self.__onBattleResultsReceived
         g_playerEvents.onAccountBecomePlayer -= self.__onAccountBecomePlayer
-        g_playerEvents.onAvatarBecomePlayer -= self.__onAvatarBecomePlayer
         g_playerEvents.onArenaPeriodChange -= self.__onArenaPeriodChange
         g_playerEvents.onBootcampAccountMigrationComplete -= self.__onBootcampAccountMigrationComplete
         g_playerEvents.onAvatarObserverVehicleChanged -= self.__onAvatarObserverVehicleChanged
@@ -843,6 +838,7 @@ class BattleReplay(object):
                     arenaInfo['bootcampCtx'] = g_bootcamp.serializeContext()
                 self.__replayCtrl.recMapName = arenaName
                 self.__replayCtrl.recPlayerVehicleName = vehicleName
+                self.__replayCtrl.recBattleModeTag = _ARENA_GUI_TYPE_TO_MODE_TAG.get(arena.guiType, '')
                 self.__replayCtrl.setArenaInfoStr(json.dumps(_JSON_Encode(arenaInfo)))
             else:
                 self.__showInfoMessages()
@@ -1145,15 +1141,12 @@ class BattleReplay(object):
             self.__serverSettings['battle_royale_config'] = serverSettings['battle_royale_config']
             self.__serverSettings['epic_config'] = serverSettings['epic_config']
             self.__serverSettings[SERVER_SETTINGS_KEY] = serverSettings[SERVER_SETTINGS_KEY]
+            self.__serverSettings[Configs.COMP7_CONFIG.value] = serverSettings.get(Configs.COMP7_CONFIG.value)
             if player.databaseID is None:
                 BigWorld.callback(0.1, self.__onAccountBecomePlayer)
             else:
                 self.__playerDatabaseID = player.databaseID
             return
-
-    def __onAvatarBecomePlayer(self):
-        if self.sessionProvider.arenaVisitor.getArenaBonusType() in _BONUS_TYPES_WITHOUT_REPlAY:
-            self.enableAutoRecordingBattles(False, True)
 
     def __onSettingsChanging(self, *_):
         newSpeed = self.__playbackSpeedModifiers[self.__playbackSpeedIdx]
@@ -1224,11 +1217,14 @@ class BattleReplay(object):
         self.__replayCtrl.onSetEquipmentID(value)
 
     def onSetEquipmentId(self, equipmentId):
+        inputHandler = BigWorld.player().inputHandler
         if equipmentId != -1:
             self.__equipmentId = equipmentId
-            BigWorld.player().inputHandler.showGunMarker(False)
+            inputHandler.showGunMarker(False)
+            if self.getControlMode() == CTRL_MODE_NAME.MAP_CASE and inputHandler.ctrl.equipmentID != equipmentId:
+                inputHandler.ctrl.activateEquipment(equipmentId)
         else:
-            BigWorld.player().inputHandler.showGunMarker(True)
+            inputHandler.showGunMarker(True)
             self.__equipmentId = None
         return
 

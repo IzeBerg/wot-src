@@ -1,5 +1,5 @@
 import BigWorld
-from adisp import async
+from adisp import adisp_async
 from gui.shared.utils.requesters.abstract import AbstractSyncDataRequester
 from skeletons.gui.shared.utils.requesters import IOffersRequester
 
@@ -11,7 +11,7 @@ class OffersRequester(AbstractSyncDataRequester, IOffersRequester):
     def isBannerSeen(self, offerID):
         return self.__getOffer(offerID).get('bannerSeen', False)
 
-    @async
+    @adisp_async
     def _requestCache(self, callback):
         BigWorld.player().offers.getCache(lambda resID, value: self._response(resID, value, callback))
 

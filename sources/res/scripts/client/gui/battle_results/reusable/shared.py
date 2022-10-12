@@ -1,72 +1,52 @@
-from collections import namedtuple
-import functools, operator, typing
+import functools, operator
 from account_shared import getFairPlayViolationName
 from constants import DEATH_REASON_ALIVE
 from debug_utils import LOG_CURRENT_EXCEPTION
 from dossiers2.custom.records import DB_ID_TO_RECORD
 from dossiers2.ui import achievements, layouts
-from dossiers2.ui.achievements import MARK_OF_MASTERY
 from gui.battle_results.reusable import sort_keys
-from gui.battle_results.br_constants import MAX_TEAM_RANK
 from gui.shared.crits_mask_parser import CRIT_MASK_SUB_TYPES, critsParserGenerator
 from gui.shared.gui_items import Vehicle
 from gui.shared.gui_items.dossier import getAchievementFactory
 from items import vehicles as vehicles_core
 from shared_utils import findFirst
-from soft_exception import SoftException
-AchievementSimpleData = namedtuple('AchievementSimpleData', (
- 'achievementID',
- 'achievement',
- 'isUnique',
- 'isPersonal'))
 
-def makeAchievement(achievementID, results=None):
-    popUps = results.get('dossierPopUps', []) if results is not None else []
-    record = DB_ID_TO_RECORD[achievementID]
-    if record in layouts.IGNORED_BY_BATTLE_RESULTS or not layouts.isAchievementRegistered(record):
-        return
-    factory = getAchievementFactory(record)
-    if factory is None:
-        return
-    else:
-        popUpsValue = _findAchievementInDossier(achievementID, popUps) if popUps else 0
-        achievement = factory.create(value=popUpsValue)
-        if record == achievements.MARK_ON_GUN_RECORD:
-            if 'typeCompDescr' in results:
-                try:
-                    nationID = vehicles_core.parseIntCompactDescr(results['typeCompDescr'])[1]
-                    achievement.setVehicleNationID(nationID)
-                except SoftException:
-                    LOG_CURRENT_EXCEPTION()
-
-            if 'damageRating' in results:
-                achievement.setDamageRating(results['damageRating'])
-        return achievement
-
-
-def makeAchievementsFromPersonal(results):
+def makeAchievementFromPersonal(results):
     popUps = results.get('dossierPopUps', [])
-    for achievementID, _ in popUps:
-        achievement = makeAchievement(achievementID, results)
-        if achievement is None:
+    for achievementID, value in popUps:
+        record = DB_ID_TO_RECORD[achievementID]
+        if record in layouts.IGNORED_BY_BATTLE_RESULTS or not layouts.isAchievementRegistered(record):
             continue
-        if achievement.getName() in achievements.BATTLE_ACHIEVES_RIGHT:
-            yield (
-             1, achievement, achievementID)
-        else:
-            yield (
-             -1, achievement, achievementID)
+        factory = getAchievementFactory(record)
+        if factory is not None:
+            achievement = factory.create(value=value)
+            if record == achievements.MARK_ON_GUN_RECORD:
+                if 'typeCompDescr' in results:
+                    try:
+                        nationID = vehicles_core.parseIntCompactDescr(results['typeCompDescr'])[1]
+                        achievement.setVehicleNationID(nationID)
+                    except Exception:
+                        LOG_CURRENT_EXCEPTION()
+
+                if 'damageRating' in results:
+                    achievement.setDamageRating(results['damageRating'])
+            if achievement.getName() in achievements.BATTLE_ACHIEVES_RIGHT:
+                yield (
+                 1, achievement)
+            else:
+                yield (
+                 -1, achievement)
 
     return
 
 
 def makeMarkOfMasteryFromPersonal(results):
-    markOfMastery = results.get(MARK_OF_MASTERY, 0)
+    markOfMastery = results.get('markOfMastery', 0)
     achievement = None
     if not markOfMastery:
         return
     else:
-        factory = getAchievementFactory(('achievements', MARK_OF_MASTERY))
+        factory = getAchievementFactory(('achievements', 'markOfMastery'))
         if factory is not None:
             achievement = factory.create(value=markOfMastery)
             achievement.setPrevMarkOfMastery(results.get('prevMarkOfMastery', 0))
@@ -83,21 +63,6 @@ def makeCritsInfo(value):
 
     rv['critsCount'] = critsCount
     return rv
-
-
-def getPlayerPlaceInTeam(reusableInfo, result, paramName, playerValue):
-    if playerValue == 0:
-        return MAX_TEAM_RANK
-    allies, _ = reusableInfo.getBiDirectionTeamsIterator(result['vehicles'])
-    winners = set()
-    for ally in allies:
-        allyValue = getattr(ally, paramName)
-        if allyValue > playerValue:
-            winners.add(allyValue)
-        if len(winners) >= MAX_TEAM_RANK:
-            return MAX_TEAM_RANK
-
-    return len(winners)
 
 
 def unionCritsInfo(destination, source):
@@ -119,11 +84,6 @@ def unionCritsInfo(destination, source):
             destination['critsCount'] += source['critsCount']
         else:
             destination['critsCount'] = source['critsCount']
-
-
-def _findAchievementInDossier(achievementID, dossierPopUps):
-    achievementData = findFirst(lambda e: e[0] == achievementID, dossierPopUps)
-    return achievementData[1]
 
 
 class ItemInfo(object):
@@ -422,7 +382,9 @@ class VehicleDetailedInfo(_VehicleInfo):
                  '_rollouts', '_respawns', '_deathCount', '_equipmentDamageDealt',
                  '_equipmentDamageAssisted', '_xpForAttack', '_xpForAssist', '_xpOther',
                  '_xpPenalty', '_numDefended', '_vehicleNumCaptured', '_numRecovered',
-                 '_destructiblesNumDestroyed', '_destructiblesDamageDealt', '_achievedLevel')
+                 '_destructiblesNumDestroyed', '_destructiblesDamageDealt', '_achievedLevel',
+                 '_prestigePoints', '_roleSkillUsed', '_healthRepair', '_alliedHealthRepair',
+                 '_entityCaptured')
 
     def __init__(self, vehicleID, vehicle, player, deathReason=DEATH_REASON_ALIVE):
         super(VehicleDetailedInfo, self).__init__(vehicleID, player, deathReason)
@@ -478,6 +440,11 @@ class VehicleDetailedInfo(_VehicleInfo):
         self._destructiblesDamageDealt = 0
         self._numDefended = 0
         self._achievedLevel = 0
+        self._prestigePoints = 0
+        self._roleSkillUsed = 0
+        self._healthRepair = 0
+        self._alliedHealthRepair = 0
+        self._entityCaptured = {}
 
     @property
     def vehicle(self):
@@ -691,6 +658,26 @@ class VehicleDetailedInfo(_VehicleInfo):
     def xpPenalty(self):
         return self._xpPenalty
 
+    @property
+    def prestigePoints(self):
+        return self._prestigePoints
+
+    @property
+    def roleSkillUsed(self):
+        return self._roleSkillUsed
+
+    @property
+    def healthRepair(self):
+        return self._healthRepair
+
+    @property
+    def alliedHealthRepair(self):
+        return self._alliedHealthRepair
+
+    @property
+    def entityCaptured(self):
+        return self._entityCaptured
+
     def haveInteractionDetails(self):
         return self._spotted != 0 or self._deathReason > DEATH_REASON_ALIVE or self._directHits != 0 or self._directEnemyHits != 0 or self._explosionHits != 0 or self._piercings != 0 or self._piercingEnemyHits != 0 or self._damageDealt != 0 or self.damageAssisted != 0 or self.damageAssistedStun != 0 or self.stunNum != 0 or self.critsCount != 0 or self._fire != 0 or self._targetKills != 0 or self.stunDuration != 0 or self._damageBlockedByArmor != 0
 
@@ -753,6 +740,11 @@ class VehicleDetailedInfo(_VehicleInfo):
         info._numDefended = vehicleRecords['numDefended']
         info._equipmentDamageAssisted = vehicleRecords.get('damageAssistedInspire', 0) + vehicleRecords.get('damageAssistedSmoke', 0)
         info._achievedLevel = vehicleRecords.get('achivedLevel', 0)
+        info._prestigePoints = vehicleRecords.get('comp7PrestigePoints', 0)
+        info._roleSkillUsed = vehicleRecords.get('roleSkillUsed', 0)
+        info._healthRepair = vehicleRecords.get('healthRepair', 0)
+        info._alliedHealthRepair = vehicleRecords.get('alliedHealthRepair', 0)
+        info._entityCaptured = vehicleRecords.get('entityCaptured', {})
         cls._setSharedRecords(info, vehicleRecords)
         return info
 
@@ -1019,6 +1011,26 @@ class VehicleSummarizeInfo(_VehicleInfo):
     def equipmentDamageAssisted(self):
         return self.__accumulate('equipmentDamageAssisted')
 
+    @property
+    def prestigePoints(self):
+        return self.__accumulate('prestigePoints')
+
+    @property
+    def roleSkillUsed(self):
+        return self.__accumulate('roleSkillUsed')
+
+    @property
+    def healthRepair(self):
+        return self.__accumulate('healthRepair')
+
+    @property
+    def alliedHealthRepair(self):
+        return self.__accumulate('alliedHealthRepair')
+
+    @property
+    def entityCaptured(self):
+        return self.__collectToDict('entityCaptured')
+
     def addVehicleInfo(self, info):
         self.__vehicles.append(info)
 
@@ -1038,7 +1050,7 @@ class VehicleSummarizeInfo(_VehicleInfo):
             if factory is not None and layouts.isAchievementRegistered(record):
                 achievement = factory.create(value=0)
                 if not achievement.isApproachable():
-                    result.append(AchievementSimpleData(achievementID, achievement, True, False))
+                    result.append((achievement, True))
 
         return sorted(result, key=sort_keys.AchievementSortKey)
 

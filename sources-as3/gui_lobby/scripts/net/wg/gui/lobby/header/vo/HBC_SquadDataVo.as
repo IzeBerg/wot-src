@@ -12,7 +12,7 @@ package net.wg.gui.lobby.header.vo
       
       public var isEvent:Boolean = false;
       
-      public var hasSearchSupport:Boolean = false;
+      public var hasPopover:Boolean = false;
       
       private var _squadExtendInfoVo:ExtendedSquadInfoVo = null;
       

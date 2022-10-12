@@ -17,6 +17,10 @@ package net.wg.data.constants.generated
       
       public static const MAPBOX_TANK_CAROUSEL:String = "mapboxTankCarousel";
       
+      public static const FUN_RANDOM_TANK_CAROUSEL:String = "funRandomTankCarousel";
+      
+      public static const COMP7_TANK_CAROUSEL:String = "comp7TankCarousel";
+      
       public static const CREW:String = "crew";
       
       public static const AMMUNITION_PANEL:String = "ammunitionPanel";
@@ -38,6 +42,14 @@ package net.wg.data.constants.generated
       public static const RANKED_PRIME_TIME:String = "rankedPrimeTime.swf";
       
       public static const EPIC_PRIME_TIME:String = "epicPrimeTime.swf";
+      
+      public static const COMP7_PRIME_TIME:String = "comp7PrimeTime.swf";
+      
+      public static const COMP7_PRIME_TIME_ALIAS:String = "comp7PrimeTime";
+      
+      public static const COMP7_PUNISHMENT_DIALOG:String = "comp7PunishmentDialog";
+      
+      public static const COMP7_ENTRY_POINT:String = "Comp7EntryPoint";
       
       public static const TANK_CAROUSEL_UI:String = "TankCarouselUI";
       
@@ -79,6 +91,8 @@ package net.wg.data.constants.generated
       
       public static const BATTLE_MATTERS_ENTRY_POINT:String = "battleMattersEntryPoint";
       
+      public static const COMP7_WIDGET:String = "comp7Widget";
+      
       public static const AMMUNITION_SETUP_VIEW_VEHICLE_PARAMS:String = "ammunitionSetupViewVehicleParams";
       
       public static const AMMUNITION_PANEL_INJECT:String = "ammunitionPanelInject";
@@ -101,19 +115,27 @@ package net.wg.data.constants.generated
       
       public static const POST_PROGRESSION_VEHICLE_PARAMS:String = "PostProgressionVehicleParams";
       
-      public static const LOOTBOXES_WIDGET:String = "eventBoxEntryWidget";
+      public static const PERSONAL_RESERVES_WIDGET_INJECT:String = "PersonalReservesWidgetInject";
       
-      public static const WHITE_TIGER_WIDGET:String = "whiteTigerWidget";
+      public static const FUN_RANDOM_ENTRY_POINT:String = "FunRandomEntryPoint";
       
-      public static const WT_EVENT_ENTRY_POINT:String = "WTEventEntryPoint";
+      public static const FUN_RANDOM_HANGAR_WIDGET:String = "FunRandomHangarWidget";
       
-      public static const WT_EVENT_PRIME_TIME:String = "wtEventPrimeTime.swf";
+      public static const EVENT_CREW_HEALING_COMPONENT:String = "eventCrewHealingComponent";
       
-      public static const EVENT_CAROUSEL_WIDGET:String = "eventCarouselWidget";
+      public static const EVENT_CREW_BOOSTER_COMPONENT:String = "eventCrewBoosterComponent";
       
-      public static const EVENT_CREW_WIDGET:String = "eventCrewWidget";
+      public static const EVENT_TANK_RENT_COMPONENT:String = "eventTankRentComponent";
       
-      public static const EVENT_PARAMS_WIDGET:String = "eventParamsWidget";
+      public static const EVENT_QUESTS_COMPONENT:String = "eventQuestsComponent";
+      
+      public static const EVENT_BAN_INFO_COMPONENT:String = "eventBanInfoComponent";
+      
+      public static const EVENT_COINS_COMPONENT:String = "eventCoinsComponent";
+      
+      public static const HE20_EVENT_ENTRY_POINT:String = "he20EventEntryPoint";
+      
+      public static const CHINA_LOOTBOXES_WIDGET:String = "chinaLootboxesWidget";
        
       
       public function HANGAR_ALIASES()

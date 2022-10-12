@@ -6,13 +6,15 @@ from gui.Scaleform.locale.FORTIFICATIONS import FORTIFICATIONS
 from gui.Scaleform.locale.PLATOON import PLATOON
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
-from gui.Scaleform.locale.EVENT import EVENT
 from gui.prb_control.settings import UNIT_RESTRICTION
 from gui.shared.formatters import text_styles, icons
 from helpers import i18n
 from shared_utils import BoundMethodWeakref
+from helpers import dependency
+from skeletons.gui.game_control import IComp7Controller
 
 class ActionButtonStateVO(dict):
+    __comp7Ctrl = dependency.descriptor(IComp7Controller)
     __NOT_CRITICAL_STATES = (
      UNIT_RESTRICTION.UNDEFINED,
      UNIT_RESTRICTION.IS_IN_IDLE,
@@ -69,8 +71,6 @@ class ActionButtonStateVO(dict):
            UNIT_RESTRICTION.NOT_IN_SLOT: BoundMethodWeakref(self._notInSlotMessage), 
            UNIT_RESTRICTION.VEHICLE_NOT_VALID_FOR_EVENT: (
                                                         CYBERSPORT.WINDOW_UNIT_MESSAGE_VEHICLENOTVALIDFOREVENT, {}), 
-           UNIT_RESTRICTION.EVENT_VEHICLE_NOT_SELECTED: (
-                                                       EVENT.WINDOW_UNIT_MESSAGE_VEHICLENOTSELECTED, {}), 
            UNIT_RESTRICTION.CURFEW: (
                                    CYBERSPORT.WINDOW_UNIT_MESSAGE_CURFEW, {}), 
            UNIT_RESTRICTION.VEHICLE_WRONG_MODE: (
@@ -110,7 +110,25 @@ class ActionButtonStateVO(dict):
            UNIT_RESTRICTION.VEHICLE_TOO_HEAVY: (
                                               backport.text(R.strings.cyberSport.window.unit.message.vehicleInNotReady.tooHeavy()), {}), 
            UNIT_RESTRICTION.PREVIEW_VEHICLE_IS_PRESENT: (
-                                                       backport.text(R.strings.cyberSport.window.unit.message.previewVehicleIsPresent()), {})}
+                                                       backport.text(R.strings.cyberSport.window.unit.message.previewVehicleIsPresent()), {}), 
+           UNIT_RESTRICTION.LIMIT_LEVEL: (
+                                        self.__getNotAvailableIcon() + backport.text(R.strings.platoon.members.footer.invalidVehicleLevel()), {}), 
+           UNIT_RESTRICTION.LIMIT_VEHICLE_TYPE: (
+                                               backport.text(R.strings.cyberSport.window.unit.message.vehicleInNotReady.wrongMode()), {}), 
+           UNIT_RESTRICTION.LIMIT_VEHICLE_CLASS: (
+                                                backport.text(R.strings.cyberSport.window.unit.message.vehicleInNotReady.wrongMode()), {}), 
+           UNIT_RESTRICTION.MODE_NO_BATTLES: (
+                                            '', {}), 
+           UNIT_RESTRICTION.MODE_NOT_SET: (
+                                         '', {}), 
+           UNIT_RESTRICTION.MODE_NOT_AVAILABLE: (
+                                               '', {}), 
+           UNIT_RESTRICTION.BAN_IS_SET: (
+                                       '', {}), 
+           UNIT_RESTRICTION.RATING_RESTRICTION: (
+                                               backport.text(R.strings.comp7.unit.message.ratingRestriction(), rating=self.__comp7Ctrl.getPlatoonRatingRestriction()), {}), 
+           UNIT_RESTRICTION.MODE_OFFLINE: (
+                                         backport.text(R.strings.comp7.unit.message.modeOffline()), {})}
         self.__WARNING_UNIT_MESSAGES = {UNIT_RESTRICTION.XP_PENALTY_VEHICLE_LEVELS: (
                                                       PLATOON.MEMBERS_FOOTER_VEHICLES_DIFFERENTLEVELS, {})}
         self.__NEUTRAL_UNIT_MESSAGES = {UNIT_RESTRICTION.UNIT_WILL_SEARCH_PLAYERS: (

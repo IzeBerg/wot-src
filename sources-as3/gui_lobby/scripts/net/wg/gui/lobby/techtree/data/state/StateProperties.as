@@ -42,6 +42,11 @@ package net.wg.gui.lobby.techtree.data.state
          this.onDispose();
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function toString() : String
       {
          return "[StateProperties] id=" + this.id + ", state=" + this.state + ", action=" + this.action + ", enough=" + this.enough + ", visible=" + this.visible + ", cmpAlpha=" + this.cmpAlpha;
@@ -51,11 +56,6 @@ package net.wg.gui.lobby.techtree.data.state
       {
          this._disposed = true;
          this.animation = null;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

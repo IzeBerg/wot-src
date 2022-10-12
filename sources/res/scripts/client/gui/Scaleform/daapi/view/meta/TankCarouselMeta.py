@@ -17,22 +17,11 @@ class TankCarouselMeta(CarouselEnvironment):
     def selectWotPlusVehicle(self, intCD):
         self._printOverrideError('selectWotPlusVehicle')
 
-    def setFilter(self, id):
-        self._printOverrideError('setFilter')
-
-    def updateHotFilters(self):
-        self._printOverrideError('updateHotFilters')
-
     def getCarouselAlias(self):
         self._printOverrideError('getCarouselAlias')
 
-    def as_setCarouselFilterS(self, data):
-        if self._isDAAPIInited():
-            return self.flashObject.as_setCarouselFilter(data)
-
-    def as_initCarouselFilterS(self, data):
-        if self._isDAAPIInited():
-            return self.flashObject.as_initCarouselFilter(data)
+    def setFilter(self, id):
+        self._printOverrideError('setFilter')
 
     def as_rowCountS(self, value):
         if self._isDAAPIInited():

@@ -25,6 +25,7 @@ from skeletons.connection_mgr import IConnectionManager
 from skeletons.gui.app_loader import IAppLoader
 from skeletons.gui.battle_matters import IBattleMattersController
 from skeletons.gui.battle_results import IBattleResultsService
+from skeletons.gui.game_control import IBootcampController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
@@ -56,9 +57,11 @@ class BattleMattersController(IBattleMattersController):
     __systemMessages = dependency.descriptor(ISystemMessages)
     __connMgr = dependency.descriptor(IConnectionManager)
     __battleMattersSelectableRewardMgr = BattleMattersSelectableRewardManager
+    __bootcampController = dependency.descriptor(IBootcampController)
     __slots__ = ('needToShowAward', '_em', 'onStateChanged', 'onFinish', '_isEnabled',
-                 '_isPaused', '__delayedRewardOfferCurrencyToken', '__delayedRewardOfferVisibilityToken',
-                 '__savedRewards', '__hasDelayedRewards', '__finishState', '__hintHelper')
+                 '_isPaused', '_isAvailable', '__delayedRewardOfferCurrencyToken',
+                 '__delayedRewardOfferVisibilityToken', '__isWaitingToken', '__savedRewards',
+                 '__hasDelayedRewards', '__finishState', '__hintHelper')
 
     def __init__(self):
         self.needToShowAward = False
@@ -67,12 +70,14 @@ class BattleMattersController(IBattleMattersController):
         self.onFinish = Event(self._em)
         self._isEnabled = False
         self._isPaused = False
+        self._isAvailable = False
         self.__delayedRewardOfferCurrencyToken = ''
         self.__delayedRewardOfferVisibilityToken = ''
         self.__savedRewards = {}
         self.__hasDelayedRewards = False
         self.__finishState = _FinishState.NOT_INITED
         self.__hintHelper = None
+        self.__isWaitingToken = False
         return
 
     @staticmethod
@@ -100,16 +105,7 @@ class BattleMattersController(IBattleMattersController):
         return questID.startswith(BATTLE_MATTERS_INTERMEDIATE_QUEST_ID)
 
     def init(self):
-        self.__lobbyContext.onServerSettingsChanged += self._onLobbyServerSettingChanged
-        self.__lobbyContext.getServerSettings().onServerSettingsChange += self._onServerSettingsChange
-        self.__eventsCache.onSyncCompleted += self._onSyncCompleted
-        self.__itemsCache.onSyncCompleted += self._onItemsCacheSync
         self.__connMgr.onConnected += self.__onConnected
-        self._isEnabled = self._getIsEnabled()
-        config = self.__getConfig()
-        self._isPaused = config.isPaused
-        self.__delayedRewardOfferCurrencyToken = config.delayedRewardOfferCurrencyToken
-        self.__delayedRewardOfferVisibilityToken = config.delayedRewardOfferVisibilityToken
         if self.__hintHelper is None:
             self.__hintHelper = _BattleMattersHintsHelper(self)
         return
@@ -274,40 +270,39 @@ class BattleMattersController(IBattleMattersController):
         return vehicle
 
     def _getIsEnabled(self):
-        isEnabled = self.__getConfig().isEnabled
-        isAvailable = self.__itemsCache.items.tokens.getTokens().get(_BATTLE_MATTERS_UNLOCK_TOKEN) is not None
-        return isEnabled and (isAvailable or self.__eventsCache.waitForSync or self.__itemsCache.waitForSync)
+        isEnabled = self.__getConfig().isEnabled and not self.__bootcampController.isInBootcamp()
+        return isEnabled and (self._isAvailable or self.__eventsCache.waitForSync or not self.__itemsCache.isSynced())
 
     def _onSyncCompleted(self):
-        self._checkIsBattleMattersStateChanged()
-        hasDelayedRewards = self.hasDelayedRewards()
-        if hasDelayedRewards != self.__hasDelayedRewards:
-            self.__hasDelayedRewards = hasDelayedRewards
-        self.__updateFinishState()
+        self.__update()
 
     def _onItemsCacheSync(self, *_):
-        hasDelayedRewards = self.hasDelayedRewards()
-        if hasDelayedRewards != self.__hasDelayedRewards:
-            self.__hasDelayedRewards = hasDelayedRewards
-            self.onStateChanged()
+        self._isAvailable = self.__isAvailableForPlayer()
+        if self._isAvailable:
+            if self.__isWaitingToken:
+                self.__isWaitingToken = False
+                self.__eventsCache.onSyncCompleted += self._onSyncCompleted
+                self.__lobbyContext.onServerSettingsChanged += self._onLobbyServerSettingChanged
+                self.__lobbyContext.getServerSettings().onServerSettingsChange += self._onServerSettingsChange
+            self.__update()
 
     def _onLobbyServerSettingChanged(self, newServerSettings):
         newServerSettings.onServerSettingsChange += self._onServerSettingsChange
-        self._checkIsBattleMattersStateChanged()
+        self.__update()
 
     @server_settings.serverSettingsChangeListener(Configs.BATTLE_MATTERS_CONFIG.value)
     def _onServerSettingsChange(self, _):
-        self._checkIsBattleMattersStateChanged()
+        self.__update()
 
     def _checkIsBattleMattersStateChanged(self):
         config = self.__getConfig()
-        isEnabledFromConfig = self._getIsEnabled()
+        isEnabled = self._getIsEnabled()
         isPausedFromConfig = config.isPaused
         delayedRewardOfferCurrencyToken = config.delayedRewardOfferCurrencyToken
         delayedRewardOfferVisibilityToken = config.delayedRewardOfferVisibilityToken
-        isChanged = isEnabledFromConfig != self._isEnabled or self._isPaused != isPausedFromConfig or self.__delayedRewardOfferCurrencyToken != delayedRewardOfferCurrencyToken or self.__delayedRewardOfferVisibilityToken != delayedRewardOfferVisibilityToken
+        isChanged = isEnabled != self._isEnabled or self._isPaused != isPausedFromConfig or self.__delayedRewardOfferCurrencyToken != delayedRewardOfferCurrencyToken or self.__delayedRewardOfferVisibilityToken != delayedRewardOfferVisibilityToken
         if isChanged:
-            self._isEnabled = isEnabledFromConfig
+            self._isEnabled = isEnabled
             self._isPaused = isPausedFromConfig
             self.__delayedRewardOfferCurrencyToken = delayedRewardOfferCurrencyToken
             self.__delayedRewardOfferVisibilityToken = delayedRewardOfferVisibilityToken
@@ -318,6 +313,30 @@ class BattleMattersController(IBattleMattersController):
     def _showAward(rewardsDict):
         showBattleMattersReward(rewardsDict)
 
+    def __isAvailableForPlayer(self):
+        return self.__itemsCache.items.tokens.getToken(_BATTLE_MATTERS_UNLOCK_TOKEN) is not None
+
+    def __update(self):
+        if self.__cachesAreReady():
+            eventSent = self._checkIsBattleMattersStateChanged()
+            self.__checkDelayedReward(not eventSent)
+            self.__updateFinishState()
+            if not self._isAvailable:
+                self.__isWaitingToken = True
+                self.__eventsCache.onSyncCompleted -= self._onSyncCompleted
+                self.__lobbyContext.onServerSettingsChanged -= self._onLobbyServerSettingChanged
+                self.__lobbyContext.getServerSettings().onServerSettingsChange -= self._onServerSettingsChange
+
+    def __cachesAreReady(self):
+        return not self.__eventsCache.waitForSync and self.__itemsCache.isSynced()
+
+    def __checkDelayedReward(self, eventIsNeeded):
+        hasDelayedRewards = self.hasDelayedRewards()
+        if hasDelayedRewards != self.__hasDelayedRewards:
+            self.__hasDelayedRewards = hasDelayedRewards
+            if eventIsNeeded:
+                self.onStateChanged()
+
     def __updateFinishState(self):
         newFinishState = _FinishState.IS_FINISHED if self.isFinished() else _FinishState.IS_NOT_FINISHED
         if newFinishState != self.__finishState:
@@ -326,9 +345,16 @@ class BattleMattersController(IBattleMattersController):
                 self.onFinish()
 
     def __onConnected(self):
+        self._isAvailable = False
+        self.__savedRewards = {}
+        self.__hasDelayedRewards = False
+        self.__finishState = _FinishState.NOT_INITED
+        self.__isWaitingToken = False
         self.__lobbyContext.onServerSettingsChanged += self._onLobbyServerSettingChanged
-        self.__lobbyContext.getServerSettings().onServerSettingsChange += self._onServerSettingsChange
-        self._checkIsBattleMattersStateChanged()
+        self.__eventsCache.onSyncCompleted += self._onSyncCompleted
+        self.__itemsCache.onSyncCompleted += self._onItemsCacheSync
+        if self.__cachesAreReady():
+            self._checkIsBattleMattersStateChanged()
 
     def __getVehicleSelectableBonus(self):
         return first(self.__battleMattersSelectableRewardMgr.getSelectableBonuses())
@@ -374,13 +400,11 @@ class BattleMattersController(IBattleMattersController):
 
 
 class _BattleMattersHintsHelper(object):
-    __eventsCache = dependency.descriptor(IEventsCache)
     __settingsCache = dependency.descriptor(ISettingsCache)
-    __slots__ = ('__hints', '__isSynced', '__hasHintListeners', '__battleMattersController')
+    __slots__ = ('__hints', '__hasHintListeners', '__battleMattersController')
 
     def __init__(self, controller):
         super(_BattleMattersHintsHelper, self).__init__()
-        self.__isSynced = False
         self.__hasHintListeners = False
         self.__battleMattersController = controller
         self.__hints = self.__getDefaultHints(controller)
@@ -388,7 +412,6 @@ class _BattleMattersHintsHelper(object):
         g_playerEvents.onDisconnected += self.__onDisconnected
 
     def fini(self):
-        self.__isSynced = False
         self.__removeHintsListeners()
         g_playerEvents.onDisconnected -= self.__onDisconnected
         self.__battleMattersController = None
@@ -401,19 +424,20 @@ class _BattleMattersHintsHelper(object):
 
     def __addHintsListeners(self):
         self.__hasHintListeners = True
-        self.__eventsCache.onSyncCompleted += self.__onSyncCompleted
-        self.__eventsCache.onSyncStarted += self.__onSyncStarted
         g_playerEvents.onAccountBecomeNonPlayer += self.__onAccountBecomeNonPlayer
-        self.__battleMattersController.onStateChanged += self.__onStateChanged
-        self.__settingsCache.onSyncCompleted += self.__onSettingsSyncCompleted
+        g_playerEvents.onAccountBecomePlayer += self.__onAccountBecomePlayer
 
     def __removeHintsListeners(self):
-        self.__eventsCache.onSyncCompleted -= self.__onSyncCompleted
-        self.__eventsCache.onSyncStarted -= self.__onSyncStarted
         g_playerEvents.onAccountBecomeNonPlayer -= self.__onAccountBecomeNonPlayer
+        g_playerEvents.onAccountBecomePlayer -= self.__onAccountBecomePlayer
         self.__battleMattersController.onStateChanged -= self.__onStateChanged
         self.__settingsCache.onSyncCompleted -= self.__onSettingsSyncCompleted
         self.__hasHintListeners = False
+
+    def __onAccountBecomePlayer(self):
+        self.__battleMattersController.onStateChanged += self.__onStateChanged
+        self.__settingsCache.onSyncCompleted += self.__onSettingsSyncCompleted
+        self.__startHints()
 
     def __onDisconnected(self):
         self.__hints = self.__getDefaultHints(self.__battleMattersController)
@@ -421,37 +445,26 @@ class _BattleMattersHintsHelper(object):
             self.__addHintsListeners()
 
     def __onAccountBecomeNonPlayer(self):
-        self.__isSynced = False
         self.__stopHints()
-        self.__eventsCache.onSyncCompleted += self.__onSyncCompleted
-        self.__settingsCache.onSyncCompleted += self.__onSettingsSyncCompleted
+        self.__battleMattersController.onStateChanged -= self.__onStateChanged
+        self.__settingsCache.onSyncCompleted -= self.__onSettingsSyncCompleted
 
     def __onSettingsSyncCompleted(self):
         self.__checkHints()
-        self.__settingsCache.onSyncCompleted -= self.__onSettingsSyncCompleted
-
-    def __onSyncCompleted(self):
-        self.__isSynced = True
-        self.__checkHints()
-        self.__eventsCache.onSyncCompleted -= self.__onSyncCompleted
 
     def __checkHints(self):
-        if self.__settingsCache.isSynced() and self.__isSynced:
-            availableHints = []
-            for hint in self.__hints:
-                if hint.isShown():
-                    hint.stop()
-                else:
-                    availableHints.append(hint)
-
-            self.__hints = availableHints
-            if self.__hints:
-                self.__startHints()
+        availableHints = []
+        for hint in self.__hints:
+            if hint.isShown():
+                hint.stop()
             else:
-                self.__removeHintsListeners()
+                availableHints.append(hint)
 
-    def __onSyncStarted(self):
-        self.__isSynced = False
+        self.__hints = availableHints
+        if self.__hints:
+            self.__startHints()
+        else:
+            self.__removeHintsListeners()
 
     def __startHints(self):
         if self.__bmIsAvailable():
@@ -463,7 +476,7 @@ class _BattleMattersHintsHelper(object):
             hint.stop()
 
     def __onStateChanged(self):
-        if self.__bmIsAvailable() and self.__isSynced:
+        if self.__bmIsAvailable():
             self.__startHints()
         else:
             self.__stopHints()
@@ -621,8 +634,9 @@ class _FightBtnMultiShowHint(_BMManualTriggeredHint, IGlobalListener):
         return self._CONTROL_NAME in self._tutorialLoader.gui.getFoundComponentsIDs()
 
     def __checkFightBtnHint(self):
-        if self.prbEntity.getEntityFlags() != FUNCTIONAL_FLAG.UNDEFINED:
-            if self.__isReadyToShow() and self.prbEntity.getQueueType() == QUEUE_TYPE.RANDOMS:
+        prbEntity = self.prbEntity
+        if prbEntity and prbEntity.getEntityFlags() != FUNCTIONAL_FLAG.UNDEFINED:
+            if self.__isReadyToShow() and prbEntity.getQueueType() == QUEUE_TYPE.RANDOMS:
                 self._show()
             elif self._canBeShownInFuture():
                 self._hide()
@@ -630,9 +644,13 @@ class _FightBtnMultiShowHint(_BMManualTriggeredHint, IGlobalListener):
                 self.stop()
 
     def __checkFightBtnIfAlreadyExist(self):
-        items = battle_selector_items.getItems()
-        selected = items.update(self.prbDispatcher.getFunctionalState())
-        return self.prbEntity.canPlayerDoAction().isValid and not selected.isLocked()
+        prbDispatcher = self.prbDispatcher
+        result = False
+        if prbDispatcher is not None:
+            items = battle_selector_items.getItems()
+            selected = items.update(prbDispatcher.getFunctionalState())
+            result = self.prbEntity.canPlayerDoAction().isValid and not selected.isLocked()
+        return result
 
 
 class _EntryPointHint(_BMManualTriggeredHint):

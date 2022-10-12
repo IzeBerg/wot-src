@@ -1,4 +1,4 @@
-from async import async, forwardAsFuture, await
+from wg_async import wg_async, forwardAsFuture, wg_await
 from debug_utils import LOG_CURRENT_EXCEPTION
 from Event import Event
 
@@ -8,10 +8,10 @@ class SynchronousEvent(Event):
     def __init__(self, manager=None):
         super(SynchronousEvent, self).__init__(manager)
 
-    @async
+    @wg_async
     def __call__(self, *args, **kwargs):
         for delegate in self[:]:
             try:
-                yield await(forwardAsFuture(delegate(*args, **kwargs)))
+                yield wg_await(forwardAsFuture(delegate(*args, **kwargs)))
             except:
                 LOG_CURRENT_EXCEPTION()

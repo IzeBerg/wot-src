@@ -1,10 +1,12 @@
-import weakref
+import weakref, BigWorld, logging
 from visual_script.block import Block, Meta
 from visual_script.slot_types import SLOT_TYPE
-from visual_script.misc import ASPECT
+from visual_script.misc import ASPECT, errorVScript
 from visual_script.dependency import dependencyImporter
 from contexts.cgf_context import GameObjectWrapper
-Vehicle, CGF, tankStructure, GenericComponents = dependencyImporter('Vehicle', 'CGF', 'vehicle_systems.tankStructure', 'GenericComponents')
+from constants import ROCKET_ACCELERATION_STATE
+Vehicle, CGF, tankStructure, RAC = dependencyImporter('Vehicle', 'CGF', 'vehicle_systems.tankStructure', 'cgf_components.rocket_acceleration_component')
+_logger = logging.getLogger(__name__)
 
 class CGFMeta(Meta):
 
@@ -74,60 +76,105 @@ class GetVehicleGameObject(Block, CGFMeta):
         return
 
 
-class SpawnPrefab(Block, CGFMeta):
+class RocketAcceleratorEvents(Block, CGFMeta):
 
     def __init__(self, *args, **kwargs):
-        super(SpawnPrefab, self).__init__(*args, **kwargs)
-        self._in = self._makeEventInputSlot('in', self._exec)
-        self._entity = self._makeDataInputSlot('entity', SLOT_TYPE.ENTITY)
-        self._prefab = self._makeDataInputSlot('prefab', SLOT_TYPE.STR)
-        self._matrix = self._makeDataInputSlot('matrix', SLOT_TYPE.MATRIX4)
-        self._out = self._makeEventOutputSlot('out')
-        self._go = self._makeDataOutputSlot('GO', SLOT_TYPE.GAME_OBJECT, None)
+        super(RocketAcceleratorEvents, self).__init__(*args, **kwargs)
+        self._activate = self._makeEventInputSlot('activate', self.__activate)
+        self._deactivate = self._makeEventInputSlot('deactivate', self.__deactivate)
+        self._object = self._makeDataInputSlot('vehicleObject', SLOT_TYPE.GAME_OBJECT)
+        self._activateOut = self._makeEventOutputSlot('activateOut')
+        self._deactivateOut = self._makeEventOutputSlot('deactivateOut')
+        self._failure = self._makeEventOutputSlot('failure')
+        self._deploying = self._makeEventOutputSlot(ROCKET_ACCELERATION_STATE.toString(ROCKET_ACCELERATION_STATE.DEPLOYING))
+        self._preparing = self._makeEventOutputSlot(ROCKET_ACCELERATION_STATE.toString(ROCKET_ACCELERATION_STATE.PREPARING))
+        self._empty = self._makeEventOutputSlot(ROCKET_ACCELERATION_STATE.toString(ROCKET_ACCELERATION_STATE.EMPTY))
+        self._ready = self._makeEventOutputSlot(ROCKET_ACCELERATION_STATE.toString(ROCKET_ACCELERATION_STATE.READY))
+        self._active = self._makeEventOutputSlot(ROCKET_ACCELERATION_STATE.toString(ROCKET_ACCELERATION_STATE.ACTIVE))
+        self._disabled = self._makeEventOutputSlot(ROCKET_ACCELERATION_STATE.toString(ROCKET_ACCELERATION_STATE.DISABLED))
+        self._tryActivate = self._makeEventOutputSlot('tryActivate')
+        self._duration = self._makeDataOutputSlot('duration', SLOT_TYPE.FLOAT, None)
+        self.__switcher = {}
+        self.__controllerLink = None
         return
 
-    def _exec(self):
-        vehicle = self._entity.getValue()
-        parent = vehicle.entityGameObject
-        matrix = self._matrix.getValue()
-        if parent is not None and parent.isValid():
-            CGF.loadGameObjectIntoHierarchy(self._prefab.getValue(), parent, matrix, self.__onGameObjectLoaded)
-        return
+    def __activate(self):
+        go = self._object.getValue()
+        if not go.isValid:
+            errorVScript(self, 'RocketAcceleratorEvents: Input game object is not valid')
+            self._failure.call()
+            return
+        else:
+            provider = go.findComponentByType(RAC.RocketAccelerationController)
+            if provider is None:
+                errorVScript(self, 'RocketAcceleratorEvents: Input game object is not valid')
+                self._failure.call()
+                return
+            self.__switcher = {ROCKET_ACCELERATION_STATE.NOT_RUNNING: lambda *args: None, 
+               ROCKET_ACCELERATION_STATE.DEPLOYING: lambda status: self._deploying.call(), 
+               ROCKET_ACCELERATION_STATE.PREPARING: lambda status: self._preparing.call(), 
+               ROCKET_ACCELERATION_STATE.READY: lambda status: self._ready.call(), 
+               ROCKET_ACCELERATION_STATE.ACTIVE: lambda status: self._active.call(), 
+               ROCKET_ACCELERATION_STATE.DISABLED: lambda status: self._disabled.call(), 
+               ROCKET_ACCELERATION_STATE.EMPTY: lambda status: self._empty.call()}
+            provider.subscribe(self.__onStateChange, self.__onTryActivate)
+            self.__controllerLink = CGF.ComponentLink(go, RAC.RocketAccelerationController)
+            self._activateOut.call()
+            return
 
-    def __onGameObjectLoaded(self, gameObject):
-        vehicle = self.__getVehicle(gameObject)
-        if vehicle and vehicle.appearance:
-            gameObject.createComponent(GenericComponents.RedirectorComponent, vehicle.appearance.gameObject)
-            gameObject.createComponent(GenericComponents.DynamicModelComponent, vehicle.appearance.compoundModel)
-        goWrapper = GameObjectWrapper(gameObject)
-        self._go.setValue(weakref.proxy(goWrapper))
-        self._out.call()
+    def __deactivate(self):
+        controller = self.__controllerLink()
+        self.__controllerLink = None
+        self.__switcher = None
+        if controller is None:
+            self._deactivateOut.call()
+            return
+        else:
+            controller.unsubscribe(self.__onStateChange, self.__onTryActivate)
+            self._deactivateOut.call()
+            return
 
-    def __getVehicle(self, gameObject):
-        hierarchy = CGF.HierarchyManager(gameObject.spaceID)
-        parent = hierarchy.getTopMostParent(gameObject)
-        return parent.findComponentByType(Vehicle.Vehicle)
+    def __onStateChange(self, status):
+        self._duration.setValue(status.endTime - BigWorld.serverTime())
+        self.__switcher.get(status.status, self.__onWrongState)(status)
+
+    def __onTryActivate(self):
+        self._tryActivate.call()
+
+    def __onWrongState(self, *args, **kwargs):
+        errorVScript(self, 'RocketAcceleratorEvents: Set state called with undefined value')
 
     @classmethod
     def blockAspects(cls):
         return [ASPECT.CLIENT]
 
 
-class TransferOwnershipToWorld(Block, CGFMeta):
+class RocketAcceleratorSettings(Block, CGFMeta):
 
     def __init__(self, *args, **kwargs):
-        super(TransferOwnershipToWorld, self).__init__(*args, **kwargs)
-        self._in = self._makeEventInputSlot('in', self._exec)
-        self._go = self._makeDataInputSlot('GO', SLOT_TYPE.GAME_OBJECT)
+        super(RocketAcceleratorSettings, self).__init__(*args, **kwargs)
+        self._activate = self._makeEventInputSlot('in', self._execute)
+        self._object = self._makeDataInputSlot('vehicleObject', SLOT_TYPE.GAME_OBJECT)
         self._out = self._makeEventOutputSlot('out')
-
-    def _exec(self):
-        if self._go.hasValue():
-            go = self._go.getValue()
-            if go is not None:
-                go.transferOwnershipToWorld()
-        self._out.call()
+        self._failure = self._makeEventOutputSlot('failure')
+        self._isPlayer = self._makeDataOutputSlot('isPlayer', SLOT_TYPE.BOOL, None)
         return
+
+    def _execute(self):
+        go = self._object.getValue()
+        if not go.isValid:
+            errorVScript(self, 'RocketAcceleratorEvents: Input game object is not valid')
+            self._failure.call()
+            return
+        else:
+            provider = go.findComponentByType(RAC.RocketAccelerationController)
+            if provider is None:
+                errorVScript(self, 'RocketAcceleratorEvents: Input game object is not valid')
+                self._failure.call()
+                return
+            self._isPlayer.setValue(provider.entity.isPlayerVehicle)
+            self._out.call()
+            return
 
     @classmethod
     def blockAspects(cls):

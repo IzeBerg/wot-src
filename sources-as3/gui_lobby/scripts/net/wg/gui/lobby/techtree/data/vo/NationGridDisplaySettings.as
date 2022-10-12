@@ -38,6 +38,14 @@ package net.wg.gui.lobby.techtree.data.vo
          super();
       }
       
+      public function cleanUp() : void
+      {
+         this._numColumns = Values.ZERO;
+         this._numRows = Values.ZERO;
+         this._step = null;
+         this._start = null;
+      }
+      
       public final function dispose() : void
       {
          this._disposed = true;
@@ -77,6 +85,11 @@ package net.wg.gui.lobby.techtree.data.vo
          }
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function isFilled() : Boolean
       {
          return this._numColumns > 0 && this._numRows > 0;
@@ -85,14 +98,6 @@ package net.wg.gui.lobby.techtree.data.vo
       public function toString() : String
       {
          return "[NationGridDisplaySettings: rows = " + this._numRows + ", columns = " + this._numColumns + ", start: " + this._start + ", step: " + this._step + " ]";
-      }
-      
-      public function cleanUp() : void
-      {
-         this._numColumns = Values.ZERO;
-         this._numRows = Values.ZERO;
-         this._step = null;
-         this._start = null;
       }
       
       public function get rows() : int
@@ -113,11 +118,6 @@ package net.wg.gui.lobby.techtree.data.vo
       public function get start() : Point
       {
          return this._start;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

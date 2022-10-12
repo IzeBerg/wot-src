@@ -23,9 +23,8 @@ from gui.shared.formatters import icons
 from gui import makeHtmlString
 from gui.impl import backport
 from gui.impl.gen import R
-from skeletons.gui.battle_session import IBattleSessionProvider
 from skeletons.account_helpers.settings_core import ISettingsCore
-from skeletons.gui.game_control import IAnonymizerController, IEventBattlesController
+from skeletons.gui.game_control import IAnonymizerController
 from skeletons.gui.lobby_context import ILobbyContext
 _PAGES = (
  SETTINGS.GAMETITLE, SETTINGS.GRAFICTITLE, SETTINGS.SOUNDTITLE,
@@ -55,8 +54,6 @@ class SettingsWindow(SettingsWindowMeta):
     anonymizerController = dependency.descriptor(IAnonymizerController)
     settingsCore = dependency.descriptor(ISettingsCore)
     lobbyContext = dependency.descriptor(ILobbyContext)
-    gameEventController = dependency.descriptor(IEventBattlesController)
-    sessionProvider = dependency.descriptor(IBattleSessionProvider)
 
     def __init__(self, ctx=None):
         super(SettingsWindow, self).__init__()
@@ -70,9 +67,6 @@ class SettingsWindow(SettingsWindowMeta):
     @proto_getter(PROTO_TYPE.BW_CHAT2)
     def bwProto(self):
         return
-
-    def updateIsEvent(self):
-        self.as_setTigerEventS(self.__isInEvent())
 
     def __getSettingsParam(self):
         settings = {SETTINGS_GROUP.GAME_SETTINGS: self.params.getGameSettings(), 
@@ -154,7 +148,6 @@ class SettingsWindow(SettingsWindowMeta):
         self.as_updateVideoSettingsS(self.params.getMonitorSettings())
         self.as_openTabS(_getLastTabIndex())
         self.__setColorGradingTechnique()
-        self.updateIsEvent()
 
     def _dispose(self):
         if self.__redefinedKeyModeEnabled:
@@ -262,7 +255,7 @@ class SettingsWindow(SettingsWindowMeta):
             rh.leaveTestChannel()
         return False
 
-    @decorators.process('updateCaptureDevices')
+    @decorators.adisp_process('updateCaptureDevices')
     def updateCaptureDevices(self):
         yield self.bwProto.voipController.requestCaptureDevices()
         opt = self.settingsCore.options.getSetting(settings_constants.SOUND.CAPTURE_DEVICES)
@@ -370,6 +363,3 @@ class SettingsWindow(SettingsWindowMeta):
                 image = RES_ICONS.MAPS_ICONS_SETTINGS_COLOR_GRADING_TECHNIQUE_NONE
         self.as_setColorGradingTechniqueS(image, label)
         return
-
-    def __isInEvent(self):
-        return self.gameEventController.isEventPrbActive() or self.sessionProvider.arenaVisitor.gui.isEventBattle()

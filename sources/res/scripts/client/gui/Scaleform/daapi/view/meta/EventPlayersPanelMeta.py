@@ -1,27 +1,23 @@
-from gui.Scaleform.daapi.view.battle.classic.players_panel import PlayersPanel
+from gui.Scaleform.framework.entities.BaseDAAPIComponent import BaseDAAPIComponent
 
-class EventPlayersPanelMeta(PlayersPanel):
+class EventPlayersPanelMeta(BaseDAAPIComponent):
 
-    def as_setIsBossS(self, value):
+    def as_setPlayerPanelInfoS(self, data):
         if self._isDAAPIInited():
-            return self.flashObject.as_setIsBoss(value)
+            return self.flashObject.as_setPlayerPanelInfo(data)
 
-    def as_setBossBotInfoS(self, data):
+    def as_setPlayerPanelHpS(self, vehID, hpMax, hpCurrent):
         if self._isDAAPIInited():
-            return self.flashObject.as_setBossBotInfo(data)
+            return self.flashObject.as_setPlayerPanelHp(vehID, hpMax, hpCurrent)
 
-    def as_updateBossBombTimerS(self, id, timeLeft, timeTotal, replaySpeed=1):
+    def as_setPlayerDeadS(self, vehID):
         if self._isDAAPIInited():
-            return self.flashObject.as_updateBossBombTimer(id, timeLeft, timeTotal, replaySpeed)
+            return self.flashObject.as_setPlayerDead(vehID)
 
-    def as_updateBossBotHpS(self, vehID, hpMax, hpCurrent):
+    def as_setPlayerResurrectS(self, vehID, isResurrect):
         if self._isDAAPIInited():
-            return self.flashObject.as_updateBossBotHp(vehID, hpMax, hpCurrent)
+            return self.flashObject.as_setPlayerResurrect(vehID, isResurrect)
 
-    def as_setBossBotSpottedS(self, vehID, status):
+    def as_setPlayerPanelCountPointsS(self, vehID, count):
         if self._isDAAPIInited():
-            return self.flashObject.as_setBossBotSpotted(vehID, status)
-
-    def as_clearBossBotCampS(self, campId):
-        if self._isDAAPIInited():
-            return self.flashObject.as_clearBossBotCamp(campId)
+            return self.flashObject.as_setPlayerPanelCountPoints(vehID, count)

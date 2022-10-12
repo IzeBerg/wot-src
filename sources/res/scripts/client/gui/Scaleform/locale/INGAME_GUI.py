@@ -42,6 +42,7 @@ class INGAME_GUI(object):
     PLAYER_ERRORS_EQUIPMENT_REPAIREVERYTHING_CREWANDDEVICESAREOK = '#ingame_gui:player_errors/equipment/repairEverything/crewAndDevicesAreOk'
     PLAYER_ERRORS_EQUIPMENT_EXTINGUISHER_DOESNOTACTIVATED = '#ingame_gui:player_errors/equipment/extinguisher/doesNotActivated'
     PLAYER_ERRORS_EQUIPMENT_ORDER_NOTREADY = '#ingame_gui:player_errors/equipment/order/notReady'
+    PLAYER_ERRORS_EQUIPMENT_POI_UNAVAILABLE = '#ingame_gui:player_errors/equipment/poi/unavailable'
     PLAYER_MESSAGES_DEVICE_CRITICAL_AT_SHOT = '#ingame_gui:player_messages/DEVICE_CRITICAL_AT_SHOT'
     PLAYER_MESSAGES_DEVICE_DESTROYED_AT_SHOT = '#ingame_gui:player_messages/DEVICE_DESTROYED_AT_SHOT'
     PLAYER_MESSAGES_DEVICE_STARTED_FIRE_AT_SHOT = '#ingame_gui:player_messages/DEVICE_STARTED_FIRE_AT_SHOT'
@@ -72,6 +73,9 @@ class INGAME_GUI(object):
     PLAYER_MESSAGES_POSTMORTEM_CAPTION_OTHER = '#ingame_gui:player_messages/postmortem_caption/other'
     PLAYER_MESSAGES_POSTMORTEM_USERNOHASAMMO = '#ingame_gui:player_messages/postmortem_userNoHasAmmo'
     PLAYER_MESSAGES_TANK_IN_FIRE = '#ingame_gui:player_messages/tank_in_fire'
+    PLAYER_MESSAGES_POI_EQUIPMENT_USED_BY_ALLY = '#ingame_gui:player_messages/poi_equipment_used_by_ally'
+    PLAYER_MESSAGES_POI_EQUIPMENT_USED_BY_ENEMY = '#ingame_gui:player_messages/poi_equipment_used_by_enemy'
+    VEHICLE_MESSAGES_POI_EQUIPMENT_USED = '#ingame_gui:vehicle_messages/poi_equipment_used'
     PLAYER_MESSAGES_REPLAYFREECAMERAACTIVATED = '#ingame_gui:player_messages/replayFreeCameraActivated'
     PLAYER_MESSAGES_REPLAYSAVEDCAMERAACTIVATED = '#ingame_gui:player_messages/replaySavedCameraActivated'
     PLAYER_MESSAGES_REPLAYSPEEDCHANGE = '#ingame_gui:player_messages/replaySpeedChange'
@@ -171,6 +175,8 @@ class INGAME_GUI(object):
     STATISTICS_TAB_QUESTS_NOTHINGTOPERFORM_DESCR = '#ingame_gui:statistics/tab/quests/nothingToPerform/descr'
     STATISTICS_TAB_QUESTS_SWITCHOFF_TITLE = '#ingame_gui:statistics/tab/quests/switchOff/title'
     STATISTICS_TAB_QUESTS_NOTAVAILABLE_TITLE = '#ingame_gui:statistics/tab/quests/notAvailable/title'
+    STATISTICS_TAB_PERSONALRESERVES_HEADER = '#ingame_gui:statistics/tab/personalReserves/header'
+    STATISTICS_TAB_PERSONALRESERVES_HEADER_TITLE = '#ingame_gui:statistics/tab/personalReserves/header/title'
     STATISTICS_HEADER = '#ingame_gui:statistics/header'
     STATISTICS_TEAM1TITLE = '#ingame_gui:statistics/team1title'
     STATISTICS_TEAM2TITLE = '#ingame_gui:statistics/team2title'
@@ -389,6 +395,12 @@ class INGAME_GUI(object):
     PLAYER_MESSAGES_DEATH_FROM_SHOT_ENEMY_ENEMY = '#ingame_gui:player_messages/DEATH_FROM_SHOT_ENEMY_ENEMY'
     PLAYER_MESSAGES_DEATH_FROM_SHOT_ENEMY_ENEMY_ARTILLERY = '#ingame_gui:player_messages/DEATH_FROM_SHOT_ENEMY_ENEMY_ARTILLERY'
     PLAYER_MESSAGES_DEATH_FROM_SHOT_ENEMY_ENEMY_BOMBER = '#ingame_gui:player_messages/DEATH_FROM_SHOT_ENEMY_ENEMY_BOMBER'
+    PLAYER_MESSAGES_DEATH_FROM_SHOT_SELF_ENEMY_POI = '#ingame_gui:player_messages/DEATH_FROM_SHOT_SELF_ENEMY_POI'
+    PLAYER_MESSAGES_DEATH_FROM_SHOT_SELF_ENEMY_COMP7 = '#ingame_gui:player_messages/DEATH_FROM_SHOT_SELF_ENEMY_COMP7'
+    PLAYER_MESSAGES_DEATH_FROM_SHOT_ALLY_ENEMY_POI = '#ingame_gui:player_messages/DEATH_FROM_SHOT_ALLY_ENEMY_POI'
+    PLAYER_MESSAGES_DEATH_FROM_SHOT_ALLY_ENEMY_COMP7 = '#ingame_gui:player_messages/DEATH_FROM_SHOT_ALLY_ENEMY_COMP7'
+    PLAYER_MESSAGES_DEATH_FROM_SHOT_ENEMY_ALLY_POI = '#ingame_gui:player_messages/DEATH_FROM_SHOT_ENEMY_ALLY_POI'
+    PLAYER_MESSAGES_DEATH_FROM_SHOT_ENEMY_ALLY_COMP7 = '#ingame_gui:player_messages/DEATH_FROM_SHOT_ENEMY_ALLY_COMP7'
     PLAYER_MESSAGES_DEATH_FROM_ARTILLERY_ENEMY_SUICIDE = '#ingame_gui:player_messages/DEATH_FROM_ARTILLERY_ENEMY_SUICIDE'
     PLAYER_MESSAGES_DEATH_FROM_ARTILLERY_ALLY_SUICIDE = '#ingame_gui:player_messages/DEATH_FROM_ARTILLERY_ALLY_SUICIDE'
     PLAYER_MESSAGES_DEATH_FROM_BOMBER_ENEMY_SUICIDE = '#ingame_gui:player_messages/DEATH_FROM_BOMBER_ENEMY_SUICIDE'
@@ -664,6 +676,7 @@ class INGAME_GUI(object):
     SIEGEMODE_HINT_NOBINDING = '#ingame_gui:siegeMode/hint/noBinding'
     SIEGEMODE_HINT_WHEELED = '#ingame_gui:siegeMode/hint/wheeled'
     SIEGEMODE_HINT_TURBOSHAFTENGINE = '#ingame_gui:siegeMode/hint/turboshaftEngine'
+    SIEGEMODE_HINT_ROCKETACCELERATION = '#ingame_gui:siegeMode/hint/rocketAcceleration'
     EFFICIENCYRIBBONS_ENEMYSECTORCAPTURED = '#ingame_gui:efficiencyRibbons/enemySectorCaptured'
     EFFICIENCYRIBBONS_DESTRUCTIBLEDAMAGED = '#ingame_gui:efficiencyRibbons/destructibleDamaged'
     EFFICIENCYRIBBONS_DESTRUCTIBLEDESTROYED = '#ingame_gui:efficiencyRibbons/destructibleDestroyed'
@@ -835,9 +848,10 @@ class INGAME_GUI(object):
     REWARDWINDOW_TWITCH32_DESCTEXT = '#ingame_gui:rewardWindow/twitch32/descText'
     REWARDWINDOW_TWITCH32_BTNLABEL = '#ingame_gui:rewardWindow/twitch32/btnLabel'
     REWARDWINDOW_TWITCH33_HEADERTEXT = '#ingame_gui:rewardWindow/twitch33/headerText'
-    REWARDWINDOW_TWITCH33_SUBHEADERTEXT = '#ingame_gui:rewardWindow/twitch33/subHeaderText'
-    REWARDWINDOW_TWITCH33_DESCTEXT = '#ingame_gui:rewardWindow/twitch33/descText'
-    REWARDWINDOW_TWITCH33_BTNLABEL = '#ingame_gui:rewardWindow/twitch33/btnLabel'
+    REWARDWINDOW_TWITCH33_MAINREWARD_1 = '#ingame_gui:rewardWindow/twitch33/mainReward_1'
+    REWARDWINDOW_TWITCH33_MAINREWARD_2 = '#ingame_gui:rewardWindow/twitch33/mainReward_2'
+    REWARDWINDOW_TWITCH33_MAINREWARD_3 = '#ingame_gui:rewardWindow/twitch33/mainReward_3'
+    REWARDWINDOW_TWITCH33_MAINREWARD_4 = '#ingame_gui:rewardWindow/twitch33/mainReward_4'
     REWARDWINDOW_LOOTBOX_WINHEADERTEXT = '#ingame_gui:rewardWindow/lootbox/winHeaderText'
     REWARDWINDOW_LOOTBOX_HEADERTEXT = '#ingame_gui:rewardWindow/lootbox/headerText'
     REWARDWINDOW_LOOTBOX_DESCTEXT = '#ingame_gui:rewardWindow/lootbox/descText'
@@ -846,6 +860,7 @@ class INGAME_GUI(object):
     BATTLEPROGRESS_HINT_NOBINDINGKEY = '#ingame_gui:battleProgress/hint/noBindingKey'
     HELPSCREEN_HINT_PRESS = '#ingame_gui:helpScreen/hint/press'
     HELPSCREEN_HINT_DESCRIPTION = '#ingame_gui:helpScreen/hint/description'
+    HELPSCREEN_HINT_MODEDESCRIPTION = '#ingame_gui:helpScreen/hint/modeDescription'
     COMMANDERCAM_HINT_DESCRIPTION = '#ingame_gui:commanderCam/hint/description'
     BATTLECOMMUNICATION_HINT_PRESS = '#ingame_gui:battleCommunication/hint/press'
     BATTLECOMMUNICATION_HINT_DESCRIPTION = '#ingame_gui:battleCommunication/hint/description'
@@ -935,6 +950,9 @@ class INGAME_GUI(object):
     PREBATTLEAMMUNITIONPANEL_WAITINFORPLAYERS = '#ingame_gui:prebattleAmmunitionPanel/waitinForPlayers'
     PREBATTLEAMMUNITIONPANEL_LOADINGTIMER = '#ingame_gui:prebattleAmmunitionPanel/loadingTimer'
     PREBATTLEAMMUNITIONPANEL_CURRENTSETUP = '#ingame_gui:prebattleAmmunitionPanel/currentSetup'
+    PERSONAL_RESERVES_HINT_PRESS = '#ingame_gui:personal_reserves/hint/press'
+    PERSONAL_RESERVES_HINT_DESCRIPTION = '#ingame_gui:personal_reserves/hint/description'
+    HINT_NOBINDINGKEY = '#ingame_gui:hint/noBindingKey'
     CHAT_SHORTCUTS_ENUM = (
      CHAT_SHORTCUTS_ATTENTION_TO_POSITION_GRIDINFO,
      CHAT_SHORTCUTS_ATTENTION_TO_POSITION,
@@ -1144,7 +1162,6 @@ class INGAME_GUI(object):
      REWARDWINDOW_TWITCH30_SUBHEADERTEXT,
      REWARDWINDOW_TWITCH31_SUBHEADERTEXT,
      REWARDWINDOW_TWITCH32_SUBHEADERTEXT,
-     REWARDWINDOW_TWITCH33_SUBHEADERTEXT,
      REWARDWINDOW_ANNIVERSARY_GA_SUBHEADERTEXT,
      REWARDWINDOW_PIGGYBANK_SUBHEADERTEXT,
      REWARDWINDOW_COMMANDER_MARINA_SUBHEADERTEXT,
@@ -1186,7 +1203,6 @@ class INGAME_GUI(object):
      REWARDWINDOW_TWITCH30_BTNLABEL,
      REWARDWINDOW_TWITCH31_BTNLABEL,
      REWARDWINDOW_TWITCH32_BTNLABEL,
-     REWARDWINDOW_TWITCH33_BTNLABEL,
      REWARDWINDOW_LOOTBOX_BTNLABEL,
      REWARDWINDOW_ANNIVERSARY_GA_BTNLABEL,
      REWARDWINDOW_PIGGYBANK_BTNLABEL,
@@ -1229,7 +1245,6 @@ class INGAME_GUI(object):
      REWARDWINDOW_TWITCH30_DESCTEXT,
      REWARDWINDOW_TWITCH31_DESCTEXT,
      REWARDWINDOW_TWITCH32_DESCTEXT,
-     REWARDWINDOW_TWITCH33_DESCTEXT,
      REWARDWINDOW_LOOTBOX_DESCTEXT,
      REWARDWINDOW_ANNIVERSARY_GA_DESCTEXT,
      REWARDWINDOW_PIGGYBANK_DESCTEXT,

@@ -23,7 +23,7 @@ package net.wg.gui.lobby.header.vo
       
       private var _align:String = "";
       
-      private var _isUseFreeSize:Boolean = false;
+      private var _resizePriority:int = -1;
       
       private var _headerButton:HeaderButton = null;
       
@@ -125,14 +125,14 @@ package net.wg.gui.lobby.header.vo
          this._enabled = param1;
       }
       
-      public function get isUseFreeSize() : Boolean
+      public function get resizePriority() : int
       {
-         return this._isUseFreeSize;
+         return this._resizePriority;
       }
       
-      public function set isUseFreeSize(param1:Boolean) : void
+      public function set resizePriority(param1:int) : void
       {
-         this._isUseFreeSize = param1;
+         this._resizePriority = param1;
       }
       
       public function get upperLinkage() : String

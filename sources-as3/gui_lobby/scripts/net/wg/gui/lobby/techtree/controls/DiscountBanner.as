@@ -25,16 +25,16 @@ package net.wg.gui.lobby.techtree.controls
          TextFieldEx.setVerticalAlign(this.discountTF,TextFieldEx.VALIGN_CENTER);
       }
       
-      protected function onDispose() : void
-      {
-         this.discountTF = null;
-      }
-      
       public final function dispose() : void
       {
          App.utils.asserter.assert(!this._baseDisposed,name + ALREADY_DISPOSED_MESSAGE);
          this.onDispose();
          this._baseDisposed = true;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._baseDisposed;
       }
       
       public function setData(param1:String, param2:Boolean = true) : void
@@ -47,9 +47,9 @@ package net.wg.gui.lobby.techtree.controls
          this.discountTF.htmlText = param1;
       }
       
-      public function isDisposed() : Boolean
+      protected function onDispose() : void
       {
-         return this._baseDisposed;
+         this.discountTF = null;
       }
    }
 }

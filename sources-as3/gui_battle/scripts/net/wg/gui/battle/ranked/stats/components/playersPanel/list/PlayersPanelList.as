@@ -1,9 +1,9 @@
 package net.wg.gui.battle.ranked.stats.components.playersPanel.list
 {
    import net.wg.data.constants.generated.BATTLE_CONTEXT_MENU_HANDLER_TYPE;
+   import net.wg.gui.battle.components.stats.playersPanel.events.PlayersPanelItemEvent;
    import net.wg.gui.battle.components.stats.playersPanel.list.BasePlayersPanelList;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.VO.PlayersPanelContextMenuSentData;
-   import net.wg.gui.battle.random.views.stats.components.playersPanel.events.PlayersPanelItemEvent;
    import net.wg.gui.battle.random.views.stats.components.playersPanel.interfaces.IPlayersPanelListItemHolder;
    import net.wg.gui.battle.views.minimap.MinimapEntryController;
    

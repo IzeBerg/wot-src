@@ -52,7 +52,7 @@ package net.wg.gui.lobby.techtree.helpers
       override protected function getLineThickness(param1:IRenderer, param2:IRenderer) : uint
       {
          var _loc3_:Boolean = false;
-         if((param1.isNext2Unlock() || param1.isUnlocked()) && param2.isUnlocked() && (param1 != this.rootRenderer ? Boolean(this.rootRenderer.isUnlocked()) : Boolean(true)))
+         if(param2.isUnlocked() && (param1.isNext2Unlock() || param1.isUnlocked()) && (param1 != this.rootRenderer ? Boolean(this.rootRenderer.isUnlocked()) : Boolean(true)))
          {
             if(param1 != this.rootRenderer && param2 is ResearchItem)
             {
@@ -78,7 +78,7 @@ package net.wg.gui.lobby.techtree.helpers
       protected function removeExtraRenderers(param1:int) : void
       {
          var _loc2_:DisplayObject = null;
-         var _loc3_:Number = 0;
+         var _loc3_:int = 0;
          while(numChildren > param1)
          {
             _loc2_ = getChildAt(_loc3_);

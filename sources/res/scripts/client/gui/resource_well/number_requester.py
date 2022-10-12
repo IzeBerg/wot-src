@@ -1,4 +1,5 @@
-import json, logging, typing, async
+import json, logging, typing
+from wg_async import wg_async, wg_await
 from Event import Event
 from gui.game_control.reactive_comm import Subscription
 from gui.resource_well.resource_well_helpers import getNumberChannelName
@@ -49,7 +50,7 @@ class ResourceWellNumberRequester(object):
     def isDataAvailable(self):
         return self.__remainingValues is not None and self.__givenValues is not None
 
-    @async.async
+    @wg_async
     def __subscribe(self):
         channelName = self.__getChannelName()
         _logger.debug('Trying to subscribe channel: <%s>', channelName)
@@ -61,7 +62,7 @@ class ResourceWellNumberRequester(object):
                 _logger.error('Channel subscription is unavailable! Please check reactive communication settings')
                 return
             self.__subscription = Subscription(channelName)
-            status = yield async.await(self.__reactiveCommunication.subscribeToChannel(self.__subscription))
+            status = yield wg_await(self.__reactiveCommunication.subscribeToChannel(self.__subscription))
             _logger.debug('Subscription status for channel <%s>: %s', channelName, status)
             if status:
                 self.__subscription.onClosed += self.__onClosed

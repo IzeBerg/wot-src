@@ -8,12 +8,6 @@ package net.wg.infrastructure.base.meta
       
       function setFilterS(param1:int) : void;
       
-      function updateHotFiltersS() : void;
-      
-      function as_setCarouselFilter(param1:Object) : void;
-      
-      function as_initCarouselFilter(param1:Object) : void;
-      
       function as_useExtendedCarousel(param1:Boolean) : void;
       
       function as_scrollToSlot(param1:int) : void;

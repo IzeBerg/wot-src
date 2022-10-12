@@ -15,6 +15,8 @@ package net.wg.gui.lobby.battleResults.data
       
       private static const RANK:String = "rank";
       
+      private static const COMP7_RATING:String = "comp7Rating";
+      
       public static const SHOW_SQUAD:Number = 1;
       
       public static const SHOW_RESOURCES:Number = 2;
@@ -86,6 +88,8 @@ package net.wg.gui.lobby.battleResults.data
       
       public var epicMode:Boolean = false;
       
+      public var comp7Rating:Comp7SubTaskVO = null;
+      
       public function CommonStatsVO(param1:Object)
       {
          super(param1);
@@ -116,6 +120,9 @@ package net.wg.gui.lobby.battleResults.data
                return false;
             case RANK:
                this.rank = Boolean(param2) ? new RankedBattleSubTaskVO(param2) : null;
+               return false;
+            case COMP7_RATING:
+               this.comp7Rating = Boolean(param2) ? new Comp7SubTaskVO(param2) : null;
                return false;
             default:
                return super.onDataWrite(param1,param2);
@@ -169,6 +176,11 @@ package net.wg.gui.lobby.battleResults.data
          {
             this.rank.dispose();
             this.rank = null;
+         }
+         if(this.comp7Rating)
+         {
+            this.comp7Rating.dispose();
+            this.comp7Rating = null;
          }
          super.onDispose();
       }

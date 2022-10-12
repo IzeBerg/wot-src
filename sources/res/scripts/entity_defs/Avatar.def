@@ -181,7 +181,7 @@
 			<Flags>CELL_PRIVATE</Flags>
 		</cp>
 		<historyLoggingFlags>
-			<Type>UINT32</Type>
+			<Type>UINT64</Type>
 			<Flags>CELL_PRIVATE</Flags>
 		</historyLoggingFlags>
 		<heatmapLoggingFlags>
@@ -242,6 +242,14 @@
 			<Flags>BASE_AND_CLIENT</Flags>
 			<ExposedForReplay>true</ExposedForReplay>
 		</playLimits>
+		<arenaGameParamRev>
+			<Type>UINT64</Type>
+			<Flags>BASE</Flags>
+		</arenaGameParamRev>
+		<goodiesSnapshot>
+			<Type>BATTLE_GOODIES_LIST</Type>
+			<Flags>BASE_AND_CLIENT</Flags>
+		</goodiesSnapshot>
 	</Properties>
 	<TempProperties>
 		<_Avatar__p/>
@@ -525,6 +533,9 @@
 			<Arg>STRING</Arg>
 			<Arg>STRING</Arg>
 		</handleScriptEventFromServer>
+		<setUpdatedGoodiesSnapshot>
+			<Arg>BATTLE_GOODIES_LIST</Arg>
+		</setUpdatedGoodiesSnapshot>
 	</ClientMethods>
 	<CellMethods>
 		<autoAim>
@@ -554,12 +565,12 @@
 		<forbidUnbindingFromVehicle>
 			<Arg>INT8</Arg>
 		</forbidUnbindingFromVehicle>
-		<fullyDiscloseEntities>
+		<discloseEntities>
 			<Arg>
 				ARRAY
-				<of>OBJECT_ID</of>
+				<of>DISCLOSE_EVENT</of>
 			</Arg>
-		</fullyDiscloseEntities>
+		</discloseEntities>
 		<receiveVisibilityUpdate>
 			<Arg>OBJECT_ID</Arg>
 			<Arg>BOOL</Arg>
@@ -609,11 +620,6 @@
 			<Exposed>OWN_CLIENT</Exposed>
 			<Arg>UINT16</Arg>
 		</activateEquipment>
-		<activateVehicleEquipment>
-			<Exposed>OWN_CLIENT</Exposed>
-			<Arg>UINT16</Arg>
-			<Arg>STRING</Arg>
-		</activateVehicleEquipment>
 		<setEquipmentApplicationPoint>
 			<Exposed>OWN_CLIENT</Exposed>
 			<Arg>UINT16</Arg>
@@ -832,5 +838,8 @@
 		<removeSyncData>
 			<Arg>PYTHON</Arg>
 		</removeSyncData>
+		<updateGoodiesSnapshot>
+			<Arg>BATTLE_GOODIES_LIST</Arg>
+		</updateGoodiesSnapshot>
 	</BaseMethods>
 </root>

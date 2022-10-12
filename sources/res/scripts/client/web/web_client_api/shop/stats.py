@@ -1,15 +1,14 @@
-import logging, adisp
-from async import async, await
+import logging, adisp, nations
+from wg_async import wg_async, wg_await
 from constants import PREM_TYPE_TO_ENTITLEMENT
 from gui.shared.money import Currency
 from gui.shared.utils.vehicle_collector_helper import hasCollectibleVehicles
 from helpers import dependency, time_utils
-import nations
 from skeletons.gui.game_control import IEntitlementsController
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.utils.requesters import IStatsRequester
-from web.common import formatWalletCurrencyStatuses, formatBalance
-from web.web_client_api import W2CSchema, w2c, Field
+from web.common import formatBalance, formatWalletCurrencyStatuses
+from web.web_client_api import Field, W2CSchema, w2c
 _logger = logging.getLogger(__name__)
 
 class _GetInventoryEntitlementsSchema(W2CSchema):
@@ -80,18 +79,18 @@ class BalanceWebApiMixin(object):
             result = yield self.__forceUpdateEntitlementsCache(cmd.codes)
         entitlements = {}
         for code in cmd.codes:
-            entitlement = self.__entitlementsController.getEntitlementFromCache(code)
+            entitlement = self.__entitlementsController.getBalanceEntitlementFromCache(code)
             granted = self.__entitlementsController.getGrantedEntitlementFromCache(code)
-            grantedAmount = granted.amount if granted is not None else 0
+            grantedAmount = granted.getAmount() if granted is not None else 0
             if entitlement is not None:
-                entitlements[code] = {'amount': entitlement.amount + grantedAmount, 'expires_at': entitlement.expiresAt}
+                entitlements[code] = {'amount': entitlement.getAmount() + grantedAmount, 'expires_at': entitlement.getExpiresAtData()}
 
-        yield {'success': result and self.__entitlementsController.isCacheInited and not self.__entitlementsController.isCodesWasFailedInLastRequest(cmd.codes), 
+        yield {'success': result and self.__entitlementsController.isCacheInited() and not self.__entitlementsController.isCodesWasFailedInLastRequest(cmd.codes), 
            'entitlements': entitlements}
         return
 
-    @adisp.async
-    @async
+    @adisp.adisp_async
+    @wg_async
     def __forceUpdateEntitlementsCache(self, codes, callback):
-        result = yield await(self.__entitlementsController.forceUpdateCache(codes))
+        result = yield wg_await(self.__entitlementsController.forceUpdateCache(codes))
         callback(result)

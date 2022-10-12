@@ -15,10 +15,10 @@ package net.wg.gui.lobby.vehicleCustomization
    import net.wg.data.constants.generated.TEXT_MANAGER_STYLES;
    import net.wg.gui.components.advanced.tutorial.TutorialHint;
    import net.wg.gui.events.LobbyEvent;
+   import net.wg.gui.interfaces.IMagneticClickHandler;
    import net.wg.gui.lobby.vehicleCustomization.controls.CarouselItemRenderer;
    import net.wg.gui.lobby.vehicleCustomization.controls.CarouselRendererAttachedBase;
    import net.wg.gui.lobby.vehicleCustomization.controls.ProgressionEntryPoint;
-   import net.wg.gui.lobby.vehicleCustomization.controls.magneticTool.IMagneticClickHandler;
    import net.wg.gui.lobby.vehicleCustomization.controls.magneticTool.MagneticToolController;
    import net.wg.gui.lobby.vehicleCustomization.controls.propertiesSheet.CustomizationPropertiesSheet;
    import net.wg.gui.lobby.vehicleCustomization.controls.seasonBar.CustomizaionSeasonsBar;

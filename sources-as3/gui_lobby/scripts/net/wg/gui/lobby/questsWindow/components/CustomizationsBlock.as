@@ -92,9 +92,10 @@ package net.wg.gui.lobby.questsWindow.components
       
       private function layoutRenderers() : void
       {
+         var _loc2_:int = 0;
          var _loc3_:CustomizationItemRenderer = null;
          var _loc1_:int = 0;
-         var _loc2_:int = 0;
+         _loc2_ = 0;
          for each(_loc3_ in this._renderers)
          {
             if(_loc1_ + RENDERERS_GAP_X + _loc3_.actualWidth > width)

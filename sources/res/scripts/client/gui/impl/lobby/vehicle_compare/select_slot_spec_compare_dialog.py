@@ -1,6 +1,6 @@
 import typing
 from BWUtil import AsyncReturn
-from async import async, await
+from wg_async import wg_async, wg_await
 from frameworks.wulf import ViewSettings
 from gui.impl.dialogs.dialogs import showSingleDialogWithResultData
 from gui.impl.gen import R
@@ -84,7 +84,7 @@ class SelectSlotSpecCompareDialog(FullScreenDialogView):
             self._onCancel()
 
 
-@async
+@wg_async
 def showDialog(vehicle, parent=None):
-    result = yield await(showSingleDialogWithResultData(layoutID=R.views.lobby.vehicle_compare.SelectSlotSpecCompareDialog(), parent=parent, wrappedViewClass=SelectSlotSpecCompareDialog, vehicle=vehicle))
+    result = yield wg_await(showSingleDialogWithResultData(layoutID=R.views.lobby.vehicle_compare.SelectSlotSpecCompareDialog(), parent=parent, wrappedViewClass=SelectSlotSpecCompareDialog, vehicle=vehicle))
     raise AsyncReturn(result)

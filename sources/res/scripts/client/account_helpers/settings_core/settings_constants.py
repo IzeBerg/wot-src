@@ -142,6 +142,7 @@ class GAME(CONST_CONTAINER):
 class TUTORIAL(CONST_CONTAINER):
     CUSTOMIZATION = 'customization'
     PERSONAL_CASE = 'personalCase'
+    PERSONAL_CASE_WITH_FREE_SKILLS = 'personalCaseWithFreeSkills'
     TECHNICAL_MAINTENANCE = 'technicalMaintenance'
     RESEARCH = 'research'
     RESEARCH_TREE = 'researchTree'
@@ -325,6 +326,8 @@ class GuiSettingsBehavior(CONST_CONTAINER):
     VEH_POST_PROGRESSION_UNLOCK_MSG_NEED_SHOW = 'vehPostProgressionUnlockMsgNeedShow'
     BIRTHDAY_CALENDAR_INTRO_SHOWED = 'birthdayCalendarIntroShowed'
     RESOURCE_WELL_INTRO_SHOWN = 'resourceWellIntroShown'
+    CREW_LAMP_WELCOME_SCREEN_SHOWN = 'crewLampWelcomeScreenShown'
+    COMP7_INTRO_SHOWN = 'isComp7IntroShown'
 
 
 class OnceOnlyHints(CONST_CONTAINER):
@@ -369,6 +372,8 @@ class OnceOnlyHints(CONST_CONTAINER):
     DOGTAG_HANGAR_HINT = 'DogTagHangarHint'
     DOGTAG_PROFILE_HINT = 'DogTagProfileHint'
     WOTPLUS_HANGAR_HINT = 'WotPlusHangarHint'
+    PERSONAL_RESERVES_HANGAR_HINT = 'PersonalReservesHangarHint'
+    PERSONAL_RESERVES_ACTIVATION_HINT = 'PersonalReservesActivationHint'
     WOTPLUS_PROFILE_HINT = 'WotPlusProfileHint'
     MODE_SELECTOR_WIDGETS_BTN_HINT = 'ModeSelectorWidgetsBtnHint'
     MAPS_TRAINING_NEWBIE_HINT = 'MapsTrainingNewbieHint'
@@ -499,12 +504,3 @@ class ScorePanelStorageKeys(CONST_CONTAINER):
     SHOW_HP_VALUES = 'showHPValues'
     SHOW_HP_DIFFERENCE = 'showHPDifference'
     ENABLE_TIER_GROUPING = 'enableTierGrouping'
-
-
-class WTEventStorageKeys(CONST_CONTAINER):
-    WT_INTRO_SHOWN = 'wtIntroShown'
-
-
-class WTLootBoxesViewedKeys(CONST_CONTAINER):
-    HUNTER_LAST_VIEWED = 'hunterLastViewed'
-    BOSS_LAST_VIEWED = 'bossLastViewed'

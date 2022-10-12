@@ -1,4 +1,4 @@
-from gui.Scaleform.daapi.view.battle.classic.base_stats import StatsBase
+from gui.Scaleform.daapi.view.battle.shared.base_stats import StatsBase
 
 class PlayersPanelMeta(StatsBase):
 

@@ -1,6 +1,6 @@
 import logging, math, random, weakref
 from collections import namedtuple
-import BigWorld, Math, Health, WoT, AreaDestructibles, BattleReplay, DestructiblesCache, TriggersManager, constants, physics_shared
+import typing, BigWorld, Math, Health, WoT, AreaDestructibles, BattleReplay, DestructiblesCache, TriggersManager, constants, physics_shared
 from account_helpers.settings_core.settings_constants import GAME
 from TriggersManager import TRIGGER_TYPE
 from VehicleEffects import DamageFromShotDecoder
@@ -31,16 +31,13 @@ from vehicle_systems.model_assembler import collisionIdxToTrackPairIdx
 from vehicle_systems.tankStructure import TankPartNames, TankPartIndexes, TankSoundObjectsIndexes
 from vehicle_systems.appearance_cache import VehicleAppearanceCacheInfo
 from shared_utils.vehicle_utils import createWheelFilters
-from cgf_script.component_meta_class import CGFComponent
 import GenericComponents, Projectiles, CGF
+if typing.TYPE_CHECKING:
+    import OwnVehicle
 _logger = logging.getLogger(__name__)
 LOW_ENERGY_COLLISION_D = 0.3
 HIGH_ENERGY_COLLISION_D = 0.6
 _g_respawnQueue = dict()
-
-class SpawnComponent(CGFComponent):
-    pass
-
 
 class _Vector4Provider(object):
     __slots__ = ('_v', )
@@ -135,6 +132,10 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
     def maxHealth(self):
         return self.publicInfo.maxHealth
 
+    @property
+    def battleModifiers(self):
+        return self.guiSessionProvider.arenaVisitor.getArenaModifiers()
+
     def getBounds(self, partIdx):
         if self.appearance is not None:
             return self.appearance.getBounds(partIdx)
@@ -165,6 +166,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         self.__speedInfo = _VehicleSpeedProvider()
         self.respawnCompactDescr = None
         self.respawnOutfitCompactDescr = None
+        self.__waitingForAppearanceReload = False
         self.__cachedStunInfo = StunInfo(0.0, 0.0, 0.0, 0.0)
         self.__burnoutStarted = False
         self.__handbrakeFired = False
@@ -210,13 +212,22 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
             from InBattleUpgrades import onBattleRoyalePrerequisites
             if onBattleRoyalePrerequisites(self, oldTypeDescriptor):
                 forceReloading = True
-        if forceReloading:
-            oldAppearance = self.__appearanceCache.removeAppearance(self.id)
-            if oldAppearance is not None:
-                oldAppearance.destroy()
+        strCD = self.typeDescriptor.makeCompactDescr()
         newInfo = VehicleAppearanceCacheInfo(self.typeDescriptor, self.health, self.isCrewActive, self.isTurretDetached, outfitDescr)
+        ctrl = self.guiSessionProvider.dynamic.appearanceCache
+        if ctrl is not None:
+            if forceReloading:
+                oldStrCD = oldTypeDescriptor.makeCompactDescr() if oldTypeDescriptor is not None else None
+                appearance = ctrl.reloadAppearance(self.id, newInfo, self.__onAppearanceReady, strCD, oldStrCD)
+                if appearance is not None:
+                    self.appearance = appearance
+                else:
+                    self.__waitingForAppearanceReload = True
+            else:
+                self.appearance = ctrl.getAppearance(self.id, newInfo, self.__onAppearanceReady, strCD)
+        else:
+            _logger.error('Failed to load vehicle appearance. Missing AppearanceCache controller. vId=%s; vInfo=%s; strCD=%s', self.id, newInfo._asdict(), strCD)
         self.respawnCompactDescr = None
-        self.appearance = self.__appearanceCache.getAppearance(self.id, newInfo, self.__onAppearanceReady)
         return
 
     def getDescr(self, respawnCompactDescr):
@@ -240,8 +251,6 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
             _g_respawnQueue.pop(vID, None)
             vehicle.onLeaveWorld()
             vehicle.onEnterWorld()
-            if vehicle.appearance.findComponentByType(SpawnComponent) is None:
-                vehicle.appearance.createComponent(SpawnComponent)
         else:
             _logger.debug('Delayed respawn %d', vID)
             _g_respawnQueue[vID] = [compactDescr, outfitCompactDescr]
@@ -258,6 +267,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
     def __onAppearanceReady(self, appearance):
         _logger.info('__onAppearanceReady(%d)', self.id)
         self.appearance = appearance
+        self.__waitingForAppearanceReload = False
         self.__isEnteringWorld = True
         self.__prevDamageStickers = frozenset()
         self.__prevPublicStateModifiers = frozenset()
@@ -273,9 +283,6 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         self.__prevHealth = self.maxHealth
         self.resetProperties()
         self.onAppearanceReady()
-        for component in self.dynamicComponents.values():
-            if hasattr(component, 'onAppearanceReady'):
-                component.onAppearanceReady()
 
     def __onVehicleInfoAdded(self, vehID):
         if self.id != vehID:
@@ -288,7 +295,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
 
     def onLeaveWorld(self):
         _logger.debug('onLeaveWorld %d', self.id)
-        self.__appearanceCache.stopLoading(self.id)
+        self.__appearanceCache.stopLoading(self.id, self.typeDescriptor.makeCompactDescr())
         self.__stopExtras()
         BigWorld.player().vehicle_onLeaveWorld(self)
 
@@ -634,6 +641,9 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
                 self.onSiegeStateUpdated(self.siegeState, 0.0)
             return
 
+    def set_publicInfo(self, _):
+        self.refreshNationalVoice()
+
     def set_vehPerks(self, _=None):
         vehPerks = self.vehPerks
         ctrl = self.guiSessionProvider.shared.prebattleSetups
@@ -799,6 +809,13 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
                 _logger.error('Wrong usage! Should be called only on vehicle with valid typeDescriptor and siege mode')
             return
 
+    def getSiegeSwitchTimeLeft(self):
+        ownVehicle = self.dynamicComponents.get('ownVehicle')
+        if ownVehicle is None:
+            return 0.0
+        else:
+            return ownVehicle.getSiegeStateTimeLeft()
+
     def onActiveGunChanged(self, activeGun, switchTimes):
         if not self.isStarted:
             return
@@ -807,7 +824,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
                 if self.__activeGunIndex == activeGun:
                     return
                 self.__activeGunIndex = activeGun
-                swElapsedTime = (switchTimes[2] - switchTimes[1]) / 10.0
+                swElapsedTime = (switchTimes[2] - switchTimes[1]) * constants.RECHARGE_TIME_MULTIPLIER
                 afterShotDelay = self.typeDescriptor.gun.dualGun.afterShotDelay
                 leftDelayTime = max(afterShotDelay - swElapsedTime, 0.0)
                 ctrl = self.guiSessionProvider.shared.feedback
@@ -863,10 +880,13 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
 
     def startVisual(self):
         _logger.debug('startVisual(%d)', self.id)
-        if not self.appearance.isConstructed:
-            _logger.warning('Vehicle appearance is not constructed')
+        if self.__waitingForAppearanceReload:
+            _logger.info('Waiting for appearance reload: %d', self.id)
             return
         else:
+            if not self.appearance.isConstructed:
+                _logger.warning('Vehicle appearance is not constructed: %d', self.id)
+                return
             if self.isStarted:
                 raise SoftException('Vehicle is already started')
             avatar = BigWorld.player()
@@ -1147,10 +1167,6 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
     def onDynamicComponentCreated(self, component):
         LOG_DEBUG_DEV('Component created', component)
         super(Vehicle, self).onDynamicComponentCreated(component)
-
-    def onDynamicComponentDestroyed(self, component):
-        LOG_DEBUG_DEV('Component destroyed', component)
-        super(Vehicle, self).onDynamicComponentDestroyed(component)
 
     @property
     def label(self):

@@ -6,7 +6,6 @@ from AvatarInputHandler import gun_marker_ctrl, aih_global_binding
 from AvatarInputHandler.spg_marker_helpers.spg_marker_helpers import SPGShotResultEnum
 from PlayerEvents import g_playerEvents
 from ReplayEvents import g_replayEvents
-from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS
 from account_helpers.settings_core.settings_constants import GRAPHICS, AIM, GAME, SPGAim
 from aih_constants import CHARGE_MARKER_STATE, CTRL_MODE_NAME
 from constants import VEHICLE_SIEGE_STATE as _SIEGE_STATE, DUALGUN_CHARGER_STATUS, SERVER_TICK_LENGTH
@@ -166,10 +165,7 @@ class CrosshairPlugin(IPlugin):
 
     def _isHideAmmo(self):
         arenaGuiTypeVisitor = self.sessionProvider.arenaVisitor.gui
-        isAmmoInfinite = ARENA_BONUS_TYPE_CAPS.checkAny(BigWorld.player().arena.bonusType, ARENA_BONUS_TYPE_CAPS.INFINITE_AMMO)
-        isBootcamp = arenaGuiTypeVisitor.isBootcampBattle()
-        isMapsTraining = arenaGuiTypeVisitor.isMapsTraining()
-        return isAmmoInfinite or isBootcamp or isMapsTraining
+        return arenaGuiTypeVisitor.isBootcampBattle() or arenaGuiTypeVisitor.isMapsTraining()
 
 
 class CorePlugin(CrosshairPlugin):
@@ -697,6 +693,8 @@ class VehicleStatePlugin(CrosshairPlugin):
         elif state == VEHICLE_VIEW_STATE.SWITCHING:
             self.__maxHealth = 0
             self.__healthPercent = 0
+        elif state == VEHICLE_VIEW_STATE.GUN_RELOAD_BOOST:
+            self.__onGunReloadBoost()
 
     def __onPostMortemSwitched(self, noRespawnPossible, respawnAvailable):
         self.__updateVehicleInfo()
@@ -704,6 +702,9 @@ class VehicleStatePlugin(CrosshairPlugin):
     def __onVehicleFeedbackReceived(self, eventID, _, value):
         if eventID == FEEDBACK_EVENT_ID.VEHICLE_HAS_AMMO and self._parentObj.getViewID() == CROSSHAIR_VIEW_ID.POSTMORTEM:
             self._parentObj.setHasAmmo(value)
+
+    def __onGunReloadBoost(self):
+        self._parentObj.as_blinkReloadTimeS(CROSSHAIR_CONSTANTS.CROSSHAIR_BLINK_GREEN_HORIZONTAL)
 
 
 class _DistancePlugin(CrosshairPlugin):

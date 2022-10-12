@@ -91,6 +91,11 @@ package net.wg.gui.lobby.techtree.data.vo
          }
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function toString() : String
       {
          return "[NTDisplayInfo: row = " + this._row + ", column = " + this._column + ", position = " + this._position + ", lines = " + this._lines + " ]";
@@ -114,11 +119,6 @@ package net.wg.gui.lobby.techtree.data.vo
       public function get lines() : Array
       {
          return this._lines;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

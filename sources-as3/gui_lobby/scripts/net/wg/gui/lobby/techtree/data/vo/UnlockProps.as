@@ -86,6 +86,11 @@ package net.wg.gui.lobby.techtree.data.vo
          return this._required != null && this._required.indexOf(param1) > -1;
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function toString() : String
       {
          return "[UnlockProps: parentID = " + this._parentID + ", unlockIdx = " + this.unlockIdx + ", xpCost = " + this._xpCost + ", required = " + this._required + "]";
@@ -104,11 +109,6 @@ package net.wg.gui.lobby.techtree.data.vo
       public function get xpCost() : Number
       {
          return this._xpCost;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

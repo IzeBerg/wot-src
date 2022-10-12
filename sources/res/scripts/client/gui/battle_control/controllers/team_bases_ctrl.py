@@ -13,7 +13,7 @@ _BASE_CAPTURE_SOUND_NAME_ALLY = 'base_capture_1'
 _AVAILABLE_TEAMS_NUMBERS = range(1, TEAMS_IN_ARENA.MAX_TEAMS + 1)
 _UPDATE_POINTS_DELAY = 1.0
 _ENEMY_OFFSET_DISABLED_BY_GAMEPLAY = (
- 'assault', 'assault2', 'domination', 'domination30x30', 'epic')
+ 'assault', 'assault2', 'domination', 'domination30x30', 'epic', 'comp7')
 
 def makeClientTeamBaseID(team, baseID):
     if baseID is None:

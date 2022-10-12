@@ -27,10 +27,5 @@ package net.wg.gui.lobby.techtree.constants
       {
          return param1 == NATION_TREE || param1 == RESEARCH_ROOT || param1 == TOP_VEHICLE || param1 == NEXT_VEHICLE || param1 == BLUEPRINT_TREE;
       }
-      
-      public static function isModuleType(param1:uint) : Boolean
-      {
-         return param1 == RESEARCH_ITEM;
-      }
    }
 }

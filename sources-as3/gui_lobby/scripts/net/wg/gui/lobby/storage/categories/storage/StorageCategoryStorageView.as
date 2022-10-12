@@ -10,6 +10,7 @@ package net.wg.gui.lobby.storage.categories.storage
    import net.wg.gui.components.controls.tabs.OrangeTabsMenuVO;
    import net.wg.gui.events.ViewStackEvent;
    import net.wg.gui.lobby.storage.categories.ICategory;
+   import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.base.meta.IStorageCategoryStorageViewMeta;
    import net.wg.infrastructure.base.meta.impl.StorageCategoryStorageViewMeta;
    import net.wg.infrastructure.interfaces.IDAAPIModule;
@@ -28,9 +29,9 @@ package net.wg.gui.lobby.storage.categories.storage
       
       public static var COUNTER_CONTAINER_ID:String = "StorageCategoryStorageViewContainer";
       
-      private static const SIDE_BAR_COUNTER:String = "sideBarCounter";
-      
       private static var _counterProps:ICounterProps = new CounterProps(-30,5);
+      
+      private static const SIDE_BAR_COUNTER:String = "sideBarCounter";
        
       
       public var title:TextField;
@@ -70,6 +71,7 @@ package net.wg.gui.lobby.storage.categories.storage
          this._utils = null;
          this._counterManager.disposeCountersForContainer(COUNTER_CONTAINER_ID);
          this._counterManager = null;
+         this.content.removeEventListener(ViewStackEvent.VIEW_CHANGED,this.onContentViewChangedHandler);
          this.content.removeEventListener(ViewStackEvent.NEED_UPDATE,this.onContentNeedUpdateHandler);
          this.content.dispose();
          this.content = null;
@@ -86,6 +88,7 @@ package net.wg.gui.lobby.storage.categories.storage
          super.initialize();
          this.tabButtonBar.addEventListener(IndexEvent.INDEX_CHANGE,this.onTabButtonBarIndexChangeHandler);
          this.content.addEventListener(ViewStackEvent.NEED_UPDATE,this.onContentNeedUpdateHandler);
+         this.content.addEventListener(ViewStackEvent.VIEW_CHANGED,this.onContentViewChangedHandler);
       }
       
       override protected function configUI() : void
@@ -101,10 +104,17 @@ package net.wg.gui.lobby.storage.categories.storage
       {
          var _loc1_:ICategory = null;
          super.draw();
-         if(this.content.currentView && isInvalid(InvalidationType.SIZE))
+         if(this.content.currentView)
          {
-            _loc1_ = ICategory(this.content.currentView);
-            this.title.x = this.tabButtonBar.x = width - _loc1_.contentWidth >> 1;
+            if(isInvalid(InvalidationType.SIZE))
+            {
+               _loc1_ = ICategory(this.content.currentView);
+               this.title.x = this.tabButtonBar.x = width - _loc1_.contentWidth >> 1;
+            }
+            if(isInvalid(InvalidationType.LAYOUT))
+            {
+               UIComponentEx(this.content.currentView).invalidate(InvalidationType.LAYOUT);
+            }
          }
          if(isInvalid(SIDE_BAR_COUNTER))
          {
@@ -115,6 +125,12 @@ package net.wg.gui.lobby.storage.categories.storage
       override protected function setTabsData(param1:DataProvider) : void
       {
          this.tabButtonBar.dataProvider = param1;
+      }
+      
+      public function as_setTabCounter(param1:int, param2:int) : void
+      {
+         this._tabCounters[param1] = param2;
+         invalidate(SIDE_BAR_COUNTER);
       }
       
       public function canShowAutomatically() : Boolean
@@ -145,32 +161,6 @@ package net.wg.gui.lobby.storage.categories.storage
       {
       }
       
-      public function get contentWidth() : int
-      {
-         return Boolean(this.content.currentView) ? int(ICategory(this.content.currentView).contentWidth) : int(0);
-      }
-      
-      private function onTabButtonBarIndexChangeHandler(param1:IndexEvent) : void
-      {
-         var _loc2_:OrangeTabsMenuVO = OrangeTabsMenuVO(param1.data);
-         onOpenTabS(_loc2_.id);
-      }
-      
-      private function onContentNeedUpdateHandler(param1:ViewStackEvent) : void
-      {
-         if(this._hitArea)
-         {
-            ICategory(param1.view).setHitArea(this._hitArea);
-         }
-         registerFlashComponentS(IDAAPIModule(param1.view),param1.viewId);
-      }
-      
-      public function as_setTabCounter(param1:int, param2:int) : void
-      {
-         this._tabCounters[param1] = param2;
-         invalidate(SIDE_BAR_COUNTER);
-      }
-      
       private function updateCounters() : void
       {
          var _loc1_:int = 0;
@@ -188,6 +178,35 @@ package net.wg.gui.lobby.storage.categories.storage
                this._counterManager.setCounter(_loc2_,String(_loc1_),COUNTER_CONTAINER_ID,_counterProps);
             }
          }
+      }
+      
+      public function get contentWidth() : int
+      {
+         return Boolean(this.content.currentView) ? int(ICategory(this.content.currentView).contentWidth) : int(0);
+      }
+      
+      private function onContentViewChangedHandler(param1:ViewStackEvent) : void
+      {
+         var _loc2_:UIComponentEx = param1.view as UIComponentEx;
+         if(_loc2_)
+         {
+            _loc2_.invalidateLayout();
+         }
+      }
+      
+      private function onTabButtonBarIndexChangeHandler(param1:IndexEvent) : void
+      {
+         var _loc2_:OrangeTabsMenuVO = OrangeTabsMenuVO(param1.data);
+         onOpenTabS(_loc2_.id);
+      }
+      
+      private function onContentNeedUpdateHandler(param1:ViewStackEvent) : void
+      {
+         if(this._hitArea)
+         {
+            ICategory(param1.view).setHitArea(this._hitArea);
+         }
+         registerFlashComponentS(IDAAPIModule(param1.view),param1.viewId);
       }
    }
 }

@@ -162,5 +162,9 @@ package net.wg.gui.components.crosshairPanel
       {
          return this._disposed;
       }
+      
+      public function blinkReloadTime(param1:int) : void
+      {
+      }
    }
 }

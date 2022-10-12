@@ -15,6 +15,7 @@ from skeletons.account_helpers.settings_core import ISettingsCore
 from account_helpers.settings_core.settings_constants import SOUND
 _logger = logging.getLogger(__name__)
 _logger.addHandler(logging.NullHandler())
+_logger.setLevel(logging.DEBUG)
 _BACK_OFF_MIN_DELAY = 1
 _BACK_OFF_MAX_DELAY = CLIENT_INACTIVITY_TIMEOUT
 _BACK_OFF_MODIFIER = 1
@@ -50,12 +51,15 @@ class VOIPManager(VOIPHandler):
         self.__captureDevices = []
         self.__currentCaptureDevice = ''
         self.__channelUsers = {}
-        self.onCaptureDevicesUpdated = Event.Event()
-        self.onPlayerSpeaking = Event.Event()
-        self.onInitialized = Event.Event()
-        self.onFailedToConnect = Event.Event()
-        self.onJoinedChannel = Event.Event()
-        self.onLeftChannel = Event.Event()
+        self.__eventManager = em = Event.EventManager()
+        self.onCaptureDevicesUpdated = Event.Event(em)
+        self.onPlayerSpeaking = Event.Event(em)
+        self.onInitialized = Event.Event(em)
+        self.onFailedToConnect = Event.Event(em)
+        self.onJoinedChannel = Event.Event(em)
+        self.onLeftChannel = Event.Event(em)
+        self.onChannelAvailable = Event.Event(em)
+        self.onChannelLost = Event.Event(em)
         self.__fsm.onStateChanged += self.__onStateChanged
         return
 
@@ -74,6 +78,7 @@ class VOIPManager(VOIPHandler):
     def destroy(self):
         self.__fsm.onStateChanged -= self.__onStateChanged
         self.__cancelReloginCallback()
+        self.__eventManager.clear()
         BigWorld.VOIP.finalise()
         _logger.info('Destroy')
 
@@ -287,10 +292,16 @@ class VOIPManager(VOIPHandler):
     def __evaluateAutoJoinChannel(self, newChannel):
         if newChannel == self.__testDomain:
             return
-        _, channelID = self.settingsCore.getSetting(SOUND.VOIP_ENABLE_CHANNEL)
+        wasEnabled, channelID = self.settingsCore.getSetting(SOUND.VOIP_ENABLE_CHANNEL)
         newChannelID = hash(newChannel)
         if channelID != newChannelID:
-            self.enableCurrentChannel(self.__isAutoJoinChannel(), autoEnableVOIP=False)
+            if self.__isChannelRejoin:
+                isEnabled = wasEnabled
+            else:
+                isEnabled = self.__isAutoJoinChannel()
+            self.enableCurrentChannel(isEnabled=isEnabled, autoEnableVOIP=False)
+        else:
+            _logger.warn('__evaluateAutoJoinChannel: cant use newChannel: %r. id: %r, newId: %r', newChannel, channelID, newChannelID)
 
     def __joinChannel(self, channel, password):
         _logger.info("JoinChannel '%s'", channel)
@@ -467,6 +478,7 @@ class VOIPManager(VOIPHandler):
     def onVoipDestroyed(self, data):
         if int(data[VOIPCommon.KEY_RETURN_CODE]) != VOIPCommon.CODE_SUCCESS:
             _logger.error('Voip is not destroyed: %r', data)
+        _logger.debug('onVoipDestroyed')
 
     def onCaptureDevicesArrived(self, data):
         if int(data[VOIPCommon.KEY_RETURN_CODE]) != VOIPCommon.CODE_SUCCESS:
@@ -539,6 +551,7 @@ class VOIPManager(VOIPHandler):
         if int(data[VOIPCommon.KEY_RETURN_CODE]) != VOIPCommon.CODE_SUCCESS:
             _logger.error('Session is not added: %r', data)
             return
+        _logger.debug('Session added: %r', data)
         currentChannel = self.__currentChannel = data[VOIPCommon.KEY_URI]
         self.__setVolume()
         self.__fsm.update(self)
@@ -549,6 +562,7 @@ class VOIPManager(VOIPHandler):
         if int(data[VOIPCommon.KEY_RETURN_CODE]) != VOIPCommon.CODE_SUCCESS:
             _logger.error('Session is not removed: %r', data)
             return
+        _logger.debug('Session removed: %r', data)
         for dbid in self.__channelUsers.iterkeys():
             self.onPlayerSpeaking(dbid, False)
 
@@ -616,20 +630,24 @@ class VOIPManager(VOIPHandler):
     def __isAutoJoinChannel():
         if hasattr(BigWorld.player(), 'arena'):
             arena = BigWorld.player().arena
-            return not (arena is not None and arena.guiType in (ARENA_GUI_TYPE.RANDOM,
+            return not (arena is not None and arena.guiType in (
+             ARENA_GUI_TYPE.RANDOM,
              ARENA_GUI_TYPE.EPIC_RANDOM,
-             ARENA_GUI_TYPE.EPIC_BATTLE))
+             ARENA_GUI_TYPE.EPIC_BATTLE,
+             ARENA_GUI_TYPE.COMP7))
         return True
 
     def __me_onChannelAvailable(self, uri, pwd, isRejoin):
         self.__isChannelRejoin = isRejoin
         if not self.__inTesting:
             self.__setAvailableChannel(uri, pwd)
+            self.onChannelAvailable()
 
     def __me_onChannelLost(self):
         if not self.__inTesting:
             self.__leaveChannel()
             self.settingsCore.applySetting(SOUND.VOIP_ENABLE_CHANNEL, (False, 0))
+            self.onChannelLost()
 
     def __me_onCredentialReceived(self, name, pwd):
         _logger.debug('OnUserCredentials: %s', name)

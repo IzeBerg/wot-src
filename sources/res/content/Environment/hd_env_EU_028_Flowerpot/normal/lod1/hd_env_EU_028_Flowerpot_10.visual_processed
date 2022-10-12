@@ -25,6 +25,42 @@
 					<row3>0.000000 0.000000 0.000000</row3>
 				</transform>
 			</node>
+			<node>
+				<identifier>lod1</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>d0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>n0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>n1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
 		</node>
 	</node>
 	<renderSet>
@@ -32,6 +68,7 @@
 		<node>Scene Root</node>
 		<geometry>
 			<vertices>vertices</vertices>
+			<stream>colour</stream>
 			<primitive>indices</primitive>
 			<primitiveGroup>
 				0
@@ -58,6 +95,40 @@
 			<primitiveGroup>
 				1
 				<material>
+					<identifier>n_stone1</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>73</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						alphaReference
+						<Int>64</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_EU_028_Flowerpot/hd_env_EU_028_Flowerpot_Flowers_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Environment/hd_env_EU_028_Flowerpot/hd_env_EU_028_Flowerpot_Flowers_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Environment/hd_env_EU_028_Flowerpot/hd_env_EU_028_Flowerpot_Flowers_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.077917 0.406176 0.003246</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
 					<identifier>n_stone0</identifier>
 					<fx>shaders/std_effects/PBS_ext.fx</fx>
 					<property>
@@ -78,7 +149,7 @@
 				<groupOrigin>-0.000589 0.158885 -0.000438</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
-				2
+				3
 				<material>
 					<identifier>s_wall_0</identifier>
 					<collisionFlags>131</collisionFlags>
@@ -89,10 +160,10 @@
 		</geometry>
 	</renderSet>
 	<boundingBox>
-		<min>-0.237495 -0.051357 -0.241811</min>
-		<max>0.411941 2.189220 0.184443</max>
+		<min>-0.557431 -0.051357 -0.552205</min>
+		<max>0.411941 2.189220 0.558696</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<geometrySize>6592</geometrySize>
+	<geometrySize>15756</geometrySize>
 	<minUVDensity>0.086299</minUVDensity>
 </root>

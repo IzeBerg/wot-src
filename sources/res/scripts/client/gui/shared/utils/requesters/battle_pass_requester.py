@@ -1,5 +1,5 @@
 import BigWorld
-from adisp import async
+from adisp import adisp_async
 from battle_pass_common import BATTLE_PASS_PDATA_KEY
 from gui.shared.utils.requesters.abstract import AbstractSyncDataRequester
 from skeletons.gui.shared.utils.requesters import IBattlePassRequester
@@ -36,6 +36,6 @@ class BattlePassRequester(AbstractSyncDataRequester, IBattlePassRequester):
     def _preprocessValidData(self, data):
         return dict(data.get(BATTLE_PASS_PDATA_KEY, {}))
 
-    @async
+    @adisp_async
     def _requestCache(self, callback):
         BigWorld.player().battlePass.getCache(lambda resID, value: self._response(resID, value, callback))

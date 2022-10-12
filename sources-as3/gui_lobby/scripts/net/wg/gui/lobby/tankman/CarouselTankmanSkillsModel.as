@@ -28,6 +28,10 @@ package net.wg.gui.lobby.tankman
       
       public var skillsCountForLearn:int = 0;
       
+      public var selectedTab:String = "";
+      
+      public var isFreeSkill:Boolean = false;
+      
       public var enabled:Boolean = true;
       
       public var isPermanent:Boolean;

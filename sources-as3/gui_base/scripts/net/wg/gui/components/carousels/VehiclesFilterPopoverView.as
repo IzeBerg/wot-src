@@ -163,6 +163,7 @@ package net.wg.gui.components.carousels
       private function onContentResizeHandler(param1:Event) : void
       {
          invalidateSize();
+         validateNow();
       }
       
       private function onSearchInputRollOutHandler(param1:MouseEvent) : void

@@ -116,6 +116,7 @@ package net.wg.gui.bootcamp.messageWindow.views
             gotoAndPlay(_loc1_);
             this.animContainerTitle.gotoAndPlay(_loc1_);
             this.animContainerDescription.gotoAndPlay(_loc1_);
+            this.animContainerDescription.maxLinesNumber = 2;
             this.animContainerBtnContinue.gotoAndPlay(_loc1_);
          }
          if(this._messageData != null && isInvalid(InvalidationType.DATA))
@@ -232,6 +233,7 @@ package net.wg.gui.bootcamp.messageWindow.views
       protected function setDescription() : void
       {
          this.animContainerDescription.text = this._messageData.message;
+         this.animContainerDescription.maxLinesNumber = 2;
       }
       
       protected function updateContent() : void

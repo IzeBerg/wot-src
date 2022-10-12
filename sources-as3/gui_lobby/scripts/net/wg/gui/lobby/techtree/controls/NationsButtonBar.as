@@ -15,9 +15,9 @@ package net.wg.gui.lobby.techtree.controls
       
       public static const BOTTOM_ALIGN:String = "bottom";
       
-      private static const RENDERERS_SCALE_DEFAULT:Number = 1;
+      private static const RENDERERS_SCALE_DEFAULT:uint = 1;
       
-      private static const SPACING_DEFAULT:Number = 21;
+      private static const SPACING_DEFAULT:uint = 21;
        
       
       private var _tabVAlign:String;
@@ -28,6 +28,11 @@ package net.wg.gui.lobby.techtree.controls
       {
          super();
          mouseEnabled = false;
+      }
+      
+      private static function measureOriginalRendererHeight(param1:NationButton) : Number
+      {
+         return param1.contentSize.height;
       }
       
       override public function toString() : String
@@ -62,7 +67,6 @@ package net.wg.gui.lobby.techtree.controls
          var _loc1_:uint = _renderers.length;
          if(_loc1_ > 0 && _dataProvider.length >= _loc1_)
          {
-            _loc2_ = NaN;
             _loc3_ = this.measureOriginalContentHeight();
             if(height < _loc3_)
             {
@@ -90,7 +94,7 @@ package net.wg.gui.lobby.techtree.controls
       
       public function measureOriginalContentHeight() : Number
       {
-         return this.measureContentHeight(this.measureOriginalRendererHeight,SPACING_DEFAULT);
+         return this.measureContentHeight(measureOriginalRendererHeight,SPACING_DEFAULT);
       }
       
       public function measureScaledContentHeight() : Number
@@ -119,11 +123,6 @@ package net.wg.gui.lobby.techtree.controls
             param1 += _loc3_ + (_spacing | 0);
             _loc2_.x = 0.5 * (width - _loc2_.contentSize.width);
          }
-      }
-      
-      private function measureOriginalRendererHeight(param1:NationButton) : Number
-      {
-         return param1.contentSize.height;
       }
       
       private function measureScaledRendererHeight(param1:NationButton) : Number

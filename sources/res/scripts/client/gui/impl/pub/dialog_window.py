@@ -1,6 +1,6 @@
 import logging
 from collections import namedtuple
-from async import async, await, AsyncEvent, AsyncReturn, AsyncScope, BrokenPromiseError
+from wg_async import wg_async, wg_await, AsyncEvent, AsyncReturn, AsyncScope, BrokenPromiseError
 from frameworks.wulf import ViewFlags, WindowSettings, ViewSettings
 from frameworks.wulf import WindowFlags, Window
 from gui.shared.view_helpers.blur_manager import CachedBlur
@@ -86,10 +86,10 @@ class DialogWindow(Window):
         self.__blur = CachedBlur(enabled=enableBlur, ownLayer=self.layer, blurAnimRepeatCount=4)
         return
 
-    @async
+    @wg_async
     def wait(self):
         try:
-            yield await(self.__event.wait())
+            yield wg_await(self.__event.wait())
         except BrokenPromiseError:
             _logger.debug('%s has been destroyed without user decision', self)
 
@@ -197,10 +197,10 @@ class DialogViewMixin(object):
         self.__event = AsyncEvent(scope=self.__scope)
         self.__result = DialogButtons.CANCEL
 
-    @async
+    @wg_async
     def wait(self):
         try:
-            yield await(self.__event.wait())
+            yield wg_await(self.__event.wait())
         except BrokenPromiseError:
             _logger.debug('%s has been destroyed without user decision', self)
 

@@ -1,5 +1,5 @@
 import logging, typing, BigWorld
-from adisp import process
+from adisp import adisp_process
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.lobby.hangar.BrowserView import makeBrowserParams
 from gui.Scaleform.daapi.view.meta.BrowserScreenMeta import BrowserScreenMeta
@@ -7,7 +7,6 @@ from gui.shared import EVENT_BUS_SCOPE, events
 from gui.shared.view_helpers.blur_manager import CachedBlur
 from gui.sounds.ambients import HangarOverlayEnv
 from helpers import dependency
-from skeletons.gui.app_loader import IAppLoader
 from skeletons.gui.game_control import IBrowserController
 if typing.TYPE_CHECKING:
     from gui.Scaleform.framework.managers import ContainerManager
@@ -17,7 +16,6 @@ BROWSER_LOAD_CALLBACK_DELAY = 0.01
 
 class WebView(BrowserScreenMeta):
     __browserCtrl = dependency.descriptor(IBrowserController)
-    appLoader = dependency.descriptor(IAppLoader)
 
     def __init__(self, ctx=None):
         super(WebView, self).__init__(ctx)
@@ -30,17 +28,11 @@ class WebView(BrowserScreenMeta):
         self._forcedSkipEscape = ctx.get('forcedSkipEscape', False) if ctx else False
         self._browserParams = (ctx or {}).get('browserParams', makeBrowserParams())
         self.__callbackOnLoad = ctx.get('callbackOnLoad', None) if ctx else None
-        self.__callbackOnClose = ctx.get('callbackOnClose', None) if ctx else None
         return
 
     @property
     def webHandlersReplacements(self):
         return
-
-    def destroy(self):
-        tooltipManager = self.appLoader.getApp().getToolTipMgr()
-        tooltipManager.hide()
-        super(WebView, self).destroy()
 
     def onEscapePress(self):
         if not self._browserParams.get('isHidden'):
@@ -89,8 +81,6 @@ class WebView(BrowserScreenMeta):
         self.removeListener(events.HideWindowEvent.HIDE_OVERLAY_BROWSER_VIEW, self.__handleBrowserClose, scope=EVENT_BUS_SCOPE.LOBBY)
         if self.__browserId:
             self.__browserCtrl.delBrowser(self.__browserId)
-        if callable(self.__callbackOnClose):
-            self.__callbackOnClose()
 
     def _refresh(self):
         self.__browser.refresh()
@@ -98,7 +88,7 @@ class WebView(BrowserScreenMeta):
     def _onError(self):
         self.__updateSkipEscape(True)
 
-    @process
+    @adisp_process
     def __loadBrowser(self, width, height):
         url = self._getUrl()
         if url is not None:

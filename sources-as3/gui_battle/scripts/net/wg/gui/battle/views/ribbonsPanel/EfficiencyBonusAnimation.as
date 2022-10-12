@@ -84,10 +84,10 @@ package net.wg.gui.battle.views.ribbonsPanel
          if(visible)
          {
             this.roleImage.visible = !this._isExtendedAnim;
-            this.roleImage.imageName = BATTLEATLAS.getRoleIcon(param2);
+            this.roleImage.imageName = BATTLEATLAS.getRole32x32Icon(param2);
             if(this._isExtendedAnim)
             {
-               this.roleImageFx.imageName = BATTLEATLAS.getRoleIcon(param2);
+               this.roleImageFx.imageName = BATTLEATLAS.getRole32x32Icon(param2);
             }
          }
       }

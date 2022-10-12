@@ -34,14 +34,14 @@ package net.wg.gui.lobby.techtree.helpers
       
       private var _parentIDs:Object;
       
-      private var _zeroSprite:Sprite = null;
+      private var _zeroSprite:Sprite;
       
       public function NTGraphics()
       {
          this._parentIDs = {};
+         this._zeroSprite = new Sprite();
          super();
          this._tweenWrapper = new TweenWrapper(this);
-         this._zeroSprite = new Sprite();
          this._zeroSprite.visible = false;
          var _loc1_:Graphics = this._zeroSprite.graphics;
          _loc1_.beginFill(4095,0);
@@ -90,6 +90,15 @@ package net.wg.gui.lobby.techtree.helpers
          var _loc3_:Sprite = super.getLinesAndArrowsSprite(param1,param2);
          swapChildren(_loc3_,this.mainLine);
          return _loc3_;
+      }
+      
+      override protected function getArrowAlphaByThickness(param1:int) : Number
+      {
+         if(param1 == UNLOCKED_LINE_THICKNESS)
+         {
+            return ARROW_OPENED_ALPHA;
+         }
+         return ARROW_LOCKED_ALPHA;
       }
       
       public function clearCache() : void
@@ -207,24 +216,6 @@ package net.wg.gui.lobby.techtree.helpers
          this.drawTopLinesParts(param1,_loc18_,_loc7_,_loc20_,_loc8_);
       }
       
-      private function getArrowAlpha(param1:uint, param2:uint) : Number
-      {
-         if(param1 == ACTION_LINE_COLOR)
-         {
-            return 1;
-         }
-         return this.getArrowAlphaByThickness(param2);
-      }
-      
-      override protected function getArrowAlphaByThickness(param1:int) : Number
-      {
-         if(param1 == UNLOCKED_LINE_THICKNESS)
-         {
-            return ARROW_OPENED_ALPHA;
-         }
-         return ARROW_LOCKED_ALPHA;
-      }
-      
       public function hide() : void
       {
          if(this._tween != null)
@@ -242,6 +233,15 @@ package net.wg.gui.lobby.techtree.helpers
             "paused":false,
             "ease":Strong.easeIn
          });
+      }
+      
+      private function getArrowAlpha(param1:uint, param2:uint) : Number
+      {
+         if(param1 == ACTION_LINE_COLOR)
+         {
+            return 1;
+         }
+         return this.getArrowAlphaByThickness(param2);
       }
       
       private function drawTopLinesParts(param1:IRenderer, param2:Array, param3:Point, param4:Point, param5:Point) : void
@@ -470,14 +470,14 @@ class TopLineInfo
       this.point = param2;
    }
    
-   public function get y() : int
-   {
-      return this.point.y;
-   }
-   
    public function toString() : String
    {
       return "[TopLineInfo] id = " + this.id + ", point = " + this.point.toString();
+   }
+   
+   public function get y() : int
+   {
+      return this.point.y;
    }
 }
 

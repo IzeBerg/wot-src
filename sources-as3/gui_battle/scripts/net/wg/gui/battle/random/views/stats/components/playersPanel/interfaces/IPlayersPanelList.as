@@ -63,10 +63,6 @@ package net.wg.gui.battle.random.views.stats.components.playersPanel.interfaces
       
       function set x(param1:Number) : void;
       
-      function get visible() : Boolean;
-      
-      function set visible(param1:Boolean) : void;
-      
       function get y() : Number;
       
       function get height() : Number;

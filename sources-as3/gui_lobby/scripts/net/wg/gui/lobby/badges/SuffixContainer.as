@@ -1,6 +1,7 @@
 package net.wg.gui.lobby.badges
 {
    import flash.events.Event;
+   import net.wg.data.constants.Linkages;
    import net.wg.gui.interfaces.IUpdatableComponent;
    import net.wg.gui.lobby.badges.data.BadgeSuffixItemVO;
    import net.wg.gui.lobby.badges.events.BadgesEvent;
@@ -76,11 +77,10 @@ package net.wg.gui.lobby.badges
          {
             this._items[_loc1_].removeEventListener(ButtonEvent.CLICK,this.onItemClickHandler);
             this._items[_loc1_].removeEventListener(Event.RESIZE,this.onItemResizeHandler);
+            this._items[_loc1_].dispose();
             _loc1_++;
          }
-         this.item0.dispose();
          this.item0 = null;
-         this.item1.dispose();
          this.item1 = null;
          this._items.splice(0,this._items.length);
          this._items = null;
@@ -110,23 +110,37 @@ package net.wg.gui.lobby.badges
          var _loc4_:Boolean = false;
          var _loc5_:SuffixItem = null;
          var _loc6_:int = 0;
+         var _loc7_:int = 0;
          if(param1 != null)
          {
             _loc2_ = param1 as Vector.<BadgeSuffixItemVO>;
             _loc3_ = _loc2_.length;
             this._isItemsShortState = _loc3_ == 1;
-            _loc6_ = 0;
-            while(_loc6_ < this._itemsLength)
+            _loc6_ = Math.max(_loc3_,this._itemsLength);
+            _loc7_ = 0;
+            while(_loc7_ < _loc6_)
             {
-               _loc4_ = _loc6_ < _loc3_;
-               _loc5_ = this._items[_loc6_];
+               _loc4_ = _loc7_ < _loc3_;
+               if(this._itemsLength <= _loc7_)
+               {
+                  _loc5_ = App.utils.classFactory.getComponent(Linkages.BADGE_SUFFIX_ITEM,SuffixItem);
+                  _loc5_.addEventListener(ButtonEvent.CLICK,this.onItemClickHandler);
+                  _loc5_.addEventListener(Event.RESIZE,this.onItemResizeHandler);
+                  this._items.push(_loc5_);
+                  addChild(_loc5_);
+                  ++this._itemsLength;
+               }
+               else
+               {
+                  _loc5_ = this._items[_loc7_];
+               }
                _loc5_.visible = _loc4_;
                if(_loc4_)
                {
                   _loc5_.isShortState = this._isItemsShortState;
-                  _loc5_.update(_loc2_[_loc6_]);
+                  _loc5_.update(_loc2_[_loc7_]);
                }
-               _loc6_++;
+               _loc7_++;
             }
             invalidateSize();
          }

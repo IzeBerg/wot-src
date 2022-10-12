@@ -452,7 +452,7 @@ class DamageLogPanel(BattleDamageLogPanelMeta):
     def isSwitchToVehicle(self):
         observedVehID = self.__vehStateCtrl.getControllingVehicleID()
         playerVehicleID = self.__arenaDP.getPlayerVehicleID()
-        return playerVehicleID != observedVehID
+        return playerVehicleID == observedVehID
 
     def _populate(self):
         super(DamageLogPanel, self)._populate()
@@ -496,6 +496,7 @@ class DamageLogPanel(BattleDamageLogPanelMeta):
         if self.__efficiencyCtrl is not None:
             self.__efficiencyCtrl.onTotalEfficiencyUpdated -= self._onTotalEfficiencyUpdated
             self.__efficiencyCtrl.onPersonalEfficiencyReceived -= self._onEfficiencyReceived
+            self.__efficiencyCtrl.onPersonalEfficiencyLogSynced -= self._onPersonalEfficiencyLogSynced
             self.__efficiencyCtrl = None
         self.__vehStateCtrl = None
         self.__arenaDP = None
@@ -536,19 +537,22 @@ class DamageLogPanel(BattleDamageLogPanelMeta):
             self.as_summaryStatsS(*args)
 
     def _onTotalEfficiencyUpdated(self, diff):
-        for e, updateMethod in self._totalEvents:
-            if e in diff:
-                isUpdated, value = self._setTotalValue(e, diff[e])
-                if isUpdated:
-                    updateMethod(value)
+        if self.isSwitchToVehicle():
+            for e, updateMethod in self._totalEvents:
+                if e in diff:
+                    isUpdated, value = self._setTotalValue(e, diff[e])
+                    if isUpdated:
+                        updateMethod(value)
 
     def _onPersonalEfficiencyLogSynced(self):
-        self.__topLog.invalidate()
-        self.__bottomLog.invalidate()
+        if self.isSwitchToVehicle():
+            self.__topLog.invalidate()
+            self.__bottomLog.invalidate()
 
     def _onEfficiencyReceived(self, events):
-        self.__topLog.addToLog(events)
-        self.__bottomLog.addToLog(events)
+        if self.isSwitchToVehicle():
+            self.__topLog.addToLog(events)
+            self.__bottomLog.addToLog(events)
 
     def _invalidatePanelVisibility(self):
         arenaVisitor = self.sessionProvider.arenaVisitor
@@ -567,7 +571,7 @@ class DamageLogPanel(BattleDamageLogPanelMeta):
                 if self.__arenaDP is None:
                     isVisible = self.__isVisible
                 else:
-                    isVisible = not self.isSwitchToVehicle()
+                    isVisible = self.isSwitchToVehicle()
             if self.__isVisible != isVisible:
                 self.__isVisible = isVisible
                 self._setSettings(self.__isVisible, bool(self.settingsCore.getSetting(GRAPHICS.COLOR_BLIND)))
@@ -651,5 +655,7 @@ class DamageLogPanel(BattleDamageLogPanelMeta):
         result = self.settingsCore.getSetting(settingName)
         if settingName == DAMAGE_LOG.ASSIST_STUN and result:
             isSPG = self.__arenaDP.getVehicleInfo(self.__vehStateCtrl.getControllingVehicleID()).isSPG()
-            result = isSPG and self.lobbyContext.getServerSettings().spgRedesignFeatures.isStunEnabled()
+            arenaVisitor = self.sessionProvider.arenaVisitor
+            isComp7Battle = arenaVisitor.gui.isComp7Battle
+            result = (isSPG or isComp7Battle) and self.lobbyContext.getServerSettings().spgRedesignFeatures.isStunEnabled()
         return result

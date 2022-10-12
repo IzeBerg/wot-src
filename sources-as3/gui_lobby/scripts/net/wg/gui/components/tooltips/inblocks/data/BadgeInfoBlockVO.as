@@ -14,6 +14,8 @@ package net.wg.gui.components.tooltips.inblocks.data
       
       public var vehName:String = "";
       
+      public var stripImgSource:String = "";
+      
       public function BadgeInfoBlockVO(param1:Object)
       {
          super(param1);

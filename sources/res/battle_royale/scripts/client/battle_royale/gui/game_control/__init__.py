@@ -5,8 +5,10 @@ import skeletons.gui.game_control as _interface
 from gui.shared.system_factory import registerGameControllers
 
 def registerBRGameControllers():
-    registerGameControllers([(_interface.IBattleRoyaleController, _BattleRoyale),
+    registerGameControllers([
      (
-      _interface.IBattleRoyaleTournamentController, _BRTournament),
+      _interface.IBattleRoyaleController, _BattleRoyale, False),
      (
-      _interface.IBattleRoyaleRentVehiclesController, _BRRentController)])
+      _interface.IBattleRoyaleTournamentController, _BRTournament, False),
+     (
+      _interface.IBattleRoyaleRentVehiclesController, _BRRentController, False)])

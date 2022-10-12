@@ -28,9 +28,6 @@ class ExtraIntroView(ViewImpl):
     def viewModel(self):
         return super(ExtraIntroView, self).getViewModel()
 
-    def markVisited(self):
-        self.__settingsCore.serverSettings.saveInBPStorage({BattlePassStorageKeys.EXTRA_CHAPTER_INTRO_SHOWN: True})
-
     def _onLoading(self, *args, **kwargs):
         super(ExtraIntroView, self)._onLoading(*args, **kwargs)
         style = getStyleForChapter(self.__chapterID)
@@ -52,6 +49,7 @@ class ExtraIntroView(ViewImpl):
           self.__battlePassController.onSeasonStateChanged, self.__onBattlePassSettingsChanged))
 
     def __onSubmit(self):
+        self.__settingsCore.serverSettings.saveInBPStorage({BattlePassStorageKeys.EXTRA_CHAPTER_INTRO_SHOWN: True})
         if self.__chapterID in self.__battlePassController.getChapterIDs():
             showMissionsBattlePass(R.views.lobby.battle_pass.BattlePassProgressionsView(), self.__chapterID)
         else:

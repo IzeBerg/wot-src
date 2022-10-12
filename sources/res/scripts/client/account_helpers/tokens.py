@@ -23,7 +23,7 @@ class Tokens(object):
     def synchronize(self, isFullSync, diff):
         if isFullSync:
             self.__cache.clear()
-        for item in ('tokens', 'lootBoxes'):
+        for item in ('tokens', ):
             itemDiff = diff.get(item, None)
             if itemDiff is not None:
                 synchronizeDicts(itemDiff, self.__cache.setdefault(item, {}))
@@ -41,20 +41,12 @@ class Tokens(object):
         self.__account._doCmdInt2(AccountCommands.CMD_LOOTBOX_OPEN, boxID, count, proxy)
         return
 
-    def reRollLootBox(self, boxID, callback=None):
+    def getInfoLootBox(self, boxIDs, callback):
         if callback is not None:
             proxy = lambda requestID, resultID, errorStr, ext={}: callback(resultID, errorStr, ext)
         else:
             proxy = None
-        self.__account._doCmdInt(AccountCommands.CMD_LOOTBOX_REROLL, boxID, proxy)
-        return
-
-    def getLootBoxReRollRecords(self, callback=None):
-        if callback is not None:
-            proxy = lambda requestID, resultID, errorStr, ext={}: callback(resultID, errorStr, ext)
-        else:
-            proxy = None
-        self.__account._doCmdInt(AccountCommands.CMD_LOOTBOX_REROLL_RECORDS, 0, proxy)
+        self.__account._doCmdIntArr(AccountCommands.CMD_LOOTBOX_GETINFO, boxIDs, proxy)
         return
 
     def __onGetCacheResponse(self, callback, resultID):

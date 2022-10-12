@@ -1,85 +1,50 @@
-from functools import partial
-import BigWorld, CGF, GenericComponents, Math
+import functools, logging, Math, BigWorld, CGF
 from cgf_script.component_meta_class import CGFComponent, ComponentProperty, CGFMetaTypes
-from cgf_script.managers_registrator import onAddedQuery, onProcessQuery, registerManager, Rule, autoregister
+from cgf_script.managers_registrator import onAddedQuery, onProcessQuery, autoregister, onRemovedQuery
+import GenericComponents
 from vehicle_systems.tankStructure import ColliderTypes
+_logger = logging.getLogger(__name__)
 
-def _getEntity(gameObject):
-    hierarchy = CGF.HierarchyManager(gameObject.spaceID)
-    parent = hierarchy.getTopMostParent(gameObject)
-    entitySync = parent.findComponentByType(GenericComponents.EntityGOSync)
-    try:
-        return entitySync.entity
-    except TypeError:
-        pass
-
-    return
-
-
-class DynamicCollisionComponent(CGFComponent):
-    asset = ComponentProperty(type=CGFMetaTypes.STRING, editorName='Asset', value='', annotations={'path': '*.model'})
-    ownerID = ComponentProperty(type=CGFMetaTypes.INT, editorName='OwnerID', value=0)
-    ignore = ComponentProperty(type=CGFMetaTypes.BOOL, editorName='Ignored by Aim', value=False)
+class SingleCollisionComponent(CGFComponent):
+    editorTitle = 'Single Collision'
+    category = 'Common'
+    asset = ComponentProperty(type=CGFMetaTypes.STRING, editorName='Asset', annotations={'path': '*.model'})
     matrix = Math.Matrix()
 
     def __init__(self):
-        super(DynamicCollisionComponent, self).__init__()
+        super(SingleCollisionComponent, self).__init__()
         self.matrix = Math.Matrix()
         self.matrix.setIdentity()
 
 
-@autoregister(presentInAllWorlds=True)
+@autoregister(presentInAllWorlds=True, presentInEditor=True)
 class CollisionComponentManager(CGF.ComponentManager):
 
-    @onAddedQuery(DynamicCollisionComponent, GenericComponents.TransformComponent, CGF.GameObject)
-    def onAdded(self, collision, _, gameObject):
-        if not collision.asset or gameObject.findComponentByType(BigWorld.CollisionComponent) is not None:
+    @onAddedQuery(SingleCollisionComponent, CGF.GameObject)
+    def onAdded(self, singleCollision, go):
+        if not singleCollision.asset:
+            _logger.warning('Single Collision component with empty asset in gameObject id=%d', go.id)
             return
-        vehicle = _getEntity(gameObject)
-        if vehicle is not None:
-            collision.ownerID = vehicle.id
-        collisionAssembler = BigWorld.CollisionAssembler((
-         (
-          0, collision.asset),), self.spaceID)
-        collisionAssembler.name = 'dynamicCollision'
-        BigWorld.loadResourceListBG((collisionAssembler,), partial(self.__onResourcesLoaded, gameObject, vehicle))
-        return
+        collisionAssembler = BigWorld.CollisionAssembler(((0, singleCollision.asset),), self.spaceID)
+        collisionAssembler.name = 'collision'
+        BigWorld.loadResourceListBG((collisionAssembler,), functools.partial(self.__onLoaded, go))
 
-    @onProcessQuery(DynamicCollisionComponent, GenericComponents.TransformComponent)
-    def onProcess(self, collision, transform):
-        collision.matrix.set(transform.worldTransform)
-
-    def __onResourcesLoaded(self, gameObject, vehicle, resourceRefs):
-        if not gameObject.isValid():
+    @onRemovedQuery(SingleCollisionComponent, CGF.GameObject)
+    def onRemoved(self, singleCollision, go):
+        if not singleCollision.asset:
             return
-        if 'dynamicCollision' in resourceRefs.failedIDs:
+        go.removeComponentByType(BigWorld.CollisionComponent)
+
+    def __onLoaded(self, go, resources):
+        if not go.isValid():
             return
-        dynamicCollision = gameObject.findComponentByType(DynamicCollisionComponent)
-        collision = gameObject.createComponent(BigWorld.CollisionComponent, resourceRefs['dynamicCollision'])
-        payload = ((0, dynamicCollision.matrix),)
-        collision.connect(dynamicCollision.ownerID, ColliderTypes.HANGAR_VEHICLE_COLLIDER if dynamicCollision.ignore else ColliderTypes.DYNAMIC_COLLIDER, payload)
-        if vehicle and hasattr(vehicle, 'appearance'):
-            BigWorld.wgAddIgnoredCollisionEntity(vehicle, collision)
+        collision = go.createComponent(BigWorld.CollisionComponent, resources['collision'])
+        if not collision:
+            _logger.error('Cant create CollisionComponent for gameObject id=%d', go.id)
+            return
+        collisionData = ((0, go.findComponentByType(SingleCollisionComponent).matrix),)
+        collision.connect(go.id, ColliderTypes.DYNAMIC_COLLIDER, collisionData)
 
-
-class ProjectileTargetRegistrar(CGF.ComponentManager):
-
-    @onAddedQuery(CGF.GameObject, GenericComponents.ProjectileTarget, DynamicCollisionComponent)
-    def onAdded(self, gameObject, target, collision):
-        vehicle = _getEntity(gameObject)
-        if vehicle is not None:
-            target.ownerID = collision.ownerID = vehicle.id
-            target.resourceID = collision.asset.replace('.model', '.havok')
-        return
-
-
-class DSCollisionRule(Rule):
-    category = 'GameLogic'
-
-    @registerManager(CollisionComponentManager)
-    def reg1(self):
-        return
-
-    @registerManager(ProjectileTargetRegistrar)
-    def reg2(self):
-        return
+    @onProcessQuery(SingleCollisionComponent, GenericComponents.TransformComponent)
+    def syncTransforms(self, singleCollision, transform):
+        singleCollision.matrix.set(transform.worldTransform)

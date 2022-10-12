@@ -159,7 +159,6 @@ class CommonTankAppearance(ScriptGameObject):
         self.__isObserver = False
         self.__attachments = []
         self.__modelAnimators = []
-        self.__customAnimators = []
         self.turretMatrix = None
         self.gunMatrix = None
         self.__allLodCalculators = []
@@ -318,7 +317,6 @@ class CommonTankAppearance(ScriptGameObject):
     def destroy(self):
         self._vehicleInfo = {}
         self.flagComponent = None
-        self.clearCustomAnimators()
         self._destroySystems()
         fashions = VehiclePartsTuple(None, None, None, None)
         self._setFashions(fashions, self._isTurretDetached)
@@ -379,7 +377,6 @@ class CommonTankAppearance(ScriptGameObject):
             modelAnimator.animator.setEnabled(False)
 
         super(CommonTankAppearance, self).deactivate()
-        self.__customAnimators = []
         self.shadowManager.unregisterCompoundModel(self.compoundModel)
         self._stopSystems()
         self.wheelsGameObject.deactivate()
@@ -607,19 +604,15 @@ class CommonTankAppearance(ScriptGameObject):
             self.__periodicTimerID = None
         self.__modelAnimators = []
         self.filter.enableLagDetection(False)
-        self.clearUndamagedStateChildren()
-        return
-
-    def clearUndamagedStateChildren(self):
         for go in self.undamagedStateChildren:
             CGF.removeGameObject(go)
 
         self.undamagedStateChildren = []
+        return
 
     def _onRequestModelsRefresh(self):
         self.flagComponent = None
         self.__updateModelStatus()
-        self.clearCustomAnimators()
         return
 
     def __updateModelStatus(self):
@@ -827,21 +820,6 @@ class CommonTankAppearance(ScriptGameObject):
     def pushToLoadingQueue(self, prefab, go, vector, callback):
         self._loadingQueue.append((prefab, go, vector, callback))
 
-    def addCustomAnimator(self, modelAnimator):
-        self.__customAnimators.append(modelAnimator)
-        self.registerComponent(modelAnimator)
-
-    def removeCustomAnimator(self, modelAnimator):
-        if modelAnimator in self.__customAnimators:
-            self.__customAnimators.remove(modelAnimator)
-            self.removeComponent(modelAnimator)
-
-    def clearCustomAnimators(self):
-        for animator in self.__customAnimators:
-            self.removeComponent(animator)
-
-        self.__customAnimators = []
-
     def _onCameraChanged(self, cameraName, currentVehicleId=None):
         if self.id != BigWorld.player().playerVehicleID:
             return
@@ -861,6 +839,13 @@ class CommonTankAppearance(ScriptGameObject):
         if self.shellAnimator is not None:
             self.shellAnimator.throwShell(self.typeDescriptor.shot.shell.animation)
         return
+
+    def getCurrentModelsSet(self):
+        has3DStyle = self.outfit is not None and self.outfit.modelsSet is not None and self.outfit.modelsSet != ''
+        if has3DStyle:
+            return self.outfit.modelsSet
+        else:
+            return 'default'
 
     def __shouldCreatePhysicalDestroyedTracks(self):
         quality = BigWorld.trackPhysicsQuality()
@@ -898,9 +883,10 @@ class CommonTankAppearance(ScriptGameObject):
                     self.crashedTracksController.addCrashedTrack(isLeft, idx, isSideFlying)
 
             return
+        modelsSet = self.getCurrentModelsSet()
         for idx in indices:
             track = self.tracks.getTrackGameObject(isLeft, idx)
-            track.createComponent(TrackCrashWithDebrisComponent, isLeft, idx, self.typeDescriptor, self.gameObject, self.boundEffects, self.filter, self._vehicle.isPlayerVehicle, shouldCreateDebris, hitPoint)
+            track.createComponent(TrackCrashWithDebrisComponent, isLeft, idx, self.typeDescriptor, self.gameObject, self.boundEffects, self.filter, self._vehicle.isPlayerVehicle, shouldCreateDebris, hitPoint, modelsSet)
             if self.crashedTracksController is not None:
                 self.crashedTracksController.addDebrisCrashedTrack(isLeft, idx)
 

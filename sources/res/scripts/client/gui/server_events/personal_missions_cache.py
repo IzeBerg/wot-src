@@ -1,7 +1,7 @@
 import operator
 from collections import defaultdict
 import BigWorld, personal_missions
-from adisp import async, process
+from adisp import adisp_async, adisp_process
 from constants import MIN_VEHICLE_LEVEL, MAX_VEHICLE_LEVEL
 from gui.server_events import event_items
 from gui.server_events.finders import BRANCH_TO_OPERATION_IDS
@@ -237,8 +237,8 @@ class PersonalMissionsCache(object):
         else:
             return False
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def questsProgressRequest(self, callback=None):
         for branch in PM_BRANCH.ACTIVE_BRANCHES:
             qp = self.getQuestsProgress(branch)

@@ -9,6 +9,7 @@ package net.wg.gui.lobby.battlequeue
    import net.wg.gui.components.controls.ScrollingListEx;
    import net.wg.gui.components.icons.BattleTypeIcon;
    import net.wg.gui.interfaces.ISoundButtonEx;
+   import net.wg.gui.utils.FrameHelper;
    import net.wg.infrastructure.base.meta.IBattleQueueMeta;
    import net.wg.infrastructure.base.meta.impl.BattleQueueMeta;
    import org.idmedia.as3commons.util.StringUtils;
@@ -25,9 +26,19 @@ package net.wg.gui.lobby.battlequeue
       
       private static const TNK_ICON_OFFSET:int = 16;
       
-      private static const RANKED_BATTLE_ICON_BG:String = "ranked";
+      private static const LAYOUT_TYPE_EMPTY:String = "empty";
       
-      private static const EMPTY_BATTLE_ICON_BG:String = "empty";
+      private static const LAYOUT_TYPE_COMP7:String = "comp7";
+      
+      private static const LAYOUT_TYPE_BATTLEROYALE:String = "battleRoyale";
+      
+      private static const LIST_HEIGHT_COMP7:int = 350;
+      
+      private static const LIST_HEIGHT_BATTLEROYALE:int = 100;
+      
+      private static const LIST_HEIGHT_USUAL:int = 250;
+      
+      private static const FUN_RANDOM_BATTLE_ICON_BG:String = "fun_random";
        
       
       public var timerLabel:TextField;
@@ -60,6 +71,10 @@ package net.wg.gui.lobby.battlequeue
       
       private var _typeInfo:BattleQueueTypeInfoVO;
       
+      private var _battleIconBgFrameHelper:FrameHelper;
+      
+      private var _viewFrameHelper:FrameHelper;
+      
       public function BattleQueue()
       {
          super();
@@ -68,12 +83,14 @@ package net.wg.gui.lobby.battlequeue
       override public function updateStage(param1:Number, param2:Number) : void
       {
          this.x = param1 - this.actualWidth >> 1;
-         this.y = Math.min(-parent.y + (param2 - this.actualHeight >> 1),MAX_POS_Y);
+         this.y = Math.min(-parent.y + (param2 - this.actualHeight >> 1) ^ 0,MAX_POS_Y);
       }
       
       override protected function configUI() : void
       {
          super.configUI();
+         this._viewFrameHelper = new FrameHelper(this);
+         this._battleIconBgFrameHelper = new FrameHelper(this.battleIconBg);
          this.startButton.visible = false;
          this.listByType.mouseChildren = false;
          this.tankIcon.tooltipEnabled = false;
@@ -86,6 +103,16 @@ package net.wg.gui.lobby.battlequeue
       
       override protected function onDispose() : void
       {
+         if(this._viewFrameHelper)
+         {
+            this._viewFrameHelper.dispose();
+            this._viewFrameHelper = null;
+         }
+         if(this._battleIconBgFrameHelper)
+         {
+            this._battleIconBgFrameHelper.dispose();
+            this._battleIconBgFrameHelper = null;
+         }
          App.gameInputMgr.clearKeyHandler(Keyboard.ESCAPE,KeyboardEvent.KEY_DOWN,this.handleEscape);
          this.listByType.disposeRenderers();
          this.startButton.removeEventListener(ButtonEvent.CLICK,this.onStartButtonClickHandler);
@@ -133,28 +160,41 @@ package net.wg.gui.lobby.battlequeue
       override protected function draw() : void
       {
          var _loc1_:String = null;
+         var _loc2_:String = null;
+         var _loc3_:String = null;
+         var _loc4_:Boolean = false;
+         var _loc5_:String = null;
+         var _loc6_:Boolean = false;
+         var _loc7_:String = null;
+         var _loc8_:Boolean = false;
          super.draw();
          if(this._typeInfo && isInvalid(INV_TYPE_INFO))
          {
-            if(StringUtils.isNotEmpty(this._typeInfo.layoutStr))
+            _loc1_ = this._typeInfo.layoutStr;
+            if(this._viewFrameHelper.getFrameByLabel(_loc1_) != FrameHelper.NOT_EXIST_INDEX)
             {
-               gotoAndStop(this._typeInfo.layoutStr);
+               gotoAndStop(_loc1_);
                if(_baseDisposed)
                {
                   return;
                }
                this.updateStage(parent.width,parent.height);
+               this.listByType.height = this.getListHeight(_loc1_);
             }
             this.modeTitle.text = this._typeInfo.title;
-            _loc1_ = this._typeInfo.iconLabel;
-            this.battleIcon.type = _loc1_;
-            if(_loc1_.indexOf(RANKED_BATTLE_ICON_BG) != -1)
+            _loc2_ = this._typeInfo.iconLabel;
+            this.battleIcon.type = _loc2_;
+            if(this._battleIconBgFrameHelper.getFrameByLabel(_loc2_) != FrameHelper.NOT_EXIST_INDEX)
             {
-               this.battleIconBg.frameLabel = RANKED_BATTLE_ICON_BG;
+               this.battleIconBg.gotoAndStop(_loc2_);
+            }
+            else if(_loc2_.indexOf(FUN_RANDOM_BATTLE_ICON_BG) != -1)
+            {
+               this.battleIconBg.frameLabel = FUN_RANDOM_BATTLE_ICON_BG;
             }
             else
             {
-               this.battleIconBg.frameLabel = EMPTY_BATTLE_ICON_BG;
+               this.battleIconBg.gotoAndStop(LAYOUT_TYPE_EMPTY);
             }
             if(_baseDisposed)
             {
@@ -162,13 +202,31 @@ package net.wg.gui.lobby.battlequeue
             }
             this.gameplayTip.text = this._typeInfo.description;
             this.additional.htmlText = this._typeInfo.additional;
-            this.tankLabel.htmlText = this._typeInfo.tankLabel;
-            App.utils.commons.updateTextFieldSize(this.tankLabel,true,false);
-            this.tankIcon.source = this._typeInfo.tankIcon;
-            this.tankIcon.x = this.tankLabel.x + this.tankLabel.width + TNK_ICON_OFFSET;
-            this.tankName.text = this._typeInfo.tankName;
-            this.tankName.x = this.tankIcon.x + TNK_ICON_OFFSET;
-            App.utils.commons.updateTextFieldSize(this.tankName,true,false);
+            _loc3_ = this._typeInfo.tankLabel;
+            _loc4_ = StringUtils.isNotEmpty(_loc3_);
+            this.tankLabel.visible = _loc4_;
+            if(_loc4_)
+            {
+               this.tankLabel.htmlText = _loc3_;
+               App.utils.commons.updateTextFieldSize(this.tankLabel,true,false);
+            }
+            _loc5_ = this._typeInfo.tankIcon;
+            _loc6_ = StringUtils.isNotEmpty(_loc5_);
+            this.tankIcon.visible = _loc6_;
+            if(_loc6_)
+            {
+               this.tankIcon.source = _loc5_;
+               this.tankIcon.x = this.tankLabel.x + this.tankLabel.width + TNK_ICON_OFFSET ^ 0;
+            }
+            _loc7_ = this._typeInfo.tankName;
+            _loc8_ = StringUtils.isNotEmpty(_loc7_);
+            this.tankName.visible = _loc8_;
+            if(_loc8_)
+            {
+               this.tankName.text = this._typeInfo.tankName;
+               this.tankName.x = this.tankIcon.x + TNK_ICON_OFFSET;
+               App.utils.commons.updateTextFieldSize(this.tankName,true,false);
+            }
          }
       }
       
@@ -191,6 +249,19 @@ package net.wg.gui.lobby.battlequeue
       public function as_showStart(param1:Boolean) : void
       {
          this.startButton.visible = param1;
+      }
+      
+      private function getListHeight(param1:String) : int
+      {
+         if(param1 == LAYOUT_TYPE_COMP7)
+         {
+            return LIST_HEIGHT_COMP7;
+         }
+         if(param1 == LAYOUT_TYPE_BATTLEROYALE)
+         {
+            return LIST_HEIGHT_BATTLEROYALE;
+         }
+         return LIST_HEIGHT_USUAL;
       }
       
       private function onExitButtonClickHandler(param1:ButtonEvent) : void

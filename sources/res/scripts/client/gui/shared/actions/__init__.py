@@ -1,5 +1,5 @@
 import BigWorld
-from adisp import process
+from adisp import adisp_process
 from debug_utils import LOG_DEBUG, LOG_ERROR
 from frameworks.wulf import WindowLayer
 from gui.Scaleform.Waiting import Waiting
@@ -69,7 +69,7 @@ class LeavePrbModalEntity(Action):
     def isInstantaneous(self):
         return False
 
-    @process
+    @adisp_process
     def __doLeave(self, dispatcher, ctx):
         self._completed = yield dispatcher.leave(ctx)
         if self._completed:
@@ -104,7 +104,7 @@ class LeavePrbEntity(Action):
     def isInstantaneous(self):
         return False
 
-    @process
+    @adisp_process
     def __doLeave(self, dispatcher, ctx):
         self._completed = yield dispatcher.leave(ctx)
         if self._completed:
@@ -131,7 +131,7 @@ class SelectPrb(Action):
     def isInstantaneous(self):
         return False
 
-    @process
+    @adisp_process
     def __doSelect(self, dispatcher):
         self._completed = yield dispatcher.doSelectAction(self._prbAction)
         if self._completed:

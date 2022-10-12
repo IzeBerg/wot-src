@@ -1,6 +1,5 @@
 package net.wg.gui.lobby.storage.categories.storage
 {
-   import flash.events.Event;
    import net.wg.data.ListDAAPIDataProvider;
    import net.wg.data.constants.Linkages;
    import net.wg.gui.lobby.storage.categories.NoItemsView;
@@ -34,7 +33,6 @@ package net.wg.gui.lobby.storage.categories.storage
       
       override protected function onDispose() : void
       {
-         this.noItemsView.removeEventListener(Event.CLOSE,this.onNoItemViewCloseHandler);
          this.noItemsView.dispose();
          this.noItemsView = null;
          carousel.removeEventListener(CardEvent.SELL,this.onCardSellHandler);
@@ -50,8 +48,11 @@ package net.wg.gui.lobby.storage.categories.storage
          carousel.scrollList.paddingBottom = CAROUSEL_PADDING_BOTTOM;
          carousel.addEventListener(CardEvent.SELL,this.onCardSellHandler);
          carousel.addEventListener(CardEvent.UPGRADE,this.onCardUpgradeHandler);
+      }
+      
+      override protected function initNoItemsView() : void
+      {
          this.noItemsView.setTexts(STORAGE.STORAGE_NOITEMS_TITLE,STORAGE.STORAGE_NOITEMS_NAVIGATIONBUTTON);
-         this.noItemsView.addEventListener(Event.CLOSE,this.onNoItemViewCloseHandler);
       }
       
       override protected function draw() : void
@@ -63,6 +64,11 @@ package net.wg.gui.lobby.storage.categories.storage
             this.noItemsView.validateNow();
             this.noItemsView.y = height - this.noItemsView.actualHeight >> 1;
          }
+      }
+      
+      override protected function onNoItemsViewClose() : void
+      {
+         navigateToStoreS();
       }
       
       override public function get noItemsComponent() : UIComponent
@@ -80,11 +86,6 @@ package net.wg.gui.lobby.storage.categories.storage
       {
          param1.stopImmediatePropagation();
          sellItemS(param1.data.id);
-      }
-      
-      private function onNoItemViewCloseHandler(param1:Event) : void
-      {
-         navigateToStoreS();
       }
    }
 }

@@ -7,12 +7,12 @@ package net.wg.gui.battle.views.vehicleMarkers
    import net.wg.gui.battle.views.vehicleMarkers.events.StatusAnimationEvent;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleAnimatedStatusBaseMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleBerserkerMarker;
-   import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleBombMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleEngineerEffectMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleFLBasicMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleInspireMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleInspireTargetMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleStatusIconMarker;
+   import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleStatusMarker;
    import net.wg.gui.battle.views.vehicleMarkers.statusMarkers.VehicleStunMarker;
    
    public class VehicleStatusContainerMarker extends BattleUIComponent
@@ -47,9 +47,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       public var shotPassionMarker:VehicleStatusIconMarker = null;
       
-      public var captureBombMarker:VehicleBombMarker = null;
-      
-      public var installBombMarker:VehicleBombMarker = null;
+      public var statusMarker:VehicleStatusMarker = null;
       
       private var _statusEffectMarkers:Dictionary = null;
       
@@ -77,8 +75,23 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.setupMarker(BATTLE_MARKER_STATES.THUNDER_STRIKE_STATE,this.thunderStrikeMarker);
          this.setupMarker(BATTLE_MARKER_STATES.SHOT_PASSION_STATE,this.shotPassionMarker);
          this.setupMarker(BATTLE_MARKER_STATES.ADAPTATION_HEALTH_RESTORE_STATE,this.adaptationHealthRestoreMarker);
-         this.setupMarker(BATTLE_MARKER_STATES.WT_BOMB_CAPTURING_STATE,this.captureBombMarker);
-         this.setupMarker(BATTLE_MARKER_STATES.WT_BOMB_INSTALLING_STATE,this.installBombMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.COMP7_RISKY_ATTACK_STATE,this.statusMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.COMP7_RISKY_ATTACK_HEAL_STATE,this.statusMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.COMP7_SNIPER_STATE,this.statusMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.COMP7_ALLY_SUPPORT_STATE,this.statusMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.COMP7_AOE_HEAL_STATE,this.statusMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.COMP7_HUNTER_STATE,this.statusMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.COMP7_CONCENTRATION_STATE,this.statusMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.COMP7_JUGGERNAUT_STATE,this.statusMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.COMP7_BERSERK_STATE,this.statusMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.COMP7_FAST_RECHARGE_STATE,this.statusMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.COMP7_SURE_SHOT_STATE,this.statusMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.COMP7_AOE_INSPIRE_STATE,this.statusMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.COMP7_ARTYLLERY_SUPPORT_STATE,this.statusMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.COMP7_MARCH_STATE,this.statusMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.COMP7_AGGRESSIVE_DETECTION_STATE,this.statusMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.COMP7_POINT_RECON_STATE,this.statusMarker);
+         this.setupMarker(BATTLE_MARKER_STATES.CONFIRMED_STATE,this.statusMarker);
       }
       
       override protected function configUI() : void
@@ -97,8 +110,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.thunderStrikeMarker.addEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.shotPassionMarker.addEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.adaptationHealthRestoreMarker.addEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
-         this.captureBombMarker.addEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
-         this.installBombMarker.addEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
+         this.statusMarker.addEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.stunMarker.setupFrameEvents();
          this.baseEngineerMarker.setupFrameEvents();
          this.inspireMarker.setupFrameEvents();
@@ -112,8 +124,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.thunderStrikeMarker.setupFrameEvents();
          this.shotPassionMarker.setupFrameEvents();
          this.adaptationHealthRestoreMarker.setupFrameEvents();
-         this.captureBombMarker.setupFrameEvents();
-         this.installBombMarker.setupFrameEvents();
+         this.statusMarker.setupFrameEvents();
       }
       
       override protected function onDispose() : void
@@ -132,8 +143,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.thunderStrikeMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.shotPassionMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.adaptationHealthRestoreMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
-         this.captureBombMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
-         this.installBombMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
+         this.statusMarker.removeEventListener(StatusAnimationEvent.EVENT_HIDDEN,this.onStatusAnimationEventHiddenHandler);
          this.baseEngineerMarker.dispose();
          this.baseEngineerMarker = null;
          this.inspireMarker.dispose();
@@ -160,16 +170,56 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.shotPassionMarker = null;
          this.adaptationHealthRestoreMarker.dispose();
          this.adaptationHealthRestoreMarker = null;
-         this.captureBombMarker.dispose();
-         this.captureBombMarker = null;
-         this.installBombMarker.dispose();
-         this.installBombMarker = null;
+         this.statusMarker.dispose();
+         this.statusMarker = null;
          for(_loc1_ in this._statusEffectMarkers)
          {
             delete this._statusEffectMarkers[_loc1_];
          }
          this._statusEffectMarkers = null;
          super.onDispose();
+      }
+      
+      public function hideMarker(param1:int, param2:int, param3:Boolean, param4:Boolean) : void
+      {
+         var _loc5_:VehicleAnimatedStatusBaseMarker = null;
+         var _loc6_:VehicleAnimatedStatusBaseMarker = null;
+         var _loc7_:VehicleStatusMarker = null;
+         var _loc8_:VehicleAnimatedStatusBaseMarker = null;
+         this._activeEffectID = param2;
+         if(param1 > -1)
+         {
+            _loc5_ = this.getMarker(param1);
+            if(_loc5_)
+            {
+               _loc5_.hideEffectTimer(param3);
+            }
+         }
+         if(param2 > -1)
+         {
+            _loc6_ = this.getMarker(param2);
+            if(_loc6_)
+            {
+               if(_loc6_.isAtlasSrcMode())
+               {
+                  _loc6_.setStatusID(param2);
+                  _loc6_.updateAssets();
+                  _loc7_ = _loc6_ as VehicleStatusMarker;
+                  if(_loc7_)
+                  {
+                     _loc7_.switchTimerVisible(param4);
+                  }
+               }
+               _loc6_.setVisibility(true);
+            }
+         }
+         else
+         {
+            for each(_loc8_ in this._statusEffectMarkers)
+            {
+               _loc8_.setVisibility(false);
+            }
+         }
       }
       
       public function isVisible() : Boolean
@@ -192,8 +242,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.thunderStrikeMarker.setEffectColor(param1,param2);
          this.shotPassionMarker.setEffectColor(param1,param2);
          this.adaptationHealthRestoreMarker.setEffectColor(param1,param2);
-         this.captureBombMarker.setEffectColor(param1,param2);
-         this.installBombMarker.setEffectColor(param1,param2);
+         this.statusMarker.setEffectColor(param1,param2);
       }
       
       public function setSecondString(param1:String) : void
@@ -201,91 +250,54 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.stunMarker.setSecondString(param1);
          this.inspireMarker.setSecondString(param1);
          this.healMarker.setSecondString(param1);
+         this.statusMarker.setSecondString(param1);
       }
       
-      public function hideMarker(param1:int, param2:int, param3:Boolean) : void
+      public function showMarker(param1:int, param2:int, param3:Boolean, param4:Number, param5:int, param6:int, param7:Boolean = true, param8:Boolean = true) : void
       {
-         var _loc4_:VehicleAnimatedStatusBaseMarker = null;
-         var _loc5_:VehicleAnimatedStatusBaseMarker = null;
-         var _loc6_:VehicleAnimatedStatusBaseMarker = null;
-         this._activeEffectID = param2;
-         if(param1 > -1)
-         {
-            _loc4_ = this.getMarker(param1);
-            if(_loc4_)
-            {
-               _loc4_.hideEffectTimer(param3);
-            }
-         }
-         if(param2 > -1)
-         {
-            _loc5_ = this.getMarker(param2);
-            if(_loc5_)
-            {
-               _loc5_.setVisibility(true);
-            }
-         }
-         else
-         {
-            for each(_loc6_ in this._statusEffectMarkers)
-            {
-               _loc6_.setVisibility(false);
-            }
-         }
-      }
-      
-      public function showMarker(param1:int, param2:int, param3:Boolean, param4:Number, param5:int, param6:int, param7:Boolean = true) : void
-      {
+         var _loc11_:VehicleAnimatedStatusBaseMarker = null;
+         var _loc12_:VehicleAnimatedStatusBaseMarker = null;
          if(param2 > param6)
          {
             return;
          }
+         var _loc9_:VehicleAnimatedStatusBaseMarker = this.getMarker(param1);
+         var _loc10_:Boolean = false;
          if(this._activeEffectID != -1 && this._activeEffectID != param1)
          {
-            this.getMarker(this._activeEffectID).setVisibility(false);
+            _loc11_ = this.getMarker(this._activeEffectID);
+            if(_loc11_ != _loc9_)
+            {
+               _loc11_.setVisibility(false);
+            }
             if(param1 != param5)
             {
-               this.showOneshotAnimation(param1,param2,param3,param4,param7);
-            }
-            else
-            {
-               this.showEffectTimer(param1,param3,param4,param7);
+               if(this._oneShotStatusID != -1 && param2 < this._oneShotStatusPriority)
+               {
+                  _loc12_ = this.getMarker(this._oneShotStatusID);
+                  if(_loc12_)
+                  {
+                     _loc12_.resetMarkerStates();
+                  }
+               }
+               if(_loc9_)
+               {
+                  this._oneShotStatusID = param1;
+                  this._oneShotStatusPriority = param2;
+                  _loc10_ = true;
+               }
             }
          }
-         else
+         if(_loc9_)
          {
-            this.showEffectTimer(param1,param3,param4,param7);
+            if(_loc9_.isAtlasSrcMode())
+            {
+               _loc9_.setStatusID(param1);
+               _loc9_.updateAssets();
+            }
+            _loc9_.showEffectTimer(param4,param3,_loc10_,param7,param8);
          }
          this._activeEffectID = param5;
-      }
-      
-      private function showOneshotAnimation(param1:int, param2:int, param3:Boolean, param4:Number, param5:Boolean = true) : void
-      {
-         var _loc7_:VehicleAnimatedStatusBaseMarker = null;
-         if(this._oneShotStatusID != -1 && param2 < this._oneShotStatusPriority)
-         {
-            _loc7_ = this.getMarker(this._oneShotStatusID);
-            if(_loc7_)
-            {
-               _loc7_.resetMarkerStates();
-            }
-         }
-         var _loc6_:VehicleAnimatedStatusBaseMarker = this.getMarker(param1);
-         if(_loc6_)
-         {
-            this._oneShotStatusID = param1;
-            this._oneShotStatusPriority = param2;
-            _loc6_.showEffectTimer(param4,param3,true,param5);
-         }
-      }
-      
-      private function showEffectTimer(param1:int, param2:Boolean, param3:Number, param4:Boolean = true) : void
-      {
-         var _loc5_:VehicleAnimatedStatusBaseMarker = this.getMarker(param1);
-         if(_loc5_)
-         {
-            _loc5_.showEffectTimer(param3,param2,false,param4);
-         }
       }
       
       public function updateEffectTimer(param1:int, param2:Number, param3:Boolean = false) : void
@@ -297,15 +309,20 @@ package net.wg.gui.battle.views.vehicleMarkers
          }
       }
       
-      override public function get height() : Number
-      {
-         return BASE_HEIGHT;
-      }
-      
       private function setupMarker(param1:int, param2:VehicleAnimatedStatusBaseMarker) : void
       {
          this._statusEffectMarkers[param1] = param2;
          param2.setStatusID(param1);
+      }
+      
+      private function getMarker(param1:int) : VehicleAnimatedStatusBaseMarker
+      {
+         return this._statusEffectMarkers[param1];
+      }
+      
+      override public function get height() : Number
+      {
+         return BASE_HEIGHT;
       }
       
       private function onStatusAnimationEventHiddenHandler(param1:StatusAnimationEvent) : void
@@ -325,11 +342,6 @@ package net.wg.gui.battle.views.vehicleMarkers
             }
          }
          dispatchEvent(new Event(Event.COMPLETE));
-      }
-      
-      private function getMarker(param1:int) : VehicleAnimatedStatusBaseMarker
-      {
-         return this._statusEffectMarkers[param1];
       }
    }
 }

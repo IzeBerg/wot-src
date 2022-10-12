@@ -10,7 +10,7 @@ package net.wg.gui.lobby.techtree.math
       
       private var columnCovered:Array;
       
-      private var n:Number;
+      private var n:uint;
       
       private var Z0Row:Number;
       
@@ -25,14 +25,80 @@ package net.wg.gui.lobby.techtree.math
          super();
       }
       
+      private static function padMatrix(param1:Array, param2:Number = 0) : Array
+      {
+         var _loc6_:int = 0;
+         var _loc7_:int = 0;
+         var _loc8_:Array = null;
+         var _loc3_:int = 0;
+         var _loc4_:uint = param1.length;
+         var _loc5_:int = _loc4_;
+         _loc6_ = 0;
+         while(_loc6_ < _loc5_)
+         {
+            _loc8_ = param1[_loc6_];
+            _loc3_ = Math.max(_loc3_,_loc8_.length);
+            _loc6_++;
+         }
+         _loc5_ = Math.max(_loc3_,_loc5_);
+         var _loc9_:Array = [];
+         _loc6_ = 0;
+         while(_loc6_ < _loc4_)
+         {
+            _loc8_ = param1[_loc6_];
+            _loc7_ = _loc8_.length;
+            while(_loc7_ < _loc5_)
+            {
+               _loc8_.push(param2);
+               _loc7_++;
+            }
+            _loc9_.push(_loc8_);
+            _loc6_++;
+         }
+         while(_loc6_ < _loc5_)
+         {
+            _loc8_ = [];
+            _loc7_ = 0;
+            while(_loc7_ < _loc5_)
+            {
+               _loc8_.push(param2);
+               _loc7_++;
+            }
+            _loc9_.push(_loc8_);
+            _loc6_++;
+         }
+         return _loc9_;
+      }
+      
+      private static function makeMatrix(param1:Number, param2:Number) : Array
+      {
+         var _loc4_:Array = null;
+         var _loc6_:int = 0;
+         var _loc3_:Array = [];
+         var _loc5_:int = 0;
+         while(_loc5_ < param1)
+         {
+            _loc4_ = [];
+            _loc6_ = 0;
+            while(_loc6_ < param1)
+            {
+               _loc4_.push(param2);
+               _loc6_++;
+            }
+            _loc3_.push(_loc4_);
+            _loc5_++;
+         }
+         return _loc3_;
+      }
+      
       public function compute(param1:Array) : Array
       {
-         var _loc4_:Number = NaN;
-         var _loc8_:Number = NaN;
-         this.C = this.padMatrix(param1);
+         var _loc4_:int = 0;
+         var _loc8_:int = 0;
+         this.C = padMatrix(param1);
          this.n = this.C.length;
-         var _loc2_:Number = param1.length;
-         var _loc3_:Number = param1[0].length;
+         var _loc2_:uint = param1.length;
+         var _loc3_:uint = param1[0].length;
          this.rowCovered = [];
          _loc4_ = 0;
          while(_loc4_ < this.n)
@@ -49,9 +115,9 @@ package net.wg.gui.lobby.techtree.math
          }
          this.Z0Row = 0;
          this.Z0Column = 0;
-         this.path = this.makeMatrix(this.n * 2,0);
-         this.marked = this.makeMatrix(this.n,0);
-         var _loc5_:Number = 1;
+         this.path = makeMatrix(this.n * 2,0);
+         this.marked = makeMatrix(this.n,0);
+         var _loc5_:int = 1;
          var _loc6_:Boolean = false;
          while(!_loc6_)
          {
@@ -100,87 +166,25 @@ package net.wg.gui.lobby.techtree.math
       
       public function makeCostMatrix(param1:Array, param2:Function) : Array
       {
-         var _loc5_:Array = null;
          var _loc6_:Array = null;
-         var _loc7_:Number = NaN;
-         var _loc3_:Array = [];
-         var _loc4_:Number = 0;
-         while(_loc4_ < param1.length)
-         {
-            _loc5_ = param1[_loc4_];
-            _loc6_ = [];
-            _loc7_ = 0;
-            while(_loc7_ < _loc5_.length)
-            {
-               _loc6_.push(param2(_loc5_[_loc7_]));
-               _loc7_++;
-            }
-            _loc3_.push(_loc6_);
-            _loc4_++;
-         }
-         return _loc3_;
-      }
-      
-      private function padMatrix(param1:Array, param2:Number = 0) : Array
-      {
-         var _loc5_:Number = NaN;
-         var _loc6_:Number = NaN;
          var _loc7_:Array = null;
-         var _loc3_:Number = 0;
-         var _loc4_:Number = param1.length;
-         _loc5_ = 0;
-         while(_loc5_ < _loc4_)
-         {
-            _loc7_ = param1[_loc5_];
-            _loc3_ = Math.max(_loc3_,_loc7_.length);
-            _loc5_++;
-         }
-         _loc4_ = Math.max(_loc3_,_loc4_);
-         var _loc8_:Array = [];
-         _loc5_ = 0;
-         while(_loc5_ < param1.length)
-         {
-            _loc7_ = param1[_loc5_];
-            _loc6_ = _loc7_.length;
-            while(_loc6_ < _loc4_)
-            {
-               _loc7_.push(param2);
-               _loc6_++;
-            }
-            _loc8_.push(_loc7_);
-            _loc5_++;
-         }
-         while(_loc5_ < _loc4_)
-         {
-            _loc7_ = [];
-            _loc6_ = 0;
-            while(_loc6_ < _loc4_)
-            {
-               _loc7_.push(param2);
-               _loc6_++;
-            }
-            _loc8_.push(_loc7_);
-            _loc5_++;
-         }
-         return _loc8_;
-      }
-      
-      private function makeMatrix(param1:Number, param2:Number) : Array
-      {
-         var _loc4_:Array = null;
-         var _loc6_:Number = NaN;
+         var _loc8_:uint = 0;
+         var _loc9_:Number = NaN;
          var _loc3_:Array = [];
-         var _loc5_:Number = 0;
-         while(_loc5_ < param1)
+         var _loc4_:uint = param1.length;
+         var _loc5_:int = 0;
+         while(_loc5_ < _loc4_)
          {
-            _loc4_ = [];
-            _loc6_ = 0;
-            while(_loc6_ < param1)
+            _loc6_ = param1[_loc5_];
+            _loc7_ = [];
+            _loc8_ = _loc6_.length;
+            _loc9_ = 0;
+            while(_loc9_ < _loc8_)
             {
-               _loc4_.push(param2);
-               _loc6_++;
+               _loc7_.push(param2(_loc6_[_loc9_]));
+               _loc9_++;
             }
-            _loc3_.push(_loc4_);
+            _loc3_.push(_loc7_);
             _loc5_++;
          }
          return _loc3_;
@@ -188,7 +192,7 @@ package net.wg.gui.lobby.techtree.math
       
       private function clearCovers() : void
       {
-         var _loc1_:Number = 0;
+         var _loc1_:int = 0;
          while(_loc1_ < this.n)
          {
             this.rowCovered[_loc1_] = false;
@@ -199,10 +203,10 @@ package net.wg.gui.lobby.techtree.math
       
       private function findZero() : Object
       {
-         var _loc5_:Number = NaN;
-         var _loc1_:Number = -1;
-         var _loc2_:Number = -1;
-         var _loc3_:Number = 0;
+         var _loc5_:int = 0;
+         var _loc1_:int = -1;
+         var _loc2_:int = -1;
+         var _loc3_:int = 0;
          var _loc4_:Boolean = false;
          while(!_loc4_)
          {
@@ -235,9 +239,9 @@ package net.wg.gui.lobby.techtree.math
       
       private function findSmallest() : Number
       {
-         var _loc3_:Number = NaN;
+         var _loc3_:uint = 0;
          var _loc1_:Number = Number.MAX_VALUE;
-         var _loc2_:Number = 0;
+         var _loc2_:uint = 0;
          while(_loc2_ < this.n)
          {
             _loc3_ = 0;
@@ -257,10 +261,10 @@ package net.wg.gui.lobby.techtree.math
          return _loc1_;
       }
       
-      private function findStarInRow(param1:Number) : Number
+      private function findStarInRow(param1:int) : int
       {
-         var _loc2_:Number = -1;
-         var _loc3_:Number = 0;
+         var _loc2_:int = -1;
+         var _loc3_:uint = 0;
          while(_loc3_ < this.n)
          {
             if(this.marked[param1][_loc3_] == 1)
@@ -273,10 +277,10 @@ package net.wg.gui.lobby.techtree.math
          return _loc2_;
       }
       
-      private function findStarInCol(param1:Number) : Number
+      private function findStarInCol(param1:int) : int
       {
-         var _loc2_:Number = -1;
-         var _loc3_:Number = 0;
+         var _loc2_:int = -1;
+         var _loc3_:int = 0;
          while(_loc3_ < this.n)
          {
             if(this.marked[_loc3_][param1] == 1)
@@ -289,10 +293,10 @@ package net.wg.gui.lobby.techtree.math
          return _loc2_;
       }
       
-      private function findPrimeInRow(param1:Number) : Number
+      private function findPrimeInRow(param1:int) : int
       {
-         var _loc2_:Number = -1;
-         var _loc3_:Number = 0;
+         var _loc2_:int = -1;
+         var _loc3_:int = 0;
          while(_loc3_ < this.n)
          {
             if(this.marked[param1][_loc3_] == 2)
@@ -305,27 +309,28 @@ package net.wg.gui.lobby.techtree.math
          return _loc2_;
       }
       
-      private function convertPath(param1:Array, param2:Number) : void
+      private function convertPath(param1:Array, param2:int) : void
       {
-         var _loc3_:Number = 0;
-         while(_loc3_ < param2 + 1)
+         var _loc3_:Number = param2 + 1;
+         var _loc4_:int = 0;
+         while(_loc4_ < _loc3_)
          {
-            if(this.marked[param1[_loc3_][0]][param1[_loc3_][1]] == 1)
+            if(this.marked[param1[_loc4_][0]][param1[_loc4_][1]] == 1)
             {
-               this.marked[param1[_loc3_][0]][param1[_loc3_][1]] = 0;
+               this.marked[param1[_loc4_][0]][param1[_loc4_][1]] = 0;
             }
             else
             {
-               this.marked[param1[_loc3_][0]][param1[_loc3_][1]] = 1;
+               this.marked[param1[_loc4_][0]][param1[_loc4_][1]] = 1;
             }
-            _loc3_++;
+            _loc4_++;
          }
       }
       
       private function erasePrimes() : void
       {
-         var _loc2_:Number = NaN;
-         var _loc1_:Number = 0;
+         var _loc2_:uint = 0;
+         var _loc1_:uint = 0;
          while(_loc1_ < this.n)
          {
             _loc2_ = 0;
@@ -341,16 +346,16 @@ package net.wg.gui.lobby.techtree.math
          }
       }
       
-      private function step1() : Number
+      private function step1() : int
       {
          var _loc2_:Array = null;
-         var _loc3_:Number = NaN;
-         var _loc4_:Number = NaN;
-         var _loc1_:Number = 0;
+         var _loc3_:int = 0;
+         var _loc4_:uint = 0;
+         var _loc1_:int = 0;
          while(_loc1_ < this.n)
          {
             _loc2_ = this.C[_loc1_];
-            _loc3_ = Number.MAX_VALUE;
+            _loc3_ = int.MAX_VALUE;
             _loc4_ = 0;
             while(_loc4_ < this.n)
             {
@@ -368,11 +373,11 @@ package net.wg.gui.lobby.techtree.math
          return 2;
       }
       
-      private function step2() : Number
+      private function step2() : int
       {
          var _loc2_:Array = null;
-         var _loc3_:Number = NaN;
-         var _loc1_:Number = 0;
+         var _loc3_:int = 0;
+         var _loc1_:int = 0;
          while(_loc1_ < this.n)
          {
             _loc2_ = this.C[_loc1_];
@@ -393,11 +398,11 @@ package net.wg.gui.lobby.techtree.math
          return 3;
       }
       
-      private function step3() : Number
+      private function step3() : int
       {
-         var _loc3_:Number = NaN;
-         var _loc1_:Number = 0;
-         var _loc2_:Number = 0;
+         var _loc3_:int = 0;
+         var _loc1_:int = 0;
+         var _loc2_:int = 0;
          while(_loc2_ < this.n)
          {
             _loc3_ = 0;
@@ -412,17 +417,17 @@ package net.wg.gui.lobby.techtree.math
             }
             _loc2_++;
          }
-         return _loc1_ >= this.n ? Number(7) : Number(4);
+         return _loc1_ >= this.n ? int(7) : int(4);
       }
       
-      private function step4() : Number
+      private function step4() : int
       {
          var _loc6_:Object = null;
-         var _loc1_:Number = 0;
+         var _loc1_:int = 0;
          var _loc2_:Boolean = false;
-         var _loc3_:Number = -1;
-         var _loc4_:Number = -1;
-         var _loc5_:Number = -1;
+         var _loc3_:int = -1;
+         var _loc4_:int = -1;
+         var _loc5_:int = -1;
          while(!_loc2_)
          {
             _loc6_ = this.findZero();
@@ -455,11 +460,11 @@ package net.wg.gui.lobby.techtree.math
          return _loc1_;
       }
       
-      private function step5() : Number
+      private function step5() : int
       {
-         var _loc3_:Number = NaN;
-         var _loc4_:Number = NaN;
-         var _loc1_:Number = 0;
+         var _loc3_:int = 0;
+         var _loc4_:int = 0;
+         var _loc1_:int = 0;
          this.path[_loc1_][0] = this.Z0Row;
          this.path[_loc1_][1] = this.Z0Column;
          var _loc2_:Boolean = false;
@@ -490,11 +495,11 @@ package net.wg.gui.lobby.techtree.math
          return 3;
       }
       
-      private function step6() : Number
+      private function step6() : int
       {
-         var _loc3_:Number = NaN;
-         var _loc1_:Number = this.findSmallest();
-         var _loc2_:Number = 0;
+         var _loc3_:int = 0;
+         var _loc1_:int = this.findSmallest();
+         var _loc2_:int = 0;
          while(_loc2_ < this.n)
          {
             _loc3_ = 0;

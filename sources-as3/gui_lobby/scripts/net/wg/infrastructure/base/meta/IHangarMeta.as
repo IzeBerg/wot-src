@@ -22,8 +22,6 @@ package net.wg.infrastructure.base.meta
       
       function as_setCarouselEnabled(param1:Boolean) : void;
       
-      function as_setCarouselVisible(param1:Boolean) : void;
-      
       function as_setupAmmunitionPanel(param1:Object) : void;
       
       function as_setControlsVisible(param1:Boolean) : void;
@@ -64,10 +62,6 @@ package net.wg.infrastructure.base.meta
       
       function as_setDQWidgetLayout(param1:int) : void;
       
-      function as_toggleEventMode(param1:Boolean) : void;
-      
-      function as_setLootboxesVisible(param1:Boolean) : void;
-      
-      function as_setCloseBtnVisible(param1:Boolean) : void;
+      function as_setChinaLootboxesVisible(param1:Boolean) : void;
    }
 }

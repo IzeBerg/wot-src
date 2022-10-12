@@ -5,7 +5,7 @@ from gui.impl.gen import R
 from shared_utils import safeCancelCallback
 import constants, nations
 from account_helpers import getAccountDatabaseID, getPlayerID, AccountSettings
-from adisp import process
+from adisp import adisp_process
 from constants import PREBATTLE_MAX_OBSERVERS_IN_TEAM, OBSERVERS_BONUS_TYPES, PREBATTLE_ERRORS, PREBATTLE_TYPE
 from gui import SystemMessages
 from gui import makeHtmlString
@@ -194,7 +194,7 @@ class BattleSessionWindow(BattleSessionWindowMeta):
             self.__doRequestToAssignMember(pID)
             return
 
-    @process
+    @adisp_process
     def requestToReady(self, value):
         if value:
             waitingID = 'prebattle/player_ready'
@@ -207,7 +207,7 @@ class BattleSessionWindow(BattleSessionWindowMeta):
         else:
             self._showActionErrorMessage(ctx.getLastErrorString())
 
-    @process
+    @adisp_process
     def __doRequestToAssignMember(self, pID):
         ctx = AssignLegacyCtx(pID, self._getPlayerTeam() | PREBATTLE_ROSTER.ASSIGNED, 'prebattle/assign')
         result = yield self.prbDispatcher.sendPrbRequest(ctx)
@@ -220,11 +220,11 @@ class BattleSessionWindow(BattleSessionWindowMeta):
             return
         self.__doRequestToUnassignMember(pID)
 
-    @process
+    @adisp_process
     def __doRequestToUnassignMember(self, pID):
         yield self.prbDispatcher.sendPrbRequest(AssignLegacyCtx(pID, self._getPlayerTeam() | PREBATTLE_ROSTER.UNASSIGNED, 'prebattle/assign'))
 
-    @process
+    @adisp_process
     def requestToKickPlayer(self, pID):
         yield self.prbDispatcher.sendPrbRequest(KickPlayerCtx(pID, 'prebattle/kick'))
 

@@ -6,6 +6,7 @@ package net.wg.gui.lobby.header.headerButtonBar
    import net.wg.data.constants.Directions;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.CURRENCIES_CONSTANTS;
+   import net.wg.gui.interfaces.IHeaderButtonResizableItem;
    import net.wg.gui.lobby.header.events.HeaderEvents;
    import net.wg.gui.lobby.header.vo.HeaderButtonVo;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
@@ -416,52 +417,85 @@ package net.wg.gui.lobby.header.headerButtonBar
       
       private function updateFreeSizeButtons() : void
       {
-         var _loc4_:HeaderButtonVo = null;
+         var _loc5_:HeaderButtonVo = null;
+         var _loc11_:int = 0;
+         var _loc12_:Number = NaN;
+         var _loc13_:IHeaderButtonResizableItem = null;
+         var _loc14_:int = 0;
          if(!_renderers || _renderers.length == 0)
          {
             return;
          }
          var _loc1_:HeaderButton = null;
          var _loc2_:HeaderButton = null;
-         var _loc3_:HeaderButton = null;
-         var _loc5_:int = 0;
+         var _loc3_:Vector.<IHeaderButtonResizableItem> = new Vector.<IHeaderButtonResizableItem>();
+         var _loc4_:Vector.<int> = new Vector.<int>();
          var _loc6_:int = 0;
-         var _loc7_:int = _renderers.length;
-         var _loc8_:int = 0;
-         while(_loc8_ < _loc7_)
+         var _loc7_:int = 0;
+         var _loc8_:int = _renderers.length;
+         var _loc9_:int = 0;
+         while(_loc9_ < _loc8_)
          {
-            _loc1_ = _renderers[_loc8_];
-            _loc4_ = _loc1_.headerButtonData;
-            if(_loc4_ && _loc4_.isUseFreeSize)
+            _loc1_ = _renderers[_loc9_];
+            _loc5_ = _loc1_.headerButtonData;
+            if(_loc5_ && _loc5_.resizePriority > 0)
             {
-               if(!_loc2_ && _loc4_.direction == TextFieldAutoSize.LEFT)
+               if(_loc5_.direction == TextFieldAutoSize.LEFT)
                {
-                  _loc2_ = _loc1_;
+                  if(!_loc2_)
+                  {
+                     _loc2_ = _loc1_;
+                  }
                }
-               if(!_loc3_ && _loc4_.direction == TextFieldAutoSize.RIGHT)
+               else if(_loc5_.direction == TextFieldAutoSize.RIGHT)
                {
-                  _loc3_ = _loc1_;
+                  _loc11_ = 0;
+                  while(_loc11_ < _loc4_.length)
+                  {
+                     if(_loc5_.resizePriority <= _loc4_[_loc11_])
+                     {
+                        break;
+                     }
+                     _loc11_++;
+                  }
+                  _loc4_.splice(_loc11_,0,_loc5_.resizePriority);
+                  _loc3_.splice(_loc11_,0,_loc1_.content);
                }
             }
-            else if(_loc4_.direction == TextFieldAutoSize.LEFT)
-            {
-               _loc5_ += _loc1_.bounds.width;
-            }
-            else
+            else if(_loc5_.direction == TextFieldAutoSize.LEFT)
             {
                _loc6_ += _loc1_.bounds.width;
             }
-            _loc8_++;
+            else
+            {
+               _loc7_ += _loc1_.bounds.width;
+            }
+            _loc9_++;
          }
          if(_loc2_)
          {
-            _loc5_ = this._centerItemRect.x - _loc5_;
-            _loc2_.content.setAvailableWidth(_loc5_);
+            _loc6_ = this._centerItemRect.x - _loc6_;
+            _loc2_.content.setAvailableWidth(_loc6_);
          }
-         if(_loc3_)
+         var _loc10_:uint = _loc3_.length;
+         if(_loc10_ > 0)
          {
-            _loc6_ = this._screenWidth - (this._centerItemRect.x + this._centerItemRect.width + _loc6_);
-            _loc3_.content.setAvailableWidth(_loc6_);
+            _loc7_ = this._screenWidth - (this._centerItemRect.x + this._centerItemRect.width + _loc7_);
+            _loc9_ = 0;
+            while(_loc9_ < _loc10_)
+            {
+               _loc12_ = 0;
+               _loc14_ = _loc9_ + 1;
+               while(_loc14_ < _loc10_)
+               {
+                  _loc12_ += _loc3_[_loc14_].getMinAvailableWidth();
+                  _loc14_++;
+               }
+               _loc13_ = _loc3_[_loc9_];
+               _loc13_.setAvailableWidth(_loc7_ - _loc12_);
+               _loc7_ -= _loc13_.getActualWidth();
+               _loc9_++;
+            }
          }
       }
       

@@ -6,6 +6,8 @@ package net.wg.gui.lobby.components.data
    public class BaseTankmanVO extends DAAPIDataClass
    {
       
+      private static const ROLES:String = "roles";
+      
       private static const SKILLS:String = "skills";
       
       private static const MAX_SKILL_LEVEL:int = 100;
@@ -55,9 +57,16 @@ package net.wg.gui.lobby.components.data
       
       public var buySkillCount:int = 0;
       
+      public var buyFreeSkillCount:int = 0;
+      
+      public var hasCommanderFeature:Boolean = false;
+      
+      public var roles:Vector.<String>;
+      
       public function BaseTankmanVO(param1:Object)
       {
          this.skills = [];
+         this.roles = new Vector.<String>(0);
          super(param1);
       }
       
@@ -67,6 +76,8 @@ package net.wg.gui.lobby.components.data
          var _loc4_:uint = 0;
          var _loc5_:int = 0;
          var _loc6_:SkillsVO = null;
+         var _loc7_:Array = null;
+         var _loc8_:String = null;
          if(param1 == SKILLS)
          {
             if(param2 != null)
@@ -81,6 +92,7 @@ package net.wg.gui.lobby.components.data
                   if(_loc6_.buy)
                   {
                      this.canBuySkill = true;
+                     this.buyFreeSkillCount = _loc6_.buyFreeCount;
                      this.buySkillCount = _loc6_.buyCount;
                      this.buySkillLevel = _loc6_.level;
                      _loc6_.dispose();
@@ -98,6 +110,16 @@ package net.wg.gui.lobby.components.data
             }
             return false;
          }
+         if(param1 == ROLES)
+         {
+            _loc7_ = param2 as Array;
+            App.utils.asserter.assertNotNull(_loc7_,Errors.INVALID_TYPE + Array);
+            for each(_loc8_ in _loc7_)
+            {
+               this.roles.push(_loc8_);
+            }
+            return false;
+         }
          return true;
       }
       
@@ -112,6 +134,8 @@ package net.wg.gui.lobby.components.data
          }
          this.skills.splice(0,_loc1_);
          this.skills = null;
+         this.roles.splice(0,this.roles.length);
+         this.roles = null;
          super.onDispose();
       }
       

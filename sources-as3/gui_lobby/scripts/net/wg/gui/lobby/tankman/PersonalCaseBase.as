@@ -11,15 +11,13 @@ package net.wg.gui.lobby.tankman
       private static const SKILLS:String = "skills";
        
       
-      protected var isFirtsRun:Boolean = true;
-      
-      protected var autoSelectTab:int = 0;
-      
       protected var data:PersonalCaseModel;
       
       protected var stats:Object;
       
       protected var retrainingData:PersonalCaseRetrainingModel;
+      
+      protected var freeSkillsModel:Array;
       
       protected var skillsModel:Array;
       
@@ -31,6 +29,7 @@ package net.wg.gui.lobby.tankman
       
       public function PersonalCaseBase()
       {
+         this.freeSkillsModel = [];
          this.skillsModel = [];
          super();
       }
@@ -40,6 +39,7 @@ package net.wg.gui.lobby.tankman
          this.data = null;
          this.stats = null;
          this.retrainingData = null;
+         this.freeSkillsModel = null;
          this.skillsModel = null;
          this.documentsData = null;
          this.crewSkinsData = null;
@@ -48,7 +48,6 @@ package net.wg.gui.lobby.tankman
       
       override protected function setCommonData(param1:PersonalCaseModel) : void
       {
-         this.autoSelectTab = param1.tabIndex;
          this.data = param1;
          this.updateCommonElements();
          this.updateSkillsRelatedElements();
@@ -102,48 +101,61 @@ package net.wg.gui.lobby.tankman
          this.runtimeUpdateByModel(CrewTankmanRetraining,this.retrainingData);
       }
       
+      override protected function setFreeSkillsData(param1:Array) : void
+      {
+         this.freeSkillsModel = [];
+         this.convertSkillsData(param1,this.freeSkillsModel,true);
+         this.runtimeUpdateByModel(PersonalCaseFreeSkills,new PersonalCaseSkillsModel(this.freeSkillsModel,this.data.isBootcamp));
+      }
+      
       override protected function setSkillsData(param1:Array) : void
       {
-         var _loc2_:uint = 0;
-         var _loc3_:PersonalCaseSkillModel = null;
-         var _loc4_:Object = null;
-         var _loc5_:String = null;
-         var _loc6_:int = 0;
-         var _loc7_:Object = null;
          this.skillsModel = [];
-         for each(_loc4_ in param1)
+         this.convertSkillsData(param1,this.skillsModel,false);
+         this.updateSkillsRelatedElements();
+         this.runtimeUpdateByModel(PersonalCaseSkills,new PersonalCaseSkillsModel(this.skillsModel,this.data.isBootcamp));
+      }
+      
+      private function convertSkillsData(param1:Array, param2:Array, param3:Boolean) : void
+      {
+         var _loc4_:uint = 0;
+         var _loc5_:PersonalCaseSkillModel = null;
+         var _loc6_:Object = null;
+         var _loc7_:String = null;
+         var _loc8_:int = 0;
+         var _loc9_:Object = null;
+         for each(_loc6_ in param1)
          {
-            if(!(!_loc4_.hasOwnProperty(SKILLS) || !_loc4_.skills is Array || _loc4_.skills.length <= 0))
+            if(!(!_loc6_.hasOwnProperty(SKILLS) || !_loc6_.skills is Array || _loc6_.skills.length <= 0))
             {
-               _loc3_ = new PersonalCaseSkillModel();
-               _loc5_ = _loc4_.id;
-               _loc3_.rankId = _loc5_;
-               _loc3_.title = _loc5_;
-               _loc3_.isHeader = true;
-               _loc3_.selfSkill = this.data.roleType == _loc5_;
-               this.skillsModel.push(_loc3_);
-               _loc2_ = _loc4_.skills.length;
-               _loc6_ = 0;
-               while(_loc6_ < _loc2_)
+               _loc5_ = new PersonalCaseSkillModel();
+               _loc7_ = _loc6_.id;
+               _loc5_.rankId = _loc7_;
+               _loc5_.title = _loc7_;
+               _loc5_.isHeader = true;
+               _loc5_.selfSkill = this.data.roleType == _loc7_;
+               param2.push(_loc5_);
+               _loc4_ = _loc6_.skills.length;
+               _loc8_ = 0;
+               while(_loc8_ < _loc4_)
                {
-                  _loc3_ = new PersonalCaseSkillModel();
-                  _loc7_ = _loc4_.skills[_loc6_];
-                  _loc3_.title = _loc7_.id;
-                  _loc3_.isHeader = false;
-                  _loc3_.desc = _loc7_.desc;
-                  _loc3_.enabled = _loc7_.enabled;
-                  _loc3_.name = _loc7_.name;
-                  _loc3_.tankmanID = _loc7_.tankmanID;
-                  _loc3_.rankId = _loc5_;
-                  _loc3_.selfSkill = this.data.roleType == _loc5_;
-                  _loc3_.hasNewSkills = this.data.skillsCountForLearn > 0;
-                  this.skillsModel.push(_loc3_);
-                  _loc6_++;
+                  _loc5_ = new PersonalCaseSkillModel();
+                  _loc9_ = _loc6_.skills[_loc8_];
+                  _loc5_.title = _loc9_.id;
+                  _loc5_.isHeader = false;
+                  _loc5_.desc = _loc9_.desc;
+                  _loc5_.enabled = _loc9_.enabled;
+                  _loc5_.name = _loc9_.name;
+                  _loc5_.tankmanID = _loc9_.tankmanID;
+                  _loc5_.rankId = _loc7_;
+                  _loc5_.selfSkill = this.data.roleType == _loc7_;
+                  _loc5_.hasNewSkills = this.data.skillsCountForLearn > 0;
+                  _loc5_.isFreeSkill = param3;
+                  param2.push(_loc5_);
+                  _loc8_++;
                }
             }
          }
-         this.updateSkillsRelatedElements();
-         this.runtimeUpdateByModel(PersonalCaseSkills,new PersonalCaseSkillsModel(this.skillsModel,this.data.isBootcamp));
       }
       
       override protected function setDocumentsData(param1:PersonalCaseDocsModel) : void
@@ -184,6 +196,15 @@ package net.wg.gui.lobby.tankman
          this.documentsData.changeDocumentsEnable = param1;
          this.documentsData.warning = param2;
          this.runtimeUpdateByModel(PersonalCaseDocs,this.documentsData);
+      }
+      
+      public function as_openTab(param1:String) : void
+      {
+         this.openTabByID(param1);
+      }
+      
+      protected function openTabByID(param1:String) : void
+      {
       }
    }
 }

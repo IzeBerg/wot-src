@@ -33,7 +33,7 @@ class Event(list):
         del self[:]
 
     def __repr__(self):
-        return 'Event(%s):%s' % (len(self), repr(self[:]))
+        return 'Event(%s)(%s):%s' % (self.__class__.__name__, len(self), repr(self[:]))
 
 
 class SafeEvent(Event):
@@ -50,22 +50,22 @@ class SafeEvent(Event):
                 LOG_CURRENT_EXCEPTION()
 
 
-class HoldBackEvent(Event):
-    __slots__ = ('__isHoldBack', )
+class SafeComponentEvent(SafeEvent):
 
-    def __init__(self, manager=None):
-        super(HoldBackEvent, self).__init__(manager)
-        self.__isHoldBack = False
-
-    def halt(self):
-        self.__isHoldBack = True
-
-    def proceed(self):
-        self.__isHoldBack = False
+    def __init__(self, manager=None, component=None):
+        super(SafeComponentEvent, self).__init__(manager)
+        self.__component = component
 
     def __call__(self, *args, **kwargs):
-        if not self.__isHoldBack:
-            super(HoldBackEvent, self).__call__(*args, **kwargs)
+        if self.__component is None or not self.__component.isActive:
+            return
+        super(SafeEvent, self).__call__(*args, **kwargs)
+        return
+
+    def clear(self):
+        self.__component = None
+        super(SafeComponentEvent, self).clear()
+        return
 
 
 class Handler(object):

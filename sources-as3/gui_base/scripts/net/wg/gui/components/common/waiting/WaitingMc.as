@@ -1,5 +1,6 @@
 package net.wg.gui.components.common.waiting
 {
+   import flash.display.Sprite;
    import flash.text.TextField;
    import net.wg.infrastructure.base.UIComponentEx;
    
@@ -12,6 +13,8 @@ package net.wg.gui.components.common.waiting
        
       
       public var textField:TextField;
+      
+      public var waitingLogo:Sprite;
       
       public var uid:int = 0;
       
@@ -27,13 +30,8 @@ package net.wg.gui.components.common.waiting
       override protected function onDispose() : void
       {
          this.textField = null;
+         this.waitingLogo = null;
          super.onDispose();
-      }
-      
-      public function setMessage(param1:String) : void
-      {
-         this._text = param1;
-         invalidate(TEXT_INVALID);
       }
       
       override protected function draw() : void
@@ -43,6 +41,12 @@ package net.wg.gui.components.common.waiting
          {
             this.textField.text = this._text;
          }
+      }
+      
+      public function setMessage(param1:String) : void
+      {
+         this._text = param1;
+         invalidate(TEXT_INVALID);
       }
    }
 }

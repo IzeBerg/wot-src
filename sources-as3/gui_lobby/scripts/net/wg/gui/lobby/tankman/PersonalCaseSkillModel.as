@@ -22,6 +22,8 @@ package net.wg.gui.lobby.tankman
       
       public var hasNewSkills:Boolean = false;
       
+      public var isFreeSkill:Boolean = false;
+      
       public function PersonalCaseSkillModel()
       {
          super();

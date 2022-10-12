@@ -1,7 +1,7 @@
 import logging
 from functools import partial
 import BigWorld
-from adisp import process
+from adisp import adisp_process
 from gui.macroses import getLanguageCode
 from gui.wgcg.promo_screens.contexts import PromoSendActionLogCtx
 from helpers import dependency, isPlayerAccount, time_utils
@@ -53,7 +53,7 @@ class PromoLogger(IPromoLogger):
     def __init__(self):
         self.__requestIDs = {}
 
-    @process
+    @adisp_process
     def logAction(self, **kwargs):
         if self.__isEnabled():
             ctx = PromoSendActionLogCtx(self.__packData(kwargs))

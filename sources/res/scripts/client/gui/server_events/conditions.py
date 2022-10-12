@@ -12,7 +12,7 @@ from gui.shared.utils.requesters.ItemsRequester import RESEARCH_CRITERIA
 from helpers import i18n, dependency, getLocalizedData
 from items import vehicles
 from shared_utils import CONST_CONTAINER
-from skeletons.gui.game_control import IIGRController, IEventBattlesController
+from skeletons.gui.game_control import IIGRController
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
 from soft_exception import SoftException
@@ -56,10 +56,11 @@ class GROUP_TYPE(CONST_CONTAINER):
 
 _SORT_ORDER = ('igrType', 'premiumPlusAccount', 'premiumAccount', 'inClan', 'GR', 'accountDossier',
                'vehiclesUnlocked', 'vehiclesOwned', 'token', 'hasReceivedMultipliedXP',
-               'vehicleDossier', 'vehicleDescr', 'bonusTypes', 'isSquad', 'mapCamouflageKind',
-               'geometryNames', 'win', 'isAlive', 'achievements', 'results', 'unitResults',
-               'vehicleKills', 'vehicleDamage', 'vehicleStun', 'clanKills', 'multiStunEventcumulative',
-               'cumulativeExt', 'vehicleKillsCumulative', 'vehicleDamageCumulative',
+               'vehicleDossier', 'vehicleDescr', 'customization', 'bonusTypes', 'isSquad',
+               'mapCamouflageKind', 'geometryNames', 'win', 'isAlive', 'achievements',
+               'results', 'unitResults', 'vehicleKills', 'vehicleDamage', 'vehicleStun',
+               'clanKills', 'multiStunEvent', 'firstBloodcumulative', 'cumulativeExt',
+               'cumulativeSum', 'vehicleKillsCumulative', 'vehicleDamageCumulative',
                'vehicleStunCumulative')
 _SORT_ORDER_INDICES = dict((name, idx) for idx, name in enumerate(_SORT_ORDER))
 
@@ -717,7 +718,7 @@ class XPMultipliedVehicle(_VehicleRequirement):
         self._needValue = self._data.get('value')
 
     def __repr__(self):
-        return '%s<value=%r>' % (self.__class__.__name__, self._needValue)
+        return 'XPMultipliedVehicle<value=%r>' % self._needValue
 
     def negate(self):
         self._needValue = not self._needValue
@@ -735,32 +736,6 @@ class XPMultipliedVehicle(_VehicleRequirement):
 
     def _isAvailable(self, vehicle):
         return (vehicle.dailyXPFactor == -1) == self._needValue
-
-
-class WtTicketRequired(_VehicleRequirement):
-    gameEventController = dependency.descriptor(IEventBattlesController)
-
-    def __init__(self, path, data):
-        super(WtTicketRequired, self).__init__('wtTicketRequired', dict(data), path)
-        self._needValue = True
-
-    def __repr__(self):
-        return '%s<value=%r>' % (self.__class__.__name__, self._needValue)
-
-    def negate(self):
-        self._needValue = not self._needValue
-
-    def isAvailableReason(self, vehicle):
-        return (
-         self._isAvailable(vehicle), 'ticketsShortage')
-
-    def getValue(self):
-        return self._needValue
-
-    def _isAvailable(self, vehicle):
-        if vehicle.isBoss and not vehicle.isSpecialBoss:
-            return self.gameEventController.hasEnoughTickets() == self._needValue
-        return True
 
 
 class InstalledItemCondition(_VehicleRequirement):
@@ -1096,6 +1071,23 @@ class ClanKills(_Condition, _Negatable):
 
     def getCamos2ids(self):
         return self._camos2ids
+
+
+class Customization(_Requirement):
+
+    def __init__(self, path, data):
+        super(Customization, self).__init__('customization', dict(data), path)
+        self._styleId = self._data.get('styleId')
+        self._isInstalled = True
+
+    def __repr__(self):
+        return 'Customization<styleId=%d; isInstalled=%r>' % (self._styleId, self._isInstalled)
+
+    def negate(self):
+        self._isInstalled = not self._isInstalled
+
+    def getValue(self):
+        return self._isInstalled
 
 
 class _Cumulativable(_Condition):
@@ -1610,6 +1602,44 @@ class MultiStunEvent(_Condition, _Negatable):
     @property
     def relation(self):
         return self._relation
+
+
+class FirstBlood(_Condition, _Negatable):
+
+    def __init__(self, path, data):
+        super(FirstBlood, self).__init__('firstBlood', dict(data), path)
+        self._isFirstBlood = True
+
+    def __repr__(self):
+        return 'FirstBlood<value=%r>' % self._isFirstBlood
+
+    def negate(self):
+        self._isFirstBlood = not self._isFirstBlood
+
+    def getValue(self):
+        return self._isFirstBlood
+
+
+class CumulativeSum(_Cumulativable):
+
+    def __init__(self, path, data, bonusCond):
+        super(CumulativeSum, self).__init__('cumulativeSum', dict(data), path)
+        self._relation = _findRelation(self._data.keys())
+        self._relationValue = _getNodeValue(self._data, self._relation)
+        self._bonus = weakref.proxy(bonusCond)
+
+    def __repr__(self):
+        conditions = tuple(value[1] for value in self._data.get('sum', ()))
+        return 'CumulativeSum<conditions=%s>' % conditions
+
+    def getBonusData(self):
+        return self._bonus
+
+    def getKey(self):
+        return 'sum'
+
+    def getTotalValue(self):
+        return self._relationValue
 
 
 def getProgressFromQuestWithSingleAccumulative(quest):

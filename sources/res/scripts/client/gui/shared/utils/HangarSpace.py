@@ -1,14 +1,15 @@
+from Queue import Queue
+from functools import wraps
 import BigWorld, Math, Event, Keys, ResMgr, constants
 from debug_utils import LOG_DEBUG, LOG_DEBUG_DEV
 from gui import g_mouseEventHandlers, InputHandler
-from gui.ClientHangarSpace import ClientHangarSpace, _getHangarPath
+from gui.ClientHangarSpace import ClientHangarSpace
 from gui.Scaleform.Waiting import Waiting
-from gui.shared.utils.decorators import ExecuteAfterCondition
 from helpers import dependency, uniprof
 from helpers.statistics import HANGAR_LOADING_STATE
 from shared_utils import BoundMethodWeakref
 from skeletons.gui.app_loader import IAppLoader
-from skeletons.gui.game_control import IGameSessionController, IIGRController
+from skeletons.gui.game_control import IGameSessionController, IIGRController, IHangarSpaceSwitchController
 from skeletons.gui.shared.utils import IHangarSpace
 from skeletons.helpers.statistics import IStatisticsCollector
 from gui import g_keyEventHandlers
@@ -22,15 +23,38 @@ from gui.hangar_cameras.hangar_camera_common import CameraMovementStates
 from gui.prb_control.events_dispatcher import g_eventDispatcher
 _Q_CHECK_DELAY = 0.0
 
-class _ExecuteAfterHangarSpaceInited(ExecuteAfterCondition):
-    __hangarsSpace = dependency.descriptor(IHangarSpace)
+class _execute_after_hangar_space_inited(object):
+    hangarSpace = dependency.descriptor(IHangarSpace)
+    __slots__ = ('__queue', )
 
-    @property
-    def condition(self):
-        return self.__hangarsSpace.spaceInited
+    def __init__(self):
+        self.__queue = Queue()
+
+    def __call__(self, func):
+
+        @wraps(func)
+        def wrapped(*args, **kwargs):
+            self.storeData(func, *args, **kwargs)
+            self.checkConditionForExit()
+
+        return wrapped
+
+    def checkConditionForExit(self):
+        if not self.hangarSpace.spaceInited:
+            BigWorld.callback(_Q_CHECK_DELAY, self.checkConditionForExit)
+            return
+        self.delayCall()
+
+    def storeData(self, func, *args, **kwargs):
+        self.__queue.put((func, args, kwargs))
+
+    def delayCall(self):
+        while not self.__queue.empty():
+            f, f_args, f_kwargs = self.__queue.get()
+            f(*f_args, **f_kwargs)
 
 
-g_execute_after_hangar_space_inited = _ExecuteAfterHangarSpaceInited()
+g_execute_after_hangar_space_inited = _execute_after_hangar_space_inited()
 
 class HangarVideoCameraController(object):
     hangarSpace = dependency.descriptor(IHangarSpace)
@@ -115,6 +139,7 @@ class HangarSpace(IHangarSpace):
     gameSession = dependency.descriptor(IGameSessionController)
     igrCtrl = dependency.descriptor(IIGRController)
     statsCollector = dependency.descriptor(IStatisticsCollector)
+    hangarSwitchController = dependency.descriptor(IHangarSpaceSwitchController)
 
     def __init__(self):
         self.__space = None
@@ -349,11 +374,8 @@ class HangarSpace(IHangarSpace):
         self.__space.setVehicleSelectable(flag)
 
     def onPremiumChanged(self, isPremium, attrs, premiumExpiryTime):
-        premiumHangar = _getHangarPath(True, self.__igrSpaceType)
-        defaultHangar = _getHangarPath(False, self.__igrSpaceType)
-        if premiumHangar != defaultHangar:
-            self.refreshSpace(isPremium)
         self.__isSpacePremium = isPremium
+        self.hangarSwitchController.processPossibleSceneChange()
 
     @uniprof.regionDecorator(label='hangar.space.loading', scope='exit')
     def __spaceDone(self):

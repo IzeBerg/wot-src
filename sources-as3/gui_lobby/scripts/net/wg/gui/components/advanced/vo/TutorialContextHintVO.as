@@ -12,6 +12,8 @@ package net.wg.gui.components.advanced.vo
       
       public var tooltipComplex:String = "";
       
+      public var args:Object = null;
+      
       public function TutorialContextHintVO(param1:Object)
       {
          super(param1);

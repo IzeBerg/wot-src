@@ -313,9 +313,7 @@ MODULE_MOVIES = {'largeRepairkit': 'consumablesRepairKitBig',
    'recon': 'recon', 
    'regenerationKit': 'resuply', 
    'passive_engineering': 'sabotageSquad', 
-   'smoke': 'smokeCloud', 
-   'wt_largeMedkit': 'consumablesFirstAidWt', 
-   'wt_largeRepairkit': 'consumablesRepairKitBig'}
+   'smoke': 'smokeCloud'}
 _TANKMAN_MOVIES = {'commander': 'crewCommander', 
    'driver': 'crewDriver', 
    'gunner': 'crewGunner', 

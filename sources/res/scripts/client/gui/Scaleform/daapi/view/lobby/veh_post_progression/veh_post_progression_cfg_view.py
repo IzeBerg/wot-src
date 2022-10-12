@@ -1,5 +1,5 @@
 from functools import partial
-from adisp import process
+from adisp import adisp_process
 from gui.ClientUpdateManager import g_clientUpdateManager
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.lobby.go_back_helper import BackButtonContextKeys
@@ -46,7 +46,7 @@ class VehiclePostProgressionCfgView(VehiclePostProgressionViewMeta):
     def compareVehicle(self):
         self.__cmpBasket.addVehicle(self._intCD)
 
-    @process
+    @adisp_process
     def demountAllPairs(self):
         vehicle = self._vehicle
         toDiscardIDs = vehicle.postProgression.getInstalledMultiIds()
@@ -113,7 +113,7 @@ class VehiclePostProgressionCfgView(VehiclePostProgressionViewMeta):
     def _updateTitle(self):
         self.as_setVehicleTitleS(getTitleVO(self._vehicle))
 
-    def __onCmpBasketChange(self, changedData, _=None):
+    def __onCmpBasketChange(self, changedData):
         if changedData.isFullChanged:
             self._updateData()
 

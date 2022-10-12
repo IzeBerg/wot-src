@@ -32,10 +32,10 @@ package net.wg.gui.battle.epicRandom.battleloading.components
          this.enemyDP.addEventListener(ListDataProviderEvent.VALIDATE_ITEMS,this.onEnemyDPValidateItemsHandler);
       }
       
-      public function addVehiclesInfo(param1:Boolean, param2:Vector.<DAAPIVehicleInfoVO>, param3:Vector.<Number>) : void
+      public function addVehiclesInfo(param1:Vector.<DAAPIVehicleInfoVO>, param2:Vector.<Number>, param3:Boolean) : void
       {
-         var _loc4_:IVehiclesDataProvider = !!param1 ? this.enemyDP : this.teamDP;
-         if(_loc4_.addVehiclesInfo(param2,param3))
+         var _loc4_:IVehiclesDataProvider = !!param3 ? this.enemyDP : this.teamDP;
+         if(_loc4_.addVehiclesInfo(param1,param2))
          {
             _loc4_.invalidate();
          }
@@ -76,13 +76,13 @@ package net.wg.gui.battle.epicRandom.battleloading.components
          }
       }
       
-      public function setVehiclesData(param1:Boolean, param2:Array, param3:Vector.<Number>) : void
+      public function setVehiclesData(param1:Array, param2:Vector.<Number>, param3:Boolean) : void
       {
-         var _loc4_:IVehiclesDataProvider = !!param1 ? this.enemyDP : this.teamDP;
-         _loc4_.setSource(param2);
-         _loc4_.setSorting(param3);
+         var _loc4_:IVehiclesDataProvider = !!param3 ? this.enemyDP : this.teamDP;
+         _loc4_.setSource(param1);
+         _loc4_.setSorting(param2);
          _loc4_.invalidate();
-         if(param1)
+         if(param3)
          {
             this._table.team2PlayerList.visible = true;
             this._table.team2PlayerList.dataProvider = _loc4_;
@@ -94,11 +94,11 @@ package net.wg.gui.battle.epicRandom.battleloading.components
          }
       }
       
-      public function updateVehiclesInfo(param1:Boolean, param2:Vector.<DAAPIVehicleInfoVO>, param3:Vector.<Number>) : void
+      public function updateVehiclesData(param1:Vector.<DAAPIVehicleInfoVO>, param2:Vector.<Number>, param3:Boolean) : void
       {
-         var _loc4_:IVehiclesDataProvider = !!param1 ? this.enemyDP : this.teamDP;
-         var _loc5_:Boolean = _loc4_.updateVehiclesInfo(param2);
-         _loc5_ = _loc4_.setSorting(param3) || _loc5_;
+         var _loc4_:IVehiclesDataProvider = !!param3 ? this.enemyDP : this.teamDP;
+         var _loc5_:Boolean = _loc4_.updateVehiclesInfo(param1);
+         _loc5_ = _loc4_.setSorting(param2) || _loc5_;
          if(_loc5_)
          {
             _loc4_.invalidate();

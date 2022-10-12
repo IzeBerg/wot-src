@@ -140,6 +140,7 @@ package net.wg.gui.messenger.views
          this.list.addEventListener(ListEvent.ITEM_DOUBLE_CLICK,this.onListItemDoubleClickHandler,false,0,true);
          this.list.addEventListener(ListEventEx.ITEM_CLICK,this.onListItemClickHandler);
          this.list.dataProvider = this._searchDP;
+         App.utils.focusHandler.setFocus(this.list);
          this.onSearchDPChange();
          this.infoMsg.mouseEnabled = false;
          this.infoMsg.text = MESSENGER.MESSENGER_CONTACTS_EXTERNALSEARCH_EMPTYSEARCHRESULTPROMPT;

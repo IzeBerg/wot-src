@@ -1,17 +1,23 @@
-from vehicle_context import VehicleContextClient
-from visual_script.context import vse_event_out, vse_set_property
+from visual_script_client.contexts.vehicle_context import VehicleContext
+from visual_script.context import vse_event_out, vse_set_property, vse_get_property
 from visual_script.misc import ASPECT
 from visual_script.slot_types import SLOT_TYPE
 
-class AbilityContextClient(VehicleContextClient):
+class AbilityContextClient(VehicleContext):
 
-    def __init__(self, vehicle):
+    def __init__(self, vehicle, equipmentName=None):
         super(AbilityContextClient, self).__init__(vehicle)
         self.canActivate = True
         self.errorKey = None
+        self.equipmentName = equipmentName or ''
         return
 
-    @vse_set_property(SLOT_TYPE.BOOL, display_name='CanActivate', description='', aspects=[
+    @vse_get_property(SLOT_TYPE.STR, display_name='equipmentName', description='', aspects=[
+     ASPECT.CLIENT])
+    def getEquipmentName(self):
+        return self.equipmentName
+
+    @vse_set_property(SLOT_TYPE.BOOL, display_name='Set CanActivate', description='', aspects=[
      ASPECT.CLIENT])
     def setCanActivate(self, canActivate):
         self.canActivate = canActivate
@@ -19,7 +25,7 @@ class AbilityContextClient(VehicleContextClient):
             self.errorKey = None
         return
 
-    @vse_set_property(SLOT_TYPE.STR, display_name='ErrorKey', description='', aspects=[
+    @vse_set_property(SLOT_TYPE.STR, display_name='Set ErrorKey', description='KeyName of currently the severest error to be displayed in UI', aspects=[
      ASPECT.CLIENT])
     def setErrorKey(self, errorKey):
         self.errorKey = errorKey if errorKey else None
@@ -28,6 +34,11 @@ class AbilityContextClient(VehicleContextClient):
     @vse_event_out(display_name='OnCanActive', description='Calls to check whether ability can be activated', aspects=[
      ASPECT.CLIENT])
     def canActive(self):
+        pass
+
+    @vse_event_out(SLOT_TYPE.INT, display_name='OnSetErrorState', description='Calls when error state changes', aspects=[
+     ASPECT.CLIENT])
+    def onSetErrorState(self, errorState):
         pass
 
     @vse_event_out(display_name='OnReady', description='Calls when ability ready', aspects=[

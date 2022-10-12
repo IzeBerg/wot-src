@@ -46,11 +46,16 @@ package net.wg.gui.lobby.techtree.controls
          this._baseDisposed = true;
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function updateSize(param1:Number, param2:Number) : void
       {
          var _loc3_:Boolean = param2 >= _HEIGHT_BREAKPOINT;
-         this.y = !!_loc3_ ? Number(_Y_BIG) : Number(_Y_SMALL);
-         this.gotoAndStop(!!_loc3_ ? _BIG_TITLE_STATE : _SMALL_TITLE_STATE);
+         y = !!_loc3_ ? Number(_Y_BIG) : Number(_Y_SMALL);
+         gotoAndStop(!!_loc3_ ? _BIG_TITLE_STATE : _SMALL_TITLE_STATE);
          if(this._baseDisposed)
          {
             return;
@@ -75,11 +80,6 @@ package net.wg.gui.lobby.techtree.controls
       public function get titleWidth() : Number
       {
          return this.titleTF.textWidth;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

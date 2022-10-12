@@ -17,15 +17,20 @@ package net.wg.gui.lobby.techtree.controls
          super();
       }
       
-      protected function onDispose() : void
-      {
-         this.labelTF = null;
-      }
-      
       public final function dispose() : void
       {
          this._disposed = true;
          this.onDispose();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
+      protected function onDispose() : void
+      {
+         this.labelTF = null;
       }
       
       public function get text() : String
@@ -36,11 +41,6 @@ package net.wg.gui.lobby.techtree.controls
       public function set text(param1:String) : void
       {
          this.labelTF.text = param1;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

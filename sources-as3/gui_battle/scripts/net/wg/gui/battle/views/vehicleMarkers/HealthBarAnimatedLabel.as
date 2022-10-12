@@ -47,17 +47,34 @@ package net.wg.gui.battle.views.vehicleMarkers
          }
       }
       
-      public function damage(param1:int, param2:String) : void
+      public function damage(param1:int, param2:String, param3:Boolean = false) : void
       {
-         if(tweenState != VehicleMarkersConstants.HB_ANIMATED_INACTIVE_STATE && tweenState != VehicleMarkersConstants.HB_ANIMATED_IMITATION_STATE)
+         var _loc4_:String = null;
+         if(!param3)
          {
-            this._damage += param1;
+            if(tweenState != VehicleMarkersConstants.HB_ANIMATED_INACTIVE_STATE && tweenState != VehicleMarkersConstants.HB_ANIMATED_IMITATION_STATE)
+            {
+               this._damage += param1;
+            }
+            else
+            {
+               this._damage = param1;
+            }
+            param1 = this._damage;
+         }
+         if(param1 > 0)
+         {
+            _loc4_ = String(-param1);
+         }
+         else if(param1 < 0)
+         {
+            _loc4_ = Values.PLUS + String(Math.abs(param1));
          }
          else
          {
-            this._damage = param1;
+            _loc4_ = Values.EMPTY_STR;
          }
-         this.setLabel(this._damage > 0 ? String(-this._damage) : Values.EMPTY_STR,param2);
+         this.setLabel(_loc4_,param2);
       }
       
       public function setLabel(param1:String, param2:String) : void

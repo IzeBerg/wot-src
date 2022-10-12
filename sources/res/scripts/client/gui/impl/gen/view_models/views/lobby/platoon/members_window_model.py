@@ -1,3 +1,4 @@
+from enum import Enum
 from frameworks.wulf import Array
 from gui.impl.gen.view_models.views.lobby.platoon.button_find_players_cancel_search_model import ButtonFindPlayersCancelSearchModel
 from gui.impl.gen.view_models.views.lobby.platoon.button_model import ButtonModel
@@ -6,10 +7,20 @@ from gui.impl.gen.view_models.views.lobby.platoon.slot_model import SlotModel
 from gui.impl.gen.view_models.views.lobby.platoon.window_header_model import WindowHeaderModel
 from gui.impl.gen.view_models.windows.window_model import WindowModel
 
+class PrebattleTypes(Enum):
+    SQUAD = 'squad'
+    EVENT = 'event'
+    EPIC = 'epic'
+    BATTLEROYAL = 'battle_royal'
+    MAPBOX = 'mapbox'
+    COMP7 = 'comp7'
+    FUNRANDOM = 'funRandom'
+
+
 class MembersWindowModel(WindowModel):
     __slots__ = ('onFocusChange', )
 
-    def __init__(self, properties=16, commands=3):
+    def __init__(self, properties=17, commands=3):
         super(MembersWindowModel, self).__init__(properties=properties, commands=commands)
 
     @property
@@ -102,6 +113,12 @@ class MembersWindowModel(WindowModel):
     def setIsFooterMessageGrey(self, value):
         self._setBool(15, value)
 
+    def getPrebattleType(self):
+        return PrebattleTypes(self._getString(16))
+
+    def setPrebattleType(self, value):
+        self._setString(16, value.value)
+
     def _initialize(self):
         super(MembersWindowModel, self)._initialize()
         self._addViewModelProperty('btnInviteFriends', ButtonModel())
@@ -117,4 +134,5 @@ class MembersWindowModel(WindowModel):
         self._addBoolProperty('shouldShowFindPlayersButton', True)
         self._addStringProperty('footerMessage', '')
         self._addBoolProperty('isFooterMessageGrey', False)
+        self._addStringProperty('prebattleType')
         self.onFocusChange = self._addCommand('onFocusChange')

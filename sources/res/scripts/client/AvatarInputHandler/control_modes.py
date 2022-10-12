@@ -500,7 +500,7 @@ class ArcadeControlMode(_GunControlMode):
     def enable(self, **args):
         super(ArcadeControlMode, self).enable(**args)
         SoundGroups.g_instance.changePlayMode(0)
-        self._cam.enable(args.get('preferredPos'), args.get('closesDist', False), turretYaw=args.get('turretYaw', None), gunPitch=args.get('gunPitch', None), initialVehicleMatrix=args.get('initialVehicleMatrix', None), arcadeState=args.get('arcadeState', None))
+        self._cam.enable(args.get('preferredPos'), args.get('closesDist', False), turretYaw=args.get('turretYaw', None), gunPitch=args.get('gunPitch', None), initialVehicleMatrix=args.get('initialVehicleMatrix', None), arcadeState=args.get('arcadeState', None), camTransitionParams=args.get('camTransitionParams', {}))
         player = BigWorld.player()
         if player.isObserver() and not player.observerSeesAll():
             player.updateObservedVehicleData()
@@ -577,8 +577,10 @@ class ArcadeControlMode(_GunControlMode):
                 self._cam.update(dx, dy, dz, True, True, False if dx == dy == dz == 0.0 else True)
                 return True
             if cmdMap.isFired(CommandMapping.CMD_CM_ALTERNATE_MODE, key) and isDown:
-                self.__activateAlternateMode()
-                return True
+                ownVehicle = BigWorld.entity(BigWorld.player().playerVehicleID)
+                if ownVehicle and ownVehicle.isStarted:
+                    self.__activateAlternateMode()
+                    return True
             return False
 
     def handleMouseEvent(self, dx, dy, dz):
@@ -1335,14 +1337,11 @@ class PostMortemControlMode(IControlMode):
         if arena is not None:
             arena.onVehicleKilled += self.__onArenaVehicleKilled
         if bool(args.get('respawn', False)):
-            self._targetCtrlModeAfterDelay = CTRL_MODE_NAME.RESPAWN_DEATH
             respawnCtrl = self.guiSessionProvider.dynamic.respawn
-            if respawnCtrl:
-                respawnCtrl.onRespawnInfoUpdated += self.__onRespawnInfoUpdated
-                if respawnCtrl.respawnInfo is not None:
-                    self.__onRespawnInfoUpdated(respawnCtrl.respawnInfo)
-                else:
-                    self._targetCtrlModeAfterDelay = None
+            self._targetCtrlModeAfterDelay = None if respawnCtrl.respawnInfo is None else CTRL_MODE_NAME.RESPAWN_DEATH
+            respawnCtrl.onRespawnInfoUpdated += self.__onRespawnInfoUpdated
+            if respawnCtrl.respawnInfo is not None:
+                self.__onRespawnInfoUpdated(respawnCtrl.respawnInfo)
         return
 
     def __startPostmortemDelay(self, vehicleID):

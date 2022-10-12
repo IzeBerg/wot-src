@@ -349,7 +349,8 @@ package net.wg.gui.lobby.techtree.sub
       
       override protected function draw() : void
       {
-         var _loc1_:NationGridDisplaySettings = null;
+         var _loc1_:String = null;
+         var _loc2_:NationGridDisplaySettings = null;
          super.draw();
          if(this._dataProvider && isInvalid(InvalidationType.DATA))
          {
@@ -365,19 +366,20 @@ package net.wg.gui.lobby.techtree.sub
             if(this._renderers.length > 0)
             {
                this.ntGraphics.mainLine.y = this.rootRenderer.y + MAIN_LINE_OFFSET_Y;
-               _loc1_ = this._dataProvider.getCommonGridSettings();
-               this.ntGraphics.mainLine.width = 2 * _loc1_.start.x + (_loc1_.columns - 1) * _loc1_.step.x + NODE_WIDTH + MAIN_LINE_WIDTH_OFFSET;
+               _loc2_ = this._dataProvider.getCommonGridSettings();
+               this.ntGraphics.mainLine.width = 2 * _loc2_.start.x + (_loc2_.columns - 1) * _loc2_.step.x + NODE_WIDTH + MAIN_LINE_WIDTH_OFFSET;
                this.drawLevels();
             }
             this.updatePremiumPanelVisibility(this.isPremiumPanelVisible());
-            if(!this._hPositionByNation.hasOwnProperty(this.dataProvider.nation))
+            _loc1_ = this.dataProvider.nation;
+            if(!this._hPositionByNation.hasOwnProperty(_loc1_))
             {
                this.scrollToIndex(this.dataProvider.getScrollIndex());
             }
             else
             {
-               this.updateScrollHPosition(this._hPositionByNation[this.dataProvider.nation]);
-               this.updateScrollVPosition(this._vPositionByNation[this.dataProvider.nation]);
+               this.updateScrollHPosition(this._hPositionByNation[_loc1_]);
+               this.updateScrollVPosition(this._vPositionByNation[_loc1_]);
             }
             this.ntGraphics.show();
             this.levels.visible = true;
@@ -535,7 +537,7 @@ package net.wg.gui.lobby.techtree.sub
          var _loc4_:int = 0;
          var _loc5_:Array = null;
          var _loc6_:IRenderer = null;
-         var _loc3_:int = param1.length;
+         var _loc3_:uint = param1.length;
          var _loc7_:int = this._dataProvider.length;
          var _loc8_:int = 0;
          while(_loc8_ < _loc3_)
@@ -562,7 +564,7 @@ package net.wg.gui.lobby.techtree.sub
          var _loc6_:Array = null;
          var _loc7_:Boolean = false;
          var _loc4_:int = param2.length;
-         var _loc8_:int = this._dataProvider.length;
+         var _loc8_:uint = this._dataProvider.length;
          var _loc9_:int = 0;
          while(_loc9_ < _loc4_)
          {
@@ -578,7 +580,7 @@ package net.wg.gui.lobby.techtree.sub
                {
                   _loc7_ = false;
                }
-               if(this._dataProvider.setState(_loc5_,param1,_loc6_[1]) || _loc7_)
+               if(_loc7_ || this._dataProvider.setState(_loc5_,param1,_loc6_[1]))
                {
                   this._renderers[_loc5_].invalidateNodeState();
                }
@@ -591,8 +593,8 @@ package net.wg.gui.lobby.techtree.sub
       {
          var _loc3_:int = 0;
          var _loc4_:Array = null;
-         var _loc2_:int = param1.length;
-         var _loc5_:int = this._dataProvider.length;
+         var _loc2_:uint = param1.length;
+         var _loc5_:uint = this._dataProvider.length;
          var _loc6_:int = 0;
          while(_loc6_ < _loc2_)
          {
@@ -605,6 +607,15 @@ package net.wg.gui.lobby.techtree.sub
             }
             _loc6_++;
          }
+      }
+      
+      public function updatePremiumPanelVisibility(param1:Boolean) : void
+      {
+         this.premiumPanel.visible = param1;
+         this.premiumPanelBack.visible = param1;
+         this.premiumHitArea.mouseEnabled = this.premiumHitArea.mouseChildren = param1;
+         this.premiumPanelClickArea.mouseEnabled = this.premiumPanelClickArea.mouseChildren = param1;
+         this.premiumPanelShadow.visible = param1;
       }
       
       private function showLevelHighlight(param1:int) : void
@@ -744,15 +755,6 @@ package net.wg.gui.lobby.techtree.sub
          this._scheduler.scheduleTask(this.deactivateCoolDown,DEF_ACTIVATE_COOLDOWN);
       }
       
-      private function onPremPanelMouseOverHandler(param1:Event) : void
-      {
-         if(!this._isDragging)
-         {
-            this.hideTreeNodeSelector();
-            this.openPremiumPanel();
-         }
-      }
-      
       private function resetPremiumHitArea() : void
       {
          var _loc1_:NationGridDisplaySettings = this._dataProvider.getPremiumGridSettings();
@@ -762,11 +764,6 @@ package net.wg.gui.lobby.techtree.sub
          this.premiumPanelClickArea.y = this.premiumPanel.defaultY + PREMIUM_PANEL_CLICK_AREA_OFFSET;
          this.premiumPanelClickArea.height = PREMIUM_PANEL_HEIGHT + _loc2_;
          this.premiumPanelClickArea.mouseEnabled = true;
-      }
-      
-      private function onPremPanelMouseOutHandler(param1:Event) : void
-      {
-         this.closePremiumPanel();
       }
       
       private function deactivateCoolDown() : void
@@ -823,7 +820,7 @@ package net.wg.gui.lobby.techtree.sub
             return;
          }
          this.ntGraphics.clearCache();
-         var _loc1_:int = this._dataProvider.length;
+         var _loc1_:uint = this._dataProvider.length;
          while(this._renderers.length > _loc1_)
          {
             this.removeItemRenderer(this._renderers.pop());
@@ -832,27 +829,28 @@ package net.wg.gui.lobby.techtree.sub
          var _loc5_:Boolean = false;
          var _loc6_:Boolean = false;
          this.premiumPanel.clearButtons();
-         var _loc7_:int = 0;
-         while(_loc7_ < _loc1_)
+         var _loc7_:uint = this._renderers.length;
+         var _loc8_:int = 0;
+         while(_loc8_ < _loc1_)
          {
-            _loc3_ = this._dataProvider.getItemAt(_loc7_);
-            if(_loc7_ < this._renderers.length)
+            _loc3_ = this._dataProvider.getItemAt(_loc8_);
+            if(_loc8_ < _loc7_)
             {
                _loc5_ = false;
-               _loc2_ = this._renderers[_loc7_];
+               _loc2_ = this._renderers[_loc8_];
                this.ntGraphics.clearUpRenderer(_loc2_);
-               _loc6_ = _loc2_.isPremium() != this._dataProvider.isPremiumItem(_loc7_);
-               this.setupItemRenderer(_loc2_,_loc7_,_loc3_,_loc4_);
+               _loc6_ = _loc2_.isPremium() != this._dataProvider.isPremiumItem(_loc8_);
+               this.setupItemRenderer(_loc2_,_loc8_,_loc3_,_loc4_);
                if(_loc6_ || _loc2_.isPremium())
                {
                   this.removeRenderer(_loc2_);
-                  if(!_loc2_.isPremium())
+                  if(_loc2_.isPremium())
                   {
-                     this.ntGraphics.addChild(DisplayObject(_loc2_));
+                     this.premiumPanel.addRenderer(_loc2_);
                   }
                   else
                   {
-                     this.premiumPanel.addRenderer(_loc2_);
+                     this.ntGraphics.addChild(DisplayObject(_loc2_));
                   }
                }
             }
@@ -863,18 +861,18 @@ package net.wg.gui.lobby.techtree.sub
             }
             if(_loc5_ && _loc2_ != null)
             {
-               this.setupItemRenderer(_loc2_,_loc7_,_loc3_,_loc4_);
-               if(!_loc2_.isPremium())
-               {
-                  this.ntGraphics.addChild(DisplayObject(_loc2_));
-               }
-               else
+               this.setupItemRenderer(_loc2_,_loc8_,_loc3_,_loc4_);
+               if(_loc2_.isPremium())
                {
                   this.premiumPanel.addRenderer(_loc2_);
                }
+               else
+               {
+                  this.ntGraphics.addChild(DisplayObject(_loc2_));
+               }
                this._renderers.push(_loc2_);
             }
-            _loc7_++;
+            _loc8_++;
          }
       }
       
@@ -893,7 +891,7 @@ package net.wg.gui.lobby.techtree.sub
       private function drawLines() : void
       {
          this.ntGraphics.clearLinesAndArrowsRenderers();
-         var _loc1_:int = this._renderers.length;
+         var _loc1_:uint = this._renderers.length;
          if(_loc1_ > 0)
          {
             this.ntGraphics.drawTopLines(this._renderers[0],false);
@@ -985,16 +983,16 @@ package net.wg.gui.lobby.techtree.sub
             _loc2_ = this.dataProvider.getItemByID(this._curRend.getID());
             if(_loc2_ != null && _loc2_.isCompareModeAvailable && !_loc2_.isCompareBasketFull)
             {
-               if(!this._curRend.isPremium())
+               if(this._curRend.isPremium())
+               {
+                  _loc1_ = new Point(this._curRend.x + TREE_NODE_SELECTOR_X_SHIFT,this._curRend.y + TREE_NODE_SELECTOR_Y_SHIFT);
+                  this.premiumPanel.setNodeSelectorVisibility(_loc1_,true);
+               }
+               else
                {
                   this.treeNodeSelector.x = this._curRend.x + this.ntGraphics.x + TREE_NODE_SELECTOR_X_SHIFT;
                   this.treeNodeSelector.y = this._curRend.y + this.ntGraphics.y + TREE_NODE_SELECTOR_Y_SHIFT;
                   this.treeNodeSelector.visible = true;
-               }
-               else
-               {
-                  _loc1_ = new Point(this._curRend.x + TREE_NODE_SELECTOR_X_SHIFT,this._curRend.y + TREE_NODE_SELECTOR_Y_SHIFT);
-                  this.premiumPanel.setNodeSelectorVisibility(_loc1_,true);
                }
                return;
             }
@@ -1065,13 +1063,10 @@ package net.wg.gui.lobby.techtree.sub
          return !!this.isPremiumPanelVisible() ? int(PREMIUM_PANEL_VERTICAL_OFFSET) : int(VSCROLL_NO_PANEL_OFFSET_Y);
       }
       
-      public function updatePremiumPanelVisibility(param1:Boolean) : void
+      private function hideSelectorAndHighlight() : void
       {
-         this.premiumPanel.visible = param1;
-         this.premiumPanelBack.visible = param1;
-         this.premiumHitArea.mouseEnabled = this.premiumHitArea.mouseChildren = param1;
-         this.premiumPanelClickArea.mouseEnabled = this.premiumPanelClickArea.mouseChildren = param1;
-         this.premiumPanelShadow.visible = param1;
+         this.hideLevelHighlight();
+         this.hideTreeNodeSelector();
       }
       
       public function get rootRenderer() : IRenderer
@@ -1183,6 +1178,20 @@ package net.wg.gui.lobby.techtree.sub
       private function get scrollVPage() : Number
       {
          return height / SCROLL_STEP_FACTOR;
+      }
+      
+      private function onPremPanelMouseOverHandler(param1:Event) : void
+      {
+         if(!this._isDragging)
+         {
+            this.hideTreeNodeSelector();
+            this.openPremiumPanel();
+         }
+      }
+      
+      private function onPremPanelMouseOutHandler(param1:Event) : void
+      {
+         this.closePremiumPanel();
       }
       
       private function onRendererStateChangedHandler(param1:TechTreeEvent) : void
@@ -1322,12 +1331,6 @@ package net.wg.gui.lobby.techtree.sub
          {
             this.hideSelectorAndHighlight();
          }
-      }
-      
-      private function hideSelectorAndHighlight() : void
-      {
-         this.hideLevelHighlight();
-         this.hideTreeNodeSelector();
       }
       
       private function onNtGraphicsMouseMoveHandler(param1:MouseEvent) : void

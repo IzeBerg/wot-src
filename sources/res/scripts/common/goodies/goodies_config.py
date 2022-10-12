@@ -116,7 +116,7 @@ def _readGoodies(reader, subsectionName):
             _validator(uid, variety, resource, price)
             goodies['goodies'][uid] = (
              variety, target, enabled, lifetime, useby, counter, autostart, condition, resource)
-            if price:
+            if price is not None:
                 goodies['prices'][uid] = price
             if notInShop or price is None:
                 goodies['notInShop'].add(uid)

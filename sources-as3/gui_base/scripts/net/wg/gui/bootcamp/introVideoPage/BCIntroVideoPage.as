@@ -7,6 +7,8 @@ package net.wg.gui.bootcamp.introVideoPage
    import flash.events.MouseEvent;
    import flash.text.TextField;
    import flash.ui.Keyboard;
+   import flash.utils.getQualifiedClassName;
+   import flash.utils.getQualifiedSuperclassName;
    import net.wg.gui.bootcamp.containers.TutorialPageContainer;
    import net.wg.gui.bootcamp.data.BCTutorialPageVO;
    import net.wg.gui.bootcamp.introVideoPage.containers.IntroPageContainer;
@@ -18,6 +20,7 @@ package net.wg.gui.bootcamp.introVideoPage
    import net.wg.gui.components.common.video.VideoPlayerEvent;
    import net.wg.gui.components.common.video.VideoPlayerStatusEvent;
    import net.wg.gui.components.controls.CloseButtonText;
+   import net.wg.gui.components.controls.FightButton;
    import net.wg.gui.components.controls.SoundButton;
    import net.wg.gui.components.controls.SoundButtonEx;
    import net.wg.infrastructure.base.meta.IBCIntroVideoPageMeta;
@@ -57,9 +60,9 @@ package net.wg.gui.bootcamp.introVideoPage
       
       private static const BACK_WIDTH_SMALL:int = 2365;
       
-      private static const BACK_HEIGHT_BIG:int = 1930;
+      private static const BACK_HEIGHT_SMALL:int = 1930;
       
-      private static const BACK_HEIGHT_SMALL:int = 1380;
+      private static const BACK_HEIGHT_BIG:int = 1380;
       
       private static const CLOSE_BTN_PADDING_RIGHT:int = 80;
       
@@ -112,7 +115,7 @@ package net.wg.gui.bootcamp.introVideoPage
       
       public var loadingProgress:LoadingContainer = null;
       
-      public var btnSelect:SoundButton = null;
+      public var btnSelect:FightButton = null;
       
       public var btnStart:SoundButton = null;
       
@@ -133,14 +136,6 @@ package net.wg.gui.bootcamp.introVideoPage
       public var stepperBar:StepperContainer = null;
       
       public var selectGlow:MovieClip = null;
-      
-      protected var eventModeEnabled:Boolean = false;
-      
-      protected var customTextPaddingLeft:int = 0;
-      
-      protected var customTextPaddingBottom:int = 0;
-      
-      protected var customLoadingProgressBottom:int = 0;
       
       private var _inited:Boolean = false;
       
@@ -218,7 +213,10 @@ package net.wg.gui.bootcamp.introVideoPage
          this.blackOverlay.mouseChildren = this.blackOverlay.mouseEnabled = false;
          this.waitingTF.text = BOOTCAMP.WELLCOME_BOOTCAMP_WAIT;
          this.selectGlow.visible = this.btnSelect.visible = this.btnStart.visible = this.btnSkip.visible = this.btnSkipVideo.visible = false;
-         this._logger = new LoadingPageLogger(this);
+         if(getQualifiedSuperclassName(this) == getQualifiedClassName(BCIntroVideoPage))
+         {
+            this._logger = new LoadingPageLogger(this);
+         }
       }
       
       override protected function draw() : void
@@ -503,7 +501,6 @@ package net.wg.gui.bootcamp.introVideoPage
          {
             _loc4_ = _loc1_[_loc3_];
             _loc5_ = App.utils.classFactory.getComponent(_loc4_.rendererLinkage,TutorialPageContainer);
-            _loc5_.isAdaptable = this.eventModeEnabled;
             _loc5_.setData(_loc4_);
             this._tutorialPageList.push(_loc5_);
             _loc3_++;
@@ -565,8 +562,7 @@ package net.wg.gui.bootcamp.introVideoPage
                this.updateBackgroundRenderer();
             }
             this.backgroundContainer.x = -((!!this._useBigPictures ? BACK_WIDTH_BIG : BACK_WIDTH_SMALL) - _loc1_ >> 1);
-            this.backgroundContainer.y = -((!!this._useBigPictures ? BACK_HEIGHT_BIG : BACK_HEIGHT_SMALL) - _loc2_ >> 1);
-            this.updateTutorialPageLayout();
+            this.backgroundContainer.y = -((!!this._useBigPictures ? BACK_HEIGHT_SMALL : BACK_HEIGHT_BIG) - _loc2_ >> 1);
          }
          else
          {
@@ -590,7 +586,7 @@ package net.wg.gui.bootcamp.introVideoPage
          this.closeBtn.validateNow();
          this.closeBtn.x = _loc1_ - this.closeBtn.width - CLOSE_BTN_PADDING_RIGHT;
          this.loadingProgress.x = _loc1_ >> 1;
-         this.loadingProgress.y = _loc2_ + this.customLoadingProgressBottom;
+         this.loadingProgress.y = _loc2_;
          this.loadingProgress.setWidth(_loc1_);
          if(this.waitingMC.visible)
          {
@@ -601,29 +597,29 @@ package net.wg.gui.bootcamp.introVideoPage
          }
       }
       
-      private function updateTutorialPageLayout() : void
-      {
-         this._tutorialPageList[this._picIndex].updateTextPosition(App.appWidth,!!this._useBigPictures ? int(BACK_HEIGHT_BIG) : int(BACK_HEIGHT_SMALL),-this.backgroundContainer.x,-this.backgroundContainer.y,this.customTextPaddingLeft,this.customTextPaddingBottom);
-      }
-      
       private function updateBackgroundRenderer() : void
       {
-         this._logger.startPageLog(this._picIndex);
+         if(this._logger)
+         {
+            this._logger.startPageLog(this._picIndex);
+         }
          if(this.backgroundContainer.numChildren > 0)
          {
             this.backgroundContainer.removeChildAt(0);
          }
          this.backgroundContainer.addChild(this._tutorialPageList[this._picIndex]);
-         this.updateTutorialPageLayout();
          this.stepperBar.selectItem(this._picIndex);
       }
       
       private function hideVideoPlayer() : void
       {
+         var _loc1_:Tween = null;
          if(this.videoPlayer)
          {
             this.videoPlayer.visible = false;
             this.blackOverlay.alpha = 0;
+            _loc1_ = new Tween(BLACK_FADE_DURATION,this.blackOverlay,{"alpha":0},{"ease":Strong.easeInOut});
+            this._tweens.push(_loc1_);
          }
       }
       
@@ -715,7 +711,10 @@ package net.wg.gui.bootcamp.introVideoPage
                {
                   this._imageGoRight = false;
                }
-               this._logger.stopPageLog();
+               if(this._logger)
+               {
+                  this._logger.stopPageLog();
+               }
                this.tweenFadeOut();
             }
          }

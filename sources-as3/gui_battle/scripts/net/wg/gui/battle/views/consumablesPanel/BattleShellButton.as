@@ -11,6 +11,7 @@ package net.wg.gui.battle.views.consumablesPanel
    import net.wg.gui.battle.components.buttons.BattleToolTipButton;
    import net.wg.gui.battle.views.consumablesPanel.VO.ConsumablesVO;
    import net.wg.gui.battle.views.consumablesPanel.constants.COLOR_STATES;
+   import net.wg.gui.battle.views.consumablesPanel.interfaces.IBattleEquipmentButtonGlow;
    import net.wg.gui.battle.views.consumablesPanel.interfaces.IBattleShellButton;
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.infrastructure.events.ColorSchemeEvent;
@@ -53,7 +54,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public var iconLoader:UILoaderAlt = null;
       
-      public var glow:BattleEquipmentButtonGlow = null;
+      public var glow:IBattleEquipmentButtonGlow = null;
       
       private var _isCurrent:Boolean;
       
@@ -137,6 +138,7 @@ package net.wg.gui.battle.views.consumablesPanel
          this.selectedIndicator = null;
          this.nextIndicator = null;
          this.quantityField = null;
+         this.spgShotResultIndicator = null;
          this._consumablesVO = null;
          super.onDispose();
       }
@@ -430,10 +432,6 @@ package net.wg.gui.battle.views.consumablesPanel
       {
          this._isColorBlindMode = this._colorSchemeMgr.getIsColorBlindS();
          this.setSpgShotResult(this._spgShotResult);
-      }
-      
-      public function setStage(param1:int) : void
-      {
       }
    }
 }

@@ -44,6 +44,8 @@ package net.wg.gui.lobby.components
       
       private var _totalValue:Number = 100;
       
+      private var _beginValue:Number = 0;
+      
       private var _tooltip:ComplexTooltipVO = null;
       
       private var _dotsBitmapData:BitmapData = null;
@@ -105,7 +107,7 @@ package net.wg.gui.lobby.components
          if(isInvalid(InvalidationType.DATA))
          {
             this.textField.visible = true;
-            this.maskMC.width = this._currentValue / this._totalValue * MASK_WIDTH;
+            this.maskMC.width = this.getMaskWidth();
             this.textField.htmlText = App.textMgr.getTextStyleById(TEXT_MANAGER_STYLES.COUNTER_TEXT,App.utils.locale.integer(this._currentValue) + " / " + App.utils.locale.integer(this._totalValue));
             if(this._container != null && this.bgMC.contains(this._container))
             {
@@ -154,12 +156,18 @@ package net.wg.gui.lobby.components
          this._tooltip = Boolean(param1) ? new ComplexTooltipVO(param1) : null;
       }
       
-      public function setValues(param1:String, param2:Number, param3:Number) : void
+      public function setValues(param1:String, param2:Number, param3:Number, param4:Number = 0) : void
       {
          this._currentValue = param2;
          this._totalValue = param3 > 0 ? Number(param3) : Number(DEFAULT_VALUE);
          this._type = param1;
+         this._beginValue = param4;
          invalidateData();
+      }
+      
+      protected function getMaskWidth() : int
+      {
+         return (this._currentValue - this._beginValue) / (this._totalValue - this._beginValue) * MASK_WIDTH;
       }
       
       private function hideTooltip() : void

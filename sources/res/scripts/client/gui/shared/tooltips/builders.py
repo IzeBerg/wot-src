@@ -1,4 +1,5 @@
 import importlib, logging
+from typing import Any
 from gui.Scaleform.daapi.settings.config import ADVANCED_COMPLEX_TOOLTIPS
 from gui.Scaleform.genConsts.TOOLTIPS_CONSTANTS import TOOLTIPS_CONSTANTS
 from gui.shared.gui_items.artefacts import OptionalDevice
@@ -274,8 +275,7 @@ class LazyBuildersCollection(BuildersCollection):
             imported = importlib.import_module(path)
             try:
                 builders = imported.getTooltipBuilders()
-            except AttributeError as e:
-                _logger.exception(e.message)
+            except AttributeError:
                 raise SoftException(('Package {0} does not have method "getTooltipBuilders", or when calling "getTooltipBuilders", it failed to instantiate one of the builders.').format(path))
 
             for builder in builders:

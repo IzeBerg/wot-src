@@ -19,8 +19,8 @@ package net.wg.gui.lobby.vehicleCustomization
    import net.wg.gui.components.carousels.interfaces.IFilterCounter;
    import net.wg.gui.components.controls.ScrollBarBookmarked;
    import net.wg.gui.components.controls.events.RendererEvent;
+   import net.wg.gui.interfaces.IMagneticClickHandler;
    import net.wg.gui.lobby.vehicleCustomization.controls.CarouselItemRenderer;
-   import net.wg.gui.lobby.vehicleCustomization.controls.magneticTool.IMagneticClickHandler;
    import net.wg.gui.lobby.vehicleCustomization.data.customizationPanel.CustomizationCarouselBookmarkVO;
    import net.wg.gui.lobby.vehicleCustomization.data.customizationPanel.CustomizationCarouselDataVO;
    import net.wg.gui.lobby.vehicleCustomization.data.customizationPanel.CustomizationCarouselFilterVO;

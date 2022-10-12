@@ -9,32 +9,32 @@ from gui.impl.lobby.mode_selector.items.bootcamp_mode_selector_item import Bootc
 from gui.impl.lobby.mode_selector.items.epic_mode_selector_item import EpicModeSelectorItem
 from gui.impl.lobby.mode_selector.items.items_constants import CustomModeName
 from gui.impl.lobby.mode_selector.items.mapbox_mode_selector_item import MapboxModeSelectorItem
-from gui.impl.lobby.mode_selector.items.event_mode_selector_item import EventModeSelectorItem
 from gui.impl.lobby.mode_selector.items.random_mode_selector_item import RandomModeSelectorItem
 from gui.impl.lobby.mode_selector.items.ranked_mode_selector_item import RankedModeSelectorItem
 from gui.impl.lobby.mode_selector.items.spec_mode_selector_item import SpecModeSelectorItem
 from gui.impl.lobby.mode_selector.items.battle_royale_mode_selector_item import BattleRoyaleModeSelectorItem
 from gui.impl.lobby.mode_selector.items.strongholds_mode_selector_item import StrongholdsModeSelectorItem
 from gui.impl.lobby.mode_selector.items.trainings_mode_selector_item import TrainingsModeSelectorItem
+from gui.impl.lobby.mode_selector.items.comp7_mode_selector_item import Comp7ModeSelectorItem
 from gui.prb_control.dispatcher import g_prbLoader
 from gui.prb_control.entities.listener import IGlobalListener
 from gui.prb_control.settings import PREBATTLE_ACTION_NAME
+from gui.shared.system_factory import registerModSelectorItem, collectModSelectorItem
 if typing.TYPE_CHECKING:
-    from typing import Dict, Type
-    from gui.Scaleform.daapi.view.lobby.header.battle_selector_items import _SelectorItem
+    from gui.Scaleform.daapi.view.lobby.header.battle_selector_item import SelectorItem
     from gui.impl.lobby.mode_selector.items.base_item import ModeSelectorItem
 _logger = logging.getLogger(__name__)
-_modeSelectorLegacyItemByModeName = {PREBATTLE_ACTION_NAME.RANDOM: RandomModeSelectorItem, 
-   PREBATTLE_ACTION_NAME.RANKED: RankedModeSelectorItem, 
-   PREBATTLE_ACTION_NAME.STRONGHOLDS_BATTLES_LIST: StrongholdsModeSelectorItem, 
-   PREBATTLE_ACTION_NAME.SPEC_BATTLES_LIST: SpecModeSelectorItem, 
-   PREBATTLE_ACTION_NAME.TRAININGS_LIST: TrainingsModeSelectorItem, 
-   PREBATTLE_ACTION_NAME.MAPBOX: MapboxModeSelectorItem, 
-   PREBATTLE_ACTION_NAME.EPIC: EpicModeSelectorItem, 
-   CustomModeName.BOOTCAMP: BootcampModeSelectorItem, 
-   PREBATTLE_ACTION_NAME.BATTLE_ROYALE: BattleRoyaleModeSelectorItem, 
-   PREBATTLE_ACTION_NAME.EVENT_BATTLE: EventModeSelectorItem}
-_additionalItems = {CustomModeName.BOOTCAMP: None}
+_ADDITIONAL_ITEMS = {CustomModeName.BOOTCAMP: None}
+registerModSelectorItem(PREBATTLE_ACTION_NAME.RANDOM, RandomModeSelectorItem)
+registerModSelectorItem(PREBATTLE_ACTION_NAME.RANKED, RankedModeSelectorItem)
+registerModSelectorItem(PREBATTLE_ACTION_NAME.STRONGHOLDS_BATTLES_LIST, StrongholdsModeSelectorItem)
+registerModSelectorItem(PREBATTLE_ACTION_NAME.SPEC_BATTLES_LIST, SpecModeSelectorItem)
+registerModSelectorItem(PREBATTLE_ACTION_NAME.TRAININGS_LIST, TrainingsModeSelectorItem)
+registerModSelectorItem(PREBATTLE_ACTION_NAME.MAPBOX, MapboxModeSelectorItem)
+registerModSelectorItem(PREBATTLE_ACTION_NAME.EPIC, EpicModeSelectorItem)
+registerModSelectorItem(PREBATTLE_ACTION_NAME.BATTLE_ROYALE, BattleRoyaleModeSelectorItem)
+registerModSelectorItem(PREBATTLE_ACTION_NAME.COMP7, Comp7ModeSelectorItem)
+registerModSelectorItem(CustomModeName.BOOTCAMP, BootcampModeSelectorItem)
 
 class ModeSelectorDataProvider(IGlobalListener):
     __slots__ = ('onListChanged', '_items')
@@ -118,7 +118,7 @@ class ModeSelectorDataProvider(IGlobalListener):
         if selectorItem is not None and not selectorItem.isVisible():
             return
         else:
-            return _modeSelectorLegacyItemByModeName.get(modeName, ModeSelectorLegacyItem)(selectorItem)
+            return (collectModSelectorItem(modeName) or ModeSelectorLegacyItem)(selectorItem)
 
     def _updateSelection(self):
         prbDispatcher = g_prbLoader.getDispatcher()
@@ -174,5 +174,5 @@ class ModeSelectorDataProvider(IGlobalListener):
     def __getItems():
         allItems = battle_selector_items.getItems().allItems
         items = {nameItem.getData():nameItem for nameItem in allItems}
-        items.update(_additionalItems)
+        items.update(_ADDITIONAL_ITEMS)
         return items

@@ -7,6 +7,7 @@ package net.wg.gui.lobby.hangar
    import net.wg.data.constants.Directions;
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.Values;
+   import net.wg.data.constants.generated.FUNRANDOM_ALIASES;
    import net.wg.data.constants.generated.HANGAR_ALIASES;
    import net.wg.gui.lobby.battleRoyale.widget.data.BattleRoyaleHangarWidget;
    import net.wg.gui.lobby.battleRoyale.widget.data.BattleRoyaleTournamentWidget;
@@ -15,12 +16,13 @@ package net.wg.gui.lobby.hangar
    import net.wg.gui.lobby.hangar.interfaces.IHangarHeader;
    import net.wg.gui.lobby.hangar.interfaces.IHeaderQuestsContainer;
    import net.wg.gui.lobby.hangar.quests.BattlePassEntryPoint;
+   import net.wg.gui.lobby.hangar.quests.Comp7Widget;
+   import net.wg.gui.lobby.hangar.quests.FunRandomHangarWidget;
    import net.wg.gui.lobby.hangar.quests.HeaderQuestsEvent;
    import net.wg.gui.lobby.hangar.quests.HeaderQuestsFlags;
    import net.wg.gui.lobby.hangar.quests.IHeaderFlagsEntryPoint;
    import net.wg.gui.lobby.hangar.quests.IHeaderSecondaryEntryPoint;
    import net.wg.gui.lobby.hangar.quests.SecondaryEntryPoint;
-   import net.wg.gui.lobby.hangar.quests.WhiteTigerWidget;
    import net.wg.gui.lobby.rankedBattles19.components.widget.RankedBattlesHangarWidget;
    import net.wg.infrastructure.base.meta.IHangarHeaderMeta;
    import net.wg.infrastructure.base.meta.impl.HangarHeaderMeta;
@@ -45,6 +47,8 @@ package net.wg.gui.lobby.hangar
       private static const SECONDARY_ENTRY_POINT_X:int = 29;
       
       private static const SECONDARY_ENTRY_POINT_X_COMPACT:int = 24;
+      
+      private static const FUN_RANDOM_FLAGS_OFFSET_Y:uint = 39;
        
       
       public var mcBackground:Sprite;
@@ -61,11 +65,13 @@ package net.wg.gui.lobby.hangar
       
       private var _battleRoyaleHangarWidget:BattleRoyaleHangarWidget = null;
       
-      private var _whiteTigerWidget:WhiteTigerWidget = null;
-      
       private var _battleRoyaleTournamentWidget:BattleRoyaleTournamentWidget = null;
       
       private var _epicBattlesWidget:EpicBattlesWidget = null;
+      
+      private var _funRandomWidget:FunRandomHangarWidget = null;
+      
+      private var _comp7Widget:Comp7Widget = null;
       
       private var _scheduler:IScheduler = null;
       
@@ -105,6 +111,7 @@ package net.wg.gui.lobby.hangar
             unregisterFlashComponent(HANGAR_ALIASES.SECONDARY_ENTRY_POINT);
          }
          this._scheduler.cancelTask(this.createBattlePass);
+         this._scheduler.cancelTask(this.createComp7);
          this._scheduler = null;
          super.onBeforeDispose();
       }
@@ -117,9 +124,10 @@ package net.wg.gui.lobby.hangar
          this._battlePassEntryPoint = null;
          this._rankedBattlesWidget = null;
          this._battleRoyaleHangarWidget = null;
-         this._whiteTigerWidget = null;
          this._battleRoyaleTournamentWidget = null;
          this._epicBattlesWidget = null;
+         this._funRandomWidget = null;
+         this._comp7Widget = null;
          this.mcBackground = null;
          this._data = null;
          super.onDispose();
@@ -143,7 +151,7 @@ package net.wg.gui.lobby.hangar
             _loc1_ = 0;
             if(this.secondaryEntryPoint.visible)
             {
-               _loc2_ = this._battlePassEntryPoint || this._rankedBattlesWidget || this._battleRoyaleHangarWidget || this._epicBattlesWidget || this._whiteTigerWidget;
+               _loc2_ = this._battlePassEntryPoint || this._rankedBattlesWidget || this._battleRoyaleHangarWidget || this._epicBattlesWidget || this._funRandomWidget || this._comp7Widget;
                if(_loc2_)
                {
                   _loc1_ = (_loc2_.width >> 1) + _loc2_.marginRight + this._secondaryPointX;
@@ -162,6 +170,7 @@ package net.wg.gui.lobby.hangar
                this.secondaryEntryPoint.x = 0;
                this.questsFlags.offsetRightSideX = 0;
             }
+            this.questsFlags.flagsOffsetY = Boolean(this._funRandomWidget) ? Number(FUN_RANDOM_FLAGS_OFFSET_Y) : Number(HeaderQuestsFlags.DEFAULT_FLAGS_OFFSET_Y);
          }
       }
       
@@ -196,15 +205,6 @@ package net.wg.gui.lobby.hangar
          }
       }
       
-      public function as_createEventWidget() : void
-      {
-         if(this._whiteTigerWidget == null)
-         {
-            this._scheduler.cancelTask(this.createWhiteTiger);
-            this._scheduler.scheduleOnNextFrame(this.createWhiteTiger);
-         }
-      }
-      
       public function as_createBattleRoyaleTournament() : void
       {
          if(this._battleRoyaleTournamentWidget == null)
@@ -212,6 +212,15 @@ package net.wg.gui.lobby.hangar
             this._battleRoyaleTournamentWidget = App.instance.utils.classFactory.getComponent(Linkages.BATTLE_ROYALE_TOURNAMENT_WIDGET_UI,BattleRoyaleTournamentWidget);
             registerFlashComponentS(this._battleRoyaleTournamentWidget,HANGAR_ALIASES.BATTLE_ROYALE_TOURNAMENT);
             addChild(this._battleRoyaleTournamentWidget);
+         }
+      }
+      
+      public function as_createComp7() : void
+      {
+         if(this._comp7Widget == null)
+         {
+            this._scheduler.cancelTask(this.createComp7);
+            this._scheduler.scheduleOnNextFrame(this.createComp7);
          }
       }
       
@@ -224,6 +233,18 @@ package net.wg.gui.lobby.hangar
             this.questsFlags.setEntryPoint(this._epicBattlesWidget);
             registerFlashComponentS(this._epicBattlesWidget,HANGAR_ALIASES.EPIC_WIDGET);
             this.updateSecondaryOffsets();
+            invalidateLayout();
+         }
+      }
+      
+      public function as_createFunRandomWidget() : void
+      {
+         if(this._funRandomWidget == null)
+         {
+            this._funRandomWidget = new FunRandomHangarWidget();
+            this._funRandomWidget.name = FUNRANDOM_ALIASES.FUN_RANDOM_HANGAR_WIDGET;
+            this.questsFlags.setEntryPoint(this._funRandomWidget);
+            registerFlashComponentS(this._funRandomWidget,FUNRANDOM_ALIASES.FUN_RANDOM_HANGAR_WIDGET);
             invalidateLayout();
          }
       }
@@ -273,23 +294,6 @@ package net.wg.gui.lobby.hangar
          }
       }
       
-      public function as_removeEventWidget() : void
-      {
-         if(this._whiteTigerWidget != null)
-         {
-            if(this.questsFlags.getEntryPoint() is WhiteTigerWidget)
-            {
-               this.questsFlags.setEntryPoint(null);
-            }
-            if(isFlashComponentRegisteredS(HANGAR_ALIASES.WHITE_TIGER_WIDGET))
-            {
-               unregisterFlashComponentS(HANGAR_ALIASES.WHITE_TIGER_WIDGET);
-            }
-            this._whiteTigerWidget = null;
-            invalidateLayout();
-         }
-      }
-      
       public function as_removeBattleRoyaleTournament() : void
       {
          if(this._battleRoyaleTournamentWidget != null)
@@ -300,6 +304,23 @@ package net.wg.gui.lobby.hangar
             }
             removeChild(DisplayObject(this._battleRoyaleTournamentWidget));
             this._battleRoyaleTournamentWidget = null;
+         }
+      }
+      
+      public function as_removeComp7() : void
+      {
+         if(this._comp7Widget != null)
+         {
+            if(this.questsFlags.getEntryPoint() is Comp7Widget)
+            {
+               this.questsFlags.setEntryPoint(null);
+            }
+            if(isFlashComponentRegisteredS(HANGAR_ALIASES.COMP7_WIDGET))
+            {
+               unregisterFlashComponentS(HANGAR_ALIASES.COMP7_WIDGET);
+            }
+            this._comp7Widget = null;
+            invalidateLayout();
          }
       }
       
@@ -321,6 +342,23 @@ package net.wg.gui.lobby.hangar
          }
       }
       
+      public function as_removeFunRandomWidget() : void
+      {
+         if(this._funRandomWidget != null)
+         {
+            if(this.questsFlags.getEntryPoint() is FunRandomHangarWidget)
+            {
+               this.questsFlags.setEntryPoint(null);
+            }
+            if(isFlashComponentRegisteredS(FUNRANDOM_ALIASES.FUN_RANDOM_HANGAR_WIDGET))
+            {
+               unregisterFlashComponentS(FUNRANDOM_ALIASES.FUN_RANDOM_HANGAR_WIDGET);
+            }
+            this._funRandomWidget = null;
+            invalidateLayout();
+         }
+      }
+      
       public function as_removeRankedBattles() : void
       {
          if(this._rankedBattlesWidget != null)
@@ -336,16 +374,6 @@ package net.wg.gui.lobby.hangar
             this._rankedBattlesWidget = null;
             invalidateLayout();
          }
-      }
-      
-      public function as_setSecondaryEntryPointVisible(param1:Boolean) : void
-      {
-         if(this.secondaryEntryPoint.visible == param1)
-         {
-            return;
-         }
-         this.secondaryEntryPoint.visible = param1;
-         invalidateLayout();
       }
       
       public function as_setResourceWellEntryPoint(param1:Boolean) : void
@@ -386,6 +414,16 @@ package net.wg.gui.lobby.hangar
          }
       }
       
+      public function as_setSecondaryEntryPointVisible(param1:Boolean) : void
+      {
+         if(this.secondaryEntryPoint.visible == param1)
+         {
+            return;
+         }
+         this.secondaryEntryPoint.visible = param1;
+         invalidateLayout();
+      }
+      
       public function getLayoutProperties() : Vector.<HelpLayoutVO>
       {
          var _loc1_:HelpLayoutVO = new HelpLayoutVO();
@@ -413,9 +451,12 @@ package net.wg.gui.lobby.hangar
          invalidateLayout();
       }
       
-      public function updateStage(param1:Number, param2:Number) : void
+      private function createComp7() : void
       {
-         this.questsFlags.updateStage(param1,param2);
+         this._comp7Widget = new Comp7Widget();
+         this.questsFlags.setEntryPoint(this._comp7Widget);
+         registerFlashComponentS(this._comp7Widget,HANGAR_ALIASES.COMP7_WIDGET);
+         invalidateLayout();
       }
       
       private function createBattlePass() : void
@@ -444,13 +485,6 @@ package net.wg.gui.lobby.hangar
       {
          invalidateLayout();
          validateNow();
-      }
-      
-      private function createWhiteTiger() : void
-      {
-         this._whiteTigerWidget = new WhiteTigerWidget();
-         this.questsFlags.setEntryPoint(this._whiteTigerWidget);
-         registerFlashComponentS(this._whiteTigerWidget,HANGAR_ALIASES.WHITE_TIGER_WIDGET);
       }
       
       private function onBtnHeaderQuestClickHandler(param1:HeaderQuestsEvent) : void

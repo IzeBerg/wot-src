@@ -1,6 +1,5 @@
 package net.wg.gui.battle.random.views.stats.components.fullStats
 {
-   import flash.display.DisplayObject;
    import flash.display.MovieClip;
    import flash.text.TextField;
    import net.wg.data.constants.generated.BATTLEATLAS;
@@ -8,12 +7,12 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
    import net.wg.gui.battle.components.PlayerStatusView;
    import net.wg.gui.battle.components.buttons.BattleButton;
    import net.wg.gui.battle.views.stats.SpeakAnimation;
+   import net.wg.gui.battle.views.stats.fullStats.FullStatsTableBase;
    import net.wg.gui.battle.views.stats.fullStats.SquadInviteStatusView;
    import net.wg.gui.components.controls.BadgeComponent;
    import net.wg.infrastructure.interfaces.entity.IDisposable;
-   import scaleform.gfx.TextFieldEx;
    
-   public class FullStatsTable extends MovieClip implements IDisposable
+   public class FullStatsTable extends FullStatsTableBase
    {
        
       
@@ -30,14 +29,6 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
       public var rightTank:BattleAtlasSprite = null;
       
       public var rightPlatoon:BattleAtlasSprite = null;
-      
-      public var team1TF:TextField = null;
-      
-      public var team2TF:TextField = null;
-      
-      public var selfBgLeft:BattleAtlasSprite = null;
-      
-      public var selfBgRight:BattleAtlasSprite = null;
       
       public var squadAcceptBt:BattleButton = null;
       
@@ -1245,8 +1236,6 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
       
       public var deadBgCollection:Vector.<BattleAtlasSprite> = null;
       
-      public var fragsCollection:Vector.<TextField> = null;
-      
       public var hitCollection:Vector.<MovieClip> = null;
       
       public var icoIGRCollection:Vector.<BattleAtlasSprite> = null;
@@ -1256,8 +1245,6 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
       public var disableCommunicationCollection:Vector.<BattleAtlasSprite> = null;
       
       public var noSoundCollection:Vector.<BattleAtlasSprite> = null;
-      
-      public var playerNameCollection:Vector.<TextField> = null;
       
       public var playerStatusCollection:Vector.<PlayerStatusView> = null;
       
@@ -1275,31 +1262,23 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
       
       public var vehicleLevelCollection:Vector.<BattleAtlasSprite> = null;
       
-      public var vehicleNameCollection:Vector.<TextField> = null;
-      
       public var vehicleTypeCollection:Vector.<BattleAtlasSprite> = null;
       
       public var testerBackCollection:Vector.<BattleAtlasSprite> = null;
       
       public var icoTesterCollection:Vector.<BattleAtlasSprite> = null;
       
-      private var _disposed:Boolean = false;
-      
-      private var _baseDisposed:Boolean = false;
-      
       public function FullStatsTable()
       {
          super();
-         TextFieldEx.setNoTranslate(this.team1TF,true);
-         TextFieldEx.setNoTranslate(this.team2TF,true);
          this.deadBgCollection = new <BattleAtlasSprite>[this.deadBg_c1r1,this.deadBg_c1r2,this.deadBg_c1r3,this.deadBg_c1r4,this.deadBg_c1r5,this.deadBg_c1r6,this.deadBg_c1r7,this.deadBg_c1r8,this.deadBg_c1r9,this.deadBg_c1r10,this.deadBg_c1r11,this.deadBg_c1r12,this.deadBg_c1r13,this.deadBg_c1r14,this.deadBg_c1r15,this.deadBg_c2r1,this.deadBg_c2r2,this.deadBg_c2r3,this.deadBg_c2r4,this.deadBg_c2r5,this.deadBg_c2r6,this.deadBg_c2r7,this.deadBg_c2r8,this.deadBg_c2r9,this.deadBg_c2r10,this.deadBg_c2r11,this.deadBg_c2r12,this.deadBg_c2r13,this.deadBg_c2r14,this.deadBg_c2r15];
-         this.fragsCollection = new <TextField>[this.frags_c1r1,this.frags_c1r2,this.frags_c1r3,this.frags_c1r4,this.frags_c1r5,this.frags_c1r6,this.frags_c1r7,this.frags_c1r8,this.frags_c1r9,this.frags_c1r10,this.frags_c1r11,this.frags_c1r12,this.frags_c1r13,this.frags_c1r14,this.frags_c1r15,this.frags_c2r1,this.frags_c2r2,this.frags_c2r3,this.frags_c2r4,this.frags_c2r5,this.frags_c2r6,this.frags_c2r7,this.frags_c2r8,this.frags_c2r9,this.frags_c2r10,this.frags_c2r11,this.frags_c2r12,this.frags_c2r13,this.frags_c2r14,this.frags_c2r15];
+         fragsCollection = new <TextField>[this.frags_c1r1,this.frags_c1r2,this.frags_c1r3,this.frags_c1r4,this.frags_c1r5,this.frags_c1r6,this.frags_c1r7,this.frags_c1r8,this.frags_c1r9,this.frags_c1r10,this.frags_c1r11,this.frags_c1r12,this.frags_c1r13,this.frags_c1r14,this.frags_c1r15,this.frags_c2r1,this.frags_c2r2,this.frags_c2r3,this.frags_c2r4,this.frags_c2r5,this.frags_c2r6,this.frags_c2r7,this.frags_c2r8,this.frags_c2r9,this.frags_c2r10,this.frags_c2r11,this.frags_c2r12,this.frags_c2r13,this.frags_c2r14,this.frags_c2r15];
          this.hitCollection = new <MovieClip>[this.hit_c1r1,this.hit_c1r2,this.hit_c1r3,this.hit_c1r4,this.hit_c1r5,this.hit_c1r6,this.hit_c1r7,this.hit_c1r8,this.hit_c1r9,this.hit_c1r10,this.hit_c1r11,this.hit_c1r12,this.hit_c1r13,this.hit_c1r14,this.hit_c1r15,this.hit_c2r1,this.hit_c2r2,this.hit_c2r3,this.hit_c2r4,this.hit_c2r5,this.hit_c2r6,this.hit_c2r7,this.hit_c2r8,this.hit_c2r9,this.hit_c2r10,this.hit_c2r11,this.hit_c2r12,this.hit_c2r13,this.hit_c2r14,this.hit_c2r15];
          this.icoIGRCollection = new <BattleAtlasSprite>[this.icoIGR_c1r1,this.icoIGR_c1r2,this.icoIGR_c1r3,this.icoIGR_c1r4,this.icoIGR_c1r5,this.icoIGR_c1r6,this.icoIGR_c1r7,this.icoIGR_c1r8,this.icoIGR_c1r9,this.icoIGR_c1r10,this.icoIGR_c1r11,this.icoIGR_c1r12,this.icoIGR_c1r13,this.icoIGR_c1r14,this.icoIGR_c1r15,this.icoIGR_c2r1,this.icoIGR_c2r2,this.icoIGR_c2r3,this.icoIGR_c2r4,this.icoIGR_c2r5,this.icoIGR_c2r6,this.icoIGR_c2r7,this.icoIGR_c2r8,this.icoIGR_c2r9,this.icoIGR_c2r10,this.icoIGR_c2r11,this.icoIGR_c2r12,this.icoIGR_c2r13,this.icoIGR_c2r14,this.icoIGR_c2r15];
          this.muteCollection = new <BattleAtlasSprite>[this.mute_c1r1,this.mute_c1r2,this.mute_c1r3,this.mute_c1r4,this.mute_c1r5,this.mute_c1r6,this.mute_c1r7,this.mute_c1r8,this.mute_c1r9,this.mute_c1r10,this.mute_c1r11,this.mute_c1r12,this.mute_c1r13,this.mute_c1r14,this.mute_c1r15,this.mute_c2r1,this.mute_c2r2,this.mute_c2r3,this.mute_c2r4,this.mute_c2r5,this.mute_c2r6,this.mute_c2r7,this.mute_c2r8,this.mute_c2r9,this.mute_c2r10,this.mute_c2r11,this.mute_c2r12,this.mute_c2r13,this.mute_c2r14,this.mute_c2r15];
          this.disableCommunicationCollection = new <BattleAtlasSprite>[this.disableCommunication_c1r1,this.disableCommunication_c1r2,this.disableCommunication_c1r3,this.disableCommunication_c1r4,this.disableCommunication_c1r5,this.disableCommunication_c1r6,this.disableCommunication_c1r7,this.disableCommunication_c1r8,this.disableCommunication_c1r9,this.disableCommunication_c1r10,this.disableCommunication_c1r11,this.disableCommunication_c1r12,this.disableCommunication_c1r13,this.disableCommunication_c1r14,this.disableCommunication_c1r15,this.disableCommunication_c2r1,this.disableCommunication_c2r2,this.disableCommunication_c2r3,this.disableCommunication_c2r4,this.disableCommunication_c2r5,this.disableCommunication_c2r6,this.disableCommunication_c2r7,this.disableCommunication_c2r8,this.disableCommunication_c2r9,this.disableCommunication_c2r10,this.disableCommunication_c2r11,this.disableCommunication_c2r12,this.disableCommunication_c2r13,this.disableCommunication_c2r14,this.disableCommunication_c2r15];
          this.noSoundCollection = new <BattleAtlasSprite>[this.noSound_c1r1,this.noSound_c1r2,this.noSound_c1r3,this.noSound_c1r4,this.noSound_c1r5,this.noSound_c1r6,this.noSound_c1r7,this.noSound_c1r8,this.noSound_c1r9,this.noSound_c1r10,this.noSound_c1r11,this.noSound_c1r12,this.noSound_c1r13,this.noSound_c1r14,this.noSound_c1r15,this.noSound_c2r1,this.noSound_c2r2,this.noSound_c2r3,this.noSound_c2r4,this.noSound_c2r5,this.noSound_c2r6,this.noSound_c2r7,this.noSound_c2r8,this.noSound_c2r9,this.noSound_c2r10,this.noSound_c2r11,this.noSound_c2r12,this.noSound_c2r13,this.noSound_c2r14,this.noSound_c2r15];
-         this.playerNameCollection = new <TextField>[this.playerName_c1r1,this.playerName_c1r2,this.playerName_c1r3,this.playerName_c1r4,this.playerName_c1r5,this.playerName_c1r6,this.playerName_c1r7,this.playerName_c1r8,this.playerName_c1r9,this.playerName_c1r10,this.playerName_c1r11,this.playerName_c1r12,this.playerName_c1r13,this.playerName_c1r14,this.playerName_c1r15,this.playerName_c2r1,this.playerName_c2r2,this.playerName_c2r3,this.playerName_c2r4,this.playerName_c2r5,this.playerName_c2r6,this.playerName_c2r7,this.playerName_c2r8,this.playerName_c2r9,this.playerName_c2r10,this.playerName_c2r11,this.playerName_c2r12,this.playerName_c2r13,this.playerName_c2r14,this.playerName_c2r15];
+         playerNameCollection = new <TextField>[this.playerName_c1r1,this.playerName_c1r2,this.playerName_c1r3,this.playerName_c1r4,this.playerName_c1r5,this.playerName_c1r6,this.playerName_c1r7,this.playerName_c1r8,this.playerName_c1r9,this.playerName_c1r10,this.playerName_c1r11,this.playerName_c1r12,this.playerName_c1r13,this.playerName_c1r14,this.playerName_c1r15,this.playerName_c2r1,this.playerName_c2r2,this.playerName_c2r3,this.playerName_c2r4,this.playerName_c2r5,this.playerName_c2r6,this.playerName_c2r7,this.playerName_c2r8,this.playerName_c2r9,this.playerName_c2r10,this.playerName_c2r11,this.playerName_c2r12,this.playerName_c2r13,this.playerName_c2r14,this.playerName_c2r15];
          this.playerStatusCollection = new <PlayerStatusView>[this.playerStatus_c1r1,this.playerStatus_c1r2,this.playerStatus_c1r3,this.playerStatus_c1r4,this.playerStatus_c1r5,this.playerStatus_c1r6,this.playerStatus_c1r7,this.playerStatus_c1r8,this.playerStatus_c1r9,this.playerStatus_c1r10,this.playerStatus_c1r11,this.playerStatus_c1r12,this.playerStatus_c1r13,this.playerStatus_c1r14,this.playerStatus_c1r15,this.playerStatus_c2r1,this.playerStatus_c2r2,this.playerStatus_c2r3,this.playerStatus_c2r4,this.playerStatus_c2r5,this.playerStatus_c2r6,this.playerStatus_c2r7,this.playerStatus_c2r8,this.playerStatus_c2r9,this.playerStatus_c2r10,this.playerStatus_c2r11,this.playerStatus_c2r12,this.playerStatus_c2r13,this.playerStatus_c2r14,this.playerStatus_c2r15];
          this.speakAnimationCollection = new <SpeakAnimation>[this.speakAnimation_c1r1,this.speakAnimation_c1r2,this.speakAnimation_c1r3,this.speakAnimation_c1r4,this.speakAnimation_c1r5,this.speakAnimation_c1r6,this.speakAnimation_c1r7,this.speakAnimation_c1r8,this.speakAnimation_c1r9,this.speakAnimation_c1r10,this.speakAnimation_c1r11,this.speakAnimation_c1r12,this.speakAnimation_c1r13,this.speakAnimation_c1r14,this.speakAnimation_c1r15,this.speakAnimation_c2r1,this.speakAnimation_c2r2,this.speakAnimation_c2r3,this.speakAnimation_c2r4,this.speakAnimation_c2r5,this.speakAnimation_c2r6,this.speakAnimation_c2r7,this.speakAnimation_c2r8,this.speakAnimation_c2r9,this.speakAnimation_c2r10,this.speakAnimation_c2r11,this.speakAnimation_c2r12,this.speakAnimation_c2r13,this.speakAnimation_c2r14,this.speakAnimation_c2r15];
          this.rankBadgesCollection = new <BadgeComponent>[this.rankBadge_c1r1,this.rankBadge_c1r2,this.rankBadge_c1r3,this.rankBadge_c1r4,this.rankBadge_c1r5,this.rankBadge_c1r6,this.rankBadge_c1r7,this.rankBadge_c1r8,this.rankBadge_c1r9,this.rankBadge_c1r10,this.rankBadge_c1r11,this.rankBadge_c1r12,this.rankBadge_c1r13,this.rankBadge_c1r14,this.rankBadge_c1r15,this.rankBadge_c2r1,this.rankBadge_c2r2,this.rankBadge_c2r3,this.rankBadge_c2r4,this.rankBadge_c2r5,this.rankBadge_c2r6,this.rankBadge_c2r7,this.rankBadge_c2r8,this.rankBadge_c2r9,this.rankBadge_c2r10,this.rankBadge_c2r11,this.rankBadge_c2r12,this.rankBadge_c2r13,this.rankBadge_c2r14,this.rankBadge_c2r15];
@@ -1308,29 +1287,24 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
          this.vehicleActionMarkerCollection = new <BattleAtlasSprite>[this.vehicleActionMarker_c1r1,this.vehicleActionMarker_c1r2,this.vehicleActionMarker_c1r3,this.vehicleActionMarker_c1r4,this.vehicleActionMarker_c1r5,this.vehicleActionMarker_c1r6,this.vehicleActionMarker_c1r7,this.vehicleActionMarker_c1r8,this.vehicleActionMarker_c1r9,this.vehicleActionMarker_c1r10,this.vehicleActionMarker_c1r11,this.vehicleActionMarker_c1r12,this.vehicleActionMarker_c1r13,this.vehicleActionMarker_c1r14,this.vehicleActionMarker_c1r15,this.vehicleActionMarker_c2r1,this.vehicleActionMarker_c2r2,this.vehicleActionMarker_c2r3,this.vehicleActionMarker_c2r4,this.vehicleActionMarker_c2r5,this.vehicleActionMarker_c2r6,this.vehicleActionMarker_c2r7,this.vehicleActionMarker_c2r8,this.vehicleActionMarker_c2r9,this.vehicleActionMarker_c2r10,this.vehicleActionMarker_c2r11,this.vehicleActionMarker_c2r12,this.vehicleActionMarker_c2r13,this.vehicleActionMarker_c2r14,this.vehicleActionMarker_c2r15];
          this.vehicleIconCollection = new <BattleAtlasSprite>[this.vehicleIcon_c1r1,this.vehicleIcon_c1r2,this.vehicleIcon_c1r3,this.vehicleIcon_c1r4,this.vehicleIcon_c1r5,this.vehicleIcon_c1r6,this.vehicleIcon_c1r7,this.vehicleIcon_c1r8,this.vehicleIcon_c1r9,this.vehicleIcon_c1r10,this.vehicleIcon_c1r11,this.vehicleIcon_c1r12,this.vehicleIcon_c1r13,this.vehicleIcon_c1r14,this.vehicleIcon_c1r15,this.vehicleIcon_c2r1,this.vehicleIcon_c2r2,this.vehicleIcon_c2r3,this.vehicleIcon_c2r4,this.vehicleIcon_c2r5,this.vehicleIcon_c2r6,this.vehicleIcon_c2r7,this.vehicleIcon_c2r8,this.vehicleIcon_c2r9,this.vehicleIcon_c2r10,this.vehicleIcon_c2r11,this.vehicleIcon_c2r12,this.vehicleIcon_c2r13,this.vehicleIcon_c2r14,this.vehicleIcon_c2r15];
          this.vehicleLevelCollection = new <BattleAtlasSprite>[this.vehicleLevel_c1r1,this.vehicleLevel_c1r2,this.vehicleLevel_c1r3,this.vehicleLevel_c1r4,this.vehicleLevel_c1r5,this.vehicleLevel_c1r6,this.vehicleLevel_c1r7,this.vehicleLevel_c1r8,this.vehicleLevel_c1r9,this.vehicleLevel_c1r10,this.vehicleLevel_c1r11,this.vehicleLevel_c1r12,this.vehicleLevel_c1r13,this.vehicleLevel_c1r14,this.vehicleLevel_c1r15,this.vehicleLevel_c2r1,this.vehicleLevel_c2r2,this.vehicleLevel_c2r3,this.vehicleLevel_c2r4,this.vehicleLevel_c2r5,this.vehicleLevel_c2r6,this.vehicleLevel_c2r7,this.vehicleLevel_c2r8,this.vehicleLevel_c2r9,this.vehicleLevel_c2r10,this.vehicleLevel_c2r11,this.vehicleLevel_c2r12,this.vehicleLevel_c2r13,this.vehicleLevel_c2r14,this.vehicleLevel_c2r15];
-         this.vehicleNameCollection = new <TextField>[this.vehicleName_c1r1,this.vehicleName_c1r2,this.vehicleName_c1r3,this.vehicleName_c1r4,this.vehicleName_c1r5,this.vehicleName_c1r6,this.vehicleName_c1r7,this.vehicleName_c1r8,this.vehicleName_c1r9,this.vehicleName_c1r10,this.vehicleName_c1r11,this.vehicleName_c1r12,this.vehicleName_c1r13,this.vehicleName_c1r14,this.vehicleName_c1r15,this.vehicleName_c2r1,this.vehicleName_c2r2,this.vehicleName_c2r3,this.vehicleName_c2r4,this.vehicleName_c2r5,this.vehicleName_c2r6,this.vehicleName_c2r7,this.vehicleName_c2r8,this.vehicleName_c2r9,this.vehicleName_c2r10,this.vehicleName_c2r11,this.vehicleName_c2r12,this.vehicleName_c2r13,this.vehicleName_c2r14,this.vehicleName_c2r15];
+         vehicleNameCollection = new <TextField>[this.vehicleName_c1r1,this.vehicleName_c1r2,this.vehicleName_c1r3,this.vehicleName_c1r4,this.vehicleName_c1r5,this.vehicleName_c1r6,this.vehicleName_c1r7,this.vehicleName_c1r8,this.vehicleName_c1r9,this.vehicleName_c1r10,this.vehicleName_c1r11,this.vehicleName_c1r12,this.vehicleName_c1r13,this.vehicleName_c1r14,this.vehicleName_c1r15,this.vehicleName_c2r1,this.vehicleName_c2r2,this.vehicleName_c2r3,this.vehicleName_c2r4,this.vehicleName_c2r5,this.vehicleName_c2r6,this.vehicleName_c2r7,this.vehicleName_c2r8,this.vehicleName_c2r9,this.vehicleName_c2r10,this.vehicleName_c2r11,this.vehicleName_c2r12,this.vehicleName_c2r13,this.vehicleName_c2r14,this.vehicleName_c2r15];
          this.vehicleTypeCollection = new <BattleAtlasSprite>[this.vehicleType_c1r1,this.vehicleType_c1r2,this.vehicleType_c1r3,this.vehicleType_c1r4,this.vehicleType_c1r5,this.vehicleType_c1r6,this.vehicleType_c1r7,this.vehicleType_c1r8,this.vehicleType_c1r9,this.vehicleType_c1r10,this.vehicleType_c1r11,this.vehicleType_c1r12,this.vehicleType_c1r13,this.vehicleType_c1r14,this.vehicleType_c1r15,this.vehicleType_c2r1,this.vehicleType_c2r2,this.vehicleType_c2r3,this.vehicleType_c2r4,this.vehicleType_c2r5,this.vehicleType_c2r6,this.vehicleType_c2r7,this.vehicleType_c2r8,this.vehicleType_c2r9,this.vehicleType_c2r10,this.vehicleType_c2r11,this.vehicleType_c2r12,this.vehicleType_c2r13,this.vehicleType_c2r14,this.vehicleType_c2r15];
          this.testerBackCollection = new <BattleAtlasSprite>[this.testerBack_c1r1,this.testerBack_c1r2,this.testerBack_c1r3,this.testerBack_c1r4,this.testerBack_c1r5,this.testerBack_c1r6,this.testerBack_c1r7,this.testerBack_c1r8,this.testerBack_c1r9,this.testerBack_c1r10,this.testerBack_c1r11,this.testerBack_c1r12,this.testerBack_c1r13,this.testerBack_c1r14,this.testerBack_c1r15,this.testerBack_c2r1,this.testerBack_c2r2,this.testerBack_c2r3,this.testerBack_c2r4,this.testerBack_c2r5,this.testerBack_c2r6,this.testerBack_c2r7,this.testerBack_c2r8,this.testerBack_c2r9,this.testerBack_c2r10,this.testerBack_c2r11,this.testerBack_c2r12,this.testerBack_c2r13,this.testerBack_c2r14,this.testerBack_c2r15];
          this.icoTesterCollection = new <BattleAtlasSprite>[this.icoTester_c1r1,this.icoTester_c1r2,this.icoTester_c1r3,this.icoTester_c1r4,this.icoTester_c1r5,this.icoTester_c1r6,this.icoTester_c1r7,this.icoTester_c1r8,this.icoTester_c1r9,this.icoTester_c1r10,this.icoTester_c1r11,this.icoTester_c1r12,this.icoTester_c1r13,this.icoTester_c1r14,this.icoTester_c1r15,this.icoTester_c2r1,this.icoTester_c2r2,this.icoTester_c2r3,this.icoTester_c2r4,this.icoTester_c2r5,this.icoTester_c2r6,this.icoTester_c2r7,this.icoTester_c2r8,this.icoTester_c2r9,this.icoTester_c2r10,this.icoTester_c2r11,this.icoTester_c2r12,this.icoTester_c2r13,this.icoTester_c2r14,this.icoTester_c2r15];
-         this.setTableImages();
+         this.background.imageName = BATTLEATLAS.STATS_TABLE_BG;
+         this.leftTank.imageName = BATTLEATLAS.STATS_TABLE_TANK;
+         this.leftFrag.imageName = BATTLEATLAS.STATS_TABLE_FRAGS;
+         this.leftPlatoon.imageName = BATTLEATLAS.STATS_TABLE_PLATOON;
+         App.utils.commons.flipHorizontal(this.leftFrag);
+         this.rightTank.imageName = BATTLEATLAS.STATS_TABLE_TANK;
+         this.rightFrag.imageName = BATTLEATLAS.STATS_TABLE_FRAGS;
+         this.rightPlatoon.imageName = BATTLEATLAS.STATS_TABLE_PLATOON;
+         App.utils.commons.flipHorizontal(this.rightTank);
       }
       
-      public final function dispose() : void
-      {
-         if(this._baseDisposed)
-         {
-            return;
-         }
-         this.onDispose();
-         this._baseDisposed = true;
-      }
-      
-      protected function onDispose() : void
+      override protected function onDispose() : void
       {
          var _loc1_:IDisposable = null;
-         var _loc2_:DisplayObject = null;
-         this.team1TF = null;
-         this.team2TF = null;
          for each(_loc1_ in this.playerStatusCollection)
          {
             _loc1_.dispose();
@@ -1346,14 +1320,6 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
          for each(_loc1_ in this.squadStatusCollection)
          {
             _loc1_.dispose();
-         }
-         for each(_loc2_ in this.testerBackCollection)
-         {
-            _loc2_ = null;
-         }
-         for each(_loc2_ in this.icoTesterCollection)
-         {
-            _loc2_ = null;
          }
          this.icoTesterCollection.length = 0;
          this.testerBackCollection.length = 0;
@@ -1692,8 +1658,6 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
          this.playerStatus_c2r13 = null;
          this.playerStatus_c2r14 = null;
          this.playerStatus_c2r15 = null;
-         this.selfBgLeft = null;
-         this.selfBgRight = null;
          this.speakAnimation_c1r1 = null;
          this.speakAnimation_c1r2 = null;
          this.speakAnimation_c1r3 = null;
@@ -1967,13 +1931,11 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
          this.vehicleType_c2r14 = null;
          this.vehicleType_c2r15 = null;
          this.deadBgCollection.length = 0;
-         this.fragsCollection.length = 0;
          this.hitCollection.length = 0;
          this.icoIGRCollection.length = 0;
          this.muteCollection.length = 0;
          this.disableCommunicationCollection.length = 0;
          this.noSoundCollection.length = 0;
-         this.playerNameCollection.length = 0;
          this.playerStatusCollection.length = 0;
          this.speakAnimationCollection.length = 0;
          this.rankBadgesCollection.length = 0;
@@ -1982,15 +1944,12 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
          this.vehicleActionMarkerCollection.length = 0;
          this.vehicleIconCollection.length = 0;
          this.vehicleLevelCollection.length = 0;
-         this.vehicleNameCollection.length = 0;
          this.vehicleTypeCollection.length = 0;
          this.deadBgCollection = null;
-         this.fragsCollection = null;
          this.hitCollection = null;
          this.muteCollection = null;
          this.disableCommunicationCollection = null;
          this.noSoundCollection = null;
-         this.playerNameCollection = null;
          this.playerStatusCollection = null;
          this.speakAnimationCollection = null;
          this.rankBadgesCollection = null;
@@ -1999,7 +1958,6 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
          this.vehicleActionMarkerCollection = null;
          this.vehicleIconCollection = null;
          this.vehicleLevelCollection = null;
-         this.vehicleNameCollection = null;
          this.vehicleTypeCollection = null;
          this.icoIGRCollection = null;
          this.background = null;
@@ -2009,25 +1967,7 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
          this.rightFrag = null;
          this.rightTank = null;
          this.rightPlatoon = null;
-         this._disposed = true;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
-      }
-      
-      protected function setTableImages() : void
-      {
-         this.background.imageName = BATTLEATLAS.STATS_TABLE_BG;
-         this.leftTank.imageName = BATTLEATLAS.STATS_TABLE_TANK;
-         this.leftFrag.imageName = BATTLEATLAS.STATS_TABLE_FRAGS;
-         this.leftPlatoon.imageName = BATTLEATLAS.STATS_TABLE_PLATOON;
-         App.utils.commons.flipHorizontal(this.leftFrag);
-         this.rightTank.imageName = BATTLEATLAS.STATS_TABLE_TANK;
-         this.rightFrag.imageName = BATTLEATLAS.STATS_TABLE_FRAGS;
-         this.rightPlatoon.imageName = BATTLEATLAS.STATS_TABLE_PLATOON;
-         App.utils.commons.flipHorizontal(this.rightTank);
+         super.onDispose();
       }
    }
 }

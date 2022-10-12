@@ -10,6 +10,8 @@ package net.wg.gui.battle.views.minimap.events
       public static const SIZE_CHANGED:String = "minimapSizeChanged";
       
       public static const VISIBILITY_CHANGED:String = "minimapVisibilityChanged";
+      
+      public static const TRY_INIT_PREBATTLE_SIZE:String = "minimapTryInitPrebattleSize";
        
       
       public var sizeIndex:Number = 0;

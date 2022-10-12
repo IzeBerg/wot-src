@@ -8,7 +8,7 @@ package net.wg.gui.lobby.window
    import net.wg.data.constants.generated.CONFIRM_EXCHANGE_DIALOG_TYPES;
    import net.wg.gui.components.advanced.ExtraModuleIcon;
    import net.wg.gui.components.controls.SoundButtonEx;
-   import net.wg.gui.components.tooltips.helpers.TankTypeIco;
+   import net.wg.gui.components.icons.TankTypeIco;
    import net.wg.gui.events.ConfirmExchangeBlockEvent;
    import net.wg.infrastructure.base.meta.IConfirmExchangeDialogMeta;
    import net.wg.infrastructure.base.meta.impl.ConfirmExchangeDialogMeta;

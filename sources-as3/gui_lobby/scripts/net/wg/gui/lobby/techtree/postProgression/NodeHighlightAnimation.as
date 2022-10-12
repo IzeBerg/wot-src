@@ -50,21 +50,6 @@ package net.wg.gui.lobby.techtree.postProgression
          }
       }
       
-      public function get isHighlighted() : Boolean
-      {
-         return this._isShowingUp;
-      }
-      
-      public function set isHighlighted(param1:Boolean) : void
-      {
-         if(this._isShowingUp == param1)
-         {
-            return;
-         }
-         this._isShowingUp = param1;
-         invalidateState();
-      }
-      
       private function clearTween() : void
       {
          if(this._fadeTween)
@@ -79,6 +64,21 @@ package net.wg.gui.lobby.techtree.postProgression
       private function onFadeOutComplete() : void
       {
          this.visible = false;
+      }
+      
+      public function get isHighlighted() : Boolean
+      {
+         return this._isShowingUp;
+      }
+      
+      public function set isHighlighted(param1:Boolean) : void
+      {
+         if(this._isShowingUp == param1)
+         {
+            return;
+         }
+         this._isShowingUp = param1;
+         invalidateState();
       }
    }
 }

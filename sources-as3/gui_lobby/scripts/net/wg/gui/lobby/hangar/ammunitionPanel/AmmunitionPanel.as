@@ -6,8 +6,9 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
    import net.wg.data.constants.UniversalBtnStylesConst;
    import net.wg.gui.components.controls.SoundButtonEx;
    import net.wg.gui.components.controls.universalBtn.UniversalBtn;
-   import net.wg.gui.lobby.hangar.ammunitionPanel.data.VehicleStatusVO;
-   import net.wg.gui.lobby.hangar.ammunitionPanel.events.AmmunitionPanelEvents;
+   import net.wg.gui.components.vehicleStatus.VehicleStatus;
+   import net.wg.gui.components.vehicleStatus.data.VehicleStatusVO;
+   import net.wg.gui.components.vehicleStatus.events.VehicleStatusEvent;
    import net.wg.infrastructure.base.meta.impl.AmmunitionPanelMeta;
    import net.wg.infrastructure.events.ChildVisibilityEvent;
    import net.wg.infrastructure.events.FocusRequestEvent;
@@ -128,7 +129,7 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
          this.changeNationBtn.removeEventListener(ButtonEvent.CLICK,this.onChangeNationBtnClickHandler);
          App.waiting.removeEventListener(ChildVisibilityEvent.CHILD_SHOWN,this.onChildShownHandler);
          App.waiting.removeEventListener(ChildVisibilityEvent.CHILD_HIDDEN,this.onChildHiddenHandler);
-         removeEventListener(AmmunitionPanelEvents.VEHICLE_STATE_MSG_RESIZE,this.onAmmunitionPanelVehicleStateMsgResizeHandler);
+         this.vehicleStatus.removeEventListener(VehicleStatusEvent.RESIZE,this.onVehicleStatusResizeHandler);
          this.toRent.removeEventListener(MouseEvent.ROLL_OVER,this.onBtnRollOverHandler);
          this.toRent.removeEventListener(MouseEvent.ROLL_OUT,this.onBtnRollOutHandler);
          this.toRent.removeEventListener(ButtonEvent.CLICK,this.onToRentClickHandler);
@@ -221,7 +222,7 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
          this.toRent.addEventListener(MouseEvent.ROLL_OVER,this.onBtnRollOverHandler);
          this.toRent.addEventListener(MouseEvent.ROLL_OUT,this.onBtnRollOutHandler);
          this.toRent.addEventListener(ButtonEvent.CLICK,this.onToRentClickHandler);
-         addEventListener(AmmunitionPanelEvents.VEHICLE_STATE_MSG_RESIZE,this.onAmmunitionPanelVehicleStateMsgResizeHandler);
+         this.vehicleStatus.addEventListener(VehicleStatusEvent.RESIZE,this.onVehicleStatusResizeHandler);
          this._utils.helpLayout.registerComponent(this);
          _deferredDispose = true;
       }
@@ -278,7 +279,6 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
       
       public function updateStage(param1:Number, param2:Number) : void
       {
-         this.vehicleStatus.updateStage(param1,param2);
          this._screenWidth = param1;
          this.centerPanel();
       }
@@ -346,7 +346,7 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
          return _loc1_;
       }
       
-      private function onAmmunitionPanelVehicleStateMsgResizeHandler(param1:AmmunitionPanelEvents) : void
+      private function onVehicleStatusResizeHandler(param1:VehicleStatusEvent) : void
       {
          if(this._statusVo != null)
          {

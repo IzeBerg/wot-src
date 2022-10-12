@@ -23,6 +23,11 @@ package net.wg.gui.lobby.techtree.helpers
          this._target = null;
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function get y() : Number
       {
          return this._target.y;
@@ -41,11 +46,6 @@ package net.wg.gui.lobby.techtree.helpers
       public function set alpha(param1:Number) : void
       {
          this._target.alpha = param1;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

@@ -1,6 +1,6 @@
 import BigWorld, constants
 from account_helpers.settings_core.settings_constants import GAME, CONTROLS, VERSION, DAMAGE_INDICATOR, DAMAGE_LOG, BATTLE_EVENTS, SESSION_STATS, BattlePassStorageKeys, BattleCommStorageKeys, OnceOnlyHints, ScorePanelStorageKeys, SPGAim, GuiSettingsBehavior
-from adisp import process, async
+from adisp import adisp_process, adisp_async
 from debug_utils import LOG_DEBUG
 from gui.server_events.pm_constants import PM_TUTOR_FIELDS
 from helpers import dependency
@@ -88,11 +88,11 @@ def _initializeDefaultSettings(core, data, initialized):
     return
 
 
-@async
-@process
+@adisp_async
+@adisp_process
 def _reinitializeDefaultSettings(core, data, initialized, callback=None):
 
-    @async
+    @adisp_async
     def wrapper(callback=None):
         BigWorld.player().intUserSettings.delIntSettings(range(1, 60), callback)
 
@@ -879,10 +879,67 @@ def _migrateTo94(core, data, initialized):
 
 
 def _migrateTo95(core, data, initialized):
-    from account_helpers.settings_core.settings_constants import WTEventStorageKeys, WTLootBoxesViewedKeys
-    data['eventStorage'][WTEventStorageKeys.WT_INTRO_SHOWN] = False
-    data['lootboxViewed'][WTLootBoxesViewedKeys.HUNTER_LAST_VIEWED] = 0
-    data['lootboxViewed'][WTLootBoxesViewedKeys.BOSS_LAST_VIEWED] = 0
+    from account_helpers.settings_core.ServerSettingsManager import UI_STORAGE_KEYS, SETTINGS_SECTIONS
+    data[SETTINGS_SECTIONS.UI_STORAGE_2][UI_STORAGE_KEYS.ROCKET_ACCELERATION_HIGHLIGHTS_COUNTER] = 0
+
+
+def _migrateTo96(core, data, initialized):
+    data['comp7CarouselFilter1'] = {'ussr': False, 
+       'germany': False, 
+       'usa': False, 
+       'china': False, 
+       'france': False, 
+       'uk': False, 
+       'japan': False, 
+       'czech': False, 
+       'sweden': False, 
+       'poland': False, 
+       'italy': False, 
+       'lightTank': False, 
+       'mediumTank': False, 
+       'heavyTank': False, 
+       'SPG': False, 
+       'AT-SPG': False, 
+       'level_1': False, 
+       'level_2': False, 
+       'level_3': False, 
+       'level_4': False, 
+       'level_5': False, 
+       'level_6': False, 
+       'level_7': False, 
+       'level_8': False, 
+       'level_9': False, 
+       'level_10': False}
+    data['comp7CarouselFilter2'] = {'premium': False, 
+       'elite': False, 
+       'igr': False, 
+       'rented': True, 
+       'event': True, 
+       'gameMode': False, 
+       'favorite': False, 
+       'bonus': False, 
+       'crystals': False, 
+       'comp7': True, 
+       'role_HT_assault': False, 
+       'role_HT_break': False, 
+       'role_HT_universal': False, 
+       'role_HT_support': False, 
+       'role_MT_assault': False, 
+       'role_MT_universal': False, 
+       'role_MT_sniper': False, 
+       'role_MT_support': False, 
+       'role_ATSPG_assault': False, 
+       'role_ATSPG_universal': False, 
+       'role_ATSPG_sniper': False, 
+       'role_ATSPG_support': False, 
+       'role_LT_universal': False, 
+       'role_LT_wheeled': False, 
+       'role_SPG': False}
+    data['guiStartBehavior']['isComp7IntroShown'] = False
+
+
+def _migrateTo97(core, data, initialized):
+    pass
 
 
 _versions = (
@@ -1073,10 +1130,14 @@ _versions = (
  (
   94, _migrateTo94, False, False),
  (
-  95, _migrateTo95, False, False))
+  95, _migrateTo95, False, False),
+ (
+  96, _migrateTo96, False, False),
+ (
+  97, _migrateTo97, False, False))
 
-@async
-@process
+@adisp_async
+@adisp_process
 def migrateToVersion(fromVersion, core, data, callback=None):
     yield lambda callback: callback(None)
     initialized = False

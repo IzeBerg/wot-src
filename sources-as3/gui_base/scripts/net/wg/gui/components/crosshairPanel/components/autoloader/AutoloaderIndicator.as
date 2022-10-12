@@ -1,6 +1,7 @@
 package net.wg.gui.components.crosshairPanel.components.autoloader
 {
    import flash.display.MovieClip;
+   import flash.geom.Rectangle;
    import net.wg.infrastructure.base.SimpleContainer;
    
    public class AutoloaderIndicator extends SimpleContainer
@@ -66,16 +67,6 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
          super.onDispose();
       }
       
-      public function autoloaderShowShot() : void
-      {
-         this.fireMc.gotoAndPlay(SHOOT_STATE);
-      }
-      
-      public function autoloaderUpdate(param1:Number, param2:Number, param3:Boolean, param4:Boolean) : void
-      {
-         this.cassette.autoloadProgress(param1,param2,param3,param4);
-      }
-      
       public function autoloaderBoostUpdate(param1:BoostIndicatorStateParamsVO, param2:Number, param3:Boolean = false) : void
       {
          this.boostndicator.autoloaderBoostUpdate(param1,param2,param3);
@@ -86,9 +77,19 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
          this.boostndicator.autoloaderBoostUpdateAsPercent(param1,param2);
       }
       
-      public function get autoloaderBoostParams() : BoostIndicatorStateParamsVO
+      public function autoloaderShowShot() : void
       {
-         return this.boostndicator.stateParams;
+         this.fireMc.gotoAndPlay(SHOOT_STATE);
+      }
+      
+      public function autoloaderUpdate(param1:Number, param2:Number, param3:Boolean, param4:Boolean) : void
+      {
+         this.cassette.autoloadProgress(param1,param2,param3,param4);
+      }
+      
+      public function getTimerRect() : Rectangle
+      {
+         return this.cassette.getTimerRect();
       }
       
       public function setGunReloadingPercent(param1:Number) : void
@@ -123,6 +124,11 @@ package net.wg.gui.components.crosshairPanel.components.autoloader
             this._totalAmmo = param1;
             invalidate(TOTAL_AMMO);
          }
+      }
+      
+      public function get autoloaderBoostParams() : BoostIndicatorStateParamsVO
+      {
+         return this.boostndicator.stateParams;
       }
    }
 }

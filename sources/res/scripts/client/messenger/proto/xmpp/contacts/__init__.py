@@ -140,8 +140,6 @@ class VoipHandler(object):
         if isTestChannel:
             return
         if self.playerCtx.getCachedItem('lastVoipUri') != uri and not isRejoin:
-            self.usersStorage.removeTags({
-             USER_TAG.MUTED}, MutedOnlyFindCriteria())
             g_messengerEvents.users.onUsersListReceived({USER_TAG.MUTED})
         else:
             self.playerCtx.setCachedItem('lastVoipUri', uri)
@@ -150,8 +148,6 @@ class VoipHandler(object):
         if wasTest:
             return
         self.playerCtx.setCachedItem('lastVoipUri', '')
-        self.usersStorage.removeTags({
-         USER_TAG.MUTED}, MutedOnlyFindCriteria())
         g_messengerEvents.users.onUsersListReceived({USER_TAG.MUTED})
 
 

@@ -1,7 +1,6 @@
 package net.wg.gui.lobby.hangar.tcarousel
 {
    import flash.display.MovieClip;
-   import flash.display.Sprite;
    import flash.events.Event;
    import flash.geom.Rectangle;
    import net.wg.data.VO.TankCarouselFilterInitVO;
@@ -57,8 +56,6 @@ package net.wg.gui.lobby.hangar.tcarousel
       private static const GO_TO_OFFSET:Number = 0.5;
       
       private static const INV_ROW_COUNT:String = "invRowCount";
-      
-      private static const HIT_AREA_NAME:String = "emptyHitArea";
       
       private static const INVALID_SCROLL_POS:String = "InvalidScrollPos";
       
@@ -145,10 +142,7 @@ package net.wg.gui.lobby.hangar.tcarousel
          this.vehicleFilters.addEventListener(Event.RESIZE,this.onVehicleFiltersResizeHandler);
          this.background.mouseEnabled = false;
          this.background.mouseChildren = false;
-         var _loc2_:Sprite = new Sprite();
-         _loc2_.name = HIT_AREA_NAME;
-         addChild(_loc2_);
-         this.background.hitArea = _loc2_;
+         App.utils.commons.addEmptyHitArea(this.background);
          mouseEnabled = false;
          App.utils.helpLayout.registerComponent(this);
       }
@@ -214,6 +208,7 @@ package net.wg.gui.lobby.hangar.tcarousel
          this.vehicleFilters.removeEventListener(RendererEvent.ITEM_CLICK,this.onVehicleFiltersItemClickHandler);
          this.vehicleFilters.dispose();
          this.vehicleFilters = null;
+         this.background.hitArea = null;
          this.background = null;
          this._helper = null;
          super.onDispose();
@@ -313,8 +308,10 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       public function setRightMargin(param1:int) : void
       {
+         this.as_useExtendedCarousel(true);
          this._rightMargin = param1;
          invalidateSize();
+         validateNow();
       }
       
       public function updateCarouselPosition(param1:Number) : void
@@ -474,11 +471,17 @@ class TankCarouselHelper implements ITankCarouselHelper
    
    private static const PADDING:Padding = new Padding(10);
    
-   private static const RENDER_HEIGHT:int = 102;
+   private static const RENDERER_WIDTH:int = 162;
+   
+   private static const RENDERER_HEIGHT:int = 102;
    
    private static const RENDERER_VISIBLE_HEIGHT:int = 102;
    
-   private static const RENDERER_HEIGHT_DIFF:int = RENDER_HEIGHT - RENDERER_VISIBLE_HEIGHT;
+   private static const RENDERER_HEIGHT_DIFF:int = RENDERER_HEIGHT - RENDERER_VISIBLE_HEIGHT;
+   
+   private static const RENDERER_NAME:String = "TankCarouselItemRendererUI";
+   
+   private static const GAP:int = 10;
     
    
    function TankCarouselHelper()
@@ -488,27 +491,27 @@ class TankCarouselHelper implements ITankCarouselHelper
    
    public function get linkRenderer() : String
    {
-      return "TankCarouselItemRendererUI";
+      return RENDERER_NAME;
    }
    
    public function get rendererWidth() : int
    {
-      return 162;
+      return RENDERER_WIDTH;
    }
    
    public function get rendererHeight() : int
    {
-      return RENDER_HEIGHT;
+      return RENDERER_HEIGHT;
    }
    
    public function get horizontalGap() : int
    {
-      return 10;
+      return GAP;
    }
    
    public function get verticalGap() : int
    {
-      return 10;
+      return GAP;
    }
    
    public function get padding() : Padding
@@ -535,11 +538,17 @@ class SmallTankCarouselHelper implements ITankCarouselHelper
    
    private static const PADDING:Padding = new Padding(19,20);
    
-   private static const RENDER_HEIGHT:int = 37;
+   private static const RENDERER_WIDTH:int = 162;
+   
+   private static const RENDERER_HEIGHT:int = 37;
    
    private static const RENDERER_VISIBLE_HEIGHT:int = 37;
    
-   private static const RENDERER_HEIGHT_DIFF:int = RENDER_HEIGHT - RENDERER_VISIBLE_HEIGHT;
+   private static const RENDERER_HEIGHT_DIFF:int = RENDERER_HEIGHT - RENDERER_VISIBLE_HEIGHT;
+   
+   private static const RENDERER_NAME:String = "SmallTankCarouselItemRendererUI";
+   
+   private static const GAP:int = 10;
     
    
    function SmallTankCarouselHelper()
@@ -549,27 +558,27 @@ class SmallTankCarouselHelper implements ITankCarouselHelper
    
    public function get linkRenderer() : String
    {
-      return "SmallTankCarouselItemRendererUI";
+      return RENDERER_NAME;
    }
    
    public function get rendererWidth() : int
    {
-      return 162;
+      return RENDERER_WIDTH;
    }
    
    public function get rendererHeight() : int
    {
-      return RENDER_HEIGHT;
+      return RENDERER_HEIGHT;
    }
    
    public function get horizontalGap() : int
    {
-      return 10;
+      return GAP;
    }
    
    public function get verticalGap() : int
    {
-      return 10;
+      return GAP;
    }
    
    public function get padding() : Padding

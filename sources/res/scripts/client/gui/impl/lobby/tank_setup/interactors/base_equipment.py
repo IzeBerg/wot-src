@@ -1,4 +1,4 @@
-from async import await, async
+from wg_async import wg_await, wg_async
 from BWUtil import AsyncReturn
 from gui.impl.gen.view_models.views.lobby.tank_setup.sub_views.base_setup_model import BaseSetupModel
 from gui.impl.lobby.dialogs.auxiliary.buy_and_exchange_state_machine import BuyAndExchangeStateEnum
@@ -51,9 +51,9 @@ class BaseEquipmentInteractor(BaseInteractor):
     def buyMore(self, itemCD):
         pass
 
-    @async
+    @wg_async
     def showExitConfirmDialog(self):
-        result = yield await(showTankSetupExitConfirmDialog(items=self.getChangedList(), vehicle=self.getItem(), fromSection=self.getName(), startState=(self.getChangedList() or BuyAndExchangeStateEnum).BUY_NOT_REQUIRED if 1 else None))
+        result = yield wg_await(showTankSetupExitConfirmDialog(items=self.getChangedList(), vehicle=self.getItem(), fromSection=self.getName(), startState=(self.getChangedList() or BuyAndExchangeStateEnum).BUY_NOT_REQUIRED if 1 else None))
         raise AsyncReturn(result)
         return
 

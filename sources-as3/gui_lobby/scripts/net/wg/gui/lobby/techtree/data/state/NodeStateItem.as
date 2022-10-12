@@ -30,6 +30,11 @@ package net.wg.gui.lobby.techtree.data.state
          return this._state;
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
       public function resolveProps(param1:Object = null) : StateProperties
       {
          return this._props;
@@ -42,11 +47,6 @@ package net.wg.gui.lobby.techtree.data.state
             this._props.dispose();
             this._props = null;
          }
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

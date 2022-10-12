@@ -43,14 +43,14 @@ class ClassicMinimapComponent(component.MinimapComponent):
 
 
 class GlobalSettingsPlugin(common.SimplePlugin):
-    __slots__ = ('__currentSizeSettings', '_isVisible', '__sizeIndex', '__canChangeAlpha')
+    __slots__ = ('_currentSizeSettings', '__isVisible', '_sizeIndex', '__canChangeAlpha')
     _AccountSettingsClass = AccountSettings
 
     def __init__(self, parentObj):
         super(GlobalSettingsPlugin, self).__init__(parentObj)
-        self._isVisible = True
-        self.__currentSizeSettings = 'minimapSize'
-        self.__sizeIndex = 0
+        self._currentSizeSettings = 'minimapSize'
+        self.__isVisible = True
+        self._sizeIndex = 0
         self.__canChangeAlpha = parentObj.canChangeAlpha()
 
     def start(self):
@@ -66,10 +66,10 @@ class GlobalSettingsPlugin(common.SimplePlugin):
         super(GlobalSettingsPlugin, self).stop()
 
     def setSettings(self):
-        newSize = settings.clampMinimapSizeIndex(self._AccountSettingsClass.getSettings(self.__currentSizeSettings))
-        if self.__sizeIndex != newSize:
-            self.__sizeIndex = newSize
-            self._parentObj.as_setSizeS(self.__sizeIndex)
+        newSize = settings.clampMinimapSizeIndex(self._AccountSettingsClass.getSettings(self._currentSizeSettings))
+        if self._sizeIndex != newSize:
+            self._sizeIndex = newSize
+            self._parentObj.as_setSizeS(self._sizeIndex)
         self.__updateAlpha()
 
     def updateSettings(self, diff):
@@ -78,27 +78,27 @@ class GlobalSettingsPlugin(common.SimplePlugin):
 
     def applyNewSize(self, sizeIndex):
         LOG_DEBUG('Size index of minimap is changed', sizeIndex)
-        self.__sizeIndex = sizeIndex
-        self.__saveSettings()
+        self._sizeIndex = sizeIndex
+        self._saveSettings()
 
     def _changeSizeSettings(self, newSizeSettings):
-        if newSizeSettings == self.__currentSizeSettings:
+        if newSizeSettings == self._currentSizeSettings:
             return newSizeSettings
-        previousSettings = self.__currentSizeSettings
-        self.__currentSizeSettings = newSizeSettings
+        previousSettings = self._currentSizeSettings
+        self._currentSizeSettings = newSizeSettings
         self.setSettings()
         return previousSettings
 
     def _toogleVisible(self):
-        self._isVisible = not self._isVisible
-        self._parentObj.as_setVisibleS(self._isVisible)
+        self.__isVisible = not self.__isVisible
+        self._parentObj.as_setVisibleS(self.__isVisible)
 
-    def __saveSettings(self):
-        self._AccountSettingsClass.setSettings(self.__currentSizeSettings, self.__sizeIndex)
+    def _saveSettings(self):
+        self._AccountSettingsClass.setSettings(self._currentSizeSettings, self._sizeIndex)
 
     def __setSizeByStep(self, step):
-        newIndex = settings.clampMinimapSizeIndex(self.__sizeIndex + step)
-        if self.__sizeIndex != newIndex:
+        newIndex = settings.clampMinimapSizeIndex(self._sizeIndex + step)
+        if self._sizeIndex != newIndex:
             LOG_DEBUG('Try to change size index of minimap by step', newIndex)
             self._parentObj.as_setSizeS(newIndex)
 

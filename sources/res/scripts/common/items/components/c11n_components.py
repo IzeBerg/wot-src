@@ -6,7 +6,7 @@ from items import vehicles
 from items.components import shared_components
 from soft_exception import SoftException
 from items.components.c11n_constants import ApplyArea, SeasonType, Options, ItemTags, CustomizationType, MAX_CAMOUFLAGE_PATTERN_SIZE, DecalType, HIDDEN_CAMOUFLAGE_ID, PROJECTION_DECALS_SCALE_ID_VALUES, MAX_USERS_PROJECTION_DECALS, CustomizationTypeNames, DecalTypeNames, ProjectionDecalFormTags, DEFAULT_SCALE_FACTOR_ID, CUSTOMIZATION_SLOTS_VEHICLE_PARTS, CamouflageTilingType, SLOT_TYPE_NAMES, EMPTY_ITEM_ID, SLOT_DEFAULT_ALLOWED_MODEL, EDITING_STYLE_REASONS, CustomizationDisplayType
-from typing import List, Dict, Type, Tuple, Optional, TypeVar, FrozenSet, Set, TYPE_CHECKING
+from typing import List, Dict, Type, Tuple, Optional, TypeVar, FrozenSet, Iterable, Callable, TYPE_CHECKING
 from string import lower, upper
 from copy import deepcopy
 from bisect import bisect
@@ -17,6 +17,7 @@ if IS_EDITOR:
     from editor_copy import edCopy
 if TYPE_CHECKING:
     from account_helpers import Tokens
+    from serializable_types.customizations import CustomizationOutfit
 Item = TypeVar('TypeVar')
 
 class BaseCustomizationItem(object):
@@ -204,7 +205,8 @@ class CamouflageItem(BaseCustomizationItem):
     __metaclass__ = ReflectionMetaclass
     itemType = CustomizationType.CAMOUFLAGE
     __slots__ = ('palettes', 'compatibleParts', 'componentsCovering', 'invisibilityFactor',
-                 'tiling', 'tilingSettings', 'scales', 'rotation', 'glossMetallicSettings')
+                 'tiling', 'tilingSettings', 'scales', 'rotation', 'glossMetallicSettings',
+                 'styleId')
     allSlots = BaseCustomizationItem.__slots__ + __slots__
 
     def __init__(self, parentGroup=None):
@@ -217,6 +219,7 @@ class CamouflageItem(BaseCustomizationItem):
         self.tilingSettings = (CamouflageTilingType.LEGACY, None, None)
         self.scales = (1.2, 1.0, 0.7)
         self.glossMetallicSettings = {'glossMetallicMap': '', 'gloss': Math.Vector4(0.0), 'metallic': Math.Vector4(0.0)}
+        self.styleId = None
         super(CamouflageItem, self).__init__(parentGroup)
         return
 
@@ -393,6 +396,52 @@ class StyleItem(BaseCustomizationItem):
     @property
     def hasDependent(self):
         return bool(self.dependencies)
+
+    @property
+    def hasContaineOutfitPart(self):
+        return self.isEditable and self.isQuestsProgression
+
+    def _iteratePartsOutfit(self, season, intCDs, removeFromOutfit):
+        if not self.hasContaineOutfitPart:
+            raise StopIteration
+        itemTypePart = CamouflageItem.itemType
+        customizationCache = vehicles.g_cache.customization20()
+        for intCD in intCDs:
+            if not intCD:
+                continue
+            itemType, itemId = splitIntDescr(intCD)
+            if itemType != itemTypePart or itemId not in self.alternateItems.get(itemTypePart, ()):
+                continue
+            styleId = customizationCache.itemTypes[itemType][itemId].styleId
+            if styleId:
+                out = customizationCache.styles[styleId].outfits.get(season)
+                if out:
+                    if removeFromOutfit:
+                        out = out.copy()
+                        out.removeComponent(itemId, itemType, out.countComponents(itemId, itemType))
+                    yield out
+
+    def _opPartsOutfit(self, func, season, outfitComponent, vehicleCD, intCDs=None):
+        if self.hasContaineOutfitPart:
+            vehAllAppliedTo = 0
+            if vehicleCD:
+                vehDescr = vehicles.VehicleDescr(compactDescr=vehicleCD)
+                typeName = lower(CustomizationTypeNames[CamouflageItem.itemType])
+                vehAllAppliedTo = vehDescr.chassis.customizableVehicleAreas.get(typeName)[0]
+                vehAllAppliedTo |= vehDescr.hull.customizableVehicleAreas.get(typeName)[0]
+                vehAllAppliedTo |= vehDescr.turret.customizableVehicleAreas.get(typeName)[0]
+                vehAllAppliedTo |= vehDescr.gun.customizableVehicleAreas.get(typeName)[0]
+            isAppiledTo = lambda camouflage: not vehAllAppliedTo or vehAllAppliedTo & camouflage.appliedTo
+            for partOutfitComponent in self._iteratePartsOutfit(season, intCDs or {CamouflageItem.makeIntDescr(cam.id) for cam in outfitComponent.camouflages if isAppiledTo(cam)}, True):
+                outfitComponent = func(outfitComponent, partOutfitComponent)
+
+        return outfitComponent
+
+    def addPartsToOutfit(self, season, outfitComponent, vehicleCD, intCDs=None):
+        return self._opPartsOutfit(type(outfitComponent).applyDiff, season, outfitComponent, vehicleCD, intCDs)
+
+    def removePartrsFromOutfit(self, season, outfitComponent, vehicleCD, intCDs=None):
+        return self._opPartsOutfit(type(outfitComponent).getDiff, season, outfitComponent, vehicleCD, intCDs)
 
 
 class InsigniaItem(BaseCustomizationItem):

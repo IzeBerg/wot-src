@@ -2,7 +2,6 @@ package net.wg.infrastructure.base.meta.impl
 {
    import net.wg.data.constants.Errors;
    import net.wg.gui.components.controls.VO.BadgeVisualVO;
-   import net.wg.gui.lobby.header.vo.AccountBoosterVO;
    import net.wg.gui.lobby.header.vo.AccountDataVo;
    import net.wg.gui.lobby.header.vo.ExtendedSquadInfoVo;
    import net.wg.gui.lobby.header.vo.HBC_FinanceVo;
@@ -33,6 +32,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public var onPremShopClick:Function;
       
+      public var onReservesClick:Function;
+      
       public var onCrystalClick:Function;
       
       public var onPayment:Function;
@@ -54,8 +55,6 @@ package net.wg.infrastructure.base.meta.impl
       private var _accountDataVo:AccountDataVo;
       
       private var _badgeVisualVO:BadgeVisualVO;
-      
-      private var _accountBoosterVO:AccountBoosterVO;
       
       private var _hBC_WotPlusDataVO:HBC_WotPlusDataVO;
       
@@ -92,11 +91,6 @@ package net.wg.infrastructure.base.meta.impl
          {
             this._badgeVisualVO.dispose();
             this._badgeVisualVO = null;
-         }
-         if(this._accountBoosterVO)
-         {
-            this._accountBoosterVO.dispose();
-            this._accountBoosterVO = null;
          }
          if(this._hBC_WotPlusDataVO)
          {
@@ -171,6 +165,12 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.onPremShopClick,"onPremShopClick" + Errors.CANT_NULL);
          this.onPremShopClick();
+      }
+      
+      public function onReservesClickS() : void
+      {
+         App.utils.asserter.assertNotNull(this.onReservesClick,"onReservesClick" + Errors.CANT_NULL);
+         this.onReservesClick();
       }
       
       public function onCrystalClickS() : void
@@ -256,17 +256,6 @@ package net.wg.infrastructure.base.meta.impl
          if(_loc3_)
          {
             _loc3_.dispose();
-         }
-      }
-      
-      public final function as_setBoosterData(param1:Object) : void
-      {
-         var _loc2_:AccountBoosterVO = this._accountBoosterVO;
-         this._accountBoosterVO = new AccountBoosterVO(param1);
-         this.setBoosterData(this._accountBoosterVO);
-         if(_loc2_)
-         {
-            _loc2_.dispose();
          }
       }
       
@@ -359,13 +348,6 @@ package net.wg.infrastructure.base.meta.impl
          var _loc3_:String = "as_setBadge" + Errors.ABSTRACT_INVOKE;
          DebugUtils.LOG_ERROR(_loc3_);
          throw new AbstractException(_loc3_);
-      }
-      
-      protected function setBoosterData(param1:AccountBoosterVO) : void
-      {
-         var _loc2_:String = "as_setBoosterData" + Errors.ABSTRACT_INVOKE;
-         DebugUtils.LOG_ERROR(_loc2_);
-         throw new AbstractException(_loc2_);
       }
       
       protected function setWotPlusData(param1:HBC_WotPlusDataVO) : void

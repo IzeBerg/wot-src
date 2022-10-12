@@ -53,10 +53,9 @@ package net.wg.gui.components.tooltips
       
       override protected function redraw() : void
       {
-         var _loc2_:VehicleVO = null;
          var _loc3_:Separator = null;
          var _loc1_:ILocale = App.utils.locale;
-         _loc2_ = new VehicleVO(_data);
+         var _loc2_:VehicleVO = new VehicleVO(_data);
          separators = new Vector.<Separator>();
          this.headerTF.autoSize = TextFieldAutoSize.LEFT;
          this.headerTF.htmlText = _loc1_.makeString(TOOLTIPS.SELECTEDVEHICLE_HEADER);
@@ -94,8 +93,7 @@ package net.wg.gui.components.tooltips
       
       private function addSuitableVehicleBlockItem(param1:VehicleVO, param2:Number) : Number
       {
-         var _loc3_:SuitableVehicleBlockItem = null;
-         _loc3_ = App.utils.classFactory.getComponent("SuitableVehicleBlockItemUI",SuitableVehicleBlockItem);
+         var _loc3_:SuitableVehicleBlockItem = App.utils.classFactory.getComponent("SuitableVehicleBlockItemUI",SuitableVehicleBlockItem);
          this._vehicleBlockItems.push(_loc3_);
          _loc3_.setData(App.utils.nations.getNationIcon(param1.nationID),param1.level,param1.smallIconPath,"../maps/icons/filters/tanks/" + param1.type + ".png",param1.shortUserName);
          _loc3_.x = contentMargin.left + bgShadowMargin.left;

@@ -12,6 +12,8 @@ package net.wg.gui.lobby.battlequeue
       
       public var count:Number = NaN;
       
+      public var highlight:Boolean = false;
+      
       public function BattleQueueItemVO(param1:Object)
       {
          super(param1);

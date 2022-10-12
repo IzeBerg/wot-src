@@ -1,4 +1,4 @@
-from adisp import process
+from adisp import adisp_process
 from frameworks.wulf import ViewSettings
 from gui.impl.gen import R
 from gui.impl.gen.view_models.views.lobby.premacc.dashboard.parent_control_info_popover_model import ParentControlInfoPopoverModel
@@ -27,7 +27,7 @@ class ParentControlInfoPopoverContent(PopOverViewImpl):
     def _finalize(self):
         self.viewModel.onLinkClicked -= self.__onLinkClicked
 
-    @process
+    @adisp_process
     def __onLinkClicked(self):
         parsedUrl = yield self.__links.getURL(_PARENT_CONTROL_HELP_URL)
         self.__links.open(parsedUrl)

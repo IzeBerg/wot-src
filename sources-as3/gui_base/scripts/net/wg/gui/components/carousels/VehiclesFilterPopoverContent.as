@@ -10,8 +10,10 @@ package net.wg.gui.components.carousels
    import net.wg.gui.components.controls.events.RendererEvent;
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.utils.IClassFactory;
+   import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.constants.DirectionMode;
    import scaleform.clik.constants.InvalidationType;
+   import scaleform.clik.interfaces.IListItemRenderer;
    
    public class VehiclesFilterPopoverContent extends UIComponentEx
    {
@@ -57,6 +59,8 @@ package net.wg.gui.components.carousels
       
       public var listProgressions:SimpleTileList = null;
       
+      public var lblAdditionalInfo:TextField = null;
+      
       protected var initData:FilterCarouseInitVO = null;
       
       protected var stateData:FiltersStateVO = null;
@@ -68,12 +72,17 @@ package net.wg.gui.components.carousels
       
       protected static function listSetState(param1:SimpleTileList, param2:Vector.<Boolean>) : void
       {
+         var _loc4_:IListItemRenderer = null;
          var _loc3_:int = param2.length;
-         var _loc4_:int = 0;
-         while(_loc4_ < _loc3_)
+         var _loc5_:int = 0;
+         while(_loc5_ < _loc3_)
          {
-            param1.getRendererAt(_loc4_).selectable = param2[_loc4_];
-            _loc4_++;
+            _loc4_ = param1.getRendererAt(_loc5_);
+            if(_loc4_)
+            {
+               param1.getRendererAt(_loc5_).selectable = param2[_loc5_];
+            }
+            _loc5_++;
          }
       }
       
@@ -100,6 +109,7 @@ package net.wg.gui.components.carousels
          this.listVehicleLevels.addEventListener(Event.RESIZE,this.onListsResizeHandler);
          this.listSpecials.addEventListener(Event.RESIZE,this.onListsResizeHandler);
          this.listHidden.addEventListener(Event.RESIZE,this.onListsResizeHandler);
+         this.lblAdditionalInfo.visible = false;
       }
       
       override protected function draw() : void
@@ -138,6 +148,7 @@ package net.wg.gui.components.carousels
          this.lblSpecials = null;
          this.lblHidden = null;
          this.lblProgressions = null;
+         this.lblAdditionalInfo = null;
          this.listNationType.dispose();
          this.listNationType = null;
          this.listVehicleType.dispose();
@@ -208,6 +219,13 @@ package net.wg.gui.components.carousels
             this.listProgressions.y = this.lblProgressions.y + this.lblProgressions.height + LABEL_OFFSET | 0;
             param1 = this.listProgressions.y + this.listProgressions.height + LIST_OFFSET;
          }
+         var _loc2_:Boolean = StringUtils.isNotEmpty(this.initData.additionalInfo);
+         this.lblAdditionalInfo.visible = _loc2_;
+         if(_loc2_)
+         {
+            this.lblAdditionalInfo.y = param1;
+            param1 = this.lblAdditionalInfo.y + this.lblAdditionalInfo.height + LIST_OFFSET | 0;
+         }
          return param1;
       }
       
@@ -251,6 +269,12 @@ package net.wg.gui.components.carousels
          this.listNationType.dataProvider = this.initData.nations;
          this.lblVehicleType.htmlText = this.initData.vehicleTypesLabel;
          this.listVehicleType.dataProvider = this.initData.vehicleTypes;
+         var _loc1_:String = this.initData.additionalInfo;
+         if(StringUtils.isNotEmpty(_loc1_))
+         {
+            this.lblAdditionalInfo.htmlText = _loc1_;
+            App.utils.commons.updateTextFieldSize(this.lblAdditionalInfo,false,true);
+         }
       }
       
       private function onNationTypeItemClickHandler(param1:RendererEvent) : void

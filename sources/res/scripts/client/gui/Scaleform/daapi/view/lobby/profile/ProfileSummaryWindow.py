@@ -1,4 +1,4 @@
-from adisp import process
+from adisp import adisp_process
 from gui.Scaleform.locale.TOOLTIPS import TOOLTIPS
 from gui.impl import backport
 from gui.shared import event_dispatcher as shared_events
@@ -71,7 +71,7 @@ class ProfileSummaryWindow(ProfileSummaryWindowMeta, ClanEmblemsHelper, ClanList
             self.requestClanEmblem32x32(clanDBID)
         return
 
-    @process
+    @adisp_process
     def _receiveRating(self, databaseID):
         req = self.itemsCache.items.dossiers.getUserDossierRequester(int(databaseID))
         self.__rating = yield req.getGlobalRating()

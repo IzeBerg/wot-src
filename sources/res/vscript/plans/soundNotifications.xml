@@ -3,7 +3,6 @@
 	<info>
 		<name>soundNotifications</name>
 		<isMacro>false</isMacro>
-		<version>0</version>
 		<aspect>
 			<compatibles>CLIENT</compatibles>
 		</aspect>
@@ -157,10 +156,6 @@
 								<name>Input Type</name>
 								<type>TypeT</type>
 							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
 						</params>
 						<slots/>
 					</block>
@@ -177,10 +172,6 @@
 								StringT
 								<name>Input Type</name>
 								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
 							</param>
 						</params>
 						<slots/>
@@ -277,17 +268,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -327,17 +313,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -473,17 +454,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -572,17 +548,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -711,7 +682,7 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
@@ -719,16 +690,11 @@
 								<name>Is Const</name>
 								<type>BoolT</type>
 							</param>
-							<param>
-								false
-								<name>Is Global</name>
-								<type>BoolT</type>
-							</param>
 						</params>
 						<slots>
 							<slot>
 								<name>default</name>
-								<const>\\</const>
+								<const>\00000000.00000000.00000000.00000000\</const>
 							</slot>
 						</slots>
 					</block>
@@ -761,6 +727,19 @@
 					<block>
 						<class>SetVariable</class>
 						<id>SetVariable_12</id>
+						<buddy>Variable_5</buddy>
+						<params>
+							<param>
+								SoundT
+								<name>Variable Type</name>
+								<type>TypeT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>GetVariable</class>
+						<id>GetVariable_12</id>
 						<buddy>Variable_5</buddy>
 						<params>
 							<param>
@@ -824,17 +803,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -1061,17 +1035,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -1724,30 +1693,6 @@
 						<slots/>
 					</block>
 					<block>
-						<class>FrameEvent</class>
-						<id>FrameEvent_1</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>active</name>
-								<const>\true\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_12</id>
-						<buddy>Variable_5</buddy>
-						<params>
-							<param>
-								SoundT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
 						<class>Macro</class>
 						<id>Macro_1</id>
 						<params>
@@ -1758,6 +1703,17 @@
 							</param>
 						</params>
 						<slots/>
+					</block>
+					<block>
+						<class>FrameEvent</class>
+						<id>FrameEvent_1</id>
+						<params/>
+						<slots>
+							<slot>
+								<name>active</name>
+								<const>\true\</const>
+							</slot>
+						</slots>
 					</block>
 				</blocks>
 				<connections>
@@ -2550,17 +2506,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -2664,10 +2615,6 @@
 								<name>Input Type</name>
 								<type>TypeT</type>
 							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
 						</params>
 						<slots/>
 					</block>
@@ -2718,6 +2665,18 @@
 						<slots/>
 					</block>
 					<block>
+						<class>Macro</class>
+						<id>Macro_1</id>
+						<params>
+							<param>
+								getInfoSound
+								<name>Macro Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
 						<class>AddToArray</class>
 						<id>AddToArray_1</id>
 						<params>
@@ -2748,6 +2707,30 @@
 						<slots/>
 					</block>
 					<block>
+						<class>Macro</class>
+						<id>Macro_4</id>
+						<params>
+							<param>
+								getCircumstances
+								<name>Macro Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>Macro</class>
+						<id>Macro_6</id>
+						<params>
+							<param>
+								getEventChain
+								<name>Macro Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
 						<class>MacroInput</class>
 						<id>MacroInput_1</id>
 						<params>
@@ -2760,10 +2743,6 @@
 								StringT
 								<name>Input Type</name>
 								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
 							</param>
 						</params>
 						<slots/>
@@ -2877,6 +2856,18 @@
 						</slots>
 					</block>
 					<block>
+						<class>Macro</class>
+						<id>Macro_5</id>
+						<params>
+							<param>
+								getVehicleSound
+								<name>Macro Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
 						<class>CompareIntegers</class>
 						<id>CompareIntegers_2</id>
 						<params/>
@@ -2949,105 +2940,6 @@
 								<const>\infChance\</const>
 							</slot>
 						</slots>
-					</block>
-					<block>
-						<class>PrintToGameLogs</class>
-						<id>PrintToGameLogs_2</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>IterateArray</class>
-						<id>IterateArray_2</id>
-						<params>
-							<param>
-								StringArrayT
-								<name>Array Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>forward</name>
-								<const>\true\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>PrintToGameLogs</class>
-						<id>PrintToGameLogs_1</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\CIRCs:\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>PrintToGameLogs</class>
-						<id>PrintToGameLogs_3</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\CIRC_events:\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>PrintToGameLogs</class>
-						<id>PrintToGameLogs_4</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_6</id>
-						<params>
-							<param>
-								getEventChain
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_1</id>
-						<params>
-							<param>
-								getInfoSound
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_5</id>
-						<params>
-							<param>
-								getVehicleSound
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_4</id>
-						<params>
-							<param>
-								getCircumstances
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
 					</block>
 				</blocks>
 				<connections>
@@ -3124,6 +3016,18 @@
 						<output>res</output>
 					</connection>
 					<connection>
+						<from>If_1</from>
+						<input>input</input>
+						<to>Macro_1</to>
+						<output>true</output>
+					</connection>
+					<connection>
+						<from>MacroInput_1</from>
+						<input>eventName</input>
+						<to>Macro_1</to>
+						<output>eventName</output>
+					</connection>
+					<connection>
 						<from>Macro_1</from>
 						<input>input</input>
 						<to>AddToArray_1</to>
@@ -3142,16 +3046,46 @@
 						<output>infoSound</output>
 					</connection>
 					<connection>
+						<from>Sequence_1</from>
+						<input>input</input>
+						<to>Macro_4</to>
+						<output>o1</output>
+					</connection>
+					<connection>
+						<from>MacroInput_1</from>
+						<input>eventName</input>
+						<to>Macro_4</to>
+						<output>eventName</output>
+					</connection>
+					<connection>
+						<from>Macro_4</from>
+						<input>input</input>
+						<to>Macro_6</to>
+						<output>onGetCircumstances</output>
+					</connection>
+					<connection>
+						<from>Macro_4</from>
+						<input>circumstances</input>
+						<to>Macro_6</to>
+						<output>circumstances</output>
+					</connection>
+					<connection>
+						<from>MacroInput_1</from>
+						<input>eventName</input>
+						<to>Macro_6</to>
+						<output>eventName</output>
+					</connection>
+					<connection>
 						<from>SetVariable_1</from>
 						<input>input</input>
 						<to>Sequence_1</to>
 						<output>out</output>
 					</connection>
 					<connection>
-						<from>PrintToGameLogs_3</from>
+						<from>Macro_6</from>
 						<input>input</input>
 						<to>IterateArray_1</to>
-						<output>out</output>
+						<output>onGetEventChain</output>
 					</connection>
 					<connection>
 						<from>Macro_6</from>
@@ -3190,7 +3124,7 @@
 						<output>sound</output>
 					</connection>
 					<connection>
-						<from>PrintToGameLogs_4</from>
+						<from>IterateArray_1</from>
 						<input>input</input>
 						<to>If_2</to>
 						<output>out</output>
@@ -3230,6 +3164,24 @@
 						<input>value</input>
 						<to>AddToArray_3</to>
 						<output>vehicleSound</output>
+					</connection>
+					<connection>
+						<from>If_3</from>
+						<input>input</input>
+						<to>Macro_5</to>
+						<output>true</output>
+					</connection>
+					<connection>
+						<from>IterateArray_1</from>
+						<input>voice</input>
+						<to>Macro_5</to>
+						<output>value</output>
+					</connection>
+					<connection>
+						<from>GetAnyVehicle_1</from>
+						<input>vehicle</input>
+						<to>Macro_5</to>
+						<output>vehicle</output>
 					</connection>
 					<connection>
 						<from>FindSubstring_1</from>
@@ -3279,108 +3231,6 @@
 						<to>ContextEventCall_2</to>
 						<output>eventName</output>
 					</connection>
-					<connection>
-						<from>IterateArray_2</from>
-						<input>input</input>
-						<to>PrintToGameLogs_2</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>IterateArray_2</from>
-						<input>value</input>
-						<to>PrintToGameLogs_2</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>PrintToGameLogs_1</from>
-						<input>input</input>
-						<to>IterateArray_2</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>Macro_4</from>
-						<input>array</input>
-						<to>IterateArray_2</to>
-						<output>circumstances</output>
-					</connection>
-					<connection>
-						<from>Macro_4</from>
-						<input>input</input>
-						<to>PrintToGameLogs_1</to>
-						<output>onGetCircumstances</output>
-					</connection>
-					<connection>
-						<from>Macro_6</from>
-						<input>input</input>
-						<to>PrintToGameLogs_3</to>
-						<output>onGetEventChain</output>
-					</connection>
-					<connection>
-						<from>IterateArray_1</from>
-						<input>input</input>
-						<to>PrintToGameLogs_4</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>IterateArray_1</from>
-						<input>value</input>
-						<to>PrintToGameLogs_4</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>IterateArray_2</from>
-						<input>input</input>
-						<to>Macro_6</to>
-						<output>complete</output>
-					</connection>
-					<connection>
-						<from>Macro_4</from>
-						<input>circumstances</input>
-						<to>Macro_6</to>
-						<output>circumstances</output>
-					</connection>
-					<connection>
-						<from>MacroInput_1</from>
-						<input>eventName</input>
-						<to>Macro_6</to>
-						<output>eventName</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>Macro_1</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>MacroInput_1</from>
-						<input>eventName</input>
-						<to>Macro_1</to>
-						<output>eventName</output>
-					</connection>
-					<connection>
-						<from>If_3</from>
-						<input>input</input>
-						<to>Macro_5</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>IterateArray_1</from>
-						<input>voice</input>
-						<to>Macro_5</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>GetAnyVehicle_1</from>
-						<input>vehicle</input>
-						<to>Macro_5</to>
-						<output>vehicle</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>input</input>
-						<to>Macro_4</to>
-						<output>o1</output>
-					</connection>
 				</connections>
 			</macro>
 			<macro>
@@ -3406,10 +3256,6 @@
 								<name>Input Type</name>
 								<type>TypeT</type>
 							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
 						</params>
 						<slots/>
 					</block>
@@ -3426,10 +3272,6 @@
 								EventT
 								<name>Input Type</name>
 								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
 							</param>
 						</params>
 						<slots/>
@@ -3484,7 +3326,7 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
@@ -3492,16 +3334,11 @@
 								<name>Is Const</name>
 								<type>BoolT</type>
 							</param>
-							<param>
-								false
-								<name>Is Global</name>
-								<type>BoolT</type>
-							</param>
 						</params>
 						<slots>
 							<slot>
 								<name>default</name>
-								<const>\\</const>
+								<const>\00000000.00000000.00000000.00000000\</const>
 							</slot>
 						</slots>
 					</block>
@@ -3570,6 +3407,18 @@
 						<slots/>
 					</block>
 					<block>
+						<class>Macro</class>
+						<id>Macro_1</id>
+						<params>
+							<param>
+								getVehicleSound
+								<name>Macro Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
 						<class>Create2DSound</class>
 						<id>Create2DSound_1</id>
 						<params/>
@@ -3597,17 +3446,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -3822,35 +3666,6 @@
 							</slot>
 						</slots>
 					</block>
-					<block>
-						<class>ContextEventCall</class>
-						<id>ContextEventCall_9</id>
-						<params>
-							<param>
-								SoundNotificationsContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								setEventSwitches
-								<name>Member Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_1</id>
-						<params>
-							<param>
-								getVehicleSound
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
 				</blocks>
 				<connections>
 					<connection>
@@ -3932,15 +3747,33 @@
 						<output>res</output>
 					</connection>
 					<connection>
-						<from>ContextEventCall_9</from>
+						<from>ContextEventCall_8</from>
 						<input>input</input>
 						<to>SetVariable_3</to>
 						<output>out</output>
 					</connection>
 					<connection>
-						<from>ContextEventCall_9</from>
+						<from>Create3DSound_1</from>
 						<input>value</input>
 						<to>SetVariable_3</to>
+						<output>sound</output>
+					</connection>
+					<connection>
+						<from>ContextEventCall_6</from>
+						<input>input</input>
+						<to>Macro_1</to>
+						<output>out</output>
+					</connection>
+					<connection>
+						<from>ContextEventCall_6</from>
+						<input>voice</input>
+						<to>Macro_1</to>
+						<output>res</output>
+					</connection>
+					<connection>
+						<from>ContextEventCall_5</from>
+						<input>vehicle</input>
+						<to>Macro_1</to>
 						<output>res</output>
 					</connection>
 					<connection>
@@ -4063,36 +3896,6 @@
 						<to>ContextEventCall_8</to>
 						<output>value</output>
 					</connection>
-					<connection>
-						<from>ContextEventCall_8</from>
-						<input>in</input>
-						<to>ContextEventCall_9</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>Create3DSound_1</from>
-						<input>sound</input>
-						<to>ContextEventCall_9</to>
-						<output>sound</output>
-					</connection>
-					<connection>
-						<from>ContextEventCall_6</from>
-						<input>input</input>
-						<to>Macro_1</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>ContextEventCall_6</from>
-						<input>voice</input>
-						<to>Macro_1</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>ContextEventCall_5</from>
-						<input>vehicle</input>
-						<to>Macro_1</to>
-						<output>res</output>
-					</connection>
 				</connections>
 			</macro>
 			<macro>
@@ -4111,10 +3914,6 @@
 								EventT
 								<name>Input Type</name>
 								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
 							</param>
 						</params>
 						<slots/>
@@ -4135,17 +3934,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -4184,6 +3978,133 @@
 					<block>
 						<class>GetVariable</class>
 						<id>GetVariable_1</id>
+						<buddy>Variable_1</buddy>
+						<params>
+							<param>
+								StringArrayT
+								<name>Variable Type</name>
+								<type>TypeT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>Sequence</class>
+						<id>Sequence_1</id>
+						<params>
+							<param>
+								6
+								<name>Output Count</name>
+								<type>IntT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>Macro</class>
+						<id>Macro_5</id>
+						<params>
+							<param>
+								getSpaceCirc
+								<name>Macro Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>AddToArray</class>
+						<id>AddToArray_1</id>
+						<params>
+							<param>
+								StringArrayT
+								<name>Array Type</name>
+								<type>TypeT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>unique</name>
+								<const>\false\</const>
+							</slot>
+						</slots>
+					</block>
+					<block>
+						<class>GetVariable</class>
+						<id>GetVariable_2</id>
+						<buddy>Variable_1</buddy>
+						<params>
+							<param>
+								StringArrayT
+								<name>Variable Type</name>
+								<type>TypeT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>SetVariable</class>
+						<id>SetVariable_2</id>
+						<buddy>Variable_1</buddy>
+						<params>
+							<param>
+								StringArrayT
+								<name>Variable Type</name>
+								<type>TypeT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>AddToArray</class>
+						<id>AddToArray_2</id>
+						<params>
+							<param>
+								StringArrayT
+								<name>Array Type</name>
+								<type>TypeT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>unique</name>
+								<const>\false\</const>
+							</slot>
+						</slots>
+					</block>
+					<block>
+						<class>SetVariable</class>
+						<id>SetVariable_3</id>
+						<buddy>Variable_1</buddy>
+						<params>
+							<param>
+								StringArrayT
+								<name>Variable Type</name>
+								<type>TypeT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>AddToArray</class>
+						<id>AddToArray_3</id>
+						<params>
+							<param>
+								StringArrayT
+								<name>Array Type</name>
+								<type>TypeT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>unique</name>
+								<const>\false\</const>
+							</slot>
+						</slots>
+					</block>
+					<block>
+						<class>SetVariable</class>
+						<id>SetVariable_4</id>
 						<buddy>Variable_1</buddy>
 						<params>
 							<param>
@@ -4242,6 +4163,207 @@
 						<slots/>
 					</block>
 					<block>
+						<class>Macro</class>
+						<id>Macro_1</id>
+						<params>
+							<param>
+								getHealthCirc
+								<name>Macro Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>isPc</name>
+								<const>\true\</const>
+							</slot>
+						</slots>
+					</block>
+					<block>
+						<class>Macro</class>
+						<id>Macro_6</id>
+						<params>
+							<param>
+								getHealthCirc
+								<name>Macro Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>isPc</name>
+								<const>\false\</const>
+							</slot>
+						</slots>
+					</block>
+					<block>
+						<class>AddToArray</class>
+						<id>AddToArray_4</id>
+						<params>
+							<param>
+								StringArrayT
+								<name>Array Type</name>
+								<type>TypeT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>unique</name>
+								<const>\false\</const>
+							</slot>
+						</slots>
+					</block>
+					<block>
+						<class>SetVariable</class>
+						<id>SetVariable_5</id>
+						<buddy>Variable_1</buddy>
+						<params>
+							<param>
+								StringArrayT
+								<name>Variable Type</name>
+								<type>TypeT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>MacroInput</class>
+						<id>MacroInput_1</id>
+						<params>
+							<param>
+								eventName
+								<name>Input Name</name>
+								<type>StringT</type>
+							</param>
+							<param>
+								StringT
+								<name>Input Type</name>
+								<type>TypeT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>Macro</class>
+						<id>Macro_4</id>
+						<params>
+							<param>
+								getBattlePhaseCirc
+								<name>Macro Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>If</class>
+						<id>If_1</id>
+						<params/>
+						<slots/>
+					</block>
+					<block>
+						<class>IsVehicleValid</class>
+						<id>IsVehicleValid_1</id>
+						<params/>
+						<slots/>
+					</block>
+					<block>
+						<class>If</class>
+						<id>If_2</id>
+						<params/>
+						<slots/>
+					</block>
+					<block>
+						<class>IsVehicleValid</class>
+						<id>IsVehicleValid_2</id>
+						<params/>
+						<slots/>
+					</block>
+					<block>
+						<class>Get Player Vehicle</class>
+						<id>Get Player Vehicle_1</id>
+						<params/>
+						<slots/>
+					</block>
+					<block>
+						<class>GetVariable</class>
+						<id>GetVariable_4</id>
+						<buddy>Variable_1</buddy>
+						<params>
+							<param>
+								StringArrayT
+								<name>Variable Type</name>
+								<type>TypeT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>GetVariable</class>
+						<id>GetVariable_5</id>
+						<buddy>Variable_1</buddy>
+						<params>
+							<param>
+								StringArrayT
+								<name>Variable Type</name>
+								<type>TypeT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>GetVariable</class>
+						<id>GetVariable_6</id>
+						<buddy>Variable_1</buddy>
+						<params>
+							<param>
+								StringArrayT
+								<name>Variable Type</name>
+								<type>TypeT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
+						<class>ContextEventCall</class>
+						<id>ContextEventCall_2</id>
+						<params>
+							<param>
+								SoundNotificationsContext
+								<name>Context Name</name>
+								<type>StringT</type>
+							</param>
+							<param>
+								getEventInfoInt
+								<name>Member Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots>
+							<slot>
+								<name>parameter</name>
+								<const>\queue\</const>
+							</slot>
+						</slots>
+					</block>
+					<block>
+						<class>ContextEventCall</class>
+						<id>ContextEventCall_3</id>
+						<params>
+							<param>
+								SoundNotificationsContext
+								<name>Context Name</name>
+								<type>StringT</type>
+							</param>
+							<param>
+								getPlayingEventBoundVehicle
+								<name>Member Name</name>
+								<type>StringT</type>
+							</param>
+						</params>
+						<slots/>
+					</block>
+					<block>
 						<class>GetVariable</class>
 						<id>GetVariable_7</id>
 						<buddy>Variable_1</buddy>
@@ -4288,714 +4410,6 @@
 						</params>
 						<slots/>
 					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_8</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>AddToArray</class>
-						<id>AddToArray_5</id>
-						<params>
-							<param>
-								StringArrayT
-								<name>Array Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>unique</name>
-								<const>\false\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_8</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>AddToArray</class>
-						<id>AddToArray_6</id>
-						<params>
-							<param>
-								StringArrayT
-								<name>Array Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>unique</name>
-								<const>\false\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_9</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_7</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>AddToArray</class>
-						<id>AddToArray_7</id>
-						<params>
-							<param>
-								StringArrayT
-								<name>Array Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>unique</name>
-								<const>\false\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_10</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_9</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_10</id>
-						<params>
-							<param>
-								getPlayerVehicleHealthCirc
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_11</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>AddToArray</class>
-						<id>AddToArray_8</id>
-						<params>
-							<param>
-								StringArrayT
-								<name>Array Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>unique</name>
-								<const>\false\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_10</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_11</id>
-						<params>
-							<param>
-								getBossVehicleHealthCirc
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_11</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>AddToArray</class>
-						<id>AddToArray_9</id>
-						<params>
-							<param>
-								StringArrayT
-								<name>Array Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>unique</name>
-								<const>\false\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_12</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_12</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>AddToArray</class>
-						<id>AddToArray_10</id>
-						<params>
-							<param>
-								StringArrayT
-								<name>Array Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>unique</name>
-								<const>\false\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_13</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_12</id>
-						<params>
-							<param>
-								getDestroyedGeneratorsCirc
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_13</id>
-						<params>
-							<param>
-								getCampsCountCirc
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_14</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_13</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>AddToArray</class>
-						<id>AddToArray_11</id>
-						<params>
-							<param>
-								StringArrayT
-								<name>Array Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>unique</name>
-								<const>\false\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_9</id>
-						<params>
-							<param>
-								getHuntersCirc
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_14</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_15</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>AddToArray</class>
-						<id>AddToArray_12</id>
-						<params>
-							<param>
-								StringArrayT
-								<name>Array Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>unique</name>
-								<const>\false\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_14</id>
-						<params>
-							<param>
-								getPlayerKillerBossCirc
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_8</id>
-						<params>
-							<param>
-								getBattleTimeLeftCirc
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>AddToArray</class>
-						<id>AddToArray_13</id>
-						<params>
-							<param>
-								StringArrayT
-								<name>Array Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>unique</name>
-								<const>\false\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_16</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_15</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_15</id>
-						<params>
-							<param>
-								getBossDamageCirc
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_16</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>AddToArray</class>
-						<id>AddToArray_14</id>
-						<params>
-							<param>
-								StringArrayT
-								<name>Array Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>unique</name>
-								<const>\false\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_17</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_17</id>
-						<params>
-							<param>
-								getPlayerDamageCirc
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_18</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>AddToArray</class>
-						<id>AddToArray_15</id>
-						<params>
-							<param>
-								StringArrayT
-								<name>Array Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>unique</name>
-								<const>\false\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_17</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Sequence</class>
-						<id>Sequence_2</id>
-						<params>
-							<param>
-								14
-								<name>Output Count</name>
-								<type>IntT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_16</id>
-						<params>
-							<param>
-								getEnoughtTimeCirc
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_1</id>
-						<params>
-							<param>
-								getEnoughtTimeCirc
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_4</id>
-						<params>
-							<param>
-								getEnoughtTimeCirc
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_2</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>AddToArray</class>
-						<id>AddToArray_1</id>
-						<params>
-							<param>
-								StringArrayT
-								<name>Array Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>unique</name>
-								<const>\false\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_2</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringArrayT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_5</id>
-						<params>
-							<param>
-								getBombsCirc
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_6</id>
-						<params>
-							<param>
-								getBombsCirc
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Macro</class>
-						<id>Macro_7</id>
-						<params>
-							<param>
-								getPlayerLivesCirc
-								<name>Macro Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
 				</blocks>
 				<connections>
 					<connection>
@@ -5023,22 +4437,244 @@
 						<output>value</output>
 					</connection>
 					<connection>
+						<from>SetVariable_1</from>
+						<input>input</input>
+						<to>Sequence_1</to>
+						<output>out</output>
+					</connection>
+					<connection>
+						<from>Sequence_1</from>
+						<input>input</input>
+						<to>Macro_5</to>
+						<output>o0</output>
+					</connection>
+					<connection>
+						<from>Macro_5</from>
+						<input>input</input>
+						<to>AddToArray_1</to>
+						<output>onGetSpaceCirc</output>
+					</connection>
+					<connection>
+						<from>GetVariable_2</from>
+						<input>array</input>
+						<to>AddToArray_1</to>
+						<output>value</output>
+					</connection>
+					<connection>
+						<from>Macro_5</from>
+						<input>value</input>
+						<to>AddToArray_1</to>
+						<output>spaceCirc</output>
+					</connection>
+					<connection>
+						<from>AddToArray_1</from>
+						<input>input</input>
+						<to>SetVariable_2</to>
+						<output>out</output>
+					</connection>
+					<connection>
+						<from>AddToArray_1</from>
+						<input>value</input>
+						<to>SetVariable_2</to>
+						<output>res</output>
+					</connection>
+					<connection>
+						<from>Macro_4</from>
+						<input>input</input>
+						<to>AddToArray_2</to>
+						<output>onBattlePhaseCirc</output>
+					</connection>
+					<connection>
+						<from>GetVariable_5</from>
+						<input>array</input>
+						<to>AddToArray_2</to>
+						<output>value</output>
+					</connection>
+					<connection>
+						<from>Macro_4</from>
+						<input>value</input>
+						<to>AddToArray_2</to>
+						<output>battlePhaseCirc</output>
+					</connection>
+					<connection>
+						<from>AddToArray_2</from>
+						<input>input</input>
+						<to>SetVariable_3</to>
+						<output>out</output>
+					</connection>
+					<connection>
+						<from>AddToArray_2</from>
+						<input>value</input>
+						<to>SetVariable_3</to>
+						<output>res</output>
+					</connection>
+					<connection>
+						<from>Macro_1</from>
+						<input>input</input>
+						<to>AddToArray_3</to>
+						<output>onGetHealthCirc</output>
+					</connection>
+					<connection>
+						<from>GetVariable_4</from>
+						<input>array</input>
+						<to>AddToArray_3</to>
+						<output>value</output>
+					</connection>
+					<connection>
+						<from>Macro_1</from>
+						<input>value</input>
+						<to>AddToArray_3</to>
+						<output>healthCirc</output>
+					</connection>
+					<connection>
+						<from>AddToArray_3</from>
+						<input>input</input>
+						<to>SetVariable_4</to>
+						<output>out</output>
+					</connection>
+					<connection>
+						<from>AddToArray_3</from>
+						<input>value</input>
+						<to>SetVariable_4</to>
+						<output>res</output>
+					</connection>
+					<connection>
 						<from>GetVariable_3</from>
 						<input>circumstances</input>
 						<to>MacroOutput_1</to>
 						<output>value</output>
 					</connection>
 					<connection>
-						<from>Sequence_2</from>
+						<from>Sequence_1</from>
 						<input>onGetCircumstances</input>
 						<to>MacroOutput_2</to>
-						<output>o13</output>
+						<output>o5</output>
 					</connection>
 					<connection>
-						<from>Sequence_2</from>
+						<from>If_1</from>
+						<input>input</input>
+						<to>Macro_1</to>
+						<output>true</output>
+					</connection>
+					<connection>
+						<from>Get Player Vehicle_1</from>
+						<input>vehicle</input>
+						<to>Macro_1</to>
+						<output>vehicle</output>
+					</connection>
+					<connection>
+						<from>If_2</from>
+						<input>input</input>
+						<to>Macro_6</to>
+						<output>true</output>
+					</connection>
+					<connection>
+						<from>ContextEventCall_3</from>
+						<input>vehicle</input>
+						<to>Macro_6</to>
+						<output>res</output>
+					</connection>
+					<connection>
+						<from>Macro_6</from>
+						<input>input</input>
+						<to>AddToArray_4</to>
+						<output>onGetHealthCirc</output>
+					</connection>
+					<connection>
+						<from>GetVariable_6</from>
+						<input>array</input>
+						<to>AddToArray_4</to>
+						<output>value</output>
+					</connection>
+					<connection>
+						<from>Macro_6</from>
+						<input>value</input>
+						<to>AddToArray_4</to>
+						<output>healthCirc</output>
+					</connection>
+					<connection>
+						<from>AddToArray_4</from>
+						<input>input</input>
+						<to>SetVariable_5</to>
+						<output>out</output>
+					</connection>
+					<connection>
+						<from>AddToArray_4</from>
+						<input>value</input>
+						<to>SetVariable_5</to>
+						<output>res</output>
+					</connection>
+					<connection>
+						<from>Sequence_1</from>
+						<input>input</input>
+						<to>Macro_4</to>
+						<output>o1</output>
+					</connection>
+					<connection>
+						<from>Sequence_1</from>
+						<input>input</input>
+						<to>If_1</to>
+						<output>o2</output>
+					</connection>
+					<connection>
+						<from>IsVehicleValid_1</from>
+						<input>value</input>
+						<to>If_1</to>
+						<output>res</output>
+					</connection>
+					<connection>
+						<from>Get Player Vehicle_1</from>
+						<input>vehicle</input>
+						<to>IsVehicleValid_1</to>
+						<output>vehicle</output>
+					</connection>
+					<connection>
+						<from>ContextEventCall_3</from>
+						<input>input</input>
+						<to>If_2</to>
+						<output>out</output>
+					</connection>
+					<connection>
+						<from>IsVehicleValid_2</from>
+						<input>value</input>
+						<to>If_2</to>
+						<output>res</output>
+					</connection>
+					<connection>
+						<from>ContextEventCall_3</from>
+						<input>vehicle</input>
+						<to>IsVehicleValid_2</to>
+						<output>res</output>
+					</connection>
+					<connection>
+						<from>Sequence_1</from>
+						<input>in</input>
+						<to>ContextEventCall_2</to>
+						<output>o3</output>
+					</connection>
+					<connection>
+						<from>MacroInput_1</from>
+						<input>eventName</input>
+						<to>ContextEventCall_2</to>
+						<output>eventName</output>
+					</connection>
+					<connection>
+						<from>ContextEventCall_2</from>
+						<input>in</input>
+						<to>ContextEventCall_3</to>
+						<output>out</output>
+					</connection>
+					<connection>
+						<from>ContextEventCall_2</from>
+						<input>queueNum</input>
+						<to>ContextEventCall_3</to>
+						<output>res</output>
+					</connection>
+					<connection>
+						<from>Sequence_1</from>
 						<input>input</input>
 						<to>RemoveFromArray_1</to>
-						<output>o12</output>
+						<output>o4</output>
 					</connection>
 					<connection>
 						<from>GetVariable_7</from>
@@ -5058,444 +4694,6 @@
 						<to>SetVariable_6</to>
 						<output>res</output>
 					</connection>
-					<connection>
-						<from>Macro_7</from>
-						<input>input</input>
-						<to>AddToArray_5</to>
-						<output>output</output>
-					</connection>
-					<connection>
-						<from>GetVariable_8</from>
-						<input>array</input>
-						<to>AddToArray_5</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>Macro_7</from>
-						<input>value</input>
-						<to>AddToArray_5</to>
-						<output>playerLivesCirc</output>
-					</connection>
-					<connection>
-						<from>AddToArray_5</from>
-						<input>input</input>
-						<to>SetVariable_8</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>AddToArray_5</from>
-						<input>value</input>
-						<to>SetVariable_8</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>Macro_8</from>
-						<input>input</input>
-						<to>AddToArray_6</to>
-						<output>output</output>
-					</connection>
-					<connection>
-						<from>GetVariable_9</from>
-						<input>array</input>
-						<to>AddToArray_6</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>Macro_8</from>
-						<input>value</input>
-						<to>AddToArray_6</to>
-						<output>battleTimeLeftOutput</output>
-					</connection>
-					<connection>
-						<from>AddToArray_6</from>
-						<input>input</input>
-						<to>SetVariable_7</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>AddToArray_6</from>
-						<input>value</input>
-						<to>SetVariable_7</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>Macro_9</from>
-						<input>input</input>
-						<to>AddToArray_7</to>
-						<output>outputEvent</output>
-					</connection>
-					<connection>
-						<from>GetVariable_10</from>
-						<input>array</input>
-						<to>AddToArray_7</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>Macro_9</from>
-						<input>value</input>
-						<to>AddToArray_7</to>
-						<output>huntersCountOutput</output>
-					</connection>
-					<connection>
-						<from>AddToArray_7</from>
-						<input>input</input>
-						<to>SetVariable_9</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>AddToArray_7</from>
-						<input>value</input>
-						<to>SetVariable_9</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>Sequence_2</from>
-						<input>playerHealthInput</input>
-						<to>Macro_10</to>
-						<output>o3</output>
-					</connection>
-					<connection>
-						<from>Macro_10</from>
-						<input>input</input>
-						<to>AddToArray_8</to>
-						<output>output</output>
-					</connection>
-					<connection>
-						<from>GetVariable_11</from>
-						<input>array</input>
-						<to>AddToArray_8</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>Macro_10</from>
-						<input>value</input>
-						<to>AddToArray_8</to>
-						<output>healthPercent</output>
-					</connection>
-					<connection>
-						<from>AddToArray_8</from>
-						<input>input</input>
-						<to>SetVariable_10</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>AddToArray_8</from>
-						<input>value</input>
-						<to>SetVariable_10</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>Sequence_2</from>
-						<input>bossHealthInput</input>
-						<to>Macro_11</to>
-						<output>o4</output>
-					</connection>
-					<connection>
-						<from>AddToArray_9</from>
-						<input>input</input>
-						<to>SetVariable_11</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>AddToArray_9</from>
-						<input>value</input>
-						<to>SetVariable_11</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>Macro_11</from>
-						<input>input</input>
-						<to>AddToArray_9</to>
-						<output>output</output>
-					</connection>
-					<connection>
-						<from>GetVariable_12</from>
-						<input>array</input>
-						<to>AddToArray_9</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>Macro_11</from>
-						<input>value</input>
-						<to>AddToArray_9</to>
-						<output>healthPercent</output>
-					</connection>
-					<connection>
-						<from>AddToArray_10</from>
-						<input>input</input>
-						<to>SetVariable_12</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>AddToArray_10</from>
-						<input>value</input>
-						<to>SetVariable_12</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>Macro_12</from>
-						<input>input</input>
-						<to>AddToArray_10</to>
-						<output>output</output>
-					</connection>
-					<connection>
-						<from>GetVariable_13</from>
-						<input>array</input>
-						<to>AddToArray_10</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>Macro_12</from>
-						<input>value</input>
-						<to>AddToArray_10</to>
-						<output>destroyedGeneratorsOutput</output>
-					</connection>
-					<connection>
-						<from>Sequence_2</from>
-						<input>generatorsInput</input>
-						<to>Macro_12</to>
-						<output>o5</output>
-					</connection>
-					<connection>
-						<from>Sequence_2</from>
-						<input>inputCamps</input>
-						<to>Macro_13</to>
-						<output>o6</output>
-					</connection>
-					<connection>
-						<from>AddToArray_11</from>
-						<input>input</input>
-						<to>SetVariable_13</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>AddToArray_11</from>
-						<input>value</input>
-						<to>SetVariable_13</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>Macro_13</from>
-						<input>input</input>
-						<to>AddToArray_11</to>
-						<output>output</output>
-					</connection>
-					<connection>
-						<from>GetVariable_14</from>
-						<input>array</input>
-						<to>AddToArray_11</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>Macro_13</from>
-						<input>value</input>
-						<to>AddToArray_11</to>
-						<output>campsCirc</output>
-					</connection>
-					<connection>
-						<from>Sequence_2</from>
-						<input>input</input>
-						<to>Macro_9</to>
-						<output>o2</output>
-					</connection>
-					<connection>
-						<from>AddToArray_12</from>
-						<input>input</input>
-						<to>SetVariable_14</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>AddToArray_12</from>
-						<input>value</input>
-						<to>SetVariable_14</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>Macro_14</from>
-						<input>input</input>
-						<to>AddToArray_12</to>
-						<output>killerOutput</output>
-					</connection>
-					<connection>
-						<from>GetVariable_15</from>
-						<input>array</input>
-						<to>AddToArray_12</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>Macro_14</from>
-						<input>value</input>
-						<to>AddToArray_12</to>
-						<output>killerCirc</output>
-					</connection>
-					<connection>
-						<from>Sequence_2</from>
-						<input>killerInput</input>
-						<to>Macro_14</to>
-						<output>o7</output>
-					</connection>
-					<connection>
-						<from>Sequence_2</from>
-						<input>timeLeftInput</input>
-						<to>Macro_8</to>
-						<output>o1</output>
-					</connection>
-					<connection>
-						<from>Macro_15</from>
-						<input>input</input>
-						<to>AddToArray_13</to>
-						<output>output</output>
-					</connection>
-					<connection>
-						<from>GetVariable_16</from>
-						<input>array</input>
-						<to>AddToArray_13</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>Macro_15</from>
-						<input>value</input>
-						<to>AddToArray_13</to>
-						<output>bossDamageCirc</output>
-					</connection>
-					<connection>
-						<from>AddToArray_13</from>
-						<input>input</input>
-						<to>SetVariable_15</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>AddToArray_13</from>
-						<input>value</input>
-						<to>SetVariable_15</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>Sequence_2</from>
-						<input>input</input>
-						<to>Macro_15</to>
-						<output>o8</output>
-					</connection>
-					<connection>
-						<from>AddToArray_14</from>
-						<input>input</input>
-						<to>SetVariable_16</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>AddToArray_14</from>
-						<input>value</input>
-						<to>SetVariable_16</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>Macro_16</from>
-						<input>input</input>
-						<to>AddToArray_14</to>
-						<output>outputEvent</output>
-					</connection>
-					<connection>
-						<from>GetVariable_17</from>
-						<input>array</input>
-						<to>AddToArray_14</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>Macro_16</from>
-						<input>value</input>
-						<to>AddToArray_14</to>
-						<output>enoughtTime</output>
-					</connection>
-					<connection>
-						<from>Sequence_2</from>
-						<input>input</input>
-						<to>Macro_17</to>
-						<output>o10</output>
-					</connection>
-					<connection>
-						<from>Macro_17</from>
-						<input>input</input>
-						<to>AddToArray_15</to>
-						<output>outputEvent</output>
-					</connection>
-					<connection>
-						<from>GetVariable_18</from>
-						<input>array</input>
-						<to>AddToArray_15</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>Macro_17</from>
-						<input>value</input>
-						<to>AddToArray_15</to>
-						<output>damageCirc</output>
-					</connection>
-					<connection>
-						<from>AddToArray_15</from>
-						<input>input</input>
-						<to>SetVariable_17</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>AddToArray_15</from>
-						<input>value</input>
-						<to>SetVariable_17</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>SetVariable_1</from>
-						<input>input</input>
-						<to>Sequence_2</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>Sequence_2</from>
-						<input>timeInput</input>
-						<to>Macro_16</to>
-						<output>o9</output>
-					</connection>
-					<connection>
-						<from>AddToArray_1</from>
-						<input>input</input>
-						<to>SetVariable_2</to>
-						<output>out</output>
-					</connection>
-					<connection>
-						<from>AddToArray_1</from>
-						<input>value</input>
-						<to>SetVariable_2</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>Macro_5</from>
-						<input>input</input>
-						<to>AddToArray_1</to>
-						<output>output</output>
-					</connection>
-					<connection>
-						<from>GetVariable_2</from>
-						<input>array</input>
-						<to>AddToArray_1</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>Macro_5</from>
-						<input>value</input>
-						<to>AddToArray_1</to>
-						<output>outputValue</output>
-					</connection>
-					<connection>
-						<from>Sequence_2</from>
-						<input>input</input>
-						<to>Macro_5</to>
-						<output>o11</output>
-					</connection>
-					<connection>
-						<from>Sequence_2</from>
-						<input>input</input>
-						<to>Macro_7</to>
-						<output>o0</output>
-					</connection>
 				</connections>
 			</macro>
 			<macro>
@@ -5514,10 +4712,6 @@
 								EventT
 								<name>Input Type</name>
 								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
 							</param>
 						</params>
 						<slots/>
@@ -5544,17 +4738,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -5693,17 +4882,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -5989,10 +5173,6 @@
 								<name>Input Type</name>
 								<type>TypeT</type>
 							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
 						</params>
 						<slots/>
 					</block>
@@ -6009,10 +5189,6 @@
 								BoolT
 								<name>Input Type</name>
 								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
 							</param>
 						</params>
 						<slots/>
@@ -6271,10 +5447,6 @@
 								<name>Input Type</name>
 								<type>TypeT</type>
 							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
 						</params>
 						<slots/>
 					</block>
@@ -6385,10 +5557,6 @@
 								<name>Input Type</name>
 								<type>TypeT</type>
 							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
 						</params>
 						<slots/>
 					</block>
@@ -6408,17 +5576,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -6716,10 +5879,6 @@
 								<name>Input Type</name>
 								<type>TypeT</type>
 							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
 						</params>
 						<slots/>
 					</block>
@@ -6736,10 +5895,6 @@
 								EventT
 								<name>Input Type</name>
 								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
 							</param>
 						</params>
 						<slots/>
@@ -6787,17 +5942,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -7213,10 +6363,6 @@
 								<name>Input Type</name>
 								<type>TypeT</type>
 							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
 						</params>
 						<slots/>
 					</block>
@@ -7245,10 +6391,6 @@
 								EventT
 								<name>Input Type</name>
 								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
 							</param>
 						</params>
 						<slots/>
@@ -7279,10 +6421,6 @@
 								<name>Input Type</name>
 								<type>TypeT</type>
 							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
 						</params>
 						<slots/>
 					</block>
@@ -7302,17 +6440,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -7339,17 +6472,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -7414,17 +6542,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -7464,17 +6587,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -7514,17 +6632,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -7860,17 +6973,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -8360,17 +7468,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -8488,17 +7591,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -8525,17 +7623,12 @@
 							</param>
 							<param>
 								false
-								<name>External Init</name>
+								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 							<param>
 								false
 								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
 								<type>BoolT</type>
 							</param>
 						</params>
@@ -9682,10 +8775,6 @@
 								<name>Input Type</name>
 								<type>TypeT</type>
 							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
 						</params>
 						<slots/>
 					</block>
@@ -9719,10 +8808,6 @@
 								EventT
 								<name>Input Type</name>
 								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
 							</param>
 						</params>
 						<slots/>
@@ -9797,10 +8882,6 @@
 								<name>Input Type</name>
 								<type>TypeT</type>
 							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
 						</params>
 						<slots/>
 					</block>
@@ -9810,36 +8891,19 @@
 						<params/>
 						<slots/>
 					</block>
-					<block>
-						<class>ContextEventCall</class>
-						<id>ContextEventCall_2</id>
-						<params>
-							<param>
-								SoundNotificationsContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								setEventSwitches
-								<name>Member Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
 				</blocks>
 				<connections>
 					<connection>
-						<from>ContextEventCall_2</from>
+						<from>Create3DSound_1</from>
 						<input>vehicleSound</input>
 						<to>MacroOutput_3</to>
-						<output>res</output>
+						<output>sound</output>
 					</connection>
 					<connection>
-						<from>ContextEventCall_2</from>
+						<from>MacroInput_5</from>
 						<input>onGetVehicleSound</input>
 						<to>MacroOutput_4</to>
-						<output>out</output>
+						<output>input</output>
 					</connection>
 					<connection>
 						<from>GetVehicleId_1</from>
@@ -9889,18 +8953,6 @@
 						<to>Create3DSound_1</to>
 						<output>position</output>
 					</connection>
-					<connection>
-						<from>MacroInput_5</from>
-						<input>in</input>
-						<to>ContextEventCall_2</to>
-						<output>input</output>
-					</connection>
-					<connection>
-						<from>Create3DSound_1</from>
-						<input>sound</input>
-						<to>ContextEventCall_2</to>
-						<output>sound</output>
-					</connection>
 				</connections>
 			</macro>
 			<macro>
@@ -9919,10 +8971,6 @@
 								EventT
 								<name>Input Type</name>
 								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
 							</param>
 						</params>
 						<slots/>
@@ -9946,10 +8994,6 @@
 								StringT
 								<name>Input Type</name>
 								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
 							</param>
 						</params>
 						<slots/>
@@ -10097,4293 +9141,6 @@
 						<input>priority</input>
 						<to>ContextEventCall_3</to>
 						<output>res</output>
-					</connection>
-				</connections>
-			</macro>
-			<macro>
-				<name>getHuntersCirc</name>
-				<blocks>
-					<block>
-						<class>ContextPropertyGet</class>
-						<id>ContextPropertyGet_1</id>
-						<params>
-							<param>
-								SoundNotificationsContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								getHuntersCount
-								<name>Member Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_1</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\1\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>MacroInput</class>
-						<id>MacroInput_2</id>
-						<params>
-							<param>
-								input
-								<name>Input Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Input Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Sequence</class>
-						<id>Sequence_1</id>
-						<params>
-							<param>
-								2
-								<name>Output Count</name>
-								<type>IntT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_1</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>Variable</class>
-						<id>Variable_1</id>
-						<params>
-							<param>
-								tempHuntersCirc
-								<name>Variable Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								false
-								<name>External Init</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								<name>Initial Value</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>default</name>
-								<const>\\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_1</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\5_1\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_2</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\2\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_2</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\5_2\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_2</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_3</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_3</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\5_3\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_3</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\3\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_4</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\5_4\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_4</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\4\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_4</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_5</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_5</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\5_5\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_5</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\5\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_6</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\6\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_6</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_6</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\5_6\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_1</id>
-						<params>
-							<param>
-								outputEvent
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_2</id>
-						<params>
-							<param>
-								huntersCountOutput
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_1</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-				</blocks>
-				<connections>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>a</input>
-						<to>CompareIntegers_1</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>MacroInput_2</from>
-						<input>input</input>
-						<to>Sequence_1</to>
-						<output>input</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>input</input>
-						<to>If_1</to>
-						<output>o0</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_1</from>
-						<input>value</input>
-						<to>If_1</to>
-						<output>equal</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>SetVariable_1</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>a</input>
-						<to>CompareIntegers_2</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>If_2</from>
-						<input>input</input>
-						<to>SetVariable_2</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>If_2</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_2</from>
-						<input>value</input>
-						<to>If_2</to>
-						<output>equal</output>
-					</connection>
-					<connection>
-						<from>If_2</from>
-						<input>input</input>
-						<to>If_3</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_3</from>
-						<input>value</input>
-						<to>If_3</to>
-						<output>equal</output>
-					</connection>
-					<connection>
-						<from>If_3</from>
-						<input>input</input>
-						<to>SetVariable_3</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>a</input>
-						<to>CompareIntegers_3</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>If_4</from>
-						<input>input</input>
-						<to>SetVariable_4</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>a</input>
-						<to>CompareIntegers_4</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>If_3</from>
-						<input>input</input>
-						<to>If_4</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_4</from>
-						<input>value</input>
-						<to>If_4</to>
-						<output>equal</output>
-					</connection>
-					<connection>
-						<from>If_4</from>
-						<input>input</input>
-						<to>If_5</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_5</from>
-						<input>value</input>
-						<to>If_5</to>
-						<output>equal</output>
-					</connection>
-					<connection>
-						<from>If_5</from>
-						<input>input</input>
-						<to>SetVariable_5</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>a</input>
-						<to>CompareIntegers_5</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>a</input>
-						<to>CompareIntegers_6</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_6</from>
-						<input>value</input>
-						<to>If_6</to>
-						<output>equal</output>
-					</connection>
-					<connection>
-						<from>If_6</from>
-						<input>input</input>
-						<to>SetVariable_6</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>outputEvent</input>
-						<to>MacroOutput_1</to>
-						<output>o1</output>
-					</connection>
-					<connection>
-						<from>GetVariable_1</from>
-						<input>huntersCountOutput</input>
-						<to>MacroOutput_2</to>
-						<output>value</output>
-					</connection>
-				</connections>
-			</macro>
-			<macro>
-				<name>getPlayerVehicleHealthCirc</name>
-				<blocks>
-					<block>
-						<class>Variable</class>
-						<id>Variable_1</id>
-						<params>
-							<param>
-								tempHealthCirc
-								<name>Variable Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								false
-								<name>External Init</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								<name>Initial Value</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>default</name>
-								<const>\\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_2</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\8_1\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>CompareFloats</class>
-						<id>CompareFloats_2</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\75.000000\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_4</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\8_2\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>CompareFloats</class>
-						<id>CompareFloats_3</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\25.000000\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_2</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_3</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_5</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\8_3\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>Sequence</class>
-						<id>Sequence_1</id>
-						<params>
-							<param>
-								2
-								<name>Output Count</name>
-								<type>IntT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>ContextPropertyGet</class>
-						<id>ContextPropertyGet_2</id>
-						<params>
-							<param>
-								SoundNotificationsContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								getPlayerVehicleHealthPercent
-								<name>Member Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroInput</class>
-						<id>MacroInput_1</id>
-						<params>
-							<param>
-								playerHealthInput
-								<name>Input Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Input Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_1</id>
-						<params>
-							<param>
-								output
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_2</id>
-						<params>
-							<param>
-								healthPercent
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_1</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-				</blocks>
-				<connections>
-					<connection>
-						<from>If_2</from>
-						<input>input</input>
-						<to>SetVariable_2</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_2</from>
-						<input>a</input>
-						<to>CompareFloats_2</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>If_3</from>
-						<input>input</input>
-						<to>SetVariable_4</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_2</from>
-						<input>a</input>
-						<to>CompareFloats_3</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>input</input>
-						<to>If_2</to>
-						<output>o0</output>
-					</connection>
-					<connection>
-						<from>CompareFloats_2</from>
-						<input>value</input>
-						<to>If_2</to>
-						<output>greater</output>
-					</connection>
-					<connection>
-						<from>If_2</from>
-						<input>input</input>
-						<to>If_3</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>CompareFloats_3</from>
-						<input>value</input>
-						<to>If_3</to>
-						<output>greater</output>
-					</connection>
-					<connection>
-						<from>If_3</from>
-						<input>input</input>
-						<to>SetVariable_5</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>MacroInput_1</from>
-						<input>input</input>
-						<to>Sequence_1</to>
-						<output>playerHealthInput</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>output</input>
-						<to>MacroOutput_1</to>
-						<output>o1</output>
-					</connection>
-					<connection>
-						<from>GetVariable_1</from>
-						<input>healthPercent</input>
-						<to>MacroOutput_2</to>
-						<output>value</output>
-					</connection>
-				</connections>
-			</macro>
-			<macro>
-				<name>getPlayerLivesCirc</name>
-				<blocks>
-					<block>
-						<class>MacroInput</class>
-						<id>MacroInput_2</id>
-						<params>
-							<param>
-								input
-								<name>Input Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Input Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Sequence</class>
-						<id>Sequence_1</id>
-						<params>
-							<param>
-								2
-								<name>Output Count</name>
-								<type>IntT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_1</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_2</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\1\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_1</id>
-						<params>
-							<param>
-								output
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Variable</class>
-						<id>Variable_2</id>
-						<params>
-							<param>
-								tempLivesCirc
-								<name>Variable Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								false
-								<name>External Init</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								<name>Initial Value</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>default</name>
-								<const>\\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_2</id>
-						<buddy>Variable_2</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\1_1\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_2</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_3</id>
-						<buddy>Variable_2</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\1_2\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>ContextPropertyGet</class>
-						<id>ContextPropertyGet_2</id>
-						<params>
-							<param>
-								SoundNotificationsContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								getPlayerLives
-								<name>Member Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_1</id>
-						<buddy>Variable_2</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_2</id>
-						<params>
-							<param>
-								playerLivesCirc
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-				</blocks>
-				<connections>
-					<connection>
-						<from>MacroInput_2</from>
-						<input>input</input>
-						<to>Sequence_1</to>
-						<output>input</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>input</input>
-						<to>If_1</to>
-						<output>o0</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_2</from>
-						<input>value</input>
-						<to>If_1</to>
-						<output>greater</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_2</from>
-						<input>a</input>
-						<to>CompareIntegers_2</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>output</input>
-						<to>MacroOutput_1</to>
-						<output>o1</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>SetVariable_2</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>If_2</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_2</from>
-						<input>value</input>
-						<to>If_2</to>
-						<output>equal</output>
-					</connection>
-					<connection>
-						<from>If_2</from>
-						<input>input</input>
-						<to>SetVariable_3</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>GetVariable_1</from>
-						<input>playerLivesCirc</input>
-						<to>MacroOutput_2</to>
-						<output>value</output>
-					</connection>
-				</connections>
-			</macro>
-			<macro>
-				<name>getBossVehicleHealthCirc</name>
-				<blocks>
-					<block>
-						<class>Sequence</class>
-						<id>Sequence_1</id>
-						<params>
-							<param>
-								2
-								<name>Output Count</name>
-								<type>IntT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_1</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_1</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\7_3\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>CompareFloats</class>
-						<id>CompareFloats_1</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\25.000000\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_2</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_2</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\7_2\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>CompareFloats</class>
-						<id>CompareFloats_2</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\75.000000\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_1</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_3</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\7_1\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>Variable</class>
-						<id>Variable_1</id>
-						<params>
-							<param>
-								tempHealthCirc
-								<name>Variable Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								false
-								<name>External Init</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								<name>Initial Value</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>default</name>
-								<const>\\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>ContextPropertyGet</class>
-						<id>ContextPropertyGet_1</id>
-						<params>
-							<param>
-								SoundNotificationsContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								getBossVehicleHealthPercent
-								<name>Member Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_1</id>
-						<params>
-							<param>
-								healthPercent
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_2</id>
-						<params>
-							<param>
-								output
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroInput</class>
-						<id>MacroInput_1</id>
-						<params>
-							<param>
-								bossHealthInput
-								<name>Input Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Input Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-				</blocks>
-				<connections>
-					<connection>
-						<from>MacroInput_1</from>
-						<input>input</input>
-						<to>Sequence_1</to>
-						<output>bossHealthInput</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>input</input>
-						<to>If_1</to>
-						<output>o0</output>
-					</connection>
-					<connection>
-						<from>CompareFloats_2</from>
-						<input>value</input>
-						<to>If_1</to>
-						<output>greater</output>
-					</connection>
-					<connection>
-						<from>If_2</from>
-						<input>input</input>
-						<to>SetVariable_1</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>a</input>
-						<to>CompareFloats_1</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>If_2</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>CompareFloats_1</from>
-						<input>value</input>
-						<to>If_2</to>
-						<output>greater</output>
-					</connection>
-					<connection>
-						<from>If_2</from>
-						<input>input</input>
-						<to>SetVariable_2</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>a</input>
-						<to>CompareFloats_2</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>SetVariable_3</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>GetVariable_1</from>
-						<input>healthPercent</input>
-						<to>MacroOutput_1</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>output</input>
-						<to>MacroOutput_2</to>
-						<output>o1</output>
-					</connection>
-				</connections>
-			</macro>
-			<macro>
-				<name>getBattleTimeLeftCirc</name>
-				<blocks>
-					<block>
-						<class>Sequence</class>
-						<id>Sequence_1</id>
-						<params>
-							<param>
-								2
-								<name>Output Count</name>
-								<type>IntT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_1</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_2</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>Variable</class>
-						<id>Variable_1</id>
-						<params>
-							<param>
-								tempTimeCirc
-								<name>Variable Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								false
-								<name>External Init</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								<name>Initial Value</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>default</name>
-								<const>\\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>MacroInput</class>
-						<id>MacroInput_3</id>
-						<params>
-							<param>
-								timeLeftInput
-								<name>Input Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Input Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>ContextPropertyGet</class>
-						<id>ContextPropertyGet_2</id>
-						<params>
-							<param>
-								SoundNotificationsContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								getBattleTimeLeft
-								<name>Member Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_1</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\2_1\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_2</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\2_2\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_3</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_3</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\2_3\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_4</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_4</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\2_4\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_5</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\2_5\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_1</id>
-						<params>
-							<param>
-								output
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_1</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>CompareFloats</class>
-						<id>CompareFloats_1</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\3.000000\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>CompareFloats</class>
-						<id>CompareFloats_2</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\2.000000\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>CompareFloats</class>
-						<id>CompareFloats_3</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\4.000000\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>CompareFloats</class>
-						<id>CompareFloats_4</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\1.000000\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_2</id>
-						<params>
-							<param>
-								battleTimeLeftOutput
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-				</blocks>
-				<connections>
-					<connection>
-						<from>MacroInput_3</from>
-						<input>input</input>
-						<to>Sequence_1</to>
-						<output>timeLeftInput</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>input</input>
-						<to>If_1</to>
-						<output>o0</output>
-					</connection>
-					<connection>
-						<from>CompareFloats_3</from>
-						<input>value</input>
-						<to>If_1</to>
-						<output>greater</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>If_2</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>CompareFloats_1</from>
-						<input>value</input>
-						<to>If_2</to>
-						<output>greater</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>SetVariable_1</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>If_2</from>
-						<input>input</input>
-						<to>SetVariable_2</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>If_2</from>
-						<input>input</input>
-						<to>If_3</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>CompareFloats_2</from>
-						<input>value</input>
-						<to>If_3</to>
-						<output>greater</output>
-					</connection>
-					<connection>
-						<from>If_3</from>
-						<input>input</input>
-						<to>SetVariable_3</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>If_3</from>
-						<input>input</input>
-						<to>If_4</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>CompareFloats_4</from>
-						<input>value</input>
-						<to>If_4</to>
-						<output>greater</output>
-					</connection>
-					<connection>
-						<from>If_4</from>
-						<input>input</input>
-						<to>SetVariable_4</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>If_4</from>
-						<input>input</input>
-						<to>SetVariable_5</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>output</input>
-						<to>MacroOutput_1</to>
-						<output>o1</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_2</from>
-						<input>a</input>
-						<to>CompareFloats_1</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_2</from>
-						<input>a</input>
-						<to>CompareFloats_2</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_2</from>
-						<input>a</input>
-						<to>CompareFloats_3</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_2</from>
-						<input>a</input>
-						<to>CompareFloats_4</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>GetVariable_1</from>
-						<input>battleTimeLeftOutput</input>
-						<to>MacroOutput_2</to>
-						<output>value</output>
-					</connection>
-				</connections>
-			</macro>
-			<macro>
-				<name>getDestroyedGeneratorsCirc</name>
-				<blocks>
-					<block>
-						<class>If</class>
-						<id>If_1</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_1</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\12_3\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_2</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_2</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\12_2\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_2</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\2\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_4</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>Sequence</class>
-						<id>Sequence_1</id>
-						<params>
-							<param>
-								2
-								<name>Output Count</name>
-								<type>IntT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_1</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_5</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_3</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\4\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_4</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\12_1\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_5</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\12_5\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_4</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\0\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_5</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\1\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_6</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\3\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_6</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\12_4\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_6</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>Variable</class>
-						<id>Variable_1</id>
-						<params>
-							<param>
-								tempGeneratorsCirc
-								<name>Variable Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								false
-								<name>External Init</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								<name>Initial Value</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>default</name>
-								<const>\\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>MacroInput</class>
-						<id>MacroInput_1</id>
-						<params>
-							<param>
-								generatorsInput
-								<name>Input Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Input Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_1</id>
-						<params>
-							<param>
-								destroyedGeneratorsOutput
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_2</id>
-						<params>
-							<param>
-								output
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>ContextPropertyGet</class>
-						<id>ContextPropertyGet_1</id>
-						<params>
-							<param>
-								SoundNotificationsContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								getDestroyedGeneratorsCount
-								<name>Member Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-				</blocks>
-				<connections>
-					<connection>
-						<from>If_6</from>
-						<input>input</input>
-						<to>If_1</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_2</from>
-						<input>value</input>
-						<to>If_1</to>
-						<output>equal</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>SetVariable_1</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>If_2</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_6</from>
-						<input>value</input>
-						<to>If_2</to>
-						<output>equal</output>
-					</connection>
-					<connection>
-						<from>If_6</from>
-						<input>input</input>
-						<to>SetVariable_2</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>a</input>
-						<to>CompareIntegers_2</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>input</input>
-						<to>If_4</to>
-						<output>o0</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_4</from>
-						<input>value</input>
-						<to>If_4</to>
-						<output>equal</output>
-					</connection>
-					<connection>
-						<from>MacroInput_1</from>
-						<input>input</input>
-						<to>Sequence_1</to>
-						<output>generatorsInput</output>
-					</connection>
-					<connection>
-						<from>If_2</from>
-						<input>input</input>
-						<to>If_5</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_3</from>
-						<input>value</input>
-						<to>If_5</to>
-						<output>equal</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>a</input>
-						<to>CompareIntegers_3</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>If_4</from>
-						<input>input</input>
-						<to>SetVariable_4</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>If_5</from>
-						<input>input</input>
-						<to>SetVariable_5</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>a</input>
-						<to>CompareIntegers_4</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>a</input>
-						<to>CompareIntegers_5</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>a</input>
-						<to>CompareIntegers_6</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>If_2</from>
-						<input>input</input>
-						<to>SetVariable_6</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>If_4</from>
-						<input>input</input>
-						<to>If_6</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_5</from>
-						<input>value</input>
-						<to>If_6</to>
-						<output>equal</output>
-					</connection>
-					<connection>
-						<from>GetVariable_1</from>
-						<input>destroyedGeneratorsOutput</input>
-						<to>MacroOutput_1</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>output</input>
-						<to>MacroOutput_2</to>
-						<output>o1</output>
-					</connection>
-				</connections>
-			</macro>
-			<macro>
-				<name>getCampsCountCirc</name>
-				<blocks>
-					<block>
-						<class>Sequence</class>
-						<id>Sequence_1</id>
-						<params>
-							<param>
-								2
-								<name>Output Count</name>
-								<type>IntT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_1</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_5</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Variable</class>
-						<id>Variable_1</id>
-						<params>
-							<param>
-								tempCampsCirc
-								<name>Variable Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								false
-								<name>External Init</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								<name>Initial Value</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>default</name>
-								<const>\\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>ContextPropertyGet</class>
-						<id>ContextPropertyGet_2</id>
-						<params>
-							<param>
-								SoundNotificationsContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								getCampCount
-								<name>Member Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>IntToString</class>
-						<id>IntToString_1</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>Concatenate</class>
-						<id>Concatenate_1</id>
-						<params>
-							<param>
-								2
-								<name>Input Count</name>
-								<type>IntT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>i0</name>
-								<const>\9_\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>MacroInput</class>
-						<id>MacroInput_1</id>
-						<params>
-							<param>
-								inputCamps
-								<name>Input Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Input Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_1</id>
-						<params>
-							<param>
-								campsCirc
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_2</id>
-						<params>
-							<param>
-								output
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-				</blocks>
-				<connections>
-					<connection>
-						<from>MacroInput_1</from>
-						<input>input</input>
-						<to>Sequence_1</to>
-						<output>inputCamps</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>input</input>
-						<to>SetVariable_5</to>
-						<output>o0</output>
-					</connection>
-					<connection>
-						<from>Concatenate_1</from>
-						<input>value</input>
-						<to>SetVariable_5</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_2</from>
-						<input>a</input>
-						<to>IntToString_1</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>IntToString_1</from>
-						<input>i1</input>
-						<to>Concatenate_1</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>GetVariable_1</from>
-						<input>campsCirc</input>
-						<to>MacroOutput_1</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>output</input>
-						<to>MacroOutput_2</to>
-						<output>o1</output>
-					</connection>
-				</connections>
-			</macro>
-			<macro>
-				<name>getPlayerKillerBossCirc</name>
-				<blocks>
-					<block>
-						<class>Sequence</class>
-						<id>Sequence_1</id>
-						<params>
-							<param>
-								2
-								<name>Output Count</name>
-								<type>IntT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_1</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_1</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\3_1\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>Variable</class>
-						<id>Variable_1</id>
-						<params>
-							<param>
-								tempKillerBossCirc
-								<name>Variable Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								false
-								<name>External Init</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								<name>Initial Value</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>default</name>
-								<const>\\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>ContextPropertyGet</class>
-						<id>ContextPropertyGet_2</id>
-						<params>
-							<param>
-								SoundNotificationsContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								getKilledByBoss
-								<name>Member Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_1</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_2</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\3_2\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>MacroInput</class>
-						<id>MacroInput_1</id>
-						<params>
-							<param>
-								killerInput
-								<name>Input Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Input Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_1</id>
-						<params>
-							<param>
-								killerCirc
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_2</id>
-						<params>
-							<param>
-								killerOutput
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>ContextPropertyGet</class>
-						<id>ContextPropertyGet_1</id>
-						<params>
-							<param>
-								SoundNotificationsContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								getPlayerVehicleHealthPercent
-								<name>Member Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_2</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>CompareFloats</class>
-						<id>CompareFloats_1</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\0.010000\</const>
-							</slot>
-						</slots>
-					</block>
-				</blocks>
-				<connections>
-					<connection>
-						<from>MacroInput_1</from>
-						<input>input</input>
-						<to>Sequence_1</to>
-						<output>killerInput</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>SetVariable_1</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>If_2</from>
-						<input>input</input>
-						<to>If_1</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_2</from>
-						<input>value</input>
-						<to>If_1</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>SetVariable_2</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>GetVariable_1</from>
-						<input>killerCirc</input>
-						<to>MacroOutput_1</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>killerOutput</input>
-						<to>MacroOutput_2</to>
-						<output>o1</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>input</input>
-						<to>If_2</to>
-						<output>o0</output>
-					</connection>
-					<connection>
-						<from>CompareFloats_1</from>
-						<input>value</input>
-						<to>If_2</to>
-						<output>less</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>a</input>
-						<to>CompareFloats_1</to>
-						<output>value</output>
-					</connection>
-				</connections>
-			</macro>
-			<macro>
-				<name>getBossDamageCirc</name>
-				<blocks>
-					<block>
-						<class>If</class>
-						<id>If_1</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>Sequence</class>
-						<id>Sequence_1</id>
-						<params>
-							<param>
-								2
-								<name>Output Count</name>
-								<type>IntT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_1</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_2</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\6_2\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_2</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>Variable</class>
-						<id>Variable_1</id>
-						<params>
-							<param>
-								tempBossDamageCirc
-								<name>Variable Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								false
-								<name>External Init</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								<name>Initial Value</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>default</name>
-								<const>\\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>ContextPropertyGet</class>
-						<id>ContextPropertyGet_2</id>
-						<params>
-							<param>
-								SoundNotificationsContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								isBoss
-								<name>Member Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Not</class>
-						<id>Not_1</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>ContextPropertyGet</class>
-						<id>ContextPropertyGet_1</id>
-						<params>
-							<param>
-								SoundNotificationsContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								getHasDebuff
-								<name>Member Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>ContextPropertyGet</class>
-						<id>ContextPropertyGet_3</id>
-						<params>
-							<param>
-								SoundNotificationsContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								getDestroyedGeneratorsCount
-								<name>Member Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_1</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\1\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>Or</class>
-						<id>Or_1</id>
-						<params>
-							<param>
-								2
-								<name>Input Count</name>
-								<type>IntT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_2</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\3\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_4</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_1</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\6_3\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_3</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\6_1\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_1</id>
-						<params>
-							<param>
-								output
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_2</id>
-						<params>
-							<param>
-								bossDamageCirc
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroInput</class>
-						<id>MacroInput_1</id>
-						<params>
-							<param>
-								input
-								<name>Input Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Input Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-				</blocks>
-				<connections>
-					<connection>
-						<from>If_4</from>
-						<input>input</input>
-						<to>If_1</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_1</from>
-						<input>value</input>
-						<to>If_1</to>
-						<output>greater</output>
-					</connection>
-					<connection>
-						<from>MacroInput_1</from>
-						<input>input</input>
-						<to>Sequence_1</to>
-						<output>input</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>SetVariable_2</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>input</input>
-						<to>If_2</to>
-						<output>o0</output>
-					</connection>
-					<connection>
-						<from>Not_1</from>
-						<input>value</input>
-						<to>If_2</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_2</from>
-						<input>a</input>
-						<to>Not_1</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_3</from>
-						<input>a</input>
-						<to>CompareIntegers_1</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>i1</input>
-						<to>Or_1</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_2</from>
-						<input>i2</input>
-						<to>Or_1</to>
-						<output>greater</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_3</from>
-						<input>a</input>
-						<to>CompareIntegers_2</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>If_2</from>
-						<input>input</input>
-						<to>If_4</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>Or_1</from>
-						<input>value</input>
-						<to>If_4</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>If_4</from>
-						<input>input</input>
-						<to>SetVariable_1</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>SetVariable_3</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>output</input>
-						<to>MacroOutput_1</to>
-						<output>o1</output>
-					</connection>
-					<connection>
-						<from>GetVariable_1</from>
-						<input>bossDamageCirc</input>
-						<to>MacroOutput_2</to>
-						<output>value</output>
-					</connection>
-				</connections>
-			</macro>
-			<macro>
-				<name>getEnoughtTimeCirc</name>
-				<blocks>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_1</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Variable</class>
-						<id>Variable_1</id>
-						<params>
-							<param>
-								tempEnoughtTimeCirc
-								<name>Variable Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								false
-								<name>External Init</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								<name>Initial Value</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>default</name>
-								<const>\\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>ContextPropertyGet</class>
-						<id>ContextPropertyGet_4</id>
-						<params>
-							<param>
-								SoundNotificationsContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								getBossVehicleHealthPercent
-								<name>Member Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>CompareFloats</class>
-						<id>CompareFloats_1</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\60.000000\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>CompareFloats</class>
-						<id>CompareFloats_2</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\2.000000\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_3</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\5\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>And</class>
-						<id>And_1</id>
-						<params>
-							<param>
-								3
-								<name>Input Count</name>
-								<type>IntT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>ArenaPeriod</class>
-						<id>ArenaPeriod_2</id>
-						<params>
-							<param>
-								Battle
-								<name>Period</name>
-								<type>EArenaPeriodT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_1</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>ContextPropertyGet</class>
-						<id>ContextPropertyGet_1</id>
-						<params>
-							<param>
-								SoundNotificationsContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								isBoss
-								<name>Member Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_1</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\11_1\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_2</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\11_2\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>MacroInput</class>
-						<id>MacroInput_1</id>
-						<params>
-							<param>
-								timeInput
-								<name>Input Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Input Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_1</id>
-						<params>
-							<param>
-								outputEvent
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_2</id>
-						<params>
-							<param>
-								enoughtTime
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>DivideFloat</class>
-						<id>DivideFloat_2</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\60.000000\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>ExclusiveOr</class>
-						<id>ExclusiveOr_1</id>
-						<params>
-							<param>
-								2
-								<name>Input Count</name>
-								<type>IntT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>ContextPropertyGet</class>
-						<id>ContextPropertyGet_2</id>
-						<params>
-							<param>
-								SoundNotificationsContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								getHuntersCount
-								<name>Member Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Sequence</class>
-						<id>Sequence_2</id>
-						<params>
-							<param>
-								2
-								<name>Output Count</name>
-								<type>IntT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-				</blocks>
-				<connections>
-					<connection>
-						<from>ContextPropertyGet_4</from>
-						<input>a</input>
-						<to>CompareFloats_1</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>DivideFloat_2</from>
-						<input>a</input>
-						<to>CompareFloats_2</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_2</from>
-						<input>a</input>
-						<to>CompareIntegers_3</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>CompareFloats_2</from>
-						<input>i1</input>
-						<to>And_1</to>
-						<output>less</output>
-					</connection>
-					<connection>
-						<from>CompareFloats_1</from>
-						<input>i2</input>
-						<to>And_1</to>
-						<output>greater</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_3</from>
-						<input>i3</input>
-						<to>And_1</to>
-						<output>less</output>
-					</connection>
-					<connection>
-						<from>Sequence_2</from>
-						<input>input</input>
-						<to>If_1</to>
-						<output>o0</output>
-					</connection>
-					<connection>
-						<from>ExclusiveOr_1</from>
-						<input>value</input>
-						<to>If_1</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>SetVariable_1</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>SetVariable_2</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>Sequence_2</from>
-						<input>outputEvent</input>
-						<to>MacroOutput_1</to>
-						<output>o1</output>
-					</connection>
-					<connection>
-						<from>GetVariable_1</from>
-						<input>enoughtTime</input>
-						<to>MacroOutput_2</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>ArenaPeriod_2</from>
-						<input>a</input>
-						<to>DivideFloat_2</to>
-						<output>timeToEnd</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>i1</input>
-						<to>ExclusiveOr_1</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>And_1</from>
-						<input>i2</input>
-						<to>ExclusiveOr_1</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>MacroInput_1</from>
-						<input>input</input>
-						<to>Sequence_2</to>
-						<output>timeInput</output>
-					</connection>
-				</connections>
-			</macro>
-			<macro>
-				<name>getPlayerDamageCirc</name>
-				<blocks>
-					<block>
-						<class>If</class>
-						<id>If_1</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_2</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\4_2\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_2</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_1</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Sequence</class>
-						<id>Sequence_1</id>
-						<params>
-							<param>
-								2
-								<name>Output Count</name>
-								<type>IntT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Variable</class>
-						<id>Variable_1</id>
-						<params>
-							<param>
-								tempPlayerDamageCirc
-								<name>Variable Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								false
-								<name>External Init</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								<name>Initial Value</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>default</name>
-								<const>\\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>ContextPropertyGet</class>
-						<id>ContextPropertyGet_2</id>
-						<params>
-							<param>
-								SoundNotificationsContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								getTotalPlayerDamage
-								<name>Member Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_1</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\8000\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_2</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\10000\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_3</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_1</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\4_1\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>MacroInput</class>
-						<id>MacroInput_1</id>
-						<params>
-							<param>
-								input
-								<name>Input Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Input Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_1</id>
-						<params>
-							<param>
-								outputEvent
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_2</id>
-						<params>
-							<param>
-								damageCirc
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>ContextPropertyGet</class>
-						<id>ContextPropertyGet_1</id>
-						<params>
-							<param>
-								SoundNotificationsContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								isBoss
-								<name>Member Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>Not</class>
-						<id>Not_1</id>
-						<params/>
-						<slots/>
-					</block>
-				</blocks>
-				<connections>
-					<connection>
-						<from>If_2</from>
-						<input>input</input>
-						<to>If_1</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_2</from>
-						<input>value</input>
-						<to>If_1</to>
-						<output>greater</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>SetVariable_2</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>input</input>
-						<to>If_2</to>
-						<output>o0</output>
-					</connection>
-					<connection>
-						<from>Not_1</from>
-						<input>value</input>
-						<to>If_2</to>
-						<output>res</output>
-					</connection>
-					<connection>
-						<from>MacroInput_1</from>
-						<input>input</input>
-						<to>Sequence_1</to>
-						<output>input</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_2</from>
-						<input>a</input>
-						<to>CompareIntegers_1</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_2</from>
-						<input>a</input>
-						<to>CompareIntegers_2</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>If_3</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_1</from>
-						<input>value</input>
-						<to>If_3</to>
-						<output>greater</output>
-					</connection>
-					<connection>
-						<from>If_3</from>
-						<input>input</input>
-						<to>SetVariable_1</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>outputEvent</input>
-						<to>MacroOutput_1</to>
-						<output>o1</output>
-					</connection>
-					<connection>
-						<from>GetVariable_1</from>
-						<input>damageCirc</input>
-						<to>MacroOutput_2</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>a</input>
-						<to>Not_1</to>
-						<output>value</output>
-					</connection>
-				</connections>
-			</macro>
-			<macro>
-				<name>getBombsCirc</name>
-				<blocks>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_1</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\0\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_1</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_1</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\10_2\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_2</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_3</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_3</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\1\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_3</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\10_1\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_4</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\10_4\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_4</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\3\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>ContextPropertyGet</class>
-						<id>ContextPropertyGet_1</id>
-						<params>
-							<param>
-								SoundNotificationsContext
-								<name>Context Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								getDestroyedGeneratorsCount
-								<name>Member Name</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>If</class>
-						<id>If_5</id>
-						<params/>
-						<slots/>
-					</block>
-					<block>
-						<class>Sequence</class>
-						<id>Sequence_1</id>
-						<params>
-							<param>
-								2
-								<name>Output Count</name>
-								<type>IntT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>SetVariable</class>
-						<id>SetVariable_5</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>value</name>
-								<const>\10_3\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>GetVariable</class>
-						<id>GetVariable_1</id>
-						<buddy>Variable_1</buddy>
-						<params>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>CompareIntegers</class>
-						<id>CompareIntegers_5</id>
-						<params/>
-						<slots>
-							<slot>
-								<name>b</name>
-								<const>\2\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>Variable</class>
-						<id>Variable_1</id>
-						<params>
-							<param>
-								tempBombsCirc
-								<name>Variable Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Variable Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								false
-								<name>External Init</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Const</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								false
-								<name>Is Global</name>
-								<type>BoolT</type>
-							</param>
-							<param>
-								<name>Initial Value</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots>
-							<slot>
-								<name>default</name>
-								<const>\\</const>
-							</slot>
-						</slots>
-					</block>
-					<block>
-						<class>MacroInput</class>
-						<id>MacroInput_1</id>
-						<params>
-							<param>
-								input
-								<name>Input Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Input Type</name>
-								<type>TypeT</type>
-							</param>
-							<param>
-								<name>Input Editor</name>
-								<type>StringT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_1</id>
-						<params>
-							<param>
-								output
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								EventT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-					<block>
-						<class>MacroOutput</class>
-						<id>MacroOutput_2</id>
-						<params>
-							<param>
-								outputValue
-								<name>Output Name</name>
-								<type>StringT</type>
-							</param>
-							<param>
-								StringT
-								<name>Output Type</name>
-								<type>TypeT</type>
-							</param>
-						</params>
-						<slots/>
-					</block>
-				</blocks>
-				<connections>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>a</input>
-						<to>CompareIntegers_1</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>If_3</from>
-						<input>input</input>
-						<to>If_1</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_4</from>
-						<input>value</input>
-						<to>If_1</to>
-						<output>equal</output>
-					</connection>
-					<connection>
-						<from>If_5</from>
-						<input>input</input>
-						<to>SetVariable_1</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>input</input>
-						<to>If_2</to>
-						<output>o0</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_1</from>
-						<input>value</input>
-						<to>If_2</to>
-						<output>equal</output>
-					</connection>
-					<connection>
-						<from>If_5</from>
-						<input>input</input>
-						<to>If_3</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_5</from>
-						<input>value</input>
-						<to>If_3</to>
-						<output>equal</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>a</input>
-						<to>CompareIntegers_3</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>If_2</from>
-						<input>input</input>
-						<to>SetVariable_3</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>If_1</from>
-						<input>input</input>
-						<to>SetVariable_4</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>a</input>
-						<to>CompareIntegers_4</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>If_2</from>
-						<input>input</input>
-						<to>If_5</to>
-						<output>false</output>
-					</connection>
-					<connection>
-						<from>CompareIntegers_3</from>
-						<input>value</input>
-						<to>If_5</to>
-						<output>equal</output>
-					</connection>
-					<connection>
-						<from>MacroInput_1</from>
-						<input>input</input>
-						<to>Sequence_1</to>
-						<output>input</output>
-					</connection>
-					<connection>
-						<from>If_3</from>
-						<input>input</input>
-						<to>SetVariable_5</to>
-						<output>true</output>
-					</connection>
-					<connection>
-						<from>ContextPropertyGet_1</from>
-						<input>a</input>
-						<to>CompareIntegers_5</to>
-						<output>value</output>
-					</connection>
-					<connection>
-						<from>Sequence_1</from>
-						<input>output</input>
-						<to>MacroOutput_1</to>
-						<output>o1</output>
-					</connection>
-					<connection>
-						<from>GetVariable_1</from>
-						<input>outputValue</input>
-						<to>MacroOutput_2</to>
-						<output>value</output>
 					</connection>
 				</connections>
 			</macro>

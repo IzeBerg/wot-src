@@ -1,4 +1,4 @@
-from adisp import process, async
+from adisp import adisp_process, adisp_async
 from gui.game_control.links import URLMacros
 from helpers import dependency
 from skeletons.gui.game_control import IGameWindowController
@@ -45,8 +45,8 @@ class GameWindowController(IGameWindowController):
         self.hideWindow()
         self._showWindow(url, invokedFrom)
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def getUrl(self, callback=lambda *args: None):
         url = yield self.__urlMacros.parse(self._getUrl())
         callback(url)
@@ -60,7 +60,7 @@ class GameWindowController(IGameWindowController):
     def _onSyncCompleted(self, *_):
         pass
 
-    @process
+    @adisp_process
     def _showWindow(self, url, invokedFrom=None):
         if url is None:
             url = yield self.getUrl()

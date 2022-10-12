@@ -218,6 +218,10 @@ package net.wg.gui.components.controls
       private function checkLayout() : void
       {
          var _loc1_:Boolean = false;
+         if(isDisposed())
+         {
+            return;
+         }
          this.validateRenderersHeight();
          if(this._dataLen > 0)
          {
@@ -295,9 +299,10 @@ package net.wg.gui.components.controls
       {
          var _loc3_:IReusableListItemRenderer = this.getRenderer();
          _loc3_.index = param1;
-         if(this._dataProvider.requestItemAt(param1) != null)
+         var _loc4_:Object = this._dataProvider.requestItemAt(param1);
+         if(_loc4_)
          {
-            _loc3_.setData(this._dataProvider.requestItemAt(param1));
+            _loc3_.setData(_loc4_);
          }
          _loc3_.validateNow();
          this.updateRendererHeight(param1,_loc3_,param2);

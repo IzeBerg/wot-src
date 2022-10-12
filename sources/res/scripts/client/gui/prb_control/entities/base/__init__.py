@@ -1,20 +1,14 @@
-from adisp import process
+from adisp import adisp_process
 from gui.shared.utils import functions
 from helpers import dependency
 from skeletons.gui.lobby_context import ILobbyContext
 
 def vehicleAmmoCheck(func):
     from CurrentVehicle import g_currentVehicle
-    from prebattle_vehicle import IPrebattleVehicle
 
-    @process
+    @adisp_process
     def wrapper(*args, **kwargs):
-        prebattleVehicle = dependency.instance(IPrebattleVehicle)
-        if prebattleVehicle.isPresent():
-            item = prebattleVehicle.item
-        else:
-            item = g_currentVehicle.item
-        res = yield functions.checkAmmoLevel((item,))
+        res = yield functions.checkAmmoLevel((g_currentVehicle.item,))
         if res:
             func(*args, **kwargs)
         elif kwargs.get('callback') is not None:
@@ -26,7 +20,7 @@ def vehicleAmmoCheck(func):
 
 def lobbyHeaderNavigationPossibleCheck(func):
 
-    @process
+    @adisp_process
     def wrapper(*args, **kwargs):
         lobbyContext = dependency.instance(ILobbyContext)
         res = yield lobbyContext.isHeaderNavigationPossible()
@@ -39,7 +33,7 @@ def lobbyHeaderNavigationPossibleCheck(func):
     return wrapper
 
 
-@process
+@adisp_process
 def checkVehicleAmmoFull(vehicle, callback):
     res = yield functions.checkAmmoLevel((vehicle,))
     if res:

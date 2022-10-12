@@ -25,6 +25,33 @@
 					<row3>0.000000 0.000000 0.000000</row3>
 				</transform>
 			</node>
+			<node>
+				<identifier>lod2</identifier>
+				<transform>
+					<row0>1.000000 0.000000 0.000000</row0>
+					<row1>0.000000 1.000000 0.000000</row1>
+					<row2>0.000000 0.000000 1.000000</row2>
+					<row3>0.000000 0.000000 0.000000</row3>
+				</transform>
+				<node>
+					<identifier>d0</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+				<node>
+					<identifier>n1</identifier>
+					<transform>
+						<row0>1.000000 0.000000 0.000000</row0>
+						<row1>0.000000 1.000000 0.000000</row1>
+						<row2>0.000000 0.000000 1.000000</row2>
+						<row3>0.000000 0.000000 0.000000</row3>
+					</transform>
+				</node>
+			</node>
 		</node>
 	</node>
 	<renderSet>
@@ -91,7 +118,7 @@
 						<Int>64</Int>
 					</property>
 				</material>
-				<groupOrigin>-0.007930 0.163046 0.000289</groupOrigin>
+				<groupOrigin>-0.000589 0.156250 -0.000438</groupOrigin>
 			</primitiveGroup>
 			<primitiveGroup>
 				2
@@ -109,6 +136,6 @@
 		<max>0.464984 1.507540 0.260728</max>
 	</boundingBox>
 	<customBsp>true</customBsp>
-	<geometrySize>2016</geometrySize>
+	<geometrySize>1952</geometrySize>
 	<minUVDensity>0.018293</minUVDensity>
 </root>

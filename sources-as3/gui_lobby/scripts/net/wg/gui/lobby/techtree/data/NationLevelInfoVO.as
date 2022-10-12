@@ -54,6 +54,24 @@ package net.wg.gui.lobby.techtree.data
          return _loc2_ > -1 ? int(this._columnsItems[_loc2_]) : int(0);
       }
       
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
+      }
+      
+      public function toString() : String
+      {
+         var _loc1_:String = "Level: " + this.levelIdx + "\n";
+         var _loc2_:uint = this._columns.length;
+         var _loc3_:int = 0;
+         while(_loc3_ < _loc2_)
+         {
+            _loc1_ += "Column: " + this._columns[_loc3_] + "; items: " + this._columnsItems[_loc3_] + "\n";
+            _loc3_++;
+         }
+         return _loc1_;
+      }
+      
       public function get columnCount() : int
       {
          return this._columns.length;
@@ -67,23 +85,6 @@ package net.wg.gui.lobby.techtree.data
       public function get itemsCount() : int
       {
          return this._itemsCount;
-      }
-      
-      public function toString() : String
-      {
-         var _loc1_:String = "Level: " + this.levelIdx + "\n";
-         var _loc2_:int = 0;
-         while(_loc2_ < this._columns.length)
-         {
-            _loc1_ += "Column: " + this._columns[_loc2_] + "; items: " + this._columnsItems[_loc2_] + "\n";
-            _loc2_++;
-         }
-         return _loc1_;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

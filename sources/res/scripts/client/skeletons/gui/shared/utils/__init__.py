@@ -1,6 +1,8 @@
 import typing
 from skeletons.gui.shared.utils import requesters
 if typing.TYPE_CHECKING:
+    from gui.shared.gui_items import ItemsCollection
+    from gui.shared.gui_items.Tankman import Tankman
     from gui.veh_post_progression.models.progression import PostProgressionItem
     from items.vehicles import VehicleType
 
@@ -205,10 +207,6 @@ class IHangarSpace(object):
         raise NotImplementedError
 
     @property
-    def spaceID(self):
-        raise NotImplementedError
-
-    @property
     def inited(self):
         raise NotImplementedError
 
@@ -296,7 +294,7 @@ class IHangarSpaceReloader(object):
     def destroy(self):
         raise NotImplementedError
 
-    def changeHangarSpace(self, spaceName, waitingMessage=None, backgroundImage=None):
+    def changeHangarSpace(self, spaceName, visibilityMask, waitingMessage=None, backgroundImage=None):
         raise NotImplementedError
 
     @property

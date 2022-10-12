@@ -1,6 +1,6 @@
 import functools, logging, time, BigWorld
 from account_helpers.AccountSettings import QUEST_DELTAS_TOKENS_PROGRESS
-from adisp import async, process
+from adisp import adisp_async, adisp_process
 from constants import LOOTBOX_TOKEN_PREFIX
 from gui.shared.utils.requesters.quest_deltas_settings import QuestDeltasSettings
 from gui.shared.utils.requesters.common import BaseDelta
@@ -96,19 +96,15 @@ class TokensRequester(AbstractSyncDataRequester, ITokensRequester):
         return self.__lootBoxCache.get(LOOTBOX_TOKEN_PREFIX + str(boxID))
 
     def getAttemptsAfterGuaranteedRewards(self, box):
-        boxesHistory = self.getCacheValue('lootBoxes', {}).get('history', {})
+        boxesHistory = self.getCacheValue('lootBoxes').get('history', {})
         historyName, guaranteedFrequencyName = box.getHistoryName(), box.getGuaranteedFrequencyName()
         if historyName not in boxesHistory:
             return 0
         _, limits, _ = boxesHistory[historyName]
         if guaranteedFrequencyName not in limits:
             return 0
-        _, attempts, _ = limits[guaranteedFrequencyName]
+        _, _, attempts = limits[guaranteedFrequencyName]
         return attempts
-
-    def getReRollCount(self, box):
-        reRollHistory = self.getCacheValue('lootBoxes').get('reRollHistory', {}).get(box.getID(), {})
-        return len(reRollHistory)
 
     def getLastViewedProgress(self, tokenId):
         return self.__tokensProgressDelta.getPrevValue(tokenId)
@@ -123,8 +119,8 @@ class TokensRequester(AbstractSyncDataRequester, ITokensRequester):
         self.__tokensProgressDelta.update(data)
         return data
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def _requestCache(self, callback):
         result = yield self.__requestTokensCache()
         if 'tokens' in result:
@@ -133,7 +129,7 @@ class TokensRequester(AbstractSyncDataRequester, ITokensRequester):
             self.__updateLootBoxes(result['tokens'])
         callback(result)
 
-    @async
+    @adisp_async
     def __requestTokensCache(self, callback):
         BigWorld.player().tokens.getCache(lambda resID, value: self._response(resID, value, callback))
 

@@ -1,7 +1,7 @@
 import weakref, BigWorld, MusicControllerWWISE, constants
 from CurrentVehicle import g_currentVehicle
 from PlayerEvents import g_playerEvents
-from adisp import process, async
+from adisp import adisp_process, adisp_async
 from client_request_lib.exceptions import ResponseCodes
 from debug_utils import LOG_DEBUG
 from frameworks.wulf import WindowLayer
@@ -13,6 +13,7 @@ from gui.Scaleform.daapi.view.lobby.event_boards.formaters import getClanTag
 from gui.Scaleform.daapi.view.lobby.rally import vo_converters
 from gui.Scaleform.daapi.view.meta.BattleQueueMeta import BattleQueueMeta
 from gui.Scaleform.daapi.view.meta.BattleStrongholdsQueueMeta import BattleStrongholdsQueueMeta
+from gui.impl.lobby.comp7 import comp7_shared
 from gui.shared.view_helpers.blur_manager import CachedBlur
 from gui.Scaleform.framework.managers.containers import POP_UP_CRITERIA
 from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
@@ -24,7 +25,7 @@ from gui.prb_control.entities.listener import IGlobalListener
 from gui.prb_control.events_dispatcher import g_eventDispatcher
 from gui.shared import events, EVENT_BUS_SCOPE
 from gui.shared.formatters import text_styles
-from gui.shared.gui_items.Vehicle import VEHICLE_CLASS_NAME, getTypeBigIconPath, VEHICLE_TAGS
+from gui.shared.gui_items.Vehicle import VEHICLE_CLASS_NAME, getTypeBigIconPath
 from gui.shared.view_helpers import ClanEmblemsHelper
 from gui.shared.image_helper import getTextureLinkByID, ImagesFetchCoordinator
 from gui.sounds.ambients import BattleQueueEnv
@@ -35,8 +36,6 @@ from gui.Scaleform.locale.FORTIFICATIONS import FORTIFICATIONS
 from gui.Scaleform.locale.ITEM_TYPES import ITEM_TYPES
 from gui.Scaleform.locale.MENU import MENU
 from skeletons.gui.shared import IItemsCache
-from skeletons.prebattle_vehicle import IPrebattleVehicle
-from soft_exception import SoftException
 TYPES_ORDERED = (
  (
   'heavyTank', ITEM_TYPES.VEHICLE_TAGS_HEAVY_TANK_NAME),
@@ -50,15 +49,12 @@ TYPES_ORDERED = (
   'SPG', ITEM_TYPES.VEHICLE_TAGS_SPG_NAME))
 _LONG_WAITING_LEVELS = (9, 10)
 _HTMLTEMP_PLAYERSLABEL = 'html_templates:lobby/queue/playersLabel'
+_RANKS = 'ranks'
 
 @dependency.replace_none_kwargs(lobbyContext=ILobbyContext)
 def _needShowLongWaitingWarning(lobbyContext=None):
     vehicle = g_currentVehicle.item
     return lobbyContext is not None and vehicle is not None and vehicle.type == VEHICLE_CLASS_NAME.SPG and vehicle.level in _LONG_WAITING_LEVELS
-
-
-def _timeLabel(time):
-    return '%d:%02d' % divmod(time, 60)
 
 
 class _QueueProvider(object):
@@ -122,9 +118,6 @@ class _QueueProvider(object):
             currPlayer.createArenaFromQueue()
         return
 
-    def getVehicle(self):
-        return g_currentVehicle.item
-
 
 class _RandomQueueProvider(_QueueProvider):
 
@@ -182,55 +175,7 @@ class _EpicQueueProvider(_RandomQueueProvider):
 
 
 class _EventQueueProvider(_RandomQueueProvider):
-    EVENT_TYPES_ORDERED = (
-     VEHICLE_TAGS.EVENT_BOSS, VEHICLE_TAGS.EVENT_HUNTER)
-    __prebattleVehicle = dependency.descriptor(IPrebattleVehicle)
-
-    def start(self):
-        super(_EventQueueProvider, self).start()
-        self.__prebattleVehicle.onChanged += self.__onChanged
-
-    def stop(self):
-        super(_EventQueueProvider, self).stop()
-        self.__prebattleVehicle.onChanged -= self.__onChanged
-
-    def getVehicle(self):
-        return self.__prebattleVehicle.item
-
-    def additionalInfo(self):
-        return ''
-
-    def getTankIcon(self, vehicle):
-        if vehicle:
-            return getTypeBigIconPath(vehicle.eventType)
-        return ''
-
-    def getTankName(self, vehicle):
-        if vehicle:
-            return vehicle.userName
-        return ''
-
-    def processQueueInfo(self, qInfo):
-        bosses = qInfo.get('bosses', 0)
-        hunters = qInfo.get('hunters', 0)
-        avgWaitTime = qInfo.get('avgWaitTime', 0)
-        total = bosses + hunters
-        self._createCommonPlayerString(total)
-        uiData = []
-        counts = {VEHICLE_TAGS.EVENT_BOSS: bosses, VEHICLE_TAGS.EVENT_HUNTER: hunters}
-        for vTypeName in self.EVENT_TYPES_ORDERED:
-            uiData.append({'type': backport.text(R.strings.event.vehicle.tags.dyn(vTypeName).name()), 
-               'icon': getTypeBigIconPath(vTypeName), 
-               'count': counts[vTypeName]})
-
-        self._proxy.as_setDPS(uiData)
-        vehicle = self.getVehicle()
-        if not vehicle:
-            raise SoftException("Can't get event prebattle vehicle")
-        self._proxy.as_setAverageTimeS(i18n.makeString(backport.text(R.strings.event.battleQueue.avgWaitTime.label(), vehName=vehicle.userName)), _timeLabel(avgWaitTime))
-
-    def __onChanged(self):
-        self._proxy.updateClientState()
+    pass
 
 
 class _RankedQueueProvider(_RandomQueueProvider):
@@ -258,12 +203,49 @@ class _BattleRoyaleQueueProvider(_RandomQueueProvider):
         return 'battleRoyale'
 
 
+class _Comp7QueueProvider(_RandomQueueProvider):
+
+    def processQueueInfo(self, qInfo):
+        info = dict(qInfo)
+        ranks = info.get(_RANKS, {})
+        self._createCommonPlayerString(info.get('players', sum(ranks)))
+        if ranks:
+            ranksData = []
+            division = comp7_shared.getPlayerDivision()
+            for rankIdx, playersCount in enumerate(ranks):
+                rankName = rankIdx + 1
+                rankImg = R.images.gui.maps.icons.comp7.ranks.c_40.num(rankName)
+                if rankImg:
+                    ranksData.append({'type': backport.text(R.strings.comp7.rank.num(rankName)()), 
+                       'icon': backport.image(rankImg()), 
+                       'count': playersCount, 
+                       'highlight': division.rank == rankIdx})
+
+            ranksData.reverse()
+            self._proxy.as_setDPS(ranksData)
+        self._proxy.as_showStartS(self._isStartButtonDisplayed(ranks))
+
+    def getLayoutStr(self):
+        return 'comp7'
+
+    def getTankInfoLabel(self):
+        return ''
+
+    def getTankIcon(self, vehicle):
+        return ''
+
+    def getTankName(self, vehicle):
+        return ''
+
+
 _PROVIDER_BY_QUEUE_TYPE = {constants.QUEUE_TYPE.RANDOMS: _RandomQueueProvider, 
    constants.QUEUE_TYPE.EVENT_BATTLES: _EventQueueProvider, 
    constants.QUEUE_TYPE.RANKED: _RankedQueueProvider, 
    constants.QUEUE_TYPE.EPIC: _EpicQueueProvider, 
    constants.QUEUE_TYPE.BATTLE_ROYALE: _BattleRoyaleQueueProvider, 
-   constants.QUEUE_TYPE.MAPBOX: _MapboxQueueProvider}
+   constants.QUEUE_TYPE.MAPBOX: _MapboxQueueProvider, 
+   constants.QUEUE_TYPE.FUN_RANDOM: _RandomQueueProvider, 
+   constants.QUEUE_TYPE.COMP7: _Comp7QueueProvider}
 
 def _providerFactory(proxy, qType):
     return _PROVIDER_BY_QUEUE_TYPE.get(qType, _QueueProvider)(proxy, qType)
@@ -308,7 +290,7 @@ class BattleQueue(BattleQueueMeta, LobbySubView):
         g_playerEvents.onArenaCreated += self.onStartBattle
         self.__updateQueueInfo()
         self.__updateTimer()
-        self.updateClientState()
+        self.__updateClientState()
         MusicControllerWWISE.play()
 
     def _dispose(self):
@@ -319,37 +301,38 @@ class BattleQueue(BattleQueueMeta, LobbySubView):
         self._blur.fini()
         super(BattleQueue, self)._dispose()
 
-    def updateClientState(self):
-        if self.prbEntity is None or self.__provider is None:
+    def __updateClientState(self):
+        if self.prbEntity is None:
             return
-        permissions = self.prbEntity.getPermissions()
-        if not permissions.canExitFromQueue():
-            self.as_showExitS(False)
-        guiType = prb_getters.getArenaGUIType(queueType=self.__provider.getQueueType())
-        title = MENU.loading_battletypes(guiType)
-        description = MENU.loading_battletypes_desc(guiType)
-        if guiType != constants.ARENA_GUI_TYPE.UNKNOWN and guiType in constants.ARENA_GUI_TYPE_LABEL.LABELS:
-            iconlabel = constants.ARENA_GUI_TYPE_LABEL.LABELS[guiType]
         else:
-            iconlabel = 'neutral'
-        if self.__provider.needAdditionalInfo():
-            additional = self.__provider.additionalInfo()
-        else:
-            additional = ''
-        vehicle = self.__provider.getVehicle()
-        textLabel = self.__provider.getTankInfoLabel()
-        tankName = self.__provider.getTankName(vehicle)
-        iconPath = self.__provider.getTankIcon(vehicle)
-        layoutStr = self.__provider.getLayoutStr()
-        self.as_setTypeInfoS({'iconLabel': iconlabel, 
-           'title': title, 
-           'description': description, 
-           'additional': additional, 
-           'tankLabel': text_styles.main(textLabel), 
-           'tankIcon': iconPath, 
-           'tankName': tankName, 
-           'layoutStr': layoutStr})
-        return
+            permissions = self.prbEntity.getPermissions()
+            if not permissions.canExitFromQueue():
+                self.as_showExitS(False)
+            guiType = prb_getters.getArenaGUIType(queueType=self.__provider.getQueueType())
+            title = MENU.loading_battletypes(guiType)
+            description = MENU.loading_battletypes_desc(guiType)
+            if guiType != constants.ARENA_GUI_TYPE.UNKNOWN and guiType in constants.ARENA_GUI_TYPE_LABEL.LABELS:
+                iconlabel = constants.ARENA_GUI_TYPE_LABEL.LABELS[guiType]
+            else:
+                iconlabel = 'neutral'
+            if self.__provider.needAdditionalInfo():
+                additional = self.__provider.additionalInfo()
+            else:
+                additional = ''
+            vehicle = g_currentVehicle.item
+            textLabel = self.__provider.getTankInfoLabel()
+            tankName = self.__provider.getTankName(vehicle)
+            iconPath = self.__provider.getTankIcon(vehicle)
+            layoutStr = self.__provider.getLayoutStr()
+            self.as_setTypeInfoS({'iconLabel': iconlabel, 
+               'title': title, 
+               'description': description, 
+               'additional': additional, 
+               'tankLabel': text_styles.main(textLabel), 
+               'tankIcon': iconPath, 
+               'tankName': tankName, 
+               'layoutStr': layoutStr})
+            return
 
     def __stopUpdateScreen(self):
         if self.__timerCallback is not None:
@@ -373,7 +356,7 @@ class BattleQueue(BattleQueueMeta, LobbySubView):
         self.__timerCallback = None
         self.__timerCallback = BigWorld.callback(1, self.__updateTimer)
         textLabel = text_styles.main(makeString(MENU.PREBATTLE_TIMERLABEL))
-        timeLabel = _timeLabel(self.__createTime)
+        timeLabel = '%d:%02d' % divmod(self.__createTime, 60)
         if self.__provider is not None and self.__provider.needAdditionalInfo():
             timeLabel = text_styles.concatStylesToSingleLine(timeLabel, '*')
         self.as_setTimerS(textLabel, timeLabel)
@@ -501,8 +484,8 @@ class BattleStrongholdsQueue(BattleStrongholdsQueueMeta, LobbySubView, ClanEmble
             title = ''
         return title
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def __parseClanData(self, clanData, serviceLeaguesEnabled, callback):
         updateData = {}
         myClanName = getClanTag(clanData.get('tag'), clanData.get('color') or '')
@@ -529,8 +512,8 @@ class BattleStrongholdsQueue(BattleStrongholdsQueueMeta, LobbySubView, ClanEmble
             updateData['myClanElo'] = textStyle(backport.getNiceNumberFormat(myClanElo))
         callback(updateData)
 
-    @async
-    @process
+    @adisp_async
+    @adisp_process
     def __parseGroupsData(self, groupsData, callback):
         groups = []
         for group in groupsData:
@@ -563,7 +546,7 @@ class BattleStrongholdsQueue(BattleStrongholdsQueueMeta, LobbySubView, ClanEmble
 
         callback(groups)
 
-    @process
+    @adisp_process
     def __onMatchmakingInfo(self, response):
         if response.getCode() == ResponseCodes.NO_ERRORS and response.getData():
             data = response.getData()

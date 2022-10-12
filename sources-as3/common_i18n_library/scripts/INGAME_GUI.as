@@ -105,6 +105,8 @@ package
       
       public static const PLAYER_ERRORS_EQUIPMENT_ORDER_NOTREADY:String = "#ingame_gui:player_errors/equipment/order/notReady";
       
+      public static const PLAYER_ERRORS_EQUIPMENT_POI_UNAVAILABLE:String = "#ingame_gui:player_errors/equipment/poi/unavailable";
+      
       public static const PLAYER_MESSAGES_DEVICE_CRITICAL_AT_SHOT:String = "#ingame_gui:player_messages/DEVICE_CRITICAL_AT_SHOT";
       
       public static const PLAYER_MESSAGES_DEVICE_DESTROYED_AT_SHOT:String = "#ingame_gui:player_messages/DEVICE_DESTROYED_AT_SHOT";
@@ -164,6 +166,12 @@ package
       public static const PLAYER_MESSAGES_POSTMORTEM_USERNOHASAMMO:String = "#ingame_gui:player_messages/postmortem_userNoHasAmmo";
       
       public static const PLAYER_MESSAGES_TANK_IN_FIRE:String = "#ingame_gui:player_messages/tank_in_fire";
+      
+      public static const PLAYER_MESSAGES_POI_EQUIPMENT_USED_BY_ALLY:String = "#ingame_gui:player_messages/poi_equipment_used_by_ally";
+      
+      public static const PLAYER_MESSAGES_POI_EQUIPMENT_USED_BY_ENEMY:String = "#ingame_gui:player_messages/poi_equipment_used_by_enemy";
+      
+      public static const VEHICLE_MESSAGES_POI_EQUIPMENT_USED:String = "#ingame_gui:vehicle_messages/poi_equipment_used";
       
       public static const PLAYER_MESSAGES_REPLAYFREECAMERAACTIVATED:String = "#ingame_gui:player_messages/replayFreeCameraActivated";
       
@@ -362,6 +370,10 @@ package
       public static const STATISTICS_TAB_QUESTS_SWITCHOFF_TITLE:String = "#ingame_gui:statistics/tab/quests/switchOff/title";
       
       public static const STATISTICS_TAB_QUESTS_NOTAVAILABLE_TITLE:String = "#ingame_gui:statistics/tab/quests/notAvailable/title";
+      
+      public static const STATISTICS_TAB_PERSONALRESERVES_HEADER:String = "#ingame_gui:statistics/tab/personalReserves/header";
+      
+      public static const STATISTICS_TAB_PERSONALRESERVES_HEADER_TITLE:String = "#ingame_gui:statistics/tab/personalReserves/header/title";
       
       public static const STATISTICS_HEADER:String = "#ingame_gui:statistics/header";
       
@@ -798,6 +810,18 @@ package
       public static const PLAYER_MESSAGES_DEATH_FROM_SHOT_ENEMY_ENEMY_ARTILLERY:String = "#ingame_gui:player_messages/DEATH_FROM_SHOT_ENEMY_ENEMY_ARTILLERY";
       
       public static const PLAYER_MESSAGES_DEATH_FROM_SHOT_ENEMY_ENEMY_BOMBER:String = "#ingame_gui:player_messages/DEATH_FROM_SHOT_ENEMY_ENEMY_BOMBER";
+      
+      public static const PLAYER_MESSAGES_DEATH_FROM_SHOT_SELF_ENEMY_POI:String = "#ingame_gui:player_messages/DEATH_FROM_SHOT_SELF_ENEMY_POI";
+      
+      public static const PLAYER_MESSAGES_DEATH_FROM_SHOT_SELF_ENEMY_COMP7:String = "#ingame_gui:player_messages/DEATH_FROM_SHOT_SELF_ENEMY_COMP7";
+      
+      public static const PLAYER_MESSAGES_DEATH_FROM_SHOT_ALLY_ENEMY_POI:String = "#ingame_gui:player_messages/DEATH_FROM_SHOT_ALLY_ENEMY_POI";
+      
+      public static const PLAYER_MESSAGES_DEATH_FROM_SHOT_ALLY_ENEMY_COMP7:String = "#ingame_gui:player_messages/DEATH_FROM_SHOT_ALLY_ENEMY_COMP7";
+      
+      public static const PLAYER_MESSAGES_DEATH_FROM_SHOT_ENEMY_ALLY_POI:String = "#ingame_gui:player_messages/DEATH_FROM_SHOT_ENEMY_ALLY_POI";
+      
+      public static const PLAYER_MESSAGES_DEATH_FROM_SHOT_ENEMY_ALLY_COMP7:String = "#ingame_gui:player_messages/DEATH_FROM_SHOT_ENEMY_ALLY_COMP7";
       
       public static const PLAYER_MESSAGES_DEATH_FROM_ARTILLERY_ENEMY_SUICIDE:String = "#ingame_gui:player_messages/DEATH_FROM_ARTILLERY_ENEMY_SUICIDE";
       
@@ -1349,6 +1373,8 @@ package
       
       public static const SIEGEMODE_HINT_TURBOSHAFTENGINE:String = "#ingame_gui:siegeMode/hint/turboshaftEngine";
       
+      public static const SIEGEMODE_HINT_ROCKETACCELERATION:String = "#ingame_gui:siegeMode/hint/rocketAcceleration";
+      
       public static const EFFICIENCYRIBBONS_ENEMYSECTORCAPTURED:String = "#ingame_gui:efficiencyRibbons/enemySectorCaptured";
       
       public static const EFFICIENCYRIBBONS_DESTRUCTIBLEDAMAGED:String = "#ingame_gui:efficiencyRibbons/destructibleDamaged";
@@ -1691,11 +1717,13 @@ package
       
       public static const REWARDWINDOW_TWITCH33_HEADERTEXT:String = "#ingame_gui:rewardWindow/twitch33/headerText";
       
-      public static const REWARDWINDOW_TWITCH33_SUBHEADERTEXT:String = "#ingame_gui:rewardWindow/twitch33/subHeaderText";
+      public static const REWARDWINDOW_TWITCH33_MAINREWARD_1:String = "#ingame_gui:rewardWindow/twitch33/mainReward_1";
       
-      public static const REWARDWINDOW_TWITCH33_DESCTEXT:String = "#ingame_gui:rewardWindow/twitch33/descText";
+      public static const REWARDWINDOW_TWITCH33_MAINREWARD_2:String = "#ingame_gui:rewardWindow/twitch33/mainReward_2";
       
-      public static const REWARDWINDOW_TWITCH33_BTNLABEL:String = "#ingame_gui:rewardWindow/twitch33/btnLabel";
+      public static const REWARDWINDOW_TWITCH33_MAINREWARD_3:String = "#ingame_gui:rewardWindow/twitch33/mainReward_3";
+      
+      public static const REWARDWINDOW_TWITCH33_MAINREWARD_4:String = "#ingame_gui:rewardWindow/twitch33/mainReward_4";
       
       public static const REWARDWINDOW_LOOTBOX_WINHEADERTEXT:String = "#ingame_gui:rewardWindow/lootbox/winHeaderText";
       
@@ -1712,6 +1740,8 @@ package
       public static const HELPSCREEN_HINT_PRESS:String = "#ingame_gui:helpScreen/hint/press";
       
       public static const HELPSCREEN_HINT_DESCRIPTION:String = "#ingame_gui:helpScreen/hint/description";
+      
+      public static const HELPSCREEN_HINT_MODEDESCRIPTION:String = "#ingame_gui:helpScreen/hint/modeDescription";
       
       public static const COMMANDERCAM_HINT_DESCRIPTION:String = "#ingame_gui:commanderCam/hint/description";
       
@@ -1890,6 +1920,12 @@ package
       public static const PREBATTLEAMMUNITIONPANEL_LOADINGTIMER:String = "#ingame_gui:prebattleAmmunitionPanel/loadingTimer";
       
       public static const PREBATTLEAMMUNITIONPANEL_CURRENTSETUP:String = "#ingame_gui:prebattleAmmunitionPanel/currentSetup";
+      
+      public static const PERSONAL_RESERVES_HINT_PRESS:String = "#ingame_gui:personal_reserves/hint/press";
+      
+      public static const PERSONAL_RESERVES_HINT_DESCRIPTION:String = "#ingame_gui:personal_reserves/hint/description";
+      
+      public static const HINT_NOBINDINGKEY:String = "#ingame_gui:hint/noBindingKey";
        
       
       public function INGAME_GUI()

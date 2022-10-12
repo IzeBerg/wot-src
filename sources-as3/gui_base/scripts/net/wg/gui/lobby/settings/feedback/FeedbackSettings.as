@@ -10,7 +10,6 @@ package net.wg.gui.lobby.settings.feedback
    import net.wg.gui.lobby.settings.SettingsNewCountersForm;
    import net.wg.gui.lobby.settings.events.SettingViewEvent;
    import net.wg.gui.lobby.settings.events.SettingsSubVewEvent;
-   import net.wg.gui.lobby.settings.feedback.questsProgress.QuestsProgressForm;
    import net.wg.gui.lobby.settings.vo.SettingsControlProp;
    import net.wg.gui.lobby.settings.vo.SettingsTabNewCounterVo;
    import net.wg.gui.lobby.settings.vo.base.SettingsDataVo;
@@ -38,8 +37,6 @@ package net.wg.gui.lobby.settings.feedback
       private var _tabsDataProvider:IDataProvider = null;
       
       private var _feedbackData:FeedbackSettingsDataVo = null;
-      
-      private var _isEvent:Boolean = false;
       
       private var _dynamicFeedbackData:Object = null;
       
@@ -184,15 +181,6 @@ package net.wg.gui.lobby.settings.feedback
          }
       }
       
-      public function setIsEvent(param1:Boolean) : void
-      {
-         this._isEvent = param1;
-         if(this.viewStack.currentView is QuestsProgressForm)
-         {
-            (this.viewStack.currentView as QuestsProgressForm).setIsEvent(this._isEvent);
-         }
-      }
-      
       private function updateNewCounterForCurrentView(param1:SettingsNewCountersForm) : void
       {
          var _loc2_:String = null;
@@ -235,10 +223,6 @@ package net.wg.gui.lobby.settings.feedback
          this._currentTabIdx = param1.index;
          this._currentViewLinkage = this._tabsDataProvider[this._currentTabIdx].linkage;
          this.viewStack.show(this._currentViewLinkage,this._currentViewLinkage);
-         if(this.viewStack.currentView is QuestsProgressForm)
-         {
-            (this.viewStack.currentView as QuestsProgressForm).setIsEvent(this._isEvent);
-         }
       }
       
       private function onViewStackOnControlChangeHandler(param1:SettingsSubVewEvent) : void

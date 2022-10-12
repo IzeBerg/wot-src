@@ -270,7 +270,7 @@ package net.wg.gui.lobby.techtree
       {
          var _loc3_:TechTreeNationMenuItemVO = null;
          var _loc2_:IDataProvider = this.nationsBar.dataProvider;
-         var _loc4_:int = _loc2_.length;
+         var _loc4_:uint = _loc2_.length;
          var _loc5_:int = 0;
          while(_loc5_ < _loc4_)
          {
@@ -326,7 +326,6 @@ package net.wg.gui.lobby.techtree
             this.updateMiniClientLayouts();
          }
          var _loc1_:int = NATION_BUTTON_BAR_Y_DEFAULT;
-         var _loc2_:int = _height - TT_PADDING_BOTTOM;
          if(this.blueprintsSwitchButton && this.blueprintsSwitchButton.visible)
          {
             if(stage.stageHeight < StageSizeBoundaries.HEIGHT_900)
@@ -342,11 +341,11 @@ package net.wg.gui.lobby.techtree
                _loc1_ = NATION_BUTTON_BAR_OFFSET_Y_NORMAL;
             }
          }
-         var _loc3_:int = Math.max(_height - NationTree.CONTAINER_HEIGHT >> 1,NT_TREE_MIN_POSITION_Y) + (NationTree.CONTAINER_HEIGHT + NT_TREE_GRAPHICS_OFFSET_Y >> 1);
-         var _loc4_:int = this.nationsBar.measureOriginalContentHeight() >> 1;
-         _loc4_ = Math.min(_loc3_ - _loc1_,_loc2_ - _loc3_,_loc4_);
-         this.nationsBar.height = _loc4_ << 1;
-         this.nationsBar.y = _loc3_ - _loc4_;
+         var _loc2_:int = Math.max(_height - NationTree.CONTAINER_HEIGHT >> 1,NT_TREE_MIN_POSITION_Y) + (NationTree.CONTAINER_HEIGHT + NT_TREE_GRAPHICS_OFFSET_Y >> 1);
+         var _loc3_:int = this.nationsBar.measureOriginalContentHeight() >> 1;
+         _loc3_ = Math.min(_loc2_ - _loc1_,_height - TT_PADDING_BOTTOM - _loc2_,_loc3_);
+         this.nationsBar.height = _loc3_ << 1;
+         this.nationsBar.y = _loc2_ - _loc3_;
          this.blueprintsSwitchButton.x = this.nationsBar.x + 0.5 * this.nationsBar.width;
          this.updateVehicleCollectorBtnLayout();
       }

@@ -1,8 +1,9 @@
+import random
 from collections import namedtuple
 from functools import partial
 import logging, typing
 from account_helpers.AccountSettings import AccountSettings, MAPBOX_PROGRESSION
-from async import async, await, await_callback, BrokenPromiseError
+from wg_async import wg_async, wg_await, await_callback, BrokenPromiseError
 import adisp, BigWorld
 from BWUtil import AsyncReturn
 from constants import QUEUE_TYPE, PREBATTLE_TYPE, Configs
@@ -147,7 +148,7 @@ class MapboxController(Notifiable, SeasonProvider, IMapboxController, IGlobalLis
         else:
             return bool(self.prbEntity.getModeFlags() & FUNCTIONAL_FLAG.MAPBOX)
 
-    @adisp.process
+    @adisp.adisp_process
     def selectMapboxBattle(self):
         dispatcher = self.prbDispatcher
         if dispatcher is None:
@@ -163,20 +164,20 @@ class MapboxController(Notifiable, SeasonProvider, IMapboxController, IGlobalLis
     def getProgressionRestartTime(self):
         return self.__progressionDataProvider.getProgressionRestartTime()
 
-    @adisp.process
+    @adisp.adisp_process
     def selectCrewbookNation(self, itemID):
         if self.__webCtrl.isAvailable():
             result = yield self.__webCtrl.sendRequest(MapboxRequestCrewbookCtx(itemID))
             if not result.isSuccess():
                 SystemMessages.pushMessage(backport.text(R.strings.messenger.serviceChannelMessages.mapbox.crewbookRequestError()), SystemMessages.SM_TYPE.ErrorSimple)
 
-    @adisp.process
+    @adisp.adisp_process
     def handleSurveyCompleted(self, surveyData):
 
-        @adisp.async
-        @async
+        @adisp.adisp_async
+        @wg_async
         def proxy(callback):
-            result = yield await(self.forceUpdateProgressData())
+            result = yield wg_await(self.forceUpdateProgressData())
             callback(result)
 
         if self.__webCtrl.isAvailable():
@@ -228,9 +229,9 @@ class MapboxController(Notifiable, SeasonProvider, IMapboxController, IGlobalLis
     def storeCycle(self):
         self.__settingsManager.storeCycle(self.isActive(), self.getCurrentCycleID())
 
-    @async
+    @wg_async
     def forceUpdateProgressData(self):
-        result = yield await(self.__progressionDataProvider.forceUpdateProgressData())
+        result = yield wg_await(self.__progressionDataProvider.forceUpdateProgressData())
         raise AsyncReturn(result)
 
     def onPrbEntitySwitched(self):
@@ -264,7 +265,7 @@ class MapboxController(Notifiable, SeasonProvider, IMapboxController, IGlobalLis
             self.__callbackID = BigWorld.callback(0, partial(self.__doSelectRandomPrb, dispatcher))
             return
 
-    @adisp.process
+    @adisp.adisp_process
     def __doSelectRandomPrb(self, dispatcher):
         self.__callbackID = None
         yield dispatcher.doSelectAction(PrbAction(PREBATTLE_ACTION_NAME.RANDOM))
@@ -313,7 +314,7 @@ class MapboxProgressionDataProvider(Notifiable):
     __mapboxCtrl = dependency.descriptor(IMapboxController)
     __eventsCache = dependency.descriptor(IEventsCache)
     __slots__ = ('onProgressionDataUpdated', '__progressionData', '__isSyncing', '__isShuttingDown',
-                 '__isStarted')
+                 '__isStarted', '__restartNotifier')
 
     def __init__(self):
         super(MapboxProgressionDataProvider, self).__init__()
@@ -321,12 +322,14 @@ class MapboxProgressionDataProvider(Notifiable):
         self.__isSyncing = False
         self.__isShuttingDown = False
         self.__isStarted = False
+        self.__restartNotifier = SimpleNotifier(self.getRestartTimer, self.__timerUpdate)
         self.onProgressionDataUpdated = Event.Event()
         return
 
     def init(self):
         self.__progressionData = {}
         self.addNotificator(SimpleNotifier(self.getTimer, self.__timerUpdate))
+        self.addNotificator(self.__restartNotifier)
 
     def fini(self):
         if self.__isSyncing:
@@ -339,6 +342,7 @@ class MapboxProgressionDataProvider(Notifiable):
             self.onProgressionDataUpdated = None
             self.__progressionData = None
             self.clearNotification()
+            self.__restartNotifier = None
             return
 
     def start(self):
@@ -369,7 +373,15 @@ class MapboxProgressionDataProvider(Notifiable):
     def getTimer(self):
         return self.__mapboxCtrl.getModeSettings().progressionUpdateInterval
 
-    @async
+    def getRestartTimer(self):
+        endTime = self.getProgressionRestartTime()
+        if endTime:
+            timeLeft = time_utils.getTimeDeltaFromNow(time_utils.makeLocalServerTime(endTime))
+            if timeLeft >= 0:
+                return timeLeft + random.randint(0, 3)
+        return time_utils.ONE_DAY
+
+    @wg_async
     def forceUpdateProgressData(self):
         try:
             result = yield await_callback(self.__request)()
@@ -392,7 +404,7 @@ class MapboxProgressionDataProvider(Notifiable):
         if self.__isShuttingDown:
             self.fini()
 
-    @adisp.process
+    @adisp.adisp_process
     def __request(self, callback):
         data = None
         result = None
@@ -409,6 +421,7 @@ class MapboxProgressionDataProvider(Notifiable):
         if data != self.__progressionData:
             self.__progressionData = data if data is not None else {}
             self.onProgressionDataUpdated()
+            self.__restartNotifier.startNotification()
             self.__eventsCache.onEventsVisited()
         if result is not None:
             callback(result.isSuccess())

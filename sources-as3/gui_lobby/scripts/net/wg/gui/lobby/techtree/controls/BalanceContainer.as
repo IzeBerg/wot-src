@@ -38,22 +38,15 @@ package net.wg.gui.lobby.techtree.controls
          this.nationalItem.addEventListener(MouseEvent.ROLL_OUT,this.onFragmentRollOutHandler);
       }
       
-      protected function onDispose() : void
-      {
-         this.internationalItem.removeEventListener(MouseEvent.ROLL_OVER,this.onFragmentRollOverHandler);
-         this.internationalItem.removeEventListener(MouseEvent.ROLL_OUT,this.onFragmentRollOutHandler);
-         this.nationalItem.removeEventListener(MouseEvent.ROLL_OVER,this.onFragmentRollOverHandler);
-         this.nationalItem.removeEventListener(MouseEvent.ROLL_OUT,this.onFragmentRollOutHandler);
-         this.internationalItem = null;
-         this.nationalItem = null;
-         this.titleTF = null;
-         this._toolTipMgr = null;
-      }
-      
       public final function dispose() : void
       {
          this._disposed = true;
          this.onDispose();
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
       
       public function setBalance(param1:BlueprintBalanceVO) : void
@@ -65,6 +58,18 @@ package net.wg.gui.lobby.techtree.controls
          this.nationalItem.x = BALANCE_OFFSET - this.nationalItem.width | 0;
          this.internationalItem.x = this.nationalItem.x - this.internationalItem.width - TF_GAP | 0;
          this.titleTF.x = this.internationalItem.x - this.titleTF.width - TITLE_GAP | 0;
+      }
+      
+      protected function onDispose() : void
+      {
+         this.internationalItem.removeEventListener(MouseEvent.ROLL_OVER,this.onFragmentRollOverHandler);
+         this.internationalItem.removeEventListener(MouseEvent.ROLL_OUT,this.onFragmentRollOutHandler);
+         this.nationalItem.removeEventListener(MouseEvent.ROLL_OVER,this.onFragmentRollOverHandler);
+         this.nationalItem.removeEventListener(MouseEvent.ROLL_OUT,this.onFragmentRollOutHandler);
+         this.internationalItem = null;
+         this.nationalItem = null;
+         this.titleTF = null;
+         this._toolTipMgr = null;
       }
       
       private function onFragmentRollOverHandler(param1:MouseEvent) : void
@@ -83,11 +88,6 @@ package net.wg.gui.lobby.techtree.controls
          {
             this._toolTipMgr.hide();
          }
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

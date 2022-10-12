@@ -10,19 +10,20 @@ package net.wg.gui.lobby.header
    import net.wg.data.constants.Linkages;
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.CURRENCIES_CONSTANTS;
+   import net.wg.data.constants.generated.HANGAR_ALIASES;
    import net.wg.data.managers.impl.TooltipProps;
    import net.wg.gui.components.controls.FightButton;
    import net.wg.gui.components.controls.VO.BadgeVisualVO;
    import net.wg.gui.components.tooltips.ToolTipComplex;
    import net.wg.gui.interfaces.ISoundButtonEx;
    import net.wg.gui.lobby.header.events.HeaderEvents;
+   import net.wg.gui.lobby.header.events.PersonalReservesWidgetEvent;
    import net.wg.gui.lobby.header.headerButtonBar.HeaderButton;
    import net.wg.gui.lobby.header.headerButtonBar.HeaderButtonBar;
    import net.wg.gui.lobby.header.headerButtonBar.HeaderButtonsHelper;
    import net.wg.gui.lobby.header.interfaces.ILobbyHeader;
    import net.wg.gui.lobby.header.mainMenuButtonBar.MainMenuButtonBar;
    import net.wg.gui.lobby.header.rankedBattles.SparkAnim;
-   import net.wg.gui.lobby.header.vo.AccountBoosterVO;
    import net.wg.gui.lobby.header.vo.AccountDataVo;
    import net.wg.gui.lobby.header.vo.ExtendedSquadInfoVo;
    import net.wg.gui.lobby.header.vo.HBC_AccountDataVo;
@@ -38,6 +39,7 @@ package net.wg.gui.lobby.header
    import net.wg.gui.tutorial.components.TutorialClip;
    import net.wg.infrastructure.base.meta.impl.LobbyHeaderMeta;
    import net.wg.infrastructure.events.LifeCycleEvent;
+   import net.wg.infrastructure.interfaces.IDAAPIModule;
    import net.wg.utils.ICounterManager;
    import net.wg.utils.IScheduler;
    import net.wg.utils.IUtils;
@@ -445,6 +447,7 @@ package net.wg.gui.lobby.header
          this.headerButtonBar.addEventListener(ButtonEvent.CLICK,this.onHeaderButtonBarClickHandler,false,0,true);
          this.headerButtonBar.addEventListener(ButtonEvent.PRESS,this.onHeaderButtonBarPressHandler,false,0,true);
          this.headerButtonBar.addEventListener(HeaderEvents.HEADER_ITEMS_REPOSITION,this.onButtonBarHeaderItemsRepositionHandler);
+         this.headerButtonBar.addEventListener(PersonalReservesWidgetEvent.CREATED,this.onPersonalReserveWidgetCreated,false,0,true);
          this.fightBtn.mouseEnabledOnDisabled = true;
          _deferredDispose = true;
       }
@@ -466,9 +469,11 @@ package net.wg.gui.lobby.header
          this.headerButtonBar.removeEventListener(ButtonEvent.CLICK,this.onHeaderButtonBarClickHandler);
          this.headerButtonBar.removeEventListener(ButtonEvent.PRESS,this.onHeaderButtonBarPressHandler);
          this.headerButtonBar.removeEventListener(HeaderEvents.HEADER_ITEMS_REPOSITION,this.onButtonBarHeaderItemsRepositionHandler);
+         this.headerButtonBar.removeEventListener(PersonalReservesWidgetEvent.CREATED,this.onPersonalReserveWidgetCreated);
          this.fightBtn.removeEventListener(ButtonEvent.CLICK,this.onFightBtnClickHandler);
          this.fightBtn.removeEventListener(MouseEvent.MOUSE_OVER,this.onFightBtnMouseOverHandler);
          this.fightBtn.removeEventListener(MouseEvent.MOUSE_OUT,this.onFightBtnMouseOutHandler);
+         this.unregisterPR2WidgetBtn();
          super.onBeforeDispose();
       }
       
@@ -546,20 +551,6 @@ package net.wg.gui.lobby.header
          }
       }
       
-      override protected function setBoosterData(param1:AccountBoosterVO) : void
-      {
-         var _loc2_:HBC_AccountDataVo = HBC_AccountDataVo(this._headerButtonsHelper.getContentDataById(HeaderButtonsHelper.ITEM_ID_ACCOUNT));
-         if(_loc2_ != null)
-         {
-            _loc2_.hasActiveBooster = param1.hasActiveBooster;
-            _loc2_.hasAvailableBoosters = param1.hasAvailableBoosters;
-            _loc2_.boosterIcon = param1.boosterIcon;
-            _loc2_.boosterText = param1.boosterText;
-            _loc2_.boosterBg = param1.boosterBg;
-            this._headerButtonsHelper.invalidateDataById(HeaderButtonsHelper.ITEM_ID_ACCOUNT);
-         }
-      }
-      
       override protected function updateWalletBtn(param1:String, param2:HBC_FinanceVo) : void
       {
          this._headerButtonsHelper.setContentData(param1,param2);
@@ -619,7 +610,7 @@ package net.wg.gui.lobby.header
          _loc8_.tooltipType = param3;
          _loc8_.isEvent = param4;
          _loc8_.icon = param5;
-         _loc8_.hasSearchSupport = param6;
+         _loc8_.hasPopover = param6;
          if(_loc8_.squadExtendInfoVo != null)
          {
             _loc8_.squadExtendInfoVo.dispose();
@@ -784,6 +775,9 @@ package net.wg.gui.lobby.header
                break;
             case CURRENCIES_CONSTANTS.CRYSTAL:
                onCrystalClickS();
+               break;
+            case HeaderButtonsHelper.ITEM_ID_PERSONAL_RESERVES_WIDGET:
+               onReservesClickS();
          }
       }
       
@@ -821,6 +815,22 @@ package net.wg.gui.lobby.header
          else
          {
             App.toolTipMgr.showComplex(this._fightBtnTooltipStr);
+         }
+      }
+      
+      private function onPersonalReserveWidgetCreated(param1:PersonalReservesWidgetEvent) : void
+      {
+         param1.preventDefault();
+         param1.stopImmediatePropagation();
+         this.unregisterPR2WidgetBtn();
+         registerFlashComponentS(IDAAPIModule(param1.target),HANGAR_ALIASES.PERSONAL_RESERVES_WIDGET_INJECT);
+      }
+      
+      private function unregisterPR2WidgetBtn() : void
+      {
+         if(isFlashComponentRegisteredS(HANGAR_ALIASES.PERSONAL_RESERVES_WIDGET_INJECT))
+         {
+            unregisterFlashComponentS(HANGAR_ALIASES.PERSONAL_RESERVES_WIDGET_INJECT);
          }
       }
    }

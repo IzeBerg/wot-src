@@ -71,17 +71,51 @@ package net.wg.data.constants.generated
       
       public static const HP_RESTORE_ON_DAMAGE:String = "hpRestoreOnDamage";
       
+      public static const POI_CAPTURING:String = "PoICapturing";
+      
+      public static const POI_COOLDOWN:String = "PoICooldown";
+      
+      public static const POI_BLOCKED_NOT_USED_ABILITY:String = "PoIBlockedNotUsedAbility";
+      
+      public static const POI_CAPTURING_INTERRUPTED:String = "PoICapturingInterrupted";
+      
+      public static const POI_BLOCKED_NOT_INVADER:String = "PoIBlockedNotInvader";
+      
+      public static const COMP7_RISKY_ATTACK:String = "riskyAttack";
+      
+      public static const COMP7_AOE_HEAL:String = "aoeHeal";
+      
+      public static const COMP7_ALLY_SUPPORT:String = "allySupport";
+      
+      public static const COMP7_HUNTER:String = "hunter";
+      
+      public static const COMP7_CONCENTRATION:String = "concentration";
+      
+      public static const COMP7_JUGGERNAUT:String = "juggernaut";
+      
+      public static const COMP7_RISKY_ATTACK_HEAL:String = "riskyAttackHeal";
+      
+      public static const COMP7_BERSERK:String = "berserker";
+      
+      public static const COMP7_SNIPER:String = "sniper";
+      
+      public static const COMP7_FAST_RECHARGE:String = "fastRecharge";
+      
+      public static const COMP7_SURE_SHOT:String = "sureShot";
+      
+      public static const COMP7_AOE_INSPIRE:String = "aoeInspire";
+      
+      public static const COMP7_ARTYLLERY_SUPPORT:String = "artillerySupport";
+      
+      public static const COMP7_MARCH:String = "march";
+      
+      public static const COMP7_AGGRESSIVE_DETECTION:String = "aggressiveDetection";
+      
+      public static const COMP7_POINT_RECON:String = "pointRecon";
+      
       public static const WARNING_VIEW:String = "warningView";
       
       public static const CRITICAL_VIEW:String = "criticalView";
-      
-      public static const WT_BOMB_CAPTURE:String = "wtBombCapture";
-      
-      public static const WT_BOMB_DEPLOY:String = "wtBombDeploy";
-      
-      public static const WT_BOMB_ABSORB:String = "wtBombAbsorb";
-      
-      public static const WT_BOMB_CARRY:String = "wtBombCarry";
        
       
       public function BATTLE_NOTIFICATIONS_TIMER_TYPES()

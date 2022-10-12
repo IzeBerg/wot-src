@@ -39,7 +39,9 @@ class EpicActionsValidator(PreQueueActionsValidator):
         result = super(EpicActionsValidator, self)._validate()
         if not (self.__epicController.isEnabled() and self.__epicController.isInPrimeTime()):
             result = ValidationResult(False, PREBATTLE_RESTRICTION.UNDEFINED)
-        if result and result.restriction == PREBATTLE_RESTRICTION.VEHICLE_NOT_SUPPORTED:
+        if result and result.restriction in (
+         PREBATTLE_RESTRICTION.VEHICLE_NOT_SUPPORTED,
+         PREBATTLE_RESTRICTION.CREW_NOT_FULL):
             epicValidationResult = self.__epicVehicleValidator.canPlayerDoAction()
             if epicValidationResult and not epicValidationResult.isValid:
                 result = epicValidationResult

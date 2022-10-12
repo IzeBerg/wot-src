@@ -33,6 +33,11 @@ package net.wg.gui.battle.views.siegeModePanel
          super.onDispose();
       }
       
+      public function as_setAutoSiegeModeState(param1:int, param2:String) : void
+      {
+         this._currentAnimation.setAutoSiegeModeState(param1,param2);
+      }
+      
       public function as_setSiegeModeType(param1:String) : void
       {
          var _loc2_:String = null;
@@ -64,11 +69,6 @@ package net.wg.gui.battle.views.siegeModePanel
          }
          this._currentAnimation = App.utils.classFactory.getComponent(_loc2_,_loc3_);
          this.animationContainer.addChild(this._currentAnimation);
-      }
-      
-      public function as_setAutoSiegeModeState(param1:int, param2:String) : void
-      {
-         this._currentAnimation.setAutoSiegeModeState(param1,param2);
       }
       
       public function as_setVisible(param1:Boolean) : void

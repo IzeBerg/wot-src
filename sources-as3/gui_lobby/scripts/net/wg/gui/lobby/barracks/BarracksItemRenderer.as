@@ -14,14 +14,17 @@ package net.wg.gui.lobby.barracks
    import net.wg.gui.components.controls.IconText;
    import net.wg.gui.components.controls.SoundButtonEx;
    import net.wg.gui.components.controls.SoundListItemRenderer;
+   import net.wg.gui.components.controls.TileList;
    import net.wg.gui.components.controls.UILoaderAlt;
    import net.wg.gui.components.controls.VO.ActionPriceVO;
    import net.wg.gui.events.CrewEvent;
    import net.wg.gui.lobby.barracks.data.BarracksTankmanVO;
    import net.wg.gui.lobby.components.SmallSkillsList;
+   import net.wg.gui.lobby.components.data.RoleVO;
    import net.wg.infrastructure.managers.ITooltipMgr;
    import net.wg.utils.IUtils;
    import org.idmedia.as3commons.util.StringUtils;
+   import scaleform.clik.data.DataProvider;
    import scaleform.clik.events.ButtonEvent;
    import scaleform.clik.events.ListEvent;
    
@@ -36,6 +39,10 @@ package net.wg.gui.lobby.barracks
       private static const PATH_TANKMAN_ICONS_BARRACKS:String = "../maps/icons/tankmen/icons/barracks/";
       
       private static const PATH_TANKMAN_ICONS_SMALL:String = "../maps/icons/tankmen/ranks/small/";
+      
+      private static const PATH_TANKMEN_ROLES_SMALL:String = "../maps/icons/tankmen/roles/small/";
+      
+      private static const IMAGE_EXTENSION:String = ".png";
       
       private static const SOUND_ID_BTN_DISMISS:String = "btnDissmiss";
       
@@ -82,9 +89,11 @@ package net.wg.gui.lobby.barracks
       
       public var icon:UILoaderAlt;
       
-      public var iconRole:UILoaderAlt;
-      
       public var iconRank:UILoaderAlt;
+      
+      public var sixthSenseIcon:Sprite = null;
+      
+      public var roles:TileList = null;
       
       public var clickArea:Sprite = null;
       
@@ -185,19 +194,7 @@ package net.wg.gui.lobby.barracks
                this.iconRank.source = _loc3_;
             }
          }
-         var _loc4_:String = this._tankmanData.roleIconFile;
-         if(StringUtils.isEmpty(_loc4_))
-         {
-            this.iconRole.visible = false;
-         }
-         else
-         {
-            this.iconRole.visible = true;
-            if(this.iconRole.source != _loc4_)
-            {
-               this.iconRole.source = _loc4_;
-            }
-         }
+         this.sixthSenseIcon.visible = this._tankmanData.hasCommanderFeature;
          this.inCurrentTank = this._tankmanData.inCurrentTank;
          if(!this.inCurrentTank)
          {
@@ -238,16 +235,14 @@ package net.wg.gui.lobby.barracks
             this.icon.dispose();
             this.icon = null;
          }
-         if(this.iconRole)
-         {
-            this.iconRole.dispose();
-            this.iconRole = null;
-         }
          if(this.iconRank)
          {
             this.iconRank.dispose();
             this.iconRank = null;
          }
+         this.sixthSenseIcon = null;
+         this.roles.dispose();
+         this.roles = null;
          this.btnDismiss.dispose();
          this.btnDismiss = null;
          this.emptyPlacesTF = null;
@@ -295,8 +290,8 @@ package net.wg.gui.lobby.barracks
          this.btnDismiss.focusTarget = this;
          this.btnDismiss.addEventListener(ButtonEvent.CLICK,this.onBtnDismissButtonEventClickHandler);
          this.btnDismiss.addEventListener(MouseEvent.MOUSE_DOWN,this.onBtnDismissMouseDownHandler);
-         this.icon.mouseEnabled = this.iconRole.mouseEnabled = this.iconRank.mouseEnabled = false;
-         this.icon.mouseChildren = this.iconRole.mouseChildren = this.iconRank.mouseChildren = false;
+         this.icon.mouseEnabled = this.iconRank.mouseEnabled = false;
+         this.icon.mouseChildren = this.iconRank.mouseChildren = false;
          addEventListener(ButtonEvent.CLICK,this.onButtonEventClickHandler,false,0,true);
          addEventListener(MouseEvent.CLICK,this.onClickHandler,false);
          addEventListener(MouseEvent.ROLL_OVER,this.onRollOverHandler);
@@ -328,11 +323,14 @@ package net.wg.gui.lobby.barracks
       {
          var _loc1_:String = null;
          var _loc2_:Point = null;
-         var _loc3_:ActionPriceVO = null;
-         var _loc4_:String = null;
-         var _loc5_:String = null;
-         var _loc6_:uint = 0;
-         var _loc7_:TextFormat = null;
+         var _loc3_:Array = null;
+         var _loc4_:int = 0;
+         var _loc5_:int = 0;
+         var _loc6_:ActionPriceVO = null;
+         var _loc7_:String = null;
+         var _loc8_:String = null;
+         var _loc9_:uint = 0;
+         var _loc10_:TextFormat = null;
          super.draw();
          if(!_baseDisposed)
          {
@@ -375,13 +373,13 @@ package net.wg.gui.lobby.barracks
                   }
                   if(this.actionPrice)
                   {
-                     _loc3_ = this._tankmanData.actionPriceData;
-                     if(_loc3_)
+                     _loc6_ = this._tankmanData.actionPriceData;
+                     if(_loc6_)
                      {
-                        _loc3_.forCredits = false;
+                        _loc6_.forCredits = false;
                         this.actionPrice.textColorType = ActionPrice.TEXT_COLOR_TYPE_ICON;
                      }
-                     this.actionPrice.setData(_loc3_);
+                     this.actionPrice.setData(_loc6_);
                      this.actionPrice.setup(this);
                      if(this.price)
                      {
@@ -400,31 +398,47 @@ package net.wg.gui.lobby.barracks
                {
                   this.role.htmlText = this._tankmanData.role;
                }
+               _loc3_ = [];
+               _loc4_ = this._tankmanData.roles.length;
+               _loc5_ = 0;
+               while(_loc5_ < _loc4_)
+               {
+                  _loc3_.push(new RoleVO({
+                     "index":_loc5_,
+                     "icon":PATH_TANKMEN_ROLES_SMALL + this._tankmanData.roles[_loc5_] + IMAGE_EXTENSION
+                  }));
+                  _loc5_++;
+               }
+               if(this.roles.dataProvider != null)
+               {
+                  this.roles.dataProvider.cleanUp();
+               }
+               this.roles.dataProvider = new DataProvider(_loc3_);
                if(!(this._buy || this.empty))
                {
-                  _loc4_ = this._tankmanData.specializationLevel + CHAR_PERCENT;
+                  _loc7_ = this._tankmanData.specializationLevel + CHAR_PERCENT;
                   if(!this._tankmanData.notRecruited)
                   {
-                     _loc5_ = this._utils.locale.makeString(MENU.tankmen(this._tankmanData.tankType));
+                     _loc8_ = this._utils.locale.makeString(MENU.tankmen(this._tankmanData.tankType));
                      if(!this._tankmanData.isInSelfVehicleClass)
                      {
-                        this.levelSpecializationMain.htmlText = this.formatDebuffHtmlText(_loc4_);
-                        this.role.htmlText += CHAR_COMMA + this.formatDebuffHtmlText(_loc5_ + Values.SPACE_STR + this._tankmanData.vehicleType);
+                        this.levelSpecializationMain.htmlText = this.formatDebuffHtmlText(_loc7_);
+                        this.role.htmlText += CHAR_COMMA + this.formatDebuffHtmlText(_loc8_ + Values.SPACE_STR + this._tankmanData.vehicleType);
                      }
                      else if(!this._tankmanData.isInSelfVehicleType)
                      {
-                        this.levelSpecializationMain.htmlText = this.formatDebuffHtmlText(_loc4_);
-                        this.role.htmlText += CHAR_COMMA + _loc5_ + this.formatDebuffHtmlText(this._tankmanData.vehicleType);
+                        this.levelSpecializationMain.htmlText = this.formatDebuffHtmlText(_loc7_);
+                        this.role.htmlText += CHAR_COMMA + _loc8_ + this.formatDebuffHtmlText(this._tankmanData.vehicleType);
                      }
                      else
                      {
-                        this.levelSpecializationMain.htmlText = _loc4_;
-                        this.role.htmlText += CHAR_COMMA + Values.SPACE_STR + _loc5_ + Values.SPACE_STR + this._tankmanData.vehicleType;
+                        this.levelSpecializationMain.htmlText = _loc7_;
+                        this.role.htmlText += CHAR_COMMA + Values.SPACE_STR + _loc8_ + Values.SPACE_STR + this._tankmanData.vehicleType;
                      }
                   }
                   else
                   {
-                     this.levelSpecializationMain.htmlText = _loc4_;
+                     this.levelSpecializationMain.htmlText = _loc7_;
                   }
                   if(StringUtils.isNotEmpty(this._tankmanData.lockMessage))
                   {
@@ -435,12 +449,12 @@ package net.wg.gui.lobby.barracks
                   if(this.rank.visible)
                   {
                      this.rank.text = this._tankmanData.rank;
-                     _loc6_ = !!this._tankmanData.notRecruited ? uint(NOT_RECRUITED_DATE_COLOR) : uint(RANK_NAME_COLOR);
-                     _loc7_ = this.rank.getTextFormat();
-                     if(_loc7_.color != _loc6_)
+                     _loc9_ = !!this._tankmanData.notRecruited ? uint(NOT_RECRUITED_DATE_COLOR) : uint(RANK_NAME_COLOR);
+                     _loc10_ = this.rank.getTextFormat();
+                     if(_loc10_.color != _loc9_)
                      {
-                        _loc7_.color = _loc6_;
-                        this.rank.setTextFormat(_loc7_);
+                        _loc10_.color = _loc9_;
+                        this.rank.setTextFormat(_loc10_);
                      }
                   }
                   this.skills.visible = this._tankmanData.isSkillsVisible;
@@ -462,7 +476,7 @@ package net.wg.gui.lobby.barracks
       private function updateControlsState() : void
       {
          var _loc1_:Boolean = !(this._buy || this._empty);
-         this.icon.visible = this.iconRole.visible = this.btnDismiss.visible = _loc1_;
+         this.icon.visible = this.btnDismiss.visible = _loc1_;
          this.iconRank.visible = _loc1_ && !this._tankmanData.notRecruited;
          if(this.buy)
          {
@@ -627,7 +641,7 @@ package net.wg.gui.lobby.barracks
          }
          if(this._utils.commons.isRightButton(param1) && (!this._buy && !this._empty))
          {
-            dispatchEvent(new CrewEvent(CrewEvent.OPEN_PERSONAL_CASE,data,false,0));
+            dispatchEvent(new CrewEvent(CrewEvent.OPEN_PERSONAL_CASE,data,false));
          }
       }
    }
