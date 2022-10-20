@@ -395,7 +395,8 @@ class CommonTankAppearance(ScriptGameObject):
 
     def receiveShotImpulse(self, direction, impulse):
         if not VehicleDamageState.isDamagedModel(self.damageState.modelState):
-            self.swingingAnimator.receiveShotImpulse(direction, impulse)
+            if self.swingingAnimator is not None:
+                self.swingingAnimator.receiveShotImpulse(direction, impulse)
             if self.crashedTracksController is not None:
                 self.crashedTracksController.receiveShotImpulse(direction, impulse)
         return

@@ -43,7 +43,7 @@ package net.wg.gui.lobby.hangar.ammunitionPanel
       
       private static const INDENT_BETWEEN_BUTTONS:int = 11;
       
-      private static const COUNTER_PROPS:CounterProps = new CounterProps(3,-1);
+      private static const COUNTER_PROPS:CounterProps = new CounterProps(-4,-1);
       
       private static const VEHICLE_STATUS_TO_BUTTONS_OFFSET_Y:int = -6;
       

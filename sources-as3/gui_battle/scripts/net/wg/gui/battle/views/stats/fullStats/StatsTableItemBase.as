@@ -15,6 +15,7 @@ package net.wg.gui.battle.views.stats.fullStats
    import net.wg.gui.components.controls.VO.BadgeVisualVO;
    import net.wg.infrastructure.interfaces.IColorScheme;
    import net.wg.infrastructure.interfaces.IUserProps;
+   import net.wg.utils.ILocale;
    import org.idmedia.as3commons.util.StringUtils;
    import scaleform.gfx.TextFieldEx;
    
@@ -50,6 +51,8 @@ package net.wg.gui.battle.views.stats.fullStats
       
       private var _fragsTF:TextField = null;
       
+      private var _damageTF:TextField = null;
+      
       private var _vehicleNameTF:TextField = null;
       
       private var _vehicleTypeIcon:BattleAtlasSprite = null;
@@ -72,6 +75,8 @@ package net.wg.gui.battle.views.stats.fullStats
       
       private var _frags:int = 0;
       
+      private var _damage:int = 0;
+      
       private var _isIGR:Boolean = false;
       
       private var _badgeVO:BadgeVisualVO = null;
@@ -92,8 +97,13 @@ package net.wg.gui.battle.views.stats.fullStats
       
       private var _isEnemy:Boolean;
       
+      private var _isFDEvent:Boolean = false;
+      
+      private var _locale:ILocale;
+      
       public function StatsTableItemBase(param1:MovieClip, param2:int, param3:int)
       {
+         this._locale = App.utils.locale;
          super();
          var _loc4_:int = param2 * this.numRows + param3;
          this._isEnemy = param2 == 1;
@@ -122,6 +132,12 @@ package net.wg.gui.battle.views.stats.fullStats
          TextFieldEx.setNoTranslate(this._playerNameTF,true);
          TextFieldEx.setNoTranslate(this._vehicleNameTF,true);
          TextFieldEx.setNoTranslate(this._fragsTF,true);
+         if(param1.damageCollection)
+         {
+            this._damageTF = param1.damageCollection[_loc4_];
+            this._damageTF.visible = false;
+            TextFieldEx.setNoTranslate(this._damageTF,true);
+         }
       }
       
       override protected function onDispose() : void
@@ -132,11 +148,13 @@ package net.wg.gui.battle.views.stats.fullStats
          this._vehicleNameTF = null;
          this._vehicleTypeIcon = null;
          this._fragsTF = null;
+         this._damageTF = null;
          this.deadBg = null;
          this._userProps = null;
          this._icoIGR = null;
          this._testerIcon = null;
          this._backTester = null;
+         this._locale = null;
          super.onDispose();
       }
       
@@ -169,6 +187,11 @@ package net.wg.gui.battle.views.stats.fullStats
                this._playerNameTF.x = this._defaultUsernameTFXPosition;
                this._playerNameTF.width = this._defaultUsernameTFWidth;
             }
+         }
+         if(this._damageTF && isInvalid(FullStatsValidationType.DAMAGE))
+         {
+            this._damageTF.visible = this._isFDEvent && this._damage != 0;
+            this._damageTF.text = this._locale.integer(this._damage);
          }
          if(isInvalid(FullStatsValidationType.COLORS))
          {
@@ -215,10 +238,7 @@ package net.wg.gui.battle.views.stats.fullStats
          if(isInvalid(FullStatsValidationType.FRAGS))
          {
             this._fragsTF.visible = this._frags != 0;
-            if(this._frags)
-            {
-               this._fragsTF.text = this._frags.toString();
-            }
+            this._fragsTF.text = this._frags.toString();
          }
          if(isInvalid(FullStatsValidationType.SELECTED))
          {
@@ -291,6 +311,7 @@ package net.wg.gui.battle.views.stats.fullStats
       public function reset() : void
       {
          this._frags = 0;
+         this._damage = 0;
          this._isSelected = false;
          this._userProps = null;
          this.dogTag = false;
@@ -328,6 +349,22 @@ package net.wg.gui.battle.views.stats.fullStats
          }
          this._frags = param1;
          invalidate(FullStatsValidationType.FRAGS);
+      }
+      
+      public function setDamage(param1:int) : void
+      {
+         if(this._damage == param1)
+         {
+            return;
+         }
+         this._damage = param1;
+         invalidate(FullStatsValidationType.DAMAGE);
+      }
+      
+      public function setFDEvent(param1:Boolean) : void
+      {
+         this._isFDEvent = param1;
+         invalidate(FullStatsValidationType.DAMAGE);
       }
       
       public function setIsCurrentPlayer(param1:Boolean) : void
@@ -464,9 +501,22 @@ package net.wg.gui.battle.views.stats.fullStats
       
       protected function applyTextColor(param1:uint) : void
       {
-         this._playerNameTF.textColor = param1;
-         this._vehicleNameTF.textColor = param1;
-         this._fragsTF.textColor = param1;
+         if(this._playerNameTF)
+         {
+            this._playerNameTF.textColor = param1;
+         }
+         if(this._vehicleNameTF)
+         {
+            this._vehicleNameTF.textColor = param1;
+         }
+         if(this._fragsTF)
+         {
+            this._fragsTF.textColor = param1;
+         }
+         if(this._damageTF)
+         {
+            this._damageTF.textColor = param1;
+         }
       }
       
       public function get userProps() : IUserProps

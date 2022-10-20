@@ -1,5 +1,6 @@
 package net.wg.infrastructure.base.meta.impl
 {
+   import net.wg.gui.battle.halloween.vehicleMarkers.EventVehicleMarker;
    import net.wg.gui.battle.views.staticMarkers.epic.ObjectiveIdReplyState;
    import net.wg.gui.battle.views.staticMarkers.epic.headquarter.HeadquarterActionMarker;
    import net.wg.gui.battle.views.staticMarkers.epic.headquarter.HeadquarterAnimation;
@@ -17,6 +18,11 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.staticMarkers.flag.FlagIcon;
    import net.wg.gui.battle.views.staticMarkers.flag.FlagMarker;
    import net.wg.gui.battle.views.staticMarkers.flag.constant.FlagMarkerState;
+   import net.wg.gui.battle.views.staticMarkers.halloween.HWBaseMarker;
+   import net.wg.gui.battle.views.staticMarkers.halloween.HWBuffActionLine;
+   import net.wg.gui.battle.views.staticMarkers.halloween.HWBuffActionMarker;
+   import net.wg.gui.battle.views.staticMarkers.halloween.HWBuffMarker;
+   import net.wg.gui.battle.views.staticMarkers.halloween.HWSectorBaseIcon;
    import net.wg.gui.battle.views.staticMarkers.interestPoint.InterestPointMarker;
    import net.wg.gui.battle.views.staticMarkers.interestPoint.MarkerPoiProgressCircle;
    import net.wg.gui.battle.views.staticMarkers.location.LocationActionMarker;
@@ -73,6 +79,8 @@ package net.wg.infrastructure.base.meta.impl
    public class ClassManagerBattleMarkersMeta
    {
       
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_VEHICLEMARKERS_EVENTVEHICLEMARKER:Class = EventVehicleMarker;
+      
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EPIC_OBJECTIVEIDREPLYSTATE:Class = ObjectiveIdReplyState;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_EPIC_HEADQUARTER_HEADQUARTERACTIONMARKER:Class = HeadquarterActionMarker;
@@ -106,6 +114,16 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_FLAG_FLAGMARKER:Class = FlagMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_FLAG_CONSTANT_FLAGMARKERSTATE:Class = FlagMarkerState;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_HALLOWEEN_HWBASEMARKER:Class = HWBaseMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_HALLOWEEN_HWBUFFACTIONLINE:Class = HWBuffActionLine;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_HALLOWEEN_HWBUFFACTIONMARKER:Class = HWBuffActionMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_HALLOWEEN_HWBUFFMARKER:Class = HWBuffMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_HALLOWEEN_HWSECTORBASEICON:Class = HWSectorBaseIcon;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_INTERESTPOINT_INTERESTPOINTMARKER:Class = InterestPointMarker;
       

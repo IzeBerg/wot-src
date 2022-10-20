@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<Properties>
+		<buffs>
+			<Type>
+				ARRAY
+				<of>UINT16</of>
+			</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</buffs>
+	</Properties>
+	<CellMethods>
+		<cheatToggleBuff>
+			<Exposed/>
+			<Args>
+				<name>STRING</name>
+			</Args>
+		</cheatToggleBuff>
+	</CellMethods>
+	<ClientMethods/>
+	<ofEntity>
+		<Vehicle/>
+	</ofEntity>
+	<DefaultKeyName>hwBuffContainer</DefaultKeyName>
+</root>

@@ -18,11 +18,14 @@ from gui.shared.events import AmmunitionPanelViewEvent
 from helpers import dependency
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.shared.utils import IHangarSpace
+from gui.prb_control.entities.listener import IGlobalListener
+from skeletons.gui.game_control import IEventBattlesController
 _logger = logging.getLogger(__name__)
 
-class BaseAmmunitionPanelView(ViewImpl):
+class BaseAmmunitionPanelView(ViewImpl, IGlobalListener):
     _itemsCache = dependency.descriptor(IItemsCache)
     _hangarSpace = dependency.descriptor(IHangarSpace)
+    _eventBattlesController = dependency.descriptor(IEventBattlesController)
     __slots__ = ('_ammunitionPanel', 'onSizeChanged', 'onPanelSectionResized', 'onVehicleChanged')
 
     def __init__(self, flags=ViewFlags.VIEW):
@@ -91,11 +94,15 @@ class BaseAmmunitionPanelView(ViewImpl):
         else:
             self.viewModel.setIsDisabled(self._getIsDisabled())
         self._ammunitionPanel.update(self.vehItem, fullUpdate=fullUpdate)
+        self.__updateIsHalloween()
 
     def destroy(self):
         self.onSizeChanged.clear()
         self.onPanelSectionResized.clear()
         super(BaseAmmunitionPanelView, self).destroy()
+
+    def onPrbEntitySwitched(self):
+        self.__updateIsHalloween()
 
     def _onLoading(self, *args, **kwargs):
         super(BaseAmmunitionPanelView, self)._onLoading(*args, **kwargs)
@@ -121,6 +128,7 @@ class BaseAmmunitionPanelView(ViewImpl):
         return HangarAmmunitionPanel(self.viewModel.ammunitionPanel, self.vehItem)
 
     def _addListeners(self):
+        self.startGlobalListening()
         self.viewModel.onViewSizeInitialized += self.__onViewSizeInitialized
         self.viewModel.ammunitionPanel.onSectionSelect += self._onPanelSectionSelected
         self.viewModel.ammunitionPanel.onSectionResized += self._onPanelSectionResized
@@ -129,6 +137,7 @@ class BaseAmmunitionPanelView(ViewImpl):
         self._itemsCache.onSyncCompleted += self.__itemCacheChanged
 
     def _removeListeners(self):
+        self.stopGlobalListening()
         self.viewModel.onViewSizeInitialized -= self.__onViewSizeInitialized
         self.viewModel.ammunitionPanel.onSectionSelect -= self._onPanelSectionSelected
         self.viewModel.ammunitionPanel.onSectionResized -= self._onPanelSectionResized
@@ -156,6 +165,9 @@ class BaseAmmunitionPanelView(ViewImpl):
 
     def __itemCacheChanged(self, *_):
         self.update(fullUpdate=False)
+
+    def __updateIsHalloween(self):
+        self.viewModel.setIsHalloween(self._eventBattlesController.isEventHangar())
 
     @staticmethod
     def _getIsDisabled():

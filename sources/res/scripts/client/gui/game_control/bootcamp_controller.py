@@ -1,7 +1,7 @@
 from collections import namedtuple
 from functools import partial
 import AccountCommands, BigWorld
-from constants import QUEUE_TYPE
+from constants import QUEUE_TYPE, BOOTCAMP_SCENE
 from wg_async import wg_async, wg_await
 from account_helpers.AccountSettings import AccountSettings, BOOTCAMP_VEHICLE
 from account_helpers import isLongDisconnectedFromCenter
@@ -31,6 +31,7 @@ from gui import DialogsInterface, makeHtmlString
 from debug_utils import LOG_ERROR
 from gui.shared.event_dispatcher import showResSimpleDialog
 from skeletons.gui.shared import IItemsCache
+from skeletons.gui.game_control import IHangarSpaceSwitchController
 BootcampDialogConstants = namedtuple('BootcampDialogConstants', 'dialogType dialogKey focusedID needAwarding premiumType')
 _GREEN = 'green'
 _YELLOW = 'yellow'
@@ -43,6 +44,7 @@ class BootcampController(IBootcampController):
     demoAccController = dependency.descriptor(IDemoAccCompletionController)
     itemsCache = dependency.descriptor(IItemsCache)
     appLoader = dependency.descriptor(IAppLoader)
+    __spaceSwitchController = dependency.descriptor(IHangarSpaceSwitchController)
 
     def __init__(self):
         super(BootcampController, self).__init__()
@@ -56,6 +58,7 @@ class BootcampController(IBootcampController):
         g_bootcampEvents.onBootcampFinished += self.__onExitBootcamp
         g_playerEvents.onBootcampStartChoice += self.__onBootcampStartChoice
         g_bootcampEvents.onGameplayChoice += self.__onGameplayChoice
+        self.__spaceSwitchController.onCheckSceneChange += self.__onCheckSceneChange
 
     @property
     def replayCtrl(self):
@@ -121,6 +124,7 @@ class BootcampController(IBootcampController):
         g_bootcampEvents.onBootcampFinished -= self.__onExitBootcamp
         g_playerEvents.onBootcampStartChoice -= self.__onBootcampStartChoice
         g_bootcampEvents.onGameplayChoice -= self.__onGameplayChoice
+        self.__spaceSwitchController.onCheckSceneChange -= self.__onCheckSceneChange
 
     def onLobbyInited(self, event):
         if self.__automaticStart:
@@ -269,3 +273,7 @@ class BootcampController(IBootcampController):
         app = self.appLoader.getApp()
         container = app.containerManager.getContainer(WindowLayer.TOP_WINDOW)
         return container.getView(criteria={POP_UP_CRITERIA.VIEW_ALIAS: VIEW_ALIAS.LOBBY_MENU}) is not None
+
+    def __onCheckSceneChange(self):
+        if self.isInBootcamp():
+            self.__spaceSwitchController.hangarSpaceUpdate(BOOTCAMP_SCENE)

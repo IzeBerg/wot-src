@@ -849,6 +849,8 @@ package
       
       public static const PREBATTLE_DESCRIPTION:String = "#menu:prebattle/description";
       
+      public static const PREBATTLE_EVENTWHEELEDVEHICLESWARNING:String = "#menu:prebattle/eventWheeledVehiclesWarning";
+      
       public static const PREBATTLE_WAITINGTIMEWARNING:String = "#menu:prebattle/waitingTimeWarning";
       
       public static const PREBATTLE_COMPANIESTITLE_JUNIOR:String = "#menu:prebattle/CompaniesTitle/JUNIOR";
@@ -1344,6 +1346,8 @@ package
       public static const HEADERBUTTONS_BATTLE_TYPES_STANDART_DESCR:String = "#menu:headerButtons/battle/types/standart/descr";
       
       public static const HEADERBUTTONS_BATTLE_TYPES_STANDARTLEAVE_DESCR:String = "#menu:headerButtons/battle/types/standartLeave/descr";
+      
+      public static const HEADERBUTTONS_BATTLE_TYPES_EVENT:String = "#menu:headerButtons/battle/types/event";
       
       public static const HEADERBUTTONS_BATTLE_TYPES_RANKED:String = "#menu:headerButtons/battle/types/ranked";
       

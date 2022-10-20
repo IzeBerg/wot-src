@@ -86,6 +86,10 @@ package net.wg.gui.battle
          this.tabs.selectedIndex = param1;
       }
       
+      public function as_isFDEvent(param1:Boolean) : void
+      {
+      }
+      
       protected function updateCurrentTab() : void
       {
          var _loc1_:Boolean = false;

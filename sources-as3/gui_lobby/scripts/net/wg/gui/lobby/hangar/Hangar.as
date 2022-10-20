@@ -23,6 +23,10 @@ package net.wg.gui.lobby.hangar
    import net.wg.gui.components.miniclient.HangarMiniClientComponent;
    import net.wg.gui.events.LobbyEvent;
    import net.wg.gui.lobby.battleRoyale.HangarComponentsContainer;
+   import net.wg.gui.lobby.eventHangar.components.EventDailyReward;
+   import net.wg.gui.lobby.eventHangar.components.EventGlobalProgressionEntryPoint;
+   import net.wg.gui.lobby.eventHangar.components.EventProgressionEntryPoint;
+   import net.wg.gui.lobby.eventHangar.components.EventShopEntryPoint;
    import net.wg.gui.lobby.hangar.alertMessage.AlertMessageBlock;
    import net.wg.gui.lobby.hangar.ammunitionPanel.AmmunitionPanel;
    import net.wg.gui.lobby.hangar.ammunitionPanel.data.AmmunitionPanelVO;
@@ -44,6 +48,7 @@ package net.wg.gui.lobby.hangar
    import net.wg.infrastructure.managers.ITooltipMgr;
    import net.wg.utils.IGameInputManager;
    import net.wg.utils.IUtils;
+   import net.wg.utils.StageSizeBoundaries;
    import net.wg.utils.helpLayout.IHelpLayout;
    import scaleform.clik.events.ButtonEvent;
    import scaleform.clik.events.ComponentEvent;
@@ -151,6 +156,30 @@ package net.wg.gui.lobby.hangar
       private static const CHINA_LOOTBOXES_ENTRY_POINT_Y_OFFSET:int = 127;
       
       private static const CHINA_LOOTBOXES_ENTRY_POINT_Y_OFFSET_ALT:int = 71;
+      
+      private static const SHOP_ENTRU_POINT_STATE_BIG:String = "big";
+      
+      private static const SHOP_ENTRU_POINT_STATE_MEDIUM:String = "medium";
+      
+      private static const SHOP_ENTRU_POINT_OFFSET_BIG:int = 40;
+      
+      private static const SHOP_ENTRU_POINT_OFFSET_MEDIUM:int = 90;
+      
+      private static const CAROUSEL_HEIGHT:int = 200;
+      
+      private static const CAROUSEL_PADDING_RIGHT:int = 260;
+      
+      private static const EVENT_HEADER_Y:int = -2;
+      
+      private static const DAILY_REWARD_PADDING:int = 178;
+      
+      private static const DAILY_REWARD_PADDING_SMALL:int = 126;
+      
+      private static const DAILY_REWARD_TOP_PADDING:int = 15;
+      
+      private static const DAILY_REWARD_MAX_OVERLAP:int = 45;
+      
+      private static const PRORESSION_TOP_PADDING:int = 15;
        
       
       public var vehResearchPanel:ResearchPanel;
@@ -186,6 +215,10 @@ package net.wg.gui.lobby.hangar
       public var chinaLootboxesWidget:ChinaLootBoxesEntryPointWidget = null;
       
       public var crewXPPanelInject:CrewXPPanelInject;
+      
+      public var eventDailyReward:EventDailyReward;
+      
+      public var eventGlobalProgressionEntryPoint:EventGlobalProgressionEntryPoint;
       
       private var _header:HangarHeader;
       
@@ -227,6 +260,8 @@ package net.wg.gui.lobby.hangar
       
       private var _isBattleRoyale:Boolean = false;
       
+      private var _isEventMode:Boolean = false;
+      
       private var _appStage:Stage;
       
       private var _topMargin:int = 0;
@@ -244,6 +279,10 @@ package net.wg.gui.lobby.hangar
       private var _chinaLootboxCont:Sprite = null;
       
       private var _battleRoyaleComponents:HangarComponentsContainer = null;
+      
+      private var _eventProgressionEntryPoint:EventProgressionEntryPoint = null;
+      
+      private var _eventShopEntryPoint:EventShopEntryPoint = null;
       
       private var _chinaLootboxesVisible:Boolean = true;
       
@@ -271,6 +310,9 @@ package net.wg.gui.lobby.hangar
          addChild(this._chinaLootboxCont);
          this._chinaLootboxCont.name = "chinaLootboxContainer";
          this.closeBtn.visible = false;
+         this._eventShopEntryPoint = App.instance.utils.classFactory.getComponent(Linkages.EVENT_SHOP_ENTRY_POINT,EventShopEntryPoint);
+         this.carouselContainer.addChild(this._eventShopEntryPoint);
+         this.eventGlobalProgressionEntryPoint.visible = this.eventDailyReward.visible = this._eventShopEntryPoint.visible = false;
       }
       
       override public function updateStage(param1:Number, param2:Number) : void
@@ -307,6 +349,13 @@ package net.wg.gui.lobby.hangar
             this.vehResearchBG.x = param1 - _loc3_.x - _loc3_.width - RIGHT_MARGIN >> 0;
          }
          this._helpLayout.hide();
+         this.eventDailyReward.updateStage(param1,param2);
+         this.eventGlobalProgressionEntryPoint.updateStage(param1,param2);
+         if(this._eventProgressionEntryPoint)
+         {
+            this._eventProgressionEntryPoint.updateStage(param1,param2);
+            this._eventProgressionEntryPoint.x = _width - this._eventProgressionEntryPoint.width >> 1;
+         }
          invalidate(ENTRY_CONT_POSITION_INVALID);
       }
       
@@ -322,6 +371,9 @@ package net.wg.gui.lobby.hangar
          registerFlashComponentS(this.dqWidget,Aliases.DAILY_QUEST_WIDGET);
          registerFlashComponentS(this._eventsEntryContainer,HANGAR_ALIASES.ENTRIES_CONTAINER);
          registerFlashComponentS(this.crewXPPanelInject,HANGAR_ALIASES.CREW_XP_PANEL_INJECT);
+         registerFlashComponentS(this._eventShopEntryPoint,HANGAR_ALIASES.EVENT_SHOP_ENTRY_POINT);
+         registerFlashComponentS(this.eventDailyReward,HANGAR_ALIASES.EVENT_DAILY_REWARD);
+         registerFlashComponentS(this.eventGlobalProgressionEntryPoint,HANGAR_ALIASES.EVENT_GLOBAL_PROGRESSION_ENTRY_POINT);
          registerFlashComponentS(this._header,HANGAR_ALIASES.HEADER);
          this.ammunitionPanelInject.addEventListener(Event.RESIZE,this.onAmmunitionPanelInjectResizeHandler);
          this.ammunitionPanelInject.addEventListener(AmmunitionPanelInjectEvents.HELP_LAYOUT_CHANGED,this.onAmmunitionPanelInjectHelpLayoutChangedHandler);
@@ -403,6 +455,10 @@ package net.wg.gui.lobby.hangar
          this.chinaLootboxesWidget = null;
          this._widgetInitialized = false;
          this.crewXPPanelInject = null;
+         this._eventShopEntryPoint = null;
+         this.eventDailyReward = null;
+         this.eventGlobalProgressionEntryPoint = null;
+         this._eventProgressionEntryPoint = null;
          App.utils.data.cleanupDynamicObject(this._widgetSizes);
          this._widgetSizes = null;
          this._gameInputMgr = null;
@@ -523,6 +579,7 @@ package net.wg.gui.lobby.hangar
          {
             this.updateEntriesPosition();
             _loc2_ = true;
+            this.updateGlobalProgressionEntryPointPosition();
          }
          if(_loc2_)
          {
@@ -667,7 +724,7 @@ package net.wg.gui.lobby.hangar
          this.carousel.addEventListener(Event.RESIZE,this.onCarouselResizeHandler);
          this.carousel.updateStage(_originalWidth,_originalHeight);
          this.carousel.name = CAROUSEL_NAME;
-         this.carouselContainer.addChild(this.carousel);
+         this.carouselContainer.addChildAt(this.carousel,0);
          registerFlashComponentS(this.carousel,this._carouselAlias);
          this.carousel.validateNow();
          invalidate(INVALIDATE_CAROUSEL_SIZE);
@@ -800,11 +857,42 @@ package net.wg.gui.lobby.hangar
             unregisterFlashComponentS(BATTLEROYALE_ALIASES.BOTTOM_PANEL_COMPONENT);
             unregisterFlashComponentS(BATTLEROYALE_ALIASES.PROXY_CURRENCY_PANEL_COMPONENT);
             this.removeBattleRoyaleContainer();
+            invalidate(ENTRY_CONT_POSITION_INVALID);
          }
          if(this._battleRoyaleComponents)
          {
             this._battleRoyaleComponents.visible = param1;
          }
+      }
+      
+      public function as_toggleEventMode(param1:Boolean) : void
+      {
+         if(this._isEventMode == param1)
+         {
+            return;
+         }
+         this._isEventMode = param1;
+         this.eventGlobalProgressionEntryPoint.visible = this.eventDailyReward.visible = this._eventShopEntryPoint.visible = param1;
+         this.dqWidget.visible = !param1;
+         if(param1)
+         {
+            this._eventProgressionEntryPoint = App.instance.utils.classFactory.getComponent(Linkages.EVENT_PROGRESSION_ENTRY_POINT,EventProgressionEntryPoint);
+            addChild(this._eventProgressionEntryPoint);
+            this._eventProgressionEntryPoint.updateStage(_width,_height);
+            this._eventProgressionEntryPoint.x = _width - this._eventProgressionEntryPoint.width >> 1;
+            this._eventProgressionEntryPoint.y = EVENT_HEADER_Y;
+            registerFlashComponentS(this._eventProgressionEntryPoint,HANGAR_ALIASES.EVENT_PROGRESSION_ENTRY_POINT);
+         }
+         else
+         {
+            unregisterFlashComponentS(HANGAR_ALIASES.EVENT_PROGRESSION_ENTRY_POINT);
+            if(this._eventProgressionEntryPoint)
+            {
+               removeChild(this._eventProgressionEntryPoint);
+               this._eventProgressionEntryPoint = null;
+            }
+         }
+         this._carousel.paddingRight = !!param1 ? int(CAROUSEL_PADDING_RIGHT) : int(0);
       }
       
       private function removeBattleRoyaleContainer() : void
@@ -861,6 +949,21 @@ package net.wg.gui.lobby.hangar
             this.updateAmmunitionPanelInjectPosition();
          }
          invalidate(PARAMS_POSITION_INVALID);
+      }
+      
+      private function updateShopEntryPointPosition() : void
+      {
+         this._eventShopEntryPoint.x = _width - this._eventShopEntryPoint.width | 0;
+         if(_height - this.carousel.y < CAROUSEL_HEIGHT)
+         {
+            this._eventShopEntryPoint.y = this.carousel.y - SHOP_ENTRU_POINT_OFFSET_MEDIUM;
+            this._eventShopEntryPoint.setState(SHOP_ENTRU_POINT_STATE_MEDIUM);
+         }
+         else
+         {
+            this._eventShopEntryPoint.y = this.carousel.y - SHOP_ENTRU_POINT_OFFSET_BIG;
+            this._eventShopEntryPoint.setState(SHOP_ENTRU_POINT_STATE_BIG);
+         }
       }
       
       public function setAnimatorVisibility(param1:Boolean) : void
@@ -924,17 +1027,16 @@ package net.wg.gui.lobby.hangar
       
       private function updateEntriesPosition() : void
       {
-         var _loc1_:DisplayObject = null;
          var _loc3_:Boolean = false;
-         _loc1_ = this.ammunitionPanelInject.hitObject;
-         var _loc2_:Boolean = this.carousel && this._eventsEntryContainer.isActive && _loc1_ && _loc1_.width > 0;
+         var _loc1_:DisplayObject = this.ammunitionPanelInject.hitObject;
+         var _loc2_:Boolean = this.carousel && this._eventsEntryContainer.isActive;
          this._eventsEntryContainer.visible = _loc2_;
          if(_loc2_)
          {
             this._eventsEntryContainer.x = _width - this._eventsEntryContainer.width - this._eventsEntryContainer.margin.width | 0;
             this._eventsEntryContainer.y = this.carousel.y - this._eventsEntryContainer.height | 0;
             _loc3_ = false;
-            if(this.ammunitionPanelInject.visible)
+            if(this.ammunitionPanelInject.visible && _loc1_ && _loc1_.width > 0)
             {
                _loc3_ = this.ammunitionPanelInject.x + _loc1_.x + _loc1_.width + AMMUNITION_PANEL_INJECT_OFFSET_RIGHT > this._eventsEntryContainer.x;
             }
@@ -947,6 +1049,22 @@ package net.wg.gui.lobby.hangar
                this._eventsEntryContainer.y -= this._eventsEntryContainer.margin.height;
             }
          }
+      }
+      
+      private function updateGlobalProgressionEntryPointPosition() : void
+      {
+         this.eventGlobalProgressionEntryPoint.x = _width - RIGHT_MARGIN;
+         var _loc1_:int = DAILY_REWARD_PADDING;
+         var _loc2_:int = this.carousel.y - _loc1_ - DAILY_REWARD_TOP_PADDING;
+         var _loc3_:int = this.crew.y + this.crew.height - _loc2_;
+         if(_width < StageSizeBoundaries.WIDTH_1366 || _loc3_ > 0)
+         {
+            _loc1_ = DAILY_REWARD_PADDING_SMALL;
+         }
+         var _loc4_:Boolean = _loc3_ > DAILY_REWARD_MAX_OVERLAP;
+         this.eventGlobalProgressionEntryPoint.forceSmallSize(_loc4_);
+         this.eventDailyReward.forceSmallSize(_loc4_);
+         this.eventGlobalProgressionEntryPoint.y = this.eventDailyReward.y = this.carousel.y - _loc1_;
       }
       
       private function checkToIfLayoutNeedsUpdate() : void
@@ -1082,6 +1200,10 @@ package net.wg.gui.lobby.hangar
          {
             _loc2_ = this._eventsEntryContainer.y - this.params.y - this._eventsEntryContainer.margin.top;
          }
+         if(this.eventGlobalProgressionEntryPoint.visible)
+         {
+            _loc2_ = this.eventGlobalProgressionEntryPoint.y - this.params.y - PRORESSION_TOP_PADDING;
+         }
          if(_loc2_ > 0)
          {
             this.params.height = _loc2_;
@@ -1098,6 +1220,7 @@ package net.wg.gui.lobby.hangar
          this._carousel.updateCarouselPosition(_height - this._carousel.getBottom() ^ 0);
          this.updateChinaLootBoxWidgetPosition();
          this.updateAmmunitionPanelPosition();
+         this.updateShopEntryPointPosition();
          if(this._hangarViewSwitchAnimator)
          {
             this._hangarViewSwitchAnimator.updateStage(width,height);

@@ -16,7 +16,7 @@ from gui.battle_pass.battle_pass_helpers import getOfferTokenByGift
 from gui.server_events import recruit_helper
 from gui.shared.formatters import text_styles
 from gui.shared.gui_items import GUI_ITEM_TYPE
-from gui.shared.gui_items.Tankman import getTankmanSkill, SabatonTankmanSkill, TankmanSkill, OffspringTankmanSkill, YhaTankmanSkill
+from gui.shared.gui_items.Tankman import getTankmanSkill, SabatonTankmanSkill, TankmanSkill, OffspringTankmanSkill, YhaTankmanSkill, WitchesTankmanSkill
 from gui.shared.gui_items.dossier import factories, loadDossier
 from gui.shared.items_parameters import params_helper, bonus_helper
 from gui.shared.items_parameters.formatters import NO_BONUS_SIMPLIFIED_SCHEME
@@ -930,6 +930,8 @@ class PreviewCaseContext(ToolTipContext):
             return OffspringTankmanSkill('brotherhood')
         if skillID == 'yha_brotherhood':
             return YhaTankmanSkill('brotherhood')
+        if skillID == 'witches_brotherhood':
+            return WitchesTankmanSkill('brotherhood')
         return TankmanSkill(skillID)
 
 

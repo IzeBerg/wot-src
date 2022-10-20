@@ -3013,6 +3013,34 @@ package
       
       public static const CAMOUFLAGE_12TH_ANNIVERSARY_6_DESCRIPTION:String = "#vehicle_customization:camouflage/12th_anniversary_6/description";
       
+      public static const CAMOUFLAGE_HALLOWEEN_2022_GHOST_LABEL:String = "#vehicle_customization:camouflage/halloween_2022_ghost/label";
+      
+      public static const CAMOUFLAGE_HALLOWEEN_2022_GHOST_DESCRIPTION:String = "#vehicle_customization:camouflage/halloween_2022_ghost/description";
+      
+      public static const CAMOUFLAGE_HALLOWEEN_2022_JACK_LABEL:String = "#vehicle_customization:camouflage/halloween_2022_jack/label";
+      
+      public static const CAMOUFLAGE_HALLOWEEN_2022_JACK_DESCRIPTION:String = "#vehicle_customization:camouflage/halloween_2022_jack/description";
+      
+      public static const CAMOUFLAGE_HALLOWEEN_2022_COMMANDER_LABEL:String = "#vehicle_customization:camouflage/halloween_2022_commander/label";
+      
+      public static const CAMOUFLAGE_HALLOWEEN_2022_COMMANDER_DESCRIPTION:String = "#vehicle_customization:camouflage/halloween_2022_commander/description";
+      
+      public static const CAMOUFLAGE_HALLOWEEN_2022_GUNNER_LABEL:String = "#vehicle_customization:camouflage/halloween_2022_gunner/label";
+      
+      public static const CAMOUFLAGE_HALLOWEEN_2022_GUNNER_DESCRIPTION:String = "#vehicle_customization:camouflage/halloween_2022_gunner/description";
+      
+      public static const CAMOUFLAGE_HALLOWEEN_2022_LOADER_LABEL:String = "#vehicle_customization:camouflage/halloween_2022_loader/label";
+      
+      public static const CAMOUFLAGE_HALLOWEEN_2022_LOADER_DESCRIPTION:String = "#vehicle_customization:camouflage/halloween_2022_loader/description";
+      
+      public static const CAMOUFLAGE_HALLOWEEN_2022_DRIVER_LABEL:String = "#vehicle_customization:camouflage/halloween_2022_driver/label";
+      
+      public static const CAMOUFLAGE_HALLOWEEN_2022_DRIVER_DESCRIPTION:String = "#vehicle_customization:camouflage/halloween_2022_driver/description";
+      
+      public static const CAMOUFLAGE_HALLOWEEN_2022_RADIOMAN_LABEL:String = "#vehicle_customization:camouflage/halloween_2022_radioman/label";
+      
+      public static const CAMOUFLAGE_HALLOWEEN_2022_RADIOMAN_DESCRIPTION:String = "#vehicle_customization:camouflage/halloween_2022_radioman/description";
+      
       public static const CAMOUFLAGE_PL15_60TP_LEWANDOWSKIEGOB9BS_3DST_LABEL:String = "#vehicle_customization:camouflage/Pl15_60TP_LewandowskiegoB9BS_3DSt/label";
       
       public static const CAMOUFLAGE_PL15_60TP_LEWANDOWSKIEGOB9BS_3DST_DESCRIPTION:String = "#vehicle_customization:camouflage/Pl15_60TP_LewandowskiegoB9BS_3DSt/description";
@@ -3042,6 +3070,10 @@ package
       public static const CAMOUFLAGE_TWITCH_SEPTEMBER_2022_LABEL:String = "#vehicle_customization:camouflage/twitch_september_2022/label";
       
       public static const CAMOUFLAGE_TWITCH_SEPTEMBER_2022_DESCRIPTION:String = "#vehicle_customization:camouflage/twitch_september_2022/description";
+      
+      public static const CAMOUFLAGE_TWITCH_OCTOBER_2022_LABEL:String = "#vehicle_customization:camouflage/twitch_october_2022/label";
+      
+      public static const CAMOUFLAGE_TWITCH_OCTOBER_2022_DESCRIPTION:String = "#vehicle_customization:camouflage/twitch_october_2022/description";
       
       public static const CAMOUFLAGE_REBRANDING_EVENT:String = "#vehicle_customization:camouflage/rebranding_event";
       
@@ -8253,6 +8285,22 @@ package
       
       public static const REPAINT_TWITCH_SEPTEMBER_2022:String = "#vehicle_customization:repaint/twitch_september_2022";
       
+      public static const REPAINT_HALLOWEEN_2022_GHOST:String = "#vehicle_customization:repaint/halloween_2022_ghost";
+      
+      public static const REPAINT_HALLOWEEN_2022_JACK:String = "#vehicle_customization:repaint/halloween_2022_jack";
+      
+      public static const REPAINT_HALLOWEEN_2022_COMMANDER:String = "#vehicle_customization:repaint/halloween_2022_commander";
+      
+      public static const REPAINT_HALLOWEEN_2022_GUNNER:String = "#vehicle_customization:repaint/halloween_2022_gunner";
+      
+      public static const REPAINT_HALLOWEEN_2022_LOADER:String = "#vehicle_customization:repaint/halloween_2022_loader";
+      
+      public static const REPAINT_HALLOWEEN_2022_DRIVER:String = "#vehicle_customization:repaint/halloween_2022_driver";
+      
+      public static const REPAINT_HALLOWEEN_2022_RADIOMAN:String = "#vehicle_customization:repaint/halloween_2022_radioman";
+      
+      public static const REPAINT_TWITCH_OCTOBER_2022:String = "#vehicle_customization:repaint/twitch_october_2022";
+      
       public static const MODIFICATIONS_AGE_EFFECT_01:String = "#vehicle_customization:modifications/age_effect_01";
       
       public static const MODIFICATIONS_AGE_EFFECT_01_DESCRIPTION:String = "#vehicle_customization:modifications/age_effect_01/description";
@@ -10875,6 +10923,36 @@ package
       
       public static const SPECIAL_STYLE_R115_IS_3_AUTO_OCN_3DST_DESC_LONG:String = "#vehicle_customization:special_style/R115_IS-3_auto_OCN_3DSt_desc/long";
       
+      public static const SPECIAL_STYLE_HALLOWEEN_2022_GHOST:String = "#vehicle_customization:special_style/halloween_2022_ghost";
+      
+      public static const SPECIAL_STYLE_HALLOWEEN_2022_DESC:String = "#vehicle_customization:special_style/halloween_2022_desc";
+      
+      public static const SPECIAL_STYLE_HALLOWEEN_2022_GHOST_DESC_LONG:String = "#vehicle_customization:special_style/halloween_2022_ghost_desc/long";
+      
+      public static const SPECIAL_STYLE_HALLOWEEN_2022_JACK:String = "#vehicle_customization:special_style/halloween_2022_jack";
+      
+      public static const SPECIAL_STYLE_HALLOWEEN_2022_JACK_DESC_LONG:String = "#vehicle_customization:special_style/halloween_2022_jack_desc/long";
+      
+      public static const SPECIAL_STYLE_HALLOWEEN_2022_COMMANDER:String = "#vehicle_customization:special_style/halloween_2022_commander";
+      
+      public static const SPECIAL_STYLE_HALLOWEEN_2022_COMMANDER_DESC:String = "#vehicle_customization:special_style/halloween_2022_commander_desc";
+      
+      public static const SPECIAL_STYLE_HALLOWEEN_2022_GUNNER:String = "#vehicle_customization:special_style/halloween_2022_gunner";
+      
+      public static const SPECIAL_STYLE_HALLOWEEN_2022_GUNNER_DESC:String = "#vehicle_customization:special_style/halloween_2022_gunner_desc";
+      
+      public static const SPECIAL_STYLE_HALLOWEEN_2022_LOADER:String = "#vehicle_customization:special_style/halloween_2022_loader";
+      
+      public static const SPECIAL_STYLE_HALLOWEEN_2022_LOADER_DESC:String = "#vehicle_customization:special_style/halloween_2022_loader_desc";
+      
+      public static const SPECIAL_STYLE_HALLOWEEN_2022_DRIVER:String = "#vehicle_customization:special_style/halloween_2022_driver";
+      
+      public static const SPECIAL_STYLE_HALLOWEEN_2022_DRIVER_DESC:String = "#vehicle_customization:special_style/halloween_2022_driver_desc";
+      
+      public static const SPECIAL_STYLE_HALLOWEEN_2022_RADIOMAN:String = "#vehicle_customization:special_style/halloween_2022_radioman";
+      
+      public static const SPECIAL_STYLE_HALLOWEEN_2022_RADIOMAN_DESC:String = "#vehicle_customization:special_style/halloween_2022_radioman_desc";
+      
       public static const MAIN_STYLE_PL15_60TP_LEWANDOWSKIEGOB9BS_3DST:String = "#vehicle_customization:main_style/Pl15_60TP_LewandowskiegoB9BS_3DSt";
       
       public static const MAIN_STYLE_PL15_60TP_LEWANDOWSKIEGOB9BS_3DST_DESC_LONG:String = "#vehicle_customization:main_style/Pl15_60TP_LewandowskiegoB9BS_3DSt_desc/long";
@@ -10934,6 +11012,10 @@ package
       public static const SPECIAL_STYLE_TWITCH_SEPTEMBER_2022:String = "#vehicle_customization:special_style/twitch_september_2022";
       
       public static const SPECIAL_STYLE_TWITCH_SEPTEMBER_2022_DESC_LONG:String = "#vehicle_customization:special_style/twitch_september_2022_desc/long";
+      
+      public static const SPECIAL_STYLE_TWITCH_OCTOBER_2022:String = "#vehicle_customization:special_style/twitch_october_2022";
+      
+      public static const SPECIAL_STYLE_TWITCH_OCTOBER_2022_DESC_LONG:String = "#vehicle_customization:special_style/twitch_october_2022_desc/long";
       
       public static const CUSTOMIZATION_POPOVER_STYLE_SUMMER:String = "#vehicle_customization:customization/popover/style/summer";
       
@@ -13079,6 +13161,24 @@ package
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_443:String = "#vehicle_customization:projection_decals/special/projection_decal_443";
       
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_455:String = "#vehicle_customization:projection_decals/special/projection_decal_455";
+      
+      public static const PROJECTION_DECALS_PIN_UP_PROJECTION_DECAL_62:String = "#vehicle_customization:projection_decals/pin_up/projection_decal_62";
+      
+      public static const PROJECTION_DECALS_PIN_UP_PROJECTION_DECAL_63:String = "#vehicle_customization:projection_decals/pin_up/projection_decal_63";
+      
+      public static const PROJECTION_DECALS_PIN_UP_PROJECTION_DECAL_64:String = "#vehicle_customization:projection_decals/pin_up/projection_decal_64";
+      
+      public static const PROJECTION_DECALS_PIN_UP_PROJECTION_DECAL_65:String = "#vehicle_customization:projection_decals/pin_up/projection_decal_65";
+      
+      public static const PROJECTION_DECALS_PIN_UP_PROJECTION_DECAL_66:String = "#vehicle_customization:projection_decals/pin_up/projection_decal_66";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_456:String = "#vehicle_customization:projection_decals/special/projection_decal_456";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_457:String = "#vehicle_customization:projection_decals/special/projection_decal_457";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_458:String = "#vehicle_customization:projection_decals/special/projection_decal_458";
+      
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_459:String = "#vehicle_customization:projection_decals/special/projection_decal_459";
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_460:String = "#vehicle_customization:projection_decals/special/projection_decal_460";
@@ -13170,6 +13270,10 @@ package
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_462:String = "#vehicle_customization:projection_decals/special/projection_decal_462";
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_463:String = "#vehicle_customization:projection_decals/special/projection_decal_463";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_475:String = "#vehicle_customization:projection_decals/special/projection_decal_475";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_476:String = "#vehicle_customization:projection_decals/special/projection_decal_476";
       
       public static const PROPERTYSHEET_KEYBOARD_HINT:String = "#vehicle_customization:propertySheet/keyboard/hint";
       

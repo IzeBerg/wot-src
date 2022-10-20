@@ -129,6 +129,8 @@ package
       
       public static const LOBY_MESSENGER_REFERRAL_BUTTON:String = "#tooltips:loby_messenger/referral_button";
       
+      public static const LOBY_MESSENGER_BTNREFERRALDISABLED:String = "#tooltips:loby_messenger/btnReferralDisabled";
+      
       public static const HANGAR_XPTOTMENCHECKBOX:String = "#tooltips:hangar/xpToTmenCheckbox";
       
       public static const WALLET_NOT_AVAILABLE_GOLD:String = "#tooltips:wallet/not_available_gold";
@@ -1951,6 +1953,10 @@ package
       
       public static const LOBBY_HEADER_BUYPREMIUMACCOUNT_DISABLED_BODY:String = "#tooltips:lobby/header/buyPremiumAccount/disabled/body";
       
+      public static const LOBY_MESSENGER_BTNREFERRALDISABLED_HEADER:String = "#tooltips:loby_messenger/btnReferralDisabled/header";
+      
+      public static const LOBY_MESSENGER_BTNREFERRALDISABLED_BODY:String = "#tooltips:loby_messenger/btnReferralDisabled/body";
+      
       public static const TRAINING_CREATE_INVITES_CHECKBOX_HEADER:String = "#tooltips:training/create/invites_checkbox/header";
       
       public static const TRAINING_CREATE_INVITES_CHECKBOX_BODY:String = "#tooltips:training/create/invites_checkbox/body";
@@ -3367,6 +3373,8 @@ package
       
       public static const CONTACT_STATUS_INBATTLE_SPECIAL:String = "#tooltips:Contact/status/inBattle/special";
       
+      public static const CONTACT_STATUS_INBATTLE_EVENT:String = "#tooltips:Contact/status/inBattle/event";
+      
       public static const CONTACT_STATUS_ONLINE:String = "#tooltips:Contact/status/online";
       
       public static const CONTACT_RESOURCE_WOWP:String = "#tooltips:Contact/resource/wowp";
@@ -4094,6 +4102,10 @@ package
       public static const EVENT_SQUAD_DISABLE_HEADER:String = "#tooltips:event/squad/disable/header";
       
       public static const EVENT_SQUAD_DISABLE_BODY:String = "#tooltips:event/squad/disable/body";
+      
+      public static const EVENT_FIGHTBTN_DISABLE_HEADER:String = "#tooltips:event/fightBtn/disable/header";
+      
+      public static const EVENT_FIGHTBTN_DISABLE_BODY:String = "#tooltips:event/fightBtn/disable/body";
       
       public static const CUSTOMIZATION_BUYWINDOW_COPY_HEADER:String = "#tooltips:customization/buyWindow/copy/header";
       
@@ -6220,6 +6232,26 @@ package
       public static const NOTRECRUITEDTANKMAN_OOW21_TANKER_4_COMMANDER_DESC:String = "#tooltips:notrecruitedtankman/oow21_tanker_4_commander/desc";
       
       public static const NOTRECRUITEDTANKMAN_OOW21_TANKER_4_COMMANDER_LABEL:String = "#tooltips:notrecruitedtankman/oow21_tanker_4_commander/label";
+      
+      public static const NOTRECRUITEDTANKMAN_HW22_WITCH_KORDELIA_LABEL:String = "#tooltips:notrecruitedtankman/hw22_witch_kordelia/label";
+      
+      public static const NOTRECRUITEDTANKMAN_HW22_WITCH_KORDELIA_DESC:String = "#tooltips:notrecruitedtankman/hw22_witch_kordelia/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_HW22_WITCH_SIBILLA_LABEL:String = "#tooltips:notrecruitedtankman/hw22_witch_sibilla/label";
+      
+      public static const NOTRECRUITEDTANKMAN_HW22_WITCH_SIBILLA_DESC:String = "#tooltips:notrecruitedtankman/hw22_witch_sibilla/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_HW22_WITCH_AURELIA_LABEL:String = "#tooltips:notrecruitedtankman/hw22_witch_aurelia/label";
+      
+      public static const NOTRECRUITEDTANKMAN_HW22_WITCH_AURELIA_DESC:String = "#tooltips:notrecruitedtankman/hw22_witch_aurelia/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_HW22_WITCH_DEIRDRA_LABEL:String = "#tooltips:notrecruitedtankman/hw22_witch_deirdra/label";
+      
+      public static const NOTRECRUITEDTANKMAN_HW22_WITCH_DEIRDRA_DESC:String = "#tooltips:notrecruitedtankman/hw22_witch_deirdra/desc";
+      
+      public static const NOTRECRUITEDTANKMAN_HW22_TAILRIUS_LABEL:String = "#tooltips:notrecruitedtankman/hw22_tailrius/label";
+      
+      public static const NOTRECRUITEDTANKMAN_HW22_TAILRIUS_DESC:String = "#tooltips:notrecruitedtankman/hw22_tailrius/desc";
       
       public static const QUESTS_AWARDS_VEHICLERENT_HEADER:String = "#tooltips:quests/awards/vehicleRent/header";
       

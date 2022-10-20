@@ -376,6 +376,11 @@ package net.wg.gui.battle.views.consumablesPanel
                this._isPermanent = true;
                super.state = BATTLE_ITEM_STATES.PERMANENT;
             }
+            else if(param1 == -2)
+            {
+               this._isPermanent = true;
+               super.state = BATTLE_ITEM_STATES.PERMANENT;
+            }
             else if(param1 == 0)
             {
                this.clearCoolDownTime();

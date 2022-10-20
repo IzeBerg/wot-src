@@ -291,6 +291,7 @@ class CompoundAppearance(CommonTankAppearance, CallbackDelayer):
         self.partsGameObjects = None
         self._destroySystems()
         self._loadingQueue = []
+        self._destroyStickers()
         return
 
     def destroy(self):

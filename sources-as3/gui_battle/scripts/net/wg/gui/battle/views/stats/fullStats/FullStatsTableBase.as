@@ -64,5 +64,9 @@ package net.wg.gui.battle.views.stats.fullStats
       {
          return NUM_ROWS;
       }
+      
+      public function setFDEvent(param1:Boolean) : void
+      {
+      }
    }
 }

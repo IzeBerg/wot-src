@@ -141,3 +141,7 @@ def getEventLootBoxesUrl():
 def getClientControlledCloseCtx():
     return {'browserParams': makeBrowserParams(isCloseBtnVisible=True), 
        'forcedSkipEscape': True}
+
+
+def getHalloween2022ShopUrl():
+    return _getUrl('hw22Shop')

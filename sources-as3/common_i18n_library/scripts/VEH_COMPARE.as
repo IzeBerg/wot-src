@@ -87,6 +87,10 @@ package
       
       public static const CARTPOPOVER_FULLBASKETCMPBTN_TOOLTIP_ATTENTION:String = "#veh_compare:cartPopover/fullBasketCmpBtn/tooltip/attention";
       
+      public static const CARTPOPOVER_UNSUPPORTEDMODECMPBTN_TOOLTIP_HEADER:String = "#veh_compare:cartPopover/unsupportedModeCmpBtn/tooltip/header";
+      
+      public static const CARTPOPOVER_UNSUPPORTEDMODECMPBTN_TOOLTIP_BODY:String = "#veh_compare:cartPopover/unsupportedModeCmpBtn/tooltip/body";
+      
       public static const CARTPOPOVER_REMOVEALLBTN_LABEL:String = "#veh_compare:cartPopover/removeAllBtn/label";
       
       public static const CARTPOPOVER_REMOVEALLBTN_TOOLTIP_HEADER:String = "#veh_compare:cartPopover/removeAllBtn/tooltip/header";

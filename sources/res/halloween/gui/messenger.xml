@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<htmlTemplatesSimple>
+		<hwBattleQuestsItems>&lt;b&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#halloween.hw_messenger:serviceChannelMessages/battleResults/quests/items) %(names)s&lt;/font&gt;&lt;/b&gt;</hwBattleQuestsItems>
+		<hwBattleResultXP>&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;_(#halloween.hw_messenger:serviceChannelMessages/battleResults/hwExperience): &lt;font color=&apos;#C8C8B5&apos;&gt;%(xp)s&lt;/font&gt;&lt;/font&gt;</hwBattleResultXP>
+	</htmlTemplatesSimple>
+	<htmlTemplates>
+		<eventBattleVictoryResult>
+			<type>battleResult</type>
+			<icon>BattleResultIcon</icon>
+			<bgIcon>BgEventBattleResultIconVictory</bgIcon>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/battleResults/button)</label>
+					<action>showBattleResults</action>
+				</button>
+			</buttonsLayout>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/battleResults/victory)!&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#halloween.hw_messenger:serviceChannelMessages/battleResults/eventTypeDesc)&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/battle): %(arenaName)s &lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/tanks): %(vehicleNames)s&lt;/font&gt;%(xp)s%(credits)s%(crystalStr)s%(gold)s%(achieves)s%(badges)s%(quests)s%(piggyBank)s</message>
+		</eventBattleVictoryResult>
+		<eventBattleDrawGameResult>
+			<type>battleResult</type>
+			<icon>BattleResultIcon</icon>
+			<bgIcon>BgEventBattleResultIconDraw</bgIcon>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/battleResults/button)</label>
+					<action>showBattleResults</action>
+				</button>
+			</buttonsLayout>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/battleResults/drawGame)&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#halloween.hw_messenger:serviceChannelMessages/battleResults/eventTypeDesc)&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/battle): %(arenaName)s &lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/tanks): %(vehicleNames)s&lt;/font&gt;%(xp)s%(credits)s%(crystalStr)s%(gold)s%(achieves)s%(badges)s%(quests)s%(piggyBank)s</message>
+		</eventBattleDrawGameResult>
+		<eventBattleDefeatResult>
+			<type>battleResult</type>
+			<icon>BattleResultIcon</icon>
+			<bgIcon>BgEventBattleResultIconDefeat</bgIcon>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/battleResults/button)</label>
+					<action>showBattleResults</action>
+				</button>
+			</buttonsLayout>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/battleResults/ended)&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#halloween.hw_messenger:serviceChannelMessages/battleResults/eventTypeDesc)&lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/battle): %(arenaName)s &lt;/font&gt;
+&lt;font color=&apos;#8C8C7E&apos;&gt;_(#messenger:serviceChannelMessages/battleResults/tanks): %(vehicleNames)s&lt;/font&gt;%(xp)s%(credits)s%(crystalStr)s%(gold)s%(achieves)s%(badges)s%(quests)s%(piggyBank)s</message>
+		</eventBattleDefeatResult>
+		<prbVehicleBadTypeKick>
+			<priority>high</priority>
+			<type>grey</type>
+			<icon>MessageIcon</icon>
+			<message>&lt;font color=&quot;#8C8C7E&quot;&gt;_(#halloween.hw_messenger:squad/notValidVehicleTypeKick)&lt;/font&gt;</message>
+		</prbVehicleBadTypeKick>
+		<HW22EventStartedSystemMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<filters>
+				<filter>
+					<name>glow</name>
+					<color>EA5200</color>
+				</filter>
+				<filter>
+					<name>dropshadow</name>
+					<color>
+						000000
+						<!--BW_String-->
+					</color>
+				</filter>
+			</filters>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#halloween.hw_messenger:serviceChannelMessages/eventLifetime/start/button)</label>
+					<action>selectEventBattle</action>
+				</button>
+			</buttonsLayout>
+			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#halloween.hw_messenger:serviceChannelMessages/eventLifetime/start/body)&lt;/font&gt;</message>
+		</HW22EventStartedSystemMessage>
+		<HW22EventFinishedSystemMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<filters>
+				<filter>
+					<name>glow</name>
+					<color>EA5200</color>
+				</filter>
+				<filter>
+					<name>dropshadow</name>
+					<color>
+						000000
+						<!--BW_String-->
+					</color>
+				</filter>
+			</filters>
+			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#halloween.hw_messenger:serviceChannelMessages/eventLifetime/end/body)&lt;/font&gt;</message>
+		</HW22EventFinishedSystemMessage>
+		<HW22PostSaleStartedSystemMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<filters>
+				<filter>
+					<name>glow</name>
+					<color>EA5200</color>
+				</filter>
+				<filter>
+					<name>dropshadow</name>
+					<color>
+						000000
+						<!--BW_String-->
+					</color>
+				</filter>
+			</filters>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#halloween.hw_messenger:serviceChannelMessages/eventLifetime/postPhase/button)</label>
+					<action>showHalloweenShop</action>
+				</button>
+			</buttonsLayout>
+			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#halloween.hw_messenger:serviceChannelMessages/eventLifetime/postPhase/body)&lt;/font&gt;</message>
+		</HW22PostSaleStartedSystemMessage>
+		<dailyQuests>
+			<type>battleResult</type>
+			<icon>InformationIcon</icon>
+			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;_(#halloween.hw_messenger:serviceChannelMessages/battleResults/quests)&lt;/font&gt; %(achieves)s</message>
+		</dailyQuests>
+	</htmlTemplates>
+</root>
