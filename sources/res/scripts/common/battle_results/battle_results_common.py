@@ -465,7 +465,7 @@ BATTLE_RESULTS = [
  (
   'winnerIfDraw', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
-  'isPrematureLeave', bool, False, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
+  'isPrematureLeave', bool, False, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL),
  (
   'watchedBattleToTheEnd', bool, False, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (

@@ -8,7 +8,11 @@ package net.wg.gui.battle.eventBattle.views.battleHints.data
       
       public var message:String = "";
       
+      public var timer:int = -1;
+      
       public var iconSource:String = "";
+      
+      public var bgLabel:String = "";
       
       public function HintInfoVO(param1:Object)
       {

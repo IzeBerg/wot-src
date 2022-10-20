@@ -1,6 +1,7 @@
 package net.wg.gui.battle.eventBattle.views.battleHints
 {
    import net.wg.gui.battle.eventBattle.views.battleHints.data.HintInfoVO;
+   import net.wg.gui.battle.eventBattle.views.battleHints.event.BattleHintEvent;
    import net.wg.infrastructure.base.meta.IBattleHintMeta;
    import net.wg.infrastructure.base.meta.impl.BattleHintMeta;
    
@@ -15,6 +16,12 @@ package net.wg.gui.battle.eventBattle.views.battleHints
          super();
       }
       
+      override protected function configUI() : void
+      {
+         super.configUI();
+         this.hintContainer.addFrameScript(this.hintContainer.totalFrames - 1,this.onHintHidden);
+      }
+      
       override protected function onDispose() : void
       {
          this.hintContainer.dispose();
@@ -22,20 +29,26 @@ package net.wg.gui.battle.eventBattle.views.battleHints
          super.onDispose();
       }
       
+      override protected function showHint(param1:HintInfoVO) : void
+      {
+         this.hintContainer.showHint(param1);
+         this.updateStage(App.appWidth,App.appHeight);
+         dispatchEvent(new BattleHintEvent(BattleHintEvent.START_APPEAR));
+      }
+      
       public function as_hideHint() : void
       {
          this.hintContainer.hideHint();
       }
       
-      override protected function showHint(param1:HintInfoVO) : void
-      {
-         this.hintContainer.showHint(param1);
-         this.updateStage(App.appWidth,App.appHeight);
-      }
-      
       public function updateStage(param1:Number, param2:Number) : void
       {
          this.hintContainer.x = param1 >> 1;
+      }
+      
+      private function onHintHidden() : void
+      {
+         dispatchEvent(new BattleHintEvent(BattleHintEvent.HIDING_COMPLETE));
       }
    }
 }

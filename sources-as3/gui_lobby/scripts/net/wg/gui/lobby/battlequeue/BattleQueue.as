@@ -38,7 +38,11 @@ package net.wg.gui.lobby.battlequeue
       
       private static const LIST_HEIGHT_USUAL:int = 250;
       
+      private static const LIST_HEIGHT_HW22:int = 50;
+      
       private static const FUN_RANDOM_BATTLE_ICON_BG:String = "fun_random";
+      
+      private static const TYPE_INFO_HW:String = "hw22";
        
       
       public var timerLabel:TextField;
@@ -50,6 +54,8 @@ package net.wg.gui.lobby.battlequeue
       public var tankName:TextField;
       
       public var tankIcon:ImageComponent;
+      
+      public var wheelTankIcon:ImageComponent;
       
       public var playersLabel:TextField;
       
@@ -96,6 +102,10 @@ package net.wg.gui.lobby.battlequeue
          this.tankIcon.tooltipEnabled = false;
          this.tankIcon.horizontalAlign = AlignType.CENTER;
          this.tankIcon.verticalAlign = AlignType.CENTER;
+         this.wheelTankIcon.visible = false;
+         this.wheelTankIcon.tooltipEnabled = false;
+         this.wheelTankIcon.horizontalAlign = AlignType.CENTER;
+         this.wheelTankIcon.verticalAlign = AlignType.CENTER;
          this.startButton.addEventListener(ButtonEvent.CLICK,this.onStartButtonClickHandler);
          this.exitButton.addEventListener(ButtonEvent.CLICK,this.onExitButtonClickHandler);
          App.gameInputMgr.setKeyHandler(Keyboard.ESCAPE,KeyboardEvent.KEY_DOWN,this.handleEscape,true);
@@ -137,6 +147,8 @@ package net.wg.gui.lobby.battlequeue
          this._typeInfo = null;
          this.tankIcon.dispose();
          this.tankIcon = null;
+         this.wheelTankIcon.dispose();
+         this.wheelTankIcon = null;
          this.battleIconBg.dispose();
          this.battleIconBg = null;
          super.onDispose();
@@ -180,6 +192,11 @@ package net.wg.gui.lobby.battlequeue
                }
                this.updateStage(parent.width,parent.height);
                this.listByType.height = this.getListHeight(_loc1_);
+               if(this._typeInfo.layoutStr == TYPE_INFO_HW)
+               {
+                  this.wheelTankIcon.visible = true;
+                  this.wheelTankIcon.source = this._typeInfo.wheelTankIcon;
+               }
             }
             this.modeTitle.text = this._typeInfo.title;
             _loc2_ = this._typeInfo.iconLabel;
@@ -260,6 +277,10 @@ package net.wg.gui.lobby.battlequeue
          if(param1 == LAYOUT_TYPE_BATTLEROYALE)
          {
             return LIST_HEIGHT_BATTLEROYALE;
+         }
+         if(param1 == TYPE_INFO_HW)
+         {
+            return LIST_HEIGHT_HW22;
          }
          return LIST_HEIGHT_USUAL;
       }

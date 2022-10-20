@@ -849,6 +849,11 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                 if cmdMap.isFired(CommandMapping.CMD_SHOW_HELP, key) and isDown and mods == 0:
                     if g_bootcamp.isRunning():
                         return True
+                    if BigWorld.isKeyDown(Keys.KEY_TAB):
+                        return True
+                    if self.arenaGuiType == ARENA_GUI_TYPE.EVENT_BATTLES:
+                        gui_event_dispatcher.toggleHelpDetailed({'arenaGuiType': ARENA_GUI_TYPE.EVENT_BATTLES})
+                        return True
                     vehicle = self.getVehicleAttached()
                     if vehicle is not None:
                         ctx = None
@@ -1197,7 +1202,8 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                 self.__deviceStates = {'crew': 'destroyed'}
                 self.guiSessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.CREW_DEACTIVATED, deathReasonID)
             elif not self.guiSessionProvider.getCtx().isObserver(self.playerVehicleID):
-                self.soundNotifications.play('vehicle_destroyed')
+                if self.arenaGuiType != ARENA_GUI_TYPE.EVENT_BATTLES or not self.guiSessionProvider.shared.vehicleState.isInPostmortem:
+                    self.soundNotifications.play('vehicle_destroyed')
                 self.__deviceStates = {'vehicle': 'destroyed'}
                 self.guiSessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.DESTROYED, deathReasonID)
             if self.vehicle is not None:
@@ -1690,7 +1696,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         effectsDescr = vehicles.g_cache.shotEffects[effectsIndex]
         startPoint = refStartPoint
         shooter = BigWorld.entity(shooterID)
-        if not isRicochet and shooter is not None and shooter.isStarted and effectsDescr.get('artilleryID') is None:
+        if not isRicochet and shooter is not None and shooter.isStarted and effectsDescr.get('artilleryID') is None and shooter.appearance.isAlive and shooter.appearance.isConstructed:
             multiGun = shooter.typeDescriptor.turret.multiGun
             if shooter.typeDescriptor.isDualgunVehicle and multiGun is not None:
                 gunFireHP = multiGun[gunIndex].gunFire
@@ -2634,6 +2640,8 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         if soundType is not None and damageCode not in self.__damageInfoNoNotification:
             sound = extra.sounds.get(soundType)
             if sound is not None and not ignoreMessages:
+                if sound == 'track_destroyed' and damageCode.find('AT_SUPER_SHOT') != -1:
+                    sound = 'track_destroyed_at_super_shot'
                 self.playSoundIfNotMuted(sound, soundNotificationCheckFn)
         return
 
@@ -2663,7 +2671,8 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
      'DEVICE_DESTROYED', 'DEVICE_DESTROYED_AT_SHOT', 'DEVICE_DESTROYED_AT_RAMMING',
      'DEVICE_DESTROYED_AT_FIRE', 'DEVICE_DESTROYED_AT_WORLD_COLLISION', 'DEVICE_DESTROYED_AT_DROWNING',
      'TANKMAN_HIT', 'TANKMAN_HIT_AT_SHOT', 'TANKMAN_HIT_AT_WORLD_COLLISION', 'TANKMAN_HIT_AT_DROWNING',
-     'ENGINE_DESTROYED_AT_UNLIMITED_RPM', 'ENGINE_DESTROYED_AT_BURNOUT')
+     'ENGINE_DESTROYED_AT_UNLIMITED_RPM', 'ENGINE_DESTROYED_AT_BURNOUT',
+     'DEVICE_DESTROYED_AT_SUPER_SHOT', 'TANKMAN_HIT_AT_SUPER_SHOT')
     __damageInfoHealings = (
      'DEVICE_REPAIRED', 'TANKMAN_RESTORED', 'FIRE_STOPPED')
     __damageInfoNoNotification = (

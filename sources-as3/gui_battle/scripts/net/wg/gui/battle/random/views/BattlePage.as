@@ -4,6 +4,7 @@ package net.wg.gui.battle.random.views
    import flash.events.Event;
    import flash.events.MouseEvent;
    import flash.geom.Rectangle;
+   import net.wg.data.constants.Linkages;
    import net.wg.data.constants.generated.ATLAS_CONSTANTS;
    import net.wg.data.constants.generated.BATTLE_VIEW_ALIASES;
    import net.wg.data.constants.generated.DAMAGE_INFO_PANEL_CONSTS;
@@ -26,6 +27,7 @@ package net.wg.gui.battle.random.views
    import net.wg.gui.battle.views.damageInfoPanel.DamageInfoPanel;
    import net.wg.gui.battle.views.debugPanel.DebugPanel;
    import net.wg.gui.battle.views.minimap.constants.MinimapSizeConst;
+   import net.wg.gui.battle.views.postmortemPanel.PostmortemPanel;
    import net.wg.gui.battle.views.questProgress.interfaces.IQuestProgressView;
    import net.wg.gui.battle.views.radialMenu.RadialMenu;
    import net.wg.gui.battle.views.siegeModePanel.SiegeModePanel;
@@ -104,10 +106,19 @@ package net.wg.gui.battle.random.views
          super();
       }
       
+      override protected function createPostmortemTipsComponent() : void
+      {
+         if(postmortemTips == null)
+         {
+            postmortemTips = App.utils.classFactory.getComponent(Linkages.POSTMORTEN_PANEL,PostmortemPanel);
+         }
+      }
+      
       override public function updateStage(param1:Number, param2:Number) : void
       {
+         var _loc3_:Number = NaN;
          super.updateStage(param1,param2);
-         var _loc3_:Number = param1 >> 1;
+         _loc3_ = param1 >> 1;
          this.teamBasesPanelUI.x = _loc3_;
          this.sixthSense.x = _loc3_;
          this.sixthSense.y = param2 >> 2;

@@ -16,6 +16,14 @@ package
       public static const CRAFTMACHINE_SUBTITLE:String = "#event:craftMachine/subTitle";
       
       public static const CRAFTMACHINE_ENDDATETEXT:String = "#event:craftMachine/endDateText";
+      
+      public static const DAILYREWARD_TEXT:String = "#event:dailyReward/text";
+      
+      public static const DAILYREWARD_BUTTON_READY:String = "#event:dailyReward/button/ready";
+      
+      public static const DAILYREWARD_BUTTON_DETAILS:String = "#event:dailyReward/button/details";
+      
+      public static const GLOBALPROGRESSION_LABEL:String = "#event:globalProgression/label";
        
       
       public function EVENT()

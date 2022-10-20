@@ -24,11 +24,6 @@ package net.wg.gui.lobby.battleResults.epic
          super.onDispose();
       }
       
-      override protected function configUI() : void
-      {
-         super.configUI();
-      }
-      
       override protected function updateData(param1:Vector.<EpicQuestProgressInfoItemVO>) : void
       {
          this.tileList.dataProvider = new DataProvider(App.utils.data.vectorToArray(param1));

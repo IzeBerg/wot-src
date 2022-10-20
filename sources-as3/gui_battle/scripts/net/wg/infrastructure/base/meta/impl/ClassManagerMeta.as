@@ -49,6 +49,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.data.constants.generated.DAMAGE_INFO_PANEL_CONSTS;
    import net.wg.data.constants.generated.EPIC_CONSTS;
    import net.wg.data.constants.generated.GAME_MESSAGES_CONSTS;
+   import net.wg.data.constants.generated.HWBATTLE_CONSUMABLES_PANEL_PASSIVE_STATES;
    import net.wg.data.constants.generated.INTERFACE_STATES;
    import net.wg.data.constants.generated.KEYBOARD_KEYS;
    import net.wg.data.constants.generated.PLAYERS_PANEL_STATE;
@@ -320,9 +321,13 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.eventBattle.views.EventBattlePage;
    import net.wg.gui.battle.eventBattle.views.battleHints.EventBattleHint;
    import net.wg.gui.battle.eventBattle.views.battleHints.EventObjectives;
+   import net.wg.gui.battle.eventBattle.views.battleHints.InfoBaseContainer;
    import net.wg.gui.battle.eventBattle.views.battleHints.InfoContainer;
+   import net.wg.gui.battle.eventBattle.views.battleHints.InfoTimerContainer;
    import net.wg.gui.battle.eventBattle.views.battleHints.TextContainer;
+   import net.wg.gui.battle.eventBattle.views.battleHints.TextContainerTimer;
    import net.wg.gui.battle.eventBattle.views.battleHints.data.HintInfoVO;
+   import net.wg.gui.battle.eventBattle.views.battleHints.event.BattleHintEvent;
    import net.wg.gui.battle.eventBattle.views.buffsPanel.BuffsPanel;
    import net.wg.gui.battle.eventBattle.views.buffsPanel.EventBuffButton;
    import net.wg.gui.battle.eventBattle.views.consumablesPanel.EventBattleEquipmentButton;
@@ -335,6 +340,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.eventBattle.views.eventPlayersPanel.VO.DAAPIPlayerPanelInfoVO;
    import net.wg.gui.battle.eventBattle.views.eventPointCounter.EventPointCounter;
    import net.wg.gui.battle.eventBattle.views.eventStats.EventStats;
+   import net.wg.gui.battle.eventBattle.views.eventStats.EventStatsTable;
+   import net.wg.gui.battle.eventBattle.views.eventStats.EventStatsTableCtrl;
    import net.wg.gui.battle.eventBattle.views.eventStats.VO.EventStatsPlayerVO;
    import net.wg.gui.battle.eventBattle.views.eventStats.renderers.StatsPlayerRenderer;
    import net.wg.gui.battle.eventBattle.views.eventTimer.EventTimer;
@@ -356,6 +363,34 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.eventInfoPanel.interfaces.IEventInfoPanel;
    import net.wg.gui.battle.events.BattleSoundEvent;
    import net.wg.gui.battle.events.RepairAnimEvent;
+   import net.wg.gui.battle.halloween.HWBattlePage;
+   import net.wg.gui.battle.halloween.basesPanel.HWBasesPanel;
+   import net.wg.gui.battle.halloween.consumablesPanel.HWAbilityButton;
+   import net.wg.gui.battle.halloween.consumablesPanel.HWAbilityButtonGlow;
+   import net.wg.gui.battle.halloween.consumablesPanel.HWConsumablesPanel;
+   import net.wg.gui.battle.halloween.consumablesPanel.HWEquipmentButton;
+   import net.wg.gui.battle.halloween.consumablesPanel.HWEquipmentButtonBase;
+   import net.wg.gui.battle.halloween.consumablesPanel.HWEquipmentButtonGlow;
+   import net.wg.gui.battle.halloween.consumablesPanel.HWGlowBase;
+   import net.wg.gui.battle.halloween.consumablesPanel.HWKeyIndicator;
+   import net.wg.gui.battle.halloween.consumablesPanel.HWPassiveAbility;
+   import net.wg.gui.battle.halloween.consumablesPanel.HWShellButton;
+   import net.wg.gui.battle.halloween.minimap.HWBuffCircle;
+   import net.wg.gui.battle.halloween.minimap.HWBuffMinimapEntry;
+   import net.wg.gui.battle.halloween.minimap.HWProgressCircle;
+   import net.wg.gui.battle.halloween.minimap.HWSectorBaseMinimapEntry;
+   import net.wg.gui.battle.halloween.minimap.HWVehicleMinimapEntry;
+   import net.wg.gui.battle.halloween.minimap.HWViewPointMinimapEntry;
+   import net.wg.gui.battle.halloween.playersList.HWPlayersPanel;
+   import net.wg.gui.battle.halloween.playersList.HWPlayersPanelList;
+   import net.wg.gui.battle.halloween.playersList.HWPlayersPanelListItem;
+   import net.wg.gui.battle.halloween.playersList.HWPlayersPanelListItemHolder;
+   import net.wg.gui.battle.halloween.playersList.HWPlayersPanelListLeft;
+   import net.wg.gui.battle.halloween.playersList.HWPlayersPanelListRight;
+   import net.wg.gui.battle.halloween.ribbonsPanel.HWRibbonSettings;
+   import net.wg.gui.battle.halloween.ribbonsPanel.HWRibbonsPanel;
+   import net.wg.gui.battle.halloween.ribbonsPanel.HWRibbonsPool;
+   import net.wg.gui.battle.halloween.vehicleMarkers.EventVehicleMarker;
    import net.wg.gui.battle.interfaces.IBattleInfo;
    import net.wg.gui.battle.interfaces.IFullStats;
    import net.wg.gui.battle.interfaces.IPrebattleTimerBase;
@@ -466,6 +501,14 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.tutorial.views.tutorial.utils.tween.TweenFlowFactory;
    import net.wg.gui.battle.views.BaseBattlePage;
    import net.wg.gui.battle.views.BattlePageQuestsProgress;
+   import net.wg.gui.battle.views.FDPostmortemPanel.FDPostmortemPanel;
+   import net.wg.gui.battle.views.FDPostmortemPanel.FDPostmortemTimer;
+   import net.wg.gui.battle.views.FDPostmortemPanel.FDPostmortemTimerContainer;
+   import net.wg.gui.battle.views.HWBattleLoading.HWBattleLoading;
+   import net.wg.gui.battle.views.HWBattleLoading.components.LoadingProgress;
+   import net.wg.gui.battle.views.HWBattleLoading.components.TextContainer;
+   import net.wg.gui.battle.views.HWBattleLoading.data.BattleLoadingHintVO;
+   import net.wg.gui.battle.views.HWBattleLoading.data.LoadingDataVO;
    import net.wg.gui.battle.views.actionMarkers.ActionMarkerStates;
    import net.wg.gui.battle.views.actionMarkers.BaseActionMarker;
    import net.wg.gui.battle.views.actionMarkers.RepliedMarker;
@@ -835,6 +878,11 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.battle.views.staticMarkers.flag.FlagIcon;
    import net.wg.gui.battle.views.staticMarkers.flag.FlagMarker;
    import net.wg.gui.battle.views.staticMarkers.flag.constant.FlagMarkerState;
+   import net.wg.gui.battle.views.staticMarkers.halloween.HWBaseMarker;
+   import net.wg.gui.battle.views.staticMarkers.halloween.HWBuffActionLine;
+   import net.wg.gui.battle.views.staticMarkers.halloween.HWBuffActionMarker;
+   import net.wg.gui.battle.views.staticMarkers.halloween.HWBuffMarker;
+   import net.wg.gui.battle.views.staticMarkers.halloween.HWSectorBaseIcon;
    import net.wg.gui.battle.views.staticMarkers.interestPoint.InterestPointMarker;
    import net.wg.gui.battle.views.staticMarkers.interestPoint.MarkerPoiProgressCircle;
    import net.wg.gui.battle.views.staticMarkers.location.LocationActionMarker;
@@ -1026,6 +1074,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.meta.IEpicRespawnViewMeta;
    import net.wg.infrastructure.base.meta.IEpicScorePanelMeta;
    import net.wg.infrastructure.base.meta.IEpicSpectatorViewMeta;
+   import net.wg.infrastructure.base.meta.IEventBasesPanelMeta;
    import net.wg.infrastructure.base.meta.IEventBuffsPanelMeta;
    import net.wg.infrastructure.base.meta.IEventDestroyTimersPanelMeta;
    import net.wg.infrastructure.base.meta.IEventObjectivesMeta;
@@ -1034,10 +1083,14 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.base.meta.IEventRadialMenuMeta;
    import net.wg.infrastructure.base.meta.IEventStatsMeta;
    import net.wg.infrastructure.base.meta.IEventTimerMeta;
+   import net.wg.infrastructure.base.meta.IFDPostmortemPanelMeta;
    import net.wg.infrastructure.base.meta.IFMStatsMeta;
    import net.wg.infrastructure.base.meta.IFragCorrelationBarMeta;
    import net.wg.infrastructure.base.meta.IFragPanelMeta;
    import net.wg.infrastructure.base.meta.IGameMessagesPanelMeta;
+   import net.wg.infrastructure.base.meta.IHWBattleLoadingMeta;
+   import net.wg.infrastructure.base.meta.IHWConsumablesPanelMeta;
+   import net.wg.infrastructure.base.meta.IHWPlayersPanelMeta;
    import net.wg.infrastructure.base.meta.IIngameDetailsHelpWindowMeta;
    import net.wg.infrastructure.base.meta.IIngameHelpWindowMeta;
    import net.wg.infrastructure.base.meta.IIngameMenuMeta;
@@ -1143,6 +1196,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_DATA_CONSTANTS_GENERATED_EPIC_CONSTS:Class = EPIC_CONSTS;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_GAME_MESSAGES_CONSTS:Class = GAME_MESSAGES_CONSTS;
+      
+      public static const NET_WG_DATA_CONSTANTS_GENERATED_HWBATTLE_CONSUMABLES_PANEL_PASSIVE_STATES:Class = HWBATTLE_CONSUMABLES_PANEL_PASSIVE_STATES;
       
       public static const NET_WG_DATA_CONSTANTS_GENERATED_INTERFACE_STATES:Class = INTERFACE_STATES;
       
@@ -1720,11 +1775,19 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BATTLEHINTS_EVENTOBJECTIVES:Class = EventObjectives;
       
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BATTLEHINTS_INFOBASECONTAINER:Class = InfoBaseContainer;
+      
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BATTLEHINTS_INFOCONTAINER:Class = InfoContainer;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BATTLEHINTS_INFOTIMERCONTAINER:Class = InfoTimerContainer;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BATTLEHINTS_TEXTCONTAINER:Class = TextContainer;
       
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BATTLEHINTS_TEXTCONTAINERTIMER:Class = TextContainerTimer;
+      
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BATTLEHINTS_DATA_HINTINFOVO:Class = HintInfoVO;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BATTLEHINTS_EVENT_BATTLEHINTEVENT:Class = BattleHintEvent;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_BUFFSPANEL_BUFFSPANEL:Class = BuffsPanel;
       
@@ -1749,6 +1812,10 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTPOINTCOUNTER_EVENTPOINTCOUNTER:Class = EventPointCounter;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTSTATS_EVENTSTATS:Class = EventStats;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTSTATS_EVENTSTATSTABLE:Class = EventStatsTable;
+      
+      public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTSTATS_EVENTSTATSTABLECTRL:Class = EventStatsTableCtrl;
       
       public static const NET_WG_GUI_BATTLE_EVENTBATTLE_VIEWS_EVENTSTATS_RENDERERS_STATSPLAYERRENDERER:Class = StatsPlayerRenderer;
       
@@ -1791,6 +1858,62 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_EVENTS_BATTLESOUNDEVENT:Class = BattleSoundEvent;
       
       public static const NET_WG_GUI_BATTLE_EVENTS_REPAIRANIMEVENT:Class = RepairAnimEvent;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_HWBATTLEPAGE:Class = HWBattlePage;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_BASESPANEL_HWBASESPANEL:Class = HWBasesPanel;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_CONSUMABLESPANEL_HWABILITYBUTTON:Class = HWAbilityButton;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_CONSUMABLESPANEL_HWABILITYBUTTONGLOW:Class = HWAbilityButtonGlow;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_CONSUMABLESPANEL_HWCONSUMABLESPANEL:Class = HWConsumablesPanel;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_CONSUMABLESPANEL_HWEQUIPMENTBUTTON:Class = HWEquipmentButton;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_CONSUMABLESPANEL_HWEQUIPMENTBUTTONBASE:Class = HWEquipmentButtonBase;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_CONSUMABLESPANEL_HWEQUIPMENTBUTTONGLOW:Class = HWEquipmentButtonGlow;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_CONSUMABLESPANEL_HWGLOWBASE:Class = HWGlowBase;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_CONSUMABLESPANEL_HWKEYINDICATOR:Class = HWKeyIndicator;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_CONSUMABLESPANEL_HWPASSIVEABILITY:Class = HWPassiveAbility;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_CONSUMABLESPANEL_HWSHELLBUTTON:Class = HWShellButton;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_MINIMAP_HWBUFFCIRCLE:Class = HWBuffCircle;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_MINIMAP_HWBUFFMINIMAPENTRY:Class = HWBuffMinimapEntry;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_MINIMAP_HWPROGRESSCIRCLE:Class = HWProgressCircle;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_MINIMAP_HWSECTORBASEMINIMAPENTRY:Class = HWSectorBaseMinimapEntry;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_MINIMAP_HWVEHICLEMINIMAPENTRY:Class = HWVehicleMinimapEntry;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_MINIMAP_HWVIEWPOINTMINIMAPENTRY:Class = HWViewPointMinimapEntry;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_PLAYERSLIST_HWPLAYERSPANEL:Class = HWPlayersPanel;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_PLAYERSLIST_HWPLAYERSPANELLIST:Class = HWPlayersPanelList;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_PLAYERSLIST_HWPLAYERSPANELLISTITEM:Class = HWPlayersPanelListItem;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_PLAYERSLIST_HWPLAYERSPANELLISTITEMHOLDER:Class = HWPlayersPanelListItemHolder;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_PLAYERSLIST_HWPLAYERSPANELLISTLEFT:Class = HWPlayersPanelListLeft;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_PLAYERSLIST_HWPLAYERSPANELLISTRIGHT:Class = HWPlayersPanelListRight;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_RIBBONSPANEL_HWRIBBONSETTINGS:Class = HWRibbonSettings;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_RIBBONSPANEL_HWRIBBONSPANEL:Class = HWRibbonsPanel;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_RIBBONSPANEL_HWRIBBONSPOOL:Class = HWRibbonsPool;
+      
+      public static const NET_WG_GUI_BATTLE_HALLOWEEN_VEHICLEMARKERS_EVENTVEHICLEMARKER:Class = EventVehicleMarker;
       
       public static const NET_WG_GUI_BATTLE_INTERFACES_IBATTLEINFO:Class = IBattleInfo;
       
@@ -2376,6 +2499,12 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_BATTLE_VIEWS_EPICSPECTATORVIEW_EPICSPECTATORVIEW:Class = EpicSpectatorView;
       
+      public static const NET_WG_GUI_BATTLE_VIEWS_FDPOSTMORTEMPANEL_FDPOSTMORTEMPANEL:Class = FDPostmortemPanel;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_FDPOSTMORTEMPANEL_FDPOSTMORTEMTIMER:Class = FDPostmortemTimer;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_FDPOSTMORTEMPANEL_FDPOSTMORTEMTIMERCONTAINER:Class = FDPostmortemTimerContainer;
+      
       public static const NET_WG_GUI_BATTLE_VIEWS_GAMEMESSAGESPANEL_GAMEMESSAGESPANEL:Class = GameMessagesPanel;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_GAMEMESSAGESPANEL_COMPONENTS_ENDGAMEMESSAGE:Class = EndGameMessage;
@@ -2391,6 +2520,16 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_GAMEMESSAGESPANEL_DATA_GAMEMESSAGEVO:Class = GameMessageVO;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_GAMEMESSAGESPANEL_EVENTS_GAMEMESSAGESPANELEVENT:Class = GameMessagesPanelEvent;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_HWBATTLELOADING_HWBATTLELOADING:Class = HWBattleLoading;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_HWBATTLELOADING_COMPONENTS_LOADINGPROGRESS:Class = LoadingProgress;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_HWBATTLELOADING_COMPONENTS_TEXTCONTAINER:Class = TextContainer;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_HWBATTLELOADING_DATA_BATTLELOADINGHINTVO:Class = BattleLoadingHintVO;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_HWBATTLELOADING_DATA_LOADINGDATAVO:Class = LoadingDataVO;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_MESSAGES_FADEDMESSAGESPOOL:Class = FadedMessagesPool;
       
@@ -2749,6 +2888,16 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_FLAG_FLAGMARKER:Class = FlagMarker;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_FLAG_CONSTANT_FLAGMARKERSTATE:Class = FlagMarkerState;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_HALLOWEEN_HWBASEMARKER:Class = HWBaseMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_HALLOWEEN_HWBUFFACTIONLINE:Class = HWBuffActionLine;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_HALLOWEEN_HWBUFFACTIONMARKER:Class = HWBuffActionMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_HALLOWEEN_HWBUFFMARKER:Class = HWBuffMarker;
+      
+      public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_HALLOWEEN_HWSECTORBASEICON:Class = HWSectorBaseIcon;
       
       public static const NET_WG_GUI_BATTLE_VIEWS_STATICMARKERS_INTERESTPOINT_INTERESTPOINTMARKER:Class = InterestPointMarker;
       
@@ -3132,6 +3281,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IEPICSPECTATORVIEWMETA:Class = IEpicSpectatorViewMeta;
       
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTBASESPANELMETA:Class = IEventBasesPanelMeta;
+      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTBUFFSPANELMETA:Class = IEventBuffsPanelMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTDESTROYTIMERSPANELMETA:Class = IEventDestroyTimersPanelMeta;
@@ -3148,6 +3299,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IEVENTTIMERMETA:Class = IEventTimerMeta;
       
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IFDPOSTMORTEMPANELMETA:Class = IFDPostmortemPanelMeta;
+      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IFMSTATSMETA:Class = IFMStatsMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IFRAGCORRELATIONBARMETA:Class = IFragCorrelationBarMeta;
@@ -3155,6 +3308,12 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IFRAGPANELMETA:Class = IFragPanelMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IGAMEMESSAGESPANELMETA:Class = IGameMessagesPanelMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IHWBATTLELOADINGMETA:Class = IHWBattleLoadingMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IHWCONSUMABLESPANELMETA:Class = IHWConsumablesPanelMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IHWPLAYERSPANELMETA:Class = IHWPlayersPanelMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IINGAMEDETAILSHELPWINDOWMETA:Class = IIngameDetailsHelpWindowMeta;
       
@@ -3346,6 +3505,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EPICSPECTATORVIEWMETA:Class = EpicSpectatorViewMeta;
       
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTBASESPANELMETA:Class = EventBasesPanelMeta;
+      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTBUFFSPANELMETA:Class = EventBuffsPanelMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTDESTROYTIMERSPANELMETA:Class = EventDestroyTimersPanelMeta;
@@ -3362,6 +3523,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_EVENTTIMERMETA:Class = EventTimerMeta;
       
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_FDPOSTMORTEMPANELMETA:Class = FDPostmortemPanelMeta;
+      
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_FMSTATSMETA:Class = FMStatsMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_FRAGCORRELATIONBARMETA:Class = FragCorrelationBarMeta;
@@ -3369,6 +3532,12 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_FRAGPANELMETA:Class = FragPanelMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_GAMEMESSAGESPANELMETA:Class = GameMessagesPanelMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_HWBATTLELOADINGMETA:Class = HWBattleLoadingMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_HWCONSUMABLESPANELMETA:Class = HWConsumablesPanelMeta;
+      
+      public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_HWPLAYERSPANELMETA:Class = HWPlayersPanelMeta;
       
       public static const NET_WG_INFRASTRUCTURE_BASE_META_IMPL_INGAMEDETAILSHELPWINDOWMETA:Class = IngameDetailsHelpWindowMeta;
       

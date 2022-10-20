@@ -36,7 +36,7 @@ from gui.impl.lobby.account_completion.utils.common import AccountCompletionType
 from gui.impl.lobby.account_completion.utils.decorators import waitShowOverlay
 from gui.impl.lobby.common.congrats.common_congrats_view import CongratsWindow
 from gui.impl.lobby.maps_training.maps_training_queue_view import MapsTrainingQueueView
-from gui.impl.lobby.tank_setup.dialogs.confirm_dialog import TankSetupConfirmDialog, TankSetupExitConfirmDialog
+from gui.impl.lobby.tank_setup.dialogs.confirm_dialog import TankSetupConfirmDialog, TankSetupExitConfirmDialog, HWTankSetupExitConfirmDialog
 from gui.impl.lobby.tank_setup.dialogs.refill_shells import ExitFromShellsConfirm, RefillShells
 from gui.impl.pub import ViewImpl
 from gui.impl.pub.lobby_window import LobbyNotificationWindow, LobbyWindow
@@ -899,6 +899,14 @@ def showDedicationRewardWindow(bonuses, data, closeCallback=None):
     window.load()
 
 
+def isViewLoaded(layoutID):
+    uiLoader = dependency.instance(IGuiLoader)
+    if not uiLoader or not uiLoader.windowsManager:
+        return False
+    view = uiLoader.windowsManager.getViewByLayoutID(layoutID)
+    return view is not None
+
+
 def showStylePreview(vehCD, style, descr='', backCallback=None, backBtnDescrLabel='', *args, **kwargs):
     g_eventBus.handleEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.STYLE_PREVIEW), ctx={'itemCD': vehCD, 
        'style': style, 
@@ -1275,6 +1283,13 @@ def showTankSetupConfirmDialog(items, vehicle=None, startState=None, parent=None
 def showTankSetupExitConfirmDialog(items, vehicle=None, startState=None, fromSection=None, parent=None):
     from gui.impl.dialogs import dialogs
     result = yield wg_await(dialogs.showSingleDialogWithResultData(layoutID=R.views.lobby.tanksetup.dialogs.Confirm(), wrappedViewClass=TankSetupExitConfirmDialog, items=items, vehicle=vehicle, startState=startState, fromSection=fromSection, parent=parent))
+    raise AsyncReturn(result)
+
+
+@wg_async
+def showHWTankSetupExitConfirmDialog(items, vehicle=None, startState=None, fromSection=None, parent=None):
+    from gui.impl.dialogs import dialogs
+    result = yield wg_await(dialogs.showSingleDialogWithResultData(layoutID=R.views.lobby.tanksetup.dialogs.Confirm(), wrappedViewClass=HWTankSetupExitConfirmDialog, items=items, vehicle=vehicle, startState=startState, fromSection=fromSection, parent=parent))
     raise AsyncReturn(result)
 
 
@@ -1897,7 +1912,7 @@ def closeReservesIntroAndConversionView():
     for viewIdToClose in viewIdsToClose:
         introView = uiLoader.windowsManager.getViewByLayoutID(viewIdToClose)
         if introView:
-            introView.destroy()
+            introView.destroyWindow()
 
 
 def showPersonalReservesConversion():

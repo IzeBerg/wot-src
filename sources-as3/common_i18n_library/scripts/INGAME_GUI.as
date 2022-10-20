@@ -1717,6 +1717,8 @@ package
       
       public static const REWARDWINDOW_TWITCH33_HEADERTEXT:String = "#ingame_gui:rewardWindow/twitch33/headerText";
       
+      public static const REWARDWINDOW_TWITCH33_DESCTEXT:String = "#ingame_gui:rewardWindow/twitch33/descText";
+      
       public static const REWARDWINDOW_TWITCH33_MAINREWARD_1:String = "#ingame_gui:rewardWindow/twitch33/mainReward_1";
       
       public static const REWARDWINDOW_TWITCH33_MAINREWARD_2:String = "#ingame_gui:rewardWindow/twitch33/mainReward_2";
@@ -1724,6 +1726,18 @@ package
       public static const REWARDWINDOW_TWITCH33_MAINREWARD_3:String = "#ingame_gui:rewardWindow/twitch33/mainReward_3";
       
       public static const REWARDWINDOW_TWITCH33_MAINREWARD_4:String = "#ingame_gui:rewardWindow/twitch33/mainReward_4";
+      
+      public static const REWARDWINDOW_TWITCH34_HEADERTEXT:String = "#ingame_gui:rewardWindow/twitch34/headerText";
+      
+      public static const REWARDWINDOW_TWITCH34_DESCTEXT:String = "#ingame_gui:rewardWindow/twitch34/descText";
+      
+      public static const REWARDWINDOW_TWITCH34_MAINREWARD_1:String = "#ingame_gui:rewardWindow/twitch34/mainReward_1";
+      
+      public static const REWARDWINDOW_TWITCH34_MAINREWARD_2:String = "#ingame_gui:rewardWindow/twitch34/mainReward_2";
+      
+      public static const REWARDWINDOW_TWITCH34_MAINREWARD_3:String = "#ingame_gui:rewardWindow/twitch34/mainReward_3";
+      
+      public static const REWARDWINDOW_TWITCH34_MAINREWARD_4:String = "#ingame_gui:rewardWindow/twitch34/mainReward_4";
       
       public static const REWARDWINDOW_LOOTBOX_WINHEADERTEXT:String = "#ingame_gui:rewardWindow/lootbox/winHeaderText";
       

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>n_glass1</identifier>
+					<fx>shaders/std_effects/glow.fx</fx>
+					<materialKind>111</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Environment/hd_env_UNI_667_WindowGlow/hd_env_UNI_667_WindowGlow_01_AM.dds</Texture>
+					</property>
+					<property>
+						selfIllumination
+						<Float>20.000000</Float>
+					</property>
+					<property>
+						srcBlend
+						<Int>3</Int>
+					</property>
+					<property>
+						g_tintColor
+						<Vector4>0.129412 0.780392 0.000000 1.000000</Vector4>
+					</property>
+				</material>
+				<groupOrigin>0.000000 1.550318 0.254110</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.964685 -0.000000 -0.033315</min>
+		<max>0.964685 3.100035 0.254110</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>140</geometrySize>
+	<minUVDensity>0.167225</minUVDensity>
+</root>

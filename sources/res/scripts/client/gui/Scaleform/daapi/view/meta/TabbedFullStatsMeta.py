@@ -13,3 +13,7 @@ class TabbedFullStatsMeta(StatsBase):
     def as_updateTabsS(self, dataProvider):
         if self._isDAAPIInited():
             return self.flashObject.as_updateTabs(dataProvider)
+
+    def as_isFDEventS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_isFDEvent(value)

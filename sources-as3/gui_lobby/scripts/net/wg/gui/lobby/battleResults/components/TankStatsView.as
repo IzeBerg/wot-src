@@ -60,11 +60,14 @@ package net.wg.gui.lobby.battleResults.components
       {
          this._tankMaskObj = new Sprite();
          super();
-         addChild(this._tankMaskObj);
-         this._tankMaskObj.graphics.beginFill(0);
-         this._tankMaskObj.graphics.drawRect(0,1,TankStatsView.DEFAULT_COMPONENT_WIDTH,TankStatsView.DEFAULT_COMPONENT_HEIGHT);
-         this._tankMaskObj.graphics.endFill();
-         this.imageSwitcher.mask = this._tankMaskObj;
+         if(this.imageSwitcher)
+         {
+            addChild(this._tankMaskObj);
+            this._tankMaskObj.graphics.beginFill(0);
+            this._tankMaskObj.graphics.drawRect(0,1,TankStatsView.DEFAULT_COMPONENT_WIDTH,TankStatsView.DEFAULT_COMPONENT_HEIGHT);
+            this._tankMaskObj.graphics.endFill();
+            this.imageSwitcher.mask = this._tankMaskObj;
+         }
       }
       
       private static function onVehicleStateLblRollOutHandler(param1:MouseEvent) : void
@@ -76,10 +79,18 @@ package net.wg.gui.lobby.battleResults.components
       {
          super.configUI();
          this.dropDown.addEventListener(ListEvent.INDEX_CHANGE,this.onDropDownIndexChangeHandler);
+         this.initTextFields();
+      }
+      
+      protected function initTextFields() : void
+      {
          this.playerNameLbl.alpha = ALPHA;
          this.playerNameLbl.blendMode = BlendMode.ADD;
-         this.arenaCreateDateLbl.alpha = ALPHA;
-         this.arenaCreateDateLbl.blendMode = BlendMode.ADD;
+         if(this.arenaCreateDateLbl)
+         {
+            this.arenaCreateDateLbl.alpha = ALPHA;
+            this.arenaCreateDateLbl.blendMode = BlendMode.ADD;
+         }
          this.vehicleStateLbl.alpha = ALPHA;
          this.vehicleStateLbl.blendMode = BlendMode.ADD;
          this.tankNameLbl.alpha = ALPHA;
@@ -97,7 +108,10 @@ package net.wg.gui.lobby.battleResults.components
          if(this._data && isInvalid(InvalidationType.DATA))
          {
             _loc1_ = this._data.common;
-            this.imageSwitcher.areaIcon.source = _loc1_.arenaIcon;
+            if(this.imageSwitcher)
+            {
+               this.imageSwitcher.areaIcon.source = _loc1_.arenaIcon;
+            }
             _loc2_ = new UserVO({
                "userName":_loc1_.playerRealNameStr,
                "clanAbbrev":_loc1_.clanNameStr,
@@ -119,7 +133,10 @@ package net.wg.gui.lobby.battleResults.components
             {
                this.setVehicleStateLbl();
             }
-            this.arenaCreateDateLbl.text = _loc1_.arenaCreateTimeStr;
+            if(this.arenaCreateDateLbl)
+            {
+               this.arenaCreateDateLbl.text = _loc1_.arenaCreateTimeStr;
+            }
             this.customizeByCountVehicles(_loc3_);
          }
       }
@@ -136,9 +153,12 @@ package net.wg.gui.lobby.battleResults.components
          this.vehicleStateLbl.removeEventListener(MouseEvent.ROLL_OVER,this.onVehicleStateLblRollOverHandler);
          this.vehicleStateLbl.removeEventListener(MouseEvent.ROLL_OUT,onVehicleStateLblRollOutHandler);
          this.vehicleStateLbl = null;
-         this.imageSwitcher.mask = null;
-         this.imageSwitcher.dispose();
-         this.imageSwitcher = null;
+         if(this.imageSwitcher)
+         {
+            this.imageSwitcher.mask = null;
+            this.imageSwitcher.dispose();
+            this.imageSwitcher = null;
+         }
          this.dropDown.removeEventListener(ListEvent.INDEX_CHANGE,this.onDropDownIndexChangeHandler);
          this.dropDown.dispose();
          this.dropDown = null;
@@ -164,6 +184,19 @@ package net.wg.gui.lobby.battleResults.components
          this.dropDown.selectedIndex = param1;
       }
       
+      protected function getVehicleAliveStateColor(param1:VehicleStatsVO) : uint
+      {
+         if(param1.deathReason < 0)
+         {
+            return LIVING_PLAYER_TEXT_COLOR;
+         }
+         if(param1.killerID == 0 && !param1.isPrematureLeave)
+         {
+            return NO_OWNER_DEATH_REASON_TEXT_COLOR;
+         }
+         return DEAD_NAME_TEXT_COLOR;
+      }
+      
       private function setVehicleStateLbl() : void
       {
          var _loc2_:IUserProps = null;
@@ -173,18 +206,7 @@ package net.wg.gui.lobby.battleResults.components
          if(_loc1_.isPrematureLeave || _loc1_.killerID <= 0)
          {
             this.vehicleStateLbl.text = _loc1_.vehicleStateStr;
-            if(_loc1_.deathReason < 0)
-            {
-               this.vehicleStateLbl.textColor = LIVING_PLAYER_TEXT_COLOR;
-            }
-            else if(_loc1_.killerID == 0 && !_loc1_.isPrematureLeave)
-            {
-               this.vehicleStateLbl.textColor = NO_OWNER_DEATH_REASON_TEXT_COLOR;
-            }
-            else
-            {
-               this.vehicleStateLbl.textColor = DEAD_NAME_TEXT_COLOR;
-            }
+            this.vehicleStateLbl.textColor = this.getVehicleAliveStateColor(_loc1_);
          }
          else if(_loc1_.killerID > 0)
          {
@@ -223,6 +245,10 @@ package net.wg.gui.lobby.battleResults.components
       
       private function setTankIcon(param1:int) : void
       {
+         if(!this.imageSwitcher)
+         {
+            return;
+         }
          var _loc2_:VehicleStatsVO = this._playerVehicles[param1];
          this.imageSwitcher.setVehicleIcon(_loc2_.isNotObserver,_loc2_.tankIcon,_loc2_.tankLevel);
       }

@@ -18,6 +18,8 @@ package net.wg.gui.lobby.battlequeue
       
       public var tankIcon:String = "";
       
+      public var wheelTankIcon:String = "";
+      
       public var tankName:String = "";
       
       public var layoutStr:String = "";

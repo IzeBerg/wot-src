@@ -3,6 +3,7 @@ package net.wg.gui.battle.random.views.fragCorrelationBar
    import flash.display.MovieClip;
    import flash.display.Sprite;
    import flash.text.TextField;
+   import flash.text.TextFieldAutoSize;
    import net.wg.data.VO.daapi.DAAPIVehicleStatusVO;
    import net.wg.data.VO.daapi.DAAPIVehiclesDataVO;
    import net.wg.data.VO.daapi.DAAPIVehiclesStatsVO;
@@ -18,6 +19,7 @@ package net.wg.gui.battle.random.views.fragCorrelationBar
    import net.wg.infrastructure.interfaces.IColorScheme;
    import net.wg.infrastructure.interfaces.IDAAPIDataClass;
    import net.wg.infrastructure.managers.IColorSchemeManager;
+   import net.wg.utils.ILocale;
    import scaleform.gfx.TextFieldEx;
    
    public class FragCorrelationBar extends FragCorrelationBarMeta implements IFragCorrelationBarMeta, IBattleComponentDataController
@@ -46,6 +48,10 @@ package net.wg.gui.battle.random.views.fragCorrelationBar
       private static const NO_VEHICLE_ICONS_BARS_TOP_OFFSET:int = 10;
       
       private static const VEHICLE_ICONS_BARS_TOP_OFFSET:int = 0;
+      
+      private static const FRAG_FIELD_DEFAULT_WIDTH:int = 25;
+      
+      private static const FRAG_FIELD_AUTO_SIZE_OFFSET:int = 11;
        
       
       public var allyTeamFragsField:TextField = null;
@@ -84,13 +90,18 @@ package net.wg.gui.battle.random.views.fragCorrelationBar
       
       private var _isColorblind:Boolean = false;
       
+      private var _isAutoSize:Boolean = false;
+      
       private var _allyVehicleMarkersList:VehicleMarkersList;
       
       private var _enemyVehicleMarkersList:VehicleMarkersList;
       
+      private var _locale:ILocale;
+      
       public function FragCorrelationBar()
       {
          this._colorSchemeMgr = App.colorSchemeMgr;
+         this._locale = App.utils.locale;
          super();
          this._rightBg = this.redBackground;
          TextFieldEx.setNoTranslate(this.allyTeamFragsField,true);
@@ -121,6 +132,11 @@ package net.wg.gui.battle.random.views.fragCorrelationBar
          {
             this.allyTeamFragsField.text = this._allyTeamFragsStr;
             this.enemyTeamFragsField.text = this._enemyTeamFragsStr;
+            if(this._isAutoSize)
+            {
+               this._allyVehicleMarkersList.setMarkerOffset(FRAG_FIELD_DEFAULT_WIDTH - this.allyTeamFragsField.width);
+               this._enemyVehicleMarkersList.setMarkerOffset(this.enemyTeamFragsField.width - FRAG_FIELD_DEFAULT_WIDTH);
+            }
             if(this._currentTeamSeparatorState != this._lastTeamSeparatorState)
             {
                this._lastTeamSeparatorState = this._currentTeamSeparatorState;
@@ -184,6 +200,7 @@ package net.wg.gui.battle.random.views.fragCorrelationBar
          this._loseColorScheme.dispose();
          this._loseColorScheme = null;
          this._rightBg = null;
+         this._locale = null;
          super.onDispose();
       }
       
@@ -224,6 +241,15 @@ package net.wg.gui.battle.random.views.fragCorrelationBar
          {
             this._isVehicleCounterShown = _loc2_;
             invalidate(VEHICLE_SHOWN_FLAG);
+         }
+         var _loc3_:Boolean = FragCorrelationBarStatus.isAutoSize(param1);
+         if(_loc3_ != this._isAutoSize)
+         {
+            this._isAutoSize = _loc3_;
+            this.allyTeamFragsField.autoSize = TextFieldAutoSize.RIGHT;
+            this.enemyTeamFragsField.autoSize = TextFieldAutoSize.LEFT;
+            this.allyTeamFragsField.x -= FRAG_FIELD_AUTO_SIZE_OFFSET;
+            this.enemyTeamFragsField.x += FRAG_FIELD_AUTO_SIZE_OFFSET;
          }
       }
       
@@ -327,6 +353,7 @@ package net.wg.gui.battle.random.views.fragCorrelationBar
       
       public function updateVehiclesStat(param1:IDAAPIDataClass) : void
       {
+         this.setFrags(param1);
       }
       
       protected function createVehicleMarkersLists(param1:MovieClip, param2:Boolean, param3:String) : VehicleMarkersList
@@ -336,8 +363,8 @@ package net.wg.gui.battle.random.views.fragCorrelationBar
       
       private function updateFrags(param1:int, param2:int) : void
       {
-         this._allyTeamFragsStr = param1.toString();
-         this._enemyTeamFragsStr = param2.toString();
+         this._allyTeamFragsStr = this._locale.integer(param1);
+         this._enemyTeamFragsStr = this._locale.integer(param2);
          if(param1 == param2)
          {
             this._currentTeamSeparatorState = FRAG_EQUAL;

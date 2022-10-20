@@ -1,4 +1,4 @@
-import BigWorld
+import BigWorld, adisp
 from PlayerEvents import g_playerEvents
 from account_helpers.settings_core import settings_constants
 from gui.ClientUpdateManager import g_clientUpdateManager
@@ -15,14 +15,18 @@ from gui.shared import events, EVENT_BUS_SCOPE
 from gui.shared.event_dispatcher import showStorage, showVehicleRentalPage, showTelecomRentalPage
 from gui.shared.gui_items.items_actions import factory as ActionsFactory
 from helpers import dependency
-from skeletons.gui.game_control import IRestoreController
+from skeletons.gui.game_control import IRestoreController, IEventBattlesController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.shared import IItemsCache
+from gui.prb_control.dispatcher import g_prbLoader
+from gui.prb_control.entities.base.ctx import PrbAction
+from gui.prb_control.settings import PREBATTLE_ACTION_NAME
 
 class TankCarousel(TankCarouselMeta):
     itemsCache = dependency.descriptor(IItemsCache)
     lobbyContext = dependency.descriptor(ILobbyContext)
     restoreCtrl = dependency.descriptor(IRestoreController)
+    eventBattlesController = dependency.descriptor(IEventBattlesController)
 
     def __init__(self):
         super(TankCarousel, self).__init__()
@@ -31,8 +35,18 @@ class TankCarousel(TankCarouselMeta):
     def setRowCount(self, value):
         self.as_rowCountS(value)
 
+    @adisp.adisp_process
     def buyTank(self):
+        isEventPrbActive = self.eventBattlesController.isEventPrbActive()
+        if isEventPrbActive:
+            dispatcher = g_prbLoader.getDispatcher()
+            if dispatcher is None:
+                return
+            result = yield dispatcher.doSelectAction(PrbAction(PREBATTLE_ACTION_NAME.RANDOM))
+            if not result:
+                return
         self.fireEvent(events.LoadViewEvent(SFViewLoadParams(VIEW_ALIAS.LOBBY_TECHTREE)), EVENT_BUS_SCOPE.LOBBY)
+        return
 
     def restoreTank(self):
         showStorage(STORAGE_CONSTANTS.IN_HANGAR, STORAGE_CONSTANTS.VEHICLES_TAB_RESTORE)

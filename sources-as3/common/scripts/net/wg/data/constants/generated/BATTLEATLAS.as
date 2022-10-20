@@ -181,6 +181,8 @@ package net.wg.data.constants.generated
       
       public static const BADGE_126:String = "badge_126";
       
+      public static const BADGE_127:String = "badge_127";
+      
       public static const BADGE_13:String = "badge_13";
       
       public static const BADGE_14:String = "badge_14";
@@ -591,6 +593,12 @@ package net.wg.data.constants.generated
       
       public static const CRITICAL_BASE:String = "critical_base";
       
+      public static const CRITICAL_HITS:String = "critical_hits";
+      
+      public static const CRITICAL_HITS_ORANGE:String = "critical_hits_orange";
+      
+      public static const CRITICAL_HITS_RED:String = "critical_hits_red";
+      
       public static const CRITICAL_SIEGE:String = "critical_siege";
       
       public static const CRUISE_0:String = "Cruise_0";
@@ -644,6 +652,12 @@ package net.wg.data.constants.generated
       public static const CZECH_CZ19_VZ_44_1:String = "czech-Cz19_Vz_44_1";
       
       public static const CZECH_CZ20_SH_PTK_TVP_100_MM:String = "czech-Cz20_ShPTK_TVP_100_mm";
+      
+      public static const DAMAGE_DEALER:String = "damage_dealer";
+      
+      public static const DAMAGE_DEALER_ORANGE:String = "damage_dealer_orange";
+      
+      public static const DAMAGE_DEALER_RED:String = "damage_dealer_red";
       
       public static const DAMAGE_BAR_GREEN:String = "damageBar_green";
       
@@ -885,6 +899,12 @@ package net.wg.data.constants.generated
       
       public static const FC_FULL_STATS_SELF_BG:String = "FC_fullStats_selfBg";
       
+      public static const FIRESTARTER:String = "firestarter";
+      
+      public static const FIRESTARTER_ORANGE:String = "firestarter_orange";
+      
+      public static const FIRESTARTER_RED:String = "firestarter_red";
+      
       public static const FLAG_COOLDOWN_MINIMAP_ENTRY:String = "FlagCooldownMinimapEntry";
       
       public static const FLAG_NEUTRAL_MINIMAP_ENTRY:String = "FlagNeutralMinimapEntry";
@@ -960,6 +980,12 @@ package net.wg.data.constants.generated
       public static const FRANCE_F11_RENAULT_G1_R:String = "france-F11_Renault_G1R";
       
       public static const FRANCE_F110_LYNX_6X6:String = "france-F110_Lynx_6x6";
+      
+      public static const FRANCE_F1106_PANHARD_EBR_75_MLE1954_HW:String = "france-F1106_Panhard_EBR_75_Mle1954_HW";
+      
+      public static const FRANCE_F1107_HOTCHKISS_EBR_HW:String = "france-F1107_Hotchkiss_EBR_HW";
+      
+      public static const FRANCE_F1109_AMD_PANHARD_178_B_HW:String = "france-F1109_AMD_Panhard_178B_HW";
       
       public static const FRANCE_F111_AM39_GENDRON_SOMUA:String = "france-F111_AM39_Gendron_Somua";
       
@@ -2011,6 +2037,10 @@ package net.wg.data.constants.generated
       
       public static const MINIMAP_GRID_MINI:String = "minimapGridMini";
       
+      public static const MINIMAP_LANTERN:String = "minimapLantern";
+      
+      public static const MINIMAP_LANTERN_SPAWNED:String = "minimapLanternSpawned";
+      
       public static const MODULE_SELECT:String = "moduleSelect";
       
       public static const MODULE_SPARKS:String = "moduleSparks";
@@ -2239,6 +2269,12 @@ package net.wg.data.constants.generated
       
       public static const RANK_6_0_22X22:String = "rank_6_0_22x22";
       
+      public static const RAPID_FIRE:String = "rapid_fire";
+      
+      public static const RAPID_FIRE_ORANGE:String = "rapid_fire_orange";
+      
+      public static const RAPID_FIRE_RED:String = "rapid_fire_red";
+      
       public static const RECON_ENTRY:String = "ReconEntry";
       
       public static const RED_AT_SPG_DESTROYED:String = "redAT-SPGDestroyed";
@@ -2382,6 +2418,8 @@ package net.wg.data.constants.generated
       public static const RIBBONS_RAM_ENEMY:String = "ribbonsRamEnemy";
       
       public static const RIBBONS_RAM_ENEMY_BLIND:String = "ribbonsRamEnemyBlind";
+      
+      public static const RIBBONS_REPAIR:String = "ribbonsRepair";
       
       public static const RIBBONS_SPOTTED:String = "ribbonsSpotted";
       
@@ -2530,6 +2568,8 @@ package net.wg.data.constants.generated
       public static const STATS_TAB_BG:String = "stats_tab_bg";
       
       public static const STATS_TABLE_BG:String = "stats_table_bg";
+      
+      public static const STATS_TABLE_DAMAGE:String = "stats_table_damage";
       
       public static const STATS_TABLE_FRAGS:String = "stats_table_frags";
       

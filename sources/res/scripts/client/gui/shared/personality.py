@@ -161,6 +161,7 @@ def onAvatarBecomePlayer():
 
 def onAvatarBecomeNonPlayer():
     ServicesLocator.boosterStateProvider.onAvatarBecomeNonPlayer()
+    ServicesLocator.gameState.onAvatarBecomeNonPlayer()
 
 
 def onAccountBecomePlayer():
@@ -219,6 +220,7 @@ def init(loadingScreenGUI=None):
     global onAccountBecomeNonPlayer
     global onAccountBecomePlayer
     global onAccountShowGUI
+    global onAvatarBecomeNonPlayer
     global onAvatarBecomePlayer
     global onCenterIsLongDisconnected
     global onIGRTypeChanged
@@ -277,6 +279,7 @@ def fini():
     g_playerEvents.onAccountShowGUI -= onAccountShowGUI
     g_playerEvents.onAccountBecomeNonPlayer -= onAccountBecomeNonPlayer
     g_playerEvents.onAvatarBecomePlayer -= onAvatarBecomePlayer
+    g_playerEvents.onAvatarBecomeNonPlayer -= onAvatarBecomeNonPlayer
     g_playerEvents.onAccountBecomePlayer -= onAccountBecomePlayer
     g_playerEvents.onAvatarBecomeNonPlayer -= onAvatarBecomeNonPlayer
     g_playerEvents.onClientUpdated -= onClientUpdate

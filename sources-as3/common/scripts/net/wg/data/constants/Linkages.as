@@ -305,6 +305,14 @@ package net.wg.data.constants
       
       public static const EVENT_EQUIPMENT_BUTTON:String = "EventEquipmentButtonUI";
       
+      public static const HW_EQUIPMENT_BUTTON:String = "HWEquipmentButtonUI";
+      
+      public static const HW_ABILITY_BUTTON:String = "HWAbilityButtonUI";
+      
+      public static const HW_PASSIVE_ABILITY:String = "HWPassiveAbilityUI";
+      
+      public static const HW_SHELL_BUTTON_BATTLE:String = "HWShellButtonBattleUI";
+      
       public static const OPTIONAL_DEVICE_BUTTON:String = "OptionalDeviceButtonUI";
       
       public static const VEHICLE_SEASON_AWARD:String = "VehicleSeasonAwardUI";
@@ -338,6 +346,10 @@ package net.wg.data.constants
       public static const COMP7_TEAM_LEFT_MEMBER_RENDERER:String = "Comp7TeamLeftMemberRendererUI";
       
       public static const COMP7_TEAM_RIGHT_MEMBER_RENDERER:String = "Comp7TeamRightMemberRendererUI";
+      
+      public static const HALLOWEEN_TEAM_LEFT_MEMBER_RENDERER:String = "HalloweenTeamLeftMemberRendererUI";
+      
+      public static const HALLOWEEN_TEAM_RIGHT_MEMBER_RENDERER:String = "HalloweenTeamRightMemberRendererUI";
       
       public static const SCROLLBAR_TEAM_LEFT_MEMBER_RENDERER:String = "ScrollbarTeamLeftMemberRendererUI";
       
@@ -542,6 +554,8 @@ package net.wg.data.constants
       public static const YOH_CHASSIS_MODE_ANIMATION_UI:String = "YohChassisModeAnimationUI";
       
       public static const POSTMORTEN_PANEL:String = "PostmortemPanelUI";
+      
+      public static const HWPOSTMORTEM_PANEL:String = "FDPostmortemPanelUI";
       
       public static const ROLE_DESCRIPTION:String = "RoleDescriptionUI";
       
@@ -1050,6 +1064,10 @@ package net.wg.data.constants
       public static const COMP7_BATTLE_LOADING_TIPS_RENDERERS:String = "Comp7BattleTipRenderersUI";
       
       public static const BADGE_SUFFIX_ITEM:String = "SuffixItemUI";
+      
+      public static const EVENT_PROGRESSION_ENTRY_POINT:String = "EventProgressionEntryPointUI";
+      
+      public static const EVENT_SHOP_ENTRY_POINT:String = "EventShopEntryPointUI";
        
       
       public function Linkages()

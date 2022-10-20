@@ -20,6 +20,8 @@ package net.wg.gui.components.crosshairPanel
       private static const FRACTIONAL_FORMAT_CMD:String = "WG.getFractionalFormat";
       
       private static const TF_LEFT_MARGIN:int = 2;
+      
+      private static const INFINITY_COUNT:int = -999;
        
       
       public var timerProgressTextField:TextField = null;
@@ -51,6 +53,8 @@ package net.wg.gui.components.crosshairPanel
       public var distance:CrosshairDistanceContainer = null;
       
       public var autoloaderComponent:AutoloaderIndicator = null;
+      
+      public var infinityMC:Sprite = null;
       
       protected var health:Number = 0;
       
@@ -112,6 +116,10 @@ package net.wg.gui.components.crosshairPanel
          this.reloadTimeBlink.visible = false;
          this.updateQuickReloadingTimer();
          this.ammoLowTextField.visible = false;
+         if(this.infinityMC)
+         {
+            this.infinityMC.visible = false;
+         }
          addEventListener(CrosshairPanelEvent.SOUND,this.onCrosshairPanelSoundHandler);
          this._reloadTimeBlinkYPos = this.getReloadTimeBlinkYPos();
       }
@@ -448,6 +456,7 @@ package net.wg.gui.components.crosshairPanel
          this.centerMC = null;
          this.netMC = null;
          this.netSeparator = null;
+         this.infinityMC = null;
          this.autoloaderComponent.dispose();
          this.autoloaderComponent = null;
          this.distance.dispose();
@@ -545,6 +554,10 @@ package net.wg.gui.components.crosshairPanel
          {
             this._count = param1;
             this._currentAmmoTextField.text = this._count.toString();
+            if(this._count == INFINITY_COUNT)
+            {
+               this.updateAmmoCountVisibility();
+            }
          }
       }
       
@@ -560,7 +573,11 @@ package net.wg.gui.components.crosshairPanel
       private function updateAmmoCountVisibility() : void
       {
          var _loc1_:Boolean = this._netSeparatorVisible && (this._visibleNetMask & CROSSHAIR_CONSTANTS.VISIBLE_AMMO_COUNT) != 0;
-         this.showAmmoCountField(_loc1_);
+         if(this.infinityMC)
+         {
+            this.infinityMC.visible = this._count == INFINITY_COUNT && !this._isAutoloader && _loc1_;
+         }
+         this.showAmmoCountField(this._count != INFINITY_COUNT && _loc1_);
       }
       
       private function setReloadingAlpha(param1:Number) : void

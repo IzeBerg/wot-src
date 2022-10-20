@@ -494,13 +494,18 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
     __BRResultKeys = {-1: b'battleRoyaleDefeatResult', 
        0: b'battleRoyaleDefeatResult', 
        1: b'battleRoyaleVictoryResult'}
+    __eventBattleResultKeys = {-1: b'eventBattleDefeatResult', 
+       0: b'eventBattleDrawGameResult', 
+       1: b'eventBattleVictoryResult'}
     __MTResultKeys = {SCENARIO_RESULT.LOSE: b'mapsTrainingDefeatResult', 
        SCENARIO_RESULT.WIN: b'mapsTrainingVictoryResult'}
     __COMP7ResultsKeys = {SCENARIO_RESULT.LOSE: b'comp7BattleDefeatResult', 
        SCENARIO_RESULT.PARTIAL: b'comp7BattleDrawGameResult', 
        SCENARIO_RESULT.WIN: b'comp7BattleVictoryResult'}
     __goldTemplateKey = b'battleResultGold'
+    __creditsTemplateKey = b'battleResultCredits'
     __questsTemplateKey = b'battleQuests'
+    __hwXpTemplateKey = b'hwBattleResultXP'
 
     def isNotify(self):
         return True
@@ -518,20 +523,31 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
                 arenaType = None
             arenaCreateTime = battleResults.get(b'arenaCreateTime', None)
             if arenaCreateTime and arenaType:
-                ctx = {b'arenaName': i18n.makeString(arenaType.name), b'vehicleNames': b'N/A', 
-                   b'xp': b'0', 
-                   Currency.CREDITS: b'0'}
+                ctx = {b'arenaName': i18n.makeString(arenaType.name), b'vehicleNames': b'N/A'}
+                guiType = battleResults.get(b'guiType', 0)
+                if guiType != ARENA_GUI_TYPE.EVENT_BATTLES:
+                    ctx.update({b'xp': b'0', 
+                       Currency.CREDITS: b'0'})
+                else:
+                    ctx.update({b'xp': b'', 
+                       Currency.CREDITS: b''})
                 vehicleNames = {intCD:self._itemsCache.items.getItemByCD(intCD) for intCD in battleResults.get(b'playerVehicles', {}).keys()}
                 ctx[b'vehicleNames'] = (b', ').join(map(operator.attrgetter(b'userName'), sorted(vehicleNames.values())))
                 xp = battleResults.get(b'xp')
-                if xp:
+                if xp and guiType != ARENA_GUI_TYPE.EVENT_BATTLES:
                     ctx[b'xp'] = backport.getIntegralFormat(xp)
+                hwXP = battleResults.get(b'hwXP')
+                if hwXP and guiType == ARENA_GUI_TYPE.EVENT_BATTLES:
+                    ctx[b'xp'] = self.__makeHWXpString(hwXP)
                 battleResKey = battleResults.get(b'isWinner', 0)
                 ctx[b'xpEx'] = self.__makeXpExString(xp, battleResKey, battleResults.get(b'xpPenalty', 0), battleResults)
                 ctx[Currency.GOLD] = self.__makeGoldString(battleResults.get(Currency.GOLD, 0))
                 accCredits = battleResults.get(Currency.CREDITS) - battleResults.get(b'creditsToDraw', 0)
                 if accCredits:
-                    ctx[Currency.CREDITS] = self.__makeCurrencyString(Currency.CREDITS, accCredits)
+                    if guiType == ARENA_GUI_TYPE.EVENT_BATTLES:
+                        ctx[Currency.CREDITS] = self.__makeCreditsString(accCredits)
+                    else:
+                        ctx[Currency.CREDITS] = self.__makeCurrencyString(Currency.CREDITS, accCredits)
                 ctx[b'piggyBank'] = self.__makePiggyBankString(battleResults.get(b'piggyBank'))
                 accCrystal = battleResults.get(Currency.CRYSTAL)
                 ctx[b'crystalStr'] = b''
@@ -554,8 +570,7 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
                     ctx[b'platformCurrencyStr'] = b'<br/>' + (b'<br/>').join(g_settings.htmlTemplates.format(b'platformCurrency', {b'msg': backport.text(R.strings.messenger.platformCurrencyMsg.received.dyn(currency)()), b'count': backport.getIntegralFormat(countDict.get(b'count', 0))}) for currency, countDict in platformCurrencies.iteritems())
                 else:
                     ctx[b'platformCurrencyStr'] = b''
-                guiType = battleResults.get(b'guiType', 0)
-                ctx[b'achieves'], ctx[b'badges'] = self.__makeAchievementsAndBadgesStrings(battleResults)
+                ctx[b'achieves'], ctx[b'badges'] = self.__makeAchievementsAndBadgesStrings(battleResults, guiType)
                 ctx[b'rankedProgress'] = self.__makeRankedFlowStrings(battleResults)
                 ctx[b'rankedBonusBattles'] = self.__makeRankedBonusString(battleResults)
                 ctx[b'battlePassProgress'] = self.__makeBattlePassProgressionString(guiType, battleResults)
@@ -577,6 +592,8 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
                 elif guiType == ARENA_GUI_TYPE.COMP7:
                     battleResultKeys = self.__COMP7ResultsKeys
                     ctx = self.__makeComp7MsgCtx(battleResults, ctx)
+                elif guiType == ARENA_GUI_TYPE.EVENT_BATTLES:
+                    battleResultKeys = self.__eventBattleResultKeys
                 else:
                     battleResultKeys = self.__battleResultKeys
                 templateName = battleResultKeys[battleResKey]
@@ -692,7 +709,18 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
         formatter = getBWFormatter(currency)
         return formatter(credit)
 
-    def __makeAchievementsAndBadgesStrings(self, battleResults):
+    def __makeCreditsString(self, accCredits):
+        if not accCredits:
+            return b''
+        formatter = getBWFormatter(Currency.CREDITS)
+        return g_settings.htmlTemplates.format(self.__creditsTemplateKey, {Currency.CREDITS: formatter(accCredits)})
+
+    def __makeHWXpString(self, xp):
+        if not xp:
+            return b''
+        return g_settings.htmlTemplates.format(self.__hwXpTemplateKey, {b'xp': backport.getIntegralFormat(xp)})
+
+    def __makeAchievementsAndBadgesStrings(self, battleResults, guiType):
         popUpRecords = []
         badges = []
         for _, vehBattleResults in battleResults.get(b'playerVehicles', {}).iteritems():
@@ -710,6 +738,14 @@ class BattleResultsFormatter(WaitItemsSyncFormatter):
 
             if b'markOfMastery' in vehBattleResults and vehBattleResults[b'markOfMastery'] > 0:
                 popUpRecords.append(getAchievementFactory((ACHIEVEMENT_BLOCK.TOTAL, b'markOfMastery')).create(value=vehBattleResults[b'markOfMastery']))
+
+        if guiType == ARENA_GUI_TYPE.EVENT_BATTLES:
+            dossierResults = battleResults.get(b'dossier', {})
+            for records in dossierResults.itervalues():
+                for recordName in records:
+                    block, id_ = recordName
+                    if block == BADGES_BLOCK:
+                        badges.append(id_)
 
         achievementsStrings = [ a.getUserName() for a in sorted(popUpRecords) ]
         raresStrings = _getRaresAchievementsStrings(battleResults)
@@ -811,27 +847,32 @@ class AutoMaintenanceFormatter(WaitItemsSyncFormatter):
                                                    AUTO_MAINTENANCE_TYPE.LOAD_AMMO: R.strings.messenger.serviceChannelMessages.autoLoadError(), 
                                                    AUTO_MAINTENANCE_TYPE.EQUIP: R.strings.messenger.serviceChannelMessages.autoEquipError(), 
                                                    AUTO_MAINTENANCE_TYPE.EQUIP_BOOSTER: R.strings.messenger.serviceChannelMessages.autoEquipBoosterError(), 
-                                                   AUTO_MAINTENANCE_TYPE.CUSTOMIZATION: R.strings.messenger.serviceChannelMessages.autoRentStyleError()}, 
+                                                   AUTO_MAINTENANCE_TYPE.CUSTOMIZATION: R.strings.messenger.serviceChannelMessages.autoRentStyleError(), 
+                                                   AUTO_MAINTENANCE_TYPE.EVENT_EQUIP: R.strings.hw_messenger.serviceChannelMessages.eventAutoEquipMoneyError()}, 
        AUTO_MAINTENANCE_RESULT.OK: {AUTO_MAINTENANCE_TYPE.REPAIR: R.strings.messenger.serviceChannelMessages.autoRepairSuccess(), 
                                     AUTO_MAINTENANCE_TYPE.LOAD_AMMO: R.strings.messenger.serviceChannelMessages.autoLoadSuccess(), 
                                     AUTO_MAINTENANCE_TYPE.EQUIP: R.strings.messenger.serviceChannelMessages.autoEquipSuccess(), 
                                     AUTO_MAINTENANCE_TYPE.EQUIP_BOOSTER: R.strings.messenger.serviceChannelMessages.autoEquipBoosterSuccess(), 
-                                    AUTO_MAINTENANCE_TYPE.CUSTOMIZATION: R.strings.messenger.serviceChannelMessages.autoRentStyleSuccess()}, 
+                                    AUTO_MAINTENANCE_TYPE.CUSTOMIZATION: R.strings.messenger.serviceChannelMessages.autoRentStyleSuccess(), 
+                                    AUTO_MAINTENANCE_TYPE.EVENT_EQUIP: R.strings.hw_messenger.serviceChannelMessages.eventAutoEquipSuccess()}, 
        AUTO_MAINTENANCE_RESULT.NOT_PERFORMED: {AUTO_MAINTENANCE_TYPE.REPAIR: R.strings.messenger.serviceChannelMessages.autoRepairSkipped(), 
                                                AUTO_MAINTENANCE_TYPE.LOAD_AMMO: R.strings.messenger.serviceChannelMessages.autoLoadSkipped(), 
                                                AUTO_MAINTENANCE_TYPE.EQUIP: R.strings.messenger.serviceChannelMessages.autoEquipSkipped(), 
                                                AUTO_MAINTENANCE_TYPE.EQUIP_BOOSTER: R.strings.messenger.serviceChannelMessages.autoEquipBoosterSkipped(), 
-                                               AUTO_MAINTENANCE_TYPE.CUSTOMIZATION: R.strings.messenger.serviceChannelMessages.autoRentStyleSkipped()}, 
+                                               AUTO_MAINTENANCE_TYPE.CUSTOMIZATION: R.strings.messenger.serviceChannelMessages.autoRentStyleSkipped(), 
+                                               AUTO_MAINTENANCE_TYPE.EVENT_EQUIP: R.strings.hw_messenger.serviceChannelMessages.eventAutoEquipError()}, 
        AUTO_MAINTENANCE_RESULT.DISABLED_OPTION: {AUTO_MAINTENANCE_TYPE.REPAIR: R.strings.messenger.serviceChannelMessages.autoRepairDisabledOption(), 
                                                  AUTO_MAINTENANCE_TYPE.LOAD_AMMO: R.strings.messenger.serviceChannelMessages.autoLoadDisabledOption(), 
                                                  AUTO_MAINTENANCE_TYPE.EQUIP: R.strings.messenger.serviceChannelMessages.autoEquipDisabledOption(), 
                                                  AUTO_MAINTENANCE_TYPE.EQUIP_BOOSTER: R.strings.messenger.serviceChannelMessages.autoEquipBoosterDisabledOption(), 
-                                                 AUTO_MAINTENANCE_TYPE.CUSTOMIZATION: R.strings.messenger.serviceChannelMessages.autoRentStyleDisabledOption()}, 
+                                                 AUTO_MAINTENANCE_TYPE.CUSTOMIZATION: R.strings.messenger.serviceChannelMessages.autoRentStyleDisabledOption(), 
+                                                 AUTO_MAINTENANCE_TYPE.EVENT_EQUIP: R.strings.hw_messenger.serviceChannelMessages.eventAutoEquipError()}, 
        AUTO_MAINTENANCE_RESULT.NO_WALLET_SESSION: {AUTO_MAINTENANCE_TYPE.REPAIR: R.strings.messenger.serviceChannelMessages.autoRepairErrorNoWallet(), 
                                                    AUTO_MAINTENANCE_TYPE.LOAD_AMMO: R.strings.messenger.serviceChannelMessages.autoLoadErrorNoWallet(), 
                                                    AUTO_MAINTENANCE_TYPE.EQUIP: R.strings.messenger.serviceChannelMessages.autoEquipErrorNoWallet(), 
                                                    AUTO_MAINTENANCE_TYPE.EQUIP_BOOSTER: R.strings.messenger.serviceChannelMessages.autoBoosterErrorNoWallet(), 
-                                                   AUTO_MAINTENANCE_TYPE.CUSTOMIZATION: R.strings.messenger.serviceChannelMessages.autoRentStyleErrorNoWallet()}, 
+                                                   AUTO_MAINTENANCE_TYPE.CUSTOMIZATION: R.strings.messenger.serviceChannelMessages.autoRentStyleErrorNoWallet(), 
+                                                   AUTO_MAINTENANCE_TYPE.EVENT_EQUIP: R.strings.hw_messenger.serviceChannelMessages.eventAutoEquipError()}, 
        AUTO_MAINTENANCE_RESULT.RENT_IS_OVER: {AUTO_MAINTENANCE_TYPE.CUSTOMIZATION: R.strings.messenger.serviceChannelMessages.autoRentStyleRentIsOver.text()}, 
        AUTO_MAINTENANCE_RESULT.RENT_IS_ALMOST_OVER: {AUTO_MAINTENANCE_TYPE.CUSTOMIZATION: R.strings.messenger.serviceChannelMessages.autoRentStyleRentIsAlmostOverAutoprolongationOFF.text()}}
     __currencyTemplates = {Currency.CREDITS: b'PurchaseForCreditsSysMessage', 
@@ -1694,7 +1735,8 @@ class InvoiceReceivedFormatter(WaitItemsSyncFormatter):
                     else:
                         item = vehicles_core.getItemByCompactDescr(itemCompactDescr)
                         userString = item.i18n.userString
-                    itemString = (b'{0:s} "{1:s}" - {2:d} {3:s}').format(getTypeInfoByName(item.itemTypeName)[b'userString'], userString, abs(count), backport.text(R.strings.messenger.serviceChannelMessages.invoiceReceived.pieces()))
+                    itemTypeNameString = backport.text(R.strings.item_types.halloween_equipment.name()) if item.typeID == I_T.equipment and b'halloween_equipment' in item.tags else getTypeInfoByName(item.itemTypeName)[b'userString']
+                    itemString = (b'{0:s} "{1:s}" - {2:d} {3:s}').format(itemTypeNameString, userString, abs(count), backport.text(R.strings.messenger.serviceChannelMessages.invoiceReceived.pieces()))
                     if count > 0:
                         accrued.append(itemString)
                     else:
@@ -2866,7 +2908,7 @@ class QuestAchievesFormatter(object):
 
 class TokenQuestsFormatter(WaitItemsSyncFormatter):
     __eventsCache = dependency.descriptor(IEventsCache)
-    __MESSAGE_TEMPLATE = b'tokenQuests'
+    _MESSAGE_TEMPLATE = b'tokenQuests'
 
     def __init__(self, subFormatters=()):
         super(TokenQuestsFormatter, self).__init__()
@@ -2930,8 +2972,8 @@ class TokenQuestsFormatter(WaitItemsSyncFormatter):
         fmt = self._achievesFormatter.formatQuestAchieves(rewards, asBattleFormatter=False, processCustomizations=True)
         if fmt is not None:
             templateParams = {b'achieves': fmt}
-            settings = self._getGuiSettings(message, self.__MESSAGE_TEMPLATE)
-            formatted = g_settings.msgTemplates.format(self.__MESSAGE_TEMPLATE, templateParams)
+            settings = self._getGuiSettings(message, self._MESSAGE_TEMPLATE)
+            formatted = g_settings.msgTemplates.format(self._MESSAGE_TEMPLATE, templateParams)
             return MessageData(formatted, settings)
         else:
             return
@@ -3540,6 +3582,20 @@ class PrbVehicleMaxScoutKickFormatter(ServiceChannelFormatter):
             if vehicle:
                 formatted = g_settings.msgTemplates.format(b'prbVehicleMaxScoutKick', ctx={b'vehName': vehicle.userName})
         return [MessageData(formatted, self._getGuiSettings(message, b'prbVehicleMaxScoutKick'))]
+
+
+class PrbVehicleBadTypeKickFormatter(ServiceChannelFormatter):
+    __itemsCache = dependency.descriptor(IItemsCache)
+
+    def format(self, message, *args):
+        formatted = None
+        data = message.data
+        vehInvID = data.get(b'vehInvID', None)
+        if vehInvID:
+            vehicle = self.__itemsCache.items.getVehicle(vehInvID)
+            if vehicle:
+                formatted = g_settings.msgTemplates.format(b'prbVehicleBadTypeKick', ctx={b'vehName': vehicle.userName})
+        return [MessageData(formatted, self._getGuiSettings(message, b'prbVehicleBadTypeKick'))]
 
 
 class RotationGroupLockFormatter(ServiceChannelFormatter):
@@ -5257,3 +5313,34 @@ class PersonalReservesHaveBeenConvertedFormatter(ServiceChannelFormatter):
         formatted = g_settings.msgTemplates.format(self.__TEMPLATE)
         return [
          MessageData(formatted, self._getGuiSettings(message, self.__TEMPLATE))]
+
+
+class HWDailyQuestFormatter(TokenQuestsFormatter):
+    _MESSAGE_TEMPLATE = b'dailyQuests'
+
+    def __init__(self):
+        super(HWDailyQuestFormatter, self).__init__()
+        self._achievesFormatter = HWQuestAchievesFormatter()
+
+
+class HWQuestAchievesFormatter(QuestAchievesFormatter):
+
+    @classmethod
+    def formatQuestAchieves(cls, data, asBattleFormatter, processCustomizations=True, processTokens=True):
+        result = []
+        items = data.get(b'items', {})
+        itemsNames = []
+        for intCD, count in items.iteritems():
+            itemDescr = vehicles_core.getItemByCompactDescr(intCD)
+            itemsNames.append(backport.text(R.strings.hw_messenger.serviceChannelMessages.battleResults.quests.items.name(), name=itemDescr.i18n.userString, count=backport.getIntegralFormat(count)))
+
+        if itemsNames:
+            result.append(cls.__makeQuestsAchieve(b'hwBattleQuestsItems', names=(b', ').join(itemsNames)))
+        if result:
+            return cls._SEPARATOR.join(result)
+        else:
+            return
+
+    @classmethod
+    def __makeQuestsAchieve(cls, key, **kwargs):
+        return g_settings.htmlTemplates.format(key, kwargs)

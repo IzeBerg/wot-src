@@ -25,6 +25,10 @@ def importClass(classPath, defaultMod):
     return getattr(mod, className, None)
 
 
+def mergeSection(xmlPath, mergeFiles):
+    return _MergeExtensionFile.openSection(xmlPath, mergeFiles)
+
+
 class _MergeExtensionFile(object):
 
     @classmethod
@@ -53,7 +57,7 @@ class _MergeExtensionFile(object):
         if mergeFiles:
             genString += cls._closeTag(_MERGE_TAG)
         genString += cls._closeTag(_ROOT_TAG)
-        section = rmgr.DataSection()
+        section = rmgr.DataSection('root')
         section.createSectionFromString(genString)
         if section.child(0).name == 'root':
             section = section.child(0)
@@ -86,4 +90,8 @@ class ResMgr(object):
         readExtXML, readMethod = isExtXML(filepath)
         if not readExtXML:
             return rmgr.openSection(filepath, createIfMissing)
-        return _MergeExtensionFile.openSection(filepath, readMethod == READ_METHOD.MERGE)
+        return mergeSection(filepath, readMethod == READ_METHOD.MERGE)
+
+    @staticmethod
+    def purge(xml_file, recursive=False):
+        rmgr.purge(xml_file, recursive)

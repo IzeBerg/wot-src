@@ -1321,6 +1321,8 @@ package
       
       public static const DETAILS_CONDITIONS_CUMULATIVE_XP:String = "#quests:details/conditions/cumulative/xp";
       
+      public static const DETAILS_CONDITIONS_CUMULATIVE_HWXP:String = "#quests:details/conditions/cumulative/hwXP";
+      
       public static const DETAILS_CONDITIONS_CUMULATIVE_DIRECTHITS:String = "#quests:details/conditions/cumulative/directHits";
       
       public static const DETAILS_CONDITIONS_CUMULATIVE_DIRECTENEMYHITS:String = "#quests:details/conditions/cumulative/directEnemyHits";
