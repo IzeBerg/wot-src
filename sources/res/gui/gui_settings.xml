@@ -13,27 +13,27 @@
 		<type>url</type>
 	</setting>
 	<setting>
-		https://ru.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://ru.wargaming.net/shop/wot/gold/?utm_source=garage&amp;utm_medium=button&amp;utm_content=get-gold&amp;utm_campaign=wot-client)
+		https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://eu.wargaming.net/shop/wot/gold/?utm_source=garage&amp;utm_medium=button&amp;utm_content=get-gold&amp;utm_campaign=wot-client)
 		<name>paymentURL</name>
 		<type>url</type>
 	</setting>
 	<setting>
-		https://ru.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://ru.wargaming.net/personal/?utm_source=notify&amp;utm_medium=link&amp;utm_campaign=wot-client)
+		https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://eu.wargaming.net/personal/?utm_source=notify&amp;utm_medium=link&amp;utm_campaign=wot-client)
 		<name>securitySettingsURL</name>
 		<type>url</type>
 	</setting>
 	<setting>
-		https://ru.wargaming.net/support/?utm_source=garage&amp;utm_medium=link&amp;utm_campaign=wot-client
+		https://eu.wargaming.net/support/?utm_source=garage&amp;utm_medium=link&amp;utm_campaign=wot-client
 		<name>supportURL</name>
 		<type>url</type>
 	</setting>
 	<setting>
-		https://worldoftanks.ru/clanwars/strongholds/?utm_campaign=wot-client&amp;utm_medium=link&amp;utm_source=strongholds
+		https://worldoftanks.eu/clanwars/strongholds/?utm_campaign=wot-client&amp;utm_medium=link&amp;utm_source=strongholds
 		<name>fortDescription</name>
 		<type>url</type>
 	</setting>
 	<setting>
-		https://ru.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://ru.wargaming.net/clans/recruitstation/?utm_campaign=wot-client&amp;utm_medium=link&amp;utm_source=strongholds)
+		https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://eu.wargaming.net/clans/recruitstation/?utm_campaign=wot-client&amp;utm_medium=link&amp;utm_source=strongholds)
 		<name>clanSearch</name>
 		<type>url</type>
 	</setting>
@@ -190,7 +190,7 @@
 		<type>url</type>
 	</setting>
 	<setting>
-		https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/cybersport/
+		https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/cybersport/
 		<name>clubHelp</name>
 		<type>url</type>
 	</setting>
@@ -200,62 +200,136 @@
 		<type>url</type>
 	</setting>
 	<setting>
-		https://ru.wargaming.net/rp/invitation/
+		https://eu.wargaming.net/rp/invitation/
 		<name>invitesManagementURL</name>
 		<type>url</type>
 	</setting>
 	<setting>
-		https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/hangar_training/medicinekit/
+		https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/hangar_training/medicinekit/
 		<name>medkitHelp</name>
 		<type>url</type>
 	</setting>
 	<setting>
-		https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/hangar_training/repair/
+		https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/hangar_training/repair/
 		<name>repairkitHelp</name>
 		<type>url</type>
 	</setting>
 	<setting>
-		https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/hangar_training/firefighting/
+		https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/hangar_training/firefighting/
 		<name>fireExtinguisherHelp</name>
 		<type>url</type>
 	</setting>
 	<setting>
-		https://ru.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=https://ru.wargaming.net/globalmap/?utm_campaign=wot-client&amp;utm_medium=link&amp;utm_source=clan-summary
+		https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=https://eu.wargaming.net/globalmap/?utm_campaign=wot-client&amp;utm_medium=link&amp;utm_source=clan-summary
 		<name>globalMapSummary</name>
 		<type>url</type>
 	</setting>
 	<setting>
-		https://ru.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=http://worldoftanks.ru/clanwars/globalmap/?utm_campaign=wot-client&amp;utm_medium=link&amp;utm_source=clan-summary
+		https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=http://worldoftanks.eu/clanwars/globalmap/?utm_campaign=wot-client&amp;utm_medium=link&amp;utm_source=clan-summary
 		<name>globalMapPromoSummary</name>
 		<type>url</type>
 	</setting>
 	<setting>
-		https://ru.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=https://ru.wargaming.net/globalmap/?utm_campaign=wot-client&amp;utm_medium=link&amp;utm_source=clan-cap
+		https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=https://eu.wargaming.net/globalmap/?utm_campaign=wot-client&amp;utm_medium=link&amp;utm_source=clan-cap
 		<name>globalMapCap</name>
 		<type>url</type>
 	</setting>
 	<setting>
-		https://ru.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=http://worldoftanks.ru/clanwars/globalmap/?utm_campaign=wot-client&amp;utm_medium=link&amp;utm_source=clan-cap
+		https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=http://worldoftanks.eu/clanwars/globalmap/?utm_campaign=wot-client&amp;utm_medium=link&amp;utm_source=clan-cap
 		<name>globalMapPromo</name>
 		<type>url</type>
 	</setting>
 	<setting>
-		https://ru.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://ru.wargaming.net/shop/wot/main/?utm_campaign=wot-client&amp;utm_medium=button&amp;utm_source=garage&amp;utm_content=premshop-main)
 		<name>premShopURL</name>
-		<type>url</type>
+		<type>macros</type>
+		<macros>LANGUAGE_CODE</macros>
+		<value>
+			<item>
+				https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://eu.wargaming.net/shop/wot/main/?utm_campaign=wot-client&amp;utm_medium=button&amp;utm_source=garage&amp;utm_content=premshop-main&amp;language=$LANGUAGE_CODE)
+				<name>fr</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://eu.wargaming.net/shop/wot/main/?utm_campaign=wot-client&amp;utm_medium=button&amp;utm_source=garage&amp;utm_content=premshop-main&amp;language=$LANGUAGE_CODE)
+				<name>es</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://eu.wargaming.net/shop/wot/main/?utm_campaign=wot-client&amp;utm_medium=button&amp;utm_source=garage&amp;utm_content=premshop-main&amp;language=$LANGUAGE_CODE)
+				<name>de</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://eu.wargaming.net/shop/wot/main/?utm_campaign=wot-client&amp;utm_medium=button&amp;utm_source=garage&amp;utm_content=premshop-main&amp;language=$LANGUAGE_CODE)
+				<name>pl</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://eu.wargaming.net/shop/wot/main/?utm_campaign=wot-client&amp;utm_medium=button&amp;utm_source=garage&amp;utm_content=premshop-main&amp;language=$LANGUAGE_CODE)
+				<name>cs</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://eu.wargaming.net/shop/wot/main/?utm_campaign=wot-client&amp;utm_medium=button&amp;utm_source=garage&amp;utm_content=premshop-main&amp;language=$LANGUAGE_CODE)
+				<name>tr</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://eu.wargaming.net/shop/wot/main/?utm_campaign=wot-client&amp;utm_medium=button&amp;utm_source=garage&amp;utm_content=premshop-main&amp;language=en)
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
 	</setting>
 	<setting>
-		https://ru.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://ru.wargaming.net/news/game-events/)
+		https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL(https://eu.wargaming.net/news/game-events/)
 		<name>frontlineChangesURL</name>
 		<type>url</type>
 	</setting>
 	<setting>
-		https://ru.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL($PARAMS(https://ru.wargaming.net/shop/wot/filter/))
 		<name>tokenShopURL</name>
-		<type>url</type>
+		<type>macros</type>
+		<macros>LANGUAGE_CODE</macros>
+		<value>
+			<item>
+				https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL($PARAMS(https://eu.wargaming.net/shop/wot/filter/?language=$LANGUAGE_CODE))
+				<name>fr</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL($PARAMS(https://eu.wargaming.net/shop/wot/filter/?language=$LANGUAGE_CODE))
+				<name>es</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL($PARAMS(https://eu.wargaming.net/shop/wot/filter/?language=$LANGUAGE_CODE))
+				<name>de</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL($PARAMS(https://eu.wargaming.net/shop/wot/filter/?language=$LANGUAGE_CODE))
+				<name>pl</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL($PARAMS(https://eu.wargaming.net/shop/wot/filter/?language=$LANGUAGE_CODE))
+				<name>cs</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL($PARAMS(https://eu.wargaming.net/shop/wot/filter/?language=$LANGUAGE_CODE))
+				<name>tr</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://eu.wargaming.net/id/signin/token/?account_id=$DB_ID&amp;token=$WGNI_TOKEN&amp;continue_on_failure=1&amp;next=$TARGET_URL($PARAMS(https://eu.wargaming.net/shop/wot/filter/?language=en))
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
 	</setting>
 	<setting>
-		https://ru.wargaming.net/shop/api/v2/items?filter[custom_properties]=%s&amp;fields[items]=custom_properties
+		https://eu.wargaming.net/shop/api/v2/items?filter[custom_properties]=%s&amp;fields[items]=custom_properties
 		<name>tokenShopAvailabilityURL</name>
 		<type>url</type>
 	</setting>
@@ -268,14 +342,14 @@
 		<name>nations_order</name>
 		<type>list</type>
 		<value>
-			<item>ussr</item>
 			<item>germany</item>
+			<item>ussr</item>
 			<item>usa</item>
 			<item>france</item>
 			<item>uk</item>
-			<item>czech</item>
 			<item>china</item>
 			<item>japan</item>
+			<item>czech</item>
 			<item>poland</item>
 			<item>sweden</item>
 			<item>italy</item>
@@ -434,7 +508,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				https://rss.portal-ct.worldoftanks.ru/$LANGUAGE_CODE
+				https://rss-portal-ct.worldoftanks.eu/$LANGUAGE_CODE
 				<name>url</name>
 				<type>url</type>
 			</item>
@@ -541,7 +615,7 @@
 				<value>False</value>
 			</item>
 			<item>
-				https://ru.wargaming.net
+				https://eu.wargaming.net
 				<name>url</name>
 				<type>url</type>
 			</item>
@@ -608,7 +682,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				https://webbrg-ct.worldoftanks.ru
+				https://webbrg-ct.worldoftanks.eu
 				<name>webBridgeRootURL</name>
 				<type>url</type>
 			</item>
@@ -695,7 +769,7 @@
 				<type>dict</type>
 				<value>
 					<item>
-						http://forum.worldoftanks.ru/index.php?/forum/221-/&amp;from=ct_client
+						http://forum.worldoftanks.eu/index.php?/forum/2652-public-test/
 						<name>url</name>
 						<type>url</type>
 					</item>
@@ -821,7 +895,7 @@
 		<value>1209600</value>
 	</setting>
 	<setting>
-		https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promoscreens/
+		https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promoscreens/
 		<name>promoscreens</name>
 		<type>url</type>
 	</setting>
@@ -943,7 +1017,7 @@
 						<value>True</value>
 					</item>
 					<item>
-						https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/lbz20/
+						https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/lbz20/
 						<name>url</name>
 						<type>url</type>
 					</item>
@@ -956,7 +1030,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				https://wotrp-ru.wgcdn.co
+				https://wotrp-eu.wgcdn.co
 				<name>baseUrl</name>
 				<type>url</type>
 			</item>
@@ -981,7 +1055,7 @@
 						<value>True</value>
 					</item>
 					<item>
-						https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/progressiveDecalsTutorial/
+						https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/progressiveDecalsTutorial/
 						<name>url</name>
 						<type>url</type>
 					</item>
@@ -1129,6 +1203,11 @@
 				<type>url</type>
 			</item>
 			<item>
+				$PARAMS(/hw2022_category/hw2022_category)
+				<name>hw22Shop</name>
+				<type>url</type>
+			</item>
+			<item>
 				$PARAMS(/auction/auction)
 				<name>integratedAuction</name>
 				<type>url</type>
@@ -1171,7 +1250,7 @@
 		<type>dict</type>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/wot_premium/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/wot_premium/
 				<name>baseURL</name>
 				<type>url</type>
 			</item>
@@ -1261,12 +1340,12 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/dogtag/
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/dogtag/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/dogtag/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/dogtag/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1298,12 +1377,12 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/dogtagVideo1/
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/dogtagVideo1/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/dogtagVideo1/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/dogtagVideo1/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1335,12 +1414,12 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/dogtagVideo2/
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/dogtagVideo2/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/dogtagVideo2/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/dogtagVideo2/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1388,7 +1467,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://worldoftanks.ru/$LANGUAGE_CODE/tournaments/
+				https://worldoftanks.eu/$LANGUAGE_CODE/tournaments/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1420,7 +1499,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://ru.wargaming.net/globalmap/
+				https://eu.wargaming.net/globalmap/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1452,12 +1531,12 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/RandomBattles/
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/RandomBattles/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/RandomBattles/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/RandomBattles/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1489,12 +1568,12 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/Bootcamp/
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/Bootcamp/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/Bootcamp/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/Bootcamp/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1526,12 +1605,12 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/Strongholds/
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/Strongholds/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/Strongholds/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/Strongholds/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1563,12 +1642,12 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/SpecialBattles/
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/SpecialBattles/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/SpecialBattles/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/SpecialBattles/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1600,12 +1679,12 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/TrainingRooms/
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/TrainingRooms/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/TrainingRooms/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/TrainingRooms/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1637,12 +1716,12 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/RankedBattles/
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/RankedBattles/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/RankedBattles/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/RankedBattles/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1674,12 +1753,12 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://steelhunter-ct.worldoftanks.ru/$LANGUAGE_CODE/?fullscreenMode=true
+				https://steelhunter-ct.worldoftanks.eu/$LANGUAGE_CODE/?fullscreenMode=true
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://steelhunter.worldoftanks.ru/$LANGUAGE_CODE/?fullscreenMode=true
+				https://steelhunter.worldoftanks.eu/$LANGUAGE_CODE/?fullscreenMode=true
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1730,12 +1809,12 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/mapbox/
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/mapbox/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/mapbox/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/mapbox/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1747,9 +1826,9 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/WotPlus/
 				<name>default</name>
 				<type>url</type>
+				<value/>
 			</item>
 		</value>
 	</setting>
@@ -1779,12 +1858,12 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/cartography/
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/cartography/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/cartography/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/cartography/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1816,13 +1895,149 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://frontline-ct.worldoftanks.ru/$LANGUAGE_CODE/information/?modeselector=true
+				https://frontline-ct.worldoftanks.eu/$LANGUAGE_CODE/information/?modeselector=true
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://frontline.worldoftanks.ru/$LANGUAGE_CODE/information/?modeselector=true
+				https://frontline.worldoftanks.eu/$LANGUAGE_CODE/information/?modeselector=true
 				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>infoPageEvent</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/hw22About/
+				<name>NA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/hw22About/
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/hw22About/
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/hw22About/
+				<name>CN</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/hw22About/
+				<name>CT</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/hw22About/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>aboutCoven</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://webbrg.worldoftanks.com/$LANGUAGE_CODE/promocontent/hw22Coven/
+				<name>NA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/hw22Coven/
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.asia/$LANGUAGE_CODE/promocontent/hw22Coven/
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-cn360.wotgame.cn/$LANGUAGE_CODE/promocontent/hw22Coven/
+				<name>CN</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/hw22Coven/
+				<name>CT</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/hw22Coven/
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>portalLink</name>
+		<type>macros</type>
+		<macros>AUTH_REALM</macros>
+		<value>
+			<item>
+				https://worldoftanks.com/media/8/
+				<name>NA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://worldoftanks.eu/media/1/
+				<name>EU</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://worldoftanks.asia/media/1/
+				<name>ASIA</name>
+				<type>url</type>
+			</item>
+			<item>
+				https://wotgame.cn/zh-cn/media/halloween/
+				<name>CN</name>
+				<type>url</type>
+			</item>
+			<item>
+				<name>default</name>
+				<type>url</type>
+			</item>
+		</value>
+	</setting>
+	<setting>
+		<name>phases</name>
+		<type>dict</type>
+		<value>
+			<item>
+				/halloween-2022-wallpaper-01
+				<name>phase1</name>
+				<type>url</type>
+			</item>
+			<item>
+				/halloween-2022-wallpaper-02
+				<name>phase2</name>
+				<type>url</type>
+			</item>
+			<item>
+				/halloween-2022-wallpaper-03
+				<name>phase3</name>
+				<type>url</type>
+			</item>
+			<item>
+				/halloween-2022-wallpaper-04
+				<name>phase4</name>
+				<type>url</type>
+			</item>
+			<item>
+				/halloween-2022-wallpaper-05
+				<name>phase5</name>
 				<type>url</type>
 			</item>
 		</value>
@@ -1853,12 +2068,12 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg-ct.worldoftanks.ru/$LANGUAGE_CODE/promocontent/Onslaught/
+				https://webbrg-ct.worldoftanks.eu/$LANGUAGE_CODE/promocontent/Onslaught/
 				<name>CT</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/Onslaught/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/Onslaught/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1869,28 +2084,6 @@
 		<type>macros</type>
 		<macros>CURRENT_REALM</macros>
 		<value>
-			<item>
-				<name>RU</name>
-				<type>dict</type>
-				<value>
-					<item>
-						https://legal.ru.wargaming.net/ru/t34-t72-info/
-						<name>t34_disclaimer</name>
-						<type>url</type>
-					</item>
-				</value>
-			</item>
-			<item>
-				<name>DEV</name>
-				<type>dict</type>
-				<value>
-					<item>
-						https://legal.ru.wargaming.net/ru/t34-t72-info/
-						<name>t34_disclaimer</name>
-						<type>url</type>
-					</item>
-				</value>
-			</item>
 			<item>
 				<name>default</name>
 				<type>dict</type>
@@ -1904,9 +2097,9 @@
 		<macros>AUTH_REALM</macros>
 		<value>
 			<item>
-				https://shop.wot.360.cn/detail.html?goods_id=subscription&amp;type=wotsubscriptions
 				<name>default</name>
 				<type>url</type>
+				<value/>
 			</item>
 		</value>
 	</setting>
@@ -1936,7 +2129,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://ru.wargaming.net/support/$LANGUAGE_CODE/help/login/
+				https://eu.wargaming.net/support/$LANGUAGE_CODE/help/login/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1973,7 +2166,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://worldoftanks.ru/ru/content/guide/general/
+				https://worldoftanks.eu/en/content/guide/age-protection-update/
 				<name>default</name>
 				<type>url</type>
 			</item>
@@ -1984,12 +2177,12 @@
 		<type>dict</type>
 		<value>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/ResourceWellIntroVideo/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/ResourceWellIntroVideo/
 				<name>introVideoUrl</name>
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/$LANGUAGE_CODE/promocontent/ResourceWellContentPage/
+				https://webbrg.worldoftanks.eu/$LANGUAGE_CODE/promocontent/ResourceWellContentPage/
 				<name>infoPage</name>
 				<type>url</type>
 			</item>
@@ -2016,7 +2209,7 @@
 				<type>url</type>
 			</item>
 			<item>
-				https://webbrg.worldoftanks.ru/promocontent/player-subscriptions/
+				https://webbrg.worldoftanks.eu/promocontent/player-subscriptions/
 				<name>default</name>
 				<type>url</type>
 			</item>

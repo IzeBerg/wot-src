@@ -84,6 +84,8 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       private var _rightMargin:int = 0;
       
+      private var _paddingRight:int = 0;
+      
       public function TankCarousel()
       {
          super();
@@ -103,7 +105,7 @@ package net.wg.gui.lobby.hangar.tcarousel
          {
             _loc3_ += _loc4_;
          }
-         var _loc5_:Number = param1 - _loc3_ - OFFSET_ARROW - this._rightMargin >> 0;
+         var _loc5_:Number = param1 - this._paddingRight - _loc3_ - OFFSET_ARROW - this._rightMargin >> 0;
          this.background.width = param1 >> 0;
          var _loc6_:int = _loc5_ + leftArrowOffset - rightArrowOffset >> 0;
          super.updateLayout(_loc5_,(_loc5_ - _loc6_ >> 1) + _loc3_ >> 0);
@@ -459,6 +461,12 @@ package net.wg.gui.lobby.hangar.tcarousel
       {
          this.vehicleFilters.y = scrollList.y + (this._listVisibleHeight - this.vehicleFilters.height >> 1);
          updateHotFiltersS();
+      }
+      
+      public function set paddingRight(param1:int) : void
+      {
+         this._paddingRight = param1;
+         invalidateSize();
       }
    }
 }

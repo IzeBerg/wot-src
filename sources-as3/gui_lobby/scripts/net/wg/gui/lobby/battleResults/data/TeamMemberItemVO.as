@@ -123,6 +123,8 @@ package net.wg.gui.lobby.battleResults.data
       
       public var rank:int = -1;
       
+      public var hwXP:int = -1;
+      
       public var hasSelectedBadge:Boolean = false;
       
       public var suffixBadgeIcon:String = "";

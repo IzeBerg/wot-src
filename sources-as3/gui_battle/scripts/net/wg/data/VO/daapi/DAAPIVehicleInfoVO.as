@@ -22,6 +22,8 @@ package net.wg.data.VO.daapi
       
       public var frags:int;
       
+      public var damage:int;
+      
       public var sessionID:String = "";
       
       public var accountDBID:Number = 0;

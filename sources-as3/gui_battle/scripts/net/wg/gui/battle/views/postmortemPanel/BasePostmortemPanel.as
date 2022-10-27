@@ -13,7 +13,7 @@ package net.wg.gui.battle.views.postmortemPanel
    public class BasePostmortemPanel extends BasePostmortemPanelMeta
    {
       
-      private static const WHITE_TEXT_COLOR:uint = 16777215;
+      protected static const WHITE_TEXT_COLOR:uint = 16777215;
       
       protected static const INVALID_VEHICLE_PANEL:uint = 1 << 8;
       

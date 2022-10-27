@@ -56,7 +56,8 @@ if TYPE_CHECKING:
     from typing import Optional as TOptional, Tuple as TTuple
     from UnitBase import ProfileVehicle
 _logger = logging.getLogger(__name__)
-_QUEUE_TYPE_TO_PREBATTLE_ACTION_NAME = {QUEUE_TYPE.EVENT_BATTLES: PREBATTLE_ACTION_NAME.SQUAD, 
+_QUEUE_TYPE_TO_PREBATTLE_ACTION_NAME = {QUEUE_TYPE.EVENT_BATTLES: PREBATTLE_ACTION_NAME.EVENT_SQUAD, 
+   QUEUE_TYPE.EVENT_BATTLES_2: PREBATTLE_ACTION_NAME.EVENT_SQUAD, 
    QUEUE_TYPE.RANDOMS: PREBATTLE_ACTION_NAME.SQUAD, 
    QUEUE_TYPE.EPIC: PREBATTLE_ACTION_NAME.SQUAD, 
    QUEUE_TYPE.BATTLE_ROYALE: PREBATTLE_ACTION_NAME.BATTLE_ROYALE_SQUAD, 
@@ -64,6 +65,7 @@ _QUEUE_TYPE_TO_PREBATTLE_ACTION_NAME = {QUEUE_TYPE.EVENT_BATTLES: PREBATTLE_ACTI
    QUEUE_TYPE.FUN_RANDOM: PREBATTLE_ACTION_NAME.FUN_RANDOM_SQUAD, 
    QUEUE_TYPE.COMP7: PREBATTLE_ACTION_NAME.COMP7_SQUAD}
 _QUEUE_TYPE_TO_PREBATTLE_TYPE = {QUEUE_TYPE.EVENT_BATTLES: PREBATTLE_TYPE.EVENT, 
+   QUEUE_TYPE.EVENT_BATTLES_2: PREBATTLE_TYPE.EVENT, 
    QUEUE_TYPE.RANDOMS: PREBATTLE_TYPE.SQUAD, 
    QUEUE_TYPE.EPIC: PREBATTLE_TYPE.EPIC, 
    QUEUE_TYPE.BATTLE_ROYALE: PREBATTLE_TYPE.BATTLE_ROYALE, 
@@ -207,6 +209,7 @@ class PlatoonController(IPlatoonController, IGlobalListener, CallbackDelayer):
         self.onPlatoonTankUpdated = Event.Event()
         self.onAutoSearchCooldownChanged = Event.Event()
         self.onPlatoonTankRemove = Event.Event()
+        self.onLeavePlatoon = Event.Event()
         self.__prevPrbEntityInfo = _PrbEntityInfo(QUEUE_TYPE.UNKNOWN, PREBATTLE_TYPE.NONE)
         return
 
@@ -323,12 +326,12 @@ class PlatoonController(IPlatoonController, IGlobalListener, CallbackDelayer):
 
     @adisp_async
     @adisp_process
-    def togglePlayerReadyAction(self, callback):
+    def togglePlayerReadyAction(self, checkAmmo, callback):
         changeStatePossible = True
         notReady = not self.prbEntity.getPlayerInfo().isReady
         if notReady:
             changeStatePossible = yield self.__lobbyContext.isHeaderNavigationPossible()
-        if changeStatePossible and notReady:
+        if changeStatePossible and notReady and checkAmmo:
             changeStatePossible = yield functions.checkAmmoLevel((g_currentVehicle.item,))
         if changeStatePossible:
             self.prbEntity.togglePlayerReadyAction(True)
@@ -899,6 +902,7 @@ class PlatoonController(IPlatoonController, IGlobalListener, CallbackDelayer):
         else:
             self.destroyUI()
         self.__tankDisplayPosition.clear()
+        self.onLeavePlatoon()
 
     def __calculateDropdownMove(self, xOffset):
         if xOffset is not None:

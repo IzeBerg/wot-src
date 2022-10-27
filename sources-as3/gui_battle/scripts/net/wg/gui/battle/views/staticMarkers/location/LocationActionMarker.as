@@ -29,6 +29,8 @@ package net.wg.gui.battle.views.staticMarkers.location
       
       private var _replyMarkerCount:int = 0;
       
+      private var _distancePositionY:Number = 8;
+      
       public const REPLY_POSITION_X:Number = 20;
       
       public const REPLY_POSITION_Y:Number = -1;
@@ -45,6 +47,11 @@ package net.wg.gui.battle.views.staticMarkers.location
       {
          super();
          this.hoverShadow.visible = false;
+      }
+      
+      public function setDistanceYPosition(param1:Number) : void
+      {
+         this._distancePositionY = param1;
       }
       
       override public function setMarkerReplied(param1:Boolean) : void
@@ -105,6 +112,11 @@ package net.wg.gui.battle.views.staticMarkers.location
          this.clickAnimation.visible = true;
          this.clickAnimation.alpha = 1;
          this.clickAnimation.play();
+      }
+      
+      public function get distanceYPosition() : Number
+      {
+         return this._distancePositionY;
       }
       
       override protected function get getReplyPosition() : Point

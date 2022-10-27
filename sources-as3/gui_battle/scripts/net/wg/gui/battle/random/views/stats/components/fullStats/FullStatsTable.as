@@ -22,9 +22,13 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
       
       public var leftFrag:BattleAtlasSprite = null;
       
+      public var leftDamage:BattleAtlasSprite = null;
+      
       public var leftPlatoon:BattleAtlasSprite = null;
       
       public var rightFrag:BattleAtlasSprite = null;
+      
+      public var rightDamage:BattleAtlasSprite = null;
       
       public var rightTank:BattleAtlasSprite = null;
       
@@ -1236,6 +1240,8 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
       
       public var deadBgCollection:Vector.<BattleAtlasSprite> = null;
       
+      public var damageCollection:Vector.<TextField> = null;
+      
       public var hitCollection:Vector.<MovieClip> = null;
       
       public var icoIGRCollection:Vector.<BattleAtlasSprite> = null;
@@ -1294,12 +1300,21 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
          this.background.imageName = BATTLEATLAS.STATS_TABLE_BG;
          this.leftTank.imageName = BATTLEATLAS.STATS_TABLE_TANK;
          this.leftFrag.imageName = BATTLEATLAS.STATS_TABLE_FRAGS;
+         this.leftDamage.imageName = BATTLEATLAS.STATS_TABLE_DAMAGE;
+         this.leftDamage.visible = false;
          this.leftPlatoon.imageName = BATTLEATLAS.STATS_TABLE_PLATOON;
          App.utils.commons.flipHorizontal(this.leftFrag);
          this.rightTank.imageName = BATTLEATLAS.STATS_TABLE_TANK;
          this.rightFrag.imageName = BATTLEATLAS.STATS_TABLE_FRAGS;
+         this.rightDamage.imageName = BATTLEATLAS.STATS_TABLE_DAMAGE;
+         this.rightDamage.visible = false;
          this.rightPlatoon.imageName = BATTLEATLAS.STATS_TABLE_PLATOON;
          App.utils.commons.flipHorizontal(this.rightTank);
+      }
+      
+      override public function setFDEvent(param1:Boolean) : void
+      {
+         this.leftDamage.visible = this.rightDamage.visible = param1;
       }
       
       override protected function onDispose() : void
@@ -1315,7 +1330,10 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
          }
          for each(_loc1_ in this.rankBadgesCollection)
          {
-            _loc1_.dispose();
+            if(_loc1_)
+            {
+               _loc1_.dispose();
+            }
          }
          for each(_loc1_ in this.squadStatusCollection)
          {
@@ -1931,6 +1949,10 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
          this.vehicleType_c2r14 = null;
          this.vehicleType_c2r15 = null;
          this.deadBgCollection.length = 0;
+         if(this.damageCollection)
+         {
+            this.damageCollection.length = 0;
+         }
          this.hitCollection.length = 0;
          this.icoIGRCollection.length = 0;
          this.muteCollection.length = 0;
@@ -1946,6 +1968,7 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
          this.vehicleLevelCollection.length = 0;
          this.vehicleTypeCollection.length = 0;
          this.deadBgCollection = null;
+         this.damageCollection = null;
          this.hitCollection = null;
          this.muteCollection = null;
          this.disableCommunicationCollection = null;
@@ -1963,8 +1986,10 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
          this.background = null;
          this.leftTank = null;
          this.leftFrag = null;
+         this.leftDamage = null;
          this.leftPlatoon = null;
          this.rightFrag = null;
+         this.rightDamage = null;
          this.rightTank = null;
          this.rightPlatoon = null;
          super.onDispose();

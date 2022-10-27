@@ -850,6 +850,9 @@ Parse error at or near `None' instruction at offset -1
             vehicleSelectedAbilities = diff.get('epicMetaGame', {}).get('selectedAbilities', {}).keys()
             if vehicleSelectedAbilities:
                 invalidate[GUI_ITEM_TYPE.VEHICLE].update(vehicleSelectedAbilities)
+            hwInventory = diff.get('halloweenInventory', {}).get('eqs', {})
+            if hwInventory:
+                invalidate[GUI_ITEM_TYPE.VEHICLE].update(hwInventory)
             existingIDs = self.__itemsCache[GUI_ITEM_TYPE.VEH_POST_PROGRESSION].keys()
             invalidIDs = self.__vehPostProgressionCtrl.getInvalidProgressions(diff, existingIDs)
             if invalidIDs:

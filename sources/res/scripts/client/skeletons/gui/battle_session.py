@@ -174,6 +174,10 @@ class IDynamicControllersLocator(object):
         raise NotImplementedError
 
     @property
+    def teamBaseRecapturable(self):
+        raise NotImplementedError
+
+    @property
     def appearanceCache(self):
         raise NotImplementedError
 

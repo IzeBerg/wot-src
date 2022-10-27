@@ -1,6 +1,6 @@
 import logging, math, random, weakref
 from collections import namedtuple
-import typing, BigWorld, Math, Health, WoT, AreaDestructibles, BattleReplay, DestructiblesCache, TriggersManager, constants, physics_shared
+import typing, functools, BigWorld, Math, Health, WoT, AreaDestructibles, BattleReplay, DestructiblesCache, TriggersManager, constants, physics_shared
 from account_helpers.settings_core.settings_constants import GAME
 from TriggersManager import TRIGGER_TYPE
 from VehicleEffects import DamageFromShotDecoder
@@ -208,6 +208,8 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         oldTypeDescriptor = self.typeDescriptor
         self.typeDescriptor = self.getDescr(None if isDelayedRespawn else self.respawnCompactDescr)
         forceReloading = self.respawnCompactDescr is not None
+        if forceReloading and oldTypeDescriptor is None:
+            oldTypeDescriptor = self.typeDescriptor
         if 'battle_royale' in self.typeDescriptor.type.tags:
             from InBattleUpgrades import onBattleRoyalePrerequisites
             if onBattleRoyalePrerequisites(self, oldTypeDescriptor):
@@ -936,7 +938,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
                 progressionCtrl.vehicleVisualChangingFinished(self.id)
             if self.respawnCompactDescr:
                 _logger.debug('respawn compact descr is still valid, request reloading of tank resources %s', self.id)
-                BigWorld.callback(0.0, lambda : Vehicle.respawnVehicle(self.id, self.respawnCompactDescr))
+                BigWorld.callback(0.0, functools.partial(Vehicle.respawnVehicle, self.id, self.respawnCompactDescr))
             self.refreshNationalVoice()
             self.set_quickShellChangerFactor()
             return

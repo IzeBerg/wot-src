@@ -54,6 +54,9 @@ class IGameController(object):
     def onAvatarBecomePlayer(self):
         pass
 
+    def onAvatarBecomeNonPlayer(self):
+        pass
+
     def onAccountBecomePlayer(self):
         pass
 
@@ -70,6 +73,9 @@ class IGameController(object):
         pass
 
     def onLobbyStarted(self, ctx):
+        pass
+
+    def handlePostponedByHandler(self, handlerCls):
         pass
 
 
@@ -423,6 +429,7 @@ class IPlatoonController(IGameController):
     onAvailableTiersForSearchChanged = None
     onAutoSearchCooldownChanged = None
     onPlatoonTankRemove = None
+    onLeavePlatoon = None
 
     def buildExtendedSquadInfoVo(self):
         raise NotImplementedError
@@ -496,7 +503,7 @@ class IPlatoonController(IGameController):
     def setPlatoonPopoverPosition(self, xPopoverOffset):
         raise NotImplementedError
 
-    def togglePlayerReadyAction(self, callback):
+    def togglePlayerReadyAction(self, checkAmmo, callback):
         raise NotImplementedError
 
     def getChannelController(self):
@@ -2256,6 +2263,8 @@ class ITelecomRentalsNotificationController(IGameController):
 
 class IEventBattlesController(IGameController, ISeasonProvider):
     onPrimeTimeStatusUpdated = None
+    onEventDisabled = None
+    onCompleteActivePhase = None
 
     def isEnabled(self):
         raise NotImplementedError
@@ -2266,7 +2275,31 @@ class IEventBattlesController(IGameController, ISeasonProvider):
     def isFrozen(self):
         raise NotImplementedError
 
+    def isEventShutDown(self):
+        raise NotImplementedError
+
+    def isEventPrbActive(self):
+        raise NotImplementedError
+
     def getConfig(self):
+        raise NotImplementedError
+
+    def selectEventBattle(self):
+        raise NotImplementedError
+
+    def getCurrentQueueType(self):
+        raise NotImplementedError
+
+    def getHWProgressCtrl(self):
+        raise NotImplementedError
+
+    def isEventHangar(self):
+        raise NotImplementedError
+
+    def isCurrentQueueEnabled(self):
+        raise NotImplementedError
+
+    def isQueueEnabled(self, queueType):
         raise NotImplementedError
 
 

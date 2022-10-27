@@ -1,6 +1,6 @@
 from account_helpers.settings_core.settings_constants import SESSION_STATS
 from adisp import adisp_process
-from constants import PREBATTLE_TYPE, IS_DEVELOPMENT
+from constants import PREBATTLE_TYPE, IS_DEVELOPMENT, QUEUE_TYPE
 from frameworks.wulf import WindowLayer
 from gui import makeHtmlString
 from gui import SystemMessages
@@ -107,6 +107,10 @@ class MessengerBar(MessengerBarMeta, IGlobalListener):
     _uiSpamController = dependency.descriptor(IUISpamController)
     _NEW_PLAYER_BATTLES = 2
 
+    def __init__(self):
+        super(MessengerBar, self).__init__()
+        self.__disableReferralQueues = {QUEUE_TYPE.EVENT_BATTLES}
+
     @prbDispatcherProperty
     def prbDispatcher(self):
         return
@@ -175,8 +179,12 @@ class MessengerBar(MessengerBarMeta, IGlobalListener):
         self.as_setReferralBtnCounterS(self._referralCtrl.getBubbleCount())
 
     def __handleFightButtonUpdated(self, event):
+        self.__updateReferralBtnEnabled()
+
+    def __updateReferralBtnEnabled(self):
         state = self.prbDispatcher.getFunctionalState()
-        self.as_setReferralButtonEnabledS(not state.isNavigationDisabled())
+        enabled = self.prbEntity.getQueueType() not in self.__disableReferralQueues
+        self.as_setReferralButtonEnabledS(not state.isNavigationDisabled() and enabled)
 
     def __manageWindow(self, eventType):
         manager = self.app.containerManager

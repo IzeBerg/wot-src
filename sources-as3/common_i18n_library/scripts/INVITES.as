@@ -43,6 +43,8 @@ package
       
       public static const INVITES_PREBATTLE_ALREADYJOINED_MAPBOX:String = "#invites:invites/prebattle/alreadyJoined/MAPBOX";
       
+      public static const INVITES_PREBATTLE_ALREADYJOINED_EVENT:String = "#invites:invites/prebattle/alreadyJoined/EVENT";
+      
       public static const INVITES_TEXT_CREATORNAME:String = "#invites:invites/text/creatorName";
       
       public static const INVITES_TEXT_SQUAD:String = "#invites:invites/text/SQUAD";

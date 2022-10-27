@@ -1,7 +1,7 @@
 import base64, cPickle as pickle, copy
 from copy import deepcopy
 from constants import IS_EDITOR
-import BigWorld, CommandMapping, Event, Settings, WWISE, constants, nations
+import logging, BigWorld, CommandMapping, Event, Settings, WWISE, constants, nations
 from account_helpers import gameplay_ctx
 from account_helpers.settings_core.settings_constants import GAME, BattleCommStorageKeys, ScorePanelStorageKeys, SPGAim, SOUND, AIM, CONTOUR, GuiSettingsBehavior
 from aih_constants import CTRL_MODE_NAME
@@ -16,6 +16,8 @@ from helpers import dependency, getClientVersion
 from items.components.crew_books_constants import CREW_BOOK_RARITY
 from skeletons.account_helpers.settings_core import ISettingsCore
 from soft_exception import SoftException
+_logger = logging.getLogger(__name__)
+_logger.addHandler(logging.NullHandler())
 if not IS_EDITOR:
     import BattleReplay
 KEY_FILTERS = 'filters'
@@ -42,6 +44,9 @@ STORAGE_VEHICLES_CAROUSEL_FILTER_1 = 'STORAGE_CAROUSEL_FILTER_1'
 STORAGE_BLUEPRINTS_CAROUSEL_FILTER = 'STORAGE_BLUEPRINTS_CAROUSEL_FILTER'
 BATTLEPASS_CAROUSEL_FILTER_1 = 'BATTLEPASS_CAROUSEL_FILTER_1'
 BATTLEPASS_CAROUSEL_FILTER_CLIENT_1 = 'BATTLEPASS_CAROUSEL_FILTER_CLIENT_1'
+HW22_CAROUSEL_FILTER_1 = 'HW22_CAROUSEL_FILTER_1'
+HW22_CAROUSEL_FILTER_2 = 'HW22_CAROUSEL_FILTER_2'
+HW22_CAROUSEL_FILTER_CLIENT_1 = 'HW22_CAROUSEL_FILTER_CLIENT_1'
 ROYALE_CAROUSEL_FILTER_1 = 'ROYALE_CAROUSEL_FILTER_1'
 ROYALE_CAROUSEL_FILTER_2 = 'ROYALE_CAROUSEL_FILTER_2'
 ROYALE_CAROUSEL_FILTER_CLIENT_1 = 'ROYALE_CAROUSEL_FILTER_CLIENT_1'
@@ -115,6 +120,7 @@ STORE_TAB = 'store_tab'
 STATS_REGULAR_SORTING = 'statsSorting'
 STATS_SORTIE_SORTING = 'statsSortingSortie'
 STATS_COMP7_SORTING = 'statsSortingComp7'
+STATS_EVENT_SORTING = 'statsEventSorting'
 MISSIONS_PAGE = 'missions_page'
 DEFAULT_VEHICLE_TYPES_FILTER = [
  False] * len(VEHICLE_CLASSES)
@@ -531,6 +537,57 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                                             'role_SPG': False}, 
                  MAPBOX_CAROUSEL_FILTER_CLIENT_1: {'searchNameVehicle': '', 
                                                    'clanRented': False}, 
+                 HW22_CAROUSEL_FILTER_1: {'ussr': False, 
+                                          'germany': False, 
+                                          'usa': False, 
+                                          'china': False, 
+                                          'france': False, 
+                                          'uk': False, 
+                                          'japan': False, 
+                                          'czech': False, 
+                                          'sweden': False, 
+                                          'poland': False, 
+                                          'italy': False, 
+                                          'lightTank': False, 
+                                          'mediumTank': False, 
+                                          'heavyTank': False, 
+                                          'SPG': False, 
+                                          'AT-SPG': False, 
+                                          'level_1': False, 
+                                          'level_2': False, 
+                                          'level_3': False, 
+                                          'level_4': False, 
+                                          'level_5': False, 
+                                          'level_6': False, 
+                                          'level_7': False, 
+                                          'level_8': False, 
+                                          'level_9': False, 
+                                          'level_10': False}, 
+                 HW22_CAROUSEL_FILTER_2: {'premium': False, 
+                                          'elite': False, 
+                                          'igr': False, 
+                                          'rented': True, 
+                                          'event': True, 
+                                          'favorite': False, 
+                                          'bonus': False, 
+                                          'crystals': False, 
+                                          'role_HT_assault': False, 
+                                          'role_HT_break': False, 
+                                          'role_HT_support': False, 
+                                          'role_HT_universal': False, 
+                                          'role_MT_universal': False, 
+                                          'role_MT_sniper': False, 
+                                          'role_MT_assault': False, 
+                                          'role_MT_support': False, 
+                                          'role_ATSPG_assault': False, 
+                                          'role_ATSPG_universal': False, 
+                                          'role_ATSPG_sniper': False, 
+                                          'role_ATSPG_support': False, 
+                                          'role_LT_universal': False, 
+                                          'role_LT_wheeled': False, 
+                                          'role_SPG': False}, 
+                 HW22_CAROUSEL_FILTER_CLIENT_1: {'searchNameVehicle': '', 
+                                                 'clanRented': False}, 
                  FUN_RANDOM_CAROUSEL_FILTER_1: {'ussr': False, 
                                                 'germany': False, 
                                                 'usa': False, 
@@ -771,6 +828,8 @@ DEFAULT_VALUES = {KEY_FILTERS: {STORE_TAB: 0,
                   'statsSortingSortie': {'iconType': 'tank', 
                                          'sortDirection': 'descending'}, 
                   'statsSortingComp7': {'iconType': 'prestigePoints', 
+                                        'sortDirection': 'descending'}, 
+                  'statsEventSorting': {'iconType': 'hwXP', 
                                         'sortDirection': 'descending'}, 
                   'backDraftInvert': False, 
                   QUESTS: {'lastVisitTime': -1, 
@@ -1158,6 +1217,13 @@ class AccountSettings(object):
     @staticmethod
     def isCleanPC():
         return AccountSettings.__isCleanPC
+
+    @staticmethod
+    def overrideDefaultSettings(name, value):
+        if name not in DEFAULT_VALUES:
+            _logger.warning('account setting %s not in DEFAULT_VALUES', name)
+            return
+        DEFAULT_VALUES[name].update(value)
 
     @staticmethod
     def convert():
@@ -1597,7 +1663,7 @@ class AccountSettings(object):
                      CAROUSEL_FILTER_CLIENT_1, BATTLEPASS_CAROUSEL_FILTER_CLIENT_1, RANKED_CAROUSEL_FILTER_CLIENT_1,
                      MAPBOX_CAROUSEL_FILTER_CLIENT_1, EPICBATTLE_CAROUSEL_FILTER_CLIENT_1,
                      ROYALE_CAROUSEL_FILTER_CLIENT_1, STORAGE_BLUEPRINTS_CAROUSEL_FILTER,
-                     STORAGE_VEHICLES_CAROUSEL_FILTER_1))
+                     STORAGE_VEHICLES_CAROUSEL_FILTER_1, HW22_CAROUSEL_FILTER_CLIENT_1))
                     for filterSection in existingSections:
                         savedFilters = _unpack(filtersSection[filterSection].asString)
                         defaults = AccountSettings.getFilterDefault(filterSection)
@@ -1617,7 +1683,8 @@ class AccountSettings(object):
                      EPICBATTLE_CAROUSEL_FILTER_CLIENT_2,
                      MAPBOX_CAROUSEL_FILTER_CLIENT_1,
                      STORAGE_VEHICLES_CAROUSEL_FILTER_1,
-                     STORAGE_BLUEPRINTS_CAROUSEL_FILTER))
+                     STORAGE_BLUEPRINTS_CAROUSEL_FILTER,
+                     HW22_CAROUSEL_FILTER_CLIENT_1))
                     for filterSection in existingSections:
                         savedFilters = _unpack(filtersSection[filterSection].asString)
                         if 'clanRented' in savedFilters:

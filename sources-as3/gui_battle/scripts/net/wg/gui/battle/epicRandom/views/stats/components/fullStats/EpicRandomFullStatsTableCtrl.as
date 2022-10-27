@@ -58,6 +58,10 @@ package net.wg.gui.battle.epicRandom.views.stats.components.fullStats
          this._squadHandler = param2;
       }
       
+      public function setFDEvent(param1:Boolean) : void
+      {
+      }
+      
       override public function addVehiclesInfo(param1:Vector.<DAAPIVehicleInfoVO>, param2:Vector.<Number>, param3:Boolean) : void
       {
          super.addVehiclesInfo(param1,param2,param3);

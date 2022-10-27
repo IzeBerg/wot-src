@@ -36,19 +36,14 @@ class HoverManager(CGF.ComponentManager):
 
     @tickGroup(groupName='Simulation')
     def tick(self):
-        if not self.__enabled or not GUI.mcursor().inWindow or not GUI.mcursor().inFocus or not self._hangarSpace.isCursorOver3DScene:
-            return
-        cursorPosition = GUI.mcursor().position
-        ray, wpoint = cameras.getWorldRayAndPoint(cursorPosition.x, cursorPosition.y)
-        collidedId = None
-        res = BigWorld.wg_collideDynamicStatic(self.spaceID, wpoint, wpoint + ray * 1000, 0, 0, -1, ColliderTypes.HANGAR_FLAG)
-        if res is not None:
-            collidedId = res[2]
+        gameObjectID = None
+        if self.__enabled and GUI.mcursor().inWindow and GUI.mcursor().inFocus and self._hangarSpace.isSelectionEnabled:
+            gameObjectID = self.__getGameObjectUnderCursor()
         gameObjects = CGF.Query(self.spaceID, CGF.GameObject)
         for gameObject in gameObjects:
-            if gameObject.id == collidedId:
+            if gameObject.id == gameObjectID:
                 self._updateHoverComponent(gameObject, True)
-            else:
+            elif gameObject.findComponentByType(IsHovered):
                 self._updateHoverComponent(gameObject, False)
 
         return
@@ -60,3 +55,12 @@ class HoverManager(CGF.ComponentManager):
         else:
             go.removeComponentByType(IsHovered)
         return
+
+    def __getGameObjectUnderCursor(self):
+        cursorPosition = GUI.mcursor().position
+        ray, wpoint = cameras.getWorldRayAndPoint(cursorPosition.x, cursorPosition.y)
+        res = BigWorld.wg_collideDynamicStatic(self.spaceID, wpoint, wpoint + ray * 1000, 0, 0, -1, ColliderTypes.HANGAR_FLAG)
+        if res is not None:
+            return res[2]
+        else:
+            return

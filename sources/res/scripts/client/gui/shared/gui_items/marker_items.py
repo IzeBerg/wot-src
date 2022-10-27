@@ -1,13 +1,7 @@
-from enum import IntEnum
 import Math
+from constants import MarkerItem
 from gui.Scaleform.daapi.view.battle.shared.component_marker.markers_components import ComponentBitMask as FLAG
 from gui.Scaleform.daapi.view.battle.shared.minimap.settings import CONTAINER_NAME, ENTRY_SYMBOL_NAME
-
-class MarkerItem(IntEnum):
-    DEFAULT = 0
-    DEATHZONE = 1
-    COMP7_RECON = 2
-
 
 class MarkerParamsFactory(object):
     MARKER_DATA = {MarkerItem.DEFAULT: {'visible': True, 
@@ -58,7 +52,7 @@ class MarkerParamsFactory(object):
         params = cls.MARKER_DATA.get(markerStyle, {})
         if bitMask == FLAG.NONE:
             bitMask = MarkerParamsFactory.buildBitMask(params)
-        offset = params.get('offset', (0, 10, 0))
+        offset = params.get('offset', (0, 0, 0))
         mp = Math.MatrixProduct()
         mp.a = matrix
         mp.b = Math.Matrix()
@@ -74,3 +68,7 @@ class MarkerParamsFactory(object):
                 bitMask |= key
 
         return bitMask
+
+    @classmethod
+    def registerMarker(cls, markerStyle, markerParams):
+        cls.MARKER_DATA[markerStyle] = markerParams

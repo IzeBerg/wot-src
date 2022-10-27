@@ -209,8 +209,11 @@ package net.wg.gui.lobby.battleResults
          this.creditsCounter.dispose();
          this.crystalsCounter.dispose();
          this.xpCounter.dispose();
-         this._register.unregisterFlashComponentS(EPICBATTLES_ALIASES.EPIC_BATTLES_PROGRESS_INFO_ALIAS);
-         this._register = null;
+         if(this._register)
+         {
+            this._register.unregisterFlashComponentS(EPICBATTLES_ALIASES.EPIC_BATTLES_PROGRESS_INFO_ALIAS);
+            this._register = null;
+         }
          this.progressInfo = null;
          this.noIncomeAlert = null;
          this.resultLbl = null;
@@ -487,6 +490,11 @@ package net.wg.gui.lobby.battleResults
       private function onGetPremiumBtnClickHandler(param1:ButtonEvent) : void
       {
          dispatchEvent(new BattleResultsViewEvent(BattleResultsViewEvent.SHOW_DETAILS_PREMIUM));
+      }
+      
+      protected function getData() : BattleResultsVO
+      {
+         return this._data;
       }
    }
 }

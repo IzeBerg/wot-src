@@ -11,5 +11,7 @@ package net.wg.infrastructure.base.meta
       function as_resetActiveTab() : void;
       
       function as_updateTabs(param1:Array) : void;
+      
+      function as_isFDEvent(param1:Boolean) : void;
    }
 }

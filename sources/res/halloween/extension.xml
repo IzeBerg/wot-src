@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<FeatureName>Halloween</FeatureName>
+	<Components>
+		<StaticComponents>
+			<HalloweenComponent/>
+			<HWAccountComponent/>
+			<HWAccountEquipmentController/>
+		</StaticComponents>
+		<DynamicComponents>
+			<HWArenaBuffController/>
+			<HWVehicleBuffContainer/>
+			<HWVehicleEquipmentController/>
+			<HWVehicleSuperShell/>
+			<HWVehicleMaxHealthModifier/>
+			<HWArenaInfoComponent/>
+			<HWArenaInfoVehicleBuffsBroadcaster/>
+			<HWVehicleBeingAttackedComponent/>
+		</DynamicComponents>
+	</Components>
+	<IsEnabled>True</IsEnabled>
+	<Personality>halloween_personality</Personality>
+	<Entities>
+		<ClientServerEntities/>
+		<ServerOnlyEntities>
+			<HWWheelVehicleModeBattlesMgr/>
+		</ServerOnlyEntities>
+	</Entities>
+	<ExternalComponents/>
+	<cgf>
+		<script>
+			<module>client.halloween.cgf_components.show_view</module>
+			<module>client.halloween.cgf_components.hangar_rules</module>
+		</script>
+	</cgf>
+</root>

@@ -68,6 +68,7 @@ from streamIDs import RangeStreamIDCallbacks, STREAM_ID_CHAT_MAX, STREAM_ID_CHAT
 from vehicle_systems.stricted_loading import makeCallbackWeak
 from messenger import MessengerEntry
 from battle_modifiers_common import getModificationCache
+from constants import ARENA_UPDATE
 import VOIP
 if TYPE_CHECKING:
     from items.vehicles import VehicleDescriptor
@@ -318,6 +319,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
             self.__vehicleToVehicleCollisions = {}
             self.__deviceStates = {}
             self.__maySeeOtherVehicleDamagedDevices = False
+            self.syncEpicQueueUpdates = []
             if self.intUserSettings is not None:
                 self.intUserSettings.onProxyBecomePlayer()
                 self.syncData.onAvatarBecomePlayer()
@@ -849,6 +851,11 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                 if cmdMap.isFired(CommandMapping.CMD_SHOW_HELP, key) and isDown and mods == 0:
                     if g_bootcamp.isRunning():
                         return True
+                    if BigWorld.isKeyDown(Keys.KEY_TAB):
+                        return True
+                    if self.arenaGuiType == ARENA_GUI_TYPE.EVENT_BATTLES:
+                        gui_event_dispatcher.toggleHelpDetailed({'arenaGuiType': ARENA_GUI_TYPE.EVENT_BATTLES})
+                        return True
                     vehicle = self.getVehicleAttached()
                     if vehicle is not None:
                         ctx = None
@@ -1197,7 +1204,8 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
                 self.__deviceStates = {'crew': 'destroyed'}
                 self.guiSessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.CREW_DEACTIVATED, deathReasonID)
             elif not self.guiSessionProvider.getCtx().isObserver(self.playerVehicleID):
-                self.soundNotifications.play('vehicle_destroyed')
+                if self.arenaGuiType != ARENA_GUI_TYPE.EVENT_BATTLES or not self.guiSessionProvider.shared.vehicleState.isInPostmortem:
+                    self.soundNotifications.play('vehicle_destroyed')
                 self.__deviceStates = {'vehicle': 'destroyed'}
                 self.guiSessionProvider.invalidateVehicleState(VEHICLE_VIEW_STATE.DESTROYED, deathReasonID)
             if self.vehicle is not None:
@@ -1457,6 +1465,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
     def redrawVehicleOnRespawn(self, vehicleID, newVehCompactDescr, newVehOutfitCompactDescr):
         if vehicleID == self.playerVehicleID and self.__firstHealthUpdate:
             self.__deadOnLoading = True
+        self.epicArenaUpdate()
         Vehicle.Vehicle.respawnVehicle(vehicleID, newVehCompactDescr, newVehOutfitCompactDescr)
 
     def updateGunMarker(self, vehicleID, shotPos, shotVec, dispersionAngle):
@@ -1690,7 +1699,7 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         effectsDescr = vehicles.g_cache.shotEffects[effectsIndex]
         startPoint = refStartPoint
         shooter = BigWorld.entity(shooterID)
-        if not isRicochet and shooter is not None and shooter.isStarted and effectsDescr.get('artilleryID') is None:
+        if not isRicochet and shooter is not None and shooter.isStarted and effectsDescr.get('artilleryID') is None and shooter.appearance.isAlive and shooter.appearance.isConstructed:
             multiGun = shooter.typeDescriptor.turret.multiGun
             if shooter.typeDescriptor.isDualgunVehicle and multiGun is not None:
                 gunFireHP = multiGun[gunIndex].gunFire
@@ -1759,8 +1768,24 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
     def onBootcampEvent(self, details):
         g_bootcamp.onBattleAction(details[0], details[1:])
 
+    def epicArenaUpdate(self, updateType=None, argStr=None):
+        if updateType is None:
+            while self.syncEpicQueueUpdates:
+                update = self.syncEpicQueueUpdates.pop()
+                self.arena.update(update[0], update[1])
+
+        elif self.vehicle is None and updateType == ARENA_UPDATE.VEHICLE_UPDATED:
+            self.syncEpicQueueUpdates.append((updateType, argStr))
+        else:
+            self.arena.update(updateType, argStr)
+        return
+
     def updateArena(self, updateType, argStr):
-        if self.arena:
+        if not self.arena:
+            return
+        if self.arenaBonusType == constants.ARENA_BONUS_TYPE.EPIC_BATTLE:
+            self.epicArenaUpdate(updateType, argStr)
+        else:
             self.arena.update(updateType, argStr)
 
     def updatePositions(self, indices, positions):
@@ -2634,6 +2659,8 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
         if soundType is not None and damageCode not in self.__damageInfoNoNotification:
             sound = extra.sounds.get(soundType)
             if sound is not None and not ignoreMessages:
+                if sound == 'track_destroyed' and damageCode.find('AT_SUPER_SHOT') != -1:
+                    sound = 'track_destroyed_at_super_shot'
                 self.playSoundIfNotMuted(sound, soundNotificationCheckFn)
         return
 
@@ -2663,7 +2690,8 @@ class PlayerAvatar(BigWorld.Entity, ClientChat, CombatEquipmentManager, AvatarOb
      'DEVICE_DESTROYED', 'DEVICE_DESTROYED_AT_SHOT', 'DEVICE_DESTROYED_AT_RAMMING',
      'DEVICE_DESTROYED_AT_FIRE', 'DEVICE_DESTROYED_AT_WORLD_COLLISION', 'DEVICE_DESTROYED_AT_DROWNING',
      'TANKMAN_HIT', 'TANKMAN_HIT_AT_SHOT', 'TANKMAN_HIT_AT_WORLD_COLLISION', 'TANKMAN_HIT_AT_DROWNING',
-     'ENGINE_DESTROYED_AT_UNLIMITED_RPM', 'ENGINE_DESTROYED_AT_BURNOUT')
+     'ENGINE_DESTROYED_AT_UNLIMITED_RPM', 'ENGINE_DESTROYED_AT_BURNOUT',
+     'DEVICE_DESTROYED_AT_SUPER_SHOT', 'TANKMAN_HIT_AT_SUPER_SHOT')
     __damageInfoHealings = (
      'DEVICE_REPAIRED', 'TANKMAN_RESTORED', 'FIRE_STOPPED')
     __damageInfoNoNotification = (

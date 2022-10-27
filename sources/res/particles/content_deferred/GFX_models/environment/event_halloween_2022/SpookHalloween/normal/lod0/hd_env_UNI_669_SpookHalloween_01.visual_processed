@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/custom/emissive_playground_vtxanim.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						angleFalloffParams
+						<Vector4>1.000000 0.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						emissionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/ghost_am.dds</Texture>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>50.470001</Float>
+					</property>
+					<property>
+						g_offsetBlack
+						<Float>0.270000</Float>
+					</property>
+					<property>
+						g_tint
+						<Vector4>1.000000 0.423529 0.090196 1.000000</Vector4>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/ghost_ph.dds</Texture>
+					</property>
+					<property>
+						speed
+						<Float>0.390000</Float>
+					</property>
+					<property>
+						vtxAnimX
+						<Vector4>0.030000 3.000000 0.000000 6.000000</Vector4>
+					</property>
+					<property>
+						vtxAnimY
+						<Vector4>0.030000 1.000000 0.000000 6.000000</Vector4>
+					</property>
+					<property>
+						vtxAnimZ
+						<Vector4>0.010000 1.500000 0.000000 9.000000</Vector4>
+					</property>
+					<property>
+						g_fadeMax
+						<Float>25.000000</Float>
+					</property>
+					<property>
+						g_fadeMin
+						<Float>10.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.277473 2.954904 0.030466</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/custom/emissive_playground_vtxanim.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						angleFalloffParams
+						<Vector4>0.180000 1.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						emissionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/waterfall_parts_04.dds</Texture>
+					</property>
+					<property>
+						g_chromaOffsetBlue
+						<Float>0.200000</Float>
+					</property>
+					<property>
+						g_chromaOffsetGreen
+						<Float>0.100000</Float>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>19.000000</Float>
+					</property>
+					<property>
+						g_offsetBlack
+						<Float>0.430000</Float>
+					</property>
+					<property>
+						g_tint
+						<Vector4>0.090196 0.749020 1.000000 1.000000</Vector4>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/ghost_ph.dds</Texture>
+					</property>
+					<property>
+						speed
+						<Float>0.390000</Float>
+					</property>
+					<property>
+						usePhaseMap
+						<Bool>true</Bool>
+					</property>
+					<property>
+						useVersicolorMode
+						<Bool>true</Bool>
+					</property>
+					<property>
+						vtxAnimX
+						<Vector4>0.030000 3.000000 0.000000 6.000000</Vector4>
+					</property>
+					<property>
+						vtxAnimY
+						<Vector4>0.030000 1.000000 0.000000 6.000000</Vector4>
+					</property>
+					<property>
+						vtxAnimZ
+						<Vector4>0.010000 1.500000 0.000000 9.000000</Vector4>
+					</property>
+					<property>
+						waveLen
+						<Float>4.000000</Float>
+					</property>
+					<property>
+						g_fadeMax
+						<Float>25.000000</Float>
+					</property>
+					<property>
+						g_fadeMin
+						<Float>10.000000</Float>
+					</property>
+					<property>
+						g_forwardMult
+						<Float>15.000000</Float>
+					</property>
+					<property>
+						g_offsetBlackFwd
+						<Float>0.500000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.046258 1.563412 0.041750</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.828043 -0.040753 -0.990871</min>
+		<max>0.920559 3.167576 1.074371</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>17766</geometrySize>
+	<minUVDensity>0.010468</minUVDensity>
+</root>

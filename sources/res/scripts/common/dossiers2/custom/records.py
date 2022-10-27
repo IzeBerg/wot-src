@@ -2338,7 +2338,7 @@ RECORDS = (
  (
   'singleAchievements', 'september22', 'p', 'B', 1),
  (
-  'singleAchievements', 'prime_gaming_reserved_2', 'p', 'B', 1),
+  'singleAchievements', 'october22', 'p', 'B', 1),
  (
   'singleAchievements', 'prime_gaming_reserved_3', 'p', 'B', 1),
  (
@@ -2904,7 +2904,11 @@ RECORDS = (
  (
   'achievements', 'wt2022SpecBossDefeat', 'p', 'I', 4294967295),
  (
-  'singleAchievements', 'comp7Season1', 'p', 'B', 1))
+  'singleAchievements', 'comp7Season1', 'p', 'B', 1),
+ (
+  'singleAchievements', 'hw2022Medal01', 'p', 'B', 1),
+ (
+  'singleAchievements', 'hw2022Medal02', 'p', 'B', 1))
 RECORD_INDICES = dict((rec[:2], idx) for idx, rec in enumerate(RECORDS))
 RECORD_DB_IDS = {('total', 'creationTime'): 68, 
    ('total', 'lastBattleTime'): 7, 
@@ -4296,7 +4300,7 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('singleAchievements', 'august22'): 1662, 
    ('singleAchievements', 'BattlePassCommonPr_9'): 1663, 
    ('singleAchievements', 'september22'): 1664, 
-   ('singleAchievements', 'prime_gaming_reserved_2'): 1665, 
+   ('singleAchievements', 'october22'): 1665, 
    ('singleAchievements', 'prime_gaming_reserved_3'): 1666, 
    ('singleAchievements', 'prime_gaming_reserved_4'): 1667, 
    ('singleAchievements', 'prime_gaming_reserved_5'): 1668, 
@@ -4358,7 +4362,9 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('maxComp7Season1', 'maxHealthRepairVehicle'): 1724, 
    ('maxComp7Season1', 'maxWinSeries'): 1725, 
    ('maxComp7Season1', 'maxSquadWinSeries'): 1726, 
-   ('singleAchievements', 'comp7Season1'): 1728}
+   ('singleAchievements', 'comp7Season1'): 1728, 
+   ('singleAchievements', 'hw2022Medal01'): 1729, 
+   ('singleAchievements', 'hw2022Medal02'): 1730}
 DB_ID_TO_RECORD = dict([ (value, key) for key, value in RECORD_DB_IDS.iteritems() ])
 RECORD_DB_IDS.update({('vehTypeFrags', ''): 863, 
    ('a15x15Cut', ''): 864, 

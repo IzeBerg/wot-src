@@ -52,16 +52,18 @@
 			<conditions>
 				<preBattle>
 					<battle>
-						<unit>
-							<isSquad>true</isSquad>
-							<unitSize>2</unitSize>
-						</unit>
-						<bonusTypes>43</bonusTypes>
+						<and>
+							<unit>
+								<isSquad>true</isSquad>
+								<unitSize>2</unitSize>
+							</unit>
+							<bonusTypes>43</bonusTypes>
+						</and>
 					</battle>
 				</preBattle>
 				<common>
 					<battles>
-						<count>5</count>
+						<count>25</count>
 					</battles>
 				</common>
 				<postBattle>
@@ -92,12 +94,14 @@
 			<conditions>
 				<preBattle>
 					<battle>
-						<unit>
-							<isSquad>true</isSquad>
-							<unitSize>7</unitSize>
-							<clanMembership>same</clanMembership>
-						</unit>
-						<bonusTypes>43</bonusTypes>
+						<and>
+							<unit>
+								<isSquad>true</isSquad>
+								<unitSize>7</unitSize>
+								<clanMembership>same</clanMembership>
+							</unit>
+							<bonusTypes>43</bonusTypes>
+						</and>
 					</battle>
 				</preBattle>
 				<common>
@@ -138,7 +142,7 @@
 				</preBattle>
 				<common>
 					<battles>
-						<count>5</count>
+						<count>10</count>
 					</battles>
 				</common>
 				<postBattle>
@@ -169,16 +173,18 @@
 			<conditions>
 				<preBattle>
 					<battle>
-						<unit>
-							<isSquad>true</isSquad>
-							<unitSize>7</unitSize>
-						</unit>
-						<bonusTypes>43</bonusTypes>
+						<and>
+							<unit>
+								<isSquad>true</isSquad>
+								<unitSize>7</unitSize>
+							</unit>
+							<bonusTypes>43</bonusTypes>
+						</and>
 					</battle>
 				</preBattle>
 				<common>
 					<battles>
-						<count>5</count>
+						<count>15</count>
 					</battles>
 				</common>
 				<postBattle>
@@ -222,7 +228,7 @@
 						<results>
 							<hideInGui/>
 							<key>winAloneAgainstVehicleCount</key>
-							<greaterOrEqual>2</greaterOrEqual>
+							<greaterOrEqual>3</greaterOrEqual>
 						</results>
 					</and>
 				</postBattle>
@@ -262,7 +268,7 @@
 							<spotted/>
 							<kills/>
 						</sum>
-						<greaterOrEqual>150</greaterOrEqual>
+						<greaterOrEqual>750</greaterOrEqual>
 					</cumulativeSum>
 				</common>
 			</conditions>
@@ -291,7 +297,7 @@
 				</preBattle>
 				<common>
 					<battles>
-						<count>10</count>
+						<count>50</count>
 					</battles>
 				</common>
 				<postBattle>
@@ -332,7 +338,7 @@
 						<description>
 							<key>#vehicle_customization:customization/tooltip/quests/rush_648/condition</key>
 						</description>
-						<greaterOrEqual>3</greaterOrEqual>
+						<greaterOrEqual>4</greaterOrEqual>
 					</vehicleKills>
 				</postBattle>
 			</conditions>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>n_stone0_2</identifier>
+					<fx>shaders/custom/emissive_playground_vtxanim.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						angleFalloffParams
+						<Vector4>1.000000 0.180000 2.000000 0.000000</Vector4>
+					</property>
+					<property>
+						emissionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/ghost_am.dds</Texture>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>43.310001</Float>
+					</property>
+					<property>
+						g_offsetBlack
+						<Float>0.650000</Float>
+					</property>
+					<property>
+						g_tint
+						<Vector4>0.000000 0.835294 0.027451 1.000000</Vector4>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/br_area_wave.dds</Texture>
+					</property>
+					<property>
+						speed
+						<Float>0.350000</Float>
+					</property>
+					<property>
+						vtxAnimX
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						vtxAnimY
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						vtxAnimZ
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						g_chromaOffsetBlue
+						<Float>-0.300000</Float>
+					</property>
+					<property>
+						g_chromaOffsetGreen
+						<Float>0.100000</Float>
+					</property>
+					<property>
+						g_contrast
+						<Float>3.000000</Float>
+					</property>
+					<property>
+						usePhaseMap
+						<Bool>true</Bool>
+					</property>
+					<property>
+						waveLen
+						<Float>2.260000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.014650 0.775792 -0.813738</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>n_stone0_1_2</identifier>
+					<fx>shaders/custom/emissive_playground_vtxanim.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						angleFalloffParams
+						<Vector4>0.000000 0.640000 2.000000 0.000000</Vector4>
+					</property>
+					<property>
+						emissionMap
+						<Texture>content/Environment/hd_env_UNI_668_PumpkinHalloween/hd_env_UNI_668_PumpkinHalloween_01_AM.dds</Texture>
+					</property>
+					<property>
+						g_chromaOffsetBlue
+						<Float>0.200000</Float>
+					</property>
+					<property>
+						g_chromaOffsetGreen
+						<Float>0.100000</Float>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>47.160000</Float>
+					</property>
+					<property>
+						g_offsetBlack
+						<Float>0.430000</Float>
+					</property>
+					<property>
+						g_tint
+						<Vector4>0.976471 0.929412 0.356863 1.000000</Vector4>
+					</property>
+					<property>
+						g_zeroPhaseLum
+						<Float>0.750000</Float>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/br_area_wave.dds</Texture>
+					</property>
+					<property>
+						speed
+						<Float>0.350000</Float>
+					</property>
+					<property>
+						usePhaseMap
+						<Bool>true</Bool>
+					</property>
+					<property>
+						useVersicolorMode
+						<Bool>true</Bool>
+					</property>
+					<property>
+						vtxAnimX
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						vtxAnimY
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						vtxAnimZ
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_contrast
+						<Float>3.000000</Float>
+					</property>
+					<property>
+						waveLen
+						<Float>2.960000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.015473 1.020123 0.029410</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.951319 0.017083 -0.958465</min>
+		<max>0.982266 2.023163 1.017284</max>
+	</boundingBox>
+	<geometrySize>12696</geometrySize>
+	<minUVDensity>0.027799</minUVDensity>
+</root>

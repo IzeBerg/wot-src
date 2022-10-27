@@ -31,6 +31,8 @@ package net.wg.gui.lobby.battleResults.controller
       
       public static const PRESTIGE_POINTS:String = "prestigePoints";
       
+      public static const COLUMN_ID_HW_XP:String = "hwXP";
+      
       public static const MEDAL:String = "medal";
       
       public static const KEY_PREBATTLE_ID:String = "prebattleID";

@@ -21,7 +21,7 @@ COLUMN_SETTINGS = {PREBATTLE_ACTION_NAME.RANDOM: (
    PREBATTLE_ACTION_NAME.MAPBOX: (
                                 ModeSelectorColumns.COLUMN_2, 30), 
    PREBATTLE_ACTION_NAME.RANKED: (
-                                ModeSelectorColumns.COLUMN_2, 10), 
+                                ModeSelectorColumns.COLUMN_3, 0), 
    PREBATTLE_ACTION_NAME.EVENT_BATTLE: (
                                       ModeSelectorColumns.COLUMN_2, 40), 
    PREBATTLE_ACTION_NAME.STRONGHOLDS_BATTLES_LIST: (
@@ -48,3 +48,5 @@ class ModeSelectorRewardID(Enum):
     STYLE = 'style'
     PROGRESSION_STYLE = 'progressionStyle'
     VEHICLE = 'vehicle'
+    STYLE2D = 'style2d'
+    HW22_CREW = 'hw22crew'
