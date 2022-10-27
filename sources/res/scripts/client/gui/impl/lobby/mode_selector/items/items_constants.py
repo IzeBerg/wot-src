@@ -21,7 +21,7 @@ COLUMN_SETTINGS = {PREBATTLE_ACTION_NAME.RANDOM: (
    PREBATTLE_ACTION_NAME.MAPBOX: (
                                 ModeSelectorColumns.COLUMN_2, 30), 
    PREBATTLE_ACTION_NAME.RANKED: (
-                                ModeSelectorColumns.COLUMN_2, 10), 
+                                ModeSelectorColumns.COLUMN_3, 0), 
    PREBATTLE_ACTION_NAME.EVENT_BATTLE: (
                                       ModeSelectorColumns.COLUMN_2, 40), 
    PREBATTLE_ACTION_NAME.STRONGHOLDS_BATTLES_LIST: (
