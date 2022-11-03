@@ -125,6 +125,9 @@ class IInventoryRequester(IRequester):
     def getIventoryVehiclesCDs(self):
         raise NotImplementedError
 
+    def getInvIDsIterator(self):
+        raise NotImplementedError
+
 
 class IStatsRequester(IRequester):
 
@@ -157,6 +160,10 @@ class IStatsRequester(IRequester):
         raise NotImplementedError
 
     @property
+    def equipCoin(self):
+        raise NotImplementedError
+
+    @property
     def bpcoin(self):
         raise NotImplementedError
 
@@ -182,6 +189,10 @@ class IStatsRequester(IRequester):
 
     @property
     def actualBpcoin(self):
+        raise NotImplementedError
+
+    @property
+    def actualEquipCoin(self):
         raise NotImplementedError
 
     @property
@@ -464,6 +475,9 @@ class IShopCommonStats(object):
 
     @property
     def paidDeluxeRemovalCost(self):
+        raise NotImplementedError
+
+    def getPaidModernizedRemovalCost(self, level):
         raise NotImplementedError
 
     @property

@@ -495,6 +495,8 @@ package
       
       public static const CLIENT_DYNSQUAD_DISABLEVOIP:String = "#messenger:client/dynSquad/disableVOIP";
       
+      public static const CLIENT_COMP7_DISABLEVOIP:String = "#messenger:client/COMP7/disableVOIP";
+      
       public static const CLIENT_DYNSQUAD_CREATED_ALLIES:String = "#messenger:client/dynSquad/created/allies";
       
       public static const CLIENT_DYNSQUAD_CREATED_ENEMIES:String = "#messenger:client/dynSquad/created/enemies";
@@ -587,6 +589,8 @@ package
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_BPCOIN:String = "#messenger:serviceChannelMessages/battleResults/bpcoin";
       
+      public static const SERVICECHANNELMESSAGES_BATTLERESULTS_EQUIPCOIN:String = "#messenger:serviceChannelMessages/battleResults/equipCoin";
+      
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_RATINGPOINTS:String = "#messenger:serviceChannelMessages/battleResults/ratingPoints";
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_DOUBLEXPFACTOR:String = "#messenger:serviceChannelMessages/battleResults/doubleXpFactor";
@@ -634,6 +638,8 @@ package
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_QUESTS_EVENTCOIN:String = "#messenger:serviceChannelMessages/battleResults/quests/eventCoin";
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_QUESTS_BPCOIN:String = "#messenger:serviceChannelMessages/battleResults/quests/bpcoin";
+      
+      public static const SERVICECHANNELMESSAGES_BATTLERESULTS_QUESTS_EQUIPCOIN:String = "#messenger:serviceChannelMessages/battleResults/quests/equipCoin";
       
       public static const SERVICECHANNELMESSAGES_BATTLERESULTS_QUESTS_BERTHS:String = "#messenger:serviceChannelMessages/battleResults/quests/berths";
       
@@ -826,6 +832,10 @@ package
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_FREEXPACCRUED:String = "#messenger:serviceChannelMessages/invoiceReceived/freeXpAccrued";
       
       public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_FREEXPDEBITED:String = "#messenger:serviceChannelMessages/invoiceReceived/freeXpDebited";
+      
+      public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_EQUIPCOINACCRUED:String = "#messenger:serviceChannelMessages/invoiceReceived/equipCoinAccrued";
+      
+      public static const SERVICECHANNELMESSAGES_INVOICERECEIVED_EQUIPCOINDEBITED:String = "#messenger:serviceChannelMessages/invoiceReceived/equipCoinDebited";
       
       public static const SERVICECHANNELMESSAGES_ACHIEVEMENTRECEIVED_MESSAGE:String = "#messenger:serviceChannelMessages/achievementReceived/message";
       
@@ -1112,6 +1122,12 @@ package
       public static const SERVICECHANNELMESSAGES_SYSMSG_TITLES_DISMANTLING:String = "#messenger:serviceChannelMessages/sysMsg/titles/dismantling";
       
       public static const SERVICECHANNELMESSAGES_SYSMSG_TITLES_SELLING:String = "#messenger:serviceChannelMessages/sysMsg/titles/selling";
+      
+      public static const SERVICECHANNELMESSAGES_SYSMSG_TITLES_DECONSTRUCTING:String = "#messenger:serviceChannelMessages/sysMsg/titles/deconstructing";
+      
+      public static const SERVICECHANNELMESSAGES_SYSMSG_DECONSTRUCTINGMULT_ITEMSTEMPLATE:String = "#messenger:serviceChannelMessages/sysMsg/deconstructingMult/itemsTemplate";
+      
+      public static const SERVICECHANNELMESSAGES_SYSMSG_DECONSTRUCTING_HEAD:String = "#messenger:serviceChannelMessages/sysMsg/deconstructing/head";
       
       public static const SERVICECHANNELMESSAGES_SYSMSG_TITLES_MULTIPLESELLING:String = "#messenger:serviceChannelMessages/sysMsg/titles/multipleSelling";
       
@@ -2159,6 +2175,10 @@ package
       
       public static const PLATFORMCURRENCYMSG_DEBITED_BRCOIN:String = "#messenger:platformCurrencyMsg/debited/brcoin";
       
+      public static const PLATFORMCURRENCYMSG_RECEIVED_EQUIP_COIN:String = "#messenger:platformCurrencyMsg/received/equip_coin";
+      
+      public static const PLATFORMCURRENCYMSG_DEBITED_EQUIP_COIN:String = "#messenger:platformCurrencyMsg/debited/equip_coin";
+      
       public static const PLATFORMCURRENCYMSG_RECEIVED_FREEXP:String = "#messenger:platformCurrencyMsg/received/freeXP";
       
       public static const PLATFORMCURRENCYMSG_DEBITED_FREEXP:String = "#messenger:platformCurrencyMsg/debited/freeXP";
@@ -2247,7 +2267,9 @@ package
       
       public static const SERVICECHANNELMESSAGES_PROGRESSION2D_BUTTON:String = "#messenger:serviceChannelMessages/progression2d/button";
       
-      public static const SERVICECHANNELMESSAGES_FUNRANDOM_STARTEVENT_BUTTON:String = "#messenger:serviceChannelMessages/funRandom/startEvent/button";
+      public static const SERVICECHANNELMESSAGES_FUNRANDOM_NEWSUBMODESBUTTON:String = "#messenger:serviceChannelMessages/funRandom/newSubModesButton";
+      
+      public static const SERVICECHANNELMESSAGES_FUNRANDOM_PROGRESSIONSTAGEBUTTON:String = "#messenger:serviceChannelMessages/funRandom/progressionStageButton";
       
       public static const SERVICECHANNELMESSAGES_INTEGRATEDAUCTION_BUTTON:String = "#messenger:serviceChannelMessages/integratedAuction/button";
       

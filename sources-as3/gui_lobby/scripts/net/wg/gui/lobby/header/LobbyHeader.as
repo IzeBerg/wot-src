@@ -693,18 +693,25 @@ package net.wg.gui.lobby.header
       
       private function onHeaderButtonBarPressHandler(param1:ButtonEvent) : void
       {
+         var _loc4_:HBC_SquadDataVo = null;
          var _loc2_:HeaderButton = HeaderButton(param1.target);
          var _loc3_:HeaderButtonVo = HeaderButtonVo(_loc2_.data);
          switch(_loc3_.id)
          {
             case HeaderButtonsHelper.ITEM_ID_SQUAD:
-               this._canShowSquad = true;
+               _loc4_ = HBC_SquadDataVo(this._headerButtonsHelper.getContentDataById(HeaderButtonsHelper.ITEM_ID_SQUAD));
+               if(!_loc4_.isEvent)
+               {
+                  this._canShowSquad = true;
+                  break;
+               }
          }
       }
       
       private function onHeaderButtonBarClickHandler(param1:ButtonEvent) : void
       {
-         var _loc4_:HBC_BattleTypeVo = null;
+         var _loc4_:HBC_SquadDataVo = null;
+         var _loc5_:HBC_BattleTypeVo = null;
          var _loc2_:HeaderButton = HeaderButton(param1.target);
          var _loc3_:HeaderButtonVo = HeaderButtonVo(_loc2_.data);
          switch(_loc3_.id)
@@ -725,17 +732,25 @@ package net.wg.gui.lobby.header
                onPremShopClickS();
                break;
             case HeaderButtonsHelper.ITEM_ID_SQUAD:
-               if(this._canShowSquad)
+               _loc4_ = HBC_SquadDataVo(this._headerButtonsHelper.getContentDataById(HeaderButtonsHelper.ITEM_ID_SQUAD));
+               if(_loc4_.isEvent)
                {
-                  showSquadS(this.getSquadButtonMiddleXPosition(_loc2_));
+                  App.popoverMgr.show(_loc2_,Aliases.SQUAD_TYPE_SELECT_POPOVER,null,_loc2_);
                }
-               this._canShowSquad = false;
+               else
+               {
+                  if(this._canShowSquad)
+                  {
+                     showSquadS(this.getSquadButtonMiddleXPosition(_loc2_));
+                  }
+                  this._canShowSquad = false;
+               }
                break;
             case HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR:
-               _loc4_ = HBC_BattleTypeVo(this._headerButtonsHelper.getContentDataById(HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR));
-               if(_loc4_)
+               _loc5_ = HBC_BattleTypeVo(this._headerButtonsHelper.getContentDataById(HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR));
+               if(_loc5_)
                {
-                  if(_loc4_.showLegacySelector)
+                  if(_loc5_.showLegacySelector)
                   {
                      App.popoverMgr.show(_loc2_,Aliases.BATTLE_TYPE_SELECT_POPOVER,null,_loc2_);
                   }

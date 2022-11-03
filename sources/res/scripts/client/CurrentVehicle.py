@@ -252,6 +252,9 @@ class _CurrentVehicle(_CachedVehicle):
     def isPremiumIGR(self):
         return self.isPresent() and self.item.isPremiumIGR
 
+    def isTelecom(self):
+        return self.isPresent() and self.item.isTelecom
+
     def isInPrebattle(self):
         return self.isPresent() and self.item.isInPrebattle
 
@@ -275,9 +278,6 @@ class _CurrentVehicle(_CachedVehicle):
 
     def isOnlyForComp7Battles(self):
         return self.isPresent() and self.item.isOnlyForComp7Battles
-
-    def isOnlyForRandomBattles(self):
-        return self.isPresent() and self.item.isOnlyForRandomBattles
 
     def isOutfitLocked(self):
         return self.isPresent() and self.item.isOutfitLocked

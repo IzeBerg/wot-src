@@ -291,7 +291,6 @@ package net.wg.gui.notification
          _loc3_.addEventListener(ButtonEvent.CLICK,this.onButtonClickHandler,false,0,true);
          _loc3_.mouseEnabledOnDisabled = true;
          _loc3_.focusable = false;
-         _loc3_.useHtmlText = true;
          _loc3_.validateNow();
       }
       

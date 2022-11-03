@@ -3,6 +3,7 @@ package net.wg.gui.bootcamp
    import flash.display.MovieClip;
    import net.wg.data.constants.InteractiveStates;
    import net.wg.data.constants.InvalidationType;
+   import net.wg.data.constants.generated.BATTLE_ITEM_STATES;
    import net.wg.gui.battle.views.consumablesPanel.BattleEquipmentButton;
    import net.wg.gui.interfaces.IHighlighted;
    
@@ -45,7 +46,11 @@ package net.wg.gui.bootcamp
       
       override protected function getFrameLabel(param1:String) : String
       {
-         return !this._highlighted ? param1 : HIGHLIGHT_LABEL;
+         if(isReloading)
+         {
+            return BATTLE_ITEM_STATES.COOLDOWN;
+         }
+         return !!this._highlighted ? HIGHLIGHT_LABEL : param1;
       }
       
       public function get highlight() : Boolean

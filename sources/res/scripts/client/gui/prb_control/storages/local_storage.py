@@ -1,6 +1,5 @@
 from constants import ARENA_GUI_TYPE, QUEUE_TYPE
 from gui.battle_control.arena_visitor import createByAvatar
-from gui.shared.system_factory import collectCanSelectPrbEntity
 
 class LocalStorage(object):
     __slots__ = ()
@@ -68,13 +67,6 @@ class RecentArenaStorage(LocalStorage):
     @property
     def queueType(self):
         return self._queueType
-
-    @queueType.setter
-    def queueType(self, queueType):
-        self._queueType = queueType
-
-    def isModeSelected(self):
-        return collectCanSelectPrbEntity(self._queueType)()
 
     def onAvatarBecomePlayer(self):
         arenaVisitor = createByAvatar()

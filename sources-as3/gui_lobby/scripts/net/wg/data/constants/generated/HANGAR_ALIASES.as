@@ -17,8 +17,6 @@ package net.wg.data.constants.generated
       
       public static const MAPBOX_TANK_CAROUSEL:String = "mapboxTankCarousel";
       
-      public static const HW22_TANK_CAROUSEL:String = "hw22TankCarousel";
-      
       public static const FUN_RANDOM_TANK_CAROUSEL:String = "funRandomTankCarousel";
       
       public static const COMP7_TANK_CAROUSEL:String = "comp7TankCarousel";
@@ -118,36 +116,6 @@ package net.wg.data.constants.generated
       public static const POST_PROGRESSION_VEHICLE_PARAMS:String = "PostProgressionVehicleParams";
       
       public static const PERSONAL_RESERVES_WIDGET_INJECT:String = "PersonalReservesWidgetInject";
-      
-      public static const FUN_RANDOM_ENTRY_POINT:String = "FunRandomEntryPoint";
-      
-      public static const FUN_RANDOM_HANGAR_WIDGET:String = "FunRandomHangarWidget";
-      
-      public static const EVENT_CREW_HEALING_COMPONENT:String = "eventCrewHealingComponent";
-      
-      public static const EVENT_CREW_BOOSTER_COMPONENT:String = "eventCrewBoosterComponent";
-      
-      public static const EVENT_TANK_RENT_COMPONENT:String = "eventTankRentComponent";
-      
-      public static const EVENT_QUESTS_COMPONENT:String = "eventQuestsComponent";
-      
-      public static const EVENT_BAN_INFO_COMPONENT:String = "eventBanInfoComponent";
-      
-      public static const EVENT_COINS_COMPONENT:String = "eventCoinsComponent";
-      
-      public static const HE20_EVENT_ENTRY_POINT:String = "he20EventEntryPoint";
-      
-      public static const CHINA_LOOTBOXES_WIDGET:String = "chinaLootboxesWidget";
-      
-      public static const HW22_EVENT_ENTRY_POINT:String = "HW22EntryPoint";
-      
-      public static const EVENT_SHOP_ENTRY_POINT:String = "EventShopEntryPoint";
-      
-      public static const EVENT_DAILY_REWARD:String = "EventDailyReward";
-      
-      public static const EVENT_PROGRESSION_ENTRY_POINT:String = "EventProgressionEntryPoint";
-      
-      public static const EVENT_GLOBAL_PROGRESSION_ENTRY_POINT:String = "EventGlobalProgressionEntryPoint";
        
       
       public function HANGAR_ALIASES()

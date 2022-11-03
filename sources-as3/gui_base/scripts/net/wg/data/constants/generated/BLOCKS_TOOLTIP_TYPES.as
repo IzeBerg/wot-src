@@ -105,9 +105,11 @@ package net.wg.data.constants.generated
       
       public static const TOOLTIP_BUILD_BLOCK_VIOLET_LINKAGE:String = "TooltipBuildUpBlockVioletBgUI";
       
-      public static const TOOLTIP_BUILD_BLOCK_GOLD_LINKAGE:String = "TooltipBuildUpBlockGoldBgUI";
-      
       public static const TOOLTIP_BUILD_BLOCK_VIOLET_BIG_LINKAGE:String = "TooltipBuildUpBlockVioletBgBigUI";
+      
+      public static const TOOLTIP_BUILD_BLOCK_YELLOW_LINKAGE:String = "TooltipBuildUpBlockYellowBgUI";
+      
+      public static const TOOLTIP_BUILD_BLOCK_YELLOW_LIGHT_LINKAGE:String = "TooltipBuildUpBlockYellowLightBgUI";
       
       public static const TOOLTIP_BUILD_BLOCK_GRAY_LINKAGE:String = "TooltipBuildUpBlockGrayBgUI";
       

@@ -1554,7 +1554,6 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'recertificationReset',
  'recertificationAvailability',
  'recertificationFinancial',
- 'prbVehicleBadTypeKick',
  'resourceWellOperation',
  'resourceWellReward',
  'resourceWellNoVehicles',
@@ -1562,9 +1561,7 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'prbVehicleMaxScoutKick',
  'personalReservesHaveBeenConverted',
  'changeSquadSize',
- 'fairplay',
- 'hwRewardCongrats',
- 'hwDailyQuest'])
+ 'fairplay'])
 SYS_MESSAGE_IMPORTANCE = Enumeration('systemMessageImportance', [
  'normal',
  'high'])

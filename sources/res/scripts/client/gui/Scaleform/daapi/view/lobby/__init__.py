@@ -206,8 +206,6 @@ class LobbyPackageBusinessHandler(PackageBusinessHandler):
          (
           VIEW_ALIAS.BROWSER_OVERLAY, self.loadViewByCtxEvent),
          (
-          VIEW_ALIAS.EVENT_BROWSER_OVERLAY, self.loadViewByCtxEvent),
-         (
           VIEW_ALIAS.MAP_BOX_INFO_OVERLAY, self.loadViewByCtxEvent),
          (
           VIEW_ALIAS.BATTLE_PASS_BROWSER_VIEW, self.loadViewByCtxEvent),

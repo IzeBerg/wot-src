@@ -29,6 +29,8 @@ package net.wg.gui.lobby.storage.categories.cards
       
       public var additionalInfo:String = "";
       
+      public var actionButtonLabel:String = "";
+      
       public var price:ItemPriceVO;
       
       public var count:int;
@@ -50,6 +52,8 @@ package net.wg.gui.lobby.storage.categories.cards
       public var type:String = "";
       
       public var upgradable:Boolean = false;
+      
+      public var upgradeButtonIcon:String = "";
       
       public var upgradeButtonTooltip:String = "";
       

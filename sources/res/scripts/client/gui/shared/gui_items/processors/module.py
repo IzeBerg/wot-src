@@ -132,6 +132,14 @@ class ModuleSeller(ModuleTradeProcessor):
         BigWorld.player().inventory.sell(itemTypeID, self.item.intCD, self.count, lambda code: self._response(code, callback))
 
 
+class ModuleDeconstruct(ModuleSeller):
+
+    def _successHandler(self, code, ctx=None):
+        msgCtx = self._getMsgCtx()
+        msgCtx['kind'] = backport.text(R.strings.messenger.serviceChannelMessages.sysMsg.deconstructing.head())
+        return makeI18nSuccess(self._formMessage('success'), type=SM_TYPE.Deconstructing, **msgCtx)
+
+
 class MultipleModulesSeller(Processor):
 
     def __init__(self, items, plugs=None):
@@ -187,9 +195,10 @@ class ModuleInstallProcessor(ModuleProcessor, VehicleItemProcessor):
 class OptDeviceInstaller(ModuleInstallProcessor):
     lobbyContext = dependency.descriptor(ILobbyContext)
 
-    def __init__(self, vehicle, item, slotIdx, install=True, allSetups=True, financeOperation=False, conflictedEqs=None, skipConfirm=False):
+    def __init__(self, vehicle, item, slotIdx, install=True, allSetups=True, financeOperation=False, conflictedEqs=None, skipConfirm=False, showWaiting=True):
         super(OptDeviceInstaller, self).__init__(vehicle, item, (GUI_ITEM_TYPE.OPTIONALDEVICE,), slotIdx, install, conflictedEqs, skipConfirm=skipConfirm)
         self.removalPrice = item.getRemovalPrice(self.itemsCache.items)
+        self.showWaiting = showWaiting
         addPlugins = []
         if install:
             addPlugins += (
@@ -216,8 +225,9 @@ class OptDeviceInstaller(ModuleInstallProcessor):
             return super(OptDeviceInstaller, self)._successHandler(code, ctx)
 
     def _request(self, callback):
-        from gui.Scaleform.Waiting import Waiting
-        Waiting.show('applyModule')
+        if self.showWaiting:
+            from gui.Scaleform.Waiting import Waiting
+            Waiting.show('applyModule')
         useDemountKit = self.requestCtx.get('useDemountKit', False)
         itemCD = self.item.intCD if self.install else 0
         if not self.install and useDemountKit:
@@ -227,8 +237,9 @@ class OptDeviceInstaller(ModuleInstallProcessor):
 
     def _response(self, code, callback, errStr='', ctx=None):
         super(OptDeviceInstaller, self)._response(code, callback, errStr=errStr, ctx=ctx)
-        from gui.Scaleform.Waiting import Waiting
-        Waiting.hide('applyModule')
+        if self.showWaiting:
+            from gui.Scaleform.Waiting import Waiting
+            Waiting.hide('applyModule')
 
     def _errorHandler(self, code, errStr='', ctx=None):
         g_eventBus.handleEvent(ItemRemovalByDemountKitEvent(ItemRemovalByDemountKitEvent.CANCELED), EVENT_BUS_SCOPE.LOBBY)
@@ -466,12 +477,13 @@ class BCBuyAndInstallItemProcessor(BuyAndInstallItemProcessor):
 
 class ModuleUpgradeProcessor(ModuleProcessor):
 
-    def __init__(self, item, vehicle, setupIdx, slotIdx, plugs=tuple()):
+    def __init__(self, item, vehicle, setupIdx, slotIdx, validateMoney=True, plugs=tuple()):
         super(ModuleUpgradeProcessor, self).__init__(item, 'upgrade', plugs)
         addPlugins = []
         self.__upgradePrice = item.getUpgradePrice(self.itemsCache.items)
-        addPlugins += (
-         plugins.MoneyValidator(self.__upgradePrice.price),)
+        if validateMoney:
+            addPlugins += (
+             plugins.MoneyValidator(self.__upgradePrice.price),)
         if vehicle is not None:
             addPlugins += (
              plugins.VehicleValidator(vehicle, True, prop={'isBroken': True, 'isLocked': True}),)
@@ -488,7 +500,9 @@ class ModuleUpgradeProcessor(ModuleProcessor):
 
     def _successHandler(self, code, ctx=None):
         msg = 'success/analogWasDemounted' if ctx and ctx.get('isAnalogWasDemounted', False) else 'success'
-        return makeI18nSuccess(sysMsgKey=self._formMessage(msg), type=SM_TYPE.UpgradeForCredits, **self._getMsgCtx())
+        currency = self.__upgradePrice.getCurrency(byWeight=True)
+        smType = SM_TYPE.UpgradeForEquipCoins if currency == Currency.EQUIP_COIN else SM_TYPE.UpgradeForCredits
+        return makeI18nSuccess(sysMsgKey=self._formMessage(msg), type=smType, **self._getMsgCtx())
 
     def _request(self, callback):
         if self.vehicle is not None and self.item.isInSetup(self.vehicle):

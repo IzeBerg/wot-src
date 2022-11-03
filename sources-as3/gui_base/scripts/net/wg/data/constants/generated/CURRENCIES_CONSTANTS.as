@@ -19,6 +19,8 @@ package net.wg.data.constants.generated
       
       public static const BRCOIN:String = "brcoin";
       
+      public static const EQUIP_COIN:String = "equipCoin";
+      
       public static const ERROR:String = "error";
       
       public static const SINGAPORE_ALTERNATIVE_CURRENCIES_SET:Array = [GOLD,CREDITS];
@@ -33,6 +35,8 @@ package net.wg.data.constants.generated
       
       public static const BPCOIN_COLOR:int = 15327935;
       
+      public static const EQUIP_COIN_COLOR:int = 13556185;
+      
       public static const CREDITS_INDEX:int = 0;
       
       public static const GOLD_INDEX:int = 1;
@@ -42,6 +46,8 @@ package net.wg.data.constants.generated
       public static const EVENT_COIN_INDEX:int = 3;
       
       public static const BPCOIN_INDEX:int = 4;
+      
+      public static const EQUIP_COIN_INDEX:int = 5;
        
       
       public function CURRENCIES_CONSTANTS()

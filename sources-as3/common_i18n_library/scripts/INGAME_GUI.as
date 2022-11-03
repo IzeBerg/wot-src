@@ -1755,8 +1755,6 @@ package
       
       public static const HELPSCREEN_HINT_DESCRIPTION:String = "#ingame_gui:helpScreen/hint/description";
       
-      public static const HELPSCREEN_HINT_MODEDESCRIPTION:String = "#ingame_gui:helpScreen/hint/modeDescription";
-      
       public static const COMMANDERCAM_HINT_DESCRIPTION:String = "#ingame_gui:commanderCam/hint/description";
       
       public static const BATTLECOMMUNICATION_HINT_PRESS:String = "#ingame_gui:battleCommunication/hint/press";

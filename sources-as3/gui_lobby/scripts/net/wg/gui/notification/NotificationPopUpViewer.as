@@ -25,7 +25,7 @@ package net.wg.gui.notification
       
       private static const DELAY:Number = 50;
       
-      private static const DEFAULT_PADDING:Point = new Point(4,30);
+      private static const DEFAULT_PADDING:Point = new Point(4,35);
        
       
       private var _pendingForDisplay:Vector.<PopUpNotificationInfoVO>;
@@ -448,7 +448,7 @@ package net.wg.gui.notification
          var _loc2_:String = null;
          var _loc3_:Boolean = false;
          _loc2_ = LAYER_NAMES.LAYER_ORDER[param1.layer];
-         _loc3_ = _loc2_ == LAYER_NAMES.FULLSCREEN_WINDOWS;
+         _loc3_ = _loc2_ == LAYER_NAMES.FULLSCREEN_WINDOWS || LAYER_NAMES.DIALOGS;
          var _loc4_:Boolean = _loc2_ == LAYER_NAMES.SUBVIEW || _loc3_;
          if(_loc4_)
          {

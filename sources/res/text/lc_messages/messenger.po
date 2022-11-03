@@ -148,6 +148,11 @@ msgstr "пользователь не существует."
 msgid "chat_error/WRONG_ARGS"
 msgstr "неправильный аргумент."
 
+msgid "client/COMP7/disableVOIP"
+msgstr ""
+"Голосовая связь отключена. Чтобы общаться с союзниками, включите голосовой "
+"чат (%(keyName)s)."
+
 msgid "client/dynSquad/created/allies"
 msgstr "Cоюзники сформировали взвод %(squadNum)s."
 
@@ -1243,6 +1248,9 @@ msgstr "Списано очков Боевого пропуска"
 msgid "platformCurrencyMsg/debited/brcoin"
 msgstr "Списано стальных печатей"
 
+msgid "platformCurrencyMsg/debited/equip_coin"
+msgstr "Списано компонентов"
+
 msgid "platformCurrencyMsg/debited/freeXP"
 msgstr "Списано свободного опыта"
 
@@ -1254,6 +1262,9 @@ msgstr "Начислено очков Боевого пропуска"
 
 msgid "platformCurrencyMsg/received/brcoin"
 msgstr "Начислено стальных печатей"
+
+msgid "platformCurrencyMsg/received/equip_coin"
+msgstr "Начислено компонентов"
 
 msgid "platformCurrencyMsg/received/freeXP"
 msgstr "Получено свободного опыта"
@@ -1883,6 +1894,9 @@ msgstr "Бой окончен"
 msgid "serviceChannelMessages/battleResults/epicAbilityPoints"
 msgstr "Очки боевых резервов"
 
+msgid "serviceChannelMessages/battleResults/equipCoin"
+msgstr "Получено компонентов"
+
 msgid "serviceChannelMessages/battleResults/eventCoin"
 msgstr "Получено юбилейных монет"
 
@@ -1962,6 +1976,9 @@ msgstr " (x%(count)s)"
 
 msgid "serviceChannelMessages/battleResults/quests/entitlements/multiplier"
 msgstr " (%(count)s)"
+
+msgid "serviceChannelMessages/battleResults/quests/equipCoin"
+msgstr "Начислено компонентов"
 
 msgid "serviceChannelMessages/battleResults/quests/eventCoin"
 msgstr "Добавлены юбилейные монеты"
@@ -2521,8 +2538,11 @@ msgid "serviceChannelMessages/fortificationStartUp"
 msgstr ""
 "На склад командного центра зачислено %(defResCount)s единиц промресурса."
 
-msgid "serviceChannelMessages/funRandom/startEvent/button"
+msgid "serviceChannelMessages/funRandom/newSubModesButton"
 msgstr "К событию!"
+
+msgid "serviceChannelMessages/funRandom/progressionStageButton"
+msgstr "К прогрессии"
 
 msgid "serviceChannelMessages/goldReceivedAsGift"
 msgstr "От администрации получено золота: %(gold)s."
@@ -2681,6 +2701,12 @@ msgstr "Начислены"
 
 msgid "serviceChannelMessages/invoiceReceived/entitlementsDebited"
 msgstr "Списаны"
+
+msgid "serviceChannelMessages/invoiceReceived/equipCoinAccrued"
+msgstr "Начислено компонентов"
+
+msgid "serviceChannelMessages/invoiceReceived/equipCoinDebited"
+msgstr "Списано компонентов"
 
 msgid "serviceChannelMessages/invoiceReceived/equipment"
 msgstr "Снаряжение"
@@ -3443,6 +3469,12 @@ msgstr "Зимняя карта: "
 msgid "serviceChannelMessages/sysMsg/customizations/sell"
 msgstr "%(itemType)s «%(itemName)s», %(count)s шт. Получено %(money)s"
 
+msgid "serviceChannelMessages/sysMsg/deconstructing/head"
+msgstr "Разобрано оборудование"
+
+msgid "serviceChannelMessages/sysMsg/deconstructingMult/itemsTemplate"
+msgstr "«%(name)s» (x%(count)s)"
+
 msgid "serviceChannelMessages/sysMsg/openCustomization/button"
 msgstr "К внешнему виду"
 
@@ -3453,6 +3485,9 @@ msgstr ""
 
 msgid "serviceChannelMessages/sysMsg/titles/customization"
 msgstr "Изменение внешнего вида:"
+
+msgid "serviceChannelMessages/sysMsg/titles/deconstructing"
+msgstr "Оборудование разобрано"
 
 msgid "serviceChannelMessages/sysMsg/titles/dismantling"
 msgstr "Демонтировано:"

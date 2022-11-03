@@ -7,7 +7,7 @@ from time_tracking import LOG_TIME_WARNING
 import time, time_tracking
 CLASS = TypeVar('CLASS')
 if not IS_CLIENT and not IS_BOT and not IS_CGF_DUMP:
-    from insights.common import incrTickOverspends
+    from insights.measurements import incrTickOverspends
 
 def _argsToLogID(args):
     for arg in args:

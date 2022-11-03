@@ -1,4 +1,5 @@
 import inspect
+from account_helpers.AccountSettings import AccountSettings, OPT_DEVICE_TAB_VISITED
 
 def tabUpdateFunc(tabName):
 
@@ -63,3 +64,16 @@ class TabsController(object):
 
     def _createViewModel(self, name):
         raise NotImplementedError
+
+    @property
+    def tabs(self):
+        return self._tabs
+
+    def isVisited(self, tabName):
+        visitedDict = AccountSettings.getSettings(OPT_DEVICE_TAB_VISITED)
+        return visitedDict.get(tabName, False)
+
+    def setVisited(self, tabName):
+        visitedDict = AccountSettings.getSettings(OPT_DEVICE_TAB_VISITED)
+        visitedDict[tabName] = True
+        AccountSettings.setSettings(OPT_DEVICE_TAB_VISITED, visitedDict)

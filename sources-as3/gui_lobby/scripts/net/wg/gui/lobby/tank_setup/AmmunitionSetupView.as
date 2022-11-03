@@ -11,24 +11,31 @@ package net.wg.gui.lobby.tank_setup
    import net.wg.infrastructure.base.meta.IAmmunitionSetupViewMeta;
    import net.wg.infrastructure.base.meta.impl.AmmunitionSetupViewMeta;
    import net.wg.infrastructure.interfaces.IDAAPIModule;
+   import net.wg.utils.StageSizeBoundaries;
    import scaleform.clik.motion.Tween;
    
    public class AmmunitionSetupView extends AmmunitionSetupViewMeta implements IAmmunitionSetupViewMeta
    {
       
-      private static const PARAMS_MARGIN_TOP:int = 141;
-      
       private static const PARAMS_MARGIN_BOTTOM:int = 178;
       
       private static const BOTTOM_PANEL_HEIGHT:int = 35;
-      
-      private static const MAX_PARAMS_OFFSET:int = 66;
       
       private static const PARAMS_ANIM_OFFSET_Y:int = 70;
       
       private static const ANIM_DURATION:int = 300;
       
       private static const GF_H_MARGIN:int = 10;
+      
+      private static const PARAMS_RIGHT_EMPTY_AREA:int = 19;
+      
+      private static const PARAMS_Y_LARGE:int = 152;
+      
+      private static const PARAMS_Y_MEDIUM:int = 143;
+      
+      private static const PARAMS_Y_SMALL:int = 125;
+      
+      private static const PARAMS_Y_TINY:int = 165;
        
       
       public var gfContent:AmmunitionSetupViewInject = null;
@@ -103,13 +110,7 @@ package net.wg.gui.lobby.tank_setup
       
       public function as_gfSizeUpdated(param1:int, param2:int) : void
       {
-         var _loc3_:int = App.appWidth - param2 - param1;
-         var _loc4_:int = _loc3_ - this.params.width >> 1;
-         if(_loc4_ > MAX_PARAMS_OFFSET)
-         {
-            _loc4_ = MAX_PARAMS_OFFSET;
-         }
-         this.params.x = param2 + param1 + _loc4_;
+         this.params.x = param1 + param2 + PARAMS_RIGHT_EMPTY_AREA - this.params.width >> 0;
          if(!this._paramsPositionInited)
          {
             this._paramsPositionInited = true;
@@ -126,15 +127,8 @@ package net.wg.gui.lobby.tank_setup
       public function as_showCloseAnim() : void
       {
          this.clearTween();
-         this._paramsTween = new Tween(ANIM_DURATION,this.params,{
-            "alpha":0,
-            "y":this.params.y + PARAMS_ANIM_OFFSET_Y
-         },{
-            "fastTransform":false,
-            "ease":Regular.easeIn,
-            "onComplete":this.onHideAnimComplete
-         });
          this._appStage.dispatchEvent(new Event(HangarAmunitionSwitchAnimator.MAKE_HANGAR_VISIBILE));
+         this.onHideAnimComplete();
       }
       
       private function clearTween() : void
@@ -148,7 +142,20 @@ package net.wg.gui.lobby.tank_setup
       
       private function updateParamsVertLayout() : void
       {
-         this.params.y = PARAMS_MARGIN_TOP;
+         var _loc1_:int = PARAMS_Y_LARGE;
+         if(_originalWidth < StageSizeBoundaries.WIDTH_1366)
+         {
+            _loc1_ = PARAMS_Y_TINY;
+         }
+         else if(_originalWidth < StageSizeBoundaries.WIDTH_1600 && _originalHeight < StageSizeBoundaries.HEIGHT_900)
+         {
+            _loc1_ = PARAMS_Y_SMALL;
+         }
+         else if(_originalHeight < StageSizeBoundaries.HEIGHT_1080)
+         {
+            _loc1_ = PARAMS_Y_MEDIUM;
+         }
+         this.params.y = _loc1_;
          this.params.height = _originalHeight - this.params.y - PARAMS_MARGIN_BOTTOM ^ 0;
          invalidateSize();
       }

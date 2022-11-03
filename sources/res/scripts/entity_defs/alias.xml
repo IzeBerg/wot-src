@@ -389,6 +389,15 @@
 			</queues>
 		</Properties>
 	</MAPS_TRAINING_QUEUE_INFO>
+	<FUN_RANDOM_QUEUE_INFO>
+		FIXED_DICT
+		<AllowNone>true</AllowNone>
+		<Properties>
+			<events>
+				<Type>PYTHON</Type>
+			</events>
+		</Properties>
+	</FUN_RANDOM_QUEUE_INFO>
 	<PUBLIC_ARENA_INFO>
 		FIXED_DICT
 		<Properties>
@@ -1189,7 +1198,7 @@
 				<Type>FLOAT32</Type>
 			</endTime>
 			<timeLeft>
-				<Type>UINT16</Type>
+				<Type>FLOAT32</Type>
 			</timeLeft>
 		</Properties>
 	</SIEGE_STATE_STATUS>
@@ -1207,10 +1216,10 @@
 		<AllowNone>true</AllowNone>
 		<Properties>
 			<baseTime>
-				<Type>UINT16</Type>
+				<Type>FLOAT32</Type>
 			</baseTime>
 			<timeLeft>
-				<Type>INT16</Type>
+				<Type>FLOAT32</Type>
 			</timeLeft>
 			<endTime>
 				<Type>FLOAT32</Type>
@@ -1861,13 +1870,13 @@
 				<Type>UINT8</Type>
 			</id>
 			<endTime>
-				<Type>INT64</Type>
+				<Type>FLOAT32</Type>
 			</endTime>
 			<baseTime>
-				<Type>INT64</Type>
+				<Type>FLOAT32</Type>
 			</baseTime>
 			<leftTime>
-				<Type>INT64</Type>
+				<Type>FLOAT32</Type>
 			</leftTime>
 		</Properties>
 	</COOLDOWN_INFO>
@@ -2186,10 +2195,10 @@
 				<Type>FLOAT32</Type>
 			</endTime>
 			<baseTime>
-				<Type>UINT16</Type>
+				<Type>FLOAT32</Type>
 			</baseTime>
 			<timeLeft>
-				<Type>INT16</Type>
+				<Type>FLOAT32</Type>
 			</timeLeft>
 			<firstTime>
 				<Type>FLOAT32</Type>
@@ -2210,10 +2219,10 @@
 				<Type>FLOAT32</Type>
 			</endTime>
 			<baseTime>
-				<Type>UINT16</Type>
+				<Type>FLOAT32</Type>
 			</baseTime>
 			<timeLeft>
-				<Type>INT16</Type>
+				<Type>FLOAT32</Type>
 			</timeLeft>
 		</Properties>
 	</VEHICLE_GUN_RELOAD_TIME>

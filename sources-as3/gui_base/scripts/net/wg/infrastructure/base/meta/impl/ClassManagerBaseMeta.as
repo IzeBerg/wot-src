@@ -73,6 +73,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.bootcamp.containers.AnimatedSpriteContainer;
    import net.wg.gui.bootcamp.containers.AnimatedTextContainer;
    import net.wg.gui.bootcamp.containers.AnimatedTextContainerWithBackground;
+   import net.wg.gui.bootcamp.containers.BCIntroLogoContainer;
    import net.wg.gui.bootcamp.containers.HintContainer;
    import net.wg.gui.bootcamp.containers.TipHintAnimation;
    import net.wg.gui.bootcamp.containers.TutorialPageContainer;
@@ -913,6 +914,8 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.infrastructure.uilogging.deprecated.bootcamp.events.TooltipLogEvent;
    import net.wg.infrastructure.uilogging.epic_battle.EPIC_BATTLE_LOGGER_CONSTANTS;
    import net.wg.infrastructure.uilogging.epic_battle.SkillDropPageLogger;
+   import net.wg.infrastructure.uilogging.personal_reserves.InBattleActivationScreenLogger;
+   import net.wg.infrastructure.uilogging.personal_reserves.PERSONAL_RESERVES_LOGGING_CONSTANTS;
    
    public class ClassManagerBaseMeta
    {
@@ -1062,6 +1065,8 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_GUI_BOOTCAMP_CONTAINERS_ANIMATEDTEXTCONTAINER:Class = AnimatedTextContainer;
       
       public static const NET_WG_GUI_BOOTCAMP_CONTAINERS_ANIMATEDTEXTCONTAINERWITHBACKGROUND:Class = AnimatedTextContainerWithBackground;
+      
+      public static const NET_WG_GUI_BOOTCAMP_CONTAINERS_BCINTROLOGOCONTAINER:Class = BCIntroLogoContainer;
       
       public static const NET_WG_GUI_BOOTCAMP_CONTAINERS_HINTCONTAINER:Class = HintContainer;
       
@@ -2800,6 +2805,10 @@ package net.wg.infrastructure.base.meta.impl
       public static const NET_WG_INFRASTRUCTURE_UILOGGING_EPIC_BATTLE_EPIC_BATTLE_LOGGER_CONSTANTS:Class = EPIC_BATTLE_LOGGER_CONSTANTS;
       
       public static const NET_WG_INFRASTRUCTURE_UILOGGING_EPIC_BATTLE_SKILLDROPPAGELOGGER:Class = SkillDropPageLogger;
+      
+      public static const NET_WG_INFRASTRUCTURE_UILOGGING_PERSONAL_RESERVES_INBATTLEACTIVATIONSCREENLOGGER:Class = InBattleActivationScreenLogger;
+      
+      public static const NET_WG_INFRASTRUCTURE_UILOGGING_PERSONAL_RESERVES_PERSONAL_RESERVES_LOGGING_CONSTANTS:Class = PERSONAL_RESERVES_LOGGING_CONSTANTS;
        
       
       public function ClassManagerBaseMeta()

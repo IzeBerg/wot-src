@@ -286,7 +286,7 @@ package net.wg.gui.components.controls
       
       private function isUpdateIconPosition() : Boolean
       {
-         return this._textAlign == TextFormatAlign.RIGHT;
+         return this._textAlign == TextFormatAlign.RIGHT && this._iconPosition == IconTextPosition.LEFT || this._textAlign == TextFormatAlign.LEFT && this._iconPosition == IconTextPosition.RIGHT;
       }
       
       override public function set enabled(param1:Boolean) : void

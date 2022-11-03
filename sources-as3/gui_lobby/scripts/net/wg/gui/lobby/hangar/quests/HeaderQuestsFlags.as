@@ -480,20 +480,21 @@ package net.wg.gui.lobby.hangar.quests
       
       private function updateHitArea() : void
       {
-         var _loc3_:IHeaderQuestsContainer = null;
-         var _loc1_:int = this.entryPointWidth + this.entryPointMarginRight + this.entryPointMarginLeft + 2 * QUESTS_GROUP_OFFSET;
-         var _loc2_:int = 0;
-         for each(_loc3_ in this._questsGroupsContainers)
+         var _loc4_:IHeaderQuestsContainer = null;
+         var _loc1_:int = this.entryPointWidth + this.entryPointMarginRight + this.entryPointMarginLeft;
+         var _loc2_:int = _loc1_ + 2 * QUESTS_GROUP_OFFSET;
+         var _loc3_:int = Boolean(this._entryPoint) ? int(-(_loc1_ >> 1)) : int(0);
+         for each(_loc4_ in this._questsGroupsContainers)
          {
-            if(_loc3_.x < _loc2_)
+            if(_loc4_.x < _loc3_)
             {
-               _loc2_ = _loc3_.x;
+               _loc3_ = _loc4_.x;
             }
-            _loc1_ += _loc3_.cmptWidth;
+            _loc2_ += _loc4_.cmptWidth;
          }
-         this.questsHitArea.x = _loc2_;
+         this.questsHitArea.x = _loc3_;
          this.questsHitArea.y = this.flagsOffsetY;
-         this.questsHitArea.width = _loc1_;
+         this.questsHitArea.width = _loc2_;
       }
       
       private function addListenersToQuestsContainer(param1:IHeaderQuestsContainer) : void

@@ -1321,8 +1321,6 @@ package
       
       public static const DETAILS_CONDITIONS_CUMULATIVE_XP:String = "#quests:details/conditions/cumulative/xp";
       
-      public static const DETAILS_CONDITIONS_CUMULATIVE_HWXP:String = "#quests:details/conditions/cumulative/hwXP";
-      
       public static const DETAILS_CONDITIONS_CUMULATIVE_DIRECTHITS:String = "#quests:details/conditions/cumulative/directHits";
       
       public static const DETAILS_CONDITIONS_CUMULATIVE_DIRECTENEMYHITS:String = "#quests:details/conditions/cumulative/directEnemyHits";
@@ -1900,6 +1898,8 @@ package
       public static const DETAILS_DOSSIER_37_BATTLESCOUNT:String = "#quests:details/dossier/37/battlesCount";
       
       public static const DETAILS_DOSSIER_39_BATTLESCOUNT:String = "#quests:details/dossier/39/battlesCount";
+      
+      public static const DETAILS_DOSSIER_42_BATTLESCOUNT:String = "#quests:details/dossier/42/battlesCount";
       
       public static const DETAILS_DOSSIER_43_BATTLESCOUNT:String = "#quests:details/dossier/43/battlesCount";
       

@@ -1,5 +1,8 @@
+from collections import namedtuple
 LIST_SCROLL_STEP_FACTOR = 10
 DEF_ICON_PATH = '../maps/icons/library/{0:>s}-1.png'
+SavedNotificationData = namedtuple('SavedNotificationData', ('entityID', 'savedData',
+                                                             'priorityLevel'))
 
 class NOTIFICATION_STATE(object):
     POPUPS = 0

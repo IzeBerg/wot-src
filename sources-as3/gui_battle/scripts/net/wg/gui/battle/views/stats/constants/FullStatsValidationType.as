@@ -30,8 +30,6 @@ package net.wg.gui.battle.views.stats.constants
       public static const SUFFIXBAGE:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 12;
       
       public static const VOICE_CHAT_STATUS_CHANGED:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 13;
-      
-      public static const DAMAGE:uint = InvalidationType.SYSTEM_FLAGS_BORDER << 14;
        
       
       public function FullStatsValidationType()

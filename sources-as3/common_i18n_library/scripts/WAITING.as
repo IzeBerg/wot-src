@@ -37,6 +37,8 @@ package
       
       public static const STORAGE_FORSELL:String = "#waiting:storage/forSell";
       
+      public static const STORAGE_FORDECONSTRUCT:String = "#waiting:storage/forDeconstruct";
+      
       public static const BUYSLOT:String = "#waiting:buySlot";
       
       public static const BUYBERTHS:String = "#waiting:buyBerths";

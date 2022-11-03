@@ -9,6 +9,8 @@ package
       
       public static const COMMON_DASH:String = "#common:common/dash";
       
+      public static const COMMON_DASHES:String = "#common:common/dashes";
+      
       public static const COMMON_SLASH:String = "#common:common/slash";
       
       public static const COMMON_OPEN_QUOTES:String = "#common:common/open_quotes";

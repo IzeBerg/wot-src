@@ -939,6 +939,8 @@ package
       
       public static const VEHICLE_SELL_NOT_ENOUGH_SPACE:String = "#system_messages:vehicle_sell/not_enough_space";
       
+      public static const VEHICLE_SELL_EQUIPCOIN_ERROR:String = "#system_messages:vehicle_sell/equipCoin_error";
+      
       public static const VEHICLE_SELL_SUCCESS_WITH_DEMOUNT_KIT:String = "#system_messages:vehicle_sell/success/with_demount_kit";
       
       public static const VEHICLE_SELL_SUCCESS_DISMANTLING_WITH_DEMOUNT_KIT:String = "#system_messages:vehicle_sell/success_dismantling/with_demount_kit";
@@ -1205,6 +1207,14 @@ package
       
       public static const MODULE_SELL_SERVER_ERROR:String = "#system_messages:module_sell/server_error";
       
+      public static const ARTEFACT_DECONSTRUCTING_SUCCESS:String = "#system_messages:artefact_deconstructing/success";
+      
+      public static const ARTEFACT_DECONSTRUCTING_INVALID_MODULE:String = "#system_messages:artefact_deconstructing/invalid_module";
+      
+      public static const ARTEFACT_DECONSTRUCTING_SERVER_ERROR:String = "#system_messages:artefact_deconstructing/server_error";
+      
+      public static const ARTEFACT_DECONSTRUCTINGMULT_SUCCESS:String = "#system_messages:artefact_deconstructingMult/success";
+      
       public static const ARTEFACT_SELL_SUCCESS:String = "#system_messages:artefact_sell/success";
       
       public static const ARTEFACT_SELL_INVALID_MODULE:String = "#system_messages:artefact_sell/invalid_module";
@@ -1408,6 +1418,8 @@ package
       public static const PREBATTLE_REQUEST_NAME_CHANGE_FALLOUT_QUEUE_TYPE:String = "#system_messages:prebattle/request/name/CHANGE_FALLOUT_QUEUE_TYPE";
       
       public static const PREBATTLE_REQUEST_NAME_AUTO_SEARCH:String = "#system_messages:prebattle/request/name/AUTO_SEARCH";
+      
+      public static const PREBATTLE_REQUEST_NAME_CHANGE_FUN_SUB_MODE:String = "#system_messages:prebattle/request/name/CHANGE_FUN_SUB_MODE";
       
       public static const FORTIFICATION_REQUEST_NAME_CREATE_FORT:String = "#system_messages:fortification/request/name/CREATE_FORT";
       

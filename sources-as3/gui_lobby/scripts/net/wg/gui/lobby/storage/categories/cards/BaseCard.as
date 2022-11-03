@@ -98,6 +98,12 @@ package net.wg.gui.lobby.storage.categories.cards
       
       private static const CARD_SMALL_WIDTH:int = 280;
       
+      private static const DESCRIPTION_SMALL_CARD_MAX_LINES:uint = 2;
+      
+      private static const DESCRIPTION_BIG_CARD_MAX_LINES:uint = 3;
+      
+      private static const DESCRIPTION_TRANCATION_SYMBOL:String = "...";
+      
       private static const TOOLTIP_HIT_AREA_NAME:String = "tooltipHitArea";
        
       
@@ -294,7 +300,6 @@ package net.wg.gui.lobby.storage.categories.cards
             this._container.addChild(this.extraParams);
             this.extraParams.alpha = 0;
          }
-         this.sellButton.label = STORAGE.BUTTONLABEL_SELL;
          this.sellButton.alpha = 0;
          this.sellButton.minWidth = SELL_BUTTON_MIN_WIDTH;
          this.sellButton.autoSize = TextFieldAutoSize.RIGHT;
@@ -314,6 +319,7 @@ package net.wg.gui.lobby.storage.categories.cards
       {
          var _loc1_:Graphics = null;
          var _loc2_:Rectangle = null;
+         var _loc3_:uint = 0;
          super.draw();
          if(this._data && isInvalid(InvalidationType.DATA))
          {
@@ -321,7 +327,6 @@ package net.wg.gui.lobby.storage.categories.cards
             this.titleTF.htmlText = this._data.title;
             if(this.descriptionTF)
             {
-               this.descriptionTF.htmlText = this._data.description;
                if(this._resetViewOnDataChange)
                {
                   this.descriptionTF.alpha = 0;
@@ -373,6 +378,7 @@ package net.wg.gui.lobby.storage.categories.cards
                this.discountIcon.visible = this.hasAction && this._data.enabled;
             }
             this.sellButton.visible = this._data.enabled;
+            this.sellButton.label = Boolean(this._data.actionButtonLabel) ? this._data.actionButtonLabel : STORAGE.BUTTONLABEL_SELL;
             this.createUpgradeButton();
             if(this._resetViewOnDataChange)
             {
@@ -457,6 +463,8 @@ package net.wg.gui.lobby.storage.categories.cards
                this.descriptionTF.x = _loc2_.left;
                this.descriptionTF.y = this.titleTF.y + this.titleTF.height + this._sizeVO.descriptionOffset;
                this.descriptionTF.width = _loc2_.width >> 0;
+               _loc3_ = this._sizeVO.size.width < CARD_SMALL_WIDTH ? uint(DESCRIPTION_SMALL_CARD_MAX_LINES) : uint(DESCRIPTION_BIG_CARD_MAX_LINES);
+               App.utils.commons.truncateHtmlTextMultiline(this.descriptionTF,this._data.description,_loc3_,DESCRIPTION_TRANCATION_SYMBOL);
             }
             if(this.extraParams)
             {
@@ -786,11 +794,11 @@ package net.wg.gui.lobby.storage.categories.cards
             this.upgradeButton = App.utils.classFactory.getComponent(Linkages.BUTTON_ICON_NORMAL,ButtonIconNormal);
             this.upgradeButton.width = UPGRADE_BUTTON_WIDTH;
             this.upgradeButton.alpha = 0;
-            this.upgradeButton.iconSource = RES_ICONS.MAPS_ICONS_LIBRARY_TROPHY_UPGRADE_ICON;
             _loc1_ = getChildIndex(this.sellButton);
             addChildAt(this.upgradeButton,_loc1_);
          }
          this.upgradeButton.visible = this._data.upgradable;
+         this.upgradeButton.iconSource = this._data.upgradeButtonIcon;
          this.upgradeButton.tooltip = this._data.upgradeButtonTooltip;
       }
       

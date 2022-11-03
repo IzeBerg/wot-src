@@ -124,6 +124,7 @@ package net.wg.gui.lobby.manualChapter.controls
             this._hintStart.y = this.button.y;
             this._hintStart.setProperties(this.button.width,this.button.height,true);
             addChild(this._hintStart);
+            dispatchEvent(new ManualViewEvent(ManualViewEvent.BOOTCAMP_HIGHLIGHTED,true));
          }
       }
       

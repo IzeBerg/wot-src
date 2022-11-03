@@ -82,10 +82,6 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       private var _itemIndexToScroll:int = -1;
       
-      private var _rightMargin:int = 0;
-      
-      private var _paddingRight:int = 0;
-      
       public function TankCarousel()
       {
          super();
@@ -105,7 +101,7 @@ package net.wg.gui.lobby.hangar.tcarousel
          {
             _loc3_ += _loc4_;
          }
-         var _loc5_:Number = param1 - this._paddingRight - _loc3_ - OFFSET_ARROW - this._rightMargin >> 0;
+         var _loc5_:Number = param1 - _loc3_ - OFFSET_ARROW >> 0;
          this.background.width = param1 >> 0;
          var _loc6_:int = _loc5_ + leftArrowOffset - rightArrowOffset >> 0;
          super.updateLayout(_loc5_,(_loc5_ - _loc6_ >> 1) + _loc3_ >> 0);
@@ -308,14 +304,6 @@ package net.wg.gui.lobby.hangar.tcarousel
          return new <Rectangle>[new Rectangle(x,_loc1_,App.appWidth,App.appHeight - _loc1_)];
       }
       
-      public function setRightMargin(param1:int) : void
-      {
-         this.as_useExtendedCarousel(true);
-         this._rightMargin = param1;
-         invalidateSize();
-         validateNow();
-      }
-      
       public function updateCarouselPosition(param1:Number) : void
       {
          if(y != param1)
@@ -412,16 +400,6 @@ package net.wg.gui.lobby.hangar.tcarousel
          this.vehicleFilters.height = this._listVisibleHeight;
       }
       
-      public function get rowCount() : int
-      {
-         return this._rowCount;
-      }
-      
-      public function get smallDoubleCarouselEnable() : Boolean
-      {
-         return this._rowCount > 1 && (this._stageHeight < THRESHOLD || this._smallDoubleCarouselEnable);
-      }
-      
       public function get helper() : ITankCarouselHelper
       {
          return this._helper;
@@ -461,12 +439,6 @@ package net.wg.gui.lobby.hangar.tcarousel
       {
          this.vehicleFilters.y = scrollList.y + (this._listVisibleHeight - this.vehicleFilters.height >> 1);
          updateHotFiltersS();
-      }
-      
-      public function set paddingRight(param1:int) : void
-      {
-         this._paddingRight = param1;
-         invalidateSize();
       }
    }
 }

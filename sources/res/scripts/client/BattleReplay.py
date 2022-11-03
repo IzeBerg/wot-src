@@ -1136,13 +1136,15 @@ class BattleReplay(object):
             serverSettings = player.serverSettings
             self.__serverSettings['roaming'] = serverSettings['roaming']
             self.__serverSettings['isPotapovQuestEnabled'] = serverSettings.get('isPotapovQuestEnabled', False)
-            if 'spgRedesignFeatures' in serverSettings:
-                self.__serverSettings['spgRedesignFeatures'] = serverSettings['spgRedesignFeatures']
             self.__serverSettings['ranked_config'] = serverSettings['ranked_config']
             self.__serverSettings['battle_royale_config'] = serverSettings['battle_royale_config']
             self.__serverSettings['epic_config'] = serverSettings['epic_config']
             self.__serverSettings[SERVER_SETTINGS_KEY] = serverSettings[SERVER_SETTINGS_KEY]
             self.__serverSettings[Configs.COMP7_CONFIG.value] = serverSettings.get(Configs.COMP7_CONFIG.value)
+            if Configs.FUN_RANDOM_CONFIG.value in serverSettings:
+                self.__serverSettings[Configs.FUN_RANDOM_CONFIG.value] = serverSettings[Configs.FUN_RANDOM_CONFIG.value]
+            if 'spgRedesignFeatures' in serverSettings:
+                self.__serverSettings['spgRedesignFeatures'] = serverSettings['spgRedesignFeatures']
             if player.databaseID is None:
                 BigWorld.callback(0.1, self.__onAccountBecomePlayer)
             else:

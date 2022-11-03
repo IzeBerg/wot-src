@@ -27,10 +27,6 @@ package
       
       public static const MAPS_ICONS_BLUEPRINTS_FRAGMENT_CONVERSION_BG:String = "../maps/icons/blueprints/fragment/conversion/bg.png";
       
-      public static const MAPS_ICONS_CNLOOTBOXES_POPOVER_BG:String = "../maps/icons/cnLootBoxes/popover/bg.png";
-      
-      public static const MAPS_ICONS_CNLOOTBOXES_WELCOMESCREEN_BG:String = "../maps/icons/cnLootBoxes/welcomeScreen/bg.png";
-      
       public static const MAPS_ICONS_CRYSTALSINFO_BG:String = "../maps/icons/crystalsInfo/bg.png";
       
       public static const MAPS_ICONS_CUSTOMIZATION_PROGRESSION_STYLES_STAGE_SWITCHER_BG:String = "../maps/icons/customization/progression_styles/stage_switcher/bg.png";

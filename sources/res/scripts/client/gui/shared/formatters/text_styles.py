@@ -270,6 +270,10 @@ def crystal(text):
     return _formatText('crystalText', text)
 
 
+def equipCoin(text):
+    return _formatText('equipCoinText', text)
+
+
 def textEpic(text):
     return _formatText('textEpic', text)
 

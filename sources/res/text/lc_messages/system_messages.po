@@ -221,6 +221,18 @@ msgstr ""
 "Операция невозможна. Всё ваше золото станет доступно после автоматического "
 "восстановления работоспособности Единого кошелька."
 
+msgid "artefact_deconstructing/invalid_module"
+msgstr "Разбор оборудования «%(name)s» не удался. Неправильный модуль."
+
+msgid "artefact_deconstructing/server_error"
+msgstr "Разбор оборудования «%(name)s» не удался. Попробуйте позже."
+
+msgid "artefact_deconstructing/success"
+msgstr "Разобрано оборудование: «%(name)s» (x%(count)s). Получено %(money)s."
+
+msgid "artefact_deconstructingMult/success"
+msgstr "Разобрано оборудование: %(names)s. Получено %(money)s."
+
 msgid "artefact_demount/error_not_enough_resources"
 msgstr "Оборудование «%(equipment)s» не демонтировано. Недостаточно средств."
 
@@ -2777,6 +2789,9 @@ msgstr "Смена дивизиона"
 msgid "prebattle/request/name/CHANGE_FALLOUT_QUEUE_TYPE"
 msgstr "Переключение режима"
 
+msgid "prebattle/request/name/CHANGE_FUN_SUB_MODE"
+msgstr "Смена подрежима"
+
 msgid "prebattle/request/name/CHANGE_RATED"
 msgstr "Переключение режима"
 
@@ -4504,6 +4519,11 @@ msgstr "Продажа «%(vehName)s» не удалась. Попробуйте
 
 msgid "vehicle_sell/disabledService"
 msgstr "Продажа «%(vehName)s» не удалась. Попробуйте позже."
+
+msgid "vehicle_sell/equipCoin_error"
+msgstr ""
+"Продажа «%(vehName)s» не удалась. Недостаточно компонентов для снятия "
+"оборудования."
 
 msgid "vehicle_sell/invalid_vehicle"
 msgstr "Продажа «%(vehName)s» не удалась. Неправильная машина."
