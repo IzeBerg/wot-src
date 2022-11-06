@@ -1,1 +1,0 @@
-DEMO_CATEGORY = 'Demo Components'
