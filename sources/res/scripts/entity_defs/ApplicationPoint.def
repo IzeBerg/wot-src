@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<AppealRadius>3000</AppealRadius>
+	<Properties>
+		<vehicleID>
+			<Type>INT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</vehicleID>
+		<equipmentID>
+			<Type>INT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</equipmentID>
+		<launchTime>
+			<Type>FLOAT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+			<Default>0</Default>
+		</launchTime>
+		<level>
+			<Type>INT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</level>
+	</Properties>
+	<ClientMethods/>
+	<CellMethods/>
+	<BaseMethods/>
+	<shouldBackup>false</shouldBackup>
+</root>

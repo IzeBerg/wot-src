@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<br>
+		<class>_TagTemplate</class>
+		<args>
+			<arg>&lt;br/&gt;</arg>
+		</args>
+	</br>
+	<link>
+		<class>_LinkTemplate</class>
+		<args>
+			<arg>&lt;A HREF=&quot;event:%s&quot;&gt;&lt;U&gt;%s&lt;/U&gt;&lt;/A&gt;</arg>
+		</args>
+	</link>
+	<title>
+		<class>_TitleTemplate</class>
+		<args>
+			<arg>&lt;P ALIGN=&quot;LEFT&quot;&gt;&lt;B&gt;%s&lt;/B&gt;&lt;/P&gt;</arg>
+		</args>
+	</title>
+	<paragraph>
+		<class>_ContentTemplate</class>
+		<args>
+			<arg>&lt;P ALIGN=&quot;LEFT&quot;&gt;%s&lt;/P&gt;</arg>
+		</args>
+	</paragraph>
+	<chapter>
+		<class>_ChapterTemplate</class>
+		<args>
+			<arg>&lt;BR/&gt;&lt;BR/&gt;&lt;P ALIGN=&quot;LEFT&quot;&gt;&lt;B&gt;%s&lt;/B&gt;&lt;BR/&gt;&lt;/P&gt;</arg>
+			<arg>&lt;TEXTFORMAT LEFTMARGIN=&quot;20&quot;&gt;&lt;P ALIGN=&quot;LEFT&quot;&gt;%s&lt;/P&gt;&lt;/TEXTFORMAT&gt;</arg>
+		</args>
+	</chapter>
+</root>

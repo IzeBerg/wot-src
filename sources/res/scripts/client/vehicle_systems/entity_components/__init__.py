@@ -1,0 +1,4 @@
+
+
+class VehicleComponent(object):
+    pass

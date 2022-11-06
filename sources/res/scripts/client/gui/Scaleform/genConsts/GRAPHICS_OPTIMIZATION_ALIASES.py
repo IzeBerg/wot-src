@@ -1,0 +1,4 @@
+
+
+class GRAPHICS_OPTIMIZATION_ALIASES(object):
+    CUSTOMISATION_BOTTOM_PANEL = 'CustomisationBottomPanel'

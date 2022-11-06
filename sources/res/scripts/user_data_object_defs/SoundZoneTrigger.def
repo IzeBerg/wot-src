@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<Domain>CLIENT</Domain>
+	<Properties>
+		<ZoneEnter>
+			<Type>STRING</Type>
+			<Editable>True</Editable>
+			<Default/>
+		</ZoneEnter>
+		<ZoneExit>
+			<Type>STRING</Type>
+			<Editable>True</Editable>
+			<Default/>
+		</ZoneExit>
+		<Size>
+			<Type>VECTOR3</Type>
+			<Editable>False</Editable>
+			<Default>
+				1.0 1.0 1.0
+				<!--BW_String-->
+			</Default>
+		</Size>
+		<VolumeDeviation>
+			<Type>FLOAT</Type>
+			<Editable>True</Editable>
+			<Default>0</Default>
+		</VolumeDeviation>
+		<Reverb>
+			<Type>STRING</Type>
+			<Editable>True</Editable>
+			<Default/>
+		</Reverb>
+		<ReverbLevel>
+			<Type>UINT8</Type>
+			<Editable>True</Editable>
+			<Default>1</Default>
+		</ReverbLevel>
+	</Properties>
+</root>

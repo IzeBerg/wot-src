@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<Implements>
+		<Interface>SpaceRecording</Interface>
+	</Implements>
+	<LoDLevels>
+		<manual>
+			<label>MY_VEHICLE</label>
+		</manual>
+		<manual>
+			<label>GUN_MARKER</label>
+		</manual>
+		<manual>
+			<label>MY_TEAM</label>
+		</manual>
+	</LoDLevels>
+	<Properties>
+		<isRecording>
+			<Type>STRING</Type>
+		</isRecording>
+		<geometryLoaded>
+			<Type>BOOL</Type>
+		</geometryLoaded>
+		<weather>
+			<Type>STRING</Type>
+			<Exposed/>
+		</weather>
+		<itemsVisibilityMask>
+			<Type>UINT32</Type>
+			<Exposed/>
+			<ExposedForReplay>true</ExposedForReplay>
+		</itemsVisibilityMask>
+	</Properties>
+</root>

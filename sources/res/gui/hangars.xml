@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<shadow_model_name>content/Environment/envH_shadowPlane/gw.model</shadow_model_name>
+	<shadow_default_texture_name>content/Environment/envH_shadowPlane/GW_shad.dds</shadow_default_texture_name>
+	<shadow_empty_texture_name>system/maps/aid_null.dds</shadow_empty_texture_name>
+	<igrPremHangarPath>spaces/hangar_v3</igrPremHangarPath>
+	<igrPremHangarPathCN>spaces/hangar_v3</igrPremHangarPathCN>
+	<hangar_scene_spaces>
+		<item>
+			<name>BATTLE_ROYALE</name>
+			<space>h33_battle_royale_2021</space>
+			<waitingMessage>battleRoyale/hangarLoading</waitingMessage>
+			<waitingBackground>gui/maps/icons/lobby/brWaitingBg.png</waitingBackground>
+		</item>
+		<item>
+			<name>FESTIVAL</name>
+			<space>h20_wot_bday</space>
+			<waitingMessage>festival/hangarLoading</waitingMessage>
+		</item>
+		<item>
+			<name>DEFAULT</name>
+			<space>hangar_v3</space>
+		</item>
+		<item>
+			<name>COMP7</name>
+			<space>h33_comp7</space>
+		</item>
+		<item>
+			<name>BOOTCAMP</name>
+			<space>hangar_v3</space>
+		</item>
+	</hangar_scene_spaces>
+</root>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<Implements>
+		<Interface>ThrottledMethods</Interface>
+	</Implements>
+	<AppealRadius>3000</AppealRadius>
+	<Volatile/>
+	<Properties>
+		<teamID>
+			<Type>INT32</Type>
+			<Flags>ALL_CLIENTS</Flags>
+		</teamID>
+	</Properties>
+	<TempProperties/>
+	<ClientMethods>
+		<onCombatEquipmentUsed>
+			<Arg>OBJECT_ID</Arg>
+			<Arg>OBJECT_ID</Arg>
+		</onCombatEquipmentUsed>
+	</ClientMethods>
+	<CellMethods/>
+	<BaseMethods/>
+	<shouldBackup>false</shouldBackup>
+</root>
