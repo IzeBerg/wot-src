@@ -9,15 +9,6 @@
 			<row3>0.000000 0.000000 0.000000</row3>
 		</transform>
 		<node>
-			<identifier>polySurface1__C1</identifier>
-			<transform>
-				<row0>1.000000 0.000000 0.000000</row0>
-				<row1>0.000000 1.000000 0.000000</row1>
-				<row2>0.000000 0.000000 1.000000</row2>
-				<row3>0.000000 0.000000 0.000000</row3>
-			</transform>
-		</node>
-		<node>
 			<identifier>polySurface1__C2</identifier>
 			<transform>
 				<row0>1.000000 0.000000 0.000000</row0>
@@ -137,7 +128,6 @@
 	</node>
 	<renderSet>
 		<treatAsWorldSpaceObject>true</treatAsWorldSpaceObject>
-		<node>polySurface1__C1</node>
 		<node>polySurface1__C2</node>
 		<node>polySurface1__C3</node>
 		<node>polySurface1__C0_1__C1</node>
@@ -202,14 +192,14 @@
 						<Bool>true</Bool>
 					</property>
 				</fade_material>
-				<groupOrigin>0.000000 1.113089 -0.000001</groupOrigin>
+				<groupOrigin>0.000000 0.870272 -0.000001</groupOrigin>
 			</primitiveGroup>
 		</geometry>
 	</renderSet>
 	<boundingBox>
 		<min>-0.238963 0.234208 -0.238671</min>
-		<max>0.238964 1.991969 0.238669</max>
+		<max>0.238964 1.506335 0.238669</max>
 	</boundingBox>
-	<geometrySize>145104</geometrySize>
+	<geometrySize>138768</geometrySize>
 	<minUVDensity>0.007706</minUVDensity>
 </root>

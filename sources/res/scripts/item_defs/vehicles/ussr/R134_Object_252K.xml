@@ -151,6 +151,13 @@
 				<camouflage/>
 			</customizableVehicleAreas>
 		</customization>
+		<camouflage>
+			<density>
+				100.849 101.227
+				<!--BW_String-->
+			</density>
+			<aoTextureSize>1024 1024</aoTextureSize>
+		</camouflage>
 		<customizationSlots>
 			<slot>
 				<slotType>clan</slotType>
@@ -186,6 +193,11 @@
 			<slot>
 				<slotType>projectionDecal</slotType>
 				<slotId>15000</slotId>
+				<anchorPosition>
+					-0.424506 0.395989 3.30257
+					<!--BW_String-->
+				</anchorPosition>
+				<anchorDirection>-0.333737 0.903048 0.270415</anchorDirection>
 				<tags>formfactor_square</tags>
 				<position>
 					-0.401143 1.21393 3.28364
@@ -205,11 +217,15 @@
 					0.47098
 					<!--BW_String-->
 				</clipAngle>
-				<anchorShift>0.070003</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
 				<slotId>15001</slotId>
+				<anchorPosition>
+					0.424518 0.395981 3.30257
+					<!--BW_String-->
+				</anchorPosition>
+				<anchorDirection>0.333677 0.903056 0.270461</anchorDirection>
 				<position>
 					0.401159 1.21392 3.28364
 					<!--BW_String-->
@@ -229,7 +245,6 @@
 					<!--BW_String-->
 				</clipAngle>
 				<tags>formfactor_square</tags>
-				<anchorShift>0.070004</anchorShift>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -253,7 +268,11 @@
 					0.47098
 					<!--BW_String-->
 				</clipAngle>
-				<anchorShift>0.089992</anchorShift>
+				<anchorPosition>
+					-1.21744 0.612853 -2.37626
+					<!--BW_String-->
+				</anchorPosition>
+				<anchorDirection>-0.357404 0.843822 -0.400284</anchorDirection>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -277,36 +296,13 @@
 					0.47098
 					<!--BW_String-->
 				</clipAngle>
-				<anchorShift>0.079997</anchorShift>
-			</slot>
-			<slot>
-				<slotType>fixedEmblem</slotType>
-				<slotId>17000</slotId>
-				<rayStart>
-					-0.931625 0.646017 2.06705
+				<anchorPosition>
+					1.21389 0.604388 -2.37226
 					<!--BW_String-->
-				</rayStart>
-				<rayEnd>
-					-0.832846 0.401858 1.99152
-					<!--BW_String-->
-				</rayEnd>
-				<rayUp>0.864982 0.184897 -0.466497</rayUp>
-				<emblemId>15924</emblemId>
-				<size>
-					0.503
-					<!--BW_String-->
-				</size>
-				<hideIfDamaged>false</hideIfDamaged>
-				<isUVProportional>true</isUVProportional>
+				</anchorPosition>
+				<anchorDirection>0.357383 0.843816 -0.400315</anchorDirection>
 			</slot>
 		</customizationSlots>
-		<camouflage>
-			<density>
-				100.849 101.227
-				<!--BW_String-->
-			</density>
-			<aoTextureSize>1024 1024</aoTextureSize>
-		</camouflage>
 	</hull>
 	<chassis>
 		<Chassis_R134_Object_252K>
@@ -2310,6 +2306,13 @@
 					<camouflage/>
 				</customizableVehicleAreas>
 			</customization>
+			<camouflage>
+				<density>
+					103.654 103.311
+					<!--BW_String-->
+				</density>
+				<aoTextureSize>1024 512</aoTextureSize>
+			</camouflage>
 			<customizationSlots>
 				<slot>
 					<slotType>camouflage</slotType>
@@ -2339,7 +2342,11 @@
 					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.000000</clipAngle>
-					<anchorShift>0.049038</anchorShift>
+					<anchorPosition>0.000011 0.695914 0.498374</anchorPosition>
+					<anchorDirection>
+						-0.0295644 0.994344 0.10201
+						<!--BW_String-->
+					</anchorDirection>
 				</slot>
 				<slot>
 					<slotType>projectionDecal</slotType>
@@ -2376,56 +2383,16 @@
 					<doubleSided>false</doubleSided>
 					<showOn>256</showOn>
 					<clipAngle>0.595195</clipAngle>
-					<anchorShift>0.051320</anchorShift>
-				</slot>
-				<slot>
-					<slotType>fixedEmblem</slotType>
-					<slotId>37000</slotId>
-					<rayStart>
-						-1.17124 0.591294 0.339158
+					<anchorPosition>
+						0.00102158 0.729081 -1.04607
 						<!--BW_String-->
-					</rayStart>
-					<rayEnd>-0.912484 0.290404 0.289055</rayEnd>
-					<rayUp>
-						0.827982 0.556714 -0.0672041
+					</anchorPosition>
+					<anchorDirection>
+						-0.000010 0.997461 -0.0712124
 						<!--BW_String-->
-					</rayUp>
-					<emblemId>15925</emblemId>
-					<size>
-						0.307
-						<!--BW_String-->
-					</size>
-					<hideIfDamaged>false</hideIfDamaged>
-					<isUVProportional>true</isUVProportional>
-				</slot>
-				<slot>
-					<slotType>fixedEmblem</slotType>
-					<slotId>37001</slotId>
-					<rayStart>
-						1.15399 0.612061 0.303509
-						<!--BW_String-->
-					</rayStart>
-					<rayEnd>
-						0.895238 0.31117 0.253407
-						<!--BW_String-->
-					</rayEnd>
-					<rayUp>-0.831724 0.554215 -0.032868</rayUp>
-					<emblemId>15925</emblemId>
-					<size>
-						0.3
-						<!--BW_String-->
-					</size>
-					<hideIfDamaged>false</hideIfDamaged>
-					<isUVProportional>true</isUVProportional>
+					</anchorDirection>
 				</slot>
 			</customizationSlots>
-			<camouflage>
-				<density>
-					103.654 103.311
-					<!--BW_String-->
-				</density>
-				<aoTextureSize>1024 512</aoTextureSize>
-			</camouflage>
 		</Turret_1_R134_Object_252K>
 	</turrets0>
 	<engines>

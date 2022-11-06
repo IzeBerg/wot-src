@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
 	<gameface>
-		<deffontfamily>Warhelios</deffontfamily>
+		<deffontfamily>WarheliosZHCN</deffontfamily>
+		<hieroglyphical>true</hieroglyphical>
+		<fontfamilyfallback>Warhelios</fontfamilyfallback>
 	</gameface>
 	<config>
 		<name>All</name>
-		<fontlib>fonts_sd.swf</fontlib>
+		<fontlib>fonts_zh_cn_sg.swf</fontlib>
 		<map>
 			<alias>
 				<embedded>$TitleFont</embedded>
-				<runtime>ZurichCondBold</runtime>
+				<runtime>TahomaZH</runtime>
 			</alias>
 			<alias>
 				<embedded>$FieldFont</embedded>
-				<runtime>ZurichCond</runtime>
+				<runtime>TahomaZH</runtime>
 			</alias>
 			<alias>
 				<embedded>$TextFont</embedded>
-				<runtime>Tahoma</runtime>
+				<runtime>TahomaZH</runtime>
 			</alias>
 			<alias>
 				<embedded>$UniversCondC</embedded>
-				<runtime>UniversCondC</runtime>
+				<runtime>TahomaZH</runtime>
+				<scaleFactor>
+					0.98
+					<!--BW_String-->
+				</scaleFactor>
 			</alias>
 		</map>
 	</config>

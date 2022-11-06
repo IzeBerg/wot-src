@@ -4,118 +4,110 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-01 10:00+0300\n"
 "PO-Revision-Date: 2010-06-01 10:00+0300\n"
-"Last-Translator: WoT Translator <noreply@wargaming.net>\n"
+"Last-Translator: WOT翻译 <noreply@wargaming.net>\n"
 "Language-Team: WoT Team <noreply@wargaming.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "channels/battle/common"
-msgstr "General"
+msgstr "公共聊天"
 
 msgid "channels/battle/team"
-msgstr "Team"
+msgstr "战队"
 
 msgid "channels/clan"
-msgstr "Clan"
+msgstr "军团"
 
 msgid "channels/common"
-msgstr "General"
+msgstr "公共聊天"
 
 msgid "channels/epic_training"
-msgstr "Training—Frontline"
+msgstr "培训—前线"
 
 msgid "channels/nubs"
-msgstr "Recruits"
+msgstr "招募"
 
 msgid "channels/prebattle"
-msgstr "Pre-Battle"
+msgstr "战前"
 
 msgid "channels/special_battles"
-msgstr "Special Battle"
+msgstr "特殊模式"
 
 msgid "channels/squad"
-msgstr "Platoon"
+msgstr "小队"
 
 msgid "channels/squadNotReady/tooltip/body"
-msgstr "Platoon has been created. Please wait until the players are ready."
+msgstr "小队已创建完毕。请等待其他玩家做好准备。"
 
 msgid "channels/squadNotReady/tooltip/header"
-msgstr "Platoon"
+msgstr "小队"
 
 msgid "channels/squadReady/tooltip/body"
-msgstr "Platoon has been created. All players are ready."
+msgstr "小队已创建完毕。所有玩家已准备完毕。"
 
 msgid "channels/squadReady/tooltip/header"
-msgstr "Platoon"
+msgstr "小队"
 
 msgid "channels/system"
-msgstr "System"
+msgstr "系统"
 
 msgid "channels/tournament"
-msgstr "Tournament"
+msgstr "锦标赛"
 
 msgid "channels/trading"
-msgstr "Trade"
+msgstr "交易"
 
 msgid "channels/training"
-msgstr "Training"
+msgstr "训练中"
 
 msgid "errors/addmoderatorchatadmin"
-msgstr "Chat administrator is also a channel moderator."
+msgstr "聊天室管理员也是版主。"
 
 msgid "errors/addmoderatorowner"
-msgstr "Channel owner is also a channel moderator."
+msgstr "建立频道的玩家也是版主。"
 
 msgid "errors/banchannelowner"
-msgstr "Channel owner cannot be banned."
+msgstr "版主不能被禁言。"
 
 msgid "errors/banchatadmin"
-msgstr "Chat administrator cannot be banned."
+msgstr "聊天室管理员不能被禁言。"
 
 msgid "errors/banned"
-msgstr ""
-"You have been banned by user %(banOwnerNick)s until %(banEndTime)s. Reason: "
-"%(banReason)s"
+msgstr "您已经因[%(banReason)s]被用户%(banOwnerNick)s禁言到%(banEndTime)s"
 
 msgid "errors/bannedpermanent"
-msgstr "You have been banned by user %(banOwnerNick)s. Reason: %(banReason)s"
+msgstr "您已经因[%(banReason)s]被用户%(banOwnerNick)s禁言"
 
 msgid "errors/chatbanned"
-msgstr "You have been banned until %(banEndTime)s. Reason: %(banReason)s"
+msgstr "原因:%(banReason)s。您被禁言到%(banEndTime)s。"
 
 msgid "errors/chatbannedpermanent"
-msgstr "You have been banned. Reason: %(banReason)s"
+msgstr "原因: %(banReason)s。您的账号已被禁言。"
 
 msgid "errors/commandInCooldown"
-msgstr "Command %(command)s has been suspended for %(cooldownPeriod)s s."
+msgstr "%(command)s操作在%(cooldownPeriod)s秒内不可使用。"
 
 msgid "errors/delmoderatorchatadmin"
-msgstr "Moderator permissions cannot be revoked from chat administrator."
+msgstr "管理员不能取消版主的权限。"
 
 msgid "errors/delmoderatorowner"
-msgstr "Moderator permissions cannot be revoked from the channel owner."
+msgstr "建立频道的玩家不能取消版主的权限。"
 
 msgid "errors/timeincorrect"
-msgstr ""
-"The ‘time’ parameter must be a positive value of minutes [1-1440] or "
-"‘permanent’."
+msgstr "'时间'参数必须设为‘永久’或[1-1440]之间的正数。"
 
 msgid "errors/toomanyargs"
-msgstr "Too many parameters."
+msgstr "参数太多。"
 
 msgid "errors/toosmallargs"
-msgstr "Insufficient number of parameters."
+msgstr "参数数量不足。"
 
 msgid "errors/userbanhimself"
-msgstr "You cannot ban yourself."
+msgstr "您不能把自己禁言。"
 
 msgid "messages/userbanned"
-msgstr ""
-"User %(banedUser)s has been banned by user %(banOwnerNick)s until "
-"%(banEndTime)s. Reason: %(banReason)s"
+msgstr "用户%(banedUser)s因%(banReason)s被用户%(banOwnerNick)s禁止到%(banEndTime)s"
 
 msgid "messages/userbannedpermanent"
-msgstr ""
-"User %(banedUser)s has been banned by user %(banOwnerNick)s. Reason: "
-"%(banReason)s"
+msgstr "用户%(banedUser)s因%(banReason)s被用户%(banOwnerNick)s禁言"

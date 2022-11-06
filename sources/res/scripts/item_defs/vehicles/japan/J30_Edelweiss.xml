@@ -144,6 +144,19 @@
 			<collisionModelClient>vehicles/japan/J30_Edelweiss/collision_client/Hull.model</collisionModelClient>
 		</hitTester>
 		<hangarShadowTexture>vehicles/japan/J30_Edelweiss/Edelweiss_HangarShadowMap.dds</hangarShadowTexture>
+		<customization>
+			<customizableVehicleAreas>
+				<paint/>
+				<camouflage/>
+			</customizableVehicleAreas>
+		</customization>
+		<camouflage>
+			<density>
+				91.6576 91.7777
+				<!--BW_String-->
+			</density>
+			<aoTextureSize>1024 1024</aoTextureSize>
+		</camouflage>
 		<customizationSlots>
 			<slot>
 				<slotType>clan</slotType>
@@ -205,7 +218,14 @@
 				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.000000</clipAngle>
-				<anchorShift>0.030001</anchorShift>
+				<anchorPosition>
+					-1.74865 0.157297 0.262074
+					<!--BW_String-->
+				</anchorPosition>
+				<anchorDirection>
+					-0.999308 0.0361239 0.00888556
+					<!--BW_String-->
+				</anchorDirection>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -245,7 +265,11 @@
 				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.000000</clipAngle>
-				<anchorShift>-0.000001</anchorShift>
+				<anchorPosition>
+					-0.517127 -0.097391 2.89229
+					<!--BW_String-->
+				</anchorPosition>
+				<anchorDirection>-0.000008 0.663823 0.747889</anchorDirection>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -266,7 +290,14 @@
 				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.000000</clipAngle>
-				<anchorShift>0.029996</anchorShift>
+				<anchorPosition>
+					1.75005 0.156444 0.269195
+					<!--BW_String-->
+				</anchorPosition>
+				<anchorDirection>
+					0.992114 -0.02812 0.122146
+					<!--BW_String-->
+				</anchorDirection>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -284,7 +315,14 @@
 				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.000000</clipAngle>
-				<anchorShift>0.000008</anchorShift>
+				<anchorPosition>
+					-0.528137 0.507258 -2.39404
+					<!--BW_String-->
+				</anchorPosition>
+				<anchorDirection>
+					-0.0103284 0.99803 0.0618837
+					<!--BW_String-->
+				</anchorDirection>
 			</slot>
 			<slot>
 				<slotType>projectionDecal</slotType>
@@ -302,68 +340,16 @@
 				<doubleSided>false</doubleSided>
 				<showOn>16</showOn>
 				<clipAngle>0.000000</clipAngle>
-				<anchorShift>0.000008</anchorShift>
-			</slot>
-			<slot>
-				<slotType>fixedEmblem</slotType>
-				<slotId>17000</slotId>
-				<rayStart>
-					-1.72505 0.210214 0.965741
+				<anchorPosition>
+					0.537842 0.501098 -2.39038
 					<!--BW_String-->
-				</rayStart>
-				<rayEnd>
-					-1.6593 0.209237 0.959979
+				</anchorPosition>
+				<anchorDirection>
+					-0.0103284 0.99803 0.0618837
 					<!--BW_String-->
-				</rayEnd>
-				<rayUp>
-					-0.00458983 0.99863 -0.0521286
-					<!--BW_String-->
-				</rayUp>
-				<emblemId>15938</emblemId>
-				<size>
-					0.249
-					<!--BW_String-->
-				</size>
-				<hideIfDamaged>true</hideIfDamaged>
-				<isUVProportional>true</isUVProportional>
-			</slot>
-			<slot>
-				<slotType>fixedEmblem</slotType>
-				<slotId>17001</slotId>
-				<rayStart>
-					1.7863 0.190632 0.957354
-					<!--BW_String-->
-				</rayStart>
-				<rayEnd>
-					1.60103 0.187879 0.941114
-					<!--BW_String-->
-				</rayEnd>
-				<rayUp>
-					0.00612655 0.997565 -0.0694792
-					<!--BW_String-->
-				</rayUp>
-				<emblemId>15938</emblemId>
-				<size>
-					0.255
-					<!--BW_String-->
-				</size>
-				<hideIfDamaged>true</hideIfDamaged>
-				<isUVProportional>true</isUVProportional>
+				</anchorDirection>
 			</slot>
 		</customizationSlots>
-		<customization>
-			<customizableVehicleAreas>
-				<paint/>
-				<camouflage/>
-			</customizableVehicleAreas>
-		</customization>
-		<camouflage>
-			<density>
-				91.6576 91.7777
-				<!--BW_String-->
-			</density>
-			<aoTextureSize>1024 1024</aoTextureSize>
-		</camouflage>
 	</hull>
 	<chassis>
 		<Chassis_J30_Edelweiss>

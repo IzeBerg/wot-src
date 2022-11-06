@@ -3,19 +3,19 @@
 	<aliases>
 		<alias>
 			<id>store</id>
-			<rule>player50Battles</rule>
+			<rule>player10Battles</rule>
 		</alias>
 		<alias>
 			<id>profile</id>
-			<rule>haveTank5Level</rule>
+			<rule>haveTank4Level</rule>
 		</alias>
 		<alias>
 			<id>profileHof</id>
-			<rule>haveTank5Level</rule>
+			<rule>haveTank4Level</rule>
 		</alias>
 		<alias>
 			<id>profileTechniquePage</id>
-			<rule>haveTank5Level</rule>
+			<rule>haveTank4Level</rule>
 		</alias>
 		<alias>
 			<id>sessionStats</id>
@@ -30,31 +30,15 @@
 			<rule>player20Battles</rule>
 		</alias>
 		<alias>
-			<id>MissionsMarathonView</id>
-			<rule>player100Battles</rule>
-		</alias>
-		<alias>
 			<id>PersonalMissionOperations</id>
 			<rule>haveTank4Level</rule>
 		</alias>
 		<alias>
 			<id>referralButtonCounter</id>
-			<rule>player600Battles</rule>
+			<rule>player100Battles</rule>
 		</alias>
 		<alias>
 			<id>AmmunitionPanelHintZoneHint</id>
-			<rule>newPlayer</rule>
-		</alias>
-		<alias>
-			<id>AmmunitionPanelBattleAbilitiesHint</id>
-			<rule>newPlayer</rule>
-		</alias>
-		<alias>
-			<id>ShowAbilitiesButtonHint</id>
-			<rule>newPlayer</rule>
-		</alias>
-		<alias>
-			<id>ApplyAbilitiesToTypeCheckboxHint</id>
 			<rule>newPlayer</rule>
 		</alias>
 		<alias>
@@ -69,34 +53,12 @@
 			<id>TechTreeEvent</id>
 			<rule>unlockedTank5Level</rule>
 		</alias>
-		<alias>
-			<id>DogTagHangarHint</id>
-			<rule>player100Battles</rule>
-		</alias>
-		<alias>
-			<id>ModeSelectorWidgetsBtnHint</id>
-			<rule>player10Battles</rule>
-		</alias>
-		<alias>
-			<id>CrewWelcomeScreenWindow</id>
-			<rule>player100Battles</rule>
-		</alias>
-		<alias>
-			<id>PersonalReservesHangarHint</id>
-			<rule>newPlayer</rule>
-		</alias>
 	</aliases>
 	<rules>
 		<rule>
 			<id>newPlayer</id>
 			<condition>
-				<battlesCount>1</battlesCount>
-			</condition>
-		</rule>
-		<rule>
-			<id>player600Battles</id>
-			<condition>
-				<battlesCount>600</battlesCount>
+				<battlesCount>0</battlesCount>
 			</condition>
 		</rule>
 		<rule>
@@ -106,15 +68,9 @@
 			</condition>
 		</rule>
 		<rule>
-			<id>player50Battles</id>
+			<id>player10Battles</id>
 			<condition>
-				<battlesCount>50</battlesCount>
-			</condition>
-		</rule>
-		<rule>
-			<id>player30Battles</id>
-			<condition>
-				<battlesCount>30</battlesCount>
+				<battlesCount>10</battlesCount>
 			</condition>
 		</rule>
 		<rule>
@@ -124,9 +80,9 @@
 			</condition>
 		</rule>
 		<rule>
-			<id>player10Battles</id>
+			<id>player30Battles</id>
 			<condition>
-				<battlesCount>10</battlesCount>
+				<battlesCount>30</battlesCount>
 			</condition>
 		</rule>
 		<rule>
@@ -139,18 +95,6 @@
 			<id>haveTank4Level</id>
 			<condition>
 				<haveTankLevel>4</haveTankLevel>
-			</condition>
-		</rule>
-		<rule>
-			<id>haveTank5Level</id>
-			<condition>
-				<haveTankLevel>5</haveTankLevel>
-			</condition>
-		</rule>
-		<rule>
-			<id>haveTank10Level</id>
-			<condition>
-				<haveTankLevel>10</haveTankLevel>
 			</condition>
 		</rule>
 		<rule>

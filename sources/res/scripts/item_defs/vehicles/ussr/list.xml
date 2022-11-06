@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
+	<xmlns:xmlref>http://bwt/xmlref</xmlns:xmlref>
 	<R04_T-34>
 		<id>0</id>
 		<userString>#ussr_vehicles:T-34</userString>
@@ -1250,7 +1251,7 @@
 		</price>
 		<notInShop>true</notInShop>
 		<cannotBeBought>true</cannotBeBought>
-		<tags>heavyTank private HD sinai epic_battles improvedVentilation_class1_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_heavy_user</tags>
+		<tags>heavyTank HD sinai epic_battles secret improvedVentilation_class1_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_heavy_user private</tags>
 		<level>8</level>
 	</R61_Object252_FL>
 	<R112_T54_45_FL>
@@ -1266,7 +1267,7 @@
 		</price>
 		<notInShop>true</notInShop>
 		<cannotBeBought>true</cannotBeBought>
-		<tags>mediumTank private HD epic_battles mediumTank3 improvedVentilation_class2_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user</tags>
+		<tags>mediumTank HD epic_battles secret mediumTank3 improvedVentilation_class2_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user private</tags>
 		<level>8</level>
 	</R112_T54_45_FL>
 	<R20_T-44_FL>
@@ -1421,7 +1422,7 @@
 			<gold/>
 		</price>
 		<notInShop>true</notInShop>
-		<tags>mediumTank role_MT_universal private HD telecom cannot_be_sold disabledInRoaming improvedVentilation_class2_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user</tags>
+		<tags>mediumTank role_MT_universal HD telecom cannot_be_sold disabledInRoaming improvedVentilation_class2_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user secret private</tags>
 		<level>8</level>
 	</R127_T44_100_I>
 	<R156_IS_2M>
@@ -1480,7 +1481,7 @@
 			<gold/>
 		</price>
 		<notInShop>true</notInShop>
-		<tags>mediumTank role_MT_sniper HD lockExceptProgression improvedVentilation_class2_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user</tags>
+		<tags>mediumTank role_MT_sniper HD lockExceptProgression secret improvedVentilation_class2_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user</tags>
 		<level>8</level>
 	</R146_STG_Tday>
 	<R146_STG>
@@ -1494,7 +1495,7 @@
 			8700
 			<gold/>
 		</price>
-		<notInShop>true</notInShop>
+		<notInShop>false</notInShop>
 		<tags>mediumTank role_MT_sniper HD improvedVentilation_class2_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user</tags>
 		<level>8</level>
 	</R146_STG>
@@ -1635,7 +1636,7 @@
 			<gold/>
 		</price>
 		<notInShop>true</notInShop>
-		<tags>heavyTank role_HT_break private HD secret special sinai heavyTank1 improvedVentilation_class1_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_heavy_user earn_crystals</tags>
+		<tags>heavyTank role_HT_break HD special sinai heavyTank1 improvedVentilation_class1_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_heavy_user earn_crystals</tags>
 		<level>10</level>
 	</R129_Object_257>
 	<R126_Object_730_5>
@@ -2004,7 +2005,7 @@
 		<shortDescriptionSpecial>#ussr_vehicles:R111_ISU130_short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#ussr_vehicles:R111_ISU130_long_special</longDescriptionSpecial>
 		<price>
-			5
+			9000
 			<gold/>
 		</price>
 		<notInShop>true</notInShop>
@@ -2125,7 +2126,7 @@
 			<gold/>
 		</price>
 		<notInShop>true</notInShop>
-		<tags>mediumTank role_MT_assault private HD secret special mediumTank3 improvedVentilation_class2_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user earn_crystals</tags>
+		<tags>mediumTank role_MT_assault HD special mediumTank3 improvedVentilation_class2_user tankRammer_class2_user aimingStabilizer_class1_user extraHealthReserve_class2_user antifragmentationLining_medium_user earn_crystals</tags>
 		<level>10</level>
 	</R95_Object_907A>
 	<R105_BT_7A>
@@ -2155,7 +2156,7 @@
 			<gold/>
 		</price>
 		<notInShop>true</notInShop>
-		<tags>heavyTank role_HT_break private HD secret inGame improvedVentilation_class1_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_heavy_user earn_crystals</tags>
+		<tags>heavyTank HD inGame improvedVentilation_class1_user tankRammer_class1_user aimingStabilizer_class1_user extraHealthReserve_class1_user antifragmentationLining_heavy_user earn_crystals role_HT_break</tags>
 		<level>10</level>
 	</R119_Object_777C>
 	<R118_T28_F30>
@@ -2211,7 +2212,7 @@
 		<shortDescriptionSpecial>#ussr_vehicles:R121_KV4_KTT_short_special</shortDescriptionSpecial>
 		<longDescriptionSpecial>#ussr_vehicles:R121_KV4_KTT_long_special</longDescriptionSpecial>
 		<price>
-			7750
+			10000
 			<gold/>
 		</price>
 		<notInShop>true</notInShop>
