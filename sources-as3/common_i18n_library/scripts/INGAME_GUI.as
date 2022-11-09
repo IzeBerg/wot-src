@@ -1739,6 +1739,18 @@ package
       
       public static const REWARDWINDOW_TWITCH34_MAINREWARD_4:String = "#ingame_gui:rewardWindow/twitch34/mainReward_4";
       
+      public static const REWARDWINDOW_TWITCH35_HEADERTEXT:String = "#ingame_gui:rewardWindow/twitch35/headerText";
+      
+      public static const REWARDWINDOW_TWITCH35_DESCTEXT:String = "#ingame_gui:rewardWindow/twitch35/descText";
+      
+      public static const REWARDWINDOW_TWITCH35_MAINREWARD_1:String = "#ingame_gui:rewardWindow/twitch35/mainReward_1";
+      
+      public static const REWARDWINDOW_TWITCH35_MAINREWARD_2:String = "#ingame_gui:rewardWindow/twitch35/mainReward_2";
+      
+      public static const REWARDWINDOW_TWITCH35_MAINREWARD_3:String = "#ingame_gui:rewardWindow/twitch35/mainReward_3";
+      
+      public static const REWARDWINDOW_TWITCH35_MAINREWARD_4:String = "#ingame_gui:rewardWindow/twitch35/mainReward_4";
+      
       public static const REWARDWINDOW_LOOTBOX_WINHEADERTEXT:String = "#ingame_gui:rewardWindow/lootbox/winHeaderText";
       
       public static const REWARDWINDOW_LOOTBOX_HEADERTEXT:String = "#ingame_gui:rewardWindow/lootbox/headerText";

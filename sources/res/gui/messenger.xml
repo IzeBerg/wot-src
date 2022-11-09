@@ -2651,6 +2651,85 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 			<icon>InformationIcon</icon>
 			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/wotPlus/freeDirectives/isEnabled/title)&lt;/font&gt;&lt;br/&gt;</message>
 		</FreeDirectivesEnabledMessage>
+		<EventInfoSysMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<filters>
+				<filter>
+					<name>glow</name>
+					<color>EA5200</color>
+				</filter>
+				<filter>
+					<name>dropshadow</name>
+					<color>
+						000000
+						<!--BW_String-->
+					</color>
+				</filter>
+			</filters>
+			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</EventInfoSysMessage>
+		<EventInfoWithButtonSysMessage>
+			<priority>medium</priority>
+			<type>grey</type>
+			<icon>InformationIcon</icon>
+			<filters>
+				<filter>
+					<name>glow</name>
+					<color>EA5200</color>
+				</filter>
+				<filter>
+					<name>dropshadow</name>
+					<color>
+						000000
+						<!--BW_String-->
+					</color>
+				</filter>
+			</filters>
+			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/goToEventButton)</label>
+					<action>openShopSalesEventMainView</action>
+				</button>
+			</buttonsLayout>
+		</EventInfoWithButtonSysMessage>
+		<EventWarningSysMessage>
+			<type>grey</type>
+			<icon>WarningIcon</icon>
+			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</EventWarningSysMessage>
+		<EventWarningWithButtonSysMessage>
+			<type>grey</type>
+			<icon>WarningIcon</icon>
+			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/goToEventButton)</label>
+					<action>openShopSalesEventMainView</action>
+				</button>
+			</buttonsLayout>
+		</EventWarningWithButtonSysMessage>
+		<EventErrorSysMessage>
+			<type>red</type>
+			<icon>ErrorIcon</icon>
+			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</EventErrorSysMessage>
+		<EventErrorWithButtonSysMessage>
+			<type>red</type>
+			<icon>ErrorIcon</icon>
+			<message>&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+			<buttonsLayout>
+				<button>
+					<type>submit</type>
+					<label>_(#messenger:serviceChannelMessages/goToEventButton)</label>
+					<action>openShopSalesEventMainView</action>
+				</button>
+			</buttonsLayout>
+		</EventErrorWithButtonSysMessage>
 		<telecomMergeResultsMessage>
 			<priority>high</priority>
 			<type>green</type>
@@ -2970,5 +3049,17 @@ _(#messenger:battle/toolTips/mutePlayer){/BODY}</value>
 &lt;font face=&quot;$FieldFont&quot; size=&quot;14&quot; color=&apos;#8C8C7E&apos;&gt;_(#cn_loot_boxes:notification/lootBoxesAutoOpen/text)&lt;/font&gt;&lt;br/&gt;
 _(#cn_loot_boxes:notification/lootBoxesAutoOpen/boxes)&lt;br/&gt;%(rewards)s</message>
 		</ChinaLootBoxesAutoOpenMessage>
+		<ShopSaleRerollWithCreditsSysMessage>
+			<priority>high</priority>
+			<type>yellow</type>
+			<icon>CreditsIcon</icon>
+			<message>&lt;font  face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/sysMsg/titles/financialTransaction)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</ShopSaleRerollWithCreditsSysMessage>
+		<ShopSaleRerollWithGoldSysMessage>
+			<priority>high</priority>
+			<type>yellow</type>
+			<icon>GoldIcon</icon>
+			<message>&lt;font face=&quot;$TitleFont&quot; size=&quot;15&quot; color=&quot;#E9E2BF&quot;&gt;_(#messenger:serviceChannelMessages/sysMsg/titles/financialTransaction)&lt;/font&gt;&lt;br/&gt;&lt;font color=&apos;#8C8C7E&apos;&gt;%(text)s&lt;/font&gt;</message>
+		</ShopSaleRerollWithGoldSysMessage>
 	</htmlTemplates>
 </root>

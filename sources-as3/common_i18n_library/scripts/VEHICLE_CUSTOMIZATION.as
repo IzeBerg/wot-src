@@ -13047,6 +13047,8 @@ package
       
       public static const PROJECTION_DECALS_SPECIAL_GONSALO_HAND_07:String = "#vehicle_customization:projection_decals/special/gonsalo_hand_07";
       
+      public static const PROJECTION_DECALS_SPECIAL_GONSALO_HAND_08:String = "#vehicle_customization:projection_decals/special/gonsalo_hand_08";
+      
       public static const PROJECTION_DECALS_COOL_PROJECTION_DECAL_66:String = "#vehicle_customization:projection_decals/cool/projection_decal_66";
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_402:String = "#vehicle_customization:projection_decals/special/projection_decal_402";
@@ -13274,6 +13276,10 @@ package
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_475:String = "#vehicle_customization:projection_decals/special/projection_decal_475";
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_476:String = "#vehicle_customization:projection_decals/special/projection_decal_476";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_483:String = "#vehicle_customization:projection_decals/special/projection_decal_483";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_484:String = "#vehicle_customization:projection_decals/special/projection_decal_484";
       
       public static const PROPERTYSHEET_KEYBOARD_HINT:String = "#vehicle_customization:propertySheet/keyboard/hint";
       
