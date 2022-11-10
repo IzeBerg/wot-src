@@ -2340,7 +2340,7 @@ RECORDS = (
  (
   'singleAchievements', 'october22', 'p', 'B', 1),
  (
-  'singleAchievements', 'prime_gaming_reserved_3', 'p', 'B', 1),
+  'singleAchievements', 'november22', 'p', 'B', 1),
  (
   'singleAchievements', 'prime_gaming_reserved_4', 'p', 'B', 1),
  (
@@ -4301,7 +4301,7 @@ RECORD_DB_IDS = {('total', 'creationTime'): 68,
    ('singleAchievements', 'BattlePassCommonPr_9'): 1663, 
    ('singleAchievements', 'september22'): 1664, 
    ('singleAchievements', 'october22'): 1665, 
-   ('singleAchievements', 'prime_gaming_reserved_3'): 1666, 
+   ('singleAchievements', 'november22'): 1666, 
    ('singleAchievements', 'prime_gaming_reserved_4'): 1667, 
    ('singleAchievements', 'prime_gaming_reserved_5'): 1668, 
    ('singleAchievements', 'prime_gaming_reserved_6'): 1669, 

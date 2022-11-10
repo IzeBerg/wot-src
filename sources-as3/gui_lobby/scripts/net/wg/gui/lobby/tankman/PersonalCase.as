@@ -265,6 +265,46 @@ package net.wg.gui.lobby.tankman
          }
       }
       
+      override protected function updateCrewSkinTabCount(param1:int) : void
+      {
+         var _loc2_:PersonalCaseTabNameVO = null;
+         var _loc5_:Button = null;
+         this.removeCrewSkinTabCount();
+         var _loc3_:String = param1 > 0 ? String(param1) : null;
+         var _loc4_:int = data.tabsData.length;
+         var _loc6_:int = 0;
+         while(_loc6_ < _loc4_)
+         {
+            _loc2_ = data.tabsData[_loc6_];
+            if(_loc2_.linkage == Linkages.PERSONAL_CASE_CREW_SKINS)
+            {
+               _loc5_ = this.tabs.getButtonAt(_loc6_);
+               if(_loc5_)
+               {
+                  this._crewSkinTabBtnWithCounter = _loc5_;
+                  this._counterManager.setCounter(_loc5_,_loc3_,null,new CounterProps(3,-3));
+               }
+               break;
+            }
+            _loc6_++;
+         }
+      }
+      
+      override protected function openTabByID(param1:String) : void
+      {
+         var _loc2_:int = 0;
+         while(_loc2_ < this.tabs.dataProvider.length)
+         {
+            if(PersonalCaseTabNameVO(this.tabs.dataProvider[_loc2_]).id == param1)
+            {
+               this.tabs.selectedIndex = _loc2_;
+               updateOpenedTabIDS(param1);
+               break;
+            }
+            _loc2_++;
+         }
+      }
+      
       protected function initializeTabButton() : void
       {
          var _loc3_:PersonalCaseTabNameVO = null;
@@ -332,31 +372,6 @@ package net.wg.gui.lobby.tankman
          else
          {
             this.runtimeShowByIndex();
-         }
-      }
-      
-      override protected function updateCrewSkinTabCount(param1:int) : void
-      {
-         var _loc2_:PersonalCaseTabNameVO = null;
-         var _loc5_:Button = null;
-         this.removeCrewSkinTabCount();
-         var _loc3_:String = param1 > 0 ? String(param1) : null;
-         var _loc4_:int = data.tabsData.length;
-         var _loc6_:int = 0;
-         while(_loc6_ < _loc4_)
-         {
-            _loc2_ = data.tabsData[_loc6_];
-            if(_loc2_.linkage == Linkages.PERSONAL_CASE_CREW_SKINS)
-            {
-               _loc5_ = this.tabs.getButtonAt(_loc6_);
-               if(_loc5_)
-               {
-                  this._crewSkinTabBtnWithCounter = _loc5_;
-                  this._counterManager.setCounter(_loc5_,_loc3_,null,new CounterProps(3,-3));
-               }
-               break;
-            }
-            _loc6_++;
          }
       }
       
@@ -506,21 +521,6 @@ package net.wg.gui.lobby.tankman
          this._currentView = this.view.currentView;
          this._currentView.addEventListener(PersonalCaseEvent.CHANGE_RETRAIN_VEHICLE,this.onChangeRetrainVehicleHandler);
          this.runtimeUpdateByInstance(this._currentView);
-      }
-      
-      override protected function openTabByID(param1:String) : void
-      {
-         var _loc2_:int = 0;
-         while(_loc2_ < this.tabs.dataProvider.length)
-         {
-            if(PersonalCaseTabNameVO(this.tabs.dataProvider[_loc2_]).id == param1)
-            {
-               this.tabs.selectedIndex = _loc2_;
-               updateOpenedTabIDS(param1);
-               break;
-            }
-            _loc2_++;
-         }
       }
       
       private function onRoleDiscountOut(param1:MouseEvent) : void

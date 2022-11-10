@@ -2329,6 +2329,12 @@ package
       
       public static const MAPS_BLACK_LIST_SWITCH_ON_BODY:String = "#system_messages:maps_black_list/switch_on/body";
       
+      public static const SHOP_SALES_EVENT_SUCCESS_FREE:String = "#system_messages:shop_sales_event/success_free";
+      
+      public static const SHOP_SALES_EVENT_SUCCESS:String = "#system_messages:shop_sales_event/success";
+      
+      public static const SHOP_SALES_EVENT_ERROR:String = "#system_messages:shop_sales_event/error";
+      
       public static const PREMIUM_QUESTS_SWITCH_OFF_TITLE:String = "#system_messages:premium_quests/switch_off/title";
       
       public static const PREMIUM_QUESTS_SWITCH_OFF_BODY:String = "#system_messages:premium_quests/switch_off/body";

@@ -94,10 +94,11 @@ package net.wg.gui.lobby.profile.pages.technique
       
       override protected function applyData(param1:Object) : void
       {
+         var _loc3_:Boolean = false;
          var _loc5_:TechniqueListVehicleVO = null;
          var _loc6_:Object = null;
          var _loc2_:DataProvider = new DataProvider();
-         var _loc3_:Boolean = false;
+         _loc3_ = false;
          var _loc4_:Array = param1 as Array;
          if(_loc4_)
          {

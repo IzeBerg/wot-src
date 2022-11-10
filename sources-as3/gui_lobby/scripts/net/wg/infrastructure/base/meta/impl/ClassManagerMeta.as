@@ -1211,6 +1211,7 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.hangar.HangarAmunitionSwitchAnimator;
    import net.wg.gui.lobby.hangar.HangarHeader;
    import net.wg.gui.lobby.hangar.ResearchPanel;
+   import net.wg.gui.lobby.hangar.ShopSalesEntryPoint;
    import net.wg.gui.lobby.hangar.SwitchModePanel;
    import net.wg.gui.lobby.hangar.TmenXpPanel;
    import net.wg.gui.lobby.hangar.VehPostProgressionBtn;
@@ -2697,8 +2698,10 @@ package net.wg.infrastructure.base.meta.impl
    import net.wg.gui.lobby.vehicleCustomization.tooltips.inblocks.blocks.QuestOrConditionBlock;
    import net.wg.gui.lobby.vehicleCustomization.tooltips.inblocks.blocks.QuestProgressBar;
    import net.wg.gui.lobby.vehicleCustomization.tooltips.inblocks.blocks.QuestProgressBlock;
+   import net.wg.gui.lobby.vehicleCustomization.tooltips.inblocks.blocks.VotesForDiscountBlock;
    import net.wg.gui.lobby.vehicleCustomization.tooltips.inblocks.data.CustomizationImageBlockVO;
    import net.wg.gui.lobby.vehicleCustomization.tooltips.inblocks.data.QuestProgressBlockVO;
+   import net.wg.gui.lobby.vehicleCustomization.tooltips.inblocks.data.VotesForDiscountBlockVO;
    import net.wg.gui.lobby.vehicleInfo.BaseBlock;
    import net.wg.gui.lobby.vehicleInfo.CrewBlock;
    import net.wg.gui.lobby.vehicleInfo.IVehicleInfoBlock;
@@ -5918,6 +5921,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_HANGAR_RESEARCHPANEL:Class = ResearchPanel;
       
+      public static const NET_WG_GUI_LOBBY_HANGAR_SHOPSALESENTRYPOINT:Class = ShopSalesEntryPoint;
+      
       public static const NET_WG_GUI_LOBBY_HANGAR_SWITCHMODEPANEL:Class = SwitchModePanel;
       
       public static const NET_WG_GUI_LOBBY_HANGAR_TMENXPPANEL:Class = TmenXpPanel;
@@ -8866,9 +8871,13 @@ package net.wg.infrastructure.base.meta.impl
       
       public static const NET_WG_GUI_LOBBY_VEHICLECUSTOMIZATION_TOOLTIPS_INBLOCKS_BLOCKS_QUESTPROGRESSBLOCK:Class = QuestProgressBlock;
       
+      public static const NET_WG_GUI_LOBBY_VEHICLECUSTOMIZATION_TOOLTIPS_INBLOCKS_BLOCKS_VOTESFORDISCOUNTBLOCK:Class = VotesForDiscountBlock;
+      
       public static const NET_WG_GUI_LOBBY_VEHICLECUSTOMIZATION_TOOLTIPS_INBLOCKS_DATA_CUSTOMIZATIONIMAGEBLOCKVO:Class = CustomizationImageBlockVO;
       
       public static const NET_WG_GUI_LOBBY_VEHICLECUSTOMIZATION_TOOLTIPS_INBLOCKS_DATA_QUESTPROGRESSBLOCKVO:Class = QuestProgressBlockVO;
+      
+      public static const NET_WG_GUI_LOBBY_VEHICLECUSTOMIZATION_TOOLTIPS_INBLOCKS_DATA_VOTESFORDISCOUNTBLOCKVO:Class = VotesForDiscountBlockVO;
       
       public static const NET_WG_GUI_LOBBY_VEHICLEINFO_BASEBLOCK:Class = BaseBlock;
       
