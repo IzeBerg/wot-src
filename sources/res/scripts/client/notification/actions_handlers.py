@@ -2,6 +2,7 @@ from collections import defaultdict
 import typing, BigWorld
 from CurrentVehicle import g_currentVehicle
 from adisp import adisp_process
+from constants import EventPhase
 from debug_utils import LOG_DEBUG, LOG_ERROR
 from gui import DialogsInterface, SystemMessages, makeHtmlString
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
@@ -35,7 +36,7 @@ from notification.tutorial_helper import TUTORIAL_GLOBAL_VAR, TutorialGlobalStor
 from predefined_hosts import g_preDefinedHosts
 from skeletons.gui.battle_results import IBattleResultsService
 from skeletons.gui.customization import ICustomizationService
-from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IBrowserController, ICNLootBoxesController, IMapboxController, IRankedBattlesController
+from skeletons.gui.game_control import IBattlePassController, IBattleRoyaleController, IBrowserController, ICNLootBoxesController, IMapboxController, IRankedBattlesController, IShopSalesEventController
 from skeletons.gui.impl import INotificationWindowController
 from skeletons.gui.platform.wgnp_controllers import IWGNPSteamAccRequestController
 from skeletons.gui.web import IWebController
@@ -1182,7 +1183,24 @@ class _OpenCNLootBoxesExternalShopHandler(NavigationDisabledActionHandler):
             self.__cnLootBoxes.openShop()
 
 
-_AVAILABLE_HANDLERS = [
+class _OpenShopSalesEventMainView(NavigationDisabledActionHandler):
+    __shopSales = dependency.descriptor(IShopSalesEventController)
+
+    @classmethod
+    def getNotType(cls):
+        return NOTIFICATION_TYPE.MESSAGE
+
+    @classmethod
+    def getActions(cls):
+        return ('openShopSalesEventMainView', )
+
+    def doAction(self, model, entityID, action):
+        canShow = self.__shopSales.isEnabled and self.__shopSales.isInEvent and self.__shopSales.currentEventPhase != EventPhase.NOT_STARTED
+        if canShow:
+            self.__shopSales.openMainView()
+
+
+_AVAILABLE_HANDLERS = (
  ShowBattleResultsHandler,
  ShowTutorialBattleHistoryHandler,
  ShowFortBattleResultsHandler,
@@ -1228,6 +1246,7 @@ _AVAILABLE_HANDLERS = [
  _OpenMapboxSurvey,
  _OpenDelayedReward,
  _OpenPsaShop,
+ _OpenShopSalesEventMainView,
  _OpenBattlePassPointsShop,
  _OpenChapterChoiceView,
  _OpenEpicBattlesAfterBattleWindow,
@@ -1239,7 +1258,7 @@ _AVAILABLE_HANDLERS = [
  _OpenIntegratedAuctionFinish,
  _OpenPersonalReservesConversion,
  _OpenPersonalReservesHandler,
- _OpenCNLootBoxesExternalShopHandler]
+ _OpenCNLootBoxesExternalShopHandler)
 registerNotificationsActionsHandlers(_AVAILABLE_HANDLERS)
 
 class NotificationsActionsHandlers(object):

@@ -119,6 +119,8 @@ package net.wg.data.constants.generated
       
       public static const TOOLTIP_QUEST_OR_CONDITION_BLOCK_LINKAGE:String = "QuestOrConditionBlockUI";
       
+      public static const TOOLTIP_VOTES_FOR_DISCOUNT_BLOCK_LINKAGE:String = "VotesForDiscountBlockUI";
+      
       public static const ALIGN_LEFT:String = "left";
       
       public static const ALIGN_RIGHT:String = "right";
