@@ -2157,6 +2157,18 @@ package
       
       public static const PLATFORMCURRENCYMSG_RECEIVED_BRCOIN:String = "#messenger:platformCurrencyMsg/received/brcoin";
       
+      public static const SERVICECHANNELMESSAGES_SHOPSALESEVENT_DISABLEDBYSWITCH:String = "#messenger:serviceChannelMessages/shopSalesEvent/disabledBySwitch";
+      
+      public static const SERVICECHANNELMESSAGES_SHOPSALESEVENT_ENABLEDBYSWITCH:String = "#messenger:serviceChannelMessages/shopSalesEvent/enabledBySwitch";
+      
+      public static const SERVICECHANNELMESSAGES_SHOPSALESEVENT_ACTIVEPHASESTARTED:String = "#messenger:serviceChannelMessages/shopSalesEvent/activePhaseStarted";
+      
+      public static const SERVICECHANNELMESSAGES_SHOPSALESEVENT_ACTIVEPHASEFINISHED:String = "#messenger:serviceChannelMessages/shopSalesEvent/activePhaseFinished";
+      
+      public static const SERVICECHANNELMESSAGES_SHOPSALESEVENT_EVENTFINISHED:String = "#messenger:serviceChannelMessages/shopSalesEvent/eventFinished";
+      
+      public static const SERVICECHANNELMESSAGES_GOTOEVENTBUTTON:String = "#messenger:serviceChannelMessages/goToEventButton";
+      
       public static const PLATFORMCURRENCYMSG_DEBITED_BRCOIN:String = "#messenger:platformCurrencyMsg/debited/brcoin";
       
       public static const PLATFORMCURRENCYMSG_RECEIVED_FREEXP:String = "#messenger:platformCurrencyMsg/received/freeXP";

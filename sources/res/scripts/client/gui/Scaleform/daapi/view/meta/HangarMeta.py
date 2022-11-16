@@ -115,3 +115,7 @@ class HangarMeta(View):
     def as_toggleEventModeS(self, isEventMode):
         if self._isDAAPIInited():
             return self.flashObject.as_toggleEventMode(isEventMode)
+
+    def as_setShopSalesVisibleS(self, value):
+        if self._isDAAPIInited():
+            return self.flashObject.as_setShopSalesVisible(value)
