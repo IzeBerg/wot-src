@@ -49,7 +49,7 @@
 				</token>
 			</bonus>
 		</tokenQuest>
-		<tokenQuest>
+		<battleQuest>
 			<progressExpiryTime>
 				01.02.2050 00:00
 				<!--BW_String-->
@@ -176,6 +176,9 @@
 					<zh_cn>驾驶任意等级的坦克参加一场标准模式战斗。</zh_cn>
 				</description>
 				<preBattle>
+					<battle>
+						<bonusTypes>1 24</bonusTypes>
+					</battle>
 					<account>
 						<and>
 							<isBattleMattersEnabled>true</isBattleMattersEnabled>
@@ -183,10 +186,6 @@
 								<id>battle_matters_1_unlock</id>
 								<greaterOrEqual>1</greaterOrEqual>
 								<consume>1</consume>
-							</token>
-							<token>
-								<id>action_enter_arena</id>
-								<greaterOrEqual>1</greaterOrEqual>
 							</token>
 						</and>
 					</account>
@@ -220,7 +219,7 @@
 					<vehLevel>8</vehLevel>
 				</freePremiumCrew>
 			</bonus>
-		</tokenQuest>
+		</battleQuest>
 		<tokenQuest>
 			<progressExpiryTime>
 				01.02.2050 00:00

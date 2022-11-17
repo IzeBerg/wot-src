@@ -117,7 +117,8 @@ package net.wg.gui.lobby.hangar.crew
                   "roleIconFile":_loc3_.roleIcon,
                   "vehicleType":_loc3_.vehicleType,
                   "tankType":_loc3_.tankType,
-                  "roleType":_loc3_.roleType
+                  "roleType":_loc3_.roleType,
+                  "roles":_loc3_.roles
                });
             }
             _loc3_.tankman.currentRole = _loc3_;

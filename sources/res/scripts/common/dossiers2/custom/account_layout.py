@@ -317,7 +317,7 @@ _SINGLE_ACHIEVEMENTS_VALUES = [
  'NY22_AtmsphrLevel', 'NY22_CelebChallenge', 'december21', 'BattlePassCommonPr_7',
  'oowCBTParticipant', 'june22', 'BattlePassCommonPr_8', 'BattlePassCommonPr_8ru',
  'BattlePassCommonPr_8quest', 'july22', 'august22', 'BattlePassCommonPr_9',
- 'september22', 'october22', 'prime_gaming_reserved_3',
+ 'september22', 'october22', 'november22',
  'prime_gaming_reserved_4', 'prime_gaming_reserved_5', 'prime_gaming_reserved_6',
  'prime_gaming_reserved_7', 'prime_gaming_reserved_8', 'prime_gaming_reserved_9',
  'prime_gaming_reserved_10', 'prime_gaming_reserved_11', 'prime_gaming_reserved_12',
@@ -364,7 +364,7 @@ _singleAchievementsPopUps = [
  'december21', 'BattlePassCommonPr_7', 'oowCBTParticipant', 'june22',
  'BattlePassCommonPr_8', 'BattlePassCommonPr_8ru', 'BattlePassCommonPr_8quest', 'july22',
  'august22', 'BattlePassCommonPr_9', 'september22', 'october22',
- 'prime_gaming_reserved_3', 'prime_gaming_reserved_4', 'prime_gaming_reserved_5',
+ 'november22', 'prime_gaming_reserved_4', 'prime_gaming_reserved_5',
  'prime_gaming_reserved_6', 'prime_gaming_reserved_7', 'prime_gaming_reserved_8',
  'prime_gaming_reserved_9', 'prime_gaming_reserved_10', 'prime_gaming_reserved_11',
  'prime_gaming_reserved_12', 'comp7Season1', 'hw2022Medal01', 'hw2022Medal02']

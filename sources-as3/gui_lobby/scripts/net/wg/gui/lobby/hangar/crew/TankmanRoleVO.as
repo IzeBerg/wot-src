@@ -30,9 +30,12 @@ package net.wg.gui.lobby.hangar.crew
       
       public var recruitList:Array;
       
+      public var roles:Array;
+      
       public function TankmanRoleVO(param1:Object = null)
       {
          this.recruitList = [];
+         this.roles = [];
          super(param1);
       }
       

@@ -753,23 +753,21 @@ class VehicleParams(_ParameterBase):
         return repairTime
 
     def getParamsDict(self, preload=False):
-        conditionalParams = ('aimingTime', 'clipFireRate', 'turretYawLimits', 'gunYawLimits',
-         'turretRotationSpeed', 'turretArmor', 'reloadTimeSecs',
-         'switchOnTime', 'switchOffTime', 'switchTime', DUAL_GUN_CHARGE_TIME,
-         AUTO_RELOAD_PROP_NAME, RELOAD_TIME_PROP_NAME, MAX_STEERING_LOCK_ANGLE,
-         WHEELED_SWITCH_ON_TIME, WHEELED_SWITCH_OFF_TIME, WHEELED_SWITCH_TIME,
-         WHEELED_SPEED_MODE_SPEED, 'wheelRiseSpeed', TURBOSHAFT_ENGINE_POWER,
-         TURBOSHAFT_SPEED_MODE_SPEED, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR,
+        conditionalParams = (
+         'aimingTime', 'clipFireRate', 'turretYawLimits', 'gunYawLimits', 'turretRotationSpeed', 'turretArmor',
+         'reloadTimeSecs', 'switchOnTime', 'switchOffTime', 'switchTime', DUAL_GUN_CHARGE_TIME,
+         AUTO_RELOAD_PROP_NAME, RELOAD_TIME_PROP_NAME, MAX_STEERING_LOCK_ANGLE, WHEELED_SWITCH_ON_TIME,
+         WHEELED_SWITCH_OFF_TIME, WHEELED_SWITCH_TIME, WHEELED_SPEED_MODE_SPEED, 'wheelRiseSpeed',
+         TURBOSHAFT_ENGINE_POWER, TURBOSHAFT_SPEED_MODE_SPEED, TURBOSHAFT_INVISIBILITY_MOVING_FACTOR,
          TURBOSHAFT_INVISIBILITY_STILL_FACTOR, TURBOSHAFT_SWITCH_TIME, TURBOSHAFT_SWITCH_ON_TIME,
          TURBOSHAFT_SWITCH_OFF_TIME, CHASSIS_REPAIR_TIME, ROCKET_ACCELERATION_ENGINE_POWER,
-         ROCKET_ACCELERATION_SPEED_LIMITS, ROCKET_ACCELERATION_REUSE_AND_DURATION)
+         ROCKET_ACCELERATION_SPEED_LIMITS, ROCKET_ACCELERATION_REUSE_AND_DURATION, 'chassisRotationSpeed')
         stunConditionParams = ('stunMaxDuration', 'stunMinDuration')
         result = _ParamsDictProxy(self, preload, conditions=(
          (
           conditionalParams, lambda v: v is not None),
          (
-          stunConditionParams,
-          lambda s: _isStunParamVisible(self._itemDescr.shot.shell))))
+          stunConditionParams, lambda s: _isStunParamVisible(self._itemDescr.shot.shell))))
         return result
 
     def getAllDataDict(self):
@@ -891,7 +889,7 @@ class VehicleParams(_ParameterBase):
         return len(vDescr.hull.fakeTurrets['lobby']) != len(vDescr.turrets)
 
     def __hasHydraulicSiegeMode(self):
-        return self._itemDescr.hasSiegeMode and (self._itemDescr.hasHydraulicChassis or self._itemDescr.hasAutoSiegeMode)
+        return self._itemDescr.hasHydraulicChassis and self._itemDescr.hasSiegeMode
 
     def __hasWheeledSwitchMode(self):
         return self._itemDescr.isWheeledVehicle and self._itemDescr.hasSiegeMode

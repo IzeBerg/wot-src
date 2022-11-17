@@ -1,13 +1,13 @@
-from fun_random.gui.fun_gui_constants import SelectorBattleTypes
 from fun_random.gui.feature.util.fun_mixins import FunSubModesWatcher
 from fun_random.gui.feature.util.fun_wrappers import hasDesiredSubMode
 from gui.impl import backport
 from gui.impl.gen import R
+from gui.impl.gen.view_models.views.lobby.platoon.members_window_model import PrebattleTypes
 from gui.impl.lobby.platoon.view.platoon_members_view import SquadMembersView
 from gui.impl.lobby.platoon.view.subview.platoon_chat_subview import ChatSubview
 
 class FunRandomMembersView(SquadMembersView, FunSubModesWatcher):
-    _battleType = SelectorBattleTypes.FUN_RANDOM
+    _prebattleType = PrebattleTypes.FUNRANDOM
 
     @hasDesiredSubMode(defReturn='')
     def _getTitle(self):

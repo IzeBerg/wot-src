@@ -153,7 +153,6 @@ class HangarSpace(IHangarSpace):
         self.__delayedForceRefresh = False
         self.__delayedRefreshCallback = None
         self.__spaceDestroyedDuringLoad = False
-        self.__waitingForVehicle = False
         self.__lastUpdatedVehicle = None
         self.onSpaceRefresh = Event.Event()
         self.onSpaceRefreshCompleted = Event.Event()
@@ -304,7 +303,6 @@ class HangarSpace(IHangarSpace):
     @g_execute_after_hangar_space_inited
     @uniprof.regionDecorator(label='hangar.vehicle.loading', scope='enter')
     def updateVehicle(self, vehicle, outfit=None):
-        self.__waitingForVehicle = False
         if self.__inited:
             self.__isModelLoaded = False
             self.onVehicleChangeStarted()
@@ -315,7 +313,6 @@ class HangarSpace(IHangarSpace):
             Waiting.hide('loadHangarSpaceVehicle')
 
     def startToUpdateVehicle(self, vehicle, outfit=None):
-        self.__waitingForVehicle = True
         Waiting.show('loadHangarSpaceVehicle', isSingle=True)
         self.updateVehicle(vehicle, outfit)
 
@@ -389,8 +386,7 @@ class HangarSpace(IHangarSpace):
         self.onSpaceCreate()
         Waiting.hide('loadHangarSpace')
         self.statsCollector.noteHangarLoadingState(HANGAR_LOADING_STATE.FINISH_LOADING_SPACE)
-        showSummary = not self.__waitingForVehicle
-        self.statsCollector.noteHangarLoadingState(HANGAR_LOADING_STATE.HANGAR_READY, showSummaryNow=showSummary)
+        self.statsCollector.noteHangarLoadingState(HANGAR_LOADING_STATE.HANGAR_READY)
         stats = self.statsCollector.getStatistics()
         player = BigWorld.player()
         if player is not None:
@@ -407,7 +403,7 @@ class HangarSpace(IHangarSpace):
         Waiting.hide('loadHangarSpaceVehicle')
         self.__isModelLoaded = True
         self.onVehicleChanged()
-        self.statsCollector.noteHangarLoadingState(HANGAR_LOADING_STATE.FINISH_LOADING_VEHICLE, showSummaryNow=True)
+        self.statsCollector.noteHangarLoadingState(HANGAR_LOADING_STATE.FINISH_LOADING_VEHICLE)
         uniprof.exitFromRegion('client.loading')
 
     def __delayedRefresh(self):

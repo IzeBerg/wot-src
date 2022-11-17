@@ -2,7 +2,7 @@ import os, Math
 from string import lower, upper
 import re, items._xml as ix, items.components.c11n_components as cc, items.customizations as c11n, items.vehicles as iv, nations
 from arena_bonus_type_caps import ARENA_BONUS_TYPE_CAPS, parseArenaBonusType
-from constants import IS_CLIENT, IS_EDITOR, IS_WEB, DEFAULT_QUEST_FINISH_TIME
+from constants import IS_CLIENT, IS_EDITOR, IS_WEB, IS_LOAD_GLOSSARY, DEFAULT_QUEST_FINISH_TIME
 from items.components import shared_components
 from items.components.c11n_constants import CustomizationType, CustomizationTypeNames, ProjectionDecalFormTags, CustomizationNamesToTypes, CustomizationDisplayType, EMPTY_ITEM_ID, SeasonType, ApplyArea, DecalType, ModificationType, RENT_DEFAULT_BATTLES, ItemTags, ProjectionDecalType, DEFAULT_GLOSS, DEFAULT_METALLIC
 from realm_utils import ResMgr
@@ -66,7 +66,7 @@ class BaseCustomizationItemXmlReader(object):
             target.maxNumber = ix.readPositiveInt(xmlCtx, section, 'maxNumber')
             if target.maxNumber <= 0:
                 ix.raiseWrongXml(xmlCtx, 'maxNumber', 'should not be less then 1')
-        if IS_CLIENT or IS_EDITOR or IS_WEB:
+        if IS_CLIENT or IS_EDITOR or IS_WEB or IS_LOAD_GLOSSARY:
             self._readClientOnlyFromXml(target, xmlCtx, section, cache)
 
     def _readClientOnlyFromXml(self, target, xmlCtx, section, cache=None):
