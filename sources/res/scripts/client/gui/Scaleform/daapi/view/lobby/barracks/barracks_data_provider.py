@@ -129,6 +129,7 @@ def _packNotRecruitedTankman(recruitInfo):
        'notRecruited': True, 
        'isRankNameVisible': True, 
        'recoveryPeriodText': None, 
+       'roles': availableRoles if len(availableRoles) == 1 else [], 
        'actionBtnLabel': MENU.BARRACKS_BTNRECRUITNOTRECRUITED, 
        'actionBtnTooltip': TOOLTIPS.BARRACKS_TANKMEN_RECRUIT, 
        'skills': [], 'isSkillsVisible': False, 

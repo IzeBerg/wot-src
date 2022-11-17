@@ -704,7 +704,7 @@ class VehicleStatusTooltipData(BlocksTooltipData):
         items = super(VehicleStatusTooltipData, self)._packBlocks()
         statusConfig = self.context.getStatusConfiguration(vehicle)
         if not vehicle.isRotationGroupLocked:
-            statusBlock, operationError, _ = StatusBlockConstructor(vehicle, statusConfig).construct()
+            statusBlock, operationError, _ = SimpleFormattedStatusBlockConstructor(vehicle, statusConfig).construct()
             if statusBlock and not operationError:
                 items.append(formatters.packBuildUpBlockData(statusBlock, padding=formatters.packPadding(bottom=-16)))
         return items
@@ -1121,20 +1121,7 @@ class StatusBlockConstructor(VehicleTooltipBlockConstructor):
             else:
                 result = self.__getVehicleStatus(self.configuration.showCustomStates, self.vehicle)
             if result is not None:
-                statusLevel = result['level']
-                if statusLevel == Vehicle.VEHICLE_STATE_LEVEL.INFO:
-                    headerFormatter = text_styles.statInfo
-                elif statusLevel == Vehicle.VEHICLE_STATE_LEVEL.CRITICAL:
-                    headerFormatter = text_styles.critical
-                elif statusLevel == Vehicle.VEHICLE_STATE_LEVEL.WARNING:
-                    headerFormatter = text_styles.warning
-                elif statusLevel == Vehicle.VEHICLE_STATE_LEVEL.ATTENTION:
-                    headerFormatter = text_styles.statusAttention
-                elif statusLevel in (Vehicle.VEHICLE_STATE_LEVEL.RENTED, Vehicle.VEHICLE_STATE_LEVEL.RENTABLE):
-                    headerFormatter = text_styles.warning
-                else:
-                    _logger.error('Unknown status type "%s"!', statusLevel)
-                    headerFormatter = text_styles.statInfo
+                headerFormatter = self._getHeaderFormatter(result['level'])
                 header = headerFormatter(result['header'])
                 text = result['text']
                 if text:
@@ -1144,6 +1131,23 @@ class StatusBlockConstructor(VehicleTooltipBlockConstructor):
                     block.append(formatters.packAlignedTextBlockData(header, BLOCKS_TOOLTIP_TYPES.ALIGN_CENTER))
             return (
              block, result and result.get('operationError') is not None, result)
+
+    @classmethod
+    def _getHeaderFormatter(cls, statusLevel):
+        if statusLevel == Vehicle.VEHICLE_STATE_LEVEL.INFO:
+            headerFormatter = text_styles.statInfo
+        elif statusLevel == Vehicle.VEHICLE_STATE_LEVEL.CRITICAL:
+            headerFormatter = text_styles.critical
+        elif statusLevel == Vehicle.VEHICLE_STATE_LEVEL.WARNING:
+            headerFormatter = text_styles.warning
+        elif statusLevel == Vehicle.VEHICLE_STATE_LEVEL.ATTENTION:
+            headerFormatter = text_styles.statusAttention
+        elif statusLevel in (Vehicle.VEHICLE_STATE_LEVEL.RENTED, Vehicle.VEHICLE_STATE_LEVEL.RENTABLE):
+            headerFormatter = text_styles.warning
+        else:
+            _logger.error('Unknown status type "%s"!', statusLevel)
+            headerFormatter = text_styles.statInfo
+        return headerFormatter
 
     def __getTechTreeVehicleStatus(self, config, vehicle):
         nodeState = int(config.node.state)
@@ -1243,6 +1247,13 @@ class StatusBlockConstructor(VehicleTooltipBlockConstructor):
                'text': '', 
                'level': Vehicle.VEHICLE_STATE_LEVEL.CRITICAL}
         return self.__getVehicleStatus(configuration.showCustomStates, vehicle)
+
+
+class SimpleFormattedStatusBlockConstructor(StatusBlockConstructor):
+
+    @classmethod
+    def _getHeaderFormatter(cls, _):
+        return text_styles.middleTitle
 
 
 def _getNumNotNullPenaltyTankman(penalties):

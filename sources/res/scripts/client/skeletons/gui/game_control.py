@@ -199,6 +199,7 @@ class IAOGASController(IGameController):
 class IGameSessionController(IGameController):
     onClientNotify = None
     onTimeTillBan = None
+    onNewDayNotify = None
     onPremiumNotify = None
     onPremiumTypeChanged = None
     onParentControlNotify = None

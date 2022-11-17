@@ -130,7 +130,6 @@ class StorageCategoryPersonalReservesView(StorageCategoryPersonalReservesViewMet
         super(StorageCategoryPersonalReservesView, self)._populate()
         g_clientUpdateManager.addCallbacks({'goodies': self.__onUpdateBoosters, 
            'shop': self.__onUpdateBoosters})
-        self._boostersCtrl.onBoosterChangeNotify += self.__onUpdateBoosters
         self._eventsCache.onSyncCompleted += self.__onQuestsUpdate
         self._epicCtrl.onUpdated += self.__onUpdateBoosters
         self.__onUpdateBoosters()
@@ -138,7 +137,6 @@ class StorageCategoryPersonalReservesView(StorageCategoryPersonalReservesViewMet
 
     def _dispose(self):
         g_clientUpdateManager.removeObjectCallbacks(self)
-        self._boostersCtrl.onBoosterChangeNotify -= self.__onUpdateBoosters
         self._eventsCache.onSyncCompleted -= self.__onQuestsUpdate
         self._epicCtrl.onUpdated -= self.__onUpdateBoosters
         self._saveFilters()

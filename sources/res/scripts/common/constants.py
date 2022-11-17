@@ -22,6 +22,7 @@ IS_CELLAPP = BigWorld.component == 'cell'
 IS_BASEAPP = BigWorld.component in ('base', 'service')
 IS_WEB = BigWorld.component == 'web'
 IS_DYNUPDATER = False
+IS_LOAD_GLOSSARY = False
 IS_CGF_DUMP = BigWorld.component == 'client_cgf_dump'
 DEFAULT_LANGUAGE = 'ru'
 AUTH_REALM = 'RU'

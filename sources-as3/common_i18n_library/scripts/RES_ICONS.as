@@ -15539,6 +15539,10 @@ package
       
       public static const MAPS_ICONS_PERSONAL_RESERVES_CONVERSION_GREEN_ARROW:String = "../maps/icons/personal_reserves/conversion/green_arrow.png";
       
+      public static const MAPS_ICONS_PERSONAL_RESERVES_CONVERSION_GREEN_ARROW_BIG:String = "../maps/icons/personal_reserves/conversion/green_arrow_big.png";
+      
+      public static const MAPS_ICONS_PERSONAL_RESERVES_CONVERSION_GREEN_ARROW_SMALL:String = "../maps/icons/personal_reserves/conversion/green_arrow_small.png";
+      
       public static const MAPS_ICONS_PERSONAL_RESERVES_CONVERSION_IN_HANGAR_ICON:String = "../maps/icons/personal_reserves/conversion/in_hangar_icon.png";
       
       public static const MAPS_ICONS_PERSONAL_RESERVES_CONVERSION_NO_CONVERSION:String = "../maps/icons/personal_reserves/conversion/no_conversion.png";
