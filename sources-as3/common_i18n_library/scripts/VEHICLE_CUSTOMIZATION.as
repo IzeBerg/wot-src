@@ -13295,6 +13295,10 @@ package
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_476:String = "#vehicle_customization:projection_decals/special/projection_decal_476";
       
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_483:String = "#vehicle_customization:projection_decals/special/projection_decal_483";
+      
+      public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_484:String = "#vehicle_customization:projection_decals/special/projection_decal_484";
+      
       public static const PROPERTYSHEET_KEYBOARD_HINT:String = "#vehicle_customization:propertySheet/keyboard/hint";
       
       public static const PROPERTYSHEET_INSCRIPTIONCONTROLLER_INVALID_INSCRIPTION:String = "#vehicle_customization:propertySheet/inscriptionController/invalid_inscription";

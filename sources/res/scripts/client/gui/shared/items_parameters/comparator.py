@@ -272,7 +272,13 @@ CONDITIONAL_BONUSES = {('invisibilityMovingFactor', 'invisibilityStillFactor', T
                                                                                        (
                                                                                         'trophyBasicAimDrives', BonusTypes.OPTIONAL_DEVICE),
                                                                                        (
-                                                                                        'trophyUpgradedAimDrives', BonusTypes.OPTIONAL_DEVICE))}, 
+                                                                                        'trophyUpgradedAimDrives', BonusTypes.OPTIONAL_DEVICE),
+                                                                                       (
+                                                                                        'modernizedAimDrivesAimingStabilizer1', BonusTypes.OPTIONAL_DEVICE),
+                                                                                       (
+                                                                                        'modernizedAimDrivesAimingStabilizer2', BonusTypes.OPTIONAL_DEVICE),
+                                                                                       (
+                                                                                        'modernizedAimDrivesAimingStabilizer3', BonusTypes.OPTIONAL_DEVICE))}, 
    ('turretRotationSpeed', 'chassisRotationSpeed', 'radioDistance'): {(('improvedVentilationBattleBooster', BonusTypes.BATTLE_BOOSTER),): (
                                                                                                                                          (
                                                                                                                                           'improvedVentilation_tier1', BonusTypes.OPTIONAL_DEVICE),
