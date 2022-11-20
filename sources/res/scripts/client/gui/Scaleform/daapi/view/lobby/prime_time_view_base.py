@@ -172,7 +172,8 @@ class PrimeTimeViewBase(LobbySubView, PrimeTimeMeta, Notifiable, IPreQueueListen
         self.__updateSelectedServer()
         self.__updateSelectedServerData()
         updateEvent = self._getUpdateEvent()
-        updateEvent += self.__onControllerUpdated
+        if updateEvent:
+            updateEvent += self.__onControllerUpdated
         if not constants.IS_CHINA:
             if GUI_SETTINGS.csisRequestRate == REQUEST_RATE.ALWAYS:
                 g_preDefinedHosts.startCSISUpdate()
@@ -185,7 +186,8 @@ class PrimeTimeViewBase(LobbySubView, PrimeTimeMeta, Notifiable, IPreQueueListen
     def _dispose(self):
         self.clearNotification()
         updateEvent = self._getUpdateEvent()
-        updateEvent -= self.__onControllerUpdated
+        if updateEvent:
+            updateEvent -= self.__onControllerUpdated
         if not constants.IS_CHINA:
             g_preDefinedHosts.stopCSISUpdate()
             g_preDefinedHosts.onCsisQueryStart -= self.__onServersUpdate
@@ -263,9 +265,10 @@ class PrimeTimeViewBase(LobbySubView, PrimeTimeMeta, Notifiable, IPreQueueListen
            'serversDDEnabled': not isSingleServer, 
            'serverDDVisible': not isSingleServer}
 
-    @adisp_process
     def _getUpdateEvent(self):
-        return self._getController().onUpdate
+        controller = self._getController()
+        if controller and hasattr(controller, 'onUpdate'):
+            return controller.onUpdate
 
     @adisp_process
     def __continue(self):
