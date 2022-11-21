@@ -1102,6 +1102,7 @@ class Vehicle(BigWorld.Entity, BWEntitiyComponentTracker, BattleAbilitiesCompone
         bwfilter = self.filter
         if hasattr(bwfilter, 'velocityErrorCompensation'):
             bwfilter.velocityErrorCompensation = 100.0
+        BigWorld.player().wasKilled = True
         return
 
     def confirmTurretDetachment(self):
