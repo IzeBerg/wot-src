@@ -74,3 +74,4 @@ class HANGAR_ALIASES(object):
     EVENT_DAILY_REWARD = 'EventDailyReward'
     EVENT_PROGRESSION_ENTRY_POINT = 'EventProgressionEntryPoint'
     EVENT_GLOBAL_PROGRESSION_ENTRY_POINT = 'EventGlobalProgressionEntryPoint'
+    SHOP_SALES_ENTRY_POINT = 'shopSalesEntryPoint'

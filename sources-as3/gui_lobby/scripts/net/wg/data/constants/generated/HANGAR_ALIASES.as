@@ -148,6 +148,8 @@ package net.wg.data.constants.generated
       public static const EVENT_PROGRESSION_ENTRY_POINT:String = "EventProgressionEntryPoint";
       
       public static const EVENT_GLOBAL_PROGRESSION_ENTRY_POINT:String = "EventGlobalProgressionEntryPoint";
+      
+      public static const SHOP_SALES_ENTRY_POINT:String = "shopSalesEntryPoint";
        
       
       public function HANGAR_ALIASES()

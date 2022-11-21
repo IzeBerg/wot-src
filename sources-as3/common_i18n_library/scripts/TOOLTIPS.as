@@ -6183,6 +6183,10 @@ package
       
       public static const NOTRECRUITEDTANKMAN_COMMANDER_QUICKYBABY_DESC:String = "#tooltips:notrecruitedtankman/commander_quickybaby/desc";
       
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_FERENC_LABEL:String = "#tooltips:notrecruitedtankman/commander_ferenc/label";
+      
+      public static const NOTRECRUITEDTANKMAN_COMMANDER_FERENC_DESC:String = "#tooltips:notrecruitedtankman/commander_ferenc/desc";
+      
       public static const NOTRECRUITEDTANKMAN_YHA_COMMANDER_LABEL:String = "#tooltips:notrecruitedtankman/yha_commander/label";
       
       public static const NOTRECRUITEDTANKMAN_YHA_COMMANDER_DESC:String = "#tooltips:notrecruitedtankman/yha_commander/desc";
@@ -7084,6 +7088,64 @@ package
       public static const NOTRECRUITEDTANKMAN_WT22_HUNTER_COMMANDER_DESC:String = "#tooltips:notrecruitedtankman/wt22_hunter_commander/desc";
       
       public static const NOTRECRUITEDTANKMAN_WT22_HUNTER_COMMANDER_LABEL:String = "#tooltips:notrecruitedtankman/wt22_hunter_commander/label";
+      
+      public static const SHOPSALES_HEADER:String = "#tooltips:shopSales/header";
+      
+      public static const SHOPSALES_DISABLED_SUBHEADER:String = "#tooltips:shopSales/disabled/subheader";
+      
+      public static const SHOPSALES_LOCKED_SUBHEADER:String = "#tooltips:shopSales/locked/subheader";
+      
+      public static const SHOPSALES_ACTIVE_SUBHEADER:String = "#tooltips:shopSales/active/subheader";
+      
+      public static const SHOPSALES_ENDED_SUBHEADER:String = "#tooltips:shopSales/ended/subheader";
+      
+      public static const SHOPSALES_DISABLED_DESC:String = "#tooltips:shopSales/disabled/desc";
+      
+      public static const SHOPSALES_LOCKED_DESC:String = "#tooltips:shopSales/locked/desc";
+      
+      public static const SHOPSALES_ACTIVE_DESC:String = "#tooltips:shopSales/active/desc";
+      
+      public static const SHOPSALES_ENDED_DESC:String = "#tooltips:shopSales/ended/desc";
+      
+      public static const SHOPSALES_ENABLED_DESC:String = "#tooltips:shopSales/enabled/desc";
+      
+      public static const SHOPSALES_DISABLED_FOOTER:String = "#tooltips:shopSales/disabled/footer";
+      
+      public static const SHOPSALES_ENDED_FOOTER_SAVED:String = "#tooltips:shopSales/ended/footer/saved";
+      
+      public static const SHOPSALES_ENDED_FOOTER_PURCHASED:String = "#tooltips:shopSales/ended/footer/purchased";
+      
+      public static const SHOPSALES_CURRENTDISCOUNT_HEADER:String = "#tooltips:shopSales/currentDiscount/header";
+      
+      public static const SHOPSALES_CURRENTDISCOUNT_HOWTOBLOCK_HEADER:String = "#tooltips:shopSales/currentDiscount/howToBlock/header";
+      
+      public static const SHOPSALES_CURRENTDISCOUNT_HOWTOBLOCK_BODY:String = "#tooltips:shopSales/currentDiscount/howToBlock/body";
+      
+      public static const SHOPSALES_CURRENTDISCOUNT_FOOTER:String = "#tooltips:shopSales/currentDiscount/footer";
+      
+      public static const SHOPSALES_FREESHUFFLE_HEADER:String = "#tooltips:shopSales/freeShuffle/header";
+      
+      public static const SHOPSALES_FREESHUFFLE_BODY:String = "#tooltips:shopSales/freeShuffle/body";
+      
+      public static const SHOPSALES_FREESHUFFLE_MAXIMUMFREE:String = "#tooltips:shopSales/freeShuffle/maximumFree";
+      
+      public static const SHOPSALES_FREESHUFFLE_PAIDSHUFFLECOST:String = "#tooltips:shopSales/freeShuffle/paidShuffleCost";
+      
+      public static const SHOPSALES_PAIDSHUFFLE_HEADER:String = "#tooltips:shopSales/paidShuffle/header";
+      
+      public static const SHOPSALES_PAIDSHUFFLE_STARTTIME:String = "#tooltips:shopSales/paidShuffle/startTime";
+      
+      public static const SHOPSALES_VOTEFORDISCOUNT_AVAILABLE_HEADER:String = "#tooltips:shopSales/voteForDiscount/available/header";
+      
+      public static const SHOPSALES_VOTEFORDISCOUNT_AVAILABLE_BODY:String = "#tooltips:shopSales/voteForDiscount/available/body";
+      
+      public static const SHOPSALES_VOTEFORDISCOUNT_AVAILABLE_MAXIMUMVOTES:String = "#tooltips:shopSales/voteForDiscount/available/maximumVotes";
+      
+      public static const SHOPSALES_VOTEFORDISCOUNT_UNAVAILABLE_HEADER:String = "#tooltips:shopSales/voteForDiscount/unavailable/header";
+      
+      public static const SHOPSALES_VOTEFORDISCOUNT_UNAVAILABLE_AVAILABILITYBLOCK:String = "#tooltips:shopSales/voteForDiscount/unavailable/availabilityBlock";
+      
+      public static const SHOPSALES_VOTEFORDISCOUNT_UNAVAILABLE_FOOTER:String = "#tooltips:shopSales/voteForDiscount/unavailable/footer";
       
       public static const ELEN_SUMMARY_RANK_ENUM:Array = [ELEN_SUMMARY_RANK_1,ELEN_SUMMARY_RANK_2,ELEN_SUMMARY_RANK_3,ELEN_SUMMARY_RANK_4,ELEN_SUMMARY_RANK_NORANK];
       

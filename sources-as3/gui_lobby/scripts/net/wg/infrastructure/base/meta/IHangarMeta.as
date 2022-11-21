@@ -65,5 +65,7 @@ package net.wg.infrastructure.base.meta
       function as_setChinaLootboxesVisible(param1:Boolean) : void;
       
       function as_toggleEventMode(param1:Boolean) : void;
+      
+      function as_setShopSalesVisible(param1:Boolean) : void;
    }
 }
