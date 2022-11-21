@@ -72,6 +72,8 @@ _CTRLS_DESC_MAP = {_CTRL_MODE.ARCADE: (
                        MapCaseMode.MapCaseControlMode, 'strategicMode', _CTRL_TYPE.USUAL), 
    _CTRL_MODE.MAP_CASE_ARCADE: (
                               MapCaseMode.ArcadeMapCaseControlMode, 'arcadeMode', _CTRL_TYPE.USUAL), 
+   _CTRL_MODE.MAP_CASE_EPIC: (
+                            MapCaseMode.EpicMapCaseControlMode, 'strategicMode', _CTRL_TYPE.USUAL), 
    _CTRL_MODE.MAP_CASE_ARCADE_EPIC_MINEFIELD: (
                                              MapCaseMode.AracdeMinefieldControleMode, 'arcadeEpicMinefieldMode', _CTRL_TYPE.USUAL), 
    _CTRL_MODE.RESPAWN_DEATH: (
