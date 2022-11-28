@@ -24,7 +24,7 @@ _LOBBY_RELEASE_PACKAGES = ('gui.Scaleform.daapi.view.lobby', 'gui.Scaleform.daap
                            'gui.Scaleform.daapi.view.lobby.shop', 'gui.Scaleform.daapi.view.lobby.session_stats',
                            'gui.Scaleform.daapi.view.lobby.epicBattleTraining', 'gui.Scaleform.daapi.view.lobby.tank_setup',
                            'gui.Scaleform.daapi.view.lobby.mapbox', 'gui.Scaleform.daapi.view.lobby.veh_post_progression',
-                           'gui.Scaleform.daapi.view.lobby.comp7', 'gui.Scaleform.daapi.view.lobby.shop_sales')
+                           'gui.Scaleform.daapi.view.lobby.comp7')
 _LOBBY_DEBUG_PACKAGES = ('gui.development.ui.messenger.view.lobby', 'gui.development.ui.demo',
                          'gui.Scaleform.daapi.view.lobby.epicBattleTraining', 'gui.development.ui.gf_viewer')
 _BATTLE_RELEASE_PACKAGES = ('gui.Scaleform.daapi.view.battle.shared', 'messenger.gui.Scaleform.view.battle')
@@ -103,9 +103,7 @@ _LOBBY_TOOLTIPS_BUILDERS_PATHS = [
  (
   'gui.Scaleform.daapi.view.tooltips.resource_well_builders', _TOOLTIPS.RESOURCE_WELL_SET),
  (
-  'gui.Scaleform.daapi.view.tooltips.comp7_lobby_builders', _TOOLTIPS.COMP7_LOBBY_SET),
- (
-  'gui.Scaleform.daapi.view.tooltips.shop_sales_event_builders', _TOOLTIPS.SHOP_SALES_EVENT_SET)]
+  'gui.Scaleform.daapi.view.tooltips.comp7_lobby_builders', _TOOLTIPS.COMP7_LOBBY_SET)]
 _LOBBY_DEBUG_TOOLTIPS_BUILDERS_PATHS = (
  (
   'gui.development.ui.tooltips.development_builders', _TOOLTIPS.DEVELOPMENT_SET),)

@@ -12,6 +12,8 @@ package net.wg.infrastructure.base.meta.impl
       
       public var onSelectQuest:Function;
       
+      public var onPersonalReservesTabViewed:Function;
+      
       private var _questProgressPerformVO:QuestProgressPerformVO;
       
       private var _qPProgressTrackingVO:QPProgressTrackingVO;
@@ -40,6 +42,12 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.onSelectQuest,"onSelectQuest" + Errors.CANT_NULL);
          this.onSelectQuest(param1);
+      }
+      
+      public function onPersonalReservesTabViewedS(param1:Boolean) : void
+      {
+         App.utils.asserter.assertNotNull(this.onPersonalReservesTabViewed,"onPersonalReservesTabViewed" + Errors.CANT_NULL);
+         this.onPersonalReservesTabViewed(param1);
       }
       
       public final function as_questProgressPerform(param1:Object) : void

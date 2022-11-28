@@ -3,14 +3,16 @@ from adisp import adisp_async, adisp_process
 from dossiers2.ui.achievements import BADGES_BLOCK
 from gui.impl import backport
 from gui.impl.gen import R
+from gui.shared.formatters import text_styles
 from gui.server_events.bonuses import getMergedBonusesFromDicts
 from gui.shared.gui_items.dossier import getAchievementFactory
-from gui.shared.gui_items.loot_box import ALL_LUNAR_NY_LOOT_BOX_TYPES, ChinaLootBoxes, EventLootBoxes, NewYearLootBoxes
+from gui.shared.gui_items.loot_box import ALL_LUNAR_NY_LOOT_BOX_TYPES, EventLootBoxes, NewYearLootBoxes
 from gui.shared.notifications import NotificationGroup
 from helpers import dependency
+from items.components.ny_constants import Ny23CoinToken
 from messenger import g_settings
 from messenger.formatters.service_channel import LootBoxAchievesFormatter, QuestAchievesFormatter, ServiceChannelFormatter, WaitItemsSyncFormatter
-from messenger.formatters.service_channel_helpers import MessageData, getCustomizationItemData, getRewardsForBoxes
+from messenger.formatters.service_channel_helpers import MessageData, getRewardsForBoxes, getCustomizationItemData
 from skeletons.gui.shared import IItemsCache
 
 class IAutoLootBoxSubFormatter(object):
@@ -57,6 +59,8 @@ class SyncAutoLootBoxSubFormatter(ServiceChannelFormatter, AutoLootBoxSubFormatt
 
 class EventBoxesFormatter(AsyncAutoLootBoxSubFormatter):
     __itemsCache = dependency.descriptor(IItemsCache)
+    __MESSAGE_TEMPLATE = 'EventLootBoxesAutoOpenMessage'
+    __R_LOOT_BOXES = R.strings.messenger.serviceChannelMessages.lootBoxesAutoOpen.event
 
     @adisp_async
     @adisp_process
@@ -67,9 +71,9 @@ class EventBoxesFormatter(AsyncAutoLootBoxSubFormatter):
             rewards = getRewardsForBoxes(message, openedBoxesIDs)
             fmtBoxes = self.__getFormattedBoxes(message, openedBoxesIDs)
             fmt = self._achievesFormatter.formatQuestAchieves(rewards, asBattleFormatter=False, processTokens=False)
-            ctx = {'boxes': fmtBoxes, 'rewards': backport.text(self._getTextResPath().rewards(), rewards=fmt)}
-            formatted = g_settings.msgTemplates.format(self._getMessageTemplate(), ctx=ctx)
-            settings = self._getGuiSettings(message, self._getMessageTemplate())
+            ctx = {'boxes': fmtBoxes, 'rewards': backport.text(self.__R_LOOT_BOXES.rewards(), rewards=fmt)}
+            formatted = g_settings.msgTemplates.format(self.__MESSAGE_TEMPLATE, ctx=ctx)
+            settings = self._getGuiSettings(message, self.__MESSAGE_TEMPLATE)
             callback([MessageData(formatted, settings)])
         else:
             callback([MessageData(None, None)])
@@ -79,65 +83,65 @@ class EventBoxesFormatter(AsyncAutoLootBoxSubFormatter):
     def _isBoxOfThisGroup(cls, boxID):
         return cls._isBoxOfRequiredTypes(boxID, EventLootBoxes.ALL())
 
-    @staticmethod
-    def _getMessageTemplate():
-        return 'EventLootBoxesAutoOpenMessage'
-
-    @staticmethod
-    def _getTextResPath():
-        return R.strings.messenger.serviceChannelMessages.lootBoxesAutoOpen.event
-
     def __getFormattedBoxes(self, message, openedBoxesIDs):
         boxes = []
         for boxID in openedBoxesIDs:
             box = self.__itemsCache.items.tokens.getLootBoxByID(boxID)
-            boxes.append(backport.text(self._getTextResPath().counter(), boxName=box.getUserName(), count=message.data[boxID]['count']))
+            boxes.append(backport.text(self.__R_LOOT_BOXES.counter(), boxName=box.getUserName(), count=message.data[boxID]['count']))
 
         return (', ').join(boxes)
 
 
-class CNLootBoxesFormatter(EventBoxesFormatter):
-
-    @classmethod
-    def _isBoxOfThisGroup(cls, boxID):
-        return cls._isBoxOfRequiredTypes(boxID, ChinaLootBoxes.ALL())
-
-    @staticmethod
-    def _getMessageTemplate():
-        return 'ChinaLootBoxesAutoOpenMessage'
-
-    @staticmethod
-    def _getTextResPath():
-        return R.strings.cn_loot_boxes.notification.lootBoxesAutoOpen
-
-
 class NYPostEventBoxesFormatter(AsyncAutoLootBoxSubFormatter):
+    __itemsCache = dependency.descriptor(IItemsCache)
     __MESSAGE_TEMPLATE = 'LootBoxesAutoOpenMessage'
     __REWARDS_TEMPLATE = 'LootBoxRewardsSysMessage'
-    __REQUIERED_BOX_TYPES = {NewYearLootBoxes.COMMON, NewYearLootBoxes.PREMIUM, NewYearLootBoxes.SPECIAL}
+    __REQUIERED_BOX_TYPES = {NewYearLootBoxes.PREMIUM}
 
     @adisp_async
     @adisp_process
     def format(self, message, callback):
         isSynced = yield self._waitForSyncItems()
         if isSynced:
-            openedBoxesIDs = self.getBoxesOfThisGroup(message.data.keys())
-            callback([
-             self.__getMainMessage(message, openedBoxesIDs),
-             self.__getRewardsMessage(message, openedBoxesIDs)])
+            boxIDs = message.data.keys()
+            if boxIDs:
+                openedBoxesIDs = self.getBoxesOfThisGroup(boxIDs)
+                callback([
+                 self.__getMainMessage(message, openedBoxesIDs),
+                 self.__getRewardsMessage(message, openedBoxesIDs)])
+            else:
+                callback([MessageData(None, None)])
         else:
             callback([MessageData(None, None)])
         return
 
     @classmethod
     def _isBoxOfThisGroup(cls, boxID):
-        return cls._isBoxOfRequiredTypes(boxID, cls.__REQUIERED_BOX_TYPES)
+        coins = cls.__itemsCache.items.tokens.getNyCoins()
+        return cls._isBoxOfRequiredTypes(boxID, cls.__REQUIERED_BOX_TYPES) or coins and coins.getID() == boxID
 
     def __getMainMessage(self, message, openedBoxesIDs):
-        count = backport.text(R.strings.messenger.serviceChannelMessages.lootBoxesAutoOpen.counter(), count=sum(message.data[boxId]['count'] for boxId in openedBoxesIDs))
-        oldStyleCount = {bID:message.data[bID]['count'] for bID in openedBoxesIDs}
+        rows = []
+        boxesCount = coinsCount = 0
+        boxes = {bID:message.data[bID]['count'] for bID in openedBoxesIDs}
+        for boxId, count in boxes.iteritems():
+            if boxId == Ny23CoinToken.INT_ID:
+                coinsCount += count
+            else:
+                boxesCount += count
+
+        accessor = R.strings.messenger.serviceChannelMessages.lootBoxesAutoOpen
+        if boxesCount > 0:
+            rows.append(backport.text(accessor.boxesCounter(), count=text_styles.stats(boxesCount)))
+        if coinsCount > 0:
+            rows.append(backport.text(accessor.coinsCounter(), count=text_styles.stats(coinsCount)))
+        lootboxes = ('<br/>').join(rows)
+        if boxesCount > 0 and coinsCount > 0:
+            bodyAccessor = accessor.boxesAndCoins
+        else:
+            bodyAccessor = accessor.boxes if boxesCount > 0 else accessor.coins
         rewards = getRewardsForBoxes(message, openedBoxesIDs)
-        formatted = g_settings.msgTemplates.format(self.__MESSAGE_TEMPLATE, ctx={'count': count}, data={'savedData': {'rewards': rewards, 'boxIDs': oldStyleCount}})
+        formatted = g_settings.msgTemplates.format(self.__MESSAGE_TEMPLATE, ctx={'body': backport.text(bodyAccessor()), 'lootboxes': lootboxes}, data={'savedData': {'rewards': rewards, 'boxIDs': boxes}})
         settings = self._getGuiSettings(message, self.__MESSAGE_TEMPLATE)
         settings.groupID = NotificationGroup.OFFER
         settings.showAt = BigWorld.time()

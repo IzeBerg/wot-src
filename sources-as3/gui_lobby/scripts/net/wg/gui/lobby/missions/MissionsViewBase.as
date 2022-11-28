@@ -37,7 +37,7 @@ package net.wg.gui.lobby.missions
       
       protected var _hasBeenShownBefore:Boolean = false;
       
-      private var _fadeInTween:Tween;
+      protected var _fadeInTween:Tween;
       
       public function MissionsViewBase()
       {

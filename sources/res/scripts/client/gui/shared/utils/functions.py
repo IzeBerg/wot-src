@@ -1,4 +1,4 @@
-import random, re, typing, ArenaType, wg_async as future_async
+import random, re, typing, GUI, ArenaType, wg_async as future_async
 from adisp import adisp_async
 from gui import GUI_SETTINGS, SystemMessages
 from gui.Scaleform.locale.SYSTEM_MESSAGES import SYSTEM_MESSAGES
@@ -178,7 +178,7 @@ def getArenaFullName(arenaTypeID):
     return arenaName
 
 
-def getBattleSubTypeWinText(arenaTypeID, teamID):
+def getBattleSubTypeWinText(arenaTypeID, teamID, _=False):
     root = R.strings.arenas.type.dyn(ArenaType.g_cache[arenaTypeID].gameplayName)
     description = root.dyn('description')
     if not description:
@@ -281,3 +281,9 @@ def getImageResourceFromPath(path):
 def capitalizeText(text):
     t = text.decode()
     return t[0].upper() + t[1:]
+
+
+def mouseScreenPosition():
+    clipPos = GUI.mcursor().position
+    res = GUI.screenResolution()
+    return ((clipPos[0] + 1.0) / 2.0 * res[0], (-clipPos[1] + 1.0) / 2.0 * res[1])

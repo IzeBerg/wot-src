@@ -14,7 +14,7 @@ msgid "abilities/actions/toReserves"
 msgstr "管理储备"
 
 msgid "abilities/applyToType"
-msgstr "应用于%(icon)%(vehicle)"
+msgstr "应用于%(icon)s%(vehicle)s"
 
 msgid "abilities/noSelected/subTitle"
 msgstr "在储备管理界面激活它们。"
@@ -56,7 +56,7 @@ msgid "categories/mobility"
 msgstr "机动"
 
 msgid "categories/reserves/config"
-msgstr "%(icon) %(vehicle)配置"
+msgstr "%(icon)s%(vehicle)s配置"
 
 msgid "categories/slotEffect/empty"
 msgstr "为这辆坦克指定第二个配件栏位类别的机会。"
@@ -127,6 +127,59 @@ msgstr "总计:"
 msgid "dealPanel/tooltip/notEnough"
 msgstr "资金不足，无法购买。"
 
+msgid "deconstructionDeviceView/available"
+msgstr "可用:"
+
+msgid "deconstructionDeviceView/btn/cancel"
+msgstr "取消"
+
+msgid "deconstructionDeviceView/btn/deconstruct"
+msgstr "继续"
+
+msgid "deconstructionDeviceView/footer/fromStorage"
+msgstr "来自仓库:"
+
+msgid "deconstructionDeviceView/footer/fromVehicles"
+msgstr "来自坦克:"
+
+msgid "deconstructionDeviceView/footer/notEnoughMoney"
+msgstr ""
+"( %(red_Open)s升级配件还需要%(red_Close)s "
+"%(whiteSpanish_Open)s%(coins)s%(whiteSpanish_Close)s )"
+
+msgid "deconstructionDeviceView/footer/willReceive"
+msgstr "将获得:"
+
+msgid "deconstructionDeviceView/header/activeVehicle"
+msgstr "当前坦克"
+
+msgid "deconstructionDeviceView/header/inStorage"
+msgstr "仓库中: %(par_Open)s%(value)s%(par_Close)s"
+
+msgid "deconstructionDeviceView/header/onVehicles"
+msgstr "坦克中: %(par_Open)s%(value)s%(par_Close)s"
+
+msgid "deconstructionDeviceView/subTitle/enoughMoney"
+msgstr ""
+"选择您想要拆解为%(whiteSpanish_Open)s合金元件%(whiteSpanish_Close)s%(icon)s的配件。拆解获得的合金元件可以用来升级试验型配件。"
+
+msgid "deconstructionDeviceView/subTitle/notEnoughMoney"
+msgstr "%(icon)s若要获得更多合金元件，可以拆解闲置的试验型配件。"
+
+msgid "deconstructionDeviceView/title/enoughMoney"
+msgstr "工作台"
+
+msgid "deconstructionDeviceView/title/notEnoughMoney"
+msgstr ""
+"没有足够的合金元件来升级\n"
+"%(whiteSpanish_Open)s%(equipment)s%(whiteSpanish_Close)s。"
+
+msgid "deconstructionDeviceView/tooltip/deconstruct/enoughMoney"
+msgstr "若要继续，请将闲置的配件拆解为合金元件。"
+
+msgid "deconstructionDeviceView/tooltip/deconstruct/notEnoughMoney"
+msgstr "若要继续，请获取所需数量的合金元件。"
+
 msgid "dialogs/confirm/cancel/changeSlots"
 msgstr "取消变更"
 
@@ -155,13 +208,13 @@ msgid "dialogs/confirm/confirm/setup"
 msgstr "安装"
 
 msgid "dialogs/confirm/demount/item"
-msgstr "您可以花费 %(price) 拆卸配件并将其送至仓库，或者直接摧毁它。"
+msgstr "您可以花费%(price)s拆卸配件并将其送至仓库，或者您可以直接摧毁它。"
 
 msgid "dialogs/confirm/demount/itemWithDemountKit"
-msgstr "您可以花费 %(demountKit) 或 %(price) 拆卸配件并将其送至仓库，或者直接摧毁它。"
+msgstr "您可以花费%(demountKit)s或%(price)s拆卸配件并将其送至仓库，或者您可以直接摧毁它。"
 
 msgid "dialogs/confirm/demount/items"
-msgstr "您可以拆卸配件并将其送至仓库，或者直接摧毁它。"
+msgstr "您可以拆卸配件并将其送至仓库。"
 
 msgid "dialogs/confirm/doesNotWork"
 msgstr "将不起作用"
@@ -218,16 +271,16 @@ msgid "dialogs/confirm/title/changeSlots/optionalDevice"
 msgstr "是否保存对配件栏的改动？"
 
 msgid "dialogs/confirm/title/item/modification"
-msgstr "购买%(name){type}？"
+msgstr "购买%(name)s{type}？"
 
 msgid "dialogs/confirm/title/item/payment"
-msgstr "购买并安装{type} %(name) 吗？"
+msgstr "购买并安装{type}%(name)s？"
 
 msgid "dialogs/confirm/title/item/setup"
-msgstr "安装{type} %(name) 吗？"
+msgstr "安装{type}%(name)s？"
 
 msgid "dialogs/confirm/title/itemForAllVehiclesByType/setup/"
-msgstr "为所有%(vehicle)启用%(name){type}？"
+msgstr "为所有%(vehicle)s启用%(name)s{type}？"
 
 msgid "dialogs/confirm/title/items/modification"
 msgstr "购买{type}？"
@@ -239,7 +292,7 @@ msgid "dialogs/confirm/title/items/setup"
 msgstr "安装{type}吗？"
 
 msgid "dialogs/confirm/title/itemsForAllVehiclesByType/setup/"
-msgstr "为所有%(vehicle)启用{type}？"
+msgstr "为所有%(vehicle)s启用{type}？"
 
 msgid "dialogs/confirm/vehicleType/AT-SPG"
 msgstr "自行反坦克炮"
@@ -257,7 +310,72 @@ msgid "dialogs/confirm/vehicleType/mediumTank"
 msgstr "中型坦克"
 
 msgid "dialogs/confirm/warning"
-msgstr "注意！ %(devices) 未安装。指令 %(doesNotWork)。"
+msgstr "注意！%(devices)s未安装。指令%(doesNotWork)s。"
+
+msgid "dialogs/confirmActionsWithEquipmentDialog/alert/text"
+msgstr "注意！拆解后，您就没有试验型配件了！"
+
+msgid "dialogs/confirmActionsWithEquipmentDialog/button/cancel"
+msgstr "取消"
+
+msgid "dialogs/confirmActionsWithEquipmentDialog/button/deconstructFromSlots"
+msgstr "拆解"
+
+msgid ""
+"dialogs/confirmActionsWithEquipmentDialog/button/deconstructFromStorage"
+msgstr "拆解"
+
+msgid "dialogs/confirmActionsWithEquipmentDialog/content/deconstructFromSlots"
+msgstr "将一共获得:"
+
+msgid ""
+"dialogs/confirmActionsWithEquipmentDialog/content/deconstructFromStorage"
+msgstr "每个可获得:"
+
+msgid "dialogs/confirmActionsWithEquipmentDialog/title/deconstructFromSlots"
+msgstr ""
+"拆解\n"
+"%(name)s？"
+
+msgid "dialogs/confirmActionsWithEquipmentDialog/title/deconstructFromStorage"
+msgstr ""
+"拆解\n"
+"%(name)s？"
+
+msgid "dialogs/deconstructConfirm/button/cancel"
+msgstr "取消"
+
+msgid "dialogs/deconstructConfirm/button/deconstruct"
+msgstr "拆解"
+
+msgid "dialogs/deconstructConfirm/content/header/deconstruct"
+msgstr "将下列配件拆解为合金元件？"
+
+msgid "dialogs/deconstructConfirm/content/header/upgrade"
+msgstr ""
+"拆解下列配件并升级\n"
+"%(deviceName)s？"
+
+msgid "dialogs/deconstructConfirm/content/items/inventory"
+msgstr "将从仓库中拆解: %(counter)s"
+
+msgid "dialogs/deconstructConfirm/content/items/vehicle"
+msgstr "将从坦克中拆解: %(counter)s"
+
+msgid "dialogs/deconstructConfirm/footer/additionalInf/upgrade"
+msgstr "拆解后您将获得: %(counter)s"
+
+msgid "dialogs/deconstructConfirm/footer/deconstruct"
+msgstr "将一共获得:"
+
+msgid "dialogs/deconstructConfirm/footer/upgrade"
+msgstr "升级费用:"
+
+msgid "dialogs/deconstructConfirm/footer/warning/noEquipmentLeft"
+msgstr "注意！拆解后，您就没有试验型配件了！"
+
+msgid "dialogs/deconstructConfirm/footer/warning/vehicleDeconstruct"
+msgstr "注意！您将拆解坦克中的试验型配件。"
 
 msgid "dialogs/exchangeToUpgrade/confirm"
 msgstr "兑换"
@@ -266,22 +384,42 @@ msgid "dialogs/exchangeToUpgrade/item/optionalDevice"
 msgstr "配件"
 
 msgid "dialogs/exchangeToUpgrade/item/title"
-msgstr "还需要 %(credits) 才能升级 %(name)"
+msgstr "还需要%(credits)s才能升级%(name)s"
 
 msgid "dialogs/exchangeToUpgrade/items/optionalDevice"
 msgstr "配件"
 
 msgid "dialogs/exchangeToUpgrade/items/title"
-msgstr "还需要 %(credits) 才能升级配件"
+msgstr "还需要%(credits)s才能升级配件"
 
 msgid "dialogs/exchangeToUpgrade/notPossible/status"
-msgstr "无法升级配件。您需要将 %(gold) 兑换为银币。"
+msgstr "无法升级配件。您需要将%(gold)s换为银币。"
 
 msgid "dialogs/exchangeToUpgrade/notRequired/status"
 msgstr "您拥有足够的银币，可以升级配件。"
 
 msgid "dialogs/exchangeToUpgrade/notRequired/title"
 msgstr "不需兑换。"
+
+msgid "dialogs/experimentEquipment/alert/notEnoughEquip"
+msgstr "您没有可拆解的试验型配件了。"
+
+msgid "dialogs/experimentEquipment/alert/notEnoughMoney"
+msgstr "若要获得更多合金元件，可以拆解试验型配件。"
+
+msgid "dialogs/experimentEquipment/header/dialogText"
+msgstr ""
+"升级\n"
+"%(name)s？"
+
+msgid "dialogs/experimentEquipment/level/decription"
+msgstr "%(description)s (%(unit)s)"
+
+msgid "dialogs/experimentEquipment/moneyShortage"
+msgstr "需要: %(money)s"
+
+msgid "dialogs/experimentEquipment/priceBlock/price"
+msgstr "价格:"
 
 msgid "dialogs/goldExchange/action/buy"
 msgstr "前往购买"
@@ -293,7 +431,7 @@ msgid "dialogs/goldExchange/confirm"
 msgstr "兑换"
 
 msgid "dialogs/goldExchange/default/status"
-msgstr "兑换比率: %(gold) = %(credits)"
+msgstr "兑换比率: %(gold)s = %(credits)s"
 
 msgid "dialogs/goldExchange/item/battleBooster"
 msgstr "指令"
@@ -311,7 +449,7 @@ msgid "dialogs/goldExchange/item/postProgressionPairModification"
 msgstr "双重改装"
 
 msgid "dialogs/goldExchange/item/title"
-msgstr "还需要%(credits){action}%(name){type}"
+msgstr "还需要%(credits)s才能{action}%(name)s{type}"
 
 msgid "dialogs/goldExchange/items/battleBooster"
 msgstr "指令"
@@ -326,13 +464,13 @@ msgid "dialogs/goldExchange/items/optionalDevice"
 msgstr "配件"
 
 msgid "dialogs/goldExchange/items/title"
-msgstr "还需要%(credits){action}{type}"
+msgstr "还需要%(credits)s才能{action}{type}"
 
 msgid "dialogs/goldExchange/needRepair/title"
-msgstr "还需要 %(credits) 才能修复坦克"
+msgstr "还需要%(credits)s才能修复坦克"
 
 msgid "dialogs/goldExchange/notPossible/status"
-msgstr "兑换资金不足。需要%(gold)"
+msgstr "兑换资金不足。需要%(gold)s"
 
 msgid "dialogs/goldExchange/notRequired/action/buy"
 msgstr "前往购买"
@@ -347,7 +485,7 @@ msgid "dialogs/goldExchange/notRequired/title"
 msgstr "银币足够{action}"
 
 msgid "dialogs/goldExchange/refillShells/title"
-msgstr "还需要 %(credits) 才能补给弹药"
+msgstr "还需要%(credits)s才能补给弹药"
 
 msgid "dialogs/needRepair/autoRepair"
 msgstr "自动维修"
@@ -359,7 +497,7 @@ msgid "dialogs/needRepair/durability"
 msgstr "耐久度:"
 
 msgid "dialogs/needRepair/durabilityPercentage"
-msgstr "%(value)%"
+msgstr "%(value)s%"
 
 msgid "dialogs/needRepair/freeAutoRepair"
 msgstr "坦克将被免费自动修复"
@@ -393,6 +531,9 @@ msgstr "效果"
 
 msgid "effects/template"
 msgstr "%(icon)s %(title)s: %(descr)s"
+
+msgid "experimentalEquipCoinBlock/name"
+msgstr "获取合金元件"
 
 msgid "filters/shown"
 msgstr "显示： "
@@ -428,21 +569,35 @@ msgstr ""
 "类别\n"
 "额外加成"
 
+msgid "hints/tabs/equipment"
+msgstr ""
+"全新配件\n"
+"种类"
+
+msgid "introduction/currency/deluxe"
+msgstr "战争债券"
+
+msgid "introduction/currency/modernized"
+msgstr "合金元件"
+
 msgid "introduction/message/deluxe"
-msgstr "您可以使用在排位赛中获得的 %(currencyName) 购买该配件。您也可以通过完成特定游戏活动获得该配件。"
+msgstr ""
+"可以使用%(currencyName)s(%(currencyIcon)s)购买这种配件。您也可以从特定游戏内成就和特殊游戏活动中获取它们作为奖励。"
+
+msgid "introduction/message/modernized"
+msgstr ""
+"一种特殊的配件，具有3个升级等级。无法购买或摧毁这种配件，但可以将其拆解为特殊的部件—%(currencyName)s(%(currencyIcon)s)。通过拆解获得的合金元件可以用来升级试验型配件。可以通过完成任务和在特定游戏活动中获得试验型配件作为奖励。"
 
 msgid "introduction/message/trophy"
 msgstr ""
-"玩家获得这种特殊的配件类型时，它具有等同于标准配件的参数，但之后可使用银币升级。您不能用游戏内货币购买赏金配件，但可以在特殊游戏活动中作为奖励获取。"
+"玩家获得这种特殊的配件类型时，它具有等同于标准配件的参数，但之后可使用银币升级。您不能用游戏内货币购买赏金配件，但可以在特定游戏活动中作为奖励获取。"
 
 msgid "introduction/showButton"
 msgstr "显示配件"
 
 msgid "introduction/slide/1/description"
 msgstr ""
-"新的配件已加入游戏。此外，%(repairBox)，%(wetAmmo)，%(CO2Cistern) 和 %(cycloneFilter) 都被整合为 "
-"%(changedConfiguration) 配件。%(forcedChassis) 等类似配件被 %(forcedMetal) "
-"替代。所有原先的加成依旧保留，而且还加入了新的加成。"
+"新的配件已加入游戏。此外，%(repairBox)s，%(wetAmmo)s，%(CO2Cistern)s和%(cycloneFilter)s都被整合为%(changedConfiguration)s配件。%(forcedChassis)s等类似配件被%(forcedMetal)s替代。所有原先的加成依旧保留，而且还加入了新的加成。"
 
 msgid "introduction/slide/1/title"
 msgstr "全新配件"
@@ -515,11 +670,20 @@ msgstr "工具箱"
 msgid "introduction/slide/wetAmmo"
 msgstr "\"水套\"弹药架"
 
-msgid "introduction/title/deluxe"
+msgid "introduction/title/withEquipments/deluxe"
 msgstr "改进型配件"
 
-msgid "introduction/title/trophy"
+msgid "introduction/title/withEquipments/modernized"
+msgstr "试验型配件"
+
+msgid "introduction/title/withEquipments/trophy"
 msgstr "赏金配件"
+
+msgid "introduction/title/withoutEquipments/modernized"
+msgstr "您没有合适的试验型配件"
+
+msgid "introduction/title/withoutEquipments/trophy"
+msgstr "您没有合适的赏金配件"
 
 msgid "kpi/bonus/longDescr/negative/crewRepeatedStunDuration"
 msgstr "坦克在弹震影响下再次受到弹震效果的时长"
@@ -1207,6 +1371,9 @@ msgstr "火炮旋转速度"
 msgid "kpi/bonus/ttc/positive/vehicleTurretRotationSpeed"
 msgstr "炮塔旋转速度"
 
+msgid "kpi/bonus/valueTypes/brackets"
+msgstr "(%(value)s)"
+
 msgid "kpi/bonus/valueTypes/default"
 msgstr "%"
 
@@ -1222,11 +1389,8 @@ msgstr "千米/小时"
 msgid "kpi/bonus/valueTypes/vehicleOwnSpottingTime"
 msgstr "秒"
 
-msgid "section/HWConsumables"
-msgstr "战斗能力"
-
 msgid "section/battleAbilities"
-msgstr "战斗储备"
+msgstr "储备"
 
 msgid "section/battleBoosters"
 msgstr "指令"
@@ -1294,17 +1458,20 @@ msgstr "战术 (APCR)"
 msgid "tabs/crew"
 msgstr "适用于乘员"
 
+msgid "tabs/deluxe"
+msgstr "改进型"
+
+msgid "tabs/modernized"
+msgstr "试验型"
+
 msgid "tabs/optDevice"
 msgstr "适用于配件"
 
 msgid "tabs/simple"
 msgstr "标准"
 
-msgid "tabs/special"
-msgstr "特殊"
-
-msgid "tooltip/autoRenewal/body/HWConsumables"
-msgstr "如有必要，一旦坦克离开战斗，战斗能力将自动补给。"
+msgid "tabs/trophy"
+msgstr "赏金"
 
 msgid "tooltip/autoRenewal/body/boosters"
 msgstr "坦克离开战斗后，该指令将自动补给。若您的仓库中有同种指令，则利用仓库中的库存补给，若没有，则通过游戏内货币补给。"
@@ -1323,6 +1490,15 @@ msgstr "自动补给"
 
 msgid "tooltip/autoRenewal/header/repair"
 msgstr "自动维修"
+
+msgid "tooltip/deconstructConfirm/deconstructFromInventory"
+msgstr "将从仓库中拆解: %(amount)s"
+
+msgid "tooltip/deconstructConfirm/deconstructFromVehicle"
+msgstr "将从坦克中拆解: %(vehicleNames)s"
+
+msgid "tooltip/deconstructConfirm/listSeparator"
+msgstr "、"
 
 msgid "tooltips/abilities/actions/checkbox/AT-SPG"
 msgstr "变动将应用于所有自行反坦克炮。"
@@ -1354,10 +1530,19 @@ msgstr "点击以拆卸所有配置中安装的配件。"
 msgid "tooltips/action/description/destroy"
 msgstr "点击以摧毁该栏位中安装的配件。"
 
+msgid "tooltips/action/description/destroy_modernized"
+msgstr "点击将配件拆解为合金元件。"
+
 msgid "tooltips/action/description/swap"
 msgstr "点击以调换物品所在栏位。"
 
 msgid "tooltips/action/description/upgrade"
+msgstr "升级配件可提升其性能。"
+
+msgid "tooltips/action/description/upgrade_last_modernized"
+msgstr "升级配件可提升其性能。"
+
+msgid "tooltips/action/description/upgrade_modernized"
 msgstr "升级配件可提升其性能。"
 
 msgid "tooltips/action/title/add_one"
@@ -1378,6 +1563,9 @@ msgstr "从所有配置中拆卸"
 msgid "tooltips/action/title/destroy"
 msgstr "摧毁"
 
+msgid "tooltips/action/title/destroy_modernized"
+msgstr "拆解"
+
 msgid "tooltips/action/title/swap"
 msgstr "改变顺序"
 
@@ -1385,6 +1573,12 @@ msgid "tooltips/action/title/undo"
 msgstr "从栏位中移除"
 
 msgid "tooltips/action/title/upgrade"
+msgstr "升级"
+
+msgid "tooltips/action/title/upgrade_last_modernized"
+msgstr "升级"
+
+msgid "tooltips/action/title/upgrade_modernized"
 msgstr "升级"
 
 msgid "tooltips/additional"
@@ -1405,6 +1599,12 @@ msgstr "点击重新分配栏位类别。"
 msgid "tooltips/equipmentList"
 msgstr "点击以查看可用配件列表。"
 
+msgid "tooltips/experimentalEquipCoinBlock/actions/button/disabled/text"
+msgstr "无法将试验型配件拆解为合金元件: 您没有此类型的配件。"
+
+msgid "tooltips/experimentalEquipCoinBlock/actions/button/notDisabled/text"
+msgstr "点击将配件拆解为合金元件。"
+
 msgid "tooltips/howToIncrease/impossible"
 msgstr "此配件安装后只能提供标准加成，因为只有自行反坦克炮和自行火炮才有火力配件栏位，而此配件并未安装在火力配件栏位中。"
 
@@ -1416,18 +1616,6 @@ msgstr "要获得额外性能加成，请将该配件安装在下列栏位中的
 
 msgid "tooltips/howToIncrease/single"
 msgstr "要获得额外性能加成，请将该配件安装在下列栏位: %(category)s。"
-
-msgid "tooltips/optDevice/bonusDesc"
-msgstr "配件和栏位类别%(match)s"
-
-msgid "tooltips/optDevice/bonusDesc/False"
-msgstr "不符"
-
-msgid "tooltips/optDevice/bonusDesc/True"
-msgstr "符合"
-
-msgid "tooltips/optDevice/bonusDesc/applied"
-msgstr "坦克性能加成:"
 
 msgid "tooltips/placeEquipment"
 msgstr "配件栏位"
@@ -1455,3 +1643,66 @@ msgstr "类别:"
 
 msgid "tooltips/specializationType"
 msgstr "火力"
+
+msgid "tooltips/tabs/description/body/deluxe"
+msgstr "一种珍贵的配件，拥有比其他配件类型更优秀的性能。"
+
+msgid "tooltips/tabs/description/body/modernized"
+msgstr "一种拥有3个升级等级的特殊配件。"
+
+msgid "tooltips/tabs/description/body/simple"
+msgstr "配件可以提升您坦克的性能。"
+
+msgid "tooltips/tabs/description/body/trophy"
+msgstr "一种拥有标准配件参数，但可以升级的配件。"
+
+msgid "tooltips/tabs/description/header/deluxe"
+msgstr "改进型配件"
+
+msgid "tooltips/tabs/description/header/modernized"
+msgstr "试验型配件"
+
+msgid "tooltips/tabs/description/header/simple"
+msgstr "标准配件"
+
+msgid "tooltips/tabs/description/header/trophy"
+msgstr "赏金配件"
+
+msgid "tooltips/tabs/obtain/body/deluxe"
+msgstr ""
+"可以使用%(whiteSpanish_Open)s战争债券%(whiteSpanish_Close)s购买这种配件。您也可以从特定游戏内成就和特殊游戏活动中获取它们作为奖励。"
+
+msgid "tooltips/tabs/obtain/body/modernized"
+msgstr "这种类型的配件可以在特定游戏活动中作为奖励获得。"
+
+msgid "tooltips/tabs/obtain/body/simple"
+msgstr ""
+"可以使用游戏内货币购买这种配件。您也可以从特定游戏内成就和特殊游戏活动中获取它们作为奖励。可以通过将标准配件放入其对应类别的栏位来提升它们的性能。"
+
+msgid "tooltips/tabs/obtain/body/trophy"
+msgstr "这种类型的配件可以在特定游戏活动中作为奖励获得。"
+
+msgid "tooltips/tabs/obtain/header/deluxe"
+msgstr "获得方式:"
+
+msgid "tooltips/tabs/obtain/header/modernized"
+msgstr "无法购买试验型配件"
+
+msgid "tooltips/tabs/obtain/header/simple"
+msgstr "配件栏位"
+
+msgid "tooltips/tabs/obtain/header/trophy"
+msgstr "无法购买赏金配件"
+
+msgid "tooltips/tabs/upgrade/body/modernized"
+msgstr ""
+"您可以使用%(whiteSpanish_Open)s合金元件%(whiteSpanish_Close)s来升级试验型配件的性能，可以通过拆解此类配件获得合金元件。"
+
+msgid "tooltips/tabs/upgrade/body/trophy"
+msgstr "您可以使用游戏内货币来升级赏金配件的性能。"
+
+msgid "tooltips/tabs/upgrade/header/modernized"
+msgstr "升级试验型配件"
+
+msgid "tooltips/tabs/upgrade/header/trophy"
+msgstr "升级赏金配件"

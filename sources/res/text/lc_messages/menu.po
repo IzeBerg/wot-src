@@ -407,32 +407,32 @@ msgstr ""
 "恭喜您！您收到了PG提供的一个特殊补给包:\n"
 "%(vehicles)s\n"
 "• 训练至100%%熟练度的乘员\n"
-"• 一个额外的车位。"
+"• 一个额外的车位"
 
 msgid "awardWindow/telecomAward/description/full/default"
 msgstr ""
 "恭喜您！您收到了T-44-100 (I)套餐提供的一个特殊补给包:\n"
 "%(vehicles)s\n"
-"• 训练至100%%熟练度的乘员\n"
-"• 在套餐期间可以使用%(prem)s\n"
+"• 训练至100%%熟练度的乘员。\n"
+"• 在套餐期间可以使用%(prem)s。\n"
 "• 一个额外的车位。"
 
 msgid "awardWindow/telecomAward/description/prem/default"
-msgstr "高级账号"
+msgstr "坦克世界高级账号"
 
 msgid "awardWindow/telecomAward/description/withBrotherhood/Twitchprime"
 msgstr ""
 "恭喜您！您收到了PG提供的一个特殊补给包:\n"
 "%(vehicles)s\n"
-"• 训练至100%%熟练度的乘员(附带训练至100%%熟练度的\"零历练\"兄弟连特长)\n"
+"• 训练至100%%熟练度的乘员(附带训练至100%%熟练度的\"零历练\"兄弟连特长)。\n"
 "• 一个额外的车位。"
 
 msgid "awardWindow/telecomAward/description/withBrotherhood/default"
 msgstr ""
 "恭喜您！您收到了T-44-100 (I)套餐提供的一个特殊补给包:\n"
 "%(vehicles)s\n"
-"• 训练至100%%熟练度的乘员(附带训练至100%%熟练度的\"零历练\"兄弟连特长)\n"
-"• 在套餐期间可以使用%(prem)s\n"
+"• 训练至100%%熟练度的乘员(附带训练至100%%熟练度的\"零历练\"兄弟连特长)。\n"
+"• 在套餐期间可以使用%(prem)s。\n"
 "• 一个额外的车位。"
 
 msgid "awardWindow/telecomAward/description/withoutCrew/Twitchprime"
@@ -445,7 +445,7 @@ msgid "awardWindow/telecomAward/description/withoutCrew/default"
 msgstr ""
 "恭喜您！您收到了T-44-100 (I)套餐提供的一个特殊补给包:\n"
 "%(vehicles)s\n"
-"• 在套餐期间可以使用%(prem)s\n"
+"• 在套餐期间可以使用%(prem)s。\n"
 "• 一个额外的车位。"
 
 msgid "awardWindow/telecomAward/header/default"
@@ -458,10 +458,10 @@ msgid "awardWindow/telecomAward/title/default"
 msgstr "公告"
 
 msgid "awardWindow/telecomAward/vehicles/Twitchprime"
-msgstr "• %(nation)s%(level)s级%(type)s%(vehicle)s，带有独特风格"
+msgstr "• 带有独特风格的%(nation)s%(level)s级%(type)s%(vehicle)s。"
 
 msgid "awardWindow/telecomAward/vehicles/default"
-msgstr "• %(nation)s%(level)s级%(type)s%(vehicle)s，带有专属涂装"
+msgstr "• 带有专属涂装的%(nation)s%(level)s级%(type)s%(vehicle)s。"
 
 msgid "awardWindow/title/boosterAward"
 msgstr "恭喜您"
@@ -731,7 +731,7 @@ msgid "bonusType/8"
 msgstr "历史战"
 
 msgid "bonusType/9"
-msgstr "万圣共鸣集会"
+msgstr "特殊游戏模式"
 
 msgid "booster/bonus/booster_credits"
 msgstr "在战斗中获得的银币加成%(effectValue)s%(effectHours)s"
@@ -915,9 +915,6 @@ msgstr "购买"
 
 msgid "boostersWindow/boostersTableRenderer/goToQuestBtnLabel"
 msgstr "跳转到任务"
-
-msgid "boostersWindow/boostersTableRenderer/header"
-msgstr "%(boosterName)s%(quality)s"
 
 msgid "boostersWindow/boostersTableRenderer/questForOpen"
 msgstr "完成%(questName)s将收到个人储备。"
@@ -1109,10 +1106,7 @@ msgid "contextMenu/createContactNote"
 msgstr "创建文本"
 
 msgid "contextMenu/createEventSquad"
-msgstr "南瓜派对小队"
-
-msgid "contextMenu/createFunRandomSquad"
-msgstr "街机模式小队"
+msgstr "创建活动小队"
 
 msgid "contextMenu/createMapboxSquad"
 msgstr "侦察任务：创建小队"
@@ -1514,6 +1508,9 @@ msgstr "创建碎片"
 msgid "cst_item_ctx_menu/convertBlueprintMaxCount"
 msgstr "创建碎片（%(count)d）"
 
+msgid "cst_item_ctx_menu/deconstruct"
+msgstr "拆解"
+
 msgid "cst_item_ctx_menu/demount"
 msgstr "拆卸至仓库"
 
@@ -1684,9 +1681,6 @@ msgstr "可租用"
 msgid "currentVehicleStatus/rentableAgain"
 msgstr "延长租用"
 
-msgid "currentVehicleStatus/rentalBattleIsOver"
-msgstr "没有剩余的战斗场次"
-
 msgid "currentVehicleStatus/rentalIsOver"
 msgstr "租用时间到期"
 
@@ -1834,14 +1828,8 @@ msgstr "9月"
 msgid "dateTime/order"
 msgstr "%(year)s年%(month)s%(day)s日"
 
-msgid "dateTime/orderWithoutYear"
-msgstr "%(month)s %(day)s日，%(time)s"
-
 msgid "dateTime/shortDateFormatWithoutYear"
 msgstr "%(month)s%(monthDay)d日, %(weekDay)s"
-
-msgid "dateTime/timeFormat"
-msgstr "%I:%M%p"
 
 msgid "dateTime/trade_in/undefined"
 msgstr "无法显示时间"
@@ -2757,9 +2745,6 @@ msgstr "训练模式"
 msgid "headerButtons/battle/types/epicTraining/descr"
 msgstr "前线模式"
 
-msgid "headerButtons/battle/types/event"
-msgstr "南瓜派对"
-
 msgid "headerButtons/battle/types/eventSquad"
 msgstr "活动小队"
 
@@ -2771,9 +2756,6 @@ msgstr "要塞模式"
 
 msgid "headerButtons/battle/types/fortLeave"
 msgstr "要塞模式"
-
-msgid "headerButtons/battle/types/funRandomSquad"
-msgstr "街机模式小队"
 
 msgid "headerButtons/battle/types/historicalBattles"
 msgstr "历史战"
@@ -3092,7 +3074,7 @@ msgid "headerButtons/fightBtn/tooltip/funRandomNotSet/header"
 msgstr "加入战斗失败"
 
 msgid "headerButtons/fightBtn/tooltip/funRandomVehLimits/body"
-msgstr "选择其它坦克。"
+msgstr "更改模式或选择一辆符合要求的坦克。"
 
 msgid "headerButtons/fightBtn/tooltip/funRandomVehLimits/header"
 msgstr "坦克不适用于模式"
@@ -3159,6 +3141,12 @@ msgstr "加入战斗失败"
 
 msgid "headerButtons/fightBtn/tooltip/sandbox/invalid/level/body"
 msgstr "你只能加入%(levels)s级的可研发或金币坦克的战斗。"
+
+msgid "headerButtons/fightBtn/tooltip/telecomRentalIsOver/body"
+msgstr "选择其它坦克。"
+
+msgid "headerButtons/fightBtn/tooltip/telecomRentalIsOver/header"
+msgstr "坦克暂不能使用"
 
 msgid "headerButtons/fightBtn/tooltip/unsutableToBattleRoyale/body"
 msgstr "您只能驾驶特殊坦克进入钢铁猎手战斗。"
@@ -3620,7 +3608,7 @@ msgid "loading/battleTypes/28"
 msgstr "战略家训练"
 
 msgid "loading/battleTypes/29"
-msgstr "街机模式: 磁轨炮"
+msgstr "街机模式"
 
 msgid "loading/battleTypes/30"
 msgstr "天梯战"
@@ -3635,7 +3623,7 @@ msgid "loading/battleTypes/6"
 msgstr "历史战"
 
 msgid "loading/battleTypes/7"
-msgstr "南瓜派对"
+msgstr "特殊游戏模式"
 
 msgid "loading/battleTypes/8"
 msgstr "冲突战"
@@ -4572,11 +4560,6 @@ msgstr "小队战斗"
 msgid "prebattle/description"
 msgstr "准备战斗/描述"
 
-msgid "prebattle/eventWheeledVehiclesWarning"
-msgstr ""
-"*特殊的轮式战车匹配机制：\n"
-"战斗中将仅限使用轮式战车。"
-
 msgid "prebattle/exitButton"
 msgstr "退出战场"
 
@@ -4771,6 +4754,9 @@ msgstr "银币"
 
 msgid "price/crystal"
 msgstr "战争债券"
+
+msgid "price/equipCoin"
+msgstr "合金元件"
 
 msgid "price/eventCoin"
 msgstr "周年纪念币"
@@ -5612,12 +5598,6 @@ msgstr "折扣"
 msgid "shop/table/notForSale"
 msgstr "不能出售"
 
-msgid "shopSales/timerLabel/endsIn"
-msgstr "距结束剩余: "
-
-msgid "shopSales/timerLabel/startsIn"
-msgstr "距开始剩余: "
-
 msgid "skillDropWindow/after"
 msgstr "重置后"
 
@@ -5694,10 +5674,10 @@ msgid "steam/title"
 msgstr "通过Steam支付"
 
 msgid "store/backButton/description"
-msgstr "前往特惠"
+msgstr "特惠"
 
 msgid "store/backButton/label"
-msgstr "后退"
+msgstr "返回"
 
 msgid "store/menu/noItems"
 msgstr ""
@@ -5901,6 +5881,15 @@ msgstr "?empty?"
 msgid "tankCarousel/vehicleStates/notpresent"
 msgstr "不在车库中"
 
+msgid "tankCarousel/vehicleStates/nyTank"
+msgstr "假日行动坦克"
+
+msgid "tankCarousel/vehicleStates/nyTankEmptyCount"
+msgstr "空余车位:%(count)d"
+
+msgid "tankCarousel/vehicleStates/nyTankSlotsFull"
+msgstr "没有空余车位"
+
 msgid "tankCarousel/vehicleStates/rentable"
 msgstr "可租用"
 
@@ -5918,9 +5907,6 @@ msgstr "延长租用"
 
 msgid "tankCarousel/vehicleStates/rentableAgain/ranked"
 msgstr "延长租用"
-
-msgid "tankCarousel/vehicleStates/rentalBattleIsOver"
-msgstr "没有剩余的战斗场次"
 
 msgid "tankCarousel/vehicleStates/rentalIsOver"
 msgstr "租用时间到期"
@@ -5977,7 +5963,7 @@ msgid "tank_params/attainableSpeed"
 msgstr "加速5秒后的速度"
 
 msgid "tank_params/autoReloadTime"
-msgstr "自动装填弹夹时间"
+msgstr "自动装填一发炮弹的时间"
 
 msgid "tank_params/avgDamage"
 msgstr "平均损伤"
@@ -6954,7 +6940,7 @@ msgid "vehicleInfo/params/turboshaftInvisibilityStillFactor"
 msgstr "坦克静止隐蔽(涡轮)(%)"
 
 msgid "vehicleInfo/params/turboshaftSpeedModeSpeed"
-msgstr "最大速度/倒车速度(涡轮)(公里/时)"
+msgstr "最大速度/倒车速度(涡轮)(千米/小时)"
 
 msgid "vehicleInfo/params/turboshaftSwitchTime"
 msgstr "切换发动机模式时间(秒)"
@@ -7106,92 +7092,98 @@ msgstr "出售"
 msgid "vehiclesCarousel/contextMenu/vehicleUncheck"
 msgstr "设为备用"
 
+msgid "viewHeader/aboutBtn/label"
+msgstr "活动详情"
+
 msgid "viewHeader/backBtn/descrLabel/battleMatters"
-msgstr "前往新兵成长计划"
+msgstr "新兵成长计划"
 
 msgid "viewHeader/backBtn/descrLabel/hangar"
 msgstr "车库"
 
 msgid "viewHeader/backBtn/descrLabel/preview"
-msgstr "前往预览"
+msgstr "预览"
 
 msgid "viewHeader/backBtn/descrLabel/research"
-msgstr "到%(tankName)s"
+msgstr "%(tankName)s"
 
 msgid "viewHeader/backBtn/descrLabel/storage"
-msgstr "前往仓库"
+msgstr "仓库"
 
 msgid "viewHeader/backBtn/descrLabel/techtree"
-msgstr "前往升级路线"
+msgstr "升级路线"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/china"
-msgstr "前往C系升级路线"
+msgstr "C系升级路线"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/china/blueprints"
-msgstr "前往C系蓝图"
+msgstr "C系蓝图"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/czech"
-msgstr "前往J系升级路线"
+msgstr "J系升级路线"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/czech/blueprints"
-msgstr "前往J系蓝图"
+msgstr "J系蓝图"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/france"
-msgstr "前往F系升级路线"
+msgstr "F系升级路线"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/france/blueprints"
-msgstr "前往F系蓝图"
+msgstr "F系蓝图"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/germany"
-msgstr "前往D系升级路线"
+msgstr "D系升级路线"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/germany/blueprints"
-msgstr "前往D系蓝图"
+msgstr "D系蓝图"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/italy"
-msgstr "前往I系升级路线"
+msgstr "I系升级路线"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/italy/blueprints"
-msgstr "前往I系蓝图"
+msgstr "I系蓝图"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/japan"
-msgstr "前往R系升级路线"
+msgstr "R系升级路线"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/japan/blueprints"
-msgstr "前往R系蓝图"
+msgstr "R系蓝图"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/poland"
-msgstr "前往B系升级路线"
+msgstr "B系升级路线"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/poland/blueprints"
-msgstr "前往B系蓝图"
+msgstr "B系蓝图"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/sweden"
-msgstr "前往V系升级路线"
+msgstr "V系升级路线"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/sweden/blueprints"
-msgstr "前往V系蓝图"
+msgstr "V系蓝图"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/uk"
-msgstr "前往Y系升级路线"
+msgstr "Y系升级路线"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/uk/blueprints"
-msgstr "前往Y系蓝图"
+msgstr "Y系蓝图"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/usa"
-msgstr "前往M系升级路线"
+msgstr "M系升级路线"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/usa/blueprints"
-msgstr "前往M系蓝图"
+msgstr "M系蓝图"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/ussr"
-msgstr "前往S系升级路线"
+msgstr "S系升级路线"
 
 msgid "viewHeader/backBtn/descrLabel/techtree/ussr/blueprints"
-msgstr "前往S系蓝图"
+msgstr "S系蓝图"
 
 msgid "viewHeader/backBtn/label"
-msgstr "后退"
+msgstr "返回"
 
 msgid "viewHeader/closeBtn/label"
 msgstr "关闭"
+
+msgid "viewHeader/infoBtn/label"
+msgstr "信息"

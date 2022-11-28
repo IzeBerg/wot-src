@@ -75,8 +75,6 @@ package net.wg.gui.battle.random.views.fragCorrelationBar.components
       
       private var _disposed:Boolean = false;
       
-      private var _markerOffset:int = 0;
-      
       public function VehicleMarkersList(param1:MovieClip, param2:Boolean, param3:String)
       {
          this._vehicleMarkers = new Vector.<FCVehicleMarker>(0);
@@ -148,15 +146,6 @@ package net.wg.gui.battle.random.views.fragCorrelationBar.components
          return this._activeTierLevels.length > 1;
       }
       
-      public function setMarkerOffset(param1:int) : void
-      {
-         if(this._markerOffset != param1)
-         {
-            this._markerOffset = param1;
-            this.sort();
-         }
-      }
-      
       public function hideVehicleMarkers() : void
       {
          var _loc1_:FCVehicleMarker = null;
@@ -223,12 +212,12 @@ package net.wg.gui.battle.random.views.fragCorrelationBar.components
             {
                this._vehicleMarkers.sort(this.compare);
             }
-            _loc1_ = this._markerStartPosition + this._markerOffset;
+            _loc1_ = this._markerStartPosition;
             _loc2_ = 0;
             _loc3_ = this._activeTierLevels.length > 1 && this._isTierGroupingEnabled || this._isForceTierGrouping && this._isTierGroupingEnabled;
             if(_loc3_)
             {
-               _loc1_ = (this._markerStartPosition > 0 ? ENEMY_TIER_GROUPING_START_POSITION : ALLY_TIER_GROUPING_START_POSITION) + this._markerOffset;
+               _loc1_ = this._markerStartPosition > 0 ? int(ENEMY_TIER_GROUPING_START_POSITION) : int(ALLY_TIER_GROUPING_START_POSITION);
                _loc2_ = this._markerStartPosition > 0 ? int(TIER_GROUP_VEH_ICON_OFFSET) : int(-TIER_GROUP_VEH_ICON_OFFSET);
                this.updateTierGroupingVisibility(_loc3_);
             }

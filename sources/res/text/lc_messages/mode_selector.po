@@ -119,45 +119,6 @@ msgstr ""
 msgid "mode/epicQueue/battlePassTooltip/header"
 msgstr "战斗通行证点数"
 
-msgid "mode/event/calendar/tooltip/bodyFirst"
-msgstr ""
-"活动将\n"
-"{brown_Open}从%(start)s持续至%(end)s{brown_Close}。"
-
-msgid "mode/event/calendar/tooltip/bodySecond"
-msgstr ""
-"活动物品将开放\n"
-"{brown_Open}至%(date)s{brown_Close}。"
-
-msgid "mode/event/calendar/tooltip/header"
-msgstr "时间表"
-
-msgid "mode/event/condition"
-msgstr "15v15 %(parSecondary_open)sI%(parSecondary_close)s&nbsp;VI–VIII级"
-
-msgid "mode/event/description"
-msgstr "战斗具有自动匹配机制和重生机制。"
-
-msgid "mode/event/performance/highRisk/description"
-msgstr "您的计算机在此模式下性能不足。您可能遇到图形和坦克移动问题。游戏客户端崩溃也很可能会发生。"
-
-msgid "mode/event/performance/highRisk/header"
-msgstr "低性能"
-
-msgid "mode/event/performance/highRisk/headerIcon"
-msgstr "%(icon)低性能"
-
-msgid "mode/event/performance/mediumRisk/description"
-msgstr ""
-"该模式需要较高的计算机性能。\n"
-"您将会遇到地图加载、图形和坦克移动等问题。如果性能不足，请在设置中尝试较低的图形质量。"
-
-msgid "mode/event/performance/mediumRisk/header"
-msgstr "性能降低"
-
-msgid "mode/event/performance/mediumRisk/headerIcon"
-msgstr "%(icon)性能降低"
-
 msgid "mode/mapbox/battlePassTooltip/body"
 msgstr ""
 "玩家可以在{whiteSpanish_open}侦察任务{whiteSpanish_close}中使用VIII–X级坦克进行战斗并获得点数，通过分配点数可推进战斗通行证的进度。"
@@ -166,7 +127,7 @@ msgid "mode/mapbox/battlePassTooltip/header"
 msgstr "战斗通行证点数"
 
 msgid "mode/mapbox/condition"
-msgstr "15v15，&nbsp;VIII–X&nbsp;级"
+msgstr "15v15%(parSecondary_open)sI%(parSecondary_close)sVIII–X级"
 
 msgid "mode/mapbox/description"
 msgstr "探索新地图。"
@@ -288,12 +249,6 @@ msgstr "奖励取决于您的战斗表现"
 msgid "reward/experience/name"
 msgstr "经验"
 
-msgid "reward/hw22crew/description"
-msgstr "参加该活动，您可获得独特的南瓜派对人物作为乘员。"
-
-msgid "reward/hw22crew/name"
-msgstr "乘员"
-
 msgid "reward/improvedEquipment/description"
 msgstr "您可以通过游玩此模式获得%(name)s"
 
@@ -318,12 +273,6 @@ msgstr "您可以通过游玩此模式获得%(name)s特殊3D风格"
 msgid "reward/style/name"
 msgstr "3D风格"
 
-msgid "reward/style2d/description"
-msgstr "参加该活动可获得独特的2D风格。"
-
-msgid "reward/style2d/name"
-msgstr "2D风格"
-
 msgid "reward/vehicle/description"
 msgstr "您可以通过游玩此模式获得%(name)s"
 
@@ -332,6 +281,18 @@ msgstr "奖励坦克"
 
 msgid "selectMap"
 msgstr "标准模式的预设"
+
+msgid "status/timeLeft/days"
+msgstr "%(day)s天"
+
+msgid "status/timeLeft/hours"
+msgstr "%(hour)s时"
+
+msgid "status/timeLeft/lessMin"
+msgstr "少于1分钟"
+
+msgid "status/timeLeft/min"
+msgstr "%(min)s分"
 
 msgid "statusSeparator"
 msgstr " %(parSecondary_open)sI%(parSecondary_close)s "

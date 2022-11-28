@@ -43,6 +43,8 @@ package net.wg.data.constants.generated
       
       public static const MISSIONS_CATEGORIES_VIEW_LINKAGE:String = "MissionsCategoriesViewUI";
       
+      public static const MISSIONS_NY_BANNER_VIEW_ALIAS:String = "MissionsNYBannerUI";
+      
       public static const CURRENT_VEHICLE_MISSIONS_VIEW_PY_ALIAS:String = "CurrentVehicleMissionsView";
       
       public static const CURRENT_VEHICLE_MISSIONS_VIEW_LINKAGE:String = "CurrentVehicleMissionsViewUI";

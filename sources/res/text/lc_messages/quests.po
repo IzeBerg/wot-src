@@ -637,9 +637,9 @@ msgstr ""
 
 msgid "action/hero/full/slotsPrices"
 msgstr ""
-"按%(discount)s折扣在车库中增加车位。车库中并不是总有空余的车位，所有的坦克对您来说是昂贵的且每次都玩。\n"
+"以%(discount)s的折扣价扩充您的车库。车库中并不是总有空余的车位，但您很珍惜所有坦克并且会时不时地驾驶它们。\n"
 "\n"
-"如果这听起来不错，那么您可以按照优惠的价格来购买新的车位。请记住使用坦克筛选按钮可以帮助您更好的管理车库中的坦克。"
+"如果您也经常遇到车位不够用的情况，那就快来用优惠的价格来购买新的车位！请记住使用坦克筛选按钮可以帮助您更好地管理车库中的坦克。"
 
 msgid "action/hero/full/tankmen/mixed"
 msgstr ""
@@ -1071,6 +1071,27 @@ msgstr "签名"
 msgid "bonusName/modification"
 msgstr "效果"
 
+msgid "bonusName/newYearSlot"
+msgstr "假日行动车位"
+
+msgid "bonusName/ny22Fillers"
+msgstr "装饰物重置机"
+
+msgid "bonusName/nyRandomResource"
+msgstr "随机资源"
+
+msgid "bonusName/ny_amber"
+msgstr "春暖琥珀"
+
+msgid "bonusName/ny_crystal"
+msgstr "新生岩晶"
+
+msgid "bonusName/ny_emerald"
+msgstr "圣洁翡翠"
+
+msgid "bonusName/ny_iron"
+msgstr "天外陨铁"
+
 msgid "bonusName/paint"
 msgstr "喷漆"
 
@@ -1117,7 +1138,7 @@ msgid "bonusName/xpFactor"
 msgstr "战斗经验系数"
 
 msgid "bonuses/boosters/name"
-msgstr "个人储备:“%(name)s %(quality)s”（x%(count)s）"
+msgstr "个人储备: %(name)s(x%(count)s)"
 
 msgid "bonuses/bpcoin/description"
 msgstr "%(value)s 令牌"
@@ -1176,6 +1197,9 @@ msgstr "乘员皮肤:"
 msgid "bonuses/item/freeXPFactor"
 msgstr "全局经验系数"
 
+msgid "bonuses/item/ny23RandomResources"
+msgstr "资源"
+
 msgid "bonuses/item/premium"
 msgstr "高级账号天数:"
 
@@ -1217,6 +1241,12 @@ msgstr "坦克世界高级账号天数: %(value)s"
 
 msgid "bonuses/tankmen/description"
 msgstr "%(value)s"
+
+msgid "bonuses/variadicDiscount/buttonLabel"
+msgstr "选择"
+
+msgid "bonuses/variadicDiscount/discountAmount"
+msgstr "-{amount}%"
 
 msgid "bonuses/vehicles/crewLvl"
 msgstr "%d%% 车组乘员"
@@ -1364,6 +1394,9 @@ msgstr "关于日常任务"
 
 msgid "dailyQuests/header/title"
 msgstr "日常任务"
+
+msgid "dailyQuests/info/NYDailyMissions"
+msgstr "普通任务的完成条件随机，并且每天都可完成。在假日行动活动期间，每个任务都包含数量不等的随机资源。"
 
 msgid "dailyQuests/info/battlePassDailyMissionTitle"
 msgstr "普通任务"
@@ -1734,9 +1767,6 @@ msgstr "获得的全局经验"
 
 msgid "details/conditions/cumulative/health"
 msgstr "战后剩余生命值"
-
-msgid "details/conditions/cumulative/hwXP"
-msgstr "万圣节经验"
 
 msgid "details/conditions/cumulative/inBattleMaxPiercingSeries"
 msgstr "连续击穿"
@@ -2847,6 +2877,9 @@ msgstr "战略艺术活动参战数"
 
 msgid "details/dossier/4/battlesCount"
 msgstr "特殊参战数"
+
+msgid "details/dossier/42/battlesCount"
+msgstr "在街机模式中参加的战斗场次"
 
 msgid "details/dossier/43/battlesCount"
 msgstr "在天梯战模式中的战斗场次"
@@ -4021,7 +4054,7 @@ msgid "general/info/back/goto"
 msgstr "打开任务界面"
 
 msgid "general/info/back/title"
-msgstr "后退"
+msgstr "返回"
 
 msgid "igr/tooltip/battlesLabel"
 msgstr "战斗场次"
@@ -4264,7 +4297,7 @@ msgid "missionDetails/status/notAvailable/invalid_weekday"
 msgstr "将于%(time)s后可用"
 
 msgid "missionDetails/status/notAvailable/nearestTime"
-msgstr "将会提供:%(time)s"
+msgstr "距开放还有:%(time)s"
 
 msgid "missionDetails/status/notAvailableByTime"
 msgstr "要求"

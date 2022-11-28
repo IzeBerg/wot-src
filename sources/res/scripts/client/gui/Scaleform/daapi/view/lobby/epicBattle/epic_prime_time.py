@@ -12,7 +12,6 @@ from skeletons.gui.game_control import IEpicBattleMetaGameController
 from skeletons.gui.lobby_context import ILobbyContext
 
 class EpicBattleServerPresenter(ServerListItemPresenter):
-    _periodsController = dependency.descriptor(IEpicBattleMetaGameController)
 
     def _buildTooltip(self, peripheryID):
         if not self.getTimeLeft():

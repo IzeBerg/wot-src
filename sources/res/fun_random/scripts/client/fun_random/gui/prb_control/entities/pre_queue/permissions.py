@@ -1,11 +1,9 @@
+from fun_random.gui.feature.util.fun_mixins import FunSubModesWatcher
+from fun_random.gui.feature.util.fun_wrappers import hasDesiredSubMode
 from gui.prb_control.entities.base.pre_queue.permissions import PreQueuePermissions
-from helpers import dependency
-from skeletons.gui.game_control import IFunRandomController
 
-class FunRandomPermissions(PreQueuePermissions):
-    __funRandomController = dependency.descriptor(IFunRandomController)
+class FunRandomPermissions(PreQueuePermissions, FunSubModesWatcher):
 
+    @hasDesiredSubMode(defReturn=False)
     def canCreateSquad(self):
-        if self.__funRandomController.isInPrimeTime():
-            return super(FunRandomPermissions, self).canCreateSquad()
-        return False
+        return super(FunRandomPermissions, self).canCreateSquad()

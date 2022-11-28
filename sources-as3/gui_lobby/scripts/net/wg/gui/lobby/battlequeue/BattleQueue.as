@@ -38,11 +38,7 @@ package net.wg.gui.lobby.battlequeue
       
       private static const LIST_HEIGHT_USUAL:int = 250;
       
-      private static const LIST_HEIGHT_HW22:int = 50;
-      
       private static const FUN_RANDOM_BATTLE_ICON_BG:String = "fun_random";
-      
-      private static const TYPE_INFO_HW:String = "hw22";
        
       
       public var timerLabel:TextField;
@@ -54,8 +50,6 @@ package net.wg.gui.lobby.battlequeue
       public var tankName:TextField;
       
       public var tankIcon:ImageComponent;
-      
-      public var wheelTankIcon:ImageComponent;
       
       public var playersLabel:TextField;
       
@@ -86,10 +80,23 @@ package net.wg.gui.lobby.battlequeue
          super();
       }
       
+      private static function getListHeight(param1:String) : int
+      {
+         if(param1 == LAYOUT_TYPE_COMP7)
+         {
+            return LIST_HEIGHT_COMP7;
+         }
+         if(param1 == LAYOUT_TYPE_BATTLEROYALE)
+         {
+            return LIST_HEIGHT_BATTLEROYALE;
+         }
+         return LIST_HEIGHT_USUAL;
+      }
+      
       override public function updateStage(param1:Number, param2:Number) : void
       {
          this.x = param1 - this.actualWidth >> 1;
-         this.y = Math.min(-parent.y + (param2 - this.actualHeight >> 1) ^ 0,MAX_POS_Y);
+         this.y = Math.max(Math.min(-parent.y + (param2 - this.actualHeight >> 1) ^ 0,MAX_POS_Y),-MAX_POS_Y);
       }
       
       override protected function configUI() : void
@@ -102,10 +109,6 @@ package net.wg.gui.lobby.battlequeue
          this.tankIcon.tooltipEnabled = false;
          this.tankIcon.horizontalAlign = AlignType.CENTER;
          this.tankIcon.verticalAlign = AlignType.CENTER;
-         this.wheelTankIcon.visible = false;
-         this.wheelTankIcon.tooltipEnabled = false;
-         this.wheelTankIcon.horizontalAlign = AlignType.CENTER;
-         this.wheelTankIcon.verticalAlign = AlignType.CENTER;
          this.startButton.addEventListener(ButtonEvent.CLICK,this.onStartButtonClickHandler);
          this.exitButton.addEventListener(ButtonEvent.CLICK,this.onExitButtonClickHandler);
          App.gameInputMgr.setKeyHandler(Keyboard.ESCAPE,KeyboardEvent.KEY_DOWN,this.handleEscape,true);
@@ -147,8 +150,6 @@ package net.wg.gui.lobby.battlequeue
          this._typeInfo = null;
          this.tankIcon.dispose();
          this.tankIcon = null;
-         this.wheelTankIcon.dispose();
-         this.wheelTankIcon = null;
          this.battleIconBg.dispose();
          this.battleIconBg = null;
          super.onDispose();
@@ -191,12 +192,7 @@ package net.wg.gui.lobby.battlequeue
                   return;
                }
                this.updateStage(parent.width,parent.height);
-               this.listByType.height = this.getListHeight(_loc1_);
-               if(this._typeInfo.layoutStr == TYPE_INFO_HW)
-               {
-                  this.wheelTankIcon.visible = true;
-                  this.wheelTankIcon.source = this._typeInfo.wheelTankIcon;
-               }
+               this.listByType.height = getListHeight(_loc1_);
             }
             this.modeTitle.text = this._typeInfo.title;
             _loc2_ = this._typeInfo.iconLabel;
@@ -266,23 +262,6 @@ package net.wg.gui.lobby.battlequeue
       public function as_showStart(param1:Boolean) : void
       {
          this.startButton.visible = param1;
-      }
-      
-      private function getListHeight(param1:String) : int
-      {
-         if(param1 == LAYOUT_TYPE_COMP7)
-         {
-            return LIST_HEIGHT_COMP7;
-         }
-         if(param1 == LAYOUT_TYPE_BATTLEROYALE)
-         {
-            return LIST_HEIGHT_BATTLEROYALE;
-         }
-         if(param1 == TYPE_INFO_HW)
-         {
-            return LIST_HEIGHT_HW22;
-         }
-         return LIST_HEIGHT_USUAL;
       }
       
       private function onExitButtonClickHandler(param1:ButtonEvent) : void

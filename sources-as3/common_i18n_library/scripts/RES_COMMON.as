@@ -27,10 +27,6 @@ package
       
       public static const MAPS_ICONS_BLUEPRINTS_FRAGMENT_CONVERSION_BG:String = "../maps/icons/blueprints/fragment/conversion/bg.png";
       
-      public static const MAPS_ICONS_CNLOOTBOXES_POPOVER_BG:String = "../maps/icons/cnLootBoxes/popover/bg.png";
-      
-      public static const MAPS_ICONS_CNLOOTBOXES_WELCOMESCREEN_BG:String = "../maps/icons/cnLootBoxes/welcomeScreen/bg.png";
-      
       public static const MAPS_ICONS_CRYSTALSINFO_BG:String = "../maps/icons/crystalsInfo/bg.png";
       
       public static const MAPS_ICONS_CUSTOMIZATION_PROGRESSION_STYLES_STAGE_SWITCHER_BG:String = "../maps/icons/customization/progression_styles/stage_switcher/bg.png";
@@ -51,11 +47,19 @@ package
       
       public static const MAPS_ICONS_MARATHON_REWARDWINDOW_BG:String = "../maps/icons/marathon/rewardWindow/bg.png";
       
+      public static const MAPS_ICONS_NEWYEAR_POPOVERS_BG:String = "../maps/icons/newYear/popovers/bg.png";
+      
+      public static const MAPS_ICONS_NEWYEAR_RESOURCEPROGRESSION_BG:String = "../maps/icons/newYear/resourceProgression/bg.png";
+      
+      public static const MAPS_ICONS_NEWYEAR_SHOPOVERLAY_BG:String = "../maps/icons/newYear/shopOverlay/bg.png";
+      
+      public static const MAPS_ICONS_NEWYEAR_STYLE_REWARD_BG:String = "../maps/icons/newYear/style_reward/bg.png";
+      
+      public static const MAPS_ICONS_NEWYEAR_TOOLTIPS_DISCOUNT_REWARD_TOOLTIP_BG:String = "../maps/icons/newYear/tooltips/discount_reward_tooltip/bg.png";
+      
       public static const MAPS_ICONS_RANKEDBATTLES_AWARDS_BG:String = "../maps/icons/rankedBattles/awards/bg.png";
       
       public static const MAPS_ICONS_RESOURCEWELL_INTRO_BG:String = "../maps/icons/resourceWell/intro/bg.png";
-      
-      public static const MAPS_ICONS_SENIORITYAWARDS_NOTIFICATION_BG:String = "../maps/icons/seniorityAwards/notification/bg.png";
       
       public static const MAPS_ICONS_SUBSCRIPTION_AWARD_VIEW_BG:String = "../maps/icons/subscription/award_view/bg.png";
       

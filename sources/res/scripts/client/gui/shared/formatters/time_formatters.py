@@ -106,8 +106,6 @@ class RentLeftFormatter(object):
         activeSeasonRent = self.__rentInfo.getActiveSeasonRent()
         if activeSeasonRent is not None:
             resultStr = self.getRentSeasonLeftStr(activeSeasonRent, localization, formatter, timeStyle, ctx)
-        elif self.__rentInfo.hasEventRule:
-            resultStr = self.getRentBattlesLeftStr(localization, formatter)
         elif self.__rentInfo.getTimeLeft() > 0:
             if strForSpecialTimeFormat:
                 finishTime = self.__rentInfo.getTimeLeft() + time_utils.getCurrentTimestamp()
@@ -141,7 +139,7 @@ class RentLeftFormatter(object):
         if formatter is None:
             formatter = defaultFormatter
         battlesLeft = self.__rentInfo.battlesLeft
-        if battlesLeft > 0 or self.__rentInfo.hasEventRule:
+        if battlesLeft > 0:
             return formatter(localization, RentDurationKeys.BATTLES, battlesLeft)
         else:
             return ''

@@ -1,4 +1,5 @@
 import inspect
+from account_helpers.AccountSettings import AccountSettings, OPT_DEVICE_TAB_VISITED
 
 def tabUpdateFunc(tabName):
 
@@ -14,14 +15,11 @@ def tabUpdateFunc(tabName):
 
 
 class TabsController(object):
-    __slots__ = ('_tabsArray', '_tabs', '_autoCreating', '_iconNamePostfix')
+    __slots__ = ('_tabs', '_autoCreating')
 
     def __init__(self, autoCreating=True):
         self._autoCreating = autoCreating
         self._tabs = {wrapper.tabName:wrapper for _, wrapper in inspect.getmembers(self.__class__, inspect.ismethod) if getattr(wrapper, 'tabName', None) if getattr(wrapper, 'tabName', None)}
-
-    def addTabModel(self, tabName, updateFunc):
-        self._tabs[tabName] = updateFunc
 
     def createTabModels(self, tabsArray, **kwargs):
         tabsArray.clear()
@@ -52,6 +50,15 @@ class TabsController(object):
                 self._tabs[tabName](self, viewModel)
                 break
 
+    def updateTabsModel(self, tabsName, tabsArray):
+        for viewModel in tabsArray:
+            name = viewModel.getName()
+            if name in tabsName:
+                self._tabs[name](self, viewModel)
+
+    def getCustomTabsKeyUpdate(self):
+        return {}
+
     def tabOrderKey(self, tabName):
         return
 
@@ -63,3 +70,16 @@ class TabsController(object):
 
     def _createViewModel(self, name):
         raise NotImplementedError
+
+    @property
+    def tabs(self):
+        return self._tabs
+
+    def isVisited(self, tabName):
+        visitedDict = AccountSettings.getSettings(OPT_DEVICE_TAB_VISITED)
+        return visitedDict.get(tabName, False)
+
+    def setVisited(self, tabName):
+        visitedDict = AccountSettings.getSettings(OPT_DEVICE_TAB_VISITED)
+        visitedDict[tabName] = True
+        AccountSettings.setSettings(OPT_DEVICE_TAB_VISITED, visitedDict)

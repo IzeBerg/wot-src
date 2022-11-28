@@ -184,9 +184,6 @@ class _CriticalHitsEfficiencyInfo(_FeedbackEventEfficiencyInfo):
     def isFortArtilleryEqDamage(self, primary=True):
         return self.__critsExtra.isFortArtilleryEq(primary=primary)
 
-    def isSuperShell(self, primary=True):
-        return self.__critsExtra.isSuperShell(primary=primary)
-
     def getShellType(self):
         return self.__critsExtra.getShellType()
 

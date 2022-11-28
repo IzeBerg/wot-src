@@ -1,10 +1,12 @@
 from frameworks.wulf import Array
 from frameworks.wulf import ViewModel
+from gui.impl.gen.view_models.common.missions.bonuses.bonus_model import BonusModel
+from gui.impl.gen.view_models.views.lobby.common.vehicle_model import VehicleModel
 
 class SeniorityRewardAwardViewModel(ViewModel):
-    __slots__ = ('onCloseAction', 'onOpenBtnClick')
+    __slots__ = ('onOpenBtnClick', )
 
-    def __init__(self, properties=5, commands=2):
+    def __init__(self, properties=5, commands=1):
         super(SeniorityRewardAwardViewModel, self).__init__(properties=properties, commands=commands)
 
     def getCategory(self):
@@ -19,11 +21,19 @@ class SeniorityRewardAwardViewModel(ViewModel):
     def setBonuses(self, value):
         self._setArray(1, value)
 
+    @staticmethod
+    def getBonusesType():
+        return BonusModel
+
     def getVehicles(self):
         return self._getArray(2)
 
     def setVehicles(self, value):
         self._setArray(2, value)
+
+    @staticmethod
+    def getVehiclesType():
+        return VehicleModel
 
     def getSpecialCurrencyCount(self):
         return self._getNumber(3)
@@ -44,5 +54,4 @@ class SeniorityRewardAwardViewModel(ViewModel):
         self._addArrayProperty('vehicles', Array())
         self._addNumberProperty('specialCurrencyCount', -1)
         self._addBoolProperty('isShopOnOpenLocked', False)
-        self.onCloseAction = self._addCommand('onCloseAction')
         self.onOpenBtnClick = self._addCommand('onOpenBtnClick')

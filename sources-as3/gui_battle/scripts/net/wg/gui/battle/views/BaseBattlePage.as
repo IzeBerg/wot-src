@@ -187,17 +187,17 @@ package net.wg.gui.battle.views
          this.gameMessagesPanel.addEventListener(GameMessagesPanelEvent.MESSAGES_STARTED_PLAYING,this.onMessagesStartedPlayingHandler);
          this.gameMessagesPanel.addEventListener(GameMessagesPanelEvent.MESSAGES_ENDED_PLAYING,this.onMessagesEndedPlayingHandler);
          this.gameMessagesPanel.addEventListener(GameMessagesPanelEvent.ALL_MESSAGES_ENDED_PLAYING,this.onAllMessagesEndedPlayingHandler);
+      }
+      
+      override protected function configUI() : void
+      {
+         this.updateStage(App.appWidth,App.appHeight);
          if(this.prebattleAmmunitionPanelAvailable && this.prebattleAmmunitionPanel)
          {
             this.prebattleAmmunitionPanel.addEventListener(PrbAmmunitionPanelEvent.VIEW_HIDDEN,this.onPrebattleAmmunitionPanelViewHiddenHandler);
             this.prebattleAmmunitionPanel.addEventListener(PrbAmmunitionPanelEvent.VIEW_SHOWN,this.onPrebattleAmmunitionPanelViewShownHandler);
             this.prebattleAmmunitionPanel.addEventListener(PrbAmmunitionPanelEvent.STATE_CHANGED,this.onPrebattleAmmunitionPanelStateChangedHandler);
          }
-      }
-      
-      override protected function configUI() : void
-      {
-         this.updateStage(App.appWidth,App.appHeight);
          this.minimap.addEventListener(MinimapEvent.TRY_SIZE_CHANGED,this.onMinimapTrySizeChangedHandler);
          this.minimap.addEventListener(MinimapEvent.SIZE_CHANGED,this.onMinimapSizeChangedHandler);
          this.minimap.addEventListener(MinimapEvent.VISIBILITY_CHANGED,this.onMinimapSizeChangedHandler);

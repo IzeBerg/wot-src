@@ -214,7 +214,7 @@ package net.wg.gui.battle.views.postmortemPanel
          }
       }
       
-      protected function showSpectatorPanel(param1:Boolean) : void
+      private function showSpectatorPanel(param1:Boolean) : void
       {
          this.bg.visible = param1;
          this.observerModeTitleTF.visible = param1;

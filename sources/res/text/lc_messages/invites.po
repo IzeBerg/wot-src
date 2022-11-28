@@ -212,7 +212,7 @@ msgid "invites/note/change_and_leave/QUEUE_EPIC"
 msgstr "一旦您接受邀请，您将退出前线模式并转移到%(host)s的服务器上。"
 
 msgid "invites/note/change_and_leave/QUEUE_EVENT_BATTLES"
-msgstr "一旦接受邀请，您将退出南瓜派对并转移到%(host)s服务器上。"
+msgstr "接受邀请后，您将退出+++Event battle+++并被转移至%(host)s服务器。"
 
 msgid "invites/note/change_and_leave/QUEUE_MAPBOX"
 msgstr "一旦您接受邀请，您将退出侦察任务并转移到%(host)s的服务器上。"
@@ -299,7 +299,7 @@ msgid "invites/note/leave/QUEUE_EPIC"
 msgstr "一旦您接受邀请，您将退出前线模式。"
 
 msgid "invites/note/leave/QUEUE_EVENT_BATTLES"
-msgstr "一旦接受邀请，您将退出南瓜派对。"
+msgstr "接受邀请后，您将退出+++Event battle+++。"
 
 msgid "invites/note/leave/QUEUE_MAPBOX"
 msgstr "一旦您接受邀请，您将退出侦察任务。"
@@ -333,9 +333,6 @@ msgstr "你已经加入了全球范围的战斗中。"
 
 msgid "invites/prebattle/alreadyJoined/EPIC_TRAINING"
 msgstr "您已经加入了训练房间。"
-
-msgid "invites/prebattle/alreadyJoined/EVENT"
-msgstr "您已加入该小队。"
 
 msgid "invites/prebattle/alreadyJoined/FALLOUT"
 msgstr "你已经加入了小队中 。"
@@ -374,7 +371,7 @@ msgid "invites/state/REVOKED"
 msgstr "取消邀请"
 
 msgid "invites/text/BATTLE_ROYALE"
-msgstr "%(titleStartTag)s加入钢铁猎手小队的邀请%(titleEndTag)s"
+msgstr "邀请加入钢铁猎手小队"
 
 msgid "invites/text/COMP7"
 msgstr "%(titleStartTag)s邀请加入天梯战小队%(titleEndTag)s"
@@ -383,13 +380,13 @@ msgid "invites/text/EPIC"
 msgstr "%(titleStartTag)s邀请加入前线模式小队%(titleEndTag)s"
 
 msgid "invites/text/EPIC_TRAINING"
-msgstr "%(titleStartTag)s加入前线模式训练邀请%(titleEndTag)s"
+msgstr "邀请加入前线模式训练"
 
 msgid "invites/text/EVENT"
-msgstr "%(titleStartTag)s邀请加入南瓜派对小队%(titleEndTag)s"
+msgstr "邀请加入小队"
 
 msgid "invites/text/FALLOUT"
-msgstr "%(titleStartTag)s加入%(battleType)s小队邀请%(titleEndTag)s"
+msgstr "邀请加入%(battleType)s小队"
 
 msgid "invites/text/FALLOUT/FALLOUT_CLASSIC"
 msgstr "攻坚战"
@@ -398,31 +395,28 @@ msgid "invites/text/FALLOUT/FALLOUT_MULTITEAM"
 msgstr "围猎战"
 
 msgid "invites/text/FORT_BATTLE"
-msgstr "%(titleStartTag)s加入战斗邀请%(titleEndTag)s"
-
-msgid "invites/text/FUN_RANDOM"
-msgstr "%(titleStartTag)s邀请加入街机模式小队%(titleEndTag)s"
+msgstr "邀请加入战斗"
 
 msgid "invites/text/MAPBOX"
-msgstr "%(titleStartTag)s邀请加入侦察任务小队%(titleEndTag)s"
+msgstr "邀请加入侦察任务小队"
 
 msgid "invites/text/MAPS_TRAINING"
-msgstr "%(titleStartTag)s探索地图的邀请%(titleEndTag)s"
+msgstr "邀请加入探索地图"
 
 msgid "invites/text/SORTIE"
-msgstr "%(titleStartTag)s加入分遣队邀请%(titleEndTag)s"
+msgstr "邀请加入分遣队"
 
 msgid "invites/text/SQUAD"
-msgstr "%(titleStartTag)s邀请加入小队%(titleEndTag)s"
+msgstr "邀请加入小队"
 
 msgid "invites/text/STRONGHOLD"
-msgstr "%(titleStartTag)s加入分遣队邀请%(titleEndTag)s"
+msgstr "邀请加入分遣队"
 
 msgid "invites/text/TRAINING"
-msgstr "%(titleStartTag)s加入队伍训练邀请%(titleEndTag)s"
+msgstr "邀请加入训练模式"
 
 msgid "invites/text/UNIT"
-msgstr "%(titleStartTag)s加入队伍邀请%(titleEndTag)s"
+msgstr "邀请加入队伍"
 
 msgid "invites/text/creatorName"
 msgstr "邀请来自%(nameStartTag)s%(name)s%(nameEndTag)s"
@@ -435,9 +429,6 @@ msgstr "据点"
 
 msgid "invites/text/fort/offence"
 msgstr "攻击于"
-
-msgid "invites/tooltip/funRandom/noVehicles"
-msgstr "您需要至少1辆%(levels)s级坦克才能参加街机模式战斗。"
 
 msgid "invites/warning/anonymized"
 msgstr "一旦您接收邀请，您的真实昵称和军团标签将会在战斗期间对小队内的成员显示。"

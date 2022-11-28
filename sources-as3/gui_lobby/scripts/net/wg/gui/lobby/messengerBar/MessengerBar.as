@@ -170,7 +170,6 @@ package net.wg.gui.lobby.messengerBar
          this.contactsListBtn.addEventListener(ButtonEvent.CLICK,this.onContactsButtonClickHandler);
          this.referralBtn.addEventListener(ButtonEvent.CLICK,this.onReferralButtonClickHandler);
          this.vehicleCompareCartBtn.addEventListener(ButtonEvent.CLICK,this.onVehicleCmpBtnClickHandler);
-         this.referralBtn.mouseEnabledOnDisabled = this.vehicleCompareCartBtn.button.mouseEnabledOnDisabled = true;
          this.sessionStatsBtn.visible = this._sessionStatsBtnVisible;
          this.sessionStatsBtn.addEventListener(ButtonEvent.CLICK,this.onSessionStatsBtnClickHandler);
          App.stage.addEventListener(MessengerBarEvent.PIN_CHANNELS_WINDOW,this.onStagePinChannelsWindowHandler);
@@ -397,10 +396,6 @@ package net.wg.gui.lobby.messengerBar
       public function as_setReferralButtonEnabled(param1:Boolean) : void
       {
          this.referralBtn.enabled = param1;
-         if(this._initData)
-         {
-            this.referralBtn.tooltip = !!param1 ? this._initData.referralTooltip : TOOLTIPS.LOBY_MESSENGER_BTNREFERRALDISABLED;
-         }
       }
       
       public function as_setReferralProgramButtonVisible(param1:Boolean) : void
@@ -432,7 +427,7 @@ package net.wg.gui.lobby.messengerBar
       
       public function as_setSessionStatsButtonEnable(param1:Boolean, param2:String) : void
       {
-         if(this._sessionStatsBtnEnable != param1 || this._sessionStatsBtnTooltip != param2)
+         if(this._sessionStatsBtnEnable != param1)
          {
             this._sessionStatsBtnEnable = param1;
             this._sessionStatsBtnTooltip = param2;

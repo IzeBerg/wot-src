@@ -48,7 +48,7 @@ class IGlobalSpace(object):
 
 class IWaitingWidget(object):
 
-    def showWaiting(self, messageID, softStart=False):
+    def showWaiting(self, messageID, softStart=False, showBg=True):
         pass
 
     def hideWaiting(self):
@@ -82,7 +82,7 @@ class IWaitingWorker(object):
     def getSuspendedWaitingTask(self, messageID):
         raise NotImplementedError
 
-    def show(self, messageID, isSingle=False, interruptCallback=None, isBlocking=True, isAlwaysOnTop=False, backgroundImage=None, softStart=False):
+    def show(self, messageID, isSingle=False, interruptCallback=None, isBlocking=True, isAlwaysOnTop=False, backgroundImage=None, softStart=False, showBg=True):
         raise NotImplementedError
 
     def hide(self, messageID):

@@ -359,6 +359,25 @@
 			<touchdownEffect>tree_Birch_Bold_01_touchdown</touchdownEffect>
 		</entry>
 		<entry>
+			<filename>vegetation/Broadleaves/Birch_Dry_Frost/Birch_Dry_Frost_bush_large_01.srt</filename>
+			<health>5</health>
+			<density>
+				0.25
+				<!--BW_String-->
+			</density>
+			<physicParams>
+				800 10 0.26 20000 4000 20 0.15
+				<!--BW_String-->
+			</physicParams>
+			<lifetimeEffect>none</lifetimeEffect>
+			<lifetimeEffectChance>
+				0.0
+				<!--BW_String-->
+			</lifetimeEffectChance>
+			<fractureEffect>tree_Birch_Dry_2m_fall</fractureEffect>
+			<touchdownEffect>tree_Birch_Dry_2m_touchdown</touchdownEffect>
+		</entry>
+		<entry>
 			<filename>vegetation/Broadleaves/Birch_Dry_Frost/Birch_Dry_Frost_17m.srt</filename>
 			<health>40</health>
 			<density>
@@ -794,6 +813,25 @@
 			</lifetimeEffectChance>
 			<fractureEffect>tree_Apple_8m_Classic_fall</fractureEffect>
 			<touchdownEffect>tree_Apple_8m_Classic_touchdown</touchdownEffect>
+		</entry>
+		<entry>
+			<filename>vegetation/Broadleaves/Apple_Frost/Apple_Frost_8m_Classic_Dry.srt</filename>
+			<health>15</health>
+			<density>
+				0.25
+				<!--BW_String-->
+			</density>
+			<physicParams>
+				800 10 0.26 20000 4000 20 0.15
+				<!--BW_String-->
+			</physicParams>
+			<lifetimeEffect>none</lifetimeEffect>
+			<lifetimeEffectChance>
+				0.0
+				<!--BW_String-->
+			</lifetimeEffectChance>
+			<fractureEffect>inf_deadtree_fall</fractureEffect>
+			<touchdownEffect>inf_deadtree_touchdown</touchdownEffect>
 		</entry>
 		<entry>
 			<filename>vegetation/Broadleaves/Apple/Apple_8m_Classic_Dry.srt</filename>
@@ -1484,6 +1522,25 @@
 			<health>3</health>
 			<density>
 				0.25
+				<!--BW_String-->
+			</density>
+			<physicParams>
+				800 10 0.26 20000 4000 20 0.15
+				<!--BW_String-->
+			</physicParams>
+			<lifetimeEffect>none</lifetimeEffect>
+			<lifetimeEffectChance>
+				0.0
+				<!--BW_String-->
+			</lifetimeEffectChance>
+			<fractureEffect>inf_tree_bush_dry_fall</fractureEffect>
+			<touchdownEffect>inf_tree_bush_dry_touchdown</touchdownEffect>
+		</entry>
+		<entry>
+			<filename>vegetation/Broadleaves/Shrubs/Swamp_Reed_Frost/Swamp_Reed_Frost_Bush.srt</filename>
+			<health>3</health>
+			<density>
+				0.5
 				<!--BW_String-->
 			</density>
 			<physicParams>
@@ -2221,25 +2278,6 @@
 			<touchdownEffect>tree_Maple_25m_touchdown</touchdownEffect>
 		</entry>
 		<entry>
-			<filename>vegetation/Broadleaves/Maple/Maple_33m.srt</filename>
-			<health>120</health>
-			<density>
-				0.5
-				<!--BW_String-->
-			</density>
-			<physicParams>
-				800 10 0.26 20000 4000 20 0.15
-				<!--BW_String-->
-			</physicParams>
-			<lifetimeEffect>none</lifetimeEffect>
-			<lifetimeEffectChance>
-				0.0
-				<!--BW_String-->
-			</lifetimeEffectChance>
-			<fractureEffect>tree_Maple_33m_fall</fractureEffect>
-			<touchdownEffect>tree_Maple_33m_touchdown</touchdownEffect>
-		</entry>
-		<entry>
 			<filename>vegetation/Broadleaves/Maple/Maple_32m.srt</filename>
 			<health>120</health>
 			<density>
@@ -2393,6 +2431,25 @@
 		</entry>
 		<entry>
 			<filename>vegetation/Broadleaves/Oak_dry_moss/Oak_dry_moss_20m.srt</filename>
+			<health>30</health>
+			<density>
+				0.25
+				<!--BW_String-->
+			</density>
+			<physicParams>
+				800 10 0.26 20000 4000 20 0.15
+				<!--BW_String-->
+			</physicParams>
+			<lifetimeEffect>none</lifetimeEffect>
+			<lifetimeEffectChance>
+				0.0
+				<!--BW_String-->
+			</lifetimeEffectChance>
+			<fractureEffect>inf_tree_oak_dry_fall_med</fractureEffect>
+			<touchdownEffect>inf_tree_oak_dry_touchdown_med</touchdownEffect>
+		</entry>
+		<entry>
+			<filename>vegetation/Broadleaves/Oak_Dry_Frost/Oak_Dry_Frost_20m.srt</filename>
 			<health>30</health>
 			<density>
 				0.25
@@ -4178,25 +4235,6 @@
 			<touchdownEffect>none</touchdownEffect>
 		</entry>
 		<entry>
-			<filename>vegetation/Broadleaves/Shrubs/Bush_Wild_Fall/Bush_Wild_Fall_2m.srt</filename>
-			<health>3</health>
-			<density>
-				0.5
-				<!--BW_String-->
-			</density>
-			<physicParams>
-				800 10 0.26 20000 4000 20 0.15
-				<!--BW_String-->
-			</physicParams>
-			<lifetimeEffect>none</lifetimeEffect>
-			<lifetimeEffectChance>
-				0.0
-				<!--BW_String-->
-			</lifetimeEffectChance>
-			<fractureEffect>none</fractureEffect>
-			<touchdownEffect>none</touchdownEffect>
-		</entry>
-		<entry>
 			<filename>vegetation/Broadleaves/Shrubs/Bush_Wild_Fall/Bush_Wild_Fall_4m_Tall.srt</filename>
 			<health>3</health>
 			<density>
@@ -5755,6 +5793,44 @@
 			<touchdownEffect>inf_tree_scots_pine_touchdown_big</touchdownEffect>
 		</entry>
 		<entry>
+			<filename>vegetation/Conifers/Scots_Pine_Frost/Scots_Pine_Frost_hv3_0.srt</filename>
+			<health>60</health>
+			<density>
+				0.5
+				<!--BW_String-->
+			</density>
+			<physicParams>
+				800 10 0.26 20000 4000 20 0.15
+				<!--BW_String-->
+			</physicParams>
+			<lifetimeEffect>none</lifetimeEffect>
+			<lifetimeEffectChance>
+				0.0
+				<!--BW_String-->
+			</lifetimeEffectChance>
+			<fractureEffect>inf_tree_scots_pine_frost_fall_big</fractureEffect>
+			<touchdownEffect>inf_tree_scots_pine_frost_touchdown_big</touchdownEffect>
+		</entry>
+		<entry>
+			<filename>vegetation/Conifers/Scots_Pine_Frost/Scots_Pine_Frost_hv3_3.srt</filename>
+			<health>60</health>
+			<density>
+				0.5
+				<!--BW_String-->
+			</density>
+			<physicParams>
+				800 10 0.26 20000 4000 20 0.15
+				<!--BW_String-->
+			</physicParams>
+			<lifetimeEffect>none</lifetimeEffect>
+			<lifetimeEffectChance>
+				0.0
+				<!--BW_String-->
+			</lifetimeEffectChance>
+			<fractureEffect>inf_tree_scots_pine_frost_fall_big</fractureEffect>
+			<touchdownEffect>inf_tree_scots_pine_frost_touchdown_big</touchdownEffect>
+		</entry>
+		<entry>
 			<filename>vegetation/Conifers/Scots_Pine_Frost/Scots_Pine_Frost_22m.srt</filename>
 			<health>60</health>
 			<density>
@@ -5812,6 +5888,44 @@
 			<touchdownEffect>inf_tree_scots_pine_frost_touchdown_big</touchdownEffect>
 		</entry>
 		<entry>
+			<filename>vegetation/Conifers/Scots_Pine_Frost_Branch/Scots_Pine_Frost_Branch_22m.srt</filename>
+			<health>60</health>
+			<density>
+				0.5
+				<!--BW_String-->
+			</density>
+			<physicParams>
+				800 10 0.26 20000 4000 20 0.15
+				<!--BW_String-->
+			</physicParams>
+			<lifetimeEffect>none</lifetimeEffect>
+			<lifetimeEffectChance>
+				0.0
+				<!--BW_String-->
+			</lifetimeEffectChance>
+			<fractureEffect>inf_tree_scots_pine_frost_fall_big</fractureEffect>
+			<touchdownEffect>inf_tree_scots_pine_frost_touchdown_big</touchdownEffect>
+		</entry>
+		<entry>
+			<filename>vegetation/Conifers/Scots_Pine_Frost_Branch/Scots_Pine_Frost_Branch_Bend.srt</filename>
+			<health>60</health>
+			<density>
+				0.5
+				<!--BW_String-->
+			</density>
+			<physicParams>
+				800 10 0.26 20000 4000 20 0.15
+				<!--BW_String-->
+			</physicParams>
+			<lifetimeEffect>none</lifetimeEffect>
+			<lifetimeEffectChance>
+				0.0
+				<!--BW_String-->
+			</lifetimeEffectChance>
+			<fractureEffect>inf_tree_scots_pine_frost_fall_big</fractureEffect>
+			<touchdownEffect>inf_tree_scots_pine_frost_touchdown_big</touchdownEffect>
+		</entry>
+		<entry>
 			<filename>vegetation/Conifers/Pine_Young/Pine_Young_4m.srt</filename>
 			<health>10</health>
 			<density>
@@ -5851,6 +5965,25 @@
 		</entry>
 		<entry>
 			<filename>vegetation/Conifers/Pine_Young/Pine_Young_almoust_2m_Brr.srt</filename>
+			<health>10</health>
+			<density>
+				0.5
+				<!--BW_String-->
+			</density>
+			<physicParams>
+				800 10 0.26 20000 4000 20 0.15
+				<!--BW_String-->
+			</physicParams>
+			<lifetimeEffect>none</lifetimeEffect>
+			<lifetimeEffectChance>
+				0.0
+				<!--BW_String-->
+			</lifetimeEffectChance>
+			<fractureEffect>tree_pine_young_fall_small</fractureEffect>
+			<touchdownEffect>tree_pine_young_touchdown_small</touchdownEffect>
+		</entry>
+		<entry>
+			<filename>vegetation/Conifers/Pine_Young_Frost/Pine_Young_Frost_3m.srt</filename>
 			<health>10</health>
 			<density>
 				0.5
@@ -6173,6 +6306,25 @@
 			<touchdownEffect>tree_Spruce_Frost_24m_touchdown</touchdownEffect>
 		</entry>
 		<entry>
+			<filename>vegetation/Conifers/Spruce_Snow/Spruce_Snow_24m_Rare.srt</filename>
+			<health>30</health>
+			<density>
+				0.5
+				<!--BW_String-->
+			</density>
+			<physicParams>
+				800 10 0.26 20000 4000 20 0.15
+				<!--BW_String-->
+			</physicParams>
+			<lifetimeEffect>none</lifetimeEffect>
+			<lifetimeEffectChance>
+				0.0
+				<!--BW_String-->
+			</lifetimeEffectChance>
+			<fractureEffect>tree_Spruce_Frost_24m_fall</fractureEffect>
+			<touchdownEffect>tree_Spruce_Frost_24m_touchdown</touchdownEffect>
+		</entry>
+		<entry>
 			<filename>vegetation/Conifers/Spruce_Snow/Spruce_Snow_33m_Ragged.srt</filename>
 			<health>30</health>
 			<density>
@@ -6194,6 +6346,101 @@
 		<entry>
 			<filename>vegetation/Conifers/Spruce_Snow/Spruce_Snow_33m_Ragged_Top.srt</filename>
 			<health>30</health>
+			<density>
+				0.5
+				<!--BW_String-->
+			</density>
+			<physicParams>
+				800 10 0.26 20000 4000 20 0.15
+				<!--BW_String-->
+			</physicParams>
+			<lifetimeEffect>none</lifetimeEffect>
+			<lifetimeEffectChance>
+				0.0
+				<!--BW_String-->
+			</lifetimeEffectChance>
+			<fractureEffect>tree_Spruce_Frost_24m_fall</fractureEffect>
+			<touchdownEffect>tree_Spruce_Frost_24m_touchdown</touchdownEffect>
+		</entry>
+		<entry>
+			<filename>vegetation/Conifers/Spruce_Frost/Spruce_Frost_8m.srt</filename>
+			<health>30</health>
+			<density>
+				0.5
+				<!--BW_String-->
+			</density>
+			<physicParams>
+				800 10 0.26 20000 4000 20 0.15
+				<!--BW_String-->
+			</physicParams>
+			<lifetimeEffect>none</lifetimeEffect>
+			<lifetimeEffectChance>
+				0.0
+				<!--BW_String-->
+			</lifetimeEffectChance>
+			<fractureEffect>tree_Spruce_Frost_8m_fall</fractureEffect>
+			<touchdownEffect>tree_Spruce_Frost_8m_touchdown</touchdownEffect>
+		</entry>
+		<entry>
+			<filename>vegetation/Conifers/Spruce_Frost/Spruce_Frost_Dry_Bottom_10m.srt</filename>
+			<health>30</health>
+			<density>
+				0.5
+				<!--BW_String-->
+			</density>
+			<physicParams>
+				800 10 0.26 20000 4000 20 0.15
+				<!--BW_String-->
+			</physicParams>
+			<lifetimeEffect>none</lifetimeEffect>
+			<lifetimeEffectChance>
+				0.0
+				<!--BW_String-->
+			</lifetimeEffectChance>
+			<fractureEffect>tree_Spruce_Frost_8m_fall</fractureEffect>
+			<touchdownEffect>tree_Spruce_Frost_8m_touchdown</touchdownEffect>
+		</entry>
+		<entry>
+			<filename>vegetation/Conifers/Spruce_Frost/Spruce_Frost_ragged_24m.srt</filename>
+			<health>60</health>
+			<density>
+				0.5
+				<!--BW_String-->
+			</density>
+			<physicParams>
+				800 10 0.26 20000 4000 20 0.15
+				<!--BW_String-->
+			</physicParams>
+			<lifetimeEffect>none</lifetimeEffect>
+			<lifetimeEffectChance>
+				0.0
+				<!--BW_String-->
+			</lifetimeEffectChance>
+			<fractureEffect>tree_Spruce_Frost_24m_fall</fractureEffect>
+			<touchdownEffect>tree_Spruce_Frost_24m_touchdown</touchdownEffect>
+		</entry>
+		<entry>
+			<filename>vegetation/Conifers/Spruce_Frost/Spruce_Frost_ragged_33m.srt</filename>
+			<health>90</health>
+			<density>
+				0.5
+				<!--BW_String-->
+			</density>
+			<physicParams>
+				800 10 0.26 20000 4000 20 0.15
+				<!--BW_String-->
+			</physicParams>
+			<lifetimeEffect>none</lifetimeEffect>
+			<lifetimeEffectChance>
+				0.0
+				<!--BW_String-->
+			</lifetimeEffectChance>
+			<fractureEffect>tree_Spruce_Frost_24m_fall</fractureEffect>
+			<touchdownEffect>tree_Spruce_Frost_24m_touchdown</touchdownEffect>
+		</entry>
+		<entry>
+			<filename>vegetation/Conifers/Spruce_Frost/Spruce_Frost_ragged_top_33m.srt</filename>
+			<health>90</health>
 			<density>
 				0.5
 				<!--BW_String-->
@@ -7389,6 +7636,63 @@
 			<touchdownEffect>tree_Spruce_Frost_8m_touchdown</touchdownEffect>
 		</entry>
 		<entry>
+			<filename>vegetation/Conifers/Spruce_Snow_Arctic_AO/Spruce_Snow_Arctic_AO_24m.srt</filename>
+			<health>40</health>
+			<density>
+				0.5
+				<!--BW_String-->
+			</density>
+			<physicParams>
+				800 10 0.26 20000 4000 20 0.15
+				<!--BW_String-->
+			</physicParams>
+			<lifetimeEffect>none</lifetimeEffect>
+			<lifetimeEffectChance>
+				0.0
+				<!--BW_String-->
+			</lifetimeEffectChance>
+			<fractureEffect>tree_Spruce_Frost_24m_fall</fractureEffect>
+			<touchdownEffect>tree_Spruce_Frost_24m_touchdown</touchdownEffect>
+		</entry>
+		<entry>
+			<filename>vegetation/Conifers/Spruce_Snow_Arctic_AO/Spruce_Snow_Arctic_AO_33m_Ragged.srt</filename>
+			<health>40</health>
+			<density>
+				0.5
+				<!--BW_String-->
+			</density>
+			<physicParams>
+				800 10 0.26 20000 4000 20 0.15
+				<!--BW_String-->
+			</physicParams>
+			<lifetimeEffect>none</lifetimeEffect>
+			<lifetimeEffectChance>
+				0.0
+				<!--BW_String-->
+			</lifetimeEffectChance>
+			<fractureEffect>tree_Spruce_Frost_24m_fall</fractureEffect>
+			<touchdownEffect>tree_Spruce_Frost_24m_touchdown</touchdownEffect>
+		</entry>
+		<entry>
+			<filename>vegetation/Conifers/Spruce_Snow_Arctic_AO/Spruce_Snow_Arctic_AO_8m.srt</filename>
+			<health>40</health>
+			<density>
+				0.5
+				<!--BW_String-->
+			</density>
+			<physicParams>
+				800 10 0.26 20000 4000 20 0.15
+				<!--BW_String-->
+			</physicParams>
+			<lifetimeEffect>none</lifetimeEffect>
+			<lifetimeEffectChance>
+				0.0
+				<!--BW_String-->
+			</lifetimeEffectChance>
+			<fractureEffect>tree_Spruce_Frost_8m_fall</fractureEffect>
+			<touchdownEffect>tree_Spruce_Frost_8m_touchdown</touchdownEffect>
+		</entry>
+		<entry>
 			<filename>vegetation/Misc/Broom_Snakeweed/Broom_Snakeweed_03_Large_dry.srt</filename>
 			<health>3</health>
 			<density>
@@ -7454,25 +7758,6 @@
 		</entry>
 		<entry>
 			<filename>vegetation/Broadleaves/Live_Oak/Live_Oak_02.srt</filename>
-			<health>300</health>
-			<density>
-				0.5
-				<!--BW_String-->
-			</density>
-			<physicParams>
-				800 10 0.26 20000 4000 20 0.15
-				<!--BW_String-->
-			</physicParams>
-			<lifetimeEffect>none</lifetimeEffect>
-			<lifetimeEffectChance>
-				0.0
-				<!--BW_String-->
-			</lifetimeEffectChance>
-			<fractureEffect>tree_Olive_03_fall</fractureEffect>
-			<touchdownEffect>tree_Olive_03_touchdown</touchdownEffect>
-		</entry>
-		<entry>
-			<filename>vegetation/Broadleaves/Live_Oak/Live_Oak_03.srt</filename>
 			<health>300</health>
 			<density>
 				0.5
@@ -7603,6 +7888,21 @@
 			</lifetimeEffectChance>
 			<fractureEffect>none</fractureEffect>
 			<touchdownEffect>none</touchdownEffect>
+		</entry>
+		<entry>
+			<filename>vegetation/Broadleaves/DryTree_Frost/DryTree_Frost_01.srt</filename>
+			<health>40</health>
+			<density>
+				0.25
+				<!--BW_String-->
+			</density>
+			<physicParams>
+				800 10 0.26 20000 4000 20 0.15
+				<!--BW_String-->
+			</physicParams>
+			<lifetimeEffect>none</lifetimeEffect>
+			<fractureEffect>tree_Birch_Dry_Frost_17m_fall</fractureEffect>
+			<touchdownEffect>tree_Birch_Dry_Frost_17m_touchdown</touchdownEffect>
 		</entry>
 		<entry>
 			<filename>vegetation/Broadleaves/DryTree_Frost_Light/DryTree_Frost_Light_01.srt</filename>
@@ -21758,72 +22058,6 @@
 			<effectHP>HP_module0</effectHP>
 			<effectScale>1.000000</effectScale>
 			<matName>n_wood0</matName>
-			<lifetimeEffect>none</lifetimeEffect>
-		</entry>
-		<entry>
-			<filename>content/Environment/hd_env_UNI_668_PumpkinHalloween/normal/lod0/hd_env_UNI_668_PumpkinHalloween_01.model</filename>
-			<health>1</health>
-			<decayEffect>none</decayEffect>
-			<effect>hd_env_UNI_668_PumpkinHalloween</effect>
-			<hitEffect>hd_env_UNI_668_PumpkinHalloween</hitEffect>
-			<effectHP>HP_module0</effectHP>
-			<effectScale>1.000000</effectScale>
-			<matName>n_stone0_1_2</matName>
-			<lifetimeEffect>none</lifetimeEffect>
-		</entry>
-		<entry>
-			<filename>content/Environment/hd_env_UNI_668_PumpkinHalloween/normal/lod0/hd_env_UNI_668_PumpkinHalloween_02.model</filename>
-			<health>1</health>
-			<decayEffect>none</decayEffect>
-			<effect>hd_env_UNI_668_PumpkinHalloween</effect>
-			<hitEffect>hd_env_UNI_668_PumpkinHalloween</hitEffect>
-			<effectHP>HP_module0</effectHP>
-			<effectScale>1.000000</effectScale>
-			<matName>n_stone0_1_2</matName>
-			<lifetimeEffect>none</lifetimeEffect>
-		</entry>
-		<entry>
-			<filename>content/Environment/hd_env_UNI_668_PumpkinHalloween/normal/lod0/hd_env_UNI_668_PumpkinHalloween_03.model</filename>
-			<health>1</health>
-			<decayEffect>none</decayEffect>
-			<effect>hd_env_UNI_668_PumpkinHalloween</effect>
-			<hitEffect>hd_env_UNI_668_PumpkinHalloween</hitEffect>
-			<effectHP>HP_module0</effectHP>
-			<effectScale>1.000000</effectScale>
-			<matName>n_stone0_1_2</matName>
-			<lifetimeEffect>none</lifetimeEffect>
-		</entry>
-		<entry>
-			<filename>content/Environment/hd_env_UNI_668_PumpkinHalloween/normal/lod0/hd_env_UNI_668_PumpkinHalloween_04.model</filename>
-			<health>10</health>
-			<decayEffect>none</decayEffect>
-			<effect>hd_env_UNI_668_PumpkinHalloween_big</effect>
-			<hitEffect>hd_env_UNI_668_PumpkinHalloween_big</hitEffect>
-			<effectHP>HP_module0</effectHP>
-			<effectScale>1.000000</effectScale>
-			<matName>n_stone0_1_2</matName>
-			<lifetimeEffect>none</lifetimeEffect>
-		</entry>
-		<entry>
-			<filename>content/Environment/hd_env_UNI_668_PumpkinHalloween/normal/lod0/hd_env_UNI_668_PumpkinHalloween_05.model</filename>
-			<health>10</health>
-			<decayEffect>none</decayEffect>
-			<effect>hd_env_UNI_668_PumpkinHalloween</effect>
-			<hitEffect>hd_env_UNI_668_PumpkinHalloween</hitEffect>
-			<effectHP>HP_module0</effectHP>
-			<effectScale>1.000000</effectScale>
-			<matName>n_stone0_1_2</matName>
-			<lifetimeEffect>none</lifetimeEffect>
-		</entry>
-		<entry>
-			<filename>content/Environment/hd_env_AM_036_Scarecrow/normal/lod0/hd_env_AM_036_Scarecrow_101.model</filename>
-			<health>10</health>
-			<decayEffect>none</decayEffect>
-			<effect>hd_env_AM_036_Scarecrow</effect>
-			<hitEffect>hd_env_AM_036_Scarecrow</hitEffect>
-			<effectHP>HP_module0</effectHP>
-			<effectScale>1.000000</effectScale>
-			<matName>n_wood0_1_2_3</matName>
 			<lifetimeEffect>none</lifetimeEffect>
 		</entry>
 	</fragiles>

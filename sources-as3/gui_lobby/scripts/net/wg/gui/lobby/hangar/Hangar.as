@@ -4,7 +4,6 @@ package net.wg.gui.lobby.hangar
    import flash.display.DisplayObject;
    import flash.display.InteractiveObject;
    import flash.display.MovieClip;
-   import flash.display.Sprite;
    import flash.display.Stage;
    import flash.events.Event;
    import flash.events.KeyboardEvent;
@@ -17,16 +16,13 @@ package net.wg.gui.lobby.hangar
    import net.wg.data.constants.Values;
    import net.wg.data.constants.generated.BATTLEROYALE_ALIASES;
    import net.wg.data.constants.generated.DAILY_QUESTS_WIDGET_CONSTANTS;
+   import net.wg.data.constants.generated.FUNRANDOM_ALIASES;
    import net.wg.data.constants.generated.HANGAR_ALIASES;
    import net.wg.gui.components.controls.CloseButtonText;
    import net.wg.gui.components.controls.CrewOperationBtn;
    import net.wg.gui.components.miniclient.HangarMiniClientComponent;
    import net.wg.gui.events.LobbyEvent;
    import net.wg.gui.lobby.battleRoyale.HangarComponentsContainer;
-   import net.wg.gui.lobby.eventHangar.components.EventDailyReward;
-   import net.wg.gui.lobby.eventHangar.components.EventGlobalProgressionEntryPoint;
-   import net.wg.gui.lobby.eventHangar.components.EventProgressionEntryPoint;
-   import net.wg.gui.lobby.eventHangar.components.EventShopEntryPoint;
    import net.wg.gui.lobby.hangar.alertMessage.AlertMessageBlock;
    import net.wg.gui.lobby.hangar.ammunitionPanel.AmmunitionPanel;
    import net.wg.gui.lobby.hangar.ammunitionPanel.data.AmmunitionPanelVO;
@@ -36,6 +32,7 @@ package net.wg.gui.lobby.hangar
    import net.wg.gui.lobby.hangar.eventEntryPoint.HangarEventEntriesContainer;
    import net.wg.gui.lobby.hangar.interfaces.IHangar;
    import net.wg.gui.lobby.hangar.interfaces.IVehicleParameters;
+   import net.wg.gui.lobby.hangar.quests.FunRandomNYHangarWidget;
    import net.wg.gui.lobby.hangar.tcarousel.TankCarousel;
    import net.wg.gui.lobby.post.Teaser;
    import net.wg.gui.lobby.post.TeaserEvent;
@@ -48,7 +45,6 @@ package net.wg.gui.lobby.hangar
    import net.wg.infrastructure.managers.ITooltipMgr;
    import net.wg.utils.IGameInputManager;
    import net.wg.utils.IUtils;
-   import net.wg.utils.StageSizeBoundaries;
    import net.wg.utils.helpLayout.IHelpLayout;
    import scaleform.clik.events.ButtonEvent;
    import scaleform.clik.events.ComponentEvent;
@@ -65,9 +61,7 @@ package net.wg.gui.lobby.hangar
       
       private static const INVALIDATE_AMMUNITION_PANEL_SIZE:String = "InvalidateAmmunitionPanelSize";
       
-      private static const INVALIDATE_CHINA_LOOTBOXES_VISIBLE:String = "invalidateChinaLootboxesVisible";
-      
-      private static const INVALIDATE_EVENT_ENTRIES_VISIBLE:String = "invalidateEventEntriesVisible";
+      private static const INVALIDATE_REWARD_KITS_VISIBLE:String = "invalidateRewardKitsVisible";
       
       private static const ENTRY_CONT_POSITION_INVALID:String = "enrtyContPositionInvalid";
       
@@ -147,47 +141,17 @@ package net.wg.gui.lobby.hangar
       
       private static const PARAMS_SMALL_SCREEN_BOTTOM_MARGIN:int = 36;
       
-      private static const AMMUNITION_PANEL_OFFSET_Y:int = 4;
+      private static const AMMUNITION_PANEL_OFFSET_Y:int = -41;
       
       private static const AMMUNITION_PANEL_INJECT_OFFSET_RIGHT:int = 5;
       
       private static const WIDGETS_OFFSET_Y:int = 64;
       
-      private static const SHOP_SALES_ENTRY_POINT_W:int = 185;
+      private static const REWARD_KITS_ENTRY_POINT_W:int = 185;
       
-      private static const SHOP_SALES_ENTRY_POINT_X_OFFSET:int = -20;
+      private static const REWARD_KITS_ENTRY_POINT_Y_OFFSET:int = 53;
       
-      private static const SHOP_SALES_ENTRY_POINT_Y_OFFSET:int = -68;
-      
-      private static const CHINA_LOOTBOXES_ENTRY_POINT_X_OFFSET:int = -65;
-      
-      private static const CHINA_LOOTBOXES_ENTRY_POINT_Y_OFFSET:int = 127;
-      
-      private static const CHINA_LOOTBOXES_ENTRY_POINT_Y_OFFSET_ALT:int = 71;
-      
-      private static const SHOP_ENTRU_POINT_STATE_BIG:String = "big";
-      
-      private static const SHOP_ENTRU_POINT_STATE_MEDIUM:String = "medium";
-      
-      private static const SHOP_ENTRU_POINT_OFFSET_BIG:int = 40;
-      
-      private static const SHOP_ENTRU_POINT_OFFSET_MEDIUM:int = 90;
-      
-      private static const CAROUSEL_HEIGHT:int = 200;
-      
-      private static const CAROUSEL_PADDING_RIGHT:int = 260;
-      
-      private static const EVENT_HEADER_Y:int = -2;
-      
-      private static const DAILY_REWARD_PADDING:int = 178;
-      
-      private static const DAILY_REWARD_PADDING_SMALL:int = 126;
-      
-      private static const DAILY_REWARD_TOP_PADDING:int = 15;
-      
-      private static const DAILY_REWARD_MAX_OVERLAP:int = 45;
-      
-      private static const PRORESSION_TOP_PADDING:int = 15;
+      private static const BOTTOM_BG_Y_OFFSET:int = 6;
        
       
       public var vehResearchPanel:ResearchPanel;
@@ -220,15 +184,9 @@ package net.wg.gui.lobby.hangar
       
       public var closeBtn:CloseButtonText;
       
-      public var chinaLootboxesWidget:ChinaLootBoxesEntryPointWidget = null;
-      
-      public var shopSalesEntryPoint:ShopSalesEntryPoint;
+      public var rewardKitsEntrancePoint:RewardKitsEntrancePointWidget;
       
       public var crewXPPanelInject:CrewXPPanelInject;
-      
-      public var eventDailyReward:EventDailyReward;
-      
-      public var eventGlobalProgressionEntryPoint:EventGlobalProgressionEntryPoint;
       
       private var _header:HangarHeader;
       
@@ -270,13 +228,11 @@ package net.wg.gui.lobby.hangar
       
       private var _isBattleRoyale:Boolean = false;
       
-      private var _isEventMode:Boolean = false;
-      
-      private var _isShopSalesVisible:Boolean = false;
-      
       private var _appStage:Stage;
       
       private var _topMargin:int = 0;
+      
+      private var _rewardKitsVisible:Boolean = true;
       
       private var _currentWidgetLayout:int = 99;
       
@@ -288,17 +244,9 @@ package net.wg.gui.lobby.hangar
       
       private var _eventsEntryContainer:HangarEventEntriesContainer = null;
       
-      private var _chinaLootboxCont:Sprite = null;
-      
       private var _battleRoyaleComponents:HangarComponentsContainer = null;
       
-      private var _eventProgressionEntryPoint:EventProgressionEntryPoint = null;
-      
-      private var _eventShopEntryPoint:EventShopEntryPoint = null;
-      
-      private var _chinaLootboxesVisible:Boolean = true;
-      
-      private var _isCarouselVisible:Boolean = true;
+      private var _funRandomWidget:FunRandomNYHangarWidget = null;
       
       public function Hangar()
       {
@@ -318,13 +266,7 @@ package net.wg.gui.lobby.hangar
          this._header = App.instance.utils.classFactory.getComponent(Linkages.HANGAR_HEADER,HangarHeader);
          this._header.name = HANGAR_ALIASES.HEADER;
          addChildAt(this._header,getChildIndex(this.vehResearchPanel as DisplayObject) + 1);
-         this._chinaLootboxCont = new Sprite();
-         addChild(this._chinaLootboxCont);
-         this._chinaLootboxCont.name = "chinaLootboxContainer";
          this.closeBtn.visible = false;
-         this._eventShopEntryPoint = App.instance.utils.classFactory.getComponent(Linkages.EVENT_SHOP_ENTRY_POINT,EventShopEntryPoint);
-         this.carouselContainer.addChild(this._eventShopEntryPoint);
-         this.eventGlobalProgressionEntryPoint.visible = this.eventDailyReward.visible = this._eventShopEntryPoint.visible = false;
       }
       
       override public function updateStage(param1:Number, param2:Number) : void
@@ -341,7 +283,7 @@ package net.wg.gui.lobby.hangar
          if(this.bottomBg != null)
          {
             this.bottomBg.x = 0;
-            this.bottomBg.y = _originalHeight >> 0;
+            this.bottomBg.y = _originalHeight - BOTTOM_BG_Y_OFFSET | 0;
             this.bottomBg.width = _originalWidth;
          }
          this.alignToCenter(this.switchModePanel);
@@ -361,13 +303,6 @@ package net.wg.gui.lobby.hangar
             this.vehResearchBG.x = param1 - _loc3_.x - _loc3_.width - RIGHT_MARGIN >> 0;
          }
          this._helpLayout.hide();
-         this.eventDailyReward.updateStage(param1,param2);
-         this.eventGlobalProgressionEntryPoint.updateStage(param1,param2);
-         if(this._eventProgressionEntryPoint)
-         {
-            this._eventProgressionEntryPoint.updateStage(param1,param2);
-            this._eventProgressionEntryPoint.x = _width - this._eventProgressionEntryPoint.width >> 1;
-         }
          invalidate(ENTRY_CONT_POSITION_INVALID);
       }
       
@@ -383,11 +318,9 @@ package net.wg.gui.lobby.hangar
          registerFlashComponentS(this.dqWidget,Aliases.DAILY_QUEST_WIDGET);
          registerFlashComponentS(this._eventsEntryContainer,HANGAR_ALIASES.ENTRIES_CONTAINER);
          registerFlashComponentS(this.crewXPPanelInject,HANGAR_ALIASES.CREW_XP_PANEL_INJECT);
-         registerFlashComponentS(this._eventShopEntryPoint,HANGAR_ALIASES.EVENT_SHOP_ENTRY_POINT);
-         registerFlashComponentS(this.eventDailyReward,HANGAR_ALIASES.EVENT_DAILY_REWARD);
-         registerFlashComponentS(this.eventGlobalProgressionEntryPoint,HANGAR_ALIASES.EVENT_GLOBAL_PROGRESSION_ENTRY_POINT);
          registerFlashComponentS(this._header,HANGAR_ALIASES.HEADER);
-         registerFlashComponentS(this.shopSalesEntryPoint,HANGAR_ALIASES.SHOP_SALES_ENTRY_POINT);
+         registerFlashComponentS(this.rewardKitsEntrancePoint,HANGAR_ALIASES.REWARD_KITS_ENTRANCE_POINT);
+         this._appStage.addEventListener(HangarAmunitionSwitchAnimator.AMMUNITION_VIEW_HIDE_ANIM_COMPLETE,this.onAmmunitionViewHideAnimCompleteHandler);
          this.ammunitionPanelInject.addEventListener(Event.RESIZE,this.onAmmunitionPanelInjectResizeHandler);
          this.ammunitionPanelInject.addEventListener(AmmunitionPanelInjectEvents.HELP_LAYOUT_CHANGED,this.onAmmunitionPanelInjectHelpLayoutChangedHandler);
          addEventListener(CrewDropDownEvent.SHOW_DROP_DOWN,this.onHangarShowDropDownHandler);
@@ -402,6 +335,12 @@ package net.wg.gui.lobby.hangar
          this.closeBtn.visible = false;
       }
       
+      override protected function onInitModalFocus(param1:InteractiveObject) : void
+      {
+         super.onInitModalFocus(param1);
+         this._gameInputMgr.setKeyHandler(Keyboard.ESCAPE,KeyboardEvent.KEY_DOWN,this.handleEscapeHandler,true);
+      }
+      
       override protected function onBeforeDispose() : void
       {
          App.tutorialMgr.removeListenersFromCustomTutorialComponent(this);
@@ -411,6 +350,7 @@ package net.wg.gui.lobby.hangar
          this.ammunitionPanelInject.removeEventListener(AmmunitionPanelInjectEvents.HELP_LAYOUT_CHANGED,this.onAmmunitionPanelInjectHelpLayoutChangedHandler);
          this._gameInputMgr.clearKeyHandler(Keyboard.ESCAPE,KeyboardEvent.KEY_DOWN,this.handleEscapeHandler);
          this._appStage.dispatchEvent(new LobbyEvent(LobbyEvent.UNREGISTER_DRAGGING));
+         this._appStage.removeEventListener(HangarAmunitionSwitchAnimator.AMMUNITION_VIEW_HIDE_ANIM_COMPLETE,this.onAmmunitionViewHideAnimCompleteHandler);
          removeEventListener(CrewDropDownEvent.SHOW_DROP_DOWN,this.onHangarShowDropDownHandler);
          this._gameInputMgr.clearKeyHandler(Keyboard.F1,KeyboardEvent.KEY_DOWN,this.showLayoutHandler);
          this._gameInputMgr.clearKeyHandler(Keyboard.F1,KeyboardEvent.KEY_UP,this.closeLayoutHandler);
@@ -422,7 +362,10 @@ package net.wg.gui.lobby.hangar
          this.teaser.removeEventListener(TeaserEvent.HIDE,this.onTeaserHideHandler);
          this.switchModePanel.removeEventListener(ComponentEvent.SHOW,this.onSwitchModePanelShowHandler);
          this.switchModePanel.removeEventListener(ComponentEvent.HIDE,this.onSwitchModePanelHideHandler);
-         this.carousel.removeEventListener(Event.RESIZE,this.onCarouselResizeHandler);
+         if(this.carousel)
+         {
+            this.carousel.removeEventListener(Event.RESIZE,this.onCarouselResizeHandler);
+         }
          if(this._hangarViewSwitchAnimator)
          {
             this._hangarViewSwitchAnimator.dispose();
@@ -434,7 +377,7 @@ package net.wg.gui.lobby.hangar
       override protected function onDispose() : void
       {
          App.utils.counterManager.removeCounter(this.crewOperationBtn);
-         this.removeBattleRoyaleContainer();
+         this.removeBattleRoyalContainer();
          this.crewOperationBtn.dispose();
          this.crewOperationBtn = null;
          this.bottomBg.dispose();
@@ -455,9 +398,10 @@ package net.wg.gui.lobby.hangar
          this.vehResearchPanel = null;
          this.vehResearchBG.dispose();
          this.vehResearchBG = null;
-         this.tmenXpPanel = null;
          this.crew = null;
          this.params = null;
+         this.tmenXpPanel = null;
+         this.rewardKitsEntrancePoint = null;
          this.ammunitionPanel = null;
          this.ammunitionPanelInject = null;
          this._carousel = null;
@@ -465,14 +409,8 @@ package net.wg.gui.lobby.hangar
          this._header = null;
          this._alertMessageBlock = null;
          this.dqWidget = null;
-         this.chinaLootboxesWidget = null;
-         this.shopSalesEntryPoint = null;
          this._widgetInitialized = false;
          this.crewXPPanelInject = null;
-         this._eventShopEntryPoint = null;
-         this.eventDailyReward = null;
-         this.eventGlobalProgressionEntryPoint = null;
-         this._eventProgressionEntryPoint = null;
          App.utils.data.cleanupDynamicObject(this._widgetSizes);
          this._widgetSizes = null;
          this._gameInputMgr = null;
@@ -482,13 +420,12 @@ package net.wg.gui.lobby.hangar
          this._appStage = null;
          this.carouselContainer.dispose();
          this.carouselContainer = null;
+         this._funRandomWidget = null;
          removeChild(this._eventsEntryContainer);
          this._eventsEntryContainer = null;
          this._currentWidgetLayout = 99;
          App.utils.data.cleanupDynamicObject(this._widgetSizes);
          this._widgetSizes = null;
-         removeChild(this._chinaLootboxCont);
-         this._chinaLootboxCont = null;
          super.onDispose();
       }
       
@@ -501,7 +438,6 @@ package net.wg.gui.lobby.hangar
          this.bottomBg.mouseEnabled = false;
          this._gameInputMgr.setKeyHandler(Keyboard.F1,KeyboardEvent.KEY_DOWN,this.showLayoutHandler,true);
          this._gameInputMgr.setKeyHandler(Keyboard.F1,KeyboardEvent.KEY_UP,this.closeLayoutHandler,true);
-         this._gameInputMgr.setKeyHandler(Keyboard.ESCAPE,KeyboardEvent.KEY_DOWN,this.handleEscapeHandler,true);
          this.crewOperationBtn.tooltip = CREW_OPERATIONS.CREWOPERATIONS_BTN_TOOLTIP;
          this.crewOperationBtn.helpText = LOBBY_HELP.HANGAR_CREWOPERATIONBTN;
          this.crewOperationBtn.addEventListener(ButtonEvent.CLICK,this.onCrewOperationBtnClickHandler,false,0,true);
@@ -538,15 +474,15 @@ package net.wg.gui.lobby.hangar
          var _loc1_:Boolean = isInvalid(ENTRY_CONT_POSITION_INVALID,INVALIDATE_AMMUNITION_PANEL_SIZE);
          var _loc2_:Boolean = isInvalid(PARAMS_POSITION_INVALID);
          var _loc3_:Boolean = false;
-         if(isInvalid(INVALIDATE_EVENT_ENTRIES_VISIBLE))
+         if(isInvalid(INVALIDATE_REWARD_KITS_VISIBLE))
          {
-            this.shopSalesEntryPoint.visible = this._isShopSalesVisible;
+            this.rewardKitsEntrancePoint.visible = this._rewardKitsVisible;
             if(this.carousel)
             {
-               this.updateRightMargin();
+               this.carousel.setRightMargin(!!this._rewardKitsVisible ? int(REWARD_KITS_ENTRY_POINT_W) : int(0));
             }
          }
-         if(isInvalid(INVALIDATE_CAROUSEL_SIZE))
+         if(this.carousel && isInvalid(INVALIDATE_CAROUSEL_SIZE))
          {
             this.carousel.visible = true;
             this.updateCarouselPosition();
@@ -567,45 +503,15 @@ package net.wg.gui.lobby.hangar
             _loc1_ = true;
             _loc3_ = true;
          }
-         if(isInvalid(INVALIDATE_CHINA_LOOTBOXES_VISIBLE))
-         {
-            if(this._chinaLootboxesVisible)
-            {
-               if(!this.chinaLootboxesWidget)
-               {
-                  this.chinaLootboxesWidget = new ChinaLootBoxesEntryPointWidget();
-                  this._chinaLootboxCont.addChild(this.chinaLootboxesWidget);
-               }
-               if(!isFlashComponentRegisteredS(HANGAR_ALIASES.CHINA_LOOTBOXES_WIDGET))
-               {
-                  registerFlashComponentS(this.chinaLootboxesWidget,HANGAR_ALIASES.CHINA_LOOTBOXES_WIDGET);
-               }
-               this.chinaLootboxesWidget.visible = true;
-            }
-            else if(this.chinaLootboxesWidget)
-            {
-               if(isFlashComponentRegisteredS(HANGAR_ALIASES.CHINA_LOOTBOXES_WIDGET))
-               {
-                  unregisterFlashComponentS(HANGAR_ALIASES.CHINA_LOOTBOXES_WIDGET);
-               }
-               this._chinaLootboxCont.removeChild(this.chinaLootboxesWidget);
-               this.chinaLootboxesWidget = null;
-            }
-            if(this.carousel)
-            {
-               this.updateRightMargin();
-            }
-            this.updateChinaLootBoxWidgetPosition();
-         }
          if(_loc1_)
          {
             this.updateEntriesPosition();
             _loc2_ = true;
-            this.updateGlobalProgressionEntryPointPosition();
          }
          if(_loc2_)
          {
             this.updateParamsPosition();
+            this.updateFunRandomNYHangarWidgetPosition();
             if(!_loc3_)
             {
                this.repositionWidget();
@@ -668,6 +574,18 @@ package net.wg.gui.lobby.hangar
          }
       }
       
+      public function as_createFunRandomNYWidget() : void
+      {
+         if(this._funRandomWidget == null)
+         {
+            this._funRandomWidget = new FunRandomNYHangarWidget();
+            this._funRandomWidget.name = FUNRANDOM_ALIASES.FUN_RANDOM_NY_HANGAR_WIDGET;
+            registerFlashComponentS(this._funRandomWidget,FUNRANDOM_ALIASES.FUN_RANDOM_NY_HANGAR_WIDGET);
+            addChildAt(this._funRandomWidget,0);
+         }
+         this.updateFunRandomNYHangarWidgetPosition();
+      }
+      
       public function as_destroyDQWidget() : void
       {
          if(this.dqWidget)
@@ -685,6 +603,19 @@ package net.wg.gui.lobby.hangar
       public function as_hideTeaserTimer() : void
       {
          this.teaser.hideTimer();
+      }
+      
+      public function as_removeFunRandomNYWidget() : void
+      {
+         if(this._funRandomWidget != null)
+         {
+            if(isFlashComponentRegisteredS(FUNRANDOM_ALIASES.FUN_RANDOM_NY_HANGAR_WIDGET))
+            {
+               unregisterFlashComponentS(FUNRANDOM_ALIASES.FUN_RANDOM_NY_HANGAR_WIDGET);
+            }
+            removeChild(this._funRandomWidget);
+            this._funRandomWidget = null;
+         }
       }
       
       public function as_setAlertMessageBlockVisible(param1:Boolean) : void
@@ -734,35 +665,22 @@ package net.wg.gui.lobby.hangar
          this._carouselAlias = param2;
          this._carousel = App.instance.utils.classFactory.getComponent(param1,TankCarousel);
          this.carousel.visible = false;
-         if(this._chinaLootboxesVisible)
+         if(this._rewardKitsVisible)
          {
-            this.carousel.setRightMargin(ChinaLootBoxesEntryPointWidget.WIDTH + CHINA_LOOTBOXES_ENTRY_POINT_X_OFFSET);
+            this.carousel.setRightMargin(REWARD_KITS_ENTRY_POINT_W);
          }
-         this.carousel.setRightMargin(this.calculateRightMargin());
-         this.updateRightMargin();
          this.carousel.addEventListener(Event.RESIZE,this.onCarouselResizeHandler);
          this.carousel.updateStage(_originalWidth,_originalHeight);
          this.carousel.name = CAROUSEL_NAME;
-         this.carouselContainer.addChildAt(this.carousel,0);
+         this.carouselContainer.addChild(this.carousel);
          registerFlashComponentS(this.carousel,this._carouselAlias);
          this.carousel.validateNow();
-         this.ammunitionPanel.visible = this.isControlsVisible;
-         this.ammunitionPanelInject.visible = this.isControlsVisible;
          invalidate(INVALIDATE_CAROUSEL_SIZE);
       }
       
       public function as_setCarouselEnabled(param1:Boolean) : void
       {
          this.carousel.enabled = param1;
-      }
-      
-      public function as_setChinaLootboxesVisible(param1:Boolean) : void
-      {
-         if(param1 != this._chinaLootboxesVisible)
-         {
-            this._chinaLootboxesVisible = param1;
-            invalidate(INVALIDATE_CHINA_LOOTBOXES_VISIBLE);
-         }
       }
       
       public function as_setControlsVisible(param1:Boolean) : void
@@ -797,12 +715,12 @@ package net.wg.gui.lobby.hangar
          }
       }
       
-      public function as_setShopSalesVisible(param1:Boolean) : void
+      public function as_setRewardKitsVisible(param1:Boolean) : void
       {
-         if(param1 != this._isShopSalesVisible)
+         if(param1 != this._rewardKitsVisible)
          {
-            this._isShopSalesVisible = param1;
-            invalidate(INVALIDATE_EVENT_ENTRIES_VISIBLE);
+            this._rewardKitsVisible = param1;
+            invalidate(INVALIDATE_REWARD_KITS_VISIBLE);
          }
       }
       
@@ -885,8 +803,7 @@ package net.wg.gui.lobby.hangar
             unregisterFlashComponentS(BATTLEROYALE_ALIASES.TECH_PARAMETERS_COMPONENT);
             unregisterFlashComponentS(BATTLEROYALE_ALIASES.BOTTOM_PANEL_COMPONENT);
             unregisterFlashComponentS(BATTLEROYALE_ALIASES.PROXY_CURRENCY_PANEL_COMPONENT);
-            this.removeBattleRoyaleContainer();
-            invalidate(ENTRY_CONT_POSITION_INVALID);
+            this.removeBattleRoyalContainer();
          }
          if(this._battleRoyaleComponents)
          {
@@ -898,36 +815,6 @@ package net.wg.gui.lobby.hangar
       {
          this._isCnSubscribeVisible = param1;
          this.updateCrewOperationsVisibility();
-      }
-      
-      public function as_toggleEventMode(param1:Boolean) : void
-      {
-         if(this._isEventMode == param1)
-         {
-            return;
-         }
-         this._isEventMode = param1;
-         this.eventGlobalProgressionEntryPoint.visible = this.eventDailyReward.visible = this._eventShopEntryPoint.visible = param1;
-         this.dqWidget.visible = !param1;
-         if(param1)
-         {
-            this._eventProgressionEntryPoint = App.instance.utils.classFactory.getComponent(Linkages.EVENT_PROGRESSION_ENTRY_POINT,EventProgressionEntryPoint);
-            addChild(this._eventProgressionEntryPoint);
-            this._eventProgressionEntryPoint.updateStage(_width,_height);
-            this._eventProgressionEntryPoint.x = _width - this._eventProgressionEntryPoint.width >> 1;
-            this._eventProgressionEntryPoint.y = EVENT_HEADER_Y;
-            registerFlashComponentS(this._eventProgressionEntryPoint,HANGAR_ALIASES.EVENT_PROGRESSION_ENTRY_POINT);
-         }
-         else
-         {
-            unregisterFlashComponentS(HANGAR_ALIASES.EVENT_PROGRESSION_ENTRY_POINT);
-            if(this._eventProgressionEntryPoint)
-            {
-               removeChild(this._eventProgressionEntryPoint);
-               this._eventProgressionEntryPoint = null;
-            }
-         }
-         this._carousel.paddingRight = !!param1 ? int(CAROUSEL_PADDING_RIGHT) : int(0);
       }
       
       public function generatedUnstoppableEvents() : Boolean
@@ -1007,22 +894,15 @@ package net.wg.gui.lobby.hangar
          }
       }
       
-      private function updateShopEntryPointPosition() : void
+      private function updateFunRandomNYHangarWidgetPosition() : void
       {
-         this._eventShopEntryPoint.x = _width - this._eventShopEntryPoint.width | 0;
-         if(_height - this.carousel.y < CAROUSEL_HEIGHT)
+         if(this._funRandomWidget)
          {
-            this._eventShopEntryPoint.y = this.carousel.y - SHOP_ENTRU_POINT_OFFSET_MEDIUM;
-            this._eventShopEntryPoint.setState(SHOP_ENTRU_POINT_STATE_MEDIUM);
-         }
-         else
-         {
-            this._eventShopEntryPoint.y = this.carousel.y - SHOP_ENTRU_POINT_OFFSET_BIG;
-            this._eventShopEntryPoint.setState(SHOP_ENTRU_POINT_STATE_BIG);
+            this._funRandomWidget.updatePosition(this.ammunitionPanel.y);
          }
       }
       
-      private function removeBattleRoyaleContainer() : void
+      private function removeBattleRoyalContainer() : void
       {
          if(this._battleRoyaleComponents != null)
          {
@@ -1030,25 +910,6 @@ package net.wg.gui.lobby.hangar
             this._battleRoyaleComponents.dispose();
             this._battleRoyaleComponents = null;
          }
-      }
-      
-      private function updateRightMargin() : void
-      {
-         this.carousel.setRightMargin(this.calculateRightMargin());
-      }
-      
-      private function calculateRightMargin() : int
-      {
-         var _loc1_:int = 0;
-         if(this._isShopSalesVisible)
-         {
-            _loc1_ = SHOP_SALES_ENTRY_POINT_W;
-         }
-         if(this._chinaLootboxesVisible)
-         {
-            _loc1_ = ChinaLootBoxesEntryPointWidget.WIDTH + CHINA_LOOTBOXES_ENTRY_POINT_X_OFFSET;
-         }
-         return _loc1_;
       }
       
       private function resolveVisibility() : void
@@ -1060,7 +921,7 @@ package net.wg.gui.lobby.hangar
       {
          if(!this._hangarViewSwitchAnimator)
          {
-            this._hangarViewSwitchAnimator = new HangarAmunitionSwitchAnimator(this,Vector.<DisplayObject>([this.params,this.crew,this.dqWidget,this.teaser,this.crewBG,this.crewOperationBtn,this.crewXPPanelInject,this._alertMessageBlock,this.vehResearchPanel,this.vehResearchBG,this.tmenXpPanel,this.header,this.ammunitionPanel,this.bottomBg,this.shopSalesEntryPoint]),Vector.<DisplayObject>([this.carouselContainer,this._chinaLootboxCont]),this.ammunitionPanelInject,height);
+            this._hangarViewSwitchAnimator = new HangarAmunitionSwitchAnimator(this,Vector.<DisplayObject>([this.params,this.crew,this.dqWidget,this.teaser,this.crewBG,this.crewOperationBtn,this.crewXPPanelInject,this._alertMessageBlock,this.vehResearchPanel,this.vehResearchBG,this.tmenXpPanel,this.header,this.ammunitionPanel,this.bottomBg,this.rewardKitsEntrancePoint,this._funRandomWidget]),Vector.<DisplayObject>([this.carouselContainer]),this.ammunitionPanelInject,height);
          }
       }
       
@@ -1068,23 +929,24 @@ package net.wg.gui.lobby.hangar
       {
          this._widgetSizes = new Dictionary();
          this._widgetSizes[DAILY_QUESTS_WIDGET_CONSTANTS.WIDGET_LAYOUT_NORMAL] = [340,186];
-         this._widgetSizes[DAILY_QUESTS_WIDGET_CONSTANTS.WIDGET_LAYOUT_MINI] = [190,65];
-         this._widgetSizes[DAILY_QUESTS_WIDGET_CONSTANTS.WIDGET_LAYOUT_MICRO] = [155,55];
+         this._widgetSizes[DAILY_QUESTS_WIDGET_CONSTANTS.WIDGET_LAYOUT_MINI] = [190,70];
+         this._widgetSizes[DAILY_QUESTS_WIDGET_CONSTANTS.WIDGET_LAYOUT_MICRO] = [155,60];
          this._widgetSizes[DAILY_QUESTS_WIDGET_CONSTANTS.WIDGET_LAYOUT_SINGLE] = [340,62];
       }
       
       private function updateEntriesPosition() : void
       {
+         var _loc1_:DisplayObject = null;
          var _loc3_:Boolean = false;
-         var _loc1_:DisplayObject = this.ammunitionPanelInject.hitObject;
-         var _loc2_:Boolean = this.carousel && this._eventsEntryContainer.isActive;
+         _loc1_ = this.ammunitionPanelInject.hitObject;
+         var _loc2_:Boolean = this.carousel && this._eventsEntryContainer.isActive && _loc1_ && _loc1_.width > 0;
          this._eventsEntryContainer.visible = _loc2_;
          if(_loc2_)
          {
             this._eventsEntryContainer.x = _width - this._eventsEntryContainer.width - this._eventsEntryContainer.margin.width | 0;
             this._eventsEntryContainer.y = this.carousel.y - this._eventsEntryContainer.height | 0;
             _loc3_ = false;
-            if(this.ammunitionPanelInject.visible && _loc1_ && _loc1_.width > 0)
+            if(this.ammunitionPanelInject.visible)
             {
                _loc3_ = this.ammunitionPanelInject.x + _loc1_.x + _loc1_.width + AMMUNITION_PANEL_INJECT_OFFSET_RIGHT > this._eventsEntryContainer.x;
             }
@@ -1097,22 +959,6 @@ package net.wg.gui.lobby.hangar
                this._eventsEntryContainer.y -= this._eventsEntryContainer.margin.height;
             }
          }
-      }
-      
-      private function updateGlobalProgressionEntryPointPosition() : void
-      {
-         this.eventGlobalProgressionEntryPoint.x = _width - RIGHT_MARGIN;
-         var _loc1_:int = DAILY_REWARD_PADDING;
-         var _loc2_:int = this.carousel.y - _loc1_ - DAILY_REWARD_TOP_PADDING;
-         var _loc3_:int = this.crew.y + this.crew.height - _loc2_;
-         if(_width < StageSizeBoundaries.WIDTH_1366 || _loc3_ > 0)
-         {
-            _loc1_ = DAILY_REWARD_PADDING_SMALL;
-         }
-         var _loc4_:Boolean = _loc3_ > DAILY_REWARD_MAX_OVERLAP;
-         this.eventGlobalProgressionEntryPoint.forceSmallSize(_loc4_);
-         this.eventDailyReward.forceSmallSize(_loc4_);
-         this.eventGlobalProgressionEntryPoint.y = this.eventDailyReward.y = this.carousel.y - _loc1_;
       }
       
       private function checkToIfLayoutNeedsUpdate() : void
@@ -1248,10 +1094,6 @@ package net.wg.gui.lobby.hangar
          {
             _loc2_ = this._eventsEntryContainer.y - this.params.y - this._eventsEntryContainer.margin.top;
          }
-         if(this.eventGlobalProgressionEntryPoint.visible)
-         {
-            _loc2_ = this.eventGlobalProgressionEntryPoint.y - this.params.y - PRORESSION_TOP_PADDING;
-         }
          if(_loc2_ > 0)
          {
             this.params.height = _loc2_;
@@ -1265,40 +1107,14 @@ package net.wg.gui.lobby.hangar
       
       private function updateCarouselPosition() : void
       {
-         this._carousel.updateCarouselPosition(_height - this._carousel.getBottom() ^ 0);
-         this.updateChinaLootBoxWidgetPosition();
+         var _loc1_:int = _height - this._carousel.getBottom();
+         this._carousel.updateCarouselPosition(_loc1_);
+         this.rewardKitsEntrancePoint.x = this._carousel.x + this._carousel.rightArrow.x + this._carousel.rightArrow.width - this.rewardKitsEntrancePoint.offsetX;
+         this.rewardKitsEntrancePoint.y = this._carousel.y + this._carousel.leftArrow.y + (this._carousel.leftArrow.height >> 1) - REWARD_KITS_ENTRY_POINT_Y_OFFSET - this.rewardKitsEntrancePoint.offsetY;
          this.updateAmmunitionPanelPosition();
-         this.updateShopEntryPointPosition();
          if(this._hangarViewSwitchAnimator)
          {
             this._hangarViewSwitchAnimator.updateStage(width,height);
-         }
-         if(this.shopSalesEntryPoint.visible)
-         {
-            this.shopSalesEntryPoint.x = this._carousel.x + this._carousel.rightArrow.x + this._carousel.rightArrow.width + SHOP_SALES_ENTRY_POINT_X_OFFSET | 0;
-            this.shopSalesEntryPoint.y = this._carousel.y + this._carousel.leftArrow.y + (this._carousel.leftArrow.height >> 1) + SHOP_SALES_ENTRY_POINT_Y_OFFSET | 0;
-         }
-         this.updateRightMargin();
-      }
-      
-      private function updateChinaLootBoxWidgetPosition() : void
-      {
-         var _loc1_:int = 0;
-         var _loc2_:int = 0;
-         if(this.chinaLootboxesWidget && this._carousel)
-         {
-            _loc1_ = this.carousel.x + this._carousel.rightArrow.x + this._carousel.rightArrow.width + CHINA_LOOTBOXES_ENTRY_POINT_X_OFFSET;
-            _loc2_ = this._carousel.y + this._carousel.leftArrow.y + (this._carousel.leftArrow.height >> 1);
-            if(this._isCarouselVisible)
-            {
-               _loc2_ -= CHINA_LOOTBOXES_ENTRY_POINT_Y_OFFSET;
-            }
-            else
-            {
-               _loc2_ -= this._carousel.rowCount > 1 && !this._carousel.smallDoubleCarouselEnable ? CHINA_LOOTBOXES_ENTRY_POINT_Y_OFFSET_ALT : CHINA_LOOTBOXES_ENTRY_POINT_Y_OFFSET;
-            }
-            this.chinaLootboxesWidget.x = _loc1_;
-            this.chinaLootboxesWidget.y = _loc2_;
          }
       }
       
@@ -1384,6 +1200,11 @@ package net.wg.gui.lobby.hangar
       public function get isCrewOperationVisible() : Boolean
       {
          return !this._isCnSubscribeVisible && this.isControlsVisible;
+      }
+      
+      public function onAmmunitionViewHideAnimCompleteHandler(param1:Event) : void
+      {
+         invalidate(INVALIDATE_CAROUSEL_SIZE);
       }
       
       private function onCloseBtnClickHandler(param1:ButtonEvent) : void

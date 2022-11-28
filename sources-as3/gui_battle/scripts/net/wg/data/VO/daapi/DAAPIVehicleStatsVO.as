@@ -13,8 +13,6 @@ package net.wg.data.VO.daapi
       
       public var frags:int = -1;
       
-      public var damage:int = -1;
-      
       public var chatCommand:String = "";
       
       public var chatCommandFlags:uint = 1.0;

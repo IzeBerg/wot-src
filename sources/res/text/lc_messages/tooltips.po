@@ -37,9 +37,6 @@ msgstr "在WOWS客户端"
 msgid "Contact/status/inBattle/bootcamp"
 msgstr "新兵训练营中"
 
-msgid "Contact/status/inBattle/event"
-msgstr "在南瓜派对战斗中，%(host)s"
-
 msgid "Contact/status/inBattle/fortifications"
 msgstr "在要塞的战斗中"
 
@@ -552,6 +549,9 @@ msgid "advanced/HOLLOW_CHARGE"
 msgstr ""
 "演示增加的穿透力，在击中屏幕时显著降低。高爆炸性反坦克炮弹只有在穿透坦克装甲后才会造成损伤。跳弹很少见。随着飞行距离的增加，这种炮弹的穿透力不会降低。"
 
+msgid "advanced/additionalInvisibilityDevice"
+msgstr "效果取决于坦克类型。它能增加坦克在静止和移动时的隐蔽系数。对主动侦察，以及在高风险位置的被动侦察都有帮助。"
+
 msgid "advanced/aimingStabilizer"
 msgstr "改善瞄准:减少射击、炮塔横移或坦克移动过程中的炮弹散布范围。"
 
@@ -596,6 +596,9 @@ msgstr "为车长以外的所有乘员提供更多的经验。"
 
 msgid "advanced/commander_universalist"
 msgstr "使车长掌握每个专业并替换受伤的乘员。"
+
+msgid "advanced/commandersView"
+msgstr "降低植被后敌方坦克移动和静止时的隐蔽系数。"
 
 msgid "advanced/demountKit/common"
 msgstr "不消耗游戏货币拆卸标准和赏金配件。"
@@ -647,6 +650,9 @@ msgstr "提高发动机功率，增强战斗中坦克的机动性。"
 
 msgid "advanced/equipment"
 msgstr "配件可以极大地提升您坦克的性能。您可以使用拆卸工具或是游戏内货币拆卸配件，并将其安装在其他坦克上。"
+
+msgid "advanced/extraHealthReserve"
+msgstr "提升坦克生命值。增加悬挂装置的耐久度和承载能力 ，并且提升其维修速度。维修后完全恢复悬挂装置的生命值。"
 
 msgid "advanced/fireFighting"
 msgstr "增强灭火能力。"
@@ -705,6 +711,19 @@ msgstr "HE弹"
 msgid "advanced/header/shellType/HOLLOW_CHARGE"
 msgstr "HEAT弹"
 
+msgid "advanced/improvedConfiguration"
+msgstr ""
+"加快维修速度，提升弹药架、油箱和发动机的生命值。降低受损弹药架和发动机的惩罚，并且降低发动机起火几率。在一场战斗中，阻止一次油箱着火、弹药架爆炸和发动机损坏。"
+
+msgid "advanced/improvedRadioCommunication"
+msgstr "增加敌方坦克被点亮后的可见时间并降低您被点亮后的可见时间。"
+
+msgid "advanced/improvedRotationMechanism"
+msgstr "降低开火后、坦克移动、车体旋转和炮塔旋转时的炮弹散布范围，并且提升炮塔和车体的旋转速度。"
+
+msgid "advanced/improvedSights"
+msgstr "减小瞄准圈的大小以增加正在瞄准或是完全瞄准火炮的精度，使您的火炮更容易命中目标。"
+
 msgid "advanced/improvedVentilation"
 msgstr "提升乘员的技能以提升您的坦克部分性能。"
 
@@ -731,6 +750,15 @@ msgstr "帮助玩家更快切换已装填炮弹的类型。"
 
 msgid "advanced/loader_pedant"
 msgstr "增加弹药架的耐久性: 炮弹之间将减少磕碰。"
+
+msgid "advanced/modernizedAimDrivesAimingStabilizer"
+msgstr "降低射击、炮塔旋转或坦克移动时的准星瞄准时间和炮弹散布范围。"
+
+msgid "advanced/modernizedExtraHealthReserveAntifragmentationLining"
+msgstr "提升坦克和其内部模块的生命值。提升悬挂装置生命值和维修速度。降低受损弹药架和发动机的惩罚。维修后完全恢复悬挂装置的生命值。"
+
+msgid "advanced/modernizedTurbochargerRotationMechanism"
+msgstr "提升发动机的功率和最大速度。降低开火后、坦克移动、炮塔旋转时的炮弹散布范围，并且提升炮塔和车体的旋转速度。"
 
 msgid "advanced/naturalCover"
 msgstr "提高坦克的隐蔽性。"
@@ -795,6 +823,9 @@ msgstr "激活后立即修复选定的一个损坏模块。"
 msgid "advanced/stereoscope"
 msgstr ""
 "坦克停止移动后，短时间内提高坦克的观察范围。如果坦克向前或向后移动，或者车体转向时，效果被禁用。当转动高级V系自行反坦克炮时，效果不会失效。"
+
+msgid "advanced/turbocharger"
+msgstr "提升发动机功率，使坦克的加速能力、操控性、爬坡能力更加优秀。提升坦克的最大前进和倒车速度，使您能更快抵达战略要点或是躲避敌方回击。"
 
 msgid "advanced/vehicleChassis"
 msgstr "影响坦克在各种地形上的行驶速度和越野能力的模块。也影响负载能力。"
@@ -1377,9 +1408,6 @@ msgstr "指令<span>不会生效</span>："
 
 msgid "battleBooster/crew"
 msgstr "指令"
-
-msgid "battleBooster/installationEffects"
-msgstr "安装后效果"
 
 msgid "battleBooster/inventoryCount"
 msgstr "库存"
@@ -2436,15 +2464,6 @@ msgstr "每场战斗经验加成"
 msgid "boostersWindow/booster/longDescriptionSpecial"
 msgstr "激活后，个人储备可让您在每场战斗后获得额外奖励。个人储备在标准模式、排位赛、特殊比赛、钢铁猎手和前线模式的特定时期内都有效。"
 
-msgid "boostersWindow/booster/quality/big"
-msgstr "(大)"
-
-msgid "boostersWindow/booster/quality/medium"
-msgstr "(中等)"
-
-msgid "boostersWindow/booster/quality/small"
-msgstr "(小)"
-
 msgid "boostersWindow/booster/shortDescriptionSpecial"
 msgstr "每场战斗后的额外奖励"
 
@@ -2657,7 +2676,7 @@ msgid "crewBundle/bonuses"
 msgstr "优点:"
 
 msgid "crewBundle/header/offspring"
-msgstr "后代乐队成员"
+msgstr "后裔乐队成员"
 
 msgid "crewBundle/howToGet"
 msgstr "如何获得:"
@@ -2681,7 +2700,7 @@ msgid "crewSkins/noRestrictions"
 msgstr "无限制"
 
 msgid "crewSkins/noSound"
-msgstr "无画外音"
+msgstr "无专属语音"
 
 msgid "crewSkins/restrictions"
 msgstr "限制:"
@@ -2690,19 +2709,19 @@ msgid "crewSkins/restrictions/header"
 msgstr "您不能将选定的皮肤应用于此乘员上。"
 
 msgid "crewSkins/sound"
-msgstr "画外音:"
+msgstr "专属语音:"
 
 msgid "crewSkins/soundHeader"
-msgstr "点击收听画外音实例"
+msgstr "点击收听专属语音示例"
 
 msgid "crewSkins/soundInfo"
 msgstr "仅对指挥官可用"
 
 msgid "crewSkins/soundInfoDescr"
-msgstr "假如在设置中启用了指挥官画外音，则需要应用。"
+msgstr "如果在设置中启用了车长专属语音，就会启用。"
 
 msgid "crewSkins/soundWarningDescr1"
-msgstr "如要在战斗中听到这些信息，请在设置中给指挥官启用画外音。"
+msgstr "如要在战斗中听到这些语音信息，请在设置中启用车长专属语音。"
 
 msgid "crewSkins/soundWarningDescr2"
 msgstr "如要在战斗中听到这些信息，请给指挥官应用乘员皮肤。"
@@ -2759,7 +2778,7 @@ msgid "customization/camouflage/desert"
 msgstr "沙地"
 
 msgid "customization/camouflage/empty"
-msgstr "使用%(kind)s类型的涂装可以在相应的地图中更好的隐蔽。"
+msgstr "使用%(kind)s类型的涂装可以在相应的地图中更好地隐蔽。"
 
 msgid "customization/camouflage/igr/body"
 msgstr ""
@@ -3387,13 +3406,13 @@ msgid "deviceFits/remove_too_heavy/header"
 msgstr "拆卸失败。"
 
 msgid "deviceFits/remove_too_heavy/text"
-msgstr "安装配件需要坦克悬挂系统提供更高的承载能力。"
+msgstr "此配件需要承载能力更高的悬挂装置。"
 
 msgid "deviceFits/too_heavy/header"
 msgstr "无法安装。"
 
 msgid "deviceFits/too_heavy/text"
-msgstr "安装配件需要坦克悬挂系统提供更高的承载能力。"
+msgstr "此配件需要承载能力更高的悬挂装置。"
 
 msgid "deviceFits/too_heavy_chassi/header"
 msgstr "不能安装此装备。此装备需要更多的载重量。"
@@ -4332,17 +4351,11 @@ msgstr "激活时:"
 msgid "equipment/restriction"
 msgstr "限制:"
 
-msgid "event/fightBtn/disable/body"
-msgstr "若要加入战斗，请选择一辆符合等级要求的坦克。"
-
-msgid "event/fightBtn/disable/header"
-msgstr "无法加入战斗"
-
 msgid "event/squad/disable/body"
-msgstr "若要加入战斗，请选择一辆符合等级要求的坦克并确认您已准备就绪。"
+msgstr "若要加入活动，请选择%(tankName)s"
 
 msgid "event/squad/disable/header"
-msgstr "无法加入战斗"
+msgstr "注意！"
 
 msgid "falloutBattleSelectorWindow/btnDisabled/body"
 msgstr "您已在战斗队列中。"
@@ -4974,6 +4987,12 @@ msgstr "您需要租用一辆坦克。"
 msgid "hangar/startBtn/battleRoyale/notRented/header"
 msgstr "不可用"
 
+msgid "hangar/startBtn/battleRoyale/telecomRentalIsOver/body"
+msgstr "选择其它坦克。"
+
+msgid "hangar/startBtn/battleRoyale/telecomRentalIsOver/header"
+msgstr "坦克暂不能使用"
+
 msgid "hangar/startBtn/battleRoyaleSquadNotReady/notReady/body"
 msgstr "若要加入战斗，所有小队成员都应该确认就绪。"
 
@@ -5380,6 +5399,21 @@ msgstr "战争债券"
 msgid "header/buttons/crystal/title"
 msgstr "战争债券"
 
+msgid "header/buttons/equipCoin/description0"
+msgstr "可以通过拆解试验型配件来获得%(equipCoin)s。"
+
+msgid "header/buttons/equipCoin/description1"
+msgstr "需要使用合金元件来升级试验型配件。"
+
+msgid "header/buttons/equipCoin/descriptionEquipCoin"
+msgstr "合金元件"
+
+msgid "header/buttons/equipCoin/descriptionTitle"
+msgstr "如何获得:"
+
+msgid "header/buttons/equipCoin/title"
+msgstr "合金元件"
+
 msgid "header/buttons/forts/body"
 msgstr "前往军团信息。"
 
@@ -5702,12 +5736,6 @@ msgstr "公告可用后可以下载完整客户端。"
 
 msgid "lobbyMenu/versionInfoButton/miniclient/header"
 msgstr "注意！"
-
-msgid "loby_messenger/btnReferralDisabled/body"
-msgstr "在所选模式下不可用。请进入标准模式使用此功能。"
-
-msgid "loby_messenger/btnReferralDisabled/header"
-msgstr "推荐计划"
 
 msgid "loby_messenger/channel_button/inRoaming"
 msgstr "因变更地区频道无法使用。"
@@ -6073,6 +6101,9 @@ msgstr "个"
 msgid "moduleFits/already_installed/header"
 msgstr "已安装:"
 
+msgid "moduleFits/already_installed/hiddenVehicleCount"
+msgstr "及其它%(count)s"
+
 msgid "moduleFits/battleBooster/cannotBuy/description"
 msgstr "这种类型的指令可以在特殊游戏活动中作为奖励获得。"
 
@@ -6091,11 +6122,14 @@ msgstr "银币不足"
 msgid "moduleFits/credits_error/text"
 msgstr "通过战斗获得，在仓库中卖掉不需要的物品或使用金币兑换。"
 
-msgid "moduleFits/deluxeEquipment/cannotBuy/description"
-msgstr "这种类型的配件可以在特殊游戏活动中作为奖励获得。"
+msgid "moduleFits/deconstruct/modernized/description"
+msgstr "(将获得)"
 
-msgid "moduleFits/deluxeEquipment/cannotBuy/header"
-msgstr "此配件无法购买"
+msgid "moduleFits/deconstruct/modernized/price"
+msgstr "拆解等级%(level)s"
+
+msgid "moduleFits/deconstruct/price"
+msgstr "拆解"
 
 msgid "moduleFits/dismantling"
 msgstr "当前安装有：%(moduleName)s。拆卸配件将改变以下参数："
@@ -6105,6 +6139,12 @@ msgstr "无法安装"
 
 msgid "moduleFits/duplicated/note"
 msgstr "提供类似效果的配件已经被安装到坦克上。"
+
+msgid "moduleFits/equipcoin_error/header"
+msgstr "合金元件不足"
+
+msgid "moduleFits/equipcoin_error/text"
+msgstr "要获得更多合金元件，可以拆解闲置的试验型配件。"
 
 msgid "moduleFits/gold_error/header"
 msgstr "金币不足。"
@@ -6146,16 +6186,22 @@ msgid "moduleFits/remove_too_heavy/header"
 msgstr "拆卸失败。"
 
 msgid "moduleFits/remove_too_heavy/text"
-msgstr "安装配件需要坦克悬挂系统提供更高的承载能力。"
+msgstr "此配件需要承载能力更高的悬挂装置。"
 
 msgid "moduleFits/replace"
 msgstr "当前安装有：%(moduleName)s。替换配件将改变以下参数："
+
+msgid "moduleFits/similar_device_already_installed/header"
+msgstr "无法安装"
+
+msgid "moduleFits/similar_device_already_installed/text"
+msgstr "提供类似效果的配件已安装到坦克上了。"
 
 msgid "moduleFits/too_heavy/header"
 msgstr "无法安装。"
 
 msgid "moduleFits/too_heavy/text"
-msgstr "安装配件需要坦克悬挂系统提供更高的承载能力。"
+msgstr "此配件需要承载能力更高的悬挂装置。"
 
 msgid "moduleFits/too_heavy_chassi/header"
 msgstr "不能安装此装备。此装备需要更多的载重量。"
@@ -6169,32 +6215,23 @@ msgstr "载重能力不足"
 msgid "moduleFits/too_heavy_chassis/text"
 msgstr "请降低车重。"
 
-msgid "moduleFits/trophyEquipment/basic/description"
-msgstr "您可以使用游戏货币来升级赏金配件的属性。"
-
-msgid "moduleFits/trophyEquipment/basic/header"
-msgstr "升级赏金配件"
-
-msgid "moduleFits/trophyEquipment/cannotBuy/description"
-msgstr "这种类型的配件可以在特殊游戏活动中作为奖励获取。"
-
-msgid "moduleFits/trophyEquipment/cannotBuy/header"
-msgstr "赏金配件不能直接购买"
-
-msgid "moduleFits/trophyEquipment/upgraded/description"
-msgstr "该配件类型能提供最高的加成。"
-
-msgid "moduleFits/trophyEquipment/upgraded/header"
-msgstr "赏金配件已升级"
-
 msgid "moduleFits/unlock_error/header"
 msgstr "该模块还未研发。"
 
 msgid "moduleFits/unlock_error/text"
 msgstr "研发该模块。"
 
+msgid "moduleFits/upgradable/modernized/price"
+msgstr "升级至等级%(level)s"
+
 msgid "moduleFits/upgradable/price"
 msgstr "升级"
+
+msgid "moduleFits/useless_battle_booster/header"
+msgstr "指令不会有效果"
+
+msgid "moduleFits/useless_battle_booster/text"
+msgstr "指令只有在您安装了相应的配件时才会起作用。"
 
 msgid "moduleFits/wrong_slot/body"
 msgstr "此模块已经被安装在坦克上。"
@@ -6436,7 +6473,7 @@ msgid "notrecruitedtankman/bp-commander-1_2/label"
 msgstr "战斗通行证第2赛季"
 
 msgid "notrecruitedtankman/buffon/desc"
-msgstr "授予满足坦克世界2018活动条件的玩家。传奇运动员吉安路易吉·布冯是一名指挥官，他有着独特的配音和100%的训练度。"
+msgstr "授予满足坦克世界2018足球活动条件的玩家。传奇运动员吉安路易吉·布冯是一名拥有专属语音和100%熟练度的指挥官。"
 
 msgid "notrecruitedtankman/buffon/label"
 msgstr "足球活动"
@@ -6796,6 +6833,63 @@ msgstr ""
 msgid "notrecruitedtankman/ny22woman/label"
 msgstr "假日行动2022"
 
+msgid "notrecruitedtankman/ny23_girl_1/desc"
+msgstr ""
+"奖励给在假日行动2023中达到特定节日气氛等级的玩家。该女性乘员拥有训练至100%熟练度的\"零历练\"兄弟连特长，以及足够的经验再将另一项特长或技能训练至100%。"
+
+msgid "notrecruitedtankman/ny23_girl_1/label"
+msgstr "假日行动2023"
+
+msgid "notrecruitedtankman/ny23_girl_2/desc"
+msgstr ""
+"奖励给在假日行动2023中达到特定节日气氛等级的玩家。该女性乘员拥有训练至100%熟练度的\"零历练\"兄弟连特长，以及足够的经验再将另一项特长或技能训练至100%。"
+
+msgid "notrecruitedtankman/ny23_girl_2/label"
+msgstr "假日行动2023"
+
+msgid "notrecruitedtankman/ny23_girl_3/desc"
+msgstr ""
+"奖励给在假日行动2023中达到特定节日气氛等级的玩家。该女性乘员拥有训练至100%熟练度的\"零历练\"兄弟连特长，以及足够的经验再将另一项特长或技能训练至100%。"
+
+msgid "notrecruitedtankman/ny23_girl_3/label"
+msgstr "假日行动2023"
+
+msgid "notrecruitedtankman/ny23_girl_4/desc"
+msgstr ""
+"奖励给在假日行动2023中达到特定节日气氛等级的玩家。该女性乘员拥有训练至100%熟练度的\"零历练\"兄弟连特长，以及足够的经验再将另一项特长或技能训练至100%。"
+
+msgid "notrecruitedtankman/ny23_girl_4/label"
+msgstr "假日行动2023"
+
+msgid "notrecruitedtankman/ny23_girl_m/desc"
+msgstr ""
+"飒爽的容貌、公认的才华、独特且富有感染力的笑声，是米拉在红毯上大放异彩的终极武器。当下次在银幕上看到她时，您可能会想起米拉最受欢迎的电影中科学家的台词:\"我告诉过你...完美！\""
+
+msgid "notrecruitedtankman/ny23_girl_m/event"
+msgstr "假日行动2023"
+
+msgid "notrecruitedtankman/ny23_girl_m/label"
+msgstr "假日行动2023"
+
+msgid "notrecruitedtankman/ny23defaultGirl/desc"
+msgstr ""
+"节日气氛升至特定等级后，您可以获得一位女性乘员。该女性乘员拥有训练至100%熟练度的\"零历练\"兄弟连特长，以及足够将另一项特长或技能训练到100%的经验。"
+
+msgid "notrecruitedtankman/ny23defaultGirl/howToGetInfo"
+msgstr "达到特定的节日气氛等级。"
+
+msgid "notrecruitedtankman/ny23defaultGirl/label"
+msgstr "假日行动2023"
+
+msgid "notrecruitedtankman/ny23ruby_girl_1/desc"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/ny23ruby_girl_1/event"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/ny23ruby_girl_1/label"
+msgstr "?empty?"
+
 msgid "notrecruitedtankman/offspring_commander/desc"
 msgstr ""
 "主唱、吉他手和作曲人是现代文艺复兴时期的人！他有分子生物学博士学位，做过Gringo "
@@ -6897,15 +6991,6 @@ msgstr "?empty?"
 msgid "notrecruitedtankman/tankman/label"
 msgstr "特殊乘员"
 
-msgid "notrecruitedtankman/tankmen/desc"
-msgstr "?empty?"
-
-msgid "notrecruitedtankman/tankmen/howToGetInfo"
-msgstr "?empty?"
-
-msgid "notrecruitedtankman/tankmen/label"
-msgstr "特殊乘员"
-
 msgid "notrecruitedtankman/tankmen_auc_1/desc"
 msgstr ""
 "一名原铸技术军士。维塔里安自幼就对机械着迷，当他晋升为阿斯塔特时，他对所有机械事物的兴趣依旧不减。他能够巧妙地使机械超常发挥。相较于和战友交谈，他更擅长和机魂交流。他总是与机械形影不离，致力于完善人与机械之间的关系。"
@@ -6938,7 +7023,7 @@ msgstr "战斗通行证第3赛季"
 
 msgid "notrecruitedtankman/tankmen_bp2_2/desc"
 msgstr ""
-"一位经验丰富、聪明、理智的战地指挥官，常常将逻辑置于情感之上。无论是在北极圈，还是在北非的沙漠基地中驻军，他都能轻松适应任何情况，执行任何命令。他的个人爱好是曲棍球和鱼叉捕鱼，不过留给这些个人爱好的时间越来越少了。"
+"一位经验丰富、聪明、理智的战地指挥官，常常将逻辑置于情感之上。无论是在极北，还是在沙漠基地中驻军，他都能轻松适应任何情况，执行任何命令。他的个人爱好是曲棍球和鱼叉捕鱼，不过留给这些个人爱好的时间越来越少了。"
 
 msgid "notrecruitedtankman/tankmen_bp2_2/howToGetInfo"
 msgstr "?empty?"
@@ -7679,6 +7764,12 @@ msgstr "点击重置技能和特长。"
 msgid "personal_case/skills/dropSkillsButton/header"
 msgstr "重置技能和特长"
 
+msgid "personal_case/skills/dropSkillsButton/inBattle/body"
+msgstr "请等待车组退出战斗后再更改他们的特长和技能。"
+
+msgid "personal_case/skills/dropSkillsButton/inBattle/header"
+msgstr "坦克在战斗中"
+
 msgid "personal_case/skills/dropSkillsButton/noSkill/body"
 msgstr "您没有训练完成的技能和特长。"
 
@@ -7875,7 +7966,7 @@ msgid "privateQuests/backButton/body"
 msgstr "点击返回上一个窗口。"
 
 msgid "privateQuests/backButton/header"
-msgstr "后退"
+msgstr "返回"
 
 msgid "privateQuests/params/collectedSheets"
 msgstr "已收到奖励"
@@ -8851,7 +8942,7 @@ msgid "settings/sound/deviceAlert/header"
 msgstr "声音系统不匹配"
 
 msgid "settings/sound/subtitles/body"
-msgstr "在新兵训练营模式下显示配音文本。"
+msgstr "在新兵训练营模式中显示语音文本。"
 
 msgid "settings/sound/subtitles/header"
 msgstr "字幕"
@@ -8905,93 +8996,6 @@ msgstr "%(bold)s—当前火炮的默认炮弹。用于计算火炮参数和火�
 
 msgid "shell/basic/description/bold"
 msgstr "默认炮弹"
-
-msgid "shopSales/active/desc"
-msgstr "活动即将结束。请赶在结束前购买您已收藏的礼包。"
-
-msgid "shopSales/active/subheader"
-msgstr "距结束剩余: %(timeout)s"
-
-msgid "shopSales/currentDiscount/footer"
-msgstr "您只能为每个礼包投票一次。"
-
-msgid "shopSales/currentDiscount/header"
-msgstr "当前折扣"
-
-msgid "shopSales/currentDiscount/howToBlock/body"
-msgstr "折扣力度会随着玩家的投票总数而改变。"
-
-msgid "shopSales/currentDiscount/howToBlock/header"
-msgstr "如何提升折扣力度"
-
-msgid "shopSales/disabled/desc"
-msgstr "盛惠决战双十一活动由于技术性问题暂不开放。"
-
-msgid "shopSales/disabled/footer"
-msgstr "暂时不开放"
-
-msgid "shopSales/disabled/subheader"
-msgstr "距结束剩余: %(timeout)s"
-
-msgid "shopSales/enabled/desc"
-msgstr "盛惠决战双十一活动再次开放。对于给您带来的不便，我们深表歉意。"
-
-msgid "shopSales/ended/desc"
-msgstr "盛惠决战双十一活动已结束。"
-
-msgid "shopSales/ended/footer/purchased"
-msgstr "已购买所有收藏的礼包。"
-
-msgid "shopSales/ended/footer/saved"
-msgstr "已收藏%(count)s个礼包"
-
-msgid "shopSales/ended/subheader"
-msgstr "活动已结束"
-
-msgid "shopSales/freeShuffle/body"
-msgstr "将当前礼包换为内含其他物品的新礼包。"
-
-msgid "shopSales/freeShuffle/header"
-msgstr "刷新礼包"
-
-msgid "shopSales/freeShuffle/maximumFree"
-msgstr "每日免费刷新礼包上限:%(max_number)s次"
-
-msgid "shopSales/freeShuffle/paidShuffleCost"
-msgstr "付费刷新"
-
-msgid "shopSales/header"
-msgstr "盛惠决战双十一活动"
-
-msgid "shopSales/locked/desc"
-msgstr "盛惠决战双十一活动即将开始。在活动期间，您将有机会享受折扣购买独特物品、金币坦克、风格，以及其他实用物品。"
-
-msgid "shopSales/locked/subheader"
-msgstr "距开始剩余:%(timeout)s"
-
-msgid "shopSales/paidShuffle/header"
-msgstr "免费刷新机会将于%(timeout)s获得"
-
-msgid "shopSales/paidShuffle/startTime"
-msgstr "00:00"
-
-msgid "shopSales/voteForDiscount/available/body"
-msgstr "您可以给礼包投票，提升礼包的折扣力度。折扣力度会随着玩家的投票总数而改变。"
-
-msgid "shopSales/voteForDiscount/available/header"
-msgstr "为礼包投票"
-
-msgid "shopSales/voteForDiscount/available/maximumVotes"
-msgstr "今天剩余投票次数:%(max_number)s"
-
-msgid "shopSales/voteForDiscount/unavailable/availabilityBlock"
-msgstr "于%(timeout)s后可用"
-
-msgid "shopSales/voteForDiscount/unavailable/footer"
-msgstr "投票获得更多折扣的每日上限为%(max_number)s次。"
-
-msgid "shopSales/voteForDiscount/unavailable/header"
-msgstr "无法投票"
 
 msgid "showArtyHitOnMap/body"
 msgstr "显示/隐藏小地图上敌方自行火炮的攻击覆盖区域。"
@@ -9085,7 +9089,7 @@ msgstr "启用小地图功能"
 
 msgid "skills/brotherhood/descr"
 msgstr ""
-"提高车组乘员主要专业和技能的熟练度。此特长可以和改进型通风系统、通风系统，以及净化通风、S系口粮、红烧肉、提神咖啡、巧克力、可口可乐、红茶布丁、饭团、餐包、咖啡肉包、吐司面包和肉酱面等给养的效果叠加。"
+"提高车组乘员主要专业和技能的熟练度。此特长可以和改进型通风系统、通风系统，以及净化通风、S系口粮、红烧肉、提神咖啡、巧克力、可乐、红茶布丁、饭团、餐包、咖啡肉包、吐司面包和肉酱面等给养的效果叠加。"
 
 msgid "skills/brotherhood/header"
 msgstr "兄弟连"
@@ -9407,6 +9411,12 @@ msgstr "使用%(unlockedBy)s组坦克进行%(battlesToUnlock)s场战斗。"
 
 msgid "tankCarusel/lock/rotation/header"
 msgstr "队伍%(groupNum)s的坦克无法使用"
+
+msgid "tankCarusel/newYearSlot/body"
+msgstr "点击前往假日行动坦克界面"
+
+msgid "tankCarusel/newYearSlot/header"
+msgstr "假日行动坦克"
 
 msgid "tankCaruselTooltip/vehicleType/elite/AT-SPG"
 msgstr "精英自行反坦克炮"
@@ -10020,9 +10030,6 @@ msgstr "所需等级"
 msgid "vehicle/action_prc"
 msgstr "折扣%(actionPrc)s，原价:%(oldPrice)s"
 
-msgid "vehicle/afterEventEnd/title"
-msgstr "您已参加所有战斗场次，无法驾驶坦克。"
-
 msgid "vehicle/ammo"
 msgstr "在弹药架中"
 
@@ -10113,14 +10120,6 @@ msgstr "租用自"
 msgid "vehicle/multiplied_xp"
 msgstr "经验"
 
-msgid "vehicle/overview/desc"
-msgstr ""
-"这辆坦克对任何敌人来说都是一场真正的噩梦。没有小队: "
-"只有您和这只猛兽。也不要问埃尔梅林达是如何奇思妙想，把它成功建造出来的。您只能在2022年9月26日至10月18日期间，驾驶这辆坦克加入标准模式。"
-
-msgid "vehicle/overview/title"
-msgstr "概览:"
-
 msgid "vehicle/radioDistance"
 msgstr "<h1>信号范围</h1> <h2>(km)</h2>"
 
@@ -10165,9 +10164,6 @@ msgstr "前线模式中的租用坦克"
 
 msgid "vehicle/rentLeftFuture/hours"
 msgstr "租用小时数"
-
-msgid "vehicle/rentLeftFuture/obtainedBy"
-msgstr "可通过完成进度来获取，或者在最终兵器:传承活动期间从工程师之门获取。"
 
 msgid "vehicle/rentLeftFuture/wins"
 msgstr "租用期内的胜利数"
@@ -10653,6 +10649,12 @@ msgstr "改进型配件只能使用战争债券拆卸并再次使用。"
 msgid "vehicleSellDialog/renderer/alertIconCrystal/header"
 msgstr "拆除至仓库"
 
+msgid "vehicleSellDialog/renderer/alertIconEquipCoin/body"
+msgstr "可以使用合金元件、拆卸工具或金币拆卸试验型配件。"
+
+msgid "vehicleSellDialog/renderer/alertIconEquipCoin/header"
+msgstr "拆除至仓库"
+
 msgid "vehicleSellDialog/renderer/alertIconGold/body"
 msgstr "标准配件和赏金配件可以通过金币或拆卸工具拆卸。"
 
@@ -10830,6 +10832,14 @@ msgstr ""
 
 msgid "wallet/not_available_crystal/header"
 msgstr "检索数据"
+
+msgid "wallet/not_available_equipCoin/body"
+msgstr ""
+"数据检索中。\n"
+"您所有的合金元件将很快可以使用。"
+
+msgid "wallet/not_available_equipCoin/header"
+msgstr "数据获取中"
 
 msgid "wallet/not_available_freexp/body"
 msgstr ""

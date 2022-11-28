@@ -183,12 +183,6 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
          return new DynamicSquadCtrl(_loc4_.squadStatusCollection[_loc3_],_loc4_.squadCollection[_loc3_],_loc4_.squadAcceptBt,_loc4_.squadAddBt,_loc4_.hitCollection[_loc3_],_loc4_.noSoundCollection[_loc3_]);
       }
       
-      override public function setFDEvent(param1:Boolean) : void
-      {
-         super.setFDEvent(param1);
-         table.setFDEvent(isFDEvent);
-      }
-      
       private function getHolderByIndex(param1:Boolean, param2:int) : StatsTableItemHolder
       {
          return (!!param1 ? enemyRenderers[param2] : allyRenderers[param2]) as StatsTableItemHolder;

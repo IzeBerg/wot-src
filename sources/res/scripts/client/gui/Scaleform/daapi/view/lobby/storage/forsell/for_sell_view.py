@@ -1,8 +1,5 @@
 import nations
 from account_helpers import getAccountDatabaseID
-from adisp import adisp_process
-from gui import DialogsInterface
-from gui.Scaleform.daapi.view.dialogs.ConfirmModuleMeta import SellModuleMeta
 from gui.Scaleform.daapi.view.lobby.storage.category_view import StorageDataProvider
 from gui.Scaleform.daapi.view.lobby.storage.storage_helpers import createStorageDefVO
 from gui.Scaleform.daapi.view.lobby.storage.storage_helpers import getStorageItemDescr
@@ -25,6 +22,7 @@ from gui.shared.money import Money
 from gui.shared.utils.requesters.ItemsRequester import REQ_CRITERIA
 from helpers.local_cache import FileLocalCache
 from items import parseIntCompactDescr
+from gui.shared.event_dispatcher import showConfirmInStorageDialog
 VERSION = 1
 _FOR_SELL_SORT_ORDER = (GUI_ITEM_TYPE.TURRET, GUI_ITEM_TYPE.ENGINE, GUI_ITEM_TYPE.GUN,
  GUI_ITEM_TYPE.RADIO, GUI_ITEM_TYPE.CHASSIS, GUI_ITEM_TYPE.SHELL)
@@ -208,9 +206,8 @@ class _SelectableDataProvider(StorageDataProvider):
 
 class StorageCategoryForSellView(StorageCategoryForSellViewMeta):
 
-    @adisp_process
     def sellItem(self, itemId):
-        yield DialogsInterface.showDialog(SellModuleMeta(int(itemId)))
+        showConfirmInStorageDialog(int(itemId))
 
     def sellAll(self):
         itemSellSpecs = []
