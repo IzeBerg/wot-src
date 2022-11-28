@@ -1751,13 +1751,23 @@ package
       
       public static const REWARDWINDOW_TWITCH35_MAINREWARD_4:String = "#ingame_gui:rewardWindow/twitch35/mainReward_4";
       
+      public static const REWARDWINDOW_TWITCH36_HEADERTEXT:String = "#ingame_gui:rewardWindow/twitch36/headerText";
+      
+      public static const REWARDWINDOW_TWITCH36_DESCTEXT:String = "#ingame_gui:rewardWindow/twitch36/descText";
+      
+      public static const REWARDWINDOW_TWITCH36_MAINREWARD_1:String = "#ingame_gui:rewardWindow/twitch36/mainReward_1";
+      
+      public static const REWARDWINDOW_TWITCH36_MAINREWARD_2:String = "#ingame_gui:rewardWindow/twitch36/mainReward_2";
+      
+      public static const REWARDWINDOW_TWITCH36_MAINREWARD_3:String = "#ingame_gui:rewardWindow/twitch36/mainReward_3";
+      
+      public static const REWARDWINDOW_TWITCH36_MAINREWARD_4:String = "#ingame_gui:rewardWindow/twitch36/mainReward_4";
+      
       public static const REWARDWINDOW_LOOTBOX_WINHEADERTEXT:String = "#ingame_gui:rewardWindow/lootbox/winHeaderText";
       
       public static const REWARDWINDOW_LOOTBOX_HEADERTEXT:String = "#ingame_gui:rewardWindow/lootbox/headerText";
       
       public static const REWARDWINDOW_LOOTBOX_DESCTEXT:String = "#ingame_gui:rewardWindow/lootbox/descText";
-      
-      public static const REWARDWINDOW_LOOTBOX_ISFREEDESCTEXT:String = "#ingame_gui:rewardWindow/lootbox/isFreeDescText";
       
       public static const REWARDWINDOW_LOOTBOX_BTNLABEL:String = "#ingame_gui:rewardWindow/lootbox/btnLabel";
       
@@ -1766,8 +1776,6 @@ package
       public static const HELPSCREEN_HINT_PRESS:String = "#ingame_gui:helpScreen/hint/press";
       
       public static const HELPSCREEN_HINT_DESCRIPTION:String = "#ingame_gui:helpScreen/hint/description";
-      
-      public static const HELPSCREEN_HINT_MODEDESCRIPTION:String = "#ingame_gui:helpScreen/hint/modeDescription";
       
       public static const COMMANDERCAM_HINT_DESCRIPTION:String = "#ingame_gui:commanderCam/hint/description";
       

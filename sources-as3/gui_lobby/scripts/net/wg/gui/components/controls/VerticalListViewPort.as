@@ -8,6 +8,7 @@ package net.wg.gui.components.controls
    import net.wg.gui.components.interfaces.IReusableListItemRenderer;
    import net.wg.infrastructure.base.UIComponentEx;
    import net.wg.infrastructure.interfaces.IDisplayObject;
+   import org.idmedia.as3commons.util.StringUtils;
    import scaleform.clik.constants.InvalidationType;
    import scaleform.clik.interfaces.IDataProvider;
    
@@ -40,6 +41,8 @@ package net.wg.gui.components.controls
       private var _dataProvider:IDataProvider;
       
       private var _itemRendererClassName:String;
+      
+      private var _itemRendererClass:Class;
       
       private var _assertCacheValue:int = 0;
       
@@ -122,6 +125,7 @@ package net.wg.gui.components.controls
          this.disposeRenderersVector(this._renderersCache);
          this._renderers = null;
          this._renderersCache = null;
+         this._itemRendererClass = null;
          this._renderersToResize.splice(0,this._renderersToResize.length);
          this._renderersToResize = null;
          super.onDispose();
@@ -500,7 +504,11 @@ package net.wg.gui.components.controls
       
       private function createNewRenderer() : IReusableListItemRenderer
       {
-         return App.utils.classFactory.getComponent(this._itemRendererClassName,IReusableListItemRenderer);
+         if(StringUtils.isNotEmpty(this._itemRendererClassName))
+         {
+            return App.utils.classFactory.getComponent(this._itemRendererClassName,IReusableListItemRenderer);
+         }
+         return new this._itemRendererClass();
       }
       
       private function invalidateRendererSize(param1:IReusableListItemRenderer) : void
@@ -595,6 +603,21 @@ package net.wg.gui.components.controls
             return;
          }
          this._itemRendererClassName = param1;
+         invalidate(InvalidationType.RENDERERS);
+      }
+      
+      public function get itemRendererClass() : Class
+      {
+         return this._itemRendererClass;
+      }
+      
+      public function set itemRendererClass(param1:Class) : void
+      {
+         if(this._itemRendererClass == param1)
+         {
+            return;
+         }
+         this._itemRendererClass = param1;
          invalidate(InvalidationType.RENDERERS);
       }
       

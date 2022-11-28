@@ -634,8 +634,7 @@ class VOIPManager(VOIPHandler):
              ARENA_GUI_TYPE.RANDOM,
              ARENA_GUI_TYPE.EPIC_RANDOM,
              ARENA_GUI_TYPE.EPIC_BATTLE,
-             ARENA_GUI_TYPE.COMP7,
-             ARENA_GUI_TYPE.EVENT_BATTLES))
+             ARENA_GUI_TYPE.COMP7))
         return True
 
     def __me_onChannelAvailable(self, uri, pwd, isRejoin):

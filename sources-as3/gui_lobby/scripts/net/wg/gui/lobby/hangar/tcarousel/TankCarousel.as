@@ -23,13 +23,9 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       private static const HELP_ID_SEPARATOR:String = "_";
       
-      private static const FILTERS_WIDTH:Number = 58;
-      
-      private static const ARROW_WIDTH:Number = 24;
+      private static const FILTERS_WIDTH:int = 58;
       
       private static const ELASTICITY:Number = 0.25;
-      
-      private static const MASK_SIDE_OFFSET:int = -10;
       
       private static const MASK_TOP_OFFSET_DEFAULT:int = -12;
       
@@ -47,9 +43,7 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       private static const OFFSET_FILTERS:int = 20;
       
-      private static const OFFSET_ARROW:int = 14;
-      
-      private static const OFFSET_CAROUSEL:int = 10;
+      private static const OUTSIDE_ARROW_OFFSET:int = 14;
       
       private static const THRESHOLD:int = 809;
       
@@ -60,6 +54,8 @@ package net.wg.gui.lobby.hangar.tcarousel
       private static const INVALID_SCROLL_POS:String = "InvalidScrollPos";
       
       private static const OPTIMIZE_OFFSET:int = 10;
+      
+      private static const ROUND_CORRECTION:int = 1;
        
       
       public var vehicleFilters:TankCarouselFilters = null;
@@ -84,8 +80,6 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       private var _rightMargin:int = 0;
       
-      private var _paddingRight:int = 0;
-      
       public function TankCarousel()
       {
          super();
@@ -99,19 +93,17 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       override protected function updateLayout(param1:int, param2:int = 0) : void
       {
-         var _loc3_:Number = param2 + OFFSET_ARROW;
-         var _loc4_:int = FILTERS_WIDTH + OFFSET_FILTERS;
+         this.background.width = param1;
+         var _loc3_:int = param2 + OUTSIDE_ARROW_OFFSET;
          if(this.vehicleFilters.visible)
          {
-            _loc3_ += _loc4_;
+            _loc3_ += OFFSET_FILTERS + FILTERS_WIDTH;
          }
-         var _loc5_:Number = param1 - this._paddingRight - _loc3_ - OFFSET_ARROW - this._rightMargin >> 0;
-         this.background.width = param1 >> 0;
-         var _loc6_:int = _loc5_ + leftArrowOffset - rightArrowOffset >> 0;
-         super.updateLayout(_loc5_,(_loc5_ - _loc6_ >> 1) + _loc3_ >> 0);
-         leftArrow.x = !!this.vehicleFilters.visible ? Number(param2 + _loc4_ + OFFSET_ARROW) : Number(OFFSET_ARROW);
-         startFadeMask.x = scrollList.x = leftArrow.x + ARROW_WIDTH + OFFSET_CAROUSEL;
-         endFadeMask.x = rightArrow.x - rightArrow.width - endFadeMask.width >> 0;
+         var _loc4_:int = param1 - _loc3_ - OUTSIDE_ARROW_OFFSET - this._rightMargin;
+         var _loc5_:int = _loc3_ - leftArrowOffset;
+         super.updateLayout(_loc4_,_loc5_);
+         startFadeMask.x = scrollList.x + startFadeMask.width - ROUND_CORRECTION | 0;
+         endFadeMask.x = scrollList.x + scrollList.width - endFadeMask.width + ROUND_CORRECTION | 0;
       }
       
       override protected function configUI() : void
@@ -129,7 +121,6 @@ package net.wg.gui.lobby.hangar.tcarousel
          scrollList.snapScrollPositionToItemRendererSize = false;
          scrollList.snapToPages = true;
          scrollList.cropContent = true;
-         scrollList.maskOffsetLeft = scrollList.maskOffsetRight = MASK_SIDE_OFFSET;
          scrollList.maskOffsetTop = MASK_TOP_OFFSET_DEFAULT;
          scrollList.goToOffset = GO_TO_OFFSET;
          this._helper = this.getNewHelper();
@@ -227,6 +218,13 @@ package net.wg.gui.lobby.hangar.tcarousel
          this.vehicleFilters.setSelectedData(param1);
       }
       
+      override protected function updateAvailableScroll(param1:Boolean, param2:Boolean) : void
+      {
+         super.updateAvailableScroll(param1,param2);
+         startFadeMask.visible = param1;
+         endFadeMask.visible = param2;
+      }
+      
       public function as_rowCount(param1:int) : void
       {
          if(this._rowCount != param1)
@@ -310,10 +308,8 @@ package net.wg.gui.lobby.hangar.tcarousel
       
       public function setRightMargin(param1:int) : void
       {
-         this.as_useExtendedCarousel(true);
          this._rightMargin = param1;
          invalidateSize();
-         validateNow();
       }
       
       public function updateCarouselPosition(param1:Number) : void
@@ -405,21 +401,12 @@ package net.wg.gui.lobby.hangar.tcarousel
          scrollList.y = _loc5_;
          this.background.height = -this.background.y + this._listVisibleHeight + _loc5_ + this._helper.padding.bottom;
          leftArrow.height = rightArrow.height = this._listVisibleHeight;
-         startFadeMask.height = endFadeMask.height = this._listVisibleHeight + _loc5_;
-         startFadeMask.y = endFadeMask.y = 0;
+         startFadeMask.height = endFadeMask.height = this._listVisibleHeight;
+         startFadeMask.y = endFadeMask.y = _loc5_;
          leftArrow.y = _loc5_;
          rightArrow.y = _loc5_ + this._listVisibleHeight;
          this.vehicleFilters.height = this._listVisibleHeight;
-      }
-      
-      public function get rowCount() : int
-      {
-         return this._rowCount;
-      }
-      
-      public function get smallDoubleCarouselEnable() : Boolean
-      {
-         return this._rowCount > 1 && (this._stageHeight < THRESHOLD || this._smallDoubleCarouselEnable);
+         dispatchEvent(new Event(Event.RESIZE));
       }
       
       public function get helper() : ITankCarouselHelper
@@ -461,12 +448,6 @@ package net.wg.gui.lobby.hangar.tcarousel
       {
          this.vehicleFilters.y = scrollList.y + (this._listVisibleHeight - this.vehicleFilters.height >> 1);
          updateHotFiltersS();
-      }
-      
-      public function set paddingRight(param1:int) : void
-      {
-         this._paddingRight = param1;
-         invalidateSize();
       }
    }
 }

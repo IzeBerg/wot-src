@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>garland</identifier>
+					<fx>shaders/custom/emissive_playground.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						emissionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/ny_megazone_garland_castle_FWD.dds</Texture>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>10.000000</Float>
+					</property>
+					<property>
+						g_tint
+						<Vector4>1.000000 0.360784 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						pattern
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/ls_phase_step.dds</Texture>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/ny_megazone_garland_castle_CM.dds</Texture>
+					</property>
+					<property>
+						speed
+						<Float>0.300000</Float>
+					</property>
+					<property>
+						useVersicolorMode
+						<Bool>true</Bool>
+					</property>
+					<property>
+						usePhaseMap
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_zeroPhaseLum
+						<Float>0.170000</Float>
+					</property>
+					<property>
+						waveLen
+						<Float>0.500000</Float>
+					</property>
+					<property>
+						animationMode
+						<Int>1</Int>
+					</property>
+					<property>
+						g_offsetBlack
+						<Float>0.470000</Float>
+					</property>
+					<property>
+						patternFilteringMode
+						<Int>1</Int>
+					</property>
+					<property>
+						g_forwardMult
+						<Float>4.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>-6.935681 50.744980 14.115600</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-34.988972 31.370693 3.242652</min>
+		<max>21.611702 70.753944 25.722513</max>
+	</boundingBox>
+	<geometrySize>21852</geometrySize>
+	<minUVDensity>0.010826</minUVDensity>
+</root>

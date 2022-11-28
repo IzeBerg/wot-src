@@ -37,9 +37,6 @@ msgstr "In WoWS client"
 msgid "Contact/status/inBattle/bootcamp"
 msgstr "In Bootcamp"
 
-msgid "Contact/status/inBattle/event"
-msgstr "In a Pumpkin Bash battle, %(host)s"
-
 msgid "Contact/status/inBattle/fortifications"
 msgstr "In a battle for Stronghold"
 
@@ -583,6 +580,12 @@ msgstr ""
 "penetration of a vehicle's armor. Ricochets are quite rare. The penetration "
 "power of this shell is not reduced with distance traveled."
 
+msgid "advanced/additionalInvisibilityDevice"
+msgstr ""
+"Effectiveness depends on the vehicle type. Increases the concealment of a "
+"stationary or moving vehicle. Useful for active spotting, as well as for "
+"passive spotting from risky positions."
+
 msgid "advanced/aimingStabilizer"
 msgstr ""
 "Improves aiming: reduces reticle dispersion during firing, turret traverse "
@@ -653,6 +656,11 @@ msgstr ""
 "Enables the Commander to master every qualification and replace knocked-out "
 "crew members."
 
+msgid "advanced/commandersView"
+msgstr ""
+"Decreases concealment of stationary and moving enemy vehicles behind "
+"foliage."
+
 msgid "advanced/demountKit/common"
 msgstr ""
 "Demount standard equipment or Bounty Equipment without spending in-game "
@@ -722,6 +730,12 @@ msgstr ""
 "demounted using the Demount Kit or in-game currency and mounted on other "
 "vehicles."
 
+msgid "advanced/extraHealthReserve"
+msgstr ""
+"Increases the vehicle's hit points. Improves durability and loading capacity"
+" of suspension, as well as its repair speed. Fully restores suspension hit "
+"points after repairs."
+
 msgid "advanced/fireFighting"
 msgstr "Enhances firefighting abilities."
 
@@ -789,6 +803,29 @@ msgstr "High-Explosive Shells"
 msgid "advanced/header/shellType/HOLLOW_CHARGE"
 msgstr "High-Explosive Anti-Tank Shells"
 
+msgid "advanced/improvedConfiguration"
+msgstr ""
+"Improves repair speed and hit points of the ammo rack, fuel tank, and "
+"engine. Decreases the penalty from a damaged ammo rack and engine, and "
+"decreases the chance of engine fire. Prevents one fuel tank fire, ammo rack "
+"explosion, and engine destruction in a battle."
+
+msgid "advanced/improvedRadioCommunication"
+msgstr ""
+"Increases the time an enemy remains spotted, and reduces the time you remain"
+" spotted."
+
+msgid "advanced/improvedRotationMechanism"
+msgstr ""
+"Reduces reticle dispersion during firing, turret traverse, or vehicle "
+"movement, and increases turret and hull traverse speeds."
+
+msgid "advanced/improvedSights"
+msgstr ""
+"Reduces the size of the aiming circle to increase the accuracy of an aiming "
+"or fully aimed gun. As a result, your gun has a better chance of hitting the"
+" target."
+
 msgid "advanced/improvedVentilation"
 msgstr "Improves crew skills that affect the vehicle characteristics."
 
@@ -827,6 +864,23 @@ msgid "advanced/loader_pedant"
 msgstr ""
 "Increases ammo rack durability: the shells do not come into contact with "
 "each other."
+
+msgid "advanced/modernizedAimDrivesAimingStabilizer"
+msgstr ""
+"Reduces the reticle aiming time and dispersion during firing, turret "
+"traverse, or vehicle movement."
+
+msgid "advanced/modernizedExtraHealthReserveAntifragmentationLining"
+msgstr ""
+"Increases the hit points of the vehicle and its internal modules. Increases "
+"suspension hit points and repair speed. Decreases the penalty from a damaged"
+" ammo rack and engine. Fully restores suspension hit points after repairs."
+
+msgid "advanced/modernizedTurbochargerRotationMechanism"
+msgstr ""
+"Increases engine power and top speed. Reduces reticle dispersion during "
+"firing, turret traverse, or vehicle movement, and increases turret and hull "
+"traverse speeds."
 
 msgid "advanced/naturalCover"
 msgstr "Reduces vehicle visibility."
@@ -918,6 +972,13 @@ msgstr ""
 "moving. The effect is disabled if the vehicle moves forwards or backwards, "
 "or when the hull is turned. The effect is not disabled when turning the hull"
 " of high-tier Swedish tank destroyers."
+
+msgid "advanced/turbocharger"
+msgstr ""
+"Increases engine power, providing better acceleration, maneuvering, and "
+"ascension on terrain slopes. Increases the vehicle's maximum forward and "
+"reverse speed, allowing you to take positions and escape enemy return fire "
+"more quickly."
 
 msgid "advanced/vehicleChassis"
 msgstr ""
@@ -1588,9 +1649,6 @@ msgstr "Directives <span>will not work</span>:"
 
 msgid "battleBooster/crew"
 msgstr "Directives"
-
-msgid "battleBooster/installationEffects"
-msgstr "Effect from mounting"
 
 msgid "battleBooster/inventoryCount"
 msgstr "In stock"
@@ -2641,8 +2699,8 @@ msgstr "Activation:"
 msgid "boostersWindow/booster/activateInfo/activationInfo"
 msgstr ""
 "Can be activated in the Garage or during battle by pressing the TAB or B "
-"keys. The bonus applies to Random Battles, tournaments, and the Steel "
-"Hunter, and Frontline modes."
+"keys. The bonus applies to Random Battles, tournaments, and both the Steel "
+"Hunter and Frontline modes."
 
 msgid "boostersWindow/booster/activateInfo/basicReserve"
 msgstr "Standard Personal Reserve"
@@ -2788,15 +2846,6 @@ msgstr ""
 "after each battle. Personal Reserves are active for a specific period in "
 "Random Battles, Ranked Battles, special tournaments, and both Steel Hunter "
 "and Frontline modes."
-
-msgid "boostersWindow/booster/quality/big"
-msgstr "(Large)"
-
-msgid "boostersWindow/booster/quality/medium"
-msgstr "(Medium)"
-
-msgid "boostersWindow/booster/quality/small"
-msgstr "(Small)"
 
 msgid "boostersWindow/booster/shortDescriptionSpecial"
 msgstr "Additional bonuses after each battle"
@@ -4845,19 +4894,11 @@ msgstr "When in use:"
 msgid "equipment/restriction"
 msgstr "Restriction:"
 
-msgid "event/fightBtn/disable/body"
-msgstr "To join the battle, select a vehicle of a suitable tier."
-
-msgid "event/fightBtn/disable/header"
-msgstr "Unavailable"
-
 msgid "event/squad/disable/body"
-msgstr ""
-"To join the battle, select a vehicle of a suitable tier and confirm that you"
-" are ready."
+msgstr "To join the event, select the %(tankName)s"
 
 msgid "event/squad/disable/header"
-msgstr "Unavailable"
+msgstr "Attention!"
 
 msgid "falloutBattleSelectorWindow/btnDisabled/body"
 msgstr "You are queued for battle."
@@ -5569,6 +5610,12 @@ msgstr "You need to rent a vehicle."
 msgid "hangar/startBtn/battleRoyale/notRented/header"
 msgstr "Unavailable"
 
+msgid "hangar/startBtn/battleRoyale/telecomRentalIsOver/body"
+msgstr "Select another vehicle."
+
+msgid "hangar/startBtn/battleRoyale/telecomRentalIsOver/header"
+msgstr "Vehicle Unavailable"
+
 msgid "hangar/startBtn/battleRoyaleSquadNotReady/notReady/body"
 msgstr ""
 "To join the battle, all Platoon members should confirm that they are ready."
@@ -6017,6 +6064,22 @@ msgstr "Bonds"
 msgid "header/buttons/crystal/title"
 msgstr "Bonds"
 
+msgid "header/buttons/equipCoin/description0"
+msgstr ""
+"%(equipCoin)s can be received for disassembling Experimental Equipment."
+
+msgid "header/buttons/equipCoin/description1"
+msgstr "Components are needed for upgrading Experimental Equipment."
+
+msgid "header/buttons/equipCoin/descriptionEquipCoin"
+msgstr "Components"
+
+msgid "header/buttons/equipCoin/descriptionTitle"
+msgstr "How to Receive:"
+
+msgid "header/buttons/equipCoin/title"
+msgstr "Components"
+
 msgid "header/buttons/forts/body"
 msgstr "Go to your clan information."
 
@@ -6372,14 +6435,6 @@ msgstr "Bulletins will be available after downloading the full client."
 
 msgid "lobbyMenu/versionInfoButton/miniclient/header"
 msgstr "Attention!"
-
-msgid "loby_messenger/btnReferralDisabled/body"
-msgstr ""
-"Unavailable in the selected mode. Enter Random Battles mode to access this "
-"functionality."
-
-msgid "loby_messenger/btnReferralDisabled/header"
-msgstr "Referral Program"
 
 msgid "loby_messenger/channel_button/inRoaming"
 msgstr "Channels are unavailable due to change of region"
@@ -6772,6 +6827,9 @@ msgstr "item(s)"
 msgid "moduleFits/already_installed/header"
 msgstr "Mounted on:"
 
+msgid "moduleFits/already_installed/hiddenVehicleCount"
+msgstr "and additional %(count)s"
+
 msgid "moduleFits/battleBooster/cannotBuy/description"
 msgstr ""
 "This type of directive can be received as a reward during special game "
@@ -6796,13 +6854,14 @@ msgstr ""
 "Earn them in battles, sell surplus items from your storage, or exchange Gold"
 " to acquire more."
 
-msgid "moduleFits/deluxeEquipment/cannotBuy/description"
-msgstr ""
-"This type of equipment can be received as a reward during special game "
-"events."
+msgid "moduleFits/deconstruct/modernized/description"
+msgstr "(will be received)"
 
-msgid "moduleFits/deluxeEquipment/cannotBuy/header"
-msgstr "This equipment cannot be purchased"
+msgid "moduleFits/deconstruct/modernized/price"
+msgstr "Disassembly Level %(level)s"
+
+msgid "moduleFits/deconstruct/price"
+msgstr "Disassembly"
 
 msgid "moduleFits/dismantling"
 msgstr ""
@@ -6816,6 +6875,12 @@ msgid "moduleFits/duplicated/note"
 msgstr ""
 "Equipment that provides a similar effect has already been mounted on the "
 "vehicle."
+
+msgid "moduleFits/equipcoin_error/header"
+msgstr "Not Enough Components"
+
+msgid "moduleFits/equipcoin_error/text"
+msgstr "To get more components, disassemble unused Experimental Equipment."
 
 msgid "moduleFits/gold_error/header"
 msgstr "Not enough gold."
@@ -6866,13 +6931,19 @@ msgstr ""
 "Currently mounted: %(moduleName)s. Replacing the equipment will change the "
 "following characteristics:"
 
+msgid "moduleFits/similar_device_already_installed/header"
+msgstr "Unable to Mount"
+
+msgid "moduleFits/similar_device_already_installed/text"
+msgstr ""
+"Equipment that provides a similar effect has already been mounted on the "
+"vehicle."
+
 msgid "moduleFits/too_heavy/header"
 msgstr "Unable to mount."
 
 msgid "moduleFits/too_heavy/text"
-msgstr ""
-"This equipment requires suspension\n"
-"with higher load capacity."
+msgstr "This equipment requires suspension with higher load capacity."
 
 msgid "moduleFits/too_heavy_chassi/header"
 msgstr "Unable to mount. Higher load capacity required."
@@ -6886,35 +6957,25 @@ msgstr "Modules are too heavy"
 msgid "moduleFits/too_heavy_chassis/text"
 msgstr "Consider lightening the vehicle."
 
-msgid "moduleFits/trophyEquipment/basic/description"
-msgstr ""
-"You can upgrade Bounty Equipment characteristics using in-game currency."
-
-msgid "moduleFits/trophyEquipment/basic/header"
-msgstr "Upgrading Bounty Equipment"
-
-msgid "moduleFits/trophyEquipment/cannotBuy/description"
-msgstr ""
-"This type of equipment can be received as a reward during special game "
-"events."
-
-msgid "moduleFits/trophyEquipment/cannotBuy/header"
-msgstr "Bounty Equipment cannot be purchased"
-
-msgid "moduleFits/trophyEquipment/upgraded/description"
-msgstr "This type of equipment provides the maximum bonus."
-
-msgid "moduleFits/trophyEquipment/upgraded/header"
-msgstr "Bounty Equipment Upgraded"
-
 msgid "moduleFits/unlock_error/header"
 msgstr "The module is not researched."
 
 msgid "moduleFits/unlock_error/text"
 msgstr "Research the module."
 
+msgid "moduleFits/upgradable/modernized/price"
+msgstr "Upgrade Level %(level)s"
+
 msgid "moduleFits/upgradable/price"
 msgstr "Upgrade"
+
+msgid "moduleFits/useless_battle_booster/header"
+msgstr "Directive Has No Effect"
+
+msgid "moduleFits/useless_battle_booster/text"
+msgstr ""
+"The directive will only work if you have the corresponding equipment "
+"mounted."
 
 msgid "moduleFits/wrong_slot/body"
 msgstr "The module is already in another slot."
@@ -7757,6 +7818,77 @@ msgstr ""
 msgid "notrecruitedtankman/ny22woman/label"
 msgstr "Holiday Ops 2022"
 
+msgid "notrecruitedtankman/ny23_girl_1/desc"
+msgstr ""
+"Awarded for reaching a certain Festive Atmosphere Level during Holiday Ops "
+"2023. The female crew member has the Brothers in Arms perk trained to 100% "
+"and enough experience to train one additional perk or skill to 100%."
+
+msgid "notrecruitedtankman/ny23_girl_1/label"
+msgstr "Holiday Ops 2023"
+
+msgid "notrecruitedtankman/ny23_girl_2/desc"
+msgstr ""
+"Awarded for reaching a certain Festive Atmosphere Level during Holiday Ops "
+"2023. The female crew member has the Brothers in Arms perk trained to 100% "
+"and enough experience to train one additional perk or skill to 100%."
+
+msgid "notrecruitedtankman/ny23_girl_2/label"
+msgstr "Holiday Ops 2023"
+
+msgid "notrecruitedtankman/ny23_girl_3/desc"
+msgstr ""
+"Awarded for reaching a certain Festive Atmosphere Level during Holiday Ops "
+"2023. The female crew member has the Brothers in Arms perk trained to 100% "
+"and enough experience to train one additional perk or skill to 100%."
+
+msgid "notrecruitedtankman/ny23_girl_3/label"
+msgstr "Holiday Ops 2023"
+
+msgid "notrecruitedtankman/ny23_girl_4/desc"
+msgstr ""
+"Awarded for reaching a certain Festive Atmosphere Level during Holiday Ops "
+"2023. The female crew member has the Brothers in Arms perk trained to 100% "
+"and enough experience to train one additional perk or skill to 100%."
+
+msgid "notrecruitedtankman/ny23_girl_4/label"
+msgstr "Holiday Ops 2023"
+
+msgid "notrecruitedtankman/ny23_girl_m/desc"
+msgstr ""
+"Her dashing beauty, undeniable talent, and unique, contagious laugh are "
+"Milla's unwavering companions on her victory marches down the red carpet. "
+"And the next time you catch her on the silver screen, you will likely "
+"remember the words of the scientist from Milla's most beloved movie: \"I "
+"told you ... perfect!\""
+
+msgid "notrecruitedtankman/ny23_girl_m/event"
+msgstr "Holiday Ops 2023"
+
+msgid "notrecruitedtankman/ny23_girl_m/label"
+msgstr "Holiday Ops 2023"
+
+msgid "notrecruitedtankman/ny23defaultGirl/desc"
+msgstr ""
+"A female crew member is awarded for reaching a specific Festive Atmosphere "
+"Level. The female crew member has the Brothers in Arms perk trained to 100% "
+"and enough experience to train one perk or skill to 100%."
+
+msgid "notrecruitedtankman/ny23defaultGirl/howToGetInfo"
+msgstr "Reach a specific Festive Atmosphere Level."
+
+msgid "notrecruitedtankman/ny23defaultGirl/label"
+msgstr "Holiday Ops 2023"
+
+msgid "notrecruitedtankman/ny23ruby_girl_1/desc"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/ny23ruby_girl_1/event"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/ny23ruby_girl_1/label"
+msgstr "?empty?"
+
 msgid "notrecruitedtankman/offspring_commander/desc"
 msgstr ""
 "The lead singer, guitar player, and songwriter is a modern-day Renaissance "
@@ -7894,15 +8026,6 @@ msgstr "?empty?"
 
 msgid "notrecruitedtankman/tankman/label"
 msgstr "A unique crew member"
-
-msgid "notrecruitedtankman/tankmen/desc"
-msgstr "?empty?"
-
-msgid "notrecruitedtankman/tankmen/howToGetInfo"
-msgstr "?empty?"
-
-msgid "notrecruitedtankman/tankmen/label"
-msgstr "Unique Crew Member"
 
 msgid "notrecruitedtankman/tankmen_auc_1/desc"
 msgstr ""
@@ -8915,6 +9038,12 @@ msgstr "Click to reset skills or perks."
 msgid "personal_case/skills/dropSkillsButton/header"
 msgstr "Reset Skills or Perks"
 
+msgid "personal_case/skills/dropSkillsButton/inBattle/body"
+msgstr "Wait until the crew exits battle to change their perks and skills."
+
+msgid "personal_case/skills/dropSkillsButton/inBattle/header"
+msgstr "Vehicle in Battle"
+
 msgid "personal_case/skills/dropSkillsButton/noSkill/body"
 msgstr "You have no trained skills or perks."
 
@@ -9254,7 +9383,7 @@ msgid "privateQuests/status/notReceived/header"
 msgstr "Reward not claimed"
 
 msgid "privateQuests/status/received/header"
-msgstr "Reward claimed"
+msgstr "Reward Received"
 
 msgid "privateQuests/taskListItem/body"
 msgstr "Click to view details."
@@ -10252,102 +10381,6 @@ msgstr ""
 msgid "shell/basic/description/bold"
 msgstr "Default shell"
 
-msgid "shopSales/active/desc"
-msgstr ""
-"The event ends soon. Get your favorite bundles before the time runs out."
-
-msgid "shopSales/active/subheader"
-msgstr "Ends in: %(timeout)s"
-
-msgid "shopSales/currentDiscount/footer"
-msgstr "You can only vote once for a particular bundle."
-
-msgid "shopSales/currentDiscount/header"
-msgstr "Current Discount"
-
-msgid "shopSales/currentDiscount/howToBlock/body"
-msgstr ""
-"The discount changes depending on the overall number of votes given by "
-"players."
-
-msgid "shopSales/currentDiscount/howToBlock/header"
-msgstr "How to Improve Your Discount"
-
-msgid "shopSales/disabled/desc"
-msgstr "Trading Caravan is temporarily unavailable for technical reasons."
-
-msgid "shopSales/disabled/footer"
-msgstr "Temporarily unavailable"
-
-msgid "shopSales/disabled/subheader"
-msgstr "Ends in: %(timeout)s"
-
-msgid "shopSales/enabled/desc"
-msgstr ""
-"Trading Caravan is available again. We apologize for the inconvenience."
-
-msgid "shopSales/ended/desc"
-msgstr "Trading Caravan has ended."
-
-msgid "shopSales/ended/footer/purchased"
-msgstr "All saved bundles purchased."
-
-msgid "shopSales/ended/footer/saved"
-msgstr "%(count)s bundle(s) saved"
-
-msgid "shopSales/ended/subheader"
-msgstr "Active phase ended"
-
-msgid "shopSales/freeShuffle/body"
-msgstr "Replaces the current bundle with a new one containing other items."
-
-msgid "shopSales/freeShuffle/header"
-msgstr "Shuffle Bundles"
-
-msgid "shopSales/freeShuffle/maximumFree"
-msgstr "Maximum free shuffles per day: %(max_number)s"
-
-msgid "shopSales/freeShuffle/paidShuffleCost"
-msgstr "Paid shuffle"
-
-msgid "shopSales/header"
-msgstr "Trading Caravan"
-
-msgid "shopSales/locked/desc"
-msgstr ""
-"Trading Caravan starts soon. During the event, you will have the opportunity"
-" to purchase unique items, Premium vehicles, styles, and other useful "
-"content at a discount."
-
-msgid "shopSales/locked/subheader"
-msgstr "Starts in: %(timeout)s"
-
-msgid "shopSales/paidShuffle/header"
-msgstr "Free shuffles will be available at %(timeout)s"
-
-msgid "shopSales/paidShuffle/startTime"
-msgstr "00:00"
-
-msgid "shopSales/voteForDiscount/available/body"
-msgstr ""
-"Vote for the bundle to increase its discount. The discount changes depending"
-" on the overall number of votes given by players."
-
-msgid "shopSales/voteForDiscount/available/header"
-msgstr "Vote for Bundle"
-
-msgid "shopSales/voteForDiscount/available/maximumVotes"
-msgstr "Votes left for today: %(max_number)s"
-
-msgid "shopSales/voteForDiscount/unavailable/availabilityBlock"
-msgstr "Available in %(timeout)s"
-
-msgid "shopSales/voteForDiscount/unavailable/footer"
-msgstr "You can vote for discount %(max_number)s times per day."
-
-msgid "shopSales/voteForDiscount/unavailable/header"
-msgstr "Voting Not Available"
-
 msgid "showArtyHitOnMap/body"
 msgstr "Show/hide the area under enemy SPG fire on the minimap."
 
@@ -10819,6 +10852,12 @@ msgstr ""
 
 msgid "tankCarusel/lock/rotation/header"
 msgstr "Vehicle of Group %(groupNum)s is Unavailable"
+
+msgid "tankCarusel/newYearSlot/body"
+msgstr "Click to go to the Holiday Ops vehicles screen."
+
+msgid "tankCarusel/newYearSlot/header"
+msgstr "Holiday Ops Vehicles"
 
 msgid "tankCaruselTooltip/vehicleType/elite/AT-SPG"
 msgstr "Elite Tank Destroyer"
@@ -11560,9 +11599,6 @@ msgstr "Required Level"
 msgid "vehicle/action_prc"
 msgstr "Discount %(actionPrc)s, previous cost: %(oldPrice)s"
 
-msgid "vehicle/afterEventEnd/title"
-msgstr "All battles fought, vehicle unavailable."
-
 msgid "vehicle/ammo"
 msgstr "In the ammo"
 
@@ -11655,16 +11691,6 @@ msgstr "Rental From"
 msgid "vehicle/multiplied_xp"
 msgstr "Combat Experience"
 
-msgid "vehicle/overview/desc"
-msgstr ""
-"This is a real nightmare for any enemy. No Platoons: just you and this wild "
-"beast. And don't ask how Ermelinda managed to get it off the chain. This "
-"vehicle is only available for Random Battles from September 26 through "
-"October 18, 2022."
-
-msgid "vehicle/overview/title"
-msgstr "Overview:"
-
 msgid "vehicle/radioDistance"
 msgstr "<h1>Signal Range</h1> <h2>(km)</h2>"
 
@@ -11709,11 +11735,6 @@ msgstr "Rental for Frontline"
 
 msgid "vehicle/rentLeftFuture/hours"
 msgstr "Hours of rent"
-
-msgid "vehicle/rentLeftFuture/obtainedBy"
-msgstr ""
-"Can be earned by completing the Progression or from the Engineer's Gate "
-"during The Waffenträger: Legacy event."
 
 msgid "vehicle/rentLeftFuture/wins"
 msgstr "victories within the rental period"
@@ -12230,6 +12251,14 @@ msgstr "Improved equipment can be demounted and used again only for bonds."
 msgid "vehicleSellDialog/renderer/alertIconCrystal/header"
 msgstr "Demounting to Depot"
 
+msgid "vehicleSellDialog/renderer/alertIconEquipCoin/body"
+msgstr ""
+"Experimental Equipment can be demounted using components, a Demounting Kit, "
+"or gold."
+
+msgid "vehicleSellDialog/renderer/alertIconEquipCoin/header"
+msgstr "Demounting to Depot"
+
 msgid "vehicleSellDialog/renderer/alertIconGold/body"
 msgstr ""
 "Standard equipment and Bounty Equipment can be demounted and used again only"
@@ -12414,6 +12443,14 @@ msgstr ""
 
 msgid "wallet/not_available_crystal/header"
 msgstr "Retrieving Data"
+
+msgid "wallet/not_available_equipCoin/body"
+msgstr ""
+"Retrieving balance data.\n"
+"All your components will become available soon."
+
+msgid "wallet/not_available_equipCoin/header"
+msgstr "Data Acquisition"
 
 msgid "wallet/not_available_freexp/body"
 msgstr ""

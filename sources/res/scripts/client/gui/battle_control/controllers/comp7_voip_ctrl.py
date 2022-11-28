@@ -1,5 +1,5 @@
 import logging, typing, BigWorld, CommandMapping, Keys, VOIP
-from constants import ARENA_PERIOD, IS_CHINA, REQUEST_COOLDOWN
+from constants import ARENA_PERIOD, IS_CHINA, REQUEST_COOLDOWN, ARENA_BONUS_TYPE
 from gui import g_keyEventHandlers
 from gui.battle_control import event_dispatcher
 from gui.battle_control.arena_info.interfaces import IComp7VOIPController
@@ -77,7 +77,7 @@ class Comp7VOIPController(IComp7VOIPController):
                 _logger.error('Failed to toggle Comp7 team VOIP channel. Joining is not allowed.')
                 return
             _logger.info('toggleChannelConnection')
-            event_dispatcher.toggleVoipChannelEnabled()
+            event_dispatcher.toggleVoipChannelEnabled(ARENA_BONUS_TYPE.COMP7)
             self.__cooldownCallback = BigWorld.callback(REQUEST_COOLDOWN.POST_PROGRESSION_CELL + 1.0, self.__clearCooldown)
             return
 

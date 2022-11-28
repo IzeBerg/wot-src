@@ -28,8 +28,17 @@ class WindowsManager(PyObjectEntity):
     def getView(self, uniqueID):
         return self.proxy.getPyView(int(uniqueID))
 
+    def getViewsByLayout(self, layoutID):
+        return self.proxy.getPyViewsByLayoutId(layoutID)
+
     def getViewByLayoutID(self, layoutID):
-        return self.proxy.getPyViewByLayoutID(layoutID)
+        views = self.proxy.getPyViewsByLayoutId(layoutID)
+        if len(views) > 1:
+            _logger.warning('There are more than one view loaded with layoutID = %s', layoutID)
+        if not views:
+            return None
+        else:
+            return views[0]
 
     def getWindow(self, uniqueID):
         return self.proxy.getPyWindow(uniqueID)

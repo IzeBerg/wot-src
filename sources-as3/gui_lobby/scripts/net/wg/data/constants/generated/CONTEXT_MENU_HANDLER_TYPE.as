@@ -77,6 +77,8 @@ package net.wg.data.constants.generated
       
       public static const STORAGE_OPTIONAL_DEVICE_ITEM:String = "storageOptionalDeviceItem";
       
+      public static const STORAGE_OPTIONAL_MODERNIZED_DEVICE_ITEM:String = "storageOptionalModernizedDeviceItem";
+      
       public static const STORAGE_RECERTIFICATION_FORM_ITEM:String = "storageRecertificationFormItem";
       
       public static const TANK_SETUP_OPTIONAL_DEVICE_ITEM:String = "tankSetupOptionalDeviceItem";
@@ -84,8 +86,6 @@ package net.wg.data.constants.generated
       public static const TANK_SETUP_MODULE_ITEM:String = "tankSetupModuleItem";
       
       public static const TANK_SETUP_CONSUMABLE_ITEM:String = "tankSetupConsumableItem";
-      
-      public static const TANK_SETUP_HW_CONSUMABLE_ITEM:String = "tankSetupHWConsumableItem";
       
       public static const TANK_SETUP_BATTLE_BOOSTER_ITEM:String = "tankSetupBattleBoosterItem";
       
@@ -97,8 +97,6 @@ package net.wg.data.constants.generated
       
       public static const TANK_SETUP_CONSUMABLE_SLOT:String = "tankSetupConsumableSlot";
       
-      public static const TANK_SETUP_HW_CONSUMABLE_SLOT:String = "tankSetupHWConsumableSlot";
-      
       public static const TANK_SETUP_BATTLE_BOOSTER_SLOT:String = "tankSetupBattleBoosterSlot";
       
       public static const TANK_SETUP_BATTLE_ABILITY_SLOT:String = "tankSetupBattleAbilitySlot";
@@ -108,8 +106,6 @@ package net.wg.data.constants.generated
       public static const TANK_SETUP_HANGAR_OPTIONAL_DEVICE_SLOT:String = "tankSetupHangarOptionalDeviceSlot";
       
       public static const TANK_SETUP_HANGAR_CONSUMABLE_SLOT:String = "tankSetupHangarConsumableSlot";
-      
-      public static const TANK_SETUP_HANGAR_HW_CONSUMABLE_SLOT:String = "tankSetupHangarHWConsumableSlot";
       
       public static const TANK_SETUP_HANGAR_BATTLE_BOOSTER_SLOT:String = "tankSetupHangarBattleBoosterSlot";
       

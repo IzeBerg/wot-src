@@ -15,6 +15,8 @@ package net.wg.data.constants.generated
       
       public static const AT_SPG_ELITE:String = "AT_SPG_elite";
       
+      public static const BACK_CHECKBOX:String = "back_checkbox";
+      
       public static const BACK_GHOST:String = "back_ghost";
       
       public static const BACK_MAIN:String = "back_main";
@@ -115,9 +117,13 @@ package net.wg.data.constants.generated
       
       public static const CM_SUB_ITEM_BG:String = "cm_sub_item_bg";
       
+      public static const COUNT_FILTER_UP:String = "count_filter_up";
+      
       public static const CREDITS_ICON_1:String = "CreditsIcon_1";
       
       public static const CREDITS_ICON_2:String = "CreditsIcon_2";
+      
+      public static const CROSS_ICON:String = "crossIcon";
       
       public static const CRYSTAL_16X16:String = "crystal_16x16";
       
@@ -244,6 +250,26 @@ package net.wg.data.constants.generated
       public static const SEARCH_ICON:String = "search_icon";
       
       public static const SEPARATOR:String = "separator";
+      
+      public static const SMALL_AT_SPG:String = "small_AT-SPG";
+      
+      public static const SMALL_AT_SPG_ELITE:String = "small_AT-SPG_elite";
+      
+      public static const SMALL_HEAVY_TANK:String = "small_heavyTank";
+      
+      public static const SMALL_HEAVY_TANK_ELITE:String = "small_heavyTank_elite";
+      
+      public static const SMALL_LIGHT_TANK:String = "small_lightTank";
+      
+      public static const SMALL_LIGHT_TANK_ELITE:String = "small_lightTank_elite";
+      
+      public static const SMALL_MEDIUM_TANK:String = "small_mediumTank";
+      
+      public static const SMALL_MEDIUM_TANK_ELITE:String = "small_mediumTank_elite";
+      
+      public static const SMALL_SPG:String = "small_SPG";
+      
+      public static const SMALL_SPG_ELITE:String = "small_SPG_elite";
       
       public static const SPG:String = "SPG";
       

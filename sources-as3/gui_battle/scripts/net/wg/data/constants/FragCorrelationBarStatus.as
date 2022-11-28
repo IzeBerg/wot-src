@@ -12,8 +12,6 @@ package net.wg.data.constants
       public static const HIDE_VEHICLE_ICONS:uint = 8;
       
       public static const SHOW_TEAM_HP_BAR:uint = 16;
-      
-      public static const AUTO_SIZE:uint = 32;
        
       
       public function FragCorrelationBarStatus()
@@ -44,11 +42,6 @@ package net.wg.data.constants
       public static function isHideVehicleIcons(param1:uint) : Boolean
       {
          return (param1 & FragCorrelationBarStatus.HIDE_VEHICLE_ICONS) > 0;
-      }
-      
-      public static function isAutoSize(param1:uint) : Boolean
-      {
-         return (param1 & FragCorrelationBarStatus.AUTO_SIZE) > 0;
       }
    }
 }

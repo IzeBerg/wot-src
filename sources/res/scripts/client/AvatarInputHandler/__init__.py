@@ -472,6 +472,9 @@ class AvatarInputHandler(CallbackDelayer, ScriptGameObject):
         return
 
     def deactivatePostmortem(self):
+        if self.ctrlModeName not in (_CTRL_MODE.POSTMORTEM, _CTRL_MODE.RESPAWN_DEATH, _CTRL_MODE.DEATH_FREE_CAM):
+            LOG_WARNING('Trying to deactivate postmortem when it is not active. Current mode:', self.ctrlModeName)
+            return
         self.onControlModeChanged('arcade')
         arcadeMode = self.__ctrls['arcade']
         arcadeMode.camera.setToVehicleDirection()

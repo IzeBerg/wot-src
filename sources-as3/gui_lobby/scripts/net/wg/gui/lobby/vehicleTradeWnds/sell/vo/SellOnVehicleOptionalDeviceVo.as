@@ -8,6 +8,8 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell.vo
       
       public var isRemovable:Boolean = false;
       
+      public var isModernized:Boolean = false;
+      
       public var action:Object = null;
       
       public var actionVo:ActionPriceVO = null;

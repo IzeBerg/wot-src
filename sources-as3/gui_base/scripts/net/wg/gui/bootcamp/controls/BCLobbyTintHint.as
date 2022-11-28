@@ -162,7 +162,7 @@ package net.wg.gui.bootcamp.controls
                this.startItemAnimation();
                this._isStarted = true;
             }
-            if(!this._isFlag)
+            else if(!this._isFlag)
             {
                this.resizeTweens();
             }
@@ -304,21 +304,27 @@ package net.wg.gui.bootcamp.controls
       
       private function resizeTweens() : void
       {
-         var _loc1_:Array = null;
+         var _loc1_:Tween = null;
          var _loc2_:Tween = null;
          var _loc3_:int = 0;
-         if(this._fadeInTweens && this._fadeOutTweens.length >= this._lines)
+         var _loc4_:Array = null;
+         var _loc5_:int = 0;
+         if(this._fadeInTweens)
          {
-            _loc1_ = this._fadeOutTweens;
-            this._fadeOutTweens = [];
-            _loc3_ = 0;
-            while(_loc3_ < this._lines)
+            _loc3_ = this._fadeInTweens.length;
+            _loc4_ = this._fadeInTweens;
+            this._fadeInTweens = [];
+            _loc5_ = 0;
+            while(_loc5_ < _loc3_)
             {
-               _loc2_ = this.createFadeInTween(_loc3_);
-               _loc2_.position = Tween(_loc1_[_loc3_]).position;
-               _loc3_++;
+               _loc2_ = _loc4_[_loc5_] as Tween;
+               _loc1_ = this.createFadeInTween(_loc5_);
+               _loc1_.position = _loc2_.position;
+               _loc1_.paused = _loc2_.paused;
+               this._fadeInTweens[_loc5_] = _loc1_;
+               _loc5_++;
             }
-            removeTweens(_loc1_);
+            removeTweens(_loc4_);
          }
       }
       

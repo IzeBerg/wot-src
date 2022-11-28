@@ -10,6 +10,8 @@ package net.wg.gui.lobby.header.events
       public static const HEADER_ITEMS_REPOSITION:String = "HeaderItemsReposition";
       
       public static const HBC_UPDATED:String = "HBCUpdated";
+      
+      public static const VISIBILITY_CHANGED:String = "HeaderVisibilityChanged";
        
       
       public var itemBounds:Number;

@@ -186,26 +186,6 @@ package net.wg.gui.battle.battleloading.data
          return _loc2_;
       }
       
-      public function updateDamages(param1:Vector.<DAAPIVehicleStatsVO>) : Boolean
-      {
-         var _loc2_:Boolean = false;
-         var _loc3_:DAAPIVehicleStatsVO = null;
-         var _loc4_:int = 0;
-         var _loc5_:DAAPIVehicleInfoVO = null;
-         for each(_loc3_ in param1)
-         {
-            _loc4_ = this.vehicleIDs.indexOf(_loc3_.vehicleID);
-            _loc5_ = this[_loc4_] as DAAPIVehicleInfoVO;
-            if(_loc5_ != null && _loc5_.damage != _loc3_.damage)
-            {
-               _loc5_.damage = _loc3_.damage;
-               _loc2_ = true;
-               this.addUpdatedIndex(_loc4_);
-            }
-         }
-         return _loc2_;
-      }
-      
       public function updateInvitationsStatuses(param1:Vector.<DAAPIInvitationStatusVO>) : Boolean
       {
          var _loc2_:Boolean = false;

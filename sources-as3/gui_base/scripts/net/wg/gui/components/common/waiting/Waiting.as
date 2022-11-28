@@ -8,6 +8,8 @@ package net.wg.gui.components.common.waiting
    
    public class Waiting extends UIComponentEx implements IWaiting
    {
+      
+      private static const SOFT_SHOW_DELAY:uint = 500;
        
       
       private var _waitingComponent:WaitingComponent = null;
@@ -17,6 +19,8 @@ package net.wg.gui.components.common.waiting
       private var _backgroundVisibility:Boolean = true;
       
       private var _waitingOffset:Point = null;
+      
+      private var _isComponentShown:Boolean = false;
       
       public function Waiting()
       {
@@ -48,9 +52,12 @@ package net.wg.gui.components.common.waiting
       {
          if(this._waitingComponent)
          {
+            App.utils.scheduler.cancelTask(this.showWaitingComponent);
             this._waitingComponent.setAnimationStatus(true);
+            this._waitingComponent.movieVisible = false;
          }
          visible = false;
+         this._isComponentShown = false;
       }
       
       public function setMessage(param1:String) : void
@@ -67,7 +74,7 @@ package net.wg.gui.components.common.waiting
          this._waitingOffset = param1;
       }
       
-      public function show() : void
+      public function show(param1:Boolean = false) : void
       {
          if(visible)
          {
@@ -77,6 +84,7 @@ package net.wg.gui.components.common.waiting
          if(!this._waitingComponent)
          {
             this._waitingComponent = App.utils.classFactory.getComponent(Linkages.WAITING_COMPONENT,WaitingComponent);
+            this._waitingComponent.movieVisible = false;
             addChild(this._waitingComponent);
             this.updateBackgroundVisibility();
             this.updateSize();
@@ -87,6 +95,27 @@ package net.wg.gui.components.common.waiting
          else
          {
             this._waitingComponent.setAnimationStatus(false);
+         }
+         if(param1)
+         {
+            if(!this._isComponentShown)
+            {
+               App.utils.scheduler.scheduleTask(this.showWaitingComponent,SOFT_SHOW_DELAY);
+            }
+         }
+         else
+         {
+            App.utils.scheduler.cancelTask(this.showWaitingComponent);
+            this.showWaitingComponent();
+         }
+         this._isComponentShown = true;
+      }
+      
+      private function showWaitingComponent() : void
+      {
+         if(this._waitingComponent)
+         {
+            this._waitingComponent.movieVisible = true;
          }
       }
       

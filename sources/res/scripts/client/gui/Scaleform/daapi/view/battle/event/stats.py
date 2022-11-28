@@ -18,10 +18,6 @@ class EventStats(EventStatsMeta, IArenaVehiclesController):
         self.__arenaDP = self.sessionProvider.getArenaDP()
         return
 
-    @property
-    def hasTabs(self):
-        return False
-
     def invalidateArenaInfo(self):
         self.__updateTitleAndDescription()
         self.__updateStats()

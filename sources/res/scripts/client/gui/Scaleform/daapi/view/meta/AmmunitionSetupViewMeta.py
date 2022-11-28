@@ -8,9 +8,9 @@ class AmmunitionSetupViewMeta(View):
     def onEscapePress(self):
         self._printOverrideError('onEscapePress')
 
-    def as_gfSizeUpdatedS(self, width, x):
+    def as_gfSizeUpdatedS(self, x, width):
         if self._isDAAPIInited():
-            return self.flashObject.as_gfSizeUpdated(width, x)
+            return self.flashObject.as_gfSizeUpdated(x, width)
 
     def as_showCloseAnimS(self):
         if self._isDAAPIInited():

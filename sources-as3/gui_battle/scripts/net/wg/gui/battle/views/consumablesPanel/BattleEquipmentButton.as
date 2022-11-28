@@ -166,6 +166,11 @@ package net.wg.gui.battle.views.consumablesPanel
          super.onDispose();
       }
       
+      override protected function getFrameLabel(param1:String) : String
+      {
+         return !!this._isReloading ? BATTLE_ITEM_STATES.COOLDOWN : param1;
+      }
+      
       public function clearColorTransform() : void
       {
          if(this._isReloading)
@@ -272,6 +277,7 @@ package net.wg.gui.battle.views.consumablesPanel
          if(param1 > 0)
          {
             this.updateStateBeforeCooldown();
+            this.state = BATTLE_ITEM_STATES.COOLDOWN;
             this._firstShow = false;
             this._isReloading = true;
             this.setColorTransform(COLOR_STATES.DARK_COLOR_TRANSFORM);
@@ -376,11 +382,6 @@ package net.wg.gui.battle.views.consumablesPanel
                this._isPermanent = true;
                super.state = BATTLE_ITEM_STATES.PERMANENT;
             }
-            else if(param1 == -2)
-            {
-               this._isPermanent = true;
-               super.state = BATTLE_ITEM_STATES.PERMANENT;
-            }
             else if(param1 == 0)
             {
                this.clearCoolDownTime();
@@ -460,12 +461,15 @@ package net.wg.gui.battle.views.consumablesPanel
       
       protected function enableMouse() : void
       {
-         mouseEnabled = mouseChildren = true;
+         if(enabled)
+         {
+            buttonMode = true;
+         }
       }
       
       protected function disableMouse() : void
       {
-         mouseEnabled = mouseChildren = false;
+         buttonMode = false;
       }
       
       private function intervalRun(param1:Boolean) : void

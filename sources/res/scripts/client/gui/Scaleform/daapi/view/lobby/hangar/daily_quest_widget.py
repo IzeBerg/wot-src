@@ -8,7 +8,7 @@ from gui.Scaleform.daapi.view.meta.DailyQuestMeta import DailyQuestMeta
 from gui.Scaleform.managers import UtilsManager
 from helpers import dependency
 from helpers.CallbackDelayer import CallbackDelayer
-from skeletons.gui.game_control import IPromoController
+from skeletons.gui.game_control import IPromoController, IFunRandomController
 from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 
@@ -16,6 +16,7 @@ class DailyQuestWidget(InjectComponentAdaptor, DailyQuestMeta, IGlobalListener):
     lobbyContext = dependency.descriptor(ILobbyContext)
     eventsCache = dependency.descriptor(IEventsCache)
     promoController = dependency.descriptor(IPromoController)
+    __funRandomCtrl = dependency.descriptor(IFunRandomController)
     __layout = 0
 
     def updateWidgetLayout(self, value):
@@ -25,7 +26,9 @@ class DailyQuestWidget(InjectComponentAdaptor, DailyQuestMeta, IGlobalListener):
         return
 
     def onPrbEntitySwitched(self):
-        if not (self._isRandomBattleSelected() or self._isMapboxSelected() or self._isComp7Selected()):
+        if self.__funRandomCtrl.hasDailyQuestsEntry():
+            self.__showOrHide()
+        elif not (self._isRandomBattleSelected() or self._isMapboxSelected() or self._isComp7Selected()):
             self.__animateHide()
         else:
             self.__showOrHide()
@@ -72,6 +75,7 @@ class DailyQuestWidget(InjectComponentAdaptor, DailyQuestMeta, IGlobalListener):
     def __animateHide(self):
         if self._injectView is not None:
             self._injectView.setVisible(False)
+        self.as_setEnabledS(False)
         return
 
     def __hide(self):

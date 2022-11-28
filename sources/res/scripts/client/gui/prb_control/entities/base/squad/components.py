@@ -90,13 +90,3 @@ class RestrictedScoutDataProvider(RestrictedVehicleTagDataProvider):
 
     def getMaxPossibleVehicles(self):
         return self.__lobbyContext.getServerSettings().getMaxScoutInSquads()
-
-
-class RestrictedSquadDataProvider(RestrictedVehicleTagDataProvider):
-    _VEHICLE_TAG = 'squad_restricted'
-
-    def getRestrictionLevels(self):
-        return
-
-    def getMaxPossibleVehicles(self):
-        return 0

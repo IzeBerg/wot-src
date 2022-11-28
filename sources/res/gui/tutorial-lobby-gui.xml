@@ -4761,7 +4761,47 @@
 				</item>
 				<item>
 					<name>path</name>
-					<value>div[class*=filter-survivability]</value>
+					<value>div[class*=filter-for-highlight]</value>
+				</item>
+				<item>
+					<name>padding</name>
+					<type>dict</type>
+					<value>
+						<item>
+							<name>left</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>top</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>right</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+						<item>
+							<name>bottom</name>
+							<type>float</type>
+							<value>0</value>
+						</item>
+					</value>
+				</item>
+			</value>
+		</item>
+		<item>
+			<name>ModernizedSetupTabHintZone</name>
+			<type>dict</type>
+			<value>
+				<item>
+					<name>view</name>
+					<value>R.views.lobby.tanksetup.HangarAmmunitionSetup</value>
+				</item>
+				<item>
+					<name>path</name>
+					<value>div[tab-key*=modernized]</value>
 				</item>
 				<item>
 					<name>padding</name>

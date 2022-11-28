@@ -363,20 +363,8 @@ class _EventBattlesItem(_SelectorItem):
 
     def _update(self, state):
         self._isDisabled = state.hasLockedState
-        self._isSelected = state.isQueueSelected(QUEUE_TYPE.EVENT_BATTLES) or state.isQueueSelected(QUEUE_TYPE.EVENT_BATTLES_2)
-        self._isVisible = self._isEnabled()
-        self._isLocked = not self.__eventBattlesCtrl.isCurrentQueueEnabled()
-
-    @adisp_process
-    def _doSelect(self, dispatcher):
-        if self._isEnabled():
-            isSuccess = yield dispatcher.doSelectAction(PrbAction(self.getData()))
-            if isSuccess and self._isNew:
-                selectorUtils.setBattleTypeAsKnown(self._selectorType)
-
-    def _isEnabled(self):
-        progressCtrl = self.__eventBattlesCtrl.getHWProgressCtrl()
-        return self.__eventBattlesCtrl.isAvailable() and progressCtrl and not progressCtrl.isPostPhase()
+        self._isSelected = state.isQueueSelected(QUEUE_TYPE.EVENT_BATTLES)
+        self._isVisible = self.__eventBattlesCtrl.isEnabled()
 
 
 class _BattleSelectorItems(object):
@@ -563,11 +551,6 @@ class _EventSquadItem(_SpecialSquadItem):
     def squadIcon(self):
         return backport.image(_R_ICONS.battleTypes.c_40x40.eventSquad())
 
-    def _update(self, state):
-        super(_EventSquadItem, self)._update(state)
-        self._isSelected = state.isQueueSelected(QUEUE_TYPE.EVENT_BATTLES) or state.isQueueSelected(QUEUE_TYPE.EVENT_BATTLES_2)
-        self._isVisible = self.__eventBattlesCtrl.isEnabled()
-
 
 class _BattleRoyaleSquadItem(_SpecialSquadItem):
     __battleRoyaleController = dependency.descriptor(IBattleRoyaleController)
@@ -621,19 +604,20 @@ class _FunRandomSquadItem(_SpecialSquadItem):
 
     def __init__(self, label, data, order, selectorType=None, isVisible=True):
         super(_FunRandomSquadItem, self).__init__(label, data, order, selectorType, isVisible)
+        self._isVisible = self.__funRandomController.isFunRandomPrbActive()
         self._prebattleType = PREBATTLE_TYPE.FUN_RANDOM
-        self._isVisible = self.__funRandomController.isEnabled()
-        self._isDisabled = self._isDisabled or not self.__funRandomController.isInPrimeTime()
 
     @property
     def squadIcon(self):
         return backport.image(_R_ICONS.battleTypes.c_40x40.funRandomSquad())
 
+    def getFormattedLabel(self):
+        return ''
+
     def _update(self, state):
         super(_FunRandomSquadItem, self)._update(state)
-        self._isSelected = self.__funRandomController.isFunRandomPrbActive()
-        self._isVisible = self.__funRandomController.isEnabled()
-        self._isDisabled = self._isDisabled or not self.__funRandomController.isInPrimeTime()
+        self._isVisible = self.__funRandomController.isFunRandomPrbActive()
+        self._isSelected = self._isSelected or self._isVisible
 
 
 class _Comp7SquadItem(_SpecialSquadItem):
@@ -899,6 +883,7 @@ class EpicBattleItem(SelectorItem):
         self._isVisible = any((self.__epicController.getCurrentSeason(), self.__epicController.getNextSeason()))
         self._isDisabled = not self.__epicController.isEnabled() or state.hasLockedState
         self._isSelected = state.isQueueSelected(QUEUE_TYPE.EPIC)
+        self.__epicController.storeCycle()
         if self._selectorType is not None:
             self._isNew = not selectorUtils.isKnownBattleType(self._selectorType)
         return
@@ -1072,7 +1057,7 @@ def _addEpicTrainingBattleType(items, lobbyContext=None):
 
 
 def _addEventBattlesType(items):
-    items.append(_EventBattlesItem(backport.text(_R_BATTLE_TYPES.event()), PREBATTLE_ACTION_NAME.EVENT_BATTLE, 2, SELECTOR_BATTLE_TYPES.EVENT))
+    items.append(_EventBattlesItem('Event Battle', PREBATTLE_ACTION_NAME.EVENT_BATTLE, 2, SELECTOR_BATTLE_TYPES.EVENT))
 
 
 BATTLES_SELECTOR_ITEMS = {PREBATTLE_ACTION_NAME.RANDOM: _addRandomBattleType, 
@@ -1136,7 +1121,7 @@ def _addMapboxSquadType(items):
 
 
 def _addFunRandomSquadType(items):
-    items.append(_FunRandomSquadItem(text_styles.middleTitle(backport.text(_R_BATTLE_TYPES.funRandomSquad())), PREBATTLE_ACTION_NAME.FUN_RANDOM_SQUAD, 2))
+    items.append(_FunRandomSquadItem('', 'funRandomSquad', 2))
 
 
 def _getCycleEndsInStr(modeCtrl, modeName, timeLeftStrGetter=time_utils.getTillTimeString):

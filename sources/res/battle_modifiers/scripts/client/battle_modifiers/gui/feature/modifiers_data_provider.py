@@ -1,6 +1,6 @@
 from typing import Tuple, Any, TYPE_CHECKING
 from battle_modifiers_ext.battle_modifiers import BattleModifiers
-from battle_modifiers_ext.battle_modifier_constants import GameplayImpact
+from battle_modifiers_ext.constants_ext import GameplayImpact
 if TYPE_CHECKING:
     from battle_modifiers_ext.battle_modifiers import BattleModifier
 

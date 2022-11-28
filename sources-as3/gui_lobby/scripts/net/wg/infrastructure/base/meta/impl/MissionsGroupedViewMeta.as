@@ -17,6 +17,10 @@ package net.wg.infrastructure.base.meta.impl
       
       public var onClickButtonDetails:Function;
       
+      public var onDailyClick:Function;
+      
+      public var onNYChallengeClick:Function;
+      
       public function MissionsGroupedViewMeta()
       {
          super();
@@ -50,6 +54,18 @@ package net.wg.infrastructure.base.meta.impl
       {
          App.utils.asserter.assertNotNull(this.onClickButtonDetails,"onClickButtonDetails" + Errors.CANT_NULL);
          this.onClickButtonDetails();
+      }
+      
+      public function onDailyClickS() : void
+      {
+         App.utils.asserter.assertNotNull(this.onDailyClick,"onDailyClick" + Errors.CANT_NULL);
+         this.onDailyClick();
+      }
+      
+      public function onNYChallengeClickS() : void
+      {
+         App.utils.asserter.assertNotNull(this.onNYChallengeClick,"onNYChallengeClick" + Errors.CANT_NULL);
+         this.onNYChallengeClick();
       }
    }
 }

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/custom/emissive_playground.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>110</materialKind>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						emissionMap
+						<Texture>content/Hangars/h_newyear/customization/Illumination/Gate/NY22_Gates_04_AM.dds</Texture>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>40.000000</Float>
+					</property>
+					<property>
+						g_offsetBlack
+						<Float>0.250000</Float>
+					</property>
+					<property>
+						g_zeroPhaseLum
+						<Float>0.500000</Float>
+					</property>
+					<property>
+						pattern
+						<Texture>content/Hangars/h_newyear/customization/Illumination/Gate/NY22_Gates_04_CM.dds</Texture>
+					</property>
+					<property>
+						phaseMap
+						<Texture>content/Hangars/h_newyear/customization/Illumination/Gate/NY22_Gates_04_CM.dds</Texture>
+					</property>
+					<property>
+						speed
+						<Float>0.500000</Float>
+					</property>
+					<property>
+						usePhaseMap
+						<Bool>true</Bool>
+					</property>
+					<property>
+						waveLen
+						<Float>1.700000</Float>
+					</property>
+					<property>
+						g_forwardMult
+						<Float>3.500000</Float>
+					</property>
+					<property>
+						g_offsetBlackFwd
+						<Float>0.550000</Float>
+					</property>
+				</material>
+				<groupOrigin>54.098385 15.639467 47.975525</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/custom/emissive_playground.fx</fx>
+					<materialKind>110</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						emissionMap
+						<Texture>content/Hangars/h_newyear/customization/Illumination/Gate/NY22_Gates_04_AM.dds</Texture>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>40.000000</Float>
+					</property>
+					<property>
+						g_offsetBlack
+						<Float>0.200000</Float>
+					</property>
+					<property>
+						pattern
+						<Texture>content/Hangars/h_newyear/customization/Illumination/Gate/NY22_Gates_04_CM.dds</Texture>
+					</property>
+					<property>
+						phaseMap
+						<Texture>content/Hangars/h_newyear/customization/Illumination/Gate/NY22_Gates_04_CM.dds</Texture>
+					</property>
+					<property>
+						speed
+						<Float>0.600000</Float>
+					</property>
+					<property>
+						usePhaseMap
+						<Bool>true</Bool>
+					</property>
+					<property>
+						waveLen
+						<Float>0.300000</Float>
+					</property>
+					<property>
+						g_forwardMult
+						<Float>3.500000</Float>
+					</property>
+					<property>
+						g_offsetBlackFwd
+						<Float>0.250000</Float>
+					</property>
+				</material>
+				<groupOrigin>53.985916 17.048643 48.312683</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.500000 -0.000000 -15.152607</min>
+		<max>91.505623 28.704409 111.777969</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>120612</geometrySize>
+	<minUVDensity>0.020983</minUVDensity>
+</root>

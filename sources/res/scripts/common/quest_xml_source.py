@@ -1,4 +1,5 @@
 import time, ArenaType, ResMgr, nations
+from items.components.ny_constants import CurrentNYConstants, PREV_NY_TOYS_BONUSES
 from soft_exception import SoftException
 from copy import deepcopy
 from pprint import pformat
@@ -113,8 +114,7 @@ class Source(object):
             eventType = EVENT_TYPE.NAME_TO_TYPE[typeName]
             mainNode = XMLNode('main')
             mainNode.info = info = self.__readHeader(eventType, questSection, curTime, gStartTime, gFinishTime)
-            noSkip = questSection.readBool('noSkip', False)
-            if not (noSkip or info['announceTime'] <= curTime <= info['finishTime']):
+            if not info['announceTime'] <= curTime <= info['finishTime']:
                 LOG_WARNING('Skipping outdated quest', info['id'], curTime, info['announceTime'], info['finishTime'])
                 continue
             if eventType == EVENT_TYPE.GROUP:
@@ -288,7 +288,6 @@ class Source(object):
            'startTime': startTime if not tOption else time.time() - 300, 
            'finishTime': finishTime, 
            'announceTime': announceTime, 
-           'noSkip': questSection.readBool('noSkip', False), 
            'disableGui': questSection.readBool('disableGui', False), 
            'showCongrats': showCongrats, 
            'requiredToken': requiredToken, 
@@ -439,8 +438,6 @@ class Source(object):
                'consumables': self.__readBattleResultsConditionList, 
                'equipment': self.__readCondition_consumables, 
                'equipmentCount': self.__readBattleResultsConditionList, 
-               'hwUsedConsumables': self.__readBattleResultsConditionList, 
-               'hwEquipment': self.__readCondition_consumables, 
                'goodies': self.__readBattleResultsConditionList, 
                'goodiesCount': self.__readBattleResultsConditionList, 
                'correspondedCamouflage': self.__readConditionComplex_true, 
@@ -505,8 +502,10 @@ class Source(object):
          'meta', 'gold', 'credits', 'crystal', 'freeXP', 'item', 'equipment', 'slots', 'berths',
          'premium', 'premium_plus', 'premium_vip', 'token', 'goodie', 'vehicle', 'dossier', 'tankmen',
          'customizations', 'vehicleChoice', 'crewSkin', 'blueprint', 'blueprintAny', 'enhancement',
-         'eventCoin', 'bpcoin', 'entitlement', 'rankedDailyBattles', 'rankedBonusBattles',
-         'dogTagComponent', 'battlePassPoints', 'currency', 'freePremiumCrew', 'entitlementList'}
+         'eventCoin', 'bpcoin', 'entitlement', 'rankedDailyBattles', 'rankedBonusBattles', 'equipCoin',
+         'dogTagComponent', 'battlePassPoints', 'currency', 'freePremiumCrew', 'entitlementList',
+         CurrentNYConstants.TOY_BONUS}
+        bonusTypes.update(PREV_NY_TOYS_BONUSES)
         if eventType in (EVENT_TYPE.BATTLE_QUEST, EVENT_TYPE.PERSONAL_QUEST, EVENT_TYPE.NT_QUEST):
             bonusTypes.update(('xp', 'tankmenXP', 'xpFactor', 'creditsFactor', 'freeXPFactor',
                                'tankmenXPFactor'))
@@ -559,7 +558,7 @@ class Source(object):
     def __readCondition_consumables(self, _, section, node):
         modules = set()
         name = section.asString
-        if node.name == 'equipment' or node.name == 'hwEquipment':
+        if node.name == 'equipment':
             idx = vehicles.g_cache.equipmentIDs()[name]
             modules.add(vehicles.g_cache.equipments()[idx].compactDescr)
         else:

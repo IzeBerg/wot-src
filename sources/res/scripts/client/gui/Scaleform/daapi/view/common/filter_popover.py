@@ -8,12 +8,9 @@ from gui.Scaleform.daapi.view.lobby.hangar.carousels.battle_pass import BattlePa
 from gui.Scaleform.daapi.view.meta.TankCarouselFilterPopoverMeta import TankCarouselFilterPopoverMeta
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
 from gui.Scaleform.locale.TANK_CAROUSEL_FILTER import TANK_CAROUSEL_FILTER
-from gui.shared import g_eventBus
-from gui.shared.events import CarouselEvent
 from gui.impl import backport
 from gui.impl.gen import R
-from gui.prb_control.dispatcher import g_prbLoader
-from gui.prb_control.settings import VEHICLE_LEVELS, FUNCTIONAL_FLAG
+from gui.prb_control.settings import VEHICLE_LEVELS
 from gui.shared.formatters import text_styles
 from gui.shared.formatters.ranges import toRomanRangeString
 from gui.shared.gui_items import GUI_ITEM_TYPE
@@ -60,14 +57,11 @@ class VehiclesFilterPopover(TankCarouselFilterPopoverMeta):
         customParams = carousel.getCustomParams()
         customParams['isRanked'] = self._isRanked
         customParams['isComp7'] = self._isComp7
-        dispatcher = g_prbLoader.getDispatcher()
-        isEventMode = dispatcher is not None and bool(dispatcher.getEntity().getModeFlags() & FUNCTIONAL_FLAG.EVENT)
-        self.__mapping = self._generateMapping((carousel.hasRentedVehicles() or not carousel.filter.isDefault(('rented', ))), (isEventMode and carousel.hasEventVehicles() or not carousel.filter.isDefault(('event', ))), carousel.hasRoles(), **customParams)
+        self.__mapping = self._generateMapping((carousel.hasRentedVehicles() or not carousel.filter.isDefault(('rented', ))), (carousel.hasEventVehicles() or not carousel.filter.isDefault(('event', ))), carousel.hasRoles(), **customParams)
         self.__usedFilters = list(itertools.chain.from_iterable(self.__mapping.itervalues()))
         self._carousel = carousel
         self._carousel.setPopoverCallback(self.__onCarouselSwitched)
         self._update(isInitial=True)
-        return
 
     def changeFilter(self, sectionId, itemId):
         if self._carousel is not None and self._carousel.filter is not None:
@@ -257,8 +251,6 @@ class TankCarouselFilterPopover(VehiclesFilterPopover):
     def switchCarouselType(self, selected):
         setting = self.__settingsCore.options.getSetting(settings_constants.GAME.CAROUSEL_TYPE)
         self._carouselRowCount = setting.CAROUSEL_TYPES.index(setting.OPTIONS.DOUBLE if selected else setting.OPTIONS.SINGLE)
-        self._carousel.setRowCount(self._carouselRowCount + 1)
-        g_eventBus.handleEvent(CarouselEvent(eventType=CarouselEvent.CAROUSEL_TYPE_WAS_CHANGED, ctx={CarouselEvent.CAROUSEL_TYPE_ARG: setting.CAROUSEL_TYPES[self._carouselRowCount]}))
         self._carousel.setRowCount(self._carouselRowCount + 1)
 
     def _getInitialVO(self, filters, xpRateMultiplier):

@@ -1,4 +1,5 @@
 from typing import TYPE_CHECKING
+from uilogging.personal_reserves.loggers import BuyAndActivateDialogsLogger
 from wg_async import wg_async
 from adisp import adisp_async
 from goodies.goodie_constants import GOODIE_RESOURCE_TYPE
@@ -31,10 +32,15 @@ UPGRADE_IMAGE_LOOKUP = {GOODIE_RESOURCE_TYPE.XP: R.images.gui.maps.icons.persona
 
 @adisp_async
 @wg_async
-def showDialog(dialog, callback):
-    from gui.impl.dialogs import dialogs
-    isOk = yield dialogs.showSimple(dialog)
-    callback(isOk)
+def showDialogAndLogInteraction(dialog, dialogLogItem, callback):
+    logger = BuyAndActivateDialogsLogger(dialogLogItem)
+    dialog.load()
+    logger.logOpenDialog()
+    result = yield dialog.wait()
+    buttonClicked = result.result
+    logger.logButtonClick(buttonClicked)
+    dialog.destroy()
+    callback(buttonClicked == DialogButtons.SUBMIT)
 
 
 def getUpgradeBoosterDialog(booster, previousBooster):

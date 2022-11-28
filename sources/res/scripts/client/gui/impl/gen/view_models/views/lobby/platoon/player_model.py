@@ -1,7 +1,7 @@
 from frameworks.wulf import ViewModel
+from gui.impl.gen.view_models.views.lobby.common.vehicle_model import VehicleModel
 from gui.impl.gen.view_models.views.lobby.platoon.common_player_data_model import CommonPlayerDataModel
 from gui.impl.gen.view_models.views.lobby.platoon.sound_model import SoundModel
-from gui.impl.gen.view_models.views.lobby.platoon.vehicle_model import VehicleModel
 
 class PlayerModel(ViewModel):
     __slots__ = ()

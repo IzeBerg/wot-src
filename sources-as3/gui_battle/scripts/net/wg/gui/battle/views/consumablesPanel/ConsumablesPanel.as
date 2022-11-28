@@ -67,7 +67,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       private var _stageHeight:int = 0;
       
-      protected var _renderers:Vector.<IConsumablesButton>;
+      private var _renderers:Vector.<IConsumablesButton>;
       
       private var _shellCurrentIdx:int = -1;
       
@@ -105,7 +105,7 @@ package net.wg.gui.battle.views.consumablesPanel
       
       public function ConsumablesPanel()
       {
-         this._renderers = new <IConsumablesButton>[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null];
+         this._renderers = new <IConsumablesButton>[null,null,null,null,null,null,null,null,null,null,null,null];
          this._settings = new Vector.<ConsumablesPanelSettings>();
          this._customIndexGap = new Vector.<uint>(0);
          this._classFactory = App.utils.classFactory;
@@ -218,7 +218,7 @@ package net.wg.gui.battle.views.consumablesPanel
                }
             }
             this._renderers.splice(0,this._renderers.length);
-            this._renderers = new <IConsumablesButton>[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null];
+            this._renderers = new <IConsumablesButton>[null,null,null,null,null,null,null,null,null,null,null,null];
          }
          else
          {
@@ -820,16 +820,6 @@ package net.wg.gui.battle.views.consumablesPanel
       public function get panelWidth() : Number
       {
          return this.x + this._basePanelWidth;
-      }
-      
-      protected function get itemsPadding() : int
-      {
-         return this._itemsPadding;
-      }
-      
-      protected function set basePanelWidth(param1:Number) : void
-      {
-         this._basePanelWidth = param1;
       }
       
       private function onStageMouseDownHandler(param1:MouseEvent) : void

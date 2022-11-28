@@ -100,10 +100,14 @@ package net.wg.infrastructure.base.meta
       
       function as_hideMenu(param1:Boolean) : void;
       
+      function as_hideHeader(param1:Boolean) : void;
+      
       function as_toggleVisibilityMenu(param1:uint) : void;
       
       function as_setIsPlatoonDropdownShowing(param1:Boolean) : void;
       
       function as_setIsFullscreenBattleSelectorShowing(param1:Boolean) : void;
+      
+      function as_updateNYVisibility(param1:Boolean) : void;
    }
 }

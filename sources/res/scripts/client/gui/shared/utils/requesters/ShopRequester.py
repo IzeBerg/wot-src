@@ -139,6 +139,10 @@ class ShopCommonStats(IShopCommonStats):
         cost = self.getValue('paidTrophyUpgradedRemovalCost', {Currency.GOLD: 10})
         return Money(**cost)
 
+    def getPaidModernizedRemovalCost(self, level):
+        cost = self.getValue(self._getModernizedKey(level), {Currency.EQUIP_COIN: 10})
+        return Money(**cost)
+
     @property
     def exchangeRate(self):
         return self.getValue('exchangeRate', _DEFAULT_EXCHANGE_RATE)
@@ -325,6 +329,9 @@ class ShopCommonStats(IShopCommonStats):
 
     def getEmblemCost(self, days=0):
         return self.playerEmblemCost.get(days)
+
+    def _getModernizedKey(self, level):
+        return ('').join(('paidModernized', str(level), 'RemovalCost'))
 
     def __getRestoreConfig(self):
         return self.getValue('restore_config', {})
@@ -635,6 +642,9 @@ class DefaultShopRequester(ShopCommonStats):
             return self.__proxy.paidDeluxeRemovalCost
         else:
             return Money(**cost)
+
+    def getPaidModernizedRemovalCost(self, level):
+        return self.__proxy.getPaidModernizedRemovalCost(level)
 
     @property
     def paidTrophyBasicRemovalCost(self):
