@@ -1554,7 +1554,6 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'recertificationReset',
  'recertificationAvailability',
  'recertificationFinancial',
- 'prbVehicleBadTypeKick',
  'resourceWellOperation',
  'resourceWellReward',
  'resourceWellNoVehicles',
@@ -1563,11 +1562,13 @@ SYS_MESSAGE_TYPE = Enumeration('systemMessageType', [
  'personalReservesHaveBeenConverted',
  'changeSquadSize',
  'fairplay',
- 'hwRewardCongrats',
- 'hwDailyQuest'])
+ 'autoCollectingNotification',
+ 'nyErrorNotification'])
 SYS_MESSAGE_IMPORTANCE = Enumeration('systemMessageImportance', [
  'normal',
  'high'])
+NY_ERROR_TYPE = Enumeration('nyErrorType', [
+ 'levelUpRewardsError'])
 SM_REQUEST_PERSONAL_MESSAGES_FLAG = 1
 SM_REQUEST_SYSTEM_MESSAGES_FLAG = 2
 SM_REQUEST_INTERNAL_SYS_MESSAGES_FLAG = 4

@@ -1,4 +1,4 @@
-import itertools, typing
+import itertools, random, typing
 from collections import Container, namedtuple
 from sys import maxint
 from CurrentVehicle import g_currentPreviewVehicle, g_currentVehicle
@@ -119,14 +119,7 @@ _TOOLTIP_TYPE = {ItemPackType.ITEM_DEVICE: TOOLTIPS_CONSTANTS.SHOP_MODULE,
    ItemPackType.CUSTOM_BATTLE_PASS_POINTS: TOOLTIPS_CONSTANTS.BATTLE_PASS_POINTS, 
    ItemPackType.GOODIE_RECERTIFICATIONFORM: TOOLTIPS_CONSTANTS.EPIC_BATTLE_RECERTIFICATION_FORM_TOOLTIP, 
    ItemPackType.OFFER_BROCHURE: TOOLTIPS_CONSTANTS.EPIC_BATTLE_INSTRUCTION_TOOLTIP, 
-   ItemPackType.OFFER_BATTLE_BOOSTER: TOOLTIPS_CONSTANTS.EPIC_BATTLE_INSTRUCTION_TOOLTIP, 
-   ItemPackType.BLUEPRINT_NATIONAL_ANY: TOOLTIPS_CONSTANTS.BLUEPRINT_RANDOM_NATIONAL_INFO, 
-   ItemPackType.DEMOUNT_KITS: TOOLTIPS_CONSTANTS.AWARD_DEMOUNT_KIT, 
-   ItemPackType.TMAN_TOKEN: TOOLTIPS_CONSTANTS.TANKMAN_NOT_RECRUITED, 
-   ItemPackType.SHOP_SALES_CURRENT_DISCOUNT: TOOLTIPS_CONSTANTS.CURRENT_DISCOUNT_INFO, 
-   ItemPackType.SHOP_SALES_FREE_SHUFFLE: TOOLTIPS_CONSTANTS.SHOP_SALES_FREE_SHUFFLE_INFO, 
-   ItemPackType.SHOP_SALES_PAID_SHUFFLE: TOOLTIPS_CONSTANTS.SHOP_SALES_PAID_SHUFFLE_INFO, 
-   ItemPackType.SHOP_SALES_VOTE_FOR_DISCOUNT: TOOLTIPS_CONSTANTS.SHOP_SALES_VOTE_FOR_DISCOUNT}
+   ItemPackType.OFFER_BATTLE_BOOSTER: TOOLTIPS_CONSTANTS.EPIC_BATTLE_INSTRUCTION_TOOLTIP}
 _ICONS = {ItemPackType.CAMOUFLAGE_ALL: RES_SHOP.MAPS_SHOP_REWARDS_48X48_PRIZE_CAMOUFLAGE, 
    ItemPackType.CAMOUFLAGE_WINTER: RES_SHOP.MAPS_SHOP_REWARDS_48X48_PRIZE_CAMOUFLAGE, 
    ItemPackType.CAMOUFLAGE_SUMMER: RES_SHOP.MAPS_SHOP_REWARDS_48X48_PRIZE_CAMOUFLAGE, 
@@ -278,7 +271,7 @@ def getItemTitle(rawItem, item, forBox=False, additionalInfo=False):
             if tooltipKey:
                 title = _ms(tooltipKey, group=item.userType, value=item.userName)
                 title = title.replace(_DOUBLE_OPEN_QUOTES, _OPEN_QUOTES).replace(_DOUBLE_CLOSE_QUOTES, _CLOSE_QUOTES)
-    elif rawItem.type in (ItemPackType.CUSTOM_SLOT, ItemPackType.CUSTOM_SEVERAL_SLOTS):
+    elif rawItem.type == ItemPackType.CUSTOM_SLOT:
         title = _ms(key=TOOLTIPS.AWARDITEM_SLOTS_HEADER)
     elif rawItem.type == ItemPackType.CUSTOM_GOLD:
         title = _ms(key=QUESTS.BONUSES_GOLD_DESCRIPTION, value=rawItem.count)
@@ -307,10 +300,6 @@ def getItemTitle(rawItem, item, forBox=False, additionalInfo=False):
                ItemPackType.CUSTOM_CREW_100: CrewTypes.SKILL_100}.get(rawItem.type))
         else:
             title = _ms(TOOLTIPS.CREW_HEADER)
-    elif rawItem.type == ItemPackType.CUSTOM_X5_BATTLE_BONUS:
-        title = backport.text(R.strings.tooltips.quests.bonuses.token.battle_bonus_x5.header())
-    elif rawItem.type == ItemPackType.CREW_BOOK_RANDOM:
-        title = backport.text(R.strings.tooltips.awardItem.randomBooklet.header())
     else:
         title = rawItem.title or ''
     return title
@@ -319,7 +308,7 @@ def getItemTitle(rawItem, item, forBox=False, additionalInfo=False):
 def getItemDescription(rawItem, item):
     if item is not None:
         description = item.fullDescription
-    elif rawItem.type in (ItemPackType.CUSTOM_SLOT, ItemPackType.CUSTOM_SEVERAL_SLOTS):
+    elif rawItem.type == ItemPackType.CUSTOM_SLOT:
         description = _ms(TOOLTIPS.AWARDITEM_SLOTS_BODY)
     elif rawItem.type == ItemPackType.CUSTOM_GOLD:
         description = _ms(TOOLTIPS.AWARDITEM_GOLD_BODY)
@@ -347,10 +336,6 @@ def getItemDescription(rawItem, item):
                ItemPackType.CREW_75: CrewTypes.SKILL_75, 
                ItemPackType.CREW_100: CrewTypes.SKILL_100, 
                ItemPackType.CUSTOM_CREW_100: CrewTypes.SKILL_100}.get(rawItem.type))
-    elif rawItem.type == ItemPackType.CUSTOM_X5_BATTLE_BONUS:
-        description = backport.text(R.strings.tooltips.quests.bonuses.token.battle_bonus_x5.body())
-    elif rawItem.type == ItemPackType.CREW_BOOK_RANDOM:
-        description = backport.text(R.strings.tooltips.awardItem.randomBooklet.body())
     else:
         description = rawItem.description or ''
     return description
@@ -375,34 +360,6 @@ def showItemTooltip(toolTipMgr, rawItem, item):
         body = getItemDescription(rawItem, item)
         tooltip = makeTooltip(header, body)
         toolTipMgr.onCreateComplexTooltip(tooltip, 'INFO')
-    return
-
-
-def showCurrentDiscountTooltip(toolTipMgr, itemType, currentDiscount):
-    tooltipType = _TOOLTIP_TYPE.get(itemType)
-    if tooltipType is not None:
-        toolTipMgr.onCreateTypedTooltip(tooltipType, [currentDiscount], 'INFO')
-    return
-
-
-def showFreeShuffleTooltip(toolTipMgr, itemType, maxNumber, paidShuffleCost):
-    tooltipType = _TOOLTIP_TYPE.get(itemType)
-    if tooltipType is not None:
-        toolTipMgr.onCreateTypedTooltip(tooltipType, [maxNumber, paidShuffleCost], 'INFO')
-    return
-
-
-def showPaidShuffleTooltip(toolTipMgr, itemType):
-    tooltipType = _TOOLTIP_TYPE.get(itemType)
-    if tooltipType is not None:
-        toolTipMgr.onCreateTypedTooltip(tooltipType, [], 'INFO')
-    return
-
-
-def showVoteForDiscountTooltip(toolTipMgr, itemType, maxNumber, available, currentNumber):
-    tooltipType = _TOOLTIP_TYPE.get(itemType)
-    if tooltipType is not None:
-        toolTipMgr.onCreateTypedTooltip(tooltipType, [maxNumber, available, currentNumber], 'INFO')
     return
 
 
@@ -843,6 +800,36 @@ def canInstallStyle(styleId, service=None):
         return StyleInstallInfo(canInstall=True, style=style, vehicle=vehicle)
 
 
+@dependency.replace_none_kwargs(service=ICustomizationService, itemsCache=IItemsCache)
+def getSuitableStyledVehicle(styleId, inInventory=False, service=None, itemsCache=None):
+    styledVehicleCD = None
+    style = service.getItemByID(GUI_ITEM_TYPE.STYLE, styleId)
+    vehicle = g_currentVehicle.item if g_currentVehicle.isPresent() else None
+    if vehicle is not None and not vehicle.descriptor.type.isCustomizationLocked and style.mayInstall(vehicle):
+        styledVehicleCD = vehicle.intCD
+    else:
+        accDossier = itemsCache.items.getAccountDossier()
+        vehiclesStats = accDossier.getRandomStats().getVehicles()
+        vehicleGetter = itemsCache.items.getItemByCD
+        vehiclesStats = {vehicleCD:value for vehicleCD, value in vehiclesStats.iteritems() if not vehicleGetter(vehicleCD).descriptor.type.isCustomizationLocked and style.mayInstall(vehicleGetter(vehicleCD))}
+        if vehiclesStats:
+            sortedVehicles = sorted(vehiclesStats.items(), key=lambda vStat: vStat[1].battlesCount, reverse=True)
+            if inInventory:
+                res = findFirst(lambda data: vehicleGetter(data[0]).inventoryCount > 0, sortedVehicles)
+                styledVehicleCD = res[0] if res else None
+            else:
+                styledVehicleCD = sortedVehicles[0][0] if sortedVehicles else None
+    if not styledVehicleCD:
+        criteria = REQ_CRITERIA.INVENTORY | ~REQ_CRITERIA.VEHICLE.IS_OUTFIT_LOCKED | REQ_CRITERIA.VEHICLE.FOR_ITEM(style)
+        vehicle = first(__getVehiclesForStylePreview(itemsCache, criteria=criteria))
+        styledVehicleCD = vehicle.intCD if vehicle else None
+    if not styledVehicleCD and inInventory is False:
+        criteria = ~REQ_CRITERIA.INVENTORY | ~REQ_CRITERIA.VEHICLE.IS_OUTFIT_LOCKED | REQ_CRITERIA.VEHICLE.FOR_ITEM(style) | ~REQ_CRITERIA.VEHICLE.EVENT
+        vehicle = random.choice(__getVehiclesForStylePreview(itemsCache, criteria=criteria))
+        styledVehicleCD = vehicle.intCD if vehicle else None
+    return styledVehicleCD
+
+
 def _sortItemsByOrder(items, rule=None):
     if rule is None:
         rule = _PACK_ITEMS_SORT_ORDER
@@ -877,6 +864,11 @@ def _packDataMultiVehicles(itemsPack, vehicle):
         return addCompensationInfo([inContainerVOs], itemsPack)
     else:
         return []
+
+
+def __getVehiclesForStylePreview(itemsCache, criteria=None):
+    vehs = itemsCache.items.getVehicles(criteria=criteria).values()
+    return sorted(vehs, key=lambda item: item.level, reverse=True)
 
 
 def __getItemsSortRule(itemsPack):

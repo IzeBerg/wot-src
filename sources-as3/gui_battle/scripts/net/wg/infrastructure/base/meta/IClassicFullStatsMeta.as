@@ -8,6 +8,8 @@ package net.wg.infrastructure.base.meta
       
       function onSelectQuestS(param1:uint) : void;
       
+      function onPersonalReservesTabViewedS(param1:Boolean) : void;
+      
       function as_questProgressPerform(param1:Object) : void;
       
       function as_updateProgressTracking(param1:Object) : void;

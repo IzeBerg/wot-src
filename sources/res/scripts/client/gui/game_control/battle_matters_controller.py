@@ -30,6 +30,7 @@ from skeletons.gui.lobby_context import ILobbyContext
 from skeletons.gui.server_events import IEventsCache
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.system_messages import ISystemMessages
+from skeletons.new_year import INewYearController
 from skeletons.tutorial import ITutorialLoader
 from tutorial.control.context import GLOBAL_FLAG
 if typing.TYPE_CHECKING:
@@ -401,6 +402,7 @@ class BattleMattersController(IBattleMattersController):
 
 class _BattleMattersHintsHelper(object):
     __settingsCache = dependency.descriptor(ISettingsCache)
+    __nyController = dependency.descriptor(INewYearController)
     __slots__ = ('__hints', '__hasHintListeners', '__battleMattersController')
 
     def __init__(self, controller):
@@ -426,12 +428,14 @@ class _BattleMattersHintsHelper(object):
         self.__hasHintListeners = True
         g_playerEvents.onAccountBecomeNonPlayer += self.__onAccountBecomeNonPlayer
         g_playerEvents.onAccountBecomePlayer += self.__onAccountBecomePlayer
+        self.__nyController.onNyViewVisibilityChange += self.__onNyViewVisibilityChange
 
     def __removeHintsListeners(self):
         g_playerEvents.onAccountBecomeNonPlayer -= self.__onAccountBecomeNonPlayer
         g_playerEvents.onAccountBecomePlayer -= self.__onAccountBecomePlayer
         self.__battleMattersController.onStateChanged -= self.__onStateChanged
         self.__settingsCache.onSyncCompleted -= self.__onSettingsSyncCompleted
+        self.__nyController.onNyViewVisibilityChange -= self.__onNyViewVisibilityChange
         self.__hasHintListeners = False
 
     def __onAccountBecomePlayer(self):
@@ -451,6 +455,9 @@ class _BattleMattersHintsHelper(object):
 
     def __onSettingsSyncCompleted(self):
         self.__checkHints()
+
+    def __onNyViewVisibilityChange(self, _):
+        self.__onStateChanged()
 
     def __checkHints(self):
         availableHints = []
@@ -482,7 +489,7 @@ class _BattleMattersHintsHelper(object):
             self.__stopHints()
 
     def __bmIsAvailable(self):
-        return self.__battleMattersController.isEnabled() and not self.__battleMattersController.isPaused()
+        return self.__battleMattersController.isEnabled() and not self.__battleMattersController.isPaused() and not self.__nyController.isNyViewShown()
 
 
 class _BMManualTriggeredHint(object):
@@ -539,12 +546,10 @@ class _FightBtnMultiShowHint(_BMManualTriggeredHint, IGlobalListener):
         self.__waitingBattle = False
 
     def onPrbEntitySwitched(self):
+        self.__waitingBattle = self.prbEntity.getQueueType() == QUEUE_TYPE.RANDOMS or self.__isDevBattle()
         if self.prbEntity.getQueueType() == QUEUE_TYPE.RANDOMS or self.__isDevBattle():
             g_playerEvents.onAvatarBecomePlayer += self.__onAvatarBecomePlayer
-            self.__checkFightBtnHint()
-            self.__waitingBattle = True
-        else:
-            self.__waitingBattle = False
+        self.__checkFightBtnHint()
 
     def _onStart(self):
         self.__waitingBattle = False

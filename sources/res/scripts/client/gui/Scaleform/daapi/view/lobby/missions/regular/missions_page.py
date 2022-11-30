@@ -3,7 +3,7 @@ from collections import namedtuple
 import typing, BigWorld, Windowing
 from CurrentVehicle import g_currentVehicle
 from account_helpers import AccountSettings
-from account_helpers.AccountSettings import MISSIONS_PAGE
+from account_helpers.AccountSettings import MISSIONS_PAGE, NY_DAILY_QUESTS_VISITED
 from adisp import adisp_async as adispasync, adisp_process
 from wg_async import wg_async, wg_await
 from gui.ClientUpdateManager import g_clientUpdateManager
@@ -435,6 +435,8 @@ class MissionsPage(LobbySubView, MissionsPageMeta):
                         newEventsCount += 1
             elif alias == QUESTS_ALIASES.MAPBOX_VIEW_PY_ALIAS:
                 newEventsCount = self.__mapboxCtrl.getUnseenItemsCount()
+                if not AccountSettings.getUIFlag(NY_DAILY_QUESTS_VISITED):
+                    newEventsCount += 1
             elif self.currentTab is not None and self.__currentTabAlias == alias:
                 suitableEvents = self.__getSuitableEvents(self.currentTab)
                 newEventsCount = len(settings.getNewCommonEvents(suitableEvents))
@@ -608,7 +610,7 @@ class MissionView(MissionViewBase):
         self.gameSession.onPremiumTypeChanged += self.__onPremiumTypeChanged
         self.__rankedController.onUpdated += self._onEventsUpdate
         self.__rankedController.onGameModeStatusUpdated += self._onEventsUpdate
-        self.__funRandomController.onGameModeStatusUpdated += self._onEventsUpdate
+        self.__funRandomController.subscription.addSubModesWatcher(self._onEventsUpdate)
         self.__spaceSwitchController.onSpaceUpdated += self._onEventsUpdate
         g_clientUpdateManager.addCallbacks({'inventory.1': self._onEventsUpdate, 
            'stats.unlocks': self.__onUnlocksUpdate})
@@ -620,7 +622,7 @@ class MissionView(MissionViewBase):
         self.__rankedController.onUpdated -= self._onEventsUpdate
         self.__rankedController.onGameModeStatusUpdated -= self._onEventsUpdate
         self.__spaceSwitchController.onSpaceUpdated -= self._onEventsUpdate
-        self.__funRandomController.onGameModeStatusUpdated -= self._onEventsUpdate
+        self.__funRandomController.subscription.removeSubModesWatcher(self._onEventsUpdate)
         g_clientUpdateManager.removeObjectCallbacks(self)
         super(MissionView, self)._dispose()
 
@@ -628,13 +630,14 @@ class MissionView(MissionViewBase):
         result = []
         self._totalQuestsCount = 0
         self._filteredQuestsCount = 0
+        nyBannerAdded = self._appendNYBanner(result)
         for data in self._builder.getBlocksData(self.__viewQuests, self.__filter):
             self._appendBlockDataToResult(result, data)
             self._totalQuestsCount += self._getQuestTotalCountFromBlockData(data)
             self._filteredQuestsCount += self._getQuestFilteredCountFromBlockData(data)
 
         self._questsDP.buildList(result)
-        if not self._totalQuestsCount:
+        if not self._totalQuestsCount and not nyBannerAdded:
             self.as_showDummyS(self._getDummy())
         else:
             self.as_hideDummyS()
@@ -693,6 +696,9 @@ class MissionView(MissionViewBase):
 
     def __onPremiumTypeChanged(self, newAcctType):
         self.markVisited()
+
+    def _appendNYBanner(self, _):
+        return False
 
 
 class ElenMissionView(MissionViewBase):

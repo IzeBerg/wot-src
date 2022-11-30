@@ -1,10 +1,10 @@
-from constants import SERVER_TICK_LENGTH, IS_CLIENT, IS_BOT, IS_CGF_DUMP
+from constants import SERVER_TICK_LENGTH, IS_CLIENT, IS_BOT, IS_CGF_DUMP, IS_VS_EDITOR
 from debug_utils import LOG_WARNING
 import sys
 from time import time
 from functools import wraps
-if not IS_CLIENT and not IS_BOT and not IS_CGF_DUMP:
-    from insights.common import incrTickOverspends
+if not IS_CLIENT and not IS_BOT and not IS_CGF_DUMP and not IS_VS_EDITOR:
+    from insights.measurements import incrTickOverspends
 DEFAULT_TIME_LIMIT = 0.02
 DEFAULT_TICK_LENGTH = SERVER_TICK_LENGTH
 

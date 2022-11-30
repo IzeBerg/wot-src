@@ -23,7 +23,7 @@ from gui.shared.items_parameters.params_cache import g_paramsCache
 from gui.shared.utils import requesters
 from gui.shared.view_helpers.UsersInfoHelper import UsersInfoHelper
 from gui.wgnc import g_wgncProvider
-from helpers import isPlayerAccount, time_utils, dependency
+from helpers import isPlayerAccount, time_utils, dependency, uniprof
 from helpers.blueprint_generator import g_blueprintGenerator
 from helpers.statistics import HANGAR_LOADING_STATE
 from skeletons.account_helpers.settings_core import ISettingsCache, ISettingsCore
@@ -161,7 +161,6 @@ def onAvatarBecomePlayer():
 
 def onAvatarBecomeNonPlayer():
     ServicesLocator.boosterStateProvider.onAvatarBecomeNonPlayer()
-    ServicesLocator.gameState.onAvatarBecomeNonPlayer()
 
 
 def onAccountBecomePlayer():
@@ -204,6 +203,8 @@ def onShopResync():
 
 
 def onCenterIsLongDisconnected(isLongDisconnected):
+    if not BigWorld.player():
+        return
     isAvailable = not BigWorld.player().isLongDisconnectedFromCenter
     if isAvailable and not isLongDisconnected:
         SystemMessages.pushI18nMessage(MENU.CENTERISAVAILABLE, type=SystemMessages.SM_TYPE.Information)
@@ -220,7 +221,6 @@ def init(loadingScreenGUI=None):
     global onAccountBecomeNonPlayer
     global onAccountBecomePlayer
     global onAccountShowGUI
-    global onAvatarBecomeNonPlayer
     global onAvatarBecomePlayer
     global onCenterIsLongDisconnected
     global onIGRTypeChanged
@@ -279,7 +279,6 @@ def fini():
     g_playerEvents.onAccountShowGUI -= onAccountShowGUI
     g_playerEvents.onAccountBecomeNonPlayer -= onAccountBecomeNonPlayer
     g_playerEvents.onAvatarBecomePlayer -= onAvatarBecomePlayer
-    g_playerEvents.onAvatarBecomeNonPlayer -= onAvatarBecomeNonPlayer
     g_playerEvents.onAccountBecomePlayer -= onAccountBecomePlayer
     g_playerEvents.onAvatarBecomeNonPlayer -= onAvatarBecomeNonPlayer
     g_playerEvents.onClientUpdated -= onClientUpdate
@@ -303,6 +302,7 @@ def fini():
 
 
 def onConnected():
+    uniprof.enterToRegion('client.loading')
     ServicesLocator.statsCollector.noteHangarLoadingState(HANGAR_LOADING_STATE.CONNECTED)
     guiModsSendEvent('onConnected')
     ServicesLocator.gameState.onConnected()

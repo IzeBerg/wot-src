@@ -30,6 +30,7 @@ from shared_utils import CONST_CONTAINER
 from skeletons.gui.game_control import IBoostersController, IEpicBattleMetaGameController
 from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.server_events import IEventsCache
+from uilogging.personal_reserves.logging_constants import PersonalReservesLogKeys
 
 class _FilterBit(CONST_CONTAINER):
     XP = 1
@@ -96,7 +97,7 @@ class StorageCategoryPersonalReservesView(StorageCategoryPersonalReservesViewMet
 
     def onInfoClicked(self):
         callback = partial(showStorage, defaultSection=STORAGE_CONSTANTS.PERSONAL_RESERVES)
-        showPersonalReservesIntro(callbackOnClose=callback)
+        showPersonalReservesIntro(callbackOnClose=callback, uiLoggingKey=PersonalReservesLogKeys.DEPOT)
 
     def activateReserve(self, boosterID):
         boosterActivationFlow(boosterID)
@@ -129,7 +130,6 @@ class StorageCategoryPersonalReservesView(StorageCategoryPersonalReservesViewMet
         super(StorageCategoryPersonalReservesView, self)._populate()
         g_clientUpdateManager.addCallbacks({'goodies': self.__onUpdateBoosters, 
            'shop': self.__onUpdateBoosters})
-        self._boostersCtrl.onBoosterChangeNotify += self.__onUpdateBoosters
         self._eventsCache.onSyncCompleted += self.__onQuestsUpdate
         self._epicCtrl.onUpdated += self.__onUpdateBoosters
         self.__onUpdateBoosters()
@@ -137,7 +137,6 @@ class StorageCategoryPersonalReservesView(StorageCategoryPersonalReservesViewMet
 
     def _dispose(self):
         g_clientUpdateManager.removeObjectCallbacks(self)
-        self._boostersCtrl.onBoosterChangeNotify -= self.__onUpdateBoosters
         self._eventsCache.onSyncCompleted -= self.__onQuestsUpdate
         self._epicCtrl.onUpdated -= self.__onUpdateBoosters
         self._saveFilters()

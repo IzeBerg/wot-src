@@ -4,6 +4,12 @@ package net.wg.data.daapi
    
    public class ViewSettingsVO extends DAAPIDataClass
    {
+      
+      private static const VIEW_TYPE_MASK:uint = 15;
+      
+      private static const VIEW_TYPE:uint = 1;
+      
+      private static const NON_REARRANGE_VIEW_TYPE:uint = 8 | VIEW_TYPE;
        
       
       public var alias:String = "";
@@ -33,6 +39,11 @@ package net.wg.data.daapi
       public function ViewSettingsVO(param1:Object)
       {
          super(param1);
+      }
+      
+      public function get isNonRearrange() : Boolean
+      {
+         return Boolean(this.flags & VIEW_TYPE_MASK & NON_REARRANGE_VIEW_TYPE);
       }
    }
 }

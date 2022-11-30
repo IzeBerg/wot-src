@@ -53,10 +53,9 @@ package net.wg.gui.components.tooltips
       
       override protected function redraw() : void
       {
-         var _loc2_:VehicleVO = null;
          var _loc3_:Separator = null;
          var _loc1_:ILocale = App.utils.locale;
-         _loc2_ = new VehicleVO(_data);
+         var _loc2_:VehicleVO = new VehicleVO(_data);
          separators = new Vector.<Separator>();
          this.headerTF.autoSize = TextFieldAutoSize.LEFT;
          this.headerTF.htmlText = _loc1_.makeString(TOOLTIPS.SELECTEDVEHICLE_HEADER);

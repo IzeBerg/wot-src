@@ -20,29 +20,20 @@
 				0
 				<material>
 					<identifier>Material #32</identifier>
-					<collisionFlags>0</collisionFlags>
+					<collisionFlags>255</collisionFlags>
 					<materialKind>0</materialKind>
 					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
 					<property>
 						TintlColor
-						<Vector4>
-							0.875 0.875 0.875 0.25
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>0.875000 0.875000 0.875000 0.250000</Vector4>
 					</property>
 					<property>
 						distortion_UV_Speed_Amount
-						<Vector4>
-							0.022 0.014 0.03 0.1
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>0.022000 0.014000 0.030000 0.100000</Vector4>
 					</property>
 					<property>
 						lightMultipliers
-						<Vector4>
-							3 0.3 0.8 0.000000
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>3.000000 0.300000 0.800000 0.000000</Vector4>
 					</property>
 					<property>
 						selfIllumLight
@@ -50,13 +41,11 @@
 							1 1 1 0.000000
 							<!--BW_String-->
 						</Vector4>
+						<Vector3>1.000000 1.000000 1.000000</Vector3>
 					</property>
 					<property>
 						FreshnelColor
-						<Vector4>
-							0.916214 0.9071 0.965 1
-							<!--BW_String-->
-						</Vector4>
+						<Vector4>0.916214 0.907100 0.965000 1.000000</Vector4>
 					</property>
 					<property>
 						enableLighting

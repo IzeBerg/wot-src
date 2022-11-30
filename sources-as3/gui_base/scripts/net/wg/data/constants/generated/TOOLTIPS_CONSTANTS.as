@@ -47,6 +47,22 @@ package net.wg.data.constants.generated
       
       public static const INVENTORY_MODULE:String = "inventoryModule";
       
+      public static const NY_VEHICLE_BONUS:String = "nyVehicleBonus";
+      
+      public static const NY_AMMUNITION_BONUSES:String = "nyAmmunitionBonuses";
+      
+      public static const NY_RESOURCE:String = "nyResource";
+      
+      public static const NY_RESOURCE_FOR_SHOP:String = "nyResourceForShop";
+      
+      public static const NY_RESOURCE_LIST:String = "nyResourceList";
+      
+      public static const NY_RANDOM_RESOURCE:String = "nyRandomResource";
+      
+      public static const NY_REWARD_KIT_RESTRICTION:String = "nyRewardKitRestriction";
+      
+      public static const NY_FILLERS:String = "nyFillers";
+      
       public static const INVENTORY_BATTLE_BOOSTER:String = "inventoryBattleBooster";
       
       public static const TECH_MAIN_MODULE:String = "techMainModule";
@@ -178,6 +194,10 @@ package net.wg.data.constants.generated
       public static const TECH_CUSTOMIZATION_ITEM_ICON:String = "techCustomizationItemIcon";
       
       public static const TECH_CUSTOMIZATION_ITEM_AWARD:String = "techCustomizationItemAward";
+      
+      public static const COLLAPSE_CUSTOMIZATION_ITEM_AWARD:String = "collapseCustomizationItemAward";
+      
+      public static const SHORT_COLLAPSE_CUSTOMIZATION_ITEM_AWARD:String = "ShortCollapseCustomizationItemAward";
       
       public static const TECH_CUSTOMIZATION_ITEM_PURCHASE:String = "techCustomizationItemPurchase";
       
@@ -427,6 +447,8 @@ package net.wg.data.constants.generated
       
       public static const BRCOIN_INFO_FULL_SCREEN:String = "brcoinInfoFullScreen";
       
+      public static const EQUIP_COIN_INFO_FULL_SCREEN:String = "equipCoinInfoFullScreen";
+      
       public static const GOLD_STATS_FULL_SCREEN:String = "goldStatsFullScreen";
       
       public static const CREDITS_STATS_FULL_SCREEN:String = "creditsStatsFullScreen";
@@ -446,6 +468,8 @@ package net.wg.data.constants.generated
       public static const BPCOIN_INFO:String = "bpcoinInfo";
       
       public static const FREEXP_INFO:String = "freeXPInfo";
+      
+      public static const EQUIP_COIN_INFO:String = "equipCoinInfo";
       
       public static const HEADER_BUTTON_INFO:String = "Info";
       
@@ -539,7 +563,9 @@ package net.wg.data.constants.generated
       
       public static const FUN_RANDOM_CALENDAR_DAY:String = "funRandomCalendarDay";
       
-      public static const FUN_RANDOM_QUESTS_PREVIEW:String = "funRandomQuestsPreview";
+      public static const FUN_RANDOM_MODE_SELECTOR_CALENDAR_DAY:String = "funRandomModeSelectorCalendarDay";
+      
+      public static const FUN_RANDOM_REWARDS:String = "funRandomRewards";
       
       public static const COMP7_SELECTOR_INFO:String = "comp7SelectorInfo";
       
@@ -554,16 +580,6 @@ package net.wg.data.constants.generated
       public static const COMP7_CALENDAR_DAY_EXTENDED_INFO:String = "comp7CalendarDayExtendedInfo";
       
       public static const COMP7_BATTLE_RESULTS_PRESTIGE_POINTS:String = "comp7BattleResultsPrestigePoints";
-      
-      public static const CURRENT_DISCOUNT_INFO:String = "currentDiscountInfo";
-      
-      public static const SHOP_SALES_FREE_SHUFFLE_INFO:String = "shopSalesFreeShuffleInfo";
-      
-      public static const SHOP_SALES_PAID_SHUFFLE_INFO:String = "shopSalesPaidShuffleInfo";
-      
-      public static const SHOP_SALES_VOTE_FOR_DISCOUNT:String = "shopSalesVoteForDiscount";
-      
-      public static const SHOP_SALES_ENTRY_POINT:String = "shopSalesEntryPoint";
       
       public static const BLOCKS_DEFAULT_UI:String = "ToolTipInblocksDefaultUI";
       
@@ -789,17 +805,23 @@ package net.wg.data.constants.generated
       
       public static const OPTDEV_SLOT_STATE_ACTIVE_SELECTED:String = "activeSelected";
       
-      public static const CN_LOOT_BOXES_VEHICLE_BLUEPRINT_FRAGMENT:String = "cnLootBoxesVehicleBlueprintFragment";
+      public static const NY23_ACTION_TOKEN:String = "NY23ActionToken";
+      
+      public static const NY23_GUEST_COIN:String = "NY23QuestCion";
+      
+      public static const NY23_COIN_TOKEN:String = "NY23CoinToken";
+      
+      public static const NY23_SET:Array = [NY23_ACTION_TOKEN,NY23_GUEST_COIN];
       
       public static const ACHIEVEMENTS_SET:Array = [BATTLE_STATS_ACHIEVS,BATTLE_STATS_MARKS_ON_GUN_ACHIEVEMENT,ACHIEVEMENT,MARKS_ON_GUN_ACHIEVEMENT,GLOBAL_RATING,MARK_OF_MASTERY,ACHIEVEMENT_ATTR,SHOP_ACHIEVEMENT,SHOP_BADGE,REFERRAL_BADGE];
       
       public static const BOOSTERS_SET:Array = [INVENTORY_BATTLE_BOOSTER,AWARD_BATTLE_BOOSTER,EPIC_AWARD_BATTLE_BOOSTER,BATTLE_BOOSTER_BLOCK,DEFAULT_BATTLE_BOOSTER,SHOP_BATTLE_BOOSTER,BATTLE_BOOSTER_COMPARE,BOOSTERS_BOOSTER_INFO,CLAN_RESERVE_INFO,BOOSTER,SHOP_BOOSTER,BOOSTERS_QUESTS,NATION_CHANGE_BATTLE_BOOSTER,PERSONAL_RESERVES_WIDGET];
       
-      public static const COMMON_SET:Array = [EFFICIENCY_PARAM,IGR_INFO,CONTACT,SORTIE_DIVISION,MAP,MAP_SMALL,CLAN_COMMON_INFO,ACTION_PRICE,ACTION_SLOT_PRICE,PRICE_DISCOUNT,FRONTLINE_PRICE_DISCOUNT,ACTION_XP,QUESTS_VEHICLE_BONUSES,ENVIRONMENT,MISSIONS_TOKEN,RESERVE_MODULE,CRYSTAL_INFO,EVENT_COIN_INFO,CREDITS_INFO,GOLD_INFO,BPCOIN_INFO,FREEXP_INFO,VEHICLE_FILTER,VEHICLE_ELITE_BONUS,VEHICLE_HISTORICAL_REFERENCE,BATTLE_TRAINING,SQUAD_BONUS,BATTLE_PASS_NOT_STARTED,BATTLE_PASS_NO_CHAPTER,BATTLE_PASS_IN_PROGRESS,BATTLE_PASS_COMPLETED,BATTLE_PASS_VEHICLE_POINTS,TECHTREE_DISCOUNT_INFO,TECHTREE_NATION_DISCOUNT,DOG_TAGS_INFO,CRYSTAL_INFO_FULL_SCREEN,CREDITS_INFO_FULL_SCREEN,CN_LOOT_BOXES_VEHICLE_BLUEPRINT_FRAGMENT,GOLD_INFO_FULL_SCREEN,FREEXP_INFO_FULL_SCREEN,VEH_POST_PROGRESSION_ENTRY_POINT,WOT_PLUS,ADDITIONAL_REWARDS,BRCOIN_INFO_FULL_SCREEN,OLD_RESERVE_MODULE,SHOP_SALES_ENTRY_POINT];
+      public static const COMMON_SET:Array = [EFFICIENCY_PARAM,IGR_INFO,CONTACT,SORTIE_DIVISION,MAP,MAP_SMALL,CLAN_COMMON_INFO,ACTION_PRICE,ACTION_SLOT_PRICE,PRICE_DISCOUNT,FRONTLINE_PRICE_DISCOUNT,ACTION_XP,QUESTS_VEHICLE_BONUSES,ENVIRONMENT,MISSIONS_TOKEN,RESERVE_MODULE,CRYSTAL_INFO,EVENT_COIN_INFO,CREDITS_INFO,GOLD_INFO,BPCOIN_INFO,EQUIP_COIN_INFO,FREEXP_INFO,VEHICLE_FILTER,VEHICLE_ELITE_BONUS,VEHICLE_HISTORICAL_REFERENCE,BATTLE_TRAINING,SQUAD_BONUS,BATTLE_PASS_NOT_STARTED,BATTLE_PASS_NO_CHAPTER,BATTLE_PASS_IN_PROGRESS,BATTLE_PASS_COMPLETED,BATTLE_PASS_VEHICLE_POINTS,TECHTREE_DISCOUNT_INFO,TECHTREE_NATION_DISCOUNT,DOG_TAGS_INFO,CRYSTAL_INFO_FULL_SCREEN,CREDITS_INFO_FULL_SCREEN,GOLD_INFO_FULL_SCREEN,FREEXP_INFO_FULL_SCREEN,VEH_POST_PROGRESSION_ENTRY_POINT,WOT_PLUS,ADDITIONAL_REWARDS,BRCOIN_INFO_FULL_SCREEN,EQUIP_COIN_INFO_FULL_SCREEN,OLD_RESERVE_MODULE,NY_VEHICLE_BONUS,NY_AMMUNITION_BONUSES,NY_RESOURCE,NY_RANDOM_RESOURCE,NY_REWARD_KIT_RESTRICTION,NY_RESOURCE_FOR_SHOP,NY_RESOURCE_LIST,NY_FILLERS,NY23_COIN_TOKEN];
       
       public static const BOOTCAMP_SET:Array = [BOOTCAMP_AWARD_MEDAL,BOOTCAMP_REWARD_PROGRESS,BOOTCAMP_LESSON_PROGRESS];
       
-      public static const CUSTOMIZATION_SET:Array = [TECH_CUSTOMIZATION_ITEM,TECH_CUSTOMIZATION_NONHISTORIC_ITEM,TECH_CUSTOMIZATION_FANTASTICAL_ITEM,TECH_CUSTOMIZATION_POPOVER_ITEM,TECH_CUSTOMIZATION_ITEM_ICON,TECH_CUSTOMIZATION_ITEM_AWARD,TECH_CUSTOMIZATION_ITEM_PURCHASE,SHOP_CUSTOMIZATION_ITEM,TECH_CUSTOMIZATION_CHAINED_ITEM];
+      public static const CUSTOMIZATION_SET:Array = [TECH_CUSTOMIZATION_ITEM,TECH_CUSTOMIZATION_NONHISTORIC_ITEM,TECH_CUSTOMIZATION_FANTASTICAL_ITEM,TECH_CUSTOMIZATION_POPOVER_ITEM,TECH_CUSTOMIZATION_ITEM_ICON,TECH_CUSTOMIZATION_ITEM_AWARD,TECH_CUSTOMIZATION_ITEM_PURCHASE,SHOP_CUSTOMIZATION_ITEM,TECH_CUSTOMIZATION_CHAINED_ITEM,COLLAPSE_CUSTOMIZATION_ITEM_AWARD,SHORT_COLLAPSE_CUSTOMIZATION_ITEM_AWARD];
       
       public static const CYBER_SPORT_SET:Array = [CYBER_SPORT_SLOT,CYBER_SPORT_SLOT_SELECTED,CYBER_SPORT_SELECTED_VEHICLE,SELECTED_VEHICLE_TRADEOFF,CYBER_SPORT_TEAM,CYBER_SPORT_UNIT_LEVEL,CYBER_SPORT_VEHICLE_NOT_READY,SQUAD_SLOT_VEHICLE_SELECTED];
       
@@ -857,8 +879,6 @@ package net.wg.data.constants.generated
       
       public static const BATTLE_BLOCK_TOOLTIPS:Array = [BATTLE_OPT_DEVICE];
       
-      public static const SHOP_SALES_EVENT_SET:Array = [CURRENT_DISCOUNT_INFO,SHOP_SALES_FREE_SHUFFLE_INFO,SHOP_SALES_PAID_SHUFFLE_INFO,SHOP_SALES_VOTE_FOR_DISCOUNT];
-      
       public static const BATTLE_PASS_SET:Array = [BATTLE_PASS_GIFT_TOKEN,BATTLE_PASS_POINTS];
       
       public static const ROYALE_BATTLE_SET:Array = [BATTLE_ROYALE_MODULES];
@@ -869,7 +889,7 @@ package net.wg.data.constants.generated
       
       public static const ACCOUNT_COMPLETION_SET:Array = [ACCOUNT_COMPLETION,DEMO_ACCOUNT_RENAME_PROCESSING];
       
-      public static const FUN_RANDOM_LOBBY_SET:Array = [FUN_RANDOM_CALENDAR_DAY,FUN_RANDOM_QUESTS_PREVIEW,FUN_RANDOM_CAROUSEL_VEHICLE];
+      public static const FUN_RANDOM_LOBBY_SET:Array = [FUN_RANDOM_CALENDAR_DAY,FUN_RANDOM_MODE_SELECTOR_CALENDAR_DAY,FUN_RANDOM_CAROUSEL_VEHICLE,FUN_RANDOM_REWARDS];
       
       public static const REFERRAL_PROGRAM_SET:Array = [REFERRAL_AWARDS];
       

@@ -1,3 +1,4 @@
+import typing
 from external_strings_utils import truncate_utf8
 from gui.prb_control.settings import FUNCTIONAL_FLAG, CTRL_ENTITY_TYPE, convertFlagsToNames, CTRL_ENTITY_TYPE_NAMES, INVITE_COMMENT_MAX_LENGTH, REQUEST_TYPE
 from gui.shared.utils.decorators import ReprInjector
@@ -78,14 +79,15 @@ class PrbCtrlRequestCtx(RequestCtx):
         return (', ').join(convertFlagsToNames(self.__flags))
 
 
-@ReprInjector.simple('actionName', 'mmData', 'accountsToInvite')
+@ReprInjector.simple('actionName', 'mmData', 'accountsToInvite', 'extData')
 class PrbAction(object):
-    __slots__ = ('actionName', 'mmData', 'accountsToInvite')
+    __slots__ = ('actionName', 'mmData', 'accountsToInvite', 'extData')
 
-    def __init__(self, actionName, mmData=0, accountsToInvite=None):
+    def __init__(self, actionName, mmData=0, accountsToInvite=None, extData=None):
         self.actionName = actionName if actionName is not None else ''
         self.mmData = mmData
         self.accountsToInvite = accountsToInvite or ()
+        self.extData = extData or {}
         return
 
 

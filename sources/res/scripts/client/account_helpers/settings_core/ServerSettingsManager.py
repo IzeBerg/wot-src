@@ -2,7 +2,7 @@ import weakref
 from collections import namedtuple
 from account_helpers.settings_core import settings_constants
 from account_helpers.settings_core.migrations import migrateToVersion
-from account_helpers.settings_core.settings_constants import TUTORIAL, VERSION, GuiSettingsBehavior, OnceOnlyHints, SPGAim, CONTOUR
+from account_helpers.settings_core.settings_constants import TUTORIAL, VERSION, GuiSettingsBehavior, OnceOnlyHints, SPGAim, CONTOUR, NYLootBoxesStorageKeys, NewYearStorageKeys
 from adisp import adisp_process, adisp_async
 from debug_utils import LOG_ERROR, LOG_DEBUG
 from gui.battle_pass.battle_pass_helpers import updateBattlePassSettings
@@ -36,8 +36,6 @@ class SETTINGS_SECTIONS(CONST_CONTAINER):
     BATTLEPASS_CAROUSEL_FILTER_1 = 'BATTLEPASS_CAROUSEL_FILTER_1'
     MAPBOX_CAROUSEL_FILTER_1 = 'MAPBOX_CAROUSEL_FILTER_1'
     MAPBOX_CAROUSEL_FILTER_2 = 'MAPBOX_CAROUSEL_FILTER_2'
-    HW22_CAROUSEL_FILTER_1 = 'HW22_CAROUSEL_FILTER_1'
-    HW22_CAROUSEL_FILTER_2 = 'HW22_CAROUSEL_FILTER_2'
     FUN_RANDOM_CAROUSEL_FILTER_1 = 'FUN_RANDOM_CAROUSEL_FILTER_1'
     FUN_RANDOM_CAROUSEL_FILTER_2 = 'FUN_RANDOM_CAROUSEL_FILTER_2'
     COMP7_CAROUSEL_FILTER_1 = 'COMP7_CAROUSEL_FILTER_1'
@@ -63,6 +61,12 @@ class SETTINGS_SECTIONS(CONST_CONTAINER):
     BATTLE_PASS_STORAGE = 'BATTLE_PASS_STORAGE'
     BATTLE_COMM = 'BATTLE_COMM'
     DOG_TAGS = 'DOG_TAGS'
+    LOOT_BOX_VIEWED = 'LOOT_BOX_VIEWED'
+    LOOT_BOX_ORIENTAL = 'LOOT_BOX_ORIENTAL'
+    LOOT_BOX_NEW_YEAR = 'LOOT_BOX_NEW_YEAR'
+    LOOT_BOX_FAIRYTALE = 'LOOT_BOX_FAIRYTALE'
+    LOOT_BOX_CHRISTMAS = 'LOOT_BOX_CHRISTMAS'
+    NEW_YEAR = 'NEW_YEAR'
     UNIT_FILTER = 'UNIT_FILTER'
     BATTLE_HUD = 'BATTLE_HUD'
     SPG_AIM = 'SPG_AIM'
@@ -227,6 +231,7 @@ class ServerSettingsManager(object):
                                              'bonus': 6, 
                                              'event': 7, 
                                              'crystals': 8, 
+                                             'newYear': 10, 
                                              'role_HT_assault': 11, 
                                              'role_HT_break': 12, 
                                              'role_HT_support': 13, 
@@ -328,6 +333,7 @@ class ServerSettingsManager(object):
                                                         'bonus': 6, 
                                                         'event': 7, 
                                                         'crystals': 8, 
+                                                        'newYear': 10, 
                                                         'role_HT_assault': 11, 
                                                         'role_HT_break': 12, 
                                                         'role_HT_support': 13, 
@@ -395,55 +401,6 @@ class ServerSettingsManager(object):
                                                    'role_LT_universal': 23, 
                                                    'role_LT_wheeled': 24, 
                                                    'role_SPG': 25}, offsets={}), 
-       SETTINGS_SECTIONS.HW22_CAROUSEL_FILTER_1: Section(masks={'ussr': 0, 
-                                                  'germany': 1, 
-                                                  'usa': 2, 
-                                                  'china': 3, 
-                                                  'france': 4, 
-                                                  'uk': 5, 
-                                                  'japan': 6, 
-                                                  'czech': 7, 
-                                                  'sweden': 8, 
-                                                  'poland': 9, 
-                                                  'italy': 10, 
-                                                  'lightTank': 15, 
-                                                  'mediumTank': 16, 
-                                                  'heavyTank': 17, 
-                                                  'SPG': 18, 
-                                                  'AT-SPG': 19, 
-                                                  'level_1': 20, 
-                                                  'level_2': 21, 
-                                                  'level_3': 22, 
-                                                  'level_4': 23, 
-                                                  'level_5': 24, 
-                                                  'level_6': 25, 
-                                                  'level_7': 26, 
-                                                  'level_8': 27, 
-                                                  'level_9': 28, 
-                                                  'level_10': 29}, offsets={}), 
-       SETTINGS_SECTIONS.HW22_CAROUSEL_FILTER_2: Section(masks={'premium': 0, 
-                                                  'elite': 1, 
-                                                  'rented': 2, 
-                                                  'igr': 3, 
-                                                  'favorite': 5, 
-                                                  'bonus': 6, 
-                                                  'event': 7, 
-                                                  'crystals': 8, 
-                                                  'role_HT_assault': 11, 
-                                                  'role_HT_break': 12, 
-                                                  'role_HT_support': 13, 
-                                                  'role_HT_universal': 14, 
-                                                  'role_MT_universal': 15, 
-                                                  'role_MT_sniper': 16, 
-                                                  'role_MT_assault': 17, 
-                                                  'role_MT_support': 18, 
-                                                  'role_ATSPG_assault': 19, 
-                                                  'role_ATSPG_universal': 20, 
-                                                  'role_ATSPG_sniper': 21, 
-                                                  'role_ATSPG_support': 22, 
-                                                  'role_LT_universal': 23, 
-                                                  'role_LT_wheeled': 24, 
-                                                  'role_SPG': 25}, offsets={}), 
        SETTINGS_SECTIONS.GUI_START_BEHAVIOR: Section(masks={GuiSettingsBehavior.FREE_XP_INFO_DIALOG_SHOWED: 0, 
                                               GuiSettingsBehavior.RANKED_WELCOME_VIEW_SHOWED: 1, 
                                               GuiSettingsBehavior.RANKED_WELCOME_VIEW_STARTED: 2, 
@@ -452,7 +409,6 @@ class ServerSettingsManager(object):
                                               GuiSettingsBehavior.VEH_POST_PROGRESSION_UNLOCK_MSG_NEED_SHOW: 26, 
                                               GuiSettingsBehavior.BIRTHDAY_CALENDAR_INTRO_SHOWED: 27, 
                                               GuiSettingsBehavior.RESOURCE_WELL_INTRO_SHOWN: 28, 
-                                              GuiSettingsBehavior.CREW_LAMP_WELCOME_SCREEN_SHOWN: 29, 
                                               GuiSettingsBehavior.COMP7_INTRO_SHOWN: 30}, offsets={}), 
        SETTINGS_SECTIONS.EULA_VERSION: Section(masks={}, offsets={'version': Offset(0, 4294967295)}), 
        SETTINGS_SECTIONS.MARKS_ON_GUN: Section(masks={}, offsets={GAME.SHOW_MARKS_ON_GUN: Offset(0, 4294967295)}), 
@@ -500,10 +456,9 @@ class ServerSettingsManager(object):
                                            OnceOnlyHints.C11N_EDITABLE_STYLE_SLOT_HINT: 26, 
                                            OnceOnlyHints.C11N_EDITABLE_STYLE_SLOT_BUTTON_HINT: 27, 
                                            OnceOnlyHints.C11N_PROGRESSION_REQUIRED_STYLE_SLOT_HINT: 28, 
-                                           OnceOnlyHints.C11N_PROGRESSION_REQUIRED_STYLE_SLOT_BUTTON_HINT: 29, 
-                                           OnceOnlyHints.CRYSTAL_BTN_HINT: 30}, offsets={}), 
+                                           OnceOnlyHints.C11N_PROGRESSION_REQUIRED_STYLE_SLOT_BUTTON_HINT: 29}, offsets={}), 
        SETTINGS_SECTIONS.ONCE_ONLY_HINTS_2: Section(masks={OnceOnlyHints.AMMUNITION_PANEL_HINT: 0, 
-                                             OnceOnlyHints.AMMUNITION_FILTER_HINT: 1, 
+                                             OnceOnlyHints.MODERNIZED_SETUP_TAB_HINT: 1, 
                                              OnceOnlyHints.OPT_DEV_DRAG_AND_DROP_HINT: 2, 
                                              OnceOnlyHints.DOGTAG_HANGAR_HINT: 3, 
                                              OnceOnlyHints.DOGTAG_PROFILE_HINT: 4, 
@@ -530,7 +485,8 @@ class ServerSettingsManager(object):
                                              OnceOnlyHints.BATTLE_MATTERS_FIGHT_BUTTON_HINT: 25, 
                                              OnceOnlyHints.BATTLE_MATTERS_ENTRY_POINT_BUTTON_HINT: 26, 
                                              OnceOnlyHints.PERSONAL_RESERVES_HANGAR_HINT: 27, 
-                                             OnceOnlyHints.PERSONAL_RESERVES_ACTIVATION_HINT: 28}, offsets={}), 
+                                             OnceOnlyHints.PERSONAL_RESERVES_ACTIVATION_HINT: 28, 
+                                             OnceOnlyHints.AMMUNITION_FILTER_HINT: 29}, offsets={}), 
        SETTINGS_SECTIONS.DAMAGE_INDICATOR: Section(masks={DAMAGE_INDICATOR.TYPE: 0, 
                                             DAMAGE_INDICATOR.PRESET_CRITS: 1, 
                                             DAMAGE_INDICATOR.DAMAGE_VALUE: 2, 
@@ -697,6 +653,7 @@ class ServerSettingsManager(object):
                                                     'bonus': 6, 
                                                     'event': 7, 
                                                     'crystals': 8, 
+                                                    'newYear': 10, 
                                                     'role_HT_assault': 11, 
                                                     'role_HT_break': 12, 
                                                     'role_HT_support': 13, 
@@ -763,7 +720,25 @@ class ServerSettingsManager(object):
                                                         'role_ATSPG_support': 22, 
                                                         'role_LT_universal': 23, 
                                                         'role_LT_wheeled': 24, 
-                                                        'role_SPG': 25}, offsets={})}
+                                                        'role_SPG': 25}, offsets={}), 
+       SETTINGS_SECTIONS.LOOT_BOX_VIEWED: Section(masks={}, offsets={'count': Offset(0, 4294967295)}), 
+       SETTINGS_SECTIONS.LOOT_BOX_ORIENTAL: Section(masks={}, offsets={NYLootBoxesStorageKeys.NEW_COUNT: Offset(0, 65535), 
+                                             NYLootBoxesStorageKeys.DELIVERED_COUNT: Offset(16, 4294901760)}), 
+       SETTINGS_SECTIONS.LOOT_BOX_NEW_YEAR: Section(masks={}, offsets={NYLootBoxesStorageKeys.NEW_COUNT: Offset(0, 65535), 
+                                             NYLootBoxesStorageKeys.DELIVERED_COUNT: Offset(16, 4294901760)}), 
+       SETTINGS_SECTIONS.LOOT_BOX_FAIRYTALE: Section(masks={}, offsets={NYLootBoxesStorageKeys.NEW_COUNT: Offset(0, 65535), 
+                                              NYLootBoxesStorageKeys.DELIVERED_COUNT: Offset(16, 4294901760)}), 
+       SETTINGS_SECTIONS.LOOT_BOX_CHRISTMAS: Section(masks={}, offsets={NYLootBoxesStorageKeys.NEW_COUNT: Offset(0, 65535), 
+                                              NYLootBoxesStorageKeys.DELIVERED_COUNT: Offset(16, 4294901760)}), 
+       SETTINGS_SECTIONS.NEW_YEAR: Section(masks={NewYearStorageKeys.NY_VEHICLES_PROGRESS_ENTRY: 1, 
+                                    NewYearStorageKeys.NY_STATISTICS_HINT_SHOWN: 7, 
+                                    NewYearStorageKeys.CELEBRITY_SCREEN_VISITED: 10, 
+                                    NewYearStorageKeys.CELEBRITY_WELCOME_VIEWED: 11, 
+                                    NewYearStorageKeys.DECORATIONS_POPOVER_VIEWED: 12, 
+                                    NewYearStorageKeys.DECORATIONS_POPOVER_BROKEN: 13, 
+                                    NewYearStorageKeys.LOOT_BOX_VIDEO_OFF: 14, 
+                                    NewYearStorageKeys.INTRO_SCENE_VIEWED: 15}, offsets={NewYearStorageKeys.TUTORIAL_STATE: Offset(19, 3670016), 
+                                    NewYearStorageKeys.NY_VEHICLES_LEVEL_UP_ENTRY: Offset(3, 15 << 3)})}
     AIM_MAPPING = {'net': 1, 
        'netType': 1, 
        'centralTag': 1, 
@@ -873,6 +848,14 @@ class ServerSettingsManager(object):
     def saveInBPStorage(self, settings):
         if self.settingsCache.isSynced():
             self.setSectionSettings(SETTINGS_SECTIONS.BATTLE_PASS_STORAGE, settings)
+
+    def getNewYearStorage(self, defaults=None):
+        if self.settingsCache.isSynced():
+            return self.getSection(SETTINGS_SECTIONS.NEW_YEAR, defaults)
+        return {}
+
+    def saveInNewYearStorage(self, settings):
+        return self.setSectionSettings(SETTINGS_SECTIONS.NEW_YEAR, settings)
 
     def checkAutoReloadHighlights(self, increase=False):
         return self.__checkUIHighlights(UI_STORAGE_KEYS.AUTO_RELOAD_HIGHLIGHTS_COUNTER, self._MAX_AUTO_RELOAD_HIGHLIGHTS_COUNT, increase)
@@ -1089,7 +1072,7 @@ class ServerSettingsManager(object):
     @adisp_process
     def _updateToVersion(self, callback=None):
         currentVersion = self.settingsCache.getVersion()
-        data = {'gameData': {}, 'gameExtData': {}, 'gameExtData2': {}, 'gameplayData': {}, 'controlsData': {}, 'aimData': {}, 'markersData': {}, 'graphicsData': {}, 'marksOnGun': {}, 'fallout': {}, 'carousel_filter': {}, 'feedbackDamageIndicator': {}, 'feedbackDamageLog': {}, 'feedbackBattleEvents': {}, 'onceOnlyHints': {}, 'onceOnlyHints2': {}, 'uiStorage': {}, SETTINGS_SECTIONS.UI_STORAGE_2: {}, 'epicCarouselFilter2': {}, 'rankedCarouselFilter1': {}, 'rankedCarouselFilter2': {}, 'comp7CarouselFilter1': {}, 'comp7CarouselFilter2': {}, 'sessionStats': {}, 'battleComm': {}, 'dogTags': {}, 'battleHud': {}, 'spgAim': {}, GUI_START_BEHAVIOR: {}, 'battlePassStorage': {}, SETTINGS_SECTIONS.CONTOUR: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_1: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_2: {}, SETTINGS_SECTIONS.HW22_CAROUSEL_FILTER_1: {}, SETTINGS_SECTIONS.HW22_CAROUSEL_FILTER_2: {}, 'clear': {}, 'delete': []}
+        data = {'gameData': {}, 'gameExtData': {}, 'gameExtData2': {}, 'gameplayData': {}, 'controlsData': {}, 'aimData': {}, 'markersData': {}, 'graphicsData': {}, 'marksOnGun': {}, 'fallout': {}, 'carousel_filter': {}, 'feedbackDamageIndicator': {}, 'feedbackDamageLog': {}, 'feedbackBattleEvents': {}, 'onceOnlyHints': {}, 'onceOnlyHints2': {}, 'uiStorage': {}, SETTINGS_SECTIONS.UI_STORAGE_2: {}, 'epicCarouselFilter2': {}, 'rankedCarouselFilter1': {}, 'rankedCarouselFilter2': {}, 'comp7CarouselFilter1': {}, 'comp7CarouselFilter2': {}, 'sessionStats': {}, 'battleComm': {}, 'dogTags': {}, 'battleHud': {}, 'spgAim': {}, GUI_START_BEHAVIOR: {}, 'battlePassStorage': {}, SETTINGS_SECTIONS.CONTOUR: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_1: {}, SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_2: {}, 'nyStorage': {}, 'clear': {}, 'delete': []}
         yield migrateToVersion(currentVersion, self._core, data)
         self._setSettingsSections(data)
         callback(self)
@@ -1149,6 +1132,14 @@ class ServerSettingsManager(object):
         clearRankedFilterCarousel2 = clear.get('rankedCarouselFilter2', 0)
         if rankedFilterCarousel2 or clearRankedFilterCarousel2:
             settings[SETTINGS_SECTIONS.RANKED_CAROUSEL_FILTER_2] = self._buildSectionSettings(SETTINGS_SECTIONS.RANKED_CAROUSEL_FILTER_2, rankedFilterCarousel2) ^ clearRankedFilterCarousel2
+        funRandomFilterCarousel1 = data.get(SETTINGS_SECTIONS.FUN_RANDOM_CAROUSEL_FILTER_1, {})
+        clearFunRandomFilterCarousel1 = clear.get(SETTINGS_SECTIONS.FUN_RANDOM_CAROUSEL_FILTER_1, 0)
+        if funRandomFilterCarousel1 or clearFunRandomFilterCarousel1:
+            settings[SETTINGS_SECTIONS.FUN_RANDOM_CAROUSEL_FILTER_1] = self._buildSectionSettings(SETTINGS_SECTIONS.FUN_RANDOM_CAROUSEL_FILTER_1, funRandomFilterCarousel1) ^ clearFunRandomFilterCarousel1
+        funRandomFilterCarousel2 = data.get(SETTINGS_SECTIONS.FUN_RANDOM_CAROUSEL_FILTER_2, {})
+        clearFunRandomFilterCarousel2 = clear.get(SETTINGS_SECTIONS.FUN_RANDOM_CAROUSEL_FILTER_2, 0)
+        if funRandomFilterCarousel2 or clearFunRandomFilterCarousel2:
+            settings[SETTINGS_SECTIONS.FUN_RANDOM_CAROUSEL_FILTER_2] = self._buildSectionSettings(SETTINGS_SECTIONS.FUN_RANDOM_CAROUSEL_FILTER_2, funRandomFilterCarousel2) ^ clearFunRandomFilterCarousel2
         comp7FilterCarousel1 = data.get('comp7CarouselFilter1', {})
         clearComp7FilterCarousel1 = clear.get('comp7CarouselFilter1', 0)
         if comp7FilterCarousel1 or clearComp7FilterCarousel1:
@@ -1222,14 +1213,7 @@ class ServerSettingsManager(object):
         clearRoyaleFilterCarousel2 = clear.get(SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_2, 0)
         if royaleFilterCarousel2 or clearRoyaleFilterCarousel2:
             settings[SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_2] = self._buildSectionSettings(SETTINGS_SECTIONS.ROYALE_CAROUSEL_FILTER_2, royaleFilterCarousel2) ^ clearRoyaleFilterCarousel2
-        HW22FilterCarousel1 = data.get(SETTINGS_SECTIONS.HW22_CAROUSEL_FILTER_1, {})
-        clearHW22FilterCarousel1 = clear.get(SETTINGS_SECTIONS.HW22_CAROUSEL_FILTER_1, 0)
-        if HW22FilterCarousel1 or clearHW22FilterCarousel1:
-            settings[SETTINGS_SECTIONS.HW22_CAROUSEL_FILTER_1] = self._buildSectionSettings(SETTINGS_SECTIONS.HW22_CAROUSEL_FILTER_1, HW22FilterCarousel1) ^ clearHW22FilterCarousel1
-        HW22FilterCarousel2 = data.get(SETTINGS_SECTIONS.HW22_CAROUSEL_FILTER_2, {})
-        clearHW22FilterCarousel2 = clear.get(SETTINGS_SECTIONS.HW22_CAROUSEL_FILTER_2, 0)
-        if HW22FilterCarousel2 or clearHW22FilterCarousel2:
-            settings[SETTINGS_SECTIONS.HW22_CAROUSEL_FILTER_2] = self._buildSectionSettings(SETTINGS_SECTIONS.HW22_CAROUSEL_FILTER_2, HW22FilterCarousel2) ^ clearHW22FilterCarousel2
+        settings[SETTINGS_SECTIONS.NEW_YEAR] = self._buildSectionSettings(SETTINGS_SECTIONS.NEW_YEAR, data.get('nyStorage', {}))
         battleMatters = data.get(SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS, {})
         clearBattleMatters = clear.get(SETTINGS_SECTIONS.BATTLE_MATTERS_QUESTS, 0)
         if battleMatters or clearBattleMatters:

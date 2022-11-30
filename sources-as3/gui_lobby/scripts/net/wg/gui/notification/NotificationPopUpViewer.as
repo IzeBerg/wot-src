@@ -25,7 +25,7 @@ package net.wg.gui.notification
       
       private static const DELAY:Number = 50;
       
-      private static const DEFAULT_PADDING:Point = new Point(4,30);
+      private static const DEFAULT_PADDING:Point = new Point(4,35);
        
       
       private var _pendingForDisplay:Vector.<PopUpNotificationInfoVO>;
@@ -113,6 +113,7 @@ package net.wg.gui.notification
                   _loc1_.addEventListener(ServiceMessageEvent.MESSAGE_BUTTON_CLICKED,this.onPopUpMessageButtonClickedHandler,false,0,true);
                   _loc1_.addEventListener(ServiceMessageEvent.MESSAGE_LINK_CLICKED,this.onPopUpMessageLinkClickedHandler,false,0,true);
                   _loc1_.addEventListener(ServiceMessagePopUp.EVENT_HIDED,this.onPopUpHidedHandler,false,0,true);
+                  _loc1_.addEventListener(Event.RESIZE,this.onPopUpResizeHanlder,false,0,true);
                   _loc4_ += _loc2_;
                   this._displayingNowPopUps.splice(_loc7_,0,_loc1_);
                   _loc7_++;
@@ -327,6 +328,7 @@ package net.wg.gui.notification
          _loc4_.removeEventListener(ServiceMessageEvent.MESSAGE_AREA_CLICKED,this.onPopUpMessageAreaClickedHandler);
          _loc4_.removeEventListener(ServiceMessageEvent.MESSAGE_BUTTON_CLICKED,this.onPopUpMessageButtonClickedHandler);
          _loc4_.removeEventListener(ServiceMessageEvent.MESSAGE_LINK_CLICKED,this.onPopUpMessageLinkClickedHandler);
+         _loc4_.removeEventListener(Event.RESIZE,this.onPopUpResizeHanlder);
          if(param3)
          {
             _loc5_ = PopUpNotificationInfoVO(_loc4_.data);
@@ -402,6 +404,12 @@ package net.wg.gui.notification
          }
       }
       
+      private function onPopUpResizeHanlder(param1:Event) : void
+      {
+         this._arrangeLayout = true;
+         invalidate();
+      }
+      
       private function onSMContainerMouseOverHandler(param1:MouseEvent) : void
       {
          this.applyHiding(true);
@@ -448,7 +456,7 @@ package net.wg.gui.notification
          var _loc2_:String = null;
          var _loc3_:Boolean = false;
          _loc2_ = LAYER_NAMES.LAYER_ORDER[param1.layer];
-         _loc3_ = _loc2_ == LAYER_NAMES.FULLSCREEN_WINDOWS;
+         _loc3_ = _loc2_ == LAYER_NAMES.FULLSCREEN_WINDOWS || _loc2_ == LAYER_NAMES.DIALOGS;
          var _loc4_:Boolean = _loc2_ == LAYER_NAMES.SUBVIEW || _loc3_;
          if(_loc4_)
          {

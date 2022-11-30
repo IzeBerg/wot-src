@@ -26,6 +26,8 @@ package net.wg.gui.lobby.hangar
       
       public static const AMMUNITION_VIEW_SHOW_ANIM_COMPLETE:String = "ammunitionViewShowAnimComplete";
       
+      public static const AMMUNITION_VIEW_HIDE_ANIM_COMPLETE:String = "ammunitionViewHideAnimComplete";
+      
       private static const AMMUNITION_PANEL_OFFSET_Y:int = 7;
       
       private static const STAGE_MOUSE_ENABLED_TIMEOUT:int = 1000;
@@ -287,6 +289,7 @@ package net.wg.gui.lobby.hangar
       {
          removeEventListener(Event.COMPLETE,this.onAnimSwitchFromAmmunitionComplete);
          App.graphicsOptimizationMgr.register(this._hangar.carousel);
+         this._appStage.dispatchEvent(new Event(AMMUNITION_VIEW_HIDE_ANIM_COMPLETE));
       }
       
       public function isDisposed() : Boolean

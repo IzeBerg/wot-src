@@ -72,6 +72,10 @@ package net.wg.mock
          return false;
       }
       
+      public function as_setIgnoredKeyCode(param1:Number) : void
+      {
+      }
+      
       public function isDisposed() : Boolean
       {
          return false;

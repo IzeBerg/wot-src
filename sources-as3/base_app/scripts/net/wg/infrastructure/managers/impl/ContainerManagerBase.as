@@ -118,6 +118,11 @@ package net.wg.infrastructure.managers.impl
          super.onDispose();
       }
       
+      override protected function setContainersVisible(param1:Boolean, param2:Vector.<int>) : void
+      {
+         this.setVisibleContainers(param1,param2);
+      }
+      
       public function addGFItemInContainer(param1:uint, param2:IManagedContent, param3:Boolean = false) : Boolean
       {
          return this.addItemInContainer(param1,param2,param3);
@@ -294,6 +299,11 @@ package net.wg.infrastructure.managers.impl
          throw new InfrastructureException("net.wg.infrastructure.base.BaseView is not found using name = " + param1);
       }
       
+      public function as_storeContainersVisible() : void
+      {
+         this.storeVisibleContainers();
+      }
+      
       public function as_unregisterContainer(param1:int) : void
       {
          assertNotNull(this._containersMap[param1],"ContainerManager.as_unregisterContainer container for layer " + param1 + " is not registered");
@@ -379,6 +389,37 @@ package net.wg.infrastructure.managers.impl
          this.updateFocus();
       }
       
+      public function setVisibleContainers(param1:Boolean, param2:Vector.<int>) : void
+      {
+         var _loc3_:ISimpleManagedContainer = null;
+         var _loc4_:int = 0;
+         for each(_loc4_ in this._visibleContainers)
+         {
+            if(param2.indexOf(_loc4_) == -1)
+            {
+               _loc3_ = this._containersMap[_loc4_];
+               if(_loc3_)
+               {
+                  _loc3_.visible = param1;
+               }
+            }
+         }
+         this.updateFocus();
+      }
+      
+      public function storeVisibleContainers() : void
+      {
+         var _loc1_:ISimpleManagedContainer = null;
+         this._visibleContainers = new Vector.<int>();
+         for each(_loc1_ in this._containersMap)
+         {
+            if(_loc1_ && _loc1_.visible)
+            {
+               this._visibleContainers.push(_loc1_.layer);
+            }
+         }
+      }
+      
       public function updateFocus(param1:Object = null) : void
       {
          var _loc2_:String = null;
@@ -389,7 +430,7 @@ package net.wg.infrastructure.managers.impl
          for each(_loc2_ in _loc5_)
          {
             _loc3_ = this.getInteractiveContainer(LAYER_ORDER.indexOf(_loc2_));
-            if(!(!_loc3_ || _loc3_ == param1))
+            if(!(!_loc3_ || _loc3_ == param1 || !_loc3_.visible))
             {
                _loc6_ = _loc3_.getTopmostView() as IWaitingView;
                if(!(_loc6_ && !_loc6_.isFocusable))

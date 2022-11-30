@@ -451,32 +451,32 @@ msgstr ""
 "Congratulations! You've received a special supply drop included with Prime Gaming:\n"
 "%(vehicles)s\n"
 "• Crew trained to 100%%\n"
-"• An additional Garage slot."
+"• An additional Garage slot"
 
 msgid "awardWindow/telecomAward/description/full/default"
 msgstr ""
 "Congratulations! You've received a special supply drop included with the Igrovoy tariff:\n"
 "%(vehicles)s\n"
-"• Crew trained to 100%%\n"
-"• The %(prem)s for the duration of the tariff\n"
+"• Crew trained to 100%%.\n"
+"• %(prem)s for the duration of the tariff.\n"
 "• An additional Garage slot."
 
 msgid "awardWindow/telecomAward/description/prem/default"
-msgstr "Premium Account"
+msgstr "WoT Premium Account"
 
 msgid "awardWindow/telecomAward/description/withBrotherhood/Twitchprime"
 msgstr ""
 "Congratulations! You've received a special supply drop included with Prime Gaming:\n"
 "%(vehicles)s\n"
-"• Crew trained to 100%% (including the Brothers in Arms perk trained to 100%%)\n"
+"• Crew trained to 100%% (including the Brothers in Arms perk trained to 100%%).\n"
 "• An additional Garage slot."
 
 msgid "awardWindow/telecomAward/description/withBrotherhood/default"
 msgstr ""
 "Congratulations! You've received a special supply drop included with the Igrovoy tariff:\n"
 "%(vehicles)s\n"
-"• Crew trained to 100%% (including the Brothers in Arms perk trained to 100%%)\n"
-"• The %(prem)s for the duration of the tariff\n"
+"• Crew trained to 100%% (including the Brothers in Arms perk trained to 100%%).\n"
+"• %(prem)s for the duration of the tariff.\n"
 "• An additional Garage slot."
 
 msgid "awardWindow/telecomAward/description/withoutCrew/Twitchprime"
@@ -489,7 +489,7 @@ msgid "awardWindow/telecomAward/description/withoutCrew/default"
 msgstr ""
 "Congratulations! You've received a special supply drop included with the Igrovoy tariff:\n"
 "%(vehicles)s\n"
-"• The %(prem)s for the duration of the tariff\n"
+"• %(prem)s for the duration of the tariff.\n"
 "• An additional Garage slot."
 
 msgid "awardWindow/telecomAward/header/default"
@@ -502,12 +502,12 @@ msgid "awardWindow/telecomAward/title/default"
 msgstr "Bulletin"
 
 msgid "awardWindow/telecomAward/vehicles/Twitchprime"
-msgstr "• Tier %(level)s %(nation)s %(vehicle)s %(type)s with a unique style"
+msgstr "• Tier %(level)s %(nation)s %(vehicle)s %(type)s with a unique style."
 
 msgid "awardWindow/telecomAward/vehicles/default"
 msgstr ""
 "• Tier %(level)s %(nation)s %(vehicle)s %(type)s with an exclusive "
-"camouflage"
+"camouflage."
 
 msgid "awardWindow/title/boosterAward"
 msgstr "Congratulations on Completion"
@@ -783,7 +783,7 @@ msgid "bonusType/8"
 msgstr "Historical Battle"
 
 msgid "bonusType/9"
-msgstr "Halloween Coven"
+msgstr "Special game mode"
 
 msgid "booster/bonus/booster_credits"
 msgstr "%(effectValue)s bonus for %(effectHours)s to credits earned in battle"
@@ -980,9 +980,6 @@ msgstr "Purchase"
 msgid "boostersWindow/boostersTableRenderer/goToQuestBtnLabel"
 msgstr "Go to Mission"
 
-msgid "boostersWindow/boostersTableRenderer/header"
-msgstr "%(boosterName)s %(quality)s"
-
 msgid "boostersWindow/boostersTableRenderer/questForOpen"
 msgstr "To receive Personal Reserve, complete %(questName)s"
 
@@ -1173,10 +1170,7 @@ msgid "contextMenu/createContactNote"
 msgstr "Create note"
 
 msgid "contextMenu/createEventSquad"
-msgstr "Pumpkin Bash Platoon"
-
-msgid "contextMenu/createFunRandomSquad"
-msgstr "Arcade Cabinet Platoon"
+msgstr "Create Event Platoon"
 
 msgid "contextMenu/createMapboxSquad"
 msgstr "Recon Mission: Create Platoon"
@@ -1587,6 +1581,9 @@ msgstr "Create Fragments"
 msgid "cst_item_ctx_menu/convertBlueprintMaxCount"
 msgstr "Create fragments (%(count)d)"
 
+msgid "cst_item_ctx_menu/deconstruct"
+msgstr "Disassemble"
+
 msgid "cst_item_ctx_menu/demount"
 msgstr "Demount to Depot"
 
@@ -1757,9 +1754,6 @@ msgstr "Vehicle rental available"
 msgid "currentVehicleStatus/rentableAgain"
 msgstr "Extend Rental"
 
-msgid "currentVehicleStatus/rentalBattleIsOver"
-msgstr "No battles left"
-
 msgid "currentVehicleStatus/rentalIsOver"
 msgstr "Rental period ended"
 
@@ -1907,14 +1901,8 @@ msgstr "Sep"
 msgid "dateTime/order"
 msgstr "%(day)s %(month)s %(year)s"
 
-msgid "dateTime/orderWithoutYear"
-msgstr "%(month)s %(day)s, %(time)s"
-
 msgid "dateTime/shortDateFormatWithoutYear"
 msgstr "%(weekDay)s, %(month)s, %(monthDay)d"
-
-msgid "dateTime/timeFormat"
-msgstr "%I:%M%p"
 
 msgid "dateTime/trade_in/undefined"
 msgstr "Unable to display time"
@@ -2885,9 +2873,6 @@ msgstr "Team Training"
 msgid "headerButtons/battle/types/epicTraining/descr"
 msgstr "Frontline"
 
-msgid "headerButtons/battle/types/event"
-msgstr "Pumpkin Bash"
-
 msgid "headerButtons/battle/types/eventSquad"
 msgstr "Event Platoon"
 
@@ -2899,9 +2884,6 @@ msgstr "Stronghold: Battles"
 
 msgid "headerButtons/battle/types/fortLeave"
 msgstr "Stronghold: Battles"
-
-msgid "headerButtons/battle/types/funRandomSquad"
-msgstr "Arcade Cabinet Platoon"
 
 msgid "headerButtons/battle/types/historicalBattles"
 msgstr "Historical Battle"
@@ -3224,7 +3206,7 @@ msgid "headerButtons/fightBtn/tooltip/funRandomNotSet/header"
 msgstr "Unable to Enter Battle"
 
 msgid "headerButtons/fightBtn/tooltip/funRandomVehLimits/body"
-msgstr "Select another vehicle."
+msgstr "Change the mode or choose a vehicle that meets the requirements."
 
 msgid "headerButtons/fightBtn/tooltip/funRandomVehLimits/header"
 msgstr "Vehicle Not Suitable for Mode"
@@ -3293,6 +3275,12 @@ msgid "headerButtons/fightBtn/tooltip/sandbox/invalid/level/body"
 msgstr ""
 "You can only join the battle in researchable or Premium vehicles of Tiers "
 "%(levels)s."
+
+msgid "headerButtons/fightBtn/tooltip/telecomRentalIsOver/body"
+msgstr "Select another vehicle."
+
+msgid "headerButtons/fightBtn/tooltip/telecomRentalIsOver/header"
+msgstr "Vehicle Unavailable"
 
 msgid "headerButtons/fightBtn/tooltip/unsutableToBattleRoyale/body"
 msgstr "You can only enter a battle in special vehicles for Steel Hunter."
@@ -3754,7 +3742,7 @@ msgid "loading/battleTypes/28"
 msgstr "Strategist Training"
 
 msgid "loading/battleTypes/29"
-msgstr "Arcade Cabinet: RAILGUN"
+msgstr "Arcade Cabinet"
 
 msgid "loading/battleTypes/30"
 msgstr "Onslaught"
@@ -3769,7 +3757,7 @@ msgid "loading/battleTypes/6"
 msgstr "Historical Battle"
 
 msgid "loading/battleTypes/7"
-msgstr "Pumpkin Bash"
+msgstr "Special game mode"
 
 msgid "loading/battleTypes/8"
 msgstr "Skirmishes"
@@ -4740,11 +4728,6 @@ msgstr "For playing in a Platoon"
 msgid "prebattle/description"
 msgstr "prebattle/description"
 
-msgid "prebattle/eventWheeledVehiclesWarning"
-msgstr ""
-"*A special matchmaker for wheeled vehicles:\n"
-"Only wheeled vehicles will be used in battle."
-
 msgid "prebattle/exitButton"
 msgstr "Exit Battle"
 
@@ -4944,6 +4927,9 @@ msgstr "credits"
 
 msgid "price/crystal"
 msgstr "bond"
+
+msgid "price/equipCoin"
+msgstr "components"
 
 msgid "price/eventCoin"
 msgstr "Anniversary Coins"
@@ -5822,12 +5808,6 @@ msgstr "Discount"
 msgid "shop/table/notForSale"
 msgstr "Not for sale"
 
-msgid "shopSales/timerLabel/endsIn"
-msgstr "Ends in: "
-
-msgid "shopSales/timerLabel/startsIn"
-msgstr "Starts in: "
-
 msgid "skillDropWindow/after"
 msgstr "After reset"
 
@@ -6111,6 +6091,15 @@ msgstr "?empty?"
 msgid "tankCarousel/vehicleStates/notpresent"
 msgstr "Not in the Garage"
 
+msgid "tankCarousel/vehicleStates/nyTank"
+msgstr "Holiday Ops Vehicles"
+
+msgid "tankCarousel/vehicleStates/nyTankEmptyCount"
+msgstr "Vacant Slots: %(count)d"
+
+msgid "tankCarousel/vehicleStates/nyTankSlotsFull"
+msgstr "No available slots"
+
 msgid "tankCarousel/vehicleStates/rentable"
 msgstr "Vehicle rental available"
 
@@ -6128,9 +6117,6 @@ msgstr "Extend Rental"
 
 msgid "tankCarousel/vehicleStates/rentableAgain/ranked"
 msgstr "Extend Rental"
-
-msgid "tankCarousel/vehicleStates/rentalBattleIsOver"
-msgstr "No battles left"
 
 msgid "tankCarousel/vehicleStates/rentalIsOver"
 msgstr "Rental period ended"
@@ -7326,6 +7312,9 @@ msgstr "Sell"
 msgid "vehiclesCarousel/contextMenu/vehicleUncheck"
 msgstr "Uncheck Primary label"
 
+msgid "viewHeader/aboutBtn/label"
+msgstr "ABOUT THE EVENT"
+
 msgid "viewHeader/backBtn/descrLabel/battleMatters"
 msgstr "TO TANK ACADEMY"
 
@@ -7415,3 +7404,6 @@ msgstr "BACK"
 
 msgid "viewHeader/closeBtn/label"
 msgstr "CLOSE"
+
+msgid "viewHeader/infoBtn/label"
+msgstr "INFORMATION"

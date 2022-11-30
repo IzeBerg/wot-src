@@ -20,6 +20,7 @@ from gui.Scaleform.daapi.view.lobby.storage.inventory.inventory_cm_handlers impo
 from gui.Scaleform.daapi.view.lobby.storage.inventory.inventory_cm_handlers import EquipmentCMHandler
 from gui.Scaleform.daapi.view.lobby.storage.inventory.inventory_cm_handlers import BattleBoostersCMHandler
 from gui.Scaleform.daapi.view.lobby.storage.inventory.inventory_cm_handlers import OptionalDeviceCMHandler
+from gui.Scaleform.daapi.view.lobby.storage.inventory.inventory_cm_handlers import OptionalModernizedDeviceCMHandler
 from gui.Scaleform.daapi.view.lobby.storage.inventory.inventory_view import InventoryCategoryStorageView
 from gui.Scaleform.daapi.view.lobby.storage.inventory.modules_tab import ModulesTabView
 from gui.Scaleform.daapi.view.lobby.storage.inventory.opt_devices_tab import OptDevicesTabView
@@ -50,6 +51,8 @@ def getContextMenuHandlers():
       CONTEXT_MENU_HANDLER_TYPE.STORAGE_EQUIPMENT_ITEM, EquipmentCMHandler),
      (
       CONTEXT_MENU_HANDLER_TYPE.STORAGE_OPTIONAL_DEVICE_ITEM, OptionalDeviceCMHandler),
+     (
+      CONTEXT_MENU_HANDLER_TYPE.STORAGE_OPTIONAL_MODERNIZED_DEVICE_ITEM, OptionalModernizedDeviceCMHandler),
      (
       CONTEXT_MENU_HANDLER_TYPE.STORAGE_BONS_ITEM, BattleBoostersCMHandler),
      (

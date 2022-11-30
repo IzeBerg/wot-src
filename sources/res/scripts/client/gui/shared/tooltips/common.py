@@ -1,7 +1,9 @@
 import cPickle, logging, math
 from collections import namedtuple, defaultdict
+from gui.impl.lobby.new_year.tooltips.ny_gift_machine_token_tooltip import NyGiftMachineTokenTooltip
 from gui.impl.lobby.personal_reserves.tooltips.personal_reserves_tooltip_view import PersonalReservesTooltipView
 from gui.impl.pub import ToolTipWindow
+from gui.impl.lobby.new_year.tooltips.ny_resource_tooltip import NyResourceTooltip
 from helpers.i18n import makeString
 import ArenaType, ResMgr, constants, nations
 from gui import g_htmlTemplates, makeHtmlString, GUI_NATIONS
@@ -34,6 +36,12 @@ from gui.impl.lobby.premacc.squad_bonus_tooltip_content import SquadBonusTooltip
 from gui.impl.lobby.subscription.wot_plus_tooltip import WotPlusTooltip
 from gui.impl.lobby.tooltips.additional_rewards_tooltip import AdditionalRewardsTooltip
 from gui.impl.lobby.tooltips.veh_post_progression_entry_point_tooltip import VehPostProgressionEntryPointTooltip
+from gui.impl.lobby.new_year.tooltips.ny_resource_list_tooltip import NyResourceListTooltip
+from gui.impl.lobby.new_year.tooltips.ny_random_resource_tooltip import NyRandomResourceTooltip
+from gui.impl.lobby.new_year.tooltips.ny_resource_shop_tooltip import NyResourceShopTooltip
+from gui.impl.lobby.new_year.tooltips.ny_reward_kit_restriction_tooltip import NyRewardKitRestrictionTooltip
+from gui.impl.new_year.tooltips.new_year_vehicles_bonus_tooltip import NewYearVehiclesBonusTooltip
+from gui.impl.lobby.new_year.tooltips.ny_vehicle_bonuses_tooltip import NyVehicleBonusesTooltip
 from gui.prb_control.items.stronghold_items import SUPPORT_TYPE, REQUISITION_TYPE, HEAVYTRUCKS_TYPE
 from gui.prb_control.settings import BATTLES_TO_SELECT_RANDOM_MIN_LIMIT
 from gui.server_events.events_helpers import missionsSortFunc
@@ -46,7 +54,7 @@ from gui.shared.formatters.text_styles import concatStylesToMultiLine
 from gui.shared.formatters.time_formatters import getTimeLeftStr, getTillTimeByResource
 from gui.shared.gui_items import GUI_ITEM_TYPE, ACTION_ENTITY_ITEM
 from gui.shared.money import Money, Currency, MONEY_UNDEFINED
-from gui.shared.tooltips import ToolTipBaseData, TOOLTIP_TYPE, ACTION_TOOLTIPS_TYPE, ToolTipParameterField
+from gui.shared.tooltips import ToolTipBaseData, WulfTooltipData, TOOLTIP_TYPE, ACTION_TOOLTIPS_TYPE, ToolTipParameterField
 from gui.shared.tooltips import efficiency
 from gui.shared.tooltips import formatters
 from gui.shared.view_helpers import UsersInfoHelper
@@ -985,7 +993,8 @@ class SettingsShowLocationMarkers(BlocksTooltipData):
         return tooltipBlocks
 
 
-_CurrencySetting = namedtuple('_CurrencySetting', ('text', 'icon', 'textStyle', 'frame'))
+_CurrencySetting = namedtuple('_CurrencySetting', ('text', 'icon', 'textStyle', 'frame',
+                                                   'iconYOffset'))
 
 class CURRENCY_SETTINGS(object):
     BUY_CREDITS_PRICE = 'buyCreditsPrice'
@@ -1001,7 +1010,10 @@ class CURRENCY_SETTINGS(object):
     REMOVAL_CREDITS_PRICE = 'removalCreditsPrice'
     REMOVAL_GOLD_PRICE = 'removalGoldPrice'
     REMOVAL_CRYSTAL_PRICE = 'removalCrystalPrice'
+    REMOVAL_EQUIPCOINS_PRICE = 'removalEquipCoinsPrice'
     UPGRADABLE_CREDITS_PRICE = 'upgradableCreditsPrice'
+    UPGRADABLE_EQUIPCOINS_PRICE = 'upgradableEquipCoinsPrice'
+    DECONSTRUCT_EQUIPCOINS_PRICE = 'deconstructEquipCoinsPrice'
     __BUY_SETTINGS = {Currency.CREDITS: BUY_CREDITS_PRICE, 
        Currency.GOLD: BUY_GOLD_PRICE, 
        Currency.CRYSTAL: BUY_CRYSTAL_PRICE, 
@@ -1011,8 +1023,11 @@ class CURRENCY_SETTINGS(object):
        Currency.GOLD: RENT_GOLD_PRICE}
     __REMOVAL_SETTINGS = {Currency.CREDITS: REMOVAL_CREDITS_PRICE, 
        Currency.GOLD: REMOVAL_GOLD_PRICE, 
-       Currency.CRYSTAL: REMOVAL_CRYSTAL_PRICE}
-    __UPGRADABLE_SETTINGS = {Currency.CREDITS: UPGRADABLE_CREDITS_PRICE}
+       Currency.CRYSTAL: REMOVAL_CRYSTAL_PRICE, 
+       Currency.EQUIP_COIN: REMOVAL_EQUIPCOINS_PRICE}
+    __UPGRADABLE_SETTINGS = {Currency.CREDITS: UPGRADABLE_CREDITS_PRICE, 
+       Currency.EQUIP_COIN: UPGRADABLE_EQUIPCOINS_PRICE}
+    __DECONSTRUCT_SETTINGS = {Currency.EQUIP_COIN: DECONSTRUCT_EQUIPCOINS_PRICE}
 
     @classmethod
     def getRentSetting(cls, currency):
@@ -1030,21 +1045,28 @@ class CURRENCY_SETTINGS(object):
     def getUpgradableSetting(cls, currency):
         return cls.__UPGRADABLE_SETTINGS.get(currency, cls.UPGRADABLE_CREDITS_PRICE)
 
+    @classmethod
+    def getDeconstracutSetting(cls, currency):
+        return cls.__DECONSTRUCT_SETTINGS.get(currency, cls.DECONSTRUCT_EQUIPCOINS_PRICE)
 
-_OPERATIONS_SETTINGS = {CURRENCY_SETTINGS.BUY_CREDITS_PRICE: _CurrencySetting(TOOLTIPS.VEHICLE_BUY_PRICE, icons.credits(), text_styles.credits, ICON_TEXT_FRAMES.CREDITS), 
-   CURRENCY_SETTINGS.RESTORE_PRICE: _CurrencySetting('#tooltips:vehicle/restore_price', icons.credits(), text_styles.credits, ICON_TEXT_FRAMES.CREDITS), 
-   CURRENCY_SETTINGS.BUY_GOLD_PRICE: _CurrencySetting(TOOLTIPS.VEHICLE_BUY_PRICE, icons.gold(), text_styles.gold, ICON_TEXT_FRAMES.GOLD), 
-   CURRENCY_SETTINGS.BUY_CRYSTAL_PRICE: _CurrencySetting(TOOLTIPS.VEHICLE_BUY_PRICE, icons.crystal(), text_styles.crystal, ICON_TEXT_FRAMES.CRYSTAL), 
-   CURRENCY_SETTINGS.BUY_EVENT_COIN_PRICE: _CurrencySetting(TOOLTIPS.VEHICLE_BUY_PRICE, icons.eventCoin(), text_styles.eventCoin, ICON_TEXT_FRAMES.EVENT_COIN), 
-   CURRENCY_SETTINGS.BUY_BPCOIN_PRICE: _CurrencySetting(TOOLTIPS.VEHICLE_BUY_PRICE, icons.bpcoin(), text_styles.bpcoin, ICON_TEXT_FRAMES.BPCOIN), 
-   CURRENCY_SETTINGS.RENT_CREDITS_PRICE: _CurrencySetting(TOOLTIPS.VEHICLE_MINRENTALSPRICE, icons.credits(), text_styles.credits, ICON_TEXT_FRAMES.CREDITS), 
-   CURRENCY_SETTINGS.RENT_GOLD_PRICE: _CurrencySetting(TOOLTIPS.VEHICLE_MINRENTALSPRICE, icons.gold(), text_styles.gold, ICON_TEXT_FRAMES.GOLD), 
-   CURRENCY_SETTINGS.SELL_PRICE: _CurrencySetting(TOOLTIPS.VEHICLE_SELL_PRICE, icons.credits(), text_styles.credits, ICON_TEXT_FRAMES.CREDITS), 
-   CURRENCY_SETTINGS.UNLOCK_PRICE: _CurrencySetting(TOOLTIPS.VEHICLE_UNLOCK_PRICE, icons.xpCost(), text_styles.expText, ICON_TEXT_FRAMES.XP_PRICE), 
-   CURRENCY_SETTINGS.REMOVAL_CREDITS_PRICE: _CurrencySetting(TOOLTIPS.MODULEFITS_NOT_REMOVABLE_DISMANTLING_PRICE, icons.credits(), text_styles.credits, ICON_TEXT_FRAMES.CREDITS), 
-   CURRENCY_SETTINGS.REMOVAL_GOLD_PRICE: _CurrencySetting(TOOLTIPS.MODULEFITS_NOT_REMOVABLE_DISMANTLING_PRICE, icons.gold(), text_styles.gold, ICON_TEXT_FRAMES.GOLD), 
-   CURRENCY_SETTINGS.REMOVAL_CRYSTAL_PRICE: _CurrencySetting(TOOLTIPS.MODULEFITS_NOT_REMOVABLE_DISMANTLING_PRICE, icons.crystal(), text_styles.crystal, ICON_TEXT_FRAMES.CRYSTAL), 
-   CURRENCY_SETTINGS.UPGRADABLE_CREDITS_PRICE: _CurrencySetting(TOOLTIPS.MODULEFITS_UPGRADABLE_PRICE, icons.credits(), text_styles.credits, ICON_TEXT_FRAMES.CREDITS)}
+
+_OPERATIONS_SETTINGS = {CURRENCY_SETTINGS.BUY_CREDITS_PRICE: _CurrencySetting(TOOLTIPS.VEHICLE_BUY_PRICE, icons.credits(), text_styles.credits, ICON_TEXT_FRAMES.CREDITS, iconYOffset=0), 
+   CURRENCY_SETTINGS.RESTORE_PRICE: _CurrencySetting('#tooltips:vehicle/restore_price', icons.credits(), text_styles.credits, ICON_TEXT_FRAMES.CREDITS, iconYOffset=0), 
+   CURRENCY_SETTINGS.BUY_GOLD_PRICE: _CurrencySetting(TOOLTIPS.VEHICLE_BUY_PRICE, icons.gold(), text_styles.gold, ICON_TEXT_FRAMES.GOLD, iconYOffset=0), 
+   CURRENCY_SETTINGS.BUY_CRYSTAL_PRICE: _CurrencySetting(TOOLTIPS.VEHICLE_BUY_PRICE, icons.crystal(), text_styles.crystal, ICON_TEXT_FRAMES.CRYSTAL, iconYOffset=0), 
+   CURRENCY_SETTINGS.BUY_EVENT_COIN_PRICE: _CurrencySetting(TOOLTIPS.VEHICLE_BUY_PRICE, icons.eventCoin(), text_styles.eventCoin, ICON_TEXT_FRAMES.EVENT_COIN, iconYOffset=0), 
+   CURRENCY_SETTINGS.BUY_BPCOIN_PRICE: _CurrencySetting(TOOLTIPS.VEHICLE_BUY_PRICE, icons.bpcoin(), text_styles.bpcoin, ICON_TEXT_FRAMES.BPCOIN, iconYOffset=0), 
+   CURRENCY_SETTINGS.RENT_CREDITS_PRICE: _CurrencySetting(TOOLTIPS.VEHICLE_MINRENTALSPRICE, icons.credits(), text_styles.credits, ICON_TEXT_FRAMES.CREDITS, iconYOffset=0), 
+   CURRENCY_SETTINGS.RENT_GOLD_PRICE: _CurrencySetting(TOOLTIPS.VEHICLE_MINRENTALSPRICE, icons.gold(), text_styles.gold, ICON_TEXT_FRAMES.GOLD, iconYOffset=0), 
+   CURRENCY_SETTINGS.SELL_PRICE: _CurrencySetting(TOOLTIPS.VEHICLE_SELL_PRICE, icons.credits(), text_styles.credits, ICON_TEXT_FRAMES.CREDITS, iconYOffset=0), 
+   CURRENCY_SETTINGS.UNLOCK_PRICE: _CurrencySetting(TOOLTIPS.VEHICLE_UNLOCK_PRICE, icons.xpCost(), text_styles.expText, ICON_TEXT_FRAMES.XP_PRICE, iconYOffset=0), 
+   CURRENCY_SETTINGS.REMOVAL_CREDITS_PRICE: _CurrencySetting(TOOLTIPS.MODULEFITS_NOT_REMOVABLE_DISMANTLING_PRICE, icons.credits(), text_styles.credits, ICON_TEXT_FRAMES.CREDITS, iconYOffset=0), 
+   CURRENCY_SETTINGS.REMOVAL_GOLD_PRICE: _CurrencySetting(TOOLTIPS.MODULEFITS_NOT_REMOVABLE_DISMANTLING_PRICE, icons.gold(), text_styles.gold, ICON_TEXT_FRAMES.GOLD, iconYOffset=0), 
+   CURRENCY_SETTINGS.REMOVAL_CRYSTAL_PRICE: _CurrencySetting(TOOLTIPS.MODULEFITS_NOT_REMOVABLE_DISMANTLING_PRICE, icons.crystal(), text_styles.crystal, ICON_TEXT_FRAMES.CRYSTAL, iconYOffset=0), 
+   CURRENCY_SETTINGS.REMOVAL_EQUIPCOINS_PRICE: _CurrencySetting(TOOLTIPS.MODULEFITS_NOT_REMOVABLE_DISMANTLING_PRICE, icons.equipCoin(), text_styles.equipCoin, ICON_TEXT_FRAMES.EQUIP_COIN, iconYOffset=1), 
+   CURRENCY_SETTINGS.UPGRADABLE_CREDITS_PRICE: _CurrencySetting(TOOLTIPS.MODULEFITS_UPGRADABLE_PRICE, icons.credits(), text_styles.credits, ICON_TEXT_FRAMES.CREDITS, iconYOffset=0), 
+   CURRENCY_SETTINGS.UPGRADABLE_EQUIPCOINS_PRICE: _CurrencySetting(TOOLTIPS.MODULEFITS_UPGRADABLE_PRICE, icons.equipCoin(), text_styles.equipCoin, ICON_TEXT_FRAMES.EQUIP_COIN, iconYOffset=1), 
+   CURRENCY_SETTINGS.DECONSTRUCT_EQUIPCOINS_PRICE: _CurrencySetting(TOOLTIPS.MODULEFITS_DECONSTRUCT_PRICE, icons.equipCoin(), text_styles.equipCoin, ICON_TEXT_FRAMES.EQUIP_COIN, iconYOffset=1)}
 
 def _getCurrencySetting(key):
     if key not in _OPERATIONS_SETTINGS:
@@ -1068,7 +1090,7 @@ def getFormattedPriceString(price, currencySetting, neededValue=None):
 
 def getFormattedNeededValue(settings, neededValue):
     needFormatted = settings.textStyle(neededValue)
-    neededText = text_styles.concatStylesToSingleLine(text_styles.standard(_PARENTHESES_OPEN), _SPACE, text_styles.error(backport.text(R.strings.tooltips.vehicle.graph.body.notEnough())), _SPACE, needFormatted, settings.icon, text_styles.standard(_PARENTHESES_CLOSE))
+    neededText = text_styles.concatStylesToSingleLine(text_styles.standard(_PARENTHESES_OPEN), text_styles.error(backport.text(R.strings.tooltips.vehicle.graph.body.notEnough())), needFormatted, settings.icon, text_styles.standard(_PARENTHESES_CLOSE))
     return neededText
 
 
@@ -1097,10 +1119,10 @@ def makePriceBlock(price, currencySetting, neededValue=None, oldPrice=None, perc
                 newPrice = Money(credits=price)
                 oldPrice = Money(credits=oldPrice)
             return formatters.packSaleTextParameterBlockData(name=text, saleData={'newPrice': newPrice.toMoneyTuple(), 'oldPrice': oldPrice.toMoneyTuple(), 'valuePadding': -2}, actionStyle='alignTop', padding=formatters.packPadding(left=leftPadding), currency=newPrice.getCurrency())
-        return formatters.packTextParameterWithIconBlockData(name=text, value=valueFormatted, icon=settings.frame, valueWidth=valueWidth, padding=formatters.packPadding(left=-5), nameOffset=iconRightOffset, gap=gap)
+        return formatters.packTextParameterWithIconBlockData(name=text, value=valueFormatted, icon=settings.frame, valueWidth=valueWidth, padding=formatters.packPadding(left=-5), nameOffset=iconRightOffset, gap=gap, iconYOffset=settings.iconYOffset)
 
 
-def makeRemovalPriceBlock(price, currencySetting, neededValue=None, oldPrice=None, percent=0, valueWidth=-1, leftPadding=61, forcedText='', isDeluxe=False, gap=15):
+def makeRemovalPriceBlock(price, currencySetting, neededValue=None, oldPrice=None, percent=0, valueWidth=-1, leftPadding=61, forcedText='', isDeluxe=False, gap=15, canUseDemountKit=False):
     _int = backport.getIntegralFormat
     settings = _getCurrencySetting(currencySetting)
     if settings is None:
@@ -1112,7 +1134,7 @@ def makeRemovalPriceBlock(price, currencySetting, neededValue=None, oldPrice=Non
         dkIcon = icons.demountKit()
         dkText = text_styles.concatStylesWithSpace(dkCount, dkIcon)
         descr = R.strings.demount_kit.equipmentInstall
-        if isDeluxe:
+        if isDeluxe or not canUseDemountKit:
             dynAccId = descr.demount()
         else:
             dynAccId = descr.demountOr()
@@ -1259,7 +1281,7 @@ class HeaderMoneyAndXpTooltipData(BlocksTooltipData):
             _logger.error('HeaderMoneyAndXpTooltipData empty btnType!')
             return tooltipBlocks
         else:
-            valueBlock = formatters.packMoneyAndXpValueBlock(value=self._getValue(), icon=self._getIcon(), iconYoffset=self._getIconYOffset())
+            valueBlock = formatters.packMoneyAndXpValueBlock(value=self._getValue(), icon=self._getIcon(), iconYoffset=self._getIconYOffset(), gap=0)
             return formatters.packMoneyAndXpBlocks(tooltipBlocks, btnType=self._btnType, valueBlocks=[
              valueBlock], hideActionBlock=hideActionBlock)
 
@@ -1280,6 +1302,8 @@ class HeaderMoneyAndXpTooltipData(BlocksTooltipData):
         elif self._btnType == CURRENCIES_CONSTANTS.BRCOIN:
             brCoin = self.__rentVehiclesController.getBRCoinBalance(0)
             valueStr = text_styles.bpcoin(backport.getIntegralFormat(brCoin))
+        elif self._btnType == CURRENCIES_CONSTANTS.EQUIP_COIN:
+            valueStr = text_styles.bpcoin(backport.getIntegralFormat(self.itemsCache.items.stats.equipCoin))
         return valueStr
 
     def _getIconYOffset(self):
@@ -1430,6 +1454,96 @@ class SquadBonusTooltipWindowData(ToolTipBaseData):
 
     def getDisplayableData(self, *args, **kwargs):
         return DecoratedTooltipWindow(SquadBonusTooltipContent())
+
+
+class NYVehicleBonusTooltipWindowData(ToolTipBaseData):
+
+    def __init__(self, context):
+        super(NYVehicleBonusTooltipWindowData, self).__init__(context, TOOLTIP_TYPE.NY_VEHICLE_BONUS)
+
+    def getDisplayableData(self, *args, **kwargs):
+        return DecoratedTooltipWindow(NewYearVehiclesBonusTooltip())
+
+
+class NYAmmunitionVehicleBonusTooltipWindowData(ToolTipBaseData):
+
+    def __init__(self, context):
+        super(NYAmmunitionVehicleBonusTooltipWindowData, self).__init__(context, TOOLTIPS_CONSTANTS.NY_AMMUNITION_BONUSES)
+
+    def getDisplayableData(self, *args, **kwargs):
+        return DecoratedTooltipWindow(NyVehicleBonusesTooltip(*args), useDecorator=False)
+
+
+class NyResourceTooltipContentWindowData(WulfTooltipData):
+
+    def __init__(self, context):
+        super(NyResourceTooltipContentWindowData, self).__init__(context, TOOLTIPS_CONSTANTS.NY_RESOURCE)
+
+    def getTooltipContent(self, *args, **kwargs):
+        return NyResourceTooltip(*args)
+
+
+class NyResourceShopTooltipContentWindowData(WulfTooltipData):
+
+    def __init__(self, context):
+        super(NyResourceShopTooltipContentWindowData, self).__init__(context, TOOLTIPS_CONSTANTS.NY_RESOURCE_FOR_SHOP)
+
+    def getTooltipContent(self, *args, **kwargs):
+        return NyResourceShopTooltip(*args)
+
+
+class NyRewardKitRestrictionTooltipContentWindowData(WulfTooltipData):
+
+    def __init__(self, context):
+        super(NyRewardKitRestrictionTooltipContentWindowData, self).__init__(context, TOOLTIPS_CONSTANTS.NY_REWARD_KIT_RESTRICTION)
+
+    def getTooltipContent(self, *args, **kwargs):
+        return NyRewardKitRestrictionTooltip(*args)
+
+
+class NyResourceListTooltipContentWindowData(WulfTooltipData):
+
+    def __init__(self, context):
+        super(NyResourceListTooltipContentWindowData, self).__init__(context, TOOLTIPS_CONSTANTS.NY_RESOURCE_LIST)
+
+    def getTooltipContent(self, *args, **kwargs):
+        return NyResourceListTooltip()
+
+
+class NyRandomResourceTooltipContentWindowData(WulfTooltipData):
+
+    def __init__(self, context):
+        super(NyRandomResourceTooltipContentWindowData, self).__init__(context, TOOLTIPS_CONSTANTS.NY_RANDOM_RESOURCE)
+
+    def getTooltipContent(self, *args, **kwargs):
+        return NyRandomResourceTooltip(*args)
+
+
+class Ny23CoinTokenTooltipContentWindowData(WulfTooltipData):
+
+    def __init__(self, context):
+        super(Ny23CoinTokenTooltipContentWindowData, self).__init__(context, TOOLTIPS_CONSTANTS.NY23_COIN_TOKEN)
+
+    def getTooltipContent(self, *args, **kwargs):
+        return NyGiftMachineTokenTooltip(*args)
+
+
+class NewYearFillers(BlocksTooltipData):
+
+    def __init__(self, context):
+        super(NewYearFillers, self).__init__(context, None)
+        self._setWidth(365)
+        self._setContentMargin(0, 0, 0, 0)
+        return
+
+    def _packBlocks(self, *args, **kwargs):
+        items = super(NewYearFillers, self)._packBlocks(*args, **kwargs)
+        blocks = [
+         formatters.packImageBlockData(backport.image(R.images.gui.maps.icons.newYear.infotype.icon_filler())),
+         formatters.packTextBlockData(text_styles.highTitle(backport.text(R.strings.ny.fillersTooltip.header())), padding=formatters.packPadding(-364, 30, 0, 30)),
+         formatters.packTextBlockData(text_styles.mainBig(backport.text(R.strings.ny.fillersTooltip.description())), padding=formatters.packPadding(240, 30, 30, 30))]
+        items.append(formatters.packBuildUpBlockData(blocks=blocks))
+        return items
 
 
 class VehiclePointsTooltipContentWindowData(ToolTipBaseData):

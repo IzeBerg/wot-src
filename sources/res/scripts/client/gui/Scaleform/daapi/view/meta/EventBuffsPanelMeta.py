@@ -2,10 +2,10 @@ from gui.Scaleform.framework.entities.BaseDAAPIComponent import BaseDAAPICompone
 
 class EventBuffsPanelMeta(BaseDAAPIComponent):
 
-    def as_addBuffSlotS(self, id, imageName, tooltipText):
+    def as_addBuffSlotS(self, idx, imageName, tooltipText):
         if self._isDAAPIInited():
-            return self.flashObject.as_addBuffSlot(id, imageName, tooltipText)
+            return self.flashObject.as_addBuffSlot(idx, imageName, tooltipText)
 
-    def as_removeBuffSlotS(self, id):
+    def as_removeBuffSlotS(self, idx):
         if self._isDAAPIInited():
-            return self.flashObject.as_removeBuffSlot(id)
+            return self.flashObject.as_removeBuffSlot(idx)

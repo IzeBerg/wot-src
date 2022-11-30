@@ -361,15 +361,7 @@ package
       
       public static const SETUPTOOLTIPVIEW_DESCRIPTION_SHELLS_CONSUMABLES_SWITCH:String = "#veh_post_progression:setupTooltipView/description/shells_consumables_switch";
       
-      public static const SETUPTOOLTIPVIEW_DESCRIPTION_KEYWORDS_SHELLS:String = "#veh_post_progression:setupTooltipView/description/keywords/shells";
-      
-      public static const SETUPTOOLTIPVIEW_DESCRIPTION_KEYWORDS_CONSUMABLES:String = "#veh_post_progression:setupTooltipView/description/keywords/consumables";
-      
       public static const SETUPTOOLTIPVIEW_DESCRIPTION_OPT_DEV_BOOSTERS_SWITCH:String = "#veh_post_progression:setupTooltipView/description/opt_dev_boosters_switch";
-      
-      public static const SETUPTOOLTIPVIEW_DESCRIPTION_KEYWORDS_OPTDEVICES:String = "#veh_post_progression:setupTooltipView/description/keywords/optDevices";
-      
-      public static const SETUPTOOLTIPVIEW_DESCRIPTION_KEYWORDS_BATTLEBOOSTERS:String = "#veh_post_progression:setupTooltipView/description/keywords/battleBoosters";
       
       public static const SETUPTOOLTIPVIEW_TIP:String = "#veh_post_progression:setupTooltipView/tip";
       

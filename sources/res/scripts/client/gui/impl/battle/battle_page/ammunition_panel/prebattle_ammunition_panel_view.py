@@ -1,4 +1,4 @@
-import BigWorld, CommandMapping, constants
+import CommandMapping
 from Event import Event, EventManager
 from account_helpers.settings_core.settings_constants import CONTROLS
 from constants import ROLE_TYPE_TO_LABEL
@@ -91,7 +91,6 @@ class PrebattleAmmunitionPanelView(ViewImpl):
         self.viewModel.setState(state)
         self.setCurrentShellCD(currShellCD)
         self.setNextShellCD(nextShellCD)
-        self.viewModel.setIsHalloween(BigWorld.player().arena.guiType == constants.ARENA_GUI_TYPE.EVENT_BATTLES)
 
     def _onLoaded(self, *args, **kwargs):
         super(PrebattleAmmunitionPanelView, self)._onLoaded(*args, **kwargs)
@@ -150,6 +149,7 @@ class Comp7PrebattleAmmunitionPanelView(PrebattleAmmunitionPanelView):
             if window is not None:
                 window.load()
                 window.move(event.mouse.positionX, event.mouse.positionY)
+                return window
         return super(Comp7PrebattleAmmunitionPanelView, self).createToolTip(event)
 
     def updateViewVehicle(self, vehicle, fullUpdate=True):

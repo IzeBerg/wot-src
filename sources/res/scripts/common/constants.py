@@ -1,10 +1,9 @@
-import calendar, time
-from collections import namedtuple
-from itertools import chain, izip
+import enum, calendar, time
 from math import cos, radians
 from time import time as timestamp
+from collections import namedtuple
+from itertools import izip, chain
 from Math import Vector3
-import enum
 from realm import CURRENT_REALM
 try:
     import BigWorld
@@ -23,6 +22,7 @@ IS_CELLAPP = BigWorld.component == 'cell'
 IS_BASEAPP = BigWorld.component in ('base', 'service')
 IS_WEB = BigWorld.component == 'web'
 IS_DYNUPDATER = False
+IS_LOAD_GLOSSARY = False
 IS_CGF_DUMP = BigWorld.component == 'client_cgf_dump'
 DEFAULT_LANGUAGE = 'ru'
 AUTH_REALM = 'RU'
@@ -303,10 +303,6 @@ class ARENA_BONUS_TYPE:
     EXTERNAL_RANGE = (
      SORTIE_2, FORT_BATTLE_2, GLOBAL_MAP,
      TOURNAMENT, TOURNAMENT_CLAN, TOURNAMENT_REGULAR, TOURNAMENT_EVENT)
-    NOT_IMMEDIATE_BATTLE_RESULTS = BATTLE_ROYALE_RANGE + (
-     MAPS_TRAINING,
-     EVENT_BATTLES,
-     EVENT_BATTLES_2)
 
 
 ARENA_BONUS_TYPE_NAMES = dict([ (k, v) for k, v in ARENA_BONUS_TYPE.__dict__.iteritems() if isinstance(v, int) ])
@@ -432,10 +428,9 @@ class FINISH_REASON:
     ALLY_KILLED = 8
     OWN_VEHICLE_DESTROYED = 9
     DESTROYED_OBJECTS = 10
-    EVENT_DAMAGE_TIMEOUT = 11
-    EVENT_EXTERMINATION = 12
-    EVENT_2_BASES_CAPTURED = 13
 
+
+FINISH_REASON_NAMES = dict([ (v, k) for k, v in FINISH_REASON.__dict__.iteritems() if not k.startswith('_') ])
 
 class ARENA_EXT_MSG:
     UNKNOWN = 0
@@ -793,7 +788,6 @@ ACTIVE_TEST_CONFIRMATION_CONFIG = 'active_test_confirmation_config'
 MISC_GUI_SETTINGS = 'misc_gui_settings'
 META_GAME_SETTINGS = 'meta_game_settings'
 MAPS_TRAINING_ENABLED_KEY = 'isMapsTrainingEnabled'
-SHOP_SALES_CONFIG = 'shop_sales_event_config'
 OFFERS_ENABLED_KEY = 'isOffersEnabled'
 
 class Configs(enum.Enum):
@@ -801,7 +795,6 @@ class Configs(enum.Enum):
     EPIC_CONFIG = 'epic_config'
     MAPBOX_CONFIG = 'mapbox_config'
     GIFTS_CONFIG = 'gifts_config'
-    EVENT_BATTLE = 'event_battles_config'
     RESOURCE_WELL = 'resource_well_config'
     FUN_RANDOM_CONFIG = 'fun_random_config'
     CRYSTAL_REWARDS_CONFIG = 'crystal_rewards_config'
@@ -984,9 +977,6 @@ class DUALGUN_CHARGER_ACTION_TYPE:
     START_IMMEDIATELY = 2
 
 
-RECHARGE_SIGNIFICANT_DIGITS = 2
-RECHARGE_TIME_MULTIPLIER = 10 ** (-RECHARGE_SIGNIFICANT_DIGITS)
-
 class EQUIPMENT_STAGES:
     NOT_RUNNING = 0
     DEPLOYING = 1
@@ -1082,7 +1072,6 @@ class ATTACK_REASON(object):
     SPAWNED_BOT_EXPLOSION = 'spawned_bot_explosion'
     BERSERKER = 'berserker_eq'
     SMOKE = 'smoke'
-    SUPER_SHELL = 'super_shell'
     CORRODING_SHOT = 'corrodingShot'
     ADAPTATION_HEALTH_RESTORE = 'AdaptationHealthRestore'
     THUNDER_STRIKE = 'thunderStrike'
@@ -1109,8 +1098,7 @@ ATTACK_REASONS = (
  ATTACK_REASON.CORRODING_SHOT, ATTACK_REASON.ADAPTATION_HEALTH_RESTORE,
  ATTACK_REASON.THUNDER_STRIKE, ATTACK_REASON.FIRE_CIRCLE, ATTACK_REASON.CLING_BRANDER,
  ATTACK_REASON.CLING_BRANDER_RAM, ATTACK_REASON.BRANDER_RAM,
- ATTACK_REASON.FORT_ARTILLERY_EQ,
- ATTACK_REASON.SUPER_SHELL)
+ ATTACK_REASON.FORT_ARTILLERY_EQ)
 ATTACK_REASON_INDICES = dict((value, index) for index, value in enumerate(ATTACK_REASONS))
 BOT_RAM_REASONS = (
  ATTACK_REASON.BRANDER_RAM, ATTACK_REASON.CLING_BRANDER_RAM)
@@ -1171,7 +1159,6 @@ FIRE_NOTIFICATION_INDICES = dict((x[1], x[0]) for x in enumerate(FIRE_NOTIFICATI
 DAMAGE_INFO_CODES = ('DEVICE_CRITICAL', 'DEVICE_DESTROYED', 'TANKMAN_HIT', 'DEVICE_CRITICAL_AT_SHOT',
                      'DEVICE_DESTROYED_AT_SHOT', 'DEVICE_CRITICAL_AT_RAMMING', 'DEVICE_DESTROYED_AT_RAMMING',
                      'TANKMAN_HIT_AT_SHOT', 'DEATH_FROM_DEVICE_EXPLOSION_AT_SHOT',
-                     'DEVICE_DESTROYED_AT_SUPER_SHOT', 'TANKMAN_HIT_AT_SUPER_SHOT',
                      'DEVICE_CRITICAL_AT_FIRE', 'DEVICE_DESTROYED_AT_FIRE', 'DEVICE_CRITICAL_AT_WORLD_COLLISION',
                      'DEVICE_DESTROYED_AT_WORLD_COLLISION', 'DEVICE_CRITICAL_AT_DROWNING',
                      'DEVICE_DESTROYED_AT_DROWNING', 'DEVICE_REPAIRED_TO_CRITICAL',
@@ -1295,6 +1282,7 @@ EPIC_ABILITY_PTS_NAME = 'abilityPts'
 OFFER_TOKEN_PREFIX = 'offer:'
 ENDLESS_TOKEN_TIME_STRING = '28.01.2100 00:01'
 ENDLESS_TOKEN_TIME = int(calendar.timegm(time.strptime(ENDLESS_TOKEN_TIME_STRING, '%d.%m.%Y %H:%M')))
+END_OF_GAME_DAY = {'endOfGameDay': True}
 LOOTBOX_TOKEN_PREFIX = 'lootBox:'
 TWITCH_TOKEN_PREFIX = 'token:twitch'
 CUSTOMIZATION_PROGRESS_PREFIX = 'cust_progress_'
@@ -1375,12 +1363,11 @@ class QUEUE_TYPE:
     RTS_BOOTCAMP = 27
     FUN_RANDOM = 28
     COMP7 = 29
-    EVENT_BATTLES_2 = 30
     FALLOUT = (
      FALLOUT_CLASSIC, FALLOUT_MULTITEAM)
     ALL = (
      RANDOMS, COMPANIES, VOLUNTEERS, SANDBOX, UNITS,
-     EVENT_BATTLES, EVENT_BATTLES_2, UNIT_ASSEMBLER, TUTORIAL,
+     EVENT_BATTLES, UNIT_ASSEMBLER, TUTORIAL,
      SPEC_BATTLE, FALLOUT,
      FALLOUT_CLASSIC, FALLOUT_MULTITEAM, STRONGHOLD_UNITS, RANKED, BOOTCAMP, EPIC, TOURNAMENT_UNITS, BATTLE_ROYALE,
      BATTLE_ROYALE_TOURNAMENT, MAPBOX, MAPS_TRAINING, RTS, RTS_1x1, RTS_BOOTCAMP, FUN_RANDOM, COMP7)
@@ -1423,6 +1410,7 @@ class INVOICE_ASSET:
     EVENT_COIN = 8
     BPCOIN = 9
     PURCHASE = 10
+    EQUIP_COIN = 11
 
 
 class INVOICE_LIMITS:
@@ -1448,6 +1436,7 @@ class INVOICE_LIMITS:
     ENTITLEMENTS_MAX = 10000
     RANKED_DAILY_BATTLES_MAX = 1000
     RANKED_BONUS_BATTLES_MAX = 1000
+    EQUIP_COIN_MAX = 1000000
 
 
 class RentType(object):
@@ -1477,7 +1466,6 @@ SEASON_TYPE_BY_NAME = {'ranked': GameSeasonType.RANKED,
    'battle_royale': GameSeasonType.BATTLE_ROYALE, 
    'mapbox': GameSeasonType.MAPBOX, 
    'event_battles': GameSeasonType.EVENT_BATTLES, 
-   'fun_random': GameSeasonType.FUN_RANDOM, 
    'comp7': GameSeasonType.COMP7}
 SEASON_NAME_BY_TYPE = {val:key for key, val in SEASON_TYPE_BY_NAME.iteritems()}
 CHANNEL_SEARCH_RESULTS_LIMIT = 50
@@ -1529,7 +1517,6 @@ class AUTO_MAINTENANCE_TYPE:
     EQUIP = 3
     EQUIP_BOOSTER = 4
     CUSTOMIZATION = 5
-    EVENT_EQUIP = 6
 
 
 class AUTO_MAINTENANCE_RESULT:
@@ -1566,7 +1553,7 @@ class REQUEST_COOLDOWN:
     SEND_INVITATION_COOLDOWN = 1.0
     RUN_QUEST = 1.0
     PAWN_FREE_AWARD_LIST = 1.0
-    LOOTBOX = 1.0
+    LOOTBOX = 0.5
     BADGES = 2.0
     CREW_SKINS = 0.3
     BPF_COMMAND = 1.0
@@ -1585,6 +1572,23 @@ class REQUEST_COOLDOWN:
     ANONYMIZER = 1.0
     UPDATE_IN_BATTLE_PLAYER_RELATIONS = 1.0
     FLUSH_RELATIONS = 1.0
+    NEW_YEAR_SLOT_FILL = 0.4
+    NEW_YEAR_SEE_INVENTORY_TOYS = 0.5
+    NEW_YEAR_SEE_COLLECTION_TOYS = 0.5
+    NEW_YEAR_SELECT_DISCOUNT = 1.0
+    NEW_YEAR_BUY_MARKETPLACE_ITEM = 1.0
+    NEW_YEAR_REROLL_CELEBRITY_QUEST = 1.0
+    NEW_YEAR_CHOOSE_XP_BONUS = 0.5
+    NEW_YEAR_CONVERT_RESOURCES = 0.5
+    NEW_YEAR_UPGRADE_OBJECT_LEVEL = 0.5
+    NEW_YEAR_COMPLETE_GUEST_QUEST = 0.5
+    NEW_YEAR_SET_HANGAR_NAME_MASK = 0.5
+    NEW_YEAR_BUY_GIFT_MACHINE_COIN = 0.5
+    NEW_YEAR_MANUAL_RESOURCE_COLLECTING = 0.5
+    NEW_YEAR_SET_AUTO_RESOURCE_COLLECTING_STATE = 1.0
+    NEW_YEAR_GET_NY_PIGGY_BANK_REWARDS = 0.5
+    NEW_YEAR_BUY_TOY = 0.5
+    NEW_YEAR_STROKE_DOG = 0.5
     EQUIP_ENHANCEMENT = 1.0
     DISMOUNT_ENHANCEMENT = 1.0
     BUY_BATTLE_PASS = 1.0
@@ -1609,7 +1613,7 @@ class REQUEST_COOLDOWN:
     RESOURCE_WELL_PUT = 1.0
     VEHICLE_IN_BATTLE_SWITCH = 2.0
     SET_VIVOX_PRESENCE = 1.0
-    BUNDLE = 1.0
+    UNIT_UPDATE_EXTRAS = 2.0
 
 
 IS_SHOW_INGAME_HELP_FIRST_TIME = False
@@ -1905,10 +1909,16 @@ INT_USER_SETTINGS_KEYS = {USER_SERVER_SETTINGS.VERSION: 'Settings version',
    84: 'feedback battle events', 
    85: 'feedback border map', 
    86: 'ui storage, used for preserving first entry flags etc', 
+   87: 'Frontline carousel filter 1', 
+   88: 'Frontline carousel filter 2', 
    USER_SERVER_SETTINGS.HIDE_MARKS_ON_GUN: 'Hide marks on gun', 
    USER_SERVER_SETTINGS.BATTLE_MATTERS_QUESTS: 'battle matters quests show reward info', 
    USER_SERVER_SETTINGS.QUESTS_PROGRESS: 'feedback quests progress', 
    91: 'Loot box last viewed count', 
+   92: 'Oriental loot box last viewed count', 
+   93: 'New year loot box last viewed count', 
+   94: 'Fairytale loot box last viewed count', 
+   95: 'Christmas loot box last viewed count', 
    USER_SERVER_SETTINGS.SESSION_STATS: 'sessiong statistics settings', 
    97: 'BattlePass carouse filter 1', 
    98: 'Battle Pass Storage', 
@@ -1918,14 +1928,14 @@ INT_USER_SETTINGS_KEYS = {USER_SERVER_SETTINGS.VERSION: 'Settings version',
    USER_SERVER_SETTINGS.GAME_EXTENDED_2: 'Game extended section settings 2', 
    103: 'Mapbox carousel filter 1', 
    104: 'Mapbox carousel filter 2', 
+   105: 'New Year settings storage', 
    USER_SERVER_SETTINGS.CONTOUR: 'Contour settings', 
    107: 'Fun Random carousel filter 1', 
    108: 'Fun Random carousel filter 2', 
    USER_SERVER_SETTINGS.UI_STORAGE_2: 'ui storage 2, used for preserving first entry flags etc', 
    110: 'Competitive7x7 carousel filter 1', 
    111: 'Competitive7x7 carousel filter 2', 
-   112: 'HW22 carousel filter 1', 
-   113: 'HW22 carousel filter 2'}
+   112: 'Common loot box last viewed count'}
 
 class WG_GAMES:
     TANKS = 'wot'
@@ -2141,6 +2151,25 @@ class INVITATION_TYPE:
     COMP7 = PREBATTLE_TYPE.COMP7
     RANGE = (
      SQUAD, EVENT, EPIC, BATTLE_ROYALE, MAPBOX, FUN_RANDOM, COMP7)
+    TYPES_WITH_EXTRA_DATA = (FUN_RANDOM,)
+
+    @staticmethod
+    def invitationTypeFromArenaBonusType(arenaBonusType):
+        if arenaBonusType in ARENA_BONUS_TYPE.RANDOM_RANGE:
+            return INVITATION_TYPE.SQUAD
+        else:
+            if arenaBonusType == ARENA_BONUS_TYPE.EPIC_BATTLE:
+                return INVITATION_TYPE.EPIC
+            else:
+                if arenaBonusType == ARENA_BONUS_TYPE.EVENT_BATTLES:
+                    return INVITATION_TYPE.EVENT
+                if arenaBonusType == ARENA_BONUS_TYPE.MAPBOX:
+                    return INVITATION_TYPE.MAPBOX
+                if arenaBonusType == ARENA_BONUS_TYPE.FUN_RANDOM:
+                    return INVITATION_TYPE.FUN_RANDOM
+                return
+
+            return
 
 
 class REPAIR_FLAGS:
@@ -2279,7 +2308,6 @@ class RESPAWN_TYPES:
     SHARED = 2
     LIMITED = 3
     EPIC = 4
-    EVENT_INFINITE = 5
 
 
 class VISIBILITY:
@@ -2436,7 +2464,6 @@ GAMEPLAY_NAMES_WITH_DISABLED_QUESTS = ('sandbox', 'bootcamp')
 class BASE_TYPE:
     TEAM_BASE = 1
     SECTOR_BASE = 2
-    TEAM_BASE_RECAPTURABLE = 3
 
 
 class SECTOR_STATE:
@@ -2578,10 +2605,6 @@ class LOOT_TYPE(object):
     ADVANCED = 2
     AIRDROP = 3
     CORPSE = 4
-    BUFF_SHOOTINGSPEED = 5
-    BUFF_DOUBLEDAMAGE = 6
-    BUFF_BREAKINGMODULES = 7
-    BUFF_FIRESHELLS = 8
 
 
 class AirdropType(object):
@@ -2601,15 +2624,6 @@ class BattleRoyaleMode(object):
     SQUAD = 'squad'
     ALL = (
      SOLO, SQUAD)
-
-
-class MarkerItem(object):
-    DEFAULT = 0
-    DEATHZONE = 1
-    COMP7_RECON = 2
-    HW_TEAM_BASE = 4
-    HW_PICKUP_PLACEMENT = 5
-    HW_PICKUP_SPAWNED = 6
 
 
 class CLIENT_COMMAND_SOURCES:
@@ -2959,8 +2973,7 @@ BATTLE_MODE_VEHICLE_TAGS = {
  'battle_royale',
  'clanWarsBattles',
  'fun_random',
- 'comp7',
- 'random_only'}
+ 'comp7'}
 BATTLE_MODE_VEH_TAGS_EXCEPT_FUN = BATTLE_MODE_VEHICLE_TAGS - {'fun_random'}
 
 @enum.unique
@@ -3086,7 +3099,7 @@ DEFAULT_HANGAR_SCENE = 'DEFAULT'
 BATTLE_ROYALE_SCENE = 'BATTLE_ROYALE'
 FESTIVAL_SCENE = 'FESTIVAL'
 COMP7_SCENE = 'COMP7'
-BOOTCAMP_SCENE = 'BOOTCAMP'
+BOOTCAMP = 'BOOTCAMP'
 VEHICLE_SELECTION_BLOCK_DELAY = 2
 
 class BootcampVersion(object):

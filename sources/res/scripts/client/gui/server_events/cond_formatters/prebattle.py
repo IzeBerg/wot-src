@@ -1,3 +1,4 @@
+import ArenaType
 from constants import ARENA_BONUS_TYPE
 from gui.Scaleform.locale.QUESTS import QUESTS
 from gui.Scaleform.locale.RES_ICONS import RES_ICONS
@@ -54,8 +55,7 @@ class _BattleBonusTypeFormatter(ConditionFormatter):
             data = formatters.packMissionBonusTypeElements(bonusTypes)
             iconsList = ('').join([ iconData.icon for iconData in data ])
             if len(bonusTypes) == 1 and findFirst(None, bonusTypes) in (
-             ARENA_BONUS_TYPE.REGULAR, ARENA_BONUS_TYPE.RANKED, ARENA_BONUS_TYPE.COMP7,
-             ARENA_BONUS_TYPE.EVENT_BATTLES, ARENA_BONUS_TYPE.EVENT_BATTLES_2):
+             ARENA_BONUS_TYPE.REGULAR, ARENA_BONUS_TYPE.RANKED, ARENA_BONUS_TYPE.COMP7):
                 label = text_styles.main(data[0].iconLabel)
             else:
                 label = text_styles.main(labelKey)
@@ -126,7 +126,11 @@ class _BattleMapFormatter(ConditionFormatter):
         result = []
         if not event.isGuiDisabled():
             mapsLabels = set()
-            for atID in condition.getMaps():
+            maps = condition.getMaps()
+            if event.hasBonusType(ARENA_BONUS_TYPE.MAPS_TRAINING):
+                maps = [ arenaTypeID for arenaTypeID in maps if arenaTypeID in ArenaType.g_cache and ArenaType.g_cache[arenaTypeID].gameplayName == 'maps_training'
+                       ]
+            for atID in maps:
                 iconData = formatters.packMissionkMapElement(atID)
                 if iconData is not None:
                     mapsLabels.add(iconData.iconLabel)

@@ -125,12 +125,6 @@ package net.wg.data.constants.generated
       
       public static const BATTLE_HINT:String = "battleHint";
       
-      public static const BATTLE_BUFF_HINT:String = "battleBuffHint";
-      
-      public static const BATTLE_PICKUP_HINT:String = "battlePickupHint";
-      
-      public static const BATTLE_BASE_HINT:String = "battleBaseHint";
-      
       public static const EVENT_POINT_COUNTER:String = "eventPointCounter";
       
       public static const EVENT_TIMER:String = "eventTimer";
@@ -140,8 +134,6 @@ package net.wg.data.constants.generated
       public static const EVENT_DESTROY_TIMERS_PANEL:String = "eventDestroyTimersPanel";
       
       public static const EVENT_BUFFS_PANEL:String = "eventBuffsPanel";
-      
-      public static const EVENT_BASE_PANEL:String = "eventBasePanel";
       
       public static const EVENT_OBJECTIVES:String = "eventObjectives";
       

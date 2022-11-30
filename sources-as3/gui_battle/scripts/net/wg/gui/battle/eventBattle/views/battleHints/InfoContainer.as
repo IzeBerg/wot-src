@@ -49,11 +49,6 @@ package net.wg.gui.battle.eventBattle.views.battleHints
       
       public final function dispose() : void
       {
-         this.onDispose();
-      }
-      
-      protected function onDispose() : void
-      {
          this._disposed = true;
          this.txtMessage.dispose();
          this.txtMessage = null;

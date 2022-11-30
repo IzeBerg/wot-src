@@ -133,7 +133,7 @@ package net.wg.gui.battle.views.damagePanel.components.modules
       override protected function draw() : void
       {
          super.draw();
-         if(isInvalid(IS_REPAIRING_INVALID_MASK | InvalidationType.STATE))
+         if(isInvalid(IS_REPAIRING_INVALID_MASK))
          {
             if(!this._isRepairing && (state == BATTLE_ITEM_STATES.REPAIRED || state == BATTLE_ITEM_STATES.REPAIRED_FULL))
             {

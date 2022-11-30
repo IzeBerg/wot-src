@@ -149,6 +149,11 @@ msgstr "the user does not exist."
 msgid "chat_error/WRONG_ARGS"
 msgstr "invalid parameter."
 
+msgid "client/COMP7/disableVOIP"
+msgstr ""
+"Voice chat disabled. To communicate with your Platoon members, enable voice "
+"chat (%(keyName)s)."
+
 msgid "client/dynSquad/created/allies"
 msgstr "Your allies created Platoon %(squadNum)s."
 
@@ -1241,8 +1246,23 @@ msgstr "Battle Pass Points removed"
 msgid "platformCurrencyMsg/debited/brcoin"
 msgstr "Steel Seals removed"
 
+msgid "platformCurrencyMsg/debited/equip_coin"
+msgstr "Components removed"
+
 msgid "platformCurrencyMsg/debited/freeXP"
 msgstr "Free Experience deducted"
+
+msgid "platformCurrencyMsg/debited/ny_amber"
+msgstr "Warm Amber removed"
+
+msgid "platformCurrencyMsg/debited/ny_crystal"
+msgstr "Rock Crystal removed"
+
+msgid "platformCurrencyMsg/debited/ny_emerald"
+msgstr "Pure Emerald removed"
+
+msgid "platformCurrencyMsg/debited/ny_iron"
+msgstr "Meteoric Iron removed"
 
 msgid "platformCurrencyMsg/debited/sacoin"
 msgstr "Tokens for years of service removed"
@@ -1253,8 +1273,23 @@ msgstr "Battle Pass Points added"
 msgid "platformCurrencyMsg/received/brcoin"
 msgstr "Steel Seals added"
 
+msgid "platformCurrencyMsg/received/equip_coin"
+msgstr "Components added"
+
 msgid "platformCurrencyMsg/received/freeXP"
 msgstr "Free Experience received"
+
+msgid "platformCurrencyMsg/received/ny_amber"
+msgstr "Warm Amber added"
+
+msgid "platformCurrencyMsg/received/ny_crystal"
+msgstr "Rock Crystal added"
+
+msgid "platformCurrencyMsg/received/ny_emerald"
+msgstr "Pure Emerald added"
+
+msgid "platformCurrencyMsg/received/ny_iron"
+msgstr "Meteoric Iron added"
 
 msgid "platformCurrencyMsg/received/sacoin"
 msgstr "Tokens for years of service added"
@@ -1883,6 +1918,9 @@ msgstr "Battle Ended"
 msgid "serviceChannelMessages/battleResults/epicAbilityPoints"
 msgstr "Combat Reserve Points"
 
+msgid "serviceChannelMessages/battleResults/equipCoin"
+msgstr "Components received"
+
 msgid "serviceChannelMessages/battleResults/eventCoin"
 msgstr "Anniversary Coins received"
 
@@ -1963,6 +2001,9 @@ msgstr " (x%(count)s)"
 msgid "serviceChannelMessages/battleResults/quests/entitlements/multiplier"
 msgstr " (%(count)s)"
 
+msgid "serviceChannelMessages/battleResults/quests/equipCoin"
+msgstr "Components added"
+
 msgid "serviceChannelMessages/battleResults/quests/eventCoin"
 msgstr "Anniversary Coins added"
 
@@ -1994,8 +2035,11 @@ msgid ""
 "serviceChannelMessages/battleResults/quests/rankedBonusBattles/persistent"
 msgstr "%(count)s standard"
 
+msgid "serviceChannelMessages/battleResults/quests/variadicDiscount"
+msgstr "%(discount)s%% discount on Tier %(level)s vehicles received"
+
 msgid "serviceChannelMessages/battleResults/quests/vehicleSlots"
-msgstr "Slots added"
+msgstr "Garage slots added"
 
 msgid "serviceChannelMessages/battleResults/rankedBonusBattles"
 msgstr "Bonus Battles added"
@@ -2254,6 +2298,9 @@ msgstr "Credits deducted"
 msgid "serviceChannelMessages/currencyUpdate/debited/crystal"
 msgstr "Bonds removed"
 
+msgid "serviceChannelMessages/currencyUpdate/debited/equipCoin"
+msgstr "Components removed"
+
 msgid "serviceChannelMessages/currencyUpdate/debited/eventCoin"
 msgstr "Anniversary Coins removed"
 
@@ -2277,6 +2324,9 @@ msgstr "Credits earned"
 
 msgid "serviceChannelMessages/currencyUpdate/received/crystal"
 msgstr "Bonds received"
+
+msgid "serviceChannelMessages/currencyUpdate/received/equipCoin"
+msgstr "Components received"
 
 msgid "serviceChannelMessages/currencyUpdate/received/eventCoin"
 msgstr "Anniversary Coins received"
@@ -2525,11 +2575,11 @@ msgstr ""
 "%(defResCount)s units of Industrial Resource added to the Command Center "
 "storage."
 
-msgid "serviceChannelMessages/funRandom/startEvent/button"
+msgid "serviceChannelMessages/funRandom/newSubModesButton"
 msgstr "Go to Event"
 
-msgid "serviceChannelMessages/goToEventButton"
-msgstr "To Event"
+msgid "serviceChannelMessages/funRandom/progressionStageButton"
+msgstr "To Progression"
 
 msgid "serviceChannelMessages/goldReceivedAsGift"
 msgstr "You have been granted %(gold)s gold."
@@ -2688,6 +2738,12 @@ msgstr "Added"
 msgid "serviceChannelMessages/invoiceReceived/entitlementsDebited"
 msgstr "Removed"
 
+msgid "serviceChannelMessages/invoiceReceived/equipCoinAccrued"
+msgstr "Components added"
+
+msgid "serviceChannelMessages/invoiceReceived/equipCoinDebited"
+msgstr "Components removed"
+
 msgid "serviceChannelMessages/invoiceReceived/equipment"
 msgstr "Consumables"
 
@@ -2741,6 +2797,12 @@ msgstr "Blueprint fragments of %(nationName)s vehicles added"
 
 msgid "serviceChannelMessages/invoiceReceived/nationalBlueprintsDebited"
 msgstr "Blueprint fragments of %(nationName)s vehicles removed"
+
+msgid "serviceChannelMessages/invoiceReceived/nyToysAccruedInvoiceReceived"
+msgstr "Decorations added: "
+
+msgid "serviceChannelMessages/invoiceReceived/nyToysDebitedInvoiceReceived"
+msgstr "Decorations removed: "
 
 msgid "serviceChannelMessages/invoiceReceived/pieces"
 msgstr "item(s)"
@@ -2799,6 +2861,9 @@ msgstr "Undistributed Free Experience removed from crew members"
 msgid "serviceChannelMessages/invoiceReceived/tankmenToRemove"
 msgstr "Dismissed"
 
+msgid "serviceChannelMessages/invoiceReceived/toyTypeWrapper"
+msgstr "%(name)s (x%(count)s)"
+
 msgid "serviceChannelMessages/invoiceReceived/vehicleBlueprintsAccrued"
 msgstr "Blueprint fragments of %(vehicleName)s added"
 
@@ -2820,7 +2885,7 @@ msgstr ""
 "item(s)."
 
 msgid "serviceChannelMessages/lootBoxes/button"
-msgstr "To Boxes"
+msgstr "Claim"
 
 msgid "serviceChannelMessages/lootBoxes/footer"
 msgstr "Click the button to view the content."
@@ -2831,11 +2896,28 @@ msgstr "You received a parcel:"
 msgid "serviceChannelMessages/lootBoxes/item/name"
 msgstr "%(name)s %(colorTagOpen)sx%(count)s%(colorTagClose)s"
 
+msgid "serviceChannelMessages/lootBoxesAutoOpen/boxes"
+msgstr ""
+"We opened all of your boxes and added the rewards for Holiday Ops 2023."
+
+msgid "serviceChannelMessages/lootBoxesAutoOpen/boxesAndCoins"
+msgstr ""
+"We opened all of your boxes, used your Terminal Tokens, and added the "
+"rewards for Holiday Ops 2023."
+
+msgid "serviceChannelMessages/lootBoxesAutoOpen/boxesCounter"
+msgstr "Boxes opened: x%(count)s"
+
 msgid "serviceChannelMessages/lootBoxesAutoOpen/button"
 msgstr "View"
 
-msgid "serviceChannelMessages/lootBoxesAutoOpen/counter"
-msgstr "x%(count)s"
+msgid "serviceChannelMessages/lootBoxesAutoOpen/coins"
+msgstr ""
+"We used all of your Terminal Tokens and added the rewards for Holiday Ops "
+"2023."
+
+msgid "serviceChannelMessages/lootBoxesAutoOpen/coinsCounter"
+msgstr "Tokens used: x%(count)s"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/event/boxes"
 msgstr "Gates activated: %(boxes)s"
@@ -2856,9 +2938,6 @@ msgstr "We activated all your Gates and added their contents to your account:"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/header"
 msgstr "Rewards Received"
-
-msgid "serviceChannelMessages/lootBoxesAutoOpen/text"
-msgstr "We opened all your boxes and added the rewards for the Holiday Ops"
 
 msgid "serviceChannelMessages/lunarBoxesAutoOpen/body"
 msgstr "We opened all Lunar New Year Blessings Envelopes for you."
@@ -2920,6 +2999,21 @@ msgstr ""
 msgid "serviceChannelMessages/multiplier"
 msgstr " (x%(count)s)"
 
+msgid "serviceChannelMessages/newYear/buyToy/header"
+msgstr "Purchased:"
+
+msgid "serviceChannelMessages/newYear/collectingResources/button"
+msgstr "To Resources"
+
+msgid "serviceChannelMessages/newYear/dogReminder/button"
+msgstr "To Dog"
+
+msgid "serviceChannelMessages/newYear/dogReminder/header"
+msgstr "Treat Your Pet!"
+
+msgid "serviceChannelMessages/newYear/dogReminder/message"
+msgstr "Rent special items and help Chaffee feel cozy."
+
 msgid "serviceChannelMessages/notrecruitedTankman/button"
 msgstr "Go to Barracks"
 
@@ -2928,15 +3022,6 @@ msgstr "Crew members removed: %(count)s"
 
 msgid "serviceChannelMessages/offerTokenBonus/title"
 msgstr "Homefront Supplies"
-
-msgid "serviceChannelMessages/payerSeniority/coins/body"
-msgstr "You have some unused Tokens for years of service."
-
-msgid "serviceChannelMessages/payerSeniority/coins/button"
-msgstr "To Rewards"
-
-msgid "serviceChannelMessages/payerSeniority/coins/header"
-msgstr "A Well-Deserved Reward"
 
 msgid "serviceChannelMessages/personalReservesConverted"
 msgstr "All your Personal Reserves have been converted."
@@ -3289,24 +3374,6 @@ msgstr "The game server will be disconnected at %(date)s."
 msgid "serviceChannelMessages/serverRebootCancelled"
 msgstr "Server disconnection canceled, disconnection planned at %(date)s."
 
-msgid "serviceChannelMessages/shopSalesEvent/activePhaseFinished"
-msgstr ""
-"The active phase of Trading Caravan has ended. You can still purchase saved "
-"bundles until %(date)s"
-
-msgid "serviceChannelMessages/shopSalesEvent/activePhaseStarted"
-msgstr "Trading Caravan has started. Purchase the bundles you want!"
-
-msgid "serviceChannelMessages/shopSalesEvent/disabledBySwitch"
-msgstr "Trading Caravan is temporarily unavailable for technical reasons."
-
-msgid "serviceChannelMessages/shopSalesEvent/enabledBySwitch"
-msgstr ""
-"Trading Caravan is available again. We apologize for the inconvenience."
-
-msgid "serviceChannelMessages/shopSalesEvent/eventFinished"
-msgstr "Trading Caravan has ended."
-
 msgid "serviceChannelMessages/specialReward/intelligenceBlueprints"
 msgstr "Universal fragment (x%(fragmentsCount)s)"
 
@@ -3383,7 +3450,7 @@ msgstr ""
 " the Depot, in the Exterior section."
 
 msgid "serviceChannelMessages/sysMsg/converter/slotsReceived"
-msgstr "Slots added: %(slots)s"
+msgstr "Garage slots added: %(slots)s"
 
 msgid "serviceChannelMessages/sysMsg/converter/slotsWithdrawn"
 msgstr "Slots removed: %(slots)s"
@@ -3469,6 +3536,12 @@ msgstr "Winter Map: "
 msgid "serviceChannelMessages/sysMsg/customizations/sell"
 msgstr "%(itemType)s \"%(itemName)s\" x%(count)s. Received: %(money)s"
 
+msgid "serviceChannelMessages/sysMsg/deconstructing/head"
+msgstr "Equipment disassembled"
+
+msgid "serviceChannelMessages/sysMsg/deconstructingMult/itemsTemplate"
+msgstr "%(name)s (x%(count)s)"
+
 msgid "serviceChannelMessages/sysMsg/openCustomization/button"
 msgstr "To Exterior"
 
@@ -3479,6 +3552,9 @@ msgstr ""
 
 msgid "serviceChannelMessages/sysMsg/titles/customization"
 msgstr "Customization:"
+
+msgid "serviceChannelMessages/sysMsg/titles/deconstructing"
+msgstr "Equipment disassembled"
 
 msgid "serviceChannelMessages/sysMsg/titles/dismantling"
 msgstr "Demounted:"

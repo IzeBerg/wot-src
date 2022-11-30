@@ -135,6 +135,7 @@ class _BlurManager(object):
     def switchEnabled(self, blur, enabled):
         if self._isBlurInCache(blur) and blur is self._activeBlur():
             self._globalBlur.enable = enabled
+            self._globalBlur.fadeTime = blur.fadeTime
             self._handleLayersBlur(blur)
 
     def getBlurRadius(self):
@@ -157,7 +158,7 @@ class _BlurManager(object):
             for rectId, rect in activeBlur.rectangles.iteritems():
                 self._globalBlur.addRect(rectId, rect)
 
-            self._globalBlur.fadeTime = activeBlur.fadeTime
+            self._globalBlur.fadeTime = 0
             self._globalBlur.enable = activeBlur.enabled
             self._handleLayersBlur(activeBlur)
         else:

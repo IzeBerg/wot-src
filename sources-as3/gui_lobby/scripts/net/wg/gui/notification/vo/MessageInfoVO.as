@@ -5,6 +5,10 @@ package net.wg.gui.notification.vo
    
    public class MessageInfoVO extends DAAPIDataClass
    {
+      
+      private static const BUTTONS_LAYOUT_NAME:String = "buttonsLayout";
+      
+      private static const BUTTONS_STATE_NAME:String = "buttonsStates";
        
       
       public var type:String = "";
@@ -16,6 +20,8 @@ package net.wg.gui.notification.vo
       public var icon:String = "";
       
       public var defaultIcon:String = "";
+      
+      public var buttonsAlign:String = "left";
       
       public var savedID:Number = -1;
       
@@ -30,6 +36,8 @@ package net.wg.gui.notification.vo
       public var bgIconHeight:uint = 167;
       
       public var bgIconSizeAuto:Boolean = false;
+      
+      public var linkageData:Object = null;
       
       private var _buttonsLayout:Vector.<ButtonVO>;
       
@@ -59,13 +67,15 @@ package net.wg.gui.notification.vo
          }
          _loc1_ = null;
          this._buttonsLayout = null;
+         App.utils.data.cleanupDynamicObject(this.linkageData);
+         this.linkageData = null;
          super.onDispose();
       }
       
       override protected function onDataWrite(param1:String, param2:Object) : Boolean
       {
          var _loc3_:Object = null;
-         if(param1 == "buttonsLayout")
+         if(param1 == BUTTONS_LAYOUT_NAME)
          {
             for each(_loc3_ in param2)
             {
@@ -73,7 +83,7 @@ package net.wg.gui.notification.vo
             }
             return false;
          }
-         if(param1 == "buttonsStates")
+         if(param1 == BUTTONS_STATE_NAME)
          {
             this._buttonsStates = param2;
             return false;
@@ -98,14 +108,15 @@ package net.wg.gui.notification.vo
       
       public function get areButtonsVisible() : Boolean
       {
-         var _loc1_:int = 0;
-         while(_loc1_ < this._buttonsLayout.length)
+         var _loc1_:int = this._buttonsLayout.length;
+         var _loc2_:int = 0;
+         while(_loc2_ < _loc1_)
          {
-            if(this.isButtonVisible(this._buttonsLayout[_loc1_].type))
+            if(this.isButtonVisible(this._buttonsLayout[_loc2_].type))
             {
                return true;
             }
-            _loc1_++;
+            _loc2_++;
          }
          return false;
       }

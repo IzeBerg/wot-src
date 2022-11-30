@@ -968,6 +968,11 @@ class _VisualScriptItem(_TriggerItem):
 
 class _PoiEquipmentItemVS(_VisualScriptItem):
 
+    def canActivate(self, entityName=None, avatar=None):
+        if not self._getComponent():
+            return (False, self._getErrorMsg())
+        return super(_PoiEquipmentItemVS, self).canActivate(entityName, avatar)
+
     def _getErrorMsg(self):
         if self._stage in (EQUIPMENT_STAGES.UNAVAILABLE, EQUIPMENT_STAGES.NOT_RUNNING, EQUIPMENT_STAGES.EXHAUSTED):
             return PoiUnavailableError(self._descriptor.userString)

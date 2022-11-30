@@ -865,15 +865,19 @@ class INGAME_GUI(object):
     REWARDWINDOW_TWITCH35_MAINREWARD_2 = '#ingame_gui:rewardWindow/twitch35/mainReward_2'
     REWARDWINDOW_TWITCH35_MAINREWARD_3 = '#ingame_gui:rewardWindow/twitch35/mainReward_3'
     REWARDWINDOW_TWITCH35_MAINREWARD_4 = '#ingame_gui:rewardWindow/twitch35/mainReward_4'
+    REWARDWINDOW_TWITCH36_HEADERTEXT = '#ingame_gui:rewardWindow/twitch36/headerText'
+    REWARDWINDOW_TWITCH36_DESCTEXT = '#ingame_gui:rewardWindow/twitch36/descText'
+    REWARDWINDOW_TWITCH36_MAINREWARD_1 = '#ingame_gui:rewardWindow/twitch36/mainReward_1'
+    REWARDWINDOW_TWITCH36_MAINREWARD_2 = '#ingame_gui:rewardWindow/twitch36/mainReward_2'
+    REWARDWINDOW_TWITCH36_MAINREWARD_3 = '#ingame_gui:rewardWindow/twitch36/mainReward_3'
+    REWARDWINDOW_TWITCH36_MAINREWARD_4 = '#ingame_gui:rewardWindow/twitch36/mainReward_4'
     REWARDWINDOW_LOOTBOX_WINHEADERTEXT = '#ingame_gui:rewardWindow/lootbox/winHeaderText'
     REWARDWINDOW_LOOTBOX_HEADERTEXT = '#ingame_gui:rewardWindow/lootbox/headerText'
     REWARDWINDOW_LOOTBOX_DESCTEXT = '#ingame_gui:rewardWindow/lootbox/descText'
-    REWARDWINDOW_LOOTBOX_ISFREEDESCTEXT = '#ingame_gui:rewardWindow/lootbox/isFreeDescText'
     REWARDWINDOW_LOOTBOX_BTNLABEL = '#ingame_gui:rewardWindow/lootbox/btnLabel'
     BATTLEPROGRESS_HINT_NOBINDINGKEY = '#ingame_gui:battleProgress/hint/noBindingKey'
     HELPSCREEN_HINT_PRESS = '#ingame_gui:helpScreen/hint/press'
     HELPSCREEN_HINT_DESCRIPTION = '#ingame_gui:helpScreen/hint/description'
-    HELPSCREEN_HINT_MODEDESCRIPTION = '#ingame_gui:helpScreen/hint/modeDescription'
     COMMANDERCAM_HINT_DESCRIPTION = '#ingame_gui:commanderCam/hint/description'
     BATTLECOMMUNICATION_HINT_PRESS = '#ingame_gui:battleCommunication/hint/press'
     BATTLECOMMUNICATION_HINT_DESCRIPTION = '#ingame_gui:battleCommunication/hint/description'
@@ -1135,6 +1139,7 @@ class INGAME_GUI(object):
      REWARDWINDOW_TWITCH33_HEADERTEXT,
      REWARDWINDOW_TWITCH34_HEADERTEXT,
      REWARDWINDOW_TWITCH35_HEADERTEXT,
+     REWARDWINDOW_TWITCH36_HEADERTEXT,
      REWARDWINDOW_LOOTBOX_HEADERTEXT,
      REWARDWINDOW_ANNIVERSARY_GA_HEADERTEXT,
      REWARDWINDOW_PIGGYBANK_HEADERTEXT,
@@ -1263,6 +1268,7 @@ class INGAME_GUI(object):
      REWARDWINDOW_TWITCH33_DESCTEXT,
      REWARDWINDOW_TWITCH34_DESCTEXT,
      REWARDWINDOW_TWITCH35_DESCTEXT,
+     REWARDWINDOW_TWITCH36_DESCTEXT,
      REWARDWINDOW_LOOTBOX_DESCTEXT,
      REWARDWINDOW_ANNIVERSARY_GA_DESCTEXT,
      REWARDWINDOW_PIGGYBANK_DESCTEXT,

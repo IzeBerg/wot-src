@@ -108,7 +108,7 @@ class BattlePassViewsHolderComponent(InjectComponentAdaptor, MissionsBattlePassV
         pass
 
     def _onPopulate(self):
-        self.updateState()
+        pass
 
     def _populate(self):
         super(BattlePassViewsHolderComponent, self)._populate()

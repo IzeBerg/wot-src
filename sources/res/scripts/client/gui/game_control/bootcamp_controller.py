@@ -1,7 +1,7 @@
 from collections import namedtuple
 from functools import partial
 import AccountCommands, BigWorld
-from constants import QUEUE_TYPE, BOOTCAMP_SCENE
+from constants import QUEUE_TYPE, BOOTCAMP
 from wg_async import wg_async, wg_await
 from account_helpers.AccountSettings import AccountSettings, BOOTCAMP_VEHICLE
 from account_helpers import isLongDisconnectedFromCenter
@@ -14,7 +14,7 @@ from gui.impl.lobby.bootcamp.bootcamp_exit_view import BootcampExitWindow
 from gui.prb_control.prb_getters import getQueueType
 from helpers import dependency
 from skeletons.gui.app_loader import IAppLoader
-from skeletons.gui.game_control import IBootcampController, IDemoAccCompletionController
+from skeletons.gui.game_control import IBootcampController, IDemoAccCompletionController, IHangarSpaceSwitchController
 from skeletons.gui.battle_session import IBattleSessionProvider
 from skeletons.gui.lobby_context import ILobbyContext
 from gui.Scaleform.Waiting import Waiting
@@ -31,7 +31,6 @@ from gui import DialogsInterface, makeHtmlString
 from debug_utils import LOG_ERROR
 from gui.shared.event_dispatcher import showResSimpleDialog
 from skeletons.gui.shared import IItemsCache
-from skeletons.gui.game_control import IHangarSpaceSwitchController
 BootcampDialogConstants = namedtuple('BootcampDialogConstants', 'dialogType dialogKey focusedID needAwarding premiumType')
 _GREEN = 'green'
 _YELLOW = 'yellow'
@@ -44,7 +43,7 @@ class BootcampController(IBootcampController):
     demoAccController = dependency.descriptor(IDemoAccCompletionController)
     itemsCache = dependency.descriptor(IItemsCache)
     appLoader = dependency.descriptor(IAppLoader)
-    __spaceSwitchController = dependency.descriptor(IHangarSpaceSwitchController)
+    spaceSwitchController = dependency.descriptor(IHangarSpaceSwitchController)
 
     def __init__(self):
         super(BootcampController, self).__init__()
@@ -58,7 +57,7 @@ class BootcampController(IBootcampController):
         g_bootcampEvents.onBootcampFinished += self.__onExitBootcamp
         g_playerEvents.onBootcampStartChoice += self.__onBootcampStartChoice
         g_bootcampEvents.onGameplayChoice += self.__onGameplayChoice
-        self.__spaceSwitchController.onCheckSceneChange += self.__onCheckSceneChange
+        self.spaceSwitchController.onCheckSceneChange += self.__onCheckSceneChange
 
     @property
     def replayCtrl(self):
@@ -124,7 +123,7 @@ class BootcampController(IBootcampController):
         g_bootcampEvents.onBootcampFinished -= self.__onExitBootcamp
         g_playerEvents.onBootcampStartChoice -= self.__onBootcampStartChoice
         g_bootcampEvents.onGameplayChoice -= self.__onGameplayChoice
-        self.__spaceSwitchController.onCheckSceneChange -= self.__onCheckSceneChange
+        self.spaceSwitchController.onCheckSceneChange -= self.__onCheckSceneChange
 
     def onLobbyInited(self, event):
         if self.__automaticStart:
@@ -187,6 +186,10 @@ class BootcampController(IBootcampController):
         if g_bootcamp.isLastLesson(currentLesson):
             g_bootcampEvents.onGarageLessonFinished(currentLesson)
         g_bootcampEvents.onRequestBootcampFinish()
+
+    def __onCheckSceneChange(self):
+        if self.__inBootcamp:
+            self.spaceSwitchController.hangarSpaceUpdate(BOOTCAMP)
 
     def __onEnterBootcamp(self):
         self.__inBootcamp = True
@@ -273,7 +276,3 @@ class BootcampController(IBootcampController):
         app = self.appLoader.getApp()
         container = app.containerManager.getContainer(WindowLayer.TOP_WINDOW)
         return container.getView(criteria={POP_UP_CRITERIA.VIEW_ALIAS: VIEW_ALIAS.LOBBY_MENU}) is not None
-
-    def __onCheckSceneChange(self):
-        if self.isInBootcamp():
-            self.__spaceSwitchController.hangarSpaceUpdate(BOOTCAMP_SCENE)

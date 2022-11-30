@@ -281,6 +281,10 @@ package net.wg.gui.battle.epicRandom.views
          {
             this.playerMessageListPositionUpdate();
          }
+         if(param1 == BATTLE_VIEW_ALIASES.CONSUMABLES_PANEL && param2 && prebattleAmmunitionPanelShown)
+         {
+            this.updateConsumablePanel(false);
+         }
       }
       
       override protected function getFullStatsTabQuestProgress() : IQuestProgressView

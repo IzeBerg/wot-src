@@ -4,6 +4,7 @@ if typing.TYPE_CHECKING:
     from collections import OrderedDict
     from gui.shared.gui_items.dossier.achievements.abstract import RegularAchievement
     from gui.shared.gui_items.gui_item_economics import ItemPrice
+    from gui.shared.gui_items.loot_box import LootBox
     from gui.shared.money import Money, DynamicMoney
     from gui.shared.utils.requesters import InventoryRequester
     from gui.veh_post_progression.models.ext_money import ExtendedMoney
@@ -125,6 +126,9 @@ class IInventoryRequester(IRequester):
     def getIventoryVehiclesCDs(self):
         raise NotImplementedError
 
+    def getInvIDsIterator(self):
+        raise NotImplementedError
+
 
 class IStatsRequester(IRequester):
 
@@ -157,6 +161,10 @@ class IStatsRequester(IRequester):
         raise NotImplementedError
 
     @property
+    def equipCoin(self):
+        raise NotImplementedError
+
+    @property
     def bpcoin(self):
         raise NotImplementedError
 
@@ -182,6 +190,10 @@ class IStatsRequester(IRequester):
 
     @property
     def actualBpcoin(self):
+        raise NotImplementedError
+
+    @property
+    def actualEquipCoin(self):
         raise NotImplementedError
 
     @property
@@ -464,6 +476,9 @@ class IShopCommonStats(object):
 
     @property
     def paidDeluxeRemovalCost(self):
+        raise NotImplementedError
+
+    def getPaidModernizedRemovalCost(self, level):
         raise NotImplementedError
 
     @property
@@ -953,10 +968,16 @@ class ITokensRequester(IRequester):
     def getAttemptsAfterGuaranteedRewards(self, box):
         raise NotImplementedError
 
+    def getLootBoxesStats(self):
+        raise NotImplementedError
+
     def getLootBoxes(self):
         raise NotImplementedError
 
     def getLootBoxByTokenID(self, tokenID):
+        raise NotImplementedError
+
+    def getNyCoins(self):
         raise NotImplementedError
 
     def getLootBoxByID(self, boxID):

@@ -110,7 +110,7 @@ def getBlueprintsExchangeUrl():
 
 
 def getPlayerSeniorityAwardsUrl():
-    return _getUrl('psaProducts')
+    return _getUrl('seniorityAwardsProducts')
 
 
 def getSplitPageUrl(params):
@@ -134,14 +134,6 @@ def getIntegratedAuctionUrl():
     return _getUrl('integratedAuction')
 
 
-def getEventLootBoxesUrl():
-    return _getUrl('eventLootboxes')
-
-
 def getClientControlledCloseCtx():
     return {'browserParams': makeBrowserParams(isCloseBtnVisible=True), 
        'forcedSkipEscape': True}
-
-
-def getHalloween2022ShopUrl():
-    return _getUrl('hw22Shop')

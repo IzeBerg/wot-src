@@ -1,3 +1,4 @@
+import typing
 from adisp import adisp_process
 from constants import QUEUE_TYPE
 from debug_utils import LOG_ERROR
@@ -8,6 +9,10 @@ from gui.prb_control.entities.base.scheduler import BaseScheduler
 from gui.prb_control.items import SelectResult, ValidationResult
 from gui.prb_control.settings import FUNCTIONAL_FLAG, CTRL_ENTITY_TYPE
 from gui.shared.utils.listeners_collection import IListenersCollection
+if typing.TYPE_CHECKING:
+    from gui.prb_control.entities.base.ctx import PrbAction, PrbCtrlRequestCtx
+    from gui.prb_control.entities.base.cooldown import PrbCooldownManager
+    from gui.Scaleform.daapi.view.dialogs import IDialogMeta
 
 class PrbFunctionalFlags(object):
     __slots__ = ('_entityFlags', '_modeFlags')
@@ -50,6 +55,9 @@ class BasePrbEntryPoint(PrbFunctionalFlags):
     def select(self, ctx, callback=None):
         pass
 
+    def setExtData(self, extData):
+        pass
+
     def setAccountsToInvite(self, accountsToInvite):
         pass
 
@@ -58,6 +66,7 @@ class BasePrbEntryPoint(PrbFunctionalFlags):
 
     def configure(self, action):
         self.setAccountsToInvite(action.accountsToInvite)
+        self.setExtData(action.extData)
 
 
 class BasePrbEntity(IActionsValidator, PrbFunctionalFlags):
