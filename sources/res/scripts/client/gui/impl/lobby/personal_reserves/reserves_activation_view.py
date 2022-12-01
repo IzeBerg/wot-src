@@ -29,6 +29,8 @@ from skeletons.gui.goodies import IGoodiesCache
 from skeletons.gui.impl import IGuiLoader
 from skeletons.gui.shared import IItemsCache
 from skeletons.gui.web import IWebController
+from uilogging.personal_reserves.logging_constants import PersonalReservesLogKeys
+from uilogging.personal_reserves.loggers import PersonalReservesMetricsLogger
 _logger = logging.getLogger(__name__)
 if TYPE_CHECKING:
     from typing import Dict, List, Optional
@@ -39,6 +41,7 @@ if TYPE_CHECKING:
     from gui.impl.common.personal_reserves.personal_reserves_shared_model_utils import BoosterModelData
 
 class ReservesActivationView(ReservesViewMonitor):
+    __slots__ = ('__destroyViewObject', '_uiLogger')
     _goodiesCache = dependency.descriptor(IGoodiesCache)
     _boosters = dependency.descriptor(IBoostersController)
     _itemsCache = dependency.descriptor(IItemsCache)
@@ -49,6 +52,7 @@ class ReservesActivationView(ReservesViewMonitor):
     def __init__(self, layoutID=R.views.lobby.personal_reserves.ReservesActivationView()):
         settings = ViewSettings(layoutID, flags=ViewFlags.LOBBY_TOP_SUB_VIEW, model=ReservesActivationViewModel())
         super(ReservesActivationView, self).__init__(settings)
+        self._uiLogger = PersonalReservesMetricsLogger(parent=PersonalReservesLogKeys.HANGAR, item=PersonalReservesLogKeys.ACTIVATION_WINDOW)
 
     @property
     def viewModel(self):
@@ -56,6 +60,7 @@ class ReservesActivationView(ReservesViewMonitor):
 
     def _initialize(self, *args, **kwargs):
         super(ReservesActivationView, self)._initialize(*args, **kwargs)
+        self._uiLogger.onViewInitialize()
         self.initListeners()
 
     def _onLoaded(self, *args, **kwargs):
@@ -87,6 +92,7 @@ class ReservesActivationView(ReservesViewMonitor):
         ReservesActivationView._boosters.onBoosterChangeNotify -= self.onBoosterChangeNotify
         g_playerEvents.onClientUpdated -= self.onItemsCacheChanged
         self.__finalizeSounds()
+        self._uiLogger.onViewFinalize()
         super(ReservesActivationView, self)._finalize()
 
     def getClanBoostersByType(self):
@@ -135,7 +141,7 @@ class ReservesActivationView(ReservesViewMonitor):
         self.fillViewModel()
 
     def onInformationClicked(self, *args, **kwargs):
-        showPersonalReservesIntro(callbackOnClose=showBoostersActivation)
+        showPersonalReservesIntro(callbackOnClose=showBoostersActivation, uiLoggingKey=PersonalReservesLogKeys.ACTIVATION_WINDOW)
 
     def onClose(self, *args, **kwargs):
         showHangar()

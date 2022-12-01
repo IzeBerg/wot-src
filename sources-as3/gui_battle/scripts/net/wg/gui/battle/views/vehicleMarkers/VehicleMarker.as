@@ -31,7 +31,7 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private static const HEALTH_LBL:String = "Hp";
       
-      protected static const HEALTH_BAR:String = "HpIndicator";
+      private static const HEALTH_BAR:String = "HpIndicator";
       
       private static const P_NAME_LBL:String = "PlayerName";
       
@@ -39,11 +39,11 @@ package net.wg.gui.battle.views.vehicleMarkers
       
       private static const DAMAGE_PANEL:String = "Damage";
       
-      protected static const MARKER:String = "marker";
+      private static const MARKER:String = "marker";
       
-      protected static const ALT:String = "Alt";
+      private static const ALT:String = "Alt";
       
-      protected static const BASE:String = "Base";
+      private static const BASE:String = "Base";
       
       private static const DEAD:String = "Dead";
       
@@ -768,12 +768,6 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.hitLabel.playShowTween();
       }
       
-      protected function updateMarkerSettings() : void
-      {
-         this.layoutParts(this.updatePartsVisibility());
-         this.redrawParts();
-      }
-      
       private function layoutParts(param1:Vector.<Boolean>) : void
       {
          var _loc4_:VehicleMarkerPart = null;
@@ -840,6 +834,12 @@ package net.wg.gui.battle.views.vehicleMarkers
       {
          this._markerSchemeName = (!!this.vehicleDestroyed ? VM_DEAD_PREFIX : VM_PREFIX) + this._entityName;
          this._stunSchemeName = VM_STUN_PREFIX + this._entityName + VM_STUN_POSTFIX;
+      }
+      
+      private function updateMarkerSettings() : void
+      {
+         this.layoutParts(this.updatePartsVisibility());
+         this.redrawParts();
       }
       
       private function updateMarkerColor() : void
@@ -1121,11 +1121,6 @@ package net.wg.gui.battle.views.vehicleMarkers
          return this._markerSchemeName.indexOf(OBSERVER_SCHEME_NAME) != -1;
       }
       
-      protected function get markerColor() : String
-      {
-         return this._markerColor;
-      }
-      
       private function onShowExInfoHandler(param1:VehicleMarkersManagerEvent) : void
       {
          this._extInfoShow = this.vmManager.showExInfo;
@@ -1138,7 +1133,7 @@ package net.wg.gui.battle.views.vehicleMarkers
          this.updateMarkerSettings();
       }
       
-      protected function onUpdateColorsHandler(param1:VehicleMarkersManagerEvent) : void
+      private function onUpdateColorsHandler(param1:VehicleMarkersManagerEvent) : void
       {
          this.updateMarkerColor();
          this.setupSquadIcon();

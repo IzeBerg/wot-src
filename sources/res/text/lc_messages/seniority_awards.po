@@ -28,21 +28,6 @@ msgstr "SKIP ANIMATION"
 msgid "multiOpenView/title"
 msgstr "Congratulations!"
 
-msgid "notificationView/gotoRewardsBtn"
-msgstr "To Select Rewards"
-
-msgid "notificationView/subtitle/second"
-msgstr "Use your Tokens for years of service to select rewards!"
-
-msgid "notificationView/subtitle/timeout"
-msgstr "You have some unused Tokens for years of service."
-
-msgid "notificationView/timeout"
-msgstr "Tokens will be reset to zero in: %(timeout)s"
-
-msgid "notificationView/title"
-msgstr "Congratulations!"
-
 msgid "notifications/description"
 msgstr ""
 "Crates with a Well-Deserved Reward as a gift for years of service! Open the "
@@ -50,6 +35,33 @@ msgstr ""
 
 msgid "notifications/header"
 msgstr "A Well-Deserved Reward"
+
+msgid "notifications/quest/button"
+msgstr "Claim Rewards"
+
+msgid "notifications/quest/title"
+msgstr "Rewards for your years of service are awaiting you!"
+
+msgid "notifications/tokens/button"
+msgstr "To Store"
+
+msgid "notifications/tokens/timeLeft/days"
+msgstr "%(day)s d %(hour)s h"
+
+msgid "notifications/tokens/timeLeft/hours"
+msgstr "%(hour)s h %(min)s min"
+
+msgid "notifications/tokens/timeLeft/lessMin"
+msgstr "less than a minute"
+
+msgid "notifications/tokens/timeLeft/min"
+msgstr "%(min)s min"
+
+msgid "notifications/tokens/timer"
+msgstr "Tokens will be removed in %(timeLeft)s"
+
+msgid "notifications/tokens/title"
+msgstr "Exchange your Tokens for years of service for rewards!"
 
 msgid "openBoxView/autoOpenTooltip/body"
 msgstr ""
@@ -73,17 +85,17 @@ msgstr "A Well-Deserved Reward"
 msgid "openBoxView/openBoxesLabel"
 msgstr "Open {count} item(s)"
 
-msgid "rewardsScreen/moreRewards"
-msgstr "...and more"
-
 msgid "rewardsScreen/showGiftButtonLabel"
 msgstr "To Reward"
 
 msgid "rewardsView/applyBtn"
 msgstr "Acknowledged!"
 
+msgid "rewardsView/exchangeCoins"
+msgstr "Exchange your Tokens for rewards in the Store."
+
 msgid "rewardsView/gotoRewardsBtn"
-msgstr "To Rewards"
+msgstr "To Store"
 
 msgid "rewardsView/lootBox/descr"
 msgstr "Open and claim your reward!"
@@ -97,72 +109,120 @@ msgstr ""
 "the Well-Deserved\n"
 "Reward"
 
+msgid "rewardsView/moreRewardsBtn"
+msgstr "More Rewards!"
+
 msgid "rewardsView/nextBtn"
 msgstr "Next Reward (%(count)s)"
 
 msgid "rewardsView/openBtn"
 msgstr "Open"
 
-msgid "rewardsView/sacoin/body"
-msgstr ""
-"You have received Tokens for years of service that can be exchanged for "
-"valuable rewards."
-
-msgid "rewardsView/sacoin/title"
-msgstr "Tokens Received"
+msgid "rewardsView/sacoin/counter"
+msgstr "×%(count)s"
 
 msgid "rewardsView/subTitle/AT"
-msgstr "Reward for Active Participation in the Alpha Test"
+msgstr ""
+"REWARD FOR PARTICIPATION IN THE %(gradientStart)sALPHA TEST%(gradientEnd)s"
 
 msgid "rewardsView/subTitle/BT"
-msgstr "Reward for Active Participation in the Beta Test"
+msgstr ""
+"REWARD FOR PARTICIPATION IN THE %(gradientStart)sBETA TEST%(gradientEnd)s"
 
 msgid "rewardsView/subTitle/Y0"
-msgstr "Reward for Combat Service"
+msgstr "REWARD FOR COMBAT SERVICE"
 
 msgid "rewardsView/subTitle/Y1"
-msgstr "Reward for 1 Year of Service"
+msgstr "REWARD FOR %(gradientStart)s1 YEAR%(gradientEnd)s OF SERVICE"
 
 msgid "rewardsView/subTitle/Y10"
-msgstr "Reward for 10 Years of Service"
+msgstr "REWARD FOR %(gradientStart)s10 YEARS%(gradientEnd)s OF SERVICE"
+
+msgid "rewardsView/subTitle/Y10_BT"
+msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 10 YEARS OF SERVICE"
 
 msgid "rewardsView/subTitle/Y11"
-msgstr "Reward for 11 Years of Service"
+msgstr "REWARD FOR %(gradientStart)s11 YEARS%(gradientEnd)s OF SERVICE"
+
+msgid "rewardsView/subTitle/Y11_BT"
+msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 11 YEARS OF SERVICE"
+
+msgid "rewardsView/subTitle/Y12"
+msgstr "REWARD FOR %(gradientStart)s12 YEARS%(gradientEnd)s OF SERVICE"
+
+msgid "rewardsView/subTitle/Y12_BT"
+msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 12 YEARS OF SERVICE"
+
+msgid "rewardsView/subTitle/Y1_BT"
+msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 1 YEAR OF SERVICE"
 
 msgid "rewardsView/subTitle/Y2"
-msgstr "Reward for 2 Years of Service"
+msgstr "REWARD FOR %(gradientStart)s2 YEARS%(gradientEnd)s OF SERVICE"
+
+msgid "rewardsView/subTitle/Y2_BT"
+msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 2 YEARS OF SERVICE"
 
 msgid "rewardsView/subTitle/Y3"
-msgstr "Reward for 3 Years of Service"
+msgstr "REWARD FOR %(gradientStart)s3 YEARS%(gradientEnd)s OF SERVICE"
+
+msgid "rewardsView/subTitle/Y3_BT"
+msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 3 YEARS OF SERVICE"
 
 msgid "rewardsView/subTitle/Y4"
-msgstr "Reward for 4 Years of Service"
+msgstr "REWARD FOR %(gradientStart)s4 YEARS%(gradientEnd)s OF SERVICE"
+
+msgid "rewardsView/subTitle/Y4_BT"
+msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 4 YEARS OF SERVICE"
 
 msgid "rewardsView/subTitle/Y5"
-msgstr "Reward for 5 Years of Service"
+msgstr "REWARD FOR %(gradientStart)s5 YEARS%(gradientEnd)s OF SERVICE"
+
+msgid "rewardsView/subTitle/Y5_BT"
+msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 5 YEARS OF SERVICE"
 
 msgid "rewardsView/subTitle/Y6"
-msgstr "Reward for 6 Years of Service"
+msgstr "REWARD FOR %(gradientStart)s6 YEARS%(gradientEnd)s OF SERVICE"
+
+msgid "rewardsView/subTitle/Y6_BT"
+msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 6 YEARS OF SERVICE"
 
 msgid "rewardsView/subTitle/Y7"
-msgstr "Reward for 7 Years of Service"
+msgstr "REWARD FOR %(gradientStart)s7 YEARS%(gradientEnd)s OF SERVICE"
+
+msgid "rewardsView/subTitle/Y7_BT"
+msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 7 YEARS OF SERVICE"
 
 msgid "rewardsView/subTitle/Y8"
-msgstr "Reward for 8 Years of Service"
+msgstr "REWARD FOR %(gradientStart)s8 YEARS%(gradientEnd)s OF SERVICE"
+
+msgid "rewardsView/subTitle/Y8_BT"
+msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 8 YEARS OF SERVICE"
 
 msgid "rewardsView/subTitle/Y9"
-msgstr "Reward for 9 Years of Service"
+msgstr "REWARD FOR %(gradientStart)s9 YEARS%(gradientEnd)s OF SERVICE"
+
+msgid "rewardsView/subTitle/Y9_BT"
+msgstr "REWARD FOR PARTICIPATION IN THE BETA TEST AND 9 YEARS OF SERVICE"
 
 msgid "rewardsView/subTitle/otherRewards"
-msgstr "Also added:"
+msgstr "You also received:"
+
+msgid "rewardsView/textButton/back"
+msgstr "BACK"
+
+msgid "rewardsView/textButton/close"
+msgstr "CLOSE"
+
+msgid "rewardsView/textButton/goto"
+msgstr "TO VEHICLES"
 
 msgid "rewardsView/title"
-msgstr "Congratulations!"
+msgstr "CONGRATULATIONS!"
 
 msgid "specialItem/body"
 msgstr ""
-"Awarded for battle merit. Once the Store closes, all remaining Tokens will "
-"be reset to zero."
+"Awarded for battle merit. Once the event ends, all remaining Tokens will be "
+"removed."
 
 msgid "specialItem/header"
 msgstr "%(count)s Token(s) for years of service"

@@ -92,12 +92,13 @@ package net.wg.gui.login.EULA
       
       public function as_setEULAText(param1:String) : void
       {
+         var _loc4_:Number = NaN;
          var _loc5_:Number = NaN;
          var _loc2_:String = "Incorrect invoking as_setEULAText!" + "Method must be call once time only!";
          var _loc3_:IAssertable = App.utils.asserter;
          _loc3_.assertNotNull(this.textArea,"content.textArea in EULADlg" + Errors.CANT_NULL);
          _loc3_.assert(this.textArea.htmlText != param1,_loc2_);
-         var _loc4_:Number = height - this.textArea.height;
+         _loc4_ = height - this.textArea.height;
          this.textArea.htmlText = param1;
          if(this.isAutoResize())
          {

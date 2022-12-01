@@ -83,7 +83,6 @@ package net.wg.gui.components.battleDamagePanel
          this._detailsTopContainer = new Sprite();
          super();
          visible = false;
-         mouseChildren = mouseEnabled = false;
          this._detailsTopContainer.name = "detailsTopContainer";
          this._detailsBottomContainer.name = "detailsBottomContainer";
       }

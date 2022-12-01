@@ -14,7 +14,7 @@ msgid "abilities/actions/toReserves"
 msgstr "Manage Reserves"
 
 msgid "abilities/applyToType"
-msgstr "Apply to %(icon) %(vehicle)"
+msgstr "Apply to %(icon)s %(vehicle)s"
 
 msgid "abilities/noSelected/subTitle"
 msgstr "Activate them on the Manage Reserves screen."
@@ -66,7 +66,7 @@ msgid "categories/mobility"
 msgstr "Mobility"
 
 msgid "categories/reserves/config"
-msgstr "%(icon) %(vehicle) CONFIGURATION"
+msgstr "%(icon)s %(vehicle)s CONFIGURATION"
 
 msgid "categories/slotEffect/empty"
 msgstr ""
@@ -147,6 +147,62 @@ msgstr "Total:"
 msgid "dealPanel/tooltip/notEnough"
 msgstr "Insufficient funds to make the purchase"
 
+msgid "deconstructionDeviceView/available"
+msgstr "Available:"
+
+msgid "deconstructionDeviceView/btn/cancel"
+msgstr "Cancel"
+
+msgid "deconstructionDeviceView/btn/deconstruct"
+msgstr "Continue"
+
+msgid "deconstructionDeviceView/footer/fromStorage"
+msgstr "From the Depot:"
+
+msgid "deconstructionDeviceView/footer/fromVehicles"
+msgstr "From vehicles:"
+
+msgid "deconstructionDeviceView/footer/notEnoughMoney"
+msgstr ""
+"( %(whiteSpanish_Open)s%(coins)s%(whiteSpanish_Close)s %(red_Open)smore "
+"required to upgrade%(red_Close)s )"
+
+msgid "deconstructionDeviceView/footer/willReceive"
+msgstr "Will be received:"
+
+msgid "deconstructionDeviceView/header/activeVehicle"
+msgstr "ACTIVE VEHICLE"
+
+msgid "deconstructionDeviceView/header/inStorage"
+msgstr "IN THE DEPOT: %(par_Open)s%(value)s%(par_Close)s"
+
+msgid "deconstructionDeviceView/header/onVehicles"
+msgstr "ON VEHICLES: %(par_Open)s%(value)s%(par_Close)s"
+
+msgid "deconstructionDeviceView/subTitle/enoughMoney"
+msgstr ""
+"Select the equipment you want to disassemble into "
+"%(whiteSpanish_Open)scomponents%(whiteSpanish_Close)s %(icon)s. The received"
+" components can be used to upgrade Experimental Equipment."
+
+msgid "deconstructionDeviceView/subTitle/notEnoughMoney"
+msgstr ""
+"%(icon)s To get more components, disassemble unused Experimental Equipment."
+
+msgid "deconstructionDeviceView/title/enoughMoney"
+msgstr "WORKBENCH"
+
+msgid "deconstructionDeviceView/title/notEnoughMoney"
+msgstr ""
+"Not enough components to upgrade\n"
+"%(whiteSpanish_Open)s%(equipment)s%(whiteSpanish_Close)s."
+
+msgid "deconstructionDeviceView/tooltip/deconstruct/enoughMoney"
+msgstr "To continue, disassemble unused equipment into components."
+
+msgid "deconstructionDeviceView/tooltip/deconstruct/notEnoughMoney"
+msgstr "To continue, get the required number of components."
+
 msgid "dialogs/confirm/cancel/changeSlots"
 msgstr "Cancel Changes"
 
@@ -176,16 +232,16 @@ msgstr "Mount"
 
 msgid "dialogs/confirm/demount/item"
 msgstr ""
-"You can demount the equipment for %(price) to send it to the Depot, or "
-"destroy it."
+"You can demount the equipment for %(price)s to send it to the Depot, or you "
+"can destroy it."
 
 msgid "dialogs/confirm/demount/itemWithDemountKit"
 msgstr ""
-"You can demount the equipment for %(demountKit) or %(price) to send it to "
-"the Depot, or destroy it."
+"You can demount the equipment for %(demountKit)s or %(price)s to send it to "
+"the Depot, or you can destroy it."
 
 msgid "dialogs/confirm/demount/items"
-msgstr "You can demount the equipment to send it to the Depot, or destroy it."
+msgstr "You can demount the equipment to send it to the Depot."
 
 msgid "dialogs/confirm/doesNotWork"
 msgstr "WILL NOT WORK"
@@ -243,16 +299,16 @@ msgid "dialogs/confirm/title/changeSlots/optionalDevice"
 msgstr "Save changes to the equipment slots?"
 
 msgid "dialogs/confirm/title/item/modification"
-msgstr "Purchase the %(name) {type} ?"
+msgstr "Purchase the %(name)s {type}?"
 
 msgid "dialogs/confirm/title/item/payment"
-msgstr "Purchase and mount {type} %(name)?"
+msgstr "Purchase and mount the %(name)s {type}?"
 
 msgid "dialogs/confirm/title/item/setup"
-msgstr "Mount {type} %(name)?"
+msgstr "Mount the %(name)s {type}?"
 
 msgid "dialogs/confirm/title/itemForAllVehiclesByType/setup/"
-msgstr "Enable the %(name) {type} for all %(vehicle)?"
+msgstr "Enable the %(name)s {type} for all %(vehicle)s?"
 
 msgid "dialogs/confirm/title/items/modification"
 msgstr "Purchase {type}?"
@@ -264,7 +320,7 @@ msgid "dialogs/confirm/title/items/setup"
 msgstr "Mount {type}?"
 
 msgid "dialogs/confirm/title/itemsForAllVehiclesByType/setup/"
-msgstr "Enable {type} for all %(vehicle)?"
+msgstr "Enable {type} for all %(vehicle)s?"
 
 msgid "dialogs/confirm/vehicleType/AT-SPG"
 msgstr "tank destroyers"
@@ -282,7 +338,75 @@ msgid "dialogs/confirm/vehicleType/mediumTank"
 msgstr "medium tanks"
 
 msgid "dialogs/confirm/warning"
-msgstr "Attention! %(devices) not equipped. The directive %(doesNotWork)."
+msgstr "Attention! %(devices)s not equipped. The directive %(doesNotWork)s."
+
+msgid "dialogs/confirmActionsWithEquipmentDialog/alert/text"
+msgstr ""
+"Attention! After disassembling, you will have no Experimental Equipment!"
+
+msgid "dialogs/confirmActionsWithEquipmentDialog/button/cancel"
+msgstr "Cancel"
+
+msgid "dialogs/confirmActionsWithEquipmentDialog/button/deconstructFromSlots"
+msgstr "Disassemble"
+
+msgid ""
+"dialogs/confirmActionsWithEquipmentDialog/button/deconstructFromStorage"
+msgstr "Disassemble"
+
+msgid "dialogs/confirmActionsWithEquipmentDialog/content/deconstructFromSlots"
+msgstr "Total to receive:"
+
+msgid ""
+"dialogs/confirmActionsWithEquipmentDialog/content/deconstructFromStorage"
+msgstr "Will be received for 1 item:"
+
+msgid "dialogs/confirmActionsWithEquipmentDialog/title/deconstructFromSlots"
+msgstr ""
+"Disassemble\n"
+"%(name)s?"
+
+msgid "dialogs/confirmActionsWithEquipmentDialog/title/deconstructFromStorage"
+msgstr ""
+"Disassemble\n"
+"%(name)s?"
+
+msgid "dialogs/deconstructConfirm/button/cancel"
+msgstr "Cancel"
+
+msgid "dialogs/deconstructConfirm/button/deconstruct"
+msgstr "Disassemble"
+
+msgid "dialogs/deconstructConfirm/content/header/deconstruct"
+msgstr "Disassemble the following equipment into components?"
+
+msgid "dialogs/deconstructConfirm/content/header/upgrade"
+msgstr ""
+"Disassemble the following equipment and upgrade\n"
+"%(deviceName)s?"
+
+msgid "dialogs/deconstructConfirm/content/items/inventory"
+msgstr "Will be disassembled from the Depot: %(counter)s"
+
+msgid "dialogs/deconstructConfirm/content/items/vehicle"
+msgstr "Will be disassembled from the vehicles: %(counter)s"
+
+msgid "dialogs/deconstructConfirm/footer/additionalInf/upgrade"
+msgstr "Upon disassembling, you will receive: %(counter)s"
+
+msgid "dialogs/deconstructConfirm/footer/deconstruct"
+msgstr "Total to receive:"
+
+msgid "dialogs/deconstructConfirm/footer/upgrade"
+msgstr "Upgrade cost:"
+
+msgid "dialogs/deconstructConfirm/footer/warning/noEquipmentLeft"
+msgstr ""
+"Attention! After disassembling, you will have no Experimental Equipment!"
+
+msgid "dialogs/deconstructConfirm/footer/warning/vehicleDeconstruct"
+msgstr ""
+"Attention! Experimental Equipment from your vehicles will be disassembled."
 
 msgid "dialogs/exchangeToUpgrade/confirm"
 msgstr "Exchange"
@@ -291,22 +415,43 @@ msgid "dialogs/exchangeToUpgrade/item/optionalDevice"
 msgstr "equipment"
 
 msgid "dialogs/exchangeToUpgrade/item/title"
-msgstr "%(credits) more required to upgrade equipment %(name)"
+msgstr "%(credits)s more required to upgrade %(name)s"
 
 msgid "dialogs/exchangeToUpgrade/items/optionalDevice"
 msgstr "equipment"
 
 msgid "dialogs/exchangeToUpgrade/items/title"
-msgstr "%(credits) more required to upgrade equipment"
+msgstr "%(credits)s more required to upgrade equipment"
 
 msgid "dialogs/exchangeToUpgrade/notPossible/status"
-msgstr "Unable to upgrade equipment. You need %(gold) to exchange to credits."
+msgstr ""
+"Unable to upgrade equipment. You need %(gold)s to exchange for credits."
 
 msgid "dialogs/exchangeToUpgrade/notRequired/status"
 msgstr "You have enough credits to upgrade equipment."
 
 msgid "dialogs/exchangeToUpgrade/notRequired/title"
 msgstr "Exchange not required"
+
+msgid "dialogs/experimentEquipment/alert/notEnoughEquip"
+msgstr "You have no Experimental Equipment to disassemble."
+
+msgid "dialogs/experimentEquipment/alert/notEnoughMoney"
+msgstr "To get more components, disassemble Experimental Equipment."
+
+msgid "dialogs/experimentEquipment/header/dialogText"
+msgstr ""
+"Upgrade\n"
+"%(name)s?"
+
+msgid "dialogs/experimentEquipment/level/decription"
+msgstr "%(description)s (%(unit)s)"
+
+msgid "dialogs/experimentEquipment/moneyShortage"
+msgstr "Required: %(money)s"
+
+msgid "dialogs/experimentEquipment/priceBlock/price"
+msgstr "Cost:"
 
 msgid "dialogs/goldExchange/action/buy"
 msgstr "to purchase"
@@ -318,7 +463,7 @@ msgid "dialogs/goldExchange/confirm"
 msgstr "Exchange"
 
 msgid "dialogs/goldExchange/default/status"
-msgstr "Exchange rate: %(gold) = %(credits)"
+msgstr "Exchange rate: %(gold)s = %(credits)s"
 
 msgid "dialogs/goldExchange/item/battleBooster"
 msgstr "directive"
@@ -336,7 +481,7 @@ msgid "dialogs/goldExchange/item/postProgressionPairModification"
 msgstr "Dual Modification"
 
 msgid "dialogs/goldExchange/item/title"
-msgstr "%(credits) more required {action} the %(name) {type}"
+msgstr "%(credits)s more required {action} the %(name)s {type}"
 
 msgid "dialogs/goldExchange/items/battleBooster"
 msgstr "directives"
@@ -351,13 +496,13 @@ msgid "dialogs/goldExchange/items/optionalDevice"
 msgstr "equipment"
 
 msgid "dialogs/goldExchange/items/title"
-msgstr "%(credits) more required {action} {type}"
+msgstr "%(credits)s more required {action} {type}"
 
 msgid "dialogs/goldExchange/needRepair/title"
-msgstr "%(credits) more required to repair"
+msgstr "%(credits)s more required to repair"
 
 msgid "dialogs/goldExchange/notPossible/status"
-msgstr "Insufficient funds for exchange. %(gold) required"
+msgstr "Insufficient funds for exchange—%(gold)s is required"
 
 msgid "dialogs/goldExchange/notRequired/action/buy"
 msgstr "to purchase"
@@ -372,7 +517,7 @@ msgid "dialogs/goldExchange/notRequired/title"
 msgstr "Enough credits {action}"
 
 msgid "dialogs/goldExchange/refillShells/title"
-msgstr "%(credits) more required to resupply ammunition"
+msgstr "%(credits)s more required to resupply ammunition"
 
 msgid "dialogs/needRepair/autoRepair"
 msgstr "Repair automatically"
@@ -384,7 +529,7 @@ msgid "dialogs/needRepair/durability"
 msgstr "Durability:"
 
 msgid "dialogs/needRepair/durabilityPercentage"
-msgstr "%(value)%"
+msgstr "%(value)s%"
 
 msgid "dialogs/needRepair/freeAutoRepair"
 msgstr "The vehicle is repaired automatically and for free"
@@ -418,6 +563,9 @@ msgstr "Effect"
 
 msgid "effects/template"
 msgstr "%(icon)s %(title)s: %(descr)s"
+
+msgid "experimentalEquipCoinBlock/name"
+msgstr "Get Components"
 
 msgid "filters/shown"
 msgstr "Displayed: "
@@ -453,28 +601,47 @@ msgstr ""
 "ADDITIONAL\n"
 "BONUS TO CATEGORY"
 
+msgid "hints/tabs/equipment"
+msgstr ""
+"NEW TYPE OF\n"
+"EQUIPMENT"
+
+msgid "introduction/currency/deluxe"
+msgstr "bonds"
+
+msgid "introduction/currency/modernized"
+msgstr "components"
+
 msgid "introduction/message/deluxe"
 msgstr ""
-"This equipment is available for purchase using %(currencyName) that you earn"
-" in Ranked Battles. You can also get them as a reward for certain game "
-"events."
+"This type of equipment is available for %(currencyName)s (%(currencyIcon)s)."
+" It can also be received as a reward for certain in-game achievements and "
+"during special game events."
+
+msgid "introduction/message/modernized"
+msgstr ""
+"A specialized type of equipment that has three Upgrade Levels. This "
+"equipment cannot be purchased or destroyed, but it can be disassembled to "
+"get special parts—%(currencyName)s (%(currencyIcon)s). The received "
+"components can be used to upgrade any Experimental Equipment. It is rewarded"
+" for completing missions and during certain game events."
 
 msgid "introduction/message/trophy"
 msgstr ""
 "A special type of equipment that, upon receipt, has the parameters of "
 "standard equipment but can be upgraded for credits. You cannot purchase "
 "Bounty Equipment using in-game currency, but you can receive it as a reward "
-"during special game events."
+"during certain game events."
 
 msgid "introduction/showButton"
 msgstr "Show Equipment"
 
 msgid "introduction/slide/1/description"
 msgstr ""
-"New equipment was added. In addition, %(repairBox), %(wetAmmo), "
-"%(CO2Cistern), and %(cycloneFilter) were combined into "
-"%(changedConfiguration) equipment. The analogues of %(forcedChassis) were "
-"replaced with %(forcedMetal). All old bonuses remain and new ones were "
+"New equipment was added. In addition, %(repairBox)s, %(wetAmmo)s, "
+"%(CO2Cistern)s, and %(cycloneFilter)s were combined into "
+"%(changedConfiguration)s equipment. The analogs of %(forcedChassis)s were "
+"replaced with %(forcedMetal)s. All old bonuses remain, and new ones were "
 "added."
 
 msgid "introduction/slide/1/title"
@@ -559,11 +726,20 @@ msgstr "Toolbox"
 msgid "introduction/slide/wetAmmo"
 msgstr "\"Wet\" Ammo Rack"
 
-msgid "introduction/title/deluxe"
+msgid "introduction/title/withEquipments/deluxe"
 msgstr "Improved Equipment"
 
-msgid "introduction/title/trophy"
+msgid "introduction/title/withEquipments/modernized"
+msgstr "Experimental Equipment"
+
+msgid "introduction/title/withEquipments/trophy"
 msgstr "Bounty Equipment"
+
+msgid "introduction/title/withoutEquipments/modernized"
+msgstr "You have no suitable Experimental Equipment"
+
+msgid "introduction/title/withoutEquipments/trophy"
+msgstr "You have no suitable Bounty Equipment"
 
 msgid "kpi/bonus/longDescr/negative/crewRepeatedStunDuration"
 msgstr "to additional stun duration if the vehicle is already stunned"
@@ -1293,26 +1469,26 @@ msgstr "to gun traverse speed"
 msgid "kpi/bonus/ttc/positive/vehicleTurretRotationSpeed"
 msgstr "to turret traverse speed"
 
+msgid "kpi/bonus/valueTypes/brackets"
+msgstr "(%(value)s)"
+
 msgid "kpi/bonus/valueTypes/default"
 msgstr "%"
 
 msgid "kpi/bonus/valueTypes/vehicleBackwardMaxSpeed"
-msgstr " km/h"
+msgstr "km/h"
 
 msgid "kpi/bonus/valueTypes/vehicleEnemySpottingTime"
 msgstr "s"
 
 msgid "kpi/bonus/valueTypes/vehicleForwardMaxSpeed"
-msgstr " km/h"
+msgstr "km/h"
 
 msgid "kpi/bonus/valueTypes/vehicleOwnSpottingTime"
 msgstr "s"
 
-msgid "section/HWConsumables"
-msgstr "COMBAT ABILITIES"
-
 msgid "section/battleAbilities"
-msgstr "COMBAT RESERVES"
+msgstr "RESERVES"
 
 msgid "section/battleBoosters"
 msgstr "DIRECTIVES"
@@ -1380,19 +1556,20 @@ msgstr "TACTICAL (APCR)"
 msgid "tabs/crew"
 msgstr "For crew"
 
+msgid "tabs/deluxe"
+msgstr "Improved"
+
+msgid "tabs/modernized"
+msgstr "Experimental"
+
 msgid "tabs/optDevice"
 msgstr "For equipment"
 
 msgid "tabs/simple"
 msgstr "Standard"
 
-msgid "tabs/special"
-msgstr "Special"
-
-msgid "tooltip/autoRenewal/body/HWConsumables"
-msgstr ""
-"If necessary, Combat Abilities will be resupplied automatically once the "
-"vehicle leaves the battle."
+msgid "tabs/trophy"
+msgstr "Bounty"
 
 msgid "tooltip/autoRenewal/body/boosters"
 msgstr ""
@@ -1420,6 +1597,15 @@ msgstr "Resupply automatically"
 
 msgid "tooltip/autoRenewal/header/repair"
 msgstr "Repair automatically"
+
+msgid "tooltip/deconstructConfirm/deconstructFromInventory"
+msgstr "Will be disassembled from the Depot: %(amount)s"
+
+msgid "tooltip/deconstructConfirm/deconstructFromVehicle"
+msgstr "Will be disassembled from the vehicles: %(vehicleNames)s"
+
+msgid "tooltip/deconstructConfirm/listSeparator"
+msgstr ", "
 
 msgid "tooltips/abilities/actions/checkbox/AT-SPG"
 msgstr "Changes will be applied to all tank destroyers."
@@ -1451,10 +1637,19 @@ msgstr "Click to demount equipment from all configurations."
 msgid "tooltips/action/description/destroy"
 msgstr "Click to destroy equipment in this slot."
 
+msgid "tooltips/action/description/destroy_modernized"
+msgstr "Click to disassemble equipment into components."
+
 msgid "tooltips/action/description/swap"
 msgstr "Click to swap items between slots."
 
 msgid "tooltips/action/description/upgrade"
+msgstr "Upgrading equipment improves its characteristics."
+
+msgid "tooltips/action/description/upgrade_last_modernized"
+msgstr "Upgrading equipment improves its characteristics."
+
+msgid "tooltips/action/description/upgrade_modernized"
 msgstr "Upgrading equipment improves its characteristics."
 
 msgid "tooltips/action/title/add_one"
@@ -1475,6 +1670,9 @@ msgstr "Demount From All Configurations"
 msgid "tooltips/action/title/destroy"
 msgstr "Destroy"
 
+msgid "tooltips/action/title/destroy_modernized"
+msgstr "Disassemble"
+
 msgid "tooltips/action/title/swap"
 msgstr "Change order"
 
@@ -1482,6 +1680,12 @@ msgid "tooltips/action/title/undo"
 msgstr "Remove from slot"
 
 msgid "tooltips/action/title/upgrade"
+msgstr "Upgrade"
+
+msgid "tooltips/action/title/upgrade_last_modernized"
+msgstr "Upgrade"
+
+msgid "tooltips/action/title/upgrade_modernized"
 msgstr "Upgrade"
 
 msgid "tooltips/additional"
@@ -1504,6 +1708,14 @@ msgstr "Click to reassign slot category."
 msgid "tooltips/equipmentList"
 msgstr "Click to view the list of available equipment."
 
+msgid "tooltips/experimentalEquipCoinBlock/actions/button/disabled/text"
+msgstr ""
+"Unable to disassemble Experimental Equipment into components: You have no "
+"equipment of this type."
+
+msgid "tooltips/experimentalEquipCoinBlock/actions/button/notDisabled/text"
+msgstr "Click to proceed with disassembling equipment into components."
+
 msgid "tooltips/howToIncrease/impossible"
 msgstr ""
 "When mounted, this equipment will provide a standard bonus since only Tank "
@@ -1522,18 +1734,6 @@ msgid "tooltips/howToIncrease/single"
 msgstr ""
 "To increase the bonus to characteristics, mount this equipment into a slot "
 "with the following category: %(category)s."
-
-msgid "tooltips/optDevice/bonusDesc"
-msgstr "Equipment and slot categories %(match)s"
-
-msgid "tooltips/optDevice/bonusDesc/False"
-msgstr "do not match"
-
-msgid "tooltips/optDevice/bonusDesc/True"
-msgstr "match"
-
-msgid "tooltips/optDevice/bonusDesc/applied"
-msgstr "Bonus to vehicle characteristics:"
 
 msgid "tooltips/placeEquipment"
 msgstr "Equipment slot"
@@ -1568,3 +1768,82 @@ msgstr "Category:"
 
 msgid "tooltips/specializationType"
 msgstr "Firepower"
+
+msgid "tooltips/tabs/description/body/deluxe"
+msgstr ""
+"A valuable type of equipment that has better characteristics than other "
+"types of equipment."
+
+msgid "tooltips/tabs/description/body/modernized"
+msgstr "Special equipment that has three Upgrade Levels."
+
+msgid "tooltips/tabs/description/body/simple"
+msgstr "Equipment improves your vehicle characteristics."
+
+msgid "tooltips/tabs/description/body/trophy"
+msgstr ""
+"A type of equipment that has the parameters of standard equipment but can be"
+" upgraded."
+
+msgid "tooltips/tabs/description/header/deluxe"
+msgstr "Improved Equipment"
+
+msgid "tooltips/tabs/description/header/modernized"
+msgstr "Experimental Equipment"
+
+msgid "tooltips/tabs/description/header/simple"
+msgstr "Standard Equipment"
+
+msgid "tooltips/tabs/description/header/trophy"
+msgstr "Bounty Equipment"
+
+msgid "tooltips/tabs/obtain/body/deluxe"
+msgstr ""
+"This type of equipment is available for "
+"%(whiteSpanish_Open)sbonds%(whiteSpanish_Close)s. It can also be received as"
+" a reward for certain in-game achievements and during special game events."
+
+msgid "tooltips/tabs/obtain/body/modernized"
+msgstr ""
+"This type of equipment can be received as a reward during certain game "
+"events."
+
+msgid "tooltips/tabs/obtain/body/simple"
+msgstr ""
+"This type of equipment is available for purchase for in-game currency. It "
+"can also be received as a reward for certain in-game achievements and during"
+" special game events. Standard equipment characteristics can be improved by "
+"placing it in a corresponding slot."
+
+msgid "tooltips/tabs/obtain/body/trophy"
+msgstr ""
+"This type of equipment can be received as a reward during certain game "
+"events."
+
+msgid "tooltips/tabs/obtain/header/deluxe"
+msgstr "Acquisition Method"
+
+msgid "tooltips/tabs/obtain/header/modernized"
+msgstr "Experimental Equipment cannot be purchased"
+
+msgid "tooltips/tabs/obtain/header/simple"
+msgstr "Equipment Slots"
+
+msgid "tooltips/tabs/obtain/header/trophy"
+msgstr "Bounty Equipment cannot be purchased"
+
+msgid "tooltips/tabs/upgrade/body/modernized"
+msgstr ""
+"You can upgrade Experimental Equipment characteristics using "
+"%(whiteSpanish_Open)scomponents%(whiteSpanish_Close)s that can be received "
+"by disassembling this type of equipment."
+
+msgid "tooltips/tabs/upgrade/body/trophy"
+msgstr ""
+"You can upgrade Bounty Equipment characteristics using in-game currency."
+
+msgid "tooltips/tabs/upgrade/header/modernized"
+msgstr "Upgrading Experimental Equipment"
+
+msgid "tooltips/tabs/upgrade/header/trophy"
+msgstr "Upgrading Bounty Equipment"

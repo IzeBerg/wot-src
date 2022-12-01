@@ -87,8 +87,6 @@ package net.wg.gui.battle.components.stats.playersPanel
       
       private var _disposed:Boolean = false;
       
-      private var _activeChatCommandIconOffset:int = 0;
-      
       public function ChatCommandItemComponent()
       {
          super();
@@ -104,17 +102,10 @@ package net.wg.gui.battle.components.stats.playersPanel
          this.activeChatCommand = null;
       }
       
-      public function iconOffset(param1:int, param2:int = 0) : void
+      public function iconOffset(param1:int) : void
       {
-         this._activeChatCommandIconOffset = param1;
-         var _loc3_:int = param1 + param2;
-         this.activeChatCommand.x = _loc3_;
-         this._animationWidth = Math.abs(_loc3_) * OFFSET_TO_ANIMATION_WIDTH_SCALE;
-      }
-      
-      public function getIconOffset() : int
-      {
-         return this._activeChatCommandIconOffset;
+         this.activeChatCommand.x = param1;
+         this._animationWidth = Math.abs(param1) * OFFSET_TO_ANIMATION_WIDTH_SCALE;
       }
       
       public function isDisposed() : Boolean

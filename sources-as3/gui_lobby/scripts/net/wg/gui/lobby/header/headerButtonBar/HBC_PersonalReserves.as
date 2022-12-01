@@ -8,7 +8,7 @@ package net.wg.gui.lobby.header.headerButtonBar
    public class HBC_PersonalReserves extends HeaderButtonContentItem implements IHeaderButtonResizableItem
    {
       
-      private static const MIN_WIDTH:Number = 50;
+      private static const MIN_WIDTH:Number = 58;
        
       
       public var personalReservesWidgetInject:HBC_PersonalReservesWidgetInject;
@@ -16,7 +16,7 @@ package net.wg.gui.lobby.header.headerButtonBar
       public function HBC_PersonalReserves()
       {
          super();
-         minScreenPadding = new Padding(0,2,0,2);
+         minScreenPadding = new Padding(0,1,0,2);
       }
       
       private function onInjectedResized(param1:PersonalReservesWidgetEvent) : void

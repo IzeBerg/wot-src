@@ -77,6 +77,8 @@ package
       
       public static const ACTIVATION_ACTIVATEBUTTON:String = "#personal_reserves:activation/activateButton";
       
+      public static const ACTIVATION_ACTIVATEBUTTONCLAN:String = "#personal_reserves:activation/activateButtonClan";
+      
       public static const ACTIVATION_CLANLEADERACTIVATEBONUS:String = "#personal_reserves:activation/clanLeaderActivateBonus";
       
       public static const ACTIVATION_CLANMEMBERVIEWBONUS:String = "#personal_reserves:activation/clanMemberViewBonus";

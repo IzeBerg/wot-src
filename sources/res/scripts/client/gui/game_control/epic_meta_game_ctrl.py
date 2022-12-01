@@ -7,6 +7,7 @@ from gui.Scaleform.daapi.view.lobby.epicBattle.epic_helpers import EpicBattleScr
 from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
 from gui.game_control.links import URLMacros
 from gui.shared import event_dispatcher, EVENT_BUS_SCOPE, events, g_eventBus
+from gui.shared.utils import SelectorBattleTypesUtils
 from gui.shared.utils.functions import getUniqueViewName
 from helpers import dependency, i18n, time_utils
 from items import vehicles
@@ -22,9 +23,9 @@ from items.vehicles import getVehicleClassFromVehicleType
 from gui.prb_control.dispatcher import g_prbLoader
 from gui.shared.utils.scheduled_notifications import Notifiable, SimpleNotifier, PeriodicNotifier
 from gui.prb_control.entities.listener import IGlobalListener
-from gui.prb_control.settings import FUNCTIONAL_FLAG
+from gui.prb_control.settings import FUNCTIONAL_FLAG, SELECTOR_BATTLE_TYPES
 from helpers.statistics import HARDWARE_SCORE_PARAMS
-from account_helpers.AccountSettings import AccountSettings, GUI_START_BEHAVIOR
+from account_helpers.AccountSettings import AccountSettings, GUI_START_BEHAVIOR, EPIC_LAST_CYCLE_ID
 from gui import DialogsInterface
 from adisp import adisp_async, adisp_process
 from account_helpers.settings_core.settings_constants import GRAPHICS
@@ -158,7 +159,7 @@ class EpicBattleMetaGameController(Notifiable, SeasonProvider, IEpicBattleMetaGa
     def onLobbyInited(self, ctx):
         self.__lobbyContext.getServerSettings().onServerSettingsChange += self.__updateEpicMetaGameSettings
         g_currentVehicle.onChanged += self.__invalidateBattleAbilities
-        self.__itemsCache.onSyncCompleted += self.__invalidateBattleAbilities
+        self.__itemsCache.onSyncCompleted += self.__onSyncCompleted
         g_clientUpdateManager.addCallbacks({'epicMetaGame': self.__updateEpic, 
            'inventory': self.__onInventoryUpdate, 
            'tokens': self.__onTokensUpdate})
@@ -365,6 +366,8 @@ class EpicBattleMetaGameController(Notifiable, SeasonProvider, IEpicBattleMetaGa
         return BigWorld.player().epicMetaGame.getStoredDiscount()
 
     def getEventTimeLeft(self):
+        if not self.isEnabled():
+            return 0
         timeLeft = self.getSeasonTimeRange()[1] - time_utils.getCurrentLocalServerTimestamp()
         if timeLeft > 0:
             return timeLeft + 1
@@ -456,6 +459,16 @@ class EpicBattleMetaGameController(Notifiable, SeasonProvider, IEpicBattleMetaGa
 
         return result
 
+    def storeCycle(self):
+        lastCycleID = AccountSettings.getSettings(EPIC_LAST_CYCLE_ID)
+        cycleID = self.getCurrentCycleID()
+        if not self.isEnabled() or cycleID is None:
+            AccountSettings.setSettings(EPIC_LAST_CYCLE_ID, None)
+        elif lastCycleID != cycleID and self.isCurrentCycleActive():
+            AccountSettings.setSettings(EPIC_LAST_CYCLE_ID, cycleID)
+            SelectorBattleTypesUtils.setBattleTypeAsUnknown(SELECTOR_BATTLE_TYPES.EPIC)
+        return
+
     def __getReceivedGift(self, bonus):
         if bonus.getName() == EPIC_SELECT_BONUS_NAME:
             bonus.updateContext({'isReceived': False})
@@ -469,6 +482,11 @@ class EpicBattleMetaGameController(Notifiable, SeasonProvider, IEpicBattleMetaGa
                                 return offer.getGift(giftId)
 
         return
+
+    def __onSyncCompleted(self, _, invalidItems):
+        if not invalidItems or GUI_ITEM_TYPE.BATTLE_ABILITY in invalidItems:
+            self.__invalidateBattleAbilityItems()
+        self.__invalidateBattleAbilitiesForVehicle()
 
     def __invalidateBattleAbilities(self, *_):
         if not self.__itemsCache.isSynced():
@@ -508,7 +526,7 @@ class EpicBattleMetaGameController(Notifiable, SeasonProvider, IEpicBattleMetaGa
         self.stopGlobalListening()
         self.__lobbyContext.getServerSettings().onServerSettingsChange -= self.__updateEpicMetaGameSettings
         g_currentVehicle.onChanged -= self.__invalidateBattleAbilities
-        self.__itemsCache.onSyncCompleted -= self.__invalidateBattleAbilities
+        self.__itemsCache.onSyncCompleted -= self.__onSyncCompleted
         g_clientUpdateManager.removeObjectCallbacks(self)
         if self.getPerformanceGroup() == EPIC_PERF_GROUP.HIGH_RISK:
             self.__lobbyContext.deleteFightButtonConfirmator(self.__confirmFightButtonPressEnabled)

@@ -3,6 +3,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
    import flash.display.MovieClip;
    import net.wg.data.VO.SellDialogElementVO;
    import net.wg.data.VO.SellDialogItem;
+   import net.wg.data.constants.generated.CURRENCIES_CONSTANTS;
    import net.wg.data.constants.generated.FITTING_TYPES;
    import net.wg.gui.components.controls.ResizableScrollPane;
    import net.wg.gui.events.VehicleSellDialogEvent;
@@ -129,11 +130,12 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
             _loc6_.type = FITTING_TYPES.OPTIONAL_DEVICE;
             _loc6_.itemIDList = [_loc4_.itemID];
             _loc6_.count = _loc4_.count;
-            _loc6_.moneyValue = _loc4_.sellPrice[0];
+            _loc6_.moneyValue = _loc4_.sellPrice[!!_loc4_.isModernized ? CURRENCIES_CONSTANTS.EQUIP_COIN_INDEX : CURRENCIES_CONSTANTS.CREDITS_INDEX];
             _loc6_.sellActionPriceVo = _loc4_.actionVo;
             _loc6_.removePrice = _loc4_.removePrice;
             _loc6_.removeCurrency = _loc4_.removeCurrency;
             _loc6_.isRemovable = _loc4_.isRemovable;
+            _loc6_.isModernized = _loc4_.isModernized;
             _loc6_.toInventory = _loc4_.toInventory;
             _loc6_.onlyToInventory = _loc4_.onlyToInventory;
             _loc6_.removeActionPriceVo = _loc4_.removeActionPrice;

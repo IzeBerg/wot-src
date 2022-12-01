@@ -267,7 +267,14 @@ package net.wg.gui.components.advanced
       {
          if(this._isNewSkill)
          {
-            this._tooltipMgr.show(!!this._isFreeSkill ? TOOLTIPS.BUYFREESKILL_HEADER : TOOLTIPS.BUYSKILL_HEADER);
+            if(this._isFreeSkill)
+            {
+               this._tooltipMgr.show(TOOLTIPS.BUYFREESKILL_HEADER);
+            }
+            else
+            {
+               this._tooltipMgr.showSpecial(TOOLTIPS_CONSTANTS.TANKMAN_NEW_SKILL,null,this._tankmanID);
+            }
          }
          else
          {

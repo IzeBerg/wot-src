@@ -17,6 +17,8 @@ package
       
       public static const BUTTONLABEL_SELECT:String = "#storage:buttonLabel/select";
       
+      public static const BUTTONLABEL_DECONSTRUCT:String = "#storage:buttonLabel/deconstruct";
+      
       public static const CARD_CANNOTSELLTITLE:String = "#storage:card/cannotSellTitle";
       
       public static const CARD_VEHICLE_HOVER_MAXADDITIONALPRICELABEL:String = "#storage:card/vehicle/hover/maxAdditionalPriceLabel";
@@ -68,6 +70,8 @@ package
       public static const STORAGE_VEHICLESELECTPOPOVER_LABEL:String = "#storage:storage/vehicleSelectPopover/label";
       
       public static const STORAGE_FILTERTITLE:String = "#storage:storage/filterTitle";
+      
+      public static const STORAGE_BALANCELABEL:String = "#storage:storage/balanceLabel";
       
       public static const INHANGAR_FILTERTITLE:String = "#storage:inhangar/filterTitle";
       
@@ -196,6 +200,16 @@ package
       public static const INVENTORY_FILTERTYPE_INSTRUCTIONS:String = "#storage:inventory/filterType/instructions";
       
       public static const INVENTORY_FILTERTYPE_OTHER:String = "#storage:inventory/filterType/other";
+      
+      public static const DEVICES_FILTERS_ALL:String = "#storage:devices/filters/all";
+      
+      public static const DEVICES_FILTERS_SIMPLE:String = "#storage:devices/filters/simple";
+      
+      public static const DEVICES_FILTERS_DELUXE:String = "#storage:devices/filters/deluxe";
+      
+      public static const DEVICES_FILTERS_TROPHY:String = "#storage:devices/filters/trophy";
+      
+      public static const DEVICES_FILTERS_MODERNIZED:String = "#storage:devices/filters/modernized";
       
       public static const OFFERS_SECTIONTITLE:String = "#storage:offers/sectionTitle";
       

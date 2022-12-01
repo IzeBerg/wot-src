@@ -1,5 +1,5 @@
-from constants import IS_EDITOR
-if not IS_EDITOR:
+from constants import IS_EDITOR, IS_WEB
+if not (IS_EDITOR or IS_WEB):
     import _wulf as _py_objects
 else:
     import wulf_wrapper as _py_objects

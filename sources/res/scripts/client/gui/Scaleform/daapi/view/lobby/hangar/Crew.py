@@ -66,6 +66,7 @@ class Crew(CrewMeta):
                 roles.append({'tankmanID': tman.invID if tman is not None else None, 
                    'roleType': role, 
                    'role': convert(skillsConfig.getSkill(role).userString), 
+                   'roles': vehicle.descriptor.type.crewRoles[slotIdx], 
                    'roleIcon': getRoleBigIconPath(role), 
                    'nationID': vehicle.nationID, 
                    'typeID': vehicle.innationID, 
@@ -93,7 +94,7 @@ class Crew(CrewMeta):
 
                 newFreeSkillsCount = tankman.newFreeSkillsCount
                 newSkillsCount, lastNewSkillLvl = tankman.newSkillCount
-                if (newSkillsCount > 0 or newFreeSkillsCount > 0) and not vehicle.isEvent:
+                if newSkillsCount > 0 or newFreeSkillsCount > 0:
                     skillsList.append({'buy': True, 
                        'buyFreeCount': newFreeSkillsCount, 
                        'buyCount': max(newSkillsCount - 1, 0), 

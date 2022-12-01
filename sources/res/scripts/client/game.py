@@ -20,6 +20,8 @@ try:
 except locale.Error:
     LOG_CURRENT_EXCEPTION()
 
+sys.setrecursionlimit(sys.getrecursionlimit() + 100)
+
 class ServiceLocator(object):
     connectionMgr = dependency.descriptor(IConnectionManager)
     gameplay = dependency.descriptor(IGameplayLogic)
@@ -354,7 +356,7 @@ def handleKeyEvent(event):
         if inputHandler is not None:
             if inputHandler.handleKeyEvent(event):
                 return True
-        for handler in g_keyEventHandlers:
+        for handler in g_keyEventHandlers.copy():
             try:
                 if handler(event):
                     return True
@@ -505,6 +507,6 @@ def checkBotNet():
     sys.path.append('test_libs')
     from path_manager import g_pathManager
     g_pathManager.setPathes()
-    from scenario_player import g_scenarioPlayer
+    from test_player import g_testPlayer
     rpycPort = int(sys.argv[(sys.argv.index(botArg) + 1)])
-    g_scenarioPlayer.delayedInitScenarioPlayer(rpycPort)
+    g_testPlayer.initTestPlayer(rpycPort)

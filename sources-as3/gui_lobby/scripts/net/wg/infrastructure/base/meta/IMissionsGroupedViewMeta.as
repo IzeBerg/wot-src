@@ -15,5 +15,9 @@ package net.wg.infrastructure.base.meta
       function useTokenClickS(param1:String) : void;
       
       function onClickButtonDetailsS() : void;
+      
+      function onDailyClickS() : void;
+      
+      function onNYChallengeClickS() : void;
    }
 }

@@ -24,13 +24,14 @@ from gui.impl.gen.view_models.views.lobby.platoon.slot_model import SlotModel, E
 from gui.impl.gen.view_models.views.lobby.platoon.comp7_member_count_dropdown import Comp7DropdownItem
 from gui.impl.gui_decorators import args2params
 from gui.impl.lobby.comp7 import comp7_shared
-from gui.impl.lobby.platoon.platoon_helpers import formatSearchEstimatedTime, removeNationFromTechName
+from gui.impl.lobby.platoon.platoon_helpers import formatSearchEstimatedTime
 from gui.impl.lobby.platoon.tooltip.platoon_alert_tooltip import AlertTooltip
 from gui.impl.lobby.platoon.tooltip.platoon_wtr_tooltip import WTRTooltip
 from gui.impl.lobby.platoon.view.slot_label_html_handler import SlotLabelHtmlParser
 from gui.impl.lobby.platoon.view.subview.platoon_chat_subview import ChatSubview
 from gui.impl.lobby.platoon.view.subview.platoon_tiers_filter_subview import SettingsPopover
 from gui.impl.lobby.platoon.view.subview.platoon_tiers_limit_subview import TiersLimitSubview
+from gui.impl.lobby.common.vehicle_model_helpers import fillVehicleModel
 from gui.impl.lobby.premacc.squad_bonus_tooltip_content import SquadBonusTooltipContent, Comp7SquadBonusTooltipContent
 from gui.impl.pub import ViewImpl
 from gui.prb_control import prb_getters, prbEntityProperty
@@ -38,7 +39,7 @@ from gui.prb_control.settings import CTRL_ENTITY_TYPE, REQUEST_TYPE, SELECTOR_BA
 from gui.shared import g_eventBus, events, EVENT_BUS_SCOPE
 from gui.shared.events import ChannelCarouselEvent
 from gui.shared.gui_items.badge import Badge
-from gui.shared.utils.functions import replaceHyphenToUnderscore
+from gui.shared.system_factory import registerPlatoonView, collectPlatoonView
 from helpers import i18n, dependency
 from helpers.CallbackDelayer import CallbackDelayer
 from messenger.m_constants import PROTO_TYPE
@@ -209,7 +210,7 @@ class SquadMembersView(ViewImpl, CallbackDelayer):
         g_messengerEvents.voip.onChannelLeft += self.__updateVoiceChatToggleState
         g_messengerEvents.voip.onChannelAvailable += self.__updateVoiceChatToggleState
         g_messengerEvents.voip.onChannelLost += self.__updateVoiceChatToggleState
-        g_currentVehicle.onChanged += self._updateMembers
+        g_currentVehicle.onChanged += self.__updateReadyButton
         usersEvents = g_messengerEvents.users
         usersEvents.onUsersListReceived += self.__onUsersReceived
         usersEvents.onUserActionReceived += self.__onUserActionReceived
@@ -240,7 +241,7 @@ class SquadMembersView(ViewImpl, CallbackDelayer):
         g_messengerEvents.voip.onChannelLeft -= self.__updateVoiceChatToggleState
         g_messengerEvents.voip.onChannelAvailable -= self.__updateVoiceChatToggleState
         g_messengerEvents.voip.onChannelLost -= self.__updateVoiceChatToggleState
-        g_currentVehicle.onChanged -= self._updateMembers
+        g_currentVehicle.onChanged -= self.__updateReadyButton
         usersEvents = g_messengerEvents.users
         usersEvents.onUsersListReceived -= self.__onUsersReceived
         usersEvents.onUserActionReceived -= self.__onUserActionReceived
@@ -354,12 +355,7 @@ class SquadMembersView(ViewImpl, CallbackDelayer):
         vehicle = slotData.get('selectedVehicle', {})
         if vehicle:
             vehicleItem = self._itemsCache.items.getItemByCD(vehicle.get('intCD', 0))
-            slotModel.player.vehicle.setIsPremium(self._getIsVehiclePremium(vehicleItem))
-            slotModel.player.vehicle.setName(vehicleItem.shortUserName)
-            slotModel.player.vehicle.setTechName(replaceHyphenToUnderscore(removeNationFromTechName(vehicleItem.name)))
-            slotModel.player.vehicle.setTier(vehicleItem.level if self._SHOW_VEHICLE_TIER else 0)
-            slotModel.player.vehicle.setType(vehicleItem.type)
-            slotModel.player.vehicle.setNation(vehicleItem.nationName)
+            fillVehicleModel(slotModel.player.vehicle, vehicleItem)
 
     def _setModeSlotSpecificData(self, slotData, slotModel):
         pass
@@ -385,7 +381,7 @@ class SquadMembersView(ViewImpl, CallbackDelayer):
     def _initWindowData(self):
         with self.viewModel.transaction() as (model):
             model.setCanMinimize(True)
-            model.setRawTitle(self.__getTitle())
+            model.setRawTitle(self._getTitle())
             header, body = self._getWindowInfoTooltipHeaderAndBody()
             model.setWindowTooltipHeader(header)
             model.setWindowTooltipBody(body)
@@ -521,7 +517,7 @@ class SquadMembersView(ViewImpl, CallbackDelayer):
 
     @adisp_process
     def _onSwitchReady(self):
-        result = yield self._platoonCtrl.togglePlayerReadyAction(checkAmmo=True)
+        result = yield self._platoonCtrl.togglePlayerReadyAction()
         if result:
             with self.viewModel.transaction() as (model):
                 model.btnSwitchReady.setIsEnabled(False)
@@ -529,7 +525,7 @@ class SquadMembersView(ViewImpl, CallbackDelayer):
     def _hasFreeSlot(self):
         return self._platoonCtrl.hasFreeSlot()
 
-    def __getTitle(self):
+    def _getTitle(self):
         title = ('').join((
          i18n.makeString(backport.text(R.strings.platoon.squad())),
          i18n.makeString(backport.text(R.strings.platoon.members.header.dyn(self.getPrebattleType())()))))
@@ -540,8 +536,7 @@ class SquadMembersView(ViewImpl, CallbackDelayer):
             return
         isInQueue = self._platoonCtrl.isInQueue()
         actionButtonStateVO = self.__getActionButtonStateVO()
-        prbType = self._platoonCtrl.getPrbEntityType()
-        simpleState = actionButtonStateVO.getSimpleState(prbType)
+        simpleState = actionButtonStateVO.getSimpleState()
         onlyReadinessText = actionButtonStateVO.isReadinessTooltip()
         with self.viewModel.transaction() as (model):
             if not self._platoonCtrl.isInCoolDown(REQUEST_TYPE.SET_PLAYER_STATE):
@@ -655,13 +650,6 @@ class SquadMembersView(ViewImpl, CallbackDelayer):
 class EventMembersView(SquadMembersView):
     _prebattleType = PrebattleTypes.EVENT
 
-    @adisp_process
-    def _onSwitchReady(self):
-        result = yield self._platoonCtrl.togglePlayerReadyAction(checkAmmo=False)
-        if result:
-            with self.viewModel.transaction() as (model):
-                model.btnSwitchReady.setIsEnabled(False)
-
     def _addSubviews(self):
         self._addSubviewToLayout(ChatSubview())
 
@@ -675,9 +663,11 @@ class EventMembersView(SquadMembersView):
 
     def _setBonusInformation(self, bonusState):
         with self.viewModel.header.transaction() as (model):
-            model.setShowInfoIcon(False)
+            model.setShowInfoIcon(True)
             model.setShowNoBonusPlaceholder(True)
-            model.noBonusPlaceholder.setIcon(R.images.gui.maps.icons.battleTypes.c_40x40.eventSquad())
+            infoText = R.strings.messenger.dialogs.squadChannel.headerMsg.eventFormationRestriction()
+            model.noBonusPlaceholder.setText(infoText)
+            model.noBonusPlaceholder.setIcon(R.images.gui.maps.icons.battleTypes.c_64x64.event())
             self._currentBonusState = bonusState
 
     def _getBonusState(self):
@@ -741,20 +731,6 @@ class BattleRoyalMembersView(SquadMembersView):
 
 class MapboxMembersView(SquadMembersView):
     _prebattleType = PrebattleTypes.MAPBOX
-
-    def _addSubviews(self):
-        self._addSubviewToLayout(ChatSubview())
-
-    def _onFindPlayers(self):
-        pass
-
-    def _updateFindPlayersButton(self, *args):
-        with self.viewModel.transaction() as (model):
-            model.setShouldShowFindPlayersButton(value=False)
-
-
-class FunRandomMembersView(SquadMembersView):
-    _prebattleType = PrebattleTypes.FUNRANDOM
 
     def _addSubviews(self):
         self._addSubviewToLayout(ChatSubview())
@@ -914,23 +890,21 @@ class Comp7MembersView(SquadMembersView):
         return division
 
 
+registerPlatoonView(PREBATTLE_TYPE.SQUAD, SquadMembersView)
+registerPlatoonView(PREBATTLE_TYPE.EVENT, EventMembersView)
+registerPlatoonView(PREBATTLE_TYPE.EPIC, EpicMembersView)
+registerPlatoonView(PREBATTLE_TYPE.BATTLE_ROYALE, BattleRoyalMembersView)
+registerPlatoonView(PREBATTLE_TYPE.MAPBOX, MapboxMembersView)
+registerPlatoonView(PREBATTLE_TYPE.COMP7, Comp7MembersView)
+
 class MembersWindow(PreloadableWindow):
     __platoonCtrl = dependency.descriptor(IPlatoonController)
-    __PRB_TYPE_TO_VIEW_CONTENT_FACTORY = {PREBATTLE_TYPE.SQUAD: SquadMembersView, 
-       PREBATTLE_TYPE.EVENT: EventMembersView, 
-       PREBATTLE_TYPE.EPIC: EpicMembersView, 
-       PREBATTLE_TYPE.BATTLE_ROYALE: BattleRoyalMembersView, 
-       PREBATTLE_TYPE.MAPBOX: MapboxMembersView, 
-       PREBATTLE_TYPE.FUN_RANDOM: FunRandomMembersView, 
-       PREBATTLE_TYPE.COMP7: Comp7MembersView}
 
     def __init__(self, initialPosition=None):
         prbType = self.__platoonCtrl.getPrbEntityType()
-        contentClass = self.__PRB_TYPE_TO_VIEW_CONTENT_FACTORY.get(prbType, None)
-        if contentClass is not None:
-            content = contentClass(prbType)
-        else:
-            content = None
+        platoonViewCls = collectPlatoonView(prbType)
+        content = platoonViewCls(prbType) if platoonViewCls else None
+        if content is None:
             _logger.debug('PrbType is unknown %d', prbType)
         super(MembersWindow, self).__init__(wndFlags=WindowFlags.WINDOW, content=content)
         if initialPosition:

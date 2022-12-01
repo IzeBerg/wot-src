@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>garland</identifier>
+					<fx>shaders/custom/emissive_playground.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						emissionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/ny_jukebox.dds</Texture>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>60.000000</Float>
+					</property>
+					<property>
+						g_tint
+						<Vector4>1.000000 0.466667 0.039216 1.000000</Vector4>
+					</property>
+					<property>
+						pattern
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/ls_phase_random.dds</Texture>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/ny_jukebox_CM.dds</Texture>
+					</property>
+					<property>
+						speed
+						<Float>0.000000</Float>
+					</property>
+					<property>
+						g_forwardMult
+						<Float>5.000000</Float>
+					</property>
+					<property>
+						waveLen
+						<Float>1.000000</Float>
+					</property>
+					<property>
+						patternFilteringMode
+						<Int>1</Int>
+					</property>
+					<property>
+						patternNumber
+						<Int>0</Int>
+					</property>
+				</material>
+				<groupOrigin>-0.506462 0.557872 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-0.632831 0.206014 -0.648546</min>
+		<max>-0.380093 0.909731 0.648546</max>
+	</boundingBox>
+	<primitivesName>particles/content_deferred/GFX_models/environment/New_Year/ny_jukebox_base_frame</primitivesName>
+	<geometrySize>1032</geometrySize>
+	<minUVDensity>0.155661</minUVDensity>
+</root>

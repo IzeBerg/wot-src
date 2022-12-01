@@ -18,6 +18,10 @@ package net.wg.infrastructure.base.meta
       
       function getCarouselAliasS() : String;
       
+      function newYearVehiclesS() : void;
+      
+      function setIsSmallS(param1:Boolean) : void;
+      
       function setFilterS(param1:int) : void;
       
       function as_rowCount(param1:int) : void;

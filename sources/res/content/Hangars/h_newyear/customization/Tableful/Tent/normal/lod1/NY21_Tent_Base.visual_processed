@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+		<node>
+			<identifier>HP_kitchen</identifier>
+			<transform>
+				<row0>0.896967 -0.000000 -0.442005</row0>
+				<row1>-0.000000 0.999971 -0.000000</row1>
+				<row2>0.442009 0.000000 0.896975</row2>
+				<row3>10.201400 -0.681686 6.765370</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>HP_table</identifier>
+			<transform>
+				<row0>0.999958 0.000001 -0.000000</row0>
+				<row1>-0.000001 0.999969 -0.000000</row1>
+				<row2>0.000000 0.000000 0.999970</row2>
+				<row3>0.039553 -0.681032 -0.015191</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>HP_tent</identifier>
+			<transform>
+				<row0>0.999959 0.000001 -0.000000</row0>
+				<row1>-0.000001 1.000000 -0.000000</row1>
+				<row2>0.000000 0.000000 0.999970</row2>
+				<row3>-0.000001 0.000001 -0.000004</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>HP_attraction</identifier>
+			<transform>
+				<row0>0.628235 0.000000 -0.778024</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.778024 0.000000 0.628235</row2>
+				<row3>9.859190 -1.486440 25.552799</row3>
+			</transform>
+		</node>
+		<node>
+			<identifier>HP_gates_left</identifier>
+			<transform>
+				<row0>0.714474 0.000000 -0.699662</row0>
+				<row1>0.000000 1.000000 0.000000</row1>
+				<row2>0.699662 0.000000 0.714474</row2>
+				<row3>19.601801 -7.776060 -9.636430</row3>
+			</transform>
+		</node>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/std_effects/glow.fx</fx>
+					<materialKind>110</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						alphaReference
+						<Int>46</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Tent/NY21_Tent_Base_garland_AM.dds</Texture>
+					</property>
+					<property>
+						selfIllumination
+						<Float>18.900000</Float>
+					</property>
+				</material>
+				<groupOrigin>0.002030 1.229187 0.009696</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>110</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Tent/NY19_Table_base_AM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Tent/NY19_Table_base_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Tent/NY19_Table_base_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 3.266245 0.004497</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>108</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Tent/NY21_Tent_Base_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Tent/NY21_Tent_Base_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Tent/NY21_Tent_Base_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 1.786539 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-3.336866 -0.053398 -6.046596</min>
+		<max>3.336866 4.238657 6.055591</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>118816</geometrySize>
+	<minUVDensity>0.002344</minUVDensity>
+</root>

@@ -8,6 +8,10 @@ class ISystemMessages(object):
     def destroy(self):
         raise NotImplementedError
 
+    @property
+    def proto(self):
+        raise NotImplementedError
+
     def pushMessage(self, text, type, priority=None, messageData=None, savedData=None):
         raise NotImplementedError
 

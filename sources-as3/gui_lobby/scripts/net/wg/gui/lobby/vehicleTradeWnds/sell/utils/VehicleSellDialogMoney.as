@@ -21,6 +21,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell.utils
          this.addMoney(new VehicleSellDialogMoneyVO(CURRENCIES_CONSTANTS.CREDITS,CURRENCIES_CONSTANTS.CREDITS_COLOR));
          this.addMoney(new VehicleSellDialogMoneyVO(CURRENCIES_CONSTANTS.GOLD,CURRENCIES_CONSTANTS.GOLD_COLOR));
          this.addMoney(new VehicleSellDialogMoneyVO(CURRENCIES_CONSTANTS.CRYSTAL,CURRENCIES_CONSTANTS.CRYSTAL_COLOR));
+         this.addMoney(new VehicleSellDialogMoneyVO(CURRENCIES_CONSTANTS.EQUIP_COIN,CURRENCIES_CONSTANTS.EQUIP_COIN_COLOR));
       }
       
       public function dispose() : void
@@ -29,6 +30,28 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell.utils
          this._money.splice(0,this._money.length);
          this._money = null;
          this._moneyByType = null;
+      }
+      
+      public function geResultMoney() : Vector.<VehicleSellDialogMoneyVO>
+      {
+         var _loc1_:Vector.<VehicleSellDialogMoneyVO> = new Vector.<VehicleSellDialogMoneyVO>(0);
+         _loc1_.push(this._money[0]);
+         var _loc2_:int = this._money.length;
+         var _loc3_:int = 1;
+         while(_loc3_ < _loc2_)
+         {
+            if(this._money[_loc3_].value != 0)
+            {
+               _loc1_.push(this._money[_loc3_]);
+            }
+            _loc3_++;
+         }
+         return _loc1_;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
       
       public function update(param1:Object) : void
@@ -89,28 +112,6 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell.utils
          var _loc2_:VehicleSellDialogMoneyVO = new VehicleSellDialogMoneyVO(param1,VehicleSellDialogUtils.EXTRA_CURRENCY_COLOR);
          this.addMoney(_loc2_);
          return _loc2_;
-      }
-      
-      public function geResultMoney() : Vector.<VehicleSellDialogMoneyVO>
-      {
-         var _loc1_:Vector.<VehicleSellDialogMoneyVO> = new Vector.<VehicleSellDialogMoneyVO>(0);
-         _loc1_.push(this._money[0]);
-         var _loc2_:int = this._money.length;
-         var _loc3_:int = 1;
-         while(_loc3_ < _loc2_)
-         {
-            if(this._money[_loc3_].value != 0)
-            {
-               _loc1_.push(this._money[_loc3_]);
-            }
-            _loc3_++;
-         }
-         return _loc1_;
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

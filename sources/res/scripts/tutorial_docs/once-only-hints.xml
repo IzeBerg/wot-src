@@ -95,7 +95,9 @@
 			<ignore-outside-click>True</ignore-outside-click>
 			<condition>
 				<global-active>_HaveNewBadge</global-active>
+				<global-active>_NY_navigation_disabled</global-active>
 			</condition>
+			<hide-immediately>True</hide-immediately>
 		</hint>
 		<hint>
 			HangarHaveNewSuffixBadgeHint
@@ -387,6 +389,7 @@
 			<update-runtime>True</update-runtime>
 			<ignore-outside-click>True</ignore-outside-click>
 			<condition>
+				<global-active>_NY_navigation_disabled</global-active>
 				<global-active>_Personal_reserves_available</global-active>
 				<class-condition>
 					UISpamCondition
@@ -394,6 +397,7 @@
 					<arguments>PersonalReservesHangarHint</arguments>
 				</class-condition>
 			</condition>
+			<hide-immediately>True</hide-immediately>
 		</hint>
 		<hint>
 			PersonalReservesActivationHint
@@ -422,6 +426,7 @@
 			</arrow>
 			<ignore-outside-click>True</ignore-outside-click>
 			<condition>
+				<global-active>_NY_navigation_disabled</global-active>
 				<condition-and>
 					<condition-hint-showed>
 						<hint-id>DogTagHangarHint</hint-id>
@@ -436,6 +441,7 @@
 				</simple-state>
 			</checked-ui-state>
 			<update-runtime>True</update-runtime>
+			<hide-immediately>True</hide-immediately>
 		</hint>
 		<hint>
 			LobbyMenuManualHint
@@ -583,30 +589,10 @@
 			</checked-ui-state>
 			<update-runtime>True</update-runtime>
 			<ignore-outside-click>True</ignore-outside-click>
-		</hint>
-		<hint>
-			CrystalsBtnHint
-			<item-id>CrystalsButton</item-id>
-			<text>_(#tutorial:crystals/openBtn)</text>
-			<arrow>
-				<direction>B</direction>
-				<loop>True</loop>
-			</arrow>
-			<checked-ui-state>
-				<simple-state>
-					<state>enabled</state>
-					<value>False</value>
-				</simple-state>
-			</checked-ui-state>
 			<condition>
-				<class-condition>
-					UISpamCondition
-					<path>gui.ui_spam.tutorial_conditions</path>
-					<arguments>CrystalsBtnHint</arguments>
-				</class-condition>
+				<global-active>_NY_navigation_disabled</global-active>
 			</condition>
-			<update-runtime>True</update-runtime>
-			<ignore-outside-click>True</ignore-outside-click>
+			<hide-immediately>True</hide-immediately>
 		</hint>
 		<hint>
 			CustomizationCarouselHint
@@ -785,9 +771,9 @@
 			<ignore-outside-click>True</ignore-outside-click>
 		</hint>
 		<hint>
-			FilterHintZoneHint
-			<item-id>FilterTutorialHintZone</item-id>
-			<text>_(#tank_setup:hints/filters/specialization)</text>
+			ModernizedSetupTabHint
+			<item-id>ModernizedSetupTabHintZone</item-id>
+			<text>_(#tank_setup:hints/tabs/equipment)</text>
 			<arrow>
 				<direction>B</direction>
 				<loop>True</loop>
@@ -798,6 +784,15 @@
 					<value>True</value>
 				</simple-state>
 			</checked-ui-state>
+			<condition>
+				<condition-and>
+					<class-condition>
+						UISpamCondition
+						<path>gui.ui_spam.tutorial_conditions</path>
+						<arguments>ModernizedSetupTabHint</arguments>
+					</class-condition>
+				</condition-and>
+			</condition>
 			<update-runtime>True</update-runtime>
 			<hide-immediately>True</hide-immediately>
 			<ignore-outside-click>True</ignore-outside-click>
@@ -980,7 +975,7 @@
 			<hide-immediately>True</hide-immediately>
 			<ignore-outside-click>True</ignore-outside-click>
 			<condition>
-				<global-active>_VehPostProgressionPurchasable</global-active>
+				<global-active>_HangarVehPostProgressionPurchasable</global-active>
 			</condition>
 		</hint>
 		<hint>
@@ -1001,7 +996,7 @@
 			<hide-immediately>True</hide-immediately>
 			<ignore-outside-click>True</ignore-outside-click>
 			<condition>
-				<global-active>_VehPostProgressionPurchasable</global-active>
+				<global-active>_ResearchVehPostProgressionPurchasable</global-active>
 			</condition>
 		</hint>
 		<hint>

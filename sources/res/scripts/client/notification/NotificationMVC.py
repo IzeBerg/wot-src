@@ -25,7 +25,7 @@ class _NotificationMVC(object):
         return self.__alertsController
 
     def handleAction(self, typeID, entityID, action):
-        self.__actionsHandlers.handleAction(self.__model, int(typeID), long(entityID), action)
+        self.__actionsHandlers.handleAction(self.__model, int(typeID), int(entityID), action)
 
     def cleanUp(self, resetCounter=False):
         self.__alertsController.cleanUp()

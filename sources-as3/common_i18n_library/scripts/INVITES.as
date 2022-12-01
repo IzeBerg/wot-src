@@ -43,8 +43,6 @@ package
       
       public static const INVITES_PREBATTLE_ALREADYJOINED_MAPBOX:String = "#invites:invites/prebattle/alreadyJoined/MAPBOX";
       
-      public static const INVITES_PREBATTLE_ALREADYJOINED_EVENT:String = "#invites:invites/prebattle/alreadyJoined/EVENT";
-      
       public static const INVITES_TEXT_CREATORNAME:String = "#invites:invites/text/creatorName";
       
       public static const INVITES_TEXT_SQUAD:String = "#invites:invites/text/SQUAD";
@@ -74,8 +72,6 @@ package
       public static const INVITES_TEXT_STRONGHOLD:String = "#invites:invites/text/STRONGHOLD";
       
       public static const INVITES_TEXT_MAPBOX:String = "#invites:invites/text/MAPBOX";
-      
-      public static const INVITES_TEXT_FUN_RANDOM:String = "#invites:invites/text/FUN_RANDOM";
       
       public static const INVITES_TEXT_COMP7:String = "#invites:invites/text/COMP7";
       
@@ -238,8 +234,6 @@ package
       public static const INVITES_NOTE_CHANGE_AND_LEAVE_PREBATTLE_COMP7:String = "#invites:invites/note/change_and_leave/PREBATTLE_COMP7";
       
       public static const INVITES_WARNING_ANONYMIZED:String = "#invites:invites/warning/anonymized";
-      
-      public static const INVITES_TOOLTIP_FUNRANDOM_NOVEHICLES:String = "#invites:invites/tooltip/funRandom/noVehicles";
       
       public static const GUI_TITLES_RECEIVEDINVITES:String = "#invites:gui/titles/receivedInvites";
       

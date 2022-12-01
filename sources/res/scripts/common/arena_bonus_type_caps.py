@@ -141,7 +141,6 @@ class ARENA_BONUS_TYPE_CAPS():
     LOG_ALL_VEHICLES = 'LOG_ALL_VEHICLES'
     SSR = 'SSR'
     SSR_FORCE_RECORD = 'SSR_FORCE_RECORD'
-    HALLOWEEN = 'HALLOWEEN'
     FORT_BATTLE = 'FORT_BATTLE'
     COMP7 = 'COMP7'
     POINTS_OF_INTEREST = 'POINTS_OF_INTEREST'
@@ -150,6 +149,7 @@ class ARENA_BONUS_TYPE_CAPS():
     RTS_COMPONENT = 'RTS_COMPONENT'
     DISABLE_DEFAULT_SIXTH_SENSE = 'DISABLE_DEFAULT_SIXTH_SENSE'
     ANONYMIZER_ENEMY_TEAM = 'ANONYMIZER_ENEMY_TEAM'
+    NEW_YEAR_BONUSES = 'NEW_YEAR_BONUSES'
     DOSSIER_ACHIEVEMENTS = frozenset((DOSSIER_ACHIEVEMENTS_15X15, DOSSIER_ACHIEVEMENTS_RANKED15X15,
      DOSSIER_ACHIEVEMENTS_7X7, DOSSIER_ACHIEVEMENTS_RATED7X7,
      DOSSIER_ACHIEVEMENTS_SORTIE, DOSSIER_ACHIEVEMENTS_EPIC_BATTLE))
@@ -180,8 +180,10 @@ class ARENA_BONUS_TYPE_CAPS():
     @staticmethod
     def get(arenaBonusType, **kwargs):
         overrideCaps = kwargs.get('specificOverrides', ARENA_BONUS_TYPE_CAPS.OVERRIDE_BONUS_CAPS)
-        bonusCapsConfig = BonusCapsConfig(overrideCaps)
         bonusCaps = ARENA_BONUS_TYPE_CAPS._typeToCaps.get(arenaBonusType, frozenset())
+        if not overrideCaps:
+            return bonusCaps
+        bonusCapsConfig = BonusCapsConfig(overrideCaps)
         return bonusCapsConfig.getModifiedBonusCaps(arenaBonusType, bonusCaps)
 
     @staticmethod

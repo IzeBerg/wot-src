@@ -35,11 +35,15 @@ package net.wg.data.constants.generated
       
       public static const EQUIPMENT_TROPHY_UPGRADED_BIG:String = "equipmentTrophyUpgradedBig";
       
+      public static const EQUIPMENT_MODERNIZED:String = "equipmentModernized";
+      
+      public static const EQUIPMENT_MODERNIZED_BIG:String = "equipmentModernizedBig";
+      
       public static const NO_HIGHLIGHT:String = "";
       
-      public static const TOOLTIP_OVERLAY_PADDING_LEFT:int = -25;
+      public static const TOOLTIP_OVERLAY_PADDING_LEFT:int = -30;
       
-      public static const TOOLTIP_OVERLAY_PADDING_TOP:int = -23;
+      public static const TOOLTIP_OVERLAY_PADDING_TOP:int = -35;
       
       public static const TOOLTIP_HIGHLIGHT_PADDING_LEFT:int = -18;
       

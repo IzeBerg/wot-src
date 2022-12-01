@@ -86,7 +86,9 @@ package net.wg.gui.lobby.header
       private static const ONLINE_COUNTER_ONLY:uint = 4;
        
       
-      public var centerBg:TutorialClip = null;
+      public var nyBtnGlow:Sprite = null;
+      
+      public var centerBg:Sprite = null;
       
       public var centerMenuBg:TutorialClip = null;
       
@@ -147,6 +149,16 @@ package net.wg.gui.lobby.header
          return new <Rectangle>[_loc1_];
       }
       
+      override protected function draw() : void
+      {
+         super.draw();
+         if(isInvalid(InvalidationType.SIZE))
+         {
+            constraints.update(width,height);
+            this.updateSize();
+         }
+      }
+      
       public function as_updateAnonymizedState(param1:Boolean) : void
       {
          var _loc2_:HBC_AccountDataVo = HBC_AccountDataVo(this._headerButtonsHelper.getContentDataById(HeaderButtonsHelper.ITEM_ID_ACCOUNT));
@@ -190,6 +202,12 @@ package net.wg.gui.lobby.header
          this.onlineCounter.visible = !param1;
          this.mainMenuGradient.visible = !param1;
          this.mainMenuButtonBar.visible = !param1;
+      }
+      
+      public function as_hideHeader(param1:Boolean) : void
+      {
+         visible = !param1;
+         dispatchEvent(new HeaderEvents(HeaderEvents.VISIBILITY_CHANGED,0));
       }
       
       public function as_initOnlineCounter(param1:Boolean) : void
@@ -325,10 +343,10 @@ package net.wg.gui.lobby.header
             _loc11_.battleTypeID = param6;
             _loc11_.tooltip = param4;
             _loc11_.tooltipType = param5;
-            _loc11_.eventBgEnabled = param7;
+            _loc11_.eventBgEnabled = param7 && !this.nyBtnGlow.visible;
             _loc11_.showLegacySelector = param9;
             _loc11_.hasNew = param10;
-            if(param8)
+            if(param8 && !this.nyBtnGlow.visible)
             {
                this.sparks.play();
             }
@@ -336,10 +354,15 @@ package net.wg.gui.lobby.header
             {
                this.sparks.stop();
             }
-            this.sparks.visible = param8;
+            this.sparks.visible = param8 && !this.nyBtnGlow.visible;
             this._headerButtonsHelper.invalidateDataById(HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR);
             this.as_doDisableHeaderButton(HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR,param3);
          }
+      }
+      
+      public function as_updateNYVisibility(param1:Boolean) : void
+      {
+         this.nyBtnGlow.visible = param1;
       }
       
       public function as_updateOnlineCounter(param1:String, param2:String, param3:String, param4:Boolean) : void
@@ -430,12 +453,14 @@ package net.wg.gui.lobby.header
          constraints = new Constraints(this,ConstrainMode.REFLOW);
          constraints.addElement(this.centerBg.name,this.centerBg,Constraints.CENTER_H);
          constraints.addElement(this.centerMenuBg.name,this.centerMenuBg,Constraints.CENTER_H);
+         constraints.addElement(this.nyBtnGlow.name,this.nyBtnGlow,Constraints.CENTER_H);
          constraints.addElement(this.resizeBg.name,this.resizeBg,Constraints.LEFT | Constraints.RIGHT | Constraints.TOP);
          constraints.addElement(this.fightBtn.name,this.fightBtn,Constraints.CENTER_H);
          constraints.addElement(this.mainMenuButtonBar.name,this.mainMenuButtonBar,Constraints.CENTER_H);
          constraints.addElement(this.mainMenuGradient.name,this.mainMenuGradient,Constraints.CENTER_H);
          this.centerBg.mouseChildren = this.centerBg.mouseEnabled = false;
          this.centerMenuBg.mouseChildren = this.centerMenuBg.mouseEnabled = false;
+         this.nyBtnGlow.mouseChildren = this.nyBtnGlow.mouseEnabled = false;
          this.mainMenuGradient.mouseEnabled = false;
          this.mainMenuGradient.mouseChildren = false;
          this.hitArea = this.resizeBg;
@@ -450,16 +475,6 @@ package net.wg.gui.lobby.header
          this.headerButtonBar.addEventListener(PersonalReservesWidgetEvent.CREATED,this.onPersonalReserveWidgetCreated,false,0,true);
          this.fightBtn.mouseEnabledOnDisabled = true;
          _deferredDispose = true;
-      }
-      
-      override protected function draw() : void
-      {
-         super.draw();
-         if(isInvalid(InvalidationType.SIZE))
-         {
-            constraints.update(width,height);
-            this.updateSize();
-         }
       }
       
       override protected function onBeforeDispose() : void
@@ -501,7 +516,6 @@ package net.wg.gui.lobby.header
          this.mainMenuGradient.dispose();
          this.mainMenuGradient = null;
          this.resizeBg = null;
-         this.centerBg.dispose();
          this.centerBg = null;
          this.centerMenuBg.dispose();
          this.centerMenuBg = null;
@@ -693,18 +707,25 @@ package net.wg.gui.lobby.header
       
       private function onHeaderButtonBarPressHandler(param1:ButtonEvent) : void
       {
+         var _loc4_:HBC_SquadDataVo = null;
          var _loc2_:HeaderButton = HeaderButton(param1.target);
          var _loc3_:HeaderButtonVo = HeaderButtonVo(_loc2_.data);
          switch(_loc3_.id)
          {
             case HeaderButtonsHelper.ITEM_ID_SQUAD:
-               this._canShowSquad = true;
+               _loc4_ = HBC_SquadDataVo(this._headerButtonsHelper.getContentDataById(HeaderButtonsHelper.ITEM_ID_SQUAD));
+               if(!_loc4_.isEvent)
+               {
+                  this._canShowSquad = true;
+                  break;
+               }
          }
       }
       
       private function onHeaderButtonBarClickHandler(param1:ButtonEvent) : void
       {
-         var _loc4_:HBC_BattleTypeVo = null;
+         var _loc4_:HBC_SquadDataVo = null;
+         var _loc5_:HBC_BattleTypeVo = null;
          var _loc2_:HeaderButton = HeaderButton(param1.target);
          var _loc3_:HeaderButtonVo = HeaderButtonVo(_loc2_.data);
          switch(_loc3_.id)
@@ -725,17 +746,25 @@ package net.wg.gui.lobby.header
                onPremShopClickS();
                break;
             case HeaderButtonsHelper.ITEM_ID_SQUAD:
-               if(this._canShowSquad)
+               _loc4_ = HBC_SquadDataVo(this._headerButtonsHelper.getContentDataById(HeaderButtonsHelper.ITEM_ID_SQUAD));
+               if(_loc4_.isEvent)
                {
-                  showSquadS(this.getSquadButtonMiddleXPosition(_loc2_));
+                  App.popoverMgr.show(_loc2_,Aliases.SQUAD_TYPE_SELECT_POPOVER,null,_loc2_);
                }
-               this._canShowSquad = false;
+               else
+               {
+                  if(this._canShowSquad)
+                  {
+                     showSquadS(this.getSquadButtonMiddleXPosition(_loc2_));
+                  }
+                  this._canShowSquad = false;
+               }
                break;
             case HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR:
-               _loc4_ = HBC_BattleTypeVo(this._headerButtonsHelper.getContentDataById(HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR));
-               if(_loc4_)
+               _loc5_ = HBC_BattleTypeVo(this._headerButtonsHelper.getContentDataById(HeaderButtonsHelper.ITEM_ID_BATTLE_SELECTOR));
+               if(_loc5_)
                {
-                  if(_loc4_.showLegacySelector)
+                  if(_loc5_.showLegacySelector)
                   {
                      App.popoverMgr.show(_loc2_,Aliases.BATTLE_TYPE_SELECT_POPOVER,null,_loc2_);
                   }

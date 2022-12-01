@@ -25,19 +25,17 @@ package net.wg.gui.battle.views.stats.fullStats
       private static const TABLE_START_POINT:int = 33;
        
       
-      protected var isFDEvent:Boolean = false;
-      
       protected var allyRenderers:Vector.<StatsTableItemHolderBase>;
       
       protected var enemyRenderers:Vector.<StatsTableItemHolderBase>;
       
       protected var table:FullStatsTableBase = null;
       
-      protected var _teamDP:VehiclesDataProvider;
+      private var _teamDP:VehiclesDataProvider;
       
-      protected var _enemyDP:VehiclesDataProvider;
+      private var _enemyDP:VehiclesDataProvider;
       
-      protected var _dogTagsToShow:Dictionary;
+      private var _dogTagsToShow:Dictionary;
       
       private var _activePlayerData:DAAPIVehicleInfoVO;
       
@@ -59,11 +57,6 @@ package net.wg.gui.battle.views.stats.fullStats
          this.init();
          this.initCommonItems();
          this.setNoTranslate();
-      }
-      
-      public function setFDEvent(param1:Boolean) : void
-      {
-         this.isFDEvent = param1;
       }
       
       public function addVehiclesInfo(param1:Vector.<DAAPIVehicleInfoVO>, param2:Vector.<Number>, param3:Boolean) : void
@@ -172,16 +165,8 @@ package net.wg.gui.battle.views.stats.fullStats
          {
             _loc3_.invalidate();
          }
-         if(this.isFDEvent && _loc3_.updateDamages(param1))
-         {
-            _loc3_.invalidate();
-         }
          _loc3_ = this._enemyDP;
          if(_loc3_.updateFrags(param2))
-         {
-            _loc3_.invalidate();
-         }
-         if(this.isFDEvent && _loc3_.updateDamages(param2))
          {
             _loc3_.invalidate();
          }
@@ -400,7 +385,6 @@ package net.wg.gui.battle.views.stats.fullStats
             {
                _loc5_ = this.enemyRenderers[_loc4_];
                _loc6_ = this._enemyDP.requestItemAt(_loc4_) as DAAPIVehicleInfoVO;
-               _loc5_.setFDEvent(this.isFDEvent);
                _loc5_.setDAAPIVehicleData(_loc6_);
                _loc5_.showDogTag(null);
                for(_loc7_ in this._dogTagsToShow)
@@ -438,7 +422,6 @@ package net.wg.gui.battle.views.stats.fullStats
             {
                _loc5_ = this.allyRenderers[_loc4_];
                _loc6_ = this._teamDP.requestItemAt(_loc4_) as DAAPIVehicleInfoVO;
-               _loc5_.setFDEvent(this.isFDEvent);
                _loc5_.setDAAPIVehicleData(_loc6_);
                if(this._activePlayerData)
                {

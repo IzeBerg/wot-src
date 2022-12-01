@@ -505,6 +505,8 @@ class DIALOGS(object):
     VOICECHATINITSUCCEDED_TITLE = '#dialogs:voiceChatInitSucceded/title'
     VOICECHATINITSUCCEDED_MESSAGE = '#dialogs:voiceChatInitSucceded/message'
     VOICECHATINITSUCCEDED_CANCEL = '#dialogs:voiceChatInitSucceded/cancel'
+    INGAMEBROWSER_TEXTURELOADINGFAILED_TITLE = '#dialogs:inGameBrowser/textureLoadingFailed/title'
+    INGAMEBROWSER_TEXTURELOADINGFAILED_MESSAGE = '#dialogs:inGameBrowser/textureLoadingFailed/message'
     MESSENGER_USERINFOHIDDEN_TITLE = '#dialogs:messenger/userInfoHidden/title'
     MESSENGER_USERINFOHIDDEN_MESSAGE = '#dialogs:messenger/userInfoHidden/message'
     MESSENGER_USERINFOHIDDEN_SUBMIT = '#dialogs:messenger/userInfoHidden/submit'
@@ -537,6 +539,7 @@ class DIALOGS(object):
     VEHICLESELLDIALOG_COMMONRESULT = '#dialogs:vehicleSellDialog/commonResult'
     VEHICLESELLDIALOG_INVENTORY = '#dialogs:vehicleSellDialog/inventory'
     VEHICLESELLDIALOG_UNLOAD = '#dialogs:vehicleSellDialog/unload'
+    VEHICLESELLDIALOG_DECONSTRUCT = '#dialogs:vehicleSellDialog/deconstruct'
     VEHICLESELLDIALOG_NOTINSTALLED_MODULES = '#dialogs:vehicleSellDialog/notInstalled/modules'
     VEHICLESELLDIALOG_COUNT = '#dialogs:vehicleSellDialog/count'
     VEHICLESELLDIALOG_REMOVE = '#dialogs:vehicleSellDialog/remove'
@@ -998,6 +1001,14 @@ class DIALOGS(object):
     CREWBOOKS_SUCCESS_DESC_CREWBOOK = '#dialogs:crewBooks/success/desc/crewBook'
     CREWBOOKS_SUCCESS_DESC_PERSONALBOOK = '#dialogs:crewBooks/success/desc/personalBook'
     CREWBOOKS_SUCCESS_TITLE = '#dialogs:crewBooks/success/title'
+    BREAKDECORATIONS_TITLE = '#dialogs:breakDecorations/title'
+    BREAKDECORATIONS_MESSAGE = '#dialogs:breakDecorations/message'
+    BREAKDECORATIONS_SUBMIT = '#dialogs:breakDecorations/submit'
+    BREAKDECORATIONS_CANCEL = '#dialogs:breakDecorations/cancel'
+    NEWYEAR_BUYTOY_TITLE = '#dialogs:newYear/buyToy/title'
+    NEWYEAR_BUYTOY_MESSAGE = '#dialogs:newYear/buyToy/message'
+    NEWYEAR_BUYTOY_SUBMIT = '#dialogs:newYear/buyToy/submit'
+    NEWYEAR_BUYTOY_CANCEL = '#dialogs:newYear/buyToy/cancel'
     CONFIRMEQUIPMENTBUYINSTALL_SUBMIT = '#dialogs:confirmEquipmentBuyInstall/submit'
     EQUIPMENTPURCASE_CONFORMATION_ALL = '#dialogs:equipmentPurcase/conformation/all'
     EQUIPMENTBUYINSTALL_PRICE = '#dialogs:equipmentBuyInstall/price'
@@ -1005,6 +1016,7 @@ class DIALOGS(object):
     CONFIRMEQUIPMENTINSTALL_SUBMIT = '#dialogs:confirmEquipmentInstall/submit'
     EQUIPMENTDESTROY_CONFORMATION = '#dialogs:equipmentDestroy/conformation'
     EQUIPMENTSALE_CONFORMATION_HEADER = '#dialogs:equipmentSale/conformation/header'
+    EQUIPMENTDECONSTRUCT_CONFIRMATION_HEADER = '#dialogs:equipmentDeconstruct/confirmation/header'
     MODULESALE_CONFORMATION_HEADER = '#dialogs:moduleSale/conformation/header'
     ELEMENTTYPE_GUN = '#dialogs:elementType/gun'
     ELEMENTTYPE_TURRET = '#dialogs:elementType/turret'
@@ -1144,6 +1156,16 @@ class DIALOGS(object):
     COMP7_PUNISHMENTWINDOW_MSGTITLE = '#dialogs:comp7/punishmentWindow/msgTitle'
     COMP7_PUNISHMENTWINDOW_MESSAGE = '#dialogs:comp7/punishmentWindow/message'
     COMP7_PUNISHMENTWINDOW_CANCEL = '#dialogs:comp7/punishmentWindow/cancel'
+    EQUIPMENTUPGRADE_CONFIRMBUTTON = '#dialogs:equipmentUpgrade/confirmButton'
+    EQUIPMENTUPGRADE_GETMORECURRENCYBUTTON = '#dialogs:equipmentUpgrade/getMoreCurrencyButton'
+    EQUIPMENTUPGRADE_CANCELBUTTON = '#dialogs:equipmentUpgrade/cancelButton'
+    EQUIPMENTDECONSTRUCTION_CONFIRMBUTTON = '#dialogs:equipmentDeconstruction/confirmButton'
+    EQUIPMENTDECONSTRUCTION_CONFIRMANDUPGRADEBUTTON = '#dialogs:equipmentDeconstruction/confirmAndUpgradeButton'
+    EQUIPMENTDECONSTRUCTION_CANCELBUTTON = '#dialogs:equipmentDeconstruction/cancelButton'
+    CONFIRMAPPLYVEHICLEDISCOUNT_TITLE = '#dialogs:confirmApplyVehicleDiscount/title'
+    CONFIRMAPPLYVEHICLEDISCOUNT_MESSAGE = '#dialogs:confirmApplyVehicleDiscount/message'
+    CONFIRMAPPLYVEHICLEDISCOUNT_SUBMIT = '#dialogs:confirmApplyVehicleDiscount/submit'
+    CONFIRMAPPLYVEHICLEDISCOUNT_CANCEL = '#dialogs:confirmApplyVehicleDiscount/cancel'
     RECRUITWINDOW_VEHICLECLASSDROPDOWN_ENUM = (
      RECRUITWINDOW_VEHICLECLASSDROPDOWN_ALL,
      RECRUITWINDOW_VEHICLECLASSDROPDOWN_LIGHTTANK,
@@ -1649,6 +1671,8 @@ class DIALOGS(object):
      VOICECHATINITSUCCEDED_TITLE,
      VOICECHATINITSUCCEDED_MESSAGE,
      VOICECHATINITSUCCEDED_CANCEL,
+     INGAMEBROWSER_TEXTURELOADINGFAILED_TITLE,
+     INGAMEBROWSER_TEXTURELOADINGFAILED_MESSAGE,
      MESSENGER_USERINFOHIDDEN_TITLE,
      MESSENGER_USERINFOHIDDEN_MESSAGE,
      MESSENGER_USERINFOHIDDEN_SUBMIT,
@@ -1681,6 +1705,7 @@ class DIALOGS(object):
      VEHICLESELLDIALOG_COMMONRESULT,
      VEHICLESELLDIALOG_INVENTORY,
      VEHICLESELLDIALOG_UNLOAD,
+     VEHICLESELLDIALOG_DECONSTRUCT,
      VEHICLESELLDIALOG_NOTINSTALLED_MODULES,
      VEHICLESELLDIALOG_COUNT,
      VEHICLESELLDIALOG_REMOVE,
@@ -2142,6 +2167,14 @@ class DIALOGS(object):
      CREWBOOKS_SUCCESS_DESC_CREWBOOK,
      CREWBOOKS_SUCCESS_DESC_PERSONALBOOK,
      CREWBOOKS_SUCCESS_TITLE,
+     BREAKDECORATIONS_TITLE,
+     BREAKDECORATIONS_MESSAGE,
+     BREAKDECORATIONS_SUBMIT,
+     BREAKDECORATIONS_CANCEL,
+     NEWYEAR_BUYTOY_TITLE,
+     NEWYEAR_BUYTOY_MESSAGE,
+     NEWYEAR_BUYTOY_SUBMIT,
+     NEWYEAR_BUYTOY_CANCEL,
      CONFIRMEQUIPMENTBUYINSTALL_SUBMIT,
      EQUIPMENTPURCASE_CONFORMATION_ALL,
      EQUIPMENTBUYINSTALL_PRICE,
@@ -2149,6 +2182,7 @@ class DIALOGS(object):
      CONFIRMEQUIPMENTINSTALL_SUBMIT,
      EQUIPMENTDESTROY_CONFORMATION,
      EQUIPMENTSALE_CONFORMATION_HEADER,
+     EQUIPMENTDECONSTRUCT_CONFIRMATION_HEADER,
      MODULESALE_CONFORMATION_HEADER,
      ELEMENTTYPE_GUN,
      ELEMENTTYPE_TURRET,
@@ -2287,7 +2321,17 @@ class DIALOGS(object):
      COMP7_PUNISHMENTWINDOW_TITLE,
      COMP7_PUNISHMENTWINDOW_MSGTITLE,
      COMP7_PUNISHMENTWINDOW_MESSAGE,
-     COMP7_PUNISHMENTWINDOW_CANCEL)
+     COMP7_PUNISHMENTWINDOW_CANCEL,
+     EQUIPMENTUPGRADE_CONFIRMBUTTON,
+     EQUIPMENTUPGRADE_GETMORECURRENCYBUTTON,
+     EQUIPMENTUPGRADE_CANCELBUTTON,
+     EQUIPMENTDECONSTRUCTION_CONFIRMBUTTON,
+     EQUIPMENTDECONSTRUCTION_CONFIRMANDUPGRADEBUTTON,
+     EQUIPMENTDECONSTRUCTION_CANCELBUTTON,
+     CONFIRMAPPLYVEHICLEDISCOUNT_TITLE,
+     CONFIRMAPPLYVEHICLEDISCOUNT_MESSAGE,
+     CONFIRMAPPLYVEHICLEDISCOUNT_SUBMIT,
+     CONFIRMAPPLYVEHICLEDISCOUNT_CANCEL)
 
     @classmethod
     def recruitwindow_vehicleclassdropdown(cls, key0):

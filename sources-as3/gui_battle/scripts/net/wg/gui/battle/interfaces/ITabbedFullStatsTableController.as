@@ -40,7 +40,5 @@ package net.wg.gui.battle.interfaces
       function updateVehiclesData(param1:Vector.<DAAPIVehicleInfoVO>, param2:Vector.<Number>, param3:Boolean) : void;
       
       function setVehiclesStats(param1:Vector.<DAAPIVehicleStatsVO>, param2:Vector.<DAAPIVehicleStatsVO>) : void;
-      
-      function setFDEvent(param1:Boolean) : void;
    }
 }

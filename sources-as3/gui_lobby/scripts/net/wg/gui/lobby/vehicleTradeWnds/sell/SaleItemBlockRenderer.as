@@ -182,6 +182,11 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          constraints.update(this._width,this._height);
       }
       
+      public function hideLine() : void
+      {
+         this.itemUnderline.visible = false;
+      }
+      
       private function createDropDownDataProvider() : DataProvider
       {
          var _loc2_:Object = null;
@@ -191,7 +196,14 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          var _loc1_:DataProvider = new DataProvider();
          if(this._rendererData.isComplexOptionalDevice)
          {
-            _loc1_.push(new DDItem(VehicleSellDialogUtils.getLabel(DIALOGS.SELLCONFIRMATION_SUBMIT),this._rendererData.moneyValue,this._rendererData.sellActionPriceVo,false));
+            if(this._rendererData.isModernized)
+            {
+               _loc1_.push(new DDItem(VehicleSellDialogUtils.getLabel(DIALOGS.VEHICLESELLDIALOG_DECONSTRUCT,CURRENCIES_CONSTANTS.EQUIP_COIN),this._rendererData.moneyValue,this._rendererData.sellActionPriceVo,false,CURRENCIES_CONSTANTS.EQUIP_COIN));
+            }
+            else
+            {
+               _loc1_.push(new DDItem(VehicleSellDialogUtils.getLabel(DIALOGS.SELLCONFIRMATION_SUBMIT),this._rendererData.moneyValue,this._rendererData.sellActionPriceVo,false));
+            }
             _loc2_ = this._rendererData.removePrice;
             _loc3_ = VehicleSellDialogUtils.extractSortedCurrencies(_loc2_);
             _loc4_ = this._rendererData.removeActionPriceVo;
@@ -239,11 +251,6 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          return 1;
       }
       
-      public function hideLine() : void
-      {
-         this.itemUnderline.visible = false;
-      }
-      
       private function getDropDownSelectedItem() : DDItem
       {
          if(this.ddm.selectedIndex < 0 || this.ddm.selectedIndex >= this.ddm.dataProvider.length)
@@ -277,7 +284,11 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
       {
          var _loc2_:int = 330;
          var _loc3_:TooltipProps = new TooltipProps(BaseTooltips.TYPE_INFO,0,0,0,-1,0,_loc2_);
-         if(CURRENCIES_CONSTANTS.GOLD in this._rendererData.removePrice)
+         if(this._rendererData.isModernized)
+         {
+            App.toolTipMgr.showComplex(TOOLTIPS.VEHICLESELLDIALOG_RENDERER_ALERTICONEQUIPCOIN,_loc3_);
+         }
+         else if(CURRENCIES_CONSTANTS.GOLD in this._rendererData.removePrice)
          {
             App.toolTipMgr.showComplex(TOOLTIPS.VEHICLESELLDIALOG_RENDERER_ALERTICONGOLD,_loc3_);
          }

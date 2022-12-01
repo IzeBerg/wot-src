@@ -422,11 +422,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          invalidate(PlayersPanelInvalidationType.PLAYER_SCHEME);
       }
       
-      protected function getIsCurrentPlayer() : Boolean
-      {
-         return this._isCurrentPlayer;
-      }
-      
       public function setIsIGR(param1:Boolean) : void
       {
          if(this._isIGR == param1)
@@ -475,11 +470,6 @@ package net.wg.gui.battle.components.stats.playersPanel.list
          this.hpBarPlayersPanelListItem.setRightAligned(param1);
          this.initializeRightAligned(param1);
          invalidateState();
-      }
-      
-      protected function getIsRightAligned() : Boolean
-      {
-         return this._isRightAligned;
       }
       
       public function setIsSelected(param1:Boolean) : void

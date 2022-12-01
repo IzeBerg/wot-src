@@ -31,7 +31,6 @@ registerQueueEntity(QUEUE_TYPE.MAPBOX, MapboxEntity)
 registerQueueEntity(QUEUE_TYPE.MAPS_TRAINING, MapsTrainingEntity)
 registerQueueEntity(QUEUE_TYPE.EVENT_BATTLES, EventBattleEntity)
 registerQueueEntity(QUEUE_TYPE.COMP7, Comp7Entity)
-registerQueueEntity(QUEUE_TYPE.EVENT_BATTLES_2, EventBattleEntity)
 registerEntryPoint(PREBATTLE_ACTION_NAME.RANDOM, RandomEntryPoint)
 registerEntryPoint(PREBATTLE_ACTION_NAME.BATTLE_TUTORIAL, TutorialEntryPoint)
 registerEntryPoint(PREBATTLE_ACTION_NAME.SANDBOX, SandboxEntryPoint)
@@ -52,6 +51,7 @@ class PreQueueFactory(ControlFactory):
         self.battleRoyaleStorage = prequeue_storage_getter(QUEUE_TYPE.BATTLE_ROYALE)()
         self.mapboxStorage = prequeue_storage_getter(QUEUE_TYPE.MAPBOX)()
         self.mapsTrainingStorage = prequeue_storage_getter(QUEUE_TYPE.MAPS_TRAINING)()
+        self.eventBattlesStorage = prequeue_storage_getter(QUEUE_TYPE.EVENT_BATTLES)()
         self.funRandomStorage = prequeue_storage_getter(QUEUE_TYPE.FUN_RANDOM)()
         self.comp7Storage = prequeue_storage_getter(QUEUE_TYPE.COMP7)()
         self.recentArenaStorage = storage_getter(RECENT_ARENA_STORAGE)()
@@ -64,6 +64,7 @@ class PreQueueFactory(ControlFactory):
         result = collectEntryPoint(action.actionName)
         if result:
             result.setAccountsToInvite(action.accountsToInvite)
+            result.setExtData(action.extData)
         return result
 
     def createEntity(self, ctx):
@@ -101,12 +102,13 @@ class PreQueueFactory(ControlFactory):
                 return MapboxEntity()
             if self.mapsTrainingStorage.isModeSelected():
                 return MapsTrainingEntity()
+            if self.eventBattlesStorage.isModeSelected():
+                return EventBattleEntity()
             if self.funRandomStorage is not None and self.funRandomStorage.isModeSelected():
                 return self.__createByQueueType(QUEUE_TYPE.FUN_RANDOM)
             if self.comp7Storage.isModeSelected():
                 return Comp7Entity()
-            if self.recentArenaStorage.queueType and self.recentArenaStorage.isModeSelected():
-                prbEntity = self.__createByQueueType(self.recentArenaStorage.queueType)
-                if prbEntity:
-                    return prbEntity
+            prbEntity = self.__createByQueueType(self.recentArenaStorage.queueType)
+            if prbEntity:
+                return prbEntity
             return RandomEntity()
