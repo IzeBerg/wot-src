@@ -13059,6 +13059,12 @@ package
       
       public static const PROJECTION_DECALS_HOLIDAY_PROJECTION_DECAL_151:String = "#vehicle_customization:projection_decals/holiday/projection_decal_151";
       
+      public static const PROJECTION_DECALS_HOLIDAY_PROJECTION_DECAL_152:String = "#vehicle_customization:projection_decals/holiday/projection_decal_152";
+      
+      public static const PROJECTION_DECALS_HOLIDAY_PROJECTION_DECAL_154:String = "#vehicle_customization:projection_decals/holiday/projection_decal_154";
+      
+      public static const PROJECTION_DECALS_HOLIDAY_PROJECTION_DECAL_156:String = "#vehicle_customization:projection_decals/holiday/projection_decal_156";
+      
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_348:String = "#vehicle_customization:projection_decals/special/projection_decal_348";
       
       public static const PROJECTION_DECALS_SPECIAL_PROJECTION_DECAL_349:String = "#vehicle_customization:projection_decals/special/projection_decal_349";
