@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd2</identifier>
+					<fx>shaders/std_effects/glow.fx</fx>
+					<materialKind>110</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Kitchen/NY21_Kitchen_05_05_Glow_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						selfIllumination
+						<Float>12.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>-0.391778 2.564961 1.178721</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/PBS_glass.fx</fx>
+					<materialKind>110</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						dirtAlbedoMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Kitchen/NY21_Kitchen_05_05_glass_AM.dds</Texture>
+					</property>
+					<property>
+						glassMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Kitchen/NY21_Kitchen_05_05_glass_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Kitchen/NY21_Kitchen_05_05_glass_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.488072 1.145106 1.282804</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				2
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/PBS_ext.fx</fx>
+					<materialKind>108</materialKind>
+					<collisionFlags>255</collisionFlags>
+					<property>
+						alphaReference
+						<Int>100</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Kitchen/NY21_Kitchen_05_05_AM.dds</Texture>
+					</property>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Kitchen/NY21_Kitchen_05_05_GMM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h_newyear/customization/Tableful/Kitchen/NY21_Kitchen_05_05_ANM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>-0.927918 2.317966 1.766438</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-3.481417 -0.000512 -1.000000</min>
+		<max>1.625580 4.636444 3.924266</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>287464</geometrySize>
+	<minUVDensity>0.002703</minUVDensity>
+</root>

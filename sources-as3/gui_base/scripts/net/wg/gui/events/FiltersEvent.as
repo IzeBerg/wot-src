@@ -14,6 +14,8 @@ package net.wg.gui.events
       public static const RESET_VEHICLE_FILTERS:String = "resetVehicleFilters";
       
       public static const NATION_FILTER_CHANGED:String = "nationFilterChanged";
+      
+      public static const MODULES_FILTER_CHANGED:String = "modulesFilterChanged";
        
       
       private var _filtersValue:int;

@@ -2,6 +2,6 @@ from gui.Scaleform.framework.entities.inject_component_adaptor import InjectComp
 
 class FunRandomHangarWidgetMeta(InjectComponentAdaptor):
 
-    def as_setModifiersCountS(self, count):
+    def as_updateHitAreaS(self):
         if self._isDAAPIInited():
-            return self.flashObject.as_setModifiersCount(count)
+            return self.flashObject.as_updateHitArea()

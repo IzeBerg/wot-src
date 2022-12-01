@@ -33,6 +33,9 @@ class GameMessagesPanel(GameMessagesPanelMeta):
     def onMessageStarted(self, msgType, modificator, msgID):
         pass
 
+    def onMessagePhaseStarted(self, type, modificator, id):
+        pass
+
     def onMessageEnded(self, msgType, msgID):
         pass
 

@@ -7,8 +7,6 @@ package net.wg.gui.battle.eventBattle.views.buffsPanel
    {
        
       
-      public var id:String = "";
-      
       public var iconLoader:BattleAtlasSprite = null;
       
       public function EventBuffButton()
@@ -16,12 +14,6 @@ package net.wg.gui.battle.eventBattle.views.buffsPanel
          super();
          isAllowedToShowToolTipOnDisabledState = true;
          hideToolTipOnClickActions = false;
-      }
-      
-      override protected function initialize() : void
-      {
-         super.initialize();
-         buttonMode = false;
       }
       
       public function set icon(param1:String) : void

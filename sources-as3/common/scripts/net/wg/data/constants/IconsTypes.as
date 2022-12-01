@@ -35,6 +35,10 @@ package net.wg.data.constants
       
       public static const CRYSTAL:String = ICON_TEXT_FRAMES.CRYSTAL;
       
+      public static const EQUIP_COIN:String = ICON_TEXT_FRAMES.EQUIP_COIN;
+      
+      public static const EQUIP_COIN_BIG:String = ICON_TEXT_FRAMES.EQUIP_COIN_BIG;
+      
       public static const TANK_DAILYXPFACTOR:String = ICON_TEXT_FRAMES.TANK_DAILYXPFACTOR;
       
       public static const TANK_UNLOCK_PRICE:String = ICON_TEXT_FRAMES.TANK_UNLOCK_PRICE;
@@ -67,7 +71,9 @@ package net.wg.data.constants
       
       public static const CRYSTAL_COLOR:int = 13224374;
       
-      public static const ALLOW_ICONS:Array = [EMPTY,CREDITS,GOLD,GOLD_DISCOUNT,XP,ELITE_XP,ELITE,ARROW_DOWN,ARROW_UP,ARROW_DOWN_DISABLED,ELITE_TANK_XP,FREE_XP,TANK_DAILYXPFACTOR,TANK_UNLOCK_PRICE,DOUBLE_XP_FACTOR,ACTION_XP_FACTOR,CLASS1,CLASS2,CLASS3,CLASS4,XP_PRICE,DEFRES,RENTALS,REWARD_SHEET,CRYSTAL];
+      public static const EQUIP_COIN_COLOR:int = 13224374;
+      
+      public static const ALLOW_ICONS:Array = [EMPTY,CREDITS,GOLD,GOLD_DISCOUNT,XP,ELITE_XP,ELITE,ARROW_DOWN,ARROW_UP,ARROW_DOWN_DISABLED,ELITE_TANK_XP,FREE_XP,TANK_DAILYXPFACTOR,TANK_UNLOCK_PRICE,DOUBLE_XP_FACTOR,ACTION_XP_FACTOR,CLASS1,CLASS2,CLASS3,CLASS4,XP_PRICE,DEFRES,RENTALS,REWARD_SHEET,CRYSTAL,EQUIP_COIN];
        
       
       public function IconsTypes()
@@ -93,6 +99,10 @@ package net.wg.data.constants
                break;
             case CRYSTAL:
                _loc2_ = CRYSTAL_COLOR;
+               break;
+            case EQUIP_COIN:
+            case EQUIP_COIN_BIG:
+               _loc2_ = EQUIP_COIN_COLOR;
          }
          return _loc2_;
       }

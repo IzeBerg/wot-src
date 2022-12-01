@@ -128,6 +128,69 @@
 			</directory>
 		</directory>
 		<directory>
+			<path>Hangars</path>
+			<directory>
+				<path>h30_newyear_2021</path>
+				<directory>
+					<path>environment</path>
+					<rule>
+						<allowSplit>true</allowSplit>
+						<category>content</category>
+						<pattern>.*</pattern>
+					</rule>
+					<rule>
+						<format>DXT5</format>
+						<allowSplit>false</allowSplit>
+						<noResize>true</noResize>
+						<editableTags>ME;UE</editableTags>
+						<pattern>.*_blend.*\.png$</pattern>
+					</rule>
+					<rule>
+						<allowSplit>false</allowSplit>
+						<noResize>true</noResize>
+						<pattern>.*_blend.*\.dds$</pattern>
+					</rule>
+					<rule>
+						<allowSplit>true</allowSplit>
+						<lodMode>4</lodMode>
+						<pattern>.*_BAM\.dds</pattern>
+					</rule>
+					<rule>
+						<allowSplit>true</allowSplit>
+						<lodMode>4</lodMode>
+						<pattern>.*_BANM\.dds</pattern>
+					</rule>
+					<rule>
+						<allowSplit>true</allowSplit>
+						<lodMode>4</lodMode>
+						<pattern>.*_BGMM\.dds</pattern>
+					</rule>
+					<rule>
+						<allowSplit>false</allowSplit>
+						<pattern>.*h30_NY23_006_Machine_Screen_AM\.dds</pattern>
+					</rule>
+					<directory>
+						<path>00_Tiles</path>
+						<rule>
+							<format>DXT5</format>
+							<paddingMode>DOWNSCALED_CENTERED_TILED</paddingMode>
+							<pattern>.*\_AM.png$</pattern>
+						</rule>
+						<rule>
+							<format>DXT5</format>
+							<paddingMode>DOWNSCALED_CENTERED_TILED</paddingMode>
+							<pattern>.*\_GBMT.png$</pattern>
+						</rule>
+						<rule>
+							<format>DXT1</format>
+							<paddingMode>DOWNSCALED_CENTERED_TILED</paddingMode>
+							<pattern>.*\_MAO.png$</pattern>
+						</rule>
+					</directory>
+				</directory>
+			</directory>
+		</directory>
+		<directory>
 			<path>MilitaryEnvironment</path>
 			<directory>
 				<path>00_Tiles</path>

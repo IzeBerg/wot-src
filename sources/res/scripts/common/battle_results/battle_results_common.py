@@ -193,6 +193,8 @@ BATTLE_RESULTS = [
  (
   'bpcoin', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
  (
+  'equipCoin', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
+ (
   'piggyBank', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
  (
   'eventCredits', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
@@ -210,6 +212,8 @@ BATTLE_RESULTS = [
   'eventEventCoin', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
  (
   'eventBpcoin', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
+ (
+  'eventEquipCoin', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
  (
   'originalCredits', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
  (
@@ -243,9 +247,13 @@ BATTLE_RESULTS = [
  (
   'originalBpcoin', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
  (
+  'originalEquipCoin', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
+ (
   'eventCoinReplay', str, '', ValueReplayPacker(), 'skip', ENTRY_TYPE.VEHICLE_SELF),
  (
   'bpcoinReplay', str, '', ValueReplayPacker(), 'skip', ENTRY_TYPE.VEHICLE_SELF),
+ (
+  'equipCoinReplay', str, '', ValueReplayPacker(), 'skip', ENTRY_TYPE.VEHICLE_SELF),
  (
   'factualXP', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
  (
@@ -269,6 +277,8 @@ BATTLE_RESULTS = [
  (
   'subtotalBpcoin', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
  (
+  'subtotalEquipCoin', int, 0, None, 'sum', ENTRY_TYPE.VEHICLE_SELF),
+ (
   'eventCreditsList', list, [], None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
  (
   'eventXPList', list, [], None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
@@ -285,9 +295,11 @@ BATTLE_RESULTS = [
  (
   'eventBpcoinList', list, [], None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
  (
-  'eventCreditsFactor100List', list, [], None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
+  'eventEquipCoinList', list, [], None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
  (
-  'eventXPFactor100List', list, [], None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
+  'eventCreditsFactor1000List', list, [], None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
+ (
+  'eventXPFactor1000List', list, [], None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
  (
   'eventFreeXPFactor100List', list, [], None, 'skip', ENTRY_TYPE.VEHICLE_SELF),
  (
@@ -465,7 +477,7 @@ BATTLE_RESULTS = [
  (
   'winnerIfDraw', int, 0, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
-  'isPrematureLeave', bool, False, None, 'skip', ENTRY_TYPE.ACCOUNT_ALL),
+  'isPrematureLeave', bool, False, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
   'watchedBattleToTheEnd', bool, False, None, 'skip', ENTRY_TYPE.ACCOUNT_SELF),
  (
@@ -508,6 +520,8 @@ BATTLE_RESULTS = [
   'eventEventCoin', int, 0, None, 'sum', ENTRY_TYPE.ACCOUNT_SELF),
  (
   'eventBpcoin', int, 0, None, 'sum', ENTRY_TYPE.ACCOUNT_SELF),
+ (
+  'eventEquipCoin', int, 0, None, 'sum', ENTRY_TYPE.ACCOUNT_SELF),
  (
   'credits', int, 0, None, 'sum', ENTRY_TYPE.ACCOUNT_SELF),
  (

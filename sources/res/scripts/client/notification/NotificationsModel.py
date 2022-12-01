@@ -10,7 +10,7 @@ class NotificationsModel(object):
         self.__collection = NotificationsCollection()
         self.__listeners = NotificationsListeners()
         self.__counter = counter
-        self.__firstEnrty = firstEntry
+        self.__firstEntry = firstEntry
         self.onDisplayStateChanged = Event.Event()
         self.onNotificationReceived = Event.Event()
         self.onNotificationUpdated = Event.Event()
@@ -52,8 +52,9 @@ class NotificationsModel(object):
             return
         else:
             groupID = notification.getGroup()
+            countOnce = notification.isShouldCountOnlyOnce()
             if self.__collection.removeItem(typeID, entityID):
-                self.onNotificationRemoved(typeID, entityID, groupID)
+                self.onNotificationRemoved(typeID, entityID, groupID, countOnce)
             return
 
     def removeNotificationsByType(self, typeID):
@@ -65,11 +66,11 @@ class NotificationsModel(object):
     def getNotification(self, typeID, entityID):
         return self.__collection.getItem(typeID, entityID)
 
-    def incrementNotifiedMessagesCount(self, group, typeID, entityID):
-        self.onNotifiedMessagesCountChanged(self.__counter.addNotification(group, typeID, entityID))
+    def incrementNotifiedMessagesCount(self, group, typeID, entityID, countOnlyOnce):
+        self.onNotifiedMessagesCountChanged(self.__counter.addNotification(group, typeID, entityID, countOnlyOnce))
 
-    def decrementNotifiedMessagesCount(self, group, typeID, entityID):
-        self.onNotifiedMessagesCountChanged(self.__counter.removeNotification(group, typeID, entityID))
+    def decrementNotifiedMessagesCount(self, group, typeID, entityID, countOnlyOnce):
+        self.onNotifiedMessagesCountChanged(self.__counter.removeNotification(group, typeID, entityID, countOnlyOnce))
 
     def resetNotifiedMessagesCount(self, group=None):
         self.onNotifiedMessagesCountChanged(self.__counter.reset(group))
@@ -78,7 +79,7 @@ class NotificationsModel(object):
         return self.__counter.count(group)
 
     def getFirstEntry(self):
-        return self.__firstEnrty
+        return self.__firstEntry
 
     def setup(self):
         self.__collection.default()

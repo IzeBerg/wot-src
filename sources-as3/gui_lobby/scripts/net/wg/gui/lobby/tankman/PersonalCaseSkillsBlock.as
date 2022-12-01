@@ -23,8 +23,6 @@ package net.wg.gui.lobby.tankman
       
       public var skillsBtn:MovieClip;
       
-      private var _isVehicleLocked:Boolean = false;
-      
       public function PersonalCaseSkillsBlock()
       {
          super();
@@ -95,17 +93,21 @@ package net.wg.gui.lobby.tankman
       
       override protected function validateDate() : void
       {
-         this._isVehicleLocked = data.currentVehicle && data.currentVehicle.currentVehicleLocked;
-         this.dropSkillsButton.enabled = this.isEnableDropSkillsButton();
+         var _loc1_:Boolean = data.currentVehicle && data.currentVehicle.currentVehicleLocked;
+         this.dropSkillsButton.enabled = !_loc1_ && this.isSkillDroppable();
          if(this.dropSkillsButton.enabled)
          {
             this.dropSkillsButton.tooltip = TOOLTIPS.PERSONAL_CASE_SKILLS_DROPSKILLSBUTTON;
+         }
+         else if(_loc1_ && this.isSkillDroppable())
+         {
+            this.dropSkillsButton.tooltip = TOOLTIPS.PERSONAL_CASE_SKILLS_DROPSKILLSBUTTON_INBATTLE;
          }
          else
          {
             this.dropSkillsButton.tooltip = TOOLTIPS.PERSONAL_CASE_SKILLS_DROPSKILLSBUTTON_NOSKILL;
          }
-         this.initializeSkillBtn(this._isVehicleLocked);
+         this.initializeSkillBtn(_loc1_);
          super.validateDate();
       }
       
@@ -126,13 +128,9 @@ package net.wg.gui.lobby.tankman
          return false;
       }
       
-      private function isEnableDropSkillsButton() : Boolean
+      private function isSkillDroppable() : Boolean
       {
          var _loc3_:Object = null;
-         if(this._isVehicleLocked)
-         {
-            return false;
-         }
          var _loc1_:uint = data.skills.length;
          var _loc2_:int = 0;
          while(_loc2_ < _loc1_)

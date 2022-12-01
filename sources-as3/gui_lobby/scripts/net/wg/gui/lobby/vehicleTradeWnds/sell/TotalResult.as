@@ -19,6 +19,10 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
       private static const RIGHT_POSITION:int = 263;
       
       private static const GAP:int = 40;
+      
+      private static const GAP_SMALL:int = 20;
+      
+      private static const COUNTERS_COUNT_GAP_BREAKPOINT:int = 4;
        
       
       public var headerTF:TextField;
@@ -57,17 +61,6 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          super.onDispose();
       }
       
-      public function getSize() : int
-      {
-         return this.headerTF.y + this.headerTF.height + PADDING_NEXT_BLOCK;
-      }
-      
-      public function setMoney(param1:Vector.<VehicleSellDialogMoneyVO>) : void
-      {
-         this._money = param1;
-         invalidateData();
-      }
-      
       override protected function draw() : void
       {
          var _loc1_:uint = 0;
@@ -76,6 +69,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
          var _loc4_:VehicleSellDialogMoneyVO = null;
          var _loc5_:uint = 0;
          var _loc6_:int = 0;
+         var _loc7_:Boolean = false;
          super.draw();
          if(isInvalid(InvalidationType.DATA))
          {
@@ -91,6 +85,7 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
             if(this._money != null)
             {
                _loc1_ = this._money.length;
+               _loc7_ = _loc1_ > COUNTERS_COUNT_GAP_BREAKPOINT;
                _loc2_ = 0;
                while(_loc2_ < _loc1_)
                {
@@ -122,11 +117,22 @@ package net.wg.gui.lobby.vehicleTradeWnds.sell
                   addChild(_loc3_);
                   _loc3_.validateNow();
                   _loc3_.x = _loc6_;
-                  _loc6_ -= _loc3_.getVisibleWidth() + GAP;
+                  _loc6_ -= _loc3_.getVisibleWidth() + (!!_loc7_ ? GAP_SMALL : GAP);
                   _loc2_++;
                }
             }
          }
+      }
+      
+      public function getSize() : int
+      {
+         return this.headerTF.y + this.headerTF.height + PADDING_NEXT_BLOCK;
+      }
+      
+      public function setMoney(param1:Vector.<VehicleSellDialogMoneyVO>) : void
+      {
+         this._money = param1;
+         invalidateData();
       }
    }
 }

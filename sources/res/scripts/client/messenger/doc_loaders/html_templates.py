@@ -24,6 +24,8 @@ class _MessageTemplate(templates.Template):
                 vo['buttonsStates'] = {}
             if 'bgIconHeight' in data:
                 vo['bgIconHeight'] = data['bgIconHeight']
+            if 'linkageData' in data:
+                vo['linkageData'] = data['linkageData']
         vo['message'] = super(_MessageTemplate, self).format(ctx=ctx, sourceKey='message')
         return vo
 
@@ -63,7 +65,7 @@ class MessageTemplates(templates.XMLCollection):
            'bgIconSizeAuto': source.readBool('bgIconSizeAuto'), 
            'icon': source.readString('icon'), 
            'defaultIcon': source.readString('defaultIcon'), 
-           'filters': [], 'buttonsLayout': []}
+           'filters': [], 'buttonsStates': {}, 'buttonsLayout': [], 'buttonsAlign': source.readString('buttonsAlign', default='left')}
         priority = source.readString('priority', NotificationPriorityLevel.MEDIUM)
         if priority not in NotificationPriorityLevel.RANGE:
             LOG_WARNING('Priority is invalid', sourceID, priority)

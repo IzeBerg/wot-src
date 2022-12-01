@@ -1,7 +1,9 @@
 import CommandMapping
 from account_helpers import AccountSettings
 from account_helpers.AccountSettings import FUN_RANDOM_HINT_SECTION, HINTS_LEFT
-from constants import ARENA_GUI_TYPE
+from fun_random.gui.feature.util.fun_mixins import FunSubModesWatcher
+from fun_random.gui.feature.util.fun_wrappers import hasBattleSubMode
+from fun_random.gui.Scaleform.daapi.view.battle.hint_panel.hint_panel_plugin import HelpHintContext
 from gui.Scaleform.daapi.settings.views import VIEW_ALIAS
 from gui.Scaleform.daapi.view.battle.shared.hint_panel.hint_panel_plugin import HintPanelPlugin, HintData, HintPriority
 from gui.Scaleform.daapi.view.battle.shared.hint_panel.plugins import PreBattleHintPlugin, BEFORE_START_BATTLE_PERIODS
@@ -24,17 +26,20 @@ def updatePlugins(plugins):
     return plugins
 
 
-class FunRandomPreBattleHintPlugin(PreBattleHintPlugin):
+class FunRandomPreBattleHintPlugin(PreBattleHintPlugin, FunSubModesWatcher):
 
     @classmethod
+    @hasBattleSubMode(defReturn=False)
     def isSuitable(cls):
-        return AccountSettings.getSettings(FUN_RANDOM_HINT_SECTION)[HINTS_LEFT] <= 0
+        settingsKey = cls.getBattleSubMode().getSettings().client.settingsKey
+        funRandomSettings = AccountSettings.getSettings(FUN_RANDOM_HINT_SECTION)
+        return settingsKey in funRandomSettings and funRandomSettings[settingsKey][HINTS_LEFT] <= 0
 
 
-class FunRandomHelpPlugin(HintPanelPlugin):
+class FunRandomHelpPlugin(HintPanelPlugin, FunSubModesWatcher):
     __slots__ = ('__isActive', '__settings', '__isShown', '__isInDisplayPeriod', '__callbackDelayer',
-                 '__isVisible')
-    _sessionProvider = dependency.descriptor(IBattleSessionProvider)
+                 '__isVisible', '__settingKey')
+    __sessionProvider = dependency.descriptor(IBattleSessionProvider)
     _HINT_TIMEOUT = 6
 
     def __init__(self, parentObj):
@@ -45,28 +50,35 @@ class FunRandomHelpPlugin(HintPanelPlugin):
         self.__isVisible = False
         self.__isInDisplayPeriod = False
         self.__callbackDelayer = None
+        self.__settingKey = ''
         return
 
     @classmethod
+    @hasBattleSubMode(defReturn=False)
     def isSuitable(cls):
-        return cls._sessionProvider.arenaVisitor.getArenaGuiType() == ARENA_GUI_TYPE.FUN_RANDOM
+        settingsKey = cls.getBattleSubMode().getSettings().client.settingsKey
+        funRandomSettings = AccountSettings.getSettings(FUN_RANDOM_HINT_SECTION)
+        return settingsKey not in funRandomSettings or funRandomSettings[settingsKey][HINTS_LEFT] > 0
 
     def start(self):
         self.__isActive = True
-        self.__settings = AccountSettings.getSettings(FUN_RANDOM_HINT_SECTION)
         self.__callbackDelayer = CallbackDelayer()
+        self.__settingKey = self.getBattleSubMode().getSettings().client.settingsKey
+        self.__settings = AccountSettings.getSettings(FUN_RANDOM_HINT_SECTION)
+        self.__settings[self.__settingKey] = self.__settings.get(self.__settingKey, {HINTS_LEFT: 3})
         g_eventBus.addListener(ViewEventType.LOAD_VIEW, self.__handleLoadView, scope=EVENT_BUS_SCOPE.BATTLE)
-        g_eventBus.addListener(GameEvent.BATTLE_LOADING, self.__handleBattleLoading, scope=EVENT_BUS_SCOPE.BATTLE)
+        g_eventBus.addListener(GameEvent.BATTLE_LOADING, self.__onBattleLoading, scope=EVENT_BUS_SCOPE.BATTLE)
 
     def stop(self):
         if self.__isActive:
             self.__hide()
-            g_eventBus.removeListener(ViewEventType.LOAD_VIEW, self.__handleLoadView, scope=EVENT_BUS_SCOPE.BATTLE)
-            g_eventBus.removeListener(GameEvent.BATTLE_LOADING, self.__handleBattleLoading, scope=EVENT_BUS_SCOPE.BATTLE)
             self.__callbackDelayer.destroy()
             self.__callbackDelayer = None
+            g_eventBus.removeListener(ViewEventType.LOAD_VIEW, self.__handleLoadView, scope=EVENT_BUS_SCOPE.BATTLE)
+            g_eventBus.removeListener(GameEvent.BATTLE_LOADING, self.__onBattleLoading, scope=EVENT_BUS_SCOPE.BATTLE)
             if self.__isShown:
                 AccountSettings.setSettings(FUN_RANDOM_HINT_SECTION, self.__settings)
+        self.__settingKey = ''
         self.__isActive = False
         return
 
@@ -80,13 +92,13 @@ class FunRandomHelpPlugin(HintPanelPlugin):
     def _getHint(self):
         keyName = getReadableKey(CommandMapping.CMD_SHOW_HELP)
         key = getVirtualKey(CommandMapping.CMD_SHOW_HELP)
-        pressText = backport.text(R.strings.ingame_gui.helpScreen.hint.press())
-        hintText = backport.text(R.strings.ingame_gui.helpScreen.hint.modeDescription())
-        return HintData(key, keyName, pressText, hintText, 0, 0, HintPriority.HELP, False)
+        pressText = backport.text(R.strings.ingame_gui.helpScreen.hint.funSubModePress())
+        hintText = backport.text(R.strings.ingame_gui.helpScreen.hint.funSubModeDescription())
+        return HintData(key, keyName, pressText, hintText, 0, 0, HintPriority.HELP, False, HelpHintContext.FUN_RANDOM)
 
     def __showHint(self):
         self._parentObj.setBtnHint(CommandMapping.CMD_SHOW_HELP, self._getHint())
-        self._updateBattleCounterOnUsed(self.__settings)
+        self._updateBattleCounterOnUsed(self.__settings[self.__settingKey])
         self.__callbackDelayer.delayCallback(self._HINT_TIMEOUT, self.__hide)
         self.__isVisible = True
         self.__isShown = True
@@ -95,9 +107,9 @@ class FunRandomHelpPlugin(HintPanelPlugin):
         if event.alias == VIEW_ALIAS.INGAME_DETAILS_HELP:
             self.__hide()
 
-    def __handleBattleLoading(self, event):
+    def __onBattleLoading(self, event):
         battleLoadingShown = event.ctx.get('isShown')
-        if not battleLoadingShown and self.__isInDisplayPeriod and AccountSettings.getSettings(FUN_RANDOM_HINT_SECTION)[HINTS_LEFT] > 0:
+        if not battleLoadingShown and self.__isInDisplayPeriod and self.__settings[self.__settingKey][HINTS_LEFT] > 0:
             self.__showHint()
 
     def __hide(self):

@@ -117,6 +117,7 @@ package net.wg.gui.battle.random.views.fragCorrelationBar.components
       
       private function updateVehicleIDs() : void
       {
+         this._vehicleStatus ^= VehicleStatus.IS_ALIVE;
          this.normalMarker.visible = false;
          stop();
          this._vehicleMarkerAnimFinishedHandler.sort();

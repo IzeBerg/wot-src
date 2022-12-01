@@ -1,9 +1,9 @@
 import copy, random, time
-from collections import defaultdict
-from typing import Dict, Optional
+from typing import Optional, Dict
 from account_shared import getCustomizationItem
-from battle_pass_common import NON_VEH_CD
+from items.components.ny_constants import CurrentNYConstants, PREV_NY_TOYS_COLLECTIONS, YEARS_INFO
 from soft_exception import SoftException
+from battle_pass_common import NON_VEH_CD
 
 def _packTrack(track):
     result = []
@@ -194,12 +194,21 @@ def __mergeMeta(total, key, value, isLeaf=False, count=1, *args):
     total[key] = value
 
 
+def __mergeNYToys(total, key, value, isLeaf=False, count=1, *args):
+    result = total.setdefault(key, {})
+    for slotID, toysData in value.iteritems():
+        slotData = result.setdefault(slotID, {})
+        for toyID, toyCount in toysData.iteritems():
+            slotData[toyID] = slotData.get(toyID, 0) + count * toyCount
+
+
 BONUS_MERGERS = {'credits': __mergeValue, 
    'gold': __mergeValue, 
    'xp': __mergeValue, 
    'crystal': __mergeValue, 
    'eventCoin': __mergeValue, 
    'bpcoin': __mergeValue, 
+   'equipCoin': __mergeValue, 
    'freeXP': __mergeValue, 
    'tankmenXP': __mergeValue, 
    'vehicleXP': __mergeValue, 
@@ -232,10 +241,13 @@ BONUS_MERGERS = {'credits': __mergeValue,
    'dogTagComponents': __mergeDogTag, 
    'battlePassPoints': __mergeBattlePassPoints, 
    'freePremiumCrew': __mergeFreePremiumCrew, 
-   'meta': __mergeMeta}
-ITEM_INVENTORY_CHECKERS = {'vehicles': lambda account, key: account._inventory.getVehicleInvID(key) != 0 and not account._rent.isVehicleRented(account._inventory.getVehicleInvID(key)), 
+   'meta': __mergeMeta, 
+   CurrentNYConstants.TOYS: __mergeNYToys}
+BONUS_MERGERS.update({k:__mergeNYToys for k in PREV_NY_TOYS_COLLECTIONS})
+ITEM_INVENTORY_CHECKERS = {'vehicles': lambda account, key: account._inventory.getVehicleInvID(key) != 0, 
    'customizations': lambda account, key: account._customizations20.getItems((key,), 0)[key] > 0, 
-   'tokens': lambda account, key: account._quests.hasToken(key)}
+   'tokens': lambda account, key: account._quests.hasToken(key), 
+   CurrentNYConstants.TOYS: lambda account, key: account._newYear.isToyPresentInCollection(key, YEARS_INFO.CURRENT_YEAR_STR)}
 
 class BonusItemsCache(object):
 
@@ -250,44 +262,30 @@ class BonusItemsCache(object):
         cache = self.__cache.setdefault(itemName, {})
         state = cache.get(itemKey, None)
         if state is not None:
-            wasInInventory, wasAccepted, acceptedCount = state
+            wasInInventory, wasAccepted = state
         else:
             wasInInventory = ITEM_INVENTORY_CHECKERS[itemName](self.__account, itemKey)
-            acceptedCount = 0
-        cache[itemKey] = (wasInInventory, True, acceptedCount + 1)
+        cache[itemKey] = (wasInInventory, True)
         return
 
     def isItemExists(self, itemName, itemKey):
         cache = self.__cache.setdefault(itemName, {})
         state = cache.get(itemKey, None)
         if state is not None:
-            wasInInventory, wasAccepted, _ = state
+            wasInInventory, wasAccepted = state
         else:
             wasInInventory = ITEM_INVENTORY_CHECKERS[itemName](self.__account, itemKey)
             wasAccepted = False
-            acceptedCount = 0
-            cache[itemKey] = (wasInInventory, wasAccepted, acceptedCount)
+            cache[itemKey] = (wasInInventory, wasAccepted)
         return wasInInventory or wasAccepted
-
-    def getAcceptedCount(self, itemName, itemKey):
-        cache = self.__cache.setdefault(itemName, {})
-        state = cache.get(itemKey, None)
-        if state is not None:
-            _, _, acceptedCount = state
-        else:
-            wasInInventory = ITEM_INVENTORY_CHECKERS[itemName](self.__account, itemKey)
-            wasAccepted = False
-            acceptedCount = 0
-            cache[itemKey] = (wasInInventory, wasAccepted, acceptedCount)
-        return acceptedCount
 
     def getFinalizedCache(self):
         result = {}
         for bonus, checks in self.__cache.iteritems():
             bonusResult = result.setdefault(bonus, {})
-            for key, (wasInInventory, wasAccepted, acceptedCount) in checks.iteritems():
+            for key, (wasInInventory, wasAccepted) in checks.iteritems():
                 bonusResult[key] = (
-                 wasInInventory or wasAccepted, False, acceptedCount)
+                 wasInInventory or wasAccepted, False)
 
         return result
 
@@ -295,16 +293,20 @@ class BonusItemsCache(object):
     def isInventoryChanged(account, itemsCache):
         for bonus, checks in itemsCache.iteritems():
             checker = ITEM_INVENTORY_CHECKERS[bonus]
-            for key, (state, _, _) in checks.iteritems():
+            for key, (state, _) in checks.iteritems():
                 if checker(account, key) != state:
                     return True
 
         return False
 
 
+DEEP_CHECKERS = {'groups': lambda nodeAcceptor, bonusNode, checkInventory, depthLevel: all(nodeAcceptor.depthCheck(subBonusNode, checkInventory, depthLevel) for subBonusNode in bonusNode), 
+   'allof': lambda nodeAcceptor, bonusNode, checkInventory, depthLevel: all(nodeAcceptor.isAcceptable(subBonusNode[(-1)], False, depthLevel - 1) for subBonusNode in bonusNode), 
+   'oneof': lambda nodeAcceptor, bonusNode, checkInventory, depthLevel: any(nodeAcceptor.isAcceptable(subBonusNode[(-1)], checkInventory, depthLevel - 1) for subBonusNode in bonusNode[(-1)])}
+
 class BonusNodeAcceptor(object):
 
-    def __init__(self, account, bonusConfig=None, counters=None, bonusCache=None, probabilityStage=0, logTracker=None, shouldResetUsedLimits=True, ignoredLimits=None, namesBlackList=None, customIsAcceptableCheckers=None):
+    def __init__(self, account, bonusConfig=None, counters=None, bonusCache=None, probabilityStage=0, logTracker=None, shouldResetUsedLimits=True):
         self.__account = account
         self.__limitsConfig = bonusConfig.get('limits', None) if bonusConfig else None
         self.__maxStage = bonusConfig.get('probabilityStageCount', 1) - 1 if bonusConfig else 0
@@ -323,9 +325,6 @@ class BonusNodeAcceptor(object):
         self.__logTracker = logTracker
         self.__usedLimits = set()
         self.__shouldResetUsedLimits = shouldResetUsedLimits
-        self.__ignoredLimits = ignoredLimits or set()
-        self.__namesBlackList = namesBlackList if namesBlackList else set()
-        self.__customIsAcceptableCheckers = customIsAcceptableCheckers if customIsAcceptableCheckers else []
         self.__initCounters(counters or {})
         return
 
@@ -359,25 +358,12 @@ class BonusNodeAcceptor(object):
     def getBonusCache(self):
         return self.__bonusCache
 
-    def isAcceptable(self, bonusNode, checkInventory=True):
-        return self._isNodeAcceptable(bonusNode, checkInventory)
-
-    def _isNodeAcceptable(self, bonusNode, checkInventory):
+    def isAcceptable(self, bonusNode, checkInventory=True, depthLevel=None):
         if self.isLimitReached(bonusNode):
             return False
-        else:
-            if checkInventory and self.isBonusExists(bonusNode):
-                return False
-            if not self.isAvailable(bonusNode):
-                return False
-            nodeName = bonusNode.get('properties', {}).get('name', None)
-            if nodeName and nodeName in self.__namesBlackList:
-                return False
-            for check in self.__customIsAcceptableCheckers:
-                if not check(bonusNode):
-                    return False
-
-            return True
+        if checkInventory and self.isBonusExists(bonusNode):
+            return False
+        return self.depthCheck(bonusNode, checkInventory, depthLevel)
 
     def getNodesForVisit(self, ids):
         if ids and self.__shouldVisitNodes:
@@ -392,8 +378,6 @@ class BonusNodeAcceptor(object):
             limitID = bonusNode.get('properties', {}).get('limitID', None)
             if not limitID:
                 return False
-            if limitID in self.__ignoredLimits:
-                return False
             if self.__locals.get(limitID, 1) <= 0:
                 return True
             if self.__cooldowns.get(limitID, 0) > 0:
@@ -402,7 +386,7 @@ class BonusNodeAcceptor(object):
 
     def updateBonusCache(self, bonusNode):
         cache = self.__bonusCache
-        for itemType in ('vehicles', 'tokens'):
+        for itemType in ('vehicles', 'tokens', CurrentNYConstants.TOYS):
             if itemType in bonusNode:
                 for itemID in bonusNode[itemType].iterkeys():
                     cache.onItemAccepted(itemType, itemID)
@@ -412,12 +396,9 @@ class BonusNodeAcceptor(object):
                 c11nItem = getCustomizationItem(customization['custType'], customization['id'])[0]
                 cache.onItemAccepted('customizations', c11nItem.compactDescr)
 
-    def updateIgnoredLimits(self, ignoredLimits):
-        self.__ignoredLimits = ignoredLimits
-
     def isBonusExists(self, bonusNode):
         cache = self.__bonusCache
-        for itemType in ('vehicles', 'tokens'):
+        for itemType in ('vehicles', 'tokens', CurrentNYConstants.TOYS):
             if itemType in bonusNode:
                 for itemID in bonusNode[itemType].iterkeys():
                     if cache.isItemExists(itemType, itemID):
@@ -431,8 +412,12 @@ class BonusNodeAcceptor(object):
 
         return False
 
-    def isAvailable(self, bonusNode):
-        return bonusNode.get('properties', {}).get('isAvailable', True)
+    def depthCheck(self, bonusNode, checkInventory, depthLevel=None):
+        currentDepthLevel = bonusNode.get('properties', {}).get('depthLevel', 0) if depthLevel is None else depthLevel
+        if currentDepthLevel <= 0:
+            return True
+        else:
+            return all(DEEP_CHECKERS[bonusNodeName](self, bonusNodeValue, checkInventory, currentDepthLevel) for bonusNodeName, bonusNodeValue in bonusNode.iteritems() if bonusNodeName in DEEP_CHECKERS)
 
     def getProbabilityStages(self):
         return self.__probabilitiesStage
@@ -473,7 +458,7 @@ class BonusNodeAcceptor(object):
         if bonusNode.get('properties', {}).get('probabilityStageDependence', False):
             self.__increaseProbabilityStage()
         limitID = bonusNode.get('properties', {}).get('limitID', None)
-        if limitID and limitID not in self.__ignoredLimits:
+        if limitID:
             limitConfig = self.__limitsConfig[limitID]
             if not limitConfig.get('countDuplicates', True) and self.isBonusExists(bonusNode):
                 return
@@ -502,8 +487,6 @@ class BonusNodeAcceptor(object):
             if self.__shouldResetUsedLimits:
                 self.__usedLimits = set()
             for limitID, limitConfig in self.__limitsConfig.iteritems():
-                if limitID in self.__ignoredLimits:
-                    continue
                 bonusLimit = limitConfig.get('bonusLimit', None)
                 if bonusLimit is not None:
                     locals[limitID] = bonusLimit
@@ -599,29 +582,23 @@ class ProbabilityVisitor(NodeVisitor):
         super(ProbabilityVisitor, self).__init__(BONUS_MERGERS, args)
         self.__bonusTrack = []
         self.__nodeAcceptor = nodeAcceptor
-        self.__oneOfSelectedOptionalName = None
-        return
 
     def getBonusTrack(self):
         return _packTrack(self.__bonusTrack)
 
-    def getOneOfSelectedName(self):
-        return self.__oneOfSelectedOptionalName
-
     def onOneOf(self, storage, values):
         rand = random.random()
-        self.__oneOfSelectedOptionalName = None
         limitIDs, bonusNodes = values
         acceptor = self.__nodeAcceptor
         shouldVisitNodes = acceptor.getNodesForVisit(limitIDs)
-        probabilitiesStage = acceptor.getCurrentProbabilityStage()
+        probablitiesStage = acceptor.getCurrentProbabilityStage()
         useBonusProbability = acceptor.getUseBonusProbability()
         if shouldVisitNodes:
             check = lambda _, nodeLimitIDs: nodeLimitIDs and nodeLimitIDs.intersection(shouldVisitNodes)
         else:
             check = lambda probability, _: probability > rand
         for i, (probabilities, bonusProbability, nodeLimitIDs, bonusValue) in enumerate(bonusNodes):
-            probability = probabilities[probabilitiesStage]
+            probability = probabilities[probablitiesStage]
             if check(bonusProbability if useBonusProbability else probability, nodeLimitIDs):
                 selectedIdx = i
                 selectedValue = bonusValue
@@ -630,14 +607,14 @@ class ProbabilityVisitor(NodeVisitor):
             raise SoftException('Unreachable code, oneof probability bug %s' % bonusNodes)
 
         isAcceptable = acceptor.isAcceptable
-        if not isAcceptable(selectedValue, selectedValue.get('properties', {}).get('checkInventory', True)):
-            probSum, nodes = range(2)
-            availableBonuses = defaultdict(lambda : {probSum: 0, nodes: []})
-            sumOfPreviousProbabilities = 0.0
+        if not isAcceptable(selectedValue):
+            availableBonusNodes = []
+            sumOfAvailableProbabilities = 0
+            sumOfPreviousProbabilities = 0
             previousOwnProbability = 0.0
             canUsePrevInsteadOfZeroProbability = False
             for index, (probabilities, bonusProbability, _, bonusValue) in enumerate(bonusNodes):
-                ownProbability = bonusProbability if useBonusProbability else probabilities[probabilitiesStage]
+                ownProbability = bonusProbability if useBonusProbability else probabilities[probablitiesStage]
                 if ownProbability != 0.0:
                     ownProbability, sumOfPreviousProbabilities = ownProbability - sumOfPreviousProbabilities, ownProbability
                 if ownProbability != 0.0:
@@ -648,47 +625,37 @@ class ProbabilityVisitor(NodeVisitor):
                     probability = previousOwnProbability
                 else:
                     continue
-                bonusValueProps = bonusValue.get('properties', {})
-                isSameIndex = index == selectedIdx
-                isCompensation = bonusValueProps.get('compensation', False)
-                if not isSameIndex and isCompensation and isAcceptable(bonusValue, bonusValue.get('properties', {}).get('checkInventory', True)):
-                    priority = bonusValueProps.get('priority', 0)
-                    availableBonuses[priority][probSum] += probability
-                    availableBonuses[priority][nodes].append((index, probability, bonusValue))
+                if index != selectedIdx and bonusValue.get('properties', {}).get('compensation', False) and isAcceptable(bonusValue):
+                    sumOfAvailableProbabilities += probability
+                    availableBonusNodes.append((index, probability, bonusValue))
                     canUsePrevInsteadOfZeroProbability = False
 
-            highPriority = min(availableBonuses) if availableBonuses else 0
-            preferred = availableBonuses[highPriority]
-            if not preferred[nodes]:
+            if not availableBonusNodes:
                 shouldCompensated = selectedValue.get('properties', {}).get('shouldCompensated', False)
                 if not isAcceptable(selectedValue, False) or shouldCompensated:
                     for i in xrange(len(bonusNodes)):
                         self.__trackChoice(False)
 
                     return
-            elif len(preferred[nodes]) == 1:
-                selectedIdx, _, selectedValue = availableBonuses[highPriority][nodes][0]
+            elif len(availableBonusNodes) == 1:
+                selectedIdx, _, selectedValue = availableBonusNodes[0]
             else:
-                randomValue = random.random() * preferred[probSum]
+                randomValue = random.random() * sumOfAvailableProbabilities
                 sumOfPreviousProbabilities = 0
-                for bonusNode in preferred[nodes]:
+                for bonusNode in availableBonusNodes:
                     sumOfPreviousProbabilities += bonusNode[1]
-                    if randomValue <= sumOfPreviousProbabilities:
+                    if randomValue < sumOfPreviousProbabilities:
                         selectedIdx, _, selectedValue = bonusNode
                         break
                 else:
-                    raise SoftException(('Unreachable code, oneof probability bug, random value: {}, available bonus nodes: {}').format(randomValue, preferred[nodes]))
+                    raise SoftException(('Unreachable code, oneof probability bug, random value: {}, available bonus nodes: {}').format(randomValue, availableBonusNodes))
 
         for i in xrange(selectedIdx):
             self.__trackChoice(False)
 
         self.__trackChoice(True)
         acceptor.accept(selectedValue)
-        optionalName = selectedValue.get('properties', {}).get('name', None)
-        if optionalName:
-            self.__oneOfSelectedOptionalName = optionalName
         self._walkSubsection(storage, selectedValue)
-        return
 
     def onAllOf(self, storage, values):
         acceptor = self.__nodeAcceptor
@@ -727,29 +694,26 @@ class StripVisitor(NodeVisitor):
         def copyMerger(storage, name, value, isLeaf):
             storage[name] = value
 
-    def __init__(self, needProbabilitiesInfo=False):
-        self.__needProbabilitiesInfo = needProbabilitiesInfo
+    def __init__(self):
         super(StripVisitor, self).__init__(self.ValuesMerger(), tuple())
 
     def onOneOf(self, storage, values):
         strippedValues = []
         _, values = values
-        needProbabilitiesInfo = self.__needProbabilitiesInfo
         for probability, bonusProbability, refGlobalID, bonusValue in values:
             stippedValue = {}
             self._walkSubsection(stippedValue, bonusValue)
-            strippedValues.append(([probability if needProbabilitiesInfo else -1], -1, None, stippedValue))
+            strippedValues.append(([-1], -1, None, stippedValue))
 
         storage['oneof'] = (None, strippedValues)
         return
 
     def onAllOf(self, storage, values):
         strippedValues = []
-        needProbabilitiesInfo = self.__needProbabilitiesInfo
         for probability, bonusProbability, refGlobalID, bonusValue in values:
             stippedValue = {}
             self._walkSubsection(stippedValue, bonusValue)
-            strippedValues.append(([probability if needProbabilitiesInfo else -1], -1, None, stippedValue))
+            strippedValues.append(([-1], -1, None, stippedValue))
 
         storage['allof'] = strippedValues
         return
@@ -762,47 +726,3 @@ class StripVisitor(NodeVisitor):
             strippedValues.append(stippedValue)
 
         storage['groups'] = strippedValues
-
-
-class AdvancedBonusNodeAcceptor(BonusNodeAcceptor):
-    MAX_RECURSION_DEPTH = 3
-    __acceptProcessors = {'oneof': lambda nodeAcceptor, *args: nodeAcceptor._isOneOfAcceptable(*args), 
-       'allof': lambda nodeAcceptor, *args: nodeAcceptor._isAllOfAcceptable(*args), 
-       'groups': lambda nodeAcceptor, *args: nodeAcceptor._isGroupAcceptable(*args)}
-
-    def __init__(self, account, bonusConfig=None, counters=None, bonusCache=None, probabilityStage=0, logTracker=None, shouldResetUsedLimits=True, ignoredLimits=None, namesBlackList=None, customIsAcceptableCheckers=None):
-        super(AdvancedBonusNodeAcceptor, self).__init__(account, bonusConfig, counters, bonusCache, probabilityStage, logTracker, shouldResetUsedLimits, ignoredLimits, namesBlackList, customIsAcceptableCheckers)
-
-    def isAcceptable(self, bonusNode, checkInventory=True):
-        return self._isAcceptable(bonusNode, checkInventory)
-
-    def _isAcceptable(self, bonusNode, checkInventory, currentRecursionDepth=0):
-        if currentRecursionDepth > self.MAX_RECURSION_DEPTH:
-            return False
-        if not self._isNodeAcceptable(bonusNode, checkInventory):
-            return False
-        currentRecursionDepth += 1
-        acceptProcessors = self.__acceptProcessors
-        return all(acceptProcessors[bonusName](self, bonusValue, checkInventory, currentRecursionDepth) for bonusName, bonusValue in bonusNode.iteritems() if bonusName in acceptProcessors)
-
-    def _isOneOfAcceptable(self, values, checkInventory, currentRecursionDepth):
-        _, values = values
-        for _, _, _, bonusValue in values:
-            if self._isAcceptable(bonusValue, bonusValue.get('properties', {}).get('checkInventory', checkInventory), currentRecursionDepth):
-                return True
-
-        return False
-
-    def _isAllOfAcceptable(self, values, checkInventory, currentRecursionDepth):
-        for _, _, _, bonusValue in values:
-            if not self._isAcceptable(bonusValue, bonusValue.get('properties', {}).get('checkInventory', checkInventory), currentRecursionDepth):
-                return False
-
-        return True
-
-    def _isGroupAcceptable(self, values, checkInventory, currentRecursionDepth):
-        for bonusValue in values:
-            if not self._isAcceptable(bonusValue, bonusValue.get('properties', {}).get('checkInventory', checkInventory), currentRecursionDepth):
-                return False
-
-        return True

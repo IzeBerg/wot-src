@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>uv2</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>110</materialKind>
+					<fx>shaders/std_effects/PBS_ext_dual.fx</fx>
+					<property>
+						g_enableAO
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h_newyear/customization/Installation/Sculpture/NY19_Sculpture_05_20_AM.dds</Texture>
+					</property>
+					<property>
+						normalMap
+						<Texture>content/Hangars/h_newyear/customization/Installation/Sculpture/NY19_Sculpture_05_20_ANM.dds</Texture>
+					</property>
+					<property>
+						metallicGlossMap
+						<Texture>content/Hangars/h_newyear/customization/Installation/Sculpture/NY19_Sculpture_05_20_GMM.dds</Texture>
+					</property>
+					<property>
+						diffuseMap2
+						<Texture>content/Hangars/h_newyear/customization/Installation/Sculpture/NY19_Sculpture_05_20_AM2.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.258697 1.661790 1.004007</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd2</identifier>
+					<collisionFlags>0</collisionFlags>
+					<materialKind>110</materialKind>
+					<fx>shaders/std_effects/glow.fx</fx>
+					<property>
+						selfIllumination
+						<Float>100.000000</Float>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h_newyear/customization/Installation/Sculpture/NY19_Sculpture_05_20_Garland_AM.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.176896 1.771618 0.686615</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-1.153306 -0.051018 -2.733313</min>
+		<max>1.646885 3.369666 4.688868</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>589870</geometrySize>
+	<minUVDensity>0.005589</minUVDensity>
+</root>

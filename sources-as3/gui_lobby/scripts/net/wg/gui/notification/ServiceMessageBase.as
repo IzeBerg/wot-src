@@ -1,5 +1,6 @@
 package net.wg.gui.notification
 {
+   import flash.display.DisplayObject;
    import flash.events.Event;
    import net.wg.gui.notification.vo.NotificationInfoVO;
    import net.wg.infrastructure.base.UIComponentEx;
@@ -102,7 +103,7 @@ package net.wg.gui.notification
             this.content.addEventListener(Event.RESIZE,this.onContentResizeHandler);
             this.content.name = CONTENT_CHILD_COMPONENT_NAME;
             this._currentContentLinkage = this.contentLinkage;
-            this.addChild(this.content);
+            this.addChild(DisplayObject(this.content));
             invalidateState();
          }
          this.content.data = this._data;
@@ -111,7 +112,7 @@ package net.wg.gui.notification
       private function clearContent() : void
       {
          this.content.removeEventListener(Event.RESIZE,this.onContentResizeHandler);
-         this.removeChild(this.content);
+         this.removeChild(DisplayObject(this.content));
          this.content.dispose();
          this.content = null;
       }

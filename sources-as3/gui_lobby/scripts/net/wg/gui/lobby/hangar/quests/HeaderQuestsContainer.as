@@ -41,6 +41,8 @@ package net.wg.gui.lobby.hangar.quests
       private static const GROUP_ICON_SHIFT_Y:int = 37;
       
       private static const SHOW_CONTENT_DELAY_STEP_INDEX:int = 100;
+      
+      private static const LEFTSIDE_EXPAND_OFFSET_X:int = 20;
        
       
       private var _questsInformers:Vector.<IQuestInformerButton> = null;
@@ -148,7 +150,7 @@ package net.wg.gui.lobby.hangar.quests
          var _loc3_:Vector.<String> = new Vector.<String>();
          for each(_loc4_ in _loc2_)
          {
-            if(!this.getQuestInformerByType(_loc4_.questType))
+            if(!this.getQuestInformerByType(_loc4_.questType) || this._isRightSide != param1.isRightSide)
             {
                return false;
             }
@@ -165,6 +167,11 @@ package net.wg.gui.lobby.hangar.quests
             }
          }
          return true;
+      }
+      
+      public function isDisposed() : Boolean
+      {
+         return this._disposed;
       }
       
       public final function setData(param1:HeaderQuestGroupVO) : void
@@ -281,6 +288,10 @@ package net.wg.gui.lobby.hangar.quests
             _loc4_ = Values.ZERO;
             _loc5_ = Values.ZERO;
             _loc6_ = Values.ZERO;
+            if(!this._isRightSide)
+            {
+               _loc6_ += LEFTSIDE_EXPAND_OFFSET_X;
+            }
          }
          else
          {
@@ -290,7 +301,12 @@ package net.wg.gui.lobby.hangar.quests
                _loc4_ -= HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_GROUP_STEP;
             }
             _loc5_ = !param3 ? int(GROUPED_FLAG_START_Y) : int(0);
-            _loc6_ = param2 * HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_STEP * (!!this._isRightSide ? 1 : -1);
+            _loc6_ = param2 * HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_STEP;
+            if(!this._isRightSide)
+            {
+               _loc6_ *= -1;
+               _loc6_ += LEFTSIDE_EXPAND_OFFSET_X;
+            }
             if(!param3)
             {
                this.addMask(param1,_loc4_);
@@ -505,6 +521,10 @@ package net.wg.gui.lobby.hangar.quests
          _loc1_ = this._questsInformers.length;
          if(this.isAnimExpanded)
          {
+            if(!this._isRightSide)
+            {
+               return _loc1_ * HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_STEP - LEFTSIDE_EXPAND_OFFSET_X;
+            }
             return _loc1_ * HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_STEP;
          }
          return (_loc1_ - 1) * HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_GROUP_STEP + HEADER_QUESTS_CONSTANTS.QUEST_BUTTONS_STEP;
@@ -536,11 +556,6 @@ package net.wg.gui.lobby.hangar.quests
          {
             dispatchEvent(new HeaderQuestsEvent(HeaderQuestsEvent.HEADER_QUEST_OVER,_loc2_.questType,_loc2_.questID,!this._isAllQuestsItemsDisabled,this._isSingle));
          }
-      }
-      
-      public function isDisposed() : Boolean
-      {
-         return this._disposed;
       }
    }
 }

@@ -326,7 +326,6 @@ class GuiSettingsBehavior(CONST_CONTAINER):
     VEH_POST_PROGRESSION_UNLOCK_MSG_NEED_SHOW = 'vehPostProgressionUnlockMsgNeedShow'
     BIRTHDAY_CALENDAR_INTRO_SHOWED = 'birthdayCalendarIntroShowed'
     RESOURCE_WELL_INTRO_SHOWN = 'resourceWellIntroShown'
-    CREW_LAMP_WELCOME_SCREEN_SHOWN = 'crewLampWelcomeScreenShown'
     COMP7_INTRO_SHOWN = 'isComp7IntroShown'
 
 
@@ -359,7 +358,6 @@ class OnceOnlyHints(CONST_CONTAINER):
     ACCOUNT_BUTTON_HINT = 'AccountButtonHint'
     SESSION_STATS_OPEN_BTN_HINT = 'SessionStatsOpenBtnHint'
     SESSION_STATS_SETTINGS_BTN_HINT = 'SessionStatsSettingsBtnHint'
-    CRYSTAL_BTN_HINT = 'CrystalsBtnHint'
     BATTLE_SESSION_UP_BUTTON_TOURNAMENT_HINT = 'BattleSessionUpButtonTournamentHint'
     CREW_OPERATION_BTN_HINT = 'CrewOperationBtnHint'
     SOUND_BUTTONEX_HINT = 'SoundButtonExHint'
@@ -367,6 +365,7 @@ class OnceOnlyHints(CONST_CONTAINER):
     AMMUNITION_PANEL_HINT = 'AmmunitionPanelHintZoneHint'
     PLATOON_BTN_HINT = 'PlatoonBtnHint'
     AMMUNITION_FILTER_HINT = 'FilterHintZoneHint'
+    MODERNIZED_SETUP_TAB_HINT = 'ModernizedSetupTabHint'
     OPT_DEV_DRAG_AND_DROP_HINT = 'OptDevDragAndDropHint'
     HANGAR_MANUAL_HINT = 'HangarManualHint'
     DOGTAG_HANGAR_HINT = 'DogTagHangarHint'
@@ -504,3 +503,25 @@ class ScorePanelStorageKeys(CONST_CONTAINER):
     SHOW_HP_VALUES = 'showHPValues'
     SHOW_HP_DIFFERENCE = 'showHPDifference'
     ENABLE_TIER_GROUPING = 'enableTierGrouping'
+
+
+class NYLootBoxesStorageKeys(CONST_CONTAINER):
+    NEW_COUNT = 'newCount'
+    DELIVERED_COUNT = 'deliveredCount'
+
+
+class NewYearStorageKeys(CONST_CONTAINER):
+    NY_VEHICLES_PROGRESS_ENTRY = 'nyVehiclesProgressEntry'
+    NY_VEHICLES_LEVEL_UP_ENTRY = 'nyVehiclesLevelUpEntry'
+    NY_STATISTICS_HINT_SHOWN = 'nyLootboxStatisticsHintShown'
+    TUTORIAL_STATE = 'tutorialState'
+    DECORATIONS_POPOVER_VIEWED = 'decorationsPopoverViewed'
+    DECORATIONS_POPOVER_BROKEN = 'decorationsPopoverBroken'
+    CELEBRITY_SCREEN_VISITED = 'celebrityScreenVisited'
+    CELEBRITY_WELCOME_VIEWED = 'celebrityChallengeWelcomeViewed'
+    INTRO_SCENE_VIEWED = 'introSceneViewed'
+    LOOT_BOX_VIDEO_OFF = 'lootBoxVideoOff'
+    BOOL_FLAGS = (
+     NY_VEHICLES_PROGRESS_ENTRY, NY_STATISTICS_HINT_SHOWN,
+     DECORATIONS_POPOVER_VIEWED, DECORATIONS_POPOVER_BROKEN,
+     CELEBRITY_SCREEN_VISITED, CELEBRITY_WELCOME_VIEWED, INTRO_SCENE_VIEWED, LOOT_BOX_VIDEO_OFF)

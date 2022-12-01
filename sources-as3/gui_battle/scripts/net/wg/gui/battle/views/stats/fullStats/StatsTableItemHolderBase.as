@@ -23,8 +23,6 @@ package net.wg.gui.battle.views.stats.fullStats
       
       protected var _userProps:StatsUserProps = null;
       
-      private var _isFDEvent:Boolean = false;
-      
       private var _isDisposed:Boolean = false;
       
       private var _isRenderingAvailable:Boolean;
@@ -48,15 +46,6 @@ package net.wg.gui.battle.views.stats.fullStats
          {
             this._isRenderingRequired = true;
          }
-      }
-      
-      public function setFDEvent(param1:Boolean) : void
-      {
-         if(this._isFDEvent == param1)
-         {
-            return;
-         }
-         this._isFDEvent = param1;
       }
       
       public function getVehicleID() : Number
@@ -113,9 +102,7 @@ package net.wg.gui.battle.views.stats.fullStats
             this.statsItem.setVehicleName(this.data.vehicleName);
             this.statsItem.setIsIGR(this.data.isIGR);
             this.statsItem.setBadge(this.data.badgeVO,this.data.hasSelectedBadge);
-            this.statsItem.setFDEvent(this._isFDEvent);
             this.statsItem.setFrags(this.data.frags);
-            this.statsItem.setDamage(this.data.damage);
             this.updateVehicleType();
             this.applyVehicleStatus();
             this.applyPlayerStatus();

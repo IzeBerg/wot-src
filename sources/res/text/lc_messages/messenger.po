@@ -148,6 +148,11 @@ msgstr "пользователь не существует."
 msgid "chat_error/WRONG_ARGS"
 msgstr "неправильный аргумент."
 
+msgid "client/COMP7/disableVOIP"
+msgstr ""
+"Голосовая связь отключена. Чтобы общаться с союзниками, включите голосовой "
+"чат (%(keyName)s)."
+
 msgid "client/dynSquad/created/allies"
 msgstr "Cоюзники сформировали взвод %(squadNum)s."
 
@@ -1243,8 +1248,23 @@ msgstr "Списано очков Боевого пропуска"
 msgid "platformCurrencyMsg/debited/brcoin"
 msgstr "Списано стальных печатей"
 
+msgid "platformCurrencyMsg/debited/equip_coin"
+msgstr "Списано компонентов"
+
 msgid "platformCurrencyMsg/debited/freeXP"
 msgstr "Списано свободного опыта"
+
+msgid "platformCurrencyMsg/debited/ny_amber"
+msgstr "Списано солнечного янтаря"
+
+msgid "platformCurrencyMsg/debited/ny_crystal"
+msgstr "Списано горного хрусталя"
+
+msgid "platformCurrencyMsg/debited/ny_emerald"
+msgstr "Списано чистого изумруда"
+
+msgid "platformCurrencyMsg/debited/ny_iron"
+msgstr "Списано метеоритного железа"
 
 msgid "platformCurrencyMsg/debited/sacoin"
 msgstr "Списано жетонов за выслугу лет"
@@ -1255,8 +1275,23 @@ msgstr "Начислено очков Боевого пропуска"
 msgid "platformCurrencyMsg/received/brcoin"
 msgstr "Начислено стальных печатей"
 
+msgid "platformCurrencyMsg/received/equip_coin"
+msgstr "Начислено компонентов"
+
 msgid "platformCurrencyMsg/received/freeXP"
 msgstr "Получено свободного опыта"
+
+msgid "platformCurrencyMsg/received/ny_amber"
+msgstr "Добавлено солнечного янтаря"
+
+msgid "platformCurrencyMsg/received/ny_crystal"
+msgstr "Добавлено горного хрусталя"
+
+msgid "platformCurrencyMsg/received/ny_emerald"
+msgstr "Добавлено чистого изумруда"
+
+msgid "platformCurrencyMsg/received/ny_iron"
+msgstr "Добавлено метеоритного железа"
 
 msgid "platformCurrencyMsg/received/sacoin"
 msgstr "Добавлено жетонов за выслугу лет"
@@ -1883,6 +1918,9 @@ msgstr "Бой окончен"
 msgid "serviceChannelMessages/battleResults/epicAbilityPoints"
 msgstr "Очки боевых резервов"
 
+msgid "serviceChannelMessages/battleResults/equipCoin"
+msgstr "Получено компонентов"
+
 msgid "serviceChannelMessages/battleResults/eventCoin"
 msgstr "Получено юбилейных монет"
 
@@ -1952,7 +1990,7 @@ msgid "serviceChannelMessages/battleResults/quests/bpcoin"
 msgstr "Добавлены жетоны"
 
 msgid "serviceChannelMessages/battleResults/quests/credits"
-msgstr "Добавлено кредитов"
+msgstr "Добавлены кредиты"
 
 msgid "serviceChannelMessages/battleResults/quests/crystal"
 msgstr "Добавлено бон"
@@ -1962,6 +2000,9 @@ msgstr " (x%(count)s)"
 
 msgid "serviceChannelMessages/battleResults/quests/entitlements/multiplier"
 msgstr " (%(count)s)"
+
+msgid "serviceChannelMessages/battleResults/quests/equipCoin"
+msgstr "Начислено компонентов"
 
 msgid "serviceChannelMessages/battleResults/quests/eventCoin"
 msgstr "Добавлены юбилейные монеты"
@@ -1979,10 +2020,10 @@ msgid "serviceChannelMessages/battleResults/quests/items/name"
 msgstr "%(name)s (x%(count)s)"
 
 msgid "serviceChannelMessages/battleResults/quests/premium"
-msgstr "Добавлено дней Общего премиум аккаунта"
+msgstr "Добавлены дни Общего премиум аккаунта"
 
 msgid "serviceChannelMessages/battleResults/quests/premium_plus"
-msgstr "Добавлено дней Танкового премиум аккаунта"
+msgstr "Добавлены дни Танкового премиум аккаунта"
 
 msgid "serviceChannelMessages/battleResults/quests/rankedBonusBattles"
 msgstr "Начислено призовых боёв: %(bonusBattles)s"
@@ -1994,8 +2035,11 @@ msgid ""
 "serviceChannelMessages/battleResults/quests/rankedBonusBattles/persistent"
 msgstr "%(count)s стандартных"
 
+msgid "serviceChannelMessages/battleResults/quests/variadicDiscount"
+msgstr "Добавлена скидка %(discount)s%% на технику %(level)s уровня"
+
 msgid "serviceChannelMessages/battleResults/quests/vehicleSlots"
-msgstr "Добавлено слотов"
+msgstr "Добавлены слоты в Ангаре"
 
 msgid "serviceChannelMessages/battleResults/rankedBonusBattles"
 msgstr "Начислено призовых боёв"
@@ -2252,6 +2296,9 @@ msgstr "Списано кредитов"
 msgid "serviceChannelMessages/currencyUpdate/debited/crystal"
 msgstr "Списано бон"
 
+msgid "serviceChannelMessages/currencyUpdate/debited/equipCoin"
+msgstr "Списано компонентов"
+
 msgid "serviceChannelMessages/currencyUpdate/debited/eventCoin"
 msgstr "Списано юбилейных монет"
 
@@ -2275,6 +2322,9 @@ msgstr "Получено кредитов"
 
 msgid "serviceChannelMessages/currencyUpdate/received/crystal"
 msgstr "Получено бон"
+
+msgid "serviceChannelMessages/currencyUpdate/received/equipCoin"
+msgstr "Получено компонентов"
 
 msgid "serviceChannelMessages/currencyUpdate/received/eventCoin"
 msgstr "Получено юбилейных монет"
@@ -2521,8 +2571,11 @@ msgid "serviceChannelMessages/fortificationStartUp"
 msgstr ""
 "На склад командного центра зачислено %(defResCount)s единиц промресурса."
 
-msgid "serviceChannelMessages/funRandom/startEvent/button"
+msgid "serviceChannelMessages/funRandom/newSubModesButton"
 msgstr "К событию!"
+
+msgid "serviceChannelMessages/funRandom/progressionStageButton"
+msgstr "К прогрессии"
 
 msgid "serviceChannelMessages/goldReceivedAsGift"
 msgstr "От администрации получено золота: %(gold)s."
@@ -2682,6 +2735,12 @@ msgstr "Начислены"
 msgid "serviceChannelMessages/invoiceReceived/entitlementsDebited"
 msgstr "Списаны"
 
+msgid "serviceChannelMessages/invoiceReceived/equipCoinAccrued"
+msgstr "Начислено компонентов"
+
+msgid "serviceChannelMessages/invoiceReceived/equipCoinDebited"
+msgstr "Списано компонентов"
+
 msgid "serviceChannelMessages/invoiceReceived/equipment"
 msgstr "Снаряжение"
 
@@ -2736,11 +2795,17 @@ msgstr "Начислено фрагментов чертежей на техн�
 msgid "serviceChannelMessages/invoiceReceived/nationalBlueprintsDebited"
 msgstr "Списано фрагментов чертежей на технику %(nationName)s"
 
+msgid "serviceChannelMessages/invoiceReceived/nyToysAccruedInvoiceReceived"
+msgstr "Начислены украшения: "
+
+msgid "serviceChannelMessages/invoiceReceived/nyToysDebitedInvoiceReceived"
+msgstr "Списаны украшения: "
+
 msgid "serviceChannelMessages/invoiceReceived/pieces"
 msgstr "шт."
 
 msgid "serviceChannelMessages/invoiceReceived/premiumAccrued"
-msgstr "Добавлено дней Общего премиум аккаунта"
+msgstr "Добавлены дни Общего премиум аккаунта"
 
 msgid "serviceChannelMessages/invoiceReceived/premiumDebited"
 msgstr "Списано дней Общего премиум аккаунта"
@@ -2776,7 +2841,7 @@ msgid "serviceChannelMessages/invoiceReceived/tankPremiumAccount"
 msgstr "Танковый премиум аккаунт"
 
 msgid "serviceChannelMessages/invoiceReceived/tankPremiumAccrued"
-msgstr "Добавлено дней Танкового премиум аккаунта"
+msgstr "Добавлены дни Танкового премиум аккаунта"
 
 msgid "serviceChannelMessages/invoiceReceived/tankPremiumDebited"
 msgstr "Списано дней Танкового премиум аккаунта"
@@ -2792,6 +2857,9 @@ msgstr "Списано нераспределённого опыта с член
 
 msgid "serviceChannelMessages/invoiceReceived/tankmenToRemove"
 msgstr "Демобилизованные"
+
+msgid "serviceChannelMessages/invoiceReceived/toyTypeWrapper"
+msgstr "«%(name)s» (x%(count)s)"
 
 msgid "serviceChannelMessages/invoiceReceived/vehicleBlueprintsAccrued"
 msgstr "Начислено фрагментов чертежей на %(vehicleName)s"
@@ -2814,7 +2882,7 @@ msgstr ""
 "%(amount)d шт."
 
 msgid "serviceChannelMessages/lootBoxes/button"
-msgstr "К коробкам"
+msgstr "Получить"
 
 msgid "serviceChannelMessages/lootBoxes/footer"
 msgstr "Нажмите кнопку, чтобы перейти к содержимому."
@@ -2825,11 +2893,29 @@ msgstr "Вам посылка:"
 msgid "serviceChannelMessages/lootBoxes/item/name"
 msgstr "«%(name)s» %(colorTagOpen)sx%(count)s%(colorTagClose)s"
 
+msgid "serviceChannelMessages/lootBoxesAutoOpen/boxes"
+msgstr ""
+"Мы открыли за вас коробки и начислили награды за «Новогоднее наступление "
+"2023»."
+
+msgid "serviceChannelMessages/lootBoxesAutoOpen/boxesAndCoins"
+msgstr ""
+"Мы открыли за вас коробки, закинули жетоны в терминал и начислили награды за"
+" «Новогоднее наступление 2023»."
+
+msgid "serviceChannelMessages/lootBoxesAutoOpen/boxesCounter"
+msgstr "Открыто коробок: x%(count)s"
+
 msgid "serviceChannelMessages/lootBoxesAutoOpen/button"
 msgstr "Посмотреть"
 
-msgid "serviceChannelMessages/lootBoxesAutoOpen/counter"
-msgstr "x%(count)s"
+msgid "serviceChannelMessages/lootBoxesAutoOpen/coins"
+msgstr ""
+"Мы закинули жетоны в терминал и начислили награды за «Новогоднее наступление"
+" 2023»."
+
+msgid "serviceChannelMessages/lootBoxesAutoOpen/coinsCounter"
+msgstr "Использовано жетонов: x%(count)s"
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/event/boxes"
 msgstr "Открыто порталов: %(boxes)s"
@@ -2850,10 +2936,6 @@ msgstr "Мы открыли за вас порталы и начислили и�
 
 msgid "serviceChannelMessages/lootBoxesAutoOpen/header"
 msgstr "Получены награды"
-
-msgid "serviceChannelMessages/lootBoxesAutoOpen/text"
-msgstr ""
-"Мы открыли за вас коробки и начислили награды за Новогоднее наступление"
 
 msgid "serviceChannelMessages/lunarBoxesAutoOpen/body"
 msgstr "Мы открыли за вас конверты Лунного нового года."
@@ -2914,6 +2996,22 @@ msgstr "Вы можете пройти опрос о карте %(mapName)s в �
 msgid "serviceChannelMessages/multiplier"
 msgstr " (x%(count)s)"
 
+msgid "serviceChannelMessages/newYear/buyToy/header"
+msgstr "Куплено:"
+
+msgid "serviceChannelMessages/newYear/collectingResources/button"
+msgstr "К ресурсам"
+
+msgid "serviceChannelMessages/newYear/dogReminder/button"
+msgstr "К собаке"
+
+msgid "serviceChannelMessages/newYear/dogReminder/header"
+msgstr "Порадуйте своего питомца!"
+
+msgid "serviceChannelMessages/newYear/dogReminder/message"
+msgstr ""
+"Приобретайте в аренду специальные предметы и создавайте уют для Чаффи."
+
 msgid "serviceChannelMessages/notrecruitedTankman/button"
 msgstr "В Казарму"
 
@@ -2922,15 +3020,6 @@ msgstr "Списано членов экипажа: %(count)s"
 
 msgid "serviceChannelMessages/offerTokenBonus/title"
 msgstr "Поставки из тыла"
-
-msgid "serviceChannelMessages/payerSeniority/coins/body"
-msgstr "У вас остались неиспользованные жетоны за выслугу лет."
-
-msgid "serviceChannelMessages/payerSeniority/coins/button"
-msgstr "К наградам"
-
-msgid "serviceChannelMessages/payerSeniority/coins/header"
-msgstr "Заслуженная награда"
 
 msgid "serviceChannelMessages/personalReservesConverted"
 msgstr "Все ваши личные резервы конвертированы."
@@ -3357,7 +3446,7 @@ msgstr ""
 "раздел «Внешний вид»."
 
 msgid "serviceChannelMessages/sysMsg/converter/slotsReceived"
-msgstr "Добавлено слотов: %(slots)s"
+msgstr "Добавлены слоты в Ангаре: %(slots)s"
 
 msgid "serviceChannelMessages/sysMsg/converter/slotsWithdrawn"
 msgstr "Списано слотов: %(slots)s"
@@ -3443,6 +3532,12 @@ msgstr "Зимняя карта: "
 msgid "serviceChannelMessages/sysMsg/customizations/sell"
 msgstr "%(itemType)s «%(itemName)s», %(count)s шт. Получено %(money)s"
 
+msgid "serviceChannelMessages/sysMsg/deconstructing/head"
+msgstr "Разобрано оборудование"
+
+msgid "serviceChannelMessages/sysMsg/deconstructingMult/itemsTemplate"
+msgstr "«%(name)s» (x%(count)s)"
+
 msgid "serviceChannelMessages/sysMsg/openCustomization/button"
 msgstr "К внешнему виду"
 
@@ -3453,6 +3548,9 @@ msgstr ""
 
 msgid "serviceChannelMessages/sysMsg/titles/customization"
 msgstr "Изменение внешнего вида:"
+
+msgid "serviceChannelMessages/sysMsg/titles/deconstructing"
+msgstr "Оборудование разобрано"
 
 msgid "serviceChannelMessages/sysMsg/titles/dismantling"
 msgstr "Демонтировано:"

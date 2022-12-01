@@ -1,6 +1,6 @@
 import weakref, math
 from collections import defaultdict
-import logging, BigWorld, BattleReplay, SoundGroups, Windowing
+import logging, BigWorld, BattleReplay, SoundGroups
 from AvatarInputHandler import AvatarInputHandler
 from ReplayEvents import g_replayEvents
 from gui.Scaleform.daapi.view.battle.shared import destroy_times_mapping as _mapping
@@ -395,7 +395,6 @@ class TimersPanel(TimersPanelMeta, MethodsRules):
         if crosshairCtrl is not None:
             crosshairCtrl.onCrosshairViewChanged += self.__onCrosshairViewChanged
         self.__equipmentCtrl = self.sessionProvider.shared.equipments
-        Windowing.addWindowAccessibilitynHandler(self.__onWindowAccessibilityChanged)
         self.__initData()
         return
 
@@ -438,7 +437,6 @@ class TimersPanel(TimersPanelMeta, MethodsRules):
         if handler is not None:
             if isinstance(handler, AvatarInputHandler):
                 handler.onCameraChanged -= self.__onCameraChanged
-        Windowing.removeWindowAccessibilityHandler(self.__onWindowAccessibilityChanged)
         self.__hideAll()
         self._timers.clear()
         self._mapping.clear()
@@ -696,10 +694,3 @@ class TimersPanel(TimersPanelMeta, MethodsRules):
     def __onCameraChanged(self, ctrlMode, vehicleID=None):
         if ctrlMode == 'video':
             self.__hideAll()
-
-    def __onWindowAccessibilityChanged(self, isAccessible):
-        if isAccessible:
-            vehicle = self.sessionProvider.shared.vehicleState.getControllingVehicle()
-            if vehicle is not None:
-                self.__onVehicleControlling(vehicle)
-        return

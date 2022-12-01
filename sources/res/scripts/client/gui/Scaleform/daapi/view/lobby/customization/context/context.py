@@ -59,6 +59,7 @@ class _CustomizationEvents(object):
         self.onEditModeEnabled = Event.Event(self._eventsManager)
         self.onPersonalNumberCleared = Event.Event(self._eventsManager)
         self.onProlongStyleRent = Event.Event(self._eventsManager)
+        self.onCloseWindow = Event.Event(self._eventsManager)
 
     def fini(self):
         self._eventsManager.clear()
@@ -84,6 +85,7 @@ class CustomizationContext(object):
         self.__c11nCameraManager = C11nHangarCameraManager()
         self.__stylesDiffsCache = StyleDiffsCache()
         self.__carouselItems = None
+        self.__exitCallback = None
         return
 
     @property
@@ -221,6 +223,14 @@ class CustomizationContext(object):
             self.changeMode(CustomizationModes.EDITABLE_STYLE, source=source)
             return
 
+    def getExitCallback(self):
+        return self.__exitCallback
+
+    def previewStyle(self, style, exitCallback=None, source=None):
+        self.__exitCallback = exitCallback
+        self.changeMode(CustomizationModes.STYLED, source=source)
+        self.events.onShowStyleInfo(style)
+
     def canEditStyle(self, itemCD):
         if self.__modeId in (CustomizationModes.STYLED, CustomizationModes.EDITABLE_STYLE):
             outfit = self.mode.getModifiedOutfit()
@@ -288,10 +298,11 @@ class CustomizationContext(object):
     def isOutfitsModified(self):
         if self.isModeChanged:
             startMode = self.startMode
-            if not startMode.isOutfitsModified() and startMode.isOutfitsEmpty() and self.mode.isOutfitsEmpty():
+            startModeNotChanged = not startMode.isOutfitsModified()
+            if startModeNotChanged and startMode.isOutfitsEmpty() and self.mode.isOutfitsEmpty():
                 return False
             if startMode.modeId == CustomizationModes.STYLED and self.modeId == CustomizationModes.EDITABLE_STYLE:
-                if not startMode.isOutfitsModified() and not self.mode.isOutfitsModified():
+                if startModeNotChanged and not self.mode.isOutfitsModified():
                     return startMode.originalStyle != self.mode.style
             if startMode.modeId == CustomizationModes.CUSTOM and self.modeId == CustomizationModes.STYLED:
                 if self.mode.getStyleProgressionLevel() > 0:

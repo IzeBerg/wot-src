@@ -31,5 +31,9 @@ package net.wg.infrastructure.base.meta
       function as_getVisibleLayers() : Array;
       
       function as_setVisibleLayers(param1:Array) : void;
+      
+      function as_setContainersVisible(param1:Boolean, param2:Array) : void;
+      
+      function as_storeContainersVisible() : void;
    }
 }

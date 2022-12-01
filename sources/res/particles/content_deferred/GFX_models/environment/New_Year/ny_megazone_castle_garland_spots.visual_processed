@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>garland</identifier>
+					<fx>shaders/custom/emissive_playground.fx</fx>
+					<materialKind>0</materialKind>
+					<collisionFlags>0</collisionFlags>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						emissionMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/ny_megazone_garland_castle.dds</Texture>
+					</property>
+					<property>
+						g_deferredMult
+						<Float>20.000000</Float>
+					</property>
+					<property>
+						g_offsetBlack
+						<Float>0.550000</Float>
+					</property>
+					<property>
+						g_tint
+						<Vector4>1.000000 0.360784 0.000000 1.000000</Vector4>
+					</property>
+					<property>
+						pattern
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/Masks/ls_phase_random.dds</Texture>
+					</property>
+					<property>
+						phaseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/ny_megazone_garland_castle_CM.dds</Texture>
+					</property>
+					<property>
+						speed
+						<Float>0.300000</Float>
+					</property>
+					<property>
+						useVersicolorMode
+						<Bool>true</Bool>
+					</property>
+					<property>
+						g_forwardMult
+						<Float>5.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>-5.518221 20.641005 13.507935</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-40.851746 7.706010 -8.260159</min>
+		<max>29.815304 33.576000 35.276028</max>
+	</boundingBox>
+	<geometrySize>4216</geometrySize>
+	<minUVDensity>0.005997</minUVDensity>
+</root>

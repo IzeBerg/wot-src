@@ -219,12 +219,6 @@ package
       
       public static const ROLEDESCRIPTION_MSG:String = "#ingame_help:roleDescription/msg";
       
-      public static const DETAILSHELP_FUNRANDOM_MODE1_TITLE:String = "#ingame_help:detailsHelp/funRandom/mode1/title";
-      
-      public static const DETAILSHELP_FUNRANDOM_MODE1_DESCRIPTION:String = "#ingame_help:detailsHelp/funRandom/mode1/description";
-      
-      public static const DETAILSHELP_FUNRANDOM_TITLE:String = "#ingame_help:detailsHelp/funRandom/title";
-      
       public static const RADIALMENU_ATTENTION_TO_POSITION:String = "#ingame_help:radialMenu/attention_to_position";
       
       public static const RADIALMENU_GOING_THERE:String = "#ingame_help:radialMenu/going_there";

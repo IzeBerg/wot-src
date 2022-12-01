@@ -37,6 +37,8 @@ package
       
       public static const STORAGE_FORSELL:String = "#waiting:storage/forSell";
       
+      public static const STORAGE_FORDECONSTRUCT:String = "#waiting:storage/forDeconstruct";
+      
       public static const BUYSLOT:String = "#waiting:buySlot";
       
       public static const BUYBERTHS:String = "#waiting:buyBerths";
@@ -94,6 +96,8 @@ package
       public static const BROWSER_INIT:String = "#waiting:browser/init";
       
       public static const BROWSER_W2C_CALL:String = "#waiting:browser/w2c_call";
+      
+      public static const CLAIMSENIORITYAWARDS:String = "#waiting:claimSeniorityAwards";
       
       public static const TECHMAINTENANCEEQUIPMENTS:String = "#waiting:techMaintenanceEquipments";
       
@@ -330,6 +334,22 @@ package
       public static const BLUEPRINTS_CONVERTFRAGMENTS:String = "#waiting:blueprints/convertFragments";
       
       public static const CREWBOOKS_USECREWBOOK:String = "#waiting:crewBooks/useCrewBook";
+      
+      public static const NEWYEAR_BREAKDECORATIONSWAITING:String = "#waiting:newYear/breakDecorationsWaiting";
+      
+      public static const NEWYEAR_HANGTOYWAITING:String = "#waiting:newYear/hangToyWaiting";
+      
+      public static const NEWYEAR_BUYTOYWAITING:String = "#waiting:newYear/buyToyWaiting";
+      
+      public static const NEWYEAR_BUYCOLLECTIONWAITING:String = "#waiting:newYear/buyCollectionWaiting";
+      
+      public static const NEWYEAR_BUYCOINSWAITING:String = "#waiting:newYear/buyCoinsWaiting";
+      
+      public static const NEWYEAR_APPLYVEHICLEDISCOUNT:String = "#waiting:newYear/applyVehicleDiscount";
+      
+      public static const NEWYEAR_RESETLOOTBOXSTATISTICS:String = "#waiting:newYear/resetLootboxStatistics";
+      
+      public static const NEWYEAR_BUYCELEBRITYQUEST:String = "#waiting:newYear/buyCelebrityQuest";
       
       public static const DAILYQUESTS_WAITREROLL:String = "#waiting:dailyQuests/waitReroll";
       

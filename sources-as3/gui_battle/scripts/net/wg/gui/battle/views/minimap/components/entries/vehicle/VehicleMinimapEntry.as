@@ -34,8 +34,6 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
       
       public static const INVALID_MT_STATE:int = InvalidationType.SYSTEM_FLAGS_BORDER << 6;
       
-      protected static const LABEL_SQUADMAN:String = "squadman";
-      
       private static const ENEMY_BEARER_LABEL:String = "enemyBearer";
       
       private static const ENEMY_BEARER_BLIND_LABEL:String = "enemyBearerBlind";
@@ -43,6 +41,8 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
       private static const ALLY_BEARER_LABEL:String = "allyBearer";
       
       private static const LABEL_TEAM_KILLER:String = "teamKiller";
+      
+      private static const LABEL_SQUADMAN:String = "squadman";
       
       private static const ATLAS_NAME_DELIMITER:String = "_";
       
@@ -379,16 +379,6 @@ package net.wg.gui.battle.views.minimap.components.entries.vehicle
          {
             invalidate(INVALID_CHANGE_VEHICLE_ANIMATION_TYPE);
          }
-      }
-      
-      protected function getGUILabel() : String
-      {
-         return this._guiLabel;
-      }
-      
-      protected function getIsColorBlind() : Boolean
-      {
-         return this._isColorBlind;
       }
       
       public function setInAoI(param1:Boolean) : void

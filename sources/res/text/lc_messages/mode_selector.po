@@ -127,49 +127,6 @@ msgstr ""
 msgid "mode/epicQueue/battlePassTooltip/header"
 msgstr "Очки Боевого пропуска"
 
-msgid "mode/event/calendar/tooltip/bodyFirst"
-msgstr ""
-"Событие продлится\n"
-"{brown_Open}с %(start)s по %(end)s{brown_Close}."
-
-msgid "mode/event/calendar/tooltip/bodySecond"
-msgstr ""
-"Товары события будут доступны\n"
-"{brown_Open}до %(date)s{brown_Close}."
-
-msgid "mode/event/calendar/tooltip/header"
-msgstr "Расписание"
-
-msgid "mode/event/condition"
-msgstr ""
-"15x15 %(parSecondary_open)sI%(parSecondary_close)s VI–VIII&nbsp;уровни"
-
-msgid "mode/event/description"
-msgstr "Бои с автоподбором команд и механикой возрождений."
-
-msgid "mode/event/performance/highRisk/description"
-msgstr ""
-"Производительности вашего компьютера недостаточно для данного режима. Весьма"
-" вероятны проблемы с графикой и перемещением техники, возможно также "
-"аварийное закрытие клиента игры."
-
-msgid "mode/event/performance/highRisk/header"
-msgstr "Низкая производительность"
-
-msgid "mode/event/performance/highRisk/headerIcon"
-msgstr "%(icon) Низкая производительность"
-
-msgid "mode/event/performance/mediumRisk/description"
-msgstr ""
-"Режим требователен к компьютеру.\n"
-"Карта может долго загружаться, возможны проблемы с графикой и перемещением техники в бою. В случае недостаточной производительности, попробуйте понизить настройки графики."
-
-msgid "mode/event/performance/mediumRisk/header"
-msgstr "Снижение производительности"
-
-msgid "mode/event/performance/mediumRisk/headerIcon"
-msgstr "%(icon) Снижение производительности"
-
 msgid "mode/mapbox/battlePassTooltip/body"
 msgstr ""
 "Играя на технике VIII–X уровней в режиме {whiteSpanish_open}«Разведка "
@@ -180,7 +137,7 @@ msgid "mode/mapbox/battlePassTooltip/header"
 msgstr "Очки Боевого пропуска"
 
 msgid "mode/mapbox/condition"
-msgstr "15x15,&nbsp;VIII–X&nbsp;уровни"
+msgstr "15x15 %(parSecondary_open)sI%(parSecondary_close)s VIII–X&nbsp;уровни"
 
 msgid "mode/mapbox/description"
 msgstr "Смотр новых карт."
@@ -310,14 +267,6 @@ msgstr "Награда определяется по показателю ваш
 msgid "reward/experience/name"
 msgstr "Опыт"
 
-msgid "reward/hw22crew/description"
-msgstr ""
-"Играя в режиме, вы можете получить уникальных членов экипажа — персонажей "
-"Тыквенного переполоха."
-
-msgid "reward/hw22crew/name"
-msgstr "Члены экипажа"
-
 msgid "reward/improvedEquipment/description"
 msgstr "Играя в режиме, вы можете получить %(name)s"
 
@@ -342,13 +291,6 @@ msgstr "Играя в режиме, вы можете получить особ�
 msgid "reward/style/name"
 msgstr "3D-стиль"
 
-msgid "reward/style2d/description"
-msgstr ""
-"Играя в режиме, вы можете получить особые уникальные двухмерные стили."
-
-msgid "reward/style2d/name"
-msgstr "2D-стили"
-
 msgid "reward/vehicle/description"
 msgstr "Играя в режиме, вы можете получить %(name)s"
 
@@ -357,6 +299,18 @@ msgstr "Наградная техника"
 
 msgid "selectMap"
 msgstr "Предустановки для Случайных боёв"
+
+msgid "status/timeLeft/days"
+msgstr "%(day)s д"
+
+msgid "status/timeLeft/hours"
+msgstr "%(hour)s ч"
+
+msgid "status/timeLeft/lessMin"
+msgstr "менее минуты"
+
+msgid "status/timeLeft/min"
+msgstr "%(min)s мин"
 
 msgid "statusSeparator"
 msgstr " %(parSecondary_open)sI%(parSecondary_close)s "

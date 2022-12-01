@@ -16,11 +16,5 @@ package net.wg.gui.battle.random.views.stats.components.fullStats
       {
          return new FullStatsTableCtrl(FullStatsTable(statsTable),this);
       }
-      
-      override public function as_isFDEvent(param1:Boolean) : void
-      {
-         tabs.visible = !param1;
-         tableCtrl.setFDEvent(param1);
-      }
    }
 }

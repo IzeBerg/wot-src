@@ -939,6 +939,8 @@ package
       
       public static const VEHICLE_SELL_NOT_ENOUGH_SPACE:String = "#system_messages:vehicle_sell/not_enough_space";
       
+      public static const VEHICLE_SELL_EQUIPCOIN_ERROR:String = "#system_messages:vehicle_sell/equipCoin_error";
+      
       public static const VEHICLE_SELL_SUCCESS_WITH_DEMOUNT_KIT:String = "#system_messages:vehicle_sell/success/with_demount_kit";
       
       public static const VEHICLE_SELL_SUCCESS_DISMANTLING_WITH_DEMOUNT_KIT:String = "#system_messages:vehicle_sell/success_dismantling/with_demount_kit";
@@ -1205,6 +1207,14 @@ package
       
       public static const MODULE_SELL_SERVER_ERROR:String = "#system_messages:module_sell/server_error";
       
+      public static const ARTEFACT_DECONSTRUCTING_SUCCESS:String = "#system_messages:artefact_deconstructing/success";
+      
+      public static const ARTEFACT_DECONSTRUCTING_INVALID_MODULE:String = "#system_messages:artefact_deconstructing/invalid_module";
+      
+      public static const ARTEFACT_DECONSTRUCTING_SERVER_ERROR:String = "#system_messages:artefact_deconstructing/server_error";
+      
+      public static const ARTEFACT_DECONSTRUCTINGMULT_SUCCESS:String = "#system_messages:artefact_deconstructingMult/success";
+      
       public static const ARTEFACT_SELL_SUCCESS:String = "#system_messages:artefact_sell/success";
       
       public static const ARTEFACT_SELL_INVALID_MODULE:String = "#system_messages:artefact_sell/invalid_module";
@@ -1408,6 +1418,8 @@ package
       public static const PREBATTLE_REQUEST_NAME_CHANGE_FALLOUT_QUEUE_TYPE:String = "#system_messages:prebattle/request/name/CHANGE_FALLOUT_QUEUE_TYPE";
       
       public static const PREBATTLE_REQUEST_NAME_AUTO_SEARCH:String = "#system_messages:prebattle/request/name/AUTO_SEARCH";
+      
+      public static const PREBATTLE_REQUEST_NAME_CHANGE_FUN_SUB_MODE:String = "#system_messages:prebattle/request/name/CHANGE_FUN_SUB_MODE";
       
       public static const FORTIFICATION_REQUEST_NAME_CREATE_FORT:String = "#system_messages:fortification/request/name/CREATE_FORT";
       
@@ -2329,12 +2341,6 @@ package
       
       public static const MAPS_BLACK_LIST_SWITCH_ON_BODY:String = "#system_messages:maps_black_list/switch_on/body";
       
-      public static const SHOP_SALES_EVENT_SUCCESS_FREE:String = "#system_messages:shop_sales_event/success_free";
-      
-      public static const SHOP_SALES_EVENT_SUCCESS:String = "#system_messages:shop_sales_event/success";
-      
-      public static const SHOP_SALES_EVENT_ERROR:String = "#system_messages:shop_sales_event/error";
-      
       public static const PREMIUM_QUESTS_SWITCH_OFF_TITLE:String = "#system_messages:premium_quests/switch_off/title";
       
       public static const PREMIUM_QUESTS_SWITCH_OFF_BODY:String = "#system_messages:premium_quests/switch_off/body";
@@ -2666,6 +2672,190 @@ package
       public static const RESOURCEWELL_RESOURCESLOADINGERROR:String = "#system_messages:resourceWell/resourcesLoadingError";
       
       public static const RESOURCEWELL_RESOURCESRETURNERROR:String = "#system_messages:resourceWell/resourcesReturnError";
+      
+      public static const NEWYEAR_CRAFTTOY_SERVER_ERROR:String = "#system_messages:newYear/craftToy/server_error";
+      
+      public static const NEWYEAR_BUYTOY_SERVER_ERROR:String = "#system_messages:newYear/buyToy/server_error";
+      
+      public static const NEWYEAR_BUYTOY_GOLD:String = "#system_messages:newYear/buyToy/gold";
+      
+      public static const NEWYEAR_BUYTOY_CREDITS:String = "#system_messages:newYear/buyToy/credits";
+      
+      public static const NEWYEAR_BUYTOY_TEXT:String = "#system_messages:newYear/buyToy/text";
+      
+      public static const NEWYEAR_APPLYVEHICLEDISCOUNT_SUCCESS:String = "#system_messages:newYear/applyVehicleDiscount/success";
+      
+      public static const NEWYEAR_APPLYVEHICLEDISCOUNT_SERVER_ERROR:String = "#system_messages:newYear/applyVehicleDiscount/server_error";
+      
+      public static const NEWYEAR_APPLYVEHICLEDISCOUNT_SERVER_ERROR_NODISCOUNTS:String = "#system_messages:newYear/applyVehicleDiscount/server_error/noDiscounts";
+      
+      public static const NEWYEAR_APPLYVEHICLEDISCOUNT_SERVER_ERROR_ALREADYACTIVE:String = "#system_messages:newYear/applyVehicleDiscount/server_error/alreadyActive";
+      
+      public static const NEWYEAR_APPLYVEHICLEDISCOUNT_SERVER_ERROR_ALREADYBOUGHT:String = "#system_messages:newYear/applyVehicleDiscount/server_error/alreadyBought";
+      
+      public static const NEWYEAR_APPLYVEHICLEDISCOUNT_SERVER_ERROR_NODISCOUNTFORVEHICLE:String = "#system_messages:newYear/applyVehicleDiscount/server_error/noDiscountForVehicle";
+      
+      public static const NEWYEAR_HANGTOY_SERVER_ERROR:String = "#system_messages:newYear/hangToy/server_error";
+      
+      public static const NEWYEAR_BREAKTOYS_SERVER_ERROR:String = "#system_messages:newYear/breakToys/server_error";
+      
+      public static const NEWYEAR_BUYCOLLECTION_SERVER_ERROR:String = "#system_messages:newYear/buyCollection/server_error";
+      
+      public static const NEWYEAR_RESETLOOTBOXSTATISTICS_SERVER_ERROR_HEADER:String = "#system_messages:newYear/resetLootboxStatistics/server_error/header";
+      
+      public static const NEWYEAR_RESETLOOTBOXSTATISTICS_SERVER_ERROR:String = "#system_messages:newYear/resetLootboxStatistics/server_error";
+      
+      public static const NEWYEAR_REROLLCELEBRITYQUEST_GUEST_A_TYPE_1:String = "#system_messages:newYear/rerollCelebrityQuest/guest_A/type_1";
+      
+      public static const NEWYEAR_REROLLCELEBRITYQUEST_GUEST_A_TYPE_2:String = "#system_messages:newYear/rerollCelebrityQuest/guest_A/type_2";
+      
+      public static const NEWYEAR_REROLLCELEBRITYQUEST_GUEST_M_TYPE_1:String = "#system_messages:newYear/rerollCelebrityQuest/guest_M/type_1";
+      
+      public static const NEWYEAR_REROLLCELEBRITYQUEST_GUEST_M_TYPE_2:String = "#system_messages:newYear/rerollCelebrityQuest/guest_M/type_2";
+      
+      public static const NEWYEAR_REROLLCELEBRITYQUEST_SERVER_ERROR:String = "#system_messages:newYear/rerollCelebrityQuest/server_error";
+      
+      public static const NEWYEAR_REROLLCELEBRITYQUEST_SERVER_ERROR_NOREROLLS:String = "#system_messages:newYear/rerollCelebrityQuest/server_error/noRerolls";
+      
+      public static const NEWYEAR_CELEBRITYCHALLENGE_PROGRESSREWARD_TITLE:String = "#system_messages:newYear/celebrityChallenge/progressReward/title";
+      
+      public static const NEWYEAR_CELEBRITYCHALLENGE_QUESTREWARD_GUEST_A_TITLE:String = "#system_messages:newYear/celebrityChallenge/questReward/guest_A/title";
+      
+      public static const NEWYEAR_CELEBRITYCHALLENGE_QUESTREWARD_GUEST_M_TITLE:String = "#system_messages:newYear/celebrityChallenge/questReward/guest_M/title";
+      
+      public static const NEWYEAR_CELEBRITYCHALLENGE_QUESTREWARD_NY23COIN:String = "#system_messages:newYear/celebrityChallenge/questReward/ny23Coin";
+      
+      public static const NEWYEAR_CELEBRITYCHALLENGE_QUESTREWARD_NY23COINS:String = "#system_messages:newYear/celebrityChallenge/questReward/ny23Coins";
+      
+      public static const NEWYEAR_BUYING_ERRORS_SERVER_ERROR_CENTERDOWN:String = "#system_messages:newYear/buying/errors/server_error_centerDown";
+      
+      public static const NEWYEAR_BUYING_ERRORS_NOT_ENOUGH_RESOURCE:String = "#system_messages:newYear/buying/errors/not_enough_resource";
+      
+      public static const NEWYEAR_BUYING_ERRORS_SERVER_ERROR:String = "#system_messages:newYear/buying/errors/server_error";
+      
+      public static const NEWYEAR_CONVERTINGRESOURCES_DECREASE_TITLE:String = "#system_messages:newYear/convertingResources/decrease/title";
+      
+      public static const NEWYEAR_CONVERTINGRESOURCES_DECREASE_MESSAGE:String = "#system_messages:newYear/convertingResources/decrease/message";
+      
+      public static const NEWYEAR_CONVERTINGRESOURCES_INCREASE_TITLE:String = "#system_messages:newYear/convertingResources/increase/title";
+      
+      public static const NEWYEAR_CONVERTINGRESOURCES_INCREASE_MESSAGE:String = "#system_messages:newYear/convertingResources/increase/message";
+      
+      public static const NEWYEAR_CONVERTINGRESOURCES_ERROR:String = "#system_messages:newYear/convertingResources/error";
+      
+      public static const NEWYEAR_SETAUTOCOLLECTING_ACTIVATED_SIMPLESUCCESS:String = "#system_messages:newYear/setAutoCollecting/activated/simpleSuccess";
+      
+      public static const NEWYEAR_SETAUTOCOLLECTING_ACTIVATED_HEADER:String = "#system_messages:newYear/setAutoCollecting/activated/header";
+      
+      public static const NEWYEAR_SETAUTOCOLLECTING_ACTIVATED_MESSAGE:String = "#system_messages:newYear/setAutoCollecting/activated/message";
+      
+      public static const NEWYEAR_SETAUTOCOLLECTING_DEACTIVATED_SUCCESS:String = "#system_messages:newYear/setAutoCollecting/deactivated/success";
+      
+      public static const NEWYEAR_COLLECTINGRESOURCES_SERVER_ERROR_COMMON:String = "#system_messages:newYear/collectingResources/server_error/common";
+      
+      public static const NEWYEAR_COLLECTINGRESOURCES_HEADER:String = "#system_messages:newYear/collectingResources/header";
+      
+      public static const NEWYEAR_COLLECTINGRESOURCES_AUTO_COUNT:String = "#system_messages:newYear/collectingResources/auto/count";
+      
+      public static const NEWYEAR_COLLECTINGRESOURCES_AUTO_SPENTMONEY:String = "#system_messages:newYear/collectingResources/auto/spentMoney";
+      
+      public static const NEWYEAR_COLLECTINGRESOURCES_AUTO_COLLECTED:String = "#system_messages:newYear/collectingResources/auto/collected";
+      
+      public static const NEWYEAR_COLLECTINGRESOURCES_AUTO_DEACTIVATED:String = "#system_messages:newYear/collectingResources/auto/deactivated";
+      
+      public static const NEWYEAR_COLLECTINGRESOURCES_AUTO_CANCELED:String = "#system_messages:newYear/collectingResources/auto/canceled";
+      
+      public static const NEWYEAR_COLLECTINGRESOURCES_AUTO_FINISHED:String = "#system_messages:newYear/collectingResources/auto/finished";
+      
+      public static const NEWYEAR_COLLECTINGRESOURCES_BUTTON:String = "#system_messages:newYear/collectingResources/button";
+      
+      public static const NEWYEAR_COLLECTINGRESOURCESAVAILABLE_HEADER:String = "#system_messages:newYear/collectingResourcesAvailable/header";
+      
+      public static const NEWYEAR_COLLECTINGRESOURCESAVAILABLE_MESSAGE:String = "#system_messages:newYear/collectingResourcesAvailable/message";
+      
+      public static const NEWYEAR_COLLECTINGRESOURCESAVAILABLE_BUTTON:String = "#system_messages:newYear/collectingResourcesAvailable/button";
+      
+      public static const NEWYEAR_COLLECTINGRESOURCESAVAILABLE_FRIEND_HEADER:String = "#system_messages:newYear/collectingResourcesAvailable/friend/header";
+      
+      public static const NEWYEAR_COLLECTINGRESOURCESAVAILABLE_FRIEND_ONEFRIENDMESSAGE:String = "#system_messages:newYear/collectingResourcesAvailable/friend/oneFriendMessage";
+      
+      public static const NEWYEAR_COLLECTINGRESOURCESAVAILABLE_FRIEND_TWOFRIENDSMESSAGE:String = "#system_messages:newYear/collectingResourcesAvailable/friend/twoFriendsMessage";
+      
+      public static const NEWYEAR_COLLECTINGRESOURCESAVAILABLE_FRIEND_BUTTON:String = "#system_messages:newYear/collectingResourcesAvailable/friend/button";
+      
+      public static const NEWYEAR_COLLECTINGRESOURCESAVAILABLE_COUNTVALUE:String = "#system_messages:newYear/collectingResourcesAvailable/countValue";
+      
+      public static const NEWYEAR_STROKEDOG_HEADER:String = "#system_messages:newYear/strokeDog/header";
+      
+      public static const NEWYEAR_STROKEDOG_SERVER_ERROR:String = "#system_messages:newYear/strokeDog/server_error";
+      
+      public static const NEWYEAR_RESOURCES_NY_CRYSTAL:String = "#system_messages:newYear/resources/ny_crystal";
+      
+      public static const NEWYEAR_RESOURCES_NY_EMERALD:String = "#system_messages:newYear/resources/ny_emerald";
+      
+      public static const NEWYEAR_RESOURCES_NY_AMBER:String = "#system_messages:newYear/resources/ny_amber";
+      
+      public static const NEWYEAR_RESOURCES_NY_IRON:String = "#system_messages:newYear/resources/ny_iron";
+      
+      public static const NEWYEAR_OBJECTLEVELUP_HEADER:String = "#system_messages:newYear/objectLevelUp/header";
+      
+      public static const NEWYEAR_OBJECTLEVELUP_ERROR:String = "#system_messages:newYear/objectLevelUp/error";
+      
+      public static const NEWYEAR_OBJECTLEVELUP_FIR:String = "#system_messages:newYear/objectLevelUp/Fir";
+      
+      public static const NEWYEAR_OBJECTLEVELUP_INSTALLATION:String = "#system_messages:newYear/objectLevelUp/Installation";
+      
+      public static const NEWYEAR_OBJECTLEVELUP_FAIR:String = "#system_messages:newYear/objectLevelUp/Fair";
+      
+      public static const NEWYEAR_OBJECTMAXLEVEL_FIR:String = "#system_messages:newYear/objectMaxLevel/Fir";
+      
+      public static const NEWYEAR_OBJECTMAXLEVEL_INSTALLATION:String = "#system_messages:newYear/objectMaxLevel/Installation";
+      
+      public static const NEWYEAR_OBJECTMAXLEVEL_FAIR:String = "#system_messages:newYear/objectMaxLevel/Fair";
+      
+      public static const NEWYEAR_ALLOBJECTSCOLLECTED_HEADER:String = "#system_messages:newYear/allObjectsCollected/header";
+      
+      public static const NEWYEAR_ALLOBJECTSCOLLECTED_BODY:String = "#system_messages:newYear/allObjectsCollected/body";
+      
+      public static const NEWYEAR_COIN23_APPLY_SERVER_ERROR:String = "#system_messages:newYear/coin23/apply/server_error";
+      
+      public static const NEWYEAR_COIN23_APPLY_SERVER_ERROR_DISABLED:String = "#system_messages:newYear/coin23/apply/server_error/DISABLED";
+      
+      public static const NEWYEAR_COIN23_APPLY_SERVER_ERROR_EXCEPTION:String = "#system_messages:newYear/coin23/apply/server_error/EXCEPTION";
+      
+      public static const NEWYEAR_COIN23_APPLY_SERVER_ERROR_COOLDOWN:String = "#system_messages:newYear/coin23/apply/server_error/COOLDOWN";
+      
+      public static const NEWYEAR_COIN23_BUYING_ERRORS_SERVER_ERROR_CENTERDOWN:String = "#system_messages:newYear/coin23/buying/errors/server_error_centerDown";
+      
+      public static const NEWYEAR_COIN23_BUYING_ERRORS_NOT_ENOUGH_RESOURCE:String = "#system_messages:newYear/coin23/buying/errors/not_enough_resource";
+      
+      public static const NEWYEAR_COIN23_BUYING_ERRORS_INVALID_RESOURCE_TYPE:String = "#system_messages:newYear/coin23/buying/errors/invalid_resource_type";
+      
+      public static const NEWYEAR_COIN23_BUYING_ERRORS_INVALID_COINS_COUNT:String = "#system_messages:newYear/coin23/buying/errors/invalid_coins_count";
+      
+      public static const NEWYEAR_COIN23_BUYING_ERRORS_SERVER_ERROR:String = "#system_messages:newYear/coin23/buying/errors/server_error";
+      
+      public static const NEWYEAR_PIGGYBANK_SERVER_ERROR:String = "#system_messages:newYear/piggyBank/server_error";
+      
+      public static const NEWYEAR_PIGGYBANK_REWARD_TITLE:String = "#system_messages:newYear/piggyBank/reward/title";
+      
+      public static const NEWYEAR_PIGGYBANK_REWARDS_TITLE:String = "#system_messages:newYear/piggyBank/rewards/title";
+      
+      public static const NEWYEAR_PIGGYBANK_REWARDS_TEXT:String = "#system_messages:newYear/piggyBank/rewards/text";
+      
+      public static const NEWYEAR_ERRORTYPES_LEVELUPREWARDSERROR:String = "#system_messages:newYear/errorTypes/levelUpRewardsError";
+      
+      public static const NEWYEAR_GIFTMACHINE_TOKENBOUGHT:String = "#system_messages:newYear/giftMachine/tokenBought";
+      
+      public static const NEWYEAR_MARKETPLACE_COLLECTIONBOUGHT:String = "#system_messages:newYear/marketplace/collectionBought";
+      
+      public static const NEWYEAR_MARKETPLACE_ERRORS_SERVER_ERROR:String = "#system_messages:newYear/marketplace/errors/server_error";
+      
+      public static const NEWYEAR_MARKETPLACE_ERRORS_COLLECTION_ALREADY_BOUGHT:String = "#system_messages:newYear/marketplace/errors/collection_already_bought";
+      
+      public static const NEWYEAR_MARKETPLACE_REWARDS_HEADER:String = "#system_messages:newYear/marketplace/rewards/header";
+      
+      public static const NEWYEAR_FINANCIALOPERATION_SPENT:String = "#system_messages:newYear/financialOperation/spent";
        
       
       public function SYSTEM_MESSAGES()

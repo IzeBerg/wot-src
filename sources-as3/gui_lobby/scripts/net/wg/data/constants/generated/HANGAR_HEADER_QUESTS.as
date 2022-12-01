@@ -32,8 +32,6 @@ package net.wg.data.constants.generated
       public static const QUEST_GROUP_BATTLE_PASS:String = "questGroupBattlePass";
       
       public static const QUEST_GROUP_RANKED_DAILY:String = "questGroupRankedDaily";
-      
-      public static const QUEST_GROUP_FUN_RANDOM:String = "funRandomQuestsGroup";
        
       
       public function HANGAR_HEADER_QUESTS()

@@ -616,7 +616,6 @@ class ContainerManager(ContainerManagerMeta, IContainerManager):
         self.onViewAddedToContainer = Event()
         self.onViewLoading = Event()
         self.onViewLoaded = Event()
-        self.onViewLoadCanceled = Event()
         self.__globalContainer = _GlobalViewContainer(weakref.proxy(self))
         for container in containers:
             self.__globalContainer.addChildContainer(container)
@@ -624,7 +623,6 @@ class ContainerManager(ContainerManagerMeta, IContainerManager):
         self.__loader = loader
         self.__loader.onViewLoadInit += self.__onViewLoadInit
         self.__loader.onViewLoaded += self.__onViewLoaded
-        self.__loader.onViewLoadCanceled += self.__onViewLoadCanceled
         self.__scopeController = GlobalScopeController()
         self.__scopeController.create()
         self.__viewCache = _ViewCollection()
@@ -636,7 +634,6 @@ class ContainerManager(ContainerManagerMeta, IContainerManager):
         if self.__loader is not None:
             self.__loader.onViewLoaded -= self.__onViewLoaded
             self.__loader.onViewLoadInit -= self.__onViewLoadInit
-            self.__loader.onViewLoadCanceled -= self.__onViewLoadCanceled
             self.__loader = None
         for layer, layerName in enumerate(LAYER_NAMES.LAYER_ORDER):
             container = self.__globalContainer.findContainer(layer)
@@ -887,6 +884,3 @@ class ContainerManager(ContainerManagerMeta, IContainerManager):
 
     def __onViewLoadInit(self, view, *args, **kwargs):
         self.onViewLoading(view)
-
-    def __onViewLoadCanceled(self, key, item):
-        self.onViewLoadCanceled(key, item)

@@ -1,4 +1,4 @@
-import cPickle, copy, weakref, zlib
+import cPickle, copy, logging, weakref, zlib
 from collections import namedtuple
 import AccountCommands, BigWorld, ClientPrebattle, Event, BattleReplay
 from ChatManager import chatManager
@@ -8,7 +8,7 @@ from ClientUnitMgr import ClientUnitMgr, ClientUnitBrowser
 from ContactInfo import ContactInfo
 from OfflineMapCreator import g_offlineMapCreator
 from PlayerEvents import g_playerEvents as events
-from account_helpers import AccountSyncData, Inventory, DossierCache, Shop, Stats, QuestProgress, CustomFilesCache, BattleResultsCache, ClientGoodies, client_blueprints, client_recycle_bin, AccountSettings, client_anonymizer, ClientBattleRoyale, shop_sales_event
+from account_helpers import AccountSyncData, Inventory, DossierCache, Shop, Stats, QuestProgress, CustomFilesCache, BattleResultsCache, ClientGoodies, client_blueprints, client_recycle_bin, AccountSettings, client_anonymizer, ClientBattleRoyale
 from account_helpers.dog_tags import DogTags
 from account_helpers.maps_training import MapsTraining
 from account_helpers.offers.sync_data import OffersSyncData
@@ -49,6 +49,7 @@ from shared_utils.account_helpers.diff_utils import synchronizeDicts
 StreamData = namedtuple('StreamData', ['data', 'isCorrupted', 'origPacketLen', 'packetLen', 'origCrc32', 'crc32'])
 StreamData.__new__.__defaults__ = (
  None,) * len(StreamData._fields)
+_logger = logging.getLogger(__name__)
 
 def _isInt(a):
     return isinstance(a, (int, long))
@@ -127,7 +128,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
 
     def __init__(self):
         global g_accountRepository
-        LOG_DEBUG('client Account.init')
+        _logger.info('client Account.init')
         propertyName, propertyValue = _CLIENT_SERVER_VERSION
         self.connectionMgr.checkClientServerVersions(propertyValue, getattr(self, propertyName, None))
         ClientChat.__init__(self)
@@ -171,7 +172,6 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.dailyQuests = g_accountRepository.dailyQuests
         self.battlePass = g_accountRepository.battlePass
         self.offers = g_accountRepository.offers
-        self.shopSalesEvent = g_accountRepository.shopSalesEvent
         self.dogTags = g_accountRepository.dogTags
         self.mapsTraining = g_accountRepository.mapsTraining
         self.renewableSubscription = g_accountRepository.renewableSubscription
@@ -204,7 +204,6 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.spaFlags.setAccount(self)
         self.anonymizer.setAccount(self)
         self.offers.setAccount(self)
-        self.shopSalesEvent.setAccount(self)
         self.dogTags.setAccount(self)
         self.mapsTraining.setAccount(self)
         self.renewableSubscription.setAccount(self)
@@ -234,7 +233,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
 
     def onBecomePlayer(self):
         uniprof.enterToRegion('player.account.entering')
-        LOG_DEBUG('Account.onBecomePlayer()')
+        _logger.info('Account.onBecomePlayer()')
         self.databaseID = None
         self.inputHandler = AccountInputHandler()
         BigWorld.clearAllSpaces()
@@ -269,7 +268,6 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.giftSystem.onAccountBecomePlayer()
         self.gameRestrictions.onAccountBecomePlayer()
         self.resourceWell.onAccountBecomePlayer()
-        self.shopSalesEvent.onAccountBecomePlayer()
         chatManager.switchPlayerProxy(self)
         events.onAccountBecomePlayer()
         BigWorld.target.source = BigWorld.MouseTargetingMatrix()
@@ -282,7 +280,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
 
     def onBecomeNonPlayer(self):
         uniprof.enterToRegion('player.account.exiting')
-        LOG_DEBUG('Account.onBecomeNonPlayer()')
+        _logger.info('Account.onBecomeNonPlayer()')
         chatManager.switchPlayerProxy(None)
         self.syncData.onAccountBecomeNonPlayer()
         self.inventory.onAccountBecomeNonPlayer()
@@ -308,7 +306,6 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.anonymizer.onAccountBecomeNonPlayer()
         self.battlePass.onAccountBecomeNonPlayer()
         self.offers.onAccountBecomeNonPlayer()
-        self.shopSalesEvent.onAccountBecomeNonPlayer()
         self.dogTags.onAccountBecomeNonPlayer()
         self.mapsTraining.onAccountBecomeNonPlayer()
         self.renewableSubscription.onAccountBecomeNonPlayer()
@@ -339,7 +336,6 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.spaFlags.setAccount(None)
         self.anonymizer.setAccount(None)
         self.offers.setAccount(None)
-        self.shopSalesEvent.setAccount(None)
         g_accountRepository.commandProxy.setGateway(None)
         self.unitMgr.clear()
         self.unitBrowser.clear()
@@ -450,6 +446,10 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self.battleQueueType = QUEUE_TYPE.TUTORIAL
         events.onTutorialEnqueued(number, queueLen, avgWaitingTime)
         events.onEnqueued(QUEUE_TYPE.TUTORIAL)
+
+    @property
+    def selectedEntity(self):
+        return self.__selectedEntity
 
     def targetFocus(self, entity):
         if self.__objectsSelectionEnabled:
@@ -569,7 +569,7 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
 
     def showGUI(self, ctx):
         ctx = cPickle.loads(ctx)
-        LOG_DEBUG('showGUI', ctx)
+        _logger.info('showGUI %r', ctx)
         self.databaseID = ctx['databaseID']
         if 'prebattleID' in ctx:
             self.prebattle = ClientPrebattle.ClientPrebattle(ctx['prebattleID'])
@@ -635,9 +635,9 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
     def resyncDossiers(self, isFullResync):
         self.dossierCache.resynchronize(isFullResync)
 
-    def requestQueueInfo(self, queueType):
+    def requestQueueInfo(self, queueType, intArg1=0, intArg2=0):
         if self.isPlayer:
-            self.base.doCmdInt3(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_REQ_QUEUE_INFO, queueType, 0, 0)
+            self.base.doCmdInt3(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_REQ_QUEUE_INFO, queueType, intArg1, intArg2)
 
     def requestPrebattles(self, prbType, sort_key, idle, start, end):
         if not events.isPlayerEntityChanging:
@@ -753,14 +753,14 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         if not events.isPlayerEntityChanging:
             self.base.doCmdInt3(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_DEQUEUE_SANDBOX, 0, 0, 0)
 
-    def enqueueEventBattles(self, vehInvID, eventQueueType=QUEUE_TYPE.EVENT_BATTLES):
+    def enqueueEventBattles(self, vehInvID):
         if not events.isPlayerEntityChanging:
             self.base.doCmdIntArr(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_ENQUEUE_IN_BATTLE_QUEUE, [
-             eventQueueType, vehInvID])
+             QUEUE_TYPE.EVENT_BATTLES, vehInvID])
 
-    def dequeueEventBattles(self, eventQueueType=QUEUE_TYPE.EVENT_BATTLES):
+    def dequeueEventBattles(self):
         if not events.isPlayerEntityChanging:
-            self.base.doCmdInt(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_DEQUEUE_FROM_BATTLE_QUEUE, eventQueueType)
+            self.base.doCmdInt(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_DEQUEUE_FROM_BATTLE_QUEUE, QUEUE_TYPE.EVENT_BATTLES)
 
     def enqueueRanked(self, vehInvID):
         if events.isPlayerEntityChanging:
@@ -823,9 +823,9 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
             proxy = lambda requestID, resultID, errorStr, ext=[]: callback(resultID, errorStr, ext)
             self._doCmdInt3(AccountCommands.CMD_REQ_MAPS_TRAINING_INITIAL_CONFIGURATION, accountID, 0, 0, proxy)
 
-    def createArenaFromQueue(self, queueType):
+    def createArenaFromQueue(self):
         if not events.isPlayerEntityChanging:
-            self.base.doCmdInt3(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_FORCE_QUEUE, queueType, 0, 0)
+            self.base.doCmdInt3(AccountCommands.REQUEST_ID_NO_RESPONSE, AccountCommands.CMD_FORCE_QUEUE, 0, 0, 0)
 
     def prb_createTraining(self, arenaTypeID, roundLength, isOpened, comment):
         if events.isPlayerEntityChanging:
@@ -1170,17 +1170,6 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
         self._doCmdInt2(AccountCommands.CMD_ADD_EQUIPMENT, int(deviceID), count, None)
         return
 
-    @staticmethod
-    def resetScreenShown(screenName):
-        from constants import CURRENT_REALM
-        if CURRENT_REALM == 'DEV':
-            from account_helpers.AccountSettings import GUI_START_BEHAVIOR
-            settingsCore = dependency.instance(ISettingsCore)
-            defaults = AccountSettings.getFilterDefault(GUI_START_BEHAVIOR)
-            settings = settingsCore.serverSettings.getSection(GUI_START_BEHAVIOR, defaults)
-            settings[screenName] = False
-            settingsCore.serverSettings.setSectionSettings(GUI_START_BEHAVIOR, settings)
-
     def removeEquipment(self, deviceID, count=-1):
         self._doCmdInt2(AccountCommands.CMD_ADD_EQUIPMENT, int(deviceID), count, None)
         return
@@ -1208,6 +1197,9 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
 
     def _doCmdIntArr(self, cmd, arr, callback):
         return self.__doCmd('doCmdIntArr', cmd, callback, arr)
+
+    def _doCmdIntArrStr(self, cmd, arr, s, callback):
+        return self.__doCmd('doCmdIntArrStr', cmd, callback, arr, s)
 
     def _doCmdIntStrArr(self, cmd, int1, strArr, callback):
         return self.__doCmd('doCmdIntStrArr', cmd, callback, int1, strArr)
@@ -1263,7 +1255,6 @@ class PlayerAccount(BigWorld.Entity, ClientChat):
             self.__synchronizeCacheSimpleValue('globalRating', diff.get('account', None), 'globalRating', events.onAccountGlobalRatingChanged)
             self.__synchronizeCacheDict(self.platformBlueprintsConvertSaleLimits, diff, 'platformBlueprintsConvertSaleLimits', 'replace', events.onPlatformBlueprintsConvertSaleLimits)
             synchronizeDicts(diff.get('freePremiumCrew', {}), self.freePremiumCrew)
-            events.onClientSynchronize(isFullSync, diff)
             events.onClientUpdated(diff, not triggerEvents)
             if triggerEvents and not isFullSync:
                 for vehTypeCompDescr in diff.get('stats', {}).get('eliteVehicles', ()):
@@ -1497,7 +1488,6 @@ class _AccountRepository(object):
         self.dailyQuests = {}
         self.battlePass = BattlePassManager(self.syncData, self.commandProxy)
         self.offers = OffersSyncData(self.syncData)
-        self.shopSalesEvent = shop_sales_event.ShopSalesEvent()
         self.dogTags = DogTags(self.syncData)
         self.mapsTraining = MapsTraining(self.syncData)
         self.renewableSubscription = RenewableSubscription(self.syncData)

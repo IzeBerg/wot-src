@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<stream>colour</stream>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>01 - Default</identifier>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>0</materialKind>
+					<fx>shaders/custom/volumetric_effect_vtx.fx</fx>
+					<property>
+						TintlColor
+						<Vector4>1.000000 0.725490 0.039216 1.000000</Vector4>
+					</property>
+					<property>
+						diffuseUVSpeedAlphaOffset
+						<Vector4>0.000000 0.000000 0.000000 0.000000</Vector4>
+					</property>
+					<property>
+						distortion_UV_Speed_Amount
+						<Vector4>0.200000 0.050000 0.021000 0.030000</Vector4>
+					</property>
+					<property>
+						lightMultipliers
+						<Vector4>2.250000 0.200000 0.700000 0.000000</Vector4>
+					</property>
+					<property>
+						FreshnelColor
+						<Vector4>1.000000 0.896119 0.740000 1.000000</Vector4>
+					</property>
+					<property>
+						alphaFadeAmountFresnel
+						<Vector4>1.000000 0.000000 1.000000 0.000000</Vector4>
+					</property>
+					<property>
+						softFactor
+						<Float>0.400000</Float>
+					</property>
+					<property>
+						fadeMinDistance
+						<Float>0.010000</Float>
+					</property>
+					<property>
+						fadeMaxDistance
+						<Float>1.000000</Float>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+					<property>
+						destBlend
+						<Int>2</Int>
+					</property>
+					<property>
+						enableLighting
+						<Bool>false</Bool>
+					</property>
+					<property>
+						alphaFreshnelEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>particles/content_deferred/GFX_models/GFX_textures/volume_lights_decor_rotate.dds</Texture>
+					</property>
+					<property>
+						distortionMap
+						<Texture>particles/content_deferred/GFX_textures/environment/h07_new_year/aurora_distortion.dds</Texture>
+					</property>
+				</material>
+				<groupOrigin>0.000000 -3.451767 0.000000</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-3.721978 -6.906455 -3.721979</min>
+		<max>3.721978 0.002920 3.721979</max>
+	</boundingBox>
+	<geometrySize>1792</geometrySize>
+	<minUVDensity>0.016525</minUVDensity>
+</root>

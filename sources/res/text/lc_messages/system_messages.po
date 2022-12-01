@@ -221,6 +221,18 @@ msgstr ""
 "Операция невозможна. Всё ваше золото станет доступно после автоматического "
 "восстановления работоспособности Единого кошелька."
 
+msgid "artefact_deconstructing/invalid_module"
+msgstr "Разбор оборудования «%(name)s» не удался. Неправильный модуль."
+
+msgid "artefact_deconstructing/server_error"
+msgstr "Разбор оборудования «%(name)s» не удался. Попробуйте позже."
+
+msgid "artefact_deconstructing/success"
+msgstr "Разобрано оборудование: «%(name)s» (x%(count)s). Получено %(money)s."
+
+msgid "artefact_deconstructingMult/success"
+msgstr "Разобрано оборудование: «%(names)s». Получено %(money)s."
+
 msgid "artefact_demount/error_not_enough_resources"
 msgstr "Оборудование «%(equipment)s» не демонтировано. Недостаточно средств."
 
@@ -2220,10 +2232,10 @@ msgstr ""
 " в Мир&nbsp;кораблей"
 
 msgid "lootboxes/open/server_error"
-msgstr "Ошибка получения подарка: серверный сбой."
+msgstr "Ошибка открытия коробки: серверный сбой."
 
 msgid "lootboxes/open/server_error/COOLDOWN"
-msgstr "Ошибка получения подарка: дождитесь завершения предыдущей операции."
+msgstr "Ошибка открытия коробки: дождитесь завершения предыдущей операции."
 
 msgid "lootboxes/open/server_error/DISABLED"
 msgstr "Операция временно недоступна. Попробуйте позже."
@@ -2468,6 +2480,313 @@ msgstr "Ошибка смены комплектации"
 
 msgid "nation_change/success"
 msgstr "%(veh_name)s: Национальная комплектация изменена"
+
+msgid "newYear/allObjectsCollected/body"
+msgstr "Вы нашли все скрытые декорации Ангара."
+
+msgid "newYear/allObjectsCollected/header"
+msgstr "Поздравляем!"
+
+msgid "newYear/applyVehicleDiscount/server_error"
+msgstr "Ошибка активации скидки на технику: серверный сбой."
+
+msgid "newYear/applyVehicleDiscount/server_error/alreadyActive"
+msgstr "Ошибка активации скидки: скидка на данную машину уже активирована."
+
+msgid "newYear/applyVehicleDiscount/server_error/alreadyBought"
+msgstr "Ошибка активации скидки на технику: машина уже куплена."
+
+msgid "newYear/applyVehicleDiscount/server_error/noDiscountForVehicle"
+msgstr "Ошибка активации скидки: скидка на данную машину не найдена."
+
+msgid "newYear/applyVehicleDiscount/server_error/noDiscounts"
+msgstr "Ошибка активации скидки на технику: скидок не найдено."
+
+msgid "newYear/applyVehicleDiscount/success"
+msgstr "Вы активировали %(discount)s%% скидку на %(vehName)s"
+
+msgid "newYear/breakToys/server_error"
+msgstr "Ошибка разбития украшений: серверный сбой."
+
+msgid "newYear/buyCollection/server_error"
+msgstr "Ошибка покупки коллекции: серверный сбой."
+
+msgid "newYear/buyToy/credits"
+msgstr "Потрачено кредитов: %(value)s"
+
+msgid "newYear/buyToy/gold"
+msgstr "Потрачено золота: %(value)s"
+
+msgid "newYear/buyToy/server_error"
+msgstr "Ошибка покупки предмета: покупка временно невозможна."
+
+msgid "newYear/buyToy/text"
+msgstr "Предмет «%(toy_name)s» приобретён."
+
+msgid "newYear/buying/errors/not_enough_resource"
+msgstr "Ошибка покупки: недостаточно ресурсов."
+
+msgid "newYear/buying/errors/server_error"
+msgstr "Ошибка покупки: покупка временно невозможна."
+
+msgid "newYear/buying/errors/server_error_centerDown"
+msgstr "Ошибка покупки. Сервис временно недоступен."
+
+msgid "newYear/celebrityChallenge/progressReward/title"
+msgstr "Выполнено задач Снегурочки: %(value)s!"
+
+msgid "newYear/celebrityChallenge/questReward/guest_A/title"
+msgstr "Задача Деда Мороза выполнена!"
+
+msgid "newYear/celebrityChallenge/questReward/guest_M/title"
+msgstr "Задача Снегурочки выполнена!"
+
+msgid "newYear/celebrityChallenge/questReward/ny23Coin"
+msgstr "Получен жетон для терминала с подарками"
+
+msgid "newYear/celebrityChallenge/questReward/ny23Coins"
+msgstr "Получен жетон для терминала с подарками x%(count)s"
+
+msgid "newYear/coin23/apply/server_error"
+msgstr "Ошибка запуска терминала: серверный сбой."
+
+msgid "newYear/coin23/apply/server_error/COOLDOWN"
+msgstr "Ошибка запуска терминала: дождитесь завершения предыдущей операции."
+
+msgid "newYear/coin23/apply/server_error/DISABLED"
+msgstr "Ошибка запуска терминала: серверный сбой."
+
+msgid "newYear/coin23/apply/server_error/EXCEPTION"
+msgstr "Ошибка запуска терминала: серверный сбой."
+
+msgid "newYear/coin23/buying/errors/invalid_coins_count"
+msgstr "Ошибка покупки жетонов: неправильное количество жетонов для покупки."
+
+msgid "newYear/coin23/buying/errors/invalid_resource_type"
+msgstr "Ошибка покупки жетонов: неподходящий тип ресурсов для оплаты."
+
+msgid "newYear/coin23/buying/errors/not_enough_resource"
+msgstr "Ошибка покупки жетонов: недостаточно ресурсов."
+
+msgid "newYear/coin23/buying/errors/server_error"
+msgstr "Ошибка покупки жетонов: покупка временно невозможна."
+
+msgid "newYear/coin23/buying/errors/server_error_centerDown"
+msgstr "Ошибка покупки жетонов: покупка временно невозможна."
+
+msgid "newYear/collectingResources/auto/canceled"
+msgstr "Недостаточно кредитов для дальнейшего автосбора ресурсов."
+
+msgid "newYear/collectingResources/auto/collected"
+msgstr "Всего получено ресурсов:"
+
+msgid "newYear/collectingResources/auto/count"
+msgstr "Автосборов произведено: %(count)s"
+
+msgid "newYear/collectingResources/auto/deactivated"
+msgstr "Автосбор отключён"
+
+msgid "newYear/collectingResources/auto/finished"
+msgstr "Были собраны ресурсы при помощи автосбора."
+
+msgid "newYear/collectingResources/auto/spentMoney"
+msgstr "Потрачено кредитов: %(money)s"
+
+msgid "newYear/collectingResources/button"
+msgstr "К ресурсам"
+
+msgid "newYear/collectingResources/header"
+msgstr "Ресурсы собраны!"
+
+msgid "newYear/collectingResources/server_error/common"
+msgstr "Ошибка: во время выполнения операции произошёл сбой."
+
+msgid "newYear/collectingResourcesAvailable/button"
+msgstr "К ресурсам!"
+
+msgid "newYear/collectingResourcesAvailable/countValue"
+msgstr "%(count)s"
+
+msgid "newYear/collectingResourcesAvailable/friend/button"
+msgstr "К друзьям!"
+
+msgid "newYear/collectingResourcesAvailable/friend/header"
+msgstr "Доступен сбор ресурсов у друзей"
+
+msgid "newYear/collectingResourcesAvailable/friend/oneFriendMessage"
+msgstr "Соберите по %(countValue)s ед. каждого ресурса у друга %(friendName)s"
+
+msgid "newYear/collectingResourcesAvailable/friend/twoFriendsMessage"
+msgstr ""
+"Соберите по %(countValue)s ед. каждого ресурса у друзей %(friendName1)s и "
+"%(friendName2)s"
+
+msgid "newYear/collectingResourcesAvailable/header"
+msgstr "Доступен сбор ресурсов"
+
+msgid "newYear/collectingResourcesAvailable/message"
+msgstr ""
+"Соберите по %(countValue)s ед. каждого ресурса или настройте автосбор."
+
+msgid "newYear/convertingResources/decrease/message"
+msgstr ""
+"Произведён обмен ресурсов.\n"
+"Потрачено: %(value)s"
+
+msgid "newYear/convertingResources/decrease/title"
+msgstr "Финансовая операция"
+
+msgid "newYear/convertingResources/error"
+msgstr "Ошибка конвертации ресурсов: конвертация временно недоступна."
+
+msgid "newYear/convertingResources/increase/message"
+msgstr ""
+"Произведён обмен ресурсов.\n"
+"Начислено: %(value)s"
+
+msgid "newYear/convertingResources/increase/title"
+msgstr "Начислено:"
+
+msgid "newYear/craftToy/server_error"
+msgstr "Ошибка создания украшения: серверный сбой."
+
+msgid "newYear/errorTypes/levelUpRewardsError"
+msgstr ""
+"Произошла ошибка при получении наград за повышение уровня атмосферы "
+"праздника."
+
+msgid "newYear/financialOperation/spent"
+msgstr "Потрачено: %(count)s"
+
+msgid "newYear/giftMachine/tokenBought"
+msgstr "Куплено жетонов для терминала с подарками: %(count)s шт."
+
+msgid "newYear/hangToy/server_error"
+msgstr "Ошибка размещения украшения: серверный сбой."
+
+msgid "newYear/marketplace/collectionBought"
+msgstr "Куплен комплект наград."
+
+msgid "newYear/marketplace/errors/collection_already_bought"
+msgstr "Ошибка покупки комплекта: комплект уже есть в наличии."
+
+msgid "newYear/marketplace/errors/server_error"
+msgstr "Ошибка покупки комплекта: покупка временно невозможна."
+
+msgid "newYear/marketplace/rewards/header"
+msgstr "Поздравляем!"
+
+msgid "newYear/objectLevelUp/Fair"
+msgstr ""
+"Уровень ярмарки повышен.\n"
+"Текущий уровень: %(level)s.\n"
+"В награду начислено %(items)s шт. новых украшений для ярмарки."
+
+msgid "newYear/objectLevelUp/Fir"
+msgstr ""
+"Уровень ели повышен.\n"
+"Текущий уровень: %(level)s.\n"
+"В награду начислено %(items)s шт. новых украшений для ели."
+
+msgid "newYear/objectLevelUp/Installation"
+msgstr ""
+"Уровень инсталляции повышен.\n"
+"Текущий уровень: %(level)s.\n"
+"В награду начислено %(items)s шт. новых украшений для инсталляции."
+
+msgid "newYear/objectLevelUp/error"
+msgstr "Произошла ошибка при повышении уровня."
+
+msgid "newYear/objectLevelUp/header"
+msgstr "Поздравляем!"
+
+msgid "newYear/objectMaxLevel/Fair"
+msgstr "Ваша ярмарка достигла максимального уровня."
+
+msgid "newYear/objectMaxLevel/Fir"
+msgstr "Ваша ель достигла максимального уровня."
+
+msgid "newYear/objectMaxLevel/Installation"
+msgstr "Ваша инсталляция достигла максимального уровня."
+
+msgid "newYear/piggyBank/reward/title"
+msgstr "Получена награда"
+
+msgid "newYear/piggyBank/rewards/text"
+msgstr "Награды за сбор ресурсов у друзей в рамках Новогоднего наступления."
+
+msgid "newYear/piggyBank/rewards/title"
+msgstr "Получены награды"
+
+msgid "newYear/piggyBank/server_error"
+msgstr ""
+"Ошибка начисления награды:\n"
+"начисление временно недоступно."
+
+msgid "newYear/rerollCelebrityQuest/guest_A/type_1"
+msgstr ""
+"Задача Деда Мороза с условием для одного боя заменена на задачу с условием "
+"для любого количества боёв."
+
+msgid "newYear/rerollCelebrityQuest/guest_A/type_2"
+msgstr ""
+"Задача Деда Мороза с условием для любого количества боёв заменена на задачу "
+"с условием для одного боя."
+
+msgid "newYear/rerollCelebrityQuest/guest_M/type_1"
+msgstr ""
+"Задача Снегурочки с условием для одного боя заменена на задачу с условием "
+"для любого количества боёв."
+
+msgid "newYear/rerollCelebrityQuest/guest_M/type_2"
+msgstr ""
+"Задача Снегурочки с условием для любого количества боёв заменена на задачу с"
+" условием для одного боя."
+
+msgid "newYear/rerollCelebrityQuest/server_error"
+msgstr "Ошибка замены условия задачи: серверный сбой."
+
+msgid "newYear/rerollCelebrityQuest/server_error/noRerolls"
+msgstr "Ошибка замены условия задачи: нет попыток замены."
+
+msgid "newYear/resetLootboxStatistics/server_error"
+msgstr ""
+"Сбросить статистику не удалось, попробуйте ещё раз или повторите позже. Мы "
+"стараемся устранить проблему."
+
+msgid "newYear/resetLootboxStatistics/server_error/header"
+msgstr "Не сработало..."
+
+msgid "newYear/resources/ny_amber"
+msgstr "Солнечный янтарь: %(count)s"
+
+msgid "newYear/resources/ny_crystal"
+msgstr "Горный хрусталь: %(count)s"
+
+msgid "newYear/resources/ny_emerald"
+msgstr "Чистый изумруд: %(count)s"
+
+msgid "newYear/resources/ny_iron"
+msgstr "Метеоритное железо: %(count)s"
+
+msgid "newYear/setAutoCollecting/activated/header"
+msgstr "Автосбор активирован!"
+
+msgid "newYear/setAutoCollecting/activated/message"
+msgstr ""
+"Следующий сбор ресурсов будет произведён через %(timerIcon)s %(timer)s"
+
+msgid "newYear/setAutoCollecting/activated/simpleSuccess"
+msgstr "Автосбор ресурсов активирован."
+
+msgid "newYear/setAutoCollecting/deactivated/success"
+msgstr "Автосбор ресурсов отключён."
+
+msgid "newYear/strokeDog/header"
+msgstr "Получен ресурс!"
+
+msgid "newYear/strokeDog/server_error"
+msgstr "Ошибка получения ресурсов: получение временно невозможно."
 
 msgid "notrecruit_window/success"
 msgstr ""
@@ -2776,6 +3095,9 @@ msgstr "Смена дивизиона"
 
 msgid "prebattle/request/name/CHANGE_FALLOUT_QUEUE_TYPE"
 msgstr "Переключение режима"
+
+msgid "prebattle/request/name/CHANGE_FUN_SUB_MODE"
+msgstr "Смена подрежима"
 
 msgid "prebattle/request/name/CHANGE_RATED"
 msgstr "Переключение режима"
@@ -4503,6 +4825,11 @@ msgstr "Продажа «%(vehName)s» не удалась. Попробуйте
 
 msgid "vehicle_sell/disabledService"
 msgstr "Продажа «%(vehName)s» не удалась. Попробуйте позже."
+
+msgid "vehicle_sell/equipCoin_error"
+msgstr ""
+"Продажа «%(vehName)s» не удалась. Недостаточно компонентов для снятия "
+"оборудования."
 
 msgid "vehicle_sell/invalid_vehicle"
 msgstr "Продажа «%(vehName)s» не удалась. Неправильная машина."

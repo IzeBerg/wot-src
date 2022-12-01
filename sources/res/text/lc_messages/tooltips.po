@@ -37,9 +37,6 @@ msgstr "Находится в клиенте WoWS."
 msgid "Contact/status/inBattle/bootcamp"
 msgstr "В Боевом обучении"
 
-msgid "Contact/status/inBattle/event"
-msgstr "В бою события «Тыквенный переполох», %(host)s"
-
 msgid "Contact/status/inBattle/fortifications"
 msgstr "В сражении за Укрепрайон"
 
@@ -581,6 +578,12 @@ msgstr ""
 "в экран. Наносит урон только в случае пробития брони. Довольно редко "
 "рикошетит. Не теряет бронепробиваемость с расстоянием."
 
+msgid "advanced/additionalInvisibilityDevice"
+msgstr ""
+"Эффективность зависит от типа техники. Увеличивает незаметность как "
+"неподвижной, так и движущейся машины. Полезно для активной разведки, а также"
+" для пассивного наблюдения с более рискованных позиций."
+
 msgid "advanced/aimingStabilizer"
 msgstr ""
 "Уменьшает разброс прицела после выстрела, поворота башни или движения "
@@ -646,6 +649,11 @@ msgid "advanced/commander_universalist"
 msgstr ""
 "Позволяет командиру овладеть всеми специальностями и заменить выведенных из "
 "строя членов экипажа."
+
+msgid "advanced/commandersView"
+msgstr ""
+"Уменьшает маскировку неподвижного и движущегося противника, скрытого "
+"растительностью."
 
 msgid "advanced/demountKit/common"
 msgstr ""
@@ -717,6 +725,12 @@ msgstr ""
 "помощью демонтажного набора или игровой валюты и установить на другую "
 "машину."
 
+msgid "advanced/extraHealthReserve"
+msgstr ""
+"Увеличивает запас прочности машины. Повышает прочность и грузоподъёмность "
+"ходовой, а также скорость её ремонта. Полностью восстанавливает прочность "
+"ходовой после ремонта."
+
 msgid "advanced/fireFighting"
 msgstr "Ускоряет тушение пожара."
 
@@ -786,6 +800,29 @@ msgstr "Осколочно-фугасные снаряды"
 msgid "advanced/header/shellType/HOLLOW_CHARGE"
 msgstr "Кумулятивные снаряды"
 
+msgid "advanced/improvedConfiguration"
+msgstr ""
+"Увеличивает скорость ремонта, прочность боеукладки, баков и двигателя. "
+"Уменьшает штраф от повреждения боеукладки и двигателя, уменьшает шанс "
+"возгорания двигателя. По одному разу за бой предотвращает взрыв боеукладки, "
+"возгорание баков и выведение из строя двигателя."
+
+msgid "advanced/improvedRadioCommunication"
+msgstr ""
+"Увеличивает время отображения обнаруженного противника, а также уменьшает "
+"время, в течение которого ваша машина остаётся обнаруженной."
+
+msgid "advanced/improvedRotationMechanism"
+msgstr ""
+"Уменьшает разброс прицела после выстрела, поворота башни или движения "
+"машины, при этом увеличивая саму скорость поворота машины и башни."
+
+msgid "advanced/improvedSights"
+msgstr ""
+"Уменьшение размера круга сведения увеличивает точность как полностью "
+"сведённого орудия, так и в процессе сведения, что позволит чаще попадать в "
+"цель."
+
 msgid "advanced/improvedVentilation"
 msgstr ""
 "Даёт прибавку к основным специальностям и умениям экипажа, что улучшает все "
@@ -824,6 +861,23 @@ msgid "advanced/loader_pedant"
 msgstr ""
 "Увеличивает прочность боеукладки: снаряды уложены в таком порядке, что не "
 "касаются друг друга."
+
+msgid "advanced/modernizedAimDrivesAimingStabilizer"
+msgstr ""
+"Увеличивает скорость сведения прицела, уменьшает разброс прицела после "
+"выстрела, поворота башни или движения машины."
+
+msgid "advanced/modernizedExtraHealthReserveAntifragmentationLining"
+msgstr ""
+"Увеличивает запас прочности машины и внутренних модулей. Повышает прочность "
+"и скорость ремонта ходовой. Уменьшает штраф от повреждения боеукладки и "
+"двигателя. Ходовая полностью восстанавливает прочность после ремонта."
+
+msgid "advanced/modernizedTurbochargerRotationMechanism"
+msgstr ""
+"Увеличивает мощность двигателя и максимальную скорость машины. Уменьшает "
+"разброс прицела после выстрела, поворота башни или движения машины, при этом"
+" увеличивая саму скорость поворота машины и башни."
 
 msgid "advanced/naturalCover"
 msgstr "Увеличивает незаметность машины."
@@ -913,6 +967,13 @@ msgstr ""
 "Увеличивает дальность обзора машины через короткое время после остановки. "
 "Выключается при движении машины вперёд, назад или при поворотах корпуса. "
 "Шведские высокоуровневые ПТ-САУ могут поворачивать корпус не убирая трубы."
+
+msgid "advanced/turbocharger"
+msgstr ""
+"Увеличивает мощность двигателя, позволяя быстрее набирать скорость, "
+"маневрировать и преодолевать подъёмы. Увеличивает максимальную скорость "
+"машины вперёд и назад, что позволяет быстрее занимать позицию и избегать "
+"ответного огня."
 
 msgid "advanced/vehicleChassis"
 msgstr ""
@@ -1578,9 +1639,6 @@ msgstr "Инструкции <span>работать не будут</span>:"
 
 msgid "battleBooster/crew"
 msgstr "Предбоевые инструкции"
-
-msgid "battleBooster/installationEffects"
-msgstr "Эффект при установке"
 
 msgid "battleBooster/inventoryCount"
 msgstr "На хранении"
@@ -2774,15 +2832,6 @@ msgstr ""
 "При активации позволяют получать дополнительные надбавки по результатам "
 "боёв. Действуют определённое время в Случайных и Ранговых боях, а также в "
 "турнирных играх, Стальном охотнике и на Линии фронта."
-
-msgid "boostersWindow/booster/quality/big"
-msgstr "(большой)"
-
-msgid "boostersWindow/booster/quality/medium"
-msgstr "(средний)"
-
-msgid "boostersWindow/booster/quality/small"
-msgstr "(малый)"
 
 msgid "boostersWindow/booster/shortDescriptionSpecial"
 msgstr "Получение надбавок по результатам боя"
@@ -4798,19 +4847,11 @@ msgstr "При использовании:"
 msgid "equipment/restriction"
 msgstr "Ограничение:"
 
-msgid "event/fightBtn/disable/body"
-msgstr "Для выхода в бой выберите машину подходящего уровня."
-
-msgid "event/fightBtn/disable/header"
-msgstr "Недоступно"
-
 msgid "event/squad/disable/body"
-msgstr ""
-"Для выхода в бой выберите машину подходящего уровня и подтвердите "
-"готовность."
+msgstr "Для высадки на тёмной стороне Луны выберите %(tankName)s"
 
 msgid "event/squad/disable/header"
-msgstr "Недоступно"
+msgstr "Внимание!"
 
 msgid "falloutBattleSelectorWindow/btnDisabled/body"
 msgstr "Вы находитесь в очереди на вход в бой."
@@ -5522,6 +5563,12 @@ msgstr "Необходимо арендовать машину."
 msgid "hangar/startBtn/battleRoyale/notRented/header"
 msgstr "Недоступно"
 
+msgid "hangar/startBtn/battleRoyale/telecomRentalIsOver/body"
+msgstr "Выберите другую машину."
+
+msgid "hangar/startBtn/battleRoyale/telecomRentalIsOver/header"
+msgstr "Машина недоступна"
+
 msgid "hangar/startBtn/battleRoyaleSquadNotReady/notReady/body"
 msgstr "Для выхода в бой все игроки взвода должны подтвердить готовность."
 
@@ -5985,6 +6032,22 @@ msgstr "Боны"
 msgid "header/buttons/crystal/title"
 msgstr "Боны"
 
+msgid "header/buttons/equipCoin/description0"
+msgstr ""
+"%(equipCoin)s можно получить при разборе экспериментального оборудования."
+
+msgid "header/buttons/equipCoin/description1"
+msgstr "Компоненты необходимы для наладки экспериментального оборудования."
+
+msgid "header/buttons/equipCoin/descriptionEquipCoin"
+msgstr "Компоненты"
+
+msgid "header/buttons/equipCoin/descriptionTitle"
+msgstr "Как получить:"
+
+msgid "header/buttons/equipCoin/title"
+msgstr "Компоненты"
+
 msgid "header/buttons/forts/body"
 msgstr "Перейти к информации о своём клане."
 
@@ -6337,14 +6400,6 @@ msgstr "Информационные листки доступны в полно
 
 msgid "lobbyMenu/versionInfoButton/miniclient/header"
 msgstr "Внимание!"
-
-msgid "loby_messenger/btnReferralDisabled/body"
-msgstr ""
-"Недоступно в выбранном режиме. Для получения доступа к функциональности "
-"перейдите в режим «Случайный бой»."
-
-msgid "loby_messenger/btnReferralDisabled/header"
-msgstr "Реферальная программа"
 
 msgid "loby_messenger/channel_button/inRoaming"
 msgstr "Каналы недоступны из-за смены региона"
@@ -6745,6 +6800,9 @@ msgstr "шт."
 msgid "moduleFits/already_installed/header"
 msgstr "Установлено на:"
 
+msgid "moduleFits/already_installed/hiddenVehicleCount"
+msgstr "и ещё %(count)s"
+
 msgid "moduleFits/battleBooster/cannotBuy/description"
 msgstr ""
 "Этот тип инструкции можно получить в качестве награды за игровые события."
@@ -6767,12 +6825,14 @@ msgid "moduleFits/credits_error/text"
 msgstr ""
 "Заработайте их в бою, продайте излишки со Склада или обменяйте золото."
 
-msgid "moduleFits/deluxeEquipment/cannotBuy/description"
-msgstr ""
-"Этот тип оборудования можно получить в качестве награды за игровые события."
+msgid "moduleFits/deconstruct/modernized/description"
+msgstr "(будет получено)"
 
-msgid "moduleFits/deluxeEquipment/cannotBuy/header"
-msgstr "Данное оборудование невозможно купить"
+msgid "moduleFits/deconstruct/modernized/price"
+msgstr "Разбор %(level)s уровня"
+
+msgid "moduleFits/deconstruct/price"
+msgstr "Разбор"
 
 msgid "moduleFits/dismantling"
 msgstr ""
@@ -6784,6 +6844,14 @@ msgstr "Установка невозможна"
 
 msgid "moduleFits/duplicated/note"
 msgstr "На машину уже установлено оборудование с аналогичным эффектом."
+
+msgid "moduleFits/equipcoin_error/header"
+msgstr "Не хватает компонентов"
+
+msgid "moduleFits/equipcoin_error/text"
+msgstr ""
+"Для пополнения компонентов разберите ненужное экспериментальное "
+"оборудование."
 
 msgid "moduleFits/gold_error/header"
 msgstr "Недостаточно золота"
@@ -6834,6 +6902,12 @@ msgstr ""
 "Сейчас установлено: %(moduleName)s. Замена оборудования вызовет следующие "
 "изменения:"
 
+msgid "moduleFits/similar_device_already_installed/header"
+msgstr "Установка невозможна"
+
+msgid "moduleFits/similar_device_already_installed/text"
+msgstr "На машину уже установлено оборудование с аналогичным эффектом."
+
 msgid "moduleFits/too_heavy/header"
 msgstr "Недостаточно грузоподъёмности для установки модуля."
 
@@ -6852,34 +6926,25 @@ msgstr "Слишком тяжёлые модули"
 msgid "moduleFits/too_heavy_chassis/text"
 msgstr "Попробуйте облегчить машину."
 
-msgid "moduleFits/trophyEquipment/basic/description"
-msgstr ""
-"Характеристики трофейного оборудования можно улучшить за игровую валюту."
-
-msgid "moduleFits/trophyEquipment/basic/header"
-msgstr "Работу трофейного оборудования можно наладить"
-
-msgid "moduleFits/trophyEquipment/cannotBuy/description"
-msgstr ""
-"Этот тип оборудования можно получить в качестве награды за игровые события."
-
-msgid "moduleFits/trophyEquipment/cannotBuy/header"
-msgstr "Трофейное оборудование невозможно купить"
-
-msgid "moduleFits/trophyEquipment/upgraded/description"
-msgstr "Это оборудование даёт максимальный бонус."
-
-msgid "moduleFits/trophyEquipment/upgraded/header"
-msgstr "Работа трофейного оборудования налажена"
-
 msgid "moduleFits/unlock_error/header"
 msgstr "Модуль не исследован."
 
 msgid "moduleFits/unlock_error/text"
 msgstr "Исследуйте его в окне исследований текущей машины."
 
+msgid "moduleFits/upgradable/modernized/price"
+msgstr "Наладка %(level)s уровня"
+
 msgid "moduleFits/upgradable/price"
 msgstr "Наладка"
+
+msgid "moduleFits/useless_battle_booster/header"
+msgstr "Установка бесполезна"
+
+msgid "moduleFits/useless_battle_booster/text"
+msgstr ""
+"Инструкция работает только при установленном оборудовании соответствующего "
+"типа."
 
 msgid "moduleFits/wrong_slot/body"
 msgstr "Модуль уже установлен в другом слоте."
@@ -7309,6 +7374,12 @@ msgstr ""
 msgid "notrecruitedtankman/commander_duke/label"
 msgstr "Уникальный член экипажа"
 
+msgid "notrecruitedtankman/commander_ferenc/desc"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/commander_ferenc/label"
+msgstr "?empty?"
+
 msgid "notrecruitedtankman/commander_gagarin21/desc"
 msgstr ""
 "«Облетев Землю в корабле-спутнике, я увидел, как прекрасна наша планета. "
@@ -7676,6 +7747,79 @@ msgstr ""
 msgid "notrecruitedtankman/ny22woman/label"
 msgstr "Новогоднее наступление 2022"
 
+msgid "notrecruitedtankman/ny23_girl_1/desc"
+msgstr ""
+"Выдавалась в награду за достижение определённого уровня атмосферы праздника "
+"в рамках события «Новогоднее наступление 2023». У девушки изучено «Боевое "
+"братство», а также достаточно опыта на дополнительный навык или умение на "
+"выбор."
+
+msgid "notrecruitedtankman/ny23_girl_1/label"
+msgstr "Новогоднее наступление 2023"
+
+msgid "notrecruitedtankman/ny23_girl_2/desc"
+msgstr ""
+"Выдавалась в награду за достижение определённого уровня атмосферы праздника "
+"в рамках события «Новогоднее наступление 2023». У девушки изучено «Боевое "
+"братство», а также достаточно опыта на дополнительный навык или умение на "
+"выбор."
+
+msgid "notrecruitedtankman/ny23_girl_2/label"
+msgstr "Новогоднее наступление 2023"
+
+msgid "notrecruitedtankman/ny23_girl_3/desc"
+msgstr ""
+"Выдавалась в награду за достижение определённого уровня атмосферы праздника "
+"в рамках события «Новогоднее наступление 2023». У девушки изучено «Боевое "
+"братство», а также достаточно опыта на дополнительный навык или умение на "
+"выбор."
+
+msgid "notrecruitedtankman/ny23_girl_3/label"
+msgstr "Новогоднее наступление 2023"
+
+msgid "notrecruitedtankman/ny23_girl_4/desc"
+msgstr ""
+"Выдавалась в награду за достижение определённого уровня атмосферы праздника "
+"в рамках события «Новогоднее наступление 2023». У девушки изучено «Боевое "
+"братство», а также достаточно опыта на дополнительный навык или умение на "
+"выбор."
+
+msgid "notrecruitedtankman/ny23_girl_4/label"
+msgstr "Новогоднее наступление 2023"
+
+msgid "notrecruitedtankman/ny23_girl_m/desc"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/ny23_girl_m/event"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/ny23_girl_m/label"
+msgstr "?empty?"
+
+msgid "notrecruitedtankman/ny23defaultGirl/desc"
+msgstr ""
+"Девушка-танкист выдаётся на определённом уровне атмосферы праздника. У неё "
+"изучен навык «Боевое братство» и достаточно опыта для изучения ещё одного "
+"навыка или умения на выбор."
+
+msgid "notrecruitedtankman/ny23defaultGirl/howToGetInfo"
+msgstr "Достичь указанного уровня атмосферы праздника."
+
+msgid "notrecruitedtankman/ny23defaultGirl/label"
+msgstr "Новогоднее наступление 2023"
+
+msgid "notrecruitedtankman/ny23ruby_girl_1/desc"
+msgstr ""
+"Добрая и дружелюбная девушка. Умница, красавица, танками да бронемашинами "
+"управлять мастерица... Правда о последнем мы сами недавно узнали — просто "
+"сказок подходящих не было, видимо."
+
+msgid "notrecruitedtankman/ny23ruby_girl_1/event"
+msgstr "Новогоднее наступление 2023"
+
+msgid "notrecruitedtankman/ny23ruby_girl_1/label"
+msgstr "Новогоднее наступление 2023"
+
 msgid "notrecruitedtankman/offspring_commander/desc"
 msgstr ""
 "Неутомимый и харизматичный вокалист, талантливый гитарист и просто отличный "
@@ -7813,15 +7957,6 @@ msgid "notrecruitedtankman/tankman/howToGetInfo"
 msgstr "?empty?"
 
 msgid "notrecruitedtankman/tankman/label"
-msgstr "Уникальный член экипажа"
-
-msgid "notrecruitedtankman/tankmen/desc"
-msgstr "?empty?"
-
-msgid "notrecruitedtankman/tankmen/howToGetInfo"
-msgstr "?empty?"
-
-msgid "notrecruitedtankman/tankmen/label"
 msgstr "Уникальный член экипажа"
 
 msgid "notrecruitedtankman/tankmen_auc_1/desc"
@@ -8822,6 +8957,12 @@ msgstr "Нажмите, чтобы сбросить текущие умения 
 
 msgid "personal_case/skills/dropSkillsButton/header"
 msgstr "Сбросить умения/навыки"
+
+msgid "personal_case/skills/dropSkillsButton/inBattle/body"
+msgstr "Дождитесь возврата экипажа из боя, чтобы изменить навыки и умения."
+
+msgid "personal_case/skills/dropSkillsButton/inBattle/header"
+msgstr "Машина в бою"
 
 msgid "personal_case/skills/dropSkillsButton/noSkill/body"
 msgstr "У вас нет изученных умений или навыков."
@@ -10651,6 +10792,12 @@ msgstr ""
 msgid "tankCarusel/lock/rotation/header"
 msgstr "Машина группы %(groupNum)s недоступна"
 
+msgid "tankCarusel/newYearSlot/body"
+msgstr "Нажмите, чтобы перейти на экран управления новогодней техникой."
+
+msgid "tankCarusel/newYearSlot/header"
+msgstr "Новогодняя техника"
+
 msgid "tankCaruselTooltip/vehicleType/elite/AT-SPG"
 msgstr "Элитная ПТ-САУ"
 
@@ -11386,9 +11533,6 @@ msgstr "Требуемый уровень"
 msgid "vehicle/action_prc"
 msgstr "Скидка %(actionPrc)s, прежняя стоимость: %(oldPrice)s"
 
-msgid "vehicle/afterEventEnd/title"
-msgstr "Все бои проведены, машина недоступна."
-
 msgid "vehicle/ammo"
 msgstr "В боекомплекте"
 
@@ -11480,15 +11624,6 @@ msgstr "Аренда от"
 msgid "vehicle/multiplied_xp"
 msgstr "Боевой опыт"
 
-msgid "vehicle/overview/desc"
-msgstr ""
-"Страшный сон любого противника. Никаких взводов: только вы и этот дикий "
-"зверь, и не спрашивайте, как Эрмелинде удалось спустить её с цепи. Машина "
-"доступна для участия только в Случайных боях с 26.09.2022 по 18.10.2022."
-
-msgid "vehicle/overview/title"
-msgstr "Общее:"
-
 msgid "vehicle/radioDistance"
 msgstr "<h1>Дальность связи</h1> <h2>(км)</h2>"
 
@@ -11533,11 +11668,6 @@ msgstr "Аренда для Линии фронта"
 
 msgid "vehicle/rentLeftFuture/hours"
 msgstr "Часов аренды"
-
-msgid "vehicle/rentLeftFuture/obtainedBy"
-msgstr ""
-"Можно получить при прохождении прогрессии или из порталов Инженера в рамках "
-"события «Ваффентрагер: Наследие»."
 
 msgid "vehicle/rentLeftFuture/wins"
 msgstr "побед в аренду"
@@ -12054,6 +12184,14 @@ msgstr ""
 msgid "vehicleSellDialog/renderer/alertIconCrystal/header"
 msgstr "Выгрузка на Склад"
 
+msgid "vehicleSellDialog/renderer/alertIconEquipCoin/body"
+msgstr ""
+"Экспериментальное оборудование может быть демонтировано за компоненты, с "
+"помощью демонтажного набора или за золото."
+
+msgid "vehicleSellDialog/renderer/alertIconEquipCoin/header"
+msgstr "Выгрузка на Склад"
+
 msgid "vehicleSellDialog/renderer/alertIconGold/body"
 msgstr ""
 "Штатное и трофейное оборудование может быть демонтировано для повторного "
@@ -12247,6 +12385,14 @@ msgstr ""
 "Все ваши боны станут доступны в ближайшее время."
 
 msgid "wallet/not_available_crystal/header"
+msgstr "Получение данных"
+
+msgid "wallet/not_available_equipCoin/body"
+msgstr ""
+"Идёт получение данных о балансе.\n"
+"Все ваши компоненты станут доступны в ближайшее время."
+
+msgid "wallet/not_available_equipCoin/header"
 msgstr "Получение данных"
 
 msgid "wallet/not_available_freexp/body"

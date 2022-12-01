@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node>
+		<identifier>Scene Root</identifier>
+		<transform>
+			<row0>1.000000 0.000000 0.000000</row0>
+			<row1>0.000000 1.000000 0.000000</row1>
+			<row2>0.000000 0.000000 1.000000</row2>
+			<row3>0.000000 0.000000 0.000000</row3>
+		</transform>
+	</node>
+	<renderSet>
+		<treatAsWorldSpaceObject>false</treatAsWorldSpaceObject>
+		<node>Scene Root</node>
+		<geometry>
+			<vertices>vertices</vertices>
+			<primitive>indices</primitive>
+			<primitiveGroup>
+				0
+				<material>
+					<identifier>s_nd1</identifier>
+					<fx>shaders/std_effects/glow.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>110</materialKind>
+					<property>
+						alphaReference
+						<Int>95</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						destBlend
+						<Int>3</Int>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h_newyear/customization/Illumination/Gate/NY22_Gates_Base_AM.dds</Texture>
+					</property>
+					<property>
+						selfIllumination
+						<Float>12.000000</Float>
+					</property>
+				</material>
+				<groupOrigin>-0.081903 10.374963 0.016236</groupOrigin>
+			</primitiveGroup>
+			<primitiveGroup>
+				1
+				<material>
+					<identifier>s_nd0</identifier>
+					<fx>shaders/std_effects/lightonly.fx</fx>
+					<collisionFlags>255</collisionFlags>
+					<materialKind>110</materialKind>
+					<property>
+						alphaReference
+						<Int>95</Int>
+					</property>
+					<property>
+						alphaTestEnable
+						<Bool>true</Bool>
+					</property>
+					<property>
+						diffuseMap
+						<Texture>content/Hangars/h_newyear/customization/Illumination/Gate/NY22_Gates_Base_AM.dds</Texture>
+					</property>
+					<property>
+						doubleSided
+						<Bool>true</Bool>
+					</property>
+				</material>
+				<groupOrigin>-0.081904 10.374963 0.016239</groupOrigin>
+			</primitiveGroup>
+		</geometry>
+	</renderSet>
+	<boundingBox>
+		<min>-5.054442 -0.238479 -4.791389</min>
+		<max>4.890635 20.988405 4.823860</max>
+	</boundingBox>
+	<customBsp>true</customBsp>
+	<geometrySize>136488</geometrySize>
+	<minUVDensity>0.456468</minUVDensity>
+</root>

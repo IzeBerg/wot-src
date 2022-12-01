@@ -90,10 +90,6 @@ package net.wg.gui.lobby.battleResults.data
       
       public var comp7Rating:Comp7SubTaskVO = null;
       
-      public var allyTeamDamage:int = -1;
-      
-      public var enemyTeamDamage:int = -1;
-      
       public function CommonStatsVO(param1:Object)
       {
          super(param1);

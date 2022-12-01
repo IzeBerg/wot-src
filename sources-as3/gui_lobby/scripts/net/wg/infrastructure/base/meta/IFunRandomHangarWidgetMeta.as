@@ -6,6 +6,6 @@ package net.wg.infrastructure.base.meta
    {
        
       
-      function as_setModifiersCount(param1:int) : void;
+      function as_updateHitArea() : void;
    }
 }

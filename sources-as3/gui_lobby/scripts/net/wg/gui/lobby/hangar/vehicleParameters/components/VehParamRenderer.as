@@ -22,13 +22,13 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
       
       private static const RENDERER_HEIGHT:int = 24;
       
-      private static const SIMPLE_TITLE_TF_X:int = 117;
+      private static const SIMPLE_TITLE_TF_X:int = 122;
       
-      private static const SIMPLE_VALUE_TF_X:int = 265;
+      private static const SIMPLE_VALUE_TF_X:int = 270;
       
-      private static const ADVANCED_TITLE_TF_X:int = 146;
+      private static const ADVANCED_TITLE_TF_X:int = 151;
       
-      private static const EXTRA_TITLE_TF_X:int = 120;
+      private static const EXTRA_TITLE_TF_X:int = 125;
       
       private static const EXTRA_TITLE_TEXT_HEIGHT:int = 4;
       
@@ -47,6 +47,8 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
       private static const HIT_ZONE_GAP:int = 12;
       
       private static const MAX_HIT_VALUE_OVERLAY:int = 80;
+      
+      private static const ADVANCED_VALUE_TF_X:int = 5;
        
       
       public var valueTF:TextField = null;
@@ -182,7 +184,7 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
             else if(this._model.state == HANGAR_ALIASES.VEH_PARAM_RENDERER_STATE_ADVANCED)
             {
                this.titleTF.x = ADVANCED_TITLE_TF_X;
-               this.valueTF.x = 0;
+               this.valueTF.x = ADVANCED_VALUE_TF_X;
                this.icon.visible = StringUtils.isNotEmpty(this._model.iconSource);
                if(this.icon.visible)
                {
@@ -210,7 +212,7 @@ package net.wg.gui.lobby.hangar.vehicleParameters.components
                   this.titleTF.x = EXTRA_TITLE_TF_X;
                }
                this.titleTF.height = Math.max(RENDERER_HEIGHT,this.titleTF.textHeight + EXTRA_TITLE_TEXT_HEIGHT);
-               this.valueTF.x = 0;
+               this.valueTF.x = ADVANCED_VALUE_TF_X;
                height = this.titleTF.height;
                this.hitMC.height = height;
                mouseChildren = true;

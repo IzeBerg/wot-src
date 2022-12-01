@@ -118,8 +118,9 @@ package net.wg.gui.lobby.tankman
       
       public function set enabled(param1:Boolean) : void
       {
+         var _loc2_:Number = NaN;
          this.radioButton.enabled = param1;
-         var _loc2_:Number = !!param1 ? Number(ALPHA_ENABLED) : Number(ALPHA_DISABLED);
+         _loc2_ = !!param1 ? Number(ALPHA_ENABLED) : Number(ALPHA_DISABLED);
          this.roleIcon.alpha = _loc2_;
          this.roleName.alpha = _loc2_;
          this.disabledTipBox.mouseEnabled = !param1;

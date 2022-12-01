@@ -14,6 +14,8 @@ package net.wg.gui.battle
    import net.wg.infrastructure.base.meta.impl.ClassicFullStatsMeta;
    import net.wg.infrastructure.interfaces.IDAAPIDataClass;
    import net.wg.infrastructure.interfaces.IDAAPIModule;
+   import net.wg.infrastructure.uilogging.personal_reserves.InBattleActivationScreenLogger;
+   import scaleform.clik.events.IndexEvent;
    
    public class ClassicFullStats extends ClassicFullStatsMeta implements IClassicFullStatsMeta, IReservesStats
    {
@@ -21,6 +23,8 @@ package net.wg.gui.battle
       private static const NO_QUEST_TF_GAP:int = 12;
       
       private static const TAB_RESERVES_Y_SHIFT:int = 13;
+      
+      private static const PERSONAL_RESERVES_TAB_IDX:int = 2;
        
       
       public var tabQuest:IQuestProgressViewOperationSelector = null;
@@ -36,6 +40,10 @@ package net.wg.gui.battle
       private var _questStatusData:DAAPIQuestStatusVO = null;
       
       private var _hasQuestToPerform:Boolean = false;
+      
+      private var _pr20Logger:InBattleActivationScreenLogger = null;
+      
+      private var _tabIndexChangedByShortcut:Boolean = false;
       
       public function ClassicFullStats()
       {
@@ -67,9 +75,21 @@ package net.wg.gui.battle
          }
       }
       
+      override public function as_setActiveTab(param1:Number) : void
+      {
+         this._tabIndexChangedByShortcut = param1 != tabs.selectedIndex;
+         if(this.tabReserves != null && param1 == PERSONAL_RESERVES_TAB_IDX)
+         {
+            this._pr20Logger.logOpenActivationThroughShortcut();
+         }
+         super.as_setActiveTab(param1);
+      }
+      
       override protected function configUI() : void
       {
          super.configUI();
+         tabs.addEventListener(IndexEvent.INDEX_CHANGE,this.logTabsIndexChangeHandler);
+         this._pr20Logger = new InBattleActivationScreenLogger();
          if(this.tabQuest != null)
          {
             this.tabQuest.addEventListener(QuestProgressTabEvent.QUEST_SELECT,this.onProgressTrackingQuestSelectHandler);
@@ -87,6 +107,12 @@ package net.wg.gui.battle
          if(this.tabReserves != null)
          {
             this.tabReserves = null;
+         }
+         tabs.removeEventListener(IndexEvent.INDEX_CHANGE,this.logTabsIndexChangeHandler);
+         if(this._pr20Logger)
+         {
+            this._pr20Logger.dispose();
+            this._pr20Logger = null;
          }
          this.noQuestTitleTF = null;
          this.noQuestDescrTF = null;
@@ -157,7 +183,7 @@ package net.wg.gui.battle
       override protected function updateCurrentTab() : void
       {
          statsTable.visible = tabs.selectedIndex == 0;
-         var _loc1_:Boolean = tabs.selectedIndex == 2;
+         var _loc1_:Boolean = tabs.selectedIndex == PERSONAL_RESERVES_TAB_IDX;
          if(this.tabReserves != null)
          {
             this.tabReserves.visible = _loc1_;
@@ -174,6 +200,7 @@ package net.wg.gui.battle
             this.setTitle();
          }
          this.noQuestTitleTF.visible = this.noQuestDescrTF.visible = !_loc3_;
+         onPersonalReservesTabViewedS(_loc1_);
       }
       
       public function getReservesView() : IDAAPIModule
@@ -193,6 +220,15 @@ package net.wg.gui.battle
       private function onProgressTrackingQuestSelectHandler(param1:QuestProgressTabEvent) : void
       {
          onSelectQuestS(param1.questID);
+      }
+      
+      private function logTabsIndexChangeHandler(param1:IndexEvent) : void
+      {
+         if(this.tabReserves != null && param1.index == PERSONAL_RESERVES_TAB_IDX && !this._tabIndexChangedByShortcut)
+         {
+            this._pr20Logger.logActivationTabSelected();
+         }
+         this._tabIndexChangedByShortcut = false;
       }
    }
 }
